@@ -1,0 +1,1 @@
+Do not remove this file, it has been placed here to insure that the installer installs a save folder.

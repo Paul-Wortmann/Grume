@@ -1,0 +1,7 @@
+
+v0.00 - (2011-11-11)
+Initial release.
+Documentation.
+Some textures planned for inclusion in this project.
+LOC - 0
+
