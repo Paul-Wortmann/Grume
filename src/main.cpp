@@ -50,7 +50,7 @@ extern menu_class        next_level_menu;
 extern menu_class        outro_menu;
 
 const char App_Name[] = ("Frost and Flame V0.00 - www.physhexgames.co.nr");
-const char App_Icon[] = "data/icon.bmp";
+const char App_Icon[] = "data/icon.bmp"; fix this icon!!!
 
 Uint32                   colorkey;
 SDL_Surface             *App_Icon_Surface;
@@ -110,10 +110,12 @@ int main(int argc, char *argv[])
     init_game(false);
     game.log.File_Write("Initializing OpenGL...");
     game.graphics.init_gl(game.config.Display_X_Resolution,game.config.Display_Y_Resolution);
+    game.log.File_Write("Seeding random...");
     seed_rand();
+    game.log.File_Write("Initializing font...");
     TTF_Init();
     game.log.File_Write("Loading resources...");
-    loading_screen_display("data/textures/menu/loading_screen.png");
+    loading_screen_display("data/textures/loading_screen.png");
     load_resources();
     game.log.File_Write("Initializing menu system...");
     init_menu();
@@ -148,14 +150,14 @@ int main(int argc, char *argv[])
             if (game.music_next_track)
             {
                 game.music_next_track = false;
-                if (game.music_track ==  0) music.level_00.play();
+                if (game.music_track ==  0) music.menu_00.play();
             }
             game.game_resume = true;
             if (game.process_ready) process_game();
             display_game();
         if ((game.io.escape) && (game.process_ready))
         {
-            sound.menu_select_01.play();
+            sound.menu_select_00.play();
             game.music_next_track        = true;
             game.game_active             = false;
             game.menu_level              = 1;
@@ -171,7 +173,7 @@ int main(int argc, char *argv[])
 
         if (game.io.pause)
         {
-            game_o.paused.spawn();
+            //game_o.paused.spawn();
             game.game_paused = true;
             game.game_active = false;
             game.io.pause    = false;
@@ -185,7 +187,7 @@ int main(int argc, char *argv[])
             if (game.music_next_track)
             {
                 game.music_next_track = false;
-                music.level_pd.play();
+                //music.level_pd.play();
             }
             game.menu_level = 11;
             if (game.process_ready) game.background.process();
@@ -199,7 +201,7 @@ int main(int argc, char *argv[])
             if (game.music_next_track)
             {
                 game.music_next_track = false;
-                music.level_pd.play();
+                //music.level_pd.play();
             }
             diplay_menu ();
             if (game.process_ready) game.background.process();
@@ -212,7 +214,7 @@ int main(int argc, char *argv[])
             if (game.music_next_track)
             {
                 game.music_next_track = false;
-                music.level_nl.play();
+                //music.level_nl.play();
             }
             game.menu_level = 9;
             if (game.process_ready) game.background.process();
@@ -225,7 +227,7 @@ int main(int argc, char *argv[])
             if (game.music_next_track)
             {
                 game.music_next_track = false;
-                music.outro_00.play();
+                //music.outro_00.play();
             }
             game.menu_level = 10;
             if (game.process_ready) game.background.process();

@@ -44,7 +44,8 @@ bool load_resources(void)
 bool load_sounds(void)
 {
     int sfx_count = 0;
-    //sound.menu_move_00.load  ("data/sounds/menu_move_00.wav",sfx_count)  ;sfx_count++;
+    sound.menu_move_00.load    ("data/sounds/menu_move_00.wav",sfx_count)    ;sfx_count++;
+    sound.menu_select_00.load  ("data/sounds/menu_select_00.wav",sfx_count)  ;sfx_count++;
 
     game.log.File_Write("Sound files loaded -> ",sfx_count);
     return(true);
@@ -53,7 +54,7 @@ bool load_sounds(void)
 bool load_music(void)
 {
     int music_count = 0;
-    //music.level_00.load("data/music/level_00.s3m",music_count);music_count++;
+    music.menu_00.load("data/music/menu_00.xm",music_count);music_count++;
 
     game.log.File_Write("Music files loaded -> ",music_count);
     return(true);
@@ -64,6 +65,26 @@ bool load_textures(void)
     int texture_count = 0;
     texture.background_00.load_image("data/textures/menu/background_00.png",texture_count);texture_count++;
     texture.background_01.load_image("data/textures/menu/background_01.png",texture_count);texture_count++;
+    texture.background_02.load_image("data/textures/menu/background_02.png",texture_count);texture_count++;
+
+    texture.button_normal.load_image            ("data/textures/menu/button_normal.png"            ,texture_count);texture_count++;
+    texture.button_highlighted.load_image       ("data/textures/menu/button_highlighted.png"       ,texture_count);texture_count++;
+    texture.button_disabled.load_image          ("data/textures/menu/button_disabled.png"          ,texture_count);texture_count++;
+    texture.close_button.load_image             ("data/textures/menu/close_button.png"             ,texture_count);texture_count++;
+    texture.close_button_highlighted.load_image ("data/textures/menu/close_button_highlighted.png" ,texture_count);texture_count++;
+    texture.selection_box.load_image            ("data/textures/menu/selection_box.png"            ,texture_count);texture_count++;
+    texture.arrow_button_normal.load_image      ("data/textures/menu/arrow_normal.png"             ,texture_count);texture_count++;
+    texture.arrow_button_highlighted.load_image ("data/textures/menu/arrow_highlighted.png"        ,texture_count);texture_count++;
+    texture.arrow_button_disabled.load_image    ("data/textures/menu/arrow_disabled.png"           ,texture_count);texture_count++;
+    texture.slider_button_normal.load_image     ("data/textures/menu/slider_normal.png"            ,texture_count);texture_count++;
+    texture.slider_button_highlighted.load_image("data/textures/menu/slider_highlighted.png"       ,texture_count);texture_count++;
+    texture.red_button.load_image               ("data/textures/menu/red_button.png"               ,texture_count);texture_count++;
+    texture.red_button_highlighted.load_image   ("data/textures/menu/red_button_highlighted.png"   ,texture_count);texture_count++;
+    texture.green_button.load_image             ("data/textures/menu/green_button.png"             ,texture_count);texture_count++;
+    texture.green_button_highlighted.load_image ("data/textures/menu/green_button_highlighted.png" ,texture_count);texture_count++;
+    texture.blue_button.load_image              ("data/textures/menu/blue_button.png"              ,texture_count);texture_count++;
+    texture.blue_button_highlighted.load_image  ("data/textures/menu/blue_button_highlighted.png"  ,texture_count);texture_count++;
+    texture.resolution_icon.load_image          ("data/textures/menu/resolution_icon.png"          ,texture_count);texture_count++;
 
     texture.particle_000.load_image("data/textures/particles/particle_000.png",texture_count);texture_count++;
     texture.particle_001.load_image("data/textures/particles/particle_001.png",texture_count);texture_count++;
@@ -88,26 +109,7 @@ bool load_textures(void)
 
 bool proc_textures(void)
 {
-    texture.background_00.process();
-    texture.background_01.process();
-
-    texture.particle_000.process();
-    texture.particle_001.process();
-    texture.particle_002.process();
-    texture.particle_003.process();
-    texture.particle_004.process();
-    texture.particle_005.process();
-    texture.particle_006.process();
-    texture.particle_007.process();
-    texture.particle_008.process();
-    texture.particle_009.process();
-    texture.particle_010.process();
-    texture.particle_011.process();
-    texture.particle_012.process();
-    texture.particle_013.process();
-    texture.particle_014.process();
-    texture.particle_015.process();
-
+    //used for sprite sheets
 };
 
 bool load_fonts(void)
@@ -138,6 +140,43 @@ bool draw_texture(bool r, int texture_number, float x, float y, float z, float w
 {
     if (texture_number == texture.background_00.ref_number) texture.background_00.draw(r,x,y,z,w,h,angle);
     if (texture_number == texture.background_01.ref_number) texture.background_01.draw(r,x,y,z,w,h,angle);
+    if (texture_number == texture.background_02.ref_number) texture.background_02.draw(r,x,y,z,w,h,angle);
+
+    if (texture_number == texture.button_normal.ref_number)             texture.button_normal.draw            (r,x,y,z,w,h,angle);
+    if (texture_number == texture.button_highlighted.ref_number)        texture.button_highlighted.draw       (r,x,y,z,w,h,angle);
+    if (texture_number == texture.button_disabled.ref_number)           texture.button_disabled.draw          (r,x,y,z,w,h,angle);
+    if (texture_number == texture.close_button.ref_number)              texture.close_button.draw             (r,x,y,z,w,h,angle);
+    if (texture_number == texture.close_button_highlighted.ref_number)  texture.close_button_highlighted.draw (r,x,y,z,w,h,angle);
+    if (texture_number == texture.selection_box.ref_number)             texture.selection_box.draw            (r,x,y,z,w,h,angle);
+    if (texture_number == texture.arrow_button_normal.ref_number)       texture.arrow_button_normal.draw      (r,x,y,z,w,h,angle);
+    if (texture_number == texture.arrow_button_highlighted.ref_number)  texture.arrow_button_highlighted.draw (r,x,y,z,w,h,angle);
+    if (texture_number == texture.arrow_button_disabled.ref_number)     texture.arrow_button_disabled.draw    (r,x,y,z,w,h,angle);
+    if (texture_number == texture.slider_button_normal.ref_number)      texture.slider_button_normal.draw     (r,x,y,z,w,h,angle);
+    if (texture_number == texture.slider_button_highlighted.ref_number) texture.slider_button_highlighted.draw(r,x,y,z,w,h,angle);
+    if (texture_number == texture.red_button.ref_number)                texture.red_button.draw               (r,x,y,z,w,h,angle);
+    if (texture_number == texture.red_button_highlighted.ref_number)    texture.red_button_highlighted.draw   (r,x,y,z,w,h,angle);
+    if (texture_number == texture.green_button.ref_number)              texture.green_button.draw             (r,x,y,z,w,h,angle);
+    if (texture_number == texture.green_button_highlighted.ref_number)  texture.green_button_highlighted.draw (r,x,y,z,w,h,angle);
+    if (texture_number == texture.blue_button.ref_number)               texture.blue_button.draw              (r,x,y,z,w,h,angle);
+    if (texture_number == texture.blue_button_highlighted.ref_number)   texture.blue_button_highlighted.draw  (r,x,y,z,w,h,angle);
+    if (texture_number == texture.resolution_icon.ref_number)           texture.resolution_icon.draw          (r,x,y,z,w,h,angle);
+
+    if (texture_number == texture.particle_000.ref_number) texture.particle_000.draw(r,x,y,z,w,h,angle);
+    if (texture_number == texture.particle_001.ref_number) texture.particle_001.draw(r,x,y,z,w,h,angle);
+    if (texture_number == texture.particle_002.ref_number) texture.particle_002.draw(r,x,y,z,w,h,angle);
+    if (texture_number == texture.particle_003.ref_number) texture.particle_003.draw(r,x,y,z,w,h,angle);
+    if (texture_number == texture.particle_004.ref_number) texture.particle_004.draw(r,x,y,z,w,h,angle);
+    if (texture_number == texture.particle_005.ref_number) texture.particle_005.draw(r,x,y,z,w,h,angle);
+    if (texture_number == texture.particle_006.ref_number) texture.particle_006.draw(r,x,y,z,w,h,angle);
+    if (texture_number == texture.particle_007.ref_number) texture.particle_007.draw(r,x,y,z,w,h,angle);
+    if (texture_number == texture.particle_008.ref_number) texture.particle_008.draw(r,x,y,z,w,h,angle);
+    if (texture_number == texture.particle_009.ref_number) texture.particle_009.draw(r,x,y,z,w,h,angle);
+    if (texture_number == texture.particle_010.ref_number) texture.particle_010.draw(r,x,y,z,w,h,angle);
+    if (texture_number == texture.particle_011.ref_number) texture.particle_011.draw(r,x,y,z,w,h,angle);
+    if (texture_number == texture.particle_012.ref_number) texture.particle_012.draw(r,x,y,z,w,h,angle);
+    if (texture_number == texture.particle_013.ref_number) texture.particle_013.draw(r,x,y,z,w,h,angle);
+    if (texture_number == texture.particle_014.ref_number) texture.particle_014.draw(r,x,y,z,w,h,angle);
+    if (texture_number == texture.particle_015.ref_number) texture.particle_015.draw(r,x,y,z,w,h,angle);
 
     return(true);
 };

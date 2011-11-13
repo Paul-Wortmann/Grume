@@ -33,16 +33,39 @@
 
 struct sound_type
 {
+    sound_class   menu_move_00;
+    sound_class   menu_select_00;
 };
 
 struct music_type
 {
+    music_class   menu_00;
 };
 
 struct texture_type
 {
     texture_class background_00;
     texture_class background_01;
+    texture_class background_02;
+
+    texture_class button_normal;
+    texture_class button_highlighted;
+    texture_class button_disabled;
+    texture_class close_button;
+    texture_class close_button_highlighted;
+    texture_class selection_box;
+    texture_class arrow_button_normal;
+    texture_class arrow_button_highlighted;
+    texture_class arrow_button_disabled;
+    texture_class slider_button_normal;
+    texture_class slider_button_highlighted;
+    texture_class red_button;
+    texture_class red_button_highlighted;
+    texture_class green_button;
+    texture_class green_button_highlighted;
+    texture_class blue_button;
+    texture_class blue_button_highlighted;
+    texture_class resolution_icon;
 
     texture_class particle_000;
     texture_class particle_001;
