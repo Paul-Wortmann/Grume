@@ -22,23 +22,22 @@
  * @date 2011-11-11
  */
 
-#ifndef MAIN_H
-#define MAIN_H
+#ifndef GRAPHICS_H
+#define GRAPHICS_H
 
-/* VERSION DEFINITIONS */
-#define VER_STRING	        "0.0.01.0000"
-#define VER_MAJOR	        0
-#define VER_MINOR	        0
-#define VER_RELEASE	        01
-#define VER_BUILD	        0000
-#define COMPANY_NAME	    "www.physhexgames.co.nr"
-#define FILE_VERSION	    "V0.01"
-#define FILE_DESCRIPTION	"Frost And Flame V0.01"
-#define INTERNAL_NAME	    "Frost And Flame"
-#define LEGAL_COPYRIGHT	    "GPL V3.0"
-#define LEGAL_TRADEMARKS	"Frost And Flame is copyright Paul Wortmann"
-#define ORIGINAL_FILENAME	"Frost_And_Flame.exe"
-#define PRODUCT_NAME	    "Frost And Flame"
-#define PRODUCT_VERSION	    "V0.01"
+class graphics_class
+{
+    private:
+        int resolution_x;
+        int resolution_y;
+    public:
+              graphics_class(void);
+        void  set_resolution(int x_res, int y_res);
+        int   get_resolution_x(void);
+        int   get_resolution_y(void);
+        int   gl_to_res(float gl_coord, int max_res);
+        float res_to_gl(int  res_coord, int max_res);
+        int   init_gl(int x_res, int y_res);
+};
 
-#endif //MAIN_H
+#endif //GRAPHICS_H

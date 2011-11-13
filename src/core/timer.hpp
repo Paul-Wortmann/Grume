@@ -22,23 +22,20 @@
  * @date 2011-11-11
  */
 
-#ifndef MAIN_H
-#define MAIN_H
+#ifndef TIMER_H
+#define TIMER_H
 
-/* VERSION DEFINITIONS */
-#define VER_STRING	        "0.0.01.0000"
-#define VER_MAJOR	        0
-#define VER_MINOR	        0
-#define VER_RELEASE	        01
-#define VER_BUILD	        0000
-#define COMPANY_NAME	    "www.physhexgames.co.nr"
-#define FILE_VERSION	    "V0.01"
-#define FILE_DESCRIPTION	"Frost And Flame V0.01"
-#define INTERNAL_NAME	    "Frost And Flame"
-#define LEGAL_COPYRIGHT	    "GPL V3.0"
-#define LEGAL_TRADEMARKS	"Frost And Flame is copyright Paul Wortmann"
-#define ORIGINAL_FILENAME	"Frost_And_Flame.exe"
-#define PRODUCT_NAME	    "Frost And Flame"
-#define PRODUCT_VERSION	    "V0.01"
+class timer_class
+{
+    private:
+	    bool running;
+	    int startticks;
+    public:
+	    timer_class();
+	    ~timer_class();
+	    int start();
+	    int stop();
+	    int getticks();
+};
 
-#endif //MAIN_H
+#endif //TIMER_H

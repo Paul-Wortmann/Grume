@@ -1,0 +1,392 @@
+# depslib dependency file v1.0
+1320850862 source:c:\_git_\frost_and_flame\src\npc.cpp
+	<iostream>
+	<fstream>
+	<stdio.h>
+	<stdlib.h>
+	<string>
+	"core/core.hpp"
+	"NPC.hpp"
+	"load_resources.hpp"
+	"game.hpp"
+	"misc.hpp"
+
+1317623815 c:\_git_\frost_and_flame\src\core\core.hpp
+	"log.hpp"
+	"config.hpp"
+	"graphics.hpp"
+	"physics.hpp"
+	"network.hpp"
+	"timer.hpp"
+	"sound.hpp"
+	"savegame.hpp"
+	"font.hpp"
+	"menu.hpp"
+	"io.hpp"
+	"background.hpp"
+	"particles.hpp"
+
+1320030911 c:\_git_\frost_and_flame\src\core\log.hpp
+	<string>
+
+1320154827 c:\_git_\frost_and_flame\src\core\config.hpp
+	<string>
+
+1317473395 c:\_git_\frost_and_flame\src\core\graphics.hpp
+
+1317473426 c:\_git_\frost_and_flame\src\core\physics.hpp
+
+1317473426 c:\_git_\frost_and_flame\src\core\network.hpp
+
+1317473446 c:\_git_\frost_and_flame\src\core\timer.hpp
+
+1318855038 c:\_git_\frost_and_flame\src\core\sound.hpp
+	<SDL/SDL_mixer.h>
+	<string>
+
+1317473426 c:\_git_\frost_and_flame\src\core\savegame.hpp
+
+1320238283 c:\_git_\frost_and_flame\src\core\font.hpp
+	<SDL/SDL_ttf.h>
+
+1320307918 c:\_git_\frost_and_flame\src\core\menu.hpp
+	<string>
+
+1317473395 c:\_git_\frost_and_flame\src\core\io.hpp
+
+1319631824 c:\_git_\frost_and_flame\src\core\background.hpp
+
+1318865459 c:\_git_\frost_and_flame\src\core\particles.hpp
+	<string>
+
+1320821877 c:\_git_\frost_and_flame\src\npc.hpp
+	"bullets.hpp"
+
+1320822860 c:\_git_\frost_and_flame\src\bullets.hpp
+
+1321152531 c:\_git_\frost_and_flame\src\load_resources.hpp
+	"core/core.hpp"
+	"core/sound.hpp"
+	"core/music.hpp"
+	"core/textures.hpp"
+	"core/font.hpp"
+
+1319609591 c:\_git_\frost_and_flame\src\core\music.hpp
+	<SDL/SDL_mixer.h>
+	<string>
+
+1317473446 c:\_git_\frost_and_flame\src\core\textures.hpp
+	<GL/gl.h>
+	<string>
+
+1321152300 c:\_git_\frost_and_flame\src\game.hpp
+	<string>
+	<SDL/SDL.h>
+	"language.hpp"
+
+1318335235 c:\_git_\frost_and_flame\src\pc.hpp
+	"bullets.hpp"
+
+1317473594 c:\_git_\frost_and_flame\src\waves.hpp
+
+1319631946 c:\_git_\frost_and_flame\src\levels.hpp
+	"waves.hpp"
+
+1320312331 c:\_git_\frost_and_flame\src\shields.hpp
+	<string>
+
+1317473593 c:\_git_\frost_and_flame\src\powerups.hpp
+
+1320584042 c:\_git_\frost_and_flame\src\thrusters.hpp
+	"core/core.hpp"
+	<string>
+
+1318862777 c:\_git_\frost_and_flame\src\explosions.hpp
+
+1320147925 c:\_git_\frost_and_flame\src\projectiles.hpp
+	<string>
+
+1317473593 c:\_git_\frost_and_flame\src\achievements.hpp
+
+1320852133 c:\_git_\frost_and_flame\src\support_ships.hpp
+	"bullets.hpp"
+
+1317473593 c:\_git_\frost_and_flame\src\in_game_messages.hpp
+
+1320315217 c:\_git_\frost_and_flame\src\screen_rumble.hpp
+
+1318345654 c:\_git_\frost_and_flame\src\debris.hpp
+
+1321151835 c:\_git_\frost_and_flame\src\language.hpp
+	<string>
+
+1319895073 c:\_git_\frost_and_flame\src\misc.hpp
+
+1320576931 source:c:\_git_\frost_and_flame\src\pc.cpp
+	"core/core.hpp"
+	"PC.hpp"
+	"NPC.hpp"
+	"load_resources.hpp"
+	"game.hpp"
+	"misc.hpp"
+
+1312290460 source:c:\_git_\frost_and_flame\src\star.p.g._private.rc
+
+1320569021 source:c:\_git_\frost_and_flame\src\achievements.cpp
+	"core/core.hpp"
+	"achievements.hpp"
+	"load_resources.hpp"
+	"game.hpp"
+	"misc.hpp"
+
+1317473275 source:c:\_git_\frost_and_flame\src\bullets.cpp
+	"bullets.hpp"
+
+1321152222 source:c:\_git_\frost_and_flame\src\core\background.cpp
+	"core.hpp"
+	"../load_resources.hpp"
+	"background.hpp"
+
+1320155717 source:c:\_git_\frost_and_flame\src\core\config.cpp
+	<fstream>
+	<stdio.h>
+	<stdlib.h>
+	"config.hpp"
+
+1317473359 source:c:\_git_\frost_and_flame\src\core\core.cpp
+	"core.hpp"
+
+1320238567 source:c:\_git_\frost_and_flame\src\core\font.cpp
+	<SDL/SDL_ttf.h>
+	<SDL/SDL_ttf.h>
+	<GL/gl.h>
+	<string>
+	<sstream>
+	"core.hpp"
+
+1317473359 source:c:\_git_\frost_and_flame\src\core\graphics.cpp
+	<GL/gl.h>
+	"core.hpp"
+	"graphics.hpp"
+
+1319709670 source:c:\_git_\frost_and_flame\src\core\io.cpp
+	<SDL/SDL.h>
+	"core.hpp"
+	"../game.hpp"
+	"io.hpp"
+
+1320030911 source:c:\_git_\frost_and_flame\src\core\log.cpp
+	<iostream>
+	<fstream>
+	<stdio.h>
+	<stdlib.h>
+	<string>
+	"log.hpp"
+
+1321152392 source:c:\_git_\frost_and_flame\src\core\menu.cpp
+	"menu.hpp"
+	"core.hpp"
+	"../load_resources.hpp"
+
+1319609436 source:c:\_git_\frost_and_flame\src\core\music.cpp
+	"music.hpp"
+
+1317473359 source:c:\_git_\frost_and_flame\src\core\network.cpp
+	"network.hpp"
+
+1321152584 source:c:\_git_\frost_and_flame\src\core\particles.cpp
+	<fstream>
+	<stdio.h>
+	<stdlib.h>
+	<string>
+	"particles.hpp"
+	"core.hpp"
+	"../load_resources.hpp"
+
+1317473359 source:c:\_git_\frost_and_flame\src\core\physics.cpp
+	"physics.hpp"
+	<math.h>
+
+1317473359 source:c:\_git_\frost_and_flame\src\core\savegame.cpp
+	<fstream>
+	"savegame.hpp"
+	"core.hpp"
+	"../save_data.hpp"
+
+1320570156 c:\_git_\frost_and_flame\src\save_data.hpp
+	"core/core.hpp"
+	"core/savegame.hpp"
+	"game.hpp"
+
+1318855101 source:c:\_git_\frost_and_flame\src\core\sound.cpp
+	"core.hpp"
+	"sound.hpp"
+
+1321152694 source:c:\_git_\frost_and_flame\src\core\textures.cpp
+	<GL/gl.h>
+	<SDL/SDL.h>
+	<SDL/SDL_image.h>
+	"textures.hpp"
+	"core.hpp"
+	"../load_resources.hpp"
+	"../game.hpp"
+
+1317473359 source:c:\_git_\frost_and_flame\src\core\timer.cpp
+	"SDL/SDL.h"
+	"timer.hpp"
+
+1318345656 source:c:\_git_\frost_and_flame\src\debris.cpp
+	"debris.hpp"
+
+1318868103 source:c:\_git_\frost_and_flame\src\explosions.cpp
+	"core/core.hpp"
+	"explosions.hpp"
+	"load_resources.hpp"
+	"game.hpp"
+	"misc.hpp"
+
+1321152791 source:c:\_git_\frost_and_flame\src\game.cpp
+	<SDL/SDL.h>
+	"core/core.hpp"
+	"load_resources.hpp"
+	"menu_system.hpp"
+	"game.hpp"
+	"misc.hpp"
+
+1319986961 c:\_git_\frost_and_flame\src\menu_system.hpp
+
+1317480035 source:c:\_git_\frost_and_flame\src\in_game_messages.cpp
+	"in_game_messages.hpp"
+	"core/core.hpp"
+	"load_resources.hpp"
+	"game.hpp"
+
+1321152799 source:c:\_git_\frost_and_flame\src\language.cpp
+	<iostream>
+	<fstream>
+	<stdio.h>
+	<stdlib.h>
+	<string>
+	"misc.hpp"
+	"language.hpp"
+	"menu_system.hpp"
+	"core/core.hpp"
+
+1321023711 source:c:\_git_\frost_and_flame\src\levels.cpp
+	<fstream>
+	<stdio.h>
+	<stdlib.h>
+	<string>
+	"load_resources.hpp"
+	"core/core.hpp"
+	"levels.hpp"
+	"game.hpp"
+
+1321152665 source:c:\_git_\frost_and_flame\src\load_resources.cpp
+	<SDL/SDL.h>
+	"load_resources.hpp"
+	"core/core.hpp"
+
+1321101178 source:c:\_git_\frost_and_flame\src\main.cpp
+	<locale>
+	<SDL/SDL.h>
+	<SDL/SDL_main.h>
+	<SDL/SDL_ttf.h>
+	<SDL/SDL_net.h>
+	<SDL/SDL_image.h>
+	<SDL/SDL_opengl.h>
+	<GL/gl.h>
+	"core/core.hpp"
+	"load_resources.hpp"
+	"misc.hpp"
+	"main.hpp"
+	"menu_system.hpp"
+	"game.hpp"
+	"levels.hpp"
+	"version.h"
+
+1321102096 c:\_git_\frost_and_flame\src\main.hpp
+
+1317473594 c:\_git_\frost_and_flame\src\version.h
+
+1320308953 source:c:\_git_\frost_and_flame\src\menu_system.cpp
+	"menu_system.hpp"
+	"game.hpp"
+	"core/core.hpp"
+	"load_resources.hpp"
+	"levels.hpp"
+
+1319895073 source:c:\_git_\frost_and_flame\src\misc.cpp
+	<time.h>
+	<stdlib.h>
+	<math.h>
+	<string>
+	<algorithm>
+	<sstream>
+	<fstream>
+	"misc.hpp"
+
+1320570057 source:c:\_git_\frost_and_flame\src\powerups.cpp
+	"core/core.hpp"
+	"powerups.hpp"
+	"load_resources.hpp"
+	"game.hpp"
+	"misc.hpp"
+
+1320289814 source:c:\_git_\frost_and_flame\src\projectiles.cpp
+	<iostream>
+	<fstream>
+	<stdio.h>
+	<stdlib.h>
+	<string>
+	"load_resources.hpp"
+	"core/core.hpp"
+	"projectiles.hpp"
+	"game.hpp"
+	"misc.hpp"
+
+1320570530 source:c:\_git_\frost_and_flame\src\save_data.cpp
+	"save_data.hpp"
+	"core/core.hpp"
+	"game.hpp"
+	"levels.hpp"
+
+1320315197 source:c:\_git_\frost_and_flame\src\screen_rumble.cpp
+	"screen_rumble.hpp"
+
+1320313248 source:c:\_git_\frost_and_flame\src\shields.cpp
+	<iostream>
+	<fstream>
+	<stdio.h>
+	<stdlib.h>
+	<string>
+	"load_resources.hpp"
+	"shields.hpp"
+	"game.hpp"
+
+1320852813 source:c:\_git_\frost_and_flame\src\support_ships.cpp
+	"core/core.hpp"
+	"support_ships.hpp"
+	"load_resources.hpp"
+	"game.hpp"
+	"misc.hpp"
+
+1320576629 source:c:\_git_\frost_and_flame\src\thrusters.cpp
+	<iostream>
+	<fstream>
+	<stdio.h>
+	<stdlib.h>
+	<string>
+	"load_resources.hpp"
+	"thrusters.hpp"
+	"game.hpp"
+
+1319952588 source:c:\_git_\frost_and_flame\src\waves.cpp
+	"core/core.hpp"
+	"waves.hpp"
+	"load_resources.hpp"
+	"game.hpp"
+	"misc.hpp"
+
+1321102096 source:c:\_git_\frost_and_flame\src\icon.rc
+

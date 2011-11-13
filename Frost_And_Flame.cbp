@@ -60,8 +60,54 @@
 		<Linker>
 			<Add directory='&quot;C:\Program Files (x86)\CodeBlocks\MinGW\lib&quot;' />
 		</Linker>
+		<Unit filename="src\core\background.cpp" />
+		<Unit filename="src\core\background.hpp" />
+		<Unit filename="src\core\config.cpp" />
+		<Unit filename="src\core\config.hpp" />
+		<Unit filename="src\core\core.cpp" />
+		<Unit filename="src\core\core.hpp" />
+		<Unit filename="src\core\font.cpp" />
+		<Unit filename="src\core\font.hpp" />
+		<Unit filename="src\core\graphics.cpp" />
+		<Unit filename="src\core\graphics.hpp" />
+		<Unit filename="src\core\io.cpp" />
+		<Unit filename="src\core\io.hpp" />
+		<Unit filename="src\core\log.cpp" />
+		<Unit filename="src\core\log.hpp" />
+		<Unit filename="src\core\menu.cpp" />
+		<Unit filename="src\core\menu.hpp" />
+		<Unit filename="src\core\music.cpp" />
+		<Unit filename="src\core\music.hpp" />
+		<Unit filename="src\core\network.cpp" />
+		<Unit filename="src\core\network.hpp" />
+		<Unit filename="src\core\particles.cpp" />
+		<Unit filename="src\core\particles.hpp" />
+		<Unit filename="src\core\physics.cpp" />
+		<Unit filename="src\core\physics.hpp" />
+		<Unit filename="src\core\savegame.cpp" />
+		<Unit filename="src\core\savegame.hpp" />
+		<Unit filename="src\core\sound.cpp" />
+		<Unit filename="src\core\sound.hpp" />
+		<Unit filename="src\core\textures.cpp" />
+		<Unit filename="src\core\textures.hpp" />
+		<Unit filename="src\core\timer.cpp" />
+		<Unit filename="src\core\timer.hpp" />
+		<Unit filename="src\game.cpp" />
+		<Unit filename="src\game.hpp" />
+		<Unit filename="src\icon.rc">
+			<Option compilerVar="WINDRES" />
+		</Unit>
+		<Unit filename="src\language.cpp" />
+		<Unit filename="src\language.hpp" />
+		<Unit filename="src\load_resources.cpp" />
+		<Unit filename="src\load_resources.hpp" />
 		<Unit filename="src\main.cpp" />
 		<Unit filename="src\main.hpp" />
+		<Unit filename="src\menu_system.cpp" />
+		<Unit filename="src\menu_system.hpp" />
+		<Unit filename="src\misc.cpp" />
+		<Unit filename="src\misc.hpp" />
+		<Unit filename="src\save_data.cpp" />
 		<Extensions>
 			<code_completion />
 			<envvars />

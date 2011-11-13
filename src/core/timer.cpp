@@ -22,23 +22,40 @@
  * @date 2011-11-11
  */
 
-#ifndef MAIN_H
-#define MAIN_H
+#include "SDL/SDL.h"
+#include "timer.hpp"
 
-/* VERSION DEFINITIONS */
-#define VER_STRING	        "0.0.01.0000"
-#define VER_MAJOR	        0
-#define VER_MINOR	        0
-#define VER_RELEASE	        01
-#define VER_BUILD	        0000
-#define COMPANY_NAME	    "www.physhexgames.co.nr"
-#define FILE_VERSION	    "V0.01"
-#define FILE_DESCRIPTION	"Frost And Flame V0.01"
-#define INTERNAL_NAME	    "Frost And Flame"
-#define LEGAL_COPYRIGHT	    "GPL V3.0"
-#define LEGAL_TRADEMARKS	"Frost And Flame is copyright Paul Wortmann"
-#define ORIGINAL_FILENAME	"Frost_And_Flame.exe"
-#define PRODUCT_NAME	    "Frost And Flame"
-#define PRODUCT_VERSION	    "V0.01"
+timer_class::timer_class()
+{
+	running = false;
+	startticks = 0;
+}
 
-#endif //MAIN_H
+timer_class::~timer_class()
+{
+}
+
+int timer_class::start()
+{
+	if(running == false)
+	{
+		running = true;
+		startticks = SDL_GetTicks();
+	}
+	return 0;
+}
+int timer_class::stop()
+{
+	if(running == true)
+	{
+		running = false;
+	}
+	return 0;
+}
+
+int timer_class::getticks()
+{
+    if (running == true) return SDL_GetTicks() - startticks;
+    else return 0;
+}
+

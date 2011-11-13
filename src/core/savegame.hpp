@@ -22,23 +22,21 @@
  * @date 2011-11-11
  */
 
-#ifndef MAIN_H
-#define MAIN_H
+#ifndef SAVEGAME_H
+#define SAVEGAME_H
 
-/* VERSION DEFINITIONS */
-#define VER_STRING	        "0.0.01.0000"
-#define VER_MAJOR	        0
-#define VER_MINOR	        0
-#define VER_RELEASE	        01
-#define VER_BUILD	        0000
-#define COMPANY_NAME	    "www.physhexgames.co.nr"
-#define FILE_VERSION	    "V0.01"
-#define FILE_DESCRIPTION	"Frost And Flame V0.01"
-#define INTERNAL_NAME	    "Frost And Flame"
-#define LEGAL_COPYRIGHT	    "GPL V3.0"
-#define LEGAL_TRADEMARKS	"Frost And Flame is copyright Paul Wortmann"
-#define ORIGINAL_FILENAME	"Frost_And_Flame.exe"
-#define PRODUCT_NAME	    "Frost And Flame"
-#define PRODUCT_VERSION	    "V0.01"
+class save_game_class
+{
+    private:
+        std::string save_file_name;
+    public:
+              save_game_class(void);
+             ~save_game_class(void);
+        bool  Assign_File(std::string file_name);
+        bool  Save(void);
+        bool  Load(void);
+        bool  Delete(void);
+        bool  File_Exists(void);
+};
 
-#endif //MAIN_H
+#endif //SAVEGAME_H

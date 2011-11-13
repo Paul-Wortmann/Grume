@@ -22,23 +22,24 @@
  * @date 2011-11-11
  */
 
-#ifndef MAIN_H
-#define MAIN_H
+#ifndef MISC_H
+#define MISC_H
 
-/* VERSION DEFINITIONS */
-#define VER_STRING	        "0.0.01.0000"
-#define VER_MAJOR	        0
-#define VER_MINOR	        0
-#define VER_RELEASE	        01
-#define VER_BUILD	        0000
-#define COMPANY_NAME	    "www.physhexgames.co.nr"
-#define FILE_VERSION	    "V0.01"
-#define FILE_DESCRIPTION	"Frost And Flame V0.01"
-#define INTERNAL_NAME	    "Frost And Flame"
-#define LEGAL_COPYRIGHT	    "GPL V3.0"
-#define LEGAL_TRADEMARKS	"Frost And Flame is copyright Paul Wortmann"
-#define ORIGINAL_FILENAME	"Frost_And_Flame.exe"
-#define PRODUCT_NAME	    "Frost And Flame"
-#define PRODUCT_VERSION	    "V0.01"
+int          seed_rand(void);
+double       random_double(void);
+int          random(int range);
+int          random_dec(void);
+int          random_cen(void);
+int          random_int(void);
+float        random_GLcoord(void);
+std::string  const_char_to_string(const char *const_char_in);
+std::string  int_to_string(int int_in);
+bool         file_exists(const char* file_name);
+int          round_double(double x);
+int          nextpoweroftwo(int x);
+std::wstring StringToWString(const std::string& s);
+std::string  WStringToString(const std::wstring& s);
 
-#endif //MAIN_H
+#endif //MISC_H
+
+

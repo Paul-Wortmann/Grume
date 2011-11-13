@@ -1,7 +1,12 @@
 Art resources:
 --------------
+--------------
 
-
+Main icon
+---------
+I derived the main icon from an icons pack by "Ails".
+GPL 2.0, GPL 3.0, CC-BY-SA 3.0
+http://opengameart.org/content/420-pixel-art-icons-for-medievalfantasy-rpg
 
 Armour_00 - Armour_05
 ---------------------

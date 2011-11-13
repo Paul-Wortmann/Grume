@@ -22,23 +22,28 @@
  * @date 2011-11-11
  */
 
-#ifndef MAIN_H
-#define MAIN_H
+#include "core.hpp"
+#include "sound.hpp"
 
-/* VERSION DEFINITIONS */
-#define VER_STRING	        "0.0.01.0000"
-#define VER_MAJOR	        0
-#define VER_MINOR	        0
-#define VER_RELEASE	        01
-#define VER_BUILD	        0000
-#define COMPANY_NAME	    "www.physhexgames.co.nr"
-#define FILE_VERSION	    "V0.01"
-#define FILE_DESCRIPTION	"Frost And Flame V0.01"
-#define INTERNAL_NAME	    "Frost And Flame"
-#define LEGAL_COPYRIGHT	    "GPL V3.0"
-#define LEGAL_TRADEMARKS	"Frost And Flame is copyright Paul Wortmann"
-#define ORIGINAL_FILENAME	"Frost_And_Flame.exe"
-#define PRODUCT_NAME	    "Frost And Flame"
-#define PRODUCT_VERSION	    "V0.01"
+sound_class::sound_class()
+{
+    sound_class::sound_channel = -1;
+};
 
-#endif //MAIN_H
+sound_class::~sound_class()
+{
+    Mix_HaltChannel(-1);
+    Mix_FreeChunk(sound_class::sound_data);
+};
+
+void sound_class::load(std::string file_name, int index_number)
+{
+    sound_class::ref_number =  index_number;
+    sound_class::sound_data = Mix_LoadWAV(file_name.c_str());
+};
+
+void sound_class::play(void)
+{
+    sound_class::sound_channel = Mix_PlayChannel(-1, sound_data, 0);
+};
+
