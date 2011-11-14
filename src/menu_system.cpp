@@ -45,9 +45,9 @@ extern  game_type                game_o;
 int init_menu   (void)
 {
     //------ setup menu background -----------
-    game.background.set_data ( 1, 1, 0, 1.0f, 0.0f, 0.0005f, 0.00040f, texture.background_01.ref_number);
-    game.background.set_data ( 2, 1, 1, 0.0f, 1.0f, 0.0010f, 0.00095f, texture.background_00.ref_number);
-    game.background.set_movement_type(BOUNCE);
+    game.background.set_data ( 1, 1, 0, 1.0f, 0.0f, 0.0010f, 0.00065f, texture.background_01.ref_number);
+    game.background.set_data ( 2, 1, 1, 0.0f, 1.0f, 0.0000f, 0.00000f, texture.background_00.ref_number);
+    game.background.set_movement_type(FRONT_SCROLL);
     //------ setup "main" menu -----------
     main_menu.set_menu_title(game_o.language.text.main_menu);
     main_menu.set_keyboard_delay(16);
@@ -58,9 +58,9 @@ int init_menu   (void)
     main_menu.set_image_background(texture.background_02.ref_number);
     main_menu.set_button_zoom(true,0.04f,0.005f);
     main_menu.set_button_images(texture.button_normal.ref_number,texture.button_highlighted.ref_number,texture.button_disabled.ref_number,texture.button_disabled.ref_number,texture.selection_box.ref_number,texture.slider_button_normal.ref_number,texture.slider_button_highlighted.ref_number,texture.arrow_button_normal.ref_number,texture.arrow_button_highlighted.ref_number,texture.arrow_button_disabled.ref_number);
-    main_menu.set_color_normal(128,128,255,255);
-    main_menu.set_color_highlighted(192,192,255,255);
-    main_menu.set_color_disabled(064,064,128,128);
+    main_menu.set_color_normal(128,128,128,255);
+    main_menu.set_color_highlighted(192,192,192,255);
+    main_menu.set_color_disabled(064,064,064,128);
     main_menu.set_number_of_buttons(7);
     main_menu.set_button_data  ( 1,game_o.language.text.new_game);
     main_menu.set_button_data  ( 2,game_o.language.text.load_game);
@@ -401,7 +401,7 @@ int process_menu(void)
     };
     // ------------------- Load menu ------------
     activated_button = -1;
-    if (game.menu_level == 5)
+    if (game.menu_level == 3)
     {
         activated_button = load_menu.process();
         switch (activated_button)
@@ -543,7 +543,7 @@ int process_menu(void)
     };
     // ------------------- Save menu ------------
     activated_button = -1;
-    if (game.menu_level == 6)
+    if (game.menu_level == 4)
     {
         activated_button = save_menu.process();
         switch (activated_button)
@@ -657,7 +657,7 @@ int process_menu(void)
     };
     // ------------------- Options Menu ------------
     activated_button = -1;
-    if (game.menu_level == 7)
+    if (game.menu_level == 5)
     {
         options_menu.set_toggle_data(4,game.config.Display_Fullscreen);
         activated_button = options_menu.process();
@@ -814,7 +814,7 @@ int process_menu(void)
     };
     // ------------------- Game Over Menu ------------
     activated_button = -1;
-    if (game.menu_level == 8)
+    if (game.menu_level == 6)
     {
         activated_button = game_over_menu.process();
         switch (activated_button)
@@ -873,7 +873,7 @@ int process_menu(void)
     };
     // ------------------- Pause Menu ------------
     activated_button = -1;
-    if (game.menu_level == 11)
+    if (game.menu_level == 7)
     {
         activated_button = pause_menu.process();
         switch (activated_button)

@@ -294,10 +294,10 @@ void button_class::draw(void)
         switch(button_class::get_font())
         {
             case 1:
-                if ((!button_class::enabled) && ( button_class::highlighted)) font.font_1.Write(button_class::disabled_color_r   ,button_class::disabled_color_g   ,button_class::disabled_color_b   ,button_class::disabled_color_a   ,button_class::pos_x-button_class::width/2.4,button_class::pos_y-button_class::height/3,1.7f+(button_class::zoom_size/2),12.0f+(button_class::zoom_size/2),button_class::label);
-                if ((!button_class::enabled) && (!button_class::highlighted)) font.font_1.Write(button_class::disabled_color_r   ,button_class::disabled_color_g   ,button_class::disabled_color_b   ,button_class::disabled_color_a   ,button_class::pos_x-button_class::width/2.4,button_class::pos_y-button_class::height/3,1.7f+(button_class::zoom_size/2),12.0f+(button_class::zoom_size/2),button_class::label);
-                if (( button_class::enabled) && ( button_class::highlighted)) font.font_1.Write(button_class::highlighted_color_r,button_class::highlighted_color_g,button_class::highlighted_color_b,button_class::highlighted_color_a,button_class::pos_x-button_class::width/2.4,button_class::pos_y-button_class::height/3,1.7f+(button_class::zoom_size/2),12.0f+(button_class::zoom_size/2),button_class::label);
-                if (( button_class::enabled) && (!button_class::highlighted)) font.font_1.Write(button_class::normal_color_r     ,button_class::normal_color_g     ,button_class::normal_color_b     ,button_class::normal_color_a     ,button_class::pos_x-button_class::width/2.4,button_class::pos_y-button_class::height/3,1.7f+(button_class::zoom_size/2),12.0f+(button_class::zoom_size/2),button_class::label);
+                if ((!button_class::enabled) && ( button_class::highlighted)) font.font_1.Write(button_class::disabled_color_r   ,button_class::disabled_color_g   ,button_class::disabled_color_b   ,button_class::disabled_color_a   ,button_class::pos_x-button_class::width/2.4,button_class::pos_y-button_class::height/3,1.8f+(button_class::zoom_size/2),14.0f+(button_class::zoom_size/2),button_class::label);
+                if ((!button_class::enabled) && (!button_class::highlighted)) font.font_1.Write(button_class::disabled_color_r   ,button_class::disabled_color_g   ,button_class::disabled_color_b   ,button_class::disabled_color_a   ,button_class::pos_x-button_class::width/2.4,button_class::pos_y-button_class::height/3,1.8f+(button_class::zoom_size/2),14.0f+(button_class::zoom_size/2),button_class::label);
+                if (( button_class::enabled) && ( button_class::highlighted)) font.font_1.Write(button_class::highlighted_color_r,button_class::highlighted_color_g,button_class::highlighted_color_b,button_class::highlighted_color_a,button_class::pos_x-button_class::width/2.4,button_class::pos_y-button_class::height/3,1.8f+(button_class::zoom_size/2),14.0f+(button_class::zoom_size/2),button_class::label);
+                if (( button_class::enabled) && (!button_class::highlighted)) font.font_1.Write(button_class::normal_color_r     ,button_class::normal_color_g     ,button_class::normal_color_b     ,button_class::normal_color_a     ,button_class::pos_x-button_class::width/2.4,button_class::pos_y-button_class::height/3,1.8f+(button_class::zoom_size/2),14.0f+(button_class::zoom_size/2),button_class::label);
             break;
 /*
             case 2:
@@ -308,10 +308,10 @@ void button_class::draw(void)
             break;
 */
             default:
-                if ((!button_class::enabled) && ( button_class::highlighted)) font.font_1.Write(button_class::disabled_color_r   ,button_class::disabled_color_g   ,button_class::disabled_color_b   ,button_class::disabled_color_a   ,button_class::pos_x-button_class::width/2.4,button_class::pos_y-button_class::height/3,1.7f+(button_class::zoom_size/2),12.0f+(button_class::zoom_size/2),button_class::label);
-                if ((!button_class::enabled) && (!button_class::highlighted)) font.font_1.Write(button_class::disabled_color_r   ,button_class::disabled_color_g   ,button_class::disabled_color_b   ,button_class::disabled_color_a   ,button_class::pos_x-button_class::width/2.4,button_class::pos_y-button_class::height/3,1.7f+(button_class::zoom_size/2),12.0f+(button_class::zoom_size/2),button_class::label);
-                if (( button_class::enabled) && ( button_class::highlighted)) font.font_1.Write(button_class::highlighted_color_r,button_class::highlighted_color_g,button_class::highlighted_color_b,button_class::highlighted_color_a,button_class::pos_x-button_class::width/2.4,button_class::pos_y-button_class::height/3,1.7f+(button_class::zoom_size/2),12.0f+(button_class::zoom_size/2),button_class::label);
-                if (( button_class::enabled) && (!button_class::highlighted)) font.font_1.Write(button_class::normal_color_r     ,button_class::normal_color_g     ,button_class::normal_color_b     ,button_class::normal_color_a     ,button_class::pos_x-button_class::width/2.4,button_class::pos_y-button_class::height/3,1.7f+(button_class::zoom_size/2),12.0f+(button_class::zoom_size/2),button_class::label);
+                if ((!button_class::enabled) && ( button_class::highlighted)) font.font_1.Write(button_class::disabled_color_r   ,button_class::disabled_color_g   ,button_class::disabled_color_b   ,button_class::disabled_color_a   ,button_class::pos_x-button_class::width/2.4,button_class::pos_y-button_class::height/3,1.8f+(button_class::zoom_size/2),14.0f+(button_class::zoom_size/2),button_class::label);
+                if ((!button_class::enabled) && (!button_class::highlighted)) font.font_1.Write(button_class::disabled_color_r   ,button_class::disabled_color_g   ,button_class::disabled_color_b   ,button_class::disabled_color_a   ,button_class::pos_x-button_class::width/2.4,button_class::pos_y-button_class::height/3,1.8f+(button_class::zoom_size/2),14.0f+(button_class::zoom_size/2),button_class::label);
+                if (( button_class::enabled) && ( button_class::highlighted)) font.font_1.Write(button_class::highlighted_color_r,button_class::highlighted_color_g,button_class::highlighted_color_b,button_class::highlighted_color_a,button_class::pos_x-button_class::width/2.4,button_class::pos_y-button_class::height/3,1.8f+(button_class::zoom_size/2),14.0f+(button_class::zoom_size/2),button_class::label);
+                if (( button_class::enabled) && (!button_class::highlighted)) font.font_1.Write(button_class::normal_color_r     ,button_class::normal_color_g     ,button_class::normal_color_b     ,button_class::normal_color_a     ,button_class::pos_x-button_class::width/2.4,button_class::pos_y-button_class::height/3,1.8f+(button_class::zoom_size/2),14.0f+(button_class::zoom_size/2),button_class::label);
             break;
         }
     };
@@ -392,7 +392,7 @@ void button_class::draw(void)
         switch(button_class::get_font()) //write selected level name
         {
             case 1:
-                font.font_1.Write(button_class::highlighted_color_r,button_class::highlighted_color_g,button_class::highlighted_color_b,button_class::highlighted_color_a,((button_class::arrow_width/3) *4)+button_class::arrow_left_pos_x-(button_class::arrow_width/2)-(button_class::get_zoom_size_counter()/2),button_class::arrow_left_pos_y-((button_class::arrow_height/5)*4)-(button_class::get_zoom_size_counter()/2),1.7f+(button_class::zoom_size/2),12.0f+(button_class::zoom_size/2),temp_label);
+                font.font_1.Write(button_class::highlighted_color_r,button_class::highlighted_color_g,button_class::highlighted_color_b,button_class::highlighted_color_a,((button_class::arrow_width/3) *4)+button_class::arrow_left_pos_x-(button_class::arrow_width/2)-(button_class::get_zoom_size_counter()/2),button_class::arrow_left_pos_y-((button_class::arrow_height/5)*4)-(button_class::get_zoom_size_counter()/2),1.8f+(button_class::zoom_size/2),14.0f+(button_class::zoom_size/2),temp_label);
             break;
 /*
             case 2:
@@ -400,7 +400,7 @@ void button_class::draw(void)
             break;
 */
             default:
-                font.font_1.Write(button_class::highlighted_color_r,button_class::highlighted_color_g,button_class::highlighted_color_b,button_class::highlighted_color_a,((button_class::arrow_width/3) *4)+button_class::arrow_left_pos_x-(button_class::arrow_width/2)-(button_class::get_zoom_size_counter()/2),button_class::arrow_left_pos_y-((button_class::arrow_height/5)*4)-(button_class::get_zoom_size_counter()/2),1.7f+(button_class::zoom_size/2),12.0f+(button_class::zoom_size/2),temp_label);
+                font.font_1.Write(button_class::highlighted_color_r,button_class::highlighted_color_g,button_class::highlighted_color_b,button_class::highlighted_color_a,((button_class::arrow_width/3) *4)+button_class::arrow_left_pos_x-(button_class::arrow_width/2)-(button_class::get_zoom_size_counter()/2),button_class::arrow_left_pos_y-((button_class::arrow_height/5)*4)-(button_class::get_zoom_size_counter()/2),1.8f+(button_class::zoom_size/2),14.0f+(button_class::zoom_size/2),temp_label);
             break;
         };
     }
@@ -435,7 +435,7 @@ void button_class::draw(void)
         switch(button_class::get_font()) //write selected level name
         {
             case 1:
-                font.font_1.Write(button_class::highlighted_color_r,button_class::highlighted_color_g,button_class::highlighted_color_b,button_class::highlighted_color_a,button_class::pos_x-button_class::width/2.4,button_class::pos_y-button_class::height/3,1.7f+(button_class::zoom_size/2),12.0f+(button_class::zoom_size/2),button_class::label);
+                font.font_1.Write(button_class::highlighted_color_r,button_class::highlighted_color_g,button_class::highlighted_color_b,button_class::highlighted_color_a,button_class::pos_x-button_class::width/2.4,button_class::pos_y-button_class::height/3,1.8f+(button_class::zoom_size/2),14.0f+(button_class::zoom_size/2),button_class::label);
             break;
 /*
             case 2:
@@ -443,7 +443,7 @@ void button_class::draw(void)
             break;
 */
             default:
-                font.font_1.Write(button_class::highlighted_color_r,button_class::highlighted_color_g,button_class::highlighted_color_b,button_class::highlighted_color_a,button_class::pos_x-button_class::width/2.4,button_class::pos_y-button_class::height/3,1.7f+(button_class::zoom_size/2),12.0f+(button_class::zoom_size/2),button_class::label);
+                font.font_1.Write(button_class::highlighted_color_r,button_class::highlighted_color_g,button_class::highlighted_color_b,button_class::highlighted_color_a,button_class::pos_x-button_class::width/2.4,button_class::pos_y-button_class::height/3,1.8f+(button_class::zoom_size/2),14.0f+(button_class::zoom_size/2),button_class::label);
             break;
         };
     }
@@ -466,7 +466,7 @@ void button_class::draw(void)
         switch(button_class::get_font()) //write selected level name
         {
             case 1:
-                font.font_1.Write(button_class::highlighted_color_r,button_class::highlighted_color_g,button_class::highlighted_color_b,button_class::highlighted_color_a,button_class::pos_x-button_class::width/2.4,button_class::pos_y+button_class::height/3,1.7f+(button_class::zoom_size/2),12.0f+(button_class::zoom_size/2),button_class::label);
+                font.font_1.Write(button_class::highlighted_color_r,button_class::highlighted_color_g,button_class::highlighted_color_b,button_class::highlighted_color_a,button_class::pos_x-button_class::width/2.4,button_class::pos_y+button_class::height/3,1.8f+(button_class::zoom_size/2),14.0f+(button_class::zoom_size/2),button_class::label);
             break;
 /*
             case 2:
@@ -474,7 +474,7 @@ void button_class::draw(void)
             break;
 */
             default:
-                font.font_1.Write(button_class::highlighted_color_r,button_class::highlighted_color_g,button_class::highlighted_color_b,button_class::highlighted_color_a,button_class::pos_x-button_class::width/2.4,button_class::pos_y+button_class::height/3,1.7f+(button_class::zoom_size/2),12.0f+(button_class::zoom_size/2),button_class::label);
+                font.font_1.Write(button_class::highlighted_color_r,button_class::highlighted_color_g,button_class::highlighted_color_b,button_class::highlighted_color_a,button_class::pos_x-button_class::width/2.4,button_class::pos_y+button_class::height/3,1.8f+(button_class::zoom_size/2),14.0f+(button_class::zoom_size/2),button_class::label);
             break;
         };
     }
@@ -992,7 +992,7 @@ void menu_class::draw(void)
     switch(menu_class::menu_font) // title text
     {
         case 1:
-            font.font_1.Write(menu_class::highlighted_color_r,menu_class::highlighted_color_g,menu_class::highlighted_color_b,menu_class::highlighted_color_a,menu_class::title_pos_x-menu_class::title_width/2.4,menu_class::title_pos_y-menu_class::title_height/3,1.7f,12.0f,menu_class::title_label);
+            font.font_1.Write(menu_class::highlighted_color_r,menu_class::highlighted_color_g,menu_class::highlighted_color_b,menu_class::highlighted_color_a,menu_class::title_pos_x-menu_class::title_width/2.4,menu_class::title_pos_y-menu_class::title_height/4,1.7f,18.0f,menu_class::title_label);
         break;
 /*
         case 2:
@@ -1439,8 +1439,8 @@ void  menu_class::set_close_button_data(int in, int ih)
     float h = 0.0f;
     w = (menu_class::button_spacing / 100.0f) * 60.0f;
     h = (menu_class::button_spacing / 100.0f) * 60.0f;
-    x = (menu_class::pos_x+(menu_class::width /2))-((w/5)*4);
-    y = (menu_class::pos_y+(menu_class::height/2))-((h/5)*4);
+    x = (menu_class::pos_x+(menu_class::width /2))-((w/100)*58);
+    y = (menu_class::pos_y+(menu_class::height/2))-((h/100)*65);
     z = menu_class::pos_z;
     menu_class::close_button.set_button_type(CLOSE);
     menu_class::close_button.set_data(x,y,z,w,h,in,ih);
@@ -1469,8 +1469,8 @@ void  menu_class::set_button_disabled_text_label(std::string disabled_text_label
 void  menu_class::set_title_data(std::string menu_title)
 {
     menu_class::title_label  = menu_title;
-    menu_class::title_height = ((menu_class::button_spacing/3)*2);
-    menu_class::title_width  = (menu_class::width / 100.0f) * 90.0f;
+    menu_class::title_height = ((menu_class::button_spacing/30)*2);
+    menu_class::title_width  = (menu_class::width / 100.0f) * 40.0f;
     menu_class::title_pos_x  = menu_class::pos_x;
     menu_class::title_pos_y  = menu_class::pos_y+(menu_class::height/2)-((menu_class::button_spacing/2));
     menu_class::title_pos_z  = menu_class::pos_z;
@@ -1546,8 +1546,8 @@ void  menu_class::set_image_arrow_disabled(int image_ref_no)
 void  menu_class::set_button_images(int in, int ih, int id, int icd, int is, int isn, int ish, int ian, int iah, int iad)
 {
     menu_class::button_image_normal             = in;
-    menu_class::button_image_highlighted        = id;
-    menu_class::button_image_disabled           = ih;
+    menu_class::button_image_highlighted        = ih;
+    menu_class::button_image_disabled           = id;
     menu_class::button_image_choice_disabled    = icd;
     menu_class::button_image_selector           = is;
     menu_class::button_image_slider_normal      = isn;

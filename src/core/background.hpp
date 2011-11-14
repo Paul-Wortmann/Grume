@@ -28,6 +28,7 @@
 
 #define BOUNCE  1
 #define SCROLL  2
+#define FRONT_SCROLL  3
 
 const int MAX_LAYERS = 4;
 

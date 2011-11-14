@@ -50,7 +50,7 @@ extern menu_class        next_level_menu;
 extern menu_class        outro_menu;
 
 const char App_Name[] = ("Frost and Flame V0.00 - www.physhexgames.co.nr");
-const char App_Icon[] = "data/icon.bmp"; fix this icon!!!
+const char App_Icon[] = "data/textures/icon.bmp";
 
 Uint32                   colorkey;
 SDL_Surface             *App_Icon_Surface;
@@ -64,9 +64,9 @@ int main(int argc, char *argv[])
     game.log.File_Set("Frost_And_Flame.log");
     game.log.File_Clear();
 
-    game.log.File_Write("------------------------");
-    game.log.File_Write("| Frost_And_Flame V1.0 |");
-    game.log.File_Write("------------------------\n");
+    game.log.File_Write("-------------------------");
+    game.log.File_Write("| Frost_And_Flame V0.00 |");
+    game.log.File_Write("-------------------------\n");
     game.log.File_Write("Starting up!");
     game.log.File_Write("");
     game.log.File_Write("------------------\n");
@@ -112,7 +112,7 @@ int main(int argc, char *argv[])
     game.graphics.init_gl(game.config.Display_X_Resolution,game.config.Display_Y_Resolution);
     game.log.File_Write("Seeding random...");
     seed_rand();
-    game.log.File_Write("Initializing font...");
+    game.log.File_Write("Initializing font system...");
     TTF_Init();
     game.log.File_Write("Loading resources...");
     loading_screen_display("data/textures/loading_screen.png");

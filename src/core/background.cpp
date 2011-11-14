@@ -169,6 +169,17 @@ void background_class::process           (void)
             if (background_class::layer[layer_count].pos_x <= -4.0f) background_class::layer[layer_count].pos_x = 4.0f;
         }
     }
+    if (background_class::get_movement_type() == FRONT_SCROLL)
+    {
+        for(int layer_count = 1; layer_count < MAX_LAYERS+1; layer_count++)
+        {
+            if (layer_count != 2)
+            {
+                background_class::layer[layer_count].pos_x -= background_class::layer[layer_count].scroll_rate_x;
+                if (background_class::layer[layer_count].pos_x <= -4.0f) background_class::layer[layer_count].pos_x = 4.0f;
+            }
+        }
+    }
 };
 
 void background_class::draw             (void)
@@ -178,8 +189,27 @@ void background_class::draw             (void)
     {
         if(background_class::layer[layer_count].active)
         {
-            if (background_class::layer[layer_count].image == texture.background_00.ref_number)      texture.background_00.draw     (true,background_class::layer[layer_count].pos_x,background_class::layer[layer_count].pos_y,z_pos,4.0f,4.0f);
-            if (background_class::layer[layer_count].image == texture.background_01.ref_number)      texture.background_01.draw     (true,background_class::layer[layer_count].pos_x,background_class::layer[layer_count].pos_y,z_pos,4.0f,4.0f);
+            if (background_class::get_movement_type() == BOUNCE)
+            {
+                if (background_class::layer[layer_count].image == texture.background_00.ref_number)      texture.background_00.draw     (true,background_class::layer[layer_count].pos_x,background_class::layer[layer_count].pos_y,z_pos,4.0f,4.0f);
+                if (background_class::layer[layer_count].image == texture.background_01.ref_number)      texture.background_01.draw     (true,background_class::layer[layer_count].pos_x,background_class::layer[layer_count].pos_y,z_pos,4.0f,4.0f);
+            }
+            if (background_class::get_movement_type() == SCROLL)
+            {
+                if (background_class::layer[layer_count].image == texture.background_00.ref_number)      texture.background_00.draw     (true,background_class::layer[layer_count].pos_x,background_class::layer[layer_count].pos_y,z_pos,4.0f,4.0f);
+                if (background_class::layer[layer_count].image == texture.background_01.ref_number)      texture.background_01.draw     (true,background_class::layer[layer_count].pos_x,background_class::layer[layer_count].pos_y,z_pos,4.0f,4.0f);
+            }
+            if (background_class::get_movement_type() == FRONT_SCROLL)
+            {
+                if (background_class::layer[4].image == texture.background_00.ref_number)      texture.background_00.draw     (true,background_class::layer[2].pos_x,background_class::layer[4].pos_y,z_pos,4.0f,4.0f);
+                if (background_class::layer[4].image == texture.background_01.ref_number)      texture.background_01.draw     (true,background_class::layer[2].pos_x,background_class::layer[4].pos_y,z_pos,4.0f,4.0f);
+                if (background_class::layer[3].image == texture.background_00.ref_number)      texture.background_00.draw     (true,background_class::layer[2].pos_x,background_class::layer[3].pos_y,z_pos,4.0f,4.0f);
+                if (background_class::layer[3].image == texture.background_01.ref_number)      texture.background_01.draw     (true,background_class::layer[2].pos_x,background_class::layer[3].pos_y,z_pos,4.0f,4.0f);
+                if (background_class::layer[2].image == texture.background_00.ref_number)      texture.background_00.draw     (true,background_class::layer[2].pos_x,background_class::layer[2].pos_y-1.0f,z_pos,2.0f,2.0f);
+                if (background_class::layer[2].image == texture.background_01.ref_number)      texture.background_01.draw     (true,background_class::layer[2].pos_x,background_class::layer[2].pos_y-1.0f,z_pos,2.0f,2.0f);
+                if (background_class::layer[1].image == texture.background_00.ref_number)      texture.background_00.draw     (true,background_class::layer[1].pos_x,background_class::layer[1].pos_y,z_pos,4.0f,4.0f);
+                if (background_class::layer[1].image == texture.background_01.ref_number)      texture.background_01.draw     (true,background_class::layer[1].pos_x,background_class::layer[1].pos_y,z_pos,4.0f,4.0f);
+            }
         }
     }
 }
