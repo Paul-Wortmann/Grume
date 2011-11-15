@@ -49,6 +49,7 @@ struct texture_type
     texture_class background_02;
     texture_class background_03;
 
+    texture_class logo;
     texture_class button_normal;
     texture_class button_highlighted;
     texture_class button_disabled;

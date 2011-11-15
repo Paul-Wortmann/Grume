@@ -923,6 +923,7 @@ int diplay_menu (void)
     {
         game.core.background.draw();
     }
+    game.texture.logo.draw(true,0.0f,0.9f,0.001f,1.6f,0.2f);
     game.font.font_1.Write(255,255,255,64,-0.98f,-0.98f,2,16,"www.PhysHexGames.co.nr");
 /*-----------------------------------------------------------------------------*/
    if (game.core.menu_level ==  7) //Pause screen

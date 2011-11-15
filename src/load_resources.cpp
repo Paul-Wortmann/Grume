@@ -40,8 +40,8 @@ bool load_resources(void)
 bool load_sounds(void)
 {
     int sfx_count = 0;
-    game.sound.menu_move_00.load    ("data/sounds/menu_move_00.wav",sfx_count)    ;sfx_count++;
-    game.sound.menu_select_00.load  ("data/sounds/menu_select_00.wav",sfx_count)  ;sfx_count++;
+    game.sound.menu_move_00.load    ("data/sound/menu_move_00.wav",sfx_count)    ;sfx_count++;
+    game.sound.menu_select_00.load  ("data/sound/menu_select_00.wav",sfx_count)  ;sfx_count++;
 
     game.core.log.File_Write("Sound files loaded -> ",sfx_count);
     return(true);
@@ -50,7 +50,7 @@ bool load_sounds(void)
 bool load_music(void)
 {
     int music_count = 0;
-    game.music.menu_00.load("data/music/menu_00.xm",music_count);music_count++;
+    game.music.menu_00.load("data/music/menu_00.s3m",music_count);music_count++;
 
     game.core.log.File_Write("Music files loaded -> ",music_count);
     return(true);
@@ -64,6 +64,7 @@ bool load_textures(void)
     game.texture.background_02.load_image("data/textures/menu/background_02.png",texture_count);texture_count++;
     game.texture.background_03.load_image("data/textures/menu/background_03.png",texture_count);texture_count++;
 
+    game.texture.logo.load_image                     ("data/textures/menu/logo.png"                     ,texture_count);texture_count++;
     game.texture.button_normal.load_image            ("data/textures/menu/button_normal.png"            ,texture_count);texture_count++;
     game.texture.button_highlighted.load_image       ("data/textures/menu/button_highlighted.png"       ,texture_count);texture_count++;
     game.texture.button_disabled.load_image          ("data/textures/menu/button_disabled.png"          ,texture_count);texture_count++;
@@ -140,6 +141,7 @@ bool draw_texture(bool r, int texture_number, float x, float y, float z, float w
     if (texture_number == game.texture.background_02.ref_number) game.texture.background_02.draw(r,x,y,z,w,h,angle);
     if (texture_number == game.texture.background_03.ref_number) game.texture.background_03.draw(r,x,y,z,w,h,angle);
 
+    if (texture_number == game.texture.logo.ref_number)                      game.texture.logo.draw                     (r,x,y,z,w,h,angle);
     if (texture_number == game.texture.button_normal.ref_number)             game.texture.button_normal.draw            (r,x,y,z,w,h,angle);
     if (texture_number == game.texture.button_highlighted.ref_number)        game.texture.button_highlighted.draw       (r,x,y,z,w,h,angle);
     if (texture_number == game.texture.button_disabled.ref_number)           game.texture.button_disabled.draw          (r,x,y,z,w,h,angle);
