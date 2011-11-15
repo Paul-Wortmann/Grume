@@ -22,7 +22,6 @@
  * @date 2011-11-11
  */
 
-#include "core.hpp"
 #include "sound.hpp"
 
 sound_class::sound_class()

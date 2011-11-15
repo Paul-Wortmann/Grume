@@ -23,29 +23,21 @@
  */
 
 #include <SDL/SDL.h>
-#include "core/core.hpp"
-#include "load_resources.hpp"
 #include "menu_system.hpp"
 #include "game.hpp"
 #include "misc.hpp"
 
-extern  sound_type       sound;
-extern  music_type       music;
-extern  texture_type     texture;
-extern  font_type        font;
-extern  game_class       game;
-extern  menu_class       next_level_menu;
-        game_type        game_o;
+        game_type        game;
 
 int init_game(bool re_init)
 {
-    game.game_paused                         = false;
-    game.game_active                         = false;
-    game.game_resume                         = false;
-    game.outr_active                         = false;
-    game.menu_active                         = true;
-    game.pdie_active                         = false;
-    game.nlvl_active                         = false;
+    game.core.game_paused                         = false;
+    game.core.game_active                         = false;
+    game.core.game_resume                         = false;
+    game.core.outr_active                         = false;
+    game.core.menu_active                         = true;
+    game.core.pdie_active                         = false;
+    game.core.nlvl_active                         = false;
 
     return(0);
 };

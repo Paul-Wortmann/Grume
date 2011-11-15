@@ -24,9 +24,7 @@
 
 #include "core.hpp"
 
-game_class        game;
-
-game_class::game_class(void)
+core_class::core_class(void)
 {
     menu_level       = 1;
     FPS              = 0;
@@ -36,7 +34,7 @@ game_class::game_class(void)
     music_next_track = true;
 };
 
-game_class::~game_class(void)
+core_class::~core_class(void)
 {
 
 };

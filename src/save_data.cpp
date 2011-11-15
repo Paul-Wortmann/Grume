@@ -23,11 +23,9 @@
  */
 
 #include "save_data.hpp"
-#include "core/core.hpp"
 #include "game.hpp"
 
-extern game_class     game;
-extern game_type      game_o;
+extern game_type      game;
        save_data_type save_data;
 
 void update_save_data(void)

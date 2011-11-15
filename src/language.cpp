@@ -27,14 +27,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string>
+#include "game.hpp"
 #include "misc.hpp"
 #include "language.hpp"
-
-
 #include "menu_system.hpp"
-#include "core/core.hpp"
+
 extern  menu_class               main_menu;
-extern  game_class                game;
+extern  game_type                game;
 
 language_class::language_class(void)
 {

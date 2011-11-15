@@ -27,12 +27,12 @@
 #include <GL/gl.h>
 #include <string>
 #include <sstream>
-#include "core.hpp"
+#include "../game.hpp"
 
 #define GL_BGR  0x80E0
 #define GL_BGRA 0x80E1
 
-extern game_class  game;
+extern game_type game;
 
 font_class::font_class(void)
 {
@@ -70,8 +70,8 @@ bool font_class::Write(int r,int g,int b,int a,float x,float y,std::string text,
     SDL_Surface *font_string = TTF_RenderUTF8_Blended(font_class::font_data,write_data,font_color);
     if ((font_string->w & (font_string->w - 1)) != 0 );
     if ((font_string->h & (font_string->h - 1)) != 0 );
-    width  = ((font_string->w / game.config.Display_X_Resolution ) -1);
-    height = ((font_string->h / game.config.Display_Y_Resolution ) -1);
+    width  = ((font_string->w / game.core.config.Display_X_Resolution ) -1);
+    height = ((font_string->h / game.core.config.Display_Y_Resolution ) -1);
     if(width  < 0)  width  *= -1;
     if(height < 0)  height *= -1;
     width  = width  / 8.0f;
@@ -116,8 +116,8 @@ bool font_class::Write(int r,int g,int b,int a,float x,float y,std::string text,
     SDL_Surface *font_string = TTF_RenderUTF8_Blended(font_class::font_data,write_data,font_color);
     if ((font_string->w & (font_string->w - 1)) != 0 );
     if ((font_string->h & (font_string->h - 1)) != 0 );
-    width  = ((font_string->w / game.config.Display_X_Resolution ) -1);
-    height = ((font_string->h / game.config.Display_Y_Resolution ) -1);
+    width  = ((font_string->w / game.core.config.Display_X_Resolution ) -1);
+    height = ((font_string->h / game.core.config.Display_Y_Resolution ) -1);
     if(width  < 0)  width  *= -1;
     if(height < 0)  height *= -1;
     width  = width  / 8.0f;
@@ -158,8 +158,8 @@ bool font_class::Write(int r,int g,int b,int a,float x,float y,std::string text)
     SDL_Surface *font_string = TTF_RenderUTF8_Blended(font_class::font_data,write_data,font_color);
     if ((font_string->w & (font_string->w - 1)) != 0 );
     if ((font_string->h & (font_string->h - 1)) != 0 );
-    width  = ((font_string->w / game.config.Display_X_Resolution) -1);
-    height = ((font_string->h / game.config.Display_Y_Resolution) -1);
+    width  = ((font_string->w / game.core.config.Display_X_Resolution) -1);
+    height = ((font_string->h / game.core.config.Display_Y_Resolution) -1);
     if(width  < 0)  width  *= -1;
     if(height < 0)  height *= -1;
     width  = width  / 8.0f;
@@ -200,8 +200,8 @@ bool font_class::Write(int r,int g,int b,int a,float x,float y,float ws,float hs
     SDL_Surface *font_string = TTF_RenderUTF8_Blended(font_class::font_data,write_data,font_color);
     if ((font_string->w & (font_string->w - 1)) != 0 );
     if ((font_string->h & (font_string->h - 1)) != 0 );
-    width  = ((font_string->w / game.config.Display_X_Resolution) -1);
-    height = ((font_string->h / game.config.Display_Y_Resolution) -1);
+    width  = ((font_string->w / game.core.config.Display_X_Resolution) -1);
+    height = ((font_string->h / game.core.config.Display_Y_Resolution) -1);
     if(width  < 0)  width  *= -1;
     if(height < 0)  height *= -1;
     if (ws == 0) ws = width;
@@ -251,8 +251,8 @@ bool font_class::Write(int r,int g,int b,int a,float x,float y,float ws,float hs
     SDL_Surface *font_string = TTF_RenderUTF8_Blended(font_class::font_data,write_data,font_color);
     if ((font_string->w & (font_string->w - 1)) != 0 );
     if ((font_string->h & (font_string->h - 1)) != 0 );
-    width  = ((font_string->w / game.config.Display_X_Resolution) -1);
-    height = ((font_string->h / game.config.Display_Y_Resolution) -1);
+    width  = ((font_string->w / game.core.config.Display_X_Resolution) -1);
+    height = ((font_string->h / game.core.config.Display_Y_Resolution) -1);
     if(width  < 0)  width  *= -1;
     if(height < 0)  height *= -1;
     if (ws == 0) ws = width;
@@ -300,8 +300,8 @@ bool font_class::Write(int r,int g,int b,int a,float x,float y,float ws,float hs
     SDL_Surface *font_string = TTF_RenderUTF8_Blended(font_class::font_data,write_data,font_color);
     if ((font_string->w & (font_string->w - 1)) != 0 );
     if ((font_string->h & (font_string->h - 1)) != 0 );
-    width  = ((font_string->w / game.config.Display_X_Resolution) -1);
-    height = ((font_string->h / game.config.Display_Y_Resolution) -1);
+    width  = ((font_string->w / game.core.config.Display_X_Resolution) -1);
+    height = ((font_string->h / game.core.config.Display_Y_Resolution) -1);
     if(width  < 0)  width  *= -1;
     if(height < 0)  height *= -1;
     if (ws == 0) ws = width;
@@ -350,8 +350,8 @@ bool font_class::Write(int r,int g,int b,int a,float x,float y,float ws,float hs
     SDL_Surface *font_string = TTF_RenderUTF8_Blended(font_class::font_data,write_data,font_color);
     if ((font_string->w & (font_string->w - 1)) != 0 );
     if ((font_string->h & (font_string->h - 1)) != 0 );
-    width  = ((font_string->w / game.config.Display_X_Resolution) -1);
-    height = ((font_string->h / game.config.Display_Y_Resolution) -1);
+    width  = ((font_string->w / game.core.config.Display_X_Resolution) -1);
+    height = ((font_string->h / game.core.config.Display_Y_Resolution) -1);
     if(width  < 0)  width  *= -1;
     if(height < 0)  height *= -1;
     if (ws == 0) ws = width;
@@ -400,8 +400,8 @@ bool font_class::Write(int r,int g,int b,int a,float x,float y,float ws,float hs
     SDL_Surface *font_string = TTF_RenderUTF8_Blended(font_class::font_data,write_data,font_color);
     if ((font_string->w & (font_string->w - 1)) != 0 );
     if ((font_string->h & (font_string->h - 1)) != 0 );
-    width  = ((font_string->w / game.config.Display_X_Resolution) -1);
-    height = ((font_string->h / game.config.Display_Y_Resolution) -1);
+    width  = ((font_string->w / game.core.config.Display_X_Resolution) -1);
+    height = ((font_string->h / game.core.config.Display_Y_Resolution) -1);
     if(width  < 0)  width  *= -1;
     if(height < 0)  height *= -1;
     if (ws == 0) ws = width;

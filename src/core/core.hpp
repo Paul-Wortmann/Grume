@@ -39,7 +39,7 @@
 #include "background.hpp"
 #include "particles.hpp"
 
-class game_class
+class core_class
 {
     public:
         int               GAME_VERSION_MAJOR;
@@ -75,8 +75,8 @@ class game_class
         timer_class       timer;
         background_class  background;
         emitter_class     emitter[MAX_EMITTERS];
-         game_class(void);
-        ~game_class(void);
+         core_class(void);
+        ~core_class(void);
 };
 
 

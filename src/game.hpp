@@ -28,10 +28,26 @@
 #include <string>
 #include <SDL/SDL.h>
 #include "language.hpp"
+#include "core/core.hpp"
+#include "load_resources.hpp"
+#include "menu_system.hpp"
 
 struct game_type
 {
-    language_class              language;
+    sound_type       sound;
+    music_type       music;
+    texture_type     texture;
+    font_type        font;
+    core_class       core;
+    language_class   language;
+    menu_type        menu;
+    menu_class       main_menu;
+    menu_class       new_game_menu;
+    menu_class       save_menu;
+    menu_class       load_menu;
+    menu_class       options_menu;
+    menu_class       game_over_menu;
+    menu_class       pause_menu;
 };
 
 int   init_game           (bool re_init);

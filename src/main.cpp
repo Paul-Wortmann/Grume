@@ -30,24 +30,12 @@
 #include <SDL/SDL_image.h>
 #include <SDL/SDL_opengl.h>
 #include <GL/gl.h>
-#include "core/core.hpp"
-#include "load_resources.hpp"
 #include "misc.hpp"
 #include "main.hpp"
 #include "menu_system.hpp"
 #include "game.hpp"
 
-extern sound_type        sound;
-extern music_type        music;
-extern texture_type      texture;
-extern menu_type         menu;
-extern game_type         game_o;
-extern game_class        game;
-extern TTF_Font         *font;
-extern menu_class        pause_menu;
-extern menu_class        game_over_menu;
-extern menu_class        next_level_menu;
-extern menu_class        outro_menu;
+extern game_type         game;
 
 const char App_Name[] = ("Frost and Flame V0.00 - www.physhexgames.co.nr");
 const char App_Icon[] = "data/textures/icon.bmp";
@@ -61,32 +49,32 @@ int main(int argc, char *argv[])
 {
     std::locale::global( std::locale( "" ) );
     events_init();
-    game.log.File_Set("Frost_And_Flame.log");
-    game.log.File_Clear();
+    game.core.log.File_Set("Frost_And_Flame.log");
+    game.core.log.File_Clear();
 
-    game.log.File_Write("-------------------------");
-    game.log.File_Write("| Frost_And_Flame V0.00 |");
-    game.log.File_Write("-------------------------\n");
-    game.log.File_Write("Starting up!");
-    game.log.File_Write("");
-    game.log.File_Write("------------------\n");
-    game.config.File_Set("Frost_And_Flame.cfg");
-    game.config.Set_Defaults();
-    game.log.File_Write("Loading config...");
-    game.config.File_Set("Frost_And_Flame.cfg");
-    game.config.File_Read();
-    game.log.File_Write("Loading language file -> data/configuration/languages/"+game.config.language+".txt");
-    game_o.language.load("data/configuration/languages/"+game.config.language+".txt");
+    game.core.log.File_Write("-------------------------");
+    game.core.log.File_Write("| Frost_And_Flame V0.00 |");
+    game.core.log.File_Write("-------------------------\n");
+    game.core.log.File_Write("Starting up!");
+    game.core.log.File_Write("");
+    game.core.log.File_Write("------------------\n");
+    game.core.config.File_Set("Frost_And_Flame.cfg");
+    game.core.config.Set_Defaults();
+    game.core.log.File_Write("Loading config...");
+    game.core.config.File_Set("Frost_And_Flame.cfg");
+    game.core.config.File_Read();
+    game.core.log.File_Write("Loading language file -> data/configuration/languages/"+game.core.config.language+".txt");
+    game.language.load("data/configuration/languages/"+game.core.config.language+".txt");
 //----------------------------------- SDL Video --------------------------------
-    game.log.File_Write("Starting SDL...");
+    game.core.log.File_Write("Starting SDL...");
     putenv("SDL_VIDEO_WINDOW_POS");
     putenv("SDL_VIDEO_CENTERED=1");
     getenv("SDL_VIDEO_WINDOW_POS");
     getenv("SDL_VIDEO_CENTERED");
     SDL_Init(SDL_INIT_VIDEO | SDL_INIT_EVENTTHREAD);
-    game.log.File_Write("Starting OpenGL...");
-    if (game.config.Display_Fullscreen) SDL_SetVideoMode(game.config.Display_X_Resolution,game.config.Display_Y_Resolution,game.config.Display_BPS,SDL_OPENGL | SDL_FULLSCREEN);
-    else SDL_SetVideoMode(game.config.Display_X_Resolution,game.config.Display_Y_Resolution,game.config.Display_BPS,SDL_OPENGL/* | SDL_NOFRAME/* | SDL_FULLSCREEN */);
+    game.core.log.File_Write("Starting OpenGL...");
+    if (game.core.config.Display_Fullscreen) SDL_SetVideoMode(game.core.config.Display_X_Resolution,game.core.config.Display_Y_Resolution,game.core.config.Display_BPS,SDL_OPENGL | SDL_FULLSCREEN);
+    else SDL_SetVideoMode(game.core.config.Display_X_Resolution,game.core.config.Display_Y_Resolution,game.core.config.Display_BPS,SDL_OPENGL/* | SDL_NOFRAME/* | SDL_FULLSCREEN */);
     SDL_GL_SetAttribute( SDL_GL_DOUBLEBUFFER, 1 );
     App_Icon_Surface = SDL_LoadBMP(App_Icon);
     colorkey = SDL_MapRGB(App_Icon_Surface->format, 255, 0, 255);
@@ -95,168 +83,168 @@ int main(int argc, char *argv[])
     SDL_WM_SetCaption(App_Name, 0);
     SDL_ShowCursor(SDL_ENABLE);
 //----------------------------------- SDL Audio --------------------------------
-    game.log.File_Write("Starting sound system...");
+    game.core.log.File_Write("Starting sound system...");
     SDL_Init(SDL_INIT_AUDIO);
-    Mix_AllocateChannels(game.config.Audio_Channels);
-    Mix_OpenAudio(game.config.Audio_Rate, AUDIO_S16, 2, game.config.Audio_Buffers);
-    Mix_Volume(-1,game.config.Audio_Sound_Volume);
-    Mix_VolumeMusic(game.config.Audio_Music_Volume);
-    game.log.File_Write("Initializing joystick / gamepad...");
+    Mix_AllocateChannels(game.core.config.Audio_Channels);
+    Mix_OpenAudio(game.core.config.Audio_Rate, AUDIO_S16, 2, game.core.config.Audio_Buffers);
+    Mix_Volume(-1,game.core.config.Audio_Sound_Volume);
+    Mix_VolumeMusic(game.core.config.Audio_Music_Volume);
+    game.core.log.File_Write("Initializing joystick system...");
     SDL_Init(SDL_INIT_JOYSTICK);
     SDL_Joystick *joystick;
     SDL_JoystickEventState(SDL_ENABLE);
     joystick = SDL_JoystickOpen(0);
-    game.log.File_Write("Initializing game system...");
+    game.core.log.File_Write("Initializing game system...");
     init_game(false);
-    game.log.File_Write("Initializing OpenGL...");
-    game.graphics.init_gl(game.config.Display_X_Resolution,game.config.Display_Y_Resolution);
-    game.log.File_Write("Seeding random...");
+    game.core.log.File_Write("Initializing OpenGL...");
+    game.core.graphics.init_gl(game.core.config.Display_X_Resolution,game.core.config.Display_Y_Resolution);
+    game.core.log.File_Write("Seeding random...");
     seed_rand();
-    game.log.File_Write("Initializing font system...");
+    game.core.log.File_Write("Initializing font system...");
     TTF_Init();
-    game.log.File_Write("Loading resources...");
+    game.core.log.File_Write("Loading resources...");
     loading_screen_display("data/textures/loading_screen.png");
     load_resources();
-    game.log.File_Write("Initializing menu system...");
+    game.core.log.File_Write("Initializing menu system...");
     init_menu();
     init_game(false);
-    game.log.File_Write("Starting game...");
-    game.log.File_Write("---------------\n");
+    game.core.log.File_Write("Starting game.core...");
+    game.core.log.File_Write("---------------\n");
 //----------------------------------- Main loop --------------------------------
-    game.timer.start();
-    game.LastTicks = game.timer.getticks();
+    game.core.timer.start();
+    game.core.LastTicks = game.core.timer.getticks();
     for(int quit = 0; !quit;)
     {
-        game.config.process(false);
+        game.core.config.process(false);
         proc_textures();
         events_process();
-        if (game.status_quit_active) quit = 1;
+        if (game.core.status_quit_active) quit = 1;
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 //****************************************** MENU *****************************************
-        if (game.menu_active)
+        if (game.core.menu_active)
         {
-            if (game.music_next_track)
+            if (game.core.music_next_track)
             {
-                music.menu_00.play();
-                game.music_next_track = false;
+                game.music.menu_00.play();
+                game.core.music_next_track = false;
             }
             diplay_menu ();
-            if (game.process_ready) game.background.process();
-            if (game.process_ready) process_menu();
+            if (game.core.process_ready) game.core.background.process();
+            if (game.core.process_ready) process_menu();
         }
 //****************************************** GAME *****************************************
-        if (game.game_active)
+        if (game.core.game_active)
         {
-            if (game.music_next_track)
+            if (game.core.music_next_track)
             {
-                game.music_next_track = false;
-                if (game.music_track ==  0) music.menu_00.play();
+                game.core.music_next_track = false;
+                if (game.core.music_track ==  0) game.music.menu_00.play();
             }
-            game.game_resume = true;
-            if (game.process_ready) process_game();
+            game.core.game_resume = true;
+            if (game.core.process_ready) process_game();
             display_game();
-        if ((game.io.escape) && (game.process_ready))
+        if ((game.core.io.escape) && (game.core.process_ready))
         {
-            sound.menu_select_00.play();
-            game.music_next_track        = true;
-            game.game_active             = false;
-            game.menu_level              = 1;
-            game.menu_active             = true;
-            game.io.escape               = false;
-            game.io.keyboard_delay_count = 0;
-            game.config.menu_delay_count = 0;
-            while (game.config.menu_delay_count < (game.config.menu_delay/2))
+            game.sound.menu_select_00.play();
+            game.core.music_next_track        = true;
+            game.core.game_active             = false;
+            game.core.menu_level              = 1;
+            game.core.menu_active             = true;
+            game.core.io.escape               = false;
+            game.core.io.keyboard_delay_count = 0;
+            game.core.config.menu_delay_count = 0;
+            while (game.core.config.menu_delay_count < (game.core.config.menu_delay/2))
             {
-                game.config.menu_delay_count++;
+                game.core.config.menu_delay_count++;
             }
         }
 
-        if (game.io.pause)
+        if (game.core.io.pause)
         {
-            //game_o.paused.spawn();
-            game.game_paused = true;
-            game.game_active = false;
-            game.io.pause    = false;
-            game.menu_level  = 11;
-            SDL_WarpMouse(game.graphics.gl_to_res(pause_menu.get_button_x_pos(1),game.config.mouse_resolution_x),game.config.mouse_resolution_y-game.graphics.gl_to_res(pause_menu.get_button_y_pos(1),game.config.mouse_resolution_y));
+            //game.paused.spawn();
+            game.core.game_paused = true;
+            game.core.game_active = false;
+            game.core.io.pause    = false;
+            game.core.menu_level  = 11;
+            SDL_WarpMouse(game.core.graphics.gl_to_res(game.pause_menu.get_button_x_pos(1),game.core.config.mouse_resolution_x),game.core.config.mouse_resolution_y-game.core.graphics.gl_to_res(game.pause_menu.get_button_y_pos(1),game.core.config.mouse_resolution_y));
         };
      }
 //*********************************** Game paused *****************************************
-        if (game.game_paused)
+        if (game.core.game_paused)
         {
-            if (game.music_next_track)
+            if (game.core.music_next_track)
             {
-                game.music_next_track = false;
-                //music.level_pd.play();
+                game.core.music_next_track = false;
+                //game.music.level_pd.play();
             }
-            game.menu_level = 11;
-            if (game.process_ready) game.background.process();
-            if (game.process_ready) process_menu();
+            game.core.menu_level = 11;
+            if (game.core.process_ready) game.core.background.process();
+            if (game.core.process_ready) process_menu();
             display_game();
             diplay_menu ();
          }
 //*********************************** PLAYER DEATH SCREEN *****************************************
-        if (game.pdie_active)
+        if (game.core.pdie_active)
         {
-            if (game.music_next_track)
+            if (game.core.music_next_track)
             {
-                game.music_next_track = false;
-                //music.level_pd.play();
+                game.core.music_next_track = false;
+                //game.music.level_pd.play();
             }
             diplay_menu ();
-            if (game.process_ready) game.background.process();
-            if (game.process_ready) process_menu();
-            if (!game.pdie_active)  init_game(true);
+            if (game.core.process_ready) game.core.background.process();
+            if (game.core.process_ready) process_menu();
+            if (!game.core.pdie_active)  init_game(true);
         }
 //******************************* PLAYER NEXT LEVEL SCREEN *************************************
-        if (game.nlvl_active)
+        if (game.core.nlvl_active)
         {
-            if (game.music_next_track)
+            if (game.core.music_next_track)
             {
-                game.music_next_track = false;
-                //music.level_nl.play();
+                game.core.music_next_track = false;
+                //game.music.level_nl.play();
             }
-            game.menu_level = 9;
-            if (game.process_ready) game.background.process();
-            if (game.process_ready) process_menu();
+            game.core.menu_level = 9;
+            if (game.core.process_ready) game.core.background.process();
+            if (game.core.process_ready) process_menu();
             diplay_menu ();
         }
 //******************************* OUTRO SCREEN *************************************************
-     if (game.outr_active)
+     if (game.core.outr_active)
         {
-            if (game.music_next_track)
+            if (game.core.music_next_track)
             {
-                game.music_next_track = false;
-                //music.outro_00.play();
+                game.core.music_next_track = false;
+                //game.music.outro_00.play();
             }
-            game.menu_level = 10;
-            if (game.process_ready) game.background.process();
-            if (game.process_ready) process_menu();
+            game.core.menu_level = 10;
+            if (game.core.process_ready) game.core.background.process();
+            if (game.core.process_ready) process_menu();
             diplay_menu ();
         }
 //---------------------------- code for end of main loop -----------------------
-        game.FPS = (game.timer.getticks() - game.LastTicks);
-        if ((game.timer.getticks() - game.LastTicks) >= 1000/90)
+        game.core.FPS = (game.core.timer.getticks() - game.core.LastTicks);
+        if ((game.core.timer.getticks() - game.core.LastTicks) >= 1000/90)
         {
-            game.LastTicks = game.timer.getticks();
-            game.process_ready = true;
+            game.core.LastTicks = game.core.timer.getticks();
+            game.core.process_ready = true;
         }
-        else game.process_ready = false;
+        else game.core.process_ready = false;
         SDL_GL_SwapBuffers();
     }
 //----------------------------------- Exit -------------------------------------
-    game.log.File_Write("Saving configuration...");
-    game.config.File_Set("Frost_And_Flame.cfg");
-    game.config.File_Clear();
-    game.config.File_Write();
-    game.log.File_Write("\n");
-    game.log.File_Write("Shutting down...");
-    game.log.File_Write("---------------\n");
-    game.log.File_Write("Unloading fonts...");
+    game.core.log.File_Write("Saving configuration...");
+    game.core.config.File_Set("Frost_And_Flame.cfg");
+    game.core.config.File_Clear();
+    game.core.config.File_Write();
+    game.core.log.File_Write("\n");
+    game.core.log.File_Write("Shutting down...");
+    game.core.log.File_Write("---------------\n");
+    game.core.log.File_Write("Unloading fonts...");
     TTF_Quit();
-    game.log.File_Write("Shutting down audio system...");
+    game.core.log.File_Write("Shutting down audio system...");
     Mix_CloseAudio();
-    game.log.File_Write("SDL deinit...");
+    game.core.log.File_Write("SDL deinit...");
     SDL_Quit();
     return(0);
 }

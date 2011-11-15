@@ -24,10 +24,10 @@
 
 #include <fstream>
 #include "savegame.hpp"
-#include "core.hpp"
+#include "../game.hpp"
 #include "../save_data.hpp"
 
-extern game_class game;
+extern game_type      game;
 extern save_data_type save_data;
 
 save_game_class::save_game_class(void)

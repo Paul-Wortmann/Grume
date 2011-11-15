@@ -23,12 +23,9 @@
  */
 
 #include "menu.hpp"
-#include "core.hpp"
-#include "../load_resources.hpp"
+#include "../game.hpp"
 
-extern  game_class               game;
-extern  font_type                font;
-extern  texture_type             texture;
+extern  game_type                game;
 extern  int                      JUSTIFY_STATE;
 
 button_class::button_class(void)
@@ -217,16 +214,16 @@ void button_class::set_highlighted(bool bool_value)
 
 bool button_class::mouse_over(void)
 {
-    if ((highlighted) && (zoom)) return(game.physics.point_in_quadrangle(button_class::pos_x,button_class::width+button_class::zoom_size,button_class::pos_y,button_class::height+button_class::zoom_size,game.io.mouse_x,game.io.mouse_y));
-    else return(game.physics.point_in_quadrangle(button_class::pos_x,button_class::width,button_class::pos_y,button_class::height,game.io.mouse_x,game.io.mouse_y));
+    if ((highlighted) && (zoom)) return(game.core.physics.point_in_quadrangle(button_class::pos_x,button_class::width+button_class::zoom_size,button_class::pos_y,button_class::height+button_class::zoom_size,game.core.io.mouse_x,game.core.io.mouse_y));
+    else return(game.core.physics.point_in_quadrangle(button_class::pos_x,button_class::width,button_class::pos_y,button_class::height,game.core.io.mouse_x,game.core.io.mouse_y));
 };
 
 bool button_class::mouse_clicked(void)
 {
-    if (game.io.mouse_button_left)
+    if (game.core.io.mouse_button_left)
     {
-        if ((highlighted) && (zoom)) return(game.physics.point_in_quadrangle(button_class::pos_x,button_class::width+button_class::zoom_size,button_class::pos_y,button_class::height+button_class::zoom_size,game.io.mouse_x,game.io.mouse_y));
-       else return(game.physics.point_in_quadrangle(button_class::pos_x,button_class::width,button_class::pos_y,button_class::height,game.io.mouse_x,game.io.mouse_y));
+        if ((highlighted) && (zoom)) return(game.core.physics.point_in_quadrangle(button_class::pos_x,button_class::width+button_class::zoom_size,button_class::pos_y,button_class::height+button_class::zoom_size,game.core.io.mouse_x,game.core.io.mouse_y));
+       else return(game.core.physics.point_in_quadrangle(button_class::pos_x,button_class::width,button_class::pos_y,button_class::height,game.core.io.mouse_x,game.core.io.mouse_y));
     }
     else return(false);
 };
@@ -294,24 +291,24 @@ void button_class::draw(void)
         switch(button_class::get_font())
         {
             case 1:
-                if ((!button_class::enabled) && ( button_class::highlighted)) font.font_1.Write(button_class::disabled_color_r   ,button_class::disabled_color_g   ,button_class::disabled_color_b   ,button_class::disabled_color_a   ,button_class::pos_x-button_class::width/2.4,button_class::pos_y-button_class::height/3,1.8f+(button_class::zoom_size/2),14.0f+(button_class::zoom_size/2),button_class::label);
-                if ((!button_class::enabled) && (!button_class::highlighted)) font.font_1.Write(button_class::disabled_color_r   ,button_class::disabled_color_g   ,button_class::disabled_color_b   ,button_class::disabled_color_a   ,button_class::pos_x-button_class::width/2.4,button_class::pos_y-button_class::height/3,1.8f+(button_class::zoom_size/2),14.0f+(button_class::zoom_size/2),button_class::label);
-                if (( button_class::enabled) && ( button_class::highlighted)) font.font_1.Write(button_class::highlighted_color_r,button_class::highlighted_color_g,button_class::highlighted_color_b,button_class::highlighted_color_a,button_class::pos_x-button_class::width/2.4,button_class::pos_y-button_class::height/3,1.8f+(button_class::zoom_size/2),14.0f+(button_class::zoom_size/2),button_class::label);
-                if (( button_class::enabled) && (!button_class::highlighted)) font.font_1.Write(button_class::normal_color_r     ,button_class::normal_color_g     ,button_class::normal_color_b     ,button_class::normal_color_a     ,button_class::pos_x-button_class::width/2.4,button_class::pos_y-button_class::height/3,1.8f+(button_class::zoom_size/2),14.0f+(button_class::zoom_size/2),button_class::label);
+                if ((!button_class::enabled) && ( button_class::highlighted)) game.font.font_1.Write(button_class::disabled_color_r   ,button_class::disabled_color_g   ,button_class::disabled_color_b   ,button_class::disabled_color_a   ,button_class::pos_x-button_class::width/2.4,button_class::pos_y-button_class::height/3,1.8f+(button_class::zoom_size/2),14.0f+(button_class::zoom_size/2),button_class::label);
+                if ((!button_class::enabled) && (!button_class::highlighted)) game.font.font_1.Write(button_class::disabled_color_r   ,button_class::disabled_color_g   ,button_class::disabled_color_b   ,button_class::disabled_color_a   ,button_class::pos_x-button_class::width/2.4,button_class::pos_y-button_class::height/3,1.8f+(button_class::zoom_size/2),14.0f+(button_class::zoom_size/2),button_class::label);
+                if (( button_class::enabled) && ( button_class::highlighted)) game.font.font_1.Write(button_class::highlighted_color_r,button_class::highlighted_color_g,button_class::highlighted_color_b,button_class::highlighted_color_a,button_class::pos_x-button_class::width/2.4,button_class::pos_y-button_class::height/3,1.8f+(button_class::zoom_size/2),14.0f+(button_class::zoom_size/2),button_class::label);
+                if (( button_class::enabled) && (!button_class::highlighted)) game.font.font_1.Write(button_class::normal_color_r     ,button_class::normal_color_g     ,button_class::normal_color_b     ,button_class::normal_color_a     ,button_class::pos_x-button_class::width/2.4,button_class::pos_y-button_class::height/3,1.8f+(button_class::zoom_size/2),14.0f+(button_class::zoom_size/2),button_class::label);
             break;
 /*
             case 2:
-                if ((!button_class::enabled) && ( button_class::highlighted)) font.font_2.Write(button_class::disabled_color_r   ,button_class::disabled_color_g   ,button_class::disabled_color_b   ,button_class::disabled_color_a   ,button_class::pos_x-button_class::width/2.4,button_class::pos_y-button_class::height/3,1.7f+(button_class::zoom_size/2),16.0f+(button_class::zoom_size/2),button_class::label);
-                if ((!button_class::enabled) && (!button_class::highlighted)) font.font_2.Write(button_class::disabled_color_r   ,button_class::disabled_color_g   ,button_class::disabled_color_b   ,button_class::disabled_color_a   ,button_class::pos_x-button_class::width/2.4,button_class::pos_y-button_class::height/3,1.7f+(button_class::zoom_size/2),16.0f+(button_class::zoom_size/2),button_class::label);
-                if (( button_class::enabled) && ( button_class::highlighted)) font.font_2.Write(button_class::highlighted_color_r,button_class::highlighted_color_g,button_class::highlighted_color_b,button_class::highlighted_color_a,button_class::pos_x-button_class::width/2.4,button_class::pos_y-button_class::height/3,1.7f+(button_class::zoom_size/2),16.0f+(button_class::zoom_size/2),button_class::label);
-                if (( button_class::enabled) && (!button_class::highlighted)) font.font_2.Write(button_class::normal_color_r     ,button_class::normal_color_g     ,button_class::normal_color_b     ,button_class::normal_color_a     ,button_class::pos_x-button_class::width/2.4,button_class::pos_y-button_class::height/3,1.7f+(button_class::zoom_size/2),16.0f+(button_class::zoom_size/2),button_class::label);
+                if ((!button_class::enabled) && ( button_class::highlighted)) game.font.font_2.Write(button_class::disabled_color_r   ,button_class::disabled_color_g   ,button_class::disabled_color_b   ,button_class::disabled_color_a   ,button_class::pos_x-button_class::width/2.4,button_class::pos_y-button_class::height/3,1.7f+(button_class::zoom_size/2),16.0f+(button_class::zoom_size/2),button_class::label);
+                if ((!button_class::enabled) && (!button_class::highlighted)) game.font.font_2.Write(button_class::disabled_color_r   ,button_class::disabled_color_g   ,button_class::disabled_color_b   ,button_class::disabled_color_a   ,button_class::pos_x-button_class::width/2.4,button_class::pos_y-button_class::height/3,1.7f+(button_class::zoom_size/2),16.0f+(button_class::zoom_size/2),button_class::label);
+                if (( button_class::enabled) && ( button_class::highlighted)) game.font.font_2.Write(button_class::highlighted_color_r,button_class::highlighted_color_g,button_class::highlighted_color_b,button_class::highlighted_color_a,button_class::pos_x-button_class::width/2.4,button_class::pos_y-button_class::height/3,1.7f+(button_class::zoom_size/2),16.0f+(button_class::zoom_size/2),button_class::label);
+                if (( button_class::enabled) && (!button_class::highlighted)) game.font.font_2.Write(button_class::normal_color_r     ,button_class::normal_color_g     ,button_class::normal_color_b     ,button_class::normal_color_a     ,button_class::pos_x-button_class::width/2.4,button_class::pos_y-button_class::height/3,1.7f+(button_class::zoom_size/2),16.0f+(button_class::zoom_size/2),button_class::label);
             break;
 */
             default:
-                if ((!button_class::enabled) && ( button_class::highlighted)) font.font_1.Write(button_class::disabled_color_r   ,button_class::disabled_color_g   ,button_class::disabled_color_b   ,button_class::disabled_color_a   ,button_class::pos_x-button_class::width/2.4,button_class::pos_y-button_class::height/3,1.8f+(button_class::zoom_size/2),14.0f+(button_class::zoom_size/2),button_class::label);
-                if ((!button_class::enabled) && (!button_class::highlighted)) font.font_1.Write(button_class::disabled_color_r   ,button_class::disabled_color_g   ,button_class::disabled_color_b   ,button_class::disabled_color_a   ,button_class::pos_x-button_class::width/2.4,button_class::pos_y-button_class::height/3,1.8f+(button_class::zoom_size/2),14.0f+(button_class::zoom_size/2),button_class::label);
-                if (( button_class::enabled) && ( button_class::highlighted)) font.font_1.Write(button_class::highlighted_color_r,button_class::highlighted_color_g,button_class::highlighted_color_b,button_class::highlighted_color_a,button_class::pos_x-button_class::width/2.4,button_class::pos_y-button_class::height/3,1.8f+(button_class::zoom_size/2),14.0f+(button_class::zoom_size/2),button_class::label);
-                if (( button_class::enabled) && (!button_class::highlighted)) font.font_1.Write(button_class::normal_color_r     ,button_class::normal_color_g     ,button_class::normal_color_b     ,button_class::normal_color_a     ,button_class::pos_x-button_class::width/2.4,button_class::pos_y-button_class::height/3,1.8f+(button_class::zoom_size/2),14.0f+(button_class::zoom_size/2),button_class::label);
+                if ((!button_class::enabled) && ( button_class::highlighted)) game.font.font_1.Write(button_class::disabled_color_r   ,button_class::disabled_color_g   ,button_class::disabled_color_b   ,button_class::disabled_color_a   ,button_class::pos_x-button_class::width/2.4,button_class::pos_y-button_class::height/3,1.8f+(button_class::zoom_size/2),14.0f+(button_class::zoom_size/2),button_class::label);
+                if ((!button_class::enabled) && (!button_class::highlighted)) game.font.font_1.Write(button_class::disabled_color_r   ,button_class::disabled_color_g   ,button_class::disabled_color_b   ,button_class::disabled_color_a   ,button_class::pos_x-button_class::width/2.4,button_class::pos_y-button_class::height/3,1.8f+(button_class::zoom_size/2),14.0f+(button_class::zoom_size/2),button_class::label);
+                if (( button_class::enabled) && ( button_class::highlighted)) game.font.font_1.Write(button_class::highlighted_color_r,button_class::highlighted_color_g,button_class::highlighted_color_b,button_class::highlighted_color_a,button_class::pos_x-button_class::width/2.4,button_class::pos_y-button_class::height/3,1.8f+(button_class::zoom_size/2),14.0f+(button_class::zoom_size/2),button_class::label);
+                if (( button_class::enabled) && (!button_class::highlighted)) game.font.font_1.Write(button_class::normal_color_r     ,button_class::normal_color_g     ,button_class::normal_color_b     ,button_class::normal_color_a     ,button_class::pos_x-button_class::width/2.4,button_class::pos_y-button_class::height/3,1.8f+(button_class::zoom_size/2),14.0f+(button_class::zoom_size/2),button_class::label);
             break;
         }
     };
@@ -392,15 +389,15 @@ void button_class::draw(void)
         switch(button_class::get_font()) //write selected level name
         {
             case 1:
-                font.font_1.Write(button_class::highlighted_color_r,button_class::highlighted_color_g,button_class::highlighted_color_b,button_class::highlighted_color_a,((button_class::arrow_width/3) *4)+button_class::arrow_left_pos_x-(button_class::arrow_width/2)-(button_class::get_zoom_size_counter()/2),button_class::arrow_left_pos_y-((button_class::arrow_height/5)*4)-(button_class::get_zoom_size_counter()/2),1.8f+(button_class::zoom_size/2),14.0f+(button_class::zoom_size/2),temp_label);
+                game.font.font_1.Write(button_class::highlighted_color_r,button_class::highlighted_color_g,button_class::highlighted_color_b,button_class::highlighted_color_a,((button_class::arrow_width/3) *4)+button_class::arrow_left_pos_x-(button_class::arrow_width/2)-(button_class::get_zoom_size_counter()/2),button_class::arrow_left_pos_y-((button_class::arrow_height/5)*4)-(button_class::get_zoom_size_counter()/2),1.8f+(button_class::zoom_size/2),14.0f+(button_class::zoom_size/2),temp_label);
             break;
 /*
             case 2:
-                font.font_2.Write(button_class::highlighted_color_r,button_class::highlighted_color_g,button_class::highlighted_color_b,button_class::highlighted_color_a,((button_class::arrow_width/3) *4)+button_class::arrow_left_pos_x-(button_class::arrow_width/2)-(button_class::get_zoom_size_counter()/2),button_class::arrow_left_pos_y-((button_class::arrow_height/5)*4)-(button_class::get_zoom_size_counter()/2),1.7f+(button_class::zoom_size/2),16.0f+(button_class::zoom_size/2),temp_label);
+                game.font.font_2.Write(button_class::highlighted_color_r,button_class::highlighted_color_g,button_class::highlighted_color_b,button_class::highlighted_color_a,((button_class::arrow_width/3) *4)+button_class::arrow_left_pos_x-(button_class::arrow_width/2)-(button_class::get_zoom_size_counter()/2),button_class::arrow_left_pos_y-((button_class::arrow_height/5)*4)-(button_class::get_zoom_size_counter()/2),1.7f+(button_class::zoom_size/2),16.0f+(button_class::zoom_size/2),temp_label);
             break;
 */
             default:
-                font.font_1.Write(button_class::highlighted_color_r,button_class::highlighted_color_g,button_class::highlighted_color_b,button_class::highlighted_color_a,((button_class::arrow_width/3) *4)+button_class::arrow_left_pos_x-(button_class::arrow_width/2)-(button_class::get_zoom_size_counter()/2),button_class::arrow_left_pos_y-((button_class::arrow_height/5)*4)-(button_class::get_zoom_size_counter()/2),1.8f+(button_class::zoom_size/2),14.0f+(button_class::zoom_size/2),temp_label);
+                game.font.font_1.Write(button_class::highlighted_color_r,button_class::highlighted_color_g,button_class::highlighted_color_b,button_class::highlighted_color_a,((button_class::arrow_width/3) *4)+button_class::arrow_left_pos_x-(button_class::arrow_width/2)-(button_class::get_zoom_size_counter()/2),button_class::arrow_left_pos_y-((button_class::arrow_height/5)*4)-(button_class::get_zoom_size_counter()/2),1.8f+(button_class::zoom_size/2),14.0f+(button_class::zoom_size/2),temp_label);
             break;
         };
     }
@@ -435,15 +432,15 @@ void button_class::draw(void)
         switch(button_class::get_font()) //write selected level name
         {
             case 1:
-                font.font_1.Write(button_class::highlighted_color_r,button_class::highlighted_color_g,button_class::highlighted_color_b,button_class::highlighted_color_a,button_class::pos_x-button_class::width/2.4,button_class::pos_y-button_class::height/3,1.8f+(button_class::zoom_size/2),14.0f+(button_class::zoom_size/2),button_class::label);
+                game.font.font_1.Write(button_class::highlighted_color_r,button_class::highlighted_color_g,button_class::highlighted_color_b,button_class::highlighted_color_a,button_class::pos_x-button_class::width/2.4,button_class::pos_y-button_class::height/3,1.8f+(button_class::zoom_size/2),14.0f+(button_class::zoom_size/2),button_class::label);
             break;
 /*
             case 2:
-                font.font_2.Write(button_class::highlighted_color_r,button_class::highlighted_color_g,button_class::highlighted_color_b,button_class::highlighted_color_a,button_class::pos_x-button_class::width/2.4,button_class::pos_y-button_class::height/3,1.7f+(button_class::zoom_size/2),16.0f+(button_class::zoom_size/2),button_class::label);
+                game.font.font_2.Write(button_class::highlighted_color_r,button_class::highlighted_color_g,button_class::highlighted_color_b,button_class::highlighted_color_a,button_class::pos_x-button_class::width/2.4,button_class::pos_y-button_class::height/3,1.7f+(button_class::zoom_size/2),16.0f+(button_class::zoom_size/2),button_class::label);
             break;
 */
             default:
-                font.font_1.Write(button_class::highlighted_color_r,button_class::highlighted_color_g,button_class::highlighted_color_b,button_class::highlighted_color_a,button_class::pos_x-button_class::width/2.4,button_class::pos_y-button_class::height/3,1.8f+(button_class::zoom_size/2),14.0f+(button_class::zoom_size/2),button_class::label);
+                game.font.font_1.Write(button_class::highlighted_color_r,button_class::highlighted_color_g,button_class::highlighted_color_b,button_class::highlighted_color_a,button_class::pos_x-button_class::width/2.4,button_class::pos_y-button_class::height/3,1.8f+(button_class::zoom_size/2),14.0f+(button_class::zoom_size/2),button_class::label);
             break;
         };
     }
@@ -466,15 +463,15 @@ void button_class::draw(void)
         switch(button_class::get_font()) //write selected level name
         {
             case 1:
-                font.font_1.Write(button_class::highlighted_color_r,button_class::highlighted_color_g,button_class::highlighted_color_b,button_class::highlighted_color_a,button_class::pos_x-button_class::width/2.4,button_class::pos_y+button_class::height/3,1.8f+(button_class::zoom_size/2),14.0f+(button_class::zoom_size/2),button_class::label);
+                game.font.font_1.Write(button_class::highlighted_color_r,button_class::highlighted_color_g,button_class::highlighted_color_b,button_class::highlighted_color_a,button_class::pos_x-button_class::width/2.4,button_class::pos_y+button_class::height/3,1.8f+(button_class::zoom_size/2),14.0f+(button_class::zoom_size/2),button_class::label);
             break;
 /*
             case 2:
-                font.font_2.Write(button_class::highlighted_color_r,button_class::highlighted_color_g,button_class::highlighted_color_b,button_class::highlighted_color_a,button_class::pos_x-button_class::width/2.4,button_class::pos_y+button_class::height/3,1.7f+(button_class::zoom_size/2),16.0f+(button_class::zoom_size/2),button_class::label);
+                game.font.font_2.Write(button_class::highlighted_color_r,button_class::highlighted_color_g,button_class::highlighted_color_b,button_class::highlighted_color_a,button_class::pos_x-button_class::width/2.4,button_class::pos_y+button_class::height/3,1.7f+(button_class::zoom_size/2),16.0f+(button_class::zoom_size/2),button_class::label);
             break;
 */
             default:
-                font.font_1.Write(button_class::highlighted_color_r,button_class::highlighted_color_g,button_class::highlighted_color_b,button_class::highlighted_color_a,button_class::pos_x-button_class::width/2.4,button_class::pos_y+button_class::height/3,1.8f+(button_class::zoom_size/2),14.0f+(button_class::zoom_size/2),button_class::label);
+                game.font.font_1.Write(button_class::highlighted_color_r,button_class::highlighted_color_g,button_class::highlighted_color_b,button_class::highlighted_color_a,button_class::pos_x-button_class::width/2.4,button_class::pos_y+button_class::height/3,1.8f+(button_class::zoom_size/2),14.0f+(button_class::zoom_size/2),button_class::label);
             break;
         };
     }
@@ -482,7 +479,7 @@ void button_class::draw(void)
 
 bool button_class::button_pressed(void)
 {
-    if ((game.io.select) && (button_class::highlighted)) return (true);
+    if ((game.core.io.select) && (button_class::highlighted)) return (true);
     else return (false);
 };
 
@@ -992,15 +989,15 @@ void menu_class::draw(void)
     switch(menu_class::menu_font) // title text
     {
         case 1:
-            font.font_1.Write(menu_class::highlighted_color_r,menu_class::highlighted_color_g,menu_class::highlighted_color_b,menu_class::highlighted_color_a,menu_class::title_pos_x-menu_class::title_width/2.4,menu_class::title_pos_y-menu_class::title_height/4,1.7f,18.0f,menu_class::title_label);
+            game.font.font_1.Write(menu_class::highlighted_color_r,menu_class::highlighted_color_g,menu_class::highlighted_color_b,menu_class::highlighted_color_a,menu_class::title_pos_x-menu_class::title_width/2.4,menu_class::title_pos_y-menu_class::title_height/4,1.7f,18.0f,menu_class::title_label);
         break;
 /*
         case 2:
-            font.font_2.Write(menu_class::highlighted_color_r,menu_class::highlighted_color_g,menu_class::highlighted_color_b,menu_class::highlighted_color_a,menu_class::title_pos_x-menu_class::title_width/2.4,menu_class::title_pos_y-menu_class::title_height/3,1.7f,16.0f,menu_class::title_label);
+            game.font.font_2.Write(menu_class::highlighted_color_r,menu_class::highlighted_color_g,menu_class::highlighted_color_b,menu_class::highlighted_color_a,menu_class::title_pos_x-menu_class::title_width/2.4,menu_class::title_pos_y-menu_class::title_height/3,1.7f,16.0f,menu_class::title_label);
         break;
 */
         default:
-            font.font_1.Write(menu_class::highlighted_color_r,menu_class::highlighted_color_g,menu_class::highlighted_color_b,menu_class::highlighted_color_a,menu_class::title_pos_x-menu_class::title_width/2.4,menu_class::title_pos_y-menu_class::title_height/3,1.7f,12.0f,menu_class::title_label);
+            game.font.font_1.Write(menu_class::highlighted_color_r,menu_class::highlighted_color_g,menu_class::highlighted_color_b,menu_class::highlighted_color_a,menu_class::title_pos_x-menu_class::title_width/2.4,menu_class::title_pos_y-menu_class::title_height/3,1.7f,12.0f,menu_class::title_label);
         break;
     }
     for (int button_count = 1; button_count <= menu_class::number_of_buttons; button_count++)
@@ -1488,12 +1485,12 @@ void  menu_class::set_title_data(float x, float y, float z, float w, float h, st
 
 bool  menu_class::mouse_over_title(void)
 {
-    return(game.physics.point_in_quadrangle(menu_class::title_pos_x,menu_class::title_width,menu_class::title_pos_y,menu_class::title_height,game.io.mouse_x,game.io.mouse_y));
+    return(game.core.physics.point_in_quadrangle(menu_class::title_pos_x,menu_class::title_width,menu_class::title_pos_y,menu_class::title_height,game.core.io.mouse_x,game.core.io.mouse_y));
 };
 
 bool  menu_class::mouse_click_title(void)
 {
-    if (game.io.mouse_button_left) return(game.physics.point_in_quadrangle(menu_class::title_pos_x,menu_class::title_width,menu_class::title_pos_y,menu_class::title_height,game.io.mouse_x,game.io.mouse_y));
+    if (game.core.io.mouse_button_left) return(game.core.physics.point_in_quadrangle(menu_class::title_pos_x,menu_class::title_width,menu_class::title_pos_y,menu_class::title_height,game.core.io.mouse_x,game.core.io.mouse_y));
     else return(false);
 };
 
@@ -1709,13 +1706,13 @@ int  menu_class::mouse_over_button_choice(int button_number)
     float delta_x     =  0.0f;
         if(menu_class::button[button_number].get_number_of_visible_choices() < menu_class::button[button_number].get_number_of_choices())
         {
-            if (game.physics.point_in_quadrangle(menu_class::button[button_number].get_arrow_left_pos_x() ,menu_class::button[button_number].get_arrow_width(),menu_class::button[button_number].get_arrow_left_pos_y() ,menu_class::button[button_number].get_arrow_height(),game.io.mouse_x,game.io.mouse_y)) return_data = 4000+button_number; //left_arrow
-            if (game.physics.point_in_quadrangle(menu_class::button[button_number].get_arrow_right_pos_x(),menu_class::button[button_number].get_arrow_width(),menu_class::button[button_number].get_arrow_right_pos_y(),menu_class::button[button_number].get_arrow_height(),game.io.mouse_x,game.io.mouse_y)) return_data = 5000+button_number; //right_arrow
+            if (game.core.physics.point_in_quadrangle(menu_class::button[button_number].get_arrow_left_pos_x() ,menu_class::button[button_number].get_arrow_width(),menu_class::button[button_number].get_arrow_left_pos_y() ,menu_class::button[button_number].get_arrow_height(),game.core.io.mouse_x,game.core.io.mouse_y)) return_data = 4000+button_number; //left_arrow
+            if (game.core.physics.point_in_quadrangle(menu_class::button[button_number].get_arrow_right_pos_x(),menu_class::button[button_number].get_arrow_width(),menu_class::button[button_number].get_arrow_right_pos_y(),menu_class::button[button_number].get_arrow_height(),game.core.io.mouse_x,game.core.io.mouse_y)) return_data = 5000+button_number; //right_arrow
         }
     delta_x = ((menu_class::button[button_number].get_arrow_width()/4) *3)+menu_class::button[button_number].get_arrow_left_pos_x()+(menu_class::button[button_number].get_choice_zoom_size_counter(menu_class::button[button_number].get_choice_position())/2)+(menu_class::button[button_number].get_arrow_width()/2);
     for(int choice_count = 1; choice_count < menu_class::get_number_of_visible_choices(button_number)+1; choice_count++)
     {
-        if (game.physics.point_in_quadrangle(delta_x,menu_class::button[button_number].get_arrow_width(),menu_class::button[button_number].get_arrow_left_pos_y(),menu_class::button[button_number].get_arrow_height(),game.io.mouse_x,game.io.mouse_y)) return_data = (button_number*100)+choice_count;
+        if (game.core.physics.point_in_quadrangle(delta_x,menu_class::button[button_number].get_arrow_width(),menu_class::button[button_number].get_arrow_left_pos_y(),menu_class::button[button_number].get_arrow_height(),game.core.io.mouse_x,game.core.io.mouse_y)) return_data = (button_number*100)+choice_count;
         delta_x += (menu_class::button[button_number].get_arrow_width()/2) *3;
     }
     return(return_data);
@@ -1725,17 +1722,17 @@ int  menu_class::mouse_click_button_choice(int button_number)
 {
     int   return_data = -1;
     float delta_x     =  0.0f;
-    if (game.io.mouse_button_left)
+    if (game.core.io.mouse_button_left)
     {
         if(menu_class::button[button_number].get_number_of_visible_choices() < menu_class::button[button_number].get_number_of_choices())
         {
-            if (game.physics.point_in_quadrangle(menu_class::button[button_number].get_arrow_left_pos_x() ,menu_class::button[button_number].get_arrow_width(),menu_class::button[button_number].get_arrow_left_pos_y() ,menu_class::button[button_number].get_arrow_height(),game.io.mouse_x,game.io.mouse_y)) return_data = 4000+button_number; //left_arrow
-            if (game.physics.point_in_quadrangle(menu_class::button[button_number].get_arrow_right_pos_x(),menu_class::button[button_number].get_arrow_width(),menu_class::button[button_number].get_arrow_right_pos_y(),menu_class::button[button_number].get_arrow_height(),game.io.mouse_x,game.io.mouse_y)) return_data = 5000+button_number; //right_arrow
+            if (game.core.physics.point_in_quadrangle(menu_class::button[button_number].get_arrow_left_pos_x() ,menu_class::button[button_number].get_arrow_width(),menu_class::button[button_number].get_arrow_left_pos_y() ,menu_class::button[button_number].get_arrow_height(),game.core.io.mouse_x,game.core.io.mouse_y)) return_data = 4000+button_number; //left_arrow
+            if (game.core.physics.point_in_quadrangle(menu_class::button[button_number].get_arrow_right_pos_x(),menu_class::button[button_number].get_arrow_width(),menu_class::button[button_number].get_arrow_right_pos_y(),menu_class::button[button_number].get_arrow_height(),game.core.io.mouse_x,game.core.io.mouse_y)) return_data = 5000+button_number; //right_arrow
         }
         delta_x = ((menu_class::button[button_number].get_arrow_width()/4) *3)+menu_class::button[button_number].get_arrow_left_pos_x()+(menu_class::button[button_number].get_choice_zoom_size_counter(menu_class::button[button_number].get_choice_position())/2)+(menu_class::button[button_number].get_arrow_width()/2);
         for(int choice_count = 1; choice_count < menu_class::get_number_of_visible_choices(button_number)+1; choice_count++)
         {
-            if (game.physics.point_in_quadrangle(delta_x,menu_class::button[button_number].get_arrow_width(),menu_class::button[button_number].get_arrow_left_pos_y(),menu_class::button[button_number].get_arrow_height(),game.io.mouse_x,game.io.mouse_y)) return_data = (button_number*100)+choice_count;
+            if (game.core.physics.point_in_quadrangle(delta_x,menu_class::button[button_number].get_arrow_width(),menu_class::button[button_number].get_arrow_left_pos_y(),menu_class::button[button_number].get_arrow_height(),game.core.io.mouse_x,game.core.io.mouse_y)) return_data = (button_number*100)+choice_count;
             delta_x += (menu_class::button[button_number].get_arrow_width()/2) *3;
         }
     }
@@ -1772,18 +1769,18 @@ float menu_class::get_button_slider_position_max(int button_number)
 int  menu_class::mouse_over_button_slider(int button_number)
 {
     int   return_data = -1;
-    if (game.physics.point_in_quadrangle(menu_class::button[button_number].get_arrow_left_pos_x() ,menu_class::button[button_number].get_arrow_width(),menu_class::button[button_number].get_arrow_left_pos_y() ,menu_class::button[button_number].get_arrow_height(),game.io.mouse_x,game.io.mouse_y)) return_data = 4000+button_number; //left_arrow
-    if (game.physics.point_in_quadrangle(menu_class::button[button_number].get_arrow_right_pos_x(),menu_class::button[button_number].get_arrow_width(),menu_class::button[button_number].get_arrow_right_pos_y(),menu_class::button[button_number].get_arrow_height(),game.io.mouse_x,game.io.mouse_y)) return_data = 5000+button_number; //right_arrow
+    if (game.core.physics.point_in_quadrangle(menu_class::button[button_number].get_arrow_left_pos_x() ,menu_class::button[button_number].get_arrow_width(),menu_class::button[button_number].get_arrow_left_pos_y() ,menu_class::button[button_number].get_arrow_height(),game.core.io.mouse_x,game.core.io.mouse_y)) return_data = 4000+button_number; //left_arrow
+    if (game.core.physics.point_in_quadrangle(menu_class::button[button_number].get_arrow_right_pos_x(),menu_class::button[button_number].get_arrow_width(),menu_class::button[button_number].get_arrow_right_pos_y(),menu_class::button[button_number].get_arrow_height(),game.core.io.mouse_x,game.core.io.mouse_y)) return_data = 5000+button_number; //right_arrow
     return(return_data);
 };
 
 int  menu_class::mouse_click_button_slider(int button_number)
 {
     int   return_data = -1;
-    if (game.io.mouse_button_left)
+    if (game.core.io.mouse_button_left)
     {
-        if (game.physics.point_in_quadrangle(menu_class::button[button_number].get_arrow_left_pos_x() ,menu_class::button[button_number].get_arrow_width(),menu_class::button[button_number].get_arrow_left_pos_y() ,menu_class::button[button_number].get_arrow_height(),game.io.mouse_x,game.io.mouse_y)) return_data = 4000+button_number; //left_arrow
-        if (game.physics.point_in_quadrangle(menu_class::button[button_number].get_arrow_right_pos_x(),menu_class::button[button_number].get_arrow_width(),menu_class::button[button_number].get_arrow_right_pos_y(),menu_class::button[button_number].get_arrow_height(),game.io.mouse_x,game.io.mouse_y)) return_data = 5000+button_number; //right_arrow
+        if (game.core.physics.point_in_quadrangle(menu_class::button[button_number].get_arrow_left_pos_x() ,menu_class::button[button_number].get_arrow_width(),menu_class::button[button_number].get_arrow_left_pos_y() ,menu_class::button[button_number].get_arrow_height(),game.core.io.mouse_x,game.core.io.mouse_y)) return_data = 4000+button_number; //left_arrow
+        if (game.core.physics.point_in_quadrangle(menu_class::button[button_number].get_arrow_right_pos_x(),menu_class::button[button_number].get_arrow_width(),menu_class::button[button_number].get_arrow_right_pos_y(),menu_class::button[button_number].get_arrow_height(),game.core.io.mouse_x,game.core.io.mouse_y)) return_data = 5000+button_number; //right_arrow
     }
     return(return_data);
 };
@@ -1862,11 +1859,11 @@ int menu_class::process(void)
     if (menu_class::keyboard_delay_count > menu_class::keyboard_delay) menu_class::keyboard_delay_count = menu_class::keyboard_delay;
     menu_class::mouse_delay_count++;
     if (menu_class::mouse_delay_count > menu_class::mouse_delay) menu_class::mouse_delay_count = menu_class::mouse_delay;
-    if ((!game.io.mouse_button_left) && (!game.io.mouse_button_middle) && (!game.io.mouse_button_right)) menu_class::mouse_delay_count = menu_class::mouse_delay;
+    if ((!game.core.io.mouse_button_left) && (!game.core.io.mouse_button_middle) && (!game.core.io.mouse_button_right)) menu_class::mouse_delay_count = menu_class::mouse_delay;
     // ---- movement from io ----
     if  (menu_class::keyboard_delay_count >= menu_class::keyboard_delay)
     {
-        if (game.io.up)
+        if (game.core.io.up)
         {
             menu_class::keyboard_delay_count = 0;
             done = false;
@@ -1878,7 +1875,7 @@ int menu_class::process(void)
                 if (menu_class::current_vertical_selection == 1) done = true;
             }
         }
-        if (game.io.down)
+        if (game.core.io.down)
         {
             menu_class::keyboard_delay_count = 0;
             done = false;
@@ -1890,7 +1887,7 @@ int menu_class::process(void)
                 if (menu_class::current_vertical_selection == menu_class::number_of_buttons) done = true;
             }
         }
-        if (game.io.escape)
+        if (game.core.io.escape)
         {
             menu_class::keyboard_delay_count = 0;
             return_value = 65534;
@@ -1937,7 +1934,7 @@ int menu_class::process(void)
                 }
             }
         }
-        if (game.io.select) return_value = current_vertical_selection;
+        if (game.core.io.select) return_value = current_vertical_selection;
     }
     if ((!menu_class::mouse_over_any_button()) && (menu_class::number_of_buttons == 1)) menu_class::button[1].set_highlighted(false);
     for (int button_count = 1; button_count <= menu_class::number_of_buttons; button_count++)//choice
@@ -1960,7 +1957,7 @@ int menu_class::process(void)
                 if  (menu_button_choice == (button_count*100)+choice_count)      menu_class::button[button_count].set_choice_highlighted(menu_class::get_button_choice_position(button_count)+choice_count-1,true);//Choices
                 else menu_class::button[button_count].set_choice_highlighted(menu_class::get_button_choice_position(button_count)+choice_count-1,false);
             }
-            if  ((menu_class::mouse_delay_count >= menu_class::mouse_delay) && (game.io.mouse_button_left))
+            if  ((menu_class::mouse_delay_count >= menu_class::mouse_delay) && (game.core.io.mouse_button_left))
             {
                 if (return_value == -1) return_value = menu_class::mouse_click_button_choice(button_count);
                 if (return_value != -1) menu_class::mouse_delay_count = 0;
@@ -2048,19 +2045,19 @@ int menu_class::process(void)
         {
             if(!menu_class::get_drag_active())
             {
-                menu_class::drag_offset_x = game.io.mouse_x - menu_class::title_pos_x;
-                menu_class::drag_offset_y = game.io.mouse_y - menu_class::title_pos_y;
+                menu_class::drag_offset_x = game.core.io.mouse_x - menu_class::title_pos_x;
+                menu_class::drag_offset_y = game.core.io.mouse_y - menu_class::title_pos_y;
                 menu_class::set_drag_active(true);
             }
         }
     }
-    if ((menu_class::get_drag_active()) && (!game.io.mouse_button_left)) menu_class::set_drag_active(false);
+    if ((menu_class::get_drag_active()) && (!game.core.io.mouse_button_left)) menu_class::set_drag_active(false);
     if (menu_class::get_drag_active())
     {
         drag_x_delta = menu_class::title_pos_x;
         drag_y_delta = menu_class::title_pos_y;
-        menu_class::title_pos_x = game.io.mouse_x - menu_class::drag_offset_x;
-        menu_class::title_pos_y = game.io.mouse_y - menu_class::drag_offset_y;
+        menu_class::title_pos_x = game.core.io.mouse_x - menu_class::drag_offset_x;
+        menu_class::title_pos_y = game.core.io.mouse_y - menu_class::drag_offset_y;
         drag_x_delta -= menu_class::title_pos_x;
         drag_y_delta -= menu_class::title_pos_y;
         menu_class::set_pos(menu_class::pos_x-drag_x_delta,menu_class::pos_y-drag_y_delta,menu_class::pos_z);
