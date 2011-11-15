@@ -47,6 +47,7 @@ struct texture_type
     texture_class background_00;
     texture_class background_01;
     texture_class background_02;
+    texture_class background_03;
 
     texture_class button_normal;
     texture_class button_highlighted;

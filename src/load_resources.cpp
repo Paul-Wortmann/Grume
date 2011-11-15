@@ -66,6 +66,7 @@ bool load_textures(void)
     texture.background_00.load_image("data/textures/menu/background_00.png",texture_count);texture_count++;
     texture.background_01.load_image("data/textures/menu/background_01.png",texture_count);texture_count++;
     texture.background_02.load_image("data/textures/menu/background_02.png",texture_count);texture_count++;
+    texture.background_03.load_image("data/textures/menu/background_03.png",texture_count);texture_count++;
 
     texture.button_normal.load_image            ("data/textures/menu/button_normal.png"            ,texture_count);texture_count++;
     texture.button_highlighted.load_image       ("data/textures/menu/button_highlighted.png"       ,texture_count);texture_count++;
@@ -141,6 +142,7 @@ bool draw_texture(bool r, int texture_number, float x, float y, float z, float w
     if (texture_number == texture.background_00.ref_number) texture.background_00.draw(r,x,y,z,w,h,angle);
     if (texture_number == texture.background_01.ref_number) texture.background_01.draw(r,x,y,z,w,h,angle);
     if (texture_number == texture.background_02.ref_number) texture.background_02.draw(r,x,y,z,w,h,angle);
+    if (texture_number == texture.background_03.ref_number) texture.background_03.draw(r,x,y,z,w,h,angle);
 
     if (texture_number == texture.button_normal.ref_number)             texture.button_normal.draw            (r,x,y,z,w,h,angle);
     if (texture_number == texture.button_highlighted.ref_number)        texture.button_highlighted.draw       (r,x,y,z,w,h,angle);

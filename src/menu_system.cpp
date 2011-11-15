@@ -45,8 +45,10 @@ extern  game_type                game_o;
 int init_menu   (void)
 {
     //------ setup menu background -----------
-    game.background.set_data ( 1, 1, 0, 1.0f, 0.0f, 0.0010f, 0.00065f, texture.background_01.ref_number);
-    game.background.set_data ( 2, 1, 1, 0.0f, 1.0f, 0.0000f, 0.00000f, texture.background_00.ref_number);
+    game.background.set_data ( 1, 1, 0, 0.0f, 0.0f, 0.0000f, 0.00000f, texture.background_00.ref_number);
+    game.background.set_data ( 2, 1, 0, 0.0f, 0.0f, 0.0000f, 0.00000f, texture.background_00.ref_number);
+    game.background.set_data ( 3, 1, 0, 0.0f, 0.0f, 0.0010f, 0.00065f, texture.background_01.ref_number);
+    game.background.set_data ( 4, 1, 0, 4.0f, 0.0f, 0.0010f, 0.00065f, texture.background_01.ref_number);
     game.background.set_movement_type(FRONT_SCROLL);
     //------ setup "main" menu -----------
     main_menu.set_menu_title(game_o.language.text.main_menu);
@@ -82,9 +84,9 @@ int init_menu   (void)
     new_game_menu.set_image_background(texture.background_02.ref_number);
     new_game_menu.set_button_zoom(true,0.04f,0.005f);
     new_game_menu.set_button_images(texture.button_normal.ref_number,texture.button_highlighted.ref_number,texture.button_disabled.ref_number,texture.button_disabled.ref_number,texture.selection_box.ref_number,texture.slider_button_normal.ref_number,texture.slider_button_highlighted.ref_number,texture.arrow_button_normal.ref_number,texture.arrow_button_highlighted.ref_number,texture.arrow_button_disabled.ref_number);
-    new_game_menu.set_color_normal(128,128,255,255);
-    new_game_menu.set_color_highlighted(192,192,255,255);
-    new_game_menu.set_color_disabled(064,064,128,128);
+    new_game_menu.set_color_normal(128,128,128,255);
+    new_game_menu.set_color_highlighted(192,192,192,255);
+    new_game_menu.set_color_disabled(064,064,064,128);
     new_game_menu.set_number_of_buttons(3);
     new_game_menu.set_button_data  ( 1,game_o.language.text.new_game);
     new_game_menu.set_button_active( 2,false);
@@ -103,9 +105,9 @@ int init_menu   (void)
     save_menu.set_image_background(texture.background_02.ref_number);
     save_menu.set_button_zoom(true,0.04f,0.005f);
     save_menu.set_button_images(texture.button_normal.ref_number,texture.button_highlighted.ref_number,texture.button_disabled.ref_number,texture.button_disabled.ref_number,texture.selection_box.ref_number,texture.slider_button_normal.ref_number,texture.slider_button_highlighted.ref_number,texture.arrow_button_normal.ref_number,texture.arrow_button_highlighted.ref_number,texture.arrow_button_disabled.ref_number);
-    save_menu.set_color_normal(128,128,255,255);
-    save_menu.set_color_highlighted(192,192,255,255);
-    save_menu.set_color_disabled(064,064,128,128);
+    save_menu.set_color_normal(128,128,128,255);
+    save_menu.set_color_highlighted(192,192,192,255);
+    save_menu.set_color_disabled(064,064,064,128);
     save_menu.set_number_of_buttons(9);
     save_menu.set_button_data  ( 1,game_o.language.text.save_slot_1);
     save_menu.set_button_data  ( 2,game_o.language.text.save_slot_2);
@@ -129,9 +131,9 @@ int init_menu   (void)
     load_menu.set_image_background(texture.background_02.ref_number);
     load_menu.set_button_zoom(true,0.04f,0.005f);
     load_menu.set_button_images(texture.button_normal.ref_number,texture.button_highlighted.ref_number,texture.button_disabled.ref_number,texture.button_disabled.ref_number,texture.selection_box.ref_number,texture.slider_button_normal.ref_number,texture.slider_button_highlighted.ref_number,texture.arrow_button_normal.ref_number,texture.arrow_button_highlighted.ref_number,texture.arrow_button_disabled.ref_number);
-    load_menu.set_color_normal(128,128,255,255);
-    load_menu.set_color_highlighted(192,192,255,255);
-    load_menu.set_color_disabled(064,064,128,128);
+    load_menu.set_color_normal(128,128,128,255);
+    load_menu.set_color_highlighted(192,192,192,255);
+    load_menu.set_color_disabled(064,064,064,128);
     load_menu.set_number_of_buttons(9);
     load_menu.set_button_data  ( 1,game_o.language.text.save_slot_1);
     load_menu.set_button_data  ( 2,game_o.language.text.save_slot_2);
@@ -177,9 +179,9 @@ int init_menu   (void)
     options_menu.set_button_zoom(true,0.04f,0.005f);
     options_menu.set_button_images(texture.button_normal.ref_number,texture.button_highlighted.ref_number,texture.button_disabled.ref_number,texture.button_disabled.ref_number,texture.selection_box.ref_number,texture.slider_button_normal.ref_number,texture.slider_button_highlighted.ref_number,texture.arrow_button_normal.ref_number,texture.arrow_button_highlighted.ref_number,texture.arrow_button_disabled.ref_number);
     options_menu.set_toggle_button_images(texture.green_button_highlighted.ref_number,texture.green_button.ref_number,texture.red_button_highlighted.ref_number,texture.red_button.ref_number);
-    options_menu.set_color_normal(128,128,255,255);
-    options_menu.set_color_highlighted(192,192,255,255);
-    options_menu.set_color_disabled(064,064,128,128);
+    options_menu.set_color_normal(128,128,128,255);
+    options_menu.set_color_highlighted(192,192,192,255);
+    options_menu.set_color_disabled(064,064,064,128);
     options_menu.set_number_of_buttons(6);
     options_menu.set_button_data  ( 1,game_o.language.text.sound_volume);
     options_menu.set_button_type  ( 1,SLIDER);
@@ -220,9 +222,9 @@ int init_menu   (void)
     game_over_menu.set_image_background(texture.background_02.ref_number);
     game_over_menu.set_button_zoom(true,0.04f,0.005f);
     game_over_menu.set_button_images(texture.button_normal.ref_number,texture.button_highlighted.ref_number,texture.button_disabled.ref_number,texture.button_disabled.ref_number,texture.selection_box.ref_number,texture.slider_button_normal.ref_number,texture.slider_button_highlighted.ref_number,texture.arrow_button_normal.ref_number,texture.arrow_button_highlighted.ref_number,texture.arrow_button_disabled.ref_number);
-    game_over_menu.set_color_normal(128,128,255,255);
-    game_over_menu.set_color_highlighted(192,192,255,255);
-    game_over_menu.set_color_disabled(064,064,128,128);
+    game_over_menu.set_color_normal(128,128,128,255);
+    game_over_menu.set_color_highlighted(192,192,192,255);
+    game_over_menu.set_color_disabled(064,064,064,128);
     game_over_menu.set_number_of_buttons(1);
     game_over_menu.set_button_data  ( 1,game_o.language.text.main_menu);
     game_over_menu.set_buttons_auto();
@@ -235,12 +237,12 @@ int init_menu   (void)
     pause_menu.set_pos(0.0f,-0.85f,0.001f);
     pause_menu.set_size(0.8f,0.2f);
     pause_menu.set_menu_font(1);
-    pause_menu.set_image_background(texture.background_02.ref_number);
+    pause_menu.set_image_background(texture.background_03.ref_number);
     pause_menu.set_button_zoom(true,0.04f,0.005f);
     pause_menu.set_button_images(texture.button_normal.ref_number,texture.button_highlighted.ref_number,texture.button_disabled.ref_number,texture.button_disabled.ref_number,texture.selection_box.ref_number,texture.slider_button_normal.ref_number,texture.slider_button_highlighted.ref_number,texture.arrow_button_normal.ref_number,texture.arrow_button_highlighted.ref_number,texture.arrow_button_disabled.ref_number);
-    pause_menu.set_color_normal(128,128,255,255);
-    pause_menu.set_color_highlighted(192,192,255,255);
-    pause_menu.set_color_disabled(064,064,128,128);
+    pause_menu.set_color_normal(128,128,128,255);
+    pause_menu.set_color_highlighted(192,192,192,255);
+    pause_menu.set_color_disabled(064,064,064,128);
     pause_menu.set_number_of_buttons(1);
     pause_menu.set_button_data  ( 1,game_o.language.text.resume_game);
     pause_menu.set_buttons_auto();
@@ -259,42 +261,32 @@ int process_menu(void)
     activated_button = -1;
     if (game.menu_level == 1)
     {
-        if (game.game_resume) main_menu.button[5].set_enabled(true);
-        else main_menu.button[5].set_enabled(false);
-        if (game.game_resume) main_menu.button[6].set_enabled(true);
-        else main_menu.button[6].set_enabled(false);
+        if (game.game_resume) main_menu.button[3].set_enabled(true);
+        else main_menu.button[3].set_enabled(false);
+        if (game.game_resume) main_menu.button[4].set_enabled(true);
+        else main_menu.button[4].set_enabled(false);
         activated_button = main_menu.process();
         switch (activated_button)
         {
             case 1://New Game
                 sound.menu_select_00.play();
                 game.menu_level = 2;
-                game.log.File_Write("Entering 'Star Map' menu.");
+                game.log.File_Write("Entering 'New Game' menu.");
             break;
-            case 2://Customize Starship
+            case 2://Load Game
                 sound.menu_select_00.play();
                 game.menu_level = 3;
-                game.log.File_Write("Entering 'Customize Starship' menu.");
-            break;
-            case 3://Achievements
-                sound.menu_select_00.play();
-                game.menu_level = 4;
-                game.log.File_Write("Entering 'Achievements' menu.");
-            break;
-            case 4://Load Game
-                sound.menu_select_00.play();
-                game.menu_level = 5;
                 game.log.File_Write("Entering 'Load Game' menu.");
             break;
-            case 5://Save Game
+            case 3://Save Game
                 if (game.game_resume)
                 {
                     sound.menu_select_00.play();
-                    game.menu_level = 6;
+                    game.menu_level = 4;
                     game.log.File_Write("Entering 'Save Game' menu.");
                 }
             break;
-            case 6://Resume Game
+            case 4://Resume Game
                 if (game.game_resume)
                 {
                     sound.menu_select_00.play();
@@ -304,14 +296,14 @@ int process_menu(void)
                     game.log.File_Write("Resuming Game");
                 }
             break;
-            case 7://Options
+            case 5://Options
                 sound.menu_select_00.play();
-                game.menu_level = 7;
+                game.menu_level = 5;
                 game.log.File_Write("Entering 'Options' menu.");
             break;
-            case 8://NA
+            case 6://NA
             break;
-            case 9://Quit Game
+            case 7://Quit Game
                 sound.menu_select_00.play();
                 game.status_quit_active = true;
                 game.log.File_Write("User terminating game - 'Quit Game' selected!");
@@ -946,7 +938,7 @@ int diplay_menu (void)
     {
         game.background.draw();
     }
-    font.font_1.Write(255,255,255,64,-0.98f,-0.98f,2,8,"www.PhysHexGames.co.nr");
+    font.font_1.Write(255,255,255,64,-0.98f,-0.98f,2,16,"www.PhysHexGames.co.nr");
 /*-----------------------------------------------------------------------------*/
    if (game.menu_level ==  7) //Pause screen
    {

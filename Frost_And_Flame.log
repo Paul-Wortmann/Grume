@@ -19,9 +19,38 @@ Initializing font system...
 Loading resources...
 Sound files loaded -> 2
 Music files loaded -> 1
-Texture files loaded -> 37
+Texture files loaded -> 38
 Font files loaded -> 1
 Initializing menu system...
 Starting game...
 ---------------
 
+Entering 'Options' menu.
+Entering main menu, from Options menu. - button selected.
+Entering 'New Game' menu.
+Entering main menu, from New_Game menu. - button selected.
+Entering 'Load Game' menu.
+Entering main menu, from load menu. - button selected.
+Entering 'Options' menu.
+Entering main menu, from Options menu. - button selected.
+Entering 'New Game' menu.
+Entering main menu, from New_Game menu. - button selected.
+Entering 'New Game' menu.
+Entering main menu, from New_Game menu. - button selected.
+Entering 'Load Game' menu.
+Entering main menu, from load menu. - button clicked.
+Entering 'New Game' menu.
+Entering main menu, from New_Game menu. - button selected.
+Entering 'Load Game' menu.
+Entering main menu, from load menu. - button clicked.
+User terminating game - clicked escape button!
+User terminating game - clicked escape button!
+Saving configuration...
+
+
+Shutting down...
+---------------
+
+Unloading fonts...
+Shutting down audio system...
+SDL deinit...
