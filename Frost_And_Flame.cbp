@@ -60,6 +60,8 @@
 		<Linker>
 			<Add directory='&quot;C:\Program Files (x86)\CodeBlocks\MinGW\lib&quot;' />
 		</Linker>
+		<Unit filename="src\UI.cpp" />
+		<Unit filename="src\UI.hpp" />
 		<Unit filename="src\core\background.cpp" />
 		<Unit filename="src\core\background.hpp" />
 		<Unit filename="src\core\config.cpp" />

@@ -31,9 +31,11 @@
 #include "core/core.hpp"
 #include "load_resources.hpp"
 #include "menu_system.hpp"
+#include "UI.hpp"
 
 struct game_type
 {
+    UI_class         UI;
     sound_type       sound;
     music_type       music;
     texture_type     texture;

@@ -85,6 +85,7 @@ bool load_textures(void)
     game.texture.resolution_icon.load_image          ("data/textures/menu/resolution_icon.png"          ,texture_count);texture_count++;
 
     game.texture.action_bar.load_image          ("data/textures/UI/action_bar/action_bar.png"           ,texture_count);texture_count++;
+    game.texture.action_bar_front.load_image    ("data/textures/UI/action_bar/action_bar_front.png"     ,texture_count);texture_count++;
     game.texture.glass_cover_01.load_image      ("data/textures/UI/action_bar/glass_cover_01.png"       ,texture_count);texture_count++;
     game.texture.glass_cover_02.load_image      ("data/textures/UI/action_bar/glass_cover_02.png"       ,texture_count);texture_count++;
     game.texture.icon_01.load_image             ("data/textures/UI/action_bar/icon_01.png"              ,texture_count);texture_count++;
@@ -93,7 +94,7 @@ bool load_textures(void)
     game.texture.icon_04.load_image             ("data/textures/UI/action_bar/icon_04.png"              ,texture_count);texture_count++;
     game.texture.icon_05.load_image             ("data/textures/UI/action_bar/icon_05.png"              ,texture_count);texture_count++;
     game.texture.icon_06.load_image             ("data/textures/UI/action_bar/icon_06.png"              ,texture_count);texture_count++;
-    game.texture.weapon_icon.load_image         ("data/textures/UI/action_bar/weapon_icon.png"          ,texture_count);texture_count++;
+    game.texture.icon_melee.load_image          ("data/textures/UI/action_bar/icon_melee.png"           ,texture_count);texture_count++;
 
     game.texture.particle_000.load_image("data/textures/particles/particle_000.png",texture_count);texture_count++;
     game.texture.particle_001.load_image("data/textures/particles/particle_001.png",texture_count);texture_count++;
@@ -173,6 +174,7 @@ bool draw_texture(bool r, int texture_number, float x, float y, float z, float w
     if (texture_number == game.texture.resolution_icon.ref_number)           game.texture.resolution_icon.draw          (r,x,y,z,w,h,angle);
 
     if (texture_number == game.texture.action_bar.ref_number)                game.texture.action_bar.draw               (r,x,y,z,w,h,angle);
+    if (texture_number == game.texture.action_bar_front.ref_number)          game.texture.action_bar_front.draw         (r,x,y,z,w,h,angle);
     if (texture_number == game.texture.glass_cover_01.ref_number)            game.texture.glass_cover_01.draw           (r,x,y,z,w,h,angle);
     if (texture_number == game.texture.glass_cover_02.ref_number)            game.texture.glass_cover_02.draw           (r,x,y,z,w,h,angle);
     if (texture_number == game.texture.icon_01.ref_number)                   game.texture.icon_01.draw                  (r,x,y,z,w,h,angle);
@@ -181,7 +183,7 @@ bool draw_texture(bool r, int texture_number, float x, float y, float z, float w
     if (texture_number == game.texture.icon_04.ref_number)                   game.texture.icon_04.draw                  (r,x,y,z,w,h,angle);
     if (texture_number == game.texture.icon_05.ref_number)                   game.texture.icon_05.draw                  (r,x,y,z,w,h,angle);
     if (texture_number == game.texture.icon_06.ref_number)                   game.texture.icon_06.draw                  (r,x,y,z,w,h,angle);
-    if (texture_number == game.texture.weapon_icon.ref_number)               game.texture.weapon_icon.draw              (r,x,y,z,w,h,angle);
+    if (texture_number == game.texture.icon_melee.ref_number)                game.texture.icon_melee.draw               (r,x,y,z,w,h,angle);
 
     if (texture_number == game.texture.particle_000.ref_number) game.texture.particle_000.draw(r,x,y,z,w,h,angle);
     if (texture_number == game.texture.particle_001.ref_number) game.texture.particle_001.draw(r,x,y,z,w,h,angle);

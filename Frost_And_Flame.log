@@ -19,7 +19,7 @@ Initializing font system...
 Loading resources...
 Sound files loaded -> 2
 Music files loaded -> 1
-Texture files loaded -> 49
+Texture files loaded -> 50
 Font files loaded -> 1
 Initializing menu system...
 Starting game.core...
@@ -27,20 +27,7 @@ Starting game.core...
 
 Entering 'New Game' menu.
 Entering game world, starting new game.
-Resuming Game
-Entering 'Save Game' menu.
-Saving to slot 1
-Resuming game
-Entering 'Load Game' menu.
-Loading from slot 1
-Resuming game
-Entering 'Options' menu.
-Texture files loaded -> 49
-Texture files loaded -> 49
-Entering main menu, from Options menu. - button selected.
-Entering 'New Game' menu.
-Entering game world, starting new game.
-User terminating game - 'Quit Game' selected!
+User terminating game - keyboard escape pressed!
 -------------------------
 Shutting down...
 Saving configuration...
