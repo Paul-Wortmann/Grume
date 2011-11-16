@@ -57,7 +57,7 @@ int main(int argc, char *argv[])
     game.core.log.File_Write("-------------------------\n");
     game.core.log.File_Write("Starting up!");
     game.core.log.File_Write("");
-    game.core.log.File_Write("------------------\n");
+    game.core.log.File_Write("-------------------------\n");
     game.core.config.File_Set("Frost_And_Flame.cfg");
     game.core.config.Set_Defaults();
     game.core.log.File_Write("Loading config...");
@@ -109,7 +109,7 @@ int main(int argc, char *argv[])
     init_menu();
     init_game(false);
     game.core.log.File_Write("Starting game.core...");
-    game.core.log.File_Write("---------------\n");
+    game.core.log.File_Write("-------------------------\n");
 //----------------------------------- Main loop --------------------------------
     game.core.timer.start();
     game.core.LastTicks = game.core.timer.getticks();
@@ -233,19 +233,18 @@ int main(int argc, char *argv[])
         SDL_GL_SwapBuffers();
     }
 //----------------------------------- Exit -------------------------------------
+    game.core.log.File_Write("-------------------------");
+    game.core.log.File_Write("Shutting down...");
     game.core.log.File_Write("Saving configuration...");
     game.core.config.File_Set("Frost_And_Flame.cfg");
     game.core.config.File_Clear();
     game.core.config.File_Write();
-    game.core.log.File_Write("\n");
-    game.core.log.File_Write("Shutting down...");
-    game.core.log.File_Write("---------------\n");
     game.core.log.File_Write("Unloading fonts...");
     TTF_Quit();
     game.core.log.File_Write("Shutting down audio system...");
     Mix_CloseAudio();
-    game.core.log.File_Write("SDL deinit...");
+    game.core.log.File_Write("SDL shutting down...");
     SDL_Quit();
+    game.core.log.File_Write("-------------------------\n");
     return(0);
 }
-

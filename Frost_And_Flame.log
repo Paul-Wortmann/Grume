@@ -4,7 +4,7 @@
 
 Starting up!
 
-------------------
+-------------------------
 
 Loading config...
 Loading language file -> data/configuration/languages/english.txt
@@ -23,15 +23,19 @@ Texture files loaded -> 39
 Font files loaded -> 1
 Initializing menu system...
 Starting game.core...
----------------
+-------------------------
 
 User terminating game - 'Quit Game' selected!
+-------------------------
+
 Saving configuration...
 
 
 Shutting down...
----------------
+-------------------------
 
 Unloading fonts...
 Shutting down audio system...
-SDL deinit...
+SDL uninitializing...
+-------------------------
+
