@@ -135,40 +135,9 @@ int main(int argc, char *argv[])
 //****************************************** GAME *****************************************
         if (game.core.game_active)
         {
-            if (game.core.music_next_track)
-            {
-                game.core.music_next_track = false;
-                if (game.core.music_track ==  0) game.music.menu_00.play();
-            }
-            game.core.game_resume = true;
             if (game.core.process_ready) process_game();
             display_game();
-        if ((game.core.io.escape) && (game.core.process_ready))
-        {
-            game.sound.menu_select_00.play();
-            game.core.music_next_track        = true;
-            game.core.game_active             = false;
-            game.core.menu_level              = 1;
-            game.core.menu_active             = true;
-            game.core.io.escape               = false;
-            game.core.io.keyboard_delay_count = 0;
-            game.core.config.menu_delay_count = 0;
-            while (game.core.config.menu_delay_count < (game.core.config.menu_delay/2))
-            {
-                game.core.config.menu_delay_count++;
-            }
         }
-
-        if (game.core.io.pause)
-        {
-            //game.paused.spawn();
-            game.core.game_paused = true;
-            game.core.game_active = false;
-            game.core.io.pause    = false;
-            game.core.menu_level  = 11;
-            SDL_WarpMouse(game.core.graphics.gl_to_res(game.pause_menu.get_button_x_pos(1),game.core.config.mouse_resolution_x),game.core.config.mouse_resolution_y-game.core.graphics.gl_to_res(game.pause_menu.get_button_y_pos(1),game.core.config.mouse_resolution_y));
-        };
-     }
 //*********************************** Game paused *****************************************
         if (game.core.game_paused)
         {

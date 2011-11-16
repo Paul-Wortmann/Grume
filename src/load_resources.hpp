@@ -69,6 +69,17 @@ struct texture_type
     texture_class blue_button_highlighted;
     texture_class resolution_icon;
 
+    texture_class action_bar;
+    texture_class glass_cover_01;
+    texture_class glass_cover_02;
+    texture_class icon_01;
+    texture_class icon_02;
+    texture_class icon_03;
+    texture_class icon_04;
+    texture_class icon_05;
+    texture_class icon_06;
+    texture_class weapon_icon;
+
     texture_class particle_000;
     texture_class particle_001;
     texture_class particle_002;

@@ -318,39 +318,13 @@ int process_menu(void)
         activated_button = game.new_game_menu.process();
         switch (activated_button)
         {
-            case 101://Choice 1 selected
+            case 1://Choice 1 selected
                 {
-                    ;
-                }
-            break;
-            case 102://Choice 2 selected
-                {
-                    ;
-                }
-            break;
-            case 103://Choice 3 selected
-                {
-                    ;
-                }
-            break;
-            case 104://Choice 4 selected
-                {
-                    ;
-                }
-            break;
-            case 105://Choice 5 selected
-                {
-                    ;
-                }
-            break;
-            case 4001://left arrow on button 1
-                {
-                    ;
-                }
-            break;
-            case 5001://right arrow on button 1
-                {
-                    ;
+                    game.sound.menu_select_00.play();
+                    game.core.music_next_track = true;
+                    game.core.game_active = true;
+                    game.core.menu_active = false;
+                    game.core.log.File_Write("Entering game world, starting new game.");
                 }
             break;
             case 3://Return to main menu
