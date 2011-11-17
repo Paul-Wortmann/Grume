@@ -43,7 +43,7 @@ int init_game(bool re_init)
     game.UI.action_bar.pos_y                      = -0.9f;
     game.UI.action_bar.pos_z                      =  0.001f;
     game.UI.action_bar.width                      =  1.8f;
-    game.UI.action_bar.height                     =  0.2f;
+    game.UI.action_bar.height                     =  0.18f;
     game.UI.action_bar.menu_slot_01.button_type   =  1;
     game.UI.action_bar.menu_slot_01.pos_x         = -0.79f;
     game.UI.action_bar.menu_slot_01.pos_y         = -0.916f;
@@ -80,55 +80,55 @@ int init_game(bool re_init)
     game.UI.action_bar.menu_slot_06.pos_z         =  0.001f;
     game.UI.action_bar.menu_slot_06.width         =  0.078f;
     game.UI.action_bar.menu_slot_06.height        =  0.078f;
-    game.UI.action_bar.action_slot_01.button_type =  1;
+    game.UI.action_bar.action_slot_01.button_type =  0;
     game.UI.action_bar.action_slot_01.pos_x       = -0.4532f;
     game.UI.action_bar.action_slot_01.pos_y       = -0.9f;
     game.UI.action_bar.action_slot_01.pos_z       =  0.001f;
     game.UI.action_bar.action_slot_01.width       =  0.088f;
     game.UI.action_bar.action_slot_01.height      =  0.146f;
-    game.UI.action_bar.action_slot_02.button_type =  1;
+    game.UI.action_bar.action_slot_02.button_type =  0;
     game.UI.action_bar.action_slot_02.pos_x       = -0.3521f;
     game.UI.action_bar.action_slot_02.pos_y       = -0.9f;
     game.UI.action_bar.action_slot_02.pos_z       =  0.001f;
     game.UI.action_bar.action_slot_02.width       =  0.088f;
     game.UI.action_bar.action_slot_02.height      =  0.146f;
-    game.UI.action_bar.action_slot_03.button_type =  1;
+    game.UI.action_bar.action_slot_03.button_type =  0;
     game.UI.action_bar.action_slot_03.pos_x       = -0.2500f;
     game.UI.action_bar.action_slot_03.pos_y       = -0.9f;
     game.UI.action_bar.action_slot_03.pos_z       =  0.001f;
     game.UI.action_bar.action_slot_03.width       =  0.088f;
     game.UI.action_bar.action_slot_03.height      =  0.146f;
-    game.UI.action_bar.action_slot_04.button_type =  1;
+    game.UI.action_bar.action_slot_04.button_type =  0;
     game.UI.action_bar.action_slot_04.pos_x       = -0.1487f;
     game.UI.action_bar.action_slot_04.pos_y       = -0.9f;
     game.UI.action_bar.action_slot_04.pos_z       =  0.001f;
     game.UI.action_bar.action_slot_04.width       =  0.088f;
     game.UI.action_bar.action_slot_04.height      =  0.146f;
-    game.UI.action_bar.action_slot_05.button_type =  1;
+    game.UI.action_bar.action_slot_05.button_type =  0;
     game.UI.action_bar.action_slot_05.pos_x       = -0.0476f;
     game.UI.action_bar.action_slot_05.pos_y       = -0.9f;
     game.UI.action_bar.action_slot_05.pos_z       =  0.001f;
     game.UI.action_bar.action_slot_05.width       =  0.088f;
     game.UI.action_bar.action_slot_05.height      =  0.146f;
-    game.UI.action_bar.action_slot_06.button_type =  1;
+    game.UI.action_bar.action_slot_06.button_type =  0;
     game.UI.action_bar.action_slot_06.pos_x       =  0.0534f;
     game.UI.action_bar.action_slot_06.pos_y       = -0.9f;
     game.UI.action_bar.action_slot_06.pos_z       =  0.001f;
     game.UI.action_bar.action_slot_06.width       =  0.088f;
     game.UI.action_bar.action_slot_06.height      =  0.146f;
-    game.UI.action_bar.action_slot_07.button_type =  1;
+    game.UI.action_bar.action_slot_07.button_type =  0;
     game.UI.action_bar.action_slot_07.pos_x       =  0.1544f;
     game.UI.action_bar.action_slot_07.pos_y       = -0.9f;
     game.UI.action_bar.action_slot_07.pos_z       =  0.001f;
     game.UI.action_bar.action_slot_07.width       =  0.088f;
     game.UI.action_bar.action_slot_07.height      =  0.146f;
-    game.UI.action_bar.action_slot_08.button_type =  1;
+    game.UI.action_bar.action_slot_08.button_type =  0;
     game.UI.action_bar.action_slot_08.pos_x       =  0.2552;
     game.UI.action_bar.action_slot_08.pos_y       = -0.9f;
     game.UI.action_bar.action_slot_08.pos_z       =  0.001f;
     game.UI.action_bar.action_slot_08.width       =  0.088f;
     game.UI.action_bar.action_slot_08.height      =  0.146f;
-    game.UI.action_bar.action_slot_09.button_type =  1;
+    game.UI.action_bar.action_slot_09.button_type =  0;
     game.UI.action_bar.action_slot_09.pos_x       =  0.3578f;
     game.UI.action_bar.action_slot_09.pos_y       = -0.9f;
     game.UI.action_bar.action_slot_09.pos_z       =  0.001f;
@@ -140,7 +140,17 @@ int init_game(bool re_init)
     game.UI.action_bar.action_slot_10.pos_z       =  0.001f;
     game.UI.action_bar.action_slot_10.width       =  0.088f;
     game.UI.action_bar.action_slot_10.height      =  0.146f;
+    game.UI.player_stats.portrait                 = 0;
+    game.UI.player_stats.pos_x                    =-0.8f;
+    game.UI.player_stats.pos_y                    = 0.88f;
+    game.UI.player_stats.pos_z                    = 0.001f;
+    game.UI.player_stats.width                    = 0.4f;
+    game.UI.player_stats.height                   = 0.24f;
 
+    game.player.health.maximum                    =  100.0f;
+    game.player.health.regeneration               =  0.05f;
+    game.player.mana.maximum                      =  100.0f;
+    game.player.mana.regeneration                 =  0.05f;
     return(0);
 };
 
@@ -149,6 +159,7 @@ int init_game(bool re_init)
 int process_game(void)
 {
     game.UI.action_bar.process();
+    game.player.process();
     game.core.game_resume = true;
     if (game.core.music_next_track)
     {
@@ -187,10 +198,12 @@ int display_game(void)
 {
     float z_pos = 0;
     glPushMatrix();
-    game.UI.action_bar.draw();
+    game.player.draw();
 
 
 
+
+    game.UI.draw();
     glDisable(GL_DEPTH_TEST);
     glPopMatrix();
     return(1);

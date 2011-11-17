@@ -19,12 +19,16 @@ Initializing font system...
 Loading resources...
 Sound files loaded -> 2
 Music files loaded -> 1
-Texture files loaded -> 50
+Texture files loaded -> 55
 Font files loaded -> 1
 Initializing menu system...
 Starting game.core...
 -------------------------
 
+Entering 'Options' menu.
+Texture files loaded -> 55
+Texture files loaded -> 55
+Entering main menu, from Options menu. - button selected.
 Entering 'New Game' menu.
 Entering game world, starting new game.
 User terminating game - keyboard escape pressed!

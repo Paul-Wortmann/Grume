@@ -96,6 +96,12 @@ bool load_textures(void)
     game.texture.icon_06.load_image             ("data/textures/UI/action_bar/icon_06.png"              ,texture_count);texture_count++;
     game.texture.icon_melee.load_image          ("data/textures/UI/action_bar/icon_melee.png"           ,texture_count);texture_count++;
 
+    game.texture.health_bar.load_image              ("data/textures/UI/portrait/health_bar.png"               ,texture_count);texture_count++;
+    game.texture.mana_bar.load_image                ("data/textures/UI/portrait/mana_bar.png"                 ,texture_count);texture_count++;
+    game.texture.profile_background.load_image      ("data/textures/UI/portrait/profile_background.png"       ,texture_count);texture_count++;
+    game.texture.profile_main.load_image            ("data/textures/UI/portrait/profile_main.png"             ,texture_count);texture_count++;
+    game.texture.profile_main_background.load_image ("data/textures/UI/portrait/profile_main_background.png"  ,texture_count);texture_count++;
+
     game.texture.particle_000.load_image("data/textures/particles/particle_000.png",texture_count);texture_count++;
     game.texture.particle_001.load_image("data/textures/particles/particle_001.png",texture_count);texture_count++;
     game.texture.particle_002.load_image("data/textures/particles/particle_002.png",texture_count);texture_count++;
@@ -184,6 +190,12 @@ bool draw_texture(bool r, int texture_number, float x, float y, float z, float w
     if (texture_number == game.texture.icon_05.ref_number)                   game.texture.icon_05.draw                  (r,x,y,z,w,h,angle);
     if (texture_number == game.texture.icon_06.ref_number)                   game.texture.icon_06.draw                  (r,x,y,z,w,h,angle);
     if (texture_number == game.texture.icon_melee.ref_number)                game.texture.icon_melee.draw               (r,x,y,z,w,h,angle);
+
+    if (texture_number == game.texture.health_bar.ref_number)                game.texture.health_bar.draw               (r,x,y,z,w,h,angle);
+    if (texture_number == game.texture.mana_bar.ref_number)                  game.texture.mana_bar.draw                 (r,x,y,z,w,h,angle);
+    if (texture_number == game.texture.profile_background.ref_number)        game.texture.profile_background.draw       (r,x,y,z,w,h,angle);
+    if (texture_number == game.texture.profile_main.ref_number)              game.texture.profile_main.draw             (r,x,y,z,w,h,angle);
+    if (texture_number == game.texture.profile_main_background.ref_number)   game.texture.profile_main_background.draw  (r,x,y,z,w,h,angle);
 
     if (texture_number == game.texture.particle_000.ref_number) game.texture.particle_000.draw(r,x,y,z,w,h,angle);
     if (texture_number == game.texture.particle_001.ref_number) game.texture.particle_001.draw(r,x,y,z,w,h,angle);

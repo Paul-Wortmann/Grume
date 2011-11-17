@@ -22,42 +22,53 @@
  * @date 2011-11-11
  */
 
-#ifndef GAME_H
-#define GAME_H
-
-#include <string>
-#include <SDL/SDL.h>
-#include "language.hpp"
-#include "core/core.hpp"
-#include "load_resources.hpp"
-#include "menu_system.hpp"
-#include "UI.hpp"
 #include "player.hpp"
 
-struct game_type
+stat_class::stat_class(void)
 {
-    UI_class         UI;
-    sound_type       sound;
-    music_type       music;
-    texture_type     texture;
-    font_type        font;
-    core_class       core;
-    language_class   language;
-    menu_type        menu;
-    menu_class       main_menu;
-    menu_class       new_game_menu;
-    menu_class       save_menu;
-    menu_class       load_menu;
-    menu_class       options_menu;
-    menu_class       game_over_menu;
-    menu_class       pause_menu;
-    player_class     player;
-};
+    stat_class::current      = 0.0f;
+    stat_class::maximum      = 0.0f;
+    stat_class::regeneration = 0.0f;
+}
 
-int   init_game           (bool re_init);
-int   process_game        (void);
-int   display_game        (void);
+stat_class::~stat_class(void)
+{
 
-bool  boss_level(void);
+}
 
-#endif //GAME_H
+void stat_class::process(void)
+{
+    if (stat_class::current < stat_class::maximum) stat_class::current += stat_class::regeneration;
+    if (stat_class::current > stat_class::maximum) stat_class::current  = stat_class::maximum;
+}
+
+void stat_class::draw(void)
+{
+
+}
+
+//-----------------------------------------------------------------------------------------------------------------
+
+player_class::player_class(void)
+{
+    player_class::pos_x        = 0.0f;
+    player_class::pos_y        = 0.0f;
+    player_class::pos_z        = 0.0f;
+}
+
+player_class::~player_class(void)
+{
+
+}
+
+void player_class::process(void)
+{
+    player_class::health.process();
+    player_class::mana.process();
+}
+
+void player_class::draw(void)
+{
+
+}
+

@@ -109,6 +109,8 @@
 		<Unit filename="src\menu_system.hpp" />
 		<Unit filename="src\misc.cpp" />
 		<Unit filename="src\misc.hpp" />
+		<Unit filename="src\player.cpp" />
+		<Unit filename="src\player.hpp" />
 		<Unit filename="src\save_data.cpp" />
 		<Unit filename="src\save_data.hpp" />
 		<Extensions>

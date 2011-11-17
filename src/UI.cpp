@@ -43,6 +43,7 @@ extern game_type game;
     player_stats_class::width            = 0.0f;
     player_stats_class::height           = 0.0f;
 };
+
     player_stats_class::~player_stats_class(void)
 {
 
@@ -55,8 +56,11 @@ void player_stats_class::process(void)
 
 void player_stats_class::draw(void)
 {
-    game.texture.icon_melee.draw(false,player_stats_class::pos_x,player_stats_class::pos_y,player_stats_class::pos_z,player_stats_class::width,player_stats_class::height);
-
+    game.texture.profile_background.draw(false,player_stats_class::pos_x-(player_stats_class::width/3.3f),player_stats_class::pos_y,player_stats_class::pos_z,player_stats_class::width/2.8f,player_stats_class::height/1.1f);
+    game.texture.profile_main_background.draw(false,player_stats_class::pos_x,player_stats_class::pos_y,player_stats_class::pos_z,player_stats_class::width,player_stats_class::height);
+    game.texture.health_bar.draw(false,player_stats_class::pos_x+(player_stats_class::width/7.2f),player_stats_class::pos_y+(player_stats_class::height/3.6f),player_stats_class::pos_z,player_stats_class::width/1.8f,player_stats_class::height/6.2f);
+    game.texture.mana_bar.draw(false,player_stats_class::pos_x+(player_stats_class::width/7.2f),player_stats_class::pos_y+(player_stats_class::height/9.0f),player_stats_class::pos_z,player_stats_class::width/1.8f,player_stats_class::height/6.2f);
+    game.texture.profile_main.draw(false,player_stats_class::pos_x,player_stats_class::pos_y,player_stats_class::pos_z,player_stats_class::width,player_stats_class::height);
 };
 
 //----------------------------------------------------------------------------------------------------------------
@@ -75,6 +79,7 @@ void player_stats_class::draw(void)
     action_slot_class::width            = 0.0f;
     action_slot_class::height           = 0.0f;
 };
+
     action_slot_class::~action_slot_class(void)
 {
 
@@ -108,6 +113,7 @@ void action_slot_class::draw(void)
     menu_slot_class::width            = 0.0f;
     menu_slot_class::height           = 0.0f;
 };
+
     menu_slot_class::~menu_slot_class(void)
 {
 
@@ -140,6 +146,7 @@ void menu_slot_class::draw(void)
     action_bar_class::width            = 0.0f;
     action_bar_class::height           = 0.0f;
 };
+
     action_bar_class::~action_bar_class(void)
 {
 
@@ -192,6 +199,7 @@ void action_bar_class::draw(void)
 {
 
 };
+
     UI_class::~UI_class(void)
 {
 

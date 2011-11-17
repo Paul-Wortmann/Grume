@@ -81,6 +81,12 @@ struct texture_type
     texture_class icon_06;
     texture_class icon_melee;
 
+    texture_class health_bar;
+    texture_class mana_bar;
+    texture_class profile_background;
+    texture_class profile_main;
+    texture_class profile_main_background;
+
     texture_class particle_000;
     texture_class particle_001;
     texture_class particle_002;
