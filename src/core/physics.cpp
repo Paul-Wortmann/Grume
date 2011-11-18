@@ -68,6 +68,12 @@ float  physics_class::distance_3D(float x1, float y1, float z1, float x2, float 
    return(sqrt(((x1-x2)*(x1-x2))+((y1-y2)*(y1-y2))+((z1-z2)*(z1-z2))));
 }
 
+bool   physics_class::point_in_circle          (float cx, float cy, float cr, float px, float py)
+{
+    if (sqrt((float)(((px-cx) * (px-cx)) + ((py-cy) * (py-cy)))) <= cr) return(true);
+    else return(false);
+};
+
 bool  physics_class::point_in_quadrangle  (float qx, float qw, float qy, float qh, float px, float py) //rectangle!
 {
     if ((px > (qx-(qw/2))) && (px < (qx+(qw/2))) && (py > (qy-(qh/2))) && (py < (qy+(qh/2)))) return(true);

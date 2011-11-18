@@ -119,6 +119,8 @@ class button_class
         bool             toggle_data;
         int              achieve_data;
         int              achieve_position;
+        float            text_width;
+        float            text_height;
     public:
         button_class(void);
         button_class(float x, float y, float z, float w, float h, int in, int ih, int id, bool hl, bool en, bool gl, bool zm, float zs, int nr, int ng, int nb, int na, int hr, int hg, int hb, int ha, int dr, int dg, int db, int da, std::string lb);
@@ -235,6 +237,7 @@ class button_class
         void  set_achieve_data(int int_data);
         int   get_achieve_data(void);
         void  set_achieve_position(int int_data);
+        void  set_text_size(float width, float height);
 };
 
 //-------------------------- menu -------------------------------
@@ -301,6 +304,10 @@ class menu_class
         float         title_pos_z;
         int           menu_font;
         int           button_font;
+        int           title_color_r;
+        int           title_color_g;
+        int           title_color_b;
+        int           title_color_a;
         int           normal_color_r;
         int           normal_color_g;
         int           normal_color_b;
@@ -313,6 +320,8 @@ class menu_class
         int           disabled_color_g;
         int           disabled_color_b;
         int           disabled_color_a;
+        float         text_width;
+        float         text_height;
     public:
         button_class  close_button;
         button_class  button[MAX_MENU_BUTTONS];
@@ -322,6 +331,7 @@ class menu_class
         void  set_pos(float x, float y, float z);
         void  set_size(float w, float h);
         void  set_image_background(int bi);
+        void  set_color_title(int r, int g, int b, int a);
         void  set_color_normal(int r, int g, int b, int a);
         void  set_color_highlighted(int r, int g, int b, int a);
         void  set_color_disabled(int r, int g, int b, int a);
@@ -430,6 +440,7 @@ class menu_class
         void  set_achieve_position(int button_number, int int_data);
         bool  get_button_enabled(int button_number);
         void  set_button_enabled(int button_number, bool bool_data);
+        void  set_text_size(float width, float height);
         int   process(void);
 };
 

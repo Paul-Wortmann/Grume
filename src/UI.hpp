@@ -53,6 +53,7 @@ class action_slot_class
         bool  highlighted;
         bool  drag;
         int   button_type;
+        bool  mouse_over;
         int   mouse_over_count;
         int   tooltip_time;
         bool  tooltip_active;
@@ -73,6 +74,7 @@ class menu_slot_class
         bool  highlighted;
         bool  drag;
         int   button_type;
+        bool  mouse_over;
         int   mouse_over_count;
         int   tooltip_time;
         bool  tooltip_active;

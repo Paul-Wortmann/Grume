@@ -30,10 +30,43 @@ extern game_type      game;
 
 void update_save_data(void)
 {
+    save_data.save_version = 0.01f;
+    save_data.AB_MS_01     = game.UI.action_bar.menu_slot_01.button_type;
+    save_data.AB_MS_02     = game.UI.action_bar.menu_slot_02.button_type;
+    save_data.AB_MS_03     = game.UI.action_bar.menu_slot_03.button_type;
+    save_data.AB_MS_04     = game.UI.action_bar.menu_slot_04.button_type;
+    save_data.AB_MS_05     = game.UI.action_bar.menu_slot_05.button_type;
+    save_data.AB_MS_06     = game.UI.action_bar.menu_slot_06.button_type;
+    save_data.AB_AS_01     = game.UI.action_bar.action_slot_01.button_type;
+    save_data.AB_AS_02     = game.UI.action_bar.action_slot_02.button_type;
+    save_data.AB_AS_03     = game.UI.action_bar.action_slot_03.button_type;
+    save_data.AB_AS_04     = game.UI.action_bar.action_slot_04.button_type;
+    save_data.AB_AS_05     = game.UI.action_bar.action_slot_05.button_type;
+    save_data.AB_AS_06     = game.UI.action_bar.action_slot_06.button_type;
+    save_data.AB_AS_07     = game.UI.action_bar.action_slot_07.button_type;
+    save_data.AB_AS_08     = game.UI.action_bar.action_slot_08.button_type;
+    save_data.AB_AS_09     = game.UI.action_bar.action_slot_09.button_type;
+    save_data.AB_AS_10     = game.UI.action_bar.action_slot_10.button_type;
 };
 
 void update_game_data(void)
 {
+    game.UI.action_bar.menu_slot_01.button_type       = save_data.AB_MS_01;
+    game.UI.action_bar.menu_slot_02.button_type       = save_data.AB_MS_02;
+    game.UI.action_bar.menu_slot_03.button_type       = save_data.AB_MS_03;
+    game.UI.action_bar.menu_slot_04.button_type       = save_data.AB_MS_04;
+    game.UI.action_bar.menu_slot_05.button_type       = save_data.AB_MS_05;
+    game.UI.action_bar.menu_slot_06.button_type       = save_data.AB_MS_06;
+    game.UI.action_bar.action_slot_01.button_type     = save_data.AB_AS_01;
+    game.UI.action_bar.action_slot_02.button_type     = save_data.AB_AS_02;
+    game.UI.action_bar.action_slot_03.button_type     = save_data.AB_AS_03;
+    game.UI.action_bar.action_slot_04.button_type     = save_data.AB_AS_04;
+    game.UI.action_bar.action_slot_05.button_type     = save_data.AB_AS_05;
+    game.UI.action_bar.action_slot_06.button_type     = save_data.AB_AS_06;
+    game.UI.action_bar.action_slot_07.button_type     = save_data.AB_AS_07;
+    game.UI.action_bar.action_slot_08.button_type     = save_data.AB_AS_08;
+    game.UI.action_bar.action_slot_09.button_type     = save_data.AB_AS_09;
+    game.UI.action_bar.action_slot_10.button_type     = save_data.AB_AS_10;
 };
 
 

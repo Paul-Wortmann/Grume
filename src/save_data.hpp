@@ -31,11 +31,28 @@
 
 struct save_data_type
 {
-    int                  save_version;
+    float                save_version;
+    int                  AB_MS_01;
+    int                  AB_MS_02;
+    int                  AB_MS_03;
+    int                  AB_MS_04;
+    int                  AB_MS_05;
+    int                  AB_MS_06;
+    int                  AB_AS_01;
+    int                  AB_AS_02;
+    int                  AB_AS_03;
+    int                  AB_AS_04;
+    int                  AB_AS_05;
+    int                  AB_AS_06;
+    int                  AB_AS_07;
+    int                  AB_AS_08;
+    int                  AB_AS_09;
+    int                  AB_AS_10;
 };
 
 void update_save_data(void);
 void update_game_data(void);
 
 #endif // SAVE_DATA_H
+
 

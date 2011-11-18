@@ -291,24 +291,24 @@ void button_class::draw(void)
         switch(button_class::get_font())
         {
             case 1:
-                if ((!button_class::enabled) && ( button_class::highlighted)) game.font.font_1.Write(button_class::disabled_color_r   ,button_class::disabled_color_g   ,button_class::disabled_color_b   ,button_class::disabled_color_a   ,button_class::pos_x-button_class::width/2.4,button_class::pos_y-button_class::height/3,1.8f+(button_class::zoom_size/2),14.0f+(button_class::zoom_size/2),button_class::label);
-                if ((!button_class::enabled) && (!button_class::highlighted)) game.font.font_1.Write(button_class::disabled_color_r   ,button_class::disabled_color_g   ,button_class::disabled_color_b   ,button_class::disabled_color_a   ,button_class::pos_x-button_class::width/2.4,button_class::pos_y-button_class::height/3,1.8f+(button_class::zoom_size/2),14.0f+(button_class::zoom_size/2),button_class::label);
-                if (( button_class::enabled) && ( button_class::highlighted)) game.font.font_1.Write(button_class::highlighted_color_r,button_class::highlighted_color_g,button_class::highlighted_color_b,button_class::highlighted_color_a,button_class::pos_x-button_class::width/2.4,button_class::pos_y-button_class::height/3,1.8f+(button_class::zoom_size/2),14.0f+(button_class::zoom_size/2),button_class::label);
-                if (( button_class::enabled) && (!button_class::highlighted)) game.font.font_1.Write(button_class::normal_color_r     ,button_class::normal_color_g     ,button_class::normal_color_b     ,button_class::normal_color_a     ,button_class::pos_x-button_class::width/2.4,button_class::pos_y-button_class::height/3,1.8f+(button_class::zoom_size/2),14.0f+(button_class::zoom_size/2),button_class::label);
+                if ((!button_class::enabled) && ( button_class::highlighted)) game.font.font_1.Write(button_class::disabled_color_r   ,button_class::disabled_color_g   ,button_class::disabled_color_b   ,button_class::disabled_color_a   ,button_class::pos_x-button_class::width/2.4,button_class::pos_y-button_class::height/3,button_class::text_width+(button_class::zoom_size/2),button_class::text_height+(button_class::zoom_size/2),button_class::label);
+                if ((!button_class::enabled) && (!button_class::highlighted)) game.font.font_1.Write(button_class::disabled_color_r   ,button_class::disabled_color_g   ,button_class::disabled_color_b   ,button_class::disabled_color_a   ,button_class::pos_x-button_class::width/2.4,button_class::pos_y-button_class::height/3,button_class::text_width+(button_class::zoom_size/2),button_class::text_height+(button_class::zoom_size/2),button_class::label);
+                if (( button_class::enabled) && ( button_class::highlighted)) game.font.font_1.Write(button_class::highlighted_color_r,button_class::highlighted_color_g,button_class::highlighted_color_b,button_class::highlighted_color_a,button_class::pos_x-button_class::width/2.4,button_class::pos_y-button_class::height/3,button_class::text_width+(button_class::zoom_size/2),button_class::text_height+(button_class::zoom_size/2),button_class::label);
+                if (( button_class::enabled) && (!button_class::highlighted)) game.font.font_1.Write(button_class::normal_color_r     ,button_class::normal_color_g     ,button_class::normal_color_b     ,button_class::normal_color_a     ,button_class::pos_x-button_class::width/2.4,button_class::pos_y-button_class::height/3,button_class::text_width+(button_class::zoom_size/2),button_class::text_height+(button_class::zoom_size/2),button_class::label);
             break;
 /*
             case 2:
-                if ((!button_class::enabled) && ( button_class::highlighted)) game.font.font_2.Write(button_class::disabled_color_r   ,button_class::disabled_color_g   ,button_class::disabled_color_b   ,button_class::disabled_color_a   ,button_class::pos_x-button_class::width/2.4,button_class::pos_y-button_class::height/3,1.7f+(button_class::zoom_size/2),16.0f+(button_class::zoom_size/2),button_class::label);
-                if ((!button_class::enabled) && (!button_class::highlighted)) game.font.font_2.Write(button_class::disabled_color_r   ,button_class::disabled_color_g   ,button_class::disabled_color_b   ,button_class::disabled_color_a   ,button_class::pos_x-button_class::width/2.4,button_class::pos_y-button_class::height/3,1.7f+(button_class::zoom_size/2),16.0f+(button_class::zoom_size/2),button_class::label);
-                if (( button_class::enabled) && ( button_class::highlighted)) game.font.font_2.Write(button_class::highlighted_color_r,button_class::highlighted_color_g,button_class::highlighted_color_b,button_class::highlighted_color_a,button_class::pos_x-button_class::width/2.4,button_class::pos_y-button_class::height/3,1.7f+(button_class::zoom_size/2),16.0f+(button_class::zoom_size/2),button_class::label);
-                if (( button_class::enabled) && (!button_class::highlighted)) game.font.font_2.Write(button_class::normal_color_r     ,button_class::normal_color_g     ,button_class::normal_color_b     ,button_class::normal_color_a     ,button_class::pos_x-button_class::width/2.4,button_class::pos_y-button_class::height/3,1.7f+(button_class::zoom_size/2),16.0f+(button_class::zoom_size/2),button_class::label);
+                if ((!button_class::enabled) && ( button_class::highlighted)) game.font.font_2.Write(button_class::disabled_color_r   ,button_class::disabled_color_g   ,button_class::disabled_color_b   ,button_class::disabled_color_a   ,button_class::pos_x-button_class::width/2.4,button_class::pos_y-button_class::height/3,button_class::text_width+(button_class::zoom_size/2),button_class::text_height+(button_class::zoom_size/2),button_class::label);
+                if ((!button_class::enabled) && (!button_class::highlighted)) game.font.font_2.Write(button_class::disabled_color_r   ,button_class::disabled_color_g   ,button_class::disabled_color_b   ,button_class::disabled_color_a   ,button_class::pos_x-button_class::width/2.4,button_class::pos_y-button_class::height/3,button_class::text_width+(button_class::zoom_size/2),button_class::text_height+(button_class::zoom_size/2),button_class::label);
+                if (( button_class::enabled) && ( button_class::highlighted)) game.font.font_2.Write(button_class::highlighted_color_r,button_class::highlighted_color_g,button_class::highlighted_color_b,button_class::highlighted_color_a,button_class::pos_x-button_class::width/2.4,button_class::pos_y-button_class::height/3,button_class::text_width+(button_class::zoom_size/2),button_class::text_height+(button_class::zoom_size/2),button_class::label);
+                if (( button_class::enabled) && (!button_class::highlighted)) game.font.font_2.Write(button_class::normal_color_r     ,button_class::normal_color_g     ,button_class::normal_color_b     ,button_class::normal_color_a     ,button_class::pos_x-button_class::width/2.4,button_class::pos_y-button_class::height/3,button_class::text_width+(button_class::zoom_size/2),button_class::text_height+(button_class::zoom_size/2),button_class::label);
             break;
 */
             default:
-                if ((!button_class::enabled) && ( button_class::highlighted)) game.font.font_1.Write(button_class::disabled_color_r   ,button_class::disabled_color_g   ,button_class::disabled_color_b   ,button_class::disabled_color_a   ,button_class::pos_x-button_class::width/2.4,button_class::pos_y-button_class::height/3,1.8f+(button_class::zoom_size/2),14.0f+(button_class::zoom_size/2),button_class::label);
-                if ((!button_class::enabled) && (!button_class::highlighted)) game.font.font_1.Write(button_class::disabled_color_r   ,button_class::disabled_color_g   ,button_class::disabled_color_b   ,button_class::disabled_color_a   ,button_class::pos_x-button_class::width/2.4,button_class::pos_y-button_class::height/3,1.8f+(button_class::zoom_size/2),14.0f+(button_class::zoom_size/2),button_class::label);
-                if (( button_class::enabled) && ( button_class::highlighted)) game.font.font_1.Write(button_class::highlighted_color_r,button_class::highlighted_color_g,button_class::highlighted_color_b,button_class::highlighted_color_a,button_class::pos_x-button_class::width/2.4,button_class::pos_y-button_class::height/3,1.8f+(button_class::zoom_size/2),14.0f+(button_class::zoom_size/2),button_class::label);
-                if (( button_class::enabled) && (!button_class::highlighted)) game.font.font_1.Write(button_class::normal_color_r     ,button_class::normal_color_g     ,button_class::normal_color_b     ,button_class::normal_color_a     ,button_class::pos_x-button_class::width/2.4,button_class::pos_y-button_class::height/3,1.8f+(button_class::zoom_size/2),14.0f+(button_class::zoom_size/2),button_class::label);
+                if ((!button_class::enabled) && ( button_class::highlighted)) game.font.font_1.Write(button_class::disabled_color_r   ,button_class::disabled_color_g   ,button_class::disabled_color_b   ,button_class::disabled_color_a   ,button_class::pos_x-button_class::width/2.4,button_class::pos_y-button_class::height/3,button_class::text_width+(button_class::zoom_size/2),button_class::text_height+(button_class::zoom_size/2),button_class::label);
+                if ((!button_class::enabled) && (!button_class::highlighted)) game.font.font_1.Write(button_class::disabled_color_r   ,button_class::disabled_color_g   ,button_class::disabled_color_b   ,button_class::disabled_color_a   ,button_class::pos_x-button_class::width/2.4,button_class::pos_y-button_class::height/3,button_class::text_width+(button_class::zoom_size/2),button_class::text_height+(button_class::zoom_size/2),button_class::label);
+                if (( button_class::enabled) && ( button_class::highlighted)) game.font.font_1.Write(button_class::highlighted_color_r,button_class::highlighted_color_g,button_class::highlighted_color_b,button_class::highlighted_color_a,button_class::pos_x-button_class::width/2.4,button_class::pos_y-button_class::height/3,button_class::text_width+(button_class::zoom_size/2),button_class::text_height+(button_class::zoom_size/2),button_class::label);
+                if (( button_class::enabled) && (!button_class::highlighted)) game.font.font_1.Write(button_class::normal_color_r     ,button_class::normal_color_g     ,button_class::normal_color_b     ,button_class::normal_color_a     ,button_class::pos_x-button_class::width/2.4,button_class::pos_y-button_class::height/3,button_class::text_width+(button_class::zoom_size/2),button_class::text_height+(button_class::zoom_size/2),button_class::label);
             break;
         }
     };
@@ -389,15 +389,15 @@ void button_class::draw(void)
         switch(button_class::get_font()) //write selected level name
         {
             case 1:
-                game.font.font_1.Write(button_class::highlighted_color_r,button_class::highlighted_color_g,button_class::highlighted_color_b,button_class::highlighted_color_a,((button_class::arrow_width/3) *4)+button_class::arrow_left_pos_x-(button_class::arrow_width/2)-(button_class::get_zoom_size_counter()/2),button_class::arrow_left_pos_y-((button_class::arrow_height/5)*4)-(button_class::get_zoom_size_counter()/2),1.8f+(button_class::zoom_size/2),14.0f+(button_class::zoom_size/2),temp_label);
+                game.font.font_1.Write(button_class::highlighted_color_r,button_class::highlighted_color_g,button_class::highlighted_color_b,button_class::highlighted_color_a,((button_class::arrow_width/3) *4)+button_class::arrow_left_pos_x-(button_class::arrow_width/2)-(button_class::get_zoom_size_counter()/2),button_class::arrow_left_pos_y-((button_class::arrow_height/5)*4)-(button_class::get_zoom_size_counter()/2),button_class::text_width+(button_class::zoom_size/2),button_class::text_height+(button_class::zoom_size/2),temp_label);
             break;
 /*
             case 2:
-                game.font.font_2.Write(button_class::highlighted_color_r,button_class::highlighted_color_g,button_class::highlighted_color_b,button_class::highlighted_color_a,((button_class::arrow_width/3) *4)+button_class::arrow_left_pos_x-(button_class::arrow_width/2)-(button_class::get_zoom_size_counter()/2),button_class::arrow_left_pos_y-((button_class::arrow_height/5)*4)-(button_class::get_zoom_size_counter()/2),1.7f+(button_class::zoom_size/2),16.0f+(button_class::zoom_size/2),temp_label);
+                game.font.font_2.Write(button_class::highlighted_color_r,button_class::highlighted_color_g,button_class::highlighted_color_b,button_class::highlighted_color_a,((button_class::arrow_width/3) *4)+button_class::arrow_left_pos_x-(button_class::arrow_width/2)-(button_class::get_zoom_size_counter()/2),button_class::arrow_left_pos_y-((button_class::arrow_height/5)*4)-(button_class::get_zoom_size_counter()/2),button_class::text_width+(button_class::zoom_size/2),button_class::text_height+(button_class::zoom_size/2),temp_label);
             break;
 */
             default:
-                game.font.font_1.Write(button_class::highlighted_color_r,button_class::highlighted_color_g,button_class::highlighted_color_b,button_class::highlighted_color_a,((button_class::arrow_width/3) *4)+button_class::arrow_left_pos_x-(button_class::arrow_width/2)-(button_class::get_zoom_size_counter()/2),button_class::arrow_left_pos_y-((button_class::arrow_height/5)*4)-(button_class::get_zoom_size_counter()/2),1.8f+(button_class::zoom_size/2),14.0f+(button_class::zoom_size/2),temp_label);
+                game.font.font_1.Write(button_class::highlighted_color_r,button_class::highlighted_color_g,button_class::highlighted_color_b,button_class::highlighted_color_a,((button_class::arrow_width/3) *4)+button_class::arrow_left_pos_x-(button_class::arrow_width/2)-(button_class::get_zoom_size_counter()/2),button_class::arrow_left_pos_y-((button_class::arrow_height/5)*4)-(button_class::get_zoom_size_counter()/2),button_class::text_width+(button_class::zoom_size/2),button_class::text_height+(button_class::zoom_size/2),temp_label);
             break;
         };
     }
@@ -432,15 +432,15 @@ void button_class::draw(void)
         switch(button_class::get_font()) //write selected level name
         {
             case 1:
-                game.font.font_1.Write(button_class::highlighted_color_r,button_class::highlighted_color_g,button_class::highlighted_color_b,button_class::highlighted_color_a,button_class::pos_x-button_class::width/2.4,button_class::pos_y-button_class::height/3,1.8f+(button_class::zoom_size/2),14.0f+(button_class::zoom_size/2),button_class::label);
+                game.font.font_1.Write(button_class::highlighted_color_r,button_class::highlighted_color_g,button_class::highlighted_color_b,button_class::highlighted_color_a,button_class::pos_x-button_class::width/2.4,button_class::pos_y-button_class::height/3,button_class::text_width+(button_class::zoom_size/2),button_class::text_height+(button_class::zoom_size/2),button_class::label);
             break;
 /*
             case 2:
-                game.font.font_2.Write(button_class::highlighted_color_r,button_class::highlighted_color_g,button_class::highlighted_color_b,button_class::highlighted_color_a,button_class::pos_x-button_class::width/2.4,button_class::pos_y-button_class::height/3,1.7f+(button_class::zoom_size/2),16.0f+(button_class::zoom_size/2),button_class::label);
+                game.font.font_2.Write(button_class::highlighted_color_r,button_class::highlighted_color_g,button_class::highlighted_color_b,button_class::highlighted_color_a,button_class::pos_x-button_class::width/2.4,button_class::pos_y-button_class::height/3,button_class::text_width+(button_class::zoom_size/2),button_class::text_height+(button_class::zoom_size/2),button_class::label);
             break;
 */
             default:
-                game.font.font_1.Write(button_class::highlighted_color_r,button_class::highlighted_color_g,button_class::highlighted_color_b,button_class::highlighted_color_a,button_class::pos_x-button_class::width/2.4,button_class::pos_y-button_class::height/3,1.8f+(button_class::zoom_size/2),14.0f+(button_class::zoom_size/2),button_class::label);
+                game.font.font_1.Write(button_class::highlighted_color_r,button_class::highlighted_color_g,button_class::highlighted_color_b,button_class::highlighted_color_a,button_class::pos_x-button_class::width/2.4,button_class::pos_y-button_class::height/3,button_class::text_width+(button_class::zoom_size/2),button_class::text_height+(button_class::zoom_size/2),button_class::label);
             break;
         };
     }
@@ -463,15 +463,15 @@ void button_class::draw(void)
         switch(button_class::get_font()) //write selected level name
         {
             case 1:
-                game.font.font_1.Write(button_class::highlighted_color_r,button_class::highlighted_color_g,button_class::highlighted_color_b,button_class::highlighted_color_a,button_class::pos_x-button_class::width/2.4,button_class::pos_y+button_class::height/3,1.8f+(button_class::zoom_size/2),14.0f+(button_class::zoom_size/2),button_class::label);
+                game.font.font_1.Write(button_class::highlighted_color_r,button_class::highlighted_color_g,button_class::highlighted_color_b,button_class::highlighted_color_a,button_class::pos_x-button_class::width/2.4,button_class::pos_y+button_class::height/3,button_class::text_width+(button_class::zoom_size/2),button_class::text_height+(button_class::zoom_size/2),button_class::label);
             break;
 /*
             case 2:
-                game.font.font_2.Write(button_class::highlighted_color_r,button_class::highlighted_color_g,button_class::highlighted_color_b,button_class::highlighted_color_a,button_class::pos_x-button_class::width/2.4,button_class::pos_y+button_class::height/3,1.7f+(button_class::zoom_size/2),16.0f+(button_class::zoom_size/2),button_class::label);
+                game.font.font_2.Write(button_class::highlighted_color_r,button_class::highlighted_color_g,button_class::highlighted_color_b,button_class::highlighted_color_a,button_class::pos_x-button_class::width/2.4,button_class::pos_y+button_class::height/3,button_class::text_width+(button_class::zoom_size/2),button_class::text_height+(button_class::zoom_size/2),button_class::label);
             break;
 */
             default:
-                game.font.font_1.Write(button_class::highlighted_color_r,button_class::highlighted_color_g,button_class::highlighted_color_b,button_class::highlighted_color_a,button_class::pos_x-button_class::width/2.4,button_class::pos_y+button_class::height/3,1.8f+(button_class::zoom_size/2),14.0f+(button_class::zoom_size/2),button_class::label);
+                game.font.font_1.Write(button_class::highlighted_color_r,button_class::highlighted_color_g,button_class::highlighted_color_b,button_class::highlighted_color_a,button_class::pos_x-button_class::width/2.4,button_class::pos_y+button_class::height/3,button_class::text_width+(button_class::zoom_size/2),button_class::text_height+(button_class::zoom_size/2),button_class::label);
             break;
         };
     }
@@ -937,6 +937,12 @@ bool  button_class::get_enabled(void)
     return(button_class::enabled);
 };
 
+void  button_class::set_text_size(float width, float height)
+{
+    button_class::text_width  = width;
+    button_class::text_height = height;
+};
+
 //------------------------------------------ menu ---------------------------------------------------------------------------------------
 //------------------------------------------ menu ---------------------------------------------------------------------------------------
 //------------------------------------------ menu ---------------------------------------------------------------------------------------
@@ -989,15 +995,15 @@ void menu_class::draw(void)
     switch(menu_class::menu_font) // title text
     {
         case 1:
-            game.font.font_1.Write(menu_class::highlighted_color_r,menu_class::highlighted_color_g,menu_class::highlighted_color_b,menu_class::highlighted_color_a,menu_class::title_pos_x-menu_class::title_width/2.4,menu_class::title_pos_y-menu_class::title_height/4,1.7f,18.0f,menu_class::title_label);
+            game.font.font_1.Write(menu_class::title_color_r,menu_class::title_color_g,menu_class::title_color_b,menu_class::title_color_a,menu_class::title_pos_x-menu_class::title_width/3.4,menu_class::title_pos_y-menu_class::title_height/1.8f,menu_class::text_width,menu_class::text_height,menu_class::title_label);
         break;
 /*
         case 2:
-            game.font.font_2.Write(menu_class::highlighted_color_r,menu_class::highlighted_color_g,menu_class::highlighted_color_b,menu_class::highlighted_color_a,menu_class::title_pos_x-menu_class::title_width/2.4,menu_class::title_pos_y-menu_class::title_height/3,1.7f,16.0f,menu_class::title_label);
+            game.font.font_2.Write(menu_class::title_color_r,menu_class::title_color_g,menu_class::title_color_b,menu_class::title_color_a,menu_class::title_pos_x-menu_class::title_width/3.4,menu_class::title_pos_y-menu_class::title_height/1.8f,menu_class::text_width,menu_class::text_height,menu_class::title_label);
         break;
 */
         default:
-            game.font.font_1.Write(menu_class::highlighted_color_r,menu_class::highlighted_color_g,menu_class::highlighted_color_b,menu_class::highlighted_color_a,menu_class::title_pos_x-menu_class::title_width/2.4,menu_class::title_pos_y-menu_class::title_height/3,1.7f,12.0f,menu_class::title_label);
+            game.font.font_1.Write(menu_class::title_color_r,menu_class::title_color_g,menu_class::title_color_b,menu_class::title_color_a,menu_class::title_pos_x-menu_class::title_width/3.4,menu_class::title_pos_y-menu_class::title_height/1.8f,menu_class::text_width,menu_class::text_height,menu_class::title_label);
         break;
     }
     for (int button_count = 1; button_count <= menu_class::number_of_buttons; button_count++)
@@ -1007,6 +1013,13 @@ void menu_class::draw(void)
     menu_class::close_button.draw();
 };
 
+void menu_class::set_color_title(int r, int g, int b, int a)
+{
+    menu_class::title_color_r = r;
+    menu_class::title_color_g = g;
+    menu_class::title_color_b = b;
+    menu_class::title_color_a = a;
+};
 
 void menu_class::set_color_normal(int r, int g, int b, int a)
 {
@@ -1485,12 +1498,11 @@ void  menu_class::set_title_data(float x, float y, float z, float w, float h, st
 
 bool  menu_class::mouse_over_title(void)
 {
-    return(game.core.physics.point_in_quadrangle(menu_class::title_pos_x,menu_class::title_width,menu_class::title_pos_y,menu_class::title_height,game.core.io.mouse_x,game.core.io.mouse_y));
+    return(game.core.physics.point_in_quadrangle(menu_class::pos_x,menu_class::button_width,menu_class::title_pos_y,menu_class::button_height,game.core.io.mouse_x,game.core.io.mouse_y));
 };
-
 bool  menu_class::mouse_click_title(void)
 {
-    if (game.core.io.mouse_button_left) return(game.core.physics.point_in_quadrangle(menu_class::title_pos_x,menu_class::title_width,menu_class::title_pos_y,menu_class::title_height,game.core.io.mouse_x,game.core.io.mouse_y));
+    if (game.core.io.mouse_button_left) return(menu_class::mouse_over_title());
     else return(false);
 };
 
@@ -2074,6 +2086,16 @@ int menu_class::process(void)
 
     //---- return ----
     return(return_value);
+};
+
+void  menu_class::set_text_size(float width, float height)
+{
+    menu_class::text_width  = width;
+    menu_class::text_height = height;
+    for (int button_count = 1; button_count <= menu_class::number_of_buttons; button_count++)
+    {
+        menu_class::button[button_count].set_text_size(width,height);
+    }
 };
 
 
