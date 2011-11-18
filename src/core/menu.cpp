@@ -1331,7 +1331,7 @@ void menu_class::set_button_font(int button_number)
 void menu_class::set_button_size_auto(void)
 {
     menu_class::button_width  = (menu_class::width / 100.0f) * 90.0f;
-    menu_class::button_height = (menu_class::height / (menu_class::number_of_buttons+((menu_class::number_of_buttons + 4) / 2)));
+    menu_class::button_height = (menu_class::height / (menu_class::number_of_buttons+(((menu_class::number_of_buttons + 4)) / 2)));
     set_button_size(menu_class::button_width,menu_class::button_height);
     for (int button_count = 1; button_count <= menu_class::number_of_buttons; button_count++)
     {
@@ -1447,11 +1447,79 @@ void  menu_class::set_close_button_data(int in, int ih)
     float z = 0.0f;
     float w = 0.0f;
     float h = 0.0f;
-    w = (menu_class::button_spacing / 100.0f) * 60.0f;
-    h = (menu_class::button_spacing / 100.0f) * 60.0f;
-    x = (menu_class::pos_x+(menu_class::width /2))-((w/100)*58);
-    y = (menu_class::pos_y+(menu_class::height/2))-((h/100)*65);
-    z = menu_class::pos_z;
+    switch (menu_class::number_of_buttons)
+    {
+        case 1:
+            w = (menu_class::button_spacing / 100.0f) * 60.0f;
+            h = (menu_class::button_spacing / 100.0f) * 60.0f;
+            x = (menu_class::pos_x+(menu_class::width /2))-((w/100)*58);
+            y = (menu_class::pos_y+(menu_class::height/2))-((h/100)*65);
+            z = menu_class::pos_z;
+        break;
+        case 2:
+            w = (menu_class::button_spacing / 100.0f) * 60.0f;
+            h = (menu_class::button_spacing / 100.0f) * 60.0f;
+            x = (menu_class::pos_x+(menu_class::width /2))-((w/100)*58);
+            y = (menu_class::pos_y+(menu_class::height/2))-((h/100)*65);
+            z = menu_class::pos_z;
+        break;
+        case 3:
+            w = (menu_class::button_spacing / 100.0f) * 60.0f;
+            h = (menu_class::button_spacing / 100.0f) * 60.0f;
+            x = (menu_class::pos_x+(menu_class::width /2))-((w/100)*58);
+            y = (menu_class::pos_y+(menu_class::height/2))-((h/100)*65);
+            z = menu_class::pos_z;
+        break;
+        case 4:
+            w = (menu_class::button_spacing / 100.0f) * 60.0f;
+            h = (menu_class::button_spacing / 100.0f) * 60.0f;
+            x = (menu_class::pos_x+(menu_class::width /2))-((w/100)*58);
+            y = (menu_class::pos_y+(menu_class::height/2))-((h/100)*65);
+            z = menu_class::pos_z;
+        break;
+        case 5:
+            w = (menu_class::button_spacing / 100.0f) * 60.0f;
+            h = (menu_class::button_spacing / 100.0f) * 60.0f;
+            x = (menu_class::pos_x+(menu_class::width /2))-((w/100)*58);
+            y = (menu_class::pos_y+(menu_class::height/2))-((h/100)*65);
+            z = menu_class::pos_z;
+        break;
+        case 6:
+            w = (menu_class::button_spacing / 100.0f) * 60.0f;
+            h = (menu_class::button_spacing / 100.0f) * 60.0f;
+            x = (menu_class::pos_x+(menu_class::width /2))-((w/100)*58);
+            y = (menu_class::pos_y+(menu_class::height/2))-((h/100)*65);
+            z = menu_class::pos_z;
+        break;
+        case 7://ok
+            w = (menu_class::button_spacing / 100.0f) * 60.0f;
+            h = (menu_class::button_spacing / 100.0f) * 60.0f;
+            x = (menu_class::pos_x+(menu_class::width /2))-((w/100)*58);
+            y = (menu_class::pos_y+(menu_class::height/2))-((h/100)*65);
+            z = menu_class::pos_z;
+        break;
+        case 8:
+            w = (menu_class::button_spacing / 100.0f) * 60.0f;
+            h = (menu_class::button_spacing / 100.0f) * 60.0f;
+            x = (menu_class::pos_x+(menu_class::width /2))-((w/100)*58);
+            y = (menu_class::pos_y+(menu_class::height/2))-((h/100)*65);
+            z = menu_class::pos_z;
+        break;
+        case 9:
+            w = (menu_class::button_spacing / 100.0f) * 60.0f;
+            h = (menu_class::button_spacing / 100.0f) * 60.0f;
+            x = (menu_class::pos_x+(menu_class::width /2))-((w/100)*58);
+            y = (menu_class::pos_y+(menu_class::height/2))-((h/100)*65);
+            z = menu_class::pos_z;
+        break;
+        default:
+            w = (menu_class::button_spacing / 100.0f) * 60.0f;
+            h = (menu_class::button_spacing / 100.0f) * 60.0f;
+            x = (menu_class::pos_x+(menu_class::width /2))-((w/100)*58);
+            y = (menu_class::pos_y+(menu_class::height/2))-((h/100)*65);
+            z = menu_class::pos_z;
+        break;
+    }
     menu_class::close_button.set_button_type(CLOSE);
     menu_class::close_button.set_data(x,y,z,w,h,in,ih);
 };
@@ -1482,8 +1550,40 @@ void  menu_class::set_title_data(std::string menu_title)
     menu_class::title_height = ((menu_class::button_spacing/30)*2);
     menu_class::title_width  = (menu_class::width / 100.0f) * 40.0f;
     menu_class::title_pos_x  = menu_class::pos_x;
-    menu_class::title_pos_y  = menu_class::pos_y+(menu_class::height/2)-((menu_class::button_spacing/2));
     menu_class::title_pos_z  = menu_class::pos_z;
+    switch (menu_class::number_of_buttons)
+    {
+        case 1:
+            menu_class::title_pos_y  = menu_class::pos_y+(menu_class::height/3.8f);
+        break;
+        case 2:
+            menu_class::title_pos_y  = menu_class::pos_y+(menu_class::height/2.26f);
+        break;
+        case 3:
+            menu_class::title_pos_y  = menu_class::pos_y+(menu_class::height/2.27f);
+        break;
+        case 4:
+            menu_class::title_pos_y  = menu_class::pos_y+(menu_class::height/2.276f);
+        break;
+        case 5:
+            menu_class::title_pos_y  = menu_class::pos_y+(menu_class::height/2.2768f);
+        break;
+        case 6:
+            menu_class::title_pos_y  = menu_class::pos_y+(menu_class::height/2.27686f);
+        break;
+        case 7:
+            menu_class::title_pos_y  = menu_class::pos_y+(menu_class::height/2.27687f);
+        break;
+        case 8:
+            menu_class::title_pos_y  = menu_class::pos_y+(menu_class::height/2.2769f);
+        break;
+        case 9:
+            menu_class::title_pos_y  = menu_class::pos_y+(menu_class::height/2.277f);
+        break;
+        default:
+            menu_class::title_pos_y  = 0.0f;
+        break;
+    }
 };
 
 void  menu_class::set_title_data(float x, float y, float z, float w, float h, std::string menu_title)
