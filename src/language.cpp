@@ -69,7 +69,11 @@ language_class::language_class(void)
     language_class::text.game_over             = "Game Over           ";
     language_class::text.game_completed        = "Game Completed      ";
     language_class::text.game_paused           = "Game Paused         ";
-    language_class::text.menu_item_unavailable = "Unavailable    ";
+    language_class::text.menu_item_unavailable = "Unavailable         ";
+    language_class::text.quest_log             = "Quest Log           ";
+    language_class::text.character_menu        = "Character Menu      ";
+    language_class::text.inventory             = "Inventory           ";
+    language_class::text.spell_book            = "Spell Book          ";
 };
 
 void language_class::load(std::string file_name)
@@ -164,6 +168,10 @@ void language_class::load(std::string file_name)
                     if (temp_string_key == "Game_Completed")        language_class::text.game_completed        = temp_string_data;
                     if (temp_string_key == "Game_Paused")           language_class::text.game_paused           = temp_string_data;
                     if (temp_string_key == "Menu_Item_Unavailable") language_class::text.menu_item_unavailable = temp_string_data;
+                    if (temp_string_key == "Quest_Log")             language_class::text.quest_log             = temp_string_data;
+                    if (temp_string_key == "Character_Menu")        language_class::text.character_menu        = temp_string_data;
+                    if (temp_string_key == "Inventory")             language_class::text.inventory             = temp_string_data;
+                    if (temp_string_key == "Spell_Book")            language_class::text.spell_book            = temp_string_data;
                 }
             }
         }

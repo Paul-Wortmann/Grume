@@ -53,6 +53,10 @@ class core_class
         bool              game_active;
         bool              game_resume;
         bool              menu_active;
+        bool              questbook_active;
+        bool              character_active;
+        bool              spellbook_active;
+        bool              inventory_active;
         bool              pdie_active;
         bool              nlvl_active;
         bool              outr_active;

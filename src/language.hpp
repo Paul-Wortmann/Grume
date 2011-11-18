@@ -62,6 +62,10 @@ struct text_type
     std::string    game_completed;
     std::string    game_paused;
     std::string    menu_item_unavailable;
+    std::string    quest_log;
+    std::string    character_menu;
+    std::string    inventory;
+    std::string    spell_book;
 };
 
 class language_class

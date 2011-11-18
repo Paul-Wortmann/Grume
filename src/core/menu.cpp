@@ -1534,10 +1534,10 @@ void  menu_class::set_close_button_data(int in, int ih)
             y = (menu_class::pos_y+(menu_class::height/2))-((h/100)*65);
             z = menu_class::pos_z;
         break;
-        case 7://ok
-            w = (menu_class::button_spacing / 100.0f) * 60.0f;
-            h = (menu_class::button_spacing / 100.0f) * 60.0f;
-            x = (menu_class::pos_x+(menu_class::width /2))-((w/100)*58);
+        case 7:
+            w = (menu_class::button_spacing / 100.0f) * 70.0f;
+            h = (menu_class::button_spacing / 100.0f) * 70.0f;
+            x = (menu_class::pos_x+(menu_class::width /2))-((w/100)*56);
             y = (menu_class::pos_y+(menu_class::height/2))-((h/100)*65);
             z = menu_class::pos_z;
         break;
@@ -1549,9 +1549,9 @@ void  menu_class::set_close_button_data(int in, int ih)
             z = menu_class::pos_z;
         break;
         case 9:
-            w = (menu_class::button_spacing / 100.0f) * 60.0f;
-            h = (menu_class::button_spacing / 100.0f) * 60.0f;
-            x = (menu_class::pos_x+(menu_class::width /2))-((w/100)*58);
+            w = (menu_class::button_spacing / 100.0f) * 85.0f;
+            h = (menu_class::button_spacing / 100.0f) * 85.0f;
+            x = (menu_class::pos_x+(menu_class::width /2))-((w/100)*60);
             y = (menu_class::pos_y+(menu_class::height/2))-((h/100)*65);
             z = menu_class::pos_z;
         break;

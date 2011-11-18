@@ -66,6 +66,7 @@ class action_slot_class
        ~action_slot_class(void);
         void process(void);
         void draw(void);
+        void draw_tooltip(void);
 };
 
 class menu_slot_class
@@ -87,6 +88,7 @@ class menu_slot_class
        ~menu_slot_class(void);
         void process(void);
         void draw(void);
+        void draw_tooltip(void);
 };
 
 class action_bar_class

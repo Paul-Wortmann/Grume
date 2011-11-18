@@ -311,15 +311,32 @@ int process_menu(void)
                 game.sound.menu_move_00.play();
             break;
             case 65534:// escape pressed on keyboard.
-                game.sound.menu_select_00.play();
-                game.core.status_quit_active = true;
-                game.core.io.escape               = false;
-                game.core.log.File_Write("User terminating game - keyboard escape pressed!");
+                if (!game.core.game_active)
+                {
+                    game.sound.menu_select_00.play();
+                    game.core.status_quit_active = true;
+                    game.core.io.escape               = false;
+                    game.core.log.File_Write("User terminating game - keyboard escape pressed!");
+                }
+                else
+                {
+                    game.sound.menu_select_00.play();
+                    game.core.menu_active = false;
+                }
             break;
             case 65535:// close button clicked.
-                game.sound.menu_select_00.play();
-                game.core.status_quit_active = true;
-                game.core.log.File_Write("User terminating game - clicked escape button!");
+                if (!game.core.game_active)
+                {
+                    game.sound.menu_select_00.play();
+                    game.core.status_quit_active = true;
+                    game.core.io.escape               = false;
+                    game.core.log.File_Write("User terminating game - clicked escape button!");
+                }
+                else
+                {
+                    game.sound.menu_select_00.play();
+                    game.core.menu_active = false;
+                }
             break;
             default:
             break;

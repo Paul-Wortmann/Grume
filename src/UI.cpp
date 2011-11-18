@@ -104,6 +104,11 @@ void action_slot_class::draw(void)
     game.texture.glass_cover_01.draw(false,action_slot_class::pos_x,action_slot_class::pos_y,action_slot_class::pos_z,action_slot_class::width,action_slot_class::height);
 };
 
+void action_slot_class::draw_tooltip(void)
+{
+
+};
+
 //----------------------------------------------------------------------------------------------------------------
 
     menu_slot_class::menu_slot_class(void)
@@ -129,20 +134,11 @@ void action_slot_class::draw(void)
 
 void menu_slot_class::process(void)
 {
+    //if mouse_over, drag, etc...
     if (menu_slot_class::mouse_over) menu_slot_class::mouse_over_count++;
     else menu_slot_class::mouse_over_count = 0;
     if (menu_slot_class::mouse_over_count > 65530) menu_slot_class::mouse_over_count = 65530;
-    if (menu_slot_class::mouse_over_count > menu_slot_class::tooltip_time)
-    {
-        switch (menu_slot_class::button_type) // display tool tip
-        {
-            case 1: // main menu
-            break;
-            default:
-            break;
-        }
-    }
-    if (game.core.physics.point_in_circle(menu_slot_class::pos_x,menu_slot_class::pos_y,menu_slot_class::height,game.core.io.mouse_x,game.core.io.mouse_y)) menu_slot_class::mouse_over = true;
+    if (game.core.physics.point_in_circle(menu_slot_class::pos_x,menu_slot_class::pos_y,(menu_slot_class::height/2),game.core.io.mouse_x,game.core.io.mouse_y)) menu_slot_class::mouse_over = true;
     else menu_slot_class::mouse_over = false;
     if ((menu_slot_class::mouse_over) && (game.core.io.mouse_button_left))
     {
@@ -152,7 +148,6 @@ void menu_slot_class::process(void)
                 if (!game.core.menu_active)
                 {
                     game.sound.menu_select_00.play();
-                    game.core.music_next_track        = true;
                     game.core.menu_level              = 1;
                     game.core.menu_active             = true;
                     game.core.io.escape               = false;
@@ -160,12 +155,53 @@ void menu_slot_class::process(void)
                     game.core.config.menu_delay_count = 0;
                 }
             break;
+            case 2: // NA??
+                if (!game.core.menu_active)
+                {
+                    game.sound.menu_select_00.play();
+                    game.core.menu_level              = 1;
+                    game.core.menu_active             = true;
+                    game.core.io.escape               = false;
+                    game.core.io.keyboard_delay_count = 0;
+                    game.core.config.menu_delay_count = 0;
+                }
+            break;
+            case 3: // Quest Log
+                if (!game.core.questbook_active)
+                {
+                    game.sound.menu_select_00.play();
+                    game.core.questbook_active        = true;
+                }
+            break;
+            case 4: // Character Menu
+                if (!game.core.character_active)
+                {
+                    game.sound.menu_select_00.play();
+                    game.core.character_active        = true;
+                }
+            break;
+            case 5: // Inventory
+                if (!game.core.inventory_active)
+                {
+                    game.sound.menu_select_00.play();
+                    game.core.inventory_active        = true;
+                }
+            break;
+            case 6: // Spell Book
+                if (!game.core.spellbook_active)
+                {
+                    game.sound.menu_select_00.play();
+                    game.core.spellbook_active        = true;
+                }
+            break;
             default:
             break;
         }
     }
-
-    //if mouse_over, drag, tool_tip etc...
+    if ((menu_slot_class::mouse_over) && (game.core.io.mouse_button_right))//drag
+    {
+        ;
+    }
 };
 
 void menu_slot_class::draw(void)
@@ -176,8 +212,36 @@ void menu_slot_class::draw(void)
     if (menu_slot_class::button_type == 4) game.texture.icon_04.draw(false,menu_slot_class::pos_x,menu_slot_class::pos_y,menu_slot_class::pos_z,menu_slot_class::width,menu_slot_class::height);
     if (menu_slot_class::button_type == 5) game.texture.icon_05.draw(false,menu_slot_class::pos_x,menu_slot_class::pos_y,menu_slot_class::pos_z,menu_slot_class::width,menu_slot_class::height);
     if (menu_slot_class::button_type == 6) game.texture.icon_06.draw(false,menu_slot_class::pos_x,menu_slot_class::pos_y,menu_slot_class::pos_z,menu_slot_class::width,menu_slot_class::height);
-
     game.texture.glass_cover_02.draw(false,menu_slot_class::pos_x,menu_slot_class::pos_y,menu_slot_class::pos_z,menu_slot_class::width,menu_slot_class::height);
+};
+
+void menu_slot_class::draw_tooltip(void)
+{
+    if (menu_slot_class::mouse_over_count > menu_slot_class::tooltip_time)
+    {
+        switch (menu_slot_class::button_type) // display tool tip
+        {
+            case 1: // main menu
+                game.font.font_1.Write(255,255,255,255,game.core.io.mouse_x,game.core.io.mouse_y,4.8f,32.0f,game.language.text.main_menu);
+            break;
+            case 2: // NA??
+                game.font.font_1.Write(255,255,255,255,game.core.io.mouse_x,game.core.io.mouse_y,4.8f,32.0f,game.language.text.menu_item_unavailable);
+            break;
+            case 3: // Quest Log
+                game.font.font_1.Write(255,255,255,255,game.core.io.mouse_x,game.core.io.mouse_y,4.8f,32.0f,game.language.text.quest_log);
+            break;
+            case 4: // Character Menu
+                game.font.font_1.Write(255,255,255,255,game.core.io.mouse_x,game.core.io.mouse_y,4.8f,32.0f,game.language.text.character_menu);
+            break;
+            case 5: // Inventory
+                game.font.font_1.Write(255,255,255,255,game.core.io.mouse_x,game.core.io.mouse_y,4.8f,32.0f,game.language.text.inventory);
+            break;
+            case 6: // Spell Book
+                game.font.font_1.Write(255,255,255,255,game.core.io.mouse_x,game.core.io.mouse_y,4.8f,32.0f,game.language.text.spell_book);
+            default:
+            break;
+        }
+    }
 };
 
 //----------------------------------------------------------------------------------------------------------------
@@ -236,6 +300,22 @@ void action_bar_class::draw(void)
     action_bar_class::menu_slot_04.draw();
     action_bar_class::menu_slot_05.draw();
     action_bar_class::menu_slot_06.draw();
+    action_bar_class::menu_slot_01.draw_tooltip();
+    action_bar_class::menu_slot_02.draw_tooltip();
+    action_bar_class::menu_slot_03.draw_tooltip();
+    action_bar_class::menu_slot_04.draw_tooltip();
+    action_bar_class::menu_slot_05.draw_tooltip();
+    action_bar_class::menu_slot_06.draw_tooltip();
+    action_bar_class::action_slot_01.draw_tooltip();
+    action_bar_class::action_slot_02.draw_tooltip();
+    action_bar_class::action_slot_03.draw_tooltip();
+    action_bar_class::action_slot_04.draw_tooltip();
+    action_bar_class::action_slot_05.draw_tooltip();
+    action_bar_class::action_slot_06.draw_tooltip();
+    action_bar_class::action_slot_07.draw_tooltip();
+    action_bar_class::action_slot_08.draw_tooltip();
+    action_bar_class::action_slot_09.draw_tooltip();
+    action_bar_class::action_slot_10.draw_tooltip();
 };
 
 //----------------------------------------------------------------------------------------------------------------
@@ -277,7 +357,7 @@ void action_bar_class::draw(void)
     game.UI.action_bar.menu_slot_05.pos_z         =  game.UI.action_bar.pos_z;
     game.UI.action_bar.menu_slot_05.width         =  game.UI.action_bar.height/2.34f;
     game.UI.action_bar.menu_slot_05.height        =  game.UI.action_bar.height/2.34f;
-    game.UI.action_bar.menu_slot_06.button_type   =  5;
+    game.UI.action_bar.menu_slot_06.button_type   =  6;
     game.UI.action_bar.menu_slot_06.pos_x         =  game.UI.action_bar.pos_x + (game.UI.action_bar.width/2.250f);
     game.UI.action_bar.menu_slot_06.pos_y         = -1.0f + (game.UI.action_bar.height/2.4);
     game.UI.action_bar.menu_slot_06.pos_z         =  game.UI.action_bar.pos_z;
