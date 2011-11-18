@@ -1236,8 +1236,51 @@ void menu_class::set_button_spacing(float button_offset)
 
 void menu_class::set_button_spacing_auto(void)
 {
-    float button_offset = (menu_class::button_height/2.0f)*3.0f;
-    float temp_float = (menu_class::pos_y + (menu_class::height/2)) - (menu_class::button_height/2.0f);
+    float button_offset = 0.0f;
+    float temp_float    = 0.0f;
+    switch (menu_class::number_of_buttons)
+    {
+        case 1:
+            button_offset = (menu_class::button_height/2.0f)*2.8f;
+            temp_float = (menu_class::pos_y + (menu_class::height/2.1)) - (menu_class::button_height/2.0f);
+        break;
+        case 2:
+            button_offset = (menu_class::button_height/2.0f)*2.8f;
+            temp_float = (menu_class::pos_y + (menu_class::height/2.1)) - (menu_class::button_height/2.0f);
+        break;
+        case 3:
+            button_offset = (menu_class::button_height/2.0f)*2.6f;
+            temp_float = (menu_class::pos_y + (menu_class::height/2.1)) - (menu_class::button_height/2.0f);
+        break;
+        case 4:
+            button_offset = (menu_class::button_height/2.0f)*2.8f;
+            temp_float = (menu_class::pos_y + (menu_class::height/2.1)) - (menu_class::button_height/2.0f);
+        break;
+        case 5:
+            button_offset = (menu_class::button_height/2.0f)*2.8f;
+            temp_float = (menu_class::pos_y + (menu_class::height/2.1)) - (menu_class::button_height/2.0f);
+        break;
+        case 6:
+            button_offset = (menu_class::button_height/2.0f)*2.8f;
+            temp_float = (menu_class::pos_y + (menu_class::height/2.1)) - (menu_class::button_height/2.0f);
+        break;
+        case 7:
+            button_offset = (menu_class::button_height/2.0f)*2.8f;
+            temp_float = (menu_class::pos_y + (menu_class::height/2.1)) - (menu_class::button_height/2.0f);
+        break;
+        case 8:
+            button_offset = (menu_class::button_height/2.0f)*2.8f;
+            temp_float = (menu_class::pos_y + (menu_class::height/2.1)) - (menu_class::button_height/2.0f);
+        break;
+        case 9:
+            button_offset = (menu_class::button_height/2.0f)*2.8f;
+            temp_float = (menu_class::pos_y + (menu_class::height/2.2)) - (menu_class::button_height/2.0f);
+        break;
+        default:
+            button_offset = (menu_class::button_height/2.0f)*2.8f;
+            temp_float = (menu_class::pos_y + (menu_class::height/2.1)) - (menu_class::button_height/2.0f);
+        break;
+    }
     menu_class::button_spacing = button_offset;
     for (int button_count = 1; button_count <= menu_class::number_of_buttons; button_count++)
     {
