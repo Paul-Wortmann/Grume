@@ -31,7 +31,10 @@ class player_stats_class
         bool  highlighted;
         bool  drag;
         int   portrait;
+        bool  mouse_over;
         int   mouse_over_count;
+        int   mouse_over_health_count;
+        int   mouse_over_mana_count;
         int   tooltip_time;
         bool  tooltip_active;
         float pos_x;
@@ -45,6 +48,7 @@ class player_stats_class
        ~player_stats_class(void);
         void process(void);
         void draw(void);
+        void draw_tooltip(void);
 };
 
 class action_slot_class

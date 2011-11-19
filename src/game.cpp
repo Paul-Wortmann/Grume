@@ -56,7 +56,7 @@ int init_game(bool re_init)
 /*----------------------------------------------------------------------------*/
 int process_game(void)
 {
-    game.UI.action_bar.process();
+    game.UI.process();
     game.player.process();
     game.core.game_resume = true;
     if (game.core.music_next_track)

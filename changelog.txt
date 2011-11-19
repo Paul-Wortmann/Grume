@@ -1,4 +1,12 @@
 
+v0.01 - (2011-xx-xx)
+Initial framework completed.
+Main menu implemented.
+UI -> Action bar with dragable, rearrangeable menu buttons.
+UI -> Player UI with health and mana bars implemented.
+UI -> Dragable main menu available in game.
+LOC - 0
+
 v0.00 - (2011-11-11)
 Initial release.
 Documentation.

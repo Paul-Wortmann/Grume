@@ -50,7 +50,7 @@
 		<Cursor1 position="941" topLine="15" />
 	</File>
 	<File name="src\core\menu.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="44144" topLine="989" />
+		<Cursor1 position="6760" topLine="198" />
 	</File>
 	<File name="src\core\menu.hpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor1 position="14176" topLine="241" />
@@ -74,7 +74,7 @@
 		<Cursor1 position="943" topLine="0" />
 	</File>
 	<File name="src\core\physics.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="2959" topLine="59" />
+		<Cursor1 position="3117" topLine="59" />
 	</File>
 	<File name="src\core\physics.hpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor1 position="1847" topLine="21" />
@@ -104,7 +104,7 @@
 		<Cursor1 position="943" topLine="0" />
 	</File>
 	<File name="src\game.cpp" open="0" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="1524" topLine="28" />
+		<Cursor1 position="1297" topLine="31" />
 	</File>
 	<File name="src\game.hpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor1 position="1560" topLine="17" />
