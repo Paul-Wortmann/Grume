@@ -113,18 +113,22 @@ void action_slot_class::draw_tooltip(void)
 
     menu_slot_class::menu_slot_class(void)
 {
-    menu_slot_class::highlighted      = false;
-    menu_slot_class::drag             = false;
-    menu_slot_class::button_type      = 0;
-    menu_slot_class::mouse_over       = false;
-    menu_slot_class::mouse_over_count = 0;
-    menu_slot_class::tooltip_time     = 128;
-    menu_slot_class::tooltip_active   = false;
-    menu_slot_class::pos_x            = 0.0f;
-    menu_slot_class::pos_y            = 0.0f;
-    menu_slot_class::pos_z            = 0.0f;
-    menu_slot_class::width            = 0.0f;
-    menu_slot_class::height           = 0.0f;
+    menu_slot_class::click_delay       = 32;
+    menu_slot_class::click_delay_count = 0;
+    menu_slot_class::highlighted       = false;
+    menu_slot_class::drag              = false;
+    menu_slot_class::button_type       = 0;
+    menu_slot_class::mouse_over        = false;
+    menu_slot_class::mouse_over_count  = 0;
+    menu_slot_class::tooltip_time      = 64;
+    menu_slot_class::tooltip_active    = false;
+    menu_slot_class::pos_x             = 0.0f;
+    menu_slot_class::pos_y             = 0.0f;
+    menu_slot_class::pos_z             = 0.0f;
+    menu_slot_class::base_pos_x        = 0.0f;
+    menu_slot_class::base_pos_y        = 0.0f;
+    menu_slot_class::width             = 0.0f;
+    menu_slot_class::height            = 0.0f;
 };
 
     menu_slot_class::~menu_slot_class(void)
@@ -134,14 +138,25 @@ void action_slot_class::draw_tooltip(void)
 
 void menu_slot_class::process(void)
 {
-    //if mouse_over, drag, etc...
-    if (menu_slot_class::mouse_over) menu_slot_class::mouse_over_count++;
-    else menu_slot_class::mouse_over_count = 0;
-    if (menu_slot_class::mouse_over_count > 65530) menu_slot_class::mouse_over_count = 65530;
+    int  swap_button = 0;
+    int  temp_button = 0;
+    if (menu_slot_class::mouse_over) // timers
+    {
+        menu_slot_class::click_delay_count++;
+        menu_slot_class::mouse_over_count++;
+    }
+    else
+    {
+        menu_slot_class::mouse_over_count = 0;
+        menu_slot_class::click_delay_count = 0;
+    }
+    if (menu_slot_class::mouse_over_count > menu_slot_class::tooltip_time) menu_slot_class::mouse_over_count = menu_slot_class::tooltip_time;
+    if (menu_slot_class::click_delay_count > menu_slot_class::click_delay) menu_slot_class::click_delay_count = menu_slot_class::click_delay;
     if (game.core.physics.point_in_circle(menu_slot_class::pos_x,menu_slot_class::pos_y,(menu_slot_class::height/2),game.core.io.mouse_x,game.core.io.mouse_y)) menu_slot_class::mouse_over = true;
     else menu_slot_class::mouse_over = false;
-    if ((menu_slot_class::mouse_over) && (game.core.io.mouse_button_left))
+    if ((menu_slot_class::mouse_over) && (game.core.io.mouse_button_left) && (menu_slot_class::click_delay_count == menu_slot_class::click_delay))
     {
+        menu_slot_class::click_delay_count = 0;
         switch (menu_slot_class::button_type) // process mouse click
         {
             case 1: // main menu
@@ -154,16 +169,24 @@ void menu_slot_class::process(void)
                     game.core.io.keyboard_delay_count = 0;
                     game.core.config.menu_delay_count = 0;
                 }
+                else
+                {
+                    game.sound.menu_select_00.play();
+                    game.core.menu_level              = 1;
+                    game.core.menu_active             = false;
+                    game.core.io.escape               = false;
+                    game.core.io.keyboard_delay_count = 0;
+                    game.core.config.menu_delay_count = 0;
+                }
             break;
             case 2: // NA??
                 if (!game.core.menu_active)
                 {
                     game.sound.menu_select_00.play();
-                    game.core.menu_level              = 1;
-                    game.core.menu_active             = true;
-                    game.core.io.escape               = false;
-                    game.core.io.keyboard_delay_count = 0;
-                    game.core.config.menu_delay_count = 0;
+                }
+                else
+                {
+                    game.sound.menu_select_00.play();
                 }
             break;
             case 3: // Quest Log
@@ -172,12 +195,22 @@ void menu_slot_class::process(void)
                     game.sound.menu_select_00.play();
                     game.core.questbook_active        = true;
                 }
+                else
+                {
+                    game.sound.menu_select_00.play();
+                    game.core.questbook_active        = false;
+                }
             break;
             case 4: // Character Menu
                 if (!game.core.character_active)
                 {
                     game.sound.menu_select_00.play();
                     game.core.character_active        = true;
+                }
+                else
+                {
+                    game.sound.menu_select_00.play();
+                    game.core.character_active        = false;
                 }
             break;
             case 5: // Inventory
@@ -186,6 +219,11 @@ void menu_slot_class::process(void)
                     game.sound.menu_select_00.play();
                     game.core.inventory_active        = true;
                 }
+                else
+                {
+                    game.sound.menu_select_00.play();
+                    game.core.inventory_active        = false;
+                }
             break;
             case 6: // Spell Book
                 if (!game.core.spellbook_active)
@@ -193,14 +231,78 @@ void menu_slot_class::process(void)
                     game.sound.menu_select_00.play();
                     game.core.spellbook_active        = true;
                 }
+                else
+                {
+                    game.sound.menu_select_00.play();
+                    game.core.spellbook_active        = false;
+                }
             break;
             default:
             break;
         }
     }
-    if ((menu_slot_class::mouse_over) && (game.core.io.mouse_button_right))//drag
+    if (menu_slot_class::drag)
     {
-        ;
+        if (game.core.io.mouse_button_right)
+        {
+            menu_slot_class::pos_x = game.core.io.mouse_x;
+            menu_slot_class::pos_y = game.core.io.mouse_y;
+        }
+        else
+        {
+            if ((game.UI.action_bar.menu_slot_01.mouse_over) && (game.UI.action_bar.menu_slot_01.button_type != menu_slot_class::button_type))
+            {
+                temp_button = menu_slot_class::button_type;
+                menu_slot_class::button_type = game.UI.action_bar.menu_slot_01.button_type;
+                game.UI.action_bar.menu_slot_01.button_type = temp_button;
+            }
+            if ((game.UI.action_bar.menu_slot_02.mouse_over) && (game.UI.action_bar.menu_slot_02.button_type != menu_slot_class::button_type))
+            {
+                temp_button = menu_slot_class::button_type;
+                menu_slot_class::button_type = game.UI.action_bar.menu_slot_02.button_type;
+                game.UI.action_bar.menu_slot_02.button_type = temp_button;
+            }
+            if ((game.UI.action_bar.menu_slot_03.mouse_over) && (game.UI.action_bar.menu_slot_03.button_type != menu_slot_class::button_type))
+            {
+                temp_button = menu_slot_class::button_type;
+                menu_slot_class::button_type = game.UI.action_bar.menu_slot_03.button_type;
+                game.UI.action_bar.menu_slot_03.button_type = temp_button;
+            }
+            if ((game.UI.action_bar.menu_slot_04.mouse_over) && (game.UI.action_bar.menu_slot_04.button_type != menu_slot_class::button_type))
+            {
+                temp_button = menu_slot_class::button_type;
+                menu_slot_class::button_type = game.UI.action_bar.menu_slot_04.button_type;
+                game.UI.action_bar.menu_slot_04.button_type = temp_button;
+            }
+            if ((game.UI.action_bar.menu_slot_05.mouse_over) && (game.UI.action_bar.menu_slot_05.button_type != menu_slot_class::button_type))
+            {
+                temp_button = menu_slot_class::button_type;
+                menu_slot_class::button_type = game.UI.action_bar.menu_slot_05.button_type;
+                game.UI.action_bar.menu_slot_05.button_type = temp_button;
+            }
+            if ((game.UI.action_bar.menu_slot_06.mouse_over) && (game.UI.action_bar.menu_slot_06.button_type != menu_slot_class::button_type))
+            {
+                temp_button = menu_slot_class::button_type;
+                menu_slot_class::button_type = game.UI.action_bar.menu_slot_06.button_type;
+                game.UI.action_bar.menu_slot_06.button_type = temp_button;
+            }
+            menu_slot_class::drag       = false;
+            game.UI.drag_in_progress    = false;
+            menu_slot_class::pos_x      = menu_slot_class::base_pos_x;
+            menu_slot_class::pos_y      = menu_slot_class::base_pos_y;
+        }
+    }
+    else
+    {
+        if ((!game.UI.drag_in_progress) && (menu_slot_class::mouse_over) && (game.core.io.mouse_button_right))//drag
+        {
+            menu_slot_class::base_pos_x = menu_slot_class::pos_x;
+            menu_slot_class::base_pos_y = menu_slot_class::pos_y;
+            menu_slot_class::drag       = true;
+            game.UI.drag_in_progress    = true;
+            menu_slot_class::pos_x      = game.core.io.mouse_x;
+            menu_slot_class::pos_y      = game.core.io.mouse_y;
+        }
     }
 };
 
@@ -217,7 +319,7 @@ void menu_slot_class::draw(void)
 
 void menu_slot_class::draw_tooltip(void)
 {
-    if (menu_slot_class::mouse_over_count > menu_slot_class::tooltip_time)
+    if (menu_slot_class::mouse_over_count == menu_slot_class::tooltip_time)
     {
         switch (menu_slot_class::button_type) // display tool tip
         {
@@ -321,116 +423,134 @@ void action_bar_class::draw(void)
 //----------------------------------------------------------------------------------------------------------------
     UI_class::UI_class(void)
 {
-    game.UI.action_bar.width                      =  1.2f;
-    game.UI.action_bar.height                     =  game.UI.action_bar.width/10.0f;
-    game.UI.action_bar.pos_x                      =  0.0f;
-    game.UI.action_bar.pos_y                      = -1.0f + (game.UI.action_bar.height/2);
-    game.UI.action_bar.pos_z                      =  0.001f;
+    UI_class::drag_in_progress                      =  false;
+    UI_class::action_bar.width                      =  1.2f;
+    UI_class::action_bar.height                     =  UI_class::action_bar.width/10.0f;
+    UI_class::action_bar.pos_x                      =  0.0f;
+    UI_class::action_bar.pos_y                      = -1.0f + (UI_class::action_bar.height/2);
+    UI_class::action_bar.pos_z                      =  0.001f;
+    UI_class::action_bar.menu_slot_01.button_type   =  1;
+    UI_class::action_bar.menu_slot_01.pos_x         =  UI_class::action_bar.pos_x - (UI_class::action_bar.width/2.282f);
+    UI_class::action_bar.menu_slot_01.pos_y         = -1.0f + (UI_class::action_bar.height/2.4);
+    UI_class::action_bar.menu_slot_01.pos_z         =  UI_class::action_bar.pos_z;
+    UI_class::action_bar.menu_slot_01.width         =  UI_class::action_bar.height/2.34f;
+    UI_class::action_bar.menu_slot_01.height        =  UI_class::action_bar.height/2.34f;
+    UI_class::action_bar.menu_slot_01.base_pos_x    =  UI_class::action_bar.menu_slot_01.pos_x;
+    UI_class::action_bar.menu_slot_01.base_pos_y    =  UI_class::action_bar.menu_slot_01.pos_y;
+    UI_class::action_bar.menu_slot_01.drag          =  false;
+    UI_class::action_bar.menu_slot_02.button_type   =  2;
+    UI_class::action_bar.menu_slot_02.pos_x         =  UI_class::action_bar.pos_x - (UI_class::action_bar.width/2.620f);
+    UI_class::action_bar.menu_slot_02.pos_y         = -1.0f + (UI_class::action_bar.height/2.4);
+    UI_class::action_bar.menu_slot_02.pos_z         =  UI_class::action_bar.pos_z;
+    UI_class::action_bar.menu_slot_02.width         =  UI_class::action_bar.height/2.34f;
+    UI_class::action_bar.menu_slot_02.height        =  UI_class::action_bar.height/2.34f;
+    UI_class::action_bar.menu_slot_02.base_pos_x    =  UI_class::action_bar.menu_slot_02.pos_x;
+    UI_class::action_bar.menu_slot_02.base_pos_y    =  UI_class::action_bar.menu_slot_02.pos_y;
+    UI_class::action_bar.menu_slot_02.drag          =  false;
+    UI_class::action_bar.menu_slot_03.button_type   =  3;
+    UI_class::action_bar.menu_slot_03.pos_x         =  UI_class::action_bar.pos_x - (UI_class::action_bar.width/3.062f);
+    UI_class::action_bar.menu_slot_03.pos_y         = -1.0f + (UI_class::action_bar.height/2.4);
+    UI_class::action_bar.menu_slot_03.pos_z         =  UI_class::action_bar.pos_z;
+    UI_class::action_bar.menu_slot_03.width         =  UI_class::action_bar.height/2.34f;
+    UI_class::action_bar.menu_slot_03.height        =  UI_class::action_bar.height/2.34f;
+    UI_class::action_bar.menu_slot_03.base_pos_x    =  UI_class::action_bar.menu_slot_03.pos_x;
+    UI_class::action_bar.menu_slot_03.base_pos_y    =  UI_class::action_bar.menu_slot_03.pos_y;
+    UI_class::action_bar.menu_slot_03.drag          =  false;
+    UI_class::action_bar.menu_slot_04.button_type   =  4;
+    UI_class::action_bar.menu_slot_04.pos_x         =  UI_class::action_bar.pos_x + (UI_class::action_bar.width/3.010f);
+    UI_class::action_bar.menu_slot_04.pos_y         = -1.0f + (UI_class::action_bar.height/2.4);
+    UI_class::action_bar.menu_slot_04.pos_z         =  UI_class::action_bar.pos_z;
+    UI_class::action_bar.menu_slot_04.width         =  UI_class::action_bar.height/2.34f;
+    UI_class::action_bar.menu_slot_04.height        =  UI_class::action_bar.height/2.34f;
+    UI_class::action_bar.menu_slot_04.base_pos_x    =  UI_class::action_bar.menu_slot_04.pos_x;
+    UI_class::action_bar.menu_slot_04.base_pos_y    =  UI_class::action_bar.menu_slot_04.pos_y;
+    UI_class::action_bar.menu_slot_04.drag          =  false;
+    UI_class::action_bar.menu_slot_05.button_type   =  5;
+    UI_class::action_bar.menu_slot_05.pos_x         =  UI_class::action_bar.pos_x + (UI_class::action_bar.width/2.572f);
+    UI_class::action_bar.menu_slot_05.pos_y         = -1.0f + (UI_class::action_bar.height/2.4);
+    UI_class::action_bar.menu_slot_05.pos_z         =  UI_class::action_bar.pos_z;
+    UI_class::action_bar.menu_slot_05.width         =  UI_class::action_bar.height/2.34f;
+    UI_class::action_bar.menu_slot_05.height        =  UI_class::action_bar.height/2.34f;
+    UI_class::action_bar.menu_slot_05.base_pos_x    =  UI_class::action_bar.menu_slot_05.pos_x;
+    UI_class::action_bar.menu_slot_05.base_pos_y    =  UI_class::action_bar.menu_slot_05.pos_y;
+    UI_class::action_bar.menu_slot_05.drag          =  false;
+    UI_class::action_bar.menu_slot_06.button_type   =  6;
+    UI_class::action_bar.menu_slot_06.pos_x         =  UI_class::action_bar.pos_x + (UI_class::action_bar.width/2.250f);
+    UI_class::action_bar.menu_slot_06.pos_y         = -1.0f + (UI_class::action_bar.height/2.4);
+    UI_class::action_bar.menu_slot_06.pos_z         =  UI_class::action_bar.pos_z;
+    UI_class::action_bar.menu_slot_06.width         =  UI_class::action_bar.height/2.34f;
+    UI_class::action_bar.menu_slot_06.height        =  UI_class::action_bar.height/2.34f;
+    UI_class::action_bar.menu_slot_06.base_pos_x    =  UI_class::action_bar.menu_slot_06.pos_x;
+    UI_class::action_bar.menu_slot_06.base_pos_y    =  UI_class::action_bar.menu_slot_06.pos_y;
+    UI_class::action_bar.menu_slot_06.drag          =  false;
 
-    game.UI.action_bar.menu_slot_01.button_type   =  1;
-    game.UI.action_bar.menu_slot_01.pos_x         =  game.UI.action_bar.pos_x - (game.UI.action_bar.width/2.282f);
-    game.UI.action_bar.menu_slot_01.pos_y         = -1.0f + (game.UI.action_bar.height/2.4);
-    game.UI.action_bar.menu_slot_01.pos_z         =  game.UI.action_bar.pos_z;
-    game.UI.action_bar.menu_slot_01.width         =  game.UI.action_bar.height/2.34f;
-    game.UI.action_bar.menu_slot_01.height        =  game.UI.action_bar.height/2.34f;
-    game.UI.action_bar.menu_slot_02.button_type   =  2;
-    game.UI.action_bar.menu_slot_02.pos_x         =  game.UI.action_bar.pos_x - (game.UI.action_bar.width/2.620f);
-    game.UI.action_bar.menu_slot_02.pos_y         = -1.0f + (game.UI.action_bar.height/2.4);
-    game.UI.action_bar.menu_slot_02.pos_z         =  game.UI.action_bar.pos_z;
-    game.UI.action_bar.menu_slot_02.width         =  game.UI.action_bar.height/2.34f;
-    game.UI.action_bar.menu_slot_02.height        =  game.UI.action_bar.height/2.34f;
-    game.UI.action_bar.menu_slot_03.button_type   =  3;
-    game.UI.action_bar.menu_slot_03.pos_x         =  game.UI.action_bar.pos_x - (game.UI.action_bar.width/3.062f);
-    game.UI.action_bar.menu_slot_03.pos_y         = -1.0f + (game.UI.action_bar.height/2.4);
-    game.UI.action_bar.menu_slot_03.pos_z         =  game.UI.action_bar.pos_z;
-    game.UI.action_bar.menu_slot_03.width         =  game.UI.action_bar.height/2.34f;
-    game.UI.action_bar.menu_slot_03.height        =  game.UI.action_bar.height/2.34f;
-    game.UI.action_bar.menu_slot_04.button_type   =  4;
-    game.UI.action_bar.menu_slot_04.pos_x         =  game.UI.action_bar.pos_x + (game.UI.action_bar.width/3.010f);
-    game.UI.action_bar.menu_slot_04.pos_y         = -1.0f + (game.UI.action_bar.height/2.4);
-    game.UI.action_bar.menu_slot_04.pos_z         =  game.UI.action_bar.pos_z;
-    game.UI.action_bar.menu_slot_04.width         =  game.UI.action_bar.height/2.34f;
-    game.UI.action_bar.menu_slot_04.height        =  game.UI.action_bar.height/2.34f;
-    game.UI.action_bar.menu_slot_05.button_type   =  5;
-    game.UI.action_bar.menu_slot_05.pos_x         =  game.UI.action_bar.pos_x + (game.UI.action_bar.width/2.572f);
-    game.UI.action_bar.menu_slot_05.pos_y         = -1.0f + (game.UI.action_bar.height/2.4);
-    game.UI.action_bar.menu_slot_05.pos_z         =  game.UI.action_bar.pos_z;
-    game.UI.action_bar.menu_slot_05.width         =  game.UI.action_bar.height/2.34f;
-    game.UI.action_bar.menu_slot_05.height        =  game.UI.action_bar.height/2.34f;
-    game.UI.action_bar.menu_slot_06.button_type   =  6;
-    game.UI.action_bar.menu_slot_06.pos_x         =  game.UI.action_bar.pos_x + (game.UI.action_bar.width/2.250f);
-    game.UI.action_bar.menu_slot_06.pos_y         = -1.0f + (game.UI.action_bar.height/2.4);
-    game.UI.action_bar.menu_slot_06.pos_z         =  game.UI.action_bar.pos_z;
-    game.UI.action_bar.menu_slot_06.width         =  game.UI.action_bar.height/2.34f;
-    game.UI.action_bar.menu_slot_06.height        =  game.UI.action_bar.height/2.34f;
+    UI_class::action_bar.action_slot_01.button_type =  0;
+    UI_class::action_bar.action_slot_01.pos_x       =  UI_class::action_bar.pos_x - (UI_class::action_bar.width/3.970f);
+    UI_class::action_bar.action_slot_01.pos_y       = -1.0f + (UI_class::action_bar.height/2.00f);
+    UI_class::action_bar.action_slot_01.pos_z       =  UI_class::action_bar.pos_z;
+    UI_class::action_bar.action_slot_01.height      =  UI_class::action_bar.height/1.34f;
+    UI_class::action_bar.action_slot_01.width       =  UI_class::action_bar.action_slot_01.height/1.450f;
+    UI_class::action_bar.action_slot_02.button_type =  0;
+    UI_class::action_bar.action_slot_02.pos_x       =  UI_class::action_bar.pos_x - (UI_class::action_bar.width/5.100f);
+    UI_class::action_bar.action_slot_02.pos_y       = -1.0f + (UI_class::action_bar.height/2.00f);
+    UI_class::action_bar.action_slot_02.pos_z       =  UI_class::action_bar.pos_z;
+    UI_class::action_bar.action_slot_02.height      =  UI_class::action_bar.height/1.34f;
+    UI_class::action_bar.action_slot_02.width       =  UI_class::action_bar.action_slot_01.height/1.450f;
+    UI_class::action_bar.action_slot_03.button_type =  0;
+    UI_class::action_bar.action_slot_03.pos_x       =  UI_class::action_bar.pos_x - (UI_class::action_bar.width/7.120f);
+    UI_class::action_bar.action_slot_03.pos_y       = -1.0f + (UI_class::action_bar.height/2.00f);
+    UI_class::action_bar.action_slot_03.pos_z       =  UI_class::action_bar.pos_z;
+    UI_class::action_bar.action_slot_03.height      =  UI_class::action_bar.height/1.34f;
+    UI_class::action_bar.action_slot_03.width       =  UI_class::action_bar.action_slot_01.height/1.450f;
+    UI_class::action_bar.action_slot_04.button_type =  0;
+    UI_class::action_bar.action_slot_04.pos_x       =  UI_class::action_bar.pos_x - (UI_class::action_bar.width/12.000f);
+    UI_class::action_bar.action_slot_04.pos_y       = -1.0f + (UI_class::action_bar.height/2.00f);
+    UI_class::action_bar.action_slot_04.pos_z       =  UI_class::action_bar.pos_z;
+    UI_class::action_bar.action_slot_04.height      =  UI_class::action_bar.height/1.34f;
+    UI_class::action_bar.action_slot_04.width       =  UI_class::action_bar.action_slot_01.height/1.450f;
+    UI_class::action_bar.action_slot_05.button_type =  0;
+    UI_class::action_bar.action_slot_05.pos_x       =  UI_class::action_bar.pos_x - (UI_class::action_bar.width/36.600f);
+    UI_class::action_bar.action_slot_05.pos_y       = -1.0f + (UI_class::action_bar.height/2.00f);
+    UI_class::action_bar.action_slot_05.pos_z       =  UI_class::action_bar.pos_z;
+    UI_class::action_bar.action_slot_05.height      =  UI_class::action_bar.height/1.34f;
+    UI_class::action_bar.action_slot_05.width       =  UI_class::action_bar.action_slot_01.height/1.450f;
+    UI_class::action_bar.action_slot_06.button_type =  0;
+    UI_class::action_bar.action_slot_06.pos_x       =  UI_class::action_bar.pos_x + (UI_class::action_bar.width/35.000f);
+    UI_class::action_bar.action_slot_06.pos_y       = -1.0f + (UI_class::action_bar.height/2.00f);
+    UI_class::action_bar.action_slot_06.pos_z       =  UI_class::action_bar.pos_z;
+    UI_class::action_bar.action_slot_06.height      =  UI_class::action_bar.height/1.34f;
+    UI_class::action_bar.action_slot_06.width       =  UI_class::action_bar.action_slot_01.height/1.450f;
+    UI_class::action_bar.action_slot_07.button_type =  0;
+    UI_class::action_bar.action_slot_07.pos_x       =  UI_class::action_bar.pos_x + (UI_class::action_bar.width/11.700f);
+    UI_class::action_bar.action_slot_07.pos_y       = -1.0f + (UI_class::action_bar.height/2.00f);
+    UI_class::action_bar.action_slot_07.pos_z       =  UI_class::action_bar.pos_z;
+    UI_class::action_bar.action_slot_07.height      =  UI_class::action_bar.height/1.34f;
+    UI_class::action_bar.action_slot_07.width       =  UI_class::action_bar.action_slot_01.height/1.450f;
+    UI_class::action_bar.action_slot_08.button_type =  0;
+    UI_class::action_bar.action_slot_08.pos_x       =  UI_class::action_bar.pos_x + (UI_class::action_bar.width/7.060f);
+    UI_class::action_bar.action_slot_08.pos_y       = -1.0f + (UI_class::action_bar.height/2.00f);
+    UI_class::action_bar.action_slot_08.pos_z       =  UI_class::action_bar.pos_z;
+    UI_class::action_bar.action_slot_08.height      =  UI_class::action_bar.height/1.34f;
+    UI_class::action_bar.action_slot_08.width       =  UI_class::action_bar.action_slot_01.height/1.450f;
+    UI_class::action_bar.action_slot_09.button_type =  0;
+    UI_class::action_bar.action_slot_09.pos_x       =  UI_class::action_bar.pos_x + (UI_class::action_bar.width/5.054f);
+    UI_class::action_bar.action_slot_09.pos_y       = -1.0f + (UI_class::action_bar.height/2.00f);
+    UI_class::action_bar.action_slot_09.pos_z       =  UI_class::action_bar.pos_z;
+    UI_class::action_bar.action_slot_09.height      =  UI_class::action_bar.height/1.34f;
+    UI_class::action_bar.action_slot_09.width       =  UI_class::action_bar.action_slot_01.height/1.450f;
+    UI_class::action_bar.action_slot_10.button_type =  1;
+    UI_class::action_bar.action_slot_10.pos_x       =  UI_class::action_bar.pos_x + (UI_class::action_bar.width/3.940f);
+    UI_class::action_bar.action_slot_10.pos_y       = -1.0f + (UI_class::action_bar.height/2.00f);
+    UI_class::action_bar.action_slot_10.pos_z       =  UI_class::action_bar.pos_z;
+    UI_class::action_bar.action_slot_10.height      =  UI_class::action_bar.height/1.34f;
+    UI_class::action_bar.action_slot_10.width       =  UI_class::action_bar.action_slot_01.height/1.450f;
 
-    game.UI.action_bar.action_slot_01.button_type =  0;
-    game.UI.action_bar.action_slot_01.pos_x       =  game.UI.action_bar.pos_x - (game.UI.action_bar.width/3.970f);
-    game.UI.action_bar.action_slot_01.pos_y       = -1.0f + (game.UI.action_bar.height/2.00f);
-    game.UI.action_bar.action_slot_01.pos_z       =  game.UI.action_bar.pos_z;
-    game.UI.action_bar.action_slot_01.height      =  game.UI.action_bar.height/1.34f;
-    game.UI.action_bar.action_slot_01.width       =  game.UI.action_bar.action_slot_01.height/1.450f;
-    game.UI.action_bar.action_slot_02.button_type =  0;
-    game.UI.action_bar.action_slot_02.pos_x       =  game.UI.action_bar.pos_x - (game.UI.action_bar.width/5.100f);
-    game.UI.action_bar.action_slot_02.pos_y       = -1.0f + (game.UI.action_bar.height/2.00f);
-    game.UI.action_bar.action_slot_02.pos_z       =  game.UI.action_bar.pos_z;
-    game.UI.action_bar.action_slot_02.height      =  game.UI.action_bar.height/1.34f;
-    game.UI.action_bar.action_slot_02.width       =  game.UI.action_bar.action_slot_01.height/1.450f;
-    game.UI.action_bar.action_slot_03.button_type =  0;
-    game.UI.action_bar.action_slot_03.pos_x       =  game.UI.action_bar.pos_x - (game.UI.action_bar.width/7.120f);
-    game.UI.action_bar.action_slot_03.pos_y       = -1.0f + (game.UI.action_bar.height/2.00f);
-    game.UI.action_bar.action_slot_03.pos_z       =  game.UI.action_bar.pos_z;
-    game.UI.action_bar.action_slot_03.height      =  game.UI.action_bar.height/1.34f;
-    game.UI.action_bar.action_slot_03.width       =  game.UI.action_bar.action_slot_01.height/1.450f;
-    game.UI.action_bar.action_slot_04.button_type =  0;
-    game.UI.action_bar.action_slot_04.pos_x       =  game.UI.action_bar.pos_x - (game.UI.action_bar.width/12.000f);
-    game.UI.action_bar.action_slot_04.pos_y       = -1.0f + (game.UI.action_bar.height/2.00f);
-    game.UI.action_bar.action_slot_04.pos_z       =  game.UI.action_bar.pos_z;
-    game.UI.action_bar.action_slot_04.height      =  game.UI.action_bar.height/1.34f;
-    game.UI.action_bar.action_slot_04.width       =  game.UI.action_bar.action_slot_01.height/1.450f;
-    game.UI.action_bar.action_slot_05.button_type =  0;
-    game.UI.action_bar.action_slot_05.pos_x       =  game.UI.action_bar.pos_x - (game.UI.action_bar.width/36.600f);
-    game.UI.action_bar.action_slot_05.pos_y       = -1.0f + (game.UI.action_bar.height/2.00f);
-    game.UI.action_bar.action_slot_05.pos_z       =  game.UI.action_bar.pos_z;
-    game.UI.action_bar.action_slot_05.height      =  game.UI.action_bar.height/1.34f;
-    game.UI.action_bar.action_slot_05.width       =  game.UI.action_bar.action_slot_01.height/1.450f;
-    game.UI.action_bar.action_slot_06.button_type =  0;
-    game.UI.action_bar.action_slot_06.pos_x       =  game.UI.action_bar.pos_x + (game.UI.action_bar.width/35.000f);
-    game.UI.action_bar.action_slot_06.pos_y       = -1.0f + (game.UI.action_bar.height/2.00f);
-    game.UI.action_bar.action_slot_06.pos_z       =  game.UI.action_bar.pos_z;
-    game.UI.action_bar.action_slot_06.height      =  game.UI.action_bar.height/1.34f;
-    game.UI.action_bar.action_slot_06.width       =  game.UI.action_bar.action_slot_01.height/1.450f;
-    game.UI.action_bar.action_slot_07.button_type =  0;
-    game.UI.action_bar.action_slot_07.pos_x       =  game.UI.action_bar.pos_x + (game.UI.action_bar.width/11.700f);
-    game.UI.action_bar.action_slot_07.pos_y       = -1.0f + (game.UI.action_bar.height/2.00f);
-    game.UI.action_bar.action_slot_07.pos_z       =  game.UI.action_bar.pos_z;
-    game.UI.action_bar.action_slot_07.height      =  game.UI.action_bar.height/1.34f;
-    game.UI.action_bar.action_slot_07.width       =  game.UI.action_bar.action_slot_01.height/1.450f;
-    game.UI.action_bar.action_slot_08.button_type =  0;
-    game.UI.action_bar.action_slot_08.pos_x       =  game.UI.action_bar.pos_x + (game.UI.action_bar.width/7.060f);
-    game.UI.action_bar.action_slot_08.pos_y       = -1.0f + (game.UI.action_bar.height/2.00f);
-    game.UI.action_bar.action_slot_08.pos_z       =  game.UI.action_bar.pos_z;
-    game.UI.action_bar.action_slot_08.height      =  game.UI.action_bar.height/1.34f;
-    game.UI.action_bar.action_slot_08.width       =  game.UI.action_bar.action_slot_01.height/1.450f;
-    game.UI.action_bar.action_slot_09.button_type =  0;
-    game.UI.action_bar.action_slot_09.pos_x       =  game.UI.action_bar.pos_x + (game.UI.action_bar.width/5.054f);
-    game.UI.action_bar.action_slot_09.pos_y       = -1.0f + (game.UI.action_bar.height/2.00f);
-    game.UI.action_bar.action_slot_09.pos_z       =  game.UI.action_bar.pos_z;
-    game.UI.action_bar.action_slot_09.height      =  game.UI.action_bar.height/1.34f;
-    game.UI.action_bar.action_slot_09.width       =  game.UI.action_bar.action_slot_01.height/1.450f;
-    game.UI.action_bar.action_slot_10.button_type =  1;
-    game.UI.action_bar.action_slot_10.pos_x       =  game.UI.action_bar.pos_x + (game.UI.action_bar.width/3.940f);
-    game.UI.action_bar.action_slot_10.pos_y       = -1.0f + (game.UI.action_bar.height/2.00f);
-    game.UI.action_bar.action_slot_10.pos_z       =  game.UI.action_bar.pos_z;
-    game.UI.action_bar.action_slot_10.height      =  game.UI.action_bar.height/1.34f;
-    game.UI.action_bar.action_slot_10.width       =  game.UI.action_bar.action_slot_01.height/1.450f;
-
-    game.UI.player_stats.portrait                 =  0;
-    game.UI.player_stats.pos_x                    = -0.8f;
-    game.UI.player_stats.pos_y                    =  0.88f;
-    game.UI.player_stats.pos_z                    =  0.001f;
-    game.UI.player_stats.width                    =  0.4f;
-    game.UI.player_stats.height                   =  0.24f;
+    UI_class::player_stats.portrait                 =  0;
+    UI_class::player_stats.pos_x                    = -0.8f;
+    UI_class::player_stats.pos_y                    =  0.88f;
+    UI_class::player_stats.pos_z                    =  0.001f;
+    UI_class::player_stats.width                    =  0.4f;
+    UI_class::player_stats.height                   =  0.24f;
 };
 
     UI_class::~UI_class(void)

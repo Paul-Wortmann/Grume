@@ -72,6 +72,8 @@ class action_slot_class
 class menu_slot_class
 {
     public:
+        int   click_delay;
+        int   click_delay_count;
         bool  highlighted;
         bool  drag;
         int   button_type;
@@ -82,6 +84,8 @@ class menu_slot_class
         float pos_x;
         float pos_y;
         float pos_z;
+        float base_pos_x;
+        float base_pos_y;
         float width;
         float height;
         menu_slot_class(void);
@@ -124,6 +128,7 @@ class action_bar_class
 class UI_class
 {
     public:
+        bool drag_in_progress;
         player_stats_class player_stats;
         action_bar_class   action_bar;
         void process(void);
