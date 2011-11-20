@@ -136,8 +136,9 @@ void player_stats_class::draw_tooltip(void)
 
 void action_slot_class::process(void)
 {
-    int  swap_button = 0;
-    int  temp_button = 0;
+    bool discard_icon   = false;
+    int  swap_button    = 0;
+    int  temp_button    = 0;
     if (game.core.physics.point_in_quadrangle(action_slot_class::pos_x,action_slot_class::width,action_slot_class::pos_y,action_slot_class::height,game.core.io.mouse_x,game.core.io.mouse_y)) action_slot_class::mouse_over = true;
     else action_slot_class::mouse_over = false;
     if (action_slot_class::button_type > 0)
@@ -151,70 +152,82 @@ void action_slot_class::process(void)
             }
             else
             {
+                discard_icon = true;
                 if ((game.UI.action_bar.action_slot_01.mouse_over) && (game.UI.action_bar.action_slot_01.button_type != action_slot_class::button_type))
                 {
                     temp_button = action_slot_class::button_type;
                     action_slot_class::button_type = game.UI.action_bar.action_slot_01.button_type;
                     game.UI.action_bar.action_slot_01.button_type = temp_button;
+                    discard_icon = false;
                 }
                 if ((game.UI.action_bar.action_slot_02.mouse_over) && (game.UI.action_bar.action_slot_02.button_type != action_slot_class::button_type))
                 {
                     temp_button = action_slot_class::button_type;
                     action_slot_class::button_type = game.UI.action_bar.action_slot_02.button_type;
                     game.UI.action_bar.action_slot_02.button_type = temp_button;
+                    discard_icon = false;
                 }
                 if ((game.UI.action_bar.action_slot_03.mouse_over) && (game.UI.action_bar.action_slot_03.button_type != action_slot_class::button_type))
                 {
                     temp_button = action_slot_class::button_type;
                     action_slot_class::button_type = game.UI.action_bar.action_slot_03.button_type;
                     game.UI.action_bar.action_slot_03.button_type = temp_button;
+                    discard_icon = false;
                 }
                 if ((game.UI.action_bar.action_slot_04.mouse_over) && (game.UI.action_bar.action_slot_04.button_type != action_slot_class::button_type))
                 {
                     temp_button = action_slot_class::button_type;
                     action_slot_class::button_type = game.UI.action_bar.action_slot_04.button_type;
                     game.UI.action_bar.action_slot_04.button_type = temp_button;
+                    discard_icon = false;
                 }
                 if ((game.UI.action_bar.action_slot_05.mouse_over) && (game.UI.action_bar.action_slot_05.button_type != action_slot_class::button_type))
                 {
                     temp_button = action_slot_class::button_type;
                     action_slot_class::button_type = game.UI.action_bar.action_slot_05.button_type;
                     game.UI.action_bar.action_slot_05.button_type = temp_button;
+                    discard_icon = false;
                 }
                 if ((game.UI.action_bar.action_slot_06.mouse_over) && (game.UI.action_bar.action_slot_06.button_type != action_slot_class::button_type))
                 {
                     temp_button = action_slot_class::button_type;
                     action_slot_class::button_type = game.UI.action_bar.action_slot_06.button_type;
                     game.UI.action_bar.action_slot_06.button_type = temp_button;
+                    discard_icon = false;
                 }
                 if ((game.UI.action_bar.action_slot_07.mouse_over) && (game.UI.action_bar.action_slot_07.button_type != action_slot_class::button_type))
                 {
                     temp_button = action_slot_class::button_type;
                     action_slot_class::button_type = game.UI.action_bar.action_slot_07.button_type;
                     game.UI.action_bar.action_slot_07.button_type = temp_button;
+                    discard_icon = false;
                 }
                 if ((game.UI.action_bar.action_slot_08.mouse_over) && (game.UI.action_bar.action_slot_08.button_type != action_slot_class::button_type))
                 {
                     temp_button = action_slot_class::button_type;
                     action_slot_class::button_type = game.UI.action_bar.action_slot_08.button_type;
                     game.UI.action_bar.action_slot_08.button_type = temp_button;
+                    discard_icon = false;
                 }
                 if ((game.UI.action_bar.action_slot_09.mouse_over) && (game.UI.action_bar.action_slot_09.button_type != action_slot_class::button_type))
                 {
                     temp_button = action_slot_class::button_type;
                     action_slot_class::button_type = game.UI.action_bar.action_slot_09.button_type;
                     game.UI.action_bar.action_slot_09.button_type = temp_button;
+                    discard_icon = false;
                 }
                 if ((game.UI.action_bar.action_slot_10.mouse_over) && (game.UI.action_bar.action_slot_10.button_type != action_slot_class::button_type))
                 {
                     temp_button = action_slot_class::button_type;
                     action_slot_class::button_type = game.UI.action_bar.action_slot_10.button_type;
                     game.UI.action_bar.action_slot_10.button_type = temp_button;
+                    discard_icon = false;
                 }
                 action_slot_class::drag         = false;
                 game.UI.drag_in_progress        = false;
                 action_slot_class::pos_x        = action_slot_class::base_pos_x;
                 action_slot_class::pos_y        = action_slot_class::base_pos_y;
+                if (discard_icon) action_slot_class::button_type = 0;
             }
         }
         else
