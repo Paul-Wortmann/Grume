@@ -68,6 +68,10 @@ class action_slot_class
         float pos_z;
         float width;
         float height;
+        float drag_offset_x;
+        float drag_offset_y;
+        float base_pos_x;
+        float base_pos_y;
         action_slot_class(void);
        ~action_slot_class(void);
         void process(void);
