@@ -33,9 +33,11 @@
 #include "menu_system.hpp"
 #include "UI.hpp"
 #include "player.hpp"
+#include "spells.hpp"
 
 struct game_type
 {
+    spell_class      spell[MAX_SPELLS];
     UI_class         UI;
     sound_type       sound;
     music_type       music;

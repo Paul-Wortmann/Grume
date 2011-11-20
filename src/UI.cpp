@@ -334,14 +334,17 @@ void menu_slot_class::process(void)
     }
     else
     {
-        if ((!game.UI.drag_in_progress) && (menu_slot_class::mouse_over) && (game.core.io.mouse_button_left))//drag
+        if (menu_slot_class::mouse_over_count >= menu_slot_class::tooltip_time)
         {
-            menu_slot_class::base_pos_x = menu_slot_class::pos_x;
-            menu_slot_class::base_pos_y = menu_slot_class::pos_y;
-            menu_slot_class::drag       = true;
-            game.UI.drag_in_progress    = true;
-            menu_slot_class::pos_x      = game.core.io.mouse_x;
-            menu_slot_class::pos_y      = game.core.io.mouse_y;
+            if ((!game.UI.drag_in_progress) && (menu_slot_class::mouse_over) && (game.core.io.mouse_button_left))//drag
+            {
+                menu_slot_class::base_pos_x = menu_slot_class::pos_x;
+                menu_slot_class::base_pos_y = menu_slot_class::pos_y;
+                menu_slot_class::drag       = true;
+                game.UI.drag_in_progress    = true;
+                menu_slot_class::pos_x      = game.core.io.mouse_x;
+                menu_slot_class::pos_y      = game.core.io.mouse_y;
+            }
         }
     }
 };
@@ -442,6 +445,12 @@ void action_bar_class::draw(void)
     action_bar_class::menu_slot_04.draw();
     action_bar_class::menu_slot_05.draw();
     action_bar_class::menu_slot_06.draw();
+    if (action_bar_class::menu_slot_01.drag) action_bar_class::menu_slot_01.draw();
+    if (action_bar_class::menu_slot_02.drag) action_bar_class::menu_slot_02.draw();
+    if (action_bar_class::menu_slot_03.drag) action_bar_class::menu_slot_03.draw();
+    if (action_bar_class::menu_slot_04.drag) action_bar_class::menu_slot_04.draw();
+    if (action_bar_class::menu_slot_05.drag) action_bar_class::menu_slot_05.draw();
+    if (action_bar_class::menu_slot_06.drag) action_bar_class::menu_slot_06.draw();
     action_bar_class::menu_slot_01.draw_tooltip();
     action_bar_class::menu_slot_02.draw_tooltip();
     action_bar_class::menu_slot_03.draw_tooltip();
@@ -458,6 +467,26 @@ void action_bar_class::draw(void)
     action_bar_class::action_slot_08.draw_tooltip();
     action_bar_class::action_slot_09.draw_tooltip();
     action_bar_class::action_slot_10.draw_tooltip();
+    if (game.UI.spell_book.spell_slot_01.drag) game.UI.spell_book.spell_slot_01.draw_drag();
+    if (game.UI.spell_book.spell_slot_02.drag) game.UI.spell_book.spell_slot_02.draw_drag();
+    if (game.UI.spell_book.spell_slot_03.drag) game.UI.spell_book.spell_slot_03.draw_drag();
+    if (game.UI.spell_book.spell_slot_04.drag) game.UI.spell_book.spell_slot_04.draw_drag();
+    if (game.UI.spell_book.spell_slot_05.drag) game.UI.spell_book.spell_slot_05.draw_drag();
+    if (game.UI.spell_book.spell_slot_06.drag) game.UI.spell_book.spell_slot_06.draw_drag();
+    if (game.UI.spell_book.spell_slot_07.drag) game.UI.spell_book.spell_slot_07.draw_drag();
+    if (game.UI.spell_book.spell_slot_08.drag) game.UI.spell_book.spell_slot_08.draw_drag();
+    if (game.UI.spell_book.spell_slot_09.drag) game.UI.spell_book.spell_slot_09.draw_drag();
+    if (game.UI.spell_book.spell_slot_10.drag) game.UI.spell_book.spell_slot_10.draw_drag();
+    if (game.UI.spell_book.spell_slot_11.drag) game.UI.spell_book.spell_slot_11.draw_drag();
+    if (game.UI.spell_book.spell_slot_12.drag) game.UI.spell_book.spell_slot_12.draw_drag();
+    if (game.UI.spell_book.spell_slot_13.drag) game.UI.spell_book.spell_slot_13.draw_drag();
+    if (game.UI.spell_book.spell_slot_14.drag) game.UI.spell_book.spell_slot_14.draw_drag();
+    if (game.UI.spell_book.spell_slot_15.drag) game.UI.spell_book.spell_slot_15.draw_drag();
+    if (game.UI.spell_book.spell_slot_16.drag) game.UI.spell_book.spell_slot_16.draw_drag();
+    if (game.UI.spell_book.spell_slot_17.drag) game.UI.spell_book.spell_slot_17.draw_drag();
+    if (game.UI.spell_book.spell_slot_18.drag) game.UI.spell_book.spell_slot_18.draw_drag();
+    if (game.UI.spell_book.spell_slot_19.drag) game.UI.spell_book.spell_slot_19.draw_drag();
+    if (game.UI.spell_book.spell_slot_20.drag) game.UI.spell_book.spell_slot_20.draw_drag();
 };
 
 //----------------------------------------------------------------------------------------------------------------
@@ -471,7 +500,7 @@ void action_bar_class::draw(void)
     UI_class::action_bar.pos_z                      =  0.001f;
     UI_class::action_bar.menu_slot_01.button_type   =  1;
     UI_class::action_bar.menu_slot_01.pos_x         =  UI_class::action_bar.pos_x - (UI_class::action_bar.width/2.282f);
-    UI_class::action_bar.menu_slot_01.pos_y         = -1.0f + (UI_class::action_bar.height/2.4);
+    UI_class::action_bar.menu_slot_01.pos_y         =  UI_class::action_bar.pos_y - (UI_class::action_bar.height/16.0f);
     UI_class::action_bar.menu_slot_01.pos_z         =  UI_class::action_bar.pos_z;
     UI_class::action_bar.menu_slot_01.width         =  UI_class::action_bar.height/2.34f;
     UI_class::action_bar.menu_slot_01.height        =  UI_class::action_bar.height/2.34f;

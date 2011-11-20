@@ -22,37 +22,36 @@
  * @date 2011-11-11
  */
 
-#ifndef SAVE_DATA_H
-#define SAVE_DATA_H
+#ifndef SPELLS_H
+#define SPELLS_H
 
-#include "core/core.hpp"
-#include "core/savegame.hpp"
-#include "game.hpp"
+const int MAX_SPELLS = 24;
 
-struct save_data_type
+class spell_class
 {
-    float                save_version;
-    int                  AB_MS_01;
-    int                  AB_MS_02;
-    int                  AB_MS_03;
-    int                  AB_MS_04;
-    int                  AB_MS_05;
-    int                  AB_MS_06;
-    int                  AB_AS_01;
-    int                  AB_AS_02;
-    int                  AB_AS_03;
-    int                  AB_AS_04;
-    int                  AB_AS_05;
-    int                  AB_AS_06;
-    int                  AB_AS_07;
-    int                  AB_AS_08;
-    int                  AB_AS_09;
-    int                  AB_AS_10;
+    public:
+        //std::string name;
+        int         level;
+        int         image_level_1;
+        int         image_level_2;
+        int         image_level_3;
+        int         experience_level_1;
+        int         experience_level_2;
+        int         experience_level_3;
+        int         experience;
+        float       cooldown_speed;
+        float       cooldown_count;
+        float       mana_cost_level_1;
+        float       mana_cost_level_2;
+        float       mana_cost_level_3;
+        float       cooldown_level_1;
+        float       cooldown_level_2;
+        float       cooldown_level_3;
+        spell_class(void);
+       ~spell_class(void);
 };
 
-void update_save_data(void);
-void update_game_data(void);
+void    init_spells(void);
 
-#endif // SAVE_DATA_H
-
+#endif // SPELLS_H
 

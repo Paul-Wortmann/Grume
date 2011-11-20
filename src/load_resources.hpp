@@ -89,7 +89,7 @@ struct texture_type
 
     texture_class spell_book;
     texture_class spell_book_spell_cover;
-
+    texture_class spell_book_background;
     texture_class particle_000;
     texture_class particle_001;
     texture_class particle_002;
@@ -106,6 +106,10 @@ struct texture_type
     texture_class particle_013;
     texture_class particle_014;
     texture_class particle_015;
+
+    texture_class spell_01_level_01;
+    texture_class spell_01_level_02;
+    texture_class spell_01_level_03;
 
 };
 

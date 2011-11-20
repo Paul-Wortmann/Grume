@@ -49,6 +49,10 @@ int init_game(bool re_init)
     game.player.mana.current                      =  000.0f;
     game.player.mana.maximum                      =  100.0f;
     game.player.mana.regeneration                 =  000.05f;
+
+    game.UI.spell_book.close_button.image_normal       =  game.texture.close_button.ref_number;
+    game.UI.spell_book.close_button.image_highlighted  =  game.texture.close_button_highlighted.ref_number;
+    init_spells();
     return(0);
 };
 

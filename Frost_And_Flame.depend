@@ -64,7 +64,7 @@
 
 1320822860 c:\_git_\frost_and_flame\src\bullets.hpp
 
-1321749110 c:\_git_\frost_and_flame\src\load_resources.hpp
+1321763214 c:\_git_\frost_and_flame\src\load_resources.hpp
 	"core/core.hpp"
 	"core/sound.hpp"
 	"core/music.hpp"
@@ -79,7 +79,7 @@
 	<GL/gl.h>
 	<string>
 
-1321531361 c:\_git_\frost_and_flame\src\game.hpp
+1321762971 c:\_git_\frost_and_flame\src\game.hpp
 	<string>
 	<SDL/SDL.h>
 	"language.hpp"
@@ -88,6 +88,7 @@
 	"menu_system.hpp"
 	"UI.hpp"
 	"player.hpp"
+	"spells.hpp"
 
 1318335235 c:\_git_\frost_and_flame\src\pc.hpp
 	"bullets.hpp"
@@ -187,7 +188,7 @@
 	<string>
 	"log.hpp"
 
-1321630666 source:c:\_git_\frost_and_flame\src\core\menu.cpp
+1321751549 source:c:\_git_\frost_and_flame\src\core\menu.cpp
 	"menu.hpp"
 	"../game.hpp"
 
@@ -215,7 +216,7 @@
 	"../game.hpp"
 	"../save_data.hpp"
 
-1321620394 c:\_git_\frost_and_flame\src\save_data.hpp
+1321760251 c:\_git_\frost_and_flame\src\save_data.hpp
 	"core/core.hpp"
 	"core/savegame.hpp"
 	"game.hpp"
@@ -244,7 +245,7 @@
 	"game.hpp"
 	"misc.hpp"
 
-1321750222 source:c:\_git_\frost_and_flame\src\game.cpp
+1321762961 source:c:\_git_\frost_and_flame\src\game.cpp
 	<SDL/SDL.h>
 	"menu_system.hpp"
 	"game.hpp"
@@ -279,7 +280,7 @@
 	"levels.hpp"
 	"game.hpp"
 
-1321749209 source:c:\_git_\frost_and_flame\src\load_resources.cpp
+1321763824 source:c:\_git_\frost_and_flame\src\load_resources.cpp
 	<SDL/SDL.h>
 	"load_resources.hpp"
 	"game.hpp"
@@ -378,21 +379,28 @@
 
 1321102096 source:c:\_git_\frost_and_flame\src\icon.rc
 
-1321751207 source:c:\_git_\frost_and_flame\src\ui.cpp
+1321772813 source:c:\_git_\frost_and_flame\src\ui.cpp
 	"UI.hpp"
 	"game.hpp"
 
-1321748369 c:\_git_\frost_and_flame\src\ui.hpp
+1321760249 c:\_git_\frost_and_flame\src\ui.hpp
 	"spell_book.hpp"
 
-1321531942 c:\_git_\frost_and_flame\src\player.hpp
+1321760251 c:\_git_\frost_and_flame\src\player.hpp
 
 1321532241 source:c:\_git_\frost_and_flame\src\player.cpp
 	"player.hpp"
 
-1321748357 c:\_git_\frost_and_flame\src\spell_book.hpp
+1321772505 c:\_git_\frost_and_flame\src\spell_book.hpp
 
-1321749982 source:c:\_git_\frost_and_flame\src\spell_book.cpp
+1321772813 source:c:\_git_\frost_and_flame\src\spell_book.cpp
 	"spell_book.hpp"
+	"spells.hpp"
 	"game.hpp"
+
+1321766357 source:c:\_git_\frost_and_flame\src\spells.cpp
+	"spells.hpp"
+	"game.hpp"
+
+1321762961 c:\_git_\frost_and_flame\src\spells.hpp
 
