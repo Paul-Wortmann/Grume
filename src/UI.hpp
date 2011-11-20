@@ -25,6 +25,8 @@
 #ifndef UI_H
 #define UI_H
 
+#include "spell_book.hpp"
+
 class player_stats_class
 {
     public:
@@ -135,6 +137,7 @@ class UI_class
         bool drag_in_progress;
         player_stats_class player_stats;
         action_bar_class   action_bar;
+        spell_book_class   spell_book;
         void process(void);
         void draw(void);
         UI_class(void);

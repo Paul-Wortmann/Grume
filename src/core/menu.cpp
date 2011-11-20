@@ -2010,6 +2010,8 @@ int menu_class::process(void)
     int    return_value = -1;
     bool   done = false;
     // ---- io delay ----
+    if (!game.UI.drag_in_progress)
+    {
     menu_class::keyboard_delay_count++;
     if (menu_class::keyboard_delay_count > menu_class::keyboard_delay) menu_class::keyboard_delay_count = menu_class::keyboard_delay;
     menu_class::mouse_delay_count++;
@@ -2193,20 +2195,26 @@ int menu_class::process(void)
         else  menu_class::close_button.set_highlighted(false);
         if (menu_class::close_button.mouse_clicked()) return_value = 65535;
     }
+    }
     //---- menu drag ----
     if ((menu_class::mouse_over_title()) && (return_value != 65535))
     {
         if (menu_class::mouse_click_title())
         {
-            if(!menu_class::get_drag_active())
+            if ((!menu_class::get_drag_active()) && (!game.UI.drag_in_progress))
             {
                 menu_class::drag_offset_x = game.core.io.mouse_x - menu_class::title_pos_x;
                 menu_class::drag_offset_y = game.core.io.mouse_y - menu_class::title_pos_y;
                 menu_class::set_drag_active(true);
+                game.UI.drag_in_progress = true;
             }
         }
     }
-    if ((menu_class::get_drag_active()) && (!game.core.io.mouse_button_left)) menu_class::set_drag_active(false);
+    if ((menu_class::get_drag_active()) && (!game.core.io.mouse_button_left))
+    {
+        menu_class::set_drag_active(false);
+        game.UI.drag_in_progress = false;
+    }
     if (menu_class::get_drag_active())
     {
         drag_x_delta = menu_class::title_pos_x;

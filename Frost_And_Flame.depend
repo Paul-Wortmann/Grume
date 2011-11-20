@@ -46,7 +46,7 @@
 
 1321153339 c:\_git_\frost_and_flame\src\core\savegame.hpp
 
-1321153339 c:\_git_\frost_and_flame\src\core\font.hpp
+1321747440 c:\_git_\frost_and_flame\src\core\font.hpp
 	<SDL/SDL_ttf.h>
 
 1321624658 c:\_git_\frost_and_flame\src\core\menu.hpp
@@ -64,7 +64,7 @@
 
 1320822860 c:\_git_\frost_and_flame\src\bullets.hpp
 
-1321534299 c:\_git_\frost_and_flame\src\load_resources.hpp
+1321749110 c:\_git_\frost_and_flame\src\load_resources.hpp
 	"core/core.hpp"
 	"core/sound.hpp"
 	"core/music.hpp"
@@ -161,7 +161,7 @@
 1321360669 source:c:\_git_\frost_and_flame\src\core\core.cpp
 	"core.hpp"
 
-1321360793 source:c:\_git_\frost_and_flame\src\core\font.cpp
+1321747458 source:c:\_git_\frost_and_flame\src\core\font.cpp
 	<SDL/SDL_ttf.h>
 	<SDL/SDL_ttf.h>
 	<GL/gl.h>
@@ -244,7 +244,7 @@
 	"game.hpp"
 	"misc.hpp"
 
-1321710726 source:c:\_git_\frost_and_flame\src\game.cpp
+1321750222 source:c:\_git_\frost_and_flame\src\game.cpp
 	<SDL/SDL.h>
 	"menu_system.hpp"
 	"game.hpp"
@@ -279,7 +279,7 @@
 	"levels.hpp"
 	"game.hpp"
 
-1321534184 source:c:\_git_\frost_and_flame\src\load_resources.cpp
+1321749209 source:c:\_git_\frost_and_flame\src\load_resources.cpp
 	<SDL/SDL.h>
 	"load_resources.hpp"
 	"game.hpp"
@@ -302,7 +302,7 @@
 
 1317473594 c:\_git_\frost_and_flame\src\version.h
 
-1321632899 source:c:\_git_\frost_and_flame\src\menu_system.cpp
+1321749982 source:c:\_git_\frost_and_flame\src\menu_system.cpp
 	"menu_system.hpp"
 	"game.hpp"
 
@@ -378,14 +378,21 @@
 
 1321102096 source:c:\_git_\frost_and_flame\src\icon.rc
 
-1321713347 source:c:\_git_\frost_and_flame\src\ui.cpp
+1321751207 source:c:\_git_\frost_and_flame\src\ui.cpp
 	"UI.hpp"
 	"game.hpp"
 
-1321713105 c:\_git_\frost_and_flame\src\ui.hpp
+1321748369 c:\_git_\frost_and_flame\src\ui.hpp
+	"spell_book.hpp"
 
 1321531942 c:\_git_\frost_and_flame\src\player.hpp
 
 1321532241 source:c:\_git_\frost_and_flame\src\player.cpp
 	"player.hpp"
+
+1321748357 c:\_git_\frost_and_flame\src\spell_book.hpp
+
+1321749982 source:c:\_git_\frost_and_flame\src\spell_book.cpp
+	"spell_book.hpp"
+	"game.hpp"
 

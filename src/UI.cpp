@@ -38,7 +38,7 @@ extern game_type game;
     player_stats_class::mouse_over_count        = 0;
     player_stats_class::mouse_over_health_count = 0;
     player_stats_class::mouse_over_mana_count   = 0;
-    player_stats_class::tooltip_time            = 128;
+    player_stats_class::tooltip_time            = 64;
     player_stats_class::tooltip_active          = false;
     player_stats_class::pos_x                   = 0.0f;
     player_stats_class::pos_y                   = 0.0f;
@@ -54,10 +54,10 @@ extern game_type game;
 
 void player_stats_class::process(void)
 {
-    if (game.core.physics.point_in_quadrangle(player_stats_class::pos_x-(player_stats_class::width/8.0f),(player_stats_class::width/1.8f),player_stats_class::pos_y+(player_stats_class::height/3.6f),player_stats_class::height/6.2f,game.core.io.mouse_x,game.core.io.mouse_y)) player_stats_class::mouse_over_health_count++;
+    if (game.core.physics.point_in_quadrangle(player_stats_class::pos_x+(player_stats_class::width/7.2f),player_stats_class::width/1.8f,player_stats_class::pos_y+(player_stats_class::height/3.6f),player_stats_class::height/6.2f,game.core.io.mouse_x,game.core.io.mouse_y)) player_stats_class::mouse_over_health_count++;
     else player_stats_class::mouse_over_health_count = 0;
     if (player_stats_class::mouse_over_health_count > player_stats_class::tooltip_time) player_stats_class::mouse_over_health_count = player_stats_class::tooltip_time;
-    if (game.core.physics.point_in_quadrangle(player_stats_class::pos_x-(player_stats_class::width/8.0f),(player_stats_class::width/1.8f),player_stats_class::pos_y+(player_stats_class::height/9.0f),player_stats_class::height/6.2f,game.core.io.mouse_x,game.core.io.mouse_y)) player_stats_class::mouse_over_mana_count++;
+    if (game.core.physics.point_in_quadrangle(player_stats_class::pos_x+(player_stats_class::width/7.2f),player_stats_class::width/1.8f,player_stats_class::pos_y+(player_stats_class::height/9.0f),player_stats_class::height/6.2f,game.core.io.mouse_x,game.core.io.mouse_y)) player_stats_class::mouse_over_mana_count++;
     else player_stats_class::mouse_over_mana_count = 0;
     if (player_stats_class::mouse_over_mana_count > player_stats_class::tooltip_time) player_stats_class::mouse_over_mana_count = player_stats_class::tooltip_time;
     if (game.core.physics.point_in_quadrangle(player_stats_class::pos_x,player_stats_class::width,player_stats_class::pos_y+(player_stats_class::height/4.0f),player_stats_class::height/2,game.core.io.mouse_x,game.core.io.mouse_y)) player_stats_class::mouse_over = true;
@@ -98,12 +98,13 @@ void player_stats_class::draw(void)
     temp_float = ((player_stats_class::width/1.8f)*((float)game.player.mana.current/(float)game.player.mana.maximum));
     game.texture.mana_bar.draw(false,player_stats_class::pos_x-(player_stats_class::width/8.0f)+(temp_float/2),player_stats_class::pos_y+(player_stats_class::height/9.0f),player_stats_class::pos_z,temp_float,player_stats_class::height/6.2f);
     game.texture.profile_main.draw(false,player_stats_class::pos_x,player_stats_class::pos_y,player_stats_class::pos_z,player_stats_class::width,player_stats_class::height);
+    player_stats_class::draw_tooltip();
 };
 
 void player_stats_class::draw_tooltip(void)
 {
-    if (player_stats_class::mouse_over_health_count == player_stats_class::tooltip_time) game.font.font_1.Write(255,255,255,255,game.core.io.mouse_x,game.core.io.mouse_y,4.8f,32.0f,"health");//game.player.health.current);
-    if (player_stats_class::mouse_over_mana_count   == player_stats_class::tooltip_time) game.font.font_1.Write(255,255,255,255,game.core.io.mouse_x,game.core.io.mouse_y,4.8f,32.0f,"mana");//game.player.mana.current);
+    if (player_stats_class::mouse_over_health_count == player_stats_class::tooltip_time) game.font.font_1.Write(255,255,255,255,game.core.io.mouse_x,game.core.io.mouse_y,4.8f,32.0f,(int)((game.player.health.current/game.player.health.maximum)*100),"%             ");
+    if (player_stats_class::mouse_over_mana_count   == player_stats_class::tooltip_time) game.font.font_1.Write(255,255,255,255,game.core.io.mouse_x,game.core.io.mouse_y,4.8f,32.0f,(int)((game.player.mana.current/game.player.mana.maximum)*100),"%             ");
 };
 
 //----------------------------------------------------------------------------------------------------------------
@@ -193,7 +194,7 @@ void menu_slot_class::process(void)
     if (menu_slot_class::click_delay_count > menu_slot_class::click_delay) menu_slot_class::click_delay_count = menu_slot_class::click_delay;
     if (game.core.physics.point_in_circle(menu_slot_class::pos_x,menu_slot_class::pos_y,(menu_slot_class::height/2),game.core.io.mouse_x,game.core.io.mouse_y)) menu_slot_class::mouse_over = true;
     else menu_slot_class::mouse_over = false;
-    if ((menu_slot_class::mouse_over) && (game.core.io.mouse_button_left) && (menu_slot_class::click_delay_count == menu_slot_class::click_delay))
+    if ((!game.UI.drag_in_progress) && (menu_slot_class::mouse_over) && (game.core.io.mouse_button_left) && (menu_slot_class::click_delay_count == menu_slot_class::click_delay))
     {
         menu_slot_class::click_delay_count = 0;
         switch (menu_slot_class::button_type) // process mouse click
@@ -601,10 +602,12 @@ void UI_class::process(void)
 {
     UI_class::player_stats.process();
     UI_class::action_bar.process();
+    if (game.core.spellbook_active) UI_class::spell_book.process();
 };
 
 void UI_class::draw(void)
 {
+    if (game.core.spellbook_active) UI_class::spell_book.draw();
     UI_class::player_stats.draw();
     UI_class::action_bar.draw();
 };

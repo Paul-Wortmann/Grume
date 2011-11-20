@@ -40,7 +40,7 @@ int init_menu   (void)
     game.main_menu.set_keyboard_delay(16);
     game.main_menu.set_mouse_delay(24);
     game.main_menu.set_pos(0.0f,0.3f,0.001f);
-    game.main_menu.set_size(0.4f,0.8f);
+    game.main_menu.set_size(0.5f,1.0f);
     game.main_menu.set_menu_font(1);
     game.main_menu.set_image_background(game.texture.background_02.ref_number);
     game.main_menu.set_button_zoom(true,0.008f,0.0005f);
@@ -89,7 +89,7 @@ int init_menu   (void)
     game.save_menu.set_keyboard_delay(16);
     game.save_menu.set_mouse_delay(24);
     game.save_menu.set_pos(0.0f,0.3f,0.001f);
-    game.save_menu.set_size(0.4f,0.8f);
+    game.save_menu.set_size(0.5f,1.0f);
     game.save_menu.set_menu_font(1);
     game.save_menu.set_image_background(game.texture.background_02.ref_number);
     game.save_menu.set_button_zoom(true,0.008f,0.0005f);
@@ -117,7 +117,7 @@ int init_menu   (void)
     game.load_menu.set_keyboard_delay(16);
     game.load_menu.set_mouse_delay(24);
     game.load_menu.set_pos(0.0f,0.3f,0.001f);
-    game.load_menu.set_size(0.4f,0.8f);
+    game.load_menu.set_size(0.5f,1.0f);
     game.load_menu.set_menu_font(1);
     game.load_menu.set_image_background(game.texture.background_02.ref_number);
     game.load_menu.set_button_zoom(true,0.008f,0.0005f);
@@ -166,7 +166,7 @@ int init_menu   (void)
     game.options_menu.set_keyboard_delay(16);
     game.options_menu.set_mouse_delay(24);
     game.options_menu.set_pos(0.0f,0.3f,0.001f);
-    game.options_menu.set_size(0.4f,0.8f);
+    game.options_menu.set_size(0.5f,1.0f);
     game.options_menu.set_menu_font(1);
     game.options_menu.set_image_background(game.texture.background_02.ref_number);
     game.options_menu.set_button_zoom(true,0.008f,0.0005f);

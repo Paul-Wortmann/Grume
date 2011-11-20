@@ -87,6 +87,9 @@ struct texture_type
     texture_class profile_main;
     texture_class profile_main_background;
 
+    texture_class spell_book;
+    texture_class spell_book_spell_cover;
+
     texture_class particle_000;
     texture_class particle_001;
     texture_class particle_002;

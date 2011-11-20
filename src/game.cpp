@@ -66,27 +66,37 @@ int process_game(void)
     }
     if (game.core.io.escape)
     {
-        game.sound.menu_select_00.play();
-        game.core.music_next_track        = true;
-        game.core.game_active             = false;
-        game.core.menu_level              = 1;
-        game.core.menu_active             = true;
-        game.core.io.escape               = false;
-        game.core.io.keyboard_delay_count = 0;
-        game.core.config.menu_delay_count = 0;
-        while (game.core.config.menu_delay_count < (game.core.config.menu_delay/2))
+        if(!game.core.menu_active)
         {
-            game.core.config.menu_delay_count++;
+            game.sound.menu_select_00.play();
+            game.core.menu_level              = 1;
+            game.core.menu_active             = true;
+            game.core.io.escape               = false;
+            game.core.io.keyboard_delay_count = 0;
+            game.core.config.menu_delay_count = 0;
+            while (game.core.config.menu_delay_count < (game.core.config.menu_delay/2))
+            {
+                game.core.config.menu_delay_count++;
+            }
         }
     }
     if (game.core.io.pause)
     {
-        //game.paused.spawn();
-        game.core.game_paused = true;
-        game.core.game_active = false;
-        game.core.io.pause    = false;
-        game.core.menu_level  = 11;
-        SDL_WarpMouse(game.core.graphics.gl_to_res(game.pause_menu.get_button_x_pos(1),game.core.config.mouse_resolution_x),game.core.config.mouse_resolution_y-game.core.graphics.gl_to_res(game.pause_menu.get_button_y_pos(1),game.core.config.mouse_resolution_y));
+        if (!game.core.game_paused)
+        {
+            game.core.game_paused = true;
+            game.core.menu_active = true;
+            game.core.game_active = false;
+            game.core.io.pause    = false;
+            game.core.menu_level  = 11;
+            SDL_WarpMouse(game.core.graphics.gl_to_res(game.pause_menu.get_button_x_pos(1),game.core.config.mouse_resolution_x),game.core.config.mouse_resolution_y-game.core.graphics.gl_to_res(game.pause_menu.get_button_y_pos(1),game.core.config.mouse_resolution_y));
+        }
+        else
+        {
+            game.core.game_paused = false;
+            game.core.menu_active = false;
+            game.core.game_active = true;
+        }
     };
     bool return_data        = false;
     return(0);

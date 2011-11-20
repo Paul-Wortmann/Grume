@@ -113,6 +113,8 @@
 		<Unit filename="src\player.hpp" />
 		<Unit filename="src\save_data.cpp" />
 		<Unit filename="src\save_data.hpp" />
+		<Unit filename="src\spell_book.cpp" />
+		<Unit filename="src\spell_book.hpp" />
 		<Extensions>
 			<code_completion />
 			<envvars />

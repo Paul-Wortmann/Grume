@@ -1,6 +1,41 @@
-Art resources:
---------------
---------------
+--------------------------------------------------------------------------------------------------------------------------
+|                                                 Game resources:                                                        |
+--------------------------------------------------------------------------------------------------------------------------
+Although I have attempted to make a complete list, and to the best of my knowledge I am using these resources correctly 
+under thier respective licences, if you feel that I have used your resource/s incorrectly, please contct me.
+
+
+
+
+--------------------------------------------------------------------------------------------------------------------------
+|                                                 Font resources:                                                        |
+--------------------------------------------------------------------------------------------------------------------------
+Font_001 from http://cooltext.com (epkgobld.ttf)
+
+--------------------------------------------------------------------------------------------------------------------------
+|                                                 Sound resources:                                                       |
+--------------------------------------------------------------------------------------------------------------------------
+menu_move_00.wav   from http://opengameart.org/content/interface-beeps CC0 Bart Kelsey.
+menu_select_00.wav from http://opengameart.org/content/interface-beeps CC0 Bart Kelsey.
+
+--------------------------------------------------------------------------------------------------------------------------
+|                                                 Music resources:                                                       |
+--------------------------------------------------------------------------------------------------------------------------
+menu_00.s3m   from http://modarchive.org/index.php?request=view_by_moduleid&query=70934 (diablo_part_2.s3m)
+--------------------------------------------------------------------------------------------------------------------------
+|                                                 Art resources:                                                         |
+--------------------------------------------------------------------------------------------------------------------------
+Main Logo generated with CoolText (http://cooltext.com/)
+Menu backgrounds were rendered with Genetica Viewer 3.51.2181 Copyright (c) 2006-2010 Spiral Graphics Inc. (http://www.spiralgraphics.biz)
+Various graphics resources were created and/or modified with GIMP. (http://www.gimp.org/)
+"resolution_icon.png" by Lothar Grimme from http://icones.pro/en/full-screen-window-5-png-image.html having GPL licence.
+
+Menus, action bar and player stat display.
+------------------------------------------
+Some parts of the UI are dirivitives, most notably, the menu buttons and health/mana bars.
+Jorge Avila
+LGPL 2.1, LGPL 3.0, CC-BY 3.0
+http://opengameart.org/content/moderna-graphical-interface
 
 Main icon
 ---------
@@ -151,6 +186,7 @@ Wand_17 - Wand_20
 -----------------
 CCO - Public domain
 blarumyrran (blarumyrran@gmail.com)
+
 
 
 
