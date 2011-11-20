@@ -95,41 +95,44 @@ void spell_slot_class::process(void)
 {
     if ((!game.UI.drag_in_progress) && (game.core.physics.point_in_quadrangle(spell_slot_class::pos_x,spell_slot_class::width,spell_slot_class::pos_y,spell_slot_class::height,game.core.io.mouse_x,game.core.io.mouse_y))) spell_slot_class::mouse_over = true;
     else spell_slot_class::mouse_over = false;
-    if (spell_slot_class::drag)
+    if (spell_slot_class::button_type > 0)
     {
-        if (game.core.io.mouse_button_left)
+        if (spell_slot_class::drag)
         {
-            spell_slot_class::pos_x = game.core.io.mouse_x + spell_slot_class::drag_offset_x;
-            spell_slot_class::pos_y = game.core.io.mouse_y + spell_slot_class::drag_offset_y;
+            if (game.core.io.mouse_button_left)
+            {
+                spell_slot_class::pos_x = game.core.io.mouse_x + spell_slot_class::drag_offset_x;
+                spell_slot_class::pos_y = game.core.io.mouse_y + spell_slot_class::drag_offset_y;
+            }
+            else
+            {
+                if ((game.UI.action_bar.action_slot_01.mouse_over) && (game.UI.action_bar.action_slot_01.button_type != spell_slot_class::button_type)) game.UI.action_bar.action_slot_01.button_type = spell_slot_class::button_type;
+                if ((game.UI.action_bar.action_slot_02.mouse_over) && (game.UI.action_bar.action_slot_02.button_type != spell_slot_class::button_type)) game.UI.action_bar.action_slot_02.button_type = spell_slot_class::button_type;
+                if ((game.UI.action_bar.action_slot_03.mouse_over) && (game.UI.action_bar.action_slot_03.button_type != spell_slot_class::button_type)) game.UI.action_bar.action_slot_03.button_type = spell_slot_class::button_type;
+                if ((game.UI.action_bar.action_slot_04.mouse_over) && (game.UI.action_bar.action_slot_04.button_type != spell_slot_class::button_type)) game.UI.action_bar.action_slot_04.button_type = spell_slot_class::button_type;
+                if ((game.UI.action_bar.action_slot_05.mouse_over) && (game.UI.action_bar.action_slot_05.button_type != spell_slot_class::button_type)) game.UI.action_bar.action_slot_05.button_type = spell_slot_class::button_type;
+                if ((game.UI.action_bar.action_slot_06.mouse_over) && (game.UI.action_bar.action_slot_06.button_type != spell_slot_class::button_type)) game.UI.action_bar.action_slot_06.button_type = spell_slot_class::button_type;
+                if ((game.UI.action_bar.action_slot_07.mouse_over) && (game.UI.action_bar.action_slot_07.button_type != spell_slot_class::button_type)) game.UI.action_bar.action_slot_07.button_type = spell_slot_class::button_type;
+                if ((game.UI.action_bar.action_slot_08.mouse_over) && (game.UI.action_bar.action_slot_08.button_type != spell_slot_class::button_type)) game.UI.action_bar.action_slot_08.button_type = spell_slot_class::button_type;
+                if ((game.UI.action_bar.action_slot_09.mouse_over) && (game.UI.action_bar.action_slot_09.button_type != spell_slot_class::button_type)) game.UI.action_bar.action_slot_09.button_type = spell_slot_class::button_type;
+                if ((game.UI.action_bar.action_slot_10.mouse_over) && (game.UI.action_bar.action_slot_10.button_type != spell_slot_class::button_type)) game.UI.action_bar.action_slot_10.button_type = spell_slot_class::button_type;
+                spell_slot_class::drag         = false;
+                game.UI.drag_in_progress       = false;
+                spell_slot_class::pos_x        = spell_slot_class::base_pos_x;
+                spell_slot_class::pos_y        = spell_slot_class::base_pos_y;
+            }
         }
         else
         {
-            if ((game.UI.action_bar.action_slot_01.mouse_over) && (game.UI.action_bar.action_slot_01.button_type != spell_slot_class::button_type)) game.UI.action_bar.action_slot_01.button_type = spell_slot_class::button_type;
-            if ((game.UI.action_bar.action_slot_02.mouse_over) && (game.UI.action_bar.action_slot_02.button_type != spell_slot_class::button_type)) game.UI.action_bar.action_slot_02.button_type = spell_slot_class::button_type;
-            if ((game.UI.action_bar.action_slot_03.mouse_over) && (game.UI.action_bar.action_slot_03.button_type != spell_slot_class::button_type)) game.UI.action_bar.action_slot_03.button_type = spell_slot_class::button_type;
-            if ((game.UI.action_bar.action_slot_04.mouse_over) && (game.UI.action_bar.action_slot_04.button_type != spell_slot_class::button_type)) game.UI.action_bar.action_slot_04.button_type = spell_slot_class::button_type;
-            if ((game.UI.action_bar.action_slot_05.mouse_over) && (game.UI.action_bar.action_slot_05.button_type != spell_slot_class::button_type)) game.UI.action_bar.action_slot_05.button_type = spell_slot_class::button_type;
-            if ((game.UI.action_bar.action_slot_06.mouse_over) && (game.UI.action_bar.action_slot_06.button_type != spell_slot_class::button_type)) game.UI.action_bar.action_slot_06.button_type = spell_slot_class::button_type;
-            if ((game.UI.action_bar.action_slot_07.mouse_over) && (game.UI.action_bar.action_slot_07.button_type != spell_slot_class::button_type)) game.UI.action_bar.action_slot_07.button_type = spell_slot_class::button_type;
-            if ((game.UI.action_bar.action_slot_08.mouse_over) && (game.UI.action_bar.action_slot_08.button_type != spell_slot_class::button_type)) game.UI.action_bar.action_slot_08.button_type = spell_slot_class::button_type;
-            if ((game.UI.action_bar.action_slot_09.mouse_over) && (game.UI.action_bar.action_slot_09.button_type != spell_slot_class::button_type)) game.UI.action_bar.action_slot_09.button_type = spell_slot_class::button_type;
-            if ((game.UI.action_bar.action_slot_10.mouse_over) && (game.UI.action_bar.action_slot_10.button_type != spell_slot_class::button_type)) game.UI.action_bar.action_slot_10.button_type = spell_slot_class::button_type;
-            spell_slot_class::drag         = false;
-            game.UI.drag_in_progress       = false;
-            spell_slot_class::pos_x        = spell_slot_class::base_pos_x;
-            spell_slot_class::pos_y        = spell_slot_class::base_pos_y;
-        }
-    }
-    else
-    {
-        if ((!game.UI.drag_in_progress) && (spell_slot_class::mouse_over) && (game.core.io.mouse_button_left))//drag
-        {
-            spell_slot_class::drag          = true;
-            game.UI.drag_in_progress        = true;
-            spell_slot_class::base_pos_x    = spell_slot_class::pos_x;
-            spell_slot_class::base_pos_y    = spell_slot_class::pos_y;
-            spell_slot_class::drag_offset_x = spell_slot_class::pos_x - game.core.io.mouse_x;
-            spell_slot_class::drag_offset_y = spell_slot_class::pos_y - game.core.io.mouse_y;
+            if ((!game.UI.drag_in_progress) && (spell_slot_class::mouse_over) && (game.core.io.mouse_button_left))//drag
+            {
+                spell_slot_class::drag          = true;
+                game.UI.drag_in_progress        = true;
+                spell_slot_class::base_pos_x    = spell_slot_class::pos_x;
+                spell_slot_class::base_pos_y    = spell_slot_class::pos_y;
+                spell_slot_class::drag_offset_x = spell_slot_class::pos_x - game.core.io.mouse_x;
+                spell_slot_class::drag_offset_y = spell_slot_class::pos_y - game.core.io.mouse_y;
+            }
         }
     }
 };

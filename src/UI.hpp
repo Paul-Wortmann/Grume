@@ -76,6 +76,7 @@ class action_slot_class
        ~action_slot_class(void);
         void process(void);
         void draw(void);
+        void draw_drag(void);
         void draw_tooltip(void);
 };
 

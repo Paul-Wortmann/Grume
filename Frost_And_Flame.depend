@@ -383,7 +383,7 @@
 	"UI.hpp"
 	"game.hpp"
 
-1321775142 c:\_git_\frost_and_flame\src\ui.hpp
+1321777653 c:\_git_\frost_and_flame\src\ui.hpp
 	"spell_book.hpp"
 
 1321760251 c:\_git_\frost_and_flame\src\player.hpp
@@ -393,12 +393,12 @@
 
 1321772505 c:\_git_\frost_and_flame\src\spell_book.hpp
 
-1321776656 source:c:\_git_\frost_and_flame\src\spell_book.cpp
+1321777089 source:c:\_git_\frost_and_flame\src\spell_book.cpp
 	"spell_book.hpp"
 	"spells.hpp"
 	"game.hpp"
 
-1321776513 source:c:\_git_\frost_and_flame\src\spells.cpp
+1321776773 source:c:\_git_\frost_and_flame\src\spells.cpp
 	"spells.hpp"
 	"game.hpp"
 
