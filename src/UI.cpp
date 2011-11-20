@@ -782,11 +782,15 @@ void UI_class::process(void)
     UI_class::player_stats.process();
     UI_class::action_bar.process();
     if (game.core.spellbook_active) UI_class::spell_book.process();
+    if (game.core.inventory_active) UI_class::inventory.process();
+    if (game.core.character_active) UI_class::character.process();
 };
 
 void UI_class::draw(void)
 {
     if (game.core.spellbook_active) UI_class::spell_book.draw();
+    if (game.core.inventory_active) UI_class::inventory.draw();
+    if (game.core.character_active) UI_class::character.draw();
     UI_class::player_stats.draw();
     UI_class::action_bar.draw();
 };

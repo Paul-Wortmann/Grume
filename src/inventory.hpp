@@ -22,10 +22,10 @@
  * @date 2011-11-11
  */
 
-#ifndef SPELL_BOOK_H
-#define SPELL_BOOK_H
+#ifndef INVENTORY_H
+#define INVENTORY_H
 
-class spell_book_button_class
+class inventory_button_class
 {
     public:
         //std::string caption;
@@ -38,13 +38,13 @@ class spell_book_button_class
         float       pos_z;
         float       width;
         float       height;
-        spell_book_button_class(void);
-       ~spell_book_button_class(void);
+        inventory_button_class(void);
+       ~inventory_button_class(void);
         void        process(void);
         void        draw(void);
 };
 
-class spell_slot_class
+class inventory_slot_class
 {
     public:
         int         click_delay;
@@ -65,15 +65,15 @@ class spell_slot_class
         float       height;
         float       drag_offset_x;
         float       drag_offset_y;
-        spell_slot_class(void);
-       ~spell_slot_class(void);
+        inventory_slot_class(void);
+       ~inventory_slot_class(void);
         void        process(void);
         void        draw(void);
         void        draw_drag(void);
         void        draw_tooltip(void);
 };
 
-class spell_book_class
+class inventory_class
 {
     public:
         bool             mouse_over;
@@ -85,32 +85,12 @@ class spell_book_class
         float            height;
         float            drag_offset_x;
         float            drag_offset_y;
-        spell_book_button_class close_button;
-        spell_slot_class spell_slot_01;
-        spell_slot_class spell_slot_02;
-        spell_slot_class spell_slot_03;
-        spell_slot_class spell_slot_04;
-        spell_slot_class spell_slot_05;
-        spell_slot_class spell_slot_06;
-        spell_slot_class spell_slot_07;
-        spell_slot_class spell_slot_08;
-        spell_slot_class spell_slot_09;
-        spell_slot_class spell_slot_10;
-        spell_slot_class spell_slot_11;
-        spell_slot_class spell_slot_12;
-        spell_slot_class spell_slot_13;
-        spell_slot_class spell_slot_14;
-        spell_slot_class spell_slot_15;
-        spell_slot_class spell_slot_16;
-        spell_slot_class spell_slot_17;
-        spell_slot_class spell_slot_18;
-        spell_slot_class spell_slot_19;
-        spell_slot_class spell_slot_20;
-        spell_book_class(void);
-       ~spell_book_class(void);
+        inventory_button_class close_button;
+        inventory_class(void);
+       ~inventory_class(void);
         void             process(void);
         void             draw(void);
 };
 
-#endif // SPELL_BOOK_H
+#endif // INVENTORY_H
 

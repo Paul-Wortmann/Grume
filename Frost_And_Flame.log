@@ -1,5 +1,5 @@
 -------------------------
-| Frost_And_Flame V0.00 |
+| Frost_And_Flame V0.01 |
 -------------------------
 
 Starting up!
@@ -19,7 +19,7 @@ Initializing font system...
 Loading resources...
 Sound files loaded -> 2
 Music files loaded -> 1
-Texture files loaded -> 103
+Texture files loaded -> 105
 Font files loaded -> 1
 Initializing menu system...
 Starting game.core...
@@ -27,19 +27,9 @@ Starting game.core...
 
 Entering 'New Game' menu.
 Entering game world, starting new game.
-Entering 'Options' menu.
-Texture files loaded -> 103
-Texture files loaded -> 103
-Texture files loaded -> 103
-Entering main menu, from Options menu. - button selected.
 Entering 'Save Game' menu.
-Entering main menu, from save menu. - button selected.
-Entering 'Load Game' menu.
-Entering main menu, from load menu. - button selected.
-Entering 'Options' menu.
-Texture files loaded -> 103
-Texture files loaded -> 103
-Entering main menu, from Options menu. - button selected.
+Saving to slot 1
+Resuming game
 User terminating game - 'Quit Game' selected!
 -------------------------
 Shutting down...

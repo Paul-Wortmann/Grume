@@ -29,37 +29,36 @@
 extern game_type game;
 
 //----------------------------------------------------------------------------------------------------------------
-
-UI_button_class::UI_button_class(void)
+spell_book_button_class::spell_book_button_class(void)
 {
-    UI_button_class::image_normal       = 0;
-    UI_button_class::image_highlighted  = 0;
-    UI_button_class::mouse_over         = false;
-    UI_button_class::activated          = false;
-    UI_button_class::pos_x              = 0.0f;
-    UI_button_class::pos_y              = 0.0f;
-    UI_button_class::pos_z              = 0.0f;
-    UI_button_class::width              = 0.0f;
-    UI_button_class::height             = 0.0f;
+    spell_book_button_class::image_normal       = 0;
+    spell_book_button_class::image_highlighted  = 0;
+    spell_book_button_class::mouse_over         = false;
+    spell_book_button_class::activated          = false;
+    spell_book_button_class::pos_x              = 0.0f;
+    spell_book_button_class::pos_y              = 0.0f;
+    spell_book_button_class::pos_z              = 0.0f;
+    spell_book_button_class::width              = 0.0f;
+    spell_book_button_class::height             = 0.0f;
 };
 
-UI_button_class::~UI_button_class(void)
+spell_book_button_class::~spell_book_button_class(void)
 {
 };
 
-void UI_button_class::process(void)
+void spell_book_button_class::process(void)
 {
     if (!game.UI.drag_in_progress)
     {
-        UI_button_class::mouse_over = game.core.physics.point_in_quadrangle(UI_button_class::pos_x,UI_button_class::width,UI_button_class::pos_y,UI_button_class::height,game.core.io.mouse_x,game.core.io.mouse_y);
-        UI_button_class::activated  = (UI_button_class::mouse_over && game.core.io.mouse_button_left);
+        spell_book_button_class::mouse_over = game.core.physics.point_in_quadrangle(spell_book_button_class::pos_x,spell_book_button_class::width,spell_book_button_class::pos_y,spell_book_button_class::height,game.core.io.mouse_x,game.core.io.mouse_y);
+        spell_book_button_class::activated  = (spell_book_button_class::mouse_over && game.core.io.mouse_button_left);
     }
 };
 
-void UI_button_class::draw(void)
+void spell_book_button_class::draw(void)
 {
-    if (UI_button_class::mouse_over) draw_texture(false,UI_button_class::image_highlighted,UI_button_class::pos_x,UI_button_class::pos_y,UI_button_class::pos_z,UI_button_class::width,UI_button_class::height);
-    else draw_texture(false,UI_button_class::image_normal,UI_button_class::pos_x,UI_button_class::pos_y,UI_button_class::pos_z,UI_button_class::width,UI_button_class::height);
+    if (spell_book_button_class::mouse_over) draw_texture(false,spell_book_button_class::image_highlighted,spell_book_button_class::pos_x,spell_book_button_class::pos_y,spell_book_button_class::pos_z,spell_book_button_class::width,spell_book_button_class::height);
+    else draw_texture(false,spell_book_button_class::image_normal,spell_book_button_class::pos_x,spell_book_button_class::pos_y,spell_book_button_class::pos_z,spell_book_button_class::width,spell_book_button_class::height);
 };
 
 //----------------------------------------------------------------------------------------------------------------
@@ -183,7 +182,7 @@ void spell_slot_class::draw_drag(void)
 spell_book_class::spell_book_class(void)
 {
     spell_book_class::pos_x         = 0.5f;
-    spell_book_class::pos_y         = 0.3f;
+    spell_book_class::pos_y         = 0.0f;
     spell_book_class::pos_z         = 0.001;
     spell_book_class::width         = 0.5f;
     spell_book_class::height        = 1.0f;

@@ -26,6 +26,8 @@
 #define UI_H
 
 #include "spell_book.hpp"
+#include "inventory.hpp"
+#include "character.hpp"
 
 class player_stats_class
 {
@@ -143,6 +145,8 @@ class UI_class
         player_stats_class player_stats;
         action_bar_class   action_bar;
         spell_book_class   spell_book;
+        inventory_class    inventory;
+        character_class    character;
         void process(void);
         void draw(void);
         UI_class(void);

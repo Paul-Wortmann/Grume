@@ -39,7 +39,7 @@ int init_menu   (void)
     game.main_menu.set_menu_title(game.language.text.main_menu);
     game.main_menu.set_keyboard_delay(16);
     game.main_menu.set_mouse_delay(24);
-    game.main_menu.set_pos(0.0f,0.3f,0.001f);
+    game.main_menu.set_pos(0.0f,0.0f,0.001f);
     game.main_menu.set_size(0.5f,1.0f);
     game.main_menu.set_menu_font(1);
     game.main_menu.set_image_background(game.texture.background_02.ref_number);
@@ -65,7 +65,7 @@ int init_menu   (void)
     game.new_game_menu.set_menu_title(game.language.text.new_game);
     game.new_game_menu.set_keyboard_delay(16);
     game.new_game_menu.set_mouse_delay(8);
-    game.new_game_menu.set_pos(0.0f,0.3f,0.001f);
+    game.new_game_menu.set_pos(0.0f,0.0f,0.001f);
     game.new_game_menu.set_size(0.4f,0.6f);
     game.new_game_menu.set_menu_font(1);
     game.new_game_menu.set_image_background(game.texture.background_02.ref_number);
@@ -88,7 +88,7 @@ int init_menu   (void)
     game.save_menu.set_menu_title(game.language.text.save_menu);
     game.save_menu.set_keyboard_delay(16);
     game.save_menu.set_mouse_delay(24);
-    game.save_menu.set_pos(0.0f,0.3f,0.001f);
+    game.save_menu.set_pos(0.0f,0.0f,0.001f);
     game.save_menu.set_size(0.5f,1.0f);
     game.save_menu.set_menu_font(1);
     game.save_menu.set_image_background(game.texture.background_02.ref_number);
@@ -116,7 +116,7 @@ int init_menu   (void)
     game.load_menu.set_menu_title(game.language.text.load_menu);
     game.load_menu.set_keyboard_delay(16);
     game.load_menu.set_mouse_delay(24);
-    game.load_menu.set_pos(0.0f,0.3f,0.001f);
+    game.load_menu.set_pos(0.0f,0.0f,0.001f);
     game.load_menu.set_size(0.5f,1.0f);
     game.load_menu.set_menu_font(1);
     game.load_menu.set_image_background(game.texture.background_02.ref_number);
@@ -165,7 +165,7 @@ int init_menu   (void)
     game.options_menu.set_menu_title(game.language.text.options);
     game.options_menu.set_keyboard_delay(16);
     game.options_menu.set_mouse_delay(24);
-    game.options_menu.set_pos(0.0f,0.3f,0.001f);
+    game.options_menu.set_pos(0.0f,0.0f,0.001f);
     game.options_menu.set_size(0.5f,1.0f);
     game.options_menu.set_menu_font(1);
     game.options_menu.set_image_background(game.texture.background_02.ref_number);
@@ -211,7 +211,7 @@ int init_menu   (void)
     game.game_over_menu.set_menu_title(game.language.text.game_over);
     game.game_over_menu.set_keyboard_delay(16);
     game.game_over_menu.set_mouse_delay(24);
-    game.game_over_menu.set_pos(0.0f,0.3f,0.001f);
+    game.game_over_menu.set_pos(0.0f,0.0f,0.001f);
     game.game_over_menu.set_size(0.4f,0.2f);
     game.game_over_menu.set_menu_font(1);
     game.game_over_menu.set_image_background(game.texture.background_03.ref_number);
@@ -231,7 +231,7 @@ int init_menu   (void)
     game.pause_menu.set_menu_title(game.language.text.game_paused);
     game.pause_menu.set_keyboard_delay(16);
     game.pause_menu.set_mouse_delay(24);
-    game.pause_menu.set_pos(0.0f,0.3f,0.001f);
+    game.pause_menu.set_pos(0.0f,0.0f,0.001f);
     game.pause_menu.set_size(0.4f,0.2f);
     game.pause_menu.set_menu_font(1);
     game.pause_menu.set_image_background(game.texture.background_03.ref_number);

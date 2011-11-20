@@ -62,6 +62,8 @@
 		</Linker>
 		<Unit filename="src\UI.cpp" />
 		<Unit filename="src\UI.hpp" />
+		<Unit filename="src\character.cpp" />
+		<Unit filename="src\character.hpp" />
 		<Unit filename="src\core\background.cpp" />
 		<Unit filename="src\core\background.hpp" />
 		<Unit filename="src\core\config.cpp" />
@@ -99,6 +101,8 @@
 		<Unit filename="src\icon.rc">
 			<Option compilerVar="WINDRES" />
 		</Unit>
+		<Unit filename="src\inventory.cpp" />
+		<Unit filename="src\inventory.hpp" />
 		<Unit filename="src\language.cpp" />
 		<Unit filename="src\language.hpp" />
 		<Unit filename="src\load_resources.cpp" />

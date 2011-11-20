@@ -105,6 +105,8 @@ bool load_textures(void)
     game.texture.spell_book.load_image              ("data/textures/UI/spell_book/spell_book.png"             ,texture_count);texture_count++;
     game.texture.spell_book_spell_cover.load_image  ("data/textures/UI/spell_book/spell_book_spell_cover.png" ,texture_count);texture_count++;
     game.texture.spell_book_background.load_image   ("data/textures/UI/spell_book/spell_book_background.png"  ,texture_count);texture_count++;
+    game.texture.inventory.load_image               ("data/textures/UI/inventory/inventory.png"               ,texture_count);texture_count++;
+    game.texture.character_background.load_image    ("data/textures/UI/character/character_background.png"    ,texture_count);texture_count++;
 
     game.texture.particle_000.load_image("data/textures/particles/particle_000.png",texture_count);texture_count++;
     game.texture.particle_001.load_image("data/textures/particles/particle_001.png",texture_count);texture_count++;
@@ -249,6 +251,8 @@ bool draw_texture(bool r, int texture_number, float x, float y, float z, float w
     if (texture_number == game.texture.spell_book.ref_number)                game.texture.spell_book.draw               (r,x,y,z,w,h,angle);
     if (texture_number == game.texture.spell_book_spell_cover.ref_number)    game.texture.spell_book_spell_cover.draw   (r,x,y,z,w,h,angle);
     if (texture_number == game.texture.spell_book_background.ref_number)     game.texture.spell_book_background.draw    (r,x,y,z,w,h,angle);
+    if (texture_number == game.texture.inventory.ref_number)                 game.texture.inventory.draw                (r,x,y,z,w,h,angle);
+    if (texture_number == game.texture.character_background.ref_number)      game.texture.character_background.draw     (r,x,y,z,w,h,angle);
 
     if (texture_number == game.texture.particle_000.ref_number) game.texture.particle_000.draw(r,x,y,z,w,h,angle);
     if (texture_number == game.texture.particle_001.ref_number) game.texture.particle_001.draw(r,x,y,z,w,h,angle);
