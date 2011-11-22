@@ -128,6 +128,7 @@ void player_stats_class::process(void)
     {
         if ((!game.UI.drag_in_progress) && (player_stats_class::mouse_over) && (game.core.io.mouse_button_left))//drag
         {
+            game.UI.active_window_list.add_to_list(PCPROFILE_WINDOW);
             player_stats_class::drag       = true;
             game.UI.drag_in_progress       = true;
             player_stats_class::pos_x      = game.core.io.mouse_x;
