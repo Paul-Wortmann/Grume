@@ -29,6 +29,54 @@ extern game_type game;
 
 //----------------------------------------------------------------------------------------------------------------
 
+active_window_list_class::active_window_list_class(void)
+{
+    for (int awl_count = 0; awl_count < MAX_ACTIVE_WINDOWS; awl_count++)
+    {
+        active_window_list_class::window_ID[awl_count] = 0;
+    }
+};
+
+active_window_list_class::~active_window_list_class(void)
+{
+
+};
+
+void active_window_list_class::remove_from_list(int window_UID)
+{
+    for (int awl_count = 0; awl_count < MAX_ACTIVE_WINDOWS; awl_count++)
+    {
+        if (active_window_list_class::window_ID[awl_count] == window_UID)
+        {
+            for(int awl_count_2 = awl_count; awl_count_2 < MAX_ACTIVE_WINDOWS-1; awl_count_2++)
+            {
+                active_window_list_class::window_ID[awl_count_2] = active_window_list_class::window_ID[awl_count_2+1];
+            }
+        }
+    }
+};
+
+void active_window_list_class::add_to_list(int window_UID)
+{
+    for (int awl_count = 0; awl_count < MAX_ACTIVE_WINDOWS; awl_count++) // first kill any previous instances of the window
+    {
+        if (active_window_list_class::window_ID[awl_count] == window_UID)
+        {
+            for(int awl_count_2 = awl_count; awl_count_2 < MAX_ACTIVE_WINDOWS-1; awl_count_2++)
+            {
+                active_window_list_class::window_ID[awl_count_2] = active_window_list_class::window_ID[awl_count_2+1];
+            }
+        }
+    }
+    for (int awl_count = MAX_ACTIVE_WINDOWS; awl_count >= 0; awl_count--) //shift stack down
+    {
+        active_window_list_class::window_ID[awl_count] = active_window_list_class::window_ID[awl_count-1];
+    }
+    active_window_list_class::window_ID[0] = window_UID; // place window on top of list
+};
+
+//----------------------------------------------------------------------------------------------------------------
+
     player_stats_class::player_stats_class(void)
 {
     player_stats_class::highlighted             = false;
@@ -339,9 +387,10 @@ void menu_slot_class::process(void)
         menu_slot_class::click_delay_count = 0;
         switch (menu_slot_class::button_type) // process mouse click
         {
-            case 1: // main menu
+            case MAIN_MENU_WINDOW: // main menu
                 if (!game.core.menu_active)
                 {
+                    game.UI.active_window_list.add_to_list(MAIN_MENU_WINDOW);
                     game.sound.menu_select_00.play();
                     game.core.menu_level              = 1;
                     game.core.menu_active             = true;
@@ -351,6 +400,7 @@ void menu_slot_class::process(void)
                 }
                 else
                 {
+                    game.UI.active_window_list.remove_from_list(MAIN_MENU_WINDOW);
                     game.sound.menu_select_00.play();
                     game.core.menu_level              = 1;
                     game.core.menu_active             = false;
@@ -359,60 +409,70 @@ void menu_slot_class::process(void)
                     game.core.config.menu_delay_count = 0;
                 }
             break;
-            case 2: // NA??
+            case UNKNOWN___WINDOW: // NA??
                 if (!game.core.menu_active)
                 {
+                    game.UI.active_window_list.add_to_list(UNKNOWN___WINDOW);
                     game.sound.menu_select_00.play();
                 }
                 else
                 {
+                    game.UI.active_window_list.remove_from_list(UNKNOWN___WINDOW);
                     game.sound.menu_select_00.play();
                 }
             break;
-            case 3: // Quest Log
+            case QUEST_LOG_WINDOW: // Quest Log
                 if (!game.core.questbook_active)
                 {
+                    game.UI.active_window_list.add_to_list(QUEST_LOG_WINDOW);
                     game.sound.menu_select_00.play();
                     game.core.questbook_active        = true;
                 }
                 else
                 {
+                    game.UI.active_window_list.remove_from_list(QUEST_LOG_WINDOW);
                     game.sound.menu_select_00.play();
                     game.core.questbook_active        = false;
                 }
             break;
-            case 4: // Character Menu
+            case CHARACTER_WINDOW: // Character Menu
                 if (!game.core.character_active)
                 {
+                    game.UI.active_window_list.add_to_list(CHARACTER_WINDOW);
                     game.sound.menu_select_00.play();
                     game.core.character_active        = true;
                 }
                 else
                 {
+                    game.UI.active_window_list.remove_from_list(CHARACTER_WINDOW);
                     game.sound.menu_select_00.play();
                     game.core.character_active        = false;
                 }
             break;
-            case 5: // Inventory
+            case INVENTORY_WINDOW: // Inventory
                 if (!game.core.inventory_active)
                 {
+                    game.UI.active_window_list.add_to_list(INVENTORY_WINDOW);
                     game.sound.menu_select_00.play();
                     game.core.inventory_active        = true;
                 }
                 else
                 {
+                    game.UI.active_window_list.remove_from_list(INVENTORY_WINDOW);
                     game.sound.menu_select_00.play();
                     game.core.inventory_active        = false;
                 }
             break;
-            case 6: // Spell Book
+            case SPELLBOOK_WINDOW: // Spell Book
                 if (!game.core.spellbook_active)
                 {
+                    game.UI.active_window_list.add_to_list(SPELLBOOK_WINDOW);
                     game.sound.menu_select_00.play();
                     game.core.spellbook_active        = true;
                 }
                 else
                 {
+                    game.UI.active_window_list.remove_from_list(SPELLBOOK_WINDOW);
                     game.sound.menu_select_00.play();
                     game.core.spellbook_active        = false;
                 }
@@ -764,6 +824,7 @@ void action_bar_class::draw(void)
     UI_class::action_bar.action_slot_10.height      =  UI_class::action_bar.height/1.34f;
     UI_class::action_bar.action_slot_10.width       =  UI_class::action_bar.action_slot_01.height/1.450f;
 
+    UI_class::active_window_list.add_to_list(PCPROFILE_WINDOW);
     UI_class::player_stats.portrait                 =  0;
     UI_class::player_stats.pos_x                    = -0.8f;
     UI_class::player_stats.pos_y                    =  0.88f;
@@ -779,19 +840,65 @@ void action_bar_class::draw(void)
 
 void UI_class::process(void)
 {
-    UI_class::player_stats.process();
+    for (int awl_count = 0; awl_count < MAX_ACTIVE_WINDOWS; awl_count++)
+    {
+        switch (UI_class::active_window_list.window_ID[awl_count])
+        {
+            case MAIN_MENU_WINDOW:
+                if (game.core.menu_active)      process_menu ();
+            break;
+            case UNKNOWN___WINDOW:
+            break;
+            case QUEST_LOG_WINDOW:
+            break;
+            case CHARACTER_WINDOW:
+                if (game.core.character_active) UI_class::character.process();
+            break;
+            case INVENTORY_WINDOW:
+                if (game.core.inventory_active) UI_class::inventory.process();
+            break;
+            case SPELLBOOK_WINDOW:
+                if (game.core.spellbook_active) UI_class::spell_book.process();
+            break;
+            case PCPROFILE_WINDOW:
+                UI_class::player_stats.process();
+            break;
+            default:
+            break;
+        };
+    };
     UI_class::action_bar.process();
-    if (game.core.spellbook_active) UI_class::spell_book.process();
-    if (game.core.inventory_active) UI_class::inventory.process();
-    if (game.core.character_active) UI_class::character.process();
 };
 
 void UI_class::draw(void)
 {
-    if (game.core.spellbook_active) UI_class::spell_book.draw();
-    if (game.core.inventory_active) UI_class::inventory.draw();
-    if (game.core.character_active) UI_class::character.draw();
-    UI_class::player_stats.draw();
+    for (int awl_count = MAX_ACTIVE_WINDOWS; awl_count >= 0; awl_count--)
+    {
+        switch (UI_class::active_window_list.window_ID[awl_count])
+        {
+            case MAIN_MENU_WINDOW:
+                if (game.core.menu_active)      diplay_menu ();
+            break;
+            case UNKNOWN___WINDOW:
+            break;
+            case QUEST_LOG_WINDOW:
+            break;
+            case CHARACTER_WINDOW:
+                if (game.core.character_active) UI_class::character.draw();
+            break;
+            case INVENTORY_WINDOW:
+                if (game.core.inventory_active) UI_class::inventory.draw();
+            break;
+            case SPELLBOOK_WINDOW:
+                if (game.core.spellbook_active) UI_class::spell_book.draw();
+            break;
+            case PCPROFILE_WINDOW:
+                UI_class::player_stats.draw();
+            break;
+            default:
+            break;
+        };
+    };
     UI_class::action_bar.draw();
 };
 

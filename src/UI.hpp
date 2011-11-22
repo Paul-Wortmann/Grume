@@ -29,6 +29,26 @@
 #include "inventory.hpp"
 #include "character.hpp"
 
+#define    MAIN_MENU_WINDOW  1
+#define    UNKNOWN___WINDOW  2
+#define    QUEST_LOG_WINDOW  3
+#define    CHARACTER_WINDOW  4
+#define    INVENTORY_WINDOW  5
+#define    SPELLBOOK_WINDOW  6
+#define    PCPROFILE_WINDOW  7
+
+const int  MAX_ACTIVE_WINDOWS = 8;
+
+class active_window_list_class
+{
+    public:
+        int  window_ID[MAX_ACTIVE_WINDOWS];
+        active_window_list_class(void);
+       ~active_window_list_class(void);
+        void remove_from_list(int window_UID);
+        void add_to_list(int window_UID);
+};
+
 class player_stats_class
 {
     public:
@@ -141,12 +161,13 @@ class action_bar_class
 class UI_class
 {
     public:
-        bool drag_in_progress;
-        player_stats_class player_stats;
-        action_bar_class   action_bar;
-        spell_book_class   spell_book;
-        inventory_class    inventory;
-        character_class    character;
+        bool                     drag_in_progress;
+        active_window_list_class active_window_list;
+        player_stats_class       player_stats;
+        action_bar_class         action_bar;
+        spell_book_class         spell_book;
+        inventory_class          inventory;
+        character_class          character;
         void process(void);
         void draw(void);
         UI_class(void);

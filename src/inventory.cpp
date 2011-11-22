@@ -197,6 +197,7 @@ void inventory_class::process(void)
     {
         if ((!game.UI.drag_in_progress) && (inventory_class::mouse_over) && (game.core.io.mouse_button_left))//drag
         {
+            game.UI.active_window_list.add_to_list(INVENTORY_WINDOW);
             inventory_class::drag          = true;
             game.UI.drag_in_progress       = true;
             inventory_class::drag_offset_x = inventory_class::pos_x - game.core.io.mouse_x;
@@ -205,6 +206,7 @@ void inventory_class::process(void)
     }
     if (inventory_class::close_button.activated)
     {
+        game.UI.active_window_list.remove_from_list(INVENTORY_WINDOW);
         game.core.inventory_active     = false;
         inventory_class::drag          = false;
         game.UI.drag_in_progress       = false;

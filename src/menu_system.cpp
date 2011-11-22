@@ -288,6 +288,7 @@ int process_menu(void)
             case 4://Resume Game
                 if (game.core.game_resume)
                 {
+                    game.UI.active_window_list.remove_from_list(MAIN_MENU_WINDOW);
                     game.sound.menu_select_00.play();
                     game.core.music_next_track = true;
                     game.core.game_active      = true;
@@ -313,8 +314,9 @@ int process_menu(void)
             case 65534:// escape pressed on keyboard.
                 if (!game.core.game_active)
                 {
+                    game.UI.active_window_list.remove_from_list(MAIN_MENU_WINDOW);
                     game.sound.menu_select_00.play();
-                    game.core.status_quit_active = true;
+                    game.core.status_quit_active      = true;
                     game.core.io.escape               = false;
                     game.core.log.File_Write("User terminating game - keyboard escape pressed!");
                 }
@@ -327,8 +329,9 @@ int process_menu(void)
             case 65535:// close button clicked.
                 if (!game.core.game_active)
                 {
+                    game.UI.active_window_list.remove_from_list(MAIN_MENU_WINDOW);
                     game.sound.menu_select_00.play();
-                    game.core.status_quit_active = true;
+                    game.core.status_quit_active      = true;
                     game.core.io.escape               = false;
                     game.core.log.File_Write("User terminating game - clicked escape button!");
                 }

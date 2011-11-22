@@ -76,6 +76,7 @@ int process_game(void)
     {
         if(!game.core.menu_active)
         {
+            game.UI.active_window_list.add_to_list(MAIN_MENU_WINDOW);
             game.sound.menu_select_00.play();
             game.core.menu_level              = 1;
             game.core.menu_active             = true;

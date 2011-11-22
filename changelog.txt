@@ -1,11 +1,16 @@
 
 v0.01 - (2011-xx-xx)
-Initial framework completed.
-Main menu implemented.
-UI -> Action bar with dragable, rearrangeable menu buttons.
+
+UI -> Character menu started.
+UI -> Inventory menu started.
+UI -> Spells/Skills dragable and rearangable on the action bar.
+UI -> Spell/Skill Book implemented.
 UI -> Player UI with health and mana bars implemented.
+UI -> Action bar with dragable, rearrangeable menu buttons.
 UI -> Dragable main menu available in game.
-LOC - 0
+Main menu implemented.
+Initial framework completed.
+LOC - 9603
 
 v0.00 - (2011-11-11)
 Initial release.

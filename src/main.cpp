@@ -121,7 +121,7 @@ int main(int argc, char *argv[])
         if (game.core.status_quit_active) quit = 1;
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 //****************************************** MENU *****************************************
-        if (game.core.menu_active)
+        if ((game.core.menu_active) && (!game.core.game_active))
         {
             if (game.core.music_next_track)
             {

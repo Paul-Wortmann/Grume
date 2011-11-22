@@ -197,6 +197,7 @@ void character_class::process(void)
     {
         if ((!game.UI.drag_in_progress) && (character_class::mouse_over) && (game.core.io.mouse_button_left))//drag
         {
+            game.UI.active_window_list.add_to_list(CHARACTER_WINDOW);
             character_class::drag          = true;
             game.UI.drag_in_progress       = true;
             character_class::drag_offset_x = character_class::pos_x - game.core.io.mouse_x;
@@ -205,6 +206,7 @@ void character_class::process(void)
     }
     if (character_class::close_button.activated)
     {
+        game.UI.active_window_list.remove_from_list(CHARACTER_WINDOW);
         game.core.character_active     = false;
         character_class::drag          = false;
         game.UI.drag_in_progress       = false;
