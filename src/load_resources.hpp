@@ -92,6 +92,7 @@ struct texture_type
     texture_class spell_book_background;
     texture_class inventory;
     texture_class character_background;
+    texture_class quest_log_background;
 
     texture_class particle_000;
     texture_class particle_001;

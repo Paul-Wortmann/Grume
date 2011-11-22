@@ -423,17 +423,17 @@ void menu_slot_class::process(void)
                 }
             break;
             case QUEST_LOG_WINDOW: // Quest Log
-                if (!game.core.questbook_active)
+                if (!game.core.quest_log_active)
                 {
                     game.UI.active_window_list.add_to_list(QUEST_LOG_WINDOW);
                     game.sound.menu_select_00.play();
-                    game.core.questbook_active        = true;
+                    game.core.quest_log_active        = true;
                 }
                 else
                 {
                     game.UI.active_window_list.remove_from_list(QUEST_LOG_WINDOW);
                     game.sound.menu_select_00.play();
-                    game.core.questbook_active        = false;
+                    game.core.quest_log_active        = false;
                 }
             break;
             case CHARACTER_WINDOW: // Character Menu
@@ -851,6 +851,7 @@ void UI_class::process(void)
             case UNKNOWN___WINDOW:
             break;
             case QUEST_LOG_WINDOW:
+                if (game.core.quest_log_active) UI_class::quest_log.process();
             break;
             case CHARACTER_WINDOW:
                 if (game.core.character_active) UI_class::character.process();
@@ -883,6 +884,7 @@ void UI_class::draw(void)
             case UNKNOWN___WINDOW:
             break;
             case QUEST_LOG_WINDOW:
+                if (game.core.quest_log_active) UI_class::quest_log.draw();
             break;
             case CHARACTER_WINDOW:
                 if (game.core.character_active) UI_class::character.draw();

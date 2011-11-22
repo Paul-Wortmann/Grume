@@ -218,7 +218,7 @@ void character_class::draw(void)
 {
     game.texture.character_background.draw(false,character_class::pos_x,character_class::pos_y,character_class::pos_z,character_class::width,character_class::height);
     character_class::close_button.draw();
-    game.font.font_1.Write(255,255,255,255,character_class::pos_x - (character_class::width /10.0f),character_class::pos_y + (character_class::height/2.30f),4.8f,32.0f,game.language.text.character_menu);
+    game.font.font_1.Write(255,255,255,255,character_class::pos_x - (character_class::width /7.0f),character_class::pos_y + (character_class::height/2.30f),4.8f,32.0f,game.language.text.character_menu);
 };
 
 

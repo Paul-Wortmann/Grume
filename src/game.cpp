@@ -38,7 +38,7 @@ int init_game(bool re_init)
     game.core.menu_active                         = true;
     game.core.pdie_active                         = false;
     game.core.nlvl_active                         = false;
-    game.core.questbook_active                    = false;
+    game.core.quest_log_active                    = false;
     game.core.character_active                    = false;
     game.core.spellbook_active                    = false;
     game.core.inventory_active                    = false;
@@ -56,6 +56,8 @@ int init_game(bool re_init)
     game.UI.inventory.close_button.image_highlighted   =  game.texture.close_button_highlighted.ref_number;
     game.UI.character.close_button.image_normal        =  game.texture.close_button.ref_number;
     game.UI.character.close_button.image_highlighted   =  game.texture.close_button_highlighted.ref_number;
+    game.UI.quest_log.close_button.image_normal        =  game.texture.close_button.ref_number;
+    game.UI.quest_log.close_button.image_highlighted   =  game.texture.close_button_highlighted.ref_number;
     init_spells();
     return(0);
 };

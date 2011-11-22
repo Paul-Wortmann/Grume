@@ -11,7 +11,7 @@
 	"game.hpp"
 	"misc.hpp"
 
-1321630915 c:\_git_\frost_and_flame\src\core\core.hpp
+1321970549 c:\_git_\frost_and_flame\src\core\core.hpp
 	"log.hpp"
 	"config.hpp"
 	"graphics.hpp"
@@ -64,7 +64,7 @@
 
 1320822860 c:\_git_\frost_and_flame\src\bullets.hpp
 
-1321782245 c:\_git_\frost_and_flame\src\load_resources.hpp
+1321970430 c:\_git_\frost_and_flame\src\load_resources.hpp
 	"core/core.hpp"
 	"core/sound.hpp"
 	"core/music.hpp"
@@ -245,7 +245,7 @@
 	"game.hpp"
 	"misc.hpp"
 
-1321967467 source:c:\_git_\frost_and_flame\src\game.cpp
+1321970846 source:c:\_git_\frost_and_flame\src\game.cpp
 	<SDL/SDL.h>
 	"menu_system.hpp"
 	"game.hpp"
@@ -280,7 +280,7 @@
 	"levels.hpp"
 	"game.hpp"
 
-1321782309 source:c:\_git_\frost_and_flame\src\load_resources.cpp
+1321970752 source:c:\_git_\frost_and_flame\src\load_resources.cpp
 	<SDL/SDL.h>
 	"load_resources.hpp"
 	"game.hpp"
@@ -379,14 +379,15 @@
 
 1321102096 source:c:\_git_\frost_and_flame\src\icon.rc
 
-1321967088 source:c:\_git_\frost_and_flame\src\ui.cpp
+1321970698 source:c:\_git_\frost_and_flame\src\ui.cpp
 	"UI.hpp"
 	"game.hpp"
 
-1321966669 c:\_git_\frost_and_flame\src\ui.hpp
+1321970559 c:\_git_\frost_and_flame\src\ui.hpp
 	"spell_book.hpp"
 	"inventory.hpp"
 	"character.hpp"
+	"quest_log.hpp"
 
 1321760251 c:\_git_\frost_and_flame\src\player.hpp
 
@@ -414,7 +415,13 @@
 
 1321782549 c:\_git_\frost_and_flame\src\character.hpp
 
-1321967547 source:c:\_git_\frost_and_flame\src\character.cpp
+1321971345 source:c:\_git_\frost_and_flame\src\character.cpp
 	"character.hpp"
+	"game.hpp"
+
+1321970327 c:\_git_\frost_and_flame\src\quest_log.hpp
+
+1321970559 source:c:\_git_\frost_and_flame\src\quest_log.cpp
+	"quest_log.hpp"
 	"game.hpp"
 

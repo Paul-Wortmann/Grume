@@ -28,6 +28,7 @@
 #include "spell_book.hpp"
 #include "inventory.hpp"
 #include "character.hpp"
+#include "quest_log.hpp"
 
 #define    MAIN_MENU_WINDOW  1
 #define    UNKNOWN___WINDOW  2
@@ -168,6 +169,7 @@ class UI_class
         spell_book_class         spell_book;
         inventory_class          inventory;
         character_class          character;
+        quest_log_class          quest_log;
         void process(void);
         void draw(void);
         UI_class(void);

@@ -115,6 +115,8 @@
 		<Unit filename="src\misc.hpp" />
 		<Unit filename="src\player.cpp" />
 		<Unit filename="src\player.hpp" />
+		<Unit filename="src\quest_log.cpp" />
+		<Unit filename="src\quest_log.hpp" />
 		<Unit filename="src\save_data.cpp" />
 		<Unit filename="src\save_data.hpp" />
 		<Unit filename="src\spell_book.cpp" />
