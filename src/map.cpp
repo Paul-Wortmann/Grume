@@ -54,8 +54,19 @@ tileset_class::~tileset_class(void)
 
 //-----------------------------------------------------------------------------------------------------------------
 
-void map_class::load(std::string file_name)
+void draw(void)
 {
+
+};
+
+void process(void)
+{
+
+};
+
+void map_class::load(std::string file_name, int reference_id)
+{
+    map_class::reference_id = reference_id;
 };
 
 map_class::map_class(void)

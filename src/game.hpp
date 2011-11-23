@@ -39,6 +39,7 @@ struct game_type
 {
     spell_class      spell[MAX_SPELLS];
     UI_class         UI;
+    map_type         map;
     sound_type       sound;
     music_type       music;
     texture_type     texture;

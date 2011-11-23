@@ -30,11 +30,17 @@
 #include "core/music.hpp"
 #include "core/textures.hpp"
 #include "core/font.hpp"
+#include "map.hpp"
 
 struct sound_type
 {
     sound_class   menu_move_00;
     sound_class   menu_select_00;
+};
+
+struct map_type
+{
+    map_class   town;
 };
 
 struct music_type
@@ -164,6 +170,7 @@ struct font_type
 };
 
 bool load_resources(void);
+bool load_maps(void);
 bool load_sounds(void);
 bool load_music(void);
 bool load_textures(void);

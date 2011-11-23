@@ -25,10 +25,10 @@
 #ifndef MAP_H
 #define MAP_H
 
-const int MAX_MAP_X    = 100;
-const int MAX_MAP_Y    = 100;
-const int MAX_TILESETS = 8;
-const int MAX_LAYERS   = 8;
+const int MAX_MAP_X        = 100;
+const int MAX_MAP_Y        = 100;
+const int MAX_MAP_TILESETS = 8;
+const int MAX_MAP_LAYERS   = 8;
 
 class layer_class
 {
@@ -54,13 +54,16 @@ class tileset_class
 class map_class
 {
     public:
+        int           reference_id;
         int           width;
         int           height;
         int           tilewidth;
         int           tileheight;
-        tileset_class tileset[MAX_TILESETS];
-        layer_class   layer[MAX_LAYERS];
-        void load(std::string file_name);
+        tileset_class tileset[MAX_MAP_TILESETS];
+        layer_class   layer[MAX_MAP_LAYERS];
+        void draw(void);
+        void process(void);
+        void load(std::string file_name, int reference_id);
         map_class(void);
        ~map_class(void);
 };

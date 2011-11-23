@@ -34,6 +34,16 @@ bool load_resources(void)
     load_music();
     load_textures();
     load_fonts();
+    load_maps();
+    return(true);
+};
+
+bool load_maps(void)
+{
+    int map_count = 0;
+    game.map.town.load      ("data/maps/town.tmx",map_count)   ;map_count++;
+
+    game.core.log.File_Write("Map files loaded -> ",map_count);
     return(true);
 };
 
