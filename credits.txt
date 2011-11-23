@@ -22,6 +22,7 @@ menu_select_00.wav from http://opengameart.org/content/interface-beeps CC0 Bart 
 |                                                 Music resources:                                                       |
 --------------------------------------------------------------------------------------------------------------------------
 menu_00.s3m   from http://modarchive.org/index.php?request=view_by_moduleid&query=70934 (diablo_part_2.s3m)
+
 --------------------------------------------------------------------------------------------------------------------------
 |                                                 Art resources:                                                         |
 --------------------------------------------------------------------------------------------------------------------------
@@ -30,100 +31,118 @@ Menu backgrounds were rendered with Genetica Viewer 3.51.2181 Copyright (c) 2006
 Various graphics resources were created and/or modified with GIMP. (http://www.gimp.org/)
 "resolution_icon.png" by Lothar Grimme from http://icones.pro/en/full-screen-window-5-png-image.html having GPL licence.
 
+Bridge tileset.
+---------------
+http://opengameart.org/content/isometric-bridge
+Author: Lamoot
+License(s): GPL 2.0, GPL 3.0, CC-BY-SA 3.0
+
+Grass and water tileset.
+------------------------
+http://opengameart.org/content/grass-and-water-tiles
+Author: Clint Bellanger
+License(s): GPL 2.0, GPL 3.0, CC-BY-SA 3.0
+
+fence tileset.
+--------------
+http://opengameart.org/content/graveyard-fence-and-props
+Author: Matt Merkulov
+License(s): GPL 3.0
+
 Menus, action bar and player stat display.
 ------------------------------------------
 Some parts of the UI are dirivitives, most notably, the menu buttons and health/mana bars.
-Jorge Avila
-LGPL 2.1, LGPL 3.0, CC-BY 3.0
+Author: Jorge Avila
+License(s): LGPL 2.1, LGPL 3.0, CC-BY 3.0
 http://opengameart.org/content/moderna-graphical-interface
 
 Main icon
 ---------
 I derived the main icon from an icons pack by "Ails".
-GPL 2.0, GPL 3.0, CC-BY-SA 3.0
+License(s): GPL 2.0, GPL 3.0, CC-BY-SA 3.0
 http://opengameart.org/content/420-pixel-art-icons-for-medievalfantasy-rpg
 
 Armour_00 - Armour_05
 ---------------------
 Stephen Challener (Redshrike)
-CC-BY 3.0
+License(s): CC-BY 3.0
 http://opengameart.org/content/flare-compatible-ish-item-icons
 http://opengameart.org/content/flare-compatible-jewelry
 
 Armour_06 - Armour_08
 ---------------------
-CCO - Public domain
+License(s): CCO - Public domain
 blarumyrran (blarumyrran@gmail.com)
 
 Book_00 - Book_19
 -----------------
-CCO - Public domain
+License(s): CCO - Public domain
 http://opengameart.org/content/flare-item-variation-60x60-only
 
 Boots_00 - Boots_11
 -------------------
-CCO - Public domain
+License(s): CCO - Public domain
 http://opengameart.org/content/flare-item-variation-60x60-only
 
 Bow_00 - Bow_02
 ---------------
-CCO - Public domain
+License(s): CCO - Public domain
 blarumyrran (blarumyrran@gmail.com)
 
 Dagger_00 - Dagger_22
 ---------------------
-CCO - Public domain
+License(s): CCO - Public domain
 http://opengameart.org/content/flare-item-variation-60x60-only
 
 Dagger_23 - Dagger_26
 ---------------------
 Stephen Challener (Redshrike)
-CC-BY 3.0
+License(s): CC-BY 3.0
 http://opengameart.org/content/flare-compatible-ish-item-icons
 http://opengameart.org/content/flare-compatible-jewelry
 
 Dagger_27 - Dagger_27
 ---------------------
-CCO - Public domain
+License(s): CCO - Public domain
 blarumyrran (blarumyrran@gmail.com)
 
 Ring_00 - Ring_16
 -----------------
-CCO - Public domain
+License(s): CCO - Public domain
 http://opengameart.org/content/flare-item-variation-60x60-only
 
 Ring_17 - Ring_18
 -----------------
 Stephen Challener (Redshrike)
-CC-BY 3.0
+License(s): CC-BY 3.0
 http://opengameart.org/content/flare-compatible-ish-item-icons
 http://opengameart.org/content/flare-compatible-jewelry
 
 Rune_00 - Rune_19
 -----------------
-CCO - Public domain
+License(s): CCO - Public domain
 http://opengameart.org/content/flare-item-variation-60x60-only
 
 Shield_00 - Shield_04
 ---------------------
 Stephen Challener (Redshrike)
-CC-BY 3.0
+License(s): CC-BY 3.0
 http://opengameart.org/content/flare-compatible-ish-item-icons
 http://opengameart.org/content/flare-compatible-jewelry
 
 Shield_05 - Shield_06
 ---------------------
-CCO - Public domain
+License(s): CCO - Public domain
 blarumyrran (blarumyrran@gmail.com)
 
 Sling_00 - Sling_19
 -------------------
-CCO - Public domain
+License(s): CCO - Public domain
 http://opengameart.org/content/flare-item-variation-60x60-only
 
 Sling_20 - Sling_20
 ---------------------
-CCO - Public domain
+License(s): CCO - Public domain
 blarumyrran (blarumyrran@gmail.com)
 
 Spells -> Painterly Spell Icon set part 1-4
@@ -162,29 +181,29 @@ http://opengameart.org/content/painterly-spell-icons-part-4
 
 Sword_00 - Sword_23
 -------------------
-CCO - Public domain
+License(s): CCO - Public domain
 http://opengameart.org/content/flare-item-variation-60x60-only
 
 Sword_24 - Sword_24
 -------------------
 Stephen Challener (Redshrike)
-CC-BY 3.0
+License(s): CC-BY 3.0
 http://opengameart.org/content/flare-compatible-ish-item-icons
 http://opengameart.org/content/flare-compatible-jewelry
 
 Sword_25 - Sword_27
 -------------------
-CCO - Public domain
+License(s): CCO - Public domain
 blarumyrran (blarumyrran@gmail.com)
 
 Wand_00 - Wand_16
 -----------------
-CCO - Public domain
+License(s): CCO - Public domain
 http://opengameart.org/content/flare-item-variation-60x60-only
 
 Wand_17 - Wand_20
 -----------------
-CCO - Public domain
+License(s): CCO - Public domain
 blarumyrran (blarumyrran@gmail.com)
 
 

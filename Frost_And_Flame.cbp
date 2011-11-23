@@ -109,6 +109,8 @@
 		<Unit filename="src\load_resources.hpp" />
 		<Unit filename="src\main.cpp" />
 		<Unit filename="src\main.hpp" />
+		<Unit filename="src\map.cpp" />
+		<Unit filename="src\map.hpp" />
 		<Unit filename="src\menu_system.cpp" />
 		<Unit filename="src\menu_system.hpp" />
 		<Unit filename="src\misc.cpp" />
