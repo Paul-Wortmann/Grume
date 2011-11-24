@@ -214,7 +214,11 @@ void map_class::load(std::string file_name, int reference_id)
                                 tile_count      = 0;
                             };
                             if (temp_string_key == "tile gid")
-                            {
+                            {   for (int temp_tileset_count = 0; temp_tileset_count <= tileset_count; temp_tileset_count++)
+                                {
+                                    if (temp_int_data >= map_class::tileset[temp_tileset_count].firstgid) map_class::tile[tile_count].tile_tileset = temp_tileset_count;
+                                }
+                                temp_int_data = temp_int_data - map_class::tileset[map_class::tile[tile_count].tile_tileset].firstgid;
                                 if (collision_data) map_class::tile[tile_count].collision = temp_int_data;
                                 if (object_data) map_class::tile[tile_count].object       = temp_int_data;
                                 if (tile_data) map_class::tile[tile_count].tile           = temp_int_data;
