@@ -281,7 +281,7 @@
 	"levels.hpp"
 	"game.hpp"
 
-1321970752 source:c:\_git_\frost_and_flame\src\load_resources.cpp
+1322063415 source:c:\_git_\frost_and_flame\src\load_resources.cpp
 	<SDL/SDL.h>
 	"load_resources.hpp"
 	"game.hpp"
@@ -426,9 +426,14 @@
 	"quest_log.hpp"
 	"game.hpp"
 
-1322063362 c:\_git_\frost_and_flame\src\map.hpp
+1322145475 c:\_git_\frost_and_flame\src\map.hpp
 
-1322063318 source:c:\_git_\frost_and_flame\src\map.cpp
+1322141125 source:c:\_git_\frost_and_flame\src\map.cpp
+	<iostream>
+	<fstream>
+	<stdio.h>
+	<stdlib.h>
 	<string>
 	"map.hpp"
+	"game.hpp"
 

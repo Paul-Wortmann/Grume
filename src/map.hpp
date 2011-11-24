@@ -28,16 +28,17 @@
 const int MAX_MAP_X        = 100;
 const int MAX_MAP_Y        = 100;
 const int MAX_MAP_TILESETS = 8;
-const int MAX_MAP_LAYERS   = 8;
 
-class layer_class
+class tile_class
 {
     public:
-        std::string   name;
-        int           width;
-        int           height;
-        layer_class(void);
-       ~layer_class(void);
+        bool collision;
+        int  object;
+        int  object_tileset;
+        int  tile;
+        int  tile_tileset;
+        tile_class(void);
+       ~tile_class(void);
 };
 
 class tileset_class
@@ -47,6 +48,10 @@ class tileset_class
         int           tileheight;
         int           firstgid;
         std::string   name;
+        std::string   image_source;
+        int           width;
+        int           height;
+        int           number_of_tiles;
         tileset_class(void);
        ~tileset_class(void);
 };
@@ -54,13 +59,15 @@ class tileset_class
 class map_class
 {
     public:
+        float         version;
+        std::string   orientation;
         int           reference_id;
         int           width;
         int           height;
         int           tilewidth;
         int           tileheight;
+        tile_class    tile[MAX_MAP_X*MAX_MAP_Y];
         tileset_class tileset[MAX_MAP_TILESETS];
-        layer_class   layer[MAX_MAP_LAYERS];
         void draw(void);
         void process(void);
         void load(std::string file_name, int reference_id);

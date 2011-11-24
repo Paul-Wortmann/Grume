@@ -31,6 +31,35 @@ Menu backgrounds were rendered with Genetica Viewer 3.51.2181 Copyright (c) 2006
 Various graphics resources were created and/or modified with GIMP. (http://www.gimp.org/)
 "resolution_icon.png" by Lothar Grimme from http://icones.pro/en/full-screen-window-5-png-image.html having GPL licence.
 
+Medieval building tileset.
+--------------------------
+http://opengameart.org/content/medieval-building-tiles
+Author: Clint Bellanger
+License(s): GPL 2.0, GPL 3.0, CC-BY-SA 3.0
+
+Dungeon tileset.
+----------------
+http://opengameart.org/content/classic-dungeon-walls
+Author: Clint Bellanger
+License(s): GPL 2.0, GPL 3.0, CC-BY-SA 3.0
+
+Cave tileset.
+-------------
+http://opengameart.org/content/cave-tileset
+Author: Clint Bellanger
+License(s): GPL 2.0, GPL 3.0, CC-BY-SA 3.0
+
+Broken tower tileset.
+---------------------
+http://opengameart.org/content/broken-tower
+Author: Clint Bellanger
+License(s): GPL 2.0, GPL 3.0, CC-BY-SA 3.0
+
+Grassland tileset.
+------------------
+Author: Clint Bellanger
+License(s): CC-BY-SA 3.0
+
 Bridge tileset.
 ---------------
 http://opengameart.org/content/isometric-bridge

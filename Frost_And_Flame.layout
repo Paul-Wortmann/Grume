@@ -128,13 +128,13 @@
 		<Cursor1 position="2266" topLine="5" />
 	</File>
 	<File name="src\load_resources.cpp" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="1320" topLine="22" />
+		<Cursor1 position="1204" topLine="22" />
 	</File>
 	<File name="src\load_resources.hpp" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor1 position="5331" topLine="162" />
 	</File>
 	<File name="src\main.cpp" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="5953" topLine="110" />
+		<Cursor1 position="1211" topLine="21" />
 	</File>
 	<File name="src\main.hpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor1 position="1004" topLine="7" />
