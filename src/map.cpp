@@ -63,14 +63,68 @@ tileset_class::~tileset_class(void)
 
 //-----------------------------------------------------------------------------------------------------------------
 
-void draw(void)
+void map_class::draw(void)
+{
+    for (int tile_count = 0; tile_count < MAX_TILES; tile_count++)
+    {
+        if (map_class::tile_visable(tile_count))
+        {
+            //if (map_class::tileset[map_class::tile[tile_count].tile_tileset].name == "grass_and_water")
+            {
+                draw_texture(true,game.texture.grass_and_water_tileset.ref_number,map_class::tile[tile_count].pos_x,map_class::tile[tile_count].pos_y,0.001f,TILE_WIDTH,TILE_HEIGHT,0.0f,map_class::tile[tile_count].tile);
+            }
+        }
+    };
+};
+
+void map_class::process(void)
 {
 
 };
 
-void process(void)
+void map_class::calculate_tile_positions(void)
 {
+    int   tile_count  = 0;
+    float floor_x     = 0.0f+((MAX_TILE_X * TILE_WIDTH_HALF)/4);
+    float floor_y     = 1.0f-((TILE_HEIGHT));
+    for (int loop_count = 1; loop_count < MAX_TILE_X+1; loop_count++)
+    {
+        int count_x = loop_count;
+        for (int count_y = 1; count_y < loop_count+1; count_y++)
+        {
+            map_class::tile[tile_count].pos_x = floor_x - (count_x * TILE_WIDTH);
+            map_class::tile[tile_count].pos_y = floor_y;
+            count_x--;
+            tile_count++;
+        }
+        floor_x += TILE_WIDTH_HALF;
+        floor_y -= (TILE_HEIGHT_HALF/TILE_HEIGHT_SCALE/2);
+    }
+    int count_y = 1;
+    for (int count_min = 2; count_min < MAX_TILE_Y+1; count_min++)
+    {
+        int count_x = MAX_TILE_X;
+        for (int loop_count = count_min; loop_count < MAX_TILE_Y+1; loop_count++)
+        {
+            count_y = loop_count;
+            map_class::tile[tile_count].pos_x = floor_x - (count_x * TILE_WIDTH);
+            map_class::tile[tile_count].pos_y = floor_y;
+            count_x--;
+            tile_count++;
+        }
+        floor_x += TILE_WIDTH_HALF;
+        floor_y -= (TILE_HEIGHT_HALF/TILE_HEIGHT_SCALE/2);
+    }
+};
 
+bool map_class::tile_visable(int tile_no)
+{
+    float x_max =  1.0f;
+    float x_min = -1.0f;
+    float y_max =  1.0f;
+    float y_min = -1.0f;
+    if((map_class::tile[tile_no].pos_x <= ( x_max+TILE_WIDTH)) && (map_class::tile[tile_no].pos_x >= (x_min-TILE_WIDTH)) && (map_class::tile[tile_no].pos_y <= ( y_max+TILE_HEIGHT)) && (map_class::tile[tile_no].pos_y >= (y_min-TILE_HEIGHT))) return(true);
+    else return(false);
 };
 
 void map_class::load(std::string file_name)
@@ -94,6 +148,7 @@ void map_class::load(std::string file_name)
     std::string  temp_string_key;
     std::string  temp_string_value;
     std::string  data_line;
+    map_class::calculate_tile_positions();
     std::fstream script_file(file_name.c_str(),std::ios::in|std::ios::binary);
     if (script_file.is_open())
     {

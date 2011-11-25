@@ -162,6 +162,8 @@ struct texture_type
     texture_class spell_15_level_01;
     texture_class spell_15_level_02;
     texture_class spell_15_level_03;
+
+    texture_class grass_and_water_tileset;
 };
 
 struct font_type
@@ -177,6 +179,7 @@ bool load_textures(void);
 bool proc_textures(void);
 bool draw_texture(bool r, int texture_number, float x, float y, float z, float w, float h);
 bool draw_texture(bool r, int texture_number, float x, float y, float z, float w, float h, float angle);
+bool draw_texture(bool r, int texture_number, float x, float y, float z, float w, float h, float angle, int frame);
 bool load_fonts(void);
 
 bool loading_screen_display(std::string file_name);

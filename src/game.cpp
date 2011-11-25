@@ -117,6 +117,7 @@ int display_game(void)
 {
     float z_pos = 0;
     glPushMatrix();
+    game.map.town.draw();
     game.player.draw();
 
 

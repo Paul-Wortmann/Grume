@@ -25,18 +25,28 @@
 #ifndef MAP_H
 #define MAP_H
 
-const int MAX_MAP_X        = 100;
-const int MAX_MAP_Y        = 100;
-const int MAX_MAP_TILESETS = 8;
+const int    MAX_MAP_TILESETS    = 8;
+const int    MAX_TILE_X          = 100;
+const int    MAX_TILE_Y          = 100;
+const int    MAX_TILES           = MAX_TILE_X*MAX_TILE_Y;
+const float  TILE_SIZE           = 0.15f;
+const float  TILE_WIDTH_SCALE    = 1;
+const float  TILE_HEIGHT_SCALE   = 2;
+const float  TILE_WIDTH          = TILE_SIZE*TILE_WIDTH_SCALE;
+const float  TILE_HEIGHT         = TILE_SIZE*TILE_HEIGHT_SCALE;
+const float  TILE_WIDTH_HALF     = TILE_WIDTH/2;
+const float  TILE_HEIGHT_HALF    = TILE_HEIGHT/2;
 
 class tile_class
 {
     public:
-        bool collision;
-        int  object;
-        int  object_tileset;
-        int  tile;
-        int  tile_tileset;
+        float pos_x;
+        float pos_y;
+        bool  collision;
+        int   object;
+        int   object_tileset;
+        int   tile;
+        int   tile_tileset;
         tile_class(void);
        ~tile_class(void);
 };
@@ -65,12 +75,14 @@ class map_class
         int           height;
         int           tilewidth;
         int           tileheight;
-        tile_class    tile[MAX_MAP_X*MAX_MAP_Y];
+        tile_class    tile[MAX_TILES];
         int           number_of_tiles;
         tileset_class tileset[MAX_MAP_TILESETS];
         int           number_of_tilesets;
         void draw(void);
         void process(void);
+        void calculate_tile_positions(void);
+        bool tile_visable(int tile_no);
         void save(std::string file_name);
         void load(std::string file_name);
         map_class(void);
