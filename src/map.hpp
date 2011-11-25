@@ -29,7 +29,7 @@ const int    MAX_MAP_TILESETS    = 8;
 const int    MAX_TILE_X          = 100;
 const int    MAX_TILE_Y          = 100;
 const int    MAX_TILES           = MAX_TILE_X*MAX_TILE_Y;
-const float  TILE_SIZE           = 0.15f;
+const float  TILE_SIZE           = 0.16f;
 const float  TILE_WIDTH_SCALE    = 1;
 const float  TILE_HEIGHT_SCALE   = 2;
 const float  TILE_WIDTH          = TILE_SIZE*TILE_WIDTH_SCALE;
@@ -81,6 +81,8 @@ class map_class
         int           number_of_tilesets;
         void draw(void);
         void process(void);
+        void reorder_tiles(void);
+        void center_on_tile(int tile_ID);
         void calculate_tile_positions(void);
         bool tile_visable(int tile_no);
         void save(std::string file_name);

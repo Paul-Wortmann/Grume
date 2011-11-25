@@ -69,10 +69,13 @@ void map_class::draw(void)
     {
         if (map_class::tile_visable(tile_count))
         {
-            //if (map_class::tile[tile_count].tile_tileset == 0)
+            if (map_class::tileset[map_class::tile[tile_count].tile_tileset].name == "grass_and_water")
             {
-                game.core.log.File_Write(map_class::tile[tile_count].tile_tileset);
-                draw_texture(true,game.texture.grass_and_water_tileset.ref_number,map_class::tile[tile_count].pos_x,map_class::tile[tile_count].pos_y,0.001f,TILE_WIDTH,TILE_HEIGHT,0.0f,map_class::tile[tile_count].tile);
+                draw_texture(true,game.texture.grass_and_water_tileset.ref_number,map_class::tile[tile_count].pos_x,map_class::tile[tile_count].pos_y,0.001f,map_class::tileset[map_class::tile[tile_count].tile_tileset].tilewidth/400.0f,map_class::tileset[map_class::tile[tile_count].tile_tileset].tileheight/400.0f,0.0f,map_class::tile[tile_count].tile-1);
+            }
+            if (map_class::tileset[map_class::tile[tile_count].tile_tileset].name == "bridge")
+            {
+                //draw_texture(true,game.texture.bridge_tileset.ref_number,map_class::tile[tile_count].pos_x,map_class::tile[tile_count].pos_y,0.001f,TILE_WIDTH,TILE_HEIGHT/2,0.0f,map_class::tile[tile_count].tile-1);
             }
         }
     };
@@ -81,6 +84,22 @@ void map_class::draw(void)
 void map_class::process(void)
 {
 
+};
+
+void map_class::reorder_tiles(void)
+{
+
+};
+
+void map_class::center_on_tile(int tile_ID)
+{
+    float temp_x = map_class::tile[tile_ID].pos_x;
+    float temp_y = map_class::tile[tile_ID].pos_y;
+    for(int tile_count = 0; tile_count < MAX_TILES; tile_count++)
+    {
+        map_class::tile[tile_count].pos_x -= temp_x;
+        map_class::tile[tile_count].pos_y -= temp_y;
+    }
 };
 
 void map_class::calculate_tile_positions(void)
@@ -150,6 +169,7 @@ void map_class::load(std::string file_name)
     std::string  temp_string_value;
     std::string  data_line;
     map_class::calculate_tile_positions();
+    map_class::center_on_tile(0);
     std::fstream script_file(file_name.c_str(),std::ios::in|std::ios::binary);
     if (script_file.is_open())
     {
@@ -270,6 +290,7 @@ void map_class::load(std::string file_name)
                             };
                             if (temp_string_key == "tile gid")
                             {
+                                map_class::tile[tile_count].tile_tileset = 0;
                                 for (int temp_tileset_count = 0; temp_tileset_count < tileset_count; temp_tileset_count++)
                                 {
                                     if (temp_int_data >= (int)map_class::tileset[temp_tileset_count].firstgid)
@@ -293,6 +314,7 @@ void map_class::load(std::string file_name)
         map_class::number_of_tilesets = tileset_count + 1;
         script_file.close();
     }
+    map_class::reorder_tiles();
 };
 
 void map_class::save(std::string file_name)

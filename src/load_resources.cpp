@@ -42,7 +42,6 @@ bool load_maps(void)
 {
     int map_count = 0;
     game.map.town.load      ("data/maps/town.tmx")   ;map_count++;
-    game.map.town.save      ("data/maps/town2.tmx")   ;map_count++;
 
     game.core.log.File_Write("Map files loaded -> ",map_count);
     return(true);
@@ -183,6 +182,8 @@ bool load_textures(void)
     game.texture.spell_15_level_02.load_image("data/textures/UI/icons/spells/beam-blue-2.png",texture_count);texture_count++;
     game.texture.spell_15_level_03.load_image("data/textures/UI/icons/spells/beam-blue-3.png",texture_count);texture_count++;
     game.texture.grass_and_water_tileset.load_spritesheet("data/tilesets/grass_and_water.png",texture_count, 64,64);
+    game.texture.bridge_tileset.load_spritesheet("data/tilesets/bridge.png",texture_count, 64,148);
+
     game.core.log.File_Write("Texture files loaded -> ",texture_count);
     return(true);
 };
@@ -337,6 +338,7 @@ bool draw_texture(bool r, int texture_number, float x, float y, float z, float w
     if (texture_number == game.texture.spell_15_level_03.ref_number) game.texture.spell_15_level_03.draw(r,x,y,z,w,h,angle,frame);
 
     if (texture_number == game.texture.grass_and_water_tileset.ref_number) game.texture.grass_and_water_tileset.draw(r,x,y,z,w,h,angle,frame);
+    if (texture_number == game.texture.bridge_tileset.ref_number)          game.texture.bridge_tileset.draw(r,x,y,z,w,h,angle,frame);
 
     return(true);
 };

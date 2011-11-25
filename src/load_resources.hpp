@@ -164,6 +164,7 @@ struct texture_type
     texture_class spell_15_level_03;
 
     texture_class grass_and_water_tileset;
+    texture_class bridge_tileset;
 };
 
 struct font_type
