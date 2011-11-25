@@ -69,8 +69,9 @@ void map_class::draw(void)
     {
         if (map_class::tile_visable(tile_count))
         {
-            //if (map_class::tileset[map_class::tile[tile_count].tile_tileset].name == "grass_and_water")
+            //if (map_class::tile[tile_count].tile_tileset == 0)
             {
+                game.core.log.File_Write(map_class::tile[tile_count].tile_tileset);
                 draw_texture(true,game.texture.grass_and_water_tileset.ref_number,map_class::tile[tile_count].pos_x,map_class::tile[tile_count].pos_y,0.001f,TILE_WIDTH,TILE_HEIGHT,0.0f,map_class::tile[tile_count].tile);
             }
         }
@@ -268,11 +269,16 @@ void map_class::load(std::string file_name)
                                 tile_count      = 0;
                             };
                             if (temp_string_key == "tile gid")
-                            {   for (int temp_tileset_count = 0; temp_tileset_count <= tileset_count; temp_tileset_count++)
+                            {
+                                for (int temp_tileset_count = 0; temp_tileset_count < tileset_count; temp_tileset_count++)
                                 {
-                                    if (temp_int_data >= map_class::tileset[temp_tileset_count].firstgid) map_class::tile[tile_count].tile_tileset = temp_tileset_count;
+                                    if (temp_int_data >= (int)map_class::tileset[temp_tileset_count].firstgid)
+                                    {
+                                        map_class::tile[tile_count].tile_tileset = temp_tileset_count;
+                                    }
                                 }
-                                temp_int_data = temp_int_data - map_class::tileset[map_class::tile[tile_count].tile_tileset].firstgid;
+                                temp_int_data -= map_class::tileset[map_class::tile[tile_count].tile_tileset].firstgid;
+                                temp_int_data += 1;
                                 if (collision_data) map_class::tile[tile_count].collision = temp_int_data;
                                 if (object_data) map_class::tile[tile_count].object       = temp_int_data;
                                 if (tile_data) map_class::tile[tile_count].tile           = temp_int_data;
@@ -407,7 +413,7 @@ void map_class::save(std::string file_name)
         {
             script_file << "   <tile gid=";
             script_file << '"';
-            script_file << map_class::tile[tile_count].tile;
+            script_file << ((map_class::tile[tile_count].tile + map_class::tileset[map_class::tile[tile_count].tile_tileset].firstgid) - 1);
             script_file << '"';
             script_file << "/>";
             script_file << "\n";
@@ -436,7 +442,7 @@ void map_class::save(std::string file_name)
         {
             script_file << "   <tile gid=";
             script_file << '"';
-            script_file << map_class::tile[tile_count].object;
+            script_file << ((map_class::tile[tile_count].object + map_class::tileset[map_class::tile[tile_count].tile_tileset].firstgid) - 1);
             script_file << '"';
             script_file << "/>";
             script_file << "\n";
