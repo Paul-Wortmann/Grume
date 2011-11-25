@@ -73,7 +73,7 @@ void process(void)
 
 };
 
-void map_class::load(std::string file_name, int reference_id)
+void map_class::load(std::string file_name)
 {
     int          position_count  = 0;
     int          position_start  = 0;
@@ -86,7 +86,6 @@ void map_class::load(std::string file_name, int reference_id)
     int          tileset_count   = 0;
     int          layer_count     = 0;
     int          tile_count      = 0;
-    map_class::reference_id = reference_id;
     char         temp_char = ' ';
     float        temp_float_data;
     int          temp_int_data;
@@ -187,7 +186,7 @@ void map_class::load(std::string file_name, int reference_id)
                             if (temp_string_key == "orientation") map_class::orientation = temp_string_data;
                             if (temp_string_key == "width")       map_class::width       = temp_int_data;
                             if (temp_string_key == "height")      map_class::height      = temp_int_data;
-                            if (temp_string_key == "tilewidth")   map_class::tileheight  = temp_int_data;
+                            if (temp_string_key == "tilewidth")   map_class::tilewidth   = temp_int_data;
                             if (temp_string_key == "tileheight")  map_class::tileheight  = temp_int_data;
                             if (temp_string_key == "tileheight")  map_data               = false;
                         }
@@ -229,18 +228,184 @@ void map_class::load(std::string file_name, int reference_id)
                 }
             }
         }
+        map_class::number_of_tiles    = map_class::width * map_class::height;
+        map_class::number_of_tilesets = tileset_count + 1;
+        script_file.close();
+    }
+};
+
+void map_class::save(std::string file_name)
+{
+    std::fstream script_file(file_name.c_str(),std::ios::out|std::ios::binary|std::ios::trunc);
+    if (script_file.is_open())
+    {
+        script_file << "<?xml version=";
+        script_file << '"';
+        script_file << "1.0";
+        script_file << '"';
+        script_file << " encoding=";
+        script_file << '"';
+        script_file << " UTF-8";
+        script_file << '"';
+        script_file << "?>";
+        script_file << "\n";
+
+        script_file << "<map version=";
+        script_file << '"';
+        script_file << (float)map_class::version;
+        if ((float)map_class::version == (int)map_class::version) script_file << ".0";
+        script_file << '"';
+        script_file << " orientation=";
+        script_file << '"';
+        script_file << map_class::orientation.c_str();
+        script_file << '"';
+        script_file << " width=";
+        script_file << '"';
+        script_file << map_class::width;
+        script_file << '"';
+        script_file << " height=";
+        script_file << '"';
+        script_file << map_class::height;
+        script_file << '"';
+        script_file << " tilewidth=";
+        script_file << '"';
+        script_file << map_class::tilewidth;
+        script_file << '"';
+        script_file << " tileheight=";
+        script_file << '"';
+        script_file << map_class::tileheight;
+        script_file << '"';
+        script_file << ">";
+        script_file << "\n";
+
+        script_file << " <properties>";
+        script_file << "\n";
+
+        script_file << "  <property name=";
+        script_file << '"';
+        script_file << "MAP_ID";
+        script_file << '"';
+        script_file << " value=";
+        script_file << '"';
+        script_file << "0";
+        script_file << '"';
+        script_file << "/>";
+        script_file << "\n";
+
+        script_file << " </properties>";
+        script_file << "\n";
+
+        for (int tileset_count = 0; tileset_count < (map_class::number_of_tilesets - 1); tileset_count++)
+        {
+            script_file << " <tileset firstgid=";
+            script_file << '"';
+            script_file << map_class::tileset[tileset_count].firstgid;
+            script_file << '"';
+            script_file << " name=";
+            script_file << '"';
+            script_file << map_class::tileset[tileset_count].name;
+            script_file << '"';
+            script_file << " tilewidth=";
+            script_file << '"';
+            script_file << map_class::tileset[tileset_count].tilewidth;
+            script_file << '"';
+            script_file << " tileheight=";
+            script_file << '"';
+            script_file << map_class::tileset[tileset_count].tileheight;
+            script_file << '"';
+            script_file << "/>";
+            script_file << "\n";
+            script_file << "  <image source=";
+            script_file << '"';
+            script_file << map_class::tileset[tileset_count].image_source;
+            script_file << '"';
+            script_file << " width=";
+            script_file << '"';
+            script_file << map_class::tileset[tileset_count].width;
+            script_file << '"';
+            script_file << " height=";
+            script_file << '"';
+            script_file << map_class::tileset[tileset_count].height;
+            script_file << '"';
+            script_file << "/>";
+            script_file << "\n";
+            script_file << " </tileset>";
+            script_file << "\n";
+        }
+        script_file << " <layer name=";
+        script_file << '"';
+        script_file << "tile";
+        script_file << '"';
+        script_file << " width=";
+        script_file << '"';
+        script_file << map_class::width;
+        script_file << '"';
+        script_file << " height=";
+        script_file << '"';
+        script_file << map_class::height;
+        script_file << '"';
+        script_file << ">";
+        script_file << "\n";
+        script_file << "  <data>";
+        script_file << "\n";
+        for (int tile_count = 0; tile_count < map_class::number_of_tiles; tile_count++)
+        {
+            script_file << "   <tile gid=";
+            script_file << '"';
+            script_file << map_class::tile[tile_count].tile;
+            script_file << '"';
+            script_file << "/>";
+            script_file << "\n";
+        }
+        script_file << "  </data>";
+        script_file << "\n";
+        script_file << " </layer>";
+        script_file << "\n";
+        script_file << " <layer name=";
+        script_file << '"';
+        script_file << "object";
+        script_file << '"';
+        script_file << " width=";
+        script_file << '"';
+        script_file << map_class::width;
+        script_file << '"';
+        script_file << " height=";
+        script_file << '"';
+        script_file << map_class::height;
+        script_file << '"';
+        script_file << ">";
+        script_file << "\n";
+        script_file << "  <data>";
+        script_file << "\n";
+        for (int tile_count = 0; tile_count < map_class::number_of_tiles; tile_count++)
+        {
+            script_file << "   <tile gid=";
+            script_file << '"';
+            script_file << map_class::tile[tile_count].object;
+            script_file << '"';
+            script_file << "/>";
+            script_file << "\n";
+        }
+        script_file << "  </data>";
+        script_file << "\n";
+        script_file << " </layer>";
+        script_file << "\n";
+        script_file << "</map>";
+        script_file << "\n";
         script_file.close();
     }
 };
 
 map_class::map_class(void)
 {
-    map_class::version     = 0.0f;
-    map_class::orientation = "Unknown";
-    map_class::width       = 0;
-    map_class::height      = 0;
-    map_class::tilewidth   = 0;
-    map_class::tileheight  = 0;
+    map_class::version                = 0.0f;
+    map_class::orientation            = "Unknown";
+    map_class::width                  = 0;
+    map_class::height                 = 0;
+    map_class::tilewidth              = 0;
+    map_class::tileheight             = 0;
+    map_class::number_of_tiles        = 0;
+    map_class::number_of_tilesets     = 0;
 };
 
 map_class::~map_class(void)

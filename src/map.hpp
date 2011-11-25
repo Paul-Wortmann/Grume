@@ -61,16 +61,18 @@ class map_class
     public:
         float         version;
         std::string   orientation;
-        int           reference_id;
         int           width;
         int           height;
         int           tilewidth;
         int           tileheight;
         tile_class    tile[MAX_MAP_X*MAX_MAP_Y];
+        int           number_of_tiles;
         tileset_class tileset[MAX_MAP_TILESETS];
+        int           number_of_tilesets;
         void draw(void);
         void process(void);
-        void load(std::string file_name, int reference_id);
+        void save(std::string file_name);
+        void load(std::string file_name);
         map_class(void);
        ~map_class(void);
 };

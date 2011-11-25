@@ -41,7 +41,8 @@ bool load_resources(void)
 bool load_maps(void)
 {
     int map_count = 0;
-    game.map.town.load      ("data/maps/town.tmx",map_count)   ;map_count++;
+    game.map.town.load      ("data/maps/test.tmx")   ;map_count++;
+    game.map.town.save      ("data/maps/test2.tmx");
 
     game.core.log.File_Write("Map files loaded -> ",map_count);
     return(true);
