@@ -186,14 +186,13 @@ bool load_textures(void)
     game.texture.bridge_tileset.load_spritesheet                 ("data/tilesets/bridge.png"              ,texture_count, 64,148);texture_count++;
     game.texture.grassland_tileset.load_spritesheet              ("data/tilesets/grassland.png"           ,texture_count, 64,128);texture_count++;
     game.texture.grassland_water_tileset.load_spritesheet        ("data/tilesets/grassland_water.png"     ,texture_count, 64, 64);texture_count++;
-    game.texture.grassland_trees_tileset.load_spritesheet        ("data/tilesets/grassland_trees.png"     ,texture_count, 64, 64);texture_count++;
+    game.texture.grassland_trees_tileset.load_spritesheet        ("data/tilesets/grassland_trees.png"     ,texture_count,128,128);texture_count++;
     game.texture.grassland_structures_tileset.load_spritesheet   ("data/tilesets/grassland_structures.png",texture_count, 64, 64);texture_count++;
     game.texture.broken_tower_tileset.load_spritesheet           ("data/tilesets/broken_tower.png"        ,texture_count, 64, 64);texture_count++;
     game.texture.fence_tileset.load_spritesheet                  ("data/tilesets/fence.png"               ,texture_count, 64, 64);texture_count++;
     game.texture.medieval_building_tileset.load_spritesheet      ("data/tilesets/medieval_building.png"   ,texture_count, 64,192);texture_count++;
     game.texture.cave_tileset.load_spritesheet                   ("data/tilesets/cave.png"                ,texture_count, 64, 64);texture_count++;
     game.texture.dungeon_tileset.load_spritesheet                ("data/tilesets/dungeon.png"             ,texture_count, 64, 64);texture_count++;
-
     game.core.log.File_Write("Texture files loaded -> ",texture_count);
     return(true);
 };
