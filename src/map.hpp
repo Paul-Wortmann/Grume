@@ -25,18 +25,16 @@
 #ifndef MAP_H
 #define MAP_H
 
+#include "core/textures.hpp"
+
 const int    MAX_MAP_TILESETS    = 8;
 const int    MAX_TILE_X          = 100;
 const int    MAX_TILE_Y          = 100;
 const int    MAX_TILES           = MAX_TILE_X*MAX_TILE_Y;
-const float  TILE_SIZE           = 0.16f;
-const float  TILE_SCALE          = 400;
-const float  TILE_WIDTH_SCALE    = 1;
-const float  TILE_HEIGHT_SCALE   = 2;
-const float  TILE_WIDTH          = TILE_SIZE*TILE_WIDTH_SCALE;
-const float  TILE_HEIGHT         = TILE_SIZE*TILE_HEIGHT_SCALE;
-const float  TILE_WIDTH_HALF     = TILE_WIDTH/2;
-const float  TILE_HEIGHT_HALF    = TILE_HEIGHT/2;
+const float  TILE_WIDTH          = (float)DEFAULT_FRAME_WIDTH  / 800.0f;
+const float  TILE_HEIGHT         = (((float)TILE_WIDTH / 2.0f)*3.0f);
+const float  TILE_WIDTH_HALF     = TILE_WIDTH/2.0f;
+const float  TILE_HEIGHT_HALF    = TILE_HEIGHT/2.0f;
 
 class tile_class
 {
@@ -82,7 +80,6 @@ class map_class
         int           number_of_tilesets;
         void draw(void);
         void process(void);
-        void reorder_tiles(void);
         void center_on_tile(int tile_ID);
         void calculate_tile_positions(void);
         bool tile_visable(int tile_no);
