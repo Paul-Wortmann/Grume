@@ -181,8 +181,18 @@ bool load_textures(void)
     game.texture.spell_15_level_01.load_image("data/textures/UI/icons/spells/beam-blue-1.png",texture_count);texture_count++;
     game.texture.spell_15_level_02.load_image("data/textures/UI/icons/spells/beam-blue-2.png",texture_count);texture_count++;
     game.texture.spell_15_level_03.load_image("data/textures/UI/icons/spells/beam-blue-3.png",texture_count);texture_count++;
-    game.texture.grass_and_water_tileset.load_spritesheet("data/tilesets/grass_and_water.png",texture_count, 64,64);texture_count++;
-    game.texture.bridge_tileset.load_spritesheet("data/tilesets/bridge.png",texture_count, 64,148);texture_count++;
+
+    game.texture.grass_and_water_tileset.load_spritesheet        ("data/tilesets/grass_and_water.png"     ,texture_count, 64, 64);texture_count++;
+    game.texture.bridge_tileset.load_spritesheet                 ("data/tilesets/bridge.png"              ,texture_count, 64,148);texture_count++;
+    game.texture.grassland_tileset.load_spritesheet              ("data/tilesets/grassland.png"           ,texture_count, 64,128);texture_count++;
+    game.texture.grassland_water_tileset.load_spritesheet        ("data/tilesets/grassland_water.png"     ,texture_count, 64, 64);texture_count++;
+    game.texture.grassland_trees_tileset.load_spritesheet        ("data/tilesets/grassland_trees.png"     ,texture_count, 64, 64);texture_count++;
+    game.texture.grassland_structures_tileset.load_spritesheet   ("data/tilesets/grassland_structures.png",texture_count, 64, 64);texture_count++;
+    game.texture.broken_tower_tileset.load_spritesheet           ("data/tilesets/broken_tower.png"        ,texture_count, 64, 64);texture_count++;
+    game.texture.fence_tileset.load_spritesheet                  ("data/tilesets/fence.png"               ,texture_count, 64, 64);texture_count++;
+    game.texture.medieval_building_tileset.load_spritesheet      ("data/tilesets/medieval_building.png"   ,texture_count, 64,192);texture_count++;
+    game.texture.cave_tileset.load_spritesheet                   ("data/tilesets/cave.png"                ,texture_count, 64, 64);texture_count++;
+    game.texture.dungeon_tileset.load_spritesheet                ("data/tilesets/dungeon.png"             ,texture_count, 64, 64);texture_count++;
 
     game.core.log.File_Write("Texture files loaded -> ",texture_count);
     return(true);
@@ -337,9 +347,17 @@ bool draw_texture(bool r, int texture_number, float x, float y, float z, float w
     if (texture_number == game.texture.spell_15_level_02.ref_number) game.texture.spell_15_level_02.draw(r,x,y,z,w,h,angle,frame);
     if (texture_number == game.texture.spell_15_level_03.ref_number) game.texture.spell_15_level_03.draw(r,x,y,z,w,h,angle,frame);
 
-    if (texture_number == game.texture.grass_and_water_tileset.ref_number) game.texture.grass_and_water_tileset.draw(r,x,y,z,w,h,angle,frame);
-    if (texture_number == game.texture.bridge_tileset.ref_number)          game.texture.bridge_tileset.draw(r,x,y,z,w,h,angle,frame);
-
+    if (texture_number == game.texture.grass_and_water_tileset.ref_number)         game.texture.grass_and_water_tileset.draw        (r,x,y,z,w,h,angle,frame);
+    if (texture_number == game.texture.bridge_tileset.ref_number)                  game.texture.bridge_tileset.draw                 (r,x,y,z,w,h,angle,frame);
+    if (texture_number == game.texture.grassland_tileset.ref_number)               game.texture.grassland_tileset.draw              (r,x,y,z,w,h,angle,frame);
+    if (texture_number == game.texture.grassland_water_tileset.ref_number)         game.texture.grassland_water_tileset.draw        (r,x,y,z,w,h,angle,frame);
+    if (texture_number == game.texture.grassland_trees_tileset.ref_number)         game.texture.grassland_trees_tileset.draw        (r,x,y,z,w,h,angle,frame);
+    if (texture_number == game.texture.grassland_structures_tileset.ref_number)    game.texture.grassland_structures_tileset.draw   (r,x,y,z,w,h,angle,frame);
+    if (texture_number == game.texture.broken_tower_tileset.ref_number)            game.texture.broken_tower_tileset.draw           (r,x,y,z,w,h,angle,frame);
+    if (texture_number == game.texture.fence_tileset.ref_number)                   game.texture.fence_tileset.draw                  (r,x,y,z,w,h,angle,frame);
+    if (texture_number == game.texture.medieval_building_tileset.ref_number)       game.texture.medieval_building_tileset.draw      (r,x,y,z,w,h,angle,frame);
+    if (texture_number == game.texture.cave_tileset.ref_number)                    game.texture.cave_tileset.draw                   (r,x,y,z,w,h,angle,frame);
+    if (texture_number == game.texture.dungeon_tileset.ref_number)                 game.texture.dungeon_tileset.draw                (r,x,y,z,w,h,angle,frame);
     return(true);
 };
 

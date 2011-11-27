@@ -165,6 +165,15 @@ struct texture_type
 
     texture_class grass_and_water_tileset;
     texture_class bridge_tileset;
+    texture_class grassland_tileset;
+    texture_class grassland_water_tileset;
+    texture_class grassland_trees_tileset;
+    texture_class grassland_structures_tileset;
+    texture_class broken_tower_tileset;
+    texture_class fence_tileset;
+    texture_class medieval_building_tileset;
+    texture_class cave_tileset;
+    texture_class dungeon_tileset;
 };
 
 struct font_type

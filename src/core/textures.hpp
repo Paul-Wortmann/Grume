@@ -28,7 +28,7 @@
 #include <GL/gl.h>
 #include <string>
 
-const int MAX_FRAMES           = 64;
+const int MAX_FRAMES           = 256;
 const int DEFAULT_FRAME_WIDTH  = 64;
 const int DEFAULT_FRAME_HEIGHT = 64;
 

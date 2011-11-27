@@ -70,6 +70,7 @@ void map_class::draw(void)
     float tile_offset_h = 0.0f;
     float tile_offset_x = 0.0f;
     float tile_offset_y = 0.0f;
+// ----------------------------- Draw Tile Layer ------------------------------------------------------------------
     for (int tile_count = 0; tile_count < map_class::number_of_tiles; tile_count++)
     {
         if ((map_class::tile_visable(tile_count)) && (map_class::tile[tile_count].tile > 0))
@@ -86,13 +87,112 @@ void map_class::draw(void)
             {
                 tile_offset_y += (map_class::tileset[map_class::tile[tile_count].tile_tileset].tileheight - DEFAULT_FRAME_HEIGHT) / (TILE_SCALE*4);
             }
-            if (map_class::tileset[map_class::tile[tile_count].tile_tileset].name == "grass_and_water")
+            if (map_class::tileset[map_class::tile[tile_count].tile_tileset].image_source == "../tilesets/grass_and_water.png")
             {
                 draw_texture(true,game.texture.grass_and_water_tileset.ref_number,tile_offset_x,tile_offset_y,0.001f,tile_offset_w,tile_offset_h,0.0f,map_class::tile[tile_count].tile-1);
             }
-            if (map_class::tileset[map_class::tile[tile_count].tile_tileset].name == "bridge")
+            if (map_class::tileset[map_class::tile[tile_count].tile_tileset].image_source == "../tilesets/bridge.png")
             {
                 draw_texture(true,game.texture.bridge_tileset.ref_number,tile_offset_x,tile_offset_y,0.001f,tile_offset_w,tile_offset_h,0.0f,map_class::tile[tile_count].tile-1);
+            }
+            if (map_class::tileset[map_class::tile[tile_count].tile_tileset].image_source == "../tilesets/grassland.png")
+            {
+                draw_texture(true,game.texture.grassland_tileset.ref_number,tile_offset_x,tile_offset_y,0.001f,tile_offset_w,tile_offset_h,0.0f,map_class::tile[tile_count].tile-1);
+            }
+            if (map_class::tileset[map_class::tile[tile_count].tile_tileset].image_source == "../tilesets/grassland_water.png")
+            {
+                draw_texture(true,game.texture.grassland_water_tileset.ref_number,tile_offset_x,tile_offset_y,0.001f,tile_offset_w,tile_offset_h,0.0f,map_class::tile[tile_count].tile-1);
+            }
+            if (map_class::tileset[map_class::tile[tile_count].tile_tileset].image_source == "../tilesets/grassland_trees.png")
+            {
+                draw_texture(true,game.texture.grassland_trees_tileset.ref_number,tile_offset_x,tile_offset_y,0.001f,tile_offset_w,tile_offset_h,0.0f,map_class::tile[tile_count].tile-1);
+            }
+            if (map_class::tileset[map_class::tile[tile_count].tile_tileset].image_source == "../tilesets/grassland_structures.png")
+            {
+                draw_texture(true,game.texture.grassland_structures_tileset.ref_number,tile_offset_x,tile_offset_y,0.001f,tile_offset_w,tile_offset_h,0.0f,map_class::tile[tile_count].tile-1);
+            }
+            if (map_class::tileset[map_class::tile[tile_count].tile_tileset].image_source == "../tilesets/broken_tower.png")
+            {
+                draw_texture(true,game.texture.broken_tower_tileset.ref_number,tile_offset_x,tile_offset_y,0.001f,tile_offset_w,tile_offset_h,0.0f,map_class::tile[tile_count].tile-1);
+            }
+            if (map_class::tileset[map_class::tile[tile_count].tile_tileset].image_source == "../tilesets/fence.png")
+            {
+                draw_texture(true,game.texture.fence_tileset.ref_number,tile_offset_x,tile_offset_y,0.001f,tile_offset_w,tile_offset_h,0.0f,map_class::tile[tile_count].tile-1);
+            }
+            if (map_class::tileset[map_class::tile[tile_count].tile_tileset].image_source == "../tilesets/medieval_building.png")
+            {
+                draw_texture(true,game.texture.medieval_building_tileset.ref_number,tile_offset_x,tile_offset_y,0.001f,tile_offset_w,tile_offset_h,0.0f,map_class::tile[tile_count].tile-1);
+            }
+            if (map_class::tileset[map_class::tile[tile_count].tile_tileset].image_source == "../tilesets/cave.png")
+            {
+                draw_texture(true,game.texture.cave_tileset.ref_number,tile_offset_x,tile_offset_y,0.001f,tile_offset_w,tile_offset_h,0.0f,map_class::tile[tile_count].tile-1);
+            }
+            if (map_class::tileset[map_class::tile[tile_count].tile_tileset].image_source == "../tilesets/dungeon.png")
+            {
+                draw_texture(true,game.texture.dungeon_tileset.ref_number,tile_offset_x,tile_offset_y,0.001f,tile_offset_w,tile_offset_h,0.0f,map_class::tile[tile_count].tile-1);
+            }
+        }
+    };
+// ----------------------------- Draw Object Layer ----------------------------------------------------------------
+    for (int tile_count = 0; tile_count < map_class::number_of_tiles; tile_count++)
+    {
+        if ((map_class::tile_visable(tile_count)) && (map_class::tile[tile_count].object > 0))
+        {
+                tile_offset_x = map_class::tile[tile_count].pos_x;
+                tile_offset_y = map_class::tile[tile_count].pos_y;
+                tile_offset_w = map_class::tileset[map_class::tile[tile_count].tile_tileset].tilewidth  / (TILE_SCALE*2);
+                tile_offset_h = map_class::tileset[map_class::tile[tile_count].tile_tileset].tileheight / (TILE_SCALE*2);
+            if (map_class::tileset[map_class::tile[tile_count].tile_tileset].tilewidth > DEFAULT_FRAME_WIDTH)
+            {
+                tile_offset_x += (map_class::tileset[map_class::tile[tile_count].tile_tileset].tilewidth - DEFAULT_FRAME_WIDTH) / (TILE_SCALE*4);
+            }
+            if (map_class::tileset[map_class::tile[tile_count].tile_tileset].tileheight > DEFAULT_FRAME_HEIGHT)
+            {
+                tile_offset_y += (map_class::tileset[map_class::tile[tile_count].tile_tileset].tileheight - DEFAULT_FRAME_HEIGHT) / (TILE_SCALE*4);
+            }
+            if (map_class::tileset[map_class::tile[tile_count].tile_tileset].image_source == "../tilesets/grass_and_water.png")
+            {
+                draw_texture(true,game.texture.grass_and_water_tileset.ref_number,tile_offset_x,tile_offset_y,0.001f,tile_offset_w,tile_offset_h,0.0f,map_class::tile[tile_count].object-1);
+            }
+            if (map_class::tileset[map_class::tile[tile_count].tile_tileset].image_source == "../tilesets/bridge.png")
+            {
+                draw_texture(true,game.texture.bridge_tileset.ref_number,tile_offset_x,tile_offset_y,0.001f,tile_offset_w,tile_offset_h,0.0f,map_class::tile[tile_count].object-1);
+            }
+            if (map_class::tileset[map_class::tile[tile_count].tile_tileset].image_source == "../tilesets/grassland.png")
+            {
+                draw_texture(true,game.texture.grassland_tileset.ref_number,tile_offset_x,tile_offset_y,0.001f,tile_offset_w,tile_offset_h,0.0f,map_class::tile[tile_count].object-1);
+            }
+            if (map_class::tileset[map_class::tile[tile_count].tile_tileset].image_source == "../tilesets/grassland_water.png")
+            {
+                draw_texture(true,game.texture.grassland_water_tileset.ref_number,tile_offset_x,tile_offset_y,0.001f,tile_offset_w,tile_offset_h,0.0f,map_class::tile[tile_count].object-1);
+            }
+            if (map_class::tileset[map_class::tile[tile_count].tile_tileset].image_source == "../tilesets/grassland_trees.png")
+            {
+                draw_texture(true,game.texture.grassland_trees_tileset.ref_number,tile_offset_x,tile_offset_y,0.001f,tile_offset_w,tile_offset_h,0.0f,map_class::tile[tile_count].object-1);
+            }
+            if (map_class::tileset[map_class::tile[tile_count].tile_tileset].image_source == "../tilesets/grassland_structures.png")
+            {
+                draw_texture(true,game.texture.grassland_structures_tileset.ref_number,tile_offset_x,tile_offset_y,0.001f,tile_offset_w,tile_offset_h,0.0f,map_class::tile[tile_count].object-1);
+            }
+            if (map_class::tileset[map_class::tile[tile_count].tile_tileset].image_source == "../tilesets/broken_tower.png")
+            {
+                draw_texture(true,game.texture.broken_tower_tileset.ref_number,tile_offset_x,tile_offset_y,0.001f,tile_offset_w,tile_offset_h,0.0f,map_class::tile[tile_count].object-1);
+            }
+            if (map_class::tileset[map_class::tile[tile_count].tile_tileset].image_source == "../tilesets/fence.png")
+            {
+                draw_texture(true,game.texture.fence_tileset.ref_number,tile_offset_x,tile_offset_y,0.001f,tile_offset_w,tile_offset_h,0.0f,map_class::tile[tile_count].object-1);
+            }
+            if (map_class::tileset[map_class::tile[tile_count].tile_tileset].image_source == "../tilesets/medieval_building.png")
+            {
+                draw_texture(true,game.texture.medieval_building_tileset.ref_number,tile_offset_x,tile_offset_y,0.001f,tile_offset_w,tile_offset_h,0.0f,map_class::tile[tile_count].object-1);
+            }
+            if (map_class::tileset[map_class::tile[tile_count].tile_tileset].image_source == "../tilesets/cave.png")
+            {
+                draw_texture(true,game.texture.cave_tileset.ref_number,tile_offset_x,tile_offset_y,0.001f,tile_offset_w,tile_offset_h,0.0f,map_class::tile[tile_count].object-1);
+            }
+            if (map_class::tileset[map_class::tile[tile_count].tile_tileset].image_source == "../tilesets/dungeon.png")
+            {
+                draw_texture(true,game.texture.dungeon_tileset.ref_number,tile_offset_x,tile_offset_y,0.001f,tile_offset_w,tile_offset_h,0.0f,map_class::tile[tile_count].object-1);
             }
         }
     };
