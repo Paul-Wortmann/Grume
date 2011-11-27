@@ -68,7 +68,7 @@ void map_class::draw(void)
 {
     float tile_offset_x = 0.0f;
     float tile_offset_y = 0.0f;
-    for (int tile_count = 0; tile_count < MAX_TILES; tile_count++)
+    for (int tile_count = 0; tile_count < map_class::number_of_tiles; tile_count++)
     {
         if ((map_class::tile_visable(tile_count)) && (map_class::tile[tile_count].tile > 0))
         {
@@ -139,36 +139,26 @@ void map_class::center_on_tile(int tile_ID)
 
 void map_class::calculate_tile_positions(void)
 {
-    int   tile_count  = 0;
-    float floor_x     = 0.0f+((MAX_TILE_X * TILE_WIDTH_HALF)/4);
-    float floor_y     = 1.0f-((TILE_HEIGHT));
-    for (int loop_count = 1; loop_count < MAX_TILE_X+1; loop_count++)
+    float start_x  = 0.0f;
+    float start_y  = 0.0f;
+    int   x_count  = 0;
+    int   y_count  = 0;
+    for (int tile_count = 0; tile_count < MAX_TILES; tile_count++)
     {
-        int count_x = loop_count;
-        for (int count_y = 1; count_y < loop_count+1; count_y++)
+        map_class::tile[tile_count].pos_x = start_x + (x_count * TILE_WIDTH_HALF);
+        map_class::tile[tile_count].pos_y = start_y - (y_count * (TILE_HEIGHT_HALF/4));
+        x_count++;
+        y_count++;
+        if (x_count >= MAX_TILE_X)
         {
-            map_class::tile[tile_count].pos_x = floor_x - (count_x * TILE_WIDTH);
-            map_class::tile[tile_count].pos_y = floor_y;
-            count_x--;
-            tile_count++;
+            x_count = 0;
+            start_x -= TILE_WIDTH_HALF;
         }
-        floor_x += TILE_WIDTH_HALF;
-        floor_y -= (TILE_HEIGHT_HALF/TILE_HEIGHT_SCALE/2);
-    }
-    int count_y = 1;
-    for (int count_min = 2; count_min < MAX_TILE_Y+1; count_min++)
-    {
-        int count_x = MAX_TILE_X;
-        for (int loop_count = count_min; loop_count < MAX_TILE_Y+1; loop_count++)
+        if (y_count >= MAX_TILE_Y)
         {
-            count_y = loop_count;
-            map_class::tile[tile_count].pos_x = floor_x - (count_x * TILE_WIDTH);
-            map_class::tile[tile_count].pos_y = floor_y;
-            count_x--;
-            tile_count++;
+            y_count = 0;
+            start_y -= (TILE_HEIGHT_HALF/4);
         }
-        floor_x += TILE_WIDTH_HALF;
-        floor_y -= (TILE_HEIGHT_HALF/TILE_HEIGHT_SCALE/2);
     }
 };
 
