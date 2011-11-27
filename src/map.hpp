@@ -31,10 +31,12 @@ const int    MAX_MAP_TILESETS    = 8;
 const int    MAX_TILE_X          = 100;
 const int    MAX_TILE_Y          = 100;
 const int    MAX_TILES           = MAX_TILE_X*MAX_TILE_Y;
-const float  TILE_WIDTH          = (float)DEFAULT_FRAME_WIDTH  / 800.0f;
+const float  TILE_SCALE          = 200.0f;
+const float  TILE_WIDTH          = (float)DEFAULT_FRAME_WIDTH  / TILE_SCALE;
 const float  TILE_HEIGHT         = (((float)TILE_WIDTH / 2.0f)*3.0f);
 const float  TILE_WIDTH_HALF     = TILE_WIDTH/2.0f;
 const float  TILE_HEIGHT_HALF    = TILE_HEIGHT/2.0f;
+const float  MAP_SCROLL_SPEED    = 0.02f;
 
 class tile_class
 {
@@ -80,6 +82,7 @@ class map_class
         int           number_of_tilesets;
         void draw(void);
         void process(void);
+        void scroll_map(int x_dir, int y_dir);
         void center_on_tile(int tile_ID);
         void calculate_tile_positions(void);
         bool tile_visable(int tile_no);

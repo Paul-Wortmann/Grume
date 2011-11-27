@@ -76,15 +76,15 @@ void map_class::draw(void)
         {
                 tile_offset_x = map_class::tile[tile_count].pos_x;
                 tile_offset_y = map_class::tile[tile_count].pos_y;
-                tile_offset_w = map_class::tileset[map_class::tile[tile_count].tile_tileset].tilewidth  / 800.0f;
-                tile_offset_h = map_class::tileset[map_class::tile[tile_count].tile_tileset].tileheight / 800.0f;
+                tile_offset_w = map_class::tileset[map_class::tile[tile_count].tile_tileset].tilewidth  / (TILE_SCALE*2);
+                tile_offset_h = map_class::tileset[map_class::tile[tile_count].tile_tileset].tileheight / (TILE_SCALE*2);
             if (map_class::tileset[map_class::tile[tile_count].tile_tileset].tilewidth > DEFAULT_FRAME_WIDTH)
             {
-                tile_offset_x += (map_class::tileset[map_class::tile[tile_count].tile_tileset].tilewidth - DEFAULT_FRAME_WIDTH) / 1600.0f;
+                tile_offset_x += (map_class::tileset[map_class::tile[tile_count].tile_tileset].tilewidth - DEFAULT_FRAME_WIDTH) / (TILE_SCALE*4);
             }
             if (map_class::tileset[map_class::tile[tile_count].tile_tileset].tileheight > DEFAULT_FRAME_HEIGHT)
             {
-                tile_offset_y += (map_class::tileset[map_class::tile[tile_count].tile_tileset].tileheight - DEFAULT_FRAME_HEIGHT) / 1600.0f;
+                tile_offset_y += (map_class::tileset[map_class::tile[tile_count].tile_tileset].tileheight - DEFAULT_FRAME_HEIGHT) / (TILE_SCALE*4);
             }
             if (map_class::tileset[map_class::tile[tile_count].tile_tileset].name == "grass_and_water")
             {
@@ -100,7 +100,21 @@ void map_class::draw(void)
 
 void map_class::process(void)
 {
+    if (game.core.io.mouse_y >=  0.99000) map_class::scroll_map( 0, 1);
+    if (game.core.io.mouse_y <= -0.99000) map_class::scroll_map( 0,-1);
+    if (game.core.io.mouse_x >=  0.99000) map_class::scroll_map( 1, 0);
+    if (game.core.io.mouse_x <= -0.99000) map_class::scroll_map(-1, 0);
+};
 
+void map_class::scroll_map(int x_dir, int y_dir)
+{
+    float temp_x = x_dir * MAP_SCROLL_SPEED;
+    float temp_y = y_dir * MAP_SCROLL_SPEED;
+    for(int tile_count = 0; tile_count < MAX_TILES; tile_count++)
+    {
+        map_class::tile[tile_count].pos_x -= temp_x;
+        map_class::tile[tile_count].pos_y -= temp_y;
+    }
 };
 
 void map_class::center_on_tile(int tile_ID)
@@ -122,19 +136,19 @@ void map_class::calculate_tile_positions(void)
     int   y_count  = 0;
     for (int tile_count = 0; tile_count < MAX_TILES; tile_count++)
     {
-        map_class::tile[tile_count].pos_x = start_x + (x_count * TILE_WIDTH_HALF);
-        map_class::tile[tile_count].pos_y = start_y - (y_count * TILE_HEIGHT_HALF/3.2f);
+        map_class::tile[tile_count].pos_x = start_x + (x_count * TILE_WIDTH_HALF/(TILE_SCALE/100));
+        map_class::tile[tile_count].pos_y = start_y - (y_count * TILE_HEIGHT_HALF/(TILE_SCALE/34));
         x_count++;
         y_count++;
         if (x_count >= MAX_TILE_X)
         {
             x_count = 0;
-            start_x -= TILE_WIDTH_HALF;
+            start_x -= (TILE_WIDTH_HALF/(TILE_SCALE/100));
         }
         if (y_count >= MAX_TILE_Y)
         {
             y_count = 0;
-            start_y -= (TILE_HEIGHT_HALF/3.2f);
+            start_y -= (TILE_HEIGHT_HALF/(TILE_SCALE/34));
         }
     }
 };

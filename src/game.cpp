@@ -68,6 +68,7 @@ int process_game(void)
 {
     game.UI.process();
     game.player.process();
+    game.map.town.process();
     game.core.game_resume = true;
     if (game.core.music_next_track)
     {
