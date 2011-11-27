@@ -29,6 +29,7 @@
 #include <string>
 #include "map.hpp"
 #include "game.hpp"
+#include "core/textures.hpp"
 
 extern game_type         game;
 
@@ -65,17 +66,51 @@ tileset_class::~tileset_class(void)
 
 void map_class::draw(void)
 {
+    float tile_offset_x = 0.0f;
+    float tile_offset_y = 0.0f;
     for (int tile_count = 0; tile_count < MAX_TILES; tile_count++)
     {
-        if (map_class::tile_visable(tile_count))
+        if ((map_class::tile_visable(tile_count)) && (map_class::tile[tile_count].tile > 0))
         {
             if (map_class::tileset[map_class::tile[tile_count].tile_tileset].name == "grass_and_water")
             {
-                draw_texture(true,game.texture.grass_and_water_tileset.ref_number,map_class::tile[tile_count].pos_x,map_class::tile[tile_count].pos_y,0.001f,map_class::tileset[map_class::tile[tile_count].tile_tileset].tilewidth/400.0f,map_class::tileset[map_class::tile[tile_count].tile_tileset].tileheight/400.0f,0.0f,map_class::tile[tile_count].tile-1);
+                if (map_class::tileset[map_class::tile[tile_count].tile_tileset].tilewidth > DEFAULT_FRAME_WIDTH)
+                {
+                    tile_offset_x = (((map_class::tileset[map_class::tile[tile_count].tile_tileset].tilewidth - DEFAULT_FRAME_WIDTH)/(TILE_SCALE*2))/2);
+                }
+                else
+                {
+                    tile_offset_x = 0.0f;
+                }
+                if (map_class::tileset[map_class::tile[tile_count].tile_tileset].tileheight > DEFAULT_FRAME_HEIGHT)
+                {
+                    tile_offset_y = ((map_class::tileset[map_class::tile[tile_count].tile_tileset].tileheight - DEFAULT_FRAME_HEIGHT)/(TILE_SCALE*2));
+                }
+                else
+                {
+                    tile_offset_y = 0.0f;
+                }
+                draw_texture(true,game.texture.grass_and_water_tileset.ref_number,map_class::tile[tile_count].pos_x+tile_offset_x,map_class::tile[tile_count].pos_y+tile_offset_y,0.001f,map_class::tileset[map_class::tile[tile_count].tile_tileset].tilewidth/TILE_SCALE,map_class::tileset[map_class::tile[tile_count].tile_tileset].tileheight/TILE_SCALE,0.0f,map_class::tile[tile_count].tile-1);
             }
             if (map_class::tileset[map_class::tile[tile_count].tile_tileset].name == "bridge")
             {
-                //draw_texture(true,game.texture.bridge_tileset.ref_number,map_class::tile[tile_count].pos_x,map_class::tile[tile_count].pos_y,0.001f,TILE_WIDTH,TILE_HEIGHT/2,0.0f,map_class::tile[tile_count].tile-1);
+                if (map_class::tileset[map_class::tile[tile_count].tile_tileset].tilewidth > DEFAULT_FRAME_WIDTH)
+                {
+                    tile_offset_x = (((map_class::tileset[map_class::tile[tile_count].tile_tileset].tilewidth - DEFAULT_FRAME_WIDTH)/(TILE_SCALE*2))/2);
+                }
+                else
+                {
+                    tile_offset_x = 0.0f;
+                }
+                if (map_class::tileset[map_class::tile[tile_count].tile_tileset].tileheight > DEFAULT_FRAME_HEIGHT)
+                {
+                    tile_offset_y = ((map_class::tileset[map_class::tile[tile_count].tile_tileset].tileheight - DEFAULT_FRAME_HEIGHT)/(TILE_SCALE*2));
+                }
+                else
+                {
+                    tile_offset_y = 0.0f;
+                }
+                draw_texture(true,game.texture.bridge_tileset.ref_number,map_class::tile[tile_count].pos_x+tile_offset_x,map_class::tile[tile_count].pos_y+tile_offset_y,0.001f,map_class::tileset[map_class::tile[tile_count].tile_tileset].tilewidth/TILE_SCALE,map_class::tileset[map_class::tile[tile_count].tile_tileset].tileheight/TILE_SCALE,0.0f,map_class::tile[tile_count].tile-1);
             }
         }
     };
@@ -248,10 +283,10 @@ void map_class::load(std::string file_name)
                             position_count++;
                             if(position_count > data_line.length()) (temp_char = '"');
                         }
-                        temp_string_data = temp_string_value.c_str();
-                        temp_float_data  = atof(temp_string_value.c_str());
-                        temp_int_data    = atoi(temp_string_value.c_str());
-                        if (temp_int_data == 1) temp_bool_data = true;
+                        temp_string_data    = temp_string_value.c_str();
+                        temp_float_data     = atof(temp_string_value.c_str());
+                        temp_int_data       = atoi(temp_string_value.c_str());
+                        if (temp_int_data   == 1) temp_bool_data = true;
                         else temp_bool_data = false;
                         if (temp_string_key == "map version")      map_data     = true;
                         if (temp_string_key == "tileset firstgid") tileset_data = true;
@@ -290,19 +325,38 @@ void map_class::load(std::string file_name)
                             };
                             if (temp_string_key == "tile gid")
                             {
-                                map_class::tile[tile_count].tile_tileset = 0;
-                                for (int temp_tileset_count = 0; temp_tileset_count < tileset_count; temp_tileset_count++)
+                                if (collision_data)
                                 {
-                                    if (temp_int_data >= (int)map_class::tileset[temp_tileset_count].firstgid)
-                                    {
-                                        map_class::tile[tile_count].tile_tileset = temp_tileset_count;
-                                    }
+                                    map_class::tile[tile_count].collision = temp_bool_data;
                                 }
-                                temp_int_data -= map_class::tileset[map_class::tile[tile_count].tile_tileset].firstgid;
-                                temp_int_data += 1;
-                                if (collision_data) map_class::tile[tile_count].collision = temp_int_data;
-                                if (object_data) map_class::tile[tile_count].object       = temp_int_data;
-                                if (tile_data) map_class::tile[tile_count].tile           = temp_int_data;
+                                if (object_data)
+                                {
+                                    map_class::tile[tile_count].object_tileset = 0;
+                                    for (int temp_tileset_count = 0; temp_tileset_count < tileset_count; temp_tileset_count++)
+                                    {
+                                        if (temp_int_data >= map_class::tileset[temp_tileset_count].firstgid)
+                                        {
+                                            map_class::tile[tile_count].object_tileset = temp_tileset_count;
+                                        }
+                                    }
+                                    temp_int_data -= map_class::tileset[map_class::tile[tile_count].object_tileset].firstgid;
+                                    temp_int_data += 1;
+                                    map_class::tile[tile_count].object       = temp_int_data;
+                                }
+                                if (tile_data)
+                                {
+                                    map_class::tile[tile_count].tile_tileset = 0;
+                                    for (int temp_tileset_count = 0; temp_tileset_count < tileset_count; temp_tileset_count++)
+                                    {
+                                        if (temp_int_data >= map_class::tileset[temp_tileset_count].firstgid)
+                                        {
+                                            map_class::tile[tile_count].tile_tileset = temp_tileset_count;
+                                        }
+                                    }
+                                    temp_int_data -= map_class::tileset[map_class::tile[tile_count].tile_tileset].firstgid;
+                                    temp_int_data += 1;
+                                    map_class::tile[tile_count].tile         = temp_int_data;
+                                }
                                 tile_count++;
                             }
                         }
@@ -464,7 +518,7 @@ void map_class::save(std::string file_name)
         {
             script_file << "   <tile gid=";
             script_file << '"';
-            script_file << ((map_class::tile[tile_count].object + map_class::tileset[map_class::tile[tile_count].tile_tileset].firstgid) - 1);
+            script_file << ((map_class::tile[tile_count].object + map_class::tileset[map_class::tile[tile_count].object_tileset].firstgid) - 1);
             script_file << '"';
             script_file << "/>";
             script_file << "\n";

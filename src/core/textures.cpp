@@ -96,8 +96,8 @@ bool texture_class::load_image(std::string file_name, int index_number)
     else
     {
         return_value = false;
-        //game.core.log.File_Write("SDL could not load image.",File_Name);
-        SDL_Quit();
+        if ( image_surface ) SDL_FreeSurface( image_surface );
+        game.core.log.File_Write("Failed to load image ->",file_name.c_str());
     }
     if ( image_surface ) SDL_FreeSurface( image_surface );
     return(return_value);
@@ -174,7 +174,9 @@ bool texture_class::load_spritesheet(std::string file_name, int index_number, in
     else
     {
         return_value = false;
-        SDL_Quit();
+        if ( sprite_sheet ) SDL_FreeSurface( sprite_sheet );
+        if ( temp_surface ) SDL_FreeSurface( temp_surface );
+        game.core.log.File_Write("Failed to load image ->",file_name.c_str());
     }
     if ( sprite_sheet ) SDL_FreeSurface( sprite_sheet );
     if ( temp_surface ) SDL_FreeSurface( temp_surface );

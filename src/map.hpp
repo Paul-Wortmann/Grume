@@ -30,6 +30,7 @@ const int    MAX_TILE_X          = 100;
 const int    MAX_TILE_Y          = 100;
 const int    MAX_TILES           = MAX_TILE_X*MAX_TILE_Y;
 const float  TILE_SIZE           = 0.16f;
+const float  TILE_SCALE          = 400;
 const float  TILE_WIDTH_SCALE    = 1;
 const float  TILE_HEIGHT_SCALE   = 2;
 const float  TILE_WIDTH          = TILE_SIZE*TILE_WIDTH_SCALE;

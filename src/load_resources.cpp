@@ -181,8 +181,8 @@ bool load_textures(void)
     game.texture.spell_15_level_01.load_image("data/textures/UI/icons/spells/beam-blue-1.png",texture_count);texture_count++;
     game.texture.spell_15_level_02.load_image("data/textures/UI/icons/spells/beam-blue-2.png",texture_count);texture_count++;
     game.texture.spell_15_level_03.load_image("data/textures/UI/icons/spells/beam-blue-3.png",texture_count);texture_count++;
-    game.texture.grass_and_water_tileset.load_spritesheet("data/tilesets/grass_and_water.png",texture_count, 64,64);
-    game.texture.bridge_tileset.load_spritesheet("data/tilesets/bridge.png",texture_count, 64,148);
+    game.texture.grass_and_water_tileset.load_spritesheet("data/tilesets/grass_and_water.png",texture_count, 64,64);texture_count++;
+    game.texture.bridge_tileset.load_spritesheet("data/tilesets/bridge.png",texture_count, 64,148);texture_count++;
 
     game.core.log.File_Write("Texture files loaded -> ",texture_count);
     return(true);
