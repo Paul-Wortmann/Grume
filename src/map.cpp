@@ -237,7 +237,7 @@ void map_class::calculate_tile_positions(void)
     for (int tile_count = 0; tile_count < MAX_TILES; tile_count++)
     {
         map_class::tile[tile_count].pos_x = start_x + (x_count * TILE_WIDTH_HALF/(TILE_SCALE/100));
-        map_class::tile[tile_count].pos_y = start_y - (y_count * TILE_HEIGHT_HALF/(TILE_SCALE/34));
+        map_class::tile[tile_count].pos_y = start_y - (y_count * TILE_HEIGHT_HALF/(TILE_SCALE/17));
         x_count++;
         y_count++;
         if (x_count >= MAX_TILE_X)
@@ -248,7 +248,7 @@ void map_class::calculate_tile_positions(void)
         if (y_count >= MAX_TILE_Y)
         {
             y_count = 0;
-            start_y -= (TILE_HEIGHT_HALF/(TILE_SCALE/34));
+            start_y -= (TILE_HEIGHT_HALF/(TILE_SCALE/17));
         }
     }
 };
