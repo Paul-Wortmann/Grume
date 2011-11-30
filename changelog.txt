@@ -1,16 +1,22 @@
+v0.01 - (2011-11-30)
 
-v0.01 - (2011-xx-xx)
-
-UI -> Character menu started.
-UI -> Inventory menu started.
-UI -> Spells/Skills dragable and rearangable on the action bar.
-UI -> Spell/Skill Book implemented.
-UI -> Player UI with health and mana bars implemented.
-UI -> Action bar with dragable, rearrangeable menu buttons.
-UI -> Dragable main menu available in game.
-Main menu implemented.
-Initial framework completed.
-LOC - 9603
+BUG  -> Fixed 2 SEGFAULT segmentation faults caused by impropper shutdown of SDL.
+MAP  -> Created a basic test map.
+MAP  -> Adapted various tilesets to be used.
+MAP  -> Map scroll implemented.
+MAP  -> Save / Load "Tiled" map editor files.
+MAP  -> Basic rendering.
+UI   -> Quest menu started.
+UI   -> Character menu started.
+UI   -> Inventory menu started.
+UI   -> Spells/Skills dragable and rearangable on the action bar.
+UI   -> Spell/Skill Book implemented.
+UI   -> Player UI with health and mana bars implemented.
+UI   -> Action bar with dragable, rearrangeable menu buttons.
+UI   -> Dragable main menu available in game.
+UI   -> Main menu implemented.
+CORE -> Initial framework completed.
+LOC - 10671
 
 v0.00 - (2011-11-11)
 Initial release.
