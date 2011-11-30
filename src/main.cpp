@@ -208,8 +208,6 @@ int main(int argc, char *argv[])
     game.core.config.File_Set("Frost_And_Flame.cfg");
     game.core.config.File_Clear();
     game.core.config.File_Write();
-    game.core.log.File_Write("Unloading fonts...");
-    TTF_Quit();
     game.core.log.File_Write("Shutting down audio system...");
     Mix_CloseAudio();
     game.core.log.File_Write("SDL shutting down...");
