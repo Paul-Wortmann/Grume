@@ -1459,9 +1459,9 @@
    <tile gid="24"/>
    <tile gid="11"/>
    <tile gid="12"/>
-   <tile gid="28"/>
+   <tile gid="24"/>
    <tile gid="25"/>
-   <tile gid="26"/>
+   <tile gid="24"/>
    <tile gid="10"/>
    <tile gid="6"/>
    <tile gid="4"/>
@@ -1759,9 +1759,9 @@
    <tile gid="12"/>
    <tile gid="24"/>
    <tile gid="24"/>
-   <tile gid="28"/>
+   <tile gid="24"/>
    <tile gid="25"/>
-   <tile gid="26"/>
+   <tile gid="24"/>
    <tile gid="24"/>
    <tile gid="18"/>
    <tile gid="4"/>
@@ -11062,8 +11062,8 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="0"/>
    <tile gid="891"/>
+   <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="891"/>
    <tile gid="0"/>
@@ -11264,7 +11264,7 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="0"/>
+   <tile gid="25"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -11363,6 +11363,9 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
+   <tile gid="28"/>
+   <tile gid="25"/>
+   <tile gid="26"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -11461,6 +11464,7 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
+   <tile gid="25"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -11560,11 +11564,7 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="0"/>
-   <tile gid="0"/>
-   <tile gid="0"/>
-   <tile gid="0"/>
-   <tile gid="0"/>
+   <tile gid="25"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -11664,7 +11664,7 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="0"/>
+   <tile gid="25"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -11764,7 +11764,7 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="0"/>
+   <tile gid="25"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -11863,9 +11863,9 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
+   <tile gid="28"/>
    <tile gid="0"/>
-   <tile gid="0"/>
-   <tile gid="0"/>
+   <tile gid="26"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>

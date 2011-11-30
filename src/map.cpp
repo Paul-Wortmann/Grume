@@ -236,19 +236,19 @@ void map_class::calculate_tile_positions(void)
     int   y_count  = 0;
     for (int tile_count = 0; tile_count < MAX_TILES; tile_count++)
     {
-        map_class::tile[tile_count].pos_x = start_x + (x_count * TILE_WIDTH_HALF/(TILE_SCALE/100));
-        map_class::tile[tile_count].pos_y = start_y - (y_count * TILE_HEIGHT_HALF/(TILE_SCALE/200));
+        map_class::tile[tile_count].pos_x = start_x + (x_count * TILE_WIDTH_HALF/(TILE_SCALE/80));
+        map_class::tile[tile_count].pos_y = start_y - (y_count * TILE_HEIGHT_HALF/(TILE_SCALE/160));
         x_count++;
         y_count++;
         if (x_count >= MAX_TILE_X)
         {
             x_count = 0;
-            start_x -= (TILE_WIDTH_HALF/(TILE_SCALE/100));
+            start_x -= (TILE_WIDTH_HALF/(TILE_SCALE/80));
         }
         if (y_count >= MAX_TILE_Y)
         {
             y_count = 0;
-            start_y -= (TILE_HEIGHT_HALF/(TILE_SCALE/200));
+            start_y -= (TILE_HEIGHT_HALF/(TILE_SCALE/160));
         }
     }
 };
@@ -259,7 +259,7 @@ bool map_class::tile_visable(int tile_no)
     float x_min = -1.0f;
     float y_max =  1.0f;
     float y_min = -1.0f;
-    if((map_class::tile[tile_no].pos_x <= ( x_max+TILE_WIDTH)) && (map_class::tile[tile_no].pos_x >= (x_min-TILE_WIDTH)) && (map_class::tile[tile_no].pos_y <= ( y_max+TILE_HEIGHT)) && (map_class::tile[tile_no].pos_y >= (y_min-TILE_HEIGHT))) return(true);
+    if((map_class::tile[tile_no].pos_x <= ( x_max+(TILE_WIDTH*4))) && (map_class::tile[tile_no].pos_x >= (x_min-(TILE_WIDTH*4))) && (map_class::tile[tile_no].pos_y <= ( y_max+(TILE_HEIGHT*4))) && (map_class::tile[tile_no].pos_y >= (y_min-(TILE_HEIGHT*4)))) return(true);
     else return(false);
 };
 
