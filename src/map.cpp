@@ -87,6 +87,10 @@ void map_class::draw(void)
             {
                 tile_offset_y += (map_class::tileset[map_class::tile[tile_count].tile_tileset].tileheight - DEFAULT_FRAME_HEIGHT) / (TILE_SCALE*4);
             }
+            if (map_class::tileset[map_class::tile[tile_count].tile_tileset].tileheight < DEFAULT_FRAME_HEIGHT)
+            {
+                tile_offset_y += (map_class::tileset[map_class::tile[tile_count].tile_tileset].tileheight - DEFAULT_FRAME_HEIGHT) / (TILE_SCALE*4);
+            }
             if (map_class::tileset[map_class::tile[tile_count].tile_tileset].image_source == "../tilesets/grass_and_water.png")
             {
                 draw_texture(true,game.texture.grass_and_water_tileset.ref_number,tile_offset_x,tile_offset_y,0.001f,tile_offset_w,tile_offset_h,0.0f,map_class::tile[tile_count].tile-1);
@@ -155,6 +159,10 @@ void map_class::draw(void)
                 tile_offset_x += (map_class::tileset[map_class::tile[tile_count].object_tileset].tilewidth - DEFAULT_FRAME_WIDTH) / (TILE_SCALE*4);
             }
             if (map_class::tileset[map_class::tile[tile_count].object_tileset].tileheight > DEFAULT_FRAME_HEIGHT)
+            {
+                tile_offset_y += (map_class::tileset[map_class::tile[tile_count].object_tileset].tileheight - DEFAULT_FRAME_HEIGHT) / (TILE_SCALE*4);
+            }
+            if (map_class::tileset[map_class::tile[tile_count].object_tileset].tileheight < DEFAULT_FRAME_HEIGHT)
             {
                 tile_offset_y += (map_class::tileset[map_class::tile[tile_count].object_tileset].tileheight - DEFAULT_FRAME_HEIGHT) / (TILE_SCALE*4);
             }
@@ -253,7 +261,7 @@ void map_class::calculate_tile_positions(void)
     for (int tile_count = 0; tile_count < MAX_TILES; tile_count++)
     {
         map_class::tile[tile_count].pos_x = start_x + (x_count * (TILE_WIDTH_HALF/2));
-        map_class::tile[tile_count].pos_y = start_y - (y_count * (TILE_HEIGHT_HALF/2));
+        map_class::tile[tile_count].pos_y = start_y - (y_count * (TILE_HEIGHT_HALF/8));
         x_count++;
         y_count++;
         if (x_count >= MAX_TILE_X)
@@ -264,7 +272,7 @@ void map_class::calculate_tile_positions(void)
         if (y_count >= MAX_TILE_Y)
         {
             y_count = 0;
-            start_y -= TILE_HEIGHT_HALF/2;
+            start_y -= TILE_HEIGHT_HALF/8;
         }
     }
 };
