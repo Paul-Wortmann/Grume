@@ -123,9 +123,17 @@ void map_class::draw(void)
             {
                 draw_texture(true,game.texture.medieval_building_tileset.ref_number,tile_offset_x,tile_offset_y,0.001f,tile_offset_w,tile_offset_h,0.0f,map_class::tile[tile_count].tile-1);
             }
-            if (map_class::tileset[map_class::tile[tile_count].tile_tileset].image_source == "../tilesets/cave.png")
+            if (map_class::tileset[map_class::tile[tile_count].tile_tileset].image_source == "../tilesets/cave_floor.png")
             {
-                draw_texture(true,game.texture.cave_tileset.ref_number,tile_offset_x,tile_offset_y,0.001f,tile_offset_w,tile_offset_h,0.0f,map_class::tile[tile_count].tile-1);
+                draw_texture(true,game.texture.cave_floor_tileset.ref_number,tile_offset_x,tile_offset_y,0.001f,tile_offset_w,tile_offset_h,0.0f,map_class::tile[tile_count].tile-1);
+            }
+            if (map_class::tileset[map_class::tile[tile_count].tile_tileset].image_source == "../tilesets/cave_wall.png")
+            {
+                draw_texture(true,game.texture.cave_wall_tileset.ref_number,tile_offset_x,tile_offset_y,0.001f,tile_offset_w,tile_offset_h,0.0f,map_class::tile[tile_count].tile-1);
+            }
+            if (map_class::tileset[map_class::tile[tile_count].tile_tileset].image_source == "../tilesets/cave_object.png")
+            {
+                draw_texture(true,game.texture.cave_object_tileset.ref_number,tile_offset_x,tile_offset_y,0.001f,tile_offset_w,tile_offset_h,0.0f,map_class::tile[tile_count].tile-1);
             }
             if (map_class::tileset[map_class::tile[tile_count].tile_tileset].image_source == "../tilesets/dungeon.png")
             {
@@ -186,9 +194,17 @@ void map_class::draw(void)
             {
                 draw_texture(true,game.texture.medieval_building_tileset.ref_number,tile_offset_x,tile_offset_y,0.001f,tile_offset_w,tile_offset_h,0.0f,map_class::tile[tile_count].object-1);
             }
-            if (map_class::tileset[map_class::tile[tile_count].object_tileset].image_source == "../tilesets/cave.png")
+            if (map_class::tileset[map_class::tile[tile_count].object_tileset].image_source == "../tilesets/cave_floor.png")
             {
-                draw_texture(true,game.texture.cave_tileset.ref_number,tile_offset_x,tile_offset_y,0.001f,tile_offset_w,tile_offset_h,0.0f,map_class::tile[tile_count].object-1);
+                draw_texture(true,game.texture.cave_floor_tileset.ref_number,tile_offset_x,tile_offset_y,0.001f,tile_offset_w,tile_offset_h,0.0f,map_class::tile[tile_count].object-1);
+            }
+            if (map_class::tileset[map_class::tile[tile_count].object_tileset].image_source == "../tilesets/cave_wall.png")
+            {
+                draw_texture(true,game.texture.cave_wall_tileset.ref_number,tile_offset_x,tile_offset_y,0.001f,tile_offset_w,tile_offset_h,0.0f,map_class::tile[tile_count].object-1);
+            }
+            if (map_class::tileset[map_class::tile[tile_count].object_tileset].image_source == "../tilesets/cave_object.png")
+            {
+                draw_texture(true,game.texture.cave_object_tileset.ref_number,tile_offset_x,tile_offset_y,0.001f,tile_offset_w,tile_offset_h,0.0f,map_class::tile[tile_count].object-1);
             }
             if (map_class::tileset[map_class::tile[tile_count].object_tileset].image_source == "../tilesets/dungeon.png")
             {
@@ -236,19 +252,19 @@ void map_class::calculate_tile_positions(void)
     int   y_count  = 0;
     for (int tile_count = 0; tile_count < MAX_TILES; tile_count++)
     {
-        map_class::tile[tile_count].pos_x = start_x + (x_count * TILE_WIDTH_HALF/(TILE_SCALE/80));
-        map_class::tile[tile_count].pos_y = start_y - (y_count * TILE_HEIGHT_HALF/(TILE_SCALE/160));
+        map_class::tile[tile_count].pos_x = start_x + (x_count * (TILE_WIDTH_HALF/2));
+        map_class::tile[tile_count].pos_y = start_y - (y_count * (TILE_HEIGHT_HALF/2));
         x_count++;
         y_count++;
         if (x_count >= MAX_TILE_X)
         {
             x_count = 0;
-            start_x -= (TILE_WIDTH_HALF/(TILE_SCALE/80));
+            start_x -= TILE_WIDTH_HALF/2;
         }
         if (y_count >= MAX_TILE_Y)
         {
             y_count = 0;
-            start_y -= (TILE_HEIGHT_HALF/(TILE_SCALE/160));
+            start_y -= TILE_HEIGHT_HALF/2;
         }
     }
 };

@@ -37,8 +37,8 @@
 
 extern game_type         game;
 
-const char App_Name[] = ("Frost and Flame V0.01 - www.physhexgames.co.nr");
-const char App_Icon[] = "data/textures/icon.bmp";
+const char App_Name[] = ("Frost and Flame V0.02 - www.physhexgames.co.nr");
+const char App_Icon[] = ("data/textures/icon.bmp");
 
 Uint32                   colorkey;
 SDL_Surface             *App_Icon_Surface;
@@ -53,7 +53,7 @@ int main(int argc, char *argv[])
     game.core.log.File_Clear();
 
     game.core.log.File_Write("-------------------------");
-    game.core.log.File_Write("| Frost_And_Flame V0.01 |");
+    game.core.log.File_Write("| Frost_And_Flame V0.02 |");
     game.core.log.File_Write("-------------------------\n");
     game.core.log.File_Write("Starting up!");
     game.core.log.File_Write("");

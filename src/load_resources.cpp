@@ -191,7 +191,9 @@ bool load_textures(void)
     game.texture.broken_tower_tileset.load_spritesheet           ("data/tilesets/broken_tower.png"        ,texture_count, 64, 64);texture_count++;
     game.texture.fence_tileset.load_spritesheet                  ("data/tilesets/fence.png"               ,texture_count, 64, 64);texture_count++;
     game.texture.medieval_building_tileset.load_spritesheet      ("data/tilesets/medieval_building.png"   ,texture_count, 64,192);texture_count++;
-    game.texture.cave_tileset.load_spritesheet                   ("data/tilesets/cave.png"                ,texture_count, 64, 64);texture_count++;
+    game.texture.cave_floor_tileset.load_spritesheet             ("data/tilesets/cave_floor.png"          ,texture_count, 64, 32);texture_count++;
+    game.texture.cave_wall_tileset.load_spritesheet              ("data/tilesets/cave_wall.png"           ,texture_count, 64,128);texture_count++;
+    game.texture.cave_object_tileset.load_spritesheet            ("data/tilesets/cave_object.png"         ,texture_count, 64,128);texture_count++;
     game.texture.dungeon_tileset.load_spritesheet                ("data/tilesets/dungeon.png"             ,texture_count, 64, 64);texture_count++;
     game.core.log.File_Write("Texture files loaded -> ",texture_count);
     return(true);
@@ -355,7 +357,9 @@ bool draw_texture(bool r, int texture_number, float x, float y, float z, float w
     if (texture_number == game.texture.broken_tower_tileset.ref_number)            game.texture.broken_tower_tileset.draw           (r,x,y,z,w,h,angle,frame);
     if (texture_number == game.texture.fence_tileset.ref_number)                   game.texture.fence_tileset.draw                  (r,x,y,z,w,h,angle,frame);
     if (texture_number == game.texture.medieval_building_tileset.ref_number)       game.texture.medieval_building_tileset.draw      (r,x,y,z,w,h,angle,frame);
-    if (texture_number == game.texture.cave_tileset.ref_number)                    game.texture.cave_tileset.draw                   (r,x,y,z,w,h,angle,frame);
+    if (texture_number == game.texture.cave_floor_tileset.ref_number)              game.texture.cave_floor_tileset.draw             (r,x,y,z,w,h,angle,frame);
+    if (texture_number == game.texture.cave_wall_tileset.ref_number)               game.texture.cave_wall_tileset.draw              (r,x,y,z,w,h,angle,frame);
+    if (texture_number == game.texture.cave_object_tileset.ref_number)             game.texture.cave_object_tileset.draw            (r,x,y,z,w,h,angle,frame);
     if (texture_number == game.texture.dungeon_tileset.ref_number)                 game.texture.dungeon_tileset.draw                (r,x,y,z,w,h,angle,frame);
     return(true);
 };

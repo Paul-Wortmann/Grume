@@ -64,7 +64,7 @@
 
 1320822860 c:\_git_\frost_and_flame\src\bullets.hpp
 
-1322402904 c:\_git_\frost_and_flame\src\load_resources.hpp
+1322661249 c:\_git_\frost_and_flame\src\load_resources.hpp
 	"core/core.hpp"
 	"core/sound.hpp"
 	"core/music.hpp"
@@ -76,7 +76,7 @@
 	<SDL/SDL_mixer.h>
 	<string>
 
-1322401958 c:\_git_\frost_and_flame\src\core\textures.hpp
+1322661658 c:\_git_\frost_and_flame\src\core\textures.hpp
 	<GL/gl.h>
 	<string>
 
@@ -281,12 +281,12 @@
 	"levels.hpp"
 	"game.hpp"
 
-1322408195 source:c:\_git_\frost_and_flame\src\load_resources.cpp
+1322661685 source:c:\_git_\frost_and_flame\src\load_resources.cpp
 	<SDL/SDL.h>
 	"load_resources.hpp"
 	"game.hpp"
 
-1322652549 source:c:\_git_\frost_and_flame\src\main.cpp
+1322660415 source:c:\_git_\frost_and_flame\src\main.cpp
 	<locale>
 	<SDL/SDL.h>
 	<SDL/SDL_main.h>
@@ -426,10 +426,10 @@
 	"quest_log.hpp"
 	"game.hpp"
 
-1322653533 c:\_git_\frost_and_flame\src\map.hpp
+1322662966 c:\_git_\frost_and_flame\src\map.hpp
 	"core/textures.hpp"
 
-1322653824 source:c:\_git_\frost_and_flame\src\map.cpp
+1322662780 source:c:\_git_\frost_and_flame\src\map.cpp
 	<iostream>
 	<fstream>
 	<stdio.h>

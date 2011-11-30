@@ -172,7 +172,9 @@ struct texture_type
     texture_class broken_tower_tileset;
     texture_class fence_tileset;
     texture_class medieval_building_tileset;
-    texture_class cave_tileset;
+    texture_class cave_floor_tileset;
+    texture_class cave_wall_tileset;
+    texture_class cave_object_tileset;
     texture_class dungeon_tileset;
 };
 
