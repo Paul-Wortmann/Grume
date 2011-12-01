@@ -78,6 +78,12 @@ http://opengameart.org/content/graveyard-fence-and-props
 Author: Matt Merkulov
 License(s): GPL 3.0
 
+Mouse cursor.
+-------------
+http://opengameart.org/content/bw-ornamental-cursor-19x19
+Author: qubodup
+License(s): CC-BY 3.0
+
 Menus, action bar and player stat display.
 ------------------------------------------
 Some parts of the UI are dirivitives, most notably, the menu buttons and health/mana bars.
