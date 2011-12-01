@@ -94,6 +94,7 @@ bool load_textures(void)
     game.texture.blue_button_highlighted.load_image  ("data/textures/menu/blue_button_highlighted.png"  ,texture_count);texture_count++;
     game.texture.resolution_icon.load_image          ("data/textures/menu/resolution_icon.png"          ,texture_count);texture_count++;
 
+    game.texture.cursor.load_image              ("data/textures/UI/cursor.png"                          ,texture_count);texture_count++;
     game.texture.action_bar.load_image          ("data/textures/UI/action_bar/action_bar.png"           ,texture_count);texture_count++;
     game.texture.action_bar_front.load_image    ("data/textures/UI/action_bar/action_bar_front.png"     ,texture_count);texture_count++;
     game.texture.glass_cover_01.load_image      ("data/textures/UI/action_bar/glass_cover_01.png"       ,texture_count);texture_count++;
@@ -260,6 +261,7 @@ bool draw_texture(bool r, int texture_number, float x, float y, float z, float w
     if (texture_number == game.texture.blue_button_highlighted.ref_number)   game.texture.blue_button_highlighted.draw  (r,x,y,z,w,h,angle,frame);
     if (texture_number == game.texture.resolution_icon.ref_number)           game.texture.resolution_icon.draw          (r,x,y,z,w,h,angle,frame);
 
+    if (texture_number == game.texture.cursor.ref_number)                    game.texture.cursor.draw                   (r,x,y,z,w,h,angle,frame);
     if (texture_number == game.texture.action_bar.ref_number)                game.texture.action_bar.draw               (r,x,y,z,w,h,angle,frame);
     if (texture_number == game.texture.action_bar_front.ref_number)          game.texture.action_bar_front.draw         (r,x,y,z,w,h,angle,frame);
     if (texture_number == game.texture.glass_cover_01.ref_number)            game.texture.glass_cover_01.draw           (r,x,y,z,w,h,angle,frame);

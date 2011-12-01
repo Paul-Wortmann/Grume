@@ -75,6 +75,7 @@ struct texture_type
     texture_class blue_button_highlighted;
     texture_class resolution_icon;
 
+    texture_class cursor;
     texture_class action_bar;
     texture_class action_bar_front;
     texture_class glass_cover_01;

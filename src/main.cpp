@@ -81,7 +81,7 @@ int main(int argc, char *argv[])
     SDL_SetColorKey(App_Icon_Surface, SDL_SRCCOLORKEY, colorkey);
     SDL_WM_SetIcon(App_Icon_Surface,NULL);
     SDL_WM_SetCaption(App_Name, 0);
-    SDL_ShowCursor(SDL_ENABLE);
+    SDL_ShowCursor(SDL_DISABLE);
 //----------------------------------- SDL Audio --------------------------------
     game.core.log.File_Write("Starting sound system...");
     SDL_Init(SDL_INIT_AUDIO);
@@ -199,6 +199,7 @@ int main(int argc, char *argv[])
             game.core.process_ready = true;
         }
         else game.core.process_ready = false;
+        game.texture.cursor.draw(false,game.core.io.mouse_x+0.04f,game.core.io.mouse_y-0.04f,0.001f,0.08f,0.08f);
         SDL_GL_SwapBuffers();
     }
 //----------------------------------- Exit -------------------------------------
