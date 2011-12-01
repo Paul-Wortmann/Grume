@@ -30,7 +30,7 @@
 
 const int MAX_FRAMES           = 256;
 const int DEFAULT_FRAME_WIDTH  = 64;
-const int DEFAULT_FRAME_HEIGHT = 128;
+const int DEFAULT_FRAME_HEIGHT = 32;
 
 struct frame_type
 {

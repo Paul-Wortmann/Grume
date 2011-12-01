@@ -270,23 +270,26 @@ bool config_file_class::Process_Data(std::string data_line)
         }
         if (temp_string_key == "Audio_Rate")
         {
-            config_file_class::Audio_Rate = temp_int;
+            if (temp_int == 11) temp_int = 11025;
+            if (temp_int == 22) temp_int = 22050;
+            if (temp_int == 44) temp_int = 44100;
+            if ((temp_int == 11025) || (temp_int == 22050) || (temp_int == 44100)) config_file_class::Audio_Rate = temp_int;
         }
         if (temp_string_key == "Audio_Channels")
         {
-            config_file_class::Audio_Channels = temp_int;
+            if ((temp_int >= 1) && (temp_int <= 128)) config_file_class::Audio_Channels = temp_int;
         }
         if (temp_string_key == "Audio_Buffers")
         {
-            config_file_class::Audio_Buffers = temp_int;
+            if ((temp_int >= 512) && (temp_int <= 2048)) config_file_class::Audio_Buffers = temp_int;
         }
         if (temp_string_key == "Audio_Music_Volume")
         {
-            config_file_class::Audio_Music_Volume = temp_int;
+            if ((temp_int >= 0) && (temp_int <= 100)) config_file_class::Audio_Music_Volume = temp_int;
         }
         if (temp_string_key == "Audio_Sound_Volume")
         {
-            config_file_class::Audio_Sound_Volume = temp_int;
+            if ((temp_int >= 0) && (temp_int <= 100)) config_file_class::Audio_Sound_Volume = temp_int;
         }
         if (temp_string_key == "Display_BPS")
         {

@@ -35,8 +35,17 @@
 #include "player.hpp"
 #include "spells.hpp"
 
+struct zoom_type
+{
+    float            current;
+    float            max;
+    float            min;
+    float            speed;
+};
+
 struct game_type
 {
+    zoom_type        zoom;
     spell_class      spell[MAX_SPELLS];
     UI_class         UI;
     map_type         map;

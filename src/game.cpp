@@ -26,11 +26,17 @@
 #include "menu_system.hpp"
 #include "game.hpp"
 #include "misc.hpp"
+#include "map.hpp"
 
         game_type        game;
 
 int init_game(bool re_init)
 {
+    game.zoom.current                             = TILE_SCALE_DEFAULT;
+    game.zoom.min                                 = 60.0f;
+    game.zoom.max                                 = 400.0f;
+    game.zoom.speed                               = 10.0f;
+
     game.core.game_paused                         = false;
     game.core.game_active                         = false;
     game.core.game_resume                         = false;
@@ -110,6 +116,18 @@ int process_game(void)
             game.core.game_active = true;
         }
     };
+    if (game.core.io.key_x)
+    {
+        game.zoom.current += game.zoom.speed;
+        if (game.zoom.current > game.zoom.max) game.zoom.current = game.zoom.max;
+        game.map.town.calculate_tile_positions();
+    }
+    if (game.core.io.key_z)
+    {
+        game.zoom.current -= game.zoom.speed;
+        if (game.zoom.current < game.zoom.min) game.zoom.current = game.zoom.min;
+        game.map.town.calculate_tile_positions();
+    }
     bool return_data        = false;
     return(0);
 };
