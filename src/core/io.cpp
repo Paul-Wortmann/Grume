@@ -23,6 +23,7 @@
  */
 
 #include <SDL/SDL.h>
+#include <SDL/SDL_events.h>
 #include "../game.hpp"
 #include "io.hpp"
 
@@ -69,6 +70,8 @@ bool events_init(void)
    game.core.io.joystick_button_9          = false;
    game.core.io.joystick_button_10         = false;
    game.core.io.joystick_button_11         = false;
+   game.core.io.mouse_wheel_up             = false;
+   game.core.io.mouse_wheel_down           = false;
    game.core.io.mouse_button_left          = false;
    game.core.io.mouse_button_middle        = false;
    game.core.io.mouse_button_right         = false;
@@ -141,64 +144,79 @@ bool events_process(void)
     while (SDL_PollEvent(&game.core.event))
     {
     //-------------------- Mouse events-------------------------------
-       if (game.core.event.type == SDL_MOUSEMOTION)
-       {
-           game.core.config.process(true);
-           game.core.io.mouse_x      = game.core.graphics.res_to_gl(game.core.event.motion.x,game.core.config.mouse_resolution_x);
-           game.core.io.mouse_y      = game.core.graphics.res_to_gl(game.core.event.motion.y,game.core.config.mouse_resolution_y);
-           game.core.io.mouse_xrel   = game.core.graphics.res_to_gl(game.core.event.motion.xrel,game.core.config.mouse_resolution_x);
-           game.core.io.mouse_yrel   = game.core.graphics.res_to_gl(game.core.event.motion.yrel,game.core.config.mouse_resolution_y);
-           game.core.io.mouse_y *= -1;
-       }
-       if (game.core.event.type == SDL_MOUSEBUTTONUP)
-       {
-           switch(game.core.event.button.button)
-           {
-              case 1:
-                game.core.io.mouse_button_left = false;
-              break;
-              case 2:
-                game.core.io.mouse_button_middle = false;
-              break;
-              case 3:
-                game.core.io.mouse_button_right = false;
-              break;
-              default:
-              break;
-           }
-       }
-       if (game.core.event.type == SDL_MOUSEBUTTONDOWN)
-       {
-           switch(game.core.event.button.button)
-           {
-              case 1:
-                if (game.core.io.mouse_button_delay_count >= game.core.io.mouse_button_delay)
-                {
-                   game.core.io.mouse_button_delay_count = 0;
-                   game.core.io.mouse_button_left = true;
-                }
-                else game.core.io.mouse_button_left = false;
-              break;
-              case 2:
-                if (game.core.io.mouse_button_delay_count >= game.core.io.mouse_button_delay)
-                {
-                   game.core.io.mouse_button_delay_count = 0;
-                   game.core.io.mouse_button_middle = true;
-                }
-                else game.core.io.mouse_button_middle = false;
-              break;
-              case 3:
-                if (game.core.io.mouse_button_delay_count >= game.core.io.mouse_button_delay)
-                {
-                   game.core.io.mouse_button_delay_count = 0;
-                   game.core.io.mouse_button_right = true;
-                }
-                else game.core.io.mouse_button_right = false;
-              break;
-              default:
-              break;
-           }
-       }
+        //if (game.core.event.type == SDL_MOUSEWHEEL)
+        //{
+        //};
+        if (game.core.event.type == SDL_MOUSEMOTION)
+        {
+            game.core.config.process(true);
+            game.core.io.mouse_x      = game.core.graphics.res_to_gl(game.core.event.motion.x,game.core.config.mouse_resolution_x);
+            game.core.io.mouse_y      = game.core.graphics.res_to_gl(game.core.event.motion.y,game.core.config.mouse_resolution_y);
+            game.core.io.mouse_xrel   = game.core.graphics.res_to_gl(game.core.event.motion.xrel,game.core.config.mouse_resolution_x);
+            game.core.io.mouse_yrel   = game.core.graphics.res_to_gl(game.core.event.motion.yrel,game.core.config.mouse_resolution_y);
+            game.core.io.mouse_y *= -1;
+        }
+        if (game.core.event.type == SDL_MOUSEBUTTONUP)
+        {
+            switch(game.core.event.button.button)
+            {
+                case SDL_BUTTON_WHEELUP:
+                    game.core.io.mouse_wheel_up = false;
+                break;
+                case SDL_BUTTON_WHEELDOWN:
+                    game.core.io.mouse_wheel_down = false;
+                break;
+                case SDL_BUTTON_LEFT:
+                    game.core.io.mouse_button_left = false;
+                break;
+                case SDL_BUTTON_MIDDLE:
+                    game.core.io.mouse_button_middle = false;
+                break;
+                case SDL_BUTTON_RIGHT:
+                    game.core.io.mouse_button_right = false;
+                break;
+                default:
+                break;
+            }
+        }
+        if (game.core.event.type == SDL_MOUSEBUTTONDOWN)
+        {
+            switch(game.core.event.button.button)
+            {
+                case SDL_BUTTON_WHEELUP:
+                    game.core.io.mouse_wheel_up = true;
+                break;
+                case SDL_BUTTON_WHEELDOWN:
+                    game.core.io.mouse_wheel_down = true;
+                break;
+                case SDL_BUTTON_LEFT:
+                    if (game.core.io.mouse_button_delay_count >= game.core.io.mouse_button_delay)
+                    {
+                        game.core.io.mouse_button_delay_count = 0;
+                        game.core.io.mouse_button_left = true;
+                    }
+                    else game.core.io.mouse_button_left = false;
+                break;
+                case SDL_BUTTON_MIDDLE:
+                    if (game.core.io.mouse_button_delay_count >= game.core.io.mouse_button_delay)
+                    {
+                        game.core.io.mouse_button_delay_count = 0;
+                        game.core.io.mouse_button_middle = true;
+                    }
+                    else game.core.io.mouse_button_middle = false;
+                break;
+                case SDL_BUTTON_RIGHT:
+                    if (game.core.io.mouse_button_delay_count >= game.core.io.mouse_button_delay)
+                    {
+                        game.core.io.mouse_button_delay_count = 0;
+                        game.core.io.mouse_button_right = true;
+                    }
+                    else game.core.io.mouse_button_right = false;
+                break;
+                default:
+                break;
+            }
+        }
     //-------------------------- joystick / gamepad events --------------------------------------------
        if (game.core.event.type == SDL_JOYHATMOTION)
        {

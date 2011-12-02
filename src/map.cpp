@@ -277,6 +277,31 @@ void map_class::calculate_tile_positions(void)
     }
 };
 
+void map_class::calculate_tile_positions(float tile_width_half_specify,float tile_height_half_specify)
+{
+    float start_x  = map_class::tile[0].pos_x;
+    float start_y  = map_class::tile[0].pos_y;
+    int   x_count  = 0;
+    int   y_count  = 0;
+    for (int tile_count = 0; tile_count < MAX_TILES; tile_count++)
+    {
+        map_class::tile[tile_count].pos_x = start_x + (x_count * (tile_width_half_specify/2));
+        map_class::tile[tile_count].pos_y = start_y - (y_count * (tile_height_half_specify/(DEFAULT_FRAME_HEIGHT/16)));
+        x_count++;
+        y_count++;
+        if (x_count >= MAX_TILE_X)
+        {
+            x_count = 0;
+            start_x -= tile_width_half_specify/2;
+        }
+        if (y_count >= MAX_TILE_Y)
+        {
+            y_count = 0;
+            start_y -= tile_height_half_specify/(DEFAULT_FRAME_HEIGHT/16);
+        }
+    }
+};
+
 bool map_class::tile_visable(int tile_no)
 {
     float x_max =  1.0f;
