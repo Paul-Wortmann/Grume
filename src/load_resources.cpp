@@ -196,6 +196,28 @@ bool load_textures(void)
     game.texture.cave_wall_tileset.load_spritesheet              ("data/tilesets/cave_wall.png"           ,texture_count, 64,128);texture_count++;
     game.texture.cave_object_tileset.load_spritesheet            ("data/tilesets/cave_object.png"         ,texture_count, 64,128);texture_count++;
     game.texture.dungeon_tileset.load_spritesheet                ("data/tilesets/dungeon.png"             ,texture_count, 64, 64);texture_count++;
+
+    game.texture.spell_book_00.load_image("data/textures/UI/icons/books/book_00.png",texture_count);texture_count++;
+    game.texture.spell_book_01.load_image("data/textures/UI/icons/books/book_01.png",texture_count);texture_count++;
+    game.texture.spell_book_02.load_image("data/textures/UI/icons/books/book_02.png",texture_count);texture_count++;
+    game.texture.spell_book_03.load_image("data/textures/UI/icons/books/book_03.png",texture_count);texture_count++;
+    game.texture.spell_book_04.load_image("data/textures/UI/icons/books/book_04.png",texture_count);texture_count++;
+    game.texture.spell_book_05.load_image("data/textures/UI/icons/books/book_05.png",texture_count);texture_count++;
+    game.texture.spell_book_06.load_image("data/textures/UI/icons/books/book_06.png",texture_count);texture_count++;
+    game.texture.spell_book_07.load_image("data/textures/UI/icons/books/book_07.png",texture_count);texture_count++;
+    game.texture.spell_book_08.load_image("data/textures/UI/icons/books/book_08.png",texture_count);texture_count++;
+    game.texture.spell_book_09.load_image("data/textures/UI/icons/books/book_09.png",texture_count);texture_count++;
+    game.texture.spell_book_10.load_image("data/textures/UI/icons/books/book_10.png",texture_count);texture_count++;
+    game.texture.spell_book_11.load_image("data/textures/UI/icons/books/book_11.png",texture_count);texture_count++;
+    game.texture.spell_book_12.load_image("data/textures/UI/icons/books/book_12.png",texture_count);texture_count++;
+    game.texture.spell_book_13.load_image("data/textures/UI/icons/books/book_13.png",texture_count);texture_count++;
+    game.texture.spell_book_14.load_image("data/textures/UI/icons/books/book_14.png",texture_count);texture_count++;
+    game.texture.spell_book_15.load_image("data/textures/UI/icons/books/book_15.png",texture_count);texture_count++;
+    game.texture.spell_book_16.load_image("data/textures/UI/icons/books/book_16.png",texture_count);texture_count++;
+    game.texture.spell_book_17.load_image("data/textures/UI/icons/books/book_17.png",texture_count);texture_count++;
+    game.texture.spell_book_18.load_image("data/textures/UI/icons/books/book_18.png",texture_count);texture_count++;
+    game.texture.spell_book_19.load_image("data/textures/UI/icons/books/book_19.png",texture_count);texture_count++;
+
     game.core.log.File_Write("Texture files loaded -> ",texture_count);
     return(true);
 };
@@ -363,6 +385,28 @@ bool draw_texture(bool r, int texture_number, float x, float y, float z, float w
     if (texture_number == game.texture.cave_wall_tileset.ref_number)               game.texture.cave_wall_tileset.draw              (r,x,y,z,w,h,angle,frame);
     if (texture_number == game.texture.cave_object_tileset.ref_number)             game.texture.cave_object_tileset.draw            (r,x,y,z,w,h,angle,frame);
     if (texture_number == game.texture.dungeon_tileset.ref_number)                 game.texture.dungeon_tileset.draw                (r,x,y,z,w,h,angle,frame);
+
+    if (texture_number == game.texture.spell_book_00.ref_number) game.texture.spell_book_00.draw(r,x,y,z,w,h,angle,frame);
+    if (texture_number == game.texture.spell_book_01.ref_number) game.texture.spell_book_01.draw(r,x,y,z,w,h,angle,frame);
+    if (texture_number == game.texture.spell_book_02.ref_number) game.texture.spell_book_02.draw(r,x,y,z,w,h,angle,frame);
+    if (texture_number == game.texture.spell_book_03.ref_number) game.texture.spell_book_03.draw(r,x,y,z,w,h,angle,frame);
+    if (texture_number == game.texture.spell_book_04.ref_number) game.texture.spell_book_04.draw(r,x,y,z,w,h,angle,frame);
+    if (texture_number == game.texture.spell_book_05.ref_number) game.texture.spell_book_05.draw(r,x,y,z,w,h,angle,frame);
+    if (texture_number == game.texture.spell_book_06.ref_number) game.texture.spell_book_06.draw(r,x,y,z,w,h,angle,frame);
+    if (texture_number == game.texture.spell_book_07.ref_number) game.texture.spell_book_07.draw(r,x,y,z,w,h,angle,frame);
+    if (texture_number == game.texture.spell_book_08.ref_number) game.texture.spell_book_08.draw(r,x,y,z,w,h,angle,frame);
+    if (texture_number == game.texture.spell_book_09.ref_number) game.texture.spell_book_09.draw(r,x,y,z,w,h,angle,frame);
+    if (texture_number == game.texture.spell_book_10.ref_number) game.texture.spell_book_10.draw(r,x,y,z,w,h,angle,frame);
+    if (texture_number == game.texture.spell_book_11.ref_number) game.texture.spell_book_11.draw(r,x,y,z,w,h,angle,frame);
+    if (texture_number == game.texture.spell_book_12.ref_number) game.texture.spell_book_12.draw(r,x,y,z,w,h,angle,frame);
+    if (texture_number == game.texture.spell_book_13.ref_number) game.texture.spell_book_13.draw(r,x,y,z,w,h,angle,frame);
+    if (texture_number == game.texture.spell_book_14.ref_number) game.texture.spell_book_14.draw(r,x,y,z,w,h,angle,frame);
+    if (texture_number == game.texture.spell_book_15.ref_number) game.texture.spell_book_15.draw(r,x,y,z,w,h,angle,frame);
+    if (texture_number == game.texture.spell_book_16.ref_number) game.texture.spell_book_16.draw(r,x,y,z,w,h,angle,frame);
+    if (texture_number == game.texture.spell_book_17.ref_number) game.texture.spell_book_17.draw(r,x,y,z,w,h,angle,frame);
+    if (texture_number == game.texture.spell_book_18.ref_number) game.texture.spell_book_18.draw(r,x,y,z,w,h,angle,frame);
+    if (texture_number == game.texture.spell_book_19.ref_number) game.texture.spell_book_19.draw(r,x,y,z,w,h,angle,frame);
+
     return(true);
 };
 

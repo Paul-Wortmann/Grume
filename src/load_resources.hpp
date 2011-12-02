@@ -177,6 +177,27 @@ struct texture_type
     texture_class cave_wall_tileset;
     texture_class cave_object_tileset;
     texture_class dungeon_tileset;
+
+    texture_class spell_book_00;
+    texture_class spell_book_01;
+    texture_class spell_book_02;
+    texture_class spell_book_03;
+    texture_class spell_book_04;
+    texture_class spell_book_05;
+    texture_class spell_book_06;
+    texture_class spell_book_07;
+    texture_class spell_book_08;
+    texture_class spell_book_09;
+    texture_class spell_book_10;
+    texture_class spell_book_11;
+    texture_class spell_book_12;
+    texture_class spell_book_13;
+    texture_class spell_book_14;
+    texture_class spell_book_15;
+    texture_class spell_book_16;
+    texture_class spell_book_17;
+    texture_class spell_book_18;
+    texture_class spell_book_19;
 };
 
 struct font_type
