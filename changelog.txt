@@ -1,3 +1,7 @@
+v0.02 - (2011-12-xx)
+
+LOC - xxxxx
+
 v0.01 - (2011-11-30)
 
 BUG  -> Fixed 2 SEGFAULT segmentation faults caused by impropper shutdown of SDL.

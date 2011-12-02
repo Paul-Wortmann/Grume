@@ -33,9 +33,9 @@
 int init_game(bool re_init)
 {
     game.zoom.current                             = TILE_SCALE_DEFAULT;
-    game.zoom.min                                 = 20.0f;
-    game.zoom.max                                 = 300.0f;
-    game.zoom.speed                               = 10.0f;
+    game.zoom.min                                 = 80.0f;
+    game.zoom.max                                 = 400.0f;
+    game.zoom.speed                               = 2.5f;
 
     game.core.game_paused                         = false;
     game.core.game_active                         = false;
@@ -120,13 +120,21 @@ int process_game(void)
     {
         game.zoom.current += game.zoom.speed;
         if (game.zoom.current > game.zoom.max) game.zoom.current = game.zoom.max;
-        game.map.town.calculate_tile_positions(DEFAULT_FRAME_WIDTH/game.zoom.current/2.0f,DEFAULT_FRAME_HEIGHT/game.zoom.current/2.0f);
+        else
+        {
+            game.map.town.tile[0].pos_y -= (DEFAULT_FRAME_HEIGHT/game.zoom.current/2.0f);
+            game.map.town.calculate_tile_positions(DEFAULT_FRAME_WIDTH/game.zoom.current/2.0f,DEFAULT_FRAME_HEIGHT/game.zoom.current/2.0f);
+        }
     }
     if (game.core.io.key_x)
     {
         game.zoom.current -= game.zoom.speed;
         if (game.zoom.current < game.zoom.min) game.zoom.current = game.zoom.min;
-        game.map.town.calculate_tile_positions(DEFAULT_FRAME_WIDTH/game.zoom.current/2.0f,DEFAULT_FRAME_HEIGHT/game.zoom.current/2.0f);
+        else
+        {
+            //game.map.town.tile[0].pos_y += (DEFAULT_FRAME_HEIGHT/game.zoom.current/2.0f);
+            game.map.town.calculate_tile_positions(DEFAULT_FRAME_WIDTH/game.zoom.current/2.0f,DEFAULT_FRAME_HEIGHT/game.zoom.current/2.0f);
+        }
     }
     bool return_data        = false;
     return(0);

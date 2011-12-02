@@ -280,7 +280,7 @@ void map_class::calculate_tile_positions(void)
 void map_class::calculate_tile_positions(float tile_width_half_specify,float tile_height_half_specify)
 {
     float start_x  = map_class::tile[0].pos_x;
-    float start_y  = map_class::tile[0].pos_y;
+    float start_y  = map_class::tile[0].pos_y + (tile_height_half_specify/(DEFAULT_FRAME_HEIGHT/16));
     int   x_count  = 0;
     int   y_count  = 0;
     for (int tile_count = 0; tile_count < MAX_TILES; tile_count++)
