@@ -333,8 +333,6 @@ void map_class::load(std::string file_name)
     std::string  temp_string_key;
     std::string  temp_string_value;
     std::string  data_line;
-    map_class::calculate_tile_positions();
-    map_class::center_on_tile(0);
     std::fstream script_file(file_name.c_str(),std::ios::in|std::ios::binary);
     if (script_file.is_open())
     {
@@ -494,9 +492,11 @@ void map_class::load(std::string file_name)
                 }
             }
         }
+        script_file.close();
         map_class::number_of_tiles    = map_class::width * map_class::height;
         map_class::number_of_tilesets = tileset_count + 1;
-        script_file.close();
+        map_class::calculate_tile_positions();
+        map_class::center_on_tile(0);
     }
 };
 
