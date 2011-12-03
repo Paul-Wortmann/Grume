@@ -128,7 +128,7 @@ void inventory_slot_class::process(void)
 
 void inventory_slot_class::draw(void)
 {
-
+    if (inventory_slot_class::button_type > 0) draw_texture(false,game.item[inventory_slot_class::button_type].image_ref,inventory_slot_class::pos_x,inventory_slot_class::pos_y,inventory_slot_class::pos_z,inventory_slot_class::width,inventory_slot_class::height);
 };
 
 void inventory_slot_class::draw_drag(void)

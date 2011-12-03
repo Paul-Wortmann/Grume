@@ -76,15 +76,16 @@ class inventory_slot_class
 class inventory_class
 {
     public:
-        bool             mouse_over;
-        bool             drag;
-        float            pos_x;
-        float            pos_y;
-        float            pos_z;
-        float            width;
-        float            height;
-        float            drag_offset_x;
-        float            drag_offset_y;
+        bool                   mouse_over;
+        bool                   drag;
+        float                  pos_x;
+        float                  pos_y;
+        float                  pos_z;
+        float                  width;
+        float                  height;
+        float                  drag_offset_x;
+        float                  drag_offset_y;
+        inventory_slot_class   inventory_slot[48];
         inventory_button_class close_button;
         inventory_class(void);
        ~inventory_class(void);

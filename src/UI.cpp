@@ -668,26 +668,10 @@ void action_bar_class::draw(void)
     action_bar_class::action_slot_08.draw_tooltip();
     action_bar_class::action_slot_09.draw_tooltip();
     action_bar_class::action_slot_10.draw_tooltip();
-    if (game.UI.spell_book.spell_slot_01.drag) game.UI.spell_book.spell_slot_01.draw_drag();
-    if (game.UI.spell_book.spell_slot_02.drag) game.UI.spell_book.spell_slot_02.draw_drag();
-    if (game.UI.spell_book.spell_slot_03.drag) game.UI.spell_book.spell_slot_03.draw_drag();
-    if (game.UI.spell_book.spell_slot_04.drag) game.UI.spell_book.spell_slot_04.draw_drag();
-    if (game.UI.spell_book.spell_slot_05.drag) game.UI.spell_book.spell_slot_05.draw_drag();
-    if (game.UI.spell_book.spell_slot_06.drag) game.UI.spell_book.spell_slot_06.draw_drag();
-    if (game.UI.spell_book.spell_slot_07.drag) game.UI.spell_book.spell_slot_07.draw_drag();
-    if (game.UI.spell_book.spell_slot_08.drag) game.UI.spell_book.spell_slot_08.draw_drag();
-    if (game.UI.spell_book.spell_slot_09.drag) game.UI.spell_book.spell_slot_09.draw_drag();
-    if (game.UI.spell_book.spell_slot_10.drag) game.UI.spell_book.spell_slot_10.draw_drag();
-    if (game.UI.spell_book.spell_slot_11.drag) game.UI.spell_book.spell_slot_11.draw_drag();
-    if (game.UI.spell_book.spell_slot_12.drag) game.UI.spell_book.spell_slot_12.draw_drag();
-    if (game.UI.spell_book.spell_slot_13.drag) game.UI.spell_book.spell_slot_13.draw_drag();
-    if (game.UI.spell_book.spell_slot_14.drag) game.UI.spell_book.spell_slot_14.draw_drag();
-    if (game.UI.spell_book.spell_slot_15.drag) game.UI.spell_book.spell_slot_15.draw_drag();
-    if (game.UI.spell_book.spell_slot_16.drag) game.UI.spell_book.spell_slot_16.draw_drag();
-    if (game.UI.spell_book.spell_slot_17.drag) game.UI.spell_book.spell_slot_17.draw_drag();
-    if (game.UI.spell_book.spell_slot_18.drag) game.UI.spell_book.spell_slot_18.draw_drag();
-    if (game.UI.spell_book.spell_slot_19.drag) game.UI.spell_book.spell_slot_19.draw_drag();
-    if (game.UI.spell_book.spell_slot_20.drag) game.UI.spell_book.spell_slot_20.draw_drag();
+    for (int spell_slot_count = 1; spell_slot_count < MAX_SPELL_SLOTS; spell_slot_count++)
+    {
+        if (game.UI.spell_book.spell_slot[spell_slot_count].drag) game.UI.spell_book.spell_slot[spell_slot_count].draw_drag();
+    }
     if (action_bar_class::action_slot_01.drag) action_bar_class::action_slot_01.draw_drag();
     if (action_bar_class::action_slot_02.drag) action_bar_class::action_slot_02.draw_drag();
     if (action_bar_class::action_slot_03.drag) action_bar_class::action_slot_03.draw_drag();

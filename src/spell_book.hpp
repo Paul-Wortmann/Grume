@@ -25,6 +25,8 @@
 #ifndef SPELL_BOOK_H
 #define SPELL_BOOK_H
 
+const int MAX_SPELL_SLOTS = 24;
+
 class spell_book_button_class
 {
     public:
@@ -86,26 +88,7 @@ class spell_book_class
         float            drag_offset_x;
         float            drag_offset_y;
         spell_book_button_class close_button;
-        spell_slot_class spell_slot_01;
-        spell_slot_class spell_slot_02;
-        spell_slot_class spell_slot_03;
-        spell_slot_class spell_slot_04;
-        spell_slot_class spell_slot_05;
-        spell_slot_class spell_slot_06;
-        spell_slot_class spell_slot_07;
-        spell_slot_class spell_slot_08;
-        spell_slot_class spell_slot_09;
-        spell_slot_class spell_slot_10;
-        spell_slot_class spell_slot_11;
-        spell_slot_class spell_slot_12;
-        spell_slot_class spell_slot_13;
-        spell_slot_class spell_slot_14;
-        spell_slot_class spell_slot_15;
-        spell_slot_class spell_slot_16;
-        spell_slot_class spell_slot_17;
-        spell_slot_class spell_slot_18;
-        spell_slot_class spell_slot_19;
-        spell_slot_class spell_slot_20;
+        spell_slot_class spell_slot[MAX_SPELL_SLOTS];
         spell_book_class(void);
        ~spell_book_class(void);
         void             process(void);
