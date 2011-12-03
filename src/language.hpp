@@ -66,6 +66,7 @@ struct text_type
     std::string    character_menu;
     std::string    inventory;
     std::string    spell_book;
+    std::string    equipment;
 };
 
 class language_class

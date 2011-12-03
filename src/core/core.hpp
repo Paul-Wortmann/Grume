@@ -57,6 +57,7 @@ class core_class
         bool              character_active;
         bool              spellbook_active;
         bool              inventory_active;
+        bool              equipment_active;
         bool              pdie_active;
         bool              nlvl_active;
         bool              outr_active;

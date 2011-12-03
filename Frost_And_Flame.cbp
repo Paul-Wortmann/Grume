@@ -96,6 +96,8 @@
 		<Unit filename="src\core\textures.hpp" />
 		<Unit filename="src\core\timer.cpp" />
 		<Unit filename="src\core\timer.hpp" />
+		<Unit filename="src\equipment.cpp" />
+		<Unit filename="src\equipment.hpp" />
 		<Unit filename="src\game.cpp" />
 		<Unit filename="src\game.hpp" />
 		<Unit filename="src\icon.rc">

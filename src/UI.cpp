@@ -351,16 +351,18 @@ void menu_slot_class::process(void)
                     game.core.config.menu_delay_count = 0;
                 }
             break;
-            case UNKNOWN___WINDOW: // NA??
-                if (!game.core.menu_active)
+            case EQUIPMENT_WINDOW: // Equipment Menu
+                if (!game.core.equipment_active)
                 {
-                    game.UI.active_window_list.add_to_list(UNKNOWN___WINDOW);
+                    game.UI.active_window_list.add_to_list(EQUIPMENT_WINDOW);
                     game.sound.menu_select_00.play();
+                    game.core.equipment_active        = true;
                 }
                 else
                 {
-                    game.UI.active_window_list.remove_from_list(UNKNOWN___WINDOW);
+                    game.UI.active_window_list.remove_from_list(EQUIPMENT_WINDOW);
                     game.sound.menu_select_00.play();
+                    game.core.equipment_active        = false;
                 }
             break;
             case QUEST_LOG_WINDOW: // Quest Log
@@ -511,8 +513,8 @@ void menu_slot_class::draw_tooltip(void)
             case 1: // main menu
                 game.font.font_1.Write(255,255,255,255,game.core.io.mouse_x,game.core.io.mouse_y,4.8f,32.0f,game.language.text.main_menu);
             break;
-            case 2: // NA??
-                game.font.font_1.Write(255,255,255,255,game.core.io.mouse_x,game.core.io.mouse_y,4.8f,32.0f,game.language.text.menu_item_unavailable);
+            case 2: // Equipment Menu
+                game.font.font_1.Write(255,255,255,255,game.core.io.mouse_x,game.core.io.mouse_y,4.8f,32.0f,game.language.text.equipment);
             break;
             case 3: // Quest Log
                 game.font.font_1.Write(255,255,255,255,game.core.io.mouse_x,game.core.io.mouse_y,4.8f,32.0f,game.language.text.quest_log);
@@ -749,7 +751,8 @@ void UI_class::process(void)
             case MAIN_MENU_WINDOW:
                 if (game.core.menu_active)      process_menu ();
             break;
-            case UNKNOWN___WINDOW:
+            case EQUIPMENT_WINDOW:
+                if (game.core.equipment_active) UI_class::equipment.process();
             break;
             case QUEST_LOG_WINDOW:
                 if (game.core.quest_log_active) UI_class::quest_log.process();
@@ -782,7 +785,8 @@ void UI_class::draw(void)
             case MAIN_MENU_WINDOW:
                 if (game.core.menu_active)      diplay_menu ();
             break;
-            case UNKNOWN___WINDOW:
+            case EQUIPMENT_WINDOW:
+                if (game.core.equipment_active) UI_class::equipment.draw();
             break;
             case QUEST_LOG_WINDOW:
                 if (game.core.quest_log_active) UI_class::quest_log.draw();

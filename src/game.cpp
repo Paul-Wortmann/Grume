@@ -64,6 +64,8 @@ int init_game(bool re_init)
     game.UI.character.close_button.image_highlighted   =  game.texture.close_button_highlighted.ref_number;
     game.UI.quest_log.close_button.image_normal        =  game.texture.close_button.ref_number;
     game.UI.quest_log.close_button.image_highlighted   =  game.texture.close_button_highlighted.ref_number;
+    game.UI.equipment.close_button.image_normal        =  game.texture.close_button.ref_number;
+    game.UI.equipment.close_button.image_highlighted   =  game.texture.close_button_highlighted.ref_number;
     init_spells();
     init_items();
     return(0);
