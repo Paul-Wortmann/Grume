@@ -52,6 +52,8 @@ class inventory_slot_class
         bool        highlighted;
         bool        drag;
         int         button_type;
+        int         quantity;
+        int         max_quantity;
         bool        mouse_over;
         int         mouse_over_count;
         int         tooltip_time;

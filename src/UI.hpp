@@ -39,8 +39,9 @@
 #define    SPELLBOOK_WINDOW  6
 #define    PCPROFILE_WINDOW  7
 
-const int  MAX_ACTIVE_WINDOWS = 8;
-const int  MAX_ACTION_SLOTS   = 16;
+const int  MAX_ACTIVE_WINDOWS      = 8;
+const int  MAX_ACTION_SLOTS        = 16;
+const int  MAX_ACTION_MENU_SLOTS   = 8;
 
 class active_window_list_class
 {
@@ -139,12 +140,7 @@ class action_bar_class
         float pos_z;
         float width;
         float height;
-        menu_slot_class menu_slot_01;
-        menu_slot_class menu_slot_02;
-        menu_slot_class menu_slot_03;
-        menu_slot_class menu_slot_04;
-        menu_slot_class menu_slot_05;
-        menu_slot_class menu_slot_06;
+        menu_slot_class   menu_slot  [MAX_ACTION_MENU_SLOTS];
         action_slot_class action_slot[MAX_ACTION_SLOTS];
         void process(void);
         void draw(void);

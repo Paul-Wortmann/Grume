@@ -31,7 +31,25 @@ extern game_type game;
 
 item_class::item_class(void)
 {
-    item_class::image_ref          = 0;
+    item_class::image_ref               = 0;
+    item_class::item_ID                 = 100;
+    item_class::defence                 = 0;
+    item_class::min_dammage             = 0;
+    item_class::max_dammage             = 0;
+    item_class::add_min_dammage         = 0;
+    item_class::add_max_dammage         = 0;
+    item_class::sub_min_dammage         = 0;
+    item_class::sub_max_dammage         = 0;
+    item_class::add_max_health          = 0;
+    item_class::sub_max_health          = 0;
+    item_class::add_max_mana            = 0;
+    item_class::sub_max_mana            = 0;
+    item_class::add_health_regeneration = 0;
+    item_class::sub_health_regeneration = 0;
+    item_class::add_mana_regeneration   = 0;
+    item_class::sub_mana_regeneration   = 0;
+    item_class::add_crit_chance         = 0;
+    item_class::sub_crit_chance         = 0;
 };
 
 item_class::~item_class(void)

@@ -31,12 +31,12 @@ extern game_type      game;
 void update_save_data(void)
 {
     save_data.save_version = 0.01f;
-    save_data.AB_MS_01     = game.UI.action_bar.menu_slot_01.button_type;
-    save_data.AB_MS_02     = game.UI.action_bar.menu_slot_02.button_type;
-    save_data.AB_MS_03     = game.UI.action_bar.menu_slot_03.button_type;
-    save_data.AB_MS_04     = game.UI.action_bar.menu_slot_04.button_type;
-    save_data.AB_MS_05     = game.UI.action_bar.menu_slot_05.button_type;
-    save_data.AB_MS_06     = game.UI.action_bar.menu_slot_06.button_type;
+    save_data.AB_MS_01     = game.UI.action_bar.menu_slot[ 1].button_type;
+    save_data.AB_MS_02     = game.UI.action_bar.menu_slot[ 2].button_type;
+    save_data.AB_MS_03     = game.UI.action_bar.menu_slot[ 3].button_type;
+    save_data.AB_MS_04     = game.UI.action_bar.menu_slot[ 4].button_type;
+    save_data.AB_MS_05     = game.UI.action_bar.menu_slot[ 5].button_type;
+    save_data.AB_MS_06     = game.UI.action_bar.menu_slot[ 6].button_type;
     save_data.AB_AS_01     = game.UI.action_bar.action_slot[ 1].button_type;
     save_data.AB_AS_02     = game.UI.action_bar.action_slot[ 2].button_type;
     save_data.AB_AS_03     = game.UI.action_bar.action_slot[ 3].button_type;
@@ -51,12 +51,12 @@ void update_save_data(void)
 
 void update_game_data(void)
 {
-    game.UI.action_bar.menu_slot_01.button_type       = save_data.AB_MS_01;
-    game.UI.action_bar.menu_slot_02.button_type       = save_data.AB_MS_02;
-    game.UI.action_bar.menu_slot_03.button_type       = save_data.AB_MS_03;
-    game.UI.action_bar.menu_slot_04.button_type       = save_data.AB_MS_04;
-    game.UI.action_bar.menu_slot_05.button_type       = save_data.AB_MS_05;
-    game.UI.action_bar.menu_slot_06.button_type       = save_data.AB_MS_06;
+    game.UI.action_bar.menu_slot[ 1].button_type       = save_data.AB_MS_01;
+    game.UI.action_bar.menu_slot[ 2].button_type       = save_data.AB_MS_02;
+    game.UI.action_bar.menu_slot[ 3].button_type       = save_data.AB_MS_03;
+    game.UI.action_bar.menu_slot[ 4].button_type       = save_data.AB_MS_04;
+    game.UI.action_bar.menu_slot[ 5].button_type       = save_data.AB_MS_05;
+    game.UI.action_bar.menu_slot[ 6].button_type       = save_data.AB_MS_06;
     game.UI.action_bar.action_slot[ 1].button_type     = save_data.AB_AS_01;
     game.UI.action_bar.action_slot[ 2].button_type     = save_data.AB_AS_02;
     game.UI.action_bar.action_slot[ 3].button_type     = save_data.AB_AS_03;

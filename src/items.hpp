@@ -25,13 +25,31 @@
 #ifndef ITEMS_H
 #define ITEMS_H
 
-const int MAX_ITEMS = 24;
+const int MAX_ITEMS = 128;
 
 class item_class
 {
     public:
         //std::string name;
         int         image_ref;
+        int         item_ID;
+        int         defence;
+        int         min_dammage;
+        int         max_dammage;
+        int         add_min_dammage;
+        int         add_max_dammage;
+        int         sub_min_dammage;
+        int         sub_max_dammage;
+        int         add_max_health;
+        int         sub_max_health;
+        int         add_max_mana;
+        int         sub_max_mana;
+        int         add_health_regeneration;
+        int         sub_health_regeneration;
+        int         add_mana_regeneration;
+        int         sub_mana_regeneration;
+        int         add_crit_chance;
+        int         sub_crit_chance;
         item_class(void);
        ~item_class(void);
 };
