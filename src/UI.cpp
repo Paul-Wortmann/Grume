@@ -212,10 +212,7 @@ void action_slot_class::process(void)
                         discard_icon = false;
                     }
                 }
-                if (discard_icon)
-                {
-                //check here for collision with self base, use box collision detection...
-                }
+                if ((discard_icon) && (game.core.physics.point_in_quadrangle(game.UI.action_bar.pos_x,game.UI.action_bar.width,game.UI.action_bar.pos_y,game.UI.action_bar.height,game.core.io.mouse_x,game.core.io.mouse_y))) discard_icon = false;
                 action_slot_class::drag         = false;
                 game.UI.drag_in_progress        = false;
                 action_slot_class::pos_x        = action_slot_class::base_pos_x;
