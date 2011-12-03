@@ -34,6 +34,7 @@
 #include "UI.hpp"
 #include "player.hpp"
 #include "spells.hpp"
+#include "items.hpp"
 
 struct zoom_type
 {
@@ -47,6 +48,7 @@ struct game_type
 {
     zoom_type        zoom;
     spell_class      spell[MAX_SPELLS];
+    item_class       item [MAX_ITEMS];
     UI_class         UI;
     map_type         map;
     sound_type       sound;
