@@ -39,6 +39,7 @@
 #define    PCPROFILE_WINDOW  7
 
 const int  MAX_ACTIVE_WINDOWS = 8;
+const int  MAX_ACTION_SLOTS   = 16;
 
 class active_window_list_class
 {
@@ -143,16 +144,7 @@ class action_bar_class
         menu_slot_class menu_slot_04;
         menu_slot_class menu_slot_05;
         menu_slot_class menu_slot_06;
-        action_slot_class action_slot_01;
-        action_slot_class action_slot_02;
-        action_slot_class action_slot_03;
-        action_slot_class action_slot_04;
-        action_slot_class action_slot_05;
-        action_slot_class action_slot_06;
-        action_slot_class action_slot_07;
-        action_slot_class action_slot_08;
-        action_slot_class action_slot_09;
-        action_slot_class action_slot_10;
+        action_slot_class action_slot[MAX_ACTION_SLOTS];
         void process(void);
         void draw(void);
         action_bar_class(void);

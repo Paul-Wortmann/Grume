@@ -105,16 +105,10 @@ void spell_slot_class::process(void)
             }
             else
             {
-                if ((game.UI.action_bar.action_slot_01.mouse_over) && (game.UI.action_bar.action_slot_01.button_type != spell_slot_class::button_type)) game.UI.action_bar.action_slot_01.button_type = spell_slot_class::button_type;
-                if ((game.UI.action_bar.action_slot_02.mouse_over) && (game.UI.action_bar.action_slot_02.button_type != spell_slot_class::button_type)) game.UI.action_bar.action_slot_02.button_type = spell_slot_class::button_type;
-                if ((game.UI.action_bar.action_slot_03.mouse_over) && (game.UI.action_bar.action_slot_03.button_type != spell_slot_class::button_type)) game.UI.action_bar.action_slot_03.button_type = spell_slot_class::button_type;
-                if ((game.UI.action_bar.action_slot_04.mouse_over) && (game.UI.action_bar.action_slot_04.button_type != spell_slot_class::button_type)) game.UI.action_bar.action_slot_04.button_type = spell_slot_class::button_type;
-                if ((game.UI.action_bar.action_slot_05.mouse_over) && (game.UI.action_bar.action_slot_05.button_type != spell_slot_class::button_type)) game.UI.action_bar.action_slot_05.button_type = spell_slot_class::button_type;
-                if ((game.UI.action_bar.action_slot_06.mouse_over) && (game.UI.action_bar.action_slot_06.button_type != spell_slot_class::button_type)) game.UI.action_bar.action_slot_06.button_type = spell_slot_class::button_type;
-                if ((game.UI.action_bar.action_slot_07.mouse_over) && (game.UI.action_bar.action_slot_07.button_type != spell_slot_class::button_type)) game.UI.action_bar.action_slot_07.button_type = spell_slot_class::button_type;
-                if ((game.UI.action_bar.action_slot_08.mouse_over) && (game.UI.action_bar.action_slot_08.button_type != spell_slot_class::button_type)) game.UI.action_bar.action_slot_08.button_type = spell_slot_class::button_type;
-                if ((game.UI.action_bar.action_slot_09.mouse_over) && (game.UI.action_bar.action_slot_09.button_type != spell_slot_class::button_type)) game.UI.action_bar.action_slot_09.button_type = spell_slot_class::button_type;
-                if ((game.UI.action_bar.action_slot_10.mouse_over) && (game.UI.action_bar.action_slot_10.button_type != spell_slot_class::button_type)) game.UI.action_bar.action_slot_10.button_type = spell_slot_class::button_type;
+                for (int action_slot_count = 1; action_slot_count < MAX_ACTION_SLOTS; action_slot_count++)
+                {
+                    if ((game.UI.action_bar.action_slot[action_slot_count].mouse_over) && (game.UI.action_bar.action_slot[action_slot_count].button_type != spell_slot_class::button_type)) game.UI.action_bar.action_slot[action_slot_count].button_type = spell_slot_class::button_type;
+                }
                 spell_slot_class::drag         = false;
                 game.UI.drag_in_progress       = false;
                 spell_slot_class::pos_x        = spell_slot_class::base_pos_x;
