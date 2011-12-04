@@ -60,19 +60,45 @@ float graphics_class::res_to_gl(int  res_coord, int max_res)
 
 int   graphics_class::init_gl(int x_res, int y_res)
 {
-  glViewport(0, 0,x_res,y_res);
-  glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
-  glClearDepth(1.0);
-  glDepthFunc(GL_LESS);
-  glBlendFunc(GL_SRC_ALPHA,GL_ONE_MINUS_SRC_ALPHA);
-  glEnable(GL_BLEND);
-  glEnable(GL_DEPTH_TEST);
-  glShadeModel(GL_SMOOTH);
-  glMatrixMode(GL_PROJECTION);
-  glLoadIdentity();
-  glMatrixMode(GL_MODELVIEW);
-  glLoadIdentity();
-  glEnable(GL_TEXTURE_2D);
-  return(0);
+    glViewport(0, 0,x_res,y_res);
+    glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+    glClearDepth(1.0);
+    glMatrixMode(GL_PROJECTION);
+    glLoadIdentity();
+    glMatrixMode(GL_MODELVIEW);
+    glLoadIdentity();
+    glEnable(GL_TEXTURE_2D);
+    glDepthFunc(GL_LESS);
+    glBlendFunc(GL_SRC_ALPHA,GL_ONE_MINUS_SRC_ALPHA);
+    glEnable(GL_BLEND);
+    glEnable(GL_DEPTH_TEST);
+    glShadeModel(GL_SMOOTH);
+	glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_FASTEST);
+    //--------------------------------------------------------------------------------------------------------------------
+	// OpenGL Lighting Setup
+	glEnable(GL_LIGHTING);
+    float global_ambient[] = { 8.0f, 8.0f, 8.0f, 8.0f };
+    glLightModelfv(GL_LIGHT_MODEL_AMBIENT, global_ambient);
+
+	glEnable(GL_LIGHT0);
+	float ambientLight0[] = { 1.0f, 1.0f, 1.0f, 1.0f };
+	float diffuseLight0[] = { 1.0f, 1.0f, 1.0f, 1.0f };
+	float specularLight0[] = { 1.0f, 1.0f, 1.0f, 1.0f };
+	float position0[] = { 0.0f, 0.0f, 0.0f, 1.0f };
+	glLightfv(GL_LIGHT0, GL_AMBIENT, ambientLight0);
+	glLightfv(GL_LIGHT0, GL_DIFFUSE, diffuseLight0);
+	glLightfv(GL_LIGHT0, GL_SPECULAR, specularLight0);
+	glLightfv(GL_LIGHT0, GL_POSITION, position0);
+
+	glEnable(GL_LIGHT1);
+	float ambientLight1[] = { 1.0f, 0.5f, 0.5f, 1.0f };
+	float diffuseLight1[] = { 1.0f, 0.5f, 0.5f, 1.0f };
+	float specularLight1[] = { 1.0f, 0.5f, 0.5f, 1.0f };
+	float position1[] = { 1.5f, 1.0f, -4.0f, 1.0f };
+	glLightfv(GL_LIGHT1, GL_AMBIENT, ambientLight1);
+	glLightfv(GL_LIGHT1, GL_DIFFUSE, diffuseLight1);
+	glLightfv(GL_LIGHT1, GL_SPECULAR, specularLight1);
+	glLightfv(GL_LIGHT1, GL_POSITION, position1);
+    return(0);
 }
 
