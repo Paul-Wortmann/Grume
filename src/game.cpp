@@ -68,6 +68,7 @@ int init_game(bool re_init)
     game.UI.equipment.close_button.image_highlighted   =  game.texture.close_button_highlighted.ref_number;
     init_spells();
     init_items();
+    init_inventory();
     return(0);
 };
 
@@ -137,6 +138,21 @@ int process_game(void)
         {
             //game.map.town.tile[0].pos_y += (DEFAULT_FRAME_HEIGHT/game.zoom.current/2.0f);
             game.map.town.calculate_tile_positions(DEFAULT_FRAME_WIDTH/game.zoom.current/2.0f,DEFAULT_FRAME_HEIGHT/game.zoom.current/2.0f);
+        }
+    }
+    if (game.core.io.key_i)
+    {
+        if (!game.core.inventory_active)
+        {
+            game.UI.active_window_list.add_to_list(INVENTORY_WINDOW);
+            game.sound.menu_select_00.play();
+            game.core.inventory_active        = true;
+        }
+        else
+        {
+            game.UI.active_window_list.remove_from_list(INVENTORY_WINDOW);
+            game.sound.menu_select_00.play();
+            game.core.inventory_active        = false;
         }
     }
     bool return_data        = false;

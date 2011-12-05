@@ -25,12 +25,18 @@
 #ifndef ITEMS_H
 #define ITEMS_H
 
+#include <iostream>
+#include <fstream>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string>
+
 const int MAX_ITEMS = 128;
 
 class item_class
 {
     public:
-        //std::string name;
+        std::string name;
         int         image_ref;
         int         item_ID;
         int         defence;
@@ -50,6 +56,9 @@ class item_class
         int         sub_mana_regeneration;
         int         add_crit_chance;
         int         sub_crit_chance;
+        int         add_spell;
+        bool        usable;
+        void load(void);
         item_class(void);
        ~item_class(void);
 };

@@ -81,22 +81,22 @@ int   graphics_class::init_gl(int x_res, int y_res)
     glLightModelfv(GL_LIGHT_MODEL_AMBIENT, global_ambient);
 
 	glEnable(GL_LIGHT0);
-	float ambientLight0[] = { 1.0f, 1.0f, 1.0f, 1.0f };
-	float diffuseLight0[] = { 1.0f, 1.0f, 1.0f, 1.0f };
+	float ambientLight0[]  = { 1.0f, 1.0f, 1.0f, 1.0f };
+	float diffuseLight0[]  = { 1.0f, 1.0f, 1.0f, 1.0f };
 	float specularLight0[] = { 1.0f, 1.0f, 1.0f, 1.0f };
-	float position0[] = { 0.0f, 0.0f, 0.0f, 1.0f };
-	glLightfv(GL_LIGHT0, GL_AMBIENT, ambientLight0);
-	glLightfv(GL_LIGHT0, GL_DIFFUSE, diffuseLight0);
+	float position0[]      = { 0.0f, 0.0f, 0.0f, 1.0f };
+	glLightfv(GL_LIGHT0, GL_AMBIENT,  ambientLight0);
+	glLightfv(GL_LIGHT0, GL_DIFFUSE,  diffuseLight0);
 	glLightfv(GL_LIGHT0, GL_SPECULAR, specularLight0);
 	glLightfv(GL_LIGHT0, GL_POSITION, position0);
 
 	glEnable(GL_LIGHT1);
-	float ambientLight1[] = { 1.0f, 0.5f, 0.5f, 1.0f };
-	float diffuseLight1[] = { 1.0f, 0.5f, 0.5f, 1.0f };
+	float ambientLight1[]  = { 1.0f, 0.5f, 0.5f, 1.0f };
+	float diffuseLight1[]  = { 1.0f, 0.5f, 0.5f, 1.0f };
 	float specularLight1[] = { 1.0f, 0.5f, 0.5f, 1.0f };
-	float position1[] = { 1.5f, 1.0f, -4.0f, 1.0f };
-	glLightfv(GL_LIGHT1, GL_AMBIENT, ambientLight1);
-	glLightfv(GL_LIGHT1, GL_DIFFUSE, diffuseLight1);
+	float position1[]      = { 1.5f, 1.0f,-4.0f, 1.0f };
+	glLightfv(GL_LIGHT1, GL_AMBIENT,  ambientLight1);
+	glLightfv(GL_LIGHT1, GL_DIFFUSE,  diffuseLight1);
 	glLightfv(GL_LIGHT1, GL_SPECULAR, specularLight1);
 	glLightfv(GL_LIGHT1, GL_POSITION, position1);
     return(0);

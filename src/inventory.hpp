@@ -25,6 +25,8 @@
 #ifndef INVENTORY_H
 #define INVENTORY_H
 
+const int MAX_INVENTORY_SLOTS = 48;
+
 class inventory_button_class
 {
     public:
@@ -87,13 +89,15 @@ class inventory_class
         float                  height;
         float                  drag_offset_x;
         float                  drag_offset_y;
-        inventory_slot_class   inventory_slot[48];
+        inventory_slot_class   inventory_slot[MAX_INVENTORY_SLOTS];
         inventory_button_class close_button;
         inventory_class(void);
        ~inventory_class(void);
         void             process(void);
         void             draw(void);
 };
+
+void init_inventory(void);
 
 #endif // INVENTORY_H
 

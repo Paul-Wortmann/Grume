@@ -31,6 +31,7 @@ extern game_type game;
 
 item_class::item_class(void)
 {
+    item_class::name                    = "None";
     item_class::image_ref               = 0;
     item_class::item_ID                 = 100;
     item_class::defence                 = 0;
@@ -50,6 +51,8 @@ item_class::item_class(void)
     item_class::sub_mana_regeneration   = 0;
     item_class::add_crit_chance         = 0;
     item_class::sub_crit_chance         = 0;
+    item_class::add_spell               = 0;
+    item_class::usable                  = false;
 };
 
 item_class::~item_class(void)
@@ -57,9 +60,18 @@ item_class::~item_class(void)
 
 };
 
+void item_class::load(void)
+{
+
+};
+
 void init_items(void)
 {
+    game.item[1].name              = "Book of Chain Lightning";
     game.item[1].image_ref         = game.texture.book_00.ref_number;
+    game.item[1].item_ID           = 101;
+    game.item[1].add_spell         = 1;
+    game.item[1].usable            = true;
 };
 
 

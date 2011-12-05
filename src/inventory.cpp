@@ -24,6 +24,7 @@
 
 #include "inventory.hpp"
 #include "game.hpp"
+#include "items.hpp"
 
 extern game_type game;
 
@@ -128,7 +129,10 @@ void inventory_slot_class::process(void)
 
 void inventory_slot_class::draw(void)
 {
-    if (inventory_slot_class::button_type > 0) draw_texture(false,game.item[inventory_slot_class::button_type].image_ref,inventory_slot_class::pos_x,inventory_slot_class::pos_y,inventory_slot_class::pos_z,inventory_slot_class::width,inventory_slot_class::height);
+    if (inventory_slot_class::button_type > 0)
+    {
+        draw_texture(false,game.item[inventory_slot_class::button_type-101].image_ref,inventory_slot_class::pos_x,inventory_slot_class::pos_y,inventory_slot_class::pos_z,inventory_slot_class::width,inventory_slot_class::height);
+    }
 };
 
 void inventory_slot_class::draw_drag(void)
@@ -149,14 +153,155 @@ inventory_class::inventory_class(void)
     inventory_class::mouse_over    = false;
     inventory_class::drag_offset_x = 0.0f;
     inventory_class::drag_offset_y = 0.0f;
-/*
-    inventory_class::spell_slot_01.button_type  = 1;
-    inventory_class::spell_slot_01.pos_x        = inventory_class::pos_x - (inventory_class::width /2.980f);
-    inventory_class::spell_slot_01.pos_y        = inventory_class::pos_y + (inventory_class::height/3.72f);
-    inventory_class::spell_slot_01.pos_z        = inventory_class::pos_z;
-    inventory_class::spell_slot_01.width        = inventory_class::width / 8.2f;
-    inventory_class::spell_slot_01.height       = inventory_class::height/10.4f;
-*/
+
+    inventory_class::inventory_slot[ 1].button_type  = 0;
+    inventory_class::inventory_slot[ 1].pos_x        = inventory_class::pos_x - (inventory_class::width /2.82f);
+    inventory_class::inventory_slot[ 1].pos_y        = inventory_class::pos_y + (inventory_class::height/3.26f);
+    inventory_class::inventory_slot[ 1].pos_z        = inventory_class::pos_z;
+    inventory_class::inventory_slot[ 1].width        = inventory_class::width / 9.6f;
+    inventory_class::inventory_slot[ 1].height       = inventory_class::height/14.6f;
+    inventory_class::inventory_slot[ 2].button_type  = 0;
+    inventory_class::inventory_slot[ 2].pos_x        = inventory_class::pos_x - (inventory_class::width /4.72f);
+    inventory_class::inventory_slot[ 2].pos_y        = inventory_class::pos_y + (inventory_class::height/3.26f);
+    inventory_class::inventory_slot[ 2].pos_z        = inventory_class::pos_z;
+    inventory_class::inventory_slot[ 2].width        = inventory_class::width / 9.6f;
+    inventory_class::inventory_slot[ 2].height       = inventory_class::height/14.6f;
+    inventory_class::inventory_slot[ 3].button_type  = 0;
+    inventory_class::inventory_slot[ 3].pos_x        = inventory_class::pos_x - (inventory_class::width /14.62f);
+    inventory_class::inventory_slot[ 3].pos_y        = inventory_class::pos_y + (inventory_class::height/3.26f);
+    inventory_class::inventory_slot[ 3].pos_z        = inventory_class::pos_z;
+    inventory_class::inventory_slot[ 3].width        = inventory_class::width / 9.6f;
+    inventory_class::inventory_slot[ 3].height       = inventory_class::height/14.6f;
+    inventory_class::inventory_slot[ 4].button_type  = 0;
+    inventory_class::inventory_slot[ 4].pos_x        = inventory_class::pos_x + (inventory_class::width /14.02f);
+    inventory_class::inventory_slot[ 4].pos_y        = inventory_class::pos_y + (inventory_class::height/3.26f);
+    inventory_class::inventory_slot[ 4].pos_z        = inventory_class::pos_z;
+    inventory_class::inventory_slot[ 4].width        = inventory_class::width / 9.6f;
+    inventory_class::inventory_slot[ 4].height       = inventory_class::height/14.6f;
+    inventory_class::inventory_slot[ 5].button_type  = 0;
+    inventory_class::inventory_slot[ 5].pos_x        = inventory_class::pos_x + (inventory_class::width /4.64f);
+    inventory_class::inventory_slot[ 5].pos_y        = inventory_class::pos_y + (inventory_class::height/3.26f);
+    inventory_class::inventory_slot[ 5].pos_z        = inventory_class::pos_z;
+    inventory_class::inventory_slot[ 5].width        = inventory_class::width / 9.6f;
+    inventory_class::inventory_slot[ 5].height       = inventory_class::height/14.6f;
+    inventory_class::inventory_slot[ 6].button_type  = 0;
+    inventory_class::inventory_slot[ 6].pos_x        = inventory_class::pos_x + (inventory_class::width /2.80f);
+    inventory_class::inventory_slot[ 6].pos_y        = inventory_class::pos_y + (inventory_class::height/3.26f);
+    inventory_class::inventory_slot[ 6].pos_z        = inventory_class::pos_z;
+    inventory_class::inventory_slot[ 6].width        = inventory_class::width / 9.6f;
+    inventory_class::inventory_slot[ 6].height       = inventory_class::height/14.6f;
+
+    inventory_class::inventory_slot[ 7].button_type  = 0;
+    inventory_class::inventory_slot[ 7].pos_x        = inventory_class::pos_x - (inventory_class::width /2.82f);
+    inventory_class::inventory_slot[ 7].pos_y        = inventory_class::pos_y + (inventory_class::height/4.66f);
+    inventory_class::inventory_slot[ 7].pos_z        = inventory_class::pos_z;
+    inventory_class::inventory_slot[ 7].width        = inventory_class::width / 9.6f;
+    inventory_class::inventory_slot[ 7].height       = inventory_class::height/14.6f;
+    inventory_class::inventory_slot[ 8].button_type  = 0;
+    inventory_class::inventory_slot[ 8].pos_x        = inventory_class::pos_x - (inventory_class::width /4.72f);
+    inventory_class::inventory_slot[ 8].pos_y        = inventory_class::pos_y + (inventory_class::height/4.66f);
+    inventory_class::inventory_slot[ 8].pos_z        = inventory_class::pos_z;
+    inventory_class::inventory_slot[ 8].width        = inventory_class::width / 9.6f;
+    inventory_class::inventory_slot[ 8].height       = inventory_class::height/14.6f;
+    inventory_class::inventory_slot[ 9].button_type  = 0;
+    inventory_class::inventory_slot[ 9].pos_x        = inventory_class::pos_x - (inventory_class::width /14.62f);
+    inventory_class::inventory_slot[ 9].pos_y        = inventory_class::pos_y + (inventory_class::height/4.66f);
+    inventory_class::inventory_slot[ 9].pos_z        = inventory_class::pos_z;
+    inventory_class::inventory_slot[ 9].width        = inventory_class::width / 9.6f;
+    inventory_class::inventory_slot[ 9].height       = inventory_class::height/14.6f;
+    inventory_class::inventory_slot[10].button_type  = 0;
+    inventory_class::inventory_slot[10].pos_x        = inventory_class::pos_x + (inventory_class::width /14.02f);
+    inventory_class::inventory_slot[10].pos_y        = inventory_class::pos_y + (inventory_class::height/4.66f);
+    inventory_class::inventory_slot[10].pos_z        = inventory_class::pos_z;
+    inventory_class::inventory_slot[10].width        = inventory_class::width / 9.6f;
+    inventory_class::inventory_slot[10].height       = inventory_class::height/14.6f;
+    inventory_class::inventory_slot[11].button_type  = 0;
+    inventory_class::inventory_slot[11].pos_x        = inventory_class::pos_x + (inventory_class::width /4.64f);
+    inventory_class::inventory_slot[11].pos_y        = inventory_class::pos_y + (inventory_class::height/4.66f);
+    inventory_class::inventory_slot[11].pos_z        = inventory_class::pos_z;
+    inventory_class::inventory_slot[11].width        = inventory_class::width / 9.6f;
+    inventory_class::inventory_slot[11].height       = inventory_class::height/14.6f;
+    inventory_class::inventory_slot[12].button_type  = 0;
+    inventory_class::inventory_slot[12].pos_x        = inventory_class::pos_x + (inventory_class::width /2.80f);
+    inventory_class::inventory_slot[12].pos_y        = inventory_class::pos_y + (inventory_class::height/4.66f);
+    inventory_class::inventory_slot[12].pos_z        = inventory_class::pos_z;
+    inventory_class::inventory_slot[12].width        = inventory_class::width / 9.6f;
+    inventory_class::inventory_slot[12].height       = inventory_class::height/14.6f;
+
+    inventory_class::inventory_slot[13].button_type  = 0;
+    inventory_class::inventory_slot[13].pos_x        = inventory_class::pos_x - (inventory_class::width /2.82f);
+    inventory_class::inventory_slot[13].pos_y        = inventory_class::pos_y + (inventory_class::height/8.10f);
+    inventory_class::inventory_slot[13].pos_z        = inventory_class::pos_z;
+    inventory_class::inventory_slot[13].width        = inventory_class::width / 9.6f;
+    inventory_class::inventory_slot[13].height       = inventory_class::height/14.6f;
+    inventory_class::inventory_slot[14].button_type  = 0;
+    inventory_class::inventory_slot[14].pos_x        = inventory_class::pos_x - (inventory_class::width /4.72f);
+    inventory_class::inventory_slot[14].pos_y        = inventory_class::pos_y + (inventory_class::height/8.10f);
+    inventory_class::inventory_slot[14].pos_z        = inventory_class::pos_z;
+    inventory_class::inventory_slot[14].width        = inventory_class::width / 9.6f;
+    inventory_class::inventory_slot[14].height       = inventory_class::height/14.6f;
+    inventory_class::inventory_slot[15].button_type  = 0;
+    inventory_class::inventory_slot[15].pos_x        = inventory_class::pos_x - (inventory_class::width /14.62f);
+    inventory_class::inventory_slot[15].pos_y        = inventory_class::pos_y + (inventory_class::height/8.10f);
+    inventory_class::inventory_slot[15].pos_z        = inventory_class::pos_z;
+    inventory_class::inventory_slot[15].width        = inventory_class::width / 9.6f;
+    inventory_class::inventory_slot[15].height       = inventory_class::height/14.6f;
+    inventory_class::inventory_slot[16].button_type  = 0;
+    inventory_class::inventory_slot[16].pos_x        = inventory_class::pos_x + (inventory_class::width /14.02f);
+    inventory_class::inventory_slot[16].pos_y        = inventory_class::pos_y + (inventory_class::height/8.10f);
+    inventory_class::inventory_slot[16].pos_z        = inventory_class::pos_z;
+    inventory_class::inventory_slot[16].width        = inventory_class::width / 9.6f;
+    inventory_class::inventory_slot[16].height       = inventory_class::height/14.6f;
+    inventory_class::inventory_slot[17].button_type  = 0;
+    inventory_class::inventory_slot[17].pos_x        = inventory_class::pos_x + (inventory_class::width /4.64f);
+    inventory_class::inventory_slot[17].pos_y        = inventory_class::pos_y + (inventory_class::height/8.10f);
+    inventory_class::inventory_slot[17].pos_z        = inventory_class::pos_z;
+    inventory_class::inventory_slot[17].width        = inventory_class::width / 9.6f;
+    inventory_class::inventory_slot[17].height       = inventory_class::height/14.6f;
+    inventory_class::inventory_slot[18].button_type  = 0;
+    inventory_class::inventory_slot[18].pos_x        = inventory_class::pos_x + (inventory_class::width /2.80f);
+    inventory_class::inventory_slot[18].pos_y        = inventory_class::pos_y + (inventory_class::height/8.10f);
+    inventory_class::inventory_slot[18].pos_z        = inventory_class::pos_z;
+    inventory_class::inventory_slot[18].width        = inventory_class::width / 9.6f;
+    inventory_class::inventory_slot[18].height       = inventory_class::height/14.6f;
+
+    inventory_class::inventory_slot[19].button_type  = 0;
+    inventory_class::inventory_slot[19].pos_x        = inventory_class::pos_x - (inventory_class::width /2.82f);
+    inventory_class::inventory_slot[19].pos_y        = inventory_class::pos_y + (inventory_class::height/32.10f);
+    inventory_class::inventory_slot[19].pos_z        = inventory_class::pos_z;
+    inventory_class::inventory_slot[19].width        = inventory_class::width / 9.6f;
+    inventory_class::inventory_slot[19].height       = inventory_class::height/14.6f;
+    inventory_class::inventory_slot[20].button_type  = 0;
+    inventory_class::inventory_slot[20].pos_x        = inventory_class::pos_x - (inventory_class::width /4.72f);
+    inventory_class::inventory_slot[20].pos_y        = inventory_class::pos_y + (inventory_class::height/32.10f);
+    inventory_class::inventory_slot[20].pos_z        = inventory_class::pos_z;
+    inventory_class::inventory_slot[20].width        = inventory_class::width / 9.6f;
+    inventory_class::inventory_slot[20].height       = inventory_class::height/14.6f;
+    inventory_class::inventory_slot[21].button_type  = 0;
+    inventory_class::inventory_slot[21].pos_x        = inventory_class::pos_x - (inventory_class::width /14.62f);
+    inventory_class::inventory_slot[21].pos_y        = inventory_class::pos_y + (inventory_class::height/32.10f);
+    inventory_class::inventory_slot[21].pos_z        = inventory_class::pos_z;
+    inventory_class::inventory_slot[21].width        = inventory_class::width / 9.6f;
+    inventory_class::inventory_slot[21].height       = inventory_class::height/14.6f;
+    inventory_class::inventory_slot[22].button_type  = 0;
+    inventory_class::inventory_slot[22].pos_x        = inventory_class::pos_x + (inventory_class::width /14.02f);
+    inventory_class::inventory_slot[22].pos_y        = inventory_class::pos_y + (inventory_class::height/32.10f);
+    inventory_class::inventory_slot[22].pos_z        = inventory_class::pos_z;
+    inventory_class::inventory_slot[22].width        = inventory_class::width / 9.6f;
+    inventory_class::inventory_slot[22].height       = inventory_class::height/14.6f;
+    inventory_class::inventory_slot[23].button_type  = 0;
+    inventory_class::inventory_slot[23].pos_x        = inventory_class::pos_x + (inventory_class::width /4.64f);
+    inventory_class::inventory_slot[23].pos_y        = inventory_class::pos_y + (inventory_class::height/32.10f);
+    inventory_class::inventory_slot[23].pos_z        = inventory_class::pos_z;
+    inventory_class::inventory_slot[23].width        = inventory_class::width / 9.6f;
+    inventory_class::inventory_slot[23].height       = inventory_class::height/14.6f;
+    inventory_class::inventory_slot[24].button_type  = 0;
+    inventory_class::inventory_slot[24].pos_x        = inventory_class::pos_x + (inventory_class::width /2.80f);
+    inventory_class::inventory_slot[24].pos_y        = inventory_class::pos_y + (inventory_class::height/32.10f);
+    inventory_class::inventory_slot[24].pos_z        = inventory_class::pos_z;
+    inventory_class::inventory_slot[24].width        = inventory_class::width / 9.6f;
+    inventory_class::inventory_slot[24].height       = inventory_class::height/14.6f;
+
     inventory_class::close_button.image_normal       = game.texture.close_button.ref_number;
     inventory_class::close_button.image_highlighted  = game.texture.close_button_highlighted.ref_number;
     inventory_class::close_button.mouse_over         = false;
@@ -216,10 +361,43 @@ void inventory_class::process(void)
 
 void inventory_class::draw(void)
 {
-    game.texture.inventory.draw(false,inventory_class::pos_x,inventory_class::pos_y,inventory_class::pos_z,inventory_class::width,inventory_class::height);
+    game.texture.inventory_background.draw(false,inventory_class::pos_x,inventory_class::pos_y,inventory_class::pos_z,inventory_class::width,inventory_class::height);
     inventory_class::close_button.draw();
     game.font.font_1.Write(255,255,255,255,inventory_class::pos_x - (inventory_class::width /10.0f),inventory_class::pos_y + (inventory_class::height/2.30f),4.8f,32.0f,game.language.text.inventory);
+    for (int inventory_slot_count = 1; inventory_slot_count < MAX_INVENTORY_SLOTS; inventory_slot_count++)
+    {
+        if(inventory_class::inventory_slot[inventory_slot_count].button_type > 0) inventory_class::inventory_slot[inventory_slot_count].draw();
+    }
 };
+
+void init_inventory(void)
+{
+    game.UI.inventory.inventory_slot[ 1].button_type  = game.item[1].item_ID;
+    game.UI.inventory.inventory_slot[ 2].button_type  = game.item[1].item_ID;
+    game.UI.inventory.inventory_slot[ 3].button_type  = game.item[1].item_ID;
+    game.UI.inventory.inventory_slot[ 4].button_type  = game.item[1].item_ID;
+    game.UI.inventory.inventory_slot[ 5].button_type  = game.item[1].item_ID;
+    game.UI.inventory.inventory_slot[ 6].button_type  = game.item[1].item_ID;
+    game.UI.inventory.inventory_slot[ 7].button_type  = game.item[1].item_ID;
+    game.UI.inventory.inventory_slot[ 8].button_type  = game.item[1].item_ID;
+    game.UI.inventory.inventory_slot[ 9].button_type  = game.item[1].item_ID;
+    game.UI.inventory.inventory_slot[10].button_type  = game.item[1].item_ID;
+    game.UI.inventory.inventory_slot[11].button_type  = game.item[1].item_ID;
+    game.UI.inventory.inventory_slot[12].button_type  = game.item[1].item_ID;
+    game.UI.inventory.inventory_slot[13].button_type  = game.item[1].item_ID;
+    game.UI.inventory.inventory_slot[14].button_type  = game.item[1].item_ID;
+    game.UI.inventory.inventory_slot[15].button_type  = game.item[1].item_ID;
+    game.UI.inventory.inventory_slot[16].button_type  = game.item[1].item_ID;
+    game.UI.inventory.inventory_slot[17].button_type  = game.item[1].item_ID;
+    game.UI.inventory.inventory_slot[18].button_type  = game.item[1].item_ID;
+    game.UI.inventory.inventory_slot[19].button_type  = game.item[1].item_ID;
+    game.UI.inventory.inventory_slot[20].button_type  = game.item[1].item_ID;
+    game.UI.inventory.inventory_slot[21].button_type  = game.item[1].item_ID;
+    game.UI.inventory.inventory_slot[22].button_type  = game.item[1].item_ID;
+    game.UI.inventory.inventory_slot[23].button_type  = game.item[1].item_ID;
+    game.UI.inventory.inventory_slot[24].button_type  = game.item[1].item_ID;
+};
+
 
 
 
