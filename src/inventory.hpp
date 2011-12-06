@@ -25,7 +25,7 @@
 #ifndef INVENTORY_H
 #define INVENTORY_H
 
-const int MAX_INVENTORY_SLOTS = 48;
+const int MAX_INVENTORY_SLOTS = 50;
 
 class inventory_button_class
 {
