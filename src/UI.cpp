@@ -245,10 +245,11 @@ void action_slot_class::draw(void)
         break;
         case 2:
             draw_texture(false,game.spell[action_slot_class::button_type].image_level_2,action_slot_class::pos_x,action_slot_class::pos_y,action_slot_class::pos_z,action_slot_class::width,action_slot_class::height);
-            if (action_slot_class::drag) draw_texture(false,game.spell[action_slot_class::button_type].image_level_1,action_slot_class::base_pos_x,action_slot_class::base_pos_y,action_slot_class::pos_z,action_slot_class::width,action_slot_class::height);
+            if (action_slot_class::drag) draw_texture(false,game.spell[action_slot_class::button_type].image_level_2,action_slot_class::base_pos_x,action_slot_class::base_pos_y,action_slot_class::pos_z,action_slot_class::width,action_slot_class::height);
         break;
         case 3:
-            if (action_slot_class::drag) draw_texture(false,game.spell[action_slot_class::button_type].image_level_1,action_slot_class::base_pos_x,action_slot_class::base_pos_y,action_slot_class::pos_z,action_slot_class::width,action_slot_class::height);
+            draw_texture(false,game.spell[action_slot_class::button_type].image_level_3,action_slot_class::pos_x,action_slot_class::pos_y,action_slot_class::pos_z,action_slot_class::width,action_slot_class::height);
+            if (action_slot_class::drag) draw_texture(false,game.spell[action_slot_class::button_type].image_level_3,action_slot_class::base_pos_x,action_slot_class::base_pos_y,action_slot_class::pos_z,action_slot_class::width,action_slot_class::height);
         break;
         default:
         break;

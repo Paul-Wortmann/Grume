@@ -93,10 +93,10 @@ inventory_slot_class::~inventory_slot_class(void)
 
 void inventory_slot_class::process(void)
 {
-    if ((!game.UI.drag_in_progress) && (game.core.physics.point_in_quadrangle(inventory_slot_class::pos_x,inventory_slot_class::width,inventory_slot_class::pos_y,inventory_slot_class::height,game.core.io.mouse_x,game.core.io.mouse_y))) inventory_slot_class::mouse_over = true;
-    else inventory_slot_class::mouse_over = false;
     if (inventory_slot_class::button_type > 0)
     {
+        if ((!game.UI.drag_in_progress) && (game.core.physics.point_in_quadrangle(inventory_slot_class::pos_x,inventory_slot_class::width,inventory_slot_class::pos_y,inventory_slot_class::height,game.core.io.mouse_x,game.core.io.mouse_y))) inventory_slot_class::mouse_over = true;
+        else inventory_slot_class::mouse_over = false;
         if (inventory_slot_class::drag)
         {
             if (game.core.io.mouse_button_left)
@@ -116,12 +116,40 @@ void inventory_slot_class::process(void)
         {
             if ((!game.UI.drag_in_progress) && (inventory_slot_class::mouse_over) && (game.core.io.mouse_button_left))//drag
             {
+                game.UI.active_window_list.add_to_list(INVENTORY_WINDOW);
                 inventory_slot_class::drag          = true;
                 game.UI.drag_in_progress            = true;
                 inventory_slot_class::base_pos_x    = inventory_slot_class::pos_x;
                 inventory_slot_class::base_pos_y    = inventory_slot_class::pos_y;
                 inventory_slot_class::drag_offset_x = inventory_slot_class::pos_x - game.core.io.mouse_x;
                 inventory_slot_class::drag_offset_y = inventory_slot_class::pos_y - game.core.io.mouse_y;
+            }
+        }
+        if ((inventory_slot_class::mouse_over) && (game.core.io.mouse_button_right))//use item
+        {
+            int temp_ID = inventory_slot_class::button_type-100;
+            switch (game.item[temp_ID].type)
+            {
+                case HEALTH_POTION:
+                    game.item[temp_ID].stack_number--;
+                    if(game.item[temp_ID].stack_number <= 0)inventory_slot_class::button_type = 0;
+                break;
+                case MANA_POTION:
+                    game.item[temp_ID].stack_number--;
+                    if(game.item[temp_ID].stack_number <= 0)inventory_slot_class::button_type = 0;
+                break;
+                case SPELL_BOOK:
+                    if (game.spell[game.item[temp_ID].spell_type].level < 3) game.item[temp_ID].stack_number--;
+                    if(game.item[temp_ID].stack_number <= 0)inventory_slot_class::button_type = 0;
+                    game.spell[game.item[temp_ID].spell_type].level++;
+                    if (game.spell[game.item[temp_ID].spell_type].level > 3) game.spell[game.item[temp_ID].spell_type].level = 3;
+                break;
+                case SPELL_SCROLL:
+                    game.item[temp_ID].stack_number--;
+                    if(game.item[temp_ID].stack_number <= 0)inventory_slot_class::button_type = 0;
+                break;
+                default:
+                break;
             }
         }
     }
@@ -131,7 +159,7 @@ void inventory_slot_class::draw(void)
 {
     if (inventory_slot_class::button_type > 0)
     {
-        draw_texture(false,game.item[inventory_slot_class::button_type-101].image_ref,inventory_slot_class::pos_x,inventory_slot_class::pos_y,inventory_slot_class::pos_z,inventory_slot_class::width,inventory_slot_class::height);
+        draw_texture(false,game.item[inventory_slot_class::button_type-100].image_ref,inventory_slot_class::pos_x,inventory_slot_class::pos_y,inventory_slot_class::pos_z,inventory_slot_class::width,inventory_slot_class::height);
     }
 };
 
@@ -469,6 +497,10 @@ inventory_class::~inventory_class(void)
 void inventory_class::process(void)
 {
     inventory_class::close_button.process();
+    for (int inventory_slot_count = 1; inventory_slot_count < MAX_INVENTORY_SLOTS; inventory_slot_count++)
+    {
+        inventory_class::inventory_slot[inventory_slot_count].process();
+    }
     if ((!game.UI.drag_in_progress) && (game.core.physics.point_in_quadrangle(inventory_class::pos_x,inventory_class::width,inventory_class::pos_y+(inventory_class::height/2.2f),inventory_class::height/8.8f,game.core.io.mouse_x,game.core.io.mouse_y))) inventory_class::mouse_over = true;
     else inventory_class::mouse_over = false;
     if (inventory_class::drag)
@@ -616,54 +648,8 @@ void inventory_class::draw(void)
 
 void init_inventory(void)
 {
-    game.UI.inventory.inventory_slot[ 1].button_type  = game.item[1].item_ID;
-    game.UI.inventory.inventory_slot[ 2].button_type  = game.item[1].item_ID;
-    game.UI.inventory.inventory_slot[ 3].button_type  = game.item[1].item_ID;
-    game.UI.inventory.inventory_slot[ 4].button_type  = game.item[1].item_ID;
-    game.UI.inventory.inventory_slot[ 5].button_type  = game.item[1].item_ID;
-    game.UI.inventory.inventory_slot[ 6].button_type  = game.item[1].item_ID;
-    game.UI.inventory.inventory_slot[ 7].button_type  = game.item[1].item_ID;
-    game.UI.inventory.inventory_slot[ 8].button_type  = game.item[1].item_ID;
-    game.UI.inventory.inventory_slot[ 9].button_type  = game.item[1].item_ID;
-    game.UI.inventory.inventory_slot[10].button_type  = game.item[1].item_ID;
-    game.UI.inventory.inventory_slot[11].button_type  = game.item[1].item_ID;
-    game.UI.inventory.inventory_slot[12].button_type  = game.item[1].item_ID;
-    game.UI.inventory.inventory_slot[13].button_type  = game.item[1].item_ID;
-    game.UI.inventory.inventory_slot[14].button_type  = game.item[1].item_ID;
-    game.UI.inventory.inventory_slot[15].button_type  = game.item[1].item_ID;
-    game.UI.inventory.inventory_slot[16].button_type  = game.item[1].item_ID;
-    game.UI.inventory.inventory_slot[17].button_type  = game.item[1].item_ID;
-    game.UI.inventory.inventory_slot[18].button_type  = game.item[1].item_ID;
-    game.UI.inventory.inventory_slot[19].button_type  = game.item[1].item_ID;
-    game.UI.inventory.inventory_slot[20].button_type  = game.item[1].item_ID;
-    game.UI.inventory.inventory_slot[21].button_type  = game.item[1].item_ID;
-    game.UI.inventory.inventory_slot[22].button_type  = game.item[1].item_ID;
-    game.UI.inventory.inventory_slot[23].button_type  = game.item[1].item_ID;
-    game.UI.inventory.inventory_slot[24].button_type  = game.item[1].item_ID;
-    game.UI.inventory.inventory_slot[25].button_type  = game.item[1].item_ID;
-    game.UI.inventory.inventory_slot[26].button_type  = game.item[1].item_ID;
-    game.UI.inventory.inventory_slot[27].button_type  = game.item[1].item_ID;
-    game.UI.inventory.inventory_slot[28].button_type  = game.item[1].item_ID;
-    game.UI.inventory.inventory_slot[29].button_type  = game.item[1].item_ID;
-    game.UI.inventory.inventory_slot[30].button_type  = game.item[1].item_ID;
-    game.UI.inventory.inventory_slot[31].button_type  = game.item[1].item_ID;
-    game.UI.inventory.inventory_slot[32].button_type  = game.item[1].item_ID;
-    game.UI.inventory.inventory_slot[33].button_type  = game.item[1].item_ID;
-    game.UI.inventory.inventory_slot[34].button_type  = game.item[1].item_ID;
-    game.UI.inventory.inventory_slot[35].button_type  = game.item[1].item_ID;
-    game.UI.inventory.inventory_slot[36].button_type  = game.item[1].item_ID;
-    game.UI.inventory.inventory_slot[37].button_type  = game.item[1].item_ID;
-    game.UI.inventory.inventory_slot[38].button_type  = game.item[1].item_ID;
-    game.UI.inventory.inventory_slot[39].button_type  = game.item[1].item_ID;
-    game.UI.inventory.inventory_slot[40].button_type  = game.item[1].item_ID;
-    game.UI.inventory.inventory_slot[41].button_type  = game.item[1].item_ID;
-    game.UI.inventory.inventory_slot[42].button_type  = game.item[1].item_ID;
-    game.UI.inventory.inventory_slot[43].button_type  = game.item[1].item_ID;
-    game.UI.inventory.inventory_slot[44].button_type  = game.item[1].item_ID;
-    game.UI.inventory.inventory_slot[45].button_type  = game.item[1].item_ID;
-    game.UI.inventory.inventory_slot[46].button_type  = game.item[1].item_ID;
-    game.UI.inventory.inventory_slot[47].button_type  = game.item[1].item_ID;
-    game.UI.inventory.inventory_slot[48].button_type  = game.item[1].item_ID;
+    game.UI.inventory.inventory_slot[ 1].button_type  = game.item[1].ID;
+
 };
 
 

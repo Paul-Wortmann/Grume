@@ -31,6 +31,20 @@
 #include <stdlib.h>
 #include <string>
 
+#define HEALTH_POTION 1
+#define MANA_POTION   2
+#define SPELL_BOOK    3
+#define SPELL_SCROLL  4
+#define HELM          5
+#define BOOTS         6
+#define ARMOUR        7
+#define GLOVES        8
+#define RING          9
+#define AMULET        10
+#define SHIELD        11
+#define WAND          12
+#define SWORD         13
+
 const int MAX_ITEMS = 128;
 
 class item_class
@@ -38,7 +52,11 @@ class item_class
     public:
         std::string name;
         int         image_ref;
-        int         item_ID;
+        int         sound_ref;
+        int         ID;
+        int         type;
+        int         stack_number;
+        int         max_stack_number;
         int         defence;
         int         min_dammage;
         int         max_dammage;
@@ -57,6 +75,7 @@ class item_class
         int         add_crit_chance;
         int         sub_crit_chance;
         int         add_spell;
+        int         spell_type;
         bool        usable;
         void load(void);
         item_class(void);

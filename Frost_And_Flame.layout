@@ -2,7 +2,7 @@
 <CodeBlocks_layout_file>
 	<ActiveTarget name="Windows" />
 	<File name="src\UI.cpp" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="20349" topLine="388" />
+		<Cursor1 position="13771" topLine="233" />
 	</File>
 	<File name="src\UI.hpp" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor1 position="1026" topLine="133" />
@@ -122,7 +122,7 @@
 		<Cursor1 position="1379" topLine="33" />
 	</File>
 	<File name="src\inventory.cpp" open="1" top="1" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="24451" topLine="342" />
+		<Cursor1 position="6000" topLine="357" />
 	</File>
 	<File name="src\inventory.hpp" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor1 position="1023" topLine="0" />
@@ -188,13 +188,13 @@
 		<Cursor1 position="943" topLine="0" />
 	</File>
 	<File name="src\spell_book.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="28299" topLine="385" />
+		<Cursor1 position="6191" topLine="125" />
 	</File>
 	<File name="src\spell_book.hpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor1 position="2884" topLine="62" />
 	</File>
 	<File name="src\spells.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="15939" topLine="280" />
+		<Cursor1 position="2031" topLine="55" />
 	</File>
 	<File name="src\spells.hpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor1 position="1011" topLine="20" />

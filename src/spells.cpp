@@ -57,7 +57,7 @@ spell_class::~spell_class(void)
 void init_spells(void)
 {
     //Frost shards
-    game.spell[1].level                  = 1;
+    game.spell[1].level                  = 0;
     game.spell[1].image_level_1          = game.texture.spell_01_level_01.ref_number;
     game.spell[1].image_level_2          = game.texture.spell_01_level_02.ref_number;
     game.spell[1].image_level_3          = game.texture.spell_01_level_03.ref_number;
@@ -74,7 +74,7 @@ void init_spells(void)
     game.spell[1].cooldown_level_2       = 0.0f;
     game.spell[1].cooldown_level_3       = 0.0f;
     //Frost shards
-    game.spell[2].level                  = 1;
+    game.spell[2].level                  = 0;
     game.spell[2].image_level_1          = game.texture.spell_02_level_01.ref_number;
     game.spell[2].image_level_2          = game.texture.spell_02_level_02.ref_number;
     game.spell[2].image_level_3          = game.texture.spell_02_level_03.ref_number;
@@ -91,7 +91,7 @@ void init_spells(void)
     game.spell[2].cooldown_level_2       = 0.0f;
     game.spell[2].cooldown_level_3       = 0.0f;
     //Frost shards
-    game.spell[3].level                  = 1;
+    game.spell[3].level                  = 0;
     game.spell[3].image_level_1          = game.texture.spell_03_level_01.ref_number;
     game.spell[3].image_level_2          = game.texture.spell_03_level_02.ref_number;
     game.spell[3].image_level_3          = game.texture.spell_03_level_03.ref_number;
@@ -108,7 +108,7 @@ void init_spells(void)
     game.spell[3].cooldown_level_2       = 0.0f;
     game.spell[3].cooldown_level_3       = 0.0f;
     //Frost shards
-    game.spell[4].level                  = 1;
+    game.spell[4].level                  = 0;
     game.spell[4].image_level_1          = game.texture.spell_04_level_01.ref_number;
     game.spell[4].image_level_2          = game.texture.spell_04_level_02.ref_number;
     game.spell[4].image_level_3          = game.texture.spell_04_level_03.ref_number;
@@ -125,7 +125,7 @@ void init_spells(void)
     game.spell[4].cooldown_level_2       = 0.0f;
     game.spell[4].cooldown_level_3       = 0.0f;
     //Frost shards
-    game.spell[5].level                  = 1;
+    game.spell[5].level                  = 0;
     game.spell[5].image_level_1          = game.texture.spell_05_level_01.ref_number;
     game.spell[5].image_level_2          = game.texture.spell_05_level_02.ref_number;
     game.spell[5].image_level_3          = game.texture.spell_05_level_03.ref_number;
@@ -142,7 +142,7 @@ void init_spells(void)
     game.spell[5].cooldown_level_2       = 0.0f;
     game.spell[5].cooldown_level_3       = 0.0f;
     //Frost shards
-    game.spell[6].level                  = 1;
+    game.spell[6].level                  = 0;
     game.spell[6].image_level_1          = game.texture.spell_06_level_01.ref_number;
     game.spell[6].image_level_2          = game.texture.spell_06_level_02.ref_number;
     game.spell[6].image_level_3          = game.texture.spell_06_level_03.ref_number;
@@ -159,7 +159,7 @@ void init_spells(void)
     game.spell[6].cooldown_level_2       = 0.0f;
     game.spell[6].cooldown_level_3       = 0.0f;
     //Frost shards
-    game.spell[7].level                  = 1;
+    game.spell[7].level                  = 0;
     game.spell[7].image_level_1          = game.texture.spell_07_level_01.ref_number;
     game.spell[7].image_level_2          = game.texture.spell_07_level_02.ref_number;
     game.spell[7].image_level_3          = game.texture.spell_07_level_03.ref_number;
@@ -176,7 +176,7 @@ void init_spells(void)
     game.spell[7].cooldown_level_2       = 0.0f;
     game.spell[7].cooldown_level_3       = 0.0f;
     //Frost shards
-    game.spell[8].level                  = 1;
+    game.spell[8].level                  = 0;
     game.spell[8].image_level_1          = game.texture.spell_08_level_01.ref_number;
     game.spell[8].image_level_2          = game.texture.spell_08_level_02.ref_number;
     game.spell[8].image_level_3          = game.texture.spell_08_level_03.ref_number;
@@ -193,7 +193,7 @@ void init_spells(void)
     game.spell[8].cooldown_level_2       = 0.0f;
     game.spell[8].cooldown_level_3       = 0.0f;
     //Frost shards
-    game.spell[9].level                  = 1;
+    game.spell[9].level                  = 0;
     game.spell[9].image_level_1          = game.texture.spell_09_level_01.ref_number;
     game.spell[9].image_level_2          = game.texture.spell_09_level_02.ref_number;
     game.spell[9].image_level_3          = game.texture.spell_09_level_03.ref_number;
@@ -210,7 +210,7 @@ void init_spells(void)
     game.spell[9].cooldown_level_2       = 0.0f;
     game.spell[9].cooldown_level_3       = 0.0f;
     //Frost shards
-    game.spell[10].level                  = 1;
+    game.spell[10].level                  = 0;
     game.spell[10].image_level_1          = game.texture.spell_10_level_01.ref_number;
     game.spell[10].image_level_2          = game.texture.spell_10_level_02.ref_number;
     game.spell[10].image_level_3          = game.texture.spell_10_level_03.ref_number;
@@ -227,7 +227,7 @@ void init_spells(void)
     game.spell[10].cooldown_level_2       = 0.0f;
     game.spell[10].cooldown_level_3       = 0.0f;
     //Frost shards
-    game.spell[11].level                  = 1;
+    game.spell[11].level                  = 0;
     game.spell[11].image_level_1          = game.texture.spell_11_level_01.ref_number;
     game.spell[11].image_level_2          = game.texture.spell_11_level_02.ref_number;
     game.spell[11].image_level_3          = game.texture.spell_11_level_03.ref_number;
@@ -244,7 +244,7 @@ void init_spells(void)
     game.spell[11].cooldown_level_2       = 0.0f;
     game.spell[11].cooldown_level_3       = 0.0f;
     //Frost shards
-    game.spell[12].level                  = 1;
+    game.spell[12].level                  = 0;
     game.spell[12].image_level_1          = game.texture.spell_12_level_01.ref_number;
     game.spell[12].image_level_2          = game.texture.spell_12_level_02.ref_number;
     game.spell[12].image_level_3          = game.texture.spell_12_level_03.ref_number;
@@ -261,7 +261,7 @@ void init_spells(void)
     game.spell[12].cooldown_level_2       = 0.0f;
     game.spell[12].cooldown_level_3       = 0.0f;
     //Frost shards
-    game.spell[13].level                  = 1;
+    game.spell[13].level                  = 0;
     game.spell[13].image_level_1          = game.texture.spell_13_level_01.ref_number;
     game.spell[13].image_level_2          = game.texture.spell_13_level_02.ref_number;
     game.spell[13].image_level_3          = game.texture.spell_13_level_03.ref_number;
@@ -278,7 +278,7 @@ void init_spells(void)
     game.spell[13].cooldown_level_2       = 0.0f;
     game.spell[13].cooldown_level_3       = 0.0f;
     //Frost shards
-    game.spell[14].level                  = 1;
+    game.spell[14].level                  = 0;
     game.spell[14].image_level_1          = game.texture.spell_14_level_01.ref_number;
     game.spell[14].image_level_2          = game.texture.spell_14_level_02.ref_number;
     game.spell[14].image_level_3          = game.texture.spell_14_level_03.ref_number;
@@ -295,7 +295,7 @@ void init_spells(void)
     game.spell[14].cooldown_level_2       = 0.0f;
     game.spell[14].cooldown_level_3       = 0.0f;
     //Frost shards
-    game.spell[15].level                  = 1;
+    game.spell[15].level                  = 0;
     game.spell[15].image_level_1          = game.texture.spell_15_level_01.ref_number;
     game.spell[15].image_level_2          = game.texture.spell_15_level_02.ref_number;
     game.spell[15].image_level_3          = game.texture.spell_15_level_03.ref_number;
