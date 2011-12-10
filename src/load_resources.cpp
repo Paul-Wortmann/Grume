@@ -121,6 +121,10 @@ bool load_textures(void)
     game.texture.character_background.load_image    ("data/textures/UI/character/character_background.png"    ,texture_count);texture_count++;
     game.texture.quest_log_background.load_image    ("data/textures/UI/quest_log/quest_log_background.png"    ,texture_count);texture_count++;
     game.texture.equipment_background.load_image    ("data/textures/UI/equipment/equipment_background.png"    ,texture_count);texture_count++;
+    game.texture.equipment_slot_32x32.load_image    ("data/textures/UI/equipment/equipment_slot_32x32.png"    ,texture_count);texture_count++;
+    game.texture.equipment_slot_64x32.load_image    ("data/textures/UI/equipment/equipment_slot_64x32.png"    ,texture_count);texture_count++;
+    game.texture.equipment_slot_64x64.load_image    ("data/textures/UI/equipment/equipment_slot_64x64.png"    ,texture_count);texture_count++;
+    game.texture.equipment_slot_64x96.load_image    ("data/textures/UI/equipment/equipment_slot_64x96.png"    ,texture_count);texture_count++;
 
     game.texture.particle_000.load_image("data/textures/particles/particle_000.png",texture_count);texture_count++;
     game.texture.particle_001.load_image("data/textures/particles/particle_001.png",texture_count);texture_count++;
@@ -452,6 +456,10 @@ bool draw_texture(bool r, int texture_number, float x, float y, float z, float w
     if (texture_number == game.texture.character_background.ref_number)      game.texture.character_background.draw     (r,x,y,z,w,h,angle,frame);
     if (texture_number == game.texture.quest_log_background.ref_number)      game.texture.quest_log_background.draw     (r,x,y,z,w,h,angle,frame);
     if (texture_number == game.texture.equipment_background.ref_number)      game.texture.equipment_background.draw     (r,x,y,z,w,h,angle,frame);
+    if (texture_number == game.texture.equipment_slot_32x32.ref_number)      game.texture.equipment_slot_32x32.draw     (r,x,y,z,w,h,angle,frame);
+    if (texture_number == game.texture.equipment_slot_64x32.ref_number)      game.texture.equipment_slot_64x32.draw     (r,x,y,z,w,h,angle,frame);
+    if (texture_number == game.texture.equipment_slot_64x64.ref_number)      game.texture.equipment_slot_64x64.draw     (r,x,y,z,w,h,angle,frame);
+    if (texture_number == game.texture.equipment_slot_64x96.ref_number)      game.texture.equipment_slot_64x96.draw     (r,x,y,z,w,h,angle,frame);
 
     if (texture_number == game.texture.particle_000.ref_number) game.texture.particle_000.draw(r,x,y,z,w,h,angle,frame);
     if (texture_number == game.texture.particle_001.ref_number) game.texture.particle_001.draw(r,x,y,z,w,h,angle,frame);

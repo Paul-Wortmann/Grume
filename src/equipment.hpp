@@ -25,6 +25,8 @@
 #ifndef EQUIPMENT_H
 #define EQUIPMENT_H
 
+const int MAX_EQUIPMENT_SLOTS = 16;
+
 class equipment_button_class
 {
     public:
@@ -47,6 +49,7 @@ class equipment_button_class
 class equipment_slot_class
 {
     public:
+        int         slot_size;
         int         click_delay;
         int         click_delay_count;
         bool        highlighted;
@@ -76,15 +79,16 @@ class equipment_slot_class
 class equipment_class
 {
     public:
-        bool             mouse_over;
-        bool             drag;
-        float            pos_x;
-        float            pos_y;
-        float            pos_z;
-        float            width;
-        float            height;
-        float            drag_offset_x;
-        float            drag_offset_y;
+        bool                   mouse_over;
+        bool                   drag;
+        float                  pos_x;
+        float                  pos_y;
+        float                  pos_z;
+        float                  width;
+        float                  height;
+        float                  drag_offset_x;
+        float                  drag_offset_y;
+        equipment_slot_class   equipment_slot[MAX_EQUIPMENT_SLOTS];
         equipment_button_class close_button;
         equipment_class(void);
        ~equipment_class(void);

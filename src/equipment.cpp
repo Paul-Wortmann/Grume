@@ -128,7 +128,14 @@ void equipment_slot_class::process(void)
 
 void equipment_slot_class::draw(void)
 {
-
+    if (equipment_slot_class::slot_size == 1) game.texture.equipment_slot_32x32.draw(false,equipment_slot_class::pos_x,equipment_slot_class::pos_y,equipment_slot_class::pos_z,equipment_slot_class::width,equipment_slot_class::height);
+    if (equipment_slot_class::slot_size == 2) game.texture.equipment_slot_64x32.draw(false,equipment_slot_class::pos_x,equipment_slot_class::pos_y,equipment_slot_class::pos_z,equipment_slot_class::width,equipment_slot_class::height);
+    if (equipment_slot_class::slot_size == 3) game.texture.equipment_slot_64x64.draw(false,equipment_slot_class::pos_x,equipment_slot_class::pos_y,equipment_slot_class::pos_z,equipment_slot_class::width,equipment_slot_class::height);
+    if (equipment_slot_class::slot_size == 4) game.texture.equipment_slot_64x96.draw(false,equipment_slot_class::pos_x,equipment_slot_class::pos_y,equipment_slot_class::pos_z,equipment_slot_class::width,equipment_slot_class::height);
+    if (equipment_slot_class::button_type > 0)
+    {
+        draw_texture(false,game.item[equipment_slot_class::button_type-100].image_ref,equipment_slot_class::pos_x,equipment_slot_class::pos_y,equipment_slot_class::pos_z,equipment_slot_class::width,equipment_slot_class::height);
+    }
 };
 
 void equipment_slot_class::draw_drag(void)
@@ -149,14 +156,81 @@ equipment_class::equipment_class(void)
     equipment_class::mouse_over    = false;
     equipment_class::drag_offset_x = 0.0f;
     equipment_class::drag_offset_y = 0.0f;
-/*
-    equipment_class::spell_slot_01.button_type  = 1;
-    equipment_class::spell_slot_01.pos_x        = equipment_class::pos_x - (equipment_class::width /2.980f);
-    equipment_class::spell_slot_01.pos_y        = equipment_class::pos_y + (equipment_class::height/3.72f);
-    equipment_class::spell_slot_01.pos_z        = equipment_class::pos_z;
-    equipment_class::spell_slot_01.width        = equipment_class::width / 8.2f;
-    equipment_class::spell_slot_01.height       = equipment_class::height/10.4f;
-*/
+
+    equipment_class::equipment_slot[ 1].button_type  = 0; // Helm
+    equipment_class::equipment_slot[ 1].slot_size    = 3;
+    equipment_class::equipment_slot[ 1].pos_x        = equipment_class::pos_x; //- (equipment_class::width /2.0f);
+    equipment_class::equipment_slot[ 1].pos_y        = equipment_class::pos_y + (equipment_class::height/4.0f);
+    equipment_class::equipment_slot[ 1].pos_z        = equipment_class::pos_z;
+    equipment_class::equipment_slot[ 2].button_type  = 0; // Armour
+    equipment_class::equipment_slot[ 2].slot_size    = 4;
+    equipment_class::equipment_slot[ 2].pos_x        = equipment_class::pos_x; //- (equipment_class::width /2.0f);
+    equipment_class::equipment_slot[ 2].pos_y        = equipment_class::pos_y - (equipment_class::height/48.0f);
+    equipment_class::equipment_slot[ 2].pos_z        = equipment_class::pos_z;
+    equipment_class::equipment_slot[ 3].button_type  = 0; // Belt
+    equipment_class::equipment_slot[ 3].slot_size    = 2;
+    equipment_class::equipment_slot[ 3].pos_x        = equipment_class::pos_x; //- (equipment_class::width /2.0f);
+    equipment_class::equipment_slot[ 3].pos_y        = equipment_class::pos_y - (equipment_class::height/4.0f);
+    equipment_class::equipment_slot[ 3].pos_z        = equipment_class::pos_z;
+    equipment_class::equipment_slot[ 4].button_type  = 0; // Weapon
+    equipment_class::equipment_slot[ 4].slot_size    = 4;
+    equipment_class::equipment_slot[ 4].pos_x        = equipment_class::pos_x - (equipment_class::width / 4.0f);
+    equipment_class::equipment_slot[ 4].pos_y        = equipment_class::pos_y + (equipment_class::height/24.0f);
+    equipment_class::equipment_slot[ 4].pos_z        = equipment_class::pos_z;
+    equipment_class::equipment_slot[ 5].button_type  = 0; // Shield
+    equipment_class::equipment_slot[ 5].slot_size    = 4;
+    equipment_class::equipment_slot[ 5].pos_x        = equipment_class::pos_x + (equipment_class::width / 4.0f);
+    equipment_class::equipment_slot[ 5].pos_y        = equipment_class::pos_y + (equipment_class::height/24.0f);
+    equipment_class::equipment_slot[ 5].pos_z        = equipment_class::pos_z;
+    equipment_class::equipment_slot[ 6].button_type  = 0; // Gloves
+    equipment_class::equipment_slot[ 6].slot_size    = 3;
+    equipment_class::equipment_slot[ 6].pos_x        = equipment_class::pos_x - (equipment_class::width / 4.0f);
+    equipment_class::equipment_slot[ 6].pos_y        = equipment_class::pos_y - (equipment_class::height/ 4.8f);
+    equipment_class::equipment_slot[ 6].pos_z        = equipment_class::pos_z;
+    equipment_class::equipment_slot[ 7].button_type  = 0; // Boots
+    equipment_class::equipment_slot[ 7].slot_size    = 3;
+    equipment_class::equipment_slot[ 7].pos_x        = equipment_class::pos_x + (equipment_class::width / 4.0f);
+    equipment_class::equipment_slot[ 7].pos_y        = equipment_class::pos_y - (equipment_class::height/ 4.8f);
+    equipment_class::equipment_slot[ 7].pos_z        = equipment_class::pos_z;
+    equipment_class::equipment_slot[ 8].button_type  = 0; // Amulet Left
+    equipment_class::equipment_slot[ 8].slot_size    = 1;
+    equipment_class::equipment_slot[ 8].pos_x        = equipment_class::pos_x - (equipment_class::width / 4.8f);
+    equipment_class::equipment_slot[ 8].pos_y        = equipment_class::pos_y + (equipment_class::height/ 4.0f);
+    equipment_class::equipment_slot[ 8].pos_z        = equipment_class::pos_z;
+    equipment_class::equipment_slot[ 9].button_type  = 0; // Amulet Right
+    equipment_class::equipment_slot[ 9].slot_size    = 1;
+    equipment_class::equipment_slot[ 9].pos_x        = equipment_class::pos_x + (equipment_class::width / 4.8f);
+    equipment_class::equipment_slot[ 9].pos_y        = equipment_class::pos_y + (equipment_class::height/ 4.0f);
+    equipment_class::equipment_slot[ 9].pos_z        = equipment_class::pos_z;
+
+
+
+
+    for (int equipment_slot_count = 1; equipment_slot_count < MAX_EQUIPMENT_SLOTS; equipment_slot_count++)
+    {
+        switch (equipment_class::equipment_slot[equipment_slot_count].slot_size)
+        {
+            case 1: //32x32
+                equipment_class::equipment_slot[equipment_slot_count].width        = equipment_class::width /12.0f;
+                equipment_class::equipment_slot[equipment_slot_count].height       = equipment_class::height/12.0f;
+            break;
+            case 2: //64x32
+                equipment_class::equipment_slot[equipment_slot_count].width        = equipment_class::width / 6.0f;
+                equipment_class::equipment_slot[equipment_slot_count].height       = equipment_class::height/12.0f;
+            break;
+            case 3: //64x64
+                equipment_class::equipment_slot[equipment_slot_count].width        = equipment_class::width / 6.0f;
+                equipment_class::equipment_slot[equipment_slot_count].height       = equipment_class::height/ 6.0f;
+            break;
+            case 4: //64x96
+                equipment_class::equipment_slot[equipment_slot_count].width        = equipment_class::width / 6.0f;
+                equipment_class::equipment_slot[equipment_slot_count].height       = equipment_class::height/ 4.0f;
+            break;
+            default:
+            break;
+        }
+    }
+
     equipment_class::close_button.image_normal       = game.texture.close_button.ref_number;
     equipment_class::close_button.image_highlighted  = game.texture.close_button_highlighted.ref_number;
     equipment_class::close_button.mouse_over         = false;
@@ -219,6 +293,10 @@ void equipment_class::draw(void)
     game.texture.equipment_background.draw(false,equipment_class::pos_x,equipment_class::pos_y,equipment_class::pos_z,equipment_class::width,equipment_class::height);
     equipment_class::close_button.draw();
     game.font.font_1.Write(255,255,255,255,equipment_class::pos_x - (equipment_class::width /10.0f),equipment_class::pos_y + (equipment_class::height/2.30f),4.8f,32.0f,game.language.text.equipment);
+    for (int equipment_slot_count = 1; equipment_slot_count < MAX_EQUIPMENT_SLOTS; equipment_slot_count++)
+    {
+        equipment_class::equipment_slot[equipment_slot_count].draw();
+    }
 };
 
 

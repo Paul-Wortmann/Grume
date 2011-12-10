@@ -72,7 +72,7 @@
 
 1320822860 c:\_git_\frost_and_flame\src\bullets.hpp
 
-1323009721 c:\_git_\frost_and_flame\src\load_resources.hpp
+1323525683 c:\_git_\frost_and_flame\src\load_resources.hpp
 	"core/core.hpp"
 	"core/sound.hpp"
 	"core/music.hpp"
@@ -304,7 +304,7 @@
 	"levels.hpp"
 	"game.hpp"
 
-1323009701 source:c:\_git_\frost_and_flame\src\load_resources.cpp
+1323526466 source:c:\_git_\frost_and_flame\src\load_resources.cpp
 	<SDL/SDL.h>
 	"load_resources.hpp"
 	"game.hpp"
@@ -434,7 +434,7 @@
 
 1321762961 c:\_git_\frost_and_flame\src\spells.hpp
 
-1323444385 source:c:\_git_\frost_and_flame\src\inventory.cpp
+1323511848 source:c:\_git_\frost_and_flame\src\inventory.cpp
 	"inventory.hpp"
 	"game.hpp"
 	"items.hpp"
@@ -766,9 +766,9 @@
 	"items.hpp"
 	"game.hpp"
 
-1322916402 c:\_git_\frost_and_flame\src\equipment.hpp
+1323529357 c:\_git_\frost_and_flame\src\equipment.hpp
 
-1322920388 source:c:\_git_\frost_and_flame\src\equipment.cpp
+1323537997 source:c:\_git_\frost_and_flame\src\equipment.cpp
 	"equipment.hpp"
 	"game.hpp"
 

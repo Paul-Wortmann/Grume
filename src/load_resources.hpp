@@ -102,6 +102,10 @@ struct texture_type
     texture_class character_background;
     texture_class quest_log_background;
     texture_class equipment_background;
+    texture_class equipment_slot_32x32;
+    texture_class equipment_slot_64x32;
+    texture_class equipment_slot_64x64;
+    texture_class equipment_slot_64x96;
 
     texture_class particle_000;
     texture_class particle_001;
