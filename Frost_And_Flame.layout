@@ -2,7 +2,7 @@
 <CodeBlocks_layout_file>
 	<ActiveTarget name="Windows" />
 	<File name="src\UI.cpp" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="13771" topLine="233" />
+		<Cursor1 position="16407" topLine="290" />
 	</File>
 	<File name="src\UI.hpp" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor1 position="1026" topLine="133" />
@@ -122,16 +122,16 @@
 		<Cursor1 position="1379" topLine="33" />
 	</File>
 	<File name="src\inventory.cpp" open="1" top="1" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="6000" topLine="357" />
+		<Cursor1 position="5020" topLine="93" />
 	</File>
 	<File name="src\inventory.hpp" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="1023" topLine="0" />
+		<Cursor1 position="985" topLine="17" />
 	</File>
 	<File name="src\items.cpp" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="2302" topLine="44" />
+		<Cursor1 position="2567" topLine="58" />
 	</File>
 	<File name="src\items.hpp" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="1082" topLine="13" />
+		<Cursor1 position="1084" topLine="27" />
 	</File>
 	<File name="src\language.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor1 position="1046" topLine="6" />
@@ -187,8 +187,8 @@
 	<File name="src\save_data.hpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor1 position="943" topLine="0" />
 	</File>
-	<File name="src\spell_book.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="6191" topLine="125" />
+	<File name="src\spell_book.cpp" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor1 position="5119" topLine="89" />
 	</File>
 	<File name="src\spell_book.hpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor1 position="2884" topLine="62" />

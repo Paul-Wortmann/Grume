@@ -75,8 +75,17 @@ void init_items(void)
     game.item[1].ID                = 101;
     game.item[1].type              = SPELL_BOOK;
     game.item[1].add_spell         = 1;
-    game.item[1].spell_type        = 1;
+    game.item[1].spell_type        = 2;
     game.item[1].usable            = true;
+    game.item[2].name              = "Book of Stalagmite";
+    game.item[2].image_ref         = game.texture.book_19.ref_number;
+    game.item[2].stack_number      = 5;
+    game.item[2].max_stack_number  = 10;
+    game.item[2].ID                = 102;
+    game.item[2].type              = SPELL_BOOK;
+    game.item[2].add_spell         = 1;
+    game.item[2].spell_type        = 1;
+    game.item[2].usable            = true;
 };
 
 

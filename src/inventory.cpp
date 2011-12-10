@@ -93,10 +93,11 @@ inventory_slot_class::~inventory_slot_class(void)
 
 void inventory_slot_class::process(void)
 {
+    int  temp_button = 0;
+    if (game.core.physics.point_in_quadrangle(inventory_slot_class::pos_x,inventory_slot_class::width,inventory_slot_class::pos_y,inventory_slot_class::height,game.core.io.mouse_x,game.core.io.mouse_y)) inventory_slot_class::mouse_over = true;
+    else inventory_slot_class::mouse_over = false;
     if (inventory_slot_class::button_type > 0)
     {
-        if ((!game.UI.drag_in_progress) && (game.core.physics.point_in_quadrangle(inventory_slot_class::pos_x,inventory_slot_class::width,inventory_slot_class::pos_y,inventory_slot_class::height,game.core.io.mouse_x,game.core.io.mouse_y))) inventory_slot_class::mouse_over = true;
-        else inventory_slot_class::mouse_over = false;
         if (inventory_slot_class::drag)
         {
             if (game.core.io.mouse_button_left)
@@ -106,6 +107,15 @@ void inventory_slot_class::process(void)
             }
             else
             {
+                for (int inventory_slot_count = 1; inventory_slot_count < MAX_INVENTORY_SLOTS; inventory_slot_count++)
+                {
+                    if (game.UI.inventory.inventory_slot[inventory_slot_count].mouse_over)
+                    {
+                        temp_button = inventory_slot_class::button_type;
+                        inventory_slot_class::button_type = game.UI.inventory.inventory_slot[inventory_slot_count].button_type;
+                        game.UI.inventory.inventory_slot[inventory_slot_count].button_type = temp_button;
+                    }
+                }
                 inventory_slot_class::drag         = false;
                 game.UI.drag_in_progress           = false;
                 inventory_slot_class::pos_x        = inventory_slot_class::base_pos_x;
@@ -649,6 +659,7 @@ void inventory_class::draw(void)
 void init_inventory(void)
 {
     game.UI.inventory.inventory_slot[ 1].button_type  = game.item[1].ID;
+    game.UI.inventory.inventory_slot[ 2].button_type  = game.item[2].ID;
 
 };
 
