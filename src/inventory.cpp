@@ -163,12 +163,20 @@ void inventory_slot_class::process(void)
             switch (game.item[temp_ID].type)
             {
                 case HEALTH_POTION:
-                    game.item[temp_ID].stack_number--;
-                    if(game.item[temp_ID].stack_number <= 0)inventory_slot_class::button_type = 0;
+                    if (game.player.health.current < game.player.health.maximum)
+                    {
+                        game.player.health.current += game.item[temp_ID].add_health;
+                        game.item[temp_ID].stack_number--;
+                        if(game.item[temp_ID].stack_number <= 0)inventory_slot_class::button_type = 0;
+                    }
                 break;
                 case MANA_POTION:
-                    game.item[temp_ID].stack_number--;
-                    if(game.item[temp_ID].stack_number <= 0)inventory_slot_class::button_type = 0;
+                    if (game.player.mana.current < game.player.mana.maximum)
+                    {
+                        game.player.mana.current += game.item[temp_ID].add_mana;
+                        game.item[temp_ID].stack_number--;
+                        if(game.item[temp_ID].stack_number <= 0)inventory_slot_class::button_type = 0;
+                    }
                 break;
                 case SPELL_BOOK:
                     if (game.spell[game.item[temp_ID].spell_type].level < 3) game.item[temp_ID].stack_number--;
@@ -689,10 +697,12 @@ void init_inventory(void)
 {
     game.UI.inventory.inventory_slot[ 1].button_type  = game.item[  1].ID;
     game.UI.inventory.inventory_slot[ 2].button_type  = game.item[  2].ID;
-    game.UI.inventory.inventory_slot[ 3].button_type  = game.item[101].ID;
-    game.UI.inventory.inventory_slot[ 4].button_type  = game.item[102].ID;
-    game.UI.inventory.inventory_slot[ 5].button_type  = game.item[201].ID;
-    game.UI.inventory.inventory_slot[ 6].button_type  = game.item[202].ID;
+    game.UI.inventory.inventory_slot[ 3].button_type  = game.item[201].ID;
+    game.UI.inventory.inventory_slot[ 4].button_type  = game.item[202].ID;
+    game.UI.inventory.inventory_slot[ 5].button_type  = game.item[101].ID;
+    game.UI.inventory.inventory_slot[ 6].button_type  = game.item[107].ID;
+    game.UI.inventory.inventory_slot[ 7].button_type  = game.item[108].ID;
+    game.UI.inventory.inventory_slot[ 8].button_type  = game.item[114].ID;
 
 };
 

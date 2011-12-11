@@ -96,13 +96,28 @@ void init_items(void)
     game.item[101].ID                = 201;
     game.item[101].type              = HEALTH_POTION;
     game.item[101].add_health        = 10;
-    game.item[102].name              = "Giant Health Potion";
-    game.item[102].image_ref         = game.texture.potion_07.ref_number;
-    game.item[102].stack_number      = 10;
-    game.item[102].max_stack_number  = 20;
-    game.item[102].ID                = 202;
-    game.item[102].type              = HEALTH_POTION;
-    game.item[102].add_health        = 100;
+    game.item[107].name              = "Giant Health Potion";
+    game.item[107].image_ref         = game.texture.potion_07.ref_number;
+    game.item[107].stack_number      = 10;
+    game.item[107].max_stack_number  = 20;
+    game.item[107].ID                = 207;
+    game.item[107].type              = HEALTH_POTION;
+    game.item[107].add_health        = 100;
+
+    game.item[108].name              = "Small Mana Potion";
+    game.item[108].image_ref         = game.texture.potion_08.ref_number;
+    game.item[108].stack_number      = 10;
+    game.item[108].max_stack_number  = 20;
+    game.item[108].ID                = 208;
+    game.item[108].type              = MANA_POTION;
+    game.item[108].add_mana          = 10;
+    game.item[114].name              = "Giant Mana Potion";
+    game.item[114].image_ref         = game.texture.potion_14.ref_number;
+    game.item[114].stack_number      = 10;
+    game.item[114].max_stack_number  = 20;
+    game.item[114].ID                = 214;
+    game.item[114].type              = MANA_POTION;
+    game.item[114].add_mana          = 100;
 
 //-------------------------------- Boots ----------------------------------------------------------------------------
     game.item[201].name              = "Boots of Haste";
