@@ -81,6 +81,8 @@ class item_class
         int         sub_crit_chance;
         int         add_spell;
         int         spell_type;
+        int         add_health;
+        int         add_mana;
         bool        usable;
         void load(void);
         item_class(void);

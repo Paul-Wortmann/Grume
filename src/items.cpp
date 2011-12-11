@@ -88,21 +88,37 @@ void init_items(void)
     game.item[2].spell_type        = 1;
     game.item[2].usable            = true;
 
-//-------------------------------- Boots ----------------------------------------------------------------------------
-    game.item[101].name              = "Boots of Haste";
-    game.item[101].image_ref         = game.texture.boots_09.ref_number;
-    game.item[101].stack_number      = 1;
-    game.item[101].max_stack_number  = 1;
+//-------------------------------- Potions --------------------------------------------------------------------------
+    game.item[101].name              = "Small Health Potion";
+    game.item[101].image_ref         = game.texture.potion_01.ref_number;
+    game.item[101].stack_number      = 10;
+    game.item[101].max_stack_number  = 20;
     game.item[101].ID                = 201;
-    game.item[101].type              = BOOTS;
-    game.item[101].defence           = 10;
-    game.item[102].name              = "Boots of Flame walk";
-    game.item[102].image_ref         = game.texture.boots_06.ref_number;
-    game.item[102].stack_number      = 1;
-    game.item[102].max_stack_number  = 1;
+    game.item[101].type              = HEALTH_POTION;
+    game.item[101].add_health        = 10;
+    game.item[102].name              = "Giant Health Potion";
+    game.item[102].image_ref         = game.texture.potion_07.ref_number;
+    game.item[102].stack_number      = 10;
+    game.item[102].max_stack_number  = 20;
     game.item[102].ID                = 202;
-    game.item[102].type              = BOOTS;
-    game.item[102].defence           = 10;
+    game.item[102].type              = HEALTH_POTION;
+    game.item[102].add_health        = 100;
+
+//-------------------------------- Boots ----------------------------------------------------------------------------
+    game.item[201].name              = "Boots of Haste";
+    game.item[201].image_ref         = game.texture.boots_09.ref_number;
+    game.item[201].stack_number      = 1;
+    game.item[201].max_stack_number  = 1;
+    game.item[201].ID                = 301;
+    game.item[201].type              = BOOTS;
+    game.item[201].defence           = 10;
+    game.item[202].name              = "Boots of Flame walk";
+    game.item[202].image_ref         = game.texture.boots_06.ref_number;
+    game.item[202].stack_number      = 1;
+    game.item[202].max_stack_number  = 1;
+    game.item[202].ID                = 302;
+    game.item[202].type              = BOOTS;
+    game.item[202].defence           = 10;
 };
 
 

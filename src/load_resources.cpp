@@ -364,6 +364,28 @@ bool load_textures(void)
     game.texture.wand_19.load_image("data/textures/UI/icons/wands/wand_19.png",texture_count);texture_count++;
     game.texture.wand_20.load_image("data/textures/UI/icons/wands/wand_20.png",texture_count);texture_count++;
 
+    game.texture.potion_01.load_image("data/textures/UI/icons/potions/potion_01.png",texture_count);texture_count++;
+    game.texture.potion_02.load_image("data/textures/UI/icons/potions/potion_02.png",texture_count);texture_count++;
+    game.texture.potion_03.load_image("data/textures/UI/icons/potions/potion_03.png",texture_count);texture_count++;
+    game.texture.potion_04.load_image("data/textures/UI/icons/potions/potion_04.png",texture_count);texture_count++;
+    game.texture.potion_05.load_image("data/textures/UI/icons/potions/potion_05.png",texture_count);texture_count++;
+    game.texture.potion_06.load_image("data/textures/UI/icons/potions/potion_06.png",texture_count);texture_count++;
+    game.texture.potion_07.load_image("data/textures/UI/icons/potions/potion_07.png",texture_count);texture_count++;
+    game.texture.potion_08.load_image("data/textures/UI/icons/potions/potion_08.png",texture_count);texture_count++;
+    game.texture.potion_09.load_image("data/textures/UI/icons/potions/potion_09.png",texture_count);texture_count++;
+    game.texture.potion_10.load_image("data/textures/UI/icons/potions/potion_10.png",texture_count);texture_count++;
+    game.texture.potion_11.load_image("data/textures/UI/icons/potions/potion_11.png",texture_count);texture_count++;
+    game.texture.potion_12.load_image("data/textures/UI/icons/potions/potion_12.png",texture_count);texture_count++;
+    game.texture.potion_13.load_image("data/textures/UI/icons/potions/potion_13.png",texture_count);texture_count++;
+    game.texture.potion_14.load_image("data/textures/UI/icons/potions/potion_14.png",texture_count);texture_count++;
+    game.texture.potion_15.load_image("data/textures/UI/icons/potions/potion_15.png",texture_count);texture_count++;
+    game.texture.potion_16.load_image("data/textures/UI/icons/potions/potion_16.png",texture_count);texture_count++;
+    game.texture.potion_17.load_image("data/textures/UI/icons/potions/potion_17.png",texture_count);texture_count++;
+    game.texture.potion_18.load_image("data/textures/UI/icons/potions/potion_18.png",texture_count);texture_count++;
+    game.texture.potion_19.load_image("data/textures/UI/icons/potions/potion_19.png",texture_count);texture_count++;
+    game.texture.potion_20.load_image("data/textures/UI/icons/potions/potion_20.png",texture_count);texture_count++;
+    game.texture.potion_21.load_image("data/textures/UI/icons/potions/potion_21.png",texture_count);texture_count++;
+
     game.core.log.File_Write("Texture files loaded -> ",texture_count);
     return(true);
 };
@@ -698,6 +720,28 @@ bool draw_texture(bool r, int texture_number, float x, float y, float z, float w
     if (texture_number == game.texture.wand_18.ref_number) game.texture.wand_18.draw(r,x,y,z,w,h,angle,frame);
     if (texture_number == game.texture.wand_19.ref_number) game.texture.wand_19.draw(r,x,y,z,w,h,angle,frame);
     if (texture_number == game.texture.wand_20.ref_number) game.texture.wand_20.draw(r,x,y,z,w,h,angle,frame);
+
+    if (texture_number == game.texture.potion_01.ref_number) game.texture.potion_01.draw(r,x,y,z,w,h,angle,frame);
+    if (texture_number == game.texture.potion_02.ref_number) game.texture.potion_02.draw(r,x,y,z,w,h,angle,frame);
+    if (texture_number == game.texture.potion_03.ref_number) game.texture.potion_03.draw(r,x,y,z,w,h,angle,frame);
+    if (texture_number == game.texture.potion_04.ref_number) game.texture.potion_04.draw(r,x,y,z,w,h,angle,frame);
+    if (texture_number == game.texture.potion_05.ref_number) game.texture.potion_05.draw(r,x,y,z,w,h,angle,frame);
+    if (texture_number == game.texture.potion_06.ref_number) game.texture.potion_06.draw(r,x,y,z,w,h,angle,frame);
+    if (texture_number == game.texture.potion_07.ref_number) game.texture.potion_07.draw(r,x,y,z,w,h,angle,frame);
+    if (texture_number == game.texture.potion_08.ref_number) game.texture.potion_08.draw(r,x,y,z,w,h,angle,frame);
+    if (texture_number == game.texture.potion_09.ref_number) game.texture.potion_09.draw(r,x,y,z,w,h,angle,frame);
+    if (texture_number == game.texture.potion_10.ref_number) game.texture.potion_10.draw(r,x,y,z,w,h,angle,frame);
+    if (texture_number == game.texture.potion_11.ref_number) game.texture.potion_11.draw(r,x,y,z,w,h,angle,frame);
+    if (texture_number == game.texture.potion_12.ref_number) game.texture.potion_12.draw(r,x,y,z,w,h,angle,frame);
+    if (texture_number == game.texture.potion_13.ref_number) game.texture.potion_13.draw(r,x,y,z,w,h,angle,frame);
+    if (texture_number == game.texture.potion_14.ref_number) game.texture.potion_14.draw(r,x,y,z,w,h,angle,frame);
+    if (texture_number == game.texture.potion_15.ref_number) game.texture.potion_15.draw(r,x,y,z,w,h,angle,frame);
+    if (texture_number == game.texture.potion_16.ref_number) game.texture.potion_16.draw(r,x,y,z,w,h,angle,frame);
+    if (texture_number == game.texture.potion_17.ref_number) game.texture.potion_17.draw(r,x,y,z,w,h,angle,frame);
+    if (texture_number == game.texture.potion_18.ref_number) game.texture.potion_18.draw(r,x,y,z,w,h,angle,frame);
+    if (texture_number == game.texture.potion_19.ref_number) game.texture.potion_19.draw(r,x,y,z,w,h,angle,frame);
+    if (texture_number == game.texture.potion_20.ref_number) game.texture.potion_20.draw(r,x,y,z,w,h,angle,frame);
+    if (texture_number == game.texture.potion_21.ref_number) game.texture.potion_21.draw(r,x,y,z,w,h,angle,frame);
 
     return(true);
 };

@@ -344,6 +344,28 @@ struct texture_type
     texture_class wand_18;
     texture_class wand_19;
     texture_class wand_20;
+
+    texture_class potion_01;
+    texture_class potion_02;
+    texture_class potion_03;
+    texture_class potion_04;
+    texture_class potion_05;
+    texture_class potion_06;
+    texture_class potion_07;
+    texture_class potion_08;
+    texture_class potion_09;
+    texture_class potion_10;
+    texture_class potion_11;
+    texture_class potion_12;
+    texture_class potion_13;
+    texture_class potion_14;
+    texture_class potion_15;
+    texture_class potion_16;
+    texture_class potion_17;
+    texture_class potion_18;
+    texture_class potion_19;
+    texture_class potion_20;
+    texture_class potion_21;
 };
 
 struct font_type
