@@ -31,6 +31,7 @@ extern game_type game;
 
 spell_class::spell_class(void)
 {
+    spell_class::item_type              = SPELL;
     spell_class::level                  = 0;
     spell_class::image_level_1          = 0;
     spell_class::image_level_2          = 0;

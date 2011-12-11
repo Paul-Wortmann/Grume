@@ -160,6 +160,7 @@ void player_stats_class::draw_tooltip(void)
 
     action_slot_class::action_slot_class(void)
 {
+    action_slot_class::current_item     = 0;
     action_slot_class::highlighted      = false;
     action_slot_class::drag             = false;
     action_slot_class::button_type      = 0;
@@ -185,6 +186,7 @@ void player_stats_class::draw_tooltip(void)
 
 void action_slot_class::process(void)
 {
+    if (action_slot_class::current_item != game.UI.inventory.inventory_slot[action_slot_class::button_type-1000].button_type) action_slot_class::button_type = 0;
     bool discard_icon   = false;
     int  swap_button    = 0;
     int  temp_button    = 0;
@@ -232,27 +234,67 @@ void action_slot_class::process(void)
                 action_slot_class::drag_offset_y = action_slot_class::pos_y - game.core.io.mouse_y;
             }
         }
+        if ((action_slot_class::mouse_over) && (game.core.io.mouse_button_right))//use item
+        {
+            if (action_slot_class::button_type < 1000) // use spell
+            {
+
+            }
+            else if (action_slot_class::button_type > 1000) // use potion
+            {
+                int temp_ID = game.UI.inventory.inventory_slot[action_slot_class::button_type-1000].button_type-100;
+                switch (game.item[temp_ID].type)
+                {
+                    case HEALTH_POTION:
+                        if (game.player.health.current < game.player.health.maximum)
+                        {
+                            game.player.health.current += game.item[temp_ID].add_health;
+                            game.item[temp_ID].stack_number--;
+                            if(game.item[temp_ID].stack_number <= 0)action_slot_class::button_type = 0;
+                        }
+                    break;
+                    case MANA_POTION:
+                        if (game.player.mana.current < game.player.mana.maximum)
+                        {
+                            game.player.mana.current += game.item[temp_ID].add_mana;
+                            game.item[temp_ID].stack_number--;
+                            if(game.item[temp_ID].stack_number <= 0)action_slot_class::button_type = 0;
+                        }
+                    break;
+                    default:
+                    break;
+                }
+            }
+        }
     }
 };
 
 void action_slot_class::draw(void)
 {
-    switch (game.spell[action_slot_class::button_type].level)
+    if (action_slot_class::button_type > 1000)
     {
-        case 1:
-            draw_texture(false,game.spell[action_slot_class::button_type].image_level_1,action_slot_class::pos_x,action_slot_class::pos_y,action_slot_class::pos_z,action_slot_class::width,action_slot_class::height);
-            if (action_slot_class::drag) draw_texture(false,game.spell[action_slot_class::button_type].image_level_1,action_slot_class::base_pos_x,action_slot_class::base_pos_y,action_slot_class::pos_z,action_slot_class::width,action_slot_class::height);
-        break;
-        case 2:
-            draw_texture(false,game.spell[action_slot_class::button_type].image_level_2,action_slot_class::pos_x,action_slot_class::pos_y,action_slot_class::pos_z,action_slot_class::width,action_slot_class::height);
-            if (action_slot_class::drag) draw_texture(false,game.spell[action_slot_class::button_type].image_level_2,action_slot_class::base_pos_x,action_slot_class::base_pos_y,action_slot_class::pos_z,action_slot_class::width,action_slot_class::height);
-        break;
-        case 3:
-            draw_texture(false,game.spell[action_slot_class::button_type].image_level_3,action_slot_class::pos_x,action_slot_class::pos_y,action_slot_class::pos_z,action_slot_class::width,action_slot_class::height);
-            if (action_slot_class::drag) draw_texture(false,game.spell[action_slot_class::button_type].image_level_3,action_slot_class::base_pos_x,action_slot_class::base_pos_y,action_slot_class::pos_z,action_slot_class::width,action_slot_class::height);
-        break;
-        default:
-        break;
+        int image_ref = game.item[game.UI.inventory.inventory_slot[action_slot_class::button_type-1000].button_type-100].image_ref;
+        draw_texture(false,image_ref,action_slot_class::pos_x,action_slot_class::pos_y,action_slot_class::pos_z,action_slot_class::width,action_slot_class::height);
+    }
+    else
+    {
+        switch (game.spell[action_slot_class::button_type].level)
+        {
+            case 1:
+                draw_texture(false,game.spell[action_slot_class::button_type].image_level_1,action_slot_class::pos_x,action_slot_class::pos_y,action_slot_class::pos_z,action_slot_class::width,action_slot_class::height);
+                if (action_slot_class::drag) draw_texture(false,game.spell[action_slot_class::button_type].image_level_1,action_slot_class::base_pos_x,action_slot_class::base_pos_y,action_slot_class::pos_z,action_slot_class::width,action_slot_class::height);
+            break;
+            case 2:
+                draw_texture(false,game.spell[action_slot_class::button_type].image_level_2,action_slot_class::pos_x,action_slot_class::pos_y,action_slot_class::pos_z,action_slot_class::width,action_slot_class::height);
+                if (action_slot_class::drag) draw_texture(false,game.spell[action_slot_class::button_type].image_level_2,action_slot_class::base_pos_x,action_slot_class::base_pos_y,action_slot_class::pos_z,action_slot_class::width,action_slot_class::height);
+            break;
+            case 3:
+                draw_texture(false,game.spell[action_slot_class::button_type].image_level_3,action_slot_class::pos_x,action_slot_class::pos_y,action_slot_class::pos_z,action_slot_class::width,action_slot_class::height);
+                if (action_slot_class::drag) draw_texture(false,game.spell[action_slot_class::button_type].image_level_3,action_slot_class::base_pos_x,action_slot_class::base_pos_y,action_slot_class::pos_z,action_slot_class::width,action_slot_class::height);
+            break;
+            default:
+            break;
+        }
     }
     if (action_slot_class::drag) game.texture.glass_cover_01.draw(false,action_slot_class::base_pos_x,action_slot_class::base_pos_y,action_slot_class::pos_z,action_slot_class::width,action_slot_class::height);
     else game.texture.glass_cover_01.draw(false,action_slot_class::pos_x,action_slot_class::pos_y,action_slot_class::pos_z,action_slot_class::width,action_slot_class::height);
@@ -260,6 +302,11 @@ void action_slot_class::draw(void)
 
 void action_slot_class::draw_drag(void)
 {
+    if (action_slot_class::button_type > 1000)
+    {
+        int image_ref = game.item[game.UI.inventory.inventory_slot[action_slot_class::button_type-1000].button_type-100].image_ref;
+        draw_texture(false,image_ref,action_slot_class::pos_x,action_slot_class::pos_y,action_slot_class::pos_z,action_slot_class::width,action_slot_class::height);
+    }
     switch (game.spell[action_slot_class::button_type].level)
     {
         case 1:
@@ -566,6 +613,14 @@ void action_bar_class::draw(void)
     for (int action_slot_count = 1; action_slot_count < MAX_ACTION_SLOTS; action_slot_count++)
     {
         if (action_bar_class::action_slot[action_slot_count].drag) action_bar_class::action_slot[action_slot_count].draw_drag();
+    }
+    for (int inventory_slot_count = 1; inventory_slot_count < MAX_INVENTORY_SLOTS; inventory_slot_count++)
+    {
+        if (game.UI.inventory.inventory_slot[inventory_slot_count].drag) game.UI.inventory.inventory_slot[inventory_slot_count].draw_drag();
+    }
+    for (int equipment_slot_count = 1; equipment_slot_count < MAX_EQUIPMENT_SLOTS; equipment_slot_count++)
+    {
+        if (game.UI.equipment.equipment_slot[equipment_slot_count].drag) game.UI.equipment.equipment_slot[equipment_slot_count].draw_drag();
     }
 };
 

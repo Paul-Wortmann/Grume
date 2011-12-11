@@ -82,6 +82,7 @@ class player_stats_class
 class action_slot_class
 {
     public:
+        int   current_item;
         bool  highlighted;
         bool  drag;
         int   button_type;

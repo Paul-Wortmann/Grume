@@ -95,6 +95,11 @@ void inventory_slot_class::process(void)
 {
     int  temp_button = 0;
     int  temp_ID = inventory_slot_class::button_type-100;
+    int  active_inventory_slot = 0;
+    for (int inventory_slot_count = 1; inventory_slot_count < MAX_INVENTORY_SLOTS; inventory_slot_count++)
+    {
+        if (game.UI.inventory.inventory_slot[inventory_slot_count].drag) active_inventory_slot = inventory_slot_count;
+    }
     if (game.core.physics.point_in_quadrangle(inventory_slot_class::pos_x,inventory_slot_class::width,inventory_slot_class::pos_y,inventory_slot_class::height,game.core.io.mouse_x,game.core.io.mouse_y)) inventory_slot_class::mouse_over = true;
     else inventory_slot_class::mouse_over = false;
     if (inventory_slot_class::button_type > 0)
@@ -108,6 +113,17 @@ void inventory_slot_class::process(void)
             }
             else
             {
+                if ((game.item[temp_ID].type == HEALTH_POTION) || (game.item[temp_ID].type == MANA_POTION))
+                {
+                    for (int action_slot_count = 1; action_slot_count < MAX_ACTION_SLOTS; action_slot_count++)
+                    {
+                        if (game.UI.action_bar.action_slot[action_slot_count].mouse_over)
+                        {
+                            game.UI.action_bar.action_slot[action_slot_count].button_type  = 1000 + active_inventory_slot;
+                            game.UI.action_bar.action_slot[action_slot_count].current_item = inventory_slot_class::button_type;
+                        }
+                    }
+                }
                 for (int inventory_slot_count = 1; inventory_slot_count < MAX_INVENTORY_SLOTS; inventory_slot_count++)
                 {
                     if (game.UI.inventory.inventory_slot[inventory_slot_count].mouse_over)

@@ -31,6 +31,7 @@ class spell_class
 {
     public:
         //std::string name;
+        int         item_type;
         int         level;
         int         image_level_1;
         int         image_level_2;

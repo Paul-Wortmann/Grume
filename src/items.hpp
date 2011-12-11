@@ -31,24 +31,26 @@
 #include <stdlib.h>
 #include <string>
 
-#define HEALTH_POTION 1
-#define MANA_POTION   2
-#define SPELL_BOOK    3
-#define SPELL_SCROLL  4
-#define HELM          5
-#define BOOTS         6
-#define ARMOUR        7
-#define GLOVES        8
-#define RING          9
-#define AMULET        10
-#define SHIELD        11
-#define WAND          12
-#define SWORD         13
-#define DAGGER        14
-#define BELT          15
-#define BOW           16
-#define SLING         17
-#define WEAPON        18
+#define EMPTY         0
+#define SPELL         1
+#define HEALTH_POTION 2
+#define MANA_POTION   3
+#define SPELL_BOOK    4
+#define SPELL_SCROLL  5
+#define HELM          6
+#define BOOTS         7
+#define ARMOUR        8
+#define GLOVES        9
+#define RING          10
+#define AMULET        11
+#define SHIELD        12
+#define WAND          13
+#define SWORD         14
+#define DAGGER        15
+#define BELT          16
+#define BOW           17
+#define SLING         18
+#define WEAPON        19
 
 const int MAX_ITEMS = 65500;
 
