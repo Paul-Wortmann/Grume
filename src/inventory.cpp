@@ -94,6 +94,7 @@ inventory_slot_class::~inventory_slot_class(void)
 void inventory_slot_class::process(void)
 {
     int  temp_button = 0;
+    int  temp_ID = inventory_slot_class::button_type-100;
     if (game.core.physics.point_in_quadrangle(inventory_slot_class::pos_x,inventory_slot_class::width,inventory_slot_class::pos_y,inventory_slot_class::height,game.core.io.mouse_x,game.core.io.mouse_y)) inventory_slot_class::mouse_over = true;
     else inventory_slot_class::mouse_over = false;
     if (inventory_slot_class::button_type > 0)
@@ -114,6 +115,27 @@ void inventory_slot_class::process(void)
                         temp_button = inventory_slot_class::button_type;
                         inventory_slot_class::button_type = game.UI.inventory.inventory_slot[inventory_slot_count].button_type;
                         game.UI.inventory.inventory_slot[inventory_slot_count].button_type = temp_button;
+                    }
+                }
+                for (int equipment_slot_count = 1; equipment_slot_count < MAX_EQUIPMENT_SLOTS; equipment_slot_count++)
+                {
+                    if (game.UI.equipment.equipment_slot[equipment_slot_count].mouse_over)
+                    {
+                        if (game.UI.equipment.equipment_slot[equipment_slot_count].slot_type == game.item[temp_ID].type)
+                        {
+                            temp_button = inventory_slot_class::button_type;
+                            inventory_slot_class::button_type = game.UI.equipment.equipment_slot[equipment_slot_count].button_type;
+                            game.UI.equipment.equipment_slot[equipment_slot_count].button_type = temp_button;
+                        }
+                        if (game.UI.equipment.equipment_slot[equipment_slot_count].slot_type == WEAPON)
+                        {
+                            if ((game.item[temp_ID].type == WAND) || (game.item[temp_ID].type == SWORD) || (game.item[temp_ID].type == DAGGER)|| (game.item[temp_ID].type == BOW) || (game.item[temp_ID].type == SLING))
+                            {
+                                temp_button = inventory_slot_class::button_type;
+                                inventory_slot_class::button_type = game.UI.equipment.equipment_slot[equipment_slot_count].button_type;
+                                game.UI.equipment.equipment_slot[equipment_slot_count].button_type = temp_button;
+                            }
+                        }
                     }
                 }
                 inventory_slot_class::drag         = false;

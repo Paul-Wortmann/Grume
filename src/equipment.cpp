@@ -92,7 +92,9 @@ equipment_slot_class::~equipment_slot_class(void)
 
 void equipment_slot_class::process(void)
 {
-    if ((!game.UI.drag_in_progress) && (game.core.physics.point_in_quadrangle(equipment_slot_class::pos_x,equipment_slot_class::width,equipment_slot_class::pos_y,equipment_slot_class::height,game.core.io.mouse_x,game.core.io.mouse_y))) equipment_slot_class::mouse_over = true;
+    int  temp_button = 0;
+    int  temp_ID = 0;
+    if (game.core.physics.point_in_quadrangle(equipment_slot_class::pos_x,equipment_slot_class::width,equipment_slot_class::pos_y,equipment_slot_class::height,game.core.io.mouse_x,game.core.io.mouse_y)) equipment_slot_class::mouse_over = true;
     else equipment_slot_class::mouse_over = false;
     if (equipment_slot_class::button_type > 0)
     {
@@ -100,11 +102,39 @@ void equipment_slot_class::process(void)
         {
             if (game.core.io.mouse_button_left)
             {
-                equipment_slot_class::pos_x = game.core.io.mouse_x + equipment_slot_class::drag_offset_x;
-                equipment_slot_class::pos_y = game.core.io.mouse_y + equipment_slot_class::drag_offset_y;
+                equipment_slot_class::pos_x      = game.core.io.mouse_x + equipment_slot_class::drag_offset_x;
+                equipment_slot_class::pos_y      = game.core.io.mouse_y + equipment_slot_class::drag_offset_y;
             }
             else
             {
+                for (int inventory_slot_count = 1; inventory_slot_count < MAX_INVENTORY_SLOTS; inventory_slot_count++)
+                {
+                    if (game.UI.inventory.inventory_slot[inventory_slot_count].mouse_over)
+                    {
+                        temp_ID = game.UI.inventory.inventory_slot[inventory_slot_count].button_type-100;
+                        if (game.UI.inventory.inventory_slot[inventory_slot_count].button_type <= 0)
+                        {
+                            temp_button = equipment_slot_class::button_type;
+                            equipment_slot_class::button_type = game.UI.inventory.inventory_slot[inventory_slot_count].button_type;
+                            game.UI.inventory.inventory_slot[inventory_slot_count].button_type = temp_button;
+                        }
+                        else if (equipment_slot_class::slot_type == game.item[temp_ID].type)
+                        {
+                            temp_button = equipment_slot_class::button_type;
+                            equipment_slot_class::button_type = game.UI.inventory.inventory_slot[inventory_slot_count].button_type;
+                            game.UI.inventory.inventory_slot[inventory_slot_count].button_type = temp_button;
+                        }
+                        else if (equipment_slot_class::slot_type == WEAPON)
+                        {
+                            if ((game.item[temp_ID].type == WAND) || (game.item[temp_ID].type == SWORD) || (game.item[temp_ID].type == DAGGER)|| (game.item[temp_ID].type == BOW) || (game.item[temp_ID].type == SLING))
+                            {
+                                temp_button = equipment_slot_class::button_type;
+                                equipment_slot_class::button_type = game.UI.inventory.inventory_slot[inventory_slot_count].button_type;
+                                game.UI.inventory.inventory_slot[inventory_slot_count].button_type = temp_button;
+                            }
+                        }
+                    }
+                }
                 equipment_slot_class::drag         = false;
                 game.UI.drag_in_progress           = false;
                 equipment_slot_class::pos_x        = equipment_slot_class::base_pos_x;
@@ -115,6 +145,7 @@ void equipment_slot_class::process(void)
         {
             if ((!game.UI.drag_in_progress) && (equipment_slot_class::mouse_over) && (game.core.io.mouse_button_left))//drag
             {
+                game.UI.active_window_list.add_to_list(EQUIPMENT_WINDOW);
                 equipment_slot_class::drag          = true;
                 game.UI.drag_in_progress            = true;
                 equipment_slot_class::base_pos_x    = equipment_slot_class::pos_x;
@@ -128,10 +159,20 @@ void equipment_slot_class::process(void)
 
 void equipment_slot_class::draw(void)
 {
-    if (equipment_slot_class::slot_size == 1) game.texture.equipment_slot_32x32.draw(false,equipment_slot_class::pos_x,equipment_slot_class::pos_y,equipment_slot_class::pos_z,equipment_slot_class::width,equipment_slot_class::height);
-    if (equipment_slot_class::slot_size == 2) game.texture.equipment_slot_64x32.draw(false,equipment_slot_class::pos_x,equipment_slot_class::pos_y,equipment_slot_class::pos_z,equipment_slot_class::width,equipment_slot_class::height);
-    if (equipment_slot_class::slot_size == 3) game.texture.equipment_slot_64x64.draw(false,equipment_slot_class::pos_x,equipment_slot_class::pos_y,equipment_slot_class::pos_z,equipment_slot_class::width,equipment_slot_class::height);
-    if (equipment_slot_class::slot_size == 4) game.texture.equipment_slot_64x96.draw(false,equipment_slot_class::pos_x,equipment_slot_class::pos_y,equipment_slot_class::pos_z,equipment_slot_class::width,equipment_slot_class::height);
+    if (equipment_slot_class::drag)
+    {
+        if (equipment_slot_class::slot_size == 1) game.texture.equipment_slot_32x32.draw(false,equipment_slot_class::base_pos_x,equipment_slot_class::base_pos_y,equipment_slot_class::pos_z,equipment_slot_class::width,equipment_slot_class::height);
+        if (equipment_slot_class::slot_size == 2) game.texture.equipment_slot_64x32.draw(false,equipment_slot_class::base_pos_x,equipment_slot_class::base_pos_y,equipment_slot_class::pos_z,equipment_slot_class::width,equipment_slot_class::height);
+        if (equipment_slot_class::slot_size == 3) game.texture.equipment_slot_64x64.draw(false,equipment_slot_class::base_pos_x,equipment_slot_class::base_pos_y,equipment_slot_class::pos_z,equipment_slot_class::width,equipment_slot_class::height);
+        if (equipment_slot_class::slot_size == 4) game.texture.equipment_slot_64x96.draw(false,equipment_slot_class::base_pos_x,equipment_slot_class::base_pos_y,equipment_slot_class::pos_z,equipment_slot_class::width,equipment_slot_class::height);
+    }
+    else
+    {
+        if (equipment_slot_class::slot_size == 1) game.texture.equipment_slot_32x32.draw(false,equipment_slot_class::pos_x,equipment_slot_class::pos_y,equipment_slot_class::pos_z,equipment_slot_class::width,equipment_slot_class::height);
+        if (equipment_slot_class::slot_size == 2) game.texture.equipment_slot_64x32.draw(false,equipment_slot_class::pos_x,equipment_slot_class::pos_y,equipment_slot_class::pos_z,equipment_slot_class::width,equipment_slot_class::height);
+        if (equipment_slot_class::slot_size == 3) game.texture.equipment_slot_64x64.draw(false,equipment_slot_class::pos_x,equipment_slot_class::pos_y,equipment_slot_class::pos_z,equipment_slot_class::width,equipment_slot_class::height);
+        if (equipment_slot_class::slot_size == 4) game.texture.equipment_slot_64x96.draw(false,equipment_slot_class::pos_x,equipment_slot_class::pos_y,equipment_slot_class::pos_z,equipment_slot_class::width,equipment_slot_class::height);
+    }
     if (equipment_slot_class::button_type > 0)
     {
         draw_texture(false,game.item[equipment_slot_class::button_type-100].image_ref,equipment_slot_class::pos_x,equipment_slot_class::pos_y,equipment_slot_class::pos_z,equipment_slot_class::width,equipment_slot_class::height);
@@ -140,7 +181,10 @@ void equipment_slot_class::draw(void)
 
 void equipment_slot_class::draw_drag(void)
 {
-
+    if ((equipment_slot_class::button_type > 0) && (equipment_slot_class::drag))
+    {
+        draw_texture(false,game.item[equipment_slot_class::button_type-100].image_ref,equipment_slot_class::pos_x,equipment_slot_class::pos_y,equipment_slot_class::pos_z,equipment_slot_class::width,equipment_slot_class::height);
+    }
 };
 
 //----------------------------------------------------------------------------------------------------------------
@@ -238,6 +282,8 @@ equipment_class::equipment_class(void)
 
     for (int equipment_slot_count = 1; equipment_slot_count < MAX_EQUIPMENT_SLOTS; equipment_slot_count++)
     {
+        equipment_class::equipment_slot[equipment_slot_count].base_pos_x = equipment_class::equipment_slot[equipment_slot_count].pos_x;
+        equipment_class::equipment_slot[equipment_slot_count].base_pos_y = equipment_class::equipment_slot[equipment_slot_count].pos_y;
         switch (equipment_class::equipment_slot[equipment_slot_count].slot_size)
         {
             case 1: //32x32
@@ -280,6 +326,10 @@ equipment_class::~equipment_class(void)
 void equipment_class::process(void)
 {
     equipment_class::close_button.process();
+    for (int equipment_slot_count = 1; equipment_slot_count < MAX_EQUIPMENT_SLOTS; equipment_slot_count++)
+    {
+        equipment_class::equipment_slot[equipment_slot_count].process();
+    }
     if ((!game.UI.drag_in_progress) && (game.core.physics.point_in_quadrangle(equipment_class::pos_x,equipment_class::width,equipment_class::pos_y+(equipment_class::height/2.2f),equipment_class::height/8.8f,game.core.io.mouse_x,game.core.io.mouse_y))) equipment_class::mouse_over = true;
     else equipment_class::mouse_over = false;
     if (equipment_class::drag)

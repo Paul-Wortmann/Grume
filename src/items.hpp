@@ -47,7 +47,8 @@
 #define DAGGER        14
 #define BELT          15
 #define BOW           16
-#define WEAPON        17
+#define SLING         17
+#define WEAPON        18
 
 const int MAX_ITEMS = 65500;
 
