@@ -49,6 +49,7 @@ class equipment_button_class
 class equipment_slot_class
 {
     public:
+        int         slot_type;
         int         slot_size;
         int         click_delay;
         int         click_delay_count;

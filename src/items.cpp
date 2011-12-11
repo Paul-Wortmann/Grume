@@ -68,6 +68,7 @@ void item_class::load(void)
 
 void init_items(void)
 {
+//-------------------------------- Skills / Spells -------------------------------------------------------------------
     game.item[1].name              = "Book of Chain Lightning";
     game.item[1].image_ref         = game.texture.book_15.ref_number;
     game.item[1].stack_number      = 5;
@@ -86,6 +87,22 @@ void init_items(void)
     game.item[2].add_spell         = 1;
     game.item[2].spell_type        = 1;
     game.item[2].usable            = true;
+
+//-------------------------------- Boots ----------------------------------------------------------------------------
+    game.item[101].name              = "Boots of Haste";
+    game.item[101].image_ref         = game.texture.boots_09.ref_number;
+    game.item[101].stack_number      = 1;
+    game.item[101].max_stack_number  = 1;
+    game.item[101].ID                = 201;
+    game.item[101].type              = BOOTS;
+    game.item[101].defence           = 10;
+    game.item[102].name              = "Boots of Flame walk";
+    game.item[102].image_ref         = game.texture.boots_06.ref_number;
+    game.item[102].stack_number      = 1;
+    game.item[102].max_stack_number  = 1;
+    game.item[102].ID                = 202;
+    game.item[102].type              = BOOTS;
+    game.item[102].defence           = 10;
 };
 
 

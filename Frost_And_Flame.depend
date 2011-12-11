@@ -434,7 +434,7 @@
 
 1321762961 c:\_git_\frost_and_flame\src\spells.hpp
 
-1323511848 source:c:\_git_\frost_and_flame\src\inventory.cpp
+1323573314 source:c:\_git_\frost_and_flame\src\inventory.cpp
 	"inventory.hpp"
 	"game.hpp"
 	"items.hpp"
@@ -755,20 +755,20 @@
 	"character.hpp"
 	"game.hpp"
 
-1323433041 c:\_git_\frost_and_flame\src\items.hpp
+1323572931 c:\_git_\frost_and_flame\src\items.hpp
 	<iostream>
 	<fstream>
 	<stdio.h>
 	<stdlib.h>
 	<string>
 
-1323444142 source:c:\_git_\frost_and_flame\src\items.cpp
+1323572285 source:c:\_git_\frost_and_flame\src\items.cpp
 	"items.hpp"
 	"game.hpp"
 
-1323529357 c:\_git_\frost_and_flame\src\equipment.hpp
+1323572765 c:\_git_\frost_and_flame\src\equipment.hpp
 
-1323537997 source:c:\_git_\frost_and_flame\src\equipment.cpp
+1323573100 source:c:\_git_\frost_and_flame\src\equipment.cpp
 	"equipment.hpp"
 	"game.hpp"
 

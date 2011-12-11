@@ -175,7 +175,10 @@ void inventory_slot_class::draw(void)
 
 void inventory_slot_class::draw_drag(void)
 {
-
+    if ((inventory_slot_class::button_type > 0) && (inventory_slot_class::drag))
+    {
+        draw_texture(false,game.item[inventory_slot_class::button_type-100].image_ref,inventory_slot_class::pos_x,inventory_slot_class::pos_y,inventory_slot_class::pos_z,inventory_slot_class::width,inventory_slot_class::height);
+    }
 };
 
 //----------------------------------------------------------------------------------------------------------------
@@ -652,14 +655,20 @@ void inventory_class::draw(void)
     game.font.font_1.Write(255,255,255,255,inventory_class::pos_x - (inventory_class::width /10.0f),inventory_class::pos_y + (inventory_class::height/2.30f),4.8f,32.0f,game.language.text.inventory);
     for (int inventory_slot_count = 1; inventory_slot_count < MAX_INVENTORY_SLOTS; inventory_slot_count++)
     {
-        if(inventory_class::inventory_slot[inventory_slot_count].button_type > 0) inventory_class::inventory_slot[inventory_slot_count].draw();
+        inventory_class::inventory_slot[inventory_slot_count].draw();
+    }
+    for (int inventory_slot_count = 1; inventory_slot_count < MAX_INVENTORY_SLOTS; inventory_slot_count++)
+    {
+        inventory_class::inventory_slot[inventory_slot_count].draw_drag();
     }
 };
 
 void init_inventory(void)
 {
-    game.UI.inventory.inventory_slot[ 1].button_type  = game.item[1].ID;
-    game.UI.inventory.inventory_slot[ 2].button_type  = game.item[2].ID;
+    game.UI.inventory.inventory_slot[ 1].button_type  = game.item[  1].ID;
+    game.UI.inventory.inventory_slot[ 2].button_type  = game.item[  2].ID;
+    game.UI.inventory.inventory_slot[ 3].button_type  = game.item[101].ID;
+    game.UI.inventory.inventory_slot[ 4].button_type  = game.item[102].ID;
 
 };
 

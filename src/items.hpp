@@ -44,8 +44,12 @@
 #define SHIELD        11
 #define WAND          12
 #define SWORD         13
+#define DAGGER        14
+#define BELT          15
+#define BOW           16
+#define WEAPON        17
 
-const int MAX_ITEMS = 128;
+const int MAX_ITEMS = 65500;
 
 class item_class
 {
