@@ -49,12 +49,12 @@ int init_game(bool re_init)
     game.core.spellbook_active                    = false;
     game.core.inventory_active                    = false;
 
-    game.player.health.current                    =  100.0f;
+    game.player.health.current                    =  000.0f;
     game.player.health.maximum                    =  100.0f;
-    game.player.health.regeneration               =  000.05f;
+    game.player.health.regeneration               =  000.015f;
     game.player.mana.current                      =  000.0f;
     game.player.mana.maximum                      =  100.0f;
-    game.player.mana.regeneration                 =  000.05f;
+    game.player.mana.regeneration                 =  000.025f;
 
     game.UI.spell_book.close_button.image_normal       =  game.texture.close_button.ref_number;
     game.UI.spell_book.close_button.image_highlighted  =  game.texture.close_button_highlighted.ref_number;

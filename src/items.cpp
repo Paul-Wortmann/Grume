@@ -290,14 +290,37 @@ void init_items(void)
     game.item[201].max_stack_number  = 1;
     game.item[201].ID                = 301;
     game.item[201].type              = BOOTS;
-    game.item[201].defense           = 10;
+    game.item[201].defense           = 4;
     game.item[202].name              = "Boots of Flame walk";
     game.item[202].image_ref         = game.texture.boots_06.ref_number;
     game.item[202].stack_number      = 1;
     game.item[202].max_stack_number  = 1;
     game.item[202].ID                = 302;
     game.item[202].type              = BOOTS;
-    game.item[202].defense           = 10;
+    game.item[202].defense           = 2;
+
+//-------------------------------- Armour ----------------------------------------------------------------------------
+    game.item[301].name              = "Plate Armour";
+    game.item[301].image_ref         = game.texture.armour_00.ref_number;
+    game.item[301].stack_number      = 1;
+    game.item[301].max_stack_number  = 1;
+    game.item[301].ID                = 401;
+    game.item[301].type              = ARMOUR;
+    game.item[301].defense           = 10;
+
+//-------------------------------- Bows ----------------------------------------------------------------------------
+    game.item[401].name              = "Bow";
+
+//-------------------------------- Daggers ----------------------------------------------------------------------------
+    game.item[501].name              = "Frost Dagger";
+    game.item[501].image_ref         = game.texture.dagger_00.ref_number;
+    game.item[501].stack_number      = 1;
+    game.item[501].max_stack_number  = 1;
+    game.item[501].ID                = 601;
+    game.item[501].type              = DAGGER;
+    game.item[501].min_damage        = 6;
+    game.item[501].max_damage        = 12;
+
 };
 
 
