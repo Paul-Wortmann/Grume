@@ -34,7 +34,7 @@ item_class::item_class(void)
     item_class::name                    = "None";
     item_class::image_ref               = 0;
     item_class::ID                      = 100;
-    item_class::defense                 = 0;
+    item_class::armour                  = 0;
     item_class::min_damage              = 0;
     item_class::max_damage              = 0;
     item_class::add_min_damage          = 0;
@@ -125,9 +125,9 @@ void item_class::load(std::string file_name)
                     if (temp_string_key == "type")                    item_class::type                    = temp_int_data;
                     if (temp_string_key == "stack_number")            item_class::stack_number            = temp_int_data;
                     if (temp_string_key == "max_stack_number")        item_class::max_stack_number        = temp_int_data;
-                    if (temp_string_key == "defense")                 item_class::defense                 = temp_int_data;
-                    if (temp_string_key == "add_defense")             item_class::add_defense             = temp_int_data;
-                    if (temp_string_key == "sub_defense")             item_class::sub_defense             = temp_int_data;
+                    if (temp_string_key == "armour")                  item_class::armour                  = temp_int_data;
+                    if (temp_string_key == "add_armour")              item_class::add_armour              = temp_int_data;
+                    if (temp_string_key == "sub_armour")              item_class::sub_armour              = temp_int_data;
                     if (temp_string_key == "min_damage")              item_class::min_damage              = temp_int_data;
                     if (temp_string_key == "max_damage")              item_class::max_damage              = temp_int_data;
                     if (temp_string_key == "add_min_damage")          item_class::add_min_damage          = temp_int_data;
@@ -290,14 +290,14 @@ void init_items(void)
     game.item[201].max_stack_number  = 1;
     game.item[201].ID                = 301;
     game.item[201].type              = BOOTS;
-    game.item[201].defense           = 4;
+    game.item[201].armour            = 4;
     game.item[202].name              = "Boots of Flame walk";
     game.item[202].image_ref         = game.texture.boots_06.ref_number;
     game.item[202].stack_number      = 1;
     game.item[202].max_stack_number  = 1;
     game.item[202].ID                = 302;
     game.item[202].type              = BOOTS;
-    game.item[202].defense           = 2;
+    game.item[202].armour            = 2;
 
 //-------------------------------- Armour ----------------------------------------------------------------------------
     game.item[301].name              = "Plate Armour";
@@ -306,7 +306,7 @@ void init_items(void)
     game.item[301].max_stack_number  = 1;
     game.item[301].ID                = 401;
     game.item[301].type              = ARMOUR;
-    game.item[301].defense           = 10;
+    game.item[301].armour            = 10;
 
 //-------------------------------- Bows ----------------------------------------------------------------------------
     game.item[401].name              = "Bow";
@@ -320,6 +320,32 @@ void init_items(void)
     game.item[501].type              = DAGGER;
     game.item[501].min_damage        = 6;
     game.item[501].max_damage        = 12;
+
+//-------------------------------- Rings ----------------------------------------------------------------------------
+    game.item[601].name              = "Ice Ring";
+    game.item[601].image_ref         = game.texture.ring_00.ref_number;
+    game.item[601].stack_number      = 1;
+    game.item[601].max_stack_number  = 1;
+    game.item[601].ID                = 701;
+    game.item[601].type              = RING;
+    game.item[601].min_damage        = 6;
+    game.item[601].max_damage        = 12;
+
+//-------------------------------- Shields ----------------------------------------------------------------------------
+    game.item[701].name              = "Golden Shield";
+    game.item[701].image_ref         = game.texture.shield_00.ref_number;
+    game.item[701].stack_number      = 1;
+    game.item[701].max_stack_number  = 1;
+    game.item[701].ID                = 801;
+    game.item[701].type              = SHIELD;
+    game.item[701].armour            = 16;
+    game.item[702].name              = "Silver Shield";
+    game.item[702].image_ref         = game.texture.shield_01.ref_number;
+    game.item[702].stack_number      = 1;
+    game.item[702].max_stack_number  = 1;
+    game.item[702].ID                = 802;
+    game.item[702].type              = SHIELD;
+    game.item[702].armour            = 12;
 
 };
 

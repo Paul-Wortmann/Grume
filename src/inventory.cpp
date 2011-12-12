@@ -204,6 +204,33 @@ void inventory_slot_class::process(void)
                     game.item[temp_ID].stack_number--;
                     if(game.item[temp_ID].stack_number <= 0)inventory_slot_class::button_type = 0;
                 break;
+                case HELM:
+
+                break;
+                case BOOTS:
+                break;
+                case ARMOUR:
+                break;
+                case GLOVES:
+                break;
+                case RING:
+                break;
+                case AMULET:
+                break;
+                case SHIELD:
+                break;
+                case WAND:
+                break;
+                case SWORD:
+                break;
+                case DAGGER:
+                break;
+                case BELT:
+                break;
+                case BOW:
+                break;
+                case SLING:
+                break;
                 default:
                 break;
             }
@@ -718,6 +745,14 @@ void init_inventory(void)
     game.UI.inventory.inventory_slot[ 5].button_type  = game.item[301].ID;
     game.UI.inventory.inventory_slot[ 6].button_type  = game.item[501].ID;
 
+    game.UI.inventory.inventory_slot[ 7].button_type  = game.item[601].ID;
+    game.UI.inventory.inventory_slot[ 8].button_type  = game.item[601].ID;
+    game.UI.inventory.inventory_slot[ 9].button_type  = game.item[601].ID;
+    game.UI.inventory.inventory_slot[10].button_type  = game.item[601].ID;
+    game.UI.inventory.inventory_slot[11].button_type  = game.item[601].ID;
+
+    game.UI.inventory.inventory_slot[12].button_type  = game.item[701].ID;
+    game.UI.inventory.inventory_slot[13].button_type  = game.item[702].ID;
 
 
     game.UI.inventory.inventory_slot[45].button_type  = game.item[101].ID;

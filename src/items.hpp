@@ -64,9 +64,12 @@ class item_class
         int         type;
         int         stack_number;
         int         max_stack_number;
-        int         defense;
-        int         add_defense;
-        int         sub_defense;
+        int         require_defence;
+        int         require_strength;
+        int         require_intelligence;
+        int         armour;
+        int         add_armour;
+        int         sub_armour;
         int         min_damage;
         int         max_damage;
         int         add_min_damage;
