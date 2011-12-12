@@ -715,10 +715,13 @@ void init_inventory(void)
     game.UI.inventory.inventory_slot[ 2].button_type  = game.item[  2].ID;
     game.UI.inventory.inventory_slot[ 3].button_type  = game.item[201].ID;
     game.UI.inventory.inventory_slot[ 4].button_type  = game.item[202].ID;
-    game.UI.inventory.inventory_slot[ 5].button_type  = game.item[101].ID;
-    game.UI.inventory.inventory_slot[ 6].button_type  = game.item[107].ID;
-    game.UI.inventory.inventory_slot[ 7].button_type  = game.item[108].ID;
-    game.UI.inventory.inventory_slot[ 8].button_type  = game.item[114].ID;
+
+
+
+    game.UI.inventory.inventory_slot[45].button_type  = game.item[101].ID;
+    game.UI.inventory.inventory_slot[46].button_type  = game.item[107].ID;
+    game.UI.inventory.inventory_slot[47].button_type  = game.item[108].ID;
+    game.UI.inventory.inventory_slot[48].button_type  = game.item[114].ID;
 
 };
 
