@@ -34,13 +34,13 @@ item_class::item_class(void)
     item_class::name                    = "None";
     item_class::image_ref               = 0;
     item_class::ID                      = 100;
-    item_class::defence                 = 0;
-    item_class::min_dammage             = 0;
-    item_class::max_dammage             = 0;
-    item_class::add_min_dammage         = 0;
-    item_class::add_max_dammage         = 0;
-    item_class::sub_min_dammage         = 0;
-    item_class::sub_max_dammage         = 0;
+    item_class::defense                 = 0;
+    item_class::min_damage              = 0;
+    item_class::max_damage              = 0;
+    item_class::add_min_damage          = 0;
+    item_class::add_max_damage          = 0;
+    item_class::sub_min_damage          = 0;
+    item_class::sub_max_damage          = 0;
     item_class::add_max_health          = 0;
     item_class::sub_max_health          = 0;
     item_class::add_max_mana            = 0;
@@ -61,9 +61,103 @@ item_class::~item_class(void)
 
 };
 
-void item_class::load(void)
+void item_class::load(std::string file_name)
 {
-
+    char           temp_char_UTF8   = ' ';
+    short          temp_char_UTF16  = ' ';
+    int            temp_char_UTF32  = ' ';
+    float          temp_float_data;
+    int            temp_int_data;
+    bool           temp_bool_data;
+    std::string    temp_string_data;
+    std::string    temp_string_key;
+    std::string    temp_string_value;
+    int            count;
+    std::string    data_line;
+    std::ifstream  script_file(file_name.c_str(),std::ios::in);
+    if (script_file.is_open())
+    {
+        while ( script_file.good() )
+        {
+            getline(script_file,data_line);
+            if (data_line.length() > 0)
+            {
+                if ('\r' == data_line.at(data_line.length()-1))
+                {
+                    data_line = data_line.substr(0, data_line.length()-1);
+                }
+            }
+            {
+                temp_char_UTF32 = data_line[0];
+                if((temp_char_UTF32 != '#') && (data_line.length() > 2))
+                {
+                    temp_char_UTF32   = '#';
+                    temp_string_key   = "";
+                    temp_string_value = "";
+                    count = 0;
+                    while(temp_char_UTF32 != ' ')
+                    {
+                        temp_char_UTF32 = data_line[count];
+                        if(temp_char_UTF32 != ' ') temp_string_key += temp_char_UTF32;
+                        count++;
+                        if(count > data_line.length()) (temp_char_UTF32 = ' ');
+                    }
+                    while((temp_char_UTF32 == ' ') || (temp_char_UTF32 == '='))
+                    {
+                        temp_char_UTF32 = data_line[count];
+                        count++;
+                        if(count > data_line.length()) (temp_char_UTF32 = '#');
+                    }
+                    count--;
+                    while(count < (data_line.length()-1))
+                    {
+                        temp_char_UTF32  = data_line[count];
+                        if (temp_char_UTF32 != '"') temp_string_value += temp_char_UTF32;
+                        count++;
+                    }
+                    temp_string_data = temp_string_value.c_str();
+                    temp_float_data  = (float) atof(temp_string_value.c_str());
+                    temp_int_data    = (int)   atoi(temp_string_value.c_str());
+                    if (temp_int_data == 1) temp_bool_data = true;
+                    else temp_bool_data = false;
+                    if (temp_string_key == "Name")                    item_class::name                    = temp_string_data;
+                    if (temp_string_key == "ID")                      item_class::ID                      = temp_int_data;
+                    if (temp_string_key == "type")                    item_class::type                    = temp_int_data;
+                    if (temp_string_key == "stack_number")            item_class::stack_number            = temp_int_data;
+                    if (temp_string_key == "max_stack_number")        item_class::max_stack_number        = temp_int_data;
+                    if (temp_string_key == "defense")                 item_class::defense                 = temp_int_data;
+                    if (temp_string_key == "add_defense")             item_class::add_defense             = temp_int_data;
+                    if (temp_string_key == "sub_defense")             item_class::sub_defense             = temp_int_data;
+                    if (temp_string_key == "min_damage")              item_class::min_damage              = temp_int_data;
+                    if (temp_string_key == "max_damage")              item_class::max_damage              = temp_int_data;
+                    if (temp_string_key == "add_min_damage")          item_class::add_min_damage          = temp_int_data;
+                    if (temp_string_key == "add_max_damage")          item_class::add_max_damage          = temp_int_data;
+                    if (temp_string_key == "sub_min_damage")          item_class::sub_min_damage          = temp_int_data;
+                    if (temp_string_key == "sub_max_damage")          item_class::sub_max_damage          = temp_int_data;
+                    if (temp_string_key == "add_max_health")          item_class::add_max_health          = temp_int_data;
+                    if (temp_string_key == "sub_max_health")          item_class::sub_max_health          = temp_int_data;
+                    if (temp_string_key == "add_max_mana")            item_class::add_max_mana            = temp_int_data;
+                    if (temp_string_key == "sub_max_mana")            item_class::sub_max_mana            = temp_int_data;
+                    if (temp_string_key == "add_health_regeneration") item_class::add_health_regeneration = temp_int_data;
+                    if (temp_string_key == "sub_health_regeneration") item_class::sub_health_regeneration = temp_int_data;
+                    if (temp_string_key == "add_mana_regeneration")   item_class::add_mana_regeneration   = temp_int_data;
+                    if (temp_string_key == "sub_mana_regeneration")   item_class::sub_mana_regeneration   = temp_int_data;
+                    if (temp_string_key == "add_crit_chance")         item_class::add_crit_chance         = temp_int_data;
+                    if (temp_string_key == "sub_crit_chance")         item_class::sub_crit_chance         = temp_int_data;
+                    if (temp_string_key == "add_walk_speed")          item_class::add_walk_speed          = temp_int_data;
+                    if (temp_string_key == "sub_walk_speed")          item_class::sub_walk_speed          = temp_int_data;
+                    if (temp_string_key == "add_light_radius")        item_class::add_light_radius        = temp_int_data;
+                    if (temp_string_key == "sub_light_radius")        item_class::sub_light_radius        = temp_int_data;
+                    if (temp_string_key == "add_spell")               item_class::add_spell               = temp_int_data;
+                    if (temp_string_key == "spell_type")              item_class::spell_type              = temp_int_data;
+                    if (temp_string_key == "add_health")              item_class::add_health              = temp_int_data;
+                    if (temp_string_key == "add_mana")                item_class::add_mana                = temp_int_data;
+                    if (temp_string_key == "usable")                  item_class::usable                  = temp_bool_data;
+                }
+            }
+        }
+        script_file.close();
+    }
 };
 
 void init_items(void)
@@ -126,14 +220,14 @@ void init_items(void)
     game.item[201].max_stack_number  = 1;
     game.item[201].ID                = 301;
     game.item[201].type              = BOOTS;
-    game.item[201].defence           = 10;
+    game.item[201].defense           = 10;
     game.item[202].name              = "Boots of Flame walk";
     game.item[202].image_ref         = game.texture.boots_06.ref_number;
     game.item[202].stack_number      = 1;
     game.item[202].max_stack_number  = 1;
     game.item[202].ID                = 302;
     game.item[202].type              = BOOTS;
-    game.item[202].defence           = 10;
+    game.item[202].defense           = 10;
 };
 
 
