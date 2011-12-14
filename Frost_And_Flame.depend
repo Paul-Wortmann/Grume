@@ -72,7 +72,7 @@
 
 1320822860 c:\_git_\frost_and_flame\src\bullets.hpp
 
-1323589033 c:\_git_\frost_and_flame\src\load_resources.hpp
+1323877147 c:\_git_\frost_and_flame\src\load_resources.hpp
 	"core/core.hpp"
 	"core/sound.hpp"
 	"core/music.hpp"
@@ -140,7 +140,7 @@
 1322916780 c:\_git_\frost_and_flame\src\language.hpp
 	<string>
 
-1321153339 c:\_git_\frost_and_flame\src\misc.hpp
+1323864766 c:\_git_\frost_and_flame\src\misc.hpp
 
 1320576931 source:c:\_git_\frost_and_flame\src\pc.cpp
 	"core/core.hpp"
@@ -304,7 +304,7 @@
 	"levels.hpp"
 	"game.hpp"
 
-1323589210 source:c:\_git_\frost_and_flame\src\load_resources.cpp
+1323878563 source:c:\_git_\frost_and_flame\src\load_resources.cpp
 	<SDL/SDL.h>
 	"load_resources.hpp"
 	"game.hpp"
@@ -331,7 +331,7 @@
 	"menu_system.hpp"
 	"game.hpp"
 
-1321153484 source:c:\_git_\frost_and_flame\src\misc.cpp
+1323864740 source:c:\_git_\frost_and_flame\src\misc.cpp
 	<time.h>
 	<stdlib.h>
 	<math.h>
@@ -416,14 +416,14 @@
 	"character.hpp"
 	"quest_log.hpp"
 
-1321760251 c:\_git_\frost_and_flame\src\player.hpp
+1323865618 c:\_git_\frost_and_flame\src\player.hpp
 
 1321532241 source:c:\_git_\frost_and_flame\src\player.cpp
 	"player.hpp"
 
 1322913595 c:\_git_\frost_and_flame\src\spell_book.hpp
 
-1322915294 source:c:\_git_\frost_and_flame\src\spell_book.cpp
+1323700089 source:c:\_git_\frost_and_flame\src\spell_book.cpp
 	"spell_book.hpp"
 	"spells.hpp"
 	"game.hpp"
@@ -434,12 +434,12 @@
 
 1323598540 c:\_git_\frost_and_flame\src\spells.hpp
 
-1323686288 source:c:\_git_\frost_and_flame\src\inventory.cpp
+1323878478 source:c:\_git_\frost_and_flame\src\inventory.cpp
 	"inventory.hpp"
 	"game.hpp"
 	"items.hpp"
 
-1323432751 c:\_git_\frost_and_flame\src\inventory.hpp
+1323877681 c:\_git_\frost_and_flame\src\inventory.hpp
 
 1321782549 c:\_git_\frost_and_flame\src\character.hpp
 
@@ -755,20 +755,21 @@
 	"character.hpp"
 	"game.hpp"
 
-1323686512 c:\_git_\frost_and_flame\src\items.hpp
+1323876008 c:\_git_\frost_and_flame\src\items.hpp
 	<iostream>
 	<fstream>
 	<stdio.h>
 	<stdlib.h>
 	<string>
 
-1323686421 source:c:\_git_\frost_and_flame\src\items.cpp
+1323877425 source:c:\_git_\frost_and_flame\src\items.cpp
 	"items.hpp"
 	"game.hpp"
+	"misc.hpp"
 
 1323572765 c:\_git_\frost_and_flame\src\equipment.hpp
 
-1323580891 source:c:\_git_\frost_and_flame\src\equipment.cpp
+1323864489 source:c:\_git_\frost_and_flame\src\equipment.cpp
 	"equipment.hpp"
 	"game.hpp"
 

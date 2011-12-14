@@ -95,6 +95,7 @@ class inventory_class
        ~inventory_class(void);
         void             process(void);
         void             draw(void);
+        void             draw_tooltip(void);
 };
 
 void init_inventory(void);

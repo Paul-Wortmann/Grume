@@ -274,31 +274,31 @@ spell_book_class::spell_book_class(void)
     spell_book_class::spell_slot[15].pos_z        = spell_book_class::pos_z;
     spell_book_class::spell_slot[15].width        = spell_book_class::width / 8.2f;
     spell_book_class::spell_slot[15].height       = spell_book_class::height/10.4f;
-    spell_book_class::spell_slot[16].button_type  = 0;
+    spell_book_class::spell_slot[16].button_type  = 16;
     spell_book_class::spell_slot[16].pos_x        = spell_book_class::pos_x + (spell_book_class::width /3.206f);
     spell_book_class::spell_slot[16].pos_y        = spell_book_class::pos_y - (spell_book_class::height/8.00f);
     spell_book_class::spell_slot[16].pos_z        = spell_book_class::pos_z;
     spell_book_class::spell_slot[16].width        = spell_book_class::width / 8.2f;
     spell_book_class::spell_slot[16].height       = spell_book_class::height/10.4f;
-    spell_book_class::spell_slot[17].button_type  = 0;
+    spell_book_class::spell_slot[17].button_type  = 17;
     spell_book_class::spell_slot[17].pos_x        = spell_book_class::pos_x - (spell_book_class::width /2.980f);
     spell_book_class::spell_slot[17].pos_y        = spell_book_class::pos_y - (spell_book_class::height/3.90f);
     spell_book_class::spell_slot[17].pos_z        = spell_book_class::pos_z;
     spell_book_class::spell_slot[17].width        = spell_book_class::width / 8.2f;
     spell_book_class::spell_slot[17].height       = spell_book_class::height/10.4f;
-    spell_book_class::spell_slot[18].button_type  = 0;
+    spell_book_class::spell_slot[18].button_type  = 18;
     spell_book_class::spell_slot[18].pos_x        = spell_book_class::pos_x - (spell_book_class::width /8.2f);
     spell_book_class::spell_slot[18].pos_y        = spell_book_class::pos_y - (spell_book_class::height/3.90f);
     spell_book_class::spell_slot[18].pos_z        = spell_book_class::pos_z;
     spell_book_class::spell_slot[18].width        = spell_book_class::width / 8.2f;
     spell_book_class::spell_slot[18].height       = spell_book_class::height/10.4f;
-    spell_book_class::spell_slot[19].button_type  = 0;
+    spell_book_class::spell_slot[19].button_type  = 19;
     spell_book_class::spell_slot[19].pos_x        = spell_book_class::pos_x + (spell_book_class::width /10.4f);
     spell_book_class::spell_slot[19].pos_y        = spell_book_class::pos_y - (spell_book_class::height/3.90f);
     spell_book_class::spell_slot[19].pos_z        = spell_book_class::pos_z;
     spell_book_class::spell_slot[19].width        = spell_book_class::width / 8.2f;
     spell_book_class::spell_slot[19].height       = spell_book_class::height/10.4f;
-    spell_book_class::spell_slot[20].button_type  = 0;
+    spell_book_class::spell_slot[20].button_type  = 20;
     spell_book_class::spell_slot[20].pos_x        = spell_book_class::pos_x + (spell_book_class::width /3.206f);
     spell_book_class::spell_slot[20].pos_y        = spell_book_class::pos_y - (spell_book_class::height/3.90f);
     spell_book_class::spell_slot[20].pos_z        = spell_book_class::pos_z;
@@ -375,8 +375,8 @@ void spell_book_class::process(void)
             spell_book_class::spell_slot[19].pos_y        = spell_book_class::pos_y - (spell_book_class::height/3.90f);
             spell_book_class::spell_slot[20].pos_x        = spell_book_class::pos_x + (spell_book_class::width /3.206f);
             spell_book_class::spell_slot[20].pos_y        = spell_book_class::pos_y - (spell_book_class::height/3.90f);
-            spell_book_class::close_button.pos_x         = spell_book_class::pos_x + (spell_book_class::width /2.406f);
-            spell_book_class::close_button.pos_y         = spell_book_class::pos_y + (spell_book_class::height/2.20f);
+            spell_book_class::close_button.pos_x          = spell_book_class::pos_x + (spell_book_class::width /2.406f);
+            spell_book_class::close_button.pos_y          = spell_book_class::pos_y + (spell_book_class::height/2.20f);
         }
         else
         {

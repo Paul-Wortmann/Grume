@@ -52,12 +52,23 @@
 #define SLING         18
 #define WEAPON        19
 
-const int MAX_ITEMS = 65500;
+const int   ARMOUR_BASE_MULTIPLIER              = 1;
+const int   DAMAGE_BASE_MULTIPLIER              = 1;
+const int   HEALTH_BASE_MULTIPLIER              = 1;
+const int   MANA_BASE_MULTIPLIER                = 1;
+const int   HEALTH_REGENERATION_BASE_MULTIPLIER = 15;
+const int   MANA_REGENERATION_BASE_MULTIPLIER   = 25;
+const int   CRITICAL_CHANCE_BASE_MULTIPLIER     = 1;
+const int   WALK_SPEED_BASE_MULTIPLIER          = 1;
+const int   LIGHT_RADIUS_BASE_MULTIPLIER        = 1;
+
+const int   MAX_ITEMS = 65500;
 
 class item_class
 {
     public:
         std::string name;
+        bool        active;
         int         image_ref;
         int         sound_ref;
         int         ID;
@@ -94,13 +105,14 @@ class item_class
         int         spell_type;
         int         add_health;
         int         add_mana;
-        bool        usable;
         void load(std::string file_name);
         item_class(void);
        ~item_class(void);
 };
 
-void    init_items(void);
+int   generate_range(int level, int quality, int base_value);
+void  generate_random_item(int item_ID, int level, int quality, int type);
+void  init_items(void);
 
 #endif // ITEMS_H
 

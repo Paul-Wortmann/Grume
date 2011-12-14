@@ -111,7 +111,7 @@ void equipment_slot_class::process(void)
                 {
                     if (game.UI.inventory.inventory_slot[inventory_slot_count].mouse_over)
                     {
-                        temp_ID = game.UI.inventory.inventory_slot[inventory_slot_count].button_type-100;
+                        temp_ID = game.UI.inventory.inventory_slot[inventory_slot_count].button_type;
                         if (game.UI.inventory.inventory_slot[inventory_slot_count].button_type <= 0)
                         {
                             temp_button = equipment_slot_class::button_type;
@@ -175,7 +175,7 @@ void equipment_slot_class::draw(void)
     }
     if (equipment_slot_class::button_type > 0)
     {
-        draw_texture(false,game.item[equipment_slot_class::button_type-100].image_ref,equipment_slot_class::pos_x,equipment_slot_class::pos_y,equipment_slot_class::pos_z,equipment_slot_class::width,equipment_slot_class::height);
+        draw_texture(false,game.item[equipment_slot_class::button_type].image_ref,equipment_slot_class::pos_x,equipment_slot_class::pos_y,equipment_slot_class::pos_z,equipment_slot_class::width,equipment_slot_class::height);
     }
 };
 
@@ -183,7 +183,7 @@ void equipment_slot_class::draw_drag(void)
 {
     if ((equipment_slot_class::button_type > 0) && (equipment_slot_class::drag))
     {
-        draw_texture(false,game.item[equipment_slot_class::button_type-100].image_ref,equipment_slot_class::pos_x,equipment_slot_class::pos_y,equipment_slot_class::pos_z,equipment_slot_class::width,equipment_slot_class::height);
+        draw_texture(false,game.item[equipment_slot_class::button_type].image_ref,equipment_slot_class::pos_x,equipment_slot_class::pos_y,equipment_slot_class::pos_z,equipment_slot_class::width,equipment_slot_class::height);
     }
 };
 

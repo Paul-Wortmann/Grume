@@ -99,6 +99,7 @@ struct texture_type
     texture_class spell_book_background;
     texture_class inventory;
     texture_class inventory_background;
+    texture_class item_stat_background;
     texture_class character_background;
     texture_class quest_log_background;
     texture_class equipment_background;
@@ -169,6 +170,21 @@ struct texture_type
     texture_class spell_15_level_01;
     texture_class spell_15_level_02;
     texture_class spell_15_level_03;
+    texture_class spell_16_level_01;
+    texture_class spell_16_level_02;
+    texture_class spell_16_level_03;
+    texture_class spell_17_level_01;
+    texture_class spell_17_level_02;
+    texture_class spell_17_level_03;
+    texture_class spell_18_level_01;
+    texture_class spell_18_level_02;
+    texture_class spell_18_level_03;
+    texture_class spell_19_level_01;
+    texture_class spell_19_level_02;
+    texture_class spell_19_level_03;
+    texture_class spell_20_level_01;
+    texture_class spell_20_level_02;
+    texture_class spell_20_level_03;
 
     texture_class grass_and_water_tileset;
     texture_class bridge_tileset;

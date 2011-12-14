@@ -50,6 +50,11 @@ double random_double(void)
        return temp_d;
 }
 
+int random_int(int minimum, int maximum)
+{
+    return((rand()%(maximum - minimum)) + minimum);
+}
+
 int random_int(void)
 {
    return(rand()%65535);

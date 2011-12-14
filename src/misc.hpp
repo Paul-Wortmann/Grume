@@ -30,6 +30,7 @@ double       random_double(void);
 int          random(int range);
 int          random_dec(void);
 int          random_cen(void);
+int          random_int(int minimum, int maximum);
 int          random_int(void);
 float        random_GLcoord(void);
 std::string  const_char_to_string(const char *const_char_in);

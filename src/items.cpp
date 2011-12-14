@@ -24,6 +24,7 @@
 
 #include "items.hpp"
 #include "game.hpp"
+#include "misc.hpp"
 
 extern game_type game;
 
@@ -32,6 +33,7 @@ extern game_type game;
 item_class::item_class(void)
 {
     item_class::name                    = "None";
+    item_class::active                  = false;
     item_class::image_ref               = 0;
     item_class::ID                      = 100;
     item_class::armour                  = 0;
@@ -53,7 +55,6 @@ item_class::item_class(void)
     item_class::sub_crit_chance         = 0;
     item_class::add_spell               = 0;
     item_class::spell_type              = 0;
-    item_class::usable                  = false;
 };
 
 item_class::~item_class(void)
@@ -152,7 +153,6 @@ void item_class::load(std::string file_name)
                     if (temp_string_key == "spell_type")              item_class::spell_type              = temp_int_data;
                     if (temp_string_key == "add_health")              item_class::add_health              = temp_int_data;
                     if (temp_string_key == "add_mana")                item_class::add_mana                = temp_int_data;
-                    if (temp_string_key == "usable")                  item_class::usable                  = temp_bool_data;
                 }
             }
         }
@@ -160,192 +160,431 @@ void item_class::load(std::string file_name)
     }
 };
 
+int   generate_range(int level, int quality, int base_value)
+{
+    return(((level+quality)*1.5f)*base_value);
+};
+
+void  generate_random_item(int item_ID, int level, int quality, int type)
+{
+    int minimum_range = (MAX_LEVEL - quality);
+    int temp_range    = 0;
+    int temp_value    = 0;
+    switch (type)
+    {
+        case HELM:
+            game.item[item_ID].name              = "Random Helm";
+            game.item[item_ID].active            = true;
+            game.item[item_ID].type              = HELM;
+            game.item[item_ID].stack_number      = 1;
+            game.item[item_ID].max_stack_number  = 1;
+            game.item[item_ID].ID                = item_ID;
+            temp_range = generate_range(level,quality,ARMOUR_BASE_MULTIPLIER);
+            temp_value = random_int(minimum_range,temp_range);
+            game.item[item_ID].armour = temp_value/2;
+            if (random(quality*10) <= 10) game.item[item_ID].add_armour = random((quality/10));
+            if (random(quality*10) <=  1) game.item[item_ID].sub_armour = random((quality/10));
+            game.item[item_ID].armour += game.item[item_ID].add_armour;
+            game.item[item_ID].armour -= game.item[item_ID].sub_armour;
+            if (random(100) <= 50)
+            {
+                if (random(quality*10) <= 10) game.item[item_ID].add_max_health          = random((quality/10));
+                if (random(quality*10) <=  1) game.item[item_ID].sub_max_health          = random((quality/10));
+                if (random(quality*10) <= 10) game.item[item_ID].add_health_regeneration = random((quality/10));
+                if (random(quality*10) <=  1) game.item[item_ID].sub_health_regeneration = random((quality/10));
+            }
+            else
+            {
+                if (random(quality*10) <= 10) game.item[item_ID].add_max_mana            = random((quality/10));
+                if (random(quality*10) <=  1) game.item[item_ID].sub_max_mana            = random((quality/10));
+                if (random(quality*10) <= 10) game.item[item_ID].add_mana_regeneration   = random((quality/10));
+                if (random(quality*10) <=  1) game.item[item_ID].sub_mana_regeneration   = random((quality/10));
+            }
+            if (random(100) <= 25)
+            {
+                temp_range = random(99);
+                if (temp_range <= 33)
+                {
+                    if (random(quality*10) <= 10) game.item[item_ID].add_crit_chance    = random((quality/10));
+                    if (random(quality*10) <=  1) game.item[item_ID].sub_crit_chance    = random((quality/10));
+                }
+                if ((temp_range >= 33) && (temp_range <= 66))
+                {
+                    if (random(quality*10) <= 10) game.item[item_ID].add_walk_speed     = random((quality/10));
+                    if (random(quality*10) <=  1) game.item[item_ID].sub_walk_speed     = random((quality/10));
+                }
+                if (temp_range >= 66)
+                {
+                    if (random(quality*10) <= 10) game.item[item_ID].add_light_radius   = random((quality/10));
+                    if (random(quality*10) <=  1) game.item[item_ID].sub_light_radius   = random((quality/10));
+                }
+            }
+        break;
+        case BOOTS:
+            game.item[item_ID].name              = "Random Boots";
+            game.item[item_ID].active            = true;
+            game.item[item_ID].type              = BOOTS;
+            game.item[item_ID].stack_number      = 1;
+            game.item[item_ID].max_stack_number  = 1;
+            game.item[item_ID].ID                = item_ID;
+            temp_range = random(12);
+            if (temp_range ==  0) game.item[item_ID].image_ref = game.texture.boots_00.ref_number;
+            if (temp_range ==  1) game.item[item_ID].image_ref = game.texture.boots_01.ref_number;
+            if (temp_range ==  2) game.item[item_ID].image_ref = game.texture.boots_02.ref_number;
+            if (temp_range ==  3) game.item[item_ID].image_ref = game.texture.boots_03.ref_number;
+            if (temp_range ==  4) game.item[item_ID].image_ref = game.texture.boots_04.ref_number;
+            if (temp_range ==  5) game.item[item_ID].image_ref = game.texture.boots_05.ref_number;
+            if (temp_range ==  6) game.item[item_ID].image_ref = game.texture.boots_06.ref_number;
+            if (temp_range ==  7) game.item[item_ID].image_ref = game.texture.boots_07.ref_number;
+            if (temp_range ==  8) game.item[item_ID].image_ref = game.texture.boots_08.ref_number;
+            if (temp_range ==  9) game.item[item_ID].image_ref = game.texture.boots_09.ref_number;
+            if (temp_range == 10) game.item[item_ID].image_ref = game.texture.boots_10.ref_number;
+            if (temp_range >= 11) game.item[item_ID].image_ref = game.texture.boots_11.ref_number;
+            temp_range = generate_range(level,quality,ARMOUR_BASE_MULTIPLIER);
+            temp_value = random_int(minimum_range,temp_range);
+            game.item[item_ID].armour = temp_value/3;
+            if (random(quality*10) <= 10) game.item[item_ID].add_armour = random((quality/10));
+            if (random(quality*10) <=  1) game.item[item_ID].sub_armour = random((quality/10));
+            game.item[item_ID].armour += game.item[item_ID].add_armour;
+            game.item[item_ID].armour -= game.item[item_ID].sub_armour;
+            if (random(100) <= 50)
+            {
+                if (random(quality*10) <= 10) game.item[item_ID].add_max_health          = random((quality/10));
+                if (random(quality*10) <=  1) game.item[item_ID].sub_max_health          = random((quality/10));
+                if (random(quality*10) <= 10) game.item[item_ID].add_health_regeneration = random((quality/10));
+                if (random(quality*10) <=  1) game.item[item_ID].sub_health_regeneration = random((quality/10));
+            }
+            else
+            {
+                if (random(quality*10) <= 10) game.item[item_ID].add_max_mana            = random((quality/10));
+                if (random(quality*10) <=  1) game.item[item_ID].sub_max_mana            = random((quality/10));
+                if (random(quality*10) <= 10) game.item[item_ID].add_mana_regeneration   = random((quality/10));
+                if (random(quality*10) <=  1) game.item[item_ID].sub_mana_regeneration   = random((quality/10));
+            }
+            if (random(100) <= 25)
+            {
+                temp_range = random(99);
+                if (temp_range <= 33)
+                {
+                    if (random(quality*10) <= 10) game.item[item_ID].add_crit_chance    = random((quality/10));
+                    if (random(quality*10) <=  1) game.item[item_ID].sub_crit_chance    = random((quality/10));
+                }
+                if ((temp_range >= 33) && (temp_range <= 66))
+                {
+                    if (random(quality*10) <= 10) game.item[item_ID].add_walk_speed     = random((quality/10));
+                    if (random(quality*10) <=  1) game.item[item_ID].sub_walk_speed     = random((quality/10));
+                }
+                if (temp_range >= 66)
+                {
+                    if (random(quality*10) <= 10) game.item[item_ID].add_light_radius   = random((quality/10));
+                    if (random(quality*10) <=  1) game.item[item_ID].sub_light_radius   = random((quality/10));
+                }
+            }
+        break;
+        case ARMOUR:
+            game.item[item_ID].name              = "Random Armour";
+            game.item[item_ID].active            = true;
+            game.item[item_ID].type              = ARMOUR;
+            game.item[item_ID].stack_number      = 1;
+            game.item[item_ID].max_stack_number  = 1;
+            game.item[item_ID].ID                = item_ID;
+            temp_range = random(9);
+            if (temp_range ==  0) game.item[item_ID].image_ref = game.texture.armour_00.ref_number;
+            if (temp_range ==  1) game.item[item_ID].image_ref = game.texture.armour_01.ref_number;
+            if (temp_range ==  2) game.item[item_ID].image_ref = game.texture.armour_02.ref_number;
+            if (temp_range ==  3) game.item[item_ID].image_ref = game.texture.armour_03.ref_number;
+            if (temp_range ==  4) game.item[item_ID].image_ref = game.texture.armour_04.ref_number;
+            if (temp_range ==  5) game.item[item_ID].image_ref = game.texture.armour_05.ref_number;
+            if (temp_range ==  6) game.item[item_ID].image_ref = game.texture.armour_06.ref_number;
+            if (temp_range ==  7) game.item[item_ID].image_ref = game.texture.armour_07.ref_number;
+            if (temp_range >=  8) game.item[item_ID].image_ref = game.texture.armour_08.ref_number;
+            temp_range = generate_range(level,quality,ARMOUR_BASE_MULTIPLIER);
+            temp_value = random_int(minimum_range,temp_range);
+            game.item[item_ID].armour = temp_value;
+            if (random(quality*10) <= 10) game.item[item_ID].add_armour = random((quality/10));
+            if (random(quality*10) <=  1) game.item[item_ID].sub_armour = random((quality/10));
+            game.item[item_ID].armour += game.item[item_ID].add_armour;
+            game.item[item_ID].armour -= game.item[item_ID].sub_armour;
+            if (random(100) <= 50)
+            {
+                if (random(quality*10) <= 10) game.item[item_ID].add_max_health          = random((quality/10));
+                if (random(quality*10) <=  1) game.item[item_ID].sub_max_health          = random((quality/10));
+                if (random(quality*10) <= 10) game.item[item_ID].add_health_regeneration = random((quality/10));
+                if (random(quality*10) <=  1) game.item[item_ID].sub_health_regeneration = random((quality/10));
+            }
+            else
+            {
+                if (random(quality*10) <= 10) game.item[item_ID].add_max_mana            = random((quality/10));
+                if (random(quality*10) <=  1) game.item[item_ID].sub_max_mana            = random((quality/10));
+                if (random(quality*10) <= 10) game.item[item_ID].add_mana_regeneration   = random((quality/10));
+                if (random(quality*10) <=  1) game.item[item_ID].sub_mana_regeneration   = random((quality/10));
+            }
+            if (random(100) <= 25)
+            {
+                temp_range = random(99);
+                if (temp_range <= 33)
+                {
+                    if (random(quality*10) <= 10) game.item[item_ID].add_crit_chance    = random((quality/10));
+                    if (random(quality*10) <=  1) game.item[item_ID].sub_crit_chance    = random((quality/10));
+                }
+                if ((temp_range >= 33) && (temp_range <= 66))
+                {
+                    if (random(quality*10) <= 10) game.item[item_ID].add_walk_speed     = random((quality/10));
+                    if (random(quality*10) <=  1) game.item[item_ID].sub_walk_speed     = random((quality/10));
+                }
+                if (temp_range >= 66)
+                {
+                    if (random(quality*10) <= 10) game.item[item_ID].add_light_radius   = random((quality/10));
+                    if (random(quality*10) <=  1) game.item[item_ID].sub_light_radius   = random((quality/10));
+                }
+            }
+        break;
+        case GLOVES:
+            game.item[item_ID].name              = "Random Gloves";
+            game.item[item_ID].active            = true;
+            game.item[item_ID].type              = GLOVES;
+            game.item[item_ID].stack_number      = 1;
+            game.item[item_ID].max_stack_number  = 1;
+            game.item[item_ID].ID                = item_ID;
+            temp_range = generate_range(level,quality,ARMOUR_BASE_MULTIPLIER);
+            temp_value = random_int(minimum_range,temp_range);
+            game.item[item_ID].armour = temp_value/2;
+            if (random(quality*10) <= 10) game.item[item_ID].add_armour = random((quality/10));
+            if (random(quality*10) <=  1) game.item[item_ID].sub_armour = random((quality/10));
+            game.item[item_ID].armour += game.item[item_ID].add_armour;
+            game.item[item_ID].armour -= game.item[item_ID].sub_armour;
+            if (random(100) <= 50)
+            {
+                if (random(quality*10) <= 10) game.item[item_ID].add_max_health          = random((quality/10));
+                if (random(quality*10) <=  1) game.item[item_ID].sub_max_health          = random((quality/10));
+                if (random(quality*10) <= 10) game.item[item_ID].add_health_regeneration = random((quality/10));
+                if (random(quality*10) <=  1) game.item[item_ID].sub_health_regeneration = random((quality/10));
+            }
+            else
+            {
+                if (random(quality*10) <= 10) game.item[item_ID].add_max_mana            = random((quality/10));
+                if (random(quality*10) <=  1) game.item[item_ID].sub_max_mana            = random((quality/10));
+                if (random(quality*10) <= 10) game.item[item_ID].add_mana_regeneration   = random((quality/10));
+                if (random(quality*10) <=  1) game.item[item_ID].sub_mana_regeneration   = random((quality/10));
+            }
+            if (random(100) <= 25)
+            {
+                temp_range = random(99);
+                if (temp_range <= 33)
+                {
+                    if (random(quality*10) <= 10) game.item[item_ID].add_crit_chance    = random((quality/10));
+                    if (random(quality*10) <=  1) game.item[item_ID].sub_crit_chance    = random((quality/10));
+                }
+                if ((temp_range >= 33) && (temp_range <= 66))
+                {
+                    if (random(quality*10) <= 10) game.item[item_ID].add_walk_speed     = random((quality/10));
+                    if (random(quality*10) <=  1) game.item[item_ID].sub_walk_speed     = random((quality/10));
+                }
+                if (temp_range >= 66)
+                {
+                    if (random(quality*10) <= 10) game.item[item_ID].add_light_radius   = random((quality/10));
+                    if (random(quality*10) <=  1) game.item[item_ID].sub_light_radius   = random((quality/10));
+                }
+            }
+        break;
+    }
+    //unique name generation based on randomly generated stats
+};
+
 void init_items(void)
 {
-//-------------------------------- Skills / Spells -------------------------------------------------------------------
-    game.item[1].name              = "Book of Chain Lightning";
-    game.item[1].image_ref         = game.texture.book_15.ref_number;
-    game.item[1].stack_number      = 5;
-    game.item[1].max_stack_number  = 10;
-    game.item[1].ID                = 101;
-    game.item[1].type              = SPELL_BOOK;
-    game.item[1].add_spell         = 1;
-    game.item[1].spell_type        = 2;
-    game.item[1].usable            = true;
-    game.item[2].name              = "Book of Stalagmite";
-    game.item[2].image_ref         = game.texture.book_19.ref_number;
-    game.item[2].stack_number      = 5;
-    game.item[2].max_stack_number  = 10;
-    game.item[2].ID                = 102;
-    game.item[2].type              = SPELL_BOOK;
-    game.item[2].add_spell         = 1;
-    game.item[2].spell_type        = 1;
-    game.item[2].usable            = true;
+// First 1000 items are reserved for permanent entities, 1000+ are for randomly generated items.
+//-------------------------------- Skills / Spells / scrolls ---------------------------------------------------------
+    game.item[101].name              = "Book of Chain Lightning";
+    game.item[101].image_ref         = game.texture.book_15.ref_number;
+    game.item[101].stack_number      = 5;
+    game.item[101].max_stack_number  = 10;
+    game.item[101].ID                = 101;
+    game.item[101].type              = SPELL_BOOK;
+    game.item[101].add_spell         = 1;
+    game.item[101].spell_type        = 2;
+    game.item[102].name              = "Book of Stalagmite";
+    game.item[102].image_ref         = game.texture.book_19.ref_number;
+    game.item[102].stack_number      = 5;
+    game.item[102].max_stack_number  = 10;
+    game.item[102].ID                = 102;
+    game.item[102].type              = SPELL_BOOK;
+    game.item[102].add_spell         = 1;
+    game.item[102].spell_type        = 1;
 
-//-------------------------------- Potions --------------------------------------------------------------------------
-    game.item[101].name              = "Minuscule Health Potion";
-    game.item[101].image_ref         = game.texture.potion_01.ref_number;
-    game.item[101].stack_number      = 1;
-    game.item[101].max_stack_number  = 20;
-    game.item[101].ID                = 201;
-    game.item[101].type              = HEALTH_POTION;
-    game.item[101].add_health        = 5;
-    game.item[102].name              = "Tiny Health Potion";
-    game.item[102].image_ref         = game.texture.potion_02.ref_number;
-    game.item[102].stack_number      = 1;
-    game.item[102].max_stack_number  = 20;
-    game.item[102].ID                = 202;
-    game.item[102].type              = HEALTH_POTION;
-    game.item[102].add_health        = 10;
-    game.item[103].name              = "Small Health Potion";
-    game.item[103].image_ref         = game.texture.potion_03.ref_number;
-    game.item[103].stack_number      = 1;
-    game.item[103].max_stack_number  = 20;
-    game.item[103].ID                = 203;
-    game.item[103].type              = HEALTH_POTION;
-    game.item[103].add_health        = 20;
-    game.item[104].name              = "Medium Health Potion";
-    game.item[104].image_ref         = game.texture.potion_04.ref_number;
-    game.item[104].stack_number      = 1;
-    game.item[104].max_stack_number  = 20;
-    game.item[104].ID                = 204;
-    game.item[104].type              = HEALTH_POTION;
-    game.item[104].add_health        = 40;
-    game.item[105].name              = "Large Health Potion";
-    game.item[105].image_ref         = game.texture.potion_05.ref_number;
-    game.item[105].stack_number      = 1;
-    game.item[105].max_stack_number  = 20;
-    game.item[105].ID                = 205;
-    game.item[105].type              = HEALTH_POTION;
-    game.item[105].add_health        = 80;
-    game.item[106].name              = "Huge Health Potion";
-    game.item[106].image_ref         = game.texture.potion_06.ref_number;
-    game.item[106].stack_number      = 1;
-    game.item[106].max_stack_number  = 20;
-    game.item[106].ID                = 206;
-    game.item[106].type              = HEALTH_POTION;
-    game.item[106].add_health        = 160;
-    game.item[107].name              = "Gigantic Health Potion";
-    game.item[107].image_ref         = game.texture.potion_07.ref_number;
-    game.item[107].stack_number      = 1;
-    game.item[107].max_stack_number  = 20;
-    game.item[107].ID                = 207;
-    game.item[107].type              = HEALTH_POTION;
-    game.item[107].add_health        = 320;
-
-    game.item[108].name              = "Minuscule Mana Potion";
-    game.item[108].image_ref         = game.texture.potion_08.ref_number;
-    game.item[108].stack_number      = 1;
-    game.item[108].max_stack_number  = 20;
-    game.item[108].ID                = 208;
-    game.item[108].type              = MANA_POTION;
-    game.item[108].add_mana          = 5;
-    game.item[109].name              = "Tiny Mana Potion";
-    game.item[109].image_ref         = game.texture.potion_09.ref_number;
-    game.item[109].stack_number      = 1;
-    game.item[109].max_stack_number  = 20;
-    game.item[109].ID                = 209;
-    game.item[109].type              = MANA_POTION;
-    game.item[109].add_mana          = 10;
-    game.item[110].name              = "Small Mana Potion";
-    game.item[110].image_ref         = game.texture.potion_10.ref_number;
-    game.item[110].stack_number      = 1;
-    game.item[110].max_stack_number  = 20;
-    game.item[110].ID                = 210;
-    game.item[110].type              = MANA_POTION;
-    game.item[110].add_mana          = 20;
-    game.item[111].name              = "Medium Mana Potion";
-    game.item[111].image_ref         = game.texture.potion_11.ref_number;
-    game.item[111].stack_number      = 1;
-    game.item[111].max_stack_number  = 20;
-    game.item[111].ID                = 211;
-    game.item[111].type              = MANA_POTION;
-    game.item[111].add_mana          = 40;
-    game.item[112].name              = "Large Mana Potion";
-    game.item[112].image_ref         = game.texture.potion_12.ref_number;
-    game.item[112].stack_number      = 1;
-    game.item[112].max_stack_number  = 20;
-    game.item[112].ID                = 212;
-    game.item[112].type              = MANA_POTION;
-    game.item[112].add_mana          = 80;
-    game.item[113].name              = "Huge Mana Potion";
-    game.item[113].image_ref         = game.texture.potion_13.ref_number;
-    game.item[113].stack_number      = 1;
-    game.item[113].max_stack_number  = 20;
-    game.item[113].ID                = 213;
-    game.item[113].type              = MANA_POTION;
-    game.item[113].add_mana          = 160;
-    game.item[114].name              = "Gigantic Mana Potion";
-    game.item[114].image_ref         = game.texture.potion_14.ref_number;
-    game.item[114].stack_number      = 1;
-    game.item[114].max_stack_number  = 20;
-    game.item[114].ID                = 214;
-    game.item[114].type              = MANA_POTION;
-    game.item[114].add_mana          = 320;
-
-//-------------------------------- Boots ----------------------------------------------------------------------------
-    game.item[201].name              = "Boots of Haste";
-    game.item[201].image_ref         = game.texture.boots_09.ref_number;
+//-------------------------------- Potions / gems / runes -----------------------------------------------------------
+    game.item[201].name              = "Minuscule Health Potion";
+    game.item[201].image_ref         = game.texture.potion_01.ref_number;
     game.item[201].stack_number      = 1;
-    game.item[201].max_stack_number  = 1;
-    game.item[201].ID                = 301;
-    game.item[201].type              = BOOTS;
-    game.item[201].armour            = 4;
-    game.item[202].name              = "Boots of Flame walk";
-    game.item[202].image_ref         = game.texture.boots_06.ref_number;
+    game.item[201].max_stack_number  = 20;
+    game.item[201].ID                = 201;
+    game.item[201].type              = HEALTH_POTION;
+    game.item[201].add_health        = 5;
+    game.item[202].name              = "Tiny Health Potion";
+    game.item[202].image_ref         = game.texture.potion_02.ref_number;
     game.item[202].stack_number      = 1;
-    game.item[202].max_stack_number  = 1;
-    game.item[202].ID                = 302;
-    game.item[202].type              = BOOTS;
-    game.item[202].armour            = 2;
+    game.item[202].max_stack_number  = 20;
+    game.item[202].ID                = 202;
+    game.item[202].type              = HEALTH_POTION;
+    game.item[202].add_health        = 10;
+    game.item[203].name              = "Small Health Potion";
+    game.item[203].image_ref         = game.texture.potion_03.ref_number;
+    game.item[203].stack_number      = 1;
+    game.item[203].max_stack_number  = 20;
+    game.item[203].ID                = 203;
+    game.item[203].type              = HEALTH_POTION;
+    game.item[203].add_health        = 20;
+    game.item[204].name              = "Medium Health Potion";
+    game.item[204].image_ref         = game.texture.potion_04.ref_number;
+    game.item[204].stack_number      = 1;
+    game.item[204].max_stack_number  = 20;
+    game.item[204].ID                = 204;
+    game.item[204].type              = HEALTH_POTION;
+    game.item[204].add_health        = 40;
+    game.item[205].name              = "Large Health Potion";
+    game.item[205].image_ref         = game.texture.potion_05.ref_number;
+    game.item[205].stack_number      = 1;
+    game.item[205].max_stack_number  = 20;
+    game.item[205].ID                = 205;
+    game.item[205].type              = HEALTH_POTION;
+    game.item[205].add_health        = 80;
+    game.item[206].name              = "Huge Health Potion";
+    game.item[206].image_ref         = game.texture.potion_06.ref_number;
+    game.item[206].stack_number      = 1;
+    game.item[206].max_stack_number  = 20;
+    game.item[206].ID                = 206;
+    game.item[206].type              = HEALTH_POTION;
+    game.item[206].add_health        = 160;
+    game.item[207].name              = "Gigantic Health Potion";
+    game.item[207].image_ref         = game.texture.potion_07.ref_number;
+    game.item[207].stack_number      = 1;
+    game.item[207].max_stack_number  = 20;
+    game.item[207].ID                = 207;
+    game.item[207].type              = HEALTH_POTION;
+    game.item[207].add_health        = 320;
 
-//-------------------------------- Armour ----------------------------------------------------------------------------
-    game.item[301].name              = "Plate Armour";
-    game.item[301].image_ref         = game.texture.armour_00.ref_number;
+    game.item[208].name              = "Minuscule Mana Potion";
+    game.item[208].image_ref         = game.texture.potion_08.ref_number;
+    game.item[208].stack_number      = 1;
+    game.item[208].max_stack_number  = 20;
+    game.item[208].ID                = 208;
+    game.item[208].type              = MANA_POTION;
+    game.item[208].add_mana          = 5;
+    game.item[209].name              = "Tiny Mana Potion";
+    game.item[209].image_ref         = game.texture.potion_09.ref_number;
+    game.item[209].stack_number      = 1;
+    game.item[209].max_stack_number  = 20;
+    game.item[209].ID                = 209;
+    game.item[209].type              = MANA_POTION;
+    game.item[209].add_mana          = 10;
+    game.item[210].name              = "Small Mana Potion";
+    game.item[210].image_ref         = game.texture.potion_10.ref_number;
+    game.item[210].stack_number      = 1;
+    game.item[210].max_stack_number  = 20;
+    game.item[210].ID                = 210;
+    game.item[210].type              = MANA_POTION;
+    game.item[210].add_mana          = 20;
+    game.item[211].name              = "Medium Mana Potion";
+    game.item[211].image_ref         = game.texture.potion_11.ref_number;
+    game.item[211].stack_number      = 1;
+    game.item[211].max_stack_number  = 20;
+    game.item[211].ID                = 211;
+    game.item[211].type              = MANA_POTION;
+    game.item[211].add_mana          = 40;
+    game.item[212].name              = "Large Mana Potion";
+    game.item[212].image_ref         = game.texture.potion_12.ref_number;
+    game.item[212].stack_number      = 1;
+    game.item[212].max_stack_number  = 20;
+    game.item[212].ID                = 212;
+    game.item[212].type              = MANA_POTION;
+    game.item[212].add_mana          = 80;
+    game.item[213].name              = "Huge Mana Potion";
+    game.item[213].image_ref         = game.texture.potion_13.ref_number;
+    game.item[213].stack_number      = 1;
+    game.item[213].max_stack_number  = 20;
+    game.item[213].ID                = 213;
+    game.item[213].type              = MANA_POTION;
+    game.item[213].add_mana          = 160;
+    game.item[214].name              = "Gigantic Mana Potion";
+    game.item[214].image_ref         = game.texture.potion_14.ref_number;
+    game.item[214].stack_number      = 1;
+    game.item[214].max_stack_number  = 20;
+    game.item[214].ID                = 214;
+    game.item[214].type              = MANA_POTION;
+    game.item[214].add_mana          = 320;
+
+//-------------------------------- Boots / gloves -------------------------------------------------------------------
+    game.item[301].name              = "Boots of Haste";
+    game.item[301].image_ref         = game.texture.boots_09.ref_number;
     game.item[301].stack_number      = 1;
     game.item[301].max_stack_number  = 1;
-    game.item[301].ID                = 401;
-    game.item[301].type              = ARMOUR;
-    game.item[301].armour            = 10;
+    game.item[301].ID                = 301;
+    game.item[301].type              = BOOTS;
+    game.item[301].armour            = 4;
+    game.item[302].name              = "Boots of Flame walk";
+    game.item[302].image_ref         = game.texture.boots_06.ref_number;
+    game.item[302].stack_number      = 1;
+    game.item[302].max_stack_number  = 1;
+    game.item[302].ID                = 302;
+    game.item[302].type              = BOOTS;
+    game.item[302].armour            = 2;
 
-//-------------------------------- Bows ----------------------------------------------------------------------------
-    game.item[401].name              = "Bow";
+//-------------------------------- Armour / helms --------------------------------------------------------------------
+    game.item[401].name              = "Plate Armour";
+    game.item[401].image_ref         = game.texture.armour_00.ref_number;
+    game.item[401].stack_number      = 1;
+    game.item[401].max_stack_number  = 1;
+    game.item[401].ID                = 401;
+    game.item[401].type              = ARMOUR;
+    game.item[401].armour            = 10;
 
-//-------------------------------- Daggers ----------------------------------------------------------------------------
-    game.item[501].name              = "Frost Dagger";
-    game.item[501].image_ref         = game.texture.dagger_00.ref_number;
-    game.item[501].stack_number      = 1;
-    game.item[501].max_stack_number  = 1;
-    game.item[501].ID                = 601;
-    game.item[501].type              = DAGGER;
-    game.item[501].min_damage        = 6;
-    game.item[501].max_damage        = 12;
+//-------------------------------- Bows / slings -------------------------------------------------------------------
+    game.item[501].name              = "Bow";
 
-//-------------------------------- Rings ----------------------------------------------------------------------------
-    game.item[601].name              = "Ice Ring";
-    game.item[601].image_ref         = game.texture.ring_00.ref_number;
+//-------------------------------- Daggers / Swords -------------------------------------------------------------------
+    game.item[601].name              = "Frost Dagger";
+    game.item[601].image_ref         = game.texture.dagger_00.ref_number;
     game.item[601].stack_number      = 1;
     game.item[601].max_stack_number  = 1;
-    game.item[601].ID                = 701;
-    game.item[601].type              = RING;
+    game.item[601].ID                = 601;
+    game.item[601].type              = DAGGER;
     game.item[601].min_damage        = 6;
     game.item[601].max_damage        = 12;
 
-//-------------------------------- Shields ----------------------------------------------------------------------------
-    game.item[701].name              = "Golden Shield";
-    game.item[701].image_ref         = game.texture.shield_00.ref_number;
+//-------------------------------- Rings / Amulets ------------------------------------------------------------------
+    game.item[701].name              = "Ice Ring";
+    game.item[701].image_ref         = game.texture.ring_00.ref_number;
     game.item[701].stack_number      = 1;
     game.item[701].max_stack_number  = 1;
-    game.item[701].ID                = 801;
-    game.item[701].type              = SHIELD;
-    game.item[701].armour            = 16;
-    game.item[702].name              = "Silver Shield";
-    game.item[702].image_ref         = game.texture.shield_01.ref_number;
-    game.item[702].stack_number      = 1;
-    game.item[702].max_stack_number  = 1;
-    game.item[702].ID                = 802;
-    game.item[702].type              = SHIELD;
-    game.item[702].armour            = 12;
+    game.item[701].ID                = 701;
+    game.item[701].type              = RING;
+    game.item[701].min_damage        = 6;
+    game.item[701].max_damage        = 12;
+
+//-------------------------------- Shields ----------------------------------------------------------------------------
+    game.item[801].name              = "Golden Shield";
+    game.item[801].image_ref         = game.texture.shield_00.ref_number;
+    game.item[801].stack_number      = 1;
+    game.item[801].max_stack_number  = 1;
+    game.item[801].ID                = 801;
+    game.item[801].type              = SHIELD;
+    game.item[801].armour            = 16;
+    game.item[802].name              = "Silver Shield";
+    game.item[802].image_ref         = game.texture.shield_01.ref_number;
+    game.item[802].stack_number      = 1;
+    game.item[802].max_stack_number  = 1;
+    game.item[802].ID                = 802;
+    game.item[802].type              = SHIELD;
+    game.item[802].armour            = 12;
+
+//-------------------------------- Wands ------------------------------------------------------------------------------
+    game.item[901].name              = "Wand";
+//---------------------------------------------------------------------------------------------------------------------
+//----------------------------------------- Generate some random items ------------------------------------------------
+//this will be done in game on loot drop
+
+    generate_random_item(1000,100,100,BOOTS);
+    generate_random_item(1001,100,100,ARMOUR);
 
 };
 

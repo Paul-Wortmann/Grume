@@ -25,6 +25,8 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 
+const int MAX_LEVEL = 100;
+
 class stat_class
 {
     public:
