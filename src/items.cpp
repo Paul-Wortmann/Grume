@@ -511,7 +511,7 @@ void init_items(void)
 //-------------------------------- Potions / gems / runes -----------------------------------------------------------
     game.item[201].name              = "Minuscule Health Potion";
     game.item[201].image_ref         = game.texture.potion_01.ref_number;
-    game.item[201].stack_number      = 10;
+    game.item[201].stack_number      = 1;
     game.item[201].max_stack_number  = 20;
     game.item[201].ID                = 201;
     game.item[201].type              = HEALTH_POTION;

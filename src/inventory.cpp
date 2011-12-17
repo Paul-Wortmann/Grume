@@ -84,6 +84,8 @@ inventory_slot_class::inventory_slot_class(void)
     inventory_slot_class::height            =  0.0f;
     inventory_slot_class::drag_offset_x     =  0.0f;
     inventory_slot_class::drag_offset_y     =  0.0f;
+    inventory_slot_class::quantity          =  1;
+    inventory_slot_class::max_quantity      =  1;
 };
 
 inventory_slot_class::~inventory_slot_class(void)
@@ -134,9 +136,36 @@ void inventory_slot_class::process(void)
                 {
                     if (game.UI.inventory.inventory_slot[inventory_slot_count].mouse_over)
                     {
-                        temp_button = inventory_slot_class::button_type;
-                        inventory_slot_class::button_type = game.UI.inventory.inventory_slot[inventory_slot_count].button_type;
-                        game.UI.inventory.inventory_slot[inventory_slot_count].button_type = temp_button;
+
+                        if   ((inventory_slot_class::button_type == game.UI.inventory.inventory_slot[inventory_slot_count].button_type)
+                            && (inventory_slot_class::base_pos_x != game.UI.inventory.inventory_slot[inventory_slot_count].base_pos_x)
+                            && (inventory_slot_class::base_pos_y != game.UI.inventory.inventory_slot[inventory_slot_count].base_pos_y))
+                        {
+                            game.UI.inventory.inventory_slot[inventory_slot_count].quantity += inventory_slot_class::quantity;
+                            inventory_slot_class::quantity = 0;
+                            if (game.UI.inventory.inventory_slot[inventory_slot_count].quantity > game.item[game.UI.inventory.inventory_slot[inventory_slot_count].button_type].max_stack_number)
+                            {
+                                inventory_slot_class::quantity = game.UI.inventory.inventory_slot[inventory_slot_count].quantity - game.item[game.UI.inventory.inventory_slot[inventory_slot_count].button_type].max_stack_number;
+                                game.UI.inventory.inventory_slot[inventory_slot_count].quantity = game.item[game.UI.inventory.inventory_slot[inventory_slot_count].button_type].max_stack_number;
+                            }
+                            if (inventory_slot_class::quantity <= 0)
+                            {
+                                inventory_slot_class::button_type  = 0;
+                                inventory_slot_class::quantity     = 1;
+                                inventory_slot_class::max_quantity = 1;
+                            }
+                        }
+                        else
+                        {
+                            temp_button = inventory_slot_class::button_type;
+                            inventory_slot_class::button_type = game.UI.inventory.inventory_slot[inventory_slot_count].button_type;
+                            game.UI.inventory.inventory_slot[inventory_slot_count].button_type = temp_button;
+                            temp_button = inventory_slot_class::quantity;
+                            inventory_slot_class::quantity = game.UI.inventory.inventory_slot[inventory_slot_count].quantity;
+                            game.UI.inventory.inventory_slot[inventory_slot_count].quantity = temp_button;
+                            inventory_slot_class::max_quantity = game.item[inventory_slot_class::button_type].max_stack_number;
+                            game.UI.inventory.inventory_slot[inventory_slot_count].max_quantity = game.item[game.UI.inventory.inventory_slot[inventory_slot_count].button_type].max_stack_number;
+                        }
                     }
                 }
                 for (int equipment_slot_count = 1; equipment_slot_count < MAX_EQUIPMENT_SLOTS; equipment_slot_count++)
@@ -148,6 +177,8 @@ void inventory_slot_class::process(void)
                             temp_button = inventory_slot_class::button_type;
                             inventory_slot_class::button_type = game.UI.equipment.equipment_slot[equipment_slot_count].button_type;
                             game.UI.equipment.equipment_slot[equipment_slot_count].button_type = temp_button;
+                            inventory_slot_class::quantity     = 1;
+                            inventory_slot_class::max_quantity = 1;
                         }
                         if (game.UI.equipment.equipment_slot[equipment_slot_count].slot_type == WEAPON)
                         {
@@ -156,6 +187,8 @@ void inventory_slot_class::process(void)
                                 temp_button = inventory_slot_class::button_type;
                                 inventory_slot_class::button_type = game.UI.equipment.equipment_slot[equipment_slot_count].button_type;
                                 game.UI.equipment.equipment_slot[equipment_slot_count].button_type = temp_button;
+                                inventory_slot_class::quantity     = 1;
+                                inventory_slot_class::max_quantity = 1;
                             }
                         }
                     }
@@ -188,27 +221,27 @@ void inventory_slot_class::process(void)
                     if (game.player.health.current < game.player.health.maximum)
                     {
                         game.player.health.current += game.item[temp_ID].add_health;
-                        game.item[temp_ID].stack_number--;
-                        if(game.item[temp_ID].stack_number <= 0)inventory_slot_class::button_type = 0;
+                        inventory_slot_class::quantity--;
+                        if(inventory_slot_class::quantity <= 0) inventory_slot_class::button_type = 0;
                     }
                 break;
                 case MANA_POTION:
                     if (game.player.mana.current < game.player.mana.maximum)
                     {
                         game.player.mana.current += game.item[temp_ID].add_mana;
-                        game.item[temp_ID].stack_number--;
-                        if(game.item[temp_ID].stack_number <= 0)inventory_slot_class::button_type = 0;
+                        inventory_slot_class::quantity--;
+                        if(inventory_slot_class::quantity <= 0)inventory_slot_class::button_type = 0;
                     }
                 break;
                 case SPELL_BOOK:
-                    if (game.spell[game.item[temp_ID].spell_type].level < 3) game.item[temp_ID].stack_number--;
-                    if(game.item[temp_ID].stack_number <= 0)inventory_slot_class::button_type = 0;
+                    if (game.spell[game.item[temp_ID].spell_type].level < 3) inventory_slot_class::quantity--;
+                    if(inventory_slot_class::quantity <= 0)inventory_slot_class::button_type = 0;
                     game.spell[game.item[temp_ID].spell_type].level++;
                     if (game.spell[game.item[temp_ID].spell_type].level > 3) game.spell[game.item[temp_ID].spell_type].level = 3;
                 break;
                 case SPELL_SCROLL:
-                    game.item[temp_ID].stack_number--;
-                    if(game.item[temp_ID].stack_number <= 0)inventory_slot_class::button_type = 0;
+                    inventory_slot_class::quantity--;
+                    if(inventory_slot_class::quantity <= 0)inventory_slot_class::button_type = 0;
                 break;
 
                 //equip items below on right click?
@@ -252,12 +285,12 @@ void inventory_slot_class::draw(void)
     if (inventory_slot_class::button_type > 0)
     {
         draw_texture(false,game.item[inventory_slot_class::button_type].image_ref,inventory_slot_class::pos_x,inventory_slot_class::pos_y,inventory_slot_class::pos_z,inventory_slot_class::width,inventory_slot_class::height);
-        if ((game.item[inventory_slot_class::button_type].stack_number > 1) && (!inventory_slot_class::drag))
+        if ((inventory_slot_class::quantity > 1) && (!inventory_slot_class::drag))
         {
-            if (game.item[inventory_slot_class::button_type].stack_number >   9) spacing += " ";
-            if (game.item[inventory_slot_class::button_type].stack_number >  99) spacing += " ";
-            if (game.item[inventory_slot_class::button_type].stack_number > 999) spacing += " ";
-            game.font.font_1.Write(255,255,255,255,inventory_slot_class::pos_x+0.012f,inventory_slot_class::pos_y-0.036f,7.0f,48.0f,game.item[inventory_slot_class::button_type].stack_number,spacing);
+            if (inventory_slot_class::quantity >   9) spacing += " ";
+            if (inventory_slot_class::quantity >  99) spacing += " ";
+            if (inventory_slot_class::quantity > 999) spacing += " ";
+            game.font.font_1.Write(255,255,255,255,inventory_slot_class::pos_x+0.012f,inventory_slot_class::pos_y-0.036f,7.0f,48.0f,inventory_slot_class::quantity,spacing);
         }
     }
 };
@@ -897,6 +930,12 @@ void init_inventory(void)
     game.UI.inventory.inventory_slot[21].button_type  = game.item[1001].ID;
     game.UI.inventory.inventory_slot[22].button_type  = game.item[1002].ID;
 
+    game.UI.inventory.inventory_slot[40].button_type  = game.item[ 201].ID;
+    game.UI.inventory.inventory_slot[40].quantity     = 6;
+    game.UI.inventory.inventory_slot[41].button_type  = game.item[ 201].ID;
+    game.UI.inventory.inventory_slot[42].button_type  = game.item[ 201].ID;
+    game.UI.inventory.inventory_slot[43].button_type  = game.item[ 201].ID;
+    game.UI.inventory.inventory_slot[44].button_type  = game.item[ 201].ID;
 
     game.UI.inventory.inventory_slot[45].button_type  = game.item[ 201].ID;
     game.UI.inventory.inventory_slot[46].button_type  = game.item[ 207].ID;

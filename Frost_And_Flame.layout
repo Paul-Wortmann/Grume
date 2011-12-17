@@ -124,7 +124,7 @@
 	<File name="src\inventory.cpp" open="1" top="1" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor1 position="16455" topLine="295" />
 	</File>
-	<File name="src\inventory.hpp" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="src\inventory.hpp" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor1 position="3164" topLine="45" />
 	</File>
 	<File name="src\items.cpp" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
