@@ -199,7 +199,7 @@ int main(int argc, char *argv[])
             game.core.process_ready = true;
         }
         else game.core.process_ready = false;
-        game.texture.cursor.draw(false,game.core.io.mouse_x+0.036f,game.core.io.mouse_y-0.036f,0.001f,0.08f,0.08f,345.0f);
+        game.texture.cursor.draw(false,game.core.io.mouse_x+0.012f,game.core.io.mouse_y-0.018f,0.001f,0.04f,0.04f,345.0f);
         SDL_GL_SwapBuffers();
     }
 //----------------------------------- Exit -------------------------------------

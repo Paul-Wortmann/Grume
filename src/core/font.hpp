@@ -45,6 +45,7 @@ class font_class
         bool Write(int r,int g,int b,int a,float x,float y,float ws,float hs,std::string text,int int_data,std::string text_2);
         bool Write(int r,int g,int b,int a,float x,float y,float ws,float hs,std::string text,float float_data,std::string text_2);
         bool Write(int r,int g,int b,int a,float x,float y,float ws,float hs,float float_data,std::string text);
+        bool Write(int r,int g,int b,int a,float x,float y,float ws,float hs,int   int_data);
 };
 
 #endif //FONT_H

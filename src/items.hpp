@@ -105,6 +105,14 @@ class item_class
         int         spell_type;
         int         add_health;
         int         add_mana;
+        int         add_fire_damage;
+        int         add_frost_damage;
+        int         add_lightning_damage;
+        int         add_magic_damage;
+        int         add_fire_resistance;
+        int         add_frost_resistance;
+        int         add_lightning_resistance;
+        int         add_all_resistances;
         void load(std::string file_name);
         item_class(void);
        ~item_class(void);
@@ -115,4 +123,9 @@ void  generate_random_item(int item_ID, int level, int quality, int type);
 void  init_items(void);
 
 #endif // ITEMS_H
+
+
+
+
+
 

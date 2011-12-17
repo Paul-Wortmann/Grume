@@ -248,9 +248,17 @@ void inventory_slot_class::process(void)
 
 void inventory_slot_class::draw(void)
 {
+    std::string spacing = "                ";
     if (inventory_slot_class::button_type > 0)
     {
         draw_texture(false,game.item[inventory_slot_class::button_type].image_ref,inventory_slot_class::pos_x,inventory_slot_class::pos_y,inventory_slot_class::pos_z,inventory_slot_class::width,inventory_slot_class::height);
+        if ((game.item[inventory_slot_class::button_type].stack_number > 1) && (!inventory_slot_class::drag))
+        {
+            if (game.item[inventory_slot_class::button_type].stack_number >   9) spacing += " ";
+            if (game.item[inventory_slot_class::button_type].stack_number >  99) spacing += " ";
+            if (game.item[inventory_slot_class::button_type].stack_number > 999) spacing += " ";
+            game.font.font_1.Write(255,255,255,255,inventory_slot_class::pos_x+0.012f,inventory_slot_class::pos_y-0.036f,7.0f,48.0f,game.item[inventory_slot_class::button_type].stack_number,spacing);
+        }
     }
 };
 
@@ -266,11 +274,118 @@ void inventory_slot_class::draw_tooltip(void)
 {
     if ((inventory_slot_class::button_type > 0) && (!inventory_slot_class::drag) && (inventory_slot_class::mouse_over_count == inventory_slot_class::tooltip_time))
     {
+        int   number_of_lines = 0;
+        if (game.item[inventory_slot_class::button_type].armour                   > 0) number_of_lines++;
+        if (game.item[inventory_slot_class::button_type].add_max_health           > 0) number_of_lines++;
+        if (game.item[inventory_slot_class::button_type].sub_max_health           > 0) number_of_lines++;
+        if (game.item[inventory_slot_class::button_type].add_max_mana             > 0) number_of_lines++;
+        if (game.item[inventory_slot_class::button_type].sub_max_mana             > 0) number_of_lines++;
+        if (game.item[inventory_slot_class::button_type].add_health_regeneration  > 0) number_of_lines++;
+        if (game.item[inventory_slot_class::button_type].sub_health_regeneration  > 0) number_of_lines++;
+        if (game.item[inventory_slot_class::button_type].add_mana_regeneration    > 0) number_of_lines++;
+        if (game.item[inventory_slot_class::button_type].sub_mana_regeneration    > 0) number_of_lines++;
+        if (game.item[inventory_slot_class::button_type].add_crit_chance          > 0) number_of_lines++;
+        if (game.item[inventory_slot_class::button_type].sub_crit_chance          > 0) number_of_lines++;
+        if (game.item[inventory_slot_class::button_type].add_walk_speed           > 0) number_of_lines++;
+        if (game.item[inventory_slot_class::button_type].sub_walk_speed           > 0) number_of_lines++;
+        if (game.item[inventory_slot_class::button_type].add_light_radius         > 0) number_of_lines++;
+        if (game.item[inventory_slot_class::button_type].sub_light_radius         > 0) number_of_lines++;
+        if (game.item[inventory_slot_class::button_type].add_spell                > 0) number_of_lines++;
+        if (game.item[inventory_slot_class::button_type].add_fire_damage          > 0) number_of_lines++;
+        if (game.item[inventory_slot_class::button_type].add_frost_damage         > 0) number_of_lines++;
+        if (game.item[inventory_slot_class::button_type].add_lightning_damage     > 0) number_of_lines++;
+        if (game.item[inventory_slot_class::button_type].add_magic_damage         > 0) number_of_lines++;
+        if (game.item[inventory_slot_class::button_type].add_fire_resistance      > 0) number_of_lines++;
+        if (game.item[inventory_slot_class::button_type].add_frost_resistance     > 0) number_of_lines++;
+        if (game.item[inventory_slot_class::button_type].add_lightning_resistance > 0) number_of_lines++;
+        if (game.item[inventory_slot_class::button_type].add_all_resistances      > 0) number_of_lines++;
+        number_of_lines *= 2;
+        number_of_lines += 1;
         float line_height = 0.04f;
-        float width       = inventory_slot_class::width*8;
-        float height      = line_height*16;
+        float width       = inventory_slot_class::width*5.8f;
+        float height      = line_height*number_of_lines;
+        float x_pos       = game.core.io.mouse_x+line_height;
+        float y_pos       = game.core.io.mouse_y-line_height;
         game.texture.item_stat_background.draw(false,game.core.io.mouse_x+(width/2),game.core.io.mouse_y-(height/2),inventory_slot_class::pos_z,width,height);
-        game.font.font_1.Write(255,255,255,255,game.core.io.mouse_x+(line_height*4),game.core.io.mouse_y-line_height,4.8f,32.0f,"Item Stats     ");
+        game.font.font_1.Write(255,255,255,255,x_pos,y_pos,4.8f,32.0f,game.item[inventory_slot_class::button_type].name);
+        y_pos -= line_height;
+        y_pos -= line_height;
+        if(game.item[inventory_slot_class::button_type].armour > 0)
+        {
+            game.font.font_1.Write(255,255,255,255,x_pos,y_pos,4.8f,32.0f,"Armour ->                  ",game.item[inventory_slot_class::button_type].armour);
+            y_pos -= line_height;
+        }
+        if(game.item[inventory_slot_class::button_type].add_max_health > 0)
+        {
+            game.font.font_1.Write(255,255,255,255,x_pos,y_pos,4.8f,32.0f,"Add max health ->          ",game.item[inventory_slot_class::button_type].add_max_health);
+            y_pos -= line_height;
+        }
+        if(game.item[inventory_slot_class::button_type].sub_max_health > 0)
+        {
+            game.font.font_1.Write(255,255,255,255,x_pos,y_pos,4.8f,32.0f,"Sub max health ->          ",game.item[inventory_slot_class::button_type].sub_max_health);
+            y_pos -= line_height;
+        }
+        if(game.item[inventory_slot_class::button_type].add_max_mana > 0)
+        {
+            game.font.font_1.Write(255,255,255,255,x_pos,y_pos,4.8f,32.0f,"Add max mana ->            ",game.item[inventory_slot_class::button_type].add_max_mana);
+            y_pos -= line_height;
+        }
+        if(game.item[inventory_slot_class::button_type].sub_max_mana > 0)
+        {
+            game.font.font_1.Write(255,255,255,255,x_pos,y_pos,4.8f,32.0f,"Sub max mana ->            ",game.item[inventory_slot_class::button_type].sub_max_mana);
+            y_pos -= line_height;
+        }
+        if(game.item[inventory_slot_class::button_type].add_health_regeneration > 0)
+        {
+            game.font.font_1.Write(255,255,255,255,x_pos,y_pos,4.8f,32.0f,"Add health regeneration -> ",game.item[inventory_slot_class::button_type].add_health_regeneration);
+            y_pos -= line_height;
+        }
+        if(game.item[inventory_slot_class::button_type].sub_health_regeneration > 0)
+        {
+            game.font.font_1.Write(255,255,255,255,x_pos,y_pos,4.8f,32.0f,"Sub health regeneration -> ",game.item[inventory_slot_class::button_type].sub_health_regeneration);
+            y_pos -= line_height;
+        }
+        if(game.item[inventory_slot_class::button_type].add_mana_regeneration > 0)
+        {
+            game.font.font_1.Write(255,255,255,255,x_pos,y_pos,4.8f,32.0f,"Add mana regeneration ->   ",game.item[inventory_slot_class::button_type].add_mana_regeneration);
+            y_pos -= line_height;
+        }
+        if(game.item[inventory_slot_class::button_type].sub_mana_regeneration > 0)
+        {
+            game.font.font_1.Write(255,255,255,255,x_pos,y_pos,4.8f,32.0f,"Sub mana regeneration ->   ",game.item[inventory_slot_class::button_type].sub_mana_regeneration);
+            y_pos -= line_height;
+        }
+        if(game.item[inventory_slot_class::button_type].add_crit_chance > 0)
+        {
+            game.font.font_1.Write(255,255,255,255,x_pos,y_pos,4.8f,32.0f,"Add crit chance ->         ",game.item[inventory_slot_class::button_type].add_crit_chance);
+            y_pos -= line_height;
+        }
+        if(game.item[inventory_slot_class::button_type].sub_crit_chance > 0)
+        {
+            game.font.font_1.Write(255,255,255,255,x_pos,y_pos,4.8f,32.0f,"Sub crit chance ->         ",game.item[inventory_slot_class::button_type].sub_crit_chance);
+            y_pos -= line_height;
+        }
+        if(game.item[inventory_slot_class::button_type].add_walk_speed > 0)
+        {
+            game.font.font_1.Write(255,255,255,255,x_pos,y_pos,4.8f,32.0f,"Add walk speed ->          ",game.item[inventory_slot_class::button_type].add_walk_speed);
+            y_pos -= line_height;
+        }
+        if(game.item[inventory_slot_class::button_type].sub_walk_speed > 0)
+        {
+            game.font.font_1.Write(255,255,255,255,x_pos,y_pos,4.8f,32.0f,"Sub walk speed ->          ",game.item[inventory_slot_class::button_type].sub_walk_speed);
+            y_pos -= line_height;
+        }
+        if(game.item[inventory_slot_class::button_type].add_light_radius > 0)
+        {
+            game.font.font_1.Write(255,255,255,255,x_pos,y_pos,4.8f,32.0f,"Add light radius ->        ",game.item[inventory_slot_class::button_type].add_light_radius);
+            y_pos -= line_height;
+        }
+        if(game.item[inventory_slot_class::button_type].sub_light_radius > 0)
+        {
+            game.font.font_1.Write(255,255,255,255,x_pos,y_pos,4.8f,32.0f,"Sub light radius ->        ",game.item[inventory_slot_class::button_type].sub_light_radius);
+            y_pos -= line_height;
+        }
+
     }
 };
 
@@ -780,6 +895,7 @@ void init_inventory(void)
 
     game.UI.inventory.inventory_slot[20].button_type  = game.item[1000].ID;
     game.UI.inventory.inventory_slot[21].button_type  = game.item[1001].ID;
+    game.UI.inventory.inventory_slot[22].button_type  = game.item[1002].ID;
 
 
     game.UI.inventory.inventory_slot[45].button_type  = game.item[ 201].ID;
