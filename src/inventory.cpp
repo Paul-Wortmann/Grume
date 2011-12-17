@@ -22,6 +22,7 @@
  * @date 2011-11-11
  */
 
+#include "misc.hpp"
 #include "inventory.hpp"
 #include "game.hpp"
 #include "items.hpp"
@@ -95,6 +96,7 @@ inventory_slot_class::~inventory_slot_class(void)
 
 void inventory_slot_class::process(void)
 {
+    int  temp_int = 0;
     int  temp_button = 0;
     int  temp_ID = inventory_slot_class::button_type;
     int  active_inventory_slot = 0;
@@ -136,7 +138,7 @@ void inventory_slot_class::process(void)
                 {
                     if (game.UI.inventory.inventory_slot[inventory_slot_count].mouse_over)
                     {
-
+                        game.sound.bottle_01.play();
                         if   ((inventory_slot_class::button_type == game.UI.inventory.inventory_slot[inventory_slot_count].button_type)
                             && (inventory_slot_class::base_pos_x != game.UI.inventory.inventory_slot[inventory_slot_count].base_pos_x)
                             && (inventory_slot_class::base_pos_y != game.UI.inventory.inventory_slot[inventory_slot_count].base_pos_y))
@@ -223,6 +225,10 @@ void inventory_slot_class::process(void)
                         game.player.health.current += game.item[temp_ID].add_health;
                         inventory_slot_class::quantity--;
                         if(inventory_slot_class::quantity <= 0) inventory_slot_class::button_type = 0;
+                        temp_int = random(3);
+                        if (temp_int <= 1) game.sound.bubble_01.play();
+                        if (temp_int == 2) game.sound.bubble_02.play();
+                        if (temp_int >= 3) game.sound.bubble_03.play();
                     }
                 break;
                 case MANA_POTION:
@@ -231,6 +237,10 @@ void inventory_slot_class::process(void)
                         game.player.mana.current += game.item[temp_ID].add_mana;
                         inventory_slot_class::quantity--;
                         if(inventory_slot_class::quantity <= 0)inventory_slot_class::button_type = 0;
+                        temp_int = random(3);
+                        if (temp_int <= 1) game.sound.bubble_01.play();
+                        if (temp_int == 2) game.sound.bubble_02.play();
+                        if (temp_int >= 3) game.sound.bubble_03.play();
                     }
                 break;
                 case SPELL_BOOK:
@@ -910,7 +920,9 @@ void inventory_class::draw(void)
 
 void init_inventory(void)
 {
+    game.UI.inventory.inventory_slot[ 1].quantity     = 6;
     game.UI.inventory.inventory_slot[ 1].button_type  = game.item[ 101].ID;
+    game.UI.inventory.inventory_slot[ 2].quantity     = 8;
     game.UI.inventory.inventory_slot[ 2].button_type  = game.item[ 102].ID;
     game.UI.inventory.inventory_slot[ 3].button_type  = game.item[ 301].ID;
     game.UI.inventory.inventory_slot[ 4].button_type  = game.item[ 302].ID;
@@ -931,15 +943,18 @@ void init_inventory(void)
     game.UI.inventory.inventory_slot[22].button_type  = game.item[1002].ID;
 
     game.UI.inventory.inventory_slot[40].button_type  = game.item[ 201].ID;
-    game.UI.inventory.inventory_slot[40].quantity     = 6;
+    game.UI.inventory.inventory_slot[40].quantity     = 12;
     game.UI.inventory.inventory_slot[41].button_type  = game.item[ 201].ID;
     game.UI.inventory.inventory_slot[42].button_type  = game.item[ 201].ID;
     game.UI.inventory.inventory_slot[43].button_type  = game.item[ 201].ID;
     game.UI.inventory.inventory_slot[44].button_type  = game.item[ 201].ID;
 
     game.UI.inventory.inventory_slot[45].button_type  = game.item[ 201].ID;
+    game.UI.inventory.inventory_slot[46].quantity     = 18;
     game.UI.inventory.inventory_slot[46].button_type  = game.item[ 207].ID;
+    game.UI.inventory.inventory_slot[47].quantity     = 5;
     game.UI.inventory.inventory_slot[47].button_type  = game.item[ 208].ID;
+    game.UI.inventory.inventory_slot[48].quantity     = 7;
     game.UI.inventory.inventory_slot[48].button_type  = game.item[ 214].ID;
 
 };

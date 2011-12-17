@@ -50,8 +50,13 @@ bool load_maps(void)
 bool load_sounds(void)
 {
     int sfx_count = 0;
-    game.sound.menu_move_00.load    ("data/sound/menu_move_00.wav",sfx_count)    ;sfx_count++;
-    game.sound.menu_select_00.load  ("data/sound/menu_select_00.wav",sfx_count)  ;sfx_count++;
+    game.sound.menu_move_00.load    ("data/sound/menu/menu_move_00.wav",sfx_count)    ;sfx_count++;
+    game.sound.menu_select_00.load  ("data/sound/menu/menu_select_00.wav",sfx_count)  ;sfx_count++;
+
+    game.sound.bottle_01.load  ("data/sound/inventory/bottle_01.wav",sfx_count)  ;sfx_count++;
+    game.sound.bubble_01.load  ("data/sound/inventory/bubble_01.wav",sfx_count)  ;sfx_count++;
+    game.sound.bubble_02.load  ("data/sound/inventory/bubble_02.wav",sfx_count)  ;sfx_count++;
+    game.sound.bubble_03.load  ("data/sound/inventory/bubble_03.wav",sfx_count)  ;sfx_count++;
 
     game.core.log.File_Write("Sound files loaded -> ",sfx_count);
     return(true);

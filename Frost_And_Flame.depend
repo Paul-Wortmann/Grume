@@ -72,7 +72,7 @@
 
 1320822860 c:\_git_\frost_and_flame\src\bullets.hpp
 
-1323877147 c:\_git_\frost_and_flame\src\load_resources.hpp
+1324139857 c:\_git_\frost_and_flame\src\load_resources.hpp
 	"core/core.hpp"
 	"core/sound.hpp"
 	"core/music.hpp"
@@ -140,7 +140,8 @@
 1322916780 c:\_git_\frost_and_flame\src\language.hpp
 	<string>
 
-1323864766 c:\_git_\frost_and_flame\src\misc.hpp
+1324140238 c:\_git_\frost_and_flame\src\misc.hpp
+	<string>
 
 1320576931 source:c:\_git_\frost_and_flame\src\pc.cpp
 	"core/core.hpp"
@@ -304,7 +305,7 @@
 	"levels.hpp"
 	"game.hpp"
 
-1323878563 source:c:\_git_\frost_and_flame\src\load_resources.cpp
+1324139958 source:c:\_git_\frost_and_flame\src\load_resources.cpp
 	<SDL/SDL.h>
 	"load_resources.hpp"
 	"game.hpp"
@@ -405,9 +406,10 @@
 
 1321102096 source:c:\_git_\frost_and_flame\src\icon.rc
 
-1323615977 source:c:\_git_\frost_and_flame\src\ui.cpp
+1324141356 source:c:\_git_\frost_and_flame\src\ui.cpp
 	"UI.hpp"
 	"game.hpp"
+	"misc.hpp"
 
 1323614851 c:\_git_\frost_and_flame\src\ui.hpp
 	"spell_book.hpp"
@@ -434,7 +436,8 @@
 
 1323598540 c:\_git_\frost_and_flame\src\spells.hpp
 
-1324137165 source:c:\_git_\frost_and_flame\src\inventory.cpp
+1324140490 source:c:\_git_\frost_and_flame\src\inventory.cpp
+	"misc.hpp"
 	"inventory.hpp"
 	"game.hpp"
 	"items.hpp"
@@ -769,7 +772,7 @@
 
 1323572765 c:\_git_\frost_and_flame\src\equipment.hpp
 
-1323864489 source:c:\_git_\frost_and_flame\src\equipment.cpp
+1324137410 source:c:\_git_\frost_and_flame\src\equipment.cpp
 	"equipment.hpp"
 	"game.hpp"
 

@@ -24,6 +24,7 @@
 
 #include "UI.hpp"
 #include "game.hpp"
+#include "misc.hpp"
 
 extern game_type game;
 
@@ -186,6 +187,7 @@ void player_stats_class::draw_tooltip(void)
 
 void action_slot_class::process(void)
 {
+    int temp_int = 0;
     if (action_slot_class::current_item != game.UI.inventory.inventory_slot[action_slot_class::button_type-1000].button_type) action_slot_class::button_type = 0;
     bool discard_icon   = false;
     int  swap_button    = 0;
@@ -242,24 +244,32 @@ void action_slot_class::process(void)
             }
             else if (action_slot_class::button_type > 1000) // use potion
             {
-                int temp_ID = game.UI.inventory.inventory_slot[action_slot_class::button_type-1000].button_type-100;
+                int temp_ID = game.UI.inventory.inventory_slot[action_slot_class::button_type-1000].button_type;
                 switch (game.item[temp_ID].type)
                 {
                     case HEALTH_POTION:
-                        if (game.player.health.current < game.player.health.maximum)
-                        {
-                            game.player.health.current += game.item[temp_ID].add_health;
-                            game.item[temp_ID].stack_number--;
-                            if(game.item[temp_ID].stack_number <= 0)action_slot_class::button_type = 0;
-                        }
+                    if (game.player.health.current < game.player.health.maximum)
+                    {
+                        game.player.health.current += game.item[temp_ID].add_health;
+                        game.UI.inventory.inventory_slot[action_slot_class::button_type-1000].quantity--;
+                        if(game.UI.inventory.inventory_slot[action_slot_class::button_type-1000].quantity <= 0) game.UI.inventory.inventory_slot[action_slot_class::button_type-1000].button_type = 0;
+                        temp_int = random(3);
+                        if (temp_int <= 1) game.sound.bubble_01.play();
+                        if (temp_int == 2) game.sound.bubble_02.play();
+                        if (temp_int >= 3) game.sound.bubble_03.play();
+                    }
                     break;
                     case MANA_POTION:
-                        if (game.player.mana.current < game.player.mana.maximum)
-                        {
-                            game.player.mana.current += game.item[temp_ID].add_mana;
-                            game.item[temp_ID].stack_number--;
-                            if(game.item[temp_ID].stack_number <= 0)action_slot_class::button_type = 0;
-                        }
+                    if (game.player.mana.current < game.player.mana.maximum)
+                    {
+                        game.player.mana.current += game.item[temp_ID].add_mana;
+                        game.UI.inventory.inventory_slot[action_slot_class::button_type-1000].quantity--;
+                        if(game.UI.inventory.inventory_slot[action_slot_class::button_type-1000].quantity <= 0)game.UI.inventory.inventory_slot[action_slot_class::button_type-1000].button_type = 0;
+                        temp_int = random(3);
+                        if (temp_int <= 1) game.sound.bubble_01.play();
+                        if (temp_int == 2) game.sound.bubble_02.play();
+                        if (temp_int >= 3) game.sound.bubble_03.play();
+                    }
                     break;
                     default:
                     break;
@@ -273,7 +283,7 @@ void action_slot_class::draw(void)
 {
     if (action_slot_class::button_type > 1000)
     {
-        int image_ref = game.item[game.UI.inventory.inventory_slot[action_slot_class::button_type-1000].button_type-100].image_ref;
+        int image_ref = game.item[game.UI.inventory.inventory_slot[action_slot_class::button_type-1000].button_type].image_ref;
         draw_texture(false,image_ref,action_slot_class::pos_x,action_slot_class::pos_y,action_slot_class::pos_z,action_slot_class::width,action_slot_class::height);
     }
     else
@@ -304,7 +314,7 @@ void action_slot_class::draw_drag(void)
 {
     if (action_slot_class::button_type > 1000)
     {
-        int image_ref = game.item[game.UI.inventory.inventory_slot[action_slot_class::button_type-1000].button_type-100].image_ref;
+        int image_ref = game.item[game.UI.inventory.inventory_slot[action_slot_class::button_type-1000].button_type].image_ref;
         draw_texture(false,image_ref,action_slot_class::pos_x,action_slot_class::pos_y,action_slot_class::pos_z,action_slot_class::width,action_slot_class::height);
     }
     switch (game.spell[action_slot_class::button_type].level)

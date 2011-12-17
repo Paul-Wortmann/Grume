@@ -25,6 +25,8 @@
 #ifndef MISC_H
 #define MISC_H
 
+#include <string>
+
 int          seed_rand(void);
 double       random_double(void);
 int          random(int range);

@@ -17,6 +17,10 @@ Font_001 from http://cooltext.com (epkgobld.ttf)
 --------------------------------------------------------------------------------------------------------------------------
 menu_move_00.wav   from http://opengameart.org/content/interface-beeps CC0 Bart Kelsey.
 menu_select_00.wav from http://opengameart.org/content/interface-beeps CC0 Bart Kelsey.
+bottle_01          from http://opengameart.org/content/rpg-sound-pack Author:  artisticdude License(s): GPL 2.0, GPL 3.0, CC-BY 3.0
+bubble_01          from http://opengameart.org/content/rpg-sound-pack Author:  artisticdude License(s): GPL 2.0, GPL 3.0, CC-BY 3.0
+bubble_02          from http://opengameart.org/content/rpg-sound-pack Author:  artisticdude License(s): GPL 2.0, GPL 3.0, CC-BY 3.0
+bubble_03          from http://opengameart.org/content/rpg-sound-pack Author:  artisticdude License(s): GPL 2.0, GPL 3.0, CC-BY 3.0
 
 --------------------------------------------------------------------------------------------------------------------------
 |                                                 Music resources:                                                       |
