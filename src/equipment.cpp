@@ -175,7 +175,7 @@ void equipment_slot_class::draw(void)
     }
     if (equipment_slot_class::button_type > 0)
     {
-        draw_texture(false,game.item[equipment_slot_class::button_type].image_ref,equipment_slot_class::pos_x,equipment_slot_class::pos_y,equipment_slot_class::pos_z,equipment_slot_class::width,equipment_slot_class::height);
+        draw_texture(false,game.item[equipment_slot_class::button_type].image_ref,equipment_slot_class::pos_x,equipment_slot_class::pos_y,equipment_slot_class::pos_z,equipment_slot_class::width*0.90f,equipment_slot_class::height*0.90f);
     }
 };
 
