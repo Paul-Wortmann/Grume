@@ -139,11 +139,11 @@
 	<File name="src\language.hpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor1 position="2294" topLine="53" />
 	</File>
-	<File name="src\load_resources.cpp" open="1" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="79527" topLine="751" />
+	<File name="src\load_resources.cpp" open="0" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor1 position="81407" topLine="757" />
 	</File>
 	<File name="src\load_resources.hpp" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="12227" topLine="384" />
+		<Cursor1 position="12288" topLine="384" />
 	</File>
 	<File name="src\main.cpp" open="0" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor1 position="8756" topLine="179" />

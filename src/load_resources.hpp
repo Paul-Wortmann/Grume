@@ -404,6 +404,9 @@ struct texture_type
     texture_class amulet_13;
 
     texture_class belt_00;
+
+    texture_class helm_00;
+    texture_class helm_01;
 };
 
 struct font_type

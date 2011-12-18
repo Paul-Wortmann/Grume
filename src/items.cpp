@@ -643,6 +643,21 @@ void init_items(void)
     game.item[401].type              = ARMOUR;
     game.item[401].armour            = 10;
 
+    game.item[402].name              = "Strong Helm";
+    game.item[402].image_ref         = game.texture.helm_00.ref_number;
+    game.item[402].stack_number      = 1;
+    game.item[402].max_stack_number  = 1;
+    game.item[402].ID                = 402;
+    game.item[402].type              = HELM;
+    game.item[402].armour            = 34;
+    game.item[403].name              = "Hard Helm";
+    game.item[403].image_ref         = game.texture.helm_01.ref_number;
+    game.item[403].stack_number      = 1;
+    game.item[403].max_stack_number  = 1;
+    game.item[403].ID                = 403;
+    game.item[403].type              = HELM;
+    game.item[403].armour            = 65;
+
 //-------------------------------- Bows / slings -------------------------------------------------------------------
     game.item[501].name              = "Heroic Bow";
     game.item[501].image_ref         = game.texture.bow_00.ref_number;

@@ -409,6 +409,9 @@ bool load_textures(void)
 
     game.texture.belt_00.load_image("data/textures/UI/icons/belts/belt_00.png",texture_count);texture_count++;
 
+    game.texture.helm_00.load_image("data/textures/UI/icons/helms/helm_00.png",texture_count);texture_count++;
+    game.texture.helm_01.load_image("data/textures/UI/icons/helms/helm_01.png",texture_count);texture_count++;
+
     game.core.log.File_Write("Texture files loaded -> ",texture_count);
     return(true);
 };
@@ -783,6 +786,9 @@ bool draw_texture(bool r, int texture_number, float x, float y, float z, float w
     if (texture_number == game.texture.amulet_13.ref_number) game.texture.amulet_13.draw(r,x,y,z,w,h,angle,frame);
 
     if (texture_number == game.texture.belt_00.ref_number) game.texture.belt_00.draw(r,x,y,z,w,h,angle,frame);
+
+    if (texture_number == game.texture.helm_00.ref_number) game.texture.helm_00.draw(r,x,y,z,w,h,angle,frame);
+    if (texture_number == game.texture.helm_01.ref_number) game.texture.helm_01.draw(r,x,y,z,w,h,angle,frame);
     return(true);
 };
 

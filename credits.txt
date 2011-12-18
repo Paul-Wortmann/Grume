@@ -263,6 +263,12 @@ Belt_00
 CCO - Public domain
 blarumyrran (blarumyrran@gmail.com)
 
+helm_00 - helm_01
+-----------------
+http://opengameart.org/content/fantasy-items-set
+Author: Justin Nichol
+License(s): GPL 2.0, GPL 3.0, CC-BY-SA 3.0
+
 
 
 
