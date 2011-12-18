@@ -493,7 +493,7 @@ void init_items(void)
 //-------------------------------- Skills / Spells / scrolls ---------------------------------------------------------
     game.item[101].name              = "Book of Chain Lightning";
     game.item[101].image_ref         = game.texture.book_15.ref_number;
-    game.item[101].stack_number      = 5;
+    game.item[101].stack_number      = 1;
     game.item[101].max_stack_number  = 10;
     game.item[101].ID                = 101;
     game.item[101].type              = SPELL_BOOK;
@@ -501,7 +501,7 @@ void init_items(void)
     game.item[101].spell_type        = 2;
     game.item[102].name              = "Book of Stalagmite";
     game.item[102].image_ref         = game.texture.book_19.ref_number;
-    game.item[102].stack_number      = 5;
+    game.item[102].stack_number      = 1;
     game.item[102].max_stack_number  = 10;
     game.item[102].ID                = 102;
     game.item[102].type              = SPELL_BOOK;
@@ -609,7 +609,7 @@ void init_items(void)
     game.item[214].type              = MANA_POTION;
     game.item[214].add_mana          = 320;
 
-//-------------------------------- Boots / gloves -------------------------------------------------------------------
+//-------------------------------- Boots / gloves / belts -----------------------------------------------------------
     game.item[301].name              = "Boots of Haste";
     game.item[301].image_ref         = game.texture.boots_09.ref_number;
     game.item[301].stack_number      = 1;
@@ -625,6 +625,15 @@ void init_items(void)
     game.item[302].type              = BOOTS;
     game.item[302].armour            = 2;
 
+    game.item[303].name              = "Belt of Energy";
+    game.item[303].image_ref         = game.texture.belt_00.ref_number;
+    game.item[303].stack_number      = 1;
+    game.item[303].max_stack_number  = 1;
+    game.item[303].ID                = 303;
+    game.item[303].type              = BELT;
+    game.item[303].armour            = 2;
+    game.item[303].add_max_mana      = 32;
+
 //-------------------------------- Armour / helms --------------------------------------------------------------------
     game.item[401].name              = "Plate Armour";
     game.item[401].image_ref         = game.texture.armour_00.ref_number;
@@ -635,7 +644,23 @@ void init_items(void)
     game.item[401].armour            = 10;
 
 //-------------------------------- Bows / slings -------------------------------------------------------------------
-    game.item[501].name              = "Bow";
+    game.item[501].name              = "Heroic Bow";
+    game.item[501].image_ref         = game.texture.bow_00.ref_number;
+    game.item[501].stack_number      = 1;
+    game.item[501].max_stack_number  = 1;
+    game.item[501].ID                = 501;
+    game.item[501].type              = BOW;
+    game.item[501].min_damage        = 6;
+    game.item[501].max_damage        = 12;
+
+    game.item[502].name              = "Heroic Bow";
+    game.item[502].image_ref         = game.texture.sling_00.ref_number;
+    game.item[502].stack_number      = 1;
+    game.item[502].max_stack_number  = 1;
+    game.item[502].ID                = 502;
+    game.item[502].type              = SLING;
+    game.item[502].min_damage        = 6;
+    game.item[502].max_damage        = 12;
 
 //-------------------------------- Daggers / Swords -------------------------------------------------------------------
     game.item[601].name              = "Frost Dagger";
@@ -646,6 +671,14 @@ void init_items(void)
     game.item[601].type              = DAGGER;
     game.item[601].min_damage        = 6;
     game.item[601].max_damage        = 12;
+    game.item[602].name              = "Magic Sword";
+    game.item[602].image_ref         = game.texture.sword_00.ref_number;
+    game.item[602].stack_number      = 1;
+    game.item[602].max_stack_number  = 1;
+    game.item[602].ID                = 602;
+    game.item[602].type              = SWORD;
+    game.item[602].min_damage        = 12;
+    game.item[602].max_damage        = 24;
 
 //-------------------------------- Rings / Amulets ------------------------------------------------------------------
     game.item[701].name              = "Ice Ring";
@@ -656,6 +689,39 @@ void init_items(void)
     game.item[701].type              = RING;
     game.item[701].min_damage        = 6;
     game.item[701].max_damage        = 12;
+    game.item[702].name              = "Frost Ring";
+    game.item[702].image_ref         = game.texture.ring_14.ref_number;
+    game.item[702].stack_number      = 1;
+    game.item[702].max_stack_number  = 1;
+    game.item[702].ID                = 702;
+    game.item[702].type              = RING;
+    game.item[702].min_damage        = 6;
+    game.item[702].max_damage        = 12;
+    game.item[703].name              = "Fire Ring";
+    game.item[703].image_ref         = game.texture.ring_12.ref_number;
+    game.item[703].stack_number      = 1;
+    game.item[703].max_stack_number  = 1;
+    game.item[703].ID                = 703;
+    game.item[703].type              = RING;
+    game.item[703].min_damage        = 6;
+    game.item[703].max_damage        = 12;
+
+    game.item[704].name              = "Silver Amulet";
+    game.item[704].image_ref         = game.texture.amulet_00.ref_number;
+    game.item[704].stack_number      = 1;
+    game.item[704].max_stack_number  = 1;
+    game.item[704].ID                = 704;
+    game.item[704].type              = AMULET;
+    game.item[704].min_damage        = 6;
+    game.item[704].max_damage        = 12;
+    game.item[705].name              = "Ruby Amulet";
+    game.item[705].image_ref         = game.texture.amulet_01.ref_number;
+    game.item[705].stack_number      = 1;
+    game.item[705].max_stack_number  = 1;
+    game.item[705].ID                = 705;
+    game.item[705].type              = AMULET;
+    game.item[705].min_damage        = 6;
+    game.item[705].max_damage        = 12;
 
 //-------------------------------- Shields ----------------------------------------------------------------------------
     game.item[801].name              = "Golden Shield";
@@ -674,7 +740,15 @@ void init_items(void)
     game.item[802].armour            = 12;
 
 //-------------------------------- Wands ------------------------------------------------------------------------------
-    game.item[901].name              = "Wand";
+    game.item[901].name              = "Lightning Wand";
+    game.item[901].image_ref         = game.texture.wand_05.ref_number;
+    game.item[901].stack_number      = 1;
+    game.item[901].max_stack_number  = 1;
+    game.item[901].ID                = 901;
+    game.item[901].type              = WAND;
+    game.item[901].min_damage        = 6;
+    game.item[901].max_damage        = 12;
+
 //---------------------------------------------------------------------------------------------------------------------
 //----------------------------------------- Generate some random items ------------------------------------------------
 //this will be done in game on loot drop

@@ -930,17 +930,26 @@ void init_inventory(void)
     game.UI.inventory.inventory_slot[ 6].button_type  = game.item[ 601].ID;
 
     game.UI.inventory.inventory_slot[ 7].button_type  = game.item[ 701].ID;
-    game.UI.inventory.inventory_slot[ 8].button_type  = game.item[ 701].ID;
-    game.UI.inventory.inventory_slot[ 9].button_type  = game.item[ 701].ID;
-    game.UI.inventory.inventory_slot[10].button_type  = game.item[ 701].ID;
-    game.UI.inventory.inventory_slot[11].button_type  = game.item[ 701].ID;
+    game.UI.inventory.inventory_slot[ 8].button_type  = game.item[ 702].ID;
+    game.UI.inventory.inventory_slot[ 9].button_type  = game.item[ 703].ID;
+    game.UI.inventory.inventory_slot[10].button_type  = game.item[ 702].ID;
+    game.UI.inventory.inventory_slot[11].button_type  = game.item[ 703].ID;
 
     game.UI.inventory.inventory_slot[12].button_type  = game.item[ 801].ID;
     game.UI.inventory.inventory_slot[13].button_type  = game.item[ 802].ID;
 
-    game.UI.inventory.inventory_slot[20].button_type  = game.item[1000].ID;
-    game.UI.inventory.inventory_slot[21].button_type  = game.item[1001].ID;
-    game.UI.inventory.inventory_slot[22].button_type  = game.item[1002].ID;
+    game.UI.inventory.inventory_slot[14].button_type  = game.item[ 704].ID;
+    game.UI.inventory.inventory_slot[15].button_type  = game.item[ 705].ID;
+    game.UI.inventory.inventory_slot[16].button_type  = game.item[ 501].ID;
+    game.UI.inventory.inventory_slot[17].button_type  = game.item[ 502].ID;
+    game.UI.inventory.inventory_slot[18].button_type  = game.item[ 602].ID;
+    game.UI.inventory.inventory_slot[19].button_type  = game.item[ 901].ID;
+    game.UI.inventory.inventory_slot[20].button_type  = game.item[ 303].ID;
+
+
+    game.UI.inventory.inventory_slot[31].button_type  = game.item[1000].ID;
+    game.UI.inventory.inventory_slot[32].button_type  = game.item[1001].ID;
+    game.UI.inventory.inventory_slot[33].button_type  = game.item[1002].ID;
 
     game.UI.inventory.inventory_slot[40].quantity     = 12;
     game.UI.inventory.inventory_slot[40].button_type  = game.item[ 201].ID;

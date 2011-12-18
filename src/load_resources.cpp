@@ -392,6 +392,23 @@ bool load_textures(void)
     game.texture.potion_20.load_image("data/textures/UI/icons/potions/potion_20.png",texture_count);texture_count++;
     game.texture.potion_21.load_image("data/textures/UI/icons/potions/potion_21.png",texture_count);texture_count++;
 
+    game.texture.amulet_00.load_image("data/textures/UI/icons/amulets/amulet_00.png",texture_count);texture_count++;
+    game.texture.amulet_01.load_image("data/textures/UI/icons/amulets/amulet_01.png",texture_count);texture_count++;
+    game.texture.amulet_02.load_image("data/textures/UI/icons/amulets/amulet_02.png",texture_count);texture_count++;
+    game.texture.amulet_03.load_image("data/textures/UI/icons/amulets/amulet_03.png",texture_count);texture_count++;
+    game.texture.amulet_04.load_image("data/textures/UI/icons/amulets/amulet_04.png",texture_count);texture_count++;
+    game.texture.amulet_05.load_image("data/textures/UI/icons/amulets/amulet_05.png",texture_count);texture_count++;
+    game.texture.amulet_06.load_image("data/textures/UI/icons/amulets/amulet_06.png",texture_count);texture_count++;
+    game.texture.amulet_07.load_image("data/textures/UI/icons/amulets/amulet_07.png",texture_count);texture_count++;
+    game.texture.amulet_08.load_image("data/textures/UI/icons/amulets/amulet_08.png",texture_count);texture_count++;
+    game.texture.amulet_09.load_image("data/textures/UI/icons/amulets/amulet_09.png",texture_count);texture_count++;
+    game.texture.amulet_10.load_image("data/textures/UI/icons/amulets/amulet_10.png",texture_count);texture_count++;
+    game.texture.amulet_11.load_image("data/textures/UI/icons/amulets/amulet_11.png",texture_count);texture_count++;
+    game.texture.amulet_12.load_image("data/textures/UI/icons/amulets/amulet_12.png",texture_count);texture_count++;
+    game.texture.amulet_13.load_image("data/textures/UI/icons/amulets/amulet_13.png",texture_count);texture_count++;
+
+    game.texture.belt_00.load_image("data/textures/UI/icons/belts/belt_00.png",texture_count);texture_count++;
+
     game.core.log.File_Write("Texture files loaded -> ",texture_count);
     return(true);
 };
@@ -750,6 +767,22 @@ bool draw_texture(bool r, int texture_number, float x, float y, float z, float w
     if (texture_number == game.texture.potion_20.ref_number) game.texture.potion_20.draw(r,x,y,z,w,h,angle,frame);
     if (texture_number == game.texture.potion_21.ref_number) game.texture.potion_21.draw(r,x,y,z,w,h,angle,frame);
 
+    if (texture_number == game.texture.amulet_00.ref_number) game.texture.amulet_00.draw(r,x,y,z,w,h,angle,frame);
+    if (texture_number == game.texture.amulet_01.ref_number) game.texture.amulet_01.draw(r,x,y,z,w,h,angle,frame);
+    if (texture_number == game.texture.amulet_02.ref_number) game.texture.amulet_02.draw(r,x,y,z,w,h,angle,frame);
+    if (texture_number == game.texture.amulet_03.ref_number) game.texture.amulet_03.draw(r,x,y,z,w,h,angle,frame);
+    if (texture_number == game.texture.amulet_04.ref_number) game.texture.amulet_04.draw(r,x,y,z,w,h,angle,frame);
+    if (texture_number == game.texture.amulet_05.ref_number) game.texture.amulet_05.draw(r,x,y,z,w,h,angle,frame);
+    if (texture_number == game.texture.amulet_06.ref_number) game.texture.amulet_06.draw(r,x,y,z,w,h,angle,frame);
+    if (texture_number == game.texture.amulet_07.ref_number) game.texture.amulet_07.draw(r,x,y,z,w,h,angle,frame);
+    if (texture_number == game.texture.amulet_08.ref_number) game.texture.amulet_08.draw(r,x,y,z,w,h,angle,frame);
+    if (texture_number == game.texture.amulet_09.ref_number) game.texture.amulet_09.draw(r,x,y,z,w,h,angle,frame);
+    if (texture_number == game.texture.amulet_10.ref_number) game.texture.amulet_10.draw(r,x,y,z,w,h,angle,frame);
+    if (texture_number == game.texture.amulet_11.ref_number) game.texture.amulet_11.draw(r,x,y,z,w,h,angle,frame);
+    if (texture_number == game.texture.amulet_12.ref_number) game.texture.amulet_12.draw(r,x,y,z,w,h,angle,frame);
+    if (texture_number == game.texture.amulet_13.ref_number) game.texture.amulet_13.draw(r,x,y,z,w,h,angle,frame);
+
+    if (texture_number == game.texture.belt_00.ref_number) game.texture.belt_00.draw(r,x,y,z,w,h,angle,frame);
     return(true);
 };
 

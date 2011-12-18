@@ -387,6 +387,23 @@ struct texture_type
     texture_class potion_19;
     texture_class potion_20;
     texture_class potion_21;
+
+    texture_class amulet_00;
+    texture_class amulet_01;
+    texture_class amulet_02;
+    texture_class amulet_03;
+    texture_class amulet_04;
+    texture_class amulet_05;
+    texture_class amulet_06;
+    texture_class amulet_07;
+    texture_class amulet_08;
+    texture_class amulet_09;
+    texture_class amulet_10;
+    texture_class amulet_11;
+    texture_class amulet_12;
+    texture_class amulet_13;
+
+    texture_class belt_00;
 };
 
 struct font_type
