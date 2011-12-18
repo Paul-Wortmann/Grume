@@ -103,6 +103,7 @@ struct texture_type
     texture_class spell_book_spell_cover;
     texture_class spell_book_background;
     texture_class inventory;
+    texture_class inventory_gold;
     texture_class inventory_background;
     texture_class item_stat_background;
     texture_class character_background;

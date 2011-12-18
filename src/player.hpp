@@ -32,17 +32,17 @@ class stat_class
     public:
         stat_class(void);
        ~stat_class(void);
-        int         image_ref;
-        float       width;
-        float       height;
-        float       pos_x;
-        float       pos_y;
-        float       pos_z;
-        float       current;
-        float       maximum;
-        float       regeneration;
-        void        process(void);
-        void        draw(void);
+        int              image_ref;
+        float            width;
+        float            height;
+        float            pos_x;
+        float            pos_y;
+        float            pos_z;
+        float            current;
+        float            maximum;
+        float            regeneration;
+        void             process(void);
+        void             draw(void);
 };
 
 class player_class
@@ -50,13 +50,14 @@ class player_class
     public:
         player_class(void);
        ~player_class(void);
-        float       pos_x;
-        float       pos_y;
-        float       pos_z;
-        stat_class  mana;
-        stat_class  health;
-        void        process(void);
-        void        draw(void);
+        unsigned long long gold;
+        float              pos_x;
+        float              pos_y;
+        float              pos_z;
+        stat_class         mana;
+        stat_class         health;
+        void               process(void);
+        void               draw(void);
 };
 
 #endif // PLAYER_H

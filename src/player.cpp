@@ -51,6 +51,7 @@ void stat_class::draw(void)
 
 player_class::player_class(void)
 {
+    player_class::gold         = 0u;
     player_class::pos_x        = 0.0f;
     player_class::pos_y        = 0.0f;
     player_class::pos_z        = 0.0f;

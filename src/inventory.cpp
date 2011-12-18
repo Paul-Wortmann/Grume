@@ -901,9 +901,31 @@ void inventory_class::process(void)
 
 void inventory_class::draw(void)
 {
+    std::string string_padding = "";
     game.texture.inventory_background.draw(false,inventory_class::pos_x,inventory_class::pos_y,inventory_class::pos_z,inventory_class::width,inventory_class::height);
     inventory_class::close_button.draw();
     game.font.font_1.Write(255,255,255,255,inventory_class::pos_x - (inventory_class::width /10.0f),inventory_class::pos_y + (inventory_class::height/2.30f),4.8f,32.0f,game.language.text.inventory);
+    game.texture.inventory_gold.draw(false,inventory_class::pos_x,inventory_class::pos_y - (inventory_class::height/2.4f),inventory_class::pos_z,inventory_class::width/16.0f,inventory_class::height/16.0f);
+    if (game.player.gold <                   9u) string_padding += " ";
+    if (game.player.gold <                  99u) string_padding += " ";
+    if (game.player.gold <                 999u) string_padding += " ";
+    if (game.player.gold <                9999u) string_padding += " ";
+    if (game.player.gold <               99999u) string_padding += " ";
+    if (game.player.gold <              999999u) string_padding += " ";
+    if (game.player.gold <             9999999u) string_padding += " ";
+    if (game.player.gold <            99999999u) string_padding += " ";
+    if (game.player.gold <           999999999u) string_padding += " ";
+    if (game.player.gold <          9999999999u) string_padding += " ";
+    if (game.player.gold <         99999999999u) string_padding += " ";
+    if (game.player.gold <        999999999999u) string_padding += " ";
+    if (game.player.gold <       9999999999999u) string_padding += " ";
+    if (game.player.gold <      99999999999999u) string_padding += " ";
+    if (game.player.gold <     999999999999999u) string_padding += " ";
+    if (game.player.gold <    9999999999999999u) string_padding += " ";
+    if (game.player.gold <   99999999999999999u) string_padding += " ";
+    if (game.player.gold <  999999999999999999u) string_padding += " ";
+    if (game.player.gold < 9999999999999999999u) string_padding += " ";
+    game.font.font_1.Write(255,255,255,255,inventory_class::pos_x + (inventory_class::width /28.0f),inventory_class::pos_y - (inventory_class::height/2.28f),4.8f,32.0f,game.player.gold,string_padding);
     for (int inventory_slot_count = 1; inventory_slot_count < MAX_INVENTORY_SLOTS; inventory_slot_count++)
     {
         inventory_class::inventory_slot[inventory_slot_count].draw();
