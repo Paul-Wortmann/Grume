@@ -106,6 +106,7 @@ struct texture_type
     texture_class inventory_gold;
     texture_class inventory_background;
     texture_class item_stat_background;
+    texture_class character_portrait_frame;
     texture_class character_background;
     texture_class quest_log_background;
     texture_class equipment_background;

@@ -221,6 +221,15 @@ void character_class::draw(void)
     game.font.font_1.Write(255,255,255,255,character_class::pos_x - (character_class::width /7.0f),character_class::pos_y + (character_class::height/2.30f),4.8f,32.0f,game.language.text.character_menu);
 };
 
+/*
+
+    std::string        name;
+    unsigned long long exprience;
+    unsigned long long next_level;
+    unsigned long long gold;
+    int                level;
+
+*/
 
 
 

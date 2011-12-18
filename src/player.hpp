@@ -25,6 +25,8 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 
+#include <string>
+
 const int MAX_LEVEL = 100;
 
 class stat_class
@@ -50,7 +52,11 @@ class player_class
     public:
         player_class(void);
        ~player_class(void);
+        std::string        name;
+        unsigned long long exprience;
+        unsigned long long next_level;
         unsigned long long gold;
+        int                level;
         float              pos_x;
         float              pos_y;
         float              pos_z;

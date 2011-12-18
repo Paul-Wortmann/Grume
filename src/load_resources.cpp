@@ -125,6 +125,7 @@ bool load_textures(void)
     game.texture.inventory_gold.load_image          ("data/textures/UI/inventory/inventory_gold.png"          ,texture_count);texture_count++;
     game.texture.inventory_background.load_image    ("data/textures/UI/inventory/inventory_background.png"    ,texture_count);texture_count++;
     game.texture.item_stat_background.load_image    ("data/textures/UI/inventory/item_stat_background.png"    ,texture_count);texture_count++;
+    game.texture.character_portrait_frame.load_image("data/textures/UI/character/character_portrait_frame.png",texture_count);texture_count++;
     game.texture.character_background.load_image    ("data/textures/UI/character/character_background.png"    ,texture_count);texture_count++;
     game.texture.quest_log_background.load_image    ("data/textures/UI/quest_log/quest_log_background.png"    ,texture_count);texture_count++;
     game.texture.equipment_background.load_image    ("data/textures/UI/equipment/equipment_background.png"    ,texture_count);texture_count++;
@@ -504,6 +505,7 @@ bool draw_texture(bool r, int texture_number, float x, float y, float z, float w
     if (texture_number == game.texture.inventory_gold.ref_number)            game.texture.inventory_gold.draw           (r,x,y,z,w,h,angle,frame);
     if (texture_number == game.texture.inventory_background.ref_number)      game.texture.inventory_background.draw     (r,x,y,z,w,h,angle,frame);
     if (texture_number == game.texture.item_stat_background.ref_number)      game.texture.item_stat_background.draw     (r,x,y,z,w,h,angle,frame);
+    if (texture_number == game.texture.character_portrait_frame.ref_number)  game.texture.character_portrait_frame.draw (r,x,y,z,w,h,angle,frame);
     if (texture_number == game.texture.character_background.ref_number)      game.texture.character_background.draw     (r,x,y,z,w,h,angle,frame);
     if (texture_number == game.texture.quest_log_background.ref_number)      game.texture.quest_log_background.draw     (r,x,y,z,w,h,angle,frame);
     if (texture_number == game.texture.equipment_background.ref_number)      game.texture.equipment_background.draw     (r,x,y,z,w,h,angle,frame);
