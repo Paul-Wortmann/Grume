@@ -437,7 +437,7 @@
 
 1323598540 c:\_git_\frost_and_flame\src\spells.hpp
 
-1324273968 source:c:\_git_\frost_and_flame\src\inventory.cpp
+1324287694 source:c:\_git_\frost_and_flame\src\inventory.cpp
 	"misc.hpp"
 	"inventory.hpp"
 	"game.hpp"
@@ -766,7 +766,7 @@
 	<stdlib.h>
 	<string>
 
-1324280158 source:c:\_git_\frost_and_flame\src\items.cpp
+1324288502 source:c:\_git_\frost_and_flame\src\items.cpp
 	"items.hpp"
 	"game.hpp"
 	"misc.hpp"
