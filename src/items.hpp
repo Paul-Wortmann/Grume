@@ -113,9 +113,11 @@ class item_class
         int         add_frost_resistance;
         int         add_lightning_resistance;
         int         add_all_resistances;
-        void load(std::string file_name);
         item_class(void);
        ~item_class(void);
+        void        load(std::string file_name);
+        void        equip(void);
+        void        unequip(void);
 };
 
 int   generate_range(int level, int quality, int base_value);

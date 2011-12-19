@@ -114,12 +114,15 @@ void equipment_slot_class::process(void)
                         temp_ID = game.UI.inventory.inventory_slot[inventory_slot_count].button_type;
                         if (game.UI.inventory.inventory_slot[inventory_slot_count].button_type <= 0)
                         {
+                            game.item[equipment_slot_class::button_type].unequip();
                             temp_button = equipment_slot_class::button_type;
                             equipment_slot_class::button_type = game.UI.inventory.inventory_slot[inventory_slot_count].button_type;
                             game.UI.inventory.inventory_slot[inventory_slot_count].button_type = temp_button;
                         }
                         else if (equipment_slot_class::slot_type == game.item[temp_ID].type)
                         {
+                            game.item[equipment_slot_class::button_type].unequip();
+                            game.item[game.UI.inventory.inventory_slot[inventory_slot_count].button_type].equip();
                             temp_button = equipment_slot_class::button_type;
                             equipment_slot_class::button_type = game.UI.inventory.inventory_slot[inventory_slot_count].button_type;
                             game.UI.inventory.inventory_slot[inventory_slot_count].button_type = temp_button;
@@ -128,6 +131,8 @@ void equipment_slot_class::process(void)
                         {
                             if ((game.item[temp_ID].type == WAND) || (game.item[temp_ID].type == SWORD) || (game.item[temp_ID].type == DAGGER)|| (game.item[temp_ID].type == BOW) || (game.item[temp_ID].type == SLING))
                             {
+                                game.item[equipment_slot_class::button_type].unequip();
+                                game.item[game.UI.inventory.inventory_slot[inventory_slot_count].button_type].equip();
                                 temp_button = equipment_slot_class::button_type;
                                 equipment_slot_class::button_type = game.UI.inventory.inventory_slot[inventory_slot_count].button_type;
                                 game.UI.inventory.inventory_slot[inventory_slot_count].button_type = temp_button;

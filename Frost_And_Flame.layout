@@ -32,10 +32,10 @@
 		<Cursor1 position="1971" topLine="37" />
 	</File>
 	<File name="src\core\font.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="20611" topLine="478" />
+		<Cursor1 position="31751" topLine="731" />
 	</File>
 	<File name="src\core\font.hpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="2458" topLine="30" />
+		<Cursor1 position="3364" topLine="34" />
 	</File>
 	<File name="src\core\graphics.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor1 position="1798" topLine="43" />
@@ -109,8 +109,8 @@
 	<File name="src\core\timer.hpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor1 position="943" topLine="0" />
 	</File>
-	<File name="src\equipment.cpp" open="0" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="10116" topLine="157" />
+	<File name="src\equipment.cpp" open="1" top="1" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor1 position="18570" topLine="274" />
 	</File>
 	<File name="src\equipment.hpp" open="0" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor1 position="1613" topLine="45" />
@@ -121,8 +121,8 @@
 	<File name="src\game.hpp" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor1 position="1379" topLine="33" />
 	</File>
-	<File name="src\inventory.cpp" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="72298" topLine="968" />
+	<File name="src\inventory.cpp" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor1 position="66175" topLine="899" />
 	</File>
 	<File name="src\inventory.hpp" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor1 position="1753" topLine="45" />
@@ -131,7 +131,7 @@
 		<Cursor1 position="39466" topLine="633" />
 	</File>
 	<File name="src\items.hpp" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="4133" topLine="94" />
+		<Cursor1 position="3897" topLine="93" />
 	</File>
 	<File name="src\language.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor1 position="1046" topLine="6" />
@@ -170,9 +170,9 @@
 		<Cursor1 position="998" topLine="14" />
 	</File>
 	<File name="src\player.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="1640" topLine="38" />
+		<Cursor1 position="1300" topLine="21" />
 	</File>
-	<File name="src\player.hpp" open="1" top="1" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="src\player.hpp" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor1 position="1614" topLine="33" />
 	</File>
 	<File name="src\quest_log.cpp" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">

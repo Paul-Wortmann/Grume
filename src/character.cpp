@@ -216,20 +216,120 @@ void character_class::process(void)
 
 void character_class::draw(void)
 {
+    std::string string_padding = "";
     game.texture.character_background.draw(false,character_class::pos_x,character_class::pos_y,character_class::pos_z,character_class::width,character_class::height);
     character_class::close_button.draw();
     game.font.font_1.Write(255,255,255,255,character_class::pos_x - (character_class::width /7.0f),character_class::pos_y + (character_class::height/2.30f),4.8f,32.0f,game.language.text.character_menu);
+    game.texture.character_portrait_frame.draw(false,character_class::pos_x-(character_class::width/3.2f),character_class::pos_y+(character_class::height/4.0f),character_class::pos_z,character_class::width/6.0f,character_class::height/6.0f);
+    string_padding = "   ";
+    while (game.player.name.size() < 14) game.player.name += " ";
+    game.font.font_1.Write(255,255,255,255,character_class::pos_x - (character_class::width /6.0f),character_class::pos_y + (character_class::height/3.2f),4.8f,32.0f,"Name: ",game.player.name+string_padding);
+    string_padding = "                ";
+    if (game.player.level <                   9u) string_padding += " ";
+    if (game.player.level <                  99u) string_padding += " ";
+    if (game.player.level <                 999u) string_padding += " ";
+    game.font.font_1.Write(255,255,255,255,character_class::pos_x - (character_class::width /6.0f),character_class::pos_y + (character_class::height/3.6f),4.8f,32.0f,"Level: ",game.player.level,string_padding);
+    string_padding = "";
+    if (game.player.experience <                   9u) string_padding += " ";
+    if (game.player.experience <                  99u) string_padding += " ";
+    if (game.player.experience <                 999u) string_padding += " ";
+    if (game.player.experience <                9999u) string_padding += " ";
+    if (game.player.experience <               99999u) string_padding += " ";
+    if (game.player.experience <              999999u) string_padding += " ";
+    if (game.player.experience <             9999999u) string_padding += " ";
+    if (game.player.experience <            99999999u) string_padding += " ";
+    if (game.player.experience <           999999999u) string_padding += " ";
+    if (game.player.experience <          9999999999u) string_padding += " ";
+    if (game.player.experience <         99999999999u) string_padding += " ";
+    if (game.player.experience <        999999999999u) string_padding += " ";
+    if (game.player.experience <       9999999999999u) string_padding += " ";
+    if (game.player.experience <      99999999999999u) string_padding += " ";
+    if (game.player.experience <     999999999999999u) string_padding += " ";
+    if (game.player.experience <    9999999999999999u) string_padding += " ";
+    if (game.player.experience <   99999999999999999u) string_padding += " ";
+    if (game.player.experience <  999999999999999999u) string_padding += " ";
+    if (game.player.experience < 9999999999999999999u) string_padding += " ";
+    game.font.font_1.Write(255,255,255,255,character_class::pos_x - (character_class::width /6.0f),character_class::pos_y + (character_class::height/4.2f),4.8f,32.0f,"EXP:   ",game.player.experience,string_padding);
+    string_padding = "";
+    if (game.player.next_level <                  99u) string_padding += " ";
+    if (game.player.next_level <                  99u) string_padding += " ";
+    if (game.player.next_level <                 999u) string_padding += " ";
+    if (game.player.next_level <                9999u) string_padding += " ";
+    if (game.player.next_level <               99999u) string_padding += " ";
+    if (game.player.next_level <              999999u) string_padding += " ";
+    if (game.player.next_level <             9999999u) string_padding += " ";
+    if (game.player.next_level <            99999999u) string_padding += " ";
+    if (game.player.next_level <           999999999u) string_padding += " ";
+    if (game.player.next_level <          9999999999u) string_padding += " ";
+    if (game.player.next_level <         99999999999u) string_padding += " ";
+    if (game.player.next_level <        999999999999u) string_padding += " ";
+    if (game.player.next_level <       9999999999999u) string_padding += " ";
+    if (game.player.next_level <      99999999999999u) string_padding += " ";
+    if (game.player.next_level <     999999999999999u) string_padding += " ";
+    if (game.player.next_level <    9999999999999999u) string_padding += " ";
+    if (game.player.next_level <   99999999999999999u) string_padding += " ";
+    if (game.player.next_level <  999999999999999999u) string_padding += " ";
+    if (game.player.next_level < 9999999999999999999u) string_padding += " ";
+    game.font.font_1.Write(255,255,255,255,character_class::pos_x - (character_class::width /6.0f),character_class::pos_y + (character_class::height/5.0f),4.8f,32.0f,"Next:  ",game.player.next_level,string_padding);
+    string_padding = "         ";
+    if (game.player.offence <                   9u) string_padding += " ";
+    if (game.player.offence <                  99u) string_padding += " ";
+    if (game.player.offence <                 999u) string_padding += " ";
+    game.font.font_1.Write(255,255,255,255,character_class::pos_x - (character_class::width /2.5f),character_class::pos_y + (character_class::height/10.0f),4.8f,32.0f,"Offence:   ",game.player.offence,string_padding);
+    string_padding = "         ";
+    if (game.player.defense <                   9u) string_padding += " ";
+    if (game.player.defense <                  99u) string_padding += " ";
+    if (game.player.defense <                 999u) string_padding += " ";
+    game.font.font_1.Write(255,255,255,255,character_class::pos_x - (character_class::width /2.5f),character_class::pos_y + (character_class::height/16.0f),4.8f,32.0f,"Defense:   ",game.player.defense,string_padding);
+    string_padding = "         ";
+    if (game.player.intellect <                   9u) string_padding += " ";
+    if (game.player.intellect <                  99u) string_padding += " ";
+    if (game.player.intellect <                 999u) string_padding += " ";
+    game.font.font_1.Write(255,255,255,255,character_class::pos_x - (character_class::width /2.5f),character_class::pos_y + (character_class::height/36.0f),4.8f,32.0f,"Intellect: ",game.player.intellect,string_padding);
+
+    string_padding = "        ";
+    if (game.player.armor <                   9u) string_padding += " ";
+    if (game.player.armor <                  99u) string_padding += " ";
+    if (game.player.armor <                 999u) string_padding += " ";
+    game.font.font_1.Write(255,255,255,255,character_class::pos_x - (character_class::width /2.5f),character_class::pos_y - (character_class::height/48.0f),4.8f,32.0f,"Total Armor     ",(int)game.player.armor,string_padding);
+    string_padding = "         ";
+    if (game.player.critical_chance <                   9u) string_padding += " ";
+    if (game.player.critical_chance <                  99u) string_padding += " ";
+    if (game.player.critical_chance <                 999u) string_padding += " ";
+    game.font.font_1.Write(255,255,255,255,character_class::pos_x - (character_class::width /2.5f),character_class::pos_y - (character_class::height/16.0f),4.8f,32.0f,"Critical Chance: ",(int)game.player.critical_chance,string_padding);
+    string_padding = "";
+    if (game.player.physical_damage_maximum <                   9u) string_padding += " ";
+    if (game.player.physical_damage_maximum <                  99u) string_padding += " ";
+    if (game.player.physical_damage_maximum <                 999u) string_padding += " ";
+    if (game.player.physical_damage_minimum <                   9u) string_padding += " ";
+    if (game.player.physical_damage_minimum <                  99u) string_padding += " ";
+    if (game.player.physical_damage_minimum <                 999u) string_padding += " ";
+    game.font.font_1.Write(255,255,255,255,character_class::pos_x - (character_class::width /2.5f),character_class::pos_y - (character_class::height/10.0f),4.8f,32.0f,"Physical Damage: ",(int)game.player.physical_damage_minimum," - ",(int)game.player.physical_damage_maximum,string_padding);
+
+    string_padding = "";
+    if (game.player.resistance_frost <                   9u) string_padding += " ";
+    if (game.player.resistance_frost <                  99u) string_padding += " ";
+    if (game.player.resistance_frost <                 999u) string_padding += " ";
+    game.font.font_1.Write(191,191,255,255,character_class::pos_x - (character_class::width /2.5f),character_class::pos_y - (character_class::height/ 6.6f),4.8f,32.0f,"Frost Resistance:     ",(int)game.player.resistance_frost,string_padding);
+    string_padding = "";
+    if (game.player.resistance_flame <                   9u) string_padding += " ";
+    if (game.player.resistance_flame <                  99u) string_padding += " ";
+    if (game.player.resistance_flame <                 999u) string_padding += " ";
+    game.font.font_1.Write(255,191,191,255,character_class::pos_x - (character_class::width /2.5f),character_class::pos_y - (character_class::height/ 5.4f),4.8f,32.0f,"Flame Resistance:     ",(int)game.player.resistance_flame,string_padding);
+    string_padding = "";
+    if (game.player.resistance_lightning <                   9u) string_padding += " ";
+    if (game.player.resistance_lightning <                  99u) string_padding += " ";
+    if (game.player.resistance_lightning <                 999u) string_padding += " ";
+    game.font.font_1.Write(255,255,191,255,character_class::pos_x - (character_class::width /2.5f),character_class::pos_y - (character_class::height/ 4.6f),4.8f,32.0f,"Lightning Resistance: ",(int)game.player.resistance_lightning,string_padding);
+
+    string_padding = "";
+    if (game.player.allocatable_points <                   9u) string_padding += " ";
+    if (game.player.allocatable_points <                  99u) string_padding += " ";
+    if (game.player.allocatable_points <                 999u) string_padding += " ";
+    game.font.font_1.Write(255,255,255,255,character_class::pos_x - (character_class::width /2.5f),character_class::pos_y - (character_class::height/ 2.4f),4.8f,32.0f,"Allocatable Points: ",(int)game.player.allocatable_points,string_padding);
+    string_padding = "   ";
+    game.font.font_1.Write(255,255,255,255,character_class::pos_x - (character_class::width /2.5f),character_class::pos_y - (character_class::height/ 2.2f),4.8f,32.0f,"Auto Allocate:      ",string_padding);
 };
-
-/*
-
-    std::string        name;
-    unsigned long long exprience;
-    unsigned long long next_level;
-    unsigned long long gold;
-    int                level;
-
-*/
 
 
 

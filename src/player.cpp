@@ -38,7 +38,10 @@ stat_class::~stat_class(void)
 
 void stat_class::process(void)
 {
-    if (stat_class::current < stat_class::maximum) stat_class::current += stat_class::regeneration;
+    if (stat_class::current < stat_class::maximum)
+    {
+        if (stat_class::regeneration > 0.0f) stat_class::current += stat_class::regeneration;
+    }
     if (stat_class::current > stat_class::maximum) stat_class::current  = stat_class::maximum;
 }
 
@@ -51,14 +54,26 @@ void stat_class::draw(void)
 
 player_class::player_class(void)
 {
-    player_class::name         = "Player_Name";
-    player_class::level        = 0;
-    player_class::next_level   = 0u;
-    player_class::exprience    = 0u;
-    player_class::gold         = 0u;
-    player_class::pos_x        = 0.0f;
-    player_class::pos_y        = 0.0f;
-    player_class::pos_z        = 0.0f;
+    player_class::name                          = "Player_Name";
+    player_class::level                         = 0;
+    player_class::next_level                    = 0u;
+    player_class::experience                    = 0u;
+    player_class::gold                          = 0u;
+    player_class::pos_x                         = 0.0f;
+    player_class::pos_y                         = 0.0f;
+    player_class::pos_z                         = 0.0f;
+    player_class::offence                       = 0;
+    player_class::defense                       = 0;
+    player_class::intellect                     = 0;
+    player_class::armor                         = 0.0f;
+    player_class::critical_chance               = 0.0f;
+    player_class::physical_damage_maximum       = 2.0f;
+    player_class::physical_damage_minimum       = 1.0f;
+    player_class::resistance_frost              = 0.0f;
+    player_class::resistance_flame              = 0.0f;
+    player_class::resistance_lightning          = 0.0f;
+    player_class::allocatable_points            = 0;
+    player_class::auto_allocate                 = true;
 }
 
 player_class::~player_class(void)

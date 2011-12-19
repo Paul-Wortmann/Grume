@@ -82,7 +82,68 @@ item_class::item_class(void)
 
 item_class::~item_class(void)
 {
+};
 
+void item_class::equip(void)
+{
+    game.player.armor                   += item_class::armour;
+    game.player.physical_damage_minimum += item_class::min_damage;
+    game.player.physical_damage_maximum += item_class::max_damage;
+    game.player.health.maximum          += item_class::add_health;
+    game.player.mana.maximum            += item_class::add_mana;
+    game.player.health.regeneration     += (item_class::add_health_regeneration/100);
+    game.player.health.regeneration     -= (item_class::sub_health_regeneration/100);
+    game.player.mana.regeneration       += (item_class::add_mana_regeneration/100);
+    game.player.mana.regeneration       -= (item_class::sub_mana_regeneration/100);
+    game.player.critical_chance         += item_class::add_crit_chance;
+    game.player.critical_chance         -= item_class::sub_crit_chance;
+    game.player.walk_speed              += item_class::add_walk_speed;
+    game.player.walk_speed              -= item_class::sub_walk_speed;
+    game.player.light_radius            += item_class::add_light_radius;
+    game.player.light_radius            -= item_class::sub_light_radius;
+    game.player.resistance_flame        += item_class::add_fire_resistance;
+    game.player.resistance_frost        += item_class::add_frost_resistance;
+    game.player.resistance_lightning    += item_class::add_lightning_resistance;
+    game.player.resistance_flame        += item_class::add_all_resistances;
+    game.player.resistance_frost        += item_class::add_all_resistances;
+    game.player.resistance_lightning    += item_class::add_all_resistances;
+    game.player.damage_flame            += item_class::add_fire_damage;
+    game.player.damage_frost            += item_class::add_frost_damage;
+    game.player.damage_lightning        += item_class::add_lightning_damage;
+    game.player.damage_flame            += item_class::add_magic_damage;
+    game.player.damage_frost            += item_class::add_magic_damage;
+    game.player.damage_lightning        += item_class::add_magic_damage;
+};
+
+void item_class::unequip(void)
+{
+    game.player.armor                   -= item_class::armour;
+    game.player.physical_damage_minimum -= item_class::min_damage;
+    game.player.physical_damage_maximum -= item_class::max_damage;
+    game.player.health.maximum          -= item_class::add_health;
+    game.player.mana.maximum            -= item_class::add_mana;
+    game.player.health.regeneration     -= (item_class::add_health_regeneration/100);
+    game.player.health.regeneration     += (item_class::sub_health_regeneration/100);
+    game.player.mana.regeneration       -= (item_class::add_mana_regeneration/100);
+    game.player.mana.regeneration       += (item_class::sub_mana_regeneration/100);
+    game.player.critical_chance         -= item_class::add_crit_chance;
+    game.player.critical_chance         += item_class::sub_crit_chance;
+    game.player.walk_speed              -= item_class::add_walk_speed;
+    game.player.walk_speed              += item_class::sub_walk_speed;
+    game.player.light_radius            -= item_class::add_light_radius;
+    game.player.light_radius            += item_class::sub_light_radius;
+    game.player.resistance_flame        -= item_class::add_fire_resistance;
+    game.player.resistance_frost        -= item_class::add_frost_resistance;
+    game.player.resistance_lightning    -= item_class::add_lightning_resistance;
+    game.player.resistance_flame        -= item_class::add_all_resistances;
+    game.player.resistance_frost        -= item_class::add_all_resistances;
+    game.player.resistance_lightning    -= item_class::add_all_resistances;
+    game.player.damage_flame            -= item_class::add_fire_damage;
+    game.player.damage_frost            -= item_class::add_frost_damage;
+    game.player.damage_lightning        -= item_class::add_lightning_damage;
+    game.player.damage_flame            -= item_class::add_magic_damage;
+    game.player.damage_frost            -= item_class::add_magic_damage;
+    game.player.damage_lightning        -= item_class::add_magic_damage;
 };
 
 void item_class::load(std::string file_name)
@@ -668,7 +729,7 @@ void init_items(void)
     game.item[501].min_damage        = 6;
     game.item[501].max_damage        = 12;
 
-    game.item[502].name              = "Heroic Bow";
+    game.item[502].name              = "Heroic Sling";
     game.item[502].image_ref         = game.texture.sling_00.ref_number;
     game.item[502].stack_number      = 1;
     game.item[502].max_stack_number  = 1;
