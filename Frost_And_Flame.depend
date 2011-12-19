@@ -766,14 +766,14 @@
 	<stdlib.h>
 	<string>
 
-1324273823 source:c:\_git_\frost_and_flame\src\items.cpp
+1324280158 source:c:\_git_\frost_and_flame\src\items.cpp
 	"items.hpp"
 	"game.hpp"
 	"misc.hpp"
 
 1323572765 c:\_git_\frost_and_flame\src\equipment.hpp
 
-1324137410 source:c:\_git_\frost_and_flame\src\equipment.cpp
+1324275155 source:c:\_git_\frost_and_flame\src\equipment.cpp
 	"equipment.hpp"
 	"game.hpp"
 
