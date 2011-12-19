@@ -258,6 +258,7 @@ void  generate_random_item(int item_ID, int level, int quality, int type)
     int minimum_range   = (MAX_LEVEL - quality);
     int temp_range      = 0;
     int temp_value      = 0;
+    int temp_random     = 0;
     int minimum_percent = 15;
     int maximum_percent = 50;
     if (type == WEAPON)
@@ -755,6 +756,111 @@ void  generate_random_item(int item_ID, int level, int quality, int type)
             }
         break;
         case WAND:
+            game.item[item_ID].name              = "Random Wand";
+            game.item[item_ID].active            = true;
+            game.item[item_ID].type              = WAND;
+            game.item[item_ID].stack_number      = 1;
+            game.item[item_ID].max_stack_number  = 1;
+            game.item[item_ID].ID                = item_ID;
+            temp_range = random(21);
+            if (temp_range ==  0) game.item[item_ID].image_ref = game.texture.wand_00.ref_number;
+            if (temp_range ==  1) game.item[item_ID].image_ref = game.texture.wand_01.ref_number;
+            if (temp_range ==  2) game.item[item_ID].image_ref = game.texture.wand_02.ref_number;
+            if (temp_range ==  3) game.item[item_ID].image_ref = game.texture.wand_03.ref_number;
+            if (temp_range ==  4) game.item[item_ID].image_ref = game.texture.wand_04.ref_number;
+            if (temp_range ==  5) game.item[item_ID].image_ref = game.texture.wand_05.ref_number;
+            if (temp_range ==  6) game.item[item_ID].image_ref = game.texture.wand_06.ref_number;
+            if (temp_range ==  7) game.item[item_ID].image_ref = game.texture.wand_07.ref_number;
+            if (temp_range ==  8) game.item[item_ID].image_ref = game.texture.wand_08.ref_number;
+            if (temp_range ==  9) game.item[item_ID].image_ref = game.texture.wand_09.ref_number;
+            if (temp_range == 10) game.item[item_ID].image_ref = game.texture.wand_10.ref_number;
+            if (temp_range == 11) game.item[item_ID].image_ref = game.texture.wand_11.ref_number;
+            if (temp_range == 12) game.item[item_ID].image_ref = game.texture.wand_12.ref_number;
+            if (temp_range == 13) game.item[item_ID].image_ref = game.texture.wand_13.ref_number;
+            if (temp_range == 14) game.item[item_ID].image_ref = game.texture.wand_14.ref_number;
+            if (temp_range == 15) game.item[item_ID].image_ref = game.texture.wand_15.ref_number;
+            if (temp_range == 16) game.item[item_ID].image_ref = game.texture.wand_16.ref_number;
+            if (temp_range == 17) game.item[item_ID].image_ref = game.texture.wand_17.ref_number;
+            if (temp_range == 18) game.item[item_ID].image_ref = game.texture.wand_18.ref_number;
+            if (temp_range == 19) game.item[item_ID].image_ref = game.texture.wand_19.ref_number;
+            if (temp_range == 20) game.item[item_ID].image_ref = game.texture.wand_20.ref_number;
+            /*
+            temp_range = generate_range(level,quality,ARMOUR_BASE_MULTIPLIER);
+            temp_value = random_int(minimum_range,temp_range);
+            game.item[item_ID].armour = temp_value/4;
+            if (random(quality*10) <= 10) game.item[item_ID].add_armour = random((quality/10));
+            if (random(quality*10) <=  1) game.item[item_ID].sub_armour = random((quality/10));
+            game.item[item_ID].armour += game.item[item_ID].add_armour;
+            game.item[item_ID].armour -= game.item[item_ID].sub_armour;
+            */
+            temp_range = generate_range(level,quality,DAMAGE_BASE_MULTIPLIER);
+            temp_value = random_int(minimum_range,temp_range);
+            game.item[item_ID].max_damage = temp_value;
+            temp_range = generate_range(level,quality,DAMAGE_BASE_MULTIPLIER);
+            temp_value = random_int(minimum_range,temp_range);
+            game.item[item_ID].min_damage = temp_value/4;
+            temp_value = quality*level;
+            temp_random = random(100);
+            if ((temp_random >=  0) && (temp_random < 25))
+            {
+                temp_range = generate_range(level,quality,DAMAGE_BASE_MULTIPLIER);
+                temp_value = random_int(minimum_range,temp_range);
+                game.item[item_ID].add_frost_damage = temp_value;
+            }
+            if ((temp_random >= 25) && (temp_random < 50))
+            {
+                temp_range = generate_range(level,quality,DAMAGE_BASE_MULTIPLIER);
+                temp_value = random_int(minimum_range,temp_range);
+                game.item[item_ID].add_fire_damage = temp_value;
+            }
+            if ((temp_random >= 50) && (temp_random < 75))
+            {
+                temp_range = generate_range(level,quality,DAMAGE_BASE_MULTIPLIER);
+                temp_value = random_int(minimum_range,temp_range);
+                game.item[item_ID].add_lightning_damage = temp_value;
+            }
+            if ((temp_random >= 75) && (temp_random < 100))
+            {
+                temp_range = generate_range(level,quality,DAMAGE_BASE_MULTIPLIER);
+                temp_value = random_int(minimum_range,temp_range);
+                game.item[item_ID].add_magic_damage = temp_value;
+            }
+            temp_value = quality*level;
+            if (random(100) <= 80)
+            {
+                if      (random(temp_value) <= ((temp_value/100)*maximum_percent)) game.item[item_ID].add_max_health          = random((quality/10));
+                else if (random(temp_value) <= ((temp_value/100)*minimum_percent)) game.item[item_ID].sub_max_health          = random((quality/10));
+                if      (random(temp_value) <= ((temp_value/100)*maximum_percent)) game.item[item_ID].add_health_regeneration = random((quality/10));
+                else if (random(temp_value) <= ((temp_value/100)*minimum_percent)) game.item[item_ID].sub_health_regeneration = random((quality/10));
+            }
+            else
+            {
+                if      (random(temp_value) <= ((temp_value/100)*maximum_percent)) game.item[item_ID].add_max_mana            = random((quality/10));
+                else if (random(temp_value) <= ((temp_value/100)*minimum_percent)) game.item[item_ID].sub_max_mana            = random((quality/10));
+                if      (random(temp_value) <= ((temp_value/100)*maximum_percent)) game.item[item_ID].add_mana_regeneration   = random((quality/10));
+                else if (random(temp_value) <= ((temp_value/100)*minimum_percent)) game.item[item_ID].sub_mana_regeneration   = random((quality/10));
+            }
+            if (random(100) <= 75)
+            {
+                temp_range = random(99);
+                if (temp_range <= 33)
+                {
+                    if      (random(temp_value) <= ((temp_value/100)*maximum_percent)) game.item[item_ID].add_crit_chance    = random((quality/10));
+                    else if (random(temp_value) <= ((temp_value/100)*minimum_percent)) game.item[item_ID].sub_crit_chance    = random((quality/10));
+                }
+                /*
+                if ((temp_range >= 33) && (temp_range <= 66))
+                {
+                    if      (random(temp_value) <= ((temp_value/100)*maximum_percent)) game.item[item_ID].add_walk_speed     = random((quality/10));
+                    else if (random(temp_value) <= ((temp_value/100)*minimum_percent)) game.item[item_ID].sub_walk_speed     = random((quality/10));
+                }
+                if (temp_range >= 66)
+                {
+                    if      (random(temp_value) <= ((temp_value/100)*maximum_percent)) game.item[item_ID].add_light_radius   = random((quality/10));
+                    else if (random(temp_value) <= ((temp_value/100)*minimum_percent)) game.item[item_ID].sub_light_radius   = random((quality/10));
+                }
+                */
+            }
         break;
         case SWORD:
         break;
@@ -1059,6 +1165,7 @@ void init_items(void)
     generate_random_item(1004,100,100,BELT);
     generate_random_item(1005,100,100,RING);
     generate_random_item(1006,100,100,AMULET);
+    generate_random_item(1007,100,100,WAND);
 
 };
 

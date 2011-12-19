@@ -335,7 +335,9 @@ void inventory_slot_class::draw_tooltip(void)
 {
     if ((inventory_slot_class::button_type > 0) && (!inventory_slot_class::drag) && (inventory_slot_class::mouse_over_count == inventory_slot_class::tooltip_time))
     {
-        int   number_of_lines = 0;
+        std::string text_padding    = "";
+        int         number_of_lines = 0;
+        if (game.item[inventory_slot_class::button_type].max_damage               > 0) number_of_lines++;
         if (game.item[inventory_slot_class::button_type].armour                   > 0) number_of_lines++;
         if (game.item[inventory_slot_class::button_type].add_max_health           > 0) number_of_lines++;
         if (game.item[inventory_slot_class::button_type].sub_max_health           > 0) number_of_lines++;
@@ -371,6 +373,36 @@ void inventory_slot_class::draw_tooltip(void)
         game.font.font_1.Write(255,255,255,255,x_pos,y_pos,4.8f,32.0f,game.item[inventory_slot_class::button_type].name);
         y_pos -= line_height;
         y_pos -= line_height;
+        if(game.item[inventory_slot_class::button_type].max_damage > 0)
+        {
+            text_padding = "";
+            game.font.font_1.Write(255,255,255,255,x_pos,y_pos,4.8f,32.0f,"Damage ->                  ",game.item[inventory_slot_class::button_type].min_damage, " - ",game.item[inventory_slot_class::button_type].max_damage,text_padding);
+            y_pos -= line_height;
+        }
+        if(game.item[inventory_slot_class::button_type].add_frost_damage > 0)
+        {
+            text_padding = "";
+            game.font.font_1.Write(255,255,255,255,x_pos,y_pos,4.8f,32.0f,"Frost Damage ->            ",game.item[inventory_slot_class::button_type].add_frost_damage,text_padding);
+            y_pos -= line_height;
+        }
+        if(game.item[inventory_slot_class::button_type].add_fire_damage > 0)
+        {
+            text_padding = "";
+            game.font.font_1.Write(255,255,255,255,x_pos,y_pos,4.8f,32.0f,"Fire Damage ->             ",game.item[inventory_slot_class::button_type].add_fire_damage,text_padding);
+            y_pos -= line_height;
+        }
+        if(game.item[inventory_slot_class::button_type].add_lightning_damage > 0)
+        {
+            text_padding = "";
+            game.font.font_1.Write(255,255,255,255,x_pos,y_pos,4.8f,32.0f,"Lightning Damage ->        ",game.item[inventory_slot_class::button_type].add_lightning_damage,text_padding);
+            y_pos -= line_height;
+        }
+        if(game.item[inventory_slot_class::button_type].add_magic_damage > 0)
+        {
+            text_padding = "";
+            game.font.font_1.Write(255,255,255,255,x_pos,y_pos,4.8f,32.0f,"Magic Damage ->            ",game.item[inventory_slot_class::button_type].add_magic_damage,text_padding);
+            y_pos -= line_height;
+        }
         if(game.item[inventory_slot_class::button_type].armour > 0)
         {
             game.font.font_1.Write(255,255,255,255,x_pos,y_pos,4.8f,32.0f,"Armour ->                  ",game.item[inventory_slot_class::button_type].armour);
@@ -996,6 +1028,7 @@ void init_inventory(void)
     game.UI.inventory.inventory_slot[35].button_type  = game.item[1004].ID;
     game.UI.inventory.inventory_slot[36].button_type  = game.item[1005].ID;
     game.UI.inventory.inventory_slot[37].button_type  = game.item[1006].ID;
+    game.UI.inventory.inventory_slot[38].button_type  = game.item[1007].ID;
 
     game.UI.inventory.inventory_slot[43].quantity     = 8;
     game.UI.inventory.inventory_slot[43].button_type  = game.item[ 201].ID;
