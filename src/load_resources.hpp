@@ -206,6 +206,7 @@ struct texture_type
     texture_class cave_wall_tileset;
     texture_class cave_object_tileset;
     texture_class dungeon_tileset;
+    texture_class gold_tileset;
 
     texture_class book_00;
     texture_class book_01;

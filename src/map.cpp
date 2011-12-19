@@ -143,6 +143,10 @@ void map_class::draw(void)
             {
                 draw_texture(true,game.texture.dungeon_tileset.ref_number,tile_offset_x,tile_offset_y,0.001f,tile_offset_w,tile_offset_h,0.0f,map_class::tile[tile_count].tile-1);
             }
+            if (map_class::tileset[map_class::tile[tile_count].tile_tileset].image_source == "../tilesets/gold_tileset.png")
+            {
+                draw_texture(true,game.texture.gold_tileset.ref_number,tile_offset_x,tile_offset_y,0.001f,tile_offset_w,tile_offset_h,0.0f,map_class::tile[tile_count].tile-1);
+            }
         }
     };
 // ----------------------------- Draw Object Layer ----------------------------------------------------------------
@@ -217,6 +221,10 @@ void map_class::draw(void)
             if (map_class::tileset[map_class::tile[tile_count].object_tileset].image_source == "../tilesets/dungeon.png")
             {
                 draw_texture(true,game.texture.dungeon_tileset.ref_number,tile_offset_x,tile_offset_y,0.001f,tile_offset_w,tile_offset_h,0.0f,map_class::tile[tile_count].object-1);
+            }
+            if (map_class::tileset[map_class::tile[tile_count].object_tileset].image_source == "../tilesets/gold_tileset.png")
+            {
+                draw_texture(true,game.texture.gold_tileset.ref_number,tile_offset_x,tile_offset_y,0.001f,tile_offset_w,tile_offset_h,0.0f,map_class::tile[tile_count].object-1);
             }
         }
     };

@@ -27,7 +27,7 @@
 
 #include "core/textures.hpp"
 
-const int    MAX_MAP_TILESETS    = 16;
+const int    MAX_MAP_TILESETS    = 32;
 const int    MAX_TILE_X          = 100;
 const int    MAX_TILE_Y          = 100;
 const int    MAX_TILES           = MAX_TILE_X*MAX_TILE_Y;

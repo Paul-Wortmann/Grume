@@ -210,6 +210,7 @@ bool load_textures(void)
     game.texture.cave_wall_tileset.load_spritesheet              ("data/tilesets/cave_wall.png"           ,texture_count, 64,128);texture_count++;
     game.texture.cave_object_tileset.load_spritesheet            ("data/tilesets/cave_object.png"         ,texture_count, 64,128);texture_count++;
     game.texture.dungeon_tileset.load_spritesheet                ("data/tilesets/dungeon.png"             ,texture_count, 64, 64);texture_count++;
+    game.texture.gold_tileset.load_spritesheet                   ("data/tilesets/gold_tileset.png"        ,texture_count, 64,128);texture_count++;
 
     game.texture.book_00.load_image("data/textures/UI/icons/books/book_00.png",texture_count);texture_count++;
     game.texture.book_01.load_image("data/textures/UI/icons/books/book_01.png",texture_count);texture_count++;
@@ -590,6 +591,7 @@ bool draw_texture(bool r, int texture_number, float x, float y, float z, float w
     if (texture_number == game.texture.cave_wall_tileset.ref_number)               game.texture.cave_wall_tileset.draw              (r,x,y,z,w,h,angle,frame);
     if (texture_number == game.texture.cave_object_tileset.ref_number)             game.texture.cave_object_tileset.draw            (r,x,y,z,w,h,angle,frame);
     if (texture_number == game.texture.dungeon_tileset.ref_number)                 game.texture.dungeon_tileset.draw                (r,x,y,z,w,h,angle,frame);
+    if (texture_number == game.texture.gold_tileset.ref_number)                    game.texture.gold_tileset.draw                   (r,x,y,z,w,h,angle,frame);
 
     if (texture_number == game.texture.book_00.ref_number) game.texture.book_00.draw(r,x,y,z,w,h,angle,frame);
     if (texture_number == game.texture.book_01.ref_number) game.texture.book_01.draw(r,x,y,z,w,h,angle,frame);

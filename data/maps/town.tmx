@@ -42,6 +42,9 @@
  <tileset firstgid="1360" name="grassland_structures" tilewidth="64" tileheight="148">
   <image source="../tilesets/grassland_structures.png" width="384" height="148"/>
  </tileset>
+ <tileset firstgid="1366" name="gold_tileset" tilewidth="64" tileheight="128">
+  <image source="../tilesets/gold_tileset.png" width="192" height="128"/>
+ </tileset>
  <layer name="tile" width="100" height="100">
   <data>
    <tile gid="24"/>
@@ -12979,7 +12982,7 @@
    <tile gid="1118"/>
    <tile gid="1130"/>
    <tile gid="1110"/>
-   <tile gid="0"/>
+   <tile gid="1366"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -13078,8 +13081,8 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="1098"/>
-   <tile gid="0"/>
-   <tile gid="0"/>
+   <tile gid="1367"/>
+   <tile gid="1368"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
