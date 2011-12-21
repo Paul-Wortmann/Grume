@@ -80,17 +80,15 @@ bool  physics_class::point_in_quadrangle  (float qx, float qw, float qy, float q
     else return(false);
 };
 
-bool  physics_class::point_in_diamond     (float dx, float dw, float dws, float dy, float dh, float dhs, float px, float py)
+bool   physics_class::point_in_diamond         (float dx, float dw, float dy, float dh, float px, float py)
 {
-    float tx = 0.0f;
-    float ty = 0.0f;
-    if (px > dx) tx = (px-dx);
-    if (px < dx) tx = (dx-px);
-    if (py > dy) ty = (py-dy);
-    if (py < dy) ty = (dy-py);
-    if  ((px > (dx - (dw/(dws*2))+ty)) && (px < (dx + (dw/(dws*2))-ty)) &&
-         (py > (dy - (dh/(dhs*2))+tx)) && (py < (dy + (dh/(dhs*2))-tx))) return(true);
+    if ((py >= (dy - (dh/2.0f))) && (py <= (dy + (dh/2.0f))) && (px >= (dx - ((dw/2.0f) - (py - dy)))) && (px <= (dx + ((dw/2.0f) - (py - dy))))) return(true);
     else return(false);
+};
+
+float  physics_class::point_side_of_line       (float x1, float y1, float x2, float y2, float px, float py)
+{
+    return((py-y1)-((y2-y1)/(x2-x1))*(px-x1));
 };
 
 float  physics_class::line_slope_2D(float x1, float y1, float x2, float y2)

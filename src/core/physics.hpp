@@ -40,7 +40,8 @@ class physics_class
         float  distance_3D              (float x1, float y1, float z1, float x2, float y2, float z2);
         bool   point_in_circle          (float cx, float cy, float cr, float px, float py);
         bool   point_in_quadrangle      (float qx, float qw, float qy, float qh, float px, float py);
-        bool   point_in_diamond         (float dx, float dw, float dws, float dy, float dh, float dhs, float px, float py);
+        bool   point_in_diamond         (float dx, float dw, float dy, float dh, float px, float py);
+        float  point_side_of_line       (float x1, float y1, float x2, float y2, float px, float py);
         float  line_slope_2D            (float x1, float y1, float x2, float y2);
         float  line_angle               (float x1, float y1, float x2, float y2);
         float  line_point_2D_x          (float x1, float distance, float angle);

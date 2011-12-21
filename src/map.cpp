@@ -232,10 +232,28 @@ void map_class::draw(void)
 
 void map_class::process(void)
 {
+    float temp_width  = 0.0f;
+    float temp_height = 0.0f;
+    float temp_pos_x  = 0.0f;
+    float temp_pos_y  = 0.0f;
     if (game.core.io.mouse_y >=  0.99000) map_class::scroll_map( 0, 1);
     if (game.core.io.mouse_y <= -0.99000) map_class::scroll_map( 0,-1);
     if (game.core.io.mouse_x >=  0.99000) map_class::scroll_map( 1, 0);
     if (game.core.io.mouse_x <= -0.99000) map_class::scroll_map(-1, 0);
+
+    int tile_over = 0;
+    for (int tile_count = 0; tile_count < map_class::number_of_tiles; tile_count++)
+    {
+        if ((map_class::tile_visable(tile_count)) && (map_class::tile[tile_count].tile > 0))
+        {
+            temp_width  = TILE_WIDTH_HALF;
+            temp_height = TILE_HEIGHT_HALF;
+            temp_pos_x  = map_class::tile[tile_count].pos_x;
+            temp_pos_y  = map_class::tile[tile_count].pos_y;
+            if (game.core.physics.point_in_diamond(temp_pos_x,temp_width,temp_pos_y,temp_height,game.core.io.mouse_x,game.core.io.mouse_y)) tile_over = tile_count;
+        }
+    }
+    game.player.gold = tile_over;
 };
 
 void map_class::scroll_map(int x_dir, int y_dir)
