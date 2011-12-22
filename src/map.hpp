@@ -86,6 +86,7 @@ class map_class
         void center_on_tile(int tile_ID);
         void calculate_tile_positions(void);
         void calculate_tile_positions(float tile_width_half_specify,float tile_height_half_specify);
+        int  mouse_over_tile(void);
         bool tile_visable(int tile_no);
         void save(std::string file_name);
         void load(std::string file_name);

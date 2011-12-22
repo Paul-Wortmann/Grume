@@ -232,28 +232,13 @@ void map_class::draw(void)
 
 void map_class::process(void)
 {
-    float temp_width  = 0.0f;
-    float temp_height = 0.0f;
-    float temp_pos_x  = 0.0f;
-    float temp_pos_y  = 0.0f;
     if (game.core.io.mouse_y >=  0.99000) map_class::scroll_map( 0, 1);
     if (game.core.io.mouse_y <= -0.99000) map_class::scroll_map( 0,-1);
     if (game.core.io.mouse_x >=  0.99000) map_class::scroll_map( 1, 0);
     if (game.core.io.mouse_x <= -0.99000) map_class::scroll_map(-1, 0);
 
-    int tile_over = 0;
-    for (int tile_count = 0; tile_count < map_class::number_of_tiles; tile_count++)
-    {
-        if ((map_class::tile_visable(tile_count)) && (map_class::tile[tile_count].tile > 0))
-        {
-            temp_width  = TILE_WIDTH_HALF;
-            temp_height = TILE_HEIGHT_HALF;
-            temp_pos_x  = map_class::tile[tile_count].pos_x;
-            temp_pos_y  = map_class::tile[tile_count].pos_y;
-            if (game.core.physics.point_in_diamond(temp_pos_x,temp_width,temp_pos_y,temp_height,game.core.io.mouse_x,game.core.io.mouse_y)) tile_over = tile_count;
-        }
-    }
-    game.player.gold = tile_over;
+    game.player.gold = map_class::mouse_over_tile();
+
 };
 
 void map_class::scroll_map(int x_dir, int y_dir)
@@ -336,6 +321,19 @@ bool map_class::tile_visable(int tile_no)
     float y_min = -1.0f;
     if((map_class::tile[tile_no].pos_x <= ( x_max+(TILE_WIDTH*4))) && (map_class::tile[tile_no].pos_x >= (x_min-(TILE_WIDTH*4))) && (map_class::tile[tile_no].pos_y <= ( y_max+(TILE_HEIGHT*4))) && (map_class::tile[tile_no].pos_y >= (y_min-(TILE_HEIGHT*4)))) return(true);
     else return(false);
+};
+
+int  map_class::mouse_over_tile(void)
+{
+    int return_value = -1;
+    for (int tile_count = 0; tile_count < map_class::number_of_tiles; tile_count++)
+    {
+        if ((map_class::tile_visable(tile_count)) && (map_class::tile[tile_count].tile > 0))
+        {
+            if (game.core.physics.point_in_diamond(map_class::tile[tile_count].pos_x,TILE_WIDTH_HALF,map_class::tile[tile_count].pos_y,TILE_HEIGHT_HALF,game.core.io.mouse_x,game.core.io.mouse_y)) return_value = tile_count;
+        }
+    }
+    return(return_value);
 };
 
 void map_class::load(std::string file_name)
