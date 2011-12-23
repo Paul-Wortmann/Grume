@@ -1019,6 +1019,7 @@ void init_inventory(void)
     game.UI.inventory.inventory_slot[20].button_type  = game.item[ 303].ID;
     game.UI.inventory.inventory_slot[21].button_type  = game.item[ 402].ID;
     game.UI.inventory.inventory_slot[22].button_type  = game.item[ 403].ID;
+    game.UI.inventory.inventory_slot[23].button_type  = game.item[ 902].ID;
 
 
     game.UI.inventory.inventory_slot[31].button_type  = game.item[1000].ID;

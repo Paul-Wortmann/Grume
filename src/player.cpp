@@ -38,11 +38,9 @@ stat_class::~stat_class(void)
 
 void stat_class::process(void)
 {
-    if (stat_class::current < stat_class::maximum)
-    {
-        if (stat_class::regeneration > 0.0f) stat_class::current += stat_class::regeneration;
-    }
-    if (stat_class::current > stat_class::maximum) stat_class::current  = stat_class::maximum;
+    stat_class::current += stat_class::regeneration;
+    if (stat_class::current < 0.0f)                stat_class::current = 0.0f;
+    if (stat_class::current > stat_class::maximum) stat_class::current = stat_class::maximum;
 }
 
 void stat_class::draw(void)

@@ -1154,6 +1154,17 @@ void init_items(void)
     game.item[901].min_damage        = 6;
     game.item[901].max_damage        = 12;
 
+    game.item[902].name              = "Vamperic Wand";
+    game.item[902].image_ref         = game.texture.wand_14.ref_number;
+    game.item[902].stack_number      = 1;
+    game.item[902].max_stack_number  = 1;
+    game.item[902].ID                = 902;
+    game.item[902].type              = WAND;
+    game.item[902].min_damage        = 6;
+    game.item[902].max_damage        = 12;
+    game.item[902].sub_health_regeneration = 12;
+    game.item[902].sub_mana_regeneration   = 12;
+
 //---------------------------------------------------------------------------------------------------------------------
 //----------------------------------------- Generate some random items ------------------------------------------------
 //this will be done in game on loot drop

@@ -37,6 +37,7 @@ const float  TILE_HEIGHT         = (float)DEFAULT_FRAME_HEIGHT / TILE_SCALE_DEFA
 const float  TILE_WIDTH_HALF     = TILE_WIDTH/2.0f;
 const float  TILE_HEIGHT_HALF    = TILE_HEIGHT/2.0f;
 const float  MAP_SCROLL_SPEED    = 0.02f;
+const int    MAX_ITEMS_PER_TILE  = 4;
 
 class tile_class
 {
@@ -48,6 +49,7 @@ class tile_class
         int   object_tileset;
         int   tile;
         int   tile_tileset;
+        int   tile_item[MAX_ITEMS_PER_TILE];
         tile_class(void);
        ~tile_class(void);
 };
