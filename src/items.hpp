@@ -105,11 +105,11 @@ class item_class
         int         spell_type;
         int         add_health;
         int         add_mana;
-        int         add_fire_damage;
+        int         add_flame_damage;
         int         add_frost_damage;
         int         add_lightning_damage;
         int         add_magic_damage;
-        int         add_fire_resistance;
+        int         add_flame_resistance;
         int         add_frost_resistance;
         int         add_lightning_resistance;
         int         add_all_resistances;
