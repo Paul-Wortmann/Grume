@@ -1,9 +1,10 @@
-﻿v0.02 - (2011-12-25)
+﻿v0.02 - (2011-12-30)
 
 BUG  -> Fixed a SIGFPE, Arithmetic exception.
 MAP  -> Added gold_tileset.
 MAP  -> Implemented a basic day/night cycle.
 MAP  -> Created mouse/tile picking.
+UI   -> Added user portraits.
 UI   -> Equipment menu started.
 UI   -> Character menu improved.
 UI   -> Inventory menu completed.
