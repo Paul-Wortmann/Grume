@@ -416,6 +416,16 @@ bool load_textures(void)
     game.texture.helm_01.load_image("data/textures/UI/icons/helms/helm_01.png",texture_count);texture_count++;
 
     game.texture.portrait_00.load_image("data/textures/UI/portraits/portrait_00.png",texture_count);texture_count++;
+    game.texture.portrait_01.load_image("data/textures/UI/portraits/portrait_01.png",texture_count);texture_count++;
+    game.texture.portrait_02.load_image("data/textures/UI/portraits/portrait_02.png",texture_count);texture_count++;
+    game.texture.portrait_03.load_image("data/textures/UI/portraits/portrait_03.png",texture_count);texture_count++;
+    game.texture.portrait_04.load_image("data/textures/UI/portraits/portrait_04.png",texture_count);texture_count++;
+    game.texture.portrait_05.load_image("data/textures/UI/portraits/portrait_05.png",texture_count);texture_count++;
+    game.texture.portrait_06.load_image("data/textures/UI/portraits/portrait_06.png",texture_count);texture_count++;
+    game.texture.portrait_07.load_image("data/textures/UI/portraits/portrait_07.png",texture_count);texture_count++;
+    game.texture.portrait_08.load_image("data/textures/UI/portraits/portrait_08.png",texture_count);texture_count++;
+    game.texture.portrait_09.load_image("data/textures/UI/portraits/portrait_09.png",texture_count);texture_count++;
+    game.texture.portrait_10.load_image("data/textures/UI/portraits/portrait_10.png",texture_count);texture_count++;
 
     game.core.log.File_Write("Texture files loaded -> ",texture_count);
     return(true);
@@ -799,6 +809,16 @@ bool draw_texture(bool r, int texture_number, float x, float y, float z, float w
     if (texture_number == game.texture.helm_01.ref_number) game.texture.helm_01.draw(r,x,y,z,w,h,angle,frame);
 
     if (texture_number == game.texture.portrait_00.ref_number) game.texture.portrait_00.draw(r,x,y,z,w,h,angle,frame);
+    if (texture_number == game.texture.portrait_01.ref_number) game.texture.portrait_01.draw(r,x,y,z,w,h,angle,frame);
+    if (texture_number == game.texture.portrait_02.ref_number) game.texture.portrait_02.draw(r,x,y,z,w,h,angle,frame);
+    if (texture_number == game.texture.portrait_03.ref_number) game.texture.portrait_03.draw(r,x,y,z,w,h,angle,frame);
+    if (texture_number == game.texture.portrait_04.ref_number) game.texture.portrait_04.draw(r,x,y,z,w,h,angle,frame);
+    if (texture_number == game.texture.portrait_05.ref_number) game.texture.portrait_05.draw(r,x,y,z,w,h,angle,frame);
+    if (texture_number == game.texture.portrait_06.ref_number) game.texture.portrait_06.draw(r,x,y,z,w,h,angle,frame);
+    if (texture_number == game.texture.portrait_07.ref_number) game.texture.portrait_07.draw(r,x,y,z,w,h,angle,frame);
+    if (texture_number == game.texture.portrait_08.ref_number) game.texture.portrait_08.draw(r,x,y,z,w,h,angle,frame);
+    if (texture_number == game.texture.portrait_09.ref_number) game.texture.portrait_09.draw(r,x,y,z,w,h,angle,frame);
+    if (texture_number == game.texture.portrait_10.ref_number) game.texture.portrait_10.draw(r,x,y,z,w,h,angle,frame);
 
     return(true);
 };
