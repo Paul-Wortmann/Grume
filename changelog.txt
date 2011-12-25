@@ -1,6 +1,21 @@
-v0.02 - (2011-12-xx)
+﻿v0.02 - (2011-12-25)
 
-LOC - 13379
+BUG  -> Fixed a SIGFPE, Arithmetic exception.
+MAP  -> Added gold_tileset.
+MAP  -> Implemented a basic day/night cycle.
+MAP  -> Created mouse/tile picking.
+UI   -> Equipment menu started.
+UI   -> Character menu improved.
+UI   -> Inventory menu completed.
+UI   -> Items stackable.
+UI   -> Items usable, books && potions.
+UI   -> Potions usable from the action bar.
+UI   -> Health / Mana bars now respond to degeneration.
+UI   -> Random item generation implemented.
+UI   -> Items can now be equiped and unequiped.
+UI   -> Added mouse cursor.
+UI   -> Added a large variety of itmes.
+LOC - 14557
 
 v0.01 - (2011-11-30)
 

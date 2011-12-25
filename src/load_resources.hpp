@@ -410,6 +410,8 @@ struct texture_type
 
     texture_class helm_00;
     texture_class helm_01;
+
+    texture_class portrait_00;
 };
 
 struct font_type

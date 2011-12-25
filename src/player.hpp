@@ -56,6 +56,7 @@ class player_class
         unsigned long long experience;
         unsigned long long next_level;
         unsigned long long gold;
+        int                portrait_image_ref;
         int                level;
         int                offence;
         int                defense;

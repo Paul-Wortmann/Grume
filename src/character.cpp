@@ -221,6 +221,7 @@ void character_class::draw(void)
     character_class::close_button.draw();
     game.font.font_1.Write(255,255,255,255,character_class::pos_x - (character_class::width /7.0f),character_class::pos_y + (character_class::height/2.30f),4.8f,32.0f,game.language.text.character_menu);
     game.texture.character_portrait_frame.draw(false,character_class::pos_x-(character_class::width/3.2f),character_class::pos_y+(character_class::height/4.0f),character_class::pos_z,character_class::width/6.0f,character_class::height/6.0f);
+    draw_texture(false,game.player.portrait_image_ref,character_class::pos_x-(character_class::width/3.2f),character_class::pos_y+(character_class::height/4.0f),character_class::pos_z,character_class::width/6.7f,character_class::height/6.7f);
     string_padding = "   ";
     while (game.player.name.size() < 14) game.player.name += " ";
     game.font.font_1.Write(255,255,255,255,character_class::pos_x - (character_class::width /6.0f),character_class::pos_y + (character_class::height/3.2f),4.8f,32.0f,"Name: ",game.player.name+string_padding);

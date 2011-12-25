@@ -59,6 +59,7 @@ int init_game(bool re_init)
     game.core.spellbook_active                    = false;
     game.core.inventory_active                    = false;
 
+    game.player.portrait_image_ref                =  game.texture.portrait_00.ref_number;
     game.player.health.current                    =  000.0f;
     game.player.health.maximum                    =  100.0f;
     game.player.health.regeneration               =  000.015f;

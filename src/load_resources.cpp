@@ -415,6 +415,8 @@ bool load_textures(void)
     game.texture.helm_00.load_image("data/textures/UI/icons/helms/helm_00.png",texture_count);texture_count++;
     game.texture.helm_01.load_image("data/textures/UI/icons/helms/helm_01.png",texture_count);texture_count++;
 
+    game.texture.portrait_00.load_image("data/textures/UI/portraits/portrait_00.png",texture_count);texture_count++;
+
     game.core.log.File_Write("Texture files loaded -> ",texture_count);
     return(true);
 };
@@ -795,6 +797,9 @@ bool draw_texture(bool r, int texture_number, float x, float y, float z, float w
 
     if (texture_number == game.texture.helm_00.ref_number) game.texture.helm_00.draw(r,x,y,z,w,h,angle,frame);
     if (texture_number == game.texture.helm_01.ref_number) game.texture.helm_01.draw(r,x,y,z,w,h,angle,frame);
+
+    if (texture_number == game.texture.portrait_00.ref_number) game.texture.portrait_00.draw(r,x,y,z,w,h,angle,frame);
+
     return(true);
 };
 
