@@ -185,7 +185,7 @@ int display_game(void)
         game.world_ambient.intensity_R -= game.world_ambient.speed;
         game.world_ambient.intensity_G -= game.world_ambient.speed;
         game.world_ambient.intensity_B -= game.world_ambient.speed;
-        if (game.world_ambient.intensity_R < -1.0f) game.world_ambient.increase = true;
+        if (game.world_ambient.intensity_R < -0.5f) game.world_ambient.increase = true;
     }
     float  global_ambient_light[] = {game.global_ambient.intensity_R,game.global_ambient.intensity_G,game.global_ambient.intensity_B,game.global_ambient.intensity_A};
     float  world_ambient_light[]  = {game.world_ambient.intensity_R,game.world_ambient.intensity_G,game.world_ambient.intensity_B,game.world_ambient.intensity_A};
