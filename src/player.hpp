@@ -64,8 +64,8 @@ class player_class
         float              critical_chance;
         float              walk_speed;
         float              light_radius;
-        float              physical_damage_maximum;
-        float              physical_damage_minimum;
+        float              damage_physical_maximum;
+        float              damage_physical_minimum;
         float              damage_frost;
         float              damage_flame;
         float              damage_lightning;

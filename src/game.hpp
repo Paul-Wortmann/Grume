@@ -44,8 +44,20 @@ struct zoom_type
     float            speed;
 };
 
+struct light_type
+{
+    float            intensity_R;
+    float            intensity_G;
+    float            intensity_B;
+    float            intensity_A;
+    bool             increase;
+    float            speed;
+};
+
 struct game_type
 {
+    light_type       global_ambient;
+    light_type       world_ambient;
     zoom_type        zoom;
     spell_class      spell[MAX_SPELLS];
     item_class       item [MAX_ITEMS];

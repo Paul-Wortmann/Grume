@@ -32,6 +32,16 @@
 
 int init_game(bool re_init)
 {
+    game.global_ambient.intensity_R = 8.0f;
+    game.global_ambient.intensity_G = 8.0f;
+    game.global_ambient.intensity_B = 8.0f;
+    game.global_ambient.intensity_A = 8.0f;
+    game.world_ambient.intensity_R  = 2.0f;
+    game.world_ambient.intensity_G  = 2.0f;
+    game.world_ambient.intensity_B  = 2.0f;
+    game.world_ambient.intensity_A  = 2.0f;
+    game.world_ambient.increase     = true;
+    game.world_ambient.speed        = 0.0125f;
     game.zoom.current                             = TILE_SCALE_DEFAULT;
     game.zoom.min                                 = 80.0f;
     game.zoom.max                                 = 400.0f;
@@ -163,12 +173,29 @@ int display_game(void)
 {
     float z_pos = 0;
     glPushMatrix();
+    if (game.world_ambient.increase) // day / night lighting
+    {
+        game.world_ambient.intensity_R += game.world_ambient.speed;
+        game.world_ambient.intensity_G += game.world_ambient.speed;
+        game.world_ambient.intensity_B += game.world_ambient.speed;
+        if (game.world_ambient.intensity_R > game.global_ambient.intensity_R) game.world_ambient.increase = false;
+    }
+    if (!game.world_ambient.increase)
+    {
+        game.world_ambient.intensity_R -= game.world_ambient.speed;
+        game.world_ambient.intensity_G -= game.world_ambient.speed;
+        game.world_ambient.intensity_B -= game.world_ambient.speed;
+        if (game.world_ambient.intensity_R < -1.0f) game.world_ambient.increase = true;
+    }
+    float  global_ambient_light[] = {game.global_ambient.intensity_R,game.global_ambient.intensity_G,game.global_ambient.intensity_B,game.global_ambient.intensity_A};
+    float  world_ambient_light[]  = {game.world_ambient.intensity_R,game.world_ambient.intensity_G,game.world_ambient.intensity_B,game.world_ambient.intensity_A};
+    glLightModelfv(GL_LIGHT_MODEL_AMBIENT,world_ambient_light);
+
+
     game.map.town.draw();
     game.player.draw();
 
-
-
-
+    glLightModelfv(GL_LIGHT_MODEL_AMBIENT,global_ambient_light);
     game.UI.draw();
     glDisable(GL_DEPTH_TEST);
     glPopMatrix();

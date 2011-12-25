@@ -298,13 +298,13 @@ void character_class::draw(void)
     if (game.player.critical_chance <                 999u) string_padding += " ";
     game.font.font_1.Write(255,255,255,255,character_class::pos_x - (character_class::width /2.5f),character_class::pos_y - (character_class::height/16.0f),4.8f,32.0f,"Critical Chance: ",(int)game.player.critical_chance,string_padding);
     string_padding = "";
-    if (game.player.physical_damage_maximum <                   9u) string_padding += " ";
-    if (game.player.physical_damage_maximum <                  99u) string_padding += " ";
-    if (game.player.physical_damage_maximum <                 999u) string_padding += " ";
-    if (game.player.physical_damage_minimum <                   9u) string_padding += " ";
-    if (game.player.physical_damage_minimum <                  99u) string_padding += " ";
-    if (game.player.physical_damage_minimum <                 999u) string_padding += " ";
-    game.font.font_1.Write(255,255,255,255,character_class::pos_x - (character_class::width /2.5f),character_class::pos_y - (character_class::height/10.0f),4.8f,32.0f,"Physical Damage: ",(int)game.player.physical_damage_minimum," - ",(int)game.player.physical_damage_maximum,string_padding);
+    if (game.player.damage_physical_maximum <                   9u) string_padding += " ";
+    if (game.player.damage_physical_maximum <                  99u) string_padding += " ";
+    if (game.player.damage_physical_maximum <                 999u) string_padding += " ";
+    if (game.player.damage_physical_minimum <                   9u) string_padding += " ";
+    if (game.player.damage_physical_minimum <                  99u) string_padding += " ";
+    if (game.player.damage_physical_minimum <                 999u) string_padding += " ";
+    game.font.font_1.Write(255,255,255,255,character_class::pos_x - (character_class::width /2.5f),character_class::pos_y - (character_class::height/10.0f),4.8f,32.0f,"Physical Damage: ",(int)game.player.damage_physical_minimum," - ",(int)game.player.damage_physical_maximum,string_padding);
 
     string_padding = "";
     if (game.player.resistance_frost <                   9u) string_padding += " ";

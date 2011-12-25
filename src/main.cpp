@@ -94,12 +94,12 @@ int main(int argc, char *argv[])
     SDL_Joystick *joystick;
     SDL_JoystickEventState(SDL_ENABLE);
     joystick = SDL_JoystickOpen(0);
+    game.core.log.File_Write("Seeding random...");
+    seed_rand();
     game.core.log.File_Write("Initializing game system...");
     init_game(false);
     game.core.log.File_Write("Initializing OpenGL...");
     game.core.graphics.init_gl(game.core.config.Display_X_Resolution,game.core.config.Display_Y_Resolution);
-    game.core.log.File_Write("Seeding random...");
-    seed_rand();
     game.core.log.File_Write("Initializing font system...");
     TTF_Init();
     game.core.log.File_Write("Loading resources...");

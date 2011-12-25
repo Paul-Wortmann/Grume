@@ -87,8 +87,8 @@ item_class::~item_class(void)
 void item_class::equip(void)
 {
     game.player.armor                   += item_class::armour;
-    game.player.physical_damage_minimum += item_class::min_damage;
-    game.player.physical_damage_maximum += item_class::max_damage;
+    game.player.damage_physical_minimum += item_class::min_damage;
+    game.player.damage_physical_maximum += item_class::max_damage;
     game.player.health.maximum          += item_class::add_max_health;
     game.player.health.maximum          -= item_class::sub_max_health;
     game.player.mana.maximum            += item_class::add_max_mana;
@@ -120,8 +120,8 @@ void item_class::equip(void)
 void item_class::unequip(void)
 {
     game.player.armor                   -= item_class::armour;
-    game.player.physical_damage_minimum -= item_class::min_damage;
-    game.player.physical_damage_maximum -= item_class::max_damage;
+    game.player.damage_physical_minimum -= item_class::min_damage;
+    game.player.damage_physical_maximum -= item_class::max_damage;
     game.player.health.maximum          -= item_class::add_max_health;
     game.player.health.maximum          += item_class::sub_max_health;
     game.player.mana.maximum            -= item_class::add_max_mana;
@@ -469,37 +469,37 @@ void  generate_random_item(int item_ID, int level, int quality, int type)
         break;
     }
 //---------------------------------------------------- Randomly generate all stats ---------------------------------------
-    int temp_armour                   = 0;
-    int temp_add_armour               = 0;
-    int temp_sub_armour               = 0;
-    int temp_add_max_health           = 0;
-    int temp_add_health_regeneration  = 0;
-    int temp_sub_max_health           = 0;
-    int temp_sub_health_regeneration  = 0;
-    int temp_add_max_mana             = 0;
-    int temp_add_mana_regeneration    = 0;
-    int temp_sub_max_mana             = 0;
-    int temp_sub_mana_regeneration    = 0;
-    int temp_add_crit_chance          = 0;
-    int temp_sub_crit_chance          = 0;
-    int temp_add_walk_speed           = 0;
-    int temp_sub_walk_speed           = 0;
-    int temp_add_light_radius         = 0;
-    int temp_sub_light_radius         = 0;
-    int temp_max_damage               = 0;
-    int temp_min_damage               = 0;
-    int temp_add_frost_damage         = 0;
-    int temp_add_flame_damage         = 0;
-    int temp_add_lightning_damage     = 0;
-    int temp_add_magic_damage         = 0;
-    int temp_add_frost_resistance     = 0;
-    int temp_add_flame_resistance     = 0;
-    int temp_add_lightning_resistance = 0;
-    int temp_add_all_resistances      = 0;
+    float temp_armour                   = 0;
+    float temp_add_armour               = 0;
+    float temp_sub_armour               = 0;
+    float temp_add_max_health           = 0;
+    float temp_add_health_regeneration  = 0;
+    float temp_sub_max_health           = 0;
+    float temp_sub_health_regeneration  = 0;
+    float temp_add_max_mana             = 0;
+    float temp_add_mana_regeneration    = 0;
+    float temp_sub_max_mana             = 0;
+    float temp_sub_mana_regeneration    = 0;
+    float temp_add_crit_chance          = 0;
+    float temp_sub_crit_chance          = 0;
+    float temp_add_walk_speed           = 0;
+    float temp_sub_walk_speed           = 0;
+    float temp_add_light_radius         = 0;
+    float temp_sub_light_radius         = 0;
+    float temp_max_damage               = 0;
+    float temp_min_damage               = 0;
+    float temp_add_frost_damage         = 0;
+    float temp_add_flame_damage         = 0;
+    float temp_add_lightning_damage     = 0;
+    float temp_add_magic_damage         = 0;
+    float temp_add_frost_resistance     = 0;
+    float temp_add_flame_resistance     = 0;
+    float temp_add_lightning_resistance = 0;
+    float temp_add_all_resistances      = 0;
 
     //------ Armour ------
     temp_range  = generate_range(level,quality,ARMOUR_BASE_MULTIPLIER);
-    temp_value  = random_int(minimum_range,temp_range);
+    temp_value  = random_int((int)minimum_range,(int)temp_range);
     temp_armour = temp_value;
     if (random(quality*10) <= 10) temp_add_armour = random((quality/10));
     if (random(quality*10) <=  1) temp_sub_armour = random((quality/10));
@@ -589,29 +589,29 @@ void  generate_random_item(int item_ID, int level, int quality, int type)
     //------ Physical Damage ------
 
     temp_range = generate_range(level,quality,DAMAGE_BASE_MULTIPLIER);
-    temp_value = random_int(minimum_range,temp_range);
+    temp_value = random_int((int)minimum_range,(int)temp_range);
     temp_max_damage = temp_value;
 
     temp_range = generate_range(level,quality,DAMAGE_BASE_MULTIPLIER);
-    temp_value = random_int(minimum_range,temp_max_damage);
+    temp_value = random_int((int)minimum_range,(int)temp_max_damage);
     temp_min_damage = temp_value;
 
     //------ Magic Damage ------
 
     temp_range = generate_range(level,quality,DAMAGE_BASE_MULTIPLIER);
-    temp_value = random_int(minimum_range,temp_range);
+    temp_value = random_int((int)minimum_range,(int)temp_range);
     temp_add_frost_damage = temp_value;
 
     temp_range = generate_range(level,quality,DAMAGE_BASE_MULTIPLIER);
-    temp_value = random_int(minimum_range,temp_range);
+    temp_value = random_int((int)minimum_range,(int)temp_range);
     temp_add_flame_damage = temp_value;
 
     temp_range = generate_range(level,quality,DAMAGE_BASE_MULTIPLIER);
-    temp_value = random_int(minimum_range,temp_range);
+    temp_value = random_int((int)minimum_range,(int)temp_range);
     temp_add_lightning_damage = temp_value;
 
     temp_range = generate_range(level,quality,DAMAGE_BASE_MULTIPLIER);
-    temp_value = random_int(minimum_range,temp_range);
+    temp_value = random_int((int)minimum_range,(int)temp_range);
     temp_add_magic_damage = temp_value;
 
     //------ Magic Resistance ------
@@ -623,7 +623,7 @@ void  generate_random_item(int item_ID, int level, int quality, int type)
             if (random(temp_value) <= ((temp_value/100)*minimum_percent))
             {
                 temp_range = generate_range(level,quality,DAMAGE_BASE_MULTIPLIER);
-                temp_value = random_int(minimum_range,temp_range);
+                temp_value = random_int((int)minimum_range,(int)temp_range);
                 temp_add_frost_resistance = temp_value;
             }
         }
@@ -632,7 +632,7 @@ void  generate_random_item(int item_ID, int level, int quality, int type)
             if (random(temp_value) <= ((temp_value/100)*minimum_percent))
             {
                 temp_range = generate_range(level,quality,DAMAGE_BASE_MULTIPLIER);
-                temp_value = random_int(minimum_range,temp_range);
+                temp_value = random_int((int)minimum_range,(int)temp_range);
                 temp_add_flame_resistance = temp_value;
             }
         }
@@ -641,7 +641,7 @@ void  generate_random_item(int item_ID, int level, int quality, int type)
             if (random(temp_value) <= ((temp_value/100)*minimum_percent))
             {
                 temp_range = generate_range(level,quality,DAMAGE_BASE_MULTIPLIER);
-                temp_value = random_int(minimum_range,temp_range);
+                temp_value = random_int((int)minimum_range,(int)temp_range);
                 temp_add_all_resistances = temp_value;
             }
         }
@@ -650,7 +650,7 @@ void  generate_random_item(int item_ID, int level, int quality, int type)
             if (random(temp_value) <= ((temp_value/100)*minimum_percent))
             {
                 temp_range = generate_range(level,quality,DAMAGE_BASE_MULTIPLIER);
-                temp_value = random_int(minimum_range,temp_range);
+                temp_value = random_int((int)minimum_range,(int)temp_range);
                 temp_add_lightning_resistance = temp_value;
             }
         }
@@ -892,8 +892,8 @@ void  generate_random_item(int item_ID, int level, int quality, int type)
             game.item[item_ID].add_all_resistances      = temp_add_all_resistances;
         break;
         case WAND://-------------------------------- Wand ----------------------------------------------------------------
-            game.item[item_ID].max_damage               = temp_max_damage;
-            game.item[item_ID].min_damage               = temp_min_damage;
+            game.item[item_ID].max_damage               = temp_max_damage/4;
+            game.item[item_ID].min_damage               = temp_min_damage/4;
             //game.item[item_ID].armour                   = temp_armour;
             //game.item[item_ID].add_armour               = temp_add_armour;
             //game.item[item_ID].sub_armour               = temp_sub_armour;
@@ -1126,51 +1126,259 @@ void  generate_random_item(int item_ID, int level, int quality, int type)
         break;
     }
 //------------------------------ unique name generation based on randomly generated stats -------------------------------
+    std::string temp_name_prefix = "Random";
+    std::string temp_name_type   = "item";
+    std::string temp_name_suffix = "of randomness";
+
+    temp_random = (quality+level)/2;
+    if  (temp_random <   5)                         temp_name_prefix = "Discarded";
+    if ((temp_random >=  5) && (temp_random <= 10)) temp_name_prefix = "Damaged";
+    if ((temp_random >= 10) && (temp_random <= 25)) temp_name_prefix = "Average";
+    if ((temp_random >= 25) && (temp_random <= 40)) temp_name_prefix = "Awesome";
+    if ((temp_random >= 40) && (temp_random <= 50)) temp_name_prefix = "Superb";
+    if ((temp_random >= 50) && (temp_random <= 60)) temp_name_prefix = "Excellent";
+    if ((temp_random >= 60) && (temp_random <= 70)) temp_name_prefix = "Superior";
+    if ((temp_random >= 70) && (temp_random <= 80)) temp_name_prefix = "Exceptional";
+    if ((temp_random >= 80) && (temp_random <= 95)) temp_name_prefix = "Wondrous";
+    if  (temp_random >= 95)                         temp_name_prefix = "Heroic";
+
     switch (type)
     {
         case HELM:
-            game.item[item_ID].name              = "Random Helm";
+            temp_range = random(7);
+            if (temp_range <=  0) temp_name_type = "hat";
+            if (temp_range ==  1) temp_name_type = "bonnet";
+            if (temp_range ==  2) temp_name_type = "headgear";
+            if (temp_range ==  3) temp_name_type = "headpiece";
+            if (temp_range ==  4) temp_name_type = "helmet";
+            if (temp_range ==  5) temp_name_type = "cap";
+            if (temp_range >=  6) temp_name_type = "helm";
         break;
         case BOOTS:
-            game.item[item_ID].name              = "Random Boots";
+            temp_range = random(7);
+            if (temp_range <=  0) temp_name_type = "slippers";
+            if (temp_range ==  1) temp_name_type = "footwear";
+            if (temp_range ==  2) temp_name_type = "footgear";
+            if (temp_range ==  3) temp_name_type = "clogs";
+            if (temp_range ==  4) temp_name_type = "sandals";
+            if (temp_range ==  5) temp_name_type = "shoes";
+            if (temp_range >=  6) temp_name_type = "boots";
         break;
         case ARMOUR:
-            game.item[item_ID].name              = "Random Armour";
+            temp_range = random(6);
+            if (temp_range <=  0) temp_name_type = "guard";
+            if (temp_range ==  1) temp_name_type = "vest";
+            if (temp_range ==  2) temp_name_type = "mail";
+            if (temp_range ==  3) temp_name_type = "plate";
+            if (temp_range ==  4) temp_name_type = "husk";
+            if (temp_range >=  5) temp_name_type = "armor";
         break;
         case SHIELD:
-            game.item[item_ID].name              = "Random Shield";
+            temp_range = random(6);
+            if (temp_range <=  0) temp_name_type = "absorber";
+            if (temp_range ==  1) temp_name_type = "armament";
+            if (temp_range ==  2) temp_name_type = "buckler";
+            if (temp_range ==  3) temp_name_type = "buffer";
+            if (temp_range ==  4) temp_name_type = "ward";
+            if (temp_range >=  5) temp_name_type = "shield";
         break;
         case GLOVES:
-            game.item[item_ID].name              = "Random Gloves";
+            temp_range = random(4);
+            if (temp_range <=  0) temp_name_type = "gauntlets";
+            if (temp_range ==  1) temp_name_type = "gage";
+            if (temp_range ==  2) temp_name_type = "mitts";
+            if (temp_range >=  3) temp_name_type = "gloves";
         break;
         case BELT:
-            game.item[item_ID].name              = "Random Belt";
+            temp_range = random(4);
+            if (temp_range <=  0) temp_name_type = "bind";
+            if (temp_range ==  1) temp_name_type = "wrap";
+            if (temp_range ==  2) temp_name_type = "sash";
+            if (temp_range >=  3) temp_name_type = "belt";
         break;
         case RING:
-            game.item[item_ID].name              = "Random Ring";
+            temp_range = random(4);
+            if (temp_range <=  0) temp_name_type = "band";
+            if (temp_range ==  1) temp_name_type = "loop";
+            if (temp_range ==  2) temp_name_type = "ringlet";
+            if (temp_range >=  3) temp_name_type = "ring";
         break;
         case AMULET:
-            game.item[item_ID].name              = "Random Amulet";
+            temp_range = random(6);
+            if (temp_range <=  0) temp_name_type = "ornament";
+            if (temp_range ==  1) temp_name_type = "charm";
+            if (temp_range ==  2) temp_name_type = "talisman";
+            if (temp_range ==  3) temp_name_type = "chain";
+            if (temp_range ==  4) temp_name_type = "pendant";
+            if (temp_range >=  5) temp_name_type = "amulet";
         break;
         case WAND:
-            game.item[item_ID].name              = "Random Wand";
+            temp_range = random(6);
+            if (temp_range <=  0) temp_name_type = "rod";
+            if (temp_range ==  1) temp_name_type = "stick";
+            if (temp_range ==  2) temp_name_type = "twig";
+            if (temp_range ==  3) temp_name_type = "staff";
+            if (temp_range ==  4) temp_name_type = "scepter";
+            if (temp_range >=  5) temp_name_type = "wand";
         break;
         case SWORD:
-            game.item[item_ID].name              = "Random Sword";
+            temp_range = random(6);
+            if (temp_range <=  0) temp_name_type = "scimitar";
+            if (temp_range ==  1) temp_name_type = "rapier";
+            if (temp_range ==  2) temp_name_type = "cutlass";
+            if (temp_range ==  3) temp_name_type = "katana";
+            if (temp_range ==  4) temp_name_type = "saber";
+            if (temp_range >=  5) temp_name_type = "sword";
         break;
         case DAGGER:
-            game.item[item_ID].name              = "Random Dagger";
+            temp_range = random(6);
+            if (temp_range <=  0) temp_name_type = "knife";
+            if (temp_range ==  1) temp_name_type = "dirk";
+            if (temp_range ==  2) temp_name_type = "poniard";
+            if (temp_range ==  3) temp_name_type = "edge";
+            if (temp_range ==  4) temp_name_type = "blade";
+            if (temp_range >=  5) temp_name_type = "dagger";
         break;
         case BOW:
-            game.item[item_ID].name              = "Random Bow";
+            temp_range = random(4);
+            if (temp_range <=  0) temp_name_type = "crossbow";
+            if (temp_range ==  1) temp_name_type = "arbalest";
+            if (temp_range ==  2) temp_name_type = "ballista";
+            if (temp_range >=  3) temp_name_type = "bow";
         break;
         case SLING:
-            game.item[item_ID].name              = "Random Sling";
+            temp_range = random(2);
+            if (temp_range <=  0) temp_name_type = "slingshot";
+            if (temp_range >=  1) temp_name_type = "sling";
         break;
         default:
-            game.item[item_ID].name              = "Random Item";
         break;
     }
+    switch (type)
+    {
+        case HELM:
+            temp_range = random(6);
+            if (temp_range <=  0) temp_name_suffix = "protection";
+            if (temp_range ==  1) temp_name_suffix = "stone";
+            if (temp_range ==  2) temp_name_suffix = "wrath";
+            if (temp_range ==  3) temp_name_suffix = "doom";
+            if (temp_range ==  4) temp_name_suffix = "cover";
+            if (temp_range >=  5) temp_name_suffix = "glory";
+        break;
+        case BOOTS:
+            temp_range = random(7);
+            if (temp_range <=  0) temp_name_suffix = "walking";
+            if (temp_range ==  1) temp_name_suffix = "stomping";
+            if (temp_range ==  2) temp_name_suffix = "running";
+            if (temp_range ==  3) temp_name_suffix = "striding";
+            if (temp_range ==  4) temp_name_suffix = "treading";
+            if (temp_range ==  5) temp_name_suffix = "kicking";
+            if (temp_range >=  6) temp_name_suffix = "agility";
+        break;
+        case ARMOUR:
+            temp_range = random(6);
+            if (temp_range <=  0) temp_name_suffix = "gloom";
+            if (temp_range ==  1) temp_name_suffix = "cover";
+            if (temp_range ==  2) temp_name_suffix = "stealth";
+            if (temp_range ==  3) temp_name_suffix = "honor";
+            if (temp_range ==  4) temp_name_suffix = "courage";
+            if (temp_range >=  5) temp_name_suffix = "bravery";
+        break;
+        case SHIELD:
+            temp_range = random(6);
+            if (temp_range <=  0) temp_name_suffix = "blocking";
+            if (temp_range ==  1) temp_name_suffix = "warding";
+            if (temp_range ==  2) temp_name_suffix = "stopping";
+            if (temp_range ==  3) temp_name_suffix = "safety";
+            if (temp_range ==  4) temp_name_suffix = "misery";
+            if (temp_range >=  5) temp_name_suffix = "woe";
+        break;
+        case GLOVES:
+            temp_range = random(6);
+            if (temp_range <=  0) temp_name_suffix = "might";
+            if (temp_range ==  1) temp_name_suffix = "fist";
+            if (temp_range ==  2) temp_name_suffix = "straggle";
+            if (temp_range ==  3) temp_name_suffix = "grip";
+            if (temp_range ==  4) temp_name_suffix = "punching";
+            if (temp_range >=  5) temp_name_suffix = "pounding";
+        break;
+        case BELT:
+            temp_range = random(6);
+            if (temp_range <=  0) temp_name_suffix = "security";
+            if (temp_range ==  1) temp_name_suffix = "holding";
+            if (temp_range ==  2) temp_name_suffix = "pride";
+            if (temp_range ==  3) temp_name_suffix = "perseverance";
+            if (temp_range ==  4) temp_name_suffix = "deliverance";
+            if (temp_range >=  5) temp_name_suffix = "justice";
+        break;
+        case RING:
+            temp_range = random(6);
+            if (temp_range <=  0) temp_name_suffix = "myth";
+            if (temp_range ==  1) temp_name_suffix = "the adventurer";
+            if (temp_range ==  2) temp_name_suffix = "trickery";
+            if (temp_range ==  3) temp_name_suffix = "trade";
+            if (temp_range ==  4) temp_name_suffix = "the lord";
+            if (temp_range >=  5) temp_name_suffix = "infinity";
+        break;
+        case AMULET:
+            temp_range = random(6);
+            if (temp_range <=  0) temp_name_suffix = "glow";
+            if (temp_range ==  1) temp_name_suffix = "luck";
+            if (temp_range ==  2) temp_name_suffix = "dreams";
+            if (temp_range ==  3) temp_name_suffix = "determination";
+            if (temp_range ==  4) temp_name_suffix = "superstition";
+            if (temp_range >=  5) temp_name_suffix = "witches";
+        break;
+        case WAND:
+            temp_range = random(7);
+            if (temp_range <=  0) temp_name_suffix = "wizardry";
+            if (temp_range ==  1) temp_name_suffix = "magic";
+            if (temp_range ==  2) temp_name_suffix = "witchcraft";
+            if (temp_range ==  3) temp_name_suffix = "sorcery";
+            if (temp_range ==  4) temp_name_suffix = "alchemy";
+            if (temp_range ==  5) temp_name_suffix = "mysticism";
+            if (temp_range >=  6) temp_name_suffix = "mystery";
+        break;
+        case SWORD:
+            temp_range = random(6);
+            if (temp_range <=  0) temp_name_suffix = "slashing";
+            if (temp_range ==  1) temp_name_suffix = "chopping";
+            if (temp_range ==  2) temp_name_suffix = "decapitation";
+            if (temp_range ==  3) temp_name_suffix = "slicing";
+            if (temp_range ==  4) temp_name_suffix = "slaying";
+            if (temp_range >=  5) temp_name_suffix = "legends";
+        break;
+        case DAGGER:
+            temp_range = random(6);
+            if (temp_range <=  0) temp_name_suffix = "stabbing";
+            if (temp_range ==  1) temp_name_suffix = "gouging";
+            if (temp_range ==  2) temp_name_suffix = "piercing";
+            if (temp_range ==  3) temp_name_suffix = "pain";
+            if (temp_range ==  4) temp_name_suffix = "blinding";
+            if (temp_range >=  5) temp_name_suffix = "sacrifice";
+        break;
+        case BOW:
+            temp_range = random(6);
+            if (temp_range <=  0) temp_name_suffix = "accuracy";
+            if (temp_range ==  1) temp_name_suffix = "silent death";
+            if (temp_range ==  2) temp_name_suffix = "raining death";
+            if (temp_range ==  3) temp_name_suffix = "precision";
+            if (temp_range ==  4) temp_name_suffix = "torture";
+            if (temp_range >=  5) temp_name_suffix = "the hunt";
+        break;
+        case SLING:
+            temp_range = random(6);
+            if (temp_range <=  0) temp_name_suffix = "rebellion";
+            if (temp_range ==  1) temp_name_suffix = "slaughter";
+            if (temp_range ==  2) temp_name_suffix = "savagery";
+            if (temp_range ==  3) temp_name_suffix = "punishment";
+            if (temp_range ==  4) temp_name_suffix = "provoking";
+            if (temp_range >=  5) temp_name_suffix = "the uprising";
+        break;
+        default:
+        break;
+    }
+    game.item[item_ID].name = temp_name_prefix + " " + temp_name_type + " of " + temp_name_suffix;
     // add name padding...
 };
 
