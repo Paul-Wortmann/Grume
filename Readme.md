@@ -7,13 +7,17 @@ This is Frost and Flame, a free/open source computer game.
 
 About
 -----
-Frost and Flame is an isometric, action role playing game. ARPG
+Frost and Flame is still in its early stages of infancy.  Currently a non-playable WIP.
+Frost and flame to become a 2D, isometric, action role playing game.
+Planned features include, a particle engine, rich in content and re-playability with random item, quest and level generation.
 
 Features
 --------
--Documentation...
+- Menu, UI, action bar, inventory etc...
+- Items, books, potions, weapons, armor etc...
+- Import / export maps in the "Tiled" map editor format. (http://www.mapeditor.org/)
 
-More information can be found in the changelog.txt file.
+More information may be found in the changelog.txt file.
 
 Usage
 -----
@@ -21,7 +25,7 @@ Usage
 Compiling
 ---------
 Included are the project files for use with the Code::Blocks IDE. (http://www.codeblocks.org/)
-Also required are the SDL librarys.
+Also required are the SDL development librarys.
 
 Multiple language support.
 ---------------------
@@ -35,7 +39,7 @@ Known bugs
 As this is still a work in progress, the format of the savegames may, and does change quite often.
 It is recommended you either overwrite your older savegames with new ones, or delete the older ones when upgrading to a newer version of Frost and Flame.
 Or better still remove the older version of the game completely, before installing a newer version.
-If the game fails to load, try deleting the Fraost_And_Flame.cfg file, it may be caused by recent improvements to the game.
+If the game fails to load, try deleting the Frost_And_Flame.cfg file, this may be due to recent improvements to the game.
 
 Credits
 -------
