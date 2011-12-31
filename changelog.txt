@@ -1,10 +1,14 @@
-﻿v0.02 - (2011-12-31)
+﻿v0.03 - (2012-01-31)
+LOC  -> 14650
+
+v0.02 - (2011-12-31)
 
 BUG  -> Fixed a SIGFPE, Arithmetic exception.
 MAP  -> Added gold_tileset.
 MAP  -> Implemented a basic day/night cycle.
 MAP  -> Created mouse/tile picking.
 SFX  -> Added potion use and move sounds.
+SFX  -> Added book move sounds.
 UI   -> Added user portraits.
 UI   -> Equipment menu started.
 UI   -> Character menu improved.
@@ -17,7 +21,7 @@ UI   -> Random item generation implemented.
 UI   -> Items can now be equiped and unequiped.
 UI   -> Added mouse cursor.
 UI   -> Added a large variety of itmes.
-LOC - 14557
+LOC  -> 14650
 
 v0.01 - (2011-11-30)
 
@@ -37,11 +41,11 @@ UI   -> Action bar with dragable, rearrangeable menu buttons.
 UI   -> Dragable main menu available in game.
 UI   -> Main menu implemented.
 CORE -> Initial framework completed.
-LOC - 10671
+LOC  -> 10671
 
 v0.00 - (2011-11-11)
 Initial release.
 Documentation.
 Some textures planned for inclusion in this project.
-LOC - 0
+LOC  -> 0
 
