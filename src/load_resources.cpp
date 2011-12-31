@@ -127,6 +127,8 @@ bool load_textures(void)
     game.texture.item_stat_background.load_image    ("data/textures/UI/inventory/item_stat_background.png"    ,texture_count);texture_count++;
     game.texture.character_portrait_frame.load_image("data/textures/UI/character/character_portrait_frame.png",texture_count);texture_count++;
     game.texture.character_background.load_image    ("data/textures/UI/character/character_background.png"    ,texture_count);texture_count++;
+    game.texture.check_box_true.load_image          ("data/textures/UI/character/check_box_true.png"          ,texture_count);texture_count++;
+    game.texture.check_box_false.load_image         ("data/textures/UI/character/check_box_false.png"         ,texture_count);texture_count++;
     game.texture.quest_log_background.load_image    ("data/textures/UI/quest_log/quest_log_background.png"    ,texture_count);texture_count++;
     game.texture.equipment_background.load_image    ("data/textures/UI/equipment/equipment_background.png"    ,texture_count);texture_count++;
     game.texture.equipment_slot_32x32.load_image    ("data/textures/UI/equipment/equipment_slot_32x32.png"    ,texture_count);texture_count++;
@@ -433,7 +435,7 @@ bool load_textures(void)
 
 bool proc_textures(void)
 {
-    //used for sprite sheets
+    //use for sprite sheets / animation
 };
 
 bool load_fonts(void)
@@ -520,6 +522,8 @@ bool draw_texture(bool r, int texture_number, float x, float y, float z, float w
     if (texture_number == game.texture.item_stat_background.ref_number)      game.texture.item_stat_background.draw     (r,x,y,z,w,h,angle,frame);
     if (texture_number == game.texture.character_portrait_frame.ref_number)  game.texture.character_portrait_frame.draw (r,x,y,z,w,h,angle,frame);
     if (texture_number == game.texture.character_background.ref_number)      game.texture.character_background.draw     (r,x,y,z,w,h,angle,frame);
+    if (texture_number == game.texture.check_box_true.ref_number)            game.texture.check_box_true.draw           (r,x,y,z,w,h,angle,frame);
+    if (texture_number == game.texture.check_box_false.ref_number)           game.texture.check_box_false.draw          (r,x,y,z,w,h,angle,frame);
     if (texture_number == game.texture.quest_log_background.ref_number)      game.texture.quest_log_background.draw     (r,x,y,z,w,h,angle,frame);
     if (texture_number == game.texture.equipment_background.ref_number)      game.texture.equipment_background.draw     (r,x,y,z,w,h,angle,frame);
     if (texture_number == game.texture.equipment_slot_32x32.ref_number)      game.texture.equipment_slot_32x32.draw     (r,x,y,z,w,h,angle,frame);
