@@ -1,9 +1,10 @@
-﻿v0.02 - (2011-12-30)
+﻿v0.02 - (2011-12-31)
 
 BUG  -> Fixed a SIGFPE, Arithmetic exception.
 MAP  -> Added gold_tileset.
 MAP  -> Implemented a basic day/night cycle.
 MAP  -> Created mouse/tile picking.
+SFX  -> Added potion use and move sounds.
 UI   -> Added user portraits.
 UI   -> Equipment menu started.
 UI   -> Character menu improved.

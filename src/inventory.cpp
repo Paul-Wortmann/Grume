@@ -138,7 +138,6 @@ void inventory_slot_class::process(void)
                 {
                     if (game.UI.inventory.inventory_slot[inventory_slot_count].mouse_over)
                     {
-                        game.sound.bottle_01.play();
                         if   ((inventory_slot_class::button_type == game.UI.inventory.inventory_slot[inventory_slot_count].button_type)
                             && (inventory_slot_class::base_pos_x != game.UI.inventory.inventory_slot[inventory_slot_count].base_pos_x)
                             && (inventory_slot_class::base_pos_y != game.UI.inventory.inventory_slot[inventory_slot_count].base_pos_y))
@@ -165,9 +164,29 @@ void inventory_slot_class::process(void)
                             temp_button = inventory_slot_class::quantity;
                             inventory_slot_class::quantity = game.UI.inventory.inventory_slot[inventory_slot_count].quantity;
                             game.UI.inventory.inventory_slot[inventory_slot_count].quantity = temp_button;
-                            inventory_slot_class::max_quantity = game.item[inventory_slot_class::button_type].max_stack_number;
-                            game.UI.inventory.inventory_slot[inventory_slot_count].max_quantity = game.item[game.UI.inventory.inventory_slot[inventory_slot_count].button_type].max_stack_number;
+                            temp_button = inventory_slot_class::max_quantity;
+                            inventory_slot_class::max_quantity = game.UI.inventory.inventory_slot[inventory_slot_count].max_quantity;
+                            game.UI.inventory.inventory_slot[inventory_slot_count].max_quantity = temp_button;
                         }
+                        if (game.item[inventory_slot_class::button_type].type == HEALTH_POTION) game.sound.bottle_01.play();
+                        if (game.item[inventory_slot_class::button_type].type == MANA_POTION)   game.sound.bottle_01.play();
+                        if (game.item[inventory_slot_class::button_type].type == SPELL_BOOK)    game.sound.book_00.play();
+                        if (game.item[inventory_slot_class::button_type].type == SPELL_SCROLL)  game.sound.book_01.play();
+/*
+                        if (game.item[inventory_slot_class::button_type].type == HELM)           game.sound.bottle_01.play();
+                        if (game.item[inventory_slot_class::button_type].type == BOOTS)          game.sound.bottle_01.play();
+                        if (game.item[inventory_slot_class::button_type].type == ARMOUR)         game.sound.bottle_01.play();
+                        if (game.item[inventory_slot_class::button_type].type == GLOVES)         game.sound.bottle_01.play();
+                        if (game.item[inventory_slot_class::button_type].type == RING)           game.sound.bottle_01.play();
+                        if (game.item[inventory_slot_class::button_type].type == AMULET)         game.sound.bottle_01.play();
+                        if (game.item[inventory_slot_class::button_type].type == SHIELD)         game.sound.bottle_01.play();
+                        if (game.item[inventory_slot_class::button_type].type == WAND)           game.sound.bottle_01.play();
+                        if (game.item[inventory_slot_class::button_type].type == SWORD)          game.sound.bottle_01.play();
+                        if (game.item[inventory_slot_class::button_type].type == DAGGER)         game.sound.bottle_01.play();
+                        if (game.item[inventory_slot_class::button_type].type == BELT)           game.sound.bottle_01.play();
+                        if (game.item[inventory_slot_class::button_type].type == BOW)            game.sound.bottle_01.play();
+                        if (game.item[inventory_slot_class::button_type].type == SLING)          game.sound.bottle_01.play();
+*/
                     }
                 }
                 for (int equipment_slot_count = 1; equipment_slot_count < MAX_EQUIPMENT_SLOTS; equipment_slot_count++)

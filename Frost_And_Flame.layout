@@ -2,7 +2,7 @@
 <CodeBlocks_layout_file>
 	<ActiveTarget name="Windows" />
 	<File name="src\UI.cpp" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="7071" topLine="125" />
+		<Cursor1 position="9974" topLine="180" />
 	</File>
 	<File name="src\UI.hpp" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor1 position="3046" topLine="73" />
@@ -140,10 +140,10 @@
 		<Cursor1 position="2294" topLine="53" />
 	</File>
 	<File name="src\load_resources.cpp" open="0" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="1670" topLine="46" />
+		<Cursor1 position="2056" topLine="46" />
 	</File>
 	<File name="src\load_resources.hpp" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="3261" topLine="97" />
+		<Cursor1 position="1455" topLine="29" />
 	</File>
 	<File name="src\main.cpp" open="0" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor1 position="4691" topLine="92" />

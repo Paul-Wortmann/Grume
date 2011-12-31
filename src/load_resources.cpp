@@ -58,6 +58,10 @@ bool load_sounds(void)
     game.sound.bubble_02.load  ("data/sound/inventory/bubble_02.wav",sfx_count)  ;sfx_count++;
     game.sound.bubble_03.load  ("data/sound/inventory/bubble_03.wav",sfx_count)  ;sfx_count++;
 
+    game.sound.book_00.load  ("data/sound/inventory/book_00.wav",sfx_count)  ;sfx_count++;
+    game.sound.book_01.load  ("data/sound/inventory/book_01.wav",sfx_count)  ;sfx_count++;
+    game.sound.book_02.load  ("data/sound/inventory/book_02.wav",sfx_count)  ;sfx_count++;
+
     game.core.log.File_Write("Sound files loaded -> ",sfx_count);
     return(true);
 };

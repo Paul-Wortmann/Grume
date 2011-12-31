@@ -41,6 +41,10 @@ struct sound_type
     sound_class   bubble_01;
     sound_class   bubble_02;
     sound_class   bubble_03;
+
+    sound_class   book_00;
+    sound_class   book_01;
+    sound_class   book_02;
 };
 
 struct map_type
