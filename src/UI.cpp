@@ -240,8 +240,9 @@ void action_slot_class::process(void)
                 action_slot_class::drag_offset_y = action_slot_class::pos_y - game.core.io.mouse_y;
             }
         }
-        if ((action_slot_class::mouse_over) && (game.core.io.mouse_button_right))//use item
+        if ((action_slot_class::mouse_over) && (game.core.io.mouse_button_right) && (game.core.io.mouse_button_ready))//use item
         {
+            game.core.io.mouse_button_delay_count = 0;
             if (action_slot_class::button_type < 1000) // use spell
             {
 
