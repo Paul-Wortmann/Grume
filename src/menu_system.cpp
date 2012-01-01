@@ -317,7 +317,7 @@ int process_menu(void)
                     game.UI.active_window_list.remove_from_list(MAIN_MENU_WINDOW);
                     game.sound.menu_select_00.play();
                     game.core.status_quit_active      = true;
-                    game.core.io.escape               = false;
+                    game.core.io.key_escape           = false;
                     game.core.log.File_Write("User terminating game - keyboard escape pressed!");
                 }
                 else
@@ -332,7 +332,7 @@ int process_menu(void)
                     game.UI.active_window_list.remove_from_list(MAIN_MENU_WINDOW);
                     game.sound.menu_select_00.play();
                     game.core.status_quit_active      = true;
-                    game.core.io.escape               = false;
+                    game.core.io.key_escape           = false;
                     game.core.log.File_Write("User terminating game - clicked escape button!");
                 }
                 else
@@ -372,7 +372,7 @@ int process_menu(void)
             case 65534://Return to main menu
                 game.sound.menu_select_00.play();
                 game.core.menu_level = 1;
-                game.core.io.escape               = false;
+                game.core.io.key_escape           = false;
                 game.core.log.File_Write("Entering main menu, from New_Game menu. - escape preses.");
             break;
             case 65535://Return to main menu
@@ -514,7 +514,7 @@ int process_menu(void)
             case 65534://Return to main menu
                 game.sound.menu_select_00.play();
                 game.core.menu_level = 1;
-                game.core.io.escape               = false;
+                game.core.io.key_escape           = false;
                 game.core.log.File_Write("Entering main menu, from load menu. - escape preses.");
             break;
             case 65535://Return to main menu
@@ -628,7 +628,7 @@ int process_menu(void)
             case 65534://Return to main menu
                 game.sound.menu_select_00.play();
                 game.core.menu_level = 1;
-                game.core.io.escape               = false;
+                game.core.io.key_escape           = false;
                 game.core.log.File_Write("Entering main menu, from save menu. - escape preses.");
             break;
             case 65535://Return to main menu
@@ -735,7 +735,7 @@ int process_menu(void)
             case 65534://Return to main menu
                 game.sound.menu_select_00.play();
                 game.core.menu_level = 1;
-                game.core.io.escape               = false;
+                game.core.io.key_escape           = false;
                 game.core.log.File_Write("Entering main menu, from Options menu. - escape preses.");
             break;
             case 65535://Return to main menu
@@ -812,7 +812,7 @@ int process_menu(void)
                 game.core.outr_active             = false;
                 game.core.game_active             = false;
                 game.core.nlvl_active             = false;
-                game.core.io.escape               = false;
+                game.core.io.key_escape           = false;
                 game.core.music_next_track        = true;
                 game.core.log.File_Write("Entering main menu, from game over menu. - button 1 selected.");
                 game.main_menu.set_keyboard_delay_count(0);
@@ -830,7 +830,7 @@ int process_menu(void)
                 game.core.outr_active             = false;
                 game.core.game_active             = false;
                 game.core.nlvl_active             = false;
-                game.core.io.escape               = false;
+                game.core.io.key_escape           = false;
                 game.core.music_next_track        = true;
                 game.core.log.File_Write("Entering main menu, from game over menu. - button 1 selected.");
                 game.main_menu.set_keyboard_delay_count(0);
@@ -845,7 +845,7 @@ int process_menu(void)
                 game.core.outr_active             = false;
                 game.core.game_active             = false;
                 game.core.nlvl_active             = false;
-                game.core.io.escape               = false;
+                game.core.io.key_escape           = false;
                 game.core.music_next_track        = true;
                 game.core.log.File_Write("Entering main menu, from game over menu. - button 1 selected.");
                 game.main_menu.set_keyboard_delay_count(0);
@@ -867,13 +867,13 @@ int process_menu(void)
                 game.sound.menu_select_00.play();
                 game.core.game_paused      = false;
                 game.core.game_active      = true;
-                game.core.io.escape        = false;
+                game.core.io.key_escape    = false;
                 game.core.io.select        = false;
                 game.core.io.pause         = false;
                 SDL_WarpMouse(game.core.graphics.gl_to_res(game.main_menu.get_button_x_pos(1),game.core.config.mouse_resolution_x),game.core.config.mouse_resolution_y-game.core.graphics.gl_to_res(game.main_menu.get_button_y_pos(1),game.core.config.mouse_resolution_y));
-                game.core.io.space  = false;
-                game.core.io.enter  = false;
-                game.core.io.select = false;
+                game.core.io.key_space  = false;
+                game.core.io.key_enter  = false;
+                game.core.io.select     = false;
                 game.main_menu.set_keyboard_delay(128);
                 game.main_menu.set_keyboard_delay_count(0);
                 game.main_menu.set_mouse_delay_count(0);
@@ -886,13 +886,13 @@ int process_menu(void)
                 game.sound.menu_select_00.play();
                 game.core.game_paused      = false;
                 game.core.game_active      = true;
-                game.core.io.escape        = false;
+                game.core.io.key_escape    = false;
                 game.core.io.select        = false;
                 game.core.io.pause         = false;
                 SDL_WarpMouse(game.core.graphics.gl_to_res(game.main_menu.get_button_x_pos(1),game.core.config.mouse_resolution_x),game.core.config.mouse_resolution_y-game.core.graphics.gl_to_res(game.main_menu.get_button_y_pos(1),game.core.config.mouse_resolution_y));
-                game.core.io.space  = false;
-                game.core.io.enter  = false;
-                game.core.io.select = false;
+                game.core.io.key_space  = false;
+                game.core.io.key_enter  = false;
+                game.core.io.select     = false;
                 game.main_menu.set_keyboard_delay(128);
                 game.main_menu.set_keyboard_delay_count(0);
                 game.main_menu.set_mouse_delay_count(0);
@@ -902,13 +902,13 @@ int process_menu(void)
                 game.sound.menu_select_00.play();
                 game.core.game_paused      = false;
                 game.core.game_active      = true;
-                game.core.io.escape        = false;
+                game.core.io.key_escape    = false;
                 game.core.io.select        = false;
                 game.core.io.pause         = false;
                 SDL_WarpMouse(game.core.graphics.gl_to_res(game.main_menu.get_button_x_pos(1),game.core.config.mouse_resolution_x),game.core.config.mouse_resolution_y-game.core.graphics.gl_to_res(game.main_menu.get_button_y_pos(1),game.core.config.mouse_resolution_y));
-                game.core.io.space  = false;
-                game.core.io.enter  = false;
-                game.core.io.select = false;
+                game.core.io.key_space  = false;
+                game.core.io.key_enter  = false;
+                game.core.io.select     = false;
                 game.main_menu.set_keyboard_delay(128);
                 game.main_menu.set_keyboard_delay_count(0);
                 game.main_menu.set_mouse_delay_count(0);

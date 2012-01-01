@@ -2,10 +2,10 @@
 <CodeBlocks_layout_file>
 	<ActiveTarget name="Windows" />
 	<File name="src\UI.cpp" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="9974" topLine="180" />
+		<Cursor1 position="21554" topLine="390" />
 	</File>
 	<File name="src\UI.hpp" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="3046" topLine="73" />
+		<Cursor1 position="1295" topLine="21" />
 	</File>
 	<File name="src\character.cpp" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor1 position="10774" topLine="213" />
@@ -44,10 +44,10 @@
 		<Cursor1 position="943" topLine="0" />
 	</File>
 	<File name="src\core\io.cpp" open="0" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="17997" topLine="0" />
+		<Cursor1 position="5608" topLine="112" />
 	</File>
 	<File name="src\core\io.hpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="2036" topLine="37" />
+		<Cursor1 position="3068" topLine="97" />
 	</File>
 	<File name="src\core\log.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor1 position="2205" topLine="60" />
@@ -56,7 +56,7 @@
 		<Cursor1 position="977" topLine="15" />
 	</File>
 	<File name="src\core\menu.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="108466" topLine="2228" />
+		<Cursor1 position="95157" topLine="2033" />
 	</File>
 	<File name="src\core\menu.hpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor1 position="1078" topLine="22" />
@@ -158,7 +158,7 @@
 		<Cursor1 position="1390" topLine="30" />
 	</File>
 	<File name="src\menu_system.cpp" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="19820" topLine="249" />
+		<Cursor1 position="52451" topLine="891" />
 	</File>
 	<File name="src\menu_system.hpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor1 position="966" topLine="0" />

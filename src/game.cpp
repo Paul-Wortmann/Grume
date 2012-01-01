@@ -99,7 +99,7 @@ int process_game(void)
     }
     if (game.core.io.keyboard_ready)
     {
-        if (game.core.io.escape)
+        if (game.core.io.key_escape)
         {
             if(!game.core.menu_active)
             {
@@ -107,7 +107,7 @@ int process_game(void)
                 game.sound.menu_select_00.play();
                 game.core.menu_level              = 1;
                 game.core.menu_active             = true;
-                game.core.io.escape               = false;
+                game.core.io.key_escape           = false;
                 game.core.io.keyboard_delay_count = 0;
                 game.core.config.menu_delay_count = 0;
                 while (game.core.config.menu_delay_count < (game.core.config.menu_delay/2))
@@ -116,6 +116,7 @@ int process_game(void)
                 }
             }
         }
+        /*
         if (game.core.io.pause)
         {
             if (!game.core.game_paused)
@@ -134,6 +135,7 @@ int process_game(void)
                 game.core.game_active = true;
             }
         };
+        */
         if (game.core.io.key_z)
         {
             game.zoom.current += game.zoom.speed;
@@ -158,24 +160,41 @@ int process_game(void)
             game.core.io.key_x                = false;
             game.core.io.keyboard_delay_count = 0;
         }
-        if (game.core.io.key_i)
+        if (game.core.io.key_e) // Equipment menu
         {
-            if (!game.core.inventory_active)
+            if (!game.core.equipment_active)
             {
-                game.UI.active_window_list.add_to_list(INVENTORY_WINDOW);
+                game.UI.active_window_list.add_to_list(EQUIPMENT_WINDOW);
                 game.sound.menu_select_00.play();
-                game.core.inventory_active        = true;
+                game.core.equipment_active        = true;
             }
             else
             {
-                game.UI.active_window_list.remove_from_list(INVENTORY_WINDOW);
+                game.UI.active_window_list.remove_from_list(EQUIPMENT_WINDOW);
                 game.sound.menu_select_00.play();
-                game.core.inventory_active        = false;
+                game.core.equipment_active        = false;
             }
-            game.core.io.key_i                = false;
+            game.core.io.key_e                = false;
             game.core.io.keyboard_delay_count = 0;
         }
-        if (game.core.io.key_c)
+        if (game.core.io.key_q) // Quest log menu
+        {
+            if (!game.core.quest_log_active)
+            {
+                game.UI.active_window_list.add_to_list(QUEST_LOG_WINDOW);
+                game.sound.menu_select_00.play();
+                game.core.quest_log_active        = true;
+            }
+            else
+            {
+                game.UI.active_window_list.remove_from_list(QUEST_LOG_WINDOW);
+                game.sound.menu_select_00.play();
+                game.core.quest_log_active        = false;
+            }
+            game.core.io.key_q                = false;
+            game.core.io.keyboard_delay_count = 0;
+        }
+        if (game.core.io.key_c) // Character menu
         {
             if (!game.core.character_active)
             {
@@ -192,7 +211,76 @@ int process_game(void)
             game.core.io.key_c                = false;
             game.core.io.keyboard_delay_count = 0;
         }
-        assign keys!
+        if (game.core.io.key_i) // Inventory menu
+        {
+            if (!game.core.inventory_active)
+            {
+                game.UI.active_window_list.add_to_list(INVENTORY_WINDOW);
+                game.sound.menu_select_00.play();
+                game.core.inventory_active        = true;
+            }
+            else
+            {
+                game.UI.active_window_list.remove_from_list(INVENTORY_WINDOW);
+                game.sound.menu_select_00.play();
+                game.core.inventory_active        = false;
+            }
+            game.core.io.key_i                = false;
+            game.core.io.keyboard_delay_count = 0;
+        }
+        if (game.core.io.key_b) // Skill book menu
+        {
+            if (!game.core.spellbook_active)
+            {
+                game.UI.active_window_list.add_to_list(SPELLBOOK_WINDOW);
+                game.sound.menu_select_00.play();
+                game.core.spellbook_active        = true;
+            }
+            else
+            {
+                game.UI.active_window_list.remove_from_list(SPELLBOOK_WINDOW);
+                game.sound.menu_select_00.play();
+                game.core.spellbook_active        = false;
+            }
+            game.core.io.key_b                = false;
+            game.core.io.keyboard_delay_count = 0;
+        }
+        if (game.core.io.key_space) // close all open windows
+        {
+            if (game.core.menu_active)
+            {
+                game.UI.active_window_list.remove_from_list(MAIN_MENU_WINDOW);
+                game.core.menu_active        = false;
+            }
+            if (game.core.equipment_active)
+            {
+                game.UI.active_window_list.remove_from_list(EQUIPMENT_WINDOW);
+                game.core.equipment_active        = false;
+            }
+            if (game.core.quest_log_active)
+            {
+                game.UI.active_window_list.remove_from_list(QUEST_LOG_WINDOW);
+                game.core.quest_log_active        = false;
+            }
+            if (game.core.character_active)
+            {
+                game.UI.active_window_list.remove_from_list(CHARACTER_WINDOW);
+                game.core.character_active        = false;
+            }
+            if (game.core.inventory_active)
+            {
+                game.UI.active_window_list.remove_from_list(INVENTORY_WINDOW);
+                game.core.inventory_active        = false;
+            }
+            if (game.core.spellbook_active)
+            {
+                game.UI.active_window_list.remove_from_list(SPELLBOOK_WINDOW);
+                game.core.spellbook_active    = false;
+            }
+            game.sound.menu_select_00.play();
+            game.core.io.key_space            = false;
+            game.core.io.keyboard_delay_count = 0;
+        }
     }
     bool return_data        = false;
     return(0);

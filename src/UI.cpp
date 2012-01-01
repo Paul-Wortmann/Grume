@@ -398,7 +398,7 @@ void menu_slot_class::process(void)
                     game.sound.menu_select_00.play();
                     game.core.menu_level              = 1;
                     game.core.menu_active             = true;
-                    game.core.io.escape               = false;
+                    game.core.io.key_escape           = false;
                     game.core.io.keyboard_delay_count = 0;
                     game.core.config.menu_delay_count = 0;
                 }
@@ -408,7 +408,7 @@ void menu_slot_class::process(void)
                     game.sound.menu_select_00.play();
                     game.core.menu_level              = 1;
                     game.core.menu_active             = false;
-                    game.core.io.escape               = false;
+                    game.core.io.key_escape           = false;
                     game.core.io.keyboard_delay_count = 0;
                     game.core.config.menu_delay_count = 0;
                 }

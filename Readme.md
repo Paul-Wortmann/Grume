@@ -21,6 +21,18 @@ More information may be found in the changelog.txt file.
 
 Usage
 -----
+Game play and menu interaction is primerily controlled via the mouse.
+The left mouse button is used for draging menus and items about.
+The Right mouse button is used for item usage.
+Apart from the mouse various keys are also assigned for usage:
+
+E            - Open / close the Equipment window.
+Q           - Open / close the Quest log.
+C           - Open / close the Character window.
+I            - Open / close the Inventory.
+B           - Open / close the Skill Book.
+SPACE    - Close all open windows.
+ESCAPE   - Open / close the main menu.
 
 Compiling
 ---------

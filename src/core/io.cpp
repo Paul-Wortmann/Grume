@@ -123,12 +123,12 @@ bool events_init(void)
    game.core.io.key_left                   = false;
    game.core.io.key_right                  = false;
    game.core.io.select                     = false;
-   game.core.io.escape                     = false;
+   game.core.io.key_escape                 = false;
    game.core.io.pause                      = false;
-   game.core.io.plus                       = false;
-   game.core.io.minus                      = false;
-   game.core.io.space                      = false;
-   game.core.io.enter                      = false;
+   game.core.io.key_plus                   = false;
+   game.core.io.key_minus                  = false;
+   game.core.io.key_space                  = false;
+   game.core.io.key_enter                  = false;
    game.core.io.shoot                      = false;
    game.core.io.up                         = false;
    game.core.io.down                       = false;
@@ -379,15 +379,15 @@ bool events_process(void)
        if (game.core.event.type == SDL_QUIT) game.core.status_quit_active = true;
        if (game.core.event.type == SDL_KEYDOWN)
        {
-          if (game.core.event.key.keysym.sym == SDLK_ESCAPE) game.core.io.escape     = true;
+          if (game.core.event.key.keysym.sym == SDLK_ESCAPE) game.core.io.key_escape = true;
           if (game.core.event.key.keysym.sym == SDLK_UP)     game.core.io.key_up     = true;
           if (game.core.event.key.keysym.sym == SDLK_DOWN)   game.core.io.key_down   = true;
           if (game.core.event.key.keysym.sym == SDLK_LEFT)   game.core.io.key_left   = true;
           if (game.core.event.key.keysym.sym == SDLK_RIGHT)  game.core.io.key_right  = true;
-          if (game.core.event.key.keysym.sym == SDLK_PLUS)   game.core.io.plus       = true;
-          if (game.core.event.key.keysym.sym == SDLK_MINUS)  game.core.io.minus      = true;
-          if (game.core.event.key.keysym.sym == SDLK_SPACE)  game.core.io.space      = true;
-          if (game.core.event.key.keysym.sym == SDLK_RETURN) game.core.io.enter      = true;
+          if (game.core.event.key.keysym.sym == SDLK_PLUS)   game.core.io.key_plus   = true;
+          if (game.core.event.key.keysym.sym == SDLK_MINUS)  game.core.io.key_minus  = true;
+          if (game.core.event.key.keysym.sym == SDLK_SPACE)  game.core.io.key_space  = true;
+          if (game.core.event.key.keysym.sym == SDLK_RETURN) game.core.io.key_enter  = true;
           if (game.core.event.key.keysym.sym == SDLK_0)      game.core.io.key_0      = true;
           if (game.core.event.key.keysym.sym == SDLK_1)      game.core.io.key_1      = true;
           if (game.core.event.key.keysym.sym == SDLK_2)      game.core.io.key_2      = true;
@@ -427,15 +427,15 @@ bool events_process(void)
        }
        if (game.core.event.type == SDL_KEYUP)
        {
-          if (game.core.event.key.keysym.sym == SDLK_ESCAPE) game.core.io.escape     = false;
+          if (game.core.event.key.keysym.sym == SDLK_ESCAPE) game.core.io.key_escape = false;
           if (game.core.event.key.keysym.sym == SDLK_UP)     game.core.io.key_up     = false;
           if (game.core.event.key.keysym.sym == SDLK_DOWN)   game.core.io.key_down   = false;
           if (game.core.event.key.keysym.sym == SDLK_LEFT)   game.core.io.key_left   = false;
           if (game.core.event.key.keysym.sym == SDLK_RIGHT)  game.core.io.key_right  = false;
-          if (game.core.event.key.keysym.sym == SDLK_PLUS)   game.core.io.plus       = false;
-          if (game.core.event.key.keysym.sym == SDLK_MINUS)  game.core.io.minus      = false;
-          if (game.core.event.key.keysym.sym == SDLK_SPACE)  game.core.io.space      = false;
-          if (game.core.event.key.keysym.sym == SDLK_RETURN) game.core.io.enter      = false;
+          if (game.core.event.key.keysym.sym == SDLK_PLUS)   game.core.io.key_plus   = false;
+          if (game.core.event.key.keysym.sym == SDLK_MINUS)  game.core.io.key_minus  = false;
+          if (game.core.event.key.keysym.sym == SDLK_SPACE)  game.core.io.key_space  = false;
+          if (game.core.event.key.keysym.sym == SDLK_RETURN) game.core.io.key_enter  = false;
           if (game.core.event.key.keysym.sym == SDLK_0)      game.core.io.key_0      = false;
           if (game.core.event.key.keysym.sym == SDLK_1)      game.core.io.key_1      = false;
           if (game.core.event.key.keysym.sym == SDLK_2)      game.core.io.key_2      = false;
@@ -475,10 +475,10 @@ bool events_process(void)
        }
     }
     //---------------------------------------------------------------------------------------------
-    if ((game.core.io.joystick_button_0) || (game.core.io.enter)) game.core.io.select = true; else game.core.io.select = false;
-    if ((game.core.io.joystick_button_1) || (game.core.io.space) || (game.core.io.mouse_button_left)) game.core.io.shoot   = true; else game.core.io.shoot  = false;
-    if ((game.core.io.joystick_button_2) || (game.core.io.key_p)) game.core.io.pause   = true; else game.core.io.pause  = false;
-    if ((game.core.io.joystick_button_3) || (game.core.io.escape)) game.core.io.escape = true; else game.core.io.escape = false;
+    if ((game.core.io.joystick_button_0) || (game.core.io.key_enter))    game.core.io.select = true; else game.core.io.select = false;
+    if ((game.core.io.joystick_button_1) || (game.core.io.key_space) || (game.core.io.mouse_button_left)) game.core.io.shoot   = true; else game.core.io.shoot  = false;
+    if ((game.core.io.joystick_button_2) || (game.core.io.key_p))        game.core.io.pause   = true; else game.core.io.pause  = false;
+    if ((game.core.io.joystick_button_3) || (game.core.io.key_escape))   game.core.io.key_escape = true; else game.core.io.key_escape = false;
     if ((game.core.io.joystick_up)    || (game.core.io.key_up   )) game.core.io.up     = true; else game.core.io.up     = false;
     if ((game.core.io.joystick_down)  || (game.core.io.key_down )) game.core.io.down   = true; else game.core.io.down   = false;
     if ((game.core.io.joystick_left)  || (game.core.io.key_left )) game.core.io.left   = true; else game.core.io.left   = false;

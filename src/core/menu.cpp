@@ -2044,7 +2044,7 @@ int menu_class::process(void)
                 if (menu_class::current_vertical_selection == menu_class::number_of_buttons) done = true;
             }
         }
-        if (game.core.io.escape)
+        if (game.core.io.key_escape)
         {
             menu_class::keyboard_delay_count = 0;
             return_value = 65534;

@@ -102,13 +102,13 @@ struct io_type
    bool      key_down;
    bool      key_left;
    bool      key_right;
-   bool      space;
-   bool      enter;
-   bool      plus;
-   bool      minus;
+   bool      key_space;
+   bool      key_enter;
+   bool      key_plus;
+   bool      key_minus;
+   bool      key_escape;
    bool      shoot;
    bool      select;
-   bool      escape;
    bool      pause;
    bool      up;
    bool      down;
