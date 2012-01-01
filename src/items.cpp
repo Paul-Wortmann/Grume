@@ -255,7 +255,7 @@ int   generate_range(int level, int quality, int base_value)
 
 void  generate_random_item(int item_ID, int level, int quality, int type)
 {
-    int minimum_range   = (MAX_LEVEL - quality);
+    int minimum_range   = (MAX_LEVELS - quality);
     int temp_range      = 0;
     int temp_value      = 0;
     int temp_random     = 0;

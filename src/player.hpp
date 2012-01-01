@@ -27,7 +27,21 @@
 
 #include <string>
 
-const int MAX_LEVEL = 100;
+const int MAX_LEVELS = 100+1;
+
+class level_class
+{
+    public:
+        level_class(void);
+       ~level_class(void);
+        float                multiplier;
+        int                  base;
+        int                  current;
+        unsigned long long   current_experience;
+        unsigned long long   experience[MAX_LEVELS];
+        void                 init(void);
+        void                 process(void);
+};
 
 class stat_class
 {
@@ -53,11 +67,9 @@ class player_class
         player_class(void);
        ~player_class(void);
         std::string        name;
-        unsigned long long experience;
-        unsigned long long next_level;
+        level_class        level;
         unsigned long long gold;
         int                portrait_image_ref;
-        int                level;
         int                offence;
         int                defense;
         int                intellect;

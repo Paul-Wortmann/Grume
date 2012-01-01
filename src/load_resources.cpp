@@ -118,6 +118,7 @@ bool load_textures(void)
 
     game.texture.health_bar.load_image              ("data/textures/UI/portrait/health_bar.png"               ,texture_count);texture_count++;
     game.texture.mana_bar.load_image                ("data/textures/UI/portrait/mana_bar.png"                 ,texture_count);texture_count++;
+    game.texture.experience_bar.load_image          ("data/textures/UI/action_bar/experience_bar.png"         ,texture_count);texture_count++;
     game.texture.profile_background.load_image      ("data/textures/UI/portrait/profile_background.png"       ,texture_count);texture_count++;
     game.texture.profile_main.load_image            ("data/textures/UI/portrait/profile_main.png"             ,texture_count);texture_count++;
     game.texture.profile_main_background.load_image ("data/textures/UI/portrait/profile_main_background.png"  ,texture_count);texture_count++;
@@ -513,6 +514,7 @@ bool draw_texture(bool r, int texture_number, float x, float y, float z, float w
 
     if (texture_number == game.texture.health_bar.ref_number)                game.texture.health_bar.draw               (r,x,y,z,w,h,angle,frame);
     if (texture_number == game.texture.mana_bar.ref_number)                  game.texture.mana_bar.draw                 (r,x,y,z,w,h,angle,frame);
+    if (texture_number == game.texture.experience_bar.ref_number)            game.texture.experience_bar.draw           (r,x,y,z,w,h,angle,frame);
     if (texture_number == game.texture.profile_background.ref_number)        game.texture.profile_background.draw       (r,x,y,z,w,h,angle,frame);
     if (texture_number == game.texture.profile_main.ref_number)              game.texture.profile_main.draw             (r,x,y,z,w,h,angle,frame);
     if (texture_number == game.texture.profile_main_background.ref_number)   game.texture.profile_main_background.draw  (r,x,y,z,w,h,angle,frame);

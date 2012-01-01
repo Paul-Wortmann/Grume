@@ -39,9 +39,10 @@ class log_file_class
         bool File_Delete(void);
         bool File_Write(const char  log_data[]);
         bool File_Write(std::string log_data);
-        bool File_Write(std::string log_data, int   log_data_int);
-        bool File_Write(std::string log_data, float log_data_float);
-        bool File_Write(std::string log_data, bool  log_data_bool);
+        bool File_Write(std::string log_data, int                log_data_int);
+        bool File_Write(std::string log_data, float              log_data_float);
+        bool File_Write(std::string log_data, bool               log_data_bool);
+        bool File_Write(std::string log_data, unsigned long long log_data_ull);
         bool File_Write(int   log_data);
         bool File_Write(float log_data);
         bool File_Write(bool  log_data);

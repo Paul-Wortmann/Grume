@@ -128,6 +128,20 @@ bool log_file_class::File_Write(std::string log_data, bool  log_data_bool)
     return(true);
 };
 
+bool log_file_class::File_Write(std::string log_data, unsigned long long log_data_ull)
+{
+    std::fstream logfile(log_file_class::Log_File,std::ios::out|std::ios::app);
+    if (logfile.is_open())
+    {
+        logfile << log_data;
+        logfile << log_data_ull;
+        logfile << "\n";
+        logfile.close();
+    }
+    else return(false);
+    return(true);
+};
+
 bool log_file_class::File_Write(int   log_data)
 {
     std::fstream logfile(log_file_class::Log_File,std::ios::out|std::ios::app);

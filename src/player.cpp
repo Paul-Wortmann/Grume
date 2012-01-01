@@ -23,6 +23,49 @@
  */
 
 #include "player.hpp"
+#include "game.hpp"
+
+extern game_type         game;
+
+level_class::level_class(void)
+{
+    level_class::current_experience = 0;
+    level_class::base               = 2;
+    level_class::current            = 0;
+    level_class::multiplier         = 2.0f;
+    for (int exp_count = 0; exp_count < MAX_LEVELS; exp_count++)
+    {
+        level_class::experience[exp_count] = 0;
+    }
+}
+
+level_class::~level_class(void)
+{
+
+}
+
+void level_class::init(void)
+{
+    unsigned long long temp_exp =  level_class::base;
+    for (int exp_count = 1; exp_count < MAX_LEVELS; exp_count++)
+    {
+        temp_exp = temp_exp * level_class::multiplier;
+        if (temp_exp > 9223372036854775808u) temp_exp = 9223372036854775808u;
+        level_class::experience[exp_count] = temp_exp;
+        game.core.log.File_Write("Level EXP -> ",temp_exp);
+    }
+}
+
+void level_class::process(void)
+{
+    if (level_class::current_experience > 9223372036854775808u) level_class::current_experience = 9223372036854775808u;
+    for (int exp_count = 1; exp_count < MAX_LEVELS; exp_count++)
+    {
+        if (level_class::current_experience >= level_class::experience[exp_count]) level_class::current = exp_count;
+    }
+}
+
+//-----------------------------------------------------------------------------------------------------------------
 
 stat_class::stat_class(void)
 {
@@ -53,9 +96,7 @@ void stat_class::draw(void)
 player_class::player_class(void)
 {
     player_class::name                          = "Player_Name";
-    player_class::level                         = 0;
-    player_class::next_level                    = 0u;
-    player_class::experience                    = 0u;
+    player_class::level.current                 = 0;
     player_class::gold                          = 0u;
     player_class::pos_x                         = 0.0f;
     player_class::pos_y                         = 0.0f;
@@ -86,6 +127,7 @@ void player_class::process(void)
 {
     player_class::health.process();
     player_class::mana.process();
+    player_class::level.process();
 }
 
 void player_class::draw(void)

@@ -61,6 +61,10 @@ int init_game(bool re_init)
 
     game.player.portrait_image_ref                =  game.texture.portrait_02.ref_number;
     game.player.name                              =  "Kanchi";
+    game.player.level.current                     =  0;
+    game.player.level.base                        =  2;
+    game.player.level.multiplier                  =  1.52f;
+    game.player.level.init();
     game.player.health.current                    =  000.0f;
     game.player.health.maximum                    =  100.0f;
     game.player.health.regeneration               =  000.015f;
@@ -88,6 +92,7 @@ int init_game(bool re_init)
 /*----------------------------------------------------------------------------*/
 int process_game(void)
 {
+    game.player.level.current_experience++;
     game.UI.process();
     game.player.process();
     game.map.town.process();

@@ -30,7 +30,7 @@
 
 1321970559 .hpp"
 
-1321153339 c:\_git_\frost_and_flame\src\core\log.hpp
+1325411901 c:\_git_\frost_and_flame\src\core\log.hpp
 	<string>
 
 1321153339 c:\_git_\frost_and_flame\src\core\config.hpp
@@ -72,7 +72,7 @@
 
 1320822860 c:\_git_\frost_and_flame\src\bullets.hpp
 
-1325335179 c:\_git_\frost_and_flame\src\load_resources.hpp
+1325414389 c:\_git_\frost_and_flame\src\load_resources.hpp
 	"core/core.hpp"
 	"core/sound.hpp"
 	"core/music.hpp"
@@ -200,7 +200,7 @@
 	"../game.hpp"
 	"io.hpp"
 
-1321153485 source:c:\_git_\frost_and_flame\src\core\log.cpp
+1325412053 source:c:\_git_\frost_and_flame\src\core\log.cpp
 	<iostream>
 	<fstream>
 	<stdio.h>
@@ -267,7 +267,7 @@
 	"game.hpp"
 	"misc.hpp"
 
-1325397424 source:c:\_git_\frost_and_flame\src\game.cpp
+1325413096 source:c:\_git_\frost_and_flame\src\game.cpp
 	<SDL/SDL.h>
 	"menu_system.hpp"
 	"game.hpp"
@@ -305,7 +305,7 @@
 	"levels.hpp"
 	"game.hpp"
 
-1325335277 source:c:\_git_\frost_and_flame\src\load_resources.cpp
+1325414392 source:c:\_git_\frost_and_flame\src\load_resources.cpp
 	<SDL/SDL.h>
 	"load_resources.hpp"
 	"game.hpp"
@@ -406,7 +406,7 @@
 
 1321102096 source:c:\_git_\frost_and_flame\src\icon.rc
 
-1325391940 source:c:\_git_\frost_and_flame\src\ui.cpp
+1325414789 source:c:\_git_\frost_and_flame\src\ui.cpp
 	"UI.hpp"
 	"game.hpp"
 	"misc.hpp"
@@ -418,11 +418,12 @@
 	"character.hpp"
 	"quest_log.hpp"
 
-1324816997 c:\_git_\frost_and_flame\src\player.hpp
+1325408420 c:\_git_\frost_and_flame\src\player.hpp
 	<string>
 
-1324739344 source:c:\_git_\frost_and_flame\src\player.cpp
+1325412320 source:c:\_git_\frost_and_flame\src\player.cpp
 	"player.hpp"
+	"game.hpp"
 
 1322913595 c:\_git_\frost_and_flame\src\spell_book.hpp
 
@@ -447,7 +448,7 @@
 
 1321782549 c:\_git_\frost_and_flame\src\character.hpp
 
-1324818392 source:c:\_git_\frost_and_flame\src\character.cpp
+1325413011 source:c:\_git_\frost_and_flame\src\character.cpp
 	"character.hpp"
 	"game.hpp"
 
@@ -766,7 +767,7 @@
 	<stdlib.h>
 	<string>
 
-1324808676 source:c:\_git_\frost_and_flame\src\items.cpp
+1325407031 source:c:\_git_\frost_and_flame\src\items.cpp
 	"items.hpp"
 	"game.hpp"
 	"misc.hpp"

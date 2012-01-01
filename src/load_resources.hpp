@@ -99,6 +99,7 @@ struct texture_type
 
     texture_class health_bar;
     texture_class mana_bar;
+    texture_class experience_bar;
     texture_class profile_background;
     texture_class profile_main;
     texture_class profile_main_background;
