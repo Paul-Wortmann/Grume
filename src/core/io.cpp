@@ -48,6 +48,9 @@ bool events_init(void)
       game.core.io.joystick_sensitivity    = 0;
       game.core.config.joystick_no_buttons = 0;
    }
+   game.core.io.mouse_button_ready         = false;
+   game.core.io.keyboard_ready             = false;
+   game.core.io.joystick_ready             = false;
    game.core.io.mouse_button_delay         = 32;
    game.core.io.mouse_button_delay_count   = 0;
    game.core.io.keyboard_delay             = 24;
@@ -138,9 +141,26 @@ bool events_process(void)
 {
     //----------------------------------- Process events ------------------------------------------------
     game.core.io.mouse_button_delay_count++;
-    if (game.core.io.mouse_button_delay_count > game.core.io.mouse_button_delay) game.core.io.mouse_button_delay_count = game.core.io.mouse_button_delay;
+    if (game.core.io.mouse_button_delay_count > game.core.io.mouse_button_delay)
+    {
+        game.core.io.mouse_button_delay_count = game.core.io.mouse_button_delay;
+        game.core.io.mouse_button_ready  = true;
+    }
+    else game.core.io.mouse_button_ready = false;
     game.core.io.keyboard_delay_count++;
-    if (game.core.io.keyboard_delay_count > game.core.io.keyboard_delay) game.core.io.keyboard_delay_count = game.core.io.keyboard_delay;
+    if (game.core.io.keyboard_delay_count > game.core.io.keyboard_delay)
+    {
+        game.core.io.keyboard_delay_count = game.core.io.keyboard_delay;
+        game.core.io.keyboard_ready  = true;
+    }
+    else game.core.io.keyboard_ready = false;
+    game.core.io.joystick_delay_count++;
+    if (game.core.io.joystick_delay_count > game.core.io.joystick_delay)
+    {
+        game.core.io.joystick_delay_count = game.core.io.joystick_delay;
+        game.core.io.joystick_ready  = true;
+    }
+    else game.core.io.joystick_ready = false;
     while (SDL_PollEvent(&game.core.event))
     {
     //-------------------- Mouse events-------------------------------

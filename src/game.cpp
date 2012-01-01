@@ -97,75 +97,102 @@ int process_game(void)
         game.core.music_next_track = false;
         if (game.core.music_track ==  0) game.music.menu_00.play();
     }
-    if (game.core.io.escape)
+    if (game.core.io.keyboard_ready)
     {
-        if(!game.core.menu_active)
+        if (game.core.io.escape)
         {
-            game.UI.active_window_list.add_to_list(MAIN_MENU_WINDOW);
-            game.sound.menu_select_00.play();
-            game.core.menu_level              = 1;
-            game.core.menu_active             = true;
-            game.core.io.escape               = false;
-            game.core.io.keyboard_delay_count = 0;
-            game.core.config.menu_delay_count = 0;
-            while (game.core.config.menu_delay_count < (game.core.config.menu_delay/2))
+            if(!game.core.menu_active)
             {
-                game.core.config.menu_delay_count++;
+                game.UI.active_window_list.add_to_list(MAIN_MENU_WINDOW);
+                game.sound.menu_select_00.play();
+                game.core.menu_level              = 1;
+                game.core.menu_active             = true;
+                game.core.io.escape               = false;
+                game.core.io.keyboard_delay_count = 0;
+                game.core.config.menu_delay_count = 0;
+                while (game.core.config.menu_delay_count < (game.core.config.menu_delay/2))
+                {
+                    game.core.config.menu_delay_count++;
+                }
             }
         }
-    }
-    if (game.core.io.pause)
-    {
-        if (!game.core.game_paused)
+        if (game.core.io.pause)
         {
-            game.core.game_paused = true;
-            game.core.menu_active = true;
-            game.core.game_active = false;
-            game.core.io.pause    = false;
-            game.core.menu_level  = 11;
-            SDL_WarpMouse(game.core.graphics.gl_to_res(game.pause_menu.get_button_x_pos(1),game.core.config.mouse_resolution_x),game.core.config.mouse_resolution_y-game.core.graphics.gl_to_res(game.pause_menu.get_button_y_pos(1),game.core.config.mouse_resolution_y));
-        }
-        else
+            if (!game.core.game_paused)
+            {
+                game.core.game_paused = true;
+                game.core.menu_active = true;
+                game.core.game_active = false;
+                game.core.io.pause    = false;
+                game.core.menu_level  = 11;
+                SDL_WarpMouse(game.core.graphics.gl_to_res(game.pause_menu.get_button_x_pos(1),game.core.config.mouse_resolution_x),game.core.config.mouse_resolution_y-game.core.graphics.gl_to_res(game.pause_menu.get_button_y_pos(1),game.core.config.mouse_resolution_y));
+            }
+            else
+            {
+                game.core.game_paused = false;
+                game.core.menu_active = false;
+                game.core.game_active = true;
+            }
+        };
+        if (game.core.io.key_z)
         {
-            game.core.game_paused = false;
-            game.core.menu_active = false;
-            game.core.game_active = true;
+            game.zoom.current += game.zoom.speed;
+            if (game.zoom.current > game.zoom.max) game.zoom.current = game.zoom.max;
+            else
+            {
+                game.map.town.tile[0].pos_y -= (DEFAULT_FRAME_HEIGHT/game.zoom.current/2.0f);
+                game.map.town.calculate_tile_positions(DEFAULT_FRAME_WIDTH/game.zoom.current/2.0f,DEFAULT_FRAME_HEIGHT/game.zoom.current/2.0f);
+            }
+            game.core.io.key_z                = false;
+            game.core.io.keyboard_delay_count = 0;
         }
-    };
-    if (game.core.io.key_z)
-    {
-        game.zoom.current += game.zoom.speed;
-        if (game.zoom.current > game.zoom.max) game.zoom.current = game.zoom.max;
-        else
+        if (game.core.io.key_x)
         {
-            game.map.town.tile[0].pos_y -= (DEFAULT_FRAME_HEIGHT/game.zoom.current/2.0f);
-            game.map.town.calculate_tile_positions(DEFAULT_FRAME_WIDTH/game.zoom.current/2.0f,DEFAULT_FRAME_HEIGHT/game.zoom.current/2.0f);
+            game.zoom.current -= game.zoom.speed;
+            if (game.zoom.current < game.zoom.min) game.zoom.current = game.zoom.min;
+            else
+            {
+                //game.map.town.tile[0].pos_y += (DEFAULT_FRAME_HEIGHT/game.zoom.current/2.0f);
+                game.map.town.calculate_tile_positions(DEFAULT_FRAME_WIDTH/game.zoom.current/2.0f,DEFAULT_FRAME_HEIGHT/game.zoom.current/2.0f);
+            }
+            game.core.io.key_x                = false;
+            game.core.io.keyboard_delay_count = 0;
         }
-    }
-    if (game.core.io.key_x)
-    {
-        game.zoom.current -= game.zoom.speed;
-        if (game.zoom.current < game.zoom.min) game.zoom.current = game.zoom.min;
-        else
+        if (game.core.io.key_i)
         {
-            //game.map.town.tile[0].pos_y += (DEFAULT_FRAME_HEIGHT/game.zoom.current/2.0f);
-            game.map.town.calculate_tile_positions(DEFAULT_FRAME_WIDTH/game.zoom.current/2.0f,DEFAULT_FRAME_HEIGHT/game.zoom.current/2.0f);
+            if (!game.core.inventory_active)
+            {
+                game.UI.active_window_list.add_to_list(INVENTORY_WINDOW);
+                game.sound.menu_select_00.play();
+                game.core.inventory_active        = true;
+            }
+            else
+            {
+                game.UI.active_window_list.remove_from_list(INVENTORY_WINDOW);
+                game.sound.menu_select_00.play();
+                game.core.inventory_active        = false;
+            }
+            game.core.io.key_i                = false;
+            game.core.io.keyboard_delay_count = 0;
         }
-    }
-    if (game.core.io.key_i)
-    {
-        if (!game.core.inventory_active)
+        if (game.core.io.key_c)
         {
-            game.UI.active_window_list.add_to_list(INVENTORY_WINDOW);
-            game.sound.menu_select_00.play();
-            game.core.inventory_active        = true;
+            if (!game.core.character_active)
+            {
+                game.UI.active_window_list.add_to_list(CHARACTER_WINDOW);
+                game.sound.menu_select_00.play();
+                game.core.character_active        = true;
+            }
+            else
+            {
+                game.UI.active_window_list.remove_from_list(CHARACTER_WINDOW);
+                game.sound.menu_select_00.play();
+                game.core.character_active        = false;
+            }
+            game.core.io.key_c                = false;
+            game.core.io.keyboard_delay_count = 0;
         }
-        else
-        {
-            game.UI.active_window_list.remove_from_list(INVENTORY_WINDOW);
-            game.sound.menu_select_00.play();
-            game.core.inventory_active        = false;
-        }
+        assign keys!
     }
     bool return_data        = false;
     return(0);

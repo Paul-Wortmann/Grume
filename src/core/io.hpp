@@ -48,6 +48,7 @@ struct io_type
    bool      mouse_button_left;
    bool      mouse_button_middle;
    bool      mouse_button_right;
+   bool      mouse_button_ready;
    int       mouse_button_delay;
    int       mouse_button_delay_count;
    float     mouse_x;
@@ -55,8 +56,10 @@ struct io_type
    float     mouse_xrel;
    float     mouse_yrel;
    int       joystick_sensitivity;
+   bool      keyboard_ready;
    int       keyboard_delay;
    int       keyboard_delay_count;
+   bool      joystick_ready;
    int       joystick_delay;
    int       joystick_delay_count;
    bool      key_0;

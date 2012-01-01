@@ -58,7 +58,7 @@
 1321624658 c:\_git_\frost_and_flame\src\core\menu.hpp
 	<string>
 
-1322755417 c:\_git_\frost_and_flame\src\core\io.hpp
+1325349279 c:\_git_\frost_and_flame\src\core\io.hpp
 
 1321201109 c:\_git_\frost_and_flame\src\core\background.hpp
 
@@ -194,7 +194,7 @@
 
 1321153485 hpp"
 
-1322830915 source:c:\_git_\frost_and_flame\src\core\io.cpp
+1325349518 source:c:\_git_\frost_and_flame\src\core\io.cpp
 	<SDL/SDL.h>
 	<SDL/SDL_events.h>
 	"../game.hpp"
@@ -310,7 +310,7 @@
 	"load_resources.hpp"
 	"game.hpp"
 
-1324808016 source:c:\_git_\frost_and_flame\src\main.cpp
+1325342953 source:c:\_git_\frost_and_flame\src\main.cpp
 	<locale>
 	<SDL/SDL.h>
 	<SDL/SDL_main.h>
