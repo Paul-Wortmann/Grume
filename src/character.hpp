@@ -25,6 +25,27 @@
 #ifndef CHARACTER_H
 #define CHARACTER_H
 
+class character_check_box_class
+{
+    public:
+        int         image_true_normal;
+        int         image_true_highlighted;
+        int         image_false_normal;
+        int         image_false_highlighted;
+        bool        state;
+        bool        mouse_over;
+        bool        activated;
+        float       pos_x;
+        float       pos_y;
+        float       pos_z;
+        float       width;
+        float       height;
+        character_check_box_class(void);
+       ~character_check_box_class(void);
+        void        process(void);
+        void        draw(void);
+};
+
 class character_button_class
 {
     public:
@@ -85,7 +106,8 @@ class character_class
         float            height;
         float            drag_offset_x;
         float            drag_offset_y;
-        character_button_class close_button;
+        character_button_class    close_button;
+        character_check_box_class auto_points_box;
         character_class(void);
        ~character_class(void);
         void             process(void);

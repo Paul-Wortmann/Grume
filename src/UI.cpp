@@ -604,8 +604,7 @@ void action_bar_class::draw(void)
     {
         action_bar_class::action_slot[action_slot_count].draw();
     }
-    //exp_bar
-    if (game.player.level.current < MAX_LEVELS)
+    if (game.player.level.current < MAX_LEVELS)// exp bar
     {
         temp_float = (float)(game.player.level.current_experience - game.player.level.experience[game.player.level.current]) / (float)(game.player.level.experience[game.player.level.current+1] - game.player.level.experience[game.player.level.current]);
         temp_float = temp_float * (action_bar_class::width/1.048f);

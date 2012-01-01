@@ -58,11 +58,25 @@ void level_class::init(void)
 
 void level_class::process(void)
 {
+    int temp_level = 0;
     if (level_class::current_experience > 9223372036854775808u) level_class::current_experience = 9223372036854775808u;
     for (int exp_count = 1; exp_count < MAX_LEVELS; exp_count++)
     {
-        if (level_class::current_experience >= level_class::experience[exp_count]) level_class::current = exp_count;
+        if (level_class::current_experience >= level_class::experience[exp_count]) temp_level = exp_count;
     }
+    if (temp_level > level_class::current) // level up!!!
+    {
+        level_class::current = temp_level;
+        if(game.player.auto_allocate)
+        {
+            game.player.offence   += 1;
+            game.player.defense   += 1;
+            game.player.intellect += 1;
+        }
+        else game.player.allocatable_points += 3;
+
+    }
+
 }
 
 //-----------------------------------------------------------------------------------------------------------------

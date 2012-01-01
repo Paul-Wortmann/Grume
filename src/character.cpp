@@ -29,6 +29,57 @@ extern game_type game;
 
 //----------------------------------------------------------------------------------------------------------------
 
+character_check_box_class::character_check_box_class(void)
+{
+    character_check_box_class::image_true_normal        = 0;
+    character_check_box_class::image_true_highlighted   = 0;
+    character_check_box_class::image_false_normal       = 0;
+    character_check_box_class::image_false_highlighted  = 0;
+    character_check_box_class::mouse_over               = false;
+    character_check_box_class::activated                = false;
+    character_check_box_class::state                    = false;
+    character_check_box_class::pos_x                    = 0.0f;
+    character_check_box_class::pos_y                    = 0.0f;
+    character_check_box_class::pos_z                    = 0.0f;
+    character_check_box_class::width                    = 0.0f;
+    character_check_box_class::height                   = 0.0f;
+};
+
+character_check_box_class::~character_check_box_class(void)
+{
+};
+
+void character_check_box_class::process(void)
+{
+    if (!game.UI.drag_in_progress)
+    {
+        character_check_box_class::mouse_over = game.core.physics.point_in_quadrangle(character_check_box_class::pos_x,character_check_box_class::width,character_check_box_class::pos_y,character_check_box_class::height,game.core.io.mouse_x,game.core.io.mouse_y);
+        if (character_check_box_class::mouse_over && game.core.io.mouse_button_left && game.core.io.mouse_button_ready)
+        {
+            character_check_box_class::activated = true;
+            character_check_box_class::state = !character_check_box_class::state;
+            game.core.io.mouse_button_delay_count = 0;
+            game.player.auto_allocate = character_check_box_class::state;
+        }
+    }
+};
+
+void character_check_box_class::draw(void)
+{
+    if(character_check_box_class::state)
+    {
+        if (character_check_box_class::mouse_over) draw_texture(false,character_check_box_class::image_true_highlighted,character_check_box_class::pos_x,character_check_box_class::pos_y,character_check_box_class::pos_z,character_check_box_class::width,character_check_box_class::height);
+        else draw_texture(false,character_check_box_class::image_true_normal,character_check_box_class::pos_x,character_check_box_class::pos_y,character_check_box_class::pos_z,character_check_box_class::width,character_check_box_class::height);
+    }
+    else
+    {
+        if (character_check_box_class::mouse_over) draw_texture(false,character_check_box_class::image_false_highlighted,character_check_box_class::pos_x,character_check_box_class::pos_y,character_check_box_class::pos_z,character_check_box_class::width,character_check_box_class::height);
+        else draw_texture(false,character_check_box_class::image_false_normal,character_check_box_class::pos_x,character_check_box_class::pos_y,character_check_box_class::pos_z,character_check_box_class::width,character_check_box_class::height);
+    }
+};
+
+//----------------------------------------------------------------------------------------------------------------
+
 character_button_class::character_button_class(void)
 {
     character_button_class::image_normal       = 0;
@@ -149,14 +200,7 @@ character_class::character_class(void)
     character_class::mouse_over    = false;
     character_class::drag_offset_x = 0.0f;
     character_class::drag_offset_y = 0.0f;
-/*
-    character_class::spell_slot_01.button_type  = 1;
-    character_class::spell_slot_01.pos_x        = character_class::pos_x - (character_class::width /2.980f);
-    character_class::spell_slot_01.pos_y        = character_class::pos_y + (character_class::height/3.72f);
-    character_class::spell_slot_01.pos_z        = character_class::pos_z;
-    character_class::spell_slot_01.width        = character_class::width / 8.2f;
-    character_class::spell_slot_01.height       = character_class::height/10.4f;
-*/
+
     character_class::close_button.image_normal       = game.texture.close_button.ref_number;
     character_class::close_button.image_highlighted  = game.texture.close_button_highlighted.ref_number;
     character_class::close_button.mouse_over         = false;
@@ -166,6 +210,16 @@ character_class::character_class(void)
     character_class::close_button.pos_z              = character_class::pos_z;
     character_class::close_button.width              = character_class::width / 7.0f;
     character_class::close_button.height             = character_class::height/10.4f;
+
+    character_class::auto_points_box.image_true_normal       = game.texture.close_button.ref_number;
+    character_class::auto_points_box.image_true_highlighted  = game.texture.close_button_highlighted.ref_number;
+    character_class::auto_points_box.mouse_over              = false;
+    character_class::auto_points_box.activated               = false;
+    character_class::auto_points_box.pos_x                   = character_class::pos_x - (character_class::width / 12.0f);
+    character_class::auto_points_box.pos_y                   = character_class::pos_y - (character_class::height/ 2.28f);
+    character_class::auto_points_box.pos_z                   = character_class::pos_z;
+    character_class::auto_points_box.width                   = character_class::width /14.0f;
+    character_class::auto_points_box.height                  = character_class::height/14.0f;
 };
 
 character_class::~character_class(void)
@@ -176,6 +230,7 @@ character_class::~character_class(void)
 void character_class::process(void)
 {
     character_class::close_button.process();
+    character_class::auto_points_box.process();
     if ((!game.UI.drag_in_progress) && (game.core.physics.point_in_quadrangle(character_class::pos_x,character_class::width,character_class::pos_y+(character_class::height/2.2f),character_class::height/8.8f,game.core.io.mouse_x,game.core.io.mouse_y))) character_class::mouse_over = true;
     else character_class::mouse_over = false;
     if (character_class::drag)
@@ -184,8 +239,10 @@ void character_class::process(void)
         {
             character_class::pos_x = game.core.io.mouse_x + character_class::drag_offset_x;
             character_class::pos_y = game.core.io.mouse_y + character_class::drag_offset_y;
-            character_class::close_button.pos_x = character_class::pos_x + (character_class::width /2.406f);
-            character_class::close_button.pos_y = character_class::pos_y + (character_class::height/2.20f);
+            character_class::close_button.pos_x    = character_class::pos_x + (character_class::width /2.406f);
+            character_class::close_button.pos_y    = character_class::pos_y + (character_class::height/2.20f);
+            character_class::auto_points_box.pos_x = character_class::pos_x - (character_class::width / 12.0f);
+            character_class::auto_points_box.pos_y = character_class::pos_y - (character_class::height/ 2.28f);
         }
         else
         {
@@ -335,6 +392,7 @@ void character_class::draw(void)
     game.font.font_1.Write(255,255,255,255,character_class::pos_x - (character_class::width /2.5f),character_class::pos_y - (character_class::height/ 2.4f),4.8f,32.0f,"Allocatable Points: ",(int)game.player.allocatable_points,string_padding);
     string_padding = "   ";
     game.font.font_1.Write(255,255,255,255,character_class::pos_x - (character_class::width /2.5f),character_class::pos_y - (character_class::height/ 2.2f),4.8f,32.0f,"Auto Allocate:      ",string_padding);
+    character_class::auto_points_box.draw();
 };
 
 

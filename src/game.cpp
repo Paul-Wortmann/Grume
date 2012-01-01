@@ -72,16 +72,23 @@ int init_game(bool re_init)
     game.player.mana.maximum                      =  100.0f;
     game.player.mana.regeneration                 =  000.025f;
 
-    game.UI.spell_book.close_button.image_normal       =  game.texture.close_button.ref_number;
-    game.UI.spell_book.close_button.image_highlighted  =  game.texture.close_button_highlighted.ref_number;
-    game.UI.inventory.close_button.image_normal        =  game.texture.close_button.ref_number;
-    game.UI.inventory.close_button.image_highlighted   =  game.texture.close_button_highlighted.ref_number;
-    game.UI.character.close_button.image_normal        =  game.texture.close_button.ref_number;
-    game.UI.character.close_button.image_highlighted   =  game.texture.close_button_highlighted.ref_number;
-    game.UI.quest_log.close_button.image_normal        =  game.texture.close_button.ref_number;
-    game.UI.quest_log.close_button.image_highlighted   =  game.texture.close_button_highlighted.ref_number;
-    game.UI.equipment.close_button.image_normal        =  game.texture.close_button.ref_number;
-    game.UI.equipment.close_button.image_highlighted   =  game.texture.close_button_highlighted.ref_number;
+    game.UI.spell_book.close_button.image_normal              =  game.texture.close_button.ref_number;
+    game.UI.spell_book.close_button.image_highlighted         =  game.texture.close_button_highlighted.ref_number;
+    game.UI.inventory.close_button.image_normal               =  game.texture.close_button.ref_number;
+    game.UI.inventory.close_button.image_highlighted          =  game.texture.close_button_highlighted.ref_number;
+    game.UI.character.auto_points_box.image_true_highlighted  =  game.texture.check_box_true_highlighted.ref_number;
+    game.UI.character.auto_points_box.image_false_highlighted =  game.texture.check_box_false_highlighted.ref_number;
+    game.UI.character.auto_points_box.image_true_normal       =  game.texture.check_box_true_normal.ref_number;
+    game.UI.character.auto_points_box.image_false_normal      =  game.texture.check_box_false_normal.ref_number;
+    game.UI.character.auto_points_box.state                   =  game.player.auto_allocate;
+    game.UI.character.close_button.image_normal               =  game.texture.close_button.ref_number;
+    game.UI.character.close_button.image_highlighted          =  game.texture.close_button_highlighted.ref_number;
+    game.UI.quest_log.close_button.image_normal               =  game.texture.close_button.ref_number;
+    game.UI.quest_log.close_button.image_highlighted          =  game.texture.close_button_highlighted.ref_number;
+    game.UI.equipment.close_button.image_normal               =  game.texture.close_button.ref_number;
+    game.UI.equipment.close_button.image_highlighted          =  game.texture.close_button_highlighted.ref_number;
+
+
     init_spells();
     init_items();
     init_inventory();

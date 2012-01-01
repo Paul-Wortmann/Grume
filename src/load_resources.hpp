@@ -113,8 +113,10 @@ struct texture_type
     texture_class item_stat_background;
     texture_class character_portrait_frame;
     texture_class character_background;
-    texture_class check_box_true;
-    texture_class check_box_false;
+    texture_class check_box_true_highlighted;
+    texture_class check_box_false_highlighted;
+    texture_class check_box_true_normal;
+    texture_class check_box_false_normal;
     texture_class quest_log_background;
     texture_class equipment_background;
     texture_class equipment_slot_32x32;
