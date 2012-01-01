@@ -251,8 +251,9 @@ void inventory_slot_class::process(void)
                 inventory_slot_class::drag_offset_y = inventory_slot_class::pos_y - game.core.io.mouse_y;
             }
         }
-        if ((inventory_slot_class::mouse_over) && (game.core.io.mouse_button_right))//use item
+        if ((inventory_slot_class::mouse_over) && (game.core.io.mouse_button_right) && (game.core.io.mouse_button_ready))//use item
         {
+            game.core.io.mouse_button_delay_count = 0;
             int temp_ID = inventory_slot_class::button_type;
             switch (game.item[temp_ID].type)
             {
@@ -285,10 +286,18 @@ void inventory_slot_class::process(void)
                     if(inventory_slot_class::quantity <= 0)inventory_slot_class::button_type = 0;
                     game.spell[game.item[temp_ID].spell_type].level++;
                     if (game.spell[game.item[temp_ID].spell_type].level > 3) game.spell[game.item[temp_ID].spell_type].level = 3;
+                    temp_int = random(3);
+                    if (temp_int <= 1) game.sound.book_00.play();
+                    if (temp_int == 2) game.sound.book_01.play();
+                    if (temp_int >= 3) game.sound.book_02.play();
                 break;
                 case SPELL_SCROLL:
                     inventory_slot_class::quantity--;
                     if(inventory_slot_class::quantity <= 0)inventory_slot_class::button_type = 0;
+                    temp_int = random(3);
+                    if (temp_int <= 1) game.sound.book_00.play();
+                    if (temp_int == 2) game.sound.book_01.play();
+                    if (temp_int >= 3) game.sound.book_02.play();
                 break;
 
                 //equip items below on right click?
