@@ -282,6 +282,10 @@ int process_game(void)
             game.core.io.key_space            = false;
             game.core.io.keyboard_delay_count = 0;
         }
+        if (game.core.io.key_alt) // display item names on map (loot / clickable items)
+        {
+            ;
+        }
     }
     bool return_data        = false;
     return(0);

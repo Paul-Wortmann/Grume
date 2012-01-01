@@ -122,13 +122,14 @@ bool events_init(void)
    game.core.io.key_down                   = false;
    game.core.io.key_left                   = false;
    game.core.io.key_right                  = false;
-   game.core.io.select                     = false;
    game.core.io.key_escape                 = false;
-   game.core.io.pause                      = false;
    game.core.io.key_plus                   = false;
    game.core.io.key_minus                  = false;
    game.core.io.key_space                  = false;
    game.core.io.key_enter                  = false;
+   game.core.io.key_alt                    = false;
+   game.core.io.select                     = false;
+   game.core.io.pause                      = false;
    game.core.io.shoot                      = false;
    game.core.io.up                         = false;
    game.core.io.down                       = false;
@@ -388,6 +389,12 @@ bool events_process(void)
           if (game.core.event.key.keysym.sym == SDLK_MINUS)  game.core.io.key_minus  = true;
           if (game.core.event.key.keysym.sym == SDLK_SPACE)  game.core.io.key_space  = true;
           if (game.core.event.key.keysym.sym == SDLK_RETURN) game.core.io.key_enter  = true;
+          if (game.core.event.key.keysym.sym == SDLK_LALT)   game.core.io.key_lalt   = true;
+          if (game.core.event.key.keysym.sym == SDLK_LCTRL)  game.core.io.key_lctrl  = true;
+          if (game.core.event.key.keysym.sym == SDLK_LSHIFT) game.core.io.key_lshift = true;
+          if (game.core.event.key.keysym.sym == SDLK_RALT)   game.core.io.key_ralt   = true;
+          if (game.core.event.key.keysym.sym == SDLK_RCTRL)  game.core.io.key_rctrl  = true;
+          if (game.core.event.key.keysym.sym == SDLK_RSHIFT) game.core.io.key_rshift = true;
           if (game.core.event.key.keysym.sym == SDLK_0)      game.core.io.key_0      = true;
           if (game.core.event.key.keysym.sym == SDLK_1)      game.core.io.key_1      = true;
           if (game.core.event.key.keysym.sym == SDLK_2)      game.core.io.key_2      = true;
@@ -436,6 +443,12 @@ bool events_process(void)
           if (game.core.event.key.keysym.sym == SDLK_MINUS)  game.core.io.key_minus  = false;
           if (game.core.event.key.keysym.sym == SDLK_SPACE)  game.core.io.key_space  = false;
           if (game.core.event.key.keysym.sym == SDLK_RETURN) game.core.io.key_enter  = false;
+          if (game.core.event.key.keysym.sym == SDLK_LALT)   game.core.io.key_lalt   = false;
+          if (game.core.event.key.keysym.sym == SDLK_LCTRL)  game.core.io.key_lctrl  = false;
+          if (game.core.event.key.keysym.sym == SDLK_LSHIFT) game.core.io.key_lshift = false;
+          if (game.core.event.key.keysym.sym == SDLK_RALT)   game.core.io.key_ralt   = false;
+          if (game.core.event.key.keysym.sym == SDLK_RCTRL)  game.core.io.key_rctrl  = false;
+          if (game.core.event.key.keysym.sym == SDLK_RSHIFT) game.core.io.key_rshift = false;
           if (game.core.event.key.keysym.sym == SDLK_0)      game.core.io.key_0      = false;
           if (game.core.event.key.keysym.sym == SDLK_1)      game.core.io.key_1      = false;
           if (game.core.event.key.keysym.sym == SDLK_2)      game.core.io.key_2      = false;
@@ -483,10 +496,9 @@ bool events_process(void)
     if ((game.core.io.joystick_down)  || (game.core.io.key_down )) game.core.io.down   = true; else game.core.io.down   = false;
     if ((game.core.io.joystick_left)  || (game.core.io.key_left )) game.core.io.left   = true; else game.core.io.left   = false;
     if ((game.core.io.joystick_right) || (game.core.io.key_right)) game.core.io.right  = true; else game.core.io.right  = false;
+    if ((game.core.io.key_lalt)   || (game.core.io.key_ralt))    game.core.io.key_alt   = true; else game.core.io.key_alt   = false;
+    if ((game.core.io.key_lctrl)  || (game.core.io.key_rctrl))   game.core.io.key_ctrl  = true; else game.core.io.key_ctrl  = false;
+    if ((game.core.io.key_lshift) || (game.core.io.key_rshift))  game.core.io.key_shift = true; else game.core.io.key_shift = false;
     return(true);
 }
-
-
-
-
 

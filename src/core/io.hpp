@@ -107,6 +107,15 @@ struct io_type
    bool      key_plus;
    bool      key_minus;
    bool      key_escape;
+   bool      key_lalt;
+   bool      key_lctrl;
+   bool      key_lshift;
+   bool      key_ralt;
+   bool      key_rctrl;
+   bool      key_rshift;
+   bool      key_alt;
+   bool      key_ctrl;
+   bool      key_shift;
    bool      shoot;
    bool      select;
    bool      pause;
