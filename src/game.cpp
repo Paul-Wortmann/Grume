@@ -99,23 +99,6 @@ int process_game(void)
     }
     if (game.core.io.keyboard_ready)
     {
-        if (game.core.io.key_escape)
-        {
-            if(!game.core.menu_active)
-            {
-                game.UI.active_window_list.add_to_list(MAIN_MENU_WINDOW);
-                game.sound.menu_select_00.play();
-                game.core.menu_level              = 1;
-                game.core.menu_active             = true;
-                game.core.io.key_escape           = false;
-                game.core.io.keyboard_delay_count = 0;
-                game.core.config.menu_delay_count = 0;
-                while (game.core.config.menu_delay_count < (game.core.config.menu_delay/2))
-                {
-                    game.core.config.menu_delay_count++;
-                }
-            }
-        }
         /*
         if (game.core.io.pause)
         {
@@ -158,6 +141,24 @@ int process_game(void)
                 game.map.town.calculate_tile_positions(DEFAULT_FRAME_WIDTH/game.zoom.current/2.0f,DEFAULT_FRAME_HEIGHT/game.zoom.current/2.0f);
             }
             game.core.io.key_x                = false;
+            game.core.io.keyboard_delay_count = 0;
+        }
+        if (game.core.io.key_escape) // Main menu
+        {
+            if (!game.core.menu_active)
+            {
+                game.UI.active_window_list.add_to_list(MAIN_MENU_WINDOW);
+                game.core.menu_level              = 1;
+                game.sound.menu_select_00.play();
+                game.core.menu_active         = true;
+            }
+            else
+            {
+                game.UI.active_window_list.remove_from_list(MAIN_MENU_WINDOW);
+                game.sound.menu_select_00.play();
+                game.core.menu_active         = false;
+            }
+            game.core.io.key_escape           = false;
             game.core.io.keyboard_delay_count = 0;
         }
         if (game.core.io.key_e) // Equipment menu
