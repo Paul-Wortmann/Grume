@@ -94,6 +94,12 @@ void spell_slot_class::process(void)
 {
     if ((!game.UI.drag_in_progress) && (game.core.physics.point_in_quadrangle(spell_slot_class::pos_x,spell_slot_class::width,spell_slot_class::pos_y,spell_slot_class::height,game.core.io.mouse_x,game.core.io.mouse_y))) spell_slot_class::mouse_over = true;
     else spell_slot_class::mouse_over = false;
+    if (spell_slot_class::mouse_over)
+    {
+        spell_slot_class::mouse_over_count++;
+        if (spell_slot_class::mouse_over_count > spell_slot_class::tooltip_time) spell_slot_class::mouse_over_count = spell_slot_class::tooltip_time;
+    }
+    else spell_slot_class::mouse_over_count = 0;
     if (spell_slot_class::button_type > 0)
     {
         if (spell_slot_class::drag)
@@ -168,6 +174,22 @@ void spell_slot_class::draw_drag(void)
         break;
         default:
         break;
+    }
+};
+
+void spell_slot_class::draw_tooltip(void)
+{
+    if ((game.spell[spell_slot_class::button_type].level > 0) && (!spell_slot_class::drag) && (spell_slot_class::mouse_over_count == spell_slot_class::tooltip_time))
+    {
+        std::string text_padding    = "";
+        int         number_of_lines = 1;
+        float       line_height     = 0.04f;
+        float       width           = line_height*7.4f;
+        float       height          = line_height*number_of_lines+(line_height/4);
+        float       x_pos           = game.core.io.mouse_x+line_height;
+        float       y_pos           = game.core.io.mouse_y-line_height;
+        game.texture.item_stat_background.draw(false,game.core.io.mouse_x+(width/2),game.core.io.mouse_y-(height/2),spell_slot_class::pos_z,width,height);
+        game.font.font_1.Write(255,255,255,255,x_pos,y_pos,4.8f,32.0f,game.spell[spell_slot_class::button_type].name);
     }
 };
 
@@ -415,6 +437,10 @@ void spell_book_class::draw(void)
     game.texture.spell_book.draw(false,spell_book_class::pos_x,spell_book_class::pos_y,spell_book_class::pos_z,spell_book_class::width,spell_book_class::height);
     spell_book_class::close_button.draw();
     game.font.font_1.Write(255,255,255,255,spell_book_class::pos_x - (spell_book_class::width /10.0f),spell_book_class::pos_y + (spell_book_class::height/2.30f),4.8f,32.0f,game.language.text.spell_book);
+    for (int spell_slot_count = 1; spell_slot_count < MAX_SPELL_SLOTS; spell_slot_count++)
+    {
+        if(spell_book_class::spell_slot[spell_slot_count].button_type > 0) spell_book_class::spell_slot[spell_slot_count].draw_tooltip();
+    }
 };
 
 
