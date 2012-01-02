@@ -99,7 +99,6 @@ int init_game(bool re_init)
 /*----------------------------------------------------------------------------*/
 int process_game(void)
 {
-    game.player.level.current_experience++;
     game.UI.process();
     game.player.process();
     game.map.town.process();

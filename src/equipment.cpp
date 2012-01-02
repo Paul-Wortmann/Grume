@@ -96,6 +96,12 @@ void equipment_slot_class::process(void)
     int  temp_ID = 0;
     if (game.core.physics.point_in_quadrangle(equipment_slot_class::pos_x,equipment_slot_class::width,equipment_slot_class::pos_y,equipment_slot_class::height,game.core.io.mouse_x,game.core.io.mouse_y)) equipment_slot_class::mouse_over = true;
     else equipment_slot_class::mouse_over = false;
+    if (equipment_slot_class::mouse_over)
+    {
+        equipment_slot_class::mouse_over_count++;
+        if (equipment_slot_class::mouse_over_count > equipment_slot_class::tooltip_time) equipment_slot_class::mouse_over_count = equipment_slot_class::tooltip_time;
+    }
+    else equipment_slot_class::mouse_over_count = 0;
     if (equipment_slot_class::button_type > 0)
     {
         if (equipment_slot_class::drag)
@@ -189,6 +195,175 @@ void equipment_slot_class::draw_drag(void)
     if ((equipment_slot_class::button_type > 0) && (equipment_slot_class::drag))
     {
         draw_texture(false,game.item[equipment_slot_class::button_type].image_ref,equipment_slot_class::pos_x,equipment_slot_class::pos_y,equipment_slot_class::pos_z,equipment_slot_class::width,equipment_slot_class::height);
+    }
+};
+
+void equipment_slot_class::draw_tooltip(void)
+{
+    if ((equipment_slot_class::button_type > 0) && (!equipment_slot_class::drag) && (equipment_slot_class::mouse_over_count == equipment_slot_class::tooltip_time))
+    {
+        std::string text_padding    = "";
+        int         number_of_lines = 0;
+        if (game.item[equipment_slot_class::button_type].max_damage               > 0) number_of_lines++;
+        if (game.item[equipment_slot_class::button_type].armour                   > 0) number_of_lines++;
+        if (game.item[equipment_slot_class::button_type].add_max_health           > 0) number_of_lines++;
+        if (game.item[equipment_slot_class::button_type].sub_max_health           > 0) number_of_lines++;
+        if (game.item[equipment_slot_class::button_type].add_max_mana             > 0) number_of_lines++;
+        if (game.item[equipment_slot_class::button_type].sub_max_mana             > 0) number_of_lines++;
+        if (game.item[equipment_slot_class::button_type].add_health_regeneration  > 0) number_of_lines++;
+        if (game.item[equipment_slot_class::button_type].sub_health_regeneration  > 0) number_of_lines++;
+        if (game.item[equipment_slot_class::button_type].add_mana_regeneration    > 0) number_of_lines++;
+        if (game.item[equipment_slot_class::button_type].sub_mana_regeneration    > 0) number_of_lines++;
+        if (game.item[equipment_slot_class::button_type].add_crit_chance          > 0) number_of_lines++;
+        if (game.item[equipment_slot_class::button_type].sub_crit_chance          > 0) number_of_lines++;
+        if (game.item[equipment_slot_class::button_type].add_walk_speed           > 0) number_of_lines++;
+        if (game.item[equipment_slot_class::button_type].sub_walk_speed           > 0) number_of_lines++;
+        if (game.item[equipment_slot_class::button_type].add_light_radius         > 0) number_of_lines++;
+        if (game.item[equipment_slot_class::button_type].sub_light_radius         > 0) number_of_lines++;
+        if (game.item[equipment_slot_class::button_type].add_flame_damage         > 0) number_of_lines++;
+        if (game.item[equipment_slot_class::button_type].add_frost_damage         > 0) number_of_lines++;
+        if (game.item[equipment_slot_class::button_type].add_lightning_damage     > 0) number_of_lines++;
+        if (game.item[equipment_slot_class::button_type].add_magic_damage         > 0) number_of_lines++;
+        if (game.item[equipment_slot_class::button_type].add_flame_resistance     > 0) number_of_lines++;
+        if (game.item[equipment_slot_class::button_type].add_frost_resistance     > 0) number_of_lines++;
+        if (game.item[equipment_slot_class::button_type].add_lightning_resistance > 0) number_of_lines++;
+        if (game.item[equipment_slot_class::button_type].add_all_resistances      > 0) number_of_lines++;
+        if (number_of_lines > 0) number_of_lines += 2;
+        else number_of_lines += 1;
+        float line_height = 0.04f;
+        float width       = line_height*7.4f;
+        float height      = line_height*number_of_lines+(line_height/4);
+        float x_pos       = game.core.io.mouse_x+line_height;
+        float y_pos       = game.core.io.mouse_y-line_height;
+        game.texture.item_stat_background.draw(false,game.core.io.mouse_x+(width/2),game.core.io.mouse_y-(height/2),equipment_slot_class::pos_z,width,height);
+        game.font.font_1.Write(255,255,255,255,x_pos,y_pos,4.8f,32.0f,game.item[equipment_slot_class::button_type].name);
+        y_pos -= line_height;
+        y_pos -= line_height;
+        if(game.item[equipment_slot_class::button_type].max_damage > 0)
+        {
+            text_padding = "";
+            game.font.font_1.Write(255,255,255,255,x_pos,y_pos,4.8f,32.0f,"Damage ->                  ",game.item[equipment_slot_class::button_type].min_damage, " - ",game.item[equipment_slot_class::button_type].max_damage,text_padding);
+            y_pos -= line_height;
+        }
+        if(game.item[equipment_slot_class::button_type].add_frost_damage > 0)
+        {
+            text_padding = "";
+            game.font.font_1.Write(191,191,255,255,x_pos,y_pos,4.8f,32.0f,"Frost Damage ->            ",game.item[equipment_slot_class::button_type].add_frost_damage,text_padding);
+            y_pos -= line_height;
+        }
+        if(game.item[equipment_slot_class::button_type].add_flame_damage > 0)
+        {
+            text_padding = "";
+            game.font.font_1.Write(255,191,191,255,x_pos,y_pos,4.8f,32.0f,"Fire Damage ->             ",game.item[equipment_slot_class::button_type].add_flame_damage,text_padding);
+            y_pos -= line_height;
+        }
+        if(game.item[equipment_slot_class::button_type].add_lightning_damage > 0)
+        {
+            text_padding = "";
+            game.font.font_1.Write(255,255,191,255,x_pos,y_pos,4.8f,32.0f,"Lightning Damage ->        ",game.item[equipment_slot_class::button_type].add_lightning_damage,text_padding);
+            y_pos -= line_height;
+        }
+        if(game.item[equipment_slot_class::button_type].add_magic_damage > 0)
+        {
+            text_padding = "";
+            game.font.font_1.Write(255,255,255,255,x_pos,y_pos,4.8f,32.0f,"Magic Damage ->            ",game.item[equipment_slot_class::button_type].add_magic_damage,text_padding);
+            y_pos -= line_height;
+        }
+        if(game.item[equipment_slot_class::button_type].armour > 0)
+        {
+            game.font.font_1.Write(255,255,255,255,x_pos,y_pos,4.8f,32.0f,"Armour ->                  ",game.item[equipment_slot_class::button_type].armour);
+            y_pos -= line_height;
+        }
+        if(game.item[equipment_slot_class::button_type].add_max_health > 0)
+        {
+            game.font.font_1.Write(255,255,255,255,x_pos,y_pos,4.8f,32.0f,"Add max health ->          ",game.item[equipment_slot_class::button_type].add_max_health);
+            y_pos -= line_height;
+        }
+        if(game.item[equipment_slot_class::button_type].sub_max_health > 0)
+        {
+            game.font.font_1.Write(255,255,255,255,x_pos,y_pos,4.8f,32.0f,"Sub max health ->          ",game.item[equipment_slot_class::button_type].sub_max_health);
+            y_pos -= line_height;
+        }
+        if(game.item[equipment_slot_class::button_type].add_max_mana > 0)
+        {
+            game.font.font_1.Write(255,255,255,255,x_pos,y_pos,4.8f,32.0f,"Add max mana ->            ",game.item[equipment_slot_class::button_type].add_max_mana);
+            y_pos -= line_height;
+        }
+        if(game.item[equipment_slot_class::button_type].sub_max_mana > 0)
+        {
+            game.font.font_1.Write(255,255,255,255,x_pos,y_pos,4.8f,32.0f,"Sub max mana ->            ",game.item[equipment_slot_class::button_type].sub_max_mana);
+            y_pos -= line_height;
+        }
+        if(game.item[equipment_slot_class::button_type].add_health_regeneration > 0)
+        {
+            game.font.font_1.Write(255,255,255,255,x_pos,y_pos,4.8f,32.0f,"Add health regeneration -> ",game.item[equipment_slot_class::button_type].add_health_regeneration);
+            y_pos -= line_height;
+        }
+        if(game.item[equipment_slot_class::button_type].sub_health_regeneration > 0)
+        {
+            game.font.font_1.Write(255,255,255,255,x_pos,y_pos,4.8f,32.0f,"Sub health regeneration -> ",game.item[equipment_slot_class::button_type].sub_health_regeneration);
+            y_pos -= line_height;
+        }
+        if(game.item[equipment_slot_class::button_type].add_mana_regeneration > 0)
+        {
+            game.font.font_1.Write(255,255,255,255,x_pos,y_pos,4.8f,32.0f,"Add mana regeneration ->   ",game.item[equipment_slot_class::button_type].add_mana_regeneration);
+            y_pos -= line_height;
+        }
+        if(game.item[equipment_slot_class::button_type].sub_mana_regeneration > 0)
+        {
+            game.font.font_1.Write(255,255,255,255,x_pos,y_pos,4.8f,32.0f,"Sub mana regeneration ->   ",game.item[equipment_slot_class::button_type].sub_mana_regeneration);
+            y_pos -= line_height;
+        }
+        if(game.item[equipment_slot_class::button_type].add_crit_chance > 0)
+        {
+            game.font.font_1.Write(255,255,255,255,x_pos,y_pos,4.8f,32.0f,"Add crit chance ->         ",game.item[equipment_slot_class::button_type].add_crit_chance);
+            y_pos -= line_height;
+        }
+        if(game.item[equipment_slot_class::button_type].sub_crit_chance > 0)
+        {
+            game.font.font_1.Write(255,255,255,255,x_pos,y_pos,4.8f,32.0f,"Sub crit chance ->         ",game.item[equipment_slot_class::button_type].sub_crit_chance);
+            y_pos -= line_height;
+        }
+        if(game.item[equipment_slot_class::button_type].add_walk_speed > 0)
+        {
+            game.font.font_1.Write(255,255,255,255,x_pos,y_pos,4.8f,32.0f,"Add walk speed ->          ",game.item[equipment_slot_class::button_type].add_walk_speed);
+            y_pos -= line_height;
+        }
+        if(game.item[equipment_slot_class::button_type].sub_walk_speed > 0)
+        {
+            game.font.font_1.Write(255,255,255,255,x_pos,y_pos,4.8f,32.0f,"Sub walk speed ->          ",game.item[equipment_slot_class::button_type].sub_walk_speed);
+            y_pos -= line_height;
+        }
+        if(game.item[equipment_slot_class::button_type].add_light_radius > 0)
+        {
+            game.font.font_1.Write(255,255,255,255,x_pos,y_pos,4.8f,32.0f,"Add light radius ->        ",game.item[equipment_slot_class::button_type].add_light_radius);
+            y_pos -= line_height;
+        }
+        if(game.item[equipment_slot_class::button_type].sub_light_radius > 0)
+        {
+            game.font.font_1.Write(255,255,255,255,x_pos,y_pos,4.8f,32.0f,"Sub light radius ->        ",game.item[equipment_slot_class::button_type].sub_light_radius);
+            y_pos -= line_height;
+        }
+        if(game.item[equipment_slot_class::button_type].add_flame_resistance > 0)
+        {
+            game.font.font_1.Write(255,191,191,255,x_pos,y_pos,4.8f,32.0f,"Add Flame Resistance ->     ",game.item[equipment_slot_class::button_type].add_flame_resistance);
+            y_pos -= line_height;
+        }
+        if(game.item[equipment_slot_class::button_type].add_frost_resistance > 0)
+        {
+            game.font.font_1.Write(191,191,255,255,x_pos,y_pos,4.8f,32.0f,"Add Frost Resistance ->     ",game.item[equipment_slot_class::button_type].add_frost_resistance);
+            y_pos -= line_height;
+        }
+        if(game.item[equipment_slot_class::button_type].add_lightning_resistance > 0)
+        {
+            game.font.font_1.Write(255,255,191,255,x_pos,y_pos,4.8f,32.0f,"Add Lightning Resistance -> ",game.item[equipment_slot_class::button_type].add_lightning_resistance);
+            y_pos -= line_height;
+        }
+        if(game.item[equipment_slot_class::button_type].add_all_resistances > 0)
+        {
+            game.font.font_1.Write(255,255,255,255,x_pos,y_pos,4.8f,32.0f,"Add All Resistances ->      ",game.item[equipment_slot_class::button_type].add_all_resistances);
+            y_pos -= line_height;
+        }
     }
 };
 
@@ -407,6 +582,14 @@ void equipment_class::draw(void)
     for (int equipment_slot_count = 1; equipment_slot_count < MAX_EQUIPMENT_SLOTS; equipment_slot_count++)
     {
         equipment_class::equipment_slot[equipment_slot_count].draw();
+    }
+    for (int equipment_slot_count = 1; equipment_slot_count < MAX_EQUIPMENT_SLOTS; equipment_slot_count++)
+    {
+        equipment_class::equipment_slot[equipment_slot_count].draw_tooltip();
+    }
+    for (int equipment_slot_count = 1; equipment_slot_count < MAX_EQUIPMENT_SLOTS; equipment_slot_count++)
+    {
+        equipment_class::equipment_slot[equipment_slot_count].draw_drag();
     }
 };
 

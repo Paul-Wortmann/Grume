@@ -336,7 +336,18 @@ void action_slot_class::draw_drag(void)
 
 void action_slot_class::draw_tooltip(void)
 {
-
+    if ((action_slot_class::button_type > 0) && (!action_slot_class::drag) && (action_slot_class::mouse_over_count == action_slot_class::tooltip_time))
+    {
+        std::string text_padding    = "";
+        int         number_of_lines = 1;
+        float       line_height     = 0.04f;
+        float       width           = line_height*7.4f;
+        float       height          = line_height*number_of_lines+(line_height/4);
+        float       x_pos           = game.core.io.mouse_x+line_height;
+        float       y_pos           = game.core.io.mouse_y-line_height;
+        game.texture.item_stat_background.draw(false,game.core.io.mouse_x+(width/2),game.core.io.mouse_y-(height/2),action_slot_class::pos_z,width,height);
+        game.font.font_1.Write(255,255,255,255,x_pos,y_pos,4.8f,32.0f,game.item[action_slot_class::button_type].name);
+    }
 };
 
 //----------------------------------------------------------------------------------------------------------------

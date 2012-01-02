@@ -381,7 +381,6 @@ void inventory_slot_class::draw_tooltip(void)
         if (game.item[inventory_slot_class::button_type].sub_walk_speed           > 0) number_of_lines++;
         if (game.item[inventory_slot_class::button_type].add_light_radius         > 0) number_of_lines++;
         if (game.item[inventory_slot_class::button_type].sub_light_radius         > 0) number_of_lines++;
-        if (game.item[inventory_slot_class::button_type].add_spell                > 0) number_of_lines++;
         if (game.item[inventory_slot_class::button_type].add_flame_damage         > 0) number_of_lines++;
         if (game.item[inventory_slot_class::button_type].add_frost_damage         > 0) number_of_lines++;
         if (game.item[inventory_slot_class::button_type].add_lightning_damage     > 0) number_of_lines++;
@@ -390,11 +389,11 @@ void inventory_slot_class::draw_tooltip(void)
         if (game.item[inventory_slot_class::button_type].add_frost_resistance     > 0) number_of_lines++;
         if (game.item[inventory_slot_class::button_type].add_lightning_resistance > 0) number_of_lines++;
         if (game.item[inventory_slot_class::button_type].add_all_resistances      > 0) number_of_lines++;
-        number_of_lines *= 2;
-        number_of_lines += 1;
+        if (number_of_lines > 0) number_of_lines += 2;
+        else number_of_lines += 1;
         float line_height = 0.04f;
-        float width       = inventory_slot_class::width*5.8f;
-        float height      = line_height*number_of_lines;
+        float width       = line_height*7.4f;
+        float height      = line_height*number_of_lines+(line_height/4);
         float x_pos       = game.core.io.mouse_x+line_height;
         float y_pos       = game.core.io.mouse_y-line_height;
         game.texture.item_stat_background.draw(false,game.core.io.mouse_x+(width/2),game.core.io.mouse_y-(height/2),inventory_slot_class::pos_z,width,height);
@@ -410,19 +409,19 @@ void inventory_slot_class::draw_tooltip(void)
         if(game.item[inventory_slot_class::button_type].add_frost_damage > 0)
         {
             text_padding = "";
-            game.font.font_1.Write(255,255,255,255,x_pos,y_pos,4.8f,32.0f,"Frost Damage ->            ",game.item[inventory_slot_class::button_type].add_frost_damage,text_padding);
+            game.font.font_1.Write(191,191,255,255,x_pos,y_pos,4.8f,32.0f,"Frost Damage ->            ",game.item[inventory_slot_class::button_type].add_frost_damage,text_padding);
             y_pos -= line_height;
         }
         if(game.item[inventory_slot_class::button_type].add_flame_damage > 0)
         {
             text_padding = "";
-            game.font.font_1.Write(255,255,255,255,x_pos,y_pos,4.8f,32.0f,"Fire Damage ->             ",game.item[inventory_slot_class::button_type].add_flame_damage,text_padding);
+            game.font.font_1.Write(255,191,191,255,x_pos,y_pos,4.8f,32.0f,"Fire Damage ->             ",game.item[inventory_slot_class::button_type].add_flame_damage,text_padding);
             y_pos -= line_height;
         }
         if(game.item[inventory_slot_class::button_type].add_lightning_damage > 0)
         {
             text_padding = "";
-            game.font.font_1.Write(255,255,255,255,x_pos,y_pos,4.8f,32.0f,"Lightning Damage ->        ",game.item[inventory_slot_class::button_type].add_lightning_damage,text_padding);
+            game.font.font_1.Write(255,255,191,255,x_pos,y_pos,4.8f,32.0f,"Lightning Damage ->        ",game.item[inventory_slot_class::button_type].add_lightning_damage,text_padding);
             y_pos -= line_height;
         }
         if(game.item[inventory_slot_class::button_type].add_magic_damage > 0)
@@ -506,7 +505,26 @@ void inventory_slot_class::draw_tooltip(void)
             game.font.font_1.Write(255,255,255,255,x_pos,y_pos,4.8f,32.0f,"Sub light radius ->        ",game.item[inventory_slot_class::button_type].sub_light_radius);
             y_pos -= line_height;
         }
-
+        if(game.item[inventory_slot_class::button_type].add_flame_resistance > 0)
+        {
+            game.font.font_1.Write(255,191,191,255,x_pos,y_pos,4.8f,32.0f,"Add Flame Resistance ->     ",game.item[inventory_slot_class::button_type].add_flame_resistance);
+            y_pos -= line_height;
+        }
+        if(game.item[inventory_slot_class::button_type].add_frost_resistance > 0)
+        {
+            game.font.font_1.Write(191,191,255,255,x_pos,y_pos,4.8f,32.0f,"Add Frost Resistance ->     ",game.item[inventory_slot_class::button_type].add_frost_resistance);
+            y_pos -= line_height;
+        }
+        if(game.item[inventory_slot_class::button_type].add_lightning_resistance > 0)
+        {
+            game.font.font_1.Write(255,255,191,255,x_pos,y_pos,4.8f,32.0f,"Add Lightning Resistance -> ",game.item[inventory_slot_class::button_type].add_lightning_resistance);
+            y_pos -= line_height;
+        }
+        if(game.item[inventory_slot_class::button_type].add_all_resistances > 0)
+        {
+            game.font.font_1.Write(255,255,255,255,x_pos,y_pos,4.8f,32.0f,"Add All Resistances ->      ",game.item[inventory_slot_class::button_type].add_all_resistances);
+            y_pos -= line_height;
+        }
     }
 };
 
