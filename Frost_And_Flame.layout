@@ -109,11 +109,11 @@
 	<File name="src\core\timer.hpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor1 position="943" topLine="0" />
 	</File>
-	<File name="src\equipment.cpp" open="1" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="10819" topLine="157" />
+	<File name="src\equipment.cpp" open="0" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor1 position="15170" topLine="223" />
 	</File>
 	<File name="src\equipment.hpp" open="0" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="2460" topLine="45" />
+		<Cursor1 position="1814" topLine="45" />
 	</File>
 	<File name="src\game.cpp" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor1 position="5089" topLine="86" />
@@ -121,8 +121,8 @@
 	<File name="src\game.hpp" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor1 position="1522" topLine="36" />
 	</File>
-	<File name="src\inventory.cpp" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="20425" topLine="354" />
+	<File name="src\inventory.cpp" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor1 position="4836" topLine="93" />
 	</File>
 	<File name="src\inventory.hpp" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor1 position="1026" topLine="24" />
@@ -131,7 +131,7 @@
 		<Cursor1 position="14777" topLine="244" />
 	</File>
 	<File name="src\items.hpp" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="3586" topLine="84" />
+		<Cursor1 position="1011" topLine="9" />
 	</File>
 	<File name="src\language.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor1 position="1046" topLine="6" />
@@ -194,9 +194,9 @@
 		<Cursor1 position="2884" topLine="62" />
 	</File>
 	<File name="src\spells.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="1218" topLine="28" />
+		<Cursor1 position="2202" topLine="48" />
 	</File>
 	<File name="src\spells.hpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="1107" topLine="20" />
+		<Cursor1 position="1002" topLine="20" />
 	</File>
 </CodeBlocks_layout_file>

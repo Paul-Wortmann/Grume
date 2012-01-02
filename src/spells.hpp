@@ -25,12 +25,14 @@
 #ifndef SPELLS_H
 #define SPELLS_H
 
+#include <string>
+
 const int MAX_SPELLS = 24;
 
 class spell_class
 {
     public:
-        //std::string name;
+        std::string name;
         int         item_type;
         int         level;
         int         image_level_1;

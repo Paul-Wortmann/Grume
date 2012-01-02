@@ -195,6 +195,12 @@ void action_slot_class::process(void)
     int  temp_button    = 0;
     if (game.core.physics.point_in_quadrangle(action_slot_class::pos_x,action_slot_class::width,action_slot_class::pos_y,action_slot_class::height,game.core.io.mouse_x,game.core.io.mouse_y)) action_slot_class::mouse_over = true;
     else action_slot_class::mouse_over = false;
+    if (action_slot_class::mouse_over)
+    {
+        action_slot_class::mouse_over_count++;
+        if (action_slot_class::mouse_over_count > action_slot_class::tooltip_time) action_slot_class::mouse_over_count = action_slot_class::tooltip_time;
+    }
+    else action_slot_class::mouse_over_count = 0;
     if (action_slot_class::button_type > 0)
     {
         if (action_slot_class::drag)
@@ -346,7 +352,8 @@ void action_slot_class::draw_tooltip(void)
         float       x_pos           = game.core.io.mouse_x+line_height;
         float       y_pos           = game.core.io.mouse_y-line_height;
         game.texture.item_stat_background.draw(false,game.core.io.mouse_x+(width/2),game.core.io.mouse_y-(height/2),action_slot_class::pos_z,width,height);
-        game.font.font_1.Write(255,255,255,255,x_pos,y_pos,4.8f,32.0f,game.item[action_slot_class::button_type].name);
+        if (action_slot_class::button_type > 1000) game.font.font_1.Write(255,255,255,255,x_pos,y_pos,4.8f,32.0f,game.item[game.UI.inventory.inventory_slot[action_slot_class::button_type-1000].button_type].name);
+        if (action_slot_class::button_type < 1000) game.font.font_1.Write(255,255,255,255,x_pos,y_pos,4.8f,32.0f,game.spell[action_slot_class::button_type].name);
     }
 };
 

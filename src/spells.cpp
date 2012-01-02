@@ -31,6 +31,7 @@ extern game_type game;
 
 spell_class::spell_class(void)
 {
+    spell_class::name                   = "Spell name not set";
     spell_class::item_type              = SPELL;
     spell_class::level                  = 0;
     spell_class::image_level_1          = 0;
@@ -58,6 +59,7 @@ spell_class::~spell_class(void)
 void init_spells(void)
 {
     //Frost shards
+    game.spell[1].name                   = "Frost shards";
     game.spell[1].level                  = 0;
     game.spell[1].image_level_1          = game.texture.spell_01_level_01.ref_number;
     game.spell[1].image_level_2          = game.texture.spell_01_level_02.ref_number;

@@ -25,11 +25,8 @@
 #ifndef ITEMS_H
 #define ITEMS_H
 
-#include <iostream>
-#include <fstream>
-#include <stdio.h>
-#include <stdlib.h>
 #include <string>
+#include <fstream>
 
 #define EMPTY         0
 #define SPELL         1
