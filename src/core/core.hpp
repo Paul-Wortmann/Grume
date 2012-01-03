@@ -22,8 +22,8 @@
  * @date 2011-11-11
  */
 
-#ifndef RAGE_H
-#define RAGE_H
+#ifndef CORE_H
+#define CORE_H
 
 #include "log.hpp"
 #include "config.hpp"
@@ -38,6 +38,7 @@
 #include "io.hpp"
 #include "background.hpp"
 #include "particles.hpp"
+#include "map_2D.hpp"
 
 class core_class
 {
@@ -85,4 +86,4 @@ class core_class
 };
 
 
-#endif //RAGE_H
+#endif //CORE_H

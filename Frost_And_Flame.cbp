@@ -27,6 +27,7 @@
 					<Add library="SDL_net" />
 					<Add library="SDL_ttf" />
 					<Add library="GL" />
+					<Add library="C:\Program Files (x86)\CodeBlocks\MinGW\lib\gcc\mingw32\4.6.1\libgcc.a" />
 					<Add directory="\host\Program Files (x86)\CodeBlocks\MinGW\lib" />
 					<Add directory="\usr\lib" />
 				</Linker>
@@ -78,6 +79,8 @@
 		<Unit filename="src\core\io.hpp" />
 		<Unit filename="src\core\log.cpp" />
 		<Unit filename="src\core\log.hpp" />
+		<Unit filename="src\core\map_2D.cpp" />
+		<Unit filename="src\core\map_2D.hpp" />
 		<Unit filename="src\core\menu.cpp" />
 		<Unit filename="src\core\menu.hpp" />
 		<Unit filename="src\core\music.cpp" />
@@ -111,10 +114,12 @@
 		<Unit filename="src\language.hpp" />
 		<Unit filename="src\load_resources.cpp" />
 		<Unit filename="src\load_resources.hpp" />
+		<Unit filename="src\loader_obj.cpp" />
+		<Unit filename="src\loader_obj.hpp" />
 		<Unit filename="src\main.cpp" />
 		<Unit filename="src\main.hpp" />
-		<Unit filename="src\map.cpp" />
-		<Unit filename="src\map.hpp" />
+		<Unit filename="src\map_3D.cpp" />
+		<Unit filename="src\map_3D.hpp" />
 		<Unit filename="src\menu_system.cpp" />
 		<Unit filename="src\menu_system.hpp" />
 		<Unit filename="src\misc.cpp" />

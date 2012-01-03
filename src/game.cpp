@@ -26,12 +26,15 @@
 #include "menu_system.hpp"
 #include "game.hpp"
 #include "misc.hpp"
-#include "map.hpp"
+#include "core/map_2D.hpp"
+#include "loader_obj.hpp"
 
         game_type        game;
 
 int init_game(bool re_init)
 {
+    loader_obj_class test;
+    test.load("data/test.obj");
     game.global_ambient.intensity_R = 8.0f;
     game.global_ambient.intensity_G = 8.0f;
     game.global_ambient.intensity_B = 8.0f;
@@ -101,7 +104,7 @@ int process_game(void)
 {
     game.UI.process();
     game.player.process();
-    game.map.town.process();
+    game.map_2D.town.process();
     game.core.game_resume = true;
     if (game.core.music_next_track)
     {
@@ -136,8 +139,8 @@ int process_game(void)
             if (game.zoom.current > game.zoom.max) game.zoom.current = game.zoom.max;
             else
             {
-                game.map.town.tile[0].pos_y -= (DEFAULT_FRAME_HEIGHT/game.zoom.current/2.0f);
-                game.map.town.calculate_tile_positions(DEFAULT_FRAME_WIDTH/game.zoom.current/2.0f,DEFAULT_FRAME_HEIGHT/game.zoom.current/2.0f);
+                game.map_2D.town.tile[0].pos_y -= (DEFAULT_FRAME_HEIGHT/game.zoom.current/2.0f);
+                game.map_2D.town.calculate_tile_positions(DEFAULT_FRAME_WIDTH/game.zoom.current/2.0f,DEFAULT_FRAME_HEIGHT/game.zoom.current/2.0f);
             }
             game.core.io.key_z                = false;
             game.core.io.keyboard_delay_count = 0;
@@ -148,8 +151,8 @@ int process_game(void)
             if (game.zoom.current < game.zoom.min) game.zoom.current = game.zoom.min;
             else
             {
-                //game.map.town.tile[0].pos_y += (DEFAULT_FRAME_HEIGHT/game.zoom.current/2.0f);
-                game.map.town.calculate_tile_positions(DEFAULT_FRAME_WIDTH/game.zoom.current/2.0f,DEFAULT_FRAME_HEIGHT/game.zoom.current/2.0f);
+                //game.map_2D.town.tile[0].pos_y += (DEFAULT_FRAME_HEIGHT/game.zoom.current/2.0f);
+                game.map_2D.town.calculate_tile_positions(DEFAULT_FRAME_WIDTH/game.zoom.current/2.0f,DEFAULT_FRAME_HEIGHT/game.zoom.current/2.0f);
             }
             game.core.io.key_x                = false;
             game.core.io.keyboard_delay_count = 0;
@@ -325,7 +328,7 @@ int display_game(void)
     glLightModelfv(GL_LIGHT_MODEL_AMBIENT,world_ambient_light);
 
 
-    game.map.town.draw();
+    game.map_2D.town.draw();
     game.player.draw();
 
     glLightModelfv(GL_LIGHT_MODEL_AMBIENT,global_ambient_light);

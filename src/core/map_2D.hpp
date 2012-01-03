@@ -22,10 +22,10 @@
  * @date 2011-11-11
  */
 
-#ifndef MAP_H
-#define MAP_H
+#ifndef MAP_2D_H
+#define MAP_2D_H
 
-#include "core/textures.hpp"
+#include "textures.hpp"
 
 const int    MAX_MAP_TILESETS    = 32;
 const int    MAX_TILE_X          = 100;
@@ -69,7 +69,7 @@ class tileset_class
        ~tileset_class(void);
 };
 
-class map_class
+class map_2D_class
 {
     public:
         float         version;
@@ -92,10 +92,10 @@ class map_class
         bool tile_visable(int tile_no);
         void save(std::string file_name);
         void load(std::string file_name);
-        map_class(void);
-       ~map_class(void);
+        map_2D_class(void);
+       ~map_2D_class(void);
 };
 
-#endif //MAP_H
+#endif //MAP_H_2D
 
 

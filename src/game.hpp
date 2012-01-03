@@ -62,10 +62,11 @@ struct game_type
     spell_class      spell[MAX_SPELLS];
     item_class       item [MAX_ITEMS];
     UI_class         UI;
-    map_type         map;
     sound_type       sound;
     music_type       music;
     texture_type     texture;
+    map_2D_type       map_2D;
+    map_3D_type       map_3D;
     font_type        font;
     core_class       core;
     language_class   language;

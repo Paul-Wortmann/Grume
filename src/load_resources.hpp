@@ -30,7 +30,8 @@
 #include "core/music.hpp"
 #include "core/textures.hpp"
 #include "core/font.hpp"
-#include "map.hpp"
+#include "core/map_2D.hpp"
+#include "map_3D.hpp"
 
 struct sound_type
 {
@@ -47,9 +48,14 @@ struct sound_type
     sound_class   book_02;
 };
 
-struct map_type
+struct map_2D_type
 {
-    map_class   town;
+    map_2D_class   town;
+};
+
+struct map_3D_type
+{
+    map_3D_class   cave;
 };
 
 struct music_type
@@ -439,7 +445,8 @@ struct font_type
 };
 
 bool load_resources(void);
-bool load_maps(void);
+bool load_maps_2D(void);
+bool load_maps_3D(void);
 bool load_sounds(void);
 bool load_music(void);
 bool load_textures(void);

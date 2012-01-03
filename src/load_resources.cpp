@@ -34,16 +34,26 @@ bool load_resources(void)
     load_music();
     load_textures();
     load_fonts();
-    load_maps();
+    load_maps_2D();
+    load_maps_3D();
     return(true);
 };
 
-bool load_maps(void)
+bool load_maps_2D(void)
 {
     int map_count = 0;
-    game.map.town.load      ("data/maps/town.tmx")   ;map_count++;
+    game.map_2D.town.load      ("data/maps/town.tmx");map_count++;
 
-    game.core.log.File_Write("Map files loaded -> ",map_count);
+    game.core.log.File_Write("2D map files loaded -> ",map_count);
+    return(true);
+};
+
+bool load_maps_3D(void)
+{
+    int map_count = 0;
+    game.map_3D.cave.load      ("data/maps/town.tmx");map_count++;
+
+    game.core.log.File_Write("3D map files loaded -> ",map_count);
     return(true);
 };
 

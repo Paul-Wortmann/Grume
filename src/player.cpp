@@ -52,7 +52,6 @@ void level_class::init(void)
         temp_exp = temp_exp * level_class::multiplier;
         if (temp_exp > 9223372036854775808u) temp_exp = 9223372036854775808u;
         level_class::experience[exp_count] = temp_exp;
-        game.core.log.File_Write("Level EXP -> ",temp_exp);
     }
 }
 

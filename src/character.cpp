@@ -370,19 +370,19 @@ void character_class::draw(void)
     game.font.font_1.Write(255,255,255,255,character_class::pos_x - (character_class::width /2.5f),character_class::pos_y - (character_class::height/10.0f),4.8f,32.0f,"Physical Damage: ",(int)game.player.damage_physical_minimum," - ",(int)game.player.damage_physical_maximum,string_padding);
 
     string_padding = "";
-    if (game.player.resistance_frost <                   9u) string_padding += " ";
-    if (game.player.resistance_frost <                  99u) string_padding += " ";
-    if (game.player.resistance_frost <                 999u) string_padding += " ";
+    if (game.player.damage_frost <                   9u) string_padding += " ";
+    if (game.player.damage_frost <                  99u) string_padding += " ";
+    if (game.player.damage_frost <                 999u) string_padding += " ";
     game.font.font_1.Write(191,191,255,255,character_class::pos_x - (character_class::width /2.5f),character_class::pos_y - (character_class::height/ 6.6f),4.8f,32.0f,"Frost Damage:         ",(int)game.player.damage_frost,string_padding);
     string_padding = "";
-    if (game.player.resistance_flame <                   9u) string_padding += " ";
-    if (game.player.resistance_flame <                  99u) string_padding += " ";
-    if (game.player.resistance_flame <                 999u) string_padding += " ";
+    if (game.player.damage_flame <                   9u) string_padding += " ";
+    if (game.player.damage_flame <                  99u) string_padding += " ";
+    if (game.player.damage_flame <                 999u) string_padding += " ";
     game.font.font_1.Write(255,191,191,255,character_class::pos_x - (character_class::width /2.5f),character_class::pos_y - (character_class::height/ 5.4f),4.8f,32.0f,"Flame Damage:         ",(int)game.player.damage_flame,string_padding);
     string_padding = "";
-    if (game.player.resistance_lightning <                   9u) string_padding += " ";
-    if (game.player.resistance_lightning <                  99u) string_padding += " ";
-    if (game.player.resistance_lightning <                 999u) string_padding += " ";
+    if (game.player.damage_lightning <                   9u) string_padding += " ";
+    if (game.player.damage_lightning <                  99u) string_padding += " ";
+    if (game.player.damage_lightning <                 999u) string_padding += " ";
     game.font.font_1.Write(255,255,191,255,character_class::pos_x - (character_class::width /2.5f),character_class::pos_y - (character_class::height/ 4.6f),4.8f,32.0f,"Lightning Damage:     ",(int)game.player.damage_lightning,string_padding);
 
     string_padding = "";
