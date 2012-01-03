@@ -304,7 +304,24 @@ void loader_obj_class::load(std::string file_name)
 
 void loader_obj_class::scale(float scale_value)
 {
-
+    for (int vertex_count = 0; vertex_count <=  loader_obj_class::number_of_vertices; vertex_count++)
+    {
+        loader_obj_class::vertex[vertex_count].x *= scale_value;
+        loader_obj_class::vertex[vertex_count].y *= scale_value;
+        loader_obj_class::vertex[vertex_count].z *= scale_value;
+    }
+    for (int vertex_count = 0; vertex_count <=  loader_obj_class::number_of_vertex_textures; vertex_count++)
+    {
+        loader_obj_class::vertex_texture[vertex_count].x *= scale_value;
+        loader_obj_class::vertex_texture[vertex_count].y *= scale_value;
+        loader_obj_class::vertex_texture[vertex_count].z *= scale_value;
+    }
+    for (int vertex_count = 0; vertex_count <=  loader_obj_class::number_of_vertex_normals; vertex_count++)
+    {
+        loader_obj_class::vertex_normal[vertex_count].x *= scale_value;
+        loader_obj_class::vertex_normal[vertex_count].y *= scale_value;
+        loader_obj_class::vertex_normal[vertex_count].z *= scale_value;
+    }
 };
 
 void loader_obj_class::process(void)
@@ -314,5 +331,25 @@ void loader_obj_class::process(void)
 
 void loader_obj_class::draw(void)
 {
+    for (int face_count = 0; face_count <=  loader_obj_class::number_of_vertex_normals; face_count++)
+    {
 
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
