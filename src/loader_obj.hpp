@@ -47,6 +47,10 @@ struct face_type
 class loader_obj_class
 {
     public:
+        std::string        model_name;
+        std::string        mtllib;
+        std::string        usemtl;
+        bool               smooth_shading;
         int                reference_ID;
         int                number_of_vertices;
         int                number_of_vertex_textures;
@@ -59,6 +63,7 @@ class loader_obj_class
         loader_obj_class(void);
        ~loader_obj_class(void);
         void               load(std::string file_name);
+        void               save(std::string file_name);
         void               scale(float scale_value);
         void               process(void);
         void               draw(void);

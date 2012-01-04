@@ -35,6 +35,7 @@
 #include "player.hpp"
 #include "spells.hpp"
 #include "items.hpp"
+#include "loader_obj.hpp"
 
 struct zoom_type
 {
@@ -56,6 +57,8 @@ struct light_type
 
 struct game_type
 {
+    loader_obj_class test;
+
     light_type       global_ambient;
     light_type       world_ambient;
     zoom_type        zoom;

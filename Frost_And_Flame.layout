@@ -56,7 +56,7 @@
 		<Cursor1 position="1037" topLine="26" />
 	</File>
 	<File name="src\core\map_2D.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="24118" topLine="417" />
+		<Cursor1 position="35985" topLine="672" />
 	</File>
 	<File name="src\core\map_2D.hpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor1 position="2302" topLine="0" />
@@ -121,11 +121,11 @@
 	<File name="src\equipment.hpp" open="0" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor1 position="1814" topLine="45" />
 	</File>
-	<File name="src\game.cpp" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="1192" topLine="19" />
+	<File name="src\game.cpp" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor1 position="14837" topLine="303" />
 	</File>
-	<File name="src\game.hpp" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="1950" topLine="53" />
+	<File name="src\game.hpp" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor1 position="1237" topLine="23" />
 	</File>
 	<File name="src\inventory.cpp" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor1 position="4836" topLine="93" />
@@ -152,7 +152,7 @@
 		<Cursor1 position="1173" topLine="28" />
 	</File>
 	<File name="src\loader_obj.cpp" open="1" top="1" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="20930" topLine="315" />
+		<Cursor1 position="23281" topLine="333" />
 	</File>
 	<File name="src\loader_obj.hpp" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor1 position="2035" topLine="31" />

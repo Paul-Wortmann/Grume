@@ -1,5 +1,8 @@
 ﻿v0.03 - (2012-01-31)
-LOC  -> 14877
+MAP  -> Implemented an OBJ file loader.
+UI   -> Added exp bar.
+UI   -> Improved item mouse overs.
+LOC  -> 15630
 
 v0.02 - (2011-12-31)
 

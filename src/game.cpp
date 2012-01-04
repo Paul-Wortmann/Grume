@@ -33,8 +33,9 @@
 
 int init_game(bool re_init)
 {
-    loader_obj_class test;
-    test.load("data/test.obj");
+    game.test.load("data/test.obj");
+    game.test.save("data/out.obj");
+    game.test.scale(0.05f);
     game.global_ambient.intensity_R = 8.0f;
     game.global_ambient.intensity_G = 8.0f;
     game.global_ambient.intensity_B = 8.0f;
@@ -333,6 +334,7 @@ int display_game(void)
 
     glLightModelfv(GL_LIGHT_MODEL_AMBIENT,global_ambient_light);
     game.UI.draw();
+    game.test.draw();
     glDisable(GL_DEPTH_TEST);
     glPopMatrix();
     return(1);
