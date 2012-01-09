@@ -51,7 +51,6 @@ int main(int argc, char *argv[])
     events_init();
     game.core.log.File_Set("Frost_And_Flame.log");
     game.core.log.File_Clear();
-
     game.core.log.File_Write("----------------------------------------------");
     game.core.log.File_Write(App_Name);
     game.core.log.File_Write("----------------------------------------------\n");
@@ -115,92 +114,95 @@ int main(int argc, char *argv[])
     game.core.LastTicks = game.core.timer.getticks();
     for(int quit = 0; !quit;)
     {
-        game.core.config.process(false);
-        proc_textures();
+        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         events_process();
         if (game.core.status_quit_active) quit = 1;
-        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+        if (!quit)
+        {
+            game.core.config.process(false);
+            proc_textures();
 //****************************************** MENU *****************************************
-        if ((game.core.menu_active) && (!game.core.game_active))
-        {
-            if (game.core.music_next_track)
+            if ((game.core.menu_active) && (!game.core.game_active))
             {
-                game.music.menu_00.play();
-                game.core.music_next_track = false;
+                if (game.core.music_next_track)
+                {
+                    game.music.menu_00.play();
+                    game.core.music_next_track = false;
+                }
+                diplay_menu ();
+                if (game.core.process_ready) game.core.background.process();
+                if (game.core.process_ready) process_menu();
             }
-            diplay_menu ();
-            if (game.core.process_ready) game.core.background.process();
-            if (game.core.process_ready) process_menu();
-        }
 //****************************************** GAME *****************************************
-        if (game.core.game_active)
-        {
-            if (game.core.process_ready) process_game();
-            display_game();
-        }
+            if (game.core.game_active)
+            {
+                if (game.core.process_ready) process_game();
+                display_game();
+            }
 //*********************************** Game paused *****************************************
-        if (game.core.game_paused)
-        {
-            if (game.core.music_next_track)
+            if (game.core.game_paused)
             {
-                game.core.music_next_track = false;
-                //game.music.level_pd.play();
-            }
-            game.core.menu_level = 11;
-            if (game.core.process_ready) game.core.background.process();
-            if (game.core.process_ready) process_menu();
-            display_game();
-            diplay_menu ();
-         }
+                if (game.core.music_next_track)
+                {
+                    game.core.music_next_track = false;
+                    //game.music.level_pd.play();
+                }
+                game.core.menu_level = 11;
+                if (game.core.process_ready) game.core.background.process();
+                if (game.core.process_ready) process_menu();
+                display_game();
+                diplay_menu ();
+             }
 //*********************************** PLAYER DEATH SCREEN *****************************************
-        if (game.core.pdie_active)
-        {
-            if (game.core.music_next_track)
+            if (game.core.pdie_active)
             {
-                game.core.music_next_track = false;
-                //game.music.level_pd.play();
+                if (game.core.music_next_track)
+                {
+                    game.core.music_next_track = false;
+                    //game.music.level_pd.play();
+                }
+                diplay_menu ();
+                if (game.core.process_ready) game.core.background.process();
+                if (game.core.process_ready) process_menu();
+                if (!game.core.pdie_active)  init_game(true);
             }
-            diplay_menu ();
-            if (game.core.process_ready) game.core.background.process();
-            if (game.core.process_ready) process_menu();
-            if (!game.core.pdie_active)  init_game(true);
-        }
 //******************************* PLAYER NEXT LEVEL SCREEN *************************************
-        if (game.core.nlvl_active)
-        {
-            if (game.core.music_next_track)
+            if (game.core.nlvl_active)
             {
-                game.core.music_next_track = false;
-                //game.music.level_nl.play();
+                if (game.core.music_next_track)
+                {
+                    game.core.music_next_track = false;
+                    //game.music.level_nl.play();
+                }
+                game.core.menu_level = 9;
+                if (game.core.process_ready) game.core.background.process();
+                if (game.core.process_ready) process_menu();
+                diplay_menu ();
             }
-            game.core.menu_level = 9;
-            if (game.core.process_ready) game.core.background.process();
-            if (game.core.process_ready) process_menu();
-            diplay_menu ();
-        }
 //******************************* OUTRO SCREEN *************************************************
-     if (game.core.outr_active)
-        {
-            if (game.core.music_next_track)
+         if (game.core.outr_active)
             {
-                game.core.music_next_track = false;
-                //game.music.outro_00.play();
+                if (game.core.music_next_track)
+                {
+                    game.core.music_next_track = false;
+                    //game.music.outro_00.play();
+                }
+                game.core.menu_level = 10;
+                if (game.core.process_ready) game.core.background.process();
+                if (game.core.process_ready) process_menu();
+                diplay_menu ();
             }
-            game.core.menu_level = 10;
-            if (game.core.process_ready) game.core.background.process();
-            if (game.core.process_ready) process_menu();
-            diplay_menu ();
-        }
 //---------------------------- code for end of main loop -----------------------
-        game.core.FPS = (game.core.timer.getticks() - game.core.LastTicks);
-        if ((game.core.timer.getticks() - game.core.LastTicks) >= 1000/90)
-        {
-            game.core.LastTicks = game.core.timer.getticks();
-            game.core.process_ready = true;
+            game.core.FPS = (game.core.timer.getticks() - game.core.LastTicks);
+            if ((game.core.timer.getticks() - game.core.LastTicks) >= 1000/90)
+            {
+                game.core.LastTicks = game.core.timer.getticks();
+                game.core.process_ready = true;
+            }
+            else game.core.process_ready = false;
+            game.texture.cursor.draw(false,game.core.io.mouse_x+0.012f,game.core.io.mouse_y-0.018f,0.001f,0.04f,0.04f,345.0f);
+            SDL_GL_SwapBuffers();
         }
-        else game.core.process_ready = false;
-        game.texture.cursor.draw(false,game.core.io.mouse_x+0.012f,game.core.io.mouse_y-0.018f,0.001f,0.04f,0.04f,345.0f);
-        SDL_GL_SwapBuffers();
     }
 //----------------------------------- Exit -------------------------------------
     game.core.log.File_Write("----------------------------------------------");

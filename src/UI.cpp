@@ -838,6 +838,7 @@ void UI_class::process(void)
 
 void UI_class::draw(void)
 {
+    glDisable(GL_DEPTH_TEST);
     for (int awl_count = MAX_ACTIVE_WINDOWS; awl_count >= 0; awl_count--)
     {
         switch (UI_class::active_window_list.window_ID[awl_count])

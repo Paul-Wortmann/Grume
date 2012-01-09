@@ -405,7 +405,6 @@ void loader_obj_class::save(std::string file_name)
         {
             script_file << "f ";
             if (loader_obj_class::face[face_count].vertex[0] > 0)
-
             {
                 script_file << loader_obj_class::face[face_count].vertex[0];
                 if ((loader_obj_class::number_of_vertex_textures > 0) && (loader_obj_class::number_of_vertex_normals == 0))
@@ -531,29 +530,49 @@ void loader_obj_class::process(void)
 
 void loader_obj_class::draw(void)
 {
-    for (int face_count = loader_obj_class::number_of_vertex_normals; face_count >=  0; face_count--) //invisible faces first
+    glPushMatrix();
+    glEnable(GL_DEPTH_TEST);
+    glBindTexture( GL_TEXTURE_2D, game.texture.item_stat_background.frame[0].data);
+    glLoadIdentity();
+    for (int face_count = 0; face_count < 1; face_count++)
     {
-        if (loader_obj_class::face[face_count].vertex[0] != 0) // check if face array holds data
+        //if (loader_obj_class::face[face_count].vertex[3] != 0) // face is a quadrangle
         {
-            if (loader_obj_class::face[face_count].vertex[3] != 0) // face is a quadrangle
-            {
-                glBegin(GL_QUADS);
-                glVertex3f(loader_obj_class::vertex[loader_obj_class::face[face_count].vertex[0]].x,loader_obj_class::vertex[loader_obj_class::face[face_count].vertex[0]].y,loader_obj_class::vertex[loader_obj_class::face[face_count].vertex[0]].z);
-                glVertex3f(loader_obj_class::vertex[loader_obj_class::face[face_count].vertex[1]].x,loader_obj_class::vertex[loader_obj_class::face[face_count].vertex[1]].y,loader_obj_class::vertex[loader_obj_class::face[face_count].vertex[1]].z);
-                glVertex3f(loader_obj_class::vertex[loader_obj_class::face[face_count].vertex[2]].x,loader_obj_class::vertex[loader_obj_class::face[face_count].vertex[2]].y,loader_obj_class::vertex[loader_obj_class::face[face_count].vertex[2]].z);
-                glVertex3f(loader_obj_class::vertex[loader_obj_class::face[face_count].vertex[3]].x,loader_obj_class::vertex[loader_obj_class::face[face_count].vertex[3]].y,loader_obj_class::vertex[loader_obj_class::face[face_count].vertex[3]].z);
-                glEnd();
-            }
-            else // face is a triangle
-            {
-                glBegin(GL_TRIANGLES);
-                glVertex3f(loader_obj_class::vertex[loader_obj_class::face[face_count].vertex[0]].x,loader_obj_class::vertex[loader_obj_class::face[face_count].vertex[0]].y,loader_obj_class::vertex[loader_obj_class::face[face_count].vertex[0]].z);
-                glVertex3f(loader_obj_class::vertex[loader_obj_class::face[face_count].vertex[1]].x,loader_obj_class::vertex[loader_obj_class::face[face_count].vertex[1]].y,loader_obj_class::vertex[loader_obj_class::face[face_count].vertex[1]].z);
-                glVertex3f(loader_obj_class::vertex[loader_obj_class::face[face_count].vertex[2]].x,loader_obj_class::vertex[loader_obj_class::face[face_count].vertex[2]].y,loader_obj_class::vertex[loader_obj_class::face[face_count].vertex[2]].z);
-                glEnd();
-            }
+            /*
+            glBegin(GL_TRIANGLES);
+            glNormal3f( 0.0f, 0.0f, 1.0f);
+            glColor3f(1.0f,0.0f,0.0f);glVertex3f(loader_obj_class::vertex[loader_obj_class::face[face_count].vertex[0]].x,loader_obj_class::vertex[loader_obj_class::face[face_count].vertex[0]].y,loader_obj_class::vertex[loader_obj_class::face[face_count].vertex[0]].z);
+            glColor3f(0.0f,1.0f,0.0f);glVertex3f(loader_obj_class::vertex[loader_obj_class::face[face_count].vertex[1]].x,loader_obj_class::vertex[loader_obj_class::face[face_count].vertex[1]].y,loader_obj_class::vertex[loader_obj_class::face[face_count].vertex[1]].z);
+            glColor3f(0.0f,0.0f,1.0f);glVertex3f(loader_obj_class::vertex[loader_obj_class::face[face_count].vertex[2]].x,loader_obj_class::vertex[loader_obj_class::face[face_count].vertex[2]].y,loader_obj_class::vertex[loader_obj_class::face[face_count].vertex[2]].z);
+            glEnd();
+            glBegin(GL_TRIANGLES);
+            glNormal3f( 0.0f, 0.0f, 1.0f);
+            glColor3f(1.0f,0.0f,0.0f);glVertex3f(loader_obj_class::vertex[loader_obj_class::face[face_count].vertex[0]].x,loader_obj_class::vertex[loader_obj_class::face[face_count].vertex[0]].y,loader_obj_class::vertex[loader_obj_class::face[face_count].vertex[0]].z);
+            glColor3f(0.0f,1.0f,0.0f);glVertex3f(loader_obj_class::vertex[loader_obj_class::face[face_count].vertex[2]].x,loader_obj_class::vertex[loader_obj_class::face[face_count].vertex[2]].y,loader_obj_class::vertex[loader_obj_class::face[face_count].vertex[2]].z);
+            glColor3f(0.0f,0.0f,1.0f);glVertex3f(loader_obj_class::vertex[loader_obj_class::face[face_count].vertex[3]].x,loader_obj_class::vertex[loader_obj_class::face[face_count].vertex[3]].y,loader_obj_class::vertex[loader_obj_class::face[face_count].vertex[3]].z);
+            glEnd();
+            */
+            glBegin(GL_QUADS);
+            glNormal3f( 0.0f, 0.0f, 1.0f);
+            glVertex3f(loader_obj_class::vertex[loader_obj_class::face[face_count].vertex[0]].x,loader_obj_class::vertex[loader_obj_class::face[face_count].vertex[0]].y,loader_obj_class::vertex[loader_obj_class::face[face_count].vertex[0]].z);
+            glVertex3f(loader_obj_class::vertex[loader_obj_class::face[face_count].vertex[1]].x,loader_obj_class::vertex[loader_obj_class::face[face_count].vertex[1]].y,loader_obj_class::vertex[loader_obj_class::face[face_count].vertex[1]].z);
+            glVertex3f(loader_obj_class::vertex[loader_obj_class::face[face_count].vertex[2]].x,loader_obj_class::vertex[loader_obj_class::face[face_count].vertex[2]].y,loader_obj_class::vertex[loader_obj_class::face[face_count].vertex[2]].z);
+            glVertex3f(loader_obj_class::vertex[loader_obj_class::face[face_count].vertex[3]].x,loader_obj_class::vertex[loader_obj_class::face[face_count].vertex[3]].y,loader_obj_class::vertex[loader_obj_class::face[face_count].vertex[3]].z);
+            glEnd();
         }
+        /*
+        else // face is a triangle
+        {
+            glBegin(GL_TRIANGLES);
+            glNormal3f( 0.0f, 0.0f, 1.0f);
+            glColor3f(1.0f,0.0f,0.0f);glVertex3f(loader_obj_class::vertex[loader_obj_class::face[face_count].vertex[0]].x,loader_obj_class::vertex[loader_obj_class::face[face_count].vertex[0]].y,loader_obj_class::vertex[loader_obj_class::face[face_count].vertex[0]].z);
+            glColor3f(0.0f,1.0f,0.0f);glVertex3f(loader_obj_class::vertex[loader_obj_class::face[face_count].vertex[1]].x,loader_obj_class::vertex[loader_obj_class::face[face_count].vertex[1]].y,loader_obj_class::vertex[loader_obj_class::face[face_count].vertex[1]].z);
+            glColor3f(0.0f,0.0f,1.0f);glVertex3f(loader_obj_class::vertex[loader_obj_class::face[face_count].vertex[2]].x,loader_obj_class::vertex[loader_obj_class::face[face_count].vertex[2]].y,loader_obj_class::vertex[loader_obj_class::face[face_count].vertex[2]].z);
+            glEnd();
+        }
+        */
     }
+    glPopMatrix();
 }
 
 

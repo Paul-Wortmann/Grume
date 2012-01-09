@@ -70,6 +70,7 @@ void map_2D_class::draw(void)
     float tile_offset_h = 0.0f;
     float tile_offset_x = 0.0f;
     float tile_offset_y = 0.0f;
+    glDisable(GL_DEPTH_TEST);
 // ----------------------------- Draw Tile Layer ------------------------------------------------------------------
     for (int tile_count = 0; tile_count < map_2D_class::number_of_tiles; tile_count++)
     {

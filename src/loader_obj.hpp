@@ -37,6 +37,20 @@ struct vertex_type
     float z;
 };
 
+struct vertex_texture_type
+{
+    float u;
+    float v;
+    float w;
+};
+
+struct vertex_normal_type
+{
+    float i;
+    float j;
+    float k;
+};
+
 struct face_type
 {
     int vertex[4];
