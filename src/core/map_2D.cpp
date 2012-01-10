@@ -28,7 +28,7 @@
 #include <stdlib.h>
 #include <string>
 #include "map_2D.hpp"
-#include "..\game.hpp"
+#include "../game.hpp"
 #include "textures.hpp"
 
 extern game_type         game;
