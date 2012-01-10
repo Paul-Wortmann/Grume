@@ -193,6 +193,7 @@ void action_slot_class::process(void)
     bool discard_icon   = false;
     int  swap_button    = 0;
     int  temp_button    = 0;
+    int  temp_item      = 0;
     if (game.core.physics.point_in_quadrangle(action_slot_class::pos_x,action_slot_class::width,action_slot_class::pos_y,action_slot_class::height,game.core.io.mouse_x,game.core.io.mouse_y)) action_slot_class::mouse_over = true;
     else action_slot_class::mouse_over = false;
     if (action_slot_class::mouse_over)
@@ -220,8 +221,13 @@ void action_slot_class::process(void)
                         temp_button = action_slot_class::button_type;
                         action_slot_class::button_type = game.UI.action_bar.action_slot[action_slot_count].button_type;
                         game.UI.action_bar.action_slot[action_slot_count].button_type = temp_button;
+                        temp_item = action_slot_class::current_item;
+                        action_slot_class::current_item = game.UI.action_bar.action_slot[action_slot_count].current_item;
+                        game.UI.action_bar.action_slot[action_slot_count].current_item = temp_item;
+
                         discard_icon = false;
                     }
+                    if (game.UI.action_bar.action_slot[action_slot_count].button_type == action_slot_class::button_type) discard_icon = false;
                 }
                 if ((discard_icon) && (game.core.physics.point_in_quadrangle(game.UI.action_bar.pos_x,game.UI.action_bar.width,game.UI.action_bar.pos_y,game.UI.action_bar.height,game.core.io.mouse_x,game.core.io.mouse_y))) discard_icon = false;
                 action_slot_class::drag         = false;

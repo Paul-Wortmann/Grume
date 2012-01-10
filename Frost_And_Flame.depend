@@ -410,7 +410,7 @@
 
 1321102096 source:c:\_git_\frost_and_flame\src\icon.rc
 
-1326097994 source:c:\_git_\frost_and_flame\src\ui.cpp
+1326214267 source:c:\_git_\frost_and_flame\src\ui.cpp
 	"UI.hpp"
 	"game.hpp"
 	"misc.hpp"
@@ -783,14 +783,14 @@
 1325563472 c:\_git_\frost_and_flame\src\core\map_2d.hpp
 	"textures.hpp"
 
-1326097950 source:c:\_git_\frost_and_flame\src\core\map_2d.cpp
+1326195899 source:c:\_git_\frost_and_flame\src\core\map_2d.cpp
 	<iostream>
 	<fstream>
 	<stdio.h>
 	<stdlib.h>
 	<string>
 	"map_2D.hpp"
-	"..\game.hpp"
+	"../game.hpp"
 	"textures.hpp"
 
 1325590567 source:c:\_git_\frost_and_flame\src\map_3d.cpp
