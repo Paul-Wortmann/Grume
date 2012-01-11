@@ -448,6 +448,7 @@ bool load_resources(void);
 bool load_maps_2D(void);
 bool load_maps_3D(void);
 bool load_sounds(void);
+bool play_sound(int sound_number);
 bool load_music(void);
 bool load_textures(void);
 bool proc_textures(void);

@@ -35,7 +35,14 @@ item_class::item_class(void)
     item_class::name                     = "None";
     item_class::active                   = false;
     item_class::image_ref                = 0;
-    item_class::sound_ref                = 0;
+    for (int item_sound_use_count = 0; item_sound_use_count < item_class::sound.quantity_use; item_sound_use_count++)
+    {
+        item_class::sound.use[item_sound_use_count] = 0;
+    }
+    for (int item_sound_relocate_count = 0; item_sound_relocate_count < item_class::sound.quantity_relocate; item_sound_relocate_count++)
+    {
+        item_class::sound.relocate[item_sound_relocate_count] = 0;
+    }
     item_class::ID                       = 100;
     item_class::type                     = 0;
     item_class::stack_number             = 1;
@@ -1380,6 +1387,8 @@ void  generate_random_item(int item_ID, int level, int quality, int type)
     }
     game.item[item_ID].name = temp_name_prefix + " " + temp_name_type + " of " + temp_name_suffix;
     // add name padding...
+
+    init_item_sounds(item_ID); // add sounds to item
 };
 
 void init_items(void)
@@ -1394,6 +1403,7 @@ void init_items(void)
     game.item[101].type              = SPELL_BOOK;
     game.item[101].add_spell         = 1;
     game.item[101].spell_type        = 2;
+    init_item_sounds(101);
     game.item[102].name              = "Book of Stalagmite";
     game.item[102].image_ref         = game.texture.book_19.ref_number;
     game.item[102].stack_number      = 1;
@@ -1402,6 +1412,7 @@ void init_items(void)
     game.item[102].type              = SPELL_BOOK;
     game.item[102].add_spell         = 1;
     game.item[102].spell_type        = 1;
+    init_item_sounds(102);
 
 //-------------------------------- Potions / gems / runes -----------------------------------------------------------
     game.item[201].name              = "Minuscule Health Potion";
@@ -1411,6 +1422,7 @@ void init_items(void)
     game.item[201].ID                = 201;
     game.item[201].type              = HEALTH_POTION;
     game.item[201].add_health        = 5;
+    init_item_sounds(201);
     game.item[202].name              = "Tiny Health Potion";
     game.item[202].image_ref         = game.texture.potion_02.ref_number;
     game.item[202].stack_number      = 1;
@@ -1418,6 +1430,7 @@ void init_items(void)
     game.item[202].ID                = 202;
     game.item[202].type              = HEALTH_POTION;
     game.item[202].add_health        = 10;
+    init_item_sounds(202);
     game.item[203].name              = "Small Health Potion";
     game.item[203].image_ref         = game.texture.potion_03.ref_number;
     game.item[203].stack_number      = 1;
@@ -1425,6 +1438,7 @@ void init_items(void)
     game.item[203].ID                = 203;
     game.item[203].type              = HEALTH_POTION;
     game.item[203].add_health        = 20;
+    init_item_sounds(203);
     game.item[204].name              = "Medium Health Potion";
     game.item[204].image_ref         = game.texture.potion_04.ref_number;
     game.item[204].stack_number      = 1;
@@ -1432,6 +1446,7 @@ void init_items(void)
     game.item[204].ID                = 204;
     game.item[204].type              = HEALTH_POTION;
     game.item[204].add_health        = 40;
+    init_item_sounds(204);
     game.item[205].name              = "Large Health Potion";
     game.item[205].image_ref         = game.texture.potion_05.ref_number;
     game.item[205].stack_number      = 1;
@@ -1439,6 +1454,7 @@ void init_items(void)
     game.item[205].ID                = 205;
     game.item[205].type              = HEALTH_POTION;
     game.item[205].add_health        = 80;
+    init_item_sounds(205);
     game.item[206].name              = "Huge Health Potion";
     game.item[206].image_ref         = game.texture.potion_06.ref_number;
     game.item[206].stack_number      = 1;
@@ -1446,6 +1462,7 @@ void init_items(void)
     game.item[206].ID                = 206;
     game.item[206].type              = HEALTH_POTION;
     game.item[206].add_health        = 160;
+    init_item_sounds(206);
     game.item[207].name              = "Gigantic Health Potion";
     game.item[207].image_ref         = game.texture.potion_07.ref_number;
     game.item[207].stack_number      = 1;
@@ -1453,6 +1470,7 @@ void init_items(void)
     game.item[207].ID                = 207;
     game.item[207].type              = HEALTH_POTION;
     game.item[207].add_health        = 320;
+    init_item_sounds(207);
 
     game.item[208].name              = "Minuscule Mana Potion";
     game.item[208].image_ref         = game.texture.potion_08.ref_number;
@@ -1461,6 +1479,7 @@ void init_items(void)
     game.item[208].ID                = 208;
     game.item[208].type              = MANA_POTION;
     game.item[208].add_mana          = 5;
+    init_item_sounds(208);
     game.item[209].name              = "Tiny Mana Potion";
     game.item[209].image_ref         = game.texture.potion_09.ref_number;
     game.item[209].stack_number      = 1;
@@ -1468,6 +1487,7 @@ void init_items(void)
     game.item[209].ID                = 209;
     game.item[209].type              = MANA_POTION;
     game.item[209].add_mana          = 10;
+    init_item_sounds(209);
     game.item[210].name              = "Small Mana Potion";
     game.item[210].image_ref         = game.texture.potion_10.ref_number;
     game.item[210].stack_number      = 1;
@@ -1475,6 +1495,7 @@ void init_items(void)
     game.item[210].ID                = 210;
     game.item[210].type              = MANA_POTION;
     game.item[210].add_mana          = 20;
+    init_item_sounds(210);
     game.item[211].name              = "Medium Mana Potion";
     game.item[211].image_ref         = game.texture.potion_11.ref_number;
     game.item[211].stack_number      = 1;
@@ -1482,6 +1503,7 @@ void init_items(void)
     game.item[211].ID                = 211;
     game.item[211].type              = MANA_POTION;
     game.item[211].add_mana          = 40;
+    init_item_sounds(211);
     game.item[212].name              = "Large Mana Potion";
     game.item[212].image_ref         = game.texture.potion_12.ref_number;
     game.item[212].stack_number      = 1;
@@ -1489,6 +1511,7 @@ void init_items(void)
     game.item[212].ID                = 212;
     game.item[212].type              = MANA_POTION;
     game.item[212].add_mana          = 80;
+    init_item_sounds(212);
     game.item[213].name              = "Huge Mana Potion";
     game.item[213].image_ref         = game.texture.potion_13.ref_number;
     game.item[213].stack_number      = 1;
@@ -1496,6 +1519,7 @@ void init_items(void)
     game.item[213].ID                = 213;
     game.item[213].type              = MANA_POTION;
     game.item[213].add_mana          = 160;
+    init_item_sounds(213);
     game.item[214].name              = "Gigantic Mana Potion";
     game.item[214].image_ref         = game.texture.potion_14.ref_number;
     game.item[214].stack_number      = 1;
@@ -1503,6 +1527,7 @@ void init_items(void)
     game.item[214].ID                = 214;
     game.item[214].type              = MANA_POTION;
     game.item[214].add_mana          = 320;
+    init_item_sounds(214);
 
 //-------------------------------- Boots / gloves / belts -----------------------------------------------------------
     game.item[301].name              = "Boots of Haste";
@@ -1512,6 +1537,7 @@ void init_items(void)
     game.item[301].ID                = 301;
     game.item[301].type              = BOOTS;
     game.item[301].armour            = 4;
+    init_item_sounds(301);
     game.item[302].name              = "Boots of Flame walk";
     game.item[302].image_ref         = game.texture.boots_06.ref_number;
     game.item[302].stack_number      = 1;
@@ -1519,6 +1545,7 @@ void init_items(void)
     game.item[302].ID                = 302;
     game.item[302].type              = BOOTS;
     game.item[302].armour            = 2;
+    init_item_sounds(302);
 
     game.item[303].name              = "Belt of Energy";
     game.item[303].image_ref         = game.texture.belt_00.ref_number;
@@ -1528,6 +1555,7 @@ void init_items(void)
     game.item[303].type              = BELT;
     game.item[303].armour            = 2;
     game.item[303].add_max_mana      = 32;
+    init_item_sounds(303);
 
 //-------------------------------- Armour / helms --------------------------------------------------------------------
     game.item[401].name              = "Plate Armour";
@@ -1537,6 +1565,7 @@ void init_items(void)
     game.item[401].ID                = 401;
     game.item[401].type              = ARMOUR;
     game.item[401].armour            = 10;
+    init_item_sounds(401);
 
     game.item[402].name              = "Strong Helm";
     game.item[402].image_ref         = game.texture.helm_00.ref_number;
@@ -1545,6 +1574,7 @@ void init_items(void)
     game.item[402].ID                = 402;
     game.item[402].type              = HELM;
     game.item[402].armour            = 34;
+    init_item_sounds(402);
     game.item[403].name              = "Hard Helm";
     game.item[403].image_ref         = game.texture.helm_01.ref_number;
     game.item[403].stack_number      = 1;
@@ -1552,6 +1582,7 @@ void init_items(void)
     game.item[403].ID                = 403;
     game.item[403].type              = HELM;
     game.item[403].armour            = 65;
+    init_item_sounds(403);
 
 //-------------------------------- Bows / slings -------------------------------------------------------------------
     game.item[501].name              = "Heroic Bow";
@@ -1562,6 +1593,7 @@ void init_items(void)
     game.item[501].type              = BOW;
     game.item[501].min_damage        = 6;
     game.item[501].max_damage        = 12;
+    init_item_sounds(501);
 
     game.item[502].name              = "Heroic Sling";
     game.item[502].image_ref         = game.texture.sling_00.ref_number;
@@ -1571,6 +1603,7 @@ void init_items(void)
     game.item[502].type              = SLING;
     game.item[502].min_damage        = 6;
     game.item[502].max_damage        = 12;
+    init_item_sounds(502);
 
 //-------------------------------- Daggers / Swords -------------------------------------------------------------------
     game.item[601].name              = "Frost Dagger";
@@ -1581,6 +1614,7 @@ void init_items(void)
     game.item[601].type              = DAGGER;
     game.item[601].min_damage        = 6;
     game.item[601].max_damage        = 12;
+    init_item_sounds(601);
     game.item[602].name              = "Magic Sword";
     game.item[602].image_ref         = game.texture.sword_00.ref_number;
     game.item[602].stack_number      = 1;
@@ -1589,6 +1623,7 @@ void init_items(void)
     game.item[602].type              = SWORD;
     game.item[602].min_damage        = 12;
     game.item[602].max_damage        = 24;
+    init_item_sounds(602);
 
 //-------------------------------- Rings / Amulets ------------------------------------------------------------------
     game.item[701].name              = "Ice Ring";
@@ -1599,6 +1634,7 @@ void init_items(void)
     game.item[701].type              = RING;
     game.item[701].min_damage        = 6;
     game.item[701].max_damage        = 12;
+    init_item_sounds(701);
     game.item[702].name              = "Frost Ring";
     game.item[702].image_ref         = game.texture.ring_14.ref_number;
     game.item[702].stack_number      = 1;
@@ -1607,6 +1643,7 @@ void init_items(void)
     game.item[702].type              = RING;
     game.item[702].min_damage        = 6;
     game.item[702].max_damage        = 12;
+    init_item_sounds(702);
     game.item[703].name              = "Fire Ring";
     game.item[703].image_ref         = game.texture.ring_12.ref_number;
     game.item[703].stack_number      = 1;
@@ -1615,6 +1652,7 @@ void init_items(void)
     game.item[703].type              = RING;
     game.item[703].min_damage        = 6;
     game.item[703].max_damage        = 12;
+    init_item_sounds(703);
 
     game.item[704].name              = "Silver Amulet";
     game.item[704].image_ref         = game.texture.amulet_00.ref_number;
@@ -1624,6 +1662,7 @@ void init_items(void)
     game.item[704].type              = AMULET;
     game.item[704].min_damage        = 6;
     game.item[704].max_damage        = 12;
+    init_item_sounds(704);
     game.item[705].name              = "Ruby Amulet";
     game.item[705].image_ref         = game.texture.amulet_01.ref_number;
     game.item[705].stack_number      = 1;
@@ -1632,6 +1671,7 @@ void init_items(void)
     game.item[705].type              = AMULET;
     game.item[705].min_damage        = 6;
     game.item[705].max_damage        = 12;
+    init_item_sounds(705);
 
 //-------------------------------- Shields ----------------------------------------------------------------------------
     game.item[801].name              = "Golden Shield";
@@ -1641,6 +1681,7 @@ void init_items(void)
     game.item[801].ID                = 801;
     game.item[801].type              = SHIELD;
     game.item[801].armour            = 16;
+    init_item_sounds(801);
     game.item[802].name              = "Silver Shield";
     game.item[802].image_ref         = game.texture.shield_01.ref_number;
     game.item[802].stack_number      = 1;
@@ -1648,6 +1689,7 @@ void init_items(void)
     game.item[802].ID                = 802;
     game.item[802].type              = SHIELD;
     game.item[802].armour            = 12;
+    init_item_sounds(802);
 
 //-------------------------------- Wands ------------------------------------------------------------------------------
     game.item[901].name              = "Lightning Wand";
@@ -1658,6 +1700,7 @@ void init_items(void)
     game.item[901].type              = WAND;
     game.item[901].min_damage        = 6;
     game.item[901].max_damage        = 12;
+    init_item_sounds(901);
 
     game.item[902].name              = "Vamperic Wand";
     game.item[902].image_ref         = game.texture.wand_14.ref_number;
@@ -1669,6 +1712,7 @@ void init_items(void)
     game.item[902].max_damage        = 12;
     game.item[902].sub_health_regeneration = 12;
     game.item[902].sub_mana_regeneration   = 12;
+    init_item_sounds(902);
 
 //---------------------------------------------------------------------------------------------------------------------
 //----------------------------------------- Generate some random items ------------------------------------------------
@@ -1689,6 +1733,95 @@ void init_items(void)
 
 };
 
+void  init_item_sounds(int item_ID)
+{
+    int  sound_count = 0;
+    for (int item_sound_use_count = 0; item_sound_use_count < game.item[item_ID].sound.quantity_use; item_sound_use_count++)
+    {
+        game.item[item_ID].sound.use[item_sound_use_count] = 0;
+    }
+    for (int item_sound_relocate_count = 0; item_sound_relocate_count < game.item[item_ID].sound.quantity_relocate; item_sound_relocate_count++)
+    {
+        game.item[item_ID].sound.relocate[item_sound_relocate_count] = 0;
+    }
+    switch (game.item[item_ID].type)
+    {
+        case EMPTY:
+        break;
+        case SPELL:
+        break;
+        case HEALTH_POTION:
+            sound_count = 0;
+            game.item[item_ID].sound.relocate[sound_count] = game.sound.bottle_01.ref_number;sound_count++;
+            game.item[item_ID].sound.quantity_relocate = sound_count;
+            sound_count = 0;
+            game.item[item_ID].sound.use[sound_count] = game.sound.bubble_01.ref_number;sound_count++;
+            game.item[item_ID].sound.use[sound_count] = game.sound.bubble_02.ref_number;sound_count++;
+            game.item[item_ID].sound.use[sound_count] = game.sound.bubble_03.ref_number;sound_count++;
+            game.item[item_ID].sound.quantity_use = sound_count;
+        break;
+        case MANA_POTION:
+            sound_count = 0;
+            game.item[item_ID].sound.relocate[sound_count] = game.sound.bottle_01.ref_number;sound_count++;
+            game.item[item_ID].sound.quantity_relocate = sound_count;
+            sound_count = 0;
+            game.item[item_ID].sound.use[sound_count] = game.sound.bubble_01.ref_number;sound_count++;
+            game.item[item_ID].sound.use[sound_count] = game.sound.bubble_02.ref_number;sound_count++;
+            game.item[item_ID].sound.use[sound_count] = game.sound.bubble_03.ref_number;sound_count++;
+            game.item[item_ID].sound.quantity_use = sound_count;
+        break;
+        case SPELL_BOOK:
+            sound_count = 0;
+            game.item[item_ID].sound.relocate[sound_count] = game.sound.book_00.ref_number;sound_count++;
+            game.item[item_ID].sound.quantity_relocate = sound_count;
+            sound_count = 0;
+            game.item[item_ID].sound.use[sound_count] = game.sound.book_00.ref_number;sound_count++;
+            game.item[item_ID].sound.use[sound_count] = game.sound.book_01.ref_number;sound_count++;
+            game.item[item_ID].sound.use[sound_count] = game.sound.book_02.ref_number;sound_count++;
+            game.item[item_ID].sound.quantity_use = sound_count;
+        break;
+        case SPELL_SCROLL:
+            sound_count = 0;
+            game.item[item_ID].sound.relocate[sound_count] = game.sound.book_01.ref_number;sound_count++;
+            game.item[item_ID].sound.quantity_relocate = sound_count;
+            sound_count = 0;
+            game.item[item_ID].sound.use[sound_count] = game.sound.book_00.ref_number;sound_count++;
+            game.item[item_ID].sound.use[sound_count] = game.sound.book_01.ref_number;sound_count++;
+            game.item[item_ID].sound.use[sound_count] = game.sound.book_02.ref_number;sound_count++;
+            game.item[item_ID].sound.quantity_use = sound_count;
+        break;
+        case HELM:
+        break;
+        case BOOTS:
+        break;
+        case ARMOUR:
+        break;
+        case GLOVES:
+        break;
+        case RING:
+        break;
+        case AMULET:
+        break;
+        case SHIELD:
+        break;
+        case WAND:
+        break;
+        case SWORD:
+        break;
+        case DAGGER:
+        break;
+        case BELT:
+        break;
+        case BOW:
+        break;
+        case SLING:
+        break;
+        case WEAPON:
+        break;
+        default:
+        break;
+    }
+};
 
 
 

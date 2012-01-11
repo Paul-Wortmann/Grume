@@ -188,6 +188,7 @@ void player_stats_class::draw_tooltip(void)
 
 void action_slot_class::process(void)
 {
+    int temp_ID  = 0;
     int temp_int = 0;
     if (action_slot_class::current_item != game.UI.inventory.inventory_slot[action_slot_class::button_type-1000].button_type) action_slot_class::button_type = 0;
     bool discard_icon   = false;
@@ -218,13 +219,28 @@ void action_slot_class::process(void)
                 {
                     if ((game.UI.action_bar.action_slot[action_slot_count].mouse_over) && (game.UI.action_bar.action_slot[action_slot_count].button_type != action_slot_class::button_type))
                     {
+                        temp_ID = game.UI.inventory.inventory_slot[action_slot_class::button_type-1000].button_type;
                         temp_button = action_slot_class::button_type;
                         action_slot_class::button_type = game.UI.action_bar.action_slot[action_slot_count].button_type;
                         game.UI.action_bar.action_slot[action_slot_count].button_type = temp_button;
                         temp_item = action_slot_class::current_item;
                         action_slot_class::current_item = game.UI.action_bar.action_slot[action_slot_count].current_item;
                         game.UI.action_bar.action_slot[action_slot_count].current_item = temp_item;
+                        if (temp_button < 1000) // move spell
+                        {
 
+                        }
+                        else if (temp_button > 1000) // move item
+                        {
+                            if (game.item[temp_ID].sound.quantity_relocate > 0)
+                            {
+                                if (game.item[temp_ID].sound.quantity_relocate == 1) temp_int = 0;
+                                else temp_int = random(game.item[temp_ID].sound.quantity_relocate-1);
+                                if (temp_int > game.item[temp_ID].sound.quantity_relocate-1) temp_int = game.item[temp_ID].sound.quantity_relocate-1;
+                                if (temp_int < 0) temp_int = 0;
+                                play_sound(game.item[temp_ID].sound.relocate[temp_int]);
+                            }
+                        }
                         discard_icon = false;
                     }
                     if (game.UI.action_bar.action_slot[action_slot_count].button_type == action_slot_class::button_type) discard_icon = false;
@@ -256,38 +272,45 @@ void action_slot_class::process(void)
             {
 
             }
-            else if (action_slot_class::button_type > 1000) // use potion
+            else if (action_slot_class::button_type > 1000) // use item
             {
-                int temp_ID = game.UI.inventory.inventory_slot[action_slot_class::button_type-1000].button_type;
+                bool play_use_sound = true;
+                temp_ID = game.UI.inventory.inventory_slot[action_slot_class::button_type-1000].button_type;
                 switch (game.item[temp_ID].type)
                 {
                     case HEALTH_POTION:
-                    if (game.player.health.current < game.player.health.maximum)
-                    {
-                        game.player.health.current += game.item[temp_ID].add_health;
-                        game.UI.inventory.inventory_slot[action_slot_class::button_type-1000].quantity--;
-                        if(game.UI.inventory.inventory_slot[action_slot_class::button_type-1000].quantity <= 0) game.UI.inventory.inventory_slot[action_slot_class::button_type-1000].button_type = 0;
-                        temp_int = random(3);
-                        if (temp_int <= 1) game.sound.bubble_01.play();
-                        if (temp_int == 2) game.sound.bubble_02.play();
-                        if (temp_int >= 3) game.sound.bubble_03.play();
-                    }
+                        if (game.player.health.current < game.player.health.maximum)
+                        {
+                            game.player.health.current += game.item[temp_ID].add_health;
+                            game.UI.inventory.inventory_slot[action_slot_class::button_type-1000].quantity--;
+                            if(game.UI.inventory.inventory_slot[action_slot_class::button_type-1000].quantity <= 0) game.UI.inventory.inventory_slot[action_slot_class::button_type-1000].button_type = 0;
+                        }
+                        else play_use_sound = false;
                     break;
                     case MANA_POTION:
-                    if (game.player.mana.current < game.player.mana.maximum)
-                    {
-                        game.player.mana.current += game.item[temp_ID].add_mana;
-                        game.UI.inventory.inventory_slot[action_slot_class::button_type-1000].quantity--;
-                        if(game.UI.inventory.inventory_slot[action_slot_class::button_type-1000].quantity <= 0)game.UI.inventory.inventory_slot[action_slot_class::button_type-1000].button_type = 0;
-                        temp_int = random(3);
-                        if (temp_int <= 1) game.sound.bubble_01.play();
-                        if (temp_int == 2) game.sound.bubble_02.play();
-                        if (temp_int >= 3) game.sound.bubble_03.play();
-                    }
+                        if (game.player.mana.current < game.player.mana.maximum)
+                        {
+                            game.player.mana.current += game.item[temp_ID].add_mana;
+                            game.UI.inventory.inventory_slot[action_slot_class::button_type-1000].quantity--;
+                            if(game.UI.inventory.inventory_slot[action_slot_class::button_type-1000].quantity <= 0)game.UI.inventory.inventory_slot[action_slot_class::button_type-1000].button_type = 0;
+                        }
+                        else play_use_sound = false;
                     break;
                     default:
                     break;
                 }
+            if (play_use_sound)
+            {
+                temp_ID = game.UI.inventory.inventory_slot[action_slot_class::button_type-1000].button_type;
+                if (game.item[temp_ID].sound.quantity_use > 0)
+                {
+                    if (game.item[temp_ID].sound.quantity_use == 1) temp_int = 0;
+                    else temp_int = random(game.item[temp_ID].sound.quantity_use-1);
+                    if (temp_int > game.item[temp_ID].sound.quantity_use-1) temp_int = game.item[temp_ID].sound.quantity_use-1;
+                    if (temp_int < 0) temp_int = 0;
+                    play_sound(game.item[temp_ID].sound.use[temp_int]);
+                }
+            }
             }
         }
     }

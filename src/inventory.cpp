@@ -96,7 +96,7 @@ inventory_slot_class::~inventory_slot_class(void)
 
 void inventory_slot_class::process(void)
 {
-    int  temp_int = 0;
+    int  temp_int    = 0;
     int  temp_button = 0;
     int  temp_ID = inventory_slot_class::button_type;
     int  active_inventory_slot = 0;
@@ -168,25 +168,15 @@ void inventory_slot_class::process(void)
                             inventory_slot_class::max_quantity = game.UI.inventory.inventory_slot[inventory_slot_count].max_quantity;
                             game.UI.inventory.inventory_slot[inventory_slot_count].max_quantity = temp_button;
                         }
-                        if (game.item[inventory_slot_class::button_type].type == HEALTH_POTION) game.sound.bottle_01.play();
-                        if (game.item[inventory_slot_class::button_type].type == MANA_POTION)   game.sound.bottle_01.play();
-                        if (game.item[inventory_slot_class::button_type].type == SPELL_BOOK)    game.sound.book_00.play();
-                        if (game.item[inventory_slot_class::button_type].type == SPELL_SCROLL)  game.sound.book_01.play();
-/*
-                        if (game.item[inventory_slot_class::button_type].type == HELM)           game.sound.bottle_01.play();
-                        if (game.item[inventory_slot_class::button_type].type == BOOTS)          game.sound.bottle_01.play();
-                        if (game.item[inventory_slot_class::button_type].type == ARMOUR)         game.sound.bottle_01.play();
-                        if (game.item[inventory_slot_class::button_type].type == GLOVES)         game.sound.bottle_01.play();
-                        if (game.item[inventory_slot_class::button_type].type == RING)           game.sound.bottle_01.play();
-                        if (game.item[inventory_slot_class::button_type].type == AMULET)         game.sound.bottle_01.play();
-                        if (game.item[inventory_slot_class::button_type].type == SHIELD)         game.sound.bottle_01.play();
-                        if (game.item[inventory_slot_class::button_type].type == WAND)           game.sound.bottle_01.play();
-                        if (game.item[inventory_slot_class::button_type].type == SWORD)          game.sound.bottle_01.play();
-                        if (game.item[inventory_slot_class::button_type].type == DAGGER)         game.sound.bottle_01.play();
-                        if (game.item[inventory_slot_class::button_type].type == BELT)           game.sound.bottle_01.play();
-                        if (game.item[inventory_slot_class::button_type].type == BOW)            game.sound.bottle_01.play();
-                        if (game.item[inventory_slot_class::button_type].type == SLING)          game.sound.bottle_01.play();
-*/
+                        temp_ID = inventory_slot_class::button_type;
+                        if (game.item[temp_ID].sound.quantity_relocate > 0)
+                        {
+                            if (game.item[temp_ID].sound.quantity_relocate == 1) temp_int = 0;
+                            else temp_int = random(game.item[temp_ID].sound.quantity_relocate-1);
+                            if (temp_int > game.item[temp_ID].sound.quantity_relocate-1) temp_int = game.item[temp_ID].sound.quantity_relocate-1;
+                            if (temp_int < 0) temp_int = 0;
+                            play_sound(game.item[temp_ID].sound.relocate[temp_int]);
+                        }
                     }
                 }
                 for (int equipment_slot_count = 1; equipment_slot_count < MAX_EQUIPMENT_SLOTS; equipment_slot_count++)
@@ -253,8 +243,8 @@ void inventory_slot_class::process(void)
         }
         if ((inventory_slot_class::mouse_over) && (game.core.io.mouse_button_right) && (game.core.io.mouse_button_ready))//use item
         {
+            bool play_use_sound = true;
             game.core.io.mouse_button_delay_count = 0;
-            int temp_ID = inventory_slot_class::button_type;
             switch (game.item[temp_ID].type)
             {
                 case HEALTH_POTION:
@@ -263,11 +253,8 @@ void inventory_slot_class::process(void)
                         game.player.health.current += game.item[temp_ID].add_health;
                         inventory_slot_class::quantity--;
                         if(inventory_slot_class::quantity <= 0) inventory_slot_class::button_type = 0;
-                        temp_int = random(3);
-                        if (temp_int <= 1) game.sound.bubble_01.play();
-                        if (temp_int == 2) game.sound.bubble_02.play();
-                        if (temp_int >= 3) game.sound.bubble_03.play();
                     }
+                    else play_use_sound = false;
                 break;
                 case MANA_POTION:
                     if (game.player.mana.current < game.player.mana.maximum)
@@ -275,29 +262,22 @@ void inventory_slot_class::process(void)
                         game.player.mana.current += game.item[temp_ID].add_mana;
                         inventory_slot_class::quantity--;
                         if(inventory_slot_class::quantity <= 0)inventory_slot_class::button_type = 0;
-                        temp_int = random(3);
-                        if (temp_int <= 1) game.sound.bubble_01.play();
-                        if (temp_int == 2) game.sound.bubble_02.play();
-                        if (temp_int >= 3) game.sound.bubble_03.play();
                     }
+                    else play_use_sound = false;
                 break;
                 case SPELL_BOOK:
-                    if (game.spell[game.item[temp_ID].spell_type].level < 3) inventory_slot_class::quantity--;
-                    if(inventory_slot_class::quantity <= 0)inventory_slot_class::button_type = 0;
-                    game.spell[game.item[temp_ID].spell_type].level++;
-                    if (game.spell[game.item[temp_ID].spell_type].level > 3) game.spell[game.item[temp_ID].spell_type].level = 3;
-                    temp_int = random(3);
-                    if (temp_int <= 1) game.sound.book_00.play();
-                    if (temp_int == 2) game.sound.book_01.play();
-                    if (temp_int >= 3) game.sound.book_02.play();
+                    if (game.spell[game.item[temp_ID].spell_type].level < 3)
+                    {
+                        inventory_slot_class::quantity--;
+                        if(inventory_slot_class::quantity <= 0)inventory_slot_class::button_type = 0;
+                        game.spell[game.item[temp_ID].spell_type].level++;
+                        if (game.spell[game.item[temp_ID].spell_type].level > 3) game.spell[game.item[temp_ID].spell_type].level = 3;
+                    }
+                    else play_use_sound = false;
                 break;
                 case SPELL_SCROLL:
                     inventory_slot_class::quantity--;
                     if(inventory_slot_class::quantity <= 0)inventory_slot_class::button_type = 0;
-                    temp_int = random(3);
-                    if (temp_int <= 1) game.sound.book_00.play();
-                    if (temp_int == 2) game.sound.book_01.play();
-                    if (temp_int >= 3) game.sound.book_02.play();
                 break;
 
                 //equip items below on right click?
@@ -330,6 +310,18 @@ void inventory_slot_class::process(void)
                 break;
                 default:
                 break;
+            }
+            if (play_use_sound)
+            {
+                temp_ID = inventory_slot_class::button_type;
+                if (game.item[temp_ID].sound.quantity_use > 0)
+                {
+                    if (game.item[temp_ID].sound.quantity_use == 1) temp_int = 0;
+                    else temp_int = random(game.item[temp_ID].sound.quantity_use-1);
+                    if (temp_int > game.item[temp_ID].sound.quantity_use-1) temp_int = game.item[temp_ID].sound.quantity_use-1;
+                    if (temp_int < 0) temp_int = 0;
+                    play_sound(game.item[temp_ID].sound.use[temp_int]);
+                }
             }
         }
     }

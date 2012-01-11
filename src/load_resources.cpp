@@ -76,6 +76,21 @@ bool load_sounds(void)
     return(true);
 };
 
+bool play_sound(int sound_number)
+{
+    if (sound_number == game.sound.menu_move_00.ref_number)   game.sound.menu_move_00.play();
+    if (sound_number == game.sound.menu_select_00.ref_number) game.sound.menu_select_00.play();
+
+    if (sound_number == game.sound.bottle_01.ref_number)      game.sound.bottle_01.play();
+    if (sound_number == game.sound.bubble_01.ref_number)      game.sound.bubble_01.play();
+    if (sound_number == game.sound.bubble_02.ref_number)      game.sound.bubble_02.play();
+    if (sound_number == game.sound.bubble_03.ref_number)      game.sound.bubble_03.play();
+
+    if (sound_number == game.sound.book_00.ref_number)        game.sound.book_00.play();
+    if (sound_number == game.sound.book_01.ref_number)        game.sound.book_01.play();
+    if (sound_number == game.sound.book_02.ref_number)        game.sound.book_02.play();
+};
+
 bool load_music(void)
 {
     int music_count = 0;

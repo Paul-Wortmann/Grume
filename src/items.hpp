@@ -59,67 +59,78 @@ const int   CRITICAL_CHANCE_BASE_MULTIPLIER     = 1;
 const int   WALK_SPEED_BASE_MULTIPLIER          = 1;
 const int   LIGHT_RADIUS_BASE_MULTIPLIER        = 1;
 
-const int   MAX_ITEMS = 65500;
+const int   MAX_ITEMS                = 65500;
+const int   MAX_ITEM_USE_SOUNDS      = 8;
+const int   MAX_ITEM_RELOCATE_SOUNDS = 8;
+
+struct item_sound_type
+{
+    int             quantity_use;
+    int             quantity_relocate;
+    int             use     [MAX_ITEM_USE_SOUNDS];
+    int             relocate[MAX_ITEM_RELOCATE_SOUNDS];
+};
 
 class item_class
 {
     public:
         std::string name;
-        bool        active;
-        int         image_ref;
-        int         sound_ref;
-        int         ID;
-        int         type;
-        int         stack_number;
-        int         max_stack_number;
-        int         require_defence;
-        int         require_strength;
-        int         require_intelligence;
-        int         armour;
-        int         add_armour;
-        int         sub_armour;
-        int         min_damage;
-        int         max_damage;
-        int         add_min_damage;
-        int         add_max_damage;
-        int         sub_min_damage;
-        int         sub_max_damage;
-        int         add_max_health;
-        int         sub_max_health;
-        int         add_max_mana;
-        int         sub_max_mana;
-        int         add_health_regeneration;
-        int         sub_health_regeneration;
-        int         add_mana_regeneration;
-        int         sub_mana_regeneration;
-        int         add_crit_chance;
-        int         sub_crit_chance;
-        int         add_walk_speed;
-        int         sub_walk_speed;
-        int         add_light_radius;
-        int         sub_light_radius;
-        int         add_spell;
-        int         spell_type;
-        int         add_health;
-        int         add_mana;
-        int         add_flame_damage;
-        int         add_frost_damage;
-        int         add_lightning_damage;
-        int         add_magic_damage;
-        int         add_flame_resistance;
-        int         add_frost_resistance;
-        int         add_lightning_resistance;
-        int         add_all_resistances;
+        bool            active;
+        int             image_ref;
+        item_sound_type sound;
+        int             ID;
+        int             type;
+        int             stack_number;
+        int             max_stack_number;
+        int             require_defence;
+        int             require_strength;
+        int             require_intelligence;
+        int             armour;
+        int             add_armour;
+        int             sub_armour;
+        int             min_damage;
+        int             max_damage;
+        int             add_min_damage;
+        int             add_max_damage;
+        int             sub_min_damage;
+        int             sub_max_damage;
+        int             add_max_health;
+        int             sub_max_health;
+        int             add_max_mana;
+        int             sub_max_mana;
+        int             add_health_regeneration;
+        int             sub_health_regeneration;
+        int             add_mana_regeneration;
+        int             sub_mana_regeneration;
+        int             add_crit_chance;
+        int             sub_crit_chance;
+        int             add_walk_speed;
+        int             sub_walk_speed;
+        int             add_light_radius;
+        int             sub_light_radius;
+        int             add_spell;
+        int             spell_type;
+        int             add_health;
+        int             add_mana;
+        int             add_flame_damage;
+        int             add_frost_damage;
+        int             add_lightning_damage;
+        int             add_magic_damage;
+        int             add_flame_resistance;
+        int             add_frost_resistance;
+        int             add_lightning_resistance;
+        int             add_all_resistances;
         item_class(void);
        ~item_class(void);
-        void        load(std::string file_name);
-        void        equip(void);
-        void        unequip(void);
+        void            load   (std::string file_name);
+        void            equip  (void);
+        void            unequip(void);
 };
 
 int   generate_range(int level, int quality, int base_value);
 void  generate_random_item(int item_ID, int level, int quality, int type);
 void  init_items(void);
+void  init_item_sounds(int item_ID);
 
 #endif // ITEMS_H
 
