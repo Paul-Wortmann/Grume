@@ -410,7 +410,7 @@
 
 1321102096 source:c:\_git_\frost_and_flame\src\icon.rc
 
-1326285693 source:c:\_git_\frost_and_flame\src\ui.cpp
+1326286813 source:c:\_git_\frost_and_flame\src\ui.cpp
 	"UI.hpp"
 	"game.hpp"
 	"misc.hpp"
@@ -443,7 +443,7 @@
 1325520830 c:\_git_\frost_and_flame\src\spells.hpp
 	<string>
 
-1326284684 source:c:\_git_\frost_and_flame\src\inventory.cpp
+1326286821 source:c:\_git_\frost_and_flame\src\inventory.cpp
 	"misc.hpp"
 	"inventory.hpp"
 	"game.hpp"

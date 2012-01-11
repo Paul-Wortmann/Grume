@@ -172,7 +172,7 @@ void inventory_slot_class::process(void)
                         if (game.item[temp_ID].sound.quantity_relocate > 0)
                         {
                             if (game.item[temp_ID].sound.quantity_relocate == 1) temp_int = 0;
-                            else temp_int = random(game.item[temp_ID].sound.quantity_relocate-1);
+                            else temp_int = random(game.item[temp_ID].sound.quantity_relocate);
                             if (temp_int > game.item[temp_ID].sound.quantity_relocate-1) temp_int = game.item[temp_ID].sound.quantity_relocate-1;
                             if (temp_int < 0) temp_int = 0;
                             play_sound(game.item[temp_ID].sound.relocate[temp_int]);
@@ -317,7 +317,7 @@ void inventory_slot_class::process(void)
                 if (game.item[temp_ID].sound.quantity_use > 0)
                 {
                     if (game.item[temp_ID].sound.quantity_use == 1) temp_int = 0;
-                    else temp_int = random(game.item[temp_ID].sound.quantity_use-1);
+                    else temp_int = random(game.item[temp_ID].sound.quantity_use);
                     if (temp_int > game.item[temp_ID].sound.quantity_use-1) temp_int = game.item[temp_ID].sound.quantity_use-1;
                     if (temp_int < 0) temp_int = 0;
                     play_sound(game.item[temp_ID].sound.use[temp_int]);
