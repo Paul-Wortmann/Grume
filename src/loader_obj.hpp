@@ -56,31 +56,43 @@ struct face_type
     int vertex[4];
     int vertex_texture[4];
     int vertex_normal[4];
+    int count_vertices;
+    int count_vertex_textures;
+    int count_vertex_normals;
+};
+
+
+struct angle_type
+{
+    vertex_type translation;
+    vertex_type rotation;
 };
 
 class loader_obj_class
 {
     public:
-        std::string        model_name;
-        std::string        mtllib;
-        std::string        usemtl;
-        bool               smooth_shading;
-        int                reference_ID;
-        int                number_of_vertices;
-        int                number_of_vertex_textures;
-        int                number_of_vertex_normals;
-        int                number_of_faces;
-        vertex_type        vertex[MAX_VERTICES];
-        vertex_type        vertex_texture[MAX_VERTICES];
-        vertex_type        vertex_normal[MAX_VERTICES];
-        face_type          face[MAX_FACES];
+        angle_type            angle;
+        std::string           model_name;
+        std::string           mtllib;
+        std::string           usemtl;
+        bool                  smooth_shading;
+        int                   reference_ID;
+        int                   number_of_vertices;
+        int                   number_of_vertex_textures;
+        int                   number_of_vertex_normals;
+        int                   number_of_faces;
+        vertex_type           vertex[MAX_VERTICES];
+        vertex_texture_type   vertex_texture[MAX_VERTICES];
+        vertex_normal_type    vertex_normal[MAX_VERTICES];
+        face_type             face[MAX_FACES];
         loader_obj_class(void);
        ~loader_obj_class(void);
-        void               load(std::string file_name);
-        void               save(std::string file_name);
-        void               scale(float scale_value);
-        void               process(void);
-        void               draw(void);
+        void                  load(std::string file_name);
+        void                  save(std::string file_name);
+        void                  scale(float scale_value);
+        void                  relocate(float x, float y, float z);
+        void                  process(void);
+        void                  draw(void);
 };
 
 #endif // LOADER_OBJ_H

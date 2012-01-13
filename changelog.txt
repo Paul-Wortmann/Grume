@@ -1,8 +1,15 @@
 ﻿v0.03 - (2012-01-31)
+BUG  -> Fixed Linux #include path bug. Thanks to Joel Svensson.
 MAP  -> Implemented an OBJ file loader.
+SFX  -> Improved item sound managment.
+GFX  -> Improved OBJ functionality.
 UI   -> Added exp bar.
+UI   -> Improved random item generation.
+UI   -> Improved action bar item interaction.
 UI   -> Improved item mouse overs.
-LOC  -> 15630
+CORE -> Added play_sound(int sound_fererence_number)
+CORE -> Added an overloaded log_file_write function.
+LOC  -> 16096
 
 v0.02 - (2011-12-31)
 

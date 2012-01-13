@@ -34,8 +34,9 @@
 int init_game(bool re_init)
 {
     game.test.load("data/test.obj");
+    game.test.scale(0.2f);
+    game.test.relocate(0.0f,0.0f,-0.6f);
     game.test.save("data/out.obj");
-    game.test.scale(0.4f);
     game.global_ambient.intensity_R = 8.0f;
     game.global_ambient.intensity_G = 8.0f;
     game.global_ambient.intensity_B = 8.0f;
@@ -103,6 +104,7 @@ int init_game(bool re_init)
 /*----------------------------------------------------------------------------*/
 int process_game(void)
 {
+    game.test.process();
     game.UI.process();
     game.player.process();
     game.map_2D.town.process();

@@ -49,6 +49,7 @@ class log_file_class
         bool File_Write(std::string log_data_1, std::string log_data_2);
         bool File_Write(std::string log_data_1, const char log_data_2[]);
         bool File_Write(std::wstring log_data_1, std::wstring log_data_2);
+        bool File_Write(std::string log_data, int log_data_int ,float log_data_float);
 };
 
 #endif //LOG_H
