@@ -34,8 +34,10 @@
 int init_game(bool re_init)
 {
     game.test.load("data/test.obj");
-    game.test.scale(0.2f);
-    game.test.relocate(0.0f,0.0f,-0.6f);
+    game.test.scale(0.5f,0.5f,0.5f);
+    game.test.set_angle(60.0f,0.0f,225.0f);
+    game.test.set_position(0.0f,0.0f,0.0f);
+
     game.test.save("data/out.obj");
     game.global_ambient.intensity_R = 8.0f;
     game.global_ambient.intensity_G = 8.0f;
@@ -299,6 +301,67 @@ int process_game(void)
             game.core.io.key_space            = false;
             game.core.io.keyboard_delay_count = 0;
         }
+///------------------------------------------------------------------------------------------
+        if (game.core.io.key_1) // x+
+        {
+            game.test.angle.rotation.x += 1.0f;
+            if (game.test.angle.rotation.x > 360.0f) game.test.angle.rotation.x = 0.0f;
+        }
+        if (game.core.io.key_2) // x--
+        {
+            game.test.angle.rotation.x -= 1.0f;
+            if (game.test.angle.rotation.x < 0.0f) game.test.angle.rotation.x = 360.0f;
+        }
+        if (game.core.io.key_3) // y+
+        {
+            game.test.angle.rotation.y += 1.0f;
+            if (game.test.angle.rotation.y > 360.0f) game.test.angle.rotation.y = 0.0f;
+        }
+        if (game.core.io.key_4) // y--
+        {
+            game.test.angle.rotation.y -= 1.0f;
+            if (game.test.angle.rotation.y < 0.0f) game.test.angle.rotation.y = 360.0f;
+        }
+        if (game.core.io.key_5) // z+
+        {
+            game.test.angle.rotation.z += 1.0f;
+            if (game.test.angle.rotation.z > 360.0f) game.test.angle.rotation.z = 0.0f;
+        }
+        if (game.core.io.key_6) // z--
+        {
+            game.test.angle.rotation.z -= 1.0f;
+            if (game.test.angle.rotation.z < 0.0f) game.test.angle.rotation.z = 360.0f;
+        }
+
+
+
+        if (game.core.io.key_y) // t.x+
+        {
+            game.test.angle.translation.x += 0.125f;
+        }
+        if (game.core.io.key_u) // t.x--
+        {
+            game.test.angle.translation.x -= 0.125f;
+        }
+        if (game.core.io.key_7) // t.y+
+        {
+            game.test.angle.translation.y += 0.125f;
+        }
+        if (game.core.io.key_8) // t.y--
+        {
+            game.test.angle.translation.y -= 0.125f;
+        }
+        if (game.core.io.key_g) // t.z+
+        {
+            game.test.angle.translation.z += 0.125f;
+        }
+        if (game.core.io.key_h) // t.z--
+        {
+            game.test.angle.translation.z -= 0.125f;
+        }
+
+///------------------------------------------------------------------------------------------
+
         if (game.core.io.key_alt) // display item names on map (loot / clickable items)
         {
             ;

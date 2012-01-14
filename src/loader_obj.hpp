@@ -90,6 +90,9 @@ class loader_obj_class
         void                  load(std::string file_name);
         void                  save(std::string file_name);
         void                  scale(float scale_value);
+        void                  scale(float scale_x, float scale_y, float scale_z);
+        void                  set_angle(float x, float y, float z);
+        void                  set_position(float x, float y, float z);
         void                  relocate(float x, float y, float z);
         void                  process(void);
         void                  draw(void);

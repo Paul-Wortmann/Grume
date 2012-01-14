@@ -437,6 +437,8 @@ struct texture_type
     texture_class portrait_08;
     texture_class portrait_09;
     texture_class portrait_10;
+
+    texture_class generic_lava;
 };
 
 struct font_type
