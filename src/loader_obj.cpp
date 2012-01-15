@@ -560,6 +560,10 @@ void loader_obj_class::draw(void)
     glPushMatrix();
     glEnable(GL_DEPTH_TEST);
     glBindTexture( GL_TEXTURE_2D, game.texture.generic_lava.frame[0].data);
+    glTexGeni(GL_S, GL_TEXTURE_GEN_MODE, GL_OBJECT_LINEAR);
+    glTexGeni(GL_T, GL_TEXTURE_GEN_MODE, GL_OBJECT_LINEAR);
+    glEnable(GL_TEXTURE_GEN_S);
+    glEnable(GL_TEXTURE_GEN_T);
     glLoadIdentity();
     glMatrixMode(GL_MODELVIEW_MATRIX);
     glRotatef(loader_obj_class::angle.rotation.x,1,0,0);
@@ -621,6 +625,8 @@ void loader_obj_class::draw(void)
             glEnd();
         }
     }
+    glDisable(GL_TEXTURE_GEN_S);
+    glDisable(GL_TEXTURE_GEN_T);
     glPopMatrix();
 }
 

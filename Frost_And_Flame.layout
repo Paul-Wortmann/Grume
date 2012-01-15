@@ -2,7 +2,7 @@
 <CodeBlocks_layout_file>
 	<ActiveTarget name="Windows" />
 	<File name="src\core\graphics.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="2084" topLine="41" />
+		<Cursor1 position="2029" topLine="56" />
 	</File>
 	<File name="src\core\sound.hpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor1 position="943" topLine="0" />
@@ -206,7 +206,7 @@
 		<Cursor1 position="943" topLine="0" />
 	</File>
 	<File name="src\core\textures.cpp" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="7344" topLine="156" />
+		<Cursor1 position="7781" topLine="156" />
 	</File>
 	<File name="src\map_3D.hpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor1 position="1155" topLine="4" />

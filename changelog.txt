@@ -9,7 +9,7 @@ UI   -> Improved action bar item interaction.
 UI   -> Improved item mouse overs.
 CORE -> Added play_sound(int sound_fererence_number)
 CORE -> Added an overloaded log_file_write function.
-LOC  -> 16096
+LOC  -> 16218
 
 v0.02 - (2011-12-31)
 
