@@ -27,8 +27,8 @@
 
 #include <string>
 
-const int MAX_VERTICES = 256;
-const int MAX_FACES    = 256;
+const int MAX_VERTICES = 1256;
+const int MAX_FACES    = 1256;
 
 struct vertex_type
 {

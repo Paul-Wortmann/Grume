@@ -34,7 +34,7 @@ loader_obj_class::loader_obj_class(void)
     loader_obj_class::number_of_faces           = 0;
     loader_obj_class::number_of_vertex_textures = 0;
     loader_obj_class::number_of_vertex_normals  = 0;
-    for (int face_count = 0; face_count <  loader_obj_class::number_of_vertex_normals; face_count++)
+    for (int face_count = 0; face_count <  MAX_FACES; face_count++)
     {
         loader_obj_class::face[face_count].vertex[0]              = 0;
         loader_obj_class::face[face_count].vertex[1]              = 0;
@@ -370,7 +370,7 @@ void loader_obj_class::save(std::string file_name)
         {
             for (int vertex_count = 0; vertex_count < loader_obj_class::number_of_vertex_textures; vertex_count++)
             {
-                script_file << "v ";
+                script_file << "vt ";
                 script_file << loader_obj_class::vertex_texture[vertex_count].u;
                 script_file << " ";
                 script_file << loader_obj_class::vertex_texture[vertex_count].v;
@@ -383,7 +383,7 @@ void loader_obj_class::save(std::string file_name)
         {
             for (int vertex_count = 0; vertex_count < loader_obj_class::number_of_vertex_normals; vertex_count++)
             {
-                script_file << "v ";
+                script_file << "vn ";
                 script_file << loader_obj_class::vertex_normal[vertex_count].i;
                 script_file << " ";
                 script_file << loader_obj_class::vertex_normal[vertex_count].j;
@@ -568,7 +568,7 @@ void loader_obj_class::draw(void)
     glTranslatef(loader_obj_class::angle.translation.x,loader_obj_class::angle.translation.y,loader_obj_class::angle.translation.z);
     for (int face_count = 0; face_count < loader_obj_class::number_of_faces; face_count++)
     {
-        if (loader_obj_class::face[face_count].count_vertices == 3) // face is a quadrangle
+        if (loader_obj_class::face[face_count].count_vertices == 4) // face is a quadrangle
         {
             glBegin(GL_QUADS);
                 // Vertex 1
@@ -597,7 +597,7 @@ void loader_obj_class::draw(void)
                 glVertex3f(loader_obj_class::vertex[loader_obj_class::face[face_count].vertex[3]-1].x,loader_obj_class::vertex[loader_obj_class::face[face_count].vertex[3]-1].y,loader_obj_class::vertex[loader_obj_class::face[face_count].vertex[3]-1].z);
             glEnd();
         }
-        if (loader_obj_class::face[face_count].count_vertices == 2) // face is a triangle
+        if (loader_obj_class::face[face_count].count_vertices == 3) // face is a triangle
         {
             glBegin(GL_TRIANGLES);
                 // Vertex 1

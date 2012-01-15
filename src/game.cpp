@@ -33,10 +33,10 @@
 
 int init_game(bool re_init)
 {
-    game.test.load("data/test.obj");
+    game.test.load("data/male.obj");
     game.test.scale(0.5f,0.5f,0.5f);
     game.test.set_angle(60.0f,0.0f,225.0f);
-    game.test.set_position(0.0f,0.0f,0.0f);
+    game.test.set_position(0.0f,0.0f,-1.0f);
 
     game.test.save("data/out.obj");
     game.global_ambient.intensity_R = 8.0f;

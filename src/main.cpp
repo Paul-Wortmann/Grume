@@ -212,11 +212,6 @@ int main(int argc, char *argv[])
     game.core.config.File_Clear();
     game.core.config.File_Write();
     game.core.log.File_Write("SDL shutting down...");
-
-    game.core.log.File_Write("X - ",game.test.angle.rotation.x);
-    game.core.log.File_Write("Y - ",game.test.angle.rotation.y);
-    game.core.log.File_Write("Z - ",game.test.angle.rotation.z);
-
     SDL_Quit();
     game.core.log.File_Write("----------------------------------------------\n");
     return(0);
