@@ -68,8 +68,8 @@ struct game_type
     sound_type       sound;
     music_type       music;
     texture_type     texture;
-    map_2D_type       map_2D;
-    map_3D_type       map_3D;
+    map_2D_type      map_2D;
+    map_3D_type      map_3D;
     font_type        font;
     core_class       core;
     language_class   language;

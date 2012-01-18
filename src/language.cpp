@@ -75,6 +75,7 @@ language_class::language_class(void)
     language_class::text.inventory             = "Inventory           ";
     language_class::text.spell_book            = "Spell Book          ";
     language_class::text.equipment             = "Equipment           ";
+    language_class::text.npcvendor             = "Vendor              ";
 };
 
 void language_class::load(std::string file_name)
@@ -174,6 +175,7 @@ void language_class::load(std::string file_name)
                     if (temp_string_key == "Inventory")             language_class::text.inventory             = temp_string_data;
                     if (temp_string_key == "Spell_Book")            language_class::text.spell_book            = temp_string_data;
                     if (temp_string_key == "Equipment")             language_class::text.equipment             = temp_string_data;
+                    if (temp_string_key == "NPC_Vendor")            language_class::text.npcvendor             = temp_string_data;
                 }
             }
         }

@@ -30,6 +30,7 @@
 #include "inventory.hpp"
 #include "character.hpp"
 #include "quest_log.hpp"
+#include "npcvendor.hpp"
 
 #define    MAIN_MENU_WINDOW  1
 #define    EQUIPMENT_WINDOW  2
@@ -38,8 +39,9 @@
 #define    INVENTORY_WINDOW  5
 #define    SPELLBOOK_WINDOW  6
 #define    PCPROFILE_WINDOW  7
+#define    NPCVENDOR_WINDOW  8
 
-const int  MAX_ACTIVE_WINDOWS      = 8;
+const int  MAX_ACTIVE_WINDOWS      = 9;
 const int  MAX_ACTION_SLOTS        = 16;
 const int  MAX_ACTION_MENU_SLOTS   = 8;
 
@@ -160,6 +162,7 @@ class UI_class
         inventory_class          inventory;
         character_class          character;
         equipment_class          equipment;
+        npcvendor_class          npcvendor;
         quest_log_class          quest_log;
         void process(void);
         void draw(void);

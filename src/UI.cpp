@@ -528,6 +528,20 @@ void menu_slot_class::process(void)
                     game.core.spellbook_active        = false;
                 }
             break;
+            case NPCVENDOR_WINDOW: // Vendor
+                if (!game.core.npcvendor_active)
+                {
+                    game.UI.active_window_list.add_to_list(NPCVENDOR_WINDOW);
+                    game.sound.menu_select_00.play();
+                    game.core.npcvendor_active        = true;
+                }
+                else
+                {
+                    game.UI.active_window_list.remove_from_list(NPCVENDOR_WINDOW);
+                    game.sound.menu_select_00.play();
+                    game.core.npcvendor_active        = false;
+                }
+            break;
             default:
             break;
         }
@@ -689,6 +703,10 @@ void action_bar_class::draw(void)
     for (int equipment_slot_count = 1; equipment_slot_count < MAX_EQUIPMENT_SLOTS; equipment_slot_count++)
     {
         if (game.UI.equipment.equipment_slot[equipment_slot_count].drag) game.UI.equipment.equipment_slot[equipment_slot_count].draw_drag();
+    }
+    for (int ncpvendor_slot_count = 1; ncpvendor_slot_count < MAX_NPCVENDOR_SLOTS; ncpvendor_slot_count++)
+    {
+        if (game.UI.npcvendor.npcvendor_slot[ncpvendor_slot_count].drag) game.UI.npcvendor.npcvendor_slot[ncpvendor_slot_count].draw_drag();
     }
 };
 
@@ -858,6 +876,9 @@ void UI_class::process(void)
             case PCPROFILE_WINDOW:
                 UI_class::player_stats.process();
             break;
+            case NPCVENDOR_WINDOW:
+                if (game.core.npcvendor_active) UI_class::npcvendor.process();
+            break;
             default:
             break;
         };
@@ -892,6 +913,9 @@ void UI_class::draw(void)
             break;
             case PCPROFILE_WINDOW:
                 UI_class::player_stats.draw();
+            break;
+            case NPCVENDOR_WINDOW:
+                if (game.core.npcvendor_active) UI_class::npcvendor.draw();
             break;
             default:
             break;

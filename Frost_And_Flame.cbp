@@ -124,6 +124,8 @@
 		<Unit filename="src\menu_system.hpp" />
 		<Unit filename="src\misc.cpp" />
 		<Unit filename="src\misc.hpp" />
+		<Unit filename="src\npcvendor.cpp" />
+		<Unit filename="src\npcvendor.hpp" />
 		<Unit filename="src\player.cpp" />
 		<Unit filename="src\player.hpp" />
 		<Unit filename="src\quest_log.cpp" />

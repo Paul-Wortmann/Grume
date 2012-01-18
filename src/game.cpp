@@ -26,7 +26,7 @@
 #include "menu_system.hpp"
 #include "game.hpp"
 #include "misc.hpp"
-#include "core/map_2D.hpp"
+#include "core/core.hpp"
 #include "loader_obj.hpp"
 
         game_type        game;
@@ -65,6 +65,7 @@ int init_game(bool re_init)
     game.core.character_active                    = false;
     game.core.spellbook_active                    = false;
     game.core.inventory_active                    = false;
+    game.core.npcvendor_active                    = false;
 
     game.player.portrait_image_ref                =  game.texture.portrait_02.ref_number;
     game.player.name                              =  "Kanchi";
@@ -94,6 +95,8 @@ int init_game(bool re_init)
     game.UI.quest_log.close_button.image_highlighted          =  game.texture.close_button_highlighted.ref_number;
     game.UI.equipment.close_button.image_normal               =  game.texture.close_button.ref_number;
     game.UI.equipment.close_button.image_highlighted          =  game.texture.close_button_highlighted.ref_number;
+    game.UI.npcvendor.close_button.image_normal               =  game.texture.close_button.ref_number;
+    game.UI.npcvendor.close_button.image_highlighted          =  game.texture.close_button_highlighted.ref_number;
 
 
     init_spells();
@@ -373,6 +376,13 @@ int process_game(void)
 /*----------------------------------------------------------------------------*/
 int display_game(void)
 {
+    float color_black[]        = {0.0f,0.0f,0.0f,1.0f};
+    float color_white[]        = {1.0f,1.0f,1.0f,1.0f};
+    float color_gray[]         = {0.6f,0.6f,0.6f,1.0f};
+    float color_red[]          = {1.0f,0.0f,0.0f,1.0f};
+    float color_blue[]         = {0.0f,0.0f,0.1f,1.0f};
+    float color_yellow[]       = {1.0f,1.0f,0.0f,1.0f};
+    float color_light_yellow[] = {0.5f,0.5f,0.0f,1.0f};
     if (game.world_ambient.increase) // day / night lighting
     {
         game.world_ambient.intensity_R += game.world_ambient.speed;

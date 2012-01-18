@@ -67,6 +67,7 @@ struct text_type
     std::string    inventory;
     std::string    spell_book;
     std::string    equipment;
+    std::string    npcvendor;
 };
 
 class language_class
