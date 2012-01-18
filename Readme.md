@@ -59,7 +59,7 @@ This information can be found in the credits_license.txt file.
 
 License
 -------
-Copyright (C) 2011-2011 Paul Wortmann.
+Copyright (C) 2011-2012 Paul Wortmann.
 
 This program is free software: you can redistribute it and/or modify it under
 the terms of the GNU General Public License as published by the Free Software

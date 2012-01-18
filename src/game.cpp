@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2011 Paul Wortmann, PhysHex Games, www.physhexgames.co.nr
+ * Copyright (C) 2011-2012 Paul Wortmann, PhysHex Games, www.physhexgames.co.nr
  * This file is part of "Frost And Flame"
  *
  * "Frost And Flame" is free software: you can redistribute it and/or modify
@@ -35,7 +35,7 @@ int init_game(bool re_init)
 {
     game.test.load("data/male.obj");
     game.test.scale(0.5f,0.5f,0.5f);
-    game.test.set_angle(60.0f,0.0f,225.0f);
+    //game.test.set_angle(60.0f,0.0f,225.0f);
     game.test.set_position(0.0f,0.0f,-1.0f);
 
     game.test.save("data/out.obj");
@@ -389,6 +389,7 @@ int display_game(void)
     }
     float  global_ambient_light[] = {game.global_ambient.intensity_R,game.global_ambient.intensity_G,game.global_ambient.intensity_B,game.global_ambient.intensity_A};
     float  world_ambient_light[]  = {game.world_ambient.intensity_R,game.world_ambient.intensity_G,game.world_ambient.intensity_B,game.world_ambient.intensity_A};
+    glLightModelfv(GL_LIGHT_MODEL_AMBIENT,color_black);
     glLightModelfv(GL_LIGHT_MODEL_AMBIENT,world_ambient_light);
 
 

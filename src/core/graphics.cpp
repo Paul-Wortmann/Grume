@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2011 Paul Wortmann, PhysHex Games, www.physhexgames.co.nr
+ * Copyright (C) 2011-2012 Paul Wortmann, PhysHex Games, www.physhexgames.co.nr
  * This file is part of "Frost And Flame"
  *
  * "Frost And Flame" is free software: you can redistribute it and/or modify
@@ -60,6 +60,13 @@ float graphics_class::res_to_gl(int  res_coord, int max_res)
 
 int   graphics_class::init_gl(int x_res, int y_res)
 {
+    float color_black[]        = {0.0f,0.0f,0.0f,1.0f};
+    float color_white[]        = {1.0f,1.0f,1.0f,1.0f};
+    float color_gray[]         = {0.6f,0.6f,0.6f,1.0f};
+    float color_red[]          = {1.0f,0.0f,0.0f,1.0f};
+    float color_blue[]         = {0.0f,0.0f,0.1f,1.0f};
+    float color_yellow[]       = {1.0f,1.0f,0.0f,1.0f};
+    float color_light_yellow[] = {0.5f,0.5f,0.0f,1.0f};
     glViewport(0, 0,x_res,y_res);
     glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
     glClearDepth(1.0);
@@ -78,7 +85,7 @@ int   graphics_class::init_gl(int x_res, int y_res)
     //--------------------------------------------------------------------------------------------------------------------
 	// OpenGL Lighting Setup
 	glEnable(GL_LIGHTING);
-    float global_ambient[] = { 8.0f, 8.0f, 8.0f, 8.0f };
+    float global_ambient[] = { 1.0f, 1.0f, 1.0f, 1.0f };
     glLightModelfv(GL_LIGHT_MODEL_AMBIENT, global_ambient);
 
 	glEnable(GL_LIGHT0);
@@ -90,6 +97,17 @@ int   graphics_class::init_gl(int x_res, int y_res)
 	glLightfv(GL_LIGHT0, GL_DIFFUSE,  diffuseLight0);
 	glLightfv(GL_LIGHT0, GL_SPECULAR, specularLight0);
 	glLightfv(GL_LIGHT0, GL_POSITION, position0);
+    // Position and direction (spotlight)
+    float posLight1[]     = { 1.0f, 1.f, 1.f, 0.0f };
+    float spotDirection[] = { -1.0f, -1.0f, 0.f };
+    glLightfv( GL_LIGHT1, GL_POSITION, posLight1 );
+    glLightf ( GL_LIGHT1, GL_SPOT_CUTOFF, 60.0F );
+    glLightfv( GL_LIGHT1, GL_SPOT_DIRECTION, spotDirection );
+    glLightfv( GL_LIGHT1, GL_AMBIENT,  color_white );
+    glLightfv( GL_LIGHT1, GL_DIFFUSE,  color_white );
+    glLightfv( GL_LIGHT1, GL_SPECULAR, color_white );
+    glLightfv( GL_LIGHT1, GL_SPECULAR, color_red );
+    glLightf ( GL_LIGHT1, GL_CONSTANT_ATTENUATION, 1.0f );
 
 	glEnable(GL_LIGHT1);
 	float ambientLight1[]  = { 1.0f, 0.5f, 0.5f, 1.0f };
