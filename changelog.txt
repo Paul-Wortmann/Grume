@@ -1,15 +1,16 @@
 ﻿v0.03 - (2012-01-31)
 BUG  -> Fixed Linux #include path bug. Thanks to Joel Svensson.
 MAP  -> Implemented an OBJ file loader.
-SFX  -> Improved item sound managment.
+SFX  -> Improved item sound management.
 GFX  -> Improved OBJ functionality.
 UI   -> Added exp bar.
+UI   -> Started NPC vendor.
 UI   -> Improved random item generation.
 UI   -> Improved action bar item interaction.
 UI   -> Improved item mouse overs.
-CORE -> Added play_sound(int sound_fererence_number)
+CORE -> Added play_sound(int sound_reference_number)
 CORE -> Added an overloaded log_file_write function.
-LOC  -> 16218
+LOC  -> 17351
 
 v0.02 - (2011-12-31)
 
@@ -23,19 +24,19 @@ UI   -> Added user portraits.
 UI   -> Equipment menu started.
 UI   -> Character menu improved.
 UI   -> Inventory menu completed.
-UI   -> Items stackable.
+UI   -> Items stack-able.
 UI   -> Items usable, books && potions.
 UI   -> Potions usable from the action bar.
 UI   -> Health / Mana bars now respond to degeneration.
 UI   -> Random item generation implemented.
-UI   -> Items can now be equiped and unequiped.
+UI   -> Items can now be equipped and unequipped.
 UI   -> Added mouse cursor.
-UI   -> Added a large variety of itmes.
+UI   -> Added a large variety of items.
 LOC  -> 14650
 
 v0.01 - (2011-11-30)
 
-BUG  -> Fixed 2 SEGFAULT segmentation faults caused by impropper shutdown of SDL.
+BUG  -> Fixed 2 SEGFAULT segmentation faults caused by improper shutdown of SDL.
 MAP  -> Created a basic test map.
 MAP  -> Adapted various tilesets to be used.
 MAP  -> Map scroll implemented.
@@ -44,11 +45,11 @@ MAP  -> Basic rendering.
 UI   -> Quest menu started.
 UI   -> Character menu started.
 UI   -> Inventory menu started.
-UI   -> Spells/Skills dragable and rearangable on the action bar.
+UI   -> Spells/Skills drag-able and re-arrangeable on the action bar.
 UI   -> Spell/Skill Book implemented.
 UI   -> Player UI with health and mana bars implemented.
-UI   -> Action bar with dragable, rearrangeable menu buttons.
-UI   -> Dragable main menu available in game.
+UI   -> Action bar with drag-able, re-arrangeable menu buttons.
+UI   -> Drag-able main menu available in game.
 UI   -> Main menu implemented.
 CORE -> Initial framework completed.
 LOC  -> 10671
@@ -58,4 +59,11 @@ Initial release.
 Documentation.
 Some textures planned for inclusion in this project.
 LOC  -> 0
+
+
+
+-- 
+Paul Wortmann
+E-mail : paul.wortmann@gmail.com
+Website: www.physhexgames.co.nr
 
