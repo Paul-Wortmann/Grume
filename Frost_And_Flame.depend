@@ -13,7 +13,7 @@
 
 1321632150 
 
-1326870376 c:\_git_\frost_and_flame\src\core\core.hpp
+1327226288 c:\_git_\frost_and_flame\src\core\core.hpp
 	"log.hpp"
 	"config.hpp"
 	"graphics.hpp"
@@ -25,6 +25,7 @@
 	"font.hpp"
 	"menu.hpp"
 	"io.hpp"
+	"file.hpp"
 	"background.hpp"
 	"particles.hpp"
 	"map_2D.hpp"
@@ -818,4 +819,11 @@
 	"npcvendor.hpp"
 	"game.hpp"
 	"items.hpp"
+
+1327226306 c:\_git_\frost_and_flame\src\core\file.hpp
+
+1327226321 source:c:\_git_\frost_and_flame\src\core\file.cpp
+	<string>
+	"core.hpp"
+	"file.hpp"
 

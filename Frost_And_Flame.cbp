@@ -71,6 +71,8 @@
 		<Unit filename="src\core\config.hpp" />
 		<Unit filename="src\core\core.cpp" />
 		<Unit filename="src\core\core.hpp" />
+		<Unit filename="src\core\file.cpp" />
+		<Unit filename="src\core\file.hpp" />
 		<Unit filename="src\core\font.cpp" />
 		<Unit filename="src\core\font.hpp" />
 		<Unit filename="src\core\graphics.cpp" />

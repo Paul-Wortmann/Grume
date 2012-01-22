@@ -36,6 +36,7 @@
 #include "font.hpp"
 #include "menu.hpp"
 #include "io.hpp"
+#include "file.hpp"
 #include "background.hpp"
 #include "particles.hpp"
 #include "map_2D.hpp"
@@ -74,6 +75,7 @@ class core_class
         save_game_class   save_07;
         io_type           io;
         SDL_Event         event;
+        file_class        file;
         log_file_class    log;
         config_file_class config;
         graphics_class    graphics;
