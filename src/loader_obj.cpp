@@ -29,6 +29,7 @@ extern game_type         game;
 
 loader_obj_class::loader_obj_class(void)
 {
+    loader_obj_class::number_of_materials       = 0;
     loader_obj_class::reference_ID              = 0;
     loader_obj_class::number_of_vertices        = 0;
     loader_obj_class::number_of_faces           = 0;
@@ -64,6 +65,272 @@ loader_obj_class::~loader_obj_class(void)
 {
 
 }
+
+void loader_obj_class::load_mtl(std::string file_name)
+{
+    loader_obj_class::number_of_materials = -1;
+    int          data_count               =  0;
+    int          position_count           =  0;
+    std::string  temp_string_data;
+    std::string  data_line;
+    std::fstream script_file(file_name.c_str(),std::ios::in|std::ios::binary);
+    if (script_file.is_open())
+    {
+        while (script_file.good())
+        {
+            getline(script_file,data_line);
+            {
+                position_count = 0;
+                switch (data_line[0])
+                {
+                    case '#': // comment, nothing to load.
+                    break;
+                    case 'n': // material name.
+                        loader_obj_class::number_of_materials++;
+                        position_count = 7;
+                        temp_string_data = "";
+                        while (position_count <= data_line.length())
+                        {
+                            temp_string_data += data_line[position_count];
+                            loader_obj_class::material[loader_obj_class::number_of_materials].material_name = temp_string_data.c_str();
+                            position_count++;
+                        }
+                    break;
+                    case 'N': //
+                        switch (data_line[1])
+                        {
+                            case 's': //
+                                loader_obj_class::number_of_materials++;
+                                position_count = 3;
+                                temp_string_data = "";
+                                while (position_count <= data_line.length())
+                                {
+                                    temp_string_data += data_line[position_count];
+                                    loader_obj_class::material[loader_obj_class::number_of_materials].Ns = atof(temp_string_data.c_str());
+                                    position_count++;
+                                }
+                            break;
+                            case 'i': //
+                                loader_obj_class::number_of_materials++;
+                                position_count = 3;
+                                temp_string_data = "";
+                                while (position_count <= data_line.length())
+                                {
+                                    temp_string_data += data_line[position_count];
+                                    loader_obj_class::material[loader_obj_class::number_of_materials].Ni = atof(temp_string_data.c_str());
+                                    position_count++;
+                                }
+                            break;
+                            default:
+                            break;
+                        }
+                    break;
+                    case 'K': //
+                        switch (data_line[1])
+                        {
+                            case 'a': //
+                                position_count = 3;
+                                data_count     = 0;
+                                temp_string_data = "";
+                                while (position_count <= data_line.length())
+                                {
+                                    if (data_line[position_count] != ' ')
+                                    {
+                                        temp_string_data += data_line[position_count];
+                                    }
+                                    else
+                                    {
+                                        if (data_count == 0) loader_obj_class::material[loader_obj_class::number_of_materials].Ka.x = atof(temp_string_data.c_str());
+                                        if (data_count == 1) loader_obj_class::material[loader_obj_class::number_of_materials].Ka.y = atof(temp_string_data.c_str());
+                                        data_count++;
+                                        temp_string_data = "";
+                                    }
+                                    position_count++;
+                                }
+                                loader_obj_class::material[loader_obj_class::number_of_materials].Ka.z = atof(temp_string_data.c_str());
+                            break;
+                            case 'd': //
+                                position_count = 3;
+                                data_count     = 0;
+                                temp_string_data = "";
+                                while (position_count <= data_line.length())
+                                {
+                                    if (data_line[position_count] != ' ')
+                                    {
+                                        temp_string_data += data_line[position_count];
+                                    }
+                                    else
+                                    {
+                                        if (data_count == 0) loader_obj_class::material[loader_obj_class::number_of_materials].Kd.x = atof(temp_string_data.c_str());
+                                        if (data_count == 1) loader_obj_class::material[loader_obj_class::number_of_materials].Kd.y = atof(temp_string_data.c_str());
+                                        data_count++;
+                                        temp_string_data = "";
+                                    }
+                                    position_count++;
+                                }
+                                loader_obj_class::material[loader_obj_class::number_of_materials].Kd.z = atof(temp_string_data.c_str());
+                            break;
+                            case 's': //
+                                position_count = 3;
+                                data_count     = 0;
+                                temp_string_data = "";
+                                while (position_count <= data_line.length())
+                                {
+                                    if (data_line[position_count] != ' ')
+                                    {
+                                        temp_string_data += data_line[position_count];
+                                    }
+                                    else
+                                    {
+                                        if (data_count == 0) loader_obj_class::material[loader_obj_class::number_of_materials].Ks.x = atof(temp_string_data.c_str());
+                                        if (data_count == 1) loader_obj_class::material[loader_obj_class::number_of_materials].Ks.y = atof(temp_string_data.c_str());
+                                        data_count++;
+                                        temp_string_data = "";
+                                    }
+                                    position_count++;
+                                }
+                                loader_obj_class::material[loader_obj_class::number_of_materials].Ks.z = atof(temp_string_data.c_str());
+                            break;
+                            default:
+                            break;
+                        }
+                    break;
+                    case 'd': //
+                        loader_obj_class::number_of_materials++;
+                        position_count = 2;
+                        temp_string_data = "";
+                        while (position_count <= data_line.length())
+                        {
+                            temp_string_data += data_line[position_count];
+                            loader_obj_class::material[loader_obj_class::number_of_materials].d = atof(temp_string_data.c_str());
+                            position_count++;
+                        }
+                    break;
+                    case 'i': //
+                        loader_obj_class::number_of_materials++;
+                        position_count = 6;
+                        temp_string_data = "";
+                        while (position_count <= data_line.length())
+                        {
+                            temp_string_data += data_line[position_count];
+                            loader_obj_class::material[loader_obj_class::number_of_materials].illum = atof(temp_string_data.c_str());
+                            position_count++;
+                        }
+                    break;
+                    case 'm': //
+                        switch (data_line[4])
+                        {
+                            case 'd': //
+                                loader_obj_class::number_of_materials++;
+                                position_count = 6;
+                                temp_string_data = "";
+                                while (position_count <= data_line.length())
+                                {
+                                    temp_string_data += data_line[position_count];
+                                    loader_obj_class::material[loader_obj_class::number_of_materials].map_d = temp_string_data.c_str();
+                                    position_count++;
+                                }
+                            break;
+                            case 'K': //
+                                loader_obj_class::number_of_materials++;
+                                position_count = 7;
+                                temp_string_data = "";
+                                while (position_count <= data_line.length())
+                                {
+                                    temp_string_data += data_line[position_count];
+                                    loader_obj_class::material[loader_obj_class::number_of_materials].map_Kd = temp_string_data.c_str();
+                                    position_count++;
+                                }
+                            break;
+                            case 'B': //
+                                loader_obj_class::number_of_materials++;
+                                position_count = 9;
+                                temp_string_data = "";
+                                while (position_count <= data_line.length())
+                                {
+                                    temp_string_data += data_line[position_count];
+                                    loader_obj_class::material[loader_obj_class::number_of_materials].map_Bump = temp_string_data.c_str();
+                                    position_count++;
+                                }
+                            break;
+                            default:
+                            break;
+                        }
+                    break;
+                    default:
+                    break;
+                }
+            }
+        }
+        script_file.close();
+    }
+};
+
+void loader_obj_class::save_mtl(std::string file_name)
+{
+    std::fstream script_file(file_name.c_str(),std::ios::out|std::ios::binary|std::ios::trunc);
+    if (script_file.is_open())
+    {
+        script_file << "# Frost and Flame OBJ File: '";
+        script_file << file_name;
+        script_file << "'\n";
+        script_file << "# www.physhexgames.co.nr\n";
+        script_file << "# Material Count: ";
+        script_file << loader_obj_class::number_of_materials+1;
+        script_file << "\n";
+        for (int material_count = 0; material_count < loader_obj_class::number_of_materials; material_count++)
+        {
+            script_file << "newmtl ";
+            script_file << loader_obj_class::material[material_count].material_name;
+            script_file << "\n";
+            script_file << "Ns ";
+            script_file << loader_obj_class::material[material_count].Ns;
+            script_file << "\n";
+            script_file << "Ka ";
+            script_file << loader_obj_class::material[material_count].Ka.x;
+            script_file << " ";
+            script_file << loader_obj_class::material[material_count].Ka.y;
+            script_file << " ";
+            script_file << loader_obj_class::material[material_count].Ka.z;
+            script_file << "\n";
+            script_file << "Kd ";
+            script_file << loader_obj_class::material[material_count].Kd.x;
+            script_file << " ";
+            script_file << loader_obj_class::material[material_count].Kd.y;
+            script_file << " ";
+            script_file << loader_obj_class::material[material_count].Kd.z;
+            script_file << "\n";
+            script_file << "Ks ";
+            script_file << loader_obj_class::material[material_count].Ks.x;
+            script_file << " ";
+            script_file << loader_obj_class::material[material_count].Ks.y;
+            script_file << " ";
+            script_file << loader_obj_class::material[material_count].Ks.z;
+            script_file << "\n";
+            script_file << "Ni ";
+            script_file << loader_obj_class::material[material_count].Ni;
+            script_file << "\n";
+            script_file << "d ";
+            script_file << loader_obj_class::material[material_count].d;
+            script_file << "\n";
+            script_file << "illum ";
+            script_file << loader_obj_class::material[material_count].illum;
+            script_file << "\n";
+            script_file << "map_d ";
+            script_file << loader_obj_class::material[material_count].map_d;
+            script_file << "\n";
+            script_file << "map_Kd ";
+            script_file << loader_obj_class::material[material_count].map_Kd;
+            script_file << "\n";
+            script_file << "map_Bump ";
+            script_file << loader_obj_class::material[material_count].map_Bump;
+            script_file << "\n";
+            script_file << "\n";
+            script_file << "\n";
+        }
+        script_file.close();
+    }
+};
 
 void loader_obj_class::load(std::string file_name)
 {
@@ -194,7 +461,7 @@ void loader_obj_class::load(std::string file_name)
                             break;
                         }
                     break;
-                    case 'u': // load texture file name.
+                    case 'u': // load material to use after this point.
                         position_count = 7;
                         temp_string_data = "";
                         while (position_count <= data_line.length())
@@ -336,6 +603,7 @@ void loader_obj_class::load(std::string file_name)
         script_file.close();
         //create VBO ?? Hmmm
     }
+    loader_obj_class::load_mtl(loader_obj_class::mtllib); // load the material data file for this object
     game.core.log.File_Write("OBJ file loaded           - ",file_name.c_str());
     game.core.log.File_Write("Number of vertices        - ",loader_obj_class::number_of_vertices);
     game.core.log.File_Write("Number of vertex textures - ",loader_obj_class::number_of_vertex_textures);
@@ -345,10 +613,14 @@ void loader_obj_class::load(std::string file_name)
 
 void loader_obj_class::save(std::string file_name)
 {
+    //add file extension if it has been omitted
+    if (!core.file.extension("obj")) core.file_extension("obj");
     std::fstream script_file(file_name.c_str(),std::ios::out|std::ios::binary|std::ios::trunc);
     if (script_file.is_open())
     {
-        script_file << "# Frost and Flame OBJ File: ''\n";
+        script_file << "# Frost and Flame OBJ File: '";
+        script_file << file_name;
+        script_file << "'\n";
         script_file << "# www.physhexgames.co.nr\n";
         script_file << "mtllib ";
         script_file << loader_obj_class::mtllib;
@@ -629,6 +901,22 @@ void loader_obj_class::draw(void)
     glDisable(GL_TEXTURE_GEN_T);
     glPopMatrix();
 }
+
+
+bool file_extension(std::string file_name, std::string file_extension)
+{
+
+};
+
+void file_extension_add(std::string file_name, std::string file_extension)
+{
+
+};
+
+void file_extension_remove(std::string file_name, std::string file_extension)
+{
+
+};
 
 
 

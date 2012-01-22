@@ -27,8 +27,9 @@
 
 #include <string>
 
-const int MAX_VERTICES = 1256;
-const int MAX_FACES    = 1256;
+const int MAX_VERTICES  = 1256;
+const int MAX_FACES     = 1256;
+const int MAX_MATERIALS = 16;
 
 struct vertex_type
 {
@@ -68,6 +69,21 @@ struct angle_type
     vertex_type rotation;
 };
 
+struct material_type
+{
+    std::string       material_name;
+    float             Ns;
+    vertex_type       Ka;
+    vertex_type       Kd;
+    vertex_type       Ks;
+    float             Ni;
+    float             d;
+    float             illum;
+    std::string       map_d;
+    std::string       map_Kd;
+    std::string       map_Bump;
+};
+
 class loader_obj_class
 {
     public:
@@ -75,6 +91,8 @@ class loader_obj_class
         std::string           model_name;
         std::string           mtllib;
         std::string           usemtl;
+        material_type         material[MAX_MATERIALS];
+        int                   number_of_materials;
         bool                  smooth_shading;
         int                   reference_ID;
         int                   number_of_vertices;
@@ -87,6 +105,8 @@ class loader_obj_class
         face_type             face[MAX_FACES];
         loader_obj_class(void);
        ~loader_obj_class(void);
+        void                  load_mtl(std::string file_name);
+        void                  save_mtl(std::string file_name);
         void                  load(std::string file_name);
         void                  save(std::string file_name);
         void                  scale(float scale_value);

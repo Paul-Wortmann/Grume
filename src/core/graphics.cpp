@@ -98,26 +98,30 @@ int   graphics_class::init_gl(int x_res, int y_res)
 	glLightfv(GL_LIGHT0, GL_SPECULAR, specularLight0);
 	glLightfv(GL_LIGHT0, GL_POSITION, position0);
     // Position and direction (spotlight)
-    float posLight1[]     = { 1.0f, 1.f, 1.f, 0.0f };
-    float spotDirection[] = { -1.0f, -1.0f, 0.f };
+	//glEnable(GL_LIGHT1);
+    float posLight1[]     = {  0.0f,  0.0f, -1.0f,  1.0f };
+    float spotDirection[] = {  0.0f,  0.0f, 1.0f };
+	float ambientLight1[]  = { 1.0f, 0.5f, 0.5f, 1.0f };
+	float diffuseLight1[]  = { 1.0f, 0.5f, 0.5f, 1.0f };
+	float specularLight1[] = { 1.0f, 0.5f, 0.5f, 1.0f };
     glLightfv( GL_LIGHT1, GL_POSITION, posLight1 );
     glLightf ( GL_LIGHT1, GL_SPOT_CUTOFF, 60.0F );
     glLightfv( GL_LIGHT1, GL_SPOT_DIRECTION, spotDirection );
-    glLightfv( GL_LIGHT1, GL_AMBIENT,  color_white );
-    glLightfv( GL_LIGHT1, GL_DIFFUSE,  color_white );
-    glLightfv( GL_LIGHT1, GL_SPECULAR, color_white );
-    glLightfv( GL_LIGHT1, GL_SPECULAR, color_red );
+	glLightfv( GL_LIGHT1, GL_AMBIENT,  ambientLight1);
+	glLightfv( GL_LIGHT1, GL_DIFFUSE,  diffuseLight1);
+	glLightfv( GL_LIGHT1, GL_SPECULAR, specularLight1);
     glLightf ( GL_LIGHT1, GL_CONSTANT_ATTENUATION, 1.0f );
-
+    /*
 	glEnable(GL_LIGHT1);
 	float ambientLight1[]  = { 1.0f, 0.5f, 0.5f, 1.0f };
 	float diffuseLight1[]  = { 1.0f, 0.5f, 0.5f, 1.0f };
 	float specularLight1[] = { 1.0f, 0.5f, 0.5f, 1.0f };
-	float position1[]      = { 1.5f, 1.0f,-4.0f, 1.0f };
+	float position1[]      = { 1.5f, 1.0f, 2.0f, 1.0f };
 	glLightfv(GL_LIGHT1, GL_AMBIENT,  ambientLight1);
 	glLightfv(GL_LIGHT1, GL_DIFFUSE,  diffuseLight1);
 	glLightfv(GL_LIGHT1, GL_SPECULAR, specularLight1);
 	glLightfv(GL_LIGHT1, GL_POSITION, position1);
+    */
     return(0);
 }
 

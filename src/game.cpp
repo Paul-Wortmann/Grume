@@ -34,7 +34,7 @@
 int init_game(bool re_init)
 {
     game.test.load("data/male.obj");
-    game.test.scale(0.5f,0.5f,0.5f);
+    game.test.scale(0.2f,0.2f,0.2f);
     //game.test.set_angle(60.0f,0.0f,225.0f);
     game.test.set_position(0.0f,0.0f,-1.0f);
 
@@ -299,6 +299,11 @@ int process_game(void)
             {
                 game.UI.active_window_list.remove_from_list(SPELLBOOK_WINDOW);
                 game.core.spellbook_active    = false;
+            }
+            if (game.core.npcvendor_active)
+            {
+                game.UI.active_window_list.remove_from_list(NPCVENDOR_WINDOW);
+                game.core.npcvendor_active    = false;
             }
             game.sound.menu_select_00.play();
             game.core.io.key_space            = false;
