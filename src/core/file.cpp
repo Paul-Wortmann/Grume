@@ -38,15 +38,29 @@ file_class::~file_class(void)
 
 bool file_class::extension_exist(std::string file_name, std::string file_extension)
 {
-
+    bool extention_found = false;
+    for (int string_pos = 0; string_pos < file_name.size(); string_pos++)
+    {
+        if (file_name[string_pos] == '.') extention_found = true;
+    }
+    return (extention_found);
 };
 
-void file_class::extension_add(std::string file_name, std::string file_extension)
+std::string file_class::extension_add(std::string file_name, std::string file_extension)
 {
-
+    if (file_extension[0] == '.') return (file_name+file_extension);
+    else return (file_name+'.'+file_extension);
 };
 
-void file_class::extension_remove(std::string file_name, std::string file_extension)
+std::string file_class::extension_remove(std::string file_name)
 {
-
+    bool            extention_found = false;
+    std::string     temp_string     = "";
+    for (int string_pos = 0; string_pos < file_name.size(); string_pos++)
+    {
+        if (file_name[string_pos] == '.') extention_found = true;
+        if (!extention_found) temp_string += file_name[string_pos];
+    }
+    return (temp_string);
 };
+

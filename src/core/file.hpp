@@ -30,9 +30,9 @@ class file_class
     public:
          file_class(void);
         ~file_class(void);
-        bool extension_exist(std::string file_name, std::string file_extension);
-        void extension_add(std::string file_name, std::string file_extension);
-        void extension_remove(std::string file_name, std::string file_extension);
+        bool        extension_exist (std::string file_name, std::string file_extension);
+        std::string extension_add   (std::string file_name, std::string file_extension);
+        std::string extension_remove(std::string file_name);
 };
 
 

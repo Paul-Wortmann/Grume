@@ -614,7 +614,7 @@ void loader_obj_class::load(std::string file_name)
 void loader_obj_class::save(std::string file_name)
 {
     //add file extension if it has been omitted
-    if (!game.core.file.extension_exist(file_name,"obj")) game.core.file.extension_add(file_name,"obj");
+    if (!game.core.file.extension_exist(file_name,"obj")) file_name = game.core.file.extension_add(file_name,"obj");
     std::fstream script_file(file_name.c_str(),std::ios::out|std::ios::binary|std::ios::trunc);
     if (script_file.is_open())
     {
