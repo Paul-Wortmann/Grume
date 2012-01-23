@@ -29,7 +29,8 @@ extern game_type         game;
 
 loader_obj_class::loader_obj_class(void)
 {
-    loader_obj_class::number_of_materials       = 0;
+    loader_obj_class::number_of_use_materials   = -1;
+    loader_obj_class::number_of_materials       = -1;
     loader_obj_class::reference_ID              = 0;
     loader_obj_class::number_of_vertices        = 0;
     loader_obj_class::number_of_faces           = 0;
@@ -100,7 +101,6 @@ void loader_obj_class::load_mtl(std::string file_name)
                         switch (data_line[1])
                         {
                             case 's': //
-                                loader_obj_class::number_of_materials++;
                                 position_count = 3;
                                 temp_string_data = "";
                                 while (position_count <= data_line.length())
@@ -111,7 +111,6 @@ void loader_obj_class::load_mtl(std::string file_name)
                                 }
                             break;
                             case 'i': //
-                                loader_obj_class::number_of_materials++;
                                 position_count = 3;
                                 temp_string_data = "";
                                 while (position_count <= data_line.length())
@@ -196,7 +195,6 @@ void loader_obj_class::load_mtl(std::string file_name)
                         }
                     break;
                     case 'd': //
-                        loader_obj_class::number_of_materials++;
                         position_count = 2;
                         temp_string_data = "";
                         while (position_count <= data_line.length())
@@ -207,7 +205,6 @@ void loader_obj_class::load_mtl(std::string file_name)
                         }
                     break;
                     case 'i': //
-                        loader_obj_class::number_of_materials++;
                         position_count = 6;
                         temp_string_data = "";
                         while (position_count <= data_line.length())
@@ -221,7 +218,6 @@ void loader_obj_class::load_mtl(std::string file_name)
                         switch (data_line[4])
                         {
                             case 'd': //
-                                loader_obj_class::number_of_materials++;
                                 position_count = 6;
                                 temp_string_data = "";
                                 while (position_count <= data_line.length())
@@ -232,7 +228,6 @@ void loader_obj_class::load_mtl(std::string file_name)
                                 }
                             break;
                             case 'K': //
-                                loader_obj_class::number_of_materials++;
                                 position_count = 7;
                                 temp_string_data = "";
                                 while (position_count <= data_line.length())
@@ -243,7 +238,6 @@ void loader_obj_class::load_mtl(std::string file_name)
                                 }
                             break;
                             case 'B': //
-                                loader_obj_class::number_of_materials++;
                                 position_count = 9;
                                 temp_string_data = "";
                                 while (position_count <= data_line.length())
@@ -278,7 +272,7 @@ void loader_obj_class::save_mtl(std::string file_name)
         script_file << "# Material Count: ";
         script_file << loader_obj_class::number_of_materials+1;
         script_file << "\n";
-        for (int material_count = 0; material_count < loader_obj_class::number_of_materials; material_count++)
+        for (int material_count = 0; material_count < loader_obj_class::number_of_materials+1; material_count++)
         {
             script_file << "newmtl ";
             script_file << loader_obj_class::material[material_count].material_name;
@@ -464,16 +458,20 @@ void loader_obj_class::load(std::string file_name)
                     case 'u': // load material to use after this point.
                         position_count = 7;
                         temp_string_data = "";
+                        loader_obj_class::number_of_use_materials++;
                         while (position_count <= data_line.length())
                         {
                             temp_string_data += data_line[position_count];
-                            loader_obj_class::usemtl = temp_string_data.c_str();
+                            loader_obj_class::use_material[number_of_use_materials].material_name = temp_string_data.c_str();
+                            loader_obj_class::use_material[number_of_use_materials].face_number   = loader_obj_class::number_of_faces;
                             position_count++;
                         }
                     break;
                     case 's': // load smooth shading state.
                         if (data_line[3] == 'n') loader_obj_class::smooth_shading = true;
                         if (data_line[3] == 'f') loader_obj_class::smooth_shading = false;
+                        if (data_line[2] == '1') loader_obj_class::smooth_shading = true;
+                        if (data_line[2] == '0') loader_obj_class::smooth_shading = false;
                     break;
                     case 'f': // load face data.
                         if (count_slashes)
@@ -603,6 +601,7 @@ void loader_obj_class::load(std::string file_name)
         script_file.close();
         //create VBO ?? Hmmm
     }
+    loader_obj_class::mtllib = game.core.file.path_get(file_name.c_str()) + loader_obj_class::mtllib;
     loader_obj_class::load_mtl(loader_obj_class::mtllib); // load the material data file for this object
     game.core.log.File_Write("OBJ file loaded           - ",file_name.c_str());
     game.core.log.File_Write("Number of vertices        - ",loader_obj_class::number_of_vertices);
@@ -613,8 +612,9 @@ void loader_obj_class::load(std::string file_name)
 
 void loader_obj_class::save(std::string file_name)
 {
-    //add file extension if it has been omitted
-    if (!game.core.file.extension_exist(file_name,"obj")) file_name = game.core.file.extension_add(file_name,"obj");
+    if (game.core.file.extension_exist(file_name,"obj")) file_name = game.core.file.extension_remove(file_name);
+    if (loader_obj_class::number_of_materials >= 0) loader_obj_class::save_mtl(game.core.file.extension_add(file_name,".mtl"));
+    file_name = game.core.file.extension_add(file_name,".obj");
     std::fstream script_file(file_name.c_str(),std::ios::out|std::ios::binary|std::ios::trunc);
     if (script_file.is_open())
     {
@@ -664,15 +664,24 @@ void loader_obj_class::save(std::string file_name)
                 script_file << "\n";
             }
         }
-        script_file << "usemtl ";
-        script_file << loader_obj_class::usemtl;
-        script_file << "\n";
-        script_file << "s ";
-        if (loader_obj_class::smooth_shading) script_file << "on";
-        else  script_file << "off";
-        script_file << "\n";
         for (int face_count = 0; face_count < loader_obj_class::number_of_faces; face_count++)
         {
+            if (loader_obj_class::number_of_use_materials >= 0)
+            {
+                for(int material_count = 0; material_count < loader_obj_class::number_of_use_materials; material_count++)
+                {
+                    if (loader_obj_class::use_material[material_count].face_number == face_count)
+                    {
+                        script_file << "usemtl ";
+                        script_file << loader_obj_class::use_material[material_count].material_name;
+                        script_file << "\n";
+                        script_file << "s ";
+                        if (loader_obj_class::smooth_shading) script_file << "on";
+                        else  script_file << "off";
+                        script_file << "\n";
+                    }
+                }
+            }
             script_file << "f ";
             if (loader_obj_class::face[face_count].vertex[0] > 0)
             {

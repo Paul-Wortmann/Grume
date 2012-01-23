@@ -33,12 +33,12 @@
 
 int init_game(bool re_init)
 {
-    game.test.load("data/male.obj");
+    game.test.load("data/models/male.obj");
+    game.test.save("data/models/out.obj");
     game.test.scale(0.2f,0.2f,0.2f);
     //game.test.set_angle(60.0f,0.0f,225.0f);
     game.test.set_position(0.0f,0.0f,-1.0f);
 
-    game.test.save("data/out.obj");
     game.global_ambient.intensity_R = 8.0f;
     game.global_ambient.intensity_G = 8.0f;
     game.global_ambient.intensity_B = 8.0f;
@@ -381,13 +381,6 @@ int process_game(void)
 /*----------------------------------------------------------------------------*/
 int display_game(void)
 {
-    float color_black[]        = {0.0f,0.0f,0.0f,1.0f};
-    float color_white[]        = {1.0f,1.0f,1.0f,1.0f};
-    float color_gray[]         = {0.6f,0.6f,0.6f,1.0f};
-    float color_red[]          = {1.0f,0.0f,0.0f,1.0f};
-    float color_blue[]         = {0.0f,0.0f,0.1f,1.0f};
-    float color_yellow[]       = {1.0f,1.0f,0.0f,1.0f};
-    float color_light_yellow[] = {0.5f,0.5f,0.0f,1.0f};
     if (game.world_ambient.increase) // day / night lighting
     {
         game.world_ambient.intensity_R += game.world_ambient.speed;
@@ -404,7 +397,6 @@ int display_game(void)
     }
     float  global_ambient_light[] = {game.global_ambient.intensity_R,game.global_ambient.intensity_G,game.global_ambient.intensity_B,game.global_ambient.intensity_A};
     float  world_ambient_light[]  = {game.world_ambient.intensity_R,game.world_ambient.intensity_G,game.world_ambient.intensity_B,game.world_ambient.intensity_A};
-    glLightModelfv(GL_LIGHT_MODEL_AMBIENT,color_black);
     glLightModelfv(GL_LIGHT_MODEL_AMBIENT,world_ambient_light);
 
 

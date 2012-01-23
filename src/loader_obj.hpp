@@ -84,14 +84,21 @@ struct material_type
     std::string       map_Bump;
 };
 
+struct use_material_type
+{
+    std::string       material_name;
+    int               face_number;
+};
+
 class loader_obj_class
 {
     public:
         angle_type            angle;
         std::string           model_name;
         std::string           mtllib;
-        std::string           usemtl;
+        use_material_type     use_material[MAX_MATERIALS];
         material_type         material[MAX_MATERIALS];
+        int                   number_of_use_materials;
         int                   number_of_materials;
         bool                  smooth_shading;
         int                   reference_ID;

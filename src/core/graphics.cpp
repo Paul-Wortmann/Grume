@@ -98,7 +98,8 @@ int   graphics_class::init_gl(int x_res, int y_res)
 	glLightfv(GL_LIGHT0, GL_SPECULAR, specularLight0);
 	glLightfv(GL_LIGHT0, GL_POSITION, position0);
     // Position and direction (spotlight)
-	//glEnable(GL_LIGHT1);
+	/*
+	glEnable(GL_LIGHT1);
     float posLight1[]     = {  0.0f,  0.0f, -1.0f,  1.0f };
     float spotDirection[] = {  0.0f,  0.0f, 1.0f };
 	float ambientLight1[]  = { 1.0f, 0.5f, 0.5f, 1.0f };
@@ -111,6 +112,7 @@ int   graphics_class::init_gl(int x_res, int y_res)
 	glLightfv( GL_LIGHT1, GL_DIFFUSE,  diffuseLight1);
 	glLightfv( GL_LIGHT1, GL_SPECULAR, specularLight1);
     glLightf ( GL_LIGHT1, GL_CONSTANT_ATTENUATION, 1.0f );
+    */
     /*
 	glEnable(GL_LIGHT1);
 	float ambientLight1[]  = { 1.0f, 0.5f, 0.5f, 1.0f };
