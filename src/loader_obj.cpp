@@ -43,6 +43,7 @@ loader_obj_class::loader_obj_class(void)
     loader_obj_class::angle.translation.x       =  0.0f;
     loader_obj_class::angle.translation.y       =  0.0f;
     loader_obj_class::angle.translation.z       =  0.0f;
+    loader_obj_class::vertex_texture_w          =  false;
 }
 
 loader_obj_class::~loader_obj_class(void)
@@ -477,6 +478,7 @@ void loader_obj_class::load(std::string file_name)
                                 }
                                 if (data_count == 1) loader_obj_class::vertex_texture[number_of_vertex_textures_count].v = atof(temp_string_data.c_str());
                                 if (data_count == 2) loader_obj_class::vertex_texture[number_of_vertex_textures_count].w = atof(temp_string_data.c_str());
+                                if (data_count == 2) loader_obj_class::vertex_texture_w = true;
                                 number_of_vertex_textures_count++;
                             break;
                             case 'n': // load vertex normal data
@@ -697,8 +699,11 @@ void loader_obj_class::save(std::string file_name)
                 script_file << loader_obj_class::vertex_texture[vertex_count].u;
                 script_file << " ";
                 script_file << loader_obj_class::vertex_texture[vertex_count].v;
-                script_file << " ";
-                script_file << loader_obj_class::vertex_texture[vertex_count].w;
+                if (loader_obj_class::vertex_texture_w)
+                {
+                    script_file << " ";
+                    script_file << loader_obj_class::vertex_texture[vertex_count].w;
+                }
                 script_file << "\n";
             }
         }
@@ -737,7 +742,7 @@ void loader_obj_class::save(std::string file_name)
             if (loader_obj_class::face[face_count].count_vertices > 0)
             {
                 script_file << loader_obj_class::face[face_count].vertex[0];
-                if ((loader_obj_class::number_of_vertex_textures > 0) && (loader_obj_class::number_of_vertex_normals == 0))
+                if ((loader_obj_class::number_of_vertex_textures > 0) && (loader_obj_class::number_of_vertex_normals == -1))
                 {
                     script_file << "/";
                     script_file << loader_obj_class::face[face_count].vertex_texture[0];
@@ -749,7 +754,7 @@ void loader_obj_class::save(std::string file_name)
                     script_file << "/";
                     script_file << loader_obj_class::face[face_count].vertex_normal[0];
                 }
-                if ((loader_obj_class::number_of_vertex_textures == 0) && (loader_obj_class::number_of_vertex_normals > 0))
+                if ((loader_obj_class::number_of_vertex_textures == -1) && (loader_obj_class::number_of_vertex_normals > 0))
                 {
                     script_file << "/";
                     script_file << "/";
@@ -760,7 +765,7 @@ void loader_obj_class::save(std::string file_name)
             if (loader_obj_class::face[face_count].count_vertices > 1)
             {
                 script_file << loader_obj_class::face[face_count].vertex[1];
-                if ((loader_obj_class::number_of_vertex_textures > 0) && (loader_obj_class::number_of_vertex_normals == 0))
+                if ((loader_obj_class::number_of_vertex_textures > 0) && (loader_obj_class::number_of_vertex_normals == -1))
                 {
                     script_file << "/";
                     script_file << loader_obj_class::face[face_count].vertex_texture[1];
@@ -772,7 +777,7 @@ void loader_obj_class::save(std::string file_name)
                     script_file << "/";
                     script_file << loader_obj_class::face[face_count].vertex_normal[1];
                 }
-                if ((loader_obj_class::number_of_vertex_textures == 0) && (loader_obj_class::number_of_vertex_normals > 0))
+                if ((loader_obj_class::number_of_vertex_textures == -1) && (loader_obj_class::number_of_vertex_normals > 0))
                 {
                     script_file << "/";
                     script_file << "/";
@@ -783,7 +788,7 @@ void loader_obj_class::save(std::string file_name)
             if (loader_obj_class::face[face_count].count_vertices > 2)
             {
                 script_file << loader_obj_class::face[face_count].vertex[2];
-                if ((loader_obj_class::number_of_vertex_textures > 0) && (loader_obj_class::number_of_vertex_normals == 0))
+                if ((loader_obj_class::number_of_vertex_textures > 0) && (loader_obj_class::number_of_vertex_normals == -1))
                 {
                     script_file << "/";
                     script_file << loader_obj_class::face[face_count].vertex_texture[2];
@@ -795,7 +800,7 @@ void loader_obj_class::save(std::string file_name)
                     script_file << "/";
                     script_file << loader_obj_class::face[face_count].vertex_normal[2];
                 }
-                if ((loader_obj_class::number_of_vertex_textures == 0) && (loader_obj_class::number_of_vertex_normals > 0))
+                if ((loader_obj_class::number_of_vertex_textures == -1) && (loader_obj_class::number_of_vertex_normals > 0))
                 {
                     script_file << "/";
                     script_file << "/";
@@ -806,7 +811,7 @@ void loader_obj_class::save(std::string file_name)
             if (loader_obj_class::face[face_count].count_vertices > 3)
             {
                 script_file << loader_obj_class::face[face_count].vertex[3];
-                if ((loader_obj_class::number_of_vertex_textures > 0) && (loader_obj_class::number_of_vertex_normals == 0))
+                if ((loader_obj_class::number_of_vertex_textures > 0) && (loader_obj_class::number_of_vertex_normals == -1))
                 {
                     script_file << "/";
                     script_file << loader_obj_class::face[face_count].vertex_texture[3];
@@ -818,7 +823,7 @@ void loader_obj_class::save(std::string file_name)
                     script_file << "/";
                     script_file << loader_obj_class::face[face_count].vertex_normal[3];
                 }
-                if ((loader_obj_class::number_of_vertex_textures == 0) && (loader_obj_class::number_of_vertex_normals > 0))
+                if ((loader_obj_class::number_of_vertex_textures == -1) && (loader_obj_class::number_of_vertex_normals > 0))
                 {
                     script_file << "/";
                     script_file << "/";

@@ -106,6 +106,7 @@ class loader_obj_class
         int                   number_of_vertex_textures;
         int                   number_of_vertex_normals;
         int                   number_of_faces;
+        bool                  vertex_texture_w;
         vertex_type*          vertex;
         vertex_texture_type*  vertex_texture;
         vertex_normal_type*   vertex_normal;
