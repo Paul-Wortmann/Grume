@@ -26,11 +26,11 @@
 #define LOADER_OBJ_H
 
 #include <string>
-
+/*
 const int MAX_VERTICES  = 1256;
 const int MAX_FACES     = 1256;
 const int MAX_MATERIALS = 16;
-
+*/
 struct vertex_type
 {
     float x;
@@ -96,8 +96,8 @@ class loader_obj_class
         angle_type            angle;
         std::string           model_name;
         std::string           mtllib;
-        use_material_type     use_material[MAX_MATERIALS];
-        material_type         material[MAX_MATERIALS];
+        use_material_type*    use_material;
+        material_type*        material;
         int                   number_of_use_materials;
         int                   number_of_materials;
         bool                  smooth_shading;
@@ -106,10 +106,10 @@ class loader_obj_class
         int                   number_of_vertex_textures;
         int                   number_of_vertex_normals;
         int                   number_of_faces;
-        vertex_type           vertex[MAX_VERTICES];
-        vertex_texture_type   vertex_texture[MAX_VERTICES];
-        vertex_normal_type    vertex_normal[MAX_VERTICES];
-        face_type             face[MAX_FACES];
+        vertex_type*          vertex;
+        vertex_texture_type*  vertex_texture;
+        vertex_normal_type*   vertex_normal;
+        face_type*            face;
         loader_obj_class(void);
        ~loader_obj_class(void);
         void                  load_mtl(std::string file_name);
