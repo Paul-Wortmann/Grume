@@ -26,11 +26,7 @@
 #define LOADER_OBJ_H
 
 #include <string>
-/*
-const int MAX_VERTICES  = 1256;
-const int MAX_FACES     = 1256;
-const int MAX_MATERIALS = 16;
-*/
+
 struct vertex_type
 {
     float x;

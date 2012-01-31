@@ -517,7 +517,7 @@ void loader_obj_class::load(std::string file_name)
                             position_count++;
                         }
                         loader_obj_class::use_material[number_of_use_materials_count].material_name = temp_string_data.c_str();
-                        loader_obj_class::use_material[number_of_use_materials_count].face_number   = number_of_faces_count+1;
+                        loader_obj_class::use_material[number_of_use_materials_count].face_number   = number_of_faces_count;
                         number_of_use_materials_count++;
                     break;
                     case 's': // load smooth shading state.
@@ -529,6 +529,7 @@ void loader_obj_class::load(std::string file_name)
                     case 'f': // load face data.
                         if (count_slashes)
                         {
+                            slash_count    = 0;
                             position_count = 2;
                             while ((position_count < data_line.length()) && (data_line[position_count] != ' '))
                             {
@@ -554,16 +555,16 @@ void loader_obj_class::load(std::string file_name)
                                     }
                                     else
                                     {
-                                        loader_obj_class::face[number_of_faces_count].vertex[data_count_v] = atoi(temp_string_data.c_str());
+                                        loader_obj_class::face[number_of_faces_count].vertex[data_count_v] = atoi(temp_string_data.c_str())-1;
                                         data_count_v++;
                                         temp_string_data = "";
                                     }
                                     position_count++;
                                 }
                                 loader_obj_class::face[number_of_faces_count].count_vertices         = data_count_v;
-                                loader_obj_class::face[number_of_faces_count].count_vertex_textures  = 0;
-                                loader_obj_class::face[number_of_faces_count].count_vertex_normals   = 0;
-                                loader_obj_class::face[number_of_faces_count].vertex[data_count_v]   = atoi(temp_string_data.c_str());
+                                loader_obj_class::face[number_of_faces_count].count_vertex_textures  = -1;
+                                loader_obj_class::face[number_of_faces_count].count_vertex_normals   = -1;
+                                loader_obj_class::face[number_of_faces_count].vertex[data_count_v]   = atoi(temp_string_data.c_str())-1;
                             break;
                             case 1: // vertex data and vertex texture data
                                 position_count   = 2;
@@ -582,13 +583,13 @@ void loader_obj_class::load(std::string file_name)
                                     {
                                         if (data_line[position_count] == '/')
                                         {
-                                            loader_obj_class::face[number_of_faces_count].vertex[data_count_v] = atoi(temp_string_data.c_str());
+                                            loader_obj_class::face[number_of_faces_count].vertex[data_count_v] = atoi(temp_string_data.c_str())-1;
                                             data_count_v++;
                                             temp_string_data = "";
                                         }
                                         if (data_line[position_count] == ' ')
                                         {
-                                            loader_obj_class::face[number_of_faces_count].vertex_texture[data_count_vt] = atoi(temp_string_data.c_str());
+                                            loader_obj_class::face[number_of_faces_count].vertex_texture[data_count_vt] = atoi(temp_string_data.c_str())-1;
                                             data_count_vt++;
                                             temp_string_data = "";
                                         }
@@ -597,8 +598,8 @@ void loader_obj_class::load(std::string file_name)
                                 }
                                 loader_obj_class::face[number_of_faces_count].count_vertices         = data_count_v;
                                 loader_obj_class::face[number_of_faces_count].count_vertex_textures  = data_count_vt;
-                                loader_obj_class::face[number_of_faces_count].count_vertex_normals   = 0;
-                                loader_obj_class::face[number_of_faces_count].vertex_texture[data_count_vt]   = atoi(temp_string_data.c_str());
+                                loader_obj_class::face[number_of_faces_count].count_vertex_normals   = -1;
+                                loader_obj_class::face[number_of_faces_count].vertex_texture[data_count_vt]   = atoi(temp_string_data.c_str())-1;
                             break;
                             case 2: // vertex data, vertex texture data and vertex normal data
                                 position_count   = 2;
@@ -615,23 +616,26 @@ void loader_obj_class::load(std::string file_name)
                                     }
                                     else
                                     {
-                                        if ((data_line[position_count] == '/') && (data_count == 0))
+                                        if (data_line[position_count] == '/')
                                         {
-                                            loader_obj_class::face[number_of_faces_count].vertex[data_count_v] = atoi(temp_string_data.c_str());
-                                            data_count_v++;
-                                            temp_string_data = "";
-                                            data_count++;
-                                        }
-                                        if ((data_line[position_count] == '/') && (data_count == 1))
-                                        {
-                                            loader_obj_class::face[number_of_faces_count].vertex_texture[data_count_vt] = atoi(temp_string_data.c_str());
-                                            data_count_vt++;
-                                            temp_string_data = "";
-                                            data_count = 0;
+                                            if (data_count == 0)
+                                            {
+                                                loader_obj_class::face[number_of_faces_count].vertex[data_count_v] = atoi(temp_string_data.c_str())-1;
+                                                data_count_v++;
+                                                temp_string_data = "";
+                                                data_count = 1;
+                                            }
+                                            else
+                                            {
+                                                loader_obj_class::face[number_of_faces_count].vertex_texture[data_count_vt] = atoi(temp_string_data.c_str())-1;
+                                                data_count_vt++;
+                                                temp_string_data = "";
+                                                data_count = 0;
+                                            }
                                         }
                                         if (data_line[position_count] == ' ')
                                         {
-                                            loader_obj_class::face[number_of_faces_count].vertex_normal[data_count_vn] = atoi(temp_string_data.c_str());
+                                            loader_obj_class::face[number_of_faces_count].vertex_normal[data_count_vn] = atoi(temp_string_data.c_str())-1;
                                             data_count_vn++;
                                             temp_string_data = "";
                                         }
@@ -641,7 +645,7 @@ void loader_obj_class::load(std::string file_name)
                                 loader_obj_class::face[number_of_faces_count].count_vertices         = data_count_v;
                                 loader_obj_class::face[number_of_faces_count].count_vertex_textures  = data_count_vt;
                                 loader_obj_class::face[number_of_faces_count].count_vertex_normals   = data_count_vn;
-                                loader_obj_class::face[number_of_faces_count].vertex_normal[data_count_vt]   = atoi(temp_string_data.c_str());
+                                loader_obj_class::face[number_of_faces_count].vertex_normal[data_count_vn]   = atoi(temp_string_data.c_str())-1;
                             break;
                         }
                         number_of_faces_count++;
@@ -656,11 +660,13 @@ void loader_obj_class::load(std::string file_name)
     }
     loader_obj_class::mtllib = game.core.file.path_get(file_name.c_str()) + loader_obj_class::mtllib;
     loader_obj_class::load_mtl(loader_obj_class::mtllib); // load the material data file for this object
-    game.core.log.File_Write("OBJ file loaded           - ",file_name.c_str());
-    game.core.log.File_Write("Number of vertices        - ",loader_obj_class::number_of_vertices);
-    game.core.log.File_Write("Number of vertex textures - ",loader_obj_class::number_of_vertex_textures);
-    game.core.log.File_Write("Number of vertex normals  - ",loader_obj_class::number_of_vertex_normals);
-    game.core.log.File_Write("Number of faces           - ",loader_obj_class::number_of_faces);
+    game.core.log.File_Write("OBJ file loaded             - ",file_name.c_str());
+    game.core.log.File_Write("Number of use materials     - ",loader_obj_class::number_of_use_materials);
+    game.core.log.File_Write("Number of vertices          - ",loader_obj_class::number_of_vertices);
+    game.core.log.File_Write("Number of vertex textures   - ",loader_obj_class::number_of_vertex_textures);
+    game.core.log.File_Write("Number of vertex normals    - ",loader_obj_class::number_of_vertex_normals);
+    game.core.log.File_Write("Number of faces             - ",loader_obj_class::number_of_faces);
+    game.core.log.File_Write("number of vertices per face - ",loader_obj_class::face[0].count_vertices);
 };
 
 void loader_obj_class::save(std::string file_name)
@@ -681,7 +687,7 @@ void loader_obj_class::save(std::string file_name)
         script_file << "o ";
         script_file << loader_obj_class::model_name;
         script_file << "\n";
-        for (int vertex_count = 0; vertex_count < loader_obj_class::number_of_vertices; vertex_count++)
+        for (int vertex_count = 0; vertex_count <= loader_obj_class::number_of_vertices; vertex_count++)
         {
             script_file << "v ";
             script_file << loader_obj_class::vertex[vertex_count].x;
@@ -693,7 +699,7 @@ void loader_obj_class::save(std::string file_name)
         }
         if (loader_obj_class::number_of_vertex_textures > 0)
         {
-            for (int vertex_count = 0; vertex_count < loader_obj_class::number_of_vertex_textures; vertex_count++)
+            for (int vertex_count = 0; vertex_count <= loader_obj_class::number_of_vertex_textures; vertex_count++)
             {
                 script_file << "vt ";
                 script_file << loader_obj_class::vertex_texture[vertex_count].u;
@@ -709,7 +715,7 @@ void loader_obj_class::save(std::string file_name)
         }
         if (loader_obj_class::number_of_vertex_normals > 0)
         {
-            for (int vertex_count = 0; vertex_count < loader_obj_class::number_of_vertex_normals; vertex_count++)
+            for (int vertex_count = 0; vertex_count <= loader_obj_class::number_of_vertex_normals; vertex_count++)
             {
                 script_file << "vn ";
                 script_file << loader_obj_class::vertex_normal[vertex_count].i;
@@ -720,7 +726,7 @@ void loader_obj_class::save(std::string file_name)
                 script_file << "\n";
             }
         }
-        for (int face_count = 0; face_count < loader_obj_class::number_of_faces; face_count++)
+        for (int face_count = 0; face_count <= loader_obj_class::number_of_faces; face_count++)
         {
             if (loader_obj_class::number_of_use_materials >= 0)
             {
@@ -739,95 +745,95 @@ void loader_obj_class::save(std::string file_name)
                 }
             }
             script_file << "f ";
-            if (loader_obj_class::face[face_count].count_vertices > 0)
+            if (loader_obj_class::face[face_count].count_vertices >= 0)
             {
-                script_file << loader_obj_class::face[face_count].vertex[0];
+                script_file << loader_obj_class::face[face_count].vertex[0]+1;
                 if ((loader_obj_class::number_of_vertex_textures > 0) && (loader_obj_class::number_of_vertex_normals == -1))
                 {
                     script_file << "/";
-                    script_file << loader_obj_class::face[face_count].vertex_texture[0];
+                    script_file << loader_obj_class::face[face_count].vertex_texture[0]+1;
                 }
                 if ((loader_obj_class::number_of_vertex_textures > 0) && (loader_obj_class::number_of_vertex_normals > 0))
                 {
                     script_file << "/";
-                    script_file << loader_obj_class::face[face_count].vertex_texture[0];
+                    script_file << loader_obj_class::face[face_count].vertex_texture[0]+1;
                     script_file << "/";
-                    script_file << loader_obj_class::face[face_count].vertex_normal[0];
+                    script_file << loader_obj_class::face[face_count].vertex_normal[0]+1;
                 }
                 if ((loader_obj_class::number_of_vertex_textures == -1) && (loader_obj_class::number_of_vertex_normals > 0))
                 {
                     script_file << "/";
                     script_file << "/";
-                    script_file << loader_obj_class::face[face_count].vertex_normal[0];
+                    script_file << loader_obj_class::face[face_count].vertex_normal[0]+1;
                 }
                 script_file << " ";
             }
-            if (loader_obj_class::face[face_count].count_vertices > 1)
+            if (loader_obj_class::face[face_count].count_vertices >= 1)
             {
-                script_file << loader_obj_class::face[face_count].vertex[1];
+                script_file << loader_obj_class::face[face_count].vertex[1]+1;
                 if ((loader_obj_class::number_of_vertex_textures > 0) && (loader_obj_class::number_of_vertex_normals == -1))
                 {
                     script_file << "/";
-                    script_file << loader_obj_class::face[face_count].vertex_texture[1];
+                    script_file << loader_obj_class::face[face_count].vertex_texture[1]+1;
                 }
                 if ((loader_obj_class::number_of_vertex_textures > 0) && (loader_obj_class::number_of_vertex_normals > 0))
                 {
                     script_file << "/";
-                    script_file << loader_obj_class::face[face_count].vertex_texture[1];
+                    script_file << loader_obj_class::face[face_count].vertex_texture[1]+1;
                     script_file << "/";
-                    script_file << loader_obj_class::face[face_count].vertex_normal[1];
+                    script_file << loader_obj_class::face[face_count].vertex_normal[1]+1;
                 }
                 if ((loader_obj_class::number_of_vertex_textures == -1) && (loader_obj_class::number_of_vertex_normals > 0))
                 {
                     script_file << "/";
                     script_file << "/";
-                    script_file << loader_obj_class::face[face_count].vertex_normal[1];
+                    script_file << loader_obj_class::face[face_count].vertex_normal[1]+1;
                 }
                 script_file << " ";
             }
-            if (loader_obj_class::face[face_count].count_vertices > 2)
+            if (loader_obj_class::face[face_count].count_vertices >= 2)
             {
-                script_file << loader_obj_class::face[face_count].vertex[2];
+                script_file << loader_obj_class::face[face_count].vertex[2]+1;
                 if ((loader_obj_class::number_of_vertex_textures > 0) && (loader_obj_class::number_of_vertex_normals == -1))
                 {
                     script_file << "/";
-                    script_file << loader_obj_class::face[face_count].vertex_texture[2];
+                    script_file << loader_obj_class::face[face_count].vertex_texture[2]+1;
                 }
                 if ((loader_obj_class::number_of_vertex_textures > 0) && (loader_obj_class::number_of_vertex_normals > 0))
                 {
                     script_file << "/";
-                    script_file << loader_obj_class::face[face_count].vertex_texture[2];
+                    script_file << loader_obj_class::face[face_count].vertex_texture[2]+1;
                     script_file << "/";
-                    script_file << loader_obj_class::face[face_count].vertex_normal[2];
+                    script_file << loader_obj_class::face[face_count].vertex_normal[2]+1;
                 }
                 if ((loader_obj_class::number_of_vertex_textures == -1) && (loader_obj_class::number_of_vertex_normals > 0))
                 {
                     script_file << "/";
                     script_file << "/";
-                    script_file << loader_obj_class::face[face_count].vertex_normal[2];
+                    script_file << loader_obj_class::face[face_count].vertex_normal[2]+1;
                 }
                 script_file << " ";
             }
-            if (loader_obj_class::face[face_count].count_vertices > 3)
+            if (loader_obj_class::face[face_count].count_vertices >= 3)
             {
-                script_file << loader_obj_class::face[face_count].vertex[3];
+                script_file << loader_obj_class::face[face_count].vertex[3]+1;
                 if ((loader_obj_class::number_of_vertex_textures > 0) && (loader_obj_class::number_of_vertex_normals == -1))
                 {
                     script_file << "/";
-                    script_file << loader_obj_class::face[face_count].vertex_texture[3];
+                    script_file << loader_obj_class::face[face_count].vertex_texture[3]+1;
                 }
                 if ((loader_obj_class::number_of_vertex_textures > 0) && (loader_obj_class::number_of_vertex_normals > 0))
                 {
                     script_file << "/";
-                    script_file << loader_obj_class::face[face_count].vertex_texture[3];
+                    script_file << loader_obj_class::face[face_count].vertex_texture[3]+1;
                     script_file << "/";
-                    script_file << loader_obj_class::face[face_count].vertex_normal[3];
+                    script_file << loader_obj_class::face[face_count].vertex_normal[3]+1;
                 }
                 if ((loader_obj_class::number_of_vertex_textures == -1) && (loader_obj_class::number_of_vertex_normals > 0))
                 {
                     script_file << "/";
                     script_file << "/";
-                    script_file << loader_obj_class::face[face_count].vertex_normal[3];
+                    script_file << loader_obj_class::face[face_count].vertex_normal[3]+1;
                 }
             }
             script_file << "\n";
@@ -838,7 +844,7 @@ void loader_obj_class::save(std::string file_name)
 
 void loader_obj_class::scale(float scale_value)
 {
-    for (int vertex_count = 0; vertex_count <  loader_obj_class::number_of_vertices; vertex_count++)
+    for (int vertex_count = 0; vertex_count <=  loader_obj_class::number_of_vertices; vertex_count++)
     {
         loader_obj_class::vertex[vertex_count].x *= scale_value;
         loader_obj_class::vertex[vertex_count].y *= scale_value;
@@ -848,7 +854,7 @@ void loader_obj_class::scale(float scale_value)
 
 void loader_obj_class::scale(float scale_x, float scale_y, float scale_z)
 {
-    for (int vertex_count = 0; vertex_count <  loader_obj_class::number_of_vertices; vertex_count++)
+    for (int vertex_count = 0; vertex_count <= loader_obj_class::number_of_vertices; vertex_count++)
     {
         loader_obj_class::vertex[vertex_count].x *= scale_x;
         loader_obj_class::vertex[vertex_count].y *= scale_y;
@@ -879,7 +885,7 @@ void loader_obj_class::relocate(float x, float y, float z) // relocate vertex 0
     loader_obj_class::vertex[0].x = x;
     loader_obj_class::vertex[0].y = y;
     loader_obj_class::vertex[0].z = z;
-    for (int vertex_count = 1; vertex_count <  loader_obj_class::number_of_vertices; vertex_count++)
+    for (int vertex_count = 1; vertex_count <=  loader_obj_class::number_of_vertices; vertex_count++)
     {
         loader_obj_class::vertex[vertex_count].x -= temp_x;
         loader_obj_class::vertex[vertex_count].y -= temp_y;
@@ -910,58 +916,58 @@ void loader_obj_class::draw(void)
     glRotatef(loader_obj_class::angle.rotation.y,0,1,0);
     glRotatef(loader_obj_class::angle.rotation.z,0,0,1);
     glTranslatef(loader_obj_class::angle.translation.x,loader_obj_class::angle.translation.y,loader_obj_class::angle.translation.z);
-    for (int face_count = 0; face_count < loader_obj_class::number_of_faces; face_count++)
+    for (int face_count = 0; face_count <= loader_obj_class::number_of_faces; face_count++)
     {
         if (loader_obj_class::face[face_count].count_vertices == 4) // face is a quadrangle
         {
             glBegin(GL_QUADS);
                 // Vertex 1
-                if (loader_obj_class::number_of_vertex_normals > 0) glNormal3f(loader_obj_class::vertex_normal[loader_obj_class::face[face_count].vertex_normal[0]-1].i,loader_obj_class::vertex_normal[loader_obj_class::face[face_count].vertex_normal[0]-1].j,loader_obj_class::vertex_normal[loader_obj_class::face[face_count].vertex_normal[0]-1].k);
+                if (loader_obj_class::number_of_vertex_normals > 0) glNormal3f(loader_obj_class::vertex_normal[loader_obj_class::face[face_count].vertex_normal[0]].i,loader_obj_class::vertex_normal[loader_obj_class::face[face_count].vertex_normal[0]].j,loader_obj_class::vertex_normal[loader_obj_class::face[face_count].vertex_normal[0]].k);
                 else glNormal3f( 0.0f, 0.0f, 1.0f);
-                if (loader_obj_class::number_of_vertex_textures > 0) glTexCoord2i(loader_obj_class::vertex_texture[loader_obj_class::face[face_count].vertex_texture[0]-1].u,loader_obj_class::vertex_texture[loader_obj_class::face[face_count].vertex_texture[0]-1].v);
+                if (loader_obj_class::number_of_vertex_textures > 0) glTexCoord2i(loader_obj_class::vertex_texture[loader_obj_class::face[face_count].vertex_texture[0]].u,loader_obj_class::vertex_texture[loader_obj_class::face[face_count].vertex_texture[0]].v);
                 else glTexCoord2i( 0, 1);
-                glVertex3f(loader_obj_class::vertex[loader_obj_class::face[face_count].vertex[0]-1].x,loader_obj_class::vertex[loader_obj_class::face[face_count].vertex[0]-1].y,loader_obj_class::vertex[loader_obj_class::face[face_count].vertex[0]-1].z);
+                glVertex3f(loader_obj_class::vertex[loader_obj_class::face[face_count].vertex[0]].x,loader_obj_class::vertex[loader_obj_class::face[face_count].vertex[0]].y,loader_obj_class::vertex[loader_obj_class::face[face_count].vertex[0]].z);
                 // Vertex 2
-                if (loader_obj_class::number_of_vertex_normals > 0) glNormal3f(loader_obj_class::vertex_normal[loader_obj_class::face[face_count].vertex_normal[1]-1].i,loader_obj_class::vertex_normal[loader_obj_class::face[face_count].vertex_normal[1]-1].j,loader_obj_class::vertex_normal[loader_obj_class::face[face_count].vertex_normal[1]-1].k);
+                if (loader_obj_class::number_of_vertex_normals > 0) glNormal3f(loader_obj_class::vertex_normal[loader_obj_class::face[face_count].vertex_normal[1]].i,loader_obj_class::vertex_normal[loader_obj_class::face[face_count].vertex_normal[1]].j,loader_obj_class::vertex_normal[loader_obj_class::face[face_count].vertex_normal[1]].k);
                 else glNormal3f( 0.0f, 0.0f, 1.0f);
-                if (loader_obj_class::number_of_vertex_textures > 0) glTexCoord2i(loader_obj_class::vertex_texture[loader_obj_class::face[face_count].vertex_texture[1]-1].u,loader_obj_class::vertex_texture[loader_obj_class::face[face_count].vertex_texture[1]-1].v);
+                if (loader_obj_class::number_of_vertex_textures > 0) glTexCoord2i(loader_obj_class::vertex_texture[loader_obj_class::face[face_count].vertex_texture[1]].u,loader_obj_class::vertex_texture[loader_obj_class::face[face_count].vertex_texture[1]].v);
                 else glTexCoord2i( 0, 0 );
-                glVertex3f(loader_obj_class::vertex[loader_obj_class::face[face_count].vertex[1]-1].x,loader_obj_class::vertex[loader_obj_class::face[face_count].vertex[1]-1].y,loader_obj_class::vertex[loader_obj_class::face[face_count].vertex[1]-1].z);
+                glVertex3f(loader_obj_class::vertex[loader_obj_class::face[face_count].vertex[1]].x,loader_obj_class::vertex[loader_obj_class::face[face_count].vertex[1]].y,loader_obj_class::vertex[loader_obj_class::face[face_count].vertex[1]].z);
                 // Vertex 3
-                if (loader_obj_class::number_of_vertex_normals > 0) glNormal3f(loader_obj_class::vertex_normal[loader_obj_class::face[face_count].vertex_normal[2]-1].i,loader_obj_class::vertex_normal[loader_obj_class::face[face_count].vertex_normal[2]-1].j,loader_obj_class::vertex_normal[loader_obj_class::face[face_count].vertex_normal[2]-1].k);
+                if (loader_obj_class::number_of_vertex_normals > 0) glNormal3f(loader_obj_class::vertex_normal[loader_obj_class::face[face_count].vertex_normal[2]].i,loader_obj_class::vertex_normal[loader_obj_class::face[face_count].vertex_normal[2]].j,loader_obj_class::vertex_normal[loader_obj_class::face[face_count].vertex_normal[2]].k);
                 else glNormal3f( 0.0f, 0.0f, 1.0f);
-                if (loader_obj_class::number_of_vertex_textures > 0) glTexCoord2i(loader_obj_class::vertex_texture[loader_obj_class::face[face_count].vertex_texture[2]-1].u,loader_obj_class::vertex_texture[loader_obj_class::face[face_count].vertex_texture[2]-1].v);
+                if (loader_obj_class::number_of_vertex_textures > 0) glTexCoord2i(loader_obj_class::vertex_texture[loader_obj_class::face[face_count].vertex_texture[2]].u,loader_obj_class::vertex_texture[loader_obj_class::face[face_count].vertex_texture[2]].v);
                 else glTexCoord2i( 1, 0 );
-                glVertex3f(loader_obj_class::vertex[loader_obj_class::face[face_count].vertex[2]-1].x,loader_obj_class::vertex[loader_obj_class::face[face_count].vertex[2]-1].y,loader_obj_class::vertex[loader_obj_class::face[face_count].vertex[2]-1].z);
+                glVertex3f(loader_obj_class::vertex[loader_obj_class::face[face_count].vertex[2]].x,loader_obj_class::vertex[loader_obj_class::face[face_count].vertex[2]].y,loader_obj_class::vertex[loader_obj_class::face[face_count].vertex[2]].z);
                 // Vertex 4
-                if (loader_obj_class::number_of_vertex_normals > 0) glNormal3f(loader_obj_class::vertex_normal[loader_obj_class::face[face_count].vertex_normal[3]-1].i,loader_obj_class::vertex_normal[loader_obj_class::face[face_count].vertex_normal[3]-1].j,loader_obj_class::vertex_normal[loader_obj_class::face[face_count].vertex_normal[3]-1].k);
+                if (loader_obj_class::number_of_vertex_normals > 0) glNormal3f(loader_obj_class::vertex_normal[loader_obj_class::face[face_count].vertex_normal[3]].i,loader_obj_class::vertex_normal[loader_obj_class::face[face_count].vertex_normal[3]].j,loader_obj_class::vertex_normal[loader_obj_class::face[face_count].vertex_normal[3]].k);
                 else glNormal3f( 0.0f, 0.0f, 1.0f);
-                if (loader_obj_class::number_of_vertex_textures > 0) glTexCoord2i(loader_obj_class::vertex_texture[loader_obj_class::face[face_count].vertex_texture[3]-1].u,loader_obj_class::vertex_texture[loader_obj_class::face[face_count].vertex_texture[3]-1].v);
+                if (loader_obj_class::number_of_vertex_textures > 0) glTexCoord2i(loader_obj_class::vertex_texture[loader_obj_class::face[face_count].vertex_texture[3]].u,loader_obj_class::vertex_texture[loader_obj_class::face[face_count].vertex_texture[3]].v);
                 else glTexCoord2i( 1, 1 );
-                glVertex3f(loader_obj_class::vertex[loader_obj_class::face[face_count].vertex[3]-1].x,loader_obj_class::vertex[loader_obj_class::face[face_count].vertex[3]-1].y,loader_obj_class::vertex[loader_obj_class::face[face_count].vertex[3]-1].z);
+                glVertex3f(loader_obj_class::vertex[loader_obj_class::face[face_count].vertex[3]].x,loader_obj_class::vertex[loader_obj_class::face[face_count].vertex[3]].y,loader_obj_class::vertex[loader_obj_class::face[face_count].vertex[3]].z);
             glEnd();
         }
         if (loader_obj_class::face[face_count].count_vertices == 3) // face is a triangle
         {
             glBegin(GL_TRIANGLES);
                 // Vertex 1
-                if (loader_obj_class::number_of_vertex_normals > 0) glNormal3f(loader_obj_class::vertex_normal[loader_obj_class::face[face_count].vertex_normal[0]-1].i,loader_obj_class::vertex_normal[loader_obj_class::face[face_count].vertex_normal[0]-1].j,loader_obj_class::vertex_normal[loader_obj_class::face[face_count].vertex_normal[0]-1].k);
+                if (loader_obj_class::number_of_vertex_normals > 0) glNormal3f(loader_obj_class::vertex_normal[loader_obj_class::face[face_count].vertex_normal[0]].i,loader_obj_class::vertex_normal[loader_obj_class::face[face_count].vertex_normal[0]].j,loader_obj_class::vertex_normal[loader_obj_class::face[face_count].vertex_normal[0]].k);
                 else glNormal3f( 0.0f, 0.0f, 1.0f);
-                if (loader_obj_class::number_of_vertex_textures > 0) glTexCoord2i(loader_obj_class::vertex_texture[loader_obj_class::face[face_count].vertex_texture[0]-1].u,loader_obj_class::vertex_texture[loader_obj_class::face[face_count].vertex_texture[0]-1].v);
+                if (loader_obj_class::number_of_vertex_textures > 0) glTexCoord2i(loader_obj_class::vertex_texture[loader_obj_class::face[face_count].vertex_texture[0]].u,loader_obj_class::vertex_texture[loader_obj_class::face[face_count].vertex_texture[0]].v);
                 else glTexCoord2i( 0, 1);
-                glVertex3f(loader_obj_class::vertex[loader_obj_class::face[face_count].vertex[0]-1].x,loader_obj_class::vertex[loader_obj_class::face[face_count].vertex[0]-1].y,loader_obj_class::vertex[loader_obj_class::face[face_count].vertex[0]-1].z);
+                glVertex3f(loader_obj_class::vertex[loader_obj_class::face[face_count].vertex[0]].x,loader_obj_class::vertex[loader_obj_class::face[face_count].vertex[0]].y,loader_obj_class::vertex[loader_obj_class::face[face_count].vertex[0]].z);
                 // Vertex 2
-                if (loader_obj_class::number_of_vertex_normals > 0) glNormal3f(loader_obj_class::vertex_normal[loader_obj_class::face[face_count].vertex_normal[1]-1].i,loader_obj_class::vertex_normal[loader_obj_class::face[face_count].vertex_normal[1]-1].j,loader_obj_class::vertex_normal[loader_obj_class::face[face_count].vertex_normal[1]-1].k);
+                if (loader_obj_class::number_of_vertex_normals > 0) glNormal3f(loader_obj_class::vertex_normal[loader_obj_class::face[face_count].vertex_normal[1]].i,loader_obj_class::vertex_normal[loader_obj_class::face[face_count].vertex_normal[1]].j,loader_obj_class::vertex_normal[loader_obj_class::face[face_count].vertex_normal[1]].k);
                 else glNormal3f( 0.0f, 0.0f, 1.0f);
-                if (loader_obj_class::number_of_vertex_textures > 0) glTexCoord2i(loader_obj_class::vertex_texture[loader_obj_class::face[face_count].vertex_texture[1]-1].u,loader_obj_class::vertex_texture[loader_obj_class::face[face_count].vertex_texture[1]-1].v);
+                if (loader_obj_class::number_of_vertex_textures > 0) glTexCoord2i(loader_obj_class::vertex_texture[loader_obj_class::face[face_count].vertex_texture[1]].u,loader_obj_class::vertex_texture[loader_obj_class::face[face_count].vertex_texture[1]].v);
                 else glTexCoord2i( 0, 0 );
-                glVertex3f(loader_obj_class::vertex[loader_obj_class::face[face_count].vertex[1]-1].x,loader_obj_class::vertex[loader_obj_class::face[face_count].vertex[1]-1].y,loader_obj_class::vertex[loader_obj_class::face[face_count].vertex[1]-1].z);
+                glVertex3f(loader_obj_class::vertex[loader_obj_class::face[face_count].vertex[1]].x,loader_obj_class::vertex[loader_obj_class::face[face_count].vertex[1]].y,loader_obj_class::vertex[loader_obj_class::face[face_count].vertex[1]].z);
                 // Vertex 3
-                if (loader_obj_class::number_of_vertex_normals > 0) glNormal3f(loader_obj_class::vertex_normal[loader_obj_class::face[face_count].vertex_normal[2]-1].i,loader_obj_class::vertex_normal[loader_obj_class::face[face_count].vertex_normal[2]-1].j,loader_obj_class::vertex_normal[loader_obj_class::face[face_count].vertex_normal[2]-1].k);
+                if (loader_obj_class::number_of_vertex_normals > 0) glNormal3f(loader_obj_class::vertex_normal[loader_obj_class::face[face_count].vertex_normal[2]].i,loader_obj_class::vertex_normal[loader_obj_class::face[face_count].vertex_normal[2]].j,loader_obj_class::vertex_normal[loader_obj_class::face[face_count].vertex_normal[2]].k);
                 else glNormal3f( 0.0f, 0.0f, 1.0f);
-                if (loader_obj_class::number_of_vertex_textures > 0) glTexCoord2i(loader_obj_class::vertex_texture[loader_obj_class::face[face_count].vertex_texture[2]-1].u,loader_obj_class::vertex_texture[loader_obj_class::face[face_count].vertex_texture[2]-1].v);
+                if (loader_obj_class::number_of_vertex_textures > 0) glTexCoord2i(loader_obj_class::vertex_texture[loader_obj_class::face[face_count].vertex_texture[2]].u,loader_obj_class::vertex_texture[loader_obj_class::face[face_count].vertex_texture[2]].v);
                 else glTexCoord2i( 1, 0 );
-                glVertex3f(loader_obj_class::vertex[loader_obj_class::face[face_count].vertex[2]-1].x,loader_obj_class::vertex[loader_obj_class::face[face_count].vertex[2]-1].y,loader_obj_class::vertex[loader_obj_class::face[face_count].vertex[2]-1].z);
+                glVertex3f(loader_obj_class::vertex[loader_obj_class::face[face_count].vertex[2]].x,loader_obj_class::vertex[loader_obj_class::face[face_count].vertex[2]].y,loader_obj_class::vertex[loader_obj_class::face[face_count].vertex[2]].z);
             glEnd();
         }
     }
@@ -969,4 +975,5 @@ void loader_obj_class::draw(void)
     glDisable(GL_TEXTURE_GEN_T);
     glPopMatrix();
 }
+
 

@@ -1,33 +1,7 @@
 # Frost and Flame OBJ File: 'data/models/out.mtl'
 # www.physhexgames.co.nr
-# Material Count: 3
-newmtl Material_1
-Ns 96.0784
-Ka 0.024155 0.024155 0.024155
-Kd 0.663556 0.663556 0.663556
-Ks 0.034077 0.034077 0.034077
-Ni 1
-d 0
-illum 2
-map_d colorOpacityCow.png
-map_Kd colorOpacityCow.png
-map_Bump colorOpacityCowNorm.png
-
-
-newmtl Material_1_cowDiff00_test.png
-Ns 96.0784
-Ka 0.024155 0.024155 0.024155
-Kd 0.663556 0.663556 0.663556
-Ks 0.034077 0.034077 0.034077
-Ni 1
-d 0
-illum 2
-map_d colorOpacityCow.png
-map_Kd colorOpacityCow.png
-map_Bump colorOpacityCowNorm.png
-
-
-newmtl Material_cowEye.png
+# Material Count: 1
+newmtl Material
 Ns 96.0784
 Ka 0 0 0
 Kd 0.64 0.64 0.64
@@ -36,7 +10,7 @@ Ni 1
 d 1
 illum 2
 map_d 
-map_Kd cowEye.png
+map_Kd 
 map_Bump 
 
 

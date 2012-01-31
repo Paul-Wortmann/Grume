@@ -85,7 +85,7 @@ int   graphics_class::init_gl(int x_res, int y_res)
     //--------------------------------------------------------------------------------------------------------------------
 	// OpenGL Lighting Setup
 	glEnable(GL_LIGHTING);
-    float global_ambient[] = { 1.0f, 1.0f, 1.0f, 1.0f };
+    float global_ambient[] = { 4.0f, 4.0f, 4.0f, 4.0f };
     glLightModelfv(GL_LIGHT_MODEL_AMBIENT, global_ambient);
 
 	glEnable(GL_LIGHT0);
