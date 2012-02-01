@@ -26,27 +26,7 @@
 #define LOADER_OBJ_H
 
 #include <string>
-
-struct vertex_type
-{
-    float x;
-    float y;
-    float z;
-};
-
-struct vertex_texture_type
-{
-    float u;
-    float v;
-    float w;
-};
-
-struct vertex_normal_type
-{
-    float i;
-    float j;
-    float k;
-};
+#include "core/graphics.hpp"
 
 struct face_type
 {

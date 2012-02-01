@@ -109,10 +109,15 @@ int init_game(bool re_init)
 /*----------------------------------------------------------------------------*/
 int process_game(void)
 {
+    // for testing ---------------->
+            game.test.angle.rotation.y += 1.0f;
+            if (game.test.angle.rotation.y > 360.0f) game.test.angle.rotation.y = 0.0f;
+    // <---------------- for testing
     game.test.process();
     game.UI.process();
     game.player.process();
     game.map_2D.town.process();
+    game.map_3D.cave.process();
     game.core.game_resume = true;
     if (game.core.music_next_track)
     {
@@ -401,6 +406,7 @@ int display_game(void)
 
 
     game.map_2D.town.draw();
+    game.map_3D.cave.draw();
     game.player.draw();
 
     game.test.draw();

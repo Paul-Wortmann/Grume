@@ -26,14 +26,41 @@
 #define MAP_3D_H
 
 #include <string>
+#include "core/graphics.hpp"
+
+const int   RAND_SEED      = 20;
+const int   X_CELLS        = 100;
+const int   Y_CELLS        = 100;
+const int   NUM_CELLS      = (X_CELLS * Y_CELLS);
+const float CELL_SPACING   = 0.05;
+const float MESH_X         = 0.0f;
+const float MESH_Y         = 0.0f + (CELL_SPACING * Y_CELLS) - CELL_SPACING;
+
+struct cell_type
+{
+    float x;
+    float y;
+    vertex_type vertex[5];
+};
 
 class map_3D_class
 {
     public:
+        float              x_rotate;
+        float              y_rotate;
+        float              z_rotate;
+        float              position_x;
+        float              position_y;
+        float              position_z;
+        bool               render_surfaces;
+        bool               render_wireframe;
+        cell_type cell[NUM_CELLS];
         map_3D_class(void);
        ~map_3D_class(void);
+        void               fix_mesh(void);
         void               load(std::string file_name);
         void               process(void);
+        void               set_height_color(float z_height);
         void               draw(void);
 };
 

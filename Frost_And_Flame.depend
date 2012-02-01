@@ -38,7 +38,7 @@
 1326868751 c:\_git_\frost_and_flame\src\core\config.hpp
 	<string>
 
-1326868751 c:\_git_\frost_and_flame\src\core\graphics.hpp
+1328105111 c:\_git_\frost_and_flame\src\core\graphics.hpp
 
 1326868751 c:\_git_\frost_and_flame\src\core\physics.hpp
 
@@ -271,7 +271,7 @@
 	"game.hpp"
 	"misc.hpp"
 
-1328020189 source:c:\_git_\frost_and_flame\src\game.cpp
+1328107674 source:c:\_git_\frost_and_flame\src\game.cpp
 	<SDL/SDL.h>
 	"menu_system.hpp"
 	"game.hpp"
@@ -315,7 +315,7 @@
 	"load_resources.hpp"
 	"game.hpp"
 
-1326868284 source:c:\_git_\frost_and_flame\src\main.cpp
+1328021665 source:c:\_git_\frost_and_flame\src\main.cpp
 	<locale>
 	<SDL/SDL.h>
 	<SDL/SDL_main.h>
@@ -795,21 +795,24 @@
 	"../game.hpp"
 	"textures.hpp"
 
-1326868284 source:c:\_git_\frost_and_flame\src\map_3d.cpp
+1328110444 source:c:\_git_\frost_and_flame\src\map_3d.cpp
 	"loader_obj.hpp"
 	"map_3D.hpp"
 	"game.hpp"
+	"misc.hpp"
 
-1326868751 c:\_git_\frost_and_flame\src\map_3d.hpp
+1328107438 c:\_git_\frost_and_flame\src\map_3d.hpp
 	<string>
+	"core/graphics.hpp"
 
-1328020141 source:c:\_git_\frost_and_flame\src\loader_obj.cpp
+1328020350 source:c:\_git_\frost_and_flame\src\loader_obj.cpp
 	"loader_obj.hpp"
 	"game.hpp"
 	"misc.hpp"
 
-1328015943 c:\_git_\frost_and_flame\src\loader_obj.hpp
+1328105132 c:\_git_\frost_and_flame\src\loader_obj.hpp
 	<string>
+	"core/graphics.hpp"
 
 1326870883 c:\_git_\frost_and_flame\src\vendor.hpp
 
