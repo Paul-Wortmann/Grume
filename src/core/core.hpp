@@ -40,6 +40,7 @@
 #include "background.hpp"
 #include "particles.hpp"
 #include "map_2D.hpp"
+#include "map_3D.hpp"
 
 class core_class
 {

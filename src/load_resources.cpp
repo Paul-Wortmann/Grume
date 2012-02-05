@@ -51,7 +51,7 @@ bool load_maps_2D(void)
 bool load_maps_3D(void)
 {
     int map_count = 0;
-    game.map_3D.cave.load      ("data/maps/town.tmx");map_count++;
+    game.map_3D.town.load      ("data/maps/town_3D.tmx");map_count++;
 
     game.core.log.File_Write("3D map files loaded -> ",map_count);
     return(true);

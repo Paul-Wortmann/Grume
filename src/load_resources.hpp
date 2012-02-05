@@ -31,7 +31,7 @@
 #include "core/textures.hpp"
 #include "core/font.hpp"
 #include "core/map_2D.hpp"
-#include "map_3D.hpp"
+#include "core/map_3D.hpp"
 
 struct sound_type
 {
@@ -55,7 +55,7 @@ struct map_2D_type
 
 struct map_3D_type
 {
-    map_3D_class   cave;
+    map_3D_class   town;
 };
 
 struct music_type

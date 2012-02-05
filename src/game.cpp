@@ -116,8 +116,8 @@ int process_game(void)
     game.test.process();
     game.UI.process();
     game.player.process();
-    game.map_2D.town.process();
-    game.map_3D.cave.process();
+    //game.map_2D.town.process();
+    game.map_3D.town.process();
     game.core.game_resume = true;
     if (game.core.music_next_track)
     {
@@ -405,8 +405,8 @@ int display_game(void)
     glLightModelfv(GL_LIGHT_MODEL_AMBIENT,world_ambient_light);
 
 
-    game.map_2D.town.draw();
-    game.map_3D.cave.draw();
+    //game.map_2D.town.draw();
+    game.map_3D.town.draw();
     game.player.draw();
 
     //game.test.draw();

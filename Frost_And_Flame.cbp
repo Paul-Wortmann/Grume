@@ -83,6 +83,8 @@
 		<Unit filename="src\core\log.hpp" />
 		<Unit filename="src\core\map_2D.cpp" />
 		<Unit filename="src\core\map_2D.hpp" />
+		<Unit filename="src\core\map_3D.cpp" />
+		<Unit filename="src\core\map_3D.hpp" />
 		<Unit filename="src\core\menu.cpp" />
 		<Unit filename="src\core\menu.hpp" />
 		<Unit filename="src\core\music.cpp" />
@@ -120,8 +122,6 @@
 		<Unit filename="src\loader_obj.hpp" />
 		<Unit filename="src\main.cpp" />
 		<Unit filename="src\main.hpp" />
-		<Unit filename="src\map_3D.cpp" />
-		<Unit filename="src\map_3D.hpp" />
 		<Unit filename="src\menu_system.cpp" />
 		<Unit filename="src\menu_system.hpp" />
 		<Unit filename="src\misc.cpp" />
