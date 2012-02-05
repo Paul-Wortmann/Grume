@@ -26,15 +26,17 @@
 #define MAP_3D_H
 
 #include "textures.hpp"
+#include "graphics.hpp"
 #include "map_2D.hpp"
 
 struct cell_type
 {
-    float x;
-    float y;
-    float z;
-    int   tile_number;
-    int   tileset_number;
+    float        x;
+    float        y;
+    float        z;
+    vertex_type  vertex[4];
+    int          tile_number;
+    int          tileset_number;
 };
 
 
@@ -43,9 +45,10 @@ class map_3D_class
     public:
         float              version;
         float              cell_spacing;
+        float              cell_spacing_half;
         int                number_of_cells;
         int                number_of_cells_x;
-        int                number_of_cells_y;
+        int                number_of_cells_z;
         float              x_rotate;
         float              y_rotate;
         float              z_rotate;
@@ -61,6 +64,7 @@ class map_3D_class
         void               load(std::string file_name);
         void               process(void);
         void               draw(void);
+        void               mesh_cell_positions_generate(void);
         void               mesh_height_generate_random(void);
         void               mesh_height_generate_heightmap(int heightmap_reference_number);
         void               mesh_height_smooth(void);
