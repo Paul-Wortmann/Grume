@@ -31,7 +31,7 @@ extern game_type         game;
 
 map_3D_class::map_3D_class(void)
 {
-    map_3D_class::x_rotate         = -30.0f;
+    map_3D_class::x_rotate         = -45.0f;
     map_3D_class::y_rotate         =   0.0f;
     map_3D_class::z_rotate         =   0.0f;
     map_3D_class::position_x       =   0.0f;
@@ -50,7 +50,7 @@ map_3D_class::map_3D_class(void)
             cell_num++;
         }
     }
-    for(cell_num = 0; cell_num < NUM_CELLS; cell_num++)
+    for(cell_num = 0; cell_num < MAX_CELLS; cell_num++)
     {
         map_3D_class::cell[cell_num].vertex[0].x = map_3D_class::cell[cell_num].x;
         map_3D_class::cell[cell_num].vertex[0].z = map_3D_class::cell[cell_num].z - CELL_SPACING;
@@ -72,7 +72,7 @@ map_3D_class::~map_3D_class(void)
 }
 void map_3D_class::mesh_height_generate_random(void)
 {
-    for(int cell_num = 0; cell_num < NUM_CELLS; cell_num++)
+    for(int cell_num = 0; cell_num < MAX_CELLS; cell_num++)
     {
         map_3D_class::cell[cell_num].vertex[0].y = (random_double() / 20.0f) + 0.01f;
         map_3D_class::cell[cell_num].vertex[1].y = (random_double() / 20.0f) + 0.01f;
@@ -82,6 +82,7 @@ void map_3D_class::mesh_height_generate_random(void)
     }
     map_3D_class::mesh_height_smooth();
 }
+
 void map_3D_class::mesh_height_generate_heightmap(int heightmap_reference_number)
 {
 
@@ -95,7 +96,7 @@ void map_3D_class::mesh_height_smooth(void)
     {
         for(int cell_z = 0; cell_z < Z_CELLS; cell_z++)
         {
-            if (cell_num < NUM_CELLS-1)
+            if (cell_num < MAX_CELLS-1)
             {
                 map_3D_class::cell[cell_num].vertex[0].y = (map_3D_class::cell[cell_num + 1].vertex[1].y + map_3D_class::cell[cell_num].vertex[0].y) /2;
                 map_3D_class::cell[cell_num].vertex[3].y = (map_3D_class::cell[cell_num + 1].vertex[4].y + map_3D_class::cell[cell_num].vertex[3].y) /2;
@@ -103,7 +104,7 @@ void map_3D_class::mesh_height_smooth(void)
                 map_3D_class::cell[cell_num + 1].vertex[4].y = map_3D_class::cell[cell_num].vertex[3].y;
 
                 cell_2 = cell_num + X_CELLS;
-                if (cell_2 < NUM_CELLS)
+                if (cell_2 < MAX_CELLS)
                 {
                     //map_3D_class::cell[cell_num].vertex[1].y = (map_3D_class::cell[cell_2].vertex[4].y + map_3D_class::cell[cell_num].vertex[1].y) /2;
                     //map_3D_class::cell[cell_num].vertex[0].y = (map_3D_class::cell[cell_2].vertex[3].y + map_3D_class::cell[cell_num].vertex[0].y) /2;
@@ -125,8 +126,48 @@ void map_3D_class::load(std::string file_name)
 
 void map_3D_class::process(void)
 {
+    if (game.core.io.mouse_y >=  0.99000) map_3D_class::scroll_map( 0, 1);
+    if (game.core.io.mouse_y <= -0.99000) map_3D_class::scroll_map( 0,-1);
+    if (game.core.io.mouse_x >=  0.99000) map_3D_class::scroll_map( 1, 0);
+    if (game.core.io.mouse_x <= -0.99000) map_3D_class::scroll_map(-1, 0);
 
-}
+    game.player.gold = map_3D_class::mouse_over_cell();
+
+};
+
+void map_3D_class::scroll_map(int x_dir, int z_dir)
+{
+    float temp_x = x_dir * MAP_SCROLL_SPEED;
+    float temp_z = z_dir * MAP_SCROLL_SPEED;
+    for(int cell_count = 0; cell_count < MAX_CELLS; cell_count++)
+    {
+        map_3D_class::cell[cell_count].x -= temp_x;
+        map_3D_class::cell[cell_count].z -= temp_z;
+        map_3D_class::cell[cell_count].vertex[0].x = map_3D_class::cell[cell_count].x;
+        map_3D_class::cell[cell_count].vertex[0].z = map_3D_class::cell[cell_count].z - CELL_SPACING;
+        map_3D_class::cell[cell_count].vertex[1].x = map_3D_class::cell[cell_count].x - CELL_SPACING;
+        map_3D_class::cell[cell_count].vertex[1].z = map_3D_class::cell[cell_count].z;
+        map_3D_class::cell[cell_count].vertex[2].x = map_3D_class::cell[cell_count].x;
+        map_3D_class::cell[cell_count].vertex[2].z = map_3D_class::cell[cell_count].z;
+        map_3D_class::cell[cell_count].vertex[3].x = map_3D_class::cell[cell_count].x + CELL_SPACING;
+        map_3D_class::cell[cell_count].vertex[3].z = map_3D_class::cell[cell_count].z;
+        map_3D_class::cell[cell_count].vertex[4].x = map_3D_class::cell[cell_count].x;
+        map_3D_class::cell[cell_count].vertex[4].z = map_3D_class::cell[cell_count].z + CELL_SPACING;
+    }
+};
+
+int  map_3D_class::mouse_over_cell(void)
+{
+    int return_value = -1;
+    for (int cell_count = 0; cell_count < MAX_CELLS; cell_count++)
+    {
+        if (map_3D_class::cell_visable(cell_count))
+        {
+            if (game.core.physics.point_in_diamond(map_3D_class::cell[cell_count].x,CELL_SPACING_HALF,map_3D_class::cell[cell_count].z,CELL_SPACING_HALF,game.core.io.mouse_x,game.core.io.mouse_y)) return_value = cell_count;
+        }
+    }
+    return(return_value);
+};
 
 void map_3D_class::mesh_height_set_color(float y_height)
 {
@@ -151,8 +192,11 @@ bool map_3D_class::cell_visable(int cell_number)
 {
     if ((map_3D_class::cell[cell_number].x < ( 1.0f+CELL_SPACING))
     &&  (map_3D_class::cell[cell_number].x > (-1.0f-CELL_SPACING))
+    /*
     &&  (map_3D_class::cell[cell_number].z < ( 1.0f+CELL_SPACING))
-    &&  (map_3D_class::cell[cell_number].z > (-1.0f-CELL_SPACING))) return(true);
+    &&  (map_3D_class::cell[cell_number].z > (-1.0f-CELL_SPACING))
+        */
+        ) return(true);
     else return(false);
 }
 
@@ -165,6 +209,8 @@ void map_3D_class::draw(void)
     glLoadIdentity();
     glMatrixMode(GL_PROJECTION_MATRIX);
     glLoadIdentity();
+    glDisable(GL_DEPTH_TEST);
+    //glDepthRange(-2.0f,2.0f);
     glRotatef (map_3D_class::x_rotate, 1.0f, 0.0f, 0.0f);
     glRotatef (map_3D_class::y_rotate, 0.0f, 1.0f, 0.0f);
     glRotatef (map_3D_class::z_rotate, 0.0f, 0.0f, 1.0f);
@@ -181,7 +227,7 @@ void map_3D_class::draw(void)
     {
         glColor3f (1.0f, 1.0f, 1.0f);
     }
-    for(int cell_num = 0; cell_num < NUM_CELLS; cell_num++)
+    for(int cell_num = 0; cell_num < MAX_CELLS; cell_num++)
     {
         // A 4 B
         // 1 2 3

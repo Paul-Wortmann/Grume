@@ -35,7 +35,7 @@
 		<Cursor1 position="31" topLine="0" />
 	</File>
 	<File name="src\core\graphics.cpp" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="2403" topLine="59" />
+		<Cursor1 position="2397" topLine="60" />
 	</File>
 	<File name="src\npcvendor.hpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor1 position="2947" topLine="68" />
@@ -56,7 +56,7 @@
 		<Cursor1 position="38267" topLine="693" />
 	</File>
 	<File name="src\main.cpp" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="1320" topLine="0" />
+		<Cursor1 position="2360" topLine="45" />
 	</File>
 	<File name="src\core\font.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor1 position="31" topLine="0" />
@@ -106,8 +106,8 @@
 	<File name="src\core\background.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor1 position="31" topLine="0" />
 	</File>
-	<File name="src\load_resources.cpp" open="1" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="1304" topLine="24" />
+	<File name="src\load_resources.cpp" open="0" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor1 position="88561" topLine="836" />
 	</File>
 	<File name="src\map_3D.hpp" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor1 position="1450" topLine="0" />
@@ -128,7 +128,7 @@
 		<Cursor1 position="31" topLine="0" />
 	</File>
 	<File name="src\core\config.cpp" open="0" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="31" topLine="0" />
+		<Cursor1 position="1625" topLine="21" />
 	</File>
 	<File name="src\language.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor1 position="4133" topLine="53" />
@@ -197,7 +197,7 @@
 		<Cursor1 position="1998" topLine="56" />
 	</File>
 	<File name="src\core\map_2D.hpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="31" topLine="0" />
+		<Cursor1 position="1759" topLine="22" />
 	</File>
 	<File name="src\spell_book.cpp" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor1 position="31" topLine="0" />
@@ -205,8 +205,8 @@
 	<File name="src\game.cpp" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor1 position="17794" topLine="390" />
 	</File>
-	<File name="src\core\map_2D.cpp" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="31" topLine="0" />
+	<File name="src\core\map_2D.cpp" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor1 position="15777" topLine="216" />
 	</File>
 	<File name="src\save_data.hpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor1 position="31" topLine="0" />

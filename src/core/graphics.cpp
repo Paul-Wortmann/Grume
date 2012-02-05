@@ -25,6 +25,9 @@
 #include <GL/gl.h>
 #include "core.hpp"
 #include "graphics.hpp"
+#include "../game.hpp"
+
+extern game_type game;
 
 graphics_class::graphics_class(void)
 {

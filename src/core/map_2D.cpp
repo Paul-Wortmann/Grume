@@ -237,9 +237,6 @@ void map_2D_class::process(void)
     if (game.core.io.mouse_y <= -0.99000) map_2D_class::scroll_map( 0,-1);
     if (game.core.io.mouse_x >=  0.99000) map_2D_class::scroll_map( 1, 0);
     if (game.core.io.mouse_x <= -0.99000) map_2D_class::scroll_map(-1, 0);
-
-    game.player.gold = map_2D_class::mouse_over_tile();
-
 };
 
 void map_2D_class::scroll_map(int x_dir, int y_dir)
