@@ -29,17 +29,17 @@
 #include "core/graphics.hpp"
 
 const int   RAND_SEED      = 20;
-const int   X_CELLS        = 100;
-const int   Y_CELLS        = 100;
-const int   NUM_CELLS      = (X_CELLS * Y_CELLS);
+const int   X_CELLS        = 10;
+const int   Z_CELLS        = 10;
+const int   NUM_CELLS      = (X_CELLS * Z_CELLS);
 const float CELL_SPACING   = 0.05;
 const float MESH_X         = 0.0f;
-const float MESH_Y         = 0.0f + (CELL_SPACING * Y_CELLS) - CELL_SPACING;
+const float MESH_Z         = 0.0f + (CELL_SPACING * Z_CELLS) - CELL_SPACING;
 
 struct cell_type
 {
     float x;
-    float y;
+    float z;
     vertex_type vertex[5];
 };
 
@@ -52,15 +52,19 @@ class map_3D_class
         float              position_x;
         float              position_y;
         float              position_z;
+        bool               render_textured;
         bool               render_surfaces;
         bool               render_wireframe;
         cell_type cell[NUM_CELLS];
         map_3D_class(void);
        ~map_3D_class(void);
-        void               fix_mesh(void);
+        void               mesh_height_generate_random(void);
+        void               mesh_height_generate_heightmap(int heightmap_reference_number);
+        void               mesh_height_smooth(void);
+        void               mesh_height_set_color(float y_height);
         void               load(std::string file_name);
         void               process(void);
-        void               set_height_color(float z_height);
+        bool               cell_visable(int cell_number);
         void               draw(void);
 };
 

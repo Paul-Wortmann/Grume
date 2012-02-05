@@ -409,7 +409,7 @@ int display_game(void)
     game.map_3D.cave.draw();
     game.player.draw();
 
-    game.test.draw();
+    //game.test.draw();
 
     glLightModelfv(GL_LIGHT_MODEL_AMBIENT,global_ambient_light);
     game.UI.draw();
