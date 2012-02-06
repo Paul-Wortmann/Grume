@@ -25,6 +25,7 @@
 #ifndef MAP_3D_H
 #define MAP_3D_H
 
+#include "GL/gl.h"
 #include "textures.hpp"
 #include "graphics.hpp"
 #include "map_2D.hpp"
@@ -58,6 +59,7 @@ class map_3D_class
         bool               render_textured;
         bool               render_surfaces;
         bool               render_wireframe;
+        bool               render_water;
         cell_type*         cell;
         map_3D_class(void);
        ~map_3D_class(void);
@@ -67,7 +69,7 @@ class map_3D_class
         void               mesh_cell_positions_generate(void);
         void               mesh_height_generate_random(void);
         void               mesh_height_randomize(void);
-        void               mesh_height_generate_heightmap(int heightmap_reference_number);
+        void               mesh_height_generate_heightmap(std::string file_name);
         void               mesh_height_smooth(void);
         void               mesh_height_set_color(float y_height);
         void               scroll_map(int x_dir, int z_dir);

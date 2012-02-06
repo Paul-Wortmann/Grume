@@ -22,6 +22,9 @@
  * @date 2011-11-11
  */
 
+#include <GL/gl.h>
+#include <SDL/SDL.h>
+#include <SDL/SDL_image.h>
 #include <iostream>
 #include <fstream>
 #include <stdio.h>
@@ -54,6 +57,7 @@ map_3D_class::map_3D_class(void)
     map_3D_class::render_textured     =  true;
     map_3D_class::render_surfaces     =  true;
     map_3D_class::render_wireframe    =  true;
+    map_3D_class::render_water        =  true;
 };
 
 map_3D_class::~map_3D_class(void)
@@ -64,8 +68,9 @@ map_3D_class::~map_3D_class(void)
 void map_3D_class::load(std::string file_name)
 {
     map_3D_class::cell = new cell_type[map_3D_class::number_of_cells+1];
-    mesh_cell_positions_generate();
+    map_3D_class::mesh_cell_positions_generate();
     map_3D_class::mesh_height_generate_random();
+    map_3D_class::mesh_height_generate_heightmap("data/textures/heightmaps/heightmap_000.png");
 };
 
 void map_3D_class::process(void)
@@ -81,73 +86,97 @@ void map_3D_class::process(void)
 void map_3D_class::draw(void)
 {
     glPushMatrix();
-    //glDisable(GL_DEPTH_TEST);
-    //glDisable(GL_TEXTURE_2D);
     glMatrixMode(GL_MODELVIEW_MATRIX);
     glLoadIdentity();
     glMatrixMode(GL_PROJECTION_MATRIX);
     glLoadIdentity();
-    //glDisable(GL_DEPTH_TEST);
-    //glDepthRange(-2.0f,2.0f);
+    glEnable(GL_TEXTURE_2D);
+    glEnable(GL_DEPTH_TEST);
+    glDepthRange(-2.0f,2.0f);
     glRotatef (map_3D_class::x_rotate, 1.0f, 0.0f, 0.0f);
     glRotatef (map_3D_class::y_rotate, 0.0f, 1.0f, 0.0f);
     glRotatef (map_3D_class::z_rotate, 0.0f, 0.0f, 1.0f);
 	glTranslatef(map_3D_class::position_x,map_3D_class::position_y,map_3D_class::position_z);
     if (map_3D_class::render_textured)
     {
-        glBindTexture( GL_TEXTURE_2D, game.texture.heightmap_001.frame[0].data);
+        glBindTexture( GL_TEXTURE_2D, game.texture.generic_grass.frame[0].data);
         glTexGeni(GL_S, GL_TEXTURE_GEN_MODE, GL_OBJECT_LINEAR);
         glTexGeni(GL_T, GL_TEXTURE_GEN_MODE, GL_OBJECT_LINEAR);
         glEnable(GL_TEXTURE_GEN_S);
         glEnable(GL_TEXTURE_GEN_T);
+        glMatrixMode(GL_MODELVIEW_MATRIX);
+        for(int cell_count = 0; cell_count < map_3D_class::number_of_cells; cell_count++)
+        {
+            if (map_3D_class::cell_visable(cell_count))
+            {
+                glBegin (GL_QUADS);
+                    glVertex3f(map_3D_class::cell[cell_count].vertex[0].x,map_3D_class::cell[cell_count].vertex[0].y,map_3D_class::cell[cell_count].vertex[0].z);
+                    glVertex3f(map_3D_class::cell[cell_count].vertex[1].x,map_3D_class::cell[cell_count].vertex[1].y,map_3D_class::cell[cell_count].vertex[1].z);
+                    glVertex3f(map_3D_class::cell[cell_count].vertex[2].x,map_3D_class::cell[cell_count].vertex[2].y,map_3D_class::cell[cell_count].vertex[2].z);
+                    glVertex3f(map_3D_class::cell[cell_count].vertex[3].x,map_3D_class::cell[cell_count].vertex[3].y,map_3D_class::cell[cell_count].vertex[3].z);
+                glEnd ();
+            }
+        }
+    }
+    if (map_3D_class::render_surfaces)
+    {
+        for(int cell_count = 0; cell_count < map_3D_class::number_of_cells; cell_count++)
+        {
+            if (map_3D_class::cell_visable(cell_count))
+            {
+                glBegin (GL_QUADS);
+                    mesh_height_set_color(map_3D_class::cell[cell_count].vertex[0].y);
+                    glVertex3f(map_3D_class::cell[cell_count].vertex[0].x,map_3D_class::cell[cell_count].vertex[0].y,map_3D_class::cell[cell_count].vertex[0].z);
+                    mesh_height_set_color(map_3D_class::cell[cell_count].vertex[1].y);
+                    glVertex3f(map_3D_class::cell[cell_count].vertex[1].x,map_3D_class::cell[cell_count].vertex[1].y,map_3D_class::cell[cell_count].vertex[1].z);
+                    mesh_height_set_color(map_3D_class::cell[cell_count].vertex[2].y);
+                    glVertex3f(map_3D_class::cell[cell_count].vertex[2].x,map_3D_class::cell[cell_count].vertex[2].y,map_3D_class::cell[cell_count].vertex[2].z);
+                    mesh_height_set_color(map_3D_class::cell[cell_count].vertex[3].y);
+                    glVertex3f(map_3D_class::cell[cell_count].vertex[3].x,map_3D_class::cell[cell_count].vertex[3].y,map_3D_class::cell[cell_count].vertex[3].z);
+                glEnd ();
+            }
+        }
     }
     if (map_3D_class::render_wireframe)
     {
         glColor3f (1.0f, 1.0f, 1.0f);
+        for(int cell_count = 0; cell_count < map_3D_class::number_of_cells; cell_count++)
+        {
+            if (map_3D_class::cell_visable(cell_count))
+            {
+                glBegin (GL_LINES);
+                    glVertex3f(map_3D_class::cell[cell_count].vertex[0].x,map_3D_class::cell[cell_count].vertex[0].y,map_3D_class::cell[cell_count].vertex[0].z);
+                    glVertex3f(map_3D_class::cell[cell_count].vertex[1].x,map_3D_class::cell[cell_count].vertex[1].y,map_3D_class::cell[cell_count].vertex[1].z);
+                glEnd ();
+                glBegin (GL_LINES);
+                    glVertex3f(map_3D_class::cell[cell_count].vertex[1].x,map_3D_class::cell[cell_count].vertex[1].y,map_3D_class::cell[cell_count].vertex[1].z);
+                    glVertex3f(map_3D_class::cell[cell_count].vertex[2].x,map_3D_class::cell[cell_count].vertex[2].y,map_3D_class::cell[cell_count].vertex[2].z);
+                glEnd ();
+                glBegin (GL_LINES);
+                    glVertex3f(map_3D_class::cell[cell_count].vertex[2].x,map_3D_class::cell[cell_count].vertex[2].y,map_3D_class::cell[cell_count].vertex[2].z);
+                    glVertex3f(map_3D_class::cell[cell_count].vertex[3].x,map_3D_class::cell[cell_count].vertex[3].y,map_3D_class::cell[cell_count].vertex[3].z);
+                glEnd ();
+                glBegin (GL_LINES);
+                    glVertex3f(map_3D_class::cell[cell_count].vertex[3].x,map_3D_class::cell[cell_count].vertex[3].y,map_3D_class::cell[cell_count].vertex[3].z);
+                    glVertex3f(map_3D_class::cell[cell_count].vertex[0].x,map_3D_class::cell[cell_count].vertex[0].y,map_3D_class::cell[cell_count].vertex[0].z);
+                glEnd ();
+            }
+        }
     }
-    for(int cell_count = 0; cell_count < map_3D_class::number_of_cells; cell_count++)
+    if (map_3D_class::render_water)
     {
-        if ((map_3D_class::render_textured) && (map_3D_class::cell_visable(cell_count)))
-        {
-            glBegin (GL_QUADS);
-                glVertex3f(map_3D_class::cell[cell_count].vertex[0].x,map_3D_class::cell[cell_count].vertex[0].y,map_3D_class::cell[cell_count].vertex[0].z);
-                glVertex3f(map_3D_class::cell[cell_count].vertex[1].x,map_3D_class::cell[cell_count].vertex[1].y,map_3D_class::cell[cell_count].vertex[1].z);
-                glVertex3f(map_3D_class::cell[cell_count].vertex[2].x,map_3D_class::cell[cell_count].vertex[2].y,map_3D_class::cell[cell_count].vertex[2].z);
-                glVertex3f(map_3D_class::cell[cell_count].vertex[3].x,map_3D_class::cell[cell_count].vertex[3].y,map_3D_class::cell[cell_count].vertex[3].z);
-            glEnd ();
-        }
-        if ((map_3D_class::render_surfaces) && (map_3D_class::cell_visable(cell_count)))
-        {
-            glBegin (GL_QUADS);
-                mesh_height_set_color(map_3D_class::cell[cell_count].vertex[0].y);
-                glVertex3f(map_3D_class::cell[cell_count].vertex[0].x,map_3D_class::cell[cell_count].vertex[0].y,map_3D_class::cell[cell_count].vertex[0].z);
-                mesh_height_set_color(map_3D_class::cell[cell_count].vertex[1].y);
-                glVertex3f(map_3D_class::cell[cell_count].vertex[1].x,map_3D_class::cell[cell_count].vertex[1].y,map_3D_class::cell[cell_count].vertex[1].z);
-                mesh_height_set_color(map_3D_class::cell[cell_count].vertex[2].y);
-                glVertex3f(map_3D_class::cell[cell_count].vertex[2].x,map_3D_class::cell[cell_count].vertex[2].y,map_3D_class::cell[cell_count].vertex[2].z);
-                mesh_height_set_color(map_3D_class::cell[cell_count].vertex[3].y);
-                glVertex3f(map_3D_class::cell[cell_count].vertex[3].x,map_3D_class::cell[cell_count].vertex[3].y,map_3D_class::cell[cell_count].vertex[3].z);
-            glEnd ();
-        }
-        if ((map_3D_class::render_wireframe) && (map_3D_class::cell_visable(cell_count)))
-        {
-            glBegin (GL_LINES);
-                glVertex3f(map_3D_class::cell[cell_count].vertex[0].x,map_3D_class::cell[cell_count].vertex[0].y,map_3D_class::cell[cell_count].vertex[0].z);
-                glVertex3f(map_3D_class::cell[cell_count].vertex[1].x,map_3D_class::cell[cell_count].vertex[1].y,map_3D_class::cell[cell_count].vertex[1].z);
-            glEnd ();
-            glBegin (GL_LINES);
-                glVertex3f(map_3D_class::cell[cell_count].vertex[1].x,map_3D_class::cell[cell_count].vertex[1].y,map_3D_class::cell[cell_count].vertex[1].z);
-                glVertex3f(map_3D_class::cell[cell_count].vertex[2].x,map_3D_class::cell[cell_count].vertex[2].y,map_3D_class::cell[cell_count].vertex[2].z);
-            glEnd ();
-            glBegin (GL_LINES);
-                glVertex3f(map_3D_class::cell[cell_count].vertex[2].x,map_3D_class::cell[cell_count].vertex[2].y,map_3D_class::cell[cell_count].vertex[2].z);
-                glVertex3f(map_3D_class::cell[cell_count].vertex[3].x,map_3D_class::cell[cell_count].vertex[3].y,map_3D_class::cell[cell_count].vertex[3].z);
-            glEnd ();
-            glBegin (GL_LINES);
-                glVertex3f(map_3D_class::cell[cell_count].vertex[3].x,map_3D_class::cell[cell_count].vertex[3].y,map_3D_class::cell[cell_count].vertex[3].z);
-                glVertex3f(map_3D_class::cell[cell_count].vertex[0].x,map_3D_class::cell[cell_count].vertex[0].y,map_3D_class::cell[cell_count].vertex[0].z);
-            glEnd ();
-        }
+        glBindTexture( GL_TEXTURE_2D, game.texture.generic_water.frame[0].data);
+        glTexGeni(GL_S, GL_TEXTURE_GEN_MODE, GL_OBJECT_LINEAR);
+        glTexGeni(GL_T, GL_TEXTURE_GEN_MODE, GL_OBJECT_LINEAR);
+        glEnable(GL_TEXTURE_GEN_S);
+        glEnable(GL_TEXTURE_GEN_T);
+        glMatrixMode(GL_MODELVIEW_MATRIX);
+        glBegin (GL_QUADS);
+            glVertex3f(map_3D_class::cell[0].vertex[0].x,0.0f,map_3D_class::cell[0].vertex[0].z);
+            glVertex3f(map_3D_class::cell[map_3D_class::number_of_cells_x-1].vertex[1].x,0.0f,map_3D_class::cell[map_3D_class::number_of_cells_x-1].vertex[1].z);
+            glVertex3f(map_3D_class::cell[map_3D_class::number_of_cells-1].vertex[2].x,0.0f,map_3D_class::cell[map_3D_class::number_of_cells-1].vertex[2].z);
+            glVertex3f(map_3D_class::cell[map_3D_class::number_of_cells-map_3D_class::number_of_cells_x].vertex[3].x,0.0f,map_3D_class::cell[map_3D_class::number_of_cells-map_3D_class::number_of_cells_x].vertex[3].z);
+        glEnd ();
     }
     glDisable(GL_TEXTURE_GEN_S);
     glDisable(GL_TEXTURE_GEN_T);
@@ -207,8 +236,29 @@ void map_3D_class::mesh_height_randomize(void)
     map_3D_class::mesh_height_smooth();
 };
 
-void map_3D_class::mesh_height_generate_heightmap(int heightmap_reference_number)
+void map_3D_class::mesh_height_generate_heightmap(std::string file_name)
 {
+    float temp_value = 0.0f;
+    SDL_Surface *temp_surface = NULL;
+    if (temp_surface = IMG_Load(file_name.c_str()))
+    {
+        if(SDL_MUSTLOCK(temp_surface)) SDL_LockSurface(temp_surface);
+        int32_t     *in_pixels       = (int32_t*)temp_surface->pixels;
+        for(int cell_count = 0; cell_count < map_3D_class::number_of_cells; cell_count++)
+        {
+            temp_value  = float(in_pixels[((cell_count*4)+0)]);
+            temp_value += float(in_pixels[((cell_count*4)+1)]);
+            temp_value += float(in_pixels[((cell_count*4)+2)]);
+            temp_value  = float(temp_value / 3.0f);
+            temp_value  = float(temp_value / 255.0f);
+
+            map_3D_class::cell[cell_count].vertex[0].y = temp_value;
+        }
+        if(SDL_MUSTLOCK(temp_surface)) SDL_UnlockSurface(temp_surface);
+        if ( temp_surface ) SDL_FreeSurface( temp_surface );
+    }
+    else game.core.log.File_Write("Failed to load height map file -> ",file_name.c_str());
+    map_3D_class::mesh_height_smooth();
 };
 
 void map_3D_class::mesh_height_smooth(void)
@@ -248,23 +298,6 @@ void map_3D_class::scroll_map(int x_dir, int z_dir)
 {
     map_3D_class::position_x += x_dir * MAP_SCROLL_SPEED;
     map_3D_class::position_z += z_dir * MAP_SCROLL_SPEED;
-/*
-    float temp_x = x_dir * MAP_SCROLL_SPEED;
-    float temp_z = z_dir * MAP_SCROLL_SPEED;
-    for(int cell_count = 0; cell_count < map_3D_class::number_of_cells; cell_count++)
-    {
-        map_3D_class::cell[cell_count].x -= temp_x;
-        map_3D_class::cell[cell_count].z -= temp_z;
-        map_3D_class::cell[cell_count].vertex[0].x = map_3D_class::cell[cell_count].x;
-        map_3D_class::cell[cell_count].vertex[0].z = map_3D_class::cell[cell_count].z + map_3D_class::cell_spacing;
-        map_3D_class::cell[cell_count].vertex[1].x = map_3D_class::cell[cell_count].x + map_3D_class::cell_spacing;
-        map_3D_class::cell[cell_count].vertex[1].z = map_3D_class::cell[cell_count].z;
-        map_3D_class::cell[cell_count].vertex[2].x = map_3D_class::cell[cell_count].x;
-        map_3D_class::cell[cell_count].vertex[2].z = map_3D_class::cell[cell_count].z - map_3D_class::cell_spacing;
-        map_3D_class::cell[cell_count].vertex[3].x = map_3D_class::cell[cell_count].x - map_3D_class::cell_spacing;
-        map_3D_class::cell[cell_count].vertex[3].z = map_3D_class::cell[cell_count].z;
-    }
-*/
 };
 
 int  map_3D_class::mouse_over_cell(void)

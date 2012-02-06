@@ -461,9 +461,12 @@ bool load_textures(void)
     game.texture.portrait_09.load_image("data/textures/UI/portraits/portrait_09.png",texture_count);texture_count++;
     game.texture.portrait_10.load_image("data/textures/UI/portraits/portrait_10.png",texture_count);texture_count++;
 
+    game.texture.heightmap_001.load_image("data/textures/heightmaps/heightmap_000.png",texture_count);texture_count++;
     game.texture.heightmap_001.load_image("data/textures/heightmaps/heightmap_001.png",texture_count);texture_count++;
 
-    game.texture.generic_lava.load_image("data/textures/generic/lava.png",texture_count);texture_count++;
+    game.texture.generic_grass.load_image("data/textures/generic/grass.png",texture_count);texture_count++;
+    game.texture.generic_lava.load_image ("data/textures/generic/lava.png" ,texture_count);texture_count++;
+    game.texture.generic_water.load_image("data/textures/generic/water.png",texture_count);texture_count++;
 
     game.core.log.File_Write("Texture files loaded -> ",texture_count);
     return(true);
@@ -863,9 +866,12 @@ bool draw_texture(bool r, int texture_number, float x, float y, float z, float w
     if (texture_number == game.texture.portrait_09.ref_number) game.texture.portrait_09.draw(r,x,y,z,w,h,angle,frame);
     if (texture_number == game.texture.portrait_10.ref_number) game.texture.portrait_10.draw(r,x,y,z,w,h,angle,frame);
 
+    if (texture_number == game.texture.heightmap_000.ref_number) game.texture.heightmap_000.draw(r,x,y,z,w,h,angle,frame);
     if (texture_number == game.texture.heightmap_001.ref_number) game.texture.heightmap_001.draw(r,x,y,z,w,h,angle,frame);
 
-    if (texture_number == game.texture.generic_lava.ref_number) game.texture.generic_lava.draw(r,x,y,z,w,h,angle,frame);
+    if (texture_number == game.texture.generic_grass.ref_number) game.texture.generic_grass.draw(r,x,y,z,w,h,angle,frame);
+    if (texture_number == game.texture.generic_lava.ref_number)  game.texture.generic_lava.draw (r,x,y,z,w,h,angle,frame);
+    if (texture_number == game.texture.generic_water.ref_number) game.texture.generic_water.draw(r,x,y,z,w,h,angle,frame);
 
     return(true);
 };

@@ -23,7 +23,7 @@
 		<Cursor1 position="38267" topLine="693" />
 	</File>
 	<File name="src\core\textures.hpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="31" topLine="0" />
+		<Cursor1 position="1205" topLine="12" />
 	</File>
 	<File name="src\main.hpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor1 position="31" topLine="0" />
@@ -35,7 +35,7 @@
 		<Cursor1 position="4574" topLine="148" />
 	</File>
 	<File name="src\core\textures.cpp" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="31" topLine="0" />
+		<Cursor1 position="1119" topLine="15" />
 	</File>
 	<File name="src\main.cpp" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor1 position="2360" topLine="45" />
@@ -50,7 +50,7 @@
 		<Cursor1 position="31" topLine="0" />
 	</File>
 	<File name="src\loader_obj.hpp" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="1045" topLine="24" />
+		<Cursor1 position="1344" topLine="0" />
 	</File>
 	<File name="src\core\graphics.hpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor1 position="992" topLine="22" />
@@ -62,7 +62,7 @@
 		<Cursor1 position="31" topLine="0" />
 	</File>
 	<File name="src\loader_obj.cpp" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="3032" topLine="61" />
+		<Cursor1 position="47073" topLine="886" />
 	</File>
 	<File name="src\core\graphics.cpp" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor1 position="2397" topLine="60" />
@@ -74,7 +74,7 @@
 		<Cursor1 position="31" topLine="0" />
 	</File>
 	<File name="src\load_resources.hpp" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="1603" topLine="47" />
+		<Cursor1 position="13191" topLine="431" />
 	</File>
 	<File name="src\core\font.hpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor1 position="31" topLine="0" />
@@ -86,7 +86,7 @@
 		<Cursor1 position="31" topLine="0" />
 	</File>
 	<File name="src\load_resources.cpp" open="0" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="1504" topLine="40" />
+		<Cursor1 position="44889" topLine="444" />
 	</File>
 	<File name="src\core\font.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor1 position="31" topLine="0" />
@@ -221,7 +221,7 @@
 		<Cursor1 position="31" topLine="0" />
 	</File>
 	<File name="src\misc.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="1090" topLine="21" />
+		<Cursor1 position="1207" topLine="0" />
 	</File>
 	<File name="src\core\map_2D.cpp" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor1 position="17262" topLine="260" />
