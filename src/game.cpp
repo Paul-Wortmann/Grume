@@ -33,9 +33,9 @@
 
 int init_game(bool re_init)
 {
-    game.test.load("data/models/male.obj");
+    game.test.load("data/models/fern.obj");
     game.test.save("data/models/out.obj");
-    game.test.scale(0.02f,0.02f,0.02f);
+    game.test.scale(0.2f,0.2f,0.2f);
     //game.test.set_angle(60.0f,0.0f,225.0f);
     game.test.set_position(0.0f,0.0f,0.0f);
 
@@ -110,10 +110,10 @@ int init_game(bool re_init)
 int process_game(void)
 {
     // for testing ---------------->
-            game.test.angle.rotation.y += 1.0f;
+            //game.test.angle.rotation.y += 1.0f;
             if (game.test.angle.rotation.y > 360.0f) game.test.angle.rotation.y = 0.0f;
     // <---------------- for testing
-    game.test.process();
+    //game.test.process();
     game.UI.process();
     game.player.process();
     //game.map_2D.town.process();
@@ -409,7 +409,7 @@ int display_game(void)
     game.map_3D.town.draw();
     game.player.draw();
 
-    //game.test.draw();
+    game.test.draw();
 
     glLightModelfv(GL_LIGHT_MODEL_AMBIENT,global_ambient_light);
     game.UI.draw();

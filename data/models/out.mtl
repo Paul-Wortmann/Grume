@@ -1,12 +1,12 @@
 # Frost and Flame OBJ File: 'data/models/out.mtl'
 # www.physhexgames.co.nr
 # Material Count: 1
-newmtl Material
-Ns 96.0784
+newmtl 
+Ns 0
 Ka 0 0 0
-Kd 0.64 0.64 0.64
-Ks 0.5 0.5 0.5
-Ni 1
+Kd 0.8 0.8 0.8
+Ks 0.8 0.8 0.8
+Ni 9.64289e-039
 d 1
 illum 2
 map_d 
