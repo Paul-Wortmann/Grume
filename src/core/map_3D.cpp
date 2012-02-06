@@ -69,7 +69,7 @@ void map_3D_class::load(std::string file_name)
 {
     map_3D_class::cell = new cell_type[map_3D_class::number_of_cells+1];
     map_3D_class::mesh_cell_positions_generate();
-    map_3D_class::mesh_height_generate_random();
+    //map_3D_class::mesh_height_generate_random();
     map_3D_class::mesh_height_generate_heightmap("data/textures/heightmaps/heightmap_000.png");
 };
 
@@ -238,23 +238,44 @@ void map_3D_class::mesh_height_randomize(void)
 
 void map_3D_class::mesh_height_generate_heightmap(std::string file_name)
 {
-    float temp_value = 0.0f;
-    SDL_Surface *temp_surface = NULL;
+    SDL_PixelFormat *pixel_format;
+    Uint8            red          = 0;
+    Uint8            green        = 0;
+    Uint8            blue         = 0;
+    Uint8            alpha        = 0;
+    Uint32           temp_data    = 0;
+    float            temp_value   = 0.0f;
+    SDL_Surface     *temp_surface = NULL;
     if (temp_surface = IMG_Load(file_name.c_str()))
     {
+        pixel_format = temp_surface->format;
         if(SDL_MUSTLOCK(temp_surface)) SDL_LockSurface(temp_surface);
-        int32_t     *in_pixels       = (int32_t*)temp_surface->pixels;
+        Uint32 *pixel = (Uint32*)temp_surface->pixels;
+        if(SDL_MUSTLOCK(temp_surface)) SDL_UnlockSurface(temp_surface);
         for(int cell_count = 0; cell_count < map_3D_class::number_of_cells; cell_count++)
         {
-            temp_value  = float(in_pixels[((cell_count*4)+0)]);
-            temp_value += float(in_pixels[((cell_count*4)+1)]);
-            temp_value += float(in_pixels[((cell_count*4)+2)]);
-            temp_value  = float(temp_value / 3.0f);
-            temp_value  = float(temp_value / 255.0f);
-
+            temp_data = pixel[cell_count] & pixel_format->Rmask;
+            temp_data = temp_data >> pixel_format->Rshift;
+            temp_data = temp_data << pixel_format->Rloss;
+            red = (Uint8)temp_data;
+            temp_data = pixel[cell_count] & pixel_format->Gmask;
+            temp_data = temp_data >> pixel_format->Gshift;
+            temp_data = temp_data << pixel_format->Gloss;
+            green = (Uint8)temp_data;
+            temp_data = pixel[cell_count] & pixel_format->Bmask;
+            temp_data = temp_data >> pixel_format->Bshift;
+            temp_data = temp_data << pixel_format->Bloss;
+            blue = (Uint8)temp_data;
+            temp_data = pixel[cell_count] & pixel_format->Amask;
+            temp_data = temp_data >> pixel_format->Ashift;
+            temp_data = temp_data << pixel_format->Aloss;
+            alpha = (Uint8)temp_data;
+            temp_value = float((((red+green+blue) / 768.0f) - 0.5f) / 4.0f);
             map_3D_class::cell[cell_count].vertex[0].y = temp_value;
+            map_3D_class::cell[cell_count].vertex[1].y = temp_value;
+            map_3D_class::cell[cell_count].vertex[2].y = temp_value;
+            map_3D_class::cell[cell_count].vertex[3].y = temp_value;
         }
-        if(SDL_MUSTLOCK(temp_surface)) SDL_UnlockSurface(temp_surface);
         if ( temp_surface ) SDL_FreeSurface( temp_surface );
     }
     else game.core.log.File_Write("Failed to load height map file -> ",file_name.c_str());
