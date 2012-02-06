@@ -66,6 +66,7 @@ class map_3D_class
         void               draw(void);
         void               mesh_cell_positions_generate(void);
         void               mesh_height_generate_random(void);
+        void               mesh_height_randomize(void);
         void               mesh_height_generate_heightmap(int heightmap_reference_number);
         void               mesh_height_smooth(void);
         void               mesh_height_set_color(float y_height);

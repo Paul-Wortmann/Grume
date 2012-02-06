@@ -40,7 +40,7 @@ extern game_type         game;
 map_3D_class::map_3D_class(void)
 {
     map_3D_class::version             =  0.0f;
-    map_3D_class::cell_spacing        =  0.1f;
+    map_3D_class::cell_spacing        =  0.05f;
     map_3D_class::cell_spacing_half   =  map_3D_class::cell_spacing / 2.0f;
     map_3D_class::number_of_cells_x   =  100;
     map_3D_class::number_of_cells_z   =  100;
@@ -58,6 +58,7 @@ map_3D_class::map_3D_class(void)
 
 map_3D_class::~map_3D_class(void)
 {
+    delete map_3D_class::cell;
 };
 
 void map_3D_class::load(std::string file_name)
@@ -69,10 +70,10 @@ void map_3D_class::load(std::string file_name)
 
 void map_3D_class::process(void)
 {
-    if (game.core.io.mouse_y >=  0.99000) map_3D_class::scroll_map( 0, 1);
-    if (game.core.io.mouse_y <= -0.99000) map_3D_class::scroll_map( 0,-1);
-    if (game.core.io.mouse_x >=  0.99000) map_3D_class::scroll_map( 1, 0);
-    if (game.core.io.mouse_x <= -0.99000) map_3D_class::scroll_map(-1, 0);
+    if (game.core.io.mouse_y >=  0.99000) map_3D_class::scroll_map( 0,-1);
+    if (game.core.io.mouse_y <= -0.99000) map_3D_class::scroll_map( 0, 1);
+    if (game.core.io.mouse_x >=  0.99000) map_3D_class::scroll_map(-1, 0);
+    if (game.core.io.mouse_x <= -0.99000) map_3D_class::scroll_map( 1, 0);
 
     game.player.gold = map_3D_class::mouse_over_cell();
 };
@@ -106,23 +107,29 @@ void map_3D_class::draw(void)
     }
     for(int cell_count = 0; cell_count < map_3D_class::number_of_cells; cell_count++)
     {
-        if (map_3D_class::render_textured)  // and if cell visible
+        if ((map_3D_class::render_textured) && (map_3D_class::cell_visable(cell_count)))
         {
-            //draw_texture(false,game.texture.heightmap_001.ref_number,map_3D_class::cell[cell_count].x,map_3D_class::cell[cell_count].y,map_3D_class::cell[cell_count].z,map_3D_class::cell_spacing,map_3D_class::cell_spacing);
-/*
             glBegin (GL_QUADS);
-                glVertex3f(map_3D_class::cell[cell_count].x - cell_spacing_half,map_3D_class::cell[cell_count].y,map_3D_class::cell[cell_count].z - cell_spacing_half);
-                glVertex3f(map_3D_class::cell[cell_count].x + cell_spacing_half,map_3D_class::cell[cell_count].y,map_3D_class::cell[cell_count].z - cell_spacing_half);
-                glVertex3f(map_3D_class::cell[cell_count].x + cell_spacing_half,map_3D_class::cell[cell_count].y,map_3D_class::cell[cell_count].z + cell_spacing_half);
-                glVertex3f(map_3D_class::cell[cell_count].x - cell_spacing_half,map_3D_class::cell[cell_count].y,map_3D_class::cell[cell_count].z + cell_spacing_half);
+                glVertex3f(map_3D_class::cell[cell_count].vertex[0].x,map_3D_class::cell[cell_count].vertex[0].y,map_3D_class::cell[cell_count].vertex[0].z);
+                glVertex3f(map_3D_class::cell[cell_count].vertex[1].x,map_3D_class::cell[cell_count].vertex[1].y,map_3D_class::cell[cell_count].vertex[1].z);
+                glVertex3f(map_3D_class::cell[cell_count].vertex[2].x,map_3D_class::cell[cell_count].vertex[2].y,map_3D_class::cell[cell_count].vertex[2].z);
+                glVertex3f(map_3D_class::cell[cell_count].vertex[3].x,map_3D_class::cell[cell_count].vertex[3].y,map_3D_class::cell[cell_count].vertex[3].z);
             glEnd ();
-*/
         }
-        if (map_3D_class::render_surfaces)
+        if ((map_3D_class::render_surfaces) && (map_3D_class::cell_visable(cell_count)))
         {
-
+            glBegin (GL_QUADS);
+                mesh_height_set_color(map_3D_class::cell[cell_count].vertex[0].y);
+                glVertex3f(map_3D_class::cell[cell_count].vertex[0].x,map_3D_class::cell[cell_count].vertex[0].y,map_3D_class::cell[cell_count].vertex[0].z);
+                mesh_height_set_color(map_3D_class::cell[cell_count].vertex[1].y);
+                glVertex3f(map_3D_class::cell[cell_count].vertex[1].x,map_3D_class::cell[cell_count].vertex[1].y,map_3D_class::cell[cell_count].vertex[1].z);
+                mesh_height_set_color(map_3D_class::cell[cell_count].vertex[2].y);
+                glVertex3f(map_3D_class::cell[cell_count].vertex[2].x,map_3D_class::cell[cell_count].vertex[2].y,map_3D_class::cell[cell_count].vertex[2].z);
+                mesh_height_set_color(map_3D_class::cell[cell_count].vertex[3].y);
+                glVertex3f(map_3D_class::cell[cell_count].vertex[3].x,map_3D_class::cell[cell_count].vertex[3].y,map_3D_class::cell[cell_count].vertex[3].z);
+            glEnd ();
         }
-        if (map_3D_class::render_wireframe)
+        if ((map_3D_class::render_wireframe) && (map_3D_class::cell_visable(cell_count)))
         {
             glBegin (GL_LINES);
                 glVertex3f(map_3D_class::cell[cell_count].vertex[0].x,map_3D_class::cell[cell_count].vertex[0].y,map_3D_class::cell[cell_count].vertex[0].z);
@@ -184,7 +191,18 @@ void map_3D_class::mesh_height_generate_random(void)
         map_3D_class::cell[cell_count].vertex[1].y = (random_double() / 20.0f) + 0.01f;
         map_3D_class::cell[cell_count].vertex[2].y = (random_double() / 20.0f) + 0.01f;
         map_3D_class::cell[cell_count].vertex[3].y = (random_double() / 20.0f) + 0.01f;
-        map_3D_class::cell[cell_count].vertex[4].y = (random_double() / 20.0f) + 0.01f;
+    }
+    map_3D_class::mesh_height_smooth();
+};
+
+void map_3D_class::mesh_height_randomize(void)
+{
+    for(int cell_count = 0; cell_count < map_3D_class::number_of_cells; cell_count++)
+    {
+        map_3D_class::cell[cell_count].vertex[0].y += (random_double() / 20.0f) + 0.01f;
+        map_3D_class::cell[cell_count].vertex[1].y += (random_double() / 20.0f) + 0.01f;
+        map_3D_class::cell[cell_count].vertex[2].y += (random_double() / 20.0f) + 0.01f;
+        map_3D_class::cell[cell_count].vertex[3].y += (random_double() / 20.0f) + 0.01f;
     }
     map_3D_class::mesh_height_smooth();
 };
@@ -197,75 +215,79 @@ void map_3D_class::mesh_height_smooth(void)
 {
     for(int cell_count = 0; cell_count < map_3D_class::number_of_cells; cell_count++)
     {
-        if(cell_count < map_3D_class::number_of_cells_x) // top right edge
+        map_3D_class::cell[cell_count].vertex[1].y = map_3D_class::cell[cell_count+1].vertex[0].y;
+        map_3D_class::cell[cell_count].vertex[2].y = map_3D_class::cell[cell_count+1].vertex[3].y;
+        if(cell_count > map_3D_class::number_of_cells_x-1) // top right edge
         {
-            if((cell_count == 0) && (cell_count == map_3D_class::number_of_cells_x))
-            {
-                if(cell_count == 0)
-                {
-
-                }
-                if(cell_count == map_3D_class::number_of_cells_x)
-                {
-
-                }
-
-            }
-            else
-            {
-
-            }
-
-        }
-        if(cell_count < map_3D_class::number_of_cells_x) // top right edge
-        {
-
+            map_3D_class::cell[cell_count].vertex[0].y = map_3D_class::cell[cell_count-map_3D_class::number_of_cells_x].vertex[3].y;
+            map_3D_class::cell[cell_count].vertex[1].y = map_3D_class::cell[cell_count-map_3D_class::number_of_cells_x].vertex[2].y;
         }
     }
-/*
-    int cell_num = 0;
-    int cell_2   = 0;
-    for(int cell_x = 0; cell_x < map_3D_class::number_of_cells_x; cell_x++)
-    {
-        for(int cell_z = 0; cell_z < map_3D_class::number_of_cells_z; cell_z++)
-        {
-            if (cell_num < map_3D_class::number_of_cells-1)
-            {
-                map_3D_class::cell[cell_num].vertex[0].y = (map_3D_class::cell[cell_num + 1].vertex[1].y + map_3D_class::cell[cell_num].vertex[0].y) /2;
-                map_3D_class::cell[cell_num].vertex[3].y = (map_3D_class::cell[cell_num + 1].vertex[4].y + map_3D_class::cell[cell_num].vertex[3].y) /2;
-                map_3D_class::cell[cell_num + 1].vertex[1].y = map_3D_class::cell[cell_num].vertex[0].y ;
-                map_3D_class::cell[cell_num + 1].vertex[4].y = map_3D_class::cell[cell_num].vertex[3].y;
-
-                cell_2 = cell_num + map_3D_class::number_of_cells_x;
-                if (cell_2 < map_3D_class::number_of_cells)
-                {
-                    //map_3D_class::cell[cell_num].vertex[1].y = (map_3D_class::cell[cell_2].vertex[4].y + map_3D_class::cell[cell_num].vertex[1].y) /2;
-                    //map_3D_class::cell[cell_num].vertex[0].y = (map_3D_class::cell[cell_2].vertex[3].y + map_3D_class::cell[cell_num].vertex[0].y) /2;
-                    map_3D_class::cell[cell_2].vertex[4].y = map_3D_class::cell[cell_num].vertex[1].y;
-                    map_3D_class::cell[cell_2].vertex[3].y = map_3D_class::cell[cell_num].vertex[0].y;
-                }
-            }
-            cell_num++;
-        }
-    }
-    map_3D_class::cell[0].vertex[1].y = map_3D_class::cell[Z_CELLS+0].vertex[4].y; // fix first cell vertex 1
-*/
 };
 
 void map_3D_class::mesh_height_set_color(float y_height)
 {
+    float height_color_r = 0.0f;
+    float height_color_g = 0.0f;
+    float height_color_b = 0.0f;
+    y_height += 0.02f;
+    height_color_r = y_height;
+    y_height += 0.01f;
+    y_height *= 30;
+    if (y_height > 0.5f) height_color_g = y_height;
+    if (y_height < 0.5f)
+    {
+        y_height  = 1.0f - y_height;
+        height_color_b = (y_height * 2)/3;
+    }
+    else height_color_b = height_color_r;
+    glColor3f (height_color_r,height_color_g,height_color_b);
 };
 
 void map_3D_class::scroll_map(int x_dir, int z_dir)
 {
+    map_3D_class::position_x += x_dir * MAP_SCROLL_SPEED;
+    map_3D_class::position_z += z_dir * MAP_SCROLL_SPEED;
+/*
+    float temp_x = x_dir * MAP_SCROLL_SPEED;
+    float temp_z = z_dir * MAP_SCROLL_SPEED;
+    for(int cell_count = 0; cell_count < map_3D_class::number_of_cells; cell_count++)
+    {
+        map_3D_class::cell[cell_count].x -= temp_x;
+        map_3D_class::cell[cell_count].z -= temp_z;
+        map_3D_class::cell[cell_count].vertex[0].x = map_3D_class::cell[cell_count].x;
+        map_3D_class::cell[cell_count].vertex[0].z = map_3D_class::cell[cell_count].z + map_3D_class::cell_spacing;
+        map_3D_class::cell[cell_count].vertex[1].x = map_3D_class::cell[cell_count].x + map_3D_class::cell_spacing;
+        map_3D_class::cell[cell_count].vertex[1].z = map_3D_class::cell[cell_count].z;
+        map_3D_class::cell[cell_count].vertex[2].x = map_3D_class::cell[cell_count].x;
+        map_3D_class::cell[cell_count].vertex[2].z = map_3D_class::cell[cell_count].z - map_3D_class::cell_spacing;
+        map_3D_class::cell[cell_count].vertex[3].x = map_3D_class::cell[cell_count].x - map_3D_class::cell_spacing;
+        map_3D_class::cell[cell_count].vertex[3].z = map_3D_class::cell[cell_count].z;
+    }
+*/
 };
 
 int  map_3D_class::mouse_over_cell(void)
 {
+    int return_value = -1;
+    for (int cell_count = 0; cell_count < map_3D_class::number_of_cells; cell_count++)
+    {
+        if (map_3D_class::cell_visable(cell_count))
+        {
+            if (game.core.physics.point_in_diamond(map_3D_class::cell[cell_count].x,map_3D_class::cell_spacing_half,map_3D_class::cell[cell_count].z,map_3D_class::cell_spacing_half,game.core.io.mouse_x,game.core.io.mouse_y)) return_value = cell_count;
+        }
+    }
+    return(return_value);
 };
 
 bool map_3D_class::cell_visable(int cell_number)
 {
+    if ((map_3D_class::cell[cell_number].x < ( 2.0f+map_3D_class::cell_spacing-map_3D_class::position_x))
+    &&  (map_3D_class::cell[cell_number].x > (-2.0f-map_3D_class::cell_spacing-map_3D_class::position_x))
+    &&  (map_3D_class::cell[cell_number].z < ( 2.0f+map_3D_class::cell_spacing-map_3D_class::position_z))
+    &&  (map_3D_class::cell[cell_number].z > (-2.0f-map_3D_class::cell_spacing-map_3D_class::position_z))) return(true);
+    else return(false);
+
 };
 
 
