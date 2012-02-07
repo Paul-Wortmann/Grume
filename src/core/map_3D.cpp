@@ -100,20 +100,22 @@ void map_3D_class::draw(void)
     if (map_3D_class::render_textured)
     {
         glBindTexture( GL_TEXTURE_2D, game.texture.generic_grass.frame[0].data);
+        /*
         glTexGeni(GL_S, GL_TEXTURE_GEN_MODE, GL_OBJECT_LINEAR);
         glTexGeni(GL_T, GL_TEXTURE_GEN_MODE, GL_OBJECT_LINEAR);
         glEnable(GL_TEXTURE_GEN_S);
         glEnable(GL_TEXTURE_GEN_T);
         glMatrixMode(GL_MODELVIEW_MATRIX);
+        */
         for(int cell_count = 0; cell_count < map_3D_class::number_of_cells; cell_count++)
         {
             if (map_3D_class::cell_visable(cell_count))
             {
                 glBegin (GL_QUADS);
-                    glVertex3f(map_3D_class::cell[cell_count].vertex[0].x,map_3D_class::cell[cell_count].vertex[0].y,map_3D_class::cell[cell_count].vertex[0].z);
-                    glVertex3f(map_3D_class::cell[cell_count].vertex[1].x,map_3D_class::cell[cell_count].vertex[1].y,map_3D_class::cell[cell_count].vertex[1].z);
-                    glVertex3f(map_3D_class::cell[cell_count].vertex[2].x,map_3D_class::cell[cell_count].vertex[2].y,map_3D_class::cell[cell_count].vertex[2].z);
-                    glVertex3f(map_3D_class::cell[cell_count].vertex[3].x,map_3D_class::cell[cell_count].vertex[3].y,map_3D_class::cell[cell_count].vertex[3].z);
+                    glTexCoord2i( 0, 1);glVertex3f(map_3D_class::cell[cell_count].vertex[0].x,map_3D_class::cell[cell_count].vertex[0].y,map_3D_class::cell[cell_count].vertex[0].z);
+                    glTexCoord2i( 0, 0);glVertex3f(map_3D_class::cell[cell_count].vertex[1].x,map_3D_class::cell[cell_count].vertex[1].y,map_3D_class::cell[cell_count].vertex[1].z);
+                    glTexCoord2i( 1, 0);glVertex3f(map_3D_class::cell[cell_count].vertex[2].x,map_3D_class::cell[cell_count].vertex[2].y,map_3D_class::cell[cell_count].vertex[2].z);
+                    glTexCoord2i( 1, 1);glVertex3f(map_3D_class::cell[cell_count].vertex[3].x,map_3D_class::cell[cell_count].vertex[3].y,map_3D_class::cell[cell_count].vertex[3].z);
                 glEnd ();
             }
         }

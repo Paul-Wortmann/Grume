@@ -904,7 +904,7 @@ void loader_obj_class::draw(void)
     glEnable(GL_DEPTH_TEST);
 
     // add support here to load texture from material file....
-    glBindTexture( GL_TEXTURE_2D, game.texture.generic_lava.frame[0].data);
+    glBindTexture( GL_TEXTURE_2D, game.texture.generic_leaves.frame[0].data);
 
     glTexGeni(GL_S, GL_TEXTURE_GEN_MODE, GL_OBJECT_LINEAR);
     glTexGeni(GL_T, GL_TEXTURE_GEN_MODE, GL_OBJECT_LINEAR);

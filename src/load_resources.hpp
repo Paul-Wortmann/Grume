@@ -439,10 +439,11 @@ struct texture_type
     texture_class portrait_10;
 
     texture_class heightmap_000;
-    texture_class heightmap_001;
 
     texture_class generic_grass;
     texture_class generic_lava;
+    texture_class generic_leaves;
+    texture_class generic_sand_shrubs;
     texture_class generic_water;
 };
 
