@@ -36,6 +36,7 @@ struct cell_type
     float        y;
     float        z;
     vertex_type  vertex[4];
+    int          object;
     int          tile_number;
     int          tileset_number;
 };

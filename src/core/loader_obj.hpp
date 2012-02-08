@@ -26,7 +26,7 @@
 #define LOADER_OBJ_H
 
 #include <string>
-#include "core/graphics.hpp"
+#include "graphics.hpp"
 
 struct face_type
 {
@@ -69,6 +69,8 @@ struct use_material_type
 class loader_obj_class
 {
     public:
+        bool                  wrap_texture;
+        int                   wrap_texture_ID;
         angle_type            angle;
         std::string           model_name;
         std::string           mtllib;
@@ -89,9 +91,11 @@ class loader_obj_class
         face_type*            face;
         loader_obj_class(void);
        ~loader_obj_class(void);
+        void                  set_wrap_texture(int texture_ID);
         void                  load_mtl(std::string file_name);
         void                  save_mtl(std::string file_name);
         void                  load(std::string file_name);
+        void                  load(std::string file_name, int obj_ID);
         void                  save(std::string file_name);
         void                  scale(float scale_value);
         void                  scale(float scale_x, float scale_y, float scale_z);
@@ -100,6 +104,7 @@ class loader_obj_class
         void                  relocate(float x, float y, float z);
         void                  process(void);
         void                  draw(void);
+        void                  draw(float x, float y, float z);
 };
 
 #endif // LOADER_OBJ_H

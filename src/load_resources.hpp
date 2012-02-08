@@ -32,6 +32,7 @@
 #include "core/font.hpp"
 #include "core/map_2D.hpp"
 #include "core/map_3D.hpp"
+#include "core/loader_obj.hpp"
 
 struct sound_type
 {
@@ -56,6 +57,11 @@ struct map_2D_type
 struct map_3D_type
 {
     map_3D_class   town;
+};
+
+struct model_3D_type
+{
+    loader_obj_class fern;
 };
 
 struct music_type
@@ -455,6 +461,7 @@ struct font_type
 bool load_resources(void);
 bool load_maps_2D(void);
 bool load_maps_3D(void);
+bool load_3D_models(void);
 bool load_sounds(void);
 bool play_sound(int sound_number);
 bool load_music(void);
@@ -464,8 +471,8 @@ bool draw_texture(bool r, int texture_number, float x, float y, float z, float w
 bool draw_texture(bool r, int texture_number, float x, float y, float z, float w, float h, float angle);
 bool draw_texture(bool r, int texture_number, float x, float y, float z, float w, float h, float angle, int frame);
 bool load_fonts(void);
-
 bool loading_screen_display(std::string file_name);
+bool bind_texture(int texture_number);
 
 #endif // LOAD_RESOURCES_H
 

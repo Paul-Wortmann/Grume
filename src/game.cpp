@@ -27,18 +27,12 @@
 #include "game.hpp"
 #include "misc.hpp"
 #include "core/core.hpp"
-#include "loader_obj.hpp"
+#include "core/loader_obj.hpp"
 
         game_type        game;
 
 int init_game(bool re_init)
 {
-    game.test.load("data/models/fern.obj");
-    game.test.save("data/models/out.obj");
-    game.test.scale(0.2f,0.2f,0.2f);
-    //game.test.set_angle(60.0f,0.0f,225.0f);
-    game.test.set_position(0.0f,0.0f,0.0f);
-
     game.global_ambient.intensity_R = 8.0f;
     game.global_ambient.intensity_G = 8.0f;
     game.global_ambient.intensity_B = 8.0f;
@@ -109,11 +103,6 @@ int init_game(bool re_init)
 /*----------------------------------------------------------------------------*/
 int process_game(void)
 {
-    // for testing ---------------->
-            //game.test.angle.rotation.y += 1.0f;
-            if (game.test.angle.rotation.y > 360.0f) game.test.angle.rotation.y = 0.0f;
-    // <---------------- for testing
-    //game.test.process();
     game.UI.process();
     game.player.process();
     //game.map_2D.town.process();
@@ -315,65 +304,6 @@ int process_game(void)
             game.core.io.keyboard_delay_count = 0;
         }
 ///------------------------------------------------------------------------------------------
-        if (game.core.io.key_1) // x+
-        {
-            game.test.angle.rotation.x += 1.0f;
-            if (game.test.angle.rotation.x > 360.0f) game.test.angle.rotation.x = 0.0f;
-        }
-        if (game.core.io.key_2) // x--
-        {
-            game.test.angle.rotation.x -= 1.0f;
-            if (game.test.angle.rotation.x < 0.0f) game.test.angle.rotation.x = 360.0f;
-        }
-        if (game.core.io.key_3) // y+
-        {
-            game.test.angle.rotation.y += 1.0f;
-            if (game.test.angle.rotation.y > 360.0f) game.test.angle.rotation.y = 0.0f;
-        }
-        if (game.core.io.key_4) // y--
-        {
-            game.test.angle.rotation.y -= 1.0f;
-            if (game.test.angle.rotation.y < 0.0f) game.test.angle.rotation.y = 360.0f;
-        }
-        if (game.core.io.key_5) // z+
-        {
-            game.test.angle.rotation.z += 1.0f;
-            if (game.test.angle.rotation.z > 360.0f) game.test.angle.rotation.z = 0.0f;
-        }
-        if (game.core.io.key_6) // z--
-        {
-            game.test.angle.rotation.z -= 1.0f;
-            if (game.test.angle.rotation.z < 0.0f) game.test.angle.rotation.z = 360.0f;
-        }
-
-
-
-        if (game.core.io.key_y) // t.x+
-        {
-            game.test.angle.translation.x += 0.125f;
-        }
-        if (game.core.io.key_u) // t.x--
-        {
-            game.test.angle.translation.x -= 0.125f;
-        }
-        if (game.core.io.key_7) // t.y+
-        {
-            game.test.angle.translation.y += 0.125f;
-        }
-        if (game.core.io.key_8) // t.y--
-        {
-            game.test.angle.translation.y -= 0.125f;
-        }
-        if (game.core.io.key_g) // t.z+
-        {
-            game.test.angle.translation.z += 0.125f;
-        }
-        if (game.core.io.key_h) // t.z--
-        {
-            game.test.angle.translation.z -= 0.125f;
-        }
-
-///------------------------------------------------------------------------------------------
 
         if (game.core.io.key_alt) // display item names on map (loot / clickable items)
         {
@@ -408,8 +338,6 @@ int display_game(void)
     //game.map_2D.town.draw();
     game.map_3D.town.draw();
     game.player.draw();
-
-    game.test.draw();
 
     glLightModelfv(GL_LIGHT_MODEL_AMBIENT,global_ambient_light);
     game.UI.draw();

@@ -34,7 +34,7 @@
 #include "map_3D.hpp"
 #include "../game.hpp"
 #include "textures.hpp"
-#include "../loader_obj.hpp"
+#include "loader_obj.hpp"
 #include "../misc.hpp"
 #include "../game.hpp"
 
@@ -54,7 +54,7 @@ map_3D_class::map_3D_class(void)
     map_3D_class::position_x          =  0.0f;
     map_3D_class::position_y          =  0.0f;
     map_3D_class::position_z          =  0.0f;
-    map_3D_class::render_textured     =  true;
+    map_3D_class::render_textured     =  false;
     map_3D_class::render_surfaces     =  true;
     map_3D_class::render_wireframe    =  true;
     map_3D_class::render_water        =  true;
@@ -69,8 +69,9 @@ void map_3D_class::load(std::string file_name)
 {
     map_3D_class::cell = new cell_type[map_3D_class::number_of_cells+1];
     map_3D_class::mesh_cell_positions_generate();
-    //map_3D_class::mesh_height_generate_random();
     map_3D_class::mesh_height_generate_heightmap("data/textures/heightmaps/heightmap_000.png");
+    //map_3D_class::mesh_height_generate_random();
+    //map_3D_class::mesh_height_randomize();
 };
 
 void map_3D_class::process(void)
@@ -85,6 +86,7 @@ void map_3D_class::process(void)
 
 void map_3D_class::draw(void)
 {
+    bool set_texture = true;
     glPushMatrix();
     glMatrixMode(GL_MODELVIEW_MATRIX);
     glLoadIdentity();
@@ -97,18 +99,21 @@ void map_3D_class::draw(void)
     glRotatef (map_3D_class::y_rotate, 0.0f, 1.0f, 0.0f);
     glRotatef (map_3D_class::z_rotate, 0.0f, 0.0f, 1.0f);
 	glTranslatef(map_3D_class::position_x,map_3D_class::position_y,map_3D_class::position_z);
+    set_texture = true;
     if (map_3D_class::render_textured)
     {
-        glBindTexture( GL_TEXTURE_2D, game.texture.generic_grass.frame[0].data);
-        /*
-        glTexGeni(GL_S, GL_TEXTURE_GEN_MODE, GL_OBJECT_LINEAR);
-        glTexGeni(GL_T, GL_TEXTURE_GEN_MODE, GL_OBJECT_LINEAR);
-        glEnable(GL_TEXTURE_GEN_S);
-        glEnable(GL_TEXTURE_GEN_T);
         glMatrixMode(GL_MODELVIEW_MATRIX);
-        */
         for(int cell_count = 0; cell_count < map_3D_class::number_of_cells; cell_count++)
         {
+            if (set_texture)
+            {
+                glBindTexture( GL_TEXTURE_2D, game.texture.generic_grass.frame[0].data);
+                glTexGeni(GL_S, GL_TEXTURE_GEN_MODE, GL_OBJECT_LINEAR);
+                glTexGeni(GL_T, GL_TEXTURE_GEN_MODE, GL_OBJECT_LINEAR);
+                glEnable(GL_TEXTURE_GEN_S);
+                glEnable(GL_TEXTURE_GEN_T);
+                set_texture = false;
+            }
             if (map_3D_class::cell_visable(cell_count))
             {
                 glBegin (GL_QUADS);
@@ -118,14 +123,25 @@ void map_3D_class::draw(void)
                     glTexCoord2i( 1, 1);glVertex3f(map_3D_class::cell[cell_count].vertex[3].x,map_3D_class::cell[cell_count].vertex[3].y,map_3D_class::cell[cell_count].vertex[3].z);
                 glEnd ();
             }
+            if (cell_count == 0) //(map_3D_class::cell[cell_count].object > 0)
+            {
+                game.model_3D.fern.draw(map_3D_class::cell[0].x,map_3D_class::cell[0].y,map_3D_class::cell[0].z);
+                set_texture = true;
+            }
         }
     }
+    set_texture = true;
     if (map_3D_class::render_surfaces)
     {
         for(int cell_count = 0; cell_count < map_3D_class::number_of_cells; cell_count++)
         {
             if (map_3D_class::cell_visable(cell_count))
             {
+                if (set_texture)
+                {
+                    glBindTexture( GL_TEXTURE_2D, game.texture.generic_grass.frame[0].data);
+                set_texture = false;
+                }
                 glBegin (GL_QUADS);
                     mesh_height_set_color(map_3D_class::cell[cell_count].vertex[0].y);
                     glVertex3f(map_3D_class::cell[cell_count].vertex[0].x,map_3D_class::cell[cell_count].vertex[0].y,map_3D_class::cell[cell_count].vertex[0].z);
@@ -136,6 +152,11 @@ void map_3D_class::draw(void)
                     mesh_height_set_color(map_3D_class::cell[cell_count].vertex[3].y);
                     glVertex3f(map_3D_class::cell[cell_count].vertex[3].x,map_3D_class::cell[cell_count].vertex[3].y,map_3D_class::cell[cell_count].vertex[3].z);
                 glEnd ();
+                if (cell_count == 0) //(map_3D_class::cell[cell_count].object > 0)
+                {
+                    game.model_3D.fern.draw(map_3D_class::cell[0].vertex[0].x,map_3D_class::cell[0].vertex[0].y,map_3D_class::cell[0].z);
+                    set_texture = true;
+                }
             }
         }
     }
