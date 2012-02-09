@@ -155,6 +155,7 @@ void map_3D_class::draw(void)
                 if (cell_count == 0) //(map_3D_class::cell[cell_count].object > 0)
                 {
                     game.model_3D.fern.draw(map_3D_class::cell[0].vertex[0].x,map_3D_class::cell[0].vertex[0].y,map_3D_class::cell[0].z);
+                    game.model_3D.tree_palm.draw(map_3D_class::cell[2].vertex[0].x,map_3D_class::cell[2].vertex[0].y,map_3D_class::cell[2].z);
                     set_texture = true;
                 }
             }
@@ -195,10 +196,10 @@ void map_3D_class::draw(void)
         glEnable(GL_TEXTURE_GEN_T);
         glMatrixMode(GL_MODELVIEW_MATRIX);
         glBegin (GL_QUADS);
-            glVertex3f(map_3D_class::cell[0].vertex[0].x,0.0f,map_3D_class::cell[0].vertex[0].z);
-            glVertex3f(map_3D_class::cell[map_3D_class::number_of_cells_x-1].vertex[1].x,0.0f,map_3D_class::cell[map_3D_class::number_of_cells_x-1].vertex[1].z);
-            glVertex3f(map_3D_class::cell[map_3D_class::number_of_cells-1].vertex[2].x,0.0f,map_3D_class::cell[map_3D_class::number_of_cells-1].vertex[2].z);
-            glVertex3f(map_3D_class::cell[map_3D_class::number_of_cells-map_3D_class::number_of_cells_x].vertex[3].x,0.0f,map_3D_class::cell[map_3D_class::number_of_cells-map_3D_class::number_of_cells_x].vertex[3].z);
+            glVertex3f(map_3D_class::cell[0].vertex[0].x,-0.1f,map_3D_class::cell[0].vertex[0].z);
+            glVertex3f(map_3D_class::cell[map_3D_class::number_of_cells_x-1].vertex[1].x,-0.1f,map_3D_class::cell[map_3D_class::number_of_cells_x-1].vertex[1].z);
+            glVertex3f(map_3D_class::cell[map_3D_class::number_of_cells-1].vertex[2].x,-0.1f,map_3D_class::cell[map_3D_class::number_of_cells-1].vertex[2].z);
+            glVertex3f(map_3D_class::cell[map_3D_class::number_of_cells-map_3D_class::number_of_cells_x].vertex[3].x,-0.1f,map_3D_class::cell[map_3D_class::number_of_cells-map_3D_class::number_of_cells_x].vertex[3].z);
         glEnd ();
     }
     glDisable(GL_TEXTURE_GEN_S);
@@ -293,7 +294,7 @@ void map_3D_class::mesh_height_generate_heightmap(std::string file_name)
             temp_data = temp_data >> pixel_format->Ashift;
             temp_data = temp_data << pixel_format->Aloss;
             alpha = (Uint8)temp_data;
-            temp_value = float((((red+green+blue) / 768.0f) - 0.5f) / 4.0f);
+            temp_value = float((((red+green+blue) / 768.0f) - 1.0f) / 4.0f);
             map_3D_class::cell[cell_count].vertex[0].y = temp_value;
             map_3D_class::cell[cell_count].vertex[1].y = temp_value;
             map_3D_class::cell[cell_count].vertex[2].y = temp_value;

@@ -62,8 +62,9 @@ bool load_3D_models(void)
 {
     int model_3D_count = 0;
     game.model_3D.fern.load("data/models/fern.obj",model_3D_count);
-    game.model_3D.fern.set_wrap_texture(game.texture.generic_sand_shrubs.ref_number);
-    game.model_3D.fern.scale(0.04f,0.04f,0.04f);model_3D_count++;
+    game.model_3D.fern.set_wrap_texture(game.texture.generic_leaves_01.ref_number);model_3D_count++;
+    game.model_3D.tree_palm.load("data/models/tree_palm.obj",model_3D_count);
+    game.model_3D.tree_palm.set_wrap_texture(game.texture.generic_leaves_01.ref_number);model_3D_count++;
 
     game.core.log.File_Write("3D model files loaded -> ",model_3D_count);
     return(true);
@@ -477,7 +478,8 @@ bool load_textures(void)
 
     game.texture.generic_grass.load_image       ("data/textures/generic/grass.png"       ,texture_count);texture_count++;
     game.texture.generic_lava.load_image        ("data/textures/generic/lava.png"        ,texture_count);texture_count++;
-    game.texture.generic_leaves.load_image      ("data/textures/generic/leaves.png"      ,texture_count);texture_count++;
+    game.texture.generic_leaves_00.load_image   ("data/textures/generic/leaves_00.png"   ,texture_count);texture_count++;
+    game.texture.generic_leaves_01.load_image   ("data/textures/generic/leaves_01.png"   ,texture_count);texture_count++;
     game.texture.generic_sand_shrubs.load_image ("data/textures/generic/sand_shrubs.png" ,texture_count);texture_count++;
     game.texture.generic_water.load_image       ("data/textures/generic/water.png"       ,texture_count);texture_count++;
 
@@ -883,7 +885,8 @@ bool draw_texture(bool r, int texture_number, float x, float y, float z, float w
 
     if (texture_number == game.texture.generic_grass.ref_number)       game.texture.generic_grass.draw       (r,x,y,z,w,h,angle,frame);
     if (texture_number == game.texture.generic_lava.ref_number)        game.texture.generic_lava.draw        (r,x,y,z,w,h,angle,frame);
-    if (texture_number == game.texture.generic_leaves.ref_number)      game.texture.generic_leaves.draw      (r,x,y,z,w,h,angle,frame);
+    if (texture_number == game.texture.generic_leaves_00.ref_number)   game.texture.generic_leaves_00.draw   (r,x,y,z,w,h,angle,frame);
+    if (texture_number == game.texture.generic_leaves_00.ref_number)   game.texture.generic_leaves_01.draw   (r,x,y,z,w,h,angle,frame);
     if (texture_number == game.texture.generic_sand_shrubs.ref_number) game.texture.generic_sand_shrubs.draw (r,x,y,z,w,h,angle,frame);
     if (texture_number == game.texture.generic_water.ref_number)       game.texture.generic_water.draw       (r,x,y,z,w,h,angle,frame);
 
@@ -1252,11 +1255,12 @@ bool bind_texture(int texture_number)
 
     if (texture_number == game.texture.heightmap_000.ref_number) glBindTexture(GL_TEXTURE_2D, game.texture.heightmap_000.frame[0].data);
 
-    if (texture_number == game.texture.generic_grass.ref_number)       glBindTexture(GL_TEXTURE_2D, game.texture.generic_grass.frame[0].data)       ;
-    if (texture_number == game.texture.generic_lava.ref_number)        glBindTexture(GL_TEXTURE_2D, game.texture.generic_lava.frame[0].data)        ;
-    if (texture_number == game.texture.generic_leaves.ref_number)      glBindTexture(GL_TEXTURE_2D, game.texture.generic_leaves.frame[0].data)      ;
-    if (texture_number == game.texture.generic_sand_shrubs.ref_number) glBindTexture(GL_TEXTURE_2D, game.texture.generic_sand_shrubs.frame[0].data) ;
-    if (texture_number == game.texture.generic_water.ref_number)       glBindTexture(GL_TEXTURE_2D, game.texture.generic_water.frame[0].data)       ;
+    if (texture_number == game.texture.generic_grass.ref_number)       glBindTexture(GL_TEXTURE_2D, game.texture.generic_grass.frame[0].data);
+    if (texture_number == game.texture.generic_lava.ref_number)        glBindTexture(GL_TEXTURE_2D, game.texture.generic_lava.frame[0].data);
+    if (texture_number == game.texture.generic_leaves_00.ref_number)   glBindTexture(GL_TEXTURE_2D, game.texture.generic_leaves_00.frame[0].data);
+    if (texture_number == game.texture.generic_leaves_01.ref_number)   glBindTexture(GL_TEXTURE_2D, game.texture.generic_leaves_01.frame[0].data);
+    if (texture_number == game.texture.generic_sand_shrubs.ref_number) glBindTexture(GL_TEXTURE_2D, game.texture.generic_sand_shrubs.frame[0].data);
+    if (texture_number == game.texture.generic_water.ref_number)       glBindTexture(GL_TEXTURE_2D, game.texture.generic_water.frame[0].data);
 
     return(true);
 };

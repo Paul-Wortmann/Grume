@@ -62,6 +62,7 @@ struct map_3D_type
 struct model_3D_type
 {
     loader_obj_class fern;
+    loader_obj_class tree_palm;
 };
 
 struct music_type
@@ -448,7 +449,8 @@ struct texture_type
 
     texture_class generic_grass;
     texture_class generic_lava;
-    texture_class generic_leaves;
+    texture_class generic_leaves_00;
+    texture_class generic_leaves_01;
     texture_class generic_sand_shrubs;
     texture_class generic_water;
 };
