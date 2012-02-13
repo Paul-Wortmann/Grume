@@ -1099,3 +1099,13 @@
 	"../game.hpp"
 	"../misc.hpp"
 
+1329033535 source:c:\_git_\frost_and_flame\src\core\loader_tmx.cpp
+	<iostream>
+	<fstream>
+	<stdio.h>
+	<stdlib.h>
+	<string>
+	"loader_tmx.hpp"
+
+1329033616 c:\_git_\frost_and_flame\src\core\loader_tmx.hpp
+

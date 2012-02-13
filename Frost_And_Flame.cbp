@@ -81,6 +81,8 @@
 		<Unit filename="src\core\io.hpp" />
 		<Unit filename="src\core\loader_obj.cpp" />
 		<Unit filename="src\core\loader_obj.hpp" />
+		<Unit filename="src\core\loader_tmx.cpp" />
+		<Unit filename="src\core\loader_tmx.hpp" />
 		<Unit filename="src\core\log.cpp" />
 		<Unit filename="src\core\log.hpp" />
 		<Unit filename="src\core\map_2D.cpp" />
