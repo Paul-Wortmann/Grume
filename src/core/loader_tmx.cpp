@@ -91,25 +91,102 @@ void tmx_class::load(std::string file_name)
         {
             getline(script_file,data_line);
             {
-                need to get no. of values!
-
-                switch (data_line[0])
+                position_count = 0;
+                if ((data_line[position_count] == ' ') && (data_line.length() > 2))
                 {
-                    case 's':
-                        tmx_class::number_of_tiles++;
-                    break;
-                    case 't':
-                        tmx_class::number_of_tilesets++;
-                    break;
-                    default:
-                    break;
+                    temp_char = ' ';
+                    while (temp_char == ' ')
+                    {
+                        temp_char = data_line[position_count];
+                        position_count++;
+                    }
+                    position_count--;
+                }
+                position_start = position_count;
+                if((data_line[position_count] == '<') && (data_line[position_count+1] == '/') && (data_line.length() > 2))
+                {
+                    temp_char         = ' ';
+                    temp_string_key   = "";
+                    temp_string_value = "";
+                    while(temp_char != '>')
+                    {
+                        temp_char = data_line[position_count];
+                        if((temp_char != '<') && (temp_char != '/') && (temp_char != '>'))
+                        {
+                            temp_string_key += temp_char;
+                        }
+                        position_count++;
+                        if(position_count > data_line.length()) temp_char = '>';
+                    }
+                    if (temp_string_key == "tileset")
+                    {
+                        tileset_count++;
+                    }
+                }
+                position_count = position_start;
+                if((data_line[position_count] == '<') && (data_line[position_count+1] != '/') && (data_line.length() > 2))
+                {
+                    position_count++;
+                    while(position_count < data_line.length())
+                    {
+                        temp_char         = ' ';
+                        temp_string_key   = "";
+                        temp_string_value = "";
+                        while(temp_char != '"')
+                        {
+                            temp_char = data_line[position_count];
+                            if((temp_char != '"') && (temp_char != '='))
+                            {
+                                if((data_line[position_count-1] != '"') && (temp_char == ' ')) temp_string_key += temp_char;
+                                else if (temp_char != ' ') temp_string_key += temp_char;
+                            }
+                            position_count++;
+                            if(position_count > data_line.length()) temp_char = '"';
+                        }
+                        temp_char        = ' ';
+                        while(temp_char != '"')
+                        {
+                            temp_char = data_line[position_count];
+                            if(temp_char != '"') temp_string_value += temp_char;
+                            position_count++;
+                            if(position_count > data_line.length()) (temp_char = '"');
+                        }
+                        temp_string_data    = temp_string_value.c_str();
+                        temp_float_data     = atof(temp_string_value.c_str());
+                        temp_int_data       = atoi(temp_string_value.c_str());
+                        if (temp_int_data   == 1) temp_bool_data = true;
+                        else temp_bool_data = false;
+                        if (temp_string_key == "map version")      map_data     = true;
+                        if (map_data)
+                        {
+                            if (temp_string_key == "width")       tmx_class::width       = temp_int_data;
+                            if (temp_string_key == "height")      tmx_class::height      = temp_int_data;
+                            if (temp_string_key == "tileheight")  map_data               = false;
+                        }
+                    }
                 }
             }
         }
+        tmx_class::number_of_tiles    = tmx_class::width * tmx_class::height;
+        tmx_class::number_of_tilesets = tileset_count;
         script_file.clear();
         script_file.seekg(0, std::ios::beg);
-        tmx_class::tile                  = new tmx_tile_class   [tmx_class::number_of_tiles+1];
-        tmx_class::tileset               = new tmx_tileset_class[tmx_class::number_of_tilesets+1];
+        tmx_class::tile               = new tmx_tile_class   [tmx_class::number_of_tiles+1];
+        tmx_class::tileset            = new tmx_tileset_class[tmx_class::number_of_tilesets+1];
+        position_count                = 0;
+        position_start                = 0;
+        map_data                      = true;
+        tileset_data                  = false;
+        layer_data                    = false;
+        collision_data                = false;
+        object_data                   = false;
+        tile_data                     = false;
+        tileset_count                 = 0;
+        layer_count                   = 0;
+        tile_count                    = 0;
+        temp_char                     = ' ';
+        tmx_class::number_of_tiles    = 0;
+        tmx_class::number_of_tilesets = 0;
         // load data
         while (script_file.good())
         {
