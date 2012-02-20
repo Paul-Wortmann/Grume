@@ -33,6 +33,7 @@
 
 int init_game(bool re_init)
 {
+    game.model_3D.tree_palm.save("data/models/test.obj");
     game.global_ambient.intensity_R = 8.0f;
     game.global_ambient.intensity_G = 8.0f;
     game.global_ambient.intensity_B = 8.0f;

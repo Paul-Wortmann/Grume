@@ -1,14 +1,16 @@
-# Blender MTL File: 'demon_statue.blend'
+# Frost and Flame OBJ File: 'data/models/test.mtl'
+# www.physhexgames.co.nr
 # Material Count: 1
-newmtl armor
-Ns 96.078431
-Ka 0.000000 0.000000 0.000000
-Kd 0.410930 0.410930 0.410930
-Ks 0.115152 0.115152 0.115152
-Ni 1.000000
-d 1.000000
+newmtl palm_diffus512.tga_diffus512.tga
+Ns 96.0784
+Ka 0 0 0
+Kd 0.64 0.64 0.64
+Ks 1 1 1
+Ni 1
+d 1
 illum 2
-map_Kd C:\\Users\\RoboPaul\\AppData\\Pictures\\dawn\\granite.jpg
-map_Bump C:\\Users\\RoboPaul\\AppData\\Pictures\\dawn\\granite.jpg
+map_d 
+map_Kd diffus512.tga
+map_Bump 
 
 

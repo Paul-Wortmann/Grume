@@ -245,7 +245,7 @@ void loader_obj_class::load_mtl(std::string file_name)
                                     temp_string_data += data_line[position_count];
                                     position_count++;
                                 }
-                                loader_obj_class::material[number_of_materials_count].map_d = temp_string_data.c_str();
+                                loader_obj_class::material[number_of_materials_count].map_d = game.core.file.path_remove(temp_string_data.c_str());
                             break;
                             case 'K': //
                                 position_count = 7;
@@ -255,7 +255,7 @@ void loader_obj_class::load_mtl(std::string file_name)
                                     temp_string_data += data_line[position_count];
                                     position_count++;
                                 }
-                                loader_obj_class::material[number_of_materials_count].map_Kd = temp_string_data.c_str();
+                                loader_obj_class::material[number_of_materials_count].map_Kd = game.core.file.path_remove(temp_string_data.c_str());
                             break;
                             case 'B': //
                                 position_count = 9;
@@ -265,7 +265,7 @@ void loader_obj_class::load_mtl(std::string file_name)
                                     temp_string_data += data_line[position_count];
                                     position_count++;
                                 }
-                                loader_obj_class::material[number_of_materials_count].map_Bump = temp_string_data.c_str();
+                                loader_obj_class::material[number_of_materials_count].map_Bump = game.core.file.path_remove(temp_string_data.c_str());
                             break;
                             default:
                             break;
