@@ -13,7 +13,10 @@
 
 1326868751 
 
-1328424577 c:\_git_\frost_and_flame\src\core\core.hpp
+1329702343 c:\_git_\frost_and_flame\src\core\core.hpp
+	"loader_md2.hpp"
+	"loader_obj.hpp"
+	"loader_tmx.hpp"
 	"log.hpp"
 	"config.hpp"
 	"graphics.hpp"
@@ -1090,16 +1093,16 @@
 	"../misc.hpp"
 	"../game.hpp"
 
-1328715093 c:\_git_\frost_and_flame\src\core\loader_obj.hpp
+1329702480 c:\_git_\frost_and_flame\src\core\loader_obj.hpp
 	<string>
 	"graphics.hpp"
 
-1328796390 source:c:\_git_\frost_and_flame\src\core\loader_obj.cpp
+1329702656 source:c:\_git_\frost_and_flame\src\core\loader_obj.cpp
 	"loader_obj.hpp"
 	"../game.hpp"
 	"../misc.hpp"
 
-1329033535 source:c:\_git_\frost_and_flame\src\core\loader_tmx.cpp
+1329398130 source:c:\_git_\frost_and_flame\src\core\loader_tmx.cpp
 	<iostream>
 	<fstream>
 	<stdio.h>
@@ -1108,4 +1111,13 @@
 	"loader_tmx.hpp"
 
 1329033616 c:\_git_\frost_and_flame\src\core\loader_tmx.hpp
+
+1329702641 c:\_git_\frost_and_flame\src\core\loader_md2.hpp
+	<string>
+	"graphics.hpp"
+
+1329702760 source:c:\_git_\frost_and_flame\src\core\loader_md2.cpp
+	"loader_md2.hpp"
+	"../game.hpp"
+	"../misc.hpp"
 

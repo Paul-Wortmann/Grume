@@ -25,6 +25,9 @@
 #ifndef CORE_H
 #define CORE_H
 
+#include "loader_md2.hpp"
+#include "loader_obj.hpp"
+#include "loader_tmx.hpp"
 #include "log.hpp"
 #include "config.hpp"
 #include "graphics.hpp"

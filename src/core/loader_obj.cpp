@@ -95,7 +95,7 @@ void loader_obj_class::load_mtl(std::string file_name)
         }
         script_file.clear();
         script_file.seekg(0, std::ios::beg);
-        loader_obj_class::material = new material_type[loader_obj_class::number_of_materials+1];
+        loader_obj_class::material = new obj_material_type[loader_obj_class::number_of_materials+1];
         // load data
         while (script_file.good())
         {
@@ -422,8 +422,8 @@ void loader_obj_class::load(std::string file_name)
         loader_obj_class::vertex         = new vertex_type[loader_obj_class::number_of_vertices+1];
         loader_obj_class::vertex_texture = new vertex_texture_type[loader_obj_class::number_of_vertex_textures+1];
         loader_obj_class::vertex_normal  = new vertex_normal_type[loader_obj_class::number_of_vertex_normals+1];
-        loader_obj_class::use_material   = new use_material_type[loader_obj_class::number_of_use_materials+1];
-        loader_obj_class::face           = new face_type[loader_obj_class::number_of_faces+1];
+        loader_obj_class::use_material   = new obj_use_material_type[loader_obj_class::number_of_use_materials+1];
+        loader_obj_class::face           = new obj_face_type[loader_obj_class::number_of_faces+1];
         // load data
         while (script_file.good())
         {

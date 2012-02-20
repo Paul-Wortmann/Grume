@@ -79,6 +79,8 @@
 		<Unit filename="src\core\graphics.hpp" />
 		<Unit filename="src\core\io.cpp" />
 		<Unit filename="src\core\io.hpp" />
+		<Unit filename="src\core\loader_md2.cpp" />
+		<Unit filename="src\core\loader_md2.hpp" />
 		<Unit filename="src\core\loader_obj.cpp" />
 		<Unit filename="src\core\loader_obj.hpp" />
 		<Unit filename="src\core\loader_tmx.cpp" />

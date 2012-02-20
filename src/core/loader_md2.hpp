@@ -22,13 +22,13 @@
  * @date 2011-11-11
  */
 
-#ifndef LOADER_OBJ_H
-#define LOADER_OBJ_H
+#ifndef LOADER_MD2_H
+#define LOADER_MD2_H
 
 #include <string>
 #include "graphics.hpp"
 
-struct obj_face_type
+struct md2_face_type
 {
     int vertex[4];
     int vertex_texture[4];
@@ -39,13 +39,13 @@ struct obj_face_type
 };
 
 
-struct obj_angle_type
+struct md2_angle_type
 {
     vertex_type translation;
     vertex_type rotation;
 };
 
-struct obj_material_type
+struct md2_material_type
 {
     std::string       material_name;
     float             Ns;
@@ -60,22 +60,22 @@ struct obj_material_type
     std::string       map_Bump;
 };
 
-struct obj_use_material_type
+struct md2_use_material_type
 {
     std::string       material_name;
     int               face_number;
 };
 
-class loader_obj_class
+class loader_md2_class
 {
     public:
         bool                      wrap_texture;
         int                       wrap_texture_ID;
-        obj_angle_type            angle;
+        md2_angle_type            angle;
         std::string               model_name;
         std::string               mtllib;
-        obj_use_material_type*    use_material;
-        obj_material_type*        material;
+        md2_use_material_type*    use_material;
+        md2_material_type*        material;
         int                       number_of_use_materials;
         int                       number_of_materials;
         bool                      smooth_shading;
@@ -88,14 +88,12 @@ class loader_obj_class
         vertex_type*              vertex;
         vertex_texture_type*      vertex_texture;
         vertex_normal_type*       vertex_normal;
-        obj_face_type*            face;
-        loader_obj_class(void);
-       ~loader_obj_class(void);
+        md2_face_type*            face;
+        loader_md2_class(void);
+       ~loader_md2_class(void);
         void                  set_wrap_texture(int texture_ID);
-        void                  load_mtl(std::string file_name);
-        void                  save_mtl(std::string file_name);
         void                  load(std::string file_name);
-        void                  load(std::string file_name, int obj_ID);
+        void                  load(std::string file_name, int md2_ID);
         void                  save(std::string file_name);
         void                  scale(float scale_value);
         void                  scale(float scale_x, float scale_y, float scale_z);
@@ -107,5 +105,5 @@ class loader_obj_class
         void                  draw(float x, float y, float z);
 };
 
-#endif // LOADER_OBJ_H
+#endif // LOADER_MD2_H
 
