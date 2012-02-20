@@ -84,6 +84,20 @@ std::string file_class::path_get(std::string file_name)
     return (temp_string);
 };
 
+std::string file_class::path_remove(std::string file_name)
+{
+    int             slash_position  = -1;
+    std::string     temp_string     = "";
+    for (int string_pos = 0; string_pos < file_name.size(); string_pos++)
+    {
+        if (file_name[string_pos] == '\\') slash_position = string_pos;
+    }
+    for (int string_pos = slash_position+1; string_pos < file_name.size(); string_pos++)
+    {
+        temp_string += file_name[string_pos];
+    }
+    return (temp_string);
+};
 
 
 
