@@ -28,6 +28,27 @@
 #include <string>
 #include "graphics.hpp"
 
+struct md2_header_type
+{
+    int md2_ID;
+    int version;
+    int texture_width;
+    int texture_height;
+    int frame_size;
+    int number_of_skins;
+    int number_of_vertices;
+    int number_of_texture_coords;
+    int number_of_triangles;
+    int number_of_opengl_comands;
+    int number_of_frames;
+    int offset_texture_data;
+    int offset_texture_coord_data;
+    int offset_triangle_data;
+    int offset_frame_data;
+    int offset_opengl_comand_data;
+    int offset_eof;
+};
+
 struct md2_face_type
 {
     int vertex[4];
@@ -37,7 +58,6 @@ struct md2_face_type
     int count_vertex_textures;
     int count_vertex_normals;
 };
-
 
 struct md2_angle_type
 {
@@ -69,6 +89,7 @@ struct md2_use_material_type
 class loader_md2_class
 {
     public:
+        md2_header_type           header;
         bool                      wrap_texture;
         int                       wrap_texture_ID;
         md2_angle_type            angle;
