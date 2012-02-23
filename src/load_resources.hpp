@@ -61,7 +61,7 @@ struct map_3D_type
 
 struct model_3D_type
 {
-    loader_obj_class fern;
+    loader_obj_class tree_fern;
     loader_obj_class tree_palm;
 };
 

@@ -99,6 +99,11 @@ std::string file_class::path_remove(std::string file_name)
     return (temp_string);
 };
 
+std::string file_class::path_add(std::string file_name, std::string path_name)
+{
+    return (path_name+file_name);
+};
+
 
 
 

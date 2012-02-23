@@ -25,6 +25,7 @@
 #ifndef LOADER_OBJ_H
 #define LOADER_OBJ_H
 
+#include <GL/gl.h>
 #include <string>
 #include "graphics.hpp"
 
@@ -36,6 +37,7 @@ struct obj_face_type
     int count_vertices;
     int count_vertex_textures;
     int count_vertex_normals;
+    int material;
 };
 
 
@@ -45,25 +47,26 @@ struct obj_angle_type
     vertex_type rotation;
 };
 
-struct obj_material_type
+struct data_material_type
 {
-    std::string       material_name;
-    float             Ns;
-    vertex_type       Ka;
-    vertex_type       Kd;
-    vertex_type       Ks;
-    float             Ni;
-    float             d;
-    float             illum;
-    std::string       map_d;
-    std::string       map_Kd;
-    std::string       map_Bump;
+    bool               active;
+    std::string        file_name;
+    GLuint             texture;
 };
 
-struct obj_use_material_type
+struct obj_material_type
 {
-    std::string       material_name;
-    int               face_number;
+    std::string        material_name;
+    float              Ns;    // shininess
+    vertex_type        Ka;    // ambient
+    vertex_type        Kd;    // diffuse
+    vertex_type        Ks;    // specular
+    float              Ni;    //
+    float              d;     // opacity
+    float              illum; // illumination
+    data_material_type data_d;
+    data_material_type data_Kd;
+    data_material_type data_Bump;
 };
 
 class loader_obj_class
@@ -74,7 +77,6 @@ class loader_obj_class
         obj_angle_type            angle;
         std::string               model_name;
         std::string               mtllib;
-        obj_use_material_type*    use_material;
         obj_material_type*        material;
         int                       number_of_use_materials;
         int                       number_of_materials;
@@ -92,6 +94,7 @@ class loader_obj_class
         loader_obj_class(void);
        ~loader_obj_class(void);
         void                  set_wrap_texture(int texture_ID);
+        void                  load_texture(std::string file_name, GLuint *texture_data);
         void                  load_mtl(std::string file_name);
         void                  save_mtl(std::string file_name);
         void                  load(std::string file_name);

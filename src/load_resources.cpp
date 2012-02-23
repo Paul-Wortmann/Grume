@@ -61,9 +61,9 @@ bool load_maps_3D(void)
 bool load_3D_models(void)
 {
     int model_3D_count = 0;
-    game.model_3D.fern.load("data/models/fern.obj",model_3D_count);
-    game.model_3D.fern.set_wrap_texture(game.texture.generic_leaves_01.ref_number);model_3D_count++;
-    game.model_3D.tree_palm.load("data/models/tree_palm.obj",model_3D_count);
+    game.model_3D.tree_fern.load("data/models/forest/tree_fern.obj",model_3D_count);
+    game.model_3D.tree_fern.set_wrap_texture(game.texture.generic_leaves_01.ref_number);model_3D_count++;
+    game.model_3D.tree_palm.load("data/models/forest/tree_palm.obj",model_3D_count);
     game.model_3D.tree_palm.set_wrap_texture(game.texture.generic_leaves_01.ref_number);model_3D_count++;
 
     game.core.log.File_Write("3D model files loaded -> ",model_3D_count);

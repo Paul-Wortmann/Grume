@@ -1,6 +1,6 @@
 # Blender v2.60 (sub 0) OBJ File: ''
 # www.blender.org
-mtllib fern.mtl
+mtllib tree_fern.mtl
 o Mesh_Mesh_Mesh_fern
 v 0.006352 -0.001051 0.001595
 v 0.009563 -0.002547 0.001525

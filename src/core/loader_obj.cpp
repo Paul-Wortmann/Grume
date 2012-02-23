@@ -22,9 +22,16 @@
  * @date 2011-11-11
  */
 
+#include <GL/gl.h>
+#include <SDL/SDL.h>
+#include <SDL/SDL_image.h>
+#include "textures.hpp"
 #include "loader_obj.hpp"
 #include "../game.hpp"
 #include "../misc.hpp"
+
+#define GL_BGR  0x80E0
+#define GL_BGRA 0x80E1
 
 extern game_type         game;
 
@@ -52,6 +59,35 @@ loader_obj_class::~loader_obj_class(void)
 {
 
 }
+
+void loader_obj_class::load_texture(std::string file_name, GLuint *texture_data)
+{
+    SDL_Surface    *image_surface = NULL;
+    GLenum          texture_format;
+    GLint           number_of_colors;
+    if (image_surface = IMG_Load(file_name.c_str()))
+    {
+        if ((image_surface->w & (image_surface->w - 1)) != 0 );
+        if ((image_surface->h & (image_surface->h - 1)) != 0 );
+        number_of_colors = image_surface->format->BytesPerPixel;
+        if (number_of_colors == 4)
+        {
+            if (image_surface->format->Rmask == 0x000000ff) texture_format = GL_RGBA;
+            else texture_format = GL_BGRA;
+        }
+        else if (number_of_colors == 3)
+        {
+            if (image_surface->format->Rmask == 0x000000ff) texture_format = GL_RGB;
+            else texture_format = GL_BGR;
+        }
+        glGenTextures( 1, texture_data);
+    }
+    else
+    {
+        game.core.log.File_Write("Failed to load image ->",file_name.c_str());
+    }
+    if ( image_surface ) SDL_FreeSurface( image_surface );
+};
 
 void loader_obj_class::set_wrap_texture(int texture_ID)
 {
@@ -86,6 +122,7 @@ void loader_obj_class::load_mtl(std::string file_name)
                 switch (data_line[0])
                 {
                     case 'n': // material name.
+                        if (loader_obj_class::number_of_materials < 0) loader_obj_class::number_of_materials = 0;
                         loader_obj_class::number_of_materials++;
                     break;
                     default:
@@ -245,7 +282,10 @@ void loader_obj_class::load_mtl(std::string file_name)
                                     temp_string_data += data_line[position_count];
                                     position_count++;
                                 }
-                                loader_obj_class::material[number_of_materials_count].map_d = game.core.file.path_remove(temp_string_data.c_str());
+                                loader_obj_class::material[number_of_materials_count].data_d.file_name = game.core.file.path_remove(temp_string_data.c_str());
+                                game.core.file.path_add(loader_obj_class::material[number_of_materials_count].data_d.file_name, "/data/models/textures/");
+                                loader_obj_class::material[number_of_materials_count].data_d.active    = true;
+                                loader_obj_class::load_texture(loader_obj_class::material[number_of_materials_count].data_d.file_name,&loader_obj_class::material[number_of_materials_count].data_d.texture);
                             break;
                             case 'K': //
                                 position_count = 7;
@@ -255,7 +295,10 @@ void loader_obj_class::load_mtl(std::string file_name)
                                     temp_string_data += data_line[position_count];
                                     position_count++;
                                 }
-                                loader_obj_class::material[number_of_materials_count].map_Kd = game.core.file.path_remove(temp_string_data.c_str());
+                                loader_obj_class::material[number_of_materials_count].data_Kd.file_name = game.core.file.path_remove(temp_string_data.c_str());
+                                game.core.file.path_add(loader_obj_class::material[number_of_materials_count].data_Kd.file_name, "/data/models/textures/");
+                                loader_obj_class::material[number_of_materials_count].data_Kd.active    = true;
+                                loader_obj_class::load_texture(loader_obj_class::material[number_of_materials_count].data_Kd.file_name,&loader_obj_class::material[number_of_materials_count].data_Kd.texture);
                             break;
                             case 'B': //
                                 position_count = 9;
@@ -265,7 +308,10 @@ void loader_obj_class::load_mtl(std::string file_name)
                                     temp_string_data += data_line[position_count];
                                     position_count++;
                                 }
-                                loader_obj_class::material[number_of_materials_count].map_Bump = game.core.file.path_remove(temp_string_data.c_str());
+                                loader_obj_class::material[number_of_materials_count].data_Bump.file_name = game.core.file.path_remove(temp_string_data.c_str());
+                                game.core.file.path_add(loader_obj_class::material[number_of_materials_count].data_Bump.file_name, "/data/models/textures/");
+                                loader_obj_class::material[number_of_materials_count].data_Bump.active    = true;
+                                loader_obj_class::load_texture(loader_obj_class::material[number_of_materials_count].data_Bump.file_name,&loader_obj_class::material[number_of_materials_count].data_Bump.texture);
                             break;
                             default:
                             break;
@@ -277,7 +323,9 @@ void loader_obj_class::load_mtl(std::string file_name)
             }
         }
         script_file.close();
+        game.core.log.File_Write("Loaded file - ",file_name);
     }
+    else game.core.log.File_Write("Unable to load file - ",file_name);
 };
 
 void loader_obj_class::save_mtl(std::string file_name)
@@ -330,15 +378,24 @@ void loader_obj_class::save_mtl(std::string file_name)
             script_file << "illum ";
             script_file << loader_obj_class::material[material_count].illum;
             script_file << "\n";
-            script_file << "map_d ";
-            script_file << loader_obj_class::material[material_count].map_d;
-            script_file << "\n";
-            script_file << "map_Kd ";
-            script_file << loader_obj_class::material[material_count].map_Kd;
-            script_file << "\n";
-            script_file << "map_Bump ";
-            script_file << loader_obj_class::material[material_count].map_Bump;
-            script_file << "\n";
+            if(loader_obj_class::material[material_count].data_d.active)
+            {
+                script_file << "map_d ";
+                script_file << loader_obj_class::material[material_count].data_d.file_name;
+                script_file << "\n";
+            }
+            if(loader_obj_class::material[material_count].data_Kd.active)
+            {
+                script_file << "map_Kd ";
+                script_file << loader_obj_class::material[material_count].data_Kd.file_name;
+                script_file << "\n";
+            }
+            if(loader_obj_class::material[material_count].data_Bump.active)
+            {
+                script_file << "map_Bump ";
+                script_file << loader_obj_class::material[material_count].data_Bump.file_name;
+                script_file << "\n";
+            }
             script_file << "\n";
             script_file << "\n";
         }
@@ -359,10 +416,10 @@ void loader_obj_class::load(std::string file_name)
     loader_obj_class::number_of_vertex_normals   = -1;
     loader_obj_class::number_of_use_materials    = -1;
     loader_obj_class::number_of_faces            = -1;
+    int          current_material                =  0;
     int          number_of_vertices_count        =  0;
     int          number_of_vertex_textures_count =  0;
     int          number_of_vertex_normals_count  =  0;
-    int          number_of_use_materials_count   =  0;
     int          number_of_faces_count           =  0;
     int          slash_count                     =  0;
     bool         count_slashes                   =  true;
@@ -406,9 +463,6 @@ void loader_obj_class::load(std::string file_name)
                             break;
                         }
                     break;
-                    case 'u': // use material data.
-                        loader_obj_class::number_of_use_materials++;
-                    break;
                     case 'f': // face data.
                         loader_obj_class::number_of_faces++;
                     break;
@@ -422,13 +476,13 @@ void loader_obj_class::load(std::string file_name)
         loader_obj_class::vertex         = new vertex_type[loader_obj_class::number_of_vertices+1];
         loader_obj_class::vertex_texture = new vertex_texture_type[loader_obj_class::number_of_vertex_textures+1];
         loader_obj_class::vertex_normal  = new vertex_normal_type[loader_obj_class::number_of_vertex_normals+1];
-        loader_obj_class::use_material   = new obj_use_material_type[loader_obj_class::number_of_use_materials+1];
         loader_obj_class::face           = new obj_face_type[loader_obj_class::number_of_faces+1];
         // load data
         while (script_file.good())
         {
             getline(script_file,data_line);
             {
+                loader_obj_class::face[number_of_faces_count].material = current_material;
                 switch (data_line[0])
                 {
                     case '#': // comment, nothing to load.
@@ -451,7 +505,9 @@ void loader_obj_class::load(std::string file_name)
                             temp_string_data += data_line[position_count];
                             position_count++;
                         }
-                        loader_obj_class::mtllib = temp_string_data.c_str();
+                        loader_obj_class::mtllib = game.core.file.path_remove(temp_string_data.c_str());
+                        loader_obj_class::mtllib = game.core.file.path_add(loader_obj_class::mtllib,game.core.file.path_get(file_name.c_str()));
+                        loader_obj_class::load_mtl(loader_obj_class::mtllib); // load the material data file for this object
                     break;
                     case 'v': // load vertex data
                         switch (data_line[1])
@@ -530,6 +586,7 @@ void loader_obj_class::load(std::string file_name)
                         }
                     break;
                     case 'u': // load material to use after this point.
+                        game.core.log.File_Write("usemtl found...", loader_obj_class::number_of_materials);
                         position_count = 7;
                         temp_string_data = "";
                         while (position_count <= data_line.length())
@@ -537,9 +594,16 @@ void loader_obj_class::load(std::string file_name)
                             temp_string_data += data_line[position_count];
                             position_count++;
                         }
-                        loader_obj_class::use_material[number_of_use_materials_count].material_name = temp_string_data.c_str();
-                        loader_obj_class::use_material[number_of_use_materials_count].face_number   = number_of_faces_count;
-                        number_of_use_materials_count++;
+                        for (int material_count = 0;material_count <= loader_obj_class::number_of_materials; material_count++)
+                        {
+                            if (loader_obj_class::material[material_count].material_name == temp_string_data.c_str())
+                            {
+                                loader_obj_class::face[number_of_faces_count].material = material_count;
+                                current_material = material_count;
+                                game.core.log.File_Write("Current_material - > ",current_material);
+                            }
+                            else game.core.log.File_Write("Unable to locate - > ",temp_string_data.c_str());
+                        }
                     break;
                     case 's': // load smooth shading state.
                         if (data_line[3] == 'n') loader_obj_class::smooth_shading = true;
@@ -677,8 +741,6 @@ void loader_obj_class::load(std::string file_name)
             }
         }
         script_file.close();
-        loader_obj_class::mtllib = game.core.file.path_get(file_name.c_str()) + loader_obj_class::mtllib;
-        loader_obj_class::load_mtl(loader_obj_class::mtllib); // load the material data file for this object
         //create VBO ?? Hmmm
     }
     else game.core.log.File_Write("Failed to load OBJ file - ",file_name.c_str());
@@ -686,6 +748,7 @@ void loader_obj_class::load(std::string file_name)
 
 void loader_obj_class::save(std::string file_name)
 {
+    int last_material = -1;
     if (game.core.file.extension_exist(file_name,"obj")) file_name = game.core.file.extension_remove(file_name);
     if (loader_obj_class::number_of_materials >= 0) loader_obj_class::save_mtl(game.core.file.extension_add(file_name,".mtl"));
     file_name = game.core.file.extension_add(file_name,".obj");
@@ -743,21 +806,16 @@ void loader_obj_class::save(std::string file_name)
         }
         for (int face_count = 0; face_count <= loader_obj_class::number_of_faces; face_count++)
         {
-            if (loader_obj_class::number_of_use_materials >= 0)
+            if (last_material != loader_obj_class::face[face_count].material)
             {
-                for(int material_count = 0; material_count < loader_obj_class::number_of_use_materials; material_count++)
-                {
-                    if (loader_obj_class::use_material[material_count].face_number == face_count)
-                    {
-                        script_file << "usemtl ";
-                        script_file << loader_obj_class::use_material[material_count].material_name;
-                        script_file << "\n";
-                        script_file << "s ";
-                        if (loader_obj_class::smooth_shading) script_file << "on";
-                        else  script_file << "off";
-                        script_file << "\n";
-                    }
-                }
+                last_material = loader_obj_class::face[face_count].material;
+                script_file << "usemtl ";
+                script_file << loader_obj_class::material[loader_obj_class::face[face_count].material].material_name;
+                script_file << "\n";
+                script_file << "s ";
+                if (loader_obj_class::smooth_shading) script_file << "on";
+                else  script_file << "off";
+                script_file << "\n";
             }
             script_file << "f ";
             if (loader_obj_class::face[face_count].count_vertices >= 0)
@@ -922,6 +980,7 @@ void loader_obj_class::draw(void)
 
 void loader_obj_class::draw(float x, float y, float z)
 {
+    int  current_material = -1;
     glEnable(GL_DEPTH_TEST);
     if (loader_obj_class::wrap_texture)
     {
@@ -931,18 +990,18 @@ void loader_obj_class::draw(float x, float y, float z)
         glEnable(GL_TEXTURE_GEN_S);
         glEnable(GL_TEXTURE_GEN_T);
     }
-    /*
-    else
-    {
-    // add support here to load texture from material file....
-    }
-    */
     glRotatef(loader_obj_class::angle.rotation.x,1,0,0);
     glRotatef(loader_obj_class::angle.rotation.y,0,1,0);
     glRotatef(loader_obj_class::angle.rotation.z,0,0,1);
     glTranslatef(loader_obj_class::angle.translation.x,loader_obj_class::angle.translation.y,loader_obj_class::angle.translation.z);
     for (int face_count = 0; face_count <= loader_obj_class::number_of_faces; face_count++)
     {
+        if (loader_obj_class::face[face_count].material != current_material)
+        {
+            current_material = loader_obj_class::face[face_count].material;
+            //if (loader_obj_class::material[current_material].data_d.active)  glBindTexture( GL_TEXTURE_2D, loader_obj_class::material[current_material].data_d.texture);
+            //if (loader_obj_class::material[current_material].data_Kd.active) glBindTexture( GL_TEXTURE_2D, loader_obj_class::material[current_material].data_Kd.texture);
+        }
         if (loader_obj_class::face[face_count].count_vertices == 4) // face is a quadrangle
         {
             glBegin(GL_QUADS);
