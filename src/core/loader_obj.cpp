@@ -112,7 +112,7 @@ void loader_obj_class::load_mtl(std::string file_name)
     std::string  temp_string_data;
     std::string  data_line;
     //determine max values first
-    std::fstream script_file(file_name.c_str(),std::ios::in|std::ios::binary);
+    std::ifstream script_file(file_name.c_str(),std::ios::in|std::ios::binary);
     if (script_file.is_open())
     {
         while (script_file.good())
@@ -323,7 +323,6 @@ void loader_obj_class::load_mtl(std::string file_name)
             }
         }
         script_file.close();
-        game.core.log.File_Write("Loaded file - ",file_name);
     }
     else game.core.log.File_Write("Unable to load file - ",file_name);
 };
@@ -505,8 +504,10 @@ void loader_obj_class::load(std::string file_name)
                             temp_string_data += data_line[position_count];
                             position_count++;
                         }
-                        loader_obj_class::mtllib = game.core.file.path_remove(temp_string_data.c_str());
-                        loader_obj_class::mtllib = game.core.file.path_add(loader_obj_class::mtllib,game.core.file.path_get(file_name.c_str()));
+                        loader_obj_class::mtllib = game.core.file.path_remove(temp_string_data);
+                        loader_obj_class::mtllib = game.core.file.path_add(loader_obj_class::mtllib,game.core.file.path_get(file_name));
+                        loader_obj_class::mtllib = game.core.file.extension_remove(loader_obj_class::mtllib);
+                        loader_obj_class::mtllib = game.core.file.extension_add(loader_obj_class::mtllib,".mtl");
                         loader_obj_class::load_mtl(loader_obj_class::mtllib); // load the material data file for this object
                     break;
                     case 'v': // load vertex data
@@ -743,7 +744,7 @@ void loader_obj_class::load(std::string file_name)
         script_file.close();
         //create VBO ?? Hmmm
     }
-    else game.core.log.File_Write("Failed to load OBJ file - ",file_name.c_str());
+    else game.core.log.File_Write("Unable to load file - ",file_name);
 };
 
 void loader_obj_class::save(std::string file_name)
