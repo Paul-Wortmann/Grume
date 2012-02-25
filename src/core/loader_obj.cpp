@@ -60,7 +60,7 @@ loader_obj_class::~loader_obj_class(void)
 
 }
 
-void loader_obj_class::load_texture(std::string file_name, GLuint *texture_data)
+bool loader_obj_class::load_texture(std::string file_name, GLuint *texture_data)
 {
     SDL_Surface    *image_surface = NULL;
     GLenum          texture_format;
@@ -81,12 +81,15 @@ void loader_obj_class::load_texture(std::string file_name, GLuint *texture_data)
             else texture_format = GL_BGR;
         }
         glGenTextures( 1, texture_data);
+        if ( image_surface ) SDL_FreeSurface( image_surface );
+        return(true);
     }
     else
     {
         game.core.log.File_Write("Failed to load image ->",file_name.c_str());
+        if ( image_surface ) SDL_FreeSurface( image_surface );
+        return(false);
     }
-    if ( image_surface ) SDL_FreeSurface( image_surface );
 };
 
 void loader_obj_class::set_wrap_texture(int texture_ID)
@@ -282,10 +285,13 @@ void loader_obj_class::load_mtl(std::string file_name)
                                     temp_string_data += data_line[position_count];
                                     position_count++;
                                 }
-                                loader_obj_class::material[number_of_materials_count].data_d.file_name = game.core.file.path_remove(temp_string_data.c_str());
-                                game.core.file.path_add(loader_obj_class::material[number_of_materials_count].data_d.file_name, "/data/models/textures/");
-                                loader_obj_class::material[number_of_materials_count].data_d.active    = true;
-                                loader_obj_class::load_texture(loader_obj_class::material[number_of_materials_count].data_d.file_name,&loader_obj_class::material[number_of_materials_count].data_d.texture);
+                                loader_obj_class::material[number_of_materials_count].data_d.file_name = game.core.file.path_remove(temp_string_data);
+                                loader_obj_class::material[number_of_materials_count].data_d.file_name = game.core.file.path_add(loader_obj_class::material[number_of_materials_count].data_d.file_name,game.core.file.path_get(file_name));
+                                loader_obj_class::material[number_of_materials_count].data_d.file_name = game.core.file.extension_remove(loader_obj_class::material[number_of_materials_count].data_d.file_name);
+                                loader_obj_class::material[number_of_materials_count].data_d.file_name = game.core.file.extension_add(loader_obj_class::material[number_of_materials_count].data_d.file_name,".png");
+                                if  (loader_obj_class::load_texture(loader_obj_class::material[number_of_materials_count].data_d.file_name,&loader_obj_class::material[number_of_materials_count].data_d.texture))
+                                     loader_obj_class::material[number_of_materials_count].data_d.active    = true;
+                                else loader_obj_class::material[number_of_materials_count].data_d.active    = false;
                             break;
                             case 'K': //
                                 position_count = 7;
@@ -295,10 +301,13 @@ void loader_obj_class::load_mtl(std::string file_name)
                                     temp_string_data += data_line[position_count];
                                     position_count++;
                                 }
-                                loader_obj_class::material[number_of_materials_count].data_Kd.file_name = game.core.file.path_remove(temp_string_data.c_str());
-                                game.core.file.path_add(loader_obj_class::material[number_of_materials_count].data_Kd.file_name, "/data/models/textures/");
-                                loader_obj_class::material[number_of_materials_count].data_Kd.active    = true;
-                                loader_obj_class::load_texture(loader_obj_class::material[number_of_materials_count].data_Kd.file_name,&loader_obj_class::material[number_of_materials_count].data_Kd.texture);
+                                loader_obj_class::material[number_of_materials_count].data_Kd.file_name = game.core.file.path_remove(temp_string_data);
+                                loader_obj_class::material[number_of_materials_count].data_Kd.file_name = game.core.file.path_add(loader_obj_class::material[number_of_materials_count].data_Kd.file_name,game.core.file.path_get(file_name));
+                                loader_obj_class::material[number_of_materials_count].data_Kd.file_name = game.core.file.extension_remove(loader_obj_class::material[number_of_materials_count].data_Kd.file_name);
+                                loader_obj_class::material[number_of_materials_count].data_Kd.file_name = game.core.file.extension_add(loader_obj_class::material[number_of_materials_count].data_Kd.file_name,".png");
+                                if  (loader_obj_class::load_texture(loader_obj_class::material[number_of_materials_count].data_Kd.file_name,&loader_obj_class::material[number_of_materials_count].data_Kd.texture))
+                                     loader_obj_class::material[number_of_materials_count].data_Kd.active    = true;
+                                else loader_obj_class::material[number_of_materials_count].data_Kd.active    = false;
                             break;
                             case 'B': //
                                 position_count = 9;
@@ -308,10 +317,13 @@ void loader_obj_class::load_mtl(std::string file_name)
                                     temp_string_data += data_line[position_count];
                                     position_count++;
                                 }
-                                loader_obj_class::material[number_of_materials_count].data_Bump.file_name = game.core.file.path_remove(temp_string_data.c_str());
-                                game.core.file.path_add(loader_obj_class::material[number_of_materials_count].data_Bump.file_name, "/data/models/textures/");
-                                loader_obj_class::material[number_of_materials_count].data_Bump.active    = true;
-                                loader_obj_class::load_texture(loader_obj_class::material[number_of_materials_count].data_Bump.file_name,&loader_obj_class::material[number_of_materials_count].data_Bump.texture);
+                                loader_obj_class::material[number_of_materials_count].data_Bump.file_name = game.core.file.path_remove(temp_string_data);
+                                loader_obj_class::material[number_of_materials_count].data_Bump.file_name = game.core.file.path_add(loader_obj_class::material[number_of_materials_count].data_Bump.file_name,game.core.file.path_get(file_name));
+                                loader_obj_class::material[number_of_materials_count].data_Bump.file_name = game.core.file.extension_remove(loader_obj_class::material[number_of_materials_count].data_Bump.file_name);
+                                loader_obj_class::material[number_of_materials_count].data_Bump.file_name = game.core.file.extension_add(loader_obj_class::material[number_of_materials_count].data_Bump.file_name,".png");
+                                if  (loader_obj_class::load_texture(loader_obj_class::material[number_of_materials_count].data_Bump.file_name,&loader_obj_class::material[number_of_materials_count].data_Bump.texture))
+                                     loader_obj_class::material[number_of_materials_count].data_Bump.active    = true;
+                                else loader_obj_class::material[number_of_materials_count].data_Bump.active    = false;
                             break;
                             default:
                             break;
@@ -597,7 +609,7 @@ void loader_obj_class::load(std::string file_name)
                         }
                         for (int material_count = 0;material_count <= loader_obj_class::number_of_materials; material_count++)
                         {
-                            if (loader_obj_class::material[material_count].material_name == temp_string_data.c_str())
+                            if (loader_obj_class::material[material_count].material_name.c_str() == temp_string_data.c_str())
                             {
                                 loader_obj_class::face[number_of_faces_count].material = material_count;
                                 current_material = material_count;
@@ -1000,8 +1012,8 @@ void loader_obj_class::draw(float x, float y, float z)
         if (loader_obj_class::face[face_count].material != current_material)
         {
             current_material = loader_obj_class::face[face_count].material;
-            //if (loader_obj_class::material[current_material].data_d.active)  glBindTexture( GL_TEXTURE_2D, loader_obj_class::material[current_material].data_d.texture);
-            //if (loader_obj_class::material[current_material].data_Kd.active) glBindTexture( GL_TEXTURE_2D, loader_obj_class::material[current_material].data_Kd.texture);
+            if (loader_obj_class::material[current_material].data_d.active)  glBindTexture( GL_TEXTURE_2D, loader_obj_class::material[current_material].data_d.texture);
+            if (loader_obj_class::material[current_material].data_Kd.active) glBindTexture( GL_TEXTURE_2D, loader_obj_class::material[current_material].data_Kd.texture);
         }
         if (loader_obj_class::face[face_count].count_vertices == 4) // face is a quadrangle
         {

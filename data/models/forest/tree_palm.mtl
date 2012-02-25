@@ -1,23 +1,20 @@
-# Blender MTL File: ''
-# Material Count: 1
-newmtl palm_diffus
-Ns 96.078431
-Ka 0.000000 0.000000 0.000000
-Kd 0.640000 0.640000 0.640000
-Ks 1.000000 1.000000 1.000000
-Ni 1.000000
-d 1.000000
+# Exported from Wings 3D 1.4.1
+newmtl default
+Ns 100.0
+d 1.0
 illum 2
-map_Kd C:\Users\RoboPaul\Desktop\textures\extracted\diffus512.tga
+Kd 0.7898538076923077 0.8133333333333334 0.6940444444444445
+Ka 0.7898538076923077 0.8133333333333334 0.6940444444444445
+Ks 1.0 1.0 1.0
+Ke 0.0 0.0 0.0
 
-newmtl palm_test
-Ns 96.078431
-Ka 0.000000 0.000000 0.000000
-Kd 0.640000 0.640000 0.640000
-Ks 1.000000 1.000000 1.000000
-Ni 1.000000
-d 1.000000
+newmtl tree_palm_diffus
+Ns 100.0
+d 1.0
 illum 2
-map_Kd C:\Users\RoboPaul\Desktop\textures\extracted\diffus512.tga
-
+Kd 1.0 1.0 1.0
+Ka 1.0 1.0 1.0
+Ks 1.0 1.0 1.0
+Ke 0.0 0.0 0.0
+map_Kd tree_palm_diffus.png
 

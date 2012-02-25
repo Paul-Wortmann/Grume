@@ -94,7 +94,7 @@ class loader_obj_class
         loader_obj_class(void);
        ~loader_obj_class(void);
         void                  set_wrap_texture(int texture_ID);
-        void                  load_texture(std::string file_name, GLuint *texture_data);
+        bool                  load_texture(std::string file_name, GLuint *texture_data);
         void                  load_mtl(std::string file_name);
         void                  save_mtl(std::string file_name);
         void                  load(std::string file_name);
