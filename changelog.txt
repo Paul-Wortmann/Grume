@@ -1,8 +1,20 @@
-﻿v0.04 - (2012-02-29)
+﻿Due to having recently caught a nasty strain of influenza, 
+I am currently unable to contribute a large amount towards Frost and Flame.
+As soon as It clears up and I am able, I will continue at full steam!
+Hopefully mid March? (I did say nasty strain, I've had a fever for 2 weeks+)
 
+
+
+v0.05 - (2012-03-31)
+LOC  -> 19842
+
+v0.04 - (2012-02-29)
+GFX  -> Improved OBJ functionality.
 MAP  -> Improved TMX loader.
 MAP  -> Base mesh of new 3D world created.
-LOC  -> 18983
+MAP  -> 3D terrain heightmap implemented.
+CORE -> Improved file class.
+LOC  -> 19842
 
 v0.03 - (2012-01-31)
 BUG  -> Fixed Linux #include path bug. Thanks to Joel Svensson.
@@ -19,7 +31,6 @@ CORE -> Added an overloaded log_file_write function.
 LOC  -> 17669
 
 v0.02 - (2011-12-31)
-
 BUG  -> Fixed a SIGFPE, Arithmetic exception.
 MAP  -> Added gold_tileset.
 MAP  -> Implemented a basic day/night cycle.
@@ -41,7 +52,6 @@ UI   -> Added a large variety of items.
 LOC  -> 14650
 
 v0.01 - (2011-11-30)
-
 BUG  -> Fixed 2 SEGFAULT segmentation faults caused by improper shutdown of SDL.
 MAP  -> Created a basic test map.
 MAP  -> Adapted various tilesets to be used.

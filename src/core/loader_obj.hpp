@@ -40,7 +40,6 @@ struct obj_face_type
     int material;
 };
 
-
 struct obj_angle_type
 {
     vertex_type translation;
