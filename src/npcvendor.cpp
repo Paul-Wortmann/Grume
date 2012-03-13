@@ -31,6 +31,58 @@ extern game_type game;
 
 //----------------------------------------------------------------------------------------------------------------
 
+npcvendor_sound_class::npcvendor_sound_class(void)
+{
+    for (int sound_count = 0; sound_count < MAX_NPCVENDOR_SOUND; sound_count++)
+    {
+        npcvendor_sound_class::greating_begin[sound_count] = 0;
+        npcvendor_sound_class::greating_leave[sound_count] = 0;
+    }
+    npcvendor_sound_class::number_of_greating_begin = 0;
+    npcvendor_sound_class::number_of_greating_leave = 0;
+};
+
+npcvendor_sound_class::~npcvendor_sound_class(void)
+{
+};
+
+void npcvendor_sound_class::play_greating_begin(void)
+{
+    int sound_count = random(npcvendor_sound_class::number_of_greating_begin);
+    if (npcvendor_sound_class::greating_begin[sound_count] > 0)
+    {
+        play_sound(npcvendor_sound_class::greating_begin[sound_count]);
+    }
+}
+
+void npcvendor_sound_class::play_greating_leave(void)
+{
+    int sound_count = random(npcvendor_sound_class::number_of_greating_leave);
+    if (npcvendor_sound_class::greating_leave[sound_count] > 0)
+    {
+        play_sound(npcvendor_sound_class::greating_leave[sound_count]);
+    }
+}
+
+void npcvendor_sound_class::calculate_number_of_sounds(void)
+{
+    npcvendor_sound_class::number_of_greating_begin = 0;
+    npcvendor_sound_class::number_of_greating_leave = 0;
+    for (int sound_count = 0; sound_count < MAX_NPCVENDOR_SOUND; sound_count++)
+    {
+        if (npcvendor_sound_class::greating_begin[sound_count] > 0)
+        {
+            npcvendor_sound_class::number_of_greating_begin++;
+        }
+        if (npcvendor_sound_class::greating_leave[sound_count] > 0)
+        {
+            npcvendor_sound_class::number_of_greating_leave++;
+        }
+    }
+};
+
+//----------------------------------------------------------------------------------------------------------------
+
 npcvendor_button_class::npcvendor_button_class(void)
 {
     npcvendor_button_class::image_normal       = 0;

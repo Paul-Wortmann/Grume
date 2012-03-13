@@ -26,6 +26,21 @@
 #define NPCVENDOR_H
 
 const int MAX_NPCVENDOR_SLOTS = 50;
+const int MAX_NPCVENDOR_SOUND = 4;
+
+class npcvendor_sound_class
+{
+    public:
+        int         number_of_greating_begin;
+        int         number_of_greating_leave;
+        int         greating_begin[MAX_NPCVENDOR_SOUND];
+        int         greating_leave[MAX_NPCVENDOR_SOUND];
+        npcvendor_sound_class(void);
+       ~npcvendor_sound_class(void);
+        void        play_greating_begin(void);
+        void        play_greating_leave(void);
+        void        calculate_number_of_sounds(void);
+};
 
 class npcvendor_button_class
 {
@@ -89,6 +104,7 @@ class npcvendor_class
         float                     height;
         float                     drag_offset_x;
         float                     drag_offset_y;
+        npcvendor_sound_class     npcvendor_sound;
         npcvendor_slot_class      npcvendor_slot[MAX_NPCVENDOR_SLOTS];
         npcvendor_button_class    close_button;
         npcvendor_class(void);
