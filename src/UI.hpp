@@ -65,6 +65,7 @@ class player_stats_class
         int   mouse_over_count;
         int   mouse_over_health_count;
         int   mouse_over_mana_count;
+        int   mouse_over_portrait_count;
         int   tooltip_time;
         bool  tooltip_active;
         float pos_x;

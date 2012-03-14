@@ -80,20 +80,21 @@ void active_window_list_class::add_to_list(int window_UID)
 
     player_stats_class::player_stats_class(void)
 {
-    player_stats_class::highlighted             = false;
-    player_stats_class::drag                    = false;
-    player_stats_class::portrait                = 0;
-    player_stats_class::mouse_over              = false;
-    player_stats_class::mouse_over_count        = 0;
-    player_stats_class::mouse_over_health_count = 0;
-    player_stats_class::mouse_over_mana_count   = 0;
-    player_stats_class::tooltip_time            = 64;
-    player_stats_class::tooltip_active          = false;
-    player_stats_class::pos_x                   = 0.0f;
-    player_stats_class::pos_y                   = 0.0f;
-    player_stats_class::pos_z                   = 0.0f;
-    player_stats_class::width                   = 0.0f;
-    player_stats_class::height                  = 0.0f;
+    player_stats_class::highlighted               = false;
+    player_stats_class::drag                      = false;
+    player_stats_class::portrait                  = 0;
+    player_stats_class::mouse_over                = false;
+    player_stats_class::mouse_over_count          = 0;
+    player_stats_class::mouse_over_health_count   = 0;
+    player_stats_class::mouse_over_mana_count     = 0;
+    player_stats_class::mouse_over_portrait_count = 0;
+    player_stats_class::tooltip_time              = 64;
+    player_stats_class::tooltip_active            = false;
+    player_stats_class::pos_x                     = 0.0f;
+    player_stats_class::pos_y                     = 0.0f;
+    player_stats_class::pos_z                     = 0.0f;
+    player_stats_class::width                     = 0.0f;
+    player_stats_class::height                    = 0.0f;
 };
 
     player_stats_class::~player_stats_class(void)
@@ -109,6 +110,9 @@ void player_stats_class::process(void)
     if (game.core.physics.point_in_quadrangle(player_stats_class::pos_x+(player_stats_class::width/7.2f),player_stats_class::width/1.8f,player_stats_class::pos_y+(player_stats_class::height/9.0f),player_stats_class::height/6.2f,game.core.io.mouse_x,game.core.io.mouse_y)) player_stats_class::mouse_over_mana_count++;
     else player_stats_class::mouse_over_mana_count = 0;
     if (player_stats_class::mouse_over_mana_count > player_stats_class::tooltip_time) player_stats_class::mouse_over_mana_count = player_stats_class::tooltip_time;
+    if (game.core.physics.point_in_circle(player_stats_class::pos_x-(player_stats_class::width/3.3f),player_stats_class::pos_y,player_stats_class::width/4.8f,game.core.io.mouse_x,game.core.io.mouse_y)) player_stats_class::mouse_over_portrait_count++;
+    else player_stats_class::mouse_over_portrait_count = 0;
+    if (player_stats_class::mouse_over_portrait_count > player_stats_class::tooltip_time) player_stats_class::mouse_over_portrait_count = player_stats_class::tooltip_time;
     if (game.core.physics.point_in_quadrangle(player_stats_class::pos_x,player_stats_class::width,player_stats_class::pos_y+(player_stats_class::height/4.0f),player_stats_class::height/2,game.core.io.mouse_x,game.core.io.mouse_y)) player_stats_class::mouse_over = true;
     else if (game.core.physics.point_in_circle(player_stats_class::pos_x-(player_stats_class::width/3.3f),player_stats_class::pos_y,player_stats_class::height/2.2f,game.core.io.mouse_x,game.core.io.mouse_y)) player_stats_class::mouse_over = true;
     else player_stats_class::mouse_over = false;
@@ -154,8 +158,9 @@ void player_stats_class::draw(void)
 
 void player_stats_class::draw_tooltip(void)
 {
-    if (player_stats_class::mouse_over_health_count == player_stats_class::tooltip_time) game.font.font_1.Write(255,255,255,255,game.core.io.mouse_x,game.core.io.mouse_y,4.8f,32.0f,(int)((game.player.health.current/game.player.health.maximum)*100),"%             ");
-    if (player_stats_class::mouse_over_mana_count   == player_stats_class::tooltip_time) game.font.font_1.Write(255,255,255,255,game.core.io.mouse_x,game.core.io.mouse_y,4.8f,32.0f,(int)((game.player.mana.current/game.player.mana.maximum)*100),"%             ");
+    if (player_stats_class::mouse_over_health_count     == player_stats_class::tooltip_time) game.font.font_1.Write(255,255,255,255,game.core.io.mouse_x,game.core.io.mouse_y,4.8f,32.0f,(int)((game.player.health.current/game.player.health.maximum)*100),"%             ");
+    if (player_stats_class::mouse_over_mana_count       == player_stats_class::tooltip_time) game.font.font_1.Write(255,255,255,255,game.core.io.mouse_x,game.core.io.mouse_y,4.8f,32.0f,(int)((game.player.mana.current/game.player.mana.maximum)*100),"%             ");
+    if (player_stats_class::mouse_over_portrait_count   == player_stats_class::tooltip_time) game.font.font_1.Write(255,255,255,255,game.core.io.mouse_x,game.core.io.mouse_y,4.8f,32.0f,game.player.name,"         ");
 };
 
 //----------------------------------------------------------------------------------------------------------------
