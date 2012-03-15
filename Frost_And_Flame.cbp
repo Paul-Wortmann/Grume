@@ -101,6 +101,8 @@
 		<Unit filename="src\core\particles.hpp" />
 		<Unit filename="src\core\physics.cpp" />
 		<Unit filename="src\core\physics.hpp" />
+		<Unit filename="src\core\rs232.cpp" />
+		<Unit filename="src\core\rs232.hpp" />
 		<Unit filename="src\core\savegame.cpp" />
 		<Unit filename="src\core\savegame.hpp" />
 		<Unit filename="src\core\sound.cpp" />

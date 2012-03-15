@@ -1,0 +1,14 @@
+# Frost And Flame - config file #
+# ----------------------------- #
+Joystick_Sensitivity = 6,400
+Display_Fullscreen   = 1
+Display_Touchscreen  = 0
+Display_X_Resolution = 1,366
+Display_Y_Resolution = 768
+Display_BPS          = 32
+Audio_Rate           = 44,100
+Audio_Channels       = 64
+Audio_Buffers        = 2,048
+Audio_Music_Volume   = 32
+Audio_Sound_Volume   = 32
+Language             = english
