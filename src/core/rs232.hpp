@@ -53,13 +53,29 @@
 class rs232_class
 {
     public:
+    int   port_number;
     int   baud_rate;
     int   stop_bits;
     int   data_bits;
     int   parity;
         rs232_class(void);
        ~rs232_class(void);
+/*
+    int   OpenComport (int, int);
+    int   PollComport (int, unsigned char *, int);
+    int   SendByte    (int, unsigned char);
+    int   SendBuf     (int, unsigned char *, int);
+    void  CloseComport(int);
+    void  cprintf     (int, const char *);
+    int   IsCTSEnabled(int);
+*/
 };
 
 #endif //RS232_H
+
+
+
+
+
+
 

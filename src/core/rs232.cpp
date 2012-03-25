@@ -26,10 +26,11 @@
 
     rs232_class::rs232_class(void)
 {
-    rs232_class::baud_rate = 9600;
-    rs232_class::stop_bits = 1;
-    rs232_class::data_bits = 8;
-    rs232_class::parity    = NONE;
+    rs232_class::port_number = 1;
+    rs232_class::baud_rate   = 9600;
+    rs232_class::stop_bits   = 1;
+    rs232_class::data_bits   = 8;
+    rs232_class::parity      = NONE;
 };
 
     rs232_class::~rs232_class(void)
