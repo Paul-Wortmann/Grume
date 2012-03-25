@@ -13,7 +13,7 @@
 
 1326868751 
 
-1329702343 c:\_git_\frost_and_flame\src\core\core.hpp
+1332679523 c:\_git_\frost_and_flame\src\core\core.hpp
 	"loader_md2.hpp"
 	"loader_obj.hpp"
 	"loader_tmx.hpp"
@@ -28,6 +28,7 @@
 	"font.hpp"
 	"menu.hpp"
 	"io.hpp"
+	"rs232.hpp"
 	"file.hpp"
 	"background.hpp"
 	"particles.hpp"
@@ -1383,7 +1384,7 @@
 	"../game.hpp"
 	"../misc.hpp"
 
-1331818215 c:\_git_\frost_and_flame\src\core\rs232.hpp
+1332679880 c:\_git_\frost_and_flame\src\core\rs232.hpp
 	<stdio.h>
 	<string.h>
 	<termios.h>
@@ -1395,6 +1396,6 @@
 	<limits.h>
 	<windows.h>
 
-1331817820 source:c:\_git_\frost_and_flame\src\core\rs232.cpp
+1332679429 source:c:\_git_\frost_and_flame\src\core\rs232.cpp
 	"rs232.hpp"
 

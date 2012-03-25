@@ -25,6 +25,12 @@
 #ifndef RS232_H
 #define RS232_H
 
+#define NONE   0
+#define ODD    1
+#define EVEN   2
+#define MARK   3
+#define SPACE  4
+
 #include <stdio.h>
 #include <string.h>
 
@@ -47,9 +53,12 @@
 class rs232_class
 {
     public:
-    int baud_rate;
-    int stop_bits;
-    int parity;
+    int   baud_rate;
+    int   stop_bits;
+    int   data_bits;
+    int   parity;
+        rs232_class(void);
+       ~rs232_class(void);
 };
 
 #endif //RS232_H

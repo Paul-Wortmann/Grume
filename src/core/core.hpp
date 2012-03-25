@@ -39,6 +39,7 @@
 #include "font.hpp"
 #include "menu.hpp"
 #include "io.hpp"
+#include "rs232.hpp"
 #include "file.hpp"
 #include "background.hpp"
 #include "particles.hpp"
@@ -78,6 +79,7 @@ class core_class
         save_game_class   save_06;
         save_game_class   save_07;
         io_type           io;
+        rs232_class       rs232;
         SDL_Event         event;
         file_class        file;
         log_file_class    log;
