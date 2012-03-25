@@ -57,7 +57,11 @@ loader_obj_class::loader_obj_class(void)
 
 loader_obj_class::~loader_obj_class(void)
 {
-
+    delete loader_obj_class::material;
+    delete loader_obj_class::vertex;
+    delete loader_obj_class::vertex_texture;
+    delete loader_obj_class::vertex_normal;
+    delete loader_obj_class::face;
 }
 
 bool loader_obj_class::load_texture(std::string file_name, GLuint *texture_data)
