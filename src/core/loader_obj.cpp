@@ -156,7 +156,7 @@ void loader_obj_class::load_mtl(std::string file_name)
                         temp_string_data = "";
                         while (position_count <= data_line.length())
                         {
-                            temp_string_data += data_line[position_count];
+                            if (data_line[position_count] != ' ') temp_string_data += data_line[position_count];
                             position_count++;
                         }
                         loader_obj_class::material[number_of_materials_count].material_name = temp_string_data.c_str();
@@ -449,6 +449,7 @@ void loader_obj_class::load(std::string file_name)
     int          temp_int_data;
     bool         temp_bool_data;
     std::string  temp_string_data;
+    std::string  temp_string_data_compare;
     std::string  temp_string_key;
     std::string  temp_string_value;
     std::string  data_line;
@@ -611,15 +612,15 @@ void loader_obj_class::load(std::string file_name)
                             if (data_line[position_count] != ' ') temp_string_data += data_line[position_count];
                             position_count++;
                         }
-                        for (int material_count = 0;material_count <= loader_obj_class::number_of_materials; material_count++)
+                        for (int material_count = 0;material_count < loader_obj_class::number_of_materials; material_count++)
                         {
-                            if (loader_obj_class::material[material_count].material_name.c_str() == temp_string_data.c_str())
+                            temp_string_data_compare = loader_obj_class::material[material_count].material_name.c_str();
+                            if (temp_string_data_compare.compare(temp_string_data.c_str()) == 0)
                             {
                                 loader_obj_class::face[number_of_faces_count].material = material_count;
                                 current_material = material_count;
-                                game.core.log.File_Write("Current_material - > ",current_material);
+                                game.core.log.File_Write("Current_material - > ",temp_string_data.c_str());
                             }
-                            else game.core.log.File_Write("Unable to locate - > ",temp_string_data.c_str());
                         }
                     break;
                     case 's': // load smooth shading state.
