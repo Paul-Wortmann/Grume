@@ -1,5 +1,4 @@
 ﻿v0.06 - (2012-04-30)
-OBJ  -> Fixed OBJ-MTL error in locating texture references.
 GFX  -> Added first cave wall 3D model.
 LOC  -> xxxxx
 
@@ -9,6 +8,7 @@ GAME -> Added "npcvendor_sound_class".
 UI   -> Added mouse over tooltip for player portrait.
 GFX  -> Added some darker theamed textures.
 GFX  -> Added "well" object.
+OBJ  -> Fixed OBJ-MTL error in locating texture references.
 OBJ  -> OBJ resource data correctly freed on program close.
 LOC  -> 20006
 
