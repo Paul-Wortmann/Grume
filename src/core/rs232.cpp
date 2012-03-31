@@ -26,6 +26,7 @@
 
     rs232_class::rs232_class(void)
 {
+    rs232_class::port_open   = false;
     rs232_class::port_number = 1;
     rs232_class::baud_rate   = 9600;
     rs232_class::stop_bits   = 1;
@@ -35,6 +36,56 @@
 
     rs232_class::~rs232_class(void)
 {
+    if (rs232_class::port_open) rs232_class::close_port();
+};
+
+void  rs232_class::set_port       (int port_number, int baud_rate, int stop_bits, int data_bits, int parity)
+{
+    rs232_class::port_number = port_number;
+    rs232_class::baud_rate   = baud_rate;
+    rs232_class::stop_bits   = stop_bits;
+    rs232_class::data_bits   = data_bits;
+    rs232_class::parity      = parity;
+};
+
+void  rs232_class::set_port_number(int port_number)
+{
+    rs232_class::port_number = port_number;
+};
+
+void  rs232_class::set_baud_rate  (int baud_rate)
+{
+    rs232_class::baud_rate   = baud_rate;
+};
+
+void  rs232_class::set_stop_bits  (int stop_bits)
+{
+    rs232_class::stop_bits   = stop_bits;
+};
+
+void  rs232_class::set_data_bits  (int data_bits)
+{
+    rs232_class::data_bits   = data_bits;
+};
+
+void  rs232_class::set_parity     (int parity)
+{
+    rs232_class::parity      = parity;
+};
+
+bool  rs232_class::open_port      (void)
+{
 
 };
+
+bool  rs232_class::close_port     (void)
+{
+
+};
+
+
+
+
+
+
 
