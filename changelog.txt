@@ -1,15 +1,13 @@
-﻿Due to having recently caught a nasty strain of influenza, 
-I am currently unable to contribute a large amount towards Frost and Flame.
-As soon as It clears up and I am able, I will continue at full steam!
-Hopefully mid March? (I did say nasty strain, I've had a fever for 2 weeks+)
-
-
+﻿v0.06 - (2012-04-30)
+LOC  -> xxxxx
 
 v0.05 - (2012-03-31)
 IO   -> Started the RS232 base code.
 GAME -> Added "npcvendor_sound_class".
 UI   -> Added mouse over tooltip for player portrait.
-LOC  -> 19934
+GFX  -> Added some darker theamed textures.
+GFX  -> Added first cave wall 3D model.
+LOC  -> 20006
 
 v0.04 - (2012-02-29)
 GFX  -> Improved OBJ functionality.

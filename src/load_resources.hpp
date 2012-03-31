@@ -449,8 +449,10 @@ struct texture_type
 
     texture_class generic_grass;
     texture_class generic_lava;
+    texture_class generic_lava_layer;
     texture_class generic_leaves_00;
     texture_class generic_leaves_01;
+    texture_class generic_sand;
     texture_class generic_sand_shrubs;
     texture_class generic_water;
 };

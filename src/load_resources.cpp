@@ -478,8 +478,10 @@ bool load_textures(void)
 
     game.texture.generic_grass.load_image       ("data/textures/generic/grass.png"       ,texture_count);texture_count++;
     game.texture.generic_lava.load_image        ("data/textures/generic/lava.png"        ,texture_count);texture_count++;
+    game.texture.generic_lava_layer.load_image  ("data/textures/generic/lava_layer.png"  ,texture_count);texture_count++;
     game.texture.generic_leaves_00.load_image   ("data/textures/generic/leaves_00.png"   ,texture_count);texture_count++;
     game.texture.generic_leaves_01.load_image   ("data/textures/generic/leaves_01.png"   ,texture_count);texture_count++;
+    game.texture.generic_sand.load_image        ("data/textures/generic/sand.png"        ,texture_count);texture_count++;
     game.texture.generic_sand_shrubs.load_image ("data/textures/generic/sand_shrubs.png" ,texture_count);texture_count++;
     game.texture.generic_water.load_image       ("data/textures/generic/water.png"       ,texture_count);texture_count++;
 
@@ -1257,8 +1259,10 @@ bool bind_texture(int texture_number)
 
     if (texture_number == game.texture.generic_grass.ref_number)       glBindTexture(GL_TEXTURE_2D, game.texture.generic_grass.frame[0].data);
     if (texture_number == game.texture.generic_lava.ref_number)        glBindTexture(GL_TEXTURE_2D, game.texture.generic_lava.frame[0].data);
+    if (texture_number == game.texture.generic_lava_layer.ref_number)  glBindTexture(GL_TEXTURE_2D, game.texture.generic_lava_layer.frame[0].data);
     if (texture_number == game.texture.generic_leaves_00.ref_number)   glBindTexture(GL_TEXTURE_2D, game.texture.generic_leaves_00.frame[0].data);
     if (texture_number == game.texture.generic_leaves_01.ref_number)   glBindTexture(GL_TEXTURE_2D, game.texture.generic_leaves_01.frame[0].data);
+    if (texture_number == game.texture.generic_sand.ref_number)        glBindTexture(GL_TEXTURE_2D, game.texture.generic_sand.frame[0].data);
     if (texture_number == game.texture.generic_sand_shrubs.ref_number) glBindTexture(GL_TEXTURE_2D, game.texture.generic_sand_shrubs.frame[0].data);
     if (texture_number == game.texture.generic_water.ref_number)       glBindTexture(GL_TEXTURE_2D, game.texture.generic_water.frame[0].data);
 
