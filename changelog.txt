@@ -1,5 +1,5 @@
 ﻿v0.06 - (2012-04-30)
-GFX  -> Added first cave wall 3D model.
+????????????????????GFX  -> Added first cave wall 3D model.
 LOC  -> xxxxx
 
 v0.05 - (2012-03-31)
@@ -10,7 +10,7 @@ GFX  -> Added some darker theamed textures.
 GFX  -> Added "well" object.
 OBJ  -> Fixed OBJ-MTL error in locating texture references.
 OBJ  -> OBJ resource data correctly freed on program close.
-LOC  -> 20006
+LOC  -> 20016
 
 v0.04 - (2012-02-29)
 GFX  -> Improved OBJ functionality.
