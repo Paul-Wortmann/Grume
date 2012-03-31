@@ -156,6 +156,7 @@ void map_3D_class::draw(void)
                 {
                     game.model_3D.tree_fern.draw(map_3D_class::cell[0].vertex[0].x,map_3D_class::cell[0].vertex[0].y,map_3D_class::cell[0].z);
                     game.model_3D.tree_palm.draw(map_3D_class::cell[2].vertex[0].x,map_3D_class::cell[2].vertex[0].y,map_3D_class::cell[2].z);
+                    //game.model_3D.well.draw     (map_3D_class::cell[3].vertex[0].x,map_3D_class::cell[3].vertex[0].y,map_3D_class::cell[3].z);
                     set_texture = true;
                 }
             }

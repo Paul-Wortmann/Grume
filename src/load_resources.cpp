@@ -65,6 +65,8 @@ bool load_3D_models(void)
     game.model_3D.tree_fern.set_wrap_texture(game.texture.generic_leaves_01.ref_number);model_3D_count++;
     game.model_3D.tree_palm.load("data/models/forest/tree_palm.obj",model_3D_count);
     game.model_3D.tree_palm.set_wrap_texture(game.texture.generic_leaves_01.ref_number);model_3D_count++;
+    game.model_3D.well.load("data/models/objects/well.obj",model_3D_count);
+    game.model_3D.well.set_wrap_texture(game.texture.generic_sand_shrubs.ref_number);model_3D_count++;
 
     game.core.log.File_Write("3D model files loaded -> ",model_3D_count);
     return(true);

@@ -608,7 +608,7 @@ void loader_obj_class::load(std::string file_name)
                         temp_string_data = "";
                         while (position_count <= data_line.length())
                         {
-                            temp_string_data += data_line[position_count];
+                            if (data_line[position_count] != ' ') temp_string_data += data_line[position_count];
                             position_count++;
                         }
                         for (int material_count = 0;material_count <= loader_obj_class::number_of_materials; material_count++)

@@ -63,6 +63,7 @@ struct model_3D_type
 {
     loader_obj_class tree_fern;
     loader_obj_class tree_palm;
+    loader_obj_class well;
 };
 
 struct music_type
