@@ -1,21 +1,13 @@
-# Blender MTL File: 'rts_props_0.blend'
-# Material Count: 2
-newmtl default
-Ns 0
+# Blender MTL File: ''
+# Material Count: 1
+newmtl sand_shrubs_diffuse_sand_shrubs.png
+Ns 92.156863
 Ka 0.000000 0.000000 0.000000
-Kd 0.8 0.8 0.8
-Ks 0.8 0.8 0.8
-d 1
-illum 2
-
-newmtl sand_shrubs_diffuse
-Ns 96.078431
-Ka 0.000000 0.000000 0.000000
-Kd 0.640000 0.640000 0.640000
+Kd 0.512000 0.512000 0.512000
 Ks 0.000000 0.000000 0.000000
 Ni 1.000000
 d 1.000000
-illum 1
+illum 2
 map_Kd sand_shrubs.png
 
 

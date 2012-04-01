@@ -140,7 +140,7 @@ void map_3D_class::draw(void)
                 if (set_texture)
                 {
                     glBindTexture( GL_TEXTURE_2D, game.texture.generic_sand.frame[0].data);
-                set_texture = false;
+                    set_texture = false;
                 }
                 glBegin (GL_QUADS);
                     mesh_height_set_color(map_3D_class::cell[cell_count].vertex[0].y);
@@ -156,7 +156,7 @@ void map_3D_class::draw(void)
                 {
                     game.model_3D.tree_fern.draw(map_3D_class::cell[0].vertex[0].x,map_3D_class::cell[0].vertex[0].y,map_3D_class::cell[0].z);
                     game.model_3D.tree_palm.draw(map_3D_class::cell[2].vertex[0].x,map_3D_class::cell[2].vertex[0].y,map_3D_class::cell[2].z);
-                    //game.model_3D.well.draw     (map_3D_class::cell[3].vertex[0].x,map_3D_class::cell[3].vertex[0].y,map_3D_class::cell[3].z);
+                    game.model_3D.well.draw     (map_3D_class::cell[3].vertex[0].x,map_3D_class::cell[3].vertex[0].y,map_3D_class::cell[3].z);
                     set_texture = true;
                 }
             }
