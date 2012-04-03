@@ -64,6 +64,9 @@ struct model_3D_type
     loader_obj_class tree_fern;
     loader_obj_class tree_palm;
     loader_obj_class well;
+    loader_obj_class cemetery_gate;
+    loader_obj_class tomb;
+    loader_obj_class tombwoof;
 };
 
 struct music_type

@@ -139,7 +139,7 @@ void map_3D_class::draw(void)
             {
                 if (set_texture)
                 {
-                    glBindTexture( GL_TEXTURE_2D, game.texture.generic_sand.frame[0].data);
+                    glBindTexture( GL_TEXTURE_2D, game.texture.generic_grass.frame[0].data);
                     set_texture = false;
                 }
                 glBegin (GL_QUADS);
@@ -154,9 +154,12 @@ void map_3D_class::draw(void)
                 glEnd ();
                 if (cell_count == 0) //(map_3D_class::cell[cell_count].object > 0)
                 {
-                    game.model_3D.tree_fern.draw(map_3D_class::cell[0].vertex[0].x,map_3D_class::cell[0].vertex[0].y,map_3D_class::cell[0].z);
-                    game.model_3D.tree_palm.draw(map_3D_class::cell[2].vertex[0].x,map_3D_class::cell[2].vertex[0].y,map_3D_class::cell[2].z);
-                    game.model_3D.well.draw     (map_3D_class::cell[3].vertex[0].x,map_3D_class::cell[3].vertex[0].y,map_3D_class::cell[3].z);
+                    game.model_3D.tree_fern.draw    (map_3D_class::cell[0].vertex[0].x,map_3D_class::cell[0].vertex[0].y,map_3D_class::cell[0].z);
+                    game.model_3D.tree_palm.draw    (map_3D_class::cell[2].vertex[0].x,map_3D_class::cell[2].vertex[0].y,map_3D_class::cell[2].z);
+                    //game.model_3D.well.draw         (map_3D_class::cell[103].vertex[0].x,map_3D_class::cell[103].vertex[0].y,map_3D_class::cell[103].z);
+                    game.model_3D.tombwoof.draw     (map_3D_class::cell[205].vertex[0].x,map_3D_class::cell[205].vertex[0].y,map_3D_class::cell[205].z);
+                    game.model_3D.tomb.draw         (map_3D_class::cell[207].vertex[0].x,map_3D_class::cell[207].vertex[0].y,map_3D_class::cell[207].z);
+                    //game.model_3D.cemetery_gate.draw(map_3D_class::cell[409].vertex[0].x,map_3D_class::cell[409].vertex[0].y,map_3D_class::cell[409].z);
                     set_texture = true;
                 }
             }
@@ -190,7 +193,7 @@ void map_3D_class::draw(void)
     }
     if (map_3D_class::render_water)
     {
-        glBindTexture( GL_TEXTURE_2D, game.texture.generic_lava_layer.frame[0].data);
+        glBindTexture( GL_TEXTURE_2D, game.texture.generic_water.frame[0].data);
         glTexGeni(GL_S, GL_TEXTURE_GEN_MODE, GL_OBJECT_LINEAR);
         glTexGeni(GL_T, GL_TEXTURE_GEN_MODE, GL_OBJECT_LINEAR);
         glEnable(GL_TEXTURE_GEN_S);

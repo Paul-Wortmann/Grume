@@ -1008,6 +1008,11 @@ void loader_obj_class::draw(float x, float y, float z)
         glEnable(GL_TEXTURE_GEN_S);
         glEnable(GL_TEXTURE_GEN_T);
     }
+    else
+    {
+        glDisable(GL_TEXTURE_GEN_S);
+        glDisable(GL_TEXTURE_GEN_T);
+    }
     glRotatef(loader_obj_class::angle.rotation.x,1,0,0);
     glRotatef(loader_obj_class::angle.rotation.y,0,1,0);
     glRotatef(loader_obj_class::angle.rotation.z,0,0,1);
