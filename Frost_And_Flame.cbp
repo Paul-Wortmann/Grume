@@ -22,13 +22,8 @@
 					<Add library="opengl32" />
 					<Add library="SDL_mixer" />
 					<Add library="SDL_image" />
-					<Add library="glu32" />
-					<Add library="freetype" />
 					<Add library="SDL_net" />
 					<Add library="SDL_ttf" />
-					<Add library="GL" />
-					<Add directory="\host\Program Files (x86)\CodeBlocks\MinGW\lib" />
-					<Add directory="\usr\lib" />
 				</Linker>
 			</Target>
 			<Target title="Linux">
@@ -55,10 +50,11 @@
 		</Build>
 		<Compiler>
 			<Add option="-Wno-write-strings" />
-			<Add directory='&quot;C:\Program Files (x86)\CodeBlocks\MinGW\include&quot;' />
+			<Add directory='&quot;C:\MinGW\include&quot;' />
 		</Compiler>
 		<Linker>
-			<Add directory='&quot;C:\Program Files (x86)\CodeBlocks\MinGW\lib&quot;' />
+			<Add directory='&quot;C:\MinGW\lib&quot;' />
+			<Add directory="\usr\lib" />
 		</Linker>
 		<Unit filename="src\UI.cpp" />
 		<Unit filename="src\UI.hpp" />
