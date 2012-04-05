@@ -86,6 +86,7 @@ bool loader_obj_class::load_texture(std::string file_name, GLuint *texture_data)
         }
         glGenTextures( 1, texture_data);
         if ( image_surface ) SDL_FreeSurface( image_surface );
+        game.core.log.File_Write("loader_obj_class::load_texture loaded file -> ",file_name.c_str());
         return(true);
     }
     else
@@ -1024,6 +1025,7 @@ void loader_obj_class::draw(float x, float y, float z)
             current_material = loader_obj_class::face[face_count].material;
             if (loader_obj_class::material[current_material].data_d.active)  glBindTexture( GL_TEXTURE_2D, loader_obj_class::material[current_material].data_d.texture);
             if (loader_obj_class::material[current_material].data_Kd.active) glBindTexture( GL_TEXTURE_2D, loader_obj_class::material[current_material].data_Kd.texture);
+            game.core.log.File_Write("Drawing OBJ, changing to material no. ->", current_material);
         }
         if (loader_obj_class::face[face_count].count_vertices == 4) // face is a quadrangle
         {

@@ -27,7 +27,6 @@
 					<Add library="SDL_net" />
 					<Add library="SDL_ttf" />
 					<Add library="GL" />
-					<Add library="C:\Program Files (x86)\CodeBlocks\MinGW\lib\gcc\mingw32\4.6.1\libgcc.a" />
 					<Add directory="\host\Program Files (x86)\CodeBlocks\MinGW\lib" />
 					<Add directory="\usr\lib" />
 				</Linker>

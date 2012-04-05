@@ -211,7 +211,7 @@ int main(int argc, char *argv[])
     game.core.config.File_Set("Frost_And_Flame.cfg");
     game.core.config.File_Clear();
     game.core.config.File_Write();
-    game.core.log.File_Write("SDL shutting down...");
+    game.core.log.File_Write("Shutting down SDL...");
     SDL_Quit();
     game.core.log.File_Write("----------------------------------------------\n");
     return(0);
