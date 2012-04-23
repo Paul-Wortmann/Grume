@@ -25,13 +25,53 @@
 #ifndef PHYSICS_H
 #define PHYSICS_H
 
+#define SPHERE 0
+#define CUBE   1
+
+class body_class
+{
+    private:
+    public:
+        int    texture;
+        int    body_type;
+        float  radius_x;
+        float  radius_y;
+        float  radius_z;
+        float  length_x;
+        float  length_y;
+        float  length_z;
+        float  weight;
+        float  restitution;
+        float  friction;
+        float  acceleration;
+        float  velocity_x;
+        float  velocity_y;
+        float  velocity_z;
+        float  position_x;
+        float  position_y;
+        float  position_z;
+        float  rotational_angle_x;
+        float  rotational_angle_y;
+        float  rotational_angle_z;
+        float  rotational_velocity_x;
+        float  rotational_velocity_y;
+        float  rotational_velocity_z;
+        float  rotational_acceleration;
+               body_class            (void);
+              ~body_class            (void);
+};
+
 class physics_class
 {
     private:
     public:
+        float  gravity_x;
+        float  gravity_y;
+        float  gravity_z;
         float  sin_table[360];
         float  cos_table[360];
                physics_class            (void);
+              ~physics_class            (void);
         bool   cube_collision           (float x1, float y1, float z1, float w1, float h1, float d1, float x2, float y2, float z2, float w2, float h2, float d2);
         bool   quadrangle_collision     (float x1, float y1, float w1, float h1, float x2, float y2, float w2, float h2);
         bool   circle_collision         (float x1, float y1, float r1, float x2, float y2, float r2);

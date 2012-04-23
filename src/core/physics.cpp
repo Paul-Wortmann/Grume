@@ -25,10 +25,54 @@
 #include "physics.hpp"
 #include <math.h>
 
+      body_class::body_class         (void)
+{
+    body_type                = 1;
+    texture                  = 0;
+    radius_x                 = 0.0f;
+    radius_y                 = 0.0f;
+    radius_z                 = 0.0f;
+    length_x                 = 0.0f;
+    length_y                 = 0.0f;
+    length_z                 = 0.0f;
+    weight                   = 0.0f;
+    restitution              = 0.0f;
+    friction                 = 0.0f;
+    acceleration             = 0.0f;
+    velocity_x               = 0.0f;
+    velocity_y               = 0.0f;
+    velocity_z               = 0.0f;
+    position_x               = 0.0f;
+    position_y               = 0.0f;
+    position_z               = 0.0f;
+    rotational_angle_x       = 0.0f;
+    rotational_angle_y       = 0.0f;
+    rotational_angle_z       = 0.0f;
+    rotational_velocity_x    = 0.0f;
+    rotational_velocity_y    = 0.0f;
+    rotational_velocity_z    = 0.0f;
+    rotational_acceleration  = 0.0f;
+}
+
+      body_class::~body_class         (void)
+{
+
+};
+
+///-----------------------------------------------------------------------------------------------------------------------
+
       physics_class::physics_class         (void)
 {
+    gravity_x =  0.0f;
+    gravity_y = -9.8f;
+    gravity_z =  0.0f;
     physics_class::generate_sin_table();
     physics_class::generate_cos_table();
+};
+
+      physics_class::~physics_class         (void)
+{
+
 };
 
 bool  physics_class::cube_collision        (float x1, float y1, float z1, float w1, float h1, float d1, float x2, float y2, float z2, float w2, float h2, float d2)
