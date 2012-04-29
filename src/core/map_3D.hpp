@@ -29,6 +29,8 @@
 #include "textures.hpp"
 #include "graphics.hpp"
 #include "map_2D.hpp"
+#include "map_3D.hpp"
+#include "physics.hpp"
 
 struct cell_type
 {
@@ -45,6 +47,7 @@ struct cell_type
 class map_3D_class
 {
     public:
+        world_class        physics;
         float              version;
         float              cell_spacing;
         float              cell_spacing_half;

@@ -58,6 +58,16 @@ map_3D_class::map_3D_class(void)
     map_3D_class::render_surfaces     =  true;
     map_3D_class::render_wireframe    =  true;
     map_3D_class::render_water        =  true;
+    map_3D_class::physics.ID          =  0;
+    map_3D_class::physics.gravity_x   =  0.0f;
+    map_3D_class::physics.gravity_y   = -9.8f;
+    map_3D_class::physics.gravity_z   =  0.0f;
+    map_3D_class::physics.length_x    =  map_3D_class::number_of_cells_x * map_3D_class::cell_spacing;
+    map_3D_class::physics.length_y    =  1.0f;
+    map_3D_class::physics.length_z    =  map_3D_class::number_of_cells_x * map_3D_class::cell_spacing;
+    map_3D_class::physics.position_x  =  0.0f;
+    map_3D_class::physics.position_y  =  0.0f;
+    map_3D_class::physics.position_z  =  0.0f;
 };
 
 map_3D_class::~map_3D_class(void)

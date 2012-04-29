@@ -27,34 +27,57 @@
 
       body_class::body_class         (void)
 {
-    body_type                = 1;
-    texture                  = 0;
-    radius_x                 = 0.0f;
-    radius_y                 = 0.0f;
-    radius_z                 = 0.0f;
-    length_x                 = 0.0f;
-    length_y                 = 0.0f;
-    length_z                 = 0.0f;
-    weight                   = 0.0f;
-    restitution              = 0.0f;
-    friction                 = 0.0f;
-    acceleration             = 0.0f;
-    velocity_x               = 0.0f;
-    velocity_y               = 0.0f;
-    velocity_z               = 0.0f;
-    position_x               = 0.0f;
-    position_y               = 0.0f;
-    position_z               = 0.0f;
-    rotational_angle_x       = 0.0f;
-    rotational_angle_y       = 0.0f;
-    rotational_angle_z       = 0.0f;
-    rotational_velocity_x    = 0.0f;
-    rotational_velocity_y    = 0.0f;
-    rotational_velocity_z    = 0.0f;
-    rotational_acceleration  = 0.0f;
+    body_class::world_ID                 =  0;
+    body_class::body_type                =  1;
+    body_class::texture                  =  0;
+    body_class::radius_x                 =  0.0f;
+    body_class::radius_y                 =  0.0f;
+    body_class::radius_z                 =  0.0f;
+    body_class::length_x                 =  0.0f;
+    body_class::length_y                 =  0.0f;
+    body_class::length_z                 =  0.0f;
+    body_class::weight                   =  0.0f;
+    body_class::restitution              =  0.0f;
+    body_class::friction                 =  0.0f;
+    body_class::acceleration             =  0.0f;
+    body_class::velocity_max             =  0.0f;
+    body_class::velocity_x               =  0.0f;
+    body_class::velocity_y               =  0.0f;
+    body_class::velocity_z               =  0.0f;
+    body_class::position_x               =  0.0f;
+    body_class::position_y               =  0.0f;
+    body_class::position_z               =  0.0f;
+    body_class::rotational_angle_x       =  0.0f;
+    body_class::rotational_angle_y       =  0.0f;
+    body_class::rotational_angle_z       =  0.0f;
+    body_class::rotational_velocity_max  =  0.0f;
+    body_class::rotational_velocity_x    =  0.0f;
+    body_class::rotational_velocity_y    =  0.0f;
+    body_class::rotational_velocity_z    =  0.0f;
+    body_class::rotational_acceleration  =  0.0f;
 }
 
-      body_class::~body_class         (void)
+      body_class::~body_class          (void)
+{
+
+};
+
+///-----------------------------------------------------------------------------------------------------------------------
+      world_class::world_class         (void)
+{
+    world_class::ID                       =  0;
+    world_class::gravity_x                =  0.0f;
+    world_class::gravity_y                = -9.8f;
+    world_class::gravity_z                =  0.0f;
+    world_class::position_x               =  0.0f;
+    world_class::position_y               =  0.0f;
+    world_class::position_z               =  0.0f;
+    world_class::length_x                 =  0.0f;
+    world_class::length_y                 =  0.0f;
+    world_class::length_z                 =  0.0f;
+}
+
+      world_class::~world_class         (void)
 {
 
 };
@@ -63,9 +86,6 @@
 
       physics_class::physics_class         (void)
 {
-    gravity_x =  0.0f;
-    gravity_y = -9.8f;
-    gravity_z =  0.0f;
     physics_class::generate_sin_table();
     physics_class::generate_cos_table();
 };

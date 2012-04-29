@@ -47,7 +47,7 @@
 
 1328105111 c:\_git_\frost_and_flame\src\core\graphics.hpp
 
-1335100369 c:\_git_\frost_and_flame\src\core\physics.hpp
+1335692529 c:\_git_\frost_and_flame\src\core\physics.hpp
 
 1326868751 c:\_git_\frost_and_flame\src\core\network.hpp
 
@@ -102,7 +102,7 @@
 	<GL/gl.h>
 	<string>
 
-1328713242 c:\_git_\frost_and_flame\src\game.hpp
+1335692596 c:\_git_\frost_and_flame\src\game.hpp
 	<string>
 	<SDL/SDL.h>
 	"language.hpp"
@@ -241,7 +241,7 @@
 	"particles.hpp"
 	"../game.hpp"
 
-1326868058 source:c:\_git_\frost_and_flame\src\core\physics.cpp
+1335692467 source:c:\_git_\frost_and_flame\src\core\physics.cpp
 	"physics.hpp"
 	<math.h>
 
@@ -1270,13 +1270,15 @@
 	"game.hpp"
 	"misc.hpp"
 
-1328712549 c:\_git_\frost_and_flame\src\core\map_3d.hpp
+1335692767 c:\_git_\frost_and_flame\src\core\map_3d.hpp
 	"GL/gl.h"
 	"textures.hpp"
 	"graphics.hpp"
 	"map_2D.hpp"
+	"map_3D.hpp"
+	"physics.hpp"
 
-1333451798 source:c:\_git_\frost_and_flame\src\core\map_3d.cpp
+1335693367 source:c:\_git_\frost_and_flame\src\core\map_3d.cpp
 	<GL/gl.h>
 	<SDL/SDL.h>
 	<SDL/SDL_image.h>
