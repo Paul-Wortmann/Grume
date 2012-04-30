@@ -1,6 +1,19 @@
-﻿v0.06 - (2012-04-30)
-????????????????????GFX  -> Added first cave wall 3D model.
-LOC  -> xxxxx
+﻿As I am currently ill and also due to university and work responsibilities,
+I feel that Frost and Flame has been coming on very slowly these past few months.
+It may be slow at the moment, but I am determined to complete this game,
+it may take longer than I had first anticipated. 
+These are not indications that the project will be terminated in the future,
+just that time is not permitting to proceed at a fast pace, at the moment.
+
+
+v0.07 - (2012-05-31)
+LOC  -> 20154
+
+v0.06 - (2012-04-30)
+GFX  -> Added a couple of 3D models for testing.
+CORE -> Physics for 3D worlds and objects started.
+MAP  -> Added world physics data variables to 3D map.
+LOC  -> 20154
 
 v0.05 - (2012-03-31)
 IO   -> Started the RS232 base code.
