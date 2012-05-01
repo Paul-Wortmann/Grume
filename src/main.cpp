@@ -28,7 +28,7 @@
 #include <SDL/SDL_ttf.h>
 #include <SDL/SDL_net.h>
 #include <SDL/SDL_image.h>
-#include <SDL/SDL_opengl.h>
+//#include <SDL/SDL_opengl.h>
 #include <GL/gl.h>
 #include "misc.hpp"
 #include "main.hpp"
