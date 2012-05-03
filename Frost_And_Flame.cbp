@@ -13,6 +13,8 @@
 				<Compiler>
 					<Add option="-O3" />
 					<Add option="-Wno-write-strings" />
+					<Add directory="C:\MinGW\include" />
+					<Add directory="C:\MinGW\include\SDL" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -26,6 +28,7 @@
 					<Add library="SDL_mixer" />
 					<Add library="SDL_ttf" />
 					<Add library="SDL_net" />
+					<Add directory="C:\MinGW\lib" />
 				</Linker>
 			</Target>
 			<Target title="Linux">

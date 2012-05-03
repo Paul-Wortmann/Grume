@@ -5,3 +5,16 @@ Author: Paulius Jurgelevičius
 Website(blog): http://dustychest.blogspot.com/
 Contact: DustyChest@gmail.com
 License(s): CC0
+
+portrait_11
+-------------------------
+http://opengameart.org/content/old-mens-head
+Author: Letun
+License(s): CC-BY-SA 3.0
+
+portrait_12
+-------------------------
+http://opengameart.org/content/monster-head
+Author: Letun
+License(s): GPL 3.0
+
