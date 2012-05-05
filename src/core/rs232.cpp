@@ -75,12 +75,12 @@ void  rs232_class::set_parity     (int parity)
 
 bool  rs232_class::open_port      (void)
 {
-
+    return(true);
 };
 
 bool  rs232_class::close_port     (void)
 {
-
+    return(true);
 };
 
 

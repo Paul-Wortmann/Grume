@@ -39,7 +39,7 @@ file_class::~file_class(void)
 bool file_class::extension_exist(std::string file_name, std::string file_extension)
 {
     bool extention_found = false;
-    for (int string_pos = 0; string_pos < file_name.size(); string_pos++)
+    for (int string_pos = 0; string_pos < (int)file_name.size(); string_pos++)
     {
         if (file_name[string_pos] == '.') extention_found = true;
     }
@@ -56,7 +56,7 @@ std::string file_class::extension_remove(std::string file_name)
 {
     bool            extention_found = false;
     std::string     temp_string     = "";
-    for (int string_pos = 0; string_pos < file_name.size(); string_pos++)
+    for (int string_pos = 0; string_pos < (int)file_name.size(); string_pos++)
     {
         if (file_name[string_pos] == '.') extention_found = true;
         if (!extention_found) temp_string += file_name[string_pos];
@@ -69,11 +69,11 @@ std::string file_class::path_get(std::string file_name)
     int             slash_count     = 0;
     int             slash_pos       = 0;
     std::string     temp_string     = "";
-    for (int string_pos = 0; string_pos < file_name.size(); string_pos++)
+    for (int string_pos = 0; string_pos < (int)file_name.size(); string_pos++)
     {
         if (file_name[string_pos] == '/') slash_count++;
     }
-    for (int string_pos = 0; string_pos < file_name.size(); string_pos++)
+    for (int string_pos = 0; string_pos < (int)file_name.size(); string_pos++)
     {
         if (slash_pos < slash_count)
         {
@@ -88,11 +88,11 @@ std::string file_class::path_remove(std::string file_name)
 {
     int             slash_position  = -1;
     std::string     temp_string     = "";
-    for (int string_pos = 0; string_pos < file_name.size(); string_pos++)
+    for (int string_pos = 0; string_pos < (int)file_name.size(); string_pos++)
     {
         if (file_name[string_pos] == '\\') slash_position = string_pos;
     }
-    for (int string_pos = slash_position+1; string_pos < file_name.size(); string_pos++)
+    for (int string_pos = slash_position+1; string_pos < (int)file_name.size(); string_pos++)
     {
         temp_string += file_name[string_pos];
     }

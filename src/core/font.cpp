@@ -46,11 +46,13 @@ font_class::~font_class(void)
 bool font_class::Set_File(std::string filename)
 {
     font_class::font_data = TTF_OpenFont(filename.c_str(), 12);
+    return(true);
 };
 
 bool font_class::Set_File(std::string filename, int pt_size)
 {
     font_class::font_data = TTF_OpenFont(filename.c_str(), pt_size);
+    return(true);
 };
 
 bool font_class::Write(int r,int g,int b,int a,float x,float y,std::string text,int int_data)

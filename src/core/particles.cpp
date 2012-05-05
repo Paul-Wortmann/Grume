@@ -365,13 +365,13 @@ void  emitter_class::load(std::string file_name)
                         temp_char = data_line[count];
                         if(temp_char != ' ') temp_string_key += temp_char;
                         count++;
-                        if(count > data_line.length()) (temp_char = ' ');
+                        if(count > (int)data_line.length()) (temp_char = ' ');
                     }
                     while((temp_char == ' ') || (temp_char == '='))
                     {
                         temp_char = data_line[count];
                         count++;
-                        if(count > data_line.length()) (temp_char = '#');
+                        if(count > (int)data_line.length()) (temp_char = '#');
                     }
                     count--;
                     while(temp_char != ' ')
@@ -379,7 +379,7 @@ void  emitter_class::load(std::string file_name)
                         temp_char = data_line[count];
                         if(temp_char != ' ') temp_string_value += temp_char;
                         count++;
-                        if(count > data_line.length()) (temp_char = ' ');
+                        if(count > (int)data_line.length()) (temp_char = ' ');
                     }
                     temp_float = atof(temp_string_value.c_str());
                     if (temp_string_key == "Start_Active")

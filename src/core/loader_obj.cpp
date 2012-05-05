@@ -67,9 +67,9 @@ loader_obj_class::~loader_obj_class(void)
 bool loader_obj_class::load_texture(std::string file_name, GLuint *texture_data)
 {
     SDL_Surface    *image_surface = NULL;
-    GLenum          texture_format;
     GLint           number_of_colors;
-    if (image_surface = IMG_Load(file_name.c_str()))
+    GLenum          texture_format;
+    if ((image_surface = IMG_Load(file_name.c_str())))
     {
         if ((image_surface->w & (image_surface->w - 1)) != 0 );
         if ((image_surface->h & (image_surface->h - 1)) != 0 );
@@ -444,11 +444,6 @@ void loader_obj_class::load(std::string file_name)
     int          data_count_vt                   =  0;
     int          data_count_vn                   =  0;
     int          position_count                  =  0;
-    int          position_start                  =  0;
-    char         temp_char                       =  ' ';
-    float        temp_float_data;
-    int          temp_int_data;
-    bool         temp_bool_data;
     std::string  temp_string_data;
     std::string  temp_string_data_compare;
     std::string  temp_string_key;

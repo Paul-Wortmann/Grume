@@ -387,7 +387,7 @@ void map_2D_class::load(std::string file_name)
                             temp_string_key += temp_char;
                         }
                         position_count++;
-                        if(position_count > data_line.length()) temp_char = '>';
+                        if(position_count > (int)data_line.length()) temp_char = '>';
                     }
                     if (temp_string_key == "tileset")
                     {
@@ -409,7 +409,7 @@ void map_2D_class::load(std::string file_name)
                 if((data_line[position_count] == '<') && (data_line[position_count+1] != '/') && (data_line.length() > 2))
                 {
                     position_count++;
-                    while(position_count < data_line.length())
+                    while(position_count < (int)data_line.length())
                     {
                         temp_char         = ' ';
                         temp_string_key   = "";
@@ -423,7 +423,7 @@ void map_2D_class::load(std::string file_name)
                                 else if (temp_char != ' ') temp_string_key += temp_char;
                             }
                             position_count++;
-                            if(position_count > data_line.length()) temp_char = '"';
+                            if(position_count > (int)data_line.length()) temp_char = '"';
                         }
                         temp_char        = ' ';
                         while(temp_char != '"')
@@ -431,7 +431,7 @@ void map_2D_class::load(std::string file_name)
                             temp_char = data_line[position_count];
                             if(temp_char != '"') temp_string_value += temp_char;
                             position_count++;
-                            if(position_count > data_line.length()) (temp_char = '"');
+                            if(position_count > (int)data_line.length()) (temp_char = '"');
                         }
                         temp_string_data    = temp_string_value.c_str();
                         temp_float_data     = atof(temp_string_value.c_str());

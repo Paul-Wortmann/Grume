@@ -404,7 +404,7 @@ void character_class::draw(void)
     string_padding = "";
     if (game.player.allocatable_points <                   9u) string_padding += " ";
     if (game.player.allocatable_points <                  99u) string_padding += " ";
-    if (game.player.allocatable_points <                 999u) string_padding += " ";
+    if ((unsigned)game.player.allocatable_points <                 999u) string_padding += " ";
     game.font.font_1.Write(255,255,255,255,character_class::pos_x - (character_class::width /2.5f),character_class::pos_y - (character_class::height/ 2.4f),4.8f,32.0f,"Allocatable Points: ",(int)game.player.allocatable_points,string_padding);
     string_padding = "   ";
     game.font.font_1.Write(255,255,255,255,character_class::pos_x - (character_class::width /2.5f),character_class::pos_y - (character_class::height/ 2.2f),4.8f,32.0f,"Auto Allocate:      ",string_padding);

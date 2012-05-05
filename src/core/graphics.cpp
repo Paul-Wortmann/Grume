@@ -63,13 +63,6 @@ float graphics_class::res_to_gl(int  res_coord, int max_res)
 
 int   graphics_class::init_gl(int x_res, int y_res)
 {
-    float color_black[]        = {0.0f,0.0f,0.0f,1.0f};
-    float color_white[]        = {1.0f,1.0f,1.0f,1.0f};
-    float color_gray[]         = {0.6f,0.6f,0.6f,1.0f};
-    float color_red[]          = {1.0f,0.0f,0.0f,1.0f};
-    float color_blue[]         = {0.0f,0.0f,0.1f,1.0f};
-    float color_yellow[]       = {1.0f,1.0f,0.0f,1.0f};
-    float color_light_yellow[] = {0.5f,0.5f,0.0f,1.0f};
     glViewport(0, 0,x_res,y_res);
     glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
     glClearDepth(1.0);

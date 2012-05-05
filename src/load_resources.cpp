@@ -110,6 +110,7 @@ bool play_sound(int sound_number)
     if (sound_number == game.sound.book_00.ref_number)        game.sound.book_00.play();
     if (sound_number == game.sound.book_01.ref_number)        game.sound.book_01.play();
     if (sound_number == game.sound.book_02.ref_number)        game.sound.book_02.play();
+    return(true);
 };
 
 bool load_music(void)
@@ -500,6 +501,7 @@ bool load_textures(void)
 bool proc_textures(void)
 {
     //use for sprite sheets / animation
+    return(true);
 };
 
 bool load_fonts(void)
@@ -524,11 +526,13 @@ bool loading_screen_display(std::string file_name)
 bool draw_texture(bool r, int texture_number, float x, float y, float z, float w, float h)
 {
     draw_texture(r,texture_number,x,y,z,w,h,0.0f,0);
+    return(true);
 };
 
 bool draw_texture(bool r, int texture_number, float x, float y, float z, float w, float h, float angle)
 {
     draw_texture(r,texture_number,x,y,z,w,h,angle,0);
+    return(true);
 };
 
 bool draw_texture(bool r, int texture_number, float x, float y, float z, float w, float h, float angle, int frame)

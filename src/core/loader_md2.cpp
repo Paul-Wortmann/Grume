@@ -92,11 +92,6 @@ void loader_md2_class::load(std::string file_name)
     int          data_count_vt                   =  0;
     int          data_count_vn                   =  0;
     int          position_count                  =  0;
-    int          position_start                  =  0;
-    char         temp_char                       =  ' ';
-    float        temp_float_data;
-    int          temp_int_data;
-    bool         temp_bool_data;
     std::string  temp_string_data;
     std::string  temp_string_key;
     std::string  temp_string_value;

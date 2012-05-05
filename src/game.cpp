@@ -311,8 +311,7 @@ int process_game(void)
             ;
         }
     }
-    bool return_data        = false;
-    return(0);
+    return(true);
 };
 /*----------------------------------------------------------------------------*/
 int display_game(void)

@@ -66,7 +66,7 @@ int main(int argc, char *argv[])
     SDL_Init(SDL_INIT_VIDEO | SDL_INIT_EVENTTHREAD);
     game.core.log.File_Write("Starting OpenGL...");
     if (game.core.config.Display_Fullscreen) SDL_SetVideoMode(game.core.config.Display_X_Resolution,game.core.config.Display_Y_Resolution,game.core.config.Display_BPS,SDL_OPENGL | SDL_FULLSCREEN);
-    else SDL_SetVideoMode(game.core.config.Display_X_Resolution,game.core.config.Display_Y_Resolution,game.core.config.Display_BPS,SDL_OPENGL/* | SDL_NOFRAME/* | SDL_FULLSCREEN */);
+    else SDL_SetVideoMode(game.core.config.Display_X_Resolution,game.core.config.Display_Y_Resolution,game.core.config.Display_BPS,SDL_OPENGL/* | SDL_NOFRAME | SDL_FULLSCREEN */);
     SDL_GL_SetAttribute( SDL_GL_DOUBLEBUFFER, 1 );
     App_Icon_Surface = SDL_LoadBMP(App_Icon);
     colorkey = SDL_MapRGB(App_Icon_Surface->format, 255, 0, 255);

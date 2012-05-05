@@ -239,16 +239,16 @@ bool config_file_class::Process_Data(std::string data_line)
             temp_char = data_line[count];
             if(temp_char != ' ') temp_string_key += temp_char;
             count++;
-            if(count > data_line.length()) (temp_char = ' ');
+            if(count > (int)data_line.length()) (temp_char = ' ');
         }
         while((temp_char == ' ') || (temp_char == '='))
         {
             temp_char = data_line[count];
             count++;
-            if(count > data_line.length()) (temp_char = '#');
+            if(count > (int)data_line.length()) (temp_char = '#');
         }
         count--;
-        while(count < data_line.length())
+        while(count < (int)data_line.length())
         {
             temp_char = data_line[count];
             if ((temp_char != ' ') && (temp_char != '\r')) temp_string_value += temp_char;
