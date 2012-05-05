@@ -70,6 +70,7 @@ class player_class
         level_class        level;
         unsigned long long gold;
         int                portrait_image_ref;
+        int                portrait_number;
         int                offence;
         int                defense;
         int                intellect;

@@ -70,14 +70,36 @@ int init_menu   (void)
     game.new_game_menu.set_menu_font(1);
     game.new_game_menu.set_image_background(game.texture.background_02.ref_number);
     game.new_game_menu.set_button_zoom(true,0.008f,0.0005f);
+    game.new_game_menu.set_toggle_button_images(game.texture.green_button_highlighted.ref_number,game.texture.green_button.ref_number,game.texture.red_button_highlighted.ref_number,game.texture.red_button.ref_number);
     game.new_game_menu.set_button_images(game.texture.button_normal.ref_number,game.texture.button_highlighted.ref_number,game.texture.button_disabled.ref_number,game.texture.button_disabled.ref_number,game.texture.selection_box.ref_number,game.texture.slider_button_normal.ref_number,game.texture.slider_button_highlighted.ref_number,game.texture.arrow_button_normal.ref_number,game.texture.arrow_button_highlighted.ref_number,game.texture.arrow_button_disabled.ref_number);
     game.new_game_menu.set_color_normal(128,128,128,255);
     game.new_game_menu.set_color_highlighted(192,192,192,255);
     game.new_game_menu.set_color_disabled(064,064,064,128);
-    game.new_game_menu.set_number_of_buttons(3);
-    game.new_game_menu.set_button_data  ( 1,game.language.text.new_game);
-    game.new_game_menu.set_button_active( 2,false);
-    game.new_game_menu.set_button_data  ( 3,game.language.text.main_menu);
+    game.new_game_menu.set_number_of_buttons(4);
+
+    game.new_game_menu.set_button_data  ( 1,"Player portrait");
+    game.new_game_menu.set_number_of_choices(1,13);
+    game.new_game_menu.set_number_of_visible_choices(1,5);
+    game.new_game_menu.set_button_choice_position(1,1);
+    game.new_game_menu.set_button_disabled_text_label("Locked");
+    game.new_game_menu.set_button_current_choice(1,1);
+    game.new_game_menu.set_button_choice_data(1, 1,game.texture.portrait_00.ref_number,"Portrait 00",   true, true);
+    game.new_game_menu.set_button_choice_data(1, 2,game.texture.portrait_01.ref_number,"Portrait 01",   true, true);
+    game.new_game_menu.set_button_choice_data(1, 3,game.texture.portrait_02.ref_number,"Portrait 02",   true, true);
+    game.new_game_menu.set_button_choice_data(1, 4,game.texture.portrait_03.ref_number,"Portrait 03",   true, true);
+    game.new_game_menu.set_button_choice_data(1, 5,game.texture.portrait_04.ref_number,"Portrait 04",   true, true);
+    game.new_game_menu.set_button_choice_data(1, 6,game.texture.portrait_05.ref_number,"Portrait 05",   true, true);
+    game.new_game_menu.set_button_choice_data(1, 7,game.texture.portrait_06.ref_number,"Portrait 06",   true, true);
+    game.new_game_menu.set_button_choice_data(1, 8,game.texture.portrait_07.ref_number,"Portrait 07",   true, true);
+    game.new_game_menu.set_button_choice_data(1, 9,game.texture.portrait_08.ref_number,"Portrait 08",   true, true);
+    game.new_game_menu.set_button_choice_data(1,10,game.texture.portrait_09.ref_number,"Portrait 09",   true, true);
+    game.new_game_menu.set_button_choice_data(1,11,game.texture.portrait_10.ref_number,"Portrait 10",   true, true);
+    game.new_game_menu.set_button_choice_data(1,12,game.texture.portrait_11.ref_number,"Portrait 11",   true, true);
+    game.new_game_menu.set_button_choice_data(1,13,game.texture.portrait_12.ref_number,"Portrait 12",   true, true);
+
+    game.new_game_menu.set_button_data  ( 2,game.language.text.new_game);
+    game.new_game_menu.set_button_active( 3,false);
+    game.new_game_menu.set_button_data  ( 4,game.language.text.main_menu);
     game.new_game_menu.set_buttons_auto();
     game.new_game_menu.set_close_button_data(game.texture.close_button.ref_number,game.texture.close_button_highlighted.ref_number);
     game.new_game_menu.set_button_arrow_data_auto(1);
@@ -337,11 +359,48 @@ int process_menu(void)
     activated_button = -1;
     if (game.core.menu_level == 2)
     {
+        game.new_game_menu.set_button_current_choice(1,game.player.portrait_number-1);
         activated_button = game.new_game_menu.process();
         switch (activated_button)
         {
-            case 1://Choice 1 selected
+            case 101://Choice 1 selected
+                game.player.portrait_number = game.new_game_menu.get_button_choice_position(1) + 0 -1;
+            break;
+            case 102://Choice 2 selected
+                game.player.portrait_number = game.new_game_menu.get_button_choice_position(1) + 1 -1;
+            break;
+            case 103://Choice 3 selected
+                game.player.portrait_number = game.new_game_menu.get_button_choice_position(1) + 2 -1;
+            break;
+            case 104://Choice 4 selected
+                game.player.portrait_number = game.new_game_menu.get_button_choice_position(1) + 3 -1;
+            break;
+            case 105://Choice 5 selected
+                game.player.portrait_number = game.new_game_menu.get_button_choice_position(1) + 4 -1;
+            break;
+            case 4001://left arrow on button 1
+                game.new_game_menu.set_button_choice_position(1,game.new_game_menu.get_button_choice_position(1)-1);
+                if (game.new_game_menu.get_button_choice_position(1) < 1) game.new_game_menu.set_button_choice_position(1,1);
+            break;
+            case 5001://right arrow on button 1
+                game.new_game_menu.set_button_choice_position(1,game.new_game_menu.get_button_choice_position(1)+1);
+                if (game.new_game_menu.get_button_choice_position(1) >= game.new_game_menu.get_number_of_choices(1)-(game.new_game_menu.get_number_of_visible_choices(1)-1)) game.new_game_menu.set_button_choice_position(1,game.new_game_menu.get_number_of_choices(1)-(game.new_game_menu.get_number_of_visible_choices(1)-1));
+            break;
+            case 2://Choice 1 selected
                 {
+                    if (game.player.portrait_number ==  0) game.player.portrait_image_ref = game.texture.portrait_00.ref_number;
+                    if (game.player.portrait_number ==  1) game.player.portrait_image_ref = game.texture.portrait_01.ref_number;
+                    if (game.player.portrait_number ==  2) game.player.portrait_image_ref = game.texture.portrait_02.ref_number;
+                    if (game.player.portrait_number ==  3) game.player.portrait_image_ref = game.texture.portrait_03.ref_number;
+                    if (game.player.portrait_number ==  4) game.player.portrait_image_ref = game.texture.portrait_04.ref_number;
+                    if (game.player.portrait_number ==  5) game.player.portrait_image_ref = game.texture.portrait_05.ref_number;
+                    if (game.player.portrait_number ==  6) game.player.portrait_image_ref = game.texture.portrait_06.ref_number;
+                    if (game.player.portrait_number ==  7) game.player.portrait_image_ref = game.texture.portrait_07.ref_number;
+                    if (game.player.portrait_number ==  8) game.player.portrait_image_ref = game.texture.portrait_08.ref_number;
+                    if (game.player.portrait_number ==  9) game.player.portrait_image_ref = game.texture.portrait_09.ref_number;
+                    if (game.player.portrait_number == 10) game.player.portrait_image_ref = game.texture.portrait_10.ref_number;
+                    if (game.player.portrait_number == 11) game.player.portrait_image_ref = game.texture.portrait_11.ref_number;
+                    if (game.player.portrait_number == 12) game.player.portrait_image_ref = game.texture.portrait_12.ref_number;
                     game.sound.menu_select_00.play();
                     game.core.music_next_track = true;
                     game.core.game_active = true;
@@ -349,7 +408,7 @@ int process_menu(void)
                     game.core.log.File_Write("Entering game world, starting new game.");
                 }
             break;
-            case 3://Return to main menu
+            case 4://Return to main menu
                 game.sound.menu_select_00.play();
                 game.core.menu_level = 1;
                 game.core.log.File_Write("Entering main menu, from New_Game menu. - button selected.");

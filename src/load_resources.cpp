@@ -482,6 +482,8 @@ bool load_textures(void)
     game.texture.portrait_08.load_image("data/textures/UI/portraits/portrait_08.png",texture_count);texture_count++;
     game.texture.portrait_09.load_image("data/textures/UI/portraits/portrait_09.png",texture_count);texture_count++;
     game.texture.portrait_10.load_image("data/textures/UI/portraits/portrait_10.png",texture_count);texture_count++;
+    game.texture.portrait_11.load_image("data/textures/UI/portraits/portrait_11.png",texture_count);texture_count++;
+    game.texture.portrait_12.load_image("data/textures/UI/portraits/portrait_12.png",texture_count);texture_count++;
 
     game.texture.heightmap_000.load_image("data/textures/heightmaps/heightmap_000.png",texture_count);texture_count++;
 
@@ -894,6 +896,8 @@ bool draw_texture(bool r, int texture_number, float x, float y, float z, float w
     if (texture_number == game.texture.portrait_08.ref_number) game.texture.portrait_08.draw(r,x,y,z,w,h,angle,frame);
     if (texture_number == game.texture.portrait_09.ref_number) game.texture.portrait_09.draw(r,x,y,z,w,h,angle,frame);
     if (texture_number == game.texture.portrait_10.ref_number) game.texture.portrait_10.draw(r,x,y,z,w,h,angle,frame);
+    if (texture_number == game.texture.portrait_11.ref_number) game.texture.portrait_11.draw(r,x,y,z,w,h,angle,frame);
+    if (texture_number == game.texture.portrait_12.ref_number) game.texture.portrait_12.draw(r,x,y,z,w,h,angle,frame);
 
     if (texture_number == game.texture.heightmap_000.ref_number) game.texture.heightmap_000.draw(r,x,y,z,w,h,angle,frame);
 
@@ -1266,6 +1270,8 @@ bool bind_texture(int texture_number)
     if (texture_number == game.texture.portrait_08.ref_number) glBindTexture(GL_TEXTURE_2D, game.texture.portrait_08.frame[0].data);
     if (texture_number == game.texture.portrait_09.ref_number) glBindTexture(GL_TEXTURE_2D, game.texture.portrait_09.frame[0].data);
     if (texture_number == game.texture.portrait_10.ref_number) glBindTexture(GL_TEXTURE_2D, game.texture.portrait_10.frame[0].data);
+    if (texture_number == game.texture.portrait_11.ref_number) glBindTexture(GL_TEXTURE_2D, game.texture.portrait_11.frame[0].data);
+    if (texture_number == game.texture.portrait_12.ref_number) glBindTexture(GL_TEXTURE_2D, game.texture.portrait_12.frame[0].data);
 
     if (texture_number == game.texture.heightmap_000.ref_number) glBindTexture(GL_TEXTURE_2D, game.texture.heightmap_000.frame[0].data);
 

@@ -23,7 +23,7 @@
 		<Cursor1 position="1391" topLine="23" />
 	</File>
 	<File name="src\load_resources.hpp" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="1636" topLine="15" />
+		<Cursor1 position="13473" topLine="431" />
 	</File>
 	<File name="src\core\loader_md2.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor1 position="6314" topLine="151" />
@@ -35,7 +35,7 @@
 		<Cursor1 position="1580" topLine="0" />
 	</File>
 	<File name="src\load_resources.cpp" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="4905" topLine="99" />
+		<Cursor1 position="49143" topLine="464" />
 	</File>
 	<File name="src\core\io.hpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor1 position="4068" topLine="18" />
@@ -79,7 +79,7 @@
 	<File name="src\core\map_3D.cpp" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor1 position="14886" topLine="271" />
 	</File>
-	<File name="src\menu_system.cpp" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="src\menu_system.cpp" open="1" top="1" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor1 position="31" topLine="0" />
 	</File>
 	<File name="src\items.cpp" open="0" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -116,7 +116,7 @@
 		<Cursor1 position="31" topLine="0" />
 	</File>
 	<File name="src\game.hpp" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="1198" topLine="19" />
+		<Cursor1 position="1382" topLine="12" />
 	</File>
 	<File name="src\core\file.cpp" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor1 position="1266" topLine="28" />
@@ -125,7 +125,7 @@
 		<Cursor1 position="1717" topLine="0" />
 	</File>
 	<File name="src\game.cpp" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="13975" topLine="296" />
+		<Cursor1 position="2655" topLine="61" />
 	</File>
 	<File name="src\core\core.hpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor1 position="946" topLine="21" />
@@ -232,14 +232,14 @@
 	<File name="src\core\savegame.hpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor1 position="31" topLine="0" />
 	</File>
-	<File name="src\UI.cpp" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="24100" topLine="409" />
+	<File name="src\UI.cpp" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor1 position="2540" topLine="60" />
 	</File>
 	<File name="src\core\network.hpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor1 position="31" topLine="0" />
 	</File>
 	<File name="src\player.hpp" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor1 position="1005" topLine="4" />
+		<Cursor1 position="2220" topLine="62" />
 	</File>
 	<File name="src\main.hpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor1 position="31" topLine="0" />
