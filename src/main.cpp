@@ -24,10 +24,6 @@
 
 #include <locale>
 #include <SDL/SDL.h>
-#include <SDL/SDL_main.h>
-#include <SDL/SDL_ttf.h>
-#include <SDL/SDL_net.h>
-#include <SDL/SDL_image.h>
 #include <GL/gl.h>
 #include "misc.hpp"
 #include "main.hpp"

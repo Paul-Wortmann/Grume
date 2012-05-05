@@ -23,7 +23,6 @@
  */
 
 #include <SDL/SDL_ttf.h>
-#include <SDL/SDL_ttf.h>
 #include <GL/gl.h>
 #include <string>
 #include <sstream>

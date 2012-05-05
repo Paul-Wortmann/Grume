@@ -12,7 +12,7 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-O3" />
-					<Add option="-Wno-write-strings" />
+					<Add option="-Wall" />
 					<Add directory="C:\MinGW\include" />
 					<Add directory="C:\MinGW\include\SDL" />
 				</Compiler>
@@ -20,7 +20,6 @@
 					<Add option="-s" />
 					<Add option="-static-libstdc++" />
 					<Add option="-static-libgcc" />
-					<Add library="opengl32" />
 					<Add library="mingw32" />
 					<Add library="SDLmain" />
 					<Add library="SDL" />
@@ -28,6 +27,7 @@
 					<Add library="SDL_mixer" />
 					<Add library="SDL_ttf" />
 					<Add library="SDL_net" />
+					<Add library="opengl32" />
 					<Add directory="C:\MinGW\lib" />
 				</Linker>
 			</Target>

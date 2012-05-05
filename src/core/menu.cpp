@@ -1678,6 +1678,7 @@ float menu_class::set_buttons_auto(void)
     menu_class::set_button_z_pos(menu_class::get_menu_z_pos());
     menu_class::set_button_size_auto();
     menu_class::set_button_spacing_auto();
+    return(true);
 };
 
 void  menu_class::set_image_arrow_normal(int image_ref_no)
@@ -2249,9 +2250,6 @@ void  menu_class::set_text_size(float width, float height)
         menu_class::button[button_count].set_text_size(width,height);
     }
 };
-
-
-
 
 
 

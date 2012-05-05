@@ -284,7 +284,7 @@ void map_3D_class::mesh_height_generate_heightmap(std::string file_name)
     Uint32           temp_data    = 0;
     float            temp_value   = 0.0f;
     SDL_Surface     *temp_surface = NULL;
-    if (temp_surface = IMG_Load(file_name.c_str()))
+    if ((temp_surface = IMG_Load(file_name.c_str())))
     {
         pixel_format = temp_surface->format;
         if(SDL_MUSTLOCK(temp_surface)) SDL_LockSurface(temp_surface);

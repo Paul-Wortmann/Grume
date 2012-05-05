@@ -193,8 +193,7 @@
 1326868145 source:c:\_git_\frost_and_flame\src\core\core.cpp
 	"core.hpp"
 
-1326868145 source:c:\_git_\frost_and_flame\src\core\font.cpp
-	<SDL/SDL_ttf.h>
+1336061059 source:c:\_git_\frost_and_flame\src\core\font.cpp
 	<SDL/SDL_ttf.h>
 	<GL/gl.h>
 	<string>
@@ -223,7 +222,7 @@
 	<string>
 	"log.hpp"
 
-1326868145 source:c:\_git_\frost_and_flame\src\core\menu.cpp
+1336052761 source:c:\_git_\frost_and_flame\src\core\menu.cpp
 	"menu.hpp"
 	"../game.hpp"
 
@@ -326,13 +325,9 @@
 	"load_resources.hpp"
 	"game.hpp"
 
-1335872259 source:c:\_git_\frost_and_flame\src\main.cpp
+1336060874 source:c:\_git_\frost_and_flame\src\main.cpp
 	<locale>
 	<SDL/SDL.h>
-	<SDL/SDL_main.h>
-	<SDL/SDL_ttf.h>
-	<SDL/SDL_net.h>
-	<SDL/SDL_image.h>
 	<GL/gl.h>
 	"misc.hpp"
 	"main.hpp"
@@ -1385,7 +1380,7 @@
 	"../game.hpp"
 	"../misc.hpp"
 
-1333466961 c:\_git_\frost_and_flame\src\core\rs232.hpp
+1336061307 c:\_git_\frost_and_flame\src\core\rs232.hpp
 	<stdio.h>
 	<string.h>
 	<termios.h>

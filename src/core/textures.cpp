@@ -64,11 +64,11 @@ texture_class::~texture_class()
 bool texture_class::load_image(std::string file_name, int index_number)
 {
     SDL_Surface    *image_surface = NULL;
-    GLenum          texture_format;
+    GLenum          texture_format = 0;
     GLint           number_of_colors;
     bool            return_value = false;
     texture_class::ref_number = index_number;
-    if (image_surface = IMG_Load(file_name.c_str()))
+    if ((image_surface = IMG_Load(file_name.c_str())))
     {
         return_value = true;
         if ((image_surface->w & (image_surface->w - 1)) != 0 );
@@ -110,6 +110,7 @@ bool texture_class::load_image(std::string file_name, int index_number)
 bool texture_class::load_spritesheet(std::string file_name, int index_number)
 {
     texture_class::load_spritesheet(file_name,index_number,DEFAULT_FRAME_WIDTH,DEFAULT_FRAME_HEIGHT);
+    return(true);
 };
 
 bool texture_class::load_spritesheet(std::string file_name, int index_number, int width, int height)
@@ -119,15 +120,15 @@ bool texture_class::load_spritesheet(std::string file_name, int index_number, in
     texture_class::height     = height;
     int             frames_x;
     int             frames_y;
-    int             frame_number = 0;
-    int             num_sprites  = 0;
-    SDL_Surface    *sprite_sheet = NULL;
-    SDL_Surface    *temp_surface = NULL;
-    int             flags        = 0;
-    GLenum          texture_format;
+    int             frame_number   = 0;
+    int             num_sprites    = 0;
+    SDL_Surface    *sprite_sheet   = NULL;
+    SDL_Surface    *temp_surface   = NULL;
+    int             flags          = 0;
+    GLenum          texture_format = 0;
     GLint           number_of_colors;
     bool            return_value = false;
-    if (sprite_sheet = IMG_Load(file_name.c_str()))
+    if ((sprite_sheet = IMG_Load(file_name.c_str())))
     {
         return_value = true;
         if ((sprite_sheet->w & (sprite_sheet->w - 1)) != 0 );

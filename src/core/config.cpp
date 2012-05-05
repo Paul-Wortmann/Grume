@@ -124,6 +124,7 @@ bool  config_file_class::Set_Defaults (void)
     if ((config_file_class::Display_X_Resolution == 1920) && (config_file_class::Display_Y_Resolution == 1080)) config_file_class::Display_resolution = 7;
     config_file_class::mouse_resolution_x   = config_file_class::Display_X_Resolution;
     config_file_class::mouse_resolution_y   = config_file_class::Display_Y_Resolution;
+    return(true);
 };
 
 bool config_file_class::File_Clear(void)
