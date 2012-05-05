@@ -155,7 +155,7 @@ void loader_obj_class::load_mtl(std::string file_name)
                         number_of_materials_count++;
                         position_count = 7;
                         temp_string_data = "";
-                        while (position_count <= data_line.length())
+                        while (position_count <= (int)data_line.length())
                         {
                             if (data_line[position_count] != ' ') temp_string_data += data_line[position_count];
                             position_count++;
@@ -168,7 +168,7 @@ void loader_obj_class::load_mtl(std::string file_name)
                             case 's': //
                                 position_count = 3;
                                 temp_string_data = "";
-                                while (position_count <= data_line.length())
+                                while (position_count <= (int)data_line.length())
                                 {
                                     temp_string_data += data_line[position_count];
                                     position_count++;
@@ -178,7 +178,7 @@ void loader_obj_class::load_mtl(std::string file_name)
                             case 'i': //
                                 position_count = 3;
                                 temp_string_data = "";
-                                while (position_count <= data_line.length())
+                                while (position_count <= (int)data_line.length())
                                 {
                                     temp_string_data += data_line[position_count];
                                     position_count++;
@@ -196,7 +196,7 @@ void loader_obj_class::load_mtl(std::string file_name)
                                 position_count = 3;
                                 data_count     = 0;
                                 temp_string_data = "";
-                                while (position_count <= data_line.length())
+                                while (position_count <= (int)data_line.length())
                                 {
                                     if (data_line[position_count] != ' ')
                                     {
@@ -217,7 +217,7 @@ void loader_obj_class::load_mtl(std::string file_name)
                                 position_count = 3;
                                 data_count     = 0;
                                 temp_string_data = "";
-                                while (position_count <= data_line.length())
+                                while (position_count <= (int)data_line.length())
                                 {
                                     if (data_line[position_count] != ' ')
                                     {
@@ -238,7 +238,7 @@ void loader_obj_class::load_mtl(std::string file_name)
                                 position_count = 3;
                                 data_count     = 0;
                                 temp_string_data = "";
-                                while (position_count <= data_line.length())
+                                while (position_count <= (int)data_line.length())
                                 {
                                     if (data_line[position_count] != ' ')
                                     {
@@ -262,7 +262,7 @@ void loader_obj_class::load_mtl(std::string file_name)
                     case 'd': //
                         position_count = 2;
                         temp_string_data = "";
-                        while (position_count <= data_line.length())
+                        while (position_count <= (int)data_line.length())
                         {
                             temp_string_data += data_line[position_count];
                             position_count++;
@@ -272,7 +272,7 @@ void loader_obj_class::load_mtl(std::string file_name)
                     case 'i': //
                         position_count = 6;
                         temp_string_data = "";
-                        while (position_count <= data_line.length())
+                        while (position_count <= (int)data_line.length())
                         {
                             temp_string_data += data_line[position_count];
                             position_count++;
@@ -285,7 +285,7 @@ void loader_obj_class::load_mtl(std::string file_name)
                             case 'd': //
                                 position_count = 6;
                                 temp_string_data = "";
-                                while (position_count <= data_line.length())
+                                while (position_count <= (int)data_line.length())
                                 {
                                     temp_string_data += data_line[position_count];
                                     position_count++;
@@ -301,7 +301,7 @@ void loader_obj_class::load_mtl(std::string file_name)
                             case 'K': //
                                 position_count = 7;
                                 temp_string_data = "";
-                                while (position_count <= data_line.length())
+                                while (position_count <= (int)data_line.length())
                                 {
                                     temp_string_data += data_line[position_count];
                                     position_count++;
@@ -317,7 +317,7 @@ void loader_obj_class::load_mtl(std::string file_name)
                             case 'B': //
                                 position_count = 9;
                                 temp_string_data = "";
-                                while (position_count <= data_line.length())
+                                while (position_count <= (int)data_line.length())
                                 {
                                     temp_string_data += data_line[position_count];
                                     position_count++;
@@ -502,7 +502,7 @@ void loader_obj_class::load(std::string file_name)
                     case 'o': // load object name.
                         position_count = 2;
                         temp_string_data = "";
-                        while (position_count <= data_line.length())
+                        while (position_count <= (int)data_line.length())
                         {
                             temp_string_data += data_line[position_count];
                             position_count++;
@@ -512,7 +512,7 @@ void loader_obj_class::load(std::string file_name)
                     case 'm': // load material file name.
                         position_count = 7;
                         temp_string_data = "";
-                        while (position_count <= data_line.length())
+                        while (position_count <= (int)data_line.length())
                         {
                             temp_string_data += data_line[position_count];
                             position_count++;
@@ -530,7 +530,7 @@ void loader_obj_class::load(std::string file_name)
                                 position_count = 2;
                                 data_count     = 0;
                                 temp_string_data = "";
-                                while (position_count <= data_line.length())
+                                while (position_count <= (int)data_line.length())
                                 {
                                     if (data_line[position_count] != ' ')
                                     {
@@ -552,7 +552,7 @@ void loader_obj_class::load(std::string file_name)
                                 position_count = 3;
                                 data_count     = 0;
                                 temp_string_data = "";
-                                while (position_count <= data_line.length())
+                                while (position_count <= (int)data_line.length())
                                 {
                                     if (data_line[position_count] != ' ')
                                     {
@@ -576,7 +576,7 @@ void loader_obj_class::load(std::string file_name)
                                 position_count = 3;
                                 data_count     = 0;
                                 temp_string_data = "";
-                                while (position_count <= data_line.length())
+                                while (position_count <= (int)data_line.length())
                                 {
                                     if (data_line[position_count] != ' ')
                                     {
@@ -603,7 +603,7 @@ void loader_obj_class::load(std::string file_name)
                         game.core.log.File_Write("usemtl found...", loader_obj_class::number_of_materials);
                         position_count = 7;
                         temp_string_data = "";
-                        while (position_count <= data_line.length())
+                        while (position_count <= (int)data_line.length())
                         {
                             if (data_line[position_count] != ' ') temp_string_data += data_line[position_count];
                             position_count++;
@@ -630,7 +630,7 @@ void loader_obj_class::load(std::string file_name)
                         {
                             slash_count    = 0;
                             position_count = 2;
-                            while ((position_count < data_line.length()) && (data_line[position_count] != ' '))
+                            while ((position_count < (int)data_line.length()) && (data_line[position_count] != ' '))
                             {
                                 if (data_line[position_count] == '/') slash_count++;
                                 position_count++;
@@ -646,7 +646,7 @@ void loader_obj_class::load(std::string file_name)
                                 data_count_vt    = 0;
                                 data_count_vn    = 0;
                                 temp_string_data = "";
-                                while (position_count <= data_line.length())
+                                while (position_count <= (int)data_line.length())
                                 {
                                     if (data_line[position_count] != ' ')
                                     {
@@ -672,7 +672,7 @@ void loader_obj_class::load(std::string file_name)
                                 data_count_vt    = 0;
                                 data_count_vn    = 0;
                                 temp_string_data = "";
-                                while (position_count <= data_line.length())
+                                while (position_count <= (int)data_line.length())
                                 {
                                     if ((data_line[position_count] != ' ') && (data_line[position_count] != '/'))
                                     {

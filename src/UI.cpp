@@ -69,7 +69,7 @@ void active_window_list_class::add_to_list(int window_UID)
             }
         }
     }
-    for (int awl_count = MAX_ACTIVE_WINDOWS; awl_count >= 0; awl_count--) //shift stack down
+    for (int awl_count = MAX_ACTIVE_WINDOWS-1; awl_count > 0; awl_count--) //shift stack down
     {
         active_window_list_class::window_ID[awl_count] = active_window_list_class::window_ID[awl_count-1];
     }

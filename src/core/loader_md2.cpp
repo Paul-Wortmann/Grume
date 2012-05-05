@@ -152,7 +152,7 @@ void loader_md2_class::load(std::string file_name)
                     case 'o': // load md2ect name.
                         position_count = 2;
                         temp_string_data = "";
-                        while (position_count <= data_line.length())
+                        while (position_count <= (int)data_line.length())
                         {
                             temp_string_data += data_line[position_count];
                             position_count++;
@@ -162,7 +162,7 @@ void loader_md2_class::load(std::string file_name)
                     case 'm': // load material file name.
                         position_count = 7;
                         temp_string_data = "";
-                        while (position_count <= data_line.length())
+                        while (position_count <= (int)data_line.length())
                         {
                             temp_string_data += data_line[position_count];
                             position_count++;
@@ -176,7 +176,7 @@ void loader_md2_class::load(std::string file_name)
                                 position_count = 2;
                                 data_count     = 0;
                                 temp_string_data = "";
-                                while (position_count <= data_line.length())
+                                while (position_count <= (int)data_line.length())
                                 {
                                     if (data_line[position_count] != ' ')
                                     {
@@ -198,7 +198,7 @@ void loader_md2_class::load(std::string file_name)
                                 position_count = 3;
                                 data_count     = 0;
                                 temp_string_data = "";
-                                while (position_count <= data_line.length())
+                                while (position_count <= (int)data_line.length())
                                 {
                                     if (data_line[position_count] != ' ')
                                     {
@@ -222,7 +222,7 @@ void loader_md2_class::load(std::string file_name)
                                 position_count = 3;
                                 data_count     = 0;
                                 temp_string_data = "";
-                                while (position_count <= data_line.length())
+                                while (position_count <= (int)data_line.length())
                                 {
                                     if (data_line[position_count] != ' ')
                                     {
@@ -248,7 +248,7 @@ void loader_md2_class::load(std::string file_name)
                     case 'u': // load material to use after this point.
                         position_count = 7;
                         temp_string_data = "";
-                        while (position_count <= data_line.length())
+                        while (position_count <= (int)data_line.length())
                         {
                             temp_string_data += data_line[position_count];
                             position_count++;
@@ -268,7 +268,7 @@ void loader_md2_class::load(std::string file_name)
                         {
                             slash_count    = 0;
                             position_count = 2;
-                            while ((position_count < data_line.length()) && (data_line[position_count] != ' '))
+                            while ((position_count < (int)data_line.length()) && (data_line[position_count] != ' '))
                             {
                                 if (data_line[position_count] == '/') slash_count++;
                                 position_count++;
@@ -284,7 +284,7 @@ void loader_md2_class::load(std::string file_name)
                                 data_count_vt    = 0;
                                 data_count_vn    = 0;
                                 temp_string_data = "";
-                                while (position_count <= data_line.length())
+                                while (position_count <= (int)data_line.length())
                                 {
                                     if (data_line[position_count] != ' ')
                                     {
@@ -310,7 +310,7 @@ void loader_md2_class::load(std::string file_name)
                                 data_count_vt    = 0;
                                 data_count_vn    = 0;
                                 temp_string_data = "";
-                                while (position_count <= data_line.length())
+                                while (position_count <= (int)data_line.length())
                                 {
                                     if ((data_line[position_count] != ' ') && (data_line[position_count] != '/'))
                                     {
