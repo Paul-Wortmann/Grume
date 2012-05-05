@@ -22,7 +22,6 @@
  * @date 2011-11-11
  */
 
-#include <locale>
 #include <SDL/SDL.h>
 #include <GL/gl.h>
 #include "misc.hpp"
@@ -42,7 +41,6 @@ SDL_Surface             *App_Icon_Surface;
 //----------------------------------- Main -------------------------------------
 int main(int argc, char *argv[])
 {
-    std::locale::global( std::locale( "" ) );
     events_init();
     game.core.log.File_Set("Frost_And_Flame.log");
     game.core.log.File_Clear();
