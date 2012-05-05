@@ -197,7 +197,6 @@ void action_slot_class::process(void)
     int temp_int = 0;
     if (action_slot_class::current_item != game.UI.inventory.inventory_slot[action_slot_class::button_type-1000].button_type) action_slot_class::button_type = 0;
     bool discard_icon   = false;
-    int  swap_button    = 0;
     int  temp_button    = 0;
     int  temp_item      = 0;
     if (game.core.physics.point_in_quadrangle(action_slot_class::pos_x,action_slot_class::width,action_slot_class::pos_y,action_slot_class::height,game.core.io.mouse_x,game.core.io.mouse_y)) action_slot_class::mouse_over = true;
@@ -420,7 +419,6 @@ void action_slot_class::draw_tooltip(void)
 
 void menu_slot_class::process(void)
 {
-    int  swap_button = 0;
     int  temp_button = 0;
     if (menu_slot_class::mouse_over) // timers
     {
@@ -663,8 +661,6 @@ void action_bar_class::process(void)
 void action_bar_class::draw(void)
 {
     float              temp_float   = 0.0f;
-    float              temp_percent = 0.0f;
-    unsigned long long temp_ull     = 0;
     game.texture.action_bar.draw(false,action_bar_class::pos_x,action_bar_class::pos_y,action_bar_class::pos_z,action_bar_class::width,action_bar_class::height);
     for (int action_slot_count = 1; action_slot_count < MAX_ACTION_SLOTS; action_slot_count++)
     {

@@ -707,7 +707,7 @@ void loader_obj_class::load(std::string file_name)
                                 data_count_vt    = 0;
                                 data_count_vn    = 0;
                                 temp_string_data = "";
-                                while (position_count <= data_line.length())
+                                while (position_count <= (int)data_line.length())
                                 {
                                     if ((data_line[position_count] != ' ') && (data_line[position_count] != '/'))
                                     {
