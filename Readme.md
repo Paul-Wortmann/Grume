@@ -8,7 +8,7 @@ This is Frost and Flame, a free/open source computer game.
 About
 -----
 Frost and Flame is still in its early stages of infancy.  Currently a non-playable WIP.
-Frost and flame to become a 2D, isometric, action role playing game.
+Frost and flame to become a 3D, isometric, action role playing game.
 Planned features include, a particle engine, rich in content and re-playability with random item, quest and level generation.
 
 Features
@@ -44,7 +44,7 @@ Multiple language support.
 You can set your desired language in the config file. (Frost_And_Flame.cfg)
 The value to set should be identical to the language files name, excluding the ".txt". 
 ie. for "english.txt" set Language = english in the config file.
-Please note that language files have to be save in UTF-8 format, else they may fail to function correctly.
+Please note that language files have to be saved in UTF-8 format, else they may fail to function correctly.
 
 Known bugs
 ----------
@@ -72,7 +72,7 @@ PARTICULAR PURPOSE.  See the gpl.txt file for more details.
 
 Contact
 -------
-- Paul Wortmann: physhex@gamil.com
+- Paul Wortmann: physhex@gmail.com
 - Website: http://www.physhexgames.co.nr
 - Downloads: https://sourceforge.net/projects/frostandflame/
 - Development, bug reports, feature requests and general questions are handled on GitHub: https://github.com/Paul-Wortmann/Frost_And_Flame

@@ -41,6 +41,7 @@ const int MAX_MENU_CHOICE_BUTTONS = 32;
 class button_class
 {
     private:
+    public:
         struct choice_data_type
         {
             bool         active;
@@ -121,7 +122,6 @@ class button_class
         int              achieve_position;
         float            text_width;
         float            text_height;
-    public:
         button_class(void);
         button_class(float x, float y, float z, float w, float h, int in, int ih, int id, bool hl, bool en, bool gl, bool zm, float zs, int nr, int ng, int nb, int na, int hr, int hg, int hb, int ha, int dr, int dg, int db, int da, std::string lb);
        ~button_class(void);
@@ -244,6 +244,7 @@ class button_class
 class menu_class
 {
     private:
+    public:
         bool          drag_active;
         float         drag_offset_x;
         float         drag_offset_y;
@@ -322,7 +323,6 @@ class menu_class
         int           disabled_color_a;
         float         text_width;
         float         text_height;
-    public:
         button_class  close_button;
         button_class  button[MAX_MENU_BUTTONS];
         menu_class(void);

@@ -3,9 +3,7 @@
 --------------------------------------------------------------------------------------------------------------------------
 Although I have attempted to make a complete list, and to the best of my knowledge I am using these resources correctly 
 under thier respective licences, if you feel that I have used your resource/s incorrectly, please contct me.
-
-
-
+Most of the resources come from www.opengameart.org
 
 --------------------------------------------------------------------------------------------------------------------------
 |                                                 Font resources:                                                        |
@@ -283,8 +281,55 @@ Website(blog): http://dustychest.blogspot.com/
 Contact: DustyChest@gmail.com
 License(s): CC0
 
+portrait_11
+-------------------------
+http://opengameart.org/content/old-mens-head
+Author: Letun
+License(s): CC-BY-SA 3.0
 
+portrait_12
+-------------------------
+http://opengameart.org/content/monster-head
+Author: Letun
+License(s): GPL 3.0
 
+--------------------------------------------------------------------------------------------------------------------------
+|                                                 3D Model resources:                                                    |
+--------------------------------------------------------------------------------------------------------------------------
 
+data/models/forest/tree_fern.obj
+-------------------------------------
+http://opengameart.org/content/fern-pack
+Author: yughues
+License(s): CC0
 
+data/models/forest/tree_palm.obj
+-------------------------------------
+http://opengameart.org/content/palm-tree-v2
+Author: yughues
+License(s): CC0
+
+data/models/objects/well.obj
+-------------------------------------
+http://opengameart.org/content/covered-well
+Author: Iconoclast
+License(s): CC0
+
+data/models/objects/cemetery_gate.obj
+-------------------------------------
+http://opengameart.org/content/cementery-gate
+Author: zerberros
+License(s): CC0
+
+data/models/objects/tomb.obj
+-------------------------------------
+http://opengameart.org/content/savinos-cemetery-redux
+Author: p0ss
+License(s): CC-BY 3.0, CC-BY-SA 3.0
+
+data/models/objects/tombwoof.obj
+-------------------------------------
+http://opengameart.org/content/tombwoof
+Author: Hythlodaeus
+License(s): CC-BY 3.0
 

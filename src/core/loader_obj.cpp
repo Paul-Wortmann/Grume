@@ -949,7 +949,6 @@ void loader_obj_class::scale(float scale_x, float scale_y, float scale_z)
     }
 };
 
-
 void loader_obj_class::set_angle(float x, float y, float z)
 {
     loader_obj_class::angle.rotation.x = x;
@@ -995,8 +994,12 @@ void loader_obj_class::draw(void)
 void loader_obj_class::draw(float x, float y, float z)
 {
     int  current_material = -1;
+    glPushMatrix();
     glEnable(GL_DEPTH_TEST);
-    if (loader_obj_class::wrap_texture)
+    //glDepthMask(GL_FALSE);
+	glEnable(GL_BLEND);
+	//glBlendFunc(GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
+	if (loader_obj_class::wrap_texture)
     {
         bind_texture(loader_obj_class::wrap_texture_ID);
         glTexGeni(GL_S, GL_TEXTURE_GEN_MODE, GL_OBJECT_LINEAR);
@@ -1018,9 +1021,32 @@ void loader_obj_class::draw(float x, float y, float z)
         if (loader_obj_class::face[face_count].material != current_material)
         {
             current_material = loader_obj_class::face[face_count].material;
-            if (loader_obj_class::material[current_material].data_d.active)  glBindTexture( GL_TEXTURE_2D, loader_obj_class::material[current_material].data_d.texture);
-            if (loader_obj_class::material[current_material].data_Kd.active) glBindTexture( GL_TEXTURE_2D, loader_obj_class::material[current_material].data_Kd.texture);
-            game.core.log.File_Write("Drawing OBJ, changing to material no. ->", current_material);
+            if (loader_obj_class::material[current_material].data_d.active)
+            {
+                GLfloat LightAmbient[]   = {loader_obj_class::material[current_material].Ka.x, loader_obj_class::material[current_material].Ka.y, loader_obj_class::material[current_material].Ka.z, 1.0f};
+                GLfloat LightDiffuse[]   = {loader_obj_class::material[current_material].Kd.x, loader_obj_class::material[current_material].Kd.y, loader_obj_class::material[current_material].Kd.z, 1.0f};
+                GLfloat LightSpecular[]  = {loader_obj_class::material[current_material].Ks.x, loader_obj_class::material[current_material].Ks.y, loader_obj_class::material[current_material].Ks.z, 1.0f};
+                glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT, LightAmbient);
+                glMaterialfv(GL_FRONT_AND_BACK, GL_DIFFUSE, LightDiffuse);
+                glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR, LightSpecular);
+                glMaterialf(GL_FRONT_AND_BACK, GL_SHININESS, loader_obj_class::material[current_material].Ns);
+                glBindTexture( GL_TEXTURE_2D, loader_obj_class::material[current_material].data_d.texture);
+                //game.core.log.File_Write("Binding texture -> ", loader_obj_class::material[current_material].data_d.file_name);
+                //glTexGeni(GL_S, GL_TEXTURE_GEN_MODE, GL_OBJECT_LINEAR);
+                //glTexGeni(GL_T, GL_TEXTURE_GEN_MODE, GL_OBJECT_LINEAR);
+                //glEnable(GL_TEXTURE_GEN_S);
+                //glEnable(GL_TEXTURE_GEN_T);
+            }
+            if (loader_obj_class::material[current_material].data_Kd.active)
+            {
+                glBindTexture( GL_TEXTURE_2D, loader_obj_class::material[current_material].data_Kd.texture);
+                //game.core.log.File_Write("Binding texture -> ", loader_obj_class::material[current_material].data_Kd.file_name);
+                //glTexGeni(GL_S, GL_TEXTURE_GEN_MODE, GL_OBJECT_LINEAR);
+                //glTexGeni(GL_T, GL_TEXTURE_GEN_MODE, GL_OBJECT_LINEAR);
+                //glEnable(GL_TEXTURE_GEN_S);
+                //glEnable(GL_TEXTURE_GEN_T);
+            }
+            //game.core.log.File_Write("Drawing OBJ, changing to material no. ->", current_material);
         }
         if (loader_obj_class::face[face_count].count_vertices == 4) // face is a quadrangle
         {
@@ -1028,25 +1054,25 @@ void loader_obj_class::draw(float x, float y, float z)
                 // Vertex 1
                 if (loader_obj_class::number_of_vertex_normals > 0) glNormal3f(loader_obj_class::vertex_normal[loader_obj_class::face[face_count].vertex_normal[0]].i,loader_obj_class::vertex_normal[loader_obj_class::face[face_count].vertex_normal[0]].j,loader_obj_class::vertex_normal[loader_obj_class::face[face_count].vertex_normal[0]].k);
                 else glNormal3f( 0.0f, 0.0f, 1.0f);
-                if (loader_obj_class::number_of_vertex_textures > 0) glTexCoord2i(loader_obj_class::vertex_texture[loader_obj_class::face[face_count].vertex_texture[0]].u,loader_obj_class::vertex_texture[loader_obj_class::face[face_count].vertex_texture[0]].v);
+                if (loader_obj_class::number_of_vertex_textures > 0) glTexCoord2f(loader_obj_class::vertex_texture[loader_obj_class::face[face_count].vertex_texture[0]].u,loader_obj_class::vertex_texture[loader_obj_class::face[face_count].vertex_texture[0]].v);
                 else glTexCoord2i( 0, 1);
                 glVertex3f(loader_obj_class::vertex[loader_obj_class::face[face_count].vertex[0]].x+x,loader_obj_class::vertex[loader_obj_class::face[face_count].vertex[0]].y+y,loader_obj_class::vertex[loader_obj_class::face[face_count].vertex[0]].z+z);
                 // Vertex 2
                 if (loader_obj_class::number_of_vertex_normals > 0) glNormal3f(loader_obj_class::vertex_normal[loader_obj_class::face[face_count].vertex_normal[1]].i,loader_obj_class::vertex_normal[loader_obj_class::face[face_count].vertex_normal[1]].j,loader_obj_class::vertex_normal[loader_obj_class::face[face_count].vertex_normal[1]].k);
                 else glNormal3f( 0.0f, 0.0f, 1.0f);
-                if (loader_obj_class::number_of_vertex_textures > 0) glTexCoord2i(loader_obj_class::vertex_texture[loader_obj_class::face[face_count].vertex_texture[1]].u,loader_obj_class::vertex_texture[loader_obj_class::face[face_count].vertex_texture[1]].v);
+                if (loader_obj_class::number_of_vertex_textures > 0) glTexCoord2f(loader_obj_class::vertex_texture[loader_obj_class::face[face_count].vertex_texture[1]].u,loader_obj_class::vertex_texture[loader_obj_class::face[face_count].vertex_texture[1]].v);
                 else glTexCoord2i( 0, 0 );
                 glVertex3f(loader_obj_class::vertex[loader_obj_class::face[face_count].vertex[1]].x+x,loader_obj_class::vertex[loader_obj_class::face[face_count].vertex[1]].y+y,loader_obj_class::vertex[loader_obj_class::face[face_count].vertex[1]].z+z);
                 // Vertex 3
                 if (loader_obj_class::number_of_vertex_normals > 0) glNormal3f(loader_obj_class::vertex_normal[loader_obj_class::face[face_count].vertex_normal[2]].i,loader_obj_class::vertex_normal[loader_obj_class::face[face_count].vertex_normal[2]].j,loader_obj_class::vertex_normal[loader_obj_class::face[face_count].vertex_normal[2]].k);
                 else glNormal3f( 0.0f, 0.0f, 1.0f);
-                if (loader_obj_class::number_of_vertex_textures > 0) glTexCoord2i(loader_obj_class::vertex_texture[loader_obj_class::face[face_count].vertex_texture[2]].u,loader_obj_class::vertex_texture[loader_obj_class::face[face_count].vertex_texture[2]].v);
+                if (loader_obj_class::number_of_vertex_textures > 0) glTexCoord2f(loader_obj_class::vertex_texture[loader_obj_class::face[face_count].vertex_texture[2]].u,loader_obj_class::vertex_texture[loader_obj_class::face[face_count].vertex_texture[2]].v);
                 else glTexCoord2i( 1, 0 );
                 glVertex3f(loader_obj_class::vertex[loader_obj_class::face[face_count].vertex[2]].x+x,loader_obj_class::vertex[loader_obj_class::face[face_count].vertex[2]].y+y,loader_obj_class::vertex[loader_obj_class::face[face_count].vertex[2]].z+z);
                 // Vertex 4
                 if (loader_obj_class::number_of_vertex_normals > 0) glNormal3f(loader_obj_class::vertex_normal[loader_obj_class::face[face_count].vertex_normal[3]].i,loader_obj_class::vertex_normal[loader_obj_class::face[face_count].vertex_normal[3]].j,loader_obj_class::vertex_normal[loader_obj_class::face[face_count].vertex_normal[3]].k);
                 else glNormal3f( 0.0f, 0.0f, 1.0f);
-                if (loader_obj_class::number_of_vertex_textures > 0) glTexCoord2i(loader_obj_class::vertex_texture[loader_obj_class::face[face_count].vertex_texture[3]].u,loader_obj_class::vertex_texture[loader_obj_class::face[face_count].vertex_texture[3]].v);
+                if (loader_obj_class::number_of_vertex_textures > 0) glTexCoord2f(loader_obj_class::vertex_texture[loader_obj_class::face[face_count].vertex_texture[3]].u,loader_obj_class::vertex_texture[loader_obj_class::face[face_count].vertex_texture[3]].v);
                 else glTexCoord2i( 1, 1 );
                 glVertex3f(loader_obj_class::vertex[loader_obj_class::face[face_count].vertex[3]].x+x,loader_obj_class::vertex[loader_obj_class::face[face_count].vertex[3]].y+y,loader_obj_class::vertex[loader_obj_class::face[face_count].vertex[3]].z+z);
             glEnd();
@@ -1057,26 +1083,30 @@ void loader_obj_class::draw(float x, float y, float z)
                 // Vertex 1
                 if (loader_obj_class::number_of_vertex_normals > 0) glNormal3f(loader_obj_class::vertex_normal[loader_obj_class::face[face_count].vertex_normal[0]].i,loader_obj_class::vertex_normal[loader_obj_class::face[face_count].vertex_normal[0]].j,loader_obj_class::vertex_normal[loader_obj_class::face[face_count].vertex_normal[0]].k);
                 else glNormal3f( 0.0f, 0.0f, 1.0f);
-                if (loader_obj_class::number_of_vertex_textures > 0) glTexCoord2i(loader_obj_class::vertex_texture[loader_obj_class::face[face_count].vertex_texture[0]].u,loader_obj_class::vertex_texture[loader_obj_class::face[face_count].vertex_texture[0]].v);
+                if (loader_obj_class::number_of_vertex_textures > 0) glTexCoord2f(loader_obj_class::vertex_texture[loader_obj_class::face[face_count].vertex_texture[0]].u,loader_obj_class::vertex_texture[loader_obj_class::face[face_count].vertex_texture[0]].v);
                 else glTexCoord2i( 0, 1);
                 glVertex3f(loader_obj_class::vertex[loader_obj_class::face[face_count].vertex[0]].x+x,loader_obj_class::vertex[loader_obj_class::face[face_count].vertex[0]].y+y,loader_obj_class::vertex[loader_obj_class::face[face_count].vertex[0]].z+z);
                 // Vertex 2
                 if (loader_obj_class::number_of_vertex_normals > 0) glNormal3f(loader_obj_class::vertex_normal[loader_obj_class::face[face_count].vertex_normal[1]].i,loader_obj_class::vertex_normal[loader_obj_class::face[face_count].vertex_normal[1]].j,loader_obj_class::vertex_normal[loader_obj_class::face[face_count].vertex_normal[1]].k);
                 else glNormal3f( 0.0f, 0.0f, 1.0f);
-                if (loader_obj_class::number_of_vertex_textures > 0) glTexCoord2i(loader_obj_class::vertex_texture[loader_obj_class::face[face_count].vertex_texture[1]].u,loader_obj_class::vertex_texture[loader_obj_class::face[face_count].vertex_texture[1]].v);
+                if (loader_obj_class::number_of_vertex_textures > 0) glTexCoord2f(loader_obj_class::vertex_texture[loader_obj_class::face[face_count].vertex_texture[1]].u,loader_obj_class::vertex_texture[loader_obj_class::face[face_count].vertex_texture[1]].v);
                 else glTexCoord2i( 0, 0 );
                 glVertex3f(loader_obj_class::vertex[loader_obj_class::face[face_count].vertex[1]].x+x,loader_obj_class::vertex[loader_obj_class::face[face_count].vertex[1]].y+y,loader_obj_class::vertex[loader_obj_class::face[face_count].vertex[1]].z+z);
                 // Vertex 3
                 if (loader_obj_class::number_of_vertex_normals > 0) glNormal3f(loader_obj_class::vertex_normal[loader_obj_class::face[face_count].vertex_normal[2]].i,loader_obj_class::vertex_normal[loader_obj_class::face[face_count].vertex_normal[2]].j,loader_obj_class::vertex_normal[loader_obj_class::face[face_count].vertex_normal[2]].k);
                 else glNormal3f( 0.0f, 0.0f, 1.0f);
-                if (loader_obj_class::number_of_vertex_textures > 0) glTexCoord2i(loader_obj_class::vertex_texture[loader_obj_class::face[face_count].vertex_texture[2]].u,loader_obj_class::vertex_texture[loader_obj_class::face[face_count].vertex_texture[2]].v);
+                if (loader_obj_class::number_of_vertex_textures > 0) glTexCoord2f(loader_obj_class::vertex_texture[loader_obj_class::face[face_count].vertex_texture[2]].u,loader_obj_class::vertex_texture[loader_obj_class::face[face_count].vertex_texture[2]].v);
                 else glTexCoord2i( 1, 0 );
                 glVertex3f(loader_obj_class::vertex[loader_obj_class::face[face_count].vertex[2]].x+x,loader_obj_class::vertex[loader_obj_class::face[face_count].vertex[2]].y+y,loader_obj_class::vertex[loader_obj_class::face[face_count].vertex[2]].z+z);
             glEnd();
         }
     }
+    //glDepthMask(GL_TRUE);
+	//glDisable(GL_BLEND);
+	//glBlendFunc(GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
     glDisable(GL_TEXTURE_GEN_S);
     glDisable(GL_TEXTURE_GEN_T);
+    glPopMatrix();
 }
 
 
