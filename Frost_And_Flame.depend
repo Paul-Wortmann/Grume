@@ -13,7 +13,7 @@
 
 1326868751 
 
-1333633868 c:\_git_\frost_and_flame\src\core\core.hpp
+1336736987 c:\_git_\frost_and_flame\src\core\core.hpp
 	"loader_md2.hpp"
 	"loader_obj.hpp"
 	"loader_tmx.hpp"
@@ -34,6 +34,7 @@
 	"particles.hpp"
 	"map_2D.hpp"
 	"map_3D.hpp"
+	"pathfinding.hpp"
 
 1328712549 p"
 
@@ -222,7 +223,7 @@
 	<string>
 	"log.hpp"
 
-1336061878 source:c:\_git_\frost_and_flame\src\core\menu.cpp
+1336565904 source:c:\_git_\frost_and_flame\src\core\menu.cpp
 	"menu.hpp"
 	"../game.hpp"
 
@@ -428,8 +429,9 @@
 	"quest_log.hpp"
 	"npcvendor.hpp"
 
-1336203103 c:\_git_\frost_and_flame\src\player.hpp
+1336737757 c:\_git_\frost_and_flame\src\player.hpp
 	<string>
+	"core/pathfinding.hpp"
 
 1326868284 source:c:\_git_\frost_and_flame\src\player.cpp
 	"player.hpp"
@@ -1293,7 +1295,7 @@
 	<string>
 	"graphics.hpp"
 
-1336394736 source:c:\_git_\frost_and_flame\src\core\loader_obj.cpp
+1336400849 source:c:\_git_\frost_and_flame\src\core\loader_obj.cpp
 	<GL/gl.h>
 	<SDL/SDL.h>
 	<SDL/SDL_image.h>
@@ -1914,4 +1916,9 @@
 	"SDL_version.h"
 	"begin_code.h"
 	"close_code.h"
+
+1336737629 c:\_git_\frost_and_flame\src\core\pathfinding.hpp
+
+1336737891 source:c:\_git_\frost_and_flame\src\core\pathfinding.cpp
+	"pathfinding.hpp"
 

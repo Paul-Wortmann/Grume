@@ -45,6 +45,7 @@
 #include "particles.hpp"
 #include "map_2D.hpp"
 #include "map_3D.hpp"
+#include "pathfinding.hpp"
 
 class core_class
 {

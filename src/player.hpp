@@ -26,6 +26,7 @@
 #define PLAYER_H
 
 #include <string>
+#include "core/pathfinding.hpp"
 
 const int MAX_LEVELS = 100+1;
 
@@ -48,17 +49,18 @@ class stat_class
     public:
         stat_class(void);
        ~stat_class(void);
-        int              image_ref;
-        float            width;
-        float            height;
-        float            pos_x;
-        float            pos_y;
-        float            pos_z;
-        float            current;
-        float            maximum;
-        float            regeneration;
-        void             process(void);
-        void             draw(void);
+        int               image_ref;
+        float             width;
+        float             height;
+        float             pos_x;
+        float             pos_y;
+        float             pos_z;
+        float             current;
+        float             maximum;
+        float             regeneration;
+        pathfinding_class pathfinding;
+        void              process(void);
+        void              draw(void);
 };
 
 class player_class

@@ -98,6 +98,8 @@
 		<Unit filename="src\core\network.hpp" />
 		<Unit filename="src\core\particles.cpp" />
 		<Unit filename="src\core\particles.hpp" />
+		<Unit filename="src\core\pathfinding.cpp" />
+		<Unit filename="src\core\pathfinding.hpp" />
 		<Unit filename="src\core\physics.cpp" />
 		<Unit filename="src\core\physics.hpp" />
 		<Unit filename="src\core\rs232.cpp" />
