@@ -75,6 +75,10 @@ int init_game(bool re_init)
     game.player.mana.current                      =  000.0f;
     game.player.mana.maximum                      =  100.0f;
     game.player.mana.regeneration                 =  000.025f;
+    game.player.destination_tile                  =  0;
+    game.player.destination_set                   =  false;
+    game.player.path_set                          =  false;
+    game.player.movement_type                     =  MOVE_TO_TILE_NONE;
 
     game.UI.spell_book.close_button.image_normal              =  game.texture.close_button.ref_number;
     game.UI.spell_book.close_button.image_highlighted         =  game.texture.close_button_highlighted.ref_number;

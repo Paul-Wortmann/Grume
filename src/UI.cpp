@@ -193,21 +193,21 @@ void player_stats_class::draw_tooltip(void)
 
 void action_slot_class::process(void)
 {
-    int temp_ID  = 0;
-    int temp_int = 0;
-    if (action_slot_class::current_item != game.UI.inventory.inventory_slot[action_slot_class::button_type-1000].button_type) action_slot_class::button_type = 0;
+    int  temp_ID  = 0;
+    int  temp_int = 0;
+    if  (action_slot_class::current_item != game.UI.inventory.inventory_slot[action_slot_class::button_type-1000].button_type) action_slot_class::button_type = 0;
     bool discard_icon   = false;
     int  temp_button    = 0;
     int  temp_item      = 0;
-    if (game.core.physics.point_in_quadrangle(action_slot_class::pos_x,action_slot_class::width,action_slot_class::pos_y,action_slot_class::height,game.core.io.mouse_x,game.core.io.mouse_y)) action_slot_class::mouse_over = true;
+    if  (game.core.physics.point_in_quadrangle(action_slot_class::pos_x,action_slot_class::width,action_slot_class::pos_y,action_slot_class::height,game.core.io.mouse_x,game.core.io.mouse_y)) action_slot_class::mouse_over = true;
     else action_slot_class::mouse_over = false;
-    if (action_slot_class::mouse_over)
+    if  (action_slot_class::mouse_over)
     {
         action_slot_class::mouse_over_count++;
         if (action_slot_class::mouse_over_count > action_slot_class::tooltip_time) action_slot_class::mouse_over_count = action_slot_class::tooltip_time;
     }
     else action_slot_class::mouse_over_count = 0;
-    if (action_slot_class::button_type > 0)
+    if  (action_slot_class::button_type > 0)
     {
         if (action_slot_class::drag)
         {

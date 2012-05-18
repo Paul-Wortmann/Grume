@@ -37,12 +37,12 @@ level_class::level_class(void)
     {
         level_class::experience[exp_count] = 0;
     }
-}
+};
 
 level_class::~level_class(void)
 {
 
-}
+};
 
 void level_class::init(void)
 {
@@ -53,7 +53,7 @@ void level_class::init(void)
         if (temp_exp > 9223372036854775808u) temp_exp = 9223372036854775808u;
         level_class::experience[exp_count] = temp_exp;
     }
-}
+};
 
 void level_class::process(void)
 {
@@ -76,7 +76,7 @@ void level_class::process(void)
 
     }
 
-}
+};
 
 //-----------------------------------------------------------------------------------------------------------------
 
@@ -85,24 +85,24 @@ stat_class::stat_class(void)
     stat_class::current      = 0.0f;
     stat_class::maximum      = 0.0f;
     stat_class::regeneration = 0.0f;
-}
+};
 
 stat_class::~stat_class(void)
 {
 
-}
+};
 
 void stat_class::process(void)
 {
     stat_class::current += stat_class::regeneration;
     if (stat_class::current < 0.0f)                stat_class::current = 0.0f;
     if (stat_class::current > stat_class::maximum) stat_class::current = stat_class::maximum;
-}
+};
 
 void stat_class::draw(void)
 {
 
-}
+};
 
 //-----------------------------------------------------------------------------------------------------------------
 
@@ -129,22 +129,78 @@ player_class::player_class(void)
     player_class::resistance_lightning          = 0.0f;
     player_class::allocatable_points            = 0;
     player_class::auto_allocate                 = true;
-}
+};
 
 player_class::~player_class(void)
 {
 
-}
+};
 
 void player_class::process(void)
 {
     player_class::health.process();
     player_class::mana.process();
     player_class::level.process();
-}
+    if (game.core.io.mouse_button_left)
+    {
+        if (!player_class::destination_set)
+        {
+            player_class::destination_tile = 0;
+            player_class::destination_set  = true;
+            if (!player_class::path_set)
+            {
+                player_class::path_calculate();
+                player_class::path_set = true;
+            }
+            if (player_class::path_set)
+            {
+                switch (player_class::movement_type)
+                {
+                    case MOVE_TO_TILE_MOVE:
+                        player_class::player_move();
+                    break;
+                    case MOVE_TO_TILE_ATTACK:
+                        player_class::player_attack();
+                    break;
+                    case MOVE_TO_TILE_PICKUP_ITEM:
+                        player_class::player_pickup_item();
+                    break;
+                    case MOVE_TO_TILE_USE_OBJECT:
+                        player_class::player_use_object();
+                    break;
+                }
+            }
+        }
+    }
+};
 
 void player_class::draw(void)
 {
 
-}
+};
+
+void player_class::path_calculate(void)
+{
+
+};
+
+void player_class::player_move(void)
+{
+
+};
+
+void player_class::player_attack(void)
+{
+
+};
+
+void player_class::player_pickup_item(void)
+{
+
+};
+
+void player_class::player_use_object(void)
+{
+
+};
 

@@ -28,6 +28,12 @@
 #include <string>
 #include "core/pathfinding.hpp"
 
+#define MOVE_TO_TILE_NONE          0
+#define MOVE_TO_TILE_MOVE          1
+#define MOVE_TO_TILE_ATTACK        2
+#define MOVE_TO_TILE_PICKUP_ITEM   3
+#define MOVE_TO_TILE_USE_OBJECT    4
+
 const int MAX_LEVELS = 100+1;
 
 class level_class
@@ -93,10 +99,19 @@ class player_class
         float              pos_x;
         float              pos_y;
         float              pos_z;
+        int                destination_tile;
+        bool               destination_set;
+        bool               path_set;
+        int                movement_type;
         stat_class         mana;
         stat_class         health;
         void               process(void);
         void               draw(void);
+        void               path_calculate(void);
+        void               player_move(void);
+        void               player_attack(void);
+        void               player_pickup_item(void);
+        void               player_use_object(void);
 };
 
 #endif // PLAYER_H

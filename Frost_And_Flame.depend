@@ -282,7 +282,7 @@
 	"game.hpp"
 	"misc.hpp"
 
-1336203144 source:c:\_git_\frost_and_flame\src\game.cpp
+1337345872 source:c:\_git_\frost_and_flame\src\game.cpp
 	<SDL/SDL.h>
 	"menu_system.hpp"
 	"game.hpp"
@@ -416,7 +416,7 @@
 
 1326868302 source:c:\_git_\frost_and_flame\src\icon.rc
 
-1336199215 source:c:\_git_\frost_and_flame\src\ui.cpp
+1337343654 source:c:\_git_\frost_and_flame\src\ui.cpp
 	"UI.hpp"
 	"game.hpp"
 	"misc.hpp"
@@ -429,11 +429,11 @@
 	"quest_log.hpp"
 	"npcvendor.hpp"
 
-1336737757 c:\_git_\frost_and_flame\src\player.hpp
+1337346307 c:\_git_\frost_and_flame\src\player.hpp
 	<string>
 	"core/pathfinding.hpp"
 
-1326868284 source:c:\_git_\frost_and_flame\src\player.cpp
+1337345754 source:c:\_git_\frost_and_flame\src\player.cpp
 	"player.hpp"
 	"game.hpp"
 
