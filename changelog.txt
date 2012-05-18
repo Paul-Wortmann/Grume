@@ -1,4 +1,4 @@
-﻿As I am currently ill and also due to university and work responsibilities,
+﻿Due to university, work and the responsibilities of life,
 I feel that Frost and Flame has been coming on very slowly these past few months.
 It may be slow at the moment, but I am determined to complete this game,
 it may take longer than I had first anticipated. 
@@ -7,13 +7,15 @@ just that time is not permitting to proceed at a fast pace, at the moment.
 
 
 v0.07 - (2012-05-31)
+CORE -> Added movement stub to the player class.
+CORE -> Added base of the pathfinding class.
 UI   -> Player portrait now selectable when starting a new game.
 SND  -> Updated dependencies due to sound issues with mod files.
 CORE -> Removed <locale> header due to issues on win64 systems.
 CORE -> Removed over 100 compiler warnings, and general code clean up.
 UI   -> Player portrait now selectable when starting a new game.
 GFX  -> Added 2 more player portraits.
-LOC  -> 20215
+LOC  -> 20241
 
 v0.06 - (2012-04-30)
 GFX  -> Added a couple of 3D models for testing.
