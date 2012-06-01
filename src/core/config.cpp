@@ -130,9 +130,12 @@ bool  config_file_class::Set_Defaults (void)
 bool config_file_class::File_Clear(void)
 {
     std::fstream configfile(config_file_class::Config_File,std::ios::out|std::ios::binary|std::ios::trunc);
-    if (configfile.is_open()) configfile.close();
+    if (configfile.is_open())
+    {
+        configfile.close();
+        return(true);
+    }
     else return(false);
-    return(true);
 };
 
 bool config_file_class::File_Delete(void)

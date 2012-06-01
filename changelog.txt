@@ -6,6 +6,9 @@ These are not indications that the project will be terminated in the future,
 just that time is not permitting to proceed at a fast pace, at the moment.
 
 
+v0.08 - (2012-06-30)
+LOC  -> XXXXX
+
 v0.07 - (2012-05-31)
 CORE -> Added movement stub to the player class.
 CORE -> Added base of the pathfinding class.
@@ -15,7 +18,7 @@ CORE -> Removed <locale> header due to issues on win64 systems.
 CORE -> Removed over 100 compiler warnings, and general code clean up.
 UI   -> Player portrait now selectable when starting a new game.
 GFX  -> Added 2 more player portraits.
-LOC  -> 20241
+LOC  -> 20308
 
 v0.06 - (2012-04-30)
 GFX  -> Added a couple of 3D models for testing.
