@@ -1101,9 +1101,9 @@ void loader_obj_class::draw(float x, float y, float z)
             glEnd();
         }
     }
-    //glDepthMask(GL_TRUE);
-	//glDisable(GL_BLEND);
-	//glBlendFunc(GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
+    glDepthMask(GL_TRUE);
+	glDisable(GL_BLEND);
+	glBlendFunc(GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
     glDisable(GL_TEXTURE_GEN_S);
     glDisable(GL_TEXTURE_GEN_T);
     glPopMatrix();

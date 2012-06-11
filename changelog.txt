@@ -1,4 +1,7 @@
-﻿Due to university, work and the responsibilities of life,
+﻿* I am currently working on Frost and Flame, but on a different branch that I have not pushed yet.
+  If you really want the current unstable, unplayable code, send me a mail and I will send it to you. :)
+
+Due to university, work and the responsibilities of life,
 I feel that Frost and Flame has been coming on very slowly these past few months.
 It may be slow at the moment, but I am determined to complete this game,
 it may take longer than I had first anticipated. 
@@ -7,6 +10,11 @@ just that time is not permitting to proceed at a fast pace, at the moment.
 
 
 v0.08 - (2012-06-30)
+CORE -> Re-wrote main.cpp.
+CORE -> Re-wrote config system.
+CORE -> Re-wrote log system.
+CORE -> Basicaly I have been working through the base code and improving it as I go.
+        This includes new features and a more robust and flexible code base.
 LOC  -> XXXXX
 
 v0.07 - (2012-05-31)
