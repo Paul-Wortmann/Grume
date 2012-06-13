@@ -10,6 +10,7 @@ just that time is not permitting to proceed at a fast pace, at the moment.
 
 
 v0.08 - (2012-06-30)
+CORE -> Re-wrote resource loading system.
 CORE -> Re-wrote main.cpp.
 CORE -> Re-wrote config system.
 CORE -> Re-wrote log system.
