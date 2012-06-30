@@ -432,6 +432,12 @@ void texture_resource_class::render(bool r, int texture_number, float x, float y
     if (texture_number == game.resource.texture.generic_leaves_00.ref_number)   game.resource.texture.generic_leaves_01.draw   (r,x,y,z,w,h,angle,frame);
     if (texture_number == game.resource.texture.generic_sand_shrubs.ref_number) game.resource.texture.generic_sand_shrubs.draw (r,x,y,z,w,h,angle,frame);
     if (texture_number == game.resource.texture.generic_water.ref_number)       game.resource.texture.generic_water.draw       (r,x,y,z,w,h,angle,frame);
+
+
+    // - - - test / delete - - -
+    if (texture_number == game.resource.texture.test_background.ref_number)       game.resource.texture.test_background.draw       (r,x,y,z,w,h,angle,frame);
+    if (texture_number == game.resource.texture.test_ball.ref_number)             game.resource.texture.test_ball.draw       (r,x,y,z,w,h,angle,frame);
+
 };
 
 void texture_resource_class::bind(int texture_number)
@@ -806,6 +812,11 @@ void texture_resource_class::bind(int texture_number)
     if (texture_number == game.resource.texture.generic_sand.ref_number)        glBindTexture(GL_TEXTURE_2D, game.resource.texture.generic_sand.frame[0].data);
     if (texture_number == game.resource.texture.generic_sand_shrubs.ref_number) glBindTexture(GL_TEXTURE_2D, game.resource.texture.generic_sand_shrubs.frame[0].data);
     if (texture_number == game.resource.texture.generic_water.ref_number)       glBindTexture(GL_TEXTURE_2D, game.resource.texture.generic_water.frame[0].data);
+
+    // - - - test / delete - - -
+    if (texture_number == game.resource.texture.test_background.ref_number)       glBindTexture(GL_TEXTURE_2D, game.resource.texture.test_background.frame[0].data);
+    if (texture_number == game.resource.texture.test_ball.ref_number)             glBindTexture(GL_TEXTURE_2D, game.resource.texture.test_ball.frame[0].data);
+
 };
 
 //---------------------------------------- resource_class ----------------------------------------------------------------
@@ -1324,12 +1335,12 @@ void resource_class::load_maps_2D(void)
     game.core.log.file_write("Loading resources -> 2D Maps");
 //--- font ---
 //--- 2D map ---
+    game.resource.map_2D.town.load      ("data/maps/town.tmx");resource_class::map_2D.number_loaded++;
 //--- 3D map ---
 //--- 3D model ---
 //--- music ---
 //--- sound ---
 //--- texture ---
-    game.resource.map_2D.town.load      ("data/maps/town.tmx");resource_class::map_2D.number_loaded++;
 };
 
 void resource_class::load_maps_3D(void)
@@ -1338,11 +1349,11 @@ void resource_class::load_maps_3D(void)
 //--- font ---
 //--- 2D map ---
 //--- 3D map ---
+    game.resource.map_3D.town.load      ("data/maps/town_3D.tmx");resource_class::map_3D.number_loaded++;
 //--- 3D model ---
 //--- music ---
 //--- sound ---
 //--- texture ---
-    game.resource.map_3D.town.load      ("data/maps/town_3D.tmx");resource_class::map_3D.number_loaded++;
 };
 
 void resource_class::load_3D_models(void)
@@ -1352,9 +1363,6 @@ void resource_class::load_3D_models(void)
 //--- 2D map ---
 //--- 3D map ---
 //--- 3D model ---
-//--- music ---
-//--- sound ---
-//--- texture ---
     game.resource.model_3D.tree_fern.load("data/models/forest/tree_fern.obj",resource_class::model_3D.number_loaded);resource_class::model_3D.number_loaded++;
     game.resource.model_3D.tree_fern.set_wrap_texture(game.resource.texture.generic_leaves_01.ref_number);
     game.resource.model_3D.tree_palm.load("data/models/forest/tree_palm.obj",resource_class::model_3D.number_loaded);resource_class::model_3D.number_loaded++;
@@ -1367,6 +1375,24 @@ void resource_class::load_3D_models(void)
     game.resource.model_3D.tomb.set_wrap_texture(game.resource.texture.generic_sand_shrubs.ref_number);
     game.resource.model_3D.tombwoof.load("data/models/objects/tombwoof.obj",resource_class::model_3D.number_loaded);resource_class::model_3D.number_loaded++;
     game.resource.model_3D.tombwoof.set_wrap_texture(game.resource.texture.generic_sand_shrubs.ref_number);
+//--- music ---
+//--- sound ---
+//--- texture ---
 };
+
+void resource_class::load_test_data(void)
+{
+    game.core.log.file_write("Loading resources -> test data");
+//--- font ---
+//--- 2D map ---
+//--- 3D map ---
+//--- 3D model ---
+//--- music ---
+//--- sound ---
+//--- texture ---
+    game.resource.texture.test_background.load_image("data/test/background.png",resource_class::texture.number_loaded);resource_class::texture.number_loaded++;
+    game.resource.texture.test_ball.load_image("data/test/ball.png",resource_class::texture.number_loaded);resource_class::texture.number_loaded++;
+};
+
 //------------------------------------------------------------------------------------------------------------------------
 

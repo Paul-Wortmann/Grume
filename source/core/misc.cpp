@@ -43,8 +43,8 @@ double random_double(void)
 
        do
        {
-       temp_d = rand()%100;
-       temp_d = 0.95 - (temp_d /50.9);
+           temp_d = rand()%100;
+           temp_d = 0.95 - (temp_d /50.9);
        }
        while ((temp_d > 2) and (temp_d < -2));
        return temp_d;

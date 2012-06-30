@@ -92,8 +92,8 @@ void  particle_class::process(void)
             if (particle_class::velocity_y < particle_class::velocity_max*-1) particle_class::velocity_y = particle_class::velocity_max*-1;
             if (particle_class::velocity_z > particle_class::velocity_max   ) particle_class::velocity_z = particle_class::velocity_max;
             if (particle_class::velocity_z < particle_class::velocity_max*-1) particle_class::velocity_z = particle_class::velocity_max*-1;
-            particle_class::pos_x       = game.core.physics.move_speed_angle_2D_x(particle_class::pos_x,particle_class::velocity_x,game.core.physics.degrees_to_radians(particle_class::direction));
-            particle_class::pos_y       = game.core.physics.move_speed_angle_2D_y(particle_class::pos_y,particle_class::velocity_y,game.core.physics.degrees_to_radians(particle_class::direction));
+            particle_class::pos_x       = game.core.physics.move_velocity_angle_2D_x(particle_class::pos_x,particle_class::velocity_x,(int)particle_class::direction);
+            particle_class::pos_y       = game.core.physics.move_velocity_angle_2D_y(particle_class::pos_y,particle_class::velocity_y,(int)particle_class::direction);
             /*
             // uncomment to have particles move in a circle / blow in a direction.
             // can go the other direction if you change ++ to --

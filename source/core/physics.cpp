@@ -25,39 +25,25 @@
 #include "physics.hpp"
 #include <math.h>
 
-      body_class::body_class         (void)
+      body_2D_class::body_2D_class         (void)
 {
-    body_class::world_ID                 =  0;
-    body_class::body_type                =  1;
-    body_class::texture                  =  0;
-    body_class::radius_x                 =  0.0f;
-    body_class::radius_y                 =  0.0f;
-    body_class::radius_z                 =  0.0f;
-    body_class::length_x                 =  0.0f;
-    body_class::length_y                 =  0.0f;
-    body_class::length_z                 =  0.0f;
-    body_class::weight                   =  0.0f;
-    body_class::restitution              =  0.0f;
-    body_class::friction                 =  0.0f;
-    body_class::acceleration             =  0.0f;
-    body_class::velocity_max             =  0.0f;
-    body_class::velocity_x               =  0.0f;
-    body_class::velocity_y               =  0.0f;
-    body_class::velocity_z               =  0.0f;
-    body_class::position_x               =  0.0f;
-    body_class::position_y               =  0.0f;
-    body_class::position_z               =  0.0f;
-    body_class::rotational_angle_x       =  0.0f;
-    body_class::rotational_angle_y       =  0.0f;
-    body_class::rotational_angle_z       =  0.0f;
-    body_class::rotational_velocity_max  =  0.0f;
-    body_class::rotational_velocity_x    =  0.0f;
-    body_class::rotational_velocity_y    =  0.0f;
-    body_class::rotational_velocity_z    =  0.0f;
-    body_class::rotational_acceleration  =  0.0f;
+    body_2D_class::world_ID                 =  0;
+    body_2D_class::body_type                =  1;
+    body_2D_class::texture                  =  0;
+    body_2D_class::mass                     =  0.0f;
+    body_2D_class::restitution              =  0.0f;
+    body_2D_class::friction                 =  0.0f;
+    body_2D_class::acceleration             =  0.0f;
+    body_2D_class::velocity_max             =  0.0f;
+    body_2D_class::radius                   =  0.0f;
+    body_2D_class::direction                =  0.0f;
+    body_2D_class::position.x               =  0.0f;
+    body_2D_class::position.y               =  0.0f;
+    body_2D_class::velocity.x               =  0.0f;
+    body_2D_class::velocity.y               =  0.0f;
 }
 
-      body_class::~body_class          (void)
+      body_2D_class::~body_2D_class          (void)
 {
 
 };
@@ -72,12 +58,25 @@
     world_class::position_x               =  0.0f;
     world_class::position_y               =  0.0f;
     world_class::position_z               =  0.0f;
-    world_class::length_x                 =  0.0f;
-    world_class::length_y                 =  0.0f;
-    world_class::length_z                 =  0.0f;
+    world_class::ID                       =  0;
+    world_class::gravity_x                =  0.0f;
+    world_class::gravity_y                = -9.8f;
+    world_class::gravity_z                =  0.0f;
+    world_class::position_x               =  0.0f;
+    world_class::position_y               =  0.0f;
+    world_class::position_z               =  0.0f;
+    world_class::length_x                 =  0.0f; // redundant, included for backwards compatibility.
+    world_class::length_y                 =  0.0f; // redundant, included for backwards compatibility.
+    world_class::length_z                 =  0.0f; // redundant, included for backwards compatibility.
+    for (int vertex_count = 0; vertex_count < (int)(sizeof(world_class::vertex) / sizeof(world_class::vertex[0])); vertex_count++)
+    {
+        world_class::vertex[vertex_count].x = 0.0f;
+        world_class::vertex[vertex_count].y = 0.0f;
+        world_class::vertex[vertex_count].z = 0.0f;
+    }
 }
 
-      world_class::~world_class         (void)
+    world_class::~world_class         (void)
 {
 
 };
@@ -94,6 +93,46 @@
 {
 
 };
+
+bool physics_class::collision (body_2D_class body_1, body_2D_class body_2)
+{
+    switch (body_1.body_type)
+    {
+        case CIRCLE:
+            switch (body_1.body_type)
+            {
+                case CIRCLE:
+                    if (physics_class::circle_collision(body_1.position.x,body_1.position.y,body_1.radius,body_2.position.x,body_2.position.y,body_2.radius)) return(true);
+                    else return(false);
+                break;
+                case POLYGON:
+
+                break;
+                default:
+                    return(false);
+                break;
+            }
+        break;
+        case POLYGON:
+            switch (body_1.body_type)
+            {
+                case CIRCLE:
+
+                break;
+                case POLYGON:
+
+                break;
+                default:
+                    return(false);
+                break;
+            }
+        break;
+        default:
+            return(false);
+        break;
+    }
+};
+
 
 bool  physics_class::cube_collision        (float x1, float y1, float z1, float w1, float h1, float d1, float x2, float y2, float z2, float w2, float h2, float d2)
 {
@@ -112,13 +151,13 @@ else return(false);
 
 bool  physics_class::circle_collision(float x1, float y1, float r1, float x2, float y2, float r2)
 {
-   if (((x2-x1)*(x2-x1))+((y2-y1)*(y2-y1)) < ((r1+r2)+(r1+r2))) return(true);
+   if (((x1-x2)*(x1-x2))+((y1-y2)*(y1-y2)) < ((r1+r2)*(r1+r2))) return(true);
    else return(false);
 }
 
 bool  physics_class::sphere_collision(float x1, float y1, float z1, float r1, float x2, float y2, float z2, float r2)
 {
-   if ((((x2-x1)*(x2-x1))+((y2-y1)*(y2-y1))+((z2-z1)*(z2-z1))) < ((r1+r2)+(r1+r2))) return(true);
+   if ((((x1-x2)*(x1-x2))+((y1-y2)*(y1-y2))+((z1-z2)*(z1-z2))) < ((r1+r2)*(r1+r2))) return(true);
    else return(false);
 }
 
@@ -185,14 +224,24 @@ float  physics_class::rotate_point_2D_y(float cx,float cy,float px,float py,int 
   return(((px-cx) * physics_class::sin_table[angle] + (py-cy) * physics_class::cos_table[angle])+cy);
 }
 
-float  physics_class::move_speed_angle_2D_x    (float  x, float s,  float dr)
+float  physics_class::move_velocity_angle_2D_x    (float  x, float v,  float radians)
 {
-    return(x + (s*physics_class::sin_table[(int)physics_class::radians_to_degrees(dr)]));
+    return(x + (v*physics_class::sin_table[(int)physics_class::radians_to_degrees(radians)]));
 };
 
-float  physics_class::move_speed_angle_2D_y    (float  y, float s,  float dr)
+float  physics_class::move_velocity_angle_2D_y    (float  y, float v,  float radians)
 {
-    return(y + (s*physics_class::cos_table[(int)physics_class::radians_to_degrees(dr)]));
+    return(y + (v*physics_class::cos_table[(int)physics_class::radians_to_degrees(radians)]));
+};
+
+float  physics_class::move_velocity_angle_2D_x    (float  x, float v,  int degrees)
+{
+    return(x + (v*physics_class::sin_table[degrees]));
+};
+
+float  physics_class::move_velocity_angle_2D_y    (float  y, float v,  int degrees)
+{
+    return(y + (v*physics_class::cos_table[degrees]));
 };
 
 float  physics_class::degrees_to_radians   (float degrees)

@@ -23,6 +23,8 @@
  */
 
 #include "game.hpp"
+#include "balls.hpp"
+balls_class       balls;
 
 game_class        game;
 
@@ -34,16 +36,26 @@ game_class::game_class(void)
 
 void game_class::init(void)
 {
+    glDisable(GL_DEPTH_TEST);
+    //--- initial state of the background ---
+    game.core.background.set_data ( 1, 1, 0, 0.0f, 0.0f, 0.0000f, 0.00000f, game.resource.texture.background_00.ref_number);
+    game.core.background.set_data ( 2, 1, 0, 0.0f, 0.0f, 0.0000f, 0.00000f, game.resource.texture.background_00.ref_number);
+    game.core.background.set_data ( 3, 1, 0, 0.0f, 0.0f, 0.0010f, 0.00065f, game.resource.texture.background_01.ref_number);
+    game.core.background.set_data ( 4, 1, 0, 4.0f, 0.0f, 0.0010f, 0.00065f, game.resource.texture.background_01.ref_number);
+    game.core.background.set_movement_type(FRONT_SCROLL);
+    //--- other ---
     game.core.music_next_track = true;
+    balls.initialize();
 };
 
 void game_class::process(void)
 {
     game_class::event = 0;
+    balls.process();
 };
 
 void game_class::render(void)
 {
-
+    balls.render();
 };
 

@@ -23,6 +23,7 @@
  */
 
 #include "game.hpp"
+#include "balls.hpp"
 #include <SDL/SDL.h>
 #include "core/misc.hpp"
 
@@ -109,8 +110,6 @@ extern "C" int main(int argc, char** argv)
     seed_rand();
     game.core.log.file_write("Initializing font system...");
     TTF_Init();
-    game.core.log.file_write("Initializing game system...");
-    game.init();
     game.core.log.file_write("Starting OpenGL...");
     game.core.graphics.init_gl(game.core.config.display_resolution_x,game.core.config.display_resolution_y);
     game.resource.loading_screen_display("data/loading_screen.png");
@@ -126,13 +125,17 @@ extern "C" int main(int argc, char** argv)
     game.resource.load_maps_2D();
     game.resource.load_maps_3D();
     game.resource.load_3D_models();
+    game.resource.load_test_data();
     game.resource.write_log_file_count();
+    game.core.log.file_write("Initializing game system...");
+    game.init();
     game.core.log.file_write("Initializing event handlers...");
     events_init();
     game.core.log.file_write("Starting Game...");
     game.core.log.file_write(" ");
     game.core.log.file_write("# ---------------------------------------------- #");
     game.core.log.file_write(" ");
+
 // --------------------------------------------------------------------------------------------------------------------------
 // | Main application loop
 // --------------------------------------------------------------------------------------------------------------------------
@@ -152,8 +155,11 @@ extern "C" int main(int argc, char** argv)
                 }
                 if (game.core.process_ready) game.core.background.process();
                 if (game.core.process_ready) game.menu.process();
+                if (game.core.process_ready) game.process(); // - - - delete - - -
                 if (game.menu.event == 65535) game.state = STATE_QUIT;
+                game.core.background.draw();
                 game.menu.render();
+                game.render(); // - - - delete - - -
             break;
             case STATE_GAME:// game active, menus can be utilized in game, but the game will stay in this state.
                 if (game.core.process_ready) game.process();

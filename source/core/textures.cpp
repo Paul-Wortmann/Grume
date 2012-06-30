@@ -227,21 +227,24 @@ void texture_class::draw(bool rumble, float pos_x, float pos_y, float pos_z, flo
         pos_y += game_o.rumble.counter_y;
     }
 */
+    int temp_angle;
+    if (texture_class::angle != 0) temp_angle = 360 - texture_class::angle;
+    else temp_angle = 0;
     glPushMatrix();
     glBindTexture( GL_TEXTURE_2D, texture_class::frame[texture_class::frame_num].data);
     glLoadIdentity();
     glBegin( GL_QUADS );
-    glTexCoord2i( 0, 1 );glVertex3f(game.core.physics.rotate_point_2D_x(pos_x, pos_y, pos_x-(width/2),pos_y-(height/2),texture_class::angle), game.core.physics.rotate_point_2D_y(pos_x,pos_y,pos_x-(width/2),pos_y-(height/2), texture_class::angle), pos_z);
-    glTexCoord2i( 0, 0 );glVertex3f(game.core.physics.rotate_point_2D_x(pos_x, pos_y, pos_x-(width/2),pos_y+(height/2),texture_class::angle), game.core.physics.rotate_point_2D_y(pos_x,pos_y,pos_x-(width/2),pos_y+(height/2), texture_class::angle), pos_z);
-    glTexCoord2i( 1, 0 );glVertex3f(game.core.physics.rotate_point_2D_x(pos_x, pos_y, pos_x+(width/2),pos_y+(height/2),texture_class::angle), game.core.physics.rotate_point_2D_y(pos_x,pos_y,pos_x+(width/2),pos_y+(height/2), texture_class::angle), pos_z);
-    glTexCoord2i( 1, 1 );glVertex3f(game.core.physics.rotate_point_2D_x(pos_x, pos_y, pos_x+(width/2),pos_y-(height/2),texture_class::angle), game.core.physics.rotate_point_2D_y(pos_x,pos_y,pos_x+(width/2),pos_y-(height/2), texture_class::angle), pos_z);
+    glTexCoord2i( 0, 1 );glVertex3f(game.core.physics.rotate_point_2D_x(pos_x, pos_y, pos_x-(width/2),pos_y-(height/2),temp_angle), game.core.physics.rotate_point_2D_y(pos_x,pos_y,pos_x-(width/2),pos_y-(height/2), temp_angle), pos_z);
+    glTexCoord2i( 0, 0 );glVertex3f(game.core.physics.rotate_point_2D_x(pos_x, pos_y, pos_x-(width/2),pos_y+(height/2),temp_angle), game.core.physics.rotate_point_2D_y(pos_x,pos_y,pos_x-(width/2),pos_y+(height/2), temp_angle), pos_z);
+    glTexCoord2i( 1, 0 );glVertex3f(game.core.physics.rotate_point_2D_x(pos_x, pos_y, pos_x+(width/2),pos_y+(height/2),temp_angle), game.core.physics.rotate_point_2D_y(pos_x,pos_y,pos_x+(width/2),pos_y+(height/2), temp_angle), pos_z);
+    glTexCoord2i( 1, 1 );glVertex3f(game.core.physics.rotate_point_2D_x(pos_x, pos_y, pos_x+(width/2),pos_y-(height/2),temp_angle), game.core.physics.rotate_point_2D_y(pos_x,pos_y,pos_x+(width/2),pos_y-(height/2), temp_angle), pos_z);
     glEnd();
     glPopMatrix();
 };
 
-void texture_class::draw(bool rumble, float pos_x, float pos_y, float pos_z, float width, float height, int   angle)
+void texture_class::draw(bool rumble, float pos_x, float pos_y, float pos_z, float width, float height, int angle)
 {
-    texture_class::angle = game.core.physics.degrees_to_radians(angle);
+    texture_class::angle = angle;//game.core.physics.degrees_to_radians(angle);
     texture_class::draw(rumble,pos_x,pos_y,pos_z,width,height);
 };
 

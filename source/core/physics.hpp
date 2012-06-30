@@ -25,61 +25,78 @@
 #ifndef PHYSICS_H
 #define PHYSICS_H
 
-#define SPHERE 0
-#define CUBE   1
+#include "vector.hpp"
 
-class body_class
+#define NONE       0
+#define CIRCLE     1
+#define SPHERE     2
+#define SQUARE     3
+#define CUBE       4
+#define TRIANGLE   5
+#define POLYGON    6
+
+class vertex_3f_class
+{
+    private:
+    protected:
+    public:
+        float x;
+        float y;
+        float z;
+};
+
+class vertex_2f_class
+{
+    private:
+    protected:
+    public:
+        float x;
+        float y;
+};
+
+class body_2D_class
 {
     private:
     public:
-        int         world_ID;
-        int         texture;
-        int         body_type;
-        float       radius_x;
-        float       radius_y;
-        float       radius_z;
-        float       length_x;
-        float       length_y;
-        float       length_z;
-        float       weight;
-        float       restitution;
-        float       friction;
-        float       acceleration;
-        float       velocity_max;
-        float       velocity_x;
-        float       velocity_y;
-        float       velocity_z;
-        float       position_x;
-        float       position_y;
-        float       position_z;
-        float       rotational_angle_x;
-        float       rotational_angle_y;
-        float       rotational_angle_z;
-        float       rotational_velocity_max;
-        float       rotational_velocity_x;
-        float       rotational_velocity_y;
-        float       rotational_velocity_z;
-        float       rotational_acceleration;
-                    body_class            (void);
-                   ~body_class            (void);
+        int             world_ID;
+        int             texture;
+        int             body_type;
+        float           mass;
+        float           restitution;
+        float           friction;
+        bool            solid;
+        bool            liquid;
+        bool            gas;
+        float           elasticity;
+        float           viscosity;
+        float           density;
+        float           acceleration;
+        float           velocity_max;
+        float           radius;
+        float           direction;
+        vector_2f_class position;
+        vector_2f_class velocity;
+                    body_2D_class(void);
+                   ~body_2D_class(void);
 };
 
 class world_class
 {
     private:
     public:
-        int         ID;
-        float       gravity_x;
-        float       gravity_y;
-        float       gravity_z;
-        float       length_x;
-        float       length_y;
-        float       length_z;
-        float       position_x;
-        float       position_y;
-        float       position_z;
-                    world_class            (void);
-                   ~world_class            (void);
+        int                       ID;
+        vertex_3f_class           vertex[4];
+        float                     gravity_x;
+        float                     gravity_y;
+        float                     gravity_z;
+        float                     position_x;
+        float                     position_y;
+        float                     position_z;
+        float                     length_x; // redundant, included for backwards compatibility.
+        float                     length_y; // redundant, included for backwards compatibility.
+        float                     length_z; // redundant, included for backwards compatibility.
+                                  world_class            (void);
+                                 ~world_class            (void);
 };
 
 class physics_class
@@ -90,6 +107,7 @@ class physics_class
         float       cos_table[360];
                     physics_class            (void);
                    ~physics_class            (void);
+        bool        collision                (body_2D_class body_1, body_2D_class body_2);
         bool        cube_collision           (float x1, float y1, float z1, float w1, float h1, float d1, float x2, float y2, float z2, float w2, float h2, float d2);
         bool        quadrangle_collision     (float x1, float y1, float w1, float h1, float x2, float y2, float w2, float h2);
         bool        circle_collision         (float x1, float y1, float r1, float x2, float y2, float r2);
@@ -106,8 +124,10 @@ class physics_class
         float       line_point_2D_y          (float y1, float distance, float angle);
         float       rotate_point_2D_x        (float cx, float cy, float px, float py, int angle);
         float       rotate_point_2D_y        (float cx, float cy, float px, float py, int angle);
-        float       move_speed_angle_2D_x    (float  x, float s,  float dr);
-        float       move_speed_angle_2D_y    (float  y, float s,  float dr);
+        float       move_velocity_angle_2D_x (float  x, float v,  float radians);
+        float       move_velocity_angle_2D_y (float  y, float v,  float radians);
+        float       move_velocity_angle_2D_x (float  x, float v,  int degrees);
+        float       move_velocity_angle_2D_y (float  y, float v,  int degrees);
         float       degrees_to_radians       (float degrees);
         float       radians_to_degrees       (float radians);
         void        generate_sin_table       (void);

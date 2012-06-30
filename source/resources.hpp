@@ -482,6 +482,9 @@ struct texture_resource_class
         texture_class generic_sand_shrubs;
         texture_class generic_water;
 
+        texture_class test_background; // - - - delete - - -
+        texture_class test_ball; // - - - delete - - -
+
         void process(void);
         void render(bool r, int texture_number, float x, float y, float z, float w, float h);
         void render(bool r, int texture_number, float x, float y, float z, float w, float h, float angle);
@@ -523,6 +526,7 @@ class resource_class
         void                        load_maps_2D(void);
         void                        load_maps_3D(void);
         void                        load_3D_models(void);
+        void                        load_test_data(void);
 };
 
 #endif // RESOURCES_H
