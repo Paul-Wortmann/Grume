@@ -1,0 +1,934 @@
+# depslib dependency file v1.0
+1341767576 source:c:\_git_\frost_and_flame\source\core\physics.cpp
+	"physics.hpp"
+	<math.h>
+
+1341764618 c:\_git_\frost_and_flame\source\core\physics.hpp
+	"vector.hpp"
+
+1341722598 c:\_git_\frost_and_flame\source\core\vector.hpp
+	<math.h>
+
+1314140393 c:\mingw\include\math.h
+	<_mingw.h>
+
+1314140392 c:\mingw\include\_mingw.h
+
+1339343192 source:c:\_git_\frost_and_flame\source\items.cpp
+	"items.hpp"
+	"game.hpp"
+	"core/misc.hpp"
+
+1326868751 c:\_git_\frost_and_flame\source\items.hpp
+	<string>
+	<fstream>
+
+1342369555 c:\_git_\frost_and_flame\source\game.hpp
+	"core/core.hpp"
+	"core/menu.hpp"
+	"core/savegame.hpp"
+	"items.hpp"
+	"language.hpp"
+	"resources.hpp"
+	"menu_system.hpp"
+	"player.hpp"
+	"spells.hpp"
+	"UI.hpp"
+
+1342369638 c:\_git_\frost_and_flame\source\core\core.hpp
+	"background.hpp"
+	"config.hpp"
+	"file.hpp"
+	"graphics.hpp"
+	"io.hpp"
+	"log.hpp"
+	"physics.hpp"
+	"timer.hpp"
+
+1326868751 c:\_git_\frost_and_flame\source\core\background.hpp
+
+1338478472 c:\_git_\frost_and_flame\source\core\config.hpp
+	<SDL/SDL.h>
+	<string>
+
+1325738640 c:\mingw\include\sdl\sdl.h
+	"SDL_main.h"
+	"SDL_stdinc.h"
+	"SDL_audio.h"
+	"SDL_cdrom.h"
+	"SDL_cpuinfo.h"
+	"SDL_endian.h"
+	"SDL_error.h"
+	"SDL_events.h"
+	"SDL_loadso.h"
+	"SDL_mutex.h"
+	"SDL_rwops.h"
+	"SDL_thread.h"
+	"SDL_timer.h"
+	"SDL_video.h"
+	"SDL_version.h"
+	"begin_code.h"
+	"close_code.h"
+
+1325738640 c:\mingw\include\sdl\sdl_main.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+	"begin_code.h"
+	"close_code.h"
+
+1325738640 c:\mingw\include\sdl\sdl_stdinc.h
+	"SDL_config.h"
+	<sys/types.h>
+	<stdio.h>
+	<stdlib.h>
+	<stddef.h>
+	<stdarg.h>
+	<stdlib.h>
+	<malloc.h>
+	<stddef.h>
+	<stdarg.h>
+	<memory.h>
+	<string.h>
+	<strings.h>
+	<inttypes.h>
+	<stdint.h>
+	<ctype.h>
+	<iconv.h>
+	"begin_code.h"
+	<alloca.h>
+	<malloc.h>
+	<malloc.h>
+	<malloc.h>
+	<stdlib.h>
+	"close_code.h"
+
+1326110988 c:\mingw\include\sdl\sdl_config.h
+	"SDL_platform.h"
+	"SDL_config_dreamcast.h"
+	"SDL_config_macos.h"
+	"SDL_config_macosx.h"
+	"SDL_config_symbian.h"
+	"SDL_config_win32.h"
+	"SDL_config_os2.h"
+	"SDL_config_minimal.h"
+
+1325738640 c:\mingw\include\sdl\sdl_platform.h
+
+1326110994 c:\mingw\include\sdl\sdl_config_win32.h
+	"SDL_platform.h"
+
+1314140395 c:\mingw\include\sys\types.h
+	<_mingw.h>
+	<stddef.h>
+
+1314140394 c:\mingw\include\stdio.h
+	<_mingw.h>
+	<stddef.h>
+	<stdarg.h>
+	<sys/types.h>
+
+1314140394 c:\mingw\include\stdlib.h
+	<_mingw.h>
+	<stddef.h>
+
+1314140393 c:\mingw\include\malloc.h
+	<_mingw.h>
+	<stdlib.h>
+
+1314140394 c:\mingw\include\memory.h
+	<string.h>
+
+1314140394 c:\mingw\include\string.h
+	<_mingw.h>
+	<stddef.h>
+
+1314140394 c:\mingw\include\strings.h
+	<string.h>
+
+1314140393 c:\mingw\include\inttypes.h
+	<_mingw.h>
+	<stdint.h>
+	<stddef.h>
+
+1314140394 c:\mingw\include\stdint.h
+	<stddef.h>
+
+1314140392 c:\mingw\include\ctype.h
+	<_mingw.h>
+	<stddef.h>
+
+1319225085 c:\mingw\include\iconv.h
+	"iconv.h"
+	<stddef.h>
+	<errno.h>
+	<stddef.h>
+	<stdio.h>
+	<time.h>
+	<wchar.h>
+
+1314140393 c:\mingw\include\errno.h
+	<_mingw.h>
+
+1314140394 c:\mingw\include\time.h
+	<_mingw.h>
+	<stddef.h>
+
+1314140395 c:\mingw\include\wchar.h
+	<_mingw.h>
+	<stddef.h>
+	<stdarg.h>
+	<wctype.h>
+	<sys/types.h>
+	<stdio.h>
+	<stdint.h>
+	<stdint.h>
+
+1314140395 c:\mingw\include\wctype.h
+	<_mingw.h>
+	<stddef.h>
+
+1326111000 c:\mingw\include\sdl\begin_code.h
+
+1325738640 c:\mingw\include\sdl\close_code.h
+
+1325738640 c:\mingw\include\sdl\sdl_audio.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_endian.h"
+	"SDL_mutex.h"
+	"SDL_thread.h"
+	"SDL_rwops.h"
+	"begin_code.h"
+	"close_code.h"
+
+1325738640 c:\mingw\include\sdl\sdl_error.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+
+1325738640 c:\mingw\include\sdl\sdl_endian.h
+	"SDL_stdinc.h"
+	<endian.h>
+	"begin_code.h"
+	"close_code.h"
+
+1325738640 c:\mingw\include\sdl\sdl_mutex.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1325738640 c:\mingw\include\sdl\sdl_thread.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_mutex.h"
+	"begin_code.h"
+	<process.h>
+	"close_code.h"
+
+1314140394 c:\mingw\include\process.h
+	<_mingw.h>
+	<sys/types.h>
+	<stdint.h>
+
+1325738640 c:\mingw\include\sdl\sdl_rwops.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1325738640 c:\mingw\include\sdl\sdl_cdrom.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1325738640 c:\mingw\include\sdl\sdl_cpuinfo.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+
+1325738640 c:\mingw\include\sdl\sdl_events.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_active.h"
+	"SDL_keyboard.h"
+	"SDL_mouse.h"
+	"SDL_joystick.h"
+	"SDL_quit.h"
+	"begin_code.h"
+	"close_code.h"
+
+1325738640 c:\mingw\include\sdl\sdl_active.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1325738640 c:\mingw\include\sdl\sdl_keyboard.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_keysym.h"
+	"begin_code.h"
+	"close_code.h"
+
+1325738640 c:\mingw\include\sdl\sdl_keysym.h
+
+1325738640 c:\mingw\include\sdl\sdl_mouse.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_video.h"
+	"begin_code.h"
+	"close_code.h"
+
+1325738640 c:\mingw\include\sdl\sdl_video.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_rwops.h"
+	"begin_code.h"
+	"close_code.h"
+
+1325738640 c:\mingw\include\sdl\sdl_joystick.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1325738640 c:\mingw\include\sdl\sdl_quit.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+
+1325738640 c:\mingw\include\sdl\sdl_loadso.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1325738640 c:\mingw\include\sdl\sdl_timer.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1325738640 c:\mingw\include\sdl\sdl_version.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+
+1329908111 c:\_git_\frost_and_flame\source\core\file.hpp
+
+1339159930 c:\_git_\frost_and_flame\source\core\graphics.hpp
+
+1338394501 c:\_git_\frost_and_flame\source\core\io.hpp
+	"rs232.hpp"
+
+1336061307 c:\_git_\frost_and_flame\source\core\rs232.hpp
+	<stdio.h>
+	<string.h>
+	<termios.h>
+	<sys/ioctl.h>
+	<unistd.h>
+	<fcntl.h>
+	<sys/types.h>
+	<sys/stat.h>
+	<limits.h>
+	<windows.h>
+
+1314140394 c:\mingw\include\unistd.h
+	<io.h>
+	<process.h>
+	<getopt.h>
+	<sys/types.h>
+
+1314140393 c:\mingw\include\io.h
+	<_mingw.h>
+	<sys/types.h>
+
+1314140393 c:\mingw\include\getopt.h
+	<_mingw.h>
+
+1314140393 c:\mingw\include\fcntl.h
+	<_mingw.h>
+	<io.h>
+
+1314140395 c:\mingw\include\sys\stat.h
+	<_mingw.h>
+	<stddef.h>
+	<sys/types.h>
+
+1314140393 c:\mingw\include\limits.h
+	<_mingw.h>
+
+1301111162 c:\mingw\include\windows.h
+	<winresrc.h>
+	<stdarg.h>
+	<windef.h>
+	<wincon.h>
+	<winbase.h>
+	<wingdi.h>
+	<winuser.h>
+	<winnls.h>
+	<winver.h>
+	<winnetwk.h>
+	<winreg.h>
+	<winsvc.h>
+	<cderr.h>
+	<dde.h>
+	<ddeml.h>
+	<dlgs.h>
+	<imm.h>
+	<lzexpand.h>
+	<mmsystem.h>
+	<nb30.h>
+	<rpc.h>
+	<shellapi.h>
+	<winperf.h>
+	<commdlg.h>
+	<winspool.h>
+	<winsock2.h>
+	<winsock.h>
+	<ole2.h>
+
+1301111163 c:\mingw\include\winresrc.h
+	<winuser.h>
+	<winnt.h>
+	<winver.h>
+	<dde.h>
+	<dlgs.h>
+	<commctrl.h>
+
+1301111164 c:\mingw\include\winuser.h
+
+1301111163 c:\mingw\include\winnt.h
+	<winerror.h>
+	<string.h>
+	<basetsd.h>
+	<pshpack4.h>
+	<poppack.h>
+
+1301111162 c:\mingw\include\winerror.h
+
+1301111149 c:\mingw\include\basetsd.h
+
+1301111157 c:\mingw\include\pshpack4.h
+
+1301111157 c:\mingw\include\poppack.h
+
+1301111164 c:\mingw\include\winver.h
+
+1301111149 c:\mingw\include\dde.h
+
+1301111150 c:\mingw\include\dlgs.h
+
+1301111149 c:\mingw\include\commctrl.h
+	<prsht.h>
+
+1301111157 c:\mingw\include\prsht.h
+
+1301111162 c:\mingw\include\windef.h
+	<winnt.h>
+
+1301111162 c:\mingw\include\wincon.h
+
+1301111161 c:\mingw\include\winbase.h
+
+1301111162 c:\mingw\include\wingdi.h
+
+1301111163 c:\mingw\include\winnls.h
+
+1301111163 c:\mingw\include\winnetwk.h
+
+1301111163 c:\mingw\include\winreg.h
+
+1301111164 c:\mingw\include\winsvc.h
+
+1301111149 c:\mingw\include\cderr.h
+
+1301111149 c:\mingw\include\ddeml.h
+
+1301111151 c:\mingw\include\imm.h
+
+1301111154 c:\mingw\include\lzexpand.h
+
+1301111154 c:\mingw\include\mmsystem.h
+
+1301111155 c:\mingw\include\nb30.h
+
+1301111158 c:\mingw\include\rpc.h
+	<windows.h>
+	<rpcdce.h>
+	<rpcnsi.h>
+	<rpcnterr.h>
+	<winerror.h>
+	<excpt.h>
+
+1301111158 c:\mingw\include\rpcdce.h
+	<basetyps.h>
+	<rpcdcep.h>
+
+1301111149 c:\mingw\include\basetyps.h
+
+1301111159 c:\mingw\include\rpcdcep.h
+
+1301111159 c:\mingw\include\rpcnsi.h
+
+1301111159 c:\mingw\include\rpcnterr.h
+
+1314140393 c:\mingw\include\excpt.h
+	<_mingw.h>
+	<windef.h>
+
+1301111160 c:\mingw\include\shellapi.h
+	<pshpack2.h>
+	<poppack.h>
+
+1301111157 c:\mingw\include\pshpack2.h
+
+1301111163 c:\mingw\include\winperf.h
+
+1301111149 c:\mingw\include\commdlg.h
+	<unknwn.h>
+	<prsht.h>
+
+1301111161 c:\mingw\include\unknwn.h
+	<windows.h>
+	<objfwd.h>
+	<wtypes.h>
+
+1301111156 c:\mingw\include\objfwd.h
+	<basetyps.h>
+
+1301111164 c:\mingw\include\wtypes.h
+	<rpc.h>
+	<rpcndr.h>
+
+1301111159 c:\mingw\include\rpcndr.h
+	<rpcnsip.h>
+	<objfwd.h>
+
+1301111159 c:\mingw\include\rpcnsip.h
+
+1301111163 c:\mingw\include\winspool.h
+
+1301111163 c:\mingw\include\winsock2.h
+	<windows.h>
+
+1301111163 c:\mingw\include\winsock.h
+	<windows.h>
+	<mswsock.h>
+
+1301111155 c:\mingw\include\mswsock.h
+
+1301111156 c:\mingw\include\ole2.h
+	<winerror.h>
+	<objbase.h>
+	<olectlid.h>
+	<oleauto.h>
+	<oleidl.h>
+
+1301111155 c:\mingw\include\objbase.h
+	<rpc.h>
+	<rpcndr.h>
+	<stdlib.h>
+	<basetyps.h>
+	<wtypes.h>
+	<unknwn.h>
+	<objidl.h>
+	<cguid.h>
+
+1301111156 c:\mingw\include\objidl.h
+	<objfwd.h>
+
+1301111149 c:\mingw\include\cguid.h
+
+1301111156 c:\mingw\include\olectlid.h
+
+1301111156 c:\mingw\include\oleauto.h
+	<oaidl.h>
+
+1301111155 c:\mingw\include\oaidl.h
+	<windows.h>
+	<ole2.h>
+
+1301111156 c:\mingw\include\oleidl.h
+	<objfwd.h>
+
+1338393337 c:\_git_\frost_and_flame\source\core\log.hpp
+	<string>
+
+1339158410 c:\_git_\frost_and_flame\source\core\timer.hpp
+
+1342362159 c:\_git_\frost_and_flame\source\core\menu.hpp
+	<string>
+
+1326868751 c:\_git_\frost_and_flame\source\core\savegame.hpp
+
+1326872134 c:\_git_\frost_and_flame\source\language.hpp
+	<string>
+
+1342275673 c:\_git_\frost_and_flame\source\resources.hpp
+	"core/core.hpp"
+	"core/sound.hpp"
+	"core/music.hpp"
+	"core/textures.hpp"
+	"core/font.hpp"
+	"core/map_2D.hpp"
+	"core/map_3D.hpp"
+	"core/loader_obj.hpp"
+
+1326868751 c:\_git_\frost_and_flame\source\core\sound.hpp
+	<SDL/SDL_mixer.h>
+	<string>
+
+1325760540 c:\mingw\include\sdl\sdl_mixer.h
+	"SDL_types.h"
+	"SDL_rwops.h"
+	"SDL_audio.h"
+	"SDL_endian.h"
+	"SDL_version.h"
+	"begin_code.h"
+	"close_code.h"
+
+1325738640 c:\mingw\include\sdl\sdl_types.h
+	"SDL_stdinc.h"
+
+1326868751 c:\_git_\frost_and_flame\source\core\music.hpp
+	<SDL/SDL_mixer.h>
+	<string>
+
+1339159321 c:\_git_\frost_and_flame\source\core\textures.hpp
+	<GL/gl.h>
+	<string>
+
+1301111164 c:\mingw\include\gl\gl.h
+
+1326868751 c:\_git_\frost_and_flame\source\core\font.hpp
+	<SDL/SDL_ttf.h>
+
+1325764394 c:\mingw\include\sdl\sdl_ttf.h
+	"SDL.h"
+	"begin_code.h"
+	"close_code.h"
+
+1326868751 c:\_git_\frost_and_flame\source\core\map_2d.hpp
+	"textures.hpp"
+
+1335692767 c:\_git_\frost_and_flame\source\core\map_3d.hpp
+	"GL/gl.h"
+	"textures.hpp"
+	"graphics.hpp"
+	"map_2D.hpp"
+	"map_3D.hpp"
+	"physics.hpp"
+
+1330516516 c:\_git_\frost_and_flame\source\core\loader_obj.hpp
+	<GL/gl.h>
+	<string>
+	"graphics.hpp"
+
+1342374118 c:\_git_\frost_and_flame\source\menu_system.hpp
+	"core/menu.hpp"
+
+1337346307 c:\_git_\frost_and_flame\source\player.hpp
+	<string>
+	"core/pathfinding.hpp"
+
+1336737629 c:\_git_\frost_and_flame\source\core\pathfinding.hpp
+
+1326868751 c:\_git_\frost_and_flame\source\spells.hpp
+	<string>
+
+1331732101 c:\_git_\frost_and_flame\source\ui.hpp
+	"spell_book.hpp"
+	"equipment.hpp"
+	"inventory.hpp"
+	"character.hpp"
+	"quest_log.hpp"
+	"npcvendor.hpp"
+
+1326868751 c:\_git_\frost_and_flame\source\spell_book.hpp
+
+1326868751 c:\_git_\frost_and_flame\source\equipment.hpp
+
+1326868751 c:\_git_\frost_and_flame\source\inventory.hpp
+
+1326868751 c:\_git_\frost_and_flame\source\character.hpp
+
+1326868751 c:\_git_\frost_and_flame\source\quest_log.hpp
+
+1331649197 c:\_git_\frost_and_flame\source\npcvendor.hpp
+
+1326868751 c:\_git_\frost_and_flame\source\core\misc.hpp
+	<string>
+
+1339994337 source:c:\_git_\frost_and_flame\source\core\background.cpp
+	"core.hpp"
+	"../game.hpp"
+	"background.hpp"
+
+1342170081 source:c:\_git_\frost_and_flame\source\core\random_map.cpp
+	"random_map.hpp"
+
+1342152363 c:\_git_\frost_and_flame\source\core\random_map.hpp
+
+1339163117 source:c:\_git_\frost_and_flame\source\language.cpp
+	<iostream>
+	<fstream>
+	<stdio.h>
+	<stdlib.h>
+	<string>
+	"game.hpp"
+	"core/misc.hpp"
+	"language.hpp"
+	"menu_system.hpp"
+
+1339163888 source:c:\_git_\frost_and_flame\source\core\config.cpp
+	<fstream>
+	"config.hpp"
+
+1336190037 source:c:\_git_\frost_and_flame\source\core\rs232.cpp
+	"rs232.hpp"
+
+1342376247 source:c:\_git_\frost_and_flame\source\main.cpp
+	"game.hpp"
+	<SDL/SDL.h>
+	"core/misc.hpp"
+	"menu_system.hpp"
+
+1338478704 source:c:\_git_\frost_and_flame\source\core\core.cpp
+	"core.hpp"
+
+1342379443 source:c:\_git_\frost_and_flame\source\menu_system.cpp
+	"menu_system.hpp"
+	"game.hpp"
+
+1339160155 source:c:\_git_\frost_and_flame\source\player.cpp
+	"player.hpp"
+	"game.hpp"
+
+1339159734 source:c:\_git_\frost_and_flame\source\core\savegame.cpp
+	<fstream>
+	"savegame.hpp"
+	"../game.hpp"
+	"../save_data.hpp"
+
+1326868751 c:\_git_\frost_and_flame\source\save_data.hpp
+	"core/core.hpp"
+	"core/savegame.hpp"
+	"game.hpp"
+
+1336190209 source:c:\_git_\frost_and_flame\source\core\file.cpp
+	<string>
+	"core.hpp"
+	"file.hpp"
+
+1339423353 source:c:\_git_\frost_and_flame\source\npcvendor.cpp
+	"core/misc.hpp"
+	"npcvendor.hpp"
+	"game.hpp"
+	"items.hpp"
+
+1339423519 source:c:\_git_\frost_and_flame\source\quest_log.cpp
+	"quest_log.hpp"
+	"game.hpp"
+
+1326868049 source:c:\_git_\frost_and_flame\source\core\sound.cpp
+	"sound.hpp"
+
+1342350329 source:c:\_git_\frost_and_flame\source\core\font.cpp
+	<SDL/SDL_ttf.h>
+	<GL/gl.h>
+	<string>
+	<sstream>
+	"../game.hpp"
+
+1342275881 source:c:\_git_\frost_and_flame\source\resources.cpp
+	<SDL/SDL.h>
+	"resources.hpp"
+	"game.hpp"
+
+1340201362 source:c:\_git_\frost_and_flame\source\core\textures.cpp
+	<GL/gl.h>
+	<SDL/SDL.h>
+	<SDL/SDL_image.h>
+	"textures.hpp"
+	"../game.hpp"
+
+1325760034 c:\mingw\include\sdl\sdl_image.h
+	"SDL.h"
+	"SDL_version.h"
+	"begin_code.h"
+	"close_code.h"
+
+1338478971 source:c:\_git_\frost_and_flame\source\core\graphics.cpp
+	<GL/gl.h>
+	"core.hpp"
+	"graphics.hpp"
+	"../game.hpp"
+
+1339160356 source:c:\_git_\frost_and_flame\source\save_data.cpp
+	"save_data.hpp"
+	"game.hpp"
+
+1339158410 source:c:\_git_\frost_and_flame\source\core\timer.cpp
+	"SDL/SDL.h"
+	"timer.hpp"
+
+1338478944 source:c:\_git_\frost_and_flame\source\core\io.cpp
+	<SDL/SDL.h>
+	<SDL/SDL_events.h>
+	"../game.hpp"
+	"io.hpp"
+
+1339342579 source:c:\_git_\frost_and_flame\source\spells.cpp
+	"spells.hpp"
+	"game.hpp"
+
+1341722598 source:c:\_git_\frost_and_flame\source\core\vector.cpp
+	"vector.hpp"
+
+1339423504 source:c:\_git_\frost_and_flame\source\core\loader_md2.cpp
+	<iostream>
+	<fstream>
+	<stdio.h>
+	<stdlib.h>
+	<string>
+	"loader_md2.hpp"
+	"../game.hpp"
+	"misc.hpp"
+
+1329708322 c:\_git_\frost_and_flame\source\core\loader_md2.hpp
+	<string>
+	"graphics.hpp"
+
+1339423441 source:c:\_git_\frost_and_flame\source\spell_book.cpp
+	"spell_book.hpp"
+	"spells.hpp"
+	"game.hpp"
+
+1339423287 source:c:\_git_\frost_and_flame\source\core\loader_obj.cpp
+	<iostream>
+	<fstream>
+	<stdio.h>
+	<stdlib.h>
+	<string>
+	<GL/gl.h>
+	<SDL/SDL.h>
+	<SDL/SDL_image.h>
+	"textures.hpp"
+	"loader_obj.hpp"
+	"../game.hpp"
+	"misc.hpp"
+
+1341764902 source:c:\_git_\frost_and_flame\source\balls.cpp
+	<math.h>
+	"core/misc.hpp"
+	"balls.hpp"
+	"game.hpp"
+
+1341722739 c:\_git_\frost_and_flame\source\balls.hpp
+	"core/physics.hpp"
+
+1342374090 source:c:\_git_\frost_and_flame\source\ui.cpp
+	"UI.hpp"
+	"game.hpp"
+	"core/misc.hpp"
+
+1336190209 source:c:\_git_\frost_and_flame\source\core\loader_tmx.cpp
+	<iostream>
+	<fstream>
+	<stdio.h>
+	<stdlib.h>
+	<string>
+	"loader_tmx.hpp"
+
+1329033616 c:\_git_\frost_and_flame\source\core\loader_tmx.hpp
+
+1341055172 source:c:\_git_\frost_and_flame\source\character.cpp
+	"character.hpp"
+	"game.hpp"
+
+1338393363 source:c:\_git_\frost_and_flame\source\core\log.cpp
+	<fstream>
+	"log.hpp"
+
+1339423460 source:c:\_git_\frost_and_flame\source\equipment.cpp
+	"equipment.hpp"
+	"game.hpp"
+
+1342170080 source:c:\_git_\frost_and_flame\source\core\map_2d.cpp
+	<iostream>
+	<fstream>
+	<stdio.h>
+	<stdlib.h>
+	<string>
+	"map_2D.hpp"
+	"../game.hpp"
+	"textures.hpp"
+	"random_map.hpp"
+
+1339342782 source:c:\_git_\frost_and_flame\source\core\map_3d.cpp
+	<GL/gl.h>
+	<SDL/SDL.h>
+	<SDL/SDL_image.h>
+	<iostream>
+	<fstream>
+	<stdio.h>
+	<stdlib.h>
+	<string>
+	"map_2D.hpp"
+	"map_3D.hpp"
+	"../game.hpp"
+	"textures.hpp"
+	"loader_obj.hpp"
+	"misc.hpp"
+	"../game.hpp"
+
+1342376154 source:c:\_git_\frost_and_flame\source\game.cpp
+	"game.hpp"
+
+1342363947 source:c:\_git_\frost_and_flame\source\core\menu.cpp
+	"menu.hpp"
+	"../game.hpp"
+
+1339997580 source:c:\_git_\frost_and_flame\source\core\particles.cpp
+	<fstream>
+	<stdio.h>
+	<stdlib.h>
+	<string>
+	"particles.hpp"
+	"../game.hpp"
+
+1326868751 c:\_git_\frost_and_flame\source\core\particles.hpp
+	<string>
+
+1340339197 source:c:\_git_\frost_and_flame\source\core\misc.cpp
+	<time.h>
+	<stdlib.h>
+	<math.h>
+	<string>
+	<algorithm>
+	<sstream>
+	<fstream>
+	"misc.hpp"
+
+1326868302 source:c:\_git_\frost_and_flame\source\icon.rc
+
+1326868145 source:c:\_git_\frost_and_flame\source\core\music.cpp
+	"music.hpp"
+
+1336737891 source:c:\_git_\frost_and_flame\source\core\pathfinding.cpp
+	"pathfinding.hpp"
+
+1339423421 source:c:\_git_\frost_and_flame\source\inventory.cpp
+	"core/misc.hpp"
+	"inventory.hpp"
+	"game.hpp"
+	"items.hpp"
+
+1326868145 source:c:\_git_\frost_and_flame\source\core\network.cpp
+	"network.hpp"
+
+1326868751 c:\_git_\frost_and_flame\source\core\network.hpp
+
