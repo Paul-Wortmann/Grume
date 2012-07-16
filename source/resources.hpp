@@ -96,6 +96,7 @@ struct texture_resource_class
     private:
     public:
         int           number_loaded;
+        texture_class default_texture;
         texture_class background_00;
         texture_class background_01;
         texture_class background_02;
@@ -515,6 +516,7 @@ class resource_class
         ~resource_class(void);
         void                        loading_screen_display(std::string file_name);
         void                        write_log_file_count(void);
+        void                        load_default(void);
         void                        load_UI(void);
         void                        load_items(void);
         void                        load_particles(void);

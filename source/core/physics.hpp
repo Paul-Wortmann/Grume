@@ -52,6 +52,23 @@ class vertex_2f_class
     public:
         float x;
         float y;
+        vertex_2f_class( float ix = 0.0f, float iy = 0.0f ) : x( ix ), y( iy ) { };
+       ~vertex_2f_class() { };
+        vertex_2f_class operator*( float scalar ) { return vertex_2f_class( x*scalar, y*scalar ); }
+        vertex_2f_class operator/( float scalar ) { return vertex_2f_class( x/scalar, y/scalar ); }
+        vertex_2f_class operator+( vertex_2f_class b ) { return vertex_2f_class( x + b.x, y + b.y ); }
+        vertex_2f_class operator-( vertex_2f_class b ) { return vertex_2f_class( x - b.x, y - b.y ); }
+        vertex_2f_class operator-() { return vertex_2f_class( -x, -y ); }
+        float operator*( vertex_2f_class b ) { return x*b.x + y*b.y; }
+        void  operator=( vertex_2f_class b ) { x = b.x; y = b.y; }
+        void  operator+=( vertex_2f_class b ) { x += b.x; y += b.y; }
+        void  operator-=( vertex_2f_class b ) { x -= b.x; y -= b.y; }
+        void  operator*=( float scalar ) { x *= scalar; y *= scalar; }
+        void  operator/=( float scalar ) { x /= scalar; y /= scalar; }
+        bool  operator>=( vertex_2f_class b ) { return x >= b.x && y >= b.y; }
+        bool  operator<=( vertex_2f_class b ) { return x <= b.x && y <= b.y; }
+        bool  operator==( vertex_2f_class b ) { return x == b.x && y == b.y; }
+        bool  operator!=( vertex_2f_class b ) { return x != b.x || y != b.y; }
 };
 
 class body_2D_class
@@ -70,14 +87,14 @@ class body_2D_class
         float           elasticity;
         float           viscosity;
         float           density;
-        float           acceleration;
+        vector_2f_class acceleration;
         float           velocity_max;
         float           radius;
-        float           direction;
         vector_2f_class position;
         vector_2f_class velocity;
-                    body_2D_class(void);
-                   ~body_2D_class(void);
+        body_2D_class(void);
+       ~body_2D_class(void);
+        void            process(void);
 };
 
 class world_class
@@ -85,7 +102,8 @@ class world_class
     private:
     public:
         int                       ID;
-        vertex_3f_class           vertex[4];
+        vertex_2f_class           vertex[4];
+        vector_2f_class           gravity;
         float                     gravity_x;
         float                     gravity_y;
         float                     gravity_z;
@@ -103,35 +121,41 @@ class physics_class
 {
     private:
     public:
-        float       sin_table[360];
-        float       cos_table[360];
-                    physics_class            (void);
-                   ~physics_class            (void);
-        bool        collision                (body_2D_class body_1, body_2D_class body_2);
-        bool        cube_collision           (float x1, float y1, float z1, float w1, float h1, float d1, float x2, float y2, float z2, float w2, float h2, float d2);
-        bool        quadrangle_collision     (float x1, float y1, float w1, float h1, float x2, float y2, float w2, float h2);
-        bool        circle_collision         (float x1, float y1, float r1, float x2, float y2, float r2);
-        bool        sphere_collision         (float x1, float y1, float z1, float r1, float x2, float y2, float z2, float r2);
-        float       distance_2D              (float x1, float y1, float x2, float y2);
-        float       distance_3D              (float x1, float y1, float z1, float x2, float y2, float z2);
-        bool        point_in_circle          (float cx, float cy, float cr, float px, float py);
-        bool        point_in_quadrangle      (float qx, float qw, float qy, float qh, float px, float py);
-        bool        point_in_diamond         (float dx, float dw, float dy, float dh, float px, float py);
-        float       point_side_of_line       (float x1, float y1, float x2, float y2, float px, float py);
-        float       line_slope_2D            (float x1, float y1, float x2, float y2);
-        float       line_angle               (float x1, float y1, float x2, float y2);
-        float       line_point_2D_x          (float x1, float distance, float angle);
-        float       line_point_2D_y          (float y1, float distance, float angle);
-        float       rotate_point_2D_x        (float cx, float cy, float px, float py, int angle);
-        float       rotate_point_2D_y        (float cx, float cy, float px, float py, int angle);
-        float       move_velocity_angle_2D_x (float  x, float v,  float radians);
-        float       move_velocity_angle_2D_y (float  y, float v,  float radians);
-        float       move_velocity_angle_2D_x (float  x, float v,  int degrees);
-        float       move_velocity_angle_2D_y (float  y, float v,  int degrees);
-        float       degrees_to_radians       (float degrees);
-        float       radians_to_degrees       (float radians);
-        void        generate_sin_table       (void);
-        void        generate_cos_table       (void);
+        float               sin_table[360];
+        float               cos_table[360];
+                            physics_class            (void);
+                           ~physics_class            (void);
+        bool                collision_detection      (body_2D_class body_1, body_2D_class  body_2);
+        bool                collision_detection      (body_2D_class body_1, world_class    world_1);
+        void                collision_responce       (body_2D_class body_1, body_2D_class  body_2);
+        body_2D_class       collision_responce       (body_2D_class body_1, world_class    world_1);
+        body_2D_class       process_body             (body_2D_class body_1);
+        bool                cube_collision           (float x1, float y1, float z1, float w1, float h1, float d1, float x2, float y2, float z2, float w2, float h2, float d2);
+        bool                quadrangle_collision     (float x1, float y1, float w1, float h1, float x2, float y2, float w2, float h2);
+        bool                circle_collision         (float x1, float y1, float r1, float x2, float y2, float r2);
+        bool                sphere_collision         (float x1, float y1, float z1, float r1, float x2, float y2, float z2, float r2);
+        float               distance_2D              (float x1, float y1, float x2, float y2);
+        float               distance_3D              (float x1, float y1, float z1, float x2, float y2, float z2);
+        bool                point_in_circle          (float cx, float cy, float cr, float px, float py);
+        bool                point_in_quadrangle      (float qx, float qw, float qy, float qh, float px, float py);
+        bool                point_in_diamond         (float dx, float dw, float dy, float dh, float px, float py);
+        float               point_side_of_line       (float x1, float y1, float x2, float y2, float px, float py);
+        float               line_slope_2D            (float x1, float y1, float x2, float y2);
+        float               line_angle               (float x1, float y1, float x2, float y2);
+        float               line_point_2D_x          (float x1, float distance, float angle);
+        float               line_point_2D_y          (float y1, float distance, float angle);
+        float               rotate_point_2D_x        (float cx, float cy, float px, float py, int angle);
+        float               rotate_point_2D_y        (float cx, float cy, float px, float py, int angle);
+        float               move_velocity_angle_2D_x (float  x, float v,  float radians);
+        float               move_velocity_angle_2D_y (float  y, float v,  float radians);
+        float               move_velocity_angle_2D_x (float  x, float v,  int degrees);
+        float               move_velocity_angle_2D_y (float  y, float v,  int degrees);
+        float               degrees_to_radians       (float degrees);
+        float               radians_to_degrees       (float radians);
+        void                generate_sin_table       (void);
+        void                generate_cos_table       (void);
+        bool                point_in_polygon         (int number_of_vertecies, vertex_3f_class vertex[], float px, float py);
+
 };
 
 #endif //PHYSICS_H

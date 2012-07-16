@@ -27,27 +27,41 @@
 
 #include "core/menu.hpp"
 
+#define MENU_MAIN          0
+#define MENU_NEW_GAME      1
+#define MENU_SAVE          2
+#define MENU_LOAD          3
+#define MENU_OPTIONS       4
+#define MENU_GAME_OVER     5
+#define MENU_PAUSE         6
+
 class menu_system_class
 {
     private:
-public:
-        int        event;
-        int        possition;
-        int        possition_max;
-        int        level;
-        int        level_no;
-        int        recall_position;
-        int        recall_view;
-        menu_class main;
-        menu_class new_game;
-        menu_class save;
-        menu_class load;
-        menu_class options;
-        menu_class game_over;
-        menu_class pause;
-        void       render(void);
-        void       process(void);
-        void       init(void);
+    public:
+        int                     event;
+        int                     position;
+        int                     position_max;
+        int                     active_menu;
+        float                   position_x;
+        float                   position_y;
+        float                   position_z;
+        float                   size_x;
+        float                   size_y;
+        float                   size_z;
+        element_zoom_class      zoom;
+        color_state_class       color;
+        texture_state_class     texture_ID;
+        menu_class menu_main;
+        menu_class menu_new_game;
+        menu_class menu_save;
+        menu_class menu_load;
+        menu_class menu_options;
+        menu_class menu_game_over;
+        menu_class menu_pause;
+        void                    render(void);
+        int                     process(void);
+        void                    init(void);
 };
 
 

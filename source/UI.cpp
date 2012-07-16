@@ -444,7 +444,7 @@ void menu_slot_class::process(void)
                 {
                     game.UI.active_window_list.add_to_list(MAIN_MENU_WINDOW);
                     game.resource.sound.menu_select_00.play();
-                    game.menu.level              = 1;
+                    game.menu.active_menu             = MENU_MAIN;
                     game.core.game_menu_active        = true;
                     game.core.io.key_escape           = false;
                     game.core.io.keyboard_delay_count = 0;
@@ -454,7 +454,7 @@ void menu_slot_class::process(void)
                 {
                     game.UI.active_window_list.remove_from_list(MAIN_MENU_WINDOW);
                     game.resource.sound.menu_select_00.play();
-                    game.menu.level              = 1;
+                    game.menu.active_menu             = MENU_MAIN;
                     game.core.game_menu_active        = false;
                     game.core.io.key_escape           = false;
                     game.core.io.keyboard_delay_count = 0;

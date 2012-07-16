@@ -27,6 +27,7 @@
 
 #include "core/core.hpp"
 #include "core/menu.hpp"
+#include "core/savegame.hpp"
 #include "items.hpp"
 #include "language.hpp"
 #include "resources.hpp"
@@ -53,6 +54,13 @@ class game_class
     public:
         int               event;
         int               state;
+        save_game_class   save_01;
+        save_game_class   save_02;
+        save_game_class   save_03;
+        save_game_class   save_04;
+        save_game_class   save_05;
+        save_game_class   save_06;
+        save_game_class   save_07;
         core_class        core;
         resource_class    resource;
         zoom_type         zoom;

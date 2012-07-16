@@ -29,42 +29,13 @@
 
 #define NUMBER_OF_BALL_OBJECTS 10
 
-class world_2D_class
-{
-    private:
-    protected:
-    public:
-        vertex_3f_class vertex[4];
-        float position_x;
-        float position_y;
-        float gravity_x;  // 0.0f to 1.0f
-        float gravity_y;  // 0.0f to 1.0f
-        float radius;
- };
-
-class ball_object_class
-{
-    private:
-    protected:
-    public:
-        float position_x;
-        float position_y;
-        float radius;
-        int   direction;
-        float velocity_max;
-        float velocity;
-        float acceleration;
-        float mass;         // 0.0f to 1.0f
-        float restitution;  // 0.0f to 1.0f
- };
-
 class balls_class
 {
     private:
     protected:
     public:
-        world_2D_class    world_2D;
-        body_2D_class     ball_object[NUMBER_OF_BALL_OBJECTS];
+        world_class    world;
+        body_2D_class  ball_object[NUMBER_OF_BALL_OBJECTS];
         void initialize(void);
         void process(void);
         void render(void);

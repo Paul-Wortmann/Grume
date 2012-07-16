@@ -30,6 +30,7 @@
 #include "map_2D.hpp"
 #include "../game.hpp"
 #include "textures.hpp"
+#include "random_map.hpp"
 
 extern game_class         game;
 

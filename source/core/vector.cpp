@@ -24,9 +24,14 @@
 
 #include "vector.hpp"
 
-float vector_2f_class::angle(void)
+float vector_2f_class::angle(void) // radians
 {
-    return(1.0f/tan(vector_2f_class::y/vector_2f_class::x));
+    return(1.0f / tan(vector_2f_class::y / vector_2f_class::x));
+}
+
+int  vector_2f_class::angle_deg(void) // degrees
+{
+    return((1.0f / tan(vector_2f_class::y / vector_2f_class::x)) * (180 / M_PI));
 }
 
 float vector_2f_class::magnitude(void)

@@ -33,99 +33,34 @@ void balls_class::initialize(void)
 {
     for(int ball_count = 0; ball_count < NUMBER_OF_BALL_OBJECTS; ball_count++)
     {
-        balls_class::ball_object[ball_count].body_type    = CIRCLE;
-        balls_class::ball_object[ball_count].position.x   = random_GLcoord();
-        balls_class::ball_object[ball_count].position.y   = random_GLcoord();
-        balls_class::ball_object[ball_count].radius       = random_int(50,99)/1000.0f;
-        balls_class::ball_object[ball_count].direction    = random_cen();
-        balls_class::ball_object[ball_count].velocity.x   = 0.0f;
-        balls_class::ball_object[ball_count].velocity.y   = 0.0f;
-        balls_class::ball_object[ball_count].velocity_max = random_int(50,99)/10000.0f;
-        balls_class::ball_object[ball_count].acceleration = random_int(50,99)/100000.0f;
-        balls_class::ball_object[ball_count].mass         = random_int(25,75)/100000.0f;
+        balls_class::ball_object[ball_count].body_type      = CIRCLE;
+        balls_class::ball_object[ball_count].position.x     = random_GLcoord();
+        balls_class::ball_object[ball_count].position.y     = random_GLcoord();
+        balls_class::ball_object[ball_count].radius         = random_int(50,99)/1000.0f;
+        balls_class::ball_object[ball_count].velocity.x     = 0.0f;
+        balls_class::ball_object[ball_count].velocity.y     = 0.0f;
+        balls_class::ball_object[ball_count].velocity_max   = random_int(50,99)/10000.0f;
+        balls_class::ball_object[ball_count].acceleration.x = random_int(50,99)/100000.0f;
+        balls_class::ball_object[ball_count].acceleration.y = random_int(50,99)/100000.0f;
+        balls_class::ball_object[ball_count].mass           = random_int(25,75)/100000.0f;
     }
-    balls_class::world_2D.vertex[0].x = -1.0f;
-    balls_class::world_2D.vertex[0].y =  1.0f;
-    balls_class::world_2D.vertex[1].x =  1.0f;
-    balls_class::world_2D.vertex[1].y =  1.0f;
-    balls_class::world_2D.vertex[2].x =  1.0f;
-    balls_class::world_2D.vertex[2].y = -1.0f;
-    balls_class::world_2D.vertex[3].x = -1.0f;
-    balls_class::world_2D.vertex[3].y = -1.0f;
-    balls_class::world_2D.gravity_x   = 0.0f;
-    balls_class::world_2D.gravity_y   = random_int(25,75)/100000.0f;
+    balls_class::world.gravity_x  = 0.0f;
+    balls_class::world.gravity_y  = random_int(25,75)/100000.0f;
 };
 
 void balls_class::process(void)
 {
-    int ball_count_1 = 0;
-    for(int ball_count = 0; ball_count < NUMBER_OF_BALL_OBJECTS; ball_count++)
+    for(int ball_count_1 = 0; ball_count_1 < NUMBER_OF_BALL_OBJECTS; ball_count_1++)
     {
-        if (balls_class::ball_object[ball_count].velocity.magnitude() <= balls_class::ball_object[ball_count].velocity_max)
-        {
-            balls_class::ball_object[ball_count].velocity.x += balls_class::ball_object[ball_count].acceleration;
-            balls_class::ball_object[ball_count].velocity.y += balls_class::ball_object[ball_count].acceleration;
-        }
-        if (balls_class::ball_object[ball_count].velocity.magnitude() >= balls_class::ball_object[ball_count].velocity_max) balls_class::ball_object[ball_count].velocity  = balls_class::ball_object[ball_count].velocity_max;
-
-        balls_class::ball_object[ball_count].position.x = game.core.physics.move_velocity_angle_2D_x(balls_class::ball_object[ball_count].position.x
-                                                                                                   ,balls_class::ball_object[ball_count].velocity.magnitude()
-                                                                                                   ,balls_class::ball_object[ball_count].direction
-                                                                                                   );
-        balls_class::ball_object[ball_count].position.y = game.core.physics.move_velocity_angle_2D_y(balls_class::ball_object[ball_count].position.y
-                                                                                                   ,balls_class::ball_object[ball_count].velocity.magnitude()
-                                                                                                   ,balls_class::ball_object[ball_count].direction
-                                                                                                   );
-// world collision detection
-        if (balls_class::ball_object[ball_count].position.x < (-1.0f + balls_class::ball_object[ball_count].velocity.magnitude() + ((balls_class::ball_object[ball_count].radius/2.0f))))
-        {
-            balls_class::ball_object[ball_count].position.x = (-1.0f + balls_class::ball_object[ball_count].velocity.magnitude() + ((balls_class::ball_object[ball_count].radius/2.0f)));
-            balls_class::ball_object[ball_count].direction = 0 - balls_class::ball_object[ball_count].direction;
-        }
-        if (balls_class::ball_object[ball_count].position.x > (1.0f - balls_class::ball_object[ball_count].velocity.magnitude() - ((balls_class::ball_object[ball_count].radius/2.0f))))
-        {
-            balls_class::ball_object[ball_count].position.x = (1.0f - balls_class::ball_object[ball_count].velocity.magnitude() - ((balls_class::ball_object[ball_count].radius/2.0f)));
-            balls_class::ball_object[ball_count].direction = 0 - balls_class::ball_object[ball_count].direction;
-        }
-
-        if (balls_class::ball_object[ball_count].position.y < (-1.0f + balls_class::ball_object[ball_count].velocity.magnitude() + ((balls_class::ball_object[ball_count].radius/2.0f))))
-        {
-            balls_class::ball_object[ball_count].position.y = (-1.0f + balls_class::ball_object[ball_count].velocity.magnitude() + ((balls_class::ball_object[ball_count].radius/1.0f)));
-            balls_class::ball_object[ball_count].direction = 180 - balls_class::ball_object[ball_count].direction;
-        }
-        if (balls_class::ball_object[ball_count].position.y > (1.0f - balls_class::ball_object[ball_count].velocity.magnitude() - ((balls_class::ball_object[ball_count].radius/2.0f))))
-        {
-            balls_class::ball_object[ball_count].position.y = (1.0f - balls_class::ball_object[ball_count].velocity.magnitude() - ((balls_class::ball_object[ball_count].radius/2.0f)));
-            balls_class::ball_object[ball_count].direction = 180 - balls_class::ball_object[ball_count].direction;
-        }
-        if (balls_class::ball_object[ball_count].direction < 0) balls_class::ball_object[ball_count].direction += 360;
-        if (balls_class::ball_object[ball_count].direction > 360) balls_class::ball_object[ball_count].direction -= 360;
-// other ball collision detection
-        ball_count_1 = ball_count;
+        balls_class::ball_object[ball_count_1] = game.core.physics.process_body(balls_class::ball_object[ball_count_1]);
+        // world collision detection
+        if(!game.core.physics.collision_detection(balls_class::ball_object[ball_count_1],balls_class::world))
+            balls_class::ball_object[ball_count_1] = game.core.physics.collision_responce(balls_class::ball_object[ball_count_1],balls_class::world);
+        // other ball collision detection
         for(int ball_count_2 = 0; ball_count_2 < NUMBER_OF_BALL_OBJECTS; ball_count_2++)
         {
-            if(game.core.physics.collision(balls_class::ball_object[ball_count_1],balls_class::ball_object[ball_count_2]))
-  /*
-            if(game.core.physics.circle_collision(balls_class::ball_object[ball_count_1].position.x
-                                                 ,balls_class::ball_object[ball_count_1].position.y
-                                                 ,balls_class::ball_object[ball_count_1].radius
-                                                 ,balls_class::ball_object[ball_count_2].position.x
-                                                 ,balls_class::ball_object[ball_count_2].position.y
-                                                 ,balls_class::ball_object[ball_count_2].radius
-                                                 ))
-*/
-            {
-                //float angle_cirlce_1 = (atan2(balls_class::ball_object[ball_count_2].position_y - balls_class::ball_object[ball_count_1].position_y, balls_class::ball_object[ball_count_2].position_x - balls_class::ball_object[ball_count_1].position_x));
-                //float angle_cirlce_2 = (atan2(balls_class::ball_object[ball_count_1].position_y - balls_class::ball_object[ball_count_2].position_y, balls_class::ball_object[ball_count_1].position_x - balls_class::ball_object[ball_count_2].position_x));
-
-                int temp_direction = balls_class::ball_object[ball_count_1].direction;
-                balls_class::ball_object[ball_count_1].direction = balls_class::ball_object[ball_count_2].direction;
-                balls_class::ball_object[ball_count_2].direction = temp_direction;
-
-                //balls_class::ball_object[ball_count_1].direction = angle_cirlce_1;
-                //balls_class::ball_object[ball_count_2].direction = angle_cirlce_2;
-
-            };
+        if(game.core.physics.collision_detection(balls_class::ball_object[ball_count_1],balls_class::ball_object[ball_count_2]))
+            game.core.physics.collision_responce(balls_class::ball_object[ball_count_1],balls_class::ball_object[ball_count_2]);
         }
     }
 };
@@ -142,9 +77,9 @@ void balls_class::render(void)
                                                 ,0.01f
                                                 ,balls_class::ball_object[ball_count].radius*2.0f
                                                 ,balls_class::ball_object[ball_count].radius*2.0f
-                                                ,balls_class::ball_object[ball_count].direction
+                                                ,balls_class::ball_object[ball_count].velocity.angle_deg()
                                                 );
-    game.resource.font.font_1.Write(255,255,255,64,-0.98f,-0.98f,2,16,"Direction -> ",balls_class::ball_object[ball_count].direction);
+    game.resource.font.font_1.Write(255,255,255,64,-0.98f,-0.98f,2,16,"Direction -> ",balls_class::ball_object[ball_count].velocity.angle_deg());
     }
 };
 

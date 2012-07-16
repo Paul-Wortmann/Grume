@@ -1,13 +1,15 @@
-﻿* I am currently working on Frost and Flame, but on a different branch that I have not pushed yet.
-  If you really want the current unstable, unplayable code, send me a mail and I will send it to you. :)
-
-Due to university, work and the responsibilities of life,
+﻿Due to university, work and the responsibilities of life,
 I feel that Frost and Flame has been coming on very slowly these past few months.
 It may be slow at the moment, but I am determined to complete this game,
 it may take longer than I had first anticipated. 
 These are not indications that the project will be terminated in the future,
 just that time is not permitting to proceed at a fast pace, at the moment.
 
+
+v0.09 - (2012-07-31)
+CORE -> Merged new branch.
+CORE -> Re-wrote menu system.
+LOC  -> 18600
 
 v0.08 - (2012-06-30)
 CORE -> Started working on some physics for the engine.
@@ -16,9 +18,8 @@ CORE -> Re-wrote resource loading system.
 CORE -> Re-wrote main.cpp.
 CORE -> Re-wrote config system.
 CORE -> Re-wrote log system.
-CORE -> Basicaly I have been working through the base code and improving it as I go.
-        This includes new features and a more robust and flexible code base.
-LOC  -> XXXXX
+CORE -> Working on newly forked branch.
+LOC  -> 20311
 
 v0.07 - (2012-05-31)
 CORE -> Added movement stub to the player class.

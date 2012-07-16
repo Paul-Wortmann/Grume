@@ -23,13 +23,13 @@
  */
 
 #include "game.hpp"
-#include "balls.hpp"
 #include <SDL/SDL.h>
 #include "core/misc.hpp"
+#include "menu_system.hpp"
 
 extern game_class game;
 
-const char application_name[] = ("Frost and Flame V0.08 - www.physhexgames.co.nr");
+const char application_name[] = ("Frost and Flame V0.09 - www.physhexgames.co.nr");
 const char application_icon[] = ("data/icon.bmp");
 
 Uint32                   colorkey;
@@ -40,8 +40,6 @@ SDL_Surface             *application_icon_surface;
 // --------------------------------------------------------------------------------------------------------------------------
 extern "C" int main(int argc, char** argv)
 {
-    game.menu.main.element[0].active = true;
-    game.menu.main.element[0].type   = CLOSE;
     game.core.log.file_set("frost_and_flame.log");
     game.core.log.file_clear();
     game.core.log.file_write("# ",application_name," #");
@@ -112,6 +110,7 @@ extern "C" int main(int argc, char** argv)
     TTF_Init();
     game.core.log.file_write("Starting OpenGL...");
     game.core.graphics.init_gl(game.core.config.display_resolution_x,game.core.config.display_resolution_y);
+    game.resource.load_default();
     game.resource.loading_screen_display("data/loading_screen.png");
     game.core.log.file_write("Loading resources....");
     game.resource.load_UI();
@@ -129,6 +128,7 @@ extern "C" int main(int argc, char** argv)
     game.resource.write_log_file_count();
     game.core.log.file_write("Initializing game system...");
     game.init();
+    game.core.log.file_write("Initializing menu system...");
     game.core.log.file_write("Initializing event handlers...");
     events_init();
     game.core.log.file_write("Starting Game...");
@@ -155,15 +155,13 @@ extern "C" int main(int argc, char** argv)
                 }
                 if (game.core.process_ready) game.core.background.process();
                 if (game.core.process_ready) game.menu.process();
-                if (game.core.process_ready) game.process(); // - - - delete - - -
                 if (game.menu.event == 65535) game.state = STATE_QUIT;
                 game.core.background.draw();
                 game.menu.render();
-                game.render(); // - - - delete - - -
             break;
             case STATE_GAME:// game active, menus can be utilized in game, but the game will stay in this state.
                 if (game.core.process_ready) game.process();
-                if (game.event == 65535) game.state = STATE_MENU;
+                if (game.event == 65535) game.state = STATE_QUIT;
                 game.render();
             break;
             case STATE_QUIT:// game has received a quit event, do nothing...

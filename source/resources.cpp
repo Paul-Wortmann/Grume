@@ -64,6 +64,7 @@ void texture_resource_class::render(bool r, int texture_number, float x, float y
 
 void texture_resource_class::render(bool r, int texture_number, float x, float y, float z, float w, float h, float angle, int frame)
 {
+    if (texture_number == game.resource.texture.default_texture.ref_number) game.resource.texture.default_texture.draw(r,x,y,z,w,h,angle,frame);
     if (texture_number == game.resource.texture.background_00.ref_number) game.resource.texture.background_00.draw(r,x,y,z,w,h,angle,frame);
     if (texture_number == game.resource.texture.background_01.ref_number) game.resource.texture.background_01.draw(r,x,y,z,w,h,angle,frame);
     if (texture_number == game.resource.texture.background_02.ref_number) game.resource.texture.background_02.draw(r,x,y,z,w,h,angle,frame);
@@ -442,6 +443,8 @@ void texture_resource_class::render(bool r, int texture_number, float x, float y
 
 void texture_resource_class::bind(int texture_number)
 {
+    if (texture_number == game.resource.texture.default_texture.ref_number) glBindTexture(GL_TEXTURE_2D, game.resource.texture.default_texture.frame[0].data);
+
     if (texture_number == game.resource.texture.background_00.ref_number) glBindTexture(GL_TEXTURE_2D, game.resource.texture.background_00.frame[0].data);
     if (texture_number == game.resource.texture.background_01.ref_number) glBindTexture(GL_TEXTURE_2D, game.resource.texture.background_01.frame[0].data);
     if (texture_number == game.resource.texture.background_02.ref_number) glBindTexture(GL_TEXTURE_2D, game.resource.texture.background_02.frame[0].data);
@@ -859,6 +862,17 @@ void resource_class::write_log_file_count(void)
     game.core.log.file_write("texture  files loaded -> ",resource_class::texture.number_loaded);
 };
 
+void resource_class::load_default(void)
+{
+//--- font ---
+//--- 2D map ---
+//--- 3D map ---
+//--- 3D model ---
+//--- music ---
+//--- sound ---
+//--- texture ---
+    game.resource.texture.default_texture.load_image("data/textures/default.png",resource_class::texture.number_loaded);resource_class::texture.number_loaded++;
+}
 void resource_class::load_UI(void)
 {
     game.core.log.file_write("Loading resources -> UI");
@@ -873,6 +887,7 @@ void resource_class::load_UI(void)
     game.resource.sound.menu_move_00.load    ("data/sound/menu/menu_move_00.wav",resource_class::sound.number_loaded)    ;resource_class::sound.number_loaded++;
     game.resource.sound.menu_select_00.load  ("data/sound/menu/menu_select_00.wav",resource_class::sound.number_loaded)  ;resource_class::sound.number_loaded++;
 //--- texture ---
+
     game.resource.texture.background_00.load_image("data/textures/menu/background_00.png",resource_class::texture.number_loaded);resource_class::texture.number_loaded++;
     game.resource.texture.background_01.load_image("data/textures/menu/background_01.png",resource_class::texture.number_loaded);resource_class::texture.number_loaded++;
     game.resource.texture.background_02.load_image("data/textures/menu/background_02.png",resource_class::texture.number_loaded);resource_class::texture.number_loaded++;

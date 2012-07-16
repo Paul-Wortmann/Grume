@@ -55,7 +55,8 @@ class vector_2f_class
         bool  operator<=( vector_2f_class b ) { return x <= b.x && y <= b.y; }
         bool  operator==( vector_2f_class b ) { return x == b.x && y == b.y; }
         bool  operator!=( vector_2f_class b ) { return x != b.x || y != b.y; }
-        float angle(void);
+        float angle(void); // radians
+        int   angle_deg(void); // degrees
         float magnitude(void);
         float magnitude_squared(void);
         void  normalize(void);

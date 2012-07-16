@@ -23,6 +23,29 @@
  */
 
 #include "menu.hpp"
+#include "../game.hpp"
+
+extern game_class        game;
+
+/*----------------------------------------*/
+/*| location_class                       |*/
+/*----------------------------------------*/
+
+location_class::location_class(void)
+{
+    location_class::text        = "Not set";
+    location_class::position_x  = 0.0f;
+    location_class::position_y  = 0.0f;
+    location_class::position_z  = 0.0f;
+    location_class::size_x      = 0.0f;
+    location_class::size_y      = 0.0f;
+    location_class::size_z      = 0.0f;
+}
+
+location_class::~location_class(void)
+{
+
+}
 
 /*----------------------------------------*/
 /*| menu_class                           |*/
@@ -30,33 +53,54 @@
 
 menu_class::menu_class(void)
 {
-    menu_class::event                  = 0;
-    menu_class::title                  = " Not set";
-    menu_class::possition_x            = 0.0f;
-    menu_class::possition_y            = 0.0f;
-    menu_class::possition_z            = 0.0f;
-    menu_class::size_x                 = 0.0f;
-    menu_class::size_y                 = 0.0f;
-    menu_class::size_z                 = 0.0f;
-    menu_class::color_normal_r         = 255;
-    menu_class::color_normal_g         = 255;
-    menu_class::color_normal_b         = 255;
-    menu_class::color_normal_a         = 255;
-    menu_class::color_highlighted_r    = 255;
-    menu_class::color_highlighted_g    = 255;
-    menu_class::color_highlighted_b    = 255;
-    menu_class::color_highlighted_a    = 255;
-    menu_class::color_disabled_r       = 255;
-    menu_class::color_disabled_g       = 255;
-    menu_class::color_disabled_b       = 255;
-    menu_class::color_disabled_a       = 255;
-    menu_class::texture_ID             = 0;
-    menu_class::texture_ID_normal      = 0;
-    menu_class::texture_ID_highlighted = 0;
-    menu_class::texture_ID_disabled    = 0;
-    menu_class::mouse_over             = false;
-    menu_class::active                 = false;
-    menu_class::drag_active            = false;
+    menu_class::event                      = 0;
+    menu_class::title.text                 = "Not set";
+    menu_class::title.size_x               = 0.0f;
+    menu_class::title.size_y               = 0.0f;
+    menu_class::title.size_z               = 0.0f;
+    menu_class::title.position_x           = 0.0f;
+    menu_class::title.position_y           = 0.0f;
+    menu_class::title.position_z           = 0.0f;
+    menu_class::title_bar.text             = "";
+    menu_class::title_bar.size_x           = 0.0f;
+    menu_class::title_bar.size_y           = 0.0f;
+    menu_class::title_bar.size_z           = 0.0f;
+    menu_class::title_bar.position_x       = 0.0f;
+    menu_class::title_bar.position_y       = 0.0f;
+    menu_class::title_bar.position_z       = 0.0f;
+    menu_class::position_x                 = 0.0f;
+    menu_class::position_y                 = 0.0f;
+    menu_class::position_z                 = 0.0f;
+    menu_class::size_x                     = 0.0f;
+    menu_class::size_y                     = 0.0f;
+    menu_class::size_z                     = 0.0f;
+    menu_class::title_color.r              = 255;
+    menu_class::title_color.g              = 255;
+    menu_class::title_color.b              = 255;
+    menu_class::title_color.a              = 255;
+    menu_class::color.normal.r             = 255;
+    menu_class::color.normal.g             = 255;
+    menu_class::color.normal.b             = 255;
+    menu_class::color.normal.a             = 255;
+    menu_class::color.highlighted.r        = 255;
+    menu_class::color.highlighted.g        = 255;
+    menu_class::color.highlighted.b        = 255;
+    menu_class::color.highlighted.a        = 255;
+    menu_class::color.disabled.r           = 255;
+    menu_class::color.disabled.g           = 255;
+    menu_class::color.disabled.b           = 255;
+    menu_class::color.disabled.a           = 255;
+    menu_class::texture_ID.base            = 0;
+    menu_class::texture_ID.normal          = 0;
+    menu_class::texture_ID.highlighted     = 0;
+    menu_class::texture_ID.disabled        = 0;
+    menu_class::mouse_over                 = false;
+    menu_class::active                     = false;
+    menu_class::drag_active                = false;
+    menu_class::zoom.enabled               = true;
+    menu_class::zoom.maximum               = 0.01f;
+    menu_class::zoom.value                 = 0.0f;
+    menu_class::zoom.speed                 = 0.001f;
 };
 
 menu_class::~menu_class(void)
@@ -66,19 +110,127 @@ menu_class::~menu_class(void)
 
 void menu_class::render(void)
 {
-
-};
-
-void menu_class::process(void)
-{
+    // ------------------------- Render menu background and title -------------------------
+    game.resource.texture.render(false,menu_class::texture_ID.base,menu_class::position_x,menu_class::position_y,menu_class::position_z,menu_class::size_x,menu_class::size_y);
+    game.resource.font.font_1.Write(menu_class::title_color.r,menu_class::title_color.g,menu_class::title_color.b,menu_class::title_color.a,menu_class::title.position_x,menu_class::title.position_y,menu_class::title.size_x,menu_class::title.size_y,menu_class::title.text);
+    // ------------------------- Render elements -------------------------
     for (int element_number = 0; element_number < MAX_ELEMENTS; element_number++)
     {
         if (menu_class::element[element_number].active)
         {
-            menu_class::element[element_number].process();
-            if (menu_class::element[element_number].event == 65535) menu_class::event = menu_class::element[element_number].event;
+            menu_class::element[element_number].render();
         }
     }
+};
+
+bool  menu_class::mouse_over_title(void)
+{
+    return(game.core.physics.point_in_quadrangle(menu_class::title_bar.position_x,menu_class::title_bar.size_x,menu_class::title_bar.position_y,menu_class::title_bar.size_y,game.core.io.mouse_x,game.core.io.mouse_y));
+};
+
+bool  menu_class::mouse_click_title(void)
+{
+    if (game.core.io.mouse_button_left) return(menu_class::mouse_over_title());
+    else return(false);
+};
+
+void menu_class::set_position(float x_pos, float y_pos)
+{
+    float move_delta_x                = menu_class::position_x;
+    float move_delta_y                = menu_class::position_y;
+    menu_class::position_x            = x_pos;
+    menu_class::position_y            = y_pos;
+    move_delta_x                      = move_delta_x - menu_class::position_x;
+    move_delta_y                      = move_delta_y - menu_class::position_y;
+    menu_class::title.position_x     -= move_delta_x;
+    menu_class::title.position_y     -= move_delta_y;
+    menu_class::title_bar.position_x -= move_delta_x;
+    menu_class::title_bar.position_y -= move_delta_y;
+    for (int element_number = 0; element_number < MAX_ELEMENTS; element_number++)
+    {
+        if (menu_class::element[element_number].active)
+        {
+            menu_class::element[element_number].position_x       -= move_delta_x;
+            menu_class::element[element_number].position_y       -= move_delta_y;
+            menu_class::element[element_number].title.position_x -= move_delta_x;
+            menu_class::element[element_number].title.position_y -= move_delta_y;
+        }
+    }
+};
+
+int menu_class::process(void)
+{
+    float drag_delta_x = 0.0f;
+    float drag_delta_y = 0.0f;
+    int   return_value = 0;
+    bool  return_mouse_over = false;
+    bool  allow_drag        = true;
+    // ------------------------- Process elements -------------------------
+    for (int element_number = 0; element_number < MAX_ELEMENTS; element_number++)
+    {
+        if ((menu_class::element[element_number].active) && (return_value == 0))
+        {
+            return_value = menu_class::element[element_number].process();
+            if (return_value != 0)
+            {
+                allow_drag   = false;
+                return_value = element_number + 1;
+            }
+            if (menu_class::element[element_number].mouse_over)
+            {
+                allow_drag        = false;
+                return_mouse_over = true;
+            }
+        }
+    }
+    // ------------------------- Drag -------------------------
+    if ((!game.UI.drag_in_progress) && (menu_class::mouse_over_title())) menu_class::mouse_over = true;
+    else menu_class::mouse_over = false;
+    if (menu_class::drag_active)
+    {
+        if (game.core.io.mouse_button_left)
+        {
+            drag_delta_x = menu_class::position_x;
+            drag_delta_y = menu_class::position_y;
+            menu_class::position_x = game.core.io.mouse_x + menu_class::drag_offset_x;
+            menu_class::position_y = game.core.io.mouse_y + menu_class::drag_offset_y;
+            drag_delta_x = drag_delta_x - menu_class::position_x;
+            drag_delta_y = drag_delta_y - menu_class::position_y;
+            menu_class::title.position_x     -= drag_delta_x;
+            menu_class::title.position_y     -= drag_delta_y;
+            menu_class::title_bar.position_x -= drag_delta_x;
+            menu_class::title_bar.position_y -= drag_delta_y;
+            for (int element_number = 0; element_number < MAX_ELEMENTS; element_number++)
+            {
+                if (menu_class::element[element_number].active)
+                {
+                    menu_class::element[element_number].position_x       -= drag_delta_x;
+                    menu_class::element[element_number].position_y       -= drag_delta_y;
+                    menu_class::element[element_number].title.position_x -= drag_delta_x;
+                    menu_class::element[element_number].title.position_y -= drag_delta_y;
+                }
+            }
+        }
+        else
+        {
+            menu_class::drag_active        = false;
+            game.UI.drag_in_progress       = false;
+        }
+    }
+    else
+    {
+        if ((!game.UI.drag_in_progress) && (menu_class::mouse_over) && (game.core.io.mouse_button_left) && (allow_drag))// start drag
+        {
+            game.UI.active_window_list.add_to_list(MAIN_MENU_WINDOW);
+            menu_class::drag_active        = true;
+            game.UI.drag_in_progress       = true;
+            menu_class::drag_offset_x      = menu_class::position_x - game.core.io.mouse_x;
+            menu_class::drag_offset_y      = menu_class::position_y - game.core.io.mouse_y;
+        }
+    }
+    // ------------------------- X -------------------------
+    if (!menu_class::mouse_over) menu_class::mouse_over = return_mouse_over;
+    return(return_value);
 };
 
 /*----------------------------------------*/
@@ -87,7 +239,53 @@ void menu_class::process(void)
 
 menu_element_class::menu_element_class(void)
 {
-
+    menu_element_class::title.text             = "not set";
+    menu_element_class::title.position_x       = 0.0f;
+    menu_element_class::title.position_y       = 0.0f;
+    menu_element_class::title.position_z       = 0.0f;
+    menu_element_class::title.size_x           = 0.0f;
+    menu_element_class::title.size_y           = 0.0f;
+    menu_element_class::title.size_z           = 0.0f;
+    menu_element_class::tooltip.text           = "not set";
+    menu_element_class::tooltip.position_x     = 0.0f;
+    menu_element_class::tooltip.position_y     = 0.0f;
+    menu_element_class::tooltip.position_z     = 0.0f;
+    menu_element_class::tooltip.size_x         = 0.0f;
+    menu_element_class::tooltip.size_y         = 0.0f;
+    menu_element_class::tooltip.size_z         = 0.0f;
+    menu_element_class::color.normal.r         = 0;
+    menu_element_class::color.normal.g         = 0;
+    menu_element_class::color.normal.b         = 0;
+    menu_element_class::color.normal.a         = 0;
+    menu_element_class::color.highlighted.r    = 0;
+    menu_element_class::color.highlighted.g    = 0;
+    menu_element_class::color.highlighted.b    = 0;
+    menu_element_class::color.highlighted.a    = 0;
+    menu_element_class::color.disabled.r       = 0;
+    menu_element_class::color.disabled.g       = 0;
+    menu_element_class::color.disabled.b       = 0;
+    menu_element_class::color.disabled.a       = 0;
+    menu_element_class::event                  = 0;
+    menu_element_class::state                  = NORMAL;
+    menu_element_class::type                   = 0;
+    menu_element_class::value                  = 0.0f;
+    menu_element_class::position_x             = 0.0f;
+    menu_element_class::position_y             = 0.0f;
+    menu_element_class::position_z             = 0.0f;
+    menu_element_class::size_x                 = 0.0f;
+    menu_element_class::size_y                 = 0.0f;
+    menu_element_class::size_z                 = 0.0f;
+    menu_element_class::mouse_over             = false;
+    menu_element_class::active                 = false;
+    menu_element_class::clicked                = false;
+    menu_element_class::texture_ID.base        = 0;
+    menu_element_class::texture_ID.normal      = 0;
+    menu_element_class::texture_ID.highlighted = 0;
+    menu_element_class::texture_ID.disabled    = 0;
+    menu_element_class::zoom.enabled           = true;
+    menu_element_class::zoom.maximum           = 0.0f;
+    menu_element_class::zoom.value             = 0.0f;
+    menu_element_class::zoom.speed             = 0.0f;
 };
 
 menu_element_class::~menu_element_class(void)
@@ -97,14 +295,76 @@ menu_element_class::~menu_element_class(void)
 
 void menu_element_class::render(void)
 {
+    if (menu_element_class::active)
+    {
+        switch (menu_element_class::state)
+        {
+            case NORMAL:
+                game.resource.texture.render(false,menu_element_class::texture_ID.normal,menu_element_class::position_x,menu_element_class::position_y,menu_element_class::position_z,menu_element_class::size_x+menu_element_class::zoom.value,menu_element_class::size_y+menu_element_class::zoom.value);
+                if (menu_element_class::title.text.length() > 0) game.resource.font.font_1.Write(menu_element_class::color.normal.r,menu_element_class::color.normal.g,menu_element_class::color.normal.b,menu_element_class::color.normal.a,menu_element_class::title.position_x,menu_element_class::title.position_y,menu_element_class::title.size_x,menu_element_class::title.size_y,menu_element_class::title.text);
+            break;
+            case HIGHLIGHTED:
+                game.resource.texture.render(false,menu_element_class::texture_ID.highlighted,menu_element_class::position_x,menu_element_class::position_y,menu_element_class::position_z,menu_element_class::size_x+menu_element_class::zoom.value,menu_element_class::size_y+menu_element_class::zoom.value);
+                if (menu_element_class::title.text.length() > 0) game.resource.font.font_1.Write(menu_element_class::color.highlighted.r,menu_element_class::color.highlighted.g,menu_element_class::color.highlighted.b,menu_element_class::color.highlighted.a,menu_element_class::title.position_x,menu_element_class::title.position_y,menu_element_class::title.size_x,menu_element_class::title.size_y,menu_element_class::title.text);
+            break;
+            case DISABLED:
+                game.resource.texture.render(false,menu_element_class::texture_ID.disabled,menu_element_class::position_x,menu_element_class::position_y,menu_element_class::position_z,menu_element_class::size_x+menu_element_class::zoom.value,menu_element_class::size_y+menu_element_class::zoom.value);
+                if (menu_element_class::title.text.length() > 0) game.resource.font.font_1.Write(menu_element_class::color.disabled.r,menu_element_class::color.disabled.g,menu_element_class::color.disabled.b,menu_element_class::color.disabled.a,menu_element_class::title.position_x,menu_element_class::title.position_y,menu_element_class::title.size_x,menu_element_class::title.size_y,menu_element_class::title.text);
+            break;
+        }
+    }
+};
 
+bool menu_element_class::mouse_over_element(void)
+{
+    return(game.core.physics.point_in_quadrangle(menu_element_class::position_x,menu_element_class::size_x,menu_element_class::position_y,menu_element_class::size_y,game.core.io.mouse_x,game.core.io.mouse_y));
+};
+
+bool menu_element_class::mouse_clicked_element(void)
+{
+    if (game.core.io.mouse_button_left) return(menu_element_class::mouse_over_element());
+    else return(false);
 };
 
 int  menu_element_class::process(void)
 {
-    if (menu_element_class::clicked)
+    if ((!game.UI.drag_in_progress) && (menu_element_class::active))
     {
-        if (menu_element_class::type == CLOSE) menu_element_class::event = 65535;
+        if (menu_element_class::state != DISABLED)
+        {
+            if (menu_element_class::mouse_over_element())
+            {
+                menu_element_class::mouse_over   = true;
+                menu_element_class::state        = HIGHLIGHTED;
+                if (menu_element_class::mouse_clicked_element()) menu_element_class::clicked = true;
+                else menu_element_class::clicked = false;
+            }
+            else
+            {
+                menu_element_class::mouse_over = false;
+                menu_element_class::state      = NORMAL;
+                menu_element_class::clicked    = false;
+            }
+        }
+        if (menu_element_class::state == HIGHLIGHTED)
+        {
+            menu_element_class::zoom.value += menu_element_class::zoom.speed;
+            if (menu_element_class::zoom.value > menu_element_class::zoom.maximum) menu_element_class::zoom.value = menu_element_class::zoom.maximum;
+        }
+        if ((menu_element_class::state != HIGHLIGHTED) && (menu_element_class::zoom.value > 0.0f))
+        {
+            menu_element_class::zoom.value -= menu_element_class::zoom.speed;
+            if (menu_element_class::zoom.value < 0.0f) menu_element_class::zoom.value = 0.0f;
+        }
+        if (menu_element_class::clicked)
+        {
+            menu_element_class::event   = 1;
+            menu_element_class::clicked = false;
+        }
+        else
+        {
+            menu_element_class::event   = 0;
+        }
     }
     return(menu_element_class::event);
 };

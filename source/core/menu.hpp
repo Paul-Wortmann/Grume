@@ -27,42 +27,104 @@
 
 #include <string>
 
-#define DISABLED   0
-#define CLOSE      1
-#define BUTTON     2
-#define SLIDER     3
-#define IMAGE      4
-#define BAR        5
-#define TOGGLE     6
-#define CHECKBOX   7
-#define DROPDOWN   8
-#define SELECTION  9
-#define ACHIEVE    10
+#define DISABLED       0
+#define NORMAL         1
+#define HIGHLIGHTED    2
 
-const int MAX_ELEMENTS = 32;
+#define CLOSE      3
+#define BUTTON     4
+#define SLIDER     5
+#define IMAGE      6
+#define BAR        7
+#define TOGGLE     8
+#define CHECKBOX   9
+#define DROPDOWN   10
+#define SELECTION  11
+#define ACHIEVE    12
+
+const int MAX_ELEMENTS = 10;
+
+class location_class
+{
+    private:
+    public:
+        std::string             text;
+        float                   position_x;
+        float                   position_y;
+        float                   position_z;
+        float                   size_x;
+        float                   size_y;
+        float                   size_z;
+        location_class(void);
+       ~location_class(void);
+};
+
+class element_zoom_class
+{
+    private:
+    public:
+        bool  enabled;
+        float maximum;
+        float value;
+        float speed;
+};
+
+class color_class
+{
+    private:
+    public:
+        int r;
+        int g;
+        int b;
+        int a;
+};
+
+class color_state_class
+{
+    private:
+    public:
+        color_class normal;
+        color_class highlighted;
+        color_class disabled;
+};
+
+class texture_state_class
+{
+    private:
+    public:
+        int base;
+        int normal;
+        int highlighted;
+        int disabled;
+};
 
 class menu_element_class
 {
     private:
     public:
-        std::string             title;
-        std::string             tooltip;
+        location_class          title;
+        location_class          tooltip;
         int                     event;
+        int                     state;
         int                     type;
         float                   value;
-        float                   possition_x;
-        float                   possition_y;
-        float                   possition_z;
+        float                   position_x;
+        float                   position_y;
+        float                   position_z;
         float                   size_x;
         float                   size_y;
         float                   size_z;
         bool                    mouse_over;
         bool                    active;
         bool                    clicked;
-        bool                    hightlighted;
+        element_zoom_class      zoom;
+        color_state_class       color;
+        texture_state_class     texture_ID;
         menu_element_class(void);
        ~menu_element_class(void);
         void                    render(void);
+        bool                    mouse_over_element(void);
+        bool                    mouse_clicked_element(void);
         int                     process(void);
 };
 
@@ -71,37 +133,31 @@ class menu_class
     private:
     public:
         int                     event;
-        std::string             title;
-        float                   possition_x;
-        float                   possition_y;
-        float                   possition_z;
+        location_class          title;
+        color_class             title_color;
+        location_class          title_bar;
+        float                   position_x;
+        float                   position_y;
+        float                   position_z;
         float                   size_x;
         float                   size_y;
         float                   size_z;
-        int                     color_normal_r;
-        int                     color_normal_g;
-        int                     color_normal_b;
-        int                     color_normal_a;
-        int                     color_highlighted_r;
-        int                     color_highlighted_g;
-        int                     color_highlighted_b;
-        int                     color_highlighted_a;
-        int                     color_disabled_r;
-        int                     color_disabled_g;
-        int                     color_disabled_b;
-        int                     color_disabled_a;
-        int                     texture_ID;
-        int                     texture_ID_normal;
-        int                     texture_ID_highlighted;
-        int                     texture_ID_disabled;
         bool                    mouse_over;
-        bool                    active;
         bool                    drag_active;
+        float                   drag_offset_x;
+        float                   drag_offset_y;
+        element_zoom_class      zoom;
+        color_state_class       color;
+        texture_state_class     texture_ID;
+        bool                    active;
         menu_element_class      element[MAX_ELEMENTS];
         menu_class(void);
        ~menu_class(void);
         void                    render(void);
-        void                    process(void);
+        bool                    mouse_over_title(void);
+        bool                    mouse_click_title(void);
+        void                    set_position(float x_pos, float y_pos);
+        int                     process(void);
 };
 
 #endif //MENU_H
