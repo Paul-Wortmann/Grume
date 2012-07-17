@@ -103,6 +103,9 @@ void game_class::init(void)
     game.UI.equipment.close_button.image_highlighted          =  game.resource.texture.close_button_highlighted.ref_number;
     game.UI.npcvendor.close_button.image_normal               =  game.resource.texture.close_button.ref_number;
     game.UI.npcvendor.close_button.image_highlighted          =  game.resource.texture.close_button_highlighted.ref_number;
+    game.npc.health.bar.texture_base  = game.resource.texture.enemy_health_bar_background_000.ref_number;
+    game.npc.health.bar.texture_bar   = game.resource.texture.enemy_health_bar_000.ref_number;
+    game.npc.health.bar.texture_front = game.resource.texture.enemy_health_bar_foreground_000.ref_number;
 
     //--- other ---
     game.menu.init();
@@ -116,6 +119,7 @@ void game_class::process(void)
 {
     game.UI.process();
     game.player.process();
+    game.npc.process();
     game.resource.map_2D.town.process();
     //game.resource.map_3D.town.process();
     game.core.game_resume = true;
@@ -347,6 +351,7 @@ void game_class::render(void)
     game.resource.map_2D.town.draw();
     //game.resource.map_3D.town.draw();
     game.player.draw();
+    game.npc.render();
 
     glLightModelfv(GL_LIGHT_MODEL_AMBIENT,global_ambient_light);
     game.UI.draw();

@@ -130,6 +130,19 @@ void texture_resource_class::render(bool r, int texture_number, float x, float y
     if (texture_number == game.resource.texture.equipment_slot_64x64.ref_number)        game.resource.texture.equipment_slot_64x64.draw        (r,x,y,z,w,h,angle,frame);
     if (texture_number == game.resource.texture.equipment_slot_64x96.ref_number)        game.resource.texture.equipment_slot_64x96.draw        (r,x,y,z,w,h,angle,frame);
 
+    if (texture_number == game.resource.texture.enemy_health_bar_000.ref_number)            game.resource.texture.enemy_health_bar_000.draw        (r,x,y,z,w,h,angle,frame);
+    if (texture_number == game.resource.texture.enemy_health_bar_001.ref_number)            game.resource.texture.enemy_health_bar_001.draw        (r,x,y,z,w,h,angle,frame);
+    if (texture_number == game.resource.texture.enemy_health_bar_background_000.ref_number) game.resource.texture.enemy_health_bar_background_000.draw        (r,x,y,z,w,h,angle,frame);
+    if (texture_number == game.resource.texture.enemy_health_bar_background_001.ref_number) game.resource.texture.enemy_health_bar_background_001.draw        (r,x,y,z,w,h,angle,frame);
+    if (texture_number == game.resource.texture.enemy_health_bar_foreground_000.ref_number) game.resource.texture.enemy_health_bar_foreground_000.draw        (r,x,y,z,w,h,angle,frame);
+    if (texture_number == game.resource.texture.enemy_health_bar_foreground_001.ref_number) game.resource.texture.enemy_health_bar_foreground_001.draw        (r,x,y,z,w,h,angle,frame);
+    if (texture_number == game.resource.texture.enemy_health_bar_foreground_002.ref_number) game.resource.texture.enemy_health_bar_foreground_002.draw        (r,x,y,z,w,h,angle,frame);
+    if (texture_number == game.resource.texture.enemy_health_bar_foreground_003.ref_number) game.resource.texture.enemy_health_bar_foreground_003.draw        (r,x,y,z,w,h,angle,frame);
+    if (texture_number == game.resource.texture.enemy_health_bar_foreground_004.ref_number) game.resource.texture.enemy_health_bar_foreground_004.draw        (r,x,y,z,w,h,angle,frame);
+    if (texture_number == game.resource.texture.enemy_health_bar_foreground_005.ref_number) game.resource.texture.enemy_health_bar_foreground_005.draw        (r,x,y,z,w,h,angle,frame);
+    if (texture_number == game.resource.texture.enemy_mana_bar_000.ref_number)              game.resource.texture.enemy_mana_bar_000.draw        (r,x,y,z,w,h,angle,frame);
+    if (texture_number == game.resource.texture.enemy_mana_bar_001.ref_number)              game.resource.texture.enemy_mana_bar_001.draw        (r,x,y,z,w,h,angle,frame);
+
     if (texture_number == game.resource.texture.particle_000.ref_number) game.resource.texture.particle_000.draw(r,x,y,z,w,h,angle,frame);
     if (texture_number == game.resource.texture.particle_001.ref_number) game.resource.texture.particle_001.draw(r,x,y,z,w,h,angle,frame);
     if (texture_number == game.resource.texture.particle_002.ref_number) game.resource.texture.particle_002.draw(r,x,y,z,w,h,angle,frame);
@@ -510,6 +523,19 @@ void texture_resource_class::bind(int texture_number)
     if (texture_number == game.resource.texture.equipment_slot_64x64.ref_number)        glBindTexture(GL_TEXTURE_2D, game.resource.texture.equipment_slot_64x64.frame[0].data)        ;
     if (texture_number == game.resource.texture.equipment_slot_64x96.ref_number)        glBindTexture(GL_TEXTURE_2D, game.resource.texture.equipment_slot_64x96.frame[0].data)        ;
 
+    if (texture_number == game.resource.texture.enemy_health_bar_000.ref_number)            glBindTexture(GL_TEXTURE_2D, game.resource.texture.enemy_health_bar_000.frame[0].data)        ;
+    if (texture_number == game.resource.texture.enemy_health_bar_001.ref_number)            glBindTexture(GL_TEXTURE_2D, game.resource.texture.enemy_health_bar_001.frame[0].data)        ;
+    if (texture_number == game.resource.texture.enemy_health_bar_background_000.ref_number) glBindTexture(GL_TEXTURE_2D, game.resource.texture.enemy_health_bar_background_000.frame[0].data)        ;
+    if (texture_number == game.resource.texture.enemy_health_bar_background_001.ref_number) glBindTexture(GL_TEXTURE_2D, game.resource.texture.enemy_health_bar_background_001.frame[0].data)        ;
+    if (texture_number == game.resource.texture.enemy_health_bar_foreground_000.ref_number) glBindTexture(GL_TEXTURE_2D, game.resource.texture.enemy_health_bar_foreground_000.frame[0].data)        ;
+    if (texture_number == game.resource.texture.enemy_health_bar_foreground_001.ref_number) glBindTexture(GL_TEXTURE_2D, game.resource.texture.enemy_health_bar_foreground_001.frame[0].data)        ;
+    if (texture_number == game.resource.texture.enemy_health_bar_foreground_002.ref_number) glBindTexture(GL_TEXTURE_2D, game.resource.texture.enemy_health_bar_foreground_002.frame[0].data)        ;
+    if (texture_number == game.resource.texture.enemy_health_bar_foreground_003.ref_number) glBindTexture(GL_TEXTURE_2D, game.resource.texture.enemy_health_bar_foreground_003.frame[0].data)        ;
+    if (texture_number == game.resource.texture.enemy_health_bar_foreground_004.ref_number) glBindTexture(GL_TEXTURE_2D, game.resource.texture.enemy_health_bar_foreground_004.frame[0].data)        ;
+    if (texture_number == game.resource.texture.enemy_health_bar_foreground_005.ref_number) glBindTexture(GL_TEXTURE_2D, game.resource.texture.enemy_health_bar_foreground_005.frame[0].data)        ;
+    if (texture_number == game.resource.texture.enemy_mana_bar_000.ref_number)              glBindTexture(GL_TEXTURE_2D, game.resource.texture.enemy_mana_bar_000.frame[0].data)        ;
+    if (texture_number == game.resource.texture.enemy_mana_bar_001.ref_number)              glBindTexture(GL_TEXTURE_2D, game.resource.texture.enemy_mana_bar_001.frame[0].data)        ;
+
     if (texture_number == game.resource.texture.particle_000.ref_number) glBindTexture(GL_TEXTURE_2D, game.resource.texture.particle_000.frame[0].data);
     if (texture_number == game.resource.texture.particle_001.ref_number) glBindTexture(GL_TEXTURE_2D, game.resource.texture.particle_001.frame[0].data);
     if (texture_number == game.resource.texture.particle_002.ref_number) glBindTexture(GL_TEXTURE_2D, game.resource.texture.particle_002.frame[0].data);
@@ -888,30 +914,30 @@ void resource_class::load_UI(void)
     game.resource.sound.menu_select_00.load  ("data/sound/menu/menu_select_00.wav",resource_class::sound.number_loaded)  ;resource_class::sound.number_loaded++;
 //--- texture ---
 
-    game.resource.texture.background_00.load_image("data/textures/menu/background_00.png",resource_class::texture.number_loaded);resource_class::texture.number_loaded++;
-    game.resource.texture.background_01.load_image("data/textures/menu/background_01.png",resource_class::texture.number_loaded);resource_class::texture.number_loaded++;
-    game.resource.texture.background_02.load_image("data/textures/menu/background_02.png",resource_class::texture.number_loaded);resource_class::texture.number_loaded++;
-    game.resource.texture.background_03.load_image("data/textures/menu/background_03.png",resource_class::texture.number_loaded);resource_class::texture.number_loaded++;
+    game.resource.texture.background_00.load_image("data/textures/UI/menu/background_00.png",resource_class::texture.number_loaded);resource_class::texture.number_loaded++;
+    game.resource.texture.background_01.load_image("data/textures/UI/menu/background_01.png",resource_class::texture.number_loaded);resource_class::texture.number_loaded++;
+    game.resource.texture.background_02.load_image("data/textures/UI/menu/background_02.png",resource_class::texture.number_loaded);resource_class::texture.number_loaded++;
+    game.resource.texture.background_03.load_image("data/textures/UI/menu/background_03.png",resource_class::texture.number_loaded);resource_class::texture.number_loaded++;
 
-    game.resource.texture.logo.load_image                     ("data/textures/menu/logo.png"                     ,resource_class::texture.number_loaded);resource_class::texture.number_loaded++;
-    game.resource.texture.button_normal.load_image            ("data/textures/menu/button_normal.png"            ,resource_class::texture.number_loaded);resource_class::texture.number_loaded++;
-    game.resource.texture.button_highlighted.load_image       ("data/textures/menu/button_highlighted.png"       ,resource_class::texture.number_loaded);resource_class::texture.number_loaded++;
-    game.resource.texture.button_disabled.load_image          ("data/textures/menu/button_disabled.png"          ,resource_class::texture.number_loaded);resource_class::texture.number_loaded++;
-    game.resource.texture.close_button.load_image             ("data/textures/menu/close_button.png"             ,resource_class::texture.number_loaded);resource_class::texture.number_loaded++;
-    game.resource.texture.close_button_highlighted.load_image ("data/textures/menu/close_button_highlighted.png" ,resource_class::texture.number_loaded);resource_class::texture.number_loaded++;
-    game.resource.texture.selection_box.load_image            ("data/textures/menu/selection_box.png"            ,resource_class::texture.number_loaded);resource_class::texture.number_loaded++;
-    game.resource.texture.arrow_button_normal.load_image      ("data/textures/menu/arrow_normal.png"             ,resource_class::texture.number_loaded);resource_class::texture.number_loaded++;
-    game.resource.texture.arrow_button_highlighted.load_image ("data/textures/menu/arrow_highlighted.png"        ,resource_class::texture.number_loaded);resource_class::texture.number_loaded++;
-    game.resource.texture.arrow_button_disabled.load_image    ("data/textures/menu/arrow_disabled.png"           ,resource_class::texture.number_loaded);resource_class::texture.number_loaded++;
-    game.resource.texture.slider_button_normal.load_image     ("data/textures/menu/slider_normal.png"            ,resource_class::texture.number_loaded);resource_class::texture.number_loaded++;
-    game.resource.texture.slider_button_highlighted.load_image("data/textures/menu/slider_highlighted.png"       ,resource_class::texture.number_loaded);resource_class::texture.number_loaded++;
-    game.resource.texture.red_button.load_image               ("data/textures/menu/red_button.png"               ,resource_class::texture.number_loaded);resource_class::texture.number_loaded++;
-    game.resource.texture.red_button_highlighted.load_image   ("data/textures/menu/red_button_highlighted.png"   ,resource_class::texture.number_loaded);resource_class::texture.number_loaded++;
-    game.resource.texture.green_button.load_image             ("data/textures/menu/green_button.png"             ,resource_class::texture.number_loaded);resource_class::texture.number_loaded++;
-    game.resource.texture.green_button_highlighted.load_image ("data/textures/menu/green_button_highlighted.png" ,resource_class::texture.number_loaded);resource_class::texture.number_loaded++;
-    game.resource.texture.blue_button.load_image              ("data/textures/menu/blue_button.png"              ,resource_class::texture.number_loaded);resource_class::texture.number_loaded++;
-    game.resource.texture.blue_button_highlighted.load_image  ("data/textures/menu/blue_button_highlighted.png"  ,resource_class::texture.number_loaded);resource_class::texture.number_loaded++;
-    game.resource.texture.resolution_icon.load_image          ("data/textures/menu/resolution_icon.png"          ,resource_class::texture.number_loaded);resource_class::texture.number_loaded++;
+    game.resource.texture.logo.load_image                     ("data/textures/UI/menu/logo.png"                     ,resource_class::texture.number_loaded);resource_class::texture.number_loaded++;
+    game.resource.texture.button_normal.load_image            ("data/textures/UI/menu/button_normal.png"            ,resource_class::texture.number_loaded);resource_class::texture.number_loaded++;
+    game.resource.texture.button_highlighted.load_image       ("data/textures/UI/menu/button_highlighted.png"       ,resource_class::texture.number_loaded);resource_class::texture.number_loaded++;
+    game.resource.texture.button_disabled.load_image          ("data/textures/UI/menu/button_disabled.png"          ,resource_class::texture.number_loaded);resource_class::texture.number_loaded++;
+    game.resource.texture.close_button.load_image             ("data/textures/UI/menu/close_button.png"             ,resource_class::texture.number_loaded);resource_class::texture.number_loaded++;
+    game.resource.texture.close_button_highlighted.load_image ("data/textures/UI/menu/close_button_highlighted.png" ,resource_class::texture.number_loaded);resource_class::texture.number_loaded++;
+    game.resource.texture.selection_box.load_image            ("data/textures/UI/menu/selection_box.png"            ,resource_class::texture.number_loaded);resource_class::texture.number_loaded++;
+    game.resource.texture.arrow_button_normal.load_image      ("data/textures/UI/menu/arrow_normal.png"             ,resource_class::texture.number_loaded);resource_class::texture.number_loaded++;
+    game.resource.texture.arrow_button_highlighted.load_image ("data/textures/UI/menu/arrow_highlighted.png"        ,resource_class::texture.number_loaded);resource_class::texture.number_loaded++;
+    game.resource.texture.arrow_button_disabled.load_image    ("data/textures/UI/menu/arrow_disabled.png"           ,resource_class::texture.number_loaded);resource_class::texture.number_loaded++;
+    game.resource.texture.slider_button_normal.load_image     ("data/textures/UI/menu/slider_normal.png"            ,resource_class::texture.number_loaded);resource_class::texture.number_loaded++;
+    game.resource.texture.slider_button_highlighted.load_image("data/textures/UI/menu/slider_highlighted.png"       ,resource_class::texture.number_loaded);resource_class::texture.number_loaded++;
+    game.resource.texture.red_button.load_image               ("data/textures/UI/menu/red_button.png"               ,resource_class::texture.number_loaded);resource_class::texture.number_loaded++;
+    game.resource.texture.red_button_highlighted.load_image   ("data/textures/UI/menu/red_button_highlighted.png"   ,resource_class::texture.number_loaded);resource_class::texture.number_loaded++;
+    game.resource.texture.green_button.load_image             ("data/textures/UI/menu/green_button.png"             ,resource_class::texture.number_loaded);resource_class::texture.number_loaded++;
+    game.resource.texture.green_button_highlighted.load_image ("data/textures/UI/menu/green_button_highlighted.png" ,resource_class::texture.number_loaded);resource_class::texture.number_loaded++;
+    game.resource.texture.blue_button.load_image              ("data/textures/UI/menu/blue_button.png"              ,resource_class::texture.number_loaded);resource_class::texture.number_loaded++;
+    game.resource.texture.blue_button_highlighted.load_image  ("data/textures/UI/menu/blue_button_highlighted.png"  ,resource_class::texture.number_loaded);resource_class::texture.number_loaded++;
+    game.resource.texture.resolution_icon.load_image          ("data/textures/UI/menu/resolution_icon.png"          ,resource_class::texture.number_loaded);resource_class::texture.number_loaded++;
 
     game.resource.texture.cursor.load_image              ("data/textures/UI/cursor.png"                          ,resource_class::texture.number_loaded);resource_class::texture.number_loaded++;
     game.resource.texture.action_bar.load_image          ("data/textures/UI/action_bar/action_bar.png"           ,resource_class::texture.number_loaded);resource_class::texture.number_loaded++;
@@ -952,6 +978,19 @@ void resource_class::load_UI(void)
     game.resource.texture.equipment_slot_64x32.load_image        ("data/textures/UI/equipment/equipment_slot_64x32.png"           ,resource_class::texture.number_loaded);resource_class::texture.number_loaded++;
     game.resource.texture.equipment_slot_64x64.load_image        ("data/textures/UI/equipment/equipment_slot_64x64.png"           ,resource_class::texture.number_loaded);resource_class::texture.number_loaded++;
     game.resource.texture.equipment_slot_64x96.load_image        ("data/textures/UI/equipment/equipment_slot_64x96.png"           ,resource_class::texture.number_loaded);resource_class::texture.number_loaded++;
+
+    game.resource.texture.enemy_health_bar_000.load_image             ("data/textures/UI/enemy_health_bars/enemy_health_bar_000.png"           ,resource_class::texture.number_loaded);resource_class::texture.number_loaded++;
+    game.resource.texture.enemy_health_bar_001.load_image             ("data/textures/UI/enemy_health_bars/enemy_health_bar_001.png"           ,resource_class::texture.number_loaded);resource_class::texture.number_loaded++;
+    game.resource.texture.enemy_health_bar_background_000.load_image  ("data/textures/UI/enemy_health_bars/enemy_health_bar_background_000.png"           ,resource_class::texture.number_loaded);resource_class::texture.number_loaded++;
+    game.resource.texture.enemy_health_bar_background_001.load_image  ("data/textures/UI/enemy_health_bars/enemy_health_bar_background_001.png"           ,resource_class::texture.number_loaded);resource_class::texture.number_loaded++;
+    game.resource.texture.enemy_health_bar_foreground_000.load_image  ("data/textures/UI/enemy_health_bars/enemy_health_bar_foreground_000.png"           ,resource_class::texture.number_loaded);resource_class::texture.number_loaded++;
+    game.resource.texture.enemy_health_bar_foreground_001.load_image  ("data/textures/UI/enemy_health_bars/enemy_health_bar_foreground_001.png"           ,resource_class::texture.number_loaded);resource_class::texture.number_loaded++;
+    game.resource.texture.enemy_health_bar_foreground_002.load_image  ("data/textures/UI/enemy_health_bars/enemy_health_bar_foreground_002.png"           ,resource_class::texture.number_loaded);resource_class::texture.number_loaded++;
+    game.resource.texture.enemy_health_bar_foreground_003.load_image  ("data/textures/UI/enemy_health_bars/enemy_health_bar_foreground_003.png"           ,resource_class::texture.number_loaded);resource_class::texture.number_loaded++;
+    game.resource.texture.enemy_health_bar_foreground_004.load_image  ("data/textures/UI/enemy_health_bars/enemy_health_bar_foreground_004.png"           ,resource_class::texture.number_loaded);resource_class::texture.number_loaded++;
+    game.resource.texture.enemy_health_bar_foreground_005.load_image  ("data/textures/UI/enemy_health_bars/enemy_health_bar_foreground_005.png"           ,resource_class::texture.number_loaded);resource_class::texture.number_loaded++;
+    game.resource.texture.enemy_mana_bar_000.load_image               ("data/textures/UI/enemy_health_bars/enemy_mana_bar_000.png"           ,resource_class::texture.number_loaded);resource_class::texture.number_loaded++;
+    game.resource.texture.enemy_mana_bar_001.load_image               ("data/textures/UI/enemy_health_bars/enemy_mana_bar_001.png"           ,resource_class::texture.number_loaded);resource_class::texture.number_loaded++;
 };
 
 void resource_class::load_items(void)

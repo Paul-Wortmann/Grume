@@ -837,6 +837,13 @@ int menu_system_class::process(void)
 
 void menu_system_class::render(void)
 {
+    if (game.state != STATE_GAME)
+    {
+        game.resource.texture.logo.draw(true,0.0f,0.9f,0.001f,1.6f,0.2f);
+        game.resource.font.font_1.Write(255,255,255,64,-0.98f,-0.98f,2,16,"www.PhysHexGames.co.nr");
+    }
+
+
     switch(menu_system_class::active_menu)
     {
         case MENU_MAIN:

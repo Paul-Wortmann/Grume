@@ -136,6 +136,8 @@
 		<Unit filename="source\main.cpp" />
 		<Unit filename="source\menu_system.cpp" />
 		<Unit filename="source\menu_system.hpp" />
+		<Unit filename="source\npc.cpp" />
+		<Unit filename="source\npc.hpp" />
 		<Unit filename="source\npcvendor.cpp" />
 		<Unit filename="source\npcvendor.hpp" />
 		<Unit filename="source\player.cpp" />

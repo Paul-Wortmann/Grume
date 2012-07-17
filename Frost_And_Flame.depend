@@ -23,7 +23,7 @@
 	<string>
 	<fstream>
 
-1342369555 c:\_git_\frost_and_flame\source\game.hpp
+1342530501 c:\_git_\frost_and_flame\source\game.hpp
 	"core/core.hpp"
 	"core/menu.hpp"
 	"core/savegame.hpp"
@@ -32,6 +32,7 @@
 	"resources.hpp"
 	"menu_system.hpp"
 	"player.hpp"
+	"npc.hpp"
 	"spells.hpp"
 	"UI.hpp"
 
@@ -567,7 +568,7 @@
 1326872134 c:\_git_\frost_and_flame\source\language.hpp
 	<string>
 
-1342275673 c:\_git_\frost_and_flame\source\resources.hpp
+1342528211 c:\_git_\frost_and_flame\source\resources.hpp
 	"core/core.hpp"
 	"core/sound.hpp"
 	"core/music.hpp"
@@ -743,7 +744,7 @@
 	<sstream>
 	"../game.hpp"
 
-1342275881 source:c:\_git_\frost_and_flame\source\resources.cpp
+1342528761 source:c:\_git_\frost_and_flame\source\resources.cpp
 	<SDL/SDL.h>
 	"resources.hpp"
 	"game.hpp"
@@ -885,7 +886,7 @@
 	"misc.hpp"
 	"../game.hpp"
 
-1342376154 source:c:\_git_\frost_and_flame\source\game.cpp
+1342533520 source:c:\_git_\frost_and_flame\source\game.cpp
 	"game.hpp"
 
 1342363947 source:c:\_git_\frost_and_flame\source\core\menu.cpp
@@ -931,4 +932,11 @@
 	"network.hpp"
 
 1326868751 c:\_git_\frost_and_flame\source\core\network.hpp
+
+1342533057 c:\_git_\frost_and_flame\source\npc.hpp
+	<string>
+
+1342534205 source:c:\_git_\frost_and_flame\source\npc.cpp
+	"npc.hpp"
+	"game.hpp"
 

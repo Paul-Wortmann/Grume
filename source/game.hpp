@@ -33,6 +33,7 @@
 #include "resources.hpp"
 #include "menu_system.hpp"
 #include "player.hpp"
+#include "npc.hpp"
 #include "spells.hpp"
 #include "UI.hpp"
 
@@ -65,6 +66,7 @@ class game_class
         resource_class    resource;
         zoom_type         zoom;
         player_class      player;
+        npc_class         npc;
         light_type        global_ambient;
         light_type        world_ambient;
         spell_class       spell[MAX_SPELLS];

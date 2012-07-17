@@ -162,6 +162,19 @@ struct texture_resource_class
         texture_class equipment_slot_64x64;
         texture_class equipment_slot_64x96;
 
+        texture_class enemy_health_bar_000;
+        texture_class enemy_health_bar_001;
+        texture_class enemy_health_bar_background_000;
+        texture_class enemy_health_bar_background_001;
+        texture_class enemy_health_bar_foreground_000;
+        texture_class enemy_health_bar_foreground_001;
+        texture_class enemy_health_bar_foreground_002;
+        texture_class enemy_health_bar_foreground_003;
+        texture_class enemy_health_bar_foreground_004;
+        texture_class enemy_health_bar_foreground_005;
+        texture_class enemy_mana_bar_000;
+        texture_class enemy_mana_bar_001;
+
         texture_class particle_000;
         texture_class particle_001;
         texture_class particle_002;
