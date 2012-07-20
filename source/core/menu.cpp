@@ -267,7 +267,7 @@ menu_element_class::menu_element_class(void)
     menu_element_class::color.disabled.a       = 0;
     menu_element_class::event                  = 0;
     menu_element_class::state                  = NORMAL;
-    menu_element_class::type                   = 0;
+    menu_element_class::type                   = BUTTON;
     menu_element_class::value                  = 0.0f;
     menu_element_class::position_x             = 0.0f;
     menu_element_class::position_y             = 0.0f;
@@ -297,19 +297,47 @@ void menu_element_class::render(void)
 {
     if (menu_element_class::active)
     {
-        switch (menu_element_class::state)
+        switch (menu_element_class::type)
         {
-            case NORMAL:
-                game.resource.texture.render(false,menu_element_class::texture_ID.normal,menu_element_class::position_x,menu_element_class::position_y,menu_element_class::position_z,menu_element_class::size_x+menu_element_class::zoom.value,menu_element_class::size_y+menu_element_class::zoom.value);
-                if (menu_element_class::title.text.length() > 0) game.resource.font.font_1.Write(menu_element_class::color.normal.r,menu_element_class::color.normal.g,menu_element_class::color.normal.b,menu_element_class::color.normal.a,menu_element_class::title.position_x,menu_element_class::title.position_y,menu_element_class::title.size_x,menu_element_class::title.size_y,menu_element_class::title.text);
+            case BUTTON:
+                switch (menu_element_class::state)
+                {
+                    case NORMAL:
+                        game.resource.texture.render(false,menu_element_class::texture_ID.normal,menu_element_class::position_x,menu_element_class::position_y,menu_element_class::position_z,menu_element_class::size_x+menu_element_class::zoom.value,menu_element_class::size_y+menu_element_class::zoom.value,menu_element_class::texture_ID.angle);
+                        if (menu_element_class::title.text.length() > 0) game.resource.font.font_1.Write(menu_element_class::color.normal.r,menu_element_class::color.normal.g,menu_element_class::color.normal.b,menu_element_class::color.normal.a,menu_element_class::title.position_x,menu_element_class::title.position_y,menu_element_class::title.size_x,menu_element_class::title.size_y,menu_element_class::title.text);
+                    break;
+                    case HIGHLIGHTED:
+                        game.resource.texture.render(false,menu_element_class::texture_ID.highlighted,menu_element_class::position_x,menu_element_class::position_y,menu_element_class::position_z,menu_element_class::size_x+menu_element_class::zoom.value,menu_element_class::size_y+menu_element_class::zoom.value,menu_element_class::texture_ID.angle);
+                        if (menu_element_class::title.text.length() > 0) game.resource.font.font_1.Write(menu_element_class::color.highlighted.r,menu_element_class::color.highlighted.g,menu_element_class::color.highlighted.b,menu_element_class::color.highlighted.a,menu_element_class::title.position_x,menu_element_class::title.position_y,menu_element_class::title.size_x,menu_element_class::title.size_y,menu_element_class::title.text);
+                    break;
+                    case DISABLED:
+                        game.resource.texture.render(false,menu_element_class::texture_ID.disabled,menu_element_class::position_x,menu_element_class::position_y,menu_element_class::position_z,menu_element_class::size_x+menu_element_class::zoom.value,menu_element_class::size_y+menu_element_class::zoom.value,menu_element_class::texture_ID.angle);
+                        if (menu_element_class::title.text.length() > 0) game.resource.font.font_1.Write(menu_element_class::color.disabled.r,menu_element_class::color.disabled.g,menu_element_class::color.disabled.b,menu_element_class::color.disabled.a,menu_element_class::title.position_x,menu_element_class::title.position_y,menu_element_class::title.size_x,menu_element_class::title.size_y,menu_element_class::title.text);
+                    break;
+                    default:
+                    break;
+                }
             break;
-            case HIGHLIGHTED:
-                game.resource.texture.render(false,menu_element_class::texture_ID.highlighted,menu_element_class::position_x,menu_element_class::position_y,menu_element_class::position_z,menu_element_class::size_x+menu_element_class::zoom.value,menu_element_class::size_y+menu_element_class::zoom.value);
-                if (menu_element_class::title.text.length() > 0) game.resource.font.font_1.Write(menu_element_class::color.highlighted.r,menu_element_class::color.highlighted.g,menu_element_class::color.highlighted.b,menu_element_class::color.highlighted.a,menu_element_class::title.position_x,menu_element_class::title.position_y,menu_element_class::title.size_x,menu_element_class::title.size_y,menu_element_class::title.text);
+            case TEXTLABEL:
+                switch (menu_element_class::state)
+                {
+                    case NORMAL:
+                        if (menu_element_class::title.text.length() > 0) game.resource.font.font_1.Write(menu_element_class::color.normal.r,menu_element_class::color.normal.g,menu_element_class::color.normal.b,menu_element_class::color.normal.a,menu_element_class::title.position_x,menu_element_class::title.position_y,menu_element_class::title.size_x,menu_element_class::title.size_y,menu_element_class::title.text);
+                    break;
+                    case HIGHLIGHTED:
+                        if (menu_element_class::title.text.length() > 0) game.resource.font.font_1.Write(menu_element_class::color.highlighted.r,menu_element_class::color.highlighted.g,menu_element_class::color.highlighted.b,menu_element_class::color.highlighted.a,menu_element_class::title.position_x,menu_element_class::title.position_y,menu_element_class::title.size_x,menu_element_class::title.size_y,menu_element_class::title.text);
+                    break;
+                    case DISABLED:
+                        if (menu_element_class::title.text.length() > 0) game.resource.font.font_1.Write(menu_element_class::color.disabled.r,menu_element_class::color.disabled.g,menu_element_class::color.disabled.b,menu_element_class::color.disabled.a,menu_element_class::title.position_x,menu_element_class::title.position_y,menu_element_class::title.size_x,menu_element_class::title.size_y,menu_element_class::title.text);
+                    break;
+                    default:
+                    break;
+                }
             break;
-            case DISABLED:
-                game.resource.texture.render(false,menu_element_class::texture_ID.disabled,menu_element_class::position_x,menu_element_class::position_y,menu_element_class::position_z,menu_element_class::size_x+menu_element_class::zoom.value,menu_element_class::size_y+menu_element_class::zoom.value);
-                if (menu_element_class::title.text.length() > 0) game.resource.font.font_1.Write(menu_element_class::color.disabled.r,menu_element_class::color.disabled.g,menu_element_class::color.disabled.b,menu_element_class::color.disabled.a,menu_element_class::title.position_x,menu_element_class::title.position_y,menu_element_class::title.size_x,menu_element_class::title.size_y,menu_element_class::title.text);
+            case IMAGE:
+                game.resource.texture.render(false,menu_element_class::texture_ID.normal,menu_element_class::position_x,menu_element_class::position_y,menu_element_class::position_z,menu_element_class::size_x+menu_element_class::zoom.value,menu_element_class::size_y+menu_element_class::zoom.value,menu_element_class::texture_ID.angle);
+            break;
+            default:
             break;
         }
     }

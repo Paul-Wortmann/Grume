@@ -21,3 +21,31 @@
  * @license GPL V3
  * @date 2011-11-11
  */
+
+struct tile_grid_location_type
+{
+    int    start_x;
+    int    end_x;
+    int    start_y;
+    int    end_y;
+};
+
+
+class tile_grid_class
+{
+    private:
+    public:
+        int*                    tile_data;
+        int                     number_of_tiles;
+        int                     number_of_tiles_x;
+        int                     number_of_tiles_y;
+        tile_grid_location_type origin;
+};
+
+
+
+
+
+
+
+

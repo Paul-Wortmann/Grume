@@ -60,6 +60,7 @@ void menu_system_class::init(void)
     menu_system_class::zoom.enabled               = true;
     menu_system_class::zoom.maximum               = 0.02f;
     menu_system_class::zoom.speed                 = 0.004f;
+    menu_system_class::texture_ID.angle           = 0.0f;
     menu_system_class::texture_ID.base            = game.resource.texture.background_02.ref_number;
     menu_system_class::texture_ID.normal          = game.resource.texture.button_normal.ref_number;
     menu_system_class::texture_ID.highlighted     = game.resource.texture.button_highlighted.ref_number;
@@ -87,7 +88,7 @@ void menu_system_class::init(void)
 
     menu_system_class::menu_main.element[0].title.text                = "";
     menu_system_class::menu_main.element[0].active                    = true;
-    menu_system_class::menu_main.element[0].type                      = CLOSE;
+    menu_system_class::menu_main.element[0].type                      = BUTTON;
     menu_system_class::menu_main.element[0].zoom.enabled              = false;
     menu_system_class::menu_main.element[0].color                     = menu_system_class::menu_main.color;
     menu_system_class::menu_main.element[0].size_x                    = 0.1f;
@@ -209,7 +210,7 @@ void menu_system_class::init(void)
 
     menu_system_class::menu_new_game.element[0].title.text                = "";
     menu_system_class::menu_new_game.element[0].active                    = true;
-    menu_system_class::menu_new_game.element[0].type                      = CLOSE;
+    menu_system_class::menu_new_game.element[0].type                      = BUTTON;
     menu_system_class::menu_new_game.element[0].zoom.enabled              = false;
     menu_system_class::menu_new_game.element[0].color                     = menu_system_class::menu_new_game.color;
     menu_system_class::menu_new_game.element[0].size_x                    = 0.1f;
@@ -271,7 +272,7 @@ void menu_system_class::init(void)
 
     menu_system_class::menu_save.element[0].title.text                = "";
     menu_system_class::menu_save.element[0].active                    = true;
-    menu_system_class::menu_save.element[0].type                      = CLOSE;
+    menu_system_class::menu_save.element[0].type                      = BUTTON;
     menu_system_class::menu_save.element[0].zoom.enabled              = false;
     menu_system_class::menu_save.element[0].color                     = menu_system_class::menu_save.color;
     menu_system_class::menu_save.element[0].size_x                    = 0.1f;
@@ -393,7 +394,7 @@ void menu_system_class::init(void)
 
     menu_system_class::menu_load.element[0].title.text                = "";
     menu_system_class::menu_load.element[0].active                    = true;
-    menu_system_class::menu_load.element[0].type                      = CLOSE;
+    menu_system_class::menu_load.element[0].type                      = BUTTON;
     menu_system_class::menu_load.element[0].zoom.enabled              = false;
     menu_system_class::menu_load.element[0].color                     = menu_system_class::menu_load.color;
     menu_system_class::menu_load.element[0].size_x                    = 0.1f;
@@ -515,7 +516,7 @@ void menu_system_class::init(void)
 
     menu_system_class::menu_options.element[0].title.text                = "";
     menu_system_class::menu_options.element[0].active                    = true;
-    menu_system_class::menu_options.element[0].type                      = CLOSE;
+    menu_system_class::menu_options.element[0].type                      = BUTTON;
     menu_system_class::menu_options.element[0].zoom.enabled              = false;
     menu_system_class::menu_options.element[0].color                     = menu_system_class::menu_options.color;
     menu_system_class::menu_options.element[0].size_x                    = 0.1f;
@@ -524,6 +525,35 @@ void menu_system_class::init(void)
     menu_system_class::menu_options.element[0].position_y                = menu_system_class::menu_options.title.position_y+(menu_system_class::menu_options.element[0].size_y/8.0f);
     menu_system_class::menu_options.element[0].texture_ID.normal         = game.resource.texture.close_button.ref_number;
     menu_system_class::menu_options.element[0].texture_ID.highlighted    = game.resource.texture.close_button_highlighted.ref_number;
+
+    menu_system_class::menu_options.element[1].title.text                = "";
+    menu_system_class::menu_options.element[1].active                    = true;
+    menu_system_class::menu_options.element[1].type                      = BUTTON;
+    menu_system_class::menu_options.element[1].color                     = menu_system_class::menu_options.color;
+    menu_system_class::menu_options.element[1].zoom                      = menu_system_class::menu_options.zoom;
+    menu_system_class::menu_options.element[1].size_x                    = (menu_system_class::menu_options.size_x / 100.f)*10.0f;
+    menu_system_class::menu_options.element[1].size_y                    = menu_system_class::menu_options.size_y / 10.0f;
+    menu_system_class::menu_options.element[1].position_x                = menu_system_class::menu_options.position_x-(menu_system_class::menu_options.size_x/2.0f)+(menu_system_class::menu_options.element[1].size_x*1.0f);
+    menu_system_class::menu_options.element[1].position_y                = menu_system_class::menu_options.position_y+(menu_system_class::menu_options.size_y/2.0f)-(menu_system_class::menu_options.element[1].size_y*2.0f);
+    menu_system_class::menu_options.element[1].texture_ID.normal         = game.resource.texture.arrow_button_normal.ref_number;
+    menu_system_class::menu_options.element[1].texture_ID.highlighted    = game.resource.texture.arrow_button_highlighted.ref_number;
+    menu_system_class::menu_options.element[1].texture_ID.disabled       = game.resource.texture.arrow_button_disabled.ref_number;
+
+    menu_system_class::menu_options.element[2].title.text                = "";
+    menu_system_class::menu_options.element[2].active                    = true;
+    menu_system_class::menu_options.element[2].type                      = BUTTON;
+    menu_system_class::menu_options.element[2].color                     = menu_system_class::menu_options.color;
+    menu_system_class::menu_options.element[2].zoom                      = menu_system_class::menu_options.zoom;
+    menu_system_class::menu_options.element[2].size_x                    = (menu_system_class::menu_options.size_x / 100.f)*10.0f;
+    menu_system_class::menu_options.element[2].size_y                    = menu_system_class::menu_options.size_y / 10.0f;
+    menu_system_class::menu_options.element[2].position_x                = menu_system_class::menu_options.position_x+(menu_system_class::menu_options.size_x/2.0f)-(menu_system_class::menu_options.element[2].size_x*1.0f);
+    menu_system_class::menu_options.element[2].position_y                = menu_system_class::menu_options.position_y+(menu_system_class::menu_options.size_y/2.0f)-(menu_system_class::menu_options.element[2].size_y*2.0f);
+    menu_system_class::menu_options.element[2].texture_ID.angle          = 180.0f;
+    menu_system_class::menu_options.element[2].texture_ID.normal         = game.resource.texture.arrow_button_normal.ref_number;
+    menu_system_class::menu_options.element[2].texture_ID.highlighted    = game.resource.texture.arrow_button_highlighted.ref_number;
+    menu_system_class::menu_options.element[2].texture_ID.disabled       = game.resource.texture.arrow_button_disabled.ref_number;
+
+
 
     menu_system_class::menu_options.element[7].title.text                = "Main menu";
     menu_system_class::menu_options.element[7].active                    = true;

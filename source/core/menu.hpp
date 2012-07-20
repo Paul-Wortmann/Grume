@@ -31,16 +31,15 @@
 #define NORMAL         1
 #define HIGHLIGHTED    2
 
-#define CLOSE      3
-#define BUTTON     4
-#define SLIDER     5
-#define IMAGE      6
+#define BUTTON     3
+#define TEXTLABEL  4
+#define IMAGE      5
+#define SLIDER     6
 #define BAR        7
 #define TOGGLE     8
 #define CHECKBOX   9
 #define DROPDOWN   10
 #define SELECTION  11
-#define ACHIEVE    12
 
 const int MAX_ELEMENTS = 10;
 
@@ -92,10 +91,11 @@ class texture_state_class
 {
     private:
     public:
-        int base;
-        int normal;
-        int highlighted;
-        int disabled;
+        float angle;
+        int   base;
+        int   normal;
+        int   highlighted;
+        int   disabled;
 };
 
 class menu_element_class
