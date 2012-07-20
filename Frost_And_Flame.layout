@@ -18,7 +18,7 @@
 	</File>
 	<File name="source\core\menu.hpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="2162" topLine="72" />
+			<Cursor1 position="3838" topLine="126" />
 		</Cursor>
 	</File>
 	<File name="source\core\menu.cpp" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -38,7 +38,7 @@
 	</File>
 	<File name="source\menu_system.hpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="1848" topLine="31" />
+			<Cursor1 position="1339" topLine="20" />
 		</Cursor>
 	</File>
 	<File name="source\npc.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">

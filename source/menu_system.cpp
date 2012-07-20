@@ -37,6 +37,7 @@ void menu_system_class::init(void)
     game.core.background.set_movement_type(FRONT_SCROLL);
 
     //------ setup "system base" menu defaults / initial values-----------
+    menu_system_class::mouse_delay.maximum        = 30;
     menu_system_class::event                      = 0;
     menu_system_class::active_menu                = MENU_MAIN;
     menu_system_class::position_x                 = 0.0f;
@@ -67,6 +68,7 @@ void menu_system_class::init(void)
     menu_system_class::texture_ID.disabled        = game.resource.texture.button_disabled.ref_number;
 
     //------ setup "main" menu -----------
+    menu_system_class::menu_main.mouse_delay                          = menu_system_class::mouse_delay;
     menu_system_class::menu_main.color                                = menu_system_class::color;
     menu_system_class::menu_main.zoom                                 = menu_system_class::zoom;
     menu_system_class::menu_main.texture_ID                           = menu_system_class::texture_ID;
@@ -168,7 +170,7 @@ void menu_system_class::init(void)
     menu_system_class::menu_main.element[5].position_x                = menu_system_class::menu_main.position_x;
     menu_system_class::menu_main.element[5].position_y                = menu_system_class::menu_main.position_y+(menu_system_class::menu_main.size_y/2.0f)-(menu_system_class::menu_main.element[3].size_y*7.0f);
     menu_system_class::menu_main.element[5].texture_ID                = menu_system_class::menu_main.texture_ID;
-    menu_system_class::menu_main.element[5].title.size_x              = menu_system_class::menu_main.element[5].title.text.length()/1.2f;
+    menu_system_class::menu_main.element[5].title.size_x              = menu_system_class::menu_main.element[5].title.text.length()/1.0f;
     menu_system_class::menu_main.element[5].title.size_y              = menu_system_class::menu_main.element[5].title.size_x*4;;
     menu_system_class::menu_main.element[5].title.position_x          = menu_system_class::menu_main.element[5].position_x-(menu_system_class::menu_main.element[5].title.size_x/100.0f);
     menu_system_class::menu_main.element[5].title.position_y          = menu_system_class::menu_main.element[5].position_y-(menu_system_class::menu_main.element[5].title.size_y/1480.0f);
@@ -189,6 +191,7 @@ void menu_system_class::init(void)
     menu_system_class::menu_main.element[7].title.position_y          = menu_system_class::menu_main.element[7].position_y-(menu_system_class::menu_main.element[7].title.size_y/1480.0f);
 
     //------ setup "new game" menu -----------
+    menu_system_class::menu_new_game.mouse_delay                          = menu_system_class::mouse_delay;
     menu_system_class::menu_new_game.color                                = menu_system_class::color;
     menu_system_class::menu_new_game.zoom                                 = menu_system_class::zoom;
     menu_system_class::menu_new_game.texture_ID                           = menu_system_class::texture_ID;
@@ -251,6 +254,7 @@ void menu_system_class::init(void)
     menu_system_class::menu_new_game.element[7].title.position_y          = menu_system_class::menu_new_game.element[7].position_y-(menu_system_class::menu_new_game.element[7].title.size_y/1480.0f);
 
     //------ setup "save game" menu -----------
+    menu_system_class::menu_save.mouse_delay                          = menu_system_class::mouse_delay;
     menu_system_class::menu_save.color                                = menu_system_class::color;
     menu_system_class::menu_save.zoom                                 = menu_system_class::zoom;
     menu_system_class::menu_save.texture_ID                           = menu_system_class::texture_ID;
@@ -373,6 +377,7 @@ void menu_system_class::init(void)
     menu_system_class::menu_save.element[7].title.position_y          = menu_system_class::menu_save.element[7].position_y-(menu_system_class::menu_save.element[7].title.size_y/1480.0f);
 
     //------ setup "load game" menu -----------
+    menu_system_class::menu_load.mouse_delay                          = menu_system_class::mouse_delay;
     menu_system_class::menu_load.color                                = menu_system_class::color;
     menu_system_class::menu_load.zoom                                 = menu_system_class::zoom;
     menu_system_class::menu_load.texture_ID                           = menu_system_class::texture_ID;
@@ -495,6 +500,7 @@ void menu_system_class::init(void)
     menu_system_class::menu_load.element[7].title.position_y          = menu_system_class::menu_load.element[7].position_y-(menu_system_class::menu_load.element[7].title.size_y/1480.0f);
 
     //------ setup "options" menu -----------
+    menu_system_class::menu_options.mouse_delay                          = menu_system_class::mouse_delay;
     menu_system_class::menu_options.color                                = menu_system_class::color;
     menu_system_class::menu_options.zoom                                 = menu_system_class::zoom;
     menu_system_class::menu_options.texture_ID                           = menu_system_class::texture_ID;
@@ -505,7 +511,7 @@ void menu_system_class::init(void)
     menu_system_class::menu_options.size_y                               = menu_system_class::size_y;
     menu_system_class::menu_options.size_z                               = menu_system_class::size_z;
     menu_system_class::menu_options.title.text                           = "Options";
-    menu_system_class::menu_options.title.size_x                         = menu_system_class::menu_options.title.text.length()/1.2f;
+    menu_system_class::menu_options.title.size_x                         = menu_system_class::menu_options.title.text.length()/1.0f;
     menu_system_class::menu_options.title.size_y                         = menu_system_class::menu_options.title.size_x*4;
     menu_system_class::menu_options.title.position_x                     = menu_system_class::menu_options.position_x - (menu_system_class::menu_options.title.size_x/100.0f);
     menu_system_class::menu_options.title.position_y                     = menu_system_class::menu_options.position_y + (menu_system_class::menu_options.size_y/2.0f) - (menu_system_class::menu_options.title.size_y / 440.0f);
@@ -553,6 +559,22 @@ void menu_system_class::init(void)
     menu_system_class::menu_options.element[2].texture_ID.highlighted    = game.resource.texture.arrow_button_highlighted.ref_number;
     menu_system_class::menu_options.element[2].texture_ID.disabled       = game.resource.texture.arrow_button_disabled.ref_number;
 
+    menu_system_class::menu_options.element[3].title.text                = "Sound volume";
+    menu_system_class::menu_options.element[3].active                    = true;
+    menu_system_class::menu_options.element[3].type                      = BUTTON;
+    menu_system_class::menu_options.element[3].color                     = menu_system_class::menu_options.color;
+    menu_system_class::menu_options.element[3].zoom.enabled              = false;
+    menu_system_class::menu_options.element[3].size_x                    = (menu_system_class::menu_options.size_x / 100.f)*60.0f;
+    menu_system_class::menu_options.element[3].size_y                    = menu_system_class::menu_options.size_y / 10.0f;
+    menu_system_class::menu_options.element[3].position_x                = menu_system_class::menu_options.position_x;
+    menu_system_class::menu_options.element[3].position_y                = menu_system_class::menu_options.position_y+(menu_system_class::menu_options.size_y/2.0f)-(menu_system_class::menu_options.element[3].size_y*2.0f);
+    menu_system_class::menu_options.element[3].texture_ID.normal         = game.resource.texture.slider_button_normal.ref_number;
+    menu_system_class::menu_options.element[3].texture_ID.highlighted    = game.resource.texture.slider_button_highlighted.ref_number;
+    menu_system_class::menu_options.element[3].title.size_x              = menu_system_class::menu_options.element[3].title.text.length()/2.2f;
+    menu_system_class::menu_options.element[3].title.size_y              = menu_system_class::menu_options.element[3].title.size_x*4;;
+    menu_system_class::menu_options.element[3].title.position_x          = menu_system_class::menu_options.element[3].position_x-(menu_system_class::menu_options.element[3].title.size_x/60.0f);
+    menu_system_class::menu_options.element[3].title.position_y          = menu_system_class::menu_options.element[3].position_y-(menu_system_class::menu_options.element[3].title.size_y/1480.0f);
+
 
 
     menu_system_class::menu_options.element[7].title.text                = "Main menu";
@@ -571,20 +593,22 @@ void menu_system_class::init(void)
     menu_system_class::menu_options.element[7].title.position_y          = menu_system_class::menu_options.element[7].position_y-(menu_system_class::menu_options.element[7].title.size_y/1480.0f);
 
     //------ setup "game over" menu -----------
-    menu_system_class::menu_game_over.position_x  = menu_system_class::position_x;
-    menu_system_class::menu_game_over.position_y  = menu_system_class::position_y;
-    menu_system_class::menu_game_over.position_z  = menu_system_class::position_z;
-    menu_system_class::menu_game_over.size_x      = menu_system_class::size_x;
-    menu_system_class::menu_game_over.size_y      = menu_system_class::size_y;
-    menu_system_class::menu_game_over.size_z      = menu_system_class::size_z;
+    menu_system_class::menu_game_over.mouse_delay                        = menu_system_class::mouse_delay;
+    menu_system_class::menu_game_over.position_x                         = menu_system_class::position_x;
+    menu_system_class::menu_game_over.position_y                         = menu_system_class::position_y;
+    menu_system_class::menu_game_over.position_z                         = menu_system_class::position_z;
+    menu_system_class::menu_game_over.size_x                             = menu_system_class::size_x;
+    menu_system_class::menu_game_over.size_y                             = menu_system_class::size_y;
+    menu_system_class::menu_game_over.size_z                             = menu_system_class::size_z;
 
     //------ setup "pause" menu -----------
-    menu_system_class::menu_pause.position_x      = menu_system_class::position_x;
-    menu_system_class::menu_pause.position_y      = menu_system_class::position_y;
-    menu_system_class::menu_pause.position_z      = menu_system_class::position_z;
-    menu_system_class::menu_pause.size_x          = menu_system_class::size_x;
-    menu_system_class::menu_pause.size_y          = menu_system_class::size_y;
-    menu_system_class::menu_pause.size_z          = menu_system_class::size_z;
+    menu_system_class::menu_pause.mouse_delay                            = menu_system_class::mouse_delay;
+    menu_system_class::menu_pause.position_x                             = menu_system_class::position_x;
+    menu_system_class::menu_pause.position_y                             = menu_system_class::position_y;
+    menu_system_class::menu_pause.position_z                             = menu_system_class::position_z;
+    menu_system_class::menu_pause.size_x                                 = menu_system_class::size_x;
+    menu_system_class::menu_pause.size_y                                 = menu_system_class::size_y;
+    menu_system_class::menu_pause.size_z                                 = menu_system_class::size_z;
 
 }
 
@@ -605,6 +629,7 @@ int menu_system_class::process(void)
             return_value             = menu_system_class::menu_main.process();
             if (old_event_state      < menu_system_class::menu_main.event)      game.resource.sound.menu_select_00.play();
             if (old_mouse_over_state < menu_system_class::menu_main.mouse_over) game.resource.sound.menu_move_00.play();
+            if (return_value != 0) menu_system_class::menu_main.mouse_delay.reset();
             switch (return_value)
             {
                 case 1: // close button
@@ -659,6 +684,7 @@ int menu_system_class::process(void)
             return_value             = menu_system_class::menu_new_game.process();
             if (old_event_state      < menu_system_class::menu_new_game.event)      game.resource.sound.menu_select_00.play();
             if (old_mouse_over_state < menu_system_class::menu_new_game.mouse_over) game.resource.sound.menu_move_00.play();
+            if (return_value != 0) menu_system_class::menu_new_game.mouse_delay.reset();
             switch (return_value)
             {
                 case 1: // close button
@@ -685,6 +711,7 @@ int menu_system_class::process(void)
             return_value             = menu_system_class::menu_save.process();
             if (old_event_state      < menu_system_class::menu_save.event)      game.resource.sound.menu_select_00.play();
             if (old_mouse_over_state < menu_system_class::menu_save.mouse_over) game.resource.sound.menu_move_00.play();
+            if (return_value != 0) menu_system_class::menu_save.mouse_delay.reset();
             switch (return_value)
             {
                 case 1: // close button
@@ -764,6 +791,7 @@ int menu_system_class::process(void)
             return_value             = menu_system_class::menu_load.process();
             if (old_event_state      < menu_system_class::menu_load.event)      game.resource.sound.menu_select_00.play();
             if (old_mouse_over_state < menu_system_class::menu_load.mouse_over) game.resource.sound.menu_move_00.play();
+            if (return_value != 0) menu_system_class::menu_load.mouse_delay.reset();
             switch (return_value)
             {
                 case 1: // close button
@@ -838,6 +866,7 @@ int menu_system_class::process(void)
             return_value             = menu_system_class::menu_options.process();
             if (old_event_state      < menu_system_class::menu_options.event)      game.resource.sound.menu_select_00.play();
             if (old_mouse_over_state < menu_system_class::menu_options.mouse_over) game.resource.sound.menu_move_00.play();
+            if (return_value != 0) menu_system_class::menu_options.mouse_delay.reset();
             switch (return_value)
             {
                 case 1: // close button

@@ -28,6 +28,33 @@
 extern game_class        game;
 
 /*----------------------------------------*/
+/*| delay_class                          |*/
+/*----------------------------------------*/
+
+delay_class::delay_class(void)
+{
+    ready   = false;
+    value   = 0;
+    maximum = 30;
+};
+
+void delay_class::process(void)
+{
+    delay_class::value++;
+    if (delay_class::value >= delay_class::maximum)
+    {
+        delay_class::ready = true;
+        delay_class::value = delay_class::maximum;
+    }
+};
+
+void delay_class::reset(void)
+{
+    ready   = false;
+    value   = 0;
+};
+
+/*----------------------------------------*/
 /*| location_class                       |*/
 /*----------------------------------------*/
 
@@ -165,10 +192,14 @@ int menu_class::process(void)
     int   return_value = 0;
     bool  return_mouse_over = false;
     bool  allow_drag        = true;
+    bool  allow_click       = true;
+    menu_class::mouse_delay.process();
     // ------------------------- Process elements -------------------------
     for (int element_number = 0; element_number < MAX_ELEMENTS; element_number++)
     {
-        if ((menu_class::element[element_number].active) && (return_value == 0))
+        if ((menu_class::element[element_number].type == BUTTON) && (!menu_class::mouse_delay.ready)) allow_click = false;
+        else allow_click = true;
+        if ((menu_class::element[element_number].active) && (return_value == 0) && (allow_click))
         {
             return_value = menu_class::element[element_number].process();
             if (return_value != 0)

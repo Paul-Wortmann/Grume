@@ -39,6 +39,7 @@ class menu_system_class
 {
     private:
     public:
+        delay_class             mouse_delay;
         int                     event;
         int                     position;
         int                     position_max;

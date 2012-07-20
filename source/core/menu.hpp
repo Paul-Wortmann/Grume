@@ -98,6 +98,18 @@ class texture_state_class
         int   disabled;
 };
 
+class delay_class
+{
+    private:
+    public:
+        bool                    ready;
+        int                     value;
+        int                     maximum;
+        delay_class(void);
+        void                    process(void);
+        void                    reset(void);
+};
+
 class menu_element_class
 {
     private:
@@ -132,6 +144,7 @@ class menu_class
 {
     private:
     public:
+        delay_class             mouse_delay;
         int                     event;
         location_class          title;
         color_class             title_color;
