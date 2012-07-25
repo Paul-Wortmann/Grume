@@ -223,7 +223,90 @@ void menu_system_class::init(void)
     menu_system_class::menu_new_game.element[0].texture_ID.normal         = game.resource.texture.close_button.ref_number;
     menu_system_class::menu_new_game.element[0].texture_ID.highlighted    = game.resource.texture.close_button_highlighted.ref_number;
 
-    menu_system_class::menu_new_game.element[1].title.text                = "Start New Game";
+    menu_system_class::menu_new_game.element[2].title.text                = "";
+    menu_system_class::menu_new_game.element[2].active                    = true;
+    menu_system_class::menu_new_game.element[2].type                      = BUTTON;
+    menu_system_class::menu_new_game.element[2].color                     = menu_system_class::menu_new_game.color;
+    menu_system_class::menu_new_game.element[2].zoom                      = menu_system_class::menu_new_game.zoom;
+    menu_system_class::menu_new_game.element[2].size_x                    = (menu_system_class::menu_new_game.size_x / 100.f)*10.0f;
+    menu_system_class::menu_new_game.element[2].size_y                    = menu_system_class::menu_new_game.size_y / 10.0f;
+    menu_system_class::menu_new_game.element[2].position_x                = menu_system_class::menu_new_game.position_x-(menu_system_class::menu_new_game.size_x/2.0f)+(menu_system_class::menu_new_game.element[2].size_x*1.0f);
+    menu_system_class::menu_new_game.element[2].position_y                = menu_system_class::menu_new_game.position_y+(menu_system_class::menu_new_game.size_y/2.0f)-(menu_system_class::menu_new_game.element[2].size_y*2.00f);
+    menu_system_class::menu_new_game.element[2].texture_ID.angle          = 0.0f;
+    menu_system_class::menu_new_game.element[2].texture_ID.normal         = game.resource.texture.arrow_button_normal.ref_number;
+    menu_system_class::menu_new_game.element[2].texture_ID.highlighted    = game.resource.texture.arrow_button_highlighted.ref_number;
+    menu_system_class::menu_new_game.element[2].texture_ID.disabled       = game.resource.texture.arrow_button_disabled.ref_number;
+
+    menu_system_class::menu_new_game.element[3].title.text                = "";
+    menu_system_class::menu_new_game.element[3].active                    = true;
+    menu_system_class::menu_new_game.element[3].type                      = BUTTON;
+    menu_system_class::menu_new_game.element[3].color                     = menu_system_class::menu_new_game.color;
+    menu_system_class::menu_new_game.element[3].zoom                      = menu_system_class::menu_new_game.zoom;
+    menu_system_class::menu_new_game.element[3].size_x                    = (menu_system_class::menu_new_game.size_x / 100.f)*10.0f;
+    menu_system_class::menu_new_game.element[3].size_y                    = menu_system_class::menu_new_game.size_y / 10.0f;
+    menu_system_class::menu_new_game.element[3].position_x                = menu_system_class::menu_new_game.position_x+(menu_system_class::menu_new_game.size_x/2.0f)-(menu_system_class::menu_new_game.element[3].size_x*1.0f);
+    menu_system_class::menu_new_game.element[3].position_y                = menu_system_class::menu_new_game.position_y+(menu_system_class::menu_new_game.size_y/2.0f)-(menu_system_class::menu_new_game.element[3].size_y*2.00f);
+    menu_system_class::menu_new_game.element[3].texture_ID.angle          = 180.0f;
+    menu_system_class::menu_new_game.element[3].texture_ID.normal         = game.resource.texture.arrow_button_normal.ref_number;
+    menu_system_class::menu_new_game.element[3].texture_ID.highlighted    = game.resource.texture.arrow_button_highlighted.ref_number;
+    menu_system_class::menu_new_game.element[3].texture_ID.disabled       = game.resource.texture.arrow_button_disabled.ref_number;
+
+    menu_system_class::menu_new_game.element[4].title.text                = "";
+    menu_system_class::menu_new_game.element[4].active                    = true;
+    menu_system_class::menu_new_game.element[4].type                      = IMAGE;
+    menu_system_class::menu_new_game.element[4].color                     = menu_system_class::menu_new_game.color;
+    menu_system_class::menu_new_game.element[4].zoom                      = menu_system_class::menu_new_game.zoom;
+    menu_system_class::menu_new_game.element[4].size_x                    = (menu_system_class::menu_new_game.size_x / 100.f)*10.0f;
+    menu_system_class::menu_new_game.element[4].size_y                    = menu_system_class::menu_new_game.size_y / 10.0f;
+    menu_system_class::menu_new_game.element[4].position_x                = menu_system_class::menu_new_game.position_x-(menu_system_class::menu_new_game.size_x/2.0f)+(menu_system_class::menu_new_game.element[4].size_x*2.5f);
+    menu_system_class::menu_new_game.element[4].position_y                = menu_system_class::menu_new_game.position_y+(menu_system_class::menu_new_game.size_y/2.0f)-(menu_system_class::menu_new_game.element[4].size_y*2.00f);
+    menu_system_class::menu_new_game.element[4].texture_ID.normal         = game.resource.texture.portrait_00.ref_number;
+
+    menu_system_class::menu_new_game.element[5].title.text                = "";
+    menu_system_class::menu_new_game.element[5].active                    = true;
+    menu_system_class::menu_new_game.element[5].type                      = IMAGE;
+    menu_system_class::menu_new_game.element[5].color                     = menu_system_class::menu_new_game.color;
+    menu_system_class::menu_new_game.element[5].zoom                      = menu_system_class::menu_new_game.zoom;
+    menu_system_class::menu_new_game.element[5].size_x                    = (menu_system_class::menu_new_game.size_x / 100.f)*10.0f;
+    menu_system_class::menu_new_game.element[5].size_y                    = menu_system_class::menu_new_game.size_y / 10.0f;
+    menu_system_class::menu_new_game.element[5].position_x                = menu_system_class::menu_new_game.position_x-(menu_system_class::menu_new_game.size_x/2.0f)+(menu_system_class::menu_new_game.element[5].size_x*3.75f);
+    menu_system_class::menu_new_game.element[5].position_y                = menu_system_class::menu_new_game.position_y+(menu_system_class::menu_new_game.size_y/2.0f)-(menu_system_class::menu_new_game.element[5].size_y*2.00f);
+    menu_system_class::menu_new_game.element[5].texture_ID.normal         = game.resource.texture.portrait_01.ref_number;
+
+    menu_system_class::menu_new_game.element[6].title.text                = "";
+    menu_system_class::menu_new_game.element[6].active                    = true;
+    menu_system_class::menu_new_game.element[6].type                      = IMAGE;
+    menu_system_class::menu_new_game.element[6].color                     = menu_system_class::menu_new_game.color;
+    menu_system_class::menu_new_game.element[6].zoom                      = menu_system_class::menu_new_game.zoom;
+    menu_system_class::menu_new_game.element[6].size_x                    = (menu_system_class::menu_new_game.size_x / 100.f)*10.0f;
+    menu_system_class::menu_new_game.element[6].size_y                    = menu_system_class::menu_new_game.size_y / 10.0f;
+    menu_system_class::menu_new_game.element[6].position_x                = menu_system_class::menu_new_game.position_x-(menu_system_class::menu_new_game.size_x/2.0f)+(menu_system_class::menu_new_game.element[6].size_x*5.0f);
+    menu_system_class::menu_new_game.element[6].position_y                = menu_system_class::menu_new_game.position_y+(menu_system_class::menu_new_game.size_y/2.0f)-(menu_system_class::menu_new_game.element[6].size_y*2.00f);
+    menu_system_class::menu_new_game.element[6].texture_ID.normal         = game.resource.texture.portrait_02.ref_number;
+
+    menu_system_class::menu_new_game.element[7].title.text                = "";
+    menu_system_class::menu_new_game.element[7].active                    = true;
+    menu_system_class::menu_new_game.element[7].type                      = IMAGE;
+    menu_system_class::menu_new_game.element[7].color                     = menu_system_class::menu_new_game.color;
+    menu_system_class::menu_new_game.element[7].zoom                      = menu_system_class::menu_new_game.zoom;
+    menu_system_class::menu_new_game.element[7].size_x                    = (menu_system_class::menu_new_game.size_x / 100.f)*10.0f;
+    menu_system_class::menu_new_game.element[7].size_y                    = menu_system_class::menu_new_game.size_y / 10.0f;
+    menu_system_class::menu_new_game.element[7].position_x                = menu_system_class::menu_new_game.position_x-(menu_system_class::menu_new_game.size_x/2.0f)+(menu_system_class::menu_new_game.element[7].size_x*6.25f);
+    menu_system_class::menu_new_game.element[7].position_y                = menu_system_class::menu_new_game.position_y+(menu_system_class::menu_new_game.size_y/2.0f)-(menu_system_class::menu_new_game.element[7].size_y*2.00f);
+    menu_system_class::menu_new_game.element[7].texture_ID.normal         = game.resource.texture.portrait_03.ref_number;
+
+    menu_system_class::menu_new_game.element[8].title.text                = "";
+    menu_system_class::menu_new_game.element[8].active                    = true;
+    menu_system_class::menu_new_game.element[8].type                      = IMAGE;
+    menu_system_class::menu_new_game.element[8].color                     = menu_system_class::menu_new_game.color;
+    menu_system_class::menu_new_game.element[8].zoom                      = menu_system_class::menu_new_game.zoom;
+    menu_system_class::menu_new_game.element[8].size_x                    = (menu_system_class::menu_new_game.size_x / 100.f)*10.0f;
+    menu_system_class::menu_new_game.element[8].size_y                    = menu_system_class::menu_new_game.size_y / 10.0f;
+    menu_system_class::menu_new_game.element[8].position_x                = menu_system_class::menu_new_game.position_x-(menu_system_class::menu_new_game.size_x/2.0f)+(menu_system_class::menu_new_game.element[8].size_x*7.5f);
+    menu_system_class::menu_new_game.element[8].position_y                = menu_system_class::menu_new_game.position_y+(menu_system_class::menu_new_game.size_y/2.0f)-(menu_system_class::menu_new_game.element[8].size_y*2.00f);
+    menu_system_class::menu_new_game.element[8].texture_ID.normal         = game.resource.texture.portrait_04.ref_number;
+
+    menu_system_class::menu_new_game.element[1].title.text                = "Start Game";
     menu_system_class::menu_new_game.element[1].active                    = true;
     menu_system_class::menu_new_game.element[1].type                      = BUTTON;
     menu_system_class::menu_new_game.element[1].color                     = menu_system_class::menu_new_game.color;
@@ -238,20 +321,20 @@ void menu_system_class::init(void)
     menu_system_class::menu_new_game.element[1].title.position_x          = menu_system_class::menu_new_game.element[1].position_x-(menu_system_class::menu_new_game.element[1].title.size_x/100.0f);
     menu_system_class::menu_new_game.element[1].title.position_y          = menu_system_class::menu_new_game.element[1].position_y-(menu_system_class::menu_new_game.element[1].title.size_y/1480.0f);
 
-    menu_system_class::menu_new_game.element[7].title.text                = "Main Menu";
-    menu_system_class::menu_new_game.element[7].active                    = true;
-    menu_system_class::menu_new_game.element[7].type                      = BUTTON;
-    menu_system_class::menu_new_game.element[7].color                     = menu_system_class::menu_new_game.color;
-    menu_system_class::menu_new_game.element[7].zoom                      = menu_system_class::menu_new_game.zoom;
-    menu_system_class::menu_new_game.element[7].size_x                    = (menu_system_class::menu_new_game.size_x / 100.f)*80.0f;
-    menu_system_class::menu_new_game.element[7].size_y                    = menu_system_class::menu_new_game.size_y / 10.0f;
-    menu_system_class::menu_new_game.element[7].position_x                = menu_system_class::menu_new_game.position_x;
-    menu_system_class::menu_new_game.element[7].position_y                = menu_system_class::menu_new_game.position_y+(menu_system_class::menu_new_game.size_y/2.0f)-(menu_system_class::menu_new_game.element[7].size_y*9.0f);
-    menu_system_class::menu_new_game.element[7].texture_ID                = menu_system_class::menu_new_game.texture_ID;
-    menu_system_class::menu_new_game.element[7].title.size_x              = menu_system_class::menu_new_game.element[7].title.text.length()/1.2f;
-    menu_system_class::menu_new_game.element[7].title.size_y              = menu_system_class::menu_new_game.element[7].title.size_x*4;;
-    menu_system_class::menu_new_game.element[7].title.position_x          = menu_system_class::menu_new_game.element[7].position_x-(menu_system_class::menu_new_game.element[7].title.size_x/100.0f);
-    menu_system_class::menu_new_game.element[7].title.position_y          = menu_system_class::menu_new_game.element[7].position_y-(menu_system_class::menu_new_game.element[7].title.size_y/1480.0f);
+    menu_system_class::menu_new_game.element[15].title.text                = "Main Menu";
+    menu_system_class::menu_new_game.element[15].active                    = true;
+    menu_system_class::menu_new_game.element[15].type                      = BUTTON;
+    menu_system_class::menu_new_game.element[15].color                     = menu_system_class::menu_new_game.color;
+    menu_system_class::menu_new_game.element[15].zoom                      = menu_system_class::menu_new_game.zoom;
+    menu_system_class::menu_new_game.element[15].size_x                    = (menu_system_class::menu_new_game.size_x / 100.f)*80.0f;
+    menu_system_class::menu_new_game.element[15].size_y                    = menu_system_class::menu_new_game.size_y / 10.0f;
+    menu_system_class::menu_new_game.element[15].position_x                = menu_system_class::menu_new_game.position_x;
+    menu_system_class::menu_new_game.element[15].position_y                = menu_system_class::menu_new_game.position_y+(menu_system_class::menu_new_game.size_y/2.0f)-(menu_system_class::menu_new_game.element[15].size_y*9.0f);
+    menu_system_class::menu_new_game.element[15].texture_ID                = menu_system_class::menu_new_game.texture_ID;
+    menu_system_class::menu_new_game.element[15].title.size_x              = menu_system_class::menu_new_game.element[15].title.text.length()/1.2f;
+    menu_system_class::menu_new_game.element[15].title.size_y              = menu_system_class::menu_new_game.element[15].title.size_x*4;;
+    menu_system_class::menu_new_game.element[15].title.position_x          = menu_system_class::menu_new_game.element[15].position_x-(menu_system_class::menu_new_game.element[15].title.size_x/100.0f);
+    menu_system_class::menu_new_game.element[15].title.position_y          = menu_system_class::menu_new_game.element[15].position_y-(menu_system_class::menu_new_game.element[15].title.size_y/1480.0f);
 
     //------ setup "save game" menu -----------
     menu_system_class::menu_save.mouse_delay                          = menu_system_class::mouse_delay;
@@ -626,6 +709,32 @@ void menu_system_class::init(void)
     menu_system_class::menu_options.element[6].title.position_x          = menu_system_class::menu_options.element[6].position_x-(menu_system_class::menu_options.element[6].title.size_x/60.0f);
     menu_system_class::menu_options.element[6].title.position_y          = menu_system_class::menu_options.element[6].position_y-(menu_system_class::menu_options.element[6].title.size_y/1480.0f);
 
+    menu_system_class::menu_options.element[7].title.text                = "";
+    menu_system_class::menu_options.element[7].active                    = true;
+    menu_system_class::menu_options.element[7].type                      = BUTTON;
+    menu_system_class::menu_options.element[7].color                     = menu_system_class::menu_options.color;
+    menu_system_class::menu_options.element[7].zoom                      = menu_system_class::menu_options.zoom;
+    menu_system_class::menu_options.element[7].size_x                    = (menu_system_class::menu_options.size_x / 100.f)*10.0f;
+    menu_system_class::menu_options.element[7].size_y                    = menu_system_class::menu_options.size_y / 10.0f;
+    menu_system_class::menu_options.element[7].position_x                = menu_system_class::menu_options.position_x-(menu_system_class::menu_options.size_x/2.0f)+(menu_system_class::menu_options.element[7].size_x*1.0f);
+    menu_system_class::menu_options.element[7].position_y                = menu_system_class::menu_options.position_y+(menu_system_class::menu_options.size_y/2.0f)-(menu_system_class::menu_options.element[7].size_y*4.50f);
+    menu_system_class::menu_options.element[7].texture_ID.normal         = game.resource.texture.arrow_button_normal.ref_number;
+    menu_system_class::menu_options.element[7].texture_ID.highlighted    = game.resource.texture.arrow_button_highlighted.ref_number;
+    menu_system_class::menu_options.element[7].texture_ID.disabled       = game.resource.texture.arrow_button_disabled.ref_number;
+
+    menu_system_class::menu_options.element[8].title.text                = "";
+    menu_system_class::menu_options.element[8].active                    = true;
+    menu_system_class::menu_options.element[8].type                      = BUTTON;
+    menu_system_class::menu_options.element[8].color                     = menu_system_class::menu_options.color;
+    menu_system_class::menu_options.element[8].zoom                      = menu_system_class::menu_options.zoom;
+    menu_system_class::menu_options.element[8].size_x                    = (menu_system_class::menu_options.size_x / 100.f)*10.0f;
+    menu_system_class::menu_options.element[8].size_y                    = menu_system_class::menu_options.size_y / 10.0f;
+    menu_system_class::menu_options.element[8].position_x                = menu_system_class::menu_options.position_x+(menu_system_class::menu_options.size_x/2.0f)-(menu_system_class::menu_options.element[8].size_x*1.0f);
+    menu_system_class::menu_options.element[8].position_y                = menu_system_class::menu_options.position_y+(menu_system_class::menu_options.size_y/2.0f)-(menu_system_class::menu_options.element[8].size_y*4.50f);
+    menu_system_class::menu_options.element[8].texture_ID.angle          = 180.0f;
+    menu_system_class::menu_options.element[8].texture_ID.normal         = game.resource.texture.arrow_button_normal.ref_number;
+    menu_system_class::menu_options.element[8].texture_ID.highlighted    = game.resource.texture.arrow_button_highlighted.ref_number;
+    menu_system_class::menu_options.element[8].texture_ID.disabled       = game.resource.texture.arrow_button_disabled.ref_number;
 
 
     menu_system_class::menu_options.element[15].title.text                = "Main menu";
@@ -749,7 +858,7 @@ int menu_system_class::process(void)
                     game.core.music_next_track = true;
                     game.resource.sound.menu_select_00.play();
                 break;
-                case 8: // Main menu button
+                case 16: // Main menu button
                     menu_system_class::active_menu = MENU_MAIN;
                     menu_system_class::menu_new_game.set_position(menu_system_class::menu_load.position_x,menu_system_class::menu_load.position_y);
                     game.resource.sound.menu_select_00.play();
