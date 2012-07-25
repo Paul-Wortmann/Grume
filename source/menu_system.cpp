@@ -533,6 +533,7 @@ void menu_system_class::init(void)
     menu_system_class::menu_options.element[0].texture_ID.highlighted    = game.resource.texture.close_button_highlighted.ref_number;
 
     menu_system_class::menu_options.element[1].title.text                = "";
+    menu_system_class::menu_options.element[1].mouse_delay               = 5;
     menu_system_class::menu_options.element[1].active                    = true;
     menu_system_class::menu_options.element[1].type                      = BUTTON;
     menu_system_class::menu_options.element[1].color                     = menu_system_class::menu_options.color;
@@ -546,6 +547,7 @@ void menu_system_class::init(void)
     menu_system_class::menu_options.element[1].texture_ID.disabled       = game.resource.texture.arrow_button_disabled.ref_number;
 
     menu_system_class::menu_options.element[2].title.text                = "";
+    menu_system_class::menu_options.element[2].mouse_delay               = 5;
     menu_system_class::menu_options.element[2].active                    = true;
     menu_system_class::menu_options.element[2].type                      = BUTTON;
     menu_system_class::menu_options.element[2].color                     = menu_system_class::menu_options.color;
@@ -560,8 +562,10 @@ void menu_system_class::init(void)
     menu_system_class::menu_options.element[2].texture_ID.disabled       = game.resource.texture.arrow_button_disabled.ref_number;
 
     menu_system_class::menu_options.element[3].title.text                = "Sound volume";
+    menu_system_class::menu_options.element[3].value                     = game.core.config.audio_volume_sound;
+    menu_system_class::menu_options.element[3].value_max                 = 127.0f;
     menu_system_class::menu_options.element[3].active                    = true;
-    menu_system_class::menu_options.element[3].type                      = BUTTON;
+    menu_system_class::menu_options.element[3].type                      = BAR;
     menu_system_class::menu_options.element[3].color                     = menu_system_class::menu_options.color;
     menu_system_class::menu_options.element[3].zoom.enabled              = false;
     menu_system_class::menu_options.element[3].size_x                    = (menu_system_class::menu_options.size_x / 100.f)*60.0f;
@@ -575,22 +579,69 @@ void menu_system_class::init(void)
     menu_system_class::menu_options.element[3].title.position_x          = menu_system_class::menu_options.element[3].position_x-(menu_system_class::menu_options.element[3].title.size_x/60.0f);
     menu_system_class::menu_options.element[3].title.position_y          = menu_system_class::menu_options.element[3].position_y-(menu_system_class::menu_options.element[3].title.size_y/1480.0f);
 
+    menu_system_class::menu_options.element[4].title.text                = "";
+    menu_system_class::menu_options.element[4].mouse_delay               = 5;
+    menu_system_class::menu_options.element[4].active                    = true;
+    menu_system_class::menu_options.element[4].type                      = BUTTON;
+    menu_system_class::menu_options.element[4].color                     = menu_system_class::menu_options.color;
+    menu_system_class::menu_options.element[4].zoom                      = menu_system_class::menu_options.zoom;
+    menu_system_class::menu_options.element[4].size_x                    = (menu_system_class::menu_options.size_x / 100.f)*10.0f;
+    menu_system_class::menu_options.element[4].size_y                    = menu_system_class::menu_options.size_y / 10.0f;
+    menu_system_class::menu_options.element[4].position_x                = menu_system_class::menu_options.position_x-(menu_system_class::menu_options.size_x/2.0f)+(menu_system_class::menu_options.element[4].size_x*1.0f);
+    menu_system_class::menu_options.element[4].position_y                = menu_system_class::menu_options.position_y+(menu_system_class::menu_options.size_y/2.0f)-(menu_system_class::menu_options.element[4].size_y*3.25f);
+    menu_system_class::menu_options.element[4].texture_ID.normal         = game.resource.texture.arrow_button_normal.ref_number;
+    menu_system_class::menu_options.element[4].texture_ID.highlighted    = game.resource.texture.arrow_button_highlighted.ref_number;
+    menu_system_class::menu_options.element[4].texture_ID.disabled       = game.resource.texture.arrow_button_disabled.ref_number;
+
+    menu_system_class::menu_options.element[5].title.text                = "";
+    menu_system_class::menu_options.element[5].mouse_delay               = 5;
+    menu_system_class::menu_options.element[5].active                    = true;
+    menu_system_class::menu_options.element[5].type                      = BUTTON;
+    menu_system_class::menu_options.element[5].color                     = menu_system_class::menu_options.color;
+    menu_system_class::menu_options.element[5].zoom                      = menu_system_class::menu_options.zoom;
+    menu_system_class::menu_options.element[5].size_x                    = (menu_system_class::menu_options.size_x / 100.f)*10.0f;
+    menu_system_class::menu_options.element[5].size_y                    = menu_system_class::menu_options.size_y / 10.0f;
+    menu_system_class::menu_options.element[5].position_x                = menu_system_class::menu_options.position_x+(menu_system_class::menu_options.size_x/2.0f)-(menu_system_class::menu_options.element[5].size_x*1.0f);
+    menu_system_class::menu_options.element[5].position_y                = menu_system_class::menu_options.position_y+(menu_system_class::menu_options.size_y/2.0f)-(menu_system_class::menu_options.element[5].size_y*3.25f);
+    menu_system_class::menu_options.element[5].texture_ID.angle          = 180.0f;
+    menu_system_class::menu_options.element[5].texture_ID.normal         = game.resource.texture.arrow_button_normal.ref_number;
+    menu_system_class::menu_options.element[5].texture_ID.highlighted    = game.resource.texture.arrow_button_highlighted.ref_number;
+    menu_system_class::menu_options.element[5].texture_ID.disabled       = game.resource.texture.arrow_button_disabled.ref_number;
+
+    menu_system_class::menu_options.element[6].title.text                = "Music volume";
+    menu_system_class::menu_options.element[6].value                     = game.core.config.audio_volume_music;
+    menu_system_class::menu_options.element[6].value_max                 = 127.0f;
+    menu_system_class::menu_options.element[6].active                    = true;
+    menu_system_class::menu_options.element[6].type                      = BAR;
+    menu_system_class::menu_options.element[6].color                     = menu_system_class::menu_options.color;
+    menu_system_class::menu_options.element[6].zoom.enabled              = false;
+    menu_system_class::menu_options.element[6].size_x                    = (menu_system_class::menu_options.size_x / 100.f)*60.0f;
+    menu_system_class::menu_options.element[6].size_y                    = menu_system_class::menu_options.size_y / 10.0f;
+    menu_system_class::menu_options.element[6].position_x                = menu_system_class::menu_options.position_x;
+    menu_system_class::menu_options.element[6].position_y                = menu_system_class::menu_options.position_y+(menu_system_class::menu_options.size_y/2.0f)-(menu_system_class::menu_options.element[6].size_y*3.25f);
+    menu_system_class::menu_options.element[6].texture_ID.normal         = game.resource.texture.slider_button_normal.ref_number;
+    menu_system_class::menu_options.element[6].texture_ID.highlighted    = game.resource.texture.slider_button_highlighted.ref_number;
+    menu_system_class::menu_options.element[6].title.size_x              = menu_system_class::menu_options.element[6].title.text.length()/2.2f;
+    menu_system_class::menu_options.element[6].title.size_y              = menu_system_class::menu_options.element[6].title.size_x*4;;
+    menu_system_class::menu_options.element[6].title.position_x          = menu_system_class::menu_options.element[6].position_x-(menu_system_class::menu_options.element[6].title.size_x/60.0f);
+    menu_system_class::menu_options.element[6].title.position_y          = menu_system_class::menu_options.element[6].position_y-(menu_system_class::menu_options.element[6].title.size_y/1480.0f);
 
 
-    menu_system_class::menu_options.element[7].title.text                = "Main menu";
-    menu_system_class::menu_options.element[7].active                    = true;
-    menu_system_class::menu_options.element[7].type                      = BUTTON;
-    menu_system_class::menu_options.element[7].color                     = menu_system_class::menu_options.color;
-    menu_system_class::menu_options.element[7].zoom                      = menu_system_class::menu_options.zoom;
-    menu_system_class::menu_options.element[7].size_x                    = (menu_system_class::menu_options.size_x / 100.f)*80.0f;
-    menu_system_class::menu_options.element[7].size_y                    = menu_system_class::menu_options.size_y / 10.0f;
-    menu_system_class::menu_options.element[7].position_x                = menu_system_class::menu_options.position_x;
-    menu_system_class::menu_options.element[7].position_y                = menu_system_class::menu_options.position_y+(menu_system_class::menu_options.size_y/2.0f)-(menu_system_class::menu_options.element[7].size_y*9.0f);
-    menu_system_class::menu_options.element[7].texture_ID                = menu_system_class::menu_options.texture_ID;
-    menu_system_class::menu_options.element[7].title.size_x              = menu_system_class::menu_options.element[7].title.text.length()/1.2f;
-    menu_system_class::menu_options.element[7].title.size_y              = menu_system_class::menu_options.element[7].title.size_x*4;;
-    menu_system_class::menu_options.element[7].title.position_x          = menu_system_class::menu_options.element[7].position_x-(menu_system_class::menu_options.element[7].title.size_x/100.0f);
-    menu_system_class::menu_options.element[7].title.position_y          = menu_system_class::menu_options.element[7].position_y-(menu_system_class::menu_options.element[7].title.size_y/1480.0f);
+
+    menu_system_class::menu_options.element[15].title.text                = "Main menu";
+    menu_system_class::menu_options.element[15].active                    = true;
+    menu_system_class::menu_options.element[15].type                      = BUTTON;
+    menu_system_class::menu_options.element[15].color                     = menu_system_class::menu_options.color;
+    menu_system_class::menu_options.element[15].zoom                      = menu_system_class::menu_options.zoom;
+    menu_system_class::menu_options.element[15].size_x                    = (menu_system_class::menu_options.size_x / 100.f)*80.0f;
+    menu_system_class::menu_options.element[15].size_y                    = menu_system_class::menu_options.size_y / 10.0f;
+    menu_system_class::menu_options.element[15].position_x                = menu_system_class::menu_options.position_x;
+    menu_system_class::menu_options.element[15].position_y                = menu_system_class::menu_options.position_y+(menu_system_class::menu_options.size_y/2.0f)-(menu_system_class::menu_options.element[15].size_y*9.0f);
+    menu_system_class::menu_options.element[15].texture_ID                = menu_system_class::menu_options.texture_ID;
+    menu_system_class::menu_options.element[15].title.size_x              = menu_system_class::menu_options.element[15].title.text.length()/1.2f;
+    menu_system_class::menu_options.element[15].title.size_y              = menu_system_class::menu_options.element[15].title.size_x*4;;
+    menu_system_class::menu_options.element[15].title.position_x          = menu_system_class::menu_options.element[15].position_x-(menu_system_class::menu_options.element[15].title.size_x/100.0f);
+    menu_system_class::menu_options.element[15].title.position_y          = menu_system_class::menu_options.element[15].position_y-(menu_system_class::menu_options.element[15].title.size_y/1480.0f);
 
     //------ setup "game over" menu -----------
     menu_system_class::menu_game_over.mouse_delay                        = menu_system_class::mouse_delay;
@@ -873,7 +924,31 @@ int menu_system_class::process(void)
                     menu_system_class::active_menu = MENU_MAIN;
                     menu_system_class::menu_main.set_position(menu_system_class::menu_options.position_x,menu_system_class::menu_options.position_y);
                 break;
-                case 8: // main menu button
+                case 2: // sound volume left arrow
+                    game.core.config.audio_volume_sound--;
+                    if (game.core.config.audio_volume_sound < 0.0f) game.core.config.audio_volume_sound = 0.0f;
+                    menu_system_class::menu_options.element[3].value = game.core.config.audio_volume_sound;
+                    Mix_Volume(-1,game.core.config.audio_volume_sound);
+                break;
+                case 3: // sound volume right arrow
+                    game.core.config.audio_volume_sound++;
+                    if (game.core.config.audio_volume_sound > menu_system_class::menu_options.element[3].value_max) game.core.config.audio_volume_sound = menu_system_class::menu_options.element[3].value_max;
+                    menu_system_class::menu_options.element[3].value = game.core.config.audio_volume_sound;
+                    Mix_Volume(-1,game.core.config.audio_volume_sound);
+                break;
+                case 5: // music volume left arrow
+                    game.core.config.audio_volume_music--;
+                    if (game.core.config.audio_volume_music < 0.0f) game.core.config.audio_volume_music = 0.0f;
+                    menu_system_class::menu_options.element[6].value = game.core.config.audio_volume_music;
+                    Mix_VolumeMusic(game.core.config.audio_volume_music);
+                break;
+                case 6: // music volume right arrow
+                    game.core.config.audio_volume_music++;
+                    if (game.core.config.audio_volume_music > menu_system_class::menu_options.element[6].value_max) game.core.config.audio_volume_music = menu_system_class::menu_options.element[6].value_max;
+                    menu_system_class::menu_options.element[6].value = game.core.config.audio_volume_music;
+                    Mix_VolumeMusic(game.core.config.audio_volume_music);
+                break;
+                case 16: // main menu button
                     menu_system_class::active_menu = MENU_MAIN;
                     menu_system_class::menu_main.set_position(menu_system_class::menu_options.position_x,menu_system_class::menu_options.position_y);
                     game.resource.sound.menu_select_00.play();

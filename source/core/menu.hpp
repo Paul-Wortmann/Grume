@@ -31,17 +31,17 @@
 #define NORMAL         1
 #define HIGHLIGHTED    2
 
-#define BUTTON     3
-#define TEXTLABEL  4
-#define IMAGE      5
-#define SLIDER     6
-#define BAR        7
-#define TOGGLE     8
-#define CHECKBOX   9
-#define DROPDOWN   10
-#define SELECTION  11
+#define BUTTON         3
+#define TEXTLABEL      4
+#define IMAGE          5
+#define SLIDER         6
+#define BAR            7
+#define TOGGLE         8
+#define CHECKBOX       9
+#define DROPDOWN       10
+#define SELECTION      11
 
-const int MAX_ELEMENTS = 10;
+const int MAX_ELEMENTS = 16;
 
 class location_class
 {
@@ -120,6 +120,7 @@ class menu_element_class
         int                     state;
         int                     type;
         float                   value;
+        float                   value_max;
         float                   position_x;
         float                   position_y;
         float                   position_z;
@@ -129,6 +130,7 @@ class menu_element_class
         bool                    mouse_over;
         bool                    active;
         bool                    clicked;
+        int                     mouse_delay;
         element_zoom_class      zoom;
         color_state_class       color;
         texture_state_class     texture_ID;

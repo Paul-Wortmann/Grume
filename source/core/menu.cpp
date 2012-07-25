@@ -199,6 +199,11 @@ int menu_class::process(void)
     {
         if ((menu_class::element[element_number].type == BUTTON) && (!menu_class::mouse_delay.ready)) allow_click = false;
         else allow_click = true;
+        if (menu_class::element[element_number].mouse_delay > 0)
+        {
+            if (menu_class::mouse_delay.value > menu_class::element[element_number].mouse_delay) allow_click = true;
+            else  allow_click = false;
+        }
         if ((menu_class::element[element_number].active) && (return_value == 0) && (allow_click))
         {
             return_value = menu_class::element[element_number].process();
@@ -270,6 +275,7 @@ int menu_class::process(void)
 
 menu_element_class::menu_element_class(void)
 {
+    menu_element_class::mouse_delay            = -1;
     menu_element_class::title.text             = "not set";
     menu_element_class::title.position_x       = 0.0f;
     menu_element_class::title.position_y       = 0.0f;
@@ -300,6 +306,7 @@ menu_element_class::menu_element_class(void)
     menu_element_class::state                  = NORMAL;
     menu_element_class::type                   = BUTTON;
     menu_element_class::value                  = 0.0f;
+    menu_element_class::value_max              = 0.0f;
     menu_element_class::position_x             = 0.0f;
     menu_element_class::position_y             = 0.0f;
     menu_element_class::position_z             = 0.0f;
@@ -326,6 +333,7 @@ menu_element_class::~menu_element_class(void)
 
 void menu_element_class::render(void)
 {
+    float temp_float = 0.0f;
     if (menu_element_class::active)
     {
         switch (menu_element_class::type)
@@ -367,6 +375,38 @@ void menu_element_class::render(void)
             break;
             case IMAGE:
                 game.resource.texture.render(false,menu_element_class::texture_ID.normal,menu_element_class::position_x,menu_element_class::position_y,menu_element_class::position_z,menu_element_class::size_x+menu_element_class::zoom.value,menu_element_class::size_y+menu_element_class::zoom.value,menu_element_class::texture_ID.angle);
+            break;
+            case SLIDER:
+            break;
+            case BAR:
+                switch (menu_element_class::state)
+                {
+                    case NORMAL:
+                        temp_float = (menu_element_class::value / menu_element_class::value_max) * (menu_element_class::size_x+menu_element_class::zoom.value);
+                        game.resource.texture.render(false,menu_element_class::texture_ID.normal,menu_element_class::position_x-((menu_element_class::size_x/2)+menu_element_class::zoom.value)+(temp_float/2.0f),menu_element_class::position_y,menu_element_class::position_z,temp_float,menu_element_class::size_y+menu_element_class::zoom.value,menu_element_class::texture_ID.angle);
+                        if (menu_element_class::title.text.length() > 0) game.resource.font.font_1.Write(menu_element_class::color.normal.r,menu_element_class::color.normal.g,menu_element_class::color.normal.b,menu_element_class::color.normal.a,menu_element_class::title.position_x,menu_element_class::title.position_y,menu_element_class::title.size_x,menu_element_class::title.size_y,menu_element_class::title.text);
+                    break;
+                    case HIGHLIGHTED:
+                        temp_float = (menu_element_class::value / menu_element_class::value_max) * (menu_element_class::size_x+menu_element_class::zoom.value);
+                        game.resource.texture.render(false,menu_element_class::texture_ID.highlighted,menu_element_class::position_x-((menu_element_class::size_x/2)+menu_element_class::zoom.value)+(temp_float/2.0f),menu_element_class::position_y,menu_element_class::position_z,temp_float,menu_element_class::size_y+menu_element_class::zoom.value,menu_element_class::texture_ID.angle);
+                        if (menu_element_class::title.text.length() > 0) game.resource.font.font_1.Write(menu_element_class::color.highlighted.r,menu_element_class::color.highlighted.g,menu_element_class::color.highlighted.b,menu_element_class::color.highlighted.a,menu_element_class::title.position_x,menu_element_class::title.position_y,menu_element_class::title.size_x,menu_element_class::title.size_y,menu_element_class::title.text);
+                    break;
+                    case DISABLED:
+                        temp_float = (menu_element_class::value / menu_element_class::value_max) * (menu_element_class::size_x+menu_element_class::zoom.value);
+                        game.resource.texture.render(false,menu_element_class::texture_ID.disabled,menu_element_class::position_x-((menu_element_class::size_x/2)+menu_element_class::zoom.value)+(temp_float/2.0f),menu_element_class::position_y,menu_element_class::position_z,temp_float,menu_element_class::size_y+menu_element_class::zoom.value,menu_element_class::texture_ID.angle);
+                        if (menu_element_class::title.text.length() > 0) game.resource.font.font_1.Write(menu_element_class::color.disabled.r,menu_element_class::color.disabled.g,menu_element_class::color.disabled.b,menu_element_class::color.disabled.a,menu_element_class::title.position_x,menu_element_class::title.position_y,menu_element_class::title.size_x,menu_element_class::title.size_y,menu_element_class::title.text);
+                    break;
+                    default:
+                    break;
+                }
+            break;
+            case TOGGLE:
+            break;
+            case CHECKBOX:
+            break;
+            case DROPDOWN:
+            break;
+            case SELECTION:
             break;
             default:
             break;
