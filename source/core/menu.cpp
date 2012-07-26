@@ -128,6 +128,17 @@ menu_class::menu_class(void)
     menu_class::zoom.maximum               = 0.01f;
     menu_class::zoom.value                 = 0.0f;
     menu_class::zoom.speed                 = 0.001f;
+    for (int pos_number = 0; pos_number < MAX_CHOICE_SELECTIONS_PER_MENU; pos_number++)
+    {
+        menu_class::choice_selection[pos_number].selected     = 0;
+        menu_class::choice_selection[pos_number].position     = 0;
+        menu_class::choice_selection[pos_number].position_max = 0;
+        for (int data_pos_number = 0; data_pos_number < MAX_CHOICE_SELECTIONS_PER_MENU; data_pos_number++)
+        {
+            menu_class::choice_selection[pos_number].data[data_pos_number].active = false;
+            menu_class::choice_selection[pos_number].data[data_pos_number].value  = 0;
+        }
+    }
 };
 
 menu_class::~menu_class(void)
@@ -304,6 +315,7 @@ menu_element_class::menu_element_class(void)
     menu_element_class::color.disabled.a       = 0;
     menu_element_class::event                  = 0;
     menu_element_class::state                  = NORMAL;
+    menu_element_class::selected               = false;
     menu_element_class::type                   = BUTTON;
     menu_element_class::value                  = 0.0f;
     menu_element_class::value_max              = 0.0f;
@@ -374,6 +386,7 @@ void menu_element_class::render(void)
                 }
             break;
             case IMAGE:
+                if (menu_element_class::selected) game.resource.texture.render(false,menu_element_class::texture_ID.highlighted,menu_element_class::position_x,menu_element_class::position_y,menu_element_class::position_z,menu_element_class::size_x+menu_element_class::zoom.value,menu_element_class::size_y+menu_element_class::zoom.value,menu_element_class::texture_ID.angle);
                 game.resource.texture.render(false,menu_element_class::texture_ID.normal,menu_element_class::position_x,menu_element_class::position_y,menu_element_class::position_z,menu_element_class::size_x+menu_element_class::zoom.value,menu_element_class::size_y+menu_element_class::zoom.value,menu_element_class::texture_ID.angle);
             break;
             case SLIDER:

@@ -211,7 +211,25 @@ void menu_system_class::init(void)
     menu_system_class::menu_new_game.title_bar.position_x                 = menu_system_class::menu_new_game.position_x;
     menu_system_class::menu_new_game.title_bar.position_y                 = menu_system_class::menu_new_game.position_y+(menu_system_class::menu_new_game.size_y/2.0f)-(menu_system_class::menu_new_game.title_bar.size_y/2.0f);
 
-    menu_system_class::menu_new_game.element[0].title.text                = "";
+    menu_system_class::menu_new_game.choice_selection[0].selected         = 0;
+    menu_system_class::menu_new_game.choice_selection[0].position         = 0;
+    menu_system_class::menu_new_game.choice_selection[0].position_max     = 12;
+    menu_system_class::menu_new_game.choice_selection[0].data[0].active   = true;
+    menu_system_class::menu_new_game.choice_selection[0].data[0].value    = game.resource.texture.portrait_00.ref_number;
+    menu_system_class::menu_new_game.choice_selection[0].data[1].value    = game.resource.texture.portrait_01.ref_number;
+    menu_system_class::menu_new_game.choice_selection[0].data[2].value    = game.resource.texture.portrait_02.ref_number;
+    menu_system_class::menu_new_game.choice_selection[0].data[3].value    = game.resource.texture.portrait_03.ref_number;
+    menu_system_class::menu_new_game.choice_selection[0].data[4].value    = game.resource.texture.portrait_04.ref_number;
+    menu_system_class::menu_new_game.choice_selection[0].data[5].value    = game.resource.texture.portrait_05.ref_number;
+    menu_system_class::menu_new_game.choice_selection[0].data[6].value    = game.resource.texture.portrait_06.ref_number;
+    menu_system_class::menu_new_game.choice_selection[0].data[7].value    = game.resource.texture.portrait_07.ref_number;
+    menu_system_class::menu_new_game.choice_selection[0].data[8].value    = game.resource.texture.portrait_08.ref_number;
+    menu_system_class::menu_new_game.choice_selection[0].data[9].value    = game.resource.texture.portrait_09.ref_number;
+    menu_system_class::menu_new_game.choice_selection[0].data[10].value   = game.resource.texture.portrait_10.ref_number;
+    menu_system_class::menu_new_game.choice_selection[0].data[11].value   = game.resource.texture.portrait_11.ref_number;
+    menu_system_class::menu_new_game.choice_selection[0].data[12].value   = game.resource.texture.portrait_12.ref_number;
+
+    menu_system_class::menu_new_game.element[0].title.text                = ""; // Close button
     menu_system_class::menu_new_game.element[0].active                    = true;
     menu_system_class::menu_new_game.element[0].type                      = BUTTON;
     menu_system_class::menu_new_game.element[0].zoom.enabled              = false;
@@ -224,6 +242,7 @@ void menu_system_class::init(void)
     menu_system_class::menu_new_game.element[0].texture_ID.highlighted    = game.resource.texture.close_button_highlighted.ref_number;
 
     menu_system_class::menu_new_game.element[2].title.text                = "";
+    menu_system_class::menu_new_game.element[2].mouse_delay               = 5;
     menu_system_class::menu_new_game.element[2].active                    = true;
     menu_system_class::menu_new_game.element[2].type                      = BUTTON;
     menu_system_class::menu_new_game.element[2].color                     = menu_system_class::menu_new_game.color;
@@ -238,6 +257,7 @@ void menu_system_class::init(void)
     menu_system_class::menu_new_game.element[2].texture_ID.disabled       = game.resource.texture.arrow_button_disabled.ref_number;
 
     menu_system_class::menu_new_game.element[3].title.text                = "";
+    menu_system_class::menu_new_game.element[3].mouse_delay               = 5;
     menu_system_class::menu_new_game.element[3].active                    = true;
     menu_system_class::menu_new_game.element[3].type                      = BUTTON;
     menu_system_class::menu_new_game.element[3].color                     = menu_system_class::menu_new_game.color;
@@ -252,6 +272,7 @@ void menu_system_class::init(void)
     menu_system_class::menu_new_game.element[3].texture_ID.disabled       = game.resource.texture.arrow_button_disabled.ref_number;
 
     menu_system_class::menu_new_game.element[4].title.text                = "";
+    menu_system_class::menu_new_game.element[4].selected                  = true;
     menu_system_class::menu_new_game.element[4].active                    = true;
     menu_system_class::menu_new_game.element[4].type                      = IMAGE;
     menu_system_class::menu_new_game.element[4].color                     = menu_system_class::menu_new_game.color;
@@ -260,7 +281,8 @@ void menu_system_class::init(void)
     menu_system_class::menu_new_game.element[4].size_y                    = menu_system_class::menu_new_game.size_y / 10.0f;
     menu_system_class::menu_new_game.element[4].position_x                = menu_system_class::menu_new_game.position_x-(menu_system_class::menu_new_game.size_x/2.0f)+(menu_system_class::menu_new_game.element[4].size_x*2.5f);
     menu_system_class::menu_new_game.element[4].position_y                = menu_system_class::menu_new_game.position_y+(menu_system_class::menu_new_game.size_y/2.0f)-(menu_system_class::menu_new_game.element[4].size_y*2.00f);
-    menu_system_class::menu_new_game.element[4].texture_ID.normal         = game.resource.texture.portrait_00.ref_number;
+    menu_system_class::menu_new_game.element[4].texture_ID.normal         = menu_system_class::menu_new_game.choice_selection[0].data[0].value;
+    menu_system_class::menu_new_game.element[4].texture_ID.highlighted    = game.resource.texture.selection_box.ref_number;
 
     menu_system_class::menu_new_game.element[5].title.text                = "";
     menu_system_class::menu_new_game.element[5].active                    = true;
@@ -271,7 +293,8 @@ void menu_system_class::init(void)
     menu_system_class::menu_new_game.element[5].size_y                    = menu_system_class::menu_new_game.size_y / 10.0f;
     menu_system_class::menu_new_game.element[5].position_x                = menu_system_class::menu_new_game.position_x-(menu_system_class::menu_new_game.size_x/2.0f)+(menu_system_class::menu_new_game.element[5].size_x*3.75f);
     menu_system_class::menu_new_game.element[5].position_y                = menu_system_class::menu_new_game.position_y+(menu_system_class::menu_new_game.size_y/2.0f)-(menu_system_class::menu_new_game.element[5].size_y*2.00f);
-    menu_system_class::menu_new_game.element[5].texture_ID.normal         = game.resource.texture.portrait_01.ref_number;
+    menu_system_class::menu_new_game.element[5].texture_ID.normal         = menu_system_class::menu_new_game.choice_selection[0].data[1].value;
+    menu_system_class::menu_new_game.element[5].texture_ID.highlighted    = game.resource.texture.selection_box.ref_number;
 
     menu_system_class::menu_new_game.element[6].title.text                = "";
     menu_system_class::menu_new_game.element[6].active                    = true;
@@ -282,7 +305,8 @@ void menu_system_class::init(void)
     menu_system_class::menu_new_game.element[6].size_y                    = menu_system_class::menu_new_game.size_y / 10.0f;
     menu_system_class::menu_new_game.element[6].position_x                = menu_system_class::menu_new_game.position_x-(menu_system_class::menu_new_game.size_x/2.0f)+(menu_system_class::menu_new_game.element[6].size_x*5.0f);
     menu_system_class::menu_new_game.element[6].position_y                = menu_system_class::menu_new_game.position_y+(menu_system_class::menu_new_game.size_y/2.0f)-(menu_system_class::menu_new_game.element[6].size_y*2.00f);
-    menu_system_class::menu_new_game.element[6].texture_ID.normal         = game.resource.texture.portrait_02.ref_number;
+    menu_system_class::menu_new_game.element[6].texture_ID.normal         = menu_system_class::menu_new_game.choice_selection[0].data[2].value;
+    menu_system_class::menu_new_game.element[6].texture_ID.highlighted    = game.resource.texture.selection_box.ref_number;
 
     menu_system_class::menu_new_game.element[7].title.text                = "";
     menu_system_class::menu_new_game.element[7].active                    = true;
@@ -293,7 +317,8 @@ void menu_system_class::init(void)
     menu_system_class::menu_new_game.element[7].size_y                    = menu_system_class::menu_new_game.size_y / 10.0f;
     menu_system_class::menu_new_game.element[7].position_x                = menu_system_class::menu_new_game.position_x-(menu_system_class::menu_new_game.size_x/2.0f)+(menu_system_class::menu_new_game.element[7].size_x*6.25f);
     menu_system_class::menu_new_game.element[7].position_y                = menu_system_class::menu_new_game.position_y+(menu_system_class::menu_new_game.size_y/2.0f)-(menu_system_class::menu_new_game.element[7].size_y*2.00f);
-    menu_system_class::menu_new_game.element[7].texture_ID.normal         = game.resource.texture.portrait_03.ref_number;
+    menu_system_class::menu_new_game.element[7].texture_ID.normal         = menu_system_class::menu_new_game.choice_selection[0].data[3].value;
+    menu_system_class::menu_new_game.element[7].texture_ID.highlighted    = game.resource.texture.selection_box.ref_number;
 
     menu_system_class::menu_new_game.element[8].title.text                = "";
     menu_system_class::menu_new_game.element[8].active                    = true;
@@ -304,7 +329,8 @@ void menu_system_class::init(void)
     menu_system_class::menu_new_game.element[8].size_y                    = menu_system_class::menu_new_game.size_y / 10.0f;
     menu_system_class::menu_new_game.element[8].position_x                = menu_system_class::menu_new_game.position_x-(menu_system_class::menu_new_game.size_x/2.0f)+(menu_system_class::menu_new_game.element[8].size_x*7.5f);
     menu_system_class::menu_new_game.element[8].position_y                = menu_system_class::menu_new_game.position_y+(menu_system_class::menu_new_game.size_y/2.0f)-(menu_system_class::menu_new_game.element[8].size_y*2.00f);
-    menu_system_class::menu_new_game.element[8].texture_ID.normal         = game.resource.texture.portrait_04.ref_number;
+    menu_system_class::menu_new_game.element[8].texture_ID.normal         = menu_system_class::menu_new_game.choice_selection[0].data[4].value;
+    menu_system_class::menu_new_game.element[8].texture_ID.highlighted    = game.resource.texture.selection_box.ref_number;
 
     menu_system_class::menu_new_game.element[1].title.text                = "Start Game";
     menu_system_class::menu_new_game.element[1].active                    = true;
@@ -774,9 +800,11 @@ void menu_system_class::init(void)
 
 int menu_system_class::process(void)
 {
-    int old_event_state      = 0;
-    int old_mouse_over_state = 0;
-    int return_value         = 0;
+    int  old_event_state      = 0;
+    int  old_mouse_over_state = 0;
+    int  return_value         = 0;
+    int  temp_data_value      = 0;
+    bool temp_data_bool       = false;
     switch(menu_system_class::active_menu)
     {
         case MENU_MAIN:
@@ -858,6 +886,56 @@ int menu_system_class::process(void)
                     game.core.music_next_track = true;
                     game.resource.sound.menu_select_00.play();
                 break;
+                case 3: // left arrow button for player portrait selection
+                    menu_system_class::menu_new_game.choice_selection[0].position++;
+                    if (menu_system_class::menu_new_game.choice_selection[0].position > menu_system_class::menu_new_game.choice_selection[0].position_max) menu_system_class::menu_new_game.choice_selection[0].position = 0;
+                    temp_data_value = menu_system_class::menu_new_game.choice_selection[0].data[0].value;
+                    temp_data_bool  = menu_system_class::menu_new_game.choice_selection[0].data[0].active;
+                    for (int data_position_count = 0; data_position_count < menu_system_class::menu_new_game.choice_selection[0].position_max;data_position_count++)
+                    {
+                        menu_system_class::menu_new_game.choice_selection[0].data[data_position_count].value  = menu_system_class::menu_new_game.choice_selection[0].data[data_position_count+1].value;
+                        menu_system_class::menu_new_game.choice_selection[0].data[data_position_count].active = menu_system_class::menu_new_game.choice_selection[0].data[data_position_count+1].active;
+                    }
+                    menu_system_class::menu_new_game.choice_selection[0].data[menu_system_class::menu_new_game.choice_selection[0].position_max].value  = temp_data_value;
+                    menu_system_class::menu_new_game.choice_selection[0].data[menu_system_class::menu_new_game.choice_selection[0].position_max].active = temp_data_bool;
+                    menu_system_class::menu_new_game.element[4].texture_ID.normal         = menu_system_class::menu_new_game.choice_selection[0].data[0].value;
+                    menu_system_class::menu_new_game.element[5].texture_ID.normal         = menu_system_class::menu_new_game.choice_selection[0].data[1].value;
+                    menu_system_class::menu_new_game.element[6].texture_ID.normal         = menu_system_class::menu_new_game.choice_selection[0].data[2].value;
+                    menu_system_class::menu_new_game.element[7].texture_ID.normal         = menu_system_class::menu_new_game.choice_selection[0].data[3].value;
+                    menu_system_class::menu_new_game.element[8].texture_ID.normal         = menu_system_class::menu_new_game.choice_selection[0].data[4].value;
+                    menu_system_class::menu_new_game.element[4].selected                  = menu_system_class::menu_new_game.choice_selection[0].data[0].active;
+                    menu_system_class::menu_new_game.element[5].selected                  = menu_system_class::menu_new_game.choice_selection[0].data[1].active;
+                    menu_system_class::menu_new_game.element[6].selected                  = menu_system_class::menu_new_game.choice_selection[0].data[2].active;
+                    menu_system_class::menu_new_game.element[7].selected                  = menu_system_class::menu_new_game.choice_selection[0].data[3].active;
+                    menu_system_class::menu_new_game.element[8].selected                  = menu_system_class::menu_new_game.choice_selection[0].data[4].active;
+                break;
+                case 4: // Right arrow button for player portrait selection
+                    menu_system_class::menu_new_game.choice_selection[0].position--;
+                    if (menu_system_class::menu_new_game.choice_selection[0].position < 0) menu_system_class::menu_new_game.choice_selection[0].position = menu_system_class::menu_new_game.choice_selection[0].position_max;
+                    temp_data_value = menu_system_class::menu_new_game.choice_selection[0].data[menu_system_class::menu_new_game.choice_selection[0].position_max-1].value;
+                    temp_data_bool  = menu_system_class::menu_new_game.choice_selection[0].data[menu_system_class::menu_new_game.choice_selection[0].position_max-1].active;
+                    for (int data_position_count = menu_system_class::menu_new_game.choice_selection[0].position_max-1; data_position_count > 0;data_position_count--)
+                    {
+                        menu_system_class::menu_new_game.choice_selection[0].data[data_position_count].value  = menu_system_class::menu_new_game.choice_selection[0].data[data_position_count-1].value;
+                        menu_system_class::menu_new_game.choice_selection[0].data[data_position_count].active = menu_system_class::menu_new_game.choice_selection[0].data[data_position_count-1].active;
+                    }
+                    menu_system_class::menu_new_game.choice_selection[0].data[0].value    = temp_data_value;
+                    menu_system_class::menu_new_game.choice_selection[0].data[0].active   = temp_data_bool;
+                    menu_system_class::menu_new_game.element[4].texture_ID.normal         = menu_system_class::menu_new_game.choice_selection[0].data[0].value;
+                    menu_system_class::menu_new_game.element[5].texture_ID.normal         = menu_system_class::menu_new_game.choice_selection[0].data[1].value;
+                    menu_system_class::menu_new_game.element[6].texture_ID.normal         = menu_system_class::menu_new_game.choice_selection[0].data[2].value;
+                    menu_system_class::menu_new_game.element[7].texture_ID.normal         = menu_system_class::menu_new_game.choice_selection[0].data[3].value;
+                    menu_system_class::menu_new_game.element[8].texture_ID.normal         = menu_system_class::menu_new_game.choice_selection[0].data[4].value;
+                    menu_system_class::menu_new_game.element[4].selected                  = menu_system_class::menu_new_game.choice_selection[0].data[0].active;
+                    menu_system_class::menu_new_game.element[5].selected                  = menu_system_class::menu_new_game.choice_selection[0].data[1].active;
+                    menu_system_class::menu_new_game.element[6].selected                  = menu_system_class::menu_new_game.choice_selection[0].data[2].active;
+                    menu_system_class::menu_new_game.element[7].selected                  = menu_system_class::menu_new_game.choice_selection[0].data[3].active;
+                    menu_system_class::menu_new_game.element[8].selected                  = menu_system_class::menu_new_game.choice_selection[0].data[4].active;
+                break;
+
+///                game.player.portrait_number
+
+
                 case 16: // Main menu button
                     menu_system_class::active_menu = MENU_MAIN;
                     menu_system_class::menu_new_game.set_position(menu_system_class::menu_load.position_x,menu_system_class::menu_load.position_y);

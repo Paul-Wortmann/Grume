@@ -41,6 +41,9 @@
 #define DROPDOWN       10
 #define SELECTION      11
 
+#define MAX_CHOICE_SELECTIONS_PER_MENU 8
+#define MAX_CHOICE_SELECTION           16
+
 const int MAX_ELEMENTS = 16;
 
 class location_class
@@ -118,6 +121,7 @@ class menu_element_class
         location_class          tooltip;
         int                     event;
         int                     state;
+        bool                    selected;
         int                     type;
         float                   value;
         float                   value_max;
@@ -142,10 +146,26 @@ class menu_element_class
         int                     process(void);
 };
 
+struct selection_data_type
+{
+    bool    active;
+    int     value;
+};
+
+
+struct choice_selection_type
+{
+    int                         selected;
+    int                         position;
+    int                         position_max;
+    selection_data_type         data[MAX_CHOICE_SELECTION];
+};
+
 class menu_class
 {
     private:
     public:
+        choice_selection_type   choice_selection[MAX_CHOICE_SELECTIONS_PER_MENU];
         delay_class             mouse_delay;
         int                     event;
         location_class          title;
