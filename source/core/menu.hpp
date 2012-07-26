@@ -43,8 +43,7 @@
 
 #define MAX_CHOICE_SELECTIONS_PER_MENU 8
 #define MAX_CHOICE_SELECTION           16
-
-const int MAX_ELEMENTS = 16;
+#define MAX_ELEMENTS                   24
 
 class location_class
 {
