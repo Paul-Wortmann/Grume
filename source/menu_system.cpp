@@ -932,10 +932,76 @@ int menu_system_class::process(void)
                     menu_system_class::menu_new_game.element[7].selected                  = menu_system_class::menu_new_game.choice_selection[0].data[3].active;
                     menu_system_class::menu_new_game.element[8].selected                  = menu_system_class::menu_new_game.choice_selection[0].data[4].active;
                 break;
-
-///                game.player.portrait_number
-
-
+                case 5: // Portrait 0 selected
+                    for (int data_position_count = 0; data_position_count < menu_system_class::menu_new_game.choice_selection[0].position_max;data_position_count++)
+                    {
+                        menu_system_class::menu_new_game.choice_selection[0].data[data_position_count].active = false;
+                    }
+                    menu_system_class::menu_new_game.element[4].selected                  = true;
+                    menu_system_class::menu_new_game.element[5].selected                  = false;
+                    menu_system_class::menu_new_game.element[6].selected                  = false;
+                    menu_system_class::menu_new_game.element[7].selected                  = false;
+                    menu_system_class::menu_new_game.element[8].selected                  = false;
+                    menu_system_class::menu_new_game.choice_selection[0].data[0].active   = true;
+                    game.player.portrait_image_ref = menu_system_class::menu_new_game.choice_selection[0].data[0].value;
+                    game.player.portrait_number    = menu_system_class::menu_new_game.choice_selection[0].position;
+                break;
+                case 6: // Portrait 1 selected
+                    for (int data_position_count = 0; data_position_count < menu_system_class::menu_new_game.choice_selection[0].position_max;data_position_count++)
+                    {
+                        menu_system_class::menu_new_game.choice_selection[0].data[data_position_count].active = false;
+                    }
+                    menu_system_class::menu_new_game.element[4].selected                  = false;
+                    menu_system_class::menu_new_game.element[5].selected                  = true;
+                    menu_system_class::menu_new_game.element[6].selected                  = false;
+                    menu_system_class::menu_new_game.element[7].selected                  = false;
+                    menu_system_class::menu_new_game.element[8].selected                  = false;
+                    menu_system_class::menu_new_game.choice_selection[0].data[1].active   = true;
+                    game.player.portrait_image_ref = menu_system_class::menu_new_game.choice_selection[0].data[1].value;
+                    game.player.portrait_number    = menu_system_class::menu_new_game.choice_selection[0].position;
+                break;
+                case 7: // Portrait 2 selected
+                    for (int data_position_count = 0; data_position_count < menu_system_class::menu_new_game.choice_selection[0].position_max;data_position_count++)
+                    {
+                        menu_system_class::menu_new_game.choice_selection[0].data[data_position_count].active = false;
+                    }
+                    menu_system_class::menu_new_game.element[4].selected                  = false;
+                    menu_system_class::menu_new_game.element[5].selected                  = false;
+                    menu_system_class::menu_new_game.element[6].selected                  = true;
+                    menu_system_class::menu_new_game.element[7].selected                  = false;
+                    menu_system_class::menu_new_game.element[8].selected                  = false;
+                    menu_system_class::menu_new_game.choice_selection[0].data[2].active   = true;
+                    game.player.portrait_image_ref = menu_system_class::menu_new_game.choice_selection[0].data[2].value;
+                    game.player.portrait_number    = menu_system_class::menu_new_game.choice_selection[0].position;
+                break;
+                case 8: // Portrait 3 selected
+                    for (int data_position_count = 0; data_position_count < menu_system_class::menu_new_game.choice_selection[0].position_max;data_position_count++)
+                    {
+                        menu_system_class::menu_new_game.choice_selection[0].data[data_position_count].active = false;
+                    }
+                    menu_system_class::menu_new_game.element[4].selected                  = false;
+                    menu_system_class::menu_new_game.element[5].selected                  = false;
+                    menu_system_class::menu_new_game.element[6].selected                  = false;
+                    menu_system_class::menu_new_game.element[7].selected                  = true;
+                    menu_system_class::menu_new_game.element[8].selected                  = false;
+                    menu_system_class::menu_new_game.choice_selection[0].data[3].active   = true;
+                    game.player.portrait_image_ref = menu_system_class::menu_new_game.choice_selection[0].data[3].value;
+                    game.player.portrait_number    = menu_system_class::menu_new_game.choice_selection[0].position;
+                break;
+                case 9: // Portrait 4 selected
+                    for (int data_position_count = 0; data_position_count < menu_system_class::menu_new_game.choice_selection[0].position_max;data_position_count++)
+                    {
+                        menu_system_class::menu_new_game.choice_selection[0].data[data_position_count].active = false;
+                    }
+                    menu_system_class::menu_new_game.element[4].selected                  = false;
+                    menu_system_class::menu_new_game.element[5].selected                  = false;
+                    menu_system_class::menu_new_game.element[6].selected                  = false;
+                    menu_system_class::menu_new_game.element[7].selected                  = false;
+                    menu_system_class::menu_new_game.element[8].selected                  = true;
+                    menu_system_class::menu_new_game.choice_selection[0].data[4].active   = true;
+                    game.player.portrait_image_ref = menu_system_class::menu_new_game.choice_selection[0].data[4].value;
+                    game.player.portrait_number    = menu_system_class::menu_new_game.choice_selection[0].position;
+                break;
                 case 16: // Main menu button
                     menu_system_class::active_menu = MENU_MAIN;
                     menu_system_class::menu_new_game.set_position(menu_system_class::menu_load.position_x,menu_system_class::menu_load.position_y);

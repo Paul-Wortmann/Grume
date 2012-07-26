@@ -68,8 +68,8 @@ void game_class::init(void)
     game.core.inventory_active                    = false;
     game.core.npcvendor_active                    = false;
 
-    game.player.portrait_number                   =  0;
-    game.player.portrait_image_ref                =  game.resource.texture.portrait_00.ref_number;
+    //game.player.portrait_number                   =  0;
+    //game.player.portrait_image_ref                =  game.resource.texture.portrait_00.ref_number;
     game.player.name                              =  "Kanchi";
     game.player.level.current                     =  0;
     game.player.level.base                        =  2;
