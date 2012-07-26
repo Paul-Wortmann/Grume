@@ -68,6 +68,10 @@ class player_stats_class
         int   mouse_over_portrait_count;
         int   tooltip_time;
         bool  tooltip_active;
+        float drag_delta_x;
+        float drag_delta_y;
+        float drag_offset_x;
+        float drag_offset_y;
         float pos_x;
         float pos_y;
         float pos_z;
