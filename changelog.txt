@@ -8,9 +8,10 @@ just that time is not permitting to proceed at a fast pace, at the moment.
 
 v0.09 - (2012-07-31)
 GFX  -> Added enemy health bars.
+GFX  -> Added new menu graphics.
 CORE -> Merged new branch.
 CORE -> Re-wrote menu system.
-LOC  -> 18600
+LOC  -> 19471
 
 v0.08 - (2012-06-30)
 CORE -> Started working on some physics for the engine.
