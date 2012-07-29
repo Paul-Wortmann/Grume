@@ -542,6 +542,8 @@ class resource_class
         void                        load_maps_3D(void);
         void                        load_3D_models(void);
         void                        load_test_data(void);
+        void                        load_all(void);
+        void                        initialize(void);
 };
 
 #endif // RESOURCES_H

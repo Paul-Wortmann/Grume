@@ -4,10 +4,61 @@
 Loading configuration...
 Loading language file -> data/configuration/languages/english.txt
 Starting graphics subsystem...
+Starting OpenGL...
 Starting sound system...
 Initializing joystick system...
-Seeding random...
 Initializing font system...
+Loading resources....
+Loading resources -> UI
+Loading resources -> Items
+Loading resources -> portraits
+Loading resources -> particles
+Loading resources -> spells
+Loading resources -> Tilesets
+Loading resources -> Generic Textures
+Loading resources -> Heightmaps
+Loading resources -> 2D Maps
+Loading resources -> 3D Maps
+Loading resources -> 3D Models
+loader_obj_class::load_texture loaded file -> data/models/forest/tree_palm_diffus.png
+usemtl found...1
+Current_material - > default
+loader_obj_class::load_texture loaded file -> data/models/forest/tree_palm_diffus.png
+usemtl found...2
+Current_material - > tree_palm_diffus
+loader_obj_class::load_texture loaded file -> data/models/objects/sand_shrubs.png
+usemtl found...1
+Current_material - > sand_shrubs_diffuse_sand_shrubs.png
+usemtl found...1
+Current_material - > Material_7891969-text
+usemtl found...1
+Current_material - > Material_tomb.png
+usemtl found...1
+Current_material - > default_Untitled
+Loading resources -> test data
+font     files loaded -> 1
+2D map   files loaded -> 1
+3D map   files loaded -> 1
+3D model files loaded -> 6
+music    files loaded -> 1
+sound    files loaded -> 9
+texture  files loaded -> 361
+font     files loaded -> 1
+2D map   files loaded -> 1
+3D map   files loaded -> 1
+3D model files loaded -> 6
+music    files loaded -> 1
+sound    files loaded -> 9
+texture  files loaded -> 361
+Seeding random...
+Initializing game system...
+Initializing menu system...
+Initializing event handlers...
+Starting Game...
+ 
+# ---------------------------------------------- #
+ 
+Starting graphics subsystem...
 Starting OpenGL...
 Loading resources....
 Loading resources -> UI
@@ -44,13 +95,6 @@ font     files loaded -> 1
 music    files loaded -> 1
 sound    files loaded -> 9
 texture  files loaded -> 361
-Initializing game system...
-Initializing menu system...
-Initializing event handlers...
-Starting Game...
- 
-# ---------------------------------------------- #
- 
  
 # ---------------------------------------------- #
  

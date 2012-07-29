@@ -92,6 +92,8 @@ extern "C" int main(int argc, char** argv)
     SDL_WM_SetCaption(application_name, 0);
     SDL_ShowCursor(SDL_DISABLE);
     SDL_Init(SDL_INIT_EVENTTHREAD);
+    game.core.log.file_write("Starting OpenGL...");
+    game.core.graphics.init_gl(game.core.config.display_resolution_x,game.core.config.display_resolution_y);
 //  --- audio ---
     game.core.log.file_write("Starting sound system...");
     SDL_Init(SDL_INIT_AUDIO);
@@ -99,33 +101,24 @@ extern "C" int main(int argc, char** argv)
     Mix_OpenAudio(game.core.config.audio_rate, AUDIO_S16, 2, game.core.config.audio_buffers);
     Mix_Volume(-1,game.core.config.audio_volume_sound);
     Mix_VolumeMusic(game.core.config.audio_volume_music);
+//  --- joysticks ---
     game.core.log.file_write("Initializing joystick system...");
     SDL_Init(SDL_INIT_JOYSTICK);
     SDL_Joystick *joystick;
     SDL_JoystickEventState(SDL_ENABLE);
     joystick = SDL_JoystickOpen(0);
-    game.core.log.file_write("Seeding random...");
-    seed_rand();
+//  --- font ---
     game.core.log.file_write("Initializing font system...");
     TTF_Init();
-    game.core.log.file_write("Starting OpenGL...");
-    game.core.graphics.init_gl(game.core.config.display_resolution_x,game.core.config.display_resolution_y);
-    game.resource.load_default();
+//  --- resources ---
+    game.resource.initialize();
     game.resource.loading_screen_display("data/loading_screen.png");
     game.core.log.file_write("Loading resources....");
-    game.resource.load_UI();
-    game.resource.load_items();
-    game.resource.load_portraits();
-    game.resource.load_particles();
-    game.resource.load_spells();
-    game.resource.load_tilesets();
-    game.resource.load_generic_textures();
-    game.resource.load_heightmaps();
-    game.resource.load_maps_2D();
-    game.resource.load_maps_3D();
-    game.resource.load_3D_models();
-    game.resource.load_test_data();
+    game.resource.load_all();
     game.resource.write_log_file_count();
+//  --- miscellaneous ---
+    game.core.log.file_write("Seeding random...");
+    seed_rand();
     game.core.log.file_write("Initializing game system...");
     game.init();
     game.core.log.file_write("Initializing menu system...");

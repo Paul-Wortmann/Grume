@@ -1448,5 +1448,35 @@ void resource_class::load_test_data(void)
     game.resource.texture.test_ball.load_image("data/test/ball.png",resource_class::texture.number_loaded);resource_class::texture.number_loaded++;
 };
 
+void resource_class::load_all(void)
+{
+    resource_class::initialize();
+    resource_class::load_default();
+    resource_class::load_UI();
+    resource_class::load_items();
+    resource_class::load_portraits();
+    resource_class::load_particles();
+    resource_class::load_spells();
+    resource_class::load_tilesets();
+    resource_class::load_generic_textures();
+    resource_class::load_heightmaps();
+    resource_class::load_maps_2D();
+    resource_class::load_maps_3D();
+    resource_class::load_3D_models();
+    resource_class::load_test_data();
+    resource_class::write_log_file_count();
+};
+
+void resource_class::initialize(void)
+{
+    resource_class::font.number_loaded     = 0;
+    resource_class::map_2D.number_loaded   = 0;
+    resource_class::map_3D.number_loaded   = 0;
+    resource_class::model_3D.number_loaded = 0;
+    resource_class::music.number_loaded    = 0;
+    resource_class::sound.number_loaded    = 0;
+    resource_class::texture.number_loaded  = 0;
+};
+
 //------------------------------------------------------------------------------------------------------------------------
 

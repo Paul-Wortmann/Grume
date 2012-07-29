@@ -723,6 +723,7 @@ void menu_system_class::init(void)
     menu_system_class::menu_options.element[16].active                    = true;
     menu_system_class::menu_options.element[16].type                      = BUTTON;
     menu_system_class::menu_options.element[16].zoom.enabled              = false;
+    menu_system_class::menu_options.element[16].value                     = 1.0f;
     menu_system_class::menu_options.element[16].color                     = menu_system_class::menu_options.color;
     menu_system_class::menu_options.element[16].size_x                    = (menu_system_class::menu_options.size_x / 100.f)*10.0f;
     menu_system_class::menu_options.element[16].size_y                    = menu_system_class::menu_options.size_y / 10.0f;
@@ -731,6 +732,24 @@ void menu_system_class::init(void)
     menu_system_class::menu_options.element[16].texture_ID                = menu_system_class::menu_options.texture_ID;
     menu_system_class::menu_options.element[16].texture_ID.normal         = game.resource.texture.green_button.ref_number;
     menu_system_class::menu_options.element[16].texture_ID.highlighted    = game.resource.texture.green_button_highlighted.ref_number;
+    menu_system_class::menu_options.element[16].texture_ID.disabled       = game.resource.texture.red_button.ref_number;
+    menu_system_class::menu_options.element[16].texture_ID.base           = game.resource.texture.red_button_highlighted.ref_number;
+    if (game.core.config.display_fullscreen)
+    {
+        menu_system_class::menu_options.element[16].value                     = 1.0f;
+        menu_system_class::menu_options.element[16].texture_ID.normal         = game.resource.texture.green_button.ref_number;
+        menu_system_class::menu_options.element[16].texture_ID.highlighted    = game.resource.texture.green_button_highlighted.ref_number;
+        menu_system_class::menu_options.element[16].texture_ID.disabled       = game.resource.texture.red_button.ref_number;
+        menu_system_class::menu_options.element[16].texture_ID.base           = game.resource.texture.red_button_highlighted.ref_number;
+    }
+    else
+    {
+        menu_system_class::menu_options.element[16].value                     = 0.0f;
+        menu_system_class::menu_options.element[16].texture_ID.normal         = game.resource.texture.red_button.ref_number;
+        menu_system_class::menu_options.element[16].texture_ID.highlighted    = game.resource.texture.red_button_highlighted.ref_number;
+        menu_system_class::menu_options.element[16].texture_ID.disabled       = game.resource.texture.green_button.ref_number;
+        menu_system_class::menu_options.element[16].texture_ID.base           = game.resource.texture.green_button_highlighted.ref_number;
+    }
 
     menu_system_class::menu_options.element[0].title.text                = "";
     menu_system_class::menu_options.element[0].active                    = true;
@@ -1268,6 +1287,22 @@ int menu_system_class::process(void)
             }
         break;
         case MENU_OPTIONS:
+            if (game.core.config.display_fullscreen)
+            {
+                menu_system_class::menu_options.element[16].value                     = 1.0f;
+                menu_system_class::menu_options.element[16].texture_ID.normal         = game.resource.texture.green_button.ref_number;
+                menu_system_class::menu_options.element[16].texture_ID.highlighted    = game.resource.texture.green_button_highlighted.ref_number;
+                menu_system_class::menu_options.element[16].texture_ID.disabled       = game.resource.texture.red_button.ref_number;
+                menu_system_class::menu_options.element[16].texture_ID.base           = game.resource.texture.red_button_highlighted.ref_number;
+            }
+            else
+            {
+                menu_system_class::menu_options.element[16].value                     = 0.0f;
+                menu_system_class::menu_options.element[16].texture_ID.normal         = game.resource.texture.red_button.ref_number;
+                menu_system_class::menu_options.element[16].texture_ID.highlighted    = game.resource.texture.red_button_highlighted.ref_number;
+                menu_system_class::menu_options.element[16].texture_ID.disabled       = game.resource.texture.green_button.ref_number;
+                menu_system_class::menu_options.element[16].texture_ID.base           = game.resource.texture.green_button_highlighted.ref_number;
+            }
             old_event_state          = menu_system_class::menu_options.event;
             old_mouse_over_state     = menu_system_class::menu_options.mouse_over;
             return_value             = menu_system_class::menu_options.process();
@@ -1303,6 +1338,36 @@ int menu_system_class::process(void)
                     if (game.core.config.audio_volume_music > menu_system_class::menu_options.element[6].value_max) game.core.config.audio_volume_music = menu_system_class::menu_options.element[6].value_max;
                     menu_system_class::menu_options.element[6].value = game.core.config.audio_volume_music;
                     Mix_VolumeMusic(game.core.config.audio_volume_music);
+                break;
+                case 15: // toggle full screen
+                    if (game.core.config.display_fullscreen)
+                    {
+                        game.core.config.display_fullscreen                                   = false;
+                        menu_system_class::menu_options.element[16].value                     = 0.0f;
+                        menu_system_class::menu_options.element[16].texture_ID.normal         = game.resource.texture.red_button.ref_number;
+                        menu_system_class::menu_options.element[16].texture_ID.highlighted    = game.resource.texture.red_button_highlighted.ref_number;
+                        menu_system_class::menu_options.element[16].texture_ID.disabled       = game.resource.texture.green_button.ref_number;
+                        menu_system_class::menu_options.element[16].texture_ID.base           = game.resource.texture.green_button_highlighted.ref_number;
+                        game.core.graphics.init_sdl();
+                        game.core.graphics.init_gl();
+                        game.resource.loading_screen_display("data/loading_screen.png");
+                        game.core.log.file_write("Loading resources....");
+                        game.resource.load_all();
+                    }
+                    else
+                    {
+                        game.core.config.display_fullscreen                                   = true;
+                        menu_system_class::menu_options.element[16].value                     = 1.0f;
+                        menu_system_class::menu_options.element[16].texture_ID.normal         = game.resource.texture.green_button.ref_number;
+                        menu_system_class::menu_options.element[16].texture_ID.highlighted    = game.resource.texture.green_button_highlighted.ref_number;
+                        menu_system_class::menu_options.element[16].texture_ID.disabled       = game.resource.texture.red_button.ref_number;
+                        menu_system_class::menu_options.element[16].texture_ID.base           = game.resource.texture.red_button_highlighted.ref_number;
+                        game.core.graphics.init_sdl();
+                        game.core.graphics.init_gl();
+                        game.resource.loading_screen_display("data/loading_screen.png");
+                        game.core.log.file_write("Loading resources....");
+                        game.resource.load_all();
+                    }
                 break;
                 case 16: // main menu button
                     menu_system_class::active_menu = MENU_MAIN;
