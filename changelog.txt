@@ -7,11 +7,14 @@ just that time is not permitting to proceed at a fast pace, at the moment.
 
 
 v0.09 - (2012-07-31)
+NPC  -> Added NPC class.
 GFX  -> Added enemy health bars.
 GFX  -> Added new menu graphics.
 CORE -> Merged new branch.
 CORE -> Re-wrote menu system.
-LOC  -> 19471
+CORE -> Improved response to display set errors.
+UI   -> Improved the drag behaviour of the player states class.
+LOC  -> 20088
 
 v0.08 - (2012-06-30)
 CORE -> Started working on some physics for the engine.
