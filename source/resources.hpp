@@ -60,6 +60,7 @@ struct map_2D_resource_class
     public:
         int            number_loaded;
         map_2D_class   town;
+        map_2D_class   generated;
 };
 
 struct map_3D_resource_class
@@ -267,6 +268,7 @@ struct texture_resource_class
         texture_class cave_object_tileset;
         texture_class dungeon_tileset;
         texture_class gold_tileset;
+        texture_class test_tileset;
 
         texture_class book_00;
         texture_class book_01;

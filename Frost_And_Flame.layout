@@ -41,12 +41,12 @@
 			<Cursor1 position="2267" topLine="54" />
 		</Cursor>
 	</File>
-	<File name="source\resources.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="source\resources.cpp" open="1" top="1" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="186387" topLine="1444" />
 		</Cursor>
 	</File>
-	<File name="source\resources.hpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="source\resources.hpp" open="1" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="18518" topLine="513" />
 		</Cursor>
@@ -81,9 +81,9 @@
 			<Cursor1 position="1131" topLine="15" />
 		</Cursor>
 	</File>
-	<File name="source\menu_system.cpp" open="1" top="1" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="source\menu_system.cpp" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="22633" topLine="202" />
+			<Cursor1 position="82275" topLine="722" />
 		</Cursor>
 	</File>
 	<File name="source\menu_system.hpp" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">

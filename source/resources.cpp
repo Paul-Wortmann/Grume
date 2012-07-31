@@ -220,6 +220,7 @@ void texture_resource_class::render(bool r, int texture_number, float x, float y
     if (texture_number == game.resource.texture.cave_object_tileset.ref_number)             game.resource.texture.cave_object_tileset.draw            (r,x,y,z,w,h,angle,frame);
     if (texture_number == game.resource.texture.dungeon_tileset.ref_number)                 game.resource.texture.dungeon_tileset.draw                (r,x,y,z,w,h,angle,frame);
     if (texture_number == game.resource.texture.gold_tileset.ref_number)                    game.resource.texture.gold_tileset.draw                   (r,x,y,z,w,h,angle,frame);
+    if (texture_number == game.resource.texture.test_tileset.ref_number)                    game.resource.texture.test_tileset.draw                   (r,x,y,z,w,h,angle,frame);
 
     if (texture_number == game.resource.texture.book_00.ref_number) game.resource.texture.book_00.draw(r,x,y,z,w,h,angle,frame);
     if (texture_number == game.resource.texture.book_01.ref_number) game.resource.texture.book_01.draw(r,x,y,z,w,h,angle,frame);
@@ -613,6 +614,7 @@ void texture_resource_class::bind(int texture_number)
     if (texture_number == game.resource.texture.cave_object_tileset.ref_number)             glBindTexture(GL_TEXTURE_2D, game.resource.texture.cave_object_tileset.frame[0].data)            ;
     if (texture_number == game.resource.texture.dungeon_tileset.ref_number)                 glBindTexture(GL_TEXTURE_2D, game.resource.texture.dungeon_tileset.frame[0].data)                ;
     if (texture_number == game.resource.texture.gold_tileset.ref_number)                    glBindTexture(GL_TEXTURE_2D, game.resource.texture.gold_tileset.frame[0].data)                   ;
+    if (texture_number == game.resource.texture.test_tileset.ref_number)                    glBindTexture(GL_TEXTURE_2D, game.resource.texture.test_tileset.frame[0].data)                   ;
 
     if (texture_number == game.resource.texture.book_00.ref_number) glBindTexture(GL_TEXTURE_2D, game.resource.texture.book_00.frame[0].data);
     if (texture_number == game.resource.texture.book_01.ref_number) glBindTexture(GL_TEXTURE_2D, game.resource.texture.book_01.frame[0].data);
@@ -1349,6 +1351,7 @@ void resource_class::load_tilesets(void)
     game.resource.texture.cave_object_tileset.load_spritesheet            ("data/tilesets/cave_object.png"         ,resource_class::texture.number_loaded, 64,128);resource_class::texture.number_loaded++;
     game.resource.texture.dungeon_tileset.load_spritesheet                ("data/tilesets/dungeon.png"             ,resource_class::texture.number_loaded, 64, 64);resource_class::texture.number_loaded++;
     game.resource.texture.gold_tileset.load_spritesheet                   ("data/tilesets/gold_tileset.png"        ,resource_class::texture.number_loaded, 64,128);resource_class::texture.number_loaded++;
+    game.resource.texture.test_tileset.load_spritesheet                   ("data/tilesets/test_tileset.png"        ,resource_class::texture.number_loaded, 64,128);resource_class::texture.number_loaded++;
 };
 
 void resource_class::load_generic_textures(void)
@@ -1389,7 +1392,8 @@ void resource_class::load_maps_2D(void)
     game.core.log.file_write("Loading resources -> 2D Maps");
 //--- font ---
 //--- 2D map ---
-    game.resource.map_2D.town.load      ("data/maps/town.tmx");resource_class::map_2D.number_loaded++;
+    game.resource.map_2D.town.load           ("data/maps/town.tmx");resource_class::map_2D.number_loaded++;
+    game.resource.map_2D.generated.load      ("data/maps/auto.tmx");resource_class::map_2D.number_loaded++;
 //--- 3D map ---
 //--- 3D model ---
 //--- music ---
