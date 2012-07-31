@@ -22,6 +22,15 @@
  * @date 2011-11-11
  */
 
+#ifndef MAP_2D_GENERATOR_H
+#define MAP_2D_GENERATOR_H
+
+#include "map_2D.hpp"
+
+#define DUNGEON    1
+#define CAVE       2
+#define FOREST     3
+
 struct tile_grid_location_type
 {
     int    start_x;
@@ -42,7 +51,24 @@ class tile_grid_class
         tile_grid_location_type origin;
 };
 
+struct map_type
+{
+    int    tile[10];
+};
 
+class map_2D_generator_class
+{
+    private:
+    public:
+        map_type generate_map(int size_x ,int size_y ,int type ,bool town,int difficulty,int loot_amount ,int monster_max);
+
+};
+
+
+
+
+
+#endif //MAP_2D_GENERATOR_H
 
 
 

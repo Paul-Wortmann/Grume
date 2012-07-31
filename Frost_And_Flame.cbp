@@ -90,6 +90,8 @@
 		<Unit filename="source\core\log.hpp" />
 		<Unit filename="source\core\map_2D.cpp" />
 		<Unit filename="source\core\map_2D.hpp" />
+		<Unit filename="source\core\map_2D_generator.cpp" />
+		<Unit filename="source\core\map_2D_generator.hpp" />
 		<Unit filename="source\core\map_3D.cpp" />
 		<Unit filename="source\core\map_3D.hpp" />
 		<Unit filename="source\core\menu.cpp" />
@@ -106,8 +108,6 @@
 		<Unit filename="source\core\pathfinding.hpp" />
 		<Unit filename="source\core\physics.cpp" />
 		<Unit filename="source\core\physics.hpp" />
-		<Unit filename="source\core\random_map.cpp" />
-		<Unit filename="source\core\random_map.hpp" />
 		<Unit filename="source\core\rs232.cpp" />
 		<Unit filename="source\core\rs232.hpp" />
 		<Unit filename="source\core\savegame.cpp" />

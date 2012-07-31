@@ -612,7 +612,8 @@
 	"begin_code.h"
 	"close_code.h"
 
-1326868751 c:\_git_\frost_and_flame\source\core\map_2d.hpp
+1343741804 c:\_git_\frost_and_flame\source\core\map_2d.hpp
+	"map_2D_generator.hpp"
 	"textures.hpp"
 
 1335692767 c:\_git_\frost_and_flame\source\core\map_3d.hpp
@@ -744,7 +745,7 @@
 	<sstream>
 	"../game.hpp"
 
-1343543273 source:c:\_git_\frost_and_flame\source\resources.cpp
+1343741218 source:c:\_git_\frost_and_flame\source\resources.cpp
 	<SDL/SDL.h>
 	"resources.hpp"
 	"game.hpp"
@@ -858,7 +859,7 @@
 	"equipment.hpp"
 	"game.hpp"
 
-1342170080 source:c:\_git_\frost_and_flame\source\core\map_2d.cpp
+1343741868 source:c:\_git_\frost_and_flame\source\core\map_2d.cpp
 	<iostream>
 	<fstream>
 	<stdio.h>
@@ -867,7 +868,7 @@
 	"map_2D.hpp"
 	"../game.hpp"
 	"textures.hpp"
-	"random_map.hpp"
+	"map_2D_generator.hpp"
 
 1339342782 source:c:\_git_\frost_and_flame\source\core\map_3d.cpp
 	<GL/gl.h>
@@ -939,4 +940,10 @@
 1342534205 source:c:\_git_\frost_and_flame\source\npc.cpp
 	"npc.hpp"
 	"game.hpp"
+
+1343742168 c:\_git_\frost_and_flame\source\core\map_2d_generator.hpp
+	"map_2D.hpp"
+
+1343741678 source:c:\_git_\frost_and_flame\source\core\map_2d_generator.cpp
+	"map_2D_generator.hpp"
 

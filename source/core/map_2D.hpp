@@ -25,6 +25,7 @@
 #ifndef MAP_2D_H
 #define MAP_2D_H
 
+#include "map_2D_generator.hpp"
 #include "textures.hpp"
 
 const int    MAX_MAP_TILESETS    = 32;
