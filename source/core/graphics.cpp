@@ -31,8 +31,8 @@ extern game_class game;
 
 graphics_class::graphics_class(void)
 {
-    graphics_class::resolution_x = 0;
-    graphics_class::resolution_y = 0;
+    graphics_class::resolution_x = 640;
+    graphics_class::resolution_y = 480;
 };
 
 void  graphics_class::set_resolution(int x_res, int y_res)
@@ -132,23 +132,24 @@ int   graphics_class::init_gl(void)
     graphics_class::init_gl(game.core.config.display_resolution_x,game.core.config.display_resolution_y);
 };
 
-int   graphics_class::init_sdl(void)
+bool   graphics_class::init_sdl(void)
 {
-    game.core.log.file_write("Starting graphics subsystem...");
+    bool return_value = true;
+    game.core.log.file_write("Initializing graphics subsystem...");
     putenv("SDL_VIDEO_WINDOW_POS");
     putenv("SDL_VIDEO_CENTERED=1");
     getenv("SDL_VIDEO_WINDOW_POS");
     getenv("SDL_VIDEO_CENTERED");
     if(SDL_Init(SDL_INIT_VIDEO) < 0)
     {
-        game.core.log.file_write("Video initialization failed");
-        game.state = STATE_QUIT;
+        game.core.log.file_write("Video initialization failed.");
+        return_value = false;
     }
     game.core.config.display_info = SDL_GetVideoInfo( );
     if(!game.core.config.display_info)
     {
-        game.core.log.file_write("Video query failed, terminating game...");
-        game.state = STATE_QUIT;
+        game.core.log.file_write("Video query failed.");
+        return_value = false;
     }
     game.core.config.display_bpp    = game.core.config.display_info->vfmt->BitsPerPixel;
     SDL_GL_SetAttribute( SDL_GL_RED_SIZE, 8 );
@@ -160,13 +161,9 @@ int   graphics_class::init_sdl(void)
     else game.core.config.display_flags = SDL_OPENGL;
     if(SDL_SetVideoMode( game.core.config.display_resolution_x, game.core.config.display_resolution_y, game.core.config.display_bpp, game.core.config.display_flags ) == 0 )
     {
-        game.core.log.file_write("Video mode set failed, terminating game...");
-        game.state = STATE_QUIT;
+        game.core.log.file_write("Video mode set failed.");
+        return_value = false;
     }
-    game.core.log.file_write("Starting OpenGL...");
-    game.core.graphics.init_gl(game.core.config.display_resolution_x,game.core.config.display_resolution_y);
+    return(return_value);
 };
-
-
-
 

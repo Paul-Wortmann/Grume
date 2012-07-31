@@ -57,34 +57,19 @@ extern "C" int main(int argc, char** argv)
 // --------------------------------------------------------------------------------------------------------------------------
 //  --- graphics ---
     game.core.log.file_write("Starting graphics subsystem...");
-    putenv("SDL_VIDEO_WINDOW_POS");
-    putenv("SDL_VIDEO_CENTERED=1");
-    getenv("SDL_VIDEO_WINDOW_POS");
-    getenv("SDL_VIDEO_CENTERED");
-    if(SDL_Init(SDL_INIT_VIDEO) < 0)
+    if (!game.core.graphics.init_sdl())
     {
-        game.core.log.file_write("Video initialization failed");
-        game.state = STATE_QUIT;
+        game.core.log.file_write("Loading default configuration...");
+        game.core.config.set_defaults();
+                game.core.log.file_write("Starting default graphics configuration...");
+            if (!game.core.graphics.init_sdl())
+            {
+                game.core.log.file_write("terminating game...");
+                game.state = STATE_QUIT;
+            }
     }
-    game.core.config.display_info = SDL_GetVideoInfo( );
-    if(!game.core.config.display_info)
-    {
-        game.core.log.file_write("Video query failed, terminating game...");
-        game.state = STATE_QUIT;
-    }
-    game.core.config.display_bpp    = game.core.config.display_info->vfmt->BitsPerPixel;
-    SDL_GL_SetAttribute( SDL_GL_RED_SIZE, 8 );
-    SDL_GL_SetAttribute( SDL_GL_GREEN_SIZE, 8 );
-    SDL_GL_SetAttribute( SDL_GL_BLUE_SIZE, 8 );
-    SDL_GL_SetAttribute( SDL_GL_DEPTH_SIZE, 16 );
-    SDL_GL_SetAttribute( SDL_GL_DOUBLEBUFFER, 1 );
-    if (game.core.config.display_fullscreen) game.core.config.display_flags = SDL_OPENGL | SDL_FULLSCREEN;
-    else game.core.config.display_flags = SDL_OPENGL;
-    if(SDL_SetVideoMode( game.core.config.display_resolution_x, game.core.config.display_resolution_y, game.core.config.display_bpp, game.core.config.display_flags ) == 0 )
-    {
-        game.core.log.file_write("Video mode set failed, terminating game...");
-        game.state = STATE_QUIT;
-    }
+    game.core.log.file_write("Starting OpenGL...");
+    game.core.graphics.init_gl(game.core.config.display_resolution_x,game.core.config.display_resolution_y);
     application_icon_surface = SDL_LoadBMP(application_icon);
     colorkey = SDL_MapRGB(application_icon_surface->format, 255, 0, 255);
     SDL_SetColorKey(application_icon_surface, SDL_SRCCOLORKEY, colorkey);
@@ -92,8 +77,6 @@ extern "C" int main(int argc, char** argv)
     SDL_WM_SetCaption(application_name, 0);
     SDL_ShowCursor(SDL_DISABLE);
     SDL_Init(SDL_INIT_EVENTTHREAD);
-    game.core.log.file_write("Starting OpenGL...");
-    game.core.graphics.init_gl(game.core.config.display_resolution_x,game.core.config.display_resolution_y);
 //  --- audio ---
     game.core.log.file_write("Starting sound system...");
     SDL_Init(SDL_INIT_AUDIO);

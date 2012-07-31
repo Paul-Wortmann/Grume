@@ -70,7 +70,7 @@ class graphics_class
         float res_to_gl(int  res_coord, int max_res);
         int   init_gl(int x_res, int y_res);
         int   init_gl(void);
-        int   init_sdl(void);
+        bool  init_sdl(void);
 };
 
 #endif //GRAPHICS_H

@@ -629,21 +629,28 @@ void menu_system_class::init(void)
     menu_system_class::menu_options.title_bar.position_x                 = menu_system_class::menu_options.position_x;
     menu_system_class::menu_options.title_bar.position_y                 = menu_system_class::menu_options.position_y+(menu_system_class::menu_options.size_y/2.0f)-(menu_system_class::menu_options.title_bar.size_y/2.0f);
 
-    menu_system_class::menu_options.choice_selection[0].selected         = 0; // Resolution selection
-    menu_system_class::menu_options.choice_selection[0].position         = 0;
-    menu_system_class::menu_options.choice_selection[0].position_max     = 8;
-    menu_system_class::menu_options.choice_selection[0].data[0].active   = true;
-    menu_system_class::menu_options.choice_selection[0].data[0].value    = game.resource.texture.resolution_icon.ref_number;
-    menu_system_class::menu_options.choice_selection[0].data[1].value    = game.resource.texture.resolution_icon.ref_number;
-    menu_system_class::menu_options.choice_selection[0].data[2].value    = game.resource.texture.resolution_icon.ref_number;
-    menu_system_class::menu_options.choice_selection[0].data[3].value    = game.resource.texture.resolution_icon.ref_number;
-    menu_system_class::menu_options.choice_selection[0].data[4].value    = game.resource.texture.resolution_icon.ref_number;
-    menu_system_class::menu_options.choice_selection[0].data[5].value    = game.resource.texture.resolution_icon.ref_number;
-    menu_system_class::menu_options.choice_selection[0].data[6].value    = game.resource.texture.resolution_icon.ref_number;
-    menu_system_class::menu_options.choice_selection[0].data[7].value    = game.resource.texture.resolution_icon.ref_number;
-    menu_system_class::menu_options.choice_selection[0].data[8].value    = game.resource.texture.resolution_icon.ref_number;
+    menu_system_class::menu_options.choice_selection[0].selected                = 0; // Resolution selection
+    menu_system_class::menu_options.choice_selection[0].position                = 0;
+    menu_system_class::menu_options.choice_selection[0].position_max            = 7;
+    menu_system_class::menu_options.choice_selection[0].data[0].active          = true;
+    menu_system_class::menu_options.choice_selection[0].data[0].value           = 0;
+    menu_system_class::menu_options.choice_selection[0].data[0].value_string    = " 640 X 480 ";
+    menu_system_class::menu_options.choice_selection[0].data[1].value           = 1;
+    menu_system_class::menu_options.choice_selection[0].data[1].value_string    = " 800 X 600 ";
+    menu_system_class::menu_options.choice_selection[0].data[2].value           = 2;
+    menu_system_class::menu_options.choice_selection[0].data[2].value_string    = "1028 X 768 ";
+    menu_system_class::menu_options.choice_selection[0].data[3].value           = 3;
+    menu_system_class::menu_options.choice_selection[0].data[3].value_string    = "1280 X 1024";
+    menu_system_class::menu_options.choice_selection[0].data[4].value           = 4;
+    menu_system_class::menu_options.choice_selection[0].data[4].value_string    = "1366 X 768 ";
+    menu_system_class::menu_options.choice_selection[0].data[5].value           = 5;
+    menu_system_class::menu_options.choice_selection[0].data[5].value_string    = "1440 X 900 ";
+    menu_system_class::menu_options.choice_selection[0].data[6].value           = 6;
+    menu_system_class::menu_options.choice_selection[0].data[6].value_string    = "1680 X 1050";
+    menu_system_class::menu_options.choice_selection[0].data[7].value           = 7;
+    menu_system_class::menu_options.choice_selection[0].data[7].value_string    = "1920 X 1080";
 
-    menu_system_class::menu_options.element[9].title.text                = "";
+    menu_system_class::menu_options.element[9].title.text                = menu_system_class::menu_options.choice_selection[0].data[0].value_string;
     menu_system_class::menu_options.element[9].selected                  = true;
     menu_system_class::menu_options.element[9].active                    = true;
     menu_system_class::menu_options.element[9].type                      = IMAGE;
@@ -653,10 +660,16 @@ void menu_system_class::init(void)
     menu_system_class::menu_options.element[9].size_y                    = menu_system_class::menu_options.size_y / 10.0f;
     menu_system_class::menu_options.element[9].position_x                = menu_system_class::menu_options.position_x-(menu_system_class::menu_options.size_x/2.0f)+(menu_system_class::menu_options.element[9].size_x*2.5f);
     menu_system_class::menu_options.element[9].position_y                = menu_system_class::menu_options.position_y+(menu_system_class::menu_options.size_y/2.0f)-(menu_system_class::menu_options.element[9].size_y*4.5f);
-    menu_system_class::menu_options.element[9].texture_ID.normal         = menu_system_class::menu_options.choice_selection[0].data[0].value;
+    menu_system_class::menu_options.element[9].texture_ID.base           = game.resource.texture.selection_box.ref_number;
+    menu_system_class::menu_options.element[9].texture_ID.normal         = game.resource.texture.resolution_icon.ref_number;
     menu_system_class::menu_options.element[9].texture_ID.highlighted    = game.resource.texture.selection_box.ref_number;
+    menu_system_class::menu_options.element[9].texture_ID.disabled       = game.resource.texture.selection_box.ref_number;
+    menu_system_class::menu_options.element[9].title.size_x              = menu_system_class::menu_options.element[9].title.text.length()/2.4f;;
+    menu_system_class::menu_options.element[9].title.size_y              = menu_system_class::menu_options.element[9].title.size_x*4.0f;
+    menu_system_class::menu_options.element[9].title.position_x          = menu_system_class::menu_options.position_x - (menu_system_class::menu_options.element[9].title.size_x/42.0f);
+    menu_system_class::menu_options.element[9].title.position_y          = menu_system_class::menu_options.element[9].position_y - (menu_system_class::menu_options.element[9].title.size_y/120.0f);
 
-    menu_system_class::menu_options.element[10].title.text                = "";
+    menu_system_class::menu_options.element[10].title.text                = menu_system_class::menu_options.choice_selection[0].data[1].value_string;
     menu_system_class::menu_options.element[10].active                    = true;
     menu_system_class::menu_options.element[10].type                      = IMAGE;
     menu_system_class::menu_options.element[10].color                     = menu_system_class::menu_options.color;
@@ -665,10 +678,16 @@ void menu_system_class::init(void)
     menu_system_class::menu_options.element[10].size_y                    = menu_system_class::menu_options.size_y / 10.0f;
     menu_system_class::menu_options.element[10].position_x                = menu_system_class::menu_options.position_x-(menu_system_class::menu_options.size_x/2.0f)+(menu_system_class::menu_options.element[10].size_x*3.75f);
     menu_system_class::menu_options.element[10].position_y                = menu_system_class::menu_options.position_y+(menu_system_class::menu_options.size_y/2.0f)-(menu_system_class::menu_options.element[10].size_y*4.5f);
-    menu_system_class::menu_options.element[10].texture_ID.normal         = menu_system_class::menu_options.choice_selection[0].data[0].value;
+    menu_system_class::menu_options.element[10].texture_ID.base           = game.resource.texture.selection_box.ref_number;
+    menu_system_class::menu_options.element[10].texture_ID.normal         = game.resource.texture.resolution_icon.ref_number;
     menu_system_class::menu_options.element[10].texture_ID.highlighted    = game.resource.texture.selection_box.ref_number;
+    menu_system_class::menu_options.element[10].texture_ID.disabled       = game.resource.texture.selection_box.ref_number;
+    menu_system_class::menu_options.element[10].title.size_x              = menu_system_class::menu_options.element[10].title.text.length()/2.4f;;
+    menu_system_class::menu_options.element[10].title.size_y              = menu_system_class::menu_options.element[10].title.size_x*4.0f;
+    menu_system_class::menu_options.element[10].title.position_x          = menu_system_class::menu_options.position_x - (menu_system_class::menu_options.element[10].title.size_x/42.0f);
+    menu_system_class::menu_options.element[10].title.position_y          = menu_system_class::menu_options.element[10].position_y - (menu_system_class::menu_options.element[10].title.size_y/120.0f);
 
-    menu_system_class::menu_options.element[11].title.text                = "";
+    menu_system_class::menu_options.element[11].title.text                = menu_system_class::menu_options.choice_selection[0].data[2].value_string;
     menu_system_class::menu_options.element[11].active                    = true;
     menu_system_class::menu_options.element[11].type                      = IMAGE;
     menu_system_class::menu_options.element[11].color                     = menu_system_class::menu_options.color;
@@ -677,10 +696,16 @@ void menu_system_class::init(void)
     menu_system_class::menu_options.element[11].size_y                    = menu_system_class::menu_options.size_y / 10.0f;
     menu_system_class::menu_options.element[11].position_x                = menu_system_class::menu_options.position_x-(menu_system_class::menu_options.size_x/2.0f)+(menu_system_class::menu_options.element[11].size_x*5.0f);
     menu_system_class::menu_options.element[11].position_y                = menu_system_class::menu_options.position_y+(menu_system_class::menu_options.size_y/2.0f)-(menu_system_class::menu_options.element[11].size_y*4.5f);
-    menu_system_class::menu_options.element[11].texture_ID.normal         = menu_system_class::menu_options.choice_selection[0].data[0].value;
+    menu_system_class::menu_options.element[11].texture_ID.base           = game.resource.texture.selection_box.ref_number;
+    menu_system_class::menu_options.element[11].texture_ID.normal         = game.resource.texture.resolution_icon.ref_number;
     menu_system_class::menu_options.element[11].texture_ID.highlighted    = game.resource.texture.selection_box.ref_number;
+    menu_system_class::menu_options.element[11].texture_ID.disabled       = game.resource.texture.selection_box.ref_number;
+    menu_system_class::menu_options.element[11].title.size_x              = menu_system_class::menu_options.element[11].title.text.length()/2.4f;;
+    menu_system_class::menu_options.element[11].title.size_y              = menu_system_class::menu_options.element[11].title.size_x*4.0f;
+    menu_system_class::menu_options.element[11].title.position_x          = menu_system_class::menu_options.position_x - (menu_system_class::menu_options.element[11].title.size_x/42.0f);
+    menu_system_class::menu_options.element[11].title.position_y          = menu_system_class::menu_options.element[11].position_y - (menu_system_class::menu_options.element[11].title.size_y/120.0f);
 
-    menu_system_class::menu_options.element[12].title.text                = "";
+    menu_system_class::menu_options.element[12].title.text                = menu_system_class::menu_options.choice_selection[0].data[3].value_string;
     menu_system_class::menu_options.element[12].active                    = true;
     menu_system_class::menu_options.element[12].type                      = IMAGE;
     menu_system_class::menu_options.element[12].color                     = menu_system_class::menu_options.color;
@@ -689,10 +714,16 @@ void menu_system_class::init(void)
     menu_system_class::menu_options.element[12].size_y                    = menu_system_class::menu_options.size_y / 10.0f;
     menu_system_class::menu_options.element[12].position_x                = menu_system_class::menu_options.position_x-(menu_system_class::menu_options.size_x/2.0f)+(menu_system_class::menu_options.element[12].size_x*6.25f);
     menu_system_class::menu_options.element[12].position_y                = menu_system_class::menu_options.position_y+(menu_system_class::menu_options.size_y/2.0f)-(menu_system_class::menu_options.element[12].size_y*4.5f);
-    menu_system_class::menu_options.element[12].texture_ID.normal         = menu_system_class::menu_options.choice_selection[0].data[0].value;
+    menu_system_class::menu_options.element[12].texture_ID.base           = game.resource.texture.selection_box.ref_number;
+    menu_system_class::menu_options.element[12].texture_ID.normal         = game.resource.texture.resolution_icon.ref_number;
     menu_system_class::menu_options.element[12].texture_ID.highlighted    = game.resource.texture.selection_box.ref_number;
+    menu_system_class::menu_options.element[12].texture_ID.disabled       = game.resource.texture.selection_box.ref_number;
+    menu_system_class::menu_options.element[12].title.size_x              = menu_system_class::menu_options.element[12].title.text.length()/2.4f;;
+    menu_system_class::menu_options.element[12].title.size_y              = menu_system_class::menu_options.element[12].title.size_x*4.0f;
+    menu_system_class::menu_options.element[12].title.position_x          = menu_system_class::menu_options.position_x - (menu_system_class::menu_options.element[12].title.size_x/42.0f);
+    menu_system_class::menu_options.element[12].title.position_y          = menu_system_class::menu_options.element[12].position_y - (menu_system_class::menu_options.element[12].title.size_y/120.0f);
 
-    menu_system_class::menu_options.element[13].title.text                = "";
+    menu_system_class::menu_options.element[13].title.text                = menu_system_class::menu_options.choice_selection[0].data[4].value_string;
     menu_system_class::menu_options.element[13].active                    = true;
     menu_system_class::menu_options.element[13].type                      = IMAGE;
     menu_system_class::menu_options.element[13].color                     = menu_system_class::menu_options.color;
@@ -701,8 +732,14 @@ void menu_system_class::init(void)
     menu_system_class::menu_options.element[13].size_y                    = menu_system_class::menu_options.size_y / 10.0f;
     menu_system_class::menu_options.element[13].position_x                = menu_system_class::menu_options.position_x-(menu_system_class::menu_options.size_x/2.0f)+(menu_system_class::menu_options.element[13].size_x*7.5f);
     menu_system_class::menu_options.element[13].position_y                = menu_system_class::menu_options.position_y+(menu_system_class::menu_options.size_y/2.0f)-(menu_system_class::menu_options.element[13].size_y*4.5f);
-    menu_system_class::menu_options.element[13].texture_ID.normal         = menu_system_class::menu_options.choice_selection[0].data[0].value;
+    menu_system_class::menu_options.element[13].texture_ID.base           = game.resource.texture.selection_box.ref_number;
+    menu_system_class::menu_options.element[13].texture_ID.normal         = game.resource.texture.resolution_icon.ref_number;
     menu_system_class::menu_options.element[13].texture_ID.highlighted    = game.resource.texture.selection_box.ref_number;
+    menu_system_class::menu_options.element[13].texture_ID.disabled       = game.resource.texture.selection_box.ref_number;
+    menu_system_class::menu_options.element[13].title.size_x              = menu_system_class::menu_options.element[13].title.text.length()/2.4f;;
+    menu_system_class::menu_options.element[13].title.size_y              = menu_system_class::menu_options.element[13].title.size_x*4.0f;
+    menu_system_class::menu_options.element[13].title.position_x          = menu_system_class::menu_options.position_x - (menu_system_class::menu_options.element[13].title.size_x/42.0f);
+    menu_system_class::menu_options.element[13].title.position_y          = menu_system_class::menu_options.element[13].position_y - (menu_system_class::menu_options.element[13].title.size_y/120.0f);
 
     menu_system_class::menu_options.element[14].title.text                = "Fullscreen";
     menu_system_class::menu_options.element[14].active                    = true;
@@ -712,7 +749,7 @@ void menu_system_class::init(void)
     menu_system_class::menu_options.element[14].size_x                    = (menu_system_class::menu_options.size_x / 100.f)*48.0f;
     menu_system_class::menu_options.element[14].size_y                    = menu_system_class::menu_options.size_y / 10.0f;
     menu_system_class::menu_options.element[14].position_x                = menu_system_class::menu_options.position_x-(menu_system_class::menu_options.element[14].size_x/8.0f);
-    menu_system_class::menu_options.element[14].position_y                = menu_system_class::menu_options.position_y+(menu_system_class::menu_options.size_y/2.0f)-(menu_system_class::menu_options.element[14].size_y*5.75f);
+    menu_system_class::menu_options.element[14].position_y                = menu_system_class::menu_options.position_y+(menu_system_class::menu_options.size_y/2.0f)-(menu_system_class::menu_options.element[14].size_y*7.0f);
     menu_system_class::menu_options.element[14].texture_ID                = menu_system_class::menu_options.texture_ID;
     menu_system_class::menu_options.element[14].title.size_x              = menu_system_class::menu_options.element[14].title.text.length()/1.2f;
     menu_system_class::menu_options.element[14].title.size_y              = menu_system_class::menu_options.element[14].title.size_x*4;;
@@ -728,7 +765,7 @@ void menu_system_class::init(void)
     menu_system_class::menu_options.element[16].size_x                    = (menu_system_class::menu_options.size_x / 100.f)*10.0f;
     menu_system_class::menu_options.element[16].size_y                    = menu_system_class::menu_options.size_y / 10.0f;
     menu_system_class::menu_options.element[16].position_x                = menu_system_class::menu_options.position_x-(menu_system_class::menu_options.size_x/2.0f)+(menu_system_class::menu_options.element[16].size_x*7.5f);
-    menu_system_class::menu_options.element[16].position_y                = menu_system_class::menu_options.position_y+(menu_system_class::menu_options.size_y/2.0f)-(menu_system_class::menu_options.element[16].size_y*5.75f);
+    menu_system_class::menu_options.element[16].position_y                = menu_system_class::menu_options.position_y+(menu_system_class::menu_options.size_y/2.0f)-(menu_system_class::menu_options.element[16].size_y*7.0f);
     menu_system_class::menu_options.element[16].texture_ID                = menu_system_class::menu_options.texture_ID;
     menu_system_class::menu_options.element[16].texture_ID.normal         = game.resource.texture.green_button.ref_number;
     menu_system_class::menu_options.element[16].texture_ID.highlighted    = game.resource.texture.green_button_highlighted.ref_number;
@@ -750,18 +787,6 @@ void menu_system_class::init(void)
         menu_system_class::menu_options.element[16].texture_ID.disabled       = game.resource.texture.green_button.ref_number;
         menu_system_class::menu_options.element[16].texture_ID.base           = game.resource.texture.green_button_highlighted.ref_number;
     }
-
-    menu_system_class::menu_options.element[0].title.text                = "";
-    menu_system_class::menu_options.element[0].active                    = true;
-    menu_system_class::menu_options.element[0].type                      = BUTTON;
-    menu_system_class::menu_options.element[0].zoom.enabled              = false;
-    menu_system_class::menu_options.element[0].color                     = menu_system_class::menu_options.color;
-    menu_system_class::menu_options.element[0].size_x                    = 0.1f;
-    menu_system_class::menu_options.element[0].size_y                    = 0.1f;
-    menu_system_class::menu_options.element[0].position_x                = menu_system_class::menu_options.position_x+(menu_system_class::menu_options.size_x/2.0f)-(menu_system_class::menu_options.element[0].size_x/1.8f);
-    menu_system_class::menu_options.element[0].position_y                = menu_system_class::menu_options.title.position_y+(menu_system_class::menu_options.element[0].size_y/8.0f);
-    menu_system_class::menu_options.element[0].texture_ID.normal         = game.resource.texture.close_button.ref_number;
-    menu_system_class::menu_options.element[0].texture_ID.highlighted    = game.resource.texture.close_button_highlighted.ref_number;
 
     menu_system_class::menu_options.element[1].title.text                = "";
     menu_system_class::menu_options.element[1].mouse_delay               = 5;
@@ -857,7 +882,8 @@ void menu_system_class::init(void)
     menu_system_class::menu_options.element[6].title.position_x          = menu_system_class::menu_options.element[6].position_x-(menu_system_class::menu_options.element[6].title.size_x/60.0f);
     menu_system_class::menu_options.element[6].title.position_y          = menu_system_class::menu_options.element[6].position_y-(menu_system_class::menu_options.element[6].title.size_y/1480.0f);
 
-    menu_system_class::menu_options.element[7].title.text                = "";
+    menu_system_class::menu_options.element[7].title.text                = ""; // Left arrow resolution selection
+    menu_system_class::menu_options.element[7].mouse_delay               = 5;
     menu_system_class::menu_options.element[7].active                    = true;
     menu_system_class::menu_options.element[7].type                      = BUTTON;
     menu_system_class::menu_options.element[7].color                     = menu_system_class::menu_options.color;
@@ -870,7 +896,8 @@ void menu_system_class::init(void)
     menu_system_class::menu_options.element[7].texture_ID.highlighted    = game.resource.texture.arrow_button_highlighted.ref_number;
     menu_system_class::menu_options.element[7].texture_ID.disabled       = game.resource.texture.arrow_button_disabled.ref_number;
 
-    menu_system_class::menu_options.element[8].title.text                = "";
+    menu_system_class::menu_options.element[8].title.text                = ""; // Right arrow resolution selection
+    menu_system_class::menu_options.element[8].mouse_delay               = 5;
     menu_system_class::menu_options.element[8].active                    = true;
     menu_system_class::menu_options.element[8].type                      = BUTTON;
     menu_system_class::menu_options.element[8].color                     = menu_system_class::menu_options.color;
@@ -883,7 +910,6 @@ void menu_system_class::init(void)
     menu_system_class::menu_options.element[8].texture_ID.normal         = game.resource.texture.arrow_button_normal.ref_number;
     menu_system_class::menu_options.element[8].texture_ID.highlighted    = game.resource.texture.arrow_button_highlighted.ref_number;
     menu_system_class::menu_options.element[8].texture_ID.disabled       = game.resource.texture.arrow_button_disabled.ref_number;
-
 
     menu_system_class::menu_options.element[15].title.text                = "Main menu";
     menu_system_class::menu_options.element[15].active                    = true;
@@ -899,6 +925,34 @@ void menu_system_class::init(void)
     menu_system_class::menu_options.element[15].title.size_y              = menu_system_class::menu_options.element[15].title.size_x*4;;
     menu_system_class::menu_options.element[15].title.position_x          = menu_system_class::menu_options.element[15].position_x-(menu_system_class::menu_options.element[15].title.size_x/100.0f);
     menu_system_class::menu_options.element[15].title.position_y          = menu_system_class::menu_options.element[15].position_y-(menu_system_class::menu_options.element[15].title.size_y/1480.0f);
+
+    menu_system_class::menu_options.element[0].title.text                = ""; // resolution display image
+    menu_system_class::menu_options.element[0].active                    = true;
+    menu_system_class::menu_options.element[0].state                     = DISABLED;
+    menu_system_class::menu_options.element[0].type                      = IMAGE;
+    menu_system_class::menu_options.element[0].color                     = menu_system_class::menu_options.color;
+    menu_system_class::menu_options.element[0].zoom                      = menu_system_class::menu_options.zoom;
+    menu_system_class::menu_options.element[0].zoom.enabled              = false;
+    menu_system_class::menu_options.element[0].size_x                    = (menu_system_class::menu_options.size_x / 100.f)*60.0f;
+    menu_system_class::menu_options.element[0].size_y                    = menu_system_class::menu_options.size_y / 10.0f;
+    menu_system_class::menu_options.element[0].position_x                = menu_system_class::menu_options.position_x;
+    menu_system_class::menu_options.element[0].position_y                = menu_system_class::menu_options.position_y+(menu_system_class::menu_options.size_y/2.0f)-(menu_system_class::menu_options.element[0].size_y*5.75f);
+    menu_system_class::menu_options.element[0].texture_ID                = menu_system_class::menu_options.texture_ID;
+    menu_system_class::menu_options.element[0].texture_ID.normal         = game.resource.texture.selection_box.ref_number;
+    menu_system_class::menu_options.element[0].texture_ID.highlighted    = game.resource.texture.selection_box.ref_number;
+    menu_system_class::menu_options.element[0].texture_ID.disabled       = game.resource.texture.selection_box.ref_number;
+
+    menu_system_class::menu_options.element[17].title.text                = ""; // Close button
+    menu_system_class::menu_options.element[17].active                    = true;
+    menu_system_class::menu_options.element[17].type                      = BUTTON;
+    menu_system_class::menu_options.element[17].zoom.enabled              = false;
+    menu_system_class::menu_options.element[17].color                     = menu_system_class::menu_options.color;
+    menu_system_class::menu_options.element[17].size_x                    = 0.1f;
+    menu_system_class::menu_options.element[17].size_y                    = 0.1f;
+    menu_system_class::menu_options.element[17].position_x                = menu_system_class::menu_options.position_x+(menu_system_class::menu_options.size_x/2.0f)-(menu_system_class::menu_options.element[17].size_x/1.8f);
+    menu_system_class::menu_options.element[17].position_y                = menu_system_class::menu_options.title.position_y+(menu_system_class::menu_options.element[17].size_y/8.0f);
+    menu_system_class::menu_options.element[17].texture_ID.normal         = game.resource.texture.close_button.ref_number;
+    menu_system_class::menu_options.element[17].texture_ID.highlighted    = game.resource.texture.close_button_highlighted.ref_number;
 
     //------ setup "game over" menu -----------
     menu_system_class::menu_game_over.mouse_delay                        = menu_system_class::mouse_delay;
@@ -922,11 +976,15 @@ void menu_system_class::init(void)
 
 int menu_system_class::process(void)
 {
-    int  old_event_state      = 0;
-    int  old_mouse_over_state = 0;
-    int  return_value         = 0;
-    int  temp_data_value      = 0;
-    bool temp_data_bool       = false;
+    int         temp_resolution      = 0;
+    int         temp_resolution_x    = 0;
+    int         temp_resolution_y    = 0;
+    int         old_event_state      = 0;
+    int         old_mouse_over_state = 0;
+    int         return_value         = 0;
+    int         temp_data_value      = 0;
+    bool        temp_data_bool       = false;
+    std::string temp_data_string     = "Temp????";
     switch(menu_system_class::active_menu)
     {
         case MENU_MAIN:
@@ -1311,10 +1369,6 @@ int menu_system_class::process(void)
             if (return_value != 0) menu_system_class::menu_options.mouse_delay.reset();
             switch (return_value)
             {
-                case 1: // close button
-                    menu_system_class::active_menu = MENU_MAIN;
-                    menu_system_class::menu_main.set_position(menu_system_class::menu_options.position_x,menu_system_class::menu_options.position_y);
-                break;
                 case 2: // sound volume left arrow
                     game.core.config.audio_volume_sound--;
                     if (game.core.config.audio_volume_sound < 0.0f) game.core.config.audio_volume_sound = 0.0f;
@@ -1339,6 +1393,451 @@ int menu_system_class::process(void)
                     menu_system_class::menu_options.element[6].value = game.core.config.audio_volume_music;
                     Mix_VolumeMusic(game.core.config.audio_volume_music);
                 break;
+/*---------------------------------------------------------------------------------------------------------*/
+                case 8: // left arrow button for resolution selection
+                    menu_system_class::menu_options.choice_selection[0].position++;
+                    if (menu_system_class::menu_options.choice_selection[0].position > menu_system_class::menu_options.choice_selection[0].position_max) menu_system_class::menu_options.choice_selection[0].position = 0;
+                    temp_data_value   = menu_system_class::menu_options.choice_selection[0].data[0].value;
+                    temp_data_bool    = menu_system_class::menu_options.choice_selection[0].data[0].active;
+                    temp_data_string  = menu_system_class::menu_options.choice_selection[0].data[0].value_string;
+                    for (int data_position_count = 0; data_position_count < menu_system_class::menu_options.choice_selection[0].position_max;data_position_count++)
+                    {
+                        menu_system_class::menu_options.choice_selection[0].data[data_position_count].value        = menu_system_class::menu_options.choice_selection[0].data[data_position_count+1].value;
+                        menu_system_class::menu_options.choice_selection[0].data[data_position_count].active       = menu_system_class::menu_options.choice_selection[0].data[data_position_count+1].active;
+                        menu_system_class::menu_options.choice_selection[0].data[data_position_count].value_string = menu_system_class::menu_options.choice_selection[0].data[data_position_count+1].value_string;
+                    }
+                    menu_system_class::menu_options.choice_selection[0].data[menu_system_class::menu_options.choice_selection[0].position_max].value        = temp_data_value;
+                    menu_system_class::menu_options.choice_selection[0].data[menu_system_class::menu_options.choice_selection[0].position_max].active       = temp_data_bool;
+                    menu_system_class::menu_options.choice_selection[0].data[menu_system_class::menu_options.choice_selection[0].position_max].value_string = temp_data_string;
+                    menu_system_class::menu_options.element[ 9].selected                  = menu_system_class::menu_options.choice_selection[0].data[0].active;
+                    menu_system_class::menu_options.element[10].selected                  = menu_system_class::menu_options.choice_selection[0].data[1].active;
+                    menu_system_class::menu_options.element[11].selected                  = menu_system_class::menu_options.choice_selection[0].data[2].active;
+                    menu_system_class::menu_options.element[12].selected                  = menu_system_class::menu_options.choice_selection[0].data[3].active;
+                    menu_system_class::menu_options.element[13].selected                  = menu_system_class::menu_options.choice_selection[0].data[4].active;
+                    menu_system_class::menu_options.element[ 9].title.text                = menu_system_class::menu_options.choice_selection[0].data[0].value_string;
+                    menu_system_class::menu_options.element[10].title.text                = menu_system_class::menu_options.choice_selection[0].data[1].value_string;
+                    menu_system_class::menu_options.element[11].title.text                = menu_system_class::menu_options.choice_selection[0].data[2].value_string;
+                    menu_system_class::menu_options.element[12].title.text                = menu_system_class::menu_options.choice_selection[0].data[3].value_string;
+                    menu_system_class::menu_options.element[13].title.text                = menu_system_class::menu_options.choice_selection[0].data[4].value_string;
+                break;
+                case 9: // Right arrow button for resolution selection
+                    menu_system_class::menu_options.choice_selection[0].position--;
+                    if (menu_system_class::menu_options.choice_selection[0].position < 0) menu_system_class::menu_options.choice_selection[0].position = menu_system_class::menu_options.choice_selection[0].position_max;
+                    temp_data_value   = menu_system_class::menu_options.choice_selection[0].data[menu_system_class::menu_options.choice_selection[0].position_max-1].value;
+                    temp_data_bool    = menu_system_class::menu_options.choice_selection[0].data[menu_system_class::menu_options.choice_selection[0].position_max-1].active;
+                    temp_data_string  = menu_system_class::menu_options.choice_selection[0].data[menu_system_class::menu_options.choice_selection[0].position_max-1].value_string;
+                    for (int data_position_count = menu_system_class::menu_options.choice_selection[0].position_max-1; data_position_count > 0;data_position_count--)
+                    {
+                        menu_system_class::menu_options.choice_selection[0].data[data_position_count].value        = menu_system_class::menu_options.choice_selection[0].data[data_position_count-1].value;
+                        menu_system_class::menu_options.choice_selection[0].data[data_position_count].active       = menu_system_class::menu_options.choice_selection[0].data[data_position_count-1].active;
+                        menu_system_class::menu_options.choice_selection[0].data[data_position_count].value_string = menu_system_class::menu_options.choice_selection[0].data[data_position_count-1].value_string;
+                    }
+                    menu_system_class::menu_options.choice_selection[0].data[0].value        = temp_data_value;
+                    menu_system_class::menu_options.choice_selection[0].data[0].active       = temp_data_bool;
+                    menu_system_class::menu_options.choice_selection[0].data[0].value_string = temp_data_string;
+                    menu_system_class::menu_options.element[ 9].selected                  = menu_system_class::menu_options.choice_selection[0].data[0].active;
+                    menu_system_class::menu_options.element[10].selected                  = menu_system_class::menu_options.choice_selection[0].data[1].active;
+                    menu_system_class::menu_options.element[11].selected                  = menu_system_class::menu_options.choice_selection[0].data[2].active;
+                    menu_system_class::menu_options.element[12].selected                  = menu_system_class::menu_options.choice_selection[0].data[3].active;
+                    menu_system_class::menu_options.element[13].selected                  = menu_system_class::menu_options.choice_selection[0].data[4].active;
+                    menu_system_class::menu_options.element[ 9].title.text                = menu_system_class::menu_options.choice_selection[0].data[0].value_string;
+                    menu_system_class::menu_options.element[10].title.text                = menu_system_class::menu_options.choice_selection[0].data[1].value_string;
+                    menu_system_class::menu_options.element[11].title.text                = menu_system_class::menu_options.choice_selection[0].data[2].value_string;
+                    menu_system_class::menu_options.element[12].title.text                = menu_system_class::menu_options.choice_selection[0].data[3].value_string;
+                    menu_system_class::menu_options.element[13].title.text                = menu_system_class::menu_options.choice_selection[0].data[4].value_string;
+                break;
+                case 10: // Resolution 0 selected
+                    temp_data_value = 0;
+                    if (menu_system_class::menu_options.choice_selection[0].data[temp_data_value].value != game.core.config.display_resolution)
+                    {
+                        temp_resolution      = game.core.config.display_resolution;
+                        temp_resolution_x    = game.core.config.display_resolution_x;
+                        temp_resolution_y    = game.core.config.display_resolution_y;
+                        game.core.config.display_resolution = menu_system_class::menu_options.choice_selection[0].data[temp_data_value].value;
+                        if (game.core.config.display_resolution == 0)
+                        {
+                            game.core.config.display_resolution_x = 640;
+                            game.core.config.display_resolution_y = 480;
+                        }
+                        if (game.core.config.display_resolution == 1)
+                        {
+                            game.core.config.display_resolution_x = 800;
+                            game.core.config.display_resolution_y = 600;
+                        }
+                        if (game.core.config.display_resolution == 2)
+                        {
+                            game.core.config.display_resolution_x = 1024;
+                            game.core.config.display_resolution_y = 768;
+                        }
+                        if (game.core.config.display_resolution == 3)
+                        {
+                            game.core.config.display_resolution_x = 1280;
+                            game.core.config.display_resolution_y = 1024;
+                        }
+                        if (game.core.config.display_resolution == 4)
+                        {
+                            game.core.config.display_resolution_x = 1366;
+                            game.core.config.display_resolution_y = 768;
+                        }
+                        if (game.core.config.display_resolution == 5)
+                        {
+                            game.core.config.display_resolution_x = 1440;
+                            game.core.config.display_resolution_y = 900;
+                        }
+                        if (game.core.config.display_resolution == 6)
+                        {
+                            game.core.config.display_resolution_x = 1680;
+                            game.core.config.display_resolution_y = 1050;
+                        }
+                        if (game.core.config.display_resolution == 7)
+                        {
+                            game.core.config.display_resolution_x = 1920;
+                            game.core.config.display_resolution_y = 1080;
+                        }
+                        if (!game.core.graphics.init_sdl())
+                        {
+                            game.core.log.file_write("Reverting graphics configuration...");
+                            game.core.config.display_resolution    = temp_resolution;
+                            game.core.config.display_resolution_x  = temp_resolution_x;
+                            game.core.config.display_resolution_y  = temp_resolution_y;
+                            game.core.graphics.init_sdl();
+                        }
+                        else
+                        {
+                            game.core.config.mouse_resolution_x   = game.core.config.display_resolution_x;
+                            game.core.config.mouse_resolution_y   = game.core.config.display_resolution_y;
+                            for (int data_position_count = 0; data_position_count < menu_system_class::menu_options.choice_selection[0].position_max;data_position_count++)
+                            {
+                                menu_system_class::menu_options.choice_selection[0].data[data_position_count].active = false;
+                            }
+                            menu_system_class::menu_options.element[ 9].selected                  = true;
+                            menu_system_class::menu_options.element[10].selected                  = false;
+                            menu_system_class::menu_options.element[11].selected                  = false;
+                            menu_system_class::menu_options.element[12].selected                  = false;
+                            menu_system_class::menu_options.element[13].selected                  = false;
+                            menu_system_class::menu_options.choice_selection[0].data[temp_data_value].active    = true;
+                        }
+                        game.core.log.file_write("Initializing OpenGL...");
+                        game.core.graphics.init_gl();
+                        game.resource.loading_screen_display("data/loading_screen.png");
+                        game.core.log.file_write("Loading resources....");
+                        game.resource.load_all();
+                    }
+                break;
+                case 11: // Resolution 1 selected
+                    temp_data_value = 1;
+                    if (menu_system_class::menu_options.choice_selection[0].data[temp_data_value].value != game.core.config.display_resolution)
+                    {
+                        temp_resolution      = game.core.config.display_resolution;
+                        temp_resolution_x    = game.core.config.display_resolution_x;
+                        temp_resolution_y    = game.core.config.display_resolution_y;
+                        game.core.config.display_resolution = menu_system_class::menu_options.choice_selection[0].data[temp_data_value].value;
+                        if (game.core.config.display_resolution == 0)
+                        {
+                            game.core.config.display_resolution_x = 640;
+                            game.core.config.display_resolution_y = 480;
+                        }
+                        if (game.core.config.display_resolution == 1)
+                        {
+                            game.core.config.display_resolution_x = 800;
+                            game.core.config.display_resolution_y = 600;
+                        }
+                        if (game.core.config.display_resolution == 2)
+                        {
+                            game.core.config.display_resolution_x = 1024;
+                            game.core.config.display_resolution_y = 768;
+                        }
+                        if (game.core.config.display_resolution == 3)
+                        {
+                            game.core.config.display_resolution_x = 1280;
+                            game.core.config.display_resolution_y = 1024;
+                        }
+                        if (game.core.config.display_resolution == 4)
+                        {
+                            game.core.config.display_resolution_x = 1366;
+                            game.core.config.display_resolution_y = 768;
+                        }
+                        if (game.core.config.display_resolution == 5)
+                        {
+                            game.core.config.display_resolution_x = 1440;
+                            game.core.config.display_resolution_y = 900;
+                        }
+                        if (game.core.config.display_resolution == 6)
+                        {
+                            game.core.config.display_resolution_x = 1680;
+                            game.core.config.display_resolution_y = 1050;
+                        }
+                        if (game.core.config.display_resolution == 7)
+                        {
+                            game.core.config.display_resolution_x = 1920;
+                            game.core.config.display_resolution_y = 1080;
+                        }
+                        if (!game.core.graphics.init_sdl())
+                        {
+                            game.core.log.file_write("Reverting graphics configuration...");
+                            game.core.config.display_resolution    = temp_resolution;
+                            game.core.config.display_resolution_x  = temp_resolution_x;
+                            game.core.config.display_resolution_y  = temp_resolution_y;
+                            game.core.graphics.init_sdl();
+                        }
+                        else
+                        {
+                            game.core.config.mouse_resolution_x   = game.core.config.display_resolution_x;
+                            game.core.config.mouse_resolution_y   = game.core.config.display_resolution_y;
+                            for (int data_position_count = 0; data_position_count < menu_system_class::menu_options.choice_selection[0].position_max;data_position_count++)
+                            {
+                                menu_system_class::menu_options.choice_selection[0].data[data_position_count].active = false;
+                            }
+                            menu_system_class::menu_options.element[ 9].selected                  = false;
+                            menu_system_class::menu_options.element[10].selected                  = true;
+                            menu_system_class::menu_options.element[11].selected                  = false;
+                            menu_system_class::menu_options.element[12].selected                  = false;
+                            menu_system_class::menu_options.element[13].selected                  = false;
+                            menu_system_class::menu_options.choice_selection[0].data[temp_data_value].active    = true;
+                        }
+                        game.core.log.file_write("Initializing OpenGL...");
+                        game.core.graphics.init_gl();
+                        game.resource.loading_screen_display("data/loading_screen.png");
+                        game.core.log.file_write("Loading resources....");
+                        game.resource.load_all();
+                    }
+                break;
+                case 12: // Resolution 2 selected
+                    temp_data_value = 2;
+                    if (menu_system_class::menu_options.choice_selection[0].data[temp_data_value].value != game.core.config.display_resolution)
+                    {
+                        temp_resolution      = game.core.config.display_resolution;
+                        temp_resolution_x    = game.core.config.display_resolution_x;
+                        temp_resolution_y    = game.core.config.display_resolution_y;
+                        game.core.config.display_resolution = menu_system_class::menu_options.choice_selection[0].data[temp_data_value].value;
+                        if (game.core.config.display_resolution == 0)
+                        {
+                            game.core.config.display_resolution_x = 640;
+                            game.core.config.display_resolution_y = 480;
+                        }
+                        if (game.core.config.display_resolution == 1)
+                        {
+                            game.core.config.display_resolution_x = 800;
+                            game.core.config.display_resolution_y = 600;
+                        }
+                        if (game.core.config.display_resolution == 2)
+                        {
+                            game.core.config.display_resolution_x = 1024;
+                            game.core.config.display_resolution_y = 768;
+                        }
+                        if (game.core.config.display_resolution == 3)
+                        {
+                            game.core.config.display_resolution_x = 1280;
+                            game.core.config.display_resolution_y = 1024;
+                        }
+                        if (game.core.config.display_resolution == 4)
+                        {
+                            game.core.config.display_resolution_x = 1366;
+                            game.core.config.display_resolution_y = 768;
+                        }
+                        if (game.core.config.display_resolution == 5)
+                        {
+                            game.core.config.display_resolution_x = 1440;
+                            game.core.config.display_resolution_y = 900;
+                        }
+                        if (game.core.config.display_resolution == 6)
+                        {
+                            game.core.config.display_resolution_x = 1680;
+                            game.core.config.display_resolution_y = 1050;
+                        }
+                        if (game.core.config.display_resolution == 7)
+                        {
+                            game.core.config.display_resolution_x = 1920;
+                            game.core.config.display_resolution_y = 1080;
+                        }
+                        if (!game.core.graphics.init_sdl())
+                        {
+                            game.core.log.file_write("Reverting graphics configuration...");
+                            game.core.config.display_resolution    = temp_resolution;
+                            game.core.config.display_resolution_x  = temp_resolution_x;
+                            game.core.config.display_resolution_y  = temp_resolution_y;
+                            game.core.graphics.init_sdl();
+                        }
+                        else
+                        {
+                            game.core.config.mouse_resolution_x   = game.core.config.display_resolution_x;
+                            game.core.config.mouse_resolution_y   = game.core.config.display_resolution_y;
+                            for (int data_position_count = 0; data_position_count < menu_system_class::menu_options.choice_selection[0].position_max;data_position_count++)
+                            {
+                                menu_system_class::menu_options.choice_selection[0].data[data_position_count].active = false;
+                            }
+                            menu_system_class::menu_options.element[ 9].selected                  = false;
+                            menu_system_class::menu_options.element[10].selected                  = false;
+                            menu_system_class::menu_options.element[11].selected                  = true;
+                            menu_system_class::menu_options.element[12].selected                  = false;
+                            menu_system_class::menu_options.element[13].selected                  = false;
+                            menu_system_class::menu_options.choice_selection[0].data[temp_data_value].active    = true;
+                        }
+                        game.core.log.file_write("Initializing OpenGL...");
+                        game.core.graphics.init_gl();
+                        game.resource.loading_screen_display("data/loading_screen.png");
+                        game.core.log.file_write("Loading resources....");
+                        game.resource.load_all();
+                    }
+                break;
+                case 13: // Resolution 3 selected
+                    temp_data_value = 3;
+                    if (menu_system_class::menu_options.choice_selection[0].data[temp_data_value].value != game.core.config.display_resolution)
+                    {
+                        temp_resolution      = game.core.config.display_resolution;
+                        temp_resolution_x    = game.core.config.display_resolution_x;
+                        temp_resolution_y    = game.core.config.display_resolution_y;
+                        game.core.config.display_resolution = menu_system_class::menu_options.choice_selection[0].data[temp_data_value].value;
+                        if (game.core.config.display_resolution == 0)
+                        {
+                            game.core.config.display_resolution_x = 640;
+                            game.core.config.display_resolution_y = 480;
+                        }
+                        if (game.core.config.display_resolution == 1)
+                        {
+                            game.core.config.display_resolution_x = 800;
+                            game.core.config.display_resolution_y = 600;
+                        }
+                        if (game.core.config.display_resolution == 2)
+                        {
+                            game.core.config.display_resolution_x = 1024;
+                            game.core.config.display_resolution_y = 768;
+                        }
+                        if (game.core.config.display_resolution == 3)
+                        {
+                            game.core.config.display_resolution_x = 1280;
+                            game.core.config.display_resolution_y = 1024;
+                        }
+                        if (game.core.config.display_resolution == 4)
+                        {
+                            game.core.config.display_resolution_x = 1366;
+                            game.core.config.display_resolution_y = 768;
+                        }
+                        if (game.core.config.display_resolution == 5)
+                        {
+                            game.core.config.display_resolution_x = 1440;
+                            game.core.config.display_resolution_y = 900;
+                        }
+                        if (game.core.config.display_resolution == 6)
+                        {
+                            game.core.config.display_resolution_x = 1680;
+                            game.core.config.display_resolution_y = 1050;
+                        }
+                        if (game.core.config.display_resolution == 7)
+                        {
+                            game.core.config.display_resolution_x = 1920;
+                            game.core.config.display_resolution_y = 1080;
+                        }
+                        if (!game.core.graphics.init_sdl())
+                        {
+                            game.core.log.file_write("Reverting graphics configuration...");
+                            game.core.config.display_resolution    = temp_resolution;
+                            game.core.config.display_resolution_x  = temp_resolution_x;
+                            game.core.config.display_resolution_y  = temp_resolution_y;
+                            game.core.graphics.init_sdl();
+                        }
+                        else
+                        {
+                            game.core.config.mouse_resolution_x   = game.core.config.display_resolution_x;
+                            game.core.config.mouse_resolution_y   = game.core.config.display_resolution_y;
+                            for (int data_position_count = 0; data_position_count < menu_system_class::menu_options.choice_selection[0].position_max;data_position_count++)
+                            {
+                                menu_system_class::menu_options.choice_selection[0].data[data_position_count].active = false;
+                            }
+                            menu_system_class::menu_options.element[ 9].selected                  = false;
+                            menu_system_class::menu_options.element[10].selected                  = false;
+                            menu_system_class::menu_options.element[11].selected                  = false;
+                            menu_system_class::menu_options.element[12].selected                  = true;
+                            menu_system_class::menu_options.element[13].selected                  = false;
+                            menu_system_class::menu_options.choice_selection[0].data[temp_data_value].active    = true;
+                        }
+                        game.core.log.file_write("Initializing OpenGL...");
+                        game.core.graphics.init_gl();
+                        game.resource.loading_screen_display("data/loading_screen.png");
+                        game.core.log.file_write("Loading resources....");
+                        game.resource.load_all();
+                    }
+                break;
+                case 14: // Resolution 4 selected
+                    temp_data_value = 4;
+                    if (menu_system_class::menu_options.choice_selection[0].data[temp_data_value].value != game.core.config.display_resolution)
+                    {
+                        temp_resolution      = game.core.config.display_resolution;
+                        temp_resolution_x    = game.core.config.display_resolution_x;
+                        temp_resolution_y    = game.core.config.display_resolution_y;
+                        game.core.config.display_resolution = menu_system_class::menu_options.choice_selection[0].data[temp_data_value].value;
+                        if (game.core.config.display_resolution == 0)
+                        {
+                            game.core.config.display_resolution_x = 640;
+                            game.core.config.display_resolution_y = 480;
+                        }
+                        if (game.core.config.display_resolution == 1)
+                        {
+                            game.core.config.display_resolution_x = 800;
+                            game.core.config.display_resolution_y = 600;
+                        }
+                        if (game.core.config.display_resolution == 2)
+                        {
+                            game.core.config.display_resolution_x = 1024;
+                            game.core.config.display_resolution_y = 768;
+                        }
+                        if (game.core.config.display_resolution == 3)
+                        {
+                            game.core.config.display_resolution_x = 1280;
+                            game.core.config.display_resolution_y = 1024;
+                        }
+                        if (game.core.config.display_resolution == 4)
+                        {
+                            game.core.config.display_resolution_x = 1366;
+                            game.core.config.display_resolution_y = 768;
+                        }
+                        if (game.core.config.display_resolution == 5)
+                        {
+                            game.core.config.display_resolution_x = 1440;
+                            game.core.config.display_resolution_y = 900;
+                        }
+                        if (game.core.config.display_resolution == 6)
+                        {
+                            game.core.config.display_resolution_x = 1680;
+                            game.core.config.display_resolution_y = 1050;
+                        }
+                        if (game.core.config.display_resolution == 7)
+                        {
+                            game.core.config.display_resolution_x = 1920;
+                            game.core.config.display_resolution_y = 1080;
+                        }
+                        if (!game.core.graphics.init_sdl())
+                        {
+                            game.core.log.file_write("Reverting graphics configuration...");
+                            game.core.config.display_resolution    = temp_resolution;
+                            game.core.config.display_resolution_x  = temp_resolution_x;
+                            game.core.config.display_resolution_y  = temp_resolution_y;
+                            game.core.graphics.init_sdl();
+                        }
+                        else
+                        {
+                            game.core.config.mouse_resolution_x   = game.core.config.display_resolution_x;
+                            game.core.config.mouse_resolution_y   = game.core.config.display_resolution_y;
+                            for (int data_position_count = 0; data_position_count < menu_system_class::menu_options.choice_selection[0].position_max;data_position_count++)
+                            {
+                                menu_system_class::menu_options.choice_selection[0].data[data_position_count].active = false;
+                            }
+                            menu_system_class::menu_options.element[ 9].selected                  = false;
+                            menu_system_class::menu_options.element[10].selected                  = false;
+                            menu_system_class::menu_options.element[11].selected                  = false;
+                            menu_system_class::menu_options.element[12].selected                  = false;
+                            menu_system_class::menu_options.element[13].selected                  = true;
+                            menu_system_class::menu_options.choice_selection[0].data[temp_data_value].active    = true;
+                        }
+                        game.core.log.file_write("Initializing OpenGL...");
+                        game.core.graphics.init_gl();
+                        game.resource.loading_screen_display("data/loading_screen.png");
+                        game.core.log.file_write("Loading resources....");
+                        game.resource.load_all();
+                    }
+                break;
+/*---------------------------------------------------------------------------------------------------------*/
+
                 case 15: // toggle full screen
                     if (game.core.config.display_fullscreen)
                     {
@@ -1373,6 +1872,10 @@ int menu_system_class::process(void)
                     menu_system_class::active_menu = MENU_MAIN;
                     menu_system_class::menu_main.set_position(menu_system_class::menu_options.position_x,menu_system_class::menu_options.position_y);
                     game.resource.sound.menu_select_00.play();
+                break;
+                case 18: // close button
+                    menu_system_class::active_menu = MENU_MAIN;
+                    menu_system_class::menu_main.set_position(menu_system_class::menu_options.position_x,menu_system_class::menu_options.position_y);
                 break;
             }
         break;

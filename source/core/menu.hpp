@@ -147,8 +147,9 @@ class menu_element_class
 
 struct selection_data_type
 {
-    bool    active;
-    int     value;
+    bool         active;
+    int          value;
+    std::string  value_string;
 };
 
 
