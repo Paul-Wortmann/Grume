@@ -228,6 +228,8 @@ void menu_system_class::init(void)
     menu_system_class::menu_new_game.choice_selection[0].data[10].value   = game.resource.texture.portrait_10.ref_number;
     menu_system_class::menu_new_game.choice_selection[0].data[11].value   = game.resource.texture.portrait_11.ref_number;
     menu_system_class::menu_new_game.choice_selection[0].data[12].value   = game.resource.texture.portrait_12.ref_number;
+    game.player.portrait_image_ref = menu_system_class::menu_new_game.choice_selection[0].data[0].value;
+    game.player.portrait_number    = menu_system_class::menu_new_game.choice_selection[0].position;
 
     menu_system_class::menu_new_game.element[0].title.text                = ""; // Close button
     menu_system_class::menu_new_game.element[0].active                    = true;
@@ -1900,8 +1902,6 @@ void menu_system_class::render(void)
         game.resource.texture.logo.draw(true,0.0f,0.9f,0.001f,1.6f,0.2f);
         game.resource.font.font_1.Write(255,255,255,64,-0.98f,-0.98f,2,16,"www.PhysHexGames.co.nr");
     }
-
-
     switch(menu_system_class::active_menu)
     {
         case MENU_MAIN:
