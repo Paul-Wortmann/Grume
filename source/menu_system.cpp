@@ -634,7 +634,7 @@ void menu_system_class::init(void)
     menu_system_class::menu_options.choice_selection[0].selected                = 0; // Resolution selection
     menu_system_class::menu_options.choice_selection[0].position                = 0;
     menu_system_class::menu_options.choice_selection[0].position_max            = 7;
-    menu_system_class::menu_options.choice_selection[0].data[0].active          = true;
+    menu_system_class::menu_options.choice_selection[0].data[game.core.config.display_resolution].active          = true;
     menu_system_class::menu_options.choice_selection[0].data[0].value           = 0;
     menu_system_class::menu_options.choice_selection[0].data[0].value_string    = " 640 X 480 ";
     menu_system_class::menu_options.choice_selection[0].data[1].value           = 1;
@@ -653,7 +653,7 @@ void menu_system_class::init(void)
     menu_system_class::menu_options.choice_selection[0].data[7].value_string    = "1920 X 1080";
 
     menu_system_class::menu_options.element[9].title.text                = menu_system_class::menu_options.choice_selection[0].data[0].value_string;
-    menu_system_class::menu_options.element[9].selected                  = true;
+    menu_system_class::menu_options.element[9].selected                  = menu_system_class::menu_options.choice_selection[0].data[0].active;
     menu_system_class::menu_options.element[9].active                    = true;
     menu_system_class::menu_options.element[9].type                      = IMAGE;
     menu_system_class::menu_options.element[9].color                     = menu_system_class::menu_options.color;
@@ -672,6 +672,7 @@ void menu_system_class::init(void)
     menu_system_class::menu_options.element[9].title.position_y          = menu_system_class::menu_options.element[9].position_y - (menu_system_class::menu_options.element[9].title.size_y/120.0f);
 
     menu_system_class::menu_options.element[10].title.text                = menu_system_class::menu_options.choice_selection[0].data[1].value_string;
+    menu_system_class::menu_options.element[10].selected                  = menu_system_class::menu_options.choice_selection[0].data[1].active;
     menu_system_class::menu_options.element[10].active                    = true;
     menu_system_class::menu_options.element[10].type                      = IMAGE;
     menu_system_class::menu_options.element[10].color                     = menu_system_class::menu_options.color;
@@ -690,6 +691,7 @@ void menu_system_class::init(void)
     menu_system_class::menu_options.element[10].title.position_y          = menu_system_class::menu_options.element[10].position_y - (menu_system_class::menu_options.element[10].title.size_y/120.0f);
 
     menu_system_class::menu_options.element[11].title.text                = menu_system_class::menu_options.choice_selection[0].data[2].value_string;
+    menu_system_class::menu_options.element[11].selected                  = menu_system_class::menu_options.choice_selection[0].data[2].active;
     menu_system_class::menu_options.element[11].active                    = true;
     menu_system_class::menu_options.element[11].type                      = IMAGE;
     menu_system_class::menu_options.element[11].color                     = menu_system_class::menu_options.color;
@@ -708,6 +710,7 @@ void menu_system_class::init(void)
     menu_system_class::menu_options.element[11].title.position_y          = menu_system_class::menu_options.element[11].position_y - (menu_system_class::menu_options.element[11].title.size_y/120.0f);
 
     menu_system_class::menu_options.element[12].title.text                = menu_system_class::menu_options.choice_selection[0].data[3].value_string;
+    menu_system_class::menu_options.element[12].selected                  = menu_system_class::menu_options.choice_selection[0].data[3].active;
     menu_system_class::menu_options.element[12].active                    = true;
     menu_system_class::menu_options.element[12].type                      = IMAGE;
     menu_system_class::menu_options.element[12].color                     = menu_system_class::menu_options.color;
@@ -726,6 +729,7 @@ void menu_system_class::init(void)
     menu_system_class::menu_options.element[12].title.position_y          = menu_system_class::menu_options.element[12].position_y - (menu_system_class::menu_options.element[12].title.size_y/120.0f);
 
     menu_system_class::menu_options.element[13].title.text                = menu_system_class::menu_options.choice_selection[0].data[4].value_string;
+    menu_system_class::menu_options.element[13].selected                  = menu_system_class::menu_options.choice_selection[0].data[4].active;
     menu_system_class::menu_options.element[13].active                    = true;
     menu_system_class::menu_options.element[13].type                      = IMAGE;
     menu_system_class::menu_options.element[13].color                     = menu_system_class::menu_options.color;
