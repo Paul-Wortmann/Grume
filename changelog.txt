@@ -6,6 +6,9 @@ These are not indications that the project will be terminated in the future,
 just that time is not permitting to proceed at a fast pace, at the moment.
 
 
+v0.10 - (2012-08-31)
+LOC  -> xxxxx
+
 v0.09 - (2012-07-31)
 NPC  -> Added NPC class.
 GFX  -> Added enemy health bars.
