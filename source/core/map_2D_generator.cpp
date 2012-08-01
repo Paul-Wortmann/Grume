@@ -24,24 +24,50 @@
 
 # include "map_2D_generator.hpp"
 
-map_type generate_map(int size_x ,int size_y ,int type ,bool town,int difficulty,int loot_amount ,int monster_max)
+map_type map_2D_generator_class::generate_map(int size_x ,int size_y ,int type ,bool town,int difficulty,int loot_amount ,int monster_max)
 {
     int    number_tiles = size_x*size_y;
-    int*   tile[];
+    int*   tile = new int[number_tiles];
     switch (type)
     {
         case DUNGEON:
             for (int tile_count = 0; tile_count < number_tiles; tile_count++)
             {
-
+                tile[tile_count] = 1;  //Fill map with wall tiles
             }
         break;
         case CAVE:
+            for (int tile_count = 0; tile_count < number_tiles; tile_count++)
+            {
+                tile[tile_count] = 2;  //Fill map with floor tiles
+            }
+            //fill perimeter with wall tiles
+            for (int tile_count = 0; tile_count < size_x; tile_count++)
+            {
+                tile[tile_count]              = 1;  //Fill with wall tiles
+                tile[number_tiles-tile_count] = 1;  //Fill with wall tiles
+            }
+            for (int tile_count = 0; tile_count < size_y; tile_count++)
+            {
+                tile[tile_count*size_x]              = 1;  //Fill with wall tiles
+                tile[(tile_count*size_x)+size_x]     = 1;  //Fill with wall tiles
+            }
         break;
         case FOREST:
+            for (int tile_count = 0; tile_count < number_tiles; tile_count++)
+            {
+                tile[tile_count] = 2;  //Fill map with floor tiles
+            }
         break;
     }
 };
+
+void map_2D_generator_class::draw(void)
+{
+
+};
+
+
 
 /*
 //-------------------------------------------------------------//

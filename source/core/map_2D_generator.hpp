@@ -61,7 +61,7 @@ class map_2D_generator_class
     private:
     public:
         map_type generate_map(int size_x ,int size_y ,int type ,bool town,int difficulty,int loot_amount ,int monster_max);
-
+        void     draw(void);
 };
 
 
