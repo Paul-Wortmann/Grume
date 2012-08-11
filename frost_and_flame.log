@@ -18,7 +18,6 @@ Loading resources -> spells
 Loading resources -> Tilesets
 Loading resources -> Generic Textures
 Loading resources -> Heightmaps
-Loading resources -> 2D Maps
 Loading resources -> 3D Maps
 Loading resources -> 3D Models
 loader_obj_class::load_texture loaded file -> data/models/forest/tree_palm_diffus.png
@@ -38,14 +37,12 @@ usemtl found...1
 Current_material - > default_Untitled
 Loading resources -> test data
 font     files loaded -> 1
-2D map   files loaded -> 2
 3D map   files loaded -> 1
 3D model files loaded -> 6
 music    files loaded -> 1
 sound    files loaded -> 9
 texture  files loaded -> 362
 font     files loaded -> 1
-2D map   files loaded -> 2
 3D map   files loaded -> 1
 3D model files loaded -> 6
 music    files loaded -> 1

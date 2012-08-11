@@ -244,7 +244,7 @@ void map_2D_class::scroll_map(int x_dir, int y_dir)
 {
     float temp_x = x_dir * MAP_SCROLL_SPEED;
     float temp_y = y_dir * MAP_SCROLL_SPEED;
-    for(int tile_count = 0; tile_count < MAX_TILES; tile_count++)
+    for(int tile_count = 0; tile_count <  map_2D_class::number_of_tiles; tile_count++)
     {
         map_2D_class::tile[tile_count].pos_x -= temp_x;
         map_2D_class::tile[tile_count].pos_y -= temp_y;
@@ -255,7 +255,7 @@ void map_2D_class::center_on_tile(int tile_ID)
 {
     float temp_x = map_2D_class::tile[tile_ID].pos_x;
     float temp_y = map_2D_class::tile[tile_ID].pos_y;
-    for(int tile_count = 0; tile_count < MAX_TILES; tile_count++)
+    for(int tile_count = 0; tile_count < map_2D_class::number_of_tiles; tile_count++)
     {
         map_2D_class::tile[tile_count].pos_x -= temp_x;
         map_2D_class::tile[tile_count].pos_y -= temp_y;
@@ -268,18 +268,18 @@ void map_2D_class::calculate_tile_positions(void)
     float start_y  = 0.0f;
     int   x_count  = 0;
     int   y_count  = 0;
-    for (int tile_count = 0; tile_count < MAX_TILES; tile_count++)
+    for (int tile_count = 0; tile_count < map_2D_class::number_of_tiles; tile_count++)
     {
         map_2D_class::tile[tile_count].pos_x = start_x + (x_count * (TILE_WIDTH_HALF/2));
         map_2D_class::tile[tile_count].pos_y = start_y - (y_count * (TILE_HEIGHT_HALF/(DEFAULT_FRAME_HEIGHT/16)));
         x_count++;
         y_count++;
-        if (x_count >= MAX_TILE_X)
+        if (x_count >= map_2D_class::width)
         {
             x_count = 0;
             start_x -= TILE_WIDTH_HALF/2;
         }
-        if (y_count >= MAX_TILE_Y)
+        if (y_count >= map_2D_class::height)
         {
             y_count = 0;
             start_y -= TILE_HEIGHT_HALF/(DEFAULT_FRAME_HEIGHT/16);
@@ -293,18 +293,18 @@ void map_2D_class::calculate_tile_positions(float tile_width_half_specify,float 
     float start_y  = map_2D_class::tile[0].pos_y + (tile_height_half_specify/(DEFAULT_FRAME_HEIGHT/16));
     int   x_count  = 0;
     int   y_count  = 0;
-    for (int tile_count = 0; tile_count < MAX_TILES; tile_count++)
+    for (int tile_count = 0; tile_count < map_2D_class::number_of_tiles; tile_count++)
     {
         map_2D_class::tile[tile_count].pos_x = start_x + (x_count * (tile_width_half_specify/2));
         map_2D_class::tile[tile_count].pos_y = start_y - (y_count * (tile_height_half_specify/(DEFAULT_FRAME_HEIGHT/16)));
         x_count++;
         y_count++;
-        if (x_count >= MAX_TILE_X)
+        if (x_count >= map_2D_class::width)
         {
             x_count = 0;
             start_x -= tile_width_half_specify/2;
         }
-        if (y_count >= MAX_TILE_Y)
+        if (y_count >= map_2D_class::height)
         {
             y_count = 0;
             start_y -= tile_height_half_specify/(DEFAULT_FRAME_HEIGHT/16);
@@ -348,15 +348,77 @@ void map_2D_class::load(std::string file_name)
     int          tileset_count   = 0;
     int          layer_count     = 0;
     int          tile_count      = 0;
-    char         temp_char = ' ';
-    float        temp_float_data;
-    int          temp_int_data;
-    bool         temp_bool_data;
+    char         temp_char       = ' ';
+    float        temp_float_data = 0.0f;
+    int          temp_int_data   = 0;
+    bool         temp_bool_data  = false;
     std::string  temp_string_data;
     std::string  temp_string_key;
     std::string  temp_string_value;
     std::string  data_line;
     std::fstream script_file(file_name.c_str(),std::ios::in|std::ios::binary);
+//----------------------------- get sizes for dynamic arrays --------------------------------------------------------
+    if (script_file.is_open())
+    {
+        while (script_file.good())
+        {
+            getline(script_file,data_line);
+            {
+                position_count = 0;
+                if ((data_line[position_count] == ' ') && (data_line.length() > 2))
+                {
+                    temp_char = ' ';
+                    while (temp_char == ' ')
+                    {
+                        temp_char = data_line[position_count];
+                        position_count++;
+                    }
+                    position_count--;
+                }
+                position_start = position_count;
+                if((data_line[position_count] == '<') && (data_line[position_count+1] == '/') && (data_line.length() > 2))
+                {
+                    temp_char         = ' ';
+                    temp_string_key   = "";
+                    temp_string_value = "";
+                    while(temp_char != '>')
+                    {
+                        temp_char = data_line[position_count];
+                        if((temp_char != '<') && (temp_char != '/') && (temp_char != '>'))
+                        {
+                            temp_string_key += temp_char;
+                        }
+                        position_count++;
+                        if(position_count > (int)data_line.length()) temp_char = '>';
+                    }
+                    if (temp_string_key == "tileset")
+                    {
+                        tileset_count++;
+                    }
+                }
+            }
+        }
+    }
+    map_2D_class::number_of_tilesets = tileset_count + 1;
+    map_2D_class::tileset = new tileset_class[map_2D_class::number_of_tilesets];
+    script_file.clear();
+    script_file.seekg(0, std::ios::beg);
+    //----------------------------- read in data ------------------------------------------------------------------------
+    position_count  = 0;
+    position_start  = 0;
+    map_data        = true;
+    tileset_data    = false;
+    layer_data      = false;
+    collision_data  = false;
+    object_data     = false;
+    tile_data       = false;
+    tileset_count   = 0;
+    layer_count     = 0;
+    tile_count      = 0;
+    temp_char       = ' ';
+    temp_float_data = 0.0f;
+    temp_int_data   = 0;
+    temp_bool_data  = false;
     if (script_file.is_open())
     {
         while (script_file.good())
@@ -450,7 +512,12 @@ void map_2D_class::load(std::string file_name)
                             if (temp_string_key == "height")      map_2D_class::height      = temp_int_data;
                             if (temp_string_key == "tilewidth")   map_2D_class::tilewidth   = temp_int_data;
                             if (temp_string_key == "tileheight")  map_2D_class::tileheight  = temp_int_data;
-                            if (temp_string_key == "tileheight")  map_data               = false;
+                            if (temp_string_key == "tileheight")  map_data                  = false;
+                            if(!map_data)
+                            {
+                                map_2D_class::number_of_tiles = map_2D_class::width * map_2D_class::height;
+                                map_2D_class::tile = new tile_class[map_2D_class::number_of_tiles];
+                            }
                         }
                         if (tileset_data)
                         {
@@ -516,8 +583,6 @@ void map_2D_class::load(std::string file_name)
             }
         }
         script_file.close();
-        map_2D_class::number_of_tiles    = map_2D_class::width * map_2D_class::height;
-        map_2D_class::number_of_tilesets = tileset_count + 1;
         map_2D_class::calculate_tile_positions();
         map_2D_class::center_on_tile(0);
     }

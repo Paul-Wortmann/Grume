@@ -113,6 +113,8 @@ void game_class::init(void)
     init_spells();
     init_items();
     init_inventory();
+    game.resource.map_2D.load("data/maps/town.tmx");
+    game.resource.map_2D.random_map(100,100,CAVE);
 };
 
 void game_class::process(void)
@@ -120,7 +122,7 @@ void game_class::process(void)
     game.UI.process();
     game.player.process();
     game.npc.process();
-    game.resource.map_2D.town.process();
+    game.resource.map_2D.process();
     //game.resource.map_3D.town.process();
     game.core.game_resume = true;
     if (game.core.music_next_track)
@@ -140,8 +142,8 @@ void game_class::process(void)
             if (game.zoom.current > game.zoom.max) game.zoom.current = game.zoom.max;
             else
             {
-                game.resource.map_2D.town.tile[0].pos_y -= (DEFAULT_FRAME_HEIGHT/game.zoom.current/2.0f);
-                game.resource.map_2D.town.calculate_tile_positions(DEFAULT_FRAME_WIDTH/game.zoom.current/2.0f,DEFAULT_FRAME_HEIGHT/game.zoom.current/2.0f);
+                game.resource.map_2D.tile[0].pos_y -= (DEFAULT_FRAME_HEIGHT/game.zoom.current/2.0f);
+                game.resource.map_2D.calculate_tile_positions(DEFAULT_FRAME_WIDTH/game.zoom.current/2.0f,DEFAULT_FRAME_HEIGHT/game.zoom.current/2.0f);
             }
         }
         if (game.core.io.mouse_wheel > 0)
@@ -154,8 +156,8 @@ void game_class::process(void)
             if (game.zoom.current < game.zoom.min) game.zoom.current = game.zoom.min;
             else
             {
-                //game.resource.map_2D.town.tile[0].pos_y += (DEFAULT_FRAME_HEIGHT/game.zoom.current/2.0f);
-                game.resource.map_2D.town.calculate_tile_positions(DEFAULT_FRAME_WIDTH/game.zoom.current/2.0f,DEFAULT_FRAME_HEIGHT/game.zoom.current/2.0f);
+                //game.resource.map_2D.tile[0].pos_y += (DEFAULT_FRAME_HEIGHT/game.zoom.current/2.0f);
+                game.resource.map_2D.calculate_tile_positions(DEFAULT_FRAME_WIDTH/game.zoom.current/2.0f,DEFAULT_FRAME_HEIGHT/game.zoom.current/2.0f);
             }
         }
     }
@@ -355,7 +357,7 @@ void game_class::render(void)
     glLightModelfv(GL_LIGHT_MODEL_AMBIENT,world_ambient_light);
 
 
-    game.resource.map_2D.town.draw();
+    game.resource.map_2D.draw();
     //game.resource.map_3D.town.draw();
     game.player.draw();
     game.npc.render();

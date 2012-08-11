@@ -54,6 +54,7 @@ struct sound_resource_class
         void play(int sound_number);
 };
 
+/*
 struct map_2D_resource_class
 {
     private:
@@ -62,6 +63,7 @@ struct map_2D_resource_class
         map_2D_class   town;
         map_2D_class   generated;
 };
+*/
 
 struct map_3D_resource_class
 {
@@ -520,7 +522,8 @@ class resource_class
 {
     private:
     public:
-        map_2D_resource_class       map_2D;
+        //map_2D_resource_class       map_2D;
+        map_2D_class                map_2D;
         map_3D_resource_class       map_3D;
         model_3D_resource_class     model_3D;
         sound_resource_class        sound;
@@ -540,7 +543,7 @@ class resource_class
         void                        load_tilesets(void);
         void                        load_generic_textures(void);
         void                        load_heightmaps(void);
-        void                        load_maps_2D(void);
+        //void                        load_maps_2D(void);
         void                        load_maps_3D(void);
         void                        load_3D_models(void);
         void                        load_test_data(void);

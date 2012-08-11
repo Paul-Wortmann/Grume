@@ -855,7 +855,7 @@ void texture_resource_class::bind(int texture_number)
 resource_class::resource_class(void)
 {
     resource_class::font.number_loaded     = 0;
-    resource_class::map_2D.number_loaded   = 0;
+    //resource_class::map_2D.number_loaded   = 0;
     resource_class::map_3D.number_loaded   = 0;
     resource_class::model_3D.number_loaded = 0;
     resource_class::music.number_loaded    = 0;
@@ -882,7 +882,7 @@ void resource_class::write_log_file_count(void)
 {
 //--- log loaded file count ---
     game.core.log.file_write("font     files loaded -> ",resource_class::font.number_loaded);
-    game.core.log.file_write("2D map   files loaded -> ",resource_class::map_2D.number_loaded);
+    //game.core.log.file_write("2D map   files loaded -> ",resource_class::map_2D.number_loaded);
     game.core.log.file_write("3D map   files loaded -> ",resource_class::map_3D.number_loaded);
     game.core.log.file_write("3D model files loaded -> ",resource_class::model_3D.number_loaded);
     game.core.log.file_write("music    files loaded -> ",resource_class::music.number_loaded);
@@ -1387,6 +1387,7 @@ void resource_class::load_heightmaps(void)
     game.resource.texture.heightmap_000.load_image("data/textures/heightmaps/heightmap_000.png",resource_class::texture.number_loaded);resource_class::texture.number_loaded++;
 };
 
+/*
 void resource_class::load_maps_2D(void)
 {
     game.core.log.file_write("Loading resources -> 2D Maps");
@@ -1400,6 +1401,7 @@ void resource_class::load_maps_2D(void)
 //--- sound ---
 //--- texture ---
 };
+*/
 
 void resource_class::load_maps_3D(void)
 {
@@ -1464,7 +1466,7 @@ void resource_class::load_all(void)
     resource_class::load_tilesets();
     resource_class::load_generic_textures();
     resource_class::load_heightmaps();
-    resource_class::load_maps_2D();
+    //resource_class::load_maps_2D();
     resource_class::load_maps_3D();
     resource_class::load_3D_models();
     resource_class::load_test_data();
@@ -1474,7 +1476,7 @@ void resource_class::load_all(void)
 void resource_class::initialize(void)
 {
     resource_class::font.number_loaded     = 0;
-    resource_class::map_2D.number_loaded   = 0;
+    //resource_class::map_2D.number_loaded   = 0;
     resource_class::map_3D.number_loaded   = 0;
     resource_class::model_3D.number_loaded = 0;
     resource_class::music.number_loaded    = 0;

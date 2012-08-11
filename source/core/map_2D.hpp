@@ -28,10 +28,6 @@
 #include "map_2D_generator.hpp"
 #include "textures.hpp"
 
-const int    MAX_MAP_TILESETS    = 32;
-const int    MAX_TILE_X          = 100;
-const int    MAX_TILE_Y          = 100;
-const int    MAX_TILES           = MAX_TILE_X*MAX_TILE_Y;
 const float  TILE_SCALE_DEFAULT  = 200.0f;
 const float  TILE_WIDTH          = (float)DEFAULT_FRAME_WIDTH  / TILE_SCALE_DEFAULT;
 const float  TILE_HEIGHT         = (float)DEFAULT_FRAME_HEIGHT / TILE_SCALE_DEFAULT;
@@ -73,16 +69,16 @@ class tileset_class
 class map_2D_class
 {
     public:
-        float         version;
-        std::string   orientation;
-        int           width;
-        int           height;
-        int           tilewidth;
-        int           tileheight;
-        tile_class    tile[MAX_TILES];
-        int           number_of_tiles;
-        tileset_class tileset[MAX_MAP_TILESETS];
-        int           number_of_tilesets;
+        float          version;
+        std::string    orientation;
+        int            width;
+        int            height;
+        int            tilewidth;
+        int            tileheight;
+        tile_class*    tile;
+        int            number_of_tiles;
+        tileset_class* tileset;
+        int            number_of_tilesets;
         void draw(void);
         void process(void);
         void scroll_map(int x_dir, int y_dir);

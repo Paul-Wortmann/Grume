@@ -7,7 +7,10 @@ just that time is not permitting to proceed at a fast pace, at the moment.
 
 
 v0.10 - (2012-08-31)
-LOC  -> xxxxx
+
+
+MAP2D -> Changed map zoom from "z" and "x" to mouse wheel.
+LOC   -> xxxxx
 
 v0.09 - (2012-07-31)
 NPC  -> Added NPC class.
