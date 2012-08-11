@@ -164,6 +164,7 @@ bool events_process(void)
     else game.core.io.joystick_ready = false;
     while (SDL_PollEvent(&game.core.event))
     {
+        if (game.core.event.type == SDL_QUIT) game.state = STATE_QUIT;
     //-------------------- Mouse events-------------------------------
         //if (game.core.event.type == SDL_MOUSEWHEEL)
         //{
@@ -205,9 +206,13 @@ bool events_process(void)
             switch(game.core.event.button.button)
             {
                 case SDL_BUTTON_WHEELUP:
+                    game.core.io.mouse_wheel++;
+                    if (game.core.io.mouse_wheel > 65535) game.core.io.mouse_wheel = 65535;
                     game.core.io.mouse_wheel_up = true;
                 break;
                 case SDL_BUTTON_WHEELDOWN:
+                    game.core.io.mouse_wheel--;
+                    if (game.core.io.mouse_wheel < -65535) game.core.io.mouse_wheel = -65535;
                     game.core.io.mouse_wheel_down = true;
                 break;
                 case SDL_BUTTON_LEFT:
@@ -376,8 +381,7 @@ bool events_process(void)
            if (game.core.event.jbutton.button == 10) game.core.io.joystick_button_10 = false;
            if (game.core.event.jbutton.button == 11) game.core.io.joystick_button_11 = false;
        }
-       //------------------ keybord events ------------------------------------------------------
-       if (game.core.event.type == SDL_QUIT) game.state = STATE_QUIT;
+       //------------------ keyboard events ------------------------------------------------------
        if (game.core.event.type == SDL_KEYDOWN)
        {
           if (game.core.event.key.keysym.sym == SDLK_ESCAPE) game.core.io.key_escape = true;

@@ -48,6 +48,7 @@ struct io_class
         bool           joystick_down;
         bool           joystick_left;
         bool           joystick_right;
+        int            mouse_wheel;
         bool           mouse_wheel_down;
         bool           mouse_wheel_up;
         bool           mouse_button_left;

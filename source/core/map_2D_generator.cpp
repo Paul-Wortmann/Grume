@@ -24,45 +24,73 @@
 
 # include "map_2D_generator.hpp"
 
-map_type map_2D_generator_class::generate_map(int size_x ,int size_y ,int type ,bool town,int difficulty,int loot_amount ,int monster_max)
+map_type map_2D_generator_class::map_populate_loot(map_type map_in, int loot_amount ,int loot_average)
 {
-    int    number_tiles = size_x*size_y;
-    int*   tile = new int[number_tiles];
+    map_type map_out;
+    map_out = map_in;
+    return(map_out);
+};
+
+map_type map_2D_generator_class::map_populate_monsters(map_type map_in, int monster_max, int monster_difficulty)
+{
+    map_type map_out;
+    map_out = map_in;
+    return(map_out);
+};
+
+map_type map_2D_generator_class::map_populate(map_type map_in, int loot_amount ,int loot_average, int monster_max, int monster_difficulty)
+{
+    map_type map_out;
+    map_out = map_in;
+    map_out = map_2D_generator_class::map_populate_monsters(map_out,100,1);
+    map_out = map_2D_generator_class::map_populate_loot(map_out,100,1);
+    return(map_out);
+};
+
+map_type map_2D_generator_class::map_generate(int size_x ,int size_y ,int type ,bool town)
+{
+    map_type temp_map;
+    int number_tiles        = size_x*size_y;
+    temp_map.number_tiles   = number_tiles;
+    temp_map.number_tiles_x = size_x;
+    temp_map.number_tiles_y = size_y;
+    temp_map.tile           = new tile_type[number_tiles];
     switch (type)
     {
         case DUNGEON:
             for (int tile_count = 0; tile_count < number_tiles; tile_count++)
             {
-                tile[tile_count] = 1;  //Fill map with wall tiles
+                temp_map.tile[tile_count].data = 1;  //Fill map with wall tiles
             }
         break;
         case CAVE:
             for (int tile_count = 0; tile_count < number_tiles; tile_count++)
             {
-                tile[tile_count] = 2;  //Fill map with floor tiles
+                temp_map.tile[tile_count].data = 2;  //Fill map with floor tiles
             }
             //fill perimeter with wall tiles
             for (int tile_count = 0; tile_count < size_x; tile_count++)
             {
-                tile[tile_count]              = 1;  //Fill with wall tiles
-                tile[number_tiles-tile_count] = 1;  //Fill with wall tiles
+                temp_map.tile[tile_count].data              = 1;  //Fill with wall tiles
+                temp_map.tile[number_tiles-tile_count].data = 1;  //Fill with wall tiles
             }
             for (int tile_count = 0; tile_count < size_y; tile_count++)
             {
-                tile[tile_count*size_x]              = 1;  //Fill with wall tiles
-                tile[(tile_count*size_x)+size_x]     = 1;  //Fill with wall tiles
+                temp_map.tile[tile_count*size_x].data              = 1;  //Fill with wall tiles
+                temp_map.tile[(tile_count*size_x)+size_x].data     = 1;  //Fill with wall tiles
             }
         break;
         case FOREST:
             for (int tile_count = 0; tile_count < number_tiles; tile_count++)
             {
-                tile[tile_count] = 2;  //Fill map with floor tiles
+                temp_map.tile[tile_count].data = 2;  //Fill map with floor tiles
             }
         break;
     }
+    return(temp_map);
 };
 
-void map_2D_generator_class::draw(void)
+void map_2D_generator_class::draw(map_type generated_map)
 {
 
 };

@@ -51,22 +51,31 @@ class tile_grid_class
         tile_grid_location_type origin;
 };
 
+struct tile_type
+{
+    int          data;
+    int          x;
+    int          y;
+};
+
 struct map_type
 {
-    int    tile[10];
+    int          number_tiles;
+    int          number_tiles_x;
+    int          number_tiles_y;
+    tile_type*   tile;
 };
 
 class map_2D_generator_class
 {
     private:
     public:
-        map_type generate_map(int size_x ,int size_y ,int type ,bool town,int difficulty,int loot_amount ,int monster_max);
-        void     draw(void);
+        map_type map_populate_loot(map_type map_in, int loot_amount ,int loot_average);
+        map_type map_populate_monsters(map_type map_in, int monster_max, int monster_difficulty);
+        map_type map_populate(map_type map_in, int loot_amount ,int loot_average, int monster_max, int monster_difficulty);
+        map_type map_generate(int size_x ,int size_y ,int type ,bool town);
+        void     draw(map_type generated_map);
 };
-
-
-
-
 
 #endif //MAP_2D_GENERATOR_H
 

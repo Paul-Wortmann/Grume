@@ -128,6 +128,37 @@ void game_class::process(void)
         game.core.music_next_track = false;
         if (game.core.music_track ==  0) game.resource.music.menu_00.play();
     }
+    if (game.core.io.mouse_wheel != 0)
+    {
+        if (game.core.io.mouse_wheel < 0)
+        {
+            while (game.core.io.mouse_wheel < 0)
+            {
+                game.core.io.mouse_wheel++;
+                game.zoom.current += game.zoom.speed;
+            }
+            if (game.zoom.current > game.zoom.max) game.zoom.current = game.zoom.max;
+            else
+            {
+                game.resource.map_2D.town.tile[0].pos_y -= (DEFAULT_FRAME_HEIGHT/game.zoom.current/2.0f);
+                game.resource.map_2D.town.calculate_tile_positions(DEFAULT_FRAME_WIDTH/game.zoom.current/2.0f,DEFAULT_FRAME_HEIGHT/game.zoom.current/2.0f);
+            }
+        }
+        if (game.core.io.mouse_wheel > 0)
+        {
+            while (game.core.io.mouse_wheel > 0)
+            {
+                game.core.io.mouse_wheel--;
+                game.zoom.current -= game.zoom.speed;
+            }
+            if (game.zoom.current < game.zoom.min) game.zoom.current = game.zoom.min;
+            else
+            {
+                //game.resource.map_2D.town.tile[0].pos_y += (DEFAULT_FRAME_HEIGHT/game.zoom.current/2.0f);
+                game.resource.map_2D.town.calculate_tile_positions(DEFAULT_FRAME_WIDTH/game.zoom.current/2.0f,DEFAULT_FRAME_HEIGHT/game.zoom.current/2.0f);
+            }
+        }
+    }
     if (game.core.io.keyboard_ready)
     {
         /*
@@ -150,30 +181,6 @@ void game_class::process(void)
             }
         };
         */
-        if (game.core.io.key_z)
-        {
-            game.zoom.current += game.zoom.speed;
-            if (game.zoom.current > game.zoom.max) game.zoom.current = game.zoom.max;
-            else
-            {
-                game.resource.map_2D.town.tile[0].pos_y -= (DEFAULT_FRAME_HEIGHT/game.zoom.current/2.0f);
-                game.resource.map_2D.town.calculate_tile_positions(DEFAULT_FRAME_WIDTH/game.zoom.current/2.0f,DEFAULT_FRAME_HEIGHT/game.zoom.current/2.0f);
-            }
-            game.core.io.key_z                = false;
-            game.core.io.keyboard_delay_count = 0;
-        }
-        if (game.core.io.key_x)
-        {
-            game.zoom.current -= game.zoom.speed;
-            if (game.zoom.current < game.zoom.min) game.zoom.current = game.zoom.min;
-            else
-            {
-                //game.resource.map_2D.town.tile[0].pos_y += (DEFAULT_FRAME_HEIGHT/game.zoom.current/2.0f);
-                game.resource.map_2D.town.calculate_tile_positions(DEFAULT_FRAME_WIDTH/game.zoom.current/2.0f,DEFAULT_FRAME_HEIGHT/game.zoom.current/2.0f);
-            }
-            game.core.io.key_x                = false;
-            game.core.io.keyboard_delay_count = 0;
-        }
         if (game.core.io.key_escape) // Main menu
         {
             if (!game.core.game_menu_active)
