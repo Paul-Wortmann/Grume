@@ -337,6 +337,7 @@ int  map_2D_class::mouse_over_tile(void)
 
 void map_2D_class::load(std::string file_name)
 {
+    game.core.log.file_write("Loading 2D map -> ",file_name);
     int          position_count  = 0;
     int          position_start  = 0;
     bool         map_data        = true;

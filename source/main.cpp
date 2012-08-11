@@ -98,13 +98,12 @@ extern "C" int main(int argc, char** argv)
     game.resource.loading_screen_display("data/loading_screen.png");
     game.core.log.file_write("Loading resources....");
     game.resource.load_all();
-    game.resource.write_log_file_count();
 //  --- miscellaneous ---
     game.core.log.file_write("Seeding random...");
     seed_rand();
+    game.core.log.file_write("Initializing menu system...");
     game.core.log.file_write("Initializing game system...");
     game.init();
-    game.core.log.file_write("Initializing menu system...");
     game.core.log.file_write("Initializing event handlers...");
     events_init();
     game.core.log.file_write("Starting Game...");

@@ -42,20 +42,16 @@ font     files loaded -> 1
 music    files loaded -> 1
 sound    files loaded -> 9
 texture  files loaded -> 362
-font     files loaded -> 1
-3D map   files loaded -> 1
-3D model files loaded -> 6
-music    files loaded -> 1
-sound    files loaded -> 9
-texture  files loaded -> 362
 Seeding random...
-Initializing game system...
 Initializing menu system...
+Initializing game system...
+Loading 2D map -> data/maps/town.tmx
 Initializing event handlers...
 Starting Game...
  
 # ---------------------------------------------- #
  
+Loading 2D map -> data/maps/town.tmx
  
 # ---------------------------------------------- #
  

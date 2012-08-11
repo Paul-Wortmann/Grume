@@ -1067,7 +1067,17 @@ int menu_system_class::process(void)
                     game.resource.sound.menu_select_00.play();
                 break;
                 case 2: // start new game button
-                    game.init();
+                    switch (game.state)
+                    {
+                        case STATE_MENU:
+                        break;
+                        case STATE_GAME:
+                            game.init();
+                        break;
+                        default:
+                            game.init();
+                        break;
+                    }
                     game.state = STATE_GAME;
                     game.core.music_next_track = true;
                     game.resource.sound.menu_select_00.play();
