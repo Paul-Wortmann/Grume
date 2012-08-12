@@ -51,9 +51,9 @@
 			<Cursor1 position="2927" topLine="31" />
 		</Cursor>
 	</File>
-	<File name="source\core\textures.cpp" open="1" top="1" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="source\core\textures.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="2237" topLine="54" />
+			<Cursor1 position="6561" topLine="141" />
 		</Cursor>
 	</File>
 	<File name="source\resources.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -61,9 +61,14 @@
 			<Cursor1 position="178613" topLine="1328" />
 		</Cursor>
 	</File>
-	<File name="source\core\textures.hpp" open="1" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="source\core\textures.hpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="0" topLine="0" />
+			<Cursor1 position="1668" topLine="24" />
+		</Cursor>
+	</File>
+	<File name="source\core\log.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="7177" topLine="246" />
 		</Cursor>
 	</File>
 	<File name="source\resources.hpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -71,7 +76,12 @@
 			<Cursor1 position="16558" topLine="488" />
 		</Cursor>
 	</File>
-	<File name="source\core\map_2D.cpp" open="1" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="source\core\log.hpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1050" topLine="21" />
+		</Cursor>
+	</File>
+	<File name="source\core\map_2D.cpp" open="1" top="1" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="1149" topLine="19" />
 		</Cursor>

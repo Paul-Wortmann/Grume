@@ -555,7 +555,7 @@
 1301111156 c:\mingw\include\oleidl.h
 	<objfwd.h>
 
-1338393337 c:\_git_\frost_and_flame\source\core\log.hpp
+1344752206 c:\_git_\frost_and_flame\source\core\log.hpp
 	<string>
 
 1339158410 c:\_git_\frost_and_flame\source\core\timer.hpp
@@ -749,7 +749,7 @@
 	"resources.hpp"
 	"game.hpp"
 
-1344749168 source:c:\_git_\frost_and_flame\source\core\textures.cpp
+1344749585 source:c:\_git_\frost_and_flame\source\core\textures.cpp
 	<GL/gl.h>
 	<SDL/SDL.h>
 	<SDL/SDL_image.h>
@@ -850,7 +850,7 @@
 	"character.hpp"
 	"game.hpp"
 
-1338393363 source:c:\_git_\frost_and_flame\source\core\log.cpp
+1344752244 source:c:\_git_\frost_and_flame\source\core\log.cpp
 	<fstream>
 	"log.hpp"
 
@@ -858,7 +858,7 @@
 	"equipment.hpp"
 	"game.hpp"
 
-1344748757 source:c:\_git_\frost_and_flame\source\core\map_2d.cpp
+1344752357 source:c:\_git_\frost_and_flame\source\core\map_2d.cpp
 	<iostream>
 	<fstream>
 	<stdio.h>
@@ -885,7 +885,7 @@
 	"misc.hpp"
 	"../game.hpp"
 
-1344749069 source:c:\_git_\frost_and_flame\source\game.cpp
+1344752539 source:c:\_git_\frost_and_flame\source\game.cpp
 	"game.hpp"
 
 1343717787 source:c:\_git_\frost_and_flame\source\core\menu.cpp

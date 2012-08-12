@@ -152,35 +152,34 @@ bool texture_class::load_spritesheet(std::string file_name, int index_number, in
 
         for (int current_sprite_y = 0; current_sprite_y < frames_y; current_sprite_y++)
         {
-        for (int current_sprite_x = 0; current_sprite_x < frames_x; current_sprite_x++)
-        {
-            int out_pixel_count = 0;
-            if(SDL_MUSTLOCK(sprite_sheet)) SDL_LockSurface(sprite_sheet);
-            for(int y_count = 0; y_count < texture_class::height-1; y_count++)
+            for (int current_sprite_x = 0; current_sprite_x < frames_x; current_sprite_x++)
             {
-                for(int x_count = 0; x_count < texture_class::width-1; x_count++)
+                int out_pixel_count = 0;
+                if(SDL_MUSTLOCK(sprite_sheet)) SDL_LockSurface(sprite_sheet);
+                for(int y_count = 0; y_count < texture_class::height-1; y_count++)
                 {
-                    out_pixels[out_pixel_count] = in_pixels[((sprite_sheet->w*y_count)+(((frame_number)*(texture_class::width))+x_count))];
-                    out_pixel_count++;
+                    for(int x_count = 0; x_count < texture_class::width-1; x_count++)
+                    {
+                        out_pixels[out_pixel_count] = in_pixels[((sprite_sheet->w*y_count)+(((frame_number)*(texture_class::width))+x_count))];
+                        out_pixel_count++;
+                    }
                 }
+                if(SDL_MUSTLOCK(sprite_sheet)) SDL_UnlockSurface(sprite_sheet);
+                texture_class::frame[frame_number].active = true;
+                glGenTextures( 1, &texture_class::frame[frame_number].data);
+                glBindTexture( GL_TEXTURE_2D, texture_class::frame[frame_number].data);
+                glEnable(GL_BLEND);
+                glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+                glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
+                glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+                glTexParameteri (GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+                glTexParameteri (GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+                glTexParameteri (GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+                glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
+                glTexImage2D( GL_TEXTURE_2D, 0, number_of_colors, temp_surface->w, temp_surface->h, 0, texture_format, GL_UNSIGNED_BYTE, temp_surface->pixels );
+                frame_number++;
             }
-            if(SDL_MUSTLOCK(sprite_sheet)) SDL_UnlockSurface(sprite_sheet);
-            texture_class::frame[frame_number].active = true;
-            glGenTextures( 1, &texture_class::frame[frame_number].data);
-            glBindTexture( GL_TEXTURE_2D, texture_class::frame[frame_number].data);
-            glEnable(GL_BLEND);
-            glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-            glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
-            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-            glTexParameteri (GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-            glTexParameteri (GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-            glTexParameteri (GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-            glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
-            glTexImage2D( GL_TEXTURE_2D, 0, number_of_colors, temp_surface->w, temp_surface->h, 0, texture_format, GL_UNSIGNED_BYTE, temp_surface->pixels );
-            frame_number++;
         }
-        }
-        game.core.log.file_write("Frames loaded -> ",frame_number);
     }
     else
     {

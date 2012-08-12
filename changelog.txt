@@ -7,8 +7,12 @@ just that time is not permitting to proceed at a fast pace, at the moment.
 
 
 v0.10 - (2012-08-31)
-
-
+GAME  -> game.init() no longer called twice if starting a game from the start menu.
+GFX   -> Fixed a SIGTRAP caused when loading spretesheets over 512 frames in size.
+GFX   -> Moved frame data into a dynamic array.
+FILE  -> path_remove() can now handle both forward and backward slashes.
+MAP2D -> Internad data structures for tiles and tilesets are now dynamic.
+MAP2D -> Maps are now loaded on demand.
 MAP2D -> Changed map zoom from "z" and "x" to mouse wheel.
 LOC   -> xxxxx
 
