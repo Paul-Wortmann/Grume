@@ -57,7 +57,7 @@ void game_class::init(void)
     game.zoom.current                             = TILE_SCALE_DEFAULT;
     game.zoom.min                                 = 80.0f;
     game.zoom.max                                 = 400.0f;
-    game.zoom.speed                               = 2.5f;
+    game.zoom.speed                               = 200.5f;
 
     game.core.game_paused                         = false;
     game.core.game_active                         = false;
@@ -113,8 +113,13 @@ void game_class::init(void)
     init_spells();
     init_items();
     init_inventory();
+
     game.resource.map_2D.load("data/maps/town.tmx");
-    //game.resource.map_2D.random_map(100,100,CAVE);
+    game.resource.map_2D.random_map(100,100,CAVE);
+
+    //zoom out for testing
+    game.zoom.current = game.zoom.max;
+    game.resource.map_2D.calculate_tile_positions(DEFAULT_FRAME_WIDTH/game.zoom.current/2.0f,DEFAULT_FRAME_HEIGHT/game.zoom.current/2.0f);
 };
 
 void game_class::process(void)
