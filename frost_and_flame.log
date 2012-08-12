@@ -16,6 +16,21 @@ Loading resources -> portraits
 Loading resources -> particles
 Loading resources -> spells
 Loading resources -> Tilesets
+Frames loaded -> 24
+Frames loaded -> 59
+Frames loaded -> 128
+Frames loaded -> 64
+Frames loaded -> 4
+Frames loaded -> 6
+Frames loaded -> 16
+Frames loaded -> 40
+Frames loaded -> 64
+Frames loaded -> 512
+Frames loaded -> 64
+Frames loaded -> 128
+Frames loaded -> 256
+Frames loaded -> 3
+Frames loaded -> 0
 Loading resources -> Generic Textures
 Loading resources -> Heightmaps
 Loading resources -> 3D Maps
@@ -47,5 +62,57 @@ Initializing menu system...
 Initializing game system...
 Loading 2D map -> data/maps/town.tmx
 Loading tile-set -> data/tilesets/grass_and_water.png
+Frames loaded -> 48
+Loaded tile-set -> data/tilesets/grass_and_water.png
 Loading tile-set -> data/tilesets/bridge.png
+Frames loaded -> 236
+Loaded tile-set -> data/tilesets/bridge.png
 Loading tile-set -> data/tilesets/cave_floor.png
+Frames loaded -> 512
+Loaded tile-set -> data/tilesets/cave_floor.png
+Loading tile-set -> data/tilesets/cave_wall.png
+Frames loaded -> 256
+Loaded tile-set -> data/tilesets/cave_wall.png
+Loading tile-set -> data/tilesets/cave_object.png
+Frames loaded -> 512
+Loaded tile-set -> data/tilesets/cave_object.png
+Loading tile-set -> data/tilesets/broken_tower.png
+Frames loaded -> 32
+Loaded tile-set -> data/tilesets/broken_tower.png
+Loading tile-set -> data/tilesets/dungeon.png
+Frames loaded -> 512
+Loaded tile-set -> data/tilesets/dungeon.png
+Loading tile-set -> data/tilesets/fence.png
+Frames loaded -> 80
+Loaded tile-set -> data/tilesets/fence.png
+Loading tile-set -> data/tilesets/medieval_building.png
+Frames loaded -> 384
+Loaded tile-set -> data/tilesets/medieval_building.png
+Loading tile-set -> data/tilesets/grassland.png
+Frames loaded -> 512
+Loaded tile-set -> data/tilesets/grassland.png
+Loading tile-set -> data/tilesets/grassland_trees.png
+Frames loaded -> 32
+Loaded tile-set -> data/tilesets/grassland_trees.png
+Loading tile-set -> data/tilesets/grassland_water.png
+Frames loaded -> 128
+Loaded tile-set -> data/tilesets/grassland_water.png
+Loading tile-set -> data/tilesets/grassland_structures.png
+Frames loaded -> 24
+Loaded tile-set -> data/tilesets/grassland_structures.png
+Loading tile-set -> data/tilesets/gold_tileset.png
+Frames loaded -> 12
+Loaded tile-set -> data/tilesets/gold_tileset.png
+Loading tile-set -> data/tilesets/
+Failed to load image ->data/tilesets/
+Loaded tile-set -> data/tilesets/
+Initializing event handlers...
+Starting Game...
+ 
+# ---------------------------------------------- #
+ 
+ 
+# ---------------------------------------------- #
+ 
+Saving configuration...
+Shutting down...

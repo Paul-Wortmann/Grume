@@ -41,21 +41,16 @@ texture_class::texture_class()
     texture_class::rotate_speed      = 0.0f;
     texture_class::rotate_direction  = 0;
     texture_class::angle             = 0.0f;
-    texture_class::frame_num         = 0;
+    texture_class::frame_number      = 0;
     texture_class::frame_max         = 0;
     texture_class::frame_delay       = 0.0f;
     texture_class::frame_delay_count = 0.0f;
     texture_class::frame_delay_max   = 0.0f;
-    for (int frame_count = 0; frame_count < MAX_FRAMES; frame_count++)
-    {
-        texture_class::frame[frame_count].active = false;
-        texture_class::frame[frame_count].data   = 0;
-    }
 };
 
 texture_class::~texture_class()
 {
-    for (int frame_count = 0; frame_count < MAX_FRAMES; frame_count++)
+    for (int frame_count = 0; frame_count < frame_max; frame_count++)
     {
         if (texture_class::frame[frame_count].active) glDeleteTextures(1, &texture_class::frame[frame_count].data);
     }
@@ -67,7 +62,9 @@ bool texture_class::load_image(std::string file_name, int index_number)
     GLenum          texture_format = 0;
     GLint           number_of_colors;
     bool            return_value = false;
-    texture_class::ref_number = index_number;
+    texture_class::ref_number    = index_number;
+    texture_class::frame_max     = 0;
+    texture_class::frame = new frame_type[texture_class::frame_max+1];
     if ((image_surface = IMG_Load(file_name.c_str())))
     {
         return_value = true;
@@ -85,8 +82,8 @@ bool texture_class::load_image(std::string file_name, int index_number)
             else texture_format = GL_BGR;
         }
 
-        glGenTextures( 1, &texture_class::frame[texture_class::frame_num].data);
-        glBindTexture( GL_TEXTURE_2D, texture_class::frame[texture_class::frame_num].data);
+        glGenTextures( 1, &texture_class::frame[texture_class::frame_number].data);
+        glBindTexture( GL_TEXTURE_2D, texture_class::frame[texture_class::frame_number].data);
         glEnable(GL_BLEND);
         glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
         glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
@@ -127,7 +124,7 @@ bool texture_class::load_spritesheet(std::string file_name, int index_number, in
     int             flags          = 0;
     GLenum          texture_format = 0;
     GLint           number_of_colors;
-    bool            return_value = false;
+    bool            return_value   = false;
     if ((sprite_sheet = IMG_Load(file_name.c_str())))
     {
         return_value = true;
@@ -137,6 +134,7 @@ bool texture_class::load_spritesheet(std::string file_name, int index_number, in
         frames_y = sprite_sheet->h / texture_class::height;
         num_sprites = frames_x * frames_y;
         texture_class::frame_max = num_sprites-1;
+        texture_class::frame = new frame_type[texture_class::frame_max+1];
         number_of_colors = sprite_sheet->format->BytesPerPixel;
         if (number_of_colors == 4)
         {
@@ -151,7 +149,10 @@ bool texture_class::load_spritesheet(std::string file_name, int index_number, in
         temp_surface = SDL_CreateRGBSurface(flags,texture_class::width-1,texture_class::height-1,sprite_sheet->format->BitsPerPixel,sprite_sheet->format->Rmask,sprite_sheet->format->Gmask,sprite_sheet->format->Bmask,sprite_sheet->format->Amask);
         int32_t     *in_pixels       = (int32_t*)sprite_sheet->pixels;
         int32_t     *out_pixels      = (int32_t*)temp_surface->pixels;
-        for (int current_sprite = 0; current_sprite < num_sprites; current_sprite++)
+
+        for (int current_sprite_y = 0; current_sprite_y < frames_y; current_sprite_y++)
+        {
+        for (int current_sprite_x = 0; current_sprite_x < frames_x; current_sprite_x++)
         {
             int out_pixel_count = 0;
             if(SDL_MUSTLOCK(sprite_sheet)) SDL_LockSurface(sprite_sheet);
@@ -159,12 +160,11 @@ bool texture_class::load_spritesheet(std::string file_name, int index_number, in
             {
                 for(int x_count = 0; x_count < texture_class::width-1; x_count++)
                 {
-                    out_pixels[out_pixel_count] = in_pixels[((sprite_sheet->w*y_count)+(((current_sprite)*(texture_class::width))+x_count))];
+                    out_pixels[out_pixel_count] = in_pixels[((sprite_sheet->w*y_count)+(((frame_number)*(texture_class::width))+x_count))];
                     out_pixel_count++;
                 }
             }
             if(SDL_MUSTLOCK(sprite_sheet)) SDL_UnlockSurface(sprite_sheet);
-
             texture_class::frame[frame_number].active = true;
             glGenTextures( 1, &texture_class::frame[frame_number].data);
             glBindTexture( GL_TEXTURE_2D, texture_class::frame[frame_number].data);
@@ -179,6 +179,8 @@ bool texture_class::load_spritesheet(std::string file_name, int index_number, in
             glTexImage2D( GL_TEXTURE_2D, 0, number_of_colors, temp_surface->w, temp_surface->h, 0, texture_format, GL_UNSIGNED_BYTE, temp_surface->pixels );
             frame_number++;
         }
+        }
+        game.core.log.file_write("Frames loaded -> ",frame_number);
     }
     else
     {
@@ -213,8 +215,8 @@ void texture_class::process(void)
     if (texture_class::frame_delay_count > texture_class::frame_delay_max)
     {
         texture_class::frame_delay_count = 0.0f;
-        texture_class::frame_num++;
-        if (texture_class::frame_num > texture_class::frame_max) texture_class::frame_num = 0;
+        texture_class::frame_number++;
+        if (texture_class::frame_number > texture_class::frame_max) texture_class::frame_number = 0;
     }
 };
 
@@ -231,7 +233,7 @@ void texture_class::draw(bool rumble, float pos_x, float pos_y, float pos_z, flo
     if (texture_class::angle != 0) temp_angle = 360 - texture_class::angle;
     else temp_angle = 0;
     glPushMatrix();
-    glBindTexture( GL_TEXTURE_2D, texture_class::frame[texture_class::frame_num].data);
+    glBindTexture( GL_TEXTURE_2D, texture_class::frame[texture_class::frame_number].data);
     glLoadIdentity();
     glBegin( GL_QUADS );
     glTexCoord2i( 0, 1 );glVertex3f(game.core.physics.rotate_point_2D_x(pos_x, pos_y, pos_x-(width/2),pos_y-(height/2),temp_angle), game.core.physics.rotate_point_2D_y(pos_x,pos_y,pos_x-(width/2),pos_y-(height/2), temp_angle), pos_z);
@@ -272,8 +274,8 @@ void texture_class::draw(bool rumble, float pos_x, float pos_y, float pos_z, flo
 
 void texture_class::draw(bool rumble, float pos_x, float pos_y, float pos_z, float width, float height, float angle, float red, float green, float blue, float alpha, int frame)
 {
-    texture_class::frame_num = frame;
-    texture_class::angle     = angle;
+    texture_class::frame_number = frame;
+    texture_class::angle        = angle;
     glColor4f (red, green, blue, alpha);
     texture_class::draw(rumble,pos_x,pos_y,pos_z,width,height);
     glColor4f (1.0f, 1.0f, 1.0f,1.0f);
@@ -281,8 +283,8 @@ void texture_class::draw(bool rumble, float pos_x, float pos_y, float pos_z, flo
 
 void texture_class::draw(bool rumble, float pos_x, float pos_y, float pos_z, float width, float height, float angle, int frame)
 {
-    texture_class::frame_num = frame;
-    texture_class::angle     = angle;
+    texture_class::frame_number = frame;
+    texture_class::angle        = angle;
     texture_class::draw(rumble,pos_x,pos_y,pos_z,width,height);
 };
 

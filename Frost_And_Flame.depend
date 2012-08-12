@@ -598,7 +598,7 @@
 	<SDL/SDL_mixer.h>
 	<string>
 
-1339159321 c:\_git_\frost_and_flame\source\core\textures.hpp
+1344748757 c:\_git_\frost_and_flame\source\core\textures.hpp
 	<GL/gl.h>
 	<string>
 
@@ -719,7 +719,7 @@
 	"core/savegame.hpp"
 	"game.hpp"
 
-1336190209 source:c:\_git_\frost_and_flame\source\core\file.cpp
+1344745682 source:c:\_git_\frost_and_flame\source\core\file.cpp
 	<string>
 	"core.hpp"
 	"file.hpp"
@@ -749,7 +749,7 @@
 	"resources.hpp"
 	"game.hpp"
 
-1340201362 source:c:\_git_\frost_and_flame\source\core\textures.cpp
+1344749168 source:c:\_git_\frost_and_flame\source\core\textures.cpp
 	<GL/gl.h>
 	<SDL/SDL.h>
 	<SDL/SDL_image.h>
@@ -858,7 +858,7 @@
 	"equipment.hpp"
 	"game.hpp"
 
-1344745344 source:c:\_git_\frost_and_flame\source\core\map_2d.cpp
+1344748757 source:c:\_git_\frost_and_flame\source\core\map_2d.cpp
 	<iostream>
 	<fstream>
 	<stdio.h>
@@ -885,7 +885,7 @@
 	"misc.hpp"
 	"../game.hpp"
 
-1344707393 source:c:\_git_\frost_and_flame\source\game.cpp
+1344749069 source:c:\_git_\frost_and_flame\source\game.cpp
 	"game.hpp"
 
 1343717787 source:c:\_git_\frost_and_flame\source\core\menu.cpp

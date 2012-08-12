@@ -28,7 +28,6 @@
 #include <GL/gl.h>
 #include <string>
 
-const int MAX_FRAMES           = 256;
 const int DEFAULT_FRAME_WIDTH  = 64;
 const int DEFAULT_FRAME_HEIGHT = 32;
 
@@ -51,9 +50,9 @@ class texture_class
         float           frame_delay;
         float           frame_delay_count;
         float           frame_delay_max;
-        int             frame_num;
+        int             frame_number;
         int             frame_max;
-        frame_type      frame[MAX_FRAMES];
+        frame_type*     frame;
         int             ref_number;
 
         texture_class();

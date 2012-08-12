@@ -582,16 +582,17 @@ void map_2D_class::load(std::string file_name)
                 }
             }
         }
+        script_file.close();
         // Load the tile-sets into memory
         for (int tile_set_count = 0; tile_set_count < map_2D_class::number_of_tilesets; tile_set_count++)
         {
             temp_string_data = map_2D_class::tileset[tile_set_count].image_source;
             temp_string_data = game.core.file.path_remove(temp_string_data);
             temp_string_data = game.core.file.path_add(temp_string_data,"data/tilesets/");
-            map_2D_class::tileset[tile_set_count].tile.load_spritesheet(temp_string_data,tile_set_count);
             game.core.log.file_write("Loading tile-set -> ", temp_string_data);
+            map_2D_class::tileset[tile_set_count].tile.load_spritesheet(temp_string_data,tile_set_count);
+            game.core.log.file_write("Loaded tile-set -> ", temp_string_data);
         }
-        script_file.close();
         map_2D_class::calculate_tile_positions();
         map_2D_class::center_on_tile(0);
     }
