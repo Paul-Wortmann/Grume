@@ -91,6 +91,7 @@ std::string file_class::path_remove(std::string file_name)
     for (int string_pos = 0; string_pos < (int)file_name.size(); string_pos++)
     {
         if (file_name[string_pos] == '\\') slash_position = string_pos;
+        if (file_name[string_pos] == '/') slash_position = string_pos;
     }
     for (int string_pos = slash_position+1; string_pos < (int)file_name.size(); string_pos++)
     {

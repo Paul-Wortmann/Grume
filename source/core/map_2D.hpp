@@ -25,8 +25,11 @@
 #ifndef MAP_2D_H
 #define MAP_2D_H
 
-#include "map_2D_generator.hpp"
 #include "textures.hpp"
+
+#define DUNGEON    1
+#define CAVE       2
+#define FOREST     3
 
 const float  TILE_SCALE_DEFAULT  = 200.0f;
 const float  TILE_WIDTH          = (float)DEFAULT_FRAME_WIDTH  / TILE_SCALE_DEFAULT;
@@ -62,6 +65,7 @@ class tileset_class
         int           width;
         int           height;
         int           number_of_tiles;
+        texture_class tile;
         tileset_class(void);
        ~tileset_class(void);
 };
@@ -91,6 +95,7 @@ class map_2D_class
         void load(std::string file_name);
         map_2D_class(void);
        ~map_2D_class(void);
+        void random_map(int tiles_x, int tiles_y, int type_of_map_to_generate);
 };
 
 #endif //MAP_H_2D

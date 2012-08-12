@@ -114,7 +114,7 @@ void game_class::init(void)
     init_items();
     init_inventory();
     game.resource.map_2D.load("data/maps/town.tmx");
-    //game.resource.map_2D.random_map(100,100,CAVE);
+    game.resource.map_2D.random_map(100,100,CAVE);
 };
 
 void game_class::process(void)

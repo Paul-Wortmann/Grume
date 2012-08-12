@@ -30,7 +30,6 @@
 #include "map_2D.hpp"
 #include "../game.hpp"
 #include "textures.hpp"
-#include "map_2D_generator.hpp"
 
 extern game_class         game;
 
@@ -583,6 +582,15 @@ void map_2D_class::load(std::string file_name)
                 }
             }
         }
+        // Load the tile-sets into memory
+        for (int tile_set_count = 0; tile_set_count < map_2D_class::number_of_tilesets; tile_set_count++)
+        {
+            temp_string_data = map_2D_class::tileset[tile_set_count].image_source;
+            temp_string_data = game.core.file.path_remove(temp_string_data);
+            temp_string_data = game.core.file.path_add(temp_string_data,"data/tilesets/");
+            map_2D_class::tileset[tile_set_count].tile.load_spritesheet(temp_string_data,tile_set_count);
+            game.core.log.file_write("Loading tile-set -> ", temp_string_data);
+        }
         script_file.close();
         map_2D_class::calculate_tile_positions();
         map_2D_class::center_on_tile(0);
@@ -767,5 +775,65 @@ map_2D_class::~map_2D_class(void)
 {
 };
 
-//-----------------------------------------------------------------------------------------------------------------
+//------------------------------ Random map generation below -----------------------------------------------------------------------------------
 
+void map_2D_class::random_map(int tiles_x, int tiles_y, int type_of_map_to_generate)
+{
+    map_2D_class::number_of_tiles = tiles_x*tiles_y;
+    map_2D_class::width           = tiles_x;
+    map_2D_class::height          = tiles_y;
+    map_2D_class::tile            = new tile_class[map_2D_class::number_of_tiles];
+    switch (type_of_map_to_generate)
+    {
+        case DUNGEON:
+            for (int tile_count = 0; tile_count < map_2D_class::number_of_tiles; tile_count++)
+            {
+                map_2D_class::tile[tile_count].tile = 1;  //Fill map with wall tiles
+            }
+        break;
+        case CAVE:
+            for (int tile_count = 0; tile_count < map_2D_class::number_of_tiles; tile_count++)
+            {
+                map_2D_class::tile[tile_count].tile = 2;  //Fill map with floor tiles
+            }
+            //fill perimeter with wall tiles
+            for (int tile_count = 0; tile_count < tiles_x; tile_count++)
+            {
+                map_2D_class::tile[tile_count].tile              = 1;  //Fill with wall tiles
+                map_2D_class::tile[map_2D_class::number_of_tiles-tile_count].tile = 1;  //Fill with wall tiles
+            }
+            for (int tile_count = 0; tile_count < tiles_y; tile_count++)
+            {
+                map_2D_class::tile[tile_count*tiles_x].tile              = 1;  //Fill with wall tiles
+                map_2D_class::tile[(tile_count*tiles_x)+tiles_x].tile     = 1;  //Fill with wall tiles
+            }
+        break;
+        case FOREST:
+            for (int tile_count = 0; tile_count < map_2D_class::number_of_tiles; tile_count++)
+            {
+                map_2D_class::tile[tile_count].tile = 2;  //Fill map with floor tiles
+            }
+        break;
+    }
+    map_2D_class::calculate_tile_positions();
+    map_2D_class::center_on_tile(0);
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//-----------------------------------------------------------------------------------------------------------------
