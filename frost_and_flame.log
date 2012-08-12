@@ -46,20 +46,20 @@ Seeding random...
 Initializing menu system...
 Initializing game system...
 Loading 2D map -> data/maps/town.tmx
-Loading tile-set -> data/tilesets/grass_and_water.png
-Loading tile-set -> data/tilesets/bridge.png
-Loading tile-set -> data/tilesets/cave_floor.png
-Loading tile-set -> data/tilesets/cave_wall.png
-Loading tile-set -> data/tilesets/cave_object.png
-Loading tile-set -> data/tilesets/broken_tower.png
-Loading tile-set -> data/tilesets/dungeon.png
-Loading tile-set -> data/tilesets/fence.png
-Loading tile-set -> data/tilesets/medieval_building.png
-Loading tile-set -> data/tilesets/grassland.png
-Loading tile-set -> data/tilesets/grassland_trees.png
-Loading tile-set -> data/tilesets/grassland_water.png
-Loading tile-set -> data/tilesets/grassland_structures.png
-Loading tile-set -> data/tilesets/gold_tileset.png
+Loaded tile-set -> data/tilesets/grass_and_water.png - frames loaded -> 24
+Loaded tile-set -> data/tilesets/bridge.png - frames loaded -> 59
+Loaded tile-set -> data/tilesets/cave_floor.png - frames loaded -> 512
+Loaded tile-set -> data/tilesets/cave_wall.png - frames loaded -> 64
+Loaded tile-set -> data/tilesets/cave_object.png - frames loaded -> 128
+Loaded tile-set -> data/tilesets/broken_tower.png - frames loaded -> 16
+Loaded tile-set -> data/tilesets/dungeon.png - frames loaded -> 256
+Loaded tile-set -> data/tilesets/fence.png - frames loaded -> 40
+Loaded tile-set -> data/tilesets/medieval_building.png - frames loaded -> 64
+Loaded tile-set -> data/tilesets/grassland.png - frames loaded -> 128
+Loaded tile-set -> data/tilesets/grassland_trees.png - frames loaded -> 4
+Loaded tile-set -> data/tilesets/grassland_water.png - frames loaded -> 64
+Loaded tile-set -> data/tilesets/grassland_structures.png - frames loaded -> 6
+Loaded tile-set -> data/tilesets/gold_tileset.png - frames loaded -> 3
 Initializing event handlers...
 Starting Game...
  

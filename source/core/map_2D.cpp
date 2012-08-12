@@ -93,22 +93,18 @@ void map_2D_class::draw(void)
             {
                 tile_offset_y += (map_2D_class::tileset[map_2D_class::tile[tile_count].tile_tileset].tileheight - DEFAULT_FRAME_HEIGHT) / (game.zoom.current*4);
             }
-            // Draw tiles according to their tile-sheets
-            //game.core.log.file_write("Drawing tileset - ",map_2D_class::tile[tile_count].tile_tileset," - tile - ",map_2D_class::tile[tile_count].tile);
-            //map_2D_class::tileset[map_2D_class::tile[tile_count].tile_tileset].tile.draw(true,tile_offset_x,tile_offset_y,0.001f,tile_offset_w,tile_offset_h,0.0f,map_2D_class::tile[tile_count].tile);
-            map_2D_class::tileset[0].tile.draw(true,tile_offset_x,tile_offset_y,0.001f,tile_offset_w,tile_offset_h,0.0f,24);
+            map_2D_class::tileset[map_2D_class::tile[tile_count].tile_tileset].tile.draw(true,tile_offset_x,tile_offset_y,0.001f,tile_offset_w,tile_offset_h,0.0f,map_2D_class::tile[tile_count].tile);
         }
     };
 // ----------------------------- Draw Object Layer ----------------------------------------------------------------
-    /*
     for (int tile_count = 0; tile_count < map_2D_class::number_of_tiles; tile_count++)
     {
         if ((map_2D_class::tile_visable(tile_count)) && (map_2D_class::tile[tile_count].object > 0))
         {
-                tile_offset_x = map_2D_class::tile[tile_count].pos_x;
-                tile_offset_y = map_2D_class::tile[tile_count].pos_y;
-                tile_offset_w = map_2D_class::tileset[map_2D_class::tile[tile_count].object_tileset].tilewidth  / (game.zoom.current*2);
-                tile_offset_h = map_2D_class::tileset[map_2D_class::tile[tile_count].object_tileset].tileheight / (game.zoom.current*2);
+            tile_offset_x = map_2D_class::tile[tile_count].pos_x;
+            tile_offset_y = map_2D_class::tile[tile_count].pos_y;
+            tile_offset_w = map_2D_class::tileset[map_2D_class::tile[tile_count].object_tileset].tilewidth  / (game.zoom.current*2);
+            tile_offset_h = map_2D_class::tileset[map_2D_class::tile[tile_count].object_tileset].tileheight / (game.zoom.current*2);
             if (map_2D_class::tileset[map_2D_class::tile[tile_count].object_tileset].tilewidth > DEFAULT_FRAME_WIDTH)
             {
                 tile_offset_x += (map_2D_class::tileset[map_2D_class::tile[tile_count].object_tileset].tilewidth - DEFAULT_FRAME_WIDTH) / (game.zoom.current*4);
@@ -121,65 +117,9 @@ void map_2D_class::draw(void)
             {
                 tile_offset_y += (map_2D_class::tileset[map_2D_class::tile[tile_count].object_tileset].tileheight - DEFAULT_FRAME_HEIGHT) / (game.zoom.current*4);
             }
-            if (map_2D_class::tileset[map_2D_class::tile[tile_count].object_tileset].image_source == "../tilesets/grass_and_water.png")
-            {
-                game.resource.texture.render(true,game.resource.texture.grass_and_water_tileset.ref_number,tile_offset_x,tile_offset_y,0.001f,tile_offset_w,tile_offset_h,0.0f,map_2D_class::tile[tile_count].object-1);
-            }
-            if (map_2D_class::tileset[map_2D_class::tile[tile_count].object_tileset].image_source == "../tilesets/bridge.png")
-            {
-                game.resource.texture.render(true,game.resource.texture.bridge_tileset.ref_number,tile_offset_x,tile_offset_y,0.001f,tile_offset_w,tile_offset_h,0.0f,map_2D_class::tile[tile_count].object-1);
-            }
-            if (map_2D_class::tileset[map_2D_class::tile[tile_count].object_tileset].image_source == "../tilesets/grassland.png")
-            {
-                game.resource.texture.render(true,game.resource.texture.grassland_tileset.ref_number,tile_offset_x,tile_offset_y,0.001f,tile_offset_w,tile_offset_h,0.0f,map_2D_class::tile[tile_count].object-1);
-            }
-            if (map_2D_class::tileset[map_2D_class::tile[tile_count].object_tileset].image_source == "../tilesets/grassland_water.png")
-            {
-                game.resource.texture.render(true,game.resource.texture.grassland_water_tileset.ref_number,tile_offset_x,tile_offset_y,0.001f,tile_offset_w,tile_offset_h,0.0f,map_2D_class::tile[tile_count].object-1);
-            }
-            if (map_2D_class::tileset[map_2D_class::tile[tile_count].object_tileset].image_source == "../tilesets/grassland_trees.png")
-            {
-                game.resource.texture.render(true,game.resource.texture.grassland_trees_tileset.ref_number,tile_offset_x,tile_offset_y,0.001f,tile_offset_w,tile_offset_h,0.0f,map_2D_class::tile[tile_count].object-1);
-            }
-            if (map_2D_class::tileset[map_2D_class::tile[tile_count].object_tileset].image_source == "../tilesets/grassland_structures.png")
-            {
-                game.resource.texture.render(true,game.resource.texture.grassland_structures_tileset.ref_number,tile_offset_x,tile_offset_y,0.001f,tile_offset_w,tile_offset_h,0.0f,map_2D_class::tile[tile_count].object-1);
-            }
-            if (map_2D_class::tileset[map_2D_class::tile[tile_count].object_tileset].image_source == "../tilesets/broken_tower.png")
-            {
-                game.resource.texture.render(true,game.resource.texture.broken_tower_tileset.ref_number,tile_offset_x,tile_offset_y,0.001f,tile_offset_w,tile_offset_h,0.0f,map_2D_class::tile[tile_count].object-1);
-            }
-            if (map_2D_class::tileset[map_2D_class::tile[tile_count].object_tileset].image_source == "../tilesets/fence.png")
-            {
-                game.resource.texture.render(true,game.resource.texture.fence_tileset.ref_number,tile_offset_x,tile_offset_y,0.001f,tile_offset_w,tile_offset_h,0.0f,map_2D_class::tile[tile_count].object-1);
-            }
-            if (map_2D_class::tileset[map_2D_class::tile[tile_count].object_tileset].image_source == "../tilesets/medieval_building.png")
-            {
-                game.resource.texture.render(true,game.resource.texture.medieval_building_tileset.ref_number,tile_offset_x,tile_offset_y,0.001f,tile_offset_w,tile_offset_h,0.0f,map_2D_class::tile[tile_count].object-1);
-            }
-            if (map_2D_class::tileset[map_2D_class::tile[tile_count].object_tileset].image_source == "../tilesets/cave_floor.png")
-            {
-                game.resource.texture.render(true,game.resource.texture.cave_floor_tileset.ref_number,tile_offset_x,tile_offset_y,0.001f,tile_offset_w,tile_offset_h,0.0f,map_2D_class::tile[tile_count].object-1);
-            }
-            if (map_2D_class::tileset[map_2D_class::tile[tile_count].object_tileset].image_source == "../tilesets/cave_wall.png")
-            {
-                game.resource.texture.render(true,game.resource.texture.cave_wall_tileset.ref_number,tile_offset_x,tile_offset_y,0.001f,tile_offset_w,tile_offset_h,0.0f,map_2D_class::tile[tile_count].object-1);
-            }
-            if (map_2D_class::tileset[map_2D_class::tile[tile_count].object_tileset].image_source == "../tilesets/cave_object.png")
-            {
-                game.resource.texture.render(true,game.resource.texture.cave_object_tileset.ref_number,tile_offset_x,tile_offset_y,0.001f,tile_offset_w,tile_offset_h,0.0f,map_2D_class::tile[tile_count].object-1);
-            }
-            if (map_2D_class::tileset[map_2D_class::tile[tile_count].object_tileset].image_source == "../tilesets/dungeon.png")
-            {
-                game.resource.texture.render(true,game.resource.texture.dungeon_tileset.ref_number,tile_offset_x,tile_offset_y,0.001f,tile_offset_w,tile_offset_h,0.0f,map_2D_class::tile[tile_count].object-1);
-            }
-            if (map_2D_class::tileset[map_2D_class::tile[tile_count].object_tileset].image_source == "../tilesets/gold_tileset.png")
-            {
-                game.resource.texture.render(true,game.resource.texture.gold_tileset.ref_number,tile_offset_x,tile_offset_y,0.001f,tile_offset_w,tile_offset_h,0.0f,map_2D_class::tile[tile_count].object-1);
-            }
+            map_2D_class::tileset[map_2D_class::tile[tile_count].object_tileset].tile.draw(true,tile_offset_x,tile_offset_y,0.001f,tile_offset_w,tile_offset_h,0.0f,map_2D_class::tile[tile_count].object);
         }
     };
-    */
 };
 
 void map_2D_class::process(void)
@@ -509,7 +449,6 @@ void map_2D_class::load(std::string file_name)
                                         }
                                     }
                                     temp_int_data -= map_2D_class::tileset[map_2D_class::tile[tile_count].object_tileset].firstgid;
-                                    temp_int_data += 1;
                                     map_2D_class::tile[tile_count].object       = temp_int_data;
                                 }
                                 if (tile_data)
@@ -536,11 +475,13 @@ void map_2D_class::load(std::string file_name)
         // Load the tile-sets into memory
         for (int tile_set_count = 0; tile_set_count < map_2D_class::number_of_tilesets-1; tile_set_count++)
         {
+            int temp_tile_width  = map_2D_class::tileset[tile_set_count].tilewidth;
+            int temp_tile_height = map_2D_class::tileset[tile_set_count].tileheight;
             temp_string_data = map_2D_class::tileset[tile_set_count].image_source;
             temp_string_data = game.core.file.path_remove(temp_string_data);
             temp_string_data = game.core.file.path_add(temp_string_data,"data/tilesets/");
-            game.core.log.file_write("Loading tile-set -> ", temp_string_data);
-            map_2D_class::tileset[tile_set_count].tile.load_spritesheet(temp_string_data,tile_set_count);
+            map_2D_class::tileset[tile_set_count].tile.load_spritesheet(temp_string_data,tile_set_count,temp_tile_width,temp_tile_height);
+            game.core.log.file_write("Loaded tile-set -> " + temp_string_data + " - frames loaded -> ",map_2D_class::tileset[tile_set_count].number_of_tiles);
         }
         map_2D_class::calculate_tile_positions();
         map_2D_class::center_on_tile(0);
