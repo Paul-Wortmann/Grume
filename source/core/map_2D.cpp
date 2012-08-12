@@ -674,6 +674,7 @@ void map_2D_class::random_map(int tiles_x, int tiles_y, int type_of_map_to_gener
     #define WALL  2
     #define FLOOR 1
 
+    bool map_is_good              = false;
     int ca_wall_stay              = 4;
     int ca_wall_new               = 5;
     int ca_iterations             = 4;
@@ -706,70 +707,121 @@ void map_2D_class::random_map(int tiles_x, int tiles_y, int type_of_map_to_gener
             }
         break;
         case CAVE:
-            for (int tile_count = 0; tile_count < map_2D_class::number_of_tiles; tile_count++)
+            map_is_good = false;
+            while (!map_is_good)
             {
-                map_2D_class::tile[tile_count].tile = FLOOR;  //Fill map with floor tiles
-            }
-            //add wall tiles randomly on map.
-            for (int tile_count = 0; tile_count < number_random_tiles; tile_count++)
-            {
-                map_2D_class::tile[random(map_2D_class::number_of_tiles)].tile = WALL;  //Fill with wall tiles
-            }
-            //fill perimeter with wall tiles
-            for (int tile_count = 0; tile_count < tiles_x; tile_count++)
-            {
-                map_2D_class::tile[tile_count].tile                               = WALL;  //Fill with wall tiles
-                map_2D_class::tile[map_2D_class::number_of_tiles-tile_count].tile = WALL;  //Fill with wall tiles
-            }
-            for (int tile_count = 0; tile_count < tiles_y; tile_count++)
-            {
-                map_2D_class::tile[tile_count*tiles_x].tile                = WALL;  //Fill with wall tiles
-                map_2D_class::tile[(tile_count*tiles_x)+tiles_y-1].tile    = WALL;  //Fill with wall tiles
-            }
-            //smooth map, depending on neighboring tiles.
-            for (int refine_count = 0; refine_count < ca_iterations; refine_count++)
-            {
-                int number_of_neighbors = 0;
-                int temp_tile_number    = 0;
-                for(int tile_count = 0; tile_count < map_2D_class::number_of_tiles; tile_count++)
+                for (int tile_count = 0; tile_count < map_2D_class::number_of_tiles; tile_count++)
                 {
-                    number_of_neighbors = 0;
-                    temp_tile_number    = 0;
-                    temp_map[tile_count].tile = FLOOR; // new tile is initially a floor
-                    temp_tile_number = tile_count+1;
-                    if ((temp_tile_number >= 0) && (temp_tile_number <= map_2D_class::number_of_tiles) && (map_2D_class::tile[temp_tile_number].tile == WALL)) number_of_neighbors++;
-                    temp_tile_number = tile_count-1;
-                    if ((temp_tile_number >= 0) && (temp_tile_number <= map_2D_class::number_of_tiles) && (map_2D_class::tile[temp_tile_number].tile == WALL)) number_of_neighbors++;
-                    temp_tile_number = tile_count+tiles_x;
-                    if ((temp_tile_number >= 0) && (temp_tile_number <= map_2D_class::number_of_tiles) && (map_2D_class::tile[temp_tile_number].tile == WALL)) number_of_neighbors++;
-                    temp_tile_number = tile_count+tiles_x+1;
-                    if ((temp_tile_number >= 0) && (temp_tile_number <= map_2D_class::number_of_tiles) && (map_2D_class::tile[temp_tile_number].tile == WALL)) number_of_neighbors++;
-                    temp_tile_number = tile_count+tiles_x-1;
-                    if ((temp_tile_number >= 0) && (temp_tile_number <= map_2D_class::number_of_tiles) && (map_2D_class::tile[temp_tile_number].tile == WALL)) number_of_neighbors++;
-                    temp_tile_number = tile_count-tiles_x;
-                    if ((temp_tile_number >= 0) && (temp_tile_number <= map_2D_class::number_of_tiles) && (map_2D_class::tile[temp_tile_number].tile == WALL)) number_of_neighbors++;
-                    temp_tile_number = tile_count-tiles_x+1;
-                    if ((temp_tile_number >= 0) && (temp_tile_number <= map_2D_class::number_of_tiles) && (map_2D_class::tile[temp_tile_number].tile == WALL)) number_of_neighbors++;
-                    temp_tile_number = tile_count-tiles_x-1;
-                    if ((temp_tile_number >= 0) && (temp_tile_number <= map_2D_class::number_of_tiles) && (map_2D_class::tile[temp_tile_number].tile == WALL)) number_of_neighbors++;
-                    if ((map_2D_class::tile[tile_count].tile == WALL)  && (number_of_neighbors >= ca_wall_stay)) temp_map[tile_count].tile = WALL; //Tile on temp map is a wall
-                    if ((map_2D_class::tile[tile_count].tile == FLOOR) && (number_of_neighbors >= ca_wall_new )) temp_map[tile_count].tile = WALL; //Tile on temp map is a wall
+                    map_2D_class::tile[tile_count].tile = FLOOR;  //Fill map with floor tiles
+                }
+                //add wall tiles randomly on map.
+                for (int tile_count = 0; tile_count < number_random_tiles; tile_count++)
+                {
+                    map_2D_class::tile[random(map_2D_class::number_of_tiles)].tile = WALL;  //Fill with wall tiles
+                }
+                //add a 3x3 floored room to the middle of the map
+                //this is for use later when checking for disjointed parts.
+                {
+                    int middle_tile_number = ((map_2D_class::number_of_tiles/2)+(map_2D_class::width/2));
+                    map_2D_class::tile[middle_tile_number].tile           = FLOOR;
+                    map_2D_class::tile[middle_tile_number+1].tile         = FLOOR;
+                    map_2D_class::tile[middle_tile_number-1].tile         = FLOOR;
+                    map_2D_class::tile[middle_tile_number+tiles_x].tile   = FLOOR;
+                    map_2D_class::tile[middle_tile_number+tiles_x+1].tile = FLOOR;
+                    map_2D_class::tile[middle_tile_number+tiles_x-1].tile = FLOOR;
+                    map_2D_class::tile[middle_tile_number-tiles_x].tile   = FLOOR;
+                    map_2D_class::tile[middle_tile_number-tiles_x+1].tile = FLOOR;
+                    map_2D_class::tile[middle_tile_number-tiles_x-1].tile = FLOOR;
                 }
                 //fill perimeter with wall tiles
                 for (int tile_count = 0; tile_count < tiles_x; tile_count++)
                 {
-                    temp_map[tile_count].tile                               = WALL;  //Fill with wall tiles
-                    temp_map[map_2D_class::number_of_tiles-tile_count].tile = WALL;  //Fill with wall tiles
+                    map_2D_class::tile[tile_count].tile                               = WALL;  //Fill with wall tiles
+                    map_2D_class::tile[map_2D_class::number_of_tiles-tile_count].tile = WALL;  //Fill with wall tiles
                 }
                 for (int tile_count = 0; tile_count < tiles_y; tile_count++)
                 {
-                    temp_map[tile_count*tiles_x].tile                = WALL;  //Fill with wall tiles
-                    temp_map[(tile_count*tiles_x)+tiles_y-1].tile    = WALL;  //Fill with wall tiles
+                    map_2D_class::tile[tile_count*tiles_x].tile                = WALL;  //Fill with wall tiles
+                    map_2D_class::tile[(tile_count*tiles_x)+tiles_y-1].tile    = WALL;  //Fill with wall tiles
                 }
-                for(int tile_count = 0; tile_count < map_2D_class::number_of_tiles; tile_count++)
+                //smooth map, depending on neighboring tiles.
+                for (int refine_count = 0; refine_count < ca_iterations; refine_count++)
                 {
-                    map_2D_class::tile[tile_count].tile = temp_map[tile_count].tile;
+                    int number_of_neighbors = 0;
+                    int temp_tile_number    = 0;
+                    for(int tile_count = 0; tile_count < map_2D_class::number_of_tiles; tile_count++)
+                    {
+                        number_of_neighbors = 0;
+                        temp_tile_number    = 0;
+                        temp_map[tile_count].tile = FLOOR; // new tile is initially a floor tile
+                        temp_tile_number = tile_count+1;
+                        if ((temp_tile_number >= 0) && (temp_tile_number <= map_2D_class::number_of_tiles) && (map_2D_class::tile[temp_tile_number].tile == WALL)) number_of_neighbors++;
+                        temp_tile_number = tile_count-1;
+                        if ((temp_tile_number >= 0) && (temp_tile_number <= map_2D_class::number_of_tiles) && (map_2D_class::tile[temp_tile_number].tile == WALL)) number_of_neighbors++;
+                        temp_tile_number = tile_count+tiles_x;
+                        if ((temp_tile_number >= 0) && (temp_tile_number <= map_2D_class::number_of_tiles) && (map_2D_class::tile[temp_tile_number].tile == WALL)) number_of_neighbors++;
+                        temp_tile_number = tile_count+tiles_x+1;
+                        if ((temp_tile_number >= 0) && (temp_tile_number <= map_2D_class::number_of_tiles) && (map_2D_class::tile[temp_tile_number].tile == WALL)) number_of_neighbors++;
+                        temp_tile_number = tile_count+tiles_x-1;
+                        if ((temp_tile_number >= 0) && (temp_tile_number <= map_2D_class::number_of_tiles) && (map_2D_class::tile[temp_tile_number].tile == WALL)) number_of_neighbors++;
+                        temp_tile_number = tile_count-tiles_x;
+                        if ((temp_tile_number >= 0) && (temp_tile_number <= map_2D_class::number_of_tiles) && (map_2D_class::tile[temp_tile_number].tile == WALL)) number_of_neighbors++;
+                        temp_tile_number = tile_count-tiles_x+1;
+                        if ((temp_tile_number >= 0) && (temp_tile_number <= map_2D_class::number_of_tiles) && (map_2D_class::tile[temp_tile_number].tile == WALL)) number_of_neighbors++;
+                        temp_tile_number = tile_count-tiles_x-1;
+                        if ((temp_tile_number >= 0) && (temp_tile_number <= map_2D_class::number_of_tiles) && (map_2D_class::tile[temp_tile_number].tile == WALL)) number_of_neighbors++;
+                        if ((map_2D_class::tile[tile_count].tile == WALL)  && (number_of_neighbors >= ca_wall_stay)) temp_map[tile_count].tile = WALL; //Tile on temp map is a wall
+                        if ((map_2D_class::tile[tile_count].tile == FLOOR) && (number_of_neighbors >= ca_wall_new )) temp_map[tile_count].tile = WALL; //Tile on temp map is a wall
+                    }
+                    //fill perimeter with wall tiles
+                    for (int tile_count = 0; tile_count < tiles_x; tile_count++)
+                    {
+                        temp_map[tile_count].tile                               = WALL;  //Fill with wall tiles
+                        temp_map[map_2D_class::number_of_tiles-tile_count].tile = WALL;  //Fill with wall tiles
+                    }
+                    for (int tile_count = 0; tile_count < tiles_y; tile_count++)
+                    {
+                        temp_map[tile_count*tiles_x].tile                = WALL;  //Fill with wall tiles
+                        temp_map[(tile_count*tiles_x)+tiles_y-1].tile    = WALL;  //Fill with wall tiles
+                    }
+                    //copy tiles from temp map to the main map.
+                    for(int tile_count = 0; tile_count < map_2D_class::number_of_tiles; tile_count++)
+                    {
+                        map_2D_class::tile[tile_count].tile = temp_map[tile_count].tile;
+                    }
                 }
+                // find out if cave from the center is the largest part, and discard disjointed parts
+                // if main cave is of adequate size, keep and return good, else regenerate.
+
+                int  current_tile     = 0;
+
+                //so we start at the center which we know has a 3x3 block by default
+                //only look in 4 directions, not diagonals
+                //process first tile...look for joining tiles and add them to found
+                //add wall tiles / disjointed tiles to discarded
+                //subtract all discarded and processed, found tiles from unprocessed
+                //take next tile from found and repeat, until found is empty.
+                //move all processed good tiles to new map
+                //make new map current map
+                //if size of processed is more than or equal to cave good spec, then keep, else regenerate.
+
+                int* temp_processed; //new of size number processed
+                int  number_processed = 0;
+
+                int* temp_found;  //new of size number found
+                int number_found = 0;
+
+                int* temp_discarded;  //new of size number discarded
+                int number_discarded = 0;
+
+                int* temp_unprocessed;  //new of size number unprocess
+                int number_unprocessed = 0;
+
+
+                {
+
+                }
+                map_is_good = true;
             }
         break;
         case FOREST:
@@ -780,7 +832,7 @@ void map_2D_class::random_map(int tiles_x, int tiles_y, int type_of_map_to_gener
         break;
     }
     map_2D_class::calculate_tile_positions();
-    map_2D_class::center_on_tile(0);
+    map_2D_class::center_on_tile((map_2D_class::number_of_tiles/2)+(map_2D_class::width/2));
 };
 
 
