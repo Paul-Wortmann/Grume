@@ -612,7 +612,7 @@
 	"begin_code.h"
 	"close_code.h"
 
-1344743474 c:\_git_\frost_and_flame\source\core\map_2d.hpp
+1345033698 c:\_git_\frost_and_flame\source\core\map_2d.hpp
 	"textures.hpp"
 
 1335692767 c:\_git_\frost_and_flame\source\core\map_3d.hpp
@@ -858,7 +858,7 @@
 	"equipment.hpp"
 	"game.hpp"
 
-1344765612 source:c:\_git_\frost_and_flame\source\core\map_2d.cpp
+1345036761 source:c:\_git_\frost_and_flame\source\core\map_2d.cpp
 	<iostream>
 	<fstream>
 	<stdio.h>
@@ -886,7 +886,7 @@
 	"misc.hpp"
 	"../game.hpp"
 
-1344765180 source:c:\_git_\frost_and_flame\source\game.cpp
+1345036084 source:c:\_git_\frost_and_flame\source\game.cpp
 	"game.hpp"
 
 1343717787 source:c:\_git_\frost_and_flame\source\core\menu.cpp

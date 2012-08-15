@@ -674,17 +674,18 @@ void map_2D_class::random_map(int tiles_x, int tiles_y, int type_of_map_to_gener
     #define WALL  2
     #define FLOOR 1
 
-    bool map_is_good              = false;
-    int ca_wall_stay              = 4;
-    int ca_wall_new               = 5;
-    int ca_iterations             = 4;
-    map_2D_class::number_of_tiles = tiles_x*tiles_y;
-    map_2D_class::width           = tiles_x;
-    map_2D_class::height          = tiles_y;
-    int percent_random_tiles      = 40; // NB. randomly generated tiles can be generated on the same tile, thus reducing the percentage, adding a check is possible although slower.
-    int number_random_tiles       = (map_2D_class::number_of_tiles / 200) * percent_random_tiles * 3;
-    map_2D_class::tile            = new tile_class[map_2D_class::number_of_tiles];
-    tile_class* temp_map          = new tile_class[map_2D_class::number_of_tiles];
+    bool map_is_good               = false;
+    int  minimum_cave_size         = 50; //%
+    int  ca_wall_stay              = 4;
+    int  ca_wall_new               = 5;
+    int  ca_iterations             = 4;
+    map_2D_class::number_of_tiles  = tiles_x*tiles_y;
+    map_2D_class::width            = tiles_x;
+    map_2D_class::height           = tiles_y;
+    int  percent_random_tiles      = 40; // NB. randomly generated tiles can be generated on the same tile, thus reducing the percentage, adding a check is possible although slower.
+    int  number_random_tiles       = (map_2D_class::number_of_tiles / 200) * percent_random_tiles * 3;
+    map_2D_class::tile             = new tile_class[map_2D_class::number_of_tiles];
+    tile_class* temp_map           = new tile_class[map_2D_class::number_of_tiles];
     // load test tile-set
     {
         map_2D_class::number_of_tilesets        = 1;
@@ -792,36 +793,100 @@ void map_2D_class::random_map(int tiles_x, int tiles_y, int type_of_map_to_gener
                 }
                 // find out if cave from the center is the largest part, and discard disjointed parts
                 // if main cave is of adequate size, keep and return good, else regenerate.
-
-                int  current_tile     = 0;
-
-                //so we start at the center which we know has a 3x3 block by default
-                //only look in 4 directions, not diagonals
-                //process first tile...look for joining tiles and add them to found
-                //add wall tiles / disjointed tiles to discarded
-                //subtract all discarded and processed, found tiles from unprocessed
-                //take next tile from found and repeat, until found is empty.
-                //move all processed good tiles to new map
-                //make new map current map
-                //if size of processed is more than or equal to cave good spec, then keep, else regenerate.
-
-                int* temp_processed; //new of size number processed
-                int  number_processed = 0;
-
-                int* temp_found;  //new of size number found
-                int number_found = 0;
-
-                int* temp_discarded;  //new of size number discarded
-                int number_discarded = 0;
-
-                int* temp_unprocessed;  //new of size number unprocess
-                int number_unprocessed = 0;
-
-
+                struct flood_fill_type
                 {
-
+                    int  tile_data;
+                    bool processed;
+                    bool adjoining_tile;
+                };
+                flood_fill_type* fill_data;
+                fill_data = new flood_fill_type[map_2D_class::number_of_tiles];
+                for(int tile_count = 0; tile_count < map_2D_class::number_of_tiles; tile_count++)
+                {
+                    fill_data[tile_count].tile_data      = map_2D_class::tile[tile_count].tile;
+                    fill_data[tile_count].processed      = false;
+                    fill_data[tile_count].adjoining_tile = false;
                 }
-                map_is_good = true;
+                {// we already know these are floor tiles, so mark as part of the fill.
+                    int middle_tile_number = ((map_2D_class::number_of_tiles/2)+(map_2D_class::width/2));
+                    fill_data[middle_tile_number].processed           = true;
+                    fill_data[middle_tile_number+1].processed         = true;
+                    fill_data[middle_tile_number-1].processed         = true;
+                    fill_data[middle_tile_number+tiles_x].processed   = true;
+                    fill_data[middle_tile_number+tiles_x+1].processed = true;
+                    fill_data[middle_tile_number+tiles_x-1].processed = true;
+                    fill_data[middle_tile_number-tiles_x].processed   = true;
+                    fill_data[middle_tile_number-tiles_x+1].processed = true;
+                    fill_data[middle_tile_number-tiles_x-1].processed = true;
+                    fill_data[middle_tile_number].adjoining_tile           = true;
+                    fill_data[middle_tile_number+1].adjoining_tile         = true;
+                    fill_data[middle_tile_number-1].adjoining_tile         = true;
+                    fill_data[middle_tile_number+tiles_x].adjoining_tile   = true;
+                    fill_data[middle_tile_number+tiles_x+1].adjoining_tile = true;
+                    fill_data[middle_tile_number+tiles_x-1].adjoining_tile = true;
+                    fill_data[middle_tile_number-tiles_x].adjoining_tile   = true;
+                    fill_data[middle_tile_number-tiles_x+1].adjoining_tile = true;
+                    fill_data[middle_tile_number-tiles_x-1].adjoining_tile = true;
+                }
+                int   number_found         = 0;
+                int   temp_tile            = 0;
+                bool  is_an_adjoining_tile = false;
+                //while((!fill_data[0].processed) && (!fill_data[map_2D_class::number_of_tiles-1].processed))
+                for(int repeat_count = 0; repeat_count < ((tiles_x+tiles_y)/2); repeat_count++)
+                {
+                    for(int tile_count = 0; tile_count < map_2D_class::number_of_tiles; tile_count++)
+                    {
+                        // we don't need to check if temp_tile is going passed the borders as the borders are always walls
+                        is_an_adjoining_tile  = false;
+                        temp_tile = tile_count+1;
+                        if((temp_tile >= 0) && (temp_tile <= map_2D_class::number_of_tiles))
+                        {
+                            if (fill_data[temp_tile].adjoining_tile)
+                            {
+                                is_an_adjoining_tile = true;
+                                number_found++;
+                            }
+                        }
+                        temp_tile = tile_count-1;
+                        if((temp_tile >= 0) && (temp_tile <= map_2D_class::number_of_tiles))
+                        {
+                            if (fill_data[temp_tile].adjoining_tile)
+                            {
+                                is_an_adjoining_tile = true;
+                                number_found++;
+                            }
+                        }
+                        temp_tile = tile_count+tiles_x;
+                        if((temp_tile >= 0) && (temp_tile <= map_2D_class::number_of_tiles))
+                        {
+                            if (fill_data[temp_tile].adjoining_tile)
+                            {
+                                is_an_adjoining_tile = true;
+                                number_found++;
+                            }
+                        }
+                        temp_tile = tile_count-tiles_x;
+                        if((temp_tile >= 0) && (temp_tile <= map_2D_class::number_of_tiles))
+                        {
+                            if (fill_data[temp_tile].adjoining_tile)
+                            {
+                                is_an_adjoining_tile = true;
+                                number_found++;
+                            }
+                        }
+                        fill_data[tile_count].processed = true;
+                        if ((is_an_adjoining_tile) and (fill_data[tile_count].tile_data == FLOOR)) fill_data[tile_count].adjoining_tile = true;
+                    }
+                }
+                for(int tile_count = 0; tile_count < map_2D_class::number_of_tiles; tile_count++)
+                {
+                    if(fill_data[tile_count].adjoining_tile) map_2D_class::tile[tile_count].tile = FLOOR;
+                    else map_2D_class::tile[tile_count].tile = WALL;
+                }
+                delete fill_data;
+
+                if (number_found >= ((map_2D_class::number_of_tiles/100.0f)*minimum_cave_size)) map_is_good = true;
+                else map_is_good = false;
             }
         break;
         case FOREST:
@@ -836,20 +901,5 @@ void map_2D_class::random_map(int tiles_x, int tiles_y, int type_of_map_to_gener
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 //-----------------------------------------------------------------------------------------------------------------
+

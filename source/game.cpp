@@ -115,7 +115,7 @@ void game_class::init(void)
     init_inventory();
 
     game.resource.map_2D.load("data/maps/town.tmx");
-    game.resource.map_2D.random_map(100,100,CAVE);
+    game.resource.map_2D.random_map(100,100,DUNGEON);
 
     //zoom out for testing
     game.zoom.current = game.zoom.max;
