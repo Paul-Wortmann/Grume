@@ -256,6 +256,7 @@ struct texture_resource_class
         texture_class spell_20_level_02;
         texture_class spell_20_level_03;
 
+/*
         texture_class grass_and_water_tileset;
         texture_class bridge_tileset;
         texture_class grassland_tileset;
@@ -271,6 +272,7 @@ struct texture_resource_class
         texture_class dungeon_tileset;
         texture_class gold_tileset;
         texture_class test_tileset;
+*/
 
         texture_class book_00;
         texture_class book_01;
@@ -540,7 +542,7 @@ class resource_class
         void                        load_particles(void);
         void                        load_portraits(void);
         void                        load_spells(void);
-        void                        load_tilesets(void);
+        //void                        load_tilesets(void);
         void                        load_generic_textures(void);
         void                        load_heightmaps(void);
         //void                        load_maps_2D(void);

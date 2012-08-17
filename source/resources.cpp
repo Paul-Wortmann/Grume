@@ -205,7 +205,7 @@ void texture_resource_class::render(bool r, int texture_number, float x, float y
     if (texture_number == game.resource.texture.spell_15_level_01.ref_number) game.resource.texture.spell_15_level_01.draw(r,x,y,z,w,h,angle,frame);
     if (texture_number == game.resource.texture.spell_15_level_02.ref_number) game.resource.texture.spell_15_level_02.draw(r,x,y,z,w,h,angle,frame);
     if (texture_number == game.resource.texture.spell_15_level_03.ref_number) game.resource.texture.spell_15_level_03.draw(r,x,y,z,w,h,angle,frame);
-
+/*
     if (texture_number == game.resource.texture.grass_and_water_tileset.ref_number)         game.resource.texture.grass_and_water_tileset.draw        (r,x,y,z,w,h,angle,frame);
     if (texture_number == game.resource.texture.bridge_tileset.ref_number)                  game.resource.texture.bridge_tileset.draw                 (r,x,y,z,w,h,angle,frame);
     if (texture_number == game.resource.texture.grassland_tileset.ref_number)               game.resource.texture.grassland_tileset.draw              (r,x,y,z,w,h,angle,frame);
@@ -221,7 +221,7 @@ void texture_resource_class::render(bool r, int texture_number, float x, float y
     if (texture_number == game.resource.texture.dungeon_tileset.ref_number)                 game.resource.texture.dungeon_tileset.draw                (r,x,y,z,w,h,angle,frame);
     if (texture_number == game.resource.texture.gold_tileset.ref_number)                    game.resource.texture.gold_tileset.draw                   (r,x,y,z,w,h,angle,frame);
     if (texture_number == game.resource.texture.test_tileset.ref_number)                    game.resource.texture.test_tileset.draw                   (r,x,y,z,w,h,angle,frame);
-
+*/
     if (texture_number == game.resource.texture.book_00.ref_number) game.resource.texture.book_00.draw(r,x,y,z,w,h,angle,frame);
     if (texture_number == game.resource.texture.book_01.ref_number) game.resource.texture.book_01.draw(r,x,y,z,w,h,angle,frame);
     if (texture_number == game.resource.texture.book_02.ref_number) game.resource.texture.book_02.draw(r,x,y,z,w,h,angle,frame);
@@ -599,7 +599,7 @@ void texture_resource_class::bind(int texture_number)
     if (texture_number == game.resource.texture.spell_15_level_01.ref_number) glBindTexture(GL_TEXTURE_2D, game.resource.texture.spell_15_level_01.frame[0].data);
     if (texture_number == game.resource.texture.spell_15_level_02.ref_number) glBindTexture(GL_TEXTURE_2D, game.resource.texture.spell_15_level_02.frame[0].data);
     if (texture_number == game.resource.texture.spell_15_level_03.ref_number) glBindTexture(GL_TEXTURE_2D, game.resource.texture.spell_15_level_03.frame[0].data);
-
+/*
     if (texture_number == game.resource.texture.grass_and_water_tileset.ref_number)         glBindTexture(GL_TEXTURE_2D, game.resource.texture.grass_and_water_tileset.frame[0].data)        ;
     if (texture_number == game.resource.texture.bridge_tileset.ref_number)                  glBindTexture(GL_TEXTURE_2D, game.resource.texture.bridge_tileset.frame[0].data)                 ;
     if (texture_number == game.resource.texture.grassland_tileset.ref_number)               glBindTexture(GL_TEXTURE_2D, game.resource.texture.grassland_tileset.frame[0].data)              ;
@@ -615,7 +615,7 @@ void texture_resource_class::bind(int texture_number)
     if (texture_number == game.resource.texture.dungeon_tileset.ref_number)                 glBindTexture(GL_TEXTURE_2D, game.resource.texture.dungeon_tileset.frame[0].data)                ;
     if (texture_number == game.resource.texture.gold_tileset.ref_number)                    glBindTexture(GL_TEXTURE_2D, game.resource.texture.gold_tileset.frame[0].data)                   ;
     if (texture_number == game.resource.texture.test_tileset.ref_number)                    glBindTexture(GL_TEXTURE_2D, game.resource.texture.test_tileset.frame[0].data)                   ;
-
+*/
     if (texture_number == game.resource.texture.book_00.ref_number) glBindTexture(GL_TEXTURE_2D, game.resource.texture.book_00.frame[0].data);
     if (texture_number == game.resource.texture.book_01.ref_number) glBindTexture(GL_TEXTURE_2D, game.resource.texture.book_01.frame[0].data);
     if (texture_number == game.resource.texture.book_02.ref_number) glBindTexture(GL_TEXTURE_2D, game.resource.texture.book_02.frame[0].data);
@@ -1326,7 +1326,7 @@ void resource_class::load_spells(void)
     game.resource.texture.spell_15_level_02.load_image("data/textures/UI/icons/spells/beam-blue-2.png",resource_class::texture.number_loaded);resource_class::texture.number_loaded++;
     game.resource.texture.spell_15_level_03.load_image("data/textures/UI/icons/spells/beam-blue-3.png",resource_class::texture.number_loaded);resource_class::texture.number_loaded++;
 };
-
+/*
 void resource_class::load_tilesets(void)
 {
     game.core.log.file_write("Loading resources -> Tilesets");
@@ -1353,7 +1353,7 @@ void resource_class::load_tilesets(void)
     game.resource.texture.gold_tileset.load_spritesheet                   ("data/tilesets/gold_tileset.png"        ,resource_class::texture.number_loaded, 64,128);resource_class::texture.number_loaded++;
     game.resource.texture.test_tileset.load_spritesheet                   ("data/tilesets/test_tileset.png"        ,resource_class::texture.number_loaded, 64,128);resource_class::texture.number_loaded++;
 };
-
+*/
 void resource_class::load_generic_textures(void)
 {
     game.core.log.file_write("Loading resources -> Generic Textures");
@@ -1463,7 +1463,7 @@ void resource_class::load_all(void)
     resource_class::load_portraits();
     resource_class::load_particles();
     resource_class::load_spells();
-    resource_class::load_tilesets();
+    //resource_class::load_tilesets();
     resource_class::load_generic_textures();
     resource_class::load_heightmaps();
     //resource_class::load_maps_2D();

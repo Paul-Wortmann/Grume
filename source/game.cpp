@@ -114,8 +114,8 @@ void game_class::init(void)
     init_items();
     init_inventory();
 
-    game.resource.map_2D.load("data/maps/town.tmx");
-    game.resource.map_2D.random_map(100,100,DUNGEON);
+    game.resource.map_2D.load("data/maps/cave.tmx");
+    game.resource.map_2D.random_map(100,100,CAVE);
 
     //zoom out for testing
     game.zoom.current = game.zoom.max;
@@ -332,6 +332,17 @@ void game_class::process(void)
             game.core.io.key_space                 = false;
             game.core.io.keyboard_delay_count      = 0;
         }
+
+
+///------------------------------------------------------------------------------------------
+        if (game.core.io.key_r) // regenerate random map.
+        {
+            game.resource.map_2D.random_map(100,100,CAVE);
+            game.resource.sound.menu_select_00.play();
+            game.core.io.key_r                     = false;
+            game.core.io.keyboard_delay_count      = 0;
+        }
+
 ///------------------------------------------------------------------------------------------
 
         if (game.core.io.key_alt) // display item names on map (loot / clickable items)
