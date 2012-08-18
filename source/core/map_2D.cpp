@@ -924,17 +924,126 @@ void map_2D_class::random_map(int tiles_x, int tiles_y, int type_of_map_to_gener
             }
         break;
     }
-    // write new values to array
+    // write new values to array discarding disjointed tiles
     for (int tile_count = 0; tile_count < map_2D_class::number_of_tiles; tile_count++)
     {
         if(fill_data[tile_count].adjoining_tile) fill_data[tile_count].tile_data = FLOOR;
         else fill_data[tile_count].tile_data = WALL;
     }
-    //remove single tiles / tile formations that are not supported
+    for (int tile_count = 0; tile_count < map_2D_class::number_of_tiles; tile_count++)
     {
-
+        //remove single tiles / tile formations that are not supported
+        for (int iteration_count = 0; iteration_count < 5; iteration_count++)
+        {
+            if(fill_data[tile_count].tile_data == WALL)
+            {
+//--------------------
+                if ((fill_data[tile_count+tiles_x].tile_data == WALL)
+                    && (fill_data[tile_count+tiles_x+1].tile_data == FLOOR)
+                    && (fill_data[tile_count+tiles_x-1].tile_data == FLOOR)
+                    && (fill_data[tile_count-tiles_x].tile_data == FLOOR)
+                    && (fill_data[tile_count-tiles_x+1].tile_data == FLOOR)
+                    && (fill_data[tile_count-tiles_x-1].tile_data == FLOOR)
+                    && (fill_data[tile_count+1].tile_data == WALL)
+                    && (fill_data[tile_count-1].tile_data == FLOOR))
+                    fill_data[tile_count+tiles_x+1].tile_data = WALL;
+                if ((fill_data[tile_count+tiles_x].tile_data == WALL)
+                    && (fill_data[tile_count+tiles_x+1].tile_data == FLOOR)
+                    && (fill_data[tile_count+tiles_x-1].tile_data == FLOOR)
+                    && (fill_data[tile_count-tiles_x].tile_data == WALL)
+                    && (fill_data[tile_count-tiles_x+1].tile_data == FLOOR)
+                    && (fill_data[tile_count-tiles_x-1].tile_data == FLOOR)
+                    && (fill_data[tile_count+1].tile_data == WALL)
+                    && (fill_data[tile_count-1].tile_data == WALL))
+                    {
+                        fill_data[tile_count+tiles_x+1].tile_data = WALL;
+                        fill_data[tile_count+tiles_x-1].tile_data = WALL;
+                        fill_data[tile_count-tiles_x+1].tile_data = WALL;
+                        fill_data[tile_count-tiles_x-1].tile_data = WALL;
+                    }
+//--------------------
+                if ((fill_data[tile_count+tiles_x-1].tile_data == WALL)
+                    && (fill_data[tile_count-1].tile_data == FLOOR)
+                    && (fill_data[tile_count+tiles_x].tile_data == FLOOR))
+                    {
+                        fill_data[tile_count-1].tile_data = WALL;
+                        fill_data[tile_count+tiles_x].tile_data = WALL;
+                    }
+                if ((fill_data[tile_count-tiles_x+1].tile_data == WALL)
+                    && (fill_data[tile_count+1].tile_data == FLOOR)
+                    && (fill_data[tile_count-tiles_x].tile_data == FLOOR))
+                    {
+                        fill_data[tile_count+1].tile_data = WALL;
+                        fill_data[tile_count-tiles_x].tile_data = WALL;
+                    }
+                if ((fill_data[tile_count+tiles_x+1].tile_data == WALL)
+                    && (fill_data[tile_count+1].tile_data == FLOOR)
+                    && (fill_data[tile_count+tiles_x].tile_data == FLOOR))
+                    {
+                        fill_data[tile_count+1].tile_data = WALL;
+                        fill_data[tile_count+tiles_x].tile_data = WALL;
+                    }
+                if ((fill_data[tile_count-tiles_x-1].tile_data == WALL)
+                    && (fill_data[tile_count-1].tile_data == FLOOR)
+                    && (fill_data[tile_count-tiles_x].tile_data == FLOOR))
+                    {
+                        fill_data[tile_count-1].tile_data = WALL;
+                        fill_data[tile_count-tiles_x].tile_data = WALL;
+                    }
+//--------------------
+                if ((fill_data[tile_count+1].tile_data == WALL)
+                    && (fill_data[tile_count-1].tile_data == WALL)
+                    && (fill_data[tile_count+tiles_x].tile_data == FLOOR)
+                    && (fill_data[tile_count-tiles_x].tile_data == FLOOR))
+                    {
+                        fill_data[tile_count+tiles_x].tile_data = WALL;
+                        fill_data[tile_count-tiles_x].tile_data = WALL;
+                    }
+                if ((fill_data[tile_count+tiles_x].tile_data == WALL)
+                    && (fill_data[tile_count-tiles_x].tile_data == WALL)
+                    && (fill_data[tile_count+1].tile_data == FLOOR)
+                    && (fill_data[tile_count-1].tile_data == FLOOR))
+                    {
+                        fill_data[tile_count+1].tile_data = WALL;
+                        fill_data[tile_count-1].tile_data = WALL;
+                    }
+//--------------------
+                if ((fill_data[tile_count+1].tile_data == FLOOR) && (fill_data[tile_count-1].tile_data == FLOOR)
+                    && (fill_data[tile_count+tiles_x].tile_data == FLOOR)
+                    && (fill_data[tile_count+tiles_x-1].tile_data == FLOOR)
+                    && (fill_data[tile_count+tiles_x+1].tile_data == FLOOR))
+                    fill_data[tile_count].tile_data = FLOOR;
+                if ((fill_data[tile_count+1].tile_data == FLOOR) && (fill_data[tile_count-1].tile_data == FLOOR)
+                    && (fill_data[tile_count-tiles_x].tile_data == FLOOR)
+                    && (fill_data[tile_count-tiles_x-1].tile_data == FLOOR)
+                    && (fill_data[tile_count-tiles_x+1].tile_data == FLOOR))
+                    fill_data[tile_count].tile_data = FLOOR;
+                if ((fill_data[tile_count+tiles_x].tile_data == FLOOR) && (fill_data[tile_count-tiles_x].tile_data == FLOOR)
+                    && (fill_data[tile_count+1].tile_data == FLOOR)
+                    && (fill_data[tile_count+1+tiles_x].tile_data == FLOOR)
+                    && (fill_data[tile_count+1-tiles_x].tile_data == FLOOR))
+                    fill_data[tile_count].tile_data = FLOOR;
+                if ((fill_data[tile_count+tiles_x].tile_data == FLOOR) && (fill_data[tile_count-tiles_x].tile_data == FLOOR)
+                    && (fill_data[tile_count-1].tile_data == FLOOR)
+                    && (fill_data[tile_count-1+tiles_x].tile_data == FLOOR)
+                    && (fill_data[tile_count-1-tiles_x].tile_data == FLOOR))
+                    fill_data[tile_count].tile_data = FLOOR;
+                if ((fill_data[tile_count+tiles_x].tile_data == FLOOR)
+                    && (fill_data[tile_count+tiles_x+1].tile_data == FLOOR)
+                    && (fill_data[tile_count+tiles_x-1].tile_data == FLOOR)
+                    && (fill_data[tile_count-tiles_x].tile_data == FLOOR)
+                    && (fill_data[tile_count-tiles_x+1].tile_data == FLOOR)
+                    && (fill_data[tile_count-tiles_x-1].tile_data == FLOOR)
+                    && (fill_data[tile_count+1].tile_data == FLOOR)
+                    && (fill_data[tile_count-1].tile_data == FLOOR))
+                    fill_data[tile_count].tile_data = FLOOR;
+//--------------------
+            }
+        }
+        map_2D_class::tile[tile_count].tile = fill_data[tile_count].tile_data; // used for testing
     }
-
+    if ( 1 == 1) // test
+    { // test
     //----------------------------------------------------------------------------------------------------------------
     //| Apply Tile-set                                                                                               |
     //----------------------------------------------------------------------------------------------------------------
@@ -978,25 +1087,6 @@ void map_2D_class::random_map(int tiles_x, int tiles_y, int type_of_map_to_gener
         break;
         default:
         break;
-
-/*
-TILE_SET_FLOOR
-TILE_SET_WALL_NORTH
-TILE_SET_WALL_SOUTH
-TILE_SET_WALL_EAST
-TILE_SET_WALL_WEST
-TILE_SET_WALL_NORTH_EAST_CONVEX
-TILE_SET_WALL_NORTH_WEST_CONVEX
-TILE_SET_WALL_SOUTH_EAST_CONVEX
-TILE_SET_WALL_SOUTH_WEST_CONVEX
-TILE_SET_WALL_NORTH_EAST_CONCAVE
-TILE_SET_WALL_NORTH_WEST_CONCAVE
-TILE_SET_WALL_SOUTH_EAST_CONCAVE
-TILE_SET_WALL_SOUTH_WEST_CONCAVE
-TILE_SET_OBJECTS
-*/
-
-
     }
     // load test tile-sets
     {
@@ -1105,15 +1195,86 @@ TILE_SET_OBJECTS
                 else map_2D_class::tile[tile_count].tile = (random_number - random_seed*3);
             break;
             case WALL:
+                map_2D_class::tile[tile_count].tile_tileset = TILE_SET_FLOOR;
                 map_2D_class::tile[tile_count].collision = true;
                 wall_placed = false;
+                if((tile_count-1 >= 0) && (tile_count+1 <= tiles_x))
+                {//North wall.
+                    if ((fill_data[tile_count+tiles_x].tile_data == FLOOR))
+                    {
+                        map_2D_class::tile[tile_count].tile = 0;
+                        map_2D_class::tile[tile_count].object_tileset = TILE_SET_WALL_SOUTH;
+                        random_seed     = map_2D_class::tileset[TILE_SET_WALL_SOUTH].number_of_tiles;
+                        random_number = random(random_seed*4);
+                        if (random_number <= (random_seed*3)) map_2D_class::tile[tile_count].object = 1;
+                        else map_2D_class::tile[tile_count].object = (random_number - random_seed*3);
+                        wall_placed = true;
+                    }
+                    if ((fill_data[tile_count-1].tile_data == WALL) && (fill_data[tile_count+tiles_x].tile_data == WALL)
+                        && (fill_data[tile_count+tiles_x-1].tile_data == FLOOR))
+                    {//North east concave wall
+                        map_2D_class::tile[tile_count].tile = 0;
+                        map_2D_class::tile[tile_count].object_tileset = TILE_SET_WALL_NORTH_EAST_CONCAVE;
+                        random_seed     = map_2D_class::tileset[TILE_SET_WALL_NORTH_EAST_CONCAVE].number_of_tiles;
+                        random_number = random(random_seed*4);
+                        if (random_number <= (random_seed*3)) map_2D_class::tile[tile_count].object = 1;
+                        else map_2D_class::tile[tile_count].object = (random_number - random_seed*3);
+                        wall_placed = true;
+                    }
+                    if ((fill_data[tile_count+1].tile_data == WALL) && (fill_data[tile_count+tiles_x].tile_data == WALL)
+                        && (fill_data[tile_count+tiles_x+1].tile_data == FLOOR))
+                    {//North west concave wall
+                        map_2D_class::tile[tile_count].object_tileset = TILE_SET_WALL_NORTH_WEST_CONCAVE;
+                        random_seed     = map_2D_class::tileset[TILE_SET_WALL_NORTH_WEST_CONCAVE].number_of_tiles;
+                        random_number = random(random_seed*4);
+                        if (random_number <= (random_seed*3)) map_2D_class::tile[tile_count].object = 1;
+                        else map_2D_class::tile[tile_count].object = (random_number - random_seed*3);
+                        wall_placed = true;
+                    }
+                }
+                if((tile_count-1) >= (map_2D_class::number_of_tiles-tiles_x))
+                {//South wall.
+                    if ((fill_data[tile_count-tiles_x].tile_data == FLOOR))
+                    {
+                        map_2D_class::tile[tile_count].tile = 0;
+                        map_2D_class::tile[tile_count].object_tileset = TILE_SET_WALL_NORTH;
+                        random_seed     = map_2D_class::tileset[TILE_SET_WALL_NORTH].number_of_tiles;
+                        random_number = random(random_seed*4);
+                        if (random_number <= (random_seed*3)) map_2D_class::tile[tile_count].object = 1;
+                        else map_2D_class::tile[tile_count].object = (random_number - random_seed*3);
+                        wall_placed = true;
+                    }
+                    if ((fill_data[tile_count-1].tile_data == WALL) && (fill_data[tile_count-tiles_x].tile_data == WALL)
+                        && (fill_data[tile_count-tiles_x-1].tile_data == FLOOR))
+                    {//South east concave wall
+                        map_2D_class::tile[tile_count].tile = 0;
+                        map_2D_class::tile[tile_count].object_tileset = TILE_SET_WALL_SOUTH_EAST_CONCAVE;
+                        random_seed     = map_2D_class::tileset[TILE_SET_WALL_SOUTH_EAST_CONCAVE].number_of_tiles;
+                        random_number = random(random_seed*4);
+                        if (random_number <= (random_seed*3)) map_2D_class::tile[tile_count].object = 1;
+                        else map_2D_class::tile[tile_count].object = (random_number - random_seed*3);
+                        wall_placed = true;
+                    }
+                    if ((fill_data[tile_count+1].tile_data == WALL) && (fill_data[tile_count-tiles_x].tile_data == WALL)
+                        && (fill_data[tile_count-tiles_x+1].tile_data == FLOOR))
+                    {//South west concave wall
+                        map_2D_class::tile[tile_count].tile = 0;
+                        map_2D_class::tile[tile_count].object_tileset = TILE_SET_WALL_SOUTH_WEST_CONCAVE;
+                        random_seed     = map_2D_class::tileset[TILE_SET_WALL_SOUTH_WEST_CONCAVE].number_of_tiles;
+                        random_number = random(random_seed*4);
+                        if (random_number <= (random_seed*3)) map_2D_class::tile[tile_count].object = 1;
+                        else map_2D_class::tile[tile_count].object = (random_number - random_seed*3);
+                        wall_placed = true;
+                    }
+                }
                 if((tile_count-1 >= 0) && (tile_count+1 <= map_2D_class::number_of_tiles)
                    && (tile_count-tiles_x >= 0) && (tile_count+tiles_x <= map_2D_class::number_of_tiles))
-                {// need to make special cases for north and south border walls
+                {
                     if ((fill_data[tile_count-1].tile_data == WALL) && (fill_data[tile_count+1].tile_data == WALL))
                     {
                         if(fill_data[tile_count-tiles_x].tile_data == FLOOR)
                         {// North wall
+                            map_2D_class::tile[tile_count].tile = 0;
                             map_2D_class::tile[tile_count].object_tileset = TILE_SET_WALL_NORTH;
                             random_seed     = map_2D_class::tileset[TILE_SET_WALL_NORTH].number_of_tiles;
                             random_number = random(random_seed*4);
@@ -1123,6 +1284,7 @@ TILE_SET_OBJECTS
                         }
                         if(fill_data[tile_count+tiles_x].tile_data == FLOOR)
                         {// South wall
+                            map_2D_class::tile[tile_count].tile = 1;
                             map_2D_class::tile[tile_count].object_tileset = TILE_SET_WALL_SOUTH;
                             random_seed     = map_2D_class::tileset[TILE_SET_WALL_SOUTH].number_of_tiles;
                             random_number = random(random_seed*4);
@@ -1135,6 +1297,7 @@ TILE_SET_OBJECTS
                     {
                         if(fill_data[tile_count+1].tile_data == FLOOR)
                         {// East wall
+                            map_2D_class::tile[tile_count].tile = 1;
                             map_2D_class::tile[tile_count].object_tileset = TILE_SET_WALL_EAST;
                             random_seed     = map_2D_class::tileset[TILE_SET_WALL_EAST].number_of_tiles;
                             random_number = random(random_seed*4);
@@ -1144,6 +1307,7 @@ TILE_SET_OBJECTS
                         }
                         if(fill_data[tile_count-1].tile_data == FLOOR)
                         {// West wall
+                            map_2D_class::tile[tile_count].tile = 0;
                             map_2D_class::tile[tile_count].object_tileset = TILE_SET_WALL_WEST;
                             random_seed     = map_2D_class::tileset[TILE_SET_WALL_WEST].number_of_tiles;
                             random_number = random(random_seed*4);
@@ -1167,6 +1331,7 @@ TILE_SET_OBJECTS
                         && (fill_data[tile_count-1].tile_data == FLOOR)
                         && (fill_data[tile_count-tiles_x].tile_data == FLOOR))
                     {//North west convex wall
+                        map_2D_class::tile[tile_count].tile = 0;
                         map_2D_class::tile[tile_count].object_tileset = TILE_SET_WALL_NORTH_WEST_CONVEX;
                         random_seed     = map_2D_class::tileset[TILE_SET_WALL_NORTH_WEST_CONVEX].number_of_tiles;
                         random_number = random(random_seed*4);
@@ -1199,6 +1364,7 @@ TILE_SET_OBJECTS
                     if ((fill_data[tile_count-1].tile_data == WALL) && (fill_data[tile_count+tiles_x].tile_data == WALL)
                         && (fill_data[tile_count+tiles_x-1].tile_data == FLOOR))
                     {//North east concave wall
+                        map_2D_class::tile[tile_count].tile = 0;
                         map_2D_class::tile[tile_count].object_tileset = TILE_SET_WALL_NORTH_EAST_CONCAVE;
                         random_seed     = map_2D_class::tileset[TILE_SET_WALL_NORTH_EAST_CONCAVE].number_of_tiles;
                         random_number = random(random_seed*4);
@@ -1219,6 +1385,7 @@ TILE_SET_OBJECTS
                     if ((fill_data[tile_count-1].tile_data == WALL) && (fill_data[tile_count-tiles_x].tile_data == WALL)
                         && (fill_data[tile_count-tiles_x-1].tile_data == FLOOR))
                     {//South east concave wall
+                        map_2D_class::tile[tile_count].tile = 0;
                         map_2D_class::tile[tile_count].object_tileset = TILE_SET_WALL_SOUTH_EAST_CONCAVE;
                         random_seed     = map_2D_class::tileset[TILE_SET_WALL_SOUTH_EAST_CONCAVE].number_of_tiles;
                         random_number = random(random_seed*4);
@@ -1229,6 +1396,7 @@ TILE_SET_OBJECTS
                     if ((fill_data[tile_count+1].tile_data == WALL) && (fill_data[tile_count-tiles_x].tile_data == WALL)
                         && (fill_data[tile_count-tiles_x+1].tile_data == FLOOR))
                     {//South west concave wall
+                        map_2D_class::tile[tile_count].tile = 0;
                         map_2D_class::tile[tile_count].object_tileset = TILE_SET_WALL_SOUTH_WEST_CONCAVE;
                         random_seed     = map_2D_class::tileset[TILE_SET_WALL_SOUTH_WEST_CONCAVE].number_of_tiles;
                         random_number = random(random_seed*4);
@@ -1247,6 +1415,7 @@ TILE_SET_OBJECTS
             break;
         }
     }
+    }// test
     //----------------------------------------------------------------------------------------------------------------
     //| Add content to map                                                                                           |
     //----------------------------------------------------------------------------------------------------------------
