@@ -924,6 +924,17 @@ void map_2D_class::random_map(int tiles_x, int tiles_y, int type_of_map_to_gener
             }
         break;
     }
+    // write new values to array
+    for (int tile_count = 0; tile_count < map_2D_class::number_of_tiles; tile_count++)
+    {
+        if(fill_data[tile_count].adjoining_tile) fill_data[tile_count].tile_data = FLOOR;
+        else fill_data[tile_count].tile_data = WALL;
+    }
+    //remove single tiles / tile formations that are not supported
+    {
+
+    }
+
     //----------------------------------------------------------------------------------------------------------------
     //| Apply Tile-set                                                                                               |
     //----------------------------------------------------------------------------------------------------------------
@@ -1236,7 +1247,6 @@ TILE_SET_OBJECTS
             break;
         }
     }
-
     //----------------------------------------------------------------------------------------------------------------
     //| Add content to map                                                                                           |
     //----------------------------------------------------------------------------------------------------------------
