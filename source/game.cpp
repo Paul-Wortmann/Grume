@@ -379,7 +379,6 @@ void game_class::render(void)
     float  world_ambient_light[]  = {game.world_ambient.intensity_R,game.world_ambient.intensity_G,game.world_ambient.intensity_B,game.world_ambient.intensity_A};
     glLightModelfv(GL_LIGHT_MODEL_AMBIENT,world_ambient_light);
 
-
     game.resource.map_2D.draw();
     //game.resource.map_3D.town.draw();
     game.player.draw();

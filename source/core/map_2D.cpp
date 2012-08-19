@@ -64,7 +64,6 @@ tileset_class::~tileset_class(void)
 };
 
 //-----------------------------------------------------------------------------------------------------------------
-//yakuza - 893
 void map_2D_class::draw(void)
 {
     tileset_class debug_tileset;
@@ -690,7 +689,6 @@ map_2D_class::~map_2D_class(void)
 
 void map_2D_class::random_map(int tiles_x, int tiles_y, int type_of_map_to_generate)
 {
-    int test_key = 1;
     #define FLOOR 1
     #define WALL  2
 
@@ -950,10 +948,10 @@ void map_2D_class::random_map(int tiles_x, int tiles_y, int type_of_map_to_gener
         if(fill_data[tile_count].adjoining_tile) fill_data[tile_count].tile_data = FLOOR;
         else fill_data[tile_count].tile_data = WALL;
     }
-    for (int tile_count = 0; tile_count < map_2D_class::number_of_tiles; tile_count++)
+    for (int iteration_count = 0; iteration_count < 5; iteration_count++)
     {
         //remove single tiles / tile formations that are not supported
-        for (int iteration_count = 0; iteration_count < 5; iteration_count++)
+        for (int tile_count = 0; tile_count < map_2D_class::number_of_tiles; tile_count++)
         {
             if(fill_data[tile_count].tile_data == WALL)
             {
@@ -1024,7 +1022,6 @@ void map_2D_class::random_map(int tiles_x, int tiles_y, int type_of_map_to_gener
                     fill_data[tile_count+tiles_x].tile_data = WALL;
                     fill_data[tile_count+1].tile_data = WALL;
                 }
-
 //-------------------- Horizontal sparse line segment.
                 if ((fill_data[tile_count+tiles_x-1].tile_data == WALL)
                     && (fill_data[tile_count+tiles_x].tile_data == FLOOR)
@@ -1041,223 +1038,158 @@ void map_2D_class::random_map(int tiles_x, int tiles_y, int type_of_map_to_gener
                     fill_data[tile_count+1].tile_data = WALL;
                 }
 //-------------------- Single tile
+                if (   (fill_data[tile_count+1].tile_data         == FLOOR)
+                    && (fill_data[tile_count-1].tile_data         == FLOOR)
+                    && (fill_data[tile_count+tiles_x].tile_data   == FLOOR)
+                    && (fill_data[tile_count+tiles_x+1].tile_data == FLOOR)
+                    && (fill_data[tile_count+tiles_x-1].tile_data == FLOOR)
+                    && (fill_data[tile_count-tiles_x].tile_data   == FLOOR)
+                    && (fill_data[tile_count-tiles_x+1].tile_data == FLOOR)
+                    && (fill_data[tile_count-tiles_x-1].tile_data == FLOOR))
+                        fill_data[tile_count].tile_data = FLOOR;
                 if ((fill_data[tile_count+1].tile_data == FLOOR)
                     && (fill_data[tile_count-1].tile_data == FLOOR)
                     && (fill_data[tile_count+tiles_x].tile_data == FLOOR)
                     && (fill_data[tile_count-tiles_x].tile_data == FLOOR))
                     fill_data[tile_count].tile_data = FLOOR;
-
-
-
-    /*
-                if ((fill_data[tile_count+1].tile_data == FLOOR)
-                    && (fill_data[tile_count-1].tile_data == FLOOR)
-                    && (fill_data[tile_count+tiles_x].tile_data == FLOOR)
-                    && (fill_data[tile_count+tiles_x-1].tile_data == FLOOR)
-                    && (fill_data[tile_count+tiles_x+1].tile_data == FLOOR))
-                    fill_data[tile_count].tile_data = FLOOR;
-                if ((fill_data[tile_count+1].tile_data == FLOOR)
-                    && (fill_data[tile_count-1].tile_data == FLOOR)
-                    && (fill_data[tile_count-tiles_x].tile_data == FLOOR)
-                    && (fill_data[tile_count-tiles_x-1].tile_data == FLOOR)
-                    && (fill_data[tile_count-tiles_x+1].tile_data == FLOOR))
-                    fill_data[tile_count].tile_data = FLOOR;
-                if ((fill_data[tile_count+tiles_x].tile_data == FLOOR)
-                    && (fill_data[tile_count-tiles_x].tile_data == FLOOR)
-                    && (fill_data[tile_count+1].tile_data == FLOOR)
-                    && (fill_data[tile_count+1+tiles_x].tile_data == FLOOR)
-                    && (fill_data[tile_count+1-tiles_x].tile_data == FLOOR))
-                    fill_data[tile_count].tile_data = FLOOR;
-                if ((fill_data[tile_count+tiles_x].tile_data == FLOOR)
-                    && (fill_data[tile_count-tiles_x].tile_data == FLOOR)
-                    && (fill_data[tile_count-1].tile_data == FLOOR)
-                    && (fill_data[tile_count-1+tiles_x].tile_data == FLOOR)
-                    && (fill_data[tile_count-1-tiles_x].tile_data == FLOOR))
-                    fill_data[tile_count].tile_data = FLOOR;
-                if ((fill_data[tile_count+tiles_x].tile_data == FLOOR)
+//-------------------- Diagonally opposite tiles.
+                if (   (fill_data[tile_count+1].tile_data         == FLOOR)
+                    && (fill_data[tile_count-1].tile_data         == WALL)
+                    && (fill_data[tile_count+tiles_x].tile_data   == WALL)
                     && (fill_data[tile_count+tiles_x+1].tile_data == FLOOR)
-                    && (fill_data[tile_count+tiles_x-1].tile_data == FLOOR)
-                    && (fill_data[tile_count-tiles_x].tile_data == FLOOR)
-                    && (fill_data[tile_count-tiles_x+1].tile_data == FLOOR)
-                    && (fill_data[tile_count-tiles_x-1].tile_data == FLOOR)
-                    && (fill_data[tile_count+1].tile_data == FLOOR)
-                    && (fill_data[tile_count-1].tile_data == FLOOR))
-                    fill_data[tile_count].tile_data = FLOOR;
-                    */
-//--------------------
-/*
-                if ((fill_data[tile_count+tiles_x].tile_data == WALL)
-                    && (fill_data[tile_count+tiles_x+1].tile_data == FLOOR)
-                    && (fill_data[tile_count+tiles_x-1].tile_data == FLOOR)
-                    && (fill_data[tile_count-tiles_x].tile_data == FLOOR)
-                    && (fill_data[tile_count-tiles_x+1].tile_data == FLOOR)
-                    && (fill_data[tile_count-tiles_x-1].tile_data == FLOOR)
-                    && (fill_data[tile_count+1].tile_data == WALL)
-                    && (fill_data[tile_count-1].tile_data == FLOOR))
-                    fill_data[tile_count+tiles_x+1].tile_data = WALL;
-                if ((fill_data[tile_count+tiles_x].tile_data == WALL)
-                    && (fill_data[tile_count+tiles_x+1].tile_data == FLOOR)
-                    && (fill_data[tile_count+tiles_x-1].tile_data == FLOOR)
-                    && (fill_data[tile_count-tiles_x].tile_data == WALL)
-                    && (fill_data[tile_count-tiles_x+1].tile_data == FLOOR)
-                    && (fill_data[tile_count-tiles_x-1].tile_data == FLOOR)
-                    && (fill_data[tile_count+1].tile_data == WALL)
-                    && (fill_data[tile_count-1].tile_data == WALL))
-                    {
-                        fill_data[tile_count+tiles_x+1].tile_data = WALL;
-                        fill_data[tile_count+tiles_x-1].tile_data = WALL;
-                        fill_data[tile_count-tiles_x+1].tile_data = WALL;
-                        fill_data[tile_count-tiles_x-1].tile_data = WALL;
-                    }
-                    */
-//--------------------
-/*
-                if ((fill_data[tile_count+tiles_x-1].tile_data == WALL)
-                    && (fill_data[tile_count-1].tile_data == FLOOR)
-                    && (fill_data[tile_count+tiles_x].tile_data == FLOOR))
-                    {
-                        fill_data[tile_count-1].tile_data = WALL;
-                        fill_data[tile_count+tiles_x].tile_data = WALL;
-                    }
-                if ((fill_data[tile_count-tiles_x+1].tile_data == WALL)
-                    && (fill_data[tile_count+1].tile_data == FLOOR)
-                    && (fill_data[tile_count-tiles_x].tile_data == FLOOR))
-                    {
-                        fill_data[tile_count+1].tile_data = WALL;
-                        fill_data[tile_count-tiles_x].tile_data = WALL;
-                    }
-                if ((fill_data[tile_count+tiles_x+1].tile_data == WALL)
-                    && (fill_data[tile_count+1].tile_data == FLOOR)
-                    && (fill_data[tile_count+tiles_x].tile_data == FLOOR))
-                    {
-                        fill_data[tile_count+1].tile_data = WALL;
-                        fill_data[tile_count+tiles_x].tile_data = WALL;
-                    }
-                if ((fill_data[tile_count-tiles_x-1].tile_data == WALL)
-                    && (fill_data[tile_count-1].tile_data == FLOOR)
-                    && (fill_data[tile_count-tiles_x].tile_data == FLOOR))
-                    {
-                        fill_data[tile_count-1].tile_data = WALL;
-                        fill_data[tile_count-tiles_x].tile_data = WALL;
-                    }
-                    */
-//--------------------
-/*
-                if ((fill_data[tile_count+1].tile_data == WALL)
-                    && (fill_data[tile_count-1].tile_data == WALL)
-                    && (fill_data[tile_count+tiles_x].tile_data == FLOOR)
-                    && (fill_data[tile_count-tiles_x].tile_data == FLOOR))
-                    {
-                        fill_data[tile_count+tiles_x].tile_data = WALL;
-                        fill_data[tile_count-tiles_x].tile_data = WALL;
-                    }
-                if ((fill_data[tile_count+tiles_x].tile_data == WALL)
-                    && (fill_data[tile_count-tiles_x].tile_data == WALL)
-                    && (fill_data[tile_count+1].tile_data == FLOOR)
-                    && (fill_data[tile_count-1].tile_data == FLOOR))
-                    {
-                        fill_data[tile_count+1].tile_data = WALL;
-                        fill_data[tile_count-1].tile_data = WALL;
-                    }
-                    */
-//--------------------
-/*
-                if ((fill_data[tile_count-tiles_x].tile_data == FLOOR)
-                    && (fill_data[tile_count+tiles_x+1].tile_data == FLOOR)
-                    && (fill_data[tile_count+tiles_x].tile_data == WALL)
-                    && (fill_data[tile_count+1].tile_data == WALL)
-                    && (fill_data[tile_count-1].tile_data == WALL))
-                    {
-                        fill_data[tile_count+tiles_x+1].tile_data = WALL;
-                        fill_data[tile_count-tiles_x].tile_data = WALL;
-                    }
-                if ((fill_data[tile_count-tiles_x].tile_data == FLOOR)
-                    && (fill_data[tile_count+tiles_x-1].tile_data == FLOOR)
-                    && (fill_data[tile_count+tiles_x].tile_data == WALL)
-                    && (fill_data[tile_count+1].tile_data == WALL)
-                    && (fill_data[tile_count-1].tile_data == WALL))
-                    {
-                        fill_data[tile_count+tiles_x-1].tile_data = WALL;
-                        fill_data[tile_count-tiles_x].tile_data = WALL;
-                    }
-                if ((fill_data[tile_count+tiles_x].tile_data == FLOOR)
-                    && (fill_data[tile_count-tiles_x-1].tile_data == FLOOR)
-                    && (fill_data[tile_count-tiles_x].tile_data == WALL)
-                    && (fill_data[tile_count-1].tile_data == WALL)
-                    && (fill_data[tile_count+1].tile_data == WALL))
-                    {
-                        fill_data[tile_count-tiles_x-1].tile_data = WALL;
-                        fill_data[tile_count+tiles_x].tile_data = WALL;
-                    }
-                if ((fill_data[tile_count+tiles_x].tile_data == FLOOR)
-                    && (fill_data[tile_count-tiles_x+1].tile_data == FLOOR)
-                    && (fill_data[tile_count-tiles_x].tile_data == WALL)
-                    && (fill_data[tile_count-1].tile_data == WALL)
-                    && (fill_data[tile_count+1].tile_data == WALL))
-                    {
-                        fill_data[tile_count-tiles_x+1].tile_data = WALL;
-                        fill_data[tile_count+tiles_x].tile_data = WALL;
-                    }
-                if ((fill_data[tile_count-1].tile_data == FLOOR)
-                    && (fill_data[tile_count-tiles_x+1].tile_data == FLOOR)
-                    && (fill_data[tile_count+tiles_x].tile_data == WALL)
-                    && (fill_data[tile_count+1].tile_data == WALL)
-                    && (fill_data[tile_count-tiles_x].tile_data == WALL))
-                    {
-                        fill_data[tile_count-1].tile_data = WALL;
-                        fill_data[tile_count-tiles_x+1].tile_data = WALL;
-                    }
-                if ((fill_data[tile_count-1].tile_data == FLOOR)
-                    && (fill_data[tile_count+tiles_x+1].tile_data == FLOOR)
-                    && (fill_data[tile_count+tiles_x].tile_data == WALL)
-                    && (fill_data[tile_count+1].tile_data == WALL)
-                    && (fill_data[tile_count-tiles_x].tile_data == WALL))
-                    {
-                        fill_data[tile_count-1].tile_data = WALL;
-                        fill_data[tile_count+tiles_x+1].tile_data = WALL;
-                    }
-                if ((fill_data[tile_count+1].tile_data == FLOOR)
-                    && (fill_data[tile_count+tiles_x-1].tile_data == FLOOR)
-                    && (fill_data[tile_count+tiles_x].tile_data == WALL)
-                    && (fill_data[tile_count-1].tile_data == WALL)
-                    && (fill_data[tile_count-tiles_x].tile_data == WALL))
-                    {
-                        fill_data[tile_count+1].tile_data = WALL;
-                        fill_data[tile_count+tiles_x-1].tile_data = WALL;
-                    }
-                if ((fill_data[tile_count+1].tile_data == FLOOR)
-                    && (fill_data[tile_count-tiles_x-1].tile_data == FLOOR)
-                    && (fill_data[tile_count+tiles_x].tile_data == WALL)
-                    && (fill_data[tile_count-1].tile_data == WALL)
-                    && (fill_data[tile_count-tiles_x].tile_data == WALL))
+                    && (fill_data[tile_count+tiles_x-1].tile_data == WALL)
+                    && (fill_data[tile_count-tiles_x].tile_data   == WALL)
+                    && (fill_data[tile_count-tiles_x+1].tile_data == WALL)
+                    && (fill_data[tile_count-tiles_x-1].tile_data == FLOOR))
                     {
                         fill_data[tile_count+1].tile_data = WALL;
                         fill_data[tile_count-tiles_x-1].tile_data = WALL;
                     }
-                    */
-//--------------------
-/*
-                if ((fill_data[tile_count-tiles_x-1].tile_data == FLOOR)
-                    && (fill_data[tile_count+tiles_x+1].tile_data == FLOOR))
+                if (   (fill_data[tile_count+1].tile_data         == WALL)
+                    && (fill_data[tile_count-1].tile_data         == FLOOR)
+                    && (fill_data[tile_count+tiles_x].tile_data   == WALL)
+                    && (fill_data[tile_count+tiles_x+1].tile_data == FLOOR)
+                    && (fill_data[tile_count+tiles_x-1].tile_data == WALL)
+                    && (fill_data[tile_count-tiles_x].tile_data   == WALL)
+                    && (fill_data[tile_count-tiles_x+1].tile_data == WALL)
+                    && (fill_data[tile_count-tiles_x-1].tile_data == FLOOR))
                     {
-                        fill_data[tile_count-tiles_x-1].tile_data = WALL;
+                        fill_data[tile_count-1].tile_data = WALL;
                         fill_data[tile_count+tiles_x+1].tile_data = WALL;
                     }
-                if ((fill_data[tile_count+tiles_x-1].tile_data == FLOOR)
-                    && (fill_data[tile_count-tiles_x+1].tile_data == FLOOR))
+                if (   (fill_data[tile_count+1].tile_data         == WALL)
+                    && (fill_data[tile_count-1].tile_data         == WALL)
+                    && (fill_data[tile_count+tiles_x].tile_data   == FLOOR)
+                    && (fill_data[tile_count+tiles_x+1].tile_data == FLOOR)
+                    && (fill_data[tile_count+tiles_x-1].tile_data == WALL)
+                    && (fill_data[tile_count-tiles_x].tile_data   == WALL)
+                    && (fill_data[tile_count-tiles_x+1].tile_data == WALL)
+                    && (fill_data[tile_count-tiles_x-1].tile_data == FLOOR))
+                    {
+                        fill_data[tile_count+tiles_x].tile_data = WALL;
+                        fill_data[tile_count-tiles_x-1].tile_data = WALL;
+                    }
+                if (   (fill_data[tile_count+1].tile_data         == WALL)
+                    && (fill_data[tile_count-1].tile_data         == WALL)
+                    && (fill_data[tile_count+tiles_x].tile_data   == WALL)
+                    && (fill_data[tile_count+tiles_x+1].tile_data == FLOOR)
+                    && (fill_data[tile_count+tiles_x-1].tile_data == WALL)
+                    && (fill_data[tile_count-tiles_x].tile_data   == FLOOR)
+                    && (fill_data[tile_count-tiles_x+1].tile_data == WALL)
+                    && (fill_data[tile_count-tiles_x-1].tile_data == FLOOR))
+                    {
+                        fill_data[tile_count-tiles_x].tile_data = WALL;
+                        fill_data[tile_count+tiles_x+1].tile_data = WALL;
+                    }
+                //----
+                if (   (fill_data[tile_count+1].tile_data         == FLOOR)
+                    && (fill_data[tile_count-1].tile_data         == WALL)
+                    && (fill_data[tile_count+tiles_x].tile_data   == WALL)
+                    && (fill_data[tile_count+tiles_x+1].tile_data == WALL)
+                    && (fill_data[tile_count+tiles_x-1].tile_data == FLOOR)
+                    && (fill_data[tile_count-tiles_x].tile_data   == WALL)
+                    && (fill_data[tile_count-tiles_x+1].tile_data == FLOOR)
+                    && (fill_data[tile_count-tiles_x-1].tile_data == WALL))
+                    {
+                        fill_data[tile_count+1].tile_data = WALL;
+                        fill_data[tile_count+tiles_x-1].tile_data = WALL;
+                    }
+                if (   (fill_data[tile_count+1].tile_data         == WALL)
+                    && (fill_data[tile_count-1].tile_data         == FLOOR)
+                    && (fill_data[tile_count+tiles_x].tile_data   == WALL)
+                    && (fill_data[tile_count+tiles_x+1].tile_data == WALL)
+                    && (fill_data[tile_count+tiles_x-1].tile_data == FLOOR)
+                    && (fill_data[tile_count-tiles_x].tile_data   == WALL)
+                    && (fill_data[tile_count-tiles_x+1].tile_data == FLOOR)
+                    && (fill_data[tile_count-tiles_x-1].tile_data == WALL))
+                    {
+                        fill_data[tile_count-1].tile_data = WALL;
+                        fill_data[tile_count-tiles_x+1].tile_data = WALL;
+                    }
+                if (   (fill_data[tile_count+1].tile_data         == WALL)
+                    && (fill_data[tile_count-1].tile_data         == WALL)
+                    && (fill_data[tile_count+tiles_x].tile_data   == FLOOR)
+                    && (fill_data[tile_count+tiles_x+1].tile_data == WALL)
+                    && (fill_data[tile_count+tiles_x-1].tile_data == FLOOR)
+                    && (fill_data[tile_count-tiles_x].tile_data   == WALL)
+                    && (fill_data[tile_count-tiles_x+1].tile_data == FLOOR)
+                    && (fill_data[tile_count-tiles_x-1].tile_data == WALL))
+                    {
+                        fill_data[tile_count+tiles_x].tile_data = WALL;
+                        fill_data[tile_count-tiles_x+1].tile_data = WALL;
+                    }
+                if (   (fill_data[tile_count+1].tile_data         == WALL)
+                    && (fill_data[tile_count-1].tile_data         == WALL)
+                    && (fill_data[tile_count+tiles_x].tile_data   == WALL)
+                    && (fill_data[tile_count+tiles_x+1].tile_data == WALL)
+                    && (fill_data[tile_count+tiles_x-1].tile_data == FLOOR)
+                    && (fill_data[tile_count-tiles_x].tile_data   == FLOOR)
+                    && (fill_data[tile_count-tiles_x+1].tile_data == FLOOR)
+                    && (fill_data[tile_count-tiles_x-1].tile_data == WALL))
+                    {
+                        fill_data[tile_count-tiles_x].tile_data = WALL;
+                        fill_data[tile_count+tiles_x-1].tile_data = WALL;
+                    }
+//--------------------------- Corner with diagonal floors
+                if (   (fill_data[tile_count+1].tile_data         == WALL)
+                    && (fill_data[tile_count-1].tile_data         == WALL)
+                    && (fill_data[tile_count+tiles_x].tile_data   == WALL)
+                    && (fill_data[tile_count+tiles_x+1].tile_data == FLOOR)
+                    && (fill_data[tile_count+tiles_x-1].tile_data == WALL)
+                    && (fill_data[tile_count-tiles_x].tile_data   == WALL)
+                    && (fill_data[tile_count-tiles_x+1].tile_data == WALL)
+                    && (fill_data[tile_count-tiles_x-1].tile_data == FLOOR))
+                    {
+                        fill_data[tile_count+tiles_x+1].tile_data = WALL;
+                        fill_data[tile_count-tiles_x-1].tile_data = WALL;
+                    }
+                if (   (fill_data[tile_count+1].tile_data         == WALL)
+                    && (fill_data[tile_count-1].tile_data         == WALL)
+                    && (fill_data[tile_count+tiles_x].tile_data   == WALL)
+                    && (fill_data[tile_count+tiles_x+1].tile_data == WALL)
+                    && (fill_data[tile_count+tiles_x-1].tile_data == FLOOR)
+                    && (fill_data[tile_count-tiles_x].tile_data   == WALL)
+                    && (fill_data[tile_count-tiles_x+1].tile_data == FLOOR)
+                    && (fill_data[tile_count-tiles_x-1].tile_data == WALL))
                     {
                         fill_data[tile_count+tiles_x-1].tile_data = WALL;
                         fill_data[tile_count-tiles_x+1].tile_data = WALL;
                     }
-                    */
-//--------------------
+                if (   (fill_data[tile_count+1].tile_data         == WALL)
+                    && (fill_data[tile_count-1].tile_data         == WALL)
+                    && (fill_data[tile_count+tiles_x].tile_data   == WALL)
+                    && (fill_data[tile_count+tiles_x+1].tile_data == WALL)
+                    && (fill_data[tile_count+tiles_x-1].tile_data == FLOOR)
+                    && (fill_data[tile_count-tiles_x].tile_data   == WALL)
+                    && (fill_data[tile_count-tiles_x+1].tile_data == FLOOR)
+                    && (fill_data[tile_count-tiles_x-1].tile_data == WALL))
+                    {
+                        fill_data[tile_count+tiles_x-1].tile_data = WALL;
+                        fill_data[tile_count-tiles_x+1].tile_data = WALL;
+                    }
             }
         }
-    if (test_key == 2) // test
-        map_2D_class::tile[tile_count].tile = fill_data[tile_count].tile_data; // used for testing
     }
-    if ( test_key == 1) // test
-    { // test
     //----------------------------------------------------------------------------------------------------------------
     //| Apply Tile-set                                                                                               |
     //----------------------------------------------------------------------------------------------------------------
@@ -1629,7 +1561,6 @@ void map_2D_class::random_map(int tiles_x, int tiles_y, int type_of_map_to_gener
             break;
         }
     }
-    }// test
     //----------------------------------------------------------------------------------------------------------------
     //| Add content to map                                                                                           |
     //----------------------------------------------------------------------------------------------------------------
