@@ -116,7 +116,7 @@ void game_class::init(void)
     init_inventory();
 
     game.resource.map_2D.load("data/maps/cave.tmx");
-    game.resource.map_2D.random_map(100,100,CAVE,DUNGEON);
+    game.resource.map_2D.random_map(100,100,CAVE,GRASSLAND);
 
     //zoom out for testing
     game.zoom.current = game.zoom.max;
@@ -338,7 +338,7 @@ void game_class::process(void)
 ///------------------------------------------------------------------------------------------
         if (game.core.io.key_r) // regenerate random map.
         {
-            game.resource.map_2D.random_map(100,100,CAVE,DUNGEON);
+            game.resource.map_2D.random_map(100,100,CAVE,GRASSLAND);
             game.resource.sound.menu_select_00.play();
             game.core.io.key_r                     = false;
             game.core.io.keyboard_delay_count      = 0;
@@ -361,6 +361,7 @@ void game_class::process(void)
 
 void game_class::render(void)
 {
+    /*
     if (game.world_ambient.increase) // day / night lighting
     {
         game.world_ambient.intensity_R += game.world_ambient.speed;
@@ -375,6 +376,7 @@ void game_class::render(void)
         game.world_ambient.intensity_B -= game.world_ambient.speed;
         if (game.world_ambient.intensity_R < -0.5f) game.world_ambient.increase = true;
     }
+    */
     float  global_ambient_light[] = {game.global_ambient.intensity_R,game.global_ambient.intensity_G,game.global_ambient.intensity_B,game.global_ambient.intensity_A};
     float  world_ambient_light[]  = {game.world_ambient.intensity_R,game.world_ambient.intensity_G,game.world_ambient.intensity_B,game.world_ambient.intensity_A};
     glLightModelfv(GL_LIGHT_MODEL_AMBIENT,world_ambient_light);

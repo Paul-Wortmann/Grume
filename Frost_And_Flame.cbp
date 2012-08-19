@@ -90,8 +90,6 @@
 		<Unit filename="source\core\log.hpp" />
 		<Unit filename="source\core\map_2D.cpp" />
 		<Unit filename="source\core\map_2D.hpp" />
-		<Unit filename="source\core\map_2D_generator.cpp" />
-		<Unit filename="source\core\map_2D_generator.hpp" />
 		<Unit filename="source\core\map_3D.cpp" />
 		<Unit filename="source\core\map_3D.hpp" />
 		<Unit filename="source\core\menu.cpp" />

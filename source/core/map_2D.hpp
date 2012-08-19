@@ -27,9 +27,9 @@
 
 #include "textures.hpp"
 
-#define DUNGEON    1
-#define CAVE       2
-#define FOREST     3
+#define DUNGEON   1
+#define CAVE      2
+#define GRASSLAND 3
 
 const float  TILE_SCALE_DEFAULT  = 200.0f;
 const float  TILE_WIDTH          = (float)DEFAULT_FRAME_WIDTH  / TILE_SCALE_DEFAULT;

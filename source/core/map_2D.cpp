@@ -937,7 +937,7 @@ void map_2D_class::random_map(int tiles_x, int tiles_y, int type_of_map_to_gener
                 ca_map_is_good = (number_found >= ((map_2D_class::number_of_tiles/100.0f)*ca_minimum_cave_size)) ? true : false;
             }
         break;
-        case FOREST:
+        case GRASSLAND:
             for (int tile_count = 0; tile_count < map_2D_class::number_of_tiles; tile_count++)
             {
                 map_2D_class::tile[tile_count].tile = FLOOR;  //Fill map with floor tiles
@@ -1211,11 +1211,17 @@ void map_2D_class::random_map(int tiles_x, int tiles_y, int type_of_map_to_gener
     std::string tile_set_name_wall_south_east_concave = "data/tilesets/default_tileset.png";
     std::string tile_set_name_wall_south_west_concave = "data/tilesets/default_tileset.png";
     std::string tile_set_name_objects                 = "data/tilesets/default_tileset.png";
-    int  wall_width  = 64;
-    int  wall_height = 128;
+    int  floor_width  = 64;
+    int  floor_height = 32;
+    int  wall_width   = 64;
+    int  wall_height  = 128;
     switch (type_of_tile_set_to_use)
     {
         case DUNGEON:
+            floor_width  = 64;
+            floor_height = 32;
+            wall_width   = 64;
+            wall_height  = 128;
             tile_set_name_floor                   = "data/tilesets/dungeon_floor.png";
             tile_set_name_roof                    = "data/tilesets/dungeon_roof.png";
             tile_set_name_wall_north              = "data/tilesets/dungeon_wall_north.png";
@@ -1233,6 +1239,10 @@ void map_2D_class::random_map(int tiles_x, int tiles_y, int type_of_map_to_gener
             tile_set_name_objects                 = "data/tilesets/dungeon_objects.png";
         break;
         case CAVE:
+            floor_width  = 64;
+            floor_height = 32;
+            wall_width   = 64;
+            wall_height  = 128;
             tile_set_name_floor                   = "data/tilesets/cave_floor.png";
             tile_set_name_roof                    = "data/tilesets/cave_roof.png";
             tile_set_name_wall_north              = "data/tilesets/cave_wall_north.png";
@@ -1249,7 +1259,26 @@ void map_2D_class::random_map(int tiles_x, int tiles_y, int type_of_map_to_gener
             tile_set_name_wall_south_west_concave = "data/tilesets/cave_wall_south_west_concave.png";
             tile_set_name_objects                 = "data/tilesets/cave_objects.png";
         break;
-        case FOREST:
+        case GRASSLAND:
+            floor_width  = 64;
+            floor_height = 128;
+            wall_width   = 64;
+            wall_height  = 128;
+            tile_set_name_floor                   = "data/tilesets/grassland_floor.png";
+            tile_set_name_roof                    = "data/tilesets/grassland_roof.png";
+            tile_set_name_wall_north              = "data/tilesets/grassland_wall_north.png";
+            tile_set_name_wall_south              = "data/tilesets/grassland_wall_south.png";
+            tile_set_name_wall_east               = "data/tilesets/grassland_wall_east.png";
+            tile_set_name_wall_west               = "data/tilesets/grassland_wall_west.png";
+            tile_set_name_wall_north_east_convex  = "data/tilesets/grassland_wall_north_east_convex.png";
+            tile_set_name_wall_north_west_convex  = "data/tilesets/grassland_wall_north_west_convex.png";
+            tile_set_name_wall_south_east_convex  = "data/tilesets/grassland_wall_south_east_convex.png";
+            tile_set_name_wall_south_west_convex  = "data/tilesets/grassland_wall_south_west_convex.png";
+            tile_set_name_wall_north_east_concave = "data/tilesets/grassland_wall_north_east_concave.png";
+            tile_set_name_wall_north_west_concave = "data/tilesets/grassland_wall_north_west_concave.png";
+            tile_set_name_wall_south_east_concave = "data/tilesets/grassland_wall_south_east_concave.png";
+            tile_set_name_wall_south_west_concave = "data/tilesets/grassland_wall_south_west_concave.png";
+            tile_set_name_objects                 = "data/tilesets/grassland_objects.png";
         break;
         default:
         break;
@@ -1269,8 +1298,8 @@ void map_2D_class::random_map(int tiles_x, int tiles_y, int type_of_map_to_gener
         map_2D_class::tileset[TILE_SET_DEFAULT].number_of_tiles = map_2D_class::tileset[TILE_SET_DEFAULT].tile.frame_max;
         map_2D_class::tileset[TILE_SET_FLOOR].firstgid          = map_2D_class::tileset[TILE_SET_DEFAULT].number_of_tiles+map_2D_class::tileset[TILE_SET_DEFAULT].firstgid +1;
         map_2D_class::tileset[TILE_SET_FLOOR].image_source    = tile_set_name_floor;
-        map_2D_class::tileset[TILE_SET_FLOOR].tilewidth       = map_2D_class::tilewidth;
-        map_2D_class::tileset[TILE_SET_FLOOR].tileheight      = map_2D_class::tileheight;
+        map_2D_class::tileset[TILE_SET_FLOOR].tilewidth       = floor_width;
+        map_2D_class::tileset[TILE_SET_FLOOR].tileheight      = floor_height;
         map_2D_class::tileset[TILE_SET_FLOOR].tile.load_spritesheet(map_2D_class::tileset[TILE_SET_FLOOR].image_source,0,map_2D_class::tileset[TILE_SET_FLOOR].tilewidth,map_2D_class::tileset[TILE_SET_FLOOR].tileheight);
         map_2D_class::tileset[TILE_SET_FLOOR].number_of_tiles = map_2D_class::tileset[TILE_SET_FLOOR].tile.frame_max;
         map_2D_class::tileset[TILE_SET_ROOF].firstgid          = map_2D_class::tileset[TILE_SET_FLOOR].number_of_tiles+map_2D_class::tileset[TILE_SET_FLOOR].firstgid +1;
