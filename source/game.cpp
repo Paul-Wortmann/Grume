@@ -116,7 +116,7 @@ void game_class::init(void)
     init_inventory();
 
     game.resource.map_2D.load("data/maps/cave.tmx");
-    game.resource.map_2D.random_map(100,100,CAVE);
+    game.resource.map_2D.random_map(100,100,CAVE,DUNGEON);
 
     //zoom out for testing
     game.zoom.current = game.zoom.max;
@@ -338,7 +338,7 @@ void game_class::process(void)
 ///------------------------------------------------------------------------------------------
         if (game.core.io.key_r) // regenerate random map.
         {
-            game.resource.map_2D.random_map(100,100,CAVE);
+            game.resource.map_2D.random_map(100,100,CAVE,DUNGEON);
             game.resource.sound.menu_select_00.play();
             game.core.io.key_r                     = false;
             game.core.io.keyboard_delay_count      = 0;

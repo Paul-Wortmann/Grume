@@ -95,7 +95,7 @@ class map_2D_class
         void load(std::string file_name);
         map_2D_class(void);
        ~map_2D_class(void);
-        void random_map(int tiles_x, int tiles_y, int type_of_map_to_generate);
+        void random_map(int tiles_x, int tiles_y, int type_of_map_to_generate, int type_of_tile_set_to_use);
 };
 
 #endif //MAP_H_2D

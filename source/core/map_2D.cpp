@@ -69,7 +69,7 @@ void map_2D_class::draw(void)
     tileset_class debug_tileset;
     debug_tileset.tilewidth  = 64;
     debug_tileset.tileheight = 32;
-    debug_tileset.image_source = "data/tilesets/test_tileset.png";
+    debug_tileset.image_source = "data/tilesets/default_tileset.png";
     debug_tileset.tile.load_spritesheet(debug_tileset.image_source,0,debug_tileset.tilewidth,debug_tileset.tileheight);
     debug_tileset.number_of_tiles = debug_tileset.tile.frame_max;
 //-----------------------------
@@ -687,25 +687,26 @@ map_2D_class::~map_2D_class(void)
 
 //------------------------------ Random map generation below -----------------------------------------------------------------------------------
 
-void map_2D_class::random_map(int tiles_x, int tiles_y, int type_of_map_to_generate)
+void map_2D_class::random_map(int tiles_x, int tiles_y, int type_of_map_to_generate, int type_of_tile_set_to_use)
 {
     #define FLOOR 1
     #define WALL  2
 
-    #define TILE_SET_FLOOR                       0
-    #define TILE_SET_WALL_NORTH                  1
-    #define TILE_SET_WALL_SOUTH                  2
-    #define TILE_SET_WALL_EAST                   3
-    #define TILE_SET_WALL_WEST                   4
-    #define TILE_SET_WALL_NORTH_EAST_CONVEX      5
-    #define TILE_SET_WALL_NORTH_WEST_CONVEX      6
-    #define TILE_SET_WALL_SOUTH_EAST_CONVEX      7
-    #define TILE_SET_WALL_SOUTH_WEST_CONVEX      8
-    #define TILE_SET_WALL_NORTH_EAST_CONCAVE     9
-    #define TILE_SET_WALL_NORTH_WEST_CONCAVE     10
-    #define TILE_SET_WALL_SOUTH_EAST_CONCAVE     11
-    #define TILE_SET_WALL_SOUTH_WEST_CONCAVE     12
-    #define TILE_SET_OBJECTS                     13
+    #define TILE_SET_DEFAULT                     0
+    #define TILE_SET_FLOOR                       1
+    #define TILE_SET_WALL_NORTH                  2
+    #define TILE_SET_WALL_SOUTH                  3
+    #define TILE_SET_WALL_EAST                   4
+    #define TILE_SET_WALL_WEST                   5
+    #define TILE_SET_WALL_NORTH_EAST_CONVEX      6
+    #define TILE_SET_WALL_NORTH_WEST_CONVEX      7
+    #define TILE_SET_WALL_SOUTH_EAST_CONVEX      8
+    #define TILE_SET_WALL_SOUTH_WEST_CONVEX      9
+    #define TILE_SET_WALL_NORTH_EAST_CONCAVE     10
+    #define TILE_SET_WALL_NORTH_WEST_CONCAVE     11
+    #define TILE_SET_WALL_SOUTH_EAST_CONCAVE     12
+    #define TILE_SET_WALL_SOUTH_WEST_CONCAVE     13
+    #define TILE_SET_OBJECTS                     14
 
     //----------------------------------------------------------------------------------------------------------------
     //| Generate random room structure                                                                               |
@@ -739,7 +740,7 @@ void map_2D_class::random_map(int tiles_x, int tiles_y, int type_of_map_to_gener
         map_2D_class::tilewidth                 = DEFAULT_FRAME_WIDTH;
         map_2D_class::tileheight                = DEFAULT_FRAME_HEIGHT;
         map_2D_class::tileset[0].firstgid       = 0;
-        map_2D_class::tileset[0].image_source   = "data/tilesets/test_tileset.png";
+        map_2D_class::tileset[0].image_source   = "data/tilesets/default_tileset.png";
         map_2D_class::tileset[0].tilewidth      = map_2D_class::tilewidth;
         map_2D_class::tileset[0].tileheight     = map_2D_class::tileheight;
         map_2D_class::tileset[0].tile.load_spritesheet(map_2D_class::tileset[0].image_source,0);
@@ -1193,25 +1194,40 @@ void map_2D_class::random_map(int tiles_x, int tiles_y, int type_of_map_to_gener
     //----------------------------------------------------------------------------------------------------------------
     //| Apply Tile-set                                                                                               |
     //----------------------------------------------------------------------------------------------------------------
-    std::string tile_set_name_floor                   = "data/tilesets/test_tileset.png";
-    std::string tile_set_name_wall_north              = "data/tilesets/test_tileset.png";
-    std::string tile_set_name_wall_south              = "data/tilesets/test_tileset.png";
-    std::string tile_set_name_wall_east               = "data/tilesets/test_tileset.png";
-    std::string tile_set_name_wall_west               = "data/tilesets/test_tileset.png";
-    std::string tile_set_name_wall_north_east_convex  = "data/tilesets/test_tileset.png";
-    std::string tile_set_name_wall_north_west_convex  = "data/tilesets/test_tileset.png";
-    std::string tile_set_name_wall_south_east_convex  = "data/tilesets/test_tileset.png";
-    std::string tile_set_name_wall_south_west_convex  = "data/tilesets/test_tileset.png";
-    std::string tile_set_name_wall_north_east_concave = "data/tilesets/test_tileset.png";
-    std::string tile_set_name_wall_north_west_concave = "data/tilesets/test_tileset.png";
-    std::string tile_set_name_wall_south_east_concave = "data/tilesets/test_tileset.png";
-    std::string tile_set_name_wall_south_west_concave = "data/tilesets/test_tileset.png";
-    std::string tile_set_name_objects                 = "data/tilesets/test_tileset.png";
+    std::string tile_set_name_default                 = "data/tilesets/default_tileset.png";
+    std::string tile_set_name_floor                   = "data/tilesets/default_tileset.png";
+    std::string tile_set_name_wall_north              = "data/tilesets/default_tileset.png";
+    std::string tile_set_name_wall_south              = "data/tilesets/default_tileset.png";
+    std::string tile_set_name_wall_east               = "data/tilesets/default_tileset.png";
+    std::string tile_set_name_wall_west               = "data/tilesets/default_tileset.png";
+    std::string tile_set_name_wall_north_east_convex  = "data/tilesets/default_tileset.png";
+    std::string tile_set_name_wall_north_west_convex  = "data/tilesets/default_tileset.png";
+    std::string tile_set_name_wall_south_east_convex  = "data/tilesets/default_tileset.png";
+    std::string tile_set_name_wall_south_west_convex  = "data/tilesets/default_tileset.png";
+    std::string tile_set_name_wall_north_east_concave = "data/tilesets/default_tileset.png";
+    std::string tile_set_name_wall_north_west_concave = "data/tilesets/default_tileset.png";
+    std::string tile_set_name_wall_south_east_concave = "data/tilesets/default_tileset.png";
+    std::string tile_set_name_wall_south_west_concave = "data/tilesets/default_tileset.png";
+    std::string tile_set_name_objects                 = "data/tilesets/default_tileset.png";
     int  wall_width  = 64;
     int  wall_height = 128;
-    switch (type_of_map_to_generate)
+    switch (type_of_tile_set_to_use)
     {
         case DUNGEON:
+            tile_set_name_floor                   = "data/tilesets/dungeon_floor.png";
+            tile_set_name_wall_north              = "data/tilesets/dungeon_wall_north.png";
+            tile_set_name_wall_south              = "data/tilesets/dungeon_wall_south.png";
+            tile_set_name_wall_east               = "data/tilesets/dungeon_wall_east.png";
+            tile_set_name_wall_west               = "data/tilesets/dungeon_wall_west.png";
+            tile_set_name_wall_north_east_convex  = "data/tilesets/dungeon_wall_north_east_convex.png";
+            tile_set_name_wall_north_west_convex  = "data/tilesets/dungeon_wall_north_west_convex.png";
+            tile_set_name_wall_south_east_convex  = "data/tilesets/dungeon_wall_south_east_convex.png";
+            tile_set_name_wall_south_west_convex  = "data/tilesets/dungeon_wall_south_west_convex.png";
+            tile_set_name_wall_north_east_concave = "data/tilesets/dungeon_wall_north_east_concave.png";
+            tile_set_name_wall_north_west_concave = "data/tilesets/dungeon_wall_north_west_concave.png";
+            tile_set_name_wall_south_east_concave = "data/tilesets/dungeon_wall_south_east_concave.png";
+            tile_set_name_wall_south_west_concave = "data/tilesets/dungeon_wall_south_west_concave.png";
+            tile_set_name_objects                 = "data/tilesets/dungeon_objects.png";
         break;
         case CAVE:
             tile_set_name_floor                   = "data/tilesets/cave_floor.png";
@@ -1227,21 +1243,27 @@ void map_2D_class::random_map(int tiles_x, int tiles_y, int type_of_map_to_gener
             tile_set_name_wall_north_west_concave = "data/tilesets/cave_wall_north_west_concave.png";
             tile_set_name_wall_south_east_concave = "data/tilesets/cave_wall_south_east_concave.png";
             tile_set_name_wall_south_west_concave = "data/tilesets/cave_wall_south_west_concave.png";
-            //tile_set_name_objects                 = "data/tilesets/cave_wall_objects.png";
+            tile_set_name_objects                 = "data/tilesets/cave_objects.png";
         break;
         case FOREST:
         break;
         default:
         break;
     }
-    // load test tile-sets
+    // load tile-sets
     {
         if (map_2D_class::tileset != NULL) delete map_2D_class::tileset;
-        map_2D_class::number_of_tilesets         = 14;
+        map_2D_class::number_of_tilesets         = 15;
         map_2D_class::tileset                    = new tileset_class [map_2D_class::number_of_tilesets];
         map_2D_class::tilewidth                  = DEFAULT_FRAME_WIDTH;
         map_2D_class::tileheight                 = DEFAULT_FRAME_HEIGHT;
-        map_2D_class::tileset[TILE_SET_FLOOR].firstgid        = 1;
+        map_2D_class::tileset[TILE_SET_DEFAULT].firstgid        = 1;
+        map_2D_class::tileset[TILE_SET_DEFAULT].image_source    = tile_set_name_default;
+        map_2D_class::tileset[TILE_SET_DEFAULT].tilewidth       = map_2D_class::tilewidth;
+        map_2D_class::tileset[TILE_SET_DEFAULT].tileheight      = map_2D_class::tileheight;
+        map_2D_class::tileset[TILE_SET_DEFAULT].tile.load_spritesheet(map_2D_class::tileset[TILE_SET_DEFAULT].image_source,0,map_2D_class::tileset[TILE_SET_DEFAULT].tilewidth,map_2D_class::tileset[TILE_SET_DEFAULT].tileheight);
+        map_2D_class::tileset[TILE_SET_DEFAULT].number_of_tiles = map_2D_class::tileset[TILE_SET_DEFAULT].tile.frame_max;
+        map_2D_class::tileset[TILE_SET_FLOOR].firstgid          = map_2D_class::tileset[TILE_SET_DEFAULT].number_of_tiles+map_2D_class::tileset[TILE_SET_DEFAULT].firstgid +1;
         map_2D_class::tileset[TILE_SET_FLOOR].image_source    = tile_set_name_floor;
         map_2D_class::tileset[TILE_SET_FLOOR].tilewidth       = map_2D_class::tilewidth;
         map_2D_class::tileset[TILE_SET_FLOOR].tileheight      = map_2D_class::tileheight;
@@ -1321,8 +1343,8 @@ void map_2D_class::random_map(int tiles_x, int tiles_y, int type_of_map_to_gener
         map_2D_class::tileset[TILE_SET_WALL_SOUTH_WEST_CONCAVE].number_of_tiles = map_2D_class::tileset[TILE_SET_WALL_SOUTH_WEST_CONCAVE].tile.frame_max;
         map_2D_class::tileset[TILE_SET_OBJECTS].firstgid        = map_2D_class::tileset[TILE_SET_WALL_SOUTH_WEST_CONCAVE].number_of_tiles+map_2D_class::tileset[TILE_SET_WALL_SOUTH_WEST_CONCAVE].firstgid +1;
         map_2D_class::tileset[TILE_SET_OBJECTS].image_source    = tile_set_name_objects;
-        map_2D_class::tileset[TILE_SET_OBJECTS].tilewidth       = map_2D_class::tilewidth;
-        map_2D_class::tileset[TILE_SET_OBJECTS].tileheight      = map_2D_class::tileheight;
+        map_2D_class::tileset[TILE_SET_OBJECTS].tilewidth       = wall_width;
+        map_2D_class::tileset[TILE_SET_OBJECTS].tileheight      = wall_height;
         map_2D_class::tileset[TILE_SET_OBJECTS].tile.load_spritesheet(map_2D_class::tileset[TILE_SET_OBJECTS].image_source,0,map_2D_class::tileset[TILE_SET_OBJECTS].tilewidth,map_2D_class::tileset[TILE_SET_OBJECTS].tileheight);
         map_2D_class::tileset[TILE_SET_OBJECTS].number_of_tiles = map_2D_class::tileset[TILE_SET_OBJECTS].tile.frame_max;
     }
@@ -1339,6 +1361,26 @@ void map_2D_class::random_map(int tiles_x, int tiles_y, int type_of_map_to_gener
                 random_number = random(random_seed*4);
                 if (random_number <= (random_seed*3)) map_2D_class::tile[tile_count].tile = 1;
                 else map_2D_class::tile[tile_count].tile = (random_number - random_seed*3);
+                // Randomly add cave objects.
+                if (   (fill_data[tile_count+1].tile_data         == FLOOR)
+                    && (fill_data[tile_count-1].tile_data         == FLOOR)
+                    && (fill_data[tile_count+tiles_x].tile_data   == FLOOR)
+                    && (fill_data[tile_count+tiles_x+1].tile_data == FLOOR)
+                    && (fill_data[tile_count+tiles_x-1].tile_data == FLOOR)
+                    && (fill_data[tile_count-tiles_x].tile_data   == FLOOR)
+                    && (fill_data[tile_count-tiles_x+1].tile_data == FLOOR)
+                    && (fill_data[tile_count-tiles_x-1].tile_data == FLOOR))
+                    {
+                        if(random(1000) < 10)
+                        {
+                            map_2D_class::tile[tile_count].object_tileset = TILE_SET_OBJECTS;
+                            random_seed     = map_2D_class::tileset[TILE_SET_OBJECTS].number_of_tiles;
+                            random_number = random(random_seed*4);
+                            if (random_number <= (random_seed*3)) map_2D_class::tile[tile_count].object = 1;
+                            else map_2D_class::tile[tile_count].object = (random_number - random_seed*3);
+                        }
+                    }
+
             break;
             case WALL:
                 map_2D_class::tile[tile_count].tile_tileset = TILE_SET_FLOOR;
@@ -1553,7 +1595,7 @@ void map_2D_class::random_map(int tiles_x, int tiles_y, int type_of_map_to_gener
                 }
                 if (!wall_placed)
                 {
-                    map_2D_class::tile[tile_count].tile_tileset = 13;
+                    map_2D_class::tile[tile_count].tile_tileset = TILE_SET_DEFAULT;
                     map_2D_class::tile[tile_count].tile         = 0; // set to '1' for testing, else '0' for normal
                 }
             break;
