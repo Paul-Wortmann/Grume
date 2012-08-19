@@ -694,19 +694,20 @@ void map_2D_class::random_map(int tiles_x, int tiles_y, int type_of_map_to_gener
 
     #define TILE_SET_DEFAULT                     0
     #define TILE_SET_FLOOR                       1
-    #define TILE_SET_WALL_NORTH                  2
-    #define TILE_SET_WALL_SOUTH                  3
-    #define TILE_SET_WALL_EAST                   4
-    #define TILE_SET_WALL_WEST                   5
-    #define TILE_SET_WALL_NORTH_EAST_CONVEX      6
-    #define TILE_SET_WALL_NORTH_WEST_CONVEX      7
-    #define TILE_SET_WALL_SOUTH_EAST_CONVEX      8
-    #define TILE_SET_WALL_SOUTH_WEST_CONVEX      9
-    #define TILE_SET_WALL_NORTH_EAST_CONCAVE     10
-    #define TILE_SET_WALL_NORTH_WEST_CONCAVE     11
-    #define TILE_SET_WALL_SOUTH_EAST_CONCAVE     12
-    #define TILE_SET_WALL_SOUTH_WEST_CONCAVE     13
-    #define TILE_SET_OBJECTS                     14
+    #define TILE_SET_ROOF                        2
+    #define TILE_SET_WALL_NORTH                  3
+    #define TILE_SET_WALL_SOUTH                  4
+    #define TILE_SET_WALL_EAST                   5
+    #define TILE_SET_WALL_WEST                   6
+    #define TILE_SET_WALL_NORTH_EAST_CONVEX      7
+    #define TILE_SET_WALL_NORTH_WEST_CONVEX      8
+    #define TILE_SET_WALL_SOUTH_EAST_CONVEX      9
+    #define TILE_SET_WALL_SOUTH_WEST_CONVEX      10
+    #define TILE_SET_WALL_NORTH_EAST_CONCAVE     11
+    #define TILE_SET_WALL_NORTH_WEST_CONCAVE     12
+    #define TILE_SET_WALL_SOUTH_EAST_CONCAVE     13
+    #define TILE_SET_WALL_SOUTH_WEST_CONCAVE     14
+    #define TILE_SET_OBJECTS                     15
 
     //----------------------------------------------------------------------------------------------------------------
     //| Generate random room structure                                                                               |
@@ -1196,6 +1197,7 @@ void map_2D_class::random_map(int tiles_x, int tiles_y, int type_of_map_to_gener
     //----------------------------------------------------------------------------------------------------------------
     std::string tile_set_name_default                 = "data/tilesets/default_tileset.png";
     std::string tile_set_name_floor                   = "data/tilesets/default_tileset.png";
+    std::string tile_set_name_roof                    = "data/tilesets/default_tileset.png";
     std::string tile_set_name_wall_north              = "data/tilesets/default_tileset.png";
     std::string tile_set_name_wall_south              = "data/tilesets/default_tileset.png";
     std::string tile_set_name_wall_east               = "data/tilesets/default_tileset.png";
@@ -1215,6 +1217,7 @@ void map_2D_class::random_map(int tiles_x, int tiles_y, int type_of_map_to_gener
     {
         case DUNGEON:
             tile_set_name_floor                   = "data/tilesets/dungeon_floor.png";
+            tile_set_name_roof                    = "data/tilesets/dungeon_roof.png";
             tile_set_name_wall_north              = "data/tilesets/dungeon_wall_north.png";
             tile_set_name_wall_south              = "data/tilesets/dungeon_wall_south.png";
             tile_set_name_wall_east               = "data/tilesets/dungeon_wall_east.png";
@@ -1231,6 +1234,7 @@ void map_2D_class::random_map(int tiles_x, int tiles_y, int type_of_map_to_gener
         break;
         case CAVE:
             tile_set_name_floor                   = "data/tilesets/cave_floor.png";
+            tile_set_name_roof                    = "data/tilesets/cave_roof.png";
             tile_set_name_wall_north              = "data/tilesets/cave_wall_north.png";
             tile_set_name_wall_south              = "data/tilesets/cave_wall_south.png";
             tile_set_name_wall_east               = "data/tilesets/cave_wall_east.png";
@@ -1253,7 +1257,7 @@ void map_2D_class::random_map(int tiles_x, int tiles_y, int type_of_map_to_gener
     // load tile-sets
     {
         if (map_2D_class::tileset != NULL) delete map_2D_class::tileset;
-        map_2D_class::number_of_tilesets         = 15;
+        map_2D_class::number_of_tilesets         = 16;
         map_2D_class::tileset                    = new tileset_class [map_2D_class::number_of_tilesets];
         map_2D_class::tilewidth                  = DEFAULT_FRAME_WIDTH;
         map_2D_class::tileheight                 = DEFAULT_FRAME_HEIGHT;
@@ -1269,7 +1273,13 @@ void map_2D_class::random_map(int tiles_x, int tiles_y, int type_of_map_to_gener
         map_2D_class::tileset[TILE_SET_FLOOR].tileheight      = map_2D_class::tileheight;
         map_2D_class::tileset[TILE_SET_FLOOR].tile.load_spritesheet(map_2D_class::tileset[TILE_SET_FLOOR].image_source,0,map_2D_class::tileset[TILE_SET_FLOOR].tilewidth,map_2D_class::tileset[TILE_SET_FLOOR].tileheight);
         map_2D_class::tileset[TILE_SET_FLOOR].number_of_tiles = map_2D_class::tileset[TILE_SET_FLOOR].tile.frame_max;
-        map_2D_class::tileset[TILE_SET_WALL_NORTH].firstgid        = map_2D_class::tileset[TILE_SET_FLOOR].number_of_tiles+map_2D_class::tileset[TILE_SET_FLOOR].firstgid +1;
+        map_2D_class::tileset[TILE_SET_ROOF].firstgid          = map_2D_class::tileset[TILE_SET_FLOOR].number_of_tiles+map_2D_class::tileset[TILE_SET_FLOOR].firstgid +1;
+        map_2D_class::tileset[TILE_SET_ROOF].image_source    = tile_set_name_roof;
+        map_2D_class::tileset[TILE_SET_ROOF].tilewidth       = wall_width;
+        map_2D_class::tileset[TILE_SET_ROOF].tileheight      = wall_height;
+        map_2D_class::tileset[TILE_SET_ROOF].tile.load_spritesheet(map_2D_class::tileset[TILE_SET_ROOF].image_source,0,map_2D_class::tileset[TILE_SET_ROOF].tilewidth,map_2D_class::tileset[TILE_SET_ROOF].tileheight);
+        map_2D_class::tileset[TILE_SET_ROOF].number_of_tiles = map_2D_class::tileset[TILE_SET_ROOF].tile.frame_max;
+        map_2D_class::tileset[TILE_SET_WALL_NORTH].firstgid        = map_2D_class::tileset[TILE_SET_ROOF].number_of_tiles+map_2D_class::tileset[TILE_SET_ROOF].firstgid +1;
         map_2D_class::tileset[TILE_SET_WALL_NORTH].image_source    = tile_set_name_wall_north;
         map_2D_class::tileset[TILE_SET_WALL_NORTH].tilewidth       = wall_width;
         map_2D_class::tileset[TILE_SET_WALL_NORTH].tileheight      = wall_height;
@@ -1595,8 +1605,10 @@ void map_2D_class::random_map(int tiles_x, int tiles_y, int type_of_map_to_gener
                 }
                 if (!wall_placed)
                 {
-                    map_2D_class::tile[tile_count].tile_tileset = TILE_SET_DEFAULT;
-                    map_2D_class::tile[tile_count].tile         = 0; // set to '1' for testing, else '0' for normal
+                    map_2D_class::tile[tile_count].tile_tileset   = TILE_SET_DEFAULT;
+                    map_2D_class::tile[tile_count].tile           = 0;
+                    map_2D_class::tile[tile_count].object_tileset = TILE_SET_ROOF;
+                    map_2D_class::tile[tile_count].object         = 1;
                 }
             break;
             default:
