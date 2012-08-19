@@ -34,6 +34,7 @@ game_class::game_class(void)
 
 void game_class::init(void)
 {
+    game_class::debug = false;
     glDisable(GL_DEPTH_TEST);
     //--- initial state of the background ---
     game.core.background.set_data ( 1, 1, 0, 0.0f, 0.0f, 0.0000f, 0.00000f, game.resource.texture.background_00.ref_number);
@@ -340,6 +341,12 @@ void game_class::process(void)
             game.resource.map_2D.random_map(100,100,CAVE);
             game.resource.sound.menu_select_00.play();
             game.core.io.key_r                     = false;
+            game.core.io.keyboard_delay_count      = 0;
+        }
+        if (game.core.io.key_d) // toggle debug.
+        {
+            game.debug = !game.debug;
+            game.core.io.key_d                     = false;
             game.core.io.keyboard_delay_count      = 0;
         }
 

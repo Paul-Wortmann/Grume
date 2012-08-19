@@ -53,6 +53,7 @@ class game_class
 {
     private:
     public:
+        bool              debug;
         int               event;
         int               state;
         save_game_class   save_01;
