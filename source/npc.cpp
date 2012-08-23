@@ -40,11 +40,19 @@ health_bar_class::health_bar_class(void)
     health_bar_class::position_z    = 0.0f;
     health_bar_class::maximum       = 0.0f;
     health_bar_class::value         = 0.0f;
+    health_bar_class::mouse_over         = false;
+    health_bar_class::mouse_over_count   = 0;
+    health_bar_class::mouse_over_maximum = 10;
 };
 
 health_bar_class::~health_bar_class(void)
 {
 
+};
+
+void health_bar_class::draw_tooltip(void)
+{
+    game.resource.font.font_1.Write(255,255,255,255,game.core.io.mouse_x,game.core.io.mouse_y,4.8f,32.0f,(int)((health_bar_class::value/health_bar_class::maximum)*100),"%             ");
 };
 
 void health_bar_class::render(void)
@@ -54,6 +62,7 @@ void health_bar_class::render(void)
     game.resource.texture.render(false,health_bar_class::texture_base,health_bar_class::position_x,health_bar_class::position_y,health_bar_class::position_z,health_bar_class::size_x/2.0f,health_bar_class::size_y/2.0f);
     game.resource.texture.render(false,health_bar_class::texture_bar,health_bar_class::position_x-(health_bar_class::size_x/5.2f)+(temp_float/2.0f),health_bar_class::position_y,health_bar_class::position_z,temp_float,health_bar_class::size_y/4.0f);
     game.resource.texture.render(false,health_bar_class::texture_front,health_bar_class::position_x,health_bar_class::position_y,health_bar_class::position_z,health_bar_class::size_x/2.0f,health_bar_class::size_y/2.0f);
+    if (health_bar_class::mouse_over_count >= health_bar_class::mouse_over_maximum) health_bar_class::draw_tooltip();
 };
 
 //------------------------------------------------------------------------------------------------------------------------
@@ -78,6 +87,11 @@ void health_class::process(void)
     if (health_class::value > health_class::maximum) health_class::value = health_class::maximum;
     if (health_class::value < 0.0f) health_class::value = 0.0f;
     health_class::bar.value    = health_class::value;
+    if (game.core.physics.point_in_quadrangle(health_class::bar.position_x,health_class::bar.size_x/2,health_class::bar.position_y,health_class::bar.size_y/2,game.core.io.mouse_x,game.core.io.mouse_y)) health_class::bar.mouse_over = true;
+    else health_class::bar.mouse_over = false;
+    if (health_class::bar.mouse_over) health_class::bar.mouse_over_count++;
+    else health_class::bar.mouse_over_count = 0;
+    if (health_class::bar.mouse_over_count >= health_class::bar.mouse_over_maximum) health_class::bar.mouse_over_count = health_class::bar.mouse_over_maximum;
 };
 
 //------------------------------------------------------------------------------------------------------------------------

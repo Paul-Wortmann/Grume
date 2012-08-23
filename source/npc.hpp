@@ -43,6 +43,10 @@ class health_bar_class
         int               texture_front;
         float             maximum;
         float             value;
+        bool              mouse_over;
+        int               mouse_over_count;
+        int               mouse_over_maximum;
+        void              draw_tooltip(void);
         void              render(void);
 };
 
