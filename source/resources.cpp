@@ -1470,11 +1470,11 @@ void resource_class::load_all(void)
     resource_class::load_maps_3D();
     resource_class::load_3D_models();
     resource_class::load_test_data();
-    resource_class::write_log_file_count();
     for(int tile_set_count = 0; tile_set_count < game.resource.map_2D.number_of_tilesets; tile_set_count++)
     {
         game.resource.map_2D.tileset[tile_set_count].tile.load_spritesheet(game.resource.map_2D.tileset[tile_set_count].image_source,0,game.resource.map_2D.tileset[tile_set_count].tilewidth,game.resource.map_2D.tileset[tile_set_count].tileheight);
     }
+    resource_class::write_log_file_count();
 };
 
 void resource_class::initialize(void)
