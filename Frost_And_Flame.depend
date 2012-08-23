@@ -555,7 +555,7 @@
 1301111156 c:\mingw\include\oleidl.h
 	<objfwd.h>
 
-1344752206 c:\_git_\frost_and_flame\source\core\log.hpp
+1345725688 c:\_git_\frost_and_flame\source\core\log.hpp
 	<string>
 
 1339158410 c:\_git_\frost_and_flame\source\core\timer.hpp
@@ -648,7 +648,7 @@
 	"quest_log.hpp"
 	"npcvendor.hpp"
 
-1326868751 c:\_git_\frost_and_flame\source\spell_book.hpp
+1345724947 c:\_git_\frost_and_flame\source\spell_book.hpp
 
 1326868751 c:\_git_\frost_and_flame\source\equipment.hpp
 
@@ -691,7 +691,7 @@
 1336190037 source:c:\_git_\frost_and_flame\source\core\rs232.cpp
 	"rs232.hpp"
 
-1344705674 source:c:\_git_\frost_and_flame\source\main.cpp
+1345725887 source:c:\_git_\frost_and_flame\source\main.cpp
 	"game.hpp"
 	<SDL/SDL.h>
 	"core/misc.hpp"
@@ -724,13 +724,13 @@
 	"core.hpp"
 	"file.hpp"
 
-1339423353 source:c:\_git_\frost_and_flame\source\npcvendor.cpp
+1345726646 source:c:\_git_\frost_and_flame\source\npcvendor.cpp
 	"core/misc.hpp"
 	"npcvendor.hpp"
 	"game.hpp"
 	"items.hpp"
 
-1339423519 source:c:\_git_\frost_and_flame\source\quest_log.cpp
+1345726646 source:c:\_git_\frost_and_flame\source\quest_log.cpp
 	"quest_log.hpp"
 	"game.hpp"
 
@@ -803,7 +803,7 @@
 	<string>
 	"graphics.hpp"
 
-1339423441 source:c:\_git_\frost_and_flame\source\spell_book.cpp
+1345726646 source:c:\_git_\frost_and_flame\source\spell_book.cpp
 	"spell_book.hpp"
 	"spells.hpp"
 	"game.hpp"
@@ -831,7 +831,7 @@
 1341722739 c:\_git_\frost_and_flame\source\balls.hpp
 	"core/physics.hpp"
 
-1343311113 source:c:\_git_\frost_and_flame\source\ui.cpp
+1345725144 source:c:\_git_\frost_and_flame\source\ui.cpp
 	"UI.hpp"
 	"game.hpp"
 	"core/misc.hpp"
@@ -846,15 +846,15 @@
 
 1329033616 c:\_git_\frost_and_flame\source\core\loader_tmx.hpp
 
-1341055172 source:c:\_git_\frost_and_flame\source\character.cpp
+1345726559 source:c:\_git_\frost_and_flame\source\character.cpp
 	"character.hpp"
 	"game.hpp"
 
-1344752244 source:c:\_git_\frost_and_flame\source\core\log.cpp
+1345725733 source:c:\_git_\frost_and_flame\source\core\log.cpp
 	<fstream>
 	"log.hpp"
 
-1339423460 source:c:\_git_\frost_and_flame\source\equipment.cpp
+1345726646 source:c:\_git_\frost_and_flame\source\equipment.cpp
 	"equipment.hpp"
 	"game.hpp"
 
@@ -922,7 +922,7 @@
 1336737891 source:c:\_git_\frost_and_flame\source\core\pathfinding.cpp
 	"pathfinding.hpp"
 
-1339423421 source:c:\_git_\frost_and_flame\source\inventory.cpp
+1345726646 source:c:\_git_\frost_and_flame\source\inventory.cpp
 	"core/misc.hpp"
 	"inventory.hpp"
 	"game.hpp"
@@ -936,7 +936,7 @@
 1345393367 c:\_git_\frost_and_flame\source\npc.hpp
 	<string>
 
-1342534205 source:c:\_git_\frost_and_flame\source\npc.cpp
+1345722661 source:c:\_git_\frost_and_flame\source\npc.cpp
 	"npc.hpp"
 	"game.hpp"
 

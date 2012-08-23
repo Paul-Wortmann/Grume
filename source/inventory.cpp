@@ -524,8 +524,8 @@ void inventory_slot_class::draw_tooltip(void)
 
 inventory_class::inventory_class(void)
 {
-    inventory_class::pos_x         = 0.5f;
-    inventory_class::pos_y         = 0.0f;
+    inventory_class::pos_x         = 0.25f;
+    inventory_class::pos_y         = 0.31f;
     inventory_class::pos_z         = 0.001;
     inventory_class::width         = 0.5f;
     inventory_class::height        = 1.0f;

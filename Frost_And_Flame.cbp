@@ -60,6 +60,7 @@
 			<Add directory='&quot;C:\MinGW\lib&quot;' />
 			<Add directory="\usr\lib" />
 		</Linker>
+		<Unit filename="changelog.txt" />
 		<Unit filename="source\UI.cpp" />
 		<Unit filename="source\UI.hpp" />
 		<Unit filename="source\balls.cpp" />

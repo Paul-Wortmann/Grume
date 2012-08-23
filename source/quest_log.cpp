@@ -140,8 +140,8 @@ void quest_log_slot_class::draw_drag(void)
 
 quest_log_class::quest_log_class(void)
 {
-    quest_log_class::pos_x         = 0.5f;
-    quest_log_class::pos_y         = 0.0f;
+    quest_log_class::pos_x         =-0.75f;
+    quest_log_class::pos_y         =-0.50f;
     quest_log_class::pos_z         = 0.001;
     quest_log_class::width         = 0.5f;
     quest_log_class::height        = 1.0f;

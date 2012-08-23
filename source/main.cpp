@@ -160,6 +160,14 @@ extern "C" int main(int argc, char** argv)
 // --------------------------------------------------------------------------------------------------------------------------
 // | Application terminated, cleanup and free resources etc...
 // --------------------------------------------------------------------------------------------------------------------------
+    game.core.log.file_write("------- Menu positions --------");
+    game.core.log.file_write("spell_book position - >  ",game.UI.spell_book.pos_x," - ",game.UI.spell_book.pos_x);
+    game.core.log.file_write("inventory  position - >  ",game.UI.inventory.pos_x ," - ",game.UI.inventory.pos_x );
+    game.core.log.file_write("character  position - >  ",game.UI.character.pos_x ," - ",game.UI.character.pos_x );
+    game.core.log.file_write("equipment  position - >  ",game.UI.equipment.pos_x ," - ",game.UI.equipment.pos_x );
+    game.core.log.file_write("npcvendor  position - >  ",game.UI.npcvendor.pos_x ," - ",game.UI.npcvendor.pos_x );
+    game.core.log.file_write("quest_log  position - >  ",game.UI.quest_log.pos_x ," - ",game.UI.quest_log.pos_x );
+    game.core.log.file_write("------- Menu positions --------");
     game.core.log.file_write(" ");
     game.core.log.file_write("# ---------------------------------------------- #");
     game.core.log.file_write(" ");
@@ -170,4 +178,5 @@ extern "C" int main(int argc, char** argv)
     SDL_Quit();
     return(true);
 };
+
 

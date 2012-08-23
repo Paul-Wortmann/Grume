@@ -191,8 +191,8 @@ void character_slot_class::draw_drag(void)
 
 character_class::character_class(void)
 {
-    character_class::pos_x         = 0.5f;
-    character_class::pos_y         = 0.0f;
+    character_class::pos_x         =-0.75f;
+    character_class::pos_y         = 0.31f;
     character_class::pos_z         = 0.001;
     character_class::width         = 0.5f;
     character_class::height        = 1.0f;

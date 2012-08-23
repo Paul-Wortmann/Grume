@@ -371,8 +371,8 @@ void equipment_slot_class::draw_tooltip(void)
 
 equipment_class::equipment_class(void)
 {
-    equipment_class::pos_x         = 0.5f;
-    equipment_class::pos_y         = 0.0f;
+    equipment_class::pos_x         =-0.25f;
+    equipment_class::pos_y         = 0.31f;
     equipment_class::pos_z         = 0.001;
     equipment_class::width         = 0.5f;
     equipment_class::height        = 1.0f;

@@ -577,7 +577,7 @@ void npcvendor_slot_class::draw_tooltip(void)
 npcvendor_class::npcvendor_class(void)
 {
     npcvendor_class::pos_x         = 0.5f;
-    npcvendor_class::pos_y         = 0.0f;
+    npcvendor_class::pos_y         = 0.5f;
     npcvendor_class::pos_z         = 0.001;
     npcvendor_class::width         = 0.5f;
     npcvendor_class::height        = 1.0f;

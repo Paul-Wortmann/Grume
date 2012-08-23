@@ -63,6 +63,14 @@ Starting Game...
  
 # ---------------------------------------------- #
  
+------- Menu positions --------
+spell_book position - >  0.75 - 0.75
+inventory  position - >  0.25 - 0.25
+character  position - >  -0.75 - -0.75
+equipment  position - >  -0.25 - -0.25
+npcvendor  position - >  0.5 - 0.5
+quest_log  position - >  -0.75 - -0.75
+------- Menu positions --------
  
 # ---------------------------------------------- #
  

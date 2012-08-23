@@ -197,8 +197,8 @@ void spell_slot_class::draw_tooltip(void)
 
 spell_book_class::spell_book_class(void)
 {
-    spell_book_class::pos_x         = 0.5f;
-    spell_book_class::pos_y         = 0.0f;
+    spell_book_class::pos_x         = 0.75f;
+    spell_book_class::pos_y         = 0.31f;
     spell_book_class::pos_z         = 0.001;
     spell_book_class::width         = 0.5f;
     spell_book_class::height        = 1.0f;
@@ -442,7 +442,6 @@ void spell_book_class::draw(void)
         if(spell_book_class::spell_slot[spell_slot_count].button_type > 0) spell_book_class::spell_slot[spell_slot_count].draw_tooltip();
     }
 };
-
 
 
 

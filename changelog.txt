@@ -1,17 +1,25 @@
 ﻿Due to university, work and the responsibilities of life,
 I feel that Frost and Flame has been coming on very slowly these past few months.
 It may be slow at the moment, but I am determined to complete this game,
-it may take longer than I had first anticipated. 
+it may take longer than I had first anticipated.
 These are not indications that the project will be terminated in the future,
 just that time is not permitting to proceed at a fast pace, at the moment.
 
 
 v0.10 - (2012-08-31)
+NPC   -> Added NPC health bar mouse over tool-tip.
+MAP2D -> Added a debug map view, toggled with "d" key.
+GFX   -> Reworked the dungeon tile-set for random generation.
+GFX   -> Reworked the grasslands tile-set for random generation.
+GFX   -> Reworked the cave tile-set for random generation.
+MAP2D -> Started implementing random cave generation using cellular automata.
+MAP2D -> Map_2D maps now load, render and manage their own tile-sets correctly.
+CORE  -> Added another overloaded file write to the log class.
 GAME  -> game.init() no longer called twice if starting a game from the start menu.
-GFX   -> Fixed a SIGTRAP caused when loading spretesheets over 512 frames in size.
+GFX   -> Fixed a SIGTRAP caused when loading sprite-sheets over 512 frames in size.
 GFX   -> Moved frame data into a dynamic array.
 FILE  -> path_remove() can now handle both forward and backward slashes.
-MAP2D -> Internad data structures for tiles and tilesets are now dynamic.
+MAP2D -> Improved the data structures for tiles and tile-sets.
 MAP2D -> Maps are now loaded on demand.
 MAP2D -> Changed map zoom from "z" and "x" to mouse wheel.
 LOC   -> xxxxx
@@ -23,7 +31,7 @@ GFX  -> Added new menu graphics.
 CORE -> Merged new branch.
 CORE -> Re-wrote menu system.
 CORE -> Improved response to display set errors.
-UI   -> Improved the drag behaviour of the player states class.
+UI   -> Improved the drag behavior of the player states class.
 LOC  -> 20088
 
 v0.08 - (2012-06-30)
@@ -38,7 +46,7 @@ LOC  -> 20311
 
 v0.07 - (2012-05-31)
 CORE -> Added movement stub to the player class.
-CORE -> Added base of the pathfinding class.
+CORE -> Added base of the path-finding class.
 UI   -> Player portrait now selectable when starting a new game.
 SND  -> Updated dependencies due to sound issues with mod files.
 CORE -> Removed <locale> header due to issues on win64 systems.
@@ -57,7 +65,7 @@ v0.05 - (2012-03-31)
 IO   -> Started the RS232 base code.
 GAME -> Added "npcvendor_sound_class".
 UI   -> Added mouse over tooltip for player portrait.
-GFX  -> Added some darker theamed textures.
+GFX  -> Added some darker themed textures.
 GFX  -> Added "well" object.
 OBJ  -> Fixed OBJ-MTL error in locating texture references.
 OBJ  -> OBJ resource data correctly freed on program close.
@@ -133,7 +141,7 @@ LOC  -> 0
 
 
 
--- 
+--
 Paul Wortmann
 E-mail : paul.wortmann@gmail.com
 Website: www.physhexgames.co.nr
