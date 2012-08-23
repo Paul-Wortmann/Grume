@@ -61,6 +61,9 @@
 			<Add directory="\usr\lib" />
 		</Linker>
 		<Unit filename="changelog.txt" />
+		<Unit filename="credits.txt" />
+		<Unit filename="default.cfg" />
+		<Unit filename="frost_and_flame.log" />
 		<Unit filename="source\UI.cpp" />
 		<Unit filename="source\UI.hpp" />
 		<Unit filename="source\balls.cpp" />

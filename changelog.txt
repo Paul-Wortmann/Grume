@@ -7,6 +7,7 @@ just that time is not permitting to proceed at a fast pace, at the moment.
 
 
 v0.10 - (2012-08-31)
+UI    -> Improved the default locations of the in game menus.
 NPC   -> Added NPC health bar mouse over tool-tip.
 MAP2D -> Added a debug map view, toggled with "d" key.
 GFX   -> Reworked the dungeon tile-set for random generation.
@@ -14,7 +15,7 @@ GFX   -> Reworked the grasslands tile-set for random generation.
 GFX   -> Reworked the cave tile-set for random generation.
 MAP2D -> Started implementing random cave generation using cellular automata.
 MAP2D -> Map_2D maps now load, render and manage their own tile-sets correctly.
-CORE  -> Added another overloaded file write to the log class.
+CORE  -> Added another two overloaded file writes to the log class.
 GAME  -> game.init() no longer called twice if starting a game from the start menu.
 GFX   -> Fixed a SIGTRAP caused when loading sprite-sheets over 512 frames in size.
 GFX   -> Moved frame data into a dynamic array.

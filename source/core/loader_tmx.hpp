@@ -39,6 +39,13 @@ class tmx_tile_class
        ~tmx_tile_class(void);
 };
 
+class tmx_layer_class
+{
+    public:
+        std::string        name;
+        tmx_tile_class    *tile;
+};
+
 class tmx_tileset_class
 {
     public:
@@ -63,7 +70,8 @@ class tmx_class
         int                height;
         int                tilewidth;
         int                tileheight;
-        tmx_tile_class    *tile;
+        tmx_layer_class   *layer;
+        int                number_of_layers;
         int                number_of_tiles;
         tmx_tileset_class *tileset;
         int                number_of_tilesets;

@@ -83,6 +83,7 @@ void tmx_class::load(std::string file_name)
     std::string  data_line;
     tmx_class::number_of_tiles    = 0;
     tmx_class::number_of_tilesets = 0;
+    tmx_class::number_of_layers   = 0;
     std::fstream script_file(file_name.c_str(),std::ios::in|std::ios::binary);
     if (script_file.is_open())
     {
@@ -163,6 +164,7 @@ void tmx_class::load(std::string file_name)
                             if (temp_string_key == "height")      tmx_class::height      = temp_int_data;
                             if (temp_string_key == "tileheight")  map_data               = false;
                         }
+                        if (temp_string_key == "layer name")      tmx_class::number_of_layers++;
                     }
                 }
             }
@@ -171,8 +173,12 @@ void tmx_class::load(std::string file_name)
         tmx_class::number_of_tilesets = tileset_count;
         script_file.clear();
         script_file.seekg(0, std::ios::beg);
-        tmx_class::tile               = new tmx_tile_class   [tmx_class::number_of_tiles+1];
         tmx_class::tileset            = new tmx_tileset_class[tmx_class::number_of_tilesets+1];
+        tmx_class::layer              = new tmx_layer_class  [tmx_class::number_of_layers+1];
+        for(layer_count = 0; layer_count <= tmx_class::number_of_layers ; layer_count++)
+        {
+            tmx_class::layer[layer_count].tile = new tmx_tile_class   [tmx_class::number_of_tiles+1];
+        }
         position_count                = 0;
         position_start                = 0;
         map_data                      = true;
@@ -225,7 +231,7 @@ void tmx_class::load(std::string file_name)
                         tileset_data = false;
                         tileset_count++;
                     }
-                    if (temp_string_key == "layer")
+                    if (temp_string_key == "layer name")
                     {
                         collision_data  = false;
                         object_data     = false;
@@ -307,35 +313,35 @@ void tmx_class::load(std::string file_name)
                             {
                                 if (collision_data)
                                 {
-                                    tmx_class::tile[tile_count].collision = temp_bool_data;
+                                    tmx_class::layer[layer_count].tile[tile_count].collision = temp_bool_data;
                                 }
                                 if (object_data)
                                 {
-                                    tmx_class::tile[tile_count].object_tileset = 0;
+                                    tmx_class::layer[layer_count].tile[tile_count].object_tileset = 0;
                                     for (int temp_tileset_count = 0; temp_tileset_count < tileset_count; temp_tileset_count++)
                                     {
                                         if (temp_int_data >= tmx_class::tileset[temp_tileset_count].firstgid)
                                         {
-                                            tmx_class::tile[tile_count].object_tileset = temp_tileset_count;
+                                            tmx_class::layer[layer_count].tile[tile_count].object_tileset = temp_tileset_count;
                                         }
                                     }
-                                    temp_int_data -= tmx_class::tileset[tmx_class::tile[tile_count].object_tileset].firstgid;
+                                    temp_int_data -= tmx_class::tileset[tmx_class::layer[layer_count].tile[tile_count].object_tileset].firstgid;
                                     temp_int_data += 1;
-                                    tmx_class::tile[tile_count].object       = temp_int_data;
+                                    tmx_class::layer[layer_count].tile[tile_count].object       = temp_int_data;
                                 }
                                 if (tile_data)
                                 {
-                                    tmx_class::tile[tile_count].tile_tileset = 0;
+                                    tmx_class::layer[layer_count].tile[tile_count].tile_tileset = 0;
                                     for (int temp_tileset_count = 0; temp_tileset_count < tileset_count; temp_tileset_count++)
                                     {
                                         if (temp_int_data >= tmx_class::tileset[temp_tileset_count].firstgid)
                                         {
-                                            tmx_class::tile[tile_count].tile_tileset = temp_tileset_count;
+                                            tmx_class::layer[layer_count].tile[tile_count].tile_tileset = temp_tileset_count;
                                         }
                                     }
-                                    temp_int_data -= tmx_class::tileset[tmx_class::tile[tile_count].tile_tileset].firstgid;
+                                    temp_int_data -= tmx_class::tileset[tmx_class::layer[layer_count].tile[tile_count].tile_tileset].firstgid;
                                     temp_int_data += 1;
-                                    tmx_class::tile[tile_count].tile         = temp_int_data;
+                                    tmx_class::layer[layer_count].tile[tile_count].tile         = temp_int_data;
                                 }
                                 tile_count++;
                             }
@@ -352,6 +358,7 @@ void tmx_class::load(std::string file_name)
 
 void tmx_class::save(std::string file_name)
 {
+    int layer_count = 0;
     std::fstream script_file(file_name.c_str(),std::ios::out|std::ios::binary|std::ios::trunc);
     if (script_file.is_open())
     {
@@ -468,7 +475,7 @@ void tmx_class::save(std::string file_name)
         {
             script_file << "   <tile gid=";
             script_file << '"';
-            script_file << ((tmx_class::tile[tile_count].tile + tmx_class::tileset[tmx_class::tile[tile_count].tile_tileset].firstgid) - 1);
+            script_file << ((tmx_class::layer[layer_count].tile[tile_count].tile + tmx_class::tileset[tmx_class::layer[layer_count].tile[tile_count].tile_tileset].firstgid) - 1);
             script_file << '"';
             script_file << "/>";
             script_file << "\n";
@@ -497,7 +504,7 @@ void tmx_class::save(std::string file_name)
         {
             script_file << "   <tile gid=";
             script_file << '"';
-            script_file << ((tmx_class::tile[tile_count].object + tmx_class::tileset[tmx_class::tile[tile_count].object_tileset].firstgid) - 1);
+            script_file << ((tmx_class::layer[layer_count].tile[tile_count].object + tmx_class::tileset[tmx_class::layer[layer_count].tile[tile_count].object_tileset].firstgid) - 1);
             script_file << '"';
             script_file << "/>";
             script_file << "\n";

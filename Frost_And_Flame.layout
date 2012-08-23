@@ -8,7 +8,7 @@
 	</File>
 	<File name="changelog.txt" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="263" topLine="0" />
+			<Cursor1 position="420" topLine="0" />
 		</Cursor>
 	</File>
 	<File name="source\menu_system.hpp" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -31,9 +31,9 @@
 			<Cursor1 position="3036" topLine="66" />
 		</Cursor>
 	</File>
-	<File name="source\npcvendor.cpp" open="1" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="source\npcvendor.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="0" topLine="0" />
+			<Cursor1 position="32428" topLine="567" />
 		</Cursor>
 	</File>
 	<File name="source\core\file.hpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -56,9 +56,9 @@
 			<Cursor1 position="4647" topLine="132" />
 		</Cursor>
 	</File>
-	<File name="source\quest_log.cpp" open="1" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="source\quest_log.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="0" topLine="0" />
+			<Cursor1 position="6066" topLine="132" />
 		</Cursor>
 	</File>
 	<File name="source\core\loader_obj.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -86,6 +86,11 @@
 			<Cursor1 position="187326" topLine="1451" />
 		</Cursor>
 	</File>
+	<File name="source\core\loader_tmx.cpp" open="1" top="1" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="0" topLine="0" />
+		</Cursor>
+	</File>
 	<File name="source\core\io.hpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="1778" topLine="27" />
@@ -94,6 +99,11 @@
 	<File name="source\resources.hpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="18194" topLine="521" />
+		</Cursor>
+	</File>
+	<File name="source\core\loader_tmx.hpp" open="1" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="0" topLine="0" />
 		</Cursor>
 	</File>
 	<File name="source\core\log.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -121,9 +131,9 @@
 			<Cursor1 position="51978" topLine="833" />
 		</Cursor>
 	</File>
-	<File name="source\spell_book.cpp" open="1" top="1" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="source\spell_book.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="10843" topLine="175" />
+			<Cursor1 position="10703" topLine="191" />
 		</Cursor>
 	</File>
 	<File name="source\core\map_2D.cpp" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -156,9 +166,9 @@
 			<Cursor1 position="1542" topLine="50" />
 		</Cursor>
 	</File>
-	<File name="source\equipment.cpp" open="1" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="source\equipment.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="0" topLine="0" />
+			<Cursor1 position="23446" topLine="352" />
 		</Cursor>
 	</File>
 	<File name="source\core\menu.cpp" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -166,9 +176,9 @@
 			<Cursor1 position="24702" topLine="427" />
 		</Cursor>
 	</File>
-	<File name="source\inventory.cpp" open="1" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="source\inventory.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="0" topLine="0" />
+			<Cursor1 position="30641" topLine="512" />
 		</Cursor>
 	</File>
 	<File name="source\core\menu.hpp" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -181,9 +191,9 @@
 			<Cursor1 position="946" topLine="21" />
 		</Cursor>
 	</File>
-	<File name="source\character.cpp" open="1" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="source\character.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="0" topLine="0" />
+			<Cursor1 position="9281" topLine="177" />
 		</Cursor>
 	</File>
 	<File name="source\main.cpp" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
