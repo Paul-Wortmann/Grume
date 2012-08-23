@@ -52,7 +52,8 @@ class log_class
         bool file_write(std::string log_data_1, const char log_data_2[]);
         bool file_write(std::wstring log_data_1, std::wstring log_data_2);
         bool file_write(std::string log_data, int log_data_int ,float log_data_float);
-        bool file_write(std::string log_data_1, int log_data_2 ,std::string log_data_3, int log_data_4);
+        bool file_write(std::string log_data_1, int   log_data_2 ,std::string log_data_3, int   log_data_4);
+        bool file_write(std::string log_data_1, float log_data_2 ,std::string log_data_3, float log_data_4);
 };
 
 #endif //LOG_H

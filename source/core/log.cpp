@@ -281,3 +281,19 @@ bool log_class::file_write(std::string log_data_1, int log_data_2 ,std::string l
     else return(false);
     return(true);
 };
+
+bool log_class::file_write(std::string log_data_1, float log_data_2 ,std::string log_data_3, float log_data_4)
+{
+    std::fstream logfile(log_class::file_name.c_str(),std::ios::out|std::ios::app);
+    if (logfile.is_open())
+    {
+        logfile << log_data_1;
+        logfile << log_data_2;
+        logfile << log_data_3;
+        logfile << log_data_4;
+        logfile << "\n";
+        logfile.close();
+    }
+    else return(false);
+    return(true);
+};
