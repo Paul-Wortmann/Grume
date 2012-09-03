@@ -6,10 +6,15 @@ These are not indications that the project will be terminated in the future,
 just that time is not permitting to proceed at a fast pace, at the moment.
 
 
+v0.11 - (2012-09-30)
+LOC   -> xxxxx
+
+
 v0.10 - (2012-08-31)
 UI    -> Improved the default locations of the in game menus.
 NPC   -> Added NPC health bar mouse over tool-tip.
 MAP2D -> Added a debug map view, toggled with "d" key.
+MAP2D -> Added a map re-generation feature - "r" key.
 GFX   -> Reworked the dungeon tile-set for random generation.
 GFX   -> Reworked the grasslands tile-set for random generation.
 GFX   -> Reworked the cave tile-set for random generation.
@@ -23,7 +28,7 @@ FILE  -> path_remove() can now handle both forward and backward slashes.
 MAP2D -> Improved the data structures for tiles and tile-sets.
 MAP2D -> Maps are now loaded on demand.
 MAP2D -> Changed map zoom from "z" and "x" to mouse wheel.
-LOC   -> xxxxx
+LOC   -> 21000
 
 v0.09 - (2012-07-31)
 NPC  -> Added NPC class.
