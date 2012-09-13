@@ -115,6 +115,9 @@ void texture_resource_class::render(bool r, int texture_number, float x, float y
     if (texture_number == game.resource.texture.spell_book_background.ref_number)       game.resource.texture.spell_book_background.draw       (r,x,y,z,w,h,angle,frame);
     if (texture_number == game.resource.texture.inventory.ref_number)                   game.resource.texture.inventory.draw                   (r,x,y,z,w,h,angle,frame);
     if (texture_number == game.resource.texture.inventory_gold.ref_number)              game.resource.texture.inventory_gold.draw              (r,x,y,z,w,h,angle,frame);
+    if (texture_number == game.resource.texture.inventory_goldling.ref_number)          game.resource.texture.inventory_goldling.draw          (r,x,y,z,w,h,angle,frame);
+    if (texture_number == game.resource.texture.inventory_philosophers_stone.ref_number)game.resource.texture.inventory_philosophers_stone.draw(r,x,y,z,w,h,angle,frame);
+    if (texture_number == game.resource.texture.inventory_treasurechest.ref_number)     game.resource.texture.inventory_treasurechest.draw     (r,x,y,z,w,h,angle,frame);
     if (texture_number == game.resource.texture.inventory_background.ref_number)        game.resource.texture.inventory_background.draw        (r,x,y,z,w,h,angle,frame);
     if (texture_number == game.resource.texture.item_stat_background.ref_number)        game.resource.texture.item_stat_background.draw        (r,x,y,z,w,h,angle,frame);
     if (texture_number == game.resource.texture.character_portrait_frame.ref_number)    game.resource.texture.character_portrait_frame.draw    (r,x,y,z,w,h,angle,frame);
@@ -509,6 +512,9 @@ void texture_resource_class::bind(int texture_number)
     if (texture_number == game.resource.texture.spell_book_background.ref_number)       glBindTexture(GL_TEXTURE_2D, game.resource.texture.spell_book_background.frame[0].data)       ;
     if (texture_number == game.resource.texture.inventory.ref_number)                   glBindTexture(GL_TEXTURE_2D, game.resource.texture.inventory.frame[0].data)                   ;
     if (texture_number == game.resource.texture.inventory_gold.ref_number)              glBindTexture(GL_TEXTURE_2D, game.resource.texture.inventory_gold.frame[0].data)              ;
+    if (texture_number == game.resource.texture.inventory_goldling.ref_number)          glBindTexture(GL_TEXTURE_2D, game.resource.texture.inventory_goldling.frame[0].data)          ;
+    if (texture_number == game.resource.texture.inventory_philosophers_stone.ref_number)glBindTexture(GL_TEXTURE_2D, game.resource.texture.inventory_philosophers_stone.frame[0].data);
+    if (texture_number == game.resource.texture.inventory_treasurechest.ref_number)     glBindTexture(GL_TEXTURE_2D, game.resource.texture.inventory_treasurechest.frame[0].data)     ;
     if (texture_number == game.resource.texture.inventory_background.ref_number)        glBindTexture(GL_TEXTURE_2D, game.resource.texture.inventory_background.frame[0].data)        ;
     if (texture_number == game.resource.texture.item_stat_background.ref_number)        glBindTexture(GL_TEXTURE_2D, game.resource.texture.item_stat_background.frame[0].data)        ;
     if (texture_number == game.resource.texture.character_portrait_frame.ref_number)    glBindTexture(GL_TEXTURE_2D, game.resource.texture.character_portrait_frame.frame[0].data)    ;
@@ -966,6 +972,9 @@ void resource_class::load_UI(void)
     game.resource.texture.spell_book_background.load_image       ("data/textures/UI/spell_book/spell_book_background.png"         ,resource_class::texture.number_loaded);resource_class::texture.number_loaded++;
     game.resource.texture.inventory.load_image                   ("data/textures/UI/inventory/inventory.png"                      ,resource_class::texture.number_loaded);resource_class::texture.number_loaded++;
     game.resource.texture.inventory_gold.load_image              ("data/textures/UI/inventory/inventory_gold.png"                 ,resource_class::texture.number_loaded);resource_class::texture.number_loaded++;
+    game.resource.texture.inventory_goldling.load_image          ("data/textures/UI/inventory/inventory_goldling.png"                 ,resource_class::texture.number_loaded);resource_class::texture.number_loaded++;
+    game.resource.texture.inventory_philosophers_stone.load_image("data/textures/UI/inventory/inventory_philosophers_stone.png"                 ,resource_class::texture.number_loaded);resource_class::texture.number_loaded++;
+    game.resource.texture.inventory_treasurechest.load_image     ("data/textures/UI/inventory/inventory_treasurechest.png"                 ,resource_class::texture.number_loaded);resource_class::texture.number_loaded++;
     game.resource.texture.inventory_background.load_image        ("data/textures/UI/inventory/inventory_background.png"           ,resource_class::texture.number_loaded);resource_class::texture.number_loaded++;
     game.resource.texture.item_stat_background.load_image        ("data/textures/UI/inventory/item_stat_background.png"           ,resource_class::texture.number_loaded);resource_class::texture.number_loaded++;
     game.resource.texture.character_portrait_frame.load_image    ("data/textures/UI/character/character_portrait_frame.png"       ,resource_class::texture.number_loaded);resource_class::texture.number_loaded++;

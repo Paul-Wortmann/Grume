@@ -292,6 +292,24 @@ http://opengameart.org/content/monster-head
 Author: Letun
 License(s): GPL 3.0
 
+inventory_goldling
+-------------------------
+http://opengameart.org/content/platformer-bugs-from-last-escape
+Author:Stephen Challener (Redshrike) and Poss (death animations)
+License(s): CC-BY 3.0, CC-BY-SA 3.0
+
+inventory_philosophers_stone
+-------------------------
+http://opengameart.org/content/philosophers-stone
+Author: Buch
+License(s): GPL 2.0, GPL 3.0, CC-BY 3.0
+
+inventory_treasurechest
+-------------------------
+http://opengameart.org/content/treasure-chest
+Author: WeaponGuy
+License(s): CC-BY 3.0
+
 --------------------------------------------------------------------------------------------------------------------------
 |                                                 3D Model resources:                                                    |
 --------------------------------------------------------------------------------------------------------------------------

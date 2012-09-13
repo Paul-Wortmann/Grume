@@ -993,7 +993,11 @@ void inventory_class::draw(void)
     game.resource.texture.inventory_background.draw(false,inventory_class::pos_x,inventory_class::pos_y,inventory_class::pos_z,inventory_class::width,inventory_class::height);
     inventory_class::close_button.draw();
     game.resource.font.font_1.Write(255,255,255,255,inventory_class::pos_x - (inventory_class::width /10.0f),inventory_class::pos_y + (inventory_class::height/2.30f),4.8f,32.0f,game.language.text.inventory);
-    game.resource.texture.inventory_gold.draw(false,inventory_class::pos_x,inventory_class::pos_y - (inventory_class::height/2.4f),inventory_class::pos_z,inventory_class::width/16.0f,inventory_class::height/16.0f);
+    // add if(goldling_acquired) then draw icon, same for chest and philosophers stone.
+    game.resource.texture.inventory_goldling.draw          (false,inventory_class::pos_x - (inventory_class::width/2.6f),inventory_class::pos_y - (inventory_class::height/2.4f),inventory_class::pos_z,inventory_class::width/16.0f,inventory_class::height/16.0f);
+    game.resource.texture.inventory_philosophers_stone.draw(false,inventory_class::pos_x - (inventory_class::width/4.0f),inventory_class::pos_y - (inventory_class::height/2.4f),inventory_class::pos_z,inventory_class::width/16.0f,inventory_class::height/16.0f);
+    game.resource.texture.inventory_treasurechest.draw     (false,inventory_class::pos_x - (inventory_class::width/8.0f),inventory_class::pos_y - (inventory_class::height/2.4f),inventory_class::pos_z,inventory_class::width/16.0f,inventory_class::height/16.0f);
+    game.resource.texture.inventory_gold.draw              (false,inventory_class::pos_x                                ,inventory_class::pos_y - (inventory_class::height/2.4f),inventory_class::pos_z,inventory_class::width/16.0f,inventory_class::height/16.0f);
     if (game.player.gold <                   9u) string_padding += " ";
     if (game.player.gold <                  99u) string_padding += " ";
     if (game.player.gold <                 999u) string_padding += " ";

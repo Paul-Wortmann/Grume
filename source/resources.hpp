@@ -150,6 +150,9 @@ struct texture_resource_class
         texture_class spell_book_background;
         texture_class inventory;
         texture_class inventory_gold;
+        texture_class inventory_goldling;
+        texture_class inventory_philosophers_stone;
+        texture_class inventory_treasurechest;
         texture_class inventory_background;
         texture_class item_stat_background;
         texture_class character_portrait_frame;

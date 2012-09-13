@@ -1,4 +1,4 @@
-# Frost and Flame V0.10 - www.physhexgames.co.nr #
+# Frost and Flame V0.11 - www.physhexgames.co.nr #
 # ---------------------------------------------- #
  
 Loading configuration...
@@ -40,7 +40,7 @@ font     files loaded -> 1
 3D model files loaded -> 6
 music    files loaded -> 1
 sound    files loaded -> 9
-texture  files loaded -> 347
+texture  files loaded -> 350
 Seeding random...
 Initializing menu system...
 Initializing game system...
