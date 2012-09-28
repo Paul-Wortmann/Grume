@@ -16,6 +16,7 @@ Features
 - Menu, UI, action bar, inventory etc...
 - Items, books, potions, weapons, armor etc...
 - Import / export maps in the "Tiled" map editor format. (http://www.mapeditor.org/)
+- Random cave like map generation.
 
 More information may be found in the changelog.txt file.
 
@@ -75,5 +76,5 @@ Contact
 - Paul Wortmann: physhex@gmail.com
 - Website: http://www.physhexgames.co.nr
 - Downloads: https://sourceforge.net/projects/frostandflame/
-- Development, bug reports, feature requests and general questions are handled on GitHub: https://github.com/Paul-Wortmann/Frost_And_Flame
+- Development, bug reports and feature requests are handled on GitHub: https://github.com/Paul-Wortmann/Frost_And_Flame
 

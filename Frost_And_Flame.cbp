@@ -27,6 +27,7 @@
 					<Add library="SDL_ttf" />
 					<Add library="SDL_net" />
 					<Add library="opengl32" />
+					<Add library="libphysfs" />
 					<Add directory="C:\MinGW\lib" />
 				</Linker>
 			</Target>
@@ -47,6 +48,7 @@
 					<Add library="SDL_ttf" />
 					<Add library="GL" />
 					<Add library="\usr\lib\nvidia-current\libGL.so" />
+					<Add library="libphysfs" />
 					<Add directory="\host\Program Files (x86)\CodeBlocks\MinGW\lib" />
 					<Add directory="\usr\lib" />
 				</Linker>

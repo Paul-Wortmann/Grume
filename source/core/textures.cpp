@@ -65,6 +65,7 @@ bool texture_class::load_image(std::string file_name, int index_number)
     texture_class::ref_number    = index_number;
     texture_class::frame_max     = 0;
     texture_class::frame = new frame_type[texture_class::frame_max+1];
+
     if ((image_surface = IMG_Load(file_name.c_str())))
     {
         return_value = true;

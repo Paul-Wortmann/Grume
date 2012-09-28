@@ -691,9 +691,10 @@
 1336190037 source:c:\_git_\frost_and_flame\source\core\rs232.cpp
 	"rs232.hpp"
 
-1346433122 source:c:\_git_\frost_and_flame\source\main.cpp
+1348238466 source:c:\_git_\frost_and_flame\source\main.cpp
 	"game.hpp"
 	<SDL/SDL.h>
+	<physfs.h>
 	"core/misc.hpp"
 	"menu_system.hpp"
 
@@ -922,7 +923,7 @@
 1336737891 source:c:\_git_\frost_and_flame\source\core\pathfinding.cpp
 	"pathfinding.hpp"
 
-1345726646 source:c:\_git_\frost_and_flame\source\inventory.cpp
+1347549467 source:c:\_git_\frost_and_flame\source\inventory.cpp
 	"core/misc.hpp"
 	"inventory.hpp"
 	"game.hpp"
@@ -945,4 +946,6 @@
 
 1344675557 source:c:\_git_\frost_and_flame\source\core\map_2d_generator.cpp
 	"map_2D_generator.hpp"
+
+1291498216 c:\mingw\include\physfs.h
 

@@ -24,6 +24,7 @@
 
 #include "game.hpp"
 #include <SDL/SDL.h>
+#include <physfs.h>
 #include "core/misc.hpp"
 #include "menu_system.hpp"
 
@@ -45,6 +46,9 @@ extern "C" int main(int argc, char** argv)
     game.core.log.file_write("# ",application_name," #");
     game.core.log.file_write("# ---------------------------------------------- #");
     game.core.log.file_write(" ");
+    game.core.log.file_write("Initializing PhysicsFS file system....");
+    PHYSFS_init(argv[0]);
+    PHYSFS_addToSearchPath("data.fnf", 1);
     game.core.log.file_write("Loading configuration...");
     game.core.config.set_defaults();
     game.core.config.file_set("frost_and_flame.cfg");
@@ -160,14 +164,6 @@ extern "C" int main(int argc, char** argv)
 // --------------------------------------------------------------------------------------------------------------------------
 // | Application terminated, cleanup and free resources etc...
 // --------------------------------------------------------------------------------------------------------------------------
-    game.core.log.file_write("------- Menu positions --------");
-    game.core.log.file_write("spell_book position - >  ",game.UI.spell_book.pos_x," - ",game.UI.spell_book.pos_x);
-    game.core.log.file_write("inventory  position - >  ",game.UI.inventory.pos_x ," - ",game.UI.inventory.pos_x );
-    game.core.log.file_write("character  position - >  ",game.UI.character.pos_x ," - ",game.UI.character.pos_x );
-    game.core.log.file_write("equipment  position - >  ",game.UI.equipment.pos_x ," - ",game.UI.equipment.pos_x );
-    game.core.log.file_write("npcvendor  position - >  ",game.UI.npcvendor.pos_x ," - ",game.UI.npcvendor.pos_x );
-    game.core.log.file_write("quest_log  position - >  ",game.UI.quest_log.pos_x ," - ",game.UI.quest_log.pos_x );
-    game.core.log.file_write("------- Menu positions --------");
     game.core.log.file_write(" ");
     game.core.log.file_write("# ---------------------------------------------- #");
     game.core.log.file_write(" ");
@@ -175,6 +171,7 @@ extern "C" int main(int argc, char** argv)
     game.core.config.file_clear();
     game.core.config.file_save();
     game.core.log.file_write("Shutting down...");
+    PHYSFS_deinit();
     SDL_Quit();
     return(true);
 };
