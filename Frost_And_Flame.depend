@@ -23,7 +23,7 @@
 	<string>
 	<fstream>
 
-1348929922 c:\_git_\frost_and_flame\source\game.hpp
+1348935169 c:\_git_\frost_and_flame\source\game.hpp
 	"core/core.hpp"
 	"core/menu.hpp"
 	"core/savegame.hpp"
@@ -34,8 +34,8 @@
 	"player.hpp"
 	"npc.hpp"
 	"spells.hpp"
-	"UI.hpp"
-	"window_manager.hpp"
+	"UI/UI.hpp"
+	"UI/window_manager.hpp"
 
 1342369638 c:\_git_\frost_and_flame\source\core\core.hpp
 	"background.hpp"
@@ -692,7 +692,7 @@
 1336190037 source:c:\_git_\frost_and_flame\source\core\rs232.cpp
 	"rs232.hpp"
 
-1348930250 source:c:\_git_\frost_and_flame\source\main.cpp
+1348934150 source:c:\_git_\frost_and_flame\source\main.cpp
 	"game.hpp"
 	<SDL/SDL.h>
 	<physfs.h>
@@ -954,4 +954,55 @@
 	"window_manager.hpp"
 
 1348934150 c:\_git_\frost_and_flame\source\window_manager.hpp
+
+1348935156 source:c:\_git_\frost_and_flame\source\ui\equipment.cpp
+	"equipment.hpp"
+	"../game.hpp"
+
+1326868751 c:\_git_\frost_and_flame\source\ui\equipment.hpp
+
+1348935180 c:\_git_\frost_and_flame\source\ui\ui.hpp
+	"spell_book.hpp"
+	"equipment.hpp"
+	"inventory.hpp"
+	"character.hpp"
+	"quest_log.hpp"
+	"../npcvendor.hpp"
+
+1345724947 c:\_git_\frost_and_flame\source\ui\spell_book.hpp
+
+1326868751 c:\_git_\frost_and_flame\source\ui\inventory.hpp
+
+1326868751 c:\_git_\frost_and_flame\source\ui\character.hpp
+
+1326868751 c:\_git_\frost_and_flame\source\ui\quest_log.hpp
+
+1348934150 c:\_git_\frost_and_flame\source\ui\window_manager.hpp
+
+1348935188 source:c:\_git_\frost_and_flame\source\ui\character.cpp
+	"character.hpp"
+	"../game.hpp"
+
+1348934649 source:c:\_git_\frost_and_flame\source\ui\window_manager.cpp
+	"window_manager.hpp"
+
+1348935226 source:c:\_git_\frost_and_flame\source\ui\ui.cpp
+	"UI.hpp"
+	"../game.hpp"
+	"../core/misc.hpp"
+
+1348935246 source:c:\_git_\frost_and_flame\source\ui\spell_book.cpp
+	"spell_book.hpp"
+	"../spells.hpp"
+	"../game.hpp"
+
+1348935264 source:c:\_git_\frost_and_flame\source\ui\quest_log.cpp
+	"quest_log.hpp"
+	"../game.hpp"
+
+1348935281 source:c:\_git_\frost_and_flame\source\ui\inventory.cpp
+	"../core/misc.hpp"
+	"inventory.hpp"
+	"../game.hpp"
+	"../items.hpp"
 

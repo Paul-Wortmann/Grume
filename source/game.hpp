@@ -35,8 +35,8 @@
 #include "player.hpp"
 #include "npc.hpp"
 #include "spells.hpp"
-#include "UI.hpp"
-#include "window_manager.hpp"
+#include "UI/UI.hpp"
+#include "UI/window_manager.hpp"
 
 #define STATE_QUIT 0
 #define STATE_MENU 1
