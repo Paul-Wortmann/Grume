@@ -97,7 +97,11 @@ void spell_slot_class::process(void)
     if (spell_slot_class::mouse_over)
     {
         spell_slot_class::mouse_over_count++;
-        if (spell_slot_class::mouse_over_count > spell_slot_class::tooltip_time) spell_slot_class::mouse_over_count = spell_slot_class::tooltip_time;
+        if (spell_slot_class::mouse_over_count > spell_slot_class::tooltip_time)
+        {
+            game.UI.active_window_list.add_to_list(SPELLBOOK_WINDOW);
+            spell_slot_class::mouse_over_count = spell_slot_class::tooltip_time;
+        }
     }
     else spell_slot_class::mouse_over_count = 0;
     if (spell_slot_class::button_type > 0)

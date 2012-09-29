@@ -99,7 +99,11 @@ void equipment_slot_class::process(void)
     if (equipment_slot_class::mouse_over)
     {
         equipment_slot_class::mouse_over_count++;
-        if (equipment_slot_class::mouse_over_count > equipment_slot_class::tooltip_time) equipment_slot_class::mouse_over_count = equipment_slot_class::tooltip_time;
+        if (equipment_slot_class::mouse_over_count > equipment_slot_class::tooltip_time)
+        {
+            game.UI.active_window_list.add_to_list(EQUIPMENT_WINDOW);
+            equipment_slot_class::mouse_over_count = equipment_slot_class::tooltip_time;
+        }
     }
     else equipment_slot_class::mouse_over_count = 0;
     if (equipment_slot_class::button_type > 0)

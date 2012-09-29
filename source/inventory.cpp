@@ -109,7 +109,11 @@ void inventory_slot_class::process(void)
     if (inventory_slot_class::mouse_over)
     {
         inventory_slot_class::mouse_over_count++;
-        if (inventory_slot_class::mouse_over_count > inventory_slot_class::tooltip_time) inventory_slot_class::mouse_over_count = inventory_slot_class::tooltip_time;
+        if (inventory_slot_class::mouse_over_count > inventory_slot_class::tooltip_time)
+        {
+            game.UI.active_window_list.add_to_list(INVENTORY_WINDOW);
+            inventory_slot_class::mouse_over_count = inventory_slot_class::tooltip_time;
+        }
     }
     else inventory_slot_class::mouse_over_count = 0;
     if (inventory_slot_class::button_type > 0)
