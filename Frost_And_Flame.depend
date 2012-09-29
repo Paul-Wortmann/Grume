@@ -23,7 +23,7 @@
 	<string>
 	<fstream>
 
-1345344138 c:\_git_\frost_and_flame\source\game.hpp
+1348929922 c:\_git_\frost_and_flame\source\game.hpp
 	"core/core.hpp"
 	"core/menu.hpp"
 	"core/savegame.hpp"
@@ -35,6 +35,7 @@
 	"npc.hpp"
 	"spells.hpp"
 	"UI.hpp"
+	"window_manager.hpp"
 
 1342369638 c:\_git_\frost_and_flame\source\core\core.hpp
 	"background.hpp"
@@ -691,7 +692,7 @@
 1336190037 source:c:\_git_\frost_and_flame\source\core\rs232.cpp
 	"rs232.hpp"
 
-1348238466 source:c:\_git_\frost_and_flame\source\main.cpp
+1348930250 source:c:\_git_\frost_and_flame\source\main.cpp
 	"game.hpp"
 	<SDL/SDL.h>
 	<physfs.h>
@@ -948,4 +949,9 @@
 	"map_2D_generator.hpp"
 
 1291498216 c:\mingw\include\physfs.h
+
+1348931576 source:c:\_git_\frost_and_flame\source\window_manager.cpp
+	"window_manager.hpp"
+
+1348934150 c:\_git_\frost_and_flame\source\window_manager.hpp
 

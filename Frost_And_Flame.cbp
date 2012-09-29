@@ -156,6 +156,8 @@
 		<Unit filename="source\spell_book.hpp" />
 		<Unit filename="source\spells.cpp" />
 		<Unit filename="source\spells.hpp" />
+		<Unit filename="source\window_manager.cpp" />
+		<Unit filename="source\window_manager.hpp" />
 		<Extensions>
 			<code_completion />
 			<envvars />

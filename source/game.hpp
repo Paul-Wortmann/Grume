@@ -36,6 +36,7 @@
 #include "npc.hpp"
 #include "spells.hpp"
 #include "UI.hpp"
+#include "window_manager.hpp"
 
 #define STATE_QUIT 0
 #define STATE_MENU 1
@@ -53,28 +54,29 @@ class game_class
 {
     private:
     public:
-        bool              debug;
-        int               event;
-        int               state;
-        save_game_class   save_01;
-        save_game_class   save_02;
-        save_game_class   save_03;
-        save_game_class   save_04;
-        save_game_class   save_05;
-        save_game_class   save_06;
-        save_game_class   save_07;
-        core_class        core;
-        resource_class    resource;
-        zoom_type         zoom;
-        player_class      player;
-        npc_class         npc;
-        light_type        global_ambient;
-        light_type        world_ambient;
-        spell_class       spell[MAX_SPELLS];
-        item_class        item [MAX_ITEMS];
-        UI_class          UI;
-        language_class    language;
-        menu_system_class menu;
+        bool                 debug;
+        int                  event;
+        int                  state;
+        save_game_class      save_01;
+        save_game_class      save_02;
+        save_game_class      save_03;
+        save_game_class      save_04;
+        save_game_class      save_05;
+        save_game_class      save_06;
+        save_game_class      save_07;
+        core_class           core;
+        resource_class       resource;
+        zoom_type            zoom;
+        player_class         player;
+        npc_class            npc;
+        light_type           global_ambient;
+        light_type           world_ambient;
+        spell_class          spell[MAX_SPELLS];
+        item_class           item [MAX_ITEMS];
+        UI_class             UI;
+        language_class       language;
+        menu_system_class    menu;
+        window_manager_class window_manager;
         game_class(void);
         void             init(void);
         void             process(void);
