@@ -32,7 +32,6 @@ extern game_class game;
 window_class::window_class(void)
 {
     window_class::UID           = -1;
-    window_class::active        = false;
     window_class::mouse_over    = false;
     window_class::size_x        = 0.0f;
     window_class::size_y        = 0.0f;
@@ -56,25 +55,6 @@ window_manager_class::window_manager_class(void)
 window_manager_class::~window_manager_class(void)
 {
 
-}
-
-void window_manager_class::set_active_window(int UID)
-{
-    for (int window_count = 1; window_count <= window_manager_class::number_of_windows; window_count++)
-    {
-        if (window_manager_class::window[window_count].UID == UID) window_manager_class::window[window_count].active = true;
-        else window_manager_class::window[window_count].active = false;
-    }
-}
-
-int  window_manager_class::get_active_window(void)
-{
-    int return_UID = 0;
-    for (int window_count = 1; window_count <= window_manager_class::number_of_windows; window_count++)
-    {
-        if (window_manager_class::window[window_count].active) return_UID = window_count;
-    }
-    return(return_UID);
 }
 
 int  window_manager_class::register_window(int UID)

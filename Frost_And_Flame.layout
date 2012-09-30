@@ -36,7 +36,7 @@
 			<Cursor1 position="29437" topLine="399" />
 		</Cursor>
 	</File>
-	<File name="source\UI\UI.cpp" open="1" top="1" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="source\UI\UI.cpp" open="1" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="50831" topLine="830" />
 		</Cursor>
@@ -46,7 +46,7 @@
 			<Cursor1 position="1300" topLine="27" />
 		</Cursor>
 	</File>
-	<File name="source\UI\window_manager.cpp" open="1" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="source\UI\window_manager.cpp" open="1" top="1" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="979" topLine="108" />
 		</Cursor>
@@ -78,7 +78,7 @@
 	</File>
 	<File name="source\menu_system.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="948" topLine="0" />
+			<Cursor1 position="948" topLine="18" />
 		</Cursor>
 	</File>
 </CodeBlocks_layout_file>
