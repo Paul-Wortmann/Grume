@@ -197,7 +197,7 @@ void quest_log_class::process(void)
     {
         if ((!game.UI.drag_in_progress) && (quest_log_class::mouse_over) && (game.core.io.mouse_button_left))//drag
         {
-            game.UI.active_window_list.add_to_list(QUEST_LOG_WINDOW);
+            game.window_manager.register_window(QUEST_LOG_WINDOW);
             quest_log_class::drag          = true;
             game.UI.drag_in_progress       = true;
             quest_log_class::drag_offset_x = quest_log_class::pos_x - game.core.io.mouse_x;
@@ -206,7 +206,7 @@ void quest_log_class::process(void)
     }
     if (quest_log_class::close_button.activated)
     {
-        game.UI.active_window_list.remove_from_list(QUEST_LOG_WINDOW);
+        game.window_manager.de_register_window(QUEST_LOG_WINDOW);
         game.core.quest_log_active     = false;
         quest_log_class::drag          = false;
         game.UI.drag_in_progress       = false;

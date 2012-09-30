@@ -269,7 +269,7 @@ int menu_class::process(void)
     {
         if ((!game.UI.drag_in_progress) && (menu_class::mouse_over) && (game.core.io.mouse_button_left) && (allow_drag))// start drag
         {
-            game.UI.active_window_list.add_to_list(MAIN_MENU_WINDOW);
+            game.window_manager.register_window(MAIN_MENU_WINDOW);
             menu_class::drag_active        = true;
             game.UI.drag_in_progress       = true;
             menu_class::drag_offset_x      = menu_class::position_x - game.core.io.mouse_x;

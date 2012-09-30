@@ -111,7 +111,7 @@ void inventory_slot_class::process(void)
         inventory_slot_class::mouse_over_count++;
         if (inventory_slot_class::mouse_over_count > inventory_slot_class::tooltip_time)
         {
-            game.UI.active_window_list.add_to_list(INVENTORY_WINDOW);
+            game.window_manager.register_window(INVENTORY_WINDOW);
             inventory_slot_class::mouse_over_count = inventory_slot_class::tooltip_time;
         }
     }
@@ -236,7 +236,7 @@ void inventory_slot_class::process(void)
         {
             if ((!game.UI.drag_in_progress) && (inventory_slot_class::mouse_over) && (game.core.io.mouse_button_left))//drag
             {
-                game.UI.active_window_list.add_to_list(INVENTORY_WINDOW);
+                game.window_manager.register_window(INVENTORY_WINDOW);
                 inventory_slot_class::drag          = true;
                 game.UI.drag_in_progress            = true;
                 inventory_slot_class::base_pos_x    = inventory_slot_class::pos_x;
@@ -974,7 +974,7 @@ void inventory_class::process(void)
     {
         if ((!game.UI.drag_in_progress) && (inventory_class::mouse_over) && (game.core.io.mouse_button_left))//drag
         {
-            game.UI.active_window_list.add_to_list(INVENTORY_WINDOW);
+            game.window_manager.register_window(INVENTORY_WINDOW);
             inventory_class::drag          = true;
             game.UI.drag_in_progress       = true;
             inventory_class::drag_offset_x = inventory_class::pos_x - game.core.io.mouse_x;
@@ -983,7 +983,7 @@ void inventory_class::process(void)
     }
     if (inventory_class::close_button.activated)
     {
-        game.UI.active_window_list.remove_from_list(INVENTORY_WINDOW);
+        game.window_manager.de_register_window(INVENTORY_WINDOW);
         game.core.inventory_active     = false;
         inventory_class::drag          = false;
         game.UI.drag_in_progress       = false;

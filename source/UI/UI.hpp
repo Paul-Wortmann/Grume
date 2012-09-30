@@ -45,6 +45,7 @@ const int  MAX_ACTIVE_WINDOWS      = 9;
 const int  MAX_ACTION_SLOTS        = 16;
 const int  MAX_ACTION_MENU_SLOTS   = 8;
 
+/*
 class active_window_list_class
 {
     public:
@@ -54,6 +55,7 @@ class active_window_list_class
         void remove_from_list(int window_UID);
         void add_to_list(int window_UID);
 };
+*/
 
 class player_stats_class
 {
@@ -160,7 +162,7 @@ class UI_class
 {
     public:
         bool                     drag_in_progress;
-        active_window_list_class active_window_list;
+        //active_window_list_class active_window_list;
         player_stats_class       player_stats;
         action_bar_class         action_bar;
         spell_book_class         spell_book;

@@ -1009,7 +1009,7 @@ int menu_system_class::process(void)
                 case 1: // close button
                     if (game.state == STATE_GAME)
                     {
-                        game.UI.active_window_list.remove_from_list(MAIN_MENU_WINDOW);
+                        game.window_manager.de_register_window(MAIN_MENU_WINDOW);
                         game.core.game_menu_active                   = false;
                     }
                     menu_system_class::event = 65535;
@@ -1033,7 +1033,7 @@ int menu_system_class::process(void)
                 case 5: // resume game button
                     if (game.state == STATE_GAME)
                     {
-                        game.UI.active_window_list.remove_from_list(MAIN_MENU_WINDOW);
+                        game.window_manager.de_register_window(MAIN_MENU_WINDOW);
                         game.core.game_menu_active                   = false;
                     }
                     game.resource.sound.menu_select_00.play();
@@ -1045,7 +1045,7 @@ int menu_system_class::process(void)
                 break;
                 case 8: // Exit game button
                     game.state = STATE_QUIT;
-                    game.UI.active_window_list.remove_from_list(MAIN_MENU_WINDOW);
+                    game.window_manager.de_register_window(MAIN_MENU_WINDOW);
                     game.core.game_menu_active                   = false;
                     menu_system_class::event = 65535;
                     game.resource.sound.menu_select_00.play();

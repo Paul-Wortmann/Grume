@@ -45,6 +45,8 @@ texture  files loaded -> 350
 Seeding random...
 Initializing menu system...
 Initializing game system...
+registering window -> 7
+registered window -> 7window_count -> 1
 Loading 2D map -> data/maps/cave.tmx
 Loaded tile-set -> data/tilesets/cave_floor.png - frames loaded -> 24
 Loaded tile-set -> data/tilesets/cave_wall_east.png - frames loaded -> 5
@@ -64,6 +66,8 @@ Starting Game...
  
 # ---------------------------------------------- #
  
+de_registering window -> 1
+de_registered window -> 1window_count -> 1
  
 # ---------------------------------------------- #
  

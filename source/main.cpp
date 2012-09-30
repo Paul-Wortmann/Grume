@@ -143,9 +143,6 @@ extern "C" int main(int argc, char** argv)
             break;
             case STATE_GAME:// game active, menus can be utilized in game, but the game will stay in this state.
                 if (game.core.process_ready) game.process();
-                if (game.core.process_ready) game.window_manager.mouse_x = game.core.io.mouse_x;
-                if (game.core.process_ready) game.window_manager.mouse_y = game.core.io.mouse_y;
-                if (game.core.process_ready) game.window_manager.process();
                 if (game.event == 65535) game.state = STATE_QUIT;
                 game.render();
             break;

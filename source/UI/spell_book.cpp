@@ -99,7 +99,7 @@ void spell_slot_class::process(void)
         spell_slot_class::mouse_over_count++;
         if (spell_slot_class::mouse_over_count > spell_slot_class::tooltip_time)
         {
-            game.UI.active_window_list.add_to_list(SPELLBOOK_WINDOW);
+            game.window_manager.register_window(SPELLBOOK_WINDOW);
             spell_slot_class::mouse_over_count = spell_slot_class::tooltip_time;
         }
     }
@@ -414,7 +414,7 @@ void spell_book_class::process(void)
     {
         if ((!game.UI.drag_in_progress) && (spell_book_class::mouse_over) && (game.core.io.mouse_button_left))//drag
         {
-            game.UI.active_window_list.add_to_list(SPELLBOOK_WINDOW);
+            game.window_manager.register_window(SPELLBOOK_WINDOW);
             spell_book_class::drag          = true;
             game.UI.drag_in_progress        = true;
             spell_book_class::drag_offset_x = spell_book_class::pos_x - game.core.io.mouse_x;
@@ -423,7 +423,7 @@ void spell_book_class::process(void)
     }
     if (spell_book_class::close_button.activated)
     {
-        game.UI.active_window_list.remove_from_list(SPELLBOOK_WINDOW);
+        game.window_manager.de_register_window(SPELLBOOK_WINDOW);
         game.core.spellbook_active     = false;
         spell_book_class::drag         = false;
         game.UI.drag_in_progress       = false;

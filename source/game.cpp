@@ -34,6 +34,7 @@ game_class::game_class(void)
 
 void game_class::init(void)
 {
+    game.window_manager.register_window(PCPROFILE_WINDOW);
     game_class::debug = false;
     glDisable(GL_DEPTH_TEST);
     //--- initial state of the background ---
@@ -125,6 +126,9 @@ void game_class::init(void)
 
 void game_class::process(void)
 {
+    game.window_manager.mouse_x = game.core.io.mouse_x;
+    game.window_manager.mouse_y = game.core.io.mouse_y;
+    game.window_manager.process();
     game.UI.process();
     game.player.process();
     game.npc.process();
@@ -193,14 +197,14 @@ void game_class::process(void)
         {
             if (!game.core.game_menu_active)
             {
-                game.UI.active_window_list.add_to_list(MAIN_MENU_WINDOW);
+                game.window_manager.register_window(MAIN_MENU_WINDOW);
                 game.menu.active_menu                        = MENU_MAIN;
                 game.resource.sound.menu_select_00.play();
                 game.core.game_menu_active                   = true;
             }
             else
             {
-                game.UI.active_window_list.remove_from_list(MAIN_MENU_WINDOW);
+                game.window_manager.de_register_window(MAIN_MENU_WINDOW);
                 game.resource.sound.menu_select_00.play();
                 game.core.game_menu_active = false;
             }
@@ -211,13 +215,13 @@ void game_class::process(void)
         {
             if (!game.core.equipment_active)
             {
-                game.UI.active_window_list.add_to_list(EQUIPMENT_WINDOW);
+                game.window_manager.register_window(EQUIPMENT_WINDOW);
                 game.resource.sound.menu_select_00.play();
                 game.core.equipment_active         = true;
             }
             else
             {
-                game.UI.active_window_list.remove_from_list(EQUIPMENT_WINDOW);
+                game.window_manager.de_register_window(EQUIPMENT_WINDOW);
                 game.resource.sound.menu_select_00.play();
                 game.core.equipment_active         = false;
             }
@@ -228,13 +232,13 @@ void game_class::process(void)
         {
             if (!game.core.quest_log_active)
             {
-                game.UI.active_window_list.add_to_list(QUEST_LOG_WINDOW);
+                game.window_manager.register_window(QUEST_LOG_WINDOW);
                 game.resource.sound.menu_select_00.play();
                 game.core.quest_log_active         = true;
             }
             else
             {
-                game.UI.active_window_list.remove_from_list(QUEST_LOG_WINDOW);
+                game.window_manager.de_register_window(QUEST_LOG_WINDOW);
                 game.resource.sound.menu_select_00.play();
                 game.core.quest_log_active         = false;
             }
@@ -245,13 +249,13 @@ void game_class::process(void)
         {
             if (!game.core.character_active)
             {
-                game.UI.active_window_list.add_to_list(CHARACTER_WINDOW);
+                game.window_manager.register_window(CHARACTER_WINDOW);
                 game.resource.sound.menu_select_00.play();
                 game.core.character_active         = true;
             }
             else
             {
-                game.UI.active_window_list.remove_from_list(CHARACTER_WINDOW);
+                game.window_manager.de_register_window(CHARACTER_WINDOW);
                 game.resource.sound.menu_select_00.play();
                 game.core.character_active         = false;
             }
@@ -262,13 +266,13 @@ void game_class::process(void)
         {
             if (!game.core.inventory_active)
             {
-                game.UI.active_window_list.add_to_list(INVENTORY_WINDOW);
+                game.window_manager.register_window(INVENTORY_WINDOW);
                 game.resource.sound.menu_select_00.play();
                 game.core.inventory_active         = true;
             }
             else
             {
-                game.UI.active_window_list.remove_from_list(INVENTORY_WINDOW);
+                game.window_manager.de_register_window(INVENTORY_WINDOW);
                 game.resource.sound.menu_select_00.play();
                 game.core.inventory_active         = false;
             }
@@ -279,13 +283,13 @@ void game_class::process(void)
         {
             if (!game.core.spellbook_active)
             {
-                game.UI.active_window_list.add_to_list(SPELLBOOK_WINDOW);
+                game.window_manager.register_window(SPELLBOOK_WINDOW);
                 game.resource.sound.menu_select_00.play();
                 game.core.spellbook_active         = true;
             }
             else
             {
-                game.UI.active_window_list.remove_from_list(SPELLBOOK_WINDOW);
+                game.window_manager.de_register_window(SPELLBOOK_WINDOW);
                 game.resource.sound.menu_select_00.play();
                 game.core.spellbook_active         = false;
             }
@@ -296,37 +300,37 @@ void game_class::process(void)
         {
             if (game.core.game_menu_active)
             {
-                game.UI.active_window_list.remove_from_list(MAIN_MENU_WINDOW);
+                game.window_manager.de_register_window(MAIN_MENU_WINDOW);
                 game.core.game_menu_active         = false;
             }
             if (game.core.equipment_active)
             {
-                game.UI.active_window_list.remove_from_list(EQUIPMENT_WINDOW);
+                game.window_manager.de_register_window(EQUIPMENT_WINDOW);
                 game.core.equipment_active         = false;
             }
             if (game.core.quest_log_active)
             {
-                game.UI.active_window_list.remove_from_list(QUEST_LOG_WINDOW);
+                game.window_manager.de_register_window(QUEST_LOG_WINDOW);
                 game.core.quest_log_active         = false;
             }
             if (game.core.character_active)
             {
-                game.UI.active_window_list.remove_from_list(CHARACTER_WINDOW);
+                game.window_manager.de_register_window(CHARACTER_WINDOW);
                 game.core.character_active         = false;
             }
             if (game.core.inventory_active)
             {
-                game.UI.active_window_list.remove_from_list(INVENTORY_WINDOW);
+                game.window_manager.de_register_window(INVENTORY_WINDOW);
                 game.core.inventory_active         = false;
             }
             if (game.core.spellbook_active)
             {
-                game.UI.active_window_list.remove_from_list(SPELLBOOK_WINDOW);
+                game.window_manager.de_register_window(SPELLBOOK_WINDOW);
                 game.core.spellbook_active         = false;
             }
             if (game.core.npcvendor_active)
             {
-                game.UI.active_window_list.remove_from_list(NPCVENDOR_WINDOW);
+                game.window_manager.de_register_window(NPCVENDOR_WINDOW);
                 game.core.npcvendor_active         = false;
             }
             game.resource.sound.menu_select_00.play();
@@ -350,6 +354,19 @@ void game_class::process(void)
         {
             game.debug = !game.debug;
             game.core.io.key_d                     = false;
+            game.core.io.keyboard_delay_count      = 0;
+        }
+
+        if (game.core.io.key_a) // add a window
+        {
+            game.window_manager.register_window(1024);
+            game.core.io.key_a                     = false;
+            game.core.io.keyboard_delay_count      = 0;
+        }
+        if (game.core.io.key_s) // remove a window
+        {
+            game.window_manager.de_register_window(1024);
+            game.core.io.key_s                     = false;
             game.core.io.keyboard_delay_count      = 0;
         }
 

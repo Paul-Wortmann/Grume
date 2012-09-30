@@ -66,12 +66,22 @@
 		<Unit filename="credits.txt" />
 		<Unit filename="default.cfg" />
 		<Unit filename="frost_and_flame.log" />
-		<Unit filename="source\UI.cpp" />
-		<Unit filename="source\UI.hpp" />
+		<Unit filename="source\UI\UI.cpp" />
+		<Unit filename="source\UI\UI.hpp" />
+		<Unit filename="source\UI\character.cpp" />
+		<Unit filename="source\UI\character.hpp" />
+		<Unit filename="source\UI\equipment.cpp" />
+		<Unit filename="source\UI\equipment.hpp" />
+		<Unit filename="source\UI\inventory.cpp" />
+		<Unit filename="source\UI\inventory.hpp" />
+		<Unit filename="source\UI\quest_log.cpp" />
+		<Unit filename="source\UI\quest_log.hpp" />
+		<Unit filename="source\UI\spell_book.cpp" />
+		<Unit filename="source\UI\spell_book.hpp" />
+		<Unit filename="source\UI\window_manager.cpp" />
+		<Unit filename="source\UI\window_manager.hpp" />
 		<Unit filename="source\balls.cpp" />
 		<Unit filename="source\balls.hpp" />
-		<Unit filename="source\character.cpp" />
-		<Unit filename="source\character.hpp" />
 		<Unit filename="source\core\background.cpp" />
 		<Unit filename="source\core\background.hpp" />
 		<Unit filename="source\core\config.cpp" />
@@ -124,15 +134,11 @@
 		<Unit filename="source\core\timer.hpp" />
 		<Unit filename="source\core\vector.cpp" />
 		<Unit filename="source\core\vector.hpp" />
-		<Unit filename="source\equipment.cpp" />
-		<Unit filename="source\equipment.hpp" />
 		<Unit filename="source\game.cpp" />
 		<Unit filename="source\game.hpp" />
 		<Unit filename="source\icon.rc">
 			<Option compilerVar="WINDRES" />
 		</Unit>
-		<Unit filename="source\inventory.cpp" />
-		<Unit filename="source\inventory.hpp" />
 		<Unit filename="source\items.cpp" />
 		<Unit filename="source\items.hpp" />
 		<Unit filename="source\language.cpp" />
@@ -146,18 +152,12 @@
 		<Unit filename="source\npcvendor.hpp" />
 		<Unit filename="source\player.cpp" />
 		<Unit filename="source\player.hpp" />
-		<Unit filename="source\quest_log.cpp" />
-		<Unit filename="source\quest_log.hpp" />
 		<Unit filename="source\resources.cpp" />
 		<Unit filename="source\resources.hpp" />
 		<Unit filename="source\save_data.cpp" />
 		<Unit filename="source\save_data.hpp" />
-		<Unit filename="source\spell_book.cpp" />
-		<Unit filename="source\spell_book.hpp" />
 		<Unit filename="source\spells.cpp" />
 		<Unit filename="source\spells.hpp" />
-		<Unit filename="source\window_manager.cpp" />
-		<Unit filename="source\window_manager.hpp" />
 		<Extensions>
 			<code_completion />
 			<envvars />

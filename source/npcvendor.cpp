@@ -284,7 +284,7 @@ void npcvendor_slot_class::process(void)
         {
             if ((!game.UI.drag_in_progress) && (npcvendor_slot_class::mouse_over) && (game.core.io.mouse_button_left))//drag
             {
-                game.UI.active_window_list.add_to_list(NPCVENDOR_WINDOW);
+                game.window_manager.register_window(NPCVENDOR_WINDOW);
                 npcvendor_slot_class::drag          = true;
                 game.UI.drag_in_progress            = true;
                 npcvendor_slot_class::base_pos_x    = npcvendor_slot_class::pos_x;
@@ -1022,7 +1022,7 @@ void npcvendor_class::process(void)
     {
         if ((!game.UI.drag_in_progress) && (npcvendor_class::mouse_over) && (game.core.io.mouse_button_left))//drag
         {
-            game.UI.active_window_list.add_to_list(NPCVENDOR_WINDOW);
+            game.window_manager.register_window(NPCVENDOR_WINDOW);
             npcvendor_class::drag          = true;
             game.UI.drag_in_progress       = true;
             npcvendor_class::drag_offset_x = npcvendor_class::pos_x - game.core.io.mouse_x;
@@ -1031,7 +1031,7 @@ void npcvendor_class::process(void)
     }
     if (npcvendor_class::close_button.activated)
     {
-        game.UI.active_window_list.remove_from_list(NPCVENDOR_WINDOW);
+        game.window_manager.de_register_window(NPCVENDOR_WINDOW);
         game.core.npcvendor_active     = false;
         npcvendor_class::drag          = false;
         game.UI.drag_in_progress       = false;
