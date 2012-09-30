@@ -66,22 +66,12 @@
 		<Unit filename="credits.txt" />
 		<Unit filename="default.cfg" />
 		<Unit filename="frost_and_flame.log" />
-		<Unit filename="source\UI\UI.cpp" />
-		<Unit filename="source\UI\UI.hpp" />
-		<Unit filename="source\UI\character.cpp" />
-		<Unit filename="source\UI\character.hpp" />
-		<Unit filename="source\UI\equipment.cpp" />
-		<Unit filename="source\UI\equipment.hpp" />
-		<Unit filename="source\UI\inventory.cpp" />
-		<Unit filename="source\UI\inventory.hpp" />
-		<Unit filename="source\UI\quest_log.cpp" />
-		<Unit filename="source\UI\quest_log.hpp" />
-		<Unit filename="source\UI\spell_book.cpp" />
-		<Unit filename="source\UI\spell_book.hpp" />
+		<Unit filename="source\UI\main_menu.cpp" />
+		<Unit filename="source\UI\main_menu.hpp" />
+		<Unit filename="source\UI\window.cpp" />
+		<Unit filename="source\UI\window.hpp" />
 		<Unit filename="source\UI\window_manager.cpp" />
 		<Unit filename="source\UI\window_manager.hpp" />
-		<Unit filename="source\balls.cpp" />
-		<Unit filename="source\balls.hpp" />
 		<Unit filename="source\core\background.cpp" />
 		<Unit filename="source\core\background.hpp" />
 		<Unit filename="source\core\config.cpp" />
@@ -108,8 +98,6 @@
 		<Unit filename="source\core\map_2D.hpp" />
 		<Unit filename="source\core\map_3D.cpp" />
 		<Unit filename="source\core\map_3D.hpp" />
-		<Unit filename="source\core\menu.cpp" />
-		<Unit filename="source\core\menu.hpp" />
 		<Unit filename="source\core\misc.cpp" />
 		<Unit filename="source\core\misc.hpp" />
 		<Unit filename="source\core\music.cpp" />
@@ -136,6 +124,7 @@
 		<Unit filename="source\core\vector.hpp" />
 		<Unit filename="source\game.cpp" />
 		<Unit filename="source\game.hpp" />
+		<Unit filename="source\icon.ico" />
 		<Unit filename="source\icon.rc">
 			<Option compilerVar="WINDRES" />
 		</Unit>
@@ -144,12 +133,8 @@
 		<Unit filename="source\language.cpp" />
 		<Unit filename="source\language.hpp" />
 		<Unit filename="source\main.cpp" />
-		<Unit filename="source\menu_system.cpp" />
-		<Unit filename="source\menu_system.hpp" />
 		<Unit filename="source\npc.cpp" />
 		<Unit filename="source\npc.hpp" />
-		<Unit filename="source\npcvendor.cpp" />
-		<Unit filename="source\npcvendor.hpp" />
 		<Unit filename="source\player.cpp" />
 		<Unit filename="source\player.hpp" />
 		<Unit filename="source\resources.cpp" />

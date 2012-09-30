@@ -22,30 +22,6 @@
  * @date 2011-11-11
  */
 
-#ifndef WINDOW_MANAGER_H
-#define WINDOW_MANAGER_H
+#include "main_menu.hpp"
 
-#include "window.hpp"
-
-class window_manager_class
-{
-    protected:
-    private:
-    public:
-        float mouse_x;
-        float mouse_y;
-        int   number_of_windows;
-        window_class *window;
-        window_manager_class(void);
-       ~window_manager_class(void);
-        void set_active_window(int UID);
-        int  get_active_window(void);
-        int  register_window(int UID);
-        int  register_window(int UID_minimum, int UID_maximum);
-        void de_register_window(int UID);
-        bool mouse_over_window(float wx, float wy, float ww, float wh);
-        void process(void);
-        void render(void);
-};
-
-#endif // WINDOW_MANAGER_H
+//----------------------------------------------------------Main menu Class ------------------------------------------------------------------------

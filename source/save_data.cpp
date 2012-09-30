@@ -31,6 +31,7 @@ extern game_class      game;
 void update_save_data(void)
 {
     save_data.save_version = 0.01f;
+    /*
     save_data.AB_MS_01     = game.UI.action_bar.menu_slot[ 1].button_type;
     save_data.AB_MS_02     = game.UI.action_bar.menu_slot[ 2].button_type;
     save_data.AB_MS_03     = game.UI.action_bar.menu_slot[ 3].button_type;
@@ -47,10 +48,12 @@ void update_save_data(void)
     save_data.AB_AS_08     = game.UI.action_bar.action_slot[ 8].button_type;
     save_data.AB_AS_09     = game.UI.action_bar.action_slot[ 9].button_type;
     save_data.AB_AS_10     = game.UI.action_bar.action_slot[10].button_type;
+    */
 };
 
 void update_game_data(void)
 {
+    /*
     game.UI.action_bar.menu_slot[ 1].button_type       = save_data.AB_MS_01;
     game.UI.action_bar.menu_slot[ 2].button_type       = save_data.AB_MS_02;
     game.UI.action_bar.menu_slot[ 3].button_type       = save_data.AB_MS_03;
@@ -67,6 +70,7 @@ void update_game_data(void)
     game.UI.action_bar.action_slot[ 8].button_type     = save_data.AB_AS_08;
     game.UI.action_bar.action_slot[ 9].button_type     = save_data.AB_AS_09;
     game.UI.action_bar.action_slot[10].button_type     = save_data.AB_AS_10;
+    */
 };
 
 

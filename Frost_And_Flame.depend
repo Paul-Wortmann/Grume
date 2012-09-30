@@ -23,18 +23,15 @@
 	<string>
 	<fstream>
 
-1348935169 c:\_git_\frost_and_flame\source\game.hpp
+1349029706 c:\_git_\frost_and_flame\source\game.hpp
 	"core/core.hpp"
-	"core/menu.hpp"
 	"core/savegame.hpp"
 	"items.hpp"
 	"language.hpp"
 	"resources.hpp"
-	"menu_system.hpp"
 	"player.hpp"
 	"npc.hpp"
 	"spells.hpp"
-	"UI/UI.hpp"
 	"UI/window_manager.hpp"
 
 1342369638 c:\_git_\frost_and_flame\source\core\core.hpp
@@ -641,7 +638,7 @@
 1326868751 c:\_git_\frost_and_flame\source\spells.hpp
 	<string>
 
-1343311113 c:\_git_\frost_and_flame\source\ui.hpp
+1349027791 c:\_git_\frost_and_flame\source\ui.hpp
 	"spell_book.hpp"
 	"equipment.hpp"
 	"inventory.hpp"
@@ -674,7 +671,7 @@
 
 1342623046 c:\_git_\frost_and_flame\source\core\random_map.hpp
 
-1339163117 source:c:\_git_\frost_and_flame\source\language.cpp
+1349029891 source:c:\_git_\frost_and_flame\source\language.cpp
 	<iostream>
 	<fstream>
 	<stdio.h>
@@ -683,7 +680,6 @@
 	"game.hpp"
 	"core/misc.hpp"
 	"language.hpp"
-	"menu_system.hpp"
 
 1339163888 source:c:\_git_\frost_and_flame\source\core\config.cpp
 	<fstream>
@@ -692,12 +688,11 @@
 1336190037 source:c:\_git_\frost_and_flame\source\core\rs232.cpp
 	"rs232.hpp"
 
-1349008655 source:c:\_git_\frost_and_flame\source\main.cpp
+1349030074 source:c:\_git_\frost_and_flame\source\main.cpp
 	"game.hpp"
 	<SDL/SDL.h>
 	<physfs.h>
 	"core/misc.hpp"
-	"menu_system.hpp"
 
 1338478704 source:c:\_git_\frost_and_flame\source\core\core.cpp
 	"core.hpp"
@@ -732,7 +727,7 @@
 	"game.hpp"
 	"items.hpp"
 
-1345726646 source:c:\_git_\frost_and_flame\source\quest_log.cpp
+1349027890 source:c:\_git_\frost_and_flame\source\quest_log.cpp
 	"quest_log.hpp"
 	"game.hpp"
 
@@ -770,7 +765,7 @@
 	"graphics.hpp"
 	"../game.hpp"
 
-1339160356 source:c:\_git_\frost_and_flame\source\save_data.cpp
+1349030110 source:c:\_git_\frost_and_flame\source\save_data.cpp
 	"save_data.hpp"
 	"game.hpp"
 
@@ -805,7 +800,7 @@
 	<string>
 	"graphics.hpp"
 
-1348923441 source:c:\_git_\frost_and_flame\source\spell_book.cpp
+1349027809 source:c:\_git_\frost_and_flame\source\spell_book.cpp
 	"spell_book.hpp"
 	"spells.hpp"
 	"game.hpp"
@@ -833,7 +828,7 @@
 1341722739 c:\_git_\frost_and_flame\source\balls.hpp
 	"core/physics.hpp"
 
-1345725144 source:c:\_git_\frost_and_flame\source\ui.cpp
+1349027818 source:c:\_git_\frost_and_flame\source\ui.cpp
 	"UI.hpp"
 	"game.hpp"
 	"core/misc.hpp"
@@ -848,7 +843,7 @@
 
 1345728793 c:\_git_\frost_and_flame\source\core\loader_tmx.hpp
 
-1345726559 source:c:\_git_\frost_and_flame\source\character.cpp
+1349027866 source:c:\_git_\frost_and_flame\source\character.cpp
 	"character.hpp"
 	"game.hpp"
 
@@ -856,7 +851,7 @@
 	<fstream>
 	"log.hpp"
 
-1348923237 source:c:\_git_\frost_and_flame\source\equipment.cpp
+1349027884 source:c:\_git_\frost_and_flame\source\equipment.cpp
 	"equipment.hpp"
 	"game.hpp"
 
@@ -888,7 +883,7 @@
 	"misc.hpp"
 	"../game.hpp"
 
-1349011609 source:c:\_git_\frost_and_flame\source\game.cpp
+1349030042 source:c:\_git_\frost_and_flame\source\game.cpp
 	"game.hpp"
 
 1349011090 source:c:\_git_\frost_and_flame\source\core\menu.cpp
@@ -924,7 +919,7 @@
 1336737891 source:c:\_git_\frost_and_flame\source\core\pathfinding.cpp
 	"pathfinding.hpp"
 
-1348923237 source:c:\_git_\frost_and_flame\source\inventory.cpp
+1349027852 source:c:\_git_\frost_and_flame\source\inventory.cpp
 	"core/misc.hpp"
 	"inventory.hpp"
 	"game.hpp"
@@ -950,8 +945,9 @@
 
 1291498216 c:\mingw\include\physfs.h
 
-1348931576 source:c:\_git_\frost_and_flame\source\window_manager.cpp
+1349027828 source:c:\_git_\frost_and_flame\source\window_manager.cpp
 	"window_manager.hpp"
+	"game.hpp"
 
 1348934150 c:\_git_\frost_and_flame\source\window_manager.hpp
 
@@ -977,15 +973,15 @@
 
 1326868751 c:\_git_\frost_and_flame\source\ui\quest_log.hpp
 
-1348934150 c:\_git_\frost_and_flame\source\ui\window_manager.hpp
+1349030855 c:\_git_\frost_and_flame\source\ui\window_manager.hpp
+	"window.hpp"
 
 1348937813 source:c:\_git_\frost_and_flame\source\ui\character.cpp
 	"character.hpp"
 	"../game.hpp"
 
-1349025455 source:c:\_git_\frost_and_flame\source\ui\window_manager.cpp
+1349030922 source:c:\_git_\frost_and_flame\source\ui\window_manager.cpp
 	"window_manager.hpp"
-	"../game.hpp"
 
 1349011622 source:c:\_git_\frost_and_flame\source\ui\ui.cpp
 	"UI.hpp"
@@ -1006,4 +1002,9 @@
 	"inventory.hpp"
 	"../game.hpp"
 	"../items.hpp"
+
+1349030922 c:\_git_\frost_and_flame\source\ui\window.hpp
+
+1349030922 source:c:\_git_\frost_and_flame\source\ui\window.cpp
+	"window.hpp"
 

@@ -30,7 +30,6 @@
 #include "game.hpp"
 #include "core/misc.hpp"
 #include "language.hpp"
-#include "menu_system.hpp"
 
 extern  game_class                game;
 

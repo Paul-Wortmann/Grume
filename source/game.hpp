@@ -26,16 +26,13 @@
 #define GAME_H
 
 #include "core/core.hpp"
-#include "core/menu.hpp"
 #include "core/savegame.hpp"
 #include "items.hpp"
 #include "language.hpp"
 #include "resources.hpp"
-#include "menu_system.hpp"
 #include "player.hpp"
 #include "npc.hpp"
 #include "spells.hpp"
-#include "UI/UI.hpp"
 #include "UI/window_manager.hpp"
 
 #define STATE_QUIT 0
@@ -73,9 +70,7 @@ class game_class
         light_type           world_ambient;
         spell_class          spell[MAX_SPELLS];
         item_class           item [MAX_ITEMS];
-        UI_class             UI;
         language_class       language;
-        menu_system_class    menu;
         window_manager_class window_manager;
         game_class(void);
         void             init(void);

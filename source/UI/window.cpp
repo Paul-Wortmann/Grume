@@ -22,30 +22,28 @@
  * @date 2011-11-11
  */
 
-#ifndef WINDOW_MANAGER_H
-#define WINDOW_MANAGER_H
-
 #include "window.hpp"
 
-class window_manager_class
-{
-    protected:
-    private:
-    public:
-        float mouse_x;
-        float mouse_y;
-        int   number_of_windows;
-        window_class *window;
-        window_manager_class(void);
-       ~window_manager_class(void);
-        void set_active_window(int UID);
-        int  get_active_window(void);
-        int  register_window(int UID);
-        int  register_window(int UID_minimum, int UID_maximum);
-        void de_register_window(int UID);
-        bool mouse_over_window(float wx, float wy, float ww, float wh);
-        void process(void);
-        void render(void);
-};
+//------------------------------------------------------------ Window Class ------------------------------------------------------------------------
 
-#endif // WINDOW_MANAGER_H
+window_class::window_class(void)
+{
+    window_class::UID           = -1;
+    window_class::active        = false;
+    window_class::mouse_over    = false;
+    window_class::size.x        = 0.0f;
+    window_class::size.y        = 0.0f;
+    window_class::size.z        = 0.0f;
+    window_class::position.x    = 0.0f;
+    window_class::position.y    = 0.0f;
+    window_class::position.z    = 0.0f;
+}
+
+window_class::~window_class(void)
+{
+}
+
+void window_class::process(void)
+{
+    ;
+}

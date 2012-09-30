@@ -22,10 +22,10 @@
  * @date 2011-11-11
  */
 
-#include "../core/misc.hpp"
+#include "core/misc.hpp"
 #include "inventory.hpp"
-#include "../game.hpp"
-#include "../items.hpp"
+#include "game.hpp"
+#include "items.hpp"
 
 extern game_class game;
 

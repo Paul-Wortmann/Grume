@@ -34,7 +34,6 @@ game_class::game_class(void)
 
 void game_class::init(void)
 {
-    game.window_manager.register_window(PCPROFILE_WINDOW);
     game_class::debug = false;
     glDisable(GL_DEPTH_TEST);
     //--- initial state of the background ---
@@ -88,33 +87,14 @@ void game_class::init(void)
     game.player.path_set                          =  false;
     game.player.movement_type                     =  MOVE_TO_TILE_NONE;
 
-    game.UI.spell_book.close_button.image_normal              =  game.resource.texture.close_button.ref_number;
-    game.UI.spell_book.close_button.image_highlighted         =  game.resource.texture.close_button_highlighted.ref_number;
-    game.UI.inventory.close_button.image_normal               =  game.resource.texture.close_button.ref_number;
-    game.UI.inventory.close_button.image_highlighted          =  game.resource.texture.close_button_highlighted.ref_number;
-    game.UI.character.auto_points_box.image_true_highlighted  =  game.resource.texture.check_box_true_highlighted.ref_number;
-    game.UI.character.auto_points_box.image_false_highlighted =  game.resource.texture.check_box_false_highlighted.ref_number;
-    game.UI.character.auto_points_box.image_true_normal       =  game.resource.texture.check_box_true_normal.ref_number;
-    game.UI.character.auto_points_box.image_false_normal      =  game.resource.texture.check_box_false_normal.ref_number;
-    game.UI.character.auto_points_box.state                   =  game.player.auto_allocate;
-    game.UI.character.close_button.image_normal               =  game.resource.texture.close_button.ref_number;
-    game.UI.character.close_button.image_highlighted          =  game.resource.texture.close_button_highlighted.ref_number;
-    game.UI.quest_log.close_button.image_normal               =  game.resource.texture.close_button.ref_number;
-    game.UI.quest_log.close_button.image_highlighted          =  game.resource.texture.close_button_highlighted.ref_number;
-    game.UI.equipment.close_button.image_normal               =  game.resource.texture.close_button.ref_number;
-    game.UI.equipment.close_button.image_highlighted          =  game.resource.texture.close_button_highlighted.ref_number;
-    game.UI.npcvendor.close_button.image_normal               =  game.resource.texture.close_button.ref_number;
-    game.UI.npcvendor.close_button.image_highlighted          =  game.resource.texture.close_button_highlighted.ref_number;
     game.npc.health.bar.texture_base  = game.resource.texture.enemy_health_bar_background_000.ref_number;
     game.npc.health.bar.texture_bar   = game.resource.texture.enemy_health_bar_000.ref_number;
     game.npc.health.bar.texture_front = game.resource.texture.enemy_health_bar_foreground_000.ref_number;
 
     //--- other ---
-    game.menu.init();
     game.core.music_next_track = true;
     init_spells();
     init_items();
-    init_inventory();
 
     game.resource.map_2D.load("data/maps/cave.tmx");
     game.resource.map_2D.random_map(100,100,CAVE,CAVE);
@@ -126,10 +106,7 @@ void game_class::init(void)
 
 void game_class::process(void)
 {
-    game.window_manager.mouse_x = game.core.io.mouse_x;
-    game.window_manager.mouse_y = game.core.io.mouse_y;
     game.window_manager.process();
-    game.UI.process();
     game.player.process();
     game.npc.process();
     game.resource.map_2D.process();
@@ -193,6 +170,7 @@ void game_class::process(void)
             }
         };
         */
+/*
         if (game.core.io.key_escape) // Main menu
         {
             if (!game.core.game_menu_active)
@@ -337,7 +315,7 @@ void game_class::process(void)
             game.core.io.key_space                 = false;
             game.core.io.keyboard_delay_count      = 0;
         }
-
+*/
 
 ///------------------------------------------------------------------------------------------
         if (game.core.io.key_r) // regenerate random map.
@@ -356,20 +334,6 @@ void game_class::process(void)
             game.core.io.key_d                     = false;
             game.core.io.keyboard_delay_count      = 0;
         }
-
-        if (game.core.io.key_a) // add a window
-        {
-            game.window_manager.register_window(1024);
-            game.core.io.key_a                     = false;
-            game.core.io.keyboard_delay_count      = 0;
-        }
-        if (game.core.io.key_s) // remove a window
-        {
-            game.window_manager.de_register_window(1024);
-            game.core.io.key_s                     = false;
-            game.core.io.keyboard_delay_count      = 0;
-        }
-
 ///------------------------------------------------------------------------------------------
 
         if (game.core.io.key_alt) // display item names on map (loot / clickable items)
@@ -407,6 +371,6 @@ void game_class::render(void)
     game.npc.render();
 
     glLightModelfv(GL_LIGHT_MODEL_AMBIENT,global_ambient_light);
-    game.UI.draw();
+    game.window_manager.render();
 };
 

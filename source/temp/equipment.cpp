@@ -101,7 +101,7 @@ void equipment_slot_class::process(void)
         equipment_slot_class::mouse_over_count++;
         if (equipment_slot_class::mouse_over_count > equipment_slot_class::tooltip_time)
         {
-            game.UI.active_window_list.add_to_list(EQUIPMENT_WINDOW);
+            game.window_manager.register_window(EQUIPMENT_WINDOW);
             equipment_slot_class::mouse_over_count = equipment_slot_class::tooltip_time;
         }
     }
@@ -160,7 +160,7 @@ void equipment_slot_class::process(void)
         {
             if ((!game.UI.drag_in_progress) && (equipment_slot_class::mouse_over) && (game.core.io.mouse_button_left))//drag
             {
-                game.UI.active_window_list.add_to_list(EQUIPMENT_WINDOW);
+                game.window_manager.register_window(EQUIPMENT_WINDOW);
                 equipment_slot_class::drag          = true;
                 game.UI.drag_in_progress            = true;
                 equipment_slot_class::base_pos_x    = equipment_slot_class::pos_x;
@@ -561,7 +561,7 @@ void equipment_class::process(void)
     {
         if ((!game.UI.drag_in_progress) && (equipment_class::mouse_over) && (game.core.io.mouse_button_left))//drag
         {
-            game.UI.active_window_list.add_to_list(EQUIPMENT_WINDOW);
+            game.window_manager.register_window(EQUIPMENT_WINDOW);
             equipment_class::drag          = true;
             game.UI.drag_in_progress       = true;
             equipment_class::drag_offset_x = equipment_class::pos_x - game.core.io.mouse_x;
@@ -570,7 +570,7 @@ void equipment_class::process(void)
     }
     if (equipment_class::close_button.activated)
     {
-        game.UI.active_window_list.remove_from_list(EQUIPMENT_WINDOW);
+        game.window_manager.de_register_window(EQUIPMENT_WINDOW);
         game.core.equipment_active     = false;
         equipment_class::drag          = false;
         game.UI.drag_in_progress       = false;

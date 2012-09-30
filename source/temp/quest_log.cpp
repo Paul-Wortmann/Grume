@@ -23,7 +23,7 @@
  */
 
 #include "quest_log.hpp"
-#include "../game.hpp"
+#include "game.hpp"
 
 extern game_class game;
 

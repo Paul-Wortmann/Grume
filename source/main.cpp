@@ -26,7 +26,6 @@
 #include <SDL/SDL.h>
 #include <physfs.h>
 #include "core/misc.hpp"
-#include "menu_system.hpp"
 
 extern game_class game;
 
@@ -133,13 +132,11 @@ extern "C" int main(int argc, char** argv)
                     game.core.music_next_track = false;
                 }
                 if (game.core.process_ready) game.core.background.process();
-                if (game.core.process_ready) game.menu.process();
-                if (game.core.process_ready) game.window_manager.mouse_x = game.core.io.mouse_x;
-                if (game.core.process_ready) game.window_manager.mouse_y = game.core.io.mouse_y;
                 if (game.core.process_ready) game.window_manager.process();
-                if (game.menu.event == 65535) game.state = STATE_QUIT;
+                //if (game.menu.event == 65535) game.state = STATE_QUIT;
+                if (game.core.io.key_escape)  game.state = STATE_QUIT;
                 game.core.background.draw();
-                game.menu.render();
+                game.window_manager.render();
             break;
             case STATE_GAME:// game active, menus can be utilized in game, but the game will stay in this state.
                 if (game.core.process_ready) game.process();
