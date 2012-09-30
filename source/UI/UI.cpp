@@ -841,7 +841,6 @@ void action_bar_class::draw(void)
     UI_class::action_bar.action_slot[10].height      =  UI_class::action_bar.action_slot[ 1].height;
     UI_class::action_bar.action_slot[10].width       =  UI_class::action_bar.action_slot[ 1].width;
 
-    //UI_class::active_window_list.add_to_list(PCPROFILE_WINDOW);
     UI_class::player_stats.portrait                 =  0;
     UI_class::player_stats.pos_x                    = -0.8f;
     UI_class::player_stats.pos_y                    =  0.88f;
@@ -859,7 +858,7 @@ void UI_class::process(void)
 {
     if (game.window_manager.number_of_windows > 0)
     {
-        for (int window_count = 1; window_count <= game.window_manager.number_of_windows; window_count++)
+        for (int window_count = game.window_manager.number_of_windows; window_count >= 1; window_count--)
         {
             switch (game.window_manager.window[window_count].UID)
             {
@@ -900,7 +899,7 @@ void UI_class::draw(void)
     glDisable(GL_DEPTH_TEST);
     if (game.window_manager.number_of_windows > 0)
     {
-        for (int window_count = 1; window_count <= game.window_manager.number_of_windows; window_count++)
+        for (int window_count = game.window_manager.number_of_windows; window_count >= 1; window_count--)
         {
             switch (game.window_manager.window[window_count].UID)
             {
