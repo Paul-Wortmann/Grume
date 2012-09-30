@@ -10,6 +10,7 @@ v0.12 - (2012-10-31)
 LOC   -> xxxxx
 
 v0.11 - (2012-09-30)
+UI    -> Fixed segfault in new window manager.
 UI    -> Improved directory structure of source files with regards to the UI.
 UI    -> Created a new window_manager_class.
 UI    -> Windows now become active if a mouse over tooltip is activated.

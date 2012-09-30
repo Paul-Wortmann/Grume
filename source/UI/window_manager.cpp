@@ -79,7 +79,6 @@ int  window_manager_class::get_active_window(void)
 
 int  window_manager_class::register_window(int UID)
 {
-    game.core.log.file_write("registering window -> ",UID);
     if (window_manager_class::number_of_windows > 0) window_manager_class::de_register_window(UID); //first remove UID from list if it is already on the list
     if (window_manager_class::number_of_windows > 0) // only processed if there are actually windows in the list.
     {
@@ -109,7 +108,6 @@ int  window_manager_class::register_window(int UID)
         window_manager_class::window[1].active = true;
         window_manager_class::window[1].UID    = UID;
     }
-    game.core.log.file_write("registered window -> ",UID, "window_count -> ",window_manager_class::number_of_windows);
 }
 
 int  window_manager_class::register_window(int UID_minimum, int UID_maximum)
@@ -133,46 +131,36 @@ int  window_manager_class::register_window(int UID_minimum, int UID_maximum)
 
 void window_manager_class::de_register_window(int UID)
 {
-    game.core.log.file_write("de_registering window -> ",UID);
-    int UID_on_list = 0;
+    bool UID_on_list = false;
     if (window_manager_class::number_of_windows > 0) // only process windows if there are actually windows in the list.
     {
         for (int window_count = 1; window_count <= window_manager_class::number_of_windows; window_count++) // first check if UID is on list
         {
-            if (window_manager_class::window[window_count].UID == UID) UID_on_list++;
+            if (window_manager_class::window[window_count].UID == UID) UID_on_list = true;
         }
-        if (UID_on_list > 0)
+        if (UID_on_list)
         {
-            if (window_manager_class::number_of_windows == UID_on_list)
+            //backup old list
+            window_class temp_window_data[window_manager_class::number_of_windows+1];
+            for (int window_count = 1; window_count <= window_manager_class::number_of_windows; window_count++)
             {
-                window_manager_class::number_of_windows = 0;
-                if(window_manager_class::window) delete window_manager_class::window;
+                temp_window_data[window_count].UID = window_manager_class::window[window_count].UID;
             }
-            else
+            //create new list without UID
+            int new_window_count = 1;
+            window_manager_class::number_of_windows -= 1;
+            if(window_manager_class::window) delete window_manager_class::window;
+            window_manager_class::window = new window_class[window_manager_class::number_of_windows+1];
+            for (int window_count = 1; window_count <= window_manager_class::number_of_windows+UID_on_list; window_count++)
             {
-                //backup old list
-                window_class temp_window_data[window_manager_class::number_of_windows];
-                for (int window_count = 1; window_count <= window_manager_class::number_of_windows; window_count++)
+                if (temp_window_data[window_count].UID != UID)
                 {
-                    temp_window_data[window_count].UID = window_manager_class::window[window_count].UID;
-                }
-                //create new list without UID
-                int new_window_count = 1;
-                window_manager_class::number_of_windows -= UID_on_list;
-                if(window_manager_class::window) delete window_manager_class::window;
-                window_manager_class::window = new window_class[window_manager_class::number_of_windows+1];
-                for (int window_count = 1; window_count <= window_manager_class::number_of_windows+UID_on_list; window_count++)
-                {
-                    if (window_manager_class::window[window_count].UID != UID)
-                    {
-                        window_manager_class::window[new_window_count].UID = temp_window_data[window_count].UID;
-                        new_window_count++;
-                    }
+                    window_manager_class::window[new_window_count].UID = temp_window_data[window_count].UID;
+                    new_window_count++;
                 }
             }
         }
     }
-    game.core.log.file_write("de_registered window -> ",UID, "window_count -> ",window_manager_class::number_of_windows);
 }
 
 bool  window_manager_class::mouse_in_quadrangle  (float qx, float qy, float qw, float qh)

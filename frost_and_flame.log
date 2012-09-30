@@ -45,8 +45,8 @@ texture  files loaded -> 350
 Seeding random...
 Initializing menu system...
 Initializing game system...
-registering window -> 7
-registered window -> 7window_count -> 1
+registering window -> 7 - window_count -> 0
+registered window -> 7 - window_count -> 1
 Loading 2D map -> data/maps/cave.tmx
 Loaded tile-set -> data/tilesets/cave_floor.png - frames loaded -> 24
 Loaded tile-set -> data/tilesets/cave_wall_east.png - frames loaded -> 5
@@ -66,8 +66,72 @@ Starting Game...
  
 # ---------------------------------------------- #
  
-de_registering window -> 1
-de_registered window -> 1window_count -> 1
+registering window -> 4 - window_count -> 1
+de_registering window -> 4 - window_count -> 1
+de_registered window -> 4 - window_count -> 1
+registered window -> 4 - window_count -> 2
+de_registering window -> 4 - window_count -> 2
+de_registered window -> 4 - window_count -> 1
+registering window -> 4 - window_count -> 1
+de_registering window -> 4 - window_count -> 1
+de_registered window -> 4 - window_count -> 1
+registered window -> 4 - window_count -> 2
+de_registering window -> 4 - window_count -> 2
+de_registered window -> 4 - window_count -> 1
+registering window -> 4 - window_count -> 1
+de_registering window -> 4 - window_count -> 1
+de_registered window -> 4 - window_count -> 1
+registered window -> 4 - window_count -> 2
+de_registering window -> 4 - window_count -> 2
+de_registered window -> 4 - window_count -> 1
+registering window -> 4 - window_count -> 1
+de_registering window -> 4 - window_count -> 1
+de_registered window -> 4 - window_count -> 1
+registered window -> 4 - window_count -> 2
+registering window -> 4 - window_count -> 2
+de_registering window -> 4 - window_count -> 2
+de_registered window -> 4 - window_count -> 1
+registered window -> 4 - window_count -> 2
+registering window -> 5 - window_count -> 2
+de_registering window -> 5 - window_count -> 2
+de_registered window -> 5 - window_count -> 2
+registered window -> 5 - window_count -> 3
+registering window -> 5 - window_count -> 3
+de_registering window -> 5 - window_count -> 3
+de_registered window -> 5 - window_count -> 2
+registered window -> 5 - window_count -> 3
+registering window -> 4 - window_count -> 3
+de_registering window -> 4 - window_count -> 3
+de_registered window -> 4 - window_count -> 2
+registered window -> 4 - window_count -> 3
+registering window -> 5 - window_count -> 3
+de_registering window -> 5 - window_count -> 3
+de_registered window -> 5 - window_count -> 2
+registered window -> 5 - window_count -> 3
+registering window -> 6 - window_count -> 3
+de_registering window -> 6 - window_count -> 3
+de_registered window -> 6 - window_count -> 3
+registered window -> 6 - window_count -> 4
+de_registering window -> 6 - window_count -> 4
+de_registered window -> 6 - window_count -> 3
+registering window -> 6 - window_count -> 3
+de_registering window -> 6 - window_count -> 3
+de_registered window -> 6 - window_count -> 3
+registered window -> 6 - window_count -> 4
+de_registering window -> 6 - window_count -> 4
+de_registered window -> 6 - window_count -> 3
+registering window -> 4 - window_count -> 3
+de_registering window -> 4 - window_count -> 3
+de_registered window -> 4 - window_count -> 2
+registered window -> 4 - window_count -> 3
+de_registering window -> 4 - window_count -> 3
+de_registered window -> 4 - window_count -> 2
+registering window -> 5 - window_count -> 2
+de_registering window -> 5 - window_count -> 2
+de_registered window -> 5 - window_count -> 1
+registered window -> 5 - window_count -> 2
+de_registering window -> 5 - window_count -> 2
+de_registered window -> 5 - window_count -> 1
  
 # ---------------------------------------------- #
  
