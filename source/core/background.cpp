@@ -198,6 +198,5 @@ void background_class::draw             (void)
                 else background_class::layer[layer_count].image.draw(true,background_class::layer[layer_count].pos_x,background_class::layer[layer_count].pos_y,z_pos,4.0f,4.0f);
             }
         }
-        z_pos += 0.01f;
     }
 }
