@@ -95,12 +95,12 @@ extern "C" int main(int argc, char** argv)
     joystick = SDL_JoystickOpen(0);
 //  --- font ---
     game.core.log.file_write("Initializing font system...");
-    TTF_Init();
+    //TTF_Init();
 //  --- resources ---
-    game.resource.initialize();
-    game.resource.loading_screen_display("data/loading_screen.png");
+    game.loading_screen.display("data/loading_screen.png");
     game.core.log.file_write("Loading resources....");
-    game.resource.load_all();
+    game.mouse_cursor.load_image("data/textures/UI/cursors/default.png");
+    game.music.load("data/music/menu_00.s3m");
 //  --- miscellaneous ---
     game.core.log.file_write("Seeding random...");
     seed_rand();
@@ -119,6 +119,7 @@ extern "C" int main(int argc, char** argv)
 // --------------------------------------------------------------------------------------------------------------------------
     game.core.timer.start();
     game.core.last_ticks = game.core.timer.getticks();
+    setup_windows();
     while (game.state != STATE_QUIT)
     {
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -128,7 +129,7 @@ extern "C" int main(int argc, char** argv)
             case STATE_MENU:// initial state of the game, only the main menu is active, not the game.
                 if (game.core.music_next_track)
                 {
-                    game.resource.music.menu_00.play();
+                    game.music.play();
                     game.core.music_next_track = false;
                 }
                 if (game.core.process_ready) game.core.background.process();
@@ -158,7 +159,7 @@ extern "C" int main(int argc, char** argv)
             game.core.process_ready = true;
         }
         else game.core.process_ready = false;
-        game.resource.texture.cursor.draw(false,game.core.io.mouse_x+0.012f,game.core.io.mouse_y-0.018f,0.001f,0.04f,0.04f,345.0f);
+        game.mouse_cursor.draw(false,game.core.io.mouse_x+0.012f,game.core.io.mouse_y-0.018f,0.001f,0.04f,0.04f,345.0f);
         SDL_GL_SwapBuffers();
     }
 // --------------------------------------------------------------------------------------------------------------------------

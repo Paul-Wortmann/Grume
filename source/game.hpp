@@ -29,11 +29,13 @@
 #include "core/savegame.hpp"
 #include "items.hpp"
 #include "language.hpp"
-#include "resources.hpp"
+#include "core/textures.hpp"
+#include "core/music.hpp"
 #include "player.hpp"
 #include "npc.hpp"
 #include "spells.hpp"
 #include "UI/window_manager.hpp"
+#include "UI/loading_screen.hpp"
 
 #define STATE_QUIT 0
 #define STATE_MENU 1
@@ -62,7 +64,9 @@ class game_class
         save_game_class      save_06;
         save_game_class      save_07;
         core_class           core;
-        resource_class       resource;
+        loading_screen_class loading_screen;
+        texture_class        mouse_cursor;
+        music_class          music;
         zoom_type            zoom;
         player_class         player;
         npc_class            npc;

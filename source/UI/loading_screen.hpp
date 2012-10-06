@@ -22,27 +22,12 @@
  * @date 2011-11-11
  */
 
-#include "music.hpp"
+#include <string>
 
-music_class::music_class()
+class loading_screen_class
 {
-    music_class::music_data = NULL;
+    protected:
+    private:
+    public:
+        void display(std::string file_name);
 };
-
-music_class::~music_class()
-{
-    Mix_HaltMusic();
-    if(music_class::music_data != NULL) Mix_FreeMusic(music_class::music_data);
-};
-
-void music_class::play(void)
-{
-    Mix_PlayMusic(music_class::music_data,-1);
-};
-
-void music_class::load(std::string file_name)
-{
-    music_class::music_data = Mix_LoadMUS(file_name.c_str());
-};
-
-

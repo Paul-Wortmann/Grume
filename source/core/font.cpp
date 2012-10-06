@@ -26,6 +26,7 @@
 #include <GL/gl.h>
 #include <string>
 #include <sstream>
+#include "font.hpp"
 #include "../game.hpp"
 
 #define GL_BGR  0x80E0

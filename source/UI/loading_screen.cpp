@@ -22,27 +22,21 @@
  * @date 2011-11-11
  */
 
-#include "music.hpp"
+#include <SDL/SDL.h>
+#include <gl/gl.h>
+#include "loading_screen.hpp"
+#include "../core/textures.hpp"
 
-music_class::music_class()
+void loading_screen_class::display(std::string file_name)
 {
-    music_class::music_data = NULL;
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    SDL_GL_SwapBuffers();
+    texture_class loading_screen;
+    loading_screen.load_image(file_name);
+    loading_screen.draw(false,0.0f,0.0f,0.9f,2.0f,2.0f);
+    SDL_GL_SwapBuffers();
+    delete &loading_screen.frame[0].data; // Make sure we free the resource once it is no longer needed!
 };
 
-music_class::~music_class()
-{
-    Mix_HaltMusic();
-    if(music_class::music_data != NULL) Mix_FreeMusic(music_class::music_data);
-};
-
-void music_class::play(void)
-{
-    Mix_PlayMusic(music_class::music_data,-1);
-};
-
-void music_class::load(std::string file_name)
-{
-    music_class::music_data = Mix_LoadMUS(file_name.c_str());
-};
 
 

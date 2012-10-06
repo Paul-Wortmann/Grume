@@ -35,8 +35,7 @@ extern game_class         game;
 
 loader_md2_class::loader_md2_class(void)
 {
-    loader_md2_class::wrap_texture              =  false;
-    loader_md2_class::wrap_texture_ID           =  0;
+    loader_md2_class::wrap_texture_enabled      =  false;
     loader_md2_class::reference_ID              =  0;
     loader_md2_class::number_of_use_materials   = -1;
     loader_md2_class::number_of_materials       = -1;
@@ -58,17 +57,16 @@ loader_md2_class::~loader_md2_class(void)
 
 }
 
-void loader_md2_class::set_wrap_texture(int texture_ID)
+void loader_md2_class::set_wrap_texture(std::string file_name)
 {
-    if (texture_ID > -1)
+    if (file_name != "")
     {
-        loader_md2_class::wrap_texture              =  true;
-        loader_md2_class::wrap_texture_ID           =  texture_ID;
+        loader_md2_class::wrap_texture_enabled      =  true;
+        loader_md2_class::wrap_texture.load_image(file_name);
     }
     else
     {
-        loader_md2_class::wrap_texture              =  false;
-        loader_md2_class::wrap_texture_ID           =  0;
+        loader_md2_class::wrap_texture_enabled      =  false;
     }
 };
 
@@ -640,9 +638,9 @@ void loader_md2_class::draw(void)
 void loader_md2_class::draw(float x, float y, float z)
 {
     glEnable(GL_DEPTH_TEST);
-    if (loader_md2_class::wrap_texture)
+    if (loader_md2_class::wrap_texture_enabled)
     {
-        game.resource.texture.bind(loader_md2_class::wrap_texture_ID);
+        loader_md2_class::wrap_texture.bind_image();
         glTexGeni(GL_S, GL_TEXTURE_GEN_MODE, GL_OBJECT_LINEAR);
         glTexGeni(GL_T, GL_TEXTURE_GEN_MODE, GL_OBJECT_LINEAR);
         glEnable(GL_TEXTURE_GEN_S);

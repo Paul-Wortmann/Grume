@@ -22,6 +22,7 @@
  * @date 2011-11-11
  */
 
+#include "core/map_2D.hpp"
 #include "game.hpp"
 
 game_class        game;
@@ -37,10 +38,10 @@ void game_class::init(void)
     game_class::debug = false;
     glDisable(GL_DEPTH_TEST);
     //--- initial state of the background ---
-    game.core.background.set_data ( 1, 1, 0, 0.0f, 0.0f, 0.0000f, 0.00000f, game.resource.texture.background_00.ref_number);
-    game.core.background.set_data ( 2, 1, 0, 0.0f, 0.0f, 0.0000f, 0.00000f, game.resource.texture.background_00.ref_number);
-    game.core.background.set_data ( 3, 1, 0, 0.0f, 0.0f, 0.0010f, 0.00065f, game.resource.texture.background_01.ref_number);
-    game.core.background.set_data ( 4, 1, 0, 4.0f, 0.0f, 0.0010f, 0.00065f, game.resource.texture.background_01.ref_number);
+    game.core.background.set_data ( 1, 1, 0, 0.0f, 0.0f, 0.0000f, 0.00000f, "data/textures/UI/menu/background_00.png");
+    game.core.background.set_data ( 2, 1, 0, 0.0f, 0.0f, 0.0000f, 0.00000f, "data/textures/UI/menu/background_00.png");
+    game.core.background.set_data ( 3, 1, 0, 0.0f, 0.0f, 0.0010f, 0.00065f, "data/textures/UI/menu/background_01.png");
+    game.core.background.set_data ( 4, 1, 0, 4.0f, 0.0f, 0.0010f, 0.00065f, "data/textures/UI/menu/background_01.png");
     game.core.background.set_movement_type(FRONT_SCROLL);
     //--- other ---
 
@@ -86,22 +87,22 @@ void game_class::init(void)
     game.player.destination_set                   =  false;
     game.player.path_set                          =  false;
     game.player.movement_type                     =  MOVE_TO_TILE_NONE;
-
+/*
     game.npc.health.bar.texture_base  = game.resource.texture.enemy_health_bar_background_000.ref_number;
     game.npc.health.bar.texture_bar   = game.resource.texture.enemy_health_bar_000.ref_number;
     game.npc.health.bar.texture_front = game.resource.texture.enemy_health_bar_foreground_000.ref_number;
-
+*/
     //--- other ---
     game.core.music_next_track = true;
     init_spells();
     init_items();
 
-    game.resource.map_2D.load("data/maps/cave.tmx");
-    game.resource.map_2D.random_map(100,100,CAVE,CAVE);
+    //game.resource.map_2D.load("data/maps/cave.tmx");
+    //game.resource.map_2D.random_map(100,100,CAVE,CAVE);
 
     //zoom out for testing
     game.zoom.current = game.zoom.max;
-    game.resource.map_2D.calculate_tile_positions(DEFAULT_FRAME_WIDTH/game.zoom.current/2.0f,DEFAULT_FRAME_HEIGHT/game.zoom.current/2.0f);
+    //game.resource.map_2D.calculate_tile_positions(DEFAULT_FRAME_WIDTH/game.zoom.current/2.0f,DEFAULT_FRAME_HEIGHT/game.zoom.current/2.0f);
 };
 
 void game_class::process(void)
@@ -109,13 +110,13 @@ void game_class::process(void)
     game.window_manager.process();
     game.player.process();
     game.npc.process();
-    game.resource.map_2D.process();
+    //game.resource.map_2D.process();
     //game.resource.map_3D.town.process();
     game.core.game_resume = true;
     if (game.core.music_next_track)
     {
         game.core.music_next_track = false;
-        if (game.core.music_track ==  0) game.resource.music.menu_00.play();
+        //if (game.core.music_track ==  0) game.resource.music.menu_00.play();
     }
     if (game.core.io.mouse_wheel != 0)
     {
@@ -129,8 +130,8 @@ void game_class::process(void)
             if (game.zoom.current > game.zoom.max) game.zoom.current = game.zoom.max;
             else
             {
-                game.resource.map_2D.tile[0].pos_y -= (DEFAULT_FRAME_HEIGHT/game.zoom.current/2.0f);
-                game.resource.map_2D.calculate_tile_positions(DEFAULT_FRAME_WIDTH/game.zoom.current/2.0f,DEFAULT_FRAME_HEIGHT/game.zoom.current/2.0f);
+                //game.resource.map_2D.tile[0].pos_y -= (DEFAULT_FRAME_HEIGHT/game.zoom.current/2.0f);
+                //game.resource.map_2D.calculate_tile_positions(DEFAULT_FRAME_WIDTH/game.zoom.current/2.0f,DEFAULT_FRAME_HEIGHT/game.zoom.current/2.0f);
             }
         }
         if (game.core.io.mouse_wheel > 0)
@@ -144,7 +145,7 @@ void game_class::process(void)
             else
             {
                 //game.resource.map_2D.tile[0].pos_y += (DEFAULT_FRAME_HEIGHT/game.zoom.current/2.0f);
-                game.resource.map_2D.calculate_tile_positions(DEFAULT_FRAME_WIDTH/game.zoom.current/2.0f,DEFAULT_FRAME_HEIGHT/game.zoom.current/2.0f);
+                //game.resource.map_2D.calculate_tile_positions(DEFAULT_FRAME_WIDTH/game.zoom.current/2.0f,DEFAULT_FRAME_HEIGHT/game.zoom.current/2.0f);
             }
         }
     }
@@ -320,11 +321,11 @@ void game_class::process(void)
 ///------------------------------------------------------------------------------------------
         if (game.core.io.key_r) // regenerate random map.
         {
-            game.resource.map_2D.random_map(100,100,CAVE,DUNGEON);
+            //game.resource.map_2D.random_map(100,100,CAVE,DUNGEON);
             //zoom out for testing
             game.zoom.current = game.zoom.max;
-            game.resource.map_2D.calculate_tile_positions(DEFAULT_FRAME_WIDTH/game.zoom.current/2.0f,DEFAULT_FRAME_HEIGHT/game.zoom.current/2.0f);
-            game.resource.sound.menu_select_00.play();
+            //game.resource.map_2D.calculate_tile_positions(DEFAULT_FRAME_WIDTH/game.zoom.current/2.0f,DEFAULT_FRAME_HEIGHT/game.zoom.current/2.0f);
+           //game.resource.sound.menu_select_00.play();
             game.core.io.key_r                     = false;
             game.core.io.keyboard_delay_count      = 0;
         }
@@ -365,7 +366,7 @@ void game_class::render(void)
     float  world_ambient_light[]  = {game.world_ambient.intensity_R,game.world_ambient.intensity_G,game.world_ambient.intensity_B,game.world_ambient.intensity_A};
     glLightModelfv(GL_LIGHT_MODEL_AMBIENT,world_ambient_light);
 
-    game.resource.map_2D.draw();
+    //game.resource.map_2D.draw();
     //game.resource.map_3D.town.draw();
     game.player.draw();
     game.npc.render();

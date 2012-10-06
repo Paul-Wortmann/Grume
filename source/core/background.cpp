@@ -46,7 +46,7 @@ int   background_class::get_movement_type (void)
     return(background_class::movemennt_type);
 };
 
-void background_class::set_data          (int layer_number, int dx, int dy, float px, float py, float srx, float sry, int image_ref)
+void background_class::set_data          (int layer_number, int dx, int dy, float px, float py, float srx, float sry, std::string image_path)
 {
     background_class::layer[layer_number].active        = true;
     background_class::layer[layer_number].dir_x         = dx;
@@ -55,12 +55,12 @@ void background_class::set_data          (int layer_number, int dx, int dy, floa
     background_class::layer[layer_number].pos_y         = py;
     background_class::layer[layer_number].scroll_rate_x = srx;
     background_class::layer[layer_number].scroll_rate_y = sry;
-    background_class::layer[layer_number].image         = image_ref;
+    background_class::layer[layer_number].image.load_image(image_path);
 };
 
-void background_class::set_image         (int layer_number, int image_ref)
+void background_class::set_image         (int layer_number, std::string image_path)
 {
-    background_class::layer[layer_number].image       = image_ref;
+    background_class::layer[layer_number].image.load_image(image_path);
 };
 
 void background_class::set_active        (int layer_number,bool bool_data)
@@ -81,11 +81,6 @@ float background_class::get_scroll_x     (int layer_number)
 float background_class::get_scroll_y     (int layer_number)
 {
     return(background_class::layer[layer_number].scroll_rate_y);
-};
-
-int   background_class::get_image(int layer_number)
-{
-    return(background_class::layer[layer_number].image);
 };
 
 int   background_class::get_dir_x(int layer_number)
@@ -191,25 +186,18 @@ void background_class::draw             (void)
         {
             if (background_class::get_movement_type() == BOUNCE)
             {
-                if (background_class::layer[layer_count].image == game.resource.texture.background_00.ref_number)      game.resource.texture.background_00.draw     (true,background_class::layer[layer_count].pos_x,background_class::layer[layer_count].pos_y,z_pos,4.0f,4.0f);
-                if (background_class::layer[layer_count].image == game.resource.texture.background_01.ref_number)      game.resource.texture.background_01.draw     (true,background_class::layer[layer_count].pos_x,background_class::layer[layer_count].pos_y,z_pos,4.0f,4.0f);
+                background_class::layer[layer_count].image.draw(true,background_class::layer[layer_count].pos_x,background_class::layer[layer_count].pos_y,z_pos,4.0f,4.0f);
             }
             if (background_class::get_movement_type() == SCROLL)
             {
-                if (background_class::layer[layer_count].image == game.resource.texture.background_00.ref_number)      game.resource.texture.background_00.draw     (true,background_class::layer[layer_count].pos_x,background_class::layer[layer_count].pos_y,z_pos,4.0f,4.0f);
-                if (background_class::layer[layer_count].image == game.resource.texture.background_01.ref_number)      game.resource.texture.background_01.draw     (true,background_class::layer[layer_count].pos_x,background_class::layer[layer_count].pos_y,z_pos,4.0f,4.0f);
+                background_class::layer[layer_count].image.draw(true,background_class::layer[layer_count].pos_x,background_class::layer[layer_count].pos_y,z_pos,4.0f,4.0f);
             }
             if (background_class::get_movement_type() == FRONT_SCROLL)
             {
-                if (background_class::layer[1].image == game.resource.texture.background_00.ref_number)      game.resource.texture.background_00.draw     (true,background_class::layer[1].pos_x,background_class::layer[1].pos_y,z_pos,2.0f,2.0f);
-                if (background_class::layer[1].image == game.resource.texture.background_01.ref_number)      game.resource.texture.background_01.draw     (true,background_class::layer[1].pos_x,background_class::layer[1].pos_y,z_pos,2.0f,2.0f);
-                if (background_class::layer[2].image == game.resource.texture.background_00.ref_number)      game.resource.texture.background_00.draw     (true,background_class::layer[2].pos_x,background_class::layer[2].pos_y,z_pos,2.0f,2.0f);
-                if (background_class::layer[2].image == game.resource.texture.background_01.ref_number)      game.resource.texture.background_01.draw     (true,background_class::layer[2].pos_x,background_class::layer[2].pos_y,z_pos,2.0f,2.0f);
-                if (background_class::layer[3].image == game.resource.texture.background_00.ref_number)      game.resource.texture.background_00.draw     (true,background_class::layer[3].pos_x,background_class::layer[3].pos_y,z_pos,4.0f,4.0f);
-                if (background_class::layer[3].image == game.resource.texture.background_01.ref_number)      game.resource.texture.background_01.draw     (true,background_class::layer[3].pos_x,background_class::layer[3].pos_y,z_pos,4.0f,4.0f);
-                if (background_class::layer[4].image == game.resource.texture.background_00.ref_number)      game.resource.texture.background_00.draw     (true,background_class::layer[4].pos_x,background_class::layer[4].pos_y,z_pos,4.0f,4.0f);
-                if (background_class::layer[4].image == game.resource.texture.background_01.ref_number)      game.resource.texture.background_01.draw     (true,background_class::layer[4].pos_x,background_class::layer[4].pos_y,z_pos,4.0f,4.0f);
+                if (layer_count <= 2) background_class::layer[layer_count].image.draw(true,background_class::layer[layer_count].pos_x,background_class::layer[layer_count].pos_y,z_pos,2.0f,2.0f);
+                else background_class::layer[layer_count].image.draw(true,background_class::layer[layer_count].pos_x,background_class::layer[layer_count].pos_y,z_pos,4.0f,4.0f);
             }
         }
+        z_pos += 0.01f;
     }
 }

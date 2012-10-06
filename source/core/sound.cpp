@@ -32,12 +32,11 @@ sound_class::sound_class()
 sound_class::~sound_class()
 {
     Mix_HaltChannel(-1);
-    Mix_FreeChunk(sound_class::sound_data);
+    if (sound_class::sound_data != NULL) Mix_FreeChunk(sound_class::sound_data);
 };
 
-void sound_class::load(std::string file_name, int index_number)
+void sound_class::load(std::string file_name)
 {
-    sound_class::ref_number =  index_number;
     sound_class::sound_data = Mix_LoadWAV(file_name.c_str());
 };
 

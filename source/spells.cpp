@@ -58,6 +58,7 @@ spell_class::~spell_class(void)
 
 void init_spells(void)
 {
+    /*
     //Frost shards
     game.spell[1].name                   = "Frost shards";
     game.spell[1].level                  = 0;
@@ -314,6 +315,7 @@ void init_spells(void)
     game.spell[15].cooldown_level_1       = 0.0f;
     game.spell[15].cooldown_level_2       = 0.0f;
     game.spell[15].cooldown_level_3       = 0.0f;
+    */
 };
 
 

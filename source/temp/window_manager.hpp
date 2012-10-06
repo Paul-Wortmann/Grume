@@ -25,42 +25,48 @@
 #ifndef WINDOW_MANAGER_H
 #define WINDOW_MANAGER_H
 
-class window_class
-{
-    protected:
-    private:
-    public:
-        int   UID;
-        bool  active;
-        bool  mouse_over;
-        float size_x;
-        float size_y;
-        float size_z;
-        float position_x;
-        float position_y;
-        float position_z;
-        window_class(void);
-       ~window_class(void);
-};
+#include "window.hpp"
+#include "main_menu.hpp"
+
+#define    ACTIONBAR_UID          1
+#define    PCPROFILE_UID          2
+#define    EQUIPMENT_UID          3
+#define    QUEST_LOG_UID          4
+#define    CHARACTER_UID          5
+#define    INVENTORY_UID          6
+#define    SPELLBOOK_UID          7
+#define    NPCVENDOR_UID          8
+#define    MENU_DEFAULT_UID       9  //base menu to store default values, and position / size for conjoined windows.
+#define    MENU_MAIN_UID          10
+#define    MENU_NEW_GAME_UID      11
+#define    MENU_SAVE_UID          12
+#define    MENU_LOAD_UID          13
+#define    MENU_OPTIONS_UID       14
+#define    MENU_GAME_OVER_UID     15
+#define    MENU_PAUSE_UID         16
 
 class window_manager_class
 {
     protected:
     private:
     public:
-        int   number_of_windows;
         float mouse_x;
         float mouse_y;
+        int   number_of_windows;
         window_class *window;
         window_manager_class(void);
        ~window_manager_class(void);
+        int  get_window_number(int UID);
         void set_active_window(int UID);
         int  get_active_window(void);
         int  register_window(int UID);
         int  register_window(int UID_minimum, int UID_maximum);
         void de_register_window(int UID);
-        bool mouse_in_quadrangle  (float qx, float qy, float qw, float qh);
+        bool mouse_over_window(float wx, float wy, float ww, float wh);
         void process(void);
+        void render(void);
 };
+
+void setup_windows(void);
 
 #endif // WINDOW_MANAGER_H

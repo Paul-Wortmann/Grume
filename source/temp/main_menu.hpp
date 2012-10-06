@@ -22,27 +22,11 @@
  * @date 2011-11-11
  */
 
-#include "music.hpp"
+#ifndef MAIN_MENU_H
+#define MAIN_MENU_H
 
-music_class::music_class()
-{
-    music_class::music_data = NULL;
-};
+#include "window.hpp"
 
-music_class::~music_class()
-{
-    Mix_HaltMusic();
-    if(music_class::music_data != NULL) Mix_FreeMusic(music_class::music_data);
-};
+void setup_main_menu(int UID);
 
-void music_class::play(void)
-{
-    Mix_PlayMusic(music_class::music_data,-1);
-};
-
-void music_class::load(std::string file_name)
-{
-    music_class::music_data = Mix_LoadMUS(file_name.c_str());
-};
-
-
+#endif // MAIN_MENU_H

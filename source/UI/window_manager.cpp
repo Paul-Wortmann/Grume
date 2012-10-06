@@ -23,6 +23,9 @@
  */
 
 #include "window_manager.hpp"
+#include "../game.hpp"
+
+extern game_class         game;
 
 //--------------------------------------------------------- Window Manager Class -------------------------------------------------------------------
 
@@ -35,6 +38,19 @@ window_manager_class::~window_manager_class(void)
 {
 
 }
+
+int  window_manager_class::get_window_number(int UID)
+{
+    int return_value = 0;
+    if (window_manager_class::number_of_windows > 0) // only processed if there are actually windows in the list.
+    {
+        for (int window_count = 1; window_count <= window_manager_class::number_of_windows; window_count++)
+        {
+            if (window_manager_class::window[window_count].UID == UID) return_value = window_count;
+        }
+    }
+    return(return_value);
+};
 
 int  window_manager_class::register_window(int UID)
 {
@@ -130,6 +146,31 @@ bool  window_manager_class::mouse_over_window(float wx, float wy, float ww, floa
     else return(false);
 };
 
+void window_manager_class::set_active_window(int UID)
+{
+    if (window_manager_class::number_of_windows > 0) // only processed if there are actually windows in the list.
+    {
+        for (int window_count = 1; window_count <= window_manager_class::number_of_windows; window_count++)
+        {
+            if(window_manager_class::window[window_count].UID == UID) window_manager_class::window[window_count].active = true;
+            else window_manager_class::window[window_count].active = false;
+        }
+    }
+};
+
+int  window_manager_class::get_active_window(void)
+{
+    int return_value = 0;
+    if (window_manager_class::number_of_windows > 0) // only processed if there are actually windows in the list.
+    {
+        for (int window_count = 1; window_count <= window_manager_class::number_of_windows; window_count++)
+        {
+            if(window_manager_class::window[window_count].active) return_value = window_manager_class::window[window_count].UID;
+        }
+    }
+    return(return_value);
+};
+
 void window_manager_class::process(void)
 {
     /*
@@ -170,12 +211,32 @@ void window_manager_class::process(void)
 
 void window_manager_class::render(void)
 {
-    ;
+    if (window_manager_class::number_of_windows > 0) // only processed if there are actually windows in the list.
+    {
+        for (int window_count = window_manager_class::number_of_windows; window_count >= 1; window_count--)
+        {
+            window_manager_class::window[window_count].render();
+        }
+    }
 }
 
+//------------------------------------------------------------------------------------------------------------------------
 
-
-
+void setup_windows(void)
+{
+    //--- Register all windows first before populating them with data! ---
+    game.window_manager.register_window(MENU_MAIN_UID);
+    //game.window_manager.register_window(MENU_GAME_NEW_UID);
+    //game.window_manager.register_window(MENU_GAME_LOAD_UID);
+    //game.window_manager.register_window(MENU_GAME_SAVE_UID);
+    //--- populate windows with data. ---
+    setup_menu_main(MENU_MAIN_UID);
+    //setup_menu_game_new(MENU_GAME_NEW_UID);
+    //setup_menu_game_load(MENU_GAME_LOAD_UID);
+    //setup_menu_game_save(MENU_GAME_SAVE_UID);
+    //--- Set the main menu as the default active window. ---
+    game.window_manager.set_active_window(MENU_MAIN_UID);
+};
 
 
 

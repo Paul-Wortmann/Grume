@@ -26,6 +26,27 @@
 #define WINDOW_MANAGER_H
 
 #include "window.hpp"
+#include "menu_main.hpp"
+#include "menu_game_new.hpp"
+#include "menu_game_load.hpp"
+#include "menu_game_save.hpp"
+
+#define    ACTIONBAR_UID          1
+#define    PCPROFILE_UID          2
+#define    EQUIPMENT_UID          3
+#define    QUEST_LOG_UID          4
+#define    CHARACTER_UID          5
+#define    INVENTORY_UID          6
+#define    SPELLBOOK_UID          7
+#define    NPCVENDOR_UID          8
+#define    MENU_DEFAULT_UID       9  //base menu to store default values, and position / size for conjoined windows. maybe?
+#define    MENU_MAIN_UID          10
+#define    MENU_GAME_NEW_UID      11
+#define    MENU_GAME_SAVE_UID     12
+#define    MENU_GAME_LOAD_UID     13
+#define    MENU_OPTIONS_UID       14
+#define    MENU_GAME_OVER_UID     15
+#define    MENU_PAUSE_UID         16
 
 class window_manager_class
 {
@@ -35,9 +56,11 @@ class window_manager_class
         float mouse_x;
         float mouse_y;
         int   number_of_windows;
+        bool  drag_in_progress;
         window_class *window;
         window_manager_class(void);
        ~window_manager_class(void);
+        int  get_window_number(int UID);
         void set_active_window(int UID);
         int  get_active_window(void);
         int  register_window(int UID);
@@ -47,5 +70,7 @@ class window_manager_class
         void process(void);
         void render(void);
 };
+
+void setup_windows(void);
 
 #endif // WINDOW_MANAGER_H

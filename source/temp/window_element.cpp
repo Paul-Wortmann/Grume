@@ -22,27 +22,25 @@
  * @date 2011-11-11
  */
 
-#include "music.hpp"
+#include "window_element.hpp"
 
-music_class::music_class()
+//------------------------------------------------------------ Window element Class ------------------------------------------------------------------------
+
+window_element_class::window_element_class(void)
 {
-    music_class::music_data = NULL;
-};
+    window_element_class::mouse_over    = false;
+    window_element_class::size.x        = 0.0f;
+    window_element_class::size.y        = 0.0f;
+    window_element_class::size.z        = 0.0f;
+    window_element_class::position.x    = 0.0f;
+    window_element_class::position.y    = 0.0f;
+    window_element_class::position.z    = 0.0f;
+}
 
-music_class::~music_class()
+window_element_class::~window_element_class(void)
 {
-    Mix_HaltMusic();
-    if(music_class::music_data != NULL) Mix_FreeMusic(music_class::music_data);
-};
+}
 
-void music_class::play(void)
+void window_element_class::process(void)
 {
-    Mix_PlayMusic(music_class::music_data,-1);
-};
-
-void music_class::load(std::string file_name)
-{
-    music_class::music_data = Mix_LoadMUS(file_name.c_str());
-};
-
-
+}

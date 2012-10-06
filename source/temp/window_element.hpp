@@ -22,27 +22,32 @@
  * @date 2011-11-11
  */
 
-#include "music.hpp"
+#ifndef WINDOW_ELEMENT_H
+#define WINDOW_ELEMENT_H
 
-music_class::music_class()
+#include <string>
+#include "../core/textures.hpp"
+
+struct struct_3f
 {
-    music_class::music_data = NULL;
+    float x;
+    float y;
+    float z;
 };
 
-music_class::~music_class()
+class window_element_class
 {
-    Mix_HaltMusic();
-    if(music_class::music_data != NULL) Mix_FreeMusic(music_class::music_data);
+    protected:
+    private:
+    public:
+        bool            mouse_over;
+        std::string     image_path;
+        texture_class   image;
+        struct_3f       size;
+        struct_3f       position;
+        window_element_class(void);
+       ~window_element_class(void);
+        void process(void);
 };
 
-void music_class::play(void)
-{
-    Mix_PlayMusic(music_class::music_data,-1);
-};
-
-void music_class::load(std::string file_name)
-{
-    music_class::music_data = Mix_LoadMUS(file_name.c_str());
-};
-
-
+#endif // WINDOW_ELEMENT_H

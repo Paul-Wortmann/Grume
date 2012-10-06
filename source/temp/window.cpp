@@ -22,27 +22,27 @@
  * @date 2011-11-11
  */
 
-#include "music.hpp"
+#include "window.hpp"
 
-music_class::music_class()
+//------------------------------------------------------------ Window Class ------------------------------------------------------------------------
+
+window_class::window_class(void)
 {
-    music_class::music_data = NULL;
-};
+    window_class::UID           = -1;
+    window_class::active        = false;
+}
 
-music_class::~music_class()
+window_class::~window_class(void)
 {
-    Mix_HaltMusic();
-    if(music_class::music_data != NULL) Mix_FreeMusic(music_class::music_data);
-};
+}
 
-void music_class::play(void)
+void window_class::process(void)
 {
-    Mix_PlayMusic(music_class::music_data,-1);
-};
+    ;
+}
 
-void music_class::load(std::string file_name)
+void window_class::render(void)
 {
-    music_class::music_data = Mix_LoadMUS(file_name.c_str());
-};
-
-
+    if (window_class::form.image.frame != NULL) window_class::form.image.draw(false,window_class::form.position.x,window_class::form.position.y,window_class::form.position.z,window_class::form.size.x,window_class::form.size.y);
+    //render elements here....
+}

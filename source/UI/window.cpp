@@ -23,27 +23,227 @@
  */
 
 #include "window.hpp"
+#include "../game.hpp"
+
+extern game_class        game;
 
 //------------------------------------------------------------ Window Class ------------------------------------------------------------------------
 
 window_class::window_class(void)
 {
-    window_class::UID           = -1;
-    window_class::active        = false;
-    window_class::mouse_over    = false;
-    window_class::size.x        = 0.0f;
-    window_class::size.y        = 0.0f;
-    window_class::size.z        = 0.0f;
-    window_class::position.x    = 0.0f;
-    window_class::position.y    = 0.0f;
-    window_class::position.z    = 0.0f;
-}
+    window_class::UID                        = -1;
+    window_class::active                     = false;
+    window_class::event                      = 0;
+    window_class::title.text                 = "Not set";
+    window_class::title.size.x               = 0.0f;
+    window_class::title.size.y               = 0.0f;
+    window_class::title.size.z               = 0.0f;
+    window_class::title.position.x           = 0.0f;
+    window_class::title.position.y           = 0.0f;
+    window_class::title.position.z           = 0.0f;
+    window_class::title_bar.text             = "";
+    window_class::title_bar.size.x           = 0.0f;
+    window_class::title_bar.size.y           = 0.0f;
+    window_class::title_bar.size.z           = 0.0f;
+    window_class::title_bar.position.x       = 0.0f;
+    window_class::title_bar.position.y       = 0.0f;
+    window_class::title_bar.position.z       = 0.0f;
+    window_class::position.x                 = 0.0f;
+    window_class::position.y                 = 0.0f;
+    window_class::position.z                 = 0.0f;
+    window_class::size.x                     = 0.0f;
+    window_class::size.y                     = 0.0f;
+    window_class::size.z                     = 0.0f;
+    window_class::title_color.r              = 255;
+    window_class::title_color.g              = 255;
+    window_class::title_color.b              = 255;
+    window_class::title_color.a              = 255;
+    window_class::color.normal.r             = 255;
+    window_class::color.normal.g             = 255;
+    window_class::color.normal.b             = 255;
+    window_class::color.normal.a             = 255;
+    window_class::color.highlighted.r        = 255;
+    window_class::color.highlighted.g        = 255;
+    window_class::color.highlighted.b        = 255;
+    window_class::color.highlighted.a        = 255;
+    window_class::color.disabled.r           = 255;
+    window_class::color.disabled.g           = 255;
+    window_class::color.disabled.b           = 255;
+    window_class::color.disabled.a           = 255;
+    window_class::texture.base.image_path            = "";
+    window_class::texture.normal.image_path          = "";
+    window_class::texture.highlighted.image_path     = "";
+    window_class::texture.disabled.image_path        = "";
+    window_class::mouse_delay.maximum                = 30;
+    window_class::mouse_over_menu                    = false;
+    window_class::mouse_over_title                   = false;
+    window_class::active                             = false;
+    window_class::drag_active                        = false;
+    window_class::zoom.enabled                       = true;
+    window_class::zoom.maximum                       = 0.01f;
+    window_class::zoom.value                         = 0.0f;
+    window_class::zoom.speed                         = 0.001f;
+    for (int pos_number = 0; pos_number < MAX_CHOICE_SELECTIONS_PER_MENU; pos_number++)
+    {
+        window_class::choice_selection[pos_number].selected     = 0;
+        window_class::choice_selection[pos_number].position     = 0;
+        window_class::choice_selection[pos_number].position_max = 0;
+        for (int data_pos_number = 0; data_pos_number < MAX_CHOICE_SELECTIONS_PER_MENU; data_pos_number++)
+        {
+            window_class::choice_selection[pos_number].data[data_pos_number].active        = false;
+            window_class::choice_selection[pos_number].data[data_pos_number].value         = 0;
+            window_class::choice_selection[pos_number].data[data_pos_number].value_string  = "";
+        }
+    }
+};
 
 window_class::~window_class(void)
 {
-}
 
-void window_class::process(void)
+};
+
+void window_class::render(void)
 {
-    ;
-}
+    // ------------------------- Render menu background and title -------------------------
+    window_class::texture.base.image.draw(false,window_class::position.x,window_class::position.y,window_class::position.z,window_class::size.x,window_class::size.y);
+    //game.resource.font.font_1.Write(window_class::title_color.r,window_class::title_color.g,window_class::title_color.b,window_class::title_color.a,window_class::title.position.x,window_class::title.position.y,window_class::title.size.x,window_class::title.size.y,window_class::title.text);
+    // ------------------------- Render elements -------------------------
+    if (window_class::number_of_elements > 0)
+    {
+        for (int element_number = 1; element_number < window_class::number_of_elements; element_number++)
+        {
+            if (window_class::element[element_number].active)
+            {
+                window_class::element[element_number].render();
+            }
+        }
+    }
+};
+
+bool  window_class::get_mouse_over_menu(void)
+{
+    return(game.core.physics.point_in_quadrangle(window_class::position.x,window_class::size.x,window_class::position.y,window_class::size.y,game.core.io.mouse_x,game.core.io.mouse_y));
+};
+
+bool  window_class::get_mouse_over_title(void)
+{
+    return(game.core.physics.point_in_quadrangle(window_class::title_bar.position.x,window_class::title_bar.size.x,window_class::title_bar.position.y,window_class::title_bar.size.y,game.core.io.mouse_x,game.core.io.mouse_y));
+};
+
+bool  window_class::mouse_click_title(void)
+{
+    if (game.core.io.mouse_button_left) return(window_class::get_mouse_over_title());
+    else return(false);
+};
+
+void window_class::set_position(float x_pos, float y_pos)
+{
+    float move_delta_x                = window_class::position.x;
+    float move_delta_y                = window_class::position.y;
+    window_class::position.x            = x_pos;
+    window_class::position.y            = y_pos;
+    move_delta_x                      = move_delta_x - window_class::position.x;
+    move_delta_y                      = move_delta_y - window_class::position.y;
+    window_class::title.position.x     -= move_delta_x;
+    window_class::title.position.y     -= move_delta_y;
+    window_class::title_bar.position.x -= move_delta_x;
+    window_class::title_bar.position.y -= move_delta_y;
+    if(window_class::number_of_elements > 0)
+    {
+        for (int element_number = 1; element_number < window_class::number_of_elements; element_number++)
+        {
+            if (window_class::element[element_number].active)
+            {
+                window_class::element[element_number].position.x       -= move_delta_x;
+                window_class::element[element_number].position.y       -= move_delta_y;
+                window_class::element[element_number].title.position.x -= move_delta_x;
+                window_class::element[element_number].title.position.y -= move_delta_y;
+            }
+        }
+    }
+};
+
+int window_class::process(void)
+{
+    float drag_delta_x = 0.0f;
+    float drag_delta_y = 0.0f;
+    int   return_value = 0;
+    bool  return_mouse_over = false;
+    bool  allow_drag        = true;
+    window_class::mouse_delay.process();
+    if (!game.window_manager.drag_in_progress) window_class::mouse_over_menu = window_class::get_mouse_over_menu();
+    if (window_class::mouse_over_menu)
+    {
+        // ------------------------- Process elements -------------------------
+        if (window_class::number_of_elements > 0)
+        {
+            for (int element_number = 1; element_number < window_class::number_of_elements; element_number++)
+            {
+                if ((window_class::element[element_number].active) && (return_value == 0))
+                {
+                    window_class::element[element_number].mouse_delay.process();
+                    return_value = window_class::element[element_number].process();
+                    if (return_value > 0) return_value += (element_number * 100);
+                    if (return_value != 0) allow_drag   = false;
+                    if (window_class::element[element_number].mouse_over)
+                    {
+                        allow_drag        = false;
+                        return_mouse_over = true;
+                    }
+                }
+            }
+        }
+        // ------------------------- Drag -------------------------
+        if ((!game.window_manager.drag_in_progress) && (window_class::get_mouse_over_title())) window_class::mouse_over_title = true;
+        else window_class::mouse_over_title = false;
+        if (window_class::drag_active)
+        {
+            if (game.core.io.mouse_button_left)
+            {
+                drag_delta_x = window_class::position.x;
+                drag_delta_y = window_class::position.y;
+                window_class::position.x = game.core.io.mouse_x + window_class::drag_offset_x;
+                window_class::position.y = game.core.io.mouse_y + window_class::drag_offset_y;
+                drag_delta_x = drag_delta_x - window_class::position.x;
+                drag_delta_y = drag_delta_y - window_class::position.y;
+                window_class::title.position.x     -= drag_delta_x;
+                window_class::title.position.y     -= drag_delta_y;
+                window_class::title_bar.position.x -= drag_delta_x;
+                window_class::title_bar.position.y -= drag_delta_y;
+                if(window_class::number_of_elements > 0)
+                {
+                    for (int element_number = 1; element_number < window_class::number_of_elements; element_number++)
+                    {
+                        if (window_class::element[element_number].active)
+                        {
+                            window_class::element[element_number].position.x       -= drag_delta_x;
+                            window_class::element[element_number].position.y       -= drag_delta_y;
+                            window_class::element[element_number].title.position.x -= drag_delta_x;
+                            window_class::element[element_number].title.position.y -= drag_delta_y;
+                        }
+                    }
+                }
+            }
+            else
+            {
+                window_class::drag_active      = false;
+                game.window_manager.drag_in_progress       = false;
+            }
+        }
+        else
+        {
+            if ((!game.window_manager.drag_in_progress) && (window_class::mouse_over_title) && (game.core.io.mouse_button_left) && (allow_drag))// start drag
+            {
+                //game.window_manager.register_window(MAIN_MENU_WINDOW);
+                window_class::drag_active                  = true;
+                game.window_manager.drag_in_progress       = true;
+                window_class::drag_offset_x                = window_class::position.x - game.core.io.mouse_x;
+                window_class::drag_offset_y                = window_class::position.y - game.core.io.mouse_y;
+            }
+        }
+    // ------------------------- X -------------------------
+    }
+    if (!window_class::mouse_over_title) window_class::mouse_over_title = return_mouse_over;
+    return(return_value);
+};
+

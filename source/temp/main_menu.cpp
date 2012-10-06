@@ -23,5 +23,29 @@
  */
 
 #include "main_menu.hpp"
+#include "../game.hpp"
+
+extern game_class         game;
 
 //----------------------------------------------------------Main menu Class ------------------------------------------------------------------------
+
+void setup_main_menu(int UID)
+{
+    int window_number = game.window_manager.get_window_number(UID);
+    game.window_manager.window[window_number].active          = false;
+    game.window_manager.window[window_number].form.mouse_over = false;
+    game.window_manager.window[window_number].form.position.x = 0.0f;
+    game.window_manager.window[window_number].form.position.y = 0.0f;
+    game.window_manager.window[window_number].form.position.z = 0.0f;
+    game.window_manager.window[window_number].form.size.x     = 0.6f;
+    game.window_manager.window[window_number].form.size.y     = 1.0f;
+    game.window_manager.window[window_number].form.image_path = "data/textures/UI/menu/background_02.png";
+    game.resource.texture.number_loaded++;
+    game.window_manager.window[window_number].form.image.load_image(game.window_manager.window[window_number].form.image_path,game.resource.texture.number_loaded);
+};
+
+
+
+
+
+

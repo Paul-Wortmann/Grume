@@ -26,42 +26,54 @@
 #define WINDOW_H
 
 #include "window_element.hpp"
-#include <string>
 
-class window_class
+class color_class
 {
     private:
     public:
+        int r;
+        int g;
+        int b;
+        int a;
+};
+
+class color_state_class
+{
+    private:
+    public:
+        color_class normal;
+        color_class highlighted;
+        color_class disabled;
+};
+
+class window_class
+{
+    protected:
+    private:
+    public:
         int                     UID;
-        choice_selection_type   choice_selection[MAX_CHOICE_SELECTIONS_PER_MENU];
-        delay_class             mouse_delay;
         int                     event;
-        location_class          title;
-        color_struct            title_color;
-        location_class          title_bar;
-        struct_3f               size;
-        struct_3f               position;
-        bool                    mouse_over_menu;
-        bool                    mouse_over_title;
+        bool                    active;
+        int                     number_of_elements;
+        bool                    mouse_over;
         bool                    drag_active;
         float                   drag_offset_x;
         float                   drag_offset_y;
-        element_zoom_struct     zoom;
-        color_state_struct      color;
-        sound_state_struct      sound;
-        texture_state_struct    texture;
-        bool                    active;
-        int                     number_of_elements;
+        delay_class             mouse_delay;
+        color_state_class       color;
+        window_element_class    form;
         window_element_class   *element;
         window_class(void);
        ~window_class(void);
-        void                    render(void);
-        bool                    get_mouse_over_menu(void);
-        bool                    get_mouse_over_title(void);
-        bool                    mouse_click_title(void);
-        void                    set_position(float x_pos, float y_pos);
-        int                     process(void);
+        void process(void);
+        void render(void);
 };
 
 #endif // WINDOW_H
 
+/*
+        location_class          title;
+        color_class             title_color;
+        location_class          title_bar;
+        element_zoom_class      zoom;
+*/

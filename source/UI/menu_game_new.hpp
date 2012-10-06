@@ -22,9 +22,11 @@
  * @date 2011-11-11
  */
 
-#ifndef MAIN_MENU_H
-#define MAIN_MENU_H
+#ifndef MENU_GAME_NEW_H
+#define MENU_GAME_NEW_H
 
 #include "window.hpp"
 
-#endif // MAIN_MENU_H
+void setup_menu_game_new(int UID);
+
+#endif // MENU_GAME_NEW_H

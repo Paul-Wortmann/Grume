@@ -53,13 +53,12 @@ class texture_class
         int             frame_number;
         int             frame_max;
         frame_type*     frame;
-        int             ref_number;
-
         texture_class();
        ~texture_class();
-        bool     load_image      (std::string file_name, int index_number);
-        bool     load_spritesheet(std::string file_name, int index_number);
-        bool     load_spritesheet(std::string file_name, int index_number, int width, int height);
+        bool     load_image      (std::string file_name);
+        bool     load_spritesheet(std::string file_name);
+        bool     load_spritesheet(std::string file_name, int width, int height);
+        void     bind_image(void);
         void     process(void);
         void     draw(bool rumble, float pos_x, float pos_y, float pos_z, float width, float height);
         void     draw(bool rumble, float pos_x, float pos_y, float pos_z, float width, float height, int   angle);

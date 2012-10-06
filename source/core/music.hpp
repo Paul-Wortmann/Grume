@@ -32,12 +32,10 @@ class music_class
 {
     Mix_Music *music_data;
     public:
-    int        ref_number;
     music_class();
    ~music_class();
     void play(void);
     void load(std::string file_name);
-    void load(std::string file_name, int reference_number);
 };
 
 #endif //MUSIC_H

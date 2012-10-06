@@ -23,27 +23,9 @@
  */
 
 #include "window_manager.hpp"
-#include "game.hpp"
+#include "../game.hpp"
 
-extern game_class game;
-
-//------------------------------------------------------------ Window Class ------------------------------------------------------------------------
-
-window_class::window_class(void)
-{
-    window_class::UID           = -1;
-    window_class::mouse_over    = false;
-    window_class::size_x        = 0.0f;
-    window_class::size_y        = 0.0f;
-    window_class::size_z        = 0.0f;
-    window_class::position_x    = 0.0f;
-    window_class::position_y    = 0.0f;
-    window_class::position_z    = 0.0f;
-}
-
-window_class::~window_class(void)
-{
-}
+extern game_class         game;
 
 //--------------------------------------------------------- Window Manager Class -------------------------------------------------------------------
 
@@ -56,6 +38,19 @@ window_manager_class::~window_manager_class(void)
 {
 
 }
+
+int  window_manager_class::get_window_number(int UID)
+{
+    int return_value = 0;
+    if (window_manager_class::number_of_windows > 0) // only processed if there are actually windows in the list.
+    {
+        for (int window_count = 1; window_count <= window_manager_class::number_of_windows; window_count++)
+        {
+            if (window_manager_class::window[window_count].UID == UID) return_value = window_count;
+        }
+    }
+    return(return_value);
+};
 
 int  window_manager_class::register_window(int UID)
 {
@@ -143,11 +138,11 @@ void window_manager_class::de_register_window(int UID)
     }
 }
 
-bool  window_manager_class::mouse_in_quadrangle  (float qx, float qy, float qw, float qh)
+bool  window_manager_class::mouse_over_window(float wx, float wy, float ww, float wh)
 {
-    float px = window_manager_class::mouse_x;
-    float py = window_manager_class::mouse_y;
-    if ((px > (qx-(qw/2))) && (px < (qx+(qw/2))) && (py > (qy-(qh/2))) && (py < (qy+(qh/2)))) return(true);
+    float mx = window_manager_class::mouse_x;
+    float my = window_manager_class::mouse_y;
+    if ((mx > (wx-(ww/2))) && (mx < (wx+(ww/2))) && (my > (wy-(wh/2))) && (my < (wy+(wh/2)))) return(true);
     else return(false);
 };
 
@@ -183,13 +178,33 @@ void window_manager_class::process(void)
 
     }
     */
+    for (int window_count = 1; window_count <= window_manager_class::number_of_windows; window_count++) // first check if UID is on list
+    {
+        if (window_manager_class::window[window_count].active) window_manager_class::window[window_count].process();
+    }
+}
+
+void window_manager_class::render(void)
+{
+    if (window_manager_class::number_of_windows > 0) // only processed if there are actually windows in the list.
+    {
+        for (int window_count = window_manager_class::number_of_windows; window_count >= 1; window_count--)
+        {
+            window_manager_class::window[window_count].render();
+        }
+    }
 }
 
 
+//------------------------------------------------------------------------------------------------------------------------
 
-
-
-
+void setup_windows(void)
+{
+    //--- Register all windows first before populating them with data! ---
+    game.window_manager.register_window(MENU_MAIN_UID);
+    //--- populate windows with data. ---
+    setup_main_menu(MENU_MAIN_UID);
+};
 
 
 

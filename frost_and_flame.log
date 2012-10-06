@@ -11,54 +11,9 @@ Starting sound system...
 Initializing joystick system...
 Initializing font system...
 Loading resources....
-Loading resources -> UI
-Loading resources -> Items
-Loading resources -> portraits
-Loading resources -> particles
-Loading resources -> spells
-Loading resources -> Generic Textures
-Loading resources -> Heightmaps
-Loading resources -> 3D Maps
-Loading resources -> 3D Models
-loader_obj_class::load_texture loaded file -> data/models/forest/tree_palm_diffus.png
-usemtl found...1
-Current_material - > default
-loader_obj_class::load_texture loaded file -> data/models/forest/tree_palm_diffus.png
-usemtl found...2
-Current_material - > tree_palm_diffus
-loader_obj_class::load_texture loaded file -> data/models/objects/sand_shrubs.png
-usemtl found...1
-Current_material - > sand_shrubs_diffuse_sand_shrubs.png
-usemtl found...1
-Current_material - > Material_7891969-text
-usemtl found...1
-Current_material - > Material_tomb.png
-usemtl found...1
-Current_material - > default_Untitled
-Loading resources -> test data
-font     files loaded -> 1
-3D map   files loaded -> 1
-3D model files loaded -> 6
-music    files loaded -> 1
-sound    files loaded -> 9
-texture  files loaded -> 350
 Seeding random...
 Initializing menu system...
 Initializing game system...
-Loading 2D map -> data/maps/cave.tmx
-Loaded tile-set -> data/tilesets/cave_floor.png - frames loaded -> 24
-Loaded tile-set -> data/tilesets/cave_wall_east.png - frames loaded -> 5
-Loaded tile-set -> data/tilesets/cave_wall_north.png - frames loaded -> 2
-Loaded tile-set -> data/tilesets/cave_wall_north_east_concave.png - frames loaded -> 2
-Loaded tile-set -> data/tilesets/cave_wall_north_east_convex.png - frames loaded -> 2
-Loaded tile-set -> data/tilesets/cave_wall_north_west_concave.png - frames loaded -> 5
-Loaded tile-set -> data/tilesets/cave_wall_north_west_convex.png - frames loaded -> 2
-Loaded tile-set -> data/tilesets/cave_wall_south.png - frames loaded -> 5
-Loaded tile-set -> data/tilesets/cave_wall_south_east_concave.png - frames loaded -> 2
-Loaded tile-set -> data/tilesets/cave_wall_south_east_convex.png - frames loaded -> 5
-Loaded tile-set -> data/tilesets/cave_wall_south_west_concave.png - frames loaded -> 2
-Loaded tile-set -> data/tilesets/cave_wall_south_west_convex.png - frames loaded -> 2
-Loaded tile-set -> data/tilesets/cave_wall_west.png - frames loaded -> 2
 Initializing event handlers...
 Starting Game...
  
