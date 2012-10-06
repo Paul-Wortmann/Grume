@@ -180,7 +180,7 @@ void background_class::process           (void)
 void background_class::draw             (void)
 {
     float z_pos = 0.15f;
-    for(int layer_count = MAX_LAYERS; layer_count > 0; layer_count--)
+    for(int layer_count = 0; layer_count < MAX_LAYERS; layer_count++)
     {
         if(background_class::layer[layer_count].active)
         {
