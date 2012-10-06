@@ -4,6 +4,7 @@
 	<Project>
 		<Option title="Frost_And_Flame" />
 		<Option compiler="gcc" />
+		<Option virtualFolders="source\;" />
 		<Build>
 			<Target title="Windows">
 				<Option platforms="Windows;" />
@@ -72,7 +73,9 @@
 		<Unit filename="source\UI\menu_game_load.hpp" />
 		<Unit filename="source\UI\menu_game_new.cpp" />
 		<Unit filename="source\UI\menu_game_new.hpp" />
-		<Unit filename="source\UI\menu_game_save.cpp" />
+		<Unit filename="source\UI\menu_game_save.cpp">
+			<Option virtualFolder="source\" />
+		</Unit>
 		<Unit filename="source\UI\menu_game_save.hpp" />
 		<Unit filename="source\UI\menu_main.cpp" />
 		<Unit filename="source\UI\menu_main.hpp" />

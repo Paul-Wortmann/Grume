@@ -23,7 +23,7 @@
 	<string>
 	<fstream>
 
-1349536991 c:\_git_\frost_and_flame\source\game.hpp
+1349543953 c:\_git_\frost_and_flame\source\game.hpp
 	"core/core.hpp"
 	"core/savegame.hpp"
 	"items.hpp"
@@ -46,7 +46,7 @@
 	"physics.hpp"
 	"timer.hpp"
 
-1349529179 c:\_git_\frost_and_flame\source\core\background.hpp
+1349543174 c:\_git_\frost_and_flame\source\core\background.hpp
 	"textures.hpp"
 	<string>
 
@@ -666,7 +666,7 @@
 1326868751 c:\_git_\frost_and_flame\source\core\misc.hpp
 	<string>
 
-1349537644 source:c:\_git_\frost_and_flame\source\core\background.cpp
+1349543184 source:c:\_git_\frost_and_flame\source\core\background.cpp
 	"core.hpp"
 	"../game.hpp"
 	"background.hpp"
@@ -693,7 +693,7 @@
 1336190037 source:c:\_git_\frost_and_flame\source\core\rs232.cpp
 	"rs232.hpp"
 
-1349539608 source:c:\_git_\frost_and_flame\source\main.cpp
+1349543971 source:c:\_git_\frost_and_flame\source\main.cpp
 	"game.hpp"
 	<SDL/SDL.h>
 	<physfs.h>
@@ -890,7 +890,7 @@
 	"misc.hpp"
 	"../game.hpp"
 
-1349530368 source:c:\_git_\frost_and_flame\source\game.cpp
+1349544278 source:c:\_git_\frost_and_flame\source\game.cpp
 	"core/map_2D.hpp"
 	"game.hpp"
 

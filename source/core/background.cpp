@@ -180,7 +180,7 @@ void background_class::process           (void)
 void background_class::draw             (void)
 {
     float z_pos = 0.15f;
-    for(int layer_count = 0; layer_count < MAX_LAYERS; layer_count++)
+    for(int layer_count = 0; layer_count <= MAX_LAYERS; layer_count++)
     {
         if(background_class::layer[layer_count].active)
         {
@@ -194,8 +194,9 @@ void background_class::draw             (void)
             }
             if (background_class::get_movement_type() == FRONT_SCROLL)
             {
-                if (layer_count <= 2) background_class::layer[layer_count].image.draw(true,background_class::layer[layer_count].pos_x,background_class::layer[layer_count].pos_y,z_pos,2.0f,2.0f);
-                else background_class::layer[layer_count].image.draw(true,background_class::layer[layer_count].pos_x,background_class::layer[layer_count].pos_y,z_pos,4.0f,4.0f);
+                if  (layer_count <= 2) background_class::layer[layer_count].image.draw(true,background_class::layer[layer_count].pos_x,background_class::layer[layer_count].pos_y,z_pos,2.0f,2.0f);
+                if ((layer_count == 3) || (layer_count == 4)) background_class::layer[layer_count].image.draw(true,background_class::layer[layer_count].pos_x,background_class::layer[layer_count].pos_y,z_pos,4.0f,4.0f);
+                if  (layer_count >= 5) background_class::layer[layer_count].image.draw(true,background_class::layer[layer_count].pos_x,background_class::layer[layer_count].pos_y,z_pos,4.0f,4.0f);
             }
         }
     }

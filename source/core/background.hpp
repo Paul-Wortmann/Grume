@@ -33,7 +33,7 @@
 #define SCROLL  2
 #define FRONT_SCROLL  3
 
-const int MAX_LAYERS = 4;
+const int MAX_LAYERS = 6;
 
 class background_class
 {
