@@ -34,8 +34,8 @@ class font_class
     public:
         font_class(void);
        ~font_class(void);
-        bool set_file(std::string filename);
-        bool set_file(std::string filename, int pt_size);
+        bool load(std::string file_name);
+        bool load(std::string file_name, int pt_size);
         bool write(int r,int g,int b,int a,float x,float y,std::string text,int int_data);
         bool write(int r,int g,int b,int a,float x,float y,std::string text,float float_data);
         bool write(int r,int g,int b,int a,float x,float y,std::string text);

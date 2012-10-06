@@ -44,21 +44,23 @@ font_class::~font_class(void)
     TTF_CloseFont(font_class::font_data);
 };
 
-bool font_class::set_file(std::string filename)
+bool font_class::load(std::string file_name)
 {
-    font_class::font_data = TTF_OpenFont(filename.c_str(), 12);
+    font_class::font_data = TTF_OpenFont(file_name.c_str(), 12);
+    if(font_class::font_data == NULL) game.core.log.file_write("Error loading font -> ", file_name);
+    else  game.core.log.file_write("font load success");
     return(true);
 };
 
-bool font_class::set_file(std::string filename, int pt_size)
+bool font_class::load(std::string file_name, int pt_size)
 {
-    font_class::font_data = TTF_OpenFont(filename.c_str(), pt_size);
+    font_class::font_data = TTF_OpenFont(file_name.c_str(), pt_size);
     return(true);
 };
 
 bool font_class::write(int r,int g,int b,int a,float x,float y,std::string text,int int_data)
 {
-    if (text.length() > 0)
+    if ((text.length() > 0) && (font_class::font_data != NULL))
     {
         GLuint texture_data;
         GLenum texture_format;
@@ -108,7 +110,7 @@ bool font_class::write(int r,int g,int b,int a,float x,float y,std::string text,
 
 bool font_class::write(int r,int g,int b,int a,float x,float y,std::string text,float float_data)
 {
-    if (text.length() > 0)
+    if ((text.length() > 0) && (font_class::font_data != NULL))
     {
         GLuint texture_data;
         GLenum texture_format;
@@ -158,7 +160,7 @@ bool font_class::write(int r,int g,int b,int a,float x,float y,std::string text,
 
 bool font_class::write(int r,int g,int b,int a,float x,float y,std::string text)
 {
-    if (text.length() > 0)
+    if ((text.length() > 0) && (font_class::font_data != NULL))
     {
         GLuint texture_data;
         GLenum texture_format;
@@ -204,7 +206,7 @@ bool font_class::write(int r,int g,int b,int a,float x,float y,std::string text)
 
 bool font_class::write(int r,int g,int b,int a,float x,float y,float ws,float hs,std::string text)
 {
-    if (text.length() > 0)
+    if ((text.length() > 0) && (font_class::font_data != NULL))
     {
         GLuint texture_data;
         GLenum texture_format;
@@ -254,7 +256,7 @@ bool font_class::write(int r,int g,int b,int a,float x,float y,float ws,float hs
 
 bool font_class::write(int r,int g,int b,int a,float x,float y,float ws,float hs,std::string text,int int_data)
 {
-    if (text.length() > 0)
+    if ((text.length() > 0) && (font_class::font_data != NULL))
     {
         GLuint             texture_data;
         GLenum             texture_format;
@@ -307,7 +309,7 @@ bool font_class::write(int r,int g,int b,int a,float x,float y,float ws,float hs
 
 bool font_class::write(int r,int g,int b,int a,float x,float y,float ws,float hs,std::string text,float float_data)
 {
-    if (text.length() > 0)
+    if ((text.length() > 0) && (font_class::font_data != NULL))
     {
         GLuint             texture_data;
         GLenum             texture_format;
@@ -360,7 +362,7 @@ bool font_class::write(int r,int g,int b,int a,float x,float y,float ws,float hs
 
 bool font_class::write(int r,int g,int b,int a,float x,float y,float ws,float hs,std::string text,int int_data,std::string text_2)
 {
-    if (text.length() > 0)
+    if ((text.length() > 0) && (font_class::font_data != NULL))
     {
         GLuint             texture_data;
         GLenum             texture_format;
@@ -414,7 +416,7 @@ bool font_class::write(int r,int g,int b,int a,float x,float y,float ws,float hs
 
 bool font_class::write(int r,int g,int b,int a,float x,float y,float ws,float hs,std::string text,float float_data,std::string text_2)
 {
-    if (text.length() > 0)
+    if ((text.length() > 0) && (font_class::font_data != NULL))
     {
         GLuint             texture_data;
         GLenum             texture_format;
@@ -468,7 +470,7 @@ bool font_class::write(int r,int g,int b,int a,float x,float y,float ws,float hs
 
 bool font_class::write(int r,int g,int b,int a,float x,float y,float ws,float hs,float float_data,std::string text)
 {
-    if (text.length() > 0)
+    if ((text.length() > 0) && (font_class::font_data != NULL))
     {
         GLuint             texture_data;
         GLenum             texture_format;
@@ -523,7 +525,7 @@ bool font_class::write(int r,int g,int b,int a,float x,float y,float ws,float hs
 
 bool font_class::write(int r,int g,int b,int a,float x,float y,float ws,float hs,unsigned long long ullint_data,std::string text)
 {
-    if (text.length() > 0)
+    if ((text.length() > 0) && (font_class::font_data != NULL))
     {
         GLuint             texture_data;
         GLenum             texture_format;
@@ -578,7 +580,7 @@ bool font_class::write(int r,int g,int b,int a,float x,float y,float ws,float hs
 
 bool font_class::write(int r,int g,int b,int a,float x,float y,float ws,float hs,int int_data,std::string text)
 {
-    if (text.length() > 0)
+    if ((text.length() > 0) && (font_class::font_data != NULL))
     {
         GLuint             texture_data;
         GLenum             texture_format;
@@ -633,7 +635,7 @@ bool font_class::write(int r,int g,int b,int a,float x,float y,float ws,float hs
 
 bool font_class::write(int r,int g,int b,int a,float x,float y,float ws,float hs,std::string text_data,std::string text)
 {
-    if (text.length() > 0)
+    if ((text.length() > 0) && (font_class::font_data != NULL))
     {
         GLuint             texture_data;
         GLenum             texture_format;
@@ -684,7 +686,7 @@ bool font_class::write(int r,int g,int b,int a,float x,float y,float ws,float hs
 
 bool font_class::write(int r,int g,int b,int a,float x,float y,float ws,float hs,std::string text,unsigned long long ullint_data)
 {
-    if (text.length() > 0)
+    if ((text.length() > 0) && (font_class::font_data != NULL))
     {
         GLuint             texture_data;
         GLenum             texture_format;
@@ -737,7 +739,7 @@ bool font_class::write(int r,int g,int b,int a,float x,float y,float ws,float hs
 
 bool font_class::write(int r,int g,int b,int a,float x,float y,float ws,float hs,std::string text,unsigned long long ullint_data,std::string text_2)
 {
-    if (text.length() > 0)
+    if ((text.length() > 0) && (font_class::font_data != NULL))
     {
         GLuint             texture_data;
         GLenum             texture_format;
@@ -791,7 +793,7 @@ bool font_class::write(int r,int g,int b,int a,float x,float y,float ws,float hs
 
 bool font_class::write(int r,int g,int b,int a,float x,float y,float ws,float hs,std::string text,int int_data,std::string text_2,int int_data_2,std::string text_3)
 {
-    if (text.length() > 0)
+    if ((text.length() > 0) && (font_class::font_data != NULL))
     {
         GLuint             texture_data;
         GLenum             texture_format;
