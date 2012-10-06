@@ -56,6 +56,8 @@ void setup_menu_game_load(int UID)
     game.window_manager.window[window_number].sound.on_mouse_over.enabled      = true;
     game.window_manager.window[window_number].sound.on_mouse_over.sound_path   = "data/sound/menu/menu_move_00.wav";
     game.window_manager.window[window_number].sound.on_mouse_over.sound.load(game.window_manager.window[window_number].sound.on_mouse_over.sound_path);
+    game.window_manager.window[window_number].font_path                   = "data/fonts/font_001.ttf";
+    game.window_manager.window[window_number].font.load(game.window_manager.window[window_number].font_path);
     game.window_manager.window[window_number].mouse_delay.maximum     = 30;
     game.window_manager.window[window_number].event                   = 0;
     game.window_manager.window[window_number].color.normal.r          = 128;
@@ -102,6 +104,7 @@ void setup_menu_game_load(int UID)
     game.window_manager.window[window_number].element[element_number].texture.highlighted.image_path = "data/textures/UI/menu/close_button_highlighted.png";
     game.window_manager.window[window_number].element[element_number].texture.highlighted.image.load_image(game.window_manager.window[window_number].element[element_number].texture.highlighted.image_path);
     game.window_manager.window[window_number].element[element_number].sound                     = game.window_manager.window[window_number].sound;
+    game.window_manager.window[window_number].element[element_number].font                      = game.window_manager.window[window_number].font;
     game.window_manager.window[window_number].element[element_number].mouse_delay.maximum       = 30;
     element_number = 2; //--- new game button ---
     game.window_manager.window[window_number].element[element_number].title.text                = "New Game";
@@ -119,6 +122,7 @@ void setup_menu_game_load(int UID)
     game.window_manager.window[window_number].element[element_number].title.position.x          = game.window_manager.window[window_number].element[element_number].position.x-(game.window_manager.window[window_number].element[element_number].title.size.x/100.0f);
     game.window_manager.window[window_number].element[element_number].title.position.y          = game.window_manager.window[window_number].element[element_number].position.y-(game.window_manager.window[window_number].element[element_number].title.size.y/1480.0f);
     game.window_manager.window[window_number].element[element_number].sound                     = game.window_manager.window[window_number].sound;
+    game.window_manager.window[window_number].element[element_number].font                      = game.window_manager.window[window_number].font;
     game.window_manager.window[window_number].element[element_number].mouse_delay.maximum       = 30;
     element_number = 3; //--- load game button ---
     game.window_manager.window[window_number].element[element_number].title.text                = "Load Game";
@@ -136,6 +140,7 @@ void setup_menu_game_load(int UID)
     game.window_manager.window[window_number].element[element_number].title.position.x          = game.window_manager.window[window_number].element[element_number].position.x-(game.window_manager.window[window_number].element[element_number].title.size.x/100.0f);
     game.window_manager.window[window_number].element[element_number].title.position.y          = game.window_manager.window[window_number].element[element_number].position.y-(game.window_manager.window[window_number].element[element_number].title.size.y/1480.0f);
     game.window_manager.window[window_number].element[element_number].sound                     = game.window_manager.window[window_number].sound;
+    game.window_manager.window[window_number].element[element_number].font                      = game.window_manager.window[window_number].font;
     game.window_manager.window[window_number].element[element_number].mouse_delay.maximum       = 30;
     element_number = 4; //--- save game button ---
     game.window_manager.window[window_number].element[element_number].title.text                = "Save Game";
@@ -153,6 +158,7 @@ void setup_menu_game_load(int UID)
     game.window_manager.window[window_number].element[element_number].title.position.x          = game.window_manager.window[window_number].element[element_number].position.x-(game.window_manager.window[window_number].element[element_number].title.size.x/100.0f);
     game.window_manager.window[window_number].element[element_number].title.position.y          = game.window_manager.window[window_number].element[element_number].position.y-(game.window_manager.window[window_number].element[element_number].title.size.y/1480.0f);
     game.window_manager.window[window_number].element[element_number].sound                     = game.window_manager.window[window_number].sound;
+    game.window_manager.window[window_number].element[element_number].font                      = game.window_manager.window[window_number].font;
     game.window_manager.window[window_number].element[element_number].mouse_delay.maximum       = 30;
     element_number = 5; //--- resume button ---
     game.window_manager.window[window_number].element[element_number].title.text                = "Resume Game";
@@ -170,6 +176,7 @@ void setup_menu_game_load(int UID)
     game.window_manager.window[window_number].element[element_number].title.position.x          = game.window_manager.window[window_number].element[element_number].position.x-(game.window_manager.window[window_number].element[element_number].title.size.x/100.0f);
     game.window_manager.window[window_number].element[element_number].title.position.y          = game.window_manager.window[window_number].element[element_number].position.y-(game.window_manager.window[window_number].element[element_number].title.size.y/1480.0f);
     game.window_manager.window[window_number].element[element_number].sound                     = game.window_manager.window[window_number].sound;
+    game.window_manager.window[window_number].element[element_number].font                      = game.window_manager.window[window_number].font;
     game.window_manager.window[window_number].element[element_number].mouse_delay.maximum       = 30;
     element_number = 6; //--- options button ---
     game.window_manager.window[window_number].element[element_number].title.text                = "Options";
@@ -187,6 +194,7 @@ void setup_menu_game_load(int UID)
     game.window_manager.window[window_number].element[element_number].title.position.x          = game.window_manager.window[window_number].element[element_number].position.x-(game.window_manager.window[window_number].element[element_number].title.size.x/100.0f);
     game.window_manager.window[window_number].element[element_number].title.position.y          = game.window_manager.window[window_number].element[element_number].position.y-(game.window_manager.window[window_number].element[element_number].title.size.y/1480.0f);
     game.window_manager.window[window_number].element[element_number].sound                     = game.window_manager.window[window_number].sound;
+    game.window_manager.window[window_number].element[element_number].font                      = game.window_manager.window[window_number].font;
     game.window_manager.window[window_number].element[element_number].mouse_delay.maximum       = 30;
     element_number = 7; //--- exit button ---
     game.window_manager.window[window_number].element[element_number].title.text                = "Exit Game";
@@ -204,6 +212,7 @@ void setup_menu_game_load(int UID)
     game.window_manager.window[window_number].element[element_number].title.position.x          = game.window_manager.window[window_number].element[element_number].position.x-(game.window_manager.window[window_number].element[element_number].title.size.x/100.0f);
     game.window_manager.window[window_number].element[element_number].title.position.y          = game.window_manager.window[window_number].element[element_number].position.y-(game.window_manager.window[window_number].element[element_number].title.size.y/1480.0f);
     game.window_manager.window[window_number].element[element_number].sound                     = game.window_manager.window[window_number].sound;
+    game.window_manager.window[window_number].element[element_number].font                      = game.window_manager.window[window_number].font;
     game.window_manager.window[window_number].element[element_number].mouse_delay.maximum       = 30;
 };
 

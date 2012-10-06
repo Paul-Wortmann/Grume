@@ -95,7 +95,7 @@ extern "C" int main(int argc, char** argv)
     joystick = SDL_JoystickOpen(0);
 //  --- font ---
     game.core.log.file_write("Initializing font system...");
-    //TTF_Init();
+    TTF_Init();
 //  --- resources ---
     game.loading_screen.display("data/loading_screen.png");
     game.core.log.file_write("Loading resources....");

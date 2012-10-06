@@ -48,13 +48,13 @@ bool font_class::load(std::string file_name)
 {
     font_class::font_data = TTF_OpenFont(file_name.c_str(), 12);
     if(font_class::font_data == NULL) game.core.log.file_write("Error loading font -> ", file_name);
-    else  game.core.log.file_write("font load success");
     return(true);
 };
 
 bool font_class::load(std::string file_name, int pt_size)
 {
     font_class::font_data = TTF_OpenFont(file_name.c_str(), pt_size);
+    if(font_class::font_data == NULL) game.core.log.file_write("Error loading font -> ", file_name);
     return(true);
 };
 

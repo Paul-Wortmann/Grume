@@ -106,7 +106,7 @@ void window_class::render(void)
 {
     // ------------------------- Render menu background and title -------------------------
     window_class::texture.base.image.draw(false,window_class::position.x,window_class::position.y,window_class::position.z,window_class::size.x,window_class::size.y);
-    //game.resource.font.font_1.Write(window_class::title_color.r,window_class::title_color.g,window_class::title_color.b,window_class::title_color.a,window_class::title.position.x,window_class::title.position.y,window_class::title.size.x,window_class::title.size.y,window_class::title.text);
+    window_class::font.write(window_class::title_color.r,window_class::title_color.g,window_class::title_color.b,window_class::title_color.a,window_class::title.position.x,window_class::title.position.y,window_class::title.size.x,window_class::title.size.y,window_class::title.text);
     // ------------------------- Render elements -------------------------
     if (window_class::number_of_elements > 0)
     {

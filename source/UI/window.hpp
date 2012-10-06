@@ -26,6 +26,7 @@
 #define WINDOW_H
 
 #include "window_element.hpp"
+#include "../core/font.hpp"
 #include <string>
 
 class window_class
@@ -50,6 +51,8 @@ class window_class
         color_state_struct      color;
         sound_state_struct      sound;
         texture_state_struct    texture;
+        std::string             font_path;
+        font_class              font;
         bool                    active;
         int                     number_of_elements;
         window_element_class   *element;

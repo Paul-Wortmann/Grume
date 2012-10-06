@@ -27,6 +27,7 @@
 
 #include <string>
 #include "../core/textures.hpp"
+#include "../core/font.hpp"
 #include "../core/sound.hpp"
 
 #define DISABLED       0
@@ -166,6 +167,7 @@ class window_element_class
         color_state_struct      color;
         sound_state_struct      sound;
         texture_state_struct    texture;
+        font_class              font;
         window_element_class(void);
        ~window_element_class(void);
         void                    render(void);
