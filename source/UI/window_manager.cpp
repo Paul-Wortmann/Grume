@@ -151,15 +151,16 @@ int  window_manager_class::get_active_window(void)
     return(return_value);
 };
 
-//---------------
 int  window_manager_class::register_window(int UID)
 {
+    bool window_added = false;
     if (window_manager_class::number_of_windows > 0) // only process windows if there are actually windows in the list.
     {
         for (int window_count = 0; window_count < window_manager_class::number_of_windows; window_count++)
         {
-            if (window_manager_class::window_stack[window_count].UID == -1)
+            if ((window_manager_class::window_stack[window_count].UID == -1) && (!window_added))
             {
+                window_added = true;
                 window_manager_class::window_stack[window_count].active        = false;
                 window_manager_class::window_stack[window_count].enabled       = true;
                 window_manager_class::window_stack[window_count].UID           = UID;
@@ -243,7 +244,7 @@ void window_manager_class::process(void)
     */
     for (int window_count = 0; window_count < window_manager_class::number_of_windows; window_count++) // first check if UID is on list
     {
-        if (window_manager_class::window[window_count].active) window_manager_class::window[window_count].process();
+        if (window_manager_class::window_stack[window_count].enabled) window_manager_class::window[window_count].process();
     }
 }
 
@@ -251,13 +252,11 @@ void window_manager_class::render(void)
 {
     if (window_manager_class::number_of_windows > 0) // only processed if there are actually windows in the list.
     {
-        for (int window_count = window_manager_class::number_of_windows; window_count > 0; window_count--)
+        for (int window_count = window_manager_class::number_of_windows; window_count >= 0; window_count--)
         {
-            //error here somewhere....
             if (window_manager_class::window_stack[window_count].enabled)
             {
-                game.core.log.file_write("Attempting to render window -> ",window_count);
-                window_manager_class::window[window_count].render();
+                window_manager_class::window[window_manager_class::window_stack[window_count].window_number].render();
             }
         }
     }
