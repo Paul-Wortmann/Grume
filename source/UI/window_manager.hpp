@@ -53,6 +53,8 @@ class window_manager_stack_class
     public:
         bool active;
         int  UID;
+        int  window_number;
+        bool enabled;
         window_manager_stack_class(void);
 };
 
@@ -70,6 +72,7 @@ class window_manager_class
         window_manager_stack_class *window_stack;
         window_manager_class(void);
        ~window_manager_class(void);
+        void sort_window_stack(void);
         void create_windows(int number_windows);
         int  get_window_number(int UID);
         void set_active_window(int UID);
