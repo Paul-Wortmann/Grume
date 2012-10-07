@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <CodeBlocks_layout_file>
 	<ActiveTarget name="Windows" />
-	<File name="source\game.cpp" open="1" top="1" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="source\game.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="1941" topLine="24" />
+			<Cursor1 position="1128" topLine="18" />
 		</Cursor>
 	</File>
 	<File name="source\game.hpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -68,7 +68,7 @@
 	</File>
 	<File name="source\core\music.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="1397" topLine="22" />
+			<Cursor1 position="1084" topLine="11" />
 		</Cursor>
 	</File>
 	<File name="source\UI\menu_game_save.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -96,9 +96,9 @@
 			<Cursor1 position="4191" topLine="49" />
 		</Cursor>
 	</File>
-	<File name="source\main.cpp" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="source\main.cpp" open="0" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="4541" topLine="0" />
+			<Cursor1 position="4538" topLine="79" />
 		</Cursor>
 	</File>
 	<File name="source\UI\menu_main.hpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -118,7 +118,7 @@
 	</File>
 	<File name="source\UI\window.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="5231" topLine="95" />
+			<Cursor1 position="12254" topLine="230" />
 		</Cursor>
 	</File>
 	<File name="source\core\map_2D.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -161,14 +161,14 @@
 			<Cursor1 position="3686" topLine="14" />
 		</Cursor>
 	</File>
-	<File name="source\UI\window_manager.cpp" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="source\UI\window_manager.cpp" open="1" top="1" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="10761" topLine="207" />
 		</Cursor>
 	</File>
 	<File name="source\UI\window_manager.hpp" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="1145" topLine="39" />
+			<Cursor1 position="1968" topLine="42" />
 		</Cursor>
 	</File>
 	<File name="source\spells.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -188,7 +188,7 @@
 	</File>
 	<File name="source\core\sound.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="1245" topLine="21" />
+			<Cursor1 position="1085" topLine="10" />
 		</Cursor>
 	</File>
 	<File name="source\core\sound.hpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -198,7 +198,7 @@
 	</File>
 	<File name="source\core\textures.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="1962" topLine="40" />
+			<Cursor1 position="1756" topLine="40" />
 		</Cursor>
 	</File>
 	<File name="source\UI\loading_screen.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -218,7 +218,7 @@
 	</File>
 	<File name="source\core\font.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="1760" topLine="39" />
+			<Cursor1 position="1238" topLine="36" />
 		</Cursor>
 	</File>
 	<File name="source\core\font.hpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">

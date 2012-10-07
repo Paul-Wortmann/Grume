@@ -244,6 +244,25 @@ int window_class::process(void)
     // ------------------------- X -------------------------
     }
     if (!window_class::mouse_over_title) window_class::mouse_over_title = return_mouse_over;
+    window_class::event = return_value;
     return(return_value);
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

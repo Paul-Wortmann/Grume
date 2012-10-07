@@ -27,17 +27,39 @@
 
 extern game_class         game;
 
+//--------------------------------------------------------- Window Manager Stack Class -------------------------------------------------------------------
+window_manager_stack_class::window_manager_stack_class(void)
+{
+    window_manager_stack_class::active = false;
+    window_manager_stack_class::UID    = -1;
+}
+
+
 //--------------------------------------------------------- Window Manager Class -------------------------------------------------------------------
 
 window_manager_class::window_manager_class(void)
 {
-    window_manager_class::number_of_windows = 0;
+    window_manager_class::number_of_windows    = 0;
+    window_manager_class::windows_list_created = false;
 }
 
 window_manager_class::~window_manager_class(void)
 {
 
 }
+
+ void window_manager_class::create_windows(int number_windows)
+ {
+    if (!window_manager_class::windows_list_created)
+    {
+        // create the windows
+        window_manager_class::number_of_windows = number_windows;
+        window_manager_class::window = new window_class[window_manager_class::number_of_windows+1];
+        // create the UID stack
+        window_manager_class::window_stack = new window_manager_stack_class[window_manager_class::number_of_windows+1];
+        window_manager_class::windows_list_created = true;
+    }
+ }
 
 int  window_manager_class::get_window_number(int UID)
 {
@@ -224,7 +246,9 @@ void window_manager_class::render(void)
 
 void setup_windows(void)
 {
-    //--- Register all windows first before populating them with data! ---
+    //--- create the desired number of windows and setup the UID stack---
+    game.window_manager.create_windows(5);
+    //--- register the windows in the windows manager stack ---
     game.window_manager.register_window(MENU_MAIN_UID);
     //game.window_manager.register_window(MENU_GAME_NEW_UID);
     //game.window_manager.register_window(MENU_GAME_LOAD_UID);
@@ -237,6 +261,22 @@ void setup_windows(void)
     //--- Set the main menu as the default active window. ---
     game.window_manager.set_active_window(MENU_MAIN_UID);
 };
+
+void process_windows(void)
+{
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

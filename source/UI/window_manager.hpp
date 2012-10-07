@@ -48,6 +48,14 @@
 #define    MENU_GAME_OVER_UID     15
 #define    MENU_PAUSE_UID         16
 
+class window_manager_stack_class
+{
+    public:
+        bool active;
+        int  UID;
+        window_manager_stack_class(void);
+};
+
 class window_manager_class
 {
     protected:
@@ -57,9 +65,12 @@ class window_manager_class
         float mouse_y;
         int   number_of_windows;
         bool  drag_in_progress;
+        bool  windows_list_created;
         window_class *window;
+        window_manager_stack_class *window_stack;
         window_manager_class(void);
        ~window_manager_class(void);
+        void create_windows(int number_windows);
         int  get_window_number(int UID);
         void set_active_window(int UID);
         int  get_active_window(void);
