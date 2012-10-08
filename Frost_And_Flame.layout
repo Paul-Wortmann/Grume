@@ -91,9 +91,9 @@
 			<Cursor1 position="1094" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="source\UI\menu_main.cpp" open="1" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="source\UI\menu_main.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="4191" topLine="49" />
+			<Cursor1 position="998" topLine="0" />
 		</Cursor>
 	</File>
 	<File name="source\main.cpp" open="0" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -116,9 +116,9 @@
 			<Cursor1 position="25043" topLine="324" />
 		</Cursor>
 	</File>
-	<File name="source\UI\window.cpp" open="1" top="1" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="source\UI\window.cpp" open="1" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="12254" topLine="230" />
+			<Cursor1 position="8354" topLine="163" />
 		</Cursor>
 	</File>
 	<File name="source\core\map_2D.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -161,7 +161,7 @@
 			<Cursor1 position="3686" topLine="14" />
 		</Cursor>
 	</File>
-	<File name="source\UI\window_manager.cpp" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="source\UI\window_manager.cpp" open="1" top="1" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="10761" topLine="207" />
 		</Cursor>

@@ -172,6 +172,7 @@ int window_class::process(void)
     bool  allow_drag        = true;
     window_class::mouse_delay.process();
     if (!game.window_manager.drag_in_progress) window_class::mouse_over_menu = window_class::get_mouse_over_menu();
+    //else window_class::mouse_over_menu = false;
     if (window_class::mouse_over_menu)
     {
         // ------------------------- Process elements -------------------------

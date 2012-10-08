@@ -209,42 +209,20 @@ void window_manager_class::de_register_window(int UID)
 
 void window_manager_class::process(void)
 {
-    /*
-    // add code to handle window overlap processing protection etc...
-    //possibly drag between windows code?
-
-    if (window_manager_class::number_of_windows > 0) // only process windows if there are actually windows in the list.
+    //Determine mouse over for overlapping windows.
+    bool front_window_found = false;
+    for (int window_count = 0; window_count < window_manager_class::number_of_windows; window_count++)
     {
-        bool mouse_over_current_window = false;
-        for (int window_count = 1; window_count <= window_manager_class::number_of_windows; window_count++)
+        if((!front_window_found) && (window_manager_class::window_stack[window_count].enabled))
         {
-            //determine if the mouse is over a menu, taking into consideration positional ordering.
-            //first check if mouse is over a window
-            mouse_over_current_window = window_manager_class::mouse_in_quadrangle(window_manager_class::window[window_count].position_x,
-                                                                                  window_manager_class::window[window_count].position_y,
-                                                                                  window_manager_class::window[window_count].size_x,
-                                                                                  window_manager_class::window[window_count].size_y);
-            //check that mouse is not over any windows higher up on the list
-            if (window_count == 1) //This window is already on the top of the list
+            if(window_manager_class::window[window_manager_class::window_stack[window_count].window_number].get_mouse_over_menu())
             {
-                window_manager_class::window[window_count].mouse_over = true;
-            }
-            else
-            {
-                window_manager_class::window[window_count].mouse_over = true;
-                for (int window_count_temp = 1; window_count_temp <= window_count; window_count_temp++) // only check windows higher up on the list
-                {
-                    //only set mouse over if mouse over and not mouse over higher windows on the list.
-                    if(window_manager_class::window[window_count_temp].mouse_over) window_manager_class::window[window_count].mouse_over = false;
-                }
+                //if active window found, process it.
+                window_manager_class::window[window_manager_class::window_stack[window_count].window_number].mouse_over_menu = true;
+                window_manager_class::window[window_manager_class::window_stack[window_count].window_number].process();
+                front_window_found = true;
             }
         }
-
-    }
-    */
-    for (int window_count = 0; window_count < window_manager_class::number_of_windows; window_count++) // first check if UID is on list
-    {
-        if (window_manager_class::window_stack[window_count].enabled) window_manager_class::window[window_count].process();
     }
 }
 
