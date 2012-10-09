@@ -22,14 +22,14 @@
  * @date 2011-11-11
  */
 
-#include "menu_game_new.hpp"
+#include "menu_options.hpp"
 #include "../game.hpp"
 
 extern game_class         game;
 
 //----------------------------------------------------------Main menu Class ------------------------------------------------------------------------
 
-void setup_menu_game_new(int UID)
+void setup_menu_options(int UID)
 {
     int window_number = game.window_manager.get_window_number(UID);
     int element_number = 1;
@@ -76,7 +76,7 @@ void setup_menu_game_new(int UID)
     game.window_manager.window[window_number].zoom.maximum            = 0.02f;
     game.window_manager.window[window_number].zoom.speed              = 0.004f;
     game.window_manager.window[window_number].texture.angle           = 0.0f;
-    game.window_manager.window[window_number].title.text              = "New Game";
+    game.window_manager.window[window_number].title.text              = " Options ";
     game.window_manager.window[window_number].title.size.x            = game.window_manager.window[window_number].title.text.length()/1.2f;
     game.window_manager.window[window_number].title.size.y            = game.window_manager.window[window_number].title.size.x*4;
     game.window_manager.window[window_number].title.position.x        = game.window_manager.window[window_number].position.x - (game.window_manager.window[window_number].title.size.x/100.0f);

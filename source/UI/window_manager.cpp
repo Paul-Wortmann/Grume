@@ -245,17 +245,19 @@ void window_manager_class::render(void)
 void setup_windows(void)
 {
     //--- create the desired number of windows and setup the UID stack---
-    game.window_manager.create_windows(5);
+    game.window_manager.create_windows(6);
     //--- register the windows in the windows manager stack ---
     game.window_manager.register_window(MENU_MAIN_UID);
     game.window_manager.register_window(MENU_GAME_NEW_UID);
     game.window_manager.register_window(MENU_GAME_LOAD_UID);
     game.window_manager.register_window(MENU_GAME_SAVE_UID);
+    game.window_manager.register_window(MENU_OPTIONS_UID);
     //--- populate windows with data. ---
     setup_menu_main(MENU_MAIN_UID);
     setup_menu_game_new(MENU_GAME_NEW_UID);
     setup_menu_game_load(MENU_GAME_LOAD_UID);
     setup_menu_game_save(MENU_GAME_SAVE_UID);
+    setup_menu_options(MENU_OPTIONS_UID);
     //--- Set the main menu as the default active window. ---
     game.window_manager.set_active_window(MENU_MAIN_UID);
 };

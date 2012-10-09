@@ -30,6 +30,7 @@
 #include "menu_game_new.hpp"
 #include "menu_game_load.hpp"
 #include "menu_game_save.hpp"
+#include "menu_options.hpp"
 
 #define    ACTIONBAR_UID          1
 #define    PCPROFILE_UID          2

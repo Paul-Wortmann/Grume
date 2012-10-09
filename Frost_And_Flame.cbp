@@ -77,6 +77,8 @@
 		<Unit filename="source/UI/menu_game_save.hpp" />
 		<Unit filename="source/UI/menu_main.cpp" />
 		<Unit filename="source/UI/menu_main.hpp" />
+		<Unit filename="source/UI/menu_options.cpp" />
+		<Unit filename="source/UI/menu_options.hpp" />
 		<Unit filename="source/UI/window.cpp" />
 		<Unit filename="source/UI/window.hpp" />
 		<Unit filename="source/UI/window_element.cpp" />
