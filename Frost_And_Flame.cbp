@@ -4,7 +4,6 @@
 	<Project>
 		<Option title="Frost_And_Flame" />
 		<Option compiler="gcc" />
-		<Option virtualFolders="source\;" />
 		<Build>
 			<Target title="Windows">
 				<Option platforms="Windows;" />
@@ -13,8 +12,8 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-O3" />
-					<Add directory="C:\MinGW\include" />
-					<Add directory="C:\MinGW\include\SDL" />
+					<Add directory="C:/MinGW/include" />
+					<Add directory="C:/MinGW/include/SDL" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -29,7 +28,7 @@
 					<Add library="SDL_net" />
 					<Add library="opengl32" />
 					<Add library="libphysfs" />
-					<Add directory="C:\MinGW\lib" />
+					<Add directory="C:/MinGW/lib" />
 				</Linker>
 			</Target>
 			<Target title="Linux">
@@ -50,110 +49,108 @@
 					<Add library="GL" />
 					<Add library="\usr\lib\nvidia-current\libGL.so" />
 					<Add library="libphysfs" />
-					<Add directory="\host\Program Files (x86)\CodeBlocks\MinGW\lib" />
-					<Add directory="\usr\lib" />
+					<Add directory="/host/Program Files (x86)/CodeBlocks/MinGW/lib" />
+					<Add directory="/usr/lib" />
 				</Linker>
 			</Target>
 		</Build>
 		<Compiler>
 			<Add option="-Wno-write-strings" />
-			<Add directory='&quot;C:\MinGW\include&quot;' />
+			<Add directory='&quot;C:/MinGW/include&quot;' />
 		</Compiler>
 		<Linker>
-			<Add directory='&quot;C:\MinGW\lib&quot;' />
-			<Add directory="\usr\lib" />
+			<Add directory='&quot;C:/MinGW/lib&quot;' />
+			<Add directory="/usr/lib" />
 		</Linker>
+		<Unit filename="Readme.md" />
 		<Unit filename="changelog.txt" />
 		<Unit filename="credits.txt" />
-		<Unit filename="default.cfg" />
+		<Unit filename="frost_and_flame.cfg" />
 		<Unit filename="frost_and_flame.log" />
-		<Unit filename="source\UI\loading_screen.cpp" />
-		<Unit filename="source\UI\loading_screen.hpp" />
-		<Unit filename="source\UI\menu_game_load.cpp" />
-		<Unit filename="source\UI\menu_game_load.hpp" />
-		<Unit filename="source\UI\menu_game_new.cpp" />
-		<Unit filename="source\UI\menu_game_new.hpp" />
-		<Unit filename="source\UI\menu_game_save.cpp">
-			<Option virtualFolder="source\" />
-		</Unit>
-		<Unit filename="source\UI\menu_game_save.hpp" />
-		<Unit filename="source\UI\menu_main.cpp" />
-		<Unit filename="source\UI\menu_main.hpp" />
-		<Unit filename="source\UI\window.cpp" />
-		<Unit filename="source\UI\window.hpp" />
-		<Unit filename="source\UI\window_element.cpp" />
-		<Unit filename="source\UI\window_element.hpp" />
-		<Unit filename="source\UI\window_manager.cpp" />
-		<Unit filename="source\UI\window_manager.hpp" />
-		<Unit filename="source\core\background.cpp" />
-		<Unit filename="source\core\background.hpp" />
-		<Unit filename="source\core\config.cpp" />
-		<Unit filename="source\core\config.hpp" />
-		<Unit filename="source\core\core.cpp" />
-		<Unit filename="source\core\core.hpp" />
-		<Unit filename="source\core\file.cpp" />
-		<Unit filename="source\core\file.hpp" />
-		<Unit filename="source\core\font.cpp" />
-		<Unit filename="source\core\font.hpp" />
-		<Unit filename="source\core\graphics.cpp" />
-		<Unit filename="source\core\graphics.hpp" />
-		<Unit filename="source\core\io.cpp" />
-		<Unit filename="source\core\io.hpp" />
-		<Unit filename="source\core\loader_md2.cpp" />
-		<Unit filename="source\core\loader_md2.hpp" />
-		<Unit filename="source\core\loader_obj.cpp" />
-		<Unit filename="source\core\loader_obj.hpp" />
-		<Unit filename="source\core\loader_tmx.cpp" />
-		<Unit filename="source\core\loader_tmx.hpp" />
-		<Unit filename="source\core\log.cpp" />
-		<Unit filename="source\core\log.hpp" />
-		<Unit filename="source\core\map_2D.cpp" />
-		<Unit filename="source\core\map_2D.hpp" />
-		<Unit filename="source\core\map_3D.cpp" />
-		<Unit filename="source\core\map_3D.hpp" />
-		<Unit filename="source\core\misc.cpp" />
-		<Unit filename="source\core\misc.hpp" />
-		<Unit filename="source\core\music.cpp" />
-		<Unit filename="source\core\music.hpp" />
-		<Unit filename="source\core\network.cpp" />
-		<Unit filename="source\core\network.hpp" />
-		<Unit filename="source\core\particles.cpp" />
-		<Unit filename="source\core\particles.hpp" />
-		<Unit filename="source\core\pathfinding.cpp" />
-		<Unit filename="source\core\pathfinding.hpp" />
-		<Unit filename="source\core\physics.cpp" />
-		<Unit filename="source\core\physics.hpp" />
-		<Unit filename="source\core\rs232.cpp" />
-		<Unit filename="source\core\rs232.hpp" />
-		<Unit filename="source\core\savegame.cpp" />
-		<Unit filename="source\core\savegame.hpp" />
-		<Unit filename="source\core\sound.cpp" />
-		<Unit filename="source\core\sound.hpp" />
-		<Unit filename="source\core\textures.cpp" />
-		<Unit filename="source\core\textures.hpp" />
-		<Unit filename="source\core\timer.cpp" />
-		<Unit filename="source\core\timer.hpp" />
-		<Unit filename="source\core\vector.cpp" />
-		<Unit filename="source\core\vector.hpp" />
-		<Unit filename="source\game.cpp" />
-		<Unit filename="source\game.hpp" />
-		<Unit filename="source\icon.ico" />
-		<Unit filename="source\icon.rc">
+		<Unit filename="source/UI/loading_screen.cpp" />
+		<Unit filename="source/UI/loading_screen.hpp" />
+		<Unit filename="source/UI/menu_game_load.cpp" />
+		<Unit filename="source/UI/menu_game_load.hpp" />
+		<Unit filename="source/UI/menu_game_new.cpp" />
+		<Unit filename="source/UI/menu_game_new.hpp" />
+		<Unit filename="source/UI/menu_game_save.cpp" />
+		<Unit filename="source/UI/menu_game_save.hpp" />
+		<Unit filename="source/UI/menu_main.cpp" />
+		<Unit filename="source/UI/menu_main.hpp" />
+		<Unit filename="source/UI/window.cpp" />
+		<Unit filename="source/UI/window.hpp" />
+		<Unit filename="source/UI/window_element.cpp" />
+		<Unit filename="source/UI/window_element.hpp" />
+		<Unit filename="source/UI/window_manager.cpp" />
+		<Unit filename="source/UI/window_manager.hpp" />
+		<Unit filename="source/core/background.cpp" />
+		<Unit filename="source/core/background.hpp" />
+		<Unit filename="source/core/config.cpp" />
+		<Unit filename="source/core/config.hpp" />
+		<Unit filename="source/core/core.cpp" />
+		<Unit filename="source/core/core.hpp" />
+		<Unit filename="source/core/file.cpp" />
+		<Unit filename="source/core/file.hpp" />
+		<Unit filename="source/core/font.cpp" />
+		<Unit filename="source/core/font.hpp" />
+		<Unit filename="source/core/graphics.cpp" />
+		<Unit filename="source/core/graphics.hpp" />
+		<Unit filename="source/core/io.cpp" />
+		<Unit filename="source/core/io.hpp" />
+		<Unit filename="source/core/loader_md2.cpp" />
+		<Unit filename="source/core/loader_md2.hpp" />
+		<Unit filename="source/core/loader_obj.cpp" />
+		<Unit filename="source/core/loader_obj.hpp" />
+		<Unit filename="source/core/loader_tmx.cpp" />
+		<Unit filename="source/core/loader_tmx.hpp" />
+		<Unit filename="source/core/log.cpp" />
+		<Unit filename="source/core/log.hpp" />
+		<Unit filename="source/core/map_2D.cpp" />
+		<Unit filename="source/core/map_2D.hpp" />
+		<Unit filename="source/core/map_3D.cpp" />
+		<Unit filename="source/core/map_3D.hpp" />
+		<Unit filename="source/core/misc.cpp" />
+		<Unit filename="source/core/misc.hpp" />
+		<Unit filename="source/core/music.cpp" />
+		<Unit filename="source/core/music.hpp" />
+		<Unit filename="source/core/network.cpp" />
+		<Unit filename="source/core/network.hpp" />
+		<Unit filename="source/core/particles.cpp" />
+		<Unit filename="source/core/particles.hpp" />
+		<Unit filename="source/core/pathfinding.cpp" />
+		<Unit filename="source/core/pathfinding.hpp" />
+		<Unit filename="source/core/physics.cpp" />
+		<Unit filename="source/core/physics.hpp" />
+		<Unit filename="source/core/rs232.cpp" />
+		<Unit filename="source/core/rs232.hpp" />
+		<Unit filename="source/core/savegame.cpp" />
+		<Unit filename="source/core/savegame.hpp" />
+		<Unit filename="source/core/sound.cpp" />
+		<Unit filename="source/core/sound.hpp" />
+		<Unit filename="source/core/textures.cpp" />
+		<Unit filename="source/core/textures.hpp" />
+		<Unit filename="source/core/timer.cpp" />
+		<Unit filename="source/core/timer.hpp" />
+		<Unit filename="source/core/vector.cpp" />
+		<Unit filename="source/core/vector.hpp" />
+		<Unit filename="source/game.cpp" />
+		<Unit filename="source/game.hpp" />
+		<Unit filename="source/icon.rc">
 			<Option compilerVar="WINDRES" />
 		</Unit>
-		<Unit filename="source\items.cpp" />
-		<Unit filename="source\items.hpp" />
-		<Unit filename="source\language.cpp" />
-		<Unit filename="source\language.hpp" />
-		<Unit filename="source\main.cpp" />
-		<Unit filename="source\npc.cpp" />
-		<Unit filename="source\npc.hpp" />
-		<Unit filename="source\player.cpp" />
-		<Unit filename="source\player.hpp" />
-		<Unit filename="source\save_data.cpp" />
-		<Unit filename="source\save_data.hpp" />
-		<Unit filename="source\spells.cpp" />
-		<Unit filename="source\spells.hpp" />
+		<Unit filename="source/items.cpp" />
+		<Unit filename="source/items.hpp" />
+		<Unit filename="source/language.cpp" />
+		<Unit filename="source/language.hpp" />
+		<Unit filename="source/main.cpp" />
+		<Unit filename="source/npc.cpp" />
+		<Unit filename="source/npc.hpp" />
+		<Unit filename="source/player.cpp" />
+		<Unit filename="source/player.hpp" />
+		<Unit filename="source/save_data.cpp" />
+		<Unit filename="source/save_data.hpp" />
+		<Unit filename="source/spells.cpp" />
+		<Unit filename="source/spells.hpp" />
 		<Extensions>
 			<code_completion />
 			<envvars />

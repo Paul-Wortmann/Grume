@@ -260,8 +260,9 @@ void setup_windows(void)
     game.window_manager.set_active_window(MENU_MAIN_UID);
 };
 
-void process_windows(void) // Process events generated buy the window in the list
+void process_windows(void) // Process events generated buy the windows in the list
 {
+
 }
 
 
