@@ -76,11 +76,14 @@ class window_manager_class
         void sort_window_stack(void);
         void create_windows(int number_windows);
         int  get_window_number(int UID);
-        void set_active_window(int UID);
+        void set_window_active(int UID);
+        void set_window_inactive(int UID);
         int  get_active_window(void);
         int  register_window(int UID);
         int  register_window(int UID_minimum, int UID_maximum);
         void de_register_window(int UID);
+        void window_enable(int UID);
+        void window_disable(int UID);
         bool mouse_over_window(float wx, float wy, float ww, float wh);
         void process(void);
         void render(void);
@@ -89,3 +92,7 @@ class window_manager_class
 void setup_windows(void);
 
 #endif // WINDOW_MANAGER_H
+
+
+
+

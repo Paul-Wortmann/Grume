@@ -117,7 +117,7 @@ int  window_manager_class::get_window_number(int UID)
     return(return_value);
 };
 
-void window_manager_class::set_active_window(int UID)
+void window_manager_class::set_window_active(int UID)
 {
     if (window_manager_class::number_of_windows > 0) // only processed if there are actually windows in the list.
     {
@@ -126,12 +126,28 @@ void window_manager_class::set_active_window(int UID)
             if (window_manager_class::window_stack[window_count].UID == UID)
             {
                 window_manager_class::window_stack[window_count].active = true;
-                window_manager_class::window[window_count].active       = true;
+                window_manager_class::window[window_manager_class::window_stack[window_count].window_number].active = true;
             }
             else
             {
                 window_manager_class::window_stack[window_count].active = false;
-                window_manager_class::window[window_count].active       = false;
+                window_manager_class::window[window_manager_class::window_stack[window_count].window_number].active = false;
+            }
+        }
+    }
+    window_manager_class::sort_window_stack();
+};
+
+void window_manager_class::set_window_inactive(int UID)
+{
+    if (window_manager_class::number_of_windows > 0) // only processed if there are actually windows in the list.
+    {
+        for (int window_count = 0; window_count < window_manager_class::number_of_windows; window_count++)
+        {
+            if (window_manager_class::window_stack[window_count].UID == UID)
+            {
+                window_manager_class::window_stack[window_count].active = false;
+                window_manager_class::window[window_manager_class::window_stack[window_count].window_number].active = false;
             }
         }
     }
@@ -162,7 +178,7 @@ int  window_manager_class::register_window(int UID)
             {
                 window_added = true;
                 window_manager_class::window_stack[window_count].active        = false;
-                window_manager_class::window_stack[window_count].enabled       = true;
+                window_manager_class::window_stack[window_count].enabled       = false;
                 window_manager_class::window_stack[window_count].UID           = UID;
                 window_manager_class::window_stack[window_count].window_number = window_count;
                 window_manager_class::window[window_count].UID                 = UID;
@@ -206,6 +222,34 @@ void window_manager_class::de_register_window(int UID)
         }
     }
 }
+
+void window_manager_class::window_enable(int UID)
+{
+    if (window_manager_class::number_of_windows > 0) // only process windows if there are actually windows in the list.
+    {
+        for (int window_count = 0; window_count < window_manager_class::number_of_windows; window_count++)
+        {
+            if (window_manager_class::window_stack[window_count].UID == UID)
+            {
+                window_manager_class::window_stack[window_count].enabled       = true;
+            }
+        }
+    }
+};
+
+void window_manager_class::window_disable(int UID)
+{
+    if (window_manager_class::number_of_windows > 0) // only process windows if there are actually windows in the list.
+    {
+        for (int window_count = 0; window_count < window_manager_class::number_of_windows; window_count++)
+        {
+            if (window_manager_class::window_stack[window_count].UID == UID)
+            {
+                window_manager_class::window_stack[window_count].enabled       = false;
+            }
+        }
+    }
+};
 
 void window_manager_class::process(void)
 {
@@ -258,8 +302,10 @@ void setup_windows(void)
     setup_menu_game_load(MENU_GAME_LOAD_UID);
     setup_menu_game_save(MENU_GAME_SAVE_UID);
     setup_menu_options(MENU_OPTIONS_UID);
+    //--- Enable windows. ---
+    game.window_manager.window_enable(MENU_MAIN_UID);
     //--- Set the main menu as the default active window. ---
-    game.window_manager.set_active_window(MENU_MAIN_UID);
+    game.window_manager.set_window_active(MENU_MAIN_UID);
 };
 
 void process_windows(void) // Process events generated buy the windows in the list

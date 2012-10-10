@@ -981,7 +981,7 @@
 
 1326868751 c:\_git_\frost_and_flame\source\ui\quest_log.hpp
 
-1349801534 c:\_git_\frost_and_flame\source\ui\window_manager.hpp
+1349884022 c:\_git_\frost_and_flame\source\ui\window_manager.hpp
 	"window.hpp"
 	"menu_main.hpp"
 	"menu_game_new.hpp"
@@ -993,7 +993,7 @@
 	"character.hpp"
 	"../game.hpp"
 
-1349801488 source:c:\_git_\frost_and_flame\source\ui\window_manager.cpp
+1349884036 source:c:\_git_\frost_and_flame\source\ui\window_manager.cpp
 	"window_manager.hpp"
 	"../game.hpp"
 
@@ -1022,7 +1022,7 @@
 	"../core/font.hpp"
 	<string>
 
-1349714820 source:c:\_git_\frost_and_flame\source\ui\window.cpp
+1349883875 source:c:\_git_\frost_and_flame\source\ui\window.cpp
 	"window.hpp"
 	"../game.hpp"
 

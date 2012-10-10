@@ -238,7 +238,7 @@ int window_class::process(void)
                 //game.window_manager.register_window(MAIN_MENU_WINDOW);
                 window_class::drag_active                  = true;
                 game.window_manager.drag_in_progress       = true;
-                game.window_manager.set_active_window(window_class::UID);
+                game.window_manager.set_window_active(window_class::UID);
                 window_class::drag_offset_x                = window_class::position.x - game.core.io.mouse_x;
                 window_class::drag_offset_y                = window_class::position.y - game.core.io.mouse_y;
             }
