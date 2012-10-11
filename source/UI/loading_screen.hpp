@@ -22,6 +22,9 @@
  * @date 2011-11-11
  */
 
+#ifndef LOADING_SCREEN_H
+#define LOADING_SCREEN_H
+
 #include <string>
 
 class loading_screen_class
@@ -31,3 +34,6 @@ class loading_screen_class
     public:
         void display(std::string file_name);
 };
+
+#endif // LOADING_SCREEN_H
+

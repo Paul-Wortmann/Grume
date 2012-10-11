@@ -119,7 +119,7 @@ extern "C" int main(int argc, char** argv)
 // --------------------------------------------------------------------------------------------------------------------------
     game.core.timer.start();
     game.core.last_ticks = game.core.timer.getticks();
-    setup_windows();
+    game.UI.UI_setup();
     while (game.state != STATE_QUIT)
     {
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -134,6 +134,7 @@ extern "C" int main(int argc, char** argv)
                 }
                 if (game.core.process_ready) game.core.background.process();
                 if (game.core.process_ready) game.window_manager.process();
+                if (game.core.process_ready) game.UI.UI_process();
                 //if (game.menu.event == 65535) game.state = STATE_QUIT;
                 if (game.core.io.key_escape)  game.state = STATE_QUIT;
                 game.core.background.draw();
@@ -141,6 +142,7 @@ extern "C" int main(int argc, char** argv)
             break;
             case STATE_GAME:// game active, menus can be utilized in game, but the game will stay in this state.
                 if (game.core.process_ready) game.process();
+                if (game.core.process_ready) game.UI.UI_process();
                 if (game.event == 65535) game.state = STATE_QUIT;
                 game.render();
             break;

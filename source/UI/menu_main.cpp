@@ -216,6 +216,10 @@ void setup_menu_main(int UID)
     game.window_manager.window[window_number].element[element_number].mouse_delay.maximum       = 30;
 };
 
+void process_menu_main(void)
+{
+
+};
 
 
 

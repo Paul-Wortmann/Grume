@@ -36,6 +36,7 @@
 #include "spells.hpp"
 #include "UI/window_manager.hpp"
 #include "UI/loading_screen.hpp"
+#include "UI/UI.hpp"
 
 #define STATE_QUIT 0
 #define STATE_MENU 1
@@ -76,6 +77,7 @@ class game_class
         item_class           item [MAX_ITEMS];
         language_class       language;
         window_manager_class window_manager;
+        UI_class             UI;
         game_class(void);
         void             init(void);
         void             process(void);

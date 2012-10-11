@@ -251,6 +251,21 @@ void window_manager_class::window_disable(int UID)
     }
 };
 
+int  window_manager_class::get_window_event(int UID)
+{
+    int return_value = 0;
+    if (window_manager_class::number_of_windows > 0) // only process windows if there are actually windows in the list.
+    {
+        for (int window_count = 0; window_count < window_manager_class::number_of_windows; window_count++)
+        {
+            if ((window_manager_class::window_stack[window_count].UID == UID) && (window_manager_class::window_stack[window_count].enabled))
+            {
+                return_value = window_manager_class::window[window_manager_class::window_stack[window_count].window_number].event;
+            }
+        }
+    }
+};
+
 void window_manager_class::process(void)
 {
     //Determine mouse over for overlapping windows.
@@ -283,49 +298,4 @@ void window_manager_class::render(void)
         }
     }
 }
-
-//------------------------------------------------------------------------------------------------------------------------
-
-void setup_windows(void)
-{
-    //--- create the desired number of windows and setup the UID stack---
-    game.window_manager.create_windows(6);
-    //--- register the windows in the windows manager stack ---
-    game.window_manager.register_window(MENU_MAIN_UID);
-    game.window_manager.register_window(MENU_GAME_NEW_UID);
-    game.window_manager.register_window(MENU_GAME_LOAD_UID);
-    game.window_manager.register_window(MENU_GAME_SAVE_UID);
-    game.window_manager.register_window(MENU_OPTIONS_UID);
-    //--- populate windows with data. ---
-    setup_menu_main(MENU_MAIN_UID);
-    setup_menu_game_new(MENU_GAME_NEW_UID);
-    setup_menu_game_load(MENU_GAME_LOAD_UID);
-    setup_menu_game_save(MENU_GAME_SAVE_UID);
-    setup_menu_options(MENU_OPTIONS_UID);
-    //--- Enable windows. ---
-    game.window_manager.window_enable(MENU_MAIN_UID);
-    //--- Set the main menu as the default active window. ---
-    game.window_manager.set_window_active(MENU_MAIN_UID);
-};
-
-void process_windows(void) // Process events generated buy the windows in the list
-{
-
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

@@ -67,6 +67,8 @@
 		<Unit filename="credits.txt" />
 		<Unit filename="frost_and_flame.cfg" />
 		<Unit filename="frost_and_flame.log" />
+		<Unit filename="source/UI/UI.cpp" />
+		<Unit filename="source/UI/UI.hpp" />
 		<Unit filename="source/UI/loading_screen.cpp" />
 		<Unit filename="source/UI/loading_screen.hpp" />
 		<Unit filename="source/UI/menu_game_load.cpp" />

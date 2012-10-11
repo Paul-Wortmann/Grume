@@ -78,6 +78,7 @@ class window_manager_class
         int  get_window_number(int UID);
         void set_window_active(int UID);
         void set_window_inactive(int UID);
+        int  get_window_event(int UID);
         int  get_active_window(void);
         int  register_window(int UID);
         int  register_window(int UID_minimum, int UID_maximum);
@@ -90,6 +91,7 @@ class window_manager_class
 };
 
 void setup_windows(void);
+void process_windows(void);
 
 #endif // WINDOW_MANAGER_H
 

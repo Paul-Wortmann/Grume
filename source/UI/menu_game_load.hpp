@@ -28,5 +28,6 @@
 #include "window.hpp"
 
 void setup_menu_game_load(int UID);
+void process_menu_game_load(void);
 
 #endif // MENU_GAME_LOAD_H

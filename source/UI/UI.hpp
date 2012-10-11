@@ -22,12 +22,19 @@
  * @date 2011-11-11
  */
 
-#ifndef MENU_GAME_SAVE_H
-#define MENU_GAME_SAVE_H
 
-#include "window.hpp"
+#ifndef UI_H
+#define UI_H
 
-void setup_menu_game_save(int UID);
-void process_menu_game_save(void);
+#include <string>
 
-#endif // MENU_GAME_SAVE_H
+class UI_class
+{
+    protected:
+    private:
+    public:
+        void UI_setup(void);
+        void UI_process(void);
+};
+
+#endif // UI_H

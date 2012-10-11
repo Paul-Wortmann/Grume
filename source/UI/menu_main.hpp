@@ -28,5 +28,6 @@
 #include "window.hpp"
 
 void setup_menu_main(int UID);
+void process_menu_main(void);
 
 #endif // MENU_MAIN_H
