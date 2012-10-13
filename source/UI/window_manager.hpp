@@ -85,6 +85,8 @@ class window_manager_class
         void de_register_window(int UID);
         void window_enable(int UID);
         void window_disable(int UID);
+        void window_set_pos(int UID_destination, int UID_source);
+        void mouse_reset(int UID);
         bool mouse_over_window(float wx, float wy, float ww, float wh);
         void process(void);
         void render(void);

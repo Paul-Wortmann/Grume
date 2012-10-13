@@ -63,19 +63,19 @@ void UI_class::UI_process(void) // Process events generated buy the windows in t
                 switch(game.window_manager.window_stack[window_count].UID)
                 {
                     case MENU_MAIN_UID:
-                        process_menu_main();
+                        process_menu_main(window_count);
                     break;
                     case MENU_GAME_NEW_UID:
-                        process_menu_game_new();
+                        process_menu_game_new(window_count);
                     break;
                     case MENU_GAME_LOAD_UID:
-                        process_menu_game_load();
+                        process_menu_game_load(window_count);
                     break;
                     case MENU_GAME_SAVE_UID:
-                        process_menu_game_save();
+                        process_menu_game_save(window_count);
                     break;
                     case MENU_OPTIONS_UID:
-                        process_menu_options();
+                        process_menu_options(window_count);
                     break;
                 }
             }

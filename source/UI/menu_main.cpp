@@ -145,6 +145,7 @@ void setup_menu_main(int UID)
     element_number = 4; //--- save game button ---
     game.window_manager.window[window_number].element[element_number].title.text                = "Save Game";
     game.window_manager.window[window_number].element[element_number].active                    = true;
+    game.window_manager.window[window_number].element[element_number].state                     = DISABLED;
     game.window_manager.window[window_number].element[element_number].type                      = BUTTON;
     game.window_manager.window[window_number].element[element_number].color                     = game.window_manager.window[window_number].color;
     game.window_manager.window[window_number].element[element_number].zoom                      = game.window_manager.window[window_number].zoom;
@@ -163,6 +164,7 @@ void setup_menu_main(int UID)
     element_number = 5; //--- resume button ---
     game.window_manager.window[window_number].element[element_number].title.text                = "Resume Game";
     game.window_manager.window[window_number].element[element_number].active                    = true;
+    game.window_manager.window[window_number].element[element_number].state                     = DISABLED;
     game.window_manager.window[window_number].element[element_number].type                      = BUTTON;
     game.window_manager.window[window_number].element[element_number].color                     = game.window_manager.window[window_number].color;
     game.window_manager.window[window_number].element[element_number].zoom                      = game.window_manager.window[window_number].zoom;
@@ -216,9 +218,77 @@ void setup_menu_main(int UID)
     game.window_manager.window[window_number].element[element_number].mouse_delay.maximum       = 30;
 };
 
-void process_menu_main(void)
+void process_menu_main(int window_number)
 {
-
+    if(game.window_manager.window[window_number].event > 0)
+    {
+        if (game.state == STATE_GAME) game.window_manager.window[window_number].element[4].state = NORMAL; // Save game
+        else game.window_manager.window[window_number].element[4].state = DISABLED;
+        if (game.state == STATE_GAME) game.window_manager.window[window_number].element[5].state = NORMAL; // Resume game
+        else game.window_manager.window[window_number].element[5].state = DISABLED;
+        switch (game.window_manager.window[window_number].event)
+        {
+            case 101: // Close menu button
+                if (game.state == STATE_GAME)
+                {
+                    game.window_manager.window_disable(MENU_MAIN_UID);
+                }
+                else
+                {
+                    game.state = STATE_QUIT;
+                    game.window_manager.window_disable(MENU_MAIN_UID);
+                }
+                game.core.game_menu_active = false;
+                game.window_manager.window[window_number].event = 0;
+            break;
+            case 201: // New game menu
+                game.window_manager.window_set_pos(MENU_GAME_NEW_UID,MENU_MAIN_UID);
+                game.window_manager.window_disable(MENU_MAIN_UID);
+                game.window_manager.window_enable(MENU_GAME_NEW_UID);
+                game.window_manager.mouse_reset(MENU_GAME_NEW_UID);
+                game.window_manager.window[window_number].event = 0;
+            break;
+            case 301: // Load game menu
+                game.window_manager.window_set_pos(MENU_GAME_LOAD_UID,MENU_MAIN_UID);
+                game.window_manager.window_disable(MENU_MAIN_UID);
+                game.window_manager.window_enable(MENU_GAME_LOAD_UID);
+                game.window_manager.mouse_reset(MENU_GAME_LOAD_UID);
+                game.window_manager.window[window_number].event = 0;
+            break;
+            case 401: // Save game menu
+                game.window_manager.window_set_pos(MENU_GAME_SAVE_UID,MENU_MAIN_UID);
+                game.window_manager.window_disable(MENU_MAIN_UID);
+                game.window_manager.window_enable(MENU_GAME_SAVE_UID);
+                game.window_manager.mouse_reset(MENU_GAME_SAVE_UID);
+                game.window_manager.window[window_number].event = 0;
+            break;
+            case 501: // Resume Game
+                if (game.state == STATE_GAME)
+                {
+                    game.window_manager.window_disable(MENU_MAIN_UID);
+                    game.core.game_menu_active = false;
+                }
+                game.window_manager.window[window_number].event = 0;
+            break;
+            case 601: // Options menu
+                game.window_manager.window_set_pos(MENU_OPTIONS_UID,MENU_MAIN_UID);
+                game.window_manager.window_disable(MENU_MAIN_UID);
+                game.window_manager.window_enable(MENU_OPTIONS_UID);
+                game.window_manager.mouse_reset(MENU_OPTIONS_UID);
+                game.window_manager.window[window_number].event = 0;
+            break;
+            case 701: // Exit button
+                game.state = STATE_QUIT;
+                game.window_manager.window_disable(MENU_MAIN_UID);
+                game.core.game_menu_active = false;
+                game.window_manager.window[window_number].event = 0;
+            break;
+            default:
+                game.core.log.file_write("Unable to process event - ",game.window_manager.window[window_number].event, " - UID - ",game.window_manager.window[window_number].UID);
+                game.window_manager.window[window_number].event = 0;
+            break;
+        }
+    }
 };
 
 

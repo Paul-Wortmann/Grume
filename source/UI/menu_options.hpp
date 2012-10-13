@@ -28,6 +28,6 @@
 #include "window.hpp"
 
 void setup_menu_options(int UID);
-void process_menu_options(void);
+void process_menu_options(int window_number);
 
 #endif // MENU_OPTIONS_H

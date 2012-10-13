@@ -127,9 +127,25 @@ void setup_menu_options(int UID)
     game.window_manager.window[window_number].element[element_number].mouse_delay.maximum       = 30;
 };
 
-void process_menu_options(void)
+void process_menu_options(int window_number)
 {
-
+    if(game.window_manager.window[window_number].event > 0)
+    {
+        switch (game.window_manager.window[window_number].event)
+        {
+            case 701: // Main menu button
+                game.window_manager.window_set_pos(MENU_MAIN_UID,MENU_OPTIONS_UID);
+                game.window_manager.window_disable(MENU_OPTIONS_UID);
+                game.window_manager.window_enable(MENU_MAIN_UID);
+                game.window_manager.mouse_reset(MENU_MAIN_UID);
+                game.window_manager.window[window_number].event = 0;
+            break;
+            default:
+                game.core.log.file_write("Unable to process event - ",game.window_manager.window[window_number].event, " - UID - ",game.window_manager.window[window_number].UID);
+                game.window_manager.window[window_number].event = 0;
+            break;
+        }
+    }
 };
 
 

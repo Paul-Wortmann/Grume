@@ -28,6 +28,6 @@
 #include "window.hpp"
 
 void setup_menu_game_new(int UID);
-void process_menu_game_new(void);
+void process_menu_game_new(int window_number);
 
 #endif // MENU_GAME_NEW_H

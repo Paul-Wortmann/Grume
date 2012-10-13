@@ -28,6 +28,6 @@
 #include "window.hpp"
 
 void setup_menu_main(int UID);
-void process_menu_main(void);
+void process_menu_main(int window_number);
 
 #endif // MENU_MAIN_H

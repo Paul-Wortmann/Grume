@@ -251,6 +251,33 @@ void window_manager_class::window_disable(int UID)
     }
 };
 
+void window_manager_class::window_set_pos(int UID_destination, int UID_source)
+{
+    int source_window      = window_manager_class::get_window_number(UID_source);
+    int destination_window = window_manager_class::get_window_number(UID_destination);
+    window_manager_class::window[destination_window].set_position(window_manager_class::window[source_window].position.x,window_manager_class::window[source_window].position.y);
+};
+
+void window_manager_class::mouse_reset(int UID)
+{
+    int window_number;
+    if (window_manager_class::number_of_windows > 0) // only process windows if there are actually windows in the list.
+    {
+        for (int window_count = 0; window_count < window_manager_class::number_of_windows; window_count++)
+        {
+            if (window_manager_class::window_stack[window_count].UID == UID)
+            {
+                window_number = window_manager_class::window_stack[window_count].window_number;
+                window_manager_class::window[window_number].mouse_delay.reset();
+                for (int element_count = 0; element_count < window_manager_class::window[window_number].number_of_elements; element_count++)
+                {
+                    window_manager_class::window[window_number].element[element_count].mouse_delay.reset();
+                }
+            }
+        }
+    }
+};
+
 int  window_manager_class::get_window_event(int UID)
 {
     int return_value = 0;
