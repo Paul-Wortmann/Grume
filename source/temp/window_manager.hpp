@@ -26,7 +26,11 @@
 #define WINDOW_MANAGER_H
 
 #include "window.hpp"
-#include "main_menu.hpp"
+#include "menu_main.hpp"
+#include "menu_game_new.hpp"
+#include "menu_game_load.hpp"
+#include "menu_game_save.hpp"
+#include "menu_options.hpp"
 
 #define    ACTIONBAR_UID          1
 #define    PCPROFILE_UID          2
@@ -36,37 +40,66 @@
 #define    INVENTORY_UID          6
 #define    SPELLBOOK_UID          7
 #define    NPCVENDOR_UID          8
-#define    MENU_DEFAULT_UID       9  //base menu to store default values, and position / size for conjoined windows.
+#define    MENU_DEFAULT_UID       9  //base menu to store default values, and position / size for conjoined windows. maybe?
 #define    MENU_MAIN_UID          10
-#define    MENU_NEW_GAME_UID      11
-#define    MENU_SAVE_UID          12
-#define    MENU_LOAD_UID          13
+#define    MENU_GAME_NEW_UID      11
+#define    MENU_GAME_SAVE_UID     12
+#define    MENU_GAME_LOAD_UID     13
 #define    MENU_OPTIONS_UID       14
 #define    MENU_GAME_OVER_UID     15
 #define    MENU_PAUSE_UID         16
+
+class window_manager_stack_class
+{
+    public:
+        bool active;
+        int  UID;
+        int  window_number;
+        bool enabled;
+        window_manager_stack_class(void);
+};
 
 class window_manager_class
 {
     protected:
     private:
     public:
+        int   event;
         float mouse_x;
         float mouse_y;
         int   number_of_windows;
+        bool  drag_in_progress;
+        bool  windows_list_created;
         window_class *window;
+        int  *window_stack;
         window_manager_class(void);
        ~window_manager_class(void);
-        int  get_window_number(int UID);
-        void set_active_window(int UID);
-        int  get_active_window(void);
-        int  register_window(int UID);
-        int  register_window(int UID_minimum, int UID_maximum);
-        void de_register_window(int UID);
+        void create_windows(int number_windows);
+        void window_stack_sort(void);
+        int  window_get_number(int UID);
+        void window_set_active(int UID);
+        void window_set_inactive(int UID);
+        int  window_get_event(int UID);
+        int  window_get_active(void);
+        int  window_register(int UID);
+        int  window_register(int UID_minimum, int UID_maximum);
+        void window_de_register(int UID);
+        void window_enable(int UID);
+        void window_disable(int UID);
+        void window_set_pos(int UID_destination, int UID_source);
+        void window_transition(int UID_destination, int UID_source);
+        void window_reset_event(int UID);
+        void mouse_reset(int UID);
         bool mouse_over_window(float wx, float wy, float ww, float wh);
         void process(void);
         void render(void);
 };
 
 void setup_windows(void);
+void process_windows(void);
 
 #endif // WINDOW_MANAGER_H
+
+
+
+

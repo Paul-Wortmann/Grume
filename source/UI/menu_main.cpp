@@ -31,7 +31,7 @@ extern game_class         game;
 
 void setup_menu_main(int UID)
 {
-    int window_number = game.window_manager.get_window_number(UID);
+    int window_number = game.window_manager.window_get_number(UID);
     int element_number = 1;
     game.window_manager.window[window_number].active                  = false;
     game.window_manager.window[window_number].mouse_over_menu         = false;
@@ -242,25 +242,13 @@ void process_menu_main(int window_number)
                 game.window_manager.window[window_number].event = 0;
             break;
             case 201: // New game menu
-                game.window_manager.window_set_pos(MENU_GAME_NEW_UID,MENU_MAIN_UID);
-                game.window_manager.window_disable(MENU_MAIN_UID);
-                game.window_manager.window_enable(MENU_GAME_NEW_UID);
-                game.window_manager.mouse_reset(MENU_GAME_NEW_UID);
-                game.window_manager.window[window_number].event = 0;
+                game.window_manager.window_transition(MENU_GAME_NEW_UID,MENU_MAIN_UID);
             break;
             case 301: // Load game menu
-                game.window_manager.window_set_pos(MENU_GAME_LOAD_UID,MENU_MAIN_UID);
-                game.window_manager.window_disable(MENU_MAIN_UID);
-                game.window_manager.window_enable(MENU_GAME_LOAD_UID);
-                game.window_manager.mouse_reset(MENU_GAME_LOAD_UID);
-                game.window_manager.window[window_number].event = 0;
+                game.window_manager.window_transition(MENU_GAME_LOAD_UID,MENU_MAIN_UID);
             break;
             case 401: // Save game menu
-                game.window_manager.window_set_pos(MENU_GAME_SAVE_UID,MENU_MAIN_UID);
-                game.window_manager.window_disable(MENU_MAIN_UID);
-                game.window_manager.window_enable(MENU_GAME_SAVE_UID);
-                game.window_manager.mouse_reset(MENU_GAME_SAVE_UID);
-                game.window_manager.window[window_number].event = 0;
+                game.window_manager.window_transition(MENU_GAME_SAVE_UID,MENU_MAIN_UID);
             break;
             case 501: // Resume Game
                 if (game.state == STATE_GAME)
@@ -271,11 +259,7 @@ void process_menu_main(int window_number)
                 game.window_manager.window[window_number].event = 0;
             break;
             case 601: // Options menu
-                game.window_manager.window_set_pos(MENU_OPTIONS_UID,MENU_MAIN_UID);
-                game.window_manager.window_disable(MENU_MAIN_UID);
-                game.window_manager.window_enable(MENU_OPTIONS_UID);
-                game.window_manager.mouse_reset(MENU_OPTIONS_UID);
-                game.window_manager.window[window_number].event = 0;
+                game.window_manager.window_transition(MENU_OPTIONS_UID,MENU_MAIN_UID);
             break;
             case 701: // Exit button
                 game.state = STATE_QUIT;

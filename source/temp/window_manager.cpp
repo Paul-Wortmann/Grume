@@ -27,115 +27,27 @@
 
 extern game_class         game;
 
+//--------------------------------------------------------- Window Manager Stack Class -------------------------------------------------------------------
+window_manager_stack_class::window_manager_stack_class(void)
+{
+    window_manager_stack_class::active        = false;
+    window_manager_stack_class::enabled       = false;
+    window_manager_stack_class::UID           = -1;
+    window_manager_stack_class::window_number = -1;
+}
+
 //--------------------------------------------------------- Window Manager Class -------------------------------------------------------------------
 
 window_manager_class::window_manager_class(void)
 {
-    window_manager_class::number_of_windows = 0;
+    window_manager_class::event                = 0;
+    window_manager_class::number_of_windows    = 0;
+    window_manager_class::windows_list_created = false;
 }
 
 window_manager_class::~window_manager_class(void)
 {
 
-}
-
-int  window_manager_class::get_window_number(int UID)
-{
-    int return_value = 0;
-    if (window_manager_class::number_of_windows > 0) // only processed if there are actually windows in the list.
-    {
-        for (int window_count = 1; window_count <= window_manager_class::number_of_windows; window_count++)
-        {
-            if (window_manager_class::window[window_count].UID == UID) return_value = window_count;
-        }
-    }
-    return(return_value);
-};
-
-int  window_manager_class::register_window(int UID)
-{
-    if (window_manager_class::number_of_windows > 0) window_manager_class::de_register_window(UID); //first remove UID from list if it is already on the list
-    if (window_manager_class::number_of_windows > 0) // only processed if there are actually windows in the list.
-    {
-        window_class temp_window_data[window_manager_class::number_of_windows+1];
-        // save the old window data
-        for (int window_count = 1; window_count <= window_manager_class::number_of_windows; window_count++)
-        {
-            temp_window_data[window_count].UID = window_manager_class::window[window_count].UID;
-        }
-        window_manager_class::number_of_windows += 1;
-        if (window_manager_class::window) delete window_manager_class::window;
-        window_manager_class::window = new window_class[window_manager_class::number_of_windows+1];
-        //place new UID on top of the list and the old window data after it.
-        window_manager_class::window[1].active = true;
-        window_manager_class::window[1].UID    = UID;
-        for (int window_count = 2; window_count <= window_manager_class::number_of_windows; window_count++)
-        {
-            window_manager_class::window[window_count].UID = temp_window_data[window_count-1].UID;
-        }
-    }
-    else // list is empty so just add our window to the list
-    {
-        window_manager_class::number_of_windows = 1;
-        if (window_manager_class::window) delete window_manager_class::window;
-        window_manager_class::window = new window_class[window_manager_class::number_of_windows+1];
-        //place new UID on top of the list and the old window data after it.
-        window_manager_class::window[1].active = true;
-        window_manager_class::window[1].UID    = UID;
-    }
-}
-
-int  window_manager_class::register_window(int UID_minimum, int UID_maximum)
-{
-    int   new_UID   = -1;
-    int   temp_UID  = UID_minimum;
-    bool  UID_found = false;
-    while ((new_UID == -1) and (temp_UID < UID_maximum))
-    {
-        UID_found = false;
-        for (int window_count = 1; window_count <= window_manager_class::number_of_windows; window_count++)
-        {
-            if (window_manager_class::window[window_count].UID == temp_UID) UID_found = true;
-        }
-        if (!UID_found) new_UID = temp_UID;
-        else temp_UID++;
-    }
-    if(new_UID > 0) return(window_manager_class::register_window(new_UID));
-    else return(-1);
-}
-
-void window_manager_class::de_register_window(int UID)
-{
-    bool UID_on_list = false;
-    if (window_manager_class::number_of_windows > 0) // only process windows if there are actually windows in the list.
-    {
-        for (int window_count = 1; window_count <= window_manager_class::number_of_windows; window_count++) // first check if UID is on list
-        {
-            if (window_manager_class::window[window_count].UID == UID) UID_on_list = true;
-        }
-        if (UID_on_list)
-        {
-            //backup old list
-            window_class temp_window_data[window_manager_class::number_of_windows+1];
-            for (int window_count = 1; window_count <= window_manager_class::number_of_windows; window_count++)
-            {
-                temp_window_data[window_count].UID = window_manager_class::window[window_count].UID;
-            }
-            //create new list without UID
-            int new_window_count = 1;
-            window_manager_class::number_of_windows -= 1;
-            if(window_manager_class::window) delete window_manager_class::window;
-            window_manager_class::window = new window_class[window_manager_class::number_of_windows+1];
-            for (int window_count = 1; window_count <= window_manager_class::number_of_windows+UID_on_list; window_count++)
-            {
-                if (temp_window_data[window_count].UID != UID)
-                {
-                    window_manager_class::window[new_window_count].UID = temp_window_data[window_count].UID;
-                    new_window_count++;
-                }
-            }
-        }
-    }
 }
 
 bool  window_manager_class::mouse_over_window(float wx, float wy, float ww, float wh)
@@ -146,41 +58,291 @@ bool  window_manager_class::mouse_over_window(float wx, float wy, float ww, floa
     else return(false);
 };
 
-void window_manager_class::process(void)
+void window_manager_class::window_stack_sort(void)
 {
-    /*
-    if (window_manager_class::number_of_windows > 0) // only process windows if there are actually windows in the list.
+    int   active_window_number = 0;
+    int   stack_count          = 0;
+    if (window_manager_class::number_of_windows > 0) // only processed if there are actually windows in the list.
     {
-        bool mouse_over_current_window = false;
-        for (int window_count = 1; window_count <= window_manager_class::number_of_windows; window_count++)
+        // first save the stack into a new temporary stack
+        window_manager_stack_class *temp_stack;
+        temp_stack = new window_manager_stack_class[window_manager_class::number_of_windows+1];
+        for (int window_count = 0; window_count < window_manager_class::number_of_windows; window_count++)
         {
-            //determine if the mouse is over a menu, taking into consideration positional ordering.
-            //first check if mouse is over a window
-            mouse_over_current_window = window_manager_class::mouse_in_quadrangle(window_manager_class::window[window_count].position_x,
-                                                                                  window_manager_class::window[window_count].position_y,
-                                                                                  window_manager_class::window[window_count].size_x,
-                                                                                  window_manager_class::window[window_count].size_y);
-            //check that mouse is not over any windows higher up on the list
-            if (window_count == 1) //This window is already on the top of the list
+            //temp_stack[window_count].active        = window_manager_class::window_stack[window_count].active;
+            //temp_stack[window_count].enabled       = window_manager_class::window_stack[window_count].enabled;
+            temp_stack[window_count].UID           = window_manager_class::window_stack[window_count].UID;
+            temp_stack[window_count].window_number = window_manager_class::window_stack[window_count].window_number;
+            // find the active window during the backup process to remove an additional for loop.
+            if (temp_stack[window_count].active) active_window_number = window_count;
+        }
+        // place the active window on the top of the window stack.
+        //window_manager_class::window_stack[0].active        = temp_stack[active_window_number].active;
+        //window_manager_class::window_stack[0].enabled       = temp_stack[active_window_number].enabled;
+        window_manager_class::window_stack[0].UID           = temp_stack[active_window_number].UID;
+        window_manager_class::window_stack[0].window_number = temp_stack[active_window_number].window_number;
+        // iterate through the saved stack, placing inactive items back on the list after the active window.
+        stack_count      = 1;
+        for (int temp_stack_count = 0; temp_stack_count < window_manager_class::number_of_windows-1; temp_stack_count++)
+        {
+            if(!temp_stack[temp_stack_count].active)
             {
-                window_manager_class::window[window_count].mouse_over = true;
+                //window_manager_class::window_stack[stack_count].active        = temp_stack[temp_stack_count].active;
+                //window_manager_class::window_stack[stack_count].enabled       = temp_stack[temp_stack_count].enabled;
+                window_manager_class::window_stack[stack_count].UID           = temp_stack[temp_stack_count].UID;
+                window_manager_class::window_stack[stack_count].window_number = temp_stack[temp_stack_count].window_number;
+                stack_count++;
+            }
+        }
+        //delete the temporary stack
+        if (temp_stack) delete temp_stack;
+    }
+};
+
+void window_manager_class::create_windows(int number_windows)
+{
+    if (!window_manager_class::windows_list_created)
+    {
+        // create the windows
+        window_manager_class::number_of_windows = number_windows;
+        window_manager_class::window = new window_class[window_manager_class::number_of_windows+1];
+        // create the UID stack
+        window_manager_class::window_stack = new window_manager_stack_class[window_manager_class::number_of_windows+1];
+        window_manager_class::windows_list_created = true;
+    }
+ }
+
+int  window_manager_class::window_get_number(int UID)
+{
+    int return_value = 0;
+    if (window_manager_class::number_of_windows > 0) // only processed if there are actually windows in the list.
+    {
+        for (int window_count = 0; window_count < window_manager_class::number_of_windows; window_count++)
+        {
+            if (window_manager_class::window_stack[window_count].UID == UID) return_value = window_manager_class::window_stack[window_count].window_number;
+        }
+    }
+    return(return_value);
+};
+
+void window_manager_class::window_set_active(int UID)
+{
+    if (window_manager_class::number_of_windows > 0) // only processed if there are actually windows in the list.
+    {
+        for (int window_count = 0; window_count < window_manager_class::number_of_windows; window_count++)
+        {
+            if (window_manager_class::window_stack[window_count].UID == UID)
+            {
+                window_manager_class::window_stack[window_count].active = true;
+                window_manager_class::window[window_manager_class::window_stack[window_count].window_number].active = true;
             }
             else
             {
-                window_manager_class::window[window_count].mouse_over = true;
-                for (int window_count_temp = 1; window_count_temp <= window_count; window_count_temp++) // only check windows higher up on the list
+                window_manager_class::window_stack[window_count].active = false;
+                window_manager_class::window[window_manager_class::window_stack[window_count].window_number].active = false;
+            }
+        }
+    }
+    game.window_manager.event = 65535; // request stack sort
+};
+
+void window_manager_class::window_set_inactive(int UID)
+{
+    if (window_manager_class::number_of_windows > 0) // only processed if there are actually windows in the list.
+    {
+        for (int window_count = 0; window_count < window_manager_class::number_of_windows; window_count++)
+        {
+            if (window_manager_class::window_stack[window_count].UID == UID)
+            {
+                window_manager_class::window_stack[window_count].active = false;
+                window_manager_class::window[window_manager_class::window_stack[window_count].window_number].active = false;
+            }
+        }
+    }
+    game.window_manager.event = 65535; // request stack sort
+};
+
+int  window_manager_class::window_get_active(void)
+{
+    int return_value = 0;
+    if (window_manager_class::number_of_windows > 0) // only processed if there are actually windows in the list.
+    {
+        for (int window_count = 0; window_count < window_manager_class::number_of_windows; window_count++)
+        {
+            if(window_manager_class::window_stack[window_count].active) return_value = window_manager_class::window_stack[window_count].UID;
+        }
+    }
+    return(return_value);
+};
+
+int  window_manager_class::window_register(int UID)
+{
+    bool window_added = false;
+    if (window_manager_class::number_of_windows > 0) // only process windows if there are actually windows in the list.
+    {
+        for (int window_count = 0; window_count < window_manager_class::number_of_windows; window_count++)
+        {
+            if ((window_manager_class::window_stack[window_count].UID == -1) && (!window_added))
+            {
+                window_added = true;
+                window_manager_class::window_stack[window_count].active        = false;
+                window_manager_class::window_stack[window_count].enabled       = false;
+                window_manager_class::window_stack[window_count].UID           = UID;
+                window_manager_class::window_stack[window_count].window_number = window_count;
+                window_manager_class::window[window_count].UID                 = UID;
+            }
+        }
+    }
+}
+
+int  window_manager_class::window_register(int UID_minimum, int UID_maximum)
+{
+    int   new_UID   = -1;
+    int   temp_UID  = UID_minimum;
+    bool  UID_found = false;
+    while ((new_UID == -1) and (temp_UID < UID_maximum))
+    {
+        UID_found = false;
+        for (int window_count = 0; window_count < window_manager_class::number_of_windows; window_count++)
+        {
+            if (window_manager_class::window[window_count].UID == temp_UID) UID_found = true;
+        }
+        if (!UID_found) new_UID = temp_UID;
+        else temp_UID++;
+    }
+    if(new_UID > 0) return(window_manager_class::window_register(new_UID));
+    else return(-1);
+}
+
+void window_manager_class::window_de_register(int UID)
+{
+    if (window_manager_class::number_of_windows > 0) // only process windows if there are actually windows in the list.
+    {
+        for (int window_count = 0; window_count < window_manager_class::number_of_windows; window_count++)
+        {
+            if (window_manager_class::window_stack[window_count].UID == UID)
+            {
+                window_manager_class::window_stack[window_count].active        = false;
+                window_manager_class::window_stack[window_count].enabled       = false;
+                window_manager_class::window_stack[window_count].UID           = -1;
+                window_manager_class::window_stack[window_count].window_number = -1;
+            }
+        }
+    }
+}
+
+void window_manager_class::window_enable(int UID)
+{
+    if (window_manager_class::number_of_windows > 0) // only process windows if there are actually windows in the list.
+    {
+        for (int window_count = 0; window_count < window_manager_class::number_of_windows; window_count++)
+        {
+            if (window_manager_class::window_stack[window_count].UID == UID)
+            {
+                window_manager_class::window_stack[window_count].enabled       = true;
+            }
+        }
+    }
+};
+
+void window_manager_class::window_disable(int UID)
+{
+    if (window_manager_class::number_of_windows > 0) // only process windows if there are actually windows in the list.
+    {
+        for (int window_count = 0; window_count < window_manager_class::number_of_windows; window_count++)
+        {
+            if (window_manager_class::window_stack[window_count].UID == UID)
+            {
+                window_manager_class::window_stack[window_count].enabled       = false;
+            }
+        }
+    }
+};
+
+void window_manager_class::window_set_pos(int UID_destination, int UID_source)
+{
+    int source_window      = window_manager_class::window_get_number(UID_source);
+    int destination_window = window_manager_class::window_get_number(UID_destination);
+    window_manager_class::window[destination_window].set_position(window_manager_class::window[source_window].position.x,window_manager_class::window[source_window].position.y);
+};
+
+void window_manager_class::window_transition(int UID_destination, int UID_source)
+{
+    window_manager_class::window_disable(UID_source);
+    window_manager_class::window_set_pos(UID_destination,UID_source);
+    window_manager_class::mouse_reset(UID_destination);
+    window_manager_class::mouse_reset(UID_source);
+    window_manager_class::window_reset_event(UID_destination);
+    window_manager_class::window_reset_event(UID_source);
+    window_manager_class::window_enable(UID_destination);
+    window_manager_class::window_set_active(UID_destination);
+};
+
+void window_manager_class::window_reset_event(int UID)
+{
+    if (window_manager_class::number_of_windows > 0) // only process windows if there are actually windows in the list.
+    {
+        for (int window_count = 0; window_count < window_manager_class::number_of_windows; window_count++)
+        {
+            if (window_manager_class::window_stack[window_count].UID == UID)
+            {
+                window_manager_class::window[window_manager_class::window_stack[window_count].window_number].event = 0;
+            }
+        }
+    }
+};
+
+void window_manager_class::mouse_reset(int UID)
+{
+    int window_number;
+    if (window_manager_class::number_of_windows > 0) // only process windows if there are actually windows in the list.
+    {
+        for (int window_count = 0; window_count < window_manager_class::number_of_windows; window_count++)
+        {
+            if (window_manager_class::window_stack[window_count].UID == UID)
+            {
+                window_number = window_manager_class::window_stack[window_count].window_number;
+                window_manager_class::window[window_number].mouse_delay.reset();
+                for (int element_count = 0; element_count < window_manager_class::window[window_number].number_of_elements; element_count++)
                 {
-                    //only set mouse over if mouse over and not mouse over higher windows on the list.
-                    if(window_manager_class::window[window_count_temp].mouse_over) window_manager_class::window[window_count].mouse_over = false;
+                    window_manager_class::window[window_number].element[element_count].mouse_delay.reset();
                 }
             }
         }
-
     }
-    */
-    for (int window_count = 1; window_count <= window_manager_class::number_of_windows; window_count++) // first check if UID is on list
+};
+
+int  window_manager_class::window_get_event(int UID)
+{
+    int return_value = 0;
+    if (window_manager_class::number_of_windows > 0) // only process windows if there are actually windows in the list.
     {
-        if (window_manager_class::window[window_count].active) window_manager_class::window[window_count].process();
+        for (int window_count = 0; window_count < window_manager_class::number_of_windows; window_count++)
+        {
+            if ((window_manager_class::window_stack[window_count].UID == UID) && (window_manager_class::window_stack[window_count].enabled))
+            {
+                return_value = window_manager_class::window[window_manager_class::window_stack[window_count].window_number].event;
+            }
+        }
+    }
+};
+
+void window_manager_class::process(void)
+{
+    //Determine mouse over for overlapping windows.
+    bool front_window_found = false;
+    for (int window_count = 0; window_count < window_manager_class::number_of_windows; window_count++)
+    {
+        if((!front_window_found) && (window_manager_class::window_stack[window_count].enabled))
+        {
+            if(window_manager_class::window[window_manager_class::window_stack[window_count].window_number].get_mouse_over_menu())
+            {
+                //if mouse over window found, process it.
+                window_manager_class::window[window_manager_class::window_stack[window_count].window_number].mouse_over_menu = true;
+                window_manager_class::window[window_manager_class::window_stack[window_count].window_number].process();
+                front_window_found = true;
+            }
+        }
     }
 }
 
@@ -188,25 +350,13 @@ void window_manager_class::render(void)
 {
     if (window_manager_class::number_of_windows > 0) // only processed if there are actually windows in the list.
     {
-        for (int window_count = window_manager_class::number_of_windows; window_count >= 1; window_count--)
+        for (int window_count = window_manager_class::number_of_windows; window_count >= 0; window_count--)
         {
-            window_manager_class::window[window_count].render();
+            if (window_manager_class::window_stack[window_count].enabled)
+            {
+                window_manager_class::window[window_manager_class::window_stack[window_count].window_number].render();
+            }
         }
     }
 }
-
-
-//------------------------------------------------------------------------------------------------------------------------
-
-void setup_windows(void)
-{
-    //--- Register all windows first before populating them with data! ---
-    game.window_manager.register_window(MENU_MAIN_UID);
-    //--- populate windows with data. ---
-    setup_main_menu(MENU_MAIN_UID);
-};
-
-
-
-
 

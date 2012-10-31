@@ -52,10 +52,8 @@
 class window_manager_stack_class
 {
     public:
-        bool active;
         int  UID;
         int  window_number;
-        bool enabled;
         window_manager_stack_class(void);
 };
 
@@ -64,6 +62,7 @@ class window_manager_class
     protected:
     private:
     public:
+        int   event;
         float mouse_x;
         float mouse_y;
         int   number_of_windows;
@@ -73,19 +72,21 @@ class window_manager_class
         window_manager_stack_class *window_stack;
         window_manager_class(void);
        ~window_manager_class(void);
-        void sort_window_stack(void);
         void create_windows(int number_windows);
-        int  get_window_number(int UID);
-        void set_window_active(int UID);
-        void set_window_inactive(int UID);
-        int  get_window_event(int UID);
-        int  get_active_window(void);
-        int  register_window(int UID);
-        int  register_window(int UID_minimum, int UID_maximum);
-        void de_register_window(int UID);
+        void window_stack_sort(void);
+        int  window_get_number(int UID);
+        void window_set_active(int UID);
+        void window_set_inactive(int UID);
+        int  window_get_event(int UID);
+        int  window_get_active(void);
+        int  window_register(int UID);
+        int  window_register(int UID_minimum, int UID_maximum);
+        void window_de_register(int UID);
         void window_enable(int UID);
         void window_disable(int UID);
         void window_set_pos(int UID_destination, int UID_source);
+        void window_transition(int UID_destination, int UID_source);
+        void window_reset_event(int UID);
         void mouse_reset(int UID);
         bool mouse_over_window(float wx, float wy, float ww, float wh);
         void process(void);

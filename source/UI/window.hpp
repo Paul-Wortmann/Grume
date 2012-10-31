@@ -33,6 +33,8 @@ class window_class
 {
     private:
     public:
+        bool                    enabled;
+        bool                    active;
         int                     UID;
         choice_selection_type   choice_selection[MAX_CHOICE_SELECTIONS_PER_MENU];
         delay_class             mouse_delay;
@@ -53,7 +55,6 @@ class window_class
         texture_state_struct    texture;
         std::string             font_path;
         font_class              font;
-        bool                    active;
         int                     number_of_elements;
         window_element_class   *element;
         window_class(void);

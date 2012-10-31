@@ -31,7 +31,7 @@ extern game_class         game;
 
 void setup_menu_options(int UID)
 {
-    int window_number = game.window_manager.get_window_number(UID);
+    int window_number = game.window_manager.window_get_number(UID);
     int element_number = 1;
     game.window_manager.window[window_number].active                  = false;
     game.window_manager.window[window_number].mouse_over_menu         = false;
@@ -131,14 +131,11 @@ void process_menu_options(int window_number)
 {
     if(game.window_manager.window[window_number].event > 0)
     {
+            game.core.log.file_write("Processing event - ",game.window_manager.window[window_number].event);
         switch (game.window_manager.window[window_number].event)
         {
             case 701: // Main menu button
-                game.window_manager.window_set_pos(MENU_MAIN_UID,MENU_OPTIONS_UID);
-                game.window_manager.window_disable(MENU_OPTIONS_UID);
-                game.window_manager.window_enable(MENU_MAIN_UID);
-                game.window_manager.mouse_reset(MENU_MAIN_UID);
-                game.window_manager.window[window_number].event = 0;
+                game.window_manager.window_transition(MENU_MAIN_UID,MENU_OPTIONS_UID);
             break;
             default:
                 game.core.log.file_write("Unable to process event - ",game.window_manager.window[window_number].event, " - UID - ",game.window_manager.window[window_number].UID);

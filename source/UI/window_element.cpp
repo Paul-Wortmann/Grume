@@ -52,8 +52,8 @@ void delay_class::process(void)
 
 void delay_class::reset(void)
 {
-    ready   = false;
-    value   = 0;
+    delay_class::ready   = false;
+    delay_class::value   = 0;
 };
 
 //------------------------------------------------------------ Location Class ------------------------------------------------------------------------

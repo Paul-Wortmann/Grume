@@ -35,11 +35,11 @@ void UI_class::UI_setup(void)
     //--- create the desired number of windows and setup the UID stack---
     game.window_manager.create_windows(6);
     //--- register the windows in the windows manager stack ---
-    game.window_manager.register_window(MENU_MAIN_UID);
-    game.window_manager.register_window(MENU_GAME_NEW_UID);
-    game.window_manager.register_window(MENU_GAME_LOAD_UID);
-    game.window_manager.register_window(MENU_GAME_SAVE_UID);
-    game.window_manager.register_window(MENU_OPTIONS_UID);
+    game.window_manager.window_register(MENU_MAIN_UID);
+    game.window_manager.window_register(MENU_GAME_NEW_UID);
+    game.window_manager.window_register(MENU_GAME_LOAD_UID);
+    game.window_manager.window_register(MENU_GAME_SAVE_UID);
+    game.window_manager.window_register(MENU_OPTIONS_UID);
     //--- populate windows with data. ---
     setup_menu_main(MENU_MAIN_UID);
     setup_menu_game_new(MENU_GAME_NEW_UID);
@@ -49,7 +49,7 @@ void UI_class::UI_setup(void)
     //--- Enable windows. ---
     game.window_manager.window_enable(MENU_MAIN_UID);
     //--- Set the main menu as the default active window. ---
-    game.window_manager.set_window_active(MENU_MAIN_UID);
+    game.window_manager.window_set_active(MENU_MAIN_UID);
 };
 
 void UI_class::UI_process(void) // Process events generated buy the windows in the list
@@ -58,27 +58,40 @@ void UI_class::UI_process(void) // Process events generated buy the windows in t
     {
         for (int window_count = 0; window_count < game.window_manager.number_of_windows; window_count++)
         {
-            if(game.window_manager.window_stack[window_count].enabled)
+            if(game.window_manager.window[game.window_manager.window_stack[window_count].window_number].enabled)
             {
-                switch(game.window_manager.window_stack[window_count].UID)
+                if(game.window_manager.event == 0)
                 {
-                    case MENU_MAIN_UID:
-                        process_menu_main(window_count);
-                    break;
-                    case MENU_GAME_NEW_UID:
-                        process_menu_game_new(window_count);
-                    break;
-                    case MENU_GAME_LOAD_UID:
-                        process_menu_game_load(window_count);
-                    break;
-                    case MENU_GAME_SAVE_UID:
-                        process_menu_game_save(window_count);
-                    break;
-                    case MENU_OPTIONS_UID:
-                        process_menu_options(window_count);
-                    break;
+                    switch(game.window_manager.window_stack[window_count].UID)
+                    {
+                        case MENU_MAIN_UID:
+                            process_menu_main(window_count);
+                        break;
+                        case MENU_GAME_NEW_UID:
+                            process_menu_game_new(window_count);
+                        break;
+                        case MENU_GAME_LOAD_UID:
+                            process_menu_game_load(window_count);
+                        break;
+                        case MENU_GAME_SAVE_UID:
+                            process_menu_game_save(window_count);
+                        break;
+                        case MENU_OPTIONS_UID:
+                            process_menu_options(window_count);
+                        break;
+                    }
                 }
             }
         }
+    }
+    switch (game.window_manager.event)
+    {
+        case 65535: //window has requested a window stack sort;
+            game.window_manager.window_stack_sort();
+            game.window_manager.event = 0;
+        break;
+        default:
+            game.window_manager.event = 0;
+        break;
     }
 }
