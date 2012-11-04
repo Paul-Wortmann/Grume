@@ -6,13 +6,16 @@ These are not indications that the project will be terminated in the future,
 just that time is not permitting to proceed at a fast pace, at the moment.
 
 v0.13 - (2012-11-30)
-// Hopefully have the menu system back up and running 100% in this version!
-// The recent changes to the menu and UI, is in order to unify the code for
-// easy of code maintenance and future feature additions.
-// The recent code changes also provide a speed improvement and remove some
-// well hidden bugs that were discovered during the clean up / refactoring!
-// This should be completed in this version, and more exciting features will
-// hopefully appear in the version following this.
+
+
+
+UI    -> Re-implemented the load game menu. 
+GFX   -> Added two new potion icons.
+UI    -> Resume game and save game buttons now active on first reopening of the main menu after starting a game.
+UI    -> Re-implemented the save game menu.
+MAP2D -> map_2D_class::calculate_tile_positions Segmentation fault fixed. 
+UI    -> Main menu can be toggled in game with the escape key. 
+UI    -> Windows transitioning correctly, disabled window stack sort. 
 LOC   -> xxxxx
 
 v0.12 - (2012-10-31)
