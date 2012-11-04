@@ -21,22 +21,6 @@ Starting Game...
  
 returning event -> 201 - from UID - 10
 returning event -> 601 - from UID - 11
-returning event -> 201 - from UID - 10
-returning event -> 601 - from UID - 11
-returning event -> 601 - from UID - 10
-returning event -> 101 - from UID - 14
-Processing event - 101
-Unable to process event - 101 - UID - 14
-returning event -> 101 - from UID - 14
-Processing event - 101
-Unable to process event - 101 - UID - 14
-returning event -> 101 - from UID - 14
-Processing event - 101
-Unable to process event - 101 - UID - 14
-returning event -> 701 - from UID - 14
-Processing event - 701
-returning event -> 101 - from UID - 10
-returning event -> 701 - from UID - 10
  
 # ---------------------------------------------- #
  

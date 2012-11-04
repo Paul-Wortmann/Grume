@@ -106,7 +106,7 @@ class player_class
         stat_class         mana;
         stat_class         health;
         void               process(void);
-        void               draw(void);
+        void               render(void);
         void               path_calculate(void);
         void               player_move(void);
         void               player_attack(void);

@@ -174,7 +174,7 @@ void player_class::process(void)
     }
 };
 
-void player_class::draw(void)
+void player_class::render(void)
 {
 
 };

@@ -83,7 +83,7 @@ class map_2D_class
         int            number_of_tiles;
         tileset_class* tileset;
         int            number_of_tilesets;
-        void draw(void);
+        void render(void);
         void process(void);
         void scroll_map(int x_dir, int y_dir);
         void center_on_tile(int tile_ID);

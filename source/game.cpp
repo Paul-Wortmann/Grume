@@ -99,12 +99,12 @@ void game_class::init(void)
     init_spells();
     init_items();
 
-    //game.resource.map_2D.load("data/maps/cave.tmx");
-    //game.map_2D.random_map(100,100,CAVE,CAVE);
+    //game.map_2D.load("data/maps/town.tmx");
+    game.map_2D.random_map(100,100,CAVE,CAVE);
 
     //zoom out for testing
-    //game.zoom.current = game.zoom.max;
-    //game.map_2D.calculate_tile_positions(DEFAULT_FRAME_WIDTH/game.zoom.current/2.0f,DEFAULT_FRAME_HEIGHT/game.zoom.current/2.0f);
+    game.zoom.current = game.zoom.max;
+    game.map_2D.calculate_tile_positions(DEFAULT_FRAME_WIDTH/game.zoom.current/2.0f,DEFAULT_FRAME_HEIGHT/game.zoom.current/2.0f);
 };
 
 void game_class::process(void)
@@ -112,7 +112,7 @@ void game_class::process(void)
     game.window_manager.process();
     game.player.process();
     game.npc.process();
-    //game.map_2D.process();
+    game.map_2D.process();
     //game.resource.map_3D.town.process();
     game.core.game_resume = true;
     if (game.core.music_next_track)
@@ -366,9 +366,9 @@ void game_class::render(void)
     float  world_ambient_light[]  = {game.world_ambient.intensity_R,game.world_ambient.intensity_G,game.world_ambient.intensity_B,game.world_ambient.intensity_A};
     glLightModelfv(GL_LIGHT_MODEL_AMBIENT,world_ambient_light);
 
-    //game.map_2D.draw();
+    game.map_2D.render();
     //game.resource.map_3D.town.draw();
-    game.player.draw();
+    game.player.render();
     game.npc.render();
 
     glLightModelfv(GL_LIGHT_MODEL_AMBIENT,global_ambient_light);

@@ -64,7 +64,7 @@ tileset_class::~tileset_class(void)
 };
 
 //-----------------------------------------------------------------------------------------------------------------
-void map_2D_class::draw(void)
+void map_2D_class::render(void)
 {
     tileset_class debug_tileset;
     debug_tileset.tilewidth  = 64;
@@ -202,7 +202,7 @@ void map_2D_class::calculate_tile_positions(float tile_width_half_specify,float 
     float start_y  = map_2D_class::tile[0].pos_y + (tile_height_half_specify/(DEFAULT_FRAME_HEIGHT/16));
     int   x_count  = 0;
     int   y_count  = 0;
-    for (int tile_count = 0; tile_count < map_2D_class::number_of_tiles; tile_count++)
+    for (int tile_count = 0; tile_count < map_2D_class::number_of_tiles-1; tile_count++)
     {
         map_2D_class::tile[tile_count].pos_x = start_x + (x_count * (tile_width_half_specify/2));
         map_2D_class::tile[tile_count].pos_y = start_y - (y_count * (tile_height_half_specify/(DEFAULT_FRAME_HEIGHT/16)));
@@ -309,8 +309,8 @@ void map_2D_class::load(std::string file_name)
             }
         }
     }
-    map_2D_class::number_of_tilesets = tileset_count + 1;
-    map_2D_class::tileset = new tileset_class[map_2D_class::number_of_tilesets];
+    map_2D_class::number_of_tilesets = tileset_count;
+    map_2D_class::tileset = new tileset_class[map_2D_class::number_of_tilesets+1];
     script_file.clear();
     script_file.seekg(0, std::ios::beg);
     //----------------------------- read in data ------------------------------------------------------------------------
@@ -426,7 +426,7 @@ void map_2D_class::load(std::string file_name)
                             if(!map_data)
                             {
                                 map_2D_class::number_of_tiles = map_2D_class::width * map_2D_class::height;
-                                map_2D_class::tile = new tile_class[map_2D_class::number_of_tiles];
+                                map_2D_class::tile = new tile_class[map_2D_class::number_of_tiles+1];
                             }
                         }
                         if (tileset_data)
@@ -724,8 +724,8 @@ void map_2D_class::random_map(int tiles_x, int tiles_y, int type_of_map_to_gener
     map_2D_class::height           = tiles_y;
     int  ca_percent_random_tiles   = 40; // NB. randomly generated tiles can be generated on the same tile, thus reducing the percentage, adding a check is possible although slower.
     int  ca_number_random_tiles    = (map_2D_class::number_of_tiles / 200) * ca_percent_random_tiles * 3;
-    map_2D_class::tile             = new tile_class[map_2D_class::number_of_tiles];
-    tile_class* temp_map           = new tile_class[map_2D_class::number_of_tiles];
+    map_2D_class::tile             = new tile_class[map_2D_class::number_of_tiles+1];
+    tile_class* temp_map           = new tile_class[map_2D_class::number_of_tiles+1];
     struct flood_fill_type
     {
         int  tile_data;
@@ -733,11 +733,11 @@ void map_2D_class::random_map(int tiles_x, int tiles_y, int type_of_map_to_gener
         bool adjoining_tile;
     };
     flood_fill_type* fill_data;
-    fill_data = new flood_fill_type[map_2D_class::number_of_tiles];
+    fill_data = new flood_fill_type[map_2D_class::number_of_tiles+1];
     // load test tile-set
     {
         map_2D_class::number_of_tilesets        = 1;
-        map_2D_class::tileset                   = new tileset_class [map_2D_class::number_of_tilesets];
+        map_2D_class::tileset                   = new tileset_class [map_2D_class::number_of_tilesets+1];
         map_2D_class::tilewidth                 = DEFAULT_FRAME_WIDTH;
         map_2D_class::tileheight                = DEFAULT_FRAME_HEIGHT;
         map_2D_class::tileset[0].firstgid       = 0;
