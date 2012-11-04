@@ -223,11 +223,7 @@ void process_menu_game_load(int window_number)
         switch (game.window_manager.window[window_number].event)
         {
             case 701: // Main menu button
-                game.window_manager.window_set_pos(MENU_MAIN_UID,MENU_GAME_LOAD_UID);
-                game.window_manager.window_disable(MENU_GAME_LOAD_UID);
-                game.window_manager.window_enable(MENU_MAIN_UID);
-                game.window_manager.mouse_reset(MENU_MAIN_UID);
-                game.window_manager.window[window_number].event = 0;
+                game.window_manager.window_transition(MENU_GAME_LOAD_UID,MENU_MAIN_UID);
             break;
             default:
                 game.core.log.file_write("Unable to process event - ",game.window_manager.window[window_number].event, " - UID - ",game.window_manager.window[window_number].UID);

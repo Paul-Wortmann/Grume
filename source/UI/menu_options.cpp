@@ -135,7 +135,7 @@ void process_menu_options(int window_number)
         switch (game.window_manager.window[window_number].event)
         {
             case 701: // Main menu button
-                game.window_manager.window_transition(MENU_MAIN_UID,MENU_OPTIONS_UID);
+                game.window_manager.window_transition(MENU_OPTIONS_UID,MENU_MAIN_UID);
             break;
             default:
                 game.core.log.file_write("Unable to process event - ",game.window_manager.window[window_number].event, " - UID - ",game.window_manager.window[window_number].UID);

@@ -242,13 +242,13 @@ void process_menu_main(int window_number)
                 game.window_manager.window[window_number].event = 0;
             break;
             case 201: // New game menu
-                game.window_manager.window_transition(MENU_GAME_NEW_UID,MENU_MAIN_UID);
+                game.window_manager.window_transition(MENU_MAIN_UID,MENU_GAME_NEW_UID);
             break;
             case 301: // Load game menu
-                game.window_manager.window_transition(MENU_GAME_LOAD_UID,MENU_MAIN_UID);
+                game.window_manager.window_transition(MENU_MAIN_UID,MENU_GAME_LOAD_UID);
             break;
             case 401: // Save game menu
-                game.window_manager.window_transition(MENU_GAME_SAVE_UID,MENU_MAIN_UID);
+                game.window_manager.window_transition(MENU_MAIN_UID,MENU_GAME_SAVE_UID);
             break;
             case 501: // Resume Game
                 if (game.state == STATE_GAME)
@@ -259,7 +259,7 @@ void process_menu_main(int window_number)
                 game.window_manager.window[window_number].event = 0;
             break;
             case 601: // Options menu
-                game.window_manager.window_transition(MENU_OPTIONS_UID,MENU_MAIN_UID);
+                game.window_manager.window_transition(MENU_MAIN_UID,MENU_OPTIONS_UID);
             break;
             case 701: // Exit button
                 game.state = STATE_QUIT;

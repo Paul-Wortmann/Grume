@@ -5,9 +5,36 @@ it may take longer than I had first anticipated.
 These are not indications that the project will be terminated in the future,
 just that time is not permitting to proceed at a fast pace, at the moment.
 
+v0.13 - (2012-11-30)
+// Hopefully have the menu system back up and running 100% in this version!
+// The recent changes to the menu and UI, is in order to unify the code for
+// easy of code maintenance and future feature additions.
+// The recent code changes also provide a speed improvement and remove some
+// well hidden bugs that were discovered during the clean up / refactoring!
+// This should be completed in this version, and more exciting features will
+// hopefully appear in the version following this.
+LOC   -> xxxxx
 
 v0.12 - (2012-10-31)
-LOC   -> xxxxx
+UI    -> Removed unnecessary elements from the window manager stack.
+UI    -> Can now transition from the main menu to its sub menus.
+UI    -> Added base UI class.
+UI    -> Added functions to enable / disable windows.
+UI    -> Added the options menu base.
+UI    -> Added button labels for the Save and Load game menus.
+UI    -> Only process buttons on the front most window when the ouse is over, not windows in the background.
+UI    -> Dragging a window, pusses it to the top of the stack and as such it is "brough to the front", rendered on top of other windows.
+UI    -> All windows in the list now rendered.
+UI    -> Improved window manager code.
+UI    -> Added a windows_manager_stack_class, this will take care of handeling the UIDs and remove the need to delete and re-create all previously defined windows.
+UI    -> Added 2 more layers to the background class.
+UI    -> Windows and window_elements now manage their own fonts.
+UI    -> Do not segfault when attempting to write an unloaded font, send error to log file if unable to load a font.
+UI    -> Renamed font functions to use code conventions already established in Frost and Flame.
+UI    -> Removed unneccesary z_layer code.
+UI    -> Background layers reordered to be displayed correctly.
+UI    -> Removed resource manager due to memory leaks. Started a new UI management system.
+LOC   -> 13129
 
 v0.11 - (2012-09-30)
 UI    -> Fixed segfault in new window manager.

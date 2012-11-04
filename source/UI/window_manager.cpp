@@ -79,7 +79,7 @@ void window_manager_class::window_stack_sort(void)
         window_manager_class::window_stack[0].window_number = temp_stack[active_window_number].window_number;
         // iterate through the saved stack, placing inactive items back on the list after the active window.
         stack_count      = 1;
-        for (int temp_stack_count = 0; temp_stack_count < window_manager_class::number_of_windows-1; temp_stack_count++)
+        for (int temp_stack_count = 0; temp_stack_count < window_manager_class::number_of_windows; temp_stack_count++)
         {
             if(!window_manager_class::window[window_manager_class::window_stack[temp_stack_count].window_number].active)
             {
@@ -231,6 +231,7 @@ void window_manager_class::window_enable(int UID)
             if (window_manager_class::window_stack[window_count].UID == UID)
             {
                 window_manager_class::window[window_manager_class::window_stack[window_count].window_number].enabled = true;
+                window_manager_class::window[window_manager_class::window_stack[window_count].window_number].active  = true;
             }
         }
     }
@@ -245,28 +246,30 @@ void window_manager_class::window_disable(int UID)
             if (window_manager_class::window_stack[window_count].UID == UID)
             {
                 window_manager_class::window[window_manager_class::window_stack[window_count].window_number].enabled = false;
+                window_manager_class::window[window_manager_class::window_stack[window_count].window_number].active  = false;
             }
         }
     }
 };
 
-void window_manager_class::window_set_pos(int UID_destination, int UID_source)
+void window_manager_class::window_set_pos(int UID_source, int UID_destination)
 {
     int source_window      = window_manager_class::window_get_number(UID_source);
     int destination_window = window_manager_class::window_get_number(UID_destination);
     window_manager_class::window[destination_window].set_position(window_manager_class::window[source_window].position.x,window_manager_class::window[source_window].position.y);
 };
 
-void window_manager_class::window_transition(int UID_destination, int UID_source)
+void window_manager_class::window_transition(int UID_source, int UID_destination)
 {
     window_manager_class::window_disable(UID_source);
-    window_manager_class::window_set_pos(UID_destination,UID_source);
+    window_manager_class::window_set_pos(UID_source,UID_destination);
     window_manager_class::mouse_reset(UID_destination);
     window_manager_class::mouse_reset(UID_source);
     window_manager_class::window_reset_event(UID_destination);
     window_manager_class::window_reset_event(UID_source);
     window_manager_class::window_enable(UID_destination);
     window_manager_class::window_set_active(UID_destination);
+    window_manager_class::event = 65535; // Request stack sort
 };
 
 void window_manager_class::window_reset_event(int UID)

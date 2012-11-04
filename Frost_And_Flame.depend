@@ -977,7 +977,7 @@
 
 1326868751 c:\_git_\frost_and_flame\source\ui\quest_log.hpp
 
-1351341438 c:\_git_\frost_and_flame\source\ui\window_manager.hpp
+1352013002 c:\_git_\frost_and_flame\source\ui\window_manager.hpp
 	"window.hpp"
 	"menu_main.hpp"
 	"menu_game_new.hpp"
@@ -989,11 +989,11 @@
 	"character.hpp"
 	"../game.hpp"
 
-1351342061 source:c:\_git_\frost_and_flame\source\ui\window_manager.cpp
+1352014495 source:c:\_git_\frost_and_flame\source\ui\window_manager.cpp
 	"window_manager.hpp"
 	"../game.hpp"
 
-1351342112 source:c:\_git_\frost_and_flame\source\ui\ui.cpp
+1352014495 source:c:\_git_\frost_and_flame\source\ui\ui.cpp
 	"UI.hpp"
 	"menu_main.hpp"
 	"../game.hpp"
@@ -1018,7 +1018,7 @@
 	"../core/font.hpp"
 	<string>
 
-1351340153 source:c:\_git_\frost_and_flame\source\ui\window.cpp
+1352012643 source:c:\_git_\frost_and_flame\source\ui\window.cpp
 	"window.hpp"
 	"../game.hpp"
 
@@ -1042,25 +1042,25 @@
 1350137358 c:\_git_\frost_and_flame\source\ui\menu_main.hpp
 	"window.hpp"
 
-1350213133 source:c:\_git_\frost_and_flame\source\ui\menu_main.cpp
+1352012963 source:c:\_git_\frost_and_flame\source\ui\menu_main.cpp
 	"menu_main.hpp"
 	"../game.hpp"
 
-1350212913 source:c:\_git_\frost_and_flame\source\ui\menu_game_save.cpp
+1352013043 source:c:\_git_\frost_and_flame\source\ui\menu_game_save.cpp
 	"menu_game_save.hpp"
 	"../game.hpp"
 
 1350137548 c:\_git_\frost_and_flame\source\ui\menu_game_save.hpp
 	"window.hpp"
 
-1350212872 source:c:\_git_\frost_and_flame\source\ui\menu_game_new.cpp
+1352013028 source:c:\_git_\frost_and_flame\source\ui\menu_game_new.cpp
 	"menu_game_new.hpp"
 	"../game.hpp"
 
 1350137539 c:\_git_\frost_and_flame\source\ui\menu_game_new.hpp
 	"window.hpp"
 
-1350212859 source:c:\_git_\frost_and_flame\source\ui\menu_game_load.cpp
+1352012998 source:c:\_git_\frost_and_flame\source\ui\menu_game_load.cpp
 	"menu_game_load.hpp"
 	"../game.hpp"
 
@@ -1079,7 +1079,7 @@
 1350137522 c:\_git_\frost_and_flame\source\ui\menu_options.hpp
 	"window.hpp"
 
-1350213150 source:c:\_git_\frost_and_flame\source\ui\menu_options.cpp
+1352012922 source:c:\_git_\frost_and_flame\source\ui\menu_options.cpp
 	"menu_options.hpp"
 	"../game.hpp"
 

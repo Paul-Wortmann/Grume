@@ -65,19 +65,19 @@ void UI_class::UI_process(void) // Process events generated buy the windows in t
                     switch(game.window_manager.window_stack[window_count].UID)
                     {
                         case MENU_MAIN_UID:
-                            process_menu_main(window_count);
+                            process_menu_main(game.window_manager.window_stack[window_count].window_number);
                         break;
                         case MENU_GAME_NEW_UID:
-                            process_menu_game_new(window_count);
+                            process_menu_game_new(game.window_manager.window_stack[window_count].window_number);
                         break;
                         case MENU_GAME_LOAD_UID:
-                            process_menu_game_load(window_count);
+                            process_menu_game_load(game.window_manager.window_stack[window_count].window_number);
                         break;
                         case MENU_GAME_SAVE_UID:
-                            process_menu_game_save(window_count);
+                            process_menu_game_save(game.window_manager.window_stack[window_count].window_number);
                         break;
                         case MENU_OPTIONS_UID:
-                            process_menu_options(window_count);
+                            process_menu_options(game.window_manager.window_stack[window_count].window_number);
                         break;
                     }
                 }
@@ -87,7 +87,7 @@ void UI_class::UI_process(void) // Process events generated buy the windows in t
     switch (game.window_manager.event)
     {
         case 65535: //window has requested a window stack sort;
-            game.window_manager.window_stack_sort();
+            //game.window_manager.window_stack_sort();
             game.window_manager.event = 0;
         break;
         default:
