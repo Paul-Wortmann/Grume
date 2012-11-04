@@ -220,6 +220,8 @@ void setup_menu_main(int UID)
 
 void process_menu_main(int window_number)
 {
+    int load_menu_number = 0;
+    int element_number   = 0;
     if(game.window_manager.window[window_number].event > 0)
     {
         if (game.state == STATE_GAME) game.window_manager.window[window_number].element[4].state = NORMAL; // Save game
@@ -244,6 +246,27 @@ void process_menu_main(int window_number)
                 game.window_manager.window_transition(MENU_MAIN_UID,MENU_GAME_NEW_UID);
             break;
             case 301: // Load game menu
+                load_menu_number = game.window_manager.window_get_number(MENU_GAME_LOAD_UID);
+                element_number   = 2;
+                game.save_01.Assign_File("save/slot_01.sav");
+                if (game.save_01.File_Exists()) game.window_manager.window[load_menu_number].element[element_number].state = NORMAL;
+                else game.window_manager.window[load_menu_number].element[element_number].state = DISABLED;
+                element_number   = 3;
+                game.save_02.Assign_File("save/slot_02.sav");
+                if (game.save_02.File_Exists()) game.window_manager.window[load_menu_number].element[element_number].state = NORMAL;
+                else game.window_manager.window[load_menu_number].element[element_number].state = DISABLED;
+                element_number   = 4;
+                game.save_03.Assign_File("save/slot_03.sav");
+                if (game.save_03.File_Exists()) game.window_manager.window[load_menu_number].element[element_number].state = NORMAL;
+                else game.window_manager.window[load_menu_number].element[element_number].state = DISABLED;
+                element_number   = 5;
+                game.save_04.Assign_File("save/slot_04.sav");
+                if (game.save_04.File_Exists()) game.window_manager.window[load_menu_number].element[element_number].state = NORMAL;
+                else game.window_manager.window[load_menu_number].element[element_number].state = DISABLED;
+                element_number   = 6;
+                game.save_05.Assign_File("save/slot_05.sav");
+                if (game.save_05.File_Exists()) game.window_manager.window[load_menu_number].element[element_number].state = NORMAL;
+                else game.window_manager.window[load_menu_number].element[element_number].state = DISABLED;
                 game.window_manager.window_transition(MENU_MAIN_UID,MENU_GAME_LOAD_UID);
             break;
             case 401: // Save game menu

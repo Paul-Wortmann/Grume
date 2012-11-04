@@ -109,6 +109,7 @@ void setup_menu_game_load(int UID)
     element_number = 2; //--- Save Game 1 ---
     game.window_manager.window[window_number].element[element_number].title.text                = "Load Slot 1";
     game.window_manager.window[window_number].element[element_number].active                    = true;
+    game.window_manager.window[window_number].element[element_number].state                     = DISABLED;
     game.window_manager.window[window_number].element[element_number].type                      = BUTTON;
     game.window_manager.window[window_number].element[element_number].color                     = game.window_manager.window[window_number].color;
     game.window_manager.window[window_number].element[element_number].zoom                      = game.window_manager.window[window_number].zoom;
@@ -127,6 +128,7 @@ void setup_menu_game_load(int UID)
     element_number = 3; //--- Save Game 2 ---
     game.window_manager.window[window_number].element[element_number].title.text                = "Load Slot 2";
     game.window_manager.window[window_number].element[element_number].active                    = true;
+    game.window_manager.window[window_number].element[element_number].state                     = DISABLED;
     game.window_manager.window[window_number].element[element_number].type                      = BUTTON;
     game.window_manager.window[window_number].element[element_number].color                     = game.window_manager.window[window_number].color;
     game.window_manager.window[window_number].element[element_number].zoom                      = game.window_manager.window[window_number].zoom;
@@ -145,6 +147,7 @@ void setup_menu_game_load(int UID)
     element_number = 4; //--- Save Game 3 ---
     game.window_manager.window[window_number].element[element_number].title.text                = "Load Slot 3";
     game.window_manager.window[window_number].element[element_number].active                    = true;
+    game.window_manager.window[window_number].element[element_number].state                     = DISABLED;
     game.window_manager.window[window_number].element[element_number].type                      = BUTTON;
     game.window_manager.window[window_number].element[element_number].color                     = game.window_manager.window[window_number].color;
     game.window_manager.window[window_number].element[element_number].zoom                      = game.window_manager.window[window_number].zoom;
@@ -163,6 +166,7 @@ void setup_menu_game_load(int UID)
     element_number = 5; //--- Save Game 4 ---
     game.window_manager.window[window_number].element[element_number].title.text                = "Load Slot 4";
     game.window_manager.window[window_number].element[element_number].active                    = true;
+    game.window_manager.window[window_number].element[element_number].state                     = DISABLED;
     game.window_manager.window[window_number].element[element_number].type                      = BUTTON;
     game.window_manager.window[window_number].element[element_number].color                     = game.window_manager.window[window_number].color;
     game.window_manager.window[window_number].element[element_number].zoom                      = game.window_manager.window[window_number].zoom;
@@ -181,6 +185,7 @@ void setup_menu_game_load(int UID)
     element_number = 6; //--- Save Game 5 ---
     game.window_manager.window[window_number].element[element_number].title.text                = "Load Slot 5";
     game.window_manager.window[window_number].element[element_number].active                    = true;
+    game.window_manager.window[window_number].element[element_number].state                     = DISABLED;
     game.window_manager.window[window_number].element[element_number].type                      = BUTTON;
     game.window_manager.window[window_number].element[element_number].color                     = game.window_manager.window[window_number].color;
     game.window_manager.window[window_number].element[element_number].zoom                      = game.window_manager.window[window_number].zoom;
@@ -222,6 +227,74 @@ void process_menu_game_load(int window_number)
     {
         switch (game.window_manager.window[window_number].event)
         {
+            case 101: // Close menu button
+                game.window_manager.window_transition(MENU_GAME_LOAD_UID,MENU_MAIN_UID);
+            break;
+            case 201: // Load slot 1 - menu button
+                game.window_manager.window_transition(MENU_GAME_LOAD_UID,MENU_MAIN_UID);
+                game.window_manager.window_disable(MENU_MAIN_UID);
+                game.core.game_menu_active = false;
+                game.save_01.Assign_File("save/slot_01.sav");
+                if (game.save_01.Load())
+                {
+                    game.core.log.file_write("Loading game from slot 1");
+                    game.state = STATE_GAME;
+                    game.core.music_next_track = true;
+                }
+                else game.core.log.file_write("ERROR -> Error loading game from slot 1");
+            break;
+            case 301: // Load slot 2 - menu button
+                game.window_manager.window_transition(MENU_GAME_LOAD_UID,MENU_MAIN_UID);
+                game.window_manager.window_disable(MENU_MAIN_UID);
+                game.core.game_menu_active = false;
+                game.save_02.Assign_File("save/slot_02.sav");
+                if (game.save_02.Load())
+                {
+                    game.core.log.file_write("Loading game from slot 2");
+                    game.state = STATE_GAME;
+                    game.core.music_next_track = true;
+                }
+                else game.core.log.file_write("ERROR -> Error loading game from slot 2");
+            break;
+            case 401: // Load slot 3 - menu button
+                game.window_manager.window_transition(MENU_GAME_LOAD_UID,MENU_MAIN_UID);
+                game.window_manager.window_disable(MENU_MAIN_UID);
+                game.core.game_menu_active = false;
+                game.save_03.Assign_File("save/slot_03.sav");
+                if (game.save_03.Load())
+                {
+                    game.core.log.file_write("Loading game from slot 3");
+                    game.state = STATE_GAME;
+                    game.core.music_next_track = true;
+                }
+                else game.core.log.file_write("ERROR -> Error loading game from slot 3");
+            break;
+            case 501: // Load slot 4 - menu button
+                game.window_manager.window_transition(MENU_GAME_LOAD_UID,MENU_MAIN_UID);
+                game.window_manager.window_disable(MENU_MAIN_UID);
+                game.core.game_menu_active = false;
+                game.save_04.Assign_File("save/slot_04.sav");
+                if (game.save_04.Load())
+                {
+                    game.core.log.file_write("Loading game from slot 4");
+                    game.state = STATE_GAME;
+                    game.core.music_next_track = true;
+                }
+                else game.core.log.file_write("ERROR -> Error loading game from slot 4");
+            break;
+            case 601: // Load slot 5 - menu button
+                game.window_manager.window_transition(MENU_GAME_LOAD_UID,MENU_MAIN_UID);
+                game.window_manager.window_disable(MENU_MAIN_UID);
+                game.core.game_menu_active = false;
+                game.save_05.Assign_File("save/slot_05.sav");
+                if (game.save_05.Load())
+                {
+                    game.core.log.file_write("Loading game from slot 5");
+                    game.state = STATE_GAME;
+                    game.core.music_next_track = true;
+                }
+                else game.core.log.file_write("ERROR -> Error loading game from slot 5");
+            break;
             case 701: // Main menu button
                 game.window_manager.window_transition(MENU_GAME_LOAD_UID,MENU_MAIN_UID);
             break;
@@ -231,6 +304,7 @@ void process_menu_game_load(int window_number)
             break;
         }
     }
+    game.window_manager.window[window_number].event = 0;
 };
 
 
