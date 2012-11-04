@@ -29,7 +29,7 @@
 
 extern game_class game;
 
-const char application_name[] = ("Frost and Flame V0.12 - www.physhexgames.co.nr");
+const char application_name[] = ("Frost and Flame V0.13 - www.physhexgames.co.nr");
 const char application_icon[] = ("data/icon.bmp");
 
 Uint32                   colorkey;

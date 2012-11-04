@@ -1,4 +1,4 @@
-# Frost and Flame V0.12 - www.physhexgames.co.nr #
+# Frost and Flame V0.13 - www.physhexgames.co.nr #
 # ---------------------------------------------- #
  
 Initializing PhysicsFS file system....
@@ -22,6 +22,35 @@ Starting Game...
 returning event -> 201 - from UID - 10
 returning event -> 701 - from UID - 11
 returning event -> 201 - from UID - 10
+returning event -> 701 - from UID - 11
+returning event -> 301 - from UID - 10
+returning event -> 701 - from UID - 13
+returning event -> 601 - from UID - 10
+returning event -> 701 - from UID - 14
+Processing event - 701
+returning event -> 201 - from UID - 10
+returning event -> 701 - from UID - 11
+returning event -> 601 - from UID - 10
+returning event -> 701 - from UID - 14
+Processing event - 701
+returning event -> 301 - from UID - 10
+returning event -> 201 - from UID - 13
+Unable to process event - 201 - UID - 13
+returning event -> 601 - from UID - 13
+Unable to process event - 601 - UID - 13
+returning event -> 701 - from UID - 13
+returning event -> 601 - from UID - 10
+returning event -> 701 - from UID - 14
+Processing event - 701
+returning event -> 301 - from UID - 10
+returning event -> 201 - from UID - 13
+Unable to process event - 201 - UID - 13
+returning event -> 701 - from UID - 13
+returning event -> 201 - from UID - 10
+returning event -> 101 - from UID - 11
+Unable to process event - 101 - UID - 11
+returning event -> 101 - from UID - 11
+Unable to process event - 101 - UID - 11
 returning event -> 701 - from UID - 11
 returning event -> 701 - from UID - 10
  

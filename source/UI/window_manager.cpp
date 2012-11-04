@@ -79,7 +79,7 @@ void window_manager_class::window_stack_sort(void)
         window_manager_class::window_stack[0].window_number = temp_stack[active_window_number].window_number;
         // iterate through the saved stack, placing inactive items back on the list after the active window.
         stack_count      = 1;
-        for (int temp_stack_count = 0; temp_stack_count < window_manager_class::number_of_windows; temp_stack_count++)
+        for (int temp_stack_count = 0; temp_stack_count < window_manager_class::number_of_windows-1; temp_stack_count++)
         {
             if(!window_manager_class::window[window_manager_class::window_stack[temp_stack_count].window_number].active)
             {
