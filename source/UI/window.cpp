@@ -252,7 +252,7 @@ int window_class::process(void)
         if (!window_class::mouse_over_title) window_class::mouse_over_title = return_mouse_over;
     }
     window_class::event = return_value;
-    if (return_value > 0) game.core.log.file_write("returning event -> ",return_value, " - from UID - ", window_class::UID);
+    //if (return_value > 0) game.core.log.file_write("returning event -> ",return_value, " - from UID - ", window_class::UID);
     return(return_value);
 };
 

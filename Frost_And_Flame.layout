@@ -3,7 +3,7 @@
 	<ActiveTarget name="Windows" />
 	<File name="source\UI\window.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="1343" topLine="17" />
+			<Cursor1 position="13119" topLine="239" />
 		</Cursor>
 	</File>
 	<File name="source\UI\window.hpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -81,9 +81,9 @@
 			<Cursor1 position="948" topLine="13" />
 		</Cursor>
 	</File>
-	<File name="source\UI\menu_game_load.cpp" open="1" top="1" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="source\UI\menu_game_load.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="27256" topLine="203" />
+			<Cursor1 position="31915" topLine="187" />
 		</Cursor>
 	</File>
 	<File name="source\UI\menu_game_load.hpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -106,9 +106,9 @@
 			<Cursor1 position="1107" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="source\UI\menu_game_save.cpp" open="1" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="source\UI\menu_game_save.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="27066" topLine="214" />
+			<Cursor1 position="27628" topLine="214" />
 		</Cursor>
 	</File>
 	<File name="source\UI\menu_game_save.hpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -126,7 +126,7 @@
 			<Cursor1 position="941" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="source\UI\menu_options.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="source\UI\menu_options.cpp" open="1" top="1" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="13029" topLine="123" />
 		</Cursor>

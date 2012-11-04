@@ -131,9 +131,12 @@ void process_menu_options(int window_number)
 {
     if(game.window_manager.window[window_number].event > 0)
     {
-            game.core.log.file_write("Processing event - ",game.window_manager.window[window_number].event);
+        game.core.log.file_write("Processing event - ",game.window_manager.window[window_number].event);
         switch (game.window_manager.window[window_number].event)
         {
+            case 101: // Close menu button
+                game.window_manager.window_transition(MENU_OPTIONS_UID,MENU_MAIN_UID);
+            break;
             case 701: // Main menu button
                 game.window_manager.window_transition(MENU_OPTIONS_UID,MENU_MAIN_UID);
             break;
@@ -143,6 +146,7 @@ void process_menu_options(int window_number)
             break;
         }
     }
+    game.window_manager.window[window_number].event = 0;
 };
 
 
