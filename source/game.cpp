@@ -109,7 +109,6 @@ void game_class::init(void)
 
 void game_class::process(void)
 {
-    game.window_manager.process();
     game.player.process();
     game.npc.process();
     game.map_2D.process();

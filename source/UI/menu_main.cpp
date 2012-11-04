@@ -239,7 +239,6 @@ void process_menu_main(int window_number)
                     game.window_manager.window_disable(MENU_MAIN_UID);
                 }
                 game.core.game_menu_active = false;
-                game.window_manager.window[window_number].event = 0;
             break;
             case 201: // New game menu
                 game.window_manager.window_transition(MENU_MAIN_UID,MENU_GAME_NEW_UID);
@@ -256,7 +255,6 @@ void process_menu_main(int window_number)
                     game.window_manager.window_disable(MENU_MAIN_UID);
                     game.core.game_menu_active = false;
                 }
-                game.window_manager.window[window_number].event = 0;
             break;
             case 601: // Options menu
                 game.window_manager.window_transition(MENU_MAIN_UID,MENU_OPTIONS_UID);
@@ -265,7 +263,6 @@ void process_menu_main(int window_number)
                 game.state = STATE_QUIT;
                 game.window_manager.window_disable(MENU_MAIN_UID);
                 game.core.game_menu_active = false;
-                game.window_manager.window[window_number].event = 0;
             break;
             default:
                 game.core.log.file_write("Unable to process event - ",game.window_manager.window[window_number].event, " - UID - ",game.window_manager.window[window_number].UID);
@@ -273,6 +270,7 @@ void process_menu_main(int window_number)
             break;
         }
     }
+    game.window_manager.window[window_number].event = 0;
 };
 
 

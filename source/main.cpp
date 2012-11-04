@@ -133,7 +133,6 @@ extern "C" int main(int argc, char** argv)
                     game.core.music_next_track = false;
                 }
                 if (game.core.process_ready) game.core.background.process();
-                if (game.core.process_ready) game.window_manager.process();
                 if (game.core.process_ready) game.UI.UI_process();
                 //if (game.menu.event == 65535) game.state = STATE_QUIT;
                 if (game.core.io.key_escape)  game.state = STATE_QUIT;

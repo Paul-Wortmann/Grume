@@ -54,6 +54,7 @@ void UI_class::UI_setup(void)
 
 void UI_class::UI_process(void) // Process events generated buy the windows in the list
 {
+    game.window_manager.process();
     if (game.window_manager.number_of_windows > 0) // only process windows if there are actually windows in the list.
     {
         for (int window_count = 0; window_count < game.window_manager.number_of_windows; window_count++)
