@@ -255,6 +255,12 @@ http://opengameart.org/content/potions
 Author: Clint Bellanger
 License(s): GPL 2.0, GPL 3.0, CC-BY-SA 3.0
 
+Potion_22 - Potion_23
+---------------------
+http://opengameart.org/content/health-and-mana-potion
+Author: Clint Bellanger
+License(s): CC-BY-SA 3.0
+
 Amulet_00 - Amulet_13
 ---------------------
 http://opengameart.org/content/necklacesmedallions
