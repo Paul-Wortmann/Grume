@@ -107,6 +107,25 @@ void setup_menu_game_new(int UID)
     game.window_manager.window[window_number].element[element_number].font                      = game.window_manager.window[window_number].font;
     game.window_manager.window[window_number].element[element_number].mouse_delay.maximum       = 30;
 
+    element_number = 6; //--- Start game menu button ---
+    game.window_manager.window[window_number].element[element_number].title.text                = "Start Game";
+    game.window_manager.window[window_number].element[element_number].active                    = true;
+    game.window_manager.window[window_number].element[element_number].type                      = BUTTON;
+    game.window_manager.window[window_number].element[element_number].color                     = game.window_manager.window[window_number].color;
+    game.window_manager.window[window_number].element[element_number].zoom                      = game.window_manager.window[window_number].zoom;
+    game.window_manager.window[window_number].element[element_number].size.x                    = (game.window_manager.window[window_number].size.x / 100.f)*80.0f;
+    game.window_manager.window[window_number].element[element_number].size.y                    = game.window_manager.window[window_number].size.y / 10.0f;
+    game.window_manager.window[window_number].element[element_number].position.x                = game.window_manager.window[window_number].position.x;
+    game.window_manager.window[window_number].element[element_number].position.y                = game.window_manager.window[window_number].position.y+(game.window_manager.window[window_number].size.y/2.0f)-(game.window_manager.window[window_number].element[element_number].size.y*7.5f);
+    game.window_manager.window[window_number].element[element_number].texture                   = game.window_manager.window[window_number].texture;
+    game.window_manager.window[window_number].element[element_number].title.size.x              = game.window_manager.window[window_number].element[element_number].title.text.length()/1.2f;
+    game.window_manager.window[window_number].element[element_number].title.size.y              = game.window_manager.window[window_number].element[element_number].title.size.x*4;;
+    game.window_manager.window[window_number].element[element_number].title.position.x          = game.window_manager.window[window_number].element[element_number].position.x-(game.window_manager.window[window_number].element[element_number].title.size.x/100.0f);
+    game.window_manager.window[window_number].element[element_number].title.position.y          = game.window_manager.window[window_number].element[element_number].position.y-(game.window_manager.window[window_number].element[element_number].title.size.y/1480.0f);
+    game.window_manager.window[window_number].element[element_number].sound                     = game.window_manager.window[window_number].sound;
+    game.window_manager.window[window_number].element[element_number].font                      = game.window_manager.window[window_number].font;
+    game.window_manager.window[window_number].element[element_number].mouse_delay.maximum       = 30;
+
     element_number = 7; //--- Main menu button ---
     game.window_manager.window[window_number].element[element_number].title.text                = "Main Menu";
     game.window_manager.window[window_number].element[element_number].active                    = true;
@@ -133,6 +152,26 @@ void process_menu_game_new(int window_number)
     {
         switch (game.window_manager.window[window_number].event)
         {
+            case 101: // Close menu button
+                game.window_manager.window_transition(MENU_GAME_NEW_UID,MENU_MAIN_UID);
+            break;
+            case 601: // Start game menu button
+                switch (game.state)
+                {
+                    case STATE_MENU:
+                    break;
+                    case STATE_GAME:
+                        game.init();
+                    break;
+                    default:
+                        game.init();
+                    break;
+                }
+                game.state = STATE_GAME;
+                game.core.music_next_track = true;
+                game.window_manager.window_transition(MENU_GAME_NEW_UID,MENU_MAIN_UID);
+                game.window_manager.window_disable(MENU_MAIN_UID);
+            break;
             case 701: // Main menu button
                 game.window_manager.window_transition(MENU_GAME_NEW_UID,MENU_MAIN_UID);
             break;

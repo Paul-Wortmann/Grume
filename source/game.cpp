@@ -100,11 +100,11 @@ void game_class::init(void)
     init_items();
 
     //game.resource.map_2D.load("data/maps/cave.tmx");
-    //game.resource.map_2D.random_map(100,100,CAVE,CAVE);
+    //game.map_2D.random_map(100,100,CAVE,CAVE);
 
     //zoom out for testing
-    game.zoom.current = game.zoom.max;
-    //game.resource.map_2D.calculate_tile_positions(DEFAULT_FRAME_WIDTH/game.zoom.current/2.0f,DEFAULT_FRAME_HEIGHT/game.zoom.current/2.0f);
+    //game.zoom.current = game.zoom.max;
+    //game.map_2D.calculate_tile_positions(DEFAULT_FRAME_WIDTH/game.zoom.current/2.0f,DEFAULT_FRAME_HEIGHT/game.zoom.current/2.0f);
 };
 
 void game_class::process(void)
@@ -112,7 +112,7 @@ void game_class::process(void)
     game.window_manager.process();
     game.player.process();
     game.npc.process();
-    //game.resource.map_2D.process();
+    //game.map_2D.process();
     //game.resource.map_3D.town.process();
     game.core.game_resume = true;
     if (game.core.music_next_track)
@@ -173,25 +173,23 @@ void game_class::process(void)
             }
         };
         */
-/*
+
         if (game.core.io.key_escape) // Main menu
         {
             if (!game.core.game_menu_active)
             {
-                game.window_manager.register_window(MAIN_MENU_WINDOW);
-                game.menu.active_menu                        = MENU_MAIN;
-                game.resource.sound.menu_select_00.play();
+                game.window_manager.window_enable(MENU_MAIN_UID);
                 game.core.game_menu_active                   = true;
             }
             else
             {
-                game.window_manager.de_register_window(MAIN_MENU_WINDOW);
-                game.resource.sound.menu_select_00.play();
-                game.core.game_menu_active = false;
+                game.window_manager.window_disable(MENU_MAIN_UID);
+                game.core.game_menu_active                   = false;
             }
             game.core.io.key_escape                = false;
             game.core.io.keyboard_delay_count      = 0;
         }
+/*
         if (game.core.io.key_e) // Equipment menu
         {
             if (!game.core.equipment_active)
@@ -323,10 +321,10 @@ void game_class::process(void)
 ///------------------------------------------------------------------------------------------
         if (game.core.io.key_r) // regenerate random map.
         {
-            //game.resource.map_2D.random_map(100,100,CAVE,DUNGEON);
+            game.map_2D.random_map(100,100,CAVE,DUNGEON);
             //zoom out for testing
             game.zoom.current = game.zoom.max;
-            //game.resource.map_2D.calculate_tile_positions(DEFAULT_FRAME_WIDTH/game.zoom.current/2.0f,DEFAULT_FRAME_HEIGHT/game.zoom.current/2.0f);
+            game.map_2D.calculate_tile_positions(DEFAULT_FRAME_WIDTH/game.zoom.current/2.0f,DEFAULT_FRAME_HEIGHT/game.zoom.current/2.0f);
            //game.resource.sound.menu_select_00.play();
             game.core.io.key_r                     = false;
             game.core.io.keyboard_delay_count      = 0;
@@ -368,7 +366,7 @@ void game_class::render(void)
     float  world_ambient_light[]  = {game.world_ambient.intensity_R,game.world_ambient.intensity_G,game.world_ambient.intensity_B,game.world_ambient.intensity_A};
     glLightModelfv(GL_LIGHT_MODEL_AMBIENT,world_ambient_light);
 
-    //game.resource.map_2D.draw();
+    //game.map_2D.draw();
     //game.resource.map_3D.town.draw();
     game.player.draw();
     game.npc.render();

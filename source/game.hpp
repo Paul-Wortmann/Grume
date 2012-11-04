@@ -37,6 +37,7 @@
 #include "UI/window_manager.hpp"
 #include "UI/loading_screen.hpp"
 #include "UI/UI.hpp"
+#include "core/map_2D.hpp"
 
 #define STATE_QUIT 0
 #define STATE_MENU 1
@@ -78,6 +79,7 @@ class game_class
         language_class       language;
         window_manager_class window_manager;
         UI_class             UI;
+        map_2D_class         map_2D;
         game_class(void);
         void             init(void);
         void             process(void);
