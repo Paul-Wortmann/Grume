@@ -156,8 +156,6 @@ void process_menu_game_new(int window_number)
                 game.window_manager.window_transition(MENU_GAME_NEW_UID,MENU_MAIN_UID);
             break;
             case 601: // Start game menu button
-                game.window_manager.window[window_number].element[4].state = NORMAL; // Save game
-                game.window_manager.window[window_number].element[5].state = NORMAL; // Resume game
                 switch (game.state)
                 {
                     case STATE_MENU:
@@ -173,6 +171,8 @@ void process_menu_game_new(int window_number)
                 game.core.music_next_track = true;
                 game.window_manager.window_transition(MENU_GAME_NEW_UID,MENU_MAIN_UID);
                 game.window_manager.window_disable(MENU_MAIN_UID);
+                game.window_manager.window[game.window_manager.window_get_number(MENU_MAIN_UID)].element[4].state = NORMAL; // Save game
+                game.window_manager.window[game.window_manager.window_get_number(MENU_MAIN_UID)].element[5].state = NORMAL; // Resume game
             break;
             case 701: // Main menu button
                 game.window_manager.window_transition(MENU_GAME_NEW_UID,MENU_MAIN_UID);
