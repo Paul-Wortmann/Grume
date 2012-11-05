@@ -91,7 +91,7 @@ window_class::window_class(void)
         for (int data_pos_number = 0; data_pos_number < MAX_CHOICE_SELECTIONS_PER_MENU; data_pos_number++)
         {
             window_class::choice_selection[pos_number].data[data_pos_number].active        = false;
-            window_class::choice_selection[pos_number].data[data_pos_number].value         = 0;
+            window_class::choice_selection[pos_number].data[data_pos_number].path          = "";
             window_class::choice_selection[pos_number].data[data_pos_number].value_string  = "";
         }
     }

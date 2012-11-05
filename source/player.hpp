@@ -27,6 +27,7 @@
 
 #include <string>
 #include "core/pathfinding.hpp"
+#include "core/textures.hpp"
 
 #define MOVE_TO_TILE_NONE          0
 #define MOVE_TO_TILE_MOVE          1
@@ -69,6 +70,11 @@ class stat_class
         void              draw(void);
 };
 
+struct portrait_type
+{
+    texture_class texture;
+};
+
 class player_class
 {
     public:
@@ -77,8 +83,7 @@ class player_class
         std::string        name;
         level_class        level;
         unsigned long long gold;
-        int                portrait_image_ref;
-        int                portrait_number;
+        portrait_type      portrait;
         int                offence;
         int                defense;
         int                intellect;

@@ -9,6 +9,9 @@ v0.13 - (2012-11-30)
 
 
 
+UI    -> Added player portrait images to the new game menu.
+UI    -> Added left and right arrow buttons to the new game menu for player portrait selection.
+UI    -> Enabled the colse menu button on the options menu.
 UI    -> Re-implemented the load game menu. 
 GFX   -> Added two new potion icons.
 UI    -> Resume game and save game buttons now active on first reopening of the main menu after starting a game.

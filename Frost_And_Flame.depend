@@ -9,10 +9,10 @@
 1341722598 c:\_git_\frost_and_flame\source\core\vector.hpp
 	<math.h>
 
-1314140393 c:\mingw\include\math.h
+1341006774 c:\mingw\include\math.h
 	<_mingw.h>
 
-1314140392 c:\mingw\include\_mingw.h
+1341006771 c:\mingw\include\_mingw.h
 
 1349531388 source:c:\_git_\frost_and_flame\source\items.cpp
 	"items.hpp"
@@ -123,43 +123,43 @@
 1326110994 c:\mingw\include\sdl\sdl_config_win32.h
 	"SDL_platform.h"
 
-1314140395 c:\mingw\include\sys\types.h
+1341006780 c:\mingw\include\sys\types.h
 	<_mingw.h>
 	<stddef.h>
 
-1314140394 c:\mingw\include\stdio.h
+1341006776 c:\mingw\include\stdio.h
 	<_mingw.h>
 	<stddef.h>
 	<stdarg.h>
 	<sys/types.h>
 
-1314140394 c:\mingw\include\stdlib.h
+1341006777 c:\mingw\include\stdlib.h
 	<_mingw.h>
 	<stddef.h>
 
-1314140393 c:\mingw\include\malloc.h
+1341006774 c:\mingw\include\malloc.h
 	<_mingw.h>
 	<stdlib.h>
 
-1314140394 c:\mingw\include\memory.h
+1341006775 c:\mingw\include\memory.h
 	<string.h>
 
-1314140394 c:\mingw\include\string.h
+1341006777 c:\mingw\include\string.h
 	<_mingw.h>
 	<stddef.h>
 
-1314140394 c:\mingw\include\strings.h
+1341006777 c:\mingw\include\strings.h
 	<string.h>
 
-1314140393 c:\mingw\include\inttypes.h
+1341006773 c:\mingw\include\inttypes.h
 	<_mingw.h>
 	<stdint.h>
 	<stddef.h>
 
-1314140394 c:\mingw\include\stdint.h
+1341006776 c:\mingw\include\stdint.h
 	<stddef.h>
 
-1314140392 c:\mingw\include\ctype.h
+1341006771 c:\mingw\include\ctype.h
 	<_mingw.h>
 	<stddef.h>
 
@@ -172,14 +172,14 @@
 	<time.h>
 	<wchar.h>
 
-1314140393 c:\mingw\include\errno.h
+1341006772 c:\mingw\include\errno.h
 	<_mingw.h>
 
-1314140394 c:\mingw\include\time.h
+1341006777 c:\mingw\include\time.h
 	<_mingw.h>
 	<stddef.h>
 
-1314140395 c:\mingw\include\wchar.h
+1341006778 c:\mingw\include\wchar.h
 	<_mingw.h>
 	<stddef.h>
 	<stdarg.h>
@@ -189,7 +189,7 @@
 	<stdint.h>
 	<stdint.h>
 
-1314140395 c:\mingw\include\wctype.h
+1341006778 c:\mingw\include\wctype.h
 	<_mingw.h>
 	<stddef.h>
 
@@ -232,7 +232,7 @@
 	<process.h>
 	"close_code.h"
 
-1314140394 c:\mingw\include\process.h
+1341006775 c:\mingw\include\process.h
 	<_mingw.h>
 	<sys/types.h>
 	<stdint.h>
@@ -340,29 +340,29 @@
 	<limits.h>
 	<windows.h>
 
-1314140394 c:\mingw\include\unistd.h
+1341006777 c:\mingw\include\unistd.h
 	<io.h>
 	<process.h>
 	<getopt.h>
 	<sys/types.h>
 
-1314140393 c:\mingw\include\io.h
+1341006774 c:\mingw\include\io.h
 	<_mingw.h>
 	<sys/types.h>
 
-1314140393 c:\mingw\include\getopt.h
+1341006773 c:\mingw\include\getopt.h
 	<_mingw.h>
 
-1314140393 c:\mingw\include\fcntl.h
+1341006773 c:\mingw\include\fcntl.h
 	<_mingw.h>
 	<io.h>
 
-1314140395 c:\mingw\include\sys\stat.h
+1341006779 c:\mingw\include\sys\stat.h
 	<_mingw.h>
 	<stddef.h>
 	<sys/types.h>
 
-1314140393 c:\mingw\include\limits.h
+1341006774 c:\mingw\include\limits.h
 	<_mingw.h>
 
 1301111162 c:\mingw\include\windows.h
@@ -480,7 +480,7 @@
 
 1301111159 c:\mingw\include\rpcnterr.h
 
-1314140393 c:\mingw\include\excpt.h
+1341006773 c:\mingw\include\excpt.h
 	<_mingw.h>
 	<windef.h>
 
@@ -636,9 +636,10 @@
 1343302826 c:\_git_\frost_and_flame\source\menu_system.hpp
 	"core/menu.hpp"
 
-1352020406 c:\_git_\frost_and_flame\source\player.hpp
+1352121961 c:\_git_\frost_and_flame\source\player.hpp
 	<string>
 	"core/pathfinding.hpp"
+	"core/textures.hpp"
 
 1336737629 c:\_git_\frost_and_flame\source\core\pathfinding.hpp
 
@@ -1014,16 +1015,16 @@
 	"../game.hpp"
 	"../items.hpp"
 
-1351339968 c:\_git_\frost_and_flame\source\ui\window.hpp
+1352116823 c:\_git_\frost_and_flame\source\ui\window.hpp
 	"window_element.hpp"
 	"../core/font.hpp"
 	<string>
 
-1352044738 source:c:\_git_\frost_and_flame\source\ui\window.cpp
+1352121922 source:c:\_git_\frost_and_flame\source\ui\window.cpp
 	"window.hpp"
 	"../game.hpp"
 
-1352086664 c:\_git_\frost_and_flame\source\ui\window_element.hpp
+1352116823 c:\_git_\frost_and_flame\source\ui\window_element.hpp
 	<string>
 	"../core/textures.hpp"
 	"../core/font.hpp"
@@ -1054,7 +1055,7 @@
 1350137548 c:\_git_\frost_and_flame\source\ui\menu_game_save.hpp
 	"window.hpp"
 
-1352039027 source:c:\_git_\frost_and_flame\source\ui\menu_game_new.cpp
+1352129263 source:c:\_git_\frost_and_flame\source\ui\menu_game_new.cpp
 	"menu_game_new.hpp"
 	"../game.hpp"
 

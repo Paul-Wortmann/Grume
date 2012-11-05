@@ -132,9 +132,10 @@ class delay_class
 
 struct selection_data_type
 {
-    bool         active;
-    int          value;
-    std::string  value_string;
+    bool          active;
+    texture_class texture;
+    std::string   value_string;
+    std::string   path;
 };
 
 
