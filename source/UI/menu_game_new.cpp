@@ -315,6 +315,8 @@ void setup_menu_game_new(int UID)
 
 void process_menu_game_new(int window_number)
 {
+    texture_class temp_data_texture;
+    bool temp_data_bool = false;
     if(game.window_manager.window[window_number].event > 0)
     {
         switch (game.window_manager.window[window_number].event)
@@ -344,11 +346,53 @@ void process_menu_game_new(int window_number)
                 game.window_manager.window[game.window_manager.window_get_number(MENU_MAIN_UID)].element[4].state = NORMAL; // Save game
                 game.window_manager.window[game.window_manager.window_get_number(MENU_MAIN_UID)].element[5].state = NORMAL; // Resume game
             break;
-            case 401: // x
+            case 401: // left arrow button for player portrait selection
+                game.window_manager.window[window_number].choice_selection[0].position++;
+                if (game.window_manager.window[window_number].choice_selection[0].position > game.window_manager.window[window_number].choice_selection[0].position_max) game.window_manager.window[window_number].choice_selection[0].position = 0;
+                temp_data_texture = game.window_manager.window[window_number].choice_selection[0].data[0].texture;
+                temp_data_bool    = game.window_manager.window[window_number].choice_selection[0].data[0].active;
+                for (int data_position_count = 0; data_position_count < game.window_manager.window[window_number].choice_selection[0].position_max;data_position_count++)
+                {
+                    game.window_manager.window[window_number].choice_selection[0].data[data_position_count].texture = game.window_manager.window[window_number].choice_selection[0].data[data_position_count+1].texture;
+                    game.window_manager.window[window_number].choice_selection[0].data[data_position_count].active  = game.window_manager.window[window_number].choice_selection[0].data[data_position_count+1].active;
+                }
+                game.window_manager.window[window_number].choice_selection[0].data[game.window_manager.window[window_number].choice_selection[0].position_max].texture = temp_data_texture;
+                game.window_manager.window[window_number].choice_selection[0].data[game.window_manager.window[window_number].choice_selection[0].position_max].active  = temp_data_bool;
+                game.window_manager.window[window_number].element[6].texture.normal.image      = game.window_manager.window[window_number].choice_selection[0].data[0].texture;
+                game.window_manager.window[window_number].element[7].texture.normal.image      = game.window_manager.window[window_number].choice_selection[0].data[1].texture;
+                game.window_manager.window[window_number].element[8].texture.normal.image      = game.window_manager.window[window_number].choice_selection[0].data[2].texture;
+                game.window_manager.window[window_number].element[9].texture.normal.image      = game.window_manager.window[window_number].choice_selection[0].data[3].texture;
+                game.window_manager.window[window_number].element[10].texture.normal.image     = game.window_manager.window[window_number].choice_selection[0].data[4].texture;
+                game.window_manager.window[window_number].element[6].selected                  = game.window_manager.window[window_number].choice_selection[0].data[0].active;
+                game.window_manager.window[window_number].element[7].selected                  = game.window_manager.window[window_number].choice_selection[0].data[1].active;
+                game.window_manager.window[window_number].element[8].selected                  = game.window_manager.window[window_number].choice_selection[0].data[2].active;
+                game.window_manager.window[window_number].element[9].selected                  = game.window_manager.window[window_number].choice_selection[0].data[3].active;
+                game.window_manager.window[window_number].element[10].selected                 = game.window_manager.window[window_number].choice_selection[0].data[4].active;
             break;
-            case 501: // x
+            case 501: // Right arrow button for player portrait selection
+                game.window_manager.window[window_number].choice_selection[0].position--;
+                if (game.window_manager.window[window_number].choice_selection[0].position < 0) game.window_manager.window[window_number].choice_selection[0].position = game.window_manager.window[window_number].choice_selection[0].position_max;
+                temp_data_texture = game.window_manager.window[window_number].choice_selection[0].data[game.window_manager.window[window_number].choice_selection[0].position_max-1].texture;
+                temp_data_bool    = game.window_manager.window[window_number].choice_selection[0].data[game.window_manager.window[window_number].choice_selection[0].position_max-1].active;
+                for (int data_position_count = game.window_manager.window[window_number].choice_selection[0].position_max-1; data_position_count > 0;data_position_count--)
+                {
+                    game.window_manager.window[window_number].choice_selection[0].data[data_position_count].texture = game.window_manager.window[window_number].choice_selection[0].data[data_position_count-1].texture;
+                    game.window_manager.window[window_number].choice_selection[0].data[data_position_count].active  = game.window_manager.window[window_number].choice_selection[0].data[data_position_count-1].active;
+                }
+                game.window_manager.window[window_number].choice_selection[0].data[0].texture  = temp_data_texture;
+                game.window_manager.window[window_number].choice_selection[0].data[0].active   = temp_data_bool;
+                game.window_manager.window[window_number].element[6].texture.normal.image      = game.window_manager.window[window_number].choice_selection[0].data[0].texture;
+                game.window_manager.window[window_number].element[7].texture.normal.image      = game.window_manager.window[window_number].choice_selection[0].data[1].texture;
+                game.window_manager.window[window_number].element[8].texture.normal.image      = game.window_manager.window[window_number].choice_selection[0].data[2].texture;
+                game.window_manager.window[window_number].element[9].texture.normal.image      = game.window_manager.window[window_number].choice_selection[0].data[3].texture;
+                game.window_manager.window[window_number].element[10].texture.normal.image     = game.window_manager.window[window_number].choice_selection[0].data[4].texture;
+                game.window_manager.window[window_number].element[6].selected                  = game.window_manager.window[window_number].choice_selection[0].data[0].active;
+                game.window_manager.window[window_number].element[7].selected                  = game.window_manager.window[window_number].choice_selection[0].data[1].active;
+                game.window_manager.window[window_number].element[8].selected                  = game.window_manager.window[window_number].choice_selection[0].data[2].active;
+                game.window_manager.window[window_number].element[9].selected                  = game.window_manager.window[window_number].choice_selection[0].data[3].active;
+                game.window_manager.window[window_number].element[10].selected                 = game.window_manager.window[window_number].choice_selection[0].data[4].active;
             break;
-            case 601: // x
+            case 601: // Portrait 0 selected
                 for (int data_position_count = 0; data_position_count < game.window_manager.window[window_number].choice_selection[0].position_max;data_position_count++)
                 {
                     game.window_manager.window[window_number].choice_selection[0].data[data_position_count].active = false;
@@ -361,7 +405,7 @@ void process_menu_game_new(int window_number)
                 game.window_manager.window[window_number].choice_selection[0].data[0].active   = true;
                 game.player.portrait.texture = game.window_manager.window[window_number].choice_selection[0].data[0].texture;
             break;
-            case 701: // x
+            case 701: // Portrait 1 selected
                 for (int data_position_count = 0; data_position_count < game.window_manager.window[window_number].choice_selection[0].position_max;data_position_count++)
                 {
                     game.window_manager.window[window_number].choice_selection[0].data[data_position_count].active = false;
@@ -374,7 +418,7 @@ void process_menu_game_new(int window_number)
                 game.window_manager.window[window_number].choice_selection[0].data[1].active   = true;
                 game.player.portrait.texture = game.window_manager.window[window_number].choice_selection[0].data[1].texture;
             break;
-            case 801: // x
+            case 801: // Portrait 2 selected
                 for (int data_position_count = 0; data_position_count < game.window_manager.window[window_number].choice_selection[0].position_max;data_position_count++)
                 {
                     game.window_manager.window[window_number].choice_selection[0].data[data_position_count].active = false;
@@ -387,7 +431,7 @@ void process_menu_game_new(int window_number)
                 game.window_manager.window[window_number].choice_selection[0].data[2].active   = true;
                 game.player.portrait.texture = game.window_manager.window[window_number].choice_selection[0].data[2].texture;
             break;
-            case 901: // x
+            case 901: // Portrait 3 selected
                 for (int data_position_count = 0; data_position_count < game.window_manager.window[window_number].choice_selection[0].position_max;data_position_count++)
                 {
                     game.window_manager.window[window_number].choice_selection[0].data[data_position_count].active = false;
@@ -400,7 +444,7 @@ void process_menu_game_new(int window_number)
                 game.window_manager.window[window_number].choice_selection[0].data[3].active   = true;
                 game.player.portrait.texture = game.window_manager.window[window_number].choice_selection[0].data[3].texture;
             break;
-            case 1001: // x
+            case 1001: // Portrait 4 selected
                 for (int data_position_count = 0; data_position_count < game.window_manager.window[window_number].choice_selection[0].position_max;data_position_count++)
                 {
                     game.window_manager.window[window_number].choice_selection[0].data[data_position_count].active = false;
