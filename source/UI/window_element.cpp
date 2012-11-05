@@ -224,6 +224,8 @@ void window_element_class::render(void)
             break;
             case SELECTION:
             break;
+            case ICON:
+            break;
             default:
             break;
         }
