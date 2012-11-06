@@ -52,7 +52,8 @@ double random_double(void)
 
 int random_int(int minimum, int maximum)
 {
-    return((rand()%(maximum - minimum)) + minimum);
+    if (maximum == minimum) return(rand()%(maximum));
+    else return((rand()%(maximum - minimum)) + minimum);
 }
 
 int random_int(void)
