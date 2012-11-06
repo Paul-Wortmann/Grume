@@ -134,6 +134,7 @@ struct selection_data_type
 {
     bool          active;
     texture_class texture;
+    int           value;
     std::string   value_string;
     std::string   path;
 };
