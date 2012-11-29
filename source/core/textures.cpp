@@ -56,6 +56,16 @@ texture_class::~texture_class()
     }
 };
 
+bool texture_class::load_image(void)
+{
+    if (texture_class::path.length() > 4)
+    {
+        texture_class::load_image(texture_class::path);
+        return(true);
+    }
+    else return(false);
+};
+
 bool texture_class::load_image(std::string file_name)
 {
     SDL_Surface    *image_surface = NULL;
@@ -64,7 +74,7 @@ bool texture_class::load_image(std::string file_name)
     bool            return_value = false;
     texture_class::frame_max     = 0;
     texture_class::frame = new frame_type[texture_class::frame_max+1];
-
+    texture_class::path  = file_name;
     if ((image_surface = IMG_Load(file_name.c_str())))
     {
         return_value = true;
@@ -124,7 +134,8 @@ bool texture_class::load_spritesheet(std::string file_name, int width, int heigh
     GLenum          texture_format = 0;
     GLint           number_of_colors;
     bool            return_value   = false;
-    if ((sprite_sheet = IMG_Load(file_name.c_str())))
+    texture_class::path  = file_name;
+   if ((sprite_sheet = IMG_Load(file_name.c_str())))
     {
         return_value = true;
         if ((sprite_sheet->w & (sprite_sheet->w - 1)) != 0 );
@@ -232,7 +243,6 @@ void texture_class::draw(bool rumble, float pos_x, float pos_y, float pos_z, flo
         pos_y += game_o.rumble.counter_y;
     }
 */
-
     if (texture_class::frame[texture_class::frame_number].data) // Only render if data is available.
     {
         int temp_angle;

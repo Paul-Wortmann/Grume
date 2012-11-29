@@ -7,8 +7,11 @@ just that time is not permitting to proceed at a fast pace, at the moment.
 
 v0.13 - (2012-11-30)
 
-
-
+UI    -> Added resolution selection elements to the options menu.
+CORE  -> Corrected code for checking size of textures to be loaded.
+UI    -> Added in value, for slider, and bar elements.
+CORE  -> Added bounds checking to int random_int(int minimum, int maximum).
+UI    -> Completed player portrait selection on the new game menu.
 UI    -> Added player portrait images to the new game menu.
 UI    -> Added left and right arrow buttons to the new game menu for player portrait selection.
 UI    -> Enabled the colse menu button on the options menu.

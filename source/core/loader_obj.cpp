@@ -75,24 +75,21 @@ bool loader_obj_class::load_texture(std::string file_name, GLuint *texture_data)
     GLenum          texture_format;
     if ((image_surface = IMG_Load(file_name.c_str())))
     {
-        if (((image_surface->w & (image_surface->w - 1)) != 0 ) && ((image_surface->h & (image_surface->h - 1)) != 0 ))
+        number_of_colors = image_surface->format->BytesPerPixel;
+        if (number_of_colors == 4)
         {
-            number_of_colors = image_surface->format->BytesPerPixel;
-            if (number_of_colors == 4)
-            {
-                if (image_surface->format->Rmask == 0x000000ff) texture_format = GL_RGBA;
-                else texture_format = GL_BGRA;
-            }
-            else if (number_of_colors == 3)
-            {
-                if (image_surface->format->Rmask == 0x000000ff) texture_format = GL_RGB;
-                else texture_format = GL_BGR;
-            }
-            glGenTextures( 1, texture_data);
-            if ( image_surface ) SDL_FreeSurface( image_surface );
-            game.core.log.file_write("loader_obj_class::load_texture loaded file -> ",file_name.c_str());
-            return(true);
-        };
+            if (image_surface->format->Rmask == 0x000000ff) texture_format = GL_RGBA;
+            else texture_format = GL_BGRA;
+        }
+        else if (number_of_colors == 3)
+        {
+            if (image_surface->format->Rmask == 0x000000ff) texture_format = GL_RGB;
+            else texture_format = GL_BGR;
+        }
+        glGenTextures( 1, texture_data);
+        if ( image_surface ) SDL_FreeSurface( image_surface );
+        game.core.log.file_write("loader_obj_class::load_texture loaded file -> ",file_name.c_str());
+        return(true);
     }
     else
     {

@@ -41,6 +41,7 @@ class texture_class
 {
     private:
     public:
+        std::string     path;
         int             width;
         int             height;
         bool            rotate_able;
@@ -55,6 +56,7 @@ class texture_class
         frame_type*     frame;
         texture_class();
        ~texture_class();
+        bool     load_image      (void);
         bool     load_image      (std::string file_name);
         bool     load_spritesheet(std::string file_name);
         bool     load_spritesheet(std::string file_name, int width, int height);

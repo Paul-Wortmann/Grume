@@ -602,7 +602,7 @@
 	<SDL/SDL_mixer.h>
 	<string>
 
-1349530885 c:\_git_\frost_and_flame\source\core\textures.hpp
+1352380127 c:\_git_\frost_and_flame\source\core\textures.hpp
 	<GL/gl.h>
 	<string>
 
@@ -755,7 +755,7 @@
 	"resources.hpp"
 	"game.hpp"
 
-1349545254 source:c:\_git_\frost_and_flame\source\core\textures.cpp
+1352380305 source:c:\_git_\frost_and_flame\source\core\textures.cpp
 	<GL/gl.h>
 	<SDL/SDL.h>
 	<SDL/SDL_image.h>
@@ -815,7 +815,7 @@
 	"spells.hpp"
 	"game.hpp"
 
-1349531083 source:c:\_git_\frost_and_flame\source\core\loader_obj.cpp
+1352215812 source:c:\_git_\frost_and_flame\source\core\loader_obj.cpp
 	<iostream>
 	<fstream>
 	<stdio.h>
@@ -912,7 +912,7 @@
 1326868751 c:\_git_\frost_and_flame\source\core\particles.hpp
 	<string>
 
-1340339197 source:c:\_git_\frost_and_flame\source\core\misc.cpp
+1352215762 source:c:\_git_\frost_and_flame\source\core\misc.cpp
 	<time.h>
 	<stdlib.h>
 	<math.h>
@@ -991,11 +991,11 @@
 	"character.hpp"
 	"../game.hpp"
 
-1352028128 source:c:\_git_\frost_and_flame\source\ui\window_manager.cpp
+1352293404 source:c:\_git_\frost_and_flame\source\ui\window_manager.cpp
 	"window_manager.hpp"
 	"../game.hpp"
 
-1352028128 source:c:\_git_\frost_and_flame\source\ui\ui.cpp
+1352215321 source:c:\_git_\frost_and_flame\source\ui\ui.cpp
 	"UI.hpp"
 	"menu_main.hpp"
 	"../game.hpp"
@@ -1020,11 +1020,11 @@
 	"../core/font.hpp"
 	<string>
 
-1352121922 source:c:\_git_\frost_and_flame\source\ui\window.cpp
+1352388998 source:c:\_git_\frost_and_flame\source\ui\window.cpp
 	"window.hpp"
 	"../game.hpp"
 
-1352116823 c:\_git_\frost_and_flame\source\ui\window_element.hpp
+1352383455 c:\_git_\frost_and_flame\source\ui\window_element.hpp
 	<string>
 	"../core/textures.hpp"
 	"../core/font.hpp"
@@ -1055,7 +1055,7 @@
 1350137548 c:\_git_\frost_and_flame\source\ui\menu_game_save.hpp
 	"window.hpp"
 
-1352209820 source:c:\_git_\frost_and_flame\source\ui\menu_game_new.cpp
+1352380473 source:c:\_git_\frost_and_flame\source\ui\menu_game_new.cpp
 	"menu_game_new.hpp"
 	"../game.hpp"
 
@@ -1081,7 +1081,8 @@
 1350137522 c:\_git_\frost_and_flame\source\ui\menu_options.hpp
 	"window.hpp"
 
-1352045124 source:c:\_git_\frost_and_flame\source\ui\menu_options.cpp
+1352814175 source:c:\_git_\frost_and_flame\source\ui\menu_options.cpp
 	"menu_options.hpp"
+	<string>
 	"../game.hpp"
 
