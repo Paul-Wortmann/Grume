@@ -565,6 +565,18 @@ void process_menu_options(int window_number)
                 game.window_manager.window[window_number].element[13].value = game.core.config.audio_volume_sound;
                 Mix_Volume(-1,game.core.config.audio_volume_sound);
             break;
+            case 1401: // Music volume left arrow button
+                game.core.config.audio_volume_music--;
+                if (game.core.config.audio_volume_music < 0.0f) game.core.config.audio_volume_music = 0.0f;
+                game.window_manager.window[window_number].element[16].value = game.core.config.audio_volume_music;
+                Mix_VolumeMusic(game.core.config.audio_volume_music);
+            break;
+            case 1501: // Music volume right arrow button
+                game.core.config.audio_volume_music++;
+                if (game.core.config.audio_volume_music > game.window_manager.window[window_number].element[16].value_max) game.core.config.audio_volume_music = game.window_manager.window[window_number].element[16].value_max;
+                game.window_manager.window[window_number].element[16].value = game.core.config.audio_volume_music;
+                Mix_VolumeMusic(game.core.config.audio_volume_music);
+            break;
             default:
                 game.core.log.file_write("Unable to process event - ",game.window_manager.window[window_number].event, " - UID - ",game.window_manager.window[window_number].UID);
                 game.window_manager.window[window_number].event = 0;
