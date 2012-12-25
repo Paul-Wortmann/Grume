@@ -172,6 +172,7 @@ class window_element_class
         font_class              font;
         window_element_class(void);
        ~window_element_class(void);
+        void                    reload_textures(void);
         void                    render(void);
         bool                    mouse_over_element(void);
         bool                    mouse_clicked_element(void);

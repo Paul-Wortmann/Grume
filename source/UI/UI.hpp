@@ -33,6 +33,7 @@ class UI_class
     protected:
     private:
     public:
+        void UI_reload_textures(void);
         void UI_setup(void);
         void UI_process(void);
 };

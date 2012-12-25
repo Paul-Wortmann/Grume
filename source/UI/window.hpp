@@ -59,6 +59,7 @@ class window_class
         window_element_class   *element;
         window_class(void);
        ~window_class(void);
+        void                    reload_textures(void);
         void                    render(void);
         bool                    get_mouse_over_menu(void);
         bool                    get_mouse_over_title(void);

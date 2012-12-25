@@ -46,7 +46,7 @@
 			<Cursor1 position="948" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="source\UI\menu_options.cpp" open="1" top="1" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="source\UI\menu_options.cpp" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="46276" topLine="316" />
 		</Cursor>
@@ -56,7 +56,7 @@
 			<Cursor1 position="1159" topLine="24" />
 		</Cursor>
 	</File>
-	<File name="source\main.cpp" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="source\main.cpp" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="1124" topLine="12" />
 		</Cursor>
@@ -68,12 +68,12 @@
 	</File>
 	<File name="source\UI\window.cpp" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="5047" topLine="101" />
+			<Cursor1 position="1502" topLine="30" />
 		</Cursor>
 	</File>
 	<File name="source\UI\window.hpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="1319" topLine="13" />
+			<Cursor1 position="2158" topLine="34" />
 		</Cursor>
 	</File>
 	<File name="source\player.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -81,14 +81,14 @@
 			<Cursor1 position="5803" topLine="160" />
 		</Cursor>
 	</File>
-	<File name="source\UI\window_element.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="source\UI\window_element.cpp" open="1" top="1" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="16325" topLine="239" />
+			<Cursor1 position="17843" topLine="267" />
 		</Cursor>
 	</File>
 	<File name="source\UI\window_element.hpp" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="946" topLine="87" />
+			<Cursor1 position="4428" topLine="143" />
 		</Cursor>
 	</File>
 	<File name="source\UI\window_manager.cpp" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -106,9 +106,9 @@
 			<Cursor1 position="952" topLine="21" />
 		</Cursor>
 	</File>
-	<File name="source\UI\UI.cpp" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="source\UI\UI.cpp" open="0" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="1921" topLine="38" />
+			<Cursor1 position="4516" topLine="77" />
 		</Cursor>
 	</File>
 	<File name="changelog.txt" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -133,7 +133,7 @@
 	</File>
 	<File name="source\UI\UI.hpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="980" topLine="3" />
+			<Cursor1 position="1096" topLine="3" />
 		</Cursor>
 	</File>
 	<File name="source\UI\loading_screen.hpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">

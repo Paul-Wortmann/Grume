@@ -577,6 +577,40 @@ void process_menu_options(int window_number)
                 game.window_manager.window[window_number].element[16].value = game.core.config.audio_volume_music;
                 Mix_VolumeMusic(game.core.config.audio_volume_music);
             break;
+            case 1701: // Full screen button
+                if (game.core.config.display_fullscreen)
+                {
+                    game.core.config.display_fullscreen                                   = false;
+                    game.window_manager.window[window_number].element[18].value           = 0.0f;
+                    //menu_system_class::menu_options.element[16].texture_ID.normal         = game.resource.texture.red_button.ref_number;
+                    //menu_system_class::menu_options.element[16].texture_ID.highlighted    = game.resource.texture.red_button_highlighted.ref_number;
+                    //menu_system_class::menu_options.element[16].texture_ID.disabled       = game.resource.texture.green_button.ref_number;
+                    //menu_system_class::menu_options.element[16].texture_ID.base           = game.resource.texture.green_button_highlighted.ref_number;
+                    game.core.graphics.init_sdl();
+                    game.core.graphics.init_gl();
+                    game.UI.UI_reload_textures();
+                    //game.resource.loading_screen_display("data/loading_screen.png");
+                    //game.core.log.file_write("Loading resources....");
+                    //game.resource.load_all();
+                }
+                else
+                {
+                    game.core.config.display_fullscreen                                   = true;
+                    game.window_manager.window[window_number].element[18].value           = 1.0f;
+                    //menu_system_class::menu_options.element[16].texture_ID.normal         = game.resource.texture.green_button.ref_number;
+                    //menu_system_class::menu_options.element[16].texture_ID.highlighted    = game.resource.texture.green_button_highlighted.ref_number;
+                    //menu_system_class::menu_options.element[16].texture_ID.disabled       = game.resource.texture.red_button.ref_number;
+                    //menu_system_class::menu_options.element[16].texture_ID.base           = game.resource.texture.red_button_highlighted.ref_number;
+                    game.core.graphics.init_sdl();
+                    game.core.graphics.init_gl();
+                    game.UI.UI_reload_textures();
+                    //game.resource.loading_screen_display("data/loading_screen.png");
+                    //game.core.log.file_write("Loading resources....");
+                    //game.resource.load_all();
+                }
+            break;
+            case 1801: // Full screen colored button
+            break;
             default:
                 game.core.log.file_write("Unable to process event - ",game.window_manager.window[window_number].event, " - UID - ",game.window_manager.window[window_number].UID);
                 game.window_manager.window[window_number].event = 0;

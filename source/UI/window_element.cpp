@@ -295,3 +295,13 @@ int  window_element_class::process(void)
     return(window_element_class::event);
 };
 
+void window_element_class::reload_textures(void)
+{
+    if (window_element_class::active)
+    {
+        if (window_element_class::texture.normal.image_path.length() > 3)      window_element_class::texture.normal.image.load_image     (window_element_class::texture.normal.image_path);
+        if (window_element_class::texture.highlighted.image_path.length() > 3) window_element_class::texture.highlighted.image.load_image(window_element_class::texture.highlighted.image_path);
+        if (window_element_class::texture.disabled.image_path.length() > 3)    window_element_class::texture.disabled.image.load_image   (window_element_class::texture.disabled.image_path);
+        if (window_element_class::texture.base.image_path.length() > 3)        window_element_class::texture.base.image.load_image       (window_element_class::texture.base.image_path);
+    }
+};

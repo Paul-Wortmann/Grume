@@ -35,6 +35,7 @@ window_class::window_class(void)
     window_class::enabled                            = true;
     window_class::active                             = false;
     window_class::event                              = 0;
+    window_class::number_of_elements                 = 0;
     window_class::title.text                         = "Not set";
     window_class::title.size.x                       = 0.0f;
     window_class::title.size.y                       = 0.0f;
@@ -257,6 +258,15 @@ int window_class::process(void)
 };
 
 
+
+void window_class::reload_textures(void)
+{
+    if (window_class::texture.normal.image_path.length() > 3)      window_class::texture.normal.image.load_image     (window_class::texture.normal.image_path);
+    if (window_class::texture.highlighted.image_path.length() > 3) window_class::texture.highlighted.image.load_image(window_class::texture.highlighted.image_path);
+    if (window_class::texture.disabled.image_path.length() > 3)    window_class::texture.disabled.image.load_image   (window_class::texture.disabled.image_path);
+    if (window_class::texture.base.image_path.length() > 3)        window_class::texture.base.image.load_image       (window_class::texture.base.image_path);
+    for (int element_number = 0; element_number < window_class::number_of_elements; element_number++) window_class::element[element_number].reload_textures();
+};
 
 
 
