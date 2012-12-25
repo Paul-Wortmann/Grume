@@ -258,7 +258,7 @@ int  window_element_class::process(void)
                 {
                     if((window_element_class::mouse_delay.ready) || (!window_element_class::mouse_delay.enabled))
                     {
-                        window_element_class::sound.on_click.sound.play();
+                        if (window_element_class::sound.on_click.enabled) window_element_class::sound.on_click.sound.play();
                         window_element_class::clicked = true;
                         if(window_element_class::mouse_delay.enabled) window_element_class::mouse_delay.reset();
                     }

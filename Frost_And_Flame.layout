@@ -28,7 +28,7 @@
 	</File>
 	<File name="source\UI\menu_main.cpp" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="4269" topLine="276" />
+			<Cursor1 position="28499" topLine="220" />
 		</Cursor>
 	</File>
 	<File name="source\player.hpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -58,7 +58,7 @@
 	</File>
 	<File name="source\main.cpp" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="5707" topLine="84" />
+			<Cursor1 position="1124" topLine="12" />
 		</Cursor>
 	</File>
 	<File name="source\UI\menu_options.hpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -66,9 +66,9 @@
 			<Cursor1 position="1103" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="source\UI\window.cpp" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="source\UI\window.cpp" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="5047" topLine="77" />
+			<Cursor1 position="5047" topLine="101" />
 		</Cursor>
 	</File>
 	<File name="source\UI\window.hpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -171,9 +171,9 @@
 			<Cursor1 position="16119" topLine="348" />
 		</Cursor>
 	</File>
-	<File name="source\UI\menu_game_new.cpp" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="source\UI\menu_game_new.cpp" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="16198" topLine="144" />
+			<Cursor1 position="53177" topLine="447" />
 		</Cursor>
 	</File>
 	<File name="source\core\map_2D.hpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
