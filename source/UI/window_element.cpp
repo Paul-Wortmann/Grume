@@ -149,6 +149,14 @@ void window_element_class::render(void)
     {
         switch (window_element_class::type)
         {
+            case IMAGE:
+                if (window_element_class::selected) window_element_class::texture.highlighted.image.draw(false,window_element_class::position.x,window_element_class::position.y,window_element_class::position.z,window_element_class::size.x+zoom_value,window_element_class::size.y+zoom_value,window_element_class::texture.angle);
+                window_element_class::texture.normal.image.draw(false,window_element_class::position.x,window_element_class::position.y,window_element_class::position.z,window_element_class::size.x+zoom_value,window_element_class::size.y+zoom_value,window_element_class::texture.angle);
+                if (window_element_class::mouse_over)
+                {
+                    window_element_class::font.write(window_element_class::color.highlighted.r,window_element_class::color.highlighted.g,window_element_class::color.highlighted.b,window_element_class::color.highlighted.a,window_element_class::title.position.x,window_element_class::title.position.y,window_element_class::title.size.x,window_element_class::title.size.y,window_element_class::title.text);
+                }
+            break;
             case BUTTON:
                 switch (window_element_class::state)
                 {
@@ -182,14 +190,6 @@ void window_element_class::render(void)
                     break;
                     default:
                     break;
-                }
-            break;
-            case IMAGE:
-                if (window_element_class::selected) window_element_class::texture.highlighted.image.draw(false,window_element_class::position.x,window_element_class::position.y,window_element_class::position.z,window_element_class::size.x+zoom_value,window_element_class::size.y+zoom_value,window_element_class::texture.angle);
-                window_element_class::texture.normal.image.draw(false,window_element_class::position.x,window_element_class::position.y,window_element_class::position.z,window_element_class::size.x+zoom_value,window_element_class::size.y+zoom_value,window_element_class::texture.angle);
-                if (window_element_class::mouse_over)
-                {
-                    window_element_class::font.write(window_element_class::color.highlighted.r,window_element_class::color.highlighted.g,window_element_class::color.highlighted.b,window_element_class::color.highlighted.a,window_element_class::title.position.x,window_element_class::title.position.y,window_element_class::title.size.x,window_element_class::title.size.y,window_element_class::title.text);
                 }
             break;
             case SLIDER:
