@@ -110,6 +110,8 @@
 		<Unit filename="source/UI/menu_options.hpp" />
 		<Unit filename="source/UI/window.cpp" />
 		<Unit filename="source/UI/window.hpp" />
+		<Unit filename="source/UI/window_cursor.cpp" />
+		<Unit filename="source/UI/window_cursor.hpp" />
 		<Unit filename="source/UI/window_element.cpp" />
 		<Unit filename="source/UI/window_element.hpp" />
 		<Unit filename="source/UI/window_manager.cpp" />

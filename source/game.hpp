@@ -67,7 +67,6 @@ class game_class
         save_game_class      save_07;
         core_class           core;
         loading_screen_class loading_screen;
-        texture_class        mouse_cursor;
         music_class          music;
         zoom_type            zoom;
         player_class         player;

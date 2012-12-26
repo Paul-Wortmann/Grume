@@ -26,6 +26,7 @@
 #define WINDOW_MANAGER_H
 
 #include "window.hpp"
+#include "window_cursor.hpp"
 #include "menu_main.hpp"
 #include "menu_game_new.hpp"
 #include "menu_game_load.hpp"
@@ -68,6 +69,7 @@ class window_manager_class
         int   number_of_windows;
         bool  drag_in_progress;
         bool  windows_list_created;
+        window_cursor_class cursor;
         window_class *window;
         window_manager_stack_class *window_stack;
         window_manager_class(void);

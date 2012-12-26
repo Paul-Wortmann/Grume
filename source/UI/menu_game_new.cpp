@@ -155,20 +155,33 @@ void setup_menu_game_new(int UID)
         game.window_manager.window[window_number].choice_selection[0].data[data_position_count].active = false;
     }
     game.window_manager.window[window_number].choice_selection[0].data[ 0].active   = true;
-    game.window_manager.window[window_number].choice_selection[0].data[ 0].texture.load_image("data/textures/UI/portraits/portrait_00.png");
-    game.window_manager.window[window_number].choice_selection[0].data[ 1].texture.load_image("data/textures/UI/portraits/portrait_01.png");
-    game.window_manager.window[window_number].choice_selection[0].data[ 2].texture.load_image("data/textures/UI/portraits/portrait_02.png");
-    game.window_manager.window[window_number].choice_selection[0].data[ 3].texture.load_image("data/textures/UI/portraits/portrait_03.png");
-    game.window_manager.window[window_number].choice_selection[0].data[ 4].texture.load_image("data/textures/UI/portraits/portrait_04.png");
-    game.window_manager.window[window_number].choice_selection[0].data[ 5].texture.load_image("data/textures/UI/portraits/portrait_05.png");
-    game.window_manager.window[window_number].choice_selection[0].data[ 6].texture.load_image("data/textures/UI/portraits/portrait_06.png");
-    game.window_manager.window[window_number].choice_selection[0].data[ 7].texture.load_image("data/textures/UI/portraits/portrait_07.png");
-    game.window_manager.window[window_number].choice_selection[0].data[ 8].texture.load_image("data/textures/UI/portraits/portrait_08.png");
-    game.window_manager.window[window_number].choice_selection[0].data[ 9].texture.load_image("data/textures/UI/portraits/portrait_09.png");
-    game.window_manager.window[window_number].choice_selection[0].data[10].texture.load_image("data/textures/UI/portraits/portrait_10.png");
-    game.window_manager.window[window_number].choice_selection[0].data[11].texture.load_image("data/textures/UI/portraits/portrait_11.png");
-    game.window_manager.window[window_number].choice_selection[0].data[12].texture.load_image("data/textures/UI/portraits/portrait_12.png");
-    game.player.portrait.texture = game.window_manager.window[window_number].choice_selection[0].data[0].texture;
+    game.window_manager.window[window_number].choice_selection[0].data[ 0].image_path = "data/textures/UI/portraits/portrait_00.png";
+    game.window_manager.window[window_number].choice_selection[0].data[ 0].image.load_image("data/textures/UI/portraits/portrait_00.png");
+    game.window_manager.window[window_number].choice_selection[0].data[ 1].image_path = "data/textures/UI/portraits/portrait_01.png";
+    game.window_manager.window[window_number].choice_selection[0].data[ 1].image.load_image("data/textures/UI/portraits/portrait_01.png");
+    game.window_manager.window[window_number].choice_selection[0].data[ 2].image_path = "data/textures/UI/portraits/portrait_02.png";
+    game.window_manager.window[window_number].choice_selection[0].data[ 2].image.load_image("data/textures/UI/portraits/portrait_02.png");
+    game.window_manager.window[window_number].choice_selection[0].data[ 3].image_path = "data/textures/UI/portraits/portrait_03.png";
+    game.window_manager.window[window_number].choice_selection[0].data[ 3].image.load_image("data/textures/UI/portraits/portrait_03.png");
+    game.window_manager.window[window_number].choice_selection[0].data[ 4].image_path = "data/textures/UI/portraits/portrait_04.png";
+    game.window_manager.window[window_number].choice_selection[0].data[ 4].image.load_image("data/textures/UI/portraits/portrait_04.png");
+    game.window_manager.window[window_number].choice_selection[0].data[ 5].image_path = "data/textures/UI/portraits/portrait_05.png";
+    game.window_manager.window[window_number].choice_selection[0].data[ 5].image.load_image("data/textures/UI/portraits/portrait_05.png");
+    game.window_manager.window[window_number].choice_selection[0].data[ 6].image_path = "data/textures/UI/portraits/portrait_06.png";
+    game.window_manager.window[window_number].choice_selection[0].data[ 6].image.load_image("data/textures/UI/portraits/portrait_06.png");
+    game.window_manager.window[window_number].choice_selection[0].data[ 7].image_path = "data/textures/UI/portraits/portrait_07.png";
+    game.window_manager.window[window_number].choice_selection[0].data[ 7].image.load_image("data/textures/UI/portraits/portrait_07.png");
+    game.window_manager.window[window_number].choice_selection[0].data[ 8].image_path = "data/textures/UI/portraits/portrait_08.png";
+    game.window_manager.window[window_number].choice_selection[0].data[ 8].image.load_image("data/textures/UI/portraits/portrait_08.png");
+    game.window_manager.window[window_number].choice_selection[0].data[ 9].image_path = "data/textures/UI/portraits/portrait_09.png";
+    game.window_manager.window[window_number].choice_selection[0].data[ 9].image.load_image("data/textures/UI/portraits/portrait_09.png");
+    game.window_manager.window[window_number].choice_selection[0].data[10].image_path = "data/textures/UI/portraits/portrait_10.png";
+    game.window_manager.window[window_number].choice_selection[0].data[10].image.load_image("data/textures/UI/portraits/portrait_10.png");
+    game.window_manager.window[window_number].choice_selection[0].data[11].image_path = "data/textures/UI/portraits/portrait_11.png";
+    game.window_manager.window[window_number].choice_selection[0].data[11].image.load_image("data/textures/UI/portraits/portrait_11.png");
+    game.window_manager.window[window_number].choice_selection[0].data[12].image_path = "data/textures/UI/portraits/portrait_12.png";
+    game.window_manager.window[window_number].choice_selection[0].data[12].image.load_image("data/textures/UI/portraits/portrait_12.png");
+    game.player.portrait.texture = game.window_manager.window[window_number].choice_selection[0].data[0].image;
 
     element_number = 4; // left arrow button for player portrait selection
     game.window_manager.window[window_number].element[element_number].title.text                = "";
@@ -233,7 +246,7 @@ void setup_menu_game_new(int UID)
     game.window_manager.window[window_number].element[element_number].size.y                    = game.window_manager.window[window_number].size.y / 10.0f;
     game.window_manager.window[window_number].element[element_number].position.x                = game.window_manager.window[window_number].position.x-(game.window_manager.window[window_number].size.x/2.0f)+(game.window_manager.window[window_number].element[element_number].size.x*2.5f);
     game.window_manager.window[window_number].element[element_number].position.y                = game.window_manager.window[window_number].position.y+(game.window_manager.window[window_number].size.y/2.0f)-(game.window_manager.window[window_number].element[element_number].size.y*2.00f);
-    game.window_manager.window[window_number].element[element_number].texture.normal.image      = game.window_manager.window[window_number].choice_selection[0].data[0].texture;
+    game.window_manager.window[window_number].element[element_number].texture.normal.image      = game.window_manager.window[window_number].choice_selection[0].data[0].image;
     game.window_manager.window[window_number].element[element_number].texture.highlighted.image_path = "data/textures/UI/menu/selection_box.png";
     game.window_manager.window[window_number].element[element_number].texture.highlighted.image.load_image(game.window_manager.window[window_number].element[element_number].texture.highlighted.image_path);
     game.window_manager.window[window_number].element[element_number].sound                     = game.window_manager.window[window_number].sound;
@@ -251,7 +264,7 @@ void setup_menu_game_new(int UID)
     game.window_manager.window[window_number].element[element_number].size.y                    = game.window_manager.window[window_number].size.y / 10.0f;
     game.window_manager.window[window_number].element[element_number].position.x                = game.window_manager.window[window_number].position.x-(game.window_manager.window[window_number].size.x/2.0f)+(game.window_manager.window[window_number].element[element_number].size.x*3.75f);
     game.window_manager.window[window_number].element[element_number].position.y                = game.window_manager.window[window_number].position.y+(game.window_manager.window[window_number].size.y/2.0f)-(game.window_manager.window[window_number].element[element_number].size.y*2.00f);
-    game.window_manager.window[window_number].element[element_number].texture.normal.image      = game.window_manager.window[window_number].choice_selection[0].data[1].texture;
+    game.window_manager.window[window_number].element[element_number].texture.normal.image      = game.window_manager.window[window_number].choice_selection[0].data[1].image;
     game.window_manager.window[window_number].element[element_number].texture.highlighted.image_path = "data/textures/UI/menu/selection_box.png";
     game.window_manager.window[window_number].element[element_number].texture.highlighted.image.load_image(game.window_manager.window[window_number].element[element_number].texture.highlighted.image_path);
     game.window_manager.window[window_number].element[element_number].sound                     = game.window_manager.window[window_number].sound;
@@ -269,7 +282,7 @@ void setup_menu_game_new(int UID)
     game.window_manager.window[window_number].element[element_number].size.y                    = game.window_manager.window[window_number].size.y / 10.0f;
     game.window_manager.window[window_number].element[element_number].position.x                = game.window_manager.window[window_number].position.x-(game.window_manager.window[window_number].size.x/2.0f)+(game.window_manager.window[window_number].element[element_number].size.x*5.0f);
     game.window_manager.window[window_number].element[element_number].position.y                = game.window_manager.window[window_number].position.y+(game.window_manager.window[window_number].size.y/2.0f)-(game.window_manager.window[window_number].element[element_number].size.y*2.00f);
-    game.window_manager.window[window_number].element[element_number].texture.normal.image      = game.window_manager.window[window_number].choice_selection[0].data[2].texture;
+    game.window_manager.window[window_number].element[element_number].texture.normal.image      = game.window_manager.window[window_number].choice_selection[0].data[2].image;
     game.window_manager.window[window_number].element[element_number].texture.highlighted.image_path = "data/textures/UI/menu/selection_box.png";
     game.window_manager.window[window_number].element[element_number].texture.highlighted.image.load_image(game.window_manager.window[window_number].element[element_number].texture.highlighted.image_path);
     game.window_manager.window[window_number].element[element_number].sound                     = game.window_manager.window[window_number].sound;
@@ -287,7 +300,7 @@ void setup_menu_game_new(int UID)
     game.window_manager.window[window_number].element[element_number].size.y                    = game.window_manager.window[window_number].size.y / 10.0f;
     game.window_manager.window[window_number].element[element_number].position.x                = game.window_manager.window[window_number].position.x-(game.window_manager.window[window_number].size.x/2.0f)+(game.window_manager.window[window_number].element[element_number].size.x*6.25f);
     game.window_manager.window[window_number].element[element_number].position.y                = game.window_manager.window[window_number].position.y+(game.window_manager.window[window_number].size.y/2.0f)-(game.window_manager.window[window_number].element[element_number].size.y*2.00f);
-    game.window_manager.window[window_number].element[element_number].texture.normal.image      = game.window_manager.window[window_number].choice_selection[0].data[3].texture;
+    game.window_manager.window[window_number].element[element_number].texture.normal.image      = game.window_manager.window[window_number].choice_selection[0].data[3].image;
     game.window_manager.window[window_number].element[element_number].texture.highlighted.image_path = "data/textures/UI/menu/selection_box.png";
     game.window_manager.window[window_number].element[element_number].texture.highlighted.image.load_image(game.window_manager.window[window_number].element[element_number].texture.highlighted.image_path);
     game.window_manager.window[window_number].element[element_number].sound                     = game.window_manager.window[window_number].sound;
@@ -305,7 +318,7 @@ void setup_menu_game_new(int UID)
     game.window_manager.window[window_number].element[element_number].size.y                    = game.window_manager.window[window_number].size.y / 10.0f;
     game.window_manager.window[window_number].element[element_number].position.x                = game.window_manager.window[window_number].position.x-(game.window_manager.window[window_number].size.x/2.0f)+(game.window_manager.window[window_number].element[element_number].size.x*7.5f);
     game.window_manager.window[window_number].element[element_number].position.y                = game.window_manager.window[window_number].position.y+(game.window_manager.window[window_number].size.y/2.0f)-(game.window_manager.window[window_number].element[element_number].size.y*2.00f);
-    game.window_manager.window[window_number].element[element_number].texture.normal.image      = game.window_manager.window[window_number].choice_selection[0].data[4].texture;
+    game.window_manager.window[window_number].element[element_number].texture.normal.image      = game.window_manager.window[window_number].choice_selection[0].data[4].image;
     game.window_manager.window[window_number].element[element_number].texture.highlighted.image_path = "data/textures/UI/menu/selection_box.png";
     game.window_manager.window[window_number].element[element_number].texture.highlighted.image.load_image(game.window_manager.window[window_number].element[element_number].texture.highlighted.image_path);
     game.window_manager.window[window_number].element[element_number].sound                     = game.window_manager.window[window_number].sound;
@@ -349,20 +362,20 @@ void process_menu_game_new(int window_number)
             case 401: // left arrow button for player portrait selection
                 game.window_manager.window[window_number].choice_selection[0].position++;
                 if (game.window_manager.window[window_number].choice_selection[0].position > game.window_manager.window[window_number].choice_selection[0].position_max+1) game.window_manager.window[window_number].choice_selection[0].position = 0;
-                temp_data_texture = game.window_manager.window[window_number].choice_selection[0].data[0].texture;
+                temp_data_texture = game.window_manager.window[window_number].choice_selection[0].data[0].image;
                 temp_data_bool    = game.window_manager.window[window_number].choice_selection[0].data[0].active;
                 for (int data_position_count = 0; data_position_count <= game.window_manager.window[window_number].choice_selection[0].position_max;data_position_count++)
                 {
-                    game.window_manager.window[window_number].choice_selection[0].data[data_position_count].texture = game.window_manager.window[window_number].choice_selection[0].data[data_position_count+1].texture;
+                    game.window_manager.window[window_number].choice_selection[0].data[data_position_count].image = game.window_manager.window[window_number].choice_selection[0].data[data_position_count+1].image;
                     game.window_manager.window[window_number].choice_selection[0].data[data_position_count].active  = game.window_manager.window[window_number].choice_selection[0].data[data_position_count+1].active;
                 }
-                game.window_manager.window[window_number].choice_selection[0].data[game.window_manager.window[window_number].choice_selection[0].position_max].texture = temp_data_texture;
+                game.window_manager.window[window_number].choice_selection[0].data[game.window_manager.window[window_number].choice_selection[0].position_max].image   = temp_data_texture;
                 game.window_manager.window[window_number].choice_selection[0].data[game.window_manager.window[window_number].choice_selection[0].position_max].active  = temp_data_bool;
-                game.window_manager.window[window_number].element[6].texture.normal.image      = game.window_manager.window[window_number].choice_selection[0].data[0].texture;
-                game.window_manager.window[window_number].element[7].texture.normal.image      = game.window_manager.window[window_number].choice_selection[0].data[1].texture;
-                game.window_manager.window[window_number].element[8].texture.normal.image      = game.window_manager.window[window_number].choice_selection[0].data[2].texture;
-                game.window_manager.window[window_number].element[9].texture.normal.image      = game.window_manager.window[window_number].choice_selection[0].data[3].texture;
-                game.window_manager.window[window_number].element[10].texture.normal.image     = game.window_manager.window[window_number].choice_selection[0].data[4].texture;
+                game.window_manager.window[window_number].element[6].texture.normal.image      = game.window_manager.window[window_number].choice_selection[0].data[0].image;
+                game.window_manager.window[window_number].element[7].texture.normal.image      = game.window_manager.window[window_number].choice_selection[0].data[1].image;
+                game.window_manager.window[window_number].element[8].texture.normal.image      = game.window_manager.window[window_number].choice_selection[0].data[2].image;
+                game.window_manager.window[window_number].element[9].texture.normal.image      = game.window_manager.window[window_number].choice_selection[0].data[3].image;
+                game.window_manager.window[window_number].element[10].texture.normal.image     = game.window_manager.window[window_number].choice_selection[0].data[4].image;
                 game.window_manager.window[window_number].element[6].selected                  = game.window_manager.window[window_number].choice_selection[0].data[0].active;
                 game.window_manager.window[window_number].element[7].selected                  = game.window_manager.window[window_number].choice_selection[0].data[1].active;
                 game.window_manager.window[window_number].element[8].selected                  = game.window_manager.window[window_number].choice_selection[0].data[2].active;
@@ -372,20 +385,20 @@ void process_menu_game_new(int window_number)
             case 501: // Right arrow button for player portrait selection
                 game.window_manager.window[window_number].choice_selection[0].position--;
                 if (game.window_manager.window[window_number].choice_selection[0].position < 0) game.window_manager.window[window_number].choice_selection[0].position = game.window_manager.window[window_number].choice_selection[0].position_max;
-                temp_data_texture = game.window_manager.window[window_number].choice_selection[0].data[game.window_manager.window[window_number].choice_selection[0].position_max-1].texture;
+                temp_data_texture = game.window_manager.window[window_number].choice_selection[0].data[game.window_manager.window[window_number].choice_selection[0].position_max-1].image;
                 temp_data_bool    = game.window_manager.window[window_number].choice_selection[0].data[game.window_manager.window[window_number].choice_selection[0].position_max-1].active;
                 for (int data_position_count = game.window_manager.window[window_number].choice_selection[0].position_max-1; data_position_count > 0;data_position_count--)
                 {
-                    game.window_manager.window[window_number].choice_selection[0].data[data_position_count].texture = game.window_manager.window[window_number].choice_selection[0].data[data_position_count-1].texture;
+                    game.window_manager.window[window_number].choice_selection[0].data[data_position_count].image = game.window_manager.window[window_number].choice_selection[0].data[data_position_count-1].image;
                     game.window_manager.window[window_number].choice_selection[0].data[data_position_count].active  = game.window_manager.window[window_number].choice_selection[0].data[data_position_count-1].active;
                 }
-                game.window_manager.window[window_number].choice_selection[0].data[0].texture  = temp_data_texture;
+                game.window_manager.window[window_number].choice_selection[0].data[0].image  = temp_data_texture;
                 game.window_manager.window[window_number].choice_selection[0].data[0].active   = temp_data_bool;
-                game.window_manager.window[window_number].element[6].texture.normal.image      = game.window_manager.window[window_number].choice_selection[0].data[0].texture;
-                game.window_manager.window[window_number].element[7].texture.normal.image      = game.window_manager.window[window_number].choice_selection[0].data[1].texture;
-                game.window_manager.window[window_number].element[8].texture.normal.image      = game.window_manager.window[window_number].choice_selection[0].data[2].texture;
-                game.window_manager.window[window_number].element[9].texture.normal.image      = game.window_manager.window[window_number].choice_selection[0].data[3].texture;
-                game.window_manager.window[window_number].element[10].texture.normal.image     = game.window_manager.window[window_number].choice_selection[0].data[4].texture;
+                game.window_manager.window[window_number].element[6].texture.normal.image      = game.window_manager.window[window_number].choice_selection[0].data[0].image;
+                game.window_manager.window[window_number].element[7].texture.normal.image      = game.window_manager.window[window_number].choice_selection[0].data[1].image;
+                game.window_manager.window[window_number].element[8].texture.normal.image      = game.window_manager.window[window_number].choice_selection[0].data[2].image;
+                game.window_manager.window[window_number].element[9].texture.normal.image      = game.window_manager.window[window_number].choice_selection[0].data[3].image;
+                game.window_manager.window[window_number].element[10].texture.normal.image     = game.window_manager.window[window_number].choice_selection[0].data[4].image;
                 game.window_manager.window[window_number].element[6].selected                  = game.window_manager.window[window_number].choice_selection[0].data[0].active;
                 game.window_manager.window[window_number].element[7].selected                  = game.window_manager.window[window_number].choice_selection[0].data[1].active;
                 game.window_manager.window[window_number].element[8].selected                  = game.window_manager.window[window_number].choice_selection[0].data[2].active;
@@ -403,7 +416,7 @@ void process_menu_game_new(int window_number)
                 game.window_manager.window[window_number].element[9].selected                  = false;
                 game.window_manager.window[window_number].element[10].selected                 = false;
                 game.window_manager.window[window_number].choice_selection[0].data[0].active   = true;
-                game.player.portrait.texture = game.window_manager.window[window_number].choice_selection[0].data[0].texture;
+                game.player.portrait.texture = game.window_manager.window[window_number].choice_selection[0].data[0].image;
             break;
             case 701: // Portrait 1 selected
                 for (int data_position_count = 0; data_position_count <= game.window_manager.window[window_number].choice_selection[0].position_max;data_position_count++)
@@ -416,7 +429,7 @@ void process_menu_game_new(int window_number)
                 game.window_manager.window[window_number].element[9].selected                  = false;
                 game.window_manager.window[window_number].element[10].selected                 = false;
                 game.window_manager.window[window_number].choice_selection[0].data[1].active   = true;
-                game.player.portrait.texture = game.window_manager.window[window_number].choice_selection[0].data[1].texture;
+                game.player.portrait.texture = game.window_manager.window[window_number].choice_selection[0].data[1].image;
             break;
             case 801: // Portrait 2 selected
                 for (int data_position_count = 0; data_position_count <= game.window_manager.window[window_number].choice_selection[0].position_max;data_position_count++)
@@ -429,7 +442,7 @@ void process_menu_game_new(int window_number)
                 game.window_manager.window[window_number].element[9].selected                  = false;
                 game.window_manager.window[window_number].element[10].selected                 = false;
                 game.window_manager.window[window_number].choice_selection[0].data[2].active   = true;
-                game.player.portrait.texture = game.window_manager.window[window_number].choice_selection[0].data[2].texture;
+                game.player.portrait.texture = game.window_manager.window[window_number].choice_selection[0].data[2].image;
             break;
             case 901: // Portrait 3 selected
                 for (int data_position_count = 0; data_position_count <= game.window_manager.window[window_number].choice_selection[0].position_max;data_position_count++)
@@ -442,7 +455,7 @@ void process_menu_game_new(int window_number)
                 game.window_manager.window[window_number].element[9].selected                  = true;
                 game.window_manager.window[window_number].element[10].selected                 = false;
                 game.window_manager.window[window_number].choice_selection[0].data[3].active   = true;
-                game.player.portrait.texture = game.window_manager.window[window_number].choice_selection[0].data[3].texture;
+                game.player.portrait.texture = game.window_manager.window[window_number].choice_selection[0].data[3].image;
             break;
             case 1001: // Portrait 4 selected
                 for (int data_position_count = 0; data_position_count <= game.window_manager.window[window_number].choice_selection[0].position_max;data_position_count++)
@@ -455,7 +468,7 @@ void process_menu_game_new(int window_number)
                 game.window_manager.window[window_number].element[9].selected                  = false;
                 game.window_manager.window[window_number].element[10].selected                 = true;
                 game.window_manager.window[window_number].choice_selection[0].data[4].active   = true;
-                game.player.portrait.texture = game.window_manager.window[window_number].choice_selection[0].data[4].texture;
+                game.player.portrait.texture = game.window_manager.window[window_number].choice_selection[0].data[4].image;
             break;
             default:
                 game.core.log.file_write("Unable to process event - ",game.window_manager.window[window_number].event, " - UID - ",game.window_manager.window[window_number].UID);

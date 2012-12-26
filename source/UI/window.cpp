@@ -265,22 +265,20 @@ void window_class::reload_textures(void)
     if (window_class::texture.highlighted.image_path.length() > 3) window_class::texture.highlighted.image.load_image(window_class::texture.highlighted.image_path);
     if (window_class::texture.disabled.image_path.length() > 3)    window_class::texture.disabled.image.load_image   (window_class::texture.disabled.image_path);
     if (window_class::texture.base.image_path.length() > 3)        window_class::texture.base.image.load_image       (window_class::texture.base.image_path);
-    for (int element_number = 0; element_number < window_class::number_of_elements; element_number++) window_class::element[element_number].reload_textures();
+
+    for (int element_number = 0; element_number < window_class::number_of_elements; element_number++)
+    {
+        window_class::element[element_number].reload_textures();
+    }
+
+    for (int choice_selection_per_menu_count = 0; choice_selection_per_menu_count < MAX_CHOICE_SELECTIONS_PER_MENU; choice_selection_per_menu_count++)
+    {
+        for (int choice_selection_count = 0; choice_selection_count < MAX_CHOICE_SELECTION; choice_selection_count++)
+        {
+            if (window_class::choice_selection[choice_selection_per_menu_count].data[choice_selection_count].image_path.length() > 3)
+            {
+                window_class::choice_selection[choice_selection_per_menu_count].data[choice_selection_count].image.load_image(window_class::choice_selection[choice_selection_per_menu_count].data[choice_selection_count].image_path);
+            }
+        }
+    }
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
