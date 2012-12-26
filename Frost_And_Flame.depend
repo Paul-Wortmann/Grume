@@ -992,7 +992,7 @@
 	"character.hpp"
 	"../game.hpp"
 
-1352293404 source:c:\_git_\frost_and_flame\source\ui\window_manager.cpp
+1356501399 source:c:\_git_\frost_and_flame\source\ui\window_manager.cpp
 	"window_manager.hpp"
 	"../game.hpp"
 
@@ -1021,7 +1021,7 @@
 	"../core/font.hpp"
 	<string>
 
-1356461298 source:c:\_git_\frost_and_flame\source\ui\window.cpp
+1356501150 source:c:\_git_\frost_and_flame\source\ui\window.cpp
 	"window.hpp"
 	"../game.hpp"
 

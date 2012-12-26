@@ -270,6 +270,7 @@ void window_manager_class::window_transition(int UID_source, int UID_destination
     window_manager_class::window_enable(UID_destination);
     window_manager_class::window_set_active(UID_destination);
     window_manager_class::event = 65535; // Request stack sort
+    game.core.io.mouse_button_left = false;
 };
 
 void window_manager_class::window_reset_event(int UID)
