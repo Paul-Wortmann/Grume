@@ -96,7 +96,7 @@
 			<Cursor1 position="100947" topLine="1569" />
 		</Cursor>
 	</File>
-	<File name="source\game.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="source\game.cpp" open="1" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="16119" topLine="348" />
 		</Cursor>
@@ -118,7 +118,7 @@
 	</File>
 	<File name="source\game.hpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="2053" topLine="11" />
+			<Cursor1 position="2621" topLine="51" />
 		</Cursor>
 	</File>
 	<File name="source\UI\window.cpp" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -166,14 +166,14 @@
 			<Cursor1 position="3246" topLine="146" />
 		</Cursor>
 	</File>
-	<File name="source\UI\window_manager.cpp" open="1" top="1" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="source\UI\window_manager.cpp" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="15605" topLine="330" />
+			<Cursor1 position="12529" topLine="250" />
 		</Cursor>
 	</File>
-	<File name="source\UI\window_manager.hpp" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="source\UI\window_manager.hpp" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="2325" topLine="0" />
+			<Cursor1 position="1081" topLine="68" />
 		</Cursor>
 	</File>
 	<File name="source\main.cpp" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -201,7 +201,7 @@
 			<Cursor1 position="1274" topLine="19" />
 		</Cursor>
 	</File>
-	<File name="source\UI\UI.cpp" open="0" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="source\UI\UI.cpp" open="1" top="1" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="4675" topLine="80" />
 		</Cursor>

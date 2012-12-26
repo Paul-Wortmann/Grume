@@ -107,6 +107,11 @@ void game_class::init(void)
     game.map_2D.calculate_tile_positions(DEFAULT_FRAME_WIDTH/game.zoom.current/2.0f,DEFAULT_FRAME_HEIGHT/game.zoom.current/2.0f);
 };
 
+void game_class::reload_rextures(void)
+{
+
+};
+
 void game_class::process(void)
 {
     game.player.process();
