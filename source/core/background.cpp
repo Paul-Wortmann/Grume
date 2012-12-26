@@ -55,11 +55,13 @@ void background_class::set_data          (int layer_number, int dx, int dy, floa
     background_class::layer[layer_number].pos_y         = py;
     background_class::layer[layer_number].scroll_rate_x = srx;
     background_class::layer[layer_number].scroll_rate_y = sry;
+    background_class::layer[layer_number].image_path    = image_path;
     background_class::layer[layer_number].image.load_image(image_path);
 };
 
 void background_class::set_image         (int layer_number, std::string image_path)
 {
+    background_class::layer[layer_number].image_path    = image_path;
     background_class::layer[layer_number].image.load_image(image_path);
 };
 
@@ -201,3 +203,12 @@ void background_class::draw             (void)
         }
     }
 }
+
+void background_class::reload_textures(void)
+{
+    for (int layer_count = 0; layer_count <= MAX_LAYERS; layer_count++)
+    {
+        if (background_class::layer[layer_count].active) background_class::layer[layer_count].image.load_image(background_class::layer[layer_count].image_path);
+    }
+}
+

@@ -40,14 +40,15 @@ class background_class
     private:
         struct layer_type
         {
-        bool  active;
-        texture_class   image;
-        int   dir_x;
-        int   dir_y;
-        float pos_x;
-        float pos_y;
-        float scroll_rate_x;
-        float scroll_rate_y;
+            bool  active;
+            texture_class   image;
+            std::string     image_path;
+            int   dir_x;
+            int   dir_y;
+            float pos_x;
+            float pos_y;
+            float scroll_rate_x;
+            float scroll_rate_y;
         };
         layer_type  layer[MAX_LAYERS+1];
         int         movemennt_type;
@@ -70,6 +71,7 @@ class background_class
         void  process           (void);
         void  draw              (void);
         void  draw_background   (int image_ref);
+        void  reload_textures   (void);
 };
 
 #endif //BACKGROUND_H
