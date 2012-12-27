@@ -6,6 +6,11 @@
 			<Cursor1 position="950" topLine="4" />
 		</Cursor>
 	</File>
+	<File name="source\UI\loading_screen.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1473" topLine="12" />
+		</Cursor>
+	</File>
 	<File name="source\core\savegame.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="952" topLine="21" />
@@ -38,7 +43,7 @@
 	</File>
 	<File name="source\core\textures.cpp" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="2142" topLine="40" />
+			<Cursor1 position="10331" topLine="235" />
 		</Cursor>
 	</File>
 	<File name="source\UI\menu_game_new.hpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -86,7 +91,7 @@
 			<Cursor1 position="2596" topLine="42" />
 		</Cursor>
 	</File>
-	<File name="source\UI\menu_options.cpp" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="source\UI\menu_options.cpp" open="1" top="1" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="69878" topLine="585" />
 		</Cursor>
@@ -96,9 +101,9 @@
 			<Cursor1 position="100947" topLine="1569" />
 		</Cursor>
 	</File>
-	<File name="source\game.cpp" open="1" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="source\game.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="16119" topLine="348" />
+			<Cursor1 position="5149" topLine="96" />
 		</Cursor>
 	</File>
 	<File name="source\UI\menu_options.hpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -121,9 +126,9 @@
 			<Cursor1 position="2621" topLine="51" />
 		</Cursor>
 	</File>
-	<File name="source\UI\window.cpp" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="source\UI\window.cpp" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="14927" topLine="247" />
+			<Cursor1 position="6373" topLine="105" />
 		</Cursor>
 	</File>
 	<File name="changelog.txt" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -163,12 +168,12 @@
 	</File>
 	<File name="source\UI\window_element.hpp" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="3246" topLine="146" />
+			<Cursor1 position="3124" topLine="122" />
 		</Cursor>
 	</File>
 	<File name="source\UI\window_manager.cpp" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="12529" topLine="250" />
+			<Cursor1 position="16086" topLine="323" />
 		</Cursor>
 	</File>
 	<File name="source\UI\window_manager.hpp" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -178,12 +183,12 @@
 	</File>
 	<File name="source\main.cpp" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="5038" topLine="111" />
+			<Cursor1 position="6681" topLine="117" />
 		</Cursor>
 	</File>
 	<File name="source\core\background.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="8636" topLine="188" />
+			<Cursor1 position="8356" topLine="177" />
 		</Cursor>
 	</File>
 	<File name="source\core\background.hpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -201,9 +206,9 @@
 			<Cursor1 position="1274" topLine="19" />
 		</Cursor>
 	</File>
-	<File name="source\UI\UI.cpp" open="1" top="1" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="source\UI\UI.cpp" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="4675" topLine="80" />
+			<Cursor1 position="4384" topLine="79" />
 		</Cursor>
 	</File>
 	<File name="source\core\font.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">

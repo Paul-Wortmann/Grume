@@ -243,7 +243,7 @@ void texture_class::draw(bool rumble, float pos_x, float pos_y, float pos_z, flo
         pos_y += game_o.rumble.counter_y;
     }
 */
-    if (texture_class::frame[texture_class::frame_number].data) // Only render if data is available.
+    if (sizeof(texture_class::frame[texture_class::frame_number].data) > 0) // Only render if data is available.
     {
         int temp_angle;
         if (texture_class::angle != 0) temp_angle = 360 - texture_class::angle;

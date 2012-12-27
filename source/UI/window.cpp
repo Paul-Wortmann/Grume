@@ -32,7 +32,7 @@ extern game_class        game;
 window_class::window_class(void)
 {
     window_class::UID                                = -1;
-    window_class::enabled                            = true;
+    window_class::enabled                            = false;
     window_class::active                             = false;
     window_class::event                              = 0;
     window_class::number_of_elements                 = 0;

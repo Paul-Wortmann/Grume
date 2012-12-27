@@ -345,11 +345,14 @@ void window_manager_class::render(void)
 {
     if (window_manager_class::number_of_windows > 0) // only processed if there are actually windows in the list.
     {
-        for (int window_count = window_manager_class::number_of_windows; window_count >= 0; window_count--)
+        for (int window_count = window_manager_class::number_of_windows-1; window_count >= 0; window_count--)
         {
             if (window_manager_class::window[window_manager_class::window_stack[window_count].window_number].enabled)
             {
-                window_manager_class::window[window_manager_class::window_stack[window_count].window_number].render();
+                if (window_manager_class::window_stack[window_count].window_number != -1)
+                {
+                    window_manager_class::window[window_manager_class::window_stack[window_count].window_number].render();
+                }
             }
         }
     }

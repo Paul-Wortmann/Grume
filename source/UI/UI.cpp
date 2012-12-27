@@ -33,7 +33,7 @@ extern game_class         game;
 void UI_class::UI_setup(void)
 {
     //--- create the desired number of windows and setup the UID stack---
-    game.window_manager.create_windows(6);
+    game.window_manager.create_windows(5);
     //--- register the windows in the windows manager stack ---
     game.window_manager.window_register(MENU_MAIN_UID);
     game.window_manager.window_register(MENU_GAME_NEW_UID);
