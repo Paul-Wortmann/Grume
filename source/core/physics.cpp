@@ -390,3 +390,9 @@ bool   physics_class::point_in_polygon(int number_of_vertecies, vertex_3f_class 
     }
     return(return_value);
 };
+
+int   physics_class::sigma(int n)
+{
+    if (n <= 0) return (0);
+    else return (n + sigma(n - 1));
+};

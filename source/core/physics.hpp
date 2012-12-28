@@ -155,7 +155,7 @@ class physics_class
         void                generate_sin_table       (void);
         void                generate_cos_table       (void);
         bool                point_in_polygon         (int number_of_vertecies, vertex_3f_class vertex[], float px, float py);
-
+        int                 sigma                    (int n);
 };
 
 #endif //PHYSICS_H
