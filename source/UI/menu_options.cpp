@@ -541,8 +541,11 @@ void setup_menu_options(int UID)
 
 void process_menu_options(int window_number)
 {
-    if(game.window_manager.window[window_number].event > 0)
+    if (game.window_manager.window[window_number].event > 0)
     {
+        bool reset_display        = false;
+        bool resolution_selection = false;
+        int  resolution_element   = 0;
         game.core.log.file_write("Processing event - ",game.window_manager.window[window_number].event);
         switch (game.window_manager.window[window_number].event)
         {
@@ -551,6 +554,26 @@ void process_menu_options(int window_number)
             break;
             case 201: // Main menu button
                 game.window_manager.window_transition(MENU_OPTIONS_UID,MENU_MAIN_UID);
+            break;
+            case 401: // Resolution selection element 0
+                resolution_selection = true;
+                resolution_element   = 0;
+            break;
+            case 501: // Resolution selection element 1
+                resolution_selection = true;
+                resolution_element   = 1;
+            break;
+            case 601: // Resolution selection element 2
+                resolution_selection = true;
+                resolution_element   = 2;
+            break;
+            case 701: // Resolution selection element 3
+                resolution_selection = true;
+                resolution_element   = 3;
+            break;
+            case 801: // Resolution selection element 4
+                resolution_selection = true;
+                resolution_element   = 4;
             break;
             case 901: // Resolution left arrow button
                 {
@@ -643,11 +666,7 @@ void process_menu_options(int window_number)
                     game.window_manager.window[window_number].element[element_number].texture.highlighted.image_path   = "data/textures/UI/menu/red_button_highlighted.png";
                     game.window_manager.window[window_number].element[element_number].texture.disabled.image_path      = "data/textures/UI/menu/green_button.png";
                     game.window_manager.window[window_number].element[element_number].texture.base.image_path          = "data/textures/UI/menu/green_button_highlighted.png";
-                    game.core.graphics.init_sdl();
-                    game.core.graphics.init_gl();
-                    game.loading_screen.display("data/loading_screen.png");
-                    game.core.log.file_write("Loading resources....");
-                    game.UI.UI_reload_textures();
+                    reset_display = true;
                 }
                 else
                 {
@@ -658,11 +677,7 @@ void process_menu_options(int window_number)
                     game.window_manager.window[window_number].element[element_number].texture.highlighted.image_path = "data/textures/UI/menu/green_button_highlighted.png";
                     game.window_manager.window[window_number].element[element_number].texture.disabled.image_path    = "data/textures/UI/menu/red_button.png";
                     game.window_manager.window[window_number].element[element_number].texture.base.image_path        = "data/textures/UI/menu/red_button_highlighted.png";
-                    game.core.graphics.init_sdl();
-                    game.core.graphics.init_gl();
-                    game.loading_screen.display("data/loading_screen.png");
-                    game.core.log.file_write("Loading resources....");
-                    game.UI.UI_reload_textures();
+                    reset_display = true;
                 }
             break;
             default:
@@ -670,7 +685,95 @@ void process_menu_options(int window_number)
                 game.window_manager.window[window_number].event = 0;
             break;
         }
+        if (resolution_selection)
+        {
+            int   temp_resolution      = 0;
+            int   temp_resolution_x    = 0;
+            int   temp_resolution_y    = 0;
+            int   temp_data_value      = resolution_element;
+            if (game.window_manager.window[window_number].choice_selection[0].data[temp_data_value].value_int != game.core.config.display_resolution)
+            {
+                temp_resolution      = game.core.config.display_resolution;
+                temp_resolution_x    = game.core.config.display_resolution_x;
+                temp_resolution_y    = game.core.config.display_resolution_y;
+                game.core.config.display_resolution = game.window_manager.window[window_number].choice_selection[0].data[temp_data_value].value_int;
+                if (game.core.config.display_resolution == 0)
+                {
+                    game.core.config.display_resolution_x = 640;
+                    game.core.config.display_resolution_y = 480;
+                }
+                if (game.core.config.display_resolution == 1)
+                {
+                    game.core.config.display_resolution_x = 800;
+                    game.core.config.display_resolution_y = 600;
+                }
+                if (game.core.config.display_resolution == 2)
+                {
+                    game.core.config.display_resolution_x = 1024;
+                    game.core.config.display_resolution_y = 768;
+                }
+                if (game.core.config.display_resolution == 3)
+                {
+                    game.core.config.display_resolution_x = 1280;
+                    game.core.config.display_resolution_y = 1024;
+                }
+                if (game.core.config.display_resolution == 4)
+                {
+                    game.core.config.display_resolution_x = 1366;
+                    game.core.config.display_resolution_y = 768;
+                }
+                if (game.core.config.display_resolution == 5)
+                {
+                    game.core.config.display_resolution_x = 1440;
+                    game.core.config.display_resolution_y = 900;
+                }
+                if (game.core.config.display_resolution == 6)
+                {
+                    game.core.config.display_resolution_x = 1680;
+                    game.core.config.display_resolution_y = 1050;
+                }
+                if (game.core.config.display_resolution == 7)
+                {
+                    game.core.config.display_resolution_x = 1920;
+                    game.core.config.display_resolution_y = 1080;
+                }
+                if (!game.core.graphics.init_sdl())
+                {
+                    game.core.log.file_write("Reverting graphics configuration...");
+                    game.core.config.display_resolution    = temp_resolution;
+                    game.core.config.display_resolution_x  = temp_resolution_x;
+                    game.core.config.display_resolution_y  = temp_resolution_y;
+                    game.core.graphics.init_sdl();
+                }
+                else
+                {
+                    game.core.config.mouse_resolution_x   = game.core.config.display_resolution_x;
+                    game.core.config.mouse_resolution_y   = game.core.config.display_resolution_y;
+                    for (int data_position_count = 0; data_position_count < game.window_manager.window[window_number].choice_selection[0].position_max;data_position_count++)
+                    {
+                        game.window_manager.window[window_number].choice_selection[0].data[data_position_count].active = false;
+                    }
+                    game.window_manager.window[window_number].element[4].selected                  = false;
+                    game.window_manager.window[window_number].element[5].selected                  = false;
+                    game.window_manager.window[window_number].element[6].selected                  = false;
+                    game.window_manager.window[window_number].element[7].selected                  = false;
+                    game.window_manager.window[window_number].element[8].selected                  = false;
+                    game.window_manager.window[window_number].element[temp_data_value+4].selected  = true;
+                    game.window_manager.window[window_number].choice_selection[0].data[temp_data_value].active    = true;
+                }
+                reset_display = true;
+            }
+        }
+        if (reset_display)
+        {
+            game.core.log.file_write("Reinitializing SDL...");
+            game.core.graphics.init_sdl();
+            game.core.log.file_write("Reinitializing OpenGL...");
+            game.core.graphics.init_gl();
+            game.loading_screen.display("data/loading_screen.png");
+            game.core.log.file_write("Reloading resources....");
+            game.UI.UI_reload_textures();
+        }
     }
     game.window_manager.window[window_number].event = 0;
 };
-
