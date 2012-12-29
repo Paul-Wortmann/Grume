@@ -252,7 +252,7 @@ int  window_element_class::process(void)
             if (window_element_class::mouse_over_element())
             {
                 window_element_class::mouse_over   = true;
-                if(window_element_class::state    != HIGHLIGHTED) window_element_class::sound.on_mouse_over.sound.play();
+                if ((window_element_class::state    != HIGHLIGHTED) && (window_element_class::sound.on_mouse_over.enabled)) window_element_class::sound.on_mouse_over.sound.play();
                 window_element_class::state        = HIGHLIGHTED;
                 if (window_element_class::mouse_clicked_element())
                 {
