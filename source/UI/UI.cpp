@@ -33,19 +33,21 @@ extern game_class         game;
 void UI_class::UI_setup(void)
 {
     //--- create the desired number of windows and setup the UID stack---
-    game.window_manager.create_windows(5);
+    game.window_manager.create_windows(6);
     //--- register the windows in the windows manager stack ---
     game.window_manager.window_register(MENU_MAIN_UID);
     game.window_manager.window_register(MENU_GAME_NEW_UID);
     game.window_manager.window_register(MENU_GAME_LOAD_UID);
     game.window_manager.window_register(MENU_GAME_SAVE_UID);
     game.window_manager.window_register(MENU_OPTIONS_UID);
+    game.window_manager.window_register(PCPROFILE_UID);
     //--- populate windows with data. ---
     setup_menu_main(MENU_MAIN_UID);
     setup_menu_game_new(MENU_GAME_NEW_UID);
     setup_menu_game_load(MENU_GAME_LOAD_UID);
     setup_menu_game_save(MENU_GAME_SAVE_UID);
     setup_menu_options(MENU_OPTIONS_UID);
+    setup_player_profile(PCPROFILE_UID);
     //--- Enable windows. ---
     game.window_manager.window_enable(MENU_MAIN_UID);
     //--- Set the main menu as the default active window. ---
@@ -80,6 +82,12 @@ void UI_class::UI_process(void) // Process events generated buy the windows in t
                         case MENU_OPTIONS_UID:
                             process_menu_options(game.window_manager.window_stack[window_count].window_number);
                         break;
+                        case PCPROFILE_UID:
+                            process_player_profile(game.window_manager.window_stack[window_count].window_number);
+                        break;
+                        default:
+                            game.core.log.file_write("Unable to process UID - ",game.window_manager.window_stack[window_count].UID);
+                        break;
                     }
                 }
             }
@@ -104,7 +112,7 @@ void UI_class::UI_reload_textures(void)
     game.core.background.reload_textures();
     game.reload_rextures();
 
-    if (game.window_manager.number_of_windows > 0) // only process windows if there are actually windows in the list.
+    if (game.window_manager.number_of_windows > 0) // Only process windows if there are actually windows in the list.
     {
         for (int window_count = 0; window_count < game.window_manager.number_of_windows; window_count++)
         {

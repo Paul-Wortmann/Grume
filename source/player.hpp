@@ -72,20 +72,15 @@ class stat_class
         void              draw(void);
 };
 
-struct portrait_type
-{
-    texture_class texture;
-};
-
 class player_class
 {
     public:
         player_class(void);
        ~player_class(void);
+        std::string        portrait_path;
         std::string        name;
         level_class        level;
         unsigned long long gold;
-        portrait_type      portrait;
         int                offence;
         int                defense;
         int                intellect;

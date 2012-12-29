@@ -32,7 +32,7 @@
 #include "menu_game_load.hpp"
 #include "menu_game_save.hpp"
 #include "menu_options.hpp"
-#include "player_HUD.hpp"
+#include "player_profile.hpp"
 #include "../player.hpp"
 
 #define    ACTIONBAR_UID          1
@@ -74,7 +74,6 @@ class window_manager_class
         window_cursor_class cursor;
         window_class *window;
         window_manager_stack_class *window_stack;
-        player_HUD_class player_HUD[MAX_PLAYERS];
         window_manager_class(void);
        ~window_manager_class(void);
         void create_windows(int number_windows);

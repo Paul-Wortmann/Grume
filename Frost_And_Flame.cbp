@@ -108,6 +108,8 @@
 		<Unit filename="source/UI/menu_main.hpp" />
 		<Unit filename="source/UI/menu_options.cpp" />
 		<Unit filename="source/UI/menu_options.hpp" />
+		<Unit filename="source/UI/player_profile.cpp" />
+		<Unit filename="source/UI/player_profile.hpp" />
 		<Unit filename="source/UI/window.cpp" />
 		<Unit filename="source/UI/window.hpp" />
 		<Unit filename="source/UI/window_cursor.cpp" />
