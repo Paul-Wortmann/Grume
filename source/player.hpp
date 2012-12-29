@@ -29,6 +29,8 @@
 #include "core/pathfinding.hpp"
 #include "core/textures.hpp"
 
+#define MAX_PLAYERS 4
+
 #define MOVE_TO_TILE_NONE          0
 #define MOVE_TO_TILE_MOVE          1
 #define MOVE_TO_TILE_ATTACK        2

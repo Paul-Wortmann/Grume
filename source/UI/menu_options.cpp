@@ -753,13 +753,13 @@ void process_menu_options(int window_number)
                     {
                         game.window_manager.window[window_number].choice_selection[0].data[data_position_count].active = false;
                     }
+                    game.window_manager.window[window_number].choice_selection[0].data[temp_data_value].active    = true;
                     game.window_manager.window[window_number].element[4].selected                  = false;
                     game.window_manager.window[window_number].element[5].selected                  = false;
                     game.window_manager.window[window_number].element[6].selected                  = false;
                     game.window_manager.window[window_number].element[7].selected                  = false;
                     game.window_manager.window[window_number].element[8].selected                  = false;
                     game.window_manager.window[window_number].element[temp_data_value+4].selected  = true;
-                    game.window_manager.window[window_number].choice_selection[0].data[temp_data_value].active    = true;
                 }
                 reset_display = true;
             }
