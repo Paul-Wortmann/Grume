@@ -63,6 +63,10 @@ class location_class
         std::string             text;
         struct_3f               size;
         struct_3f               position;
+        bool                    image_enabled;
+        std::string             image_path;
+        texture_class           image;
+        struct_3f               image_size;
         location_class(void);
        ~location_class(void);
 };

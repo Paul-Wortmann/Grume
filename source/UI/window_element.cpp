@@ -105,6 +105,11 @@ window_element_class::window_element_class(void)
     window_element_class::tooltip.size.x                 = 0.0f;
     window_element_class::tooltip.size.y                 = 0.0f;
     window_element_class::tooltip.size.z                 = 0.0f;
+    window_element_class::tooltip.image_enabled          = false;
+    window_element_class::tooltip.image_path             = "";
+    window_element_class::tooltip.image_size.x           = 0.0f;
+    window_element_class::tooltip.image_size.y           = 0.0f;
+    window_element_class::tooltip.image_size.z           = 0.0f;
     window_element_class::color.normal.r                 = 0;
     window_element_class::color.normal.g                 = 0;
     window_element_class::color.normal.b                 = 0;
@@ -242,6 +247,12 @@ void window_element_class::render_tooltips(void)
     {
         if (window_element_class::mouse_over_element())
         {
+            if (window_element_class::tooltip.image_enabled)
+            {
+                float temp_size_x = window_element_class::tooltip.image_size.x;
+                float temp_size_y = window_element_class::tooltip.image_size.y;
+                window_element_class::tooltip.image.draw(false,game.core.io.mouse_x+(temp_size_x*0.25f),game.core.io.mouse_y+(temp_size_y*0.25f),window_element_class::tooltip.position.z,temp_size_x,temp_size_y,window_element_class::texture.angle);
+            }
             window_element_class::font.write(window_element_class::color.highlighted.r,window_element_class::color.highlighted.g,window_element_class::color.highlighted.b,window_element_class::color.highlighted.a,game.core.io.mouse_x,game.core.io.mouse_y,window_element_class::tooltip.size.x,window_element_class::tooltip.size.y,window_element_class::tooltip.text);
         }
     }
