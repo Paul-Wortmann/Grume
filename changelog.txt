@@ -5,6 +5,31 @@ it may take longer than I had first anticipated.
 These are not indications that the project will be terminated in the future,
 just that time is not permitting to proceed at a fast pace, at the moment.
 
+v0.14 - (2012-12-31)
+
+UI    -> Completed the Main menu system.
+UI    -> Completed the Options menu.
+UI    -> Added Music Volume to Options menu.
+UI    -> Added Sound Volume to Options menu.
+UI    -> Added a player profile HUD.
+UI    -> Added Player portrait to the player HUD.
+UI    -> Added Health bar to the player HUD.
+UI    -> Added Mana bar to the player HUD.
+UI    -> Added Action bar.
+UI    -> Added Experience bar to Action bar.
+UI    -> Added Main menu button to Action bar.
+UI    -> Added tooltips to Window elements.
+UI    -> Added optional background texture to tooltips.
+UI    -> Added functionality to Window elements to enable/disable sounds.
+UI    -> Added functionality to Windows to enable/disable dragging.
+UI    -> Added a Window cursor class.
+UI    -> Added functionality to the UI to reload textures.
+MATH  -> Added sigma function to the physics class.
+GFX   -> Added a glass texture to the action bar icons .
+BUG   -> Fixed window manager segfault.
+BUG   -> Fixed options menu, resolution selection list segfault.
+LOC   -> 14883
+
 v0.13 - (2012-11-30)
 
 UI    -> Added resolution selection elements to the options menu.
@@ -22,7 +47,7 @@ UI    -> Re-implemented the save game menu.
 MAP2D -> map_2D_class::calculate_tile_positions Segmentation fault fixed. 
 UI    -> Main menu can be toggled in game with the escape key. 
 UI    -> Windows transitioning correctly, disabled window stack sort. 
-LOC   -> xxxxx
+LOC   -> 13839
 
 v0.12 - (2012-10-31)
 UI    -> Removed unnecessary elements from the window manager stack.
