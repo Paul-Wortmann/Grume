@@ -89,14 +89,16 @@ window_element_class::window_element_class(void)
     window_element_class::position.x                     = 0.0f;
     window_element_class::position.y                     = 0.0f;
     window_element_class::position.z                     = 0.0f;
-    window_element_class::title.text                     = "not set";
+    window_element_class::title.enabled                  = false;
+    window_element_class::title.text                     = "";
     window_element_class::title.position.x               = 0.0f;
     window_element_class::title.position.y               = 0.0f;
     window_element_class::title.position.z               = 0.0f;
     window_element_class::title.size.x                   = 0.0f;
     window_element_class::title.size.y                   = 0.0f;
     window_element_class::title.size.z                   = 0.0f;
-    window_element_class::tooltip.text                   = "not set";
+    window_element_class::tooltip.enabled                = false;
+    window_element_class::tooltip.text                   = "";
     window_element_class::tooltip.position.x             = 0.0f;
     window_element_class::tooltip.position.y             = 0.0f;
     window_element_class::tooltip.position.z             = 0.0f;
@@ -143,8 +145,9 @@ void window_element_class::render(void)
 {
     float zoom_value = 0.0f;
     if (window_element_class::zoom.enabled) zoom_value = window_element_class::zoom.value;
-    else zoom_value = 0.0f;
+    else zoom_value  = 0.0f;
     float temp_float = 0.0f;
+    // Draw textured windows elements
     if (window_element_class::active)
     {
         switch (window_element_class::type)
@@ -152,7 +155,7 @@ void window_element_class::render(void)
             case IMAGE:
                 if (window_element_class::selected) window_element_class::texture.highlighted.image.draw(false,window_element_class::position.x,window_element_class::position.y,window_element_class::position.z,window_element_class::size.x+zoom_value,window_element_class::size.y+zoom_value,window_element_class::texture.angle);
                 window_element_class::texture.normal.image.draw(false,window_element_class::position.x,window_element_class::position.y,window_element_class::position.z,window_element_class::size.x+zoom_value,window_element_class::size.y+zoom_value,window_element_class::texture.angle);
-                if (window_element_class::mouse_over)
+                if ((window_element_class::title.enabled) && (window_element_class::mouse_over))
                 {
                     window_element_class::font.write(window_element_class::color.highlighted.r,window_element_class::color.highlighted.g,window_element_class::color.highlighted.b,window_element_class::color.highlighted.a,window_element_class::title.position.x,window_element_class::title.position.y,window_element_class::title.size.x,window_element_class::title.size.y,window_element_class::title.text);
                 }
@@ -162,15 +165,15 @@ void window_element_class::render(void)
                 {
                     case NORMAL:
                         window_element_class::texture.normal.image.draw(false,window_element_class::position.x,window_element_class::position.y,window_element_class::position.z,window_element_class::size.x+zoom_value,window_element_class::size.y+zoom_value,window_element_class::texture.angle);
-                        window_element_class::font.write(window_element_class::color.normal.r,window_element_class::color.normal.g,window_element_class::color.normal.b,window_element_class::color.normal.a,window_element_class::title.position.x,window_element_class::title.position.y,window_element_class::title.size.x,window_element_class::title.size.y,window_element_class::title.text);
+                        if (window_element_class::title.enabled) window_element_class::font.write(window_element_class::color.normal.r,window_element_class::color.normal.g,window_element_class::color.normal.b,window_element_class::color.normal.a,window_element_class::title.position.x,window_element_class::title.position.y,window_element_class::title.size.x,window_element_class::title.size.y,window_element_class::title.text);
                     break;
                     case HIGHLIGHTED:
                         window_element_class::texture.highlighted.image.draw(false,window_element_class::position.x,window_element_class::position.y,window_element_class::position.z,window_element_class::size.x+zoom_value,window_element_class::size.y+zoom_value,window_element_class::texture.angle);
-                        window_element_class::font.write(window_element_class::color.highlighted.r,window_element_class::color.highlighted.g,window_element_class::color.highlighted.b,window_element_class::color.highlighted.a,window_element_class::title.position.x,window_element_class::title.position.y,window_element_class::title.size.x,window_element_class::title.size.y,window_element_class::title.text);
+                        if (window_element_class::title.enabled) window_element_class::font.write(window_element_class::color.highlighted.r,window_element_class::color.highlighted.g,window_element_class::color.highlighted.b,window_element_class::color.highlighted.a,window_element_class::title.position.x,window_element_class::title.position.y,window_element_class::title.size.x,window_element_class::title.size.y,window_element_class::title.text);
                     break;
                     case DISABLED:
                         window_element_class::texture.disabled.image.draw(false,window_element_class::position.x,window_element_class::position.y,window_element_class::position.z,window_element_class::size.x+zoom_value,window_element_class::size.y+zoom_value,window_element_class::texture.angle);
-                        window_element_class::font.write(window_element_class::color.disabled.r,window_element_class::color.disabled.g,window_element_class::color.disabled.b,window_element_class::color.disabled.a,window_element_class::title.position.x,window_element_class::title.position.y,window_element_class::title.size.x,window_element_class::title.size.y,window_element_class::title.text);
+                        if (window_element_class::title.enabled) window_element_class::font.write(window_element_class::color.disabled.r,window_element_class::color.disabled.g,window_element_class::color.disabled.b,window_element_class::color.disabled.a,window_element_class::title.position.x,window_element_class::title.position.y,window_element_class::title.size.x,window_element_class::title.size.y,window_element_class::title.text);
                     break;
                     default:
                     break;
@@ -180,13 +183,13 @@ void window_element_class::render(void)
                 switch (window_element_class::state)
                 {
                     case NORMAL:
-                        window_element_class::font.write(window_element_class::color.normal.r,window_element_class::color.normal.g,window_element_class::color.normal.b,window_element_class::color.normal.a,window_element_class::title.position.x,window_element_class::title.position.y,window_element_class::title.size.x,window_element_class::title.size.y,window_element_class::title.text);
+                        if (window_element_class::title.enabled) window_element_class::font.write(window_element_class::color.normal.r,window_element_class::color.normal.g,window_element_class::color.normal.b,window_element_class::color.normal.a,window_element_class::title.position.x,window_element_class::title.position.y,window_element_class::title.size.x,window_element_class::title.size.y,window_element_class::title.text);
                     break;
                     case HIGHLIGHTED:
-                        window_element_class::font.write(window_element_class::color.highlighted.r,window_element_class::color.highlighted.g,window_element_class::color.highlighted.b,window_element_class::color.highlighted.a,window_element_class::title.position.x,window_element_class::title.position.y,window_element_class::title.size.x,window_element_class::title.size.y,window_element_class::title.text);
+                        if (window_element_class::title.enabled) window_element_class::font.write(window_element_class::color.highlighted.r,window_element_class::color.highlighted.g,window_element_class::color.highlighted.b,window_element_class::color.highlighted.a,window_element_class::title.position.x,window_element_class::title.position.y,window_element_class::title.size.x,window_element_class::title.size.y,window_element_class::title.text);
                     break;
                     case DISABLED:
-                        window_element_class::font.write(window_element_class::color.disabled.r,window_element_class::color.disabled.g,window_element_class::color.disabled.b,window_element_class::color.disabled.a,window_element_class::title.position.x,window_element_class::title.position.y,window_element_class::title.size.x,window_element_class::title.size.y,window_element_class::title.text);
+                        if (window_element_class::title.enabled) window_element_class::font.write(window_element_class::color.disabled.r,window_element_class::color.disabled.g,window_element_class::color.disabled.b,window_element_class::color.disabled.a,window_element_class::title.position.x,window_element_class::title.position.y,window_element_class::title.size.x,window_element_class::title.size.y,window_element_class::title.text);
                     break;
                     default:
                     break;
@@ -200,17 +203,17 @@ void window_element_class::render(void)
                     case NORMAL:
                         temp_float = (window_element_class::value / window_element_class::value_max) * (window_element_class::size.x+zoom_value);
                         window_element_class::texture.normal.image.draw(false,window_element_class::position.x-((window_element_class::size.x/2)+zoom_value)+(temp_float/2.0f),window_element_class::position.y,window_element_class::position.z,temp_float,window_element_class::size.y+zoom_value,window_element_class::texture.angle);
-                        window_element_class::font.write(window_element_class::color.normal.r,window_element_class::color.normal.g,window_element_class::color.normal.b,window_element_class::color.normal.a,window_element_class::title.position.x,window_element_class::title.position.y,window_element_class::title.size.x,window_element_class::title.size.y,window_element_class::title.text);
+                        if (window_element_class::title.enabled) window_element_class::font.write(window_element_class::color.normal.r,window_element_class::color.normal.g,window_element_class::color.normal.b,window_element_class::color.normal.a,window_element_class::title.position.x,window_element_class::title.position.y,window_element_class::title.size.x,window_element_class::title.size.y,window_element_class::title.text);
                     break;
                     case HIGHLIGHTED:
                         temp_float = (window_element_class::value / window_element_class::value_max) * (window_element_class::size.x+zoom_value);
                         window_element_class::texture.highlighted.image.draw(false,window_element_class::position.x-((window_element_class::size.x/2)+zoom_value)+(temp_float/2.0f),window_element_class::position.y,window_element_class::position.z,temp_float,window_element_class::size.y+zoom_value,window_element_class::texture.angle);
-                        window_element_class::font.write(window_element_class::color.highlighted.r,window_element_class::color.highlighted.g,window_element_class::color.highlighted.b,window_element_class::color.highlighted.a,window_element_class::title.position.x,window_element_class::title.position.y,window_element_class::title.size.x,window_element_class::title.size.y,window_element_class::title.text);
+                        if (window_element_class::title.enabled) window_element_class::font.write(window_element_class::color.highlighted.r,window_element_class::color.highlighted.g,window_element_class::color.highlighted.b,window_element_class::color.highlighted.a,window_element_class::title.position.x,window_element_class::title.position.y,window_element_class::title.size.x,window_element_class::title.size.y,window_element_class::title.text);
                     break;
                     case DISABLED:
                         temp_float = (window_element_class::value / window_element_class::value_max) * (window_element_class::size.x+zoom_value);
                         window_element_class::texture.disabled.image.draw(false,window_element_class::position.x-((window_element_class::size.x/2)+zoom_value)+(temp_float/2.0f),window_element_class::position.y,window_element_class::position.z,temp_float,window_element_class::size.y+zoom_value,window_element_class::texture.angle);
-                        window_element_class::font.write(window_element_class::color.disabled.r,window_element_class::color.disabled.g,window_element_class::color.disabled.b,window_element_class::color.disabled.a,window_element_class::title.position.x,window_element_class::title.position.y,window_element_class::title.size.x,window_element_class::title.size.y,window_element_class::title.text);
+                        if (window_element_class::title.enabled) window_element_class::font.write(window_element_class::color.disabled.r,window_element_class::color.disabled.g,window_element_class::color.disabled.b,window_element_class::color.disabled.a,window_element_class::title.position.x,window_element_class::title.position.y,window_element_class::title.size.x,window_element_class::title.size.y,window_element_class::title.text);
                     break;
                     default:
                     break;
@@ -228,6 +231,18 @@ void window_element_class::render(void)
             break;
             default:
             break;
+        }
+    }
+};
+
+void window_element_class::render_tooltips(void)
+{
+    // Draw element tooltips.
+    if ((window_element_class::active) && (window_element_class::tooltip.enabled))
+    {
+        if (window_element_class::mouse_over_element())
+        {
+            window_element_class::font.write(window_element_class::color.highlighted.r,window_element_class::color.highlighted.g,window_element_class::color.highlighted.b,window_element_class::color.highlighted.a,game.core.io.mouse_x,game.core.io.mouse_y,window_element_class::tooltip.size.x,window_element_class::tooltip.size.y,window_element_class::tooltip.text);
         }
     }
 };

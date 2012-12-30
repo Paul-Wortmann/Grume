@@ -77,6 +77,7 @@ void setup_menu_main(int UID)
     game.window_manager.window[window_number].zoom.speed              = 0.004f;
     game.window_manager.window[window_number].texture.angle           = 0.0f;
     game.window_manager.window[window_number].title.text              = "Main menu";
+    game.window_manager.window[window_number].title.enabled           = true;
     game.window_manager.window[window_number].title.size.x            = game.window_manager.window[window_number].title.text.length()/1.2f;
     game.window_manager.window[window_number].title.size.y            = game.window_manager.window[window_number].title.size.x*4;
     game.window_manager.window[window_number].title.position.x        = game.window_manager.window[window_number].position.x - (game.window_manager.window[window_number].title.size.x/100.0f);
@@ -108,6 +109,7 @@ void setup_menu_main(int UID)
     game.window_manager.window[window_number].element[element_number].font                      = game.window_manager.window[window_number].font;
     element_number = 2; //--- new game button ---
     game.window_manager.window[window_number].element[element_number].title.text                = "New Game";
+    game.window_manager.window[window_number].element[element_number].title.enabled             = true;
     game.window_manager.window[window_number].element[element_number].active                    = true;
     game.window_manager.window[window_number].element[element_number].type                      = BUTTON;
     game.window_manager.window[window_number].element[element_number].color                     = game.window_manager.window[window_number].color;
@@ -126,6 +128,7 @@ void setup_menu_main(int UID)
     game.window_manager.window[window_number].element[element_number].mouse_delay.maximum       = 30;
     element_number = 3; //--- load game button ---
     game.window_manager.window[window_number].element[element_number].title.text                = "Load Game";
+    game.window_manager.window[window_number].element[element_number].title.enabled             = true;
     game.window_manager.window[window_number].element[element_number].active                    = true;
     game.window_manager.window[window_number].element[element_number].type                      = BUTTON;
     game.window_manager.window[window_number].element[element_number].color                     = game.window_manager.window[window_number].color;
@@ -144,6 +147,7 @@ void setup_menu_main(int UID)
     game.window_manager.window[window_number].element[element_number].mouse_delay.maximum       = 30;
     element_number = 4; //--- save game button ---
     game.window_manager.window[window_number].element[element_number].title.text                = "Save Game";
+    game.window_manager.window[window_number].element[element_number].title.enabled             = true;
     game.window_manager.window[window_number].element[element_number].active                    = true;
     game.window_manager.window[window_number].element[element_number].state                     = DISABLED;
     game.window_manager.window[window_number].element[element_number].type                      = BUTTON;
@@ -163,6 +167,7 @@ void setup_menu_main(int UID)
     game.window_manager.window[window_number].element[element_number].mouse_delay.maximum       = 30;
     element_number = 5; //--- resume button ---
     game.window_manager.window[window_number].element[element_number].title.text                = "Resume Game";
+    game.window_manager.window[window_number].element[element_number].title.enabled             = true;
     game.window_manager.window[window_number].element[element_number].active                    = true;
     game.window_manager.window[window_number].element[element_number].state                     = DISABLED;
     game.window_manager.window[window_number].element[element_number].type                      = BUTTON;
@@ -182,6 +187,7 @@ void setup_menu_main(int UID)
     game.window_manager.window[window_number].element[element_number].mouse_delay.maximum       = 30;
     element_number = 6; //--- options button ---
     game.window_manager.window[window_number].element[element_number].title.text                = "Options";
+    game.window_manager.window[window_number].element[element_number].title.enabled             = true;
     game.window_manager.window[window_number].element[element_number].active                    = true;
     game.window_manager.window[window_number].element[element_number].type                      = BUTTON;
     game.window_manager.window[window_number].element[element_number].color                     = game.window_manager.window[window_number].color;
@@ -200,6 +206,7 @@ void setup_menu_main(int UID)
     game.window_manager.window[window_number].element[element_number].mouse_delay.maximum       = 30;
     element_number = 7; //--- exit button ---
     game.window_manager.window[window_number].element[element_number].title.text                = "Exit Game";
+    game.window_manager.window[window_number].element[element_number].title.enabled             = true;
     game.window_manager.window[window_number].element[element_number].active                    = true;
     game.window_manager.window[window_number].element[element_number].type                      = BUTTON;
     game.window_manager.window[window_number].element[element_number].color                     = game.window_manager.window[window_number].color;

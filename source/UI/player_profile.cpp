@@ -128,6 +128,12 @@ void setup_player_profile(int UID)
     game.window_manager.window[window_number].element[element_number].value                     = 0;
     game.window_manager.window[window_number].element[element_number].value_max                 = 100;
     game.window_manager.window[window_number].element[element_number].zoom.enabled              = false;
+
+    game.window_manager.window[window_number].element[element_number].tooltip.enabled           = true;
+    game.window_manager.window[window_number].element[element_number].tooltip.text              = "tooltip";
+    game.window_manager.window[window_number].element[element_number].tooltip.size.x            = 12.0f;
+    game.window_manager.window[window_number].element[element_number].tooltip.size.y            = 30.0f;
+
     game.window_manager.window[window_number].element[element_number].color                     = game.window_manager.window[window_number].color;
     game.window_manager.window[window_number].element[element_number].size.x                    = game.window_manager.window[window_number].size.x * 1.52f;
     game.window_manager.window[window_number].element[element_number].size.y                    = game.window_manager.window[window_number].size.y * 0.161f;

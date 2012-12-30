@@ -72,8 +72,6 @@ void game_class::init(void)
     game.core.inventory_active                    = false;
     game.core.npcvendor_active                    = false;
 
-    //game.player.portrait_number                   =  0;
-    //game.player.portrait_image_ref                =  game.resource.texture.portrait_00.ref_number;
     game.player.name                              =  "Kanchi";
     game.player.level.current                     =  0;
     game.player.level.base                        =  2;
@@ -81,10 +79,11 @@ void game_class::init(void)
     game.player.level.init();
     game.player.health.current                    =  000.0f;
     game.player.health.maximum                    =  100.0f;
-    game.player.health.regeneration               =  000.1015f;
+    game.player.health.regeneration               =  000.5015f;
     game.player.mana.current                      =  000.0f;
     game.player.mana.maximum                      =  100.0f;
-    game.player.mana.regeneration                 =  000.1025f;
+    game.player.mana.regeneration                 =  000.5025f;
+
     game.player.destination_tile                  =  0;
     game.player.destination_set                   =  false;
     game.player.path_set                          =  false;

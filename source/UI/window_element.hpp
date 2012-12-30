@@ -59,6 +59,7 @@ class location_class
 {
     private:
     public:
+        bool                    enabled;
         std::string             text;
         struct_3f               size;
         struct_3f               position;
@@ -175,6 +176,7 @@ class window_element_class
        ~window_element_class(void);
         void                    reload_textures(void);
         void                    render(void);
+        void                    render_tooltips(void);
         bool                    mouse_over_element(void);
         bool                    mouse_clicked_element(void);
         int                     process(void);

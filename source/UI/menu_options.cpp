@@ -78,6 +78,7 @@ void setup_menu_options(int UID)
     game.window_manager.window[window_number].zoom.speed              = 0.004f;
     game.window_manager.window[window_number].texture.angle           = 0.0f;
     game.window_manager.window[window_number].title.text              = " Options ";
+    game.window_manager.window[window_number].title.enabled           = true;
     game.window_manager.window[window_number].title.size.x            = game.window_manager.window[window_number].title.text.length()/1.2f;
     game.window_manager.window[window_number].title.size.y            = game.window_manager.window[window_number].title.size.x*4;
     game.window_manager.window[window_number].title.position.x        = game.window_manager.window[window_number].position.x - (game.window_manager.window[window_number].title.size.x/100.0f);
@@ -110,6 +111,7 @@ void setup_menu_options(int UID)
 
     element_number = 2; //--- Main menu button ---
     game.window_manager.window[window_number].element[element_number].title.text                = "Main Menu";
+    game.window_manager.window[window_number].element[element_number].title.enabled             = true;
     game.window_manager.window[window_number].element[element_number].active                    = true;
     game.window_manager.window[window_number].element[element_number].type                      = BUTTON;
     game.window_manager.window[window_number].element[element_number].color                     = game.window_manager.window[window_number].color;
@@ -172,6 +174,7 @@ void setup_menu_options(int UID)
     game.window_manager.window[window_number].element[element_number].sound                     = game.window_manager.window[window_number].sound;
 
     element_number = 4; // Resolution selection element 0
+    game.window_manager.window[window_number].element[element_number].title.enabled             = true;
     game.window_manager.window[window_number].element[element_number].title.text                = game.window_manager.window[window_number].choice_selection[0].data[0].value_string;
     game.window_manager.window[window_number].element[element_number].selected                  = game.window_manager.window[window_number].choice_selection[0].data[0].active;
     game.window_manager.window[window_number].element[element_number].active                    = true;
@@ -199,6 +202,7 @@ void setup_menu_options(int UID)
     game.window_manager.window[window_number].element[element_number].mouse_delay.maximum       = 10;
 
     element_number = 5; // Resolution selection element 1
+    game.window_manager.window[window_number].element[element_number].title.enabled             = true;
     game.window_manager.window[window_number].element[element_number].title.text                = game.window_manager.window[window_number].choice_selection[0].data[1].value_string;
     game.window_manager.window[window_number].element[element_number].selected                  = game.window_manager.window[window_number].choice_selection[0].data[1].active;
     game.window_manager.window[window_number].element[element_number].active                    = true;
@@ -226,6 +230,7 @@ void setup_menu_options(int UID)
     game.window_manager.window[window_number].element[element_number].mouse_delay.maximum       = 10;
 
     element_number = 6; // Resolution selection element 2
+    game.window_manager.window[window_number].element[element_number].title.enabled             = true;
     game.window_manager.window[window_number].element[element_number].title.text                = game.window_manager.window[window_number].choice_selection[0].data[2].value_string;
     game.window_manager.window[window_number].element[element_number].selected                  = game.window_manager.window[window_number].choice_selection[0].data[2].active;
     game.window_manager.window[window_number].element[element_number].active                    = true;
@@ -253,6 +258,7 @@ void setup_menu_options(int UID)
     game.window_manager.window[window_number].element[element_number].mouse_delay.maximum       = 10;
 
     element_number = 7; // Resolution selection element 3
+    game.window_manager.window[window_number].element[element_number].title.enabled             = true;
     game.window_manager.window[window_number].element[element_number].title.text                = game.window_manager.window[window_number].choice_selection[0].data[3].value_string;
     game.window_manager.window[window_number].element[element_number].selected                  = game.window_manager.window[window_number].choice_selection[0].data[3].active;
     game.window_manager.window[window_number].element[element_number].active                    = true;
@@ -280,6 +286,7 @@ void setup_menu_options(int UID)
     game.window_manager.window[window_number].element[element_number].mouse_delay.maximum       = 10;
 
     element_number = 8; // Resolution selection element 4
+    game.window_manager.window[window_number].element[element_number].title.enabled             = true;
     game.window_manager.window[window_number].element[element_number].title.text                = game.window_manager.window[window_number].choice_selection[0].data[4].value_string;
     game.window_manager.window[window_number].element[element_number].selected                  = game.window_manager.window[window_number].choice_selection[0].data[4].active;
     game.window_manager.window[window_number].element[element_number].active                    = true;
@@ -391,6 +398,7 @@ void setup_menu_options(int UID)
 
     element_number = 13; // Sound volume selection - sound volume bar element
     game.window_manager.window[window_number].element[element_number].title.text                = "Sound volume";
+    game.window_manager.window[window_number].element[element_number].title.enabled             = true;
     game.window_manager.window[window_number].element[element_number].value                     = game.core.config.audio_volume_sound;
     game.window_manager.window[window_number].element[element_number].value_max                 = 127.0f;
     game.window_manager.window[window_number].element[element_number].active                    = true;
@@ -459,6 +467,7 @@ void setup_menu_options(int UID)
 
     element_number = 16; // Music volume selection - music volume bar element
     game.window_manager.window[window_number].element[element_number].title.text                = "Music volume";
+    game.window_manager.window[window_number].element[element_number].title.enabled             = true;
     game.window_manager.window[window_number].element[element_number].value                     = game.core.config.audio_volume_music;
     game.window_manager.window[window_number].element[element_number].value_max                 = 127.0f;
     game.window_manager.window[window_number].element[element_number].active                    = true;
@@ -484,6 +493,7 @@ void setup_menu_options(int UID)
 
     element_number = 17; // Full screen button element
     game.window_manager.window[window_number].element[element_number].title.text                = "Fullscreen";
+    game.window_manager.window[window_number].element[element_number].title.enabled             = true;
     game.window_manager.window[window_number].element[element_number].active                    = true;
     game.window_manager.window[window_number].element[element_number].type                      = BUTTON;
     game.window_manager.window[window_number].element[element_number].color                     = game.window_manager.window[window_number].color;

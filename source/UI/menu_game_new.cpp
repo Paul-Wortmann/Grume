@@ -77,6 +77,7 @@ void setup_menu_game_new(int UID)
     game.window_manager.window[window_number].zoom.speed              = 0.004f;
     game.window_manager.window[window_number].texture.angle           = 0.0f;
     game.window_manager.window[window_number].title.text              = "New Game";
+    game.window_manager.window[window_number].title.enabled           = true;
     game.window_manager.window[window_number].title.size.x            = game.window_manager.window[window_number].title.text.length()/1.2f;
     game.window_manager.window[window_number].title.size.y            = game.window_manager.window[window_number].title.size.x*4;
     game.window_manager.window[window_number].title.position.x        = game.window_manager.window[window_number].position.x - (game.window_manager.window[window_number].title.size.x/100.0f);
@@ -91,6 +92,7 @@ void setup_menu_game_new(int UID)
     game.window_manager.window[window_number].element = new window_element_class[game.window_manager.window[window_number].number_of_elements];
     element_number = 1; //--- Close button ---
     game.window_manager.window[window_number].element[element_number].title.text                = "";
+    game.window_manager.window[window_number].element[element_number].title.enabled             = false;
     game.window_manager.window[window_number].element[element_number].active                    = true;
     game.window_manager.window[window_number].element[element_number].type                      = BUTTON;
     game.window_manager.window[window_number].element[element_number].zoom.enabled              = false;
@@ -109,6 +111,7 @@ void setup_menu_game_new(int UID)
 
     element_number = 2; //--- Main menu button ---
     game.window_manager.window[window_number].element[element_number].title.text                = "Main Menu";
+    game.window_manager.window[window_number].element[element_number].title.enabled             = true;
     game.window_manager.window[window_number].element[element_number].active                    = true;
     game.window_manager.window[window_number].element[element_number].type                      = BUTTON;
     game.window_manager.window[window_number].element[element_number].color                     = game.window_manager.window[window_number].color;
@@ -128,6 +131,7 @@ void setup_menu_game_new(int UID)
 
     element_number = 3; //--- Start game menu button ---
     game.window_manager.window[window_number].element[element_number].title.text                = "Start Game";
+    game.window_manager.window[window_number].element[element_number].title.enabled             = true;
     game.window_manager.window[window_number].element[element_number].active                    = true;
     game.window_manager.window[window_number].element[element_number].type                      = BUTTON;
     game.window_manager.window[window_number].element[element_number].color                     = game.window_manager.window[window_number].color;

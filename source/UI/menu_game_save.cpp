@@ -77,6 +77,7 @@ void setup_menu_game_save(int UID)
     game.window_manager.window[window_number].zoom.speed              = 0.004f;
     game.window_manager.window[window_number].texture.angle           = 0.0f;
     game.window_manager.window[window_number].title.text              = "Save Game";
+    game.window_manager.window[window_number].title.enabled           = true;
     game.window_manager.window[window_number].title.size.x            = game.window_manager.window[window_number].title.text.length()/1.2f;
     game.window_manager.window[window_number].title.size.y            = game.window_manager.window[window_number].title.size.x*4;
     game.window_manager.window[window_number].title.position.x        = game.window_manager.window[window_number].position.x - (game.window_manager.window[window_number].title.size.x/100.0f);
@@ -108,6 +109,7 @@ void setup_menu_game_save(int UID)
     game.window_manager.window[window_number].element[element_number].mouse_delay.maximum       = 30;
     element_number = 2; //--- Save Game 1 ---
     game.window_manager.window[window_number].element[element_number].title.text                = "Save Slot 1";
+    game.window_manager.window[window_number].element[element_number].title.enabled             = true;
     game.window_manager.window[window_number].element[element_number].active                    = true;
     game.window_manager.window[window_number].element[element_number].type                      = BUTTON;
     game.window_manager.window[window_number].element[element_number].color                     = game.window_manager.window[window_number].color;
@@ -126,6 +128,7 @@ void setup_menu_game_save(int UID)
     game.window_manager.window[window_number].element[element_number].mouse_delay.maximum       = 30;
     element_number = 3; //--- Save Game 2 ---
     game.window_manager.window[window_number].element[element_number].title.text                = "Save Slot 2";
+    game.window_manager.window[window_number].element[element_number].title.enabled             = true;
     game.window_manager.window[window_number].element[element_number].active                    = true;
     game.window_manager.window[window_number].element[element_number].type                      = BUTTON;
     game.window_manager.window[window_number].element[element_number].color                     = game.window_manager.window[window_number].color;
@@ -144,6 +147,7 @@ void setup_menu_game_save(int UID)
     game.window_manager.window[window_number].element[element_number].mouse_delay.maximum       = 30;
     element_number = 4; //--- Save Game 3 ---
     game.window_manager.window[window_number].element[element_number].title.text                = "Save Slot 3";
+    game.window_manager.window[window_number].element[element_number].title.enabled             = true;
     game.window_manager.window[window_number].element[element_number].active                    = true;
     game.window_manager.window[window_number].element[element_number].type                      = BUTTON;
     game.window_manager.window[window_number].element[element_number].color                     = game.window_manager.window[window_number].color;
@@ -162,6 +166,7 @@ void setup_menu_game_save(int UID)
     game.window_manager.window[window_number].element[element_number].mouse_delay.maximum       = 30;
     element_number = 5; //--- Save Game 4 ---
     game.window_manager.window[window_number].element[element_number].title.text                = "Save Slot 4";
+    game.window_manager.window[window_number].element[element_number].title.enabled             = true;
     game.window_manager.window[window_number].element[element_number].active                    = true;
     game.window_manager.window[window_number].element[element_number].type                      = BUTTON;
     game.window_manager.window[window_number].element[element_number].color                     = game.window_manager.window[window_number].color;
@@ -180,6 +185,7 @@ void setup_menu_game_save(int UID)
     game.window_manager.window[window_number].element[element_number].mouse_delay.maximum       = 30;
     element_number = 6; //--- Save Game 5 ---
     game.window_manager.window[window_number].element[element_number].title.text                = "Save Slot 5";
+    game.window_manager.window[window_number].element[element_number].title.enabled             = true;
     game.window_manager.window[window_number].element[element_number].active                    = true;
     game.window_manager.window[window_number].element[element_number].type                      = BUTTON;
     game.window_manager.window[window_number].element[element_number].color                     = game.window_manager.window[window_number].color;
@@ -198,6 +204,7 @@ void setup_menu_game_save(int UID)
     game.window_manager.window[window_number].element[element_number].mouse_delay.maximum       = 30;
     element_number = 7; //--- Main Menu button ---
     game.window_manager.window[window_number].element[element_number].title.text                = "Main Menu";
+    game.window_manager.window[window_number].element[element_number].title.enabled             = true;
     game.window_manager.window[window_number].element[element_number].active                    = true;
     game.window_manager.window[window_number].element[element_number].type                      = BUTTON;
     game.window_manager.window[window_number].element[element_number].color                     = game.window_manager.window[window_number].color;

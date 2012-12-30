@@ -121,6 +121,17 @@ void window_class::render(void)
                 }
             }
         }
+        // ------------------------- Render element tool tips -------------------------
+        if (window_class::number_of_elements > 0)
+        {
+            for (int element_number = 1; element_number < window_class::number_of_elements; element_number++)
+            {
+                if (window_class::element[element_number].active)
+                {
+                    window_class::element[element_number].render_tooltips();
+                }
+            }
+        }
     }
 };
 
