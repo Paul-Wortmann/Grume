@@ -46,6 +46,7 @@ class window_class
         struct_3f               position;
         bool                    mouse_over_menu;
         bool                    mouse_over_title;
+        bool                    drag_enabled;
         bool                    drag_active;
         float                   drag_offset_x;
         float                   drag_offset_y;

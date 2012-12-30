@@ -363,6 +363,8 @@ void process_menu_game_new(int window_number)
                 game.window_manager.window_disable(MENU_MAIN_UID);
                 game.window_manager.window_enable(PCPROFILE_UID);
                 game.window_manager.window_set_active(PCPROFILE_UID);
+                game.window_manager.window_enable(ACTIONBAR_UID);
+                game.window_manager.window_set_active(ACTIONBAR_UID);
                 game.window_manager.window[game.window_manager.window_get_number(MENU_MAIN_UID)].element[4].state = NORMAL; // Save game
                 game.window_manager.window[game.window_manager.window_get_number(MENU_MAIN_UID)].element[5].state = NORMAL; // Resume game
                 //set player portrait

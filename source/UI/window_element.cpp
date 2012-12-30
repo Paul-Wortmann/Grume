@@ -130,6 +130,7 @@ window_element_class::window_element_class(void)
     window_element_class::value_max                      = 0.0f;
     window_element_class::active                         = false;
     window_element_class::clicked                        = false;
+    window_element_class::click_enabled                  = true;
     window_element_class::texture.angle                  = 0.0f;
     window_element_class::texture.base.image_path        = "";
     window_element_class::texture.normal.image_path      = "";
@@ -280,14 +281,18 @@ int  window_element_class::process(void)
                 window_element_class::mouse_over   = true;
                 if ((window_element_class::state    != HIGHLIGHTED) && (window_element_class::sound.on_mouse_over.enabled)) window_element_class::sound.on_mouse_over.sound.play();
                 window_element_class::state        = HIGHLIGHTED;
-                if (window_element_class::mouse_clicked_element())
+                if (window_element_class::click_enabled)
                 {
-                    if((window_element_class::mouse_delay.ready) || (!window_element_class::mouse_delay.enabled))
+                    if (window_element_class::mouse_clicked_element())
                     {
-                        if (window_element_class::sound.on_click.enabled) window_element_class::sound.on_click.sound.play();
-                        window_element_class::clicked = true;
-                        if(window_element_class::mouse_delay.enabled) window_element_class::mouse_delay.reset();
+                        if((window_element_class::mouse_delay.ready) || (!window_element_class::mouse_delay.enabled))
+                        {
+                            if (window_element_class::sound.on_click.enabled) window_element_class::sound.on_click.sound.play();
+                            window_element_class::clicked = true;
+                            if(window_element_class::mouse_delay.enabled) window_element_class::mouse_delay.reset();
+                        }
                     }
+                    else window_element_class::clicked = false;
                 }
                 else window_element_class::clicked = false;
             }

@@ -34,6 +34,7 @@ window_class::window_class(void)
     window_class::UID                                = -1;
     window_class::enabled                            = false;
     window_class::active                             = false;
+    window_class::drag_enabled                       = true;
     window_class::event                              = 0;
     window_class::number_of_elements                 = 0;
     window_class::title.text                         = "Not set";
@@ -250,13 +251,16 @@ int window_class::process(void)
             }
             else
             {
-                if ((!game.window_manager.drag_in_progress) && (window_class::mouse_over_title) && (game.core.io.mouse_button_left) && (allow_drag))// start drag
+                if (window_class::drag_enabled)
                 {
-                    window_class::drag_offset_x                = window_class::position.x - game.core.io.mouse_x;
-                    window_class::drag_offset_y                = window_class::position.y - game.core.io.mouse_y;
-                    window_class::drag_active                  = true;
-                    game.window_manager.drag_in_progress       = true;
-                    game.window_manager.event                  = 65535; // stack sort is needed.
+                    if ((!game.window_manager.drag_in_progress) && (window_class::mouse_over_title) && (game.core.io.mouse_button_left) && (allow_drag))// start drag
+                    {
+                        window_class::drag_offset_x                = window_class::position.x - game.core.io.mouse_x;
+                        window_class::drag_offset_y                = window_class::position.y - game.core.io.mouse_y;
+                        window_class::drag_active                  = true;
+                        game.window_manager.drag_in_progress       = true;
+                        game.window_manager.event                  = 65535; // stack sort is needed.
+                    }
                 }
             }
         // ------------------------- X -------------------------

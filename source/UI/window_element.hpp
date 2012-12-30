@@ -168,6 +168,7 @@ class window_element_class
         bool                    mouse_over;
         bool                    active;
         bool                    clicked;
+        bool                    click_enabled;
         delay_class             mouse_delay;
         struct_3f               size;
         struct_3f               position;

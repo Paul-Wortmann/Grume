@@ -33,6 +33,7 @@
 #include "menu_game_save.hpp"
 #include "menu_options.hpp"
 #include "player_profile.hpp"
+#include "action_bar.hpp"
 #include "../player.hpp"
 
 #define    ACTIONBAR_UID          1
