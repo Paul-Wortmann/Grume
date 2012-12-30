@@ -24,6 +24,7 @@
 
 #include "player_profile.hpp"
 #include "../game.hpp"
+#include "../core/misc.hpp"
 
 extern game_class         game;
 
@@ -92,6 +93,10 @@ void setup_player_profile(int UID)
     game.window_manager.window[window_number].element[element_number].active                    = true;
     game.window_manager.window[window_number].element[element_number].type                      = IMAGE;
     game.window_manager.window[window_number].element[element_number].zoom.enabled              = false;
+    game.window_manager.window[window_number].element[element_number].tooltip.enabled           = true;
+    game.window_manager.window[window_number].element[element_number].tooltip.text              = "Not Set";
+    game.window_manager.window[window_number].element[element_number].tooltip.size.x            = 12.0f;
+    game.window_manager.window[window_number].element[element_number].tooltip.size.y            = 30.0f;
     game.window_manager.window[window_number].element[element_number].color                     = game.window_manager.window[window_number].color;
     game.window_manager.window[window_number].element[element_number].size.x                    = game.window_manager.window[window_number].size.x * 0.70f;
     game.window_manager.window[window_number].element[element_number].size.y                    = game.window_manager.window[window_number].size.y * 0.70f;
@@ -128,12 +133,10 @@ void setup_player_profile(int UID)
     game.window_manager.window[window_number].element[element_number].value                     = 0;
     game.window_manager.window[window_number].element[element_number].value_max                 = 100;
     game.window_manager.window[window_number].element[element_number].zoom.enabled              = false;
-
     game.window_manager.window[window_number].element[element_number].tooltip.enabled           = true;
-    game.window_manager.window[window_number].element[element_number].tooltip.text              = "tooltip";
+    game.window_manager.window[window_number].element[element_number].tooltip.text              = "0%";
     game.window_manager.window[window_number].element[element_number].tooltip.size.x            = 12.0f;
     game.window_manager.window[window_number].element[element_number].tooltip.size.y            = 30.0f;
-
     game.window_manager.window[window_number].element[element_number].color                     = game.window_manager.window[window_number].color;
     game.window_manager.window[window_number].element[element_number].size.x                    = game.window_manager.window[window_number].size.x * 1.52f;
     game.window_manager.window[window_number].element[element_number].size.y                    = game.window_manager.window[window_number].size.y * 0.161f;
@@ -153,6 +156,10 @@ void setup_player_profile(int UID)
     game.window_manager.window[window_number].element[element_number].value                     = 100;
     game.window_manager.window[window_number].element[element_number].value_max                 = 100;
     game.window_manager.window[window_number].element[element_number].zoom.enabled              = false;
+    game.window_manager.window[window_number].element[element_number].tooltip.enabled           = true;
+    game.window_manager.window[window_number].element[element_number].tooltip.text              = "0%";
+    game.window_manager.window[window_number].element[element_number].tooltip.size.x            = 12.0f;
+    game.window_manager.window[window_number].element[element_number].tooltip.size.y            = 30.0f;
     game.window_manager.window[window_number].element[element_number].color                     = game.window_manager.window[window_number].color;
     game.window_manager.window[window_number].element[element_number].size.x                    = game.window_manager.window[window_number].size.x * 1.52f;
     game.window_manager.window[window_number].element[element_number].size.y                    = game.window_manager.window[window_number].size.y * 0.161f;
@@ -199,11 +206,26 @@ void update_player_profile(int window_number)
 
 void process_player_profile(int window_number)
 {
+    int element_number = 1; //--- Player name ---
+    game.window_manager.window[window_number].element[element_number].tooltip.text = game.player.name;
     //Update the health and mana bars.
-    int element_number = 3; //--- Player health bar ---
+    std::string temp_string = "";
+    element_number = 3; //--- Player health bar ---
     game.window_manager.window[window_number].element[element_number].value = game.player.health.current;
+    temp_string  = int_to_string(game.player.health.current);
+    temp_string += "%";
+    if (game.player.health.current >  9) temp_string += ' ';
+    if (game.player.health.current > 99) temp_string += ' ';
+    temp_string += "    ";
+    game.window_manager.window[window_number].element[element_number].tooltip.text = temp_string;
     element_number     = 4; //--- Player mana bar ---
     game.window_manager.window[window_number].element[element_number].value = game.player.mana.current;
+    temp_string  = int_to_string(game.player.mana.current);
+    temp_string += "%";
+    if (game.player.mana.current >  9) temp_string += ' ';
+    if (game.player.mana.current > 99) temp_string += ' ';
+    temp_string += "    ";
+    game.window_manager.window[window_number].element[element_number].tooltip.text = temp_string;
     if(game.window_manager.window[window_number].event > 0)
     {
         switch (game.window_manager.window[window_number].event)
