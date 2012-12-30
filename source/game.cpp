@@ -81,10 +81,10 @@ void game_class::init(void)
     game.player.level.init();
     game.player.health.current                    =  000.0f;
     game.player.health.maximum                    =  100.0f;
-    game.player.health.regeneration               =  000.015f;
+    game.player.health.regeneration               =  000.1015f;
     game.player.mana.current                      =  000.0f;
     game.player.mana.maximum                      =  100.0f;
-    game.player.mana.regeneration                 =  000.025f;
+    game.player.mana.regeneration                 =  000.1025f;
     game.player.destination_tile                  =  0;
     game.player.destination_set                   =  false;
     game.player.path_set                          =  false;
