@@ -131,6 +131,32 @@ void setup_action_bar(int UID)
     game.window_manager.window[window_number].element[element_number].sound                     = game.window_manager.window[window_number].sound;
     game.window_manager.window[window_number].element[element_number].font                      = game.window_manager.window[window_number].font;
     game.window_manager.window[window_number].element[element_number].mouse_delay.maximum       = 30;
+    element_number = 3; //--- Action-bar main menu button ---
+    game.window_manager.window[window_number].element[element_number].title.text                = "";
+    game.window_manager.window[window_number].element[element_number].title.enabled             = false;
+    game.window_manager.window[window_number].element[element_number].tooltip.enabled           = true;
+    game.window_manager.window[window_number].element[element_number].tooltip.text              = "Main Menu";
+    game.window_manager.window[window_number].element[element_number].tooltip.size.x            = 12.0f;
+    game.window_manager.window[window_number].element[element_number].tooltip.size.y            = 30.0f;
+    game.window_manager.window[window_number].element[element_number].active                    = true;
+    game.window_manager.window[window_number].element[element_number].type                      = BUTTON;
+    game.window_manager.window[window_number].element[element_number].color                     = game.window_manager.window[window_number].color;
+    game.window_manager.window[window_number].element[element_number].zoom                      = game.window_manager.window[window_number].zoom;
+    game.window_manager.window[window_number].element[element_number].zoom.enabled              = false;
+    game.window_manager.window[window_number].element[element_number].size.x                    = 0.072f;
+    game.window_manager.window[window_number].element[element_number].size.y                    = game.window_manager.window[window_number].element[element_number].size.x;
+    game.window_manager.window[window_number].element[element_number].position.x                = game.window_manager.window[window_number].position.x - (game.window_manager.window[window_number].size.x/2.0f) + (game.window_manager.window[window_number].element[element_number].size.x * 1.46f);
+    game.window_manager.window[window_number].element[element_number].position.y                = game.window_manager.window[window_number].position.y + (game.window_manager.window[window_number].element[element_number].size.y * 0.1f);
+    game.window_manager.window[window_number].element[element_number].texture.normal.image_path = "data/textures/UI/action_bar/icon_01.png";
+    game.window_manager.window[window_number].element[element_number].texture.normal.image.load_image(game.window_manager.window[window_number].element[element_number].texture.normal.image_path);
+    game.window_manager.window[window_number].element[element_number].texture.highlighted.image_path = "data/textures/UI/action_bar/icon_01.png";
+    game.window_manager.window[window_number].element[element_number].texture.highlighted.image.load_image(game.window_manager.window[window_number].element[element_number].texture.highlighted.image_path);
+    game.window_manager.window[window_number].element[element_number].sound                     = game.window_manager.window[window_number].sound;
+    game.window_manager.window[window_number].element[element_number].sound.on_click.enabled    = true;
+    game.window_manager.window[window_number].element[element_number].sound.on_mouse_over.enabled = true;
+    game.window_manager.window[window_number].element[element_number].font                      = game.window_manager.window[window_number].font;
+    game.window_manager.window[window_number].element[element_number].mouse_delay.maximum       = 10;
+
 };
 
 void update_action_bar(int window_number)
@@ -162,6 +188,20 @@ void process_action_bar(int window_number)
     {
         switch (game.window_manager.window[window_number].event)
         {
+            case 301: // Toggle main menu
+                if (!game.core.game_menu_active)
+                {
+                    game.window_manager.window_enable(MENU_MAIN_UID);
+                    game.core.game_menu_active                   = true;
+                }
+                else
+                {
+                    game.window_manager.window_disable(MENU_MAIN_UID);
+                    game.core.game_menu_active                   = false;
+                }
+                game.core.io.key_escape                = false;
+                game.core.io.keyboard_delay_count      = 0;
+            break;
             default:
                 game.core.log.file_write("Unable to process event - ",game.window_manager.window[window_number].event, " - UID - ",game.window_manager.window[window_number].UID);
                 game.window_manager.window[window_number].event = 0;
