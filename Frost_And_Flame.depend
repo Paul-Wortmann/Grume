@@ -38,7 +38,7 @@
 	"UI/UI.hpp"
 	"core/map_2D.hpp"
 
-1342369638 c:\_git_\frost_and_flame\source\core\core.hpp
+1357019791 c:\_git_\frost_and_flame\source\core\core.hpp
 	"background.hpp"
 	"config.hpp"
 	"file.hpp"
@@ -696,7 +696,7 @@
 1336190037 source:c:\_git_\frost_and_flame\source\core\rs232.cpp
 	"rs232.hpp"
 
-1356531988 source:c:\_git_\frost_and_flame\source\main.cpp
+1356932622 source:c:\_git_\frost_and_flame\source\main.cpp
 	"game.hpp"
 	<SDL/SDL.h>
 	<physfs.h>
@@ -893,7 +893,7 @@
 	"misc.hpp"
 	"../game.hpp"
 
-1356885443 source:c:\_git_\frost_and_flame\source\game.cpp
+1357020154 source:c:\_git_\frost_and_flame\source\game.cpp
 	"core/map_2D.hpp"
 	"game.hpp"
 
@@ -979,7 +979,7 @@
 
 1326868751 c:\_git_\frost_and_flame\source\ui\quest_log.hpp
 
-1356872434 c:\_git_\frost_and_flame\source\ui\window_manager.hpp
+1357019824 c:\_git_\frost_and_flame\source\ui\window_manager.hpp
 	"window.hpp"
 	"window_cursor.hpp"
 	"menu_main.hpp"
@@ -989,6 +989,11 @@
 	"menu_options.hpp"
 	"player_profile.hpp"
 	"action_bar.hpp"
+	"character_window.hpp"
+	"equipment_window.hpp"
+	"inventory_window.hpp"
+	"quest_log_window.hpp"
+	"skillbook_window.hpp"
 	"../player.hpp"
 
 1348937813 source:c:\_git_\frost_and_flame\source\ui\character.cpp
@@ -999,7 +1004,7 @@
 	"window_manager.hpp"
 	"../game.hpp"
 
-1356872503 source:c:\_git_\frost_and_flame\source\ui\ui.cpp
+1357019978 source:c:\_git_\frost_and_flame\source\ui\ui.cpp
 	"UI.hpp"
 	"menu_main.hpp"
 	"../game.hpp"
@@ -1114,8 +1119,43 @@
 1356871827 c:\_git_\frost_and_flame\source\ui\action_bar.hpp
 	"window.hpp"
 
-1356887203 source:c:\_git_\frost_and_flame\source\ui\action_bar.cpp
+1357024954 source:c:\_git_\frost_and_flame\source\ui\action_bar.cpp
 	"action_bar.hpp"
 	"../game.hpp"
 	"../core/misc.hpp"
+
+1357006731 c:\_git_\frost_and_flame\source\ui\character_window.hpp
+	"window.hpp"
+
+1357007604 source:c:\_git_\frost_and_flame\source\ui\character_window.cpp
+	"menu_main.hpp"
+	"../game.hpp"
+
+1357008443 c:\_git_\frost_and_flame\source\ui\equipment_window.hpp
+	"window.hpp"
+
+1357008712 source:c:\_git_\frost_and_flame\source\ui\equipment_window.cpp
+	"menu_main.hpp"
+	"../game.hpp"
+
+1357018699 c:\_git_\frost_and_flame\source\ui\inventory_window.hpp
+	"window.hpp"
+
+1357018951 source:c:\_git_\frost_and_flame\source\ui\inventory_window.cpp
+	"menu_main.hpp"
+	"../game.hpp"
+
+1357019360 c:\_git_\frost_and_flame\source\ui\quest_log_window.hpp
+	"window.hpp"
+
+1357019879 c:\_git_\frost_and_flame\source\ui\skillbook_window.hpp
+	"window.hpp"
+
+1357019417 source:c:\_git_\frost_and_flame\source\ui\quest_log_window.cpp
+	"menu_main.hpp"
+	"../game.hpp"
+
+1357020252 source:c:\_git_\frost_and_flame\source\ui\skillbook_window.cpp
+	"menu_main.hpp"
+	"../game.hpp"
 

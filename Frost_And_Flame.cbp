@@ -98,6 +98,12 @@
 		<Unit filename="source/UI/UI.hpp" />
 		<Unit filename="source/UI/action_bar.cpp" />
 		<Unit filename="source/UI/action_bar.hpp" />
+		<Unit filename="source/UI/character_window.cpp" />
+		<Unit filename="source/UI/character_window.hpp" />
+		<Unit filename="source/UI/equipment_window.cpp" />
+		<Unit filename="source/UI/equipment_window.hpp" />
+		<Unit filename="source/UI/inventory_window.cpp" />
+		<Unit filename="source/UI/inventory_window.hpp" />
 		<Unit filename="source/UI/loading_screen.cpp" />
 		<Unit filename="source/UI/loading_screen.hpp" />
 		<Unit filename="source/UI/menu_game_load.cpp" />
@@ -112,6 +118,10 @@
 		<Unit filename="source/UI/menu_options.hpp" />
 		<Unit filename="source/UI/player_profile.cpp" />
 		<Unit filename="source/UI/player_profile.hpp" />
+		<Unit filename="source/UI/quest_log_window.cpp" />
+		<Unit filename="source/UI/quest_log_window.hpp" />
+		<Unit filename="source/UI/skillbook_window.cpp" />
+		<Unit filename="source/UI/skillbook_window.hpp" />
 		<Unit filename="source/UI/window.cpp" />
 		<Unit filename="source/UI/window.hpp" />
 		<Unit filename="source/UI/window_cursor.cpp" />

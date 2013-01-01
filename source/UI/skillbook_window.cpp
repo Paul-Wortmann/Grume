@@ -76,7 +76,7 @@ void setup_skillbook_window(int UID)
     game.window_manager.window[window_number].zoom.maximum            = 0.02f;
     game.window_manager.window[window_number].zoom.speed              = 0.004f;
     game.window_manager.window[window_number].texture.angle           = 0.0f;
-    game.window_manager.window[window_number].title.text              = "Skill Book";
+    game.window_manager.window[window_number].title.text              = "SkillBook";
     game.window_manager.window[window_number].title.enabled           = true;
     game.window_manager.window[window_number].title.size.x            = game.window_manager.window[window_number].title.text.length()/1.2f;
     game.window_manager.window[window_number].title.size.y            = game.window_manager.window[window_number].title.size.x*4;
