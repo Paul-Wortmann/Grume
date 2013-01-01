@@ -33,7 +33,7 @@ extern game_class         game;
 void UI_class::UI_setup(void)
 {
     //--- create the desired number of windows and setup the UID stack---
-    game.window_manager.create_windows(9);
+    game.window_manager.create_windows(10);
     //--- register the windows in the windows manager stack ---
     game.window_manager.window_register(MENU_MAIN_UID);
     game.window_manager.window_register(MENU_GAME_NEW_UID);
@@ -44,6 +44,7 @@ void UI_class::UI_setup(void)
     game.window_manager.window_register(ACTIONBAR_UID);
     game.window_manager.window_register(CHARACTER_UID);
     game.window_manager.window_register(EQUIPMENT_UID);
+    game.window_manager.window_register(INVENTORY_UID);
     //--- populate windows with data. ---
     setup_menu_main(MENU_MAIN_UID);
     setup_menu_game_new(MENU_GAME_NEW_UID);
@@ -54,6 +55,7 @@ void UI_class::UI_setup(void)
     setup_action_bar(ACTIONBAR_UID);
     setup_character_window(CHARACTER_UID);
     setup_equipment_window(EQUIPMENT_UID);
+    setup_inventory_window(INVENTORY_UID);
     //--- Enable windows. ---
     game.window_manager.window_enable(MENU_MAIN_UID);
     //--- Set the main menu as the default active window. ---
@@ -99,6 +101,9 @@ void UI_class::UI_process(void) // Process events generated buy the windows in t
                         break;
                         case EQUIPMENT_UID:
                             process_equipment_window(game.window_manager.window_stack[window_count].window_number);
+                        break;
+                        case INVENTORY_UID:
+                            process_inventory_window(game.window_manager.window_stack[window_count].window_number);
                         break;
                         default:
                             game.core.log.file_write("Unable to process UID - ",game.window_manager.window_stack[window_count].UID);

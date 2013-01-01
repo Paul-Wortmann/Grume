@@ -36,6 +36,7 @@
 #include "action_bar.hpp"
 #include "character_window.hpp"
 #include "equipment_window.hpp"
+#include "inventory_window.hpp"
 #include "../player.hpp"
 
 #define    ACTIONBAR_UID          1
