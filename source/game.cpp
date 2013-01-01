@@ -157,6 +157,154 @@ void game_class::process(void)
     }
     if (game.core.io.keyboard_ready)
     {
+        if (game.core.io.key_escape) // Main menu
+        {
+            if (!game.core.game_menu_active)
+            {
+                game.window_manager.window_enable(MENU_MAIN_UID);
+                game.core.game_menu_active                   = true;
+            }
+            else
+            {
+                game.window_manager.window_disable(MENU_MAIN_UID);
+                game.core.game_menu_active                   = false;
+            }
+            game.core.io.key_escape                = false;
+            game.core.io.keyboard_delay_count      = 0;
+        }
+        if (game.core.io.key_c) // Character menu
+        {
+            if (!game.core.character_active)
+            {
+                game.window_manager.window_enable(CHARACTER_UID);
+                game.core.character_active                   = true;
+            }
+            else
+            {
+                game.window_manager.window_disable(CHARACTER_UID);
+                game.core.character_active                   = false;
+            }
+            game.core.io.key_c                     = false;
+            game.core.io.keyboard_delay_count      = 0;
+        }
+        if (game.core.io.key_e) // Equipment menu
+        {
+            if (!game.core.equipment_active)
+            {
+                game.window_manager.window_enable(EQUIPMENT_UID);
+                game.core.character_active                   = true;
+            }
+            else
+            {
+                game.window_manager.window_disable(EQUIPMENT_UID);
+                game.core.character_active                   = false;
+            }
+            game.core.io.key_e                     = false;
+            game.core.io.keyboard_delay_count      = 0;
+        }
+        if (game.core.io.key_q) // Quest log menu
+        {
+            if (!game.core.quest_log_active)
+            {
+                game.window_manager.window_enable(QUEST_LOG_UID);
+                game.core.quest_log_active                   = true;
+            }
+            else
+            {
+                game.window_manager.window_disable(QUEST_LOG_UID);
+                game.core.quest_log_active                   = false;
+            }
+            game.core.io.key_q                     = false;
+            game.core.io.keyboard_delay_count      = 0;
+        }
+        if (game.core.io.key_i) // Inventory menu
+        {
+            if (!game.core.inventory_active)
+            {
+                game.window_manager.window_enable(INVENTORY_UID);
+                game.core.inventory_active                   = true;
+            }
+            else
+            {
+                game.window_manager.window_disable(INVENTORY_UID);
+                game.core.inventory_active                   = false;
+            }
+            game.core.io.key_i                     = false;
+            game.core.io.keyboard_delay_count      = 0;
+        }
+        if (game.core.io.key_b) // Skill book menu
+        {
+            if (!game.core.spellbook_active)
+            {
+                game.window_manager.window_enable(SPELLBOOK_UID);
+                game.core.spellbook_active                   = true;
+            }
+            else
+            {
+                game.window_manager.window_disable(SPELLBOOK_UID);
+                game.core.spellbook_active                   = false;
+            }
+            game.core.io.key_b                     = false;
+            game.core.io.keyboard_delay_count      = 0;
+        }
+        if (game.core.io.key_space) // close all open windows
+        {
+            if (game.core.game_menu_active)
+            {
+                game.window_manager.window_disable(MENU_MAIN_UID);
+                game.core.game_menu_active                   = false;
+            }
+            if (game.core.equipment_active)
+            {
+                game.window_manager.window_disable(EQUIPMENT_UID);
+                game.core.equipment_active                   = false;
+            }
+            if (game.core.quest_log_active)
+            {
+                game.window_manager.window_disable(QUEST_LOG_UID);
+                game.core.quest_log_active                   = false;
+            }
+            if (game.core.character_active)
+            {
+                game.window_manager.window_disable(CHARACTER_UID);
+                game.core.character_active                   = false;
+            }
+            if (game.core.inventory_active)
+            {
+                game.window_manager.window_disable(INVENTORY_UID);
+                game.core.inventory_active                   = false;
+            }
+            if (game.core.spellbook_active)
+            {
+                game.window_manager.window_disable(SPELLBOOK_UID);
+                game.core.spellbook_active                   = false;
+            }
+            if (game.core.npcvendor_active)
+            {
+                game.window_manager.window_disable(NPCVENDOR_UID);
+                game.core.npcvendor_active                   = false;
+            }
+            game.core.io.key_space                 = false;
+            game.core.io.keyboard_delay_count      = 0;
+        }
+///------------------------------------------------------------------------------------------
+        if (game.core.io.key_r) // regenerate random map.
+        {
+            game.map_2D.random_map(100,100,CAVE,DUNGEON);
+            //zoom out for testing
+            game.zoom.current = game.zoom.max;
+            game.map_2D.calculate_tile_positions(DEFAULT_FRAME_WIDTH/game.zoom.current/2.0f,DEFAULT_FRAME_HEIGHT/game.zoom.current/2.0f);
+           //game.resource.sound.menu_select_00.play();
+            game.core.io.key_r                     = false;
+            game.core.io.keyboard_delay_count      = 0;
+        }
+        if (game.core.io.key_d) // toggle debug.
+        {
+            game.debug = !game.debug;
+            game.core.io.key_d                     = false;
+            game.core.io.keyboard_delay_count      = 0;
+        }
+///------------------------------------------------------------------------------------------
         /*
         if (game.core.io.pause)
         {
@@ -177,170 +325,6 @@ void game_class::process(void)
             }
         };
         */
-
-        if (game.core.io.key_escape) // Main menu
-        {
-            if (!game.core.game_menu_active)
-            {
-                game.window_manager.window_enable(MENU_MAIN_UID);
-                game.core.game_menu_active                   = true;
-            }
-            else
-            {
-                game.window_manager.window_disable(MENU_MAIN_UID);
-                game.core.game_menu_active                   = false;
-            }
-            game.core.io.key_escape                = false;
-            game.core.io.keyboard_delay_count      = 0;
-        }
-/*
-        if (game.core.io.key_e) // Equipment menu
-        {
-            if (!game.core.equipment_active)
-            {
-                game.window_manager.register_window(EQUIPMENT_WINDOW);
-                game.resource.sound.menu_select_00.play();
-                game.core.equipment_active         = true;
-            }
-            else
-            {
-                game.window_manager.de_register_window(EQUIPMENT_WINDOW);
-                game.resource.sound.menu_select_00.play();
-                game.core.equipment_active         = false;
-            }
-            game.core.io.key_e                     = false;
-            game.core.io.keyboard_delay_count      = 0;
-        }
-        if (game.core.io.key_q) // Quest log menu
-        {
-            if (!game.core.quest_log_active)
-            {
-                game.window_manager.register_window(QUEST_LOG_WINDOW);
-                game.resource.sound.menu_select_00.play();
-                game.core.quest_log_active         = true;
-            }
-            else
-            {
-                game.window_manager.de_register_window(QUEST_LOG_WINDOW);
-                game.resource.sound.menu_select_00.play();
-                game.core.quest_log_active         = false;
-            }
-            game.core.io.key_q                     = false;
-            game.core.io.keyboard_delay_count      = 0;
-        }
-        if (game.core.io.key_c) // Character menu
-        {
-            if (!game.core.character_active)
-            {
-                game.window_manager.register_window(CHARACTER_WINDOW);
-                game.resource.sound.menu_select_00.play();
-                game.core.character_active         = true;
-            }
-            else
-            {
-                game.window_manager.de_register_window(CHARACTER_WINDOW);
-                game.resource.sound.menu_select_00.play();
-                game.core.character_active         = false;
-            }
-            game.core.io.key_c                     = false;
-            game.core.io.keyboard_delay_count      = 0;
-        }
-        if (game.core.io.key_i) // Inventory menu
-        {
-            if (!game.core.inventory_active)
-            {
-                game.window_manager.register_window(INVENTORY_WINDOW);
-                game.resource.sound.menu_select_00.play();
-                game.core.inventory_active         = true;
-            }
-            else
-            {
-                game.window_manager.de_register_window(INVENTORY_WINDOW);
-                game.resource.sound.menu_select_00.play();
-                game.core.inventory_active         = false;
-            }
-            game.core.io.key_i                     = false;
-            game.core.io.keyboard_delay_count      = 0;
-        }
-        if (game.core.io.key_b) // Skill book menu
-        {
-            if (!game.core.spellbook_active)
-            {
-                game.window_manager.register_window(SPELLBOOK_WINDOW);
-                game.resource.sound.menu_select_00.play();
-                game.core.spellbook_active         = true;
-            }
-            else
-            {
-                game.window_manager.de_register_window(SPELLBOOK_WINDOW);
-                game.resource.sound.menu_select_00.play();
-                game.core.spellbook_active         = false;
-            }
-            game.core.io.key_b                     = false;
-            game.core.io.keyboard_delay_count      = 0;
-        }
-        if (game.core.io.key_space) // close all open windows
-        {
-            if (game.core.game_menu_active)
-            {
-                game.window_manager.de_register_window(MAIN_MENU_WINDOW);
-                game.core.game_menu_active         = false;
-            }
-            if (game.core.equipment_active)
-            {
-                game.window_manager.de_register_window(EQUIPMENT_WINDOW);
-                game.core.equipment_active         = false;
-            }
-            if (game.core.quest_log_active)
-            {
-                game.window_manager.de_register_window(QUEST_LOG_WINDOW);
-                game.core.quest_log_active         = false;
-            }
-            if (game.core.character_active)
-            {
-                game.window_manager.de_register_window(CHARACTER_WINDOW);
-                game.core.character_active         = false;
-            }
-            if (game.core.inventory_active)
-            {
-                game.window_manager.de_register_window(INVENTORY_WINDOW);
-                game.core.inventory_active         = false;
-            }
-            if (game.core.spellbook_active)
-            {
-                game.window_manager.de_register_window(SPELLBOOK_WINDOW);
-                game.core.spellbook_active         = false;
-            }
-            if (game.core.npcvendor_active)
-            {
-                game.window_manager.de_register_window(NPCVENDOR_WINDOW);
-                game.core.npcvendor_active         = false;
-            }
-            game.resource.sound.menu_select_00.play();
-            game.core.io.key_space                 = false;
-            game.core.io.keyboard_delay_count      = 0;
-        }
-*/
-
-///------------------------------------------------------------------------------------------
-        if (game.core.io.key_r) // regenerate random map.
-        {
-            game.map_2D.random_map(100,100,CAVE,DUNGEON);
-            //zoom out for testing
-            game.zoom.current = game.zoom.max;
-            game.map_2D.calculate_tile_positions(DEFAULT_FRAME_WIDTH/game.zoom.current/2.0f,DEFAULT_FRAME_HEIGHT/game.zoom.current/2.0f);
-           //game.resource.sound.menu_select_00.play();
-            game.core.io.key_r                     = false;
-            game.core.io.keyboard_delay_count      = 0;
-        }
-        if (game.core.io.key_d) // toggle debug.
-        {
-            game.debug = !game.debug;
-            game.core.io.key_d                     = false;
-            game.core.io.keyboard_delay_count      = 0;
-        }
-///------------------------------------------------------------------------------------------
-
         if (game.core.io.key_alt) // display item names on map (loot / clickable items)
         {
             ;
