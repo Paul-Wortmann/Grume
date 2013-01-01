@@ -192,12 +192,12 @@ void game_class::process(void)
             if (!game.core.equipment_active)
             {
                 game.window_manager.window_enable(EQUIPMENT_UID);
-                game.core.character_active                   = true;
+                game.core.equipment_active                   = true;
             }
             else
             {
                 game.window_manager.window_disable(EQUIPMENT_UID);
-                game.core.character_active                   = false;
+                game.core.equipment_active                   = false;
             }
             game.core.io.key_e                     = false;
             game.core.io.keyboard_delay_count      = 0;

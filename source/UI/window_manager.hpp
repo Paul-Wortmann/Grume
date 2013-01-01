@@ -34,6 +34,8 @@
 #include "menu_options.hpp"
 #include "player_profile.hpp"
 #include "action_bar.hpp"
+#include "character_window.hpp"
+#include "equipment_window.hpp"
 #include "../player.hpp"
 
 #define    ACTIONBAR_UID          1
