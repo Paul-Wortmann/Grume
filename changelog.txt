@@ -5,8 +5,17 @@ it may take longer than I had first anticipated.
 These are not indications that the project will be terminated in the future,
 just that time is not permitting to proceed at a fast pace, at the moment.
 
-v0.14 - (2012-12-31)
+v0.15 - (2013-01-31)
 
+UI    -> Added the 6 window buttons to the action bar.
+UI    -> Added the base of the Character window.
+UI    -> Added the base of the Quest Log window.
+UI    -> Added the base of the Skill Book window.
+UI    -> Added the base of the Equipment window.
+UI    -> Added the base of the Inventory window.
+LOC   -> xxxxx
+
+v0.14 - (2012-12-31)
 UI    -> Completed the Main menu system.
 UI    -> Completed the Options menu.
 UI    -> Added Music Volume to Options menu.
@@ -31,7 +40,6 @@ BUG   -> Fixed options menu, resolution selection list segfault.
 LOC   -> 14883
 
 v0.13 - (2012-11-30)
-
 UI    -> Added resolution selection elements to the options menu.
 CORE  -> Corrected code for checking size of textures to be loaded.
 UI    -> Added in value, for slider, and bar elements.
@@ -57,7 +65,7 @@ UI    -> Added functions to enable / disable windows.
 UI    -> Added the options menu base.
 UI    -> Added button labels for the Save and Load game menus.
 UI    -> Only process buttons on the front most window when the ouse is over, not windows in the background.
-UI    -> Dragging a window, pusses it to the top of the stack and as such it is "brough to the front", rendered on top of other windows.
+UI    -> Dragging a window, pushes it to the top of the stack and as such it is "brough to the front", rendered on top of other windows.
 UI    -> All windows in the list now rendered.
 UI    -> Improved window manager code.
 UI    -> Added a windows_manager_stack_class, this will take care of handeling the UIDs and remove the need to delete and re-create all previously defined windows.
