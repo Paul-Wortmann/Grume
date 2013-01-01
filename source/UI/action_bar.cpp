@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2011-2012 Paul Wortmann, PhysHex Games, www.physhexgames.co.nr
+ * Copyright (C) 2011-2013 Paul Wortmann, PhysHex Games, www.physhexgames.co.nr
  * This file is part of "Frost And Flame"
  *
  * "Frost And Flame" is free software: you can redistribute it and/or modify
@@ -30,7 +30,7 @@ extern game_class         game;
 
 void setup_action_bar(int UID)
 {
-    int menu_button_mouse_delay = 15;
+    int menu_button_mouse_delay = 20;
     int window_number = game.window_manager.window_get_number(UID);
     int element_number = 1;
     game.window_manager.window[window_number].active                  = false;
@@ -406,14 +406,3 @@ void process_action_bar(int window_number)
     }
     game.window_manager.window[window_number].event = 0;
 };
-
-/*
-
-main
-quest
-skill book
-character
-equipment
-inventory
-
-*/
