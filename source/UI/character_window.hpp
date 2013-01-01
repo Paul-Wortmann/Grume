@@ -28,6 +28,7 @@
 #include "window.hpp"
 
 void setup_character_window(int UID);
+void update_character_window(int UID);
 void process_character_window(int window_number);
 
 #endif // CHARACTER_WINDOW_H

@@ -376,6 +376,7 @@ void process_menu_game_new(int window_number)
                     };
                 }
                 update_player_profile(game.window_manager.window_get_number(PCPROFILE_UID));
+                update_character_window(CHARACTER_UID);
             break;
             case 401: // left arrow button for player portrait selection
                 game.window_manager.window[window_number].choice_selection[0].position++;
