@@ -48,7 +48,7 @@ class core_class
         bool              game_menu_active;
         bool              quest_log_active;
         bool              character_active;
-        bool              spellbook_active;
+        bool              skillbook_active;
         bool              inventory_active;
         bool              equipment_active;
         bool              npcvendor_active;

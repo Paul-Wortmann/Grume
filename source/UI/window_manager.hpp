@@ -37,6 +37,8 @@
 #include "character_window.hpp"
 #include "equipment_window.hpp"
 #include "inventory_window.hpp"
+#include "quest_log_window.hpp"
+#include "skillbook_window.hpp"
 #include "../player.hpp"
 
 #define    ACTIONBAR_UID          1
@@ -45,7 +47,7 @@
 #define    QUEST_LOG_UID          4
 #define    CHARACTER_UID          5
 #define    INVENTORY_UID          6
-#define    SPELLBOOK_UID          7
+#define    SKILLBOOK_UID          7
 #define    NPCVENDOR_UID          8
 #define    MENU_DEFAULT_UID       9  //base menu to store default values, and position / size for conjoined windows. maybe?
 #define    MENU_MAIN_UID          10

@@ -68,7 +68,7 @@ void game_class::init(void)
     game.core.game_resume                         = false;
     game.core.quest_log_active                    = false;
     game.core.character_active                    = false;
-    game.core.spellbook_active                    = false;
+    game.core.skillbook_active                    = false;
     game.core.inventory_active                    = false;
     game.core.npcvendor_active                    = false;
 
@@ -234,15 +234,15 @@ void game_class::process(void)
         }
         if (game.core.io.key_b) // Skill book menu
         {
-            if (!game.core.spellbook_active)
+            if (!game.core.skillbook_active)
             {
-                game.window_manager.window_enable(SPELLBOOK_UID);
-                game.core.spellbook_active                   = true;
+                game.window_manager.window_enable(SKILLBOOK_UID);
+                game.core.skillbook_active                   = true;
             }
             else
             {
-                game.window_manager.window_disable(SPELLBOOK_UID);
-                game.core.spellbook_active                   = false;
+                game.window_manager.window_disable(SKILLBOOK_UID);
+                game.core.skillbook_active                   = false;
             }
             game.core.io.key_b                     = false;
             game.core.io.keyboard_delay_count      = 0;
@@ -274,10 +274,10 @@ void game_class::process(void)
                 game.window_manager.window_disable(INVENTORY_UID);
                 game.core.inventory_active                   = false;
             }
-            if (game.core.spellbook_active)
+            if (game.core.skillbook_active)
             {
-                game.window_manager.window_disable(SPELLBOOK_UID);
-                game.core.spellbook_active                   = false;
+                game.window_manager.window_disable(SKILLBOOK_UID);
+                game.core.skillbook_active                   = false;
             }
             if (game.core.npcvendor_active)
             {
