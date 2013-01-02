@@ -83,7 +83,7 @@ void game_class::init(void)
     game.player.mana.current                      =  000.0f;
     game.player.mana.maximum                      =  100.0f;
     game.player.mana.regeneration                 =  000.025f;
-    game.player.level.current_experience          =  1047; // 0 for norm
+    game.player.level.current_experience          =  100047; // 0 for norm
 
     game.player.destination_tile                  =  0;
     game.player.destination_set                   =  false;

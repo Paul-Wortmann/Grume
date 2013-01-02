@@ -95,6 +95,13 @@ std::string int_to_string(int int_in)
     return(string_out.str());
 }
 
+std::string ullint_to_string(unsigned long long ullint_in)
+{
+    std::stringstream string_out;
+    string_out << ullint_in;
+    return(string_out.str());
+}
+
 std::string const_char_to_string(const char *const_char_in)
 {
     std::stringstream string_out;
