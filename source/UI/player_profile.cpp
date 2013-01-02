@@ -35,6 +35,7 @@ void setup_player_profile(int UID)
     game.window_manager.window[window_number].active                  = false;
     game.window_manager.window[window_number].mouse_over_menu         = false;
     game.window_manager.window[window_number].mouse_over_title        = false;
+    game.window_manager.window[window_number].set_behind              = true;
     game.window_manager.window[window_number].size.x                  =  0.16f;
     game.window_manager.window[window_number].size.y                  =  game.window_manager.window[window_number].size.x;
     game.window_manager.window[window_number].position.x              = -1.0f + (game.window_manager.window[window_number].size.x / 2.0f);

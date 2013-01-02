@@ -37,6 +37,7 @@ void setup_action_bar(int UID)
     game.window_manager.window[window_number].mouse_over_menu         = false;
     game.window_manager.window[window_number].mouse_over_title        = false;
     game.window_manager.window[window_number].drag_enabled            = false;
+    game.window_manager.window[window_number].set_behind              = true;
     game.window_manager.window[window_number].size.x                  =  1.8f;
     game.window_manager.window[window_number].size.y                  =  0.2f;
     game.window_manager.window[window_number].position.x              =  0.0f;

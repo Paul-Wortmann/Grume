@@ -35,6 +35,7 @@ class window_class
     public:
         bool                    enabled;
         bool                    active;
+        bool                    set_behind;
         int                     UID;
         choice_selection_type   choice_selection[MAX_CHOICE_SELECTIONS_PER_MENU];
         delay_class             mouse_delay;

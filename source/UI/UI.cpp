@@ -73,50 +73,50 @@ void UI_class::UI_process(void) // Process events generated buy the windows in t
     {
         for (int window_count = 0; window_count < game.window_manager.number_of_windows; window_count++)
         {
-            if(game.window_manager.window[game.window_manager.window_stack[window_count].window_number].enabled)
+            if(game.window_manager.window[game.window_manager.window_stack[window_count]].enabled)
             {
                 if(game.window_manager.event == 0)
                 {
-                    switch(game.window_manager.window_stack[window_count].UID)
+                    switch(game.window_manager.window[game.window_manager.window_stack[window_count]].UID)
                     {
                         case MENU_MAIN_UID:
-                            process_menu_main(game.window_manager.window_stack[window_count].window_number);
+                            process_menu_main(game.window_manager.window_stack[window_count]);
                         break;
                         case MENU_GAME_NEW_UID:
-                            process_menu_game_new(game.window_manager.window_stack[window_count].window_number);
+                            process_menu_game_new(game.window_manager.window_stack[window_count]);
                         break;
                         case MENU_GAME_LOAD_UID:
-                            process_menu_game_load(game.window_manager.window_stack[window_count].window_number);
+                            process_menu_game_load(game.window_manager.window_stack[window_count]);
                         break;
                         case MENU_GAME_SAVE_UID:
-                            process_menu_game_save(game.window_manager.window_stack[window_count].window_number);
+                            process_menu_game_save(game.window_manager.window_stack[window_count]);
                         break;
                         case MENU_OPTIONS_UID:
-                            process_menu_options(game.window_manager.window_stack[window_count].window_number);
+                            process_menu_options(game.window_manager.window_stack[window_count]);
                         break;
                         case PCPROFILE_UID:
-                            process_player_profile(game.window_manager.window_stack[window_count].window_number);
+                            process_player_profile(game.window_manager.window_stack[window_count]);
                         break;
                         case ACTIONBAR_UID:
-                            process_action_bar(game.window_manager.window_stack[window_count].window_number);
+                            process_action_bar(game.window_manager.window_stack[window_count]);
                         break;
                         case CHARACTER_UID:
-                            process_character_window(game.window_manager.window_stack[window_count].window_number);
+                            process_character_window(game.window_manager.window_stack[window_count]);
                         break;
                         case EQUIPMENT_UID:
-                            process_equipment_window(game.window_manager.window_stack[window_count].window_number);
+                            process_equipment_window(game.window_manager.window_stack[window_count]);
                         break;
                         case INVENTORY_UID:
-                            process_inventory_window(game.window_manager.window_stack[window_count].window_number);
+                            process_inventory_window(game.window_manager.window_stack[window_count]);
                         break;
                         case QUEST_LOG_UID:
-                            process_quest_log_window(game.window_manager.window_stack[window_count].window_number);
+                            process_quest_log_window(game.window_manager.window_stack[window_count]);
                         break;
                         case SKILLBOOK_UID:
-                            process_skillbook_window(game.window_manager.window_stack[window_count].window_number);
+                            process_skillbook_window(game.window_manager.window_stack[window_count]);
                         break;
                         default:
-                            game.core.log.file_write("Unable to process UID - ",game.window_manager.window_stack[window_count].UID);
+                            game.core.log.file_write("Unable to process UID - ",game.window_manager.window[game.window_manager.window_stack[window_count]].UID);
                         break;
                     }
                 }

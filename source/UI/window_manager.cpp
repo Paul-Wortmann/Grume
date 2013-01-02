@@ -27,15 +27,6 @@
 
 extern game_class         game;
 
-//--------------------------------------------------------- Window Manager Stack Class -------------------------------------------------------------------
-window_manager_stack_class::window_manager_stack_class(void)
-{
-    //window_manager_stack_class::active        = false;
-    //window_manager_stack_class::enabled       = false;
-    window_manager_stack_class::UID           = -1;
-    window_manager_stack_class::window_number = -1;
-}
-
 //--------------------------------------------------------- Window Manager Class -------------------------------------------------------------------
 
 window_manager_class::window_manager_class(void)
@@ -60,39 +51,18 @@ bool  window_manager_class::mouse_over_window(float wx, float wy, float ww, floa
 
 void window_manager_class::window_stack_sort(void)
 {
-    /*
-    int   active_window_number = 0;
-    int   stack_count          = 0;
-    if (window_manager_class::number_of_windows > 1) // only processed if there is more than one windows in the list.
+    if (window_manager_class::number_of_windows > 1) // only processed if there are actually windows in the list to sort.
     {
-        // first save the stack into a new temporary stack
-        window_manager_stack_class *temp_stack;
-        temp_stack = new window_manager_stack_class[window_manager_class::number_of_windows+1];
-        for (int window_count = 0; window_count < window_manager_class::number_of_windows; window_count++)
+        for (int window_count = window_manager_class::number_of_windows-1; window_count >= 1; window_count--)
         {
-            temp_stack[window_count].UID           = window_manager_class::window_stack[window_count].UID;
-            temp_stack[window_count].window_number = window_manager_class::window_stack[window_count].window_number;
-            // find the active window during the backup process to remove an additional for loop.
-            if (window_manager_class::window[window_manager_class::window_stack[window_count].window_number].active) active_window_number = window_count;
-        }
-        // place the active window on the top of the window stack.
-        window_manager_class::window_stack[0].UID           = temp_stack[active_window_number].UID;
-        window_manager_class::window_stack[0].window_number = temp_stack[active_window_number].window_number;
-        // iterate through the saved stack, placing inactive items back on the list after the active window.
-        stack_count      = 1;
-        for (int temp_stack_count = 0; temp_stack_count < window_manager_class::number_of_windows-1; temp_stack_count++)
-        {
-            if(!window_manager_class::window[window_manager_class::window_stack[temp_stack_count].window_number].active)
+            if ((window_manager_class::window[window_manager_class::window_stack[window_count]].active) && (!window_manager_class::window[window_manager_class::window_stack[window_count]].set_behind))
             {
-                window_manager_class::window_stack[stack_count].UID           = temp_stack[temp_stack_count].UID;
-                window_manager_class::window_stack[stack_count].window_number = temp_stack[temp_stack_count].window_number;
-                stack_count++;
+                int temp_window_count = window_manager_class::window_stack[window_count-1];
+                window_manager_class::window_stack[window_count-1] = window_manager_class::window_stack[window_count];
+                window_manager_class::window_stack[window_count]   = temp_window_count;
             }
         }
-        //delete the temporary stack
-        if (temp_stack) delete temp_stack;
     }
-    */
 };
 
 void window_manager_class::create_windows(int number_windows)
@@ -102,9 +72,14 @@ void window_manager_class::create_windows(int number_windows)
         // create the windows
         window_manager_class::number_of_windows = number_windows;
         window_manager_class::window = new window_class[window_manager_class::number_of_windows+1];
-        // create the UID stack
-        window_manager_class::window_stack = new window_manager_stack_class[window_manager_class::number_of_windows+1];
+        // create the window stack
+        window_manager_class::window_stack = new int[window_manager_class::number_of_windows+1];
         window_manager_class::windows_list_created = true;
+        // Clear the window stack
+        for (int window_stack_count = 0; window_stack_count < number_of_windows; window_stack_count++)
+        {
+            window_manager_class::window_stack[window_stack_count] = -1;
+        }
     }
  }
 
@@ -115,7 +90,7 @@ int  window_manager_class::window_get_number(int UID)
     {
         for (int window_count = 0; window_count < window_manager_class::number_of_windows; window_count++)
         {
-            if (window_manager_class::window_stack[window_count].UID == UID) return_value = window_manager_class::window_stack[window_count].window_number;
+            if (window_manager_class::window[window_manager_class::window_stack[window_count]].UID == UID) return_value = window_manager_class::window_stack[window_count];
         }
     }
     return(return_value);
@@ -127,17 +102,17 @@ void window_manager_class::window_set_active(int UID)
     {
         for (int window_count = 0; window_count < window_manager_class::number_of_windows; window_count++)
         {
-            if (window_manager_class::window_stack[window_count].UID == UID)
+            if (window_manager_class::window[window_manager_class::window_stack[window_count]].UID == UID)
             {
-                window_manager_class::window[window_manager_class::window_stack[window_count].window_number].active = true;
+                window_manager_class::window[window_manager_class::window_stack[window_count]].active = true;
             }
             else
             {
-                window_manager_class::window[window_manager_class::window_stack[window_count].window_number].active = false;
+                window_manager_class::window[window_manager_class::window_stack[window_count]].active = false;
             }
         }
     }
-    game.window_manager.event = 65535; // request stack sort
+    window_manager_class::event = 65535; // request stack sort
 };
 
 void window_manager_class::window_set_inactive(int UID)
@@ -146,13 +121,13 @@ void window_manager_class::window_set_inactive(int UID)
     {
         for (int window_count = 0; window_count < window_manager_class::number_of_windows; window_count++)
         {
-            if (window_manager_class::window_stack[window_count].UID == UID)
+            if (window_manager_class::window[window_manager_class::window_stack[window_count]].UID == UID)
             {
-                window_manager_class::window[window_manager_class::window_stack[window_count].window_number].active = false;
+                window_manager_class::window[window_manager_class::window_stack[window_count]].active = false;
             }
         }
     }
-    game.window_manager.event = 65535; // request stack sort
+    window_manager_class::event = 65535; // request stack sort
 };
 
 int  window_manager_class::window_get_active(void)
@@ -162,7 +137,7 @@ int  window_manager_class::window_get_active(void)
     {
         for (int window_count = 0; window_count < window_manager_class::number_of_windows; window_count++)
         {
-            if(window_manager_class::window[window_manager_class::window_stack[window_count].window_number].active) return_value = window_manager_class::window_stack[window_count].UID;
+            if(window_manager_class::window[window_manager_class::window_stack[window_count]].active) return_value = window_manager_class::window[window_manager_class::window_stack[window_count]].UID;
         }
     }
     return(return_value);
@@ -175,14 +150,13 @@ int  window_manager_class::window_register(int UID)
     {
         for (int window_count = 0; window_count < window_manager_class::number_of_windows; window_count++)
         {
-            if ((window_manager_class::window_stack[window_count].UID == -1) && (!window_added))
+            if ((window_manager_class::window[window_count].UID == -1) && (!window_added))
             {
                 window_added = true;
-                window_manager_class::window_stack[window_count].UID           = UID;
-                window_manager_class::window_stack[window_count].window_number = window_count;
-                window_manager_class::window[window_count].UID                 = UID;
-                window_manager_class::window[window_manager_class::window_stack[window_count].window_number].active  = false;
-                window_manager_class::window[window_manager_class::window_stack[window_count].window_number].enabled = false;
+                window_manager_class::window[window_count].UID         = UID;
+                window_manager_class::window[window_count].active      = false;
+                window_manager_class::window[window_count].enabled     = false;
+                window_manager_class::window_stack[window_count]       = window_count;
             }
         }
     }
@@ -213,12 +187,12 @@ void window_manager_class::window_de_register(int UID)
     {
         for (int window_count = 0; window_count < window_manager_class::number_of_windows; window_count++)
         {
-            if (window_manager_class::window_stack[window_count].UID == UID)
+            if (window_manager_class::window[window_manager_class::window_stack[window_count]].UID == UID)
             {
-                window_manager_class::window[window_manager_class::window_stack[window_count].window_number].active  = false;
-                window_manager_class::window[window_manager_class::window_stack[window_count].window_number].enabled = false;
-                window_manager_class::window_stack[window_count].UID           = -1;
-                window_manager_class::window_stack[window_count].window_number = -1;
+                window_manager_class::window[window_manager_class::window_stack[window_count]].active  = false;
+                window_manager_class::window[window_manager_class::window_stack[window_count]].enabled = false;
+                window_manager_class::window[window_manager_class::window_stack[window_count]].UID     = -1;
+                window_manager_class::window_stack[window_count] = -1;
             }
         }
     }
@@ -230,10 +204,10 @@ void window_manager_class::window_enable(int UID)
     {
         for (int window_count = 0; window_count < window_manager_class::number_of_windows; window_count++)
         {
-            if (window_manager_class::window_stack[window_count].UID == UID)
+            if (window_manager_class::window[window_manager_class::window_stack[window_count]].UID == UID)
             {
-                window_manager_class::window[window_manager_class::window_stack[window_count].window_number].enabled = true;
-                window_manager_class::window[window_manager_class::window_stack[window_count].window_number].active  = true;
+                window_manager_class::window[window_manager_class::window_stack[window_count]].enabled = true;
+                window_manager_class::window_set_active(window_manager_class::window[window_manager_class::window_stack[window_count]].UID);
             }
         }
     }
@@ -245,10 +219,10 @@ void window_manager_class::window_disable(int UID)
     {
         for (int window_count = 0; window_count < window_manager_class::number_of_windows; window_count++)
         {
-            if (window_manager_class::window_stack[window_count].UID == UID)
+            if (window_manager_class::window[window_manager_class::window_stack[window_count]].UID == UID)
             {
-                window_manager_class::window[window_manager_class::window_stack[window_count].window_number].enabled = false;
-                window_manager_class::window[window_manager_class::window_stack[window_count].window_number].active  = false;
+                window_manager_class::window[window_manager_class::window_stack[window_count]].enabled = false;
+                window_manager_class::window_set_inactive(window_manager_class::window[window_manager_class::window_stack[window_count]].UID);
             }
         }
     }
@@ -281,9 +255,9 @@ void window_manager_class::window_reset_event(int UID)
     {
         for (int window_count = 0; window_count < window_manager_class::number_of_windows; window_count++)
         {
-            if (window_manager_class::window_stack[window_count].UID == UID)
+            if (window_manager_class::window[window_manager_class::window_stack[window_count]].UID == UID)
             {
-                window_manager_class::window[window_manager_class::window_stack[window_count].window_number].event = 0;
+                window_manager_class::window[window_manager_class::window_stack[window_count]].event = 0;
             }
         }
     }
@@ -296,9 +270,9 @@ void window_manager_class::mouse_reset(int UID)
     {
         for (int window_count = 0; window_count < window_manager_class::number_of_windows; window_count++)
         {
-            if (window_manager_class::window_stack[window_count].UID == UID)
+            if (window_manager_class::window[window_manager_class::window_stack[window_count]].UID == UID)
             {
-                window_number = window_manager_class::window_stack[window_count].window_number;
+                window_number = window_manager_class::window_stack[window_count];
                 window_manager_class::window[window_number].mouse_delay.reset();
                 for (int element_count = 0; element_count < window_manager_class::window[window_number].number_of_elements; element_count++)
                 {
@@ -316,9 +290,9 @@ int  window_manager_class::window_get_event(int UID)
     {
         for (int window_count = 0; window_count < window_manager_class::number_of_windows; window_count++)
         {
-            if ((window_manager_class::window_stack[window_count].UID == UID) && (window_manager_class::window[window_manager_class::window_stack[window_count].window_number].enabled))
+            if ((window_manager_class::window[window_manager_class::window_stack[window_count]].UID == UID) && (window_manager_class::window[window_manager_class::window_stack[window_count]].enabled))
             {
-                return_value = window_manager_class::window[window_manager_class::window_stack[window_count].window_number].event;
+                return_value = window_manager_class::window[window_manager_class::window_stack[window_count]].event;
             }
         }
     }
@@ -330,13 +304,14 @@ void window_manager_class::process(void)
     bool front_window_found = false;
     for (int window_count = 0; window_count < window_manager_class::number_of_windows; window_count++)
     {
-        if((!front_window_found) && (window_manager_class::window[window_manager_class::window_stack[window_count].window_number].enabled))
+        if((!front_window_found) && (window_manager_class::window[window_manager_class::window_stack[window_count]].enabled))
         {
-            if(window_manager_class::window[window_manager_class::window_stack[window_count].window_number].get_mouse_over_menu())
+            if(window_manager_class::window[window_manager_class::window_stack[window_count]].get_mouse_over_menu())
             {
                 //if mouse over window found, process it.
-                window_manager_class::window[window_manager_class::window_stack[window_count].window_number].mouse_over_menu = true;
-                window_manager_class::window[window_manager_class::window_stack[window_count].window_number].process();
+                window_manager_class::window[window_manager_class::window_stack[window_count]].mouse_over_menu  = true;
+                if (window_manager_class::window[window_manager_class::window_stack[window_count]].process() == 65535) window_manager_class::window_set_active(window_manager_class::window[window_manager_class::window_stack[window_count]].UID);
+                //if (!window_manager_class::window[window_manager_class::window_stack[window_count]].active) window_manager_class::window_set_active(window_manager_class::window[window_manager_class::window_stack[window_count]].UID);
                 front_window_found = true;
             }
         }
@@ -349,11 +324,11 @@ void window_manager_class::render(void)
     {
         for (int window_count = window_manager_class::number_of_windows-1; window_count >= 0; window_count--)
         {
-            if (window_manager_class::window[window_manager_class::window_stack[window_count].window_number].enabled)
+            if (window_manager_class::window[window_manager_class::window_stack[window_count]].UID != -1)
             {
-                if (window_manager_class::window_stack[window_count].window_number != -1)
+                if (window_manager_class::window[window_manager_class::window_stack[window_count]].enabled)
                 {
-                    window_manager_class::window[window_manager_class::window_stack[window_count].window_number].render();
+                    window_manager_class::window[window_manager_class::window_stack[window_count]].render();
                 }
             }
         }

@@ -34,6 +34,7 @@ window_class::window_class(void)
     window_class::UID                                = -1;
     window_class::enabled                            = false;
     window_class::active                             = false;
+    window_class::set_behind                         = false;
     window_class::drag_enabled                       = true;
     window_class::event                              = 0;
     window_class::number_of_elements                 = 0;
@@ -259,7 +260,7 @@ int window_class::process(void)
                         window_class::drag_offset_y                = window_class::position.y - game.core.io.mouse_y;
                         window_class::drag_active                  = true;
                         game.window_manager.drag_in_progress       = true;
-                        game.window_manager.event                  = 65535; // stack sort is needed.
+                        return_value                               = 65535; // stack sort is needed.
                     }
                 }
             }
