@@ -127,24 +127,26 @@ void setup_character_window(int UID)
     game.window_manager.window[window_number].element[element_number].mouse_delay.maximum       = 30;
     game.window_manager.window[window_number].element[element_number].font                      = game.window_manager.window[window_number].font;
     element_number = 2; //--- portrait background ---
-    game.window_manager.window[window_number].element[element_number].title.text                = "";
-    game.window_manager.window[window_number].element[element_number].title.enabled             = "";
-    game.window_manager.window[window_number].element[element_number].active                    = true;
-    game.window_manager.window[window_number].element[element_number].click_enabled             = false;
-    game.window_manager.window[window_number].element[element_number].type                      = IMAGE;
-    game.window_manager.window[window_number].element[element_number].zoom.enabled              = false;
-    game.window_manager.window[window_number].element[element_number].color                     = game.window_manager.window[window_number].color;
-    game.window_manager.window[window_number].element[element_number].size.x                    = 0.16f;
-    game.window_manager.window[window_number].element[element_number].size.y                    = game.window_manager.window[window_number].element[element_number].size.x;
-    game.window_manager.window[window_number].element[element_number].position.x                = game.window_manager.window[window_number].position.x+(game.window_manager.window[window_number].element[element_number].size.x)-(game.window_manager.window[window_number].size.x/2.0f);
-    game.window_manager.window[window_number].element[element_number].position.y                = game.window_manager.window[window_number].position.y+(game.window_manager.window[window_number].element[element_number].size.y * 1.44f);
-    game.window_manager.window[window_number].element[element_number].texture.normal.image_path = "data/textures/UI/character/character_portrait_frame.png";
+    game.window_manager.window[window_number].element[element_number].title.text                  = "";
+    game.window_manager.window[window_number].element[element_number].title.enabled               = "";
+    game.window_manager.window[window_number].element[element_number].active                      = true;
+    game.window_manager.window[window_number].element[element_number].click_enabled               = false;
+    game.window_manager.window[window_number].element[element_number].type                        = IMAGE;
+    game.window_manager.window[window_number].element[element_number].zoom.enabled                = false;
+    game.window_manager.window[window_number].element[element_number].color                       = game.window_manager.window[window_number].color;
+    game.window_manager.window[window_number].element[element_number].size.x                      = 0.16f;
+    game.window_manager.window[window_number].element[element_number].size.y                      = game.window_manager.window[window_number].element[element_number].size.x;
+    game.window_manager.window[window_number].element[element_number].position.x                  = game.window_manager.window[window_number].position.x+(game.window_manager.window[window_number].element[element_number].size.x)-(game.window_manager.window[window_number].size.x/2.0f);
+    game.window_manager.window[window_number].element[element_number].position.y                  = game.window_manager.window[window_number].position.y+(game.window_manager.window[window_number].element[element_number].size.y * 1.44f);
+    game.window_manager.window[window_number].element[element_number].texture.normal.image_path   = "data/textures/UI/character/character_portrait_frame.png";
     game.window_manager.window[window_number].element[element_number].texture.normal.image.load_image(game.window_manager.window[window_number].element[element_number].texture.normal.image_path);
     game.window_manager.window[window_number].element[element_number].texture.highlighted.image_path = "data/textures/UI/character/character_portrait_frame.png";
     game.window_manager.window[window_number].element[element_number].texture.highlighted.image.load_image(game.window_manager.window[window_number].element[element_number].texture.highlighted.image_path);
-    game.window_manager.window[window_number].element[element_number].sound                     = game.window_manager.window[window_number].sound;
-    game.window_manager.window[window_number].element[element_number].mouse_delay.maximum       = 30;
-    game.window_manager.window[window_number].element[element_number].font                      = game.window_manager.window[window_number].font;
+    game.window_manager.window[window_number].element[element_number].sound                       = game.window_manager.window[window_number].sound;
+    game.window_manager.window[window_number].element[element_number].sound.on_click.enabled      = false;
+    game.window_manager.window[window_number].element[element_number].sound.on_mouse_over.enabled = false;
+    game.window_manager.window[window_number].element[element_number].mouse_delay.maximum         = 30;
+    game.window_manager.window[window_number].element[element_number].font                        = game.window_manager.window[window_number].font;
 };
 
 void update_character_window(int UID)
