@@ -90,6 +90,7 @@ void setup_player_profile(int UID)
     game.window_manager.window[window_number].element = new window_element_class[game.window_manager.window[window_number].number_of_elements];
     element_number = 0; //--- Player profile image ---
     game.window_manager.window[window_number].element[element_number].title.text                = "";
+    game.window_manager.window[window_number].element[element_number].title.enabled             = false;
     game.window_manager.window[window_number].element[element_number].active                    = true;
     game.window_manager.window[window_number].element[element_number].type                      = IMAGE;
     game.window_manager.window[window_number].element[element_number].zoom.enabled              = false;
@@ -111,6 +112,7 @@ void setup_player_profile(int UID)
     game.window_manager.window[window_number].element[element_number].mouse_delay.maximum       = 30;
     element_number = 1; //--- Player profile bar background ---
     game.window_manager.window[window_number].element[element_number].title.text                = "";
+    game.window_manager.window[window_number].element[element_number].title.enabled             = false;
     game.window_manager.window[window_number].element[element_number].active                    = true;
     game.window_manager.window[window_number].element[element_number].type                      = IMAGE;
     game.window_manager.window[window_number].element[element_number].zoom.enabled              = false;
@@ -128,6 +130,7 @@ void setup_player_profile(int UID)
     game.window_manager.window[window_number].element[element_number].mouse_delay.maximum       = 30;
     element_number = 2; //--- Player health bar ---
     game.window_manager.window[window_number].element[element_number].title.text                = "";
+    game.window_manager.window[window_number].element[element_number].title.enabled             = false;
     game.window_manager.window[window_number].element[element_number].active                    = true;
     game.window_manager.window[window_number].element[element_number].type                      = BAR;
     game.window_manager.window[window_number].element[element_number].value                     = 0;
@@ -151,6 +154,7 @@ void setup_player_profile(int UID)
     game.window_manager.window[window_number].element[element_number].mouse_delay.maximum       = 30;
     element_number = 3; //--- Player mana bar ---
     game.window_manager.window[window_number].element[element_number].title.text                = "";
+    game.window_manager.window[window_number].element[element_number].title.enabled             = false;
     game.window_manager.window[window_number].element[element_number].active                    = true;
     game.window_manager.window[window_number].element[element_number].type                      = BAR;
     game.window_manager.window[window_number].element[element_number].value                     = 100;
@@ -174,6 +178,7 @@ void setup_player_profile(int UID)
     game.window_manager.window[window_number].element[element_number].mouse_delay.maximum       = 30;
     element_number = 4; //--- Player profile bar foreground ---
     game.window_manager.window[window_number].element[element_number].title.text                = "";
+    game.window_manager.window[window_number].element[element_number].title.enabled             = false;
     game.window_manager.window[window_number].element[element_number].active                    = true;
     game.window_manager.window[window_number].element[element_number].type                      = IMAGE;
     game.window_manager.window[window_number].element[element_number].zoom.enabled              = false;

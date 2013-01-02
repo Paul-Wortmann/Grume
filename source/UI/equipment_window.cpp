@@ -92,6 +92,7 @@ void setup_equipment_window(int UID)
     game.window_manager.window[window_number].element = new window_element_class[game.window_manager.window[window_number].number_of_elements];
     element_number = 0; //--- Close button ---
     game.window_manager.window[window_number].element[element_number].title.text                = "";
+    game.window_manager.window[window_number].element[element_number].title.enabled             = false;
     game.window_manager.window[window_number].element[element_number].active                    = true;
     game.window_manager.window[window_number].element[element_number].type                      = BUTTON;
     game.window_manager.window[window_number].element[element_number].zoom.enabled              = false;
