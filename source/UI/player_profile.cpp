@@ -41,7 +41,7 @@ void setup_player_profile(int UID)
     game.window_manager.window[window_number].position.y              =  1.0f - (game.window_manager.window[window_number].size.y / 2.0f);
     game.window_manager.window[window_number].position.z              =  0.0f;
     game.window_manager.window[window_number].texture.angle           =  0.0f;
-    game.window_manager.window[window_number].texture.base.image_path = "data/textures/UI/portrait/profile_background.png";
+    game.window_manager.window[window_number].texture.base.image_path = "data/textures/UI/menu/profile_background.png";
     game.window_manager.window[window_number].texture.base.image.load_image(game.window_manager.window[window_number].texture.base.image_path);
     game.window_manager.window[window_number].texture.normal.image_path = "data/textures/UI/menu/button_normal.png";
     game.window_manager.window[window_number].texture.normal.image.load_image(game.window_manager.window[window_number].texture.normal.image_path);
@@ -121,9 +121,9 @@ void setup_player_profile(int UID)
     game.window_manager.window[window_number].element[element_number].size.y                    = game.window_manager.window[window_number].size.y * 1.1f;
     game.window_manager.window[window_number].element[element_number].position.x                = game.window_manager.window[window_number].position.x + (game.window_manager.window[window_number].size.x * 0.85);
     game.window_manager.window[window_number].element[element_number].position.y                = game.window_manager.window[window_number].position.y;
-    game.window_manager.window[window_number].element[element_number].texture.normal.image_path = "data/textures/UI/portrait/profile_main_background.png";
+    game.window_manager.window[window_number].element[element_number].texture.normal.image_path = "data/textures/UI/menu/profile_main_background.png";
     game.window_manager.window[window_number].element[element_number].texture.normal.image.load_image(game.window_manager.window[window_number].element[element_number].texture.normal.image_path);
-    game.window_manager.window[window_number].element[element_number].texture.highlighted.image_path = "data/textures/UI/portrait/profile_main_background.png";
+    game.window_manager.window[window_number].element[element_number].texture.highlighted.image_path = "data/textures/UI/menu/profile_main_background.png";
     game.window_manager.window[window_number].element[element_number].texture.highlighted.image.load_image(game.window_manager.window[window_number].element[element_number].texture.highlighted.image_path);
     game.window_manager.window[window_number].element[element_number].sound                     = game.window_manager.window[window_number].sound;
     game.window_manager.window[window_number].element[element_number].font                      = game.window_manager.window[window_number].font;
@@ -145,9 +145,9 @@ void setup_player_profile(int UID)
     game.window_manager.window[window_number].element[element_number].size.y                    = game.window_manager.window[window_number].size.y * 0.161f;
     game.window_manager.window[window_number].element[element_number].position.x                = game.window_manager.window[window_number].position.x + (game.window_manager.window[window_number].size.x * 1.25f);
     game.window_manager.window[window_number].element[element_number].position.y                = game.window_manager.window[window_number].position.y + (game.window_manager.window[window_number].size.y * 0.31f);
-    game.window_manager.window[window_number].element[element_number].texture.normal.image_path = "data/textures/UI/portrait/health_bar.png";
+    game.window_manager.window[window_number].element[element_number].texture.normal.image_path = "data/textures/UI/menu/health_bar.png";
     game.window_manager.window[window_number].element[element_number].texture.normal.image.load_image(game.window_manager.window[window_number].element[element_number].texture.normal.image_path);
-    game.window_manager.window[window_number].element[element_number].texture.highlighted.image_path = "data/textures/UI/portrait/health_bar.png";
+    game.window_manager.window[window_number].element[element_number].texture.highlighted.image_path = "data/textures/UI/menu/health_bar.png";
     game.window_manager.window[window_number].element[element_number].texture.highlighted.image.load_image(game.window_manager.window[window_number].element[element_number].texture.highlighted.image_path);
     game.window_manager.window[window_number].element[element_number].sound                     = game.window_manager.window[window_number].sound;
     game.window_manager.window[window_number].element[element_number].font                      = game.window_manager.window[window_number].font;
@@ -169,9 +169,9 @@ void setup_player_profile(int UID)
     game.window_manager.window[window_number].element[element_number].size.y                    = game.window_manager.window[window_number].size.y * 0.161f;
     game.window_manager.window[window_number].element[element_number].position.x                = game.window_manager.window[window_number].position.x + (game.window_manager.window[window_number].size.x * 1.25f);
     game.window_manager.window[window_number].element[element_number].position.y                = game.window_manager.window[window_number].position.y + (game.window_manager.window[window_number].size.y * 0.12f);
-    game.window_manager.window[window_number].element[element_number].texture.normal.image_path = "data/textures/UI/portrait/mana_bar.png";
+    game.window_manager.window[window_number].element[element_number].texture.normal.image_path = "data/textures/UI/menu/mana_bar.png";
     game.window_manager.window[window_number].element[element_number].texture.normal.image.load_image(game.window_manager.window[window_number].element[element_number].texture.normal.image_path);
-    game.window_manager.window[window_number].element[element_number].texture.highlighted.image_path = "data/textures/UI/portrait/mana_bar.png";
+    game.window_manager.window[window_number].element[element_number].texture.highlighted.image_path = "data/textures/UI/menu/mana_bar.png";
     game.window_manager.window[window_number].element[element_number].texture.highlighted.image.load_image(game.window_manager.window[window_number].element[element_number].texture.highlighted.image_path);
     game.window_manager.window[window_number].element[element_number].sound                     = game.window_manager.window[window_number].sound;
     game.window_manager.window[window_number].element[element_number].font                      = game.window_manager.window[window_number].font;
@@ -187,9 +187,9 @@ void setup_player_profile(int UID)
     game.window_manager.window[window_number].element[element_number].size.y                    = game.window_manager.window[window_number].size.y * 1.1f;
     game.window_manager.window[window_number].element[element_number].position.x                = game.window_manager.window[window_number].position.x + (game.window_manager.window[window_number].size.x * 0.85);
     game.window_manager.window[window_number].element[element_number].position.y                = game.window_manager.window[window_number].position.y;
-    game.window_manager.window[window_number].element[element_number].texture.normal.image_path = "data/textures/UI/portrait/profile_main.png";
+    game.window_manager.window[window_number].element[element_number].texture.normal.image_path = "data/textures/UI/menu/profile_main.png";
     game.window_manager.window[window_number].element[element_number].texture.normal.image.load_image(game.window_manager.window[window_number].element[element_number].texture.normal.image_path);
-    game.window_manager.window[window_number].element[element_number].texture.highlighted.image_path = "data/textures/UI/portrait/profile_main.png";
+    game.window_manager.window[window_number].element[element_number].texture.highlighted.image_path = "data/textures/UI/menu/profile_main.png";
     game.window_manager.window[window_number].element[element_number].texture.highlighted.image.load_image(game.window_manager.window[window_number].element[element_number].texture.highlighted.image_path);
     game.window_manager.window[window_number].element[element_number].sound                     = game.window_manager.window[window_number].sound;
     game.window_manager.window[window_number].element[element_number].font                      = game.window_manager.window[window_number].font;

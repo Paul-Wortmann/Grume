@@ -60,9 +60,10 @@ bool  window_manager_class::mouse_over_window(float wx, float wy, float ww, floa
 
 void window_manager_class::window_stack_sort(void)
 {
+    /*
     int   active_window_number = 0;
     int   stack_count          = 0;
-    if (window_manager_class::number_of_windows > 0) // only processed if there are actually windows in the list.
+    if (window_manager_class::number_of_windows > 1) // only processed if there is more than one windows in the list.
     {
         // first save the stack into a new temporary stack
         window_manager_stack_class *temp_stack;
@@ -91,6 +92,7 @@ void window_manager_class::window_stack_sort(void)
         //delete the temporary stack
         if (temp_stack) delete temp_stack;
     }
+    */
 };
 
 void window_manager_class::create_windows(int number_windows)
