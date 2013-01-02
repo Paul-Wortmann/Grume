@@ -32,7 +32,7 @@ extern game_class         game;
 void setup_inventory_window(int UID)
 {
     int window_number = game.window_manager.window_get_number(UID);
-    int element_number = 1;
+    int element_number = 0;
     game.window_manager.window[window_number].active                  = false;
     game.window_manager.window[window_number].mouse_over_menu         = false;
     game.window_manager.window[window_number].mouse_over_title        = false;
@@ -88,9 +88,9 @@ void setup_inventory_window(int UID)
     game.window_manager.window[window_number].title_bar.position.y    = game.window_manager.window[window_number].position.y+(game.window_manager.window[window_number].size.y/2.0f)-(game.window_manager.window[window_number].title_bar.size.y/2.0f);
 
     // ---------------------------- Setup window elements ----------------------------------------------------
-    game.window_manager.window[window_number].number_of_elements = 2;
+    game.window_manager.window[window_number].number_of_elements = 1;
     game.window_manager.window[window_number].element = new window_element_class[game.window_manager.window[window_number].number_of_elements];
-    element_number = 1; //--- Close button ---
+    element_number = 0; //--- Close button ---
     game.window_manager.window[window_number].element[element_number].title.text                = "";
     game.window_manager.window[window_number].element[element_number].active                    = true;
     game.window_manager.window[window_number].element[element_number].type                      = BUTTON;
@@ -115,7 +115,7 @@ void process_inventory_window(int window_number)
     {
         switch (game.window_manager.window[window_number].event)
         {
-            case 101: // Close menu button
+            case 001: // Close menu button
                 game.window_manager.window_disable(INVENTORY_UID);
                 game.core.inventory_active= false;
             break;

@@ -33,7 +33,7 @@ extern game_class         game;
 void setup_menu_options(int UID)
 {
     int window_number = game.window_manager.window_get_number(UID);
-    int element_number = 1;
+    int element_number = 0;
     game.window_manager.window[window_number].active                  = false;
     game.window_manager.window[window_number].mouse_over_menu         = false;
     game.window_manager.window[window_number].mouse_over_title        = false;
@@ -89,9 +89,9 @@ void setup_menu_options(int UID)
     game.window_manager.window[window_number].title_bar.position.y    = game.window_manager.window[window_number].position.y+(game.window_manager.window[window_number].size.y/2.0f)-(game.window_manager.window[window_number].title_bar.size.y/2.0f);
 
     // ---------------------------- Setup window elements ----------------------------------------------------
-    game.window_manager.window[window_number].number_of_elements = 19;
+    game.window_manager.window[window_number].number_of_elements = 18;
     game.window_manager.window[window_number].element = new window_element_class[game.window_manager.window[window_number].number_of_elements];
-    element_number = 1; //--- Close button ---
+    element_number = 0; //--- Close button ---
     game.window_manager.window[window_number].element[element_number].title.text                = "";
     game.window_manager.window[window_number].element[element_number].active                    = true;
     game.window_manager.window[window_number].element[element_number].type                      = BUTTON;
@@ -109,7 +109,7 @@ void setup_menu_options(int UID)
     game.window_manager.window[window_number].element[element_number].font                      = game.window_manager.window[window_number].font;
     game.window_manager.window[window_number].element[element_number].mouse_delay.maximum       = 30;
 
-    element_number = 2; //--- Main menu button ---
+    element_number = 1; //--- Main menu button ---
     game.window_manager.window[window_number].element[element_number].title.text                = "Main Menu";
     game.window_manager.window[window_number].element[element_number].title.enabled             = true;
     game.window_manager.window[window_number].element[element_number].active                    = true;
@@ -152,7 +152,7 @@ void setup_menu_options(int UID)
     game.window_manager.window[window_number].choice_selection[0].data[7].value_int       = 7;
     game.window_manager.window[window_number].choice_selection[0].data[7].value_string    = "1920 X 1080";
 
-    element_number = 3; // Resolution selection element
+    element_number = 2; // Resolution selection element
     game.window_manager.window[window_number].element[element_number].title.text                = "";
     game.window_manager.window[window_number].element[element_number].active                    = true;
     game.window_manager.window[window_number].element[element_number].state                     = DISABLED;
@@ -173,7 +173,7 @@ void setup_menu_options(int UID)
     game.window_manager.window[window_number].element[element_number].texture.disabled.image.load_image(game.window_manager.window[window_number].element[element_number].texture.disabled.image_path);
     game.window_manager.window[window_number].element[element_number].sound                     = game.window_manager.window[window_number].sound;
 
-    element_number = 4; // Resolution selection element 0
+    element_number = 3; // Resolution selection element 0
     game.window_manager.window[window_number].element[element_number].title.enabled             = true;
     game.window_manager.window[window_number].element[element_number].title.text                = game.window_manager.window[window_number].choice_selection[0].data[0].value_string;
     game.window_manager.window[window_number].element[element_number].selected                  = game.window_manager.window[window_number].choice_selection[0].data[0].active;
@@ -201,7 +201,7 @@ void setup_menu_options(int UID)
     game.window_manager.window[window_number].element[element_number].font                      = game.window_manager.window[window_number].font;
     game.window_manager.window[window_number].element[element_number].mouse_delay.maximum       = 10;
 
-    element_number = 5; // Resolution selection element 1
+    element_number = 4; // Resolution selection element 1
     game.window_manager.window[window_number].element[element_number].title.enabled             = true;
     game.window_manager.window[window_number].element[element_number].title.text                = game.window_manager.window[window_number].choice_selection[0].data[1].value_string;
     game.window_manager.window[window_number].element[element_number].selected                  = game.window_manager.window[window_number].choice_selection[0].data[1].active;
@@ -229,7 +229,7 @@ void setup_menu_options(int UID)
     game.window_manager.window[window_number].element[element_number].font                      = game.window_manager.window[window_number].font;
     game.window_manager.window[window_number].element[element_number].mouse_delay.maximum       = 10;
 
-    element_number = 6; // Resolution selection element 2
+    element_number = 5; // Resolution selection element 2
     game.window_manager.window[window_number].element[element_number].title.enabled             = true;
     game.window_manager.window[window_number].element[element_number].title.text                = game.window_manager.window[window_number].choice_selection[0].data[2].value_string;
     game.window_manager.window[window_number].element[element_number].selected                  = game.window_manager.window[window_number].choice_selection[0].data[2].active;
@@ -257,7 +257,7 @@ void setup_menu_options(int UID)
     game.window_manager.window[window_number].element[element_number].font                      = game.window_manager.window[window_number].font;
     game.window_manager.window[window_number].element[element_number].mouse_delay.maximum       = 10;
 
-    element_number = 7; // Resolution selection element 3
+    element_number = 6; // Resolution selection element 3
     game.window_manager.window[window_number].element[element_number].title.enabled             = true;
     game.window_manager.window[window_number].element[element_number].title.text                = game.window_manager.window[window_number].choice_selection[0].data[3].value_string;
     game.window_manager.window[window_number].element[element_number].selected                  = game.window_manager.window[window_number].choice_selection[0].data[3].active;
@@ -285,7 +285,7 @@ void setup_menu_options(int UID)
     game.window_manager.window[window_number].element[element_number].font                      = game.window_manager.window[window_number].font;
     game.window_manager.window[window_number].element[element_number].mouse_delay.maximum       = 10;
 
-    element_number = 8; // Resolution selection element 4
+    element_number = 7; // Resolution selection element 4
     game.window_manager.window[window_number].element[element_number].title.enabled             = true;
     game.window_manager.window[window_number].element[element_number].title.text                = game.window_manager.window[window_number].choice_selection[0].data[4].value_string;
     game.window_manager.window[window_number].element[element_number].selected                  = game.window_manager.window[window_number].choice_selection[0].data[4].active;
@@ -313,7 +313,7 @@ void setup_menu_options(int UID)
     game.window_manager.window[window_number].element[element_number].font                      = game.window_manager.window[window_number].font;
     game.window_manager.window[window_number].element[element_number].mouse_delay.maximum       = 10;
 
-    element_number = 9; // Right arrow resolution selection element
+    element_number = 8; // Right arrow resolution selection element
     game.window_manager.window[window_number].element[element_number].title.text                = "";
     game.window_manager.window[window_number].element[element_number].active                    = true;
     game.window_manager.window[window_number].element[element_number].type                      = BUTTON;
@@ -333,7 +333,7 @@ void setup_menu_options(int UID)
     game.window_manager.window[window_number].element[element_number].mouse_delay.maximum       = 5;
     game.window_manager.window[window_number].element[element_number].sound                     = game.window_manager.window[window_number].sound;
 
-    element_number = 10; // Left arrow resolution selection element
+    element_number = 9; // Left arrow resolution selection element
     game.window_manager.window[window_number].element[element_number].title.text                = "";
     game.window_manager.window[window_number].element[element_number].active                    = true;
     game.window_manager.window[window_number].element[element_number].type                      = BUTTON;
@@ -354,7 +354,7 @@ void setup_menu_options(int UID)
     game.window_manager.window[window_number].element[element_number].sound                     = game.window_manager.window[window_number].sound;
 
 // ------------------------------------------- Sound Volume ------------------------------------------------------------
-    element_number = 11; // Sound volume selection left arrow element
+    element_number = 10; // Sound volume selection left arrow element
     game.window_manager.window[window_number].element[element_number].title.text                = "";
     game.window_manager.window[window_number].element[element_number].active                    = true;
     game.window_manager.window[window_number].element[element_number].type                      = BUTTON;
@@ -375,7 +375,7 @@ void setup_menu_options(int UID)
     game.window_manager.window[window_number].element[element_number].sound                     = game.window_manager.window[window_number].sound;
     game.window_manager.window[window_number].element[element_number].sound.on_click.enabled    = false;
 
-    element_number = 12; // Sound volume selection right arrow element
+    element_number = 11; // Sound volume selection right arrow element
     game.window_manager.window[window_number].element[element_number].title.text                = "";
     game.window_manager.window[window_number].element[element_number].active                    = true;
     game.window_manager.window[window_number].element[element_number].type                      = BUTTON;
@@ -396,7 +396,7 @@ void setup_menu_options(int UID)
     game.window_manager.window[window_number].element[element_number].sound                     = game.window_manager.window[window_number].sound;
     game.window_manager.window[window_number].element[element_number].sound.on_click.enabled    = false;
 
-    element_number = 13; // Sound volume selection - sound volume bar element
+    element_number = 12; // Sound volume selection - sound volume bar element
     game.window_manager.window[window_number].element[element_number].title.text                = "Sound volume";
     game.window_manager.window[window_number].element[element_number].title.enabled             = true;
     game.window_manager.window[window_number].element[element_number].value                     = game.core.config.audio_volume_sound;
@@ -423,7 +423,7 @@ void setup_menu_options(int UID)
     game.window_manager.window[window_number].element[element_number].font                      = game.window_manager.window[window_number].font;
 
 // ------------------------------------------- Music Volume ------------------------------------------------------------
-    element_number = 14; // Music volume selection left arrow element
+    element_number = 13; // Music volume selection left arrow element
     game.window_manager.window[window_number].element[element_number].title.text                = "";
     game.window_manager.window[window_number].element[element_number].active                    = true;
     game.window_manager.window[window_number].element[element_number].type                      = BUTTON;
@@ -444,7 +444,7 @@ void setup_menu_options(int UID)
     game.window_manager.window[window_number].element[element_number].sound                     = game.window_manager.window[window_number].sound;
     game.window_manager.window[window_number].element[element_number].sound.on_click.enabled    = false;
 
-    element_number = 15; // Music volume selection right arrow element
+    element_number = 14; // Music volume selection right arrow element
     game.window_manager.window[window_number].element[element_number].title.text                = "";
     game.window_manager.window[window_number].element[element_number].active                    = true;
     game.window_manager.window[window_number].element[element_number].type                      = BUTTON;
@@ -465,7 +465,7 @@ void setup_menu_options(int UID)
     game.window_manager.window[window_number].element[element_number].sound                     = game.window_manager.window[window_number].sound;
     game.window_manager.window[window_number].element[element_number].sound.on_click.enabled    = false;
 
-    element_number = 16; // Music volume selection - music volume bar element
+    element_number = 15; // Music volume selection - music volume bar element
     game.window_manager.window[window_number].element[element_number].title.text                = "Music volume";
     game.window_manager.window[window_number].element[element_number].title.enabled             = true;
     game.window_manager.window[window_number].element[element_number].value                     = game.core.config.audio_volume_music;
@@ -491,7 +491,7 @@ void setup_menu_options(int UID)
     game.window_manager.window[window_number].element[element_number].sound                     = game.window_manager.window[window_number].sound;
     game.window_manager.window[window_number].element[element_number].font                      = game.window_manager.window[window_number].font;
 
-    element_number = 17; // Full screen button element
+    element_number = 16; // Full screen button element
     game.window_manager.window[window_number].element[element_number].title.text                = "Fullscreen";
     game.window_manager.window[window_number].element[element_number].title.enabled             = true;
     game.window_manager.window[window_number].element[element_number].active                    = true;
@@ -510,7 +510,7 @@ void setup_menu_options(int UID)
     game.window_manager.window[window_number].element[element_number].sound                     = game.window_manager.window[window_number].sound;
     game.window_manager.window[window_number].element[element_number].font                      = game.window_manager.window[window_number].font;
 
-    element_number = 18; // Full screen colored button element
+    element_number = 17; // Full screen colored button element
     game.window_manager.window[window_number].element[element_number].title.text                = "";
     game.window_manager.window[window_number].element[element_number].active                    = true;
     game.window_manager.window[window_number].element[element_number].type                      = BUTTON;
@@ -559,33 +559,33 @@ void process_menu_options(int window_number)
         game.core.log.file_write("Processing event - ",game.window_manager.window[window_number].event);
         switch (game.window_manager.window[window_number].event)
         {
-            case 101: // Close menu button
+            case 001: // Close menu button
                 game.window_manager.window_transition(MENU_OPTIONS_UID,MENU_MAIN_UID);
             break;
-            case 201: // Main menu button
+            case 101: // Main menu button
                 game.window_manager.window_transition(MENU_OPTIONS_UID,MENU_MAIN_UID);
             break;
-            case 401: // Resolution selection element 0
+            case 301: // Resolution selection element 0
                 resolution_selection = true;
                 resolution_element   = 0;
             break;
-            case 501: // Resolution selection element 1
+            case 401: // Resolution selection element 1
                 resolution_selection = true;
                 resolution_element   = 1;
             break;
-            case 601: // Resolution selection element 2
+            case 501: // Resolution selection element 2
                 resolution_selection = true;
                 resolution_element   = 2;
             break;
-            case 701: // Resolution selection element 3
+            case 601: // Resolution selection element 3
                 resolution_selection = true;
                 resolution_element   = 3;
             break;
-            case 801: // Resolution selection element 4
+            case 701: // Resolution selection element 4
                 resolution_selection = true;
                 resolution_element   = 4;
             break;
-            case 901: // Resolution left arrow button
+            case 801: // Resolution left arrow button
                 {
                     game.window_manager.window[window_number].choice_selection[0].position++;
                     if (game.window_manager.window[window_number].choice_selection[0].position > game.window_manager.window[window_number].choice_selection[0].position_max) game.window_manager.window[window_number].choice_selection[0].position = 0;
@@ -601,19 +601,19 @@ void process_menu_options(int window_number)
                     game.window_manager.window[window_number].choice_selection[0].data[game.window_manager.window[window_number].choice_selection[0].position_max].value_int    = temp_data_value;
                     game.window_manager.window[window_number].choice_selection[0].data[game.window_manager.window[window_number].choice_selection[0].position_max].active       = temp_data_bool;
                     game.window_manager.window[window_number].choice_selection[0].data[game.window_manager.window[window_number].choice_selection[0].position_max].value_string = temp_data_string;
-                    game.window_manager.window[window_number].element[4].selected                  = game.window_manager.window[window_number].choice_selection[0].data[0].active;
-                    game.window_manager.window[window_number].element[5].selected                  = game.window_manager.window[window_number].choice_selection[0].data[1].active;
-                    game.window_manager.window[window_number].element[6].selected                  = game.window_manager.window[window_number].choice_selection[0].data[2].active;
-                    game.window_manager.window[window_number].element[7].selected                  = game.window_manager.window[window_number].choice_selection[0].data[3].active;
-                    game.window_manager.window[window_number].element[8].selected                  = game.window_manager.window[window_number].choice_selection[0].data[4].active;
-                    game.window_manager.window[window_number].element[4].title.text                = game.window_manager.window[window_number].choice_selection[0].data[0].value_string;
-                    game.window_manager.window[window_number].element[5].title.text                = game.window_manager.window[window_number].choice_selection[0].data[1].value_string;
-                    game.window_manager.window[window_number].element[6].title.text                = game.window_manager.window[window_number].choice_selection[0].data[2].value_string;
-                    game.window_manager.window[window_number].element[7].title.text                = game.window_manager.window[window_number].choice_selection[0].data[3].value_string;
-                    game.window_manager.window[window_number].element[8].title.text                = game.window_manager.window[window_number].choice_selection[0].data[4].value_string;
+                    game.window_manager.window[window_number].element[3].selected                  = game.window_manager.window[window_number].choice_selection[0].data[0].active;
+                    game.window_manager.window[window_number].element[4].selected                  = game.window_manager.window[window_number].choice_selection[0].data[1].active;
+                    game.window_manager.window[window_number].element[5].selected                  = game.window_manager.window[window_number].choice_selection[0].data[2].active;
+                    game.window_manager.window[window_number].element[6].selected                  = game.window_manager.window[window_number].choice_selection[0].data[3].active;
+                    game.window_manager.window[window_number].element[7].selected                  = game.window_manager.window[window_number].choice_selection[0].data[4].active;
+                    game.window_manager.window[window_number].element[3].title.text                = game.window_manager.window[window_number].choice_selection[0].data[0].value_string;
+                    game.window_manager.window[window_number].element[4].title.text                = game.window_manager.window[window_number].choice_selection[0].data[1].value_string;
+                    game.window_manager.window[window_number].element[5].title.text                = game.window_manager.window[window_number].choice_selection[0].data[2].value_string;
+                    game.window_manager.window[window_number].element[6].title.text                = game.window_manager.window[window_number].choice_selection[0].data[3].value_string;
+                    game.window_manager.window[window_number].element[7].title.text                = game.window_manager.window[window_number].choice_selection[0].data[4].value_string;
                 }
             break;
-            case 1001: // Resolution right arrow button
+            case 901: // Resolution right arrow button
                 {
                     game.window_manager.window[window_number].choice_selection[0].position--;
                     if (game.window_manager.window[window_number].choice_selection[0].position < 0) game.window_manager.window[window_number].choice_selection[0].position = game.window_manager.window[window_number].choice_selection[0].position_max;
@@ -629,47 +629,47 @@ void process_menu_options(int window_number)
                     game.window_manager.window[window_number].choice_selection[0].data[0].value_int    = temp_data_value;
                     game.window_manager.window[window_number].choice_selection[0].data[0].active       = temp_data_bool;
                     game.window_manager.window[window_number].choice_selection[0].data[0].value_string = temp_data_string;
-                    game.window_manager.window[window_number].element[4].selected                  = game.window_manager.window[window_number].choice_selection[0].data[0].active;
-                    game.window_manager.window[window_number].element[5].selected                  = game.window_manager.window[window_number].choice_selection[0].data[1].active;
-                    game.window_manager.window[window_number].element[6].selected                  = game.window_manager.window[window_number].choice_selection[0].data[2].active;
-                    game.window_manager.window[window_number].element[7].selected                  = game.window_manager.window[window_number].choice_selection[0].data[3].active;
-                    game.window_manager.window[window_number].element[8].selected                  = game.window_manager.window[window_number].choice_selection[0].data[4].active;
-                    game.window_manager.window[window_number].element[4].title.text                = game.window_manager.window[window_number].choice_selection[0].data[0].value_string;
-                    game.window_manager.window[window_number].element[5].title.text                = game.window_manager.window[window_number].choice_selection[0].data[1].value_string;
-                    game.window_manager.window[window_number].element[6].title.text                = game.window_manager.window[window_number].choice_selection[0].data[2].value_string;
-                    game.window_manager.window[window_number].element[7].title.text                = game.window_manager.window[window_number].choice_selection[0].data[3].value_string;
-                    game.window_manager.window[window_number].element[8].title.text                = game.window_manager.window[window_number].choice_selection[0].data[4].value_string;
+                    game.window_manager.window[window_number].element[3].selected                  = game.window_manager.window[window_number].choice_selection[0].data[0].active;
+                    game.window_manager.window[window_number].element[4].selected                  = game.window_manager.window[window_number].choice_selection[0].data[1].active;
+                    game.window_manager.window[window_number].element[5].selected                  = game.window_manager.window[window_number].choice_selection[0].data[2].active;
+                    game.window_manager.window[window_number].element[6].selected                  = game.window_manager.window[window_number].choice_selection[0].data[3].active;
+                    game.window_manager.window[window_number].element[7].selected                  = game.window_manager.window[window_number].choice_selection[0].data[4].active;
+                    game.window_manager.window[window_number].element[3].title.text                = game.window_manager.window[window_number].choice_selection[0].data[0].value_string;
+                    game.window_manager.window[window_number].element[4].title.text                = game.window_manager.window[window_number].choice_selection[0].data[1].value_string;
+                    game.window_manager.window[window_number].element[5].title.text                = game.window_manager.window[window_number].choice_selection[0].data[2].value_string;
+                    game.window_manager.window[window_number].element[6].title.text                = game.window_manager.window[window_number].choice_selection[0].data[3].value_string;
+                    game.window_manager.window[window_number].element[7].title.text                = game.window_manager.window[window_number].choice_selection[0].data[4].value_string;
                 }
             break;
-            case 1101: // Sound volume left arrow button
+            case 1001: // Sound volume left arrow button
                 game.core.config.audio_volume_sound--;
                 if (game.core.config.audio_volume_sound < 0.0f) game.core.config.audio_volume_sound = 0.0f;
-                game.window_manager.window[window_number].element[13].value = game.core.config.audio_volume_sound;
+                game.window_manager.window[window_number].element[12].value = game.core.config.audio_volume_sound;
                 Mix_Volume(-1,game.core.config.audio_volume_sound);
             break;
-            case 1201: // Sound volume right arrow button
+            case 1101: // Sound volume right arrow button
                 game.core.config.audio_volume_sound++;
-                if (game.core.config.audio_volume_sound > game.window_manager.window[window_number].element[13].value_max) game.core.config.audio_volume_sound = game.window_manager.window[window_number].element[13].value_max;
-                game.window_manager.window[window_number].element[13].value = game.core.config.audio_volume_sound;
+                if (game.core.config.audio_volume_sound > game.window_manager.window[window_number].element[12].value_max) game.core.config.audio_volume_sound = game.window_manager.window[window_number].element[12].value_max;
+                game.window_manager.window[window_number].element[12].value = game.core.config.audio_volume_sound;
                 Mix_Volume(-1,game.core.config.audio_volume_sound);
             break;
-            case 1401: // Music volume left arrow button
+            case 1301: // Music volume left arrow button
                 game.core.config.audio_volume_music--;
                 if (game.core.config.audio_volume_music < 0.0f) game.core.config.audio_volume_music = 0.0f;
-                game.window_manager.window[window_number].element[16].value = game.core.config.audio_volume_music;
+                game.window_manager.window[window_number].element[15].value = game.core.config.audio_volume_music;
                 Mix_VolumeMusic(game.core.config.audio_volume_music);
             break;
-            case 1501: // Music volume right arrow button
+            case 1401: // Music volume right arrow button
                 game.core.config.audio_volume_music++;
-                if (game.core.config.audio_volume_music > game.window_manager.window[window_number].element[16].value_max) game.core.config.audio_volume_music = game.window_manager.window[window_number].element[16].value_max;
-                game.window_manager.window[window_number].element[16].value = game.core.config.audio_volume_music;
+                if (game.core.config.audio_volume_music > game.window_manager.window[window_number].element[15].value_max) game.core.config.audio_volume_music = game.window_manager.window[window_number].element[15].value_max;
+                game.window_manager.window[window_number].element[15].value = game.core.config.audio_volume_music;
                 Mix_VolumeMusic(game.core.config.audio_volume_music);
             break;
-            case 1701: // Full screen button
-            case 1801: // Full screen colored button
+            case 1601: // Full screen button
+            case 1701: // Full screen colored button
                 if (game.core.config.display_fullscreen)
                 {
-                    int element_number = 18;
+                    int element_number = 17;
                     game.core.config.display_fullscreen                                     = false;
                     game.window_manager.window[window_number].element[element_number].value = 0.0f;
                     game.window_manager.window[window_number].element[element_number].texture.normal.image_path        = "data/textures/UI/menu/red_button.png";
@@ -680,7 +680,7 @@ void process_menu_options(int window_number)
                 }
                 else
                 {
-                    int element_number = 18;
+                    int element_number = 17;
                     game.core.config.display_fullscreen                                     = true;
                     game.window_manager.window[window_number].element[element_number].value = 1.0f;
                     game.window_manager.window[window_number].element[element_number].texture.normal.image_path      = "data/textures/UI/menu/green_button.png";
@@ -764,12 +764,12 @@ void process_menu_options(int window_number)
                         game.window_manager.window[window_number].choice_selection[0].data[data_position_count].active = false;
                     }
                     game.window_manager.window[window_number].choice_selection[0].data[temp_data_value].active    = true;
+                    game.window_manager.window[window_number].element[3].selected                  = false;
                     game.window_manager.window[window_number].element[4].selected                  = false;
                     game.window_manager.window[window_number].element[5].selected                  = false;
                     game.window_manager.window[window_number].element[6].selected                  = false;
                     game.window_manager.window[window_number].element[7].selected                  = false;
-                    game.window_manager.window[window_number].element[8].selected                  = false;
-                    game.window_manager.window[window_number].element[temp_data_value+4].selected  = true;
+                    game.window_manager.window[window_number].element[temp_data_value+3].selected  = true;
                 }
                 reset_display = true;
             }

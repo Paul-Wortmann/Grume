@@ -31,7 +31,7 @@ extern game_class         game;
 void setup_player_profile(int UID)
 {
     int window_number = game.window_manager.window_get_number(UID);
-    int element_number = 1;
+    int element_number = 0;
     game.window_manager.window[window_number].active                  = false;
     game.window_manager.window[window_number].mouse_over_menu         = false;
     game.window_manager.window[window_number].mouse_over_title        = false;
@@ -86,9 +86,9 @@ void setup_player_profile(int UID)
     game.window_manager.window[window_number].title_bar.position.y    = game.window_manager.window[window_number].position.y+(game.window_manager.window[window_number].size.y/2.0f)-(game.window_manager.window[window_number].title_bar.size.y/2.0f);
 
     // ---------------------------- Setup window elements ----------------------------------------------------
-    game.window_manager.window[window_number].number_of_elements = 6;
+    game.window_manager.window[window_number].number_of_elements = 5;
     game.window_manager.window[window_number].element = new window_element_class[game.window_manager.window[window_number].number_of_elements];
-    element_number = 1; //--- Player profile image ---
+    element_number = 0; //--- Player profile image ---
     game.window_manager.window[window_number].element[element_number].title.text                = "";
     game.window_manager.window[window_number].element[element_number].active                    = true;
     game.window_manager.window[window_number].element[element_number].type                      = IMAGE;
@@ -109,7 +109,7 @@ void setup_player_profile(int UID)
     game.window_manager.window[window_number].element[element_number].sound                     = game.window_manager.window[window_number].sound;
     game.window_manager.window[window_number].element[element_number].font                      = game.window_manager.window[window_number].font;
     game.window_manager.window[window_number].element[element_number].mouse_delay.maximum       = 30;
-    element_number = 2; //--- Player profile bar background ---
+    element_number = 1; //--- Player profile bar background ---
     game.window_manager.window[window_number].element[element_number].title.text                = "";
     game.window_manager.window[window_number].element[element_number].active                    = true;
     game.window_manager.window[window_number].element[element_number].type                      = IMAGE;
@@ -126,7 +126,7 @@ void setup_player_profile(int UID)
     game.window_manager.window[window_number].element[element_number].sound                     = game.window_manager.window[window_number].sound;
     game.window_manager.window[window_number].element[element_number].font                      = game.window_manager.window[window_number].font;
     game.window_manager.window[window_number].element[element_number].mouse_delay.maximum       = 30;
-    element_number = 3; //--- Player health bar ---
+    element_number = 2; //--- Player health bar ---
     game.window_manager.window[window_number].element[element_number].title.text                = "";
     game.window_manager.window[window_number].element[element_number].active                    = true;
     game.window_manager.window[window_number].element[element_number].type                      = BAR;
@@ -149,7 +149,7 @@ void setup_player_profile(int UID)
     game.window_manager.window[window_number].element[element_number].sound                     = game.window_manager.window[window_number].sound;
     game.window_manager.window[window_number].element[element_number].font                      = game.window_manager.window[window_number].font;
     game.window_manager.window[window_number].element[element_number].mouse_delay.maximum       = 30;
-    element_number = 4; //--- Player mana bar ---
+    element_number = 3; //--- Player mana bar ---
     game.window_manager.window[window_number].element[element_number].title.text                = "";
     game.window_manager.window[window_number].element[element_number].active                    = true;
     game.window_manager.window[window_number].element[element_number].type                      = BAR;
@@ -172,7 +172,7 @@ void setup_player_profile(int UID)
     game.window_manager.window[window_number].element[element_number].sound                     = game.window_manager.window[window_number].sound;
     game.window_manager.window[window_number].element[element_number].font                      = game.window_manager.window[window_number].font;
     game.window_manager.window[window_number].element[element_number].mouse_delay.maximum       = 30;
-    element_number = 5; //--- Player profile bar foreground ---
+    element_number = 4; //--- Player profile bar foreground ---
     game.window_manager.window[window_number].element[element_number].title.text                = "";
     game.window_manager.window[window_number].element[element_number].active                    = true;
     game.window_manager.window[window_number].element[element_number].type                      = IMAGE;
@@ -193,24 +193,24 @@ void setup_player_profile(int UID)
 
 void update_player_profile(int window_number)
 {
-    int element_number = 1; //--- Player profile image ---
+    int element_number = 0; //--- Player profile image ---
     game.window_manager.window[window_number].element[element_number].texture.normal.image_path = game.player.portrait_path;
     game.window_manager.window[window_number].element[element_number].texture.normal.image.load_image(game.window_manager.window[window_number].element[element_number].texture.normal.image_path);
     game.window_manager.window[window_number].element[element_number].texture.highlighted.image_path = game.player.portrait_path;
     game.window_manager.window[window_number].element[element_number].texture.highlighted.image.load_image(game.window_manager.window[window_number].element[element_number].texture.highlighted.image_path);
-    element_number = 3; //--- Player health bar ---
+    element_number = 2; //--- Player health bar ---
     game.window_manager.window[window_number].element[element_number].value = game.player.health.current;
-    element_number = 4; //--- Player mana bar ---
+    element_number = 3; //--- Player mana bar ---
     game.window_manager.window[window_number].element[element_number].value = game.player.mana.current;
 };
 
 void process_player_profile(int window_number)
 {
-    int element_number = 1; //--- Player name ---
+    int element_number = 0; //--- Player name ---
     game.window_manager.window[window_number].element[element_number].tooltip.text = game.player.name;
     //Update the health and mana bars.
     std::string temp_string = "";
-    element_number = 3; //--- Player health bar ---
+    element_number = 2; //--- Player health bar ---
     game.window_manager.window[window_number].element[element_number].value = game.player.health.current;
     temp_string  = int_to_string(game.player.health.current);
     temp_string += "%";
@@ -218,7 +218,7 @@ void process_player_profile(int window_number)
     if (game.player.health.current > 99) temp_string += ' ';
     temp_string += "    ";
     game.window_manager.window[window_number].element[element_number].tooltip.text = temp_string;
-    element_number     = 4; //--- Player mana bar ---
+    element_number     = 3; //--- Player mana bar ---
     game.window_manager.window[window_number].element[element_number].value = game.player.mana.current;
     temp_string  = int_to_string(game.player.mana.current);
     temp_string += "%";

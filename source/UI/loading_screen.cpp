@@ -23,9 +23,12 @@
  */
 
 #include <SDL/SDL.h>
-#include <gl/gl.h>
+#include <GL/gl.h>
 #include "loading_screen.hpp"
 #include "../core/textures.hpp"
+#include "../game.hpp"
+
+extern game_class game;
 
 void loading_screen_class::display(std::string file_name)
 {
@@ -35,7 +38,7 @@ void loading_screen_class::display(std::string file_name)
     loading_screen.load_image(file_name);
     loading_screen.draw(false,0.0f,0.0f,0.9f,2.0f,2.0f);
     SDL_GL_SwapBuffers();
-    delete &loading_screen.frame[0].data; // Make sure we free the resource once it is no longer needed!
+    if (loading_screen.frame[0].data) delete &loading_screen.frame[0].data; // Make sure we free the resource once it is no longer needed!
 };
 
 

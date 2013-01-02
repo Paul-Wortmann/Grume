@@ -32,7 +32,7 @@ void setup_action_bar(int UID)
 {
     int menu_button_mouse_delay = 20;
     int window_number = game.window_manager.window_get_number(UID);
-    int element_number = 1;
+    int element_number = 0;
     game.window_manager.window[window_number].active                  = false;
     game.window_manager.window[window_number].mouse_over_menu         = false;
     game.window_manager.window[window_number].mouse_over_title        = false;
@@ -88,9 +88,9 @@ void setup_action_bar(int UID)
     game.window_manager.window[window_number].title_bar.position.y    = game.window_manager.window[window_number].position.y+(game.window_manager.window[window_number].size.y/2.0f)-(game.window_manager.window[window_number].title_bar.size.y/2.0f);
 
     // ---------------------------- Setup window elements ----------------------------------------------------
-    game.window_manager.window[window_number].number_of_elements = 9;
+    game.window_manager.window[window_number].number_of_elements = 8;
     game.window_manager.window[window_number].element = new window_element_class[game.window_manager.window[window_number].number_of_elements];
-    element_number = 1; //--- Experience bar image ---
+    element_number = 0; //--- Experience bar image ---
     game.window_manager.window[window_number].element[element_number].title.text                = "";
     game.window_manager.window[window_number].element[element_number].active                    = true;
     game.window_manager.window[window_number].element[element_number].click_enabled             = false;
@@ -114,7 +114,7 @@ void setup_action_bar(int UID)
     game.window_manager.window[window_number].element[element_number].sound                     = game.window_manager.window[window_number].sound;
     game.window_manager.window[window_number].element[element_number].font                      = game.window_manager.window[window_number].font;
     game.window_manager.window[window_number].element[element_number].mouse_delay.maximum       = 30;
-    element_number = 2; //--- Action-bar foreground image ---
+    element_number = 1; //--- Action-bar foreground image ---
     game.window_manager.window[window_number].element[element_number].title.text                = "";
     game.window_manager.window[window_number].element[element_number].active                    = true;
     game.window_manager.window[window_number].element[element_number].click_enabled             = false;
@@ -132,7 +132,7 @@ void setup_action_bar(int UID)
     game.window_manager.window[window_number].element[element_number].sound                     = game.window_manager.window[window_number].sound;
     game.window_manager.window[window_number].element[element_number].font                      = game.window_manager.window[window_number].font;
     game.window_manager.window[window_number].element[element_number].mouse_delay.maximum       = 30;
-    element_number = 3; //--- Action-bar main menu button ---
+    element_number = 2; //--- Action-bar main menu button ---
     game.window_manager.window[window_number].element[element_number].title.text                = "";
     game.window_manager.window[window_number].element[element_number].title.enabled             = false;
     game.window_manager.window[window_number].element[element_number].tooltip.enabled           = true;
@@ -157,7 +157,7 @@ void setup_action_bar(int UID)
     game.window_manager.window[window_number].element[element_number].sound.on_mouse_over.enabled = true;
     game.window_manager.window[window_number].element[element_number].font                      = game.window_manager.window[window_number].font;
     game.window_manager.window[window_number].element[element_number].mouse_delay.maximum       = menu_button_mouse_delay;
-    element_number = 4; //--- Action-bar quest log button ---
+    element_number = 3; //--- Action-bar quest log button ---
     game.window_manager.window[window_number].element[element_number].title.text                = "";
     game.window_manager.window[window_number].element[element_number].title.enabled             = false;
     game.window_manager.window[window_number].element[element_number].tooltip.enabled           = true;
@@ -182,7 +182,7 @@ void setup_action_bar(int UID)
     game.window_manager.window[window_number].element[element_number].sound.on_mouse_over.enabled = true;
     game.window_manager.window[window_number].element[element_number].font                      = game.window_manager.window[window_number].font;
     game.window_manager.window[window_number].element[element_number].mouse_delay.maximum       = menu_button_mouse_delay;
-    element_number = 5; //--- Action-bar skill book button ---
+    element_number = 4; //--- Action-bar skill book button ---
     game.window_manager.window[window_number].element[element_number].title.text                = "";
     game.window_manager.window[window_number].element[element_number].title.enabled             = false;
     game.window_manager.window[window_number].element[element_number].tooltip.enabled           = true;
@@ -207,7 +207,7 @@ void setup_action_bar(int UID)
     game.window_manager.window[window_number].element[element_number].sound.on_mouse_over.enabled = true;
     game.window_manager.window[window_number].element[element_number].font                      = game.window_manager.window[window_number].font;
     game.window_manager.window[window_number].element[element_number].mouse_delay.maximum       = menu_button_mouse_delay;
-    element_number = 6; //--- Action-bar character window button ---
+    element_number = 5; //--- Action-bar character window button ---
     game.window_manager.window[window_number].element[element_number].title.text                = "";
     game.window_manager.window[window_number].element[element_number].title.enabled             = false;
     game.window_manager.window[window_number].element[element_number].tooltip.enabled           = true;
@@ -232,7 +232,7 @@ void setup_action_bar(int UID)
     game.window_manager.window[window_number].element[element_number].sound.on_mouse_over.enabled = true;
     game.window_manager.window[window_number].element[element_number].font                      = game.window_manager.window[window_number].font;
     game.window_manager.window[window_number].element[element_number].mouse_delay.maximum       = menu_button_mouse_delay;
-    element_number = 7; //--- Action-bar equipment button ---
+    element_number = 6; //--- Action-bar equipment button ---
     game.window_manager.window[window_number].element[element_number].title.text                = "";
     game.window_manager.window[window_number].element[element_number].title.enabled             = false;
     game.window_manager.window[window_number].element[element_number].tooltip.enabled           = true;
@@ -257,7 +257,7 @@ void setup_action_bar(int UID)
     game.window_manager.window[window_number].element[element_number].sound.on_mouse_over.enabled = true;
     game.window_manager.window[window_number].element[element_number].font                      = game.window_manager.window[window_number].font;
     game.window_manager.window[window_number].element[element_number].mouse_delay.maximum       = menu_button_mouse_delay;
-    element_number = 8; //--- Action-bar inventory button ---
+    element_number = 7; //--- Action-bar inventory button ---
     game.window_manager.window[window_number].element[element_number].title.text                = "";
     game.window_manager.window[window_number].element[element_number].title.enabled             = false;
     game.window_manager.window[window_number].element[element_number].tooltip.enabled           = true;
@@ -296,7 +296,7 @@ void process_action_bar(int window_number)
     {
         if ((game.player.level.current_experience > 0) && (game.player.level.experience[game.player.level.current] > 0))
         {
-            int element_number = 1; //--- Player experience bar ---
+            int element_number = 0; //--- Player experience bar ---
             unsigned long long  temp_val = (game.player.level.current_experience - game.player.level.experience[game.player.level.current]);
             unsigned long long  temp_max = (game.player.level.experience[game.player.level.current+1] - game.player.level.experience[game.player.level.current]);
             int                 temp_per = (((float)temp_val / (float)temp_max) * 100);
@@ -314,7 +314,7 @@ void process_action_bar(int window_number)
     {
         switch (game.window_manager.window[window_number].event)
         {
-            case 301: // Toggle main menu
+            case 201: // Toggle main menu
                 if (!game.core.game_menu_active)
                 {
                     game.window_manager.window_enable(MENU_MAIN_UID);
@@ -328,7 +328,7 @@ void process_action_bar(int window_number)
                 game.core.io.key_escape                = false;
                 game.core.io.keyboard_delay_count      = 0;
             break;
-            case 401: // Toggle quest log
+            case 301: // Toggle quest log
                 if (!game.core.quest_log_active)
                 {
                     game.window_manager.window_enable(QUEST_LOG_UID);
@@ -342,7 +342,7 @@ void process_action_bar(int window_number)
                 game.core.io.key_escape                = false;
                 game.core.io.keyboard_delay_count      = 0;
             break;
-            case 501: // Toggle skill book
+            case 401: // Toggle skill book
                 if (!game.core.skillbook_active)
                 {
                     game.window_manager.window_enable(SKILLBOOK_UID);
@@ -356,7 +356,7 @@ void process_action_bar(int window_number)
                 game.core.io.key_escape                = false;
                 game.core.io.keyboard_delay_count      = 0;
             break;
-            case 601: // Toggle Character menu
+            case 501: // Toggle Character menu
                 if (!game.core.character_active)
                 {
                     game.window_manager.window_enable(CHARACTER_UID);
@@ -370,7 +370,7 @@ void process_action_bar(int window_number)
                 game.core.io.key_escape                = false;
                 game.core.io.keyboard_delay_count      = 0;
             break;
-            case 701: // Toggle equipment menu
+            case 601: // Toggle equipment menu
                 if (!game.core.equipment_active)
                 {
                     game.window_manager.window_enable(EQUIPMENT_UID);
@@ -384,7 +384,7 @@ void process_action_bar(int window_number)
                 game.core.io.key_escape                = false;
                 game.core.io.keyboard_delay_count      = 0;
             break;
-            case 801: // Toggle Inventory menu
+            case 701: // Toggle Inventory menu
                 if (!game.core.inventory_active)
                 {
                     game.window_manager.window_enable(INVENTORY_UID);

@@ -114,7 +114,7 @@ void window_class::render(void)
         // ------------------------- Render elements -------------------------
         if (window_class::number_of_elements > 0)
         {
-            for (int element_number = 1; element_number < window_class::number_of_elements; element_number++)
+            for (int element_number = 0; element_number < window_class::number_of_elements; element_number++)
             {
                 if (window_class::element[element_number].active)
                 {
@@ -125,7 +125,7 @@ void window_class::render(void)
         // ------------------------- Render element tool tips -------------------------
         if (window_class::number_of_elements > 0)
         {
-            for (int element_number = 1; element_number < window_class::number_of_elements; element_number++)
+            for (int element_number = 0; element_number < window_class::number_of_elements; element_number++)
             {
                 if (window_class::element[element_number].active)
                 {
@@ -196,7 +196,7 @@ int window_class::process(void)
             // ------------------------- Process elements -------------------------
             if (window_class::number_of_elements > 0)
             {
-                for (int element_number = 1; element_number < window_class::number_of_elements; element_number++)
+                for (int element_number = 0; element_number < window_class::number_of_elements; element_number++)
                 {
                     if ((window_class::element[element_number].active) && (return_value == 0))
                     {
@@ -231,7 +231,7 @@ int window_class::process(void)
                     window_class::title_bar.position.y -= drag_delta_y;
                     if(window_class::number_of_elements > 0)
                     {
-                        for (int element_number = 1; element_number < window_class::number_of_elements; element_number++)
+                        for (int element_number = 0; element_number < window_class::number_of_elements; element_number++)
                         {
                             if (window_class::element[element_number].active)
                             {

@@ -32,7 +32,7 @@ extern game_class         game;
 void setup_menu_game_save(int UID)
 {
     int window_number = game.window_manager.window_get_number(UID);
-    int element_number = 1;
+    int element_number = 0;
     game.window_manager.window[window_number].active                  = false;
     game.window_manager.window[window_number].mouse_over_menu         = false;
     game.window_manager.window[window_number].mouse_over_title        = false;
@@ -88,9 +88,9 @@ void setup_menu_game_save(int UID)
     game.window_manager.window[window_number].title_bar.position.y    = game.window_manager.window[window_number].position.y+(game.window_manager.window[window_number].size.y/2.0f)-(game.window_manager.window[window_number].title_bar.size.y/2.0f);
 
     // ---------------------------- Setup window elements ----------------------------------------------------
-    game.window_manager.window[window_number].number_of_elements = 8;
+    game.window_manager.window[window_number].number_of_elements = 7;
     game.window_manager.window[window_number].element = new window_element_class[game.window_manager.window[window_number].number_of_elements];
-    element_number = 1; //--- Close button ---
+    element_number = 0; //--- Close button ---
     game.window_manager.window[window_number].element[element_number].title.text                = "";
     game.window_manager.window[window_number].element[element_number].active                    = true;
     game.window_manager.window[window_number].element[element_number].type                      = BUTTON;
@@ -107,7 +107,7 @@ void setup_menu_game_save(int UID)
     game.window_manager.window[window_number].element[element_number].sound                     = game.window_manager.window[window_number].sound;
     game.window_manager.window[window_number].element[element_number].font                      = game.window_manager.window[window_number].font;
     game.window_manager.window[window_number].element[element_number].mouse_delay.maximum       = 30;
-    element_number = 2; //--- Save Game 1 ---
+    element_number = 1; //--- Save Game 1 ---
     game.window_manager.window[window_number].element[element_number].title.text                = "Save Slot 1";
     game.window_manager.window[window_number].element[element_number].title.enabled             = true;
     game.window_manager.window[window_number].element[element_number].active                    = true;
@@ -126,7 +126,7 @@ void setup_menu_game_save(int UID)
     game.window_manager.window[window_number].element[element_number].sound                     = game.window_manager.window[window_number].sound;
     game.window_manager.window[window_number].element[element_number].font                      = game.window_manager.window[window_number].font;
     game.window_manager.window[window_number].element[element_number].mouse_delay.maximum       = 30;
-    element_number = 3; //--- Save Game 2 ---
+    element_number = 2; //--- Save Game 2 ---
     game.window_manager.window[window_number].element[element_number].title.text                = "Save Slot 2";
     game.window_manager.window[window_number].element[element_number].title.enabled             = true;
     game.window_manager.window[window_number].element[element_number].active                    = true;
@@ -145,7 +145,7 @@ void setup_menu_game_save(int UID)
     game.window_manager.window[window_number].element[element_number].sound                     = game.window_manager.window[window_number].sound;
     game.window_manager.window[window_number].element[element_number].font                      = game.window_manager.window[window_number].font;
     game.window_manager.window[window_number].element[element_number].mouse_delay.maximum       = 30;
-    element_number = 4; //--- Save Game 3 ---
+    element_number = 3; //--- Save Game 3 ---
     game.window_manager.window[window_number].element[element_number].title.text                = "Save Slot 3";
     game.window_manager.window[window_number].element[element_number].title.enabled             = true;
     game.window_manager.window[window_number].element[element_number].active                    = true;
@@ -164,7 +164,7 @@ void setup_menu_game_save(int UID)
     game.window_manager.window[window_number].element[element_number].sound                     = game.window_manager.window[window_number].sound;
     game.window_manager.window[window_number].element[element_number].font                      = game.window_manager.window[window_number].font;
     game.window_manager.window[window_number].element[element_number].mouse_delay.maximum       = 30;
-    element_number = 5; //--- Save Game 4 ---
+    element_number = 4; //--- Save Game 4 ---
     game.window_manager.window[window_number].element[element_number].title.text                = "Save Slot 4";
     game.window_manager.window[window_number].element[element_number].title.enabled             = true;
     game.window_manager.window[window_number].element[element_number].active                    = true;
@@ -183,7 +183,7 @@ void setup_menu_game_save(int UID)
     game.window_manager.window[window_number].element[element_number].sound                     = game.window_manager.window[window_number].sound;
     game.window_manager.window[window_number].element[element_number].font                      = game.window_manager.window[window_number].font;
     game.window_manager.window[window_number].element[element_number].mouse_delay.maximum       = 30;
-    element_number = 6; //--- Save Game 5 ---
+    element_number = 5; //--- Save Game 5 ---
     game.window_manager.window[window_number].element[element_number].title.text                = "Save Slot 5";
     game.window_manager.window[window_number].element[element_number].title.enabled             = true;
     game.window_manager.window[window_number].element[element_number].active                    = true;
@@ -202,7 +202,7 @@ void setup_menu_game_save(int UID)
     game.window_manager.window[window_number].element[element_number].sound                     = game.window_manager.window[window_number].sound;
     game.window_manager.window[window_number].element[element_number].font                      = game.window_manager.window[window_number].font;
     game.window_manager.window[window_number].element[element_number].mouse_delay.maximum       = 30;
-    element_number = 7; //--- Main Menu button ---
+    element_number = 6; //--- Main Menu button ---
     game.window_manager.window[window_number].element[element_number].title.text                = "Main Menu";
     game.window_manager.window[window_number].element[element_number].title.enabled             = true;
     game.window_manager.window[window_number].element[element_number].active                    = true;
@@ -229,10 +229,10 @@ void process_menu_game_save(int window_number)
     {
         switch (game.window_manager.window[window_number].event)
         {
-            case 101: // Close menu button
+            case 001: // Close menu button
                 game.window_manager.window_transition(MENU_GAME_SAVE_UID,MENU_MAIN_UID);
             break;
-            case 201: // Save slot 1 - menu button
+            case 101: // Save slot 1 - menu button
                 game.window_manager.window_transition(MENU_GAME_SAVE_UID,MENU_MAIN_UID);
                 game.window_manager.window_disable(MENU_MAIN_UID);
                 game.core.game_menu_active = false;
@@ -243,7 +243,7 @@ void process_menu_game_save(int window_number)
                 }
                 else game.core.log.file_write("ERROR -> Error saving game to slot 1");
             break;
-            case 301: // Save slot 2 - menu button
+            case 201: // Save slot 2 - menu button
                 game.window_manager.window_transition(MENU_GAME_SAVE_UID,MENU_MAIN_UID);
                 game.window_manager.window_disable(MENU_MAIN_UID);
                 game.core.game_menu_active = false;
@@ -254,7 +254,7 @@ void process_menu_game_save(int window_number)
                 }
                 else game.core.log.file_write("ERROR -> Error saving game to slot 2");
             break;
-            case 401: // Save slot 3 - menu button
+            case 301: // Save slot 3 - menu button
                 game.window_manager.window_transition(MENU_GAME_SAVE_UID,MENU_MAIN_UID);
                 game.window_manager.window_disable(MENU_MAIN_UID);
                 game.core.game_menu_active = false;
@@ -265,7 +265,7 @@ void process_menu_game_save(int window_number)
                 }
                 else game.core.log.file_write("ERROR -> Error saving game to slot 3");
             break;
-            case 501: // Save slot 4 - menu button
+            case 401: // Save slot 4 - menu button
                 game.window_manager.window_transition(MENU_GAME_SAVE_UID,MENU_MAIN_UID);
                 game.window_manager.window_disable(MENU_MAIN_UID);
                 game.core.game_menu_active = false;
@@ -276,7 +276,7 @@ void process_menu_game_save(int window_number)
                 }
                 else game.core.log.file_write("ERROR -> Error saving game to slot 4");
             break;
-            case 601: // Save slot 5 - menu button
+            case 501: // Save slot 5 - menu button
                 game.window_manager.window_transition(MENU_GAME_SAVE_UID,MENU_MAIN_UID);
                 game.window_manager.window_disable(MENU_MAIN_UID);
                 game.core.game_menu_active = false;
@@ -287,7 +287,7 @@ void process_menu_game_save(int window_number)
                 }
                 else game.core.log.file_write("ERROR -> Error saving game to slot 5");
             break;
-            case 701: // Main menu button
+            case 601: // Main menu button
                 game.window_manager.window_transition(MENU_GAME_SAVE_UID,MENU_MAIN_UID);
             break;
             default:

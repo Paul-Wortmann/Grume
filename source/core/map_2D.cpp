@@ -1285,7 +1285,7 @@ void map_2D_class::random_map(int tiles_x, int tiles_y, int type_of_map_to_gener
     }
     // load tile-sets
     {
-        if (map_2D_class::tileset != NULL) delete map_2D_class::tileset;
+        if (map_2D_class::tileset) delete map_2D_class::tileset;
         map_2D_class::number_of_tilesets         = 16;
         map_2D_class::tileset                    = new tileset_class [map_2D_class::number_of_tilesets];
         map_2D_class::tilewidth                  = DEFAULT_FRAME_WIDTH;
