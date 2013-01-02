@@ -39,8 +39,8 @@ void setup_character_window(int UID)
     game.window_manager.window[window_number].position.x              = 0.0f;
     game.window_manager.window[window_number].position.y              = 0.0f;
     game.window_manager.window[window_number].position.z              = 0.0f;
-    game.window_manager.window[window_number].size.x                  = 0.6f;
-    game.window_manager.window[window_number].size.y                  = 1.0f;
+    game.window_manager.window[window_number].size.x                  = 0.5f;
+    game.window_manager.window[window_number].size.y                  = game.window_manager.window[window_number].size.x * 2.5f;
     game.window_manager.window[window_number].texture.angle           = 0.0f;
     game.window_manager.window[window_number].texture.base.image_path = "data/textures/UI/menu/background_02.png";
     game.window_manager.window[window_number].texture.base.image.load_image(game.window_manager.window[window_number].texture.base.image_path);
@@ -81,14 +81,14 @@ void setup_character_window(int UID)
     game.window_manager.window[window_number].title.size.x            = game.window_manager.window[window_number].title.text.length()/1.2f;
     game.window_manager.window[window_number].title.size.y            = game.window_manager.window[window_number].title.size.x*4;
     game.window_manager.window[window_number].title.position.x        = game.window_manager.window[window_number].position.x - (game.window_manager.window[window_number].title.size.x/100.0f);
-    game.window_manager.window[window_number].title.position.y        = game.window_manager.window[window_number].position.y + (game.window_manager.window[window_number].size.y/2.0f) - (game.window_manager.window[window_number].title.size.y / 440.0f);
+    game.window_manager.window[window_number].title.position.y        = game.window_manager.window[window_number].position.y + (game.window_manager.window[window_number].size.y/2.0f) - (game.window_manager.window[window_number].title.size.y / 380.0f);
     game.window_manager.window[window_number].title_bar.size.x        = game.window_manager.window[window_number].size.x; // x/2.0f for middle section
     game.window_manager.window[window_number].title_bar.size.y        = game.window_manager.window[window_number].size.y / 10.0f;
     game.window_manager.window[window_number].title_bar.position.x    = game.window_manager.window[window_number].position.x;
     game.window_manager.window[window_number].title_bar.position.y    = game.window_manager.window[window_number].position.y+(game.window_manager.window[window_number].size.y/2.0f)-(game.window_manager.window[window_number].title_bar.size.y/2.0f);
 
     // ---------------------------- Setup window elements ----------------------------------------------------
-    game.window_manager.window[window_number].number_of_elements = 4;
+    game.window_manager.window[window_number].number_of_elements = 7;
     game.window_manager.window[window_number].element = new window_element_class[game.window_manager.window[window_number].number_of_elements];
     element_number = 0; //--- Close button ---
     game.window_manager.window[window_number].element[element_number].title.text                = "";
@@ -151,10 +151,88 @@ void setup_character_window(int UID)
     element_number = 3; //--- Player Name ---
     game.window_manager.window[window_number].element[element_number].title.text                  = "Name: ";
     game.window_manager.window[window_number].element[element_number].title.enabled               = true;
-    game.window_manager.window[window_number].element[element_number].title.size.y                = 24;
+    game.window_manager.window[window_number].element[element_number].title.size.y                = 28;
     game.window_manager.window[window_number].element[element_number].title.size.x                = ((float)game.window_manager.window[window_number].element[element_number].title.size.y / (float)game.window_manager.window[window_number].element[element_number].title.text.length()) * 4.5f;
     game.window_manager.window[window_number].element[element_number].title.position.x            = game.window_manager.window[window_number].position.x;// - (game.window_manager.window[window_number].size.x * 0.125f);
-    game.window_manager.window[window_number].element[element_number].title.position.y            = game.window_manager.window[window_number].position.y + (game.window_manager.window[window_number].size.y * 0.25f);
+    game.window_manager.window[window_number].element[element_number].title.position.y            = game.window_manager.window[window_number].position.y + (game.window_manager.window[window_number].size.y * 0.27f);
+    game.window_manager.window[window_number].element[element_number].active                      = true;
+    game.window_manager.window[window_number].element[element_number].click_enabled               = false;
+    game.window_manager.window[window_number].element[element_number].type                        = TEXTLABEL;
+    game.window_manager.window[window_number].element[element_number].zoom.enabled                = false;
+    game.window_manager.window[window_number].element[element_number].color                       = game.window_manager.window[window_number].color;
+    game.window_manager.window[window_number].element[element_number].color.normal                = game.window_manager.window[window_number].element[element_number].color.highlighted;
+    game.window_manager.window[window_number].element[element_number].size.x                      = 0.16f;
+    game.window_manager.window[window_number].element[element_number].size.y                      = game.window_manager.window[window_number].element[element_number].size.x;
+    game.window_manager.window[window_number].element[element_number].position.x                  = game.window_manager.window[window_number].position.x+(game.window_manager.window[window_number].element[element_number].size.x)-(game.window_manager.window[window_number].size.x/2.0f);
+    game.window_manager.window[window_number].element[element_number].position.y                  = game.window_manager.window[window_number].position.y+(game.window_manager.window[window_number].element[element_number].size.y * 1.44f);
+    game.window_manager.window[window_number].element[element_number].texture.normal.image_path   = "data/textures/UI/character/character_portrait_frame.png";
+    game.window_manager.window[window_number].element[element_number].texture.normal.image.load_image(game.window_manager.window[window_number].element[element_number].texture.normal.image_path);
+    game.window_manager.window[window_number].element[element_number].texture.highlighted.image_path = "data/textures/UI/character/character_portrait_frame.png";
+    game.window_manager.window[window_number].element[element_number].texture.highlighted.image.load_image(game.window_manager.window[window_number].element[element_number].texture.highlighted.image_path);
+    game.window_manager.window[window_number].element[element_number].sound                       = game.window_manager.window[window_number].sound;
+    game.window_manager.window[window_number].element[element_number].sound.on_click.enabled      = false;
+    game.window_manager.window[window_number].element[element_number].sound.on_mouse_over.enabled = false;
+    game.window_manager.window[window_number].element[element_number].mouse_delay.maximum         = 30;
+    game.window_manager.window[window_number].element[element_number].font                        = game.window_manager.window[window_number].font;
+    element_number = 4; //--- Player Level ---
+    game.window_manager.window[window_number].element[element_number].title.text                  = "Level: ";
+    game.window_manager.window[window_number].element[element_number].title.enabled               = true;
+    game.window_manager.window[window_number].element[element_number].title.size.y                = 28;
+    game.window_manager.window[window_number].element[element_number].title.size.x                = ((float)game.window_manager.window[window_number].element[element_number].title.size.y / (float)game.window_manager.window[window_number].element[element_number].title.text.length()) * 4.5f;
+    game.window_manager.window[window_number].element[element_number].title.position.x            = game.window_manager.window[window_number].position.x;// - (game.window_manager.window[window_number].size.x * 0.125f);
+    game.window_manager.window[window_number].element[element_number].title.position.y            = game.window_manager.window[window_number].position.y + (game.window_manager.window[window_number].size.y * 0.23f);
+    game.window_manager.window[window_number].element[element_number].active                      = true;
+    game.window_manager.window[window_number].element[element_number].click_enabled               = false;
+    game.window_manager.window[window_number].element[element_number].type                        = TEXTLABEL;
+    game.window_manager.window[window_number].element[element_number].zoom.enabled                = false;
+    game.window_manager.window[window_number].element[element_number].color                       = game.window_manager.window[window_number].color;
+    game.window_manager.window[window_number].element[element_number].color.normal                = game.window_manager.window[window_number].element[element_number].color.highlighted;
+    game.window_manager.window[window_number].element[element_number].size.x                      = 0.16f;
+    game.window_manager.window[window_number].element[element_number].size.y                      = game.window_manager.window[window_number].element[element_number].size.x;
+    game.window_manager.window[window_number].element[element_number].position.x                  = game.window_manager.window[window_number].position.x+(game.window_manager.window[window_number].element[element_number].size.x)-(game.window_manager.window[window_number].size.x/2.0f);
+    game.window_manager.window[window_number].element[element_number].position.y                  = game.window_manager.window[window_number].position.y+(game.window_manager.window[window_number].element[element_number].size.y * 1.44f);
+    game.window_manager.window[window_number].element[element_number].texture.normal.image_path   = "data/textures/UI/character/character_portrait_frame.png";
+    game.window_manager.window[window_number].element[element_number].texture.normal.image.load_image(game.window_manager.window[window_number].element[element_number].texture.normal.image_path);
+    game.window_manager.window[window_number].element[element_number].texture.highlighted.image_path = "data/textures/UI/character/character_portrait_frame.png";
+    game.window_manager.window[window_number].element[element_number].texture.highlighted.image.load_image(game.window_manager.window[window_number].element[element_number].texture.highlighted.image_path);
+    game.window_manager.window[window_number].element[element_number].sound                       = game.window_manager.window[window_number].sound;
+    game.window_manager.window[window_number].element[element_number].sound.on_click.enabled      = false;
+    game.window_manager.window[window_number].element[element_number].sound.on_mouse_over.enabled = false;
+    game.window_manager.window[window_number].element[element_number].mouse_delay.maximum         = 30;
+    game.window_manager.window[window_number].element[element_number].font                        = game.window_manager.window[window_number].font;
+    element_number = 5; //--- Player Experience ---
+    game.window_manager.window[window_number].element[element_number].title.text                  = "Exp: ";
+    game.window_manager.window[window_number].element[element_number].title.enabled               = true;
+    game.window_manager.window[window_number].element[element_number].title.size.y                = 28;
+    game.window_manager.window[window_number].element[element_number].title.size.x                = ((float)game.window_manager.window[window_number].element[element_number].title.size.y / (float)game.window_manager.window[window_number].element[element_number].title.text.length()) * 4.5f;
+    game.window_manager.window[window_number].element[element_number].title.position.x            = game.window_manager.window[window_number].position.x;// - (game.window_manager.window[window_number].size.x * 0.125f);
+    game.window_manager.window[window_number].element[element_number].title.position.y            = game.window_manager.window[window_number].position.y + (game.window_manager.window[window_number].size.y * 0.19f);
+    game.window_manager.window[window_number].element[element_number].active                      = true;
+    game.window_manager.window[window_number].element[element_number].click_enabled               = false;
+    game.window_manager.window[window_number].element[element_number].type                        = TEXTLABEL;
+    game.window_manager.window[window_number].element[element_number].zoom.enabled                = false;
+    game.window_manager.window[window_number].element[element_number].color                       = game.window_manager.window[window_number].color;
+    game.window_manager.window[window_number].element[element_number].color.normal                = game.window_manager.window[window_number].element[element_number].color.highlighted;
+    game.window_manager.window[window_number].element[element_number].size.x                      = 0.16f;
+    game.window_manager.window[window_number].element[element_number].size.y                      = game.window_manager.window[window_number].element[element_number].size.x;
+    game.window_manager.window[window_number].element[element_number].position.x                  = game.window_manager.window[window_number].position.x+(game.window_manager.window[window_number].element[element_number].size.x)-(game.window_manager.window[window_number].size.x/2.0f);
+    game.window_manager.window[window_number].element[element_number].position.y                  = game.window_manager.window[window_number].position.y+(game.window_manager.window[window_number].element[element_number].size.y * 1.44f);
+    game.window_manager.window[window_number].element[element_number].texture.normal.image_path   = "data/textures/UI/character/character_portrait_frame.png";
+    game.window_manager.window[window_number].element[element_number].texture.normal.image.load_image(game.window_manager.window[window_number].element[element_number].texture.normal.image_path);
+    game.window_manager.window[window_number].element[element_number].texture.highlighted.image_path = "data/textures/UI/character/character_portrait_frame.png";
+    game.window_manager.window[window_number].element[element_number].texture.highlighted.image.load_image(game.window_manager.window[window_number].element[element_number].texture.highlighted.image_path);
+    game.window_manager.window[window_number].element[element_number].sound                       = game.window_manager.window[window_number].sound;
+    game.window_manager.window[window_number].element[element_number].sound.on_click.enabled      = false;
+    game.window_manager.window[window_number].element[element_number].sound.on_mouse_over.enabled = false;
+    game.window_manager.window[window_number].element[element_number].mouse_delay.maximum         = 30;
+    game.window_manager.window[window_number].element[element_number].font                        = game.window_manager.window[window_number].font;
+    element_number = 6; //--- Player Experience for next level ---
+    game.window_manager.window[window_number].element[element_number].title.text                  = "Next: ";
+    game.window_manager.window[window_number].element[element_number].title.enabled               = true;
+    game.window_manager.window[window_number].element[element_number].title.size.y                = 28;
+    game.window_manager.window[window_number].element[element_number].title.size.x                = ((float)game.window_manager.window[window_number].element[element_number].title.size.y / (float)game.window_manager.window[window_number].element[element_number].title.text.length()) * 4.5f;
+    game.window_manager.window[window_number].element[element_number].title.position.x            = game.window_manager.window[window_number].position.x;// - (game.window_manager.window[window_number].size.x * 0.125f);
+    game.window_manager.window[window_number].element[element_number].title.position.y            = game.window_manager.window[window_number].position.y + (game.window_manager.window[window_number].size.y * 0.15f);
     game.window_manager.window[window_number].element[element_number].active                      = true;
     game.window_manager.window[window_number].element[element_number].click_enabled               = false;
     game.window_manager.window[window_number].element[element_number].type                        = TEXTLABEL;

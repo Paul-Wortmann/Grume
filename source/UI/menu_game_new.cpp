@@ -39,8 +39,8 @@ void setup_menu_game_new(int UID)
     game.window_manager.window[window_number].position.x              = 0.0f;
     game.window_manager.window[window_number].position.y              = 0.0f;
     game.window_manager.window[window_number].position.z              = 0.0f;
-    game.window_manager.window[window_number].size.x                  = 0.6f;
-    game.window_manager.window[window_number].size.y                  = 1.0f;
+    game.window_manager.window[window_number].size.x                  = 0.5f;
+    game.window_manager.window[window_number].size.y                  = game.window_manager.window[window_number].size.x * 2.5f;
     game.window_manager.window[window_number].texture.angle           = 0.0f;
     game.window_manager.window[window_number].texture.base.image_path = "data/textures/UI/menu/background_02.png";
     game.window_manager.window[window_number].texture.base.image.load_image(game.window_manager.window[window_number].texture.base.image_path);
@@ -81,7 +81,7 @@ void setup_menu_game_new(int UID)
     game.window_manager.window[window_number].title.size.x            = game.window_manager.window[window_number].title.text.length()/1.2f;
     game.window_manager.window[window_number].title.size.y            = game.window_manager.window[window_number].title.size.x*4;
     game.window_manager.window[window_number].title.position.x        = game.window_manager.window[window_number].position.x - (game.window_manager.window[window_number].title.size.x/100.0f);
-    game.window_manager.window[window_number].title.position.y        = game.window_manager.window[window_number].position.y + (game.window_manager.window[window_number].size.y/2.0f) - (game.window_manager.window[window_number].title.size.y / 440.0f);
+    game.window_manager.window[window_number].title.position.y        = game.window_manager.window[window_number].position.y + (game.window_manager.window[window_number].size.y/2.0f) - (game.window_manager.window[window_number].title.size.y / 380.0f);
     game.window_manager.window[window_number].title_bar.size.x        = game.window_manager.window[window_number].size.x; // x/2.0f for middle section
     game.window_manager.window[window_number].title_bar.size.y        = game.window_manager.window[window_number].size.y / 10.0f;
     game.window_manager.window[window_number].title_bar.position.x    = game.window_manager.window[window_number].position.x;
