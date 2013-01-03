@@ -263,6 +263,11 @@ int window_class::process(void)
                         return_value                               = 65535; // stack sort is needed.
                     }
                 }
+                // user clicked on window, that is not title or an element.
+                if ((game.core.io.mouse_button_left) && (return_value == 0) && (!window_class::active))
+                {
+                    return_value = 65535; // stack sort is needed.
+                }
             }
         // ------------------------- X -------------------------
         }
