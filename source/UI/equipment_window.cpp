@@ -42,7 +42,7 @@ void setup_equipment_window(int UID)
     game.window_manager.window[window_number].size.x                  = 0.5f;
     game.window_manager.window[window_number].size.y                  = game.window_manager.window[window_number].size.x * 2.5f;
     game.window_manager.window[window_number].texture.angle           = 0.0f;
-    game.window_manager.window[window_number].texture.base.image_path = "data/textures/UI/menu/background_02.png";
+    game.window_manager.window[window_number].texture.base.image_path = "data/textures/UI/menu/equipment_background.png";
     game.window_manager.window[window_number].texture.base.image.load_image(game.window_manager.window[window_number].texture.base.image_path);
     game.window_manager.window[window_number].texture.normal.image_path = "data/textures/UI/menu/button_normal.png";
     game.window_manager.window[window_number].texture.normal.image.load_image(game.window_manager.window[window_number].texture.normal.image_path);
