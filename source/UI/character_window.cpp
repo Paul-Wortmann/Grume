@@ -117,10 +117,10 @@ void setup_character_window(int UID)
     game.window_manager.window[window_number].element[element_number].type                      = IMAGE;
     game.window_manager.window[window_number].element[element_number].zoom.enabled              = false;
     game.window_manager.window[window_number].element[element_number].color                     = game.window_manager.window[window_number].color;
-    game.window_manager.window[window_number].element[element_number].size.x                    = 0.16f;
+    game.window_manager.window[window_number].element[element_number].size.x                    = 0.129f;
     game.window_manager.window[window_number].element[element_number].size.y                    = game.window_manager.window[window_number].element[element_number].size.x*1.5f;
-    game.window_manager.window[window_number].element[element_number].position.x                = game.window_manager.window[window_number].position.x-(game.window_manager.window[window_number].size.x / 4.0f);
-    game.window_manager.window[window_number].element[element_number].position.y                = game.window_manager.window[window_number].position.y+(game.window_manager.window[window_number].size.y / 4.0f);
+    game.window_manager.window[window_number].element[element_number].position.x                = game.window_manager.window[window_number].position.x-(game.window_manager.window[window_number].size.x / 3.73f);
+    game.window_manager.window[window_number].element[element_number].position.y                = game.window_manager.window[window_number].position.y+(game.window_manager.window[window_number].size.y / 4.02f);
     game.window_manager.window[window_number].element[element_number].texture.normal.image_path = "data/textures/UI/menu/character_portrait_frame.png";
     game.window_manager.window[window_number].element[element_number].texture.normal.image.load_image(game.window_manager.window[window_number].element[element_number].texture.normal.image_path);
     game.window_manager.window[window_number].element[element_number].texture.highlighted.image_path = "data/textures/UI/menu/character_portrait_frame.png";
@@ -236,7 +236,7 @@ void setup_character_window(int UID)
     game.window_manager.window[window_number].element[element_number].font                        = game.window_manager.window[window_number].font;
 };
 
-void update_character_window(int UID) //Standardised
+void update_character_window(int UID)
 {
     int window_number = game.window_manager.window_get_number(UID);
     int element_number = 1; //--- player portrait ---
