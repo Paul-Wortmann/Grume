@@ -97,7 +97,7 @@ void setup_action_bar(int UID)
     game.window_manager.window[window_number].element[element_number].click_enabled             = false;
     game.window_manager.window[window_number].element[element_number].type                      = BAR;
     game.window_manager.window[window_number].element[element_number].value                     = 0;
-    game.window_manager.window[window_number].element[element_number].value_max                 = 100;
+    game.window_manager.window[window_number].element[element_number].value_max                 = 1000;
     game.window_manager.window[window_number].element[element_number].zoom.enabled              = false;
     game.window_manager.window[window_number].element[element_number].tooltip.enabled           = true;
     game.window_manager.window[window_number].element[element_number].tooltip.text              = "0%";
@@ -300,8 +300,9 @@ void process_action_bar(int window_number)
             int element_number = 0; //--- Player experience bar ---
             unsigned long long  temp_val = (game.player.level.current_experience - game.player.level.experience[game.player.level.current]);
             unsigned long long  temp_max = (game.player.level.experience[game.player.level.current+1] - game.player.level.experience[game.player.level.current]);
-            int                 temp_per = (((float)temp_val / (float)temp_max) * 100);
+            int                 temp_per = (((float)temp_val / (float)temp_max) * game.window_manager.window[window_number].element[element_number].value_max);
             game.window_manager.window[window_number].element[element_number].value = temp_per;
+            temp_per /= 10;
             std::string temp_string  = int_to_string(temp_per);
             temp_string += "%";
             if (temp_per >  9) temp_string += ' ';
