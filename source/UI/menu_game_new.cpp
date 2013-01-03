@@ -330,6 +330,27 @@ void setup_menu_game_new(int UID)
     game.window_manager.window[window_number].element[element_number].font                      = game.window_manager.window[window_number].font;
 };
 
+void update_menu_game_new(int UID)
+{
+    int element_number = 0;
+    int window_number = game.window_manager.window_get_number(UID);
+    element_number =  6; // Image 0 of the player portrait selection
+    game.window_manager.window[window_number].element[element_number].texture.normal.image_path   = game.window_manager.window[window_number].choice_selection[0].data[element_number-6].image_path;
+    game.window_manager.window[window_number].element[element_number].texture.highlighted.image.load_image(game.window_manager.window[window_number].element[element_number].texture.highlighted.image_path);
+    element_number =  7; // Image 1 of the player portrait selection
+    game.window_manager.window[window_number].element[element_number].texture.normal.image_path   = game.window_manager.window[window_number].choice_selection[0].data[element_number-6].image_path;
+    game.window_manager.window[window_number].element[element_number].texture.highlighted.image.load_image(game.window_manager.window[window_number].element[element_number].texture.highlighted.image_path);
+    element_number =  8; // Image 2 of the player portrait selection
+    game.window_manager.window[window_number].element[element_number].texture.normal.image_path   = game.window_manager.window[window_number].choice_selection[0].data[element_number-6].image_path;
+    game.window_manager.window[window_number].element[element_number].texture.highlighted.image.load_image(game.window_manager.window[window_number].element[element_number].texture.highlighted.image_path);
+    element_number =  9; // Image 3 of the player portrait selection
+    game.window_manager.window[window_number].element[element_number].texture.normal.image_path   = game.window_manager.window[window_number].choice_selection[0].data[element_number-6].image_path;
+    game.window_manager.window[window_number].element[element_number].texture.highlighted.image.load_image(game.window_manager.window[window_number].element[element_number].texture.highlighted.image_path);
+    element_number = 10; // Image 4 of the player portrait selection
+    game.window_manager.window[window_number].element[element_number].texture.normal.image_path   = game.window_manager.window[window_number].choice_selection[0].data[element_number-6].image_path;
+    game.window_manager.window[window_number].element[element_number].texture.highlighted.image.load_image(game.window_manager.window[window_number].element[element_number].texture.highlighted.image_path);
+};
+
 void process_menu_game_new(int window_number)
 {
     std::string   temp_data_texture_path;

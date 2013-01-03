@@ -783,6 +783,7 @@ void process_menu_options(int window_number)
             game.loading_screen.display("data/loading_screen.png");
             game.core.log.file_write("Reloading resources....");
             game.UI.UI_reload_textures();
+            update_menu_game_new(MENU_GAME_NEW_UID);
         }
     }
     game.window_manager.window[window_number].event = 0;
