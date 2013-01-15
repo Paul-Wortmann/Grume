@@ -7,6 +7,14 @@ just that time is not permitting to proceed at a fast pace, at the moment.
 
 v0.15 - (2013-01-31)
 
+UI    -> Smoother experience bar progress.
+GFX   -> Improved equipment window background.
+GFX   -> Improved character window background.
+GFX   -> Standardized window color.
+UI    -> New window manager.
+UI    -> Improved handeling of windows, new window stack.
+UI    -> Improved visual apearance of windows by adjusting window size.
+GFX   -> Unified various menu related texture directories.
 UI    -> Added the 6 window buttons to the action bar.
 UI    -> Added the base of the Character window.
 UI    -> Added the base of the Quest Log window.
