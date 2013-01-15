@@ -49,6 +49,8 @@
 #define SLING         18
 #define WEAPON        19
 
+#define EFFECT_ADD_HEALTH 100
+
 #define MAX_ITEMS        500 /*   65500     */
 #define MAX_ITEM_EFFECTS 4
 #define MAX_ITEM_SOCKETS 4
@@ -89,10 +91,13 @@ struct item_type
 class item_manager_class
 {
     public:
-    item_type item[MAX_ITEMS];
+        item_manager_class(void);
+        item_type item[MAX_ITEMS];
+        void      reset_item(int item_number);
+
 };
 
-void  init_items(void); // Initialize hard coded default items, such as health potions etc...
+void  init_items(void); // Initialize hard-coded default items, such as health potions etc...
 
 #endif // ITEM_MANAGER_H
 

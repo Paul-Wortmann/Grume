@@ -24,42 +24,58 @@
 
 #include "item_manager.hpp"
 #include "game.hpp"
-#include "core/misc.hpp"
 
 extern game_class game;
 
 //----------------------------------------------------------------------------------------------------------------
 
-void  init_items(void); // Initialize hard coded default items, such as health potions etc...
+item_manager_class::item_manager_class(void)
 {
+    for (int item_count = 0; item_count < MAX_ITEMS; item_count++)
+    {
+        item_manager_class::item[item_count].active                 = false;
+    }
+};
 
+void item_manager_class::reset_item(int item_number)
+{
+    item_manager_class::item[item_number].active                 = false;
+    item_manager_class::item[item_number].socketable             = false;
+    item_manager_class::item[item_number].number_of_item_effects = 0;
+    item_manager_class::item[item_number].number_of_item_sockets = 0;
+    for (int item_effect_count = 0; item_effect_count < MAX_ITEMS; item_effect_count++)
+    {
+        item_manager_class::item[item_number].effect[item_effect_count].type = NONE;
+    }
+    for (int item_socket_count = 0; item_socket_count < MAX_ITEMS; item_socket_count++)
+    {
+        item_manager_class::item[item_number].socket[item_socket_count].type = NONE;
+    }
+};
+
+//----------------------------------------------------------------------------------------------------------------
+
+void  init_items(void) // Initialize hard-coded default items, such as health potions etc...
+{
+    int item_number = 0;
+    // First 1000 items are reserved for permanent entities, 1000+ are for randomly generated items.
+    //------------------------------------------------------------------------------------------------------------
+    //----------------- 0 - 99 ------- Potions / gems / runes -----------------------------------------------------------
+    item_number = 0; // Health potion
+    game.item_manager.reset_item(item_number);
+    game.item_manager.item[item_number].active     = true;
+    game.item_manager.item[item_number].type       = HEALTH_POTION;
+    game.item_manager.item[item_number].ID         = item_number;
+    game.item_manager.item[item_number].image.path = "data/textures/UI/icons/potions/potion_23.png";
+    game.item_manager.item[item_number].image.load_image(game.item_manager.item[item_number].image.path);
+    game.item_manager.item[item_number].number_of_item_effects = 1;
+    game.item_manager.item[item_number].effect[0].type         = EFFECT_ADD_HEALTH;
+    game.item_manager.item[item_number].effect[0].value        = 5.0f;
+    //------------------------------------------------------------------------------------------------------------
 
 
 
 
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
