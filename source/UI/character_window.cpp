@@ -147,10 +147,6 @@ void setup_character_window(int UID)
     game.window_manager.window[window_number].element[element_number].size.y                      = game.window_manager.window[window_number].element[element_number].size.x;
     game.window_manager.window[window_number].element[element_number].position.x                  = game.window_manager.window[window_number].position.x+(game.window_manager.window[window_number].element[element_number].size.x)-(game.window_manager.window[window_number].size.x/2.0f);
     game.window_manager.window[window_number].element[element_number].position.y                  = game.window_manager.window[window_number].position.y+(game.window_manager.window[window_number].element[element_number].size.y * 1.44f);
-    game.window_manager.window[window_number].element[element_number].texture.normal.image_path   = "data/textures/UI/menu/character_portrait_frame.png";
-    game.window_manager.window[window_number].element[element_number].texture.normal.image.load_image(game.window_manager.window[window_number].element[element_number].texture.normal.image_path);
-    game.window_manager.window[window_number].element[element_number].texture.highlighted.image_path = "data/textures/UI/menu/character_portrait_frame.png";
-    game.window_manager.window[window_number].element[element_number].texture.highlighted.image.load_image(game.window_manager.window[window_number].element[element_number].texture.highlighted.image_path);
     game.window_manager.window[window_number].element[element_number].sound                       = game.window_manager.window[window_number].sound;
     game.window_manager.window[window_number].element[element_number].sound.on_click.enabled      = false;
     game.window_manager.window[window_number].element[element_number].sound.on_mouse_over.enabled = false;
@@ -173,10 +169,6 @@ void setup_character_window(int UID)
     game.window_manager.window[window_number].element[element_number].size.y                      = game.window_manager.window[window_number].element[element_number].size.x;
     game.window_manager.window[window_number].element[element_number].position.x                  = game.window_manager.window[window_number].position.x+(game.window_manager.window[window_number].element[element_number].size.x)-(game.window_manager.window[window_number].size.x/2.0f);
     game.window_manager.window[window_number].element[element_number].position.y                  = game.window_manager.window[window_number].position.y+(game.window_manager.window[window_number].element[element_number].size.y * 1.44f);
-    game.window_manager.window[window_number].element[element_number].texture.normal.image_path   = "data/textures/UI/menu/character_portrait_frame.png";
-    game.window_manager.window[window_number].element[element_number].texture.normal.image.load_image(game.window_manager.window[window_number].element[element_number].texture.normal.image_path);
-    game.window_manager.window[window_number].element[element_number].texture.highlighted.image_path = "data/textures/UI/menu/character_portrait_frame.png";
-    game.window_manager.window[window_number].element[element_number].texture.highlighted.image.load_image(game.window_manager.window[window_number].element[element_number].texture.highlighted.image_path);
     game.window_manager.window[window_number].element[element_number].sound                       = game.window_manager.window[window_number].sound;
     game.window_manager.window[window_number].element[element_number].sound.on_click.enabled      = false;
     game.window_manager.window[window_number].element[element_number].sound.on_mouse_over.enabled = false;
@@ -199,10 +191,6 @@ void setup_character_window(int UID)
     game.window_manager.window[window_number].element[element_number].size.y                      = game.window_manager.window[window_number].element[element_number].size.x;
     game.window_manager.window[window_number].element[element_number].position.x                  = game.window_manager.window[window_number].position.x+(game.window_manager.window[window_number].element[element_number].size.x)-(game.window_manager.window[window_number].size.x/2.0f);
     game.window_manager.window[window_number].element[element_number].position.y                  = game.window_manager.window[window_number].position.y+(game.window_manager.window[window_number].element[element_number].size.y * 1.44f);
-    game.window_manager.window[window_number].element[element_number].texture.normal.image_path   = "data/textures/UI/menu/character_portrait_frame.png";
-    game.window_manager.window[window_number].element[element_number].texture.normal.image.load_image(game.window_manager.window[window_number].element[element_number].texture.normal.image_path);
-    game.window_manager.window[window_number].element[element_number].texture.highlighted.image_path = "data/textures/UI/menu/character_portrait_frame.png";
-    game.window_manager.window[window_number].element[element_number].texture.highlighted.image.load_image(game.window_manager.window[window_number].element[element_number].texture.highlighted.image_path);
     game.window_manager.window[window_number].element[element_number].sound                       = game.window_manager.window[window_number].sound;
     game.window_manager.window[window_number].element[element_number].sound.on_click.enabled      = false;
     game.window_manager.window[window_number].element[element_number].sound.on_mouse_over.enabled = false;
@@ -225,10 +213,6 @@ void setup_character_window(int UID)
     game.window_manager.window[window_number].element[element_number].size.y                      = game.window_manager.window[window_number].element[element_number].size.x;
     game.window_manager.window[window_number].element[element_number].position.x                  = game.window_manager.window[window_number].position.x+(game.window_manager.window[window_number].element[element_number].size.x)-(game.window_manager.window[window_number].size.x/2.0f);
     game.window_manager.window[window_number].element[element_number].position.y                  = game.window_manager.window[window_number].position.y+(game.window_manager.window[window_number].element[element_number].size.y * 1.44f);
-    game.window_manager.window[window_number].element[element_number].texture.normal.image_path   = "data/textures/UI/menu/character_portrait_frame.png";
-    game.window_manager.window[window_number].element[element_number].texture.normal.image.load_image(game.window_manager.window[window_number].element[element_number].texture.normal.image_path);
-    game.window_manager.window[window_number].element[element_number].texture.highlighted.image_path = "data/textures/UI/menu/character_portrait_frame.png";
-    game.window_manager.window[window_number].element[element_number].texture.highlighted.image.load_image(game.window_manager.window[window_number].element[element_number].texture.highlighted.image_path);
     game.window_manager.window[window_number].element[element_number].sound                       = game.window_manager.window[window_number].sound;
     game.window_manager.window[window_number].element[element_number].sound.on_click.enabled      = false;
     game.window_manager.window[window_number].element[element_number].sound.on_mouse_over.enabled = false;
@@ -260,6 +244,7 @@ void update_character_window(int UID)
 
 void process_character_window(int window_number)
 {
+    update_character_window(CHARACTER_UID);
     if(game.window_manager.window[window_number].event > 0)
     {
         switch (game.window_manager.window[window_number].event)

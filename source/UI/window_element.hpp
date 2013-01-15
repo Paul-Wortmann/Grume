@@ -43,7 +43,7 @@
 #define CHECKBOX       9
 #define DROPDOWN       10
 #define SELECTION      11
-#define ICON           12
+#define ITEM           12
 
 #define MAX_CHOICE_SELECTIONS_PER_MENU 8
 #define MAX_CHOICE_SELECTION           16

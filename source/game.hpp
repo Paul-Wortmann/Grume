@@ -27,7 +27,7 @@
 
 #include "core/core.hpp"
 #include "core/savegame.hpp"
-#include "items.hpp"
+#include "item_manager.hpp"
 #include "language.hpp"
 #include "core/textures.hpp"
 #include "core/music.hpp"
@@ -74,7 +74,7 @@ class game_class
         light_type           global_ambient;
         light_type           world_ambient;
         spell_class          spell[MAX_SPELLS];
-        item_class           item [MAX_ITEMS];
+        item_manager_class   item_manager;
         language_class       language;
         window_manager_class window_manager;
         UI_class             UI;

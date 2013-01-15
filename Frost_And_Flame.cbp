@@ -210,8 +210,8 @@
 		<Unit filename="source/icon.rc">
 			<Option compilerVar="WINDRES" />
 		</Unit>
-		<Unit filename="source/items.cpp" />
-		<Unit filename="source/items.hpp" />
+		<Unit filename="source/item_manager.cpp" />
+		<Unit filename="source/item_manager.hpp" />
 		<Unit filename="source/language.cpp" />
 		<Unit filename="source/language.hpp" />
 		<Unit filename="source/main.cpp" />

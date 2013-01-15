@@ -233,7 +233,7 @@ void window_element_class::render(void)
             break;
             case SELECTION:
             break;
-            case ICON:
+            case ITEM:
             break;
             default:
             break;

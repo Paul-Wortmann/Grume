@@ -89,11 +89,7 @@ void game_class::init(void)
     game.player.destination_set                   =  false;
     game.player.path_set                          =  false;
     game.player.movement_type                     =  MOVE_TO_TILE_NONE;
-/*
-    game.npc.health.bar.texture_base  = game.resource.texture.enemy_health_bar_background_000.ref_number;
-    game.npc.health.bar.texture_bar   = game.resource.texture.enemy_health_bar_000.ref_number;
-    game.npc.health.bar.texture_front = game.resource.texture.enemy_health_bar_foreground_000.ref_number;
-*/
+
     //--- other ---
     game.core.music_next_track = true;
     init_spells();
@@ -287,6 +283,11 @@ void game_class::process(void)
             game.core.io.key_space                 = false;
             game.core.io.keyboard_delay_count      = 0;
         }
+        if (game.core.io.key_alt) // display item names on map (loot / click-able items)
+        {
+            game.core.io.key_alt                   = false;
+            game.core.io.keyboard_delay_count      = 0;
+        }
 ///------------------------------------------------------------------------------------------
         if (game.core.io.key_r) // regenerate random map.
         {
@@ -304,32 +305,14 @@ void game_class::process(void)
             game.core.io.key_d                     = false;
             game.core.io.keyboard_delay_count      = 0;
         }
-///------------------------------------------------------------------------------------------
-        /*
-        if (game.core.io.pause)
+        if (game.core.io.key_t) // test exp++
         {
-            if (!game.core.game_paused)
-            {
-                game.core.game_paused = true;
-                game.core.menu_active = true;
-                game.core.game_active = false;
-                game.core.io.pause    = false;
-                game.core.menu_level  = 11;
-                SDL_WarpMouse(game.core.graphics.gl_to_res(game.pause_menu.get_button_x_pos(1),game.core.config.mouse_resolution_x),game.core.config.mouse_resolution_y-game.core.graphics.gl_to_res(game.pause_menu.get_button_y_pos(1),game.core.config.mouse_resolution_y));
-            }
-            else
-            {
-                game.core.game_paused = false;
-                game.core.menu_active = false;
-                game.core.game_active = true;
-            }
-        };
-        */
-        if (game.core.io.key_alt) // display item names on map (loot / clickable items)
-        {
-            ;
+            game.player.level.current_experience++;
+            game.core.io.key_t                     = false;
+            game.core.io.keyboard_delay_count      = 0;
         }
     }
+///------------------------------------------------------------------------------------------
 };
 
 void game_class::render(void)
