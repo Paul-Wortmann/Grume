@@ -105,7 +105,8 @@ extern "C" int main(int argc, char** argv)
 //  --- miscellaneous ---
     game.core.log.file_write("Seeding random...");
     seed_rand();
-    game.core.log.file_write("Initializing menu system...");
+    game.core.log.file_write("Initializing UI system...");
+    game.UI.UI_setup();
     game.core.log.file_write("Initializing game system...");
     game.init();
     game.core.log.file_write("Initializing event handlers...");
@@ -115,12 +116,11 @@ extern "C" int main(int argc, char** argv)
     game.core.log.file_write("# ---------------------------------------------- #");
     game.core.log.file_write(" ");
 
+    game.core.timer.start();
+    game.core.last_ticks = game.core.timer.getticks();
 // --------------------------------------------------------------------------------------------------------------------------
 // | Main application loop
 // --------------------------------------------------------------------------------------------------------------------------
-    game.core.timer.start();
-    game.core.last_ticks = game.core.timer.getticks();
-    game.UI.UI_setup();
     while (game.state != STATE_QUIT)
     {
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);

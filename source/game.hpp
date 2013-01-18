@@ -74,9 +74,9 @@ class game_class
         light_type           global_ambient;
         light_type           world_ambient;
         spell_class          spell[MAX_SPELLS];
-        item_manager_class   item_manager;
         language_class       language;
         window_manager_class window_manager;
+        item_manager_class   item_manager;
         UI_class             UI;
         map_2D_class         map_2D;
         game_class(void);

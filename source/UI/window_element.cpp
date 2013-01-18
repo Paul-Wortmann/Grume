@@ -131,6 +131,7 @@ window_element_class::window_element_class(void)
     window_element_class::active                         = false;
     window_element_class::clicked                        = false;
     window_element_class::click_enabled                  = true;
+    window_element_class::dragable                       = false;
     window_element_class::texture.angle                  = 0.0f;
     window_element_class::texture.base.image_path        = "";
     window_element_class::texture.normal.image_path      = "";
@@ -234,6 +235,11 @@ void window_element_class::render(void)
             case SELECTION:
             break;
             case ITEM:
+                if (window_element_class::value > -1)
+                {
+                    window_element_class::texture.normal.image.draw(false,window_element_class::position.x,window_element_class::position.y,window_element_class::position.z,window_element_class::size.x+zoom_value,window_element_class::size.y+zoom_value,window_element_class::texture.angle);
+                }
+                // Font write -> Item quantity
             break;
             default:
             break;

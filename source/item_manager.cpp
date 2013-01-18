@@ -29,53 +29,90 @@ extern game_class game;
 
 //----------------------------------------------------------------------------------------------------------------
 
+item_class::item_class(void)
+{
+    item_class::name               = "";
+    item_class::active             = false;
+};
+
+item_class::~item_class(void)
+{
+};
+
+//----------------------------------------------------------------------------------------------------------------
+
 item_manager_class::item_manager_class(void)
 {
-    for (int item_count = 0; item_count < MAX_ITEMS; item_count++)
-    {
-        item_manager_class::item[item_count].active                 = false;
-    }
+};
+
+item_manager_class::~item_manager_class(void)
+{
 };
 
 void item_manager_class::reset_item(int item_number)
 {
+    item_manager_class::item[item_number].type                   = NULL_ITEM;
+    item_manager_class::item[item_number].name                   = "";
+    item_manager_class::item[item_number].quantity               = 1;
+    item_manager_class::item[item_number].quantity_max           = 1;
     item_manager_class::item[item_number].active                 = false;
     item_manager_class::item[item_number].socketable             = false;
     item_manager_class::item[item_number].number_of_item_effects = 0;
     item_manager_class::item[item_number].number_of_item_sockets = 0;
-    for (int item_effect_count = 0; item_effect_count < MAX_ITEMS; item_effect_count++)
+    for (int item_effect_count = 0; item_effect_count < MAX_ITEM_EFFECTS; item_effect_count++)
     {
-        item_manager_class::item[item_number].effect[item_effect_count].type = NONE;
+        item_manager_class::item[item_number].effect[item_effect_count].type = NULL_ITEM;
     }
-    for (int item_socket_count = 0; item_socket_count < MAX_ITEMS; item_socket_count++)
+    for (int item_socket_count = 0; item_socket_count < MAX_ITEM_SOCKETS; item_socket_count++)
     {
-        item_manager_class::item[item_number].socket[item_socket_count].type = NONE;
+        item_manager_class::item[item_number].socket[item_socket_count].type = NULL_ITEM;
     }
+};
+
+int item_manager_class::get_new_ID(void)
+{
+    for (int item_count = 0; item_count < MAX_ITEMS; item_count++)
+    {
+        if (!item_manager_class::item[item_count].active) return (item_count);
+    }
+    return (-1);
+};
+
+int item_manager_class::get_item_ID(int temp_item_type)
+{
+    for (int item_count = 0; item_count < MAX_ITEMS; item_count++)
+    {
+        if (item_manager_class::item[item_count].ID == temp_item_type) return (item_count);
+    }
+    return (-1);
 };
 
 //----------------------------------------------------------------------------------------------------------------
 
 void  init_items(void) // Initialize hard-coded default items, such as health potions etc...
 {
-    int item_number = 0;
-    // First 1000 items are reserved for permanent entities, 1000+ are for randomly generated items.
     //------------------------------------------------------------------------------------------------------------
-    //----------------- 0 - 99 ------- Potions / gems / runes -----------------------------------------------------------
-    item_number = 0; // Health potion
-    game.item_manager.reset_item(item_number);
-    game.item_manager.item[item_number].active     = true;
-    game.item_manager.item[item_number].type       = HEALTH_POTION;
-    game.item_manager.item[item_number].ID         = item_number;
-    game.item_manager.item[item_number].image.path = "data/textures/UI/icons/potions/potion_23.png";
-    game.item_manager.item[item_number].image.load_image(game.item_manager.item[item_number].image.path);
-    game.item_manager.item[item_number].number_of_item_effects = 1;
-    game.item_manager.item[item_number].effect[0].type         = EFFECT_ADD_HEALTH;
-    game.item_manager.item[item_number].effect[0].value        = 5.0f;
+    int item_number = -1;
+    //------------------------- Potions --------------------------------------------------------------------------
+    item_number = game.item_manager.get_new_ID();
+    if (item_number > -1) // Health potion
+    {
+        game.item_manager.reset_item(item_number);
+        game.item_manager.item[item_number].active                 = true;
+        game.item_manager.item[item_number].type                   = HEALTH_POTION;
+        game.item_manager.item[item_number].ID                     = item_number;
+        game.item_manager.item[item_number].quantity               = 1;
+        game.item_manager.item[item_number].quantity_max           = 1;
+        game.item_manager.item[item_number].active                 = false;
+        game.item_manager.item[item_number].socketable             = false;
+        game.item_manager.item[item_number].number_of_item_sockets = 1;
+        game.item_manager.item[item_number].number_of_item_effects = 1;
+        game.item_manager.item[item_number].effect[0].type         = EFFECT_MOD_HEALTH;
+        game.item_manager.item[item_number].effect[0].value        = 5.0f;
+        game.item_manager.item[item_number].image.path             = "data/textures/UI/icons/potions/potion_23.png";
+        game.item_manager.item[item_number].image.load_image(game.item_manager.item[item_number].image.path);
+    }
     //------------------------------------------------------------------------------------------------------------
-
-
-
-
 };
 
 

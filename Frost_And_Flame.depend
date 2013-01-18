@@ -29,7 +29,7 @@
 	<string>
 	<fstream>
 
-1358260466 c:\_git_\frost_and_flame\source\game.hpp
+1358442985 c:\_git_\frost_and_flame\source\game.hpp
 	"core/core.hpp"
 	"core/savegame.hpp"
 	"item_manager.hpp"
@@ -736,7 +736,7 @@
 1357028525 source:c:\_git_\frost_and_flame\source\core\rs232.cpp
 	"rs232.hpp"
 
-1357106074 source:c:\_git_\frost_and_flame\source\main.cpp
+1358442938 source:c:\_git_\frost_and_flame\source\main.cpp
 	"game.hpp"
 	<SDL/SDL.h>
 	<physfs.h>
@@ -797,7 +797,7 @@
 	"resources.hpp"
 	"game.hpp"
 
-1357028224 source:c:\_git_\frost_and_flame\source\core\textures.cpp
+1358346663 source:c:\_git_\frost_and_flame\source\core\textures.cpp
 	<GL/gl.h>
 	<SDL/SDL.h>
 	<SDL/SDL_image.h>
@@ -939,7 +939,7 @@
 	"misc.hpp"
 	"../game.hpp"
 
-1357226694 source:c:\_git_\frost_and_flame\source\game.cpp
+1358443003 source:c:\_git_\frost_and_flame\source\game.cpp
 	"core/map_2D.hpp"
 	"game.hpp"
 
@@ -1083,7 +1083,7 @@
 	"window.hpp"
 	"../game.hpp"
 
-1358100684 c:\_git_\frost_and_flame\source\ui\window_element.hpp
+1358512023 c:\_git_\frost_and_flame\source\ui\window_element.hpp
 	<string>
 	"../core/textures.hpp"
 	"../core/font.hpp"
@@ -1098,7 +1098,7 @@
 1349194251 c:\_git_\frost_and_flame\source\ui\main_menu.hpp
 	"window.hpp"
 
-1358100773 source:c:\_git_\frost_and_flame\source\ui\window_element.cpp
+1358512109 source:c:\_git_\frost_and_flame\source\ui\window_element.cpp
 	"window_element.hpp"
 	"../game.hpp"
 
@@ -1203,7 +1203,7 @@
 1357028938 c:\_git_\frost_and_flame\source\ui\inventory_window.hpp
 	"window.hpp"
 
-1357189406 source:c:\_git_\frost_and_flame\source\ui\inventory_window.cpp
+1358511872 source:c:\_git_\frost_and_flame\source\ui\inventory_window.cpp
 	"menu_main.hpp"
 	"../game.hpp"
 
@@ -1710,14 +1710,11 @@
 1357028525 source:/host/_git_/Frost_and_Flame/source/core/rs232.cpp
 	"rs232.hpp"
 
-1358260524 source:c:\_git_\frost_and_flame\source\item_manager.cpp
+1358442053 source:c:\_git_\frost_and_flame\source\item_manager.cpp
 	"item_manager.hpp"
 	"game.hpp"
-	"core/misc.hpp"
 
-1358260524 c:\_git_\frost_and_flame\source\item_manager.hpp
+1358442053 c:\_git_\frost_and_flame\source\item_manager.hpp
 	<string>
 	"core/textures.hpp"
-	<string>
-	<fstream>
 
