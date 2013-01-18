@@ -304,14 +304,25 @@ void window_manager_class::process(void)
     bool front_window_found = false;
     for (int window_count = 0; window_count < window_manager_class::number_of_windows; window_count++)
     {
-        if((!front_window_found) && (window_manager_class::window[window_manager_class::window_stack[window_count]].enabled))
+        if (window_manager_class::window[window_manager_class::window_stack[window_count]].enabled)
         {
-            if(window_manager_class::window[window_manager_class::window_stack[window_count]].get_mouse_over_menu())
+            if (window_manager_class::window[window_manager_class::window_stack[window_count]].get_mouse_over_menu())
             {
-                //if mouse over window found, process it.
-                window_manager_class::window[window_manager_class::window_stack[window_count]].mouse_over_menu  = true;
-                if (window_manager_class::window[window_manager_class::window_stack[window_count]].process() == 65535) window_manager_class::window_set_active(window_manager_class::window[window_manager_class::window_stack[window_count]].UID);
-                front_window_found = true;
+                if (!front_window_found)
+                {
+                    window_manager_class::window[window_manager_class::window_stack[window_count]].mouse_over_menu  = true;
+                    if (window_manager_class::window[window_manager_class::window_stack[window_count]].process(true) == 65535) window_manager_class::window_set_active(window_manager_class::window[window_manager_class::window_stack[window_count]].UID);
+                    front_window_found = true;
+                }
+                else
+                {
+                    window_manager_class::window[window_manager_class::window_stack[window_count]].mouse_over_menu  = true;
+                    window_manager_class::window[window_manager_class::window_stack[window_count]].process(false);
+                }
+            }
+            else
+            {
+                window_manager_class::window[window_manager_class::window_stack[window_count]].process(false);
             }
         }
     }

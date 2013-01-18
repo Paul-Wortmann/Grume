@@ -67,7 +67,7 @@ class window_class
         bool                    get_mouse_over_title(void);
         bool                    mouse_click_title(void);
         void                    set_position(float x_pos, float y_pos);
-        int                     process(void);
+        int                     process(bool window_in_focus);
 };
 
 #endif // WINDOW_H

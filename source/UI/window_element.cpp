@@ -89,6 +89,12 @@ window_element_class::window_element_class(void)
     window_element_class::position.x                     = 0.0f;
     window_element_class::position.y                     = 0.0f;
     window_element_class::position.z                     = 0.0f;
+    window_element_class::position_origin.x              = 0.0f;
+    window_element_class::position_origin.y              = 0.0f;
+    window_element_class::position_origin.z              = 0.0f;
+    window_element_class::position_destination.x         = 0.0f;
+    window_element_class::position_destination.y         = 0.0f;
+    window_element_class::position_destination.z         = 0.0f;
     window_element_class::title.enabled                  = false;
     window_element_class::title.text                     = "";
     window_element_class::title.position.x               = 0.0f;
@@ -132,6 +138,8 @@ window_element_class::window_element_class(void)
     window_element_class::clicked                        = false;
     window_element_class::click_enabled                  = true;
     window_element_class::dragable                       = false;
+    window_element_class::drag_active                    = false;
+    window_element_class::drop_active                    = false;
     window_element_class::texture.angle                  = 0.0f;
     window_element_class::texture.base.image_path        = "";
     window_element_class::texture.normal.image_path      = "";
@@ -276,34 +284,124 @@ bool window_element_class::mouse_clicked_element(void)
     else return(false);
 };
 
-int  window_element_class::process(void)
+int  window_element_class::process(bool element_in_focus)
 {
-    if ((!game.window_manager.drag_in_progress) && (window_element_class::active))
+    float drag_delta_x = 0.0f;
+    float drag_delta_y = 0.0f;
+    bool  allow_drag   = window_element_class::dragable;
+    window_element_class::mouse_delay.process();
+    if (window_element_class::active)
     {
         if (window_element_class::state != DISABLED)
         {
+            // ------------------------- Drop -------------------------
+            if (window_element_class::drop_active)
+            {
+                if (window_element_class::event == 3)
+                {
+                    // window to update these values before posting an allow_drop event!
+                    window_element_class::position.x     = window_element_class::position_destination.x;
+                    window_element_class::position.y     = window_element_class::position_destination.y;
+                    window_element_class::event = 0;
+                }
+                else // Window did not post an allow_drop
+                {
+                    window_element_class::position.x     = window_element_class::position_origin.x;
+                    window_element_class::position.y     = window_element_class::position_origin.y;
+                    window_element_class::event = 0;
+                }
+                window_element_class::drop_active = false;
+            }
             if (window_element_class::mouse_over_element())
             {
                 window_element_class::mouse_over   = true;
-                if ((window_element_class::state    != HIGHLIGHTED) && (window_element_class::sound.on_mouse_over.enabled)) window_element_class::sound.on_mouse_over.sound.play();
-                window_element_class::state        = HIGHLIGHTED;
-                if (window_element_class::click_enabled)
+                // ----------------- highlighting element ------------------------------
+                if (element_in_focus)
                 {
-                    if (window_element_class::mouse_clicked_element())
+                    if ((window_element_class::state  != HIGHLIGHTED) && (window_element_class::sound.on_mouse_over.enabled)) window_element_class::sound.on_mouse_over.sound.play();
+                    window_element_class::state        = HIGHLIGHTED;
+                }
+                else
+                {
+                    window_element_class::state        = NORMAL;
+                }
+                // ------------------------- Drag -------------------------
+                if (window_element_class::drag_active)
+                {
+                    if (game.core.io.mouse_button_left)
                     {
-                        if((window_element_class::mouse_delay.ready) || (!window_element_class::mouse_delay.enabled))
+                        drag_delta_x = window_element_class::position.x;
+                        drag_delta_y = window_element_class::position.y;
+                        window_element_class::position.x = game.core.io.mouse_x + window_element_class::drag_offset_x;
+                        window_element_class::position.y = game.core.io.mouse_y + window_element_class::drag_offset_y;
+                        drag_delta_x = drag_delta_x - window_element_class::position.x;
+                        drag_delta_y = drag_delta_y - window_element_class::position.y;
+                        window_element_class::title.position.x     -= drag_delta_x;
+                        window_element_class::title.position.y     -= drag_delta_y;
+                    }
+                    else
+                    {
+                        game.window_manager.drag_in_progress = false;
+                        window_element_class::drag_active    = false;
+                        window_element_class::drop_active    = true;
+                        window_element_class::event          = 2; //--- post drop event
+                    }
+                }
+                else
+                {
+                    if ((window_element_class::dragable) && (element_in_focus))
+                    {
+                        if ((game.core.io.mouse_button_left) && (allow_drag))// start drag
                         {
-                            if (window_element_class::sound.on_click.enabled) window_element_class::sound.on_click.sound.play();
-                            window_element_class::clicked = true;
-                            if(window_element_class::mouse_delay.enabled) window_element_class::mouse_delay.reset();
+                            window_element_class::position_origin.x = window_element_class::position.x;
+                            window_element_class::position_origin.y = window_element_class::position.y;
+                            window_element_class::drag_offset_x     = window_element_class::position.x - game.core.io.mouse_x;
+                            window_element_class::drag_offset_y     = window_element_class::position.y - game.core.io.mouse_y;
+                            window_element_class::drag_active       = true;
+                            game.window_manager.drag_in_progress    = true;
                         }
                     }
-                    else window_element_class::clicked = false;
                 }
-                else window_element_class::clicked = false;
+                // ------------------------- clicked element -------------------------
+                if ((!game.window_manager.drag_in_progress) && (element_in_focus))
+                {
+                    if (window_element_class::type == ITEM)
+                    {
+                        if (game.core.io.mouse_button_right)
+                        {
+                            // use/equip item -> handled by inventory manager
+                            window_element_class::clicked = true;
+                        }
+                        else window_element_class::clicked = false;
+                    }
+                    else // if not an item
+                    {
+                        if (window_element_class::click_enabled)
+                        {
+                            if (window_element_class::mouse_clicked_element())
+                            {
+                                if((window_element_class::mouse_delay.ready) || (!window_element_class::mouse_delay.enabled))
+                                {
+                                    if (window_element_class::sound.on_click.enabled) window_element_class::sound.on_click.sound.play();
+                                    window_element_class::clicked = true;
+                                    if(window_element_class::mouse_delay.enabled) window_element_class::mouse_delay.reset();
+                                }
+                            }
+                            else window_element_class::clicked = false;
+                        }
+                        else window_element_class::clicked = false;
+                    }
+                }
             }
             else
             {
+                if (window_element_class::drag_active)
+                {
+                    game.window_manager.drag_in_progress = false;
+                    window_element_class::drag_active    = false;
+                    window_element_class::drop_active    = true;
+                    window_element_class::event          = 2; //--- post drop event
+                }
                 window_element_class::mouse_over = false;
                 window_element_class::state      = NORMAL;
                 window_element_class::clicked    = false;

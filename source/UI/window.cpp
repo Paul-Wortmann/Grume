@@ -180,7 +180,7 @@ void window_class::set_position(float x_pos, float y_pos)
     }
 };
 
-int window_class::process(void)
+int window_class::process(bool window_in_focus)
 {
     float drag_delta_x = 0.0f;
     float drag_delta_y = 0.0f;
@@ -190,92 +190,94 @@ int window_class::process(void)
     if(window_class::enabled)
     {
         window_class::mouse_delay.process();
-        if (!game.window_manager.drag_in_progress) window_class::mouse_over_menu = window_class::get_mouse_over_menu();
-        //else window_class::mouse_over_menu = false;
-        if (window_class::mouse_over_menu)
+        // ------------------------- Process elements -------------------------
+        if (window_class::number_of_elements > 0)
         {
-            // ------------------------- Process elements -------------------------
-            if (window_class::number_of_elements > 0)
+            for (int element_number = 0; element_number < window_class::number_of_elements; element_number++)
             {
-                for (int element_number = 0; element_number < window_class::number_of_elements; element_number++)
+                if ((window_class::element[element_number].active) && ((return_value == 0) || (return_value == 3)))
                 {
-                    if ((window_class::element[element_number].active) && (return_value == 0))
+                    return_value = window_class::element[element_number].process(window_in_focus);
+                    if (return_value > 0) return_value += (element_number * 100);
+                    if (return_value != 0) allow_drag   = false;
+                    if (window_class::element[element_number].mouse_over)
                     {
-                        window_class::element[element_number].mouse_delay.process();
-                        return_value = window_class::element[element_number].process();
-                        if (return_value > 0) return_value += (element_number * 100);
-                        if (return_value != 0) allow_drag   = false;
-                        if (window_class::element[element_number].mouse_over)
-                        {
-                            allow_drag        = false;
-                            return_mouse_over = true;
-                        }
+                        allow_drag        = false;
+                        return_mouse_over = true;
                     }
                 }
             }
+        }
+        if (window_in_focus)
+        {
             // ------------------------- Drag -------------------------
-            if ((!game.window_manager.drag_in_progress) && (window_class::get_mouse_over_title())) window_class::mouse_over_title = true;
-            else window_class::mouse_over_title = false;
-            if (window_class::drag_active)
+            if (!game.window_manager.drag_in_progress) window_class::mouse_over_menu = window_class::get_mouse_over_menu();
+            if (window_class::mouse_over_menu)
             {
-                if (game.core.io.mouse_button_left)
+                if ((!game.window_manager.drag_in_progress) && (window_class::get_mouse_over_title())) window_class::mouse_over_title = true;
+                else window_class::mouse_over_title = false;
+                if (window_class::drag_active)
                 {
-                    drag_delta_x = window_class::position.x;
-                    drag_delta_y = window_class::position.y;
-                    window_class::position.x = game.core.io.mouse_x + window_class::drag_offset_x;
-                    window_class::position.y = game.core.io.mouse_y + window_class::drag_offset_y;
-                    drag_delta_x = drag_delta_x - window_class::position.x;
-                    drag_delta_y = drag_delta_y - window_class::position.y;
-                    window_class::title.position.x     -= drag_delta_x;
-                    window_class::title.position.y     -= drag_delta_y;
-                    window_class::title_bar.position.x -= drag_delta_x;
-                    window_class::title_bar.position.y -= drag_delta_y;
-                    if(window_class::number_of_elements > 0)
+                    if (game.core.io.mouse_button_left)
                     {
-                        for (int element_number = 0; element_number < window_class::number_of_elements; element_number++)
+                        drag_delta_x = window_class::position.x;
+                        drag_delta_y = window_class::position.y;
+                        window_class::position.x = game.core.io.mouse_x + window_class::drag_offset_x;
+                        window_class::position.y = game.core.io.mouse_y + window_class::drag_offset_y;
+                        drag_delta_x = drag_delta_x - window_class::position.x;
+                        drag_delta_y = drag_delta_y - window_class::position.y;
+                        window_class::title.position.x     -= drag_delta_x;
+                        window_class::title.position.y     -= drag_delta_y;
+                        window_class::title_bar.position.x -= drag_delta_x;
+                        window_class::title_bar.position.y -= drag_delta_y;
+                        if(window_class::number_of_elements > 0)
                         {
-                            if (window_class::element[element_number].active)
+                            for (int element_number = 0; element_number < window_class::number_of_elements; element_number++)
                             {
-                                window_class::element[element_number].position.x       -= drag_delta_x;
-                                window_class::element[element_number].position.y       -= drag_delta_y;
-                                window_class::element[element_number].title.position.x -= drag_delta_x;
-                                window_class::element[element_number].title.position.y -= drag_delta_y;
+                                if (window_class::element[element_number].active)
+                                {
+                                    window_class::element[element_number].position.x       -= drag_delta_x;
+                                    window_class::element[element_number].position.y       -= drag_delta_y;
+                                    window_class::element[element_number].title.position.x -= drag_delta_x;
+                                    window_class::element[element_number].title.position.y -= drag_delta_y;
+                                }
                             }
                         }
+                    }
+                    else
+                    {
+                        window_class::drag_active             = false;
+                        game.window_manager.drag_in_progress  = false;
                     }
                 }
                 else
                 {
-                    window_class::drag_active             = false;
-                    game.window_manager.drag_in_progress  = false;
-                }
-            }
-            else
-            {
-                if (window_class::drag_enabled)
-                {
-                    if ((!game.window_manager.drag_in_progress) && (window_class::mouse_over_title) && (game.core.io.mouse_button_left) && (allow_drag))// start drag
+                    if (window_class::drag_enabled)
                     {
-                        window_class::drag_offset_x                = window_class::position.x - game.core.io.mouse_x;
-                        window_class::drag_offset_y                = window_class::position.y - game.core.io.mouse_y;
-                        window_class::drag_active                  = true;
-                        game.window_manager.drag_in_progress       = true;
-                        return_value                               = 65535; // stack sort is needed.
+                        if ((!game.window_manager.drag_in_progress) && (window_class::mouse_over_title) && (game.core.io.mouse_button_left) && (allow_drag))// start drag
+                        {
+                            window_class::drag_offset_x                = window_class::position.x - game.core.io.mouse_x;
+                            window_class::drag_offset_y                = window_class::position.y - game.core.io.mouse_y;
+                            window_class::drag_active                  = true;
+                            game.window_manager.drag_in_progress       = true;
+                            return_value                               = 65535; // stack sort is needed.
+                        }
+                    }
+                    // user clicked on window, that is not title or an element.
+                    if ((game.core.io.mouse_button_left) && (return_value == 0) && (!window_class::active))
+                    {
+                        return_value = 65535; // stack sort is needed.
                     }
                 }
-                // user clicked on window, that is not title or an element.
-                if ((game.core.io.mouse_button_left) && (return_value == 0) && (!window_class::active))
-                {
-                    return_value = 65535; // stack sort is needed.
-                }
+            // ------------------------- X -------------------------
             }
-        // ------------------------- X -------------------------
+            if (!window_class::mouse_over_title) window_class::mouse_over_title = return_mouse_over;
         }
-        if (!window_class::mouse_over_title) window_class::mouse_over_title = return_mouse_over;
     }
     window_class::event = return_value;
     //if (return_value > 0) game.core.log.file_write("returning event -> ",return_value, " - from UID - ", window_class::UID);
-    return(return_value);
+    if (window_in_focus) return(return_value);
+    else return (window_class::event);
 };
 
 

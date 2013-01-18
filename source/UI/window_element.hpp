@@ -170,9 +170,15 @@ class window_element_class
         bool                    clicked;
         bool                    click_enabled;
         bool                    dragable;
+        bool                    drag_active;
+        bool                    drop_active;
+        float                   drag_offset_x;
+        float                   drag_offset_y;
         delay_class             mouse_delay;
         struct_3f               size;
         struct_3f               position;
+        struct_3f               position_origin;
+        struct_3f               position_destination;
         element_zoom_struct     zoom;
         color_state_struct      color;
         sound_state_struct      sound;
@@ -185,7 +191,7 @@ class window_element_class
         void                    render_tooltips(void);
         bool                    mouse_over_element(void);
         bool                    mouse_clicked_element(void);
-        int                     process(void);
+        int                     process(bool element_in_focus);
 };
 
 #endif // WINDOW_ELEMENT_H
