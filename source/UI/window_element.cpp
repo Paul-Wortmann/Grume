@@ -158,11 +158,8 @@ window_element_class::~window_element_class(void)
 
 void window_element_class::render(void)
 {
-    float zoom_value = 0.0f;
-    if (window_element_class::zoom.enabled) zoom_value = window_element_class::zoom.value;
-    else zoom_value  = 0.0f;
+    float zoom_value = (window_element_class::zoom.enabled) ? window_element_class::zoom.value : 0.0f;
     float temp_float = 0.0f;
-    // Draw textured windows elements
     if (window_element_class::active)
     {
         switch (window_element_class::type)
@@ -255,9 +252,17 @@ void window_element_class::render(void)
     }
 };
 
+void window_element_class::render_item_if_dragged(void)
+{
+    float zoom_value = (window_element_class::zoom.enabled) ? window_element_class::zoom.value : 0.0f;
+    if ((window_element_class::drag_active) && (window_element_class::value > -1))
+    {
+        window_element_class::texture.normal.image.draw(false,window_element_class::position.x,window_element_class::position.y,window_element_class::position.z,window_element_class::size.x+zoom_value,window_element_class::size.y+zoom_value,window_element_class::texture.angle);
+    }
+};
+
 void window_element_class::render_tooltips(void)
 {
-    // Draw element tooltips.
     if ((window_element_class::active) && (window_element_class::tooltip.enabled))
     {
         if (window_element_class::mouse_over_element())

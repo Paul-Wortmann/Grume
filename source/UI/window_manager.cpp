@@ -330,6 +330,7 @@ void window_manager_class::process(void)
 
 void window_manager_class::render(void)
 {
+    // Render windows
     if (window_manager_class::number_of_windows > 0) // only processed if there are actually windows in the list.
     {
         for (int window_count = window_manager_class::number_of_windows-1; window_count >= 0; window_count--)
@@ -339,6 +340,17 @@ void window_manager_class::render(void)
                 if (window_manager_class::window[window_manager_class::window_stack[window_count]].enabled)
                 {
                     window_manager_class::window[window_manager_class::window_stack[window_count]].render();
+                }
+            }
+        }
+        // Render dragged items
+        for (int window_count = window_manager_class::number_of_windows-1; window_count >= 0; window_count--)
+        {
+            if (window_manager_class::window[window_manager_class::window_stack[window_count]].UID != -1)
+            {
+                if (window_manager_class::window[window_manager_class::window_stack[window_count]].enabled)
+                {
+                    window_manager_class::window[window_manager_class::window_stack[window_count]].render_draged_elements();
                 }
             }
         }

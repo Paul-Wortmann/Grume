@@ -189,6 +189,7 @@ class window_element_class
         void                    reload_textures(void);
         void                    render(void);
         void                    render_tooltips(void);
+        void                    render_item_if_dragged(void);
         bool                    mouse_over_element(void);
         bool                    mouse_clicked_element(void);
         int                     process(bool element_in_focus);

@@ -63,6 +63,7 @@ class window_class
        ~window_class(void);
         void                    reload_textures(void);
         void                    render(void);
+        void                    render_draged_elements(void);
         bool                    get_mouse_over_menu(void);
         bool                    get_mouse_over_title(void);
         bool                    mouse_click_title(void);

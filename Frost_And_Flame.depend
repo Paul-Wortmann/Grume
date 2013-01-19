@@ -1050,7 +1050,7 @@
 	"character.hpp"
 	"../game.hpp"
 
-1357203793 source:c:\_git_\frost_and_flame\source\ui\window_manager.cpp
+1358615083 source:c:\_git_\frost_and_flame\source\ui\window_manager.cpp
 	"window_manager.hpp"
 	"../game.hpp"
 
@@ -1074,16 +1074,16 @@
 	"../game.hpp"
 	"../items.hpp"
 
-1357147738 c:\_git_\frost_and_flame\source\ui\window.hpp
+1358615145 c:\_git_\frost_and_flame\source\ui\window.hpp
 	"window_element.hpp"
 	"../core/font.hpp"
 	<string>
 
-1357188395 source:c:\_git_\frost_and_flame\source\ui\window.cpp
+1358615258 source:c:\_git_\frost_and_flame\source\ui\window.cpp
 	"window.hpp"
 	"../game.hpp"
 
-1358512023 c:\_git_\frost_and_flame\source\ui\window_element.hpp
+1358614906 c:\_git_\frost_and_flame\source\ui\window_element.hpp
 	<string>
 	"../core/textures.hpp"
 	"../core/font.hpp"
@@ -1098,7 +1098,7 @@
 1349194251 c:\_git_\frost_and_flame\source\ui\main_menu.hpp
 	"window.hpp"
 
-1358512109 source:c:\_git_\frost_and_flame\source\ui\window_element.cpp
+1358615083 source:c:\_git_\frost_and_flame\source\ui\window_element.cpp
 	"window_element.hpp"
 	"../game.hpp"
 

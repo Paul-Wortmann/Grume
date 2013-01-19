@@ -137,6 +137,23 @@ void window_class::render(void)
     }
 };
 
+void window_class::render_draged_elements(void)
+{
+    if(window_class::enabled)
+    {
+        if (window_class::number_of_elements > 0)
+        {
+            for (int element_number = 0; element_number < window_class::number_of_elements; element_number++)
+            {
+                if (window_class::element[element_number].active)
+                {
+                    window_class::element[element_number].render_item_if_dragged();
+                }
+            }
+        }
+    }
+}
+
 bool  window_class::get_mouse_over_menu(void)
 {
     return(game.core.physics.point_in_quadrangle(window_class::position.x,window_class::size.x,window_class::position.y,window_class::size.y,game.core.io.mouse_x,game.core.io.mouse_y));
