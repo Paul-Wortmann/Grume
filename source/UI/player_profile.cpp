@@ -232,17 +232,17 @@ void process_player_profile(int window_number)
     if (game.player.mana.current > 99) temp_string += ' ';
     temp_string += "    ";
     game.window_manager.window[window_number].element[element_number].tooltip.text = temp_string;
-    if(game.window_manager.window[window_number].event > 0)
+    if(game.window_manager.window[window_number].event > EVENT_NONE)
     {
         switch (game.window_manager.window[window_number].event)
         {
             default:
                 game.core.log.file_write("Unable to process event - ",game.window_manager.window[window_number].event, " - UID - ",game.window_manager.window[window_number].UID);
-                game.window_manager.window[window_number].event = 0;
+                game.window_manager.window[window_number].event = EVENT_NONE;
             break;
         }
     }
-    game.window_manager.window[window_number].event = 0;
+    game.window_manager.window[window_number].event = EVENT_NONE;
 };
 
 

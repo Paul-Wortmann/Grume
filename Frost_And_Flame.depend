@@ -1050,11 +1050,11 @@
 	"character.hpp"
 	"../game.hpp"
 
-1358615083 source:c:\_git_\frost_and_flame\source\ui\window_manager.cpp
+1358651782 source:c:\_git_\frost_and_flame\source\ui\window_manager.cpp
 	"window_manager.hpp"
 	"../game.hpp"
 
-1357146203 source:c:\_git_\frost_and_flame\source\ui\ui.cpp
+1358654308 source:c:\_git_\frost_and_flame\source\ui\ui.cpp
 	"UI.hpp"
 	"menu_main.hpp"
 	"../game.hpp"
@@ -1079,11 +1079,11 @@
 	"../core/font.hpp"
 	<string>
 
-1358615258 source:c:\_git_\frost_and_flame\source\ui\window.cpp
+1358654333 source:c:\_git_\frost_and_flame\source\ui\window.cpp
 	"window.hpp"
 	"../game.hpp"
 
-1358614906 c:\_git_\frost_and_flame\source\ui\window_element.hpp
+1358654110 c:\_git_\frost_and_flame\source\ui\window_element.hpp
 	<string>
 	"../core/textures.hpp"
 	"../core/font.hpp"
@@ -1098,32 +1098,32 @@
 1349194251 c:\_git_\frost_and_flame\source\ui\main_menu.hpp
 	"window.hpp"
 
-1358615083 source:c:\_git_\frost_and_flame\source\ui\window_element.cpp
+1358654359 source:c:\_git_\frost_and_flame\source\ui\window_element.cpp
 	"window_element.hpp"
 	"../game.hpp"
 
 1357028824 c:\_git_\frost_and_flame\source\ui\menu_main.hpp
 	"window.hpp"
 
-1357113723 source:c:\_git_\frost_and_flame\source\ui\menu_main.cpp
+1358654239 source:c:\_git_\frost_and_flame\source\ui\menu_main.cpp
 	"menu_main.hpp"
 	"../game.hpp"
 
-1357113723 source:c:\_git_\frost_and_flame\source\ui\menu_game_save.cpp
+1358654228 source:c:\_git_\frost_and_flame\source\ui\menu_game_save.cpp
 	"menu_game_save.hpp"
 	"../game.hpp"
 
 1357028938 c:\_git_\frost_and_flame\source\ui\menu_game_save.hpp
 	"window.hpp"
 
-1357188979 source:c:\_git_\frost_and_flame\source\ui\menu_game_new.cpp
+1358654214 source:c:\_git_\frost_and_flame\source\ui\menu_game_new.cpp
 	"menu_game_new.hpp"
 	"../game.hpp"
 
 1357188616 c:\_git_\frost_and_flame\source\ui\menu_game_new.hpp
 	"window.hpp"
 
-1357113723 source:c:\_git_\frost_and_flame\source\ui\menu_game_load.cpp
+1358654203 source:c:\_git_\frost_and_flame\source\ui\menu_game_load.cpp
 	"menu_game_load.hpp"
 	"../game.hpp"
 
@@ -1145,7 +1145,7 @@
 1357028824 c:\_git_\frost_and_flame\source\ui\menu_options.hpp
 	"window.hpp"
 
-1357188703 source:c:\_git_\frost_and_flame\source\ui\menu_options.cpp
+1358654259 source:c:\_git_\frost_and_flame\source\ui\menu_options.cpp
 	"menu_options.hpp"
 	<string>
 	"../game.hpp"
@@ -1170,7 +1170,7 @@
 1357028824 c:\_git_\frost_and_flame\source\ui\player_profile.hpp
 	"window.hpp"
 
-1357147786 source:c:\_git_\frost_and_flame\source\ui\player_profile.cpp
+1358654269 source:c:\_git_\frost_and_flame\source\ui\player_profile.cpp
 	"player_profile.hpp"
 	"../game.hpp"
 	"../core/misc.hpp"
@@ -1180,7 +1180,7 @@
 1357028825 c:\_git_\frost_and_flame\source\ui\action_bar.hpp
 	"window.hpp"
 
-1357200214 source:c:\_git_\frost_and_flame\source\ui\action_bar.cpp
+1358654163 source:c:\_git_\frost_and_flame\source\ui\action_bar.cpp
 	"action_bar.hpp"
 	"../game.hpp"
 	"../core/misc.hpp"
@@ -1188,7 +1188,7 @@
 1357050662 c:\_git_\frost_and_flame\source\ui\character_window.hpp
 	"window.hpp"
 
-1357226831 source:c:\_git_\frost_and_flame\source\ui\character_window.cpp
+1358654174 source:c:\_git_\frost_and_flame\source\ui\character_window.cpp
 	"menu_main.hpp"
 	"../game.hpp"
 	"../core/misc.hpp"
@@ -1196,14 +1196,14 @@
 1357028938 c:\_git_\frost_and_flame\source\ui\equipment_window.hpp
 	"window.hpp"
 
-1357194319 source:c:\_git_\frost_and_flame\source\ui\equipment_window.cpp
+1358654186 source:c:\_git_\frost_and_flame\source\ui\equipment_window.cpp
 	"menu_main.hpp"
 	"../game.hpp"
 
 1357028938 c:\_git_\frost_and_flame\source\ui\inventory_window.hpp
 	"window.hpp"
 
-1358511872 source:c:\_git_\frost_and_flame\source\ui\inventory_window.cpp
+1358654129 source:c:\_git_\frost_and_flame\source\ui\inventory_window.cpp
 	"menu_main.hpp"
 	"../game.hpp"
 
@@ -1213,11 +1213,11 @@
 1357028824 c:\_git_\frost_and_flame\source\ui\skillbook_window.hpp
 	"window.hpp"
 
-1357113723 source:c:\_git_\frost_and_flame\source\ui\quest_log_window.cpp
+1358654281 source:c:\_git_\frost_and_flame\source\ui\quest_log_window.cpp
 	"menu_main.hpp"
 	"../game.hpp"
 
-1357189406 source:c:\_git_\frost_and_flame\source\ui\skillbook_window.cpp
+1358654292 source:c:\_git_\frost_and_flame\source\ui\skillbook_window.cpp
 	"menu_main.hpp"
 	"../game.hpp"
 

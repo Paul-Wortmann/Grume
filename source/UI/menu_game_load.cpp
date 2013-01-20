@@ -231,14 +231,14 @@ void setup_menu_game_load(int UID)
 
 void process_menu_game_load(int window_number)
 {
-    if(game.window_manager.window[window_number].event > 0)
+    if(game.window_manager.window[window_number].event > EVENT_NONE)
     {
         switch (game.window_manager.window[window_number].event)
         {
-            case 001: // Close menu button
+            case ((0*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Close menu button
                 game.window_manager.window_transition(MENU_GAME_LOAD_UID,MENU_MAIN_UID);
             break;
-            case 101: // Load slot 1 - menu button
+            case ((1*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Load slot 1 - menu button
                 game.window_manager.window_transition(MENU_GAME_LOAD_UID,MENU_MAIN_UID);
                 game.window_manager.window_disable(MENU_MAIN_UID);
                 game.core.game_menu_active = false;
@@ -251,7 +251,7 @@ void process_menu_game_load(int window_number)
                 }
                 else game.core.log.file_write("ERROR -> Error loading game from slot 1");
             break;
-            case 201: // Load slot 2 - menu button
+            case ((2*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Load slot 2 - menu button
                 game.window_manager.window_transition(MENU_GAME_LOAD_UID,MENU_MAIN_UID);
                 game.window_manager.window_disable(MENU_MAIN_UID);
                 game.core.game_menu_active = false;
@@ -264,7 +264,7 @@ void process_menu_game_load(int window_number)
                 }
                 else game.core.log.file_write("ERROR -> Error loading game from slot 2");
             break;
-            case 301: // Load slot 3 - menu button
+            case ((3*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Load slot 3 - menu button
                 game.window_manager.window_transition(MENU_GAME_LOAD_UID,MENU_MAIN_UID);
                 game.window_manager.window_disable(MENU_MAIN_UID);
                 game.core.game_menu_active = false;
@@ -277,7 +277,7 @@ void process_menu_game_load(int window_number)
                 }
                 else game.core.log.file_write("ERROR -> Error loading game from slot 3");
             break;
-            case 401: // Load slot 4 - menu button
+            case ((4*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Load slot 4 - menu button
                 game.window_manager.window_transition(MENU_GAME_LOAD_UID,MENU_MAIN_UID);
                 game.window_manager.window_disable(MENU_MAIN_UID);
                 game.core.game_menu_active = false;
@@ -290,7 +290,7 @@ void process_menu_game_load(int window_number)
                 }
                 else game.core.log.file_write("ERROR -> Error loading game from slot 4");
             break;
-            case 501: // Load slot 5 - menu button
+            case ((5*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Load slot 5 - menu button
                 game.window_manager.window_transition(MENU_GAME_LOAD_UID,MENU_MAIN_UID);
                 game.window_manager.window_disable(MENU_MAIN_UID);
                 game.core.game_menu_active = false;
@@ -303,16 +303,16 @@ void process_menu_game_load(int window_number)
                 }
                 else game.core.log.file_write("ERROR -> Error loading game from slot 5");
             break;
-            case 601: // Main menu button
+            case ((6*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Main menu button
                 game.window_manager.window_transition(MENU_GAME_LOAD_UID,MENU_MAIN_UID);
             break;
             default:
                 game.core.log.file_write("Unable to process event - ",game.window_manager.window[window_number].event, " - UID - ",game.window_manager.window[window_number].UID);
-                game.window_manager.window[window_number].event = 0;
+                game.window_manager.window[window_number].event = EVENT_NONE;
             break;
         }
     }
-    game.window_manager.window[window_number].event = 0;
+    game.window_manager.window[window_number].event = EVENT_NONE;
 };
 
 

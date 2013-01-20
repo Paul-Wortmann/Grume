@@ -112,21 +112,21 @@ void setup_quest_log_window(int UID)
 
 void process_quest_log_window(int window_number)
 {
-    if(game.window_manager.window[window_number].event > 0)
+    if(game.window_manager.window[window_number].event > EVENT_NONE)
     {
         switch (game.window_manager.window[window_number].event)
         {
-            case 001: // Close menu button
+            case ((0*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Close menu button
                 game.window_manager.window_disable(QUEST_LOG_UID);
                 game.core.quest_log_active= false;
             break;
             default:
                 game.core.log.file_write("Unable to process event - ",game.window_manager.window[window_number].event, " - UID - ",game.window_manager.window[window_number].UID);
-                game.window_manager.window[window_number].event = 0;
+                game.window_manager.window[window_number].event = EVENT_NONE;
             break;
         }
     }
-    game.window_manager.window[window_number].event = 0;
+    game.window_manager.window[window_number].event = EVENT_NONE;
 };
 
 

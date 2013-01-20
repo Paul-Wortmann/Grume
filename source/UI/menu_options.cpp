@@ -551,7 +551,7 @@ void setup_menu_options(int UID)
 
 void process_menu_options(int window_number)
 {
-    if (game.window_manager.window[window_number].event > 0)
+    if (game.window_manager.window[window_number].event > EVENT_NONE)
     {
         bool reset_display        = false;
         bool resolution_selection = false;
@@ -559,33 +559,33 @@ void process_menu_options(int window_number)
         game.core.log.file_write("Processing event - ",game.window_manager.window[window_number].event);
         switch (game.window_manager.window[window_number].event)
         {
-            case 001: // Close menu button
+            case ((0*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Close menu button
                 game.window_manager.window_transition(MENU_OPTIONS_UID,MENU_MAIN_UID);
             break;
-            case 101: // Main menu button
+            case ((1*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Main menu button
                 game.window_manager.window_transition(MENU_OPTIONS_UID,MENU_MAIN_UID);
             break;
-            case 301: // Resolution selection element 0
+            case ((3*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Resolution selection element 0
                 resolution_selection = true;
                 resolution_element   = 0;
             break;
-            case 401: // Resolution selection element 1
+            case ((4*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Resolution selection element 1
                 resolution_selection = true;
                 resolution_element   = 1;
             break;
-            case 501: // Resolution selection element 2
+            case ((5*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Resolution selection element 2
                 resolution_selection = true;
                 resolution_element   = 2;
             break;
-            case 601: // Resolution selection element 3
+            case ((6*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Resolution selection element 3
                 resolution_selection = true;
                 resolution_element   = 3;
             break;
-            case 701: // Resolution selection element 4
+            case ((7*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Resolution selection element 4
                 resolution_selection = true;
                 resolution_element   = 4;
             break;
-            case 801: // Resolution left arrow button
+            case ((8*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Resolution left arrow button
                 {
                     game.window_manager.window[window_number].choice_selection[0].position++;
                     if (game.window_manager.window[window_number].choice_selection[0].position > game.window_manager.window[window_number].choice_selection[0].position_max) game.window_manager.window[window_number].choice_selection[0].position = 0;
@@ -613,7 +613,7 @@ void process_menu_options(int window_number)
                     game.window_manager.window[window_number].element[7].title.text                = game.window_manager.window[window_number].choice_selection[0].data[4].value_string;
                 }
             break;
-            case 901: // Resolution right arrow button
+            case ((9*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Resolution right arrow button
                 {
                     game.window_manager.window[window_number].choice_selection[0].position--;
                     if (game.window_manager.window[window_number].choice_selection[0].position < 0) game.window_manager.window[window_number].choice_selection[0].position = game.window_manager.window[window_number].choice_selection[0].position_max;
@@ -641,32 +641,32 @@ void process_menu_options(int window_number)
                     game.window_manager.window[window_number].element[7].title.text                = game.window_manager.window[window_number].choice_selection[0].data[4].value_string;
                 }
             break;
-            case 1001: // Sound volume left arrow button
+            case ((10*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Sound volume left arrow button
                 game.core.config.audio_volume_sound--;
                 if (game.core.config.audio_volume_sound < 0.0f) game.core.config.audio_volume_sound = 0.0f;
                 game.window_manager.window[window_number].element[12].value = game.core.config.audio_volume_sound;
                 Mix_Volume(-1,game.core.config.audio_volume_sound);
             break;
-            case 1101: // Sound volume right arrow button
+            case ((11*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Sound volume right arrow button
                 game.core.config.audio_volume_sound++;
                 if (game.core.config.audio_volume_sound > game.window_manager.window[window_number].element[12].value_max) game.core.config.audio_volume_sound = game.window_manager.window[window_number].element[12].value_max;
                 game.window_manager.window[window_number].element[12].value = game.core.config.audio_volume_sound;
                 Mix_Volume(-1,game.core.config.audio_volume_sound);
             break;
-            case 1301: // Music volume left arrow button
+            case ((13*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Music volume left arrow button
                 game.core.config.audio_volume_music--;
                 if (game.core.config.audio_volume_music < 0.0f) game.core.config.audio_volume_music = 0.0f;
                 game.window_manager.window[window_number].element[15].value = game.core.config.audio_volume_music;
                 Mix_VolumeMusic(game.core.config.audio_volume_music);
             break;
-            case 1401: // Music volume right arrow button
+            case ((14*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Music volume right arrow button
                 game.core.config.audio_volume_music++;
                 if (game.core.config.audio_volume_music > game.window_manager.window[window_number].element[15].value_max) game.core.config.audio_volume_music = game.window_manager.window[window_number].element[15].value_max;
                 game.window_manager.window[window_number].element[15].value = game.core.config.audio_volume_music;
                 Mix_VolumeMusic(game.core.config.audio_volume_music);
             break;
-            case 1601: // Full screen button
-            case 1701: // Full screen colored button
+            case ((16*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Full screen button
+            case ((17*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Full screen colored button
                 if (game.core.config.display_fullscreen)
                 {
                     int element_number = 17;
@@ -692,7 +692,7 @@ void process_menu_options(int window_number)
             break;
             default:
                 game.core.log.file_write("Unable to process event - ",game.window_manager.window[window_number].event, " - UID - ",game.window_manager.window[window_number].UID);
-                game.window_manager.window[window_number].event = 0;
+                game.window_manager.window[window_number].event = EVENT_NONE;
             break;
         }
         if (resolution_selection)
@@ -786,5 +786,5 @@ void process_menu_options(int window_number)
             update_menu_game_new(MENU_GAME_NEW_UID);
         }
     }
-    game.window_manager.window[window_number].event = 0;
+    game.window_manager.window[window_number].event = EVENT_NONE;
 };

@@ -311,12 +311,11 @@ void process_action_bar(int window_number)
             game.window_manager.window[window_number].element[element_number].tooltip.text = temp_string;
         }
     }
-
-    if(game.window_manager.window[window_number].event > 0) // Handle element events
+    if(game.window_manager.window[window_number].event > EVENT_NONE) // Handle element events
     {
         switch (game.window_manager.window[window_number].event)
         {
-            case 201: // Toggle main menu
+            case ((2*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Toggle main menu
                 if (!game.core.game_menu_active)
                 {
                     game.window_manager.window_enable(MENU_MAIN_UID);
@@ -330,7 +329,7 @@ void process_action_bar(int window_number)
                 game.core.io.key_escape                = false;
                 game.core.io.keyboard_delay_count      = 0;
             break;
-            case 301: // Toggle quest log
+            case ((3*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Toggle quest log
                 if (!game.core.quest_log_active)
                 {
                     game.window_manager.window_enable(QUEST_LOG_UID);
@@ -344,7 +343,7 @@ void process_action_bar(int window_number)
                 game.core.io.key_escape                = false;
                 game.core.io.keyboard_delay_count      = 0;
             break;
-            case 401: // Toggle skill book
+            case ((4*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Toggle skill book
                 if (!game.core.skillbook_active)
                 {
                     game.window_manager.window_enable(SKILLBOOK_UID);
@@ -358,7 +357,7 @@ void process_action_bar(int window_number)
                 game.core.io.key_escape                = false;
                 game.core.io.keyboard_delay_count      = 0;
             break;
-            case 501: // Toggle Character menu
+            case ((5*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Toggle Character menu
                 if (!game.core.character_active)
                 {
                     game.window_manager.window_enable(CHARACTER_UID);
@@ -372,7 +371,7 @@ void process_action_bar(int window_number)
                 game.core.io.key_escape                = false;
                 game.core.io.keyboard_delay_count      = 0;
             break;
-            case 601: // Toggle equipment menu
+            case ((6*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Toggle equipment menu
                 if (!game.core.equipment_active)
                 {
                     game.window_manager.window_enable(EQUIPMENT_UID);
@@ -386,7 +385,7 @@ void process_action_bar(int window_number)
                 game.core.io.key_escape                = false;
                 game.core.io.keyboard_delay_count      = 0;
             break;
-            case 701: // Toggle Inventory menu
+            case ((7*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Toggle Inventory menu
                 if (!game.core.inventory_active)
                 {
                     game.window_manager.window_enable(INVENTORY_UID);
@@ -402,9 +401,9 @@ void process_action_bar(int window_number)
             break;
             default:
                 game.core.log.file_write("Unable to process event - ",game.window_manager.window[window_number].event, " - UID - ",game.window_manager.window[window_number].UID);
-                game.window_manager.window[window_number].event = 0;
+                game.window_manager.window[window_number].event = EVENT_NONE;
             break;
         }
     }
-    game.window_manager.window[window_number].event = 0;
+    game.window_manager.window[window_number].event = EVENT_NONE;
 };

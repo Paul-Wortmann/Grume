@@ -212,11 +212,11 @@ int window_class::process(bool window_in_focus)
         {
             for (int element_number = 0; element_number < window_class::number_of_elements; element_number++)
             {
-                if ((window_class::element[element_number].active) && ((return_value == 0) || (return_value == 3)))
+                if ((window_class::element[element_number].active) && ((return_value == EVENT_NONE) || (return_value == EVENT_ELEMENT_DRAG)))
                 {
                     return_value = window_class::element[element_number].process(window_in_focus);
-                    if (return_value > 0) return_value += (element_number * 100);
-                    if (return_value != 0) allow_drag   = false;
+                    if (return_value > EVENT_NONE) return_value += (element_number * EVENT_BUTTON_MULTIPLIER);
+                    if (return_value != EVENT_NONE) allow_drag   = false;
                     if (window_class::element[element_number].mouse_over)
                     {
                         allow_drag        = false;
@@ -277,13 +277,13 @@ int window_class::process(bool window_in_focus)
                             window_class::drag_offset_y                = window_class::position.y - game.core.io.mouse_y;
                             window_class::drag_active                  = true;
                             game.window_manager.drag_in_progress       = true;
-                            return_value                               = 65535; // stack sort is needed.
+                            return_value                               = EVENT_WINDOW_STACK_SORT;
                         }
                     }
                     // user clicked on window, that is not title or an element.
-                    if ((game.core.io.mouse_button_left) && (return_value == 0) && (!window_class::active))
+                    if ((game.core.io.mouse_button_left) && (return_value == EVENT_NONE) && (!window_class::active))
                     {
-                        return_value = 65535; // stack sort is needed.
+                        return_value = EVENT_WINDOW_STACK_SORT;
                     }
                 }
             // ------------------------- X -------------------------

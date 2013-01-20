@@ -8,7 +8,7 @@
 	</File>
 	<File name="source\UI\UI.cpp" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="1456" topLine="31" />
+			<Cursor1 position="6271" topLine="119" />
 		</Cursor>
 	</File>
 	<File name="source\player.hpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -16,14 +16,19 @@
 			<Cursor1 position="948" topLine="42" />
 		</Cursor>
 	</File>
+	<File name="source\UI\action_bar.hpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1052" topLine="0" />
+		</Cursor>
+	</File>
 	<File name="source\UI\action_bar.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="28905" topLine="231" />
+			<Cursor1 position="39545" topLine="383" />
 		</Cursor>
 	</File>
 	<File name="source\UI\window_element.hpp" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="5218" topLine="160" />
+			<Cursor1 position="1234" topLine="18" />
 		</Cursor>
 	</File>
 	<File name="source\core\physics.hpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -33,7 +38,7 @@
 	</File>
 	<File name="source\UI\character_window.cpp" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="28920" topLine="222" />
+			<Cursor1 position="29792" topLine="242" />
 		</Cursor>
 	</File>
 	<File name="source\UI\window_element.cpp" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -43,12 +48,17 @@
 	</File>
 	<File name="source\UI\equipment_window.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="2739" topLine="28" />
+			<Cursor1 position="10778" topLine="109" />
+		</Cursor>
+	</File>
+	<File name="source\UI\window_cursor.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="0" topLine="4" />
 		</Cursor>
 	</File>
 	<File name="source\UI\menu_main.cpp" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="25000" topLine="195" />
+			<Cursor1 position="32667" topLine="283" />
 		</Cursor>
 	</File>
 	<File name="source\UI\window.hpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -56,24 +66,24 @@
 			<Cursor1 position="2517" topLine="48" />
 		</Cursor>
 	</File>
-	<File name="source\UI\window.cpp" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="source\UI\window.cpp" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="14287" topLine="256" />
+			<Cursor1 position="10498" topLine="287" />
 		</Cursor>
 	</File>
 	<File name="source\UI\menu_options.cpp" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="95304" topLine="752" />
+			<Cursor1 position="90976" topLine="687" />
 		</Cursor>
 	</File>
 	<File name="source\UI\skillbook_window.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="2209" topLine="21" />
+			<Cursor1 position="10240" topLine="98" />
 		</Cursor>
 	</File>
 	<File name="source\UI\menu_game_load.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="6392" topLine="143" />
+			<Cursor1 position="33045" topLine="296" />
 		</Cursor>
 	</File>
 	<File name="source\core\textures.cpp" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -88,17 +98,17 @@
 	</File>
 	<File name="source\UI\quest_log_window.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="6389" topLine="56" />
+			<Cursor1 position="10232" topLine="98" />
 		</Cursor>
 	</File>
-	<File name="source\UI\window_manager.cpp" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="source\UI\window_manager.cpp" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="13167" topLine="295" />
+			<Cursor1 position="15985" topLine="321" />
 		</Cursor>
 	</File>
-	<File name="source\UI\player_profile.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="source\UI\player_profile.cpp" open="1" top="1" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="1448" topLine="27" />
+			<Cursor1 position="23764" topLine="212" />
 		</Cursor>
 	</File>
 	<File name="source\UI\window_manager.hpp" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -128,7 +138,7 @@
 	</File>
 	<File name="source\UI\menu_game_save.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="6392" topLine="54" />
+			<Cursor1 position="31849" topLine="280" />
 		</Cursor>
 	</File>
 	<File name="source\core\misc.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -153,7 +163,7 @@
 	</File>
 	<File name="source\UI\menu_game_new.cpp" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="44211" topLine="313" />
+			<Cursor1 position="63578" topLine="524" />
 		</Cursor>
 	</File>
 	<File name="source\core\core.hpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">

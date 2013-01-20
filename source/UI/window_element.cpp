@@ -302,18 +302,17 @@ int  window_element_class::process(bool element_in_focus)
             // ------------------------- Drop -------------------------
             if (window_element_class::drop_active)
             {
-                if (window_element_class::event == 3)
+                if (window_element_class::event == EVENT_ELEMENT_DRAG)
                 {
-                    // window to update these values before posting an allow_drop event!
                     window_element_class::position.x     = window_element_class::position_destination.x;
                     window_element_class::position.y     = window_element_class::position_destination.y;
-                    window_element_class::event = 0;
+                    window_element_class::event = EVENT_NONE;
                 }
-                else // Window did not post an allow_drop
+                else
                 {
                     window_element_class::position.x     = window_element_class::position_origin.x;
                     window_element_class::position.y     = window_element_class::position_origin.y;
-                    window_element_class::event = 0;
+                    window_element_class::event = EVENT_NONE;
                 }
                 window_element_class::drop_active = false;
             }
@@ -349,7 +348,7 @@ int  window_element_class::process(bool element_in_focus)
                         game.window_manager.drag_in_progress = false;
                         window_element_class::drag_active    = false;
                         window_element_class::drop_active    = true;
-                        window_element_class::event          = 2; //--- post drop event
+                        window_element_class::event          = EVENT_ELEMENT_DROP;
                     }
                 }
                 else
@@ -370,6 +369,11 @@ int  window_element_class::process(bool element_in_focus)
                 // ------------------------- clicked element -------------------------
                 if ((!game.window_manager.drag_in_progress) && (element_in_focus))
                 {
+
+                    // need to return left or right clicked here!
+
+
+
                     if (window_element_class::type == ITEM)
                     {
                         if (game.core.io.mouse_button_right)
@@ -405,7 +409,7 @@ int  window_element_class::process(bool element_in_focus)
                     game.window_manager.drag_in_progress = false;
                     window_element_class::drag_active    = false;
                     window_element_class::drop_active    = true;
-                    window_element_class::event          = 2; //--- post drop event
+                    window_element_class::event          = EVENT_ELEMENT_DROP;
                 }
                 window_element_class::mouse_over = false;
                 window_element_class::state      = NORMAL;
@@ -424,12 +428,12 @@ int  window_element_class::process(bool element_in_focus)
         }
         if (window_element_class::clicked)
         {
-            window_element_class::event   = 1;
+            window_element_class::event   = EVENT_ELEMENT_MOUSE_LEFT;
             window_element_class::clicked = false;
         }
         else
         {
-            window_element_class::event   = 0;
+            window_element_class::event   = EVENT_NONE;
         }
     }
     return(window_element_class::event);
@@ -446,3 +450,4 @@ void window_element_class::reload_textures(void)
         if (window_element_class::tooltip.image_path.length() > 3)             window_element_class::tooltip.image.load_image            (window_element_class::tooltip.image_path);
     }
 };
+

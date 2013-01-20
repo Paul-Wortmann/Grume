@@ -30,6 +30,18 @@
 #include "../core/font.hpp"
 #include "../core/sound.hpp"
 
+#define MAX_CHOICE_SELECTIONS_PER_MENU 8
+#define MAX_CHOICE_SELECTION           16
+
+#define EVENT_NONE                0
+#define EVENT_ELEMENT_MOUSE_LEFT  1
+#define EVENT_ELEMENT_MOUSE_RIGHT 2
+#define EVENT_ELEMENT_DRAG        3
+#define EVENT_ELEMENT_DROP        4
+#define EVENT_ELEMENT_SWAP        5
+#define EVENT_BUTTON_MULTIPLIER   100
+#define EVENT_WINDOW_STACK_SORT   10000
+
 #define DISABLED       0
 #define NORMAL         1
 #define HIGHLIGHTED    2
@@ -45,8 +57,6 @@
 #define SELECTION      11
 #define ITEM           12
 
-#define MAX_CHOICE_SELECTIONS_PER_MENU 8
-#define MAX_CHOICE_SELECTION           16
 
 struct struct_3f
 {

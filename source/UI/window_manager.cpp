@@ -311,7 +311,7 @@ void window_manager_class::process(void)
                 if (!front_window_found)
                 {
                     window_manager_class::window[window_manager_class::window_stack[window_count]].mouse_over_menu  = true;
-                    if (window_manager_class::window[window_manager_class::window_stack[window_count]].process(true) == 65535) window_manager_class::window_set_active(window_manager_class::window[window_manager_class::window_stack[window_count]].UID);
+                    if (window_manager_class::window[window_manager_class::window_stack[window_count]].process(true) == EVENT_WINDOW_STACK_SORT) window_manager_class::window_set_active(window_manager_class::window[window_manager_class::window_stack[window_count]].UID);
                     front_window_found = true;
                 }
                 else
@@ -356,4 +356,3 @@ void window_manager_class::render(void)
         }
     }
 }
-

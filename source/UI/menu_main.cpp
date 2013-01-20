@@ -229,7 +229,7 @@ void process_menu_main(int window_number)
 {
     int load_menu_number = 0;
     int element_number   = 0;
-    if(game.window_manager.window[window_number].event > 0)
+    if(game.window_manager.window[window_number].event > EVENT_NONE)
     {
         if (game.state == STATE_GAME) game.window_manager.window[window_number].element[3].state = NORMAL; // Save game
         else game.window_manager.window[window_number].element[3].state = DISABLED;
@@ -237,7 +237,7 @@ void process_menu_main(int window_number)
         else game.window_manager.window[window_number].element[4].state = DISABLED;
         switch (game.window_manager.window[window_number].event)
         {
-            case 001: // Close menu button
+            case ((0*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Close menu button
                 if (game.state == STATE_GAME)
                 {
                     game.window_manager.window_disable(MENU_MAIN_UID);
@@ -249,10 +249,10 @@ void process_menu_main(int window_number)
                 }
                 game.core.game_menu_active = false;
             break;
-            case 101: // New game menu
+            case ((1*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // New game menu
                 game.window_manager.window_transition(MENU_MAIN_UID,MENU_GAME_NEW_UID);
             break;
-            case 201: // Load game menu
+            case ((2*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Load game menu
                 load_menu_number = game.window_manager.window_get_number(MENU_GAME_LOAD_UID);
                 element_number   = 1;
                 game.save_01.Assign_File("save/slot_01.sav");
@@ -276,31 +276,31 @@ void process_menu_main(int window_number)
                 else game.window_manager.window[load_menu_number].element[element_number].state = DISABLED;
                 game.window_manager.window_transition(MENU_MAIN_UID,MENU_GAME_LOAD_UID);
             break;
-            case 301: // Save game menu
+            case ((3*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Save game menu
                 game.window_manager.window_transition(MENU_MAIN_UID,MENU_GAME_SAVE_UID);
             break;
-            case 401: // Resume Game
+            case ((4*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Resume Game
                 if (game.state == STATE_GAME)
                 {
                     game.window_manager.window_disable(MENU_MAIN_UID);
                     game.core.game_menu_active = false;
                 }
             break;
-            case 501: // Options menu
+            case ((5*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Options menu
                 game.window_manager.window_transition(MENU_MAIN_UID,MENU_OPTIONS_UID);
             break;
-            case 601: // Exit button
+            case ((6*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Exit button
                 game.state = STATE_QUIT;
                 game.window_manager.window_disable(MENU_MAIN_UID);
                 game.core.game_menu_active = false;
             break;
             default:
                 game.core.log.file_write("Unable to process event - ",game.window_manager.window[window_number].event, " - UID - ",game.window_manager.window[window_number].UID);
-                game.window_manager.window[window_number].event = 0;
+                game.window_manager.window[window_number].event = EVENT_NONE;
             break;
         }
     }
-    game.window_manager.window[window_number].event = 0;
+    game.window_manager.window[window_number].event = EVENT_NONE;
 };
 
 
