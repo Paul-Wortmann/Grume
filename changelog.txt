@@ -1,12 +1,26 @@
-﻿Due to university, work and the responsibilities of life,
+﻿Version 0.15 is late due to my presence required in the hospital and for the days preceding the birth of my boy "Daichi".
+
+Due to university, work and the responsibilities of life,
 I feel that Frost and Flame has been coming on very slowly these past few months.
 It may be slow at the moment, but I am determined to complete this game,
 it may take longer than I had first anticipated.
 These are not indications that the project will be terminated in the future,
 just that time is not permitting to proceed at a fast pace, at the moment.
 
-v0.15 - (2013-01-31)
+v0.16 - (2013-xx-xx)
+LOC   -> xxxxx
 
+v0.15 - (2013-01-31)
+UI    -> Improved window mouse interaction.
+UI    -> Improved window_element_class::process(); Drag and Drop, mouse click events.
+UI    -> Created define values for UI events and implemented them.
+UI    -> Window element Items can now be dragged over other windows.
+UI    -> Window elements now dragable.
+ITEM  -> Fixed Segfault in item manager.
+ITEM  -> Added base of a health potion for testing.
+ITEM  -> Started defining the new item manager.
+GFX   -> Alternate equipment background.
+UI    -> Adjusted player portrait on the character window.
 UI    -> Smoother experience bar progress.
 GFX   -> Improved equipment window background.
 GFX   -> Improved character window background.
@@ -21,7 +35,7 @@ UI    -> Added the base of the Quest Log window.
 UI    -> Added the base of the Skill Book window.
 UI    -> Added the base of the Equipment window.
 UI    -> Added the base of the Inventory window.
-LOC   -> xxxxx
+LOC   -> 14886 (count is low due to the removal of the old item manager)
 
 v0.14 - (2012-12-31)
 UI    -> Completed the Main menu system.
