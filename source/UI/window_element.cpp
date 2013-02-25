@@ -343,7 +343,7 @@ int  window_element_class::process(bool element_in_focus)
             }
             else
             {
-                if ((window_element_class::dragable) && (element_in_focus) && (window_element_class::mouse_over))
+                if ((window_element_class::dragable) && (element_in_focus) && (window_element_class::mouse_over) && (!game.window_manager.drag_in_progress))
                 {
                     if ((game.core.io.mouse_button_left) && (allow_drag))// start drag
                     {
