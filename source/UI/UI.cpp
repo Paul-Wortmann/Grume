@@ -135,7 +135,6 @@ void UI_class::UI_process(void) // Process events generated buy the windows in t
     }
 };
 
-
 void UI_class::UI_reload_textures(void)
 {
     game.window_manager.cursor.reload_textures();

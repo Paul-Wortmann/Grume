@@ -30,9 +30,9 @@
 
 #define NULL_ITEM     -1
 #define HEALTH_POTION  0
+#define MANA_POTION    1
 
-#define MANA_POTION    3
-#define SPELL          1
+#define SPELL          2
 #define SPELL_BOOK     4
 #define SPELL_SCROLL   5
 #define HELM           6
@@ -51,6 +51,7 @@
 #define WEAPON         19
 
 #define EFFECT_MOD_HEALTH 100
+#define EFFECT_MOD_MANA   101
 
 #define MAX_ITEMS        100 /*   65500     */
 #define MAX_ITEM_EFFECTS 4

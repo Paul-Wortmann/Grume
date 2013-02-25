@@ -103,13 +103,29 @@ void  init_items(void) // Initialize hard-coded default items, such as health po
         game.item_manager.item[item_number].ID                     = item_number;
         game.item_manager.item[item_number].quantity               = 1;
         game.item_manager.item[item_number].quantity_max           = 1;
-        game.item_manager.item[item_number].active                 = false;
         game.item_manager.item[item_number].socketable             = false;
         game.item_manager.item[item_number].number_of_item_sockets = 1;
         game.item_manager.item[item_number].number_of_item_effects = 1;
         game.item_manager.item[item_number].effect[0].type         = EFFECT_MOD_HEALTH;
         game.item_manager.item[item_number].effect[0].value        = 5.0f;
         game.item_manager.item[item_number].image.path             = "data/textures/UI/icons/potions/potion_23.png";
+        game.item_manager.item[item_number].image.load_image(game.item_manager.item[item_number].image.path);
+    }
+    item_number = game.item_manager.get_new_ID();
+    if (item_number > -1) // Mana potion
+    {
+        game.item_manager.reset_item(item_number);
+        game.item_manager.item[item_number].active                 = true;
+        game.item_manager.item[item_number].type                   = MANA_POTION;
+        game.item_manager.item[item_number].ID                     = item_number;
+        game.item_manager.item[item_number].quantity               = 1;
+        game.item_manager.item[item_number].quantity_max           = 1;
+        game.item_manager.item[item_number].socketable             = false;
+        game.item_manager.item[item_number].number_of_item_sockets = 1;
+        game.item_manager.item[item_number].number_of_item_effects = 1;
+        game.item_manager.item[item_number].effect[0].type         = EFFECT_MOD_MANA;
+        game.item_manager.item[item_number].effect[0].value        = 5.0f;
+        game.item_manager.item[item_number].image.path             = "data/textures/UI/icons/potions/potion_22.png";
         game.item_manager.item[item_number].image.load_image(game.item_manager.item[item_number].image.path);
     }
     //------------------------------------------------------------------------------------------------------------
