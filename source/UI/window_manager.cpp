@@ -208,6 +208,7 @@ void window_manager_class::window_enable(int UID)
             {
                 window_manager_class::window[window_manager_class::window_stack[window_count]].enabled = true;
                 window_manager_class::window_set_active(window_manager_class::window[window_manager_class::window_stack[window_count]].UID);
+                game.window_manager.window_stack_sort();
             }
         }
     }

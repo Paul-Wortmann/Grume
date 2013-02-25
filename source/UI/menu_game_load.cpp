@@ -306,6 +306,10 @@ void process_menu_game_load(int window_number)
             case ((6*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Main menu button
                 game.window_manager.window_transition(MENU_GAME_LOAD_UID,MENU_MAIN_UID);
             break;
+            case (EVENT_WINDOW_STACK_SORT): //Window stack sort
+                game.window_manager.window_stack_sort();
+                game.window_manager.event = EVENT_NONE;
+            break;
             default:
                 game.core.log.file_write("Unable to process event - ",game.window_manager.window[window_number].event, " - UID - ",game.window_manager.window[window_number].UID);
                 game.window_manager.window[window_number].event = EVENT_NONE;

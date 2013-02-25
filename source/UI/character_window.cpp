@@ -253,6 +253,10 @@ void process_character_window(int window_number)
                 game.window_manager.window_disable(CHARACTER_UID);
                 game.core.character_active= false;
             break;
+            case (EVENT_WINDOW_STACK_SORT): //Window stack sort
+                game.window_manager.window_stack_sort();
+                game.window_manager.event = EVENT_NONE;
+            break;
             default:
                 game.core.log.file_write("Unable to process event - ",game.window_manager.window[window_number].event, " - UID - ",game.window_manager.window[window_number].UID);
                 game.window_manager.window[window_number].event = EVENT_NONE;

@@ -288,13 +288,11 @@ int window_class::process(bool window_in_focus)
             if (!window_class::mouse_over_title) window_class::mouse_over_title = return_mouse_over;
         }
     }
-    window_class::event = return_value;
     //if (return_value > 0) game.core.log.file_write("returning event -> ",return_value, " - from UID - ", window_class::UID);
-    if (window_in_focus) return(return_value);
-    else return (window_class::event);
+    //if (return_value == EVENT_WINDOW_STACK_SORT) game.core.log.file_write("returning event -> ",return_value, " - from UID - ", window_class::UID);
+    window_class::event = return_value;
+    return (window_class::event);
 };
-
-
 
 void window_class::reload_textures(void)
 {

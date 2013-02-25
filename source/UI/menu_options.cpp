@@ -690,6 +690,10 @@ void process_menu_options(int window_number)
                     reset_display = true;
                 }
             break;
+            case (EVENT_WINDOW_STACK_SORT): //Window stack sort
+                game.window_manager.window_stack_sort();
+                game.window_manager.event = EVENT_NONE;
+            break;
             default:
                 game.core.log.file_write("Unable to process event - ",game.window_manager.window[window_number].event, " - UID - ",game.window_manager.window[window_number].UID);
                 game.window_manager.window[window_number].event = EVENT_NONE;
