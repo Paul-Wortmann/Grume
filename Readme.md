@@ -8,7 +8,7 @@ This is Frost and Flame, a free/open source computer game.
 About
 -----
 Frost and Flame is still in its early stages of infancy.  Currently a non-playable WIP.
-Frost and flame to become a 3D, isometric, action role playing game.
+Frost and flame is an isometric, action role playing game.
 Planned features include, a particle engine, rich in content and re-playability with random item, quest and level generation.
 
 Features
@@ -61,7 +61,7 @@ This information can be found in the credits_license.txt file.
 
 License
 -------
-Copyright (C) 2011-2012 Paul Wortmann.
+Copyright (C) 2011-2013 Paul Wortmann.
 
 This program is free software: you can redistribute it and/or modify it under
 the terms of the GNU General Public License as published by the Free Software
@@ -75,7 +75,7 @@ PARTICULAR PURPOSE.  See the gpl.txt file for more details.
 Contact
 -------
 - Paul Wortmann: physhex@gmail.com
-- Website: http://www.physhexgames.co.nr
-- Downloads: https://sourceforge.net/projects/frostandflame/
-- Development, bug reports and feature requests are handled on GitHub: https://github.com/Paul-Wortmann/Frost_And_Flame
+- Website:          http://www.physhexgames.co.nr
+- Downloads:      https://sourceforge.net/projects/frostandflame/
+- Development:   https://github.com/Paul-Wortmann/Frost_And_Flame
 
