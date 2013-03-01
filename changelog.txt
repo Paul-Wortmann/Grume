@@ -7,8 +7,15 @@ it may take longer than I had first anticipated.
 These are not indications that the project will be terminated in the future,
 just that time is not permitting to proceed at a fast pace, at the moment.
 
-v0.16 - (2013-xx-xx)
+v0.17 - (2013-03-xx)
 LOC   -> xxxxx
+
+v0.16 - (2013-02-28)
+ITEM  -> Added base of a mana potion for testing.
+UI    -> Improved window element drag handeling.
+UI    -> Improved window-mouse interaction.
+UI    -> Improved window stack sort event handeling.
+LOC   -> 14973
 
 v0.15 - (2013-01-31)
 UI    -> Improved window mouse interaction.
