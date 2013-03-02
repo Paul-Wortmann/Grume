@@ -60,7 +60,9 @@ void setup_character_window(int UID)
     game.window_manager.window[window_number].font_path                   = "data/fonts/font_001.ttf";
     game.window_manager.window[window_number].font.load(game.window_manager.window[window_number].font_path);
     game.window_manager.window[window_number].mouse_delay.maximum     = 30;
-    game.window_manager.window[window_number].event                   = 0;
+    game.window_manager.window[window_number].event.id                = 0;
+    game.window_manager.window[window_number].event.source            = 0;
+    game.window_manager.window[window_number].event.type              = 0;
     game.window_manager.window[window_number].color.normal.r          = 128;
     game.window_manager.window[window_number].color.normal.b          = 128;
     game.window_manager.window[window_number].color.normal.g          = 128;
@@ -245,9 +247,9 @@ void update_character_window(int UID)
 void process_character_window(int window_number)
 {
     update_character_window(CHARACTER_UID);
-    if(game.window_manager.window[window_number].event > EVENT_NONE)
+    if(game.window_manager.window[window_number].event.id > EVENT_NONE)
     {
-        switch (game.window_manager.window[window_number].event)
+        switch (game.window_manager.window[window_number].event.id)
         {
             case ((0*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Close menu button
                 game.window_manager.window_disable(CHARACTER_UID);
@@ -255,15 +257,15 @@ void process_character_window(int window_number)
             break;
             case (EVENT_WINDOW_STACK_SORT): //Window stack sort
                 game.window_manager.window_stack_sort();
-                game.window_manager.event = EVENT_NONE;
+                game.window_manager.event.id = EVENT_NONE;
             break;
             default:
-                game.core.log.file_write("Unable to process event - ",game.window_manager.window[window_number].event, " - UID - ",game.window_manager.window[window_number].UID);
-                game.window_manager.window[window_number].event = EVENT_NONE;
+                game.core.log.file_write("Unable to process event - ",game.window_manager.window[window_number].event.id, " - UID - ",game.window_manager.window[window_number].UID);
+                game.window_manager.window[window_number].event.id = EVENT_NONE;
             break;
         }
     }
-    game.window_manager.window[window_number].event = EVENT_NONE;
+    game.window_manager.window[window_number].event.id = EVENT_NONE;
 };
 
 

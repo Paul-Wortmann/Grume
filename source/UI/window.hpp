@@ -39,7 +39,7 @@ class window_class
         int                     UID;
         choice_selection_type   choice_selection[MAX_CHOICE_SELECTIONS_PER_MENU];
         delay_class             mouse_delay;
-        int                     event;
+        event_type              event;
         location_class          title;
         color_struct            title_color;
         location_class          title_bar;
@@ -68,7 +68,7 @@ class window_class
         bool                    get_mouse_over_title(void);
         bool                    mouse_click_title(void);
         void                    set_position(float x_pos, float y_pos);
-        int                     process(bool window_in_focus);
+        event_type              process(bool window_in_focus);
 };
 
 #endif // WINDOW_H

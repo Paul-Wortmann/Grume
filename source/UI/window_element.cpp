@@ -128,7 +128,9 @@ window_element_class::window_element_class(void)
     window_element_class::color.disabled.g               = 0;
     window_element_class::color.disabled.b               = 0;
     window_element_class::color.disabled.a               = 0;
-    window_element_class::event                          = 0;
+    window_element_class::event.id                       = 0;
+    window_element_class::event.source                   = 0;
+    window_element_class::event.type                     = 0;
     window_element_class::state                          = NORMAL;
     window_element_class::selected                       = false;
     window_element_class::type                           = BUTTON;
@@ -289,14 +291,14 @@ bool window_element_class::mouse_clicked_element(void)
     else return(false);
 };
 
-int  window_element_class::process(bool element_in_focus)
+event_type  window_element_class::process(bool element_in_focus)
 {
     float drag_delta_x = 0.0f;
     float drag_delta_y = 0.0f;
     bool  allow_drag   = window_element_class::dragable;
     window_element_class::clicked = false;
     window_element_class::mouse_delay.process();
-    if ((window_element_class::event == EVENT_ELEMENT_MOUSE_RIGHT) || (window_element_class::event == EVENT_ELEMENT_MOUSE_LEFT)) window_element_class::event = EVENT_NONE;
+    if ((window_element_class::event.id == EVENT_ELEMENT_MOUSE_RIGHT) || (window_element_class::event.id == EVENT_ELEMENT_MOUSE_LEFT)) window_element_class::event.id = EVENT_NONE;
     if (window_element_class::active)
     {
         if (window_element_class::state != DISABLED)
@@ -305,17 +307,17 @@ int  window_element_class::process(bool element_in_focus)
             // ------------------------- Drop -------------------------
             if (window_element_class::drop_active)
             {
-                if (window_element_class::event == EVENT_ELEMENT_DROP)
+                if (window_element_class::event.id == EVENT_ELEMENT_DROP)
                 {
                     window_element_class::position.x     = window_element_class::position_destination.x;
                     window_element_class::position.y     = window_element_class::position_destination.y;
-                    window_element_class::event = EVENT_NONE;
+                    window_element_class::event.id = EVENT_NONE;
                 }
                 else
                 {
                     window_element_class::position.x     = window_element_class::position_origin.x;
                     window_element_class::position.y     = window_element_class::position_origin.y;
-                    window_element_class::event = EVENT_NONE;
+                    window_element_class::event.id = EVENT_NONE;
                 }
                 window_element_class::drop_active = false;
             }
@@ -338,7 +340,7 @@ int  window_element_class::process(bool element_in_focus)
                     game.window_manager.drag_in_progress = false;
                     window_element_class::drag_active    = false;
                     window_element_class::drop_active    = true;
-                    window_element_class::event          = EVENT_ELEMENT_DRAG;
+                    window_element_class::event.id       = EVENT_ELEMENT_DRAG;
                 }
             }
             else
@@ -377,8 +379,8 @@ int  window_element_class::process(bool element_in_focus)
                         {
                             if((window_element_class::mouse_delay.ready) || (!window_element_class::mouse_delay.enabled))
                             {
-                                if (game.core.io.mouse_button_right) window_element_class::event = EVENT_ELEMENT_MOUSE_RIGHT;
-                                if (game.core.io.mouse_button_left)  window_element_class::event = EVENT_ELEMENT_MOUSE_LEFT;
+                                if (game.core.io.mouse_button_right) window_element_class::event.id = EVENT_ELEMENT_MOUSE_RIGHT;
+                                if (game.core.io.mouse_button_left)  window_element_class::event.id = EVENT_ELEMENT_MOUSE_LEFT;
                                 if (window_element_class::sound.on_click.enabled) window_element_class::sound.on_click.sound.play();
                                 window_element_class::clicked = true;
                                 if(window_element_class::mouse_delay.enabled) window_element_class::mouse_delay.reset();

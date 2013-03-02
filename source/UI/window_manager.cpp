@@ -31,7 +31,9 @@ extern game_class         game;
 
 window_manager_class::window_manager_class(void)
 {
-    window_manager_class::event                = 0;
+    window_manager_class::event.id             = 0;
+    window_manager_class::event.source         = 0;
+    window_manager_class::event.type           = 0;
     window_manager_class::number_of_windows    = 0;
     window_manager_class::windows_list_created = false;
 }
@@ -112,7 +114,7 @@ void window_manager_class::window_set_active(int UID)
             }
         }
     }
-    window_manager_class::event = 65535; // request stack sort
+    window_manager_class::event.id = EVENT_WINDOW_STACK_SORT; // request stack sort
 };
 
 void window_manager_class::window_set_inactive(int UID)
@@ -127,7 +129,7 @@ void window_manager_class::window_set_inactive(int UID)
             }
         }
     }
-    window_manager_class::event = 65535; // request stack sort
+    window_manager_class::event.id = EVENT_WINDOW_STACK_SORT; // request stack sort
 };
 
 int  window_manager_class::window_get_active(void)
@@ -246,7 +248,7 @@ void window_manager_class::window_transition(int UID_source, int UID_destination
     window_manager_class::window_reset_event(UID_source);
     window_manager_class::window_enable(UID_destination);
     window_manager_class::window_set_active(UID_destination);
-    window_manager_class::event = 65535; // Request stack sort
+    window_manager_class::event.id = EVENT_WINDOW_STACK_SORT; // Request stack sort
     game.core.io.mouse_button_left = false;
 };
 
@@ -258,7 +260,7 @@ void window_manager_class::window_reset_event(int UID)
         {
             if (window_manager_class::window[window_manager_class::window_stack[window_count]].UID == UID)
             {
-                window_manager_class::window[window_manager_class::window_stack[window_count]].event = 0;
+                window_manager_class::window[window_manager_class::window_stack[window_count]].event.id = EVENT_NONE;
             }
         }
     }
@@ -284,9 +286,10 @@ void window_manager_class::mouse_reset(int UID)
     }
 };
 
-int  window_manager_class::window_get_event(int UID)
+event_type  window_manager_class::window_get_event(int UID)
 {
-    int return_value = 0;
+    event_type return_value;
+    return_value.id = 0;
     if (window_manager_class::number_of_windows > 0) // only process windows if there are actually windows in the list.
     {
         for (int window_count = 0; window_count < window_manager_class::number_of_windows; window_count++)
@@ -303,6 +306,7 @@ void window_manager_class::process(void)
 {
     //Determine mouse over for overlapping windows.
     bool front_window_found = false;
+    event_type temp_event;
     for (int window_count = 0; window_count < window_manager_class::number_of_windows; window_count++)
     {
         if (window_manager_class::window[window_manager_class::window_stack[window_count]].enabled)
@@ -312,7 +316,8 @@ void window_manager_class::process(void)
                 if (!front_window_found)
                 {
                     window_manager_class::window[window_manager_class::window_stack[window_count]].mouse_over_menu  = true;
-                    if (window_manager_class::window[window_manager_class::window_stack[window_count]].process(true) == EVENT_WINDOW_STACK_SORT) window_manager_class::window_set_active(window_manager_class::window[window_manager_class::window_stack[window_count]].UID);
+                    temp_event = window_manager_class::window[window_manager_class::window_stack[window_count]].process(true);
+                    if (temp_event.id == EVENT_WINDOW_STACK_SORT) window_manager_class::window_set_active(window_manager_class::window[window_manager_class::window_stack[window_count]].UID);
                     front_window_found = true;
                 }
                 else

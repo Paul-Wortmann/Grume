@@ -57,6 +57,12 @@
 #define SELECTION      11
 #define ITEM           12
 
+struct event_type
+{
+    int id;
+    int source;
+    int type;
+};
 
 struct struct_3f
 {
@@ -169,7 +175,7 @@ class window_element_class
     public:
         location_class          title;
         location_class          tooltip;
-        int                     event;
+        event_type              event;
         int                     state;
         bool                    selected;
         int                     type;
@@ -202,7 +208,7 @@ class window_element_class
         void                    render_item_if_dragged(void);
         bool                    mouse_over_element(void);
         bool                    mouse_clicked_element(void);
-        int                     process(bool element_in_focus);
+        event_type              process(bool element_in_focus);
 };
 
 #endif // WINDOW_ELEMENT_H

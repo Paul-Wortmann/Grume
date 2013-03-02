@@ -75,7 +75,7 @@ void UI_class::UI_process(void) // Process events generated buy the windows in t
         {
             if(game.window_manager.window[game.window_manager.window_stack[window_count]].enabled)
             {
-                if(game.window_manager.event == EVENT_NONE)
+                if(game.window_manager.event.id == EVENT_NONE)
                 {
                     switch(game.window_manager.window[game.window_manager.window_stack[window_count]].UID)
                     {
@@ -123,14 +123,14 @@ void UI_class::UI_process(void) // Process events generated buy the windows in t
             }
         }
     }
-    switch (game.window_manager.event)
+    switch (game.window_manager.event.id)
     {
         case EVENT_WINDOW_STACK_SORT: //window has requested a window stack sort;
             game.window_manager.window_stack_sort();
-            game.window_manager.event = EVENT_NONE;
+            game.window_manager.event.id = EVENT_NONE;
         break;
         default:
-            game.window_manager.event = EVENT_NONE;
+            game.window_manager.event.id = EVENT_NONE;
         break;
     }
 };

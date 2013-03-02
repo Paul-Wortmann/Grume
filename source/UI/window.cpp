@@ -36,7 +36,9 @@ window_class::window_class(void)
     window_class::active                             = false;
     window_class::set_behind                         = false;
     window_class::drag_enabled                       = true;
-    window_class::event                              = 0;
+    window_class::event.id                           = 0;
+    window_class::event.source                       = 0;
+    window_class::event.type                         = 0;
     window_class::number_of_elements                 = 0;
     window_class::title.text                         = "Not set";
     window_class::title.size.x                       = 0.0f;
@@ -197,13 +199,14 @@ void window_class::set_position(float x_pos, float y_pos)
     }
 };
 
-int window_class::process(bool window_in_focus)
+event_type window_class::process(bool window_in_focus)
 {
-    float drag_delta_x = 0.0f;
-    float drag_delta_y = 0.0f;
-    int   return_value = EVENT_NONE;
-    bool  return_mouse_over = false;
-    bool  allow_drag        = true;
+    float      drag_delta_x = 0.0f;
+    float      drag_delta_y = 0.0f;
+    event_type return_value;
+    bool       return_mouse_over = false;
+    bool       allow_drag        = true;
+    return_value.id = EVENT_NONE;
     if (window_class::enabled)
     {
         window_class::mouse_delay.process();
@@ -212,11 +215,11 @@ int window_class::process(bool window_in_focus)
         {
             for (int element_number = 0; element_number < window_class::number_of_elements; element_number++)
             {
-                if ((window_class::element[element_number].active) && ((return_value == EVENT_NONE) || (return_value == EVENT_ELEMENT_DRAG)))
+                if ((window_class::element[element_number].active) && ((return_value.id == EVENT_NONE) || (return_value.id == EVENT_ELEMENT_DRAG)))
                 {
                     return_value = window_class::element[element_number].process(window_in_focus);
-                    if (return_value > EVENT_NONE) return_value += (element_number * EVENT_BUTTON_MULTIPLIER);
-                    if (return_value != EVENT_NONE) allow_drag   = false;
+                    if (return_value.id > EVENT_NONE) return_value.id += (element_number * EVENT_BUTTON_MULTIPLIER);
+                    if (return_value.id != EVENT_NONE) allow_drag   = false;
                     if (window_class::element[element_number].mouse_over)
                     {
                         allow_drag        = false;
@@ -275,13 +278,13 @@ int window_class::process(bool window_in_focus)
                         window_class::drag_offset_y                = window_class::position.y - game.core.io.mouse_y;
                         window_class::drag_active                  = true;
                         game.window_manager.drag_in_progress       = true;
-                        return_value                               = EVENT_WINDOW_STACK_SORT;
+                        return_value.id                            = EVENT_WINDOW_STACK_SORT;
                     }
                 }
                 // user clicked on window, that is not title or an element.
-                if ((game.core.io.mouse_button_left) && (return_value == EVENT_NONE) && (!window_class::active))
+                if ((game.core.io.mouse_button_left) && (return_value.id == EVENT_NONE) && (!window_class::active))
                 {
-                    return_value = EVENT_WINDOW_STACK_SORT;
+                    return_value.id = EVENT_WINDOW_STACK_SORT;
                 }
             }
             // ------------------------- X -------------------------
