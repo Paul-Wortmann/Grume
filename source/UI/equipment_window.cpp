@@ -60,8 +60,6 @@ void setup_equipment_window(int UID)
     game.window_manager.window[window_number].font.load(game.window_manager.window[window_number].font_path);
     game.window_manager.window[window_number].mouse_delay.maximum     = 30;
     game.window_manager.window[window_number].event.id                = 0;
-    game.window_manager.window[window_number].event.source            = 0;
-    game.window_manager.window[window_number].event.type              = 0;
     game.window_manager.window[window_number].color.normal.r          = 128;
     game.window_manager.window[window_number].color.normal.b          = 128;
     game.window_manager.window[window_number].color.normal.g          = 128;
@@ -125,6 +123,12 @@ void process_equipment_window(int window_number)
             case (EVENT_WINDOW_STACK_SORT): //Window stack sort
                 game.window_manager.window_stack_sort();
                 game.window_manager.event.id = EVENT_NONE;
+            break;
+            case (EVENT_ELEMENT_DRAG): //Element drag event posted
+                game.window_manager.source.window = EQUIPMENT_UID;
+            break;
+            case (EVENT_ELEMENT_DROP): //Element drop event posted
+                game.window_manager.destination.window = EQUIPMENT_UID;
             break;
             default:
                 game.core.log.file_write("Unable to process event - ",game.window_manager.window[window_number].event.id, " - UID - ",game.window_manager.window[window_number].UID);

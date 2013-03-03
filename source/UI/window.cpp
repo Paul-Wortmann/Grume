@@ -37,8 +37,6 @@ window_class::window_class(void)
     window_class::set_behind                         = false;
     window_class::drag_enabled                       = true;
     window_class::event.id                           = 0;
-    window_class::event.source                       = 0;
-    window_class::event.type                         = 0;
     window_class::number_of_elements                 = 0;
     window_class::title.text                         = "Not set";
     window_class::title.size.x                       = 0.0f;
@@ -217,9 +215,23 @@ event_type window_class::process(bool window_in_focus)
             {
                 if ((window_class::element[element_number].active) && ((return_value.id == EVENT_NONE) || (return_value.id == EVENT_ELEMENT_DRAG)))
                 {
-                    return_value = window_class::element[element_number].process(window_in_focus);
-                    if (return_value.id > EVENT_NONE) return_value.id += (element_number * EVENT_BUTTON_MULTIPLIER);
-                    if (return_value.id != EVENT_NONE) allow_drag   = false;
+                    return_value                       = window_class::element[element_number].process(window_in_focus);
+                    if (return_value.id != EVENT_NONE)
+                    {
+                        switch (return_value.id)
+                        {
+                            case EVENT_ELEMENT_DRAG:
+                                game.window_manager.source.element = element_number;
+                            break;
+                            case EVENT_ELEMENT_DROP:
+                                game.window_manager.destination.element = element_number;
+                            break;
+                            default:
+                                return_value.id += (element_number * EVENT_BUTTON_MULTIPLIER);
+                            break;
+                        }
+                        allow_drag       = false;
+                    }
                     if (window_class::element[element_number].mouse_over)
                     {
                         allow_drag        = false;

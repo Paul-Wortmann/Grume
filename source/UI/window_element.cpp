@@ -129,11 +129,10 @@ window_element_class::window_element_class(void)
     window_element_class::color.disabled.b               = 0;
     window_element_class::color.disabled.a               = 0;
     window_element_class::event.id                       = 0;
-    window_element_class::event.source                   = 0;
-    window_element_class::event.type                     = 0;
     window_element_class::state                          = NORMAL;
     window_element_class::selected                       = false;
     window_element_class::type                           = BUTTON;
+    window_element_class::quantity                       = 1;
     window_element_class::value                          = 0.0f;
     window_element_class::value_max                      = 0.0f;
     window_element_class::active                         = false;
@@ -311,13 +310,13 @@ event_type  window_element_class::process(bool element_in_focus)
                 {
                     window_element_class::position.x     = window_element_class::position_destination.x;
                     window_element_class::position.y     = window_element_class::position_destination.y;
-                    window_element_class::event.id = EVENT_NONE;
+                    window_element_class::event.id       = EVENT_NONE;
                 }
                 else
                 {
                     window_element_class::position.x     = window_element_class::position_origin.x;
                     window_element_class::position.y     = window_element_class::position_origin.y;
-                    window_element_class::event.id = EVENT_NONE;
+                    window_element_class::event.id       = EVENT_NONE;
                 }
                 window_element_class::drop_active = false;
             }
@@ -341,6 +340,8 @@ event_type  window_element_class::process(bool element_in_focus)
                     window_element_class::drag_active    = false;
                     window_element_class::drop_active    = true;
                     window_element_class::event.id       = EVENT_ELEMENT_DRAG;
+                    game.window_manager.source.quantity  = window_element_class::quantity;
+                    game.window_manager.source.type      = window_element_class::value;
                 }
             }
             else

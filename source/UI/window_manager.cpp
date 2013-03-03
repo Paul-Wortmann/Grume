@@ -32,8 +32,6 @@ extern game_class         game;
 window_manager_class::window_manager_class(void)
 {
     window_manager_class::event.id             = 0;
-    window_manager_class::event.source         = 0;
-    window_manager_class::event.type           = 0;
     window_manager_class::number_of_windows    = 0;
     window_manager_class::windows_list_created = false;
 }

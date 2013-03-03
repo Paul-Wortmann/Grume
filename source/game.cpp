@@ -106,10 +106,12 @@ void game_class::init(void)
     int inventory_ID = game.window_manager.window_get_number(INVENTORY_UID);
     int item_ID = 0;
     item_ID = game.item_manager.get_item_ID(HEALTH_POTION); // Health Potion
-    game.window_manager.window[inventory_ID].element[1].value = item_ID;
+    game.window_manager.window[inventory_ID].element[1].value    = item_ID;
+    game.window_manager.window[inventory_ID].element[1].quantity = 1;
     game.window_manager.window[inventory_ID].element[1].texture.normal.image.load_image(game.item_manager.item[item_ID].image.path);
     item_ID = game.item_manager.get_item_ID(MANA_POTION); // Mana Potion
     game.window_manager.window[inventory_ID].element[2].value = item_ID;
+    game.window_manager.window[inventory_ID].element[2].quantity = 2;
     game.window_manager.window[inventory_ID].element[2].texture.normal.image.load_image(game.item_manager.item[item_ID].image.path);
 };
 

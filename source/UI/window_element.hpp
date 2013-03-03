@@ -57,11 +57,17 @@
 #define SELECTION      11
 #define ITEM           12
 
+struct event_data_type
+{
+    int window;
+    int element;
+    int type;
+    int quantity;
+};
+
 struct event_type
 {
-    int id;
-    int source;
-    int type;
+    int             id;
 };
 
 struct struct_3f
@@ -179,6 +185,7 @@ class window_element_class
         int                     state;
         bool                    selected;
         int                     type;
+        int                     quantity;
         float                   value;
         float                   value_max;
         bool                    mouse_over;
