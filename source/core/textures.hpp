@@ -59,16 +59,16 @@ class texture_class
         bool     load_image      (void);
         bool     load_image      (std::string file_name);
         bool     load_spritesheet(std::string file_name);
-        bool     load_spritesheet(std::string file_name, int width, int height);
+        bool     load_spritesheet(std::string file_name, int width_set, int height_set);
         void     bind_image(void);
         void     process(void);
-        void     draw(bool rumble, float pos_x, float pos_y, float pos_z, float width, float height);
-        void     draw(bool rumble, float pos_x, float pos_y, float pos_z, float width, float height, int   angle);
-        void     draw(bool rumble, float pos_x, float pos_y, float pos_z, float width, float height, float angle);
-        void     draw(bool rumble, float pos_x, float pos_y, float pos_z, float width, float height, float angle, float alpha);
-        void     draw(bool rumble, float pos_x, float pos_y, float pos_z, float width, float height, float angle, float red, float green, float blue, float alpha);
-        void     draw(bool rumble, float pos_x, float pos_y, float pos_z, float width, float height, float angle, float red, float green, float blue, float alpha, int frame);
-        void     draw(bool rumble, float pos_x, float pos_y, float pos_z, float width, float height, float angle, int frame);
+        void     draw(bool rumble_set, float pos_x, float pos_y, float pos_z, float width_set, float height_set);
+        void     draw(bool rumble_set, float pos_x, float pos_y, float pos_z, float width_set, float height_set, int   angle_set);
+        void     draw(bool rumble_set, float pos_x, float pos_y, float pos_z, float width_set, float height_set, float angle_set);
+        void     draw(bool rumble_set, float pos_x, float pos_y, float pos_z, float width_set, float height_set, float angle_set, float alpha);
+        void     draw(bool rumble_set, float pos_x, float pos_y, float pos_z, float width_set, float height_set, float angle_set, float red, float green, float blue, float alpha);
+        void     draw(bool rumble_set, float pos_x, float pos_y, float pos_z, float width_set, float height_set, float angle_set, float red, float green, float blue, float alpha, int frame_set);
+        void     draw(bool rumble_set, float pos_x, float pos_y, float pos_z, float width_set, float height_set, float angle_set, int fram_sete);
 };
 
 #endif //TEXTURES_H
