@@ -78,8 +78,6 @@ bool texture_class::load_image(std::string file_name)
     if ((image_surface = IMG_Load(file_name.c_str())))
     {
         return_value = true;
-        if ((image_surface->w & (image_surface->w - 1)) != 0 );
-        if ((image_surface->h & (image_surface->h - 1)) != 0 );
         number_of_colors = image_surface->format->BytesPerPixel;
         if (number_of_colors == 4)
         {
@@ -138,8 +136,6 @@ bool texture_class::load_spritesheet(std::string file_name, int width_set, int h
    if ((sprite_sheet = IMG_Load(file_name.c_str())))
     {
         return_value = true;
-        if ((sprite_sheet->w & (sprite_sheet->w - 1)) != 0 );
-        if ((sprite_sheet->h & (sprite_sheet->h - 1)) != 0 );
         frames_x = sprite_sheet->w / texture_class::width;
         frames_y = sprite_sheet->h / texture_class::height;
         num_sprites = frames_x * frames_y;
