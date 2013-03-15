@@ -93,13 +93,13 @@ EndIf (NOT PHYSFS_FOUND)
 #	The plan is to allow someone to contribute a DirectX driver
 #	or produce an alternative as needs arise.
 find_package(OpenGL)
-if(OPENGL_FOUND)
+if (OPENGL_FOUND)
   include_directories(${OPENGL_INCLUDE_DIR})
   link_directories(${OPENGL_LIBRARIES})
   target_link_libraries(r3d ${OPENGL_LIBRARIES})
-Else
+Else (OPENGL_FOUND)
   Message (FATAL_ERROR "Couldn't find OpenGl development files. On Debian-based systems (such as Ubuntu) you should install the OpenGL development package.")
-endif(OPENGL_FOUND)
+endif (OPENGL_FOUND)
 
 # Sources
 
