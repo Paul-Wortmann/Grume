@@ -79,13 +79,27 @@ Else (NOT SDLNET_FOUND)
   Include_Directories (${SDLNET_INCLUDE_DIR})
 EndIf (NOT SDLNET_FOUND)
 
-Find_Package (PHYSFS REQUIRED)
+# make sure PhysFS is installed
+Find_Package (PhysFS REQUIRED)
 If (NOT PHYSFS_FOUND)
   Message (FATAL_ERROR "Couldn't find libphysfs development files. On Debian-based systems (such as Ubuntu) you should install the 'libphysfs-dev' package.")
 Else (NOT PHYSFS_FOUND)
   Include_Directories (${LIBPHYSFS_INCLUDE_DIR})
+  target_link_libraries(r3d ${PHYSFS_LIBRARY})
 EndIf (NOT PHYSFS_FOUND)
 
+# TODO: If OpenGL isn't found, we should complain loudly since an
+#	appropriate alternative graph driver is unavailable.
+#	The plan is to allow someone to contribute a DirectX driver
+#	or produce an alternative as needs arise.
+find_package(OpenGL)
+if(OPENGL_FOUND)
+  include_directories(${OPENGL_INCLUDE_DIR})
+  link_directories(${OPENGL_LIBRARIES})
+  target_link_libraries(r3d ${OPENGL_LIBRARIES})
+Else
+  Message (FATAL_ERROR "Couldn't find OpenGl development files. On Debian-based systems (such as Ubuntu) you should install the OpenGL development package.")
+endif(OPENGL_FOUND)
 
 # Sources
 
