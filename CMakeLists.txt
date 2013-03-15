@@ -147,25 +147,26 @@ Target_Link_Libraries (frost_and_flame ${CMAKE_LD_FLAGS} ${SDL_LIBRARY} ${SDLMIX
 
 
 # desktop file
-If(NOT IS_ABSOLUTE "${BINDIR}")
-	set(FROST_AND_FLAME_EXECUTABLE_PATH ${CMAKE_INSTALL_PREFIX}/${BINDIR}/frost_and_flame)
-Else(NOT IS_ABSOLUTE "${BINDIR}")
-	set(FROST_AND_FLAME_EXECUTABLE_PATH ${BINDIR}/frost_and_flame)
-EndIf(NOT IS_ABSOLUTE "${BINDIR}")
-configure_file("${CMAKE_CURRENT_SOURCE_DIR}/distribution/frost_and_flame.desktop.in" "${CMAKE_CURRENT_BINARY_DIR}/frost_and_flame.desktop")
+#If(NOT IS_ABSOLUTE "${BINDIR}")
+#	set(FROST_AND_FLAME_EXECUTABLE_PATH ${CMAKE_INSTALL_PREFIX}/${BINDIR}/frost_and_flame)
+#Else(NOT IS_ABSOLUTE "${BINDIR}")
+#	set(FROST_AND_FLAME_EXECUTABLE_PATH ${BINDIR}/frost_and_flame)
+#EndIf(NOT IS_ABSOLUTE "${BINDIR}")
+#configure_file("${CMAKE_CURRENT_SOURCE_DIR}/distribution/frost_and_flame.desktop.in" "${CMAKE_CURRENT_BINARY_DIR}/frost_and_flame.desktop")
 
 
 # installing to the proper places
-install(PROGRAMS
-  ${CMAKE_CURRENT_BINARY_DIR}/frost_and_flame
-  DESTINATION ${BINDIR})
-install(DIRECTORY
-  "${CMAKE_CURRENT_SOURCE_DIR}/mods"
-  DESTINATION ${DATADIR})
-install(FILES
-  "${CMAKE_CURRENT_BINARY_DIR}/frost_and_flame.desktop"
-  DESTINATION ${CMAKE_INSTALL_PREFIX}/share/applications)
-install(FILES
-  "${CMAKE_CURRENT_SOURCE_DIR}/distribution/frost_and_flame_logo.svg"
-  DESTINATION ${CMAKE_INSTALL_PREFIX}/share/icons/hicolor/scalable/apps
-  RENAME frost_and_flame.svg)
+#install(PROGRAMS
+#  ${CMAKE_CURRENT_BINARY_DIR}/frost_and_flame
+#  DESTINATION ${BINDIR})
+#install(DIRECTORY
+#  "${CMAKE_CURRENT_SOURCE_DIR}/mods"
+#  DESTINATION ${DATADIR})
+#install(FILES
+#  "${CMAKE_CURRENT_BINARY_DIR}/frost_and_flame.desktop"
+#  DESTINATION ${CMAKE_INSTALL_PREFIX}/share/applications)
+#install(FILES
+#  "${CMAKE_CURRENT_SOURCE_DIR}/distribution/frost_and_flame_logo.svg"
+#  DESTINATION ${CMAKE_INSTALL_PREFIX}/share/icons/hicolor/scalable/apps
+#  RENAME frost_and_flame.svg)
+
