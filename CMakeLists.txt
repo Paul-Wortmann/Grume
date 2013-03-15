@@ -85,7 +85,6 @@ If (NOT PHYSFS_FOUND)
   Message (FATAL_ERROR "Couldn't find libphysfs development files. On Debian-based systems (such as Ubuntu) you should install the 'libphysfs-dev' package.")
 Else (NOT PHYSFS_FOUND)
   Include_Directories (${LIBPHYSFS_INCLUDE_DIR})
-  target_link_libraries(r3d ${PHYSFS_LIBRARY})
 EndIf (NOT PHYSFS_FOUND)
 
 # TODO: If OpenGL isn't found, we should complain loudly since an
