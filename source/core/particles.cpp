@@ -111,10 +111,10 @@ void emitter_class::set_emitter_pos      (float x  , float y  , float z  )
     emitter_class::pos_z                 = z;
 };
 
-void emitter_class::set_emitter_state    (bool  active, bool always_on, int ttl)
+void emitter_class::set_emitter_state    (bool  active_set, bool always_on_set, int ttl)
 {
-    emitter_class::active                = active;
-    emitter_class::always_on             = always_on;
+    emitter_class::active                = active_set;
+    emitter_class::always_on             = always_on_set;
     emitter_class::TTL                   = ttl;
 };
 

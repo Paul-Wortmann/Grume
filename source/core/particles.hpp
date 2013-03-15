@@ -105,7 +105,7 @@ class emitter_class
         int             TTL_count;
         float           particle_TTL_rate;
         void            set_emitter_pos      (float x  , float y  , float z  );
-        void            set_emitter_state    (bool  active, bool always_on, int ttl);
+        void            set_emitter_state    (bool  active_set, bool always_on_set, int ttl);
         void            set_emitter_image    (int i_ref);
         void            set_emitter_image    (int i_ref, float w  , float h  );
         void            set_emitter_rotation (float r  , float rr );
