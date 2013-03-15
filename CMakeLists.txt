@@ -124,7 +124,7 @@ Set (FROST_AND_FLAME_SOURCES
 	./source/player.cpp
 	./source/spells.cpp
 	./source/game.cpp
-	./source/items.cpp
+	./source/item_manager.cpp
 	./source/main.cpp
 )
 
