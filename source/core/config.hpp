@@ -61,7 +61,7 @@ class config_class
                      config_class(void);
                     ~config_class(void);
         void         set_defaults(void);
-        bool         file_set(std::string file_name);
+        bool         file_set(std::string file_name_in);
         bool         file_write(std::string data_string);
         bool         file_load(void);
         bool         file_save(void);

@@ -66,9 +66,9 @@ void       config_class::set_defaults(void)
     config_class::language                   = "english";
 };
 
-bool         config_class::file_set(std::string file_name)
+bool         config_class::file_set(std::string file_name_in)
 {
-    config_class::file_name = file_name.c_str();
+    config_class::file_name = file_name_in.c_str();
     return(true);
 };
 
