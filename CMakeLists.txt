@@ -85,6 +85,7 @@ If (NOT PHYSFS_FOUND)
   Message (FATAL_ERROR "Couldn't find libphysfs development files. On Debian-based systems (such as Ubuntu) you should install the 'libphysfs-dev' package.")
 Else (NOT PHYSFS_FOUND)
   Include_Directories (${LIBPHYSFS_INCLUDE_DIR})
+  link_directories(${LIBPHYSFS_LIBRARIES})
 EndIf (NOT PHYSFS_FOUND)
 
 # TODO: If OpenGL isn't found, we should complain loudly since an
@@ -170,7 +171,7 @@ If (NOT SDLMAIN_LIBRARY)
   Set (SDLMAIN_LIBRARY "")
 EndIf (NOT SDLMAIN_LIBRARY)
 
-Target_Link_Libraries (frost_and_flame ${CMAKE_LD_FLAGS} ${SDL_LIBRARY} ${SDLMIXER_LIBRARY} ${SDLIMAGE_LIBRARY} ${SDLTTF_LIBRARY} ${SDLNET_LIBRARY} ${SDLMAIN_LIBRARY} ${LIBPHYSFS_INCLUDE_DIR} ${OPENGL_LIBRARIES})
+Target_Link_Libraries (frost_and_flame ${CMAKE_LD_FLAGS} ${SDL_LIBRARY} ${SDLMIXER_LIBRARY} ${SDLIMAGE_LIBRARY} ${SDLTTF_LIBRARY} ${SDLNET_LIBRARY} ${SDLMAIN_LIBRARY} ${LIBPHYSFS_LIBRARIES} ${OPENGL_LIBRARIES})
 
 
 # desktop file
