@@ -79,6 +79,13 @@ Else (NOT SDLNET_FOUND)
   Include_Directories (${SDLNET_INCLUDE_DIR})
 EndIf (NOT SDLNET_FOUND)
 
+Find_Package (PHYSFS REQUIRED)
+If (NOT PHYSFS_FOUND)
+  Message (FATAL_ERROR "Couldn't find libphysfs development files. On Debian-based systems (such as Ubuntu) you should install the 'libphysfs-dev' package.")
+Else (NOT PHYSFS_FOUND)
+  Include_Directories (${LIBPHYSFS_INCLUDE_DIR})
+EndIf (NOT PHYSFS_FOUND)
+
 
 # Sources
 
@@ -143,7 +150,7 @@ If (NOT SDLMAIN_LIBRARY)
   Set (SDLMAIN_LIBRARY "")
 EndIf (NOT SDLMAIN_LIBRARY)
 
-Target_Link_Libraries (frost_and_flame ${CMAKE_LD_FLAGS} ${SDL_LIBRARY} ${SDLMIXER_LIBRARY} ${SDLIMAGE_LIBRARY} ${SDLTTF_LIBRARY} ${SDLNET_LIBRARY} ${SDLMAIN_LIBRARY})
+Target_Link_Libraries (frost_and_flame ${CMAKE_LD_FLAGS} ${SDL_LIBRARY} ${SDLMIXER_LIBRARY} ${SDLIMAGE_LIBRARY} ${SDLTTF_LIBRARY} ${SDLNET_LIBRARY} ${SDLMAIN_LIBRARY} ${LIBPHYSFS_INCLUDE_DIR})
 
 
 # desktop file
