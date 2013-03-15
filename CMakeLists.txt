@@ -102,49 +102,57 @@ endif (OPENGL_FOUND)
 # Sources
 
 Set (FROST_AND_FLAME_SOURCES
-	./source/UI/loading_screen.cpp
-	./source/UI/menu_game_save.cpp
-	./source/UI/UI.cpp
-	./source/UI/window_manager.cpp
-	./source/UI/menu_game_load.cpp
-	./source/UI/menu_main.cpp
-	./source/UI/window.cpp
-	./source/UI/menu_game_new.cpp
-	./source/UI/menu_options.cpp
-	./source/UI/window_element.cpp
 	./source/core/background.cpp
-	./source/core/graphics.cpp
-	./source/core/log.cpp
-	./source/core/network.cpp
-	./source/core/savegame.cpp
 	./source/core/config.cpp
-	./source/core/io.cpp
-	./source/core/map_2D.cpp
-	./source/core/particles.cpp
-	./source/core/sound.cpp
 	./source/core/core.cpp
-	./source/core/loader_md2.cpp
-	./source/core/map_3D.cpp
-	./source/core/pathfinding.cpp
-	./source/core/textures.cpp
 	./source/core/file.cpp
-	./source/core/loader_obj.cpp
-	./source/core/misc.cpp
-	./source/core/physics.cpp
-	./source/core/timer.cpp
 	./source/core/font.cpp
+	./source/core/graphics.cpp
+	./source/core/io.cpp
+	./source/core/loader_md2.cpp
+	./source/core/loader_obj.cpp
 	./source/core/loader_tmx.cpp
+	./source/core/log.cpp
+	./source/core/map_2D.cpp
+	./source/core/map_3D.cpp
+	./source/core/misc.cpp
 	./source/core/music.cpp
+	./source/core/network.cpp
+	./source/core/particles.cpp
+	./source/core/pathfinding.cpp
+	./source/core/physics.cpp
 	./source/core/rs232.cpp
+	./source/core/savegame.cpp
+	./source/core/sound.cpp
+	./source/core/textures.cpp
+	./source/core/timer.cpp
 	./source/core/vector.cpp
-	./source/npc.cpp
-	./source/save_data.cpp
-	./source/language.cpp
-	./source/player.cpp
-	./source/spells.cpp
+	./source/UI/action_bar.cpp
+	./source/UI/character_window.cpp
+	./source/UI/equipment_window.cpp
+	./source/UI/inventory_window.cpp
+	./source/UI/loading_screen.cpp
+	./source/UI/menu_game_load.cpp
+	./source/UI/menu_game_new.cpp
+	./source/UI/menu_game_save.cpp
+	./source/UI/menu_main.cpp
+	./source/UI/menu_options.cpp
+	./source/UI/player_profile.cpp
+	./source/UI/quest_log_window.cpp
+	./source/UI/skillbook_window.cpp
+	./source/UI/UI.cpp
+	./source/UI/window.cpp
+	./source/UI/window_cursor.cpp
+	./source/UI/window_element.cpp
+	./source/UI/window_manager.cpp
 	./source/game.cpp
 	./source/item_manager.cpp
+	./source/language.cpp
 	./source/main.cpp
+	./source/npc.cpp
+	./source/player.cpp
+	./source/save_data.cpp
+	./source/spells.cpp
 )
 
 # Add icon and file info to executable for Windows systems
@@ -162,7 +170,7 @@ If (NOT SDLMAIN_LIBRARY)
   Set (SDLMAIN_LIBRARY "")
 EndIf (NOT SDLMAIN_LIBRARY)
 
-Target_Link_Libraries (frost_and_flame ${CMAKE_LD_FLAGS} ${SDL_LIBRARY} ${SDLMIXER_LIBRARY} ${SDLIMAGE_LIBRARY} ${SDLTTF_LIBRARY} ${SDLNET_LIBRARY} ${SDLMAIN_LIBRARY} ${LIBPHYSFS_INCLUDE_DIR})
+Target_Link_Libraries (frost_and_flame ${CMAKE_LD_FLAGS} ${SDL_LIBRARY} ${SDLMIXER_LIBRARY} ${SDLIMAGE_LIBRARY} ${SDLTTF_LIBRARY} ${SDLNET_LIBRARY} ${SDLMAIN_LIBRARY} ${LIBPHYSFS_INCLUDE_DIR} ${OPENGL_LIBRARIES})
 
 
 # desktop file
