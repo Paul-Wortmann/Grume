@@ -2,7 +2,7 @@ Project ("Frost and Flame")
 cmake_minimum_required (VERSION 2.6)
 
 Set (PACKAGE "FROST_AND_FLAME")
-Set (VERSION "0.14")
+Set (VERSION "0.16")
 
 
 # Default definitions
@@ -72,44 +72,51 @@ Else (NOT SDLTTF_FOUND)
   Include_Directories (${SDLTTF_INCLUDE_DIR})
 EndIf (NOT SDLTTF_FOUND)
 
+Find_Package (SDL_net REQUIRED)
+If (NOT SDLNET_FOUND)
+  Message (FATAL_ERROR "Couldn't find SDL-net development files. On Debian-based systems (such as Ubuntu) you should install the 'libsdl-net2.1-dev' package.")
+Else (NOT SDLNET_FOUND)
+  Include_Directories (${SDLNET_INCLUDE_DIR})
+EndIf (NOT SDLNET_FOUND)
+
 
 # Sources
 
 Set (FROST_AND_FLAME_SOURCES
-	./source/UI/loading_screen.cpp  
-	./source/UI/menu_game_save.cpp  
-	./source/UI/UI.cpp              
+	./source/UI/loading_screen.cpp
+	./source/UI/menu_game_save.cpp
+	./source/UI/UI.cpp
 	./source/UI/window_manager.cpp
-	./source/UI/menu_game_load.cpp  
-	./source/UI/menu_main.cpp       
+	./source/UI/menu_game_load.cpp
+	./source/UI/menu_main.cpp
 	./source/UI/window.cpp
-	./source/UI/menu_game_new.cpp   
-	./source/UI/menu_options.cpp    
+	./source/UI/menu_game_new.cpp
+	./source/UI/menu_options.cpp
 	./source/UI/window_element.cpp
-	./source/core/background.cpp  
-	./source/core/graphics.cpp    
-	./source/core/log.cpp     
-	./source/core/network.cpp      
+	./source/core/background.cpp
+	./source/core/graphics.cpp
+	./source/core/log.cpp
+	./source/core/network.cpp
 	./source/core/savegame.cpp
-	./source/core/config.cpp      
-	./source/core/io.cpp          
-	./source/core/map_2D.cpp  
-	./source/core/particles.cpp    
+	./source/core/config.cpp
+	./source/core/io.cpp
+	./source/core/map_2D.cpp
+	./source/core/particles.cpp
 	./source/core/sound.cpp
-	./source/core/core.cpp        
-	./source/core/loader_md2.cpp  
-	./source/core/map_3D.cpp  
-	./source/core/pathfinding.cpp  
+	./source/core/core.cpp
+	./source/core/loader_md2.cpp
+	./source/core/map_3D.cpp
+	./source/core/pathfinding.cpp
 	./source/core/textures.cpp
-	./source/core/file.cpp        
-	./source/core/loader_obj.cpp  
-	./source/core/misc.cpp    
-	./source/core/physics.cpp      
+	./source/core/file.cpp
+	./source/core/loader_obj.cpp
+	./source/core/misc.cpp
+	./source/core/physics.cpp
 	./source/core/timer.cpp
-	./source/core/font.cpp        
-	./source/core/loader_tmx.cpp  
-	./source/core/music.cpp   
-	./source/core/rs232.cpp        
+	./source/core/font.cpp
+	./source/core/loader_tmx.cpp
+	./source/core/music.cpp
+	./source/core/rs232.cpp
 	./source/core/vector.cpp
 	./source/npc.cpp
 	./source/save_data.cpp
@@ -129,14 +136,14 @@ IF (WIN32)
     )
 ENDIF (WIN32)
 
-Add_Executable (flare ${FROST_AND_FLAME_SOURCES})
+Add_Executable (frost_and_flame ${FROST_AND_FLAME_SOURCES})
 
 # libSDLMain comes with libSDL if needed on certain platforms
 If (NOT SDLMAIN_LIBRARY)
   Set (SDLMAIN_LIBRARY "")
 EndIf (NOT SDLMAIN_LIBRARY)
 
-Target_Link_Libraries (frost_and_flame ${CMAKE_LD_FLAGS} ${SDL_LIBRARY} ${SDLMIXER_LIBRARY} ${SDLIMAGE_LIBRARY} ${SDLTTF_LIBRARY} ${SDLMAIN_LIBRARY})
+Target_Link_Libraries (frost_and_flame ${CMAKE_LD_FLAGS} ${SDL_LIBRARY} ${SDLMIXER_LIBRARY} ${SDLIMAGE_LIBRARY} ${SDLTTF_LIBRARY} ${SDLNET_LIBRARY} ${SDLMAIN_LIBRARY})
 
 
 # desktop file
