@@ -38,6 +38,15 @@ file_class::~file_class(void)
 
 bool file_class::extension_exist(std::string file_name, std::string file_extension)
 {
+    int  file_size       = (int)file_name.size();
+    if ((file_extension[0] == file_name[file_size-3]) &&
+        (file_extension[1] == file_name[file_size-2]) &&
+        (file_extension[2] == file_name[file_size-1])) return (true);
+    else return (false);
+};
+
+bool file_class::extension_exist(std::string file_name)
+{
     bool extention_found = false;
     for (int string_pos = 0; string_pos < (int)file_name.size(); string_pos++)
     {
