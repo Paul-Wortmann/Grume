@@ -61,7 +61,7 @@ float graphics_class::res_to_gl(int  res_coord, int max_res)
    return((((float) res_coord / (float) max_res) *2) -1);
 }
 
-int   graphics_class::init_gl(int x_res, int y_res)
+void  graphics_class::init_gl(int x_res, int y_res)
 {
     glViewport(0, 0,x_res,y_res);
     glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
@@ -124,10 +124,9 @@ int   graphics_class::init_gl(int x_res, int y_res)
 
 
     glDisable(GL_DEPTH_TEST);
-    return(0);
 }
 
-int   graphics_class::init_gl(void)
+void   graphics_class::init_gl(void)
 {
     graphics_class::init_gl(game.core.config.display_resolution_x,game.core.config.display_resolution_y);
 };
@@ -138,8 +137,8 @@ bool   graphics_class::init_sdl(void)
     game.core.log.file_write("Initializing graphics subsystem...");
     putenv("SDL_VIDEO_WINDOW_POS");
     putenv("SDL_VIDEO_CENTERED=1");
-    getenv("SDL_VIDEO_WINDOW_POS");
-    getenv("SDL_VIDEO_CENTERED");
+    //getenv("SDL_VIDEO_WINDOW_POS");
+    //getenv("SDL_VIDEO_CENTERED");
     if(SDL_Init(SDL_INIT_VIDEO) < 0)
     {
         game.core.log.file_write("Video initialization failed.");
