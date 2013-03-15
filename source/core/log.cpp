@@ -35,9 +35,9 @@ log_class::~log_class(void)
 
 };
 
-bool log_class::file_set(std::string file_name)
+bool log_class::file_set(std::string file_name_in)
 {
-    log_class::file_name = file_name;
+    log_class::file_name = file_name_in;
     return(true);
 };
 

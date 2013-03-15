@@ -34,7 +34,7 @@ class log_class
         std::string file_name;
               log_class(void);
              ~log_class(void);
-        bool file_set(std::string file_name);
+        bool file_set(std::string file_name_in);
         bool file_clear(void);
         bool file_delete(void);
         bool file_write(const char  log_data[]);
