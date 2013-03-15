@@ -70,6 +70,8 @@ class window_manager_class
         float           mouse_y;
         int             number_of_windows;
         bool            drag_in_progress;
+        bool            element_drag_in_progress;
+        bool            element_drop_in_progress;
         bool            windows_list_created;
         window_cursor_class cursor;
         window_class *window;
