@@ -36,6 +36,7 @@ void map_gen_init(int size_x, int size_y)
     int tile_count = 0;
     rdg_map.size.x = size_x;
     rdg_map.size.y = size_y;
+    rdg_map.number_of_tiles = size_x*size_y;
     rdg_map.tile = new tile_type[(rdg_map.size.x*rdg_map.size.y)+1];
     for (int tile_count_y = 0; tile_count_y < rdg_map.size.y; tile_count_y++)
     {
@@ -72,6 +73,7 @@ void map_gen_split(map_node_type *map_node)
         map_node->left->leaf = false;
         map_node->left->data.size.x = map_node->data.size.x;
         map_node->left->data.size.y = new_size_y_1;
+        map_node->left->data.number_of_tiles = map_node->left->data.size.x * map_node->left->data.size.y;
         map_node->left->data.tile = new tile_type[(map_node->left->data.size.x*map_node->left->data.size.y)+1];
         for (int tile_count_y = 0; tile_count_y < map_node->left->data.size.y; tile_count_y++)
         {
@@ -86,12 +88,24 @@ void map_gen_split(map_node_type *map_node)
         }
         map_gen_split(map_node->left);
         //copy data back to root node...
-        delete [] &map_node->left;
+        for (int tile_count_y = 0; tile_count_y < map_node->left->data.size.y; tile_count_y++)
+        {
+            for (int tile_count_x = 0; tile_count_x < map_node->left->data.size.x; tile_count_x++)
+            {
+                tile_count = (tile_count_y * map_node->left->data.size.x) + tile_count_x;
+                map_node->left->data.tile[tile_count].position.x = map_node->data.tile[tile_count].position.x;
+                map_node->left->data.tile[tile_count].position.y = map_node->data.tile[tile_count].position.y;
+                map_node->left->data.tile[tile_count].layer = 0;//test
+//printf("in loop - 1 - tile count %d\n",tile_count);
+            }
+        }
+        delete [] map_node->left;
         // right
         map_node->right = new map_node_type;
         map_node->right->leaf = false;
         map_node->right->data.size.x = map_node->data.size.x;
         map_node->right->data.size.y = new_size_y_2;
+        map_node->right->data.number_of_tiles = map_node->right->data.size.x * map_node->right->data.size.y;
         map_node->right->data.tile = new tile_type[(map_node->right->data.size.x*map_node->right->data.size.y)+1];
         /*
         for (int tile_count_y = map_node->right->data.size.y ; tile_count_y < map_node->data.size.y; tile_count_y++)
@@ -108,7 +122,7 @@ printf("in loop - 2 - tile count %d\n",tile_count);
         */
         map_gen_split(map_node->right);
         //copy data back to root node...
-        delete [] &map_node->right;
+        delete [] map_node->right;
     }
     if (split_x) // split vertically
     {
@@ -121,6 +135,7 @@ printf("in loop - 2 - tile count %d\n",tile_count);
         map_node->left->leaf = false;
         map_node->left->data.size.x = new_size_x_1;
         map_node->left->data.size.y = map_node->data.size.y;
+        map_node->left->data.number_of_tiles = map_node->left->data.size.x * map_node->left->data.size.y;
         map_node->left->data.tile = new tile_type[(map_node->left->data.size.x*map_node->left->data.size.y)+1];
         /*
         for (int tile_count_y = 0; tile_count_y < map_node->left->data.size.y; tile_count_y++)
@@ -137,12 +152,13 @@ printf("in loop - 2 - tile count %d\n",tile_count);
         */
         map_gen_split(map_node->left);
         //copy data back to root node...
-        delete [] &map_node->left;
+        delete [] map_node->left;
         // right
         map_node->right = new map_node_type;
         map_node->right->leaf = false;
         map_node->right->data.size.x = new_size_x_2;
         map_node->right->data.size.y = map_node->data.size.y;
+        map_node->right->data.number_of_tiles = map_node->right->data.size.x * map_node->right->data.size.y;
         map_node->right->data.tile = new tile_type[(map_node->right->data.size.x*map_node->right->data.size.y)+1];
         /*
         for (int tile_count_y = 0; tile_count_y < map_node->right->data.size.y; tile_count_y++)
@@ -159,7 +175,7 @@ printf("in loop - 4 - tile count %d\n",tile_count);
         */
         map_gen_split(map_node->right);
         //copy data back to root node...
-        delete [] &map_node->right;
+        delete [] map_node->right;
 
     }
     if (!split_x && !split_y)
@@ -167,7 +183,7 @@ printf("in loop - 4 - tile count %d\n",tile_count);
 count_x += map_node->data.size.x;
 count_y += map_node->data.size.y;
         printf("found leaf - size_x -> %d - size_y -> %d\n",map_node->data.size.x,map_node->data.size.y);
-        printf("Count_x -> %d - Count_y -> %d\n",count_x,count_y);
+        //printf("Count_x -> %d - Count_y -> %d\n",count_x,count_y);
         //node is too small to split, mark as leaf and generate room
         map_node->leaf = true;
         // gen_room code goes here
@@ -181,11 +197,12 @@ count_y += map_node->data.size.y;
 void map_gen(map_type *map_pointer)
 {
     map_node_type temp_map;
-    temp_map.data.size.x = map_pointer->size.x;
-    temp_map.data.size.y = map_pointer->size.y;
-    temp_map.data.tile   = new tile_type[sizeof(map_pointer->tile)];
-    temp_map.data.tile   = map_pointer->tile;
-    temp_map.leaf        = false;
+    temp_map.data.size.x          = map_pointer->size.x;
+    temp_map.data.size.y          = map_pointer->size.y;
+    temp_map.data.number_of_tiles = temp_map.data.size.x * temp_map.data.size.y;
+    temp_map.data.tile            = new tile_type[sizeof(map_pointer->tile)];
+    temp_map.data.tile            = map_pointer->tile;
+    temp_map.leaf                 = false;
     map_gen_split(&temp_map);
     // use the data from map_gen_split(temp_map) here, for reconstructing the *map_pointer.
     delete [] &temp_map;

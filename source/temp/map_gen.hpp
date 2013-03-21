@@ -49,6 +49,7 @@ struct room_type
 
 struct map_type
 {
+    int        number_of_tiles;
     i2_type    size;
     tile_type *tile;
 };
