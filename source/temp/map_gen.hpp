@@ -25,6 +25,7 @@
 #ifndef MAP_GEN_HPP
 #define MAP_GEN_HPP
 
+// ROOM_MAX must be an even number!
 #define ROOM_MAX_X 4
 #define ROOM_MAX_Y 4
 
