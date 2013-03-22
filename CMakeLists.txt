@@ -2,7 +2,7 @@ Project ("Frost and Flame")
 cmake_minimum_required (VERSION 2.6)
 
 Set (PACKAGE "FROST_AND_FLAME")
-Set (VERSION "0.16")
+Set (VERSION "0.17")
 
 
 # Default definitions
@@ -110,6 +110,7 @@ Set (FROST_AND_FLAME_SOURCES
 	./source/core/loader_tmx.cpp
 	./source/core/log.cpp
 	./source/core/map_2D.cpp
+	./source/core/map_gen.cpp
 	./source/core/map_3D.cpp
 	./source/core/misc.cpp
 	./source/core/music.cpp

@@ -26,6 +26,7 @@
 #define MAP_2D_H
 
 #include "textures.hpp"
+#include "map_gen.hpp"
 
 #define DUNGEON   1
 #define CAVE      2

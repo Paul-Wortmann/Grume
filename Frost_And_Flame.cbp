@@ -181,6 +181,8 @@
 		<Unit filename="source/core/map_2D.hpp" />
 		<Unit filename="source/core/map_3D.cpp" />
 		<Unit filename="source/core/map_3D.hpp" />
+		<Unit filename="source/core/map_gen.cpp" />
+		<Unit filename="source/core/map_gen.hpp" />
 		<Unit filename="source/core/misc.cpp" />
 		<Unit filename="source/core/misc.hpp" />
 		<Unit filename="source/core/music.cpp" />
