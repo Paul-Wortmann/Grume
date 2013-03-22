@@ -712,8 +712,6 @@ void map_2D_class::random_map(int tiles_x, int tiles_y, int type_of_map_to_gener
     //----------------------------------------------------------------------------------------------------------------
     //| Generate random room structure                                                                               |
     //----------------------------------------------------------------------------------------------------------------
-    int  BSP_minimum_room_size     = 5; // Room of size 3x3 with wall padding of 1 on each side 2x2, thus 5x5.
-    int  BSP_max_split_variance    = 5; // About the size of a room.
     bool ca_map_is_good            = false;
     int  ca_minimum_cave_size      = 50; //percentage of map
     int  ca_wall_stay              = 4;
