@@ -133,8 +133,8 @@ void   graphics_class::init_gl(void)
 
 bool   graphics_class::init_sdl(void)
 {
-    char* SDL_VID_WIN_POS = "SDL_VIDEO_WINDOW_POS";
-    char* SDL_VID_CENTERD = "SDL_VIDEO_CENTERED=1";
+    const char* SDL_VID_WIN_POS = "SDL_VIDEO_WINDOW_POS";
+    const char* SDL_VID_CENTERD = "SDL_VIDEO_CENTERED=1";
     bool return_value = true;
     game.core.log.file_write("Initializing graphics subsystem...");
     putenv(SDL_VID_WIN_POS);
