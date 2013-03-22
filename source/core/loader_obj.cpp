@@ -1020,7 +1020,7 @@ void loader_obj_class::draw(float x, float y, float z)
                 glMaterialfv(GL_FRONT_AND_BACK, GL_DIFFUSE, LightDiffuse);
                 glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR, LightSpecular);
                 glMaterialf(GL_FRONT_AND_BACK, GL_SHININESS, loader_obj_class::material[current_material].Ns);
-                GL_TEXTURE_2D, loader_obj_class::material[current_material].data_d.texture.bind_image();
+                loader_obj_class::material[current_material].data_d.texture.bind_image();
                 //game.core.log.File_Write("Binding texture -> ", loader_obj_class::material[current_material].data_d.file_name);
                 //glTexGeni(GL_S, GL_TEXTURE_GEN_MODE, GL_OBJECT_LINEAR);
                 //glTexGeni(GL_T, GL_TEXTURE_GEN_MODE, GL_OBJECT_LINEAR);
