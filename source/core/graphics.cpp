@@ -133,12 +133,12 @@ void   graphics_class::init_gl(void)
 
 bool   graphics_class::init_sdl(void)
 {
+    char* SDL_VID_WIN_POS = "SDL_VIDEO_WINDOW_POS";
+    char* SDL_VID_CENTERD = "SDL_VIDEO_CENTERED=1";
     bool return_value = true;
     game.core.log.file_write("Initializing graphics subsystem...");
-    putenv("SDL_VIDEO_WINDOW_POS");
-    putenv("SDL_VIDEO_CENTERED=1");
-    //getenv("SDL_VIDEO_WINDOW_POS");
-    //getenv("SDL_VIDEO_CENTERED");
+    putenv(SDL_VID_WIN_POS);
+    putenv(SDL_VID_CENTERD);
     if(SDL_Init(SDL_INIT_VIDEO) < 0)
     {
         game.core.log.file_write("Video initialization failed.");
