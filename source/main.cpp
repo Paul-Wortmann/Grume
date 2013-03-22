@@ -24,7 +24,7 @@
 
 #include "game.hpp"
 #include <SDL/SDL.h>
-#include <physfs.h>
+//#include <physfs.h>
 #include "core/misc.hpp"
 
 extern game_class game;
@@ -46,8 +46,8 @@ extern "C" int main(int argc, char** argv)
     game.core.log.file_write("# ---------------------------------------------- #");
     game.core.log.file_write(" ");
     game.core.log.file_write("Initializing PhysicsFS file system....");
-    PHYSFS_init(argv[0]);
-    PHYSFS_addToSearchPath("data.fnf", 1);
+    //PHYSFS_init(argv[0]);
+    //PHYSFS_addToSearchPath("data.fnf", 1);
     game.core.log.file_write("Loading configuration...");
     game.core.config.set_defaults();
     game.core.config.file_set("frost_and_flame.cfg");
@@ -174,7 +174,7 @@ extern "C" int main(int argc, char** argv)
     game.core.config.file_clear();
     game.core.config.file_save();
     game.core.log.file_write("Shutting down...");
-    PHYSFS_deinit();
+    //PHYSFS_deinit();
     SDL_Quit();
     return(true);
 };
