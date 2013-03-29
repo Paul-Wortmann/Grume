@@ -26,9 +26,9 @@
 #define MAP_GEN_HPP
 
 // ROOM_MAX must be an even number!
-#define MAX_ROOMS  64
-#define ROOM_MAX_X 4
-#define ROOM_MAX_Y 4
+#define MAX_ROOMS  0 // 0 for unlimited number possible
+#define ROOM_MIN_X 8
+#define ROOM_MIN_Y 8
 
 struct i2_type
 {
@@ -69,6 +69,7 @@ void map_gen_init(int size_x, int size_y);
 void map_gen_split(map_node_type *map_node);
 void map_gen(map_type *map_pointer);
 void map_gen_display(void);
+void map_gen_save_file();
 
 #endif //MAP_GEN_HPP
 
