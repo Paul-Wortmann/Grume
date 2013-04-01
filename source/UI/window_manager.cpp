@@ -143,7 +143,7 @@ int  window_manager_class::window_get_active(void)
     return(return_value);
 };
 
-int  window_manager_class::window_register(int UID)
+int window_manager_class::window_register(int UID)
 {
     bool window_added = false;
     if (window_manager_class::number_of_windows > 0) // only process windows if there are actually windows in the list.
@@ -160,6 +160,8 @@ int  window_manager_class::window_register(int UID)
             }
         }
     }
+    if(window_added) return(UID);
+    else return(-1);
 }
 
 int  window_manager_class::window_register(int UID_minimum, int UID_maximum)
@@ -298,6 +300,7 @@ event_type  window_manager_class::window_get_event(int UID)
             }
         }
     }
+    return(return_value);
 };
 
 void window_manager_class::process(void)
