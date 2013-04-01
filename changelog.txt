@@ -1,14 +1,26 @@
-﻿Version 0.15 is late due to my presence required in the hospital and for the days preceding the birth of my boy "Daichi".
-
-Due to university, work and the responsibilities of life,
+﻿Due to university, work and the responsibilities of life,
 I feel that Frost and Flame has been coming on very slowly these past few months.
 It may be slow at the moment, but I am determined to complete this game,
 it may take longer than I had first anticipated.
 These are not indications that the project will be terminated in the future,
 just that time is not permitting to proceed at a fast pace, at the moment.
 
-v0.17 - (2013-03-xx)
+v0.18 - (2013-04-xx)
 LOC   -> xxxxx
+
+v0.17 - (2013-03-31)
+MAP   -> Start of random dungeon generation using a recursive binary tree.
+MAP   -> Fix: BSP leaves splitting below desired threshold.
+MAP   -> Fixed freeing node memory.
+MAP   -> Fixes to horizonltal node splitting....
+MAP   -> Rooms generated in leaf nodes.
+UI    -> UI members set source / destination for drag and drop events.
+UI    -> Extended the event type to allow for more complex event handeling.
+MISC  -> Disabling physfs due to issues with continuous integration.
+MISC  -> Removed clang compiler from travis.yml, due to issues with <math.h>.
+MISC  -> Removed various redundent code.
+MISC  -> Fixed may compiler warnings.
+LOC   -> 15315
 
 v0.16 - (2013-02-28)
 ITEM  -> Added base of a mana potion for testing.
