@@ -25,10 +25,12 @@
 #ifndef MAP_GEN_HPP
 #define MAP_GEN_HPP
 
+#include <string>
+
 // ROOM_MAX must be an even number!
 #define MAX_ROOMS  0 // 0 for unlimited number possible
 #define ROOM_MIN_X 8
-#define ROOM_MIN_Y 8
+#define ROOM_MIN_Y 4
 
 struct i2_type
 {
@@ -65,11 +67,11 @@ struct map_node_type
 };
 
 
-void map_gen_init(int size_x, int size_y);
+void map_gen_init(map_type *map_pointer, int size_x, int size_y);
 void map_gen_split(map_node_type *map_node);
 void map_gen(map_type *map_pointer);
-void map_gen_display(void);
-void map_gen_save_file();
+void map_gen_display(map_type *map_pointer);
+void map_gen_save(std::string file_name, map_type *map_pointer);
 
 #endif //MAP_GEN_HPP
 
