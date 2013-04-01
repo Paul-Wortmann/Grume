@@ -368,7 +368,7 @@ void tmx_class::save(std::string file_name)
         script_file << '"';
         script_file << " encoding=";
         script_file << '"';
-        script_file << " UTF-8";
+        script_file << "UTF-8";
         script_file << '"';
         script_file << "?>";
         script_file << "\n";
