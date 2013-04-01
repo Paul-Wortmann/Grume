@@ -80,8 +80,8 @@ void language_class::load(std::string file_name)
 {
     int            temp_char_UTF32  = ' ';
     int            temp_int_data;
-    float          temp_float_data;
-    bool           temp_bool_data;
+    //float          temp_float_data;
+    //bool           temp_bool_data;
     std::string    temp_string_data;
     std::string    temp_string_key;
     std::string    temp_string_value;
@@ -129,10 +129,12 @@ void language_class::load(std::string file_name)
                         count++;
                     }
                     temp_string_data = temp_string_value.c_str();
+                    /*
                     temp_float_data  = (float) atof(temp_string_value.c_str());
                     temp_int_data    = (int)   atoi(temp_string_value.c_str());
                     if (temp_int_data == 1) temp_bool_data = true;
                     else temp_bool_data = false;
+                    */
                     if (temp_string_key == "Main_Menu")             language_class::text.main_menu             = temp_string_data;
                     if (temp_string_key == "New_Game")              language_class::text.new_game              = temp_string_data;
                     if (temp_string_key == "Load_Game")             language_class::text.load_game             = temp_string_data;
