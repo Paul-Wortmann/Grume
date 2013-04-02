@@ -37,7 +37,7 @@ void map_gen_init(map_type *map_pointer, int size_x, int size_y)
     map_pointer->size.x = size_x;
     map_pointer->size.y = size_y;
     map_pointer->number_of_tiles = size_x*size_y;
-    map_pointer->tile = new tile_type[(map_pointer->size.x*map_pointer->size.y)+1];
+    map_pointer->tile = new tile_type[map_pointer->size.x*map_pointer->size.y];
     for (int tile_count_x = 0; tile_count_x < map_pointer->size.x; tile_count_x++)
     {
         for (int tile_count_y = 0; tile_count_y < map_pointer->size.y; tile_count_y++)
@@ -132,6 +132,7 @@ void map_gen_split(map_node_type *map_node)
         tile_count_y_out = 0;
         tile_data_count  = 0;
         node_count++;
+                //problem here!
         for(int tile_count = 0; tile_count < map_node->right->data.number_of_tiles; tile_count++)
         {
             tile_data_count = (tile_count_y_out*map_node->data.size.x)+tile_count_x_out+map_node->data.tile[0].position.x;
@@ -146,11 +147,11 @@ void map_gen_split(map_node_type *map_node)
             }
         }
         map_gen_split(map_node->right);
+                //problem here!
         for(int tile_count = 0; tile_count < map_node->right->data.number_of_tiles; tile_count++)
         {
             for(tile_data_count = 0; tile_data_count < map_node->data.number_of_tiles; tile_data_count++)
             {
-                //problem here!
                 if ((map_node->data.tile[tile_data_count].position.x == map_node->right->data.tile[tile_count].position.x) &&
                     (map_node->data.tile[tile_data_count].position.y == map_node->right->data.tile[tile_count].position.y))
                      map_node->data.tile[tile_data_count].layer       = map_node->right->data.tile[tile_count].layer;
@@ -322,23 +323,6 @@ void map_gen_save(std::string file_name, map_type *map_pointer)
         script_file << "32";
         script_file << '"';
         script_file << ">";
-        script_file << "\n";
-
-        script_file << " <properties>";
-        script_file << "\n";
-
-        script_file << "  <property name=";
-        script_file << '"';
-        script_file << "MAP_ID";
-        script_file << '"';
-        script_file << " value=";
-        script_file << '"';
-        script_file << "0";
-        script_file << '"';
-        script_file << "/>";
-        script_file << "\n";
-
-        script_file << " </properties>";
         script_file << "\n";
 
         script_file << "<tileset firstgid=";
