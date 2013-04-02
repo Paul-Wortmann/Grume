@@ -57,8 +57,8 @@ void health_bar_class::draw_tooltip(void)
 
 void health_bar_class::render(void)
 {
-    float temp_float = 0.0f;
-    temp_float = ((health_bar_class::size_x/2.6f)*(health_bar_class::value/health_bar_class::maximum));
+    //float temp_float = 0.0f;
+    //temp_float = ((health_bar_class::size_x/2.6f)*(health_bar_class::value/health_bar_class::maximum));
     //game.resource.texture.render(false,health_bar_class::texture_base,health_bar_class::position_x,health_bar_class::position_y,health_bar_class::position_z,health_bar_class::size_x/2.0f,health_bar_class::size_y/2.0f);
     //game.resource.texture.render(false,health_bar_class::texture_bar,health_bar_class::position_x-(health_bar_class::size_x/5.2f)+(temp_float/2.0f),health_bar_class::position_y,health_bar_class::position_z,temp_float,health_bar_class::size_y/4.0f);
     //game.resource.texture.render(false,health_bar_class::texture_front,health_bar_class::position_x,health_bar_class::position_y,health_bar_class::position_z,health_bar_class::size_x/2.0f,health_bar_class::size_y/2.0f);
