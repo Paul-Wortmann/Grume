@@ -79,7 +79,7 @@ language_class::language_class(void)
 void language_class::load(std::string file_name)
 {
     int            temp_char_UTF32  = ' ';
-    int            temp_int_data;
+    //int            temp_int_data;
     //float          temp_float_data;
     //bool           temp_bool_data;
     std::string    temp_string_data;
