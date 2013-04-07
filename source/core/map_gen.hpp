@@ -27,7 +27,7 @@
 
 #include <string>
 
-// ROOM_MAX must be an even number!
+// ROOM_MAX should be an even number!
 #define MAX_ROOMS  0 // 0 for unlimited number possible
 #define ROOM_MIN_X 8
 #define ROOM_MIN_Y 4
