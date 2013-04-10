@@ -29,8 +29,8 @@
 
 // ROOM_MAX should be an even number!
 #define MAX_ROOMS  0 // 0 for unlimited number possible
-#define ROOM_MIN_X 8
-#define ROOM_MIN_Y 4
+#define ROOM_MIN_X 7
+#define ROOM_MIN_Y 5
 
 struct i2_type
 {

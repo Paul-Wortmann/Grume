@@ -59,8 +59,6 @@ void map_gen_split(map_node_type *map_node)
     int  y_range = map_node->data.size.y  - (ROOM_MIN_Y*2);
 
     //could determine split based on size_x < size_y etc...
-
-
     bool split_x = (x_range > 0) ? true : false;
     bool split_y = (y_range > 0) ? true : false;
     if (split_x && split_y)
@@ -68,7 +66,6 @@ void map_gen_split(map_node_type *map_node)
         if (rand()%100 > 50) split_x = false;
         else split_y = false;
     }
-
     /*
     bool split_x = true;
     bool split_y = false;
@@ -79,7 +76,6 @@ void map_gen_split(map_node_type *map_node)
     bool split_y = true;
     if (y_range <= 0) split_y = false;
     */
-
     if ((MAX_ROOMS > 0) && (node_count >= MAX_ROOMS)) split_x = split_y = false;
     if (split_x) // split vertically
     {
@@ -102,6 +98,7 @@ void map_gen_split(map_node_type *map_node)
             tile_data_count = (tile_count_y_out*map_node->data.size.x)+tile_count_x_out+map_node->data.tile[0].position.x;
             map_node->left->data.tile[tile_count].position.x = map_node->data.tile[tile_data_count].position.x;
             map_node->left->data.tile[tile_count].position.y = map_node->data.tile[tile_data_count].position.y;
+            map_node->left->data.tile[tile_count].layer      = map_node->data.tile[tile_data_count].layer;
             //map_node->left->data.tile[tile_count].layer = node_count;//test
             tile_count_x_out++;
             if (tile_count_x_out >= new_size_x_1)
@@ -110,6 +107,7 @@ void map_gen_split(map_node_type *map_node)
                 tile_count_y_out++;
             }
         }
+
         map_gen_split(map_node->left);
         for(int tile_count = 0; tile_count < map_node->left->data.number_of_tiles; tile_count++)
         {
@@ -120,6 +118,7 @@ void map_gen_split(map_node_type *map_node)
                      map_node->data.tile[tile_data_count].layer       = map_node->left->data.tile[tile_count].layer;
             }
         }
+
         // right --------------------------------------------------------------------------------------------------------
         map_node->right = new map_node_type;
         map_node->right->leaf = false;
@@ -137,6 +136,7 @@ void map_gen_split(map_node_type *map_node)
             tile_data_count = (tile_count_y_out*map_node->data.size.x)+tile_count_x_out+map_node->data.tile[0].position.x;
             map_node->right->data.tile[tile_count].position.x = map_node->data.tile[tile_data_count].position.x;
             map_node->right->data.tile[tile_count].position.y = map_node->data.tile[tile_data_count].position.y;
+            map_node->right->data.tile[tile_count].layer      = map_node->data.tile[tile_data_count].layer;
             //map_node->right->data.tile[tile_count].layer = node_count;//test
             tile_count_x_out++;
             if (tile_count_x_out >= map_node->data.size.x)
@@ -147,6 +147,7 @@ void map_gen_split(map_node_type *map_node)
         }
         map_gen_split(map_node->right);
                 //problem here!
+
         for(int tile_count = 0; tile_count < map_node->right->data.number_of_tiles; tile_count++)
         {
             for(tile_data_count = 0; tile_data_count < map_node->data.number_of_tiles; tile_data_count++)
@@ -156,15 +157,29 @@ void map_gen_split(map_node_type *map_node)
                      map_node->data.tile[tile_data_count].layer       = map_node->right->data.tile[tile_count].layer;
             }
         }
+
         //generate horizontal passages
+
+
+        /// DONT USE CENTER DATA!
+        ////
+        /// THIS IS POSITION ON ORIGIONAL MAP, NOT THIS NODE!!!!!!!
+        ////
+        /*
         int passage_y   = (map_node->left->room.center.y+map_node->right->room.center.y)/2;
         int passage_x_1 = map_node->left->room.center.x;
         int passage_x_2 = map_node->right->room.center.x;
+        if (passage_x_1 > passage_x_2)
+        {
+            passage_x_1 = map_node->right->room.center.x;
+            passage_x_2 = map_node->left->room.center.x;
+        }
         //printf("P_y -> %d,P_x1 -> %d,P_x2 -> %d\n",passage_y,passage_x_1,passage_x_2);
         for (int pos_x = passage_x_1;pos_x < passage_x_2;pos_x++)
         {
             map_node->data.tile[((passage_y*map_node->data.size.x)+pos_x)].layer = 1;
         }
+        */
         delete [] map_node->left;
         delete [] map_node->right;
     }
@@ -189,6 +204,7 @@ void map_gen_split(map_node_type *map_node)
             tile_data_count = (tile_count_y_out*map_node->data.size.x)+tile_count_x_out+map_node->data.tile[0].position.x;
             map_node->left->data.tile[tile_count].position.x = map_node->data.tile[tile_data_count].position.x;
             map_node->left->data.tile[tile_count].position.y = map_node->data.tile[tile_data_count].position.y;
+            map_node->left->data.tile[tile_count].layer      = map_node->data.tile[tile_data_count].layer;
             //map_node->left->data.tile[tile_count].layer = node_count;//test
             tile_count_x_out++;
             if (tile_count_x_out >= map_node->left->data.size.x)
@@ -223,6 +239,7 @@ void map_gen_split(map_node_type *map_node)
             tile_data_count = (tile_count_y_out*map_node->data.size.x)+tile_count_x_out+map_node->data.tile[0].position.x;
             map_node->right->data.tile[tile_count].position.x = map_node->data.tile[tile_data_count].position.x;
             map_node->right->data.tile[tile_count].position.y = map_node->data.tile[tile_data_count].position.y;
+            map_node->right->data.tile[tile_count].layer      = map_node->data.tile[tile_data_count].layer;
             //map_node->right->data.tile[tile_count].layer = node_count;//test
             tile_count_x_out++;
             if (tile_count_x_out >= map_node->right->data.size.x)
@@ -242,14 +259,21 @@ void map_gen_split(map_node_type *map_node)
             }
         }
         //generate vertical passages
+        /*
         int passage_x   = (map_node->left->room.center.x+map_node->right->room.center.x)/2;
         int passage_y_1 = map_node->left->room.center.y;
         int passage_y_2 = map_node->right->room.center.y;
+        if (passage_y_1 > passage_y_2)
+        {
+            passage_y_1 = map_node->right->room.center.y;
+            passage_y_2 = map_node->left->room.center.y;
+        }
         //printf("P_x -> %d,P_y1 -> %d,P_y2 -> %d\n",passage_x,passage_y_1,passage_y_2);
         for (int pos_y = passage_y_1;pos_y < passage_y_2;pos_y++)
         {
-            map_node->data.tile[((pos_y*map_node->data.size.x)+passage_x)].layer = 1;
+            //map_node->data.tile[((pos_y*map_node->data.size.x)+passage_x)].layer = 1;
         }
+        */
         delete [] map_node->left;
         delete [] map_node->right;
     }
@@ -257,6 +281,7 @@ void map_gen_split(map_node_type *map_node)
     {
         printf("Node start -> %d x %d y\n",map_node->data.tile[0].position.x,map_node->data.tile[0].position.y);
         map_node->leaf = true;
+
         // gen_room code goes here
         int room_size_x = 0;
         int room_size_y = 0;
@@ -270,6 +295,8 @@ void map_gen_split(map_node_type *map_node)
             room_size_y = ((map_node->data.size.y - ROOM_MIN_Y)/2);
             room_size_y = (room_size_y > 0) ? rand()%room_size_y : 0;
         }
+        room_size_x = 0; //test
+        room_size_y = 0; //test
         for (int y_position = (room_size_y+1); y_position < (map_node->data.size.y-1-room_size_y); y_position++)
         {
             for (int x_position = (room_size_x+1); x_position < (map_node->data.size.x-1-room_size_x); x_position++)
@@ -279,10 +306,11 @@ void map_gen_split(map_node_type *map_node)
 
         }
         // set room data for passage gen code
-        map_node->room.size.x = map_node->data.size.x-2-(room_size_x*2);
-        map_node->room.size.y = map_node->data.size.y-2-(room_size_y*2);
+        map_node->room.size.x = map_node->data.size.x-1-(room_size_x*2);
+        map_node->room.size.y = map_node->data.size.y-1-(room_size_y*2);
         map_node->room.center.x = map_node->data.tile[map_node->room.size.x/2].position.x;
         map_node->room.center.y = map_node->data.tile[map_node->room.size.y/2].position.y;
+
     }
 };
 
