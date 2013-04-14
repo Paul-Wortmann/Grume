@@ -52,10 +52,8 @@ void map_gen_init(map_type *map_pointer, int size_x, int size_y)
 
 void map_gen_split(map_node_type *map_node)
 {
-    int  x_range = map_node->data.size.x  - (ROOM_MIN_X*2);
-    int  y_range = map_node->data.size.y  - (ROOM_MIN_Y*2);
-
-    //Determine split based on size_x > size_y etc...
+    int  x_range = map_node->data.size.x  - (ROOM_MAX_X*2);
+    int  y_range = map_node->data.size.y  - (ROOM_MAX_Y*2);
     bool split_x = (x_range > 0) ? true : false;
     bool split_y = (y_range > 0) ? true : false;
     if (split_x && split_y)
@@ -77,16 +75,6 @@ void map_gen_split(map_node_type *map_node)
         }
     }
     /*
-    // Split is random
-    bool split_x = (x_range > 0) ? true : false;
-    bool split_y = (y_range > 0) ? true : false;
-    if (split_x && split_y)
-    {
-        if (rand()%100 > 50) split_x = false;
-        else split_y = false;
-    }
-    */
-    /*
     bool split_x = true;
     bool split_y = false;
     if (x_range <= 0) split_x = false;
@@ -107,7 +95,7 @@ void map_gen_split(map_node_type *map_node)
         int tile_count_y_out = 0;
         int tile_data_count  = 0;
         x_range = (x_range > 0) ? rand()%x_range : 0;
-        int new_size_x_1 = ROOM_MIN_X + x_range + (map_node->data.size.x % 2);
+        int new_size_x_1 = ROOM_MAX_X + x_range + (map_node->data.size.x % 2);
         int new_size_x_2 = map_node->data.size.x - new_size_x_1;
         // left --------------------------------------------------------------------------------------------------------
         map_node->left = new map_node_type;
@@ -126,7 +114,6 @@ void map_gen_split(map_node_type *map_node)
             map_node->left->data.tile[tile_count].position.x = map_node->data.tile[tile_data_count].position.x;
             map_node->left->data.tile[tile_count].position.y = map_node->data.tile[tile_data_count].position.y;
             map_node->left->data.tile[tile_count].layer      = map_node->data.tile[tile_data_count].layer;
-            //map_node->left->data.tile[tile_count].layer = node_count;//test
             tile_count_x_out++;
             if (tile_count_x_out >= new_size_x_1)
             {
@@ -134,7 +121,6 @@ void map_gen_split(map_node_type *map_node)
                 tile_count_y_out++;
             }
         }
-
         map_gen_split(map_node->left);
         for(int tile_count = 0; tile_count < map_node->left->data.number_of_tiles; tile_count++)
         {
@@ -145,7 +131,6 @@ void map_gen_split(map_node_type *map_node)
                      map_node->data.tile[tile_data_count].layer       = map_node->left->data.tile[tile_count].layer;
             }
         }
-
         // right --------------------------------------------------------------------------------------------------------
         map_node->right = new map_node_type;
         map_node->right->leaf = false;
@@ -157,14 +142,12 @@ void map_gen_split(map_node_type *map_node)
         tile_count_y_out = 0;
         tile_data_count  = 0;
         node_count++;
-                //problem here!
         for(int tile_count = 0; tile_count < map_node->right->data.number_of_tiles; tile_count++)
         {
             tile_data_count = (tile_count_y_out*map_node->data.size.x)+tile_count_x_out;
             map_node->right->data.tile[tile_count].position.x = map_node->data.tile[tile_data_count].position.x;
             map_node->right->data.tile[tile_count].position.y = map_node->data.tile[tile_data_count].position.y;
             map_node->right->data.tile[tile_count].layer      = map_node->data.tile[tile_data_count].layer;
-            //map_node->right->data.tile[tile_count].layer = node_count;//test
             tile_count_x_out++;
             if (tile_count_x_out >= map_node->data.size.x)
             {
@@ -173,8 +156,6 @@ void map_gen_split(map_node_type *map_node)
             }
         }
         map_gen_split(map_node->right);
-                //problem here!
-
         for(int tile_count = 0; tile_count < map_node->right->data.number_of_tiles; tile_count++)
         {
             for(tile_data_count = 0; tile_data_count < map_node->data.number_of_tiles; tile_data_count++)
@@ -216,7 +197,7 @@ void map_gen_split(map_node_type *map_node)
         int tile_count_y_out = 0;
         int tile_data_count  = 0;
         y_range = (y_range > 0) ? rand()%y_range : 0;
-        int new_size_y_1 = ROOM_MIN_Y + y_range + (map_node->data.size.y % 2);
+        int new_size_y_1 = ROOM_MAX_Y + y_range + (map_node->data.size.y % 2);
         int new_size_y_2 = map_node->data.size.y - new_size_y_1;
         // left --------------------------------------------------------------------------------------------------------
         map_node->left = new map_node_type;
@@ -235,7 +216,6 @@ void map_gen_split(map_node_type *map_node)
             map_node->left->data.tile[tile_count].position.x = map_node->data.tile[tile_data_count].position.x;
             map_node->left->data.tile[tile_count].position.y = map_node->data.tile[tile_data_count].position.y;
             map_node->left->data.tile[tile_count].layer      = map_node->data.tile[tile_data_count].layer;
-            //map_node->left->data.tile[tile_count].layer = node_count;//test
             tile_count_x_out++;
             if (tile_count_x_out >= map_node->left->data.size.x)
             {
@@ -270,7 +250,6 @@ void map_gen_split(map_node_type *map_node)
             map_node->right->data.tile[tile_count].position.x = map_node->data.tile[tile_data_count].position.x;
             map_node->right->data.tile[tile_count].position.y = map_node->data.tile[tile_data_count].position.y;
             map_node->right->data.tile[tile_count].layer      = map_node->data.tile[tile_data_count].layer;
-            //map_node->right->data.tile[tile_count].layer = node_count;//test
             tile_count_x_out++;
             if (tile_count_x_out >= map_node->right->data.size.x)
             {
@@ -309,20 +288,18 @@ void map_gen_split(map_node_type *map_node)
     }
     if (!split_x && !split_y)
     {
-        printf("Node start -> %d x %d y\n",map_node->data.tile[0].position.x,map_node->data.tile[0].position.y);
         map_node->leaf = true;
-
         // gen_room code goes here
         int room_size_x = 0;
         int room_size_y = 0;
-        if (map_node->data.size.x > ROOM_MIN_X)
+        if (map_node->data.size.x > ROOM_MAX_X)
         {
-            room_size_x = ((map_node->data.size.x - ROOM_MIN_X)/2);
+            room_size_x = ((map_node->data.size.x - ROOM_MAX_X)/2);
             room_size_x = (room_size_x > 0) ? rand()%room_size_x : 0;
         }
-        if (map_node->data.size.y > ROOM_MIN_Y)
+        if (map_node->data.size.y > ROOM_MAX_Y)
         {
-            room_size_y = ((map_node->data.size.y - ROOM_MIN_Y)/2);
+            room_size_y = ((map_node->data.size.y - ROOM_MAX_Y)/2);
             room_size_y = (room_size_y > 0) ? rand()%room_size_y : 0;
         }
         room_size_x = 0; //test
