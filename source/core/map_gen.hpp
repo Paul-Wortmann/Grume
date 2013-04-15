@@ -29,8 +29,6 @@
 
 // ROOM_MAX should be an even number!
 #define MAX_ROOMS  0 // 0 for unlimited number possible
-#define ROOM_MIN_X 5
-#define ROOM_MIN_Y 5
 #define ROOM_MAX_X 7
 #define ROOM_MAX_Y 7
 
@@ -68,7 +66,7 @@ struct map_node_type
     map_node_type *right;
 };
 
-void map_gen_set_room_size(int room_min_x, int room_min_y, int room_max_x, int room_max_y);
+void map_gen_set_room_size(int room_max_x, int room_max_y);
 void map_gen_init(map_type *map_pointer, int size_x, int size_y);
 void map_gen_split(map_node_type *map_node);
 void map_gen(map_type *map_pointer);
