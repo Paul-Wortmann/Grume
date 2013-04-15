@@ -50,7 +50,7 @@ void map_gen_init(map_type *map_pointer, int size_x, int size_y)
     }
 };
 
-void map_gen_split(map_node_type *map_node)
+void map_gen_BSP_split(map_node_type *map_node)
 {
     int  x_range = map_node->data.size.x  - (ROOM_MAX_X*2);
     int  y_range = map_node->data.size.y  - (ROOM_MAX_Y*2);
@@ -121,7 +121,7 @@ void map_gen_split(map_node_type *map_node)
                 tile_count_y_out++;
             }
         }
-        map_gen_split(map_node->left);
+        map_gen_BSP_split(map_node->left);
         for(int tile_count = 0; tile_count < map_node->left->data.number_of_tiles; tile_count++)
         {
             for(tile_data_count = 0; tile_data_count < map_node->data.number_of_tiles; tile_data_count++)
@@ -155,7 +155,7 @@ void map_gen_split(map_node_type *map_node)
                 tile_count_y_out++;
             }
         }
-        map_gen_split(map_node->right);
+        map_gen_BSP_split(map_node->right);
         for(int tile_count = 0; tile_count < map_node->right->data.number_of_tiles; tile_count++)
         {
             for(tile_data_count = 0; tile_data_count < map_node->data.number_of_tiles; tile_data_count++)
@@ -208,7 +208,7 @@ void map_gen_split(map_node_type *map_node)
                 tile_count_y_out++;
             }
         }
-        map_gen_split(map_node->left);
+        map_gen_BSP_split(map_node->left);
         for(int tile_count = 0; tile_count < map_node->left->data.number_of_tiles; tile_count++)
         {
             for(tile_data_count = 0; tile_data_count < map_node->data.number_of_tiles; tile_data_count++)
@@ -242,7 +242,7 @@ void map_gen_split(map_node_type *map_node)
                 tile_count_y_out++;
             }
         }
-        map_gen_split(map_node->right);
+        map_gen_BSP_split(map_node->right);
         for(int tile_count = 0; tile_count < map_node->right->data.number_of_tiles; tile_count++)
         {
             for(tile_data_count = 0; tile_data_count < map_node->data.number_of_tiles; tile_data_count++)
@@ -298,7 +298,7 @@ void map_gen_split(map_node_type *map_node)
     }
 };
 
-void map_gen(map_type *map_pointer)
+void map_gen_BSP(map_type *map_pointer)
 {
     map_node_type temp_map;
     temp_map.data.size.x          = map_pointer->size.x;
@@ -307,9 +307,15 @@ void map_gen(map_type *map_pointer)
     temp_map.data.tile            = new tile_type[sizeof(map_pointer->tile)];
     temp_map.data.tile            = map_pointer->tile;
     temp_map.leaf                 = false;
-    map_gen_split(&temp_map);
+    map_gen_BSP_split(&temp_map);
     map_pointer->tile             = temp_map.data.tile;
     delete [] &temp_map;
+};
+
+// Generate cave like map using cellular automata
+void map_gen_CA(map_type *map_pointer)
+{
+
 };
 
 void map_gen_display(map_type *map_pointer)
