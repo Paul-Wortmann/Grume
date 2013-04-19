@@ -302,6 +302,12 @@ void map_gen_BSP(map_type *map_pointer)
     delete [] &temp_map;
 };
 
+void map_gen_BSP(map_type *map_pointer, int seed)
+{
+    srand(seed);
+    map_gen_BSP(map_pointer);
+};
+
 // Generate cave like map using cellular automation
 void map_gen_CA(map_type *map_pointer)
 {
@@ -485,13 +491,13 @@ void map_gen_CA(map_type *map_pointer)
     // write new values to array discarding disjointed tiles
     for (int tile_count = 0; tile_count < map_pointer->number_of_tiles; tile_count++)
     {
-        if(fill_data[tile_count].adjoining_tile) fill_data[tile_count].tile_data = FLOOR_TILE;
+        if (fill_data[tile_count].adjoining_tile) fill_data[tile_count].tile_data = FLOOR_TILE;
         else fill_data[tile_count].tile_data = WALL_TILE;
     }
     for (int iteration_count = 0; iteration_count < 5; iteration_count++)
     {
         //remove single tiles / tile formations that are not supported
-        for (int tile_count = 0; tile_count < map_pointer->number_of_tiles; tile_count++)
+        for (int tile_count = 1; tile_count < (map_pointer->number_of_tiles-map_pointer->size.x-1); tile_count++)
         {
             if(fill_data[tile_count].tile_data == WALL_TILE)
             {
@@ -737,6 +743,12 @@ void map_gen_CA(map_type *map_pointer)
     }
     delete [] fill_data;
     delete [] temp_map;
+};
+
+void map_gen_CA (map_type *map_pointer, int seed)
+{
+    srand(seed);
+    map_gen_CA(map_pointer);
 };
 
 void map_gen_display(map_type *map_pointer)
