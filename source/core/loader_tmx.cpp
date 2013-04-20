@@ -29,61 +29,26 @@
 #include <string>
 #include "loader_tmx.hpp"
 
-//-----------------------------------------------------------------------------------------------------------------
-
-tmx_tile_class::tmx_tile_class(void)
-{
-    tmx_tile_class::collision       = false;
-    tmx_tile_class::object          = 0;
-    tmx_tile_class::object_tileset  = 0;
-    tmx_tile_class::tile            = 0;
-    tmx_tile_class::tile_tileset    = 0;
-};
-
-tmx_tile_class::~tmx_tile_class(void)
-{
-};
-
-//-----------------------------------------------------------------------------------------------------------------
-
-tmx_tileset_class::tmx_tileset_class(void)
-{
-    tmx_tileset_class::tilewidth  = 0;
-    tmx_tileset_class::tileheight = 0;
-    tmx_tileset_class::firstgid   = 0;
-    tmx_tileset_class::name       = "";
-};
-
-tmx_tileset_class::~tmx_tileset_class(void)
-{
-};
-
-//-----------------------------------------------------------------------------------------------------------------
-
-void tmx_class::load(std::string file_name)
+void tmx_load(tmx_map_type *tmx_map_pointer, std::string file_name)
 {
     int          position_count  = 0;
     int          position_start  = 0;
     bool         map_data        = true;
     bool         tileset_data    = false;
     bool         layer_data      = false;
-    bool         collision_data  = false;
-    bool         object_data     = false;
-    bool         tile_data       = false;
     int          tileset_count   = 0;
     int          layer_count     = 0;
     int          tile_count      = 0;
     char         temp_char = ' ';
     float        temp_float_data;
     int          temp_int_data;
-    bool         temp_bool_data;
     std::string  temp_string_data;
     std::string  temp_string_key;
     std::string  temp_string_value;
     std::string  data_line;
-    tmx_class::number_of_tiles    = 0;
-    tmx_class::number_of_tilesets = 0;
-    tmx_class::number_of_layers   = 0;
+    tmx_map_pointer->data.number_of_tiles    = 0;
+    tmx_map_pointer->data.number_of_tilesets = 0;
+    tmx_map_pointer->data.number_of_layers   = 0;
     std::fstream script_file(file_name.c_str(),std::ios::in|std::ios::binary);
     if (script_file.is_open())
     {
@@ -155,44 +120,39 @@ void tmx_class::load(std::string file_name)
                         temp_string_data    = temp_string_value.c_str();
                         temp_float_data     = atof(temp_string_value.c_str());
                         temp_int_data       = atoi(temp_string_value.c_str());
-                        if (temp_int_data   == 1) temp_bool_data = true;
-                        else temp_bool_data = false;
                         if (temp_string_key == "map version")      map_data     = true;
                         if (map_data)
                         {
-                            if (temp_string_key == "width")       tmx_class::width       = temp_int_data;
-                            if (temp_string_key == "height")      tmx_class::height      = temp_int_data;
-                            if (temp_string_key == "tileheight")  map_data               = false;
+                            if (temp_string_key == "width")       tmx_map_pointer->data.map_width  = temp_int_data;
+                            if (temp_string_key == "height")      tmx_map_pointer->data.map_height = temp_int_data;
+                            if (temp_string_key == "tileheight")  map_data                         = false;
                         }
-                        if (temp_string_key == "layer name")      tmx_class::number_of_layers++;
+                        if (temp_string_key == "layer name")      tmx_map_pointer->data.number_of_layers++;
                     }
                 }
             }
         }
-        tmx_class::number_of_tiles    = tmx_class::width * tmx_class::height;
-        tmx_class::number_of_tilesets = tileset_count;
+        tmx_map_pointer->data.number_of_tiles    = tmx_map_pointer->data.map_width * tmx_map_pointer->data.map_height;
+        tmx_map_pointer->data.number_of_tilesets = tileset_count;
         script_file.clear();
         script_file.seekg(0, std::ios::beg);
-        tmx_class::tileset            = new tmx_tileset_class[tmx_class::number_of_tilesets+1];
-        tmx_class::layer              = new tmx_layer_class  [tmx_class::number_of_layers+1];
-        for(layer_count = 0; layer_count <= tmx_class::number_of_layers ; layer_count++)
+        tmx_map_pointer->tileset      = new tmx_tileset_type[tmx_map_pointer->data.number_of_tilesets+1];
+        tmx_map_pointer->layer        = new tmx_layer_type  [tmx_map_pointer->data.number_of_layers+1];
+        for(layer_count = 0; layer_count <= tmx_map_pointer->data.number_of_layers ; layer_count++)
         {
-            tmx_class::layer[layer_count].tile = new tmx_tile_class   [tmx_class::number_of_tiles+1];
+            tmx_map_pointer->layer[layer_count].tile = new tmx_tile_type   [tmx_map_pointer->data.number_of_tiles+1];
         }
-        position_count                = 0;
-        position_start                = 0;
-        map_data                      = true;
-        tileset_data                  = false;
-        layer_data                    = false;
-        collision_data                = false;
-        object_data                   = false;
-        tile_data                     = false;
-        tileset_count                 = 0;
-        layer_count                   = 0;
-        tile_count                    = 0;
-        temp_char                     = ' ';
-        tmx_class::number_of_tiles    = 0;
-        tmx_class::number_of_tilesets = 0;
+        position_count                           = 0;
+        position_start                           = 0;
+        map_data                                 = true;
+        tileset_data                             = false;
+        layer_data                               = false;
+        tileset_count                            = 0;
+        layer_count                              = 0;
+        tile_count                               = 0;
+        temp_char                                = ' ';
+        tmx_map_pointer->data.number_of_tiles    = 0;
+        tmx_map_pointer->data.number_of_tilesets = 0;
         // load data
         while (script_file.good())
         {
@@ -227,15 +187,12 @@ void tmx_class::load(std::string file_name)
                     }
                     if (temp_string_key == "tileset")
                     {
-                        tmx_class::tileset[tileset_count].number_of_tiles = ((tmx_class::tileset[tileset_count].width / tmx_class::tileset[tileset_count].tilewidth) * (tmx_class::tileset[tileset_count].height / tmx_class::tileset[tileset_count].tileheight));
+                        tmx_map_pointer->tileset[tileset_count].number_of_tiles = ((tmx_map_pointer->tileset[tileset_count].image_width / tmx_map_pointer->tileset[tileset_count].tile_width) * (tmx_map_pointer->tileset[tileset_count].image_height / tmx_map_pointer->tileset[tileset_count].tile_height));
                         tileset_data = false;
                         tileset_count++;
                     }
                     if (temp_string_key == "layer name")
                     {
-                        collision_data  = false;
-                        object_data     = false;
-                        tile_data       = false;
                         tile_count      = 0;
                         layer_data      = false;
                         layer_count++;
@@ -272,77 +229,49 @@ void tmx_class::load(std::string file_name)
                         temp_string_data    = temp_string_value.c_str();
                         temp_float_data     = atof(temp_string_value.c_str());
                         temp_int_data       = atoi(temp_string_value.c_str());
-                        if (temp_int_data   == 1) temp_bool_data = true;
-                        else temp_bool_data = false;
                         if (temp_string_key == "map version")      map_data     = true;
                         if (temp_string_key == "tileset firstgid") tileset_data = true;
                         if (temp_string_key == "layer name")       layer_data   = true;
                         if (map_data)
                         {
-                            if (temp_string_key == "map version") tmx_class::version     = temp_float_data;
-                            if (temp_string_key == "orientation") tmx_class::orientation = temp_string_data;
-                            if (temp_string_key == "width")       tmx_class::width       = temp_int_data;
-                            if (temp_string_key == "height")      tmx_class::height      = temp_int_data;
-                            if (temp_string_key == "tilewidth")   tmx_class::tilewidth   = temp_int_data;
-                            if (temp_string_key == "tileheight")  tmx_class::tileheight  = temp_int_data;
-                            if (temp_string_key == "tileheight")  map_data               = false;
+                            if (temp_string_key == "?xml version") tmx_map_pointer->data.xml_version     = temp_float_data;
+                            if (temp_string_key == "map version")  tmx_map_pointer->data.map_version     = temp_float_data;
+                            if (temp_string_key == "encoding")     tmx_map_pointer->data.xml_encoding    = temp_string_data;
+                            if (temp_string_key == "orientation")  tmx_map_pointer->data.map_orientation = temp_string_data;
+                            if (temp_string_key == "width")        tmx_map_pointer->data.map_width       = temp_int_data;
+                            if (temp_string_key == "height")       tmx_map_pointer->data.map_height      = temp_int_data;
+                            if (temp_string_key == "tilewidth")    tmx_map_pointer->data.map_tile_width  = temp_int_data;
+                            if (temp_string_key == "tileheight")   tmx_map_pointer->data.map_tile_height = temp_int_data;
+                            if (temp_string_key == "tileheight")   map_data                              = false;
                         }
                         if (tileset_data)
                         {
-                            if (temp_string_key == "tileset firstgid") tmx_class::tileset[tileset_count].firstgid     = temp_int_data;
-                            if (temp_string_key == "name")             tmx_class::tileset[tileset_count].name         = temp_string_data;
-                            if (temp_string_key == "tilewidth")        tmx_class::tileset[tileset_count].tilewidth    = temp_int_data;
-                            if (temp_string_key == "tileheight")       tmx_class::tileset[tileset_count].tileheight   = temp_int_data;
-                            if (temp_string_key == "image source")     tmx_class::tileset[tileset_count].image_source = temp_string_data;
-                            if (temp_string_key == "width")            tmx_class::tileset[tileset_count].width        = temp_int_data;
-                            if (temp_string_key == "height")           tmx_class::tileset[tileset_count].height       = temp_int_data;
+                            if (temp_string_key == "tileset firstgid") tmx_map_pointer->tileset[tileset_count].first_gid    = temp_int_data;
+                            if (temp_string_key == "name")             tmx_map_pointer->tileset[tileset_count].image_name   = temp_string_data;
+                            if (temp_string_key == "tilewidth")        tmx_map_pointer->tileset[tileset_count].tile_width   = temp_int_data;
+                            if (temp_string_key == "tileheight")       tmx_map_pointer->tileset[tileset_count].tile_height  = temp_int_data;
+                            if (temp_string_key == "image source")     tmx_map_pointer->tileset[tileset_count].image_source = temp_string_data;
+                            if (temp_string_key == "width")            tmx_map_pointer->tileset[tileset_count].image_width  = temp_int_data;
+                            if (temp_string_key == "height")           tmx_map_pointer->tileset[tileset_count].image_height = temp_int_data;
                         }
                         if (layer_data)
                         {
-                            if (temp_string_key == "layer name")
-                            {
-                                if (temp_string_data == "collision") collision_data  = true;
-                                    else collision_data  = false;
-                                if (temp_string_data == "object") object_data  = true;
-                                    else object_data  = false;
-                                if (temp_string_data == "tile") tile_data  = true;
-                                    else tile_data  = false;
-                                tile_count      = 0;
-                            };
+                            if (temp_string_key == "layer name") tile_count      = 0;
+                            if (temp_string_key == "width")      tmx_map_pointer->layer[layer_count].width  = temp_int_data;
+                            if (temp_string_key == "height")     tmx_map_pointer->layer[layer_count].height = temp_int_data;
                             if (temp_string_key == "tile gid")
                             {
-                                if (collision_data)
+                                tmx_map_pointer->layer[layer_count].tile[tile_count].tile_tileset = 0;
+                                for (int temp_tileset_count = 0; temp_tileset_count < tileset_count; temp_tileset_count++)
                                 {
-                                    tmx_class::layer[layer_count].tile[tile_count].collision = temp_bool_data;
-                                }
-                                if (object_data)
-                                {
-                                    tmx_class::layer[layer_count].tile[tile_count].object_tileset = 0;
-                                    for (int temp_tileset_count = 0; temp_tileset_count < tileset_count; temp_tileset_count++)
+                                    if (temp_int_data >= tmx_map_pointer->tileset[temp_tileset_count].first_gid)
                                     {
-                                        if (temp_int_data >= tmx_class::tileset[temp_tileset_count].firstgid)
-                                        {
-                                            tmx_class::layer[layer_count].tile[tile_count].object_tileset = temp_tileset_count;
-                                        }
+                                        tmx_map_pointer->layer[layer_count].tile[tile_count].tile_tileset = temp_tileset_count;
                                     }
-                                    temp_int_data -= tmx_class::tileset[tmx_class::layer[layer_count].tile[tile_count].object_tileset].firstgid;
-                                    temp_int_data += 1;
-                                    tmx_class::layer[layer_count].tile[tile_count].object       = temp_int_data;
                                 }
-                                if (tile_data)
-                                {
-                                    tmx_class::layer[layer_count].tile[tile_count].tile_tileset = 0;
-                                    for (int temp_tileset_count = 0; temp_tileset_count < tileset_count; temp_tileset_count++)
-                                    {
-                                        if (temp_int_data >= tmx_class::tileset[temp_tileset_count].firstgid)
-                                        {
-                                            tmx_class::layer[layer_count].tile[tile_count].tile_tileset = temp_tileset_count;
-                                        }
-                                    }
-                                    temp_int_data -= tmx_class::tileset[tmx_class::layer[layer_count].tile[tile_count].tile_tileset].firstgid;
-                                    temp_int_data += 1;
-                                    tmx_class::layer[layer_count].tile[tile_count].tile         = temp_int_data;
-                                }
+                                temp_int_data -= tmx_map_pointer->tileset[tmx_map_pointer->layer[layer_count].tile[tile_count].tile_tileset].first_gid;
+                                temp_int_data += 1;
+                                tmx_map_pointer->layer[layer_count].tile[tile_count].tile         = temp_int_data;
                                 tile_count++;
                             }
                         }
@@ -351,52 +280,52 @@ void tmx_class::load(std::string file_name)
             }
         }
         script_file.close();
-        tmx_class::number_of_tiles    = tmx_class::width * tmx_class::height;
-        tmx_class::number_of_tilesets = tileset_count + 1;
+        tmx_map_pointer->data.number_of_tiles    = tmx_map_pointer->data.map_width * tmx_map_pointer->data.map_height;
+        tmx_map_pointer->data.number_of_tilesets = tileset_count + 1;
     }
 };
 
-void tmx_class::save(std::string file_name)
+void tmx_save(tmx_map_type *tmx_map_pointer, std::string file_name)
 {
-    int layer_count = 0;
     std::fstream script_file(file_name.c_str(),std::ios::out|std::ios::binary|std::ios::trunc);
     if (script_file.is_open())
     {
         script_file << "<?xml version=";
         script_file << '"';
-        script_file << "1.0";
+        script_file << (float)tmx_map_pointer->data.xml_version;
+        if ((float)tmx_map_pointer->data.xml_version == (int)tmx_map_pointer->data.xml_version) script_file << ".0";
         script_file << '"';
         script_file << " encoding=";
         script_file << '"';
-        script_file << "UTF-8";
+        script_file << tmx_map_pointer->data.xml_encoding.c_str();
         script_file << '"';
         script_file << "?>";
         script_file << "\n";
 
         script_file << "<map version=";
         script_file << '"';
-        script_file << (float)tmx_class::version;
-        if ((float)tmx_class::version == (int)tmx_class::version) script_file << ".0";
+        script_file << (float)tmx_map_pointer->data.map_version;
+        if ((float)tmx_map_pointer->data.map_version == (int)tmx_map_pointer->data.map_version) script_file << ".0";
         script_file << '"';
         script_file << " orientation=";
         script_file << '"';
-        script_file << tmx_class::orientation.c_str();
+        script_file << tmx_map_pointer->data.map_orientation.c_str();
         script_file << '"';
         script_file << " width=";
         script_file << '"';
-        script_file << tmx_class::width;
+        script_file << tmx_map_pointer->data.map_width;
         script_file << '"';
         script_file << " height=";
         script_file << '"';
-        script_file << tmx_class::height;
+        script_file << tmx_map_pointer->data.map_height;
         script_file << '"';
         script_file << " tilewidth=";
         script_file << '"';
-        script_file << tmx_class::tilewidth;
+        script_file << tmx_map_pointer->data.map_tile_width;
         script_file << '"';
         script_file << " tileheight=";
         script_file << '"';
-        script_file << tmx_class::tileheight;
+        script_file << tmx_map_pointer->data.map_tile_height;
         script_file << '"';
         script_file << ">";
         script_file << "\n";
@@ -418,122 +347,78 @@ void tmx_class::save(std::string file_name)
         script_file << " </properties>";
         script_file << "\n";
 
-        for (int tileset_count = 0; tileset_count < (tmx_class::number_of_tilesets - 1); tileset_count++)
+        for (int tileset_count = 0; tileset_count < (tmx_map_pointer->data.number_of_tilesets - 1); tileset_count++)
         {
             script_file << " <tileset firstgid=";
             script_file << '"';
-            script_file << tmx_class::tileset[tileset_count].firstgid;
+            script_file << tmx_map_pointer->tileset[tileset_count].first_gid;
             script_file << '"';
             script_file << " name=";
             script_file << '"';
-            script_file << tmx_class::tileset[tileset_count].name;
+            script_file << tmx_map_pointer->tileset[tileset_count].image_name;
             script_file << '"';
             script_file << " tilewidth=";
             script_file << '"';
-            script_file << tmx_class::tileset[tileset_count].tilewidth;
+            script_file << tmx_map_pointer->tileset[tileset_count].tile_width;
             script_file << '"';
             script_file << " tileheight=";
             script_file << '"';
-            script_file << tmx_class::tileset[tileset_count].tileheight;
+            script_file << tmx_map_pointer->tileset[tileset_count].tile_height;
             script_file << '"';
-            script_file << "/>";
+            script_file << ">";
             script_file << "\n";
             script_file << "  <image source=";
             script_file << '"';
-            script_file << tmx_class::tileset[tileset_count].image_source;
+            script_file << tmx_map_pointer->tileset[tileset_count].image_source;
             script_file << '"';
             script_file << " width=";
             script_file << '"';
-            script_file << tmx_class::tileset[tileset_count].width;
+            script_file << tmx_map_pointer->tileset[tileset_count].image_width;
             script_file << '"';
             script_file << " height=";
             script_file << '"';
-            script_file << tmx_class::tileset[tileset_count].height;
+            script_file << tmx_map_pointer->tileset[tileset_count].image_height;
             script_file << '"';
             script_file << "/>";
             script_file << "\n";
             script_file << " </tileset>";
             script_file << "\n";
         }
-        script_file << " <layer name=";
-        script_file << '"';
-        script_file << "tile";
-        script_file << '"';
-        script_file << " width=";
-        script_file << '"';
-        script_file << tmx_class::width;
-        script_file << '"';
-        script_file << " height=";
-        script_file << '"';
-        script_file << tmx_class::height;
-        script_file << '"';
-        script_file << ">";
-        script_file << "\n";
-        script_file << "  <data>";
-        script_file << "\n";
-        for (int tile_count = 0; tile_count < tmx_class::number_of_tiles; tile_count++)
+        for (int layer_count = 0; layer_count < tmx_map_pointer->data.number_of_layers; layer_count++)
         {
-            script_file << "   <tile gid=";
+            script_file << " <layer name=";
             script_file << '"';
-            script_file << ((tmx_class::layer[layer_count].tile[tile_count].tile + tmx_class::tileset[tmx_class::layer[layer_count].tile[tile_count].tile_tileset].firstgid) - 1);
+            script_file << "tile";
             script_file << '"';
-            script_file << "/>";
+            script_file << " width=";
+            script_file << '"';
+            script_file << tmx_map_pointer->layer[layer_count].width;
+            script_file << '"';
+            script_file << " height=";
+            script_file << '"';
+            script_file << tmx_map_pointer->layer[layer_count].height;
+            script_file << '"';
+            script_file << ">";
+            script_file << "\n";
+            script_file << "  <data>";
+            script_file << "\n";
+            for (int tile_count = 0; tile_count < tmx_map_pointer->data.number_of_tiles; tile_count++)
+            {
+                script_file << "   <tile gid=";
+                script_file << '"';
+                script_file << ((tmx_map_pointer->layer[layer_count].tile[tile_count].tile + tmx_map_pointer->tileset[tmx_map_pointer->layer[layer_count].tile[tile_count].tile_tileset].first_gid) - 1);
+                script_file << '"';
+                script_file << "/>";
+                script_file << "\n";
+            }
+            script_file << "  </data>";
+            script_file << "\n";
+            script_file << " </layer>";
             script_file << "\n";
         }
-        script_file << "  </data>";
-        script_file << "\n";
-        script_file << " </layer>";
-        script_file << "\n";
-        script_file << " <layer name=";
-        script_file << '"';
-        script_file << "object";
-        script_file << '"';
-        script_file << " width=";
-        script_file << '"';
-        script_file << tmx_class::width;
-        script_file << '"';
-        script_file << " height=";
-        script_file << '"';
-        script_file << tmx_class::height;
-        script_file << '"';
-        script_file << ">";
-        script_file << "\n";
-        script_file << "  <data>";
-        script_file << "\n";
-        for (int tile_count = 0; tile_count < tmx_class::number_of_tiles; tile_count++)
-        {
-            script_file << "   <tile gid=";
-            script_file << '"';
-            script_file << ((tmx_class::layer[layer_count].tile[tile_count].object + tmx_class::tileset[tmx_class::layer[layer_count].tile[tile_count].object_tileset].firstgid) - 1);
-            script_file << '"';
-            script_file << "/>";
-            script_file << "\n";
-        }
-        script_file << "  </data>";
-        script_file << "\n";
-        script_file << " </layer>";
-        script_file << "\n";
         script_file << "</map>";
         script_file << "\n";
         script_file.close();
     }
 };
-
-tmx_class::tmx_class(void)
-{
-    tmx_class::version                = 0.0f;
-    tmx_class::orientation            = "Unknown";
-    tmx_class::width                  = 0;
-    tmx_class::height                 = 0;
-    tmx_class::tilewidth              = 0;
-    tmx_class::tileheight             = 0;
-    tmx_class::number_of_tiles        = 0;
-    tmx_class::number_of_tilesets     = 0;
-};
-
-tmx_class::~tmx_class(void)
-{
-};
-
-//-----------------------------------------------------------------------------------------------------------------
 

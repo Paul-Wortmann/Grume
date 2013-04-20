@@ -25,61 +25,62 @@
 #ifndef LOADER_TMX_H
 #define LOADER_TMX_H
 
-class tmx_tile_class
+#define ISOMETRIC  1
+#define ORTHOGONAL 2
+
+#define UTF_8      8
+#define UTF_16     16
+
+struct tmx_tile_type
 {
-    public:
-        float pos_x;
-        float pos_y;
-        bool  collision;
-        int   object;
-        int   object_tileset;
-        int   tile;
-        int   tile_tileset;
-        tmx_tile_class(void);
-       ~tmx_tile_class(void);
+    int   tile;
+    int   tile_tileset;
 };
 
-class tmx_layer_class
+struct tmx_tileset_type
 {
-    public:
-        std::string        name;
-        tmx_tile_class    *tile;
+    int           tile_width;
+    int           tile_height;
+    int           first_gid;
+    std::string   image_name;
+    std::string   image_source;
+    int           image_width;
+    int           image_height;
+    int           number_of_tiles;
 };
 
-class tmx_tileset_class
+struct tmx_layer_type
 {
-    public:
-        int           tilewidth;
-        int           tileheight;
-        int           firstgid;
-        std::string   name;
-        std::string   image_source;
-        int           width;
-        int           height;
-        int           number_of_tiles;
-        tmx_tileset_class(void);
-       ~tmx_tileset_class(void);
+    std::string        name;
+    int                width;
+    int                height;
+    tmx_tile_type     *tile;
 };
 
-class tmx_class
+struct tmx_data_type
 {
-    public:
-        float              version;
-        std::string        orientation;
-        int                width;
-        int                height;
-        int                tilewidth;
-        int                tileheight;
-        tmx_layer_class   *layer;
-        int                number_of_layers;
-        int                number_of_tiles;
-        tmx_tileset_class *tileset;
-        int                number_of_tilesets;
-        void save(std::string file_name);
-        void load(std::string file_name);
-        tmx_class(void);
-       ~tmx_class(void);
+    float              xml_version;
+    std::string        xml_encoding;
+    float              map_version;
+    std::string        map_orientation;
+    int                map_width;
+    int                map_height;
+    int                map_tile_width;
+    int                map_tile_height;
+    int                number_of_layers;
+    int                number_of_tiles;
+    int                number_of_tilesets;
 };
+
+struct tmx_map_type
+{
+    tmx_data_type     data;
+    tmx_layer_type   *layer;
+    tmx_tileset_type *tileset;
+};
+
+void tmx_load(tmx_map_type *tmx_map_pointer, std::string file_name);
+void tmx_save(tmx_map_type *tmx_map_pointer, std::string file_name);
 
 #endif //LOADER_TMX_H
 
