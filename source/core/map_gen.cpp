@@ -486,7 +486,7 @@ void map_gen_CA(map_type *map_pointer)
                 if ((is_an_adjoining_tile) and (fill_data[tile_count].tile_data == FLOOR_TILE)) fill_data[tile_count].adjoining_tile = true;
             }
         }
-        ca_map_good = (number_found >= ((map_pointer->number_of_tiles/100.0f)*ca_minimum_cave_size)) ? true : false;
+        ca_map_good = (number_found >= ((map_pointer->number_of_tiles*ca_minimum_cave_size)/100.0f)) ? true : false;
     }
     // write new values to array discarding disjointed tiles
     for (int tile_count = 0; tile_count < map_pointer->number_of_tiles; tile_count++)
