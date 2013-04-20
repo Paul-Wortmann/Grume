@@ -26,6 +26,7 @@
 #define MAP_GEN_HPP
 
 #include <string>
+#include "loader_tmx.hpp"
 
 // ROOM_MAX should be an even number!
 #define MAX_ROOMS  0 // 0 for unlimited number possible
@@ -70,15 +71,11 @@ struct map_node_type
     map_node_type *right;
 };
 
-void map_gen_set_room_size(int room_max_x, int room_max_y);
-void map_gen_init(map_type *map_pointer, int size_x, int size_y);
 void map_gen_BSP_split(map_node_type *map_node);
 void map_gen_BSP(map_type *map_pointer);
 void map_gen_BSP(map_type *map_pointer, int seed);
 void map_gen_CA (map_type *map_pointer);
 void map_gen_CA (map_type *map_pointer, int seed);
-void map_gen_display(map_type *map_pointer);
-void map_gen_save(std::string file_name, map_type *map_pointer);
 
 #endif //MAP_GEN_HPP
 

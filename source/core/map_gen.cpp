@@ -29,26 +29,9 @@
 #include <fstream>
 #include <string>
 
-int node_count = 0;
-
-void map_gen_init(map_type *map_pointer, int size_x, int size_y)
-{
-    int tile_count      = 0;
-    map_pointer->size.x = size_x;
-    map_pointer->size.y = size_y;
-    map_pointer->number_of_tiles = size_x*size_y;
-    map_pointer->tile = new tile_type[map_pointer->number_of_tiles];
-    for (int tile_count_x = 0; tile_count_x < map_pointer->size.x; tile_count_x++)
-    {
-        for (int tile_count_y = 0; tile_count_y < map_pointer->size.y; tile_count_y++)
-        {
-            tile_count = (tile_count_y * map_pointer->size.x) + tile_count_x;
-            map_pointer->tile[tile_count].position.x = tile_count_x;
-            map_pointer->tile[tile_count].position.y = tile_count_y;
-            map_pointer->tile[tile_count].layer = WALL_TILE;
-        }
-    }
-};
+int node_count         = 0;
+int map_gen_size_x     = 80;
+int map_gen_size_y     = 24;
 
 void map_gen_BSP_split(map_node_type *map_node)
 {
@@ -290,6 +273,21 @@ void map_gen_BSP_split(map_node_type *map_node)
 
 void map_gen_BSP(map_type *map_pointer)
 {
+    int tile_count      = 0;
+    map_pointer->size.x = map_gen_size_x;
+    map_pointer->size.y = map_gen_size_y;
+    map_pointer->number_of_tiles = map_gen_size_x*map_gen_size_y;
+    map_pointer->tile = new tile_type[map_pointer->number_of_tiles];
+    for (int tile_count_x = 0; tile_count_x < map_pointer->size.x; tile_count_x++)
+    {
+        for (int tile_count_y = 0; tile_count_y < map_pointer->size.y; tile_count_y++)
+        {
+            tile_count = (tile_count_y * map_pointer->size.x) + tile_count_x;
+            map_pointer->tile[tile_count].position.x = tile_count_x;
+            map_pointer->tile[tile_count].position.y = tile_count_y;
+            map_pointer->tile[tile_count].layer = WALL_TILE;
+        }
+    }
     map_node_type temp_map;
     temp_map.data.size.x          = map_pointer->size.x;
     temp_map.data.size.y          = map_pointer->size.y;
@@ -311,6 +309,21 @@ void map_gen_BSP(map_type *map_pointer, int seed)
 // Generate cave like map using cellular automation
 void map_gen_CA(map_type *map_pointer)
 {
+    int tile_count      = 0;
+    map_pointer->size.x = map_gen_size_x;
+    map_pointer->size.y = map_gen_size_y;
+    map_pointer->number_of_tiles = map_gen_size_x*map_gen_size_y;
+    map_pointer->tile = new tile_type[map_pointer->number_of_tiles];
+    for (int tile_count_x = 0; tile_count_x < map_pointer->size.x; tile_count_x++)
+    {
+        for (int tile_count_y = 0; tile_count_y < map_pointer->size.y; tile_count_y++)
+        {
+            tile_count = (tile_count_y * map_pointer->size.x) + tile_count_x;
+            map_pointer->tile[tile_count].position.x = tile_count_x;
+            map_pointer->tile[tile_count].position.y = tile_count_y;
+            map_pointer->tile[tile_count].layer = WALL_TILE;
+        }
+    }
     struct flood_fill_type
     {
         int  tile_data;
@@ -750,133 +763,3 @@ void map_gen_CA (map_type *map_pointer, int seed)
     srand(seed);
     map_gen_CA(map_pointer);
 };
-
-void map_gen_display(map_type *map_pointer)
-{
-    for (int tile_count_y = 0; tile_count_y < map_pointer->size.y; tile_count_y++)
-    {
-        for (int tile_count_x = 0; tile_count_x < map_pointer->size.x; tile_count_x++)
-        {
-            if (map_pointer->tile[(tile_count_y * map_pointer->size.x) + tile_count_x].layer == WALL_TILE) printf(" ");
-            else printf("X");
-            //printf("%c",(char)map_pointer->tile[(tile_count_y * map_pointer->size.x) + tile_count_x].layer+'A');
-        }
-        if (map_pointer->size.x < 80) printf("\n");
-    }
-};
-
-void map_gen_save(std::string file_name, map_type *map_pointer)
-{
-    std::fstream script_file(file_name.c_str(),std::ios::out|std::ios::binary|std::ios::trunc);
-    if (script_file.is_open())
-    {
-        script_file << "<?xml version=";
-        script_file << '"';
-        script_file << "1.0";
-        script_file << '"';
-        script_file << " encoding=";
-        script_file << '"';
-        script_file << "UTF-8";
-        script_file << '"';
-        script_file << "?>";
-        script_file << "\n";
-
-        script_file << "<map version=";
-        script_file << '"';
-        script_file << "1.0";
-        script_file << '"';
-        script_file << " orientation=";
-        script_file << '"';
-        script_file << "isometric";
-        script_file << '"';
-        script_file << " width=";
-        script_file << '"';
-        script_file << map_pointer->size.x;
-        script_file << '"';
-        script_file << " height=";
-        script_file << '"';
-        script_file << map_pointer->size.y;
-        script_file << '"';
-        script_file << " tilewidth=";
-        script_file << '"';
-        script_file << "64";
-        script_file << '"';
-        script_file << " tileheight=";
-        script_file << '"';
-        script_file << "32";
-        script_file << '"';
-        script_file << ">";
-        script_file << "\n";
-
-        script_file << "<tileset firstgid=";
-        script_file << '"';
-        script_file << "1";
-        script_file << '"';
-        script_file << " name=";
-        script_file << '"';
-        script_file << "default";
-        script_file << '"';
-        script_file << " tilewidth=";
-        script_file << '"';
-        script_file << "64";
-        script_file << '"';
-        script_file << " tileheight=";
-        script_file << '"';
-        script_file << "32";
-        script_file << '"';
-        script_file << ">";
-        script_file << "\n";
-        script_file << "<image source=";
-        script_file << '"';
-        script_file << "default_tileset.png";
-        script_file << '"';
-        script_file << " width=";
-        script_file << '"';
-        script_file << "256";
-        script_file << '"';
-        script_file << " height=";
-        script_file << '"';
-        script_file << "32";
-        script_file << '"';
-        script_file << "/>";
-        script_file << "\n";
-        script_file << "</tileset>";
-        script_file << "\n";
-
-        script_file << " <layer name=";
-        script_file << '"';
-        script_file << "tile";
-        script_file << '"';
-        script_file << " width=";
-        script_file << '"';
-        script_file << map_pointer->size.x;
-        script_file << '"';
-        script_file << " height=";
-        script_file << '"';
-        script_file << map_pointer->size.y;
-        script_file << '"';
-        script_file << ">";
-        script_file << "\n";
-        script_file << "  <data>";
-        script_file << "\n";
-        for (int tile_count = 0; tile_count < map_pointer->number_of_tiles; tile_count++)
-        {
-            script_file << "   <tile gid=";
-            script_file << '"';
-            script_file << map_pointer->tile[tile_count].layer+1;
-            script_file << '"';
-            script_file << "/>";
-            script_file << "\n";
-        }
-        script_file << "  </data>";
-        script_file << "\n";
-        script_file << " </layer>";
-        script_file << "\n";
-        script_file << "</map>";
-        script_file << "\n";
-        script_file.close();
-    }
-};
-
-
-
