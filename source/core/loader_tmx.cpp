@@ -332,7 +332,6 @@ void tmx_save(tmx_map_type *tmx_map_pointer, std::string file_name)
 
         script_file << " <properties>";
         script_file << "\n";
-
         script_file << "  <property name=";
         script_file << '"';
         script_file << "MAP_ID";
@@ -343,11 +342,10 @@ void tmx_save(tmx_map_type *tmx_map_pointer, std::string file_name)
         script_file << '"';
         script_file << "/>";
         script_file << "\n";
-
         script_file << " </properties>";
         script_file << "\n";
 
-        for (int tileset_count = 0; tileset_count < (tmx_map_pointer->data.number_of_tilesets - 1); tileset_count++)
+        for (int tileset_count = 0; tileset_count < tmx_map_pointer->data.number_of_tilesets; tileset_count++)
         {
             script_file << " <tileset firstgid=";
             script_file << '"';

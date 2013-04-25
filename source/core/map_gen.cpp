@@ -273,22 +273,36 @@ void map_gen_BSP_split(map_node_type *map_node)
 
 void map_gen_BSP(tmx_map_type *tmx_map_pointer)
 {
-    int tile_count                           = 0;
-    int layer_count                          = 0;
-    tmx_map_pointer->data.map_width          = map_gen_size_x;
-    tmx_map_pointer->data.map_height         = map_gen_size_y;
-    tmx_map_pointer->data.number_of_tiles    = map_gen_size_x*map_gen_size_y;
-    tmx_map_pointer->data.number_of_layers   = 1;
-    tmx_map_pointer->layer                   = new tmx_layer_type[tmx_map_pointer->data.number_of_layers];
-    tmx_map_pointer->layer[layer_count].tile = new tmx_tile_type [tmx_map_pointer->data.number_of_tiles];
+    int tile_count                                          = 0;
+    int layer_count                                         = 0;
+    int tileset_count                                       = 0;
+    tmx_map_pointer->data.map_width                         = map_gen_size_x;
+    tmx_map_pointer->data.map_height                        = map_gen_size_y;
+    tmx_map_pointer->data.number_of_tiles                   = map_gen_size_x*map_gen_size_y;
+    tmx_map_pointer->data.number_of_layers                  = 1;
+    tmx_map_pointer->data.number_of_tilesets                = 1;
+    tmx_map_pointer->layer                                  = new tmx_layer_type[tmx_map_pointer->data.number_of_layers];
+    tmx_map_pointer->layer[layer_count].name                = "generated";
+    tmx_map_pointer->layer[layer_count].width               = map_gen_size_x;
+    tmx_map_pointer->layer[layer_count].height              = map_gen_size_y;
+    tmx_map_pointer->tileset                                = new tmx_tileset_type[tmx_map_pointer->data.number_of_tilesets];
+    tmx_map_pointer->tileset[tileset_count].first_gid       = 1;
+    tmx_map_pointer->tileset[tileset_count].image_source    = "../Frost_and_Flame/data/tilesets/default_tileset.png";
+    tmx_map_pointer->tileset[tileset_count].image_width     = 256;
+    tmx_map_pointer->tileset[tileset_count].image_height    = 32;
+    tmx_map_pointer->tileset[tileset_count].tile_width      = 32;
+    tmx_map_pointer->tileset[tileset_count].tile_height     = 64;
+    tmx_map_pointer->tileset[tileset_count].number_of_tiles = 8;
+    tmx_map_pointer->layer[layer_count].tile   = new tmx_tile_type [tmx_map_pointer->data.number_of_tiles];
     for (int tile_count_x = 0; tile_count_x < tmx_map_pointer->data.map_width; tile_count_x++)
     {
         for (int tile_count_y = 0; tile_count_y < tmx_map_pointer->data.map_height; tile_count_y++)
         {
             tile_count = (tile_count_y * tmx_map_pointer->data.map_width) + tile_count_x;
-            tmx_map_pointer->layer[layer_count].tile[tile_count].position.x = tile_count_x;
-            tmx_map_pointer->layer[layer_count].tile[tile_count].position.y = tile_count_y;
-            tmx_map_pointer->layer[layer_count].tile[tile_count].tile       = WALL_TILE;
+            tmx_map_pointer->layer[layer_count].tile[tile_count].position.x   = tile_count_x;
+            tmx_map_pointer->layer[layer_count].tile[tile_count].position.y   = tile_count_y;
+            tmx_map_pointer->layer[layer_count].tile[tile_count].tile         = WALL_TILE;
+            tmx_map_pointer->layer[layer_count].tile[tile_count].tile_tileset = tileset_count;
         }
     }
     map_node_type temp_map;
@@ -311,22 +325,36 @@ void map_gen_BSP(tmx_map_type *tmx_map_pointer, int seed)
 
 void map_gen_CA (tmx_map_type *tmx_map_pointer)
 {
-    int tile_count                           = 0;
-    int layer_count                          = 0;
-    tmx_map_pointer->data.map_width          = map_gen_size_x;
-    tmx_map_pointer->data.map_height         = map_gen_size_y;
-    tmx_map_pointer->data.number_of_tiles    = map_gen_size_x*map_gen_size_y;
-    tmx_map_pointer->data.number_of_layers   = 1;
-    tmx_map_pointer->layer                   = new tmx_layer_type[tmx_map_pointer->data.number_of_layers];
-    tmx_map_pointer->layer[layer_count].tile = new tmx_tile_type [tmx_map_pointer->data.number_of_tiles];
+    int tile_count                                          = 0;
+    int layer_count                                         = 0;
+    int tileset_count                                       = 0;
+    tmx_map_pointer->data.map_width                         = map_gen_size_x;
+    tmx_map_pointer->data.map_height                        = map_gen_size_y;
+    tmx_map_pointer->data.number_of_tiles                   = map_gen_size_x*map_gen_size_y;
+    tmx_map_pointer->data.number_of_layers                  = 1;
+    tmx_map_pointer->data.number_of_tilesets                = 1;
+    tmx_map_pointer->layer                                  = new tmx_layer_type[tmx_map_pointer->data.number_of_layers];
+    tmx_map_pointer->layer[layer_count].name                = "generated";
+    tmx_map_pointer->layer[layer_count].width               = map_gen_size_x;
+    tmx_map_pointer->layer[layer_count].height              = map_gen_size_y;
+    tmx_map_pointer->tileset                                = new tmx_tileset_type[tmx_map_pointer->data.number_of_tilesets];
+    tmx_map_pointer->tileset[tileset_count].first_gid       = 1;
+    tmx_map_pointer->tileset[tileset_count].image_source    = "../Frost_and_Flame/data/tilesets/default_tileset.png";
+    tmx_map_pointer->tileset[tileset_count].image_width     = 256;
+    tmx_map_pointer->tileset[tileset_count].image_height    = 32;
+    tmx_map_pointer->tileset[tileset_count].tile_width      = 32;
+    tmx_map_pointer->tileset[tileset_count].tile_height     = 64;
+    tmx_map_pointer->tileset[tileset_count].number_of_tiles = 8;
+    tmx_map_pointer->layer[layer_count].tile   = new tmx_tile_type [tmx_map_pointer->data.number_of_tiles];
     for (int tile_count_x = 0; tile_count_x < tmx_map_pointer->data.map_width; tile_count_x++)
     {
         for (int tile_count_y = 0; tile_count_y < tmx_map_pointer->data.map_height; tile_count_y++)
         {
             tile_count = (tile_count_y * tmx_map_pointer->data.map_width) + tile_count_x;
-            tmx_map_pointer->layer[layer_count].tile[tile_count].position.x = tile_count_x;
-            tmx_map_pointer->layer[layer_count].tile[tile_count].position.y = tile_count_y;
-            tmx_map_pointer->layer[layer_count].tile[tile_count].tile = WALL_TILE;
+            tmx_map_pointer->layer[layer_count].tile[tile_count].position.x   = tile_count_x;
+            tmx_map_pointer->layer[layer_count].tile[tile_count].position.y   = tile_count_y;
+            tmx_map_pointer->layer[layer_count].tile[tile_count].tile         = WALL_TILE;
+            tmx_map_pointer->layer[layer_count].tile[tile_count].tile_tileset = tileset_count;
         }
     }
     struct flood_fill_type
