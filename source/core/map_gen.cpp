@@ -76,7 +76,7 @@ void map_gen_BSP_split(map_node_type *map_node)
         map_node->left->data.size.x = new_size_x_1;
         map_node->left->data.size.y = map_node->data.size.y;
         map_node->left->data.number_of_tiles = map_node->left->data.size.x * map_node->left->data.size.y;
-        map_node->left->data.tile = new tile_type[map_node->left->data.number_of_tiles];
+        map_node->left->data.tile = new tmx_tile_type[map_node->left->data.number_of_tiles];
         tile_count_x_out = 0;
         tile_count_y_out = 0;
         tile_data_count  = 0;
@@ -86,7 +86,7 @@ void map_gen_BSP_split(map_node_type *map_node)
             tile_data_count = (tile_count_y_out*map_node->data.size.x)+tile_count_x_out;
             map_node->left->data.tile[tile_count].position.x = map_node->data.tile[tile_data_count].position.x;
             map_node->left->data.tile[tile_count].position.y = map_node->data.tile[tile_data_count].position.y;
-            map_node->left->data.tile[tile_count].layer      = map_node->data.tile[tile_data_count].layer;
+            map_node->left->data.tile[tile_count].tile       = map_node->data.tile[tile_data_count].tile;
             tile_count_x_out++;
             if (tile_count_x_out >= new_size_x_1)
             {
@@ -101,7 +101,7 @@ void map_gen_BSP_split(map_node_type *map_node)
             {
                 if ((map_node->data.tile[tile_data_count].position.x == map_node->left->data.tile[tile_count].position.x) &&
                     (map_node->data.tile[tile_data_count].position.y == map_node->left->data.tile[tile_count].position.y))
-                     map_node->data.tile[tile_data_count].layer       = map_node->left->data.tile[tile_count].layer;
+                     map_node->data.tile[tile_data_count].tile       = map_node->left->data.tile[tile_count].tile;
             }
         }
         // right --------------------------------------------------------------------------------------------------------
@@ -110,7 +110,7 @@ void map_gen_BSP_split(map_node_type *map_node)
         map_node->right->data.size.x = new_size_x_2;
         map_node->right->data.size.y = map_node->data.size.y;
         map_node->right->data.number_of_tiles = map_node->right->data.size.x * map_node->right->data.size.y;
-        map_node->right->data.tile = new tile_type[map_node->right->data.number_of_tiles];
+        map_node->right->data.tile = new tmx_tile_type[map_node->right->data.number_of_tiles];
         tile_count_x_out = new_size_x_1;
         tile_count_y_out = 0;
         tile_data_count  = 0;
@@ -120,7 +120,7 @@ void map_gen_BSP_split(map_node_type *map_node)
             tile_data_count = (tile_count_y_out*map_node->data.size.x)+tile_count_x_out;
             map_node->right->data.tile[tile_count].position.x = map_node->data.tile[tile_data_count].position.x;
             map_node->right->data.tile[tile_count].position.y = map_node->data.tile[tile_data_count].position.y;
-            map_node->right->data.tile[tile_count].layer      = map_node->data.tile[tile_data_count].layer;
+            map_node->right->data.tile[tile_count].tile       = map_node->data.tile[tile_data_count].tile;
             tile_count_x_out++;
             if (tile_count_x_out >= map_node->data.size.x)
             {
@@ -135,7 +135,7 @@ void map_gen_BSP_split(map_node_type *map_node)
             {
                 if ((map_node->data.tile[tile_data_count].position.x == map_node->right->data.tile[tile_count].position.x) &&
                     (map_node->data.tile[tile_data_count].position.y == map_node->right->data.tile[tile_count].position.y))
-                     map_node->data.tile[tile_data_count].layer       = map_node->right->data.tile[tile_count].layer;
+                     map_node->data.tile[tile_data_count].tile       = map_node->right->data.tile[tile_count].tile;
             }
         }
         //generate horizontal passages
@@ -144,7 +144,7 @@ void map_gen_BSP_split(map_node_type *map_node)
         int passage_x_2 = (map_node->right->data.size.x/2)+map_node->left->data.size.x;
         for (int pos_x = passage_x_1;pos_x < passage_x_2;pos_x++)
         {
-            map_node->data.tile[((passage_y*map_node->data.size.x)+pos_x)].layer = FLOOR_TILE;
+            map_node->data.tile[((passage_y*map_node->data.size.x)+pos_x)].tile = FLOOR_TILE;
         }
         delete [] map_node->left;
         delete [] map_node->right;
@@ -163,7 +163,7 @@ void map_gen_BSP_split(map_node_type *map_node)
         map_node->left->data.size.x = map_node->data.size.x;
         map_node->left->data.size.y = new_size_y_1;
         map_node->left->data.number_of_tiles = map_node->left->data.size.x * map_node->left->data.size.y;
-        map_node->left->data.tile = new tile_type[map_node->left->data.number_of_tiles];
+        map_node->left->data.tile = new tmx_tile_type[map_node->left->data.number_of_tiles];
         tile_count_x_out = 0;
         tile_count_y_out = 0;
         tile_data_count  = 0;
@@ -173,7 +173,7 @@ void map_gen_BSP_split(map_node_type *map_node)
             tile_data_count = (tile_count_y_out*map_node->data.size.x)+tile_count_x_out;
             map_node->left->data.tile[tile_count].position.x = map_node->data.tile[tile_data_count].position.x;
             map_node->left->data.tile[tile_count].position.y = map_node->data.tile[tile_data_count].position.y;
-            map_node->left->data.tile[tile_count].layer      = map_node->data.tile[tile_data_count].layer;
+            map_node->left->data.tile[tile_count].tile       = map_node->data.tile[tile_data_count].tile;
             tile_count_x_out++;
             if (tile_count_x_out >= map_node->left->data.size.x)
             {
@@ -188,7 +188,7 @@ void map_gen_BSP_split(map_node_type *map_node)
             {
                 if ((map_node->data.tile[tile_data_count].position.x == map_node->left->data.tile[tile_count].position.x) &&
                     (map_node->data.tile[tile_data_count].position.y == map_node->left->data.tile[tile_count].position.y))
-                     map_node->data.tile[tile_data_count].layer       = map_node->left->data.tile[tile_count].layer;
+                     map_node->data.tile[tile_data_count].tile       = map_node->left->data.tile[tile_count].tile;
             }
         }
         // right --------------------------------------------------------------------------------------------------------
@@ -197,7 +197,7 @@ void map_gen_BSP_split(map_node_type *map_node)
         map_node->right->data.size.x = map_node->data.size.x;
         map_node->right->data.size.y = new_size_y_2;
         map_node->right->data.number_of_tiles = map_node->right->data.size.x * map_node->right->data.size.y;
-        map_node->right->data.tile = new tile_type[map_node->right->data.number_of_tiles];
+        map_node->right->data.tile = new tmx_tile_type[map_node->right->data.number_of_tiles];
         tile_count_x_out = 0;
         tile_count_y_out = new_size_y_1;
         tile_data_count  = 0;
@@ -207,7 +207,7 @@ void map_gen_BSP_split(map_node_type *map_node)
             tile_data_count = (tile_count_y_out*map_node->data.size.x)+tile_count_x_out;
             map_node->right->data.tile[tile_count].position.x = map_node->data.tile[tile_data_count].position.x;
             map_node->right->data.tile[tile_count].position.y = map_node->data.tile[tile_data_count].position.y;
-            map_node->right->data.tile[tile_count].layer      = map_node->data.tile[tile_data_count].layer;
+            map_node->right->data.tile[tile_count].tile       = map_node->data.tile[tile_data_count].tile;
             tile_count_x_out++;
             if (tile_count_x_out >= map_node->right->data.size.x)
             {
@@ -222,7 +222,7 @@ void map_gen_BSP_split(map_node_type *map_node)
             {
                 if ((map_node->data.tile[tile_data_count].position.x == map_node->right->data.tile[tile_count].position.x) &&
                     (map_node->data.tile[tile_data_count].position.y == map_node->right->data.tile[tile_count].position.y))
-                     map_node->data.tile[tile_data_count].layer       = map_node->right->data.tile[tile_count].layer;
+                     map_node->data.tile[tile_data_count].tile       = map_node->right->data.tile[tile_count].tile;
             }
         }
         //generate vertical passages
@@ -231,7 +231,7 @@ void map_gen_BSP_split(map_node_type *map_node)
         int passage_y_2 = (map_node->right->data.size.y/2)+map_node->left->data.size.y;
         for (int pos_y = passage_y_1;pos_y < passage_y_2;pos_y++)
         {
-            map_node->data.tile[((pos_y*map_node->data.size.x)+passage_x)].layer = FLOOR_TILE;
+            map_node->data.tile[((pos_y*map_node->data.size.x)+passage_x)].tile = FLOOR_TILE;
         }
         delete [] map_node->left;
         delete [] map_node->right;
@@ -258,7 +258,7 @@ void map_gen_BSP_split(map_node_type *map_node)
         {
             for (int x_position = (room_size_x+1); x_position < (map_node->data.size.x-1-room_size_x); x_position++)
             {
-                map_node->data.tile[((y_position*map_node->data.size.x)+x_position)].layer = FLOOR_TILE;
+                map_node->data.tile[((y_position*map_node->data.size.x)+x_position)].tile = FLOOR_TILE;
             }
 
         }
@@ -271,39 +271,42 @@ void map_gen_BSP_split(map_node_type *map_node)
     }
 };
 
-void map_gen_BSP(map_type *map_pointer)
+void map_gen_BSP(tmx_map_type *tmx_map_pointer)
 {
-    int tile_count      = 0;
-    map_pointer->size.x = map_gen_size_x;
-    map_pointer->size.y = map_gen_size_y;
-    map_pointer->number_of_tiles = map_gen_size_x*map_gen_size_y;
-    map_pointer->tile = new tile_type[map_pointer->number_of_tiles];
-    for (int tile_count_x = 0; tile_count_x < map_pointer->size.x; tile_count_x++)
+    int tile_count                           = 0;
+    int layer_count                          = 0;
+    tmx_map_pointer->data.map_width          = map_gen_size_x;
+    tmx_map_pointer->data.map_height         = map_gen_size_y;
+    tmx_map_pointer->data.number_of_tiles    = map_gen_size_x*map_gen_size_y;
+    tmx_map_pointer->data.number_of_layers   = 1;
+    tmx_map_pointer->layer                   = new tmx_layer_type[tmx_map_pointer->data.number_of_layers];
+    tmx_map_pointer->layer[layer_count].tile = new tmx_tile_type [tmx_map_pointer->data.number_of_tiles];
+    for (int tile_count_x = 0; tile_count_x < tmx_map_pointer->data.map_width; tile_count_x++)
     {
-        for (int tile_count_y = 0; tile_count_y < map_pointer->size.y; tile_count_y++)
+        for (int tile_count_y = 0; tile_count_y < tmx_map_pointer->data.map_height; tile_count_y++)
         {
-            tile_count = (tile_count_y * map_pointer->size.x) + tile_count_x;
-            map_pointer->tile[tile_count].position.x = tile_count_x;
-            map_pointer->tile[tile_count].position.y = tile_count_y;
-            map_pointer->tile[tile_count].layer = WALL_TILE;
+            tile_count = (tile_count_y * tmx_map_pointer->data.map_width) + tile_count_x;
+            tmx_map_pointer->layer[layer_count].tile[tile_count].position.x = tile_count_x;
+            tmx_map_pointer->layer[layer_count].tile[tile_count].position.y = tile_count_y;
+            tmx_map_pointer->layer[layer_count].tile[tile_count].tile       = WALL_TILE;
         }
     }
     map_node_type temp_map;
-    temp_map.data.size.x          = map_pointer->size.x;
-    temp_map.data.size.y          = map_pointer->size.y;
+    temp_map.data.size.x          = tmx_map_pointer->data.map_width;
+    temp_map.data.size.y          = tmx_map_pointer->data.map_height;
     temp_map.data.number_of_tiles = temp_map.data.size.x * temp_map.data.size.y;
-    temp_map.data.tile            = new tile_type[sizeof(map_pointer->tile)];
-    temp_map.data.tile            = map_pointer->tile;
+    temp_map.data.tile            = new tmx_tile_type[temp_map.data.number_of_tiles];
+    temp_map.data.tile            = tmx_map_pointer->layer[layer_count].tile;
     temp_map.leaf                 = false;
     map_gen_BSP_split(&temp_map);
-    map_pointer->tile             = temp_map.data.tile;
+    tmx_map_pointer->layer[layer_count].tile = temp_map.data.tile;
     delete [] &temp_map;
 };
 
-void map_gen_BSP(map_type *map_pointer, int seed)
+void map_gen_BSP(tmx_map_type *tmx_map_pointer, int seed)
 {
     srand(seed);
-    map_gen_BSP(map_pointer);
+    map_gen_BSP(tmx_map_pointer);
 };
 
 void map_gen_CA (tmx_map_type *tmx_map_pointer)
