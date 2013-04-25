@@ -31,10 +31,17 @@
 #define UTF_8      8
 #define UTF_16     16
 
+struct i2_type
+{
+    int x;
+    int y;
+};
+
 struct tmx_tile_type
 {
-    int   tile;
-    int   tile_tileset;
+    int           tile;
+    int           tile_tileset;
+    i2_type       position;
 };
 
 struct tmx_tileset_type

@@ -37,12 +37,6 @@
 #define ROOM_MAX_X 7
 #define ROOM_MAX_Y 7
 
-struct i2_type
-{
-    int x;
-    int y;
-};
-
 struct tile_type
 {
     i2_type    position;
@@ -74,8 +68,8 @@ struct map_node_type
 void map_gen_BSP_split(map_node_type *map_node);
 void map_gen_BSP(map_type *map_pointer);
 void map_gen_BSP(map_type *map_pointer, int seed);
-void map_gen_CA (map_type *map_pointer);
-void map_gen_CA (map_type *map_pointer, int seed);
+void map_gen_CA (tmx_map_type *tmx_map_pointer);
+void map_gen_CA (tmx_map_type *tmx_map_pointer, int seed);
 
 #endif //MAP_GEN_HPP
 
