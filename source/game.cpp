@@ -36,7 +36,7 @@ game_class::game_class(void)
 
 void game_class::init(void)
 {
-    game_class::debug = true;
+    game_class::debug = false;
     glDisable(GL_DEPTH_TEST);
     //--- initial state of the background ---
     game.core.background.set_data ( 1, 1, 0, 0.0f, 0.0f, 0.0000f, 0.00000f, "data/textures/UI/backgrounds/background_01.png");
@@ -96,13 +96,15 @@ void game_class::init(void)
     init_spells();
     init_items();
 
-    //game.zoom.current = game.zoom.max;
+
+    //zoom out for testing
+    game.zoom.current = game.zoom.max;
+
     map_gen_BSP(&tmx_map);
+    tmx_load(&tmx_map,"data/maps/town.tmx");
     game.map_2D.calculate_tile_positions(&tmx_map,DEFAULT_FRAME_WIDTH/game.zoom.current/2.0f,DEFAULT_FRAME_HEIGHT/game.zoom.current/2.0f);
     //game.map_2D.calculate_tile_positions(&tmx_map);
     //game.map_2D.random_map(100,100,CAVE,CAVE);
-
-    //zoom out for testing
 
     // Add default items to inventory
     int inventory_ID = game.window_manager.window_get_number(INVENTORY_UID);

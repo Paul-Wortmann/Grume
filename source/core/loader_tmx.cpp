@@ -142,7 +142,7 @@ void tmx_load(tmx_map_type *tmx_map_pointer, std::string file_name)
         script_file.seekg(0, std::ios::beg);
         tmx_map_pointer->tileset      = new tmx_tileset_type[tmx_map_pointer->data.number_of_tilesets+1];
         tmx_map_pointer->layer        = new tmx_layer_type  [tmx_map_pointer->data.number_of_layers+1];
-        for(layer_count = 0; layer_count <= tmx_map_pointer->data.number_of_layers ; layer_count++)
+        for(layer_count = 0; layer_count <= tmx_map_pointer->data.number_of_layers; layer_count++)
         {
             tmx_map_pointer->layer[layer_count].tile = new tmx_tile_type   [tmx_map_pointer->data.number_of_tiles+1];
         }
@@ -195,7 +195,7 @@ void tmx_load(tmx_map_type *tmx_map_pointer, std::string file_name)
                         tileset_data = false;
                         tileset_count++;
                     }
-                    if (temp_string_key == "layer name")
+                    if (temp_string_key == "layer")
                     {
                         tile_count      = 0;
                         layer_data      = false;
@@ -285,8 +285,11 @@ void tmx_load(tmx_map_type *tmx_map_pointer, std::string file_name)
         }
         script_file.close();
         tmx_map_pointer->data.number_of_tiles    = tmx_map_pointer->data.map_width * tmx_map_pointer->data.map_height;
-        tmx_map_pointer->data.number_of_tilesets = tileset_count + 1;
+        tmx_map_pointer->data.number_of_tilesets = tileset_count;
+        tmx_map_pointer->data.number_of_layers   = layer_count;
+        game.core.log.file_write("layer_count -> ",layer_count);
     }
+    else game.core.log.file_write("Unable to load TMX map file -> ",file_name);
 };
 
 void tmx_save(tmx_map_type *tmx_map_pointer, std::string file_name)

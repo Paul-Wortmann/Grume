@@ -40,15 +40,33 @@ extern game_class         game;
 void map_2D_class::render(tmx_map_type *tmx_map_pointer)
 {
     tmx_tileset_type debug_tileset;
-    debug_tileset.tile_width  = 64;
-    debug_tileset.tile_height = 32;
-    debug_tileset.image_source = "data/tilesets/default_tileset.png";
-    if (!debug_tileset.image_loaded)
+    if(game.debug)
     {
-        debug_tileset.tile.load_spritesheet(debug_tileset.image_source,debug_tileset.tile_width,debug_tileset.tile_height);
-        debug_tileset.image_loaded = true;
+        if (!debug_tileset.image_loaded)
+        {
+            debug_tileset.tile_width  = 64;
+            debug_tileset.tile_height = 32;
+            debug_tileset.image_source = "data/tilesets/default_tileset.png";
+            debug_tileset.image_source = game.core.file.path_remove(debug_tileset.image_source);
+            debug_tileset.image_source = game.core.file.path_add(debug_tileset.image_source,"data/tilesets/");
+            debug_tileset.tile.load_spritesheet(debug_tileset.image_source,debug_tileset.tile_width,debug_tileset.tile_height);
+            debug_tileset.image_loaded = true;
+            debug_tileset.number_of_tiles = debug_tileset.tile.frame_max;
+        }
     }
-    debug_tileset.number_of_tiles = debug_tileset.tile.frame_max;
+    else
+    {
+        for(int tileset_count = 0; tileset_count <  tmx_map_pointer->data.number_of_tilesets; tileset_count++)
+        {
+            if (!tmx_map_pointer->tileset[tileset_count].image_loaded)
+            {
+                tmx_map_pointer->tileset[tileset_count].image_source = game.core.file.path_remove(tmx_map_pointer->tileset[tileset_count].image_source);
+                tmx_map_pointer->tileset[tileset_count].image_source = game.core.file.path_add(tmx_map_pointer->tileset[tileset_count].image_source,"data/tilesets/");
+                tmx_map_pointer->tileset[tileset_count].tile.load_spritesheet(tmx_map_pointer->tileset[tileset_count].image_source,tmx_map_pointer->tileset[tileset_count].tile_width,tmx_map_pointer->tileset[tileset_count].tile_height);
+                tmx_map_pointer->tileset[tileset_count].image_loaded = true;
+            }
+        }
+    }
 //-----------------------------
     float tile_offset_w = 0.0f;
     float tile_offset_h = 0.0f;
@@ -83,9 +101,9 @@ void map_2D_class::render(tmx_map_type *tmx_map_pointer)
                 }
                 if (game.debug)
                 {
-                    debug_tileset.tile.draw(true,tile_offset_x,tile_offset_y,0.001f,tile_offset_w,tile_offset_h,0.0f,1);
+                    debug_tileset.tile.draw(true,tile_offset_x,tile_offset_y,0.001f,tile_offset_w,tile_offset_h,0.0f,tmx_map_pointer->layer[layer_count].tile[tile_count].tile);
                 }
-                else tmx_map_pointer->tileset[tmx_map_pointer->layer[layer_count].tile[tile_count].tile_tileset].tile.draw(true,tile_offset_x,tile_offset_y,0.001f,tile_offset_w,tile_offset_h,0.0f,tmx_map_pointer->layer[layer_count].tile[tile_count].tile);
+                else tmx_map_pointer->tileset[tmx_map_pointer->layer[layer_count].tile[tile_count].tile_tileset].tile.draw(true,tile_offset_x,tile_offset_y,0.001f,tile_offset_w,tile_offset_h,0.0f,tmx_map_pointer->layer[layer_count].tile[tile_count].tile-1);
             }
         }
     };
