@@ -28,49 +28,26 @@
 #include <stdlib.h>
 #include <string>
 #include "map_2D.hpp"
+#include "loader_tmx.hpp"
 #include "../game.hpp"
 #include "textures.hpp"
 #include "misc.hpp"
 
 extern game_class         game;
 
-//-----------------------------------------------------------------------------------------------------------------
-
-tile_class::tile_class(void)
-{
-    tile_class::collision       = false;
-    tile_class::object          = 0;
-    tile_class::object_tileset  = 0;
-    tile_class::tile            = 0;
-    tile_class::tile_tileset    = 0;
-};
-
-tile_class::~tile_class(void)
-{
-};
 
 //-----------------------------------------------------------------------------------------------------------------
-
-tileset_class::tileset_class(void)
+void map_2D_class::render(tmx_map_type *tmx_map_pointer)
 {
-    tileset_class::tilewidth  = 0;
-    tileset_class::tileheight = 0;
-    tileset_class::firstgid   = 0;
-    tileset_class::name       = "";
-};
-
-tileset_class::~tileset_class(void)
-{
-};
-
-//-----------------------------------------------------------------------------------------------------------------
-void map_2D_class::render(void)
-{
-    tileset_class debug_tileset;
-    debug_tileset.tilewidth  = 64;
-    debug_tileset.tileheight = 32;
+    tmx_tileset_type debug_tileset;
+    debug_tileset.tile_width  = 64;
+    debug_tileset.tile_height = 32;
     debug_tileset.image_source = "data/tilesets/default_tileset.png";
-    debug_tileset.tile.load_spritesheet(debug_tileset.image_source,debug_tileset.tilewidth,debug_tileset.tileheight);
+    if (!debug_tileset.image_loaded)
+    {
+        debug_tileset.tile.load_spritesheet(debug_tileset.image_source,debug_tileset.tile_width,debug_tileset.tile_height);
+        debug_tileset.image_loaded = true;
+    }
     debug_tileset.number_of_tiles = debug_tileset.tile.frame_max;
 //-----------------------------
     float tile_offset_w = 0.0f;
@@ -78,613 +55,163 @@ void map_2D_class::render(void)
     float tile_offset_x = 0.0f;
     float tile_offset_y = 0.0f;
     glDisable(GL_DEPTH_TEST);
-// ----------------------------- Draw Tile Layer ------------------------------------------------------------------
-    for (int tile_count = 0; tile_count < map_2D_class::number_of_tiles; tile_count++)
+// ----------------------------- Draw Tile Layers ------------------------------------------------------------------
+    for(int layer_count = 0; layer_count <  tmx_map_pointer->data.number_of_layers; layer_count++)
     {
-        if ((map_2D_class::tile_visable(tile_count)) && (map_2D_class::tile[tile_count].tile > 0))
+        for(int tile_count = 0; tile_count <  tmx_map_pointer->data.number_of_tiles; tile_count++)
         {
-            tile_offset_x = map_2D_class::tile[tile_count].pos_x;
-            tile_offset_y = map_2D_class::tile[tile_count].pos_y;
-            tile_offset_w = map_2D_class::tileset[map_2D_class::tile[tile_count].tile_tileset].tilewidth  / (game.zoom.current*2);
-            tile_offset_h = map_2D_class::tileset[map_2D_class::tile[tile_count].tile_tileset].tileheight / (game.zoom.current*2);
-            if(game.debug) tile_offset_w = debug_tileset.tilewidth  / (game.zoom.current*2);
-            if(game.debug) tile_offset_h = debug_tileset.tileheight / (game.zoom.current*2);
-            // Calculate for irregular sized tiles.
-            if (map_2D_class::tileset[map_2D_class::tile[tile_count].tile_tileset].tilewidth > DEFAULT_FRAME_WIDTH)
+            if ((map_2D_class::tile_visible(tmx_map_pointer,layer_count,tile_count)) && (tmx_map_pointer->layer[layer_count].tile[tile_count].tile > 0))
             {
-                tile_offset_x += (map_2D_class::tileset[map_2D_class::tile[tile_count].tile_tileset].tilewidth - DEFAULT_FRAME_WIDTH) / (game.zoom.current*4);
+                tile_offset_x = tmx_map_pointer->layer[layer_count].tile[tile_count].position.x;
+                tile_offset_y = tmx_map_pointer->layer[layer_count].tile[tile_count].position.y;
+                tile_offset_w = tmx_map_pointer->tileset[tmx_map_pointer->layer[layer_count].tile[tile_count].tile_tileset].tile_width  / (game.zoom.current*2);
+                tile_offset_h = tmx_map_pointer->tileset[tmx_map_pointer->layer[layer_count].tile[tile_count].tile_tileset].tile_height / (game.zoom.current*2);
+                if(game.debug) tile_offset_w = debug_tileset.tile_width  / (game.zoom.current*2);
+                if(game.debug) tile_offset_h = debug_tileset.tile_height / (game.zoom.current*2);
+                // Calculate for irregular sized tiles.
+                if (tmx_map_pointer->tileset[tmx_map_pointer->layer[layer_count].tile[tile_count].tile_tileset].tile_width > DEFAULT_FRAME_WIDTH)
+                {
+                    tile_offset_x += (tmx_map_pointer->tileset[tmx_map_pointer->layer[layer_count].tile[tile_count].tile_tileset].tile_width - DEFAULT_FRAME_WIDTH) / (game.zoom.current*4);
+                }
+                if (tmx_map_pointer->tileset[tmx_map_pointer->layer[layer_count].tile[tile_count].tile_tileset].tile_height > DEFAULT_FRAME_HEIGHT)
+                {
+                    tile_offset_y += (tmx_map_pointer->tileset[tmx_map_pointer->layer[layer_count].tile[tile_count].tile_tileset].tile_height - DEFAULT_FRAME_HEIGHT) / (game.zoom.current*4);
+                }
+                if (tmx_map_pointer->tileset[tmx_map_pointer->layer[layer_count].tile[tile_count].tile_tileset].tile_height < DEFAULT_FRAME_HEIGHT)
+                {
+                    tile_offset_y += (tmx_map_pointer->tileset[tmx_map_pointer->layer[layer_count].tile[tile_count].tile_tileset].tile_height - DEFAULT_FRAME_HEIGHT) / (game.zoom.current*4);
+                }
+                if (game.debug)
+                {
+                    debug_tileset.tile.draw(true,tile_offset_x,tile_offset_y,0.001f,tile_offset_w,tile_offset_h,0.0f,1);
+                }
+                else tmx_map_pointer->tileset[tmx_map_pointer->layer[layer_count].tile[tile_count].tile_tileset].tile.draw(true,tile_offset_x,tile_offset_y,0.001f,tile_offset_w,tile_offset_h,0.0f,tmx_map_pointer->layer[layer_count].tile[tile_count].tile);
             }
-            if (map_2D_class::tileset[map_2D_class::tile[tile_count].tile_tileset].tileheight > DEFAULT_FRAME_HEIGHT)
-            {
-                tile_offset_y += (map_2D_class::tileset[map_2D_class::tile[tile_count].tile_tileset].tileheight - DEFAULT_FRAME_HEIGHT) / (game.zoom.current*4);
-            }
-            if (map_2D_class::tileset[map_2D_class::tile[tile_count].tile_tileset].tileheight < DEFAULT_FRAME_HEIGHT)
-            {
-                tile_offset_y += (map_2D_class::tileset[map_2D_class::tile[tile_count].tile_tileset].tileheight - DEFAULT_FRAME_HEIGHT) / (game.zoom.current*4);
-            }
-            if (game.debug)
-            {
-                debug_tileset.tile.draw(true,tile_offset_x,tile_offset_y,0.001f,tile_offset_w,tile_offset_h,0.0f,1);
-            }
-            else map_2D_class::tileset[map_2D_class::tile[tile_count].tile_tileset].tile.draw(true,tile_offset_x,tile_offset_y,0.001f,tile_offset_w,tile_offset_h,0.0f,map_2D_class::tile[tile_count].tile);
-        }
-    };
-// ----------------------------- Draw Object Layer ----------------------------------------------------------------
-    for (int tile_count = 0; tile_count < map_2D_class::number_of_tiles; tile_count++)
-    {
-        if ((map_2D_class::tile_visable(tile_count)) && (map_2D_class::tile[tile_count].object > 0))
-        {
-            tile_offset_x = map_2D_class::tile[tile_count].pos_x;
-            tile_offset_y = map_2D_class::tile[tile_count].pos_y;
-            tile_offset_w = map_2D_class::tileset[map_2D_class::tile[tile_count].object_tileset].tilewidth  / (game.zoom.current*2);
-            tile_offset_h = map_2D_class::tileset[map_2D_class::tile[tile_count].object_tileset].tileheight / (game.zoom.current*2);
-            if(game.debug) tile_offset_w = debug_tileset.tilewidth  / (game.zoom.current*2);
-            if(game.debug) tile_offset_h = debug_tileset.tileheight / (game.zoom.current*2);
-            if (map_2D_class::tileset[map_2D_class::tile[tile_count].object_tileset].tilewidth > DEFAULT_FRAME_WIDTH)
-            {
-                tile_offset_x += (map_2D_class::tileset[map_2D_class::tile[tile_count].object_tileset].tilewidth - DEFAULT_FRAME_WIDTH) / (game.zoom.current*4);
-            }
-            if (map_2D_class::tileset[map_2D_class::tile[tile_count].object_tileset].tileheight > DEFAULT_FRAME_HEIGHT)
-            {
-                tile_offset_y += (map_2D_class::tileset[map_2D_class::tile[tile_count].object_tileset].tileheight - DEFAULT_FRAME_HEIGHT) / (game.zoom.current*4);
-            }
-            if (map_2D_class::tileset[map_2D_class::tile[tile_count].object_tileset].tileheight < DEFAULT_FRAME_HEIGHT)
-            {
-                tile_offset_y += (map_2D_class::tileset[map_2D_class::tile[tile_count].object_tileset].tileheight - DEFAULT_FRAME_HEIGHT) / (game.zoom.current*4);
-            }
-            if (game.debug)
-            {
-                debug_tileset.tile.draw(true,tile_offset_x,tile_offset_y,0.001f,tile_offset_w,tile_offset_h,0.0f,2);
-            }
-            else map_2D_class::tileset[map_2D_class::tile[tile_count].object_tileset].tile.draw(true,tile_offset_x,tile_offset_y,0.001f,tile_offset_w,tile_offset_h,0.0f,map_2D_class::tile[tile_count].object);
         }
     };
 };
 
-void map_2D_class::process(void)
+void map_2D_class::process(tmx_map_type *tmx_map_pointer)
 {
-    if (game.core.io.mouse_y >=  0.99000) map_2D_class::scroll_map( 0, 1);
-    if (game.core.io.mouse_y <= -0.99000) map_2D_class::scroll_map( 0,-1);
-    if (game.core.io.mouse_x >=  0.99000) map_2D_class::scroll_map( 1, 0);
-    if (game.core.io.mouse_x <= -0.99000) map_2D_class::scroll_map(-1, 0);
+    if (game.core.io.mouse_y >=  0.99000) map_2D_class::scroll_map(tmx_map_pointer, 0, 1);
+    if (game.core.io.mouse_y <= -0.99000) map_2D_class::scroll_map(tmx_map_pointer, 0,-1);
+    if (game.core.io.mouse_x >=  0.99000) map_2D_class::scroll_map(tmx_map_pointer, 1, 0);
+    if (game.core.io.mouse_x <= -0.99000) map_2D_class::scroll_map(tmx_map_pointer,-1, 0);
 };
 
-void map_2D_class::scroll_map(int x_dir, int y_dir)
+void map_2D_class::scroll_map(tmx_map_type *tmx_map_pointer,int x_dir, int y_dir)
 {
     float temp_x = x_dir * MAP_SCROLL_SPEED;
     float temp_y = y_dir * MAP_SCROLL_SPEED;
-    for(int tile_count = 0; tile_count <  map_2D_class::number_of_tiles; tile_count++)
+    for(int layer_count = 0; layer_count <  tmx_map_pointer->data.number_of_layers; layer_count++)
     {
-        map_2D_class::tile[tile_count].pos_x -= temp_x;
-        map_2D_class::tile[tile_count].pos_y -= temp_y;
+        for(int tile_count = 0; tile_count <  tmx_map_pointer->data.number_of_tiles; tile_count++)
+        {
+            tmx_map_pointer->layer[layer_count].tile[tile_count].position.x -= temp_x;
+            tmx_map_pointer->layer[layer_count].tile[tile_count].position.y -= temp_y;
+        }
     }
 };
 
-void map_2D_class::center_on_tile(int tile_ID)
+void map_2D_class::center_on_tile(tmx_map_type *tmx_map_pointer, int tile_ID)
 {
-    float temp_x = map_2D_class::tile[tile_ID].pos_x;
-    float temp_y = map_2D_class::tile[tile_ID].pos_y;
-    for(int tile_count = 0; tile_count < map_2D_class::number_of_tiles; tile_count++)
+    int layer_count = 0;
+    float temp_x    = tmx_map_pointer->layer[layer_count].tile[tile_ID].position.x;
+    float temp_y    = tmx_map_pointer->layer[layer_count].tile[tile_ID].position.y;
+    for(layer_count = 0; layer_count <  tmx_map_pointer->data.number_of_layers; layer_count++)
     {
-        map_2D_class::tile[tile_count].pos_x -= temp_x;
-        map_2D_class::tile[tile_count].pos_y -= temp_y;
+        for(int tile_count = 0; tile_count <  tmx_map_pointer->data.number_of_tiles; tile_count++)
+        {
+            tmx_map_pointer->layer[layer_count].tile[tile_count].position.x -= temp_x;
+            tmx_map_pointer->layer[layer_count].tile[tile_count].position.y -= temp_y;
+        }
     }
 };
 
-void map_2D_class::calculate_tile_positions(void)
+void map_2D_class::calculate_tile_positions(tmx_map_type *tmx_map_pointer)
 {
-    float start_x  = 0.0f;
-    float start_y  = 0.0f;
-    int   x_count  = 0;
-    int   y_count  = 0;
-    for (int tile_count = 0; tile_count < map_2D_class::number_of_tiles; tile_count++)
+    for(int layer_count   = 0; layer_count <  tmx_map_pointer->data.number_of_layers; layer_count++)
     {
-        map_2D_class::tile[tile_count].pos_x = start_x + (x_count * (TILE_WIDTH_HALF/2));
-        map_2D_class::tile[tile_count].pos_y = start_y - (y_count * (TILE_HEIGHT_HALF/(DEFAULT_FRAME_HEIGHT/16)));
-        x_count++;
-        y_count++;
-        if (x_count >= map_2D_class::width)
+        float start_x     = 0.0f;
+        float start_y     = 0.0f;
+        int   x_count     = 0;
+        int   y_count     = 0;
+        for(int tile_count = 0; tile_count <  tmx_map_pointer->data.number_of_tiles; tile_count++)
         {
-            x_count = 0;
-            start_x -= TILE_WIDTH_HALF/2;
-        }
-        if (y_count >= map_2D_class::height)
-        {
-            y_count = 0;
-            start_y -= TILE_HEIGHT_HALF/(DEFAULT_FRAME_HEIGHT/16);
+            tmx_map_pointer->layer[layer_count].tile[tile_count].position.x = start_x + (x_count * (TILE_WIDTH_HALF/2));
+            tmx_map_pointer->layer[layer_count].tile[tile_count].position.y = start_y - (y_count * (TILE_HEIGHT_HALF/(DEFAULT_FRAME_HEIGHT/16)));
+            x_count++;
+            y_count++;
+            if (x_count >= tmx_map_pointer->data.map_width)
+            {
+                x_count = 0;
+                start_x -= TILE_WIDTH_HALF/2;
+            }
+            if (y_count >= tmx_map_pointer->data.map_height)
+            {
+                y_count = 0;
+                start_y -= TILE_HEIGHT_HALF/(DEFAULT_FRAME_HEIGHT/16);
+            }
         }
     }
 };
 
-void map_2D_class::calculate_tile_positions(float tile_width_half_specify,float tile_height_half_specify)
+void map_2D_class::calculate_tile_positions(tmx_map_type *tmx_map_pointer, float tile_width_half_specify,float tile_height_half_specify)
 {
-    float start_x  = map_2D_class::tile[0].pos_x;
-    float start_y  = map_2D_class::tile[0].pos_y + (tile_height_half_specify/(DEFAULT_FRAME_HEIGHT/16));
-    int   x_count  = 0;
-    int   y_count  = 0;
-    for (int tile_count = 0; tile_count < map_2D_class::number_of_tiles-1; tile_count++)
+    for(int layer_count   = 0; layer_count <  tmx_map_pointer->data.number_of_layers; layer_count++)
     {
-        map_2D_class::tile[tile_count].pos_x = start_x + (x_count * (tile_width_half_specify/2));
-        map_2D_class::tile[tile_count].pos_y = start_y - (y_count * (tile_height_half_specify/(DEFAULT_FRAME_HEIGHT/16)));
-        x_count++;
-        y_count++;
-        if (x_count >= map_2D_class::width)
+        float start_x     = 0.0f;
+        float start_y     = 0.0f;
+        int   x_count     = 0;
+        int   y_count     = 0;
+        for(int tile_count = 0; tile_count <  tmx_map_pointer->data.number_of_tiles; tile_count++)
         {
-            x_count = 0;
-            start_x -= tile_width_half_specify/2;
-        }
-        if (y_count >= map_2D_class::height)
-        {
-            y_count = 0;
-            start_y -= tile_height_half_specify/(DEFAULT_FRAME_HEIGHT/16);
+            tmx_map_pointer->layer[layer_count].tile[tile_count].position.x = start_x + (x_count * (tile_width_half_specify/2));
+            tmx_map_pointer->layer[layer_count].tile[tile_count].position.y = start_y - (y_count * (tile_height_half_specify/(DEFAULT_FRAME_HEIGHT/16)));
+            x_count++;
+            y_count++;
+            if (x_count >= tmx_map_pointer->data.map_width)
+            {
+                x_count = 0;
+                start_x -= tile_width_half_specify/2;
+            }
+            if (y_count >= tmx_map_pointer->data.map_height)
+            {
+                y_count = 0;
+                start_y -= tile_height_half_specify/(DEFAULT_FRAME_HEIGHT/16);
+            }
         }
     }
 };
 
-bool map_2D_class::tile_visable(int tile_no)
+bool map_2D_class::tile_visible(tmx_map_type *tmx_map_pointer, int layer_number, int tile_number)
 {
     float x_max =  1.0f;
     float x_min = -1.0f;
     float y_max =  1.0f;
     float y_min = -1.0f;
-    if((map_2D_class::tile[tile_no].pos_x <= ( x_max+(TILE_WIDTH*4))) && (map_2D_class::tile[tile_no].pos_x >= (x_min-(TILE_WIDTH*4))) && (map_2D_class::tile[tile_no].pos_y <= ( y_max+(TILE_HEIGHT*4))) && (map_2D_class::tile[tile_no].pos_y >= (y_min-(TILE_HEIGHT*4)))) return(true);
+    if((tmx_map_pointer->layer[layer_number].tile[tile_number].position.x <= ( x_max+(TILE_WIDTH*4))) && (tmx_map_pointer->layer[layer_number].tile[tile_number].position.x >= (x_min-(TILE_WIDTH*4))) && (tmx_map_pointer->layer[layer_number].tile[tile_number].position.y <= ( y_max+(TILE_HEIGHT*4))) && (tmx_map_pointer->layer[layer_number].tile[tile_number].position.y >= (y_min-(TILE_HEIGHT*4)))) return(true);
     else return(false);
 };
 
-int  map_2D_class::mouse_over_tile(void)
+int  map_2D_class::mouse_over_tile(tmx_map_type *tmx_map_pointer)
 {
+    int layer_count  = 0;
     int return_value = -1;
-    for (int tile_count = 0; tile_count < map_2D_class::number_of_tiles; tile_count++)
+    //for(layer_count = 0; layer_count <  tmx_map_pointer->data.number_of_layers; layer_count++)
     {
-        if ((map_2D_class::tile_visable(tile_count)) && (map_2D_class::tile[tile_count].tile > 0))
+        for(int tile_count = 0; tile_count <  tmx_map_pointer->data.number_of_tiles; tile_count++)
         {
-            if (game.core.physics.point_in_diamond(map_2D_class::tile[tile_count].pos_x,TILE_WIDTH_HALF,map_2D_class::tile[tile_count].pos_y,TILE_HEIGHT_HALF,game.core.io.mouse_x,game.core.io.mouse_y)) return_value = tile_count;
+            if (map_2D_class::tile_visible(tmx_map_pointer,layer_count,tile_count))
+            {
+                if (game.core.physics.point_in_diamond(tmx_map_pointer->layer[layer_count].tile[tile_count].position.x,TILE_WIDTH_HALF,tmx_map_pointer->layer[layer_count].tile[tile_count].position.y,TILE_HEIGHT_HALF,game.core.io.mouse_x,game.core.io.mouse_y)) return_value = tile_count;
+            }
         }
     }
     return(return_value);
 };
 
-void map_2D_class::load(std::string file_name)
-{
-    game.core.log.file_write("Loading 2D map -> ",file_name);
-    int          position_count  = 0;
-    int          position_start  = 0;
-    bool         map_data        = true;
-    bool         tileset_data    = false;
-    bool         layer_data      = false;
-    bool         collision_data  = false;
-    bool         object_data     = false;
-    bool         tile_data       = false;
-    int          tileset_count   = 0;
-    int          layer_count     = 0;
-    int          tile_count      = 0;
-    char         temp_char       = ' ';
-    float        temp_float_data = 0.0f;
-    int          temp_int_data   = 0;
-    bool         temp_bool_data  = false;
-    std::string  temp_string_data;
-    std::string  temp_string_key;
-    std::string  temp_string_value;
-    std::string  data_line;
-    std::fstream script_file(file_name.c_str(),std::ios::in|std::ios::binary);
-//----------------------------- get sizes for dynamic arrays --------------------------------------------------------
-    if (script_file.is_open())
-    {
-        while (script_file.good())
-        {
-            getline(script_file,data_line);
-            {
-                position_count = 0;
-                if ((data_line[position_count] == ' ') && (data_line.length() > 2))
-                {
-                    temp_char = ' ';
-                    while (temp_char == ' ')
-                    {
-                        temp_char = data_line[position_count];
-                        position_count++;
-                    }
-                    position_count--;
-                }
-                position_start = position_count;
-                if((data_line[position_count] == '<') && (data_line[position_count+1] == '/') && (data_line.length() > 2))
-                {
-                    temp_char         = ' ';
-                    temp_string_key   = "";
-                    temp_string_value = "";
-                    while(temp_char != '>')
-                    {
-                        temp_char = data_line[position_count];
-                        if((temp_char != '<') && (temp_char != '/') && (temp_char != '>'))
-                        {
-                            temp_string_key += temp_char;
-                        }
-                        position_count++;
-                        if(position_count > (int)data_line.length()) temp_char = '>';
-                    }
-                    if (temp_string_key == "tileset")
-                    {
-                        tileset_count++;
-                    }
-                }
-            }
-        }
-    }
-    map_2D_class::number_of_tilesets = tileset_count;
-    map_2D_class::tileset = new tileset_class[map_2D_class::number_of_tilesets+1];
-    script_file.clear();
-    script_file.seekg(0, std::ios::beg);
-    //----------------------------- read in data ------------------------------------------------------------------------
-    position_count  = 0;
-    position_start  = 0;
-    map_data        = true;
-    tileset_data    = false;
-    layer_data      = false;
-    collision_data  = false;
-    object_data     = false;
-    tile_data       = false;
-    tileset_count   = 0;
-    layer_count     = 0;
-    tile_count      = 0;
-    temp_char       = ' ';
-    temp_float_data = 0.0f;
-    temp_int_data   = 0;
-    temp_bool_data  = false;
-    if (script_file.is_open())
-    {
-        while (script_file.good())
-        {
-            getline(script_file,data_line);
-            {
-                position_count = 0;
-                if ((data_line[position_count] == ' ') && (data_line.length() > 2))
-                {
-                    temp_char = ' ';
-                    while (temp_char == ' ')
-                    {
-                        temp_char = data_line[position_count];
-                        position_count++;
-                    }
-                    position_count--;
-                }
-                position_start = position_count;
-                if((data_line[position_count] == '<') && (data_line[position_count+1] == '/') && (data_line.length() > 2))
-                {
-                    temp_char         = ' ';
-                    temp_string_key   = "";
-                    temp_string_value = "";
-                    while(temp_char != '>')
-                    {
-                        temp_char = data_line[position_count];
-                        if((temp_char != '<') && (temp_char != '/') && (temp_char != '>'))
-                        {
-                            temp_string_key += temp_char;
-                        }
-                        position_count++;
-                        if(position_count > (int)data_line.length()) temp_char = '>';
-                    }
-                    if (temp_string_key == "tileset")
-                    {
-                        map_2D_class::tileset[tileset_count].number_of_tiles = ((map_2D_class::tileset[tileset_count].width / map_2D_class::tileset[tileset_count].tilewidth) * (map_2D_class::tileset[tileset_count].height / map_2D_class::tileset[tileset_count].tileheight));
-                        tileset_data = false;
-                        tileset_count++;
-                    }
-                    if (temp_string_key == "layer")
-                    {
-                        collision_data  = false;
-                        object_data     = false;
-                        tile_data       = false;
-                        tile_count      = 0;
-                        layer_data      = false;
-                        layer_count++;
-                    }
-                }
-                position_count = position_start;
-                if((data_line[position_count] == '<') && (data_line[position_count+1] != '/') && (data_line.length() > 2))
-                {
-                    position_count++;
-                    while(position_count < (int)data_line.length())
-                    {
-                        temp_char         = ' ';
-                        temp_string_key   = "";
-                        temp_string_value = "";
-                        while(temp_char != '"')
-                        {
-                            temp_char = data_line[position_count];
-                            if((temp_char != '"') && (temp_char != '='))
-                            {
-                                if((data_line[position_count-1] != '"') && (temp_char == ' ')) temp_string_key += temp_char;
-                                else if (temp_char != ' ') temp_string_key += temp_char;
-                            }
-                            position_count++;
-                            if(position_count > (int)data_line.length()) temp_char = '"';
-                        }
-                        temp_char        = ' ';
-                        while(temp_char != '"')
-                        {
-                            temp_char = data_line[position_count];
-                            if(temp_char != '"') temp_string_value += temp_char;
-                            position_count++;
-                            if(position_count > (int)data_line.length()) (temp_char = '"');
-                        }
-                        temp_string_data    = temp_string_value.c_str();
-                        temp_float_data     = atof(temp_string_value.c_str());
-                        temp_int_data       = atoi(temp_string_value.c_str());
-                        if (temp_int_data   == 1) temp_bool_data = true;
-                        else temp_bool_data = false;
-                        if (temp_string_key == "map version")      map_data     = true;
-                        if (temp_string_key == "tileset firstgid") tileset_data = true;
-                        if (temp_string_key == "layer name")       layer_data   = true;
-                        if (map_data)
-                        {
-                            if (temp_string_key == "map version") map_2D_class::version     = temp_float_data;
-                            if (temp_string_key == "orientation") map_2D_class::orientation = temp_string_data;
-                            if (temp_string_key == "width")       map_2D_class::width       = temp_int_data;
-                            if (temp_string_key == "height")      map_2D_class::height      = temp_int_data;
-                            if (temp_string_key == "tilewidth")   map_2D_class::tilewidth   = temp_int_data;
-                            if (temp_string_key == "tileheight")  map_2D_class::tileheight  = temp_int_data;
-                            if (temp_string_key == "tileheight")  map_data                  = false;
-                            if(!map_data)
-                            {
-                                map_2D_class::number_of_tiles = map_2D_class::width * map_2D_class::height;
-                                map_2D_class::tile = new tile_class[map_2D_class::number_of_tiles+1];
-                            }
-                        }
-                        if (tileset_data)
-                        {
-                            if (temp_string_key == "tileset firstgid") map_2D_class::tileset[tileset_count].firstgid     = temp_int_data;
-                            if (temp_string_key == "name")             map_2D_class::tileset[tileset_count].name         = temp_string_data;
-                            if (temp_string_key == "tilewidth")        map_2D_class::tileset[tileset_count].tilewidth    = temp_int_data;
-                            if (temp_string_key == "tileheight")       map_2D_class::tileset[tileset_count].tileheight   = temp_int_data;
-                            if (temp_string_key == "image source")     map_2D_class::tileset[tileset_count].image_source = temp_string_data;
-                            if (temp_string_key == "width")            map_2D_class::tileset[tileset_count].width        = temp_int_data;
-                            if (temp_string_key == "height")           map_2D_class::tileset[tileset_count].height       = temp_int_data;
-                        }
-                        if (layer_data)
-                        {
-                            if (temp_string_key == "layer name")
-                            {
-                                if (temp_string_data == "collision") collision_data  = true;
-                                    else collision_data  = false;
-                                if (temp_string_data == "object") object_data  = true;
-                                    else object_data  = false;
-                                if (temp_string_data == "tile") tile_data  = true;
-                                    else tile_data  = false;
-                                tile_count      = 0;
-                            };
-                            if (temp_string_key == "tile gid")
-                            {
-                                if (collision_data)
-                                {
-                                    map_2D_class::tile[tile_count].collision = temp_bool_data;
-                                }
-                                if (object_data)
-                                {
-                                    map_2D_class::tile[tile_count].object_tileset = 0;
-                                    for (int temp_tileset_count = 0; temp_tileset_count < tileset_count; temp_tileset_count++)
-                                    {
-                                        if (temp_int_data >= map_2D_class::tileset[temp_tileset_count].firstgid)
-                                        {
-                                            map_2D_class::tile[tile_count].object_tileset = temp_tileset_count;
-                                        }
-                                    }
-                                    temp_int_data -= map_2D_class::tileset[map_2D_class::tile[tile_count].object_tileset].firstgid;
-                                    map_2D_class::tile[tile_count].object        = temp_int_data;
-                                }
-                                if (tile_data)
-                                {
-                                    map_2D_class::tile[tile_count].tile_tileset = 0;
-                                    for (int temp_tileset_count = 0; temp_tileset_count < tileset_count; temp_tileset_count++)
-                                    {
-                                        if (temp_int_data >= map_2D_class::tileset[temp_tileset_count].firstgid)
-                                        {
-                                            map_2D_class::tile[tile_count].tile_tileset = temp_tileset_count;
-                                        }
-                                    }
-                                    temp_int_data -= map_2D_class::tileset[map_2D_class::tile[tile_count].tile_tileset].firstgid;
-                                    map_2D_class::tile[tile_count].tile          = temp_int_data;
-                                }
-                                tile_count++;
-                            }
-                        }
-                    }
-                }
-            }
-        }
-        script_file.close();
-        // Load the tile-sets into memory
-        for (int tile_set_count = 0; tile_set_count < map_2D_class::number_of_tilesets-1; tile_set_count++)
-        {
-            int temp_tile_width  = map_2D_class::tileset[tile_set_count].tilewidth;
-            int temp_tile_height = map_2D_class::tileset[tile_set_count].tileheight;
-            temp_string_data = map_2D_class::tileset[tile_set_count].image_source;
-            temp_string_data = game.core.file.path_remove(temp_string_data);
-            temp_string_data = game.core.file.path_add(temp_string_data,"data/tilesets/");
-            map_2D_class::tileset[tile_set_count].tile.load_spritesheet(temp_string_data,temp_tile_width,temp_tile_height);
-            game.core.log.file_write("Loaded tile-set -> " + temp_string_data + " - frames loaded -> ",map_2D_class::tileset[tile_set_count].number_of_tiles);
-        }
-        map_2D_class::calculate_tile_positions();
-        map_2D_class::center_on_tile(0);
-    }
-};
-
-void map_2D_class::save(std::string file_name)
-{
-    std::fstream script_file(file_name.c_str(),std::ios::out|std::ios::binary|std::ios::trunc);
-    if (script_file.is_open())
-    {
-        script_file << "<?xml version=";
-        script_file << '"';
-        script_file << "1.0";
-        script_file << '"';
-        script_file << " encoding=";
-        script_file << '"';
-        script_file << " UTF-8";
-        script_file << '"';
-        script_file << "?>";
-        script_file << "\n";
-
-        script_file << "<map version=";
-        script_file << '"';
-        script_file << (float)map_2D_class::version;
-        if ((float)map_2D_class::version == (int)map_2D_class::version) script_file << ".0";
-        script_file << '"';
-        script_file << " orientation=";
-        script_file << '"';
-        script_file << map_2D_class::orientation.c_str();
-        script_file << '"';
-        script_file << " width=";
-        script_file << '"';
-        script_file << map_2D_class::width;
-        script_file << '"';
-        script_file << " height=";
-        script_file << '"';
-        script_file << map_2D_class::height;
-        script_file << '"';
-        script_file << " tilewidth=";
-        script_file << '"';
-        script_file << map_2D_class::tilewidth;
-        script_file << '"';
-        script_file << " tileheight=";
-        script_file << '"';
-        script_file << map_2D_class::tileheight;
-        script_file << '"';
-        script_file << ">";
-        script_file << "\n";
-
-        script_file << " <properties>";
-        script_file << "\n";
-
-        script_file << "  <property name=";
-        script_file << '"';
-        script_file << "MAP_ID";
-        script_file << '"';
-        script_file << " value=";
-        script_file << '"';
-        script_file << "0";
-        script_file << '"';
-        script_file << "/>";
-        script_file << "\n";
-
-        script_file << " </properties>";
-        script_file << "\n";
-
-        for (int tileset_count = 0; tileset_count < (map_2D_class::number_of_tilesets - 1); tileset_count++)
-        {
-            script_file << " <tileset firstgid=";
-            script_file << '"';
-            script_file << map_2D_class::tileset[tileset_count].firstgid;
-            script_file << '"';
-            script_file << " name=";
-            script_file << '"';
-            script_file << map_2D_class::tileset[tileset_count].name;
-            script_file << '"';
-            script_file << " tilewidth=";
-            script_file << '"';
-            script_file << map_2D_class::tileset[tileset_count].tilewidth;
-            script_file << '"';
-            script_file << " tileheight=";
-            script_file << '"';
-            script_file << map_2D_class::tileset[tileset_count].tileheight;
-            script_file << '"';
-            script_file << "/>";
-            script_file << "\n";
-            script_file << "  <image source=";
-            script_file << '"';
-            script_file << map_2D_class::tileset[tileset_count].image_source;
-            script_file << '"';
-            script_file << " width=";
-            script_file << '"';
-            script_file << map_2D_class::tileset[tileset_count].width;
-            script_file << '"';
-            script_file << " height=";
-            script_file << '"';
-            script_file << map_2D_class::tileset[tileset_count].height;
-            script_file << '"';
-            script_file << "/>";
-            script_file << "\n";
-            script_file << " </tileset>";
-            script_file << "\n";
-        }
-        script_file << " <layer name=";
-        script_file << '"';
-        script_file << "tile";
-        script_file << '"';
-        script_file << " width=";
-        script_file << '"';
-        script_file << map_2D_class::width;
-        script_file << '"';
-        script_file << " height=";
-        script_file << '"';
-        script_file << map_2D_class::height;
-        script_file << '"';
-        script_file << ">";
-        script_file << "\n";
-        script_file << "  <data>";
-        script_file << "\n";
-        for (int tile_count = 0; tile_count < map_2D_class::number_of_tiles; tile_count++)
-        {
-            script_file << "   <tile gid=";
-            script_file << '"';
-            script_file << ((map_2D_class::tile[tile_count].tile + map_2D_class::tileset[map_2D_class::tile[tile_count].tile_tileset].firstgid));
-            script_file << '"';
-            script_file << "/>";
-            script_file << "\n";
-        }
-        script_file << "  </data>";
-        script_file << "\n";
-        script_file << " </layer>";
-        script_file << "\n";
-        script_file << " <layer name=";
-        script_file << '"';
-        script_file << "object";
-        script_file << '"';
-        script_file << " width=";
-        script_file << '"';
-        script_file << map_2D_class::width;
-        script_file << '"';
-        script_file << " height=";
-        script_file << '"';
-        script_file << map_2D_class::height;
-        script_file << '"';
-        script_file << ">";
-        script_file << "\n";
-        script_file << "  <data>";
-        script_file << "\n";
-        for (int tile_count = 0; tile_count < map_2D_class::number_of_tiles; tile_count++)
-        {
-            script_file << "   <tile gid=";
-            script_file << '"';
-            script_file << ((map_2D_class::tile[tile_count].object + map_2D_class::tileset[map_2D_class::tile[tile_count].object_tileset].firstgid));
-            script_file << '"';
-            script_file << "/>";
-            script_file << "\n";
-        }
-        script_file << "  </data>";
-        script_file << "\n";
-        script_file << " </layer>";
-        script_file << "\n";
-        script_file << "</map>";
-        script_file << "\n";
-        script_file.close();
-    }
-};
-
-map_2D_class::map_2D_class(void)
-{
-    map_2D_class::version                = 0.0f;
-    map_2D_class::orientation            = "Unknown";
-    map_2D_class::width                  = 0;
-    map_2D_class::height                 = 0;
-    map_2D_class::tilewidth              = 0;
-    map_2D_class::tileheight             = 0;
-    map_2D_class::number_of_tiles        = 0;
-    map_2D_class::number_of_tilesets     = 0;
-};
-
-map_2D_class::~map_2D_class(void)
-{
-};
-
+/*
 //------------------------------ Random map generation below -----------------------------------------------------------------------------------
 
 void map_2D_class::random_map(int tiles_x, int tiles_y, int type_of_map_to_generate, int type_of_tile_set_to_use)
@@ -1656,4 +1183,4 @@ void map_2D_class::random_map(int tiles_x, int tiles_y, int type_of_map_to_gener
 
 
 //-----------------------------------------------------------------------------------------------------------------
-
+*/

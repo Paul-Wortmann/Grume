@@ -30,8 +30,8 @@
 #include <string>
 
 int node_count         = 0;
-int map_gen_size_x     = 80;
-int map_gen_size_y     = 24;
+int map_gen_size_x     = 100;
+int map_gen_size_y     = 100;
 
 void map_gen_BSP_split(map_node_type *map_node)
 {

@@ -25,9 +25,10 @@
 #ifndef LOADER_TMX_H
 #define LOADER_TMX_H
 
+#include "textures.hpp"
+
 #define ISOMETRIC  1
 #define ORTHOGONAL 2
-
 #define UTF_8      8
 #define UTF_16     16
 
@@ -37,11 +38,17 @@ struct i2_type
     int y;
 };
 
+struct f2_type
+{
+    float x;
+    float y;
+};
+
 struct tmx_tile_type
 {
     int           tile;
     int           tile_tileset;
-    i2_type       position;
+    f2_type       position;
 };
 
 struct tmx_tileset_type
@@ -51,9 +58,11 @@ struct tmx_tileset_type
     int           first_gid;
     std::string   image_name;
     std::string   image_source;
+    bool          image_loaded;
     int           image_width;
     int           image_height;
     int           number_of_tiles;
+    texture_class tile;
 };
 
 struct tmx_layer_type

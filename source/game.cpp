@@ -26,6 +26,7 @@
 #include "game.hpp"
 
 game_class        game;
+tmx_map_type      tmx_map;
 
 game_class::game_class(void)
 {
@@ -35,7 +36,7 @@ game_class::game_class(void)
 
 void game_class::init(void)
 {
-    game_class::debug = false;
+    game_class::debug = true;
     glDisable(GL_DEPTH_TEST);
     //--- initial state of the background ---
     game.core.background.set_data ( 1, 1, 0, 0.0f, 0.0f, 0.0000f, 0.00000f, "data/textures/UI/backgrounds/background_01.png");
@@ -95,12 +96,13 @@ void game_class::init(void)
     init_spells();
     init_items();
 
-    //game.map_2D.load("data/maps/town.tmx");
-    game.map_2D.random_map(100,100,CAVE,CAVE);
+    //game.zoom.current = game.zoom.max;
+    map_gen_BSP(&tmx_map);
+    game.map_2D.calculate_tile_positions(&tmx_map,DEFAULT_FRAME_WIDTH/game.zoom.current/2.0f,DEFAULT_FRAME_HEIGHT/game.zoom.current/2.0f);
+    //game.map_2D.calculate_tile_positions(&tmx_map);
+    //game.map_2D.random_map(100,100,CAVE,CAVE);
 
     //zoom out for testing
-    game.zoom.current = game.zoom.max;
-    game.map_2D.calculate_tile_positions(DEFAULT_FRAME_WIDTH/game.zoom.current/2.0f,DEFAULT_FRAME_HEIGHT/game.zoom.current/2.0f);
 
     // Add default items to inventory
     int inventory_ID = game.window_manager.window_get_number(INVENTORY_UID);
@@ -124,7 +126,7 @@ void game_class::process(void)
 {
     game.player.process();
     game.npc.process();
-    game.map_2D.process();
+    game.map_2D.process(&tmx_map);
     //game.resource.map_3D.town.process();
     game.core.game_resume = true;
     if (game.core.music_next_track)
@@ -301,9 +303,10 @@ void game_class::process(void)
             game.core.io.keyboard_delay_count      = 0;
         }
 ///------------------------------------------------------------------------------------------
+        /*
         if (game.core.io.key_r) // regenerate random map.
         {
-            game.map_2D.random_map(100,100,CAVE,DUNGEON);
+            /game.map_2D.random_map(100,100,CAVE,DUNGEON);
             //zoom out for testing
             game.zoom.current = game.zoom.max;
             game.map_2D.calculate_tile_positions(DEFAULT_FRAME_WIDTH/game.zoom.current/2.0f,DEFAULT_FRAME_HEIGHT/game.zoom.current/2.0f);
@@ -311,6 +314,7 @@ void game_class::process(void)
             game.core.io.key_r                     = false;
             game.core.io.keyboard_delay_count      = 0;
         }
+        */
         if (game.core.io.key_d) // toggle debug.
         {
             game.debug = !game.debug;
@@ -349,7 +353,7 @@ void game_class::render(void)
     float  world_ambient_light[]  = {game.world_ambient.intensity_R,game.world_ambient.intensity_G,game.world_ambient.intensity_B,game.world_ambient.intensity_A};
     glLightModelfv(GL_LIGHT_MODEL_AMBIENT,world_ambient_light);
 
-    game.map_2D.render();
+    game.map_2D.render(&tmx_map);
     //game.resource.map_3D.town.draw();
     game.player.render();
     game.npc.render();

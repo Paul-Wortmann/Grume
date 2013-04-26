@@ -68,7 +68,7 @@ class texture_class
         void     draw(bool rumble_set, float pos_x, float pos_y, float pos_z, float width_set, float height_set, float angle_set, float alpha);
         void     draw(bool rumble_set, float pos_x, float pos_y, float pos_z, float width_set, float height_set, float angle_set, float red, float green, float blue, float alpha);
         void     draw(bool rumble_set, float pos_x, float pos_y, float pos_z, float width_set, float height_set, float angle_set, float red, float green, float blue, float alpha, int frame_set);
-        void     draw(bool rumble_set, float pos_x, float pos_y, float pos_z, float width_set, float height_set, float angle_set, int fram_sete);
+        void     draw(bool rumble_set, float pos_x, float pos_y, float pos_z, float width_set, float height_set, float angle_set, int frame_set);
 };
 
 #endif //TEXTURES_H

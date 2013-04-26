@@ -28,9 +28,13 @@
 #include <stdlib.h>
 #include <string>
 #include "loader_tmx.hpp"
+#include "../game.hpp"
+
+extern game_class         game;
 
 void tmx_load(tmx_map_type *tmx_map_pointer, std::string file_name)
 {
+    game.core.log.file_write("Loading TMX map file -> ",file_name);
     int          position_count  = 0;
     int          position_start  = 0;
     bool         map_data        = true;
@@ -39,7 +43,7 @@ void tmx_load(tmx_map_type *tmx_map_pointer, std::string file_name)
     int          tileset_count   = 0;
     int          layer_count     = 0;
     int          tile_count      = 0;
-    char         temp_char = ' ';
+    char         temp_char       = ' ';
     float        temp_float_data;
     int          temp_int_data;
     std::string  temp_string_data;

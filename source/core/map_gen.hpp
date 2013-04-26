@@ -34,8 +34,8 @@
 #define FLOOR_TILE 1
 #define WALL_TILE  2
 
-#define ROOM_MAX_X 7
-#define ROOM_MAX_Y 7
+#define ROOM_MAX_X 9
+#define ROOM_MAX_Y 9
 
 struct room_type
 {
