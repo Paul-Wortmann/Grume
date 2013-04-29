@@ -80,7 +80,7 @@ class game_class
         UI_class             UI;
         map_2D_class         map_2D;
         game_class(void);
-        void             reload_rextures(void);
+        void             reload_textures(void);
         void             init(void);
         void             process(void);
         void             render(void);

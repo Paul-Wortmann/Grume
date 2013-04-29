@@ -139,7 +139,7 @@ void UI_class::UI_reload_textures(void)
 {
     game.window_manager.cursor.reload_textures();
     game.core.background.reload_textures();
-    game.reload_rextures();
+    game.reload_textures();
 
     if (game.window_manager.number_of_windows > 0) // Only process windows if there are actually windows in the list.
     {

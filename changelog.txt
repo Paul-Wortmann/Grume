@@ -6,6 +6,26 @@ These are not indications that the project will be terminated in the future,
 just that time is not permitting to proceed at a fast pace, at the moment.
 
 v0.18 - (2013-04-xx)
+MAP   -> Fixed rendering of TMX maps.
+MAP   -> Added a few tilesets for testing...
+MAP   -> Updated map_2D and related code to the new &tmx_map data type.
+MAP   -> Added default tileset data to gen functions.
+MAP   -> map_gen_BSP using tmx_map data tructure.
+MAP   -> map_gen_CA using tmx_map data tructure.
+MMAP   -> erged map init into the map gen functions.
+MAP   -> Re-write of TMX loader.
+MAP   -> Added functions to allow for generating from a seed.
+MAP   -> Added map_generator, for generating cave like maps, using cellular automation.
+MAP   -> Fixed inter-node passage gen.
+MAP   -> Fixed node splitting.
+MAP   -> Resolved segfault in vertical node spilit.
+MAP   -> Added initial passage gen code to BSP dungeon gen.
+MAP   -> Fixed tmx export function.
+MAP   -> Removed redundent code in the map_gen save_map function.
+MAP   -> Slight code cleanup.
+MAP   -> Fixed many compiler warnings.
+MAP   -> Fixed compiler warning: unused variable.
+MAP   -> Commented out unused float and bool variables for language parser.
 LOC   -> xxxxx
 
 v0.17 - (2013-03-31)

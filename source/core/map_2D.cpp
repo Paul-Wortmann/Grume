@@ -35,6 +35,13 @@
 
 extern game_class         game;
 
+void map_2D_class::reload_textures(tmx_map_type *tmx_map_pointer)
+{
+    for(int tileset_count = 0; tileset_count <  tmx_map_pointer->data.number_of_tilesets; tileset_count++)
+    {
+        tmx_map_pointer->tileset[tileset_count].image_loaded = false;
+    }
+}
 
 //-----------------------------------------------------------------------------------------------------------------
 void map_2D_class::render(tmx_map_type *tmx_map_pointer)
@@ -49,6 +56,7 @@ void map_2D_class::render(tmx_map_type *tmx_map_pointer)
             debug_tileset.image_source = "data/tilesets/default_tileset.png";
             debug_tileset.image_source = game.core.file.path_remove(debug_tileset.image_source);
             debug_tileset.image_source = game.core.file.path_add(debug_tileset.image_source,"data/tilesets/");
+            game.core.log.file_write("Loading tile-set -> ",debug_tileset.image_source);
             debug_tileset.tile.load_spritesheet(debug_tileset.image_source,debug_tileset.tile_width,debug_tileset.tile_height);
             debug_tileset.image_loaded = true;
             debug_tileset.number_of_tiles = debug_tileset.tile.frame_max;
@@ -62,6 +70,7 @@ void map_2D_class::render(tmx_map_type *tmx_map_pointer)
             {
                 tmx_map_pointer->tileset[tileset_count].image_source = game.core.file.path_remove(tmx_map_pointer->tileset[tileset_count].image_source);
                 tmx_map_pointer->tileset[tileset_count].image_source = game.core.file.path_add(tmx_map_pointer->tileset[tileset_count].image_source,"data/tilesets/");
+                game.core.log.file_write("Loading tile-set -> ",tmx_map_pointer->tileset[tileset_count].image_source);
                 tmx_map_pointer->tileset[tileset_count].tile.load_spritesheet(tmx_map_pointer->tileset[tileset_count].image_source,tmx_map_pointer->tileset[tileset_count].tile_width,tmx_map_pointer->tileset[tileset_count].tile_height);
                 tmx_map_pointer->tileset[tileset_count].image_loaded = true;
             }

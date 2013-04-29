@@ -287,7 +287,8 @@ void map_gen_BSP(tmx_map_type *tmx_map_pointer)
     tmx_map_pointer->layer[layer_count].height              = map_gen_size_y;
     tmx_map_pointer->tileset                                = new tmx_tileset_type[tmx_map_pointer->data.number_of_tilesets];
     tmx_map_pointer->tileset[tileset_count].first_gid       = 1;
-    tmx_map_pointer->tileset[tileset_count].image_source    = "../Frost_and_Flame/data/tilesets/default_tileset.png";
+    tmx_map_pointer->tileset[tileset_count].image_source    = "data/tilesets/default_tileset.png";
+    tmx_map_pointer->tileset[tileset_count].image_loaded    = false;
     tmx_map_pointer->tileset[tileset_count].image_width     = 256;
     tmx_map_pointer->tileset[tileset_count].image_height    = 32;
     tmx_map_pointer->tileset[tileset_count].tile_width      = 32;
@@ -339,7 +340,8 @@ void map_gen_CA (tmx_map_type *tmx_map_pointer)
     tmx_map_pointer->layer[layer_count].height              = map_gen_size_y;
     tmx_map_pointer->tileset                                = new tmx_tileset_type[tmx_map_pointer->data.number_of_tilesets];
     tmx_map_pointer->tileset[tileset_count].first_gid       = 1;
-    tmx_map_pointer->tileset[tileset_count].image_source    = "../Frost_and_Flame/data/tilesets/default_tileset.png";
+    tmx_map_pointer->tileset[tileset_count].image_source    = "data/tilesets/default_tileset.png";
+    tmx_map_pointer->tileset[tileset_count].image_loaded    = false;
     tmx_map_pointer->tileset[tileset_count].image_width     = 256;
     tmx_map_pointer->tileset[tileset_count].image_height    = 32;
     tmx_map_pointer->tileset[tileset_count].tile_width      = 32;
