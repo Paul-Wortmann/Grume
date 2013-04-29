@@ -326,7 +326,7 @@ void map_gen_BSP(tmx_map_type *tmx_map_pointer, int seed)
 
 void map_gen_CA (tmx_map_type *tmx_map_pointer)
 {
-    int tile_count                                          = 0;
+    int tile_count_temp                                     = 0;
     int layer_count                                         = 0;
     int tileset_count                                       = 0;
     tmx_map_pointer->data.map_width                         = map_gen_size_x;
@@ -352,11 +352,11 @@ void map_gen_CA (tmx_map_type *tmx_map_pointer)
     {
         for (int tile_count_y = 0; tile_count_y < tmx_map_pointer->data.map_height; tile_count_y++)
         {
-            tile_count = (tile_count_y * tmx_map_pointer->data.map_width) + tile_count_x;
-            tmx_map_pointer->layer[layer_count].tile[tile_count].position.x   = tile_count_x;
-            tmx_map_pointer->layer[layer_count].tile[tile_count].position.y   = tile_count_y;
-            tmx_map_pointer->layer[layer_count].tile[tile_count].tile         = WALL_TILE;
-            tmx_map_pointer->layer[layer_count].tile[tile_count].tile_tileset = tileset_count;
+            tile_count_temp = (tile_count_y * tmx_map_pointer->data.map_width) + tile_count_x;
+            tmx_map_pointer->layer[layer_count].tile[tile_count_temp].position.x   = tile_count_x;
+            tmx_map_pointer->layer[layer_count].tile[tile_count_temp].position.y   = tile_count_y;
+            tmx_map_pointer->layer[layer_count].tile[tile_count_temp].tile         = WALL_TILE;
+            tmx_map_pointer->layer[layer_count].tile[tile_count_temp].tile_tileset = tileset_count;
         }
     }
     struct flood_fill_type
