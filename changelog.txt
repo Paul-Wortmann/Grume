@@ -5,14 +5,22 @@ it may take longer than I had first anticipated.
 These are not indications that the project will be terminated in the future,
 just that time is not permitting to proceed at a fast pace, at the moment.
 
-v0.18 - (2013-04-xx)
+v0.19 - (2013-05-xx)
+ * Hope to complete basic 2D random map generation and tileset integration. * 
+LOC   -> xxxxx
+
+v0.18 - (2013-04-30)
+MAP   -> Enabled keys 1,2,3 to generate maps for testing. 
+MAP   -> Started "apply_tileset()"
+MAP   -> Generated maps display correctly with default tileset.
+MAP   -> Tileset reload textures on display setting change.
 MAP   -> Fixed rendering of TMX maps.
 MAP   -> Added a few tilesets for testing...
 MAP   -> Updated map_2D and related code to the new &tmx_map data type.
 MAP   -> Added default tileset data to gen functions.
 MAP   -> map_gen_BSP using tmx_map data tructure.
 MAP   -> map_gen_CA using tmx_map data tructure.
-MMAP   -> erged map init into the map gen functions.
+MAP   -> erged map init into the map gen functions.
 MAP   -> Re-write of TMX loader.
 MAP   -> Added functions to allow for generating from a seed.
 MAP   -> Added map_generator, for generating cave like maps, using cellular automation.
@@ -22,11 +30,11 @@ MAP   -> Resolved segfault in vertical node spilit.
 MAP   -> Added initial passage gen code to BSP dungeon gen.
 MAP   -> Fixed tmx export function.
 MAP   -> Removed redundent code in the map_gen save_map function.
-MAP   -> Slight code cleanup.
-MAP   -> Fixed many compiler warnings.
-MAP   -> Fixed compiler warning: unused variable.
-MAP   -> Commented out unused float and bool variables for language parser.
-LOC   -> xxxxx
+MISC  -> Slight code cleanup.
+MISC  -> Fixed many compiler warnings.
+MISC  -> Fixed compiler warning: unused variable.
+CORE  -> Commented out unused float and bool variables for language parser.
+LOC   -> 14536
 
 v0.17 - (2013-03-31)
 MAP   -> Start of random dungeon generation using a recursive binary tree.
