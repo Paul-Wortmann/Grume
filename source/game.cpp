@@ -103,10 +103,10 @@ void game_class::init(void)
     map_gen_BSP(&tmx_map);
     //tmx_save(&tmx_map,"test_map.tmx");
     //tmx_load(&tmx_map,"data/maps/town.tmx");
+    game.map_2D.apply_tileset(&tmx_map,DUNGEON);
     game.map_2D.calculate_tile_positions(&tmx_map,DEFAULT_FRAME_WIDTH/game.zoom.current/2.0f,DEFAULT_FRAME_HEIGHT/game.zoom.current/2.0f);
+    game.map_2D.center_on_tile(&tmx_map,(tmx_map.data.number_of_tiles/2)+(tmx_map.data.map_width/2));
     //game.map_2D.calculate_tile_positions(&tmx_map);
-    //game.map_2D.random_map(100,100,CAVE,CAVE);
-    game.map_2D.reload_textures(&tmx_map);//move this to map gen / load!
 
     // Add default items to inventory
     int inventory_ID = game.window_manager.window_get_number(INVENTORY_UID);
@@ -330,6 +330,33 @@ void game_class::process(void)
         {
             game.player.level.current_experience++;
             game.core.io.key_t                     = false;
+            game.core.io.keyboard_delay_count      = 0;
+        }
+        if (game.core.io.key_1) // generate a random BSP dungeon
+        {
+            map_gen_BSP(&tmx_map);
+            game.map_2D.apply_tileset(&tmx_map,DUNGEON);
+            game.map_2D.calculate_tile_positions(&tmx_map,DEFAULT_FRAME_WIDTH/game.zoom.current/2.0f,DEFAULT_FRAME_HEIGHT/game.zoom.current/2.0f);
+            game.map_2D.center_on_tile(&tmx_map,(tmx_map.data.number_of_tiles/2)+(tmx_map.data.map_width/2));
+            game.core.io.key_1                     = false;
+            game.core.io.keyboard_delay_count      = 0;
+        }
+        if (game.core.io.key_2) // generate a random CA cave
+        {
+            map_gen_CA(&tmx_map);
+            game.map_2D.apply_tileset(&tmx_map,CAVE);
+            game.map_2D.calculate_tile_positions(&tmx_map,DEFAULT_FRAME_WIDTH/game.zoom.current/2.0f,DEFAULT_FRAME_HEIGHT/game.zoom.current/2.0f);
+            game.map_2D.center_on_tile(&tmx_map,(tmx_map.data.number_of_tiles/2)+(tmx_map.data.map_width/2));
+            game.core.io.key_2                     = false;
+            game.core.io.keyboard_delay_count      = 0;
+        }
+        if (game.core.io.key_3) // generate a random CA grassland
+        {
+            map_gen_CA(&tmx_map);
+            game.map_2D.apply_tileset(&tmx_map,GRASSLAND);
+            game.map_2D.calculate_tile_positions(&tmx_map,DEFAULT_FRAME_WIDTH/game.zoom.current/2.0f,DEFAULT_FRAME_HEIGHT/game.zoom.current/2.0f);
+            game.map_2D.center_on_tile(&tmx_map,(tmx_map.data.number_of_tiles/2)+(tmx_map.data.map_width/2));
+            game.core.io.key_3                     = false;
             game.core.io.keyboard_delay_count      = 0;
         }
     }

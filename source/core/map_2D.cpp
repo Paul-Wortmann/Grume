@@ -238,14 +238,12 @@ int  map_2D_class::mouse_over_tile(tmx_map_type *tmx_map_pointer)
     return(return_value);
 };
 
-/*
-//------------------------------ Random map generation below -----------------------------------------------------------------------------------
 
-void map_2D_class::random_map(int tiles_x, int tiles_y, int type_of_map_to_generate, int type_of_tile_set_to_use)
+//----------------------------------------------------------------------------------------------------------------
+//| Apply Tile-set                                                                                               |
+//----------------------------------------------------------------------------------------------------------------
+void map_2D_class::apply_tileset(tmx_map_type *tmx_map_pointer, int pre_defined_tileset_value)
 {
-    #define FLOOR 1
-    #define WALL  2
-
     #define TILE_SET_DEFAULT                     0
     #define TILE_SET_FLOOR                       1
     #define TILE_SET_ROOF                        2
@@ -262,491 +260,7 @@ void map_2D_class::random_map(int tiles_x, int tiles_y, int type_of_map_to_gener
     #define TILE_SET_WALL_SOUTH_EAST_CONCAVE     13
     #define TILE_SET_WALL_SOUTH_WEST_CONCAVE     14
     #define TILE_SET_OBJECTS                     15
-
-    //----------------------------------------------------------------------------------------------------------------
-    //| Generate random room structure                                                                               |
-    //----------------------------------------------------------------------------------------------------------------
-    bool ca_map_is_good            = false;
-    int  ca_minimum_cave_size      = 50; //percentage of map
-    int  ca_wall_stay              = 4;
-    int  ca_wall_new               = 5;
-    int  ca_iterations             = 4;
-    map_2D_class::number_of_tiles  = tiles_x*tiles_y;
-    map_2D_class::width            = tiles_x;
-    map_2D_class::height           = tiles_y;
-    int  ca_percent_random_tiles   = 40; // NB. randomly generated tiles can be generated on the same tile, thus reducing the percentage, adding a check is possible although slower.
-    int  ca_number_random_tiles    = (map_2D_class::number_of_tiles / 200) * ca_percent_random_tiles * 3;
-    map_2D_class::tile             = new tile_class[map_2D_class::number_of_tiles+1];
-    tile_class* temp_map           = new tile_class[map_2D_class::number_of_tiles+1];
-    struct flood_fill_type
-    {
-        int  tile_data;
-        bool processed;
-        bool adjoining_tile;
-    };
-    flood_fill_type* fill_data;
-    fill_data = new flood_fill_type[map_2D_class::number_of_tiles+1];
-    // load test tile-set
-    {
-        map_2D_class::number_of_tilesets        = 1;
-        map_2D_class::tileset                   = new tileset_class [map_2D_class::number_of_tilesets+1];
-        map_2D_class::tilewidth                 = DEFAULT_FRAME_WIDTH;
-        map_2D_class::tileheight                = DEFAULT_FRAME_HEIGHT;
-        map_2D_class::tileset[0].firstgid       = 0;
-        map_2D_class::tileset[0].image_source   = "data/tilesets/default_tileset.png";
-        map_2D_class::tileset[0].tilewidth      = map_2D_class::tilewidth;
-        map_2D_class::tileset[0].tileheight     = map_2D_class::tileheight;
-        map_2D_class::tileset[0].tile.load_spritesheet(map_2D_class::tileset[0].image_source);
-        map_2D_class::tileset[0].number_of_tiles = map_2D_class::tileset[0].tile.frame_max;
-    }
-    switch (type_of_map_to_generate)
-    {
-        case DUNGEON:
-            for (int tile_count = 0; tile_count < map_2D_class::number_of_tiles; tile_count++)
-            {
-                map_2D_class::tile[tile_count].tile = WALL;  //Fill map with wall tiles
-            }
-            struct BSP_room_type
-            {
-                int   bounds_size_x;
-                int   bounds_size_y;
-                int   bounds_pos_x;
-                int   bounds_pos_y;
-                int   pos_x;
-                int   pos_y;
-                int   size_x;
-                int   size_y;
-                int   leaf_p_ID; // this rooms parent ID
-                int   leaf_o_ID; // this rooms own ID
-                int   leaf_1_ID; // this rooms child_1 ID
-                int   leaf_2_ID; // this rooms child_1 ID
-            };
-
-        break;
-        case CAVE:
-            ca_map_is_good = false;
-            while (!ca_map_is_good)
-            {
-                for (int tile_count = 0; tile_count < map_2D_class::number_of_tiles; tile_count++)
-                {
-                    map_2D_class::tile[tile_count].tile = FLOOR;  //Fill map with floor tiles
-                }
-                //add wall tiles randomly on map.
-                for (int tile_count = 0; tile_count < ca_number_random_tiles; tile_count++)
-                {
-                    map_2D_class::tile[random(map_2D_class::number_of_tiles)].tile = WALL;  //Fill with wall tiles
-                }
-                //add a 3x3 floored room to the middle of the map
-                //this is for use later when checking for disjointed parts.
-                {
-                    int middle_tile_number = ((map_2D_class::number_of_tiles/2)+(map_2D_class::width/2));
-                    map_2D_class::tile[middle_tile_number].tile           = FLOOR;
-                    map_2D_class::tile[middle_tile_number+1].tile         = FLOOR;
-                    map_2D_class::tile[middle_tile_number-1].tile         = FLOOR;
-                    map_2D_class::tile[middle_tile_number+tiles_x].tile   = FLOOR;
-                    map_2D_class::tile[middle_tile_number+tiles_x+1].tile = FLOOR;
-                    map_2D_class::tile[middle_tile_number+tiles_x-1].tile = FLOOR;
-                    map_2D_class::tile[middle_tile_number-tiles_x].tile   = FLOOR;
-                    map_2D_class::tile[middle_tile_number-tiles_x+1].tile = FLOOR;
-                    map_2D_class::tile[middle_tile_number-tiles_x-1].tile = FLOOR;
-                }
-                //fill perimeter with wall tiles
-                for (int tile_count = 0; tile_count < tiles_x; tile_count++)
-                {
-                    map_2D_class::tile[tile_count].tile                               = WALL;  //Fill with wall tiles
-                    map_2D_class::tile[map_2D_class::number_of_tiles-tile_count].tile = WALL;  //Fill with wall tiles
-                }
-                for (int tile_count = 0; tile_count < tiles_y; tile_count++)
-                {
-                    map_2D_class::tile[tile_count*tiles_x].tile                = WALL;  //Fill with wall tiles
-                    map_2D_class::tile[(tile_count*tiles_x)+tiles_y-1].tile    = WALL;  //Fill with wall tiles
-                }
-                //smooth map, depending on neighboring tiles.
-                for (int refine_count = 0; refine_count < ca_iterations; refine_count++)
-                {
-                    int number_of_neighbors = 0;
-                    int temp_tile_number    = 0;
-                    for(int tile_count = 0; tile_count < map_2D_class::number_of_tiles; tile_count++)
-                    {
-                        number_of_neighbors = 0;
-                        temp_tile_number    = 0;
-                        temp_map[tile_count].tile = FLOOR; // new tile is initially a floor tile
-                        temp_tile_number = tile_count+1;
-                        if ((temp_tile_number >= 0) && (temp_tile_number <= map_2D_class::number_of_tiles) && (map_2D_class::tile[temp_tile_number].tile == WALL)) number_of_neighbors++;
-                        temp_tile_number = tile_count-1;
-                        if ((temp_tile_number >= 0) && (temp_tile_number <= map_2D_class::number_of_tiles) && (map_2D_class::tile[temp_tile_number].tile == WALL)) number_of_neighbors++;
-                        temp_tile_number = tile_count+tiles_x;
-                        if ((temp_tile_number >= 0) && (temp_tile_number <= map_2D_class::number_of_tiles) && (map_2D_class::tile[temp_tile_number].tile == WALL)) number_of_neighbors++;
-                        temp_tile_number = tile_count+tiles_x+1;
-                        if ((temp_tile_number >= 0) && (temp_tile_number <= map_2D_class::number_of_tiles) && (map_2D_class::tile[temp_tile_number].tile == WALL)) number_of_neighbors++;
-                        temp_tile_number = tile_count+tiles_x-1;
-                        if ((temp_tile_number >= 0) && (temp_tile_number <= map_2D_class::number_of_tiles) && (map_2D_class::tile[temp_tile_number].tile == WALL)) number_of_neighbors++;
-                        temp_tile_number = tile_count-tiles_x;
-                        if ((temp_tile_number >= 0) && (temp_tile_number <= map_2D_class::number_of_tiles) && (map_2D_class::tile[temp_tile_number].tile == WALL)) number_of_neighbors++;
-                        temp_tile_number = tile_count-tiles_x+1;
-                        if ((temp_tile_number >= 0) && (temp_tile_number <= map_2D_class::number_of_tiles) && (map_2D_class::tile[temp_tile_number].tile == WALL)) number_of_neighbors++;
-                        temp_tile_number = tile_count-tiles_x-1;
-                        if ((temp_tile_number >= 0) && (temp_tile_number <= map_2D_class::number_of_tiles) && (map_2D_class::tile[temp_tile_number].tile == WALL)) number_of_neighbors++;
-                        if ((map_2D_class::tile[tile_count].tile == WALL)  && (number_of_neighbors >= ca_wall_stay)) temp_map[tile_count].tile = WALL; //Tile on temp map is a wall
-                        if ((map_2D_class::tile[tile_count].tile == FLOOR) && (number_of_neighbors >= ca_wall_new )) temp_map[tile_count].tile = WALL; //Tile on temp map is a wall
-                    }
-                    //fill perimeter with wall tiles
-                    for (int tile_count = 0; tile_count < tiles_x; tile_count++)
-                    {
-                        temp_map[tile_count].tile                               = WALL;  //Fill with wall tiles
-                        temp_map[map_2D_class::number_of_tiles-tile_count].tile = WALL;  //Fill with wall tiles
-                    }
-                    for (int tile_count = 0; tile_count < tiles_y; tile_count++)
-                    {
-                        temp_map[tile_count*tiles_x].tile                = WALL;  //Fill with wall tiles
-                        temp_map[(tile_count*tiles_x)+tiles_y-1].tile    = WALL;  //Fill with wall tiles
-                    }
-                    //copy tiles from temp map to the main map.
-                    for(int tile_count = 0; tile_count < map_2D_class::number_of_tiles; tile_count++)
-                    {
-                        map_2D_class::tile[tile_count].tile = temp_map[tile_count].tile;
-                    }
-                }
-                // find out if cave from the center is the largest part, and discard disjointed parts
-                // if main cave is of adequate size, keep and return good, else regenerate.
-                for(int tile_count = 0; tile_count < map_2D_class::number_of_tiles; tile_count++)
-                {
-                    fill_data[tile_count].tile_data      = map_2D_class::tile[tile_count].tile;
-                    fill_data[tile_count].processed      = false;
-                    fill_data[tile_count].adjoining_tile = false;
-                }
-                {// we already know these are floor tiles, so mark as part of the fill.
-                    int middle_tile_number = ((map_2D_class::number_of_tiles/2)+(map_2D_class::width/2));
-                    fill_data[middle_tile_number].processed           = true;
-                    fill_data[middle_tile_number+1].processed         = true;
-                    fill_data[middle_tile_number-1].processed         = true;
-                    fill_data[middle_tile_number+tiles_x].processed   = true;
-                    fill_data[middle_tile_number+tiles_x+1].processed = true;
-                    fill_data[middle_tile_number+tiles_x-1].processed = true;
-                    fill_data[middle_tile_number-tiles_x].processed   = true;
-                    fill_data[middle_tile_number-tiles_x+1].processed = true;
-                    fill_data[middle_tile_number-tiles_x-1].processed = true;
-                    fill_data[middle_tile_number].adjoining_tile           = true;
-                    fill_data[middle_tile_number+1].adjoining_tile         = true;
-                    fill_data[middle_tile_number-1].adjoining_tile         = true;
-                    fill_data[middle_tile_number+tiles_x].adjoining_tile   = true;
-                    fill_data[middle_tile_number+tiles_x+1].adjoining_tile = true;
-                    fill_data[middle_tile_number+tiles_x-1].adjoining_tile = true;
-                    fill_data[middle_tile_number-tiles_x].adjoining_tile   = true;
-                    fill_data[middle_tile_number-tiles_x+1].adjoining_tile = true;
-                    fill_data[middle_tile_number-tiles_x-1].adjoining_tile = true;
-                }
-                int   number_found         = 0;
-                int   temp_tile            = 0;
-                bool  is_an_adjoining_tile = false;
-                //while((!fill_data[0].processed) && (!fill_data[map_2D_class::number_of_tiles-1].processed))
-                for(int repeat_count = 0; repeat_count < ((tiles_x+tiles_y)/2); repeat_count++)
-                {
-                    for(int tile_count = 0; tile_count < map_2D_class::number_of_tiles; tile_count++)
-                    {
-                        // we don't need to check if temp_tile is going passed the borders as the borders are always walls
-                        is_an_adjoining_tile  = false;
-                        temp_tile = tile_count+1;
-                        if((temp_tile >= 0) && (temp_tile <= map_2D_class::number_of_tiles))
-                        {
-                            if (fill_data[temp_tile].adjoining_tile)
-                            {
-                                is_an_adjoining_tile = true;
-                                number_found++;
-                            }
-                        }
-                        temp_tile = tile_count-1;
-                        if((temp_tile >= 0) && (temp_tile <= map_2D_class::number_of_tiles))
-                        {
-                            if (fill_data[temp_tile].adjoining_tile)
-                            {
-                                is_an_adjoining_tile = true;
-                                number_found++;
-                            }
-                        }
-                        temp_tile = tile_count+tiles_x;
-                        if((temp_tile >= 0) && (temp_tile <= map_2D_class::number_of_tiles))
-                        {
-                            if (fill_data[temp_tile].adjoining_tile)
-                            {
-                                is_an_adjoining_tile = true;
-                                number_found++;
-                            }
-                        }
-                        temp_tile = tile_count-tiles_x;
-                        if((temp_tile >= 0) && (temp_tile <= map_2D_class::number_of_tiles))
-                        {
-                            if (fill_data[temp_tile].adjoining_tile)
-                            {
-                                is_an_adjoining_tile = true;
-                                number_found++;
-                            }
-                        }
-                        fill_data[tile_count].processed = true;
-                        if ((is_an_adjoining_tile) and (fill_data[tile_count].tile_data == FLOOR)) fill_data[tile_count].adjoining_tile = true;
-                    }
-                }
-                ca_map_is_good = (number_found >= ((map_2D_class::number_of_tiles/100.0f)*ca_minimum_cave_size)) ? true : false;
-            }
-        break;
-        case GRASSLAND:
-            for (int tile_count = 0; tile_count < map_2D_class::number_of_tiles; tile_count++)
-            {
-                map_2D_class::tile[tile_count].tile = FLOOR;  //Fill map with floor tiles
-            }
-        break;
-    }
-    // write new values to array discarding disjointed tiles
-    for (int tile_count = 0; tile_count < map_2D_class::number_of_tiles; tile_count++)
-    {
-        if(fill_data[tile_count].adjoining_tile) fill_data[tile_count].tile_data = FLOOR;
-        else fill_data[tile_count].tile_data = WALL;
-    }
-    for (int iteration_count = 0; iteration_count < 5; iteration_count++)
-    {
-        //remove single tiles / tile formations that are not supported
-        for (int tile_count = 0; tile_count < map_2D_class::number_of_tiles; tile_count++)
-        {
-            if(fill_data[tile_count].tile_data == WALL)
-            {
-//-------------------- Loose single tiles on a joining wall "T" shape.
-                if ((fill_data[tile_count+tiles_x].tile_data == WALL)
-                    && (fill_data[tile_count-tiles_x].tile_data == WALL)
-                    && (fill_data[tile_count+1].tile_data == WALL)
-                    && (fill_data[tile_count+tiles_x+1].tile_data == FLOOR)
-                    && (fill_data[tile_count-tiles_x+1].tile_data == FLOOR))
-                {
-                    fill_data[tile_count+tiles_x+1].tile_data = WALL;
-                    fill_data[tile_count-tiles_x+1].tile_data = WALL;
-                }
-                if ((fill_data[tile_count+tiles_x].tile_data == WALL)
-                    && (fill_data[tile_count-tiles_x].tile_data == WALL)
-                    && (fill_data[tile_count-1].tile_data == WALL)
-                    && (fill_data[tile_count+tiles_x-1].tile_data == FLOOR)
-                    && (fill_data[tile_count-tiles_x-1].tile_data == FLOOR))
-                {
-                    fill_data[tile_count+tiles_x-1].tile_data = WALL;
-                    fill_data[tile_count-tiles_x-1].tile_data = WALL;
-                }
-                if ((fill_data[tile_count+1].tile_data == WALL)
-                    && (fill_data[tile_count-1].tile_data == WALL)
-                    && (fill_data[tile_count-tiles_x].tile_data == WALL)
-                    && (fill_data[tile_count-tiles_x-1].tile_data == FLOOR)
-                    && (fill_data[tile_count-tiles_x+1].tile_data == FLOOR))
-                {
-                    fill_data[tile_count-tiles_x-1].tile_data = WALL;
-                    fill_data[tile_count-tiles_x+1].tile_data = WALL;
-                }
-                if ((fill_data[tile_count+1].tile_data == WALL)
-                    && (fill_data[tile_count-1].tile_data == WALL)
-                    && (fill_data[tile_count+tiles_x].tile_data == WALL)
-                    && (fill_data[tile_count+tiles_x-1].tile_data == FLOOR)
-                    && (fill_data[tile_count+tiles_x+1].tile_data == FLOOR))
-                {
-                    fill_data[tile_count+tiles_x-1].tile_data = WALL;
-                    fill_data[tile_count+tiles_x+1].tile_data = WALL;
-                }
-//-------------------- Loose single tiles on a joining wall other shape.
-                if ((fill_data[tile_count+tiles_x-1].tile_data == WALL)
-                    && (fill_data[tile_count+tiles_x].tile_data == FLOOR)
-                    && (fill_data[tile_count-1].tile_data == FLOOR))
-                {
-                    fill_data[tile_count+tiles_x].tile_data = WALL;
-                    fill_data[tile_count-1].tile_data = WALL;
-                }
-                if ((fill_data[tile_count-tiles_x+1].tile_data == WALL)
-                    && (fill_data[tile_count-tiles_x].tile_data == FLOOR)
-                    && (fill_data[tile_count+1].tile_data == FLOOR))
-                {
-                    fill_data[tile_count-tiles_x].tile_data = WALL;
-                    fill_data[tile_count+1].tile_data = WALL;
-                }
-//-------------------- Vertical sparse line segment.
-                if ((fill_data[tile_count-tiles_x-1].tile_data == WALL)
-                    && (fill_data[tile_count-tiles_x].tile_data == FLOOR)
-                    && (fill_data[tile_count-1].tile_data == FLOOR))
-                {
-                    fill_data[tile_count-tiles_x].tile_data = WALL;
-                    fill_data[tile_count-1].tile_data = WALL;
-                }
-                if ((fill_data[tile_count+tiles_x+1].tile_data == WALL)
-                    && (fill_data[tile_count+tiles_x].tile_data == FLOOR)
-                    && (fill_data[tile_count+1].tile_data == FLOOR))
-                {
-                    fill_data[tile_count+tiles_x].tile_data = WALL;
-                    fill_data[tile_count+1].tile_data = WALL;
-                }
-//-------------------- Horizontal sparse line segment.
-                if ((fill_data[tile_count+tiles_x-1].tile_data == WALL)
-                    && (fill_data[tile_count+tiles_x].tile_data == FLOOR)
-                    && (fill_data[tile_count-1].tile_data == FLOOR))
-                {
-                    fill_data[tile_count+tiles_x].tile_data = WALL;
-                    fill_data[tile_count-1].tile_data = WALL;
-                }
-                if ((fill_data[tile_count-tiles_x+1].tile_data == WALL)
-                    && (fill_data[tile_count-tiles_x].tile_data == FLOOR)
-                    && (fill_data[tile_count+1].tile_data == FLOOR))
-                {
-                    fill_data[tile_count-tiles_x].tile_data = WALL;
-                    fill_data[tile_count+1].tile_data = WALL;
-                }
-//-------------------- Single tile
-                if (   (fill_data[tile_count+1].tile_data         == FLOOR)
-                    && (fill_data[tile_count-1].tile_data         == FLOOR)
-                    && (fill_data[tile_count+tiles_x].tile_data   == FLOOR)
-                    && (fill_data[tile_count+tiles_x+1].tile_data == FLOOR)
-                    && (fill_data[tile_count+tiles_x-1].tile_data == FLOOR)
-                    && (fill_data[tile_count-tiles_x].tile_data   == FLOOR)
-                    && (fill_data[tile_count-tiles_x+1].tile_data == FLOOR)
-                    && (fill_data[tile_count-tiles_x-1].tile_data == FLOOR))
-                        fill_data[tile_count].tile_data = FLOOR;
-                if ((fill_data[tile_count+1].tile_data == FLOOR)
-                    && (fill_data[tile_count-1].tile_data == FLOOR)
-                    && (fill_data[tile_count+tiles_x].tile_data == FLOOR)
-                    && (fill_data[tile_count-tiles_x].tile_data == FLOOR))
-                    fill_data[tile_count].tile_data = FLOOR;
-//-------------------- Diagonally opposite tiles.
-                if (   (fill_data[tile_count+1].tile_data         == FLOOR)
-                    && (fill_data[tile_count-1].tile_data         == WALL)
-                    && (fill_data[tile_count+tiles_x].tile_data   == WALL)
-                    && (fill_data[tile_count+tiles_x+1].tile_data == FLOOR)
-                    && (fill_data[tile_count+tiles_x-1].tile_data == WALL)
-                    && (fill_data[tile_count-tiles_x].tile_data   == WALL)
-                    && (fill_data[tile_count-tiles_x+1].tile_data == WALL)
-                    && (fill_data[tile_count-tiles_x-1].tile_data == FLOOR))
-                    {
-                        fill_data[tile_count+1].tile_data = WALL;
-                        fill_data[tile_count-tiles_x-1].tile_data = WALL;
-                    }
-                if (   (fill_data[tile_count+1].tile_data         == WALL)
-                    && (fill_data[tile_count-1].tile_data         == FLOOR)
-                    && (fill_data[tile_count+tiles_x].tile_data   == WALL)
-                    && (fill_data[tile_count+tiles_x+1].tile_data == FLOOR)
-                    && (fill_data[tile_count+tiles_x-1].tile_data == WALL)
-                    && (fill_data[tile_count-tiles_x].tile_data   == WALL)
-                    && (fill_data[tile_count-tiles_x+1].tile_data == WALL)
-                    && (fill_data[tile_count-tiles_x-1].tile_data == FLOOR))
-                    {
-                        fill_data[tile_count-1].tile_data = WALL;
-                        fill_data[tile_count+tiles_x+1].tile_data = WALL;
-                    }
-                if (   (fill_data[tile_count+1].tile_data         == WALL)
-                    && (fill_data[tile_count-1].tile_data         == WALL)
-                    && (fill_data[tile_count+tiles_x].tile_data   == FLOOR)
-                    && (fill_data[tile_count+tiles_x+1].tile_data == FLOOR)
-                    && (fill_data[tile_count+tiles_x-1].tile_data == WALL)
-                    && (fill_data[tile_count-tiles_x].tile_data   == WALL)
-                    && (fill_data[tile_count-tiles_x+1].tile_data == WALL)
-                    && (fill_data[tile_count-tiles_x-1].tile_data == FLOOR))
-                    {
-                        fill_data[tile_count+tiles_x].tile_data = WALL;
-                        fill_data[tile_count-tiles_x-1].tile_data = WALL;
-                    }
-                if (   (fill_data[tile_count+1].tile_data         == WALL)
-                    && (fill_data[tile_count-1].tile_data         == WALL)
-                    && (fill_data[tile_count+tiles_x].tile_data   == WALL)
-                    && (fill_data[tile_count+tiles_x+1].tile_data == FLOOR)
-                    && (fill_data[tile_count+tiles_x-1].tile_data == WALL)
-                    && (fill_data[tile_count-tiles_x].tile_data   == FLOOR)
-                    && (fill_data[tile_count-tiles_x+1].tile_data == WALL)
-                    && (fill_data[tile_count-tiles_x-1].tile_data == FLOOR))
-                    {
-                        fill_data[tile_count-tiles_x].tile_data = WALL;
-                        fill_data[tile_count+tiles_x+1].tile_data = WALL;
-                    }
-                //----
-                if (   (fill_data[tile_count+1].tile_data         == FLOOR)
-                    && (fill_data[tile_count-1].tile_data         == WALL)
-                    && (fill_data[tile_count+tiles_x].tile_data   == WALL)
-                    && (fill_data[tile_count+tiles_x+1].tile_data == WALL)
-                    && (fill_data[tile_count+tiles_x-1].tile_data == FLOOR)
-                    && (fill_data[tile_count-tiles_x].tile_data   == WALL)
-                    && (fill_data[tile_count-tiles_x+1].tile_data == FLOOR)
-                    && (fill_data[tile_count-tiles_x-1].tile_data == WALL))
-                    {
-                        fill_data[tile_count+1].tile_data = WALL;
-                        fill_data[tile_count+tiles_x-1].tile_data = WALL;
-                    }
-                if (   (fill_data[tile_count+1].tile_data         == WALL)
-                    && (fill_data[tile_count-1].tile_data         == FLOOR)
-                    && (fill_data[tile_count+tiles_x].tile_data   == WALL)
-                    && (fill_data[tile_count+tiles_x+1].tile_data == WALL)
-                    && (fill_data[tile_count+tiles_x-1].tile_data == FLOOR)
-                    && (fill_data[tile_count-tiles_x].tile_data   == WALL)
-                    && (fill_data[tile_count-tiles_x+1].tile_data == FLOOR)
-                    && (fill_data[tile_count-tiles_x-1].tile_data == WALL))
-                    {
-                        fill_data[tile_count-1].tile_data = WALL;
-                        fill_data[tile_count-tiles_x+1].tile_data = WALL;
-                    }
-                if (   (fill_data[tile_count+1].tile_data         == WALL)
-                    && (fill_data[tile_count-1].tile_data         == WALL)
-                    && (fill_data[tile_count+tiles_x].tile_data   == FLOOR)
-                    && (fill_data[tile_count+tiles_x+1].tile_data == WALL)
-                    && (fill_data[tile_count+tiles_x-1].tile_data == FLOOR)
-                    && (fill_data[tile_count-tiles_x].tile_data   == WALL)
-                    && (fill_data[tile_count-tiles_x+1].tile_data == FLOOR)
-                    && (fill_data[tile_count-tiles_x-1].tile_data == WALL))
-                    {
-                        fill_data[tile_count+tiles_x].tile_data = WALL;
-                        fill_data[tile_count-tiles_x+1].tile_data = WALL;
-                    }
-                if (   (fill_data[tile_count+1].tile_data         == WALL)
-                    && (fill_data[tile_count-1].tile_data         == WALL)
-                    && (fill_data[tile_count+tiles_x].tile_data   == WALL)
-                    && (fill_data[tile_count+tiles_x+1].tile_data == WALL)
-                    && (fill_data[tile_count+tiles_x-1].tile_data == FLOOR)
-                    && (fill_data[tile_count-tiles_x].tile_data   == FLOOR)
-                    && (fill_data[tile_count-tiles_x+1].tile_data == FLOOR)
-                    && (fill_data[tile_count-tiles_x-1].tile_data == WALL))
-                    {
-                        fill_data[tile_count-tiles_x].tile_data = WALL;
-                        fill_data[tile_count+tiles_x-1].tile_data = WALL;
-                    }
-//--------------------------- Corner with diagonal floors
-                if (   (fill_data[tile_count+1].tile_data         == WALL)
-                    && (fill_data[tile_count-1].tile_data         == WALL)
-                    && (fill_data[tile_count+tiles_x].tile_data   == WALL)
-                    && (fill_data[tile_count+tiles_x+1].tile_data == FLOOR)
-                    && (fill_data[tile_count+tiles_x-1].tile_data == WALL)
-                    && (fill_data[tile_count-tiles_x].tile_data   == WALL)
-                    && (fill_data[tile_count-tiles_x+1].tile_data == WALL)
-                    && (fill_data[tile_count-tiles_x-1].tile_data == FLOOR))
-                    {
-                        fill_data[tile_count+tiles_x+1].tile_data = WALL;
-                        fill_data[tile_count-tiles_x-1].tile_data = WALL;
-                    }
-                if (   (fill_data[tile_count+1].tile_data         == WALL)
-                    && (fill_data[tile_count-1].tile_data         == WALL)
-                    && (fill_data[tile_count+tiles_x].tile_data   == WALL)
-                    && (fill_data[tile_count+tiles_x+1].tile_data == WALL)
-                    && (fill_data[tile_count+tiles_x-1].tile_data == FLOOR)
-                    && (fill_data[tile_count-tiles_x].tile_data   == WALL)
-                    && (fill_data[tile_count-tiles_x+1].tile_data == FLOOR)
-                    && (fill_data[tile_count-tiles_x-1].tile_data == WALL))
-                    {
-                        fill_data[tile_count+tiles_x-1].tile_data = WALL;
-                        fill_data[tile_count-tiles_x+1].tile_data = WALL;
-                    }
-                if (   (fill_data[tile_count+1].tile_data         == WALL)
-                    && (fill_data[tile_count-1].tile_data         == WALL)
-                    && (fill_data[tile_count+tiles_x].tile_data   == WALL)
-                    && (fill_data[tile_count+tiles_x+1].tile_data == WALL)
-                    && (fill_data[tile_count+tiles_x-1].tile_data == FLOOR)
-                    && (fill_data[tile_count-tiles_x].tile_data   == WALL)
-                    && (fill_data[tile_count-tiles_x+1].tile_data == FLOOR)
-                    && (fill_data[tile_count-tiles_x-1].tile_data == WALL))
-                    {
-                        fill_data[tile_count+tiles_x-1].tile_data = WALL;
-                        fill_data[tile_count-tiles_x+1].tile_data = WALL;
-                    }
-            }
-        }
-    }
-    //----------------------------------------------------------------------------------------------------------------
-    //| Apply Tile-set                                                                                               |
-    //----------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------- Preset values ---------------------------------------------
     std::string tile_set_name_default                 = "data/tilesets/default_tileset.png";
     std::string tile_set_name_floor                   = "data/tilesets/default_tileset.png";
     std::string tile_set_name_roof                    = "data/tilesets/default_tileset.png";
@@ -767,7 +281,8 @@ void map_2D_class::random_map(int tiles_x, int tiles_y, int type_of_map_to_gener
     int  floor_height = 32;
     int  wall_width   = 64;
     int  wall_height  = 128;
-    switch (type_of_tile_set_to_use)
+    // ----------------------------------------- set tileset based on type ---------------------------------------
+    switch (pre_defined_tileset_value)
     {
         case DUNGEON:
             floor_width  = 64;
@@ -833,112 +348,176 @@ void map_2D_class::random_map(int tiles_x, int tiles_y, int type_of_map_to_gener
             tile_set_name_objects                 = "data/tilesets/grassland_objects.png";
         break;
         default:
+            game.core.log.file_write("Error applying tile-set -> %d",pre_defined_tileset_value);
         break;
+
     }
     // load tile-sets
+    if (tmx_map_pointer->tileset) delete [] tmx_map_pointer->tileset;
+    tmx_map_pointer->data.number_of_tilesets                     = 16;
+    tmx_map_pointer->tileset                                     = new tmx_tileset_type[tmx_map_pointer->data.number_of_tilesets];
+    tmx_map_pointer->data.map_tile_width                         = DEFAULT_FRAME_WIDTH;
+    tmx_map_pointer->data.map_tile_height                        = DEFAULT_FRAME_HEIGHT;
+    tmx_map_pointer->tileset[TILE_SET_DEFAULT].first_gid         = 1;
+    tmx_map_pointer->tileset[TILE_SET_DEFAULT].image_source      = tile_set_name_default;
+    tmx_map_pointer->tileset[TILE_SET_DEFAULT].image_loaded      = true;
+    tmx_map_pointer->tileset[TILE_SET_DEFAULT].tile_width        = tmx_map_pointer->data.map_tile_width;
+    tmx_map_pointer->tileset[TILE_SET_DEFAULT].tile_height       = tmx_map_pointer->data.map_tile_height;
+    tmx_map_pointer->tileset[TILE_SET_DEFAULT].tile.load_spritesheet(tmx_map_pointer->tileset[TILE_SET_DEFAULT].image_source,tmx_map_pointer->tileset[TILE_SET_DEFAULT].tile_width,tmx_map_pointer->tileset[TILE_SET_DEFAULT].tile_height);
+    tmx_map_pointer->tileset[TILE_SET_DEFAULT].number_of_tiles   = tmx_map_pointer->tileset[TILE_SET_DEFAULT].tile.frame_max;
+    tmx_map_pointer->tileset[TILE_SET_FLOOR].first_gid           = tmx_map_pointer->tileset[TILE_SET_DEFAULT].number_of_tiles+tmx_map_pointer->tileset[TILE_SET_DEFAULT].first_gid +1;
+    tmx_map_pointer->tileset[TILE_SET_FLOOR].image_source        = tile_set_name_floor;
+    tmx_map_pointer->tileset[TILE_SET_FLOOR].image_loaded        = true;
+    tmx_map_pointer->tileset[TILE_SET_FLOOR].tile_width          = floor_width;
+    tmx_map_pointer->tileset[TILE_SET_FLOOR].tile_height         = floor_height;
+    tmx_map_pointer->tileset[TILE_SET_FLOOR].tile.load_spritesheet(tmx_map_pointer->tileset[TILE_SET_FLOOR].image_source,tmx_map_pointer->tileset[TILE_SET_FLOOR].tile_width,tmx_map_pointer->tileset[TILE_SET_FLOOR].tile_height);
+    tmx_map_pointer->tileset[TILE_SET_FLOOR].number_of_tiles     = tmx_map_pointer->tileset[TILE_SET_FLOOR].tile.frame_max;
+    tmx_map_pointer->tileset[TILE_SET_ROOF].first_gid            = tmx_map_pointer->tileset[TILE_SET_FLOOR].number_of_tiles+tmx_map_pointer->tileset[TILE_SET_FLOOR].first_gid +1;
+    tmx_map_pointer->tileset[TILE_SET_ROOF].image_source         = tile_set_name_roof;
+    tmx_map_pointer->tileset[TILE_SET_ROOF].image_loaded         = true;
+    tmx_map_pointer->tileset[TILE_SET_ROOF].tile_width           = wall_width;
+    tmx_map_pointer->tileset[TILE_SET_ROOF].tile_height          = wall_height;
+    tmx_map_pointer->tileset[TILE_SET_ROOF].tile.load_spritesheet(tmx_map_pointer->tileset[TILE_SET_ROOF].image_source,tmx_map_pointer->tileset[TILE_SET_ROOF].tile_width,tmx_map_pointer->tileset[TILE_SET_ROOF].tile_height);
+    tmx_map_pointer->tileset[TILE_SET_ROOF].number_of_tiles      = tmx_map_pointer->tileset[TILE_SET_ROOF].tile.frame_max;
+    tmx_map_pointer->tileset[TILE_SET_WALL_NORTH].first_gid      = tmx_map_pointer->tileset[TILE_SET_ROOF].number_of_tiles+tmx_map_pointer->tileset[TILE_SET_ROOF].first_gid +1;
+    tmx_map_pointer->tileset[TILE_SET_WALL_NORTH].image_source   = tile_set_name_wall_north;
+    tmx_map_pointer->tileset[TILE_SET_WALL_NORTH].image_loaded   = true;
+    tmx_map_pointer->tileset[TILE_SET_WALL_NORTH].tile_width     = wall_width;
+    tmx_map_pointer->tileset[TILE_SET_WALL_NORTH].tile_height    = wall_height;
+    tmx_map_pointer->tileset[TILE_SET_WALL_NORTH].tile.load_spritesheet(tmx_map_pointer->tileset[TILE_SET_WALL_NORTH].image_source,tmx_map_pointer->tileset[TILE_SET_WALL_NORTH].tile_width,tmx_map_pointer->tileset[TILE_SET_WALL_NORTH].tile_height);
+    tmx_map_pointer->tileset[TILE_SET_WALL_NORTH].number_of_tiles = tmx_map_pointer->tileset[TILE_SET_WALL_NORTH].tile.frame_max;
+    tmx_map_pointer->tileset[TILE_SET_WALL_SOUTH].first_gid       = tmx_map_pointer->tileset[TILE_SET_WALL_NORTH].number_of_tiles+tmx_map_pointer->tileset[TILE_SET_WALL_NORTH].first_gid +1;
+    tmx_map_pointer->tileset[TILE_SET_WALL_SOUTH].image_source    = tile_set_name_wall_south;
+    tmx_map_pointer->tileset[TILE_SET_WALL_SOUTH].image_loaded    = true;
+    tmx_map_pointer->tileset[TILE_SET_WALL_SOUTH].tile_width      = wall_width;
+    tmx_map_pointer->tileset[TILE_SET_WALL_SOUTH].tile_height     = wall_height;
+    tmx_map_pointer->tileset[TILE_SET_WALL_SOUTH].tile.load_spritesheet(tmx_map_pointer->tileset[TILE_SET_WALL_SOUTH].image_source,tmx_map_pointer->tileset[TILE_SET_WALL_SOUTH].tile_width,tmx_map_pointer->tileset[TILE_SET_WALL_SOUTH].tile_height);
+    tmx_map_pointer->tileset[TILE_SET_WALL_SOUTH].number_of_tiles = tmx_map_pointer->tileset[TILE_SET_WALL_SOUTH].tile.frame_max;
+    tmx_map_pointer->tileset[TILE_SET_WALL_EAST].first_gid        = tmx_map_pointer->tileset[TILE_SET_WALL_SOUTH].number_of_tiles+tmx_map_pointer->tileset[TILE_SET_WALL_SOUTH].first_gid +1;
+    tmx_map_pointer->tileset[TILE_SET_WALL_EAST].image_source     = tile_set_name_wall_east;
+    tmx_map_pointer->tileset[TILE_SET_WALL_EAST].image_loaded     = true;
+    tmx_map_pointer->tileset[TILE_SET_WALL_EAST].tile_width       = wall_width;
+    tmx_map_pointer->tileset[TILE_SET_WALL_EAST].tile_height      = wall_height;
+    tmx_map_pointer->tileset[TILE_SET_WALL_EAST].tile.load_spritesheet(tmx_map_pointer->tileset[TILE_SET_WALL_EAST].image_source,tmx_map_pointer->tileset[TILE_SET_WALL_EAST].tile_width,tmx_map_pointer->tileset[TILE_SET_WALL_EAST].tile_height);
+    tmx_map_pointer->tileset[TILE_SET_WALL_EAST].number_of_tiles  = tmx_map_pointer->tileset[TILE_SET_WALL_EAST].tile.frame_max;
+    tmx_map_pointer->tileset[TILE_SET_WALL_WEST].first_gid        = tmx_map_pointer->tileset[TILE_SET_WALL_EAST].number_of_tiles+tmx_map_pointer->tileset[TILE_SET_WALL_EAST].first_gid +1;
+    tmx_map_pointer->tileset[TILE_SET_WALL_WEST].image_source     = tile_set_name_wall_west;
+    tmx_map_pointer->tileset[TILE_SET_WALL_WEST].image_loaded     = true;
+    tmx_map_pointer->tileset[TILE_SET_WALL_WEST].tile_width       = wall_width;
+    tmx_map_pointer->tileset[TILE_SET_WALL_WEST].tile_height      = wall_height;
+    tmx_map_pointer->tileset[TILE_SET_WALL_WEST].tile.load_spritesheet(tmx_map_pointer->tileset[TILE_SET_WALL_WEST].image_source,tmx_map_pointer->tileset[TILE_SET_WALL_WEST].tile_width,tmx_map_pointer->tileset[TILE_SET_WALL_WEST].tile_height);
+    tmx_map_pointer->tileset[TILE_SET_WALL_WEST].number_of_tiles  = tmx_map_pointer->tileset[TILE_SET_WALL_WEST].tile.frame_max;
+    tmx_map_pointer->tileset[TILE_SET_WALL_NORTH_EAST_CONVEX].first_gid        = tmx_map_pointer->tileset[TILE_SET_WALL_WEST].number_of_tiles+tmx_map_pointer->tileset[TILE_SET_WALL_WEST].first_gid +1;
+    tmx_map_pointer->tileset[TILE_SET_WALL_NORTH_EAST_CONVEX].image_source     = tile_set_name_wall_north_east_convex;
+    tmx_map_pointer->tileset[TILE_SET_WALL_NORTH_EAST_CONVEX].image_loaded     = true;
+    tmx_map_pointer->tileset[TILE_SET_WALL_NORTH_EAST_CONVEX].tile_width       = wall_width;
+    tmx_map_pointer->tileset[TILE_SET_WALL_NORTH_EAST_CONVEX].tile_height      = wall_height;
+    tmx_map_pointer->tileset[TILE_SET_WALL_NORTH_EAST_CONVEX].tile.load_spritesheet(tmx_map_pointer->tileset[TILE_SET_WALL_NORTH_EAST_CONVEX].image_source,tmx_map_pointer->tileset[TILE_SET_WALL_NORTH_EAST_CONVEX].tile_width,tmx_map_pointer->tileset[TILE_SET_WALL_NORTH_EAST_CONVEX].tile_height);
+    tmx_map_pointer->tileset[TILE_SET_WALL_NORTH_EAST_CONVEX].number_of_tiles  = tmx_map_pointer->tileset[TILE_SET_WALL_NORTH_EAST_CONVEX].tile.frame_max;
+    tmx_map_pointer->tileset[TILE_SET_WALL_NORTH_WEST_CONVEX].first_gid        = tmx_map_pointer->tileset[TILE_SET_WALL_NORTH_EAST_CONVEX].number_of_tiles+tmx_map_pointer->tileset[TILE_SET_WALL_NORTH_EAST_CONVEX].first_gid +1;
+    tmx_map_pointer->tileset[TILE_SET_WALL_NORTH_WEST_CONVEX].image_source     = tile_set_name_wall_north_west_convex;
+    tmx_map_pointer->tileset[TILE_SET_WALL_NORTH_WEST_CONVEX].image_loaded     = true;
+    tmx_map_pointer->tileset[TILE_SET_WALL_NORTH_WEST_CONVEX].tile_width       = wall_width;
+    tmx_map_pointer->tileset[TILE_SET_WALL_NORTH_WEST_CONVEX].tile_height      = wall_height;
+    tmx_map_pointer->tileset[TILE_SET_WALL_NORTH_WEST_CONVEX].tile.load_spritesheet(tmx_map_pointer->tileset[TILE_SET_WALL_NORTH_WEST_CONVEX].image_source,tmx_map_pointer->tileset[TILE_SET_WALL_NORTH_WEST_CONVEX].tile_width,tmx_map_pointer->tileset[TILE_SET_WALL_NORTH_WEST_CONVEX].tile_height);
+    tmx_map_pointer->tileset[TILE_SET_WALL_NORTH_WEST_CONVEX].number_of_tiles  = tmx_map_pointer->tileset[TILE_SET_WALL_NORTH_WEST_CONVEX].tile.frame_max;
+    tmx_map_pointer->tileset[TILE_SET_WALL_SOUTH_EAST_CONVEX].first_gid        = tmx_map_pointer->tileset[TILE_SET_WALL_NORTH_WEST_CONVEX].number_of_tiles+tmx_map_pointer->tileset[TILE_SET_WALL_NORTH_WEST_CONVEX].first_gid +1;
+    tmx_map_pointer->tileset[TILE_SET_WALL_SOUTH_EAST_CONVEX].image_source     = tile_set_name_wall_south_east_convex;
+    tmx_map_pointer->tileset[TILE_SET_WALL_SOUTH_EAST_CONVEX].image_loaded     = true;
+    tmx_map_pointer->tileset[TILE_SET_WALL_SOUTH_EAST_CONVEX].tile_width       = wall_width;
+    tmx_map_pointer->tileset[TILE_SET_WALL_SOUTH_EAST_CONVEX].tile_height      = wall_height;
+    tmx_map_pointer->tileset[TILE_SET_WALL_SOUTH_EAST_CONVEX].tile.load_spritesheet(tmx_map_pointer->tileset[TILE_SET_WALL_SOUTH_EAST_CONVEX].image_source,tmx_map_pointer->tileset[TILE_SET_WALL_SOUTH_EAST_CONVEX].tile_width,tmx_map_pointer->tileset[TILE_SET_WALL_SOUTH_EAST_CONVEX].tile_height);
+    tmx_map_pointer->tileset[TILE_SET_WALL_SOUTH_EAST_CONVEX].number_of_tiles  = tmx_map_pointer->tileset[TILE_SET_WALL_SOUTH_EAST_CONVEX].tile.frame_max;
+    tmx_map_pointer->tileset[TILE_SET_WALL_SOUTH_WEST_CONVEX].first_gid        = tmx_map_pointer->tileset[TILE_SET_WALL_SOUTH_EAST_CONVEX].number_of_tiles+tmx_map_pointer->tileset[TILE_SET_WALL_SOUTH_EAST_CONVEX].first_gid +1;
+    tmx_map_pointer->tileset[TILE_SET_WALL_SOUTH_WEST_CONVEX].image_source     = tile_set_name_wall_south_west_convex;
+    tmx_map_pointer->tileset[TILE_SET_WALL_SOUTH_WEST_CONVEX].image_loaded     = true;
+    tmx_map_pointer->tileset[TILE_SET_WALL_SOUTH_WEST_CONVEX].tile_width       = wall_width;
+    tmx_map_pointer->tileset[TILE_SET_WALL_SOUTH_WEST_CONVEX].tile_height      = wall_height;
+    tmx_map_pointer->tileset[TILE_SET_WALL_SOUTH_WEST_CONVEX].tile.load_spritesheet(tmx_map_pointer->tileset[TILE_SET_WALL_SOUTH_WEST_CONVEX].image_source,tmx_map_pointer->tileset[TILE_SET_WALL_SOUTH_WEST_CONVEX].tile_width,tmx_map_pointer->tileset[TILE_SET_WALL_SOUTH_WEST_CONVEX].tile_height);
+    tmx_map_pointer->tileset[TILE_SET_WALL_SOUTH_WEST_CONVEX].number_of_tiles  = tmx_map_pointer->tileset[TILE_SET_WALL_SOUTH_WEST_CONVEX].tile.frame_max;
+    tmx_map_pointer->tileset[TILE_SET_WALL_NORTH_EAST_CONCAVE].first_gid       = tmx_map_pointer->tileset[TILE_SET_WALL_SOUTH_WEST_CONVEX].number_of_tiles+tmx_map_pointer->tileset[TILE_SET_WALL_SOUTH_WEST_CONVEX].first_gid +1;
+    tmx_map_pointer->tileset[TILE_SET_WALL_NORTH_EAST_CONCAVE].image_source    = tile_set_name_wall_north_east_concave;
+    tmx_map_pointer->tileset[TILE_SET_WALL_NORTH_EAST_CONCAVE].image_loaded    = true;
+    tmx_map_pointer->tileset[TILE_SET_WALL_NORTH_EAST_CONCAVE].tile_width      = wall_width;
+    tmx_map_pointer->tileset[TILE_SET_WALL_NORTH_EAST_CONCAVE].tile_height     = wall_height;
+    tmx_map_pointer->tileset[TILE_SET_WALL_NORTH_EAST_CONCAVE].tile.load_spritesheet(tmx_map_pointer->tileset[TILE_SET_WALL_NORTH_EAST_CONCAVE].image_source,tmx_map_pointer->tileset[TILE_SET_WALL_NORTH_EAST_CONCAVE].tile_width,tmx_map_pointer->tileset[TILE_SET_WALL_NORTH_EAST_CONCAVE].tile_height);
+    tmx_map_pointer->tileset[TILE_SET_WALL_NORTH_EAST_CONCAVE].number_of_tiles = tmx_map_pointer->tileset[TILE_SET_WALL_NORTH_EAST_CONCAVE].tile.frame_max;
+    tmx_map_pointer->tileset[TILE_SET_WALL_NORTH_WEST_CONCAVE].first_gid       = tmx_map_pointer->tileset[TILE_SET_WALL_NORTH_EAST_CONCAVE].number_of_tiles+tmx_map_pointer->tileset[TILE_SET_WALL_NORTH_EAST_CONCAVE].first_gid +1;
+    tmx_map_pointer->tileset[TILE_SET_WALL_NORTH_WEST_CONCAVE].image_source    = tile_set_name_wall_north_west_concave;
+    tmx_map_pointer->tileset[TILE_SET_WALL_NORTH_WEST_CONCAVE].image_loaded    = true;
+    tmx_map_pointer->tileset[TILE_SET_WALL_NORTH_WEST_CONCAVE].tile_width      = wall_width;
+    tmx_map_pointer->tileset[TILE_SET_WALL_NORTH_WEST_CONCAVE].tile_height     = wall_height;
+    tmx_map_pointer->tileset[TILE_SET_WALL_NORTH_WEST_CONCAVE].tile.load_spritesheet(tmx_map_pointer->tileset[TILE_SET_WALL_NORTH_WEST_CONCAVE].image_source,tmx_map_pointer->tileset[TILE_SET_WALL_NORTH_WEST_CONCAVE].tile_width,tmx_map_pointer->tileset[TILE_SET_WALL_NORTH_WEST_CONCAVE].tile_height);
+    tmx_map_pointer->tileset[TILE_SET_WALL_NORTH_WEST_CONCAVE].number_of_tiles = tmx_map_pointer->tileset[TILE_SET_WALL_NORTH_WEST_CONCAVE].tile.frame_max;
+    tmx_map_pointer->tileset[TILE_SET_WALL_SOUTH_EAST_CONCAVE].first_gid       = tmx_map_pointer->tileset[TILE_SET_WALL_NORTH_WEST_CONCAVE].number_of_tiles+tmx_map_pointer->tileset[TILE_SET_WALL_NORTH_WEST_CONCAVE].first_gid +1;
+    tmx_map_pointer->tileset[TILE_SET_WALL_SOUTH_EAST_CONCAVE].image_source    = tile_set_name_wall_south_east_concave;
+    tmx_map_pointer->tileset[TILE_SET_WALL_SOUTH_EAST_CONCAVE].image_loaded    = true;
+    tmx_map_pointer->tileset[TILE_SET_WALL_SOUTH_EAST_CONCAVE].tile_width      = wall_width;
+    tmx_map_pointer->tileset[TILE_SET_WALL_SOUTH_EAST_CONCAVE].tile_height     = wall_height;
+    tmx_map_pointer->tileset[TILE_SET_WALL_SOUTH_EAST_CONCAVE].tile.load_spritesheet(tmx_map_pointer->tileset[TILE_SET_WALL_SOUTH_EAST_CONCAVE].image_source,tmx_map_pointer->tileset[TILE_SET_WALL_SOUTH_EAST_CONCAVE].tile_width,tmx_map_pointer->tileset[TILE_SET_WALL_SOUTH_EAST_CONCAVE].tile_height);
+    tmx_map_pointer->tileset[TILE_SET_WALL_SOUTH_EAST_CONCAVE].number_of_tiles = tmx_map_pointer->tileset[TILE_SET_WALL_SOUTH_EAST_CONCAVE].tile.frame_max;
+    tmx_map_pointer->tileset[TILE_SET_WALL_SOUTH_WEST_CONCAVE].first_gid       = tmx_map_pointer->tileset[TILE_SET_WALL_SOUTH_EAST_CONCAVE].number_of_tiles+tmx_map_pointer->tileset[TILE_SET_WALL_SOUTH_EAST_CONCAVE].first_gid +1;
+    tmx_map_pointer->tileset[TILE_SET_WALL_SOUTH_WEST_CONCAVE].image_source    = tile_set_name_wall_south_west_concave;
+    tmx_map_pointer->tileset[TILE_SET_WALL_SOUTH_WEST_CONCAVE].image_loaded    = true;
+    tmx_map_pointer->tileset[TILE_SET_WALL_SOUTH_WEST_CONCAVE].tile_width      = wall_width;
+    tmx_map_pointer->tileset[TILE_SET_WALL_SOUTH_WEST_CONCAVE].tile_height     = wall_height;
+    tmx_map_pointer->tileset[TILE_SET_WALL_SOUTH_WEST_CONCAVE].tile.load_spritesheet(tmx_map_pointer->tileset[TILE_SET_WALL_SOUTH_WEST_CONCAVE].image_source,tmx_map_pointer->tileset[TILE_SET_WALL_SOUTH_WEST_CONCAVE].tile_width,tmx_map_pointer->tileset[TILE_SET_WALL_SOUTH_WEST_CONCAVE].tile_height);
+    tmx_map_pointer->tileset[TILE_SET_WALL_SOUTH_WEST_CONCAVE].number_of_tiles = tmx_map_pointer->tileset[TILE_SET_WALL_SOUTH_WEST_CONCAVE].tile.frame_max;
+    tmx_map_pointer->tileset[TILE_SET_OBJECTS].first_gid       = tmx_map_pointer->tileset[TILE_SET_WALL_SOUTH_WEST_CONCAVE].number_of_tiles+tmx_map_pointer->tileset[TILE_SET_WALL_SOUTH_WEST_CONCAVE].first_gid +1;
+    tmx_map_pointer->tileset[TILE_SET_OBJECTS].image_source    = tile_set_name_objects;
+    tmx_map_pointer->tileset[TILE_SET_OBJECTS].image_loaded    = true;
+    tmx_map_pointer->tileset[TILE_SET_OBJECTS].tile_width      = wall_width;
+    tmx_map_pointer->tileset[TILE_SET_OBJECTS].tile_height     = wall_height;
+    tmx_map_pointer->tileset[TILE_SET_OBJECTS].tile.load_spritesheet(tmx_map_pointer->tileset[TILE_SET_OBJECTS].image_source,tmx_map_pointer->tileset[TILE_SET_OBJECTS].tile_width,tmx_map_pointer->tileset[TILE_SET_OBJECTS].tile_height);
+    tmx_map_pointer->tileset[TILE_SET_OBJECTS].number_of_tiles = tmx_map_pointer->tileset[TILE_SET_OBJECTS].tile.frame_max;
+    int  layer_count    = 0;
+    int  random_seed    = 0;
+    int  random_number  = 0;
+    for (int tile_count = 0; tile_count < tmx_map_pointer->data.number_of_tiles; tile_count++)
     {
-        if (map_2D_class::tileset) delete map_2D_class::tileset;
-        map_2D_class::number_of_tilesets         = 16;
-        map_2D_class::tileset                    = new tileset_class [map_2D_class::number_of_tilesets];
-        map_2D_class::tilewidth                  = DEFAULT_FRAME_WIDTH;
-        map_2D_class::tileheight                 = DEFAULT_FRAME_HEIGHT;
-        map_2D_class::tileset[TILE_SET_DEFAULT].firstgid        = 1;
-        map_2D_class::tileset[TILE_SET_DEFAULT].image_source    = tile_set_name_default;
-        map_2D_class::tileset[TILE_SET_DEFAULT].tilewidth       = map_2D_class::tilewidth;
-        map_2D_class::tileset[TILE_SET_DEFAULT].tileheight      = map_2D_class::tileheight;
-        map_2D_class::tileset[TILE_SET_DEFAULT].tile.load_spritesheet(map_2D_class::tileset[TILE_SET_DEFAULT].image_source,map_2D_class::tileset[TILE_SET_DEFAULT].tilewidth,map_2D_class::tileset[TILE_SET_DEFAULT].tileheight);
-        map_2D_class::tileset[TILE_SET_DEFAULT].number_of_tiles = map_2D_class::tileset[TILE_SET_DEFAULT].tile.frame_max;
-        map_2D_class::tileset[TILE_SET_FLOOR].firstgid          = map_2D_class::tileset[TILE_SET_DEFAULT].number_of_tiles+map_2D_class::tileset[TILE_SET_DEFAULT].firstgid +1;
-        map_2D_class::tileset[TILE_SET_FLOOR].image_source    = tile_set_name_floor;
-        map_2D_class::tileset[TILE_SET_FLOOR].tilewidth       = floor_width;
-        map_2D_class::tileset[TILE_SET_FLOOR].tileheight      = floor_height;
-        map_2D_class::tileset[TILE_SET_FLOOR].tile.load_spritesheet(map_2D_class::tileset[TILE_SET_FLOOR].image_source,map_2D_class::tileset[TILE_SET_FLOOR].tilewidth,map_2D_class::tileset[TILE_SET_FLOOR].tileheight);
-        map_2D_class::tileset[TILE_SET_FLOOR].number_of_tiles = map_2D_class::tileset[TILE_SET_FLOOR].tile.frame_max;
-        map_2D_class::tileset[TILE_SET_ROOF].firstgid          = map_2D_class::tileset[TILE_SET_FLOOR].number_of_tiles+map_2D_class::tileset[TILE_SET_FLOOR].firstgid +1;
-        map_2D_class::tileset[TILE_SET_ROOF].image_source    = tile_set_name_roof;
-        map_2D_class::tileset[TILE_SET_ROOF].tilewidth       = wall_width;
-        map_2D_class::tileset[TILE_SET_ROOF].tileheight      = wall_height;
-        map_2D_class::tileset[TILE_SET_ROOF].tile.load_spritesheet(map_2D_class::tileset[TILE_SET_ROOF].image_source,map_2D_class::tileset[TILE_SET_ROOF].tilewidth,map_2D_class::tileset[TILE_SET_ROOF].tileheight);
-        map_2D_class::tileset[TILE_SET_ROOF].number_of_tiles = map_2D_class::tileset[TILE_SET_ROOF].tile.frame_max;
-        map_2D_class::tileset[TILE_SET_WALL_NORTH].firstgid        = map_2D_class::tileset[TILE_SET_ROOF].number_of_tiles+map_2D_class::tileset[TILE_SET_ROOF].firstgid +1;
-        map_2D_class::tileset[TILE_SET_WALL_NORTH].image_source    = tile_set_name_wall_north;
-        map_2D_class::tileset[TILE_SET_WALL_NORTH].tilewidth       = wall_width;
-        map_2D_class::tileset[TILE_SET_WALL_NORTH].tileheight      = wall_height;
-        map_2D_class::tileset[TILE_SET_WALL_NORTH].tile.load_spritesheet(map_2D_class::tileset[TILE_SET_WALL_NORTH].image_source,map_2D_class::tileset[TILE_SET_WALL_NORTH].tilewidth,map_2D_class::tileset[TILE_SET_WALL_NORTH].tileheight);
-        map_2D_class::tileset[TILE_SET_WALL_NORTH].number_of_tiles = map_2D_class::tileset[TILE_SET_WALL_NORTH].tile.frame_max;
-        map_2D_class::tileset[TILE_SET_WALL_SOUTH].firstgid        = map_2D_class::tileset[TILE_SET_WALL_NORTH].number_of_tiles+map_2D_class::tileset[TILE_SET_WALL_NORTH].firstgid +1;
-        map_2D_class::tileset[TILE_SET_WALL_SOUTH].image_source    = tile_set_name_wall_south;
-        map_2D_class::tileset[TILE_SET_WALL_SOUTH].tilewidth       = wall_width;
-        map_2D_class::tileset[TILE_SET_WALL_SOUTH].tileheight      = wall_height;
-        map_2D_class::tileset[TILE_SET_WALL_SOUTH].tile.load_spritesheet(map_2D_class::tileset[TILE_SET_WALL_SOUTH].image_source,map_2D_class::tileset[TILE_SET_WALL_SOUTH].tilewidth,map_2D_class::tileset[TILE_SET_WALL_SOUTH].tileheight);
-        map_2D_class::tileset[TILE_SET_WALL_SOUTH].number_of_tiles = map_2D_class::tileset[TILE_SET_WALL_SOUTH].tile.frame_max;
-        map_2D_class::tileset[TILE_SET_WALL_EAST].firstgid        = map_2D_class::tileset[TILE_SET_WALL_SOUTH].number_of_tiles+map_2D_class::tileset[TILE_SET_WALL_SOUTH].firstgid +1;
-        map_2D_class::tileset[TILE_SET_WALL_EAST].image_source    = tile_set_name_wall_east;
-        map_2D_class::tileset[TILE_SET_WALL_EAST].tilewidth       = wall_width;
-        map_2D_class::tileset[TILE_SET_WALL_EAST].tileheight      = wall_height;
-        map_2D_class::tileset[TILE_SET_WALL_EAST].tile.load_spritesheet(map_2D_class::tileset[TILE_SET_WALL_EAST].image_source,map_2D_class::tileset[TILE_SET_WALL_EAST].tilewidth,map_2D_class::tileset[TILE_SET_WALL_EAST].tileheight);
-        map_2D_class::tileset[TILE_SET_WALL_EAST].number_of_tiles = map_2D_class::tileset[TILE_SET_WALL_EAST].tile.frame_max;
-        map_2D_class::tileset[TILE_SET_WALL_WEST].firstgid        = map_2D_class::tileset[TILE_SET_WALL_EAST].number_of_tiles+map_2D_class::tileset[TILE_SET_WALL_EAST].firstgid +1;
-        map_2D_class::tileset[TILE_SET_WALL_WEST].image_source    = tile_set_name_wall_west;
-        map_2D_class::tileset[TILE_SET_WALL_WEST].tilewidth       = wall_width;
-        map_2D_class::tileset[TILE_SET_WALL_WEST].tileheight      = wall_height;
-        map_2D_class::tileset[TILE_SET_WALL_WEST].tile.load_spritesheet(map_2D_class::tileset[TILE_SET_WALL_WEST].image_source,map_2D_class::tileset[TILE_SET_WALL_WEST].tilewidth,map_2D_class::tileset[TILE_SET_WALL_WEST].tileheight);
-        map_2D_class::tileset[TILE_SET_WALL_WEST].number_of_tiles = map_2D_class::tileset[TILE_SET_WALL_WEST].tile.frame_max;
-        map_2D_class::tileset[TILE_SET_WALL_NORTH_EAST_CONVEX].firstgid        = map_2D_class::tileset[TILE_SET_WALL_WEST].number_of_tiles+map_2D_class::tileset[TILE_SET_WALL_WEST].firstgid +1;
-        map_2D_class::tileset[TILE_SET_WALL_NORTH_EAST_CONVEX].image_source    = tile_set_name_wall_north_east_convex;
-        map_2D_class::tileset[TILE_SET_WALL_NORTH_EAST_CONVEX].tilewidth       = wall_width;
-        map_2D_class::tileset[TILE_SET_WALL_NORTH_EAST_CONVEX].tileheight      = wall_height;
-        map_2D_class::tileset[TILE_SET_WALL_NORTH_EAST_CONVEX].tile.load_spritesheet(map_2D_class::tileset[TILE_SET_WALL_NORTH_EAST_CONVEX].image_source,map_2D_class::tileset[TILE_SET_WALL_NORTH_EAST_CONVEX].tilewidth,map_2D_class::tileset[TILE_SET_WALL_NORTH_EAST_CONVEX].tileheight);
-        map_2D_class::tileset[TILE_SET_WALL_NORTH_EAST_CONVEX].number_of_tiles = map_2D_class::tileset[TILE_SET_WALL_NORTH_EAST_CONVEX].tile.frame_max;
-        map_2D_class::tileset[TILE_SET_WALL_NORTH_WEST_CONVEX].firstgid        = map_2D_class::tileset[TILE_SET_WALL_NORTH_EAST_CONVEX].number_of_tiles+map_2D_class::tileset[TILE_SET_WALL_NORTH_EAST_CONVEX].firstgid +1;
-        map_2D_class::tileset[TILE_SET_WALL_NORTH_WEST_CONVEX].image_source    = tile_set_name_wall_north_west_convex;
-        map_2D_class::tileset[TILE_SET_WALL_NORTH_WEST_CONVEX].tilewidth       = wall_width;
-        map_2D_class::tileset[TILE_SET_WALL_NORTH_WEST_CONVEX].tileheight      = wall_height;
-        map_2D_class::tileset[TILE_SET_WALL_NORTH_WEST_CONVEX].tile.load_spritesheet(map_2D_class::tileset[TILE_SET_WALL_NORTH_WEST_CONVEX].image_source,map_2D_class::tileset[TILE_SET_WALL_NORTH_WEST_CONVEX].tilewidth,map_2D_class::tileset[TILE_SET_WALL_NORTH_WEST_CONVEX].tileheight);
-        map_2D_class::tileset[TILE_SET_WALL_NORTH_WEST_CONVEX].number_of_tiles = map_2D_class::tileset[TILE_SET_WALL_NORTH_WEST_CONVEX].tile.frame_max;
-        map_2D_class::tileset[TILE_SET_WALL_SOUTH_EAST_CONVEX].firstgid        = map_2D_class::tileset[TILE_SET_WALL_NORTH_WEST_CONVEX].number_of_tiles+map_2D_class::tileset[TILE_SET_WALL_NORTH_WEST_CONVEX].firstgid +1;
-        map_2D_class::tileset[TILE_SET_WALL_SOUTH_EAST_CONVEX].image_source    = tile_set_name_wall_south_east_convex;
-        map_2D_class::tileset[TILE_SET_WALL_SOUTH_EAST_CONVEX].tilewidth       = wall_width;
-        map_2D_class::tileset[TILE_SET_WALL_SOUTH_EAST_CONVEX].tileheight      = wall_height;
-        map_2D_class::tileset[TILE_SET_WALL_SOUTH_EAST_CONVEX].tile.load_spritesheet(map_2D_class::tileset[TILE_SET_WALL_SOUTH_EAST_CONVEX].image_source,map_2D_class::tileset[TILE_SET_WALL_SOUTH_EAST_CONVEX].tilewidth,map_2D_class::tileset[TILE_SET_WALL_SOUTH_EAST_CONVEX].tileheight);
-        map_2D_class::tileset[TILE_SET_WALL_SOUTH_EAST_CONVEX].number_of_tiles = map_2D_class::tileset[TILE_SET_WALL_SOUTH_EAST_CONVEX].tile.frame_max;
-        map_2D_class::tileset[TILE_SET_WALL_SOUTH_WEST_CONVEX].firstgid        = map_2D_class::tileset[TILE_SET_WALL_SOUTH_EAST_CONVEX].number_of_tiles+map_2D_class::tileset[TILE_SET_WALL_SOUTH_EAST_CONVEX].firstgid +1;
-        map_2D_class::tileset[TILE_SET_WALL_SOUTH_WEST_CONVEX].image_source    = tile_set_name_wall_south_west_convex;
-        map_2D_class::tileset[TILE_SET_WALL_SOUTH_WEST_CONVEX].tilewidth       = wall_width;
-        map_2D_class::tileset[TILE_SET_WALL_SOUTH_WEST_CONVEX].tileheight      = wall_height;
-        map_2D_class::tileset[TILE_SET_WALL_SOUTH_WEST_CONVEX].tile.load_spritesheet(map_2D_class::tileset[TILE_SET_WALL_SOUTH_WEST_CONVEX].image_source,map_2D_class::tileset[TILE_SET_WALL_SOUTH_WEST_CONVEX].tilewidth,map_2D_class::tileset[TILE_SET_WALL_SOUTH_WEST_CONVEX].tileheight);
-        map_2D_class::tileset[TILE_SET_WALL_SOUTH_WEST_CONVEX].number_of_tiles = map_2D_class::tileset[TILE_SET_WALL_SOUTH_WEST_CONVEX].tile.frame_max;
-        map_2D_class::tileset[TILE_SET_WALL_NORTH_EAST_CONCAVE].firstgid        = map_2D_class::tileset[TILE_SET_WALL_SOUTH_WEST_CONVEX].number_of_tiles+map_2D_class::tileset[TILE_SET_WALL_SOUTH_WEST_CONVEX].firstgid +1;
-        map_2D_class::tileset[TILE_SET_WALL_NORTH_EAST_CONCAVE].image_source    = tile_set_name_wall_north_east_concave;
-        map_2D_class::tileset[TILE_SET_WALL_NORTH_EAST_CONCAVE].tilewidth       = wall_width;
-        map_2D_class::tileset[TILE_SET_WALL_NORTH_EAST_CONCAVE].tileheight      = wall_height;
-        map_2D_class::tileset[TILE_SET_WALL_NORTH_EAST_CONCAVE].tile.load_spritesheet(map_2D_class::tileset[TILE_SET_WALL_NORTH_EAST_CONCAVE].image_source,map_2D_class::tileset[TILE_SET_WALL_NORTH_EAST_CONCAVE].tilewidth,map_2D_class::tileset[TILE_SET_WALL_NORTH_EAST_CONCAVE].tileheight);
-        map_2D_class::tileset[TILE_SET_WALL_NORTH_EAST_CONCAVE].number_of_tiles = map_2D_class::tileset[TILE_SET_WALL_NORTH_EAST_CONCAVE].tile.frame_max;
-        map_2D_class::tileset[TILE_SET_WALL_NORTH_WEST_CONCAVE].firstgid        = map_2D_class::tileset[TILE_SET_WALL_NORTH_EAST_CONCAVE].number_of_tiles+map_2D_class::tileset[TILE_SET_WALL_NORTH_EAST_CONCAVE].firstgid +1;
-        map_2D_class::tileset[TILE_SET_WALL_NORTH_WEST_CONCAVE].image_source    = tile_set_name_wall_north_west_concave;
-        map_2D_class::tileset[TILE_SET_WALL_NORTH_WEST_CONCAVE].tilewidth       = wall_width;
-        map_2D_class::tileset[TILE_SET_WALL_NORTH_WEST_CONCAVE].tileheight      = wall_height;
-        map_2D_class::tileset[TILE_SET_WALL_NORTH_WEST_CONCAVE].tile.load_spritesheet(map_2D_class::tileset[TILE_SET_WALL_NORTH_WEST_CONCAVE].image_source,map_2D_class::tileset[TILE_SET_WALL_NORTH_WEST_CONCAVE].tilewidth,map_2D_class::tileset[TILE_SET_WALL_NORTH_WEST_CONCAVE].tileheight);
-        map_2D_class::tileset[TILE_SET_WALL_NORTH_WEST_CONCAVE].number_of_tiles = map_2D_class::tileset[TILE_SET_WALL_NORTH_WEST_CONCAVE].tile.frame_max;
-        map_2D_class::tileset[TILE_SET_WALL_SOUTH_EAST_CONCAVE].firstgid        = map_2D_class::tileset[TILE_SET_WALL_NORTH_WEST_CONCAVE].number_of_tiles+map_2D_class::tileset[TILE_SET_WALL_NORTH_WEST_CONCAVE].firstgid +1;
-        map_2D_class::tileset[TILE_SET_WALL_SOUTH_EAST_CONCAVE].image_source    = tile_set_name_wall_south_east_concave;
-        map_2D_class::tileset[TILE_SET_WALL_SOUTH_EAST_CONCAVE].tilewidth       = wall_width;
-        map_2D_class::tileset[TILE_SET_WALL_SOUTH_EAST_CONCAVE].tileheight      = wall_height;
-        map_2D_class::tileset[TILE_SET_WALL_SOUTH_EAST_CONCAVE].tile.load_spritesheet(map_2D_class::tileset[TILE_SET_WALL_SOUTH_EAST_CONCAVE].image_source,map_2D_class::tileset[TILE_SET_WALL_SOUTH_EAST_CONCAVE].tilewidth,map_2D_class::tileset[TILE_SET_WALL_SOUTH_EAST_CONCAVE].tileheight);
-        map_2D_class::tileset[TILE_SET_WALL_SOUTH_EAST_CONCAVE].number_of_tiles = map_2D_class::tileset[TILE_SET_WALL_SOUTH_EAST_CONCAVE].tile.frame_max;
-        map_2D_class::tileset[TILE_SET_WALL_SOUTH_WEST_CONCAVE].firstgid        = map_2D_class::tileset[TILE_SET_WALL_SOUTH_EAST_CONCAVE].number_of_tiles+map_2D_class::tileset[TILE_SET_WALL_SOUTH_EAST_CONCAVE].firstgid +1;
-        map_2D_class::tileset[TILE_SET_WALL_SOUTH_WEST_CONCAVE].image_source    = tile_set_name_wall_south_west_concave;
-        map_2D_class::tileset[TILE_SET_WALL_SOUTH_WEST_CONCAVE].tilewidth       = wall_width;
-        map_2D_class::tileset[TILE_SET_WALL_SOUTH_WEST_CONCAVE].tileheight      = wall_height;
-        map_2D_class::tileset[TILE_SET_WALL_SOUTH_WEST_CONCAVE].tile.load_spritesheet(map_2D_class::tileset[TILE_SET_WALL_SOUTH_WEST_CONCAVE].image_source,map_2D_class::tileset[TILE_SET_WALL_SOUTH_WEST_CONCAVE].tilewidth,map_2D_class::tileset[TILE_SET_WALL_SOUTH_WEST_CONCAVE].tileheight);
-        map_2D_class::tileset[TILE_SET_WALL_SOUTH_WEST_CONCAVE].number_of_tiles = map_2D_class::tileset[TILE_SET_WALL_SOUTH_WEST_CONCAVE].tile.frame_max;
-        map_2D_class::tileset[TILE_SET_OBJECTS].firstgid        = map_2D_class::tileset[TILE_SET_WALL_SOUTH_WEST_CONCAVE].number_of_tiles+map_2D_class::tileset[TILE_SET_WALL_SOUTH_WEST_CONCAVE].firstgid +1;
-        map_2D_class::tileset[TILE_SET_OBJECTS].image_source    = tile_set_name_objects;
-        map_2D_class::tileset[TILE_SET_OBJECTS].tilewidth       = wall_width;
-        map_2D_class::tileset[TILE_SET_OBJECTS].tileheight      = wall_height;
-        map_2D_class::tileset[TILE_SET_OBJECTS].tile.load_spritesheet(map_2D_class::tileset[TILE_SET_OBJECTS].image_source,map_2D_class::tileset[TILE_SET_OBJECTS].tilewidth,map_2D_class::tileset[TILE_SET_OBJECTS].tileheight);
-        map_2D_class::tileset[TILE_SET_OBJECTS].number_of_tiles = map_2D_class::tileset[TILE_SET_OBJECTS].tile.frame_max;
+        switch (tmx_map_pointer->layer[layer_count].tile[tile_count].tile)
+        {
+            case FLOOR_TILE:
+                tmx_map_pointer->layer[layer_count].tile[tile_count].tile_tileset = TILE_SET_FLOOR;
+                random_seed     = tmx_map_pointer->tileset[TILE_SET_FLOOR].number_of_tiles;
+                random_number   = random(random_seed*4);
+                if (random_number <= (random_seed*3)) tmx_map_pointer->layer[layer_count].tile[tile_count].tile = 1;
+                else tmx_map_pointer->layer[layer_count].tile[tile_count].tile = (random_number - random_seed*3);
+                // Randomly add cave objects.
+                /*
+                if (   (fill_data[tile_count+1].tile_data         == FLOOR_TILE)
+                    && (fill_data[tile_count-1].tile_data         == FLOOR_TILE)
+                    && (fill_data[tile_count+tiles_x].tile_data   == FLOOR_TILE)
+                    && (fill_data[tile_count+tiles_x+1].tile_data == FLOOR_TILE)
+                    && (fill_data[tile_count+tiles_x-1].tile_data == FLOOR_TILE)
+                    && (fill_data[tile_count-tiles_x].tile_data   == FLOOR_TILE)
+                    && (fill_data[tile_count-tiles_x+1].tile_data == FLOOR_TILE)
+                    && (fill_data[tile_count-tiles_x-1].tile_data == FLOOR_TILE))
+                    {
+                        if(random(1000) < 10)
+                        {
+                            map_2D_class::tile[tile_count].object_tileset = TILE_SET_OBJECTS;
+                            random_seed     = map_2D_class::tileset[TILE_SET_OBJECTS].number_of_tiles;
+                            random_number = random(random_seed*4);
+                            if (random_number <= (random_seed*3)) map_2D_class::tile[tile_count].object = 1;
+                            else map_2D_class::tile[tile_count].object = (random_number - random_seed*3);
+                        }
+                    }
+                */
+            break;
+            case WALL_TILE:
+            break;
+            default:
+                game.core.log.file_write("Unable to apply tile-set to unknown tile type -> %d\n",tmx_map_pointer->layer[layer_count].tile[tile_count].tile);
+            break;
+        }
     }
+};
+
+/*
+
+
+
     int  random_seed     = 0;
     int  random_number   = 0;
     bool wall_placed     = false;
