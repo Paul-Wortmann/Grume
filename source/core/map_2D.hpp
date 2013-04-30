@@ -28,6 +28,10 @@
 #include "textures.hpp"
 #include "map_gen.hpp"
 
+#define DUNGEON   1
+#define CAVE      2
+#define GRASSLAND 3
+
 const float  MAP_SCROLL_SPEED    = 0.02f;
 const float  TILE_SCALE_DEFAULT  = 200.0f;
 const float  TILE_WIDTH          = (float)DEFAULT_FRAME_WIDTH  / TILE_SCALE_DEFAULT;
@@ -47,6 +51,7 @@ class map_2D_class
         void calculate_tile_positions(tmx_map_type *tmx_map_pointer);
         void calculate_tile_positions(tmx_map_type *tmx_map_pointer, float tile_width_half_specify,float tile_height_half_specify);
         int  mouse_over_tile(tmx_map_type *tmx_map_pointer);
+        void apply_tileset(tmx_map_type *tmx_map_pointer, int pre_defined_tileset_value);
 };
 
 #endif //MAP_H_2D

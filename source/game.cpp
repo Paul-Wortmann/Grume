@@ -99,14 +99,9 @@ void game_class::init(void)
 
     //zoom out for testing
     game.zoom.current = game.zoom.max;
-
-    map_gen_BSP(&tmx_map);
-    //tmx_save(&tmx_map,"test_map.tmx");
-    //tmx_load(&tmx_map,"data/maps/town.tmx");
-    game.map_2D.apply_tileset(&tmx_map,DUNGEON);
+    tmx_load(&tmx_map,"data/maps/town.tmx");
     game.map_2D.calculate_tile_positions(&tmx_map,DEFAULT_FRAME_WIDTH/game.zoom.current/2.0f,DEFAULT_FRAME_HEIGHT/game.zoom.current/2.0f);
     game.map_2D.center_on_tile(&tmx_map,(tmx_map.data.number_of_tiles/2)+(tmx_map.data.map_width/2));
-    //game.map_2D.calculate_tile_positions(&tmx_map);
 
     // Add default items to inventory
     int inventory_ID = game.window_manager.window_get_number(INVENTORY_UID);
