@@ -67,7 +67,7 @@ class map_3D_class
         cell_type*         cell;
         map_3D_class(void);
        ~map_3D_class(void);
-        void               load(std::string file_name);
+        //void               load(std::string file_name);
         void               process(void);
         void               draw(void);
         void               mesh_cell_positions_generate(void);

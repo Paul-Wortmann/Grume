@@ -74,7 +74,7 @@ map_3D_class::~map_3D_class(void)
 {
     delete map_3D_class::cell;
 };
-
+/*
 void map_3D_class::load(std::string file_name)
 {
     map_3D_class::cell = new cell_type[map_3D_class::number_of_cells+1];
@@ -83,7 +83,7 @@ void map_3D_class::load(std::string file_name)
     //map_3D_class::mesh_height_generate_random();
     //map_3D_class::mesh_height_randomize();
 };
-
+*/
 void map_3D_class::process(void)
 {
     if (game.core.io.mouse_y >=  0.99000) map_3D_class::scroll_map( 0,-1);
