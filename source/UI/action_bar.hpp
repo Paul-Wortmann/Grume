@@ -28,7 +28,7 @@
 #include "window.hpp"
 
 void setup_action_bar(int UID);
-void update_action_bar(int window_number);
+//void update_action_bar(int window_number);
 void process_action_bar(int window_number);
 
 #endif // ACTION_BAR_H

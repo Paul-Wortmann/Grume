@@ -138,6 +138,7 @@ bool physics_class::collision_detection (body_2D_class body_1, body_2D_class bod
             return(false);
         break;
     }
+    return(true);
 };
 
 void physics_class::collision_responce    (body_2D_class body_1, body_2D_class body_2)

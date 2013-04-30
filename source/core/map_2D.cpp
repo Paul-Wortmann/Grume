@@ -515,9 +515,6 @@ void map_2D_class::apply_tileset(tmx_map_type *tmx_map_pointer, int pre_defined_
 };
 
 /*
-
-
-
     int  random_seed     = 0;
     int  random_number   = 0;
     bool wall_placed     = false;
@@ -775,16 +772,7 @@ void map_2D_class::apply_tileset(tmx_map_type *tmx_map_pointer, int pre_defined_
             break;
         }
     }
-    //----------------------------------------------------------------------------------------------------------------
-    //| Add content to map                                                                                           |
-    //----------------------------------------------------------------------------------------------------------------
-
-    //----------------------------------------------------------------------------------------------------------------
-    //| Miscellaneous                                                                                                |
-    //----------------------------------------------------------------------------------------------------------------
     delete fill_data;
-    map_2D_class::calculate_tile_positions();
-    map_2D_class::center_on_tile((map_2D_class::number_of_tiles/2)+(map_2D_class::width/2));
 };
 
 

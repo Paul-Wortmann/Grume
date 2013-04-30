@@ -286,10 +286,12 @@ void setup_action_bar(int UID)
 
 };
 
+/*
 void update_action_bar(int window_number)
 {
     // required function?
 };
+*/
 
 void process_action_bar(int window_number)
 {

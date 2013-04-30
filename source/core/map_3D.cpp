@@ -280,7 +280,6 @@ void map_3D_class::mesh_height_generate_heightmap(std::string file_name)
     Uint8            red          = 0;
     Uint8            green        = 0;
     Uint8            blue         = 0;
-    Uint8            alpha        = 0;
     Uint32           temp_data    = 0;
     float            temp_value   = 0.0f;
     SDL_Surface     *temp_surface = NULL;
@@ -307,7 +306,6 @@ void map_3D_class::mesh_height_generate_heightmap(std::string file_name)
             temp_data = pixel[cell_count] & pixel_format->Amask;
             temp_data = temp_data >> pixel_format->Ashift;
             temp_data = temp_data << pixel_format->Aloss;
-            alpha = (Uint8)temp_data;
             temp_value = float((((red+green+blue) / 768.0f) - 1.0f) / 4.0f);
             map_3D_class::cell[cell_count].vertex[0].y = temp_value;
             map_3D_class::cell[cell_count].vertex[1].y = temp_value;
