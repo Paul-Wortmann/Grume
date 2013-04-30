@@ -101,6 +101,7 @@ void game_class::init(void)
     game.zoom.current = game.zoom.max;
 
     map_gen_BSP(&tmx_map);
+    //tmx_save(&tmx_map,"test_map.tmx");
     //tmx_load(&tmx_map,"data/maps/town.tmx");
     game.map_2D.calculate_tile_positions(&tmx_map,DEFAULT_FRAME_WIDTH/game.zoom.current/2.0f,DEFAULT_FRAME_HEIGHT/game.zoom.current/2.0f);
     //game.map_2D.calculate_tile_positions(&tmx_map);
@@ -130,6 +131,7 @@ void game_class::process(void)
     game.player.process();
     game.npc.process();
     game.map_2D.process(&tmx_map);
+    //game.player.level.current_experience++
     //game.resource.map_3D.town.process();
     game.core.game_resume = true;
     if (game.core.music_next_track)

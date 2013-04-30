@@ -287,7 +287,6 @@ void tmx_load(tmx_map_type *tmx_map_pointer, std::string file_name)
         tmx_map_pointer->data.number_of_tiles    = tmx_map_pointer->data.map_width * tmx_map_pointer->data.map_height;
         tmx_map_pointer->data.number_of_tilesets = tileset_count;
         tmx_map_pointer->data.number_of_layers   = layer_count;
-        game.core.log.file_write("layer_count -> ",layer_count);
     }
     else game.core.log.file_write("Unable to load TMX map file -> ",file_name);
 };

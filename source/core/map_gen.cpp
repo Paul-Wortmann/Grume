@@ -278,6 +278,8 @@ void map_gen_BSP(tmx_map_type *tmx_map_pointer)
     int tileset_count                                       = 0;
     tmx_map_pointer->data.map_width                         = map_gen_size_x;
     tmx_map_pointer->data.map_height                        = map_gen_size_y;
+    tmx_map_pointer->data.map_tile_width                    = 64;
+    tmx_map_pointer->data.map_tile_height                   = 32;
     tmx_map_pointer->data.number_of_tiles                   = map_gen_size_x*map_gen_size_y;
     tmx_map_pointer->data.number_of_layers                  = 1;
     tmx_map_pointer->data.number_of_tilesets                = 1;
@@ -291,9 +293,9 @@ void map_gen_BSP(tmx_map_type *tmx_map_pointer)
     tmx_map_pointer->tileset[tileset_count].image_loaded    = false;
     tmx_map_pointer->tileset[tileset_count].image_width     = 256;
     tmx_map_pointer->tileset[tileset_count].image_height    = 32;
-    tmx_map_pointer->tileset[tileset_count].tile_width      = 32;
-    tmx_map_pointer->tileset[tileset_count].tile_height     = 64;
-    tmx_map_pointer->tileset[tileset_count].number_of_tiles = 8;
+    tmx_map_pointer->tileset[tileset_count].tile_width      = 64;
+    tmx_map_pointer->tileset[tileset_count].tile_height     = 32;
+    tmx_map_pointer->tileset[tileset_count].number_of_tiles = 4;
     tmx_map_pointer->layer[layer_count].tile   = new tmx_tile_type [tmx_map_pointer->data.number_of_tiles];
     for (int tile_count_x = 0; tile_count_x < tmx_map_pointer->data.map_width; tile_count_x++)
     {
@@ -331,6 +333,8 @@ void map_gen_CA (tmx_map_type *tmx_map_pointer)
     int tileset_count                                       = 0;
     tmx_map_pointer->data.map_width                         = map_gen_size_x;
     tmx_map_pointer->data.map_height                        = map_gen_size_y;
+    tmx_map_pointer->data.map_tile_width                    = 64;
+    tmx_map_pointer->data.map_tile_height                   = 32;
     tmx_map_pointer->data.number_of_tiles                   = map_gen_size_x*map_gen_size_y;
     tmx_map_pointer->data.number_of_layers                  = 1;
     tmx_map_pointer->data.number_of_tilesets                = 1;
@@ -344,9 +348,9 @@ void map_gen_CA (tmx_map_type *tmx_map_pointer)
     tmx_map_pointer->tileset[tileset_count].image_loaded    = false;
     tmx_map_pointer->tileset[tileset_count].image_width     = 256;
     tmx_map_pointer->tileset[tileset_count].image_height    = 32;
-    tmx_map_pointer->tileset[tileset_count].tile_width      = 32;
-    tmx_map_pointer->tileset[tileset_count].tile_height     = 64;
-    tmx_map_pointer->tileset[tileset_count].number_of_tiles = 8;
+    tmx_map_pointer->tileset[tileset_count].tile_width      = 64;
+    tmx_map_pointer->tileset[tileset_count].tile_height     = 32;
+    tmx_map_pointer->tileset[tileset_count].number_of_tiles = 4;
     tmx_map_pointer->layer[layer_count].tile   = new tmx_tile_type [tmx_map_pointer->data.number_of_tiles];
     for (int tile_count_x = 0; tile_count_x < tmx_map_pointer->data.map_width; tile_count_x++)
     {

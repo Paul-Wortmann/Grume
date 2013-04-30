@@ -288,14 +288,14 @@ void setup_action_bar(int UID)
 
 void update_action_bar(int window_number)
 {
-
+    // required function?
 };
 
 void process_action_bar(int window_number)
 {
     if (game.player.level.current < MAX_LEVELS)// exp bar
     {
-        if ((game.player.level.current_experience > 0));// && (game.player.level.experience[game.player.level.current] > 0))
+        if (game.player.level.current_experience > 0)// && (game.player.level.experience[game.player.level.current] > 0))
         {
             int element_number = 0; //--- Player experience bar ---
             unsigned long long  temp_val = (game.player.level.current_experience - game.player.level.experience[game.player.level.current]);

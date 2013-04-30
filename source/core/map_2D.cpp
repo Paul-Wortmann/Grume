@@ -64,14 +64,14 @@ void map_2D_class::render(tmx_map_type *tmx_map_pointer)
     }
     else
     {
-        for(int tileset_count = 0; tileset_count <  tmx_map_pointer->data.number_of_tilesets; tileset_count++)
+        for(int tileset_count = 0; tileset_count < tmx_map_pointer->data.number_of_tilesets; tileset_count++)
         {
             if (!tmx_map_pointer->tileset[tileset_count].image_loaded)
             {
                 tmx_map_pointer->tileset[tileset_count].image_source = game.core.file.path_remove(tmx_map_pointer->tileset[tileset_count].image_source);
                 tmx_map_pointer->tileset[tileset_count].image_source = game.core.file.path_add(tmx_map_pointer->tileset[tileset_count].image_source,"data/tilesets/");
-                game.core.log.file_write("Loading tile-set -> ",tmx_map_pointer->tileset[tileset_count].image_source);
                 tmx_map_pointer->tileset[tileset_count].tile.load_spritesheet(tmx_map_pointer->tileset[tileset_count].image_source,tmx_map_pointer->tileset[tileset_count].tile_width,tmx_map_pointer->tileset[tileset_count].tile_height);
+                tmx_map_pointer->tileset[tileset_count].number_of_tiles = tmx_map_pointer->tileset[tileset_count].tile.frame_max;
                 tmx_map_pointer->tileset[tileset_count].image_loaded = true;
             }
         }

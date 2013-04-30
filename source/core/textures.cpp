@@ -114,8 +114,7 @@ bool texture_class::load_image(std::string file_name)
 
 bool texture_class::load_spritesheet(std::string file_name)
 {
-    texture_class::load_spritesheet(file_name,DEFAULT_FRAME_WIDTH,DEFAULT_FRAME_HEIGHT);
-    return(true);
+    return(texture_class::load_spritesheet(file_name,DEFAULT_FRAME_WIDTH,DEFAULT_FRAME_HEIGHT));
 };
 
 bool texture_class::load_spritesheet(std::string file_name, int width_set, int height_set)
@@ -190,8 +189,6 @@ bool texture_class::load_spritesheet(std::string file_name, int width_set, int h
     else
     {
         return_value = false;
-        if ( sprite_sheet ) SDL_FreeSurface( sprite_sheet );
-        if ( temp_surface ) SDL_FreeSurface( temp_surface );
         game.core.log.file_write("Failed to load image ->",file_name.c_str());
     }
     if ( sprite_sheet ) SDL_FreeSurface( sprite_sheet );
