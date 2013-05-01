@@ -483,6 +483,7 @@ void map_2D_class::apply_tileset(tmx_map_type *tmx_map_pointer, int pre_defined_
                 random_number   = random(random_seed*4);
                 if (random_number <= (random_seed*3)) tmx_map_pointer->layer[layer_count].tile[tile_count].tile = 1;
                 else tmx_map_pointer->layer[layer_count].tile[tile_count].tile = (random_number - random_seed*3);
+                tmx_map_pointer->layer[layer_count].tile[tile_count].collision = true;
                 // Randomly add cave objects.
                 /*
                 if (   (fill_data[tile_count+1].tile_data         == FLOOR_TILE)
@@ -510,6 +511,13 @@ void map_2D_class::apply_tileset(tmx_map_type *tmx_map_pointer, int pre_defined_
             default:
                 game.core.log.file_write("Unable to apply tile-set to unknown tile type -> %d\n",tmx_map_pointer->layer[layer_count].tile[tile_count].tile);
             break;
+        }
+    }
+    for (int tile_count = 0; tile_count < tmx_map_pointer->data.number_of_tiles; tile_count++)
+    {
+        if (tmx_map_pointer->layer[layer_count].tile[tile_count].tile_tileset == TILE_SET_FLOOR)
+        {
+            tmx_map_pointer->layer[layer_count].tile[tile_count].collision = false;
         }
     }
 };
