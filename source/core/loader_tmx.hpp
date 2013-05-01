@@ -48,6 +48,7 @@ struct tmx_tile_type
 {
     int           tile;
     int           tile_tileset;
+    bool          collision;
     f2_type       position;
 };
 

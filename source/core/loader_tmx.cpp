@@ -277,6 +277,7 @@ void tmx_load(tmx_map_type *tmx_map_pointer, std::string file_name)
                                 temp_int_data -= tmx_map_pointer->tileset[tmx_map_pointer->layer[layer_count].tile[tile_count].tile_tileset].first_gid;
                                 temp_int_data += 1;
                                 tmx_map_pointer->layer[layer_count].tile[tile_count].tile         = temp_int_data;
+                                tmx_map_pointer->layer[layer_count].tile[tile_count].collision    = false;
                                 tile_count++;
                             }
                         }

@@ -329,6 +329,7 @@ void game_class::process(void)
         }
         if (game.core.io.key_1) // generate a random BSP dungeon
         {
+            game.loading_screen.display("data/loading_screen.png");
             map_gen_BSP(&tmx_map);
             game.map_2D.apply_tileset(&tmx_map,DUNGEON);
             game.map_2D.calculate_tile_positions(&tmx_map,DEFAULT_FRAME_WIDTH/game.zoom.current/2.0f,DEFAULT_FRAME_HEIGHT/game.zoom.current/2.0f);
@@ -338,6 +339,7 @@ void game_class::process(void)
         }
         if (game.core.io.key_2) // generate a random CA cave
         {
+            game.loading_screen.display("data/loading_screen.png");
             map_gen_CA(&tmx_map);
             game.map_2D.apply_tileset(&tmx_map,CAVE);
             game.map_2D.calculate_tile_positions(&tmx_map,DEFAULT_FRAME_WIDTH/game.zoom.current/2.0f,DEFAULT_FRAME_HEIGHT/game.zoom.current/2.0f);
@@ -347,6 +349,7 @@ void game_class::process(void)
         }
         if (game.core.io.key_3) // generate a random CA grassland
         {
+            game.loading_screen.display("data/loading_screen.png");
             map_gen_CA(&tmx_map);
             game.map_2D.apply_tileset(&tmx_map,GRASSLAND);
             game.map_2D.calculate_tile_positions(&tmx_map,DEFAULT_FRAME_WIDTH/game.zoom.current/2.0f,DEFAULT_FRAME_HEIGHT/game.zoom.current/2.0f);
