@@ -123,7 +123,7 @@ Set (FROST_AND_FLAME_SOURCES
 	./source/core/sound.cpp
 	./source/core/textures.cpp
 	./source/core/timer.cpp
-	./source/core/types.cpp
+	#./source/core/types.cpp
 	./source/core/vector.cpp
 	./source/UI/action_bar.cpp
 	./source/UI/character_window.cpp
