@@ -767,3 +767,102 @@ void map_2D_class::apply_tileset(tmx_map_type *tmx_map_pointer, int pre_defined_
     }
     delete [] temp_tile_data;
 };
+
+void map_2D_class::smooth_map(tmx_map_type *tmx_map_pointer)
+{
+    int iterations  = 2;
+    int layer_count = 0;
+    int mw          = tmx_map_pointer->data.map_width;
+    for (int iteration_count = 0; iteration_count < iterations; iteration_count++)
+    {
+        for (int tile_count = mw; tile_count < (tmx_map_pointer->data.number_of_tiles-tmx_map_pointer->data.map_width-1); tile_count++)
+        {
+            if(tmx_map_pointer->layer[layer_count].tile[tile_count].tile == WALL_TILE)
+            {
+                // Remove single tiles
+                // OOO
+                // OXO
+                // OOO
+                //--------------------
+                if(  (tmx_map_pointer->layer[layer_count].tile[tile_count+1].tile    == FLOOR_TILE)
+                   &&(tmx_map_pointer->layer[layer_count].tile[tile_count-1].tile    == FLOOR_TILE)
+                   &&(tmx_map_pointer->layer[layer_count].tile[tile_count+mw].tile   == FLOOR_TILE)
+                   &&(tmx_map_pointer->layer[layer_count].tile[tile_count+mw+1].tile == FLOOR_TILE)
+                   &&(tmx_map_pointer->layer[layer_count].tile[tile_count+mw-1].tile == FLOOR_TILE)
+                   &&(tmx_map_pointer->layer[layer_count].tile[tile_count-mw].tile   == FLOOR_TILE)
+                   &&(tmx_map_pointer->layer[layer_count].tile[tile_count-mw+1].tile == FLOOR_TILE)
+                   &&(tmx_map_pointer->layer[layer_count].tile[tile_count-mw-1].tile == FLOOR_TILE))
+                {
+                    tmx_map_pointer->layer[layer_count].tile[tile_count].tile = FLOOR_TILE;
+                }
+                // Remove single horizontal tiles
+                // ???
+                // OXO
+                // ???
+                //--------------------
+                if(  (tmx_map_pointer->layer[layer_count].tile[tile_count+1].tile    == FLOOR_TILE)
+                   &&(tmx_map_pointer->layer[layer_count].tile[tile_count-1].tile    == FLOOR_TILE))
+                {
+                    tmx_map_pointer->layer[layer_count].tile[tile_count].tile = FLOOR_TILE;
+                }
+                // Remove single vertical tiles
+                // ?O?
+                // ?X?
+                // ?O?
+                //--------------------
+                if(  (tmx_map_pointer->layer[layer_count].tile[tile_count+mw].tile   == FLOOR_TILE)
+                   &&(tmx_map_pointer->layer[layer_count].tile[tile_count-mw].tile   == FLOOR_TILE))
+                {
+                    tmx_map_pointer->layer[layer_count].tile[tile_count].tile = FLOOR_TILE;
+                }
+                // Remove cross right tiles
+                // O?X
+                // ?X?
+                // X?O
+                //--------------------
+                if(  (tmx_map_pointer->layer[layer_count].tile[tile_count+mw+1].tile == WALL_TILE)
+                   &&(tmx_map_pointer->layer[layer_count].tile[tile_count+mw-1].tile == FLOOR_TILE)
+                   &&(tmx_map_pointer->layer[layer_count].tile[tile_count-mw+1].tile == FLOOR_TILE)
+                   &&(tmx_map_pointer->layer[layer_count].tile[tile_count-mw-1].tile == WALL_TILE))
+                {
+                    tmx_map_pointer->layer[layer_count].tile[tile_count+mw-1].tile = WALL_TILE;
+                    tmx_map_pointer->layer[layer_count].tile[tile_count-mw+1].tile = WALL_TILE;
+                }
+                // Remove cross left tiles
+                // X?O
+                // ?X?
+                // O?X
+                //--------------------
+                if(  (tmx_map_pointer->layer[layer_count].tile[tile_count+mw+1].tile == FLOOR_TILE)
+                   &&(tmx_map_pointer->layer[layer_count].tile[tile_count+mw-1].tile == WALL_TILE)
+                   &&(tmx_map_pointer->layer[layer_count].tile[tile_count-mw+1].tile == WALL_TILE)
+                   &&(tmx_map_pointer->layer[layer_count].tile[tile_count-mw-1].tile == FLOOR_TILE))
+                {
+                    tmx_map_pointer->layer[layer_count].tile[tile_count+mw+1].tile = WALL_TILE;
+                    tmx_map_pointer->layer[layer_count].tile[tile_count-mw-1].tile = WALL_TILE;
+                }
+            }
+        }
+    }
+};
+
+/*
+
+                // Remove cross left+1 tiles
+                // OXX
+                // XXX
+                // XOO
+                //--------------------
+                if(  (tmx_map_pointer->layer[layer_count].tile[tile_count+1].tile    == WALL_TILE)
+                   &&(tmx_map_pointer->layer[layer_count].tile[tile_count-1].tile    == WALL_TILE)
+                   &&(tmx_map_pointer->layer[layer_count].tile[tile_count+mw].tile   == WALL_TILE)
+                   &&(tmx_map_pointer->layer[layer_count].tile[tile_count+mw+1].tile == FLOOR_TILE)
+                   &&(tmx_map_pointer->layer[layer_count].tile[tile_count+mw-1].tile == WALL_TILE)
+                   &&(tmx_map_pointer->layer[layer_count].tile[tile_count-mw].tile   == WALL_TILE)
+                   &&(tmx_map_pointer->layer[layer_count].tile[tile_count-mw+1].tile == WALL_TILE)
+                   &&(tmx_map_pointer->layer[layer_count].tile[tile_count-mw-1].tile == FLOOR_TILE))
+                {
+                    tmx_map_pointer->layer[layer_count].tile[tile_count+mw+1].tile = WALL_TILE;
+                    tmx_map_pointer->layer[layer_count].tile[tile_count-mw-1].tile = WALL_TILE;
+                }
+*/
