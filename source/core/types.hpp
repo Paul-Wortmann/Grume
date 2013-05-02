@@ -22,49 +22,33 @@
  * @date 2011-11-11
  */
 
-#ifndef MAP_GEN_HPP
-#define MAP_GEN_HPP
+#ifndef TYPES_H
+#define TYPES_H
 
-#include <string>
-#include "loader_tmx.hpp"
-#include "types.hpp"
-
-// ROOM_MAX should be an even number!
-#define MAX_ROOMS  0 // 0 for unlimited number possible
-
-#define FLOOR_TILE 1
-#define WALL_TILE  2
-
-#define ROOM_MAX_X 9
-#define ROOM_MAX_Y 9
-
-struct room_type
+struct i2_type
 {
-    i2_type    size;
-    i2_type    center;
+    int x;
+    int y;
 };
 
-struct map_type
+struct i3_type
 {
-    int            number_of_tiles;
-    i2_type        size;
-    tmx_tile_type *tile;
+    int x;
+    int y;
+    int z;
 };
 
-struct map_node_type
+struct f2_type
 {
-    bool           leaf;
-    room_type      room;
-    map_type       data;
-    map_node_type *left;
-    map_node_type *right;
+    float x;
+    float y;
 };
 
-void map_gen_BSP_split(map_node_type *map_node);
-void map_gen_BSP(tmx_map_type *tmx_map_pointer);
-void map_gen_BSP(tmx_map_type *tmx_map_pointer, int seed);
-void map_gen_CA (tmx_map_type *tmx_map_pointer);
-void map_gen_CA (tmx_map_type *tmx_map_pointer, int seed);
+struct f3_type
+{
+    float x;
+    float y;
+    float z;
+};
 
-#endif //MAP_GEN_HPP
-
+#endif //TYPES_H

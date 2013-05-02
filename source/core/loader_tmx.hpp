@@ -26,23 +26,12 @@
 #define LOADER_TMX_H
 
 #include "textures.hpp"
+#include "types.hpp"
 
 #define ISOMETRIC  1
 #define ORTHOGONAL 2
 #define UTF_8      8
 #define UTF_16     16
-
-struct i2_type
-{
-    int x;
-    int y;
-};
-
-struct f2_type
-{
-    float x;
-    float y;
-};
 
 struct tmx_tile_type
 {
