@@ -471,10 +471,12 @@ void map_2D_class::apply_tileset(tmx_map_type *tmx_map_pointer, int pre_defined_
     tmx_map_pointer->tileset[TILE_SET_OBJECTS].tile.load_spritesheet(tmx_map_pointer->tileset[TILE_SET_OBJECTS].image_source,tmx_map_pointer->tileset[TILE_SET_OBJECTS].tile_width,tmx_map_pointer->tileset[TILE_SET_OBJECTS].tile_height);
     tmx_map_pointer->tileset[TILE_SET_OBJECTS].number_of_tiles = tmx_map_pointer->tileset[TILE_SET_OBJECTS].tile.frame_max;
     int  layer_floor    = 0;
+    int  layer_object   = 1;
     int  layer_wall     = 1;
     int  random_seed    = 0;
     int  random_number  = 0;
-    int  wall_placed    = false;
+    bool wall_placed    = false;
+    bool place_floor    = false;
     tmx_tile_type *temp_tile_data = new tmx_tile_type[tmx_map_pointer->data.number_of_tiles];
     for (int tile_count = 0; tile_count < tmx_map_pointer->data.number_of_tiles; tile_count++)
     {
@@ -525,7 +527,8 @@ void map_2D_class::apply_tileset(tmx_map_type *tmx_map_pointer, int pre_defined_
                         random_number = random(random_seed*4);
                         if (random_number <= (random_seed*3)) tmx_map_pointer->layer[layer_wall].tile[tile_count].tile = 1;
                         else tmx_map_pointer->layer[layer_wall].tile[tile_count].tile = (random_number - random_seed*3);
-                        wall_placed = false;
+                        wall_placed = true;
+                        place_floor = true;
                     }
                     if ((temp_tile_data[tile_count-1].tile == WALL_TILE) && (temp_tile_data[tile_count+tmx_map_pointer->data.map_width].tile == WALL_TILE)
                         && (temp_tile_data[tile_count+tmx_map_pointer->data.map_width-1].tile == FLOOR_TILE))
@@ -536,6 +539,7 @@ void map_2D_class::apply_tileset(tmx_map_type *tmx_map_pointer, int pre_defined_
                         if (random_number <= (random_seed*3)) tmx_map_pointer->layer[layer_wall].tile[tile_count].tile = 1;
                         else tmx_map_pointer->layer[layer_wall].tile[tile_count].tile = (random_number - random_seed*3);
                         wall_placed = true;
+                        place_floor = true;
                     }
                     if ((temp_tile_data[tile_count+1].tile == WALL_TILE) && (temp_tile_data[tile_count+tmx_map_pointer->data.map_width].tile == WALL_TILE)
                         && (temp_tile_data[tile_count+tmx_map_pointer->data.map_width+1].tile == FLOOR_TILE))
@@ -546,6 +550,7 @@ void map_2D_class::apply_tileset(tmx_map_type *tmx_map_pointer, int pre_defined_
                         if (random_number <= (random_seed*3)) tmx_map_pointer->layer[layer_wall].tile[tile_count].tile = 1;
                         else tmx_map_pointer->layer[layer_wall].tile[tile_count].tile = (random_number - random_seed*3);
                         wall_placed = true;
+                        place_floor = true;
                     }
                 }
                 if((tile_count-1) >= (tmx_map_pointer->data.number_of_tiles-tmx_map_pointer->data.map_width))
@@ -558,6 +563,7 @@ void map_2D_class::apply_tileset(tmx_map_type *tmx_map_pointer, int pre_defined_
                         if (random_number <= (random_seed*3)) tmx_map_pointer->layer[layer_wall].tile[tile_count].tile = 1;
                         else tmx_map_pointer->layer[layer_wall].tile[tile_count].tile = (random_number - random_seed*3);
                         wall_placed = true;
+                        place_floor = false;
                     }
                     if ((temp_tile_data[tile_count-1].tile == WALL_TILE) && (temp_tile_data[tile_count-tmx_map_pointer->data.map_width].tile == WALL_TILE)
                         && (temp_tile_data[tile_count-tmx_map_pointer->data.map_width-1].tile == FLOOR_TILE))
@@ -568,6 +574,7 @@ void map_2D_class::apply_tileset(tmx_map_type *tmx_map_pointer, int pre_defined_
                         if (random_number <= (random_seed*3)) tmx_map_pointer->layer[layer_wall].tile[tile_count].tile = 1;
                         else tmx_map_pointer->layer[layer_wall].tile[tile_count].tile = (random_number - random_seed*3);
                         wall_placed = true;
+                        place_floor = false;
                     }
                     if ((temp_tile_data[tile_count+1].tile == WALL_TILE) && (temp_tile_data[tile_count-tmx_map_pointer->data.map_width].tile == WALL_TILE)
                         && (temp_tile_data[tile_count-tmx_map_pointer->data.map_width+1].tile == FLOOR_TILE))
@@ -578,6 +585,7 @@ void map_2D_class::apply_tileset(tmx_map_type *tmx_map_pointer, int pre_defined_
                         if (random_number <= (random_seed*3)) tmx_map_pointer->layer[layer_wall].tile[tile_count].tile = 1;
                         else tmx_map_pointer->layer[layer_wall].tile[tile_count].tile = (random_number - random_seed*3);
                         wall_placed = true;
+                        place_floor = false;
                     }
                 }
                 if((tile_count-1 >= 0) && (tile_count+1 <= tmx_map_pointer->data.number_of_tiles)
@@ -593,6 +601,7 @@ void map_2D_class::apply_tileset(tmx_map_type *tmx_map_pointer, int pre_defined_
                             if (random_number <= (random_seed*3)) tmx_map_pointer->layer[layer_wall].tile[tile_count].tile = 1;
                             else tmx_map_pointer->layer[layer_wall].tile[tile_count].tile = (random_number - random_seed*3);
                             wall_placed = true;
+                            place_floor = false;
                         }
                         if(temp_tile_data[tile_count+tmx_map_pointer->data.map_width].tile == FLOOR_TILE)
                         {// South wall
@@ -602,6 +611,7 @@ void map_2D_class::apply_tileset(tmx_map_type *tmx_map_pointer, int pre_defined_
                             if (random_number <= (random_seed*3)) tmx_map_pointer->layer[layer_wall].tile[tile_count].tile = 1;
                             else tmx_map_pointer->layer[layer_wall].tile[tile_count].tile = (random_number - random_seed*3);
                             wall_placed = true;
+                            place_floor = true;
                         }
                     }
                     if ((temp_tile_data[tile_count-tmx_map_pointer->data.map_width].tile == WALL_TILE) && (temp_tile_data[tile_count+tmx_map_pointer->data.map_width].tile == WALL_TILE))
@@ -614,6 +624,7 @@ void map_2D_class::apply_tileset(tmx_map_type *tmx_map_pointer, int pre_defined_
                             if (random_number <= (random_seed*3)) tmx_map_pointer->layer[layer_wall].tile[tile_count].tile = 1;
                             else tmx_map_pointer->layer[layer_wall].tile[tile_count].tile = (random_number - random_seed*3);
                             wall_placed = true;
+                            place_floor = true;
                         }
                         if(temp_tile_data[tile_count-1].tile == FLOOR_TILE)
                         {// West wall
@@ -623,6 +634,7 @@ void map_2D_class::apply_tileset(tmx_map_type *tmx_map_pointer, int pre_defined_
                             if (random_number <= (random_seed*3)) tmx_map_pointer->layer[layer_wall].tile[tile_count].tile = 1;
                             else tmx_map_pointer->layer[layer_wall].tile[tile_count].tile = (random_number - random_seed*3);
                             wall_placed = true;
+                            place_floor = false;
                         }
                     }
                     if ((temp_tile_data[tile_count-1].tile == WALL_TILE) && (temp_tile_data[tile_count+tmx_map_pointer->data.map_width].tile == WALL_TILE)
@@ -635,6 +647,7 @@ void map_2D_class::apply_tileset(tmx_map_type *tmx_map_pointer, int pre_defined_
                         if (random_number <= (random_seed*3)) tmx_map_pointer->layer[layer_wall].tile[tile_count].tile = 1;
                         else tmx_map_pointer->layer[layer_wall].tile[tile_count].tile = (random_number - random_seed*3);
                         wall_placed = true;
+                        place_floor = true;
                     }
                     if ((temp_tile_data[tile_count+1].tile == WALL_TILE) && (temp_tile_data[tile_count+tmx_map_pointer->data.map_width].tile == WALL_TILE)
                         && (temp_tile_data[tile_count-1].tile == FLOOR_TILE)
@@ -646,6 +659,7 @@ void map_2D_class::apply_tileset(tmx_map_type *tmx_map_pointer, int pre_defined_
                         if (random_number <= (random_seed*3)) tmx_map_pointer->layer[layer_wall].tile[tile_count].tile = 1;
                         else tmx_map_pointer->layer[layer_wall].tile[tile_count].tile = (random_number - random_seed*3);
                         wall_placed = true;
+                        place_floor = false;
                     }
                     if ((temp_tile_data[tile_count-1].tile == WALL_TILE) && (temp_tile_data[tile_count-tmx_map_pointer->data.map_width].tile == WALL_TILE)
                         && (temp_tile_data[tile_count+1].tile == FLOOR_TILE)
@@ -657,6 +671,7 @@ void map_2D_class::apply_tileset(tmx_map_type *tmx_map_pointer, int pre_defined_
                         if (random_number <= (random_seed*3)) tmx_map_pointer->layer[layer_wall].tile[tile_count].tile = 1;
                         else tmx_map_pointer->layer[layer_wall].tile[tile_count].tile = (random_number - random_seed*3);
                         wall_placed = true;
+                        place_floor = true;
                     }
                     if ((temp_tile_data[tile_count+1].tile == WALL_TILE) && (temp_tile_data[tile_count-tmx_map_pointer->data.map_width].tile == WALL_TILE)
                         && (temp_tile_data[tile_count-1].tile == FLOOR_TILE)
@@ -668,6 +683,7 @@ void map_2D_class::apply_tileset(tmx_map_type *tmx_map_pointer, int pre_defined_
                         if (random_number <= (random_seed*3)) tmx_map_pointer->layer[layer_wall].tile[tile_count].tile = 1;
                         else tmx_map_pointer->layer[layer_wall].tile[tile_count].tile = (random_number - random_seed*3);
                         wall_placed = true;
+                        place_floor = true;
                     }
                     if ((temp_tile_data[tile_count-1].tile == WALL_TILE) && (temp_tile_data[tile_count+tmx_map_pointer->data.map_width].tile == WALL_TILE)
                         && (temp_tile_data[tile_count+tmx_map_pointer->data.map_width-1].tile == FLOOR_TILE))
@@ -678,6 +694,7 @@ void map_2D_class::apply_tileset(tmx_map_type *tmx_map_pointer, int pre_defined_
                         if (random_number <= (random_seed*3)) tmx_map_pointer->layer[layer_wall].tile[tile_count].tile = 1;
                         else tmx_map_pointer->layer[layer_wall].tile[tile_count].tile = (random_number - random_seed*3);
                         wall_placed = true;
+                        place_floor = false;
                     }
                     if ((temp_tile_data[tile_count+1].tile == WALL_TILE) && (temp_tile_data[tile_count+tmx_map_pointer->data.map_width].tile == WALL_TILE)
                         && (temp_tile_data[tile_count+tmx_map_pointer->data.map_width+1].tile == FLOOR_TILE))
@@ -688,6 +705,7 @@ void map_2D_class::apply_tileset(tmx_map_type *tmx_map_pointer, int pre_defined_
                         if (random_number <= (random_seed*3)) tmx_map_pointer->layer[layer_wall].tile[tile_count].tile = 1;
                         else tmx_map_pointer->layer[layer_wall].tile[tile_count].tile = (random_number - random_seed*3);
                         wall_placed = true;
+                        place_floor = false;
                     }
                     if ((temp_tile_data[tile_count-1].tile == WALL_TILE) && (temp_tile_data[tile_count-tmx_map_pointer->data.map_width].tile == WALL_TILE)
                         && (temp_tile_data[tile_count-tmx_map_pointer->data.map_width-1].tile == FLOOR_TILE))
@@ -698,6 +716,7 @@ void map_2D_class::apply_tileset(tmx_map_type *tmx_map_pointer, int pre_defined_
                         if (random_number <= (random_seed*3)) tmx_map_pointer->layer[layer_wall].tile[tile_count].tile = 1;
                         else tmx_map_pointer->layer[layer_wall].tile[tile_count].tile = (random_number - random_seed*3);
                         wall_placed = true;
+                        place_floor = false;
                     }
                     if ((temp_tile_data[tile_count+1].tile == WALL_TILE) && (temp_tile_data[tile_count-tmx_map_pointer->data.map_width].tile == WALL_TILE)
                         && (temp_tile_data[tile_count-tmx_map_pointer->data.map_width+1].tile == FLOOR_TILE))
@@ -708,9 +727,10 @@ void map_2D_class::apply_tileset(tmx_map_type *tmx_map_pointer, int pre_defined_
                         if (random_number <= (random_seed*3)) tmx_map_pointer->layer[layer_wall].tile[tile_count].tile = 1;
                         else tmx_map_pointer->layer[layer_wall].tile[tile_count].tile = (random_number - random_seed*3);
                         wall_placed = true;
+                        place_floor = false;
                     }
                 }
-                if (wall_placed)
+                if(place_floor)
                 {
                     tmx_map_pointer->layer[layer_floor].tile[tile_count].tile_tileset = TILE_SET_FLOOR_TILE;
                     random_seed     = tmx_map_pointer->tileset[TILE_SET_FLOOR_TILE].number_of_tiles;
@@ -719,6 +739,11 @@ void map_2D_class::apply_tileset(tmx_map_type *tmx_map_pointer, int pre_defined_
                     else tmx_map_pointer->layer[layer_floor].tile[tile_count].tile = (random_number - random_seed*3);
                 }
                 else
+                {
+                    tmx_map_pointer->layer[layer_floor].tile[tile_count].tile_tileset   = TILE_SET_DEFAULT;
+                    tmx_map_pointer->layer[layer_floor].tile[tile_count].tile           = 0;
+                }
+                if (!wall_placed)
                 {
                     tmx_map_pointer->layer[layer_floor].tile[tile_count].tile_tileset   = TILE_SET_DEFAULT;
                     tmx_map_pointer->layer[layer_floor].tile[tile_count].tile           = 0;
