@@ -472,7 +472,7 @@ void map_2D_class::apply_tileset(tmx_map_type *tmx_map_pointer, int pre_defined_
     tmx_map_pointer->tileset[TILE_SET_OBJECTS].number_of_tiles = tmx_map_pointer->tileset[TILE_SET_OBJECTS].tile.frame_max;
     int  layer_floor    = 0;
     int  layer_object   = 1;
-    int  layer_wall     = 1;
+    int  layer_wall     = 2;
     int  random_seed    = 0;
     int  random_number  = 0;
     bool wall_placed    = false;
@@ -495,7 +495,6 @@ void map_2D_class::apply_tileset(tmx_map_type *tmx_map_pointer, int pre_defined_
                 if (random_number <= (random_seed*3)) tmx_map_pointer->layer[layer_floor].tile[tile_count].tile = 1;
                 else tmx_map_pointer->layer[layer_floor].tile[tile_count].tile = (random_number - random_seed*3);
                 // Randomly add cave objects.
-                /*
                 if (   (temp_tile_data[tile_count+1].tile         == FLOOR_TILE)
                     && (temp_tile_data[tile_count-1].tile         == FLOOR_TILE)
                     && (temp_tile_data[tile_count+tmx_map_pointer->data.map_width].tile   == FLOOR_TILE)
@@ -507,14 +506,13 @@ void map_2D_class::apply_tileset(tmx_map_type *tmx_map_pointer, int pre_defined_
                     {
                         if(random(1000) < 10)
                         {
-                            tmx_map_pointer->layer[layer_wall].tile[tile_count].tile_tileset = TILE_SET_OBJECTS;
+                            tmx_map_pointer->layer[layer_object].tile[tile_count].tile_tileset = TILE_SET_OBJECTS;
                             random_seed     = tmx_map_pointer->tileset[TILE_SET_OBJECTS].number_of_tiles;
                             random_number = random(random_seed*4);
-                            if (random_number <= (random_seed*3)) tmx_map_pointer->layer[layer_wall].tile[tile_count].tile = 1;
-                            else tmx_map_pointer->layer[layer_wall].tile[tile_count].tile = (random_number - random_seed*3);
+                            if (random_number <= (random_seed*3)) tmx_map_pointer->layer[layer_object].tile[tile_count].tile = 1;
+                            else tmx_map_pointer->layer[layer_object].tile[tile_count].tile = (random_number - random_seed*3);
                         }
                     }
-                */
             break;
             case WALL_TILE:
                 wall_placed = false;
