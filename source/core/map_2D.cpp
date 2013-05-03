@@ -516,7 +516,7 @@ void map_2D_class::apply_tileset(tmx_map_type *tmx_map_pointer, int pre_defined_
             break;
             case WALL_TILE:
                 wall_placed = false;
-                if((tile_count-1 >= 0) && (tile_count+1 <= tmx_map_pointer->data.map_width))
+                if((tile_count >= 0) && (tile_count+1 <= tmx_map_pointer->data.map_width))
                 {//North wall.
                     if ((temp_tile_data[tile_count+tmx_map_pointer->data.map_width].tile == FLOOR_TILE))
                     {
