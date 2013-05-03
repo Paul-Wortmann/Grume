@@ -134,6 +134,7 @@ void game_class::process(void)
         game.core.music_next_track = false;
         //if (game.core.music_track ==  0) game.resource.music.menu_00.play();
     }
+    /*
     if (game.core.io.mouse_wheel != 0)
     {
         if (game.core.io.mouse_wheel < 0)
@@ -165,6 +166,7 @@ void game_class::process(void)
             }
         }
     }
+    */
     if (game.core.io.keyboard_ready)
     {
         if (game.core.io.key_escape) // Main menu
