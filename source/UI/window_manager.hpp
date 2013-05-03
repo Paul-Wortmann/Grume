@@ -97,6 +97,7 @@ class window_manager_class
         bool            mouse_over_window(float wx, float wy, float ww, float wh);
         void            process(void);
         void            render(void);
+        void            swap_elements(window_element_class *src_element, window_element_class *dst_element);
 };
 
 void setup_windows(void);

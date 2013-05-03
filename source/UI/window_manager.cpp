@@ -363,3 +363,12 @@ void window_manager_class::render(void)
         }
     }
 }
+
+void window_manager_class::swap_elements(window_element_class *src_element, window_element_class *dst_element)
+{
+    window_element_class *tmp_element;
+    tmp_element = dst_element;
+    dst_element = src_element;
+    src_element = tmp_element;
+
+};
