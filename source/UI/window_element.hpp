@@ -29,6 +29,7 @@
 #include "../core/textures.hpp"
 #include "../core/font.hpp"
 #include "../core/sound.hpp"
+#include "../core/types.hpp"
 
 #define MAX_CHOICE_SELECTIONS_PER_MENU 8
 #define MAX_CHOICE_SELECTION           16
@@ -70,25 +71,18 @@ struct event_type
     int             id;
 };
 
-struct struct_3f
-{
-    float x;
-    float y;
-    float z;
-};
-
 class location_class
 {
     private:
     public:
         bool                    enabled;
         std::string             text;
-        struct_3f               size;
-        struct_3f               position;
+        f3_type                 size;
+        f3_type                 position;
         bool                    image_enabled;
         std::string             image_path;
         texture_class           image;
-        struct_3f               image_size;
+        f3_type                 image_size;
         location_class(void);
        ~location_class(void);
 };
@@ -198,10 +192,10 @@ class window_element_class
         float                   drag_offset_x;
         float                   drag_offset_y;
         delay_class             mouse_delay;
-        struct_3f               size;
-        struct_3f               position;
-        struct_3f               position_origin;
-        struct_3f               position_destination;
+        f3_type                 size;
+        f3_type                 position;
+        f3_type                 position_origin;
+        f3_type                 position_destination;
         element_zoom_struct     zoom;
         color_state_struct      color;
         sound_state_struct      sound;

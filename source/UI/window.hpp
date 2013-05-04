@@ -27,6 +27,7 @@
 
 #include "window_element.hpp"
 #include "../core/font.hpp"
+#include "../core/types.hpp"
 #include <string>
 
 class window_class
@@ -43,8 +44,8 @@ class window_class
         location_class          title;
         color_struct            title_color;
         location_class          title_bar;
-        struct_3f               size;
-        struct_3f               position;
+        f3_type                 size;
+        f3_type                 position;
         bool                    mouse_over_menu;
         bool                    mouse_over_title;
         bool                    drag_enabled;
