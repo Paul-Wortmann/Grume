@@ -96,6 +96,7 @@ class window_manager_class
         void                  mouse_reset(int UID);
         bool                  mouse_over_window(float wx, float wy, float ww, float wh);
         int                   mouse_over_window(void);
+        int                   mouse_over_element(int UID);
         void                  process(void);
         void                  render(void);
         void                  swap_elements(window_element_class *src_element, window_element_class *dst_element);

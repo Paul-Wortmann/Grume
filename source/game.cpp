@@ -124,6 +124,10 @@ void game_class::reload_textures(void)
 void game_class::process(void)
 {
     game.test = game.window_manager.mouse_over_window();
+    if (game.test != MOUSE_OVER_MAP)
+    {
+        game.test = game.window_manager.mouse_over_element(game.test);
+    }
     game.player.process();
     game.npc.process();
     game.map_2D.process(&tmx_map);

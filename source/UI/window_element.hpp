@@ -58,6 +58,8 @@
 #define SELECTION      11
 #define ITEM           12
 
+#define MOUSE_OVER_MAP 65535
+
 struct event_type
 {
     int             id;

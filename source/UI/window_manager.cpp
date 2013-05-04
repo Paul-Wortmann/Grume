@@ -51,14 +51,38 @@ bool  window_manager_class::mouse_over_window(float wx, float wy, float ww, floa
 
 int  window_manager_class::mouse_over_window(void)
 {
-    int return_value = -1;
+    int return_value = MOUSE_OVER_MAP;
     for (int window_count = 0; window_count < window_manager_class::number_of_windows; window_count++)
     {
         if (window_manager_class::window[window_manager_class::window_stack[window_count]].enabled)
         {
             if (window_manager_class::window[window_manager_class::window_stack[window_count]].mouse_over_menu)
             {
-                return_value = window_count;
+                return_value = window_manager_class::window[window_manager_class::window_stack[window_count]].UID;
+            }
+        }
+    }
+    return (return_value);
+};
+
+int window_manager_class::mouse_over_element(int UID)
+{
+    int window_count = 0;
+    int return_value = MOUSE_OVER_MAP;
+    if (window_manager_class::number_of_windows > 0) // only processed if there are actually windows in the list.
+    {
+        for (int window_count_2 = 0; window_count_2 < window_manager_class::number_of_windows; window_count_2++)
+        {
+            if (window_manager_class::window[window_manager_class::window_stack[window_count_2]].UID == UID) window_count = window_count_2;
+        }
+    }
+    for (int element_count = 0; element_count < window_manager_class::window[window_manager_class::window_stack[window_count]].number_of_elements; element_count++)
+    {
+        if (window_manager_class::window[window_manager_class::window_stack[window_count]].element[element_count].active)
+        {
+            if (window_manager_class::window[window_manager_class::window_stack[window_count]].element[element_count].mouse_over_element())
+            {
+                return_value = element_count;
             }
         }
     }
