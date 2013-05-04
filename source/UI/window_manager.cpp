@@ -49,6 +49,22 @@ bool  window_manager_class::mouse_over_window(float wx, float wy, float ww, floa
     else return(false);
 };
 
+int  window_manager_class::mouse_over_window(void)
+{
+    int return_value = -1;
+    for (int window_count = 0; window_count < window_manager_class::number_of_windows; window_count++)
+    {
+        if (window_manager_class::window[window_manager_class::window_stack[window_count]].enabled)
+        {
+            if (window_manager_class::window[window_manager_class::window_stack[window_count]].mouse_over_menu)
+            {
+                return_value = window_count;
+            }
+        }
+    }
+    return (return_value);
+};
+
 void window_manager_class::window_stack_sort(void)
 {
     if (window_manager_class::number_of_windows > 1) // only processed if there are actually windows in the list to sort.

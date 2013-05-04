@@ -123,6 +123,7 @@ void game_class::reload_textures(void)
 
 void game_class::process(void)
 {
+    game.test = game.window_manager.mouse_over_window();
     game.player.process();
     game.npc.process();
     game.map_2D.process(&tmx_map);

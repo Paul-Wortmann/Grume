@@ -6,7 +6,14 @@ These are not indications that the project will be terminated in the future,
 just that time is not permitting to proceed at a fast pace, at the moment.
 
 v0.19 - (2013-05-xx)
- * Hope to complete basic 2D random map generation and tileset integration. * 
+CORE  -> Added types.hpp for easier usge of common types.
+MAP   -> Added smooth_map() to remove anomilies formed by map generation.
+MAP   -> Added object layer.
+MAP   -> Improved apply tileset.
+MAP   -> 2D tileset walls applied to maps.
+MAP   -> Added temp tile data array to apply tileset.
+MAP   -> Correct tile collision on floor tiles after applying a tileset.
+MAP   -> Added bool collision to tmx_tile_class
 LOC   -> xxxxx
 
 v0.18 - (2013-04-30)

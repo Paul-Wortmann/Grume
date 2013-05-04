@@ -58,14 +58,6 @@
 #define SELECTION      11
 #define ITEM           12
 
-struct event_data_type
-{
-    int window;
-    int element;
-    int type;
-    int quantity;
-};
-
 struct event_type
 {
     int             id;
@@ -194,8 +186,7 @@ class window_element_class
         delay_class             mouse_delay;
         f3_type                 size;
         f3_type                 position;
-        f3_type                 position_origin;
-        f3_type                 position_destination;
+        f3_type                 position_origional;
         element_zoom_struct     zoom;
         color_state_struct      color;
         sound_state_struct      sound;

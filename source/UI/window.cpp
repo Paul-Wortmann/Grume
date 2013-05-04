@@ -221,10 +221,10 @@ event_type window_class::process(bool window_in_focus)
                         switch (return_value.id)
                         {
                             case EVENT_ELEMENT_DRAG:
-                                game.window_manager.source.element = element_number;
+                                //game.window_manager.source.element = element_number;
                             break;
                             case EVENT_ELEMENT_DROP:
-                                game.window_manager.destination.element = element_number;
+                                //game.window_manager.destination.element = element_number;
                             break;
                             default:
                                 return_value.id += (element_number * EVENT_BUTTON_MULTIPLIER);

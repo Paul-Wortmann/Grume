@@ -55,6 +55,7 @@ class game_class
 {
     private:
     public:
+        int                  test; // ---- DELETE ME -----------
         bool                 debug;
         int                  event;
         int                  state;

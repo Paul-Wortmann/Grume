@@ -89,12 +89,12 @@ window_element_class::window_element_class(void)
     window_element_class::position.x                     = 0.0f;
     window_element_class::position.y                     = 0.0f;
     window_element_class::position.z                     = 0.0f;
-    window_element_class::position_origin.x              = 0.0f;
-    window_element_class::position_origin.y              = 0.0f;
-    window_element_class::position_origin.z              = 0.0f;
-    window_element_class::position_destination.x         = 0.0f;
-    window_element_class::position_destination.y         = 0.0f;
-    window_element_class::position_destination.z         = 0.0f;
+    //window_element_class::position_origin.x              = 0.0f;
+    //window_element_class::position_origin.y              = 0.0f;
+    //window_element_class::position_origin.z              = 0.0f;
+    //window_element_class::position_destination.x         = 0.0f;
+    //window_element_class::position_destination.y         = 0.0f;
+    //window_element_class::position_destination.z         = 0.0f;
     window_element_class::title.enabled                  = false;
     window_element_class::title.text                     = "";
     window_element_class::title.position.x               = 0.0f;
@@ -304,6 +304,7 @@ event_type  window_element_class::process(bool element_in_focus)
         {
             window_element_class::mouse_over = window_element_class::mouse_over_element();
             // ------------------------- Drop -------------------------
+            /*
             if (game.window_manager.element_drop_in_progress)
             {
                 int temp_window_id = game.window_manager.window_get_number(game.window_manager.source.window);
@@ -332,6 +333,13 @@ event_type  window_element_class::process(bool element_in_focus)
                 window_element_class::drop_active            = false;
                 game.window_manager.element_drop_in_progress = false;
             }
+            */
+            window_element_class::event.id               = EVENT_NONE;
+            window_element_class::drop_active            = false;
+            game.window_manager.element_drop_in_progress = false;
+
+
+
             // drag and drop need to use global variables or modify source / destination windows appropriately
             // as they the drag and drop variables are specific to each elements, in the current implementation
             // they do not modify source / destination variables correctly.
@@ -352,14 +360,26 @@ event_type  window_element_class::process(bool element_in_focus)
                 }
                 else
                 {
+                    game.test = game.window_manager.mouse_over_window();
+                    /*
+
+                    int win_over = game.window_manager.mouse_over_window();
+                    if (mouse_over menu)
+                    {
+
+
+                    }
+                    */
+                    window_element_class::position.x             = window_element_class::position_origional.x;
+                    window_element_class::position.y             = window_element_class::position_origional.y;
                     game.window_manager.element_drag_in_progress = false;
                     game.window_manager.drag_in_progress         = false;
                     window_element_class::drag_active            = false;
                     window_element_class::drop_active            = true;
                     game.window_manager.element_drop_in_progress = true;
                     window_element_class::event.id               = EVENT_ELEMENT_DRAG;
-                    game.window_manager.source.quantity          = window_element_class::quantity;
-                    game.window_manager.source.type              = window_element_class::value;
+                    //game.window_manager.source.quantity          = window_element_class::quantity;
+                    //game.window_manager.source.type              = window_element_class::value;
                 }
             }
             else
@@ -368,8 +388,8 @@ event_type  window_element_class::process(bool element_in_focus)
                 {
                     if ((game.core.io.mouse_button_left) && (allow_drag))// start drag
                     {
-                        window_element_class::position_origin.x      = window_element_class::position.x;
-                        window_element_class::position_origin.y      = window_element_class::position.y;
+                        window_element_class::position_origional.x   = window_element_class::position.x;
+                        window_element_class::position_origional.y   = window_element_class::position.y;
                         window_element_class::drag_offset_x          = window_element_class::position.x - game.core.io.mouse_x;
                         window_element_class::drag_offset_y          = window_element_class::position.y - game.core.io.mouse_y;
                         window_element_class::drag_active            = true;

@@ -295,10 +295,10 @@ void process_menu_game_save(int window_number)
                 game.window_manager.event.id = EVENT_NONE;
             break;
             case (EVENT_ELEMENT_DRAG): //Element drag event posted
-                game.window_manager.source.window = MENU_GAME_SAVE_UID;
+                //game.window_manager.source.window = MENU_GAME_SAVE_UID;
             break;
             case (EVENT_ELEMENT_DROP): //Element drop event posted
-                game.window_manager.destination.window = MENU_GAME_SAVE_UID;
+                //game.window_manager.destination.window = MENU_GAME_SAVE_UID;
             break;
             default:
                 game.core.log.file_write("Unable to process event - ",game.window_manager.window[window_number].event.id, " - UID - ",game.window_manager.window[window_number].UID);
