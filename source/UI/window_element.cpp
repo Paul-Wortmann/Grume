@@ -78,6 +78,8 @@ location_class::~location_class(void)
 
 window_element_class::window_element_class(void)
 {
+    window_element_class::window_UID                     = 0;
+    window_element_class::element_UID                    = 0;
     window_element_class::mouse_over                     = false;
     window_element_class::mouse_delay.ready              = false;
     window_element_class::mouse_delay.value              = 0;

@@ -91,6 +91,8 @@ void setup_player_profile(int UID)
     game.window_manager.window[window_number].number_of_elements = 5;
     game.window_manager.window[window_number].element = new window_element_class[game.window_manager.window[window_number].number_of_elements];
     element_number = 0; //--- Player profile image ---
+    game.window_manager.window[window_number].element[element_number].window_UID                = game.window_manager.window[window_number].UID;
+    game.window_manager.window[window_number].element[element_number].element_UID               = element_number;
     game.window_manager.window[window_number].element[element_number].title.text                = "";
     game.window_manager.window[window_number].element[element_number].title.enabled             = false;
     game.window_manager.window[window_number].element[element_number].active                    = true;
@@ -113,6 +115,8 @@ void setup_player_profile(int UID)
     game.window_manager.window[window_number].element[element_number].font                      = game.window_manager.window[window_number].font;
     game.window_manager.window[window_number].element[element_number].mouse_delay.maximum       = 30;
     element_number = 1; //--- Player profile bar background ---
+    game.window_manager.window[window_number].element[element_number].window_UID                = game.window_manager.window[window_number].UID;
+    game.window_manager.window[window_number].element[element_number].element_UID               = element_number;
     game.window_manager.window[window_number].element[element_number].title.text                = "";
     game.window_manager.window[window_number].element[element_number].title.enabled             = false;
     game.window_manager.window[window_number].element[element_number].active                    = true;
@@ -131,6 +135,8 @@ void setup_player_profile(int UID)
     game.window_manager.window[window_number].element[element_number].font                      = game.window_manager.window[window_number].font;
     game.window_manager.window[window_number].element[element_number].mouse_delay.maximum       = 30;
     element_number = 2; //--- Player health bar ---
+    game.window_manager.window[window_number].element[element_number].window_UID                = game.window_manager.window[window_number].UID;
+    game.window_manager.window[window_number].element[element_number].element_UID               = element_number;
     game.window_manager.window[window_number].element[element_number].title.text                = "";
     game.window_manager.window[window_number].element[element_number].title.enabled             = false;
     game.window_manager.window[window_number].element[element_number].active                    = true;
@@ -155,6 +161,8 @@ void setup_player_profile(int UID)
     game.window_manager.window[window_number].element[element_number].font                      = game.window_manager.window[window_number].font;
     game.window_manager.window[window_number].element[element_number].mouse_delay.maximum       = 30;
     element_number = 3; //--- Player mana bar ---
+    game.window_manager.window[window_number].element[element_number].window_UID                = game.window_manager.window[window_number].UID;
+    game.window_manager.window[window_number].element[element_number].element_UID               = element_number;
     game.window_manager.window[window_number].element[element_number].title.text                = "";
     game.window_manager.window[window_number].element[element_number].title.enabled             = false;
     game.window_manager.window[window_number].element[element_number].active                    = true;
@@ -179,6 +187,8 @@ void setup_player_profile(int UID)
     game.window_manager.window[window_number].element[element_number].font                      = game.window_manager.window[window_number].font;
     game.window_manager.window[window_number].element[element_number].mouse_delay.maximum       = 30;
     element_number = 4; //--- Player profile bar foreground ---
+    game.window_manager.window[window_number].element[element_number].window_UID                = game.window_manager.window[window_number].UID;
+    game.window_manager.window[window_number].element[element_number].element_UID               = element_number;
     game.window_manager.window[window_number].element[element_number].title.text                = "";
     game.window_manager.window[window_number].element[element_number].title.enabled             = false;
     game.window_manager.window[window_number].element[element_number].active                    = true;

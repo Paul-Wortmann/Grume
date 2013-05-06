@@ -92,6 +92,8 @@ void setup_menu_game_new(int UID)
     game.window_manager.window[window_number].number_of_elements = 10;
     game.window_manager.window[window_number].element = new window_element_class[game.window_manager.window[window_number].number_of_elements];
     element_number = 0; //--- Close button ---
+    game.window_manager.window[window_number].element[element_number].window_UID                = game.window_manager.window[window_number].UID;
+    game.window_manager.window[window_number].element[element_number].element_UID               = element_number;
     game.window_manager.window[window_number].element[element_number].title.text                = "";
     game.window_manager.window[window_number].element[element_number].title.enabled             = false;
     game.window_manager.window[window_number].element[element_number].active                    = true;
@@ -111,6 +113,8 @@ void setup_menu_game_new(int UID)
     game.window_manager.window[window_number].element[element_number].mouse_delay.maximum       = 30;
 
     element_number = 1; //--- Main menu button ---
+    game.window_manager.window[window_number].element[element_number].window_UID                = game.window_manager.window[window_number].UID;
+    game.window_manager.window[window_number].element[element_number].element_UID               = element_number;
     game.window_manager.window[window_number].element[element_number].title.text                = "Main Menu";
     game.window_manager.window[window_number].element[element_number].title.enabled             = true;
     game.window_manager.window[window_number].element[element_number].active                    = true;
@@ -131,6 +135,8 @@ void setup_menu_game_new(int UID)
     game.window_manager.window[window_number].element[element_number].mouse_delay.maximum       = 30;
 
     element_number = 2; //--- Start game menu button ---
+    game.window_manager.window[window_number].element[element_number].window_UID                = game.window_manager.window[window_number].UID;
+    game.window_manager.window[window_number].element[element_number].element_UID               = element_number;
     game.window_manager.window[window_number].element[element_number].title.text                = "Start Game";
     game.window_manager.window[window_number].element[element_number].title.enabled             = true;
     game.window_manager.window[window_number].element[element_number].active                    = true;
@@ -189,6 +195,8 @@ void setup_menu_game_new(int UID)
     game.player.portrait_path = game.window_manager.window[window_number].choice_selection[0].data[ 0].image_path;
 
     element_number = 3; // left arrow button for player portrait selection
+    game.window_manager.window[window_number].element[element_number].window_UID                = game.window_manager.window[window_number].UID;
+    game.window_manager.window[window_number].element[element_number].element_UID               = element_number;
     game.window_manager.window[window_number].element[element_number].title.text                = "";
     game.window_manager.window[window_number].element[element_number].active                    = true;
     game.window_manager.window[window_number].element[element_number].type                      = BUTTON;
@@ -215,6 +223,8 @@ void setup_menu_game_new(int UID)
     game.window_manager.window[window_number].element[element_number].mouse_delay.maximum       = 10;
 
     element_number = 4; // Right arrow button for player portrait selection
+    game.window_manager.window[window_number].element[element_number].window_UID                = game.window_manager.window[window_number].UID;
+    game.window_manager.window[window_number].element[element_number].element_UID               = element_number;
     game.window_manager.window[window_number].element[element_number].title.text                = "";
     game.window_manager.window[window_number].element[element_number].active                    = true;
     game.window_manager.window[window_number].element[element_number].type                      = BUTTON;
@@ -241,6 +251,8 @@ void setup_menu_game_new(int UID)
     game.window_manager.window[window_number].element[element_number].mouse_delay.maximum       = 10;
 
     element_number = 5; // Image 0 of the player portrait selection
+    game.window_manager.window[window_number].element[element_number].window_UID                = game.window_manager.window[window_number].UID;
+    game.window_manager.window[window_number].element[element_number].element_UID               = element_number;
     game.window_manager.window[window_number].element[element_number].title.text                = "";
     game.window_manager.window[window_number].element[element_number].selected                  = true;
     game.window_manager.window[window_number].element[element_number].active                    = true;
@@ -259,6 +271,8 @@ void setup_menu_game_new(int UID)
     game.window_manager.window[window_number].element[element_number].font                      = game.window_manager.window[window_number].font;
 
     element_number = 6; // Image 1 of the player portrait selection
+    game.window_manager.window[window_number].element[element_number].window_UID                = game.window_manager.window[window_number].UID;
+    game.window_manager.window[window_number].element[element_number].element_UID               = element_number;
     game.window_manager.window[window_number].element[element_number].title.text                = "";
     game.window_manager.window[window_number].element[element_number].selected                  = false;
     game.window_manager.window[window_number].element[element_number].active                    = true;
@@ -277,6 +291,8 @@ void setup_menu_game_new(int UID)
     game.window_manager.window[window_number].element[element_number].font                      = game.window_manager.window[window_number].font;
 
     element_number = 7; // Image 2 of the player portrait selection
+    game.window_manager.window[window_number].element[element_number].window_UID                = game.window_manager.window[window_number].UID;
+    game.window_manager.window[window_number].element[element_number].element_UID               = element_number;
     game.window_manager.window[window_number].element[element_number].title.text                = "";
     game.window_manager.window[window_number].element[element_number].selected                  = false;
     game.window_manager.window[window_number].element[element_number].active                    = true;
@@ -295,6 +311,8 @@ void setup_menu_game_new(int UID)
     game.window_manager.window[window_number].element[element_number].font                      = game.window_manager.window[window_number].font;
 
     element_number = 8; // Image 3 of the player portrait selection
+    game.window_manager.window[window_number].element[element_number].window_UID                = game.window_manager.window[window_number].UID;
+    game.window_manager.window[window_number].element[element_number].element_UID               = element_number;
     game.window_manager.window[window_number].element[element_number].title.text                = "";
     game.window_manager.window[window_number].element[element_number].selected                  = false;
     game.window_manager.window[window_number].element[element_number].active                    = true;
@@ -313,6 +331,8 @@ void setup_menu_game_new(int UID)
     game.window_manager.window[window_number].element[element_number].font                      = game.window_manager.window[window_number].font;
 
     element_number = 9; // Image 4 of the player portrait selection
+    game.window_manager.window[window_number].element[element_number].window_UID                = game.window_manager.window[window_number].UID;
+    game.window_manager.window[window_number].element[element_number].element_UID               = element_number;
     game.window_manager.window[window_number].element[element_number].title.text                = "";
     game.window_manager.window[window_number].element[element_number].selected                  = false;
     game.window_manager.window[window_number].element[element_number].active                    = true;

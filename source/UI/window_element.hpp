@@ -167,6 +167,8 @@ class window_element_class
 {
     private:
     public:
+        int                     window_UID;
+        int                     element_UID;
         location_class          title;
         location_class          tooltip;
         event_type              event;
