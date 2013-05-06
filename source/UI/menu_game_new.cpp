@@ -33,6 +33,7 @@ void setup_menu_game_new(int UID)
 {
     int window_number = game.window_manager.window_get_number(UID);
     int element_number = 1;
+    game.window_manager.window[window_number].UID                     = UID;
     game.window_manager.window[window_number].active                  = false;
     game.window_manager.window[window_number].mouse_over_menu         = false;
     game.window_manager.window[window_number].mouse_over_title        = false;
