@@ -91,12 +91,6 @@ window_element_class::window_element_class(void)
     window_element_class::position.x                     = 0.0f;
     window_element_class::position.y                     = 0.0f;
     window_element_class::position.z                     = 0.0f;
-    //window_element_class::position_origin.x              = 0.0f;
-    //window_element_class::position_origin.y              = 0.0f;
-    //window_element_class::position_origin.z              = 0.0f;
-    //window_element_class::position_destination.x         = 0.0f;
-    //window_element_class::position_destination.y         = 0.0f;
-    //window_element_class::position_destination.z         = 0.0f;
     window_element_class::title.enabled                  = false;
     window_element_class::title.text                     = "";
     window_element_class::title.position.x               = 0.0f;
@@ -329,13 +323,15 @@ event_type  window_element_class::process(bool element_in_focus)
                 else
                 {
                     bool element_swaped = false;
-                    int window_over = game.window_manager.mouse_over_window();
+                    int window_over  = game.window_manager.mouse_over_window();
+                    int window_from  = window_element_class::window_UID;
+                    int element_from = window_element_class::element_UID;
                     if (window_over != MOUSE_OVER_MAP)
                     {
                         int element_over = game.window_manager.mouse_over_element(window_over);
                         if (element_over != MOUSE_OVER_MAP)
                         {
-                            game.core.log.file_write("Drag from - W - ",window_over," - E - ",element_over);
+                            game.core.log.file_write("Drag from - W - ",window_from," - E - ",element_from," Drag to - W - ",window_over," - E - ",element_over);
                             //swap
                             //if (swap()) element_swaped = true;
                         }

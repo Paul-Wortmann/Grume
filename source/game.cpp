@@ -49,16 +49,16 @@ void game_class::init(void)
     //--- other ---
 
     //game.model_3D.tree_palm.save("test_palm.obj");
-    game.global_ambient.intensity_R = 8.0f;
-    game.global_ambient.intensity_G = 8.0f;
-    game.global_ambient.intensity_B = 8.0f;
-    game.global_ambient.intensity_A = 8.0f;
-    game.world_ambient.intensity_R  = 2.0f;
-    game.world_ambient.intensity_G  = 2.0f;
-    game.world_ambient.intensity_B  = 2.0f;
-    game.world_ambient.intensity_A  = 2.0f;
-    game.world_ambient.increase     = true;
-    game.world_ambient.speed        = 0.0125f;
+    game.global_ambient.intensity_R               = 8.0f;
+    game.global_ambient.intensity_G               = 8.0f;
+    game.global_ambient.intensity_B               = 8.0f;
+    game.global_ambient.intensity_A               = 8.0f;
+    game.world_ambient.intensity_R                = 2.0f;
+    game.world_ambient.intensity_G                = 2.0f;
+    game.world_ambient.intensity_B                = 2.0f;
+    game.world_ambient.intensity_A                = 2.0f;
+    game.world_ambient.increase                   = true;
+    game.world_ambient.speed                      = 0.0125f;
     game.zoom.current                             = TILE_SCALE_DEFAULT;
     game.zoom.min                                 = 80.0f;
     game.zoom.max                                 = 400.0f;
