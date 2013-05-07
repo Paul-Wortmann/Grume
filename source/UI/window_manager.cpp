@@ -412,3 +412,38 @@ void window_manager_class::swap_elements(window_element_class *src_element, wind
     src_element = tmp_element;
 
 };
+
+void swap_elements(int window_src, int element_src, int window_dst, int element_dst)
+{
+    window_src = game.window_manager.window_get_number(window_src);
+    window_dst = game.window_manager.window_get_number(window_dst);
+    int tmp_position_x = game.window_manager.window[window_src].element[element_src].position.x;
+    int tmp_position_y = game.window_manager.window[window_src].element[element_src].position.y;
+    game.window_manager.window[window_src].element[element_src].position.x = game.window_manager.window[window_dst].element[element_dst].position.x;
+    game.window_manager.window[window_src].element[element_src].position.y = game.window_manager.window[window_dst].element[element_dst].position.y;
+    game.window_manager.window[window_dst].element[element_dst].position.x = tmp_position_x;
+    game.window_manager.window[window_dst].element[element_dst].position.y = tmp_position_y;
+
+    //window_element_class temp_element;
+    //tmp_element.position.x = game.window_manager.window[window_src].element[element_src].position.x;
+    //tmp_element.position.y = game.window_manager.window[window_src].element[element_src].position.y;
+    //game.window_manager.window[window_src].element[element_src].position.x = game.window_manager.window[window_dst].element[element_dst].position.x;
+    //game.window_manager.window[window_src].element[element_src].position.y = game.window_manager.window[window_dst].element[element_dst].position.y;
+    //game.window_manager.window[window_dst].element[element_dst].position.x = tmp_element.position.x;
+    //game.window_manager.window[window_dst].element[element_dst].position.y = tmp_element.position.y;
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

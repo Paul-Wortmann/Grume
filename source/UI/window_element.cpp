@@ -334,6 +334,10 @@ event_type  window_element_class::process(bool element_in_focus)
                             game.core.log.file_write("Drag from - W - ",window_from," - E - ",element_from," Drag to - W - ",window_over," - E - ",element_over);
                             //swap
                             //if (swap()) element_swaped = true;
+                            if ((window_from == INVENTORY_UID) && (window_over == INVENTORY_UID))
+                            {
+                                swap_elements(window_from,element_from,window_over,element_over);
+                            }
                         }
                     }
                     if (!element_swaped)

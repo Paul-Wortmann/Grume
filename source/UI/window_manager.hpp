@@ -104,6 +104,7 @@ class window_manager_class
 
 void setup_windows(void);
 void process_windows(void);
+void swap_elements(int window_src, int element_src, int window_dst, int element_dst);
 
 #endif // WINDOW_MANAGER_H
 
