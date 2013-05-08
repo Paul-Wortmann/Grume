@@ -300,7 +300,7 @@ event_type  window_element_class::process(bool element_in_focus)
         {
             window_element_class::mouse_over = window_element_class::mouse_over_element();
             // ------------------------- Drop -------------------------
-            if (game.window_manager.element_drop_in_progress)
+            if ((game.window_manager.element_drop_in_progress) || (window_element_class::drop_active))
             {
                 window_element_class::event.id               = EVENT_NONE;
                 window_element_class::drop_active            = false;
@@ -351,6 +351,11 @@ event_type  window_element_class::process(bool element_in_focus)
                     window_element_class::drop_active            = true;
                     game.window_manager.element_drop_in_progress = true;
                     window_element_class::event.id               = EVENT_ELEMENT_DRAG;
+
+                window_element_class::event.id               = EVENT_NONE;
+                window_element_class::drop_active            = false;
+                game.window_manager.element_drop_in_progress = false;
+
                 }
             }
             else

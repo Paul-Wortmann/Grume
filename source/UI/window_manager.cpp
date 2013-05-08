@@ -78,7 +78,9 @@ int window_manager_class::mouse_over_element(int UID)
     }
     for (int element_count = 0; element_count < window_manager_class::window[window_manager_class::window_stack[window_count]].number_of_elements; element_count++)
     {
-        if (window_manager_class::window[window_manager_class::window_stack[window_count]].element[element_count].active)
+        if (    (window_manager_class::window[window_manager_class::window_stack[window_count]].element[element_count].active)
+            && (!window_manager_class::window[window_manager_class::window_stack[window_count]].element[element_count].drag_active)
+            && (!window_manager_class::window[window_manager_class::window_stack[window_count]].element[element_count].drop_active))
         {
             if (window_manager_class::window[window_manager_class::window_stack[window_count]].element[element_count].mouse_over_element())
             {
@@ -417,6 +419,8 @@ void swap_elements(int window_src, int element_src, int window_dst, int element_
 {
     window_src = game.window_manager.window_get_number(window_src);
     window_dst = game.window_manager.window_get_number(window_dst);
+    game.window_manager.window[window_src].element[element_src].position.x = game.window_manager.window[window_src].element[element_src].position_origional.x;
+    game.window_manager.window[window_src].element[element_src].position.y = game.window_manager.window[window_src].element[element_src].position_origional.y;
     int tmp_position_x = game.window_manager.window[window_src].element[element_src].position.x;
     int tmp_position_y = game.window_manager.window[window_src].element[element_src].position.y;
     game.window_manager.window[window_src].element[element_src].position.x = game.window_manager.window[window_dst].element[element_dst].position.x;

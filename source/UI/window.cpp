@@ -213,9 +213,9 @@ event_type window_class::process(bool window_in_focus)
         {
             for (int element_number = 0; element_number < window_class::number_of_elements; element_number++)
             {
-                if ((window_class::element[element_number].active) && ((return_value.id == EVENT_NONE) || (return_value.id == EVENT_ELEMENT_DRAG)))
+                if ((window_class::element[element_number].active) && ((return_value.id == EVENT_NONE) || (return_value.id == EVENT_ELEMENT_DRAG) || (return_value.id == EVENT_ELEMENT_DROP)))
                 {
-                    return_value                       = window_class::element[element_number].process(window_in_focus);
+                    return_value = window_class::element[element_number].process(window_in_focus);
                     if (return_value.id != EVENT_NONE)
                     {
                         switch (return_value.id)
