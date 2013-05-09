@@ -322,13 +322,14 @@ event_type  window_element_class::process(bool element_in_focus)
                 }
                 else
                 {
-                    bool element_swaped = false;
+                    bool allow_swap_elements = false;
                     int window_over  = game.window_manager.mouse_over_window();
                     int window_from  = window_element_class::window_UID;
                     int element_from = window_element_class::element_UID;
+                    int element_over = 0;
                     if (window_over != MOUSE_OVER_MAP)
                     {
-                        int element_over = game.window_manager.mouse_over_element(window_over);
+                        element_over = game.window_manager.mouse_over_element(window_over);
                         if (element_over != MOUSE_OVER_MAP)
                         {
                             game.core.log.file_write("Drag from - W - ",window_from," - E - ",element_from," Drag to - W - ",window_over," - E - ",element_over);
@@ -336,15 +337,13 @@ event_type  window_element_class::process(bool element_in_focus)
                             //if (swap()) element_swaped = true;
                             if ((window_from == INVENTORY_UID) && (window_over == INVENTORY_UID))
                             {
-                                swap_elements(window_from,element_from,window_over,element_over);
+                                allow_swap_elements = true;
                             }
                         }
                     }
-                    if (!element_swaped)
-                    {
-                        window_element_class::position.x         = window_element_class::position_origional.x;
-                        window_element_class::position.y         = window_element_class::position_origional.y;
-                    }
+                    window_element_class::position.x = window_element_class::position_origional.x;
+                    window_element_class::position.y = window_element_class::position_origional.y;
+                    if (allow_swap_elements) swap_elements(window_from,element_from,window_over,element_over);
                     game.window_manager.element_drag_in_progress = false;
                     game.window_manager.drag_in_progress         = false;
                     window_element_class::drag_active            = false;
