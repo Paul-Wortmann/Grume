@@ -111,6 +111,8 @@
 			</Target>
 		</Build>
 		<Compiler>
+			<Add option="-Wextra" />
+			<Add option="-Wall" />
 			<Add option="-Wno-write-strings" />
 			<Add directory='&quot;C:/MinGW/include&quot;' />
 		</Compiler>
@@ -209,6 +211,7 @@
 		<Unit filename="source/core/textures.hpp" />
 		<Unit filename="source/core/timer.cpp" />
 		<Unit filename="source/core/timer.hpp" />
+		<Unit filename="source/core/types.hpp" />
 		<Unit filename="source/core/vector.cpp" />
 		<Unit filename="source/core/vector.hpp" />
 		<Unit filename="source/game.cpp" />
