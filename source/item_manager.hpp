@@ -69,11 +69,8 @@ struct item_socket_type
     int value;
 };
 
-class item_class
+struct item_type
 {
-    public:
-        item_class(void);
-       ~item_class(void);
     // sound move
     // sound use
     // texture
@@ -89,7 +86,6 @@ class item_class
     bool             socketable;
     item_effect_type effect[MAX_ITEM_EFFECTS];
     item_socket_type socket[MAX_ITEM_SOCKETS];
-
 };
 
 class item_manager_class
@@ -97,7 +93,8 @@ class item_manager_class
     public:
         item_manager_class(void);
        ~item_manager_class(void);
-        item_class      item[MAX_ITEMS];
+        int             number_of_items;
+        item_type      *item;
         void            reset_item(int item_number);
         int             get_new_ID(void);
         int             get_item_ID(int temp_item_type);

@@ -103,7 +103,7 @@ void game_class::init(void)
     game.map_2D.calculate_tile_positions(&tmx_map,DEFAULT_FRAME_WIDTH/game.zoom.current/2.0f,DEFAULT_FRAME_HEIGHT/game.zoom.current/2.0f);
     game.map_2D.center_on_tile(&tmx_map,(tmx_map.data.number_of_tiles/2)+(tmx_map.data.map_width/2));
 
-    // Add default items to inventory
+    // Add default items to the inventory
     int inventory_ID = game.window_manager.window_get_number(INVENTORY_UID);
     int item_ID = 0;
     item_ID = game.item_manager.get_item_ID(HEALTH_POTION); // Health Potion
@@ -114,6 +114,14 @@ void game_class::init(void)
     game.window_manager.window[inventory_ID].element[2].value = item_ID;
     game.window_manager.window[inventory_ID].element[2].quantity = 2;
     game.window_manager.window[inventory_ID].element[2].texture.normal.image.load_image(game.item_manager.item[item_ID].image.path);
+
+    // Add default items to the action bar
+    int action_bar_ID = game.window_manager.window_get_number(ACTIONBAR_UID);
+    item_ID = 0;
+    item_ID = game.item_manager.get_item_ID(SPELL); // Health Potion
+    game.window_manager.window[action_bar_ID].element[8].value    = item_ID;
+    game.window_manager.window[action_bar_ID].element[8].quantity = 1;
+    game.window_manager.window[action_bar_ID].element[8].texture.normal.image.load_image(game.item_manager.item[item_ID].image.path);
 };
 
 void game_class::reload_textures(void)

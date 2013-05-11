@@ -90,7 +90,7 @@ void setup_action_bar(int UID)
     game.window_manager.window[window_number].title_bar.position.y    = game.window_manager.window[window_number].position.y+(game.window_manager.window[window_number].size.y/2.0f)-(game.window_manager.window[window_number].title_bar.size.y/2.0f);
 
     // ---------------------------- Setup window elements ----------------------------------------------------
-    game.window_manager.window[window_number].number_of_elements = 8;
+    game.window_manager.window[window_number].number_of_elements = 9;
     game.window_manager.window[window_number].element = new window_element_class[game.window_manager.window[window_number].number_of_elements];
     element_number = 0; //--- Experience bar image ---
     game.window_manager.window[window_number].element[element_number].window_UID                = game.window_manager.window[window_number].UID;
@@ -300,6 +300,26 @@ void setup_action_bar(int UID)
     game.window_manager.window[window_number].element[element_number].sound.on_mouse_over.enabled = true;
     game.window_manager.window[window_number].element[element_number].font                      = game.window_manager.window[window_number].font;
     game.window_manager.window[window_number].element[element_number].mouse_delay.maximum       = menu_button_mouse_delay;
+    element_number = 8; //--- Action-bar item 0 ---
+    game.window_manager.window[window_number].element[element_number].window_UID                  = game.window_manager.window[window_number].UID;
+    game.window_manager.window[window_number].element[element_number].element_UID                 = element_number;
+    game.window_manager.window[window_number].element[element_number].title.text                  = "";
+    game.window_manager.window[window_number].element[element_number].title.enabled               = false;
+    game.window_manager.window[window_number].element[element_number].dragable                    = true;
+    game.window_manager.window[window_number].element[element_number].active                      = true;
+    game.window_manager.window[window_number].element[element_number].type                        = ITEM;
+    game.window_manager.window[window_number].element[element_number].zoom.enabled                = false;
+    game.window_manager.window[window_number].element[element_number].value                       = -1;
+    game.window_manager.window[window_number].element[element_number].color                       = game.window_manager.window[window_number].color;
+    game.window_manager.window[window_number].element[element_number].size.x                      = 0.075f;
+    game.window_manager.window[window_number].element[element_number].size.y                      = game.window_manager.window[window_number].element[element_number].size.x;
+    game.window_manager.window[window_number].element[element_number].position.x                  = game.window_manager.window[window_number].position.x-(game.window_manager.window[window_number].size.x/2.82f);
+    game.window_manager.window[window_number].element[element_number].position.y                  = game.window_manager.window[window_number].position.y+(game.window_manager.window[window_number].size.y/3.26f);
+    game.window_manager.window[window_number].element[element_number].sound                       = game.window_manager.window[window_number].sound;
+    game.window_manager.window[window_number].element[element_number].sound.on_click.enabled      = false;
+    game.window_manager.window[window_number].element[element_number].sound.on_mouse_over.enabled = false;
+    game.window_manager.window[window_number].element[element_number].mouse_delay.maximum         = 30;
+    game.window_manager.window[window_number].element[element_number].font                        = game.window_manager.window[window_number].font;
 
 };
 

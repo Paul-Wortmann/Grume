@@ -29,24 +29,13 @@ extern game_class game;
 
 //----------------------------------------------------------------------------------------------------------------
 
-item_class::item_class(void)
-{
-    item_class::name               = "";
-    item_class::active             = false;
-};
-
-item_class::~item_class(void)
-{
-};
-
-//----------------------------------------------------------------------------------------------------------------
-
 item_manager_class::item_manager_class(void)
 {
 };
 
 item_manager_class::~item_manager_class(void)
 {
+    delete [] item_manager_class::item;
 };
 
 void item_manager_class::reset_item(int item_number)
@@ -91,6 +80,12 @@ int item_manager_class::get_item_ID(int temp_item_type)
 
 void  init_items(void) // Initialize hard-coded default items, such as health potions etc...
 {
+    game.item_manager.number_of_items = 3;
+    game.item_manager.item = new item_type[game.item_manager.number_of_items];
+    for (int item_count = 0; item_count < game.item_manager.number_of_items;item_count++)
+    {
+        game.item_manager.item[item_count].active = false;
+    }
     //------------------------------------------------------------------------------------------------------------
     int item_number = -1;
     //------------------------- Potions --------------------------------------------------------------------------
@@ -126,6 +121,23 @@ void  init_items(void) // Initialize hard-coded default items, such as health po
         game.item_manager.item[item_number].effect[0].type         = EFFECT_MOD_MANA;
         game.item_manager.item[item_number].effect[0].value        = 5.0f;
         game.item_manager.item[item_number].image.path             = "data/textures/UI/icons/potions/potion_22.png";
+        game.item_manager.item[item_number].image.load_image(game.item_manager.item[item_number].image.path);
+    }
+    item_number = game.item_manager.get_new_ID();
+    if (item_number > -1) // test spell 1
+    {
+        game.item_manager.reset_item(item_number);
+        game.item_manager.item[item_number].active                 = true;
+        game.item_manager.item[item_number].type                   = SPELL;
+        game.item_manager.item[item_number].ID                     = item_number;
+        game.item_manager.item[item_number].quantity               = 1;
+        game.item_manager.item[item_number].quantity_max           = 1;
+        game.item_manager.item[item_number].socketable             = false;
+        game.item_manager.item[item_number].number_of_item_sockets = 1;
+        game.item_manager.item[item_number].number_of_item_effects = 1;
+        game.item_manager.item[item_number].effect[0].type         = EFFECT_MOD_MANA;
+        game.item_manager.item[item_number].effect[0].value        = 5.0f;
+        game.item_manager.item[item_number].image.path             = "data/textures/test_1.png";
         game.item_manager.item[item_number].image.load_image(game.item_manager.item[item_number].image.path);
     }
     //------------------------------------------------------------------------------------------------------------
