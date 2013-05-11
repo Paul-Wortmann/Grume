@@ -386,7 +386,13 @@ event_type  window_element_class::process(bool element_in_focus)
                     window_element_class::state        = NORMAL;
                 }
                 // ------------------------- clicked element -------------------------
-                if ((!game.window_manager.drag_in_progress) && (element_in_focus))
+                float dragged_by_x = 0.0f;
+                float dragged_by_y = 0.0f;
+                if (window_element_class::position_origional.x > window_element_class::position.x) dragged_by_x = window_element_class::position_origional.x - window_element_class::position.x;
+                else dragged_by_x = window_element_class::position.x - window_element_class::position_origional.x;
+                if (window_element_class::position_origional.y > window_element_class::position.y) dragged_by_y = window_element_class::position_origional.y - window_element_class::position.y;
+                else dragged_by_y = window_element_class::position.y - window_element_class::position_origional.y;
+                if (((dragged_by_x < 0.01f) && (dragged_by_y < 0.01f) && (element_in_focus)) || ((!game.window_manager.drag_in_progress) && (element_in_focus)))
                 {
                     if (window_element_class::click_enabled)
                     {
