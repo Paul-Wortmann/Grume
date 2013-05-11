@@ -317,7 +317,7 @@ void setup_action_bar(int UID)
     game.window_manager.window[window_number].element[element_number].position.x                  = game.window_manager.window[window_number].position.x-(game.window_manager.window[window_number].size.x/3.92f);
     game.window_manager.window[window_number].element[element_number].position.y                  = game.window_manager.window[window_number].position.y+(game.window_manager.window[window_number].size.y/22.00f);
     game.window_manager.window[window_number].element[element_number].sound                       = game.window_manager.window[window_number].sound;
-    game.window_manager.window[window_number].element[element_number].sound.on_click.enabled      = true;
+    game.window_manager.window[window_number].element[element_number].sound.on_click.enabled      = false;
     game.window_manager.window[window_number].element[element_number].sound.on_mouse_over.enabled = false;
     game.window_manager.window[window_number].element[element_number].mouse_delay.maximum         = 30;
     game.window_manager.window[window_number].element[element_number].font                        = game.window_manager.window[window_number].font;

@@ -282,7 +282,7 @@ bool window_element_class::mouse_over_element(void)
 
 bool window_element_class::mouse_clicked_element(void)
 {
-    if ((game.core.io.mouse_button_left) || (game.core.io.mouse_button_left)) return(window_element_class::mouse_over_element());
+    if ((game.core.io.mouse_button_left) || (game.core.io.mouse_button_right)) return(window_element_class::mouse_over_element());
     else return(false);
 };
 
