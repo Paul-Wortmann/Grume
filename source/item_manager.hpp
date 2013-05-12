@@ -101,6 +101,7 @@ class item_manager_class
 };
 
 void  init_items(void); // Initialize hard-coded default items, such as health potions etc...
+void  use_item(int window_from, int element_from);
 
 #endif // ITEM_MANAGER_H
 

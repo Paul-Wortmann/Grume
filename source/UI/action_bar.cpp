@@ -439,6 +439,13 @@ void process_action_bar(int window_number)
                 game.core.io.key_escape                = false;
                 game.core.io.keyboard_delay_count      = 0;
             break;
+            case ((8*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
+                game.window_manager.window[window_number].event.id = EVENT_NONE;
+            break;
+            case ((8*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
+                use_item(window_number,8);
+                game.window_manager.window[window_number].event.id = EVENT_NONE;
+            break;
             case (EVENT_WINDOW_STACK_SORT): //Window stack sort
                 game.window_manager.window_stack_sort();
                 game.window_manager.event.id = EVENT_NONE;

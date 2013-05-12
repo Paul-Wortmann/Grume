@@ -143,4 +143,9 @@ void  init_items(void) // Initialize hard-coded default items, such as health po
     //------------------------------------------------------------------------------------------------------------
 };
 
+void  use_item(int window_from, int element_from)
+{
+    if (game.window_manager.window[window_from].element[element_from].active)
+        game.core.log.file_write("Using item -> ", window_from, " - ", element_from);
+};
 
