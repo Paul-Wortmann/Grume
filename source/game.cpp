@@ -112,16 +112,52 @@ void game_class::init(void)
     game.window_manager.window[inventory_ID].element[1].texture.normal.image.load_image(game.item_manager.item[item_ID].image.path);
     item_ID = game.item_manager.get_item_ID(MANA_POTION); // Mana Potion
     game.window_manager.window[inventory_ID].element[2].value = item_ID;
-    game.window_manager.window[inventory_ID].element[2].quantity = 2;
+    game.window_manager.window[inventory_ID].element[2].quantity = 4;
     game.window_manager.window[inventory_ID].element[2].texture.normal.image.load_image(game.item_manager.item[item_ID].image.path);
 
     // Add default items to the action bar
     int action_bar_ID = game.window_manager.window_get_number(ACTIONBAR_UID);
     item_ID = 0;
-    item_ID = game.item_manager.get_item_ID(SPELL); // Health Potion
+    item_ID = game.item_manager.get_item_ID(SPELL); // Spell
     game.window_manager.window[action_bar_ID].element[8].value    = item_ID;
     game.window_manager.window[action_bar_ID].element[8].quantity = 1;
     game.window_manager.window[action_bar_ID].element[8].texture.normal.image.load_image(game.item_manager.item[item_ID].image.path);
+    item_ID = game.item_manager.get_item_ID(SPELL); // Spell
+    game.window_manager.window[action_bar_ID].element[9].value    = item_ID;
+    game.window_manager.window[action_bar_ID].element[9].quantity = 1;
+    game.window_manager.window[action_bar_ID].element[9].texture.normal.image.load_image(game.item_manager.item[item_ID].image.path);
+    item_ID = game.item_manager.get_item_ID(SPELL); // Spell
+    game.window_manager.window[action_bar_ID].element[10].value    = item_ID;
+    game.window_manager.window[action_bar_ID].element[10].quantity = 1;
+    game.window_manager.window[action_bar_ID].element[10].texture.normal.image.load_image(game.item_manager.item[item_ID].image.path);
+    item_ID = game.item_manager.get_item_ID(SPELL); // Spell
+    game.window_manager.window[action_bar_ID].element[11].value    = item_ID;
+    game.window_manager.window[action_bar_ID].element[11].quantity = 1;
+    game.window_manager.window[action_bar_ID].element[11].texture.normal.image.load_image(game.item_manager.item[item_ID].image.path);
+    item_ID = game.item_manager.get_item_ID(SPELL); // Spell
+    game.window_manager.window[action_bar_ID].element[12].value    = item_ID;
+    game.window_manager.window[action_bar_ID].element[12].quantity = 1;
+    game.window_manager.window[action_bar_ID].element[12].texture.normal.image.load_image(game.item_manager.item[item_ID].image.path);
+    item_ID = game.item_manager.get_item_ID(SPELL); // Spell
+    game.window_manager.window[action_bar_ID].element[13].value    = item_ID;
+    game.window_manager.window[action_bar_ID].element[13].quantity = 1;
+    game.window_manager.window[action_bar_ID].element[13].texture.normal.image.load_image(game.item_manager.item[item_ID].image.path);
+    item_ID = game.item_manager.get_item_ID(SPELL); // Spell
+    game.window_manager.window[action_bar_ID].element[14].value    = item_ID;
+    game.window_manager.window[action_bar_ID].element[14].quantity = 1;
+    game.window_manager.window[action_bar_ID].element[14].texture.normal.image.load_image(game.item_manager.item[item_ID].image.path);
+    item_ID = game.item_manager.get_item_ID(SPELL); // Spell
+    game.window_manager.window[action_bar_ID].element[15].value    = item_ID;
+    game.window_manager.window[action_bar_ID].element[15].quantity = 1;
+    game.window_manager.window[action_bar_ID].element[15].texture.normal.image.load_image(game.item_manager.item[item_ID].image.path);
+    item_ID = game.item_manager.get_item_ID(MANA_POTION); // Spell
+    game.window_manager.window[action_bar_ID].element[16].value    = item_ID;
+    game.window_manager.window[action_bar_ID].element[16].quantity = 1;
+    game.window_manager.window[action_bar_ID].element[16].texture.normal.image.load_image(game.item_manager.item[item_ID].image.path);
+    item_ID = game.item_manager.get_item_ID(HEALTH_POTION); // Spell
+    game.window_manager.window[action_bar_ID].element[17].value    = item_ID;
+    game.window_manager.window[action_bar_ID].element[17].quantity = 1;
+    game.window_manager.window[action_bar_ID].element[17].texture.normal.image.load_image(game.item_manager.item[item_ID].image.path);
 };
 
 void game_class::reload_textures(void)

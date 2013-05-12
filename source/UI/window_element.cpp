@@ -327,23 +327,17 @@ event_type  window_element_class::process(bool element_in_focus)
                     int window_from  = window_element_class::window_UID;
                     int element_from = window_element_class::element_UID;
                     int element_over = 0;
+                    window_element_class::position.x = window_element_class::position_origional.x;
+                    window_element_class::position.y = window_element_class::position_origional.y;
                     if (window_over != MOUSE_OVER_MAP)
                     {
                         element_over = game.window_manager.mouse_over_element(window_over);
                         if (element_over != MOUSE_OVER_MAP)
                         {
-                            game.core.log.file_write("Drag from - W - ",window_from," - E - ",element_from," Drag to - W - ",window_over," - E - ",element_over);
                             //swap
-                            //if (swap()) element_swaped = true;
-                            if ((window_from == INVENTORY_UID) && (window_over == INVENTORY_UID))
-                            {
-                                allow_swap_elements = true;
-                            }
+                            swap_elements(window_from,element_from,window_over,element_over);
                         }
                     }
-                    window_element_class::position.x = window_element_class::position_origional.x;
-                    window_element_class::position.y = window_element_class::position_origional.y;
-                    if (allow_swap_elements) swap_elements(window_from,element_from,window_over,element_over);
                     game.window_manager.element_drag_in_progress = false;
                     game.window_manager.drag_in_progress         = false;
                     window_element_class::drag_active            = false;

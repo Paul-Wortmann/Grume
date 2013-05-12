@@ -417,26 +417,26 @@ void window_manager_class::swap_elements(window_element_class *src_element, wind
 
 void swap_elements(int window_src, int element_src, int window_dst, int element_dst)
 {
-    window_src = game.window_manager.window_get_number(window_src);
-    window_dst = game.window_manager.window_get_number(window_dst);
-    game.window_manager.window[window_src].element[element_src].position.x = game.window_manager.window[window_src].element[element_src].position_origional.x;
-    game.window_manager.window[window_src].element[element_src].position.y = game.window_manager.window[window_src].element[element_src].position_origional.y;
-    int tmp_position_x = game.window_manager.window[window_src].element[element_src].position.x;
-    int tmp_position_y = game.window_manager.window[window_src].element[element_src].position.y;
-    game.window_manager.window[window_src].element[element_src].position.x = game.window_manager.window[window_dst].element[element_dst].position.x;
-    game.window_manager.window[window_src].element[element_src].position.y = game.window_manager.window[window_dst].element[element_dst].position.y;
-    game.window_manager.window[window_dst].element[element_dst].position.x = tmp_position_x;
-    game.window_manager.window[window_dst].element[element_dst].position.y = tmp_position_y;
-
-    //window_element_class temp_element;
-    //tmp_element.position.x = game.window_manager.window[window_src].element[element_src].position.x;
-    //tmp_element.position.y = game.window_manager.window[window_src].element[element_src].position.y;
-    //game.window_manager.window[window_src].element[element_src].position.x = game.window_manager.window[window_dst].element[element_dst].position.x;
-    //game.window_manager.window[window_src].element[element_src].position.y = game.window_manager.window[window_dst].element[element_dst].position.y;
-    //game.window_manager.window[window_dst].element[element_dst].position.x = tmp_element.position.x;
-    //game.window_manager.window[window_dst].element[element_dst].position.y = tmp_element.position.y;
+    game.core.log.file_write("Drag from - W - ",window_src," - E - ",element_src," Drag to - W - ",window_dst," - E - ",element_dst);
+    bool allow_swap_elements = false;
+    if ((window_src == INVENTORY_UID) && (window_dst == INVENTORY_UID)) allow_swap_elements = true;
+    if ((window_src == ACTIONBAR_UID) && (window_dst == ACTIONBAR_UID)) allow_swap_elements = true;
+    if ((window_src == INVENTORY_UID) && (window_dst == ACTIONBAR_UID)) allow_swap_elements = true;
+    if ((window_src == ACTIONBAR_UID) && (window_dst == INVENTORY_UID)) allow_swap_elements = true;
+    if (allow_swap_elements)
+    {
+        window_src = game.window_manager.window_get_number(window_src);
+        window_dst = game.window_manager.window_get_number(window_dst);
+        //game.window_manager.window[window_src].element[element_src].position.x = game.window_manager.window[window_src].element[element_src].position_origional.x;
+        //game.window_manager.window[window_src].element[element_src].position.y = game.window_manager.window[window_src].element[element_src].position_origional.y;
+        int tmp_position_x = game.window_manager.window[window_src].element[element_src].position.x;
+        int tmp_position_y = game.window_manager.window[window_src].element[element_src].position.y;
+        game.window_manager.window[window_src].element[element_src].position.x = game.window_manager.window[window_dst].element[element_dst].position.x;
+        game.window_manager.window[window_src].element[element_src].position.y = game.window_manager.window[window_dst].element[element_dst].position.y;
+        game.window_manager.window[window_dst].element[element_dst].position.x = tmp_position_x;
+        game.window_manager.window[window_dst].element[element_dst].position.y = tmp_position_y;
+    }
 };
-
 
 
 
