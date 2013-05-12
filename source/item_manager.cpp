@@ -41,6 +41,7 @@ item_manager_class::~item_manager_class(void)
 void item_manager_class::reset_item(int item_number)
 {
     item_manager_class::item[item_number].type                   = NULL_ITEM;
+    item_manager_class::item[item_number].sub_type               = NULL_ITEM;
     item_manager_class::item[item_number].name                   = "";
     item_manager_class::item[item_number].quantity               = 1;
     item_manager_class::item[item_number].quantity_max           = 1;
@@ -76,6 +77,11 @@ int item_manager_class::get_item_ID(int temp_item_type)
     return (-1);
 };
 
+int item_manager_class::get_item_type(int item_ID)
+{
+    return(item_manager_class::item[item_ID].type);
+};
+
 //----------------------------------------------------------------------------------------------------------------
 
 void  init_items(void) // Initialize hard-coded default items, such as health potions etc...
@@ -95,6 +101,7 @@ void  init_items(void) // Initialize hard-coded default items, such as health po
         game.item_manager.reset_item(item_number);
         game.item_manager.item[item_number].active                 = true;
         game.item_manager.item[item_number].type                   = HEALTH_POTION;
+        game.item_manager.item[item_number].sub_type               = LARGE_POTION;
         game.item_manager.item[item_number].ID                     = item_number;
         game.item_manager.item[item_number].quantity               = 1;
         game.item_manager.item[item_number].quantity_max           = 1;
@@ -102,7 +109,7 @@ void  init_items(void) // Initialize hard-coded default items, such as health po
         game.item_manager.item[item_number].number_of_item_sockets = 1;
         game.item_manager.item[item_number].number_of_item_effects = 1;
         game.item_manager.item[item_number].effect[0].type         = EFFECT_MOD_HEALTH;
-        game.item_manager.item[item_number].effect[0].value        = 5.0f;
+        game.item_manager.item[item_number].effect[0].value        = 50.0f;
         game.item_manager.item[item_number].image.path             = "data/textures/UI/icons/potions/potion_23.png";
         game.item_manager.item[item_number].image.load_image(game.item_manager.item[item_number].image.path);
     }
@@ -146,6 +153,33 @@ void  init_items(void) // Initialize hard-coded default items, such as health po
 void  use_item(int window_from, int element_from)
 {
     if (game.window_manager.window[window_from].element[element_from].active)
+    {
+        int item_number = game.window_manager.window[window_from].element[element_from].value;
+        for (int effect_count = 0; effect_count < game.item_manager.item[item_number].number_of_item_effects; effect_count++)
+        {
+            if (game.item_manager.item[item_number].effect[effect_count].type != NULL_ITEM)
+            {
+                switch (game.item_manager.item[item_number].effect[effect_count].type)
+                {
+                    case EFFECT_MOD_HEALTH:
+                        game.player.health.current += game.item_manager.item[item_number].effect[effect_count].value;
+                    break;
+                    case EFFECT_MOD_MANA:
+                        game.player.mana.current += game.item_manager.item[item_number].effect[effect_count].value;
+                    break;
+                    default:
+                    break;
+                }
+            }
+        }
+        game.window_manager.window[window_from].element[element_from].quantity--;
+        if (game.window_manager.window[window_from].element[element_from].quantity <= 0)
+        {
+            game.window_manager.window[window_from].element[element_from].value    = -1;
+            game.window_manager.window[window_from].element[element_from].active   = false;
+            game.window_manager.window[window_from].element[element_from].quantity = 0;
+        }
         game.core.log.file_write("Using item -> ", window_from, " - ", element_from);
+    }
 };
 

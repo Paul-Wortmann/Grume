@@ -50,6 +50,10 @@
 #define SLING          18
 #define WEAPON         19
 
+#define SMALL_POTION   32
+#define MEDIUM_POTION  33
+#define LARGE_POTION   34
+
 #define EFFECT_MOD_HEALTH 100
 #define EFFECT_MOD_MANA   101
 
@@ -59,14 +63,16 @@
 
 struct item_effect_type
 {
-    int type;
-    int value;
+    bool enabled;
+    int  type;
+    int  value;
 };
 
 struct item_socket_type
 {
-    int type;
-    int value;
+    bool enabled;
+    int  type;
+    int  value;
 };
 
 struct item_type
@@ -79,6 +85,7 @@ struct item_type
     texture_class    image;
     int              ID;
     int              type;
+    int              sub_type;
     int              quantity;
     int              quantity_max;
     int              number_of_item_effects;
@@ -98,6 +105,7 @@ class item_manager_class
         void            reset_item(int item_number);
         int             get_new_ID(void);
         int             get_item_ID(int temp_item_type);
+        int             get_item_type(int item_ID);
 };
 
 void  init_items(void); // Initialize hard-coded default items, such as health potions etc...
