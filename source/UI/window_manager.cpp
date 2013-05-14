@@ -423,11 +423,12 @@ void swap_elements(int window_src, int element_src, int window_dst, int element_
     if ((window_src == ACTIONBAR_UID) && (window_dst == ACTIONBAR_UID)) allow_swap_elements = true;
     if ((window_src == INVENTORY_UID) && (window_dst == ACTIONBAR_UID)) allow_swap_elements = true;
     if ((window_src == ACTIONBAR_UID) && (window_dst == INVENTORY_UID)) allow_swap_elements = true;
-    //if ((allow_swap_elements) && ((game.window_manager.window[window_src].element[element_src].type == ITEM)&&(game.window_manager.window[window_dst].element[element_dst].type == ITEM)))
-    if (allow_swap_elements)
+    window_src = game.window_manager.window_get_number(window_src);
+    window_dst = game.window_manager.window_get_number(window_dst);
+    if ((allow_swap_elements) && ((game.window_manager.window[window_src].element[element_src].type == ITEM)&&(game.window_manager.window[window_dst].element[element_dst].type == ITEM)))
+    //if (allow_swap_elements)
     {
-        window_src = game.window_manager.window_get_number(window_src);
-        window_dst = game.window_manager.window_get_number(window_dst);
+
 
         game.core.log.file_write("Source      - x - ",game.window_manager.window[window_src].element[element_src].position.x," - Y - ",game.window_manager.window[window_src].element[element_src].position.y);
         game.core.log.file_write("Destination - x - ",game.window_manager.window[window_dst].element[element_dst].position.x," - Y - ",game.window_manager.window[window_dst].element[element_dst].position.y);
