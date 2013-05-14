@@ -426,13 +426,34 @@ void swap_elements(int window_src, int element_src, int window_dst, int element_
     window_dst = game.window_manager.window_get_number(window_dst);
     if ((allow_swap_elements) && ((game.window_manager.window[window_src].element[element_src].type == ITEM)&&(game.window_manager.window[window_dst].element[element_dst].type == ITEM)))
     {
-        int tmp_value    = game.window_manager.window[window_src].element[element_src].value;
-        int tmp_quantity = game.window_manager.window[window_src].element[element_src].quantity;
-        game.window_manager.window[window_src].element[element_src].value    = game.window_manager.window[window_dst].element[element_dst].value;
-        game.window_manager.window[window_src].element[element_src].quantity = game.window_manager.window[window_dst].element[element_dst].quantity;
-        game.window_manager.window[window_dst].element[element_dst].value    = tmp_value;
-        game.window_manager.window[window_dst].element[element_dst].quantity = tmp_quantity;
-        game.window_manager.window[window_src].element[element_src].texture.normal.image.load_image(game.item_manager.item[(int)game.window_manager.window[window_src].element[element_src].value].image.path);
-        game.window_manager.window[window_dst].element[element_dst].texture.normal.image.load_image(game.item_manager.item[(int)game.window_manager.window[window_dst].element[element_dst].value].image.path);
+        if    ((game.item_manager.item[(int)game.window_manager.window[window_src].element[element_src].value].type     == game.item_manager.item[(int)game.window_manager.window[window_dst].element[element_dst].value].type)
+            && (game.item_manager.item[(int)game.window_manager.window[window_src].element[element_src].value].sub_type == game.item_manager.item[(int)game.window_manager.window[window_dst].element[element_dst].value].sub_type)
+            && (game.item_manager.item[(int)game.window_manager.window[window_src].element[element_src].value].quantity_max > 1)
+            && (game.item_manager.item[(int)game.window_manager.window[window_dst].element[element_dst].value].quantity_max > 1))
+       {
+            game.window_manager.window[window_dst].element[element_dst].quantity += game.window_manager.window[window_src].element[element_src].quantity;
+            game.window_manager.window[window_src].element[element_src].quantity = 0;
+            if (game.window_manager.window[window_dst].element[element_dst].quantity > game.item_manager.item[(int)game.window_manager.window[window_dst].element[element_dst].value].quantity_max)
+            {
+                game.window_manager.window[window_src].element[element_src].quantity  = game.window_manager.window[window_dst].element[element_dst].quantity - game.item_manager.item[(int)game.window_manager.window[window_dst].element[element_dst].value].quantity_max;
+                game.window_manager.window[window_dst].element[element_dst].quantity -= game.item_manager.item[(int)game.window_manager.window[window_dst].element[element_dst].value].quantity_max;
+            }
+            if (game.window_manager.window[window_src].element[element_src].quantity <= 0)
+            {
+                game.window_manager.window[window_src].element[element_src].value    = -1;
+                game.window_manager.window[window_src].element[element_src].quantity = 0;
+            }
+       }
+       else
+        {
+            int tmp_value    = game.window_manager.window[window_src].element[element_src].value;
+            int tmp_quantity = game.window_manager.window[window_src].element[element_src].quantity;
+            game.window_manager.window[window_src].element[element_src].value    = game.window_manager.window[window_dst].element[element_dst].value;
+            game.window_manager.window[window_src].element[element_src].quantity = game.window_manager.window[window_dst].element[element_dst].quantity;
+            game.window_manager.window[window_dst].element[element_dst].value    = tmp_value;
+            game.window_manager.window[window_dst].element[element_dst].quantity = tmp_quantity;
+            game.window_manager.window[window_src].element[element_src].texture.normal.image.load_image(game.item_manager.item[(int)game.window_manager.window[window_src].element[element_src].value].image.path);
+            game.window_manager.window[window_dst].element[element_dst].texture.normal.image.load_image(game.item_manager.item[(int)game.window_manager.window[window_dst].element[element_dst].value].image.path);
+        }
     }
 };
