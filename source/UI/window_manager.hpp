@@ -99,7 +99,6 @@ class window_manager_class
         int                   mouse_over_element(int UID);
         void                  process(void);
         void                  render(void);
-        void                  swap_elements(window_element_class *src_element, window_element_class *dst_element);
 };
 
 void setup_windows(void);
