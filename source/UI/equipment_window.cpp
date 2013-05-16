@@ -122,8 +122,8 @@ void setup_equipment_window(int UID)
     game.window_manager.window[window_number].element[element_number].zoom.enabled                = false;
     game.window_manager.window[window_number].element[element_number].value                       = -1;
     game.window_manager.window[window_number].element[element_number].color                       = game.window_manager.window[window_number].color;
-    game.window_manager.window[window_number].element[element_number].size.x                      = 0.075f;
-    game.window_manager.window[window_number].element[element_number].size.y                      = game.window_manager.window[window_number].element[element_number].size.x;
+    game.window_manager.window[window_number].element[element_number].size.x                      = 0.050f;
+    game.window_manager.window[window_number].element[element_number].size.y                      = 0.085f;
     game.window_manager.window[window_number].element[element_number].position.x                  = game.window_manager.window[window_number].position.x-(game.window_manager.window[window_number].size.x/4.72f);
     game.window_manager.window[window_number].element[element_number].position.y                  = game.window_manager.window[window_number].position.y+(game.window_manager.window[window_number].size.y/4.66f);
     game.window_manager.window[window_number].element[element_number].sound                       = game.window_manager.window[window_number].sound;
@@ -142,8 +142,8 @@ void setup_equipment_window(int UID)
     game.window_manager.window[window_number].element[element_number].zoom.enabled                = false;
     game.window_manager.window[window_number].element[element_number].value                       = -1;
     game.window_manager.window[window_number].element[element_number].color                       = game.window_manager.window[window_number].color;
-    game.window_manager.window[window_number].element[element_number].size.x                      = 0.075f;
-    game.window_manager.window[window_number].element[element_number].size.y                      = game.window_manager.window[window_number].element[element_number].size.x;
+    game.window_manager.window[window_number].element[element_number].size.x                      = 0.050f;
+    game.window_manager.window[window_number].element[element_number].size.y                      = 0.085f;
     game.window_manager.window[window_number].element[element_number].position.x                  = game.window_manager.window[window_number].position.x+(game.window_manager.window[window_number].size.x/4.64f);
     game.window_manager.window[window_number].element[element_number].position.y                  = game.window_manager.window[window_number].position.y+(game.window_manager.window[window_number].size.y/4.66f);
     game.window_manager.window[window_number].element[element_number].sound                       = game.window_manager.window[window_number].sound;
@@ -162,8 +162,8 @@ void setup_equipment_window(int UID)
     game.window_manager.window[window_number].element[element_number].zoom.enabled                = false;
     game.window_manager.window[window_number].element[element_number].value                       = -1;
     game.window_manager.window[window_number].element[element_number].color                       = game.window_manager.window[window_number].color;
-    game.window_manager.window[window_number].element[element_number].size.x                      = 0.075f;
-    game.window_manager.window[window_number].element[element_number].size.y                      = game.window_manager.window[window_number].element[element_number].size.x;
+    game.window_manager.window[window_number].element[element_number].size.x                      = 0.050f;
+    game.window_manager.window[window_number].element[element_number].size.y                      = 0.085f;
     game.window_manager.window[window_number].element[element_number].position.x                  = game.window_manager.window[window_number].position.x-(game.window_manager.window[window_number].size.x/2.82f);
     game.window_manager.window[window_number].element[element_number].position.y                  = game.window_manager.window[window_number].position.y+(game.window_manager.window[window_number].size.y/8.10f);
     game.window_manager.window[window_number].element[element_number].sound                       = game.window_manager.window[window_number].sound;
@@ -182,8 +182,8 @@ void setup_equipment_window(int UID)
     game.window_manager.window[window_number].element[element_number].zoom.enabled                = false;
     game.window_manager.window[window_number].element[element_number].value                       = -1;
     game.window_manager.window[window_number].element[element_number].color                       = game.window_manager.window[window_number].color;
-    game.window_manager.window[window_number].element[element_number].size.x                      = 0.075f;
-    game.window_manager.window[window_number].element[element_number].size.y                      = game.window_manager.window[window_number].element[element_number].size.x;
+    game.window_manager.window[window_number].element[element_number].size.x                      = 0.050f;
+    game.window_manager.window[window_number].element[element_number].size.y                      = 0.085f;
     game.window_manager.window[window_number].element[element_number].position.x                  = game.window_manager.window[window_number].position.x-(game.window_manager.window[window_number].size.x/4.72f);
     game.window_manager.window[window_number].element[element_number].position.y                  = game.window_manager.window[window_number].position.y+(game.window_manager.window[window_number].size.y/8.10f);
     game.window_manager.window[window_number].element[element_number].sound                       = game.window_manager.window[window_number].sound;
@@ -202,8 +202,8 @@ void setup_equipment_window(int UID)
     game.window_manager.window[window_number].element[element_number].zoom.enabled                = false;
     game.window_manager.window[window_number].element[element_number].value                       = -1;
     game.window_manager.window[window_number].element[element_number].color                       = game.window_manager.window[window_number].color;
-    game.window_manager.window[window_number].element[element_number].size.x                      = 0.075f;
-    game.window_manager.window[window_number].element[element_number].size.y                      = game.window_manager.window[window_number].element[element_number].size.x;
+    game.window_manager.window[window_number].element[element_number].size.x                      = 0.050f;
+    game.window_manager.window[window_number].element[element_number].size.y                      = 0.085f;
     game.window_manager.window[window_number].element[element_number].position.x                  = game.window_manager.window[window_number].position.x+(game.window_manager.window[window_number].size.x/4.64f);
     game.window_manager.window[window_number].element[element_number].position.y                  = game.window_manager.window[window_number].position.y+(game.window_manager.window[window_number].size.y/8.10f);
     game.window_manager.window[window_number].element[element_number].sound                       = game.window_manager.window[window_number].sound;
@@ -222,8 +222,8 @@ void setup_equipment_window(int UID)
     game.window_manager.window[window_number].element[element_number].zoom.enabled                = false;
     game.window_manager.window[window_number].element[element_number].value                       = -1;
     game.window_manager.window[window_number].element[element_number].color                       = game.window_manager.window[window_number].color;
-    game.window_manager.window[window_number].element[element_number].size.x                      = 0.075f;
-    game.window_manager.window[window_number].element[element_number].size.y                      = game.window_manager.window[window_number].element[element_number].size.x;
+    game.window_manager.window[window_number].element[element_number].size.x                      = 0.050f;
+    game.window_manager.window[window_number].element[element_number].size.y                      = 0.085f;
     game.window_manager.window[window_number].element[element_number].position.x                  = game.window_manager.window[window_number].position.x+(game.window_manager.window[window_number].size.x/2.80f);
     game.window_manager.window[window_number].element[element_number].position.y                  = game.window_manager.window[window_number].position.y+(game.window_manager.window[window_number].size.y/8.10f);
     game.window_manager.window[window_number].element[element_number].sound                       = game.window_manager.window[window_number].sound;
