@@ -291,10 +291,13 @@ event_type  window_element_class::process(bool element_in_focus)
     float drag_delta_x = 0.0f;
     float drag_delta_y = 0.0f;
     bool  allow_drag   = window_element_class::dragable;
+    bool  allow_process = true;
     window_element_class::clicked = false;
     window_element_class::mouse_delay.process();
     if ((window_element_class::event.id == EVENT_ELEMENT_MOUSE_RIGHT) || (window_element_class::event.id == EVENT_ELEMENT_MOUSE_LEFT)) window_element_class::event.id = EVENT_NONE;
-    if (window_element_class::active)
+    if (!window_element_class::active) allow_process = false;
+    if ((window_element_class::type == ITEM) && (window_element_class::value < 0)) allow_process = false;
+    if (allow_process)
     {
         if (window_element_class::state != DISABLED)
         {
@@ -419,6 +422,7 @@ event_type  window_element_class::process(bool element_in_focus)
             if (window_element_class::zoom.value < 0.0f) window_element_class::zoom.value = 0.0f;
         }
     }
+    else window_element_class::event.id = EVENT_NONE;
     return(window_element_class::event);
 };
 
