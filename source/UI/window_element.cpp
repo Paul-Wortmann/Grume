@@ -322,7 +322,6 @@ event_type  window_element_class::process(bool element_in_focus)
                 }
                 else
                 {
-                    bool allow_swap_elements = false;
                     int window_over  = game.window_manager.mouse_over_window();
                     int window_from  = window_element_class::window_UID;
                     int element_from = window_element_class::element_UID;
