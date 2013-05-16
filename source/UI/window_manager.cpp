@@ -408,7 +408,7 @@ void window_manager_class::render(void)
 
 void swap_elements(int window_src, int element_src, int window_dst, int element_dst)
 {
-    bool allow_swap_elements = false;
+    bool allow_swap_elements = true; // test
     if ((window_src == INVENTORY_UID) && (window_dst == INVENTORY_UID)) allow_swap_elements = true;
     if ((window_src == ACTIONBAR_UID) && (window_dst == ACTIONBAR_UID)) allow_swap_elements = true;
     if ((window_src == INVENTORY_UID) && (window_dst == ACTIONBAR_UID)) allow_swap_elements = true;
