@@ -152,11 +152,11 @@ void game_class::init(void)
     game.window_manager.window[action_bar_ID].element[15].quantity = 1;
     game.window_manager.window[action_bar_ID].element[15].texture.normal.image.load_image(game.item_manager.item[item_ID].image.path);
 */
-    item_ID = game.item_manager.get_item_ID(MANA_POTION); // ----
+    item_ID = game.item_manager.get_item_ID(SPELL); // ----
     game.window_manager.window[action_bar_ID].element[16].value    = item_ID;
     game.window_manager.window[action_bar_ID].element[16].quantity = 1;
     game.window_manager.window[action_bar_ID].element[16].texture.normal.image.load_image(game.item_manager.item[item_ID].image.path);
-    item_ID = game.item_manager.get_item_ID(HEALTH_POTION); // ----
+    item_ID = game.item_manager.get_item_ID(SPELL); // ----
     game.window_manager.window[action_bar_ID].element[17].value    = item_ID;
     game.window_manager.window[action_bar_ID].element[17].quantity = 1;
     game.window_manager.window[action_bar_ID].element[17].texture.normal.image.load_image(game.item_manager.item[item_ID].image.path);
@@ -164,10 +164,10 @@ void game_class::init(void)
     // Add default items to the equipment menu
     int equipment_ID = game.window_manager.window_get_number(EQUIPMENT_UID);
     item_ID = 0;
-    item_ID = game.item_manager.get_item_ID(HEALTH_POTION); // ----
-    game.window_manager.window[equipment_ID].element[2].value    = item_ID;
-    game.window_manager.window[equipment_ID].element[2].quantity = 1;
-    game.window_manager.window[equipment_ID].element[2].texture.normal.image.load_image(game.item_manager.item[item_ID].image.path);
+    item_ID = game.item_manager.get_item_ID(SPELL); // ----
+    game.window_manager.window[equipment_ID].element[1].value    = item_ID;
+    game.window_manager.window[equipment_ID].element[1].quantity = 1;
+    game.window_manager.window[equipment_ID].element[1].texture.normal.image.load_image(game.item_manager.item[item_ID].image.path);
 };
 
 void game_class::reload_textures(void)
