@@ -26,7 +26,7 @@
 #ifndef BACKGROUND_H
 #define BACKGROUND_H
 
-#include "textures.hpp"
+#include "texture_manager.hpp"
 #include <string>
 
 #define BOUNCE  1
@@ -41,8 +41,8 @@ class background_class
         struct layer_type
         {
             bool  active;
-            texture_class   image;
-            std::string     image_path;
+            texture_type    *image;
+            std::string      image_path;
             int   dir_x;
             int   dir_y;
             float pos_x;
