@@ -89,7 +89,7 @@ void setup_equipment_window(int UID)
     game.window_manager.window[window_number].title_bar.position.y    = game.window_manager.window[window_number].position.y+(game.window_manager.window[window_number].size.y/2.0f)-(game.window_manager.window[window_number].title_bar.size.y/2.0f);
 
     // ---------------------------- Setup window elements ----------------------------------------------------
-    game.window_manager.window[window_number].number_of_elements = 9;
+    game.window_manager.window[window_number].number_of_elements = 10;
     game.window_manager.window[window_number].element = new window_element_class[game.window_manager.window[window_number].number_of_elements];
     element_number = 0; //--- Close button ---
     game.window_manager.window[window_number].element[element_number].window_UID                = game.window_manager.window[window_number].UID;
@@ -265,6 +265,26 @@ void setup_equipment_window(int UID)
     game.window_manager.window[window_number].element[element_number].size.x                      = 0.125f;
     game.window_manager.window[window_number].element[element_number].size.y                      = 0.200f;
     game.window_manager.window[window_number].element[element_number].position.x                  = game.window_manager.window[window_number].position.x-(game.window_manager.window[window_number].size.y/8.85f);
+    game.window_manager.window[window_number].element[element_number].position.y                  = game.window_manager.window[window_number].position.y-(game.window_manager.window[window_number].size.y/3.45f);
+    game.window_manager.window[window_number].element[element_number].sound                       = game.window_manager.window[window_number].sound;
+    game.window_manager.window[window_number].element[element_number].sound.on_click.enabled      = false;
+    game.window_manager.window[window_number].element[element_number].sound.on_mouse_over.enabled = false;
+    game.window_manager.window[window_number].element[element_number].mouse_delay.maximum         = 30;
+    game.window_manager.window[window_number].element[element_number].font                        = game.window_manager.window[window_number].font;
+    element_number = 9; //--- Gloves
+    game.window_manager.window[window_number].element[element_number].window_UID                  = game.window_manager.window[window_number].UID;
+    game.window_manager.window[window_number].element[element_number].element_UID                 = element_number;
+    game.window_manager.window[window_number].element[element_number].title.text                  = "";
+    game.window_manager.window[window_number].element[element_number].title.enabled               = false;
+    game.window_manager.window[window_number].element[element_number].dragable                    = true;
+    game.window_manager.window[window_number].element[element_number].active                      = true;
+    game.window_manager.window[window_number].element[element_number].type                        = ITEM;
+    game.window_manager.window[window_number].element[element_number].zoom.enabled                = false;
+    game.window_manager.window[window_number].element[element_number].value                       = -1;
+    game.window_manager.window[window_number].element[element_number].color                       = game.window_manager.window[window_number].color;
+    game.window_manager.window[window_number].element[element_number].size.x                      = 0.125f;
+    game.window_manager.window[window_number].element[element_number].size.y                      = 0.200f;
+    game.window_manager.window[window_number].element[element_number].position.x                  = game.window_manager.window[window_number].position.x+(game.window_manager.window[window_number].size.y/8.80f);
     game.window_manager.window[window_number].element[element_number].position.y                  = game.window_manager.window[window_number].position.y-(game.window_manager.window[window_number].size.y/3.45f);
     game.window_manager.window[window_number].element[element_number].sound                       = game.window_manager.window[window_number].sound;
     game.window_manager.window[window_number].element[element_number].sound.on_click.enabled      = false;
