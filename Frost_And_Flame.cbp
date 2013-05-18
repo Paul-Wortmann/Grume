@@ -207,6 +207,8 @@
 		<Unit filename="source/core/savegame.hpp" />
 		<Unit filename="source/core/sound.cpp" />
 		<Unit filename="source/core/sound.hpp" />
+		<Unit filename="source/core/texture_manager.cpp" />
+		<Unit filename="source/core/texture_manager.hpp" />
 		<Unit filename="source/core/textures.cpp" />
 		<Unit filename="source/core/textures.hpp" />
 		<Unit filename="source/core/timer.cpp" />
@@ -232,6 +234,7 @@
 		<Unit filename="source/save_data.hpp" />
 		<Unit filename="source/spells.cpp" />
 		<Unit filename="source/spells.hpp" />
+		<Unit filename="source/texture_manager.hpp" />
 		<Extensions>
 			<code_completion />
 			<envvars />

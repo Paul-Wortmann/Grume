@@ -20,18 +20,11 @@ Starting Game...
  
 # ---------------------------------------------- #
  
-Drag from - W - 6 - E - 1 Drag to - W - 1 - E - 1
-Drag from - W - 6 - E - 2 Drag to - W - 1 - E - 1
-Drag from - W - 6 - E - 2 Drag to - W - 6 - E - 1
-Drag from - W - 6 - E - 1 Drag to - W - 6 - E - 2
-Drag from - W - 6 - E - 2 Drag to - W - 6 - E - 1
-Drag from - W - 6 - E - 1 Drag to - W - 6 - E - 2
-Drag from - W - 6 - E - 2 Drag to - W - 6 - E - 1
-Drag from - W - 6 - E - 1 Drag to - W - 6 - E - 2
-Drag from - W - 6 - E - 2 Drag to - W - 6 - E - 1
-Drag from - W - 6 - E - 1 Drag to - W - 6 - E - 2
-Drag from - W - 6 - E - 2 Drag to - W - 6 - E - 1
-Drag from - W - 6 - E - 2 Drag to - W - 6 - E - 1
+Unable to process event - 1301 - UID - 3
+Unable to process event - 1101 - UID - 3
+Unable to process event - 1201 - UID - 3
+Unable to process event - 1101 - UID - 3
+Unable to process event - 701 - UID - 6
  
 # ---------------------------------------------- #
  
