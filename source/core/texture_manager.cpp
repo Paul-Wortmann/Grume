@@ -34,8 +34,13 @@ texture_manager_class::texture_manager_class(void)
 
 texture_manager_class::~texture_manager_class(void)
 {
-    delete [] root;
-    delete [] last;
+    //delete [] root;
+    //delete [] last;
+};
+
+texture_type *texture_manager_class::add_texture(std::string file_name)
+{
+    return(texture_manager_class::add_texture(file_name,false));
 };
 
 texture_type *texture_manager_class::add_texture(std::string file_name, bool is_sprite_sheet)
