@@ -26,18 +26,19 @@
 #define GAME_H
 
 #include "core/core.hpp"
-#include "core/savegame.hpp"
-#include "item_manager.hpp"
-#include "language.hpp"
-#include "core/textures.hpp"
+#include "core/map_2D.hpp"
 #include "core/music.hpp"
-#include "player.hpp"
-#include "npc.hpp"
-#include "spells.hpp"
-#include "UI/window_manager.hpp"
+#include "core/savegame.hpp"
+#include "core/textures.hpp"
+#include "core/types.hpp"
 #include "UI/loading_screen.hpp"
 #include "UI/UI.hpp"
-#include "core/map_2D.hpp"
+#include "UI/window_manager.hpp"
+#include "item_manager.hpp"
+#include "language.hpp"
+#include "npc.hpp"
+#include "player.hpp"
+#include "spells.hpp"
 
 #define STATE_QUIT 0
 #define STATE_MENU 1
@@ -51,11 +52,17 @@ struct zoom_type
     float            speed;
 };
 
+struct rumble_type
+{
+    f2_type counter;
+};
+
 class game_class
 {
     private:
     public:
         int                  test; // ---- DELETE ME -----------
+        rumble_type          rumble;
         bool                 debug;
         int                  event;
         int                  state;

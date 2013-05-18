@@ -123,7 +123,7 @@ bool texture_class::load_spritesheet(std::string file_name, int width_set, int h
     texture_class::height     = height_set;
     int             frames_x;
     int             frames_y;
-    int             frame_number   = 0;
+    int             frame_count    = 0;
     int             num_sprites    = 0;
     SDL_Surface    *sprite_sheet   = NULL;
     SDL_Surface    *temp_surface   = NULL;
@@ -165,14 +165,14 @@ bool texture_class::load_spritesheet(std::string file_name, int width_set, int h
                 {
                     for(int x_count = 0; x_count < texture_class::width-1; x_count++)
                     {
-                        out_pixels[out_pixel_count] = in_pixels[((sprite_sheet->w*y_count)+(((frame_number)*(texture_class::width))+x_count))];
+                        out_pixels[out_pixel_count] = in_pixels[((sprite_sheet->w*y_count)+(((frame_count)*(texture_class::width))+x_count))];
                         out_pixel_count++;
                     }
                 }
                 if(SDL_MUSTLOCK(sprite_sheet)) SDL_UnlockSurface(sprite_sheet);
-                texture_class::frame[frame_number].active = true;
-                glGenTextures( 1, &texture_class::frame[frame_number].data);
-                glBindTexture( GL_TEXTURE_2D, texture_class::frame[frame_number].data);
+                texture_class::frame[frame_count].active = true;
+                glGenTextures( 1, &texture_class::frame[frame_count].data);
+                glBindTexture( GL_TEXTURE_2D, texture_class::frame[frame_count].data);
                 glEnable(GL_BLEND);
                 glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
                 glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
@@ -182,7 +182,7 @@ bool texture_class::load_spritesheet(std::string file_name, int width_set, int h
                 glTexParameteri (GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
                 glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
                 glTexImage2D( GL_TEXTURE_2D, 0, number_of_colors, temp_surface->w, temp_surface->h, 0, texture_format, GL_UNSIGNED_BYTE, temp_surface->pixels );
-                frame_number++;
+                frame_count++;
             }
         }
     }
@@ -229,13 +229,13 @@ void texture_class::process(void)
 
 void texture_class::draw(bool rumble_set, float pos_x, float pos_y, float pos_z, float width_set, float height_set)
 {
-/*
     if (rumble_set)
     {
-        pos_x += game_o.rumble.counter_x;
-        pos_y += game_o.rumble.counter_y;
+        game.rumble.counter.x = 0.0f;
+        game.rumble.counter.y = 0.0f;
+        pos_x += game.rumble.counter.x;
+        pos_y += game.rumble.counter.y;
     }
-*/
     if (sizeof(texture_class::frame[texture_class::frame_number].data) > 0) // Only render if data is available.
     {
         int temp_angle;
@@ -282,18 +282,18 @@ void texture_class::draw(bool rumble_set, float pos_x, float pos_y, float pos_z,
     glColor4f (1.0f, 1.0f, 1.0f,1.0f);
 };
 
-void texture_class::draw(bool rumble_set, float pos_x, float pos_y, float pos_z, float width_set, float height_set, float angle_set, float red, float green, float blue, float alpha, int frame)
+void texture_class::draw(bool rumble_set, float pos_x, float pos_y, float pos_z, float width_set, float height_set, float angle_set, float red, float green, float blue, float alpha, int frame_set)
 {
-    texture_class::frame_number = frame;
+    texture_class::frame_number = frame_set;
     texture_class::angle        = angle_set;
     glColor4f (red, green, blue, alpha);
     texture_class::draw(rumble_set,pos_x,pos_y,pos_z,width_set,height_set);
     glColor4f (1.0f, 1.0f, 1.0f,1.0f);
 };
 
-void texture_class::draw(bool rumble_set, float pos_x, float pos_y, float pos_z, float width_set, float height_set, float angle_set, int frame)
+void texture_class::draw(bool rumble_set, float pos_x, float pos_y, float pos_z, float width_set, float height_set, float angle_set, int frame_set)
 {
-    texture_class::frame_number = frame;
+    texture_class::frame_number = frame_set;
     texture_class::angle        = angle_set;
     texture_class::draw(rumble_set,pos_x,pos_y,pos_z,width_set,height_set);
 };
