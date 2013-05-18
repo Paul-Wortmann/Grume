@@ -39,38 +39,38 @@
     if (rs232_class::port_open) rs232_class::close_port();
 };
 
-void  rs232_class::set_port       (int port_number, int baud_rate, int stop_bits, int data_bits, int parity)
+void  rs232_class::set_port       (int port_number_set, int baud_rate_set, int stop_bits_set, int data_bits_set, int parity_set)
 {
-    rs232_class::port_number = port_number;
-    rs232_class::baud_rate   = baud_rate;
-    rs232_class::stop_bits   = stop_bits;
-    rs232_class::data_bits   = data_bits;
-    rs232_class::parity      = parity;
+    rs232_class::port_number = port_number_set;
+    rs232_class::baud_rate   = baud_rate_set;
+    rs232_class::stop_bits   = stop_bits_set;
+    rs232_class::data_bits   = data_bits_set;
+    rs232_class::parity      = parity_set;
 };
 
-void  rs232_class::set_port_number(int port_number)
+void  rs232_class::set_port_number(int port_number_set)
 {
-    rs232_class::port_number = port_number;
+    rs232_class::port_number = port_number_set;
 };
 
-void  rs232_class::set_baud_rate  (int baud_rate)
+void  rs232_class::set_baud_rate  (int baud_rate_set)
 {
-    rs232_class::baud_rate   = baud_rate;
+    rs232_class::baud_rate   = baud_rate_set;
 };
 
-void  rs232_class::set_stop_bits  (int stop_bits)
+void  rs232_class::set_stop_bits  (int stop_bits_set)
 {
-    rs232_class::stop_bits   = stop_bits;
+    rs232_class::stop_bits   = stop_bits_set;
 };
 
-void  rs232_class::set_data_bits  (int data_bits)
+void  rs232_class::set_data_bits  (int data_bits_set)
 {
-    rs232_class::data_bits   = data_bits;
+    rs232_class::data_bits   = data_bits_set;
 };
 
-void  rs232_class::set_parity     (int parity)
+void  rs232_class::set_parity     (int parity_set)
 {
-    rs232_class::parity      = parity;
+    rs232_class::parity      = parity_set;
 };
 
 bool  rs232_class::open_port      (void)

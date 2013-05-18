@@ -61,12 +61,12 @@ class rs232_class
     int   parity;
         rs232_class (void);
        ~rs232_class (void);
-    void  set_port       (int port_number, int baud_rate, int stop_bits, int data_bits, int parity);
-    void  set_port_number(int port_number);
-    void  set_baud_rate  (int baud_rate);
-    void  set_stop_bits  (int stop_bits);
-    void  set_data_bits  (int data_bits);
-    void  set_parity     (int parity);
+    void  set_port       (int port_number_set, int baud_rate_set, int stop_bits_set, int data_bits_set, int parity_set);
+    void  set_port_number(int port_number_set);
+    void  set_baud_rate  (int baud_rate_set);
+    void  set_stop_bits  (int stop_bits_set);
+    void  set_data_bits  (int data_bits_set);
+    void  set_parity     (int parity_set);
     bool  open_port      (void);
     bool  close_port     (void);
 /*
