@@ -70,7 +70,7 @@ class vertex_2f_class
         bool  operator==( vertex_2f_class b ) { return x == b.x && y == b.y; }
         bool  operator!=( vertex_2f_class b ) { return x != b.x || y != b.y; }
 };
-
+/*
 class body_2D_class
 {
     private:
@@ -96,7 +96,8 @@ class body_2D_class
        ~body_2D_class(void);
         void            process(void);
 };
-
+*/
+/*
 class world_class
 {
     private:
@@ -116,20 +117,22 @@ class world_class
                                   world_class            (void);
                                  ~world_class            (void);
 };
-
+*/
 class physics_class
 {
     private:
     public:
         float               sin_table[360];
         float               cos_table[360];
+
                             physics_class            (void);
                            ~physics_class            (void);
-        bool                collision_detection      (body_2D_class body_1, body_2D_class  body_2);
-        bool                collision_detection      (body_2D_class body_1, world_class    world_1);
-        void                collision_responce       (body_2D_class body_1, body_2D_class  body_2);
-        body_2D_class       collision_responce       (body_2D_class body_1, world_class    world_1);
-        body_2D_class       process_body             (body_2D_class body_1);
+        //bool                collision_detection      (body_2D_class body_1, body_2D_class  body_2);
+        //bool                collision_detection      (body_2D_class body_1, world_class    world_1);
+        //void                collision_responce       (body_2D_class body_1, body_2D_class  body_2);
+        //body_2D_class       collision_responce       (body_2D_class body_1, world_class    world_1);
+        //body_2D_class       process_body             (body_2D_class body_1);
+
         bool                cube_collision           (float x1, float y1, float z1, float w1, float h1, float d1, float x2, float y2, float z2, float w2, float h2, float d2);
         bool                quadrangle_collision     (float x1, float y1, float w1, float h1, float x2, float y2, float w2, float h2);
         bool                circle_collision         (float x1, float y1, float r1, float x2, float y2, float r2);

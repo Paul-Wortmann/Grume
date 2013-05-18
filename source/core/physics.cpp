@@ -24,7 +24,7 @@
 
 #include "physics.hpp"
 #include <math.h>
-
+/*
 body_2D_class::body_2D_class         (void)
 {
     body_2D_class::world_ID                 =  0;
@@ -87,7 +87,7 @@ world_class::~world_class         (void)
 {
 
 };
-
+*/
 ///-----------------------------------------------------------------------------------------------------------------------
 
 physics_class::physics_class         (void)
@@ -100,7 +100,7 @@ physics_class::~physics_class         (void)
 {
 
 };
-
+/*
 bool physics_class::collision_detection (body_2D_class body_1, body_2D_class body_2)
 {
     switch (body_1.body_type)
@@ -193,7 +193,7 @@ bool physics_class::collision_detection      (body_2D_class body_1, world_class 
         (py+pr > (qy-(qh/2))) &&
         (py-pr < (qy+(qh/2)))) return(true);
     else return(false);
-/*
+/// --- comment out this
     bool            return_value        = false;
     int             number_of_vertecies = (int)(sizeof(world_1.vertex) / sizeof(world_1.vertex[0]));
     float           px                  = body_1.position.x;
@@ -212,9 +212,10 @@ bool physics_class::collision_detection      (body_2D_class body_1, world_class 
         if (((vy1>py-pr) != (vy2>py-pr)) && (px-pr < (vx2-vx1) * (py+pr-vy1) / (vy2-vy1) + vx1)) return_value = !return_value;
     }
     return(return_value);
-*/
+/// --- comment out this
 };
-
+*/
+/*
 body_2D_class physics_class::collision_responce       (body_2D_class body_1, world_class world_1)
 {
     int   temp_angle     = body_1.velocity.angle_deg();
@@ -247,7 +248,7 @@ body_2D_class physics_class::process_body             (body_2D_class body_1)
     }
     return (body_1);
 };
-
+*/
 //----------------------------------------------------------------------------------------------------------------
 
 bool  physics_class::cube_collision        (float x1, float y1, float z1, float w1, float h1, float d1, float x2, float y2, float z2, float w2, float h2, float d2)

@@ -47,7 +47,7 @@ struct cell_type
 class map_3D_class
 {
     public:
-        world_class        physics;
+        //world_class        physics;
         float              version;
         float              cell_spacing;
         float              cell_spacing_half;
