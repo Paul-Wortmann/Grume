@@ -119,6 +119,7 @@ void setup_equipment_window(int UID)
     game.window_manager.window[window_number].element[element_number].dragable                    = true;
     game.window_manager.window[window_number].element[element_number].active                      = true;
     game.window_manager.window[window_number].element[element_number].type                        = ITEM;
+    game.window_manager.window[window_number].element[element_number].sub_type                    = ITEM_NECK;
     game.window_manager.window[window_number].element[element_number].zoom.enabled                = false;
     game.window_manager.window[window_number].element[element_number].value                       = -1;
     game.window_manager.window[window_number].element[element_number].color                       = game.window_manager.window[window_number].color;
@@ -139,6 +140,7 @@ void setup_equipment_window(int UID)
     game.window_manager.window[window_number].element[element_number].dragable                    = true;
     game.window_manager.window[window_number].element[element_number].active                      = true;
     game.window_manager.window[window_number].element[element_number].type                        = ITEM;
+    game.window_manager.window[window_number].element[element_number].sub_type                    = ITEM_NECK;
     game.window_manager.window[window_number].element[element_number].zoom.enabled                = false;
     game.window_manager.window[window_number].element[element_number].value                       = -1;
     game.window_manager.window[window_number].element[element_number].color                       = game.window_manager.window[window_number].color;
@@ -159,6 +161,7 @@ void setup_equipment_window(int UID)
     game.window_manager.window[window_number].element[element_number].dragable                    = true;
     game.window_manager.window[window_number].element[element_number].active                      = true;
     game.window_manager.window[window_number].element[element_number].type                        = ITEM;
+    game.window_manager.window[window_number].element[element_number].sub_type                    = ITEM_RING;
     game.window_manager.window[window_number].element[element_number].zoom.enabled                = false;
     game.window_manager.window[window_number].element[element_number].value                       = -1;
     game.window_manager.window[window_number].element[element_number].color                       = game.window_manager.window[window_number].color;
@@ -179,6 +182,7 @@ void setup_equipment_window(int UID)
     game.window_manager.window[window_number].element[element_number].dragable                    = true;
     game.window_manager.window[window_number].element[element_number].active                      = true;
     game.window_manager.window[window_number].element[element_number].type                        = ITEM;
+    game.window_manager.window[window_number].element[element_number].sub_type                    = ITEM_RING;
     game.window_manager.window[window_number].element[element_number].zoom.enabled                = false;
     game.window_manager.window[window_number].element[element_number].value                       = -1;
     game.window_manager.window[window_number].element[element_number].color                       = game.window_manager.window[window_number].color;
@@ -199,6 +203,7 @@ void setup_equipment_window(int UID)
     game.window_manager.window[window_number].element[element_number].dragable                    = true;
     game.window_manager.window[window_number].element[element_number].active                      = true;
     game.window_manager.window[window_number].element[element_number].type                        = ITEM;
+    game.window_manager.window[window_number].element[element_number].sub_type                    = ITEM_RING;
     game.window_manager.window[window_number].element[element_number].zoom.enabled                = false;
     game.window_manager.window[window_number].element[element_number].value                       = -1;
     game.window_manager.window[window_number].element[element_number].color                       = game.window_manager.window[window_number].color;
@@ -219,6 +224,7 @@ void setup_equipment_window(int UID)
     game.window_manager.window[window_number].element[element_number].dragable                    = true;
     game.window_manager.window[window_number].element[element_number].active                      = true;
     game.window_manager.window[window_number].element[element_number].type                        = ITEM;
+    game.window_manager.window[window_number].element[element_number].sub_type                    = ITEM_RING;
     game.window_manager.window[window_number].element[element_number].zoom.enabled                = false;
     game.window_manager.window[window_number].element[element_number].value                       = -1;
     game.window_manager.window[window_number].element[element_number].color                       = game.window_manager.window[window_number].color;
@@ -239,6 +245,7 @@ void setup_equipment_window(int UID)
     game.window_manager.window[window_number].element[element_number].dragable                    = true;
     game.window_manager.window[window_number].element[element_number].active                      = true;
     game.window_manager.window[window_number].element[element_number].type                        = ITEM;
+    game.window_manager.window[window_number].element[element_number].sub_type                    = ITEM_HEAD;
     game.window_manager.window[window_number].element[element_number].zoom.enabled                = false;
     game.window_manager.window[window_number].element[element_number].value                       = -1;
     game.window_manager.window[window_number].element[element_number].color                       = game.window_manager.window[window_number].color;
@@ -259,6 +266,7 @@ void setup_equipment_window(int UID)
     game.window_manager.window[window_number].element[element_number].dragable                    = true;
     game.window_manager.window[window_number].element[element_number].active                      = true;
     game.window_manager.window[window_number].element[element_number].type                        = ITEM;
+    game.window_manager.window[window_number].element[element_number].sub_type                    = ITEM_FEET;
     game.window_manager.window[window_number].element[element_number].zoom.enabled                = false;
     game.window_manager.window[window_number].element[element_number].value                       = -1;
     game.window_manager.window[window_number].element[element_number].color                       = game.window_manager.window[window_number].color;
@@ -279,6 +287,7 @@ void setup_equipment_window(int UID)
     game.window_manager.window[window_number].element[element_number].dragable                    = true;
     game.window_manager.window[window_number].element[element_number].active                      = true;
     game.window_manager.window[window_number].element[element_number].type                        = ITEM;
+    game.window_manager.window[window_number].element[element_number].sub_type                    = ITEM_HAND;
     game.window_manager.window[window_number].element[element_number].zoom.enabled                = false;
     game.window_manager.window[window_number].element[element_number].value                       = -1;
     game.window_manager.window[window_number].element[element_number].color                       = game.window_manager.window[window_number].color;
@@ -299,6 +308,7 @@ void setup_equipment_window(int UID)
     game.window_manager.window[window_number].element[element_number].dragable                    = true;
     game.window_manager.window[window_number].element[element_number].active                      = true;
     game.window_manager.window[window_number].element[element_number].type                        = ITEM;
+    game.window_manager.window[window_number].element[element_number].sub_type                    = ITEM_BELT;
     game.window_manager.window[window_number].element[element_number].zoom.enabled                = false;
     game.window_manager.window[window_number].element[element_number].value                       = -1;
     game.window_manager.window[window_number].element[element_number].color                       = game.window_manager.window[window_number].color;
@@ -319,6 +329,7 @@ void setup_equipment_window(int UID)
     game.window_manager.window[window_number].element[element_number].dragable                    = true;
     game.window_manager.window[window_number].element[element_number].active                      = true;
     game.window_manager.window[window_number].element[element_number].type                        = ITEM;
+    game.window_manager.window[window_number].element[element_number].sub_type                    = ITEM_BODY;
     game.window_manager.window[window_number].element[element_number].zoom.enabled                = false;
     game.window_manager.window[window_number].element[element_number].value                       = -1;
     game.window_manager.window[window_number].element[element_number].color                       = game.window_manager.window[window_number].color;
@@ -339,6 +350,7 @@ void setup_equipment_window(int UID)
     game.window_manager.window[window_number].element[element_number].dragable                    = true;
     game.window_manager.window[window_number].element[element_number].active                      = true;
     game.window_manager.window[window_number].element[element_number].type                        = ITEM;
+    game.window_manager.window[window_number].element[element_number].sub_type                    = ITEM_SHIELD;
     game.window_manager.window[window_number].element[element_number].zoom.enabled                = false;
     game.window_manager.window[window_number].element[element_number].value                       = -1;
     game.window_manager.window[window_number].element[element_number].color                       = game.window_manager.window[window_number].color;
@@ -359,6 +371,7 @@ void setup_equipment_window(int UID)
     game.window_manager.window[window_number].element[element_number].dragable                    = true;
     game.window_manager.window[window_number].element[element_number].active                      = true;
     game.window_manager.window[window_number].element[element_number].type                        = ITEM;
+    game.window_manager.window[window_number].element[element_number].sub_type                    = ITEM_WEAPON;
     game.window_manager.window[window_number].element[element_number].zoom.enabled                = false;
     game.window_manager.window[window_number].element[element_number].value                       = -1;
     game.window_manager.window[window_number].element[element_number].color                       = game.window_manager.window[window_number].color;
@@ -403,6 +416,22 @@ void process_equipment_window(int window_number)
 };
 
 
+/*
 
+#define ITEM_NONE       30
+#define ITEM_RING       31
+#define ITEM_NECK       32
+#define ITEM_HEAD       33
+#define ITEM_HAND       34
+#define ITEM_FEET       35
+#define ITEM_BODY       36
+#define ITEM_SHIELD     37
+#define ITEM_WEAPON     38
+
+#define ITEM_POTION     39
+#define ITEM_SPELL      40
+#define ITEM_SPELL_BOOK 41
+
+*/
 
 
