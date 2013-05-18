@@ -111,7 +111,6 @@ void  init_items(void) // Initialize hard-coded default items, such as health po
         game.item_manager.item[item_number].effect[0].type         = EFFECT_MOD_HEALTH;
         game.item_manager.item[item_number].effect[0].value        = 50.0f;
         game.item_manager.item[item_number].image.path             = "data/textures/UI/icons/potions/potion_23.png";
-        game.item_manager.item[item_number].image.load_image(game.item_manager.item[item_number].image.path);
     }
     item_number = game.item_manager.get_new_ID();
     if (item_number > -1) // Mana potion
@@ -128,7 +127,6 @@ void  init_items(void) // Initialize hard-coded default items, such as health po
         game.item_manager.item[item_number].effect[0].type         = EFFECT_MOD_MANA;
         game.item_manager.item[item_number].effect[0].value        = 50.0f;
         game.item_manager.item[item_number].image.path             = "data/textures/UI/icons/potions/potion_22.png";
-        game.item_manager.item[item_number].image.load_image(game.item_manager.item[item_number].image.path);
     }
     item_number = game.item_manager.get_new_ID();
     if (item_number > -1) // test spell 1
@@ -147,7 +145,6 @@ void  init_items(void) // Initialize hard-coded default items, such as health po
         game.item_manager.item[item_number].effect[1].type         = EFFECT_MOD_HEALTH;
         game.item_manager.item[item_number].effect[1].value        = 50.0f;
         game.item_manager.item[item_number].image.path             = "data/textures/test_1.png";
-        game.item_manager.item[item_number].image.load_image(game.item_manager.item[item_number].image.path);
     }
     //------------------------------------------------------------------------------------------------------------
 };

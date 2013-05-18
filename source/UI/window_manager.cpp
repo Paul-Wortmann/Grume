@@ -443,8 +443,8 @@ void swap_elements(int window_src, int element_src, int window_dst, int element_
             game.window_manager.window[window_src].element[element_src].quantity = game.window_manager.window[window_dst].element[element_dst].quantity;
             game.window_manager.window[window_dst].element[element_dst].value    = tmp_value;
             game.window_manager.window[window_dst].element[element_dst].quantity = tmp_quantity;
-            game.window_manager.window[window_src].element[element_src].texture.normal.image.load_image(game.item_manager.item[(int)game.window_manager.window[window_src].element[element_src].value].image.path.c_str());
-            game.window_manager.window[window_dst].element[element_dst].texture.normal.image.load_image(game.item_manager.item[(int)game.window_manager.window[window_dst].element[element_dst].value].image.path.c_str());
+            game.window_manager.window[window_src].element[element_src].texture.normal.image.load_image(game.window_manager.window[window_src].element[element_src].texture.normal.image.path.c_str());
+            game.window_manager.window[window_dst].element[element_dst].texture.normal.image.load_image(game.window_manager.window[window_src].element[element_src].texture.normal.image.path.c_str());
         }
     }
 };
