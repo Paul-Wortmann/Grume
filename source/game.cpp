@@ -110,63 +110,28 @@ void game_class::init(void)
     item_ID = game.item_manager.get_item_ID(HEALTH_POTION); // Health Potion
     game.window_manager.window[inventory_ID].element[element_number].value    = item_ID;
     game.window_manager.window[inventory_ID].element[element_number].quantity = 1;
-    game.window_manager.window[inventory_ID].element[element_number].texture.normal.image.path = game.item_manager.item[item_ID].image.path;
+    game.window_manager.window[inventory_ID].element[element_number].texture.normal.image.path = game.item_manager.item[item_ID].image_path;
     game.window_manager.window[inventory_ID].element[element_number].texture.normal.image.load_image(game.window_manager.window[inventory_ID].element[element_number].texture.normal.image.path);
     element_number = 2;
     item_ID = game.item_manager.get_item_ID(MANA_POTION); // Mana Potion
     game.window_manager.window[inventory_ID].element[element_number].value = item_ID;
     game.window_manager.window[inventory_ID].element[element_number].quantity = 4;
-    game.window_manager.window[inventory_ID].element[element_number].texture.normal.image.path = game.item_manager.item[item_ID].image.path;
+    game.window_manager.window[inventory_ID].element[element_number].texture.normal.image.path = game.item_manager.item[item_ID].image_path;
     game.window_manager.window[inventory_ID].element[element_number].texture.normal.image.load_image(game.window_manager.window[inventory_ID].element[element_number].texture.normal.image.path);
 
     // Add default items to the action bar
     int action_bar_ID = game.window_manager.window_get_number(ACTIONBAR_UID);
-    /*
-    item_ID = 0;
-    item_ID = game.item_manager.get_item_ID(SPELL); // Spell
-    game.window_manager.window[action_bar_ID].element[8].value    = item_ID;
-    game.window_manager.window[action_bar_ID].element[8].quantity = 1;
-    game.window_manager.window[action_bar_ID].element[8].texture.normal.image.load_image(game.item_manager.item[item_ID].image.path);
-    item_ID = game.item_manager.get_item_ID(SPELL); // Spell
-    game.window_manager.window[action_bar_ID].element[9].value    = item_ID;
-    game.window_manager.window[action_bar_ID].element[9].quantity = 1;
-    game.window_manager.window[action_bar_ID].element[9].texture.normal.image.load_image(game.item_manager.item[item_ID].image.path);
-    item_ID = game.item_manager.get_item_ID(SPELL); // Spell
-    game.window_manager.window[action_bar_ID].element[10].value    = item_ID;
-    game.window_manager.window[action_bar_ID].element[10].quantity = 1;
-    game.window_manager.window[action_bar_ID].element[10].texture.normal.image.load_image(game.item_manager.item[item_ID].image.path);
-    item_ID = game.item_manager.get_item_ID(SPELL); // Spell
-    game.window_manager.window[action_bar_ID].element[11].value    = item_ID;
-    game.window_manager.window[action_bar_ID].element[11].quantity = 1;
-    game.window_manager.window[action_bar_ID].element[11].texture.normal.image.load_image(game.item_manager.item[item_ID].image.path);
-    item_ID = game.item_manager.get_item_ID(SPELL); // Spell
-    game.window_manager.window[action_bar_ID].element[12].value    = item_ID;
-    game.window_manager.window[action_bar_ID].element[12].quantity = 1;
-    game.window_manager.window[action_bar_ID].element[12].texture.normal.image.load_image(game.item_manager.item[item_ID].image.path);
-    item_ID = game.item_manager.get_item_ID(SPELL); // Spell
-    game.window_manager.window[action_bar_ID].element[13].value    = item_ID;
-    game.window_manager.window[action_bar_ID].element[13].quantity = 1;
-    game.window_manager.window[action_bar_ID].element[13].texture.normal.image.load_image(game.item_manager.item[item_ID].image.path);
-    item_ID = game.item_manager.get_item_ID(SPELL); // Spell
-    game.window_manager.window[action_bar_ID].element[14].value    = item_ID;
-    game.window_manager.window[action_bar_ID].element[14].quantity = 1;
-    game.window_manager.window[action_bar_ID].element[14].texture.normal.image.load_image(game.item_manager.item[item_ID].image.path);
-    item_ID = game.item_manager.get_item_ID(SPELL); // Spell
-    game.window_manager.window[action_bar_ID].element[15].value    = item_ID;
-    game.window_manager.window[action_bar_ID].element[15].quantity = 1;
-    game.window_manager.window[action_bar_ID].element[15].texture.normal.image.load_image(game.item_manager.item[item_ID].image.path);
-*/
     element_number = 16;
     item_ID = game.item_manager.get_item_ID(SPELL); // ----
     game.window_manager.window[action_bar_ID].element[element_number].value    = item_ID;
     game.window_manager.window[action_bar_ID].element[element_number].quantity = 1;
-    game.window_manager.window[action_bar_ID].element[element_number].texture.normal.image.path = game.item_manager.item[item_ID].image.path;
+    game.window_manager.window[action_bar_ID].element[element_number].texture.normal.image.path = game.item_manager.item[item_ID].image_path;
     game.window_manager.window[action_bar_ID].element[element_number].texture.normal.image.load_image(game.window_manager.window[action_bar_ID].element[element_number].texture.normal.image.path);
     element_number = 17;
     item_ID = game.item_manager.get_item_ID(SPELL); // ----
     game.window_manager.window[action_bar_ID].element[element_number].value    = item_ID;
     game.window_manager.window[action_bar_ID].element[element_number].quantity = 1;
-    game.window_manager.window[action_bar_ID].element[element_number].texture.normal.image.path = game.item_manager.item[item_ID].image.path;
+    game.window_manager.window[action_bar_ID].element[element_number].texture.normal.image.path = game.item_manager.item[item_ID].image_path;
     game.window_manager.window[action_bar_ID].element[element_number].texture.normal.image.load_image(game.window_manager.window[action_bar_ID].element[element_number].texture.normal.image.path);
 
     // Add default items to the equipment menu
@@ -176,7 +141,7 @@ void game_class::init(void)
     item_ID = game.item_manager.get_item_ID(SPELL); // ----
     game.window_manager.window[equipment_ID].element[element_number].value    = item_ID;
     game.window_manager.window[equipment_ID].element[element_number].quantity = 1;
-    game.window_manager.window[equipment_ID].element[element_number].texture.normal.image.path = game.item_manager.item[item_ID].image.path;
+    game.window_manager.window[equipment_ID].element[element_number].texture.normal.image.path = game.item_manager.item[item_ID].image_path;
     game.window_manager.window[equipment_ID].element[element_number].texture.normal.image.load_image(game.window_manager.window[equipment_ID].element[element_number].texture.normal.image.path);
 };
 

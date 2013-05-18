@@ -946,7 +946,7 @@
 	"misc.hpp"
 	"../game.hpp"
 
-1368868774 source:c:\_git_\frost_and_flame\source\game.cpp
+1368893335 source:c:\_git_\frost_and_flame\source\game.cpp
 	"core/map_2D.hpp"
 	"game.hpp"
 
@@ -1142,11 +1142,11 @@
 1357028938 c:\_git_\frost_and_flame\source\ui\loading_screen.hpp
 	<string>
 
-1357105704 source:c:\_git_\frost_and_flame\source\ui\loading_screen.cpp
+1368893456 source:c:\_git_\frost_and_flame\source\ui\loading_screen.cpp
 	<SDL/SDL.h>
 	<GL/gl.h>
 	"loading_screen.hpp"
-	"../core/textures.hpp"
+	"../core/texture_manager.hpp"
 	"../game.hpp"
 
 1357028938 extures.hpp"
@@ -1719,11 +1719,11 @@
 1357028525 source:/host/_git_/Frost_and_Flame/source/core/rs232.cpp
 	"rs232.hpp"
 
-1368868575 source:c:\_git_\frost_and_flame\source\item_manager.cpp
+1368892920 source:c:\_git_\frost_and_flame\source\item_manager.cpp
 	"item_manager.hpp"
 	"game.hpp"
 
-1368370487 c:\_git_\frost_and_flame\source\item_manager.hpp
+1368892920 c:\_git_\frost_and_flame\source\item_manager.hpp
 	<string>
 	"core/textures.hpp"
 
@@ -1742,11 +1742,11 @@
 
 1367504905 c:\_git_\frost_and_flame\source\core\types.hpp
 
-1368886654 source:c:\_git_\frost_and_flame\source\core\texture_manager.cpp
+1368893424 source:c:\_git_\frost_and_flame\source\core\texture_manager.cpp
 	"texture_manager.hpp"
 	"../game.hpp"
 
-1368886706 c:\_git_\frost_and_flame\source\core\texture_manager.hpp
+1368893424 c:\_git_\frost_and_flame\source\core\texture_manager.hpp
 	<GL/gl.h>
 	<SDL/SDL.h>
 	<SDL/SDL_image.h>

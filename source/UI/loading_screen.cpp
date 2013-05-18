@@ -25,21 +25,18 @@
 #include <SDL/SDL.h>
 #include <GL/gl.h>
 #include "loading_screen.hpp"
-#include "../core/textures.hpp"
+#include "../core/texture_manager.hpp"
 #include "../game.hpp"
 
 extern game_class game;
 
 void loading_screen_class::display(std::string file_name)
 {
+    texture_type* loading_screen_texture;
+    loading_screen_texture = game.texture_manager.add_texture(file_name.c_str());
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     SDL_GL_SwapBuffers();
-    texture_class loading_screen;
-    loading_screen.load_image(file_name);
-    loading_screen.draw(false,0.0f,0.0f,0.9f,2.0f,2.0f);
+    game.texture_manager.draw(loading_screen_texture,false,0.0f,0.0f,0.9f,2.0f,2.0f);
     SDL_GL_SwapBuffers();
-    if (loading_screen.frame[0].data) delete &loading_screen.frame[0].data; // Make sure we free the resource once it is no longer needed!
+    if (loading_screen_texture->frame[0].data) delete &loading_screen_texture->frame[0].data; // Make sure we free the resource once it is no longer needed!
 };
-
-
-
