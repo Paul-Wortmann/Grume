@@ -128,6 +128,7 @@ window_element_class::window_element_class(void)
     window_element_class::state                          = NORMAL;
     window_element_class::selected                       = false;
     window_element_class::type                           = BUTTON;
+    window_element_class::sub_type                       = ITEM_NONE;
     window_element_class::quantity                       = 1;
     window_element_class::value                          = 0.0f;
     window_element_class::value_max                      = 0.0f;

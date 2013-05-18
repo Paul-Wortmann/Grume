@@ -43,20 +43,35 @@
 #define EVENT_BUTTON_MULTIPLIER   100
 #define EVENT_WINDOW_STACK_SORT   10000
 
-#define DISABLED       0
-#define NORMAL         1
-#define HIGHLIGHTED    2
+#define DISABLED        0
+#define NORMAL          1
+#define HIGHLIGHTED     2
 
-#define BUTTON         3
-#define TEXTLABEL      4
-#define IMAGE          5
-#define SLIDER         6
-#define BAR            7
-#define TOGGLE         8
-#define CHECKBOX       9
-#define DROPDOWN       10
-#define SELECTION      11
-#define ITEM           12
+#define BUTTON          3
+#define TEXTLABEL       4
+#define IMAGE           5
+#define SLIDER          6
+#define BAR             7
+#define TOGGLE          8
+#define CHECKBOX        9
+#define DROPDOWN        10
+#define SELECTION       11
+#define ITEM            12
+
+#define ITEM_NONE       30
+#define ITEM_RING       31
+#define ITEM_NECK       32
+#define ITEM_HEAD       33
+#define ITEM_HAND       34
+#define ITEM_FEET       35
+#define ITEM_BODY       36
+#define ITEM_BELT       37
+#define ITEM_SHIELD     38
+#define ITEM_WEAPON     39
+
+#define ITEM_POTION     40
+#define ITEM_SPELL      41
+#define ITEM_SPELL_BOOK 42
 
 #define MOUSE_OVER_MAP 65535
 
@@ -175,6 +190,7 @@ class window_element_class
         int                     state;
         bool                    selected;
         int                     type;
+        int                     sub_type;
         int                     quantity;
         float                   value;
         float                   value_max;
