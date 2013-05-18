@@ -97,7 +97,7 @@ extern "C" int main(int argc, char** argv)
     game.core.log.file_write("Initializing font system...");
     TTF_Init();
 //  --- resources ---
-    game.loading_screen.display("data/loading_screen.png");
+    //game.loading_screen.display("data/loading_screen.png");
     game.core.log.file_write("Loading resources....");
     game.window_manager.cursor.normal_arrow.image_path = "data/textures/UI/cursors/default.png";
     game.window_manager.cursor.normal_arrow.image.load_image(game.window_manager.cursor.normal_arrow.image_path);

@@ -38,5 +38,5 @@ void loading_screen_class::display(std::string file_name)
     SDL_GL_SwapBuffers();
     game.texture_manager.draw(loading_screen_texture,false,0.0f,0.0f,0.9f,2.0f,2.0f);
     SDL_GL_SwapBuffers();
-    if (loading_screen_texture->frame[0].data) delete &loading_screen_texture->frame[0].data; // Make sure we free the resource once it is no longer needed!
+    //if (loading_screen_texture->frame[0].data) delete &loading_screen_texture->frame[0].data; // Make sure we free the resource once it is no longer needed!
 };

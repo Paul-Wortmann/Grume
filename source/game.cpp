@@ -36,6 +36,7 @@ game_class::game_class(void)
 
 void game_class::init(void)
 {
+    game.loading_screen.display("data/loading_screen.png");
     game_class::debug = false;
     glDisable(GL_DEPTH_TEST);
     //--- initial state of the background ---
