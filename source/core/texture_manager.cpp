@@ -38,7 +38,12 @@ texture_manager_class::~texture_manager_class(void)
     delete [] last;
 };
 
-texture_type *texture_manager_class::add_texture(std::string file_name)
+texture_type *texture_manager_class::add_texture(std::string file_name, bool is_sprite_sheet)
+{
+    return(texture_manager_class::add_texture(file_name,is_sprite_sheet,DEFAULT_FRAME_WIDTH,DEFAULT_FRAME_HEIGHT));
+};
+
+texture_type *texture_manager_class::add_texture(std::string file_name, bool is_sprite_sheet, int width_set, int height_set)
 {
     if (texture_manager_class::number_of_textures == 0)
     {
@@ -70,10 +75,10 @@ texture_type *texture_manager_class::add_texture(std::string file_name)
         texture_manager_class::last->next = new texture_type;
         texture_manager_class::last->next = NULL;
     }
-    texture_manager_class::last->loaded             = false;
+    texture_manager_class::last->sprite_sheet       = is_sprite_sheet;
     texture_manager_class::last->path               = file_name.c_str();
-    texture_manager_class::last->width              = DEFAULT_FRAME_WIDTH;
-    texture_manager_class::last->height             = DEFAULT_FRAME_HEIGHT;
+    texture_manager_class::last->width              = width_set;
+    texture_manager_class::last->height             = height_set;
     texture_manager_class::last->rotate_able        = false;
     texture_manager_class::last->rotate_speed       = 0.0f;
     texture_manager_class::last->rotate_direction   = 0;
@@ -83,6 +88,8 @@ texture_type *texture_manager_class::add_texture(std::string file_name)
     texture_manager_class::last->frame_delay_max    = 0.0f;
     texture_manager_class::last->frame_number       = 0;
     texture_manager_class::last->frame_max          = 0;
+    if (is_sprite_sheet) texture_manager_class::last->loaded = texture_manager_class::load_sprite_sheet(last,texture_manager_class::last->width,texture_manager_class::last->height);
+    else  texture_manager_class::last->loaded = texture_manager_class::load_texture(last);
     return(texture_manager_class::last);
 };
 
@@ -97,7 +104,11 @@ void texture_manager_class::load_textures(void)
         {
             if (!temp_pointer->loaded)
             {
-                if (temp_pointer->path.length() > 4) load_texture(temp_pointer);
+                if (temp_pointer->path.length() > 4)
+                {
+                    if (temp_pointer->sprite_sheet) load_sprite_sheet(temp_pointer);
+                    else load_texture(temp_pointer);
+                }
             }
             temp_pointer = temp_pointer->next;
         }
@@ -113,19 +124,20 @@ void texture_manager_class::reload_textures(void)
     {
         while (temp_pointer->next != NULL)
         {
-            if (temp_pointer->path.length() > 4) load_texture(temp_pointer);
+            if (temp_pointer->sprite_sheet) load_sprite_sheet(temp_pointer);
+            else load_texture(temp_pointer);
         }
     }
 };
 
 bool texture_manager_class::load_texture(texture_type *texure)
 {
-    SDL_Surface    *image_surface = NULL;
-    GLenum          texture_format = 0;
     GLint           number_of_colors;
-    bool            return_value = false;
-    texure->frame_max     = 0;
-    texure->frame = new frame_type[texure->frame_max+1];
+    SDL_Surface    *image_surface  = NULL;
+    GLenum          texture_format = 0;
+    bool            return_value   = false;
+    texure->frame_max              = 0;
+    texure->frame                  = new frame_type[texure->frame_max+1];
     if ((image_surface = IMG_Load(texure->path.c_str())))
     {
         return_value = true;
@@ -140,26 +152,211 @@ bool texture_manager_class::load_texture(texture_type *texure)
             if (image_surface->format->Rmask == 0x000000ff) texture_format = GL_RGB;
             else texture_format = GL_BGR;
         }
-
-        glGenTextures( 1, &texure->frame[texure->frame_number].data);
-        glBindTexture( GL_TEXTURE_2D, texure->frame[texure->frame_number].data);
-        glEnable(GL_BLEND);
-        glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-        glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
+        glGenTextures  (1, &texure->frame[texure->frame_number].data);
+        glBindTexture  (GL_TEXTURE_2D, texure->frame[texure->frame_number].data);
+        glEnable       (GL_BLEND);
+        glBlendFunc    (GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+        glPixelStorei  (GL_UNPACK_ALIGNMENT, 1);
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-        glTexParameteri (GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-        glTexParameteri (GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-        glTexParameteri (GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-        glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
-        glTexImage2D( GL_TEXTURE_2D, 0, number_of_colors, image_surface->w, image_surface->h, 0, texture_format, GL_UNSIGNED_BYTE, image_surface->pixels );
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+        glTexEnvf      (GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
+        glTexImage2D   (GL_TEXTURE_2D, 0, number_of_colors, image_surface->w, image_surface->h, 0, texture_format, GL_UNSIGNED_BYTE, image_surface->pixels);
     }
     else
     {
         return_value = false;
-        if ( image_surface ) SDL_FreeSurface( image_surface );
+        if (image_surface) SDL_FreeSurface(image_surface);
         game.core.log.file_write("Failed to load image ->",texure->path.c_str());
     }
-    if ( image_surface ) SDL_FreeSurface( image_surface );
+    if (image_surface) SDL_FreeSurface(image_surface);
+    texure->loaded = return_value;
     return(return_value);
 };
 
+bool texture_manager_class::load_sprite_sheet(texture_type *texure)
+{
+    return(texture_manager_class::load_sprite_sheet(texure,DEFAULT_FRAME_WIDTH,DEFAULT_FRAME_HEIGHT));
+};
+
+bool texture_manager_class::load_sprite_sheet(texture_type *texure, int width_set, int height_set)
+{
+    texure->width      = width_set;
+    texure->height     = height_set;
+    int             frames_x;
+    int             frames_y;
+    int             frame_count    = 0;
+    int             num_sprites    = 0;
+    SDL_Surface    *sprite_sheet   = NULL;
+    SDL_Surface    *temp_surface   = NULL;
+    int             flags          = 0;
+    GLenum          texture_format = 0;
+    GLint           number_of_colors;
+    bool            return_value   = false;
+    if ((sprite_sheet = IMG_Load(texure->path.c_str())))
+    {
+        return_value = true;
+        frames_x = sprite_sheet->w / texure->width;
+        frames_y = sprite_sheet->h / texure->height;
+        num_sprites = frames_x * frames_y;
+        texure->frame_max = num_sprites-1;
+        texure->frame = new frame_type[texure->frame_max+1];
+        number_of_colors = sprite_sheet->format->BytesPerPixel;
+        if (number_of_colors == 4)
+        {
+            if (sprite_sheet->format->Rmask == 0x000000ff) texture_format = GL_RGBA;
+            else texture_format = GL_BGRA;
+        }
+        else if (number_of_colors == 3)
+        {
+            if (sprite_sheet->format->Rmask == 0x000000ff) texture_format = GL_RGB;
+            else texture_format = GL_BGR;
+        }
+        temp_surface = SDL_CreateRGBSurface(flags,texure->width-1,texure->height-1,sprite_sheet->format->BitsPerPixel,sprite_sheet->format->Rmask,sprite_sheet->format->Gmask,sprite_sheet->format->Bmask,sprite_sheet->format->Amask);
+        int32_t     *in_pixels       = (int32_t*)sprite_sheet->pixels;
+        int32_t     *out_pixels      = (int32_t*)temp_surface->pixels;
+
+        for (int current_sprite_y = 0; current_sprite_y < frames_y; current_sprite_y++)
+        {
+            for (int current_sprite_x = 0; current_sprite_x < frames_x; current_sprite_x++)
+            {
+                int out_pixel_count = 0;
+                if(SDL_MUSTLOCK(sprite_sheet)) SDL_LockSurface(sprite_sheet);
+                for(int y_count = 0; y_count < texure->height-1; y_count++)
+                {
+                    for(int x_count = 0; x_count < texure->width-1; x_count++)
+                    {
+                        out_pixels[out_pixel_count] = in_pixels[((sprite_sheet->w*y_count)+(((frame_count)*(texure->width))+x_count))];
+                        out_pixel_count++;
+                    }
+                }
+                if(SDL_MUSTLOCK(sprite_sheet)) SDL_UnlockSurface(sprite_sheet);
+                texure->frame[frame_count].active = true;
+                glGenTextures  (1, &texure->frame[texure->frame_number].data);
+                glBindTexture  (GL_TEXTURE_2D, texure->frame[texure->frame_number].data);
+                glEnable       (GL_BLEND);
+                glBlendFunc    (GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+                glPixelStorei  (GL_UNPACK_ALIGNMENT, 1);
+                glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+                glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+                glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+                glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+                glTexEnvf      (GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
+                glTexImage2D   (GL_TEXTURE_2D, 0, number_of_colors, temp_surface->w, temp_surface->h, 0, texture_format, GL_UNSIGNED_BYTE, temp_surface->pixels);
+                frame_count++;
+            }
+        }
+    }
+    else
+    {
+        return_value = false;
+        game.core.log.file_write("Failed to load image ->",texure->path.c_str());
+    }
+    if (sprite_sheet) SDL_FreeSurface(sprite_sheet);
+    if (temp_surface) SDL_FreeSurface(temp_surface);
+    texure->loaded = return_value;
+    return(return_value);
+};
+
+void texture_manager_class::bind_image(texture_type *texure)
+{
+    glBindTexture(GL_TEXTURE_2D, texure->frame[0].data);
+};
+
+void texture_manager_class::process(texture_type *texure)
+{
+    //process rotation
+    if(texure->rotate_able)
+    {
+        if(texure->rotate_direction == 0)
+        {
+            texure->angle += texure->rotate_speed;
+            if (texure->angle > 6.2832f) texure->angle = 0.0f;
+        }
+        if(texure->rotate_direction == 1)
+        {
+            texure->angle -= texure->rotate_speed;
+            if (texure->angle < 0.0f) texure->angle = 6.2832f;
+        }
+    }
+    // process frames
+    texure->frame_delay_count += texure->frame_delay;
+    if (texure->frame_delay_count > texure->frame_delay_max)
+    {
+        texure->frame_delay_count = 0.0f;
+        texure->frame_number++;
+        if (texure->frame_number > texure->frame_max) texure->frame_number = 0;
+    }
+};
+
+void texture_manager_class::draw(texture_type *texure, bool rumble_set, float pos_x, float pos_y, float pos_z, float width_set, float height_set)
+{
+    if (rumble_set)
+    {
+        game.rumble.counter.x = 0.0f;
+        game.rumble.counter.y = 0.0f;
+        pos_x += game.rumble.counter.x;
+        pos_y += game.rumble.counter.y;
+    }
+    if (sizeof(texure->frame[texure->frame_number].data) > 0) // Only render if data is available.
+    {
+        int temp_angle;
+        if (texure->angle != 0) temp_angle = 360 - texure->angle;
+        else temp_angle = 0;
+        glPushMatrix();
+        glBindTexture( GL_TEXTURE_2D, texure->frame[texure->frame_number].data);
+        glLoadIdentity();
+        glBegin( GL_QUADS );
+        glTexCoord2i( 0, 1 );glVertex3f(game.core.physics.rotate_point_2D_x(pos_x, pos_y, pos_x-(width_set/2),pos_y-(height_set/2),temp_angle), game.core.physics.rotate_point_2D_y(pos_x,pos_y,pos_x-(width_set/2),pos_y-(height_set/2), temp_angle), pos_z);
+        glTexCoord2i( 0, 0 );glVertex3f(game.core.physics.rotate_point_2D_x(pos_x, pos_y, pos_x-(width_set/2),pos_y+(height_set/2),temp_angle), game.core.physics.rotate_point_2D_y(pos_x,pos_y,pos_x-(width_set/2),pos_y+(height_set/2), temp_angle), pos_z);
+        glTexCoord2i( 1, 0 );glVertex3f(game.core.physics.rotate_point_2D_x(pos_x, pos_y, pos_x+(width_set/2),pos_y+(height_set/2),temp_angle), game.core.physics.rotate_point_2D_y(pos_x,pos_y,pos_x+(width_set/2),pos_y+(height_set/2), temp_angle), pos_z);
+        glTexCoord2i( 1, 1 );glVertex3f(game.core.physics.rotate_point_2D_x(pos_x, pos_y, pos_x+(width_set/2),pos_y-(height_set/2),temp_angle), game.core.physics.rotate_point_2D_y(pos_x,pos_y,pos_x+(width_set/2),pos_y-(height_set/2), temp_angle), pos_z);
+        glEnd();
+        glPopMatrix();
+    }
+};
+
+void texture_manager_class::draw(texture_type *texure, bool rumble_set, float pos_x, float pos_y, float pos_z, float width_set, float height_set, int angle_set)
+{
+    texure->angle = angle_set;//game.core.physics.degrees_to_radians(angle);
+    texture_manager_class::draw(texure,rumble_set,pos_x,pos_y,pos_z,width_set,height_set);
+};
+
+void texture_manager_class::draw(texture_type *texure, bool rumble_set, float pos_x, float pos_y, float pos_z, float width_set, float height_set, float angle_set)
+{
+    texure->angle = angle_set;
+    texture_manager_class::draw(texure,rumble_set,pos_x,pos_y,pos_z,width_set,height_set);
+};
+
+void texture_manager_class::draw(texture_type *texure, bool rumble_set, float pos_x, float pos_y, float pos_z, float width_set, float height_set, float angle_set, float alpha)
+{
+    texure->angle = angle_set;
+    glColor4f (1.0f, 1.0f, 1.0f, alpha);
+    texture_manager_class::draw(texure,rumble_set,pos_x,pos_y,pos_z,width_set,height_set);
+    glColor4f (1.0f, 1.0f, 1.0f,1.0f);
+};
+
+void texture_manager_class::draw(texture_type *texure, bool rumble_set, float pos_x, float pos_y, float pos_z, float width_set, float height_set, float angle_set, float red, float green, float blue, float alpha)
+{
+    texure->angle = angle_set;
+    glColor4f (red, green, blue, alpha);
+    texture_manager_class::draw(texure,rumble_set,pos_x,pos_y,pos_z,width_set,height_set);
+    glColor4f (1.0f, 1.0f, 1.0f,1.0f);
+};
+
+void texture_manager_class::draw(texture_type *texure, bool rumble_set, float pos_x, float pos_y, float pos_z, float width_set, float height_set, float angle_set, float red, float green, float blue, float alpha, int frame_set)
+{
+    texure->frame_number = frame_set;
+    texure->angle        = angle_set;
+    glColor4f (red, green, blue, alpha);
+    texture_manager_class::draw(texure,rumble_set,pos_x,pos_y,pos_z,width_set,height_set);
+    glColor4f (1.0f, 1.0f, 1.0f,1.0f);
+};
+
+void texture_manager_class::draw(texture_type *texure, bool rumble_set, float pos_x, float pos_y, float pos_z, float width_set, float height_set, float angle_set, int frame_set)
+{
+    texure->frame_number = frame_set;
+    texure->angle        = angle_set;
+    texture_manager_class::draw(texure,rumble_set,pos_x,pos_y,pos_z,width_set,height_set);
+};
