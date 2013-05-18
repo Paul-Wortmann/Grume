@@ -74,7 +74,6 @@ texture_type *texture_manager_class::add_texture(std::string file_name, bool is_
                 temp_pointer = temp_pointer->next;
             }
         }
-        texture_manager_class::number_of_textures++;
         texture_manager_class::last->next = new texture_type;
         texture_manager_class::last = texture_manager_class::last->next;
         texture_manager_class::last->next = new texture_type;
@@ -95,6 +94,7 @@ texture_type *texture_manager_class::add_texture(std::string file_name, bool is_
     texture_manager_class::last->frame_max          = 0;
     if (is_sprite_sheet) texture_manager_class::last->loaded = texture_manager_class::load_sprite_sheet(last,texture_manager_class::last->width,texture_manager_class::last->height);
     else  texture_manager_class::last->loaded = texture_manager_class::load_texture(last);
+    if (texture_manager_class::last->loaded) texture_manager_class::number_of_textures++;
     return(texture_manager_class::last);
 };
 

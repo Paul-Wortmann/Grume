@@ -740,7 +740,7 @@
 1368859896 source:c:\_git_\frost_and_flame\source\core\rs232.cpp
 	"rs232.hpp"
 
-1368896020 source:c:\_git_\frost_and_flame\source\main.cpp
+1368896197 source:c:\_git_\frost_and_flame\source\main.cpp
 	"game.hpp"
 	<SDL/SDL.h>
 	"core/misc.hpp"
@@ -1742,7 +1742,7 @@
 
 1367504905 c:\_git_\frost_and_flame\source\core\types.hpp
 
-1368893529 source:c:\_git_\frost_and_flame\source\core\texture_manager.cpp
+1368896280 source:c:\_git_\frost_and_flame\source\core\texture_manager.cpp
 	"texture_manager.hpp"
 	"../game.hpp"
 
