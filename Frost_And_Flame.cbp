@@ -234,7 +234,6 @@
 		<Unit filename="source/save_data.hpp" />
 		<Unit filename="source/spells.cpp" />
 		<Unit filename="source/spells.hpp" />
-		<Unit filename="source/texture_manager.hpp" />
 		<Extensions>
 			<code_completion />
 			<envvars />

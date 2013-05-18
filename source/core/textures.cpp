@@ -28,9 +28,6 @@
 #include "textures.hpp"
 #include "../game.hpp"
 
-#define GL_BGR  0x80E0
-#define GL_BGRA 0x80E1
-
 extern  game_class    game;
 
 texture_class::texture_class()

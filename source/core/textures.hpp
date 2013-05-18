@@ -27,15 +27,7 @@
 
 #include <GL/gl.h>
 #include <string>
-
-const int DEFAULT_FRAME_WIDTH  = 64;
-const int DEFAULT_FRAME_HEIGHT = 32;
-
-struct frame_type
-{
-    bool      active;
-    GLuint    data;
-};
+#include "texture_manager.hpp"
 
 class texture_class
 {

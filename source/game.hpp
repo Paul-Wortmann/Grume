@@ -29,6 +29,7 @@
 #include "core/map_2D.hpp"
 #include "core/music.hpp"
 #include "core/savegame.hpp"
+#include "core/texture_manager.hpp"
 #include "core/textures.hpp"
 #include "core/types.hpp"
 #include "UI/loading_screen.hpp"
@@ -61,32 +62,33 @@ class game_class
 {
     private:
     public:
-        int                  test; // ---- DELETE ME -----------
-        rumble_type          rumble;
-        bool                 debug;
-        int                  event;
-        int                  state;
-        save_game_class      save_01;
-        save_game_class      save_02;
-        save_game_class      save_03;
-        save_game_class      save_04;
-        save_game_class      save_05;
-        save_game_class      save_06;
-        save_game_class      save_07;
-        core_class           core;
-        loading_screen_class loading_screen;
-        music_class          music;
-        zoom_type            zoom;
-        player_class         player;
-        npc_class            npc;
-        light_type           global_ambient;
-        light_type           world_ambient;
-        spell_class          spell[MAX_SPELLS];
-        language_class       language;
-        window_manager_class window_manager;
-        item_manager_class   item_manager;
-        UI_class             UI;
-        map_2D_class         map_2D;
+        int                   test; // ---- DELETE ME -----------
+        rumble_type           rumble;
+        bool                  debug;
+        int                   event;
+        int                   state;
+        save_game_class       save_01;
+        save_game_class       save_02;
+        save_game_class       save_03;
+        save_game_class       save_04;
+        save_game_class       save_05;
+        save_game_class       save_06;
+        save_game_class       save_07;
+        core_class            core;
+        loading_screen_class  loading_screen;
+        music_class           music;
+        zoom_type             zoom;
+        player_class          player;
+        npc_class             npc;
+        light_type            global_ambient;
+        light_type            world_ambient;
+        spell_class           spell[MAX_SPELLS];
+        language_class        language;
+        window_manager_class  window_manager;
+        texture_manager_class texture_manager;
+        item_manager_class    item_manager;
+        UI_class              UI;
+        map_2D_class          map_2D;
         game_class(void);
         void             reload_textures(void);
         void             init(void);
