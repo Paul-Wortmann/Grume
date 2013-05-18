@@ -82,7 +82,7 @@ struct item_type
     // texture
     bool             active;
     std::string      name;
-    texture_class    image;
+    std::string      image_path;
     int              ID;
     int              type;
     int              sub_type;
