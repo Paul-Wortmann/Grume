@@ -25,13 +25,40 @@
 #ifndef TEXTURE_MANAGER_H
 #define TEXTURE_MANAGER_H
 
+#include <GL/gl.h>
+#include <SDL/SDL.h>
+#include <SDL/SDL_image.h>
 #include <string>
 
-struct texture2_type
+#define GL_BGR  0x80E0
+#define GL_BGRA 0x80E1
+
+#define DEFAULT_FRAME_WIDTH     64
+#define DEFAULT_FRAME_HEIGHT    32
+
+struct frame_type
+{
+    bool      active;
+    GLuint    data;
+};
+
+struct texture_type
 {
     bool             loaded;
     std::string      path;
-    //texture_class    image;
+    int              width;
+    int              height;
+    bool             rotate_able;
+    float            rotate_speed;
+    int              rotate_direction;
+    float            angle;
+    float            frame_delay;
+    float            frame_delay_count;
+    float            frame_delay_max;
+    int              frame_number;
+    int              frame_max;
+    frame_type*      frame;
+    texture_type    *next;
 };
 
 class texture_manager_class
@@ -40,6 +67,13 @@ class texture_manager_class
         texture_manager_class(void);
        ~texture_manager_class(void);
         int  number_of_textures;
+        texture_type *root;
+        texture_type *last;
+        texture_type *texture;
+        texture_type *add_texture(std::string file_name);
+        void load_textures(void);
+        void reload_textures(void);
+        bool load_texture(texture_type *texure);
 };
 
 #endif // TEXTURE_MANAGER_H
