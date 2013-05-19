@@ -192,7 +192,6 @@ void tmx_load(tmx_map_type *tmx_map_pointer, std::string file_name)
                     if (temp_string_key == "tileset")
                     {
                         tmx_map_pointer->tileset[tileset_count].number_of_tiles = ((tmx_map_pointer->tileset[tileset_count].image_width / tmx_map_pointer->tileset[tileset_count].tile_width) * (tmx_map_pointer->tileset[tileset_count].image_height / tmx_map_pointer->tileset[tileset_count].tile_height));
-                        tmx_map_pointer->tileset[tileset_count].image_loaded    = false;
                         tileset_data = false;
                         tileset_count++;
                     }

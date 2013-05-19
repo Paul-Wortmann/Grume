@@ -62,7 +62,7 @@ void loader_md2_class::set_wrap_texture(std::string file_name)
     if (file_name != "")
     {
         loader_md2_class::wrap_texture_enabled      =  true;
-        loader_md2_class::wrap_texture.load_image(file_name);
+        loader_md2_class::wrap_texture              =  game.texture_manager.add_texture(file_name.c_str());
     }
     else
     {
@@ -640,7 +640,7 @@ void loader_md2_class::draw(float x, float y, float z)
     glEnable(GL_DEPTH_TEST);
     if (loader_md2_class::wrap_texture_enabled)
     {
-        loader_md2_class::wrap_texture.bind_image();
+        game.texture_manager.bind_image(loader_md2_class::wrap_texture);
         glTexGeni(GL_S, GL_TEXTURE_GEN_MODE, GL_OBJECT_LINEAR);
         glTexGeni(GL_T, GL_TEXTURE_GEN_MODE, GL_OBJECT_LINEAR);
         glEnable(GL_TEXTURE_GEN_S);

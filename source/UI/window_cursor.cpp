@@ -27,14 +27,9 @@
 
 extern game_class game;
 
-void window_cursor_class::reload_textures(void)
-{
-    if (window_cursor_class::normal_arrow.image_path.length() > 3)      window_cursor_class::normal_arrow.image.load_image     (window_cursor_class::normal_arrow.image_path);
-};
-
 void window_cursor_class::draw(void)
 {
-    window_cursor_class::pointer[window_cursor_class::active_cursor].image.draw(false,game.core.io.mouse_x+0.012f,game.core.io.mouse_y-0.018f,0.001f,0.04f,0.04f,345.0f);
+    game.texture_manager.draw(window_cursor_class::pointer,false,game.core.io.mouse_x+0.012f,game.core.io.mouse_y-0.018f,0.001f,0.04f,0.04f,345.0f);
 };
 
 

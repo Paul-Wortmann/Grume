@@ -44,14 +44,10 @@ void setup_character_window(int UID)
     game.window_manager.window[window_number].size.x                  = 0.5f;
     game.window_manager.window[window_number].size.y                  = game.window_manager.window[window_number].size.x * 2.5f;
     game.window_manager.window[window_number].texture.angle           = 0.0f;
-    game.window_manager.window[window_number].texture.base.image_path = "data/textures/UI/menu/character_background.png";
-    game.window_manager.window[window_number].texture.base.image.load_image(game.window_manager.window[window_number].texture.base.image_path);
-    game.window_manager.window[window_number].texture.normal.image_path = "data/textures/UI/menu/button_normal.png";
-    game.window_manager.window[window_number].texture.normal.image.load_image(game.window_manager.window[window_number].texture.normal.image_path);
-    game.window_manager.window[window_number].texture.highlighted.image_path = "data/textures/UI/menu/button_highlighted.png";
-    game.window_manager.window[window_number].texture.highlighted.image.load_image(game.window_manager.window[window_number].texture.highlighted.image_path);
-    game.window_manager.window[window_number].texture.disabled.image_path = "data/textures/UI/menu/button_disabled.png";
-    game.window_manager.window[window_number].texture.disabled.image.load_image(game.window_manager.window[window_number].texture.disabled.image_path);
+    game.window_manager.window[window_number].texture.base                = game.texture_manager.add_texture("data/textures/UI/menu/character_background.png");
+    game.window_manager.window[window_number].texture.normal              = game.texture_manager.add_texture("data/textures/UI/menu/button_normal.png");
+    game.window_manager.window[window_number].texture.highlighted         = game.texture_manager.add_texture("data/textures/UI/menu/button_highlighted.png");
+    game.window_manager.window[window_number].texture.disabled            = game.texture_manager.add_texture("data/textures/UI/menu/button_disabled.png");
     game.window_manager.window[window_number].sound.on_click.enabled      = true;
     game.window_manager.window[window_number].sound.on_click.sound_path   = "data/sound/menu/menu_select_00.wav";
     game.window_manager.window[window_number].sound.on_click.sound.load(game.window_manager.window[window_number].sound.on_click.sound_path);
@@ -105,10 +101,8 @@ void setup_character_window(int UID)
     game.window_manager.window[window_number].element[element_number].size.y                    = 0.1f;
     game.window_manager.window[window_number].element[element_number].position.x                = game.window_manager.window[window_number].position.x+(game.window_manager.window[window_number].size.x/2.0f)-(game.window_manager.window[window_number].element[element_number].size.x/1.8f);
     game.window_manager.window[window_number].element[element_number].position.y                = game.window_manager.window[window_number].title.position.y+(game.window_manager.window[window_number].element[element_number].size.y/8.0f);
-    game.window_manager.window[window_number].element[element_number].texture.normal.image_path = "data/textures/UI/menu/close_button.png";
-    game.window_manager.window[window_number].element[element_number].texture.normal.image.load_image(game.window_manager.window[window_number].element[element_number].texture.normal.image_path);
-    game.window_manager.window[window_number].element[element_number].texture.highlighted.image_path = "data/textures/UI/menu/close_button_highlighted.png";
-    game.window_manager.window[window_number].element[element_number].texture.highlighted.image.load_image(game.window_manager.window[window_number].element[element_number].texture.highlighted.image_path);
+    game.window_manager.window[window_number].element[element_number].texture.normal            = game.texture_manager.add_texture("data/textures/UI/menu/close_button.png");
+    game.window_manager.window[window_number].element[element_number].texture.highlighted       = game.texture_manager.add_texture("data/textures/UI/menu/close_button_highlighted.png");
     game.window_manager.window[window_number].element[element_number].sound                     = game.window_manager.window[window_number].sound;
     game.window_manager.window[window_number].element[element_number].mouse_delay.maximum       = 30;
     game.window_manager.window[window_number].element[element_number].font                      = game.window_manager.window[window_number].font;
@@ -126,10 +120,8 @@ void setup_character_window(int UID)
     game.window_manager.window[window_number].element[element_number].size.y                    = game.window_manager.window[window_number].element[element_number].size.x*1.5f;
     game.window_manager.window[window_number].element[element_number].position.x                = game.window_manager.window[window_number].position.x-(game.window_manager.window[window_number].size.x / 3.73f);
     game.window_manager.window[window_number].element[element_number].position.y                = game.window_manager.window[window_number].position.y+(game.window_manager.window[window_number].size.y / 4.02f);
-    game.window_manager.window[window_number].element[element_number].texture.normal.image_path = "data/textures/UI/menu/character_portrait_frame.png";
-    game.window_manager.window[window_number].element[element_number].texture.normal.image.load_image(game.window_manager.window[window_number].element[element_number].texture.normal.image_path);
-    game.window_manager.window[window_number].element[element_number].texture.highlighted.image_path = "data/textures/UI/menu/character_portrait_frame.png";
-    game.window_manager.window[window_number].element[element_number].texture.highlighted.image.load_image(game.window_manager.window[window_number].element[element_number].texture.highlighted.image_path);
+    game.window_manager.window[window_number].element[element_number].texture.normal            = game.texture_manager.add_texture("data/textures/UI/menu/character_portrait_frame.png");
+    game.window_manager.window[window_number].element[element_number].texture.highlighted       = game.texture_manager.add_texture("data/textures/UI/menu/character_portrait_frame.png");
     game.window_manager.window[window_number].element[element_number].sound                     = game.window_manager.window[window_number].sound;
     game.window_manager.window[window_number].element[element_number].sound.on_click.enabled      = false;
     game.window_manager.window[window_number].element[element_number].sound.on_mouse_over.enabled = false;
@@ -261,10 +253,8 @@ void update_character_window(int UID)
 {
     int window_number = game.window_manager.window_get_number(UID);
     int element_number = 1; //--- player portrait ---
-    game.window_manager.window[window_number].element[element_number].texture.normal.image_path = game.player.portrait_path;
-    game.window_manager.window[window_number].element[element_number].texture.normal.image.load_image(game.window_manager.window[window_number].element[element_number].texture.normal.image_path);
-    game.window_manager.window[window_number].element[element_number].texture.highlighted.image_path = game.player.portrait_path;
-    game.window_manager.window[window_number].element[element_number].texture.highlighted.image.load_image(game.window_manager.window[window_number].element[element_number].texture.highlighted.image_path);
+    game.window_manager.window[window_number].element[element_number].texture.normal              = game.player.portrait;
+    game.window_manager.window[window_number].element[element_number].texture.highlighted         = game.player.portrait;
     element_number = 2; //--- Player Name ---
     game.window_manager.window[window_number].element[element_number].title.text                  = "Name: " + game.player.name;
     game.window_manager.window[window_number].element[element_number].title.size.x                = ((float)game.window_manager.window[window_number].element[element_number].title.size.y / (float)game.window_manager.window[window_number].element[element_number].title.text.length()) * 4.5f;

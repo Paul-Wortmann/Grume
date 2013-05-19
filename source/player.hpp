@@ -58,7 +58,6 @@ class stat_class
     public:
         stat_class(void);
        ~stat_class(void);
-        int               image_ref;
         float             width;
         float             height;
         float             pos_x;
@@ -77,7 +76,7 @@ class player_class
     public:
         player_class(void);
        ~player_class(void);
-        std::string        portrait_path;
+        texture_type      *portrait;
         std::string        name;
         level_class        level;
         unsigned long long gold;

@@ -111,14 +111,12 @@ void game_class::init(void)
     item_ID = game.item_manager.get_item_ID(HEALTH_POTION); // Health Potion
     game.window_manager.window[inventory_ID].element[element_number].value    = item_ID;
     game.window_manager.window[inventory_ID].element[element_number].quantity = 1;
-    game.window_manager.window[inventory_ID].element[element_number].texture.normal.image.path = game.item_manager.item[item_ID].image_path;
-    game.window_manager.window[inventory_ID].element[element_number].texture.normal.image.load_image(game.window_manager.window[inventory_ID].element[element_number].texture.normal.image.path);
+    game.window_manager.window[inventory_ID].element[element_number].texture.normal = game.texture_manager.add_texture(game.item_manager.item[item_ID].image_path);
     element_number = 2;
     item_ID = game.item_manager.get_item_ID(MANA_POTION); // Mana Potion
     game.window_manager.window[inventory_ID].element[element_number].value = item_ID;
     game.window_manager.window[inventory_ID].element[element_number].quantity = 4;
-    game.window_manager.window[inventory_ID].element[element_number].texture.normal.image.path = game.item_manager.item[item_ID].image_path;
-    game.window_manager.window[inventory_ID].element[element_number].texture.normal.image.load_image(game.window_manager.window[inventory_ID].element[element_number].texture.normal.image.path);
+    game.window_manager.window[inventory_ID].element[element_number].texture.normal = game.texture_manager.add_texture(game.item_manager.item[item_ID].image_path);
 
     // Add default items to the action bar
     int action_bar_ID = game.window_manager.window_get_number(ACTIONBAR_UID);
@@ -126,14 +124,12 @@ void game_class::init(void)
     item_ID = game.item_manager.get_item_ID(SPELL); // ----
     game.window_manager.window[action_bar_ID].element[element_number].value    = item_ID;
     game.window_manager.window[action_bar_ID].element[element_number].quantity = 1;
-    game.window_manager.window[action_bar_ID].element[element_number].texture.normal.image.path = game.item_manager.item[item_ID].image_path;
-    game.window_manager.window[action_bar_ID].element[element_number].texture.normal.image.load_image(game.window_manager.window[action_bar_ID].element[element_number].texture.normal.image.path);
+    game.window_manager.window[action_bar_ID].element[element_number].texture.normal = game.texture_manager.add_texture(game.item_manager.item[item_ID].image_path);
     element_number = 17;
     item_ID = game.item_manager.get_item_ID(SPELL); // ----
     game.window_manager.window[action_bar_ID].element[element_number].value    = item_ID;
     game.window_manager.window[action_bar_ID].element[element_number].quantity = 1;
-    game.window_manager.window[action_bar_ID].element[element_number].texture.normal.image.path = game.item_manager.item[item_ID].image_path;
-    game.window_manager.window[action_bar_ID].element[element_number].texture.normal.image.load_image(game.window_manager.window[action_bar_ID].element[element_number].texture.normal.image.path);
+    game.window_manager.window[action_bar_ID].element[element_number].texture.normal = game.texture_manager.add_texture(game.item_manager.item[item_ID].image_path);
 
     // Add default items to the equipment menu
     int equipment_ID = game.window_manager.window_get_number(EQUIPMENT_UID);
@@ -142,13 +138,7 @@ void game_class::init(void)
     item_ID = game.item_manager.get_item_ID(SPELL); // ----
     game.window_manager.window[equipment_ID].element[element_number].value    = item_ID;
     game.window_manager.window[equipment_ID].element[element_number].quantity = 1;
-    game.window_manager.window[equipment_ID].element[element_number].texture.normal.image.path = game.item_manager.item[item_ID].image_path;
-    game.window_manager.window[equipment_ID].element[element_number].texture.normal.image.load_image(game.window_manager.window[equipment_ID].element[element_number].texture.normal.image.path);
-};
-
-void game_class::reload_textures(void)
-{
-    game.map_2D.reload_textures(&tmx_map);
+    game.window_manager.window[equipment_ID].element[element_number].texture.normal = game.texture_manager.add_texture(game.item_manager.item[item_ID].image_path);
 };
 
 void game_class::process(void)

@@ -43,14 +43,10 @@ void setup_player_profile(int UID)
     game.window_manager.window[window_number].position.y              =  1.0f - (game.window_manager.window[window_number].size.y / 2.0f);
     game.window_manager.window[window_number].position.z              =  0.0f;
     game.window_manager.window[window_number].texture.angle           =  0.0f;
-    game.window_manager.window[window_number].texture.base.image_path = "data/textures/UI/menu/profile_background.png";
-    game.window_manager.window[window_number].texture.base.image.load_image(game.window_manager.window[window_number].texture.base.image_path);
-    game.window_manager.window[window_number].texture.normal.image_path = "data/textures/UI/menu/button_normal.png";
-    game.window_manager.window[window_number].texture.normal.image.load_image(game.window_manager.window[window_number].texture.normal.image_path);
-    game.window_manager.window[window_number].texture.highlighted.image_path = "data/textures/UI/menu/button_highlighted.png";
-    game.window_manager.window[window_number].texture.highlighted.image.load_image(game.window_manager.window[window_number].texture.highlighted.image_path);
-    game.window_manager.window[window_number].texture.disabled.image_path = "data/textures/UI/menu/button_disabled.png";
-    game.window_manager.window[window_number].texture.disabled.image.load_image(game.window_manager.window[window_number].texture.disabled.image_path);
+    game.window_manager.window[window_number].texture.base                = game.texture_manager.add_texture("data/textures/UI/menu/profile_background.png");
+    game.window_manager.window[window_number].texture.normal              = game.texture_manager.add_texture("data/textures/UI/menu/button_normal.png");
+    game.window_manager.window[window_number].texture.highlighted         = game.texture_manager.add_texture("data/textures/UI/menu/button_highlighted.png");
+    game.window_manager.window[window_number].texture.disabled            = game.texture_manager.add_texture("data/textures/UI/menu/button_disabled.png");
     game.window_manager.window[window_number].sound.on_click.enabled      = false;
     game.window_manager.window[window_number].sound.on_click.sound_path   = "data/sound/menu/menu_select_00.wav";
     game.window_manager.window[window_number].sound.on_click.sound.load(game.window_manager.window[window_number].sound.on_click.sound_path);
@@ -107,10 +103,8 @@ void setup_player_profile(int UID)
     game.window_manager.window[window_number].element[element_number].size.y                    = game.window_manager.window[window_number].size.y * 0.70f;
     game.window_manager.window[window_number].element[element_number].position.x                = game.window_manager.window[window_number].position.x;
     game.window_manager.window[window_number].element[element_number].position.y                = game.window_manager.window[window_number].position.y + (game.window_manager.window[window_number].size.y * 0.05f);
-    game.window_manager.window[window_number].element[element_number].texture.normal.image_path = game.player.portrait_path;
-    game.window_manager.window[window_number].element[element_number].texture.normal.image.load_image(game.window_manager.window[window_number].element[element_number].texture.normal.image_path);
-    game.window_manager.window[window_number].element[element_number].texture.highlighted.image_path = game.player.portrait_path;
-    game.window_manager.window[window_number].element[element_number].texture.highlighted.image.load_image(game.window_manager.window[window_number].element[element_number].texture.highlighted.image_path);
+    game.window_manager.window[window_number].element[element_number].texture.normal            = game.player.portrait;
+    game.window_manager.window[window_number].element[element_number].texture.highlighted       = game.player.portrait;
     game.window_manager.window[window_number].element[element_number].sound                     = game.window_manager.window[window_number].sound;
     game.window_manager.window[window_number].element[element_number].font                      = game.window_manager.window[window_number].font;
     game.window_manager.window[window_number].element[element_number].mouse_delay.maximum       = 30;
@@ -127,10 +121,8 @@ void setup_player_profile(int UID)
     game.window_manager.window[window_number].element[element_number].size.y                    = game.window_manager.window[window_number].size.y * 1.1f;
     game.window_manager.window[window_number].element[element_number].position.x                = game.window_manager.window[window_number].position.x + (game.window_manager.window[window_number].size.x * 0.85);
     game.window_manager.window[window_number].element[element_number].position.y                = game.window_manager.window[window_number].position.y;
-    game.window_manager.window[window_number].element[element_number].texture.normal.image_path = "data/textures/UI/menu/profile_main_background.png";
-    game.window_manager.window[window_number].element[element_number].texture.normal.image.load_image(game.window_manager.window[window_number].element[element_number].texture.normal.image_path);
-    game.window_manager.window[window_number].element[element_number].texture.highlighted.image_path = "data/textures/UI/menu/profile_main_background.png";
-    game.window_manager.window[window_number].element[element_number].texture.highlighted.image.load_image(game.window_manager.window[window_number].element[element_number].texture.highlighted.image_path);
+    game.window_manager.window[window_number].element[element_number].texture.normal            = game.texture_manager.add_texture("data/textures/UI/menu/profile_main_background.png");
+    game.window_manager.window[window_number].element[element_number].texture.highlighted       = game.texture_manager.add_texture("data/textures/UI/menu/profile_main_background.png");
     game.window_manager.window[window_number].element[element_number].sound                     = game.window_manager.window[window_number].sound;
     game.window_manager.window[window_number].element[element_number].font                      = game.window_manager.window[window_number].font;
     game.window_manager.window[window_number].element[element_number].mouse_delay.maximum       = 30;
@@ -153,10 +145,8 @@ void setup_player_profile(int UID)
     game.window_manager.window[window_number].element[element_number].size.y                    = game.window_manager.window[window_number].size.y * 0.161f;
     game.window_manager.window[window_number].element[element_number].position.x                = game.window_manager.window[window_number].position.x + (game.window_manager.window[window_number].size.x * 1.25f);
     game.window_manager.window[window_number].element[element_number].position.y                = game.window_manager.window[window_number].position.y + (game.window_manager.window[window_number].size.y * 0.31f);
-    game.window_manager.window[window_number].element[element_number].texture.normal.image_path = "data/textures/UI/menu/health_bar.png";
-    game.window_manager.window[window_number].element[element_number].texture.normal.image.load_image(game.window_manager.window[window_number].element[element_number].texture.normal.image_path);
-    game.window_manager.window[window_number].element[element_number].texture.highlighted.image_path = "data/textures/UI/menu/health_bar.png";
-    game.window_manager.window[window_number].element[element_number].texture.highlighted.image.load_image(game.window_manager.window[window_number].element[element_number].texture.highlighted.image_path);
+    game.window_manager.window[window_number].element[element_number].texture.normal            = game.texture_manager.add_texture("data/textures/UI/menu/health_bar.png");
+    game.window_manager.window[window_number].element[element_number].texture.highlighted       = game.texture_manager.add_texture("data/textures/UI/menu/health_bar.png");
     game.window_manager.window[window_number].element[element_number].sound                     = game.window_manager.window[window_number].sound;
     game.window_manager.window[window_number].element[element_number].font                      = game.window_manager.window[window_number].font;
     game.window_manager.window[window_number].element[element_number].mouse_delay.maximum       = 30;
@@ -179,10 +169,8 @@ void setup_player_profile(int UID)
     game.window_manager.window[window_number].element[element_number].size.y                    = game.window_manager.window[window_number].size.y * 0.161f;
     game.window_manager.window[window_number].element[element_number].position.x                = game.window_manager.window[window_number].position.x + (game.window_manager.window[window_number].size.x * 1.25f);
     game.window_manager.window[window_number].element[element_number].position.y                = game.window_manager.window[window_number].position.y + (game.window_manager.window[window_number].size.y * 0.12f);
-    game.window_manager.window[window_number].element[element_number].texture.normal.image_path = "data/textures/UI/menu/mana_bar.png";
-    game.window_manager.window[window_number].element[element_number].texture.normal.image.load_image(game.window_manager.window[window_number].element[element_number].texture.normal.image_path);
-    game.window_manager.window[window_number].element[element_number].texture.highlighted.image_path = "data/textures/UI/menu/mana_bar.png";
-    game.window_manager.window[window_number].element[element_number].texture.highlighted.image.load_image(game.window_manager.window[window_number].element[element_number].texture.highlighted.image_path);
+    game.window_manager.window[window_number].element[element_number].texture.normal            = game.texture_manager.add_texture("data/textures/UI/menu/mana_bar.png");
+    game.window_manager.window[window_number].element[element_number].texture.highlighted       = game.texture_manager.add_texture("data/textures/UI/menu/mana_bar.png");
     game.window_manager.window[window_number].element[element_number].sound                     = game.window_manager.window[window_number].sound;
     game.window_manager.window[window_number].element[element_number].font                      = game.window_manager.window[window_number].font;
     game.window_manager.window[window_number].element[element_number].mouse_delay.maximum       = 30;
@@ -199,10 +187,8 @@ void setup_player_profile(int UID)
     game.window_manager.window[window_number].element[element_number].size.y                    = game.window_manager.window[window_number].size.y * 1.1f;
     game.window_manager.window[window_number].element[element_number].position.x                = game.window_manager.window[window_number].position.x + (game.window_manager.window[window_number].size.x * 0.85);
     game.window_manager.window[window_number].element[element_number].position.y                = game.window_manager.window[window_number].position.y;
-    game.window_manager.window[window_number].element[element_number].texture.normal.image_path = "data/textures/UI/menu/profile_main.png";
-    game.window_manager.window[window_number].element[element_number].texture.normal.image.load_image(game.window_manager.window[window_number].element[element_number].texture.normal.image_path);
-    game.window_manager.window[window_number].element[element_number].texture.highlighted.image_path = "data/textures/UI/menu/profile_main.png";
-    game.window_manager.window[window_number].element[element_number].texture.highlighted.image.load_image(game.window_manager.window[window_number].element[element_number].texture.highlighted.image_path);
+    game.window_manager.window[window_number].element[element_number].texture.normal            = game.texture_manager.add_texture("data/textures/UI/menu/profile_main.png");
+    game.window_manager.window[window_number].element[element_number].texture.highlighted       = game.texture_manager.add_texture("data/textures/UI/menu/profile_main.png");
     game.window_manager.window[window_number].element[element_number].sound                     = game.window_manager.window[window_number].sound;
     game.window_manager.window[window_number].element[element_number].font                      = game.window_manager.window[window_number].font;
     game.window_manager.window[window_number].element[element_number].mouse_delay.maximum       = 30;
@@ -211,10 +197,8 @@ void setup_player_profile(int UID)
 void update_player_profile(int window_number)
 {
     int element_number = 0; //--- Player profile image ---
-    game.window_manager.window[window_number].element[element_number].texture.normal.image_path = game.player.portrait_path;
-    game.window_manager.window[window_number].element[element_number].texture.normal.image.load_image(game.window_manager.window[window_number].element[element_number].texture.normal.image_path);
-    game.window_manager.window[window_number].element[element_number].texture.highlighted.image_path = game.player.portrait_path;
-    game.window_manager.window[window_number].element[element_number].texture.highlighted.image.load_image(game.window_manager.window[window_number].element[element_number].texture.highlighted.image_path);
+    game.window_manager.window[window_number].element[element_number].texture.normal      = game.player.portrait;
+    game.window_manager.window[window_number].element[element_number].texture.highlighted = game.player.portrait;
     element_number = 2; //--- Player health bar ---
     game.window_manager.window[window_number].element[element_number].value = game.player.health.current;
     element_number = 3; //--- Player mana bar ---

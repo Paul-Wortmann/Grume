@@ -30,18 +30,10 @@
 #include "map_2D.hpp"
 #include "loader_tmx.hpp"
 #include "../game.hpp"
-#include "textures.hpp"
+#include "texture_manager.hpp"
 #include "misc.hpp"
 
 extern game_class         game;
-
-void map_2D_class::reload_textures(tmx_map_type *tmx_map_pointer)
-{
-    for(int tileset_count = 0; tileset_count <  tmx_map_pointer->data.number_of_tilesets; tileset_count++)
-    {
-        tmx_map_pointer->tileset[tileset_count].image_loaded = false;
-    }
-}
 
 //-----------------------------------------------------------------------------------------------------------------
 void map_2D_class::render(tmx_map_type *tmx_map_pointer)
@@ -49,7 +41,7 @@ void map_2D_class::render(tmx_map_type *tmx_map_pointer)
     tmx_tileset_type debug_tileset;
     if(game.debug)
     {
-        if (!debug_tileset.image_loaded)
+        if (debug_tileset.tile->frame[0].data == NULL)
         {
             debug_tileset.tile_width  = 64;
             debug_tileset.tile_height = 32;
@@ -57,22 +49,20 @@ void map_2D_class::render(tmx_map_type *tmx_map_pointer)
             debug_tileset.image_source = game.core.file.path_remove(debug_tileset.image_source);
             debug_tileset.image_source = game.core.file.path_add(debug_tileset.image_source,"data/tilesets/");
             game.core.log.file_write("Loading tile-set -> ",debug_tileset.image_source);
-            debug_tileset.tile.load_spritesheet(debug_tileset.image_source,debug_tileset.tile_width,debug_tileset.tile_height);
-            debug_tileset.image_loaded = true;
-            debug_tileset.number_of_tiles = debug_tileset.tile.frame_max;
+            debug_tileset.tile = game.texture_manager.add_texture(debug_tileset.image_source.c_str(),true,debug_tileset.tile_width,debug_tileset.tile_height);
+            debug_tileset.number_of_tiles = debug_tileset.tile->frame_max;
         }
     }
     else
     {
         for(int tileset_count = 0; tileset_count < tmx_map_pointer->data.number_of_tilesets; tileset_count++)
         {
-            if (!tmx_map_pointer->tileset[tileset_count].image_loaded)
+            if (tmx_map_pointer->tileset[tileset_count].tile->frame[0].data == NULL)
             {
                 tmx_map_pointer->tileset[tileset_count].image_source = game.core.file.path_remove(tmx_map_pointer->tileset[tileset_count].image_source);
                 tmx_map_pointer->tileset[tileset_count].image_source = game.core.file.path_add(tmx_map_pointer->tileset[tileset_count].image_source,"data/tilesets/");
-                tmx_map_pointer->tileset[tileset_count].tile.load_spritesheet(tmx_map_pointer->tileset[tileset_count].image_source,tmx_map_pointer->tileset[tileset_count].tile_width,tmx_map_pointer->tileset[tileset_count].tile_height);
-                tmx_map_pointer->tileset[tileset_count].number_of_tiles = tmx_map_pointer->tileset[tileset_count].tile.frame_max;
-                tmx_map_pointer->tileset[tileset_count].image_loaded = true;
+                game.texture_manager.add_texture(tmx_map_pointer->tileset[tileset_count].image_source,true,tmx_map_pointer->tileset[tileset_count].tile_width,tmx_map_pointer->tileset[tileset_count].tile_height);
+                tmx_map_pointer->tileset[tileset_count].number_of_tiles = tmx_map_pointer->tileset[tileset_count].tile->frame_max;
             }
         }
     }
@@ -110,9 +100,9 @@ void map_2D_class::render(tmx_map_type *tmx_map_pointer)
                 }
                 if (game.debug)
                 {
-                    debug_tileset.tile.draw(true,tile_offset_x,tile_offset_y,0.001f,tile_offset_w,tile_offset_h,0.0f,tmx_map_pointer->layer[layer_count].tile[tile_count].tile);
+                    game.texture_manager.draw(debug_tileset.tile,true,tile_offset_x,tile_offset_y,0.001f,tile_offset_w,tile_offset_h,0.0f,tmx_map_pointer->layer[layer_count].tile[tile_count].tile);
                 }
-                else tmx_map_pointer->tileset[tmx_map_pointer->layer[layer_count].tile[tile_count].tile_tileset].tile.draw(true,tile_offset_x,tile_offset_y,0.001f,tile_offset_w,tile_offset_h,0.0f,tmx_map_pointer->layer[layer_count].tile[tile_count].tile-1);
+                else game.texture_manager.draw(tmx_map_pointer->tileset[tmx_map_pointer->layer[layer_count].tile[tile_count].tile_tileset].tile,true,tile_offset_x,tile_offset_y,0.001f,tile_offset_w,tile_offset_h,0.0f,tmx_map_pointer->layer[layer_count].tile[tile_count].tile-1);
             }
         }
     };
@@ -245,7 +235,7 @@ int  map_2D_class::mouse_over_tile(tmx_map_type *tmx_map_pointer)
 void map_2D_class::apply_tileset(tmx_map_type *tmx_map_pointer, int pre_defined_tileset_value)
 {
     #define TILE_SET_DEFAULT                     0
-    #define TILE_SET_FLOOR_TILE                       1
+    #define TILE_SET_FLOOR_TILE                  1
     #define TILE_SET_ROOF                        2
     #define TILE_SET_WALL_NORTH                  3
     #define TILE_SET_WALL_SOUTH                  4
@@ -277,10 +267,11 @@ void map_2D_class::apply_tileset(tmx_map_type *tmx_map_pointer, int pre_defined_
     std::string tile_set_name_wall_south_east_concave = "data/tilesets/default_tileset.png";
     std::string tile_set_name_wall_south_west_concave = "data/tilesets/default_tileset.png";
     std::string tile_set_name_objects                 = "data/tilesets/default_tileset.png";
-    int  floor_width  = 64;
-    int  floor_height = 32;
-    int  wall_width   = 64;
-    int  wall_height  = 128;
+    int  floor_width    = 64;
+    int  floor_height   = 32;
+    int  wall_width     = 64;
+    int  wall_height    = 128;
+    int  tileset_number = TILE_SET_DEFAULT;
     // ----------------------------------------- set tileset based on type ---------------------------------------
     switch (pre_defined_tileset_value)
     {
@@ -358,118 +349,118 @@ void map_2D_class::apply_tileset(tmx_map_type *tmx_map_pointer, int pre_defined_
     tmx_map_pointer->tileset                                     = new tmx_tileset_type[tmx_map_pointer->data.number_of_tilesets];
     tmx_map_pointer->data.map_tile_width                         = DEFAULT_FRAME_WIDTH;
     tmx_map_pointer->data.map_tile_height                        = DEFAULT_FRAME_HEIGHT;
-    tmx_map_pointer->tileset[TILE_SET_DEFAULT].first_gid         = 1;
-    tmx_map_pointer->tileset[TILE_SET_DEFAULT].image_source      = tile_set_name_default;
-    tmx_map_pointer->tileset[TILE_SET_DEFAULT].image_loaded      = true;
-    tmx_map_pointer->tileset[TILE_SET_DEFAULT].tile_width        = tmx_map_pointer->data.map_tile_width;
-    tmx_map_pointer->tileset[TILE_SET_DEFAULT].tile_height       = tmx_map_pointer->data.map_tile_height;
-    tmx_map_pointer->tileset[TILE_SET_DEFAULT].tile.load_spritesheet(tmx_map_pointer->tileset[TILE_SET_DEFAULT].image_source,tmx_map_pointer->tileset[TILE_SET_DEFAULT].tile_width,tmx_map_pointer->tileset[TILE_SET_DEFAULT].tile_height);
-    tmx_map_pointer->tileset[TILE_SET_DEFAULT].number_of_tiles   = tmx_map_pointer->tileset[TILE_SET_DEFAULT].tile.frame_max;
-    tmx_map_pointer->tileset[TILE_SET_FLOOR_TILE].first_gid           = tmx_map_pointer->tileset[TILE_SET_DEFAULT].number_of_tiles+tmx_map_pointer->tileset[TILE_SET_DEFAULT].first_gid +1;
-    tmx_map_pointer->tileset[TILE_SET_FLOOR_TILE].image_source        = tile_set_name_floor;
-    tmx_map_pointer->tileset[TILE_SET_FLOOR_TILE].image_loaded        = true;
-    tmx_map_pointer->tileset[TILE_SET_FLOOR_TILE].tile_width          = floor_width;
-    tmx_map_pointer->tileset[TILE_SET_FLOOR_TILE].tile_height         = floor_height;
-    tmx_map_pointer->tileset[TILE_SET_FLOOR_TILE].tile.load_spritesheet(tmx_map_pointer->tileset[TILE_SET_FLOOR_TILE].image_source,tmx_map_pointer->tileset[TILE_SET_FLOOR_TILE].tile_width,tmx_map_pointer->tileset[TILE_SET_FLOOR_TILE].tile_height);
-    tmx_map_pointer->tileset[TILE_SET_FLOOR_TILE].number_of_tiles     = tmx_map_pointer->tileset[TILE_SET_FLOOR_TILE].tile.frame_max;
-    tmx_map_pointer->tileset[TILE_SET_ROOF].first_gid            = tmx_map_pointer->tileset[TILE_SET_FLOOR_TILE].number_of_tiles+tmx_map_pointer->tileset[TILE_SET_FLOOR_TILE].first_gid +1;
-    tmx_map_pointer->tileset[TILE_SET_ROOF].image_source         = tile_set_name_roof;
-    tmx_map_pointer->tileset[TILE_SET_ROOF].image_loaded         = true;
-    tmx_map_pointer->tileset[TILE_SET_ROOF].tile_width           = wall_width;
-    tmx_map_pointer->tileset[TILE_SET_ROOF].tile_height          = wall_height;
-    tmx_map_pointer->tileset[TILE_SET_ROOF].tile.load_spritesheet(tmx_map_pointer->tileset[TILE_SET_ROOF].image_source,tmx_map_pointer->tileset[TILE_SET_ROOF].tile_width,tmx_map_pointer->tileset[TILE_SET_ROOF].tile_height);
-    tmx_map_pointer->tileset[TILE_SET_ROOF].number_of_tiles      = tmx_map_pointer->tileset[TILE_SET_ROOF].tile.frame_max;
-    tmx_map_pointer->tileset[TILE_SET_WALL_NORTH].first_gid      = tmx_map_pointer->tileset[TILE_SET_ROOF].number_of_tiles+tmx_map_pointer->tileset[TILE_SET_ROOF].first_gid +1;
-    tmx_map_pointer->tileset[TILE_SET_WALL_NORTH].image_source   = tile_set_name_wall_north;
-    tmx_map_pointer->tileset[TILE_SET_WALL_NORTH].image_loaded   = true;
-    tmx_map_pointer->tileset[TILE_SET_WALL_NORTH].tile_width     = wall_width;
-    tmx_map_pointer->tileset[TILE_SET_WALL_NORTH].tile_height    = wall_height;
-    tmx_map_pointer->tileset[TILE_SET_WALL_NORTH].tile.load_spritesheet(tmx_map_pointer->tileset[TILE_SET_WALL_NORTH].image_source,tmx_map_pointer->tileset[TILE_SET_WALL_NORTH].tile_width,tmx_map_pointer->tileset[TILE_SET_WALL_NORTH].tile_height);
-    tmx_map_pointer->tileset[TILE_SET_WALL_NORTH].number_of_tiles = tmx_map_pointer->tileset[TILE_SET_WALL_NORTH].tile.frame_max;
-    tmx_map_pointer->tileset[TILE_SET_WALL_SOUTH].first_gid       = tmx_map_pointer->tileset[TILE_SET_WALL_NORTH].number_of_tiles+tmx_map_pointer->tileset[TILE_SET_WALL_NORTH].first_gid +1;
-    tmx_map_pointer->tileset[TILE_SET_WALL_SOUTH].image_source    = tile_set_name_wall_south;
-    tmx_map_pointer->tileset[TILE_SET_WALL_SOUTH].image_loaded    = true;
-    tmx_map_pointer->tileset[TILE_SET_WALL_SOUTH].tile_width      = wall_width;
-    tmx_map_pointer->tileset[TILE_SET_WALL_SOUTH].tile_height     = wall_height;
-    tmx_map_pointer->tileset[TILE_SET_WALL_SOUTH].tile.load_spritesheet(tmx_map_pointer->tileset[TILE_SET_WALL_SOUTH].image_source,tmx_map_pointer->tileset[TILE_SET_WALL_SOUTH].tile_width,tmx_map_pointer->tileset[TILE_SET_WALL_SOUTH].tile_height);
-    tmx_map_pointer->tileset[TILE_SET_WALL_SOUTH].number_of_tiles = tmx_map_pointer->tileset[TILE_SET_WALL_SOUTH].tile.frame_max;
-    tmx_map_pointer->tileset[TILE_SET_WALL_EAST].first_gid        = tmx_map_pointer->tileset[TILE_SET_WALL_SOUTH].number_of_tiles+tmx_map_pointer->tileset[TILE_SET_WALL_SOUTH].first_gid +1;
-    tmx_map_pointer->tileset[TILE_SET_WALL_EAST].image_source     = tile_set_name_wall_east;
-    tmx_map_pointer->tileset[TILE_SET_WALL_EAST].image_loaded     = true;
-    tmx_map_pointer->tileset[TILE_SET_WALL_EAST].tile_width       = wall_width;
-    tmx_map_pointer->tileset[TILE_SET_WALL_EAST].tile_height      = wall_height;
-    tmx_map_pointer->tileset[TILE_SET_WALL_EAST].tile.load_spritesheet(tmx_map_pointer->tileset[TILE_SET_WALL_EAST].image_source,tmx_map_pointer->tileset[TILE_SET_WALL_EAST].tile_width,tmx_map_pointer->tileset[TILE_SET_WALL_EAST].tile_height);
-    tmx_map_pointer->tileset[TILE_SET_WALL_EAST].number_of_tiles  = tmx_map_pointer->tileset[TILE_SET_WALL_EAST].tile.frame_max;
-    tmx_map_pointer->tileset[TILE_SET_WALL_WEST].first_gid        = tmx_map_pointer->tileset[TILE_SET_WALL_EAST].number_of_tiles+tmx_map_pointer->tileset[TILE_SET_WALL_EAST].first_gid +1;
-    tmx_map_pointer->tileset[TILE_SET_WALL_WEST].image_source     = tile_set_name_wall_west;
-    tmx_map_pointer->tileset[TILE_SET_WALL_WEST].image_loaded     = true;
-    tmx_map_pointer->tileset[TILE_SET_WALL_WEST].tile_width       = wall_width;
-    tmx_map_pointer->tileset[TILE_SET_WALL_WEST].tile_height      = wall_height;
-    tmx_map_pointer->tileset[TILE_SET_WALL_WEST].tile.load_spritesheet(tmx_map_pointer->tileset[TILE_SET_WALL_WEST].image_source,tmx_map_pointer->tileset[TILE_SET_WALL_WEST].tile_width,tmx_map_pointer->tileset[TILE_SET_WALL_WEST].tile_height);
-    tmx_map_pointer->tileset[TILE_SET_WALL_WEST].number_of_tiles  = tmx_map_pointer->tileset[TILE_SET_WALL_WEST].tile.frame_max;
-    tmx_map_pointer->tileset[TILE_SET_WALL_NORTH_EAST_CONVEX].first_gid        = tmx_map_pointer->tileset[TILE_SET_WALL_WEST].number_of_tiles+tmx_map_pointer->tileset[TILE_SET_WALL_WEST].first_gid +1;
-    tmx_map_pointer->tileset[TILE_SET_WALL_NORTH_EAST_CONVEX].image_source     = tile_set_name_wall_north_east_convex;
-    tmx_map_pointer->tileset[TILE_SET_WALL_NORTH_EAST_CONVEX].image_loaded     = true;
-    tmx_map_pointer->tileset[TILE_SET_WALL_NORTH_EAST_CONVEX].tile_width       = wall_width;
-    tmx_map_pointer->tileset[TILE_SET_WALL_NORTH_EAST_CONVEX].tile_height      = wall_height;
-    tmx_map_pointer->tileset[TILE_SET_WALL_NORTH_EAST_CONVEX].tile.load_spritesheet(tmx_map_pointer->tileset[TILE_SET_WALL_NORTH_EAST_CONVEX].image_source,tmx_map_pointer->tileset[TILE_SET_WALL_NORTH_EAST_CONVEX].tile_width,tmx_map_pointer->tileset[TILE_SET_WALL_NORTH_EAST_CONVEX].tile_height);
-    tmx_map_pointer->tileset[TILE_SET_WALL_NORTH_EAST_CONVEX].number_of_tiles  = tmx_map_pointer->tileset[TILE_SET_WALL_NORTH_EAST_CONVEX].tile.frame_max;
-    tmx_map_pointer->tileset[TILE_SET_WALL_NORTH_WEST_CONVEX].first_gid        = tmx_map_pointer->tileset[TILE_SET_WALL_NORTH_EAST_CONVEX].number_of_tiles+tmx_map_pointer->tileset[TILE_SET_WALL_NORTH_EAST_CONVEX].first_gid +1;
-    tmx_map_pointer->tileset[TILE_SET_WALL_NORTH_WEST_CONVEX].image_source     = tile_set_name_wall_north_west_convex;
-    tmx_map_pointer->tileset[TILE_SET_WALL_NORTH_WEST_CONVEX].image_loaded     = true;
-    tmx_map_pointer->tileset[TILE_SET_WALL_NORTH_WEST_CONVEX].tile_width       = wall_width;
-    tmx_map_pointer->tileset[TILE_SET_WALL_NORTH_WEST_CONVEX].tile_height      = wall_height;
-    tmx_map_pointer->tileset[TILE_SET_WALL_NORTH_WEST_CONVEX].tile.load_spritesheet(tmx_map_pointer->tileset[TILE_SET_WALL_NORTH_WEST_CONVEX].image_source,tmx_map_pointer->tileset[TILE_SET_WALL_NORTH_WEST_CONVEX].tile_width,tmx_map_pointer->tileset[TILE_SET_WALL_NORTH_WEST_CONVEX].tile_height);
-    tmx_map_pointer->tileset[TILE_SET_WALL_NORTH_WEST_CONVEX].number_of_tiles  = tmx_map_pointer->tileset[TILE_SET_WALL_NORTH_WEST_CONVEX].tile.frame_max;
-    tmx_map_pointer->tileset[TILE_SET_WALL_SOUTH_EAST_CONVEX].first_gid        = tmx_map_pointer->tileset[TILE_SET_WALL_NORTH_WEST_CONVEX].number_of_tiles+tmx_map_pointer->tileset[TILE_SET_WALL_NORTH_WEST_CONVEX].first_gid +1;
-    tmx_map_pointer->tileset[TILE_SET_WALL_SOUTH_EAST_CONVEX].image_source     = tile_set_name_wall_south_east_convex;
-    tmx_map_pointer->tileset[TILE_SET_WALL_SOUTH_EAST_CONVEX].image_loaded     = true;
-    tmx_map_pointer->tileset[TILE_SET_WALL_SOUTH_EAST_CONVEX].tile_width       = wall_width;
-    tmx_map_pointer->tileset[TILE_SET_WALL_SOUTH_EAST_CONVEX].tile_height      = wall_height;
-    tmx_map_pointer->tileset[TILE_SET_WALL_SOUTH_EAST_CONVEX].tile.load_spritesheet(tmx_map_pointer->tileset[TILE_SET_WALL_SOUTH_EAST_CONVEX].image_source,tmx_map_pointer->tileset[TILE_SET_WALL_SOUTH_EAST_CONVEX].tile_width,tmx_map_pointer->tileset[TILE_SET_WALL_SOUTH_EAST_CONVEX].tile_height);
-    tmx_map_pointer->tileset[TILE_SET_WALL_SOUTH_EAST_CONVEX].number_of_tiles  = tmx_map_pointer->tileset[TILE_SET_WALL_SOUTH_EAST_CONVEX].tile.frame_max;
-    tmx_map_pointer->tileset[TILE_SET_WALL_SOUTH_WEST_CONVEX].first_gid        = tmx_map_pointer->tileset[TILE_SET_WALL_SOUTH_EAST_CONVEX].number_of_tiles+tmx_map_pointer->tileset[TILE_SET_WALL_SOUTH_EAST_CONVEX].first_gid +1;
-    tmx_map_pointer->tileset[TILE_SET_WALL_SOUTH_WEST_CONVEX].image_source     = tile_set_name_wall_south_west_convex;
-    tmx_map_pointer->tileset[TILE_SET_WALL_SOUTH_WEST_CONVEX].image_loaded     = true;
-    tmx_map_pointer->tileset[TILE_SET_WALL_SOUTH_WEST_CONVEX].tile_width       = wall_width;
-    tmx_map_pointer->tileset[TILE_SET_WALL_SOUTH_WEST_CONVEX].tile_height      = wall_height;
-    tmx_map_pointer->tileset[TILE_SET_WALL_SOUTH_WEST_CONVEX].tile.load_spritesheet(tmx_map_pointer->tileset[TILE_SET_WALL_SOUTH_WEST_CONVEX].image_source,tmx_map_pointer->tileset[TILE_SET_WALL_SOUTH_WEST_CONVEX].tile_width,tmx_map_pointer->tileset[TILE_SET_WALL_SOUTH_WEST_CONVEX].tile_height);
-    tmx_map_pointer->tileset[TILE_SET_WALL_SOUTH_WEST_CONVEX].number_of_tiles  = tmx_map_pointer->tileset[TILE_SET_WALL_SOUTH_WEST_CONVEX].tile.frame_max;
-    tmx_map_pointer->tileset[TILE_SET_WALL_NORTH_EAST_CONCAVE].first_gid       = tmx_map_pointer->tileset[TILE_SET_WALL_SOUTH_WEST_CONVEX].number_of_tiles+tmx_map_pointer->tileset[TILE_SET_WALL_SOUTH_WEST_CONVEX].first_gid +1;
-    tmx_map_pointer->tileset[TILE_SET_WALL_NORTH_EAST_CONCAVE].image_source    = tile_set_name_wall_north_east_concave;
-    tmx_map_pointer->tileset[TILE_SET_WALL_NORTH_EAST_CONCAVE].image_loaded    = true;
-    tmx_map_pointer->tileset[TILE_SET_WALL_NORTH_EAST_CONCAVE].tile_width      = wall_width;
-    tmx_map_pointer->tileset[TILE_SET_WALL_NORTH_EAST_CONCAVE].tile_height     = wall_height;
-    tmx_map_pointer->tileset[TILE_SET_WALL_NORTH_EAST_CONCAVE].tile.load_spritesheet(tmx_map_pointer->tileset[TILE_SET_WALL_NORTH_EAST_CONCAVE].image_source,tmx_map_pointer->tileset[TILE_SET_WALL_NORTH_EAST_CONCAVE].tile_width,tmx_map_pointer->tileset[TILE_SET_WALL_NORTH_EAST_CONCAVE].tile_height);
-    tmx_map_pointer->tileset[TILE_SET_WALL_NORTH_EAST_CONCAVE].number_of_tiles = tmx_map_pointer->tileset[TILE_SET_WALL_NORTH_EAST_CONCAVE].tile.frame_max;
-    tmx_map_pointer->tileset[TILE_SET_WALL_NORTH_WEST_CONCAVE].first_gid       = tmx_map_pointer->tileset[TILE_SET_WALL_NORTH_EAST_CONCAVE].number_of_tiles+tmx_map_pointer->tileset[TILE_SET_WALL_NORTH_EAST_CONCAVE].first_gid +1;
-    tmx_map_pointer->tileset[TILE_SET_WALL_NORTH_WEST_CONCAVE].image_source    = tile_set_name_wall_north_west_concave;
-    tmx_map_pointer->tileset[TILE_SET_WALL_NORTH_WEST_CONCAVE].image_loaded    = true;
-    tmx_map_pointer->tileset[TILE_SET_WALL_NORTH_WEST_CONCAVE].tile_width      = wall_width;
-    tmx_map_pointer->tileset[TILE_SET_WALL_NORTH_WEST_CONCAVE].tile_height     = wall_height;
-    tmx_map_pointer->tileset[TILE_SET_WALL_NORTH_WEST_CONCAVE].tile.load_spritesheet(tmx_map_pointer->tileset[TILE_SET_WALL_NORTH_WEST_CONCAVE].image_source,tmx_map_pointer->tileset[TILE_SET_WALL_NORTH_WEST_CONCAVE].tile_width,tmx_map_pointer->tileset[TILE_SET_WALL_NORTH_WEST_CONCAVE].tile_height);
-    tmx_map_pointer->tileset[TILE_SET_WALL_NORTH_WEST_CONCAVE].number_of_tiles = tmx_map_pointer->tileset[TILE_SET_WALL_NORTH_WEST_CONCAVE].tile.frame_max;
-    tmx_map_pointer->tileset[TILE_SET_WALL_SOUTH_EAST_CONCAVE].first_gid       = tmx_map_pointer->tileset[TILE_SET_WALL_NORTH_WEST_CONCAVE].number_of_tiles+tmx_map_pointer->tileset[TILE_SET_WALL_NORTH_WEST_CONCAVE].first_gid +1;
-    tmx_map_pointer->tileset[TILE_SET_WALL_SOUTH_EAST_CONCAVE].image_source    = tile_set_name_wall_south_east_concave;
-    tmx_map_pointer->tileset[TILE_SET_WALL_SOUTH_EAST_CONCAVE].image_loaded    = true;
-    tmx_map_pointer->tileset[TILE_SET_WALL_SOUTH_EAST_CONCAVE].tile_width      = wall_width;
-    tmx_map_pointer->tileset[TILE_SET_WALL_SOUTH_EAST_CONCAVE].tile_height     = wall_height;
-    tmx_map_pointer->tileset[TILE_SET_WALL_SOUTH_EAST_CONCAVE].tile.load_spritesheet(tmx_map_pointer->tileset[TILE_SET_WALL_SOUTH_EAST_CONCAVE].image_source,tmx_map_pointer->tileset[TILE_SET_WALL_SOUTH_EAST_CONCAVE].tile_width,tmx_map_pointer->tileset[TILE_SET_WALL_SOUTH_EAST_CONCAVE].tile_height);
-    tmx_map_pointer->tileset[TILE_SET_WALL_SOUTH_EAST_CONCAVE].number_of_tiles = tmx_map_pointer->tileset[TILE_SET_WALL_SOUTH_EAST_CONCAVE].tile.frame_max;
-    tmx_map_pointer->tileset[TILE_SET_WALL_SOUTH_WEST_CONCAVE].first_gid       = tmx_map_pointer->tileset[TILE_SET_WALL_SOUTH_EAST_CONCAVE].number_of_tiles+tmx_map_pointer->tileset[TILE_SET_WALL_SOUTH_EAST_CONCAVE].first_gid +1;
-    tmx_map_pointer->tileset[TILE_SET_WALL_SOUTH_WEST_CONCAVE].image_source    = tile_set_name_wall_south_west_concave;
-    tmx_map_pointer->tileset[TILE_SET_WALL_SOUTH_WEST_CONCAVE].image_loaded    = true;
-    tmx_map_pointer->tileset[TILE_SET_WALL_SOUTH_WEST_CONCAVE].tile_width      = wall_width;
-    tmx_map_pointer->tileset[TILE_SET_WALL_SOUTH_WEST_CONCAVE].tile_height     = wall_height;
-    tmx_map_pointer->tileset[TILE_SET_WALL_SOUTH_WEST_CONCAVE].tile.load_spritesheet(tmx_map_pointer->tileset[TILE_SET_WALL_SOUTH_WEST_CONCAVE].image_source,tmx_map_pointer->tileset[TILE_SET_WALL_SOUTH_WEST_CONCAVE].tile_width,tmx_map_pointer->tileset[TILE_SET_WALL_SOUTH_WEST_CONCAVE].tile_height);
-    tmx_map_pointer->tileset[TILE_SET_WALL_SOUTH_WEST_CONCAVE].number_of_tiles = tmx_map_pointer->tileset[TILE_SET_WALL_SOUTH_WEST_CONCAVE].tile.frame_max;
-    tmx_map_pointer->tileset[TILE_SET_OBJECTS].first_gid       = tmx_map_pointer->tileset[TILE_SET_WALL_SOUTH_WEST_CONCAVE].number_of_tiles+tmx_map_pointer->tileset[TILE_SET_WALL_SOUTH_WEST_CONCAVE].first_gid +1;
-    tmx_map_pointer->tileset[TILE_SET_OBJECTS].image_source    = tile_set_name_objects;
-    tmx_map_pointer->tileset[TILE_SET_OBJECTS].image_loaded    = true;
-    tmx_map_pointer->tileset[TILE_SET_OBJECTS].tile_width      = wall_width;
-    tmx_map_pointer->tileset[TILE_SET_OBJECTS].tile_height     = wall_height;
-    tmx_map_pointer->tileset[TILE_SET_OBJECTS].tile.load_spritesheet(tmx_map_pointer->tileset[TILE_SET_OBJECTS].image_source,tmx_map_pointer->tileset[TILE_SET_OBJECTS].tile_width,tmx_map_pointer->tileset[TILE_SET_OBJECTS].tile_height);
-    tmx_map_pointer->tileset[TILE_SET_OBJECTS].number_of_tiles = tmx_map_pointer->tileset[TILE_SET_OBJECTS].tile.frame_max;
+    tileset_number = TILE_SET_DEFAULT; // TILE_SET_DEFAULT
+    tmx_map_pointer->tileset[tileset_number].first_gid           = 1;
+    tmx_map_pointer->tileset[tileset_number].image_source        = tile_set_name_default;
+    tmx_map_pointer->tileset[tileset_number].tile_width          = tmx_map_pointer->data.map_tile_width;
+    tmx_map_pointer->tileset[tileset_number].tile_height         = tmx_map_pointer->data.map_tile_height;
+    tmx_map_pointer->tileset[tileset_number].tile                = game.texture_manager.add_texture(tmx_map_pointer->tileset[tileset_number].image_source.c_str(),true,tmx_map_pointer->tileset[tileset_number].tile_width,tmx_map_pointer->tileset[tileset_number].tile_height);
+    tmx_map_pointer->tileset[tileset_number].number_of_tiles     = tmx_map_pointer->tileset[tileset_number].tile->frame_max;
+    tileset_number = TILE_SET_FLOOR_TILE; // TILE_SET_FLOOR_TILE
+    tmx_map_pointer->tileset[tileset_number].first_gid           = tmx_map_pointer->tileset[TILE_SET_DEFAULT].number_of_tiles+tmx_map_pointer->tileset[TILE_SET_DEFAULT].first_gid +1;;
+    tmx_map_pointer->tileset[tileset_number].image_source        = tile_set_name_default;
+    tmx_map_pointer->tileset[tileset_number].tile_width          = tmx_map_pointer->data.map_tile_width;
+    tmx_map_pointer->tileset[tileset_number].tile_height         = tmx_map_pointer->data.map_tile_height;
+    tmx_map_pointer->tileset[tileset_number].tile                = game.texture_manager.add_texture(tmx_map_pointer->tileset[tileset_number].image_source.c_str(),true,tmx_map_pointer->tileset[tileset_number].tile_width,tmx_map_pointer->tileset[tileset_number].tile_height);
+    tmx_map_pointer->tileset[tileset_number].number_of_tiles     = tmx_map_pointer->tileset[tileset_number].tile->frame_max;
+    tileset_number = TILE_SET_ROOF; // TILE_SET_ROOF
+    tmx_map_pointer->tileset[tileset_number].first_gid           = tmx_map_pointer->tileset[TILE_SET_FLOOR_TILE].number_of_tiles+tmx_map_pointer->tileset[TILE_SET_FLOOR_TILE].first_gid +1;;
+    tmx_map_pointer->tileset[tileset_number].image_source        = tile_set_name_default;
+    tmx_map_pointer->tileset[tileset_number].tile_width          = tmx_map_pointer->data.map_tile_width;
+    tmx_map_pointer->tileset[tileset_number].tile_height         = tmx_map_pointer->data.map_tile_height;
+    tmx_map_pointer->tileset[tileset_number].tile                = game.texture_manager.add_texture(tmx_map_pointer->tileset[tileset_number].image_source.c_str(),true,tmx_map_pointer->tileset[tileset_number].tile_width,tmx_map_pointer->tileset[tileset_number].tile_height);
+    tmx_map_pointer->tileset[tileset_number].number_of_tiles     = tmx_map_pointer->tileset[tileset_number].tile->frame_max;
+    tileset_number = TILE_SET_WALL_NORTH; // TILE_SET_WALL_NORTH
+    tmx_map_pointer->tileset[tileset_number].first_gid           = tmx_map_pointer->tileset[TILE_SET_ROOF].number_of_tiles+tmx_map_pointer->tileset[TILE_SET_ROOF].first_gid +1;;
+    tmx_map_pointer->tileset[tileset_number].image_source        = tile_set_name_default;
+    tmx_map_pointer->tileset[tileset_number].tile_width          = tmx_map_pointer->data.map_tile_width;
+    tmx_map_pointer->tileset[tileset_number].tile_height         = tmx_map_pointer->data.map_tile_height;
+    tmx_map_pointer->tileset[tileset_number].tile                = game.texture_manager.add_texture(tmx_map_pointer->tileset[tileset_number].image_source.c_str(),true,tmx_map_pointer->tileset[tileset_number].tile_width,tmx_map_pointer->tileset[tileset_number].tile_height);
+    tmx_map_pointer->tileset[tileset_number].number_of_tiles     = tmx_map_pointer->tileset[tileset_number].tile->frame_max;
+    tileset_number = TILE_SET_WALL_SOUTH; // TILE_SET_WALL_SOUTH
+    tmx_map_pointer->tileset[tileset_number].first_gid           = tmx_map_pointer->tileset[TILE_SET_WALL_NORTH].number_of_tiles+tmx_map_pointer->tileset[TILE_SET_WALL_NORTH].first_gid +1;;
+    tmx_map_pointer->tileset[tileset_number].image_source        = tile_set_name_default;
+    tmx_map_pointer->tileset[tileset_number].tile_width          = tmx_map_pointer->data.map_tile_width;
+    tmx_map_pointer->tileset[tileset_number].tile_height         = tmx_map_pointer->data.map_tile_height;
+    tmx_map_pointer->tileset[tileset_number].tile                = game.texture_manager.add_texture(tmx_map_pointer->tileset[tileset_number].image_source.c_str(),true,tmx_map_pointer->tileset[tileset_number].tile_width,tmx_map_pointer->tileset[tileset_number].tile_height);
+    tmx_map_pointer->tileset[tileset_number].number_of_tiles     = tmx_map_pointer->tileset[tileset_number].tile->frame_max;
+    tileset_number = TILE_SET_WALL_EAST; // TILE_SET_WALL_EAST
+    tmx_map_pointer->tileset[tileset_number].first_gid           = tmx_map_pointer->tileset[TILE_SET_WALL_SOUTH].number_of_tiles+tmx_map_pointer->tileset[TILE_SET_WALL_SOUTH].first_gid +1;;
+    tmx_map_pointer->tileset[tileset_number].image_source        = tile_set_name_default;
+    tmx_map_pointer->tileset[tileset_number].tile_width          = tmx_map_pointer->data.map_tile_width;
+    tmx_map_pointer->tileset[tileset_number].tile_height         = tmx_map_pointer->data.map_tile_height;
+    tmx_map_pointer->tileset[tileset_number].tile                = game.texture_manager.add_texture(tmx_map_pointer->tileset[tileset_number].image_source.c_str(),true,tmx_map_pointer->tileset[tileset_number].tile_width,tmx_map_pointer->tileset[tileset_number].tile_height);
+    tmx_map_pointer->tileset[tileset_number].number_of_tiles     = tmx_map_pointer->tileset[tileset_number].tile->frame_max;
+    tileset_number = TILE_SET_WALL_WEST; // TILE_SET_WALL_WEST
+    tmx_map_pointer->tileset[tileset_number].first_gid           = tmx_map_pointer->tileset[TILE_SET_WALL_EAST].number_of_tiles+tmx_map_pointer->tileset[TILE_SET_WALL_EAST].first_gid +1;;
+    tmx_map_pointer->tileset[tileset_number].image_source        = tile_set_name_default;
+    tmx_map_pointer->tileset[tileset_number].tile_width          = tmx_map_pointer->data.map_tile_width;
+    tmx_map_pointer->tileset[tileset_number].tile_height         = tmx_map_pointer->data.map_tile_height;
+    tmx_map_pointer->tileset[tileset_number].tile                = game.texture_manager.add_texture(tmx_map_pointer->tileset[tileset_number].image_source.c_str(),true,tmx_map_pointer->tileset[tileset_number].tile_width,tmx_map_pointer->tileset[tileset_number].tile_height);
+    tmx_map_pointer->tileset[tileset_number].number_of_tiles     = tmx_map_pointer->tileset[tileset_number].tile->frame_max;
+    tileset_number = TILE_SET_WALL_NORTH_EAST_CONVEX; // TILE_SET_WALL_NORTH_EAST_CONVEX
+    tmx_map_pointer->tileset[tileset_number].first_gid           = tmx_map_pointer->tileset[TILE_SET_WALL_WEST].number_of_tiles+tmx_map_pointer->tileset[TILE_SET_WALL_WEST].first_gid +1;;
+    tmx_map_pointer->tileset[tileset_number].image_source        = tile_set_name_default;
+    tmx_map_pointer->tileset[tileset_number].tile_width          = tmx_map_pointer->data.map_tile_width;
+    tmx_map_pointer->tileset[tileset_number].tile_height         = tmx_map_pointer->data.map_tile_height;
+    tmx_map_pointer->tileset[tileset_number].tile                = game.texture_manager.add_texture(tmx_map_pointer->tileset[tileset_number].image_source.c_str(),true,tmx_map_pointer->tileset[tileset_number].tile_width,tmx_map_pointer->tileset[tileset_number].tile_height);
+    tmx_map_pointer->tileset[tileset_number].number_of_tiles     = tmx_map_pointer->tileset[tileset_number].tile->frame_max;
+    tileset_number = TILE_SET_WALL_NORTH_WEST_CONVEX; // TILE_SET_WALL_NORTH_WEST_CONVEX
+    tmx_map_pointer->tileset[tileset_number].first_gid           = tmx_map_pointer->tileset[TILE_SET_WALL_NORTH_EAST_CONVEX].number_of_tiles+tmx_map_pointer->tileset[TILE_SET_WALL_NORTH_EAST_CONVEX].first_gid +1;;
+    tmx_map_pointer->tileset[tileset_number].image_source        = tile_set_name_default;
+    tmx_map_pointer->tileset[tileset_number].tile_width          = tmx_map_pointer->data.map_tile_width;
+    tmx_map_pointer->tileset[tileset_number].tile_height         = tmx_map_pointer->data.map_tile_height;
+    tmx_map_pointer->tileset[tileset_number].tile                = game.texture_manager.add_texture(tmx_map_pointer->tileset[tileset_number].image_source.c_str(),true,tmx_map_pointer->tileset[tileset_number].tile_width,tmx_map_pointer->tileset[tileset_number].tile_height);
+    tmx_map_pointer->tileset[tileset_number].number_of_tiles     = tmx_map_pointer->tileset[tileset_number].tile->frame_max;
+    tileset_number = TILE_SET_WALL_SOUTH_EAST_CONVEX; // TILE_SET_WALL_SOUTH_EAST_CONVEX
+    tmx_map_pointer->tileset[tileset_number].first_gid           = tmx_map_pointer->tileset[TILE_SET_WALL_NORTH_WEST_CONVEX].number_of_tiles+tmx_map_pointer->tileset[TILE_SET_WALL_NORTH_WEST_CONVEX].first_gid +1;;
+    tmx_map_pointer->tileset[tileset_number].image_source        = tile_set_name_default;
+    tmx_map_pointer->tileset[tileset_number].tile_width          = tmx_map_pointer->data.map_tile_width;
+    tmx_map_pointer->tileset[tileset_number].tile_height         = tmx_map_pointer->data.map_tile_height;
+    tmx_map_pointer->tileset[tileset_number].tile                = game.texture_manager.add_texture(tmx_map_pointer->tileset[tileset_number].image_source.c_str(),true,tmx_map_pointer->tileset[tileset_number].tile_width,tmx_map_pointer->tileset[tileset_number].tile_height);
+    tmx_map_pointer->tileset[tileset_number].number_of_tiles     = tmx_map_pointer->tileset[tileset_number].tile->frame_max;
+    tileset_number = TILE_SET_WALL_SOUTH_WEST_CONVEX; // TILE_SET_WALL_SOUTH_WEST_CONVEX
+    tmx_map_pointer->tileset[tileset_number].first_gid           = tmx_map_pointer->tileset[TILE_SET_WALL_SOUTH_EAST_CONVEX].number_of_tiles+tmx_map_pointer->tileset[TILE_SET_WALL_SOUTH_EAST_CONVEX].first_gid +1;;
+    tmx_map_pointer->tileset[tileset_number].image_source        = tile_set_name_default;
+    tmx_map_pointer->tileset[tileset_number].tile_width          = tmx_map_pointer->data.map_tile_width;
+    tmx_map_pointer->tileset[tileset_number].tile_height         = tmx_map_pointer->data.map_tile_height;
+    tmx_map_pointer->tileset[tileset_number].tile                = game.texture_manager.add_texture(tmx_map_pointer->tileset[tileset_number].image_source.c_str(),true,tmx_map_pointer->tileset[tileset_number].tile_width,tmx_map_pointer->tileset[tileset_number].tile_height);
+    tmx_map_pointer->tileset[tileset_number].number_of_tiles     = tmx_map_pointer->tileset[tileset_number].tile->frame_max;
+    tileset_number = TILE_SET_WALL_NORTH_EAST_CONCAVE; // TILE_SET_WALL_NORTH_EAST_CONCAVE
+    tmx_map_pointer->tileset[tileset_number].first_gid           = tmx_map_pointer->tileset[TILE_SET_WALL_SOUTH_WEST_CONVEX].number_of_tiles+tmx_map_pointer->tileset[TILE_SET_WALL_SOUTH_WEST_CONVEX].first_gid +1;;
+    tmx_map_pointer->tileset[tileset_number].image_source        = tile_set_name_default;
+    tmx_map_pointer->tileset[tileset_number].tile_width          = tmx_map_pointer->data.map_tile_width;
+    tmx_map_pointer->tileset[tileset_number].tile_height         = tmx_map_pointer->data.map_tile_height;
+    tmx_map_pointer->tileset[tileset_number].tile                = game.texture_manager.add_texture(tmx_map_pointer->tileset[tileset_number].image_source.c_str(),true,tmx_map_pointer->tileset[tileset_number].tile_width,tmx_map_pointer->tileset[tileset_number].tile_height);
+    tmx_map_pointer->tileset[tileset_number].number_of_tiles     = tmx_map_pointer->tileset[tileset_number].tile->frame_max;
+    tileset_number = TILE_SET_WALL_NORTH_WEST_CONCAVE; // TILE_SET_WALL_NORTH_WEST_CONCAVE
+    tmx_map_pointer->tileset[tileset_number].first_gid           = tmx_map_pointer->tileset[TILE_SET_WALL_NORTH_EAST_CONCAVE].number_of_tiles+tmx_map_pointer->tileset[TILE_SET_WALL_NORTH_EAST_CONCAVE].first_gid +1;;
+    tmx_map_pointer->tileset[tileset_number].image_source        = tile_set_name_default;
+    tmx_map_pointer->tileset[tileset_number].tile_width          = tmx_map_pointer->data.map_tile_width;
+    tmx_map_pointer->tileset[tileset_number].tile_height         = tmx_map_pointer->data.map_tile_height;
+    tmx_map_pointer->tileset[tileset_number].tile                = game.texture_manager.add_texture(tmx_map_pointer->tileset[tileset_number].image_source.c_str(),true,tmx_map_pointer->tileset[tileset_number].tile_width,tmx_map_pointer->tileset[tileset_number].tile_height);
+    tmx_map_pointer->tileset[tileset_number].number_of_tiles     = tmx_map_pointer->tileset[tileset_number].tile->frame_max;
+    tileset_number = TILE_SET_WALL_SOUTH_EAST_CONCAVE; // TILE_SET_WALL_SOUTH_EAST_CONCAVE
+    tmx_map_pointer->tileset[tileset_number].first_gid           = tmx_map_pointer->tileset[TILE_SET_WALL_NORTH_WEST_CONCAVE].number_of_tiles+tmx_map_pointer->tileset[TILE_SET_WALL_NORTH_WEST_CONCAVE].first_gid +1;;
+    tmx_map_pointer->tileset[tileset_number].image_source        = tile_set_name_default;
+    tmx_map_pointer->tileset[tileset_number].tile_width          = tmx_map_pointer->data.map_tile_width;
+    tmx_map_pointer->tileset[tileset_number].tile_height         = tmx_map_pointer->data.map_tile_height;
+    tmx_map_pointer->tileset[tileset_number].tile                = game.texture_manager.add_texture(tmx_map_pointer->tileset[tileset_number].image_source.c_str(),true,tmx_map_pointer->tileset[tileset_number].tile_width,tmx_map_pointer->tileset[tileset_number].tile_height);
+    tmx_map_pointer->tileset[tileset_number].number_of_tiles     = tmx_map_pointer->tileset[tileset_number].tile->frame_max;
+    tileset_number = TILE_SET_WALL_SOUTH_WEST_CONCAVE; // TILE_SET_WALL_SOUTH_WEST_CONCAVE
+    tmx_map_pointer->tileset[tileset_number].first_gid           = tmx_map_pointer->tileset[TILE_SET_WALL_SOUTH_EAST_CONCAVE].number_of_tiles+tmx_map_pointer->tileset[TILE_SET_WALL_SOUTH_EAST_CONCAVE].first_gid +1;;
+    tmx_map_pointer->tileset[tileset_number].image_source        = tile_set_name_default;
+    tmx_map_pointer->tileset[tileset_number].tile_width          = tmx_map_pointer->data.map_tile_width;
+    tmx_map_pointer->tileset[tileset_number].tile_height         = tmx_map_pointer->data.map_tile_height;
+    tmx_map_pointer->tileset[tileset_number].tile                = game.texture_manager.add_texture(tmx_map_pointer->tileset[tileset_number].image_source.c_str(),true,tmx_map_pointer->tileset[tileset_number].tile_width,tmx_map_pointer->tileset[tileset_number].tile_height);
+    tmx_map_pointer->tileset[tileset_number].number_of_tiles     = tmx_map_pointer->tileset[tileset_number].tile->frame_max;
+    tileset_number = TILE_SET_OBJECTS; // TILE_SET_OBJECTS
+    tmx_map_pointer->tileset[tileset_number].first_gid           = tmx_map_pointer->tileset[TILE_SET_WALL_SOUTH_WEST_CONCAVE].number_of_tiles+tmx_map_pointer->tileset[TILE_SET_WALL_SOUTH_WEST_CONCAVE].first_gid +1;;
+    tmx_map_pointer->tileset[tileset_number].image_source        = tile_set_name_default;
+    tmx_map_pointer->tileset[tileset_number].tile_width          = tmx_map_pointer->data.map_tile_width;
+    tmx_map_pointer->tileset[tileset_number].tile_height         = tmx_map_pointer->data.map_tile_height;
+    tmx_map_pointer->tileset[tileset_number].tile                = game.texture_manager.add_texture(tmx_map_pointer->tileset[tileset_number].image_source.c_str(),true,tmx_map_pointer->tileset[tileset_number].tile_width,tmx_map_pointer->tileset[tileset_number].tile_height);
+    tmx_map_pointer->tileset[tileset_number].number_of_tiles     = tmx_map_pointer->tileset[tileset_number].tile->frame_max;
     int  layer_floor    = 0;
     int  layer_object   = 1;
     int  layer_wall     = 2;

@@ -108,7 +108,6 @@ window_element_class::window_element_class(void)
     window_element_class::tooltip.size.y                 = 0.0f;
     window_element_class::tooltip.size.z                 = 0.0f;
     window_element_class::tooltip.image_enabled          = false;
-    window_element_class::tooltip.image_path             = "";
     window_element_class::tooltip.image_size.x           = 0.0f;
     window_element_class::tooltip.image_size.y           = 0.0f;
     window_element_class::tooltip.image_size.z           = 0.0f;
@@ -139,10 +138,6 @@ window_element_class::window_element_class(void)
     window_element_class::drag_active                    = false;
     window_element_class::drop_active                    = false;
     window_element_class::texture.angle                  = 0.0f;
-    window_element_class::texture.base.image_path        = "";
-    window_element_class::texture.normal.image_path      = "";
-    window_element_class::texture.highlighted.image_path = "";
-    window_element_class::texture.disabled.image_path    = "";
     window_element_class::zoom.enabled                   = true;
     window_element_class::zoom.maximum                   = 0.0f;
     window_element_class::zoom.value                     = 0.0f;
@@ -163,8 +158,8 @@ void window_element_class::render(void)
         switch (window_element_class::type)
         {
             case IMAGE:
-                if (window_element_class::selected) window_element_class::texture.highlighted.image.draw(false,window_element_class::position.x,window_element_class::position.y,window_element_class::position.z,window_element_class::size.x+zoom_value,window_element_class::size.y+zoom_value,window_element_class::texture.angle);
-                window_element_class::texture.normal.image.draw(false,window_element_class::position.x,window_element_class::position.y,window_element_class::position.z,window_element_class::size.x+zoom_value,window_element_class::size.y+zoom_value,window_element_class::texture.angle);
+                if (window_element_class::selected) game.texture_manager.draw(window_element_class::texture.highlighted,false,window_element_class::position.x,window_element_class::position.y,window_element_class::position.z,window_element_class::size.x+zoom_value,window_element_class::size.y+zoom_value,window_element_class::texture.angle);
+                game.texture_manager.draw(window_element_class::texture.normal,false,window_element_class::position.x,window_element_class::position.y,window_element_class::position.z,window_element_class::size.x+zoom_value,window_element_class::size.y+zoom_value,window_element_class::texture.angle);
                 if ((window_element_class::title.enabled) && (window_element_class::mouse_over))
                 {
                     window_element_class::font.write(window_element_class::color.highlighted.r,window_element_class::color.highlighted.g,window_element_class::color.highlighted.b,window_element_class::color.highlighted.a,window_element_class::title.position.x,window_element_class::title.position.y,window_element_class::title.size.x,window_element_class::title.size.y,window_element_class::title.text);
@@ -174,15 +169,15 @@ void window_element_class::render(void)
                 switch (window_element_class::state)
                 {
                     case NORMAL:
-                        window_element_class::texture.normal.image.draw(false,window_element_class::position.x,window_element_class::position.y,window_element_class::position.z,window_element_class::size.x+zoom_value,window_element_class::size.y+zoom_value,window_element_class::texture.angle);
+                        game.texture_manager.draw(window_element_class::texture.normal,false,window_element_class::position.x,window_element_class::position.y,window_element_class::position.z,window_element_class::size.x+zoom_value,window_element_class::size.y+zoom_value,window_element_class::texture.angle);
                         if (window_element_class::title.enabled) window_element_class::font.write(window_element_class::color.normal.r,window_element_class::color.normal.g,window_element_class::color.normal.b,window_element_class::color.normal.a,window_element_class::title.position.x,window_element_class::title.position.y,window_element_class::title.size.x,window_element_class::title.size.y,window_element_class::title.text);
                     break;
                     case HIGHLIGHTED:
-                        window_element_class::texture.highlighted.image.draw(false,window_element_class::position.x,window_element_class::position.y,window_element_class::position.z,window_element_class::size.x+zoom_value,window_element_class::size.y+zoom_value,window_element_class::texture.angle);
+                        game.texture_manager.draw(window_element_class::texture.highlighted,false,window_element_class::position.x,window_element_class::position.y,window_element_class::position.z,window_element_class::size.x+zoom_value,window_element_class::size.y+zoom_value,window_element_class::texture.angle);
                         if (window_element_class::title.enabled) window_element_class::font.write(window_element_class::color.highlighted.r,window_element_class::color.highlighted.g,window_element_class::color.highlighted.b,window_element_class::color.highlighted.a,window_element_class::title.position.x,window_element_class::title.position.y,window_element_class::title.size.x,window_element_class::title.size.y,window_element_class::title.text);
                     break;
                     case DISABLED:
-                        window_element_class::texture.disabled.image.draw(false,window_element_class::position.x,window_element_class::position.y,window_element_class::position.z,window_element_class::size.x+zoom_value,window_element_class::size.y+zoom_value,window_element_class::texture.angle);
+                        game.texture_manager.draw(window_element_class::texture.disabled,false,window_element_class::position.x,window_element_class::position.y,window_element_class::position.z,window_element_class::size.x+zoom_value,window_element_class::size.y+zoom_value,window_element_class::texture.angle);
                         if (window_element_class::title.enabled) window_element_class::font.write(window_element_class::color.disabled.r,window_element_class::color.disabled.g,window_element_class::color.disabled.b,window_element_class::color.disabled.a,window_element_class::title.position.x,window_element_class::title.position.y,window_element_class::title.size.x,window_element_class::title.size.y,window_element_class::title.text);
                     break;
                     default:
@@ -212,17 +207,17 @@ void window_element_class::render(void)
                 {
                     case NORMAL:
                         temp_float = (window_element_class::value / window_element_class::value_max) * (window_element_class::size.x+zoom_value);
-                        window_element_class::texture.normal.image.draw(false,window_element_class::position.x-((window_element_class::size.x/2)+zoom_value)+(temp_float/2.0f),window_element_class::position.y,window_element_class::position.z,temp_float,window_element_class::size.y+zoom_value,window_element_class::texture.angle);
+                        game.texture_manager.draw(window_element_class::texture.normal,false,window_element_class::position.x-((window_element_class::size.x/2)+zoom_value)+(temp_float/2.0f),window_element_class::position.y,window_element_class::position.z,temp_float,window_element_class::size.y+zoom_value,window_element_class::texture.angle);
                         if (window_element_class::title.enabled) window_element_class::font.write(window_element_class::color.normal.r,window_element_class::color.normal.g,window_element_class::color.normal.b,window_element_class::color.normal.a,window_element_class::title.position.x,window_element_class::title.position.y,window_element_class::title.size.x,window_element_class::title.size.y,window_element_class::title.text);
                     break;
                     case HIGHLIGHTED:
                         temp_float = (window_element_class::value / window_element_class::value_max) * (window_element_class::size.x+zoom_value);
-                        window_element_class::texture.highlighted.image.draw(false,window_element_class::position.x-((window_element_class::size.x/2)+zoom_value)+(temp_float/2.0f),window_element_class::position.y,window_element_class::position.z,temp_float,window_element_class::size.y+zoom_value,window_element_class::texture.angle);
+                        game.texture_manager.draw(window_element_class::texture.highlighted,false,window_element_class::position.x-((window_element_class::size.x/2)+zoom_value)+(temp_float/2.0f),window_element_class::position.y,window_element_class::position.z,temp_float,window_element_class::size.y+zoom_value,window_element_class::texture.angle);
                         if (window_element_class::title.enabled) window_element_class::font.write(window_element_class::color.highlighted.r,window_element_class::color.highlighted.g,window_element_class::color.highlighted.b,window_element_class::color.highlighted.a,window_element_class::title.position.x,window_element_class::title.position.y,window_element_class::title.size.x,window_element_class::title.size.y,window_element_class::title.text);
                     break;
                     case DISABLED:
                         temp_float = (window_element_class::value / window_element_class::value_max) * (window_element_class::size.x+zoom_value);
-                        window_element_class::texture.disabled.image.draw(false,window_element_class::position.x-((window_element_class::size.x/2)+zoom_value)+(temp_float/2.0f),window_element_class::position.y,window_element_class::position.z,temp_float,window_element_class::size.y+zoom_value,window_element_class::texture.angle);
+                        game.texture_manager.draw(window_element_class::texture.disabled,false,window_element_class::position.x-((window_element_class::size.x/2)+zoom_value)+(temp_float/2.0f),window_element_class::position.y,window_element_class::position.z,temp_float,window_element_class::size.y+zoom_value,window_element_class::texture.angle);
                         if (window_element_class::title.enabled) window_element_class::font.write(window_element_class::color.disabled.r,window_element_class::color.disabled.g,window_element_class::color.disabled.b,window_element_class::color.disabled.a,window_element_class::title.position.x,window_element_class::title.position.y,window_element_class::title.size.x,window_element_class::title.size.y,window_element_class::title.text);
                     break;
                     default:
@@ -240,7 +235,7 @@ void window_element_class::render(void)
             case ITEM:
                 if (window_element_class::value > -1)
                 {
-                    window_element_class::texture.normal.image.draw(false,window_element_class::position.x,window_element_class::position.y,window_element_class::position.z,window_element_class::size.x+zoom_value,window_element_class::size.y+zoom_value,window_element_class::texture.angle);
+                    game.texture_manager.draw(window_element_class::texture.normal,false,window_element_class::position.x,window_element_class::position.y,window_element_class::position.z,window_element_class::size.x+zoom_value,window_element_class::size.y+zoom_value,window_element_class::texture.angle);
                 }
                 // Font write -> Item quantity
             break;
@@ -255,7 +250,7 @@ void window_element_class::render_item_if_dragged(void)
     float zoom_value = (window_element_class::zoom.enabled) ? window_element_class::zoom.value : 0.0f;
     if ((window_element_class::drag_active) && (window_element_class::value > -1))
     {
-        window_element_class::texture.normal.image.draw(false,window_element_class::position.x,window_element_class::position.y,window_element_class::position.z,window_element_class::size.x+zoom_value,window_element_class::size.y+zoom_value,window_element_class::texture.angle);
+        game.texture_manager.draw(window_element_class::texture.normal,false,window_element_class::position.x,window_element_class::position.y,window_element_class::position.z,window_element_class::size.x+zoom_value,window_element_class::size.y+zoom_value,window_element_class::texture.angle);
     }
 };
 
@@ -269,7 +264,7 @@ void window_element_class::render_tooltips(void)
             {
                 float temp_size_x = window_element_class::tooltip.image_size.x;
                 float temp_size_y = window_element_class::tooltip.image_size.y;
-                window_element_class::tooltip.image.draw(false,game.core.io.mouse_x+(temp_size_x*0.25f),game.core.io.mouse_y+(temp_size_y*0.25f),window_element_class::tooltip.position.z,temp_size_x,temp_size_y,window_element_class::texture.angle);
+                game.texture_manager.draw(window_element_class::tooltip.image,false,game.core.io.mouse_x+(temp_size_x*0.25f),game.core.io.mouse_y+(temp_size_y*0.25f),window_element_class::tooltip.position.z,temp_size_x,temp_size_y,window_element_class::texture.angle);
             }
             window_element_class::font.write(window_element_class::color.highlighted.r,window_element_class::color.highlighted.g,window_element_class::color.highlighted.b,window_element_class::color.highlighted.a,game.core.io.mouse_x,game.core.io.mouse_y,window_element_class::tooltip.size.x,window_element_class::tooltip.size.y,window_element_class::tooltip.text);
         }
@@ -425,17 +420,5 @@ event_type  window_element_class::process(bool element_in_focus)
     }
     else window_element_class::event.id = EVENT_NONE;
     return(window_element_class::event);
-};
-
-void window_element_class::reload_textures(void)
-{
-    if (window_element_class::active)
-    {
-        if (window_element_class::texture.normal.image_path.length() > 3)      window_element_class::texture.normal.image.load_image     (window_element_class::texture.normal.image_path);
-        if (window_element_class::texture.highlighted.image_path.length() > 3) window_element_class::texture.highlighted.image.load_image(window_element_class::texture.highlighted.image_path);
-        if (window_element_class::texture.disabled.image_path.length() > 3)    window_element_class::texture.disabled.image.load_image   (window_element_class::texture.disabled.image_path);
-        if (window_element_class::texture.base.image_path.length() > 3)        window_element_class::texture.base.image.load_image       (window_element_class::texture.base.image_path);
-        if (window_element_class::tooltip.image_path.length() > 3)             window_element_class::tooltip.image.load_image            (window_element_class::tooltip.image_path);
-    }
 };
 

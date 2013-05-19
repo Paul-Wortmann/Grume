@@ -209,8 +209,6 @@
 		<Unit filename="source/core/sound.hpp" />
 		<Unit filename="source/core/texture_manager.cpp" />
 		<Unit filename="source/core/texture_manager.hpp" />
-		<Unit filename="source/core/textures.cpp" />
-		<Unit filename="source/core/textures.hpp" />
 		<Unit filename="source/core/timer.cpp" />
 		<Unit filename="source/core/timer.hpp" />
 		<Unit filename="source/core/types.hpp" />

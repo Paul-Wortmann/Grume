@@ -45,14 +45,10 @@ void setup_menu_options(int UID)
     game.window_manager.window[window_number].size.x                  = 0.5f;
     game.window_manager.window[window_number].size.y                  = game.window_manager.window[window_number].size.x * 2.5f;
     game.window_manager.window[window_number].texture.angle           = 0.0f;
-    game.window_manager.window[window_number].texture.base.image_path = "data/textures/UI/menu/background_02.png";
-    game.window_manager.window[window_number].texture.base.image.load_image(game.window_manager.window[window_number].texture.base.image_path);
-    game.window_manager.window[window_number].texture.normal.image_path = "data/textures/UI/menu/button_normal.png";
-    game.window_manager.window[window_number].texture.normal.image.load_image(game.window_manager.window[window_number].texture.normal.image_path);
-    game.window_manager.window[window_number].texture.highlighted.image_path = "data/textures/UI/menu/button_highlighted.png";
-    game.window_manager.window[window_number].texture.highlighted.image.load_image(game.window_manager.window[window_number].texture.highlighted.image_path);
-    game.window_manager.window[window_number].texture.disabled.image_path = "data/textures/UI/menu/button_disabled.png";
-    game.window_manager.window[window_number].texture.disabled.image.load_image(game.window_manager.window[window_number].texture.disabled.image_path);
+    game.window_manager.window[window_number].texture.base                = game.texture_manager.add_texture("data/textures/UI/menu/background_02.png");
+    game.window_manager.window[window_number].texture.normal              = game.texture_manager.add_texture("data/textures/UI/menu/button_normal.png");
+    game.window_manager.window[window_number].texture.highlighted         = game.texture_manager.add_texture("data/textures/UI/menu/button_highlighted.png");
+    game.window_manager.window[window_number].texture.disabled            = game.texture_manager.add_texture("data/textures/UI/menu/button_disabled.png");
     game.window_manager.window[window_number].sound.on_click.enabled      = true;
     game.window_manager.window[window_number].sound.on_click.sound_path   = "data/sound/menu/menu_select_00.wav";
     game.window_manager.window[window_number].sound.on_click.sound.load(game.window_manager.window[window_number].sound.on_click.sound_path);
@@ -105,10 +101,8 @@ void setup_menu_options(int UID)
     game.window_manager.window[window_number].element[element_number].size.y                    = 0.1f;
     game.window_manager.window[window_number].element[element_number].position.x                = game.window_manager.window[window_number].position.x+(game.window_manager.window[window_number].size.x/2.0f)-(game.window_manager.window[window_number].element[element_number].size.x/1.8f);
     game.window_manager.window[window_number].element[element_number].position.y                = game.window_manager.window[window_number].title.position.y+(game.window_manager.window[window_number].element[element_number].size.y/8.0f);
-    game.window_manager.window[window_number].element[element_number].texture.normal.image_path = "data/textures/UI/menu/close_button.png";
-    game.window_manager.window[window_number].element[element_number].texture.normal.image.load_image(game.window_manager.window[window_number].element[element_number].texture.normal.image_path);
-    game.window_manager.window[window_number].element[element_number].texture.highlighted.image_path = "data/textures/UI/menu/close_button_highlighted.png";
-    game.window_manager.window[window_number].element[element_number].texture.highlighted.image.load_image(game.window_manager.window[window_number].element[element_number].texture.highlighted.image_path);
+    game.window_manager.window[window_number].element[element_number].texture.normal            = game.texture_manager.add_texture("data/textures/UI/menu/close_button.png");
+    game.window_manager.window[window_number].element[element_number].texture.highlighted       = game.texture_manager.add_texture("data/textures/UI/menu/close_button_highlighted.png");
     game.window_manager.window[window_number].element[element_number].sound                     = game.window_manager.window[window_number].sound;
     game.window_manager.window[window_number].element[element_number].font                      = game.window_manager.window[window_number].font;
     game.window_manager.window[window_number].element[element_number].mouse_delay.maximum       = 30;
@@ -173,12 +167,9 @@ void setup_menu_options(int UID)
     game.window_manager.window[window_number].element[element_number].position.x                = game.window_manager.window[window_number].position.x;
     game.window_manager.window[window_number].element[element_number].position.y                = game.window_manager.window[window_number].position.y+(game.window_manager.window[window_number].size.y/2.0f)-(game.window_manager.window[window_number].element[element_number].size.y*5.75f);
     game.window_manager.window[window_number].element[element_number].texture                   = game.window_manager.window[window_number].texture;
-    game.window_manager.window[window_number].element[element_number].texture.normal.image_path      = "data/textures/UI/menu/selection_box.png";
-    game.window_manager.window[window_number].element[element_number].texture.normal.image.load_image(game.window_manager.window[window_number].element[element_number].texture.normal.image_path);
-    game.window_manager.window[window_number].element[element_number].texture.highlighted.image_path = "data/textures/UI/menu/selection_box.png";
-    game.window_manager.window[window_number].element[element_number].texture.highlighted.image.load_image(game.window_manager.window[window_number].element[element_number].texture.highlighted.image_path);
-    game.window_manager.window[window_number].element[element_number].texture.disabled.image_path    = "data/textures/UI/menu/selection_box.png";
-    game.window_manager.window[window_number].element[element_number].texture.disabled.image.load_image(game.window_manager.window[window_number].element[element_number].texture.disabled.image_path);
+    game.window_manager.window[window_number].element[element_number].texture.normal            = game.texture_manager.add_texture("data/textures/UI/menu/selection_box.png");
+    game.window_manager.window[window_number].element[element_number].texture.highlighted       = game.texture_manager.add_texture("data/textures/UI/menu/selection_box.png");
+    game.window_manager.window[window_number].element[element_number].texture.disabled          = game.texture_manager.add_texture("data/textures/UI/menu/selection_box.png");
     game.window_manager.window[window_number].element[element_number].sound                     = game.window_manager.window[window_number].sound;
 
     element_number = 3; // Resolution selection element 0
@@ -195,14 +186,10 @@ void setup_menu_options(int UID)
     game.window_manager.window[window_number].element[element_number].size.y                    = game.window_manager.window[window_number].size.y / 10.0f;
     game.window_manager.window[window_number].element[element_number].position.x                = game.window_manager.window[window_number].position.x-(game.window_manager.window[window_number].size.x/2.0f)+(game.window_manager.window[window_number].element[element_number].size.x*2.5f);
     game.window_manager.window[window_number].element[element_number].position.y                = game.window_manager.window[window_number].position.y+(game.window_manager.window[window_number].size.y/2.0f)-(game.window_manager.window[window_number].element[element_number].size.y*4.5f);
-    game.window_manager.window[window_number].element[element_number].texture.base.image_path        = "data/textures/UI/menu/selection_box.png";
-    game.window_manager.window[window_number].element[element_number].texture.base.image.load_image(game.window_manager.window[window_number].element[element_number].texture.base.image_path);
-    game.window_manager.window[window_number].element[element_number].texture.normal.image_path      = "data/textures/UI/menu/resolution_icon.png";
-    game.window_manager.window[window_number].element[element_number].texture.normal.image.load_image(game.window_manager.window[window_number].element[element_number].texture.normal.image_path);
-    game.window_manager.window[window_number].element[element_number].texture.highlighted.image_path = "data/textures/UI/menu/selection_box.png";
-    game.window_manager.window[window_number].element[element_number].texture.highlighted.image.load_image(game.window_manager.window[window_number].element[element_number].texture.highlighted.image_path);
-    game.window_manager.window[window_number].element[element_number].texture.disabled.image_path    = "data/textures/UI/menu/selection_box.png";
-    game.window_manager.window[window_number].element[element_number].texture.disabled.image.load_image(game.window_manager.window[window_number].element[element_number].texture.disabled.image_path);
+    game.window_manager.window[window_number].element[element_number].texture.base              = game.texture_manager.add_texture("data/textures/UI/menu/selection_box.png");
+    game.window_manager.window[window_number].element[element_number].texture.normal            = game.texture_manager.add_texture("data/textures/UI/menu/resolution_icon.png");
+    game.window_manager.window[window_number].element[element_number].texture.highlighted       = game.texture_manager.add_texture("data/textures/UI/menu/selection_box.png");
+    game.window_manager.window[window_number].element[element_number].texture.disabled          = game.texture_manager.add_texture("data/textures/UI/menu/selection_box.png");
     game.window_manager.window[window_number].element[element_number].title.size.x              = game.window_manager.window[window_number].element[element_number].title.text.length()/2.4f;;
     game.window_manager.window[window_number].element[element_number].title.size.y              = game.window_manager.window[window_number].element[element_number].title.size.x*4.0f;
     game.window_manager.window[window_number].element[element_number].title.position.x          = game.window_manager.window[window_number].position.x - (game.window_manager.window[window_number].element[element_number].title.size.x/42.0f);
@@ -225,14 +212,10 @@ void setup_menu_options(int UID)
     game.window_manager.window[window_number].element[element_number].size.y                    = game.window_manager.window[window_number].size.y / 10.0f;
     game.window_manager.window[window_number].element[element_number].position.x                = game.window_manager.window[window_number].position.x-(game.window_manager.window[window_number].size.x/2.0f)+(game.window_manager.window[window_number].element[element_number].size.x*3.75f);
     game.window_manager.window[window_number].element[element_number].position.y                = game.window_manager.window[window_number].position.y+(game.window_manager.window[window_number].size.y/2.0f)-(game.window_manager.window[window_number].element[element_number].size.y*4.5f);
-    game.window_manager.window[window_number].element[element_number].texture.base.image_path        = "data/textures/UI/menu/selection_box.png";
-    game.window_manager.window[window_number].element[element_number].texture.base.image.load_image(game.window_manager.window[window_number].element[element_number].texture.base.image_path);
-    game.window_manager.window[window_number].element[element_number].texture.normal.image_path      = "data/textures/UI/menu/resolution_icon.png";
-    game.window_manager.window[window_number].element[element_number].texture.normal.image.load_image(game.window_manager.window[window_number].element[element_number].texture.normal.image_path);
-    game.window_manager.window[window_number].element[element_number].texture.highlighted.image_path = "data/textures/UI/menu/selection_box.png";
-    game.window_manager.window[window_number].element[element_number].texture.highlighted.image.load_image(game.window_manager.window[window_number].element[element_number].texture.highlighted.image_path);
-    game.window_manager.window[window_number].element[element_number].texture.disabled.image_path    = "data/textures/UI/menu/selection_box.png";
-    game.window_manager.window[window_number].element[element_number].texture.disabled.image.load_image(game.window_manager.window[window_number].element[element_number].texture.disabled.image_path);
+    game.window_manager.window[window_number].element[element_number].texture.base              = game.texture_manager.add_texture("data/textures/UI/menu/selection_box.png");
+    game.window_manager.window[window_number].element[element_number].texture.normal            = game.texture_manager.add_texture("data/textures/UI/menu/resolution_icon.png");
+    game.window_manager.window[window_number].element[element_number].texture.highlighted       = game.texture_manager.add_texture("data/textures/UI/menu/selection_box.png");
+    game.window_manager.window[window_number].element[element_number].texture.disabled          = game.texture_manager.add_texture("data/textures/UI/menu/selection_box.png");
     game.window_manager.window[window_number].element[element_number].title.size.x              = game.window_manager.window[window_number].element[element_number].title.text.length()/2.4f;;
     game.window_manager.window[window_number].element[element_number].title.size.y              = game.window_manager.window[window_number].element[element_number].title.size.x*4.0f;
     game.window_manager.window[window_number].element[element_number].title.position.x          = game.window_manager.window[window_number].position.x - (game.window_manager.window[window_number].element[element_number].title.size.x/42.0f);
@@ -255,14 +238,10 @@ void setup_menu_options(int UID)
     game.window_manager.window[window_number].element[element_number].size.y                    = game.window_manager.window[window_number].size.y / 10.0f;
     game.window_manager.window[window_number].element[element_number].position.x                = game.window_manager.window[window_number].position.x-(game.window_manager.window[window_number].size.x/2.0f)+(game.window_manager.window[window_number].element[element_number].size.x*5.0f);
     game.window_manager.window[window_number].element[element_number].position.y                = game.window_manager.window[window_number].position.y+(game.window_manager.window[window_number].size.y/2.0f)-(game.window_manager.window[window_number].element[element_number].size.y*4.5f);
-    game.window_manager.window[window_number].element[element_number].texture.base.image_path        = "data/textures/UI/menu/selection_box.png";
-    game.window_manager.window[window_number].element[element_number].texture.base.image.load_image(game.window_manager.window[window_number].element[element_number].texture.base.image_path);
-    game.window_manager.window[window_number].element[element_number].texture.normal.image_path      = "data/textures/UI/menu/resolution_icon.png";
-    game.window_manager.window[window_number].element[element_number].texture.normal.image.load_image(game.window_manager.window[window_number].element[element_number].texture.normal.image_path);
-    game.window_manager.window[window_number].element[element_number].texture.highlighted.image_path = "data/textures/UI/menu/selection_box.png";
-    game.window_manager.window[window_number].element[element_number].texture.highlighted.image.load_image(game.window_manager.window[window_number].element[element_number].texture.highlighted.image_path);
-    game.window_manager.window[window_number].element[element_number].texture.disabled.image_path    = "data/textures/UI/menu/selection_box.png";
-    game.window_manager.window[window_number].element[element_number].texture.disabled.image.load_image(game.window_manager.window[window_number].element[element_number].texture.disabled.image_path);
+    game.window_manager.window[window_number].element[element_number].texture.base              = game.texture_manager.add_texture("data/textures/UI/menu/selection_box.png");
+    game.window_manager.window[window_number].element[element_number].texture.normal            = game.texture_manager.add_texture("data/textures/UI/menu/resolution_icon.png");
+    game.window_manager.window[window_number].element[element_number].texture.highlighted       = game.texture_manager.add_texture("data/textures/UI/menu/selection_box.png");
+    game.window_manager.window[window_number].element[element_number].texture.disabled          = game.texture_manager.add_texture("data/textures/UI/menu/selection_box.png");
     game.window_manager.window[window_number].element[element_number].title.size.x              = game.window_manager.window[window_number].element[element_number].title.text.length()/2.4f;;
     game.window_manager.window[window_number].element[element_number].title.size.y              = game.window_manager.window[window_number].element[element_number].title.size.x*4.0f;
     game.window_manager.window[window_number].element[element_number].title.position.x          = game.window_manager.window[window_number].position.x - (game.window_manager.window[window_number].element[element_number].title.size.x/42.0f);
@@ -285,14 +264,10 @@ void setup_menu_options(int UID)
     game.window_manager.window[window_number].element[element_number].size.y                    = game.window_manager.window[window_number].size.y / 10.0f;
     game.window_manager.window[window_number].element[element_number].position.x                = game.window_manager.window[window_number].position.x-(game.window_manager.window[window_number].size.x/2.0f)+(game.window_manager.window[window_number].element[element_number].size.x*6.25f);
     game.window_manager.window[window_number].element[element_number].position.y                = game.window_manager.window[window_number].position.y+(game.window_manager.window[window_number].size.y/2.0f)-(game.window_manager.window[window_number].element[element_number].size.y*4.5f);
-    game.window_manager.window[window_number].element[element_number].texture.base.image_path        = "data/textures/UI/menu/selection_box.png";
-    game.window_manager.window[window_number].element[element_number].texture.base.image.load_image(game.window_manager.window[window_number].element[element_number].texture.base.image_path);
-    game.window_manager.window[window_number].element[element_number].texture.normal.image_path      = "data/textures/UI/menu/resolution_icon.png";
-    game.window_manager.window[window_number].element[element_number].texture.normal.image.load_image(game.window_manager.window[window_number].element[element_number].texture.normal.image_path);
-    game.window_manager.window[window_number].element[element_number].texture.highlighted.image_path = "data/textures/UI/menu/selection_box.png";
-    game.window_manager.window[window_number].element[element_number].texture.highlighted.image.load_image(game.window_manager.window[window_number].element[element_number].texture.highlighted.image_path);
-    game.window_manager.window[window_number].element[element_number].texture.disabled.image_path    = "data/textures/UI/menu/selection_box.png";
-    game.window_manager.window[window_number].element[element_number].texture.disabled.image.load_image(game.window_manager.window[window_number].element[element_number].texture.disabled.image_path);
+    game.window_manager.window[window_number].element[element_number].texture.base              = game.texture_manager.add_texture("data/textures/UI/menu/selection_box.png");
+    game.window_manager.window[window_number].element[element_number].texture.normal            = game.texture_manager.add_texture("data/textures/UI/menu/resolution_icon.png");
+    game.window_manager.window[window_number].element[element_number].texture.highlighted       = game.texture_manager.add_texture("data/textures/UI/menu/selection_box.png");
+    game.window_manager.window[window_number].element[element_number].texture.disabled          = game.texture_manager.add_texture("data/textures/UI/menu/selection_box.png");
     game.window_manager.window[window_number].element[element_number].title.size.x              = game.window_manager.window[window_number].element[element_number].title.text.length()/2.4f;;
     game.window_manager.window[window_number].element[element_number].title.size.y              = game.window_manager.window[window_number].element[element_number].title.size.x*4.0f;
     game.window_manager.window[window_number].element[element_number].title.position.x          = game.window_manager.window[window_number].position.x - (game.window_manager.window[window_number].element[element_number].title.size.x/42.0f);
@@ -315,14 +290,10 @@ void setup_menu_options(int UID)
     game.window_manager.window[window_number].element[element_number].size.y                    = game.window_manager.window[window_number].size.y / 10.0f;
     game.window_manager.window[window_number].element[element_number].position.x                = game.window_manager.window[window_number].position.x-(game.window_manager.window[window_number].size.x/2.0f)+(game.window_manager.window[window_number].element[element_number].size.x*7.5f);
     game.window_manager.window[window_number].element[element_number].position.y                = game.window_manager.window[window_number].position.y+(game.window_manager.window[window_number].size.y/2.0f)-(game.window_manager.window[window_number].element[element_number].size.y*4.5f);
-    game.window_manager.window[window_number].element[element_number].texture.base.image_path        = "data/textures/UI/menu/selection_box.png";
-    game.window_manager.window[window_number].element[element_number].texture.base.image.load_image(game.window_manager.window[window_number].element[element_number].texture.base.image_path);
-    game.window_manager.window[window_number].element[element_number].texture.normal.image_path      = "data/textures/UI/menu/resolution_icon.png";
-    game.window_manager.window[window_number].element[element_number].texture.normal.image.load_image(game.window_manager.window[window_number].element[element_number].texture.normal.image_path);
-    game.window_manager.window[window_number].element[element_number].texture.highlighted.image_path = "data/textures/UI/menu/selection_box.png";
-    game.window_manager.window[window_number].element[element_number].texture.highlighted.image.load_image(game.window_manager.window[window_number].element[element_number].texture.highlighted.image_path);
-    game.window_manager.window[window_number].element[element_number].texture.disabled.image_path    = "data/textures/UI/menu/selection_box.png";
-    game.window_manager.window[window_number].element[element_number].texture.disabled.image.load_image(game.window_manager.window[window_number].element[element_number].texture.disabled.image_path);
+    game.window_manager.window[window_number].element[element_number].texture.base              = game.texture_manager.add_texture("data/textures/UI/menu/selection_box.png");
+    game.window_manager.window[window_number].element[element_number].texture.normal            = game.texture_manager.add_texture("data/textures/UI/menu/resolution_icon.png");
+    game.window_manager.window[window_number].element[element_number].texture.highlighted       = game.texture_manager.add_texture("data/textures/UI/menu/selection_box.png");
+    game.window_manager.window[window_number].element[element_number].texture.disabled          = game.texture_manager.add_texture("data/textures/UI/menu/selection_box.png");
     game.window_manager.window[window_number].element[element_number].title.size.x              = game.window_manager.window[window_number].element[element_number].title.text.length()/2.4f;;
     game.window_manager.window[window_number].element[element_number].title.size.y              = game.window_manager.window[window_number].element[element_number].title.size.x*4.0f;
     game.window_manager.window[window_number].element[element_number].title.position.x          = game.window_manager.window[window_number].position.x - (game.window_manager.window[window_number].element[element_number].title.size.x/42.0f);
@@ -343,12 +314,9 @@ void setup_menu_options(int UID)
     game.window_manager.window[window_number].element[element_number].size.y                    = game.window_manager.window[window_number].size.y / 10.0f;
     game.window_manager.window[window_number].element[element_number].position.x                = game.window_manager.window[window_number].position.x-(game.window_manager.window[window_number].size.x/2.0f)+(game.window_manager.window[window_number].element[element_number].size.x*1.0f);
     game.window_manager.window[window_number].element[element_number].position.y                = game.window_manager.window[window_number].position.y+(game.window_manager.window[window_number].size.y/2.0f)-(game.window_manager.window[window_number].element[element_number].size.y*4.50f);
-    game.window_manager.window[window_number].element[element_number].texture.normal.image_path      = "data/textures/UI/menu/arrow_normal.png";
-    game.window_manager.window[window_number].element[element_number].texture.normal.image.load_image(game.window_manager.window[window_number].element[element_number].texture.normal.image_path);
-    game.window_manager.window[window_number].element[element_number].texture.highlighted.image_path = "data/textures/UI/menu/arrow_highlighted.png";
-    game.window_manager.window[window_number].element[element_number].texture.highlighted.image.load_image(game.window_manager.window[window_number].element[element_number].texture.highlighted.image_path);
-    game.window_manager.window[window_number].element[element_number].texture.disabled.image_path    = "data/textures/UI/menu/arrow_disabled.png";
-    game.window_manager.window[window_number].element[element_number].texture.disabled.image.load_image(game.window_manager.window[window_number].element[element_number].texture.disabled.image_path);
+    game.window_manager.window[window_number].element[element_number].texture.normal            = game.texture_manager.add_texture("data/textures/UI/menu/arrow_normal.png");
+    game.window_manager.window[window_number].element[element_number].texture.highlighted       = game.texture_manager.add_texture("data/textures/UI/menu/arrow_highlighted.png");
+    game.window_manager.window[window_number].element[element_number].texture.disabled          = game.texture_manager.add_texture("data/textures/UI/menu/arrow_disabled.png");
     game.window_manager.window[window_number].element[element_number].texture.angle             = 0.0f;
     game.window_manager.window[window_number].element[element_number].mouse_delay.maximum       = 5;
     game.window_manager.window[window_number].element[element_number].sound                     = game.window_manager.window[window_number].sound;
@@ -365,12 +333,9 @@ void setup_menu_options(int UID)
     game.window_manager.window[window_number].element[element_number].size.y                    = game.window_manager.window[window_number].size.y / 10.0f;
     game.window_manager.window[window_number].element[element_number].position.x                = game.window_manager.window[window_number].position.x+(game.window_manager.window[window_number].size.x/2.0f)-(game.window_manager.window[window_number].element[element_number].size.x*1.0f);
     game.window_manager.window[window_number].element[element_number].position.y                = game.window_manager.window[window_number].position.y+(game.window_manager.window[window_number].size.y/2.0f)-(game.window_manager.window[window_number].element[element_number].size.y*4.50f);
-    game.window_manager.window[window_number].element[element_number].texture.normal.image_path      = "data/textures/UI/menu/arrow_normal.png";
-    game.window_manager.window[window_number].element[element_number].texture.normal.image.load_image(game.window_manager.window[window_number].element[element_number].texture.normal.image_path);
-    game.window_manager.window[window_number].element[element_number].texture.highlighted.image_path = "data/textures/UI/menu/arrow_highlighted.png";
-    game.window_manager.window[window_number].element[element_number].texture.highlighted.image.load_image(game.window_manager.window[window_number].element[element_number].texture.highlighted.image_path);
-    game.window_manager.window[window_number].element[element_number].texture.disabled.image_path    = "data/textures/UI/menu/arrow_disabled.png";
-    game.window_manager.window[window_number].element[element_number].texture.disabled.image.load_image(game.window_manager.window[window_number].element[element_number].texture.disabled.image_path);
+    game.window_manager.window[window_number].element[element_number].texture.normal            = game.texture_manager.add_texture("data/textures/UI/menu/arrow_normal.png");
+    game.window_manager.window[window_number].element[element_number].texture.highlighted       = game.texture_manager.add_texture("data/textures/UI/menu/arrow_highlighted.png");
+    game.window_manager.window[window_number].element[element_number].texture.disabled          = game.texture_manager.add_texture("data/textures/UI/menu/arrow_disabled.png");
     game.window_manager.window[window_number].element[element_number].texture.angle             = 180.0f;
     game.window_manager.window[window_number].element[element_number].mouse_delay.maximum       = 5;
     game.window_manager.window[window_number].element[element_number].sound                     = game.window_manager.window[window_number].sound;
@@ -388,12 +353,9 @@ void setup_menu_options(int UID)
     game.window_manager.window[window_number].element[element_number].size.y                    = game.window_manager.window[window_number].size.y / 10.0f;
     game.window_manager.window[window_number].element[element_number].position.x                = game.window_manager.window[window_number].position.x-(game.window_manager.window[window_number].size.x/2.0f)+(game.window_manager.window[window_number].element[element_number].size.x*1.0f);
     game.window_manager.window[window_number].element[element_number].position.y                = game.window_manager.window[window_number].position.y+(game.window_manager.window[window_number].size.y/2.0f)-(game.window_manager.window[window_number].element[element_number].size.y*2.0f);
-    game.window_manager.window[window_number].element[element_number].texture.normal.image_path      = "data/textures/UI/menu/arrow_normal.png";
-    game.window_manager.window[window_number].element[element_number].texture.normal.image.load_image(game.window_manager.window[window_number].element[element_number].texture.normal.image_path);
-    game.window_manager.window[window_number].element[element_number].texture.highlighted.image_path = "data/textures/UI/menu/arrow_highlighted.png";
-    game.window_manager.window[window_number].element[element_number].texture.highlighted.image.load_image(game.window_manager.window[window_number].element[element_number].texture.highlighted.image_path);
-    game.window_manager.window[window_number].element[element_number].texture.disabled.image_path    = "data/textures/UI/menu/arrow_disabled.png";
-    game.window_manager.window[window_number].element[element_number].texture.disabled.image.load_image(game.window_manager.window[window_number].element[element_number].texture.disabled.image_path);
+    game.window_manager.window[window_number].element[element_number].texture.normal            = game.texture_manager.add_texture("data/textures/UI/menu/arrow_normal.png");
+    game.window_manager.window[window_number].element[element_number].texture.highlighted       = game.texture_manager.add_texture("data/textures/UI/menu/arrow_highlighted.png");
+    game.window_manager.window[window_number].element[element_number].texture.disabled          = game.texture_manager.add_texture("data/textures/UI/menu/arrow_disabled.png");
     game.window_manager.window[window_number].element[element_number].texture.angle             = 0.0f;
     game.window_manager.window[window_number].element[element_number].mouse_delay.maximum       = 2;
     game.window_manager.window[window_number].element[element_number].sound                     = game.window_manager.window[window_number].sound;
@@ -411,12 +373,9 @@ void setup_menu_options(int UID)
     game.window_manager.window[window_number].element[element_number].size.y                    = game.window_manager.window[window_number].size.y / 10.0f;
     game.window_manager.window[window_number].element[element_number].position.x                = game.window_manager.window[window_number].position.x+(game.window_manager.window[window_number].size.x/2.0f)-(game.window_manager.window[window_number].element[element_number].size.x*1.0f);
     game.window_manager.window[window_number].element[element_number].position.y                = game.window_manager.window[window_number].position.y+(game.window_manager.window[window_number].size.y/2.0f)-(game.window_manager.window[window_number].element[element_number].size.y*2.0f);
-    game.window_manager.window[window_number].element[element_number].texture.normal.image_path      = "data/textures/UI/menu/arrow_normal.png";
-    game.window_manager.window[window_number].element[element_number].texture.normal.image.load_image(game.window_manager.window[window_number].element[element_number].texture.normal.image_path);
-    game.window_manager.window[window_number].element[element_number].texture.highlighted.image_path = "data/textures/UI/menu/arrow_highlighted.png";
-    game.window_manager.window[window_number].element[element_number].texture.highlighted.image.load_image(game.window_manager.window[window_number].element[element_number].texture.highlighted.image_path);
-    game.window_manager.window[window_number].element[element_number].texture.disabled.image_path    = "data/textures/UI/menu/arrow_disabled.png";
-    game.window_manager.window[window_number].element[element_number].texture.disabled.image.load_image(game.window_manager.window[window_number].element[element_number].texture.disabled.image_path);
+    game.window_manager.window[window_number].element[element_number].texture.normal            = game.texture_manager.add_texture("data/textures/UI/menu/arrow_normal.png");
+    game.window_manager.window[window_number].element[element_number].texture.highlighted       = game.texture_manager.add_texture("data/textures/UI/menu/arrow_highlighted.png");
+    game.window_manager.window[window_number].element[element_number].texture.disabled          = game.texture_manager.add_texture("data/textures/UI/menu/arrow_disabled.png");
     game.window_manager.window[window_number].element[element_number].texture.angle             = 180.0f;
     game.window_manager.window[window_number].element[element_number].mouse_delay.maximum       = 2;
     game.window_manager.window[window_number].element[element_number].sound                     = game.window_manager.window[window_number].sound;
@@ -437,12 +396,9 @@ void setup_menu_options(int UID)
     game.window_manager.window[window_number].element[element_number].size.y                    = game.window_manager.window[window_number].size.y / 10.0f;
     game.window_manager.window[window_number].element[element_number].position.x                = game.window_manager.window[window_number].position.x;
     game.window_manager.window[window_number].element[element_number].position.y                = game.window_manager.window[window_number].position.y+(game.window_manager.window[window_number].size.y/2.0f)-(game.window_manager.window[window_number].element[element_number].size.y*2.0f);
-    game.window_manager.window[window_number].element[element_number].texture.normal.image_path      = "data/textures/UI/menu/slider_normal.png";
-    game.window_manager.window[window_number].element[element_number].texture.normal.image.load_image(game.window_manager.window[window_number].element[element_number].texture.normal.image_path);
-    game.window_manager.window[window_number].element[element_number].texture.highlighted.image_path = "data/textures/UI/menu/slider_highlighted.png";
-    game.window_manager.window[window_number].element[element_number].texture.highlighted.image.load_image(game.window_manager.window[window_number].element[element_number].texture.highlighted.image_path);
-    game.window_manager.window[window_number].element[element_number].texture.disabled.image_path      = "data/textures/UI/menu/slider_normal.png";
-    game.window_manager.window[window_number].element[element_number].texture.disabled.image.load_image(game.window_manager.window[window_number].element[element_number].texture.disabled.image_path);
+    game.window_manager.window[window_number].element[element_number].texture.normal            = game.texture_manager.add_texture("data/textures/UI/menu/slider_normal.png");
+    game.window_manager.window[window_number].element[element_number].texture.highlighted       = game.texture_manager.add_texture("data/textures/UI/menu/slider_highlighted.png");
+    game.window_manager.window[window_number].element[element_number].texture.disabled          = game.texture_manager.add_texture("data/textures/UI/menu/slider_normal.png");
     game.window_manager.window[window_number].element[element_number].title.size.x              = game.window_manager.window[window_number].element[element_number].title.text.length()/2.2f;
     game.window_manager.window[window_number].element[element_number].title.size.y              = game.window_manager.window[window_number].element[element_number].title.size.x*4;;
     game.window_manager.window[window_number].element[element_number].title.position.x          = game.window_manager.window[window_number].element[element_number].position.x-(game.window_manager.window[window_number].element[element_number].title.size.x/60.0f);
@@ -463,12 +419,9 @@ void setup_menu_options(int UID)
     game.window_manager.window[window_number].element[element_number].size.y                    = game.window_manager.window[window_number].size.y / 10.0f;
     game.window_manager.window[window_number].element[element_number].position.x                = game.window_manager.window[window_number].position.x-(game.window_manager.window[window_number].size.x/2.0f)+(game.window_manager.window[window_number].element[element_number].size.x*1.0f);
     game.window_manager.window[window_number].element[element_number].position.y                = game.window_manager.window[window_number].position.y+(game.window_manager.window[window_number].size.y/2.0f)-(game.window_manager.window[window_number].element[element_number].size.y*3.25f);
-    game.window_manager.window[window_number].element[element_number].texture.normal.image_path      = "data/textures/UI/menu/arrow_normal.png";
-    game.window_manager.window[window_number].element[element_number].texture.normal.image.load_image(game.window_manager.window[window_number].element[element_number].texture.normal.image_path);
-    game.window_manager.window[window_number].element[element_number].texture.highlighted.image_path = "data/textures/UI/menu/arrow_highlighted.png";
-    game.window_manager.window[window_number].element[element_number].texture.highlighted.image.load_image(game.window_manager.window[window_number].element[element_number].texture.highlighted.image_path);
-    game.window_manager.window[window_number].element[element_number].texture.disabled.image_path    = "data/textures/UI/menu/arrow_disabled.png";
-    game.window_manager.window[window_number].element[element_number].texture.disabled.image.load_image(game.window_manager.window[window_number].element[element_number].texture.disabled.image_path);
+    game.window_manager.window[window_number].element[element_number].texture.normal            = game.texture_manager.add_texture("data/textures/UI/menu/arrow_normal.png");
+    game.window_manager.window[window_number].element[element_number].texture.highlighted       = game.texture_manager.add_texture("data/textures/UI/menu/arrow_highlighted.png");
+    game.window_manager.window[window_number].element[element_number].texture.disabled          = game.texture_manager.add_texture("data/textures/UI/menu/arrow_disabled.png");
     game.window_manager.window[window_number].element[element_number].texture.angle             = 0.0f;
     game.window_manager.window[window_number].element[element_number].mouse_delay.maximum       = 5;
     game.window_manager.window[window_number].element[element_number].sound                     = game.window_manager.window[window_number].sound;
@@ -486,12 +439,9 @@ void setup_menu_options(int UID)
     game.window_manager.window[window_number].element[element_number].size.y                    = game.window_manager.window[window_number].size.y / 10.0f;
     game.window_manager.window[window_number].element[element_number].position.x                = game.window_manager.window[window_number].position.x+(game.window_manager.window[window_number].size.x/2.0f)-(game.window_manager.window[window_number].element[element_number].size.x*1.0f);
     game.window_manager.window[window_number].element[element_number].position.y                = game.window_manager.window[window_number].position.y+(game.window_manager.window[window_number].size.y/2.0f)-(game.window_manager.window[window_number].element[element_number].size.y*3.25f);
-    game.window_manager.window[window_number].element[element_number].texture.normal.image_path      = "data/textures/UI/menu/arrow_normal.png";
-    game.window_manager.window[window_number].element[element_number].texture.normal.image.load_image(game.window_manager.window[window_number].element[element_number].texture.normal.image_path);
-    game.window_manager.window[window_number].element[element_number].texture.highlighted.image_path = "data/textures/UI/menu/arrow_highlighted.png";
-    game.window_manager.window[window_number].element[element_number].texture.highlighted.image.load_image(game.window_manager.window[window_number].element[element_number].texture.highlighted.image_path);
-    game.window_manager.window[window_number].element[element_number].texture.disabled.image_path    = "data/textures/UI/menu/arrow_disabled.png";
-    game.window_manager.window[window_number].element[element_number].texture.disabled.image.load_image(game.window_manager.window[window_number].element[element_number].texture.disabled.image_path);
+    game.window_manager.window[window_number].element[element_number].texture.normal            = game.texture_manager.add_texture("data/textures/UI/menu/arrow_normal.png");
+    game.window_manager.window[window_number].element[element_number].texture.highlighted       = game.texture_manager.add_texture("data/textures/UI/menu/arrow_highlighted.png");
+    game.window_manager.window[window_number].element[element_number].texture.disabled          = game.texture_manager.add_texture("data/textures/UI/menu/arrow_disabled.png");
     game.window_manager.window[window_number].element[element_number].texture.angle             = 180.0f;
     game.window_manager.window[window_number].element[element_number].mouse_delay.maximum       = 5;
     game.window_manager.window[window_number].element[element_number].sound                     = game.window_manager.window[window_number].sound;
@@ -512,12 +462,9 @@ void setup_menu_options(int UID)
     game.window_manager.window[window_number].element[element_number].size.y                    = game.window_manager.window[window_number].size.y / 10.0f;
     game.window_manager.window[window_number].element[element_number].position.x                = game.window_manager.window[window_number].position.x;
     game.window_manager.window[window_number].element[element_number].position.y                = game.window_manager.window[window_number].position.y+(game.window_manager.window[window_number].size.y/2.0f)-(game.window_manager.window[window_number].element[element_number].size.y*3.25f);
-    game.window_manager.window[window_number].element[element_number].texture.normal.image_path      = "data/textures/UI/menu/slider_normal.png";
-    game.window_manager.window[window_number].element[element_number].texture.normal.image.load_image(game.window_manager.window[window_number].element[element_number].texture.normal.image_path);
-    game.window_manager.window[window_number].element[element_number].texture.highlighted.image_path = "data/textures/UI/menu/slider_highlighted.png";
-    game.window_manager.window[window_number].element[element_number].texture.highlighted.image.load_image(game.window_manager.window[window_number].element[element_number].texture.highlighted.image_path);
-    game.window_manager.window[window_number].element[element_number].texture.disabled.image_path      = "data/textures/UI/menu/slider_normal.png";
-    game.window_manager.window[window_number].element[element_number].texture.disabled.image.load_image(game.window_manager.window[window_number].element[element_number].texture.disabled.image_path);
+    game.window_manager.window[window_number].element[element_number].texture.normal            = game.texture_manager.add_texture("data/textures/UI/menu/slider_normal.png");
+    game.window_manager.window[window_number].element[element_number].texture.highlighted       = game.texture_manager.add_texture("data/textures/UI/menu/slider_highlighted.png");
+    game.window_manager.window[window_number].element[element_number].texture.disabled          = game.texture_manager.add_texture("data/textures/UI/menu/slider_normal.png");
     game.window_manager.window[window_number].element[element_number].title.size.x              = game.window_manager.window[window_number].element[element_number].title.text.length()/2.2f;
     game.window_manager.window[window_number].element[element_number].title.size.y              = game.window_manager.window[window_number].element[element_number].title.size.x*4;;
     game.window_manager.window[window_number].element[element_number].title.position.x          = game.window_manager.window[window_number].element[element_number].position.x-(game.window_manager.window[window_number].element[element_number].title.size.x/60.0f);
@@ -563,27 +510,19 @@ void setup_menu_options(int UID)
     game.window_manager.window[window_number].element[element_number].font                      = game.window_manager.window[window_number].font;
     if (game.core.config.display_fullscreen)
     {
-        game.window_manager.window[window_number].element[element_number].value                            = 1.0f;
-        game.window_manager.window[window_number].element[element_number].texture.normal.image_path        = "data/textures/UI/menu/green_button.png";
-        game.window_manager.window[window_number].element[element_number].texture.normal.image.load_image(game.window_manager.window[window_number].element[element_number].texture.normal.image_path);
-        game.window_manager.window[window_number].element[element_number].texture.highlighted.image_path   = "data/textures/UI/menu/green_button_highlighted.png";
-        game.window_manager.window[window_number].element[element_number].texture.highlighted.image.load_image(game.window_manager.window[window_number].element[element_number].texture.highlighted.image_path);
-        game.window_manager.window[window_number].element[element_number].texture.disabled.image_path      = "data/textures/UI/menu/red_button.png";
-        game.window_manager.window[window_number].element[element_number].texture.disabled.image.load_image(game.window_manager.window[window_number].element[element_number].texture.disabled.image_path);
-        game.window_manager.window[window_number].element[element_number].texture.base.image_path          = "data/textures/UI/menu/red_button_highlighted.png";
-        game.window_manager.window[window_number].element[element_number].texture.base.image.load_image(game.window_manager.window[window_number].element[element_number].texture.base.image_path);
+        game.window_manager.window[window_number].element[element_number].value                 = 1.0f;
+        game.window_manager.window[window_number].element[element_number].texture.normal        = game.texture_manager.add_texture("data/textures/UI/menu/green_button.png");
+        game.window_manager.window[window_number].element[element_number].texture.highlighted   = game.texture_manager.add_texture("data/textures/UI/menu/green_button_highlighted.png");
+        game.window_manager.window[window_number].element[element_number].texture.disabled      = game.texture_manager.add_texture("data/textures/UI/menu/red_button.png");
+        game.window_manager.window[window_number].element[element_number].texture.base          = game.texture_manager.add_texture("data/textures/UI/menu/red_button_highlighted.png");
     }
     else
     {
-        game.window_manager.window[window_number].element[element_number].value                            = 0.0f;
-        game.window_manager.window[window_number].element[element_number].texture.normal.image_path        = "data/textures/UI/menu/red_button.png";
-        game.window_manager.window[window_number].element[element_number].texture.normal.image.load_image(game.window_manager.window[window_number].element[element_number].texture.normal.image_path);
-        game.window_manager.window[window_number].element[element_number].texture.highlighted.image_path   = "data/textures/UI/menu/red_button_highlighted.png";
-        game.window_manager.window[window_number].element[element_number].texture.highlighted.image.load_image(game.window_manager.window[window_number].element[element_number].texture.highlighted.image_path);
-        game.window_manager.window[window_number].element[element_number].texture.disabled.image_path      = "data/textures/UI/menu/green_button.png";
-        game.window_manager.window[window_number].element[element_number].texture.disabled.image.load_image(game.window_manager.window[window_number].element[element_number].texture.disabled.image_path);
-        game.window_manager.window[window_number].element[element_number].texture.base.image_path          = "data/textures/UI/menu/green_button_highlighted.png";
-        game.window_manager.window[window_number].element[element_number].texture.base.image.load_image(game.window_manager.window[window_number].element[element_number].texture.base.image_path);
+        game.window_manager.window[window_number].element[element_number].value                 = 0.0f;
+        game.window_manager.window[window_number].element[element_number].texture.normal        = game.texture_manager.add_texture("data/textures/UI/menu/red_button.png");
+        game.window_manager.window[window_number].element[element_number].texture.highlighted   = game.texture_manager.add_texture("data/textures/UI/menu/red_button_highlighted.png");
+        game.window_manager.window[window_number].element[element_number].texture.disabled      = game.texture_manager.add_texture("data/textures/UI/menu/green_button.png");
+        game.window_manager.window[window_number].element[element_number].texture.base          = game.texture_manager.add_texture("data/textures/UI/menu/green_button_highlighted.png");
     }
 };
 
@@ -710,10 +649,10 @@ void process_menu_options(int window_number)
                     int element_number = 17;
                     game.core.config.display_fullscreen                                     = false;
                     game.window_manager.window[window_number].element[element_number].value = 0.0f;
-                    game.window_manager.window[window_number].element[element_number].texture.normal.image_path        = "data/textures/UI/menu/red_button.png";
-                    game.window_manager.window[window_number].element[element_number].texture.highlighted.image_path   = "data/textures/UI/menu/red_button_highlighted.png";
-                    game.window_manager.window[window_number].element[element_number].texture.disabled.image_path      = "data/textures/UI/menu/green_button.png";
-                    game.window_manager.window[window_number].element[element_number].texture.base.image_path          = "data/textures/UI/menu/green_button_highlighted.png";
+                    game.window_manager.window[window_number].element[element_number].texture.normal        = game.texture_manager.add_texture("data/textures/UI/menu/red_button.png");
+                    game.window_manager.window[window_number].element[element_number].texture.highlighted   = game.texture_manager.add_texture("data/textures/UI/menu/red_button_highlighted.png");
+                    game.window_manager.window[window_number].element[element_number].texture.disabled      = game.texture_manager.add_texture("data/textures/UI/menu/green_button.png");
+                    game.window_manager.window[window_number].element[element_number].texture.base          = game.texture_manager.add_texture("data/textures/UI/menu/green_button_highlighted.png");
                     reset_display = true;
                 }
                 else
@@ -721,10 +660,10 @@ void process_menu_options(int window_number)
                     int element_number = 17;
                     game.core.config.display_fullscreen                                     = true;
                     game.window_manager.window[window_number].element[element_number].value = 1.0f;
-                    game.window_manager.window[window_number].element[element_number].texture.normal.image_path      = "data/textures/UI/menu/green_button.png";
-                    game.window_manager.window[window_number].element[element_number].texture.highlighted.image_path = "data/textures/UI/menu/green_button_highlighted.png";
-                    game.window_manager.window[window_number].element[element_number].texture.disabled.image_path    = "data/textures/UI/menu/red_button.png";
-                    game.window_manager.window[window_number].element[element_number].texture.base.image_path        = "data/textures/UI/menu/red_button_highlighted.png";
+                    game.window_manager.window[window_number].element[element_number].texture.normal      = game.texture_manager.add_texture("data/textures/UI/menu/green_button.png");
+                    game.window_manager.window[window_number].element[element_number].texture.highlighted = game.texture_manager.add_texture("data/textures/UI/menu/green_button_highlighted.png");
+                    game.window_manager.window[window_number].element[element_number].texture.disabled    = game.texture_manager.add_texture("data/textures/UI/menu/red_button.png");
+                    game.window_manager.window[window_number].element[element_number].texture.base        = game.texture_manager.add_texture("data/textures/UI/menu/red_button_highlighted.png");
                     reset_display = true;
                 }
             break;
@@ -830,7 +769,7 @@ void process_menu_options(int window_number)
             game.core.graphics.init_gl();
             game.loading_screen.display("data/loading_screen.png");
             game.core.log.file_write("Reloading resources....");
-            game.UI.UI_reload_textures();
+            game.texture_manager.reload_textures();
             update_menu_game_new(MENU_GAME_NEW_UID);
         }
     }

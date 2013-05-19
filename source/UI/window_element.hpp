@@ -89,7 +89,6 @@ class location_class
         f3_type                 size;
         f3_type                 position;
         bool                    image_enabled;
-        std::string             image_path;
         texture_type           *image;
         f3_type                 image_size;
         location_class(void);
@@ -119,19 +118,13 @@ struct color_state_struct
     color_struct disabled;
 };
 
-struct texture_struct
-{
-    std::string             image_path;
-    texture_type           *image;
-};
-
 struct texture_state_struct
 {
     float angle;
-    texture_struct   base;
-    texture_struct   normal;
-    texture_struct   highlighted;
-    texture_struct   disabled;
+    texture_type   *base;
+    texture_type   *normal;
+    texture_type   *highlighted;
+    texture_type   *disabled;
 };
 
 struct sound_struct
@@ -165,7 +158,6 @@ struct selection_data_type
     int           value_int;
     bool          active;
     texture_type *image;
-    std::string   image_path;
     std::string   value_string;
 };
 
@@ -214,7 +206,6 @@ class window_element_class
         font_class              font;
         window_element_class(void);
        ~window_element_class(void);
-        void                    reload_textures(void);
         void                    render(void);
         void                    render_tooltips(void);
         void                    render_item_if_dragged(void);

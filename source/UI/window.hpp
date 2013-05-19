@@ -62,7 +62,6 @@ class window_class
         window_element_class   *element;
         window_class(void);
        ~window_class(void);
-        void                    reload_textures(void);
         void                    render(void);
         void                    render_draged_elements(void);
         bool                    get_mouse_over_menu(void);

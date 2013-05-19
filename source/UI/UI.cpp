@@ -135,21 +135,3 @@ void UI_class::UI_process(void) // Process events generated buy the windows in t
     }
 };
 
-void UI_class::UI_reload_textures(void)
-{
-    game.window_manager.cursor.reload_textures();
-    game.core.background.reload_textures();
-    game.reload_textures();
-
-    if (game.window_manager.number_of_windows > 0) // Only process windows if there are actually windows in the list.
-    {
-        for (int window_count = 0; window_count < game.window_manager.number_of_windows; window_count++)
-        {
-            game.window_manager.window[window_count].reload_textures();
-        }
-    }
-};
-
-
-
-

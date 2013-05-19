@@ -33,7 +33,7 @@
 #include "map_2D.hpp"
 #include "map_3D.hpp"
 #include "../game.hpp"
-#include "textures.hpp"
+#include "texture_manager.hpp"
 #include "loader_obj.hpp"
 #include "misc.hpp"
 #include "../game.hpp"

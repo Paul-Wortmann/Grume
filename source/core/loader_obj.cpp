@@ -30,7 +30,7 @@
 #include <GL/gl.h>
 #include <SDL/SDL.h>
 #include <SDL/SDL_image.h>
-#include "textures.hpp"
+#include "texture_manager.hpp"
 #include "loader_obj.hpp"
 #include "../game.hpp"
 #include "misc.hpp"
@@ -91,7 +91,7 @@ void loader_obj_class::set_wrap_texture(std::string file_name)
     if (file_name != "")
     {
         loader_obj_class::wrap_texture_enabled      =  true;
-        loader_obj_class::wrap_texture.load_image(file_name);
+        loader_obj_class::wrap_texture              =  game.texture_manager.add_texture(file_name.c_str());
     }
     else
     {
@@ -282,7 +282,8 @@ void loader_obj_class::load_mtl(std::string file_name)
                                 loader_obj_class::material[number_of_materials_count].data_d.file_name = game.core.file.path_add(loader_obj_class::material[number_of_materials_count].data_d.file_name,game.core.file.path_get(file_name));
                                 loader_obj_class::material[number_of_materials_count].data_d.file_name = game.core.file.extension_remove(loader_obj_class::material[number_of_materials_count].data_d.file_name);
                                 loader_obj_class::material[number_of_materials_count].data_d.file_name = game.core.file.extension_add(loader_obj_class::material[number_of_materials_count].data_d.file_name,".png");
-                                if(loader_obj_class::material[number_of_materials_count].data_d.texture.load_image(loader_obj_class::material[number_of_materials_count].data_d.file_name))
+                                loader_obj_class::material[number_of_materials_count].data_d.texture = game.texture_manager.add_texture(loader_obj_class::material[number_of_materials_count].data_d.file_name.c_str());
+                                if (loader_obj_class::material[number_of_materials_count].data_d.texture->frame[0].active)
                                      loader_obj_class::material[number_of_materials_count].data_d.active    = true;
                                 else loader_obj_class::material[number_of_materials_count].data_d.active    = false;
                             break;
@@ -298,7 +299,8 @@ void loader_obj_class::load_mtl(std::string file_name)
                                 loader_obj_class::material[number_of_materials_count].data_Kd.file_name = game.core.file.path_add(loader_obj_class::material[number_of_materials_count].data_Kd.file_name,game.core.file.path_get(file_name));
                                 loader_obj_class::material[number_of_materials_count].data_Kd.file_name = game.core.file.extension_remove(loader_obj_class::material[number_of_materials_count].data_Kd.file_name);
                                 loader_obj_class::material[number_of_materials_count].data_Kd.file_name = game.core.file.extension_add(loader_obj_class::material[number_of_materials_count].data_Kd.file_name,".png");
-                                if(loader_obj_class::material[number_of_materials_count].data_Kd.texture.load_image(loader_obj_class::material[number_of_materials_count].data_Kd.file_name))
+                                loader_obj_class::material[number_of_materials_count].data_Kd.texture = game.texture_manager.add_texture(loader_obj_class::material[number_of_materials_count].data_Kd.file_name.c_str());
+                                if (loader_obj_class::material[number_of_materials_count].data_Kd.texture->frame[0].active)
                                      loader_obj_class::material[number_of_materials_count].data_Kd.active    = true;
                                 else loader_obj_class::material[number_of_materials_count].data_Kd.active    = false;
                             break;
@@ -314,7 +316,8 @@ void loader_obj_class::load_mtl(std::string file_name)
                                 loader_obj_class::material[number_of_materials_count].data_Bump.file_name = game.core.file.path_add(loader_obj_class::material[number_of_materials_count].data_Bump.file_name,game.core.file.path_get(file_name));
                                 loader_obj_class::material[number_of_materials_count].data_Bump.file_name = game.core.file.extension_remove(loader_obj_class::material[number_of_materials_count].data_Bump.file_name);
                                 loader_obj_class::material[number_of_materials_count].data_Bump.file_name = game.core.file.extension_add(loader_obj_class::material[number_of_materials_count].data_Bump.file_name,".png");
-                                if(loader_obj_class::material[number_of_materials_count].data_Bump.texture.load_image(loader_obj_class::material[number_of_materials_count].data_Bump.file_name))
+                                loader_obj_class::material[number_of_materials_count].data_Bump.texture = game.texture_manager.add_texture(loader_obj_class::material[number_of_materials_count].data_Bump.file_name.c_str());
+                                if (loader_obj_class::material[number_of_materials_count].data_Bump.texture->frame[0].active)
                                      loader_obj_class::material[number_of_materials_count].data_Bump.active    = true;
                                 else loader_obj_class::material[number_of_materials_count].data_Bump.active    = false;
                             break;
@@ -991,7 +994,7 @@ void loader_obj_class::draw(float x, float y, float z)
 	//glBlendFunc(GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
 	if (loader_obj_class::wrap_texture_enabled)
     {
-        loader_obj_class::wrap_texture.bind_image();
+        game.texture_manager.bind_image(loader_obj_class::wrap_texture);
         glTexGeni(GL_S, GL_TEXTURE_GEN_MODE, GL_OBJECT_LINEAR);
         glTexGeni(GL_T, GL_TEXTURE_GEN_MODE, GL_OBJECT_LINEAR);
         glEnable(GL_TEXTURE_GEN_S);
@@ -1020,7 +1023,7 @@ void loader_obj_class::draw(float x, float y, float z)
                 glMaterialfv(GL_FRONT_AND_BACK, GL_DIFFUSE, LightDiffuse);
                 glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR, LightSpecular);
                 glMaterialf(GL_FRONT_AND_BACK, GL_SHININESS, loader_obj_class::material[current_material].Ns);
-                loader_obj_class::material[current_material].data_d.texture.bind_image();
+                game.texture_manager.bind_image(loader_obj_class::material[current_material].data_d.texture);
                 //game.core.log.File_Write("Binding texture -> ", loader_obj_class::material[current_material].data_d.file_name);
                 //glTexGeni(GL_S, GL_TEXTURE_GEN_MODE, GL_OBJECT_LINEAR);
                 //glTexGeni(GL_T, GL_TEXTURE_GEN_MODE, GL_OBJECT_LINEAR);
@@ -1029,7 +1032,7 @@ void loader_obj_class::draw(float x, float y, float z)
             }
             if (loader_obj_class::material[current_material].data_Kd.active)
             {
-                loader_obj_class::material[current_material].data_Kd.texture.bind_image();
+                game.texture_manager.bind_image(loader_obj_class::material[current_material].data_Kd.texture);
                 //game.core.log.File_Write("Binding texture -> ", loader_obj_class::material[current_material].data_Kd.file_name);
                 //glTexGeni(GL_S, GL_TEXTURE_GEN_MODE, GL_OBJECT_LINEAR);
                 //glTexGeni(GL_T, GL_TEXTURE_GEN_MODE, GL_OBJECT_LINEAR);

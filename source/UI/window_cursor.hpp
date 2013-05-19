@@ -35,10 +35,9 @@ class window_cursor_class
         int   active_cursor;
         int   number_of_cursors;
         float angle;
-        texture_struct normal_arrow; // just for testing, move to *pointer later
-        texture_struct *pointer;
+        texture_type *normal_arrow; // just for testing, move to *pointer later
+        texture_type *pointer;
         void draw(void);
-        void reload_textures(void);
 };
 
 #endif // WINDOW_CURSOR_H
