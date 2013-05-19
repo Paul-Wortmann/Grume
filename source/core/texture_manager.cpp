@@ -122,7 +122,6 @@ void texture_manager_class::load_textures(void)
 
 void texture_manager_class::reload_textures(void)
 {
-    game.core.log.file_write(" - - - - - - textures reloading... - - - - - - - ");
     texture_type* temp_pointer;
     temp_pointer = new texture_type;
     temp_pointer = texture_manager_class::root;
@@ -135,7 +134,6 @@ void texture_manager_class::reload_textures(void)
             temp_pointer = temp_pointer->next;
         }
     }
-    game.core.log.file_write(" - - - - - - textures loaded - - - - - - - ");
 };
 
 bool texture_manager_class::load_texture(texture_type *texure)
