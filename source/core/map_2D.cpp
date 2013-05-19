@@ -61,7 +61,7 @@ void map_2D_class::render(tmx_map_type *tmx_map_pointer)
             {
                 tmx_map_pointer->tileset[tileset_count].image_source = game.core.file.path_remove(tmx_map_pointer->tileset[tileset_count].image_source);
                 tmx_map_pointer->tileset[tileset_count].image_source = game.core.file.path_add(tmx_map_pointer->tileset[tileset_count].image_source,"data/tilesets/");
-                game.texture_manager.add_texture(tmx_map_pointer->tileset[tileset_count].image_source,true,tmx_map_pointer->tileset[tileset_count].tile_width,tmx_map_pointer->tileset[tileset_count].tile_height);
+                game.texture_manager.add_texture(tmx_map_pointer->tileset[tileset_count].image_source.c_str(),true,tmx_map_pointer->tileset[tileset_count].tile_width,tmx_map_pointer->tileset[tileset_count].tile_height);
                 tmx_map_pointer->tileset[tileset_count].number_of_tiles = tmx_map_pointer->tileset[tileset_count].tile->frame_max;
             }
         }
