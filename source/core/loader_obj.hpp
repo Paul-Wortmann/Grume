@@ -28,7 +28,7 @@
 #include <GL/gl.h>
 #include <string>
 #include "graphics.hpp"
-#include "textures.hpp"
+#include "texture_manager.hpp"
 
 struct obj_face_type
 {
@@ -51,7 +51,7 @@ struct data_material_type
 {
     bool               active;
     std::string        file_name;
-    texture_class      texture;
+    texture_type      *texture;
 };
 
 struct obj_material_type
@@ -73,7 +73,7 @@ class loader_obj_class
 {
     public:
         bool                      wrap_texture_enabled;
-        texture_class             wrap_texture;
+        texture_type             *wrap_texture;
         obj_angle_type            angle;
         std::string               model_name;
         std::string               mtllib;

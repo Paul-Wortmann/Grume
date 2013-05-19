@@ -26,7 +26,7 @@
 #define MAP_3D_H
 
 #include "GL/gl.h"
-#include "textures.hpp"
+#include "texture_manager.hpp"
 #include "graphics.hpp"
 #include "map_2D.hpp"
 #include "map_3D.hpp"

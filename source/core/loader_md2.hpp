@@ -27,7 +27,7 @@
 
 #include <string>
 #include "graphics.hpp"
-#include "textures.hpp"
+#include "texture_manager.hpp"
 
 struct md2_header_type
 {
@@ -92,7 +92,7 @@ class loader_md2_class
     public:
         md2_header_type           header;
         bool                      wrap_texture_enabled;
-        texture_class             wrap_texture;
+        texture_type             *wrap_texture;
         md2_angle_type            angle;
         std::string               model_name;
         std::string               mtllib;

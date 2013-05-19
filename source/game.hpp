@@ -30,7 +30,6 @@
 #include "core/music.hpp"
 #include "core/savegame.hpp"
 #include "core/texture_manager.hpp"
-#include "core/textures.hpp"
 #include "core/types.hpp"
 #include "UI/loading_screen.hpp"
 #include "UI/UI.hpp"
@@ -90,7 +89,6 @@ class game_class
         UI_class              UI;
         map_2D_class          map_2D;
         game_class(void);
-        void             reload_textures(void);
         void             init(void);
         void             process(void);
         void             render(void);

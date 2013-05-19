@@ -27,7 +27,7 @@
 
 #include <string>
 #include "core/pathfinding.hpp"
-#include "core/textures.hpp"
+#include "core/texture_manager.hpp"
 
 #define MAX_PLAYERS 4
 

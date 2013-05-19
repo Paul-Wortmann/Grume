@@ -25,7 +25,7 @@
 #ifndef MAP_2D_H
 #define MAP_2D_H
 
-#include "textures.hpp"
+#include "texture_manager.hpp"
 #include "map_gen.hpp"
 
 #define DUNGEON   1
@@ -42,7 +42,6 @@ const float  TILE_HEIGHT_HALF    = TILE_HEIGHT/2.0f;
 class map_2D_class
 {
     public:
-        void reload_textures(tmx_map_type *tmx_map_pointer);
         void render(tmx_map_type *tmx_map_pointer);
         void process(tmx_map_type *tmx_map_pointer);
         void scroll_map(tmx_map_type *tmx_map_pointer, int x_dir, int y_dir);

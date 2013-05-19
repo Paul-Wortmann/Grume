@@ -26,7 +26,7 @@
 #define ITEM_MANAGER_H
 
 #include <string>
-#include "core/textures.hpp"
+#include "core/texture_manager.hpp"
 
 #define NULL_ITEM     -1
 #define HEALTH_POTION  0

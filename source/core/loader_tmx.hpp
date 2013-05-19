@@ -25,7 +25,7 @@
 #ifndef LOADER_TMX_H
 #define LOADER_TMX_H
 
-#include "textures.hpp"
+#include "texture_manager.hpp"
 #include "types.hpp"
 
 #define ISOMETRIC  1
@@ -48,11 +48,10 @@ struct tmx_tileset_type
     int           first_gid;
     std::string   image_name;
     std::string   image_source;
-    bool          image_loaded;
     int           image_width;
     int           image_height;
     int           number_of_tiles;
-    texture_class tile;
+    texture_type *tile;
 };
 
 struct tmx_layer_type

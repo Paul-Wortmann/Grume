@@ -26,7 +26,7 @@
 #define WINDOW_ELEMENT_H
 
 #include <string>
-#include "../core/textures.hpp"
+#include "../core/texture_manager.hpp"
 #include "../core/font.hpp"
 #include "../core/sound.hpp"
 #include "../core/types.hpp"
@@ -90,7 +90,7 @@ class location_class
         f3_type                 position;
         bool                    image_enabled;
         std::string             image_path;
-        texture_class           image;
+        texture_type           *image;
         f3_type                 image_size;
         location_class(void);
        ~location_class(void);
@@ -122,7 +122,7 @@ struct color_state_struct
 struct texture_struct
 {
     std::string             image_path;
-    texture_class           image;
+    texture_type           *image;
 };
 
 struct texture_state_struct
@@ -164,7 +164,7 @@ struct selection_data_type
 {
     int           value_int;
     bool          active;
-    texture_class image;
+    texture_type *image;
     std::string   image_path;
     std::string   value_string;
 };
