@@ -120,9 +120,9 @@ void map_2D_class::scroll_map(tmx_map_type *tmx_map_pointer,int x_dir, int y_dir
 {
     float temp_x = x_dir * MAP_SCROLL_SPEED;
     float temp_y = y_dir * MAP_SCROLL_SPEED;
-    for(int layer_count = 0; layer_count <  tmx_map_pointer->data.number_of_layers; layer_count++)
+    for(int layer_count = 0; layer_count < tmx_map_pointer->data.number_of_layers; layer_count++)
     {
-        for(int tile_count = 0; tile_count <  tmx_map_pointer->data.number_of_tiles; tile_count++)
+        for(int tile_count = 0; tile_count < tmx_map_pointer->data.number_of_tiles; tile_count++)
         {
             tmx_map_pointer->layer[layer_count].tile[tile_count].position.x -= temp_x;
             tmx_map_pointer->layer[layer_count].tile[tile_count].position.y -= temp_y;

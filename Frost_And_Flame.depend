@@ -889,7 +889,7 @@
 	"game.hpp"
 	"core/misc.hpp"
 
-1368960756 source:c:\_git_\frost_and_flame\source\core\loader_tmx.cpp
+1368980760 source:c:\_git_\frost_and_flame\source\core\loader_tmx.cpp
 	<iostream>
 	<fstream>
 	<stdio.h>
@@ -916,7 +916,7 @@
 	"equipment.hpp"
 	"game.hpp"
 
-1368976626 source:c:\_git_\frost_and_flame\source\core\map_2d.cpp
+1368980460 source:c:\_git_\frost_and_flame\source\core\map_2d.cpp
 	<iostream>
 	<fstream>
 	<stdio.h>
