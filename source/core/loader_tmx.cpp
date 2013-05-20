@@ -288,7 +288,7 @@ void tmx_load(tmx_map_type *tmx_map_pointer, std::string file_name)
         tmx_map_pointer->data.number_of_tiles    = tmx_map_pointer->data.map_width * tmx_map_pointer->data.map_height;
         tmx_map_pointer->data.number_of_tilesets = tileset_count;
         tmx_map_pointer->data.number_of_layers   = layer_count;
-        for (int tileset_number = 0; tileset_number < tileset_count; tileset_number++)
+        for (int tileset_number = 0; tileset_number < tmx_map_pointer->data.number_of_tilesets; tileset_number++)
         {
             tmx_map_pointer->tileset[tileset_number].image_source    = game.core.file.path_remove(tmx_map_pointer->tileset[tileset_number].image_source);
             tmx_map_pointer->tileset[tileset_number].image_source    = game.core.file.path_add(tmx_map_pointer->tileset[tileset_number].image_source,"data/tilesets/");
