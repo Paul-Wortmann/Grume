@@ -34,6 +34,17 @@ texture_manager_class::texture_manager_class(void)
 
 texture_manager_class::~texture_manager_class(void)
 {
+    texture_type* temp_pointer;
+    temp_pointer = new texture_type;
+    temp_pointer = texture_manager_class::root;
+    if (temp_pointer != NULL)
+    {
+        while (temp_pointer->next != NULL)
+        {
+            delete [] temp_pointer->frame;
+            temp_pointer = temp_pointer->next;
+        }
+    }
     //delete [] root;
     //delete [] last;
 };
