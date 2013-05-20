@@ -27,7 +27,7 @@
 //#include <physfs.h>
 #include "core/misc.hpp"
 
-extern game_class game;
+extern game_class    game;
 
 const char application_name[] = ("Frost and Flame V0.19 - www.physhexgames.co.nr");
 const char application_icon[] = ("data/icon.bmp");

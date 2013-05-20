@@ -38,6 +38,7 @@ extern game_class         game;
 //-----------------------------------------------------------------------------------------------------------------
 void map_2D_class::render(tmx_map_type *tmx_map_pointer)
 {
+    /*
     tmx_tileset_type debug_tileset;
     if(game.debug)
     {
@@ -66,6 +67,7 @@ void map_2D_class::render(tmx_map_type *tmx_map_pointer)
             }
         }
     }
+    */
 //-----------------------------
     float tile_offset_w = 0.0f;
     float tile_offset_h = 0.0f;
@@ -83,8 +85,8 @@ void map_2D_class::render(tmx_map_type *tmx_map_pointer)
                 tile_offset_y = tmx_map_pointer->layer[layer_count].tile[tile_count].position.y;
                 tile_offset_w = tmx_map_pointer->tileset[tmx_map_pointer->layer[layer_count].tile[tile_count].tile_tileset].tile_width  / (game.zoom.current*2);
                 tile_offset_h = tmx_map_pointer->tileset[tmx_map_pointer->layer[layer_count].tile[tile_count].tile_tileset].tile_height / (game.zoom.current*2);
-                if(game.debug) tile_offset_w = debug_tileset.tile_width  / (game.zoom.current*2);
-                if(game.debug) tile_offset_h = debug_tileset.tile_height / (game.zoom.current*2);
+                //if(game.debug) tile_offset_w = debug_tileset.tile_width  / (game.zoom.current*2);
+                //if(game.debug) tile_offset_h = debug_tileset.tile_height / (game.zoom.current*2);
                 // Calculate for irregular sized tiles.
                 if (tmx_map_pointer->tileset[tmx_map_pointer->layer[layer_count].tile[tile_count].tile_tileset].tile_width > DEFAULT_FRAME_WIDTH)
                 {
@@ -98,11 +100,14 @@ void map_2D_class::render(tmx_map_type *tmx_map_pointer)
                 {
                     tile_offset_y += (tmx_map_pointer->tileset[tmx_map_pointer->layer[layer_count].tile[tile_count].tile_tileset].tile_height - DEFAULT_FRAME_HEIGHT) / (game.zoom.current*4);
                 }
+                /*
                 if (game.debug)
                 {
                     game.texture_manager.draw(debug_tileset.tile,true,tile_offset_x,tile_offset_y,0.001f,tile_offset_w,tile_offset_h,0.0f,tmx_map_pointer->layer[layer_count].tile[tile_count].tile);
                 }
-                else game.texture_manager.draw(tmx_map_pointer->tileset[tmx_map_pointer->layer[layer_count].tile[tile_count].tile_tileset].tile,true,tile_offset_x,tile_offset_y,0.001f,tile_offset_w,tile_offset_h,0.0f,tmx_map_pointer->layer[layer_count].tile[tile_count].tile-1);
+                else
+                */
+                game.texture_manager.draw(tmx_map_pointer->tileset[tmx_map_pointer->layer[layer_count].tile[tile_count].tile_tileset].tile,true,tile_offset_x,tile_offset_y,0.001f,tile_offset_w,tile_offset_h,0.0f,tmx_map_pointer->layer[layer_count].tile[tile_count].tile-1);
             }
         }
     };
