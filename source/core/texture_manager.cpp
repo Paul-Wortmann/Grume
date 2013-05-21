@@ -200,7 +200,10 @@ bool texture_manager_class::load_sprite_sheet(texture_type *texture)
 
 bool texture_manager_class::load_sprite_sheet(texture_type *texture, int width_set, int height_set)
 {
-    texture->sprite_sheet          = true;
+    game.core.log.file_write("Sprite sheet width  -> ",texture->width);
+    game.core.log.file_write("Sprite sheet height -> ",texture->height);
+
+    texture->sprite_sheet           = true;
     texture->width                  = width_set;
     texture->height                 = height_set;
     int             frames_x;
@@ -311,13 +314,6 @@ void texture_manager_class::process(texture_type *texture)
 
 void texture_manager_class::draw(texture_type *texture, bool rumble_set, float pos_x, float pos_y, float pos_z, float width_set, float height_set)
 {
-    if ((!game.debug) && (texture->sprite_sheet))
-    {
-        game.core.log.file_write("Frame number -> ",texture->frame_number);
-        game.core.log.file_write("Frame max    -> ",texture->frame_max);
-        game.debug = true;
-    }
-
     if (rumble_set)
     {
         game.rumble.counter.x = 0.0f;
