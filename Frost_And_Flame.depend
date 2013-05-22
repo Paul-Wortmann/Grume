@@ -916,7 +916,7 @@
 	"equipment.hpp"
 	"game.hpp"
 
-1369063915 source:c:\_git_\frost_and_flame\source\core\map_2d.cpp
+1369095035 source:c:\_git_\frost_and_flame\source\core\map_2d.cpp
 	<iostream>
 	<fstream>
 	<stdio.h>
@@ -1741,7 +1741,7 @@
 
 1367504905 c:\_git_\frost_and_flame\source\core\types.hpp
 
-1369066216 source:c:\_git_\frost_and_flame\source\core\texture_manager.cpp
+1369094504 source:c:\_git_\frost_and_flame\source\core\texture_manager.cpp
 	"texture_manager.hpp"
 	"../game.hpp"
 
