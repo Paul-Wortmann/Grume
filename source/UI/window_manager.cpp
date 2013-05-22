@@ -408,6 +408,7 @@ void window_manager_class::render(void)
 
 void swap_elements(int window_src, int element_src, int window_dst, int element_dst)
 {
+    texture_type *temp_texture_pointer;
     bool allow_swap_elements = true; // test
     if ((window_src == INVENTORY_UID) && (window_dst == INVENTORY_UID)) allow_swap_elements = true;
     if ((window_src == ACTIONBAR_UID) && (window_dst == ACTIONBAR_UID)) allow_swap_elements = true;
@@ -443,9 +444,10 @@ void swap_elements(int window_src, int element_src, int window_dst, int element_
             game.window_manager.window[window_src].element[element_src].quantity = game.window_manager.window[window_dst].element[element_dst].quantity;
             game.window_manager.window[window_dst].element[element_dst].value    = tmp_value;
             game.window_manager.window[window_dst].element[element_dst].quantity = tmp_quantity;
-            //game.window_manager.window[window_src].element[element_src].texture.normal.image.load_image(game.window_manager.window[window_src].element[element_src].texture.normal.image.path.c_str());
-            //game.window_manager.window[window_dst].element[element_dst].texture.normal.image.load_image(game.window_manager.window[window_src].element[element_src].texture.normal.image.path.c_str());
         }
+        temp_texture_pointer = game.window_manager.window[window_src].element[element_src].texture.normal;
+        game.window_manager.window[window_src].element[element_src].texture.normal = game.window_manager.window[window_dst].element[element_dst].texture.normal;
+        game.window_manager.window[window_dst].element[element_dst].texture.normal = temp_texture_pointer;
     }
 };
 
