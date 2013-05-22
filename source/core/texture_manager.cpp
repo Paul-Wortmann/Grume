@@ -200,9 +200,6 @@ bool texture_manager_class::load_sprite_sheet(texture_type *texture)
 
 bool texture_manager_class::load_sprite_sheet(texture_type *texture, int width_set, int height_set)
 {
-    game.core.log.file_write("Sprite sheet width  -> ",texture->width);
-    game.core.log.file_write("Sprite sheet height -> ",texture->height);
-
     texture->sprite_sheet           = true;
     texture->width                  = width_set;
     texture->height                 = height_set;
@@ -255,8 +252,8 @@ bool texture_manager_class::load_sprite_sheet(texture_type *texture, int width_s
                 }
                 if (SDL_MUSTLOCK(sprite_sheet)) SDL_UnlockSurface(sprite_sheet);
                 texture->frame[frame_count].active = true;
-                glGenTextures  (1, &texture->frame[texture->frame_number].data);
-                glBindTexture  (GL_TEXTURE_2D, texture->frame[texture->frame_number].data);
+                glGenTextures  (1, &texture->frame[frame_count].data);
+                glBindTexture  (GL_TEXTURE_2D, texture->frame[frame_count].data);
                 glEnable       (GL_BLEND);
                 glBlendFunc    (GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
                 glPixelStorei  (GL_UNPACK_ALIGNMENT, 1);
