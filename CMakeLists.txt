@@ -121,8 +121,8 @@ Set (FROST_AND_FLAME_SOURCES
 	./source/core/rs232.cpp
 	./source/core/savegame.cpp
 	./source/core/sound.cpp
+	./source/core/sound_manager.cpp
 	./source/core/texture_manager.cpp
-	./source/core/textures.cpp
 	./source/core/timer.cpp
 	#./source/core/types.cpp
 	./source/core/vector.cpp
