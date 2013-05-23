@@ -1105,6 +1105,328 @@ void process_inventory_window(int window_number)
                 use_item(window_number,2);
                 game.window_manager.window[window_number].event.id = EVENT_NONE;
             break;
+            case ((3*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
+                game.window_manager.window[window_number].event.id = EVENT_NONE;
+            break;
+            case ((3*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
+                use_item(window_number,3);
+                game.window_manager.window[window_number].event.id = EVENT_NONE;
+            break;
+            case ((4*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
+                game.window_manager.window[window_number].event.id = EVENT_NONE;
+            break;
+            case ((4*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
+                use_item(window_number,4);
+                game.window_manager.window[window_number].event.id = EVENT_NONE;
+            break;
+            case ((5*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
+                game.window_manager.window[window_number].event.id = EVENT_NONE;
+            break;
+            case ((5*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
+                use_item(window_number,5);
+                game.window_manager.window[window_number].event.id = EVENT_NONE;
+            break;
+            case ((6*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
+                game.window_manager.window[window_number].event.id = EVENT_NONE;
+            break;
+            case ((6*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
+                use_item(window_number,6);
+                game.window_manager.window[window_number].event.id = EVENT_NONE;
+            break;
+            case ((7*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
+                game.window_manager.window[window_number].event.id = EVENT_NONE;
+            break;
+            case ((7*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
+                use_item(window_number,7);
+                game.window_manager.window[window_number].event.id = EVENT_NONE;
+            break;
+            case ((8*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
+                game.window_manager.window[window_number].event.id = EVENT_NONE;
+            break;
+            case ((8*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
+                use_item(window_number,8);
+                game.window_manager.window[window_number].event.id = EVENT_NONE;
+            break;
+            case ((9*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
+                game.window_manager.window[window_number].event.id = EVENT_NONE;
+            break;
+            case ((9*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
+                use_item(window_number,9);
+                game.window_manager.window[window_number].event.id = EVENT_NONE;
+            break;
+            case ((10*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
+                game.window_manager.window[window_number].event.id = EVENT_NONE;
+            break;
+            case ((10*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
+                use_item(window_number,10);
+                game.window_manager.window[window_number].event.id = EVENT_NONE;
+            break;
+            case ((11*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
+                game.window_manager.window[window_number].event.id = EVENT_NONE;
+            break;
+            case ((11*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
+                use_item(window_number,11);
+                game.window_manager.window[window_number].event.id = EVENT_NONE;
+            break;
+            case ((12*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
+                game.window_manager.window[window_number].event.id = EVENT_NONE;
+            break;
+            case ((12*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
+                use_item(window_number,12);
+                game.window_manager.window[window_number].event.id = EVENT_NONE;
+            break;
+            case ((13*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
+                game.window_manager.window[window_number].event.id = EVENT_NONE;
+            break;
+            case ((13*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
+                use_item(window_number,13);
+                game.window_manager.window[window_number].event.id = EVENT_NONE;
+            break;
+            case ((14*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
+                game.window_manager.window[window_number].event.id = EVENT_NONE;
+            break;
+            case ((14*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
+                use_item(window_number,14);
+                game.window_manager.window[window_number].event.id = EVENT_NONE;
+            break;
+            case ((15*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
+                game.window_manager.window[window_number].event.id = EVENT_NONE;
+            break;
+            case ((15*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
+                use_item(window_number,15);
+                game.window_manager.window[window_number].event.id = EVENT_NONE;
+            break;
+            case ((16*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
+                game.window_manager.window[window_number].event.id = EVENT_NONE;
+            break;
+            case ((16*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
+                use_item(window_number,16);
+                game.window_manager.window[window_number].event.id = EVENT_NONE;
+            break;
+            case ((17*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
+                game.window_manager.window[window_number].event.id = EVENT_NONE;
+            break;
+            case ((17*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
+                use_item(window_number,17);
+                game.window_manager.window[window_number].event.id = EVENT_NONE;
+            break;
+            case ((18*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
+                game.window_manager.window[window_number].event.id = EVENT_NONE;
+            break;
+            case ((18*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
+                use_item(window_number,18);
+                game.window_manager.window[window_number].event.id = EVENT_NONE;
+            break;
+            case ((19*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
+                game.window_manager.window[window_number].event.id = EVENT_NONE;
+            break;
+            case ((19*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
+                use_item(window_number,19);
+                game.window_manager.window[window_number].event.id = EVENT_NONE;
+            break;
+            case ((20*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
+                game.window_manager.window[window_number].event.id = EVENT_NONE;
+            break;
+            case ((20*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
+                use_item(window_number,20);
+                game.window_manager.window[window_number].event.id = EVENT_NONE;
+            break;
+            case ((21*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
+                game.window_manager.window[window_number].event.id = EVENT_NONE;
+            break;
+            case ((21*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
+                use_item(window_number,21);
+                game.window_manager.window[window_number].event.id = EVENT_NONE;
+            break;
+            case ((22*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
+                game.window_manager.window[window_number].event.id = EVENT_NONE;
+            break;
+            case ((22*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
+                use_item(window_number,22);
+                game.window_manager.window[window_number].event.id = EVENT_NONE;
+            break;
+            case ((23*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
+                game.window_manager.window[window_number].event.id = EVENT_NONE;
+            break;
+            case ((23*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
+                use_item(window_number,23);
+                game.window_manager.window[window_number].event.id = EVENT_NONE;
+            break;
+            case ((24*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
+                game.window_manager.window[window_number].event.id = EVENT_NONE;
+            break;
+            case ((24*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
+                use_item(window_number,24);
+                game.window_manager.window[window_number].event.id = EVENT_NONE;
+            break;
+            case ((25*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
+                game.window_manager.window[window_number].event.id = EVENT_NONE;
+            break;
+            case ((25*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
+                use_item(window_number,25);
+                game.window_manager.window[window_number].event.id = EVENT_NONE;
+            break;
+            case ((26*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
+                game.window_manager.window[window_number].event.id = EVENT_NONE;
+            break;
+            case ((26*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
+                use_item(window_number,26);
+                game.window_manager.window[window_number].event.id = EVENT_NONE;
+            break;
+            case ((27*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
+                game.window_manager.window[window_number].event.id = EVENT_NONE;
+            break;
+            case ((27*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
+                use_item(window_number,27);
+                game.window_manager.window[window_number].event.id = EVENT_NONE;
+            break;
+            case ((28*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
+                game.window_manager.window[window_number].event.id = EVENT_NONE;
+            break;
+            case ((28*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
+                use_item(window_number,28);
+                game.window_manager.window[window_number].event.id = EVENT_NONE;
+            break;
+            case ((29*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
+                game.window_manager.window[window_number].event.id = EVENT_NONE;
+            break;
+            case ((29*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
+                use_item(window_number,29);
+                game.window_manager.window[window_number].event.id = EVENT_NONE;
+            break;
+            case ((30*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
+                game.window_manager.window[window_number].event.id = EVENT_NONE;
+            break;
+            case ((30*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
+                use_item(window_number,30);
+                game.window_manager.window[window_number].event.id = EVENT_NONE;
+            break;
+            case ((31*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
+                game.window_manager.window[window_number].event.id = EVENT_NONE;
+            break;
+            case ((31*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
+                use_item(window_number,31);
+                game.window_manager.window[window_number].event.id = EVENT_NONE;
+            break;
+            case ((32*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
+                game.window_manager.window[window_number].event.id = EVENT_NONE;
+            break;
+            case ((32*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
+                use_item(window_number,32);
+                game.window_manager.window[window_number].event.id = EVENT_NONE;
+            break;
+            case ((33*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
+                game.window_manager.window[window_number].event.id = EVENT_NONE;
+            break;
+            case ((33*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
+                use_item(window_number,33);
+                game.window_manager.window[window_number].event.id = EVENT_NONE;
+            break;
+            case ((34*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
+                game.window_manager.window[window_number].event.id = EVENT_NONE;
+            break;
+            case ((34*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
+                use_item(window_number,34);
+                game.window_manager.window[window_number].event.id = EVENT_NONE;
+            break;
+            case ((35*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
+                game.window_manager.window[window_number].event.id = EVENT_NONE;
+            break;
+            case ((35*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
+                use_item(window_number,35);
+                game.window_manager.window[window_number].event.id = EVENT_NONE;
+            break;
+            case ((36*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
+                game.window_manager.window[window_number].event.id = EVENT_NONE;
+            break;
+            case ((36*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
+                use_item(window_number,36);
+                game.window_manager.window[window_number].event.id = EVENT_NONE;
+            break;
+            case ((37*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
+                game.window_manager.window[window_number].event.id = EVENT_NONE;
+            break;
+            case ((37*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
+                use_item(window_number,37);
+                game.window_manager.window[window_number].event.id = EVENT_NONE;
+            break;
+            case ((38*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
+                game.window_manager.window[window_number].event.id = EVENT_NONE;
+            break;
+            case ((38*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
+                use_item(window_number,38);
+                game.window_manager.window[window_number].event.id = EVENT_NONE;
+            break;
+            case ((39*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
+                game.window_manager.window[window_number].event.id = EVENT_NONE;
+            break;
+            case ((39*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
+                use_item(window_number,39);
+                game.window_manager.window[window_number].event.id = EVENT_NONE;
+            break;
+            case ((40*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
+                game.window_manager.window[window_number].event.id = EVENT_NONE;
+            break;
+            case ((40*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
+                use_item(window_number,40);
+                game.window_manager.window[window_number].event.id = EVENT_NONE;
+            break;
+            case ((41*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
+                game.window_manager.window[window_number].event.id = EVENT_NONE;
+            break;
+            case ((41*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
+                use_item(window_number,41);
+                game.window_manager.window[window_number].event.id = EVENT_NONE;
+            break;
+            case ((42*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
+                game.window_manager.window[window_number].event.id = EVENT_NONE;
+            break;
+            case ((42*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
+                use_item(window_number,42);
+                game.window_manager.window[window_number].event.id = EVENT_NONE;
+            break;
+            case ((43*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
+                game.window_manager.window[window_number].event.id = EVENT_NONE;
+            break;
+            case ((43*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
+                use_item(window_number,43);
+                game.window_manager.window[window_number].event.id = EVENT_NONE;
+            break;
+            case ((44*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
+                game.window_manager.window[window_number].event.id = EVENT_NONE;
+            break;
+            case ((44*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
+                use_item(window_number,44);
+                game.window_manager.window[window_number].event.id = EVENT_NONE;
+            break;
+            case ((45*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
+                game.window_manager.window[window_number].event.id = EVENT_NONE;
+            break;
+            case ((45*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
+                use_item(window_number,45);
+                game.window_manager.window[window_number].event.id = EVENT_NONE;
+            break;
+            case ((46*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
+                game.window_manager.window[window_number].event.id = EVENT_NONE;
+            break;
+            case ((46*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
+                use_item(window_number,46);
+                game.window_manager.window[window_number].event.id = EVENT_NONE;
+            break;
+            case ((47*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
+                game.window_manager.window[window_number].event.id = EVENT_NONE;
+            break;
+            case ((47*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
+                use_item(window_number,47);
+                game.window_manager.window[window_number].event.id = EVENT_NONE;
+            break;
+            case ((48*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
+                game.window_manager.window[window_number].event.id = EVENT_NONE;
+            break;
+            case ((48*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
+                use_item(window_number,48);
+                game.window_manager.window[window_number].event.id = EVENT_NONE;
+            break;
             default:
                 game.core.log.file_write("Unable to process event - ",game.window_manager.window[window_number].event.id, " - UID - ",game.window_manager.window[window_number].UID);
                 game.window_manager.window[window_number].event.id = EVENT_NONE;
@@ -1113,5 +1435,4 @@ void process_inventory_window(int window_number)
     }
     game.window_manager.window[window_number].event.id = EVENT_NONE;
 };
-
 

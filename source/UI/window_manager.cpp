@@ -416,6 +416,7 @@ void swap_elements(int window_src, int element_src, int window_dst, int element_
     if ((window_src == ACTIONBAR_UID) && (window_dst == INVENTORY_UID)) allow_swap_elements = true;
     window_src = game.window_manager.window_get_number(window_src);
     window_dst = game.window_manager.window_get_number(window_dst);
+    game.core.log.file_write("Moving element from - ",window_src," - ",element_src," to - ",window_dst," - ",element_dst);
     if ((allow_swap_elements) && ((game.window_manager.window[window_src].element[element_src].type == ITEM)&&(game.window_manager.window[window_dst].element[element_dst].type == ITEM)))
     {
         if    ((game.item_manager.item[(int)game.window_manager.window[window_src].element[element_src].value].type     == game.item_manager.item[(int)game.window_manager.window[window_dst].element[element_dst].value].type)
