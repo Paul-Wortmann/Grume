@@ -171,8 +171,8 @@
 		<Unit filename="source/core/core.hpp" />
 		<Unit filename="source/core/file.cpp" />
 		<Unit filename="source/core/file.hpp" />
-		<Unit filename="source/core/font.cpp" />
-		<Unit filename="source/core/font.hpp" />
+		<Unit filename="source/core/font_manager.cpp" />
+		<Unit filename="source/core/font_manager.hpp" />
 		<Unit filename="source/core/graphics.cpp" />
 		<Unit filename="source/core/graphics.hpp" />
 		<Unit filename="source/core/io.cpp" />

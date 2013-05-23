@@ -102,7 +102,7 @@ Set (FROST_AND_FLAME_SOURCES
 	./source/core/config.cpp
 	./source/core/core.cpp
 	./source/core/file.cpp
-	./source/core/font.cpp
+	./source/core/font_manager.cpp
 	./source/core/graphics.cpp
 	./source/core/io.cpp
 	./source/core/loader_md2.cpp

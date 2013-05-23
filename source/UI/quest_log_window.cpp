@@ -51,8 +51,7 @@ void setup_quest_log_window(int UID)
     game.window_manager.window[window_number].sound.on_click.sound        = game.sound_manager.add_sound("data/sound/menu/menu_select_00.wav");
     game.window_manager.window[window_number].sound.on_mouse_over.enabled = true;
     game.window_manager.window[window_number].sound.on_mouse_over.sound   = game.sound_manager.add_sound("data/sound/menu/menu_move_00.wav");
-    game.window_manager.window[window_number].font_path                   = "data/fonts/font_001.ttf";
-    game.window_manager.window[window_number].font.load(game.window_manager.window[window_number].font_path);
+    game.window_manager.window[window_number].font                        = game.font_manager.add_font("data/fonts/font_001.ttf");
     game.window_manager.window[window_number].mouse_delay.maximum     = 30;
     game.window_manager.window[window_number].event.id                = 0;
     game.window_manager.window[window_number].color.normal.r          = 128;

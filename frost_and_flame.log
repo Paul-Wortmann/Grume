@@ -21,10 +21,12 @@ Starting Game...
  
 # ---------------------------------------------- #
  
-Processing event - 101
-Unable to process event - 701 - UID - 6
-Unable to process event - 801 - UID - 6
+Using item -> 6 - 15
+Using item -> 6 - 17
+Using item -> 9 - 2
 Using item -> 9 - 1
+Using item -> 9 - 2
+Using item -> 9 - 2
 Using item -> 9 - 2
 Sound   count -> 8
 Texture count -> 92

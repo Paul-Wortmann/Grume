@@ -26,6 +26,7 @@
 #define GAME_H
 
 #include "core/core.hpp"
+#include "core/font_manager.hpp"
 #include "core/map_2D.hpp"
 #include "core/music.hpp"
 #include "core/savegame.hpp"
@@ -69,6 +70,7 @@ class game_class
         command_line_parser_class command_line;
         core_class                core;
         int                       event;
+        font_manager_class        font_manager;
         light_type                global_ambient;
         item_manager_class        item_manager;
         language_class            language;

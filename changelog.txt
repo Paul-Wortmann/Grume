@@ -7,13 +7,24 @@ just that time is not permitting to proceed at a fast pace, at the moment.
 
 v0.19 - (2013-05-xx)
 
+CORE  -> Implemented and integrated a new sound manager.
+CORE  -> Implemented and integrated a new texture manager.
+CORE  -> Added command line switch "-w"
+CORE  -> Added command line switch "-window"
+CORE  -> Added command line parser.
+GFX   -> Faster rendering for non-rotatable textures.
+GFX   -> Free texture data on app exit.
+GFX   -> Texture reloading corrected.
+MISC  -> Commented out old physics code to fix compiler warnings.
+MISC  -> Fixed compiler warnings in rs232.cpp
+UI    -> Added element sub types to cater for differing equipment slots.
 UI    -> Process item stacking code started.
 UI    -> Initial drag and drop completed.
 UI    -> Only alow swapping of ITEM type elements.
+UI    -> All equipment items slots now usable.
 UI    -> All inventory items slots now usable.
 UI    -> All action-bar items slots now usable.
 UI    -> Items now usable.
-UI    -> Base of new function to use an item.
 UI    -> Allow right click of elements.
 UI    -> Process element click if element has only been dragged a very small amount.
 UI    -> Small improvement to element drag code.
@@ -25,7 +36,7 @@ MAP   -> Corrected tileset apply to top left corner of generated maps.
 MAP   -> Added smooth_map() to remove anomilies formed by map generation.
 MAP   -> Added object layer.
 MAP   -> Improved apply tileset.
-MAP   -> 2D tileset walls applied to maps.
+MAP   -> 2D tilesets applied to maps.
 MAP   -> Added temp tile data array to apply tileset.
 MAP   -> Correct tile collision on floor tiles after applying a tileset.
 MAP   -> Added bool collision to tmx_tile_class.

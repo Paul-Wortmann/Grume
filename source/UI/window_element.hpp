@@ -26,7 +26,7 @@
 #define WINDOW_ELEMENT_H
 
 #include <string>
-#include "../core/font.hpp"
+#include "../core/font_manager.hpp"
 #include "../core/sound_manager.hpp"
 #include "../core/texture_manager.hpp"
 #include "../core/types.hpp"
@@ -202,7 +202,7 @@ class window_element_class
         color_state_struct      color;
         sound_state_struct      sound;
         texture_state_struct    texture;
-        font_class              font;
+        font_type              *font;
         window_element_class(void);
        ~window_element_class(void);
         void                    render(void);
