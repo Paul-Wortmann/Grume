@@ -111,6 +111,8 @@ void  init_items(void) // Initialize hard-coded default items, such as health po
         game.item_manager.item[item_number].effect[0].type         = EFFECT_MOD_HEALTH;
         game.item_manager.item[item_number].effect[0].value        = 50.0f;
         game.item_manager.item[item_number].image                  = game.texture_manager.add_texture("data/textures/UI/icons/potions/potion_23.png");
+        game.item_manager.item[item_number].sound_move             = game.sound_manager.add_sound("data/sound/inventory/bottle_01.wav");
+        game.item_manager.item[item_number].sound_use              = game.sound_manager.add_sound("data/sound/inventory/bubble_01.wav");
     }
     item_number = game.item_manager.get_new_ID();
     if (item_number > -1) // Mana potion
@@ -127,6 +129,8 @@ void  init_items(void) // Initialize hard-coded default items, such as health po
         game.item_manager.item[item_number].effect[0].type         = EFFECT_MOD_MANA;
         game.item_manager.item[item_number].effect[0].value        = 50.0f;
         game.item_manager.item[item_number].image                  = game.texture_manager.add_texture("data/textures/UI/icons/potions/potion_22.png");
+        game.item_manager.item[item_number].sound_move             = game.sound_manager.add_sound("data/sound/inventory/bottle_01.wav");
+        game.item_manager.item[item_number].sound_use              = game.sound_manager.add_sound("data/sound/inventory/bubble_03.wav");
     }
     item_number = game.item_manager.get_new_ID();
     if (item_number > -1) // test spell 1
@@ -145,6 +149,8 @@ void  init_items(void) // Initialize hard-coded default items, such as health po
         game.item_manager.item[item_number].effect[1].type         = EFFECT_MOD_HEALTH;
         game.item_manager.item[item_number].effect[1].value        = 50.0f;
         game.item_manager.item[item_number].image                  = game.texture_manager.add_texture("data/textures/test_1.png");
+        game.item_manager.item[item_number].sound_move             = game.sound_manager.add_sound("data/sound/inventory/book_02.wav");
+        game.item_manager.item[item_number].sound_use              = game.sound_manager.add_sound("data/sound/inventory/book_01.wav");
     }
     //------------------------------------------------------------------------------------------------------------
 };
@@ -178,6 +184,7 @@ void  use_item(int window_from, int element_from)
             game.window_manager.window[window_from].element[element_from].active   = false;
             game.window_manager.window[window_from].element[element_from].quantity = 0;
         }
+        game.sound_manager.play(game.item_manager.item[item_number].sound_use);
         game.core.log.file_write("Using item -> ", window_from, " - ", element_from);
     }
 };
