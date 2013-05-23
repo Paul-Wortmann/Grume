@@ -53,6 +53,8 @@ extern "C" int main(int argc, char** argv)
     game.core.config.file_set("frost_and_flame.cfg");
     game.core.config.file_header = application_name;
     game.core.config.file_load();
+    game.core.config.file_set("Processing command line switches...");
+    game.command_line.process(argc,argv);
     game.core.log.file_write("Loading language file -> data/configuration/languages/"+game.core.config.language+".txt");
     game.language.load("data/configuration/languages/"+game.core.config.language+".txt");
 // --------------------------------------------------------------------------------------------------------------------------

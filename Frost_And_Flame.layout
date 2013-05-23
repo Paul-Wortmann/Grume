@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <CodeBlocks_layout_file>
 	<ActiveTarget name="Windows" />
+	<File name="source\command_line_parser.hpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1239" topLine="12" />
+		</Cursor>
+	</File>
 	<File name="source\UI\skillbook_window.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="8878" topLine="89" />
@@ -16,7 +21,7 @@
 			<Cursor1 position="7208" topLine="98" />
 		</Cursor>
 	</File>
-	<File name="source\item_manager.cpp" open="1" top="1" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="source\item_manager.cpp" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="4867" topLine="90" />
 		</Cursor>
@@ -103,7 +108,7 @@
 	</File>
 	<File name="source\main.cpp" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="4349" topLine="79" />
+			<Cursor1 position="1658" topLine="22" />
 		</Cursor>
 	</File>
 	<File name="source\UI\window_element.cpp" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -361,6 +366,11 @@
 			<Cursor1 position="17230" topLine="352" />
 		</Cursor>
 	</File>
+	<File name="source\command_line_parser.cpp" open="1" top="1" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="0" topLine="0" />
+		</Cursor>
+	</File>
 	<File name="source\UI\quest_log_window.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="8886" topLine="89" />
@@ -373,10 +383,10 @@
 	</File>
 	<File name="source\game.cpp" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="7417" topLine="114" />
+			<Cursor1 position="7417" topLine="17" />
 		</Cursor>
 	</File>
-	<File name="source\core\texture_manager.hpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="source\core\texture_manager.hpp" open="1" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="1381" topLine="35" />
 		</Cursor>
@@ -388,7 +398,7 @@
 	</File>
 	<File name="source\game.hpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="2595" topLine="28" />
+			<Cursor1 position="3178" topLine="71" />
 		</Cursor>
 	</File>
 </CodeBlocks_layout_file>

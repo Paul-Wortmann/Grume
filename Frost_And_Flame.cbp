@@ -161,6 +161,8 @@
 		<Unit filename="source/UI/window_element.hpp" />
 		<Unit filename="source/UI/window_manager.cpp" />
 		<Unit filename="source/UI/window_manager.hpp" />
+		<Unit filename="source/command_line_parser.cpp" />
+		<Unit filename="source/command_line_parser.hpp" />
 		<Unit filename="source/core/background.cpp" />
 		<Unit filename="source/core/background.hpp" />
 		<Unit filename="source/core/config.cpp" />

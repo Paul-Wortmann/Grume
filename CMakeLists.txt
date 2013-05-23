@@ -144,6 +144,7 @@ Set (FROST_AND_FLAME_SOURCES
 	./source/UI/window_cursor.cpp
 	./source/UI/window_element.cpp
 	./source/UI/window_manager.cpp
+	./source/command_line_parser.cpp
 	./source/game.cpp
 	./source/item_manager.cpp
 	./source/language.cpp

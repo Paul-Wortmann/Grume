@@ -29,11 +29,13 @@
 #include "core/map_2D.hpp"
 #include "core/music.hpp"
 #include "core/savegame.hpp"
+#include "core/sound_manager.hpp"
 #include "core/texture_manager.hpp"
 #include "core/types.hpp"
 #include "UI/loading_screen.hpp"
 #include "UI/UI.hpp"
 #include "UI/window_manager.hpp"
+#include "command_line_parser.hpp"
 #include "item_manager.hpp"
 #include "language.hpp"
 #include "npc.hpp"
@@ -61,37 +63,40 @@ class game_class
 {
     private:
     public:
-        int                   test; // ---- DELETE ME -----------
-        rumble_type           rumble;
-        bool                  debug;
-        int                   event;
-        int                   state;
-        save_game_class       save_01;
-        save_game_class       save_02;
-        save_game_class       save_03;
-        save_game_class       save_04;
-        save_game_class       save_05;
-        save_game_class       save_06;
-        save_game_class       save_07;
-        core_class            core;
-        loading_screen_class  loading_screen;
-        music_class           music;
-        zoom_type             zoom;
-        player_class          player;
-        npc_class             npc;
-        light_type            global_ambient;
-        light_type            world_ambient;
-        spell_class           spell[MAX_SPELLS];
-        language_class        language;
-        window_manager_class  window_manager;
-        texture_manager_class texture_manager;
-        item_manager_class    item_manager;
-        UI_class              UI;
-        map_2D_class          map_2D;
+        int                       test; // ---- DELETE ME -----------
+        bool                      debug;
+        // ----------------------------------------------------------
+        command_line_parser_class command_line;
+        core_class                core;
+        int                       event;
+        light_type                global_ambient;
+        item_manager_class        item_manager;
+        language_class            language;
+        loading_screen_class      loading_screen;
+        map_2D_class              map_2D;
+        music_class               music;
+        npc_class                 npc;
+        player_class              player;
+        rumble_type               rumble;
+        save_game_class           save_01;
+        save_game_class           save_02;
+        save_game_class           save_03;
+        save_game_class           save_04;
+        save_game_class           save_05;
+        save_game_class           save_06;
+        save_game_class           save_07;
+        spell_class               spell[MAX_SPELLS];
+        int                       state;
+        sound_manager_class       sound_manager;
+        texture_manager_class     texture_manager;
+        UI_class                  UI;
+        window_manager_class      window_manager;
+        light_type                world_ambient;
+        zoom_type                 zoom;
         game_class(void);
-        void             init(void);
-        void             process(void);
-        void             render(void);
+        void                      init(void);
+        void                      process(void);
+        void                      render(void);
 };
 
 #endif //GAME_H

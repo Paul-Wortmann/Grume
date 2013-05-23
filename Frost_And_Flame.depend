@@ -29,16 +29,18 @@
 	<string>
 	<fstream>
 
-1368931578 c:\_git_\frost_and_flame\source\game.hpp
+1369286316 c:\_git_\frost_and_flame\source\game.hpp
 	"core/core.hpp"
 	"core/map_2D.hpp"
 	"core/music.hpp"
 	"core/savegame.hpp"
+	"core/sound_manager.hpp"
 	"core/texture_manager.hpp"
 	"core/types.hpp"
 	"UI/loading_screen.hpp"
 	"UI/UI.hpp"
 	"UI/window_manager.hpp"
+	"command_line_parser.hpp"
 	"item_manager.hpp"
 	"language.hpp"
 	"npc.hpp"
@@ -739,7 +741,7 @@
 1368859896 source:c:\_git_\frost_and_flame\source\core\rs232.cpp
 	"rs232.hpp"
 
-1369020077 source:c:\_git_\frost_and_flame\source\main.cpp
+1369286114 source:c:\_git_\frost_and_flame\source\main.cpp
 	"game.hpp"
 	<SDL/SDL.h>
 	"core/misc.hpp"
@@ -1746,18 +1748,24 @@
 	"texture_manager.hpp"
 	"../game.hpp"
 
-1369054956 c:\_git_\frost_and_flame\source\core\texture_manager.hpp
+1369285232 c:\_git_\frost_and_flame\source\core\texture_manager.hpp
 	<GL/gl.h>
 	<SDL/SDL.h>
 	<SDL/SDL_image.h>
 	<string>
 
-1369237683 source:c:\_git_\frost_and_flame\source\core\sound_manager.cpp
+1369285168 source:c:\_git_\frost_and_flame\source\core\sound_manager.cpp
 	"sound_manager.hpp"
 	"../game.hpp"
 
-1369236882 c:\_git_\frost_and_flame\source\core\sound_manager.hpp
+1369285168 c:\_git_\frost_and_flame\source\core\sound_manager.hpp
 	<SDL/SDL.h>
 	<SDL/SDL_mixer.h>
 	<string>
+
+1369286117 c:\_git_\frost_and_flame\source\command_line_parser.hpp
+
+1369286117 source:c:\_git_\frost_and_flame\source\command_line_parser.cpp
+	"command_line_parser.hpp"
+	"game.hpp"
 
