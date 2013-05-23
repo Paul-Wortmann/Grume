@@ -80,6 +80,7 @@ sound_type *sound_manager_class::add_sound(std::string file_name)
         sound_manager_class::last->next = new sound_type;
         sound_manager_class::last->next = NULL;
     }
+    sound_manager_class::last->path = file_name.c_str();
     sound_manager_class::last->sound_channel = -1;
     sound_manager_class::last->loaded = sound_manager_class::load_sound(last);
     if (sound_manager_class::last->loaded) sound_manager_class::number_of_sounds++;
@@ -88,13 +89,14 @@ sound_type *sound_manager_class::add_sound(std::string file_name)
 
 bool sound_manager_class::load_sound(sound_type *sound)
 {
+    bool return_value = false;
     sound->sound_data = Mix_LoadWAV(sound->path.c_str());
-    if (sound->sound_data != NULL) return (true);
-        else return (false);
+    if (sound->sound_data != NULL) return_value = true;
+    else game.core.log.file_write("Failed to load sound ->",sound->path.c_str());
+    return (return_value);
 };
 
 void sound_manager_class::play(sound_type *sound)
 {
     sound->sound_channel = Mix_PlayChannel(-1, sound->sound_data, 0);
 };
-
