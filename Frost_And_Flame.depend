@@ -741,7 +741,7 @@
 1368859896 source:c:\_git_\frost_and_flame\source\core\rs232.cpp
 	"rs232.hpp"
 
-1369286114 source:c:\_git_\frost_and_flame\source\main.cpp
+1369287574 source:c:\_git_\frost_and_flame\source\main.cpp
 	"game.hpp"
 	<SDL/SDL.h>
 	"core/misc.hpp"
@@ -1765,7 +1765,8 @@
 
 1369286117 c:\_git_\frost_and_flame\source\command_line_parser.hpp
 
-1369286117 source:c:\_git_\frost_and_flame\source\command_line_parser.cpp
+1369287574 source:c:\_git_\frost_and_flame\source\command_line_parser.cpp
+	<string>
 	"command_line_parser.hpp"
 	"game.hpp"
 

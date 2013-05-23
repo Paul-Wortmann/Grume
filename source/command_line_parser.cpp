@@ -46,7 +46,7 @@ void command_line_parser_class::process(int arg_count,char** arg_data)
         temp_string = arg_data[arg_number];
         if (temp_string.compare("-window") == 0)
         {
-
+            game.core.config.display_fullscreen = false;
         }
     }
 };
