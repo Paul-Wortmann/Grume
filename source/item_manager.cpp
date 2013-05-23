@@ -181,7 +181,6 @@ void  use_item(int window_from, int element_from)
         if (game.window_manager.window[window_from].element[element_from].quantity <= 0)
         {
             game.window_manager.window[window_from].element[element_from].value    = -1;
-            game.window_manager.window[window_from].element[element_from].active   = false;
             game.window_manager.window[window_from].element[element_from].quantity = 0;
         }
         game.sound_manager.play(game.item_manager.item[item_number].sound_use);
