@@ -27,6 +27,7 @@
 
 #include <string>
 #include "core/texture_manager.hpp"
+#include "core/sound_manager.hpp"
 
 #define NULL_ITEM     -1
 #define HEALTH_POTION  0
@@ -77,12 +78,15 @@ struct item_socket_type
 
 struct item_type
 {
+    sound_type      *sound_move;
+    sound_type      *sound_use;
+    texture_type    *image;
     // sound move
     // sound use
     // texture
     bool             active;
     std::string      name;
-    std::string      image_path;
+    //std::string      image_path;
     int              ID;
     int              type;
     int              sub_type;

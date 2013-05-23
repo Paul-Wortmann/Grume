@@ -945,7 +945,7 @@
 	"misc.hpp"
 	"../game.hpp"
 
-1369233638 source:c:\_git_\frost_and_flame\source\game.cpp
+1369284613 source:c:\_git_\frost_and_flame\source\game.cpp
 	"core/map_2D.hpp"
 	"game.hpp"
 
@@ -1718,13 +1718,14 @@
 1357028525 source:/host/_git_/Frost_and_Flame/source/core/rs232.cpp
 	"rs232.hpp"
 
-1368892920 source:c:\_git_\frost_and_flame\source\item_manager.cpp
+1369284681 source:c:\_git_\frost_and_flame\source\item_manager.cpp
 	"item_manager.hpp"
 	"game.hpp"
 
-1368930489 c:\_git_\frost_and_flame\source\item_manager.hpp
+1369284553 c:\_git_\frost_and_flame\source\item_manager.hpp
 	<string>
 	"core/texture_manager.hpp"
+	"core/sound_manager.hpp"
 
 1367504860 c:\_git_\frost_and_flame\source\core\map_gen.hpp
 	<string>
