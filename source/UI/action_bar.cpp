@@ -50,11 +50,9 @@ void setup_action_bar(int UID)
     game.window_manager.window[window_number].texture.highlighted         = game.texture_manager.add_texture("data/textures/UI/menu/button_highlighted.png");
     game.window_manager.window[window_number].texture.disabled            = game.texture_manager.add_texture("data/textures/UI/menu/button_disabled.png");
     game.window_manager.window[window_number].sound.on_click.enabled      = false;
-    game.window_manager.window[window_number].sound.on_click.sound_path   = "data/sound/menu/menu_select_00.wav";
-    game.window_manager.window[window_number].sound.on_click.sound.load(game.window_manager.window[window_number].sound.on_click.sound_path);
-    game.window_manager.window[window_number].sound.on_mouse_over.enabled      = false;
-    game.window_manager.window[window_number].sound.on_mouse_over.sound_path   = "data/sound/menu/menu_move_00.wav";
-    game.window_manager.window[window_number].sound.on_mouse_over.sound.load(game.window_manager.window[window_number].sound.on_mouse_over.sound_path);
+    game.window_manager.window[window_number].sound.on_click.sound        = game.sound_manager.add_sound("data/sound/menu/menu_select_00.wav");
+    game.window_manager.window[window_number].sound.on_mouse_over.enabled = false;
+    game.window_manager.window[window_number].sound.on_mouse_over.sound   = game.sound_manager.add_sound("data/sound/menu/menu_move_00.wav");
     game.window_manager.window[window_number].font_path                   = "data/fonts/font_001.ttf";
     game.window_manager.window[window_number].font.load(game.window_manager.window[window_number].font_path);
     game.window_manager.window[window_number].mouse_delay.maximum     = 30;

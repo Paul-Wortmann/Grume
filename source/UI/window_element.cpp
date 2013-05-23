@@ -370,7 +370,7 @@ event_type  window_element_class::process(bool element_in_focus)
                 // ----------------- highlighting element ------------------------------
                 if (element_in_focus)
                 {
-                    if ((window_element_class::state  != HIGHLIGHTED) && (window_element_class::sound.on_mouse_over.enabled)) window_element_class::sound.on_mouse_over.sound.play();
+                    if ((window_element_class::state  != HIGHLIGHTED) && (window_element_class::sound.on_mouse_over.enabled)) game.sound_manager.play(window_element_class::sound.on_mouse_over.sound);
                     window_element_class::state        = HIGHLIGHTED;
                 }
                 else
@@ -394,7 +394,7 @@ event_type  window_element_class::process(bool element_in_focus)
                             {
                                 if (game.core.io.mouse_button_right) window_element_class::event.id = EVENT_ELEMENT_MOUSE_RIGHT;
                                 if (game.core.io.mouse_button_left)  window_element_class::event.id = EVENT_ELEMENT_MOUSE_LEFT;
-                                if (window_element_class::sound.on_click.enabled) window_element_class::sound.on_click.sound.play();
+                                if (window_element_class::sound.on_click.enabled) game.sound_manager.play(window_element_class::sound.on_click.sound);
                                 window_element_class::clicked = true;
                                 if(window_element_class::mouse_delay.enabled) window_element_class::mouse_delay.reset();
                             }

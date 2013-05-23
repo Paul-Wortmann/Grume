@@ -26,9 +26,9 @@
 #define WINDOW_ELEMENT_H
 
 #include <string>
-#include "../core/texture_manager.hpp"
 #include "../core/font.hpp"
-#include "../core/sound.hpp"
+#include "../core/sound_manager.hpp"
+#include "../core/texture_manager.hpp"
 #include "../core/types.hpp"
 
 #define MAX_CHOICE_SELECTIONS_PER_MENU 8
@@ -130,8 +130,7 @@ struct texture_state_struct
 struct sound_struct
 {
     bool                    enabled;
-    std::string             sound_path;
-    sound_class             sound;
+    sound_type             *sound;
 };
 
 struct sound_state_struct
