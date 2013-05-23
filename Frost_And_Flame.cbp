@@ -207,8 +207,6 @@
 		<Unit filename="source/core/rs232.hpp" />
 		<Unit filename="source/core/savegame.cpp" />
 		<Unit filename="source/core/savegame.hpp" />
-		<Unit filename="source/core/sound.cpp" />
-		<Unit filename="source/core/sound.hpp" />
 		<Unit filename="source/core/sound_manager.cpp" />
 		<Unit filename="source/core/sound_manager.hpp" />
 		<Unit filename="source/core/texture_manager.cpp" />
