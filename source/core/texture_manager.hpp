@@ -70,7 +70,6 @@ class texture_manager_class
         int           number_of_textures;
         texture_type *root;
         texture_type *last;
-        texture_type *texture;
         texture_type *add_texture(std::string file_name);
         texture_type *add_texture(std::string file_name, bool is_sprite_sheet);
         texture_type *add_texture(std::string file_name, bool is_sprite_sheet, int width_set, int height_set);

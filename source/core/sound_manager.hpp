@@ -46,7 +46,6 @@ class sound_manager_class
         int           number_of_sounds;
         sound_type   *root;
         sound_type   *last;
-        sound_type   *sound;
         sound_type   *add_sound(std::string file_name);
         bool          load_sound(sound_type *sound);
         void          play(sound_type *sound);
