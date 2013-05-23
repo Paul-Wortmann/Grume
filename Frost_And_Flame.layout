@@ -23,7 +23,7 @@
 	</File>
 	<File name="source\item_manager.cpp" open="0" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="9846" topLine="153" />
+			<Cursor1 position="9289" topLine="154" />
 		</Cursor>
 	</File>
 	<File name="source\core\types.hpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -36,14 +36,14 @@
 			<Cursor1 position="36755" topLine="805" />
 		</Cursor>
 	</File>
-	<File name="source\UI\window.cpp" open="1" top="1" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="source\UI\window.cpp" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="15437" topLine="16" />
+			<Cursor1 position="5824" topLine="96" />
 		</Cursor>
 	</File>
 	<File name="source\UI\UI.cpp" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="3372" topLine="5" />
+			<Cursor1 position="3372" topLine="108" />
 		</Cursor>
 	</File>
 	<File name="source\core\map_2D.hpp" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -68,7 +68,7 @@
 	</File>
 	<File name="source\UI\UI.hpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="1065" topLine="14" />
+			<Cursor1 position="1020" topLine="3" />
 		</Cursor>
 	</File>
 	<File name="source\core\map_3D.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -118,7 +118,7 @@
 	</File>
 	<File name="source\UI\window_element.cpp" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="26147" topLine="8" />
+			<Cursor1 position="18512" topLine="372" />
 		</Cursor>
 	</File>
 	<File name="source\UI\character_window.cpp" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -146,7 +146,7 @@
 			<Cursor1 position="2181" topLine="84" />
 		</Cursor>
 	</File>
-	<File name="source\UI\window_manager.cpp" open="0" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="source\UI\window_manager.cpp" open="1" top="1" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="18411" topLine="0" />
 		</Cursor>

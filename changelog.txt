@@ -7,6 +7,7 @@ just that time is not permitting to proceed at a fast pace, at the moment.
 
 v0.19 - (2013-05-xx)
 
+CORE  -> Implemented and integrated a new font manager.
 CORE  -> Implemented and integrated a new sound manager.
 CORE  -> Implemented and integrated a new texture manager.
 CORE  -> Added command line switch "-w"
