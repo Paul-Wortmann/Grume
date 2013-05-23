@@ -48,6 +48,10 @@ void command_line_parser_class::process(int arg_count,char** arg_data)
         {
             game.core.config.display_fullscreen = false;
         }
+        if (temp_string.compare("-w") == 0)
+        {
+            game.core.config.display_fullscreen = false;
+        }
     }
 };
 
