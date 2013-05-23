@@ -58,7 +58,6 @@
 #define EFFECT_MOD_HEALTH 100
 #define EFFECT_MOD_MANA   101
 
-#define MAX_ITEMS        100 /*   65500     */
 #define MAX_ITEM_EFFECTS 4
 #define MAX_ITEM_SOCKETS 4
 

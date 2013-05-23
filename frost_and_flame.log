@@ -21,41 +21,16 @@ Starting Game...
  
 # ---------------------------------------------- #
  
-Moving element from - 9 - 2 to - 6 - 14
-Moving element from - 9 - 1 to - 6 - 15
-Moving element from - 6 - 15 to - 6 - 16
-Moving element from - 6 - 14 to - 6 - 17
-Using item -> 6 - 15
-Moving element from - 6 - 16 to - 6 - 15
-Moving element from - 6 - 15 to - 6 - 14
-Moving element from - 6 - 14 to - 6 - 1
-Moving element from - 6 - 14 to - 6 - 16
-Using item -> 6 - 15
-Moving element from - 6 - 16 to - 6 - 15
-Moving element from - 6 - 17 to - 6 - 16
-Moving element from - 6 - 16 to - 6 - 15
-Moving element from - 6 - 15 to - 6 - 14
-Moving element from - 6 - 14 to - 6 - 13
-Moving element from - 6 - 13 to - 6 - 16
-Moving element from - 6 - 16 to - 6 - 15
-Moving element from - 6 - 15 to - 6 - 14
-Moving element from - 6 - 14 to - 6 - 13
-Moving element from - 6 - 13 to - 6 - 12
-Moving element from - 6 - 14 to - 6 - 13
-Moving element from - 6 - 13 to - 6 - 12
-Moving element from - 6 - 13 to - 6 - 12
-Moving element from - 6 - 12 to - 6 - 11
-Moving element from - 6 - 13 to - 6 - 12
-Moving element from - 6 - 12 to - 6 - 11
-Moving element from - 6 - 11 to - 6 - 10
-Moving element from - 6 - 12 to - 6 - 11
-Moving element from - 6 - 11 to - 6 - 10
-Moving element from - 6 - 10 to - 6 - 9
-Using item -> 6 - 9
-Using item -> 6 - 11
-Using item -> 6 - 9
-Using item -> 6 - 9
-Using item -> 6 - 9
+Moving element from - 9 - 1 to - 9 - 8
+Moving element from - 9 - 8 to - 9 - 21
+Moving element from - 9 - 21 to - 9 - 48
+Moving element from - 9 - 48 to - 9 - 47
+Moving element from - 9 - 47 to - 9 - 41
+Moving element from - 9 - 41 to - 9 - 40
+Moving element from - 9 - 40 to - 9 - 34
+Moving element from - 9 - 34 to - 9 - 28
+Moving element from - 9 - 28 to - 9 - 29
+Moving element from - 9 - 29 to - 6 - 16
 Sound   count -> 8
 Texture count -> 92
  

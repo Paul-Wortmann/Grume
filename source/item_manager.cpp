@@ -61,7 +61,7 @@ void item_manager_class::reset_item(int item_number)
 
 int item_manager_class::get_new_ID(void)
 {
-    for (int item_count = 0; item_count < MAX_ITEMS; item_count++)
+    for (int item_count = 0; item_count < item_manager_class::number_of_items; item_count++)
     {
         if (!item_manager_class::item[item_count].active) return (item_count);
     }
@@ -70,7 +70,7 @@ int item_manager_class::get_new_ID(void)
 
 int item_manager_class::get_item_ID(int temp_item_type)
 {
-    for (int item_count = 0; item_count < MAX_ITEMS; item_count++)
+    for (int item_count = 0; item_count < item_manager_class::number_of_items; item_count++)
     {
         if (item_manager_class::item[item_count].ID == temp_item_type) return (item_count);
     }
@@ -184,7 +184,6 @@ void  use_item(int window_from, int element_from)
             game.window_manager.window[window_from].element[element_from].quantity = 0;
         }
         game.sound_manager.play(game.item_manager.item[item_number].sound_use);
-        game.core.log.file_write("Using item -> ", window_from, " - ", element_from);
     }
 };
 
