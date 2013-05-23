@@ -64,6 +64,14 @@ void UI_class::UI_setup(void)
     game.window_manager.window_enable(MENU_MAIN_UID);
     //--- Set the main menu as the default active window. ---
     game.window_manager.window_set_active(MENU_MAIN_UID);
+    // --- Allow specific textures to be rotated ----
+    texture_type *temp_pointer;
+    temp_pointer = game.texture_manager.add_texture("data/textures/UI/menu/arrow_normal.png");
+    temp_pointer->rotate_able = true;
+    temp_pointer = game.texture_manager.add_texture("data/textures/UI/menu/arrow_highlighted.png");
+    temp_pointer->rotate_able = true;
+    temp_pointer = game.texture_manager.add_texture("data/textures/UI/menu/arrow_disabled.png");
+    temp_pointer->rotate_able = true;
 };
 
 void UI_class::UI_process(void) // Process events generated buy the windows in the list
