@@ -30,6 +30,17 @@
 #define VECTOR_H
 
 #include <math.h>
+#include "types.hpp"
+
+class vector_class
+{
+    private:
+    protected:
+    public:
+        f2_type *vector_p;
+
+};
+
 
 class vector_2f_class
 {
