@@ -21,16 +21,11 @@ Starting Game...
  
 # ---------------------------------------------- #
  
-Moving element from - 9 - 1 to - 9 - 8
-Moving element from - 9 - 8 to - 9 - 21
-Moving element from - 9 - 21 to - 9 - 48
-Moving element from - 9 - 48 to - 9 - 47
-Moving element from - 9 - 47 to - 9 - 41
-Moving element from - 9 - 41 to - 9 - 40
-Moving element from - 9 - 40 to - 9 - 34
-Moving element from - 9 - 34 to - 9 - 28
-Moving element from - 9 - 28 to - 9 - 29
-Moving element from - 9 - 29 to - 6 - 16
+Moving element from - 9 - 2 to - 9 - 48
+Moving element from - 9 - 48 to - 6 - 16
+Moving element from - 9 - 48 to - 6 - 15
+ 
+Font    count -> 2
 Sound   count -> 8
 Texture count -> 92
  
