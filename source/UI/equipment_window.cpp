@@ -385,7 +385,8 @@ void process_equipment_window(int window_number)
         {
             case ((0*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Close menu button
                 game.window_manager.window_disable(EQUIPMENT_UID);
-                game.core.equipment_active= false;
+                game.core.equipment_active     = false;
+                game.core.io.mouse_button_left = false;
             break;
             case (EVENT_WINDOW_STACK_SORT): //Window stack sort
                 game.window_manager.window_stack_sort();

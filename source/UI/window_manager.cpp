@@ -118,7 +118,7 @@ void window_manager_class::create_windows(int number_windows)
         window_manager_class::window_stack = new int[window_manager_class::number_of_windows+1];
         window_manager_class::windows_list_created = true;
         // Clear the window stack
-        for (int window_stack_count = 0; window_stack_count < number_of_windows; window_stack_count++)
+        for (int window_stack_count = 0; window_stack_count < window_manager_class::number_of_windows; window_stack_count++)
         {
             window_manager_class::window_stack[window_stack_count] = -1;
         }

@@ -1079,7 +1079,8 @@ void process_inventory_window(int window_number)
         {
             case ((0*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Close menu button
                 game.window_manager.window_disable(INVENTORY_UID);
-                game.core.inventory_active= false;
+                game.core.inventory_active     = false;
+                game.core.io.mouse_button_left = false;
             break;
             case (EVENT_WINDOW_STACK_SORT): //Window stack sort
                 game.window_manager.window_stack_sort();

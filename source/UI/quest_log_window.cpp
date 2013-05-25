@@ -112,7 +112,8 @@ void process_quest_log_window(int window_number)
         {
             case ((0*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Close menu button
                 game.window_manager.window_disable(QUEST_LOG_UID);
-                game.core.quest_log_active= false;
+                game.core.quest_log_active     = false;
+                game.core.io.mouse_button_left = false;
             break;
             case (EVENT_WINDOW_STACK_SORT): //Window stack sort
                 game.window_manager.window_stack_sort();

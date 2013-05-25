@@ -253,7 +253,8 @@ void process_menu_main(int window_number)
                     game.state = STATE_QUIT;
                     game.window_manager.window_disable(MENU_MAIN_UID);
                 }
-                game.core.game_menu_active = false;
+                game.core.game_menu_active     = false;
+                game.core.io.mouse_button_left = false;
             break;
             case ((1*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // New game menu
                 game.window_manager.window_transition(MENU_MAIN_UID,MENU_GAME_NEW_UID);
@@ -289,7 +290,8 @@ void process_menu_main(int window_number)
                 if (game.state == STATE_GAME)
                 {
                     game.window_manager.window_disable(MENU_MAIN_UID);
-                    game.core.game_menu_active = false;
+                    game.core.game_menu_active     = false;
+                    game.core.io.mouse_button_left = false;
                 }
             break;
             case ((5*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Options menu
@@ -298,7 +300,8 @@ void process_menu_main(int window_number)
             case ((6*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Exit button
                 game.state = STATE_QUIT;
                 game.window_manager.window_disable(MENU_MAIN_UID);
-                game.core.game_menu_active = false;
+                game.core.game_menu_active     = false;
+                game.core.io.mouse_button_left = false;
             break;
             case (EVENT_WINDOW_STACK_SORT): //Window stack sort
                 game.window_manager.window_stack_sort();

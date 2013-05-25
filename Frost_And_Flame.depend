@@ -10,8 +10,9 @@
 
 1357028824 p"
 
-1363949024 c:\_git_\frost_and_flame\source\core\vector.hpp
+1369391801 c:\_git_\frost_and_flame\source\core\vector.hpp
 	<math.h>
+	"types.hpp"
 
 1341006774 c:\mingw\include\math.h
 	<_mingw.h>
@@ -1059,7 +1060,7 @@
 	"character.hpp"
 	"../game.hpp"
 
-1369316623 source:c:\_git_\frost_and_flame\source\ui\window_manager.cpp
+1369324117 source:c:\_git_\frost_and_flame\source\ui\window_manager.cpp
 	"window_manager.hpp"
 	"../game.hpp"
 
@@ -1089,7 +1090,7 @@
 	"../core/types.hpp"
 	<string>
 
-1369304348 source:c:\_git_\frost_and_flame\source\ui\window.cpp
+1369323817 source:c:\_git_\frost_and_flame\source\ui\window.cpp
 	"window.hpp"
 	"../game.hpp"
 
@@ -1199,7 +1200,7 @@
 1357050662 c:\_git_\frost_and_flame\source\ui\character_window.hpp
 	"window.hpp"
 
-1369304265 source:c:\_git_\frost_and_flame\source\ui\character_window.cpp
+1369458455 source:c:\_git_\frost_and_flame\source\ui\character_window.cpp
 	"menu_main.hpp"
 	"../game.hpp"
 	"../core/misc.hpp"
@@ -1207,14 +1208,14 @@
 1357028938 c:\_git_\frost_and_flame\source\ui\equipment_window.hpp
 	"window.hpp"
 
-1369304269 source:c:\_git_\frost_and_flame\source\ui\equipment_window.cpp
+1369458448 source:c:\_git_\frost_and_flame\source\ui\equipment_window.cpp
 	"menu_main.hpp"
 	"../game.hpp"
 
 1357028938 c:\_git_\frost_and_flame\source\ui\inventory_window.hpp
 	"window.hpp"
 
-1369317127 source:c:\_git_\frost_and_flame\source\ui\inventory_window.cpp
+1369458476 source:c:\_git_\frost_and_flame\source\ui\inventory_window.cpp
 	"menu_main.hpp"
 	"../game.hpp"
 
@@ -1743,7 +1744,7 @@
 	<fstream>
 	<string>
 
-1367504905 c:\_git_\frost_and_flame\source\core\types.hpp
+1369391729 c:\_git_\frost_and_flame\source\core\types.hpp
 
 1369233638 source:c:\_git_\frost_and_flame\source\core\texture_manager.cpp
 	"texture_manager.hpp"
