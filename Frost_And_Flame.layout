@@ -288,7 +288,7 @@
 	</File>
 	<File name="source\UI\menu_main.cpp" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="32714" topLine="291" />
+			<Cursor1 position="32709" topLine="279" />
 		</Cursor>
 	</File>
 	<File name="source\core\graphics.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
