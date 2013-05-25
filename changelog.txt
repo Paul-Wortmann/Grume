@@ -7,6 +7,10 @@ just that time is not permitting to proceed at a fast pace, at the moment.
 
 v0.19 - (2013-05-xx)
 
+
+UI    -> Fix: Items can be dragged to slots where a previous item was used.
+UI    -> Enabled usage of items in all inventory slots.
+UI    -> Item move sounds now played.
 CORE  -> Implemented and integrated a new font manager.
 CORE  -> Implemented and integrated a new sound manager.
 CORE  -> Implemented and integrated a new texture manager.
