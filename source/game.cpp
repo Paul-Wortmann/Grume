@@ -194,6 +194,10 @@ void game_class::process(void)
     {
         if (game.core.io.key_escape) // Main menu
         {
+            game.window_manager.window_disable(MENU_GAME_LOAD_UID);
+            game.window_manager.window_disable(MENU_GAME_NEW_UID);
+            game.window_manager.window_disable(MENU_GAME_SAVE_UID);
+            game.window_manager.window_disable(MENU_OPTIONS_UID);
             if (!game.core.game_menu_active)
             {
                 game.window_manager.window_enable(MENU_MAIN_UID);
@@ -287,6 +291,10 @@ void game_class::process(void)
             if (game.core.game_menu_active)
             {
                 game.window_manager.window_disable(MENU_MAIN_UID);
+                game.window_manager.window_disable(MENU_GAME_LOAD_UID);
+                game.window_manager.window_disable(MENU_GAME_NEW_UID);
+                game.window_manager.window_disable(MENU_GAME_SAVE_UID);
+                game.window_manager.window_disable(MENU_OPTIONS_UID);
                 game.core.game_menu_active                   = false;
             }
             if (game.core.equipment_active)

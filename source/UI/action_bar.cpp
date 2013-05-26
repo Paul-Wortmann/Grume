@@ -521,6 +521,10 @@ void process_action_bar(int window_number)
         switch (game.window_manager.window[window_number].event.id)
         {
             case ((2*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Toggle main menu
+                game.window_manager.window_disable(MENU_GAME_LOAD_UID);
+                game.window_manager.window_disable(MENU_GAME_NEW_UID);
+                game.window_manager.window_disable(MENU_GAME_SAVE_UID);
+                game.window_manager.window_disable(MENU_OPTIONS_UID);
                 if (!game.core.game_menu_active)
                 {
                     game.window_manager.window_enable(MENU_MAIN_UID);
