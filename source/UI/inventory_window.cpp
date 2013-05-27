@@ -1089,9 +1089,6 @@ void process_inventory_window(int window_number)
             case (EVENT_ELEMENT_DRAG): //Element drag event posted
                 //game.window_manager.source.window = INVENTORY_UID;
             break;
-            case (EVENT_ELEMENT_DROP): //Element drop event posted
-                //game.window_manager.destination.window = INVENTORY_UID;
-            break;
             case ((1*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
                 game.window_manager.window[window_number].event.id = EVENT_NONE;
             break;

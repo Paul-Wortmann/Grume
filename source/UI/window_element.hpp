@@ -38,8 +38,6 @@
 #define EVENT_ELEMENT_MOUSE_LEFT  1
 #define EVENT_ELEMENT_MOUSE_RIGHT 2
 #define EVENT_ELEMENT_DRAG        3
-#define EVENT_ELEMENT_DROP        4
-#define EVENT_ELEMENT_SWAP        5
 #define EVENT_BUTTON_MULTIPLIER   100
 #define EVENT_WINDOW_STACK_SORT   10000
 
@@ -191,7 +189,6 @@ class window_element_class
         bool                    click_enabled;
         bool                    dragable;
         bool                    drag_active;
-        bool                    drop_active;
         float                   drag_offset_x;
         float                   drag_offset_y;
         delay_class             mouse_delay;

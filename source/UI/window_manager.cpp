@@ -79,8 +79,7 @@ int window_manager_class::mouse_over_element(int UID)
     for (int element_count = 0; element_count < window_manager_class::window[window_manager_class::window_stack[window_count]].number_of_elements; element_count++)
     {
         if (    (window_manager_class::window[window_manager_class::window_stack[window_count]].element[element_count].active)
-            && (!window_manager_class::window[window_manager_class::window_stack[window_count]].element[element_count].drag_active)
-            && (!window_manager_class::window[window_manager_class::window_stack[window_count]].element[element_count].drop_active))
+            && (!window_manager_class::window[window_manager_class::window_stack[window_count]].element[element_count].drag_active))
         {
             if (window_manager_class::window[window_manager_class::window_stack[window_count]].element[element_count].mouse_over_element())
             {

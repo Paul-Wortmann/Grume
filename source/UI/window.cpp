@@ -209,7 +209,7 @@ event_type window_class::process(bool window_in_focus)
         {
             for (int element_number = 0; element_number < window_class::number_of_elements; element_number++)
             {
-                if ((window_class::element[element_number].active) && ((return_value.id == EVENT_NONE) || (return_value.id == EVENT_ELEMENT_DRAG) || (return_value.id == EVENT_ELEMENT_DROP)))
+                if ((window_class::element[element_number].active) && ((return_value.id == EVENT_NONE) || (return_value.id == EVENT_ELEMENT_DRAG)))
                 {
                     return_value = window_class::element[element_number].process(window_in_focus);
                     if (return_value.id != EVENT_NONE)
@@ -218,9 +218,6 @@ event_type window_class::process(bool window_in_focus)
                         {
                             case EVENT_ELEMENT_DRAG:
                                 //game.window_manager.source.element = element_number;
-                            break;
-                            case EVENT_ELEMENT_DROP:
-                                //game.window_manager.destination.element = element_number;
                             break;
                             default:
                                 return_value.id += (element_number * EVENT_BUTTON_MULTIPLIER);

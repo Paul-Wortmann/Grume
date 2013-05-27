@@ -136,7 +136,6 @@ window_element_class::window_element_class(void)
     window_element_class::click_enabled                  = true;
     window_element_class::dragable                       = false;
     window_element_class::drag_active                    = false;
-    window_element_class::drop_active                    = false;
     window_element_class::texture.angle                  = 0.0f;
     window_element_class::zoom.enabled                   = true;
     window_element_class::zoom.maximum                   = 0.0f;
@@ -298,14 +297,7 @@ event_type  window_element_class::process(bool element_in_focus)
         if (window_element_class::state != DISABLED)
         {
             window_element_class::mouse_over = window_element_class::mouse_over_element();
-            // ------------------------- Drop -------------------------
-            if ((game.window_manager.element_drop_in_progress) || (window_element_class::drop_active))
-            {
-                window_element_class::event.id               = EVENT_NONE;
-                window_element_class::drop_active            = false;
-                game.window_manager.element_drop_in_progress = false;
-            }
-            // ------------------------- Drag -------------------------
+            // ------------------------- Drag n drop -------------------------
             if (window_element_class::drag_active)
             {
                 if (game.core.io.mouse_button_left)
@@ -339,14 +331,7 @@ event_type  window_element_class::process(bool element_in_focus)
                     game.window_manager.element_drag_in_progress = false;
                     game.window_manager.drag_in_progress         = false;
                     window_element_class::drag_active            = false;
-                    window_element_class::drop_active            = true;
-                    game.window_manager.element_drop_in_progress = true;
-                    window_element_class::event.id               = EVENT_ELEMENT_DRAG;
-
-                window_element_class::event.id               = EVENT_NONE;
-                window_element_class::drop_active            = false;
-                game.window_manager.element_drop_in_progress = false;
-
+                    window_element_class::event.id               = EVENT_NONE;
                 }
             }
             else

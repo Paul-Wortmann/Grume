@@ -671,9 +671,6 @@ void process_menu_options(int window_number)
             case (EVENT_ELEMENT_DRAG): //Element drag event posted
                 //game.window_manager.source.window = MENU_OPTIONS_UID;
             break;
-            case (EVENT_ELEMENT_DROP): //Element drop event posted
-                //game.window_manager.destination.window = MENU_OPTIONS_UID;
-            break;
             default:
                 game.core.log.file_write("Unable to process event - ",game.window_manager.window[window_number].event.id, " - UID - ",game.window_manager.window[window_number].UID);
                 game.window_manager.window[window_number].event.id = EVENT_NONE;

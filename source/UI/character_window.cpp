@@ -288,9 +288,6 @@ void process_character_window(int window_number)
             case (EVENT_ELEMENT_DRAG): //Element drag event posted
                 //game.window_manager.source.window = CHARACTER_UID;
             break;
-            case (EVENT_ELEMENT_DROP): //Element drop event posted
-                //game.window_manager.destination.window = CHARACTER_UID;
-            break;
             default:
                 game.core.log.file_write("Unable to process event - ",game.window_manager.window[window_number].event.id, " - UID - ",game.window_manager.window[window_number].UID);
                 game.window_manager.window[window_number].event.id = EVENT_NONE;
