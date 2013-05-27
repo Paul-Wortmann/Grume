@@ -205,7 +205,7 @@ event_type window_class::process(bool window_in_focus)
     {
         window_class::mouse_delay.process();
         // ------------------------- Process elements -------------------------
-        if (window_class::number_of_elements > 0)
+        if ((window_class::number_of_elements > 0) && (!game.window_manager.drag_in_progress))
         {
             for (int element_number = 0; element_number < window_class::number_of_elements; element_number++)
             {
