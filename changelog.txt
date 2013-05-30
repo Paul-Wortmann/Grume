@@ -5,6 +5,9 @@ it may take longer than I had first anticipated.
 These are not indications that the project will be terminated in the future,
 just that time is not permitting to proceed at a fast pace, at the moment.
 
+v0.20 - (2013-06-xx)
+LOC   -> xxxxx
+
 v0.19 - (2013-05-30)
 UI    -> Fix: Items can be dragged to slots where a previous item was used.
 UI    -> Enabled usage of items in all inventory slots.
