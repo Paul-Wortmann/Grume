@@ -90,11 +90,11 @@ extern "C" int main(int argc, char** argv)
     Mix_Volume(-1,game.core.config.audio_volume_sound);
     Mix_VolumeMusic(game.core.config.audio_volume_music);
 //  --- joysticks ---
-    game.core.log.file_write("Initializing joystick system...");
-    SDL_Init(SDL_INIT_JOYSTICK);
-    SDL_Joystick *joystick;
-    SDL_JoystickEventState(SDL_ENABLE);
-    joystick = SDL_JoystickOpen(0);
+    //game.core.log.file_write("Initializing joystick system...");
+    //SDL_Init(SDL_INIT_JOYSTICK);
+    //SDL_Joystick *joystick;
+    //SDL_JoystickEventState(SDL_ENABLE);
+    //joystick = SDL_JoystickOpen(0);
 //  --- font ---
     game.core.log.file_write("Initializing font system...");
     TTF_Init();
