@@ -169,7 +169,10 @@ extern "C" int main(int argc, char** argv)
 // | Application terminated, cleanup and free resources etc...
 // --------------------------------------------------------------------------------------------------------------------------
     game.core.log.file_write(" ");
+    game.core.log.file_write("# ---------------------------------------------- #");
+    game.core.log.file_write(" ");
     game.core.log.file_write("Font    count -> ", game.font_manager.number_of_fonts);
+    game.core.log.file_write("Music   count -> ", game.music_manager.number_of_music);
     game.core.log.file_write("Sound   count -> ", game.sound_manager.number_of_sounds);
     game.core.log.file_write("Texture count -> ", game.texture_manager.number_of_textures);
     game.core.log.file_write(" ");
