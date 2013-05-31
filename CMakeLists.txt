@@ -113,7 +113,6 @@ Set (FROST_AND_FLAME_SOURCES
 	./source/core/map_gen.cpp
 	./source/core/map_3D.cpp
 	./source/core/misc.cpp
-	./source/core/music.cpp
 	./source/core/music_manager.cpp
 	./source/core/network.cpp
 	./source/core/particles.cpp
