@@ -253,7 +253,7 @@ void process_menu_game_load(int window_number)
                 {
                     game.core.log.file_write("Loading game from slot 1");
                     game.state = STATE_GAME;
-                    game.core.music_next_track = true;
+                    game.music_manager.next_track = true;
                 }
                 else game.core.log.file_write("ERROR -> Error loading game from slot 1");
             break;
@@ -266,7 +266,7 @@ void process_menu_game_load(int window_number)
                 {
                     game.core.log.file_write("Loading game from slot 2");
                     game.state = STATE_GAME;
-                    game.core.music_next_track = true;
+                    game.music_manager.next_track = true;
                 }
                 else game.core.log.file_write("ERROR -> Error loading game from slot 2");
             break;
@@ -279,7 +279,7 @@ void process_menu_game_load(int window_number)
                 {
                     game.core.log.file_write("Loading game from slot 3");
                     game.state = STATE_GAME;
-                    game.core.music_next_track = true;
+                    game.music_manager.next_track = true;
                 }
                 else game.core.log.file_write("ERROR -> Error loading game from slot 3");
             break;
@@ -292,7 +292,7 @@ void process_menu_game_load(int window_number)
                 {
                     game.core.log.file_write("Loading game from slot 4");
                     game.state = STATE_GAME;
-                    game.core.music_next_track = true;
+                    game.music_manager.next_track = true;
                 }
                 else game.core.log.file_write("ERROR -> Error loading game from slot 4");
             break;
@@ -305,7 +305,7 @@ void process_menu_game_load(int window_number)
                 {
                     game.core.log.file_write("Loading game from slot 5");
                     game.state = STATE_GAME;
-                    game.core.music_next_track = true;
+                    game.music_manager.next_track = true;
                 }
                 else game.core.log.file_write("ERROR -> Error loading game from slot 5");
             break;

@@ -366,7 +366,7 @@ void process_menu_game_new(int window_number)
                     break;
                 }
                 game.state = STATE_GAME;
-                game.core.music_next_track = true;
+                game.music_manager.next_track = true;
                 game.window_manager.window_transition(MENU_GAME_NEW_UID,MENU_MAIN_UID);
                 game.window_manager.window_disable(MENU_MAIN_UID);
                 game.core.game_menu_active = false;

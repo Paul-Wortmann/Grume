@@ -22,27 +22,35 @@
  * @date 2011-11-11
  */
 
-#include "music.hpp"
+#ifndef MUSIC_MANAGER_H
+#define MUSIC_MANAGER_H
 
-music_class::music_class()
+#include <SDL/SDL.h>
+#include <SDL/SDL_mixer.h>
+#include <string>
+
+struct music_type
 {
-    music_class::music_data = NULL;
+    bool             loaded;
+    std::string      path;
+    Mix_Music       *music_data;
+    music_type      *next;
 };
 
-music_class::~music_class()
+class music_manager_class
 {
-    Mix_HaltMusic();
-    if(music_class::music_data != NULL) Mix_FreeMusic(music_class::music_data);
+    public:
+        music_manager_class(void);
+       ~music_manager_class(void);
+        int           number_of_music;
+        int           track;
+        bool          next_track;
+        music_type   *root;
+        music_type   *last;
+        music_type   *current;
+        music_type   *add_music(std::string file_name);
+        bool          load_music(music_type *music);
+        void          play(music_type *music);
 };
 
-void music_class::play(void)
-{
-    Mix_PlayMusic(music_class::music_data,-1);
-};
-
-void music_class::load(std::string file_name)
-{
-    music_class::music_data = Mix_LoadMUS(file_name.c_str());
-};
-
-
+#endif // MUSIC_MANAGER_H

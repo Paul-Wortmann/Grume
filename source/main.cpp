@@ -102,7 +102,7 @@ extern "C" int main(int argc, char** argv)
     //game.loading_screen.display("data/loading_screen.png");
     game.core.log.file_write("Loading resources....");
     game.window_manager.cursor.normal_arrow = game.texture_manager.add_texture("data/textures/UI/cursors/default.png");
-    game.music.load("data/music/menu_00.s3m");
+    game.music_manager.current = game.music_manager.add_music("data/music/menu_00.s3m");
 //  --- miscellaneous ---
     game.core.log.file_write("Seeding random...");
     seed_rand();
@@ -129,10 +129,10 @@ extern "C" int main(int argc, char** argv)
         switch (game.state)
         {
             case STATE_MENU:// initial state of the game, only the main menu is active, not the game.
-                if (game.core.music_next_track)
+                if (game.music_manager.next_track)
                 {
-                    game.music.play();
-                    game.core.music_next_track = false;
+                    game.music_manager.play(game.music_manager.current);
+                    game.music_manager.next_track = false;
                 }
                 if (game.core.process_ready) game.core.background.process();
                 if (game.core.process_ready) game.UI.UI_process();

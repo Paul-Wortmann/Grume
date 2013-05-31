@@ -37,8 +37,6 @@
 class core_class
 {
     public:
-        int               music_track;
-        bool              music_next_track;
         int               FPS;
         int               last_ticks;
         bool              process_ready;

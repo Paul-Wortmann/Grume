@@ -30,11 +30,11 @@
 	<string>
 	<fstream>
 
-1369302439 c:\_git_\frost_and_flame\source\game.hpp
+1370004267 c:\_git_\frost_and_flame\source\game.hpp
 	"core/core.hpp"
 	"core/font_manager.hpp"
 	"core/map_2D.hpp"
-	"core/music.hpp"
+	"core/music_manager.hpp"
 	"core/savegame.hpp"
 	"core/sound_manager.hpp"
 	"core/texture_manager.hpp"
@@ -51,7 +51,7 @@
 
 1357027540 2D.hpp"
 
-1357203688 c:\_git_\frost_and_flame\source\core\core.hpp
+1370005102 c:\_git_\frost_and_flame\source\core\core.hpp
 	"background.hpp"
 	"config.hpp"
 	"file.hpp"
@@ -736,14 +736,14 @@
 	"core/misc.hpp"
 	"language.hpp"
 
-1363350059 source:c:\_git_\frost_and_flame\source\core\config.cpp
+1369972650 source:c:\_git_\frost_and_flame\source\core\config.cpp
 	<fstream>
 	"config.hpp"
 
 1368859896 source:c:\_git_\frost_and_flame\source\core\rs232.cpp
 	"rs232.hpp"
 
-1369972573 source:c:\_git_\frost_and_flame\source\main.cpp
+1370005244 source:c:\_git_\frost_and_flame\source\main.cpp
 	"game.hpp"
 	<SDL/SDL.h>
 	"core/misc.hpp"
@@ -949,7 +949,7 @@
 	"misc.hpp"
 	"../game.hpp"
 
-1369552938 source:c:\_git_\frost_and_flame\source\game.cpp
+1370005228 source:c:\_git_\frost_and_flame\source\game.cpp
 	"core/map_2D.hpp"
 	"game.hpp"
 
@@ -1090,7 +1090,7 @@
 	"../core/types.hpp"
 	<string>
 
-1369672456 source:c:\_git_\frost_and_flame\source\ui\window.cpp
+1370001811 source:c:\_git_\frost_and_flame\source\ui\window.cpp
 	"window.hpp"
 	"../game.hpp"
 
@@ -1128,14 +1128,14 @@
 1357028938 c:\_git_\frost_and_flame\source\ui\menu_game_save.hpp
 	"window.hpp"
 
-1369625201 source:c:\_git_\frost_and_flame\source\ui\menu_game_new.cpp
+1370005305 source:c:\_git_\frost_and_flame\source\ui\menu_game_new.cpp
 	"menu_game_new.hpp"
 	"../game.hpp"
 
 1357188616 c:\_git_\frost_and_flame\source\ui\menu_game_new.hpp
 	"window.hpp"
 
-1369625194 source:c:\_git_\frost_and_flame\source\ui\menu_game_load.cpp
+1370005297 source:c:\_git_\frost_and_flame\source\ui\menu_game_load.cpp
 	"menu_game_load.hpp"
 	"../game.hpp"
 
@@ -1780,5 +1780,14 @@
 1369303558 source:c:\_git_\frost_and_flame\source\core\font_manager.cpp
 	<sstream>
 	"font_manager.hpp"
+	"../game.hpp"
+
+1370005152 c:\_git_\frost_and_flame\source\core\music_manager.hpp
+	<SDL/SDL.h>
+	<SDL/SDL_mixer.h>
+	<string>
+
+1370005152 source:c:\_git_\frost_and_flame\source\core\music_manager.cpp
+	"music_manager.hpp"
 	"../game.hpp"
 

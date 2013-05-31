@@ -193,8 +193,8 @@
 		<Unit filename="source/core/map_gen.hpp" />
 		<Unit filename="source/core/misc.cpp" />
 		<Unit filename="source/core/misc.hpp" />
-		<Unit filename="source/core/music.cpp" />
-		<Unit filename="source/core/music.hpp" />
+		<Unit filename="source/core/music_manager.cpp" />
+		<Unit filename="source/core/music_manager.hpp" />
 		<Unit filename="source/core/network.cpp" />
 		<Unit filename="source/core/network.hpp" />
 		<Unit filename="source/core/particles.cpp" />

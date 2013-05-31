@@ -93,7 +93,7 @@ void game_class::init(void)
     game.player.movement_type                     =  MOVE_TO_TILE_NONE;
 
     //--- other ---
-    game.core.music_next_track = true;
+    game.music_manager.next_track = true;
     init_spells();
     init_items();
 
@@ -152,9 +152,9 @@ void game_class::process(void)
     game.npc.process();
     game.map_2D.process(&tmx_map);
     game.core.game_resume = true;
-    if (game.core.music_next_track)
+    if (game.music_manager.next_track)
     {
-        game.core.music_next_track = false;
+        game.music_manager.next_track = false;
         //if (game.core.music_track ==  0) game.resource.music.menu_00.play();
     }
     /*
