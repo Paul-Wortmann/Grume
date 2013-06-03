@@ -20,38 +20,13 @@ Starting Game...
  
 # ---------------------------------------------- #
  
-Moving element from - 9 - 2 to - 9 - 8
-Moving element from - 9 - 8 to - 9 - 14
-Moving element from - 9 - 14 to - 9 - 2
-Moving element from - 9 - 1 to - 9 - 7
-Moving element from - 9 - 2 to - 9 - 8
-Moving element from - 9 - 8 to - 9 - 29
-Moving element from - 9 - 29 to - 9 - 41
-Moving element from - 9 - 41 to - 9 - 34
-Moving element from - 9 - 34 to - 9 - 27
-Moving element from - 9 - 27 to - 9 - 20
-Moving element from - 9 - 20 to - 9 - 14
-Moving element from - 9 - 14 to - 9 - 8
-Moving element from - 9 - 8 to - 9 - 1
-Unable to process event - 1302 - UID - 3
-Unable to process event - 1301 - UID - 3
-Moving element from - 8 - 13 to - 6 - 15
-Processing event - 1401
-Processing event - 1401
-Processing event - 1401
-Processing event - 1401
-Processing event - 1401
-Processing event - 1401
-Processing event - 1401
-Processing event - 101
-Loading TMX map file -> data/maps/town.tmx
  
 # ---------------------------------------------- #
  
 Font    count -> 2
 Music   count -> 1
-Sound   count -> 9
-Texture count -> 93
+Sound   count -> 8
+Texture count -> 92
  
 # ---------------------------------------------- #
  
