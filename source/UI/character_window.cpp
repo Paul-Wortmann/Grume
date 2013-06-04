@@ -223,7 +223,7 @@ void setup_character_window(int UID)
     element_number = 6; //--- TEST INT VARIABLE OUTPUT ---
     game.window_manager.window[window_number].element[element_number].window_UID                = game.window_manager.window[window_number].UID;
     game.window_manager.window[window_number].element[element_number].element_UID               = element_number;
-    game.window_manager.window[window_number].element[element_number].title.text                  = "WINDOW: ";
+    game.window_manager.window[window_number].element[element_number].title.text                  = "Window: ";
     game.window_manager.window[window_number].element[element_number].title.enabled               = true;
     game.window_manager.window[window_number].element[element_number].title.size.y                = 28;
     game.window_manager.window[window_number].element[element_number].title.size.x                = ((float)game.window_manager.window[window_number].element[element_number].title.size.y / (float)game.window_manager.window[window_number].element[element_number].title.text.length()) * 4.5f;
@@ -252,7 +252,7 @@ void setup_character_window(int UID)
     game.window_manager.window[window_number].element[element_number].title.size.y                = 28;
     game.window_manager.window[window_number].element[element_number].title.size.x                = ((float)game.window_manager.window[window_number].element[element_number].title.size.y / (float)game.window_manager.window[window_number].element[element_number].title.text.length()) * 4.5f;
     game.window_manager.window[window_number].element[element_number].title.position.x            = game.window_manager.window[window_number].position.x;// - (game.window_manager.window[window_number].size.x * 0.125f);
-    game.window_manager.window[window_number].element[element_number].title.position.y            = game.window_manager.window[window_number].position.y;// + (game.window_manager.window[window_number].size.y * 0.0f);
+    game.window_manager.window[window_number].element[element_number].title.position.y            = game.window_manager.window[window_number].position.y - (game.window_manager.window[window_number].size.y * 0.040f);
     game.window_manager.window[window_number].element[element_number].active                      = true;
     game.window_manager.window[window_number].element[element_number].click_enabled               = false;
     game.window_manager.window[window_number].element[element_number].type                        = TEXTLABEL;
@@ -262,7 +262,7 @@ void setup_character_window(int UID)
     game.window_manager.window[window_number].element[element_number].size.x                      = 0.16f;
     game.window_manager.window[window_number].element[element_number].size.y                      = game.window_manager.window[window_number].element[element_number].size.x;
     game.window_manager.window[window_number].element[element_number].position.x                  = game.window_manager.window[window_number].position.x+(game.window_manager.window[window_number].element[element_number].size.x)-(game.window_manager.window[window_number].size.x/2.0f);
-    game.window_manager.window[window_number].element[element_number].position.y                  = game.window_manager.window[window_number].position.y-(game.window_manager.window[window_number].element[element_number].size.y * 1.44f);
+    game.window_manager.window[window_number].element[element_number].position.y                  = game.window_manager.window[window_number].position.y-(game.window_manager.window[window_number].element[element_number].size.y * .44f);
     game.window_manager.window[window_number].element[element_number].sound                       = game.window_manager.window[window_number].sound;
     game.window_manager.window[window_number].element[element_number].sound.on_click.enabled      = false;
     game.window_manager.window[window_number].element[element_number].sound.on_mouse_over.enabled = false;
@@ -289,10 +289,10 @@ void update_character_window(int UID)
     game.window_manager.window[window_number].element[element_number].title.text                  = "Next: " + ullint_to_string(game.player.level.experience[game.player.level.current+1]);
     game.window_manager.window[window_number].element[element_number].title.size.x                = ((float)game.window_manager.window[window_number].element[element_number].title.size.y / (float)game.window_manager.window[window_number].element[element_number].title.text.length()) * 4.5f;
     element_number = 6; //--- TEST INT VARIABLE OUTPUT ---
-    game.window_manager.window[window_number].element[element_number].title.text                  = "Window: " + ullint_to_string(game.test);
+    game.window_manager.window[window_number].element[element_number].title.text                  = "Window: " + ullint_to_string(game.test_1);
     game.window_manager.window[window_number].element[element_number].title.size.x                = ((float)game.window_manager.window[window_number].element[element_number].title.size.y / (float)game.window_manager.window[window_number].element[element_number].title.text.length()) * 4.5f;
     element_number = 7; //--- TEST INT VARIABLE OUTPUT ---
-    game.window_manager.window[window_number].element[element_number].title.text                  = "Element: " + ullint_to_string(game.test);
+    game.window_manager.window[window_number].element[element_number].title.text                  = "Element: " + ullint_to_string(game.test_2);
     game.window_manager.window[window_number].element[element_number].title.size.x                = ((float)game.window_manager.window[window_number].element[element_number].title.size.y / (float)game.window_manager.window[window_number].element[element_number].title.text.length()) * 4.5f;
 };
 

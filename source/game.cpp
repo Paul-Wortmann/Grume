@@ -143,11 +143,12 @@ void game_class::init(void)
 
 void game_class::process(void)
 {
-    game.test = game.window_manager.mouse_over_window();
-    if (game.test != MOUSE_OVER_MAP)
+    game.test_1 = game.window_manager.mouse_over_window();
+    if (game.test_1 != MOUSE_OVER_MAP)
     {
-        game.test = game.window_manager.mouse_over_element(game.test);
+        game.test_2 = game.window_manager.mouse_over_element(game.test_1);
     }
+    else game.test_2 = 0;
     game.player.process();
     game.npc.process();
     game.map_2D.process(&tmx_map);

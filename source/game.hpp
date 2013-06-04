@@ -64,7 +64,8 @@ class game_class
 {
     private:
     public:
-        int                       test; // ---- DELETE ME -----------
+        int                       test_1; // ---- DELETE ME -----------
+        int                       test_2; // ---- DELETE ME -----------
         bool                      debug;
         // ----------------------------------------------------------
         command_line_parser_class command_line;

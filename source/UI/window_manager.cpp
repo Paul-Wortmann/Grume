@@ -92,15 +92,18 @@ int window_manager_class::mouse_over_element(int UID)
 
 void window_manager_class::window_stack_sort(void)
 {
-    if (window_manager_class::number_of_windows > 1) // only processed if there are actually windows in the list to sort.
+    if (!window_manager_class::drag_in_progress)
     {
-        for (int window_count = window_manager_class::number_of_windows-1; window_count >= 1; window_count--)
+        if (window_manager_class::number_of_windows > 1) // only processed if there are actually windows in the list to sort.
         {
-            if ((window_manager_class::window[window_manager_class::window_stack[window_count]].active) && (!window_manager_class::window[window_manager_class::window_stack[window_count]].set_behind))
+            for (int window_count = window_manager_class::number_of_windows-1; window_count >= 1; window_count--)
             {
-                int temp_window_count = window_manager_class::window_stack[window_count-1];
-                window_manager_class::window_stack[window_count-1] = window_manager_class::window_stack[window_count];
-                window_manager_class::window_stack[window_count]   = temp_window_count;
+                if ((window_manager_class::window[window_manager_class::window_stack[window_count]].active) && (!window_manager_class::window[window_manager_class::window_stack[window_count]].set_behind))
+                {
+                    int temp_window_count = window_manager_class::window_stack[window_count-1];
+                    window_manager_class::window_stack[window_count-1] = window_manager_class::window_stack[window_count];
+                    window_manager_class::window_stack[window_count]   = temp_window_count;
+                }
             }
         }
     }

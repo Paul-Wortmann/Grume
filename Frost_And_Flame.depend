@@ -30,7 +30,7 @@
 	<string>
 	<fstream>
 
-1370004267 c:\_git_\frost_and_flame\source\game.hpp
+1370355612 c:\_git_\frost_and_flame\source\game.hpp
 	"core/core.hpp"
 	"core/font_manager.hpp"
 	"core/map_2D.hpp"
@@ -949,7 +949,7 @@
 	"misc.hpp"
 	"../game.hpp"
 
-1370005228 source:c:\_git_\frost_and_flame\source\game.cpp
+1370355720 source:c:\_git_\frost_and_flame\source\game.cpp
 	"core/map_2D.hpp"
 	"game.hpp"
 
@@ -1200,7 +1200,7 @@
 1357050662 c:\_git_\frost_and_flame\source\ui\character_window.hpp
 	"window.hpp"
 
-1370268362 source:c:\_git_\frost_and_flame\source\ui\character_window.cpp
+1370355612 source:c:\_git_\frost_and_flame\source\ui\character_window.cpp
 	"menu_main.hpp"
 	"../game.hpp"
 	"../core/misc.hpp"
