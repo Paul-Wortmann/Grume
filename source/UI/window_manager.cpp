@@ -92,7 +92,7 @@ int window_manager_class::mouse_over_element(int UID)
 
 void window_manager_class::window_stack_sort(void)
 {
-    if (!window_manager_class::drag_in_progress)
+    if (!window_manager_class::element_drag_in_progress)
     {
         if (window_manager_class::number_of_windows > 1) // only processed if there are actually windows in the list to sort.
         {
