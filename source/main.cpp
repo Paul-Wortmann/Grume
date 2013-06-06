@@ -101,13 +101,13 @@ extern "C" int main(int argc, char** argv)
 //  --- resources ---
     //game.loading_screen.display("data/loading_screen.png");
     game.core.log.file_write("Loading resources....");
-    game.window_manager.cursor.normal_arrow = game.texture_manager.add_texture("data/textures/UI/cursors/default.png");
+    game.UI_manager.cursor.normal_arrow = game.texture_manager.add_texture("data/textures/UI/cursors/default.png");
     game.music_manager.current = game.music_manager.add_music("data/music/menu_00.s3m");
 //  --- miscellaneous ---
     game.core.log.file_write("Seeding random...");
     seed_rand();
     game.core.log.file_write("Initializing UI system...");
-    game.UI.UI_setup();
+    game.UI_manager.setup();
     game.core.log.file_write("Initializing game system...");
     game.init();
     game.core.log.file_write("Initializing event handlers...");
@@ -135,15 +135,15 @@ extern "C" int main(int argc, char** argv)
                     game.music_manager.next_track = false;
                 }
                 if (game.core.process_ready) game.core.background.process();
-                if (game.core.process_ready) game.UI.UI_process();
+                if (game.core.process_ready) game.UI_manager.process();
                 //if (game.menu.event == 65535) game.state = STATE_QUIT;
                 if (game.core.io.key_escape)  game.state = STATE_QUIT;
                 game.core.background.draw();
-                game.window_manager.render();
+                game.UI_manager.render();
             break;
             case STATE_GAME:// game active, menus can be utilized in game, but the game will stay in this state.
                 if (game.core.process_ready) game.process();
-                if (game.core.process_ready) game.UI.UI_process();
+                if (game.core.process_ready) game.UI_manager.process();
                 if (game.event == 65535) game.state = STATE_QUIT;
                 game.render();
             break;
@@ -162,7 +162,7 @@ extern "C" int main(int argc, char** argv)
             game.core.process_ready = true;
         }
         else game.core.process_ready = false;
-        game.texture_manager.draw(game.window_manager.cursor.normal_arrow,false,game.core.io.mouse_x+0.012f,game.core.io.mouse_y-0.018f,0.001f,0.04f,0.04f,345.0f);
+        game.texture_manager.draw(game.UI_manager.cursor.normal_arrow,false,game.core.io.mouse_x+0.012f,game.core.io.mouse_y-0.018f,0.001f,0.04f,0.04f,345.0f);
         SDL_GL_SwapBuffers();
     }
 // --------------------------------------------------------------------------------------------------------------------------

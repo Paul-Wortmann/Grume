@@ -25,9 +25,9 @@
 #ifndef MENU_MAIN_H
 #define MENU_MAIN_H
 
-#include "window.hpp"
+#include "UI_types.hpp"
 
 void setup_menu_main(int UID);
-void process_menu_main(int window_number);
+void process_menu_main(UI_form_struct *UI_form_pointer);
 
 #endif // MENU_MAIN_H

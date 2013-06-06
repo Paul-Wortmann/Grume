@@ -125,24 +125,22 @@ Set (FROST_AND_FLAME_SOURCES
 	./source/core/timer.cpp
 	#./source/core/types.cpp
 	./source/core/vector.cpp
-	./source/UI/action_bar.cpp
-	./source/UI/character_window.cpp
-	./source/UI/equipment_window.cpp
-	./source/UI/inventory_window.cpp
-	./source/UI/loading_screen.cpp
-	./source/UI/menu_game_load.cpp
-	./source/UI/menu_game_new.cpp
-	./source/UI/menu_game_save.cpp
+	#./source/UI/action_bar.cpp
+	#./source/UI/character_window.cpp
+	#./source/UI/equipment_window.cpp
+	#./source/UI/inventory_window.cpp
+	#./source/UI/menu_game_load.cpp
+	#./source/UI/menu_game_new.cpp
+	#./source/UI/menu_game_save.cpp
 	./source/UI/menu_main.cpp
-	./source/UI/menu_options.cpp
-	./source/UI/player_profile.cpp
-	./source/UI/quest_log_window.cpp
-	./source/UI/skillbook_window.cpp
-	./source/UI/UI.cpp
-	./source/UI/window.cpp
-	./source/UI/window_cursor.cpp
-	./source/UI/window_element.cpp
-	./source/UI/window_manager.cpp
+	#./source/UI/menu_options.cpp
+	#./source/UI/player_profile.cpp
+	#./source/UI/quest_log_window.cpp
+	#./source/UI/skillbook_window.cpp
+	./source/UI/UI_cursor.cpp
+	./source/UI/UI_loading_screen.cpp
+	./source/UI/UI_manager.cpp
+	#./source/UI/UI_types.cpp
 	./source/command_line_parser.cpp
 	./source/game.cpp
 	./source/item_manager.cpp

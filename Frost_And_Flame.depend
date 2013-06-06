@@ -30,7 +30,7 @@
 	<string>
 	<fstream>
 
-1370355612 c:\_git_\frost_and_flame\source\game.hpp
+1370517818 c:\_git_\frost_and_flame\source\game.hpp
 	"core/core.hpp"
 	"core/font_manager.hpp"
 	"core/map_2D.hpp"
@@ -39,9 +39,8 @@
 	"core/sound_manager.hpp"
 	"core/texture_manager.hpp"
 	"core/types.hpp"
-	"UI/loading_screen.hpp"
-	"UI/UI.hpp"
-	"UI/window_manager.hpp"
+	"UI/UI_loading_screen.hpp"
+	"UI/UI_manager.hpp"
 	"command_line_parser.hpp"
 	"item_manager.hpp"
 	"language.hpp"
@@ -743,7 +742,7 @@
 1368859896 source:c:\_git_\frost_and_flame\source\core\rs232.cpp
 	"rs232.hpp"
 
-1370046392 source:c:\_git_\frost_and_flame\source\main.cpp
+1370523598 source:c:\_git_\frost_and_flame\source\main.cpp
 	"game.hpp"
 	<SDL/SDL.h>
 	"core/misc.hpp"
@@ -949,7 +948,7 @@
 	"misc.hpp"
 	"../game.hpp"
 
-1370355720 source:c:\_git_\frost_and_flame\source\game.cpp
+1370516694 source:c:\_git_\frost_and_flame\source\game.cpp
 	"core/map_2D.hpp"
 	"game.hpp"
 
@@ -1039,21 +1038,8 @@
 
 1326868751 c:\_git_\frost_and_flame\source\ui\quest_log.hpp
 
-1370500679 c:\_git_\frost_and_flame\source\ui\window_manager.hpp
-	"window.hpp"
+1370516823 c:\_git_\frost_and_flame\source\ui\window_manager.hpp
 	"window_cursor.hpp"
-	"menu_main.hpp"
-	"menu_game_new.hpp"
-	"menu_game_load.hpp"
-	"menu_game_save.hpp"
-	"menu_options.hpp"
-	"player_profile.hpp"
-	"action_bar.hpp"
-	"character_window.hpp"
-	"equipment_window.hpp"
-	"inventory_window.hpp"
-	"quest_log_window.hpp"
-	"skillbook_window.hpp"
 	"../player.hpp"
 
 1348937813 source:c:\_git_\frost_and_flame\source\ui\character.cpp
@@ -1114,10 +1100,10 @@
 	"window_element.hpp"
 	"../game.hpp"
 
-1357028824 c:\_git_\frost_and_flame\source\ui\menu_main.hpp
-	"window.hpp"
+1370522165 c:\_git_\frost_and_flame\source\ui\menu_main.hpp
+	"UI_types.hpp"
 
-1370507410 source:c:\_git_\frost_and_flame\source\ui\menu_main.cpp
+1370525127 source:c:\_git_\frost_and_flame\source\ui\menu_main.cpp
 	"menu_main.hpp"
 	"../game.hpp"
 
@@ -1162,8 +1148,8 @@
 	<string>
 	"../game.hpp"
 
-1368957454 c:\_git_\frost_and_flame\source\ui\window_cursor.hpp
-	"window_element.hpp"
+1370517064 c:\_git_\frost_and_flame\source\ui\window_cursor.hpp
+	"window_types.hpp"
 
 1357028824 ement.hpp"
 
@@ -1722,7 +1708,7 @@
 1357028525 source:/host/_git_/Frost_and_Flame/source/core/rs232.cpp
 	"rs232.hpp"
 
-1369321725 source:c:\_git_\frost_and_flame\source\item_manager.cpp
+1370516687 source:c:\_git_\frost_and_flame\source\item_manager.cpp
 	"item_manager.hpp"
 	"game.hpp"
 
@@ -1789,5 +1775,49 @@
 
 1370005152 source:c:\_git_\frost_and_flame\source\core\music_manager.cpp
 	"music_manager.hpp"
+	"../game.hpp"
+
+1370517106 c:\_git_\frost_and_flame\source\ui\window_types.hpp
+	<string>
+	"../core/font_manager.hpp"
+	"../core/sound_manager.hpp"
+	"../core/texture_manager.hpp"
+	"../core/types.hpp"
+
+1370517772 c:\_git_\frost_and_flame\source\ui\ui_loading_screen.hpp
+	<string>
+
+1370525851 c:\_git_\frost_and_flame\source\ui\ui_manager.hpp
+	"UI_cursor.hpp"
+	"UI_types.hpp"
+	"../player.hpp"
+
+1370517621 c:\_git_\frost_and_flame\source\ui\ui_cursor.hpp
+	"UI_types.hpp"
+
+1370522973 c:\_git_\frost_and_flame\source\ui\ui_types.hpp
+	<string>
+	"../core/font_manager.hpp"
+	"../core/sound_manager.hpp"
+	"../core/texture_manager.hpp"
+	"../core/types.hpp"
+
+1370517617 source:c:\_git_\frost_and_flame\source\ui\ui_cursor.cpp
+	"UI_cursor.hpp"
+	"../game.hpp"
+
+1370517782 source:c:\_git_\frost_and_flame\source\ui\ui_loading_screen.cpp
+	<SDL/SDL.h>
+	<GL/gl.h>
+	"UI_loading_screen.hpp"
+	"../core/texture_manager.hpp"
+	"../game.hpp"
+
+1370517381 source:c:\_git_\frost_and_flame\source\ui\ui_types.cpp
+	"UI_types.hpp"
+
+1370524918 source:c:\_git_\frost_and_flame\source\ui\ui_manager.cpp
+	"menu_main.hpp"
+	"UI_manager.hpp"
 	"../game.hpp"
 

@@ -33,9 +33,8 @@
 #include "core/sound_manager.hpp"
 #include "core/texture_manager.hpp"
 #include "core/types.hpp"
-#include "UI/loading_screen.hpp"
-#include "UI/UI.hpp"
-#include "UI/window_manager.hpp"
+#include "UI/UI_loading_screen.hpp"
+#include "UI/UI_manager.hpp"
 #include "command_line_parser.hpp"
 #include "item_manager.hpp"
 #include "language.hpp"
@@ -75,7 +74,6 @@ class game_class
         light_type                global_ambient;
         item_manager_class        item_manager;
         language_class            language;
-        loading_screen_class      loading_screen;
         map_2D_class              map_2D;
         music_manager_class       music_manager;
         npc_class                 npc;
@@ -92,8 +90,8 @@ class game_class
         int                       state;
         sound_manager_class       sound_manager;
         texture_manager_class     texture_manager;
-        UI_class                  UI;
-        window_manager_class      window_manager;
+        UI_loading_screen_class   loading_screen;
+        UI_manager_class          UI_manager;
         light_type                world_ambient;
         zoom_type                 zoom;
         game_class(void);

@@ -103,7 +103,7 @@ void game_class::init(void)
     tmx_load(&tmx_map,"data/maps/town.tmx");
     game.map_2D.calculate_tile_positions(&tmx_map,DEFAULT_FRAME_WIDTH/game.zoom.current/2.0f,DEFAULT_FRAME_HEIGHT/game.zoom.current/2.0f);
     game.map_2D.center_on_tile(&tmx_map,(tmx_map.data.number_of_tiles/2)+(tmx_map.data.map_width/2));
-
+/*
     // Add default items to the inventory
     int inventory_ID = game.window_manager.window_get_number(INVENTORY_UID);
     int item_ID = 0;
@@ -139,16 +139,19 @@ void game_class::init(void)
     game.window_manager.window[equipment_ID].element[element_number].value    = item_ID;
     game.window_manager.window[equipment_ID].element[element_number].quantity = 1;
     game.window_manager.window[equipment_ID].element[element_number].texture.normal = game.item_manager.item[item_ID].image;
+    */
 };
 
 void game_class::process(void)
 {
+    /*
     game.test_1 = game.window_manager.mouse_over_window();
     if (game.test_1 != MOUSE_OVER_MAP)
     {
         game.test_2 = game.window_manager.mouse_over_element(game.test_1);
     }
     else game.test_2 = 0;
+        */
     game.player.process();
     game.npc.process();
     game.map_2D.process(&tmx_map);
@@ -193,6 +196,7 @@ void game_class::process(void)
     */
     if (game.core.io.keyboard_ready)
     {
+        /*
         if (game.core.io.key_escape) // Main menu
         {
             game.window_manager.window_disable(MENU_GAME_LOAD_UID);
@@ -331,6 +335,7 @@ void game_class::process(void)
             game.core.io.key_space                 = false;
             game.core.io.keyboard_delay_count      = 0;
         }
+        */
         if (game.core.io.key_alt) // display item names on map (loot / click-able items)
         {
             game.core.io.key_alt                   = false;
@@ -413,6 +418,6 @@ void game_class::render(void)
     game.npc.render();
 
     glLightModelfv(GL_LIGHT_MODEL_AMBIENT,global_ambient_light);
-    game.window_manager.render();
+    //game.window_manager.render();
 };
 

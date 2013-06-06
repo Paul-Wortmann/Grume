@@ -157,6 +157,7 @@ void  init_items(void) // Initialize hard-coded default items, such as health po
 
 void  use_item(int window_from, int element_from)
 {
+    /*
     if (game.window_manager.window[window_from].element[element_from].active)
     {
         int item_number = game.window_manager.window[window_from].element[element_from].value;
@@ -185,5 +186,6 @@ void  use_item(int window_from, int element_from)
         }
         game.sound_manager.play(game.item_manager.item[item_number].sound_use);
     }
+    */
 };
 
