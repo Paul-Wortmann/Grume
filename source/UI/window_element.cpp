@@ -28,7 +28,7 @@
 extern game_class        game;
 
 //------------------------------------------------------------ Delay Class ------------------------------------------------------------------------
-
+/*
 delay_class::delay_class(void)
 {
     delay_class::enabled = true;
@@ -55,25 +55,7 @@ void delay_class::reset(void)
     delay_class::ready   = false;
     delay_class::value   = 0;
 };
-
-//------------------------------------------------------------ Location Class ------------------------------------------------------------------------
-
-location_class::location_class(void)
-{
-    location_class::text        = "Not set";
-    location_class::position.x  = 0.0f;
-    location_class::position.y  = 0.0f;
-    location_class::position.z  = 0.0f;
-    location_class::size.x      = 0.0f;
-    location_class::size.y      = 0.0f;
-    location_class::size.z      = 0.0f;
-}
-
-location_class::~location_class(void)
-{
-
-}
-
+*/
 //------------------------------------------------------------ Window element Class ------------------------------------------------------------------------
 
 window_element_class::window_element_class(void)
@@ -288,7 +270,17 @@ event_type  window_element_class::process(bool element_in_focus)
     bool  allow_drag   = window_element_class::dragable;
     bool  allow_process = true;
     window_element_class::clicked = false;
-    window_element_class::mouse_delay.process();
+    // ------------------------- Process mouse delay -------------------------
+    if (window_element_class::mouse_delay.enabled)
+    {
+        window_element_class::mouse_delay.value++;
+        if (window_element_class::mouse_delay.value >= window_element_class::mouse_delay.maximum)
+        {
+            window_element_class::mouse_delay.ready = true;
+            window_element_class::mouse_delay.value = window_element_class::mouse_delay.maximum;
+        }
+    }
+    // ------------------------- -------------------------
     if ((window_element_class::event.id == EVENT_ELEMENT_MOUSE_RIGHT) || (window_element_class::event.id == EVENT_ELEMENT_MOUSE_LEFT)) window_element_class::event.id = EVENT_NONE;
     if (!window_element_class::active) allow_process = false;
     if ((window_element_class::type == ITEM) && (window_element_class::value < 0)) allow_process = false;
@@ -381,7 +373,11 @@ event_type  window_element_class::process(bool element_in_focus)
                                 if (game.core.io.mouse_button_left)  window_element_class::event.id = EVENT_ELEMENT_MOUSE_LEFT;
                                 if (window_element_class::sound.on_click.enabled) game.sound_manager.play(window_element_class::sound.on_click.sound);
                                 window_element_class::clicked = true;
-                                if(window_element_class::mouse_delay.enabled) window_element_class::mouse_delay.reset();
+                                if (window_element_class::mouse_delay.enabled)
+                                {
+                                    window_element_class::mouse_delay.ready = false;
+                                    window_element_class::mouse_delay.value = 0;
+                                }
                             }
                         }
                     }

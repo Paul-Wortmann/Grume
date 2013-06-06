@@ -78,19 +78,15 @@ struct event_type
     int             id;
 };
 
-class location_class
+struct location_struct
 {
-    private:
-    public:
-        bool                    enabled;
-        std::string             text;
-        f3_type                 size;
-        f3_type                 position;
-        bool                    image_enabled;
-        texture_type           *image;
-        f3_type                 image_size;
-        location_class(void);
-       ~location_class(void);
+    bool                    enabled;
+    std::string             text;
+    f3_type                 size;
+    f3_type                 position;
+    bool                    image_enabled;
+    texture_type           *image;
+    f3_type                 image_size;
 };
 
 struct element_zoom_struct
@@ -137,17 +133,12 @@ struct sound_state_struct
     sound_struct            on_mouse_over;
 };
 
-class delay_class
+struct delay_struct
 {
-    private:
-    public:
-        bool                    enabled;
-        bool                    ready;
-        int                     value;
-        int                     maximum;
-        delay_class(void);
-        void                    process(void);
-        void                    reset(void);
+    bool                    enabled;
+    bool                    ready;
+    int                     value;
+    int                     maximum;
 };
 
 struct selection_data_type
@@ -173,8 +164,8 @@ class window_element_class
     public:
         int                     window_UID;
         int                     element_UID;
-        location_class          title;
-        location_class          tooltip;
+        location_struct         title;
+        location_struct         tooltip;
         event_type              event;
         int                     state;
         bool                    selected;
@@ -191,7 +182,7 @@ class window_element_class
         bool                    drag_active;
         float                   drag_offset_x;
         float                   drag_offset_y;
-        delay_class             mouse_delay;
+        delay_struct            mouse_delay;
         f3_type                 size;
         f3_type                 position;
         f3_type                 position_origional;

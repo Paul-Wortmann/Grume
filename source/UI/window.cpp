@@ -203,7 +203,16 @@ event_type window_class::process(bool window_in_focus)
     return_value.id = EVENT_NONE;
     if (window_class::enabled)
     {
-        window_class::mouse_delay.process();
+        // ------------------------- Process mouse delay -------------------------
+        if (window_class::mouse_delay.enabled)
+        {
+            window_class::mouse_delay.value++;
+            if (window_class::mouse_delay.value >= window_class::mouse_delay.maximum)
+            {
+                window_class::mouse_delay.ready = true;
+                window_class::mouse_delay.value = window_class::mouse_delay.maximum;
+            }
+        }
         // ------------------------- Process elements -------------------------
         if ((window_class::number_of_elements > 0) && (!window_class::drag_active))
         {

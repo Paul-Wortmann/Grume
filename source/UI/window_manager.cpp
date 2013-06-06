@@ -320,10 +320,12 @@ void window_manager_class::mouse_reset(int UID)
             if (window_manager_class::window[window_manager_class::window_stack[window_count]].UID == UID)
             {
                 window_number = window_manager_class::window_stack[window_count];
-                window_manager_class::window[window_number].mouse_delay.reset();
+                window_manager_class::window[window_number].mouse_delay.ready = false;
+                window_manager_class::window[window_number].mouse_delay.value = 0;
                 for (int element_count = 0; element_count < window_manager_class::window[window_number].number_of_elements; element_count++)
                 {
-                    window_manager_class::window[window_number].element[element_count].mouse_delay.reset();
+                    window_manager_class::window[window_number].element[element_count].mouse_delay.ready = false;
+                    window_manager_class::window[window_number].element[element_count].mouse_delay.value = 0;
                 }
             }
         }
@@ -469,7 +471,7 @@ void window_manager_class_2::process(void)
     temp = window_manager_class_2::root;
     while (temp != NULL)
     {
-        temp = temp->next;
+        //temp = temp->next;
     }
 };
 

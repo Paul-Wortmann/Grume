@@ -39,11 +39,11 @@ class window_class
         bool                    set_behind;
         int                     UID;
         choice_selection_type   choice_selection[MAX_CHOICE_SELECTIONS_PER_MENU];
-        delay_class             mouse_delay;
+        delay_struct            mouse_delay;
         event_type              event;
-        location_class          title;
+        location_struct         title;
         color_struct            title_color;
-        location_class          title_bar;
+        location_struct         title_bar;
         f3_type                 size;
         f3_type                 position;
         bool                    mouse_over_menu;
