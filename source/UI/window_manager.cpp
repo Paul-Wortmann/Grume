@@ -81,10 +81,12 @@ int window_manager_class::mouse_over_element(int UID)
         if (    (window_manager_class::window[window_manager_class::window_stack[window_count]].element[element_count].active)
             && (!window_manager_class::window[window_manager_class::window_stack[window_count]].element[element_count].drag_active))
         {
+            /* -- test nwm
             if (window_manager_class::window[window_manager_class::window_stack[window_count]].element[element_count].mouse_over_element())
             {
                 return_value = element_count;
             }
+            */
         }
     }
     return (return_value);

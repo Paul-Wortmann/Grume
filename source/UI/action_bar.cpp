@@ -84,7 +84,7 @@ void setup_action_bar(int UID)
 
     // ---------------------------- Setup window elements ----------------------------------------------------
     game.window_manager.window[window_number].number_of_elements = 18;
-    game.window_manager.window[window_number].element = new window_element_class[game.window_manager.window[window_number].number_of_elements];
+    game.window_manager.window[window_number].element = new window_element_struct[game.window_manager.window[window_number].number_of_elements];
     element_number = 0; //--- Experience bar image ---
     game.window_manager.window[window_number].element[element_number].window_UID                = game.window_manager.window[window_number].UID;
     game.window_manager.window[window_number].element[element_number].element_UID               = element_number;
@@ -117,6 +117,7 @@ void setup_action_bar(int UID)
     game.window_manager.window[window_number].element[element_number].click_enabled             = false;
     game.window_manager.window[window_number].element[element_number].type                      = IMAGE;
     game.window_manager.window[window_number].element[element_number].zoom.enabled              = false;
+    game.window_manager.window[window_number].element[element_number].tooltip.enabled           = false;
     game.window_manager.window[window_number].element[element_number].color                     = game.window_manager.window[window_number].color;
     game.window_manager.window[window_number].element[element_number].size.x                    = game.window_manager.window[window_number].size.x;
     game.window_manager.window[window_number].element[element_number].size.y                    = game.window_manager.window[window_number].size.y;
@@ -287,6 +288,7 @@ void setup_action_bar(int UID)
     game.window_manager.window[window_number].element[element_number].active                      = true;
     game.window_manager.window[window_number].element[element_number].type                        = ITEM;
     game.window_manager.window[window_number].element[element_number].zoom.enabled                = false;
+    game.window_manager.window[window_number].element[element_number].tooltip.enabled             = false;
     game.window_manager.window[window_number].element[element_number].value                       = -1;
     game.window_manager.window[window_number].element[element_number].color                       = game.window_manager.window[window_number].color;
     game.window_manager.window[window_number].element[element_number].size.x                      = game.window_manager.window[window_number].size.y/2.35;
@@ -308,6 +310,7 @@ void setup_action_bar(int UID)
     game.window_manager.window[window_number].element[element_number].active                      = true;
     game.window_manager.window[window_number].element[element_number].type                        = ITEM;
     game.window_manager.window[window_number].element[element_number].zoom.enabled                = false;
+    game.window_manager.window[window_number].element[element_number].tooltip.enabled             = false;
     game.window_manager.window[window_number].element[element_number].value                       = -1;
     game.window_manager.window[window_number].element[element_number].color                       = game.window_manager.window[window_number].color;
     game.window_manager.window[window_number].element[element_number].size.x                      = game.window_manager.window[window_number].size.y/2.35;
@@ -329,6 +332,7 @@ void setup_action_bar(int UID)
     game.window_manager.window[window_number].element[element_number].active                      = true;
     game.window_manager.window[window_number].element[element_number].type                        = ITEM;
     game.window_manager.window[window_number].element[element_number].zoom.enabled                = false;
+    game.window_manager.window[window_number].element[element_number].tooltip.enabled             = false;
     game.window_manager.window[window_number].element[element_number].value                       = -1;
     game.window_manager.window[window_number].element[element_number].color                       = game.window_manager.window[window_number].color;
     game.window_manager.window[window_number].element[element_number].size.x                      = game.window_manager.window[window_number].size.y/2.35;
@@ -350,6 +354,7 @@ void setup_action_bar(int UID)
     game.window_manager.window[window_number].element[element_number].active                      = true;
     game.window_manager.window[window_number].element[element_number].type                        = ITEM;
     game.window_manager.window[window_number].element[element_number].zoom.enabled                = false;
+    game.window_manager.window[window_number].element[element_number].tooltip.enabled             = false;
     game.window_manager.window[window_number].element[element_number].value                       = -1;
     game.window_manager.window[window_number].element[element_number].color                       = game.window_manager.window[window_number].color;
     game.window_manager.window[window_number].element[element_number].size.x                      = game.window_manager.window[window_number].size.y/2.35;
@@ -371,6 +376,7 @@ void setup_action_bar(int UID)
     game.window_manager.window[window_number].element[element_number].active                      = true;
     game.window_manager.window[window_number].element[element_number].type                        = ITEM;
     game.window_manager.window[window_number].element[element_number].zoom.enabled                = false;
+    game.window_manager.window[window_number].element[element_number].tooltip.enabled             = false;
     game.window_manager.window[window_number].element[element_number].value                       = -1;
     game.window_manager.window[window_number].element[element_number].color                       = game.window_manager.window[window_number].color;
     game.window_manager.window[window_number].element[element_number].size.x                      = game.window_manager.window[window_number].size.y/2.35;
@@ -392,6 +398,7 @@ void setup_action_bar(int UID)
     game.window_manager.window[window_number].element[element_number].active                      = true;
     game.window_manager.window[window_number].element[element_number].type                        = ITEM;
     game.window_manager.window[window_number].element[element_number].zoom.enabled                = false;
+    game.window_manager.window[window_number].element[element_number].tooltip.enabled             = false;
     game.window_manager.window[window_number].element[element_number].value                       = -1;
     game.window_manager.window[window_number].element[element_number].color                       = game.window_manager.window[window_number].color;
     game.window_manager.window[window_number].element[element_number].size.x                      = game.window_manager.window[window_number].size.y/2.35;
@@ -413,6 +420,7 @@ void setup_action_bar(int UID)
     game.window_manager.window[window_number].element[element_number].active                      = true;
     game.window_manager.window[window_number].element[element_number].type                        = ITEM;
     game.window_manager.window[window_number].element[element_number].zoom.enabled                = false;
+    game.window_manager.window[window_number].element[element_number].tooltip.enabled             = false;
     game.window_manager.window[window_number].element[element_number].value                       = -1;
     game.window_manager.window[window_number].element[element_number].color                       = game.window_manager.window[window_number].color;
     game.window_manager.window[window_number].element[element_number].size.x                      = game.window_manager.window[window_number].size.y/2.35;
@@ -434,6 +442,7 @@ void setup_action_bar(int UID)
     game.window_manager.window[window_number].element[element_number].active                      = true;
     game.window_manager.window[window_number].element[element_number].type                        = ITEM;
     game.window_manager.window[window_number].element[element_number].zoom.enabled                = false;
+    game.window_manager.window[window_number].element[element_number].tooltip.enabled             = false;
     game.window_manager.window[window_number].element[element_number].value                       = -1;
     game.window_manager.window[window_number].element[element_number].color                       = game.window_manager.window[window_number].color;
     game.window_manager.window[window_number].element[element_number].size.x                      = game.window_manager.window[window_number].size.y/2.35;
@@ -455,6 +464,7 @@ void setup_action_bar(int UID)
     game.window_manager.window[window_number].element[element_number].active                      = true;
     game.window_manager.window[window_number].element[element_number].type                        = ITEM;
     game.window_manager.window[window_number].element[element_number].zoom.enabled                = false;
+    game.window_manager.window[window_number].element[element_number].tooltip.enabled             = false;
     game.window_manager.window[window_number].element[element_number].value                       = -1;
     game.window_manager.window[window_number].element[element_number].color                       = game.window_manager.window[window_number].color;
     game.window_manager.window[window_number].element[element_number].size.x                      = game.window_manager.window[window_number].size.y/2.35;
@@ -476,6 +486,7 @@ void setup_action_bar(int UID)
     game.window_manager.window[window_number].element[element_number].active                      = true;
     game.window_manager.window[window_number].element[element_number].type                        = ITEM;
     game.window_manager.window[window_number].element[element_number].zoom.enabled                = false;
+    game.window_manager.window[window_number].element[element_number].tooltip.enabled             = false;
     game.window_manager.window[window_number].element[element_number].value                       = -1;
     game.window_manager.window[window_number].element[element_number].color                       = game.window_manager.window[window_number].color;
     game.window_manager.window[window_number].element[element_number].size.x                      = game.window_manager.window[window_number].size.y/2.35;

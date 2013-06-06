@@ -158,47 +158,38 @@ struct choice_selection_type
     selection_data_type         data[MAX_CHOICE_SELECTION];
 };
 
-class window_element_class
+struct window_element_struct
 {
-    private:
-    public:
-        int                     window_UID;
-        int                     element_UID;
-        location_struct         title;
-        location_struct         tooltip;
-        event_type              event;
-        int                     state;
-        bool                    selected;
-        int                     type;
-        int                     sub_type;
-        int                     quantity;
-        float                   value;
-        float                   value_max;
-        bool                    mouse_over;
-        bool                    active;
-        bool                    clicked;
-        bool                    click_enabled;
-        bool                    dragable;
-        bool                    drag_active;
-        float                   drag_offset_x;
-        float                   drag_offset_y;
-        delay_struct            mouse_delay;
-        f3_type                 size;
-        f3_type                 position;
-        f3_type                 position_origional;
-        element_zoom_struct     zoom;
-        color_state_struct      color;
-        sound_state_struct      sound;
-        texture_state_struct    texture;
-        font_type              *font;
-        window_element_class(void);
-       ~window_element_class(void);
-        void                    render(void);
-        void                    render_tooltips(void);
-        void                    render_item_if_dragged(void);
-        bool                    mouse_over_element(void);
-        bool                    mouse_clicked_element(void);
-        event_type              process(bool element_in_focus);
+    int                     window_UID;
+    int                     element_UID;
+    location_struct         title;
+    location_struct         tooltip;
+    event_type              event;
+    int                     state;
+    bool                    selected;
+    int                     type;
+    int                     sub_type;
+    int                     quantity;
+    float                   value;
+    float                   value_max;
+    bool                    mouse_over;
+    bool                    active;
+    bool                    clicked;
+    bool                    click_enabled;
+    bool                    dragable;
+    bool                    drag_active;
+    float                   drag_offset_x;
+    float                   drag_offset_y;
+    delay_struct            mouse_delay;
+    f3_type                 size;
+    f3_type                 position;
+    f3_type                 position_origional;
+    element_zoom_struct     zoom;
+    color_state_struct      color;
+    sound_state_struct      sound;
+    texture_state_struct    texture;
+    font_type              *font;
+    window_element_struct  *next;
 };
 
 #endif // WINDOW_ELEMENT_H

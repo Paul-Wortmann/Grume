@@ -58,7 +58,7 @@ class window_class
         texture_state_struct    texture;
         font_type              *font;
         int                     number_of_elements;
-        window_element_class   *element;
+        window_element_struct  *element;
         window_class(void);
        ~window_class(void);
         void                    render(void);
