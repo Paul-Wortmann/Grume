@@ -455,3 +455,41 @@ void swap_elements(int window_src, int element_src, int window_dst, int element_
     }
 };
 
+// ------------------------------------------------------------------------------------------------------------
+
+window_manager_class_2::window_manager_class_2(void)
+{
+    window_manager_class_2::event.id             = 0;
+    window_manager_class_2::number_of_windows    = 0;
+}
+
+void window_manager_class_2::process(void)
+{
+    window_class *temp;
+    temp = window_manager_class_2::root;
+    while (temp != NULL)
+    {
+        temp = temp->next;
+    }
+};
+
+void window_manager_class_2::render(void)
+{
+
+};
+
+
+/*
+class window_manager_class_2
+{
+    public:
+        window_manager_class_2(void);
+       ~window_manager_class_2(void);
+        int                   number_of_windows;
+        window_class         *root;
+        window_class         *last;
+        int                  *add_window(int type_ID);
+        void                  process(void);
+        void                  render(void);
+};
+*/

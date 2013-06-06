@@ -102,8 +102,27 @@ void setup_windows(void);
 void process_windows(void);
 void swap_elements(int window_src, int element_src, int window_dst, int element_dst);
 
+
+
+
+
+
+
+
+
+
+class window_manager_class_2
+{
+    public:
+        window_manager_class_2(void);
+        event_type            event;
+        int                   number_of_windows;
+        window_class         *root;
+        window_class         *last;
+        int                  *add_window(int type_ID);
+        void                  process(void);
+        void                  render(void);
+};
+
+
 #endif // WINDOW_MANAGER_H
-
-
-
-
