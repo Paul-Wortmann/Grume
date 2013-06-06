@@ -64,8 +64,6 @@ class window_manager_class
     private:
     public:
         event_type            event;
-        window_element_class *src_pointer;
-        window_element_class *dst_pointer;
         float                 mouse_x;
         float                 mouse_y;
         int                   number_of_windows;
