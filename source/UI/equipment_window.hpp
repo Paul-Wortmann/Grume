@@ -25,9 +25,10 @@
 #ifndef EQUIPMENT_WINDOW_H
 #define EQUIPMENT_WINDOW_H
 
+#include "UI_types.hpp"
 #include "UI_manager.hpp"
 
 void setup_equipment_window(int UID);
-void process_equipment_window(int window_number);
+void process_equipment_window(UI_form_struct *UI_form_pointer);
 
 #endif // EQUIPMENT_WINDOW_H

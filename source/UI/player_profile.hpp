@@ -25,11 +25,12 @@
 #ifndef PLAYER_PROFILE_H
 #define PLAYER_PROFILE_H
 
+#include "UI_types.hpp"
 #include "UI_manager.hpp"
 
 void setup_player_profile(int UID);
-void update_player_profile(int window_number);
-void process_player_profile(int window_number);
+void update_player_profile(UI_form_struct *UI_form_pointer);
+void process_player_profile(UI_form_struct *UI_form_pointer);
 
 #endif // PLAYER_PROFILE_H
 

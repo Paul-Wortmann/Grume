@@ -25,9 +25,10 @@
 #ifndef INVENTORY_WINDOW_H
 #define INVENTORY_WINDOW_H
 
+#include "UI_types.hpp"
 #include "UI_manager.hpp"
 
 void setup_inventory_window(int UID);
-void process_inventory_window(int window_number);
+void process_inventory_window(UI_form_struct *UI_form_pointer);
 
 #endif // INVENTORY_WINDOW_H

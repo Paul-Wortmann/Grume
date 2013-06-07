@@ -461,7 +461,7 @@ void setup_equipment_window(int UID)
     UI_form_pointer->element[element_number].font                        = UI_form_pointer->font;
 };
 
-void process_equipment_window(int window_number)
+void process_equipment_window(UI_form_struct *UI_form_pointer)
 {
     /*
     if(UI_form_pointer->event.id > EVENT_NONE)

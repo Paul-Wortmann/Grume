@@ -25,11 +25,12 @@
 #ifndef ACTION_BAR_H
 #define ACTION_BAR_H
 
+#include "UI_types.hpp"
 #include "UI_manager.hpp"
 
 void setup_action_bar(int UID);
-//void update_action_bar(int window_number);
-void process_action_bar(int window_number);
+//void update_action_bar(UI_form_struct *UI_form_pointer);
+void process_action_bar(UI_form_struct *UI_form_pointer);
 
 #endif // ACTION_BAR_H
 

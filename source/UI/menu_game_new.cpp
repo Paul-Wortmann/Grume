@@ -421,7 +421,7 @@ void update_menu_game_new(int UID)
     */
 };
 
-void process_menu_game_new(int window_number)
+void process_menu_game_new(UI_form_struct *UI_form_pointer)
 {
     /*
     texture_type *temp_data_texture;

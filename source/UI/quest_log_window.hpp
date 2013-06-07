@@ -25,9 +25,10 @@
 #ifndef QUEST_LOG_WINDOW_H
 #define QUEST_LOG_WINDOW_H
 
+#include "UI_types.hpp"
 #include "UI_manager.hpp"
 
 void setup_quest_log_window(int UID);
-void process_quest_log_window(int window_number);
+void process_quest_log_window(UI_form_struct *UI_form_pointer);
 
 #endif // QUEST_LOG_WINDOW_H

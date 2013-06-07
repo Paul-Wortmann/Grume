@@ -579,7 +579,7 @@ void update_action_bar(int window_number)
 };
 */
 
-void process_action_bar(int window_number)
+void process_action_bar(UI_form_struct *UI_form_pointer)
 {
     /*
     if (game.player.level.current < MAX_LEVELS)// exp bar

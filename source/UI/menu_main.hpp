@@ -26,6 +26,7 @@
 #define MENU_MAIN_H
 
 #include "UI_types.hpp"
+#include "UI_types.hpp"
 
 void setup_menu_main(int UID);
 void process_menu_main(UI_form_struct *UI_form_pointer);

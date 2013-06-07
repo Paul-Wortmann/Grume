@@ -265,7 +265,7 @@ void setup_player_profile(int UID)
     UI_form_pointer->element[element_number].mouse_delay.maximum       = 30;
 };
 
-void update_player_profile(int window_number)
+void update_player_profile(UI_form_struct *UI_form_pointer)
 {
     /*
     int element_number = 0; //--- Player profile image ---
@@ -278,7 +278,7 @@ void update_player_profile(int window_number)
     */
 };
 
-void process_player_profile(int window_number)
+void process_player_profile(UI_form_struct *UI_form_pointer)
 {
     /*
     int element_number = 0; //--- Player name ---

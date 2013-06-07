@@ -306,7 +306,7 @@ void setup_menu_game_save(int UID)
     UI_form_pointer->element[element_number].mouse_delay.maximum       = 30;
 };
 
-void process_menu_game_save(int window_number)
+void process_menu_game_save(UI_form_struct *UI_form_pointer)
 {
     /*
     if(UI_form_pointer->event.id > EVENT_NONE)

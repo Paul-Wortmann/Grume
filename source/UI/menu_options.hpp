@@ -25,9 +25,10 @@
 #ifndef MENU_OPTIONS_H
 #define MENU_OPTIONS_H
 
+#include "UI_types.hpp"
 #include "UI_manager.hpp"
 
 void setup_menu_options(int UID);
-void process_menu_options(int window_number);
+void process_menu_options(UI_form_struct *UI_form_pointer);
 
 #endif // MENU_OPTIONS_H

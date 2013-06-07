@@ -125,7 +125,18 @@ UI_form_struct *UI_manager_class::add_window(int UI_form_UID)
 
 void UI_manager_class::setup(void)
 {
-    setup_menu_main(UID_MENU_MAIN);
+    setup_action_bar      (UID_ACTIONBAR);
+    setup_character_window(UID_CHARACTER);
+    setup_equipment_window(UID_EQUIPMENT);
+    setup_inventory_window(UID_INVENTORY);
+    setup_menu_game_load  (UID_MENU_GAME_LOAD);
+    setup_menu_game_new   (UID_MENU_GAME_NEW);
+    setup_menu_game_save  (UID_MENU_GAME_SAVE);
+    setup_menu_main       (UID_MENU_MAIN);
+    setup_menu_options    (UID_MENU_OPTIONS);
+    setup_player_profile  (UID_PCPROFILE);
+    setup_quest_log_window(UID_QUEST_LOG);
+    setup_skillbook_window(UID_SKILLBOOK);
 }
 
 void UI_manager_class::render(void)
@@ -547,37 +558,37 @@ void UI_manager_class::process(void)
                         process_menu_main(UI_form_pointer);
                     break;
                     case UID_MENU_GAME_NEW:
-                        //process_menu_game_new(UI_form_pointer);
+                        process_menu_game_new(UI_form_pointer);
                     break;
                     case UID_MENU_GAME_LOAD:
-                        //process_menu_game_load(UI_form_pointer);
+                        process_menu_game_load(UI_form_pointer);
                     break;
                     case UID_MENU_GAME_SAVE:
-                        //process_menu_game_save(UI_form_pointer);
+                        process_menu_game_save(UI_form_pointer);
                     break;
                     case UID_MENU_OPTIONS:
-                        //process_menu_options(UI_form_pointer);
+                        process_menu_options(UI_form_pointer);
                     break;
                     case UID_PCPROFILE:
-                        //process_player_profile(UI_form_pointer);
+                        process_player_profile(UI_form_pointer);
                     break;
                     case UID_ACTIONBAR:
-                        //process_action_bar(UI_form_pointer);
+                        process_action_bar(UI_form_pointer);
                     break;
                     case UID_CHARACTER:
-                        //process_character_window(UI_form_pointer);
+                        process_character_window(UI_form_pointer);
                     break;
                     case UID_EQUIPMENT:
-                        //process_equipment_window(UI_form_pointer);
+                        process_equipment_window(UI_form_pointer);
                     break;
                     case UID_INVENTORY:
-                        //process_inventory_window(UI_form_pointer);
+                        process_inventory_window(UI_form_pointer);
                     break;
                     case UID_QUEST_LOG:
-                        //process_quest_log_window(UI_form_pointer);
+                        process_quest_log_window(UI_form_pointer);
                     break;
                     case UID_SKILLBOOK:
-                        //process_skillbook_window(UI_form_pointer);
+                        process_skillbook_window(UI_form_pointer);
                     break;
                     default:
                         game.core.log.file_write("Unable to process UID - ",UI_form_pointer->UID);

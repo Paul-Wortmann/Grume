@@ -611,7 +611,7 @@ void setup_menu_options(int UID)
     }
 };
 
-void process_menu_options(int window_number)
+void process_menu_options(UI_form_struct *UI_form_pointer)
 {
     /*
     if (UI_form_pointer->event.id > EVENT_NONE)

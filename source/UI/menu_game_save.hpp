@@ -25,9 +25,10 @@
 #ifndef MENU_GAME_SAVE_H
 #define MENU_GAME_SAVE_H
 
+#include "UI_types.hpp"
 #include "UI_manager.hpp"
 
 void setup_menu_game_save(int UID);
-void process_menu_game_save(int window_number);
+void process_menu_game_save(UI_form_struct *UI_form_pointer);
 
 #endif // MENU_GAME_SAVE_H

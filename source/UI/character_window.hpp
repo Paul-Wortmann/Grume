@@ -25,10 +25,11 @@
 #ifndef CHARACTER_WINDOW_H
 #define CHARACTER_WINDOW_H
 
+#include "UI_types.hpp"
 #include "UI_manager.hpp"
 
 void setup_character_window(int UID);
 void update_character_window(int UID);
-void process_character_window(int window_number);
+void process_character_window(UI_form_struct *UI_form_pointer);
 
 #endif // CHARACTER_WINDOW_H

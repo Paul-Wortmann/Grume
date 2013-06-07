@@ -25,9 +25,10 @@
 #ifndef SKILLBOOK_WINDOW_H
 #define SKILLBOOK_WINDOW_H
 
+#include "UI_types.hpp"
 #include "UI_manager.hpp"
 
 void setup_skillbook_window(int UID);
-void process_skillbook_window(int window_number);
+void process_skillbook_window(UI_form_struct *UI_form_pointer);
 
 #endif // SKILLBOOK_WINDOW_H
