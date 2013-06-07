@@ -343,7 +343,7 @@ void process_menu_main(UI_form_struct *UI_form_pointer)
             break;
             case ((2*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Load game menu
                 UI_form_struct *load_menu_pointer;
-                load_menu_pointer = new UI_form_struct;
+                load_menu_pointer = NULL;
                 load_menu_pointer = game.UI_manager.UI_form_get(UID_MENU_GAME_LOAD);
                 if (load_menu_pointer != NULL)
                 {
@@ -367,7 +367,6 @@ void process_menu_main(UI_form_struct *UI_form_pointer)
                     game.save_05.Assign_File("save/slot_05.sav");
                     if (game.save_05.File_Exists()) load_menu_pointer->element[element_number].state = NORMAL;
                     else load_menu_pointer->element[element_number].state = DISABLED;
-                    delete load_menu_pointer;
                     game.UI_manager.UI_form_transition(UID_MENU_MAIN,UID_MENU_GAME_LOAD);
                 }
             break;

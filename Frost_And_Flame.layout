@@ -401,9 +401,9 @@
 			<Cursor1 position="1305" topLine="24" />
 		</Cursor>
 	</File>
-	<File name="source\core\texture_manager.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="-1" zoom_2="0">
+	<File name="source\core\texture_manager.cpp" open="1" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="-1" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="15596" topLine="328" />
+			<Cursor1 position="13251" topLine="323" />
 		</Cursor>
 	</File>
 	<File name="source\UI\UI_cursor.hpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">

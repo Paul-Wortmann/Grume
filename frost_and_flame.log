@@ -23,10 +23,10 @@ Starting Game...
  
 # ---------------------------------------------- #
  
-Font    count -> 1
+Font    count -> 2
 Music   count -> 1
-Sound   count -> 7
-Texture count -> 31
+Sound   count -> 8
+Texture count -> 64
  
 # ---------------------------------------------- #
  

@@ -80,7 +80,7 @@ UI_form_struct *UI_manager_class::UI_form_add(int UI_form_UID)
     UI_manager_class::last->drag_enabled                       = true;
     UI_manager_class::last->drag_offset_x                      = 0.0f;
     UI_manager_class::last->drag_offset_y                      = 0.0f;
-    UI_manager_class::last->enabled                            = true;
+    UI_manager_class::last->enabled                            = false;
     UI_manager_class::last->event.id                           = EVENT_NONE;
     UI_manager_class::last->mouse_delay.enabled                = true;
     UI_manager_class::last->mouse_delay.maximum                = 30;
@@ -125,33 +125,66 @@ UI_form_struct *UI_manager_class::UI_form_add(int UI_form_UID)
 
 void UI_manager_class::setup(void)
 {
-    //setup_action_bar      (UID_ACTIONBAR);
-    //setup_character_window(UID_CHARACTER);
-    //setup_equipment_window(UID_EQUIPMENT);
-    //setup_inventory_window(UID_INVENTORY);
-    //setup_menu_game_load  (UID_MENU_GAME_LOAD);
+    setup_action_bar      (UID_ACTIONBAR);
+    setup_character_window(UID_CHARACTER);
+    setup_equipment_window(UID_EQUIPMENT);
+    setup_inventory_window(UID_INVENTORY);
+    setup_menu_game_load  (UID_MENU_GAME_LOAD);
     //setup_menu_game_new   (UID_MENU_GAME_NEW);
-    //setup_menu_game_save  (UID_MENU_GAME_SAVE);
+    setup_menu_game_save  (UID_MENU_GAME_SAVE);
     setup_menu_main       (UID_MENU_MAIN);
     //setup_menu_options    (UID_MENU_OPTIONS);
-    //setup_player_profile  (UID_PCPROFILE);
-    //setup_quest_log_window(UID_QUEST_LOG);
-    //setup_skillbook_window(UID_SKILLBOOK);
+    setup_player_profile  (UID_PCPROFILE);
+    setup_quest_log_window(UID_QUEST_LOG);
+    setup_skillbook_window(UID_SKILLBOOK);
+    UI_manager_class::UI_form_enable(UID_MENU_MAIN);
 }
 
 UI_form_struct *UI_manager_class::UI_form_get(int UI_form_UID)
 {
+    UI_form_struct *UI_form_pointer;
+    UI_form_pointer = UI_manager_class::root;
+    while (UI_form_pointer != NULL)
+    {
+        if (UI_form_pointer->UID == UI_form_UID)
+        {
+            return(UI_form_pointer);
+        }
+        UI_form_pointer = UI_form_pointer->next;
+    }
     return(NULL);
 };
 
-UI_form_struct *UI_manager_class::UI_form_enable(int UI_form_UID)
+void UI_manager_class::UI_form_enable(int UI_form_UID)
 {
-
+    UI_form_struct *UI_form_pointer;
+    UI_form_pointer = UI_manager_class::root;
+    while (UI_form_pointer != NULL)
+    {
+        if (UI_form_pointer->UID == UI_form_UID)
+        {
+            UI_form_pointer->enabled = true;
+            UI_form_pointer->active  = true;
+            UI_manager_class::UI_form_stack_sort();
+            break;
+        }
+        UI_form_pointer = UI_form_pointer->next;
+    }
 };
 
-UI_form_struct *UI_manager_class::UI_form_disable(int UI_form_UID)
+void UI_manager_class::UI_form_disable(int UI_form_UID)
 {
-
+    UI_form_struct *UI_form_pointer;
+    UI_form_pointer = UI_manager_class::root;
+    while (UI_form_pointer != NULL)
+    {
+        if (UI_form_pointer->UID == UI_form_UID)
+        {
+            UI_form_pointer->enabled = false;
+            UI_form_pointer->active  = false;
+        }
+        UI_form_pointer = UI_form_pointer->next;
+    }
 };
 
 void UI_manager_class::UI_form_stack_sort(void)
@@ -159,9 +192,105 @@ void UI_manager_class::UI_form_stack_sort(void)
 
 };
 
+void UI_manager_class::UI_form_set_active(int UI_form_UID)
+{
+    UI_form_struct *UI_form_pointer;
+    UI_form_pointer = UI_manager_class::root;
+    while (UI_form_pointer != NULL)
+    {
+        if (UI_form_pointer->UID == UI_form_UID) UI_form_pointer->active  = true;
+        else UI_form_pointer->active  = false;
+        UI_form_pointer = UI_form_pointer->next;
+    }
+};
+
+int UI_manager_class::UI_form_get_active(int UI_form_UID)
+{
+    UI_form_struct *UI_form_pointer;
+    UI_form_pointer = UI_manager_class::root;
+    while (UI_form_pointer != NULL)
+    {
+        if (UI_form_pointer->UID == UI_form_UID)
+        {
+            UI_form_pointer->enabled = false;
+            UI_form_pointer->active  = false;
+        }
+        UI_form_pointer = UI_form_pointer->next;
+    }
+};
+
+void UI_manager_class::UI_form_set_position(int UI_form_UID_src, int UI_form_UID_dst)
+{
+    UI_form_struct *UI_form_pointer_src;
+    UI_form_pointer_src = UI_manager_class::UI_form_get(UI_form_UID_src);
+    UI_form_struct *UI_form_pointer_dst;
+    UI_form_pointer_dst = UI_manager_class::UI_form_get(UI_form_UID_dst);
+    float move_delta_x                         = UI_form_pointer_dst->position.x;
+    float move_delta_y                         = UI_form_pointer_dst->position.y;
+    UI_form_pointer_dst->position.x            = UI_form_pointer_src->position.x;
+    UI_form_pointer_dst->position.y            = UI_form_pointer_src->position.y;
+    move_delta_x                               = move_delta_x - UI_form_pointer_dst->position.x;
+    move_delta_y                               = move_delta_y - UI_form_pointer_dst->position.y;
+    UI_form_pointer_dst->title.position.x     -= move_delta_x;
+    UI_form_pointer_dst->title.position.y     -= move_delta_y;
+    UI_form_pointer_dst->title_bar.position.x -= move_delta_x;
+    UI_form_pointer_dst->title_bar.position.y -= move_delta_y;
+    if(UI_form_pointer_dst->number_of_elements > 0)
+    {
+        for (int element_number = 0; element_number < UI_form_pointer_dst->number_of_elements; element_number++)
+        {
+            if (UI_form_pointer_dst->element[element_number].active)
+            {
+                UI_form_pointer_dst->element[element_number].position.x       -= move_delta_x;
+                UI_form_pointer_dst->element[element_number].position.y       -= move_delta_y;
+                UI_form_pointer_dst->element[element_number].title.position.x -= move_delta_x;
+                UI_form_pointer_dst->element[element_number].title.position.y -= move_delta_y;
+            }
+        }
+    }
+};
+
+void UI_manager_class::UI_form_mouse_reset(int UI_form_UID)
+{
+    UI_form_struct *UI_form_pointer;
+    UI_form_pointer = UI_manager_class::root;
+    while (UI_form_pointer != NULL)
+    {
+        if (UI_form_pointer->UID == UI_form_UID)
+        {
+            UI_form_pointer->mouse_delay.value = 0;
+            UI_form_pointer->mouse_delay.ready = false;
+        }
+        UI_form_pointer = UI_form_pointer->next;
+    }
+};
+
+void UI_manager_class::UI_form_set_event(int UI_form_UID, int EVENT_ID)
+{
+    UI_form_struct *UI_form_pointer;
+    UI_form_pointer = UI_manager_class::root;
+    while (UI_form_pointer != NULL)
+    {
+        if (UI_form_pointer->UID == UI_form_UID)
+        {
+            UI_form_pointer->event.id = EVENT_ID;
+        }
+        UI_form_pointer = UI_form_pointer->next;
+    }
+};
+
 void UI_manager_class::UI_form_transition(int UI_form_UID_src, int UI_form_UID_dst)
 {
-
+    UI_manager_class::UI_form_disable(UI_form_UID_src);
+    UI_manager_class::UI_form_set_position(UI_form_UID_src,UI_form_UID_dst);
+    UI_manager_class::UI_form_mouse_reset(UI_form_UID_dst);
+    UI_manager_class::UI_form_mouse_reset(UI_form_UID_src);
+    UI_manager_class::UI_form_set_event(UI_form_UID_dst,EVENT_NONE);
+    UI_manager_class::UI_form_set_event(UI_form_UID_src,EVENT_NONE);
+    UI_manager_class::UI_form_enable(UI_form_UID_dst);
+    UI_manager_class::UI_form_set_active(UI_form_UID_dst);
+    UI_manager_class::event.id = EVENT_WINDOW_STACK_SORT;
+    game.core.io.mouse_button_left = false;
 };
 
 void UI_manager_class::render(void)
