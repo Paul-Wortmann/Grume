@@ -581,7 +581,6 @@ void update_action_bar(int window_number)
 
 void process_action_bar(UI_form_struct *UI_form_pointer)
 {
-    /*
     if (game.player.level.current < MAX_LEVELS)// exp bar
     {
         if (game.player.level.current_experience > 0)// && (game.player.level.experience[game.player.level.current] > 0))
@@ -605,18 +604,18 @@ void process_action_bar(UI_form_struct *UI_form_pointer)
         switch (UI_form_pointer->event.id)
         {
             case ((2*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Toggle main menu
-                game.window_manager.window_disable(MENU_GAME_LOAD_UID);
-                game.window_manager.window_disable(MENU_GAME_NEW_UID);
-                game.window_manager.window_disable(MENU_GAME_SAVE_UID);
-                game.window_manager.window_disable(MENU_OPTIONS_UID);
+                game.UI_manager.UI_form_disable(UID_MENU_GAME_LOAD);
+                game.UI_manager.UI_form_disable(UID_MENU_GAME_NEW);
+                game.UI_manager.UI_form_disable(UID_MENU_GAME_SAVE);
+                game.UI_manager.UI_form_disable(UID_MENU_OPTIONS);
                 if (!game.core.game_menu_active)
                 {
-                    game.window_manager.window_enable(MENU_MAIN_UID);
+                    game.UI_manager.UI_form_enable(UID_MENU_MAIN);
                     game.core.game_menu_active                   = true;
                 }
                 else
                 {
-                    game.window_manager.window_disable(MENU_MAIN_UID);
+                    game.UI_manager.UI_form_disable(UID_MENU_MAIN);
                     game.core.game_menu_active                   = false;
                 }
                 game.core.io.key_escape                = false;
@@ -625,12 +624,12 @@ void process_action_bar(UI_form_struct *UI_form_pointer)
             case ((3*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Toggle quest log
                 if (!game.core.quest_log_active)
                 {
-                    game.window_manager.window_enable(QUEST_LOG_UID);
+                    game.UI_manager.UI_form_enable(UID_QUEST_LOG);
                     game.core.quest_log_active                   = true;
                 }
                 else
                 {
-                    game.window_manager.window_disable(QUEST_LOG_UID);
+                    game.UI_manager.UI_form_disable(UID_QUEST_LOG);
                     game.core.quest_log_active                   = false;
                 }
                 game.core.io.key_escape                = false;
@@ -639,12 +638,12 @@ void process_action_bar(UI_form_struct *UI_form_pointer)
             case ((4*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Toggle skill book
                 if (!game.core.skillbook_active)
                 {
-                    game.window_manager.window_enable(SKILLBOOK_UID);
+                    game.UI_manager.UI_form_enable(UID_SKILLBOOK);
                     game.core.skillbook_active                   = true;
                 }
                 else
                 {
-                    game.window_manager.window_disable(SKILLBOOK_UID);
+                    game.UI_manager.UI_form_disable(UID_SKILLBOOK);
                     game.core.skillbook_active                   = false;
                 }
                 game.core.io.key_escape                = false;
@@ -653,12 +652,12 @@ void process_action_bar(UI_form_struct *UI_form_pointer)
             case ((5*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Toggle Character menu
                 if (!game.core.character_active)
                 {
-                    game.window_manager.window_enable(CHARACTER_UID);
+                    game.UI_manager.UI_form_enable(UID_CHARACTER);
                     game.core.character_active                   = true;
                 }
                 else
                 {
-                    game.window_manager.window_disable(CHARACTER_UID);
+                    game.UI_manager.UI_form_disable(UID_CHARACTER);
                     game.core.character_active                   = false;
                 }
                 game.core.io.key_escape                = false;
@@ -667,12 +666,12 @@ void process_action_bar(UI_form_struct *UI_form_pointer)
             case ((6*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Toggle equipment menu
                 if (!game.core.equipment_active)
                 {
-                    game.window_manager.window_enable(EQUIPMENT_UID);
+                    game.UI_manager.UI_form_enable(UID_EQUIPMENT);
                     game.core.equipment_active                   = true;
                 }
                 else
                 {
-                    game.window_manager.window_disable(EQUIPMENT_UID);
+                    game.UI_manager.UI_form_disable(UID_EQUIPMENT);
                     game.core.equipment_active                   = false;
                 }
                 game.core.io.key_escape                = false;
@@ -681,12 +680,12 @@ void process_action_bar(UI_form_struct *UI_form_pointer)
             case ((7*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Toggle Inventory menu
                 if (!game.core.inventory_active)
                 {
-                    game.window_manager.window_enable(INVENTORY_UID);
+                    game.UI_manager.UI_form_enable(UID_INVENTORY);
                     game.core.inventory_active                   = true;
                 }
                 else
                 {
-                    game.window_manager.window_disable(INVENTORY_UID);
+                    game.UI_manager.UI_form_disable(UID_INVENTORY);
                     game.core.inventory_active                   = false;
                 }
                 game.core.io.key_escape                = false;
@@ -696,78 +695,78 @@ void process_action_bar(UI_form_struct *UI_form_pointer)
                 UI_form_pointer->event.id = EVENT_NONE;
             break;
             case ((8*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
-                use_item(window_number,8);
+                //use_item(window_number,8);
                 UI_form_pointer->event.id = EVENT_NONE;
             break;
             case ((9*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
                 UI_form_pointer->event.id = EVENT_NONE;
             break;
             case ((9*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
-                use_item(window_number,9);
+                //use_item(window_number,9);
                 UI_form_pointer->event.id = EVENT_NONE;
             break;
             case ((10*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
                 UI_form_pointer->event.id = EVENT_NONE;
             break;
             case ((10*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
-                use_item(window_number,10);
+                //use_item(window_number,10);
                 UI_form_pointer->event.id = EVENT_NONE;
             break;
             case ((11*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
                 UI_form_pointer->event.id = EVENT_NONE;
             break;
             case ((11*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
-                use_item(window_number,11);
+                //use_item(window_number,11);
                 UI_form_pointer->event.id = EVENT_NONE;
             break;
             case ((12*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
                 UI_form_pointer->event.id = EVENT_NONE;
             break;
             case ((12*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
-                use_item(window_number,12);
+                //use_item(window_number,12);
                 UI_form_pointer->event.id = EVENT_NONE;
             break;
             case ((13*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
                 UI_form_pointer->event.id = EVENT_NONE;
             break;
             case ((13*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
-                use_item(window_number,13);
+                //use_item(window_number,13);
                 UI_form_pointer->event.id = EVENT_NONE;
             break;
             case ((14*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
                 UI_form_pointer->event.id = EVENT_NONE;
             break;
             case ((14*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
-                use_item(window_number,14);
+                //use_item(window_number,14);
                 UI_form_pointer->event.id = EVENT_NONE;
             break;
             case ((15*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
                 UI_form_pointer->event.id = EVENT_NONE;
             break;
             case ((15*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
-                use_item(window_number,15);
+                //use_item(window_number,15);
                 UI_form_pointer->event.id = EVENT_NONE;
             break;
             case ((16*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
                 UI_form_pointer->event.id = EVENT_NONE;
             break;
             case ((16*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
-                use_item(window_number,16);
+                //use_item(window_number,16);
                 UI_form_pointer->event.id = EVENT_NONE;
             break;
             case ((17*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
                 UI_form_pointer->event.id = EVENT_NONE;
             break;
             case ((17*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
-                use_item(window_number,17);
+                //use_item(window_number,17);
                 UI_form_pointer->event.id = EVENT_NONE;
             break;
-            case (EVENT_WINDOW_STACK_SORT): //Window stack sort
-                game.window_manager.window_stack_sort();
-                game.window_manager.event.id = EVENT_NONE;
+            case (EVENT_UI_STACK_SORT): //Window stack sort
+                game.UI_manager.UI_form_stack_sort();
+                game.UI_manager.event.id = EVENT_NONE;
             break;
             case (EVENT_ELEMENT_DRAG): //Element drag event posted
-                //game.window_manager.source.window = ACTIONBAR_UID;
+                //game.UI_manager.source.window = ACTIONBAR_UID;
             break;
             default:
                 game.core.log.file_write("Unable to process event - ",UI_form_pointer->event.id, " - UID - ",UI_form_pointer->UID);
@@ -776,5 +775,4 @@ void process_action_bar(UI_form_struct *UI_form_pointer)
         }
     }
     UI_form_pointer->event.id = EVENT_NONE;
-    */
 };

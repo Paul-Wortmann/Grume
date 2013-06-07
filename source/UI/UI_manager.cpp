@@ -289,7 +289,7 @@ void UI_manager_class::UI_form_transition(int UI_form_UID_src, int UI_form_UID_d
     UI_manager_class::UI_form_set_event(UI_form_UID_src,EVENT_NONE);
     UI_manager_class::UI_form_enable(UI_form_UID_dst);
     UI_manager_class::UI_form_set_active(UI_form_UID_dst);
-    UI_manager_class::event.id = EVENT_WINDOW_STACK_SORT;
+    UI_manager_class::event.id = EVENT_UI_STACK_SORT;
     game.core.io.mouse_button_left = false;
 };
 
@@ -685,13 +685,13 @@ void UI_manager_class::process(void)
                             UI_form_pointer->drag_offset_y                = UI_form_pointer->position.y - game.core.io.mouse_y;
                             UI_form_pointer->drag_active                  = true;
                             game.UI_manager.drag_in_progress       = true;
-                            return_value.id                            = EVENT_WINDOW_STACK_SORT;
+                            return_value.id                            = EVENT_UI_STACK_SORT;
                         }
                     }
                     // user clicked on window, that is not title or an element.
                     if ((game.core.io.mouse_button_left) && (return_value.id == EVENT_NONE) && (!UI_form_pointer->active))
                     {
-                        return_value.id = EVENT_WINDOW_STACK_SORT;
+                        return_value.id = EVENT_UI_STACK_SORT;
                     }
                 }
                 // ------------------------- X -------------------------
@@ -699,7 +699,7 @@ void UI_manager_class::process(void)
             }
         }
         //if (return_value > 0) game.core.log.file_write("returning event -> ",return_value, " - from UID - ", UI_form_pointer->UID);
-        //if (return_value == EVENT_WINDOW_STACK_SORT) game.core.log.file_write("returning event -> ",return_value, " - from UID - ", UI_form_pointer->UID);
+        //if (return_value == EVENT_UI_STACK_SORT) game.core.log.file_write("returning event -> ",return_value, " - from UID - ", UI_form_pointer->UID);
         UI_form_pointer->event = return_value;
         // ----------------------------- process UI form events ---------------------------------
         if (UI_form_pointer->enabled)
@@ -755,8 +755,8 @@ void UI_manager_class::process(void)
     }
     switch (game.UI_manager.event.id)
     {
-        case EVENT_WINDOW_STACK_SORT: //window has requested a window stack sort;
-            //game.UI_manager.window_stack_sort();
+        case EVENT_UI_STACK_SORT: //window has requested a window stack sort;
+            game.UI_manager.UI_form_stack_sort();
             game.UI_manager.event.id = EVENT_NONE;
         break;
         default:

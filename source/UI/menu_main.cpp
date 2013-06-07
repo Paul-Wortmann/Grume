@@ -390,7 +390,7 @@ void process_menu_main(UI_form_struct *UI_form_pointer)
                 game.core.game_menu_active     = false;
                 game.core.io.mouse_button_left = false;
             break;
-            case (EVENT_WINDOW_STACK_SORT): //Window stack sort
+            case (EVENT_UI_STACK_SORT): //Window stack sort
                 game.UI_manager.UI_form_stack_sort();
                 game.UI_manager.event.id = EVENT_NONE;
             break;

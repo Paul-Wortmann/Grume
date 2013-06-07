@@ -308,17 +308,16 @@ void setup_menu_game_save(int UID)
 
 void process_menu_game_save(UI_form_struct *UI_form_pointer)
 {
-    /*
     if(UI_form_pointer->event.id > EVENT_NONE)
     {
         switch (UI_form_pointer->event.id)
         {
             case ((0*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Close menu button
-                game.window_manager.window_transition(MENU_GAME_SAVE_UID,MENU_MAIN_UID);
+                game.UI_manager.UI_form_transition(UID_MENU_GAME_SAVE,UID_MENU_MAIN);
             break;
             case ((1*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Save slot 1 - menu button
-                game.window_manager.window_transition(MENU_GAME_SAVE_UID,MENU_MAIN_UID);
-                game.window_manager.window_disable(MENU_MAIN_UID);
+                game.UI_manager.UI_form_transition(UID_MENU_GAME_SAVE,UID_MENU_MAIN);
+                game.UI_manager.UI_form_disable(UID_MENU_MAIN);
                 game.core.game_menu_active = false;
                 game.save_01.Assign_File("save/slot_01.sav");
                 if (game.save_01.Save())
@@ -328,8 +327,8 @@ void process_menu_game_save(UI_form_struct *UI_form_pointer)
                 else game.core.log.file_write("ERROR -> Error saving game to slot 1");
             break;
             case ((2*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Save slot 2 - menu button
-                game.window_manager.window_transition(MENU_GAME_SAVE_UID,MENU_MAIN_UID);
-                game.window_manager.window_disable(MENU_MAIN_UID);
+                game.UI_manager.UI_form_transition(UID_MENU_GAME_SAVE,UID_MENU_MAIN);
+                game.UI_manager.UI_form_disable(UID_MENU_MAIN);
                 game.core.game_menu_active = false;
                 game.save_02.Assign_File("save/slot_02.sav");
                 if (game.save_02.Save())
@@ -339,8 +338,8 @@ void process_menu_game_save(UI_form_struct *UI_form_pointer)
                 else game.core.log.file_write("ERROR -> Error saving game to slot 2");
             break;
             case ((3*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Save slot 3 - menu button
-                game.window_manager.window_transition(MENU_GAME_SAVE_UID,MENU_MAIN_UID);
-                game.window_manager.window_disable(MENU_MAIN_UID);
+                game.UI_manager.UI_form_transition(UID_MENU_GAME_SAVE,UID_MENU_MAIN);
+                game.UI_manager.UI_form_disable(UID_MENU_MAIN);
                 game.core.game_menu_active = false;
                 game.save_03.Assign_File("save/slot_03.sav");
                 if (game.save_03.Save())
@@ -350,8 +349,8 @@ void process_menu_game_save(UI_form_struct *UI_form_pointer)
                 else game.core.log.file_write("ERROR -> Error saving game to slot 3");
             break;
             case ((4*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Save slot 4 - menu button
-                game.window_manager.window_transition(MENU_GAME_SAVE_UID,MENU_MAIN_UID);
-                game.window_manager.window_disable(MENU_MAIN_UID);
+                game.UI_manager.UI_form_transition(UID_MENU_GAME_SAVE,UID_MENU_MAIN);
+                game.UI_manager.UI_form_disable(UID_MENU_MAIN);
                 game.core.game_menu_active = false;
                 game.save_04.Assign_File("save/slot_04.sav");
                 if (game.save_04.Save())
@@ -361,8 +360,8 @@ void process_menu_game_save(UI_form_struct *UI_form_pointer)
                 else game.core.log.file_write("ERROR -> Error saving game to slot 4");
             break;
             case ((5*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Save slot 5 - menu button
-                game.window_manager.window_transition(MENU_GAME_SAVE_UID,MENU_MAIN_UID);
-                game.window_manager.window_disable(MENU_MAIN_UID);
+                game.UI_manager.UI_form_transition(UID_MENU_GAME_SAVE,UID_MENU_MAIN);
+                game.UI_manager.UI_form_disable(UID_MENU_MAIN);
                 game.core.game_menu_active = false;
                 game.save_05.Assign_File("save/slot_05.sav");
                 if (game.save_05.Save())
@@ -372,14 +371,14 @@ void process_menu_game_save(UI_form_struct *UI_form_pointer)
                 else game.core.log.file_write("ERROR -> Error saving game to slot 5");
             break;
             case ((6*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Main menu button
-                game.window_manager.window_transition(MENU_GAME_SAVE_UID,MENU_MAIN_UID);
+                game.UI_manager.UI_form_transition(UID_MENU_GAME_SAVE,UID_MENU_MAIN);
             break;
-            case (EVENT_WINDOW_STACK_SORT): //Window stack sort
-                game.window_manager.window_stack_sort();
-                game.window_manager.event.id = EVENT_NONE;
+            case (EVENT_UI_STACK_SORT): //Window stack sort
+                game.UI_manager.UI_form_stack_sort();
+                game.UI_manager.event.id = EVENT_NONE;
             break;
             case (EVENT_ELEMENT_DRAG): //Element drag event posted
-                //game.window_manager.source.window = MENU_GAME_SAVE_UID;
+                //game.UI_manager.source.window = UID_MENU_GAME_SAVE;
             break;
             default:
                 game.core.log.file_write("Unable to process event - ",UI_form_pointer->event.id, " - UID - ",UI_form_pointer->UID);
@@ -388,7 +387,6 @@ void process_menu_game_save(UI_form_struct *UI_form_pointer)
         }
     }
     UI_form_pointer->event.id = EVENT_NONE;
-    */
 };
 
 
