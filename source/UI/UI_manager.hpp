@@ -68,7 +68,12 @@ class UI_manager_class
         int                   number_of_UI_forms;
         UI_form_struct       *root;
         UI_form_struct       *last;
-        UI_form_struct       *add_window(int UI_form_UID);
+        UI_form_struct       *UI_form_add(int UI_form_UID);
+        UI_form_struct       *UI_form_get(int UI_form_UID);
+        UI_form_struct       *UI_form_enable(int UI_form_UID);
+        UI_form_struct       *UI_form_disable(int UI_form_UID);
+        void                  UI_form_stack_sort(void);
+        void                  UI_form_transition(int UI_form_UID_src, int UI_form_UID_dst);
         void                  setup(void);
         void                  render(void);
         void                  process(void);

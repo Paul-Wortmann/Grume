@@ -23,6 +23,7 @@
  */
 
 #include "menu_main.hpp"
+#include "UI_manager.hpp"
 #include "../game.hpp"
 
 extern game_class         game;
@@ -35,7 +36,7 @@ void setup_menu_main(int UID)
 
     UI_form_struct   *UI_form_pointer;
     UI_form_pointer = new UI_form_struct;
-    UI_form_pointer = game.UI_manager.add_window(UID_MENU_MAIN);
+    UI_form_pointer = game.UI_manager.UI_form_add(UID_MENU_MAIN);
 
     UI_form_pointer->UID                         = UID;
     UI_form_pointer->active                      = false;
@@ -316,7 +317,6 @@ void process_menu_main(UI_form_struct *UI_form_pointer)
 {
     int load_menu_number = 0;
     int element_number   = 0;
-    /*
     if(UI_form_pointer->event.id > EVENT_NONE)
     {
         if (game.state == STATE_GAME) UI_form_pointer->element[3].state = NORMAL; // Save game
@@ -339,58 +339,64 @@ void process_menu_main(UI_form_struct *UI_form_pointer)
                 game.core.io.mouse_button_left = false;
             break;
             case ((1*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // New game menu
-                game.window_manager.window_transition(MENU_MAIN_UID,MENU_GAME_NEW_UID);
+                game.UI_manager.UI_form_transition(UID_MENU_MAIN,UID_MENU_GAME_NEW);
             break;
             case ((2*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Load game menu
-                load_menu_number = game.window_manager.window_get_number(MENU_GAME_LOAD_UID);
-                element_number   = 1;
-                game.save_01.Assign_File("save/slot_01.sav");
-                if (game.save_01.File_Exists()) game.window_manager.window[load_menu_number].element[element_number].state = NORMAL;
-                else game.window_manager.window[load_menu_number].element[element_number].state = DISABLED;
-                element_number   = 2;
-                game.save_02.Assign_File("save/slot_02.sav");
-                if (game.save_02.File_Exists()) game.window_manager.window[load_menu_number].element[element_number].state = NORMAL;
-                else game.window_manager.window[load_menu_number].element[element_number].state = DISABLED;
-                element_number   = 3;
-                game.save_03.Assign_File("save/slot_03.sav");
-                if (game.save_03.File_Exists()) game.window_manager.window[load_menu_number].element[element_number].state = NORMAL;
-                else game.window_manager.window[load_menu_number].element[element_number].state = DISABLED;
-                element_number   = 4;
-                game.save_04.Assign_File("save/slot_04.sav");
-                if (game.save_04.File_Exists()) game.window_manager.window[load_menu_number].element[element_number].state = NORMAL;
-                else game.window_manager.window[load_menu_number].element[element_number].state = DISABLED;
-                element_number   = 5;
-                game.save_05.Assign_File("save/slot_05.sav");
-                if (game.save_05.File_Exists()) game.window_manager.window[load_menu_number].element[element_number].state = NORMAL;
-                else game.window_manager.window[load_menu_number].element[element_number].state = DISABLED;
-                game.window_manager.window_transition(MENU_MAIN_UID,MENU_GAME_LOAD_UID);
+                UI_form_struct *load_menu_pointer;
+                load_menu_pointer = new UI_form_struct;
+                load_menu_pointer = game.UI_manager.UI_form_get(UID_MENU_GAME_LOAD);
+                if (load_menu_pointer != NULL)
+                {
+                    element_number   = 1;
+                    game.save_01.Assign_File("save/slot_01.sav");
+                    if (game.save_01.File_Exists()) load_menu_pointer->element[element_number].state = NORMAL;
+                    else load_menu_pointer->element[element_number].state = DISABLED;
+                    element_number   = 2;
+                    game.save_02.Assign_File("save/slot_02.sav");
+                    if (game.save_02.File_Exists()) load_menu_pointer->element[element_number].state = NORMAL;
+                    else load_menu_pointer->element[element_number].state = DISABLED;
+                    element_number   = 3;
+                    game.save_03.Assign_File("save/slot_03.sav");
+                    if (game.save_03.File_Exists()) load_menu_pointer->element[element_number].state = NORMAL;
+                    else load_menu_pointer->element[element_number].state = DISABLED;
+                    element_number   = 4;
+                    game.save_04.Assign_File("save/slot_04.sav");
+                    if (game.save_04.File_Exists()) load_menu_pointer->element[element_number].state = NORMAL;
+                    else load_menu_pointer->element[element_number].state = DISABLED;
+                    element_number   = 5;
+                    game.save_05.Assign_File("save/slot_05.sav");
+                    if (game.save_05.File_Exists()) load_menu_pointer->element[element_number].state = NORMAL;
+                    else load_menu_pointer->element[element_number].state = DISABLED;
+                    delete load_menu_pointer;
+                    game.UI_manager.UI_form_transition(UID_MENU_MAIN,UID_MENU_GAME_LOAD);
+                }
             break;
             case ((3*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Save game menu
-                game.window_manager.window_transition(MENU_MAIN_UID,MENU_GAME_SAVE_UID);
+                game.UI_manager.UI_form_transition(UID_MENU_MAIN,UID_MENU_GAME_SAVE);
             break;
             case ((4*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Resume Game
                 if (game.state == STATE_GAME)
                 {
-                    game.window_manager.window_disable(MENU_MAIN_UID);
+                    game.UI_manager.UI_form_disable(UID_MENU_MAIN);
                     game.core.game_menu_active     = false;
                     game.core.io.mouse_button_left = false;
                 }
             break;
             case ((5*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Options menu
-                game.window_manager.window_transition(MENU_MAIN_UID,MENU_OPTIONS_UID);
+                game.UI_manager.UI_form_transition(UID_MENU_MAIN,UID_MENU_OPTIONS);
             break;
             case ((6*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Exit button
                 game.state = STATE_QUIT;
-                game.window_manager.window_disable(MENU_MAIN_UID);
+                game.UI_manager.UI_form_disable(UID_MENU_MAIN);
                 game.core.game_menu_active     = false;
                 game.core.io.mouse_button_left = false;
             break;
             case (EVENT_WINDOW_STACK_SORT): //Window stack sort
-                game.window_manager.window_stack_sort();
-                game.window_manager.event.id = EVENT_NONE;
+                game.UI_manager.UI_form_stack_sort();
+                game.UI_manager.event.id = EVENT_NONE;
             break;
             case (EVENT_ELEMENT_DRAG): //Element drag event posted
-                //game.window_manager.source.window = MENU_MAIN_UID;
+                //game.UI_manager.source.window = UID_MENU_MAIN;
             break;
             default:
                 game.core.log.file_write("Unable to process event - ",UI_form_pointer->event.id, " - UID - ",UI_form_pointer->UID);
@@ -399,7 +405,6 @@ void process_menu_main(UI_form_struct *UI_form_pointer)
         }
     }
     UI_form_pointer->event.id = EVENT_NONE;
-    */
 };
 
 
