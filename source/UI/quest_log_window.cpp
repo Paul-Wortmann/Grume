@@ -35,18 +35,18 @@ void setup_quest_log_window(int UID)
 
     UI_form_struct   *UI_form_pointer;
     UI_form_pointer = new UI_form_struct;
-    UI_form_pointer = game.UI_manager.UI_form_add(UID_MENU_MAIN);
+    UI_form_pointer = game.UI_manager.UI_form_add(UID_QUEST_LOG);
 
-    UI_form_pointer->UID                     = UID;
-    UI_form_pointer->active                  = false;
-    UI_form_pointer->mouse_over_menu         = false;
-    UI_form_pointer->mouse_over_title        = false;
-    UI_form_pointer->position.x              = 0.0f;
-    UI_form_pointer->position.y              = 0.0f;
-    UI_form_pointer->position.z              = 0.0f;
-    UI_form_pointer->size.x                  = 0.5f;
-    UI_form_pointer->size.y                  = UI_form_pointer->size.x * 2.5f;
-    UI_form_pointer->texture.angle           = 0.0f;
+    UI_form_pointer->UID                         = UID;
+    UI_form_pointer->active                      = false;
+    UI_form_pointer->mouse_over_menu             = false;
+    UI_form_pointer->mouse_over_title            = false;
+    UI_form_pointer->position.x                  = 0.0f;
+    UI_form_pointer->position.y                  = 0.0f;
+    UI_form_pointer->position.z                  = 0.0f;
+    UI_form_pointer->size.x                      = 0.5f;
+    UI_form_pointer->size.y                      = UI_form_pointer->size.x * 2.5f;
+    UI_form_pointer->texture.angle               = 0.0f;
     UI_form_pointer->texture.base                = game.texture_manager.add_texture("data/textures/UI/menu/background_02.png");
     UI_form_pointer->texture.normal              = game.texture_manager.add_texture("data/textures/UI/menu/button_normal.png");
     UI_form_pointer->texture.highlighted         = game.texture_manager.add_texture("data/textures/UI/menu/button_highlighted.png");

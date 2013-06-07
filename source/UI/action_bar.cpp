@@ -36,7 +36,7 @@ void setup_action_bar(int UID)
 
     UI_form_struct   *UI_form_pointer;
     UI_form_pointer = new UI_form_struct;
-    UI_form_pointer = game.UI_manager.UI_form_add(UID_MENU_MAIN);
+    UI_form_pointer = game.UI_manager.UI_form_add(UID_ACTIONBAR);
 
     int menu_button_mouse_delay = 20;
     UI_form_pointer->UID                     = UID;

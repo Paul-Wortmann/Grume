@@ -37,7 +37,7 @@ void setup_menu_options(int UID)
 
     UI_form_struct   *UI_form_pointer;
     UI_form_pointer = new UI_form_struct;
-    UI_form_pointer = game.UI_manager.UI_form_add(UID_MENU_MAIN);
+    UI_form_pointer = game.UI_manager.UI_form_add(UID_MENU_OPTIONS);
 
     UI_form_pointer->UID                     = UID;
     UI_form_pointer->active                  = false;
