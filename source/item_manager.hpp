@@ -29,6 +29,25 @@
 #include "core/texture_manager.hpp"
 #include "core/sound_manager.hpp"
 
+#define ITEM_NONE            0
+#define ITEM_RING            1
+#define ITEM_NECK            2
+#define ITEM_HEAD            3
+#define ITEM_HAND            4
+#define ITEM_FEET            5
+#define ITEM_BODY            6
+#define ITEM_BELT            7
+#define ITEM_SHIELD          8
+#define ITEM_WEAPON          9
+
+#define ITEM_POTION          10
+#define ITEM_POTION_SMALL    11
+#define ITEM_POTION_MEDIUM   12
+#define ITEM_POTION_LARGE    13
+#define ITEM_SPELL           14
+#define ITEM_SPELL_BOOK      15
+
+/*
 #define NULL_ITEM     -1
 #define HEALTH_POTION  0
 #define MANA_POTION    1
@@ -50,10 +69,7 @@
 #define BOW            17
 #define SLING          18
 #define WEAPON         19
-
-#define SMALL_POTION   32
-#define MEDIUM_POTION  33
-#define LARGE_POTION   34
+*/
 
 #define EFFECT_MOD_HEALTH 100
 #define EFFECT_MOD_MANA   101

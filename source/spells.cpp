@@ -32,7 +32,7 @@ extern game_class game;
 spell_class::spell_class(void)
 {
     spell_class::name                   = "Spell name not set";
-    spell_class::item_type              = SPELL;
+    spell_class::item_type              = ITEM_SPELL_BOOK;
     spell_class::level                  = 0;
     spell_class::image_level_1          = 0;
     spell_class::image_level_2          = 0;

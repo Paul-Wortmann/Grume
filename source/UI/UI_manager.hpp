@@ -25,6 +25,18 @@
 #ifndef UI_MANAGER_H
 #define UI_MANAGER_H
 
+#include "action_bar.hpp"
+#include "character_window.hpp"
+#include "equipment_window.hpp"
+#include "inventory_window.hpp"
+#include "menu_game_load.hpp"
+#include "menu_game_new.hpp"
+#include "menu_game_save.hpp"
+#include "menu_main.hpp"
+#include "menu_options.hpp"
+#include "player_profile.hpp"
+#include "quest_log_window.hpp"
+#include "skillbook_window.hpp"
 #include "UI_cursor.hpp"
 #include "UI_types.hpp"
 #include "../player.hpp"

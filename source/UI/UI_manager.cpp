@@ -22,7 +22,6 @@
  * @date 2011-11-11
  */
 
-#include "menu_main.hpp"
 #include "UI_manager.hpp"
 #include "../game.hpp"
 

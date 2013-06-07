@@ -27,7 +27,7 @@
 
 extern game_class         game;
 
-//----------------------------------------------------------Main menu Class ------------------------------------------------------------------------
+//----------------------------------------------------------
 
 void setup_menu_main(int UID)
 {
@@ -143,7 +143,7 @@ void setup_menu_main(int UID)
         UI_form_pointer->element[element_count].state                          = NORMAL;
         UI_form_pointer->element[element_count].selected                       = false;
         UI_form_pointer->element[element_count].type                           = BUTTON;
-        UI_form_pointer->element[element_count].sub_type                       = 0;//ITEM_NONE;
+        UI_form_pointer->element[element_count].sub_type                       = ITEM_NONE;
         UI_form_pointer->element[element_count].quantity                       = 1;
         UI_form_pointer->element[element_count].value                          = 0.0f;
         UI_form_pointer->element[element_count].value_max                      = 0.0f;

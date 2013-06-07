@@ -1,0 +1,780 @@
+/**
+ * Copyright (C) 2011-2013 Paul Wortmann, PhysHex Games, www.physhexgames.co.nr
+ * This file is part of "Frost And Flame"
+ *
+ * "Frost And Flame" is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * "Frost And Flame" is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with "Frost And Flame" If not, see <http://www.gnu.org/licenses/>.
+ *
+ * @author  Paul Wortmann
+ * @email   physhex@gmail.com
+ * @website www.physhexgames.co.nr
+ * @license GPL V3
+ * @date 2011-11-11
+ */
+
+#include "action_bar.hpp"
+#include "../game.hpp"
+#include "../core/misc.hpp"
+
+extern game_class         game;
+
+//----------------------------------------------------------
+
+void setup_action_bar(int UID)
+{
+    int element_number = 0;
+
+    UI_form_struct   *UI_form_pointer;
+    UI_form_pointer = new UI_form_struct;
+    UI_form_pointer = game.UI_manager.add_window(UID_MENU_MAIN);
+
+    int menu_button_mouse_delay = 20;
+    UI_form_pointer->UID                     = UID;
+    UI_form_pointer->active                  = false;
+    UI_form_pointer->mouse_over_menu         = false;
+    UI_form_pointer->mouse_over_title        = false;
+    UI_form_pointer->drag_enabled            = false;
+    UI_form_pointer->set_behind              = true;
+    UI_form_pointer->size.x                  =  1.8f;
+    UI_form_pointer->size.y                  =  0.2f;
+    UI_form_pointer->position.x              =  0.0f;
+    UI_form_pointer->position.y              = -1.0f + (UI_form_pointer->size.y/2.0f)-0.012f;
+    UI_form_pointer->position.z              =  0.0f;
+    UI_form_pointer->texture.angle           =  0.0f;
+    UI_form_pointer->texture.base                = game.texture_manager.add_texture("data/textures/UI/menu/action_bar.png");
+    UI_form_pointer->texture.normal              = game.texture_manager.add_texture("data/textures/UI/menu/button_normal.png");
+    UI_form_pointer->texture.highlighted         = game.texture_manager.add_texture("data/textures/UI/menu/button_highlighted.png");
+    UI_form_pointer->texture.disabled            = game.texture_manager.add_texture("data/textures/UI/menu/button_disabled.png");
+    UI_form_pointer->sound.on_click.enabled      = false;
+    UI_form_pointer->sound.on_click.sound        = game.sound_manager.add_sound("data/sound/menu/menu_select_00.wav");
+    UI_form_pointer->sound.on_mouse_over.enabled = false;
+    UI_form_pointer->sound.on_mouse_over.sound   = game.sound_manager.add_sound("data/sound/menu/menu_move_00.wav");
+    UI_form_pointer->font                        = game.font_manager.add_font("data/fonts/font_001.ttf");
+    UI_form_pointer->mouse_delay.maximum     = 30;
+    UI_form_pointer->event.id                = 0;
+    UI_form_pointer->color.normal.r          = 128;
+    UI_form_pointer->color.normal.b          = 128;
+    UI_form_pointer->color.normal.g          = 128;
+    UI_form_pointer->color.normal.a          = 255;
+    UI_form_pointer->color.highlighted.r     = 192;
+    UI_form_pointer->color.highlighted.b     = 192;
+    UI_form_pointer->color.highlighted.g     = 192;
+    UI_form_pointer->color.highlighted.a     = 255;
+    UI_form_pointer->color.disabled.r        = 064;
+    UI_form_pointer->color.disabled.b        = 064;
+    UI_form_pointer->color.disabled.g        = 064;
+    UI_form_pointer->color.disabled.a        = 128;
+    UI_form_pointer->zoom.enabled            = false;
+    UI_form_pointer->zoom.maximum            = 0.02f;
+    UI_form_pointer->zoom.speed              = 0.004f;
+    UI_form_pointer->texture.angle           = 0.0f;
+    UI_form_pointer->title.text              = "";
+    UI_form_pointer->title.size.x            = UI_form_pointer->title.text.length()/1.2f;
+    UI_form_pointer->title.size.y            = UI_form_pointer->title.size.x*4;
+    UI_form_pointer->title.position.x        = UI_form_pointer->position.x - (UI_form_pointer->title.size.x/100.0f);
+    UI_form_pointer->title.position.y        = UI_form_pointer->position.y + (UI_form_pointer->size.y/2.0f) - (UI_form_pointer->title.size.y / 440.0f);
+    UI_form_pointer->title_bar.size.x        = UI_form_pointer->size.x; // x/2.0f for middle section
+    UI_form_pointer->title_bar.size.y        = UI_form_pointer->size.y / 10.0f;
+    UI_form_pointer->title_bar.position.x    = UI_form_pointer->position.x;
+    UI_form_pointer->title_bar.position.y    = UI_form_pointer->position.y+(UI_form_pointer->size.y/2.0f)-(UI_form_pointer->title_bar.size.y/2.0f);
+
+    // ---------------------------- Setup window elements ----------------------------------------------------
+    UI_form_pointer->number_of_elements = 18;
+    UI_form_pointer->element = new UI_element_struct[UI_form_pointer->number_of_elements];
+    for (int element_count = 0; element_count < UI_form_pointer->number_of_elements; element_count++)
+    {
+        UI_form_pointer->element[element_count].window_UID                     = 0;
+        UI_form_pointer->element[element_count].element_UID                    = 0;
+        UI_form_pointer->element[element_count].mouse_over                     = false;
+        UI_form_pointer->element[element_count].mouse_delay.ready              = false;
+        UI_form_pointer->element[element_count].mouse_delay.value              = 0;
+        UI_form_pointer->element[element_count].mouse_delay.maximum            = 0;
+        UI_form_pointer->element[element_count].mouse_delay.enabled            = true;
+        UI_form_pointer->element[element_count].size.x                         = 0.0f;
+        UI_form_pointer->element[element_count].size.y                         = 0.0f;
+        UI_form_pointer->element[element_count].size.z                         = 0.0f;
+        UI_form_pointer->element[element_count].position.x                     = 0.0f;
+        UI_form_pointer->element[element_count].position.y                     = 0.0f;
+        UI_form_pointer->element[element_count].position.z                     = 0.0f;
+        UI_form_pointer->element[element_count].title.enabled                  = false;
+        UI_form_pointer->element[element_count].title.text                     = "";
+        UI_form_pointer->element[element_count].title.position.x               = 0.0f;
+        UI_form_pointer->element[element_count].title.position.y               = 0.0f;
+        UI_form_pointer->element[element_count].title.position.z               = 0.0f;
+        UI_form_pointer->element[element_count].title.size.x                   = 0.0f;
+        UI_form_pointer->element[element_count].title.size.y                   = 0.0f;
+        UI_form_pointer->element[element_count].title.size.z                   = 0.0f;
+        UI_form_pointer->element[element_count].tooltip.enabled                = false;
+        UI_form_pointer->element[element_count].tooltip.text                   = "";
+        UI_form_pointer->element[element_count].tooltip.position.x             = 0.0f;
+        UI_form_pointer->element[element_count].tooltip.position.y             = 0.0f;
+        UI_form_pointer->element[element_count].tooltip.position.z             = 0.0f;
+        UI_form_pointer->element[element_count].tooltip.size.x                 = 0.0f;
+        UI_form_pointer->element[element_count].tooltip.size.y                 = 0.0f;
+        UI_form_pointer->element[element_count].tooltip.size.z                 = 0.0f;
+        UI_form_pointer->element[element_count].tooltip.image_enabled          = false;
+        UI_form_pointer->element[element_count].tooltip.image_size.x           = 0.0f;
+        UI_form_pointer->element[element_count].tooltip.image_size.y           = 0.0f;
+        UI_form_pointer->element[element_count].tooltip.image_size.z           = 0.0f;
+        UI_form_pointer->element[element_count].color.normal.r                 = 0;
+        UI_form_pointer->element[element_count].color.normal.g                 = 0;
+        UI_form_pointer->element[element_count].color.normal.b                 = 0;
+        UI_form_pointer->element[element_count].color.normal.a                 = 0;
+        UI_form_pointer->element[element_count].color.highlighted.r            = 0;
+        UI_form_pointer->element[element_count].color.highlighted.g            = 0;
+        UI_form_pointer->element[element_count].color.highlighted.b            = 0;
+        UI_form_pointer->element[element_count].color.highlighted.a            = 0;
+        UI_form_pointer->element[element_count].color.disabled.r               = 0;
+        UI_form_pointer->element[element_count].color.disabled.g               = 0;
+        UI_form_pointer->element[element_count].color.disabled.b               = 0;
+        UI_form_pointer->element[element_count].color.disabled.a               = 0;
+        UI_form_pointer->element[element_count].event.id                       = 0;
+        UI_form_pointer->element[element_count].state                          = NORMAL;
+        UI_form_pointer->element[element_count].selected                       = false;
+        UI_form_pointer->element[element_count].type                           = BUTTON;
+        UI_form_pointer->element[element_count].sub_type                       = 0;//ITEM_NONE;// TEST
+        UI_form_pointer->element[element_count].quantity                       = 1;
+        UI_form_pointer->element[element_count].value                          = 0.0f;
+        UI_form_pointer->element[element_count].value_max                      = 0.0f;
+        UI_form_pointer->element[element_count].active                         = false;
+        UI_form_pointer->element[element_count].clicked                        = false;
+        UI_form_pointer->element[element_count].click_enabled                  = true;
+        UI_form_pointer->element[element_count].dragable                       = false;
+        UI_form_pointer->element[element_count].drag_active                    = false;
+        UI_form_pointer->element[element_count].texture.angle                  = 0.0f;
+        UI_form_pointer->element[element_count].zoom.enabled                   = true;
+        UI_form_pointer->element[element_count].zoom.maximum                   = 0.0f;
+        UI_form_pointer->element[element_count].zoom.value                     = 0.0f;
+        UI_form_pointer->element[element_count].zoom.speed                     = 0.0f;
+    }
+    element_number = 0; //--- Experience bar image ---
+    UI_form_pointer->element[element_number].window_UID                = UI_form_pointer->UID;
+    UI_form_pointer->element[element_number].element_UID               = element_number;
+    UI_form_pointer->element[element_number].title.text                = "";
+    UI_form_pointer->element[element_number].active                    = true;
+    UI_form_pointer->element[element_number].click_enabled             = false;
+    UI_form_pointer->element[element_number].type                      = BAR;
+    UI_form_pointer->element[element_number].value                     = 0;
+    UI_form_pointer->element[element_number].value_max                 = 1000;
+    UI_form_pointer->element[element_number].zoom.enabled              = false;
+    UI_form_pointer->element[element_number].tooltip.enabled           = true;
+    UI_form_pointer->element[element_number].tooltip.text              = "0%";
+    UI_form_pointer->element[element_number].tooltip.size.x            = 12.0f;
+    UI_form_pointer->element[element_number].tooltip.size.y            = 30.0f;
+    UI_form_pointer->element[element_number].color                     = UI_form_pointer->color;
+    UI_form_pointer->element[element_number].size.x                    = UI_form_pointer->size.x * 0.952f;
+    UI_form_pointer->element[element_number].size.y                    = UI_form_pointer->size.y * 0.2f;
+    UI_form_pointer->element[element_number].position.x                = UI_form_pointer->position.x;// - (UI_form_pointer->size.x * 0.25f);
+    UI_form_pointer->element[element_number].position.y                = UI_form_pointer->position.y - (UI_form_pointer->size.y * 0.38f);
+    UI_form_pointer->element[element_number].texture.normal            = game.texture_manager.add_texture("data/textures/UI/menu/experience_bar.png");
+    UI_form_pointer->element[element_number].texture.highlighted       = game.texture_manager.add_texture("data/textures/UI/menu/experience_bar.png");
+    UI_form_pointer->element[element_number].sound                     = UI_form_pointer->sound;
+    UI_form_pointer->element[element_number].font                      = UI_form_pointer->font;
+    UI_form_pointer->element[element_number].mouse_delay.maximum       = 30;
+    element_number = 1; //--- Action-bar foreground image ---
+    UI_form_pointer->element[element_number].window_UID                = UI_form_pointer->UID;
+    UI_form_pointer->element[element_number].element_UID               = element_number;
+    UI_form_pointer->element[element_number].title.text                = "";
+    UI_form_pointer->element[element_number].active                    = true;
+    UI_form_pointer->element[element_number].click_enabled             = false;
+    UI_form_pointer->element[element_number].type                      = IMAGE;
+    UI_form_pointer->element[element_number].zoom.enabled              = false;
+    UI_form_pointer->element[element_number].tooltip.enabled           = false;
+    UI_form_pointer->element[element_number].color                     = UI_form_pointer->color;
+    UI_form_pointer->element[element_number].size.x                    = UI_form_pointer->size.x;
+    UI_form_pointer->element[element_number].size.y                    = UI_form_pointer->size.y;
+    UI_form_pointer->element[element_number].position.x                = UI_form_pointer->position.x;
+    UI_form_pointer->element[element_number].position.y                = UI_form_pointer->position.y;
+    UI_form_pointer->element[element_number].texture.normal            = game.texture_manager.add_texture("data/textures/UI/menu/action_bar_front.png");
+    UI_form_pointer->element[element_number].texture.highlighted       = game.texture_manager.add_texture("data/textures/UI/menu/action_bar_front.png");
+    UI_form_pointer->element[element_number].sound                     = UI_form_pointer->sound;
+    UI_form_pointer->element[element_number].font                      = UI_form_pointer->font;
+    UI_form_pointer->element[element_number].mouse_delay.maximum       = 30;
+    element_number = 2; //--- Action-bar main menu button ---
+    UI_form_pointer->element[element_number].window_UID                = UI_form_pointer->UID;
+    UI_form_pointer->element[element_number].element_UID               = element_number;
+    UI_form_pointer->element[element_number].title.text                = "";
+    UI_form_pointer->element[element_number].title.enabled             = false;
+    UI_form_pointer->element[element_number].tooltip.enabled           = true;
+    UI_form_pointer->element[element_number].tooltip.text              = "Main Menu";
+    UI_form_pointer->element[element_number].tooltip.size.x            = 12.0f;
+    UI_form_pointer->element[element_number].tooltip.size.y            = 30.0f;
+    UI_form_pointer->element[element_number].active                    = true;
+    UI_form_pointer->element[element_number].type                      = BUTTON;
+    UI_form_pointer->element[element_number].color                     = UI_form_pointer->color;
+    UI_form_pointer->element[element_number].zoom                      = UI_form_pointer->zoom;
+    UI_form_pointer->element[element_number].zoom.enabled              = false;
+    UI_form_pointer->element[element_number].size.x                    = 0.072f;
+    UI_form_pointer->element[element_number].size.y                    = UI_form_pointer->element[element_number].size.x;
+    UI_form_pointer->element[element_number].position.x                = UI_form_pointer->position.x - (UI_form_pointer->size.x/2.0f) + (UI_form_pointer->element[element_number].size.x * 1.46f);
+    UI_form_pointer->element[element_number].position.y                = UI_form_pointer->position.y + (UI_form_pointer->element[element_number].size.y * 0.1f);
+    UI_form_pointer->element[element_number].texture.normal            = game.texture_manager.add_texture("data/textures/UI/menu/icon_01.png");
+    UI_form_pointer->element[element_number].texture.highlighted       = game.texture_manager.add_texture("data/textures/UI/menu/icon_01.png");
+    UI_form_pointer->element[element_number].sound                     = UI_form_pointer->sound;
+    UI_form_pointer->element[element_number].sound.on_click.enabled    = true;
+    UI_form_pointer->element[element_number].sound.on_mouse_over.enabled = true;
+    UI_form_pointer->element[element_number].font                      = UI_form_pointer->font;
+    UI_form_pointer->element[element_number].mouse_delay.maximum       = menu_button_mouse_delay;
+    element_number = 3; //--- Action-bar quest log button ---
+    UI_form_pointer->element[element_number].window_UID                = UI_form_pointer->UID;
+    UI_form_pointer->element[element_number].element_UID               = element_number;
+    UI_form_pointer->element[element_number].title.text                = "";
+    UI_form_pointer->element[element_number].title.enabled             = false;
+    UI_form_pointer->element[element_number].tooltip.enabled           = true;
+    UI_form_pointer->element[element_number].tooltip.text              = "Quest Log";
+    UI_form_pointer->element[element_number].tooltip.size.x            = 12.0f;
+    UI_form_pointer->element[element_number].tooltip.size.y            = 30.0f;
+    UI_form_pointer->element[element_number].active                    = true;
+    UI_form_pointer->element[element_number].type                      = BUTTON;
+    UI_form_pointer->element[element_number].color                     = UI_form_pointer->color;
+    UI_form_pointer->element[element_number].zoom                      = UI_form_pointer->zoom;
+    UI_form_pointer->element[element_number].zoom.enabled              = false;
+    UI_form_pointer->element[element_number].size.x                    = 0.072f;
+    UI_form_pointer->element[element_number].size.y                    = UI_form_pointer->element[element_number].size.x;
+    UI_form_pointer->element[element_number].position.x                = UI_form_pointer->position.x - (UI_form_pointer->size.x/2.0f) + (UI_form_pointer->element[element_number].size.x * 2.85f);
+    UI_form_pointer->element[element_number].position.y                = UI_form_pointer->position.y + (UI_form_pointer->element[element_number].size.y * 0.1f);
+    UI_form_pointer->element[element_number].texture.normal            = game.texture_manager.add_texture("data/textures/UI/menu/icon_03.png");
+    UI_form_pointer->element[element_number].texture.highlighted       = game.texture_manager.add_texture("data/textures/UI/menu/icon_03.png");
+    UI_form_pointer->element[element_number].sound                     = UI_form_pointer->sound;
+    UI_form_pointer->element[element_number].sound.on_click.enabled    = true;
+    UI_form_pointer->element[element_number].sound.on_mouse_over.enabled = true;
+    UI_form_pointer->element[element_number].font                      = UI_form_pointer->font;
+    UI_form_pointer->element[element_number].mouse_delay.maximum       = menu_button_mouse_delay;
+    element_number = 4; //--- Action-bar skill book button ---
+    UI_form_pointer->element[element_number].window_UID                = UI_form_pointer->UID;
+    UI_form_pointer->element[element_number].element_UID               = element_number;
+    UI_form_pointer->element[element_number].title.text                = "";
+    UI_form_pointer->element[element_number].title.enabled             = false;
+    UI_form_pointer->element[element_number].tooltip.enabled           = true;
+    UI_form_pointer->element[element_number].tooltip.text              = "Skill Book";
+    UI_form_pointer->element[element_number].tooltip.size.x            = 12.0f;
+    UI_form_pointer->element[element_number].tooltip.size.y            = 30.0f;
+    UI_form_pointer->element[element_number].active                    = true;
+    UI_form_pointer->element[element_number].type                      = BUTTON;
+    UI_form_pointer->element[element_number].color                     = UI_form_pointer->color;
+    UI_form_pointer->element[element_number].zoom                      = UI_form_pointer->zoom;
+    UI_form_pointer->element[element_number].zoom.enabled              = false;
+    UI_form_pointer->element[element_number].size.x                    = 0.072f;
+    UI_form_pointer->element[element_number].size.y                    = UI_form_pointer->element[element_number].size.x;
+    UI_form_pointer->element[element_number].position.x                = UI_form_pointer->position.x - (UI_form_pointer->size.x/2.0f) + (UI_form_pointer->element[element_number].size.x * 4.25f);
+    UI_form_pointer->element[element_number].position.y                = UI_form_pointer->position.y + (UI_form_pointer->element[element_number].size.y * 0.1f);
+    UI_form_pointer->element[element_number].texture.normal            = game.texture_manager.add_texture("data/textures/UI/menu/icon_06.png");
+    UI_form_pointer->element[element_number].texture.highlighted       = game.texture_manager.add_texture("data/textures/UI/menu/icon_06.png");
+    UI_form_pointer->element[element_number].sound                     = UI_form_pointer->sound;
+    UI_form_pointer->element[element_number].sound.on_click.enabled    = true;
+    UI_form_pointer->element[element_number].sound.on_mouse_over.enabled = true;
+    UI_form_pointer->element[element_number].font                      = UI_form_pointer->font;
+    UI_form_pointer->element[element_number].mouse_delay.maximum       = menu_button_mouse_delay;
+    element_number = 5; //--- Action-bar character window button ---
+    UI_form_pointer->element[element_number].window_UID                = UI_form_pointer->UID;
+    UI_form_pointer->element[element_number].element_UID               = element_number;
+    UI_form_pointer->element[element_number].title.text                = "";
+    UI_form_pointer->element[element_number].title.enabled             = false;
+    UI_form_pointer->element[element_number].tooltip.enabled           = true;
+    UI_form_pointer->element[element_number].tooltip.text              = "Character";
+    UI_form_pointer->element[element_number].tooltip.size.x            = 12.0f;
+    UI_form_pointer->element[element_number].tooltip.size.y            = 30.0f;
+    UI_form_pointer->element[element_number].active                    = true;
+    UI_form_pointer->element[element_number].type                      = BUTTON;
+    UI_form_pointer->element[element_number].color                     = UI_form_pointer->color;
+    UI_form_pointer->element[element_number].zoom                      = UI_form_pointer->zoom;
+    UI_form_pointer->element[element_number].zoom.enabled              = false;
+    UI_form_pointer->element[element_number].size.x                    = 0.072f;
+    UI_form_pointer->element[element_number].size.y                    = UI_form_pointer->element[element_number].size.x;
+    UI_form_pointer->element[element_number].position.x                = UI_form_pointer->position.x + (UI_form_pointer->size.x/2.0f) - (UI_form_pointer->element[element_number].size.x * 4.25f);
+    UI_form_pointer->element[element_number].position.y                = UI_form_pointer->position.y + (UI_form_pointer->element[element_number].size.y * 0.1f);
+    UI_form_pointer->element[element_number].texture.normal            = game.texture_manager.add_texture("data/textures/UI/menu/icon_02.png");
+    UI_form_pointer->element[element_number].texture.highlighted       = game.texture_manager.add_texture("data/textures/UI/menu/icon_02.png");
+    UI_form_pointer->element[element_number].sound                     = UI_form_pointer->sound;
+    UI_form_pointer->element[element_number].sound.on_click.enabled    = true;
+    UI_form_pointer->element[element_number].sound.on_mouse_over.enabled = true;
+    UI_form_pointer->element[element_number].font                      = UI_form_pointer->font;
+    UI_form_pointer->element[element_number].mouse_delay.maximum       = menu_button_mouse_delay;
+    element_number = 6; //--- Action-bar equipment button ---
+    UI_form_pointer->element[element_number].window_UID                = UI_form_pointer->UID;
+    UI_form_pointer->element[element_number].element_UID               = element_number;
+    UI_form_pointer->element[element_number].title.text                = "";
+    UI_form_pointer->element[element_number].title.enabled             = false;
+    UI_form_pointer->element[element_number].tooltip.enabled           = true;
+    UI_form_pointer->element[element_number].tooltip.text              = "Equipment";
+    UI_form_pointer->element[element_number].tooltip.size.x            = 12.0f;
+    UI_form_pointer->element[element_number].tooltip.size.y            = 30.0f;
+    UI_form_pointer->element[element_number].active                    = true;
+    UI_form_pointer->element[element_number].type                      = BUTTON;
+    UI_form_pointer->element[element_number].color                     = UI_form_pointer->color;
+    UI_form_pointer->element[element_number].zoom                      = UI_form_pointer->zoom;
+    UI_form_pointer->element[element_number].zoom.enabled              = false;
+    UI_form_pointer->element[element_number].size.x                    = 0.072f;
+    UI_form_pointer->element[element_number].size.y                    = UI_form_pointer->element[element_number].size.x;
+    UI_form_pointer->element[element_number].position.x                = UI_form_pointer->position.x + (UI_form_pointer->size.x/2.0f) - (UI_form_pointer->element[element_number].size.x * 2.85f);
+    UI_form_pointer->element[element_number].position.y                = UI_form_pointer->position.y + (UI_form_pointer->element[element_number].size.y * 0.1f);
+    UI_form_pointer->element[element_number].texture.normal            = game.texture_manager.add_texture("data/textures/UI/menu/icon_04.png");
+    UI_form_pointer->element[element_number].texture.highlighted       = game.texture_manager.add_texture("data/textures/UI/menu/icon_04.png");
+    UI_form_pointer->element[element_number].sound                     = UI_form_pointer->sound;
+    UI_form_pointer->element[element_number].sound.on_click.enabled    = true;
+    UI_form_pointer->element[element_number].sound.on_mouse_over.enabled = true;
+    UI_form_pointer->element[element_number].font                      = UI_form_pointer->font;
+    UI_form_pointer->element[element_number].mouse_delay.maximum       = menu_button_mouse_delay;
+    element_number = 7; //--- Action-bar inventory button ---
+    UI_form_pointer->element[element_number].window_UID                = UI_form_pointer->UID;
+    UI_form_pointer->element[element_number].element_UID               = element_number;
+    UI_form_pointer->element[element_number].title.text                = "";
+    UI_form_pointer->element[element_number].title.enabled             = false;
+    UI_form_pointer->element[element_number].tooltip.enabled           = true;
+    UI_form_pointer->element[element_number].tooltip.text              = "Inventory";
+    UI_form_pointer->element[element_number].tooltip.size.x            = 12.0f;
+    UI_form_pointer->element[element_number].tooltip.size.y            = 30.0f;
+    UI_form_pointer->element[element_number].active                    = true;
+    UI_form_pointer->element[element_number].type                      = BUTTON;
+    UI_form_pointer->element[element_number].color                     = UI_form_pointer->color;
+    UI_form_pointer->element[element_number].zoom                      = UI_form_pointer->zoom;
+    UI_form_pointer->element[element_number].zoom.enabled              = false;
+    UI_form_pointer->element[element_number].size.x                    = 0.072f;
+    UI_form_pointer->element[element_number].size.y                    = UI_form_pointer->element[element_number].size.x;
+    UI_form_pointer->element[element_number].position.x                = UI_form_pointer->position.x + (UI_form_pointer->size.x/2.0f) - (UI_form_pointer->element[element_number].size.x * 1.46f);
+    UI_form_pointer->element[element_number].position.y                = UI_form_pointer->position.y + (UI_form_pointer->element[element_number].size.y * 0.1f);
+    UI_form_pointer->element[element_number].texture.normal            = game.texture_manager.add_texture("data/textures/UI/menu/icon_05.png");
+    UI_form_pointer->element[element_number].texture.highlighted       = game.texture_manager.add_texture("data/textures/UI/menu/icon_05.png");
+    UI_form_pointer->element[element_number].sound                     = UI_form_pointer->sound;
+    UI_form_pointer->element[element_number].sound.on_click.enabled    = true;
+    UI_form_pointer->element[element_number].sound.on_mouse_over.enabled = true;
+    UI_form_pointer->element[element_number].font                      = UI_form_pointer->font;
+    UI_form_pointer->element[element_number].mouse_delay.maximum       = menu_button_mouse_delay;
+    element_number = 8; //--- Action-bar item 0 ---
+    UI_form_pointer->element[element_number].window_UID                  = UI_form_pointer->UID;
+    UI_form_pointer->element[element_number].element_UID                 = element_number;
+    UI_form_pointer->element[element_number].title.text                  = "";
+    UI_form_pointer->element[element_number].title.enabled               = false;
+    UI_form_pointer->element[element_number].dragable                    = true;
+    UI_form_pointer->element[element_number].click_enabled               = true;
+    UI_form_pointer->element[element_number].active                      = true;
+    UI_form_pointer->element[element_number].type                        = ITEM;
+    UI_form_pointer->element[element_number].zoom.enabled                = false;
+    UI_form_pointer->element[element_number].tooltip.enabled             = false;
+    UI_form_pointer->element[element_number].value                       = -1;
+    UI_form_pointer->element[element_number].color                       = UI_form_pointer->color;
+    UI_form_pointer->element[element_number].size.x                      = UI_form_pointer->size.y/2.35;
+    UI_form_pointer->element[element_number].size.y                      = UI_form_pointer->size.y/2.25;
+    UI_form_pointer->element[element_number].position.x                  = UI_form_pointer->position.x-(UI_form_pointer->size.x/3.92f);
+    UI_form_pointer->element[element_number].position.y                  = UI_form_pointer->position.y+(UI_form_pointer->size.y/20.00f);
+    UI_form_pointer->element[element_number].sound                       = UI_form_pointer->sound;
+    UI_form_pointer->element[element_number].sound.on_click.enabled      = false;
+    UI_form_pointer->element[element_number].sound.on_mouse_over.enabled = false;
+    UI_form_pointer->element[element_number].mouse_delay.maximum         = 30;
+    UI_form_pointer->element[element_number].font                        = UI_form_pointer->font;
+    element_number = 9; //--- Action-bar item 1 ---
+    UI_form_pointer->element[element_number].window_UID                  = UI_form_pointer->UID;
+    UI_form_pointer->element[element_number].element_UID                 = element_number;
+    UI_form_pointer->element[element_number].title.text                  = "";
+    UI_form_pointer->element[element_number].title.enabled               = false;
+    UI_form_pointer->element[element_number].dragable                    = true;
+    UI_form_pointer->element[element_number].click_enabled               = true;
+    UI_form_pointer->element[element_number].active                      = true;
+    UI_form_pointer->element[element_number].type                        = ITEM;
+    UI_form_pointer->element[element_number].zoom.enabled                = false;
+    UI_form_pointer->element[element_number].tooltip.enabled             = false;
+    UI_form_pointer->element[element_number].value                       = -1;
+    UI_form_pointer->element[element_number].color                       = UI_form_pointer->color;
+    UI_form_pointer->element[element_number].size.x                      = UI_form_pointer->size.y/2.35;
+    UI_form_pointer->element[element_number].size.y                      = UI_form_pointer->size.y/2.25;
+    UI_form_pointer->element[element_number].position.x                  = UI_form_pointer->position.x-(UI_form_pointer->size.x/5.030f);
+    UI_form_pointer->element[element_number].position.y                  = UI_form_pointer->position.y+(UI_form_pointer->size.y/20.00f);
+    UI_form_pointer->element[element_number].sound                       = UI_form_pointer->sound;
+    UI_form_pointer->element[element_number].sound.on_click.enabled      = false;
+    UI_form_pointer->element[element_number].sound.on_mouse_over.enabled = false;
+    UI_form_pointer->element[element_number].mouse_delay.maximum         = 30;
+    UI_form_pointer->element[element_number].font                        = UI_form_pointer->font;
+    element_number = 10; //--- Action-bar item 2 ---
+    UI_form_pointer->element[element_number].window_UID                  = UI_form_pointer->UID;
+    UI_form_pointer->element[element_number].element_UID                 = element_number;
+    UI_form_pointer->element[element_number].title.text                  = "";
+    UI_form_pointer->element[element_number].title.enabled               = false;
+    UI_form_pointer->element[element_number].dragable                    = true;
+    UI_form_pointer->element[element_number].click_enabled               = true;
+    UI_form_pointer->element[element_number].active                      = true;
+    UI_form_pointer->element[element_number].type                        = ITEM;
+    UI_form_pointer->element[element_number].zoom.enabled                = false;
+    UI_form_pointer->element[element_number].tooltip.enabled             = false;
+    UI_form_pointer->element[element_number].value                       = -1;
+    UI_form_pointer->element[element_number].color                       = UI_form_pointer->color;
+    UI_form_pointer->element[element_number].size.x                      = UI_form_pointer->size.y/2.35;
+    UI_form_pointer->element[element_number].size.y                      = UI_form_pointer->size.y/2.25;
+    UI_form_pointer->element[element_number].position.x                  = UI_form_pointer->position.x-(UI_form_pointer->size.x/7.050f);
+    UI_form_pointer->element[element_number].position.y                  = UI_form_pointer->position.y+(UI_form_pointer->size.y/20.00f);
+    UI_form_pointer->element[element_number].sound                       = UI_form_pointer->sound;
+    UI_form_pointer->element[element_number].sound.on_click.enabled      = false;
+    UI_form_pointer->element[element_number].sound.on_mouse_over.enabled = false;
+    UI_form_pointer->element[element_number].mouse_delay.maximum         = 30;
+    UI_form_pointer->element[element_number].font                        = UI_form_pointer->font;
+    element_number = 11; //--- Action-bar item 3 ---
+    UI_form_pointer->element[element_number].window_UID                  = UI_form_pointer->UID;
+    UI_form_pointer->element[element_number].element_UID                 = element_number;
+    UI_form_pointer->element[element_number].title.text                  = "";
+    UI_form_pointer->element[element_number].title.enabled               = false;
+    UI_form_pointer->element[element_number].dragable                    = true;
+    UI_form_pointer->element[element_number].click_enabled               = true;
+    UI_form_pointer->element[element_number].active                      = true;
+    UI_form_pointer->element[element_number].type                        = ITEM;
+    UI_form_pointer->element[element_number].zoom.enabled                = false;
+    UI_form_pointer->element[element_number].tooltip.enabled             = false;
+    UI_form_pointer->element[element_number].value                       = -1;
+    UI_form_pointer->element[element_number].color                       = UI_form_pointer->color;
+    UI_form_pointer->element[element_number].size.x                      = UI_form_pointer->size.y/2.35;
+    UI_form_pointer->element[element_number].size.y                      = UI_form_pointer->size.y/2.25;
+    UI_form_pointer->element[element_number].position.x                  = UI_form_pointer->position.x-(UI_form_pointer->size.x/11.600f);
+    UI_form_pointer->element[element_number].position.y                  = UI_form_pointer->position.y+(UI_form_pointer->size.y/20.00f);
+    UI_form_pointer->element[element_number].sound                       = UI_form_pointer->sound;
+    UI_form_pointer->element[element_number].sound.on_click.enabled      = false;
+    UI_form_pointer->element[element_number].sound.on_mouse_over.enabled = false;
+    UI_form_pointer->element[element_number].mouse_delay.maximum         = 30;
+    UI_form_pointer->element[element_number].font                        = UI_form_pointer->font;
+    element_number = 12; //--- Action-bar item 4 ---
+    UI_form_pointer->element[element_number].window_UID                  = UI_form_pointer->UID;
+    UI_form_pointer->element[element_number].element_UID                 = element_number;
+    UI_form_pointer->element[element_number].title.text                  = "";
+    UI_form_pointer->element[element_number].title.enabled               = false;
+    UI_form_pointer->element[element_number].dragable                    = true;
+    UI_form_pointer->element[element_number].click_enabled               = true;
+    UI_form_pointer->element[element_number].active                      = true;
+    UI_form_pointer->element[element_number].type                        = ITEM;
+    UI_form_pointer->element[element_number].zoom.enabled                = false;
+    UI_form_pointer->element[element_number].tooltip.enabled             = false;
+    UI_form_pointer->element[element_number].value                       = -1;
+    UI_form_pointer->element[element_number].color                       = UI_form_pointer->color;
+    UI_form_pointer->element[element_number].size.x                      = UI_form_pointer->size.y/2.35;
+    UI_form_pointer->element[element_number].size.y                      = UI_form_pointer->size.y/2.25;
+    UI_form_pointer->element[element_number].position.x                  = UI_form_pointer->position.x-(UI_form_pointer->size.x/34.24f);
+    UI_form_pointer->element[element_number].position.y                  = UI_form_pointer->position.y+(UI_form_pointer->size.y/20.00f);
+    UI_form_pointer->element[element_number].sound                       = UI_form_pointer->sound;
+    UI_form_pointer->element[element_number].sound.on_click.enabled      = false;
+    UI_form_pointer->element[element_number].sound.on_mouse_over.enabled = false;
+    UI_form_pointer->element[element_number].mouse_delay.maximum         = 30;
+    UI_form_pointer->element[element_number].font                        = UI_form_pointer->font;
+    element_number = 13; //--- Action-bar item 5 ---
+    UI_form_pointer->element[element_number].window_UID                  = UI_form_pointer->UID;
+    UI_form_pointer->element[element_number].element_UID                 = element_number;
+    UI_form_pointer->element[element_number].title.text                  = "";
+    UI_form_pointer->element[element_number].title.enabled               = false;
+    UI_form_pointer->element[element_number].dragable                    = true;
+    UI_form_pointer->element[element_number].click_enabled               = true;
+    UI_form_pointer->element[element_number].active                      = true;
+    UI_form_pointer->element[element_number].type                        = ITEM;
+    UI_form_pointer->element[element_number].zoom.enabled                = false;
+    UI_form_pointer->element[element_number].tooltip.enabled             = false;
+    UI_form_pointer->element[element_number].value                       = -1;
+    UI_form_pointer->element[element_number].color                       = UI_form_pointer->color;
+    UI_form_pointer->element[element_number].size.x                      = UI_form_pointer->size.y/2.35;
+    UI_form_pointer->element[element_number].size.y                      = UI_form_pointer->size.y/2.25;
+    UI_form_pointer->element[element_number].position.x                  = UI_form_pointer->position.x+(UI_form_pointer->size.x/37.400f);
+    UI_form_pointer->element[element_number].position.y                  = UI_form_pointer->position.y+(UI_form_pointer->size.y/20.00f);
+    UI_form_pointer->element[element_number].sound                       = UI_form_pointer->sound;
+    UI_form_pointer->element[element_number].sound.on_click.enabled      = false;
+    UI_form_pointer->element[element_number].sound.on_mouse_over.enabled = false;
+    UI_form_pointer->element[element_number].mouse_delay.maximum         = 30;
+    UI_form_pointer->element[element_number].font                        = UI_form_pointer->font;
+    element_number = 14; //--- Action-bar item 6 ---
+    UI_form_pointer->element[element_number].window_UID                  = UI_form_pointer->UID;
+    UI_form_pointer->element[element_number].element_UID                 = element_number;
+    UI_form_pointer->element[element_number].title.text                  = "";
+    UI_form_pointer->element[element_number].title.enabled               = false;
+    UI_form_pointer->element[element_number].dragable                    = true;
+    UI_form_pointer->element[element_number].click_enabled               = true;
+    UI_form_pointer->element[element_number].active                      = true;
+    UI_form_pointer->element[element_number].type                        = ITEM;
+    UI_form_pointer->element[element_number].zoom.enabled                = false;
+    UI_form_pointer->element[element_number].tooltip.enabled             = false;
+    UI_form_pointer->element[element_number].value                       = -1;
+    UI_form_pointer->element[element_number].color                       = UI_form_pointer->color;
+    UI_form_pointer->element[element_number].size.x                      = UI_form_pointer->size.y/2.35;
+    UI_form_pointer->element[element_number].size.y                      = UI_form_pointer->size.y/2.25;
+    UI_form_pointer->element[element_number].position.x                  = UI_form_pointer->position.x+(UI_form_pointer->size.x/12.200f);
+    UI_form_pointer->element[element_number].position.y                  = UI_form_pointer->position.y+(UI_form_pointer->size.y/20.00f);
+    UI_form_pointer->element[element_number].sound                       = UI_form_pointer->sound;
+    UI_form_pointer->element[element_number].sound.on_click.enabled      = false;
+    UI_form_pointer->element[element_number].sound.on_mouse_over.enabled = false;
+    UI_form_pointer->element[element_number].mouse_delay.maximum         = 30;
+    UI_form_pointer->element[element_number].font                        = UI_form_pointer->font;
+    element_number = 15; //--- Action-bar item 7 ---
+    UI_form_pointer->element[element_number].window_UID                  = UI_form_pointer->UID;
+    UI_form_pointer->element[element_number].element_UID                 = element_number;
+    UI_form_pointer->element[element_number].title.text                  = "";
+    UI_form_pointer->element[element_number].title.enabled               = false;
+    UI_form_pointer->element[element_number].dragable                    = true;
+    UI_form_pointer->element[element_number].click_enabled               = true;
+    UI_form_pointer->element[element_number].active                      = true;
+    UI_form_pointer->element[element_number].type                        = ITEM;
+    UI_form_pointer->element[element_number].zoom.enabled                = false;
+    UI_form_pointer->element[element_number].tooltip.enabled             = false;
+    UI_form_pointer->element[element_number].value                       = -1;
+    UI_form_pointer->element[element_number].color                       = UI_form_pointer->color;
+    UI_form_pointer->element[element_number].size.x                      = UI_form_pointer->size.y/2.35;
+    UI_form_pointer->element[element_number].size.y                      = UI_form_pointer->size.y/2.25;
+    UI_form_pointer->element[element_number].position.x                  = UI_form_pointer->position.x+(UI_form_pointer->size.x/7.26f);
+    UI_form_pointer->element[element_number].position.y                  = UI_form_pointer->position.y+(UI_form_pointer->size.y/20.00f);
+    UI_form_pointer->element[element_number].sound                       = UI_form_pointer->sound;
+    UI_form_pointer->element[element_number].sound.on_click.enabled      = false;
+    UI_form_pointer->element[element_number].sound.on_mouse_over.enabled = false;
+    UI_form_pointer->element[element_number].mouse_delay.maximum         = 30;
+    UI_form_pointer->element[element_number].font                        = UI_form_pointer->font;
+    element_number = 16; //--- Action-bar item 8 ---
+    UI_form_pointer->element[element_number].window_UID                  = UI_form_pointer->UID;
+    UI_form_pointer->element[element_number].element_UID                 = element_number;
+    UI_form_pointer->element[element_number].title.text                  = "";
+    UI_form_pointer->element[element_number].title.enabled               = false;
+    UI_form_pointer->element[element_number].dragable                    = true;
+    UI_form_pointer->element[element_number].click_enabled               = true;
+    UI_form_pointer->element[element_number].active                      = true;
+    UI_form_pointer->element[element_number].type                        = ITEM;
+    UI_form_pointer->element[element_number].zoom.enabled                = false;
+    UI_form_pointer->element[element_number].tooltip.enabled             = false;
+    UI_form_pointer->element[element_number].value                       = -1;
+    UI_form_pointer->element[element_number].color                       = UI_form_pointer->color;
+    UI_form_pointer->element[element_number].size.x                      = UI_form_pointer->size.y/2.35;
+    UI_form_pointer->element[element_number].size.y                      = UI_form_pointer->size.y/2.25;
+    UI_form_pointer->element[element_number].position.x                  = UI_form_pointer->position.x+(UI_form_pointer->size.x/5.154f);
+    UI_form_pointer->element[element_number].position.y                  = UI_form_pointer->position.y+(UI_form_pointer->size.y/20.00f);
+    UI_form_pointer->element[element_number].sound                       = UI_form_pointer->sound;
+    UI_form_pointer->element[element_number].sound.on_click.enabled      = false;
+    UI_form_pointer->element[element_number].sound.on_mouse_over.enabled = false;
+    UI_form_pointer->element[element_number].mouse_delay.maximum         = 30;
+    UI_form_pointer->element[element_number].font                        = UI_form_pointer->font;
+    element_number = 17; //--- Action-bar item 9 ---
+    UI_form_pointer->element[element_number].window_UID                  = UI_form_pointer->UID;
+    UI_form_pointer->element[element_number].element_UID                 = element_number;
+    UI_form_pointer->element[element_number].title.text                  = "";
+    UI_form_pointer->element[element_number].title.enabled               = false;
+    UI_form_pointer->element[element_number].dragable                    = true;
+    UI_form_pointer->element[element_number].click_enabled               = true;
+    UI_form_pointer->element[element_number].active                      = true;
+    UI_form_pointer->element[element_number].type                        = ITEM;
+    UI_form_pointer->element[element_number].zoom.enabled                = false;
+    UI_form_pointer->element[element_number].tooltip.enabled             = false;
+    UI_form_pointer->element[element_number].value                       = -1;
+    UI_form_pointer->element[element_number].color                       = UI_form_pointer->color;
+    UI_form_pointer->element[element_number].size.x                      = UI_form_pointer->size.y/2.35;
+    UI_form_pointer->element[element_number].size.y                      = UI_form_pointer->size.y/2.25;
+    UI_form_pointer->element[element_number].position.x                  = UI_form_pointer->position.x+(UI_form_pointer->size.x/3.98f);
+    UI_form_pointer->element[element_number].position.y                  = UI_form_pointer->position.y+(UI_form_pointer->size.y/20.0f);
+    UI_form_pointer->element[element_number].sound                       = UI_form_pointer->sound;
+    UI_form_pointer->element[element_number].sound.on_click.enabled      = false;
+    UI_form_pointer->element[element_number].sound.on_mouse_over.enabled = false;
+    UI_form_pointer->element[element_number].mouse_delay.maximum         = 30;
+    UI_form_pointer->element[element_number].font                        = UI_form_pointer->font;
+};
+
+/*
+void update_action_bar(int window_number)
+{
+    // required function?
+};
+*/
+
+void process_action_bar(int window_number)
+{
+    /*
+    if (game.player.level.current < MAX_LEVELS)// exp bar
+    {
+        if (game.player.level.current_experience > 0)// && (game.player.level.experience[game.player.level.current] > 0))
+        {
+            int element_number = 0; //--- Player experience bar ---
+            unsigned long long  temp_val = (game.player.level.current_experience - game.player.level.experience[game.player.level.current]);
+            unsigned long long  temp_max = (game.player.level.experience[game.player.level.current+1] - game.player.level.experience[game.player.level.current]);
+            int                 temp_per = (((float)temp_val / (float)temp_max) * UI_form_pointer->element[element_number].value_max);
+            UI_form_pointer->element[element_number].value = temp_per;
+            temp_per /= 10;
+            std::string temp_string  = int_to_string(temp_per);
+            temp_string += "%";
+            if (temp_per >  9) temp_string += ' ';
+            if (temp_per > 99) temp_string += ' ';
+            temp_string += "    ";
+            UI_form_pointer->element[element_number].tooltip.text = temp_string;
+        }
+    }
+    if(UI_form_pointer->event.id > EVENT_NONE) // Handle element events
+    {
+        switch (UI_form_pointer->event.id)
+        {
+            case ((2*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Toggle main menu
+                game.window_manager.window_disable(MENU_GAME_LOAD_UID);
+                game.window_manager.window_disable(MENU_GAME_NEW_UID);
+                game.window_manager.window_disable(MENU_GAME_SAVE_UID);
+                game.window_manager.window_disable(MENU_OPTIONS_UID);
+                if (!game.core.game_menu_active)
+                {
+                    game.window_manager.window_enable(MENU_MAIN_UID);
+                    game.core.game_menu_active                   = true;
+                }
+                else
+                {
+                    game.window_manager.window_disable(MENU_MAIN_UID);
+                    game.core.game_menu_active                   = false;
+                }
+                game.core.io.key_escape                = false;
+                game.core.io.keyboard_delay_count      = 0;
+            break;
+            case ((3*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Toggle quest log
+                if (!game.core.quest_log_active)
+                {
+                    game.window_manager.window_enable(QUEST_LOG_UID);
+                    game.core.quest_log_active                   = true;
+                }
+                else
+                {
+                    game.window_manager.window_disable(QUEST_LOG_UID);
+                    game.core.quest_log_active                   = false;
+                }
+                game.core.io.key_escape                = false;
+                game.core.io.keyboard_delay_count      = 0;
+            break;
+            case ((4*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Toggle skill book
+                if (!game.core.skillbook_active)
+                {
+                    game.window_manager.window_enable(SKILLBOOK_UID);
+                    game.core.skillbook_active                   = true;
+                }
+                else
+                {
+                    game.window_manager.window_disable(SKILLBOOK_UID);
+                    game.core.skillbook_active                   = false;
+                }
+                game.core.io.key_escape                = false;
+                game.core.io.keyboard_delay_count      = 0;
+            break;
+            case ((5*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Toggle Character menu
+                if (!game.core.character_active)
+                {
+                    game.window_manager.window_enable(CHARACTER_UID);
+                    game.core.character_active                   = true;
+                }
+                else
+                {
+                    game.window_manager.window_disable(CHARACTER_UID);
+                    game.core.character_active                   = false;
+                }
+                game.core.io.key_escape                = false;
+                game.core.io.keyboard_delay_count      = 0;
+            break;
+            case ((6*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Toggle equipment menu
+                if (!game.core.equipment_active)
+                {
+                    game.window_manager.window_enable(EQUIPMENT_UID);
+                    game.core.equipment_active                   = true;
+                }
+                else
+                {
+                    game.window_manager.window_disable(EQUIPMENT_UID);
+                    game.core.equipment_active                   = false;
+                }
+                game.core.io.key_escape                = false;
+                game.core.io.keyboard_delay_count      = 0;
+            break;
+            case ((7*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Toggle Inventory menu
+                if (!game.core.inventory_active)
+                {
+                    game.window_manager.window_enable(INVENTORY_UID);
+                    game.core.inventory_active                   = true;
+                }
+                else
+                {
+                    game.window_manager.window_disable(INVENTORY_UID);
+                    game.core.inventory_active                   = false;
+                }
+                game.core.io.key_escape                = false;
+                game.core.io.keyboard_delay_count      = 0;
+            break;
+            case ((8*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
+                UI_form_pointer->event.id = EVENT_NONE;
+            break;
+            case ((8*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
+                use_item(window_number,8);
+                UI_form_pointer->event.id = EVENT_NONE;
+            break;
+            case ((9*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
+                UI_form_pointer->event.id = EVENT_NONE;
+            break;
+            case ((9*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
+                use_item(window_number,9);
+                UI_form_pointer->event.id = EVENT_NONE;
+            break;
+            case ((10*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
+                UI_form_pointer->event.id = EVENT_NONE;
+            break;
+            case ((10*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
+                use_item(window_number,10);
+                UI_form_pointer->event.id = EVENT_NONE;
+            break;
+            case ((11*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
+                UI_form_pointer->event.id = EVENT_NONE;
+            break;
+            case ((11*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
+                use_item(window_number,11);
+                UI_form_pointer->event.id = EVENT_NONE;
+            break;
+            case ((12*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
+                UI_form_pointer->event.id = EVENT_NONE;
+            break;
+            case ((12*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
+                use_item(window_number,12);
+                UI_form_pointer->event.id = EVENT_NONE;
+            break;
+            case ((13*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
+                UI_form_pointer->event.id = EVENT_NONE;
+            break;
+            case ((13*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
+                use_item(window_number,13);
+                UI_form_pointer->event.id = EVENT_NONE;
+            break;
+            case ((14*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
+                UI_form_pointer->event.id = EVENT_NONE;
+            break;
+            case ((14*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
+                use_item(window_number,14);
+                UI_form_pointer->event.id = EVENT_NONE;
+            break;
+            case ((15*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
+                UI_form_pointer->event.id = EVENT_NONE;
+            break;
+            case ((15*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
+                use_item(window_number,15);
+                UI_form_pointer->event.id = EVENT_NONE;
+            break;
+            case ((16*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
+                UI_form_pointer->event.id = EVENT_NONE;
+            break;
+            case ((16*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
+                use_item(window_number,16);
+                UI_form_pointer->event.id = EVENT_NONE;
+            break;
+            case ((17*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
+                UI_form_pointer->event.id = EVENT_NONE;
+            break;
+            case ((17*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
+                use_item(window_number,17);
+                UI_form_pointer->event.id = EVENT_NONE;
+            break;
+            case (EVENT_WINDOW_STACK_SORT): //Window stack sort
+                game.window_manager.window_stack_sort();
+                game.window_manager.event.id = EVENT_NONE;
+            break;
+            case (EVENT_ELEMENT_DRAG): //Element drag event posted
+                //game.window_manager.source.window = ACTIONBAR_UID;
+            break;
+            default:
+                game.core.log.file_write("Unable to process event - ",UI_form_pointer->event.id, " - UID - ",UI_form_pointer->UID);
+                UI_form_pointer->event.id = EVENT_NONE;
+            break;
+        }
+    }
+    UI_form_pointer->event.id = EVENT_NONE;
+    */
+};
