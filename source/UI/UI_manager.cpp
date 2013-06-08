@@ -88,6 +88,7 @@ UI_form_struct *UI_manager_class::UI_form_add(int UI_form_UID)
     UI_manager_class::last->mouse_delay.value                  = 0;
     UI_manager_class::last->mouse_over_menu                    = false;
     UI_manager_class::last->mouse_over_title                   = false;
+    UI_manager_class::last->number_of_choice_selections        = 0;
     UI_manager_class::last->number_of_elements                 = 0;
     UI_manager_class::last->position.x                         = 0.0f;
     UI_manager_class::last->position.y                         = 0.0f;
@@ -130,10 +131,10 @@ void UI_manager_class::setup(void)
     setup_equipment_window(UID_EQUIPMENT);
     setup_inventory_window(UID_INVENTORY);
     setup_menu_game_load  (UID_MENU_GAME_LOAD);
-    //setup_menu_game_new   (UID_MENU_GAME_NEW);
+    setup_menu_game_new   (UID_MENU_GAME_NEW);
     setup_menu_game_save  (UID_MENU_GAME_SAVE);
     setup_menu_main       (UID_MENU_MAIN);
-    //setup_menu_options    (UID_MENU_OPTIONS);
+    setup_menu_options    (UID_MENU_OPTIONS);
     setup_player_profile  (UID_PCPROFILE);
     setup_quest_log_window(UID_QUEST_LOG);
     setup_skillbook_window(UID_SKILLBOOK);
@@ -225,26 +226,29 @@ void UI_manager_class::UI_form_set_position(int UI_form_UID_src, int UI_form_UID
     UI_form_pointer_src = UI_manager_class::UI_form_get(UI_form_UID_src);
     UI_form_struct *UI_form_pointer_dst;
     UI_form_pointer_dst = UI_manager_class::UI_form_get(UI_form_UID_dst);
-    float move_delta_x                         = UI_form_pointer_dst->position.x;
-    float move_delta_y                         = UI_form_pointer_dst->position.y;
-    UI_form_pointer_dst->position.x            = UI_form_pointer_src->position.x;
-    UI_form_pointer_dst->position.y            = UI_form_pointer_src->position.y;
-    move_delta_x                               = move_delta_x - UI_form_pointer_dst->position.x;
-    move_delta_y                               = move_delta_y - UI_form_pointer_dst->position.y;
-    UI_form_pointer_dst->title.position.x     -= move_delta_x;
-    UI_form_pointer_dst->title.position.y     -= move_delta_y;
-    UI_form_pointer_dst->title_bar.position.x -= move_delta_x;
-    UI_form_pointer_dst->title_bar.position.y -= move_delta_y;
-    if(UI_form_pointer_dst->number_of_elements > 0)
+    if ((UI_form_pointer_src != NULL) && (UI_form_pointer_dst != NULL))
     {
-        for (int element_number = 0; element_number < UI_form_pointer_dst->number_of_elements; element_number++)
+        float move_delta_x                         = UI_form_pointer_dst->position.x;
+        float move_delta_y                         = UI_form_pointer_dst->position.y;
+        UI_form_pointer_dst->position.x            = UI_form_pointer_src->position.x;
+        UI_form_pointer_dst->position.y            = UI_form_pointer_src->position.y;
+        move_delta_x                               = move_delta_x - UI_form_pointer_dst->position.x;
+        move_delta_y                               = move_delta_y - UI_form_pointer_dst->position.y;
+        UI_form_pointer_dst->title.position.x     -= move_delta_x;
+        UI_form_pointer_dst->title.position.y     -= move_delta_y;
+        UI_form_pointer_dst->title_bar.position.x -= move_delta_x;
+        UI_form_pointer_dst->title_bar.position.y -= move_delta_y;
+        if(UI_form_pointer_dst->number_of_elements > 0)
         {
-            if (UI_form_pointer_dst->element[element_number].active)
+            for (int element_number = 0; element_number < UI_form_pointer_dst->number_of_elements; element_number++)
             {
-                UI_form_pointer_dst->element[element_number].position.x       -= move_delta_x;
-                UI_form_pointer_dst->element[element_number].position.y       -= move_delta_y;
-                UI_form_pointer_dst->element[element_number].title.position.x -= move_delta_x;
-                UI_form_pointer_dst->element[element_number].title.position.y -= move_delta_y;
+                if (UI_form_pointer_dst->element[element_number].active)
+                {
+                    UI_form_pointer_dst->element[element_number].position.x       -= move_delta_x;
+                    UI_form_pointer_dst->element[element_number].position.y       -= move_delta_y;
+                    UI_form_pointer_dst->element[element_number].title.position.x -= move_delta_x;
+                    UI_form_pointer_dst->element[element_number].title.position.y -= move_delta_y;
+                }
             }
         }
     }

@@ -315,7 +315,6 @@ void setup_menu_main(int UID)
 
 void process_menu_main(UI_form_struct *UI_form_pointer)
 {
-    int load_menu_number = 0;
     int element_number   = 0;
     if(UI_form_pointer->event.id > EVENT_NONE)
     {

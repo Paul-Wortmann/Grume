@@ -613,7 +613,6 @@ void setup_menu_options(int UID)
 
 void process_menu_options(UI_form_struct *UI_form_pointer)
 {
-    /*
     if (UI_form_pointer->event.id > EVENT_NONE)
     {
         bool reset_display        = false;
@@ -623,10 +622,10 @@ void process_menu_options(UI_form_struct *UI_form_pointer)
         switch (UI_form_pointer->event.id)
         {
             case ((0*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Close menu button
-                game.window_manager.window_transition(MENU_OPTIONS_UID,MENU_MAIN_UID);
+                game.UI_manager.UI_form_transition(UID_MENU_OPTIONS,UID_MENU_MAIN);
             break;
             case ((1*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Main menu button
-                game.window_manager.window_transition(MENU_OPTIONS_UID,MENU_MAIN_UID);
+                game.UI_manager.UI_form_transition(UID_MENU_OPTIONS,UID_MENU_MAIN);
             break;
             case ((3*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Resolution selection element 0
                 resolution_selection = true;
@@ -753,12 +752,12 @@ void process_menu_options(UI_form_struct *UI_form_pointer)
                     reset_display = true;
                 }
             break;
-            case (EVENT_WINDOW_STACK_SORT): //Window stack sort
-                game.window_manager.window_stack_sort();
-                game.window_manager.event.id = EVENT_NONE;
+            case (EVENT_UI_STACK_SORT): //Window stack sort
+                game.UI_manager.UI_form_stack_sort();
+                game.UI_manager.event.id = EVENT_NONE;
             break;
             case (EVENT_ELEMENT_DRAG): //Element drag event posted
-                //game.window_manager.source.window = MENU_OPTIONS_UID;
+                //game.UI_manager.source.window = MENU_OPTIONS_UID;
             break;
             default:
                 game.core.log.file_write("Unable to process event - ",UI_form_pointer->event.id, " - UID - ",UI_form_pointer->UID);
@@ -853,9 +852,8 @@ void process_menu_options(UI_form_struct *UI_form_pointer)
             game.loading_screen.display("data/loading_screen.png");
             game.core.log.file_write("Reloading resources....");
             game.texture_manager.reload_textures();
-            update_menu_game_new(MENU_GAME_NEW_UID);
+            update_menu_game_new(UID_MENU_GAME_NEW);
         }
     }
     UI_form_pointer->event.id = EVENT_NONE;
-    */
 };

@@ -123,6 +123,24 @@ struct delay_struct
     int                     maximum;
 };
 
+struct selection_data_type
+{
+    int           value_int;
+    bool          active;
+    texture_type *image;
+    std::string   value_string;
+};
+
+
+struct choice_selection_type
+{
+    int                         selected;
+    int                         position;
+    int                         position_max;
+    int                         number_of_data;
+    selection_data_type        *data;
+};
+
 struct UI_element_struct
 {
     int                     window_UID;
@@ -172,6 +190,7 @@ struct UI_form_struct
     delay_struct            mouse_delay;
     bool                    mouse_over_menu;
     bool                    mouse_over_title;
+    int                     number_of_choice_selections;
     int                     number_of_elements;
     f3_type                 position;
     bool                    set_behind;
@@ -184,7 +203,7 @@ struct UI_form_struct
     int                     UID;
     zoom_struct             zoom;
     UI_element_struct      *element;
-    //choice_selection_type   choice_selection[MAX_CHOICE_SELECTIONS_PER_MENU];
+    choice_selection_type  *choice_selection;
 };
 
 #endif // UI_TYPES_H

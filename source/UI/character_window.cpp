@@ -350,8 +350,6 @@ void setup_character_window(int UID)
 
 void update_character_window(UI_form_struct *UI_form_pointer)
 {
-    /*
-    int window_number = game.UI_manager.window_get_number(UID);
     int element_number = 1; //--- player portrait ---
     UI_form_pointer->element[element_number].texture.normal              = game.player.portrait;
     UI_form_pointer->element[element_number].texture.highlighted         = game.player.portrait;
@@ -373,7 +371,6 @@ void update_character_window(UI_form_struct *UI_form_pointer)
     element_number = 7; //--- TEST INT VARIABLE OUTPUT ---
     UI_form_pointer->element[element_number].title.text                  = "Element: " + ullint_to_string(game.test_2);
     UI_form_pointer->element[element_number].title.size.x                = ((float)UI_form_pointer->element[element_number].title.size.y / (float)UI_form_pointer->element[element_number].title.text.length()) * 4.5f;
-    */
 };
 
 void process_character_window(UI_form_struct *UI_form_pointer)

@@ -29,7 +29,7 @@
 #include "UI_manager.hpp"
 
 void setup_character_window(int UID);
-void update_character_window(int UID);
+void update_character_window(UI_form_struct *UI_form_pointer);
 void process_character_window(UI_form_struct *UI_form_pointer);
 
 #endif // CHARACTER_WINDOW_H

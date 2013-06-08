@@ -1104,7 +1104,7 @@
 	"UI_types.hpp"
 	"UI_types.hpp"
 
-1370620953 source:c:\_git_\frost_and_flame\source\ui\menu_main.cpp
+1370695911 source:c:\_git_\frost_and_flame\source\ui\menu_main.cpp
 	"menu_main.hpp"
 	"UI_manager.hpp"
 	"../game.hpp"
@@ -1117,7 +1117,7 @@
 	"UI_types.hpp"
 	"UI_manager.hpp"
 
-1370620302 source:c:\_git_\frost_and_flame\source\ui\menu_game_new.cpp
+1370695669 source:c:\_git_\frost_and_flame\source\ui\menu_game_new.cpp
 	"menu_game_new.hpp"
 	"../game.hpp"
 
@@ -1149,7 +1149,7 @@
 	"UI_types.hpp"
 	"UI_manager.hpp"
 
-1370620276 source:c:\_git_\frost_and_flame\source\ui\menu_options.cpp
+1370696154 source:c:\_git_\frost_and_flame\source\ui\menu_options.cpp
 	"menu_options.hpp"
 	<string>
 	"../game.hpp"
@@ -1175,7 +1175,7 @@
 	"UI_types.hpp"
 	"UI_manager.hpp"
 
-1370620267 source:c:\_git_\frost_and_flame\source\ui\player_profile.cpp
+1370693346 source:c:\_git_\frost_and_flame\source\ui\player_profile.cpp
 	"player_profile.hpp"
 	"../game.hpp"
 	"../core/misc.hpp"
@@ -1191,11 +1191,11 @@
 	"../game.hpp"
 	"../core/misc.hpp"
 
-1370581327 c:\_git_\frost_and_flame\source\ui\character_window.hpp
+1370695399 c:\_git_\frost_and_flame\source\ui\character_window.hpp
 	"UI_types.hpp"
 	"UI_manager.hpp"
 
-1370692160 source:c:\_git_\frost_and_flame\source\ui\character_window.cpp
+1370695301 source:c:\_git_\frost_and_flame\source\ui\character_window.cpp
 	"menu_main.hpp"
 	"../game.hpp"
 	"../core/misc.hpp"
@@ -1212,7 +1212,7 @@
 	"UI_types.hpp"
 	"UI_manager.hpp"
 
-1370620323 source:c:\_git_\frost_and_flame\source\ui\inventory_window.cpp
+1370692367 source:c:\_git_\frost_and_flame\source\ui\inventory_window.cpp
 	"menu_main.hpp"
 	"../game.hpp"
 
@@ -1820,7 +1820,7 @@
 1370581327 c:\_git_\frost_and_flame\source\ui\ui_cursor.hpp
 	"UI_types.hpp"
 
-1370620919 c:\_git_\frost_and_flame\source\ui\ui_types.hpp
+1370694654 c:\_git_\frost_and_flame\source\ui\ui_types.hpp
 	<string>
 	"../core/font_manager.hpp"
 	"../core/sound_manager.hpp"
@@ -1841,7 +1841,7 @@
 1370517381 source:c:\_git_\frost_and_flame\source\ui\ui_types.cpp
 	"UI_types.hpp"
 
-1370621020 source:c:\_git_\frost_and_flame\source\ui\ui_manager.cpp
+1370696212 source:c:\_git_\frost_and_flame\source\ui\ui_manager.cpp
 	"UI_manager.hpp"
 	"../game.hpp"
 
