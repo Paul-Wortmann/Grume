@@ -333,7 +333,7 @@
 	</File>
 	<File name="source\UI\character_window.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="1348" topLine="25" />
+			<Cursor1 position="34155" topLine="384" />
 		</Cursor>
 	</File>
 	<File name="source\core\file.hpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -396,7 +396,7 @@
 			<Cursor1 position="3359" topLine="98" />
 		</Cursor>
 	</File>
-	<File name="source\UI\equipment_window.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="source\UI\equipment_window.cpp" open="1" top="1" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="1319" topLine="24" />
 		</Cursor>

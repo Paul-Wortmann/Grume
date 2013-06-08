@@ -1192,357 +1192,356 @@ void setup_inventory_window(int UID)
 
 void process_inventory_window(UI_form_struct *UI_form_pointer)
 {
-    /*
     if (UI_form_pointer->event.id > EVENT_NONE)
     {
         switch (UI_form_pointer->event.id)
         {
             case ((0*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Close menu button
-                game.window_manager.window_disable(INVENTORY_UID);
+                game.UI_manager.UI_form_disable(UID_INVENTORY);
                 game.core.inventory_active     = false;
                 game.core.io.mouse_button_left = false;
             break;
-            case (EVENT_WINDOW_STACK_SORT): //Window stack sort
-                game.window_manager.window_stack_sort();
-                game.window_manager.event.id = EVENT_NONE;
+            case (EVENT_UI_STACK_SORT): //Window stack sort
+                game.UI_manager.UI_form_stack_sort();
+                game.UI_manager.event.id = EVENT_NONE;
             break;
             case (EVENT_ELEMENT_DRAG): //Element drag event posted
-                //game.window_manager.source.window = INVENTORY_UID;
+                //game.UI_manager.source.window = UID_INVENTORY;
             break;
             case ((1*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
                 UI_form_pointer->event.id = EVENT_NONE;
             break;
             case ((1*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
-                use_item(window_number,1);
+                //use_item(window_number,1);
                 UI_form_pointer->event.id = EVENT_NONE;
             break;
             case ((2*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
                 UI_form_pointer->event.id = EVENT_NONE;
             break;
             case ((2*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
-                use_item(window_number,2);
+                //use_item(window_number,2);
                 UI_form_pointer->event.id = EVENT_NONE;
             break;
             case ((3*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
                 UI_form_pointer->event.id = EVENT_NONE;
             break;
             case ((3*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
-                use_item(window_number,3);
+                //use_item(window_number,3);
                 UI_form_pointer->event.id = EVENT_NONE;
             break;
             case ((4*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
                 UI_form_pointer->event.id = EVENT_NONE;
             break;
             case ((4*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
-                use_item(window_number,4);
+                //use_item(window_number,4);
                 UI_form_pointer->event.id = EVENT_NONE;
             break;
             case ((5*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
                 UI_form_pointer->event.id = EVENT_NONE;
             break;
             case ((5*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
-                use_item(window_number,5);
+                //use_item(window_number,5);
                 UI_form_pointer->event.id = EVENT_NONE;
             break;
             case ((6*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
                 UI_form_pointer->event.id = EVENT_NONE;
             break;
             case ((6*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
-                use_item(window_number,6);
+                //use_item(window_number,6);
                 UI_form_pointer->event.id = EVENT_NONE;
             break;
             case ((7*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
                 UI_form_pointer->event.id = EVENT_NONE;
             break;
             case ((7*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
-                use_item(window_number,7);
+                //use_item(window_number,7);
                 UI_form_pointer->event.id = EVENT_NONE;
             break;
             case ((8*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
                 UI_form_pointer->event.id = EVENT_NONE;
             break;
             case ((8*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
-                use_item(window_number,8);
+                //use_item(window_number,8);
                 UI_form_pointer->event.id = EVENT_NONE;
             break;
             case ((9*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
                 UI_form_pointer->event.id = EVENT_NONE;
             break;
             case ((9*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
-                use_item(window_number,9);
+                //use_item(window_number,9);
                 UI_form_pointer->event.id = EVENT_NONE;
             break;
             case ((10*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
                 UI_form_pointer->event.id = EVENT_NONE;
             break;
             case ((10*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
-                use_item(window_number,10);
+                //use_item(window_number,10);
                 UI_form_pointer->event.id = EVENT_NONE;
             break;
             case ((11*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
                 UI_form_pointer->event.id = EVENT_NONE;
             break;
             case ((11*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
-                use_item(window_number,11);
+                //use_item(window_number,11);
                 UI_form_pointer->event.id = EVENT_NONE;
             break;
             case ((12*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
                 UI_form_pointer->event.id = EVENT_NONE;
             break;
             case ((12*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
-                use_item(window_number,12);
+                //use_item(window_number,12);
                 UI_form_pointer->event.id = EVENT_NONE;
             break;
             case ((13*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
                 UI_form_pointer->event.id = EVENT_NONE;
             break;
             case ((13*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
-                use_item(window_number,13);
+                //use_item(window_number,13);
                 UI_form_pointer->event.id = EVENT_NONE;
             break;
             case ((14*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
                 UI_form_pointer->event.id = EVENT_NONE;
             break;
             case ((14*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
-                use_item(window_number,14);
+                //use_item(window_number,14);
                 UI_form_pointer->event.id = EVENT_NONE;
             break;
             case ((15*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
                 UI_form_pointer->event.id = EVENT_NONE;
             break;
             case ((15*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
-                use_item(window_number,15);
+                //use_item(window_number,15);
                 UI_form_pointer->event.id = EVENT_NONE;
             break;
             case ((16*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
                 UI_form_pointer->event.id = EVENT_NONE;
             break;
             case ((16*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
-                use_item(window_number,16);
+                //use_item(window_number,16);
                 UI_form_pointer->event.id = EVENT_NONE;
             break;
             case ((17*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
                 UI_form_pointer->event.id = EVENT_NONE;
             break;
             case ((17*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
-                use_item(window_number,17);
+                //use_item(window_number,17);
                 UI_form_pointer->event.id = EVENT_NONE;
             break;
             case ((18*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
                 UI_form_pointer->event.id = EVENT_NONE;
             break;
             case ((18*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
-                use_item(window_number,18);
+                //use_item(window_number,18);
                 UI_form_pointer->event.id = EVENT_NONE;
             break;
             case ((19*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
                 UI_form_pointer->event.id = EVENT_NONE;
             break;
             case ((19*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
-                use_item(window_number,19);
+                //use_item(window_number,19);
                 UI_form_pointer->event.id = EVENT_NONE;
             break;
             case ((20*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
                 UI_form_pointer->event.id = EVENT_NONE;
             break;
             case ((20*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
-                use_item(window_number,20);
+                //use_item(window_number,20);
                 UI_form_pointer->event.id = EVENT_NONE;
             break;
             case ((21*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
                 UI_form_pointer->event.id = EVENT_NONE;
             break;
             case ((21*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
-                use_item(window_number,21);
+                //use_item(window_number,21);
                 UI_form_pointer->event.id = EVENT_NONE;
             break;
             case ((22*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
                 UI_form_pointer->event.id = EVENT_NONE;
             break;
             case ((22*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
-                use_item(window_number,22);
+                //use_item(window_number,22);
                 UI_form_pointer->event.id = EVENT_NONE;
             break;
             case ((23*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
                 UI_form_pointer->event.id = EVENT_NONE;
             break;
             case ((23*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
-                use_item(window_number,23);
+                //use_item(window_number,23);
                 UI_form_pointer->event.id = EVENT_NONE;
             break;
             case ((24*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
                 UI_form_pointer->event.id = EVENT_NONE;
             break;
             case ((24*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
-                use_item(window_number,24);
+                //use_item(window_number,24);
                 UI_form_pointer->event.id = EVENT_NONE;
             break;
             case ((25*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
                 UI_form_pointer->event.id = EVENT_NONE;
             break;
             case ((25*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
-                use_item(window_number,25);
+                //use_item(window_number,25);
                 UI_form_pointer->event.id = EVENT_NONE;
             break;
             case ((26*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
                 UI_form_pointer->event.id = EVENT_NONE;
             break;
             case ((26*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
-                use_item(window_number,26);
+                //use_item(window_number,26);
                 UI_form_pointer->event.id = EVENT_NONE;
             break;
             case ((27*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
                 UI_form_pointer->event.id = EVENT_NONE;
             break;
             case ((27*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
-                use_item(window_number,27);
+                //use_item(window_number,27);
                 UI_form_pointer->event.id = EVENT_NONE;
             break;
             case ((28*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
                 UI_form_pointer->event.id = EVENT_NONE;
             break;
             case ((28*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
-                use_item(window_number,28);
+                //use_item(window_number,28);
                 UI_form_pointer->event.id = EVENT_NONE;
             break;
             case ((29*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
                 UI_form_pointer->event.id = EVENT_NONE;
             break;
             case ((29*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
-                use_item(window_number,29);
+                //use_item(window_number,29);
                 UI_form_pointer->event.id = EVENT_NONE;
             break;
             case ((30*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
                 UI_form_pointer->event.id = EVENT_NONE;
             break;
             case ((30*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
-                use_item(window_number,30);
+                //use_item(window_number,30);
                 UI_form_pointer->event.id = EVENT_NONE;
             break;
             case ((31*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
                 UI_form_pointer->event.id = EVENT_NONE;
             break;
             case ((31*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
-                use_item(window_number,31);
+                //use_item(window_number,31);
                 UI_form_pointer->event.id = EVENT_NONE;
             break;
             case ((32*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
                 UI_form_pointer->event.id = EVENT_NONE;
             break;
             case ((32*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
-                use_item(window_number,32);
+                //use_item(window_number,32);
                 UI_form_pointer->event.id = EVENT_NONE;
             break;
             case ((33*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
                 UI_form_pointer->event.id = EVENT_NONE;
             break;
             case ((33*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
-                use_item(window_number,33);
+                //use_item(window_number,33);
                 UI_form_pointer->event.id = EVENT_NONE;
             break;
             case ((34*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
                 UI_form_pointer->event.id = EVENT_NONE;
             break;
             case ((34*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
-                use_item(window_number,34);
+                //use_item(window_number,34);
                 UI_form_pointer->event.id = EVENT_NONE;
             break;
             case ((35*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
                 UI_form_pointer->event.id = EVENT_NONE;
             break;
             case ((35*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
-                use_item(window_number,35);
+                //use_item(window_number,35);
                 UI_form_pointer->event.id = EVENT_NONE;
             break;
             case ((36*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
                 UI_form_pointer->event.id = EVENT_NONE;
             break;
             case ((36*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
-                use_item(window_number,36);
+                //use_item(window_number,36);
                 UI_form_pointer->event.id = EVENT_NONE;
             break;
             case ((37*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
                 UI_form_pointer->event.id = EVENT_NONE;
             break;
             case ((37*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
-                use_item(window_number,37);
+                //use_item(window_number,37);
                 UI_form_pointer->event.id = EVENT_NONE;
             break;
             case ((38*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
                 UI_form_pointer->event.id = EVENT_NONE;
             break;
             case ((38*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
-                use_item(window_number,38);
+                //use_item(window_number,38);
                 UI_form_pointer->event.id = EVENT_NONE;
             break;
             case ((39*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
                 UI_form_pointer->event.id = EVENT_NONE;
             break;
             case ((39*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
-                use_item(window_number,39);
+                //use_item(window_number,39);
                 UI_form_pointer->event.id = EVENT_NONE;
             break;
             case ((40*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
                 UI_form_pointer->event.id = EVENT_NONE;
             break;
             case ((40*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
-                use_item(window_number,40);
+                //use_item(window_number,40);
                 UI_form_pointer->event.id = EVENT_NONE;
             break;
             case ((41*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
                 UI_form_pointer->event.id = EVENT_NONE;
             break;
             case ((41*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
-                use_item(window_number,41);
+                //use_item(window_number,41);
                 UI_form_pointer->event.id = EVENT_NONE;
             break;
             case ((42*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
                 UI_form_pointer->event.id = EVENT_NONE;
             break;
             case ((42*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
-                use_item(window_number,42);
+                //use_item(window_number,42);
                 UI_form_pointer->event.id = EVENT_NONE;
             break;
             case ((43*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
                 UI_form_pointer->event.id = EVENT_NONE;
             break;
             case ((43*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
-                use_item(window_number,43);
+                //use_item(window_number,43);
                 UI_form_pointer->event.id = EVENT_NONE;
             break;
             case ((44*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
                 UI_form_pointer->event.id = EVENT_NONE;
             break;
             case ((44*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
-                use_item(window_number,44);
+                //use_item(window_number,44);
                 UI_form_pointer->event.id = EVENT_NONE;
             break;
             case ((45*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
                 UI_form_pointer->event.id = EVENT_NONE;
             break;
             case ((45*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
-                use_item(window_number,45);
+                //use_item(window_number,45);
                 UI_form_pointer->event.id = EVENT_NONE;
             break;
             case ((46*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
                 UI_form_pointer->event.id = EVENT_NONE;
             break;
             case ((46*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
-                use_item(window_number,46);
+                //use_item(window_number,46);
                 UI_form_pointer->event.id = EVENT_NONE;
             break;
             case ((47*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
                 UI_form_pointer->event.id = EVENT_NONE;
             break;
             case ((47*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
-                use_item(window_number,47);
+                //use_item(window_number,47);
                 UI_form_pointer->event.id = EVENT_NONE;
             break;
             case ((48*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
                 UI_form_pointer->event.id = EVENT_NONE;
             break;
             case ((48*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
-                use_item(window_number,48);
+                //use_item(window_number,48);
                 UI_form_pointer->event.id = EVENT_NONE;
             break;
             default:
@@ -1552,6 +1551,5 @@ void process_inventory_window(UI_form_struct *UI_form_pointer)
         }
     }
     UI_form_pointer->event.id = EVENT_NONE;
-    */
 };
 

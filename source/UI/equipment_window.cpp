@@ -463,22 +463,21 @@ void setup_equipment_window(int UID)
 
 void process_equipment_window(UI_form_struct *UI_form_pointer)
 {
-    /*
     if(UI_form_pointer->event.id > EVENT_NONE)
     {
         switch (UI_form_pointer->event.id)
         {
             case ((0*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Close menu button
-                game.window_manager.window_disable(EQUIPMENT_UID);
+                game.UI_manager.UI_form_disable(UID_EQUIPMENT);
                 game.core.equipment_active     = false;
                 game.core.io.mouse_button_left = false;
             break;
-            case (EVENT_WINDOW_STACK_SORT): //Window stack sort
-                game.window_manager.window_stack_sort();
-                game.window_manager.event.id = EVENT_NONE;
+            case (EVENT_UI_STACK_SORT): //Window stack sort
+                game.UI_manager.UI_form_stack_sort();
+                game.UI_manager.event.id = EVENT_NONE;
             break;
             case (EVENT_ELEMENT_DRAG): //Element drag event posted
-                //game.window_manager.source.window = EQUIPMENT_UID;
+                //game.UI_manager.source.window = EQUIPMENT_UID;
             break;
             default:
                 game.core.log.file_write("Unable to process event - ",UI_form_pointer->event.id, " - UID - ",UI_form_pointer->UID);
@@ -487,26 +486,4 @@ void process_equipment_window(UI_form_struct *UI_form_pointer)
         }
     }
     UI_form_pointer->event.id = EVENT_NONE;
-    */
 };
-
-
-/*
-
-#define ITEM_NONE       30
-#define ITEM_RING       31
-#define ITEM_NECK       32
-#define ITEM_HEAD       33
-#define ITEM_HAND       34
-#define ITEM_FEET       35
-#define ITEM_BODY       36
-#define ITEM_SHIELD     37
-#define ITEM_WEAPON     38
-
-#define ITEM_POTION     39
-#define ITEM_SPELL      40
-#define ITEM_SPELL_BOOK 41
-
-*/
-
-

@@ -351,7 +351,7 @@ void setup_character_window(int UID)
 void update_character_window(UI_form_struct *UI_form_pointer)
 {
     /*
-    int window_number = game.window_manager.window_get_number(UID);
+    int window_number = game.UI_manager.window_get_number(UID);
     int element_number = 1; //--- player portrait ---
     UI_form_pointer->element[element_number].texture.normal              = game.player.portrait;
     UI_form_pointer->element[element_number].texture.highlighted         = game.player.portrait;
@@ -379,22 +379,21 @@ void update_character_window(UI_form_struct *UI_form_pointer)
 void process_character_window(UI_form_struct *UI_form_pointer)
 {
     //update_character_window(CHARACTER_UID);
-    /*
     if(UI_form_pointer->event.id > EVENT_NONE)
     {
         switch (UI_form_pointer->event.id)
         {
             case ((0*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Close menu button
-                game.window_manager.window_disable(CHARACTER_UID);
+                game.UI_manager.UI_form_disable(UID_CHARACTER);
                 game.core.character_active     = false;
                 game.core.io.mouse_button_left = false;
             break;
-            case (EVENT_WINDOW_STACK_SORT): //Window stack sort
-                game.window_manager.window_stack_sort();
-                game.window_manager.event.id = EVENT_NONE;
+            case (EVENT_UI_STACK_SORT): //Window stack sort
+                game.UI_manager.UI_form_stack_sort();
+                game.UI_manager.event.id = EVENT_NONE;
             break;
             case (EVENT_ELEMENT_DRAG): //Element drag event posted
-                //game.window_manager.source.window = CHARACTER_UID;
+                //game.UI_manager.source.window = CHARACTER_UID;
             break;
             default:
                 game.core.log.file_write("Unable to process event - ",UI_form_pointer->event.id, " - UID - ",UI_form_pointer->UID);
@@ -403,7 +402,6 @@ void process_character_window(UI_form_struct *UI_form_pointer)
         }
     }
     UI_form_pointer->event.id = EVENT_NONE;
-    */
 };
 
 
