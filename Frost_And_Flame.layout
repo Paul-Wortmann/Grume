@@ -183,7 +183,7 @@
 	</File>
 	<File name="source\item_manager.cpp" open="0" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="6977" topLine="126" />
+			<Cursor1 position="8355" topLine="144" />
 		</Cursor>
 	</File>
 	<File name="source\core\music_manager.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -226,9 +226,9 @@
 			<Cursor1 position="1010" topLine="11" />
 		</Cursor>
 	</File>
-	<File name="source\UI\menu_main.cpp" open="1" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="source\UI\menu_main.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="27492" topLine="304" />
+			<Cursor1 position="28042" topLine="312" />
 		</Cursor>
 	</File>
 	<File name="source\UI\quest_log_window.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -283,7 +283,7 @@
 	</File>
 	<File name="source\UI\menu_main.hpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="1019" topLine="7" />
+			<Cursor1 position="1019" topLine="0" />
 		</Cursor>
 	</File>
 	<File name="source\core\config.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">

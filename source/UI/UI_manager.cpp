@@ -127,6 +127,7 @@ UI_form_struct *UI_manager_class::UI_form_add(int UI_form_UID)
 void UI_manager_class::setup(void)
 {
     setup_action_bar      (UID_ACTIONBAR);
+    setup_player_profile  (UID_PCPROFILE);
     setup_character_window(UID_CHARACTER);
     setup_equipment_window(UID_EQUIPMENT);
     setup_inventory_window(UID_INVENTORY);
@@ -135,7 +136,6 @@ void UI_manager_class::setup(void)
     setup_menu_game_save  (UID_MENU_GAME_SAVE);
     setup_menu_main       (UID_MENU_MAIN);
     setup_menu_options    (UID_MENU_OPTIONS);
-    setup_player_profile  (UID_PCPROFILE);
     setup_quest_log_window(UID_QUEST_LOG);
     setup_skillbook_window(UID_SKILLBOOK);
     //--- Enable windows. ---
@@ -201,8 +201,30 @@ void UI_manager_class::UI_form_disable(int UI_form_UID)
 
 void UI_manager_class::UI_form_stack_sort(void)
 {
-
-};
+    if (!UI_manager_class::element_drag_in_progress)
+    {
+        if (UI_manager_class::number_of_UI_forms > 1) // only processed if there are actually windows in the list to sort.
+        {
+            UI_form_struct *UI_form_pointer_1;
+            UI_form_struct *UI_form_pointer_2;
+            UI_form_pointer_1 = new UI_form_struct;
+            UI_form_pointer_2 = new UI_form_struct;
+            UI_form_struct UI_form_data;
+            for ( UI_form_pointer_1 = UI_manager_class::root ; UI_form_pointer_1!=NULL ; UI_form_pointer_1 = UI_form_pointer_1->next )
+            {
+                for ( UI_form_pointer_2 = UI_form_pointer_1->next ; UI_form_pointer_2!=NULL ; UI_form_pointer_2 = UI_form_pointer_2->next )
+                {
+                    if (UI_form_pointer_1->active)
+                    {
+                        UI_form_data = *UI_form_pointer_1;
+                        UI_form_pointer_1 = UI_form_pointer_2;
+                        UI_form_pointer_2 = &UI_form_data;
+                    }
+                }
+            }
+        }
+    }
+}
 
 void UI_manager_class::UI_form_set_active(int UI_form_UID)
 {
@@ -638,7 +660,7 @@ void UI_manager_class::process(void)
                     }
                 }
             }
-            game.core.log.file_write("Event_ID -> ",return_value.id);
+            //-----------------------------------------------------------------------------------------------------
             //if (window_in_focus)
             if (return_value.id == EVENT_NONE)
             {
