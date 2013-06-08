@@ -261,6 +261,7 @@ void setup_menu_game_new(int UID)
     UI_form_pointer->choice_selection[choice_selection_number].data[11].image      = game.texture_manager.add_texture("data/textures/UI/portraits/portrait_11.png");
     UI_form_pointer->choice_selection[choice_selection_number].data[12].image      = game.texture_manager.add_texture("data/textures/UI/portraits/portrait_12.png");
     game.player.portrait = UI_form_pointer->choice_selection[choice_selection_number].data[ 0].image;
+//----------------------------------------------------------------------------------------------------------------------
 
     element_number = 3; // left arrow button for player portrait selection
     UI_form_pointer->element[element_number].window_UID                = UI_form_pointer->UID;

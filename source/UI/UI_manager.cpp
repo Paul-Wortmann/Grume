@@ -138,7 +138,18 @@ void UI_manager_class::setup(void)
     setup_player_profile  (UID_PCPROFILE);
     setup_quest_log_window(UID_QUEST_LOG);
     setup_skillbook_window(UID_SKILLBOOK);
+    //--- Enable windows. ---
     UI_manager_class::UI_form_enable(UID_MENU_MAIN);
+    //--- Set the main menu as the default active window. ---
+    UI_manager_class::UI_form_set_active(UID_MENU_MAIN);
+    // --- Allow specific textures to be rotated ----
+    texture_type *temp_pointer;
+    temp_pointer = game.texture_manager.add_texture("data/textures/UI/menu/arrow_normal.png");
+    temp_pointer->rotate_able = true;
+    temp_pointer = game.texture_manager.add_texture("data/textures/UI/menu/arrow_highlighted.png");
+    temp_pointer->rotate_able = true;
+    temp_pointer = game.texture_manager.add_texture("data/textures/UI/menu/arrow_disabled.png");
+    temp_pointer->rotate_able = true;
 }
 
 UI_form_struct *UI_manager_class::UI_form_get(int UI_form_UID)
@@ -205,19 +216,20 @@ void UI_manager_class::UI_form_set_active(int UI_form_UID)
     }
 };
 
-int UI_manager_class::UI_form_get_active(int UI_form_UID)
+bool UI_manager_class::UI_form_get_active(int UI_form_UID)
 {
+    bool return_value = false;
     UI_form_struct *UI_form_pointer;
     UI_form_pointer = UI_manager_class::root;
     while (UI_form_pointer != NULL)
     {
         if (UI_form_pointer->UID == UI_form_UID)
         {
-            UI_form_pointer->enabled = false;
-            UI_form_pointer->active  = false;
+            return_value = UI_form_pointer->active;
         }
         UI_form_pointer = UI_form_pointer->next;
     }
+    return (return_value);
 };
 
 void UI_manager_class::UI_form_set_position(int UI_form_UID_src, int UI_form_UID_dst)
@@ -615,15 +627,7 @@ void UI_manager_class::process(void)
                         // ------------------------------------------------------------------------------------------
                         if (return_value.id != EVENT_NONE)
                         {
-                            switch (return_value.id)
-                            {
-                                case EVENT_ELEMENT_DRAG:
-                                    //game.UI_manager.source.element = element_number;
-                                break;
-                                default:
-                                    return_value.id += (element_number * EVENT_BUTTON_MULTIPLIER);
-                                break;
-                            }
+                            return_value.id += (element_number * EVENT_BUTTON_MULTIPLIER);
                             allow_drag       = false;
                         }
                         if (UI_form_pointer->element[element_number].mouse_over)
@@ -634,7 +638,9 @@ void UI_manager_class::process(void)
                     }
                 }
             }
+            game.core.log.file_write("Event_ID -> ",return_value.id);
             //if (window_in_focus)
+            if (return_value.id == EVENT_NONE)
             {
                 // ------------------------- Drag -------------------------
                 if (!game.UI_manager.drag_in_progress)
@@ -688,8 +694,8 @@ void UI_manager_class::process(void)
                             UI_form_pointer->drag_offset_x                = UI_form_pointer->position.x - game.core.io.mouse_x;
                             UI_form_pointer->drag_offset_y                = UI_form_pointer->position.y - game.core.io.mouse_y;
                             UI_form_pointer->drag_active                  = true;
-                            game.UI_manager.drag_in_progress       = true;
-                            return_value.id                            = EVENT_UI_STACK_SORT;
+                            game.UI_manager.drag_in_progress              = true;
+                            return_value.id                               = EVENT_UI_STACK_SORT;
                         }
                     }
                     // user clicked on window, that is not title or an element.

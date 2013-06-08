@@ -325,14 +325,15 @@ void process_menu_main(UI_form_struct *UI_form_pointer)
         switch (UI_form_pointer->event.id)
         {
             case ((0*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Close menu button
+                game.core.log.file_write("close button clicked....");
                 if (game.state == STATE_GAME)
                 {
-                    UI_form_pointer->enabled   = false;;
+                    game.UI_manager.UI_form_disable(UID_MENU_MAIN);
                 }
                 else
                 {
                     game.state = STATE_QUIT;
-                    UI_form_pointer->enabled   = false;;
+                    game.UI_manager.UI_form_disable(UID_MENU_MAIN);
                 }
                 game.core.game_menu_active     = false;
                 game.core.io.mouse_button_left = false;

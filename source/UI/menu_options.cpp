@@ -199,28 +199,49 @@ void setup_menu_options(int UID)
     UI_form_pointer->element[element_number].mouse_delay.maximum       = 30;
 
 // ------------------------------------- Resolution selection --------------------------------------------------------
-/*
-    UI_form_pointer->choice_selection[0].selected                = 0; // Resolution selection
-    UI_form_pointer->choice_selection[0].position                = 0;
-    UI_form_pointer->choice_selection[0].position_max            = 7;
-    UI_form_pointer->choice_selection[0].data[game.core.config.display_resolution].active          = true;
-    UI_form_pointer->choice_selection[0].data[0].value_int       = 0;
-    UI_form_pointer->choice_selection[0].data[0].value_string    = " 640 X 480 ";
-    UI_form_pointer->choice_selection[0].data[1].value_int       = 1;
-    UI_form_pointer->choice_selection[0].data[1].value_string    = " 800 X 600 ";
-    UI_form_pointer->choice_selection[0].data[2].value_int       = 2;
-    UI_form_pointer->choice_selection[0].data[2].value_string    = "1028 X 768 ";
-    UI_form_pointer->choice_selection[0].data[3].value_int       = 3;
-    UI_form_pointer->choice_selection[0].data[3].value_string    = "1280 X 1024";
-    UI_form_pointer->choice_selection[0].data[4].value_int       = 4;
-    UI_form_pointer->choice_selection[0].data[4].value_string    = "1366 X 768 ";
-    UI_form_pointer->choice_selection[0].data[5].value_int       = 5;
-    UI_form_pointer->choice_selection[0].data[5].value_string    = "1440 X 900 ";
-    UI_form_pointer->choice_selection[0].data[6].value_int       = 6;
-    UI_form_pointer->choice_selection[0].data[6].value_string    = "1680 X 1050";
-    UI_form_pointer->choice_selection[0].data[7].value_int       = 7;
-    UI_form_pointer->choice_selection[0].data[7].value_string    = "1920 X 1080";
-*/
+    UI_form_pointer->number_of_choice_selections = 1;
+    UI_form_pointer->choice_selection = new choice_selection_type[UI_form_pointer->number_of_choice_selections];
+    for (int choice_selection_count = 0; choice_selection_count < UI_form_pointer->number_of_choice_selections; choice_selection_count++)
+    {
+        UI_form_pointer->choice_selection[choice_selection_count].selected     = 0;
+        UI_form_pointer->choice_selection[choice_selection_count].position     = 0;
+        UI_form_pointer->choice_selection[choice_selection_count].position_max = 0;
+        UI_form_pointer->choice_selection[choice_selection_count].number_of_data = 13;
+        UI_form_pointer->choice_selection[choice_selection_count].data = new selection_data_type[UI_form_pointer->choice_selection[choice_selection_count].number_of_data];
+        for (int data_count = 0; data_count < UI_form_pointer->choice_selection[choice_selection_count].number_of_data; data_count++)
+        {
+            UI_form_pointer->choice_selection[choice_selection_count].data[data_count].active       = false;
+            UI_form_pointer->choice_selection[choice_selection_count].data[data_count].value_int    = 0;
+            UI_form_pointer->choice_selection[choice_selection_count].data[data_count].value_string = "";
+        }
+    }
+    int choice_selection_number = 0;
+
+    UI_form_pointer->choice_selection[choice_selection_number].selected         = 0; // Resolution selection
+    UI_form_pointer->choice_selection[choice_selection_number].position         = 0;
+    UI_form_pointer->choice_selection[choice_selection_number].position_max     = 7;
+    for (int data_position_count = 0; data_position_count <= UI_form_pointer->choice_selection[choice_selection_number].position_max;data_position_count++)
+    {
+        UI_form_pointer->choice_selection[choice_selection_number].data[data_position_count].active = false;
+    }
+    UI_form_pointer->choice_selection[choice_selection_number].data[game.core.config.display_resolution].active          = true;
+    UI_form_pointer->choice_selection[choice_selection_number].data[0].value_int       = 0;
+    UI_form_pointer->choice_selection[choice_selection_number].data[0].value_string    = " 640 X 480 ";
+    UI_form_pointer->choice_selection[choice_selection_number].data[1].value_int       = 1;
+    UI_form_pointer->choice_selection[choice_selection_number].data[1].value_string    = " 800 X 600 ";
+    UI_form_pointer->choice_selection[choice_selection_number].data[2].value_int       = 2;
+    UI_form_pointer->choice_selection[choice_selection_number].data[2].value_string    = "1028 X 768 ";
+    UI_form_pointer->choice_selection[choice_selection_number].data[3].value_int       = 3;
+    UI_form_pointer->choice_selection[choice_selection_number].data[3].value_string    = "1280 X 1024";
+    UI_form_pointer->choice_selection[choice_selection_number].data[4].value_int       = 4;
+    UI_form_pointer->choice_selection[choice_selection_number].data[4].value_string    = "1366 X 768 ";
+    UI_form_pointer->choice_selection[choice_selection_number].data[5].value_int       = 5;
+    UI_form_pointer->choice_selection[choice_selection_number].data[5].value_string    = "1440 X 900 ";
+    UI_form_pointer->choice_selection[choice_selection_number].data[6].value_int       = 6;
+    UI_form_pointer->choice_selection[choice_selection_number].data[6].value_string    = "1680 X 1050";
+    UI_form_pointer->choice_selection[choice_selection_number].data[7].value_int       = 7;
+    UI_form_pointer->choice_selection[choice_selection_number].data[7].value_string    = "1920 X 1080";
+//----------------------------------------------------------------------------------------------------------------------
     element_number = 2; // Resolution selection element
     UI_form_pointer->element[element_number].window_UID                = UI_form_pointer->UID;
     UI_form_pointer->element[element_number].element_UID               = element_number;
@@ -246,8 +267,8 @@ void setup_menu_options(int UID)
     UI_form_pointer->element[element_number].window_UID                = UI_form_pointer->UID;
     UI_form_pointer->element[element_number].element_UID               = element_number;
     UI_form_pointer->element[element_number].title.enabled             = true;
-    /* test *///UI_form_pointer->element[element_number].title.text                = UI_form_pointer->choice_selection[0].data[0].value_string;
-    /* test *///UI_form_pointer->element[element_number].selected                  = UI_form_pointer->choice_selection[0].data[0].active;
+    UI_form_pointer->element[element_number].title.text                = UI_form_pointer->choice_selection[0].data[0].value_string;
+    UI_form_pointer->element[element_number].selected                  = UI_form_pointer->choice_selection[0].data[0].active;
     UI_form_pointer->element[element_number].active                    = true;
     UI_form_pointer->element[element_number].type                      = IMAGE;
     UI_form_pointer->element[element_number].color                     = UI_form_pointer->color;
@@ -273,8 +294,8 @@ void setup_menu_options(int UID)
     UI_form_pointer->element[element_number].window_UID                = UI_form_pointer->UID;
     UI_form_pointer->element[element_number].element_UID               = element_number;
     UI_form_pointer->element[element_number].title.enabled             = true;
-    /* test *///UI_form_pointer->element[element_number].title.text                = UI_form_pointer->choice_selection[0].data[1].value_string;
-    /* test *///UI_form_pointer->element[element_number].selected                  = UI_form_pointer->choice_selection[0].data[1].active;
+    UI_form_pointer->element[element_number].title.text                = UI_form_pointer->choice_selection[0].data[1].value_string;
+    UI_form_pointer->element[element_number].selected                  = UI_form_pointer->choice_selection[0].data[1].active;
     UI_form_pointer->element[element_number].active                    = true;
     UI_form_pointer->element[element_number].type                      = IMAGE;
     UI_form_pointer->element[element_number].color                     = UI_form_pointer->color;
@@ -300,8 +321,8 @@ void setup_menu_options(int UID)
     UI_form_pointer->element[element_number].window_UID                = UI_form_pointer->UID;
     UI_form_pointer->element[element_number].element_UID               = element_number;
     UI_form_pointer->element[element_number].title.enabled             = true;
-    /* test *///UI_form_pointer->element[element_number].title.text                = UI_form_pointer->choice_selection[0].data[2].value_string;
-    /* test *///UI_form_pointer->element[element_number].selected                  = UI_form_pointer->choice_selection[0].data[2].active;
+    UI_form_pointer->element[element_number].title.text                = UI_form_pointer->choice_selection[0].data[2].value_string;
+    UI_form_pointer->element[element_number].selected                  = UI_form_pointer->choice_selection[0].data[2].active;
     UI_form_pointer->element[element_number].active                    = true;
     UI_form_pointer->element[element_number].type                      = IMAGE;
     UI_form_pointer->element[element_number].color                     = UI_form_pointer->color;
@@ -327,8 +348,8 @@ void setup_menu_options(int UID)
     UI_form_pointer->element[element_number].window_UID                = UI_form_pointer->UID;
     UI_form_pointer->element[element_number].element_UID               = element_number;
     UI_form_pointer->element[element_number].title.enabled             = true;
-    /* test *///UI_form_pointer->element[element_number].title.text                = UI_form_pointer->choice_selection[0].data[3].value_string;
-    /* test *///UI_form_pointer->element[element_number].selected                  = UI_form_pointer->choice_selection[0].data[3].active;
+    UI_form_pointer->element[element_number].title.text                = UI_form_pointer->choice_selection[0].data[3].value_string;
+    UI_form_pointer->element[element_number].selected                  = UI_form_pointer->choice_selection[0].data[3].active;
     UI_form_pointer->element[element_number].active                    = true;
     UI_form_pointer->element[element_number].type                      = IMAGE;
     UI_form_pointer->element[element_number].color                     = UI_form_pointer->color;
@@ -354,8 +375,8 @@ void setup_menu_options(int UID)
     UI_form_pointer->element[element_number].window_UID                = UI_form_pointer->UID;
     UI_form_pointer->element[element_number].element_UID               = element_number;
     UI_form_pointer->element[element_number].title.enabled             = true;
-    /* test *///UI_form_pointer->element[element_number].title.text                = UI_form_pointer->choice_selection[0].data[4].value_string;
-    /* test *///UI_form_pointer->element[element_number].selected                  = UI_form_pointer->choice_selection[0].data[4].active;
+    UI_form_pointer->element[element_number].title.text                = UI_form_pointer->choice_selection[0].data[4].value_string;
+    UI_form_pointer->element[element_number].selected                  = UI_form_pointer->choice_selection[0].data[4].active;
     UI_form_pointer->element[element_number].active                    = true;
     UI_form_pointer->element[element_number].type                      = IMAGE;
     UI_form_pointer->element[element_number].color                     = UI_form_pointer->color;
