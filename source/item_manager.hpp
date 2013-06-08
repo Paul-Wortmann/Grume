@@ -47,6 +47,11 @@
 #define ITEM_SPELL           14
 #define ITEM_SPELL_BOOK      15
 
+
+//temp---------------
+#define HEALTH_POTION  20
+#define MANA_POTION    21
+
 /*
 #define NULL_ITEM     -1
 #define HEALTH_POTION  0

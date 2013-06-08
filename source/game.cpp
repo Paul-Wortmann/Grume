@@ -103,52 +103,52 @@ void game_class::init(void)
     tmx_load(&tmx_map,"data/maps/town.tmx");
     game.map_2D.calculate_tile_positions(&tmx_map,DEFAULT_FRAME_WIDTH/game.zoom.current/2.0f,DEFAULT_FRAME_HEIGHT/game.zoom.current/2.0f);
     game.map_2D.center_on_tile(&tmx_map,(tmx_map.data.number_of_tiles/2)+(tmx_map.data.map_width/2));
-/*
+
     // Add default items to the inventory
-    int inventory_ID = game.window_manager.window_get_number(INVENTORY_UID);
+    UI_form_struct *UI_form_pointer;
+    UI_form_pointer = game.UI_manager.UI_form_get(UID_INVENTORY);
     int item_ID = 0;
     int element_number = 1;
     item_ID = game.item_manager.get_item_ID(HEALTH_POTION); // Health Potion
-    game.window_manager.window[inventory_ID].element[element_number].value    = item_ID;
-    game.window_manager.window[inventory_ID].element[element_number].quantity = 1;
-    game.window_manager.window[inventory_ID].element[element_number].texture.normal = game.item_manager.item[item_ID].image;
+    UI_form_pointer->element[element_number].value    = item_ID;
+    UI_form_pointer->element[element_number].quantity = 1;
+    UI_form_pointer->element[element_number].texture.normal = game.item_manager.item[item_ID].image;
     element_number = 2;
     item_ID = game.item_manager.get_item_ID(MANA_POTION); // Mana Potion
-    game.window_manager.window[inventory_ID].element[element_number].value = item_ID;
-    game.window_manager.window[inventory_ID].element[element_number].quantity = 4;
-    game.window_manager.window[inventory_ID].element[element_number].texture.normal = game.item_manager.item[item_ID].image;
+    UI_form_pointer->element[element_number].value = item_ID;
+    UI_form_pointer->element[element_number].quantity = 4;
+    UI_form_pointer->element[element_number].texture.normal = game.item_manager.item[item_ID].image;
 
     // Add default items to the action bar
-    int action_bar_ID = game.window_manager.window_get_number(ACTIONBAR_UID);
+    UI_form_pointer = game.UI_manager.UI_form_get(UID_ACTIONBAR);
     element_number = 16;
-    item_ID = game.item_manager.get_item_ID(SPELL); // ----
-    game.window_manager.window[action_bar_ID].element[element_number].value    = item_ID;
-    game.window_manager.window[action_bar_ID].element[element_number].quantity = 1;
-    game.window_manager.window[action_bar_ID].element[element_number].texture.normal = game.item_manager.item[item_ID].image;
+    item_ID = game.item_manager.get_item_ID(ITEM_SPELL); // ----
+    UI_form_pointer->element[element_number].value    = item_ID;
+    UI_form_pointer->element[element_number].quantity = 1;
+    UI_form_pointer->element[element_number].texture.normal = game.item_manager.item[item_ID].image;
     element_number = 17;
-    item_ID = game.item_manager.get_item_ID(SPELL); // ----
-    game.window_manager.window[action_bar_ID].element[element_number].value    = item_ID;
-    game.window_manager.window[action_bar_ID].element[element_number].quantity = 1;
-    game.window_manager.window[action_bar_ID].element[element_number].texture.normal = game.item_manager.item[item_ID].image;
+    item_ID = game.item_manager.get_item_ID(ITEM_SPELL); // ----
+    UI_form_pointer->element[element_number].value    = item_ID;
+    UI_form_pointer->element[element_number].quantity = 1;
+    UI_form_pointer->element[element_number].texture.normal = game.item_manager.item[item_ID].image;
 
     // Add default items to the equipment menu
-    int equipment_ID = game.window_manager.window_get_number(EQUIPMENT_UID);
+    UI_form_pointer = game.UI_manager.UI_form_get(UID_EQUIPMENT);
     element_number = 13;
     item_ID = 0;
-    item_ID = game.item_manager.get_item_ID(SPELL); // ----
-    game.window_manager.window[equipment_ID].element[element_number].value    = item_ID;
-    game.window_manager.window[equipment_ID].element[element_number].quantity = 1;
-    game.window_manager.window[equipment_ID].element[element_number].texture.normal = game.item_manager.item[item_ID].image;
-    */
+    item_ID = game.item_manager.get_item_ID(ITEM_SPELL); // ----
+    UI_form_pointer->element[element_number].value    = item_ID;
+    UI_form_pointer->element[element_number].quantity = 1;
+    UI_form_pointer->element[element_number].texture.normal = game.item_manager.item[item_ID].image;
 };
 
 void game_class::process(void)
 {
     /*
-    game.test_1 = game.window_manager.mouse_over_window();
+    game.test_1 = game.UI_manager.mouse_over_window();
     if (game.test_1 != MOUSE_OVER_MAP)
     {
-        game.test_2 = game.window_manager.mouse_over_element(game.test_1);
+        game.test_2 = game.UI_manager.mouse_over_element(game.test_1);
     }
     else game.test_2 = 0;
         */
@@ -196,21 +196,20 @@ void game_class::process(void)
     */
     if (game.core.io.keyboard_ready)
     {
-        /*
         if (game.core.io.key_escape) // Main menu
         {
-            game.window_manager.window_disable(MENU_GAME_LOAD_UID);
-            game.window_manager.window_disable(MENU_GAME_NEW_UID);
-            game.window_manager.window_disable(MENU_GAME_SAVE_UID);
-            game.window_manager.window_disable(MENU_OPTIONS_UID);
+            game.UI_manager.UI_form_disable(UID_MENU_GAME_LOAD);
+            game.UI_manager.UI_form_disable(UID_MENU_GAME_NEW);
+            game.UI_manager.UI_form_disable(UID_MENU_GAME_SAVE);
+            game.UI_manager.UI_form_disable(UID_MENU_OPTIONS);
             if (!game.core.game_menu_active)
             {
-                game.window_manager.window_enable(MENU_MAIN_UID);
+                game.UI_manager.UI_form_enable(UID_MENU_MAIN);
                 game.core.game_menu_active                   = true;
             }
             else
             {
-                game.window_manager.window_disable(MENU_MAIN_UID);
+                game.UI_manager.UI_form_disable(UID_MENU_MAIN);
                 game.core.game_menu_active                   = false;
             }
             game.core.io.key_escape                = false;
@@ -220,12 +219,12 @@ void game_class::process(void)
         {
             if (!game.core.character_active)
             {
-                game.window_manager.window_enable(CHARACTER_UID);
+                game.UI_manager.UI_form_enable(UID_CHARACTER);
                 game.core.character_active                   = true;
             }
             else
             {
-                game.window_manager.window_disable(CHARACTER_UID);
+                game.UI_manager.UI_form_disable(UID_CHARACTER);
                 game.core.character_active                   = false;
             }
             game.core.io.key_c                     = false;
@@ -235,12 +234,12 @@ void game_class::process(void)
         {
             if (!game.core.equipment_active)
             {
-                game.window_manager.window_enable(EQUIPMENT_UID);
+                game.UI_manager.UI_form_enable(UID_EQUIPMENT);
                 game.core.equipment_active                   = true;
             }
             else
             {
-                game.window_manager.window_disable(EQUIPMENT_UID);
+                game.UI_manager.UI_form_disable(UID_EQUIPMENT);
                 game.core.equipment_active                   = false;
             }
             game.core.io.key_e                     = false;
@@ -250,12 +249,12 @@ void game_class::process(void)
         {
             if (!game.core.quest_log_active)
             {
-                game.window_manager.window_enable(QUEST_LOG_UID);
+                game.UI_manager.UI_form_enable(UID_QUEST_LOG);
                 game.core.quest_log_active                   = true;
             }
             else
             {
-                game.window_manager.window_disable(QUEST_LOG_UID);
+                game.UI_manager.UI_form_disable(UID_QUEST_LOG);
                 game.core.quest_log_active                   = false;
             }
             game.core.io.key_q                     = false;
@@ -265,12 +264,12 @@ void game_class::process(void)
         {
             if (!game.core.inventory_active)
             {
-                game.window_manager.window_enable(INVENTORY_UID);
+                game.UI_manager.UI_form_enable(UID_INVENTORY);
                 game.core.inventory_active                   = true;
             }
             else
             {
-                game.window_manager.window_disable(INVENTORY_UID);
+                game.UI_manager.UI_form_disable(UID_INVENTORY);
                 game.core.inventory_active                   = false;
             }
             game.core.io.key_i                     = false;
@@ -280,12 +279,12 @@ void game_class::process(void)
         {
             if (!game.core.skillbook_active)
             {
-                game.window_manager.window_enable(SKILLBOOK_UID);
+                game.UI_manager.UI_form_enable(UID_SKILLBOOK);
                 game.core.skillbook_active                   = true;
             }
             else
             {
-                game.window_manager.window_disable(SKILLBOOK_UID);
+                game.UI_manager.UI_form_disable(UID_SKILLBOOK);
                 game.core.skillbook_active                   = false;
             }
             game.core.io.key_b                     = false;
@@ -295,47 +294,46 @@ void game_class::process(void)
         {
             if (game.core.game_menu_active)
             {
-                game.window_manager.window_disable(MENU_MAIN_UID);
-                game.window_manager.window_disable(MENU_GAME_LOAD_UID);
-                game.window_manager.window_disable(MENU_GAME_NEW_UID);
-                game.window_manager.window_disable(MENU_GAME_SAVE_UID);
-                game.window_manager.window_disable(MENU_OPTIONS_UID);
+                game.UI_manager.UI_form_disable(UID_MENU_MAIN);
+                game.UI_manager.UI_form_disable(UID_MENU_GAME_LOAD);
+                game.UI_manager.UI_form_disable(UID_MENU_GAME_NEW);
+                game.UI_manager.UI_form_disable(UID_MENU_GAME_SAVE);
+                game.UI_manager.UI_form_disable(UID_MENU_OPTIONS);
                 game.core.game_menu_active                   = false;
             }
             if (game.core.equipment_active)
             {
-                game.window_manager.window_disable(EQUIPMENT_UID);
+                game.UI_manager.UI_form_disable(UID_EQUIPMENT);
                 game.core.equipment_active                   = false;
             }
             if (game.core.quest_log_active)
             {
-                game.window_manager.window_disable(QUEST_LOG_UID);
+                game.UI_manager.UI_form_disable(UID_QUEST_LOG);
                 game.core.quest_log_active                   = false;
             }
             if (game.core.character_active)
             {
-                game.window_manager.window_disable(CHARACTER_UID);
+                game.UI_manager.UI_form_disable(UID_CHARACTER);
                 game.core.character_active                   = false;
             }
             if (game.core.inventory_active)
             {
-                game.window_manager.window_disable(INVENTORY_UID);
+                game.UI_manager.UI_form_disable(UID_INVENTORY);
                 game.core.inventory_active                   = false;
             }
             if (game.core.skillbook_active)
             {
-                game.window_manager.window_disable(SKILLBOOK_UID);
+                game.UI_manager.UI_form_disable(UID_SKILLBOOK);
                 game.core.skillbook_active                   = false;
             }
             if (game.core.npcvendor_active)
             {
-                game.window_manager.window_disable(NPCVENDOR_UID);
+                game.UI_manager.UI_form_disable(UID_NPCVENDOR);
                 game.core.npcvendor_active                   = false;
             }
             game.core.io.key_space                 = false;
             game.core.io.keyboard_delay_count      = 0;
         }
-        */
         if (game.core.io.key_alt) // display item names on map (loot / click-able items)
         {
             game.core.io.key_alt                   = false;
@@ -418,6 +416,6 @@ void game_class::render(void)
     game.npc.render();
 
     glLightModelfv(GL_LIGHT_MODEL_AMBIENT,global_ambient_light);
-    //game.window_manager.render();
+    game.UI_manager.render();
 };
 
