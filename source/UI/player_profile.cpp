@@ -267,7 +267,6 @@ void setup_player_profile(int UID)
 
 void update_player_profile(UI_form_struct *UI_form_pointer)
 {
-    /*
     int element_number = 0; //--- Player profile image ---
     UI_form_pointer->element[element_number].texture.normal      = game.player.portrait;
     UI_form_pointer->element[element_number].texture.highlighted = game.player.portrait;
@@ -275,12 +274,10 @@ void update_player_profile(UI_form_struct *UI_form_pointer)
     UI_form_pointer->element[element_number].value = game.player.health.current;
     element_number = 3; //--- Player mana bar ---
     UI_form_pointer->element[element_number].value = game.player.mana.current;
-    */
 };
 
 void process_player_profile(UI_form_struct *UI_form_pointer)
 {
-    /*
     int element_number = 0; //--- Player name ---
     UI_form_pointer->element[element_number].tooltip.text = game.player.name;
     //Update the health and mana bars.
@@ -305,12 +302,12 @@ void process_player_profile(UI_form_struct *UI_form_pointer)
     {
         switch (UI_form_pointer->event.id)
         {
-            case (EVENT_WINDOW_STACK_SORT): //Window stack sort
-                game.window_manager.window_stack_sort();
-                game.window_manager.event.id = EVENT_NONE;
+            case (EVENT_UI_STACK_SORT): //Window stack sort
+                game.UI_manager.UI_form_stack_sort();
+                game.UI_manager.event.id = EVENT_NONE;
             break;
             case (EVENT_ELEMENT_DRAG): //Element drag event posted
-                //game.window_manager.source.window = PCPROFILE_UID;
+                //game.UI_manager.source.window = PCPROFILE_UID;
             break;
             default:
                 game.core.log.file_write("Unable to process event - ",UI_form_pointer->event.id, " - UID - ",UI_form_pointer->UID);
@@ -319,7 +316,6 @@ void process_player_profile(UI_form_struct *UI_form_pointer)
         }
     }
     UI_form_pointer->event.id = EVENT_NONE;
-    */
 };
 
 
