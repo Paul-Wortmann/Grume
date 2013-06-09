@@ -53,15 +53,16 @@ UI_form_struct *UI_manager_class::UI_form_add(int UI_form_UID)
             {
                 if (temp_pointer->UID == UI_form_UID)
                 {
-                    return(temp_pointer);
+                    return (temp_pointer);
                 }
                 temp_pointer = temp_pointer->next;
             }
         }
-        UI_manager_class::last->previous = UI_manager_class::last;
+        temp_pointer                     = UI_manager_class::last;
         UI_manager_class::last->next     = new UI_form_struct;
         UI_manager_class::last           = UI_manager_class::last->next;
         UI_manager_class::last->next     = NULL;
+        UI_manager_class::last->previous = temp_pointer;
     }
     UI_manager_class::last->active                             = false;
     UI_manager_class::last->color.disabled.r                   = 255;
@@ -121,7 +122,7 @@ UI_form_struct *UI_manager_class::UI_form_add(int UI_form_UID)
     UI_manager_class::last->zoom.value                         = 0.0f;
     UI_manager_class::last->zoom.speed                         = 0.001f;
     UI_manager_class::number_of_UI_forms++;
-    return(UI_manager_class::last);
+    return (UI_manager_class::last);
 };
 
 void UI_manager_class::setup(void)
@@ -150,6 +151,27 @@ void UI_manager_class::setup(void)
     temp_pointer->rotate_able = true;
     temp_pointer = game.texture_manager.add_texture("data/textures/UI/menu/arrow_disabled.png");
     temp_pointer->rotate_able = true;
+
+
+    //---------------------------------------------------
+    game.core.log.file_write("---- test stack transversal -> start -----");
+    game.core.log.file_write("-> Forward....");
+    UI_form_struct *UI_form_pointer;
+    UI_form_pointer = UI_manager_class::root;
+    while (UI_form_pointer != NULL)
+    {
+        game.core.log.file_write("UID encountered -> ", UI_form_pointer->UID);
+        UI_form_pointer = UI_form_pointer->next;
+    }
+    game.core.log.file_write("-> Reverse....");
+    UI_form_pointer = UI_manager_class::last;
+    while (UI_form_pointer != NULL)
+    {
+        game.core.log.file_write("UID encountered -> ", UI_form_pointer->UID);
+        UI_form_pointer = UI_form_pointer->previous;
+    }
+    game.core.log.file_write("---- test stack transversal -> end -----");
+    //---------------------------------------------------
 }
 
 UI_form_struct *UI_manager_class::UI_form_get(int UI_form_UID)
@@ -337,7 +359,7 @@ void UI_manager_class::UI_form_transition(int UI_form_UID_src, int UI_form_UID_d
 void UI_manager_class::render(void)
 {
     UI_form_struct *UI_form_pointer;
-    UI_form_pointer = UI_manager_class::root;
+    UI_form_pointer = UI_manager_class::last;
     while (UI_form_pointer != NULL)
     {
         // ----------------------------- render UI form ---------------------------------
@@ -473,7 +495,7 @@ void UI_manager_class::render(void)
             }
         }
         // -------------------------------------------------------------------------------
-        UI_form_pointer = UI_form_pointer->next;
+        UI_form_pointer = UI_form_pointer->previous;
     }
 };
 
