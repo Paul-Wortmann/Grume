@@ -176,7 +176,6 @@ void UI_manager_class::UI_form_enable(int UI_form_UID)
         if (UI_form_pointer->UID == UI_form_UID)
         {
             UI_form_pointer->enabled = true;
-            UI_form_pointer->active  = true;
             UI_manager_class::UI_form_stack_sort();
             break;
         }
@@ -201,6 +200,7 @@ void UI_manager_class::UI_form_disable(int UI_form_UID)
 
 void UI_manager_class::UI_form_stack_sort(void)
 {
+    int active_count = 0;
     if (!UI_manager_class::element_drag_in_progress)
     {
         if (UI_manager_class::number_of_UI_forms > 1) // only processed if there are actually windows in the list to sort.
@@ -220,11 +220,13 @@ void UI_manager_class::UI_form_stack_sort(void)
                         UI_form_data      = UI_form_pointer_1;
                         UI_form_pointer_1 = UI_form_pointer_2;
                         UI_form_pointer_2 = UI_form_data;
+                        active_count++;
                     }
                 }
             }
         }
     }
+    game.core.log.file_write("Active window found -> ", active_count);
 }
 
 void UI_manager_class::UI_form_set_active(int UI_form_UID)
