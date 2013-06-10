@@ -198,10 +198,10 @@ void UI_manager_class::UI_form_stack_sort(void)
         {
             UI_form_struct *UI_form_pointer_1;
             UI_form_struct *UI_form_pointer_2;
-            UI_form_pointer_1 = new UI_form_struct;
-            UI_form_pointer_2 = new UI_form_struct;
+            //UI_form_pointer_1 = new UI_form_struct;
+            //UI_form_pointer_2 = new UI_form_struct;
             UI_form_struct *UI_form_data;
-            UI_form_data = new UI_form_struct;
+            //UI_form_data = new UI_form_struct;
             for (UI_form_pointer_1 = UI_manager_class::root; UI_form_pointer_1!=NULL; UI_form_pointer_1 = UI_form_pointer_1->next)
             {
                 if (UI_form_pointer_1->active) game.core.log.file_write("Active UID found -> ",UI_form_pointer_1->UID);
