@@ -151,27 +151,6 @@ void UI_manager_class::setup(void)
     temp_pointer->rotate_able = true;
     temp_pointer = game.texture_manager.add_texture("data/textures/UI/menu/arrow_disabled.png");
     temp_pointer->rotate_able = true;
-
-
-    //---------------------------------------------------
-    game.core.log.file_write("---- test stack transversal -> start -----");
-    game.core.log.file_write("-> Forward....");
-    UI_form_struct *UI_form_pointer;
-    UI_form_pointer = UI_manager_class::root;
-    while (UI_form_pointer != NULL)
-    {
-        game.core.log.file_write("UID encountered -> ", UI_form_pointer->UID);
-        UI_form_pointer = UI_form_pointer->next;
-    }
-    game.core.log.file_write("-> Reverse....");
-    UI_form_pointer = UI_manager_class::last;
-    while (UI_form_pointer != NULL)
-    {
-        game.core.log.file_write("UID encountered -> ", UI_form_pointer->UID);
-        UI_form_pointer = UI_form_pointer->previous;
-    }
-    game.core.log.file_write("---- test stack transversal -> end -----");
-    //---------------------------------------------------
 }
 
 UI_form_struct *UI_manager_class::UI_form_get(int UI_form_UID)
@@ -235,6 +214,7 @@ void UI_manager_class::UI_form_stack_sort(void)
             UI_form_data = new UI_form_struct;
             for ( UI_form_pointer_1 = UI_manager_class::root ; UI_form_pointer_1!=NULL ; UI_form_pointer_1 = UI_form_pointer_1->next )
             {
+                if (UI_form_pointer_1->active) game.core.log.file_write("Active UID found -> ",UI_form_pointer_1->UID);
                 for ( UI_form_pointer_2 = UI_form_pointer_1->next ; UI_form_pointer_2!=NULL ; UI_form_pointer_2 = UI_form_pointer_2->next )
                 {
                     if (UI_form_pointer_1->active)
@@ -249,10 +229,32 @@ void UI_manager_class::UI_form_stack_sort(void)
         }
     }
     game.core.log.file_write("Active window found -> ", active_count);
+/*
+    //---------------------------------------------------
+    game.core.log.file_write("---- test stack transversal -> start -----");
+    game.core.log.file_write("-> Forward....");
+    UI_form_struct *UI_form_pointer;
+    UI_form_pointer = UI_manager_class::root;
+    while (UI_form_pointer != NULL)
+    {
+        game.core.log.file_write("UID encountered -> ", UI_form_pointer->UID);
+        UI_form_pointer = UI_form_pointer->next;
+    }
+    game.core.log.file_write("-> Reverse....");
+    UI_form_pointer = UI_manager_class::last;
+    while (UI_form_pointer != NULL)
+    {
+        game.core.log.file_write("UID encountered -> ", UI_form_pointer->UID);
+        UI_form_pointer = UI_form_pointer->previous;
+    }
+    game.core.log.file_write("---- test stack transversal -> end -----");
+    //---------------------------------------------------
+*/
 }
 
 void UI_manager_class::UI_form_set_active(int UI_form_UID)
 {
+    //possibly push active window to the top of the list?
     UI_form_struct *UI_form_pointer;
     UI_form_pointer = UI_manager_class::root;
     while (UI_form_pointer != NULL)
