@@ -155,47 +155,37 @@ void UI_manager_class::setup(void)
 
 UI_form_struct *UI_manager_class::UI_form_get(int UI_form_UID)
 {
-    UI_form_struct *UI_form_pointer;
-    UI_form_pointer = UI_manager_class::root;
-    while (UI_form_pointer != NULL)
+    for (UI_form_struct *UI_form_pointer = UI_manager_class::root; UI_form_pointer != NULL; UI_form_pointer = UI_form_pointer->next)
     {
         if (UI_form_pointer->UID == UI_form_UID)
         {
             return(UI_form_pointer);
         }
-        UI_form_pointer = UI_form_pointer->next;
     }
     return(NULL);
 };
 
 void UI_manager_class::UI_form_enable(int UI_form_UID)
 {
-    UI_form_struct *UI_form_pointer;
-    UI_form_pointer = UI_manager_class::root;
-    while (UI_form_pointer != NULL)
+    for (UI_form_struct *UI_form_pointer = UI_manager_class::root; UI_form_pointer != NULL; UI_form_pointer = UI_form_pointer->next)
     {
         if (UI_form_pointer->UID == UI_form_UID)
         {
             UI_form_pointer->enabled = true;
-            UI_manager_class::UI_form_stack_sort();
-            break;
         }
-        UI_form_pointer = UI_form_pointer->next;
     }
+    UI_manager_class::UI_form_stack_sort();
 };
 
 void UI_manager_class::UI_form_disable(int UI_form_UID)
 {
-    UI_form_struct *UI_form_pointer;
-    UI_form_pointer = UI_manager_class::root;
-    while (UI_form_pointer != NULL)
+    for (UI_form_struct *UI_form_pointer = UI_manager_class::root; UI_form_pointer != NULL; UI_form_pointer = UI_form_pointer->next)
     {
         if (UI_form_pointer->UID == UI_form_UID)
         {
             UI_form_pointer->enabled = false;
             UI_form_pointer->active  = false;
         }
-        UI_form_pointer = UI_form_pointer->next;
     }
 };
 
@@ -212,10 +202,10 @@ void UI_manager_class::UI_form_stack_sort(void)
             UI_form_pointer_2 = new UI_form_struct;
             UI_form_struct *UI_form_data;
             UI_form_data = new UI_form_struct;
-            for ( UI_form_pointer_1 = UI_manager_class::root ; UI_form_pointer_1!=NULL ; UI_form_pointer_1 = UI_form_pointer_1->next )
+            for (UI_form_pointer_1 = UI_manager_class::root; UI_form_pointer_1!=NULL; UI_form_pointer_1 = UI_form_pointer_1->next)
             {
                 if (UI_form_pointer_1->active) game.core.log.file_write("Active UID found -> ",UI_form_pointer_1->UID);
-                for ( UI_form_pointer_2 = UI_form_pointer_1->next ; UI_form_pointer_2!=NULL ; UI_form_pointer_2 = UI_form_pointer_2->next )
+                for (UI_form_pointer_2 = UI_form_pointer_1->next; UI_form_pointer_2!=NULL; UI_form_pointer_2 = UI_form_pointer_2->next)
                 {
                     if (UI_form_pointer_1->active)
                     {
@@ -268,15 +258,12 @@ void UI_manager_class::UI_form_set_active(int UI_form_UID)
 bool UI_manager_class::UI_form_get_active(int UI_form_UID)
 {
     bool return_value = false;
-    UI_form_struct *UI_form_pointer;
-    UI_form_pointer = UI_manager_class::root;
-    while (UI_form_pointer != NULL)
+    for (UI_form_struct *UI_form_pointer = UI_manager_class::root; UI_form_pointer != NULL; UI_form_pointer = UI_form_pointer->next)
     {
         if (UI_form_pointer->UID == UI_form_UID)
         {
             return_value = UI_form_pointer->active;
         }
-        UI_form_pointer = UI_form_pointer->next;
     }
     return (return_value);
 };
@@ -317,30 +304,24 @@ void UI_manager_class::UI_form_set_position(int UI_form_UID_src, int UI_form_UID
 
 void UI_manager_class::UI_form_mouse_reset(int UI_form_UID)
 {
-    UI_form_struct *UI_form_pointer;
-    UI_form_pointer = UI_manager_class::root;
-    while (UI_form_pointer != NULL)
+    for (UI_form_struct *UI_form_pointer = UI_manager_class::root; UI_form_pointer != NULL; UI_form_pointer = UI_form_pointer->next)
     {
         if (UI_form_pointer->UID == UI_form_UID)
         {
             UI_form_pointer->mouse_delay.value = 0;
             UI_form_pointer->mouse_delay.ready = false;
         }
-        UI_form_pointer = UI_form_pointer->next;
     }
 };
 
 void UI_manager_class::UI_form_set_event(int UI_form_UID, int EVENT_ID)
 {
-    UI_form_struct *UI_form_pointer;
-    UI_form_pointer = UI_manager_class::root;
-    while (UI_form_pointer != NULL)
+    for (UI_form_struct *UI_form_pointer = UI_manager_class::root; UI_form_pointer != NULL; UI_form_pointer = UI_form_pointer->next)
     {
         if (UI_form_pointer->UID == UI_form_UID)
         {
             UI_form_pointer->event.id = EVENT_ID;
         }
-        UI_form_pointer = UI_form_pointer->next;
     }
 };
 
@@ -360,9 +341,7 @@ void UI_manager_class::UI_form_transition(int UI_form_UID_src, int UI_form_UID_d
 
 void UI_manager_class::render(void)
 {
-    UI_form_struct *UI_form_pointer;
-    UI_form_pointer = UI_manager_class::last;
-    while (UI_form_pointer != NULL)
+    for (UI_form_struct *UI_form_pointer = UI_manager_class::last; UI_form_pointer != NULL; UI_form_pointer = UI_form_pointer->previous)
     {
         // ----------------------------- render UI form ---------------------------------
         if(UI_form_pointer->enabled)
@@ -497,15 +476,12 @@ void UI_manager_class::render(void)
             }
         }
         // -------------------------------------------------------------------------------
-        UI_form_pointer = UI_form_pointer->previous;
     }
 };
 
 void UI_manager_class::process(void)
 {
-    UI_form_struct *UI_form_pointer;
-    UI_form_pointer = UI_manager_class::root;
-    while (UI_form_pointer != NULL)
+    for (UI_form_struct *UI_form_pointer = UI_manager_class::root; UI_form_pointer != NULL; UI_form_pointer = UI_form_pointer->next)
     {
         // ----------------------------- process UI form ---------------------------------
         event_struct return_value;
@@ -810,7 +786,6 @@ void UI_manager_class::process(void)
             }
         }
         // -------------------------------------------------------------------------------
-        UI_form_pointer = UI_form_pointer->next;
     }
     switch (game.UI_manager.event.id)
     {
