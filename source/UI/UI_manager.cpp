@@ -206,14 +206,26 @@ void UI_manager_class::UI_form_stack_sort(void)
             // ----------------------------- do sort ---------------------------
 
             UI_form_struct *UI_form_pointer_2;
-            UI_form_struct *UI_form_pointer_tmp;
+            UI_form_struct *UI_form_pointer_t;
+            UI_form_struct *UI_form_pointer_1_p;
+            UI_form_struct *UI_form_pointer_1_n;
+            UI_form_struct *UI_form_pointer_2_p;
+            UI_form_struct *UI_form_pointer_2_n;
             for (UI_form_struct *UI_form_pointer_1 = UI_manager_class::last; UI_form_pointer_1!=NULL; UI_form_pointer_1 = UI_form_pointer_1->previous)
             {
                 if ((UI_form_pointer_1->active) && (UI_form_pointer_1->previous != NULL))
                 {
-                    //UI_form_pointer_tmp         = UI_form_pointer_1->previous;
-                    //UI_form_pointer_1->previous = UI_form_pointer_1;
-                    //UI_form_pointer_1           = UI_form_pointer_tmp;
+                    //setup pointer data
+                    UI_form_pointer_2   = UI_form_pointer_1->previous;
+                    UI_form_pointer_2_n = UI_form_pointer_2->next;
+                    UI_form_pointer_2_p = UI_form_pointer_2->previous;
+                    UI_form_pointer_1_n = UI_form_pointer_1->next;
+                    UI_form_pointer_1_p = UI_form_pointer_1->previous;
+                    //swap pointer data
+                    UI_form_pointer_2->next     = UI_form_pointer_1_n;
+                    UI_form_pointer_2->previous = UI_form_pointer_1_p;
+                    UI_form_pointer_1->next     = UI_form_pointer_2_n;
+                    UI_form_pointer_1->previous = UI_form_pointer_2_p;
                 }
             }
         }
