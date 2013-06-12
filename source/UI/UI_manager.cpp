@@ -206,7 +206,6 @@ void UI_manager_class::UI_form_stack_sort(void)
             // ----------------------------- do sort ---------------------------
 
             UI_form_struct *UI_form_pointer_2;
-            UI_form_struct *UI_form_pointer_t;
             UI_form_struct *UI_form_pointer_1_p;
             UI_form_struct *UI_form_pointer_1_n;
             UI_form_struct *UI_form_pointer_2_p;
