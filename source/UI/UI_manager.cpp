@@ -191,7 +191,6 @@ void UI_manager_class::UI_form_disable(int UI_form_UID)
 
 void UI_manager_class::UI_form_stack_sort(void)
 {
-    int active_count = 0;
     if (!UI_manager_class::element_drag_in_progress)
     {
         if (UI_manager_class::number_of_UI_forms > 1) // only processed if there are actually windows in the list to sort.
@@ -204,19 +203,38 @@ void UI_manager_class::UI_form_stack_sort(void)
                 else game.core.log.file_write("UID not active -> ",UI_form_pointer_1->UID);
             }
             // ----------------------------- do sort ---------------------------
-
+            bool left_sort  = false;
+            bool mid_sort   = false;
+            bool right_sort = false;
             UI_form_struct *UI_form_pointer_2;
+            UI_form_struct *UI_form_pointer_3;
             UI_form_struct *UI_form_pointer_1_p;
             UI_form_struct *UI_form_pointer_1_n;
             UI_form_struct *UI_form_pointer_2_p;
             UI_form_struct *UI_form_pointer_2_n;
             for (UI_form_struct *UI_form_pointer_1 = UI_manager_class::root; UI_form_pointer_1->next!=NULL; UI_form_pointer_1 = UI_form_pointer_1->next)
             {
-                /*
                 if ((UI_form_pointer_1->active) && (UI_form_pointer_1->next != NULL))
                 {
+                    UI_form_pointer_2 = UI_form_pointer_1->next;
+                    if (UI_form_pointer_1 == UI_manager_class::root) left_sort = true;
+                    if ((!left_sort) && (UI_form_pointer_2->next == NULL)) right_sort = true;
+                    if ((!left_sort) && (!right_sort)) mid_sort = true;
+
+                    if (left_sort)
+                    {
+
+                    }
+                    if (mid_sort)
+                    {
+
+                    }
+                    if (right_sort)
+                    {
+
+                    }
+
                     //setup pointer data
-                    UI_form_pointer_2   = UI_form_pointer_1->next;
                     UI_form_pointer_2_n = UI_form_pointer_2->next;
                     UI_form_pointer_2_p = UI_form_pointer_2->previous;
                     UI_form_pointer_1_n = UI_form_pointer_1->next;
@@ -226,13 +244,14 @@ void UI_manager_class::UI_form_stack_sort(void)
                     UI_form_pointer_2->previous = UI_form_pointer_1_p;
                     UI_form_pointer_1->next     = UI_form_pointer_2_n;
                     UI_form_pointer_1->previous = UI_form_pointer_2_p;
+                    break;
                 }
-                */
             }
         }
     }
     // ----------------------------- show sorted list ---------------------------
     game.core.log.file_write("------------------ sorted ---------------------");
+    int active_count = 0;
     for (UI_form_struct *UI_form_pointer_1 = UI_manager_class::last; UI_form_pointer_1!=NULL; UI_form_pointer_1 = UI_form_pointer_1->previous)
     {
         if (UI_form_pointer_1->active) game.core.log.file_write("Active UID found -> ",UI_form_pointer_1->UID);
