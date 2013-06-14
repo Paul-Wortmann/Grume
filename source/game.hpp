@@ -29,6 +29,7 @@
 #include "core/font_manager.hpp"
 #include "core/map_2D.hpp"
 #include "core/music_manager.hpp"
+#include "core/network.hpp"
 #include "core/savegame.hpp"
 #include "core/sound_manager.hpp"
 #include "core/texture_manager.hpp"
@@ -76,6 +77,7 @@ class game_class
         language_class            language;
         map_2D_class              map_2D;
         music_manager_class       music_manager;
+        network_manager_class     network_manager;
         npc_class                 npc;
         player_class              player;
         rumble_type               rumble;

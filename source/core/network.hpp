@@ -25,13 +25,27 @@
 #ifndef NETWORK_H
 #define NETWORK_H
 
-class network_class
+#include "SDL/SDL_net.h"
+
+struct ip_struct
+{
+    int block_0;
+    int block_1;
+    int block_2;
+    int block_3;
+};
+
+class network_manager_class
 {
     private:
     public:
-        int  enabled;
-        int  port;
-        bool server;
+        int       enabled;
+        int       port;
+        bool      server;
+        ip_struct ip_address_source;
+        ip_struct ip_address_destination;
+        bool      initialize(void);
+        bool      set_ip_destination(ip_struct ip_address);
 };
 
 
