@@ -23,3 +23,13 @@
  */
 
 #include "network.hpp"
+
+bool      initialize(void)
+{
+    return (false);
+};
+
+bool      set_ip_destination(ip_struct ip_address)
+{
+    return (false);
+};
