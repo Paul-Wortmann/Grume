@@ -30,6 +30,42 @@ UID not active -> 1
 UID not active -> 7
 UID not active -> 4
 UID not active -> 13
+Active UID found -> 9
+UID not active -> 11
+UID not active -> 10
+UID not active -> 12
+UID not active -> 6
+UID not active -> 3
+UID not active -> 5
+UID not active -> 2
+UID not active -> 1
+Active window found -> 1
+-----------------------------------------------
+Initializing game system...
+Loading TMX map file -> data/maps/town.tmx
+Initializing event handlers...
+Starting Game...
+ 
+# ---------------------------------------------- #
+ 
+---------------- unsorted ---------------------
+UID not active -> 7
+UID not active -> 4
+UID not active -> 13
+UID not active -> 9
+UID not active -> 11
+UID not active -> 10
+UID not active -> 12
+UID not active -> 6
+UID not active -> 3
+UID not active -> 5
+UID not active -> 2
+UID not active -> 1
+------------------ sorted ---------------------
+UID not active -> 7
+UID not active -> 4
+UID not active -> 13
+UID not active -> 9
 UID not active -> 11
 UID not active -> 10
 UID not active -> 12
@@ -40,13 +76,146 @@ UID not active -> 2
 UID not active -> 1
 Active window found -> 0
 -----------------------------------------------
-Initializing game system...
-Loading TMX map file -> data/maps/town.tmx
-Initializing event handlers...
-Starting Game...
- 
-# ---------------------------------------------- #
- 
+---------------- unsorted ---------------------
+UID not active -> 7
+UID not active -> 4
+UID not active -> 13
+UID not active -> 9
+UID not active -> 11
+Active UID found -> 10
+UID not active -> 12
+UID not active -> 6
+UID not active -> 3
+UID not active -> 5
+UID not active -> 2
+UID not active -> 1
+------------------ sorted ---------------------
+UID not active -> 7
+UID not active -> 4
+UID not active -> 13
+UID not active -> 9
+UID not active -> 11
+Active UID found -> 10
+UID not active -> 12
+UID not active -> 6
+UID not active -> 3
+UID not active -> 5
+UID not active -> 2
+UID not active -> 1
+Active window found -> 1
+-----------------------------------------------
+---------------- unsorted ---------------------
+UID not active -> 7
+UID not active -> 4
+UID not active -> 13
+UID not active -> 9
+UID not active -> 11
+UID not active -> 10
+UID not active -> 12
+UID not active -> 6
+UID not active -> 3
+UID not active -> 5
+UID not active -> 2
+UID not active -> 1
+------------------ sorted ---------------------
+UID not active -> 7
+UID not active -> 4
+UID not active -> 13
+UID not active -> 9
+UID not active -> 11
+UID not active -> 10
+UID not active -> 12
+UID not active -> 6
+UID not active -> 3
+UID not active -> 5
+UID not active -> 2
+UID not active -> 1
+Active window found -> 0
+-----------------------------------------------
+---------------- unsorted ---------------------
+UID not active -> 7
+UID not active -> 4
+UID not active -> 13
+UID not active -> 9
+UID not active -> 11
+UID not active -> 10
+UID not active -> 12
+UID not active -> 6
+UID not active -> 3
+UID not active -> 5
+UID not active -> 2
+UID not active -> 1
+------------------ sorted ---------------------
+UID not active -> 7
+UID not active -> 4
+UID not active -> 13
+UID not active -> 9
+UID not active -> 11
+UID not active -> 10
+UID not active -> 12
+UID not active -> 6
+UID not active -> 3
+UID not active -> 5
+UID not active -> 2
+UID not active -> 1
+Active window found -> 0
+-----------------------------------------------
+---------------- unsorted ---------------------
+UID not active -> 7
+UID not active -> 4
+UID not active -> 13
+UID not active -> 9
+UID not active -> 11
+UID not active -> 10
+UID not active -> 12
+UID not active -> 6
+UID not active -> 3
+UID not active -> 5
+Active UID found -> 2
+UID not active -> 1
+------------------ sorted ---------------------
+UID not active -> 7
+UID not active -> 4
+UID not active -> 13
+UID not active -> 9
+UID not active -> 11
+UID not active -> 10
+UID not active -> 12
+UID not active -> 6
+UID not active -> 3
+UID not active -> 5
+Active UID found -> 2
+UID not active -> 1
+Active window found -> 1
+-----------------------------------------------
+---------------- unsorted ---------------------
+UID not active -> 7
+UID not active -> 4
+UID not active -> 13
+UID not active -> 9
+UID not active -> 11
+UID not active -> 10
+UID not active -> 12
+UID not active -> 6
+UID not active -> 3
+UID not active -> 5
+UID not active -> 2
+Active UID found -> 1
+------------------ sorted ---------------------
+UID not active -> 7
+UID not active -> 4
+UID not active -> 13
+UID not active -> 9
+UID not active -> 11
+UID not active -> 10
+UID not active -> 12
+UID not active -> 6
+UID not active -> 3
+UID not active -> 5
+UID not active -> 2
+Active UID found -> 1
+Active window found -> 1
+-----------------------------------------------
  
 # ---------------------------------------------- #
  

@@ -203,6 +203,7 @@ void UI_manager_class::UI_form_stack_sort(void)
                 else game.core.log.file_write("UID not active -> ",UI_form_pointer_1->UID);
             }
             // ----------------------------- do sort ---------------------------
+            /*
             bool left_sort  = false;
             bool mid_sort   = false;
             bool right_sort = false;
@@ -247,6 +248,7 @@ void UI_manager_class::UI_form_stack_sort(void)
                     break;
                 }
             }
+            */
         }
     }
     // ----------------------------- show sorted list ---------------------------
