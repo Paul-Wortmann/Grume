@@ -203,52 +203,36 @@ void UI_manager_class::UI_form_stack_sort(void)
                 else game.core.log.file_write("UID not active -> ",UI_form_pointer_1->UID);
             }
             // ----------------------------- do sort ---------------------------
-            /*
-            bool left_sort  = false;
-            bool mid_sort   = false;
-            bool right_sort = false;
             UI_form_struct *UI_form_pointer_2;
             UI_form_struct *UI_form_pointer_3;
             UI_form_struct *UI_form_pointer_1_p;
             UI_form_struct *UI_form_pointer_1_n;
             UI_form_struct *UI_form_pointer_2_p;
             UI_form_struct *UI_form_pointer_2_n;
+            UI_form_struct *UI_form_data;
+            UI_form_data = new UI_form_struct;
             for (UI_form_struct *UI_form_pointer_1 = UI_manager_class::root; UI_form_pointer_1->next!=NULL; UI_form_pointer_1 = UI_form_pointer_1->next)
             {
                 if ((UI_form_pointer_1->active) && (UI_form_pointer_1->next != NULL))
                 {
                     UI_form_pointer_2 = UI_form_pointer_1->next;
-                    if (UI_form_pointer_1 == UI_manager_class::root) left_sort = true;
-                    if ((!left_sort) && (UI_form_pointer_2->next == NULL)) right_sort = true;
-                    if ((!left_sort) && (!right_sort)) mid_sort = true;
-
-                    if (left_sort)
-                    {
-
-                    }
-                    if (mid_sort)
-                    {
-
-                    }
-                    if (right_sort)
-                    {
-
-                    }
-
-                    //setup pointer data
+                    //save pointers
                     UI_form_pointer_2_n = UI_form_pointer_2->next;
                     UI_form_pointer_2_p = UI_form_pointer_2->previous;
                     UI_form_pointer_1_n = UI_form_pointer_1->next;
                     UI_form_pointer_1_p = UI_form_pointer_1->previous;
-                    //swap pointer data
-                    UI_form_pointer_2->next     = UI_form_pointer_1_n;
-                    UI_form_pointer_2->previous = UI_form_pointer_1_p;
-                    UI_form_pointer_1->next     = UI_form_pointer_2_n;
-                    UI_form_pointer_1->previous = UI_form_pointer_2_p;
+                    //swap data
+                    UI_form_data->active      = UI_form_pointer_1->active;
+                    UI_form_pointer_1->active = UI_form_pointer_2->active;
+                    UI_form_pointer_2->active = UI_form_data->active;
+                    //add back origional pointers
+                    UI_form_pointer_2->next     = UI_form_pointer_2_n;
+                    UI_form_pointer_2->previous = UI_form_pointer_2_p;
+                    UI_form_pointer_1->next     = UI_form_pointer_1_n;
+                    UI_form_pointer_1->previous = UI_form_pointer_1_p;
                     break;
                 }
             }
-            */
         }
     }
     // ----------------------------- show sorted list ---------------------------

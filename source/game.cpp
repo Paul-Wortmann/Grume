@@ -110,36 +110,36 @@ void game_class::init(void)
     int item_ID = 0;
     int element_number = 1;
     item_ID = game.item_manager.get_item_ID(HEALTH_POTION); // Health Potion
-    UI_form_pointer->element[element_number].value    = item_ID;
-    UI_form_pointer->element[element_number].quantity = 1;
-    UI_form_pointer->element[element_number].texture.normal = game.item_manager.item[item_ID].image;
+    UI_form_pointer->data.element[element_number].value    = item_ID;
+    UI_form_pointer->data.element[element_number].quantity = 1;
+    UI_form_pointer->data.element[element_number].texture.normal = game.item_manager.item[item_ID].image;
     element_number = 2;
     item_ID = game.item_manager.get_item_ID(MANA_POTION); // Mana Potion
-    UI_form_pointer->element[element_number].value = item_ID;
-    UI_form_pointer->element[element_number].quantity = 4;
-    UI_form_pointer->element[element_number].texture.normal = game.item_manager.item[item_ID].image;
+    UI_form_pointer->data.element[element_number].value = item_ID;
+    UI_form_pointer->data.element[element_number].quantity = 4;
+    UI_form_pointer->data.element[element_number].texture.normal = game.item_manager.item[item_ID].image;
 
     // Add default items to the action bar
     UI_form_pointer = game.UI_manager.UI_form_get(UID_ACTIONBAR);
     element_number = 16;
     item_ID = game.item_manager.get_item_ID(ITEM_SPELL); // ----
-    UI_form_pointer->element[element_number].value    = item_ID;
-    UI_form_pointer->element[element_number].quantity = 1;
-    UI_form_pointer->element[element_number].texture.normal = game.item_manager.item[item_ID].image;
+    UI_form_pointer->data.element[element_number].value    = item_ID;
+    UI_form_pointer->data.element[element_number].quantity = 1;
+    UI_form_pointer->data.element[element_number].texture.normal = game.item_manager.item[item_ID].image;
     element_number = 17;
     item_ID = game.item_manager.get_item_ID(ITEM_SPELL); // ----
-    UI_form_pointer->element[element_number].value    = item_ID;
-    UI_form_pointer->element[element_number].quantity = 1;
-    UI_form_pointer->element[element_number].texture.normal = game.item_manager.item[item_ID].image;
+    UI_form_pointer->data.element[element_number].value    = item_ID;
+    UI_form_pointer->data.element[element_number].quantity = 1;
+    UI_form_pointer->data.element[element_number].texture.normal = game.item_manager.item[item_ID].image;
 
     // Add default items to the equipment menu
     UI_form_pointer = game.UI_manager.UI_form_get(UID_EQUIPMENT);
     element_number = 13;
     item_ID = 0;
     item_ID = game.item_manager.get_item_ID(ITEM_SPELL); // ----
-    UI_form_pointer->element[element_number].value    = item_ID;
-    UI_form_pointer->element[element_number].quantity = 1;
-    UI_form_pointer->element[element_number].texture.normal = game.item_manager.item[item_ID].image;
+    UI_form_pointer->data.element[element_number].value    = item_ID;
+    UI_form_pointer->data.element[element_number].quantity = 1;
+    UI_form_pointer->data.element[element_number].texture.normal = game.item_manager.item[item_ID].image;
 };
 
 void game_class::process(void)

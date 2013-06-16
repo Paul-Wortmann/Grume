@@ -174,10 +174,8 @@ struct UI_element_struct
     font_type              *font;
 };
 
-struct UI_form_struct
+struct UI_form_data_struct
 {
-    UI_form_struct         *next;
-    UI_form_struct         *previous;
     bool                    active;
     color_state_struct      color;
     bool                    drag_active;
@@ -204,6 +202,13 @@ struct UI_form_struct
     zoom_struct             zoom;
     UI_element_struct      *element;
     choice_selection_type  *choice_selection;
+};
+
+struct UI_form_struct
+{
+    UI_form_data_struct     data;
+    UI_form_struct         *next;
+    UI_form_struct         *previous;
 };
 
 #endif // UI_TYPES_H
