@@ -171,6 +171,7 @@ void UI_manager_class::UI_form_enable(int UI_form_UID)
     {
         if (UI_form_pointer->data.UID == UI_form_UID)
         {
+            UI_form_pointer->data.active  = true;
             UI_form_pointer->data.enabled = true;
         }
     }
@@ -210,7 +211,7 @@ void UI_manager_class::UI_form_stack_sort(void)
             {
                 for (UI_form_struct *UI_form_pointer_1 = UI_manager_class::root; UI_form_pointer_1->next!=NULL; UI_form_pointer_1 = UI_form_pointer_1->next)
                 {
-                    if ((UI_form_pointer_1->data.active) && (UI_form_pointer_1->next != NULL))
+                    if ((UI_form_pointer_1->data.active) && (!UI_form_pointer_1->data.set_behind) && (UI_form_pointer_1->next != NULL))
                     {
                         UI_form_pointer_2 = UI_form_pointer_1->next;
                         //swap data
@@ -484,244 +485,247 @@ void UI_manager_class::process(void)
         return_value.id                = EVENT_NONE;
         if (UI_form_pointer->data.enabled)
         {
-            // ------------------------- Process mouse delay -------------------------
-            if (UI_form_pointer->data.mouse_delay.enabled)
+            if (!game.UI_manager.drag_in_progress)
             {
-                UI_form_pointer->data.mouse_delay.value++;
-                if (UI_form_pointer->data.mouse_delay.value >= UI_form_pointer->data.mouse_delay.maximum)
-                {
-                    UI_form_pointer->data.mouse_delay.ready = true;
-                    UI_form_pointer->data.mouse_delay.value = UI_form_pointer->data.mouse_delay.maximum;
-                }
+                UI_form_pointer->data.mouse_over_menu = (game.core.physics.point_in_quadrangle(UI_form_pointer->data.position.x,UI_form_pointer->data.size.x,UI_form_pointer->data.position.y,UI_form_pointer->data.size.y,game.core.io.mouse_x,game.core.io.mouse_y));
             }
-            // ------------------------- Process elements -------------------------
-            if ((UI_form_pointer->data.number_of_elements > 0) && (!UI_form_pointer->data.drag_active))
+            if (UI_form_pointer->data.mouse_over_menu)
             {
-                for (int element_number = 0; element_number < UI_form_pointer->data.number_of_elements; element_number++)
+                // ------------------------- Process mouse delay -------------------------
+                if (UI_form_pointer->data.mouse_delay.enabled)
                 {
-                    if ((UI_form_pointer->data.element[element_number].active) && ((return_value.id == EVENT_NONE) || (return_value.id == EVENT_ELEMENT_DRAG)))
+                    UI_form_pointer->data.mouse_delay.value++;
+                    if (UI_form_pointer->data.mouse_delay.value >= UI_form_pointer->data.mouse_delay.maximum)
                     {
-                        // ---------------------------------------------------------------------------------------
-                        UI_form_pointer->data.element[element_number].mouse_over = (game.core.physics.point_in_quadrangle(UI_form_pointer->data.element[element_number].position.x,UI_form_pointer->data.element[element_number].size.x,UI_form_pointer->data.element[element_number].position.y,UI_form_pointer->data.element[element_number].size.y,game.core.io.mouse_x,game.core.io.mouse_y));
-                        float drag_delta_x = 0.0f;
-                        float drag_delta_y = 0.0f;
-                        bool  allow_drag   = UI_form_pointer->data.element[element_number].dragable;
-                        bool  allow_process = true;
-                        UI_form_pointer->data.element[element_number].clicked = false;
-                        // ------------------------- Process mouse delay -------------------------
-                        if (UI_form_pointer->data.element[element_number].mouse_delay.enabled)
+                        UI_form_pointer->data.mouse_delay.ready = true;
+                        UI_form_pointer->data.mouse_delay.value = UI_form_pointer->data.mouse_delay.maximum;
+                    }
+                }
+                // ------------------------- Process elements -------------------------
+                if ((UI_form_pointer->data.number_of_elements > 0) && (!UI_form_pointer->data.drag_active))
+                {
+                    for (int element_number = 0; element_number < UI_form_pointer->data.number_of_elements; element_number++)
+                    {
+                        if ((UI_form_pointer->data.element[element_number].active) && ((return_value.id == EVENT_NONE) || (return_value.id == EVENT_ELEMENT_DRAG)))
                         {
-                            UI_form_pointer->data.element[element_number].mouse_delay.value++;
-                            if (UI_form_pointer->data.element[element_number].mouse_delay.value >= UI_form_pointer->data.element[element_number].mouse_delay.maximum)
+                            // ---------------------------------------------------------------------------------------
+                            UI_form_pointer->data.element[element_number].mouse_over = (game.core.physics.point_in_quadrangle(UI_form_pointer->data.element[element_number].position.x,UI_form_pointer->data.element[element_number].size.x,UI_form_pointer->data.element[element_number].position.y,UI_form_pointer->data.element[element_number].size.y,game.core.io.mouse_x,game.core.io.mouse_y));
+                            float drag_delta_x = 0.0f;
+                            float drag_delta_y = 0.0f;
+                            bool  allow_drag   = UI_form_pointer->data.element[element_number].dragable;
+                            bool  allow_process = true;
+                            UI_form_pointer->data.element[element_number].clicked = false;
+                            // ------------------------- Process mouse delay -------------------------
+                            if (UI_form_pointer->data.element[element_number].mouse_delay.enabled)
                             {
-                                UI_form_pointer->data.element[element_number].mouse_delay.ready = true;
-                                UI_form_pointer->data.element[element_number].mouse_delay.value = UI_form_pointer->data.element[element_number].mouse_delay.maximum;
-                            }
-                        }
-                        // ------------------------- -------------------------
-                        if ((UI_form_pointer->data.element[element_number].event.id == EVENT_ELEMENT_MOUSE_RIGHT) || (UI_form_pointer->data.element[element_number].event.id == EVENT_ELEMENT_MOUSE_LEFT)) UI_form_pointer->data.element[element_number].event.id = EVENT_NONE;
-                        if (!UI_form_pointer->data.element[element_number].active) allow_process = false;
-                        if ((UI_form_pointer->data.element[element_number].type == ITEM) && (UI_form_pointer->data.element[element_number].value < 0)) allow_process = false;
-                        if (allow_process)
-                        {
-                            if (UI_form_pointer->data.element[element_number].state != DISABLED)
-                            {
-                                // ------------------------- Drag n drop -------------------------
-                                if (UI_form_pointer->data.element[element_number].drag_active)
+                                UI_form_pointer->data.element[element_number].mouse_delay.value++;
+                                if (UI_form_pointer->data.element[element_number].mouse_delay.value >= UI_form_pointer->data.element[element_number].mouse_delay.maximum)
                                 {
-                                    if (game.core.io.mouse_button_left)
+                                    UI_form_pointer->data.element[element_number].mouse_delay.ready = true;
+                                    UI_form_pointer->data.element[element_number].mouse_delay.value = UI_form_pointer->data.element[element_number].mouse_delay.maximum;
+                                }
+                            }
+                            // ------------------------- -------------------------
+                            if ((UI_form_pointer->data.element[element_number].event.id == EVENT_ELEMENT_MOUSE_RIGHT) || (UI_form_pointer->data.element[element_number].event.id == EVENT_ELEMENT_MOUSE_LEFT)) UI_form_pointer->data.element[element_number].event.id = EVENT_NONE;
+                            if (!UI_form_pointer->data.element[element_number].active) allow_process = false;
+                            if ((UI_form_pointer->data.element[element_number].type == ITEM) && (UI_form_pointer->data.element[element_number].value < 0)) allow_process = false;
+                            if (allow_process)
+                            {
+                                if (UI_form_pointer->data.element[element_number].state != DISABLED)
+                                {
+                                    // ------------------------- Drag n drop -------------------------
+                                    if (UI_form_pointer->data.element[element_number].drag_active)
                                     {
-                                        drag_delta_x = UI_form_pointer->data.element[element_number].position.x;
-                                        drag_delta_y = UI_form_pointer->data.element[element_number].position.y;
-                                        UI_form_pointer->data.element[element_number].position.x = game.core.io.mouse_x + UI_form_pointer->data.element[element_number].drag_offset_x;
-                                        UI_form_pointer->data.element[element_number].position.y = game.core.io.mouse_y + UI_form_pointer->data.element[element_number].drag_offset_y;
-                                        drag_delta_x = drag_delta_x - UI_form_pointer->data.element[element_number].position.x;
-                                        drag_delta_y = drag_delta_y - UI_form_pointer->data.element[element_number].position.y;
-                                        UI_form_pointer->data.element[element_number].title.position.x     -= drag_delta_x;
-                                        UI_form_pointer->data.element[element_number].title.position.y     -= drag_delta_y;
+                                        if (game.core.io.mouse_button_left)
+                                        {
+                                            drag_delta_x = UI_form_pointer->data.element[element_number].position.x;
+                                            drag_delta_y = UI_form_pointer->data.element[element_number].position.y;
+                                            UI_form_pointer->data.element[element_number].position.x = game.core.io.mouse_x + UI_form_pointer->data.element[element_number].drag_offset_x;
+                                            UI_form_pointer->data.element[element_number].position.y = game.core.io.mouse_y + UI_form_pointer->data.element[element_number].drag_offset_y;
+                                            drag_delta_x = drag_delta_x - UI_form_pointer->data.element[element_number].position.x;
+                                            drag_delta_y = drag_delta_y - UI_form_pointer->data.element[element_number].position.y;
+                                            UI_form_pointer->data.element[element_number].title.position.x     -= drag_delta_x;
+                                            UI_form_pointer->data.element[element_number].title.position.y     -= drag_delta_y;
+                                        }
+                                        else
+                                        {
+                                            /*
+                                            int window_over  = game.UI_manager.mouse_over_window();
+                                            int window_from  = UI_form_pointer->data.element[element_number].window_UID;
+                                            int element_from = UI_form_pointer->data.element[element_number].element_UID;
+                                            int element_over = 0;
+                                            UI_form_pointer->data.element[element_number].position.x = UI_form_pointer->data.element[element_number].position_origional.x;
+                                            UI_form_pointer->data.element[element_number].position.y = UI_form_pointer->data.element[element_number].position_origional.y;
+                                            if (window_over != MOUSE_OVER_MAP)
+                                            {
+                                                element_over = game.UI_manager.mouse_over_element(window_over);
+                                                if (element_over != MOUSE_OVER_MAP)
+                                                {
+                                                    //swap
+                                                    swap_elements(window_from,element_from,window_over,element_over);
+                                                }
+                                            }
+                                            */
+                                            game.UI_manager.element_drag_in_progress       = false;
+                                            game.UI_manager.drag_in_progress               = false;
+                                            UI_form_pointer->data.element[element_number].drag_active  = false;
+                                            UI_form_pointer->data.element[element_number].event.id     = EVENT_NONE;
+                                        }
                                     }
                                     else
                                     {
-                                        /*
-                                        int window_over  = game.UI_manager.mouse_over_window();
-                                        int window_from  = UI_form_pointer->data.element[element_number].window_UID;
-                                        int element_from = UI_form_pointer->data.element[element_number].element_UID;
-                                        int element_over = 0;
-                                        UI_form_pointer->data.element[element_number].position.x = UI_form_pointer->data.element[element_number].position_origional.x;
-                                        UI_form_pointer->data.element[element_number].position.y = UI_form_pointer->data.element[element_number].position_origional.y;
-                                        if (window_over != MOUSE_OVER_MAP)
+                                        if ((UI_form_pointer->data.element[element_number].dragable) && (window_in_focus) && (UI_form_pointer->data.element[element_number].mouse_over) && (!game.UI_manager.drag_in_progress))
                                         {
-                                            element_over = game.UI_manager.mouse_over_element(window_over);
-                                            if (element_over != MOUSE_OVER_MAP)
+                                            if ((game.core.io.mouse_button_left) && (allow_drag))// start drag
                                             {
-                                                //swap
-                                                swap_elements(window_from,element_from,window_over,element_over);
+                                                UI_form_pointer->data.element[element_number].position_origional.x   = UI_form_pointer->data.element[element_number].position.x;
+                                                UI_form_pointer->data.element[element_number].position_origional.y   = UI_form_pointer->data.element[element_number].position.y;
+                                                UI_form_pointer->data.element[element_number].drag_offset_x          = UI_form_pointer->data.element[element_number].position.x - game.core.io.mouse_x;
+                                                UI_form_pointer->data.element[element_number].drag_offset_y          = UI_form_pointer->data.element[element_number].position.y - game.core.io.mouse_y;
+                                                UI_form_pointer->data.element[element_number].drag_active            = true;
+                                                game.UI_manager.drag_in_progress         = true;
+                                                game.UI_manager.element_drag_in_progress = true;
                                             }
                                         }
-                                        */
-                                        game.UI_manager.element_drag_in_progress       = false;
-                                        game.UI_manager.drag_in_progress               = false;
-                                        UI_form_pointer->data.element[element_number].drag_active  = false;
-                                        UI_form_pointer->data.element[element_number].event.id     = EVENT_NONE;
                                     }
-                                }
-                                else
-                                {
-                                    if ((UI_form_pointer->data.element[element_number].dragable) && (window_in_focus) && (UI_form_pointer->data.element[element_number].mouse_over) && (!game.UI_manager.drag_in_progress))
+                                    if (UI_form_pointer->data.element[element_number].mouse_over)
                                     {
-                                        if ((game.core.io.mouse_button_left) && (allow_drag))// start drag
+                                        // ----------------- highlighting element ------------------------------
+                                        if (window_in_focus)
                                         {
-                                            UI_form_pointer->data.element[element_number].position_origional.x   = UI_form_pointer->data.element[element_number].position.x;
-                                            UI_form_pointer->data.element[element_number].position_origional.y   = UI_form_pointer->data.element[element_number].position.y;
-                                            UI_form_pointer->data.element[element_number].drag_offset_x          = UI_form_pointer->data.element[element_number].position.x - game.core.io.mouse_x;
-                                            UI_form_pointer->data.element[element_number].drag_offset_y          = UI_form_pointer->data.element[element_number].position.y - game.core.io.mouse_y;
-                                            UI_form_pointer->data.element[element_number].drag_active            = true;
-                                            game.UI_manager.drag_in_progress         = true;
-                                            game.UI_manager.element_drag_in_progress = true;
+                                            if ((UI_form_pointer->data.element[element_number].state  != HIGHLIGHTED) && (UI_form_pointer->data.element[element_number].sound.on_mouse_over.enabled)) game.sound_manager.play(UI_form_pointer->data.element[element_number].sound.on_mouse_over.sound);
+                                            UI_form_pointer->data.element[element_number].state        = HIGHLIGHTED;
                                         }
-                                    }
-                                }
-                                if (UI_form_pointer->data.element[element_number].mouse_over)
-                                {
-                                    // ----------------- highlighting element ------------------------------
-                                    if (window_in_focus)
-                                    {
-                                        if ((UI_form_pointer->data.element[element_number].state  != HIGHLIGHTED) && (UI_form_pointer->data.element[element_number].sound.on_mouse_over.enabled)) game.sound_manager.play(UI_form_pointer->data.element[element_number].sound.on_mouse_over.sound);
-                                        UI_form_pointer->data.element[element_number].state        = HIGHLIGHTED;
-                                    }
-                                    else
-                                    {
-                                        UI_form_pointer->data.element[element_number].state        = NORMAL;
-                                    }
-                                    // ------------------------- clicked element -------------------------
-                                    float dragged_by_x = 0.0f;
-                                    float dragged_by_y = 0.0f;
-                                    if (UI_form_pointer->data.element[element_number].position_origional.x > UI_form_pointer->data.element[element_number].position.x) dragged_by_x = UI_form_pointer->data.element[element_number].position_origional.x - UI_form_pointer->data.element[element_number].position.x;
-                                    else dragged_by_x = UI_form_pointer->data.element[element_number].position.x - UI_form_pointer->data.element[element_number].position_origional.x;
-                                    if (UI_form_pointer->data.element[element_number].position_origional.y > UI_form_pointer->data.element[element_number].position.y) dragged_by_y = UI_form_pointer->data.element[element_number].position_origional.y - UI_form_pointer->data.element[element_number].position.y;
-                                    else dragged_by_y = UI_form_pointer->data.element[element_number].position.y - UI_form_pointer->data.element[element_number].position_origional.y;
-                                    if (((dragged_by_x < 0.01f) && (dragged_by_y < 0.01f) && (window_in_focus)) || ((!game.UI_manager.drag_in_progress) && (window_in_focus)))
-                                    {
-                                        if (UI_form_pointer->data.element[element_number].click_enabled)
+                                        else
                                         {
-                                            if (((game.core.io.mouse_button_left) || (game.core.io.mouse_button_right)) && (UI_form_pointer->data.element[element_number].mouse_over))
+                                            UI_form_pointer->data.element[element_number].state        = NORMAL;
+                                        }
+                                        // ------------------------- clicked element -------------------------
+                                        float dragged_by_x = 0.0f;
+                                        float dragged_by_y = 0.0f;
+                                        if (UI_form_pointer->data.element[element_number].position_origional.x > UI_form_pointer->data.element[element_number].position.x) dragged_by_x = UI_form_pointer->data.element[element_number].position_origional.x - UI_form_pointer->data.element[element_number].position.x;
+                                        else dragged_by_x = UI_form_pointer->data.element[element_number].position.x - UI_form_pointer->data.element[element_number].position_origional.x;
+                                        if (UI_form_pointer->data.element[element_number].position_origional.y > UI_form_pointer->data.element[element_number].position.y) dragged_by_y = UI_form_pointer->data.element[element_number].position_origional.y - UI_form_pointer->data.element[element_number].position.y;
+                                        else dragged_by_y = UI_form_pointer->data.element[element_number].position.y - UI_form_pointer->data.element[element_number].position_origional.y;
+                                        if (((dragged_by_x < 0.01f) && (dragged_by_y < 0.01f) && (window_in_focus)) || ((!game.UI_manager.drag_in_progress) && (window_in_focus)))
+                                        {
+                                            if (UI_form_pointer->data.element[element_number].click_enabled)
                                             {
-                                                if((UI_form_pointer->data.element[element_number].mouse_delay.ready) || (!UI_form_pointer->data.element[element_number].mouse_delay.enabled))
+                                                if (((game.core.io.mouse_button_left) || (game.core.io.mouse_button_right)) && (UI_form_pointer->data.element[element_number].mouse_over))
                                                 {
-                                                    if (game.core.io.mouse_button_right) UI_form_pointer->data.element[element_number].event.id = EVENT_ELEMENT_MOUSE_RIGHT;
-                                                    if (game.core.io.mouse_button_left)  UI_form_pointer->data.element[element_number].event.id = EVENT_ELEMENT_MOUSE_LEFT;
-                                                    if (UI_form_pointer->data.element[element_number].sound.on_click.enabled) game.sound_manager.play(UI_form_pointer->data.element[element_number].sound.on_click.sound);
-                                                    UI_form_pointer->data.element[element_number].clicked = true;
-                                                    if (UI_form_pointer->data.element[element_number].mouse_delay.enabled)
+                                                    if((UI_form_pointer->data.element[element_number].mouse_delay.ready) || (!UI_form_pointer->data.element[element_number].mouse_delay.enabled))
                                                     {
-                                                        UI_form_pointer->data.element[element_number].mouse_delay.ready = false;
-                                                        UI_form_pointer->data.element[element_number].mouse_delay.value = 0;
+                                                        if (game.core.io.mouse_button_right) UI_form_pointer->data.element[element_number].event.id = EVENT_ELEMENT_MOUSE_RIGHT;
+                                                        if (game.core.io.mouse_button_left)  UI_form_pointer->data.element[element_number].event.id = EVENT_ELEMENT_MOUSE_LEFT;
+                                                        if (UI_form_pointer->data.element[element_number].sound.on_click.enabled) game.sound_manager.play(UI_form_pointer->data.element[element_number].sound.on_click.sound);
+                                                        UI_form_pointer->data.element[element_number].clicked = true;
+                                                        if (UI_form_pointer->data.element[element_number].mouse_delay.enabled)
+                                                        {
+                                                            UI_form_pointer->data.element[element_number].mouse_delay.ready = false;
+                                                            UI_form_pointer->data.element[element_number].mouse_delay.value = 0;
+                                                        }
                                                     }
                                                 }
                                             }
                                         }
                                     }
+                                    else
+                                    {
+                                        UI_form_pointer->data.element[element_number].state = NORMAL;
+                                    }
                                 }
-                                else
+                                if (UI_form_pointer->data.element[element_number].state == HIGHLIGHTED)
                                 {
-                                    UI_form_pointer->data.element[element_number].state = NORMAL;
+                                    UI_form_pointer->data.element[element_number].zoom.value += UI_form_pointer->data.element[element_number].zoom.speed;
+                                    if (UI_form_pointer->data.element[element_number].zoom.value > UI_form_pointer->data.element[element_number].zoom.maximum) UI_form_pointer->data.element[element_number].zoom.value = UI_form_pointer->data.element[element_number].zoom.maximum;
+                                }
+                                if ((UI_form_pointer->data.element[element_number].state != HIGHLIGHTED) && (UI_form_pointer->data.element[element_number].zoom.value > 0.0f))
+                                {
+                                    UI_form_pointer->data.element[element_number].zoom.value -= UI_form_pointer->data.element[element_number].zoom.speed;
+                                    if (UI_form_pointer->data.element[element_number].zoom.value < 0.0f) UI_form_pointer->data.element[element_number].zoom.value = 0.0f;
                                 }
                             }
-                            if (UI_form_pointer->data.element[element_number].state == HIGHLIGHTED)
+                            else UI_form_pointer->data.element[element_number].event.id = EVENT_NONE;
+                            return_value.id = UI_form_pointer->data.element[element_number].event.id;
+                            // ------------------------------------------------------------------------------------------
+                            if (return_value.id != EVENT_NONE)
                             {
-                                UI_form_pointer->data.element[element_number].zoom.value += UI_form_pointer->data.element[element_number].zoom.speed;
-                                if (UI_form_pointer->data.element[element_number].zoom.value > UI_form_pointer->data.element[element_number].zoom.maximum) UI_form_pointer->data.element[element_number].zoom.value = UI_form_pointer->data.element[element_number].zoom.maximum;
+                                return_value.id += (element_number * EVENT_BUTTON_MULTIPLIER);
+                                allow_drag       = false;
                             }
-                            if ((UI_form_pointer->data.element[element_number].state != HIGHLIGHTED) && (UI_form_pointer->data.element[element_number].zoom.value > 0.0f))
+                            if (UI_form_pointer->data.element[element_number].mouse_over)
                             {
-                                UI_form_pointer->data.element[element_number].zoom.value -= UI_form_pointer->data.element[element_number].zoom.speed;
-                                if (UI_form_pointer->data.element[element_number].zoom.value < 0.0f) UI_form_pointer->data.element[element_number].zoom.value = 0.0f;
+                                allow_drag        = false;
+                                return_mouse_over = true;
                             }
-                        }
-                        else UI_form_pointer->data.element[element_number].event.id = EVENT_NONE;
-                        return_value.id = UI_form_pointer->data.element[element_number].event.id;
-                        // ------------------------------------------------------------------------------------------
-                        if (return_value.id != EVENT_NONE)
-                        {
-                            return_value.id += (element_number * EVENT_BUTTON_MULTIPLIER);
-                            allow_drag       = false;
-                        }
-                        if (UI_form_pointer->data.element[element_number].mouse_over)
-                        {
-                            allow_drag        = false;
-                            return_mouse_over = true;
                         }
                     }
                 }
-            }
-            //-----------------------------------------------------------------------------------------------------
-            //if (window_in_focus)
-            if (return_value.id == EVENT_NONE)
-            {
-                // ------------------------- Drag -------------------------
-                if (!game.UI_manager.drag_in_progress)
+                //-----------------------------------------------------------------------------------------------------
+                //if (window_in_focus)
+                if (return_value.id == EVENT_NONE)
                 {
-                    UI_form_pointer->data.mouse_over_menu = (game.core.physics.point_in_quadrangle(UI_form_pointer->data.position.x,UI_form_pointer->data.size.x,UI_form_pointer->data.position.y,UI_form_pointer->data.size.y,game.core.io.mouse_x,game.core.io.mouse_y));
-                }
-                if (!game.UI_manager.drag_in_progress)
-                {
-                    UI_form_pointer->data.mouse_over_title = (game.core.physics.point_in_quadrangle(UI_form_pointer->data.title_bar.position.x,UI_form_pointer->data.title_bar.size.x,UI_form_pointer->data.title_bar.position.y,UI_form_pointer->data.title_bar.size.y,game.core.io.mouse_x,game.core.io.mouse_y));
-                }
-                if (UI_form_pointer->data.drag_active)
-                {
-                    if (game.core.io.mouse_button_left)
+                    // ------------------------- Drag -------------------------
+                    if (!game.UI_manager.drag_in_progress)
                     {
-                        drag_delta_x = UI_form_pointer->data.position.x;
-                        drag_delta_y = UI_form_pointer->data.position.y;
-                        UI_form_pointer->data.position.x = game.core.io.mouse_x + UI_form_pointer->data.drag_offset_x;
-                        UI_form_pointer->data.position.y = game.core.io.mouse_y + UI_form_pointer->data.drag_offset_y;
-                        drag_delta_x = drag_delta_x - UI_form_pointer->data.position.x;
-                        drag_delta_y = drag_delta_y - UI_form_pointer->data.position.y;
-                        UI_form_pointer->data.title.position.x     -= drag_delta_x;
-                        UI_form_pointer->data.title.position.y     -= drag_delta_y;
-                        UI_form_pointer->data.title_bar.position.x -= drag_delta_x;
-                        UI_form_pointer->data.title_bar.position.y -= drag_delta_y;
-                        if(UI_form_pointer->data.number_of_elements > 0)
+                        UI_form_pointer->data.mouse_over_title = (game.core.physics.point_in_quadrangle(UI_form_pointer->data.title_bar.position.x,UI_form_pointer->data.title_bar.size.x,UI_form_pointer->data.title_bar.position.y,UI_form_pointer->data.title_bar.size.y,game.core.io.mouse_x,game.core.io.mouse_y));
+                    }
+                    if (UI_form_pointer->data.drag_active)
+                    {
+                        if (game.core.io.mouse_button_left)
                         {
-                            for (int element_number = 0; element_number < UI_form_pointer->data.number_of_elements; element_number++)
+                            drag_delta_x = UI_form_pointer->data.position.x;
+                            drag_delta_y = UI_form_pointer->data.position.y;
+                            UI_form_pointer->data.position.x = game.core.io.mouse_x + UI_form_pointer->data.drag_offset_x;
+                            UI_form_pointer->data.position.y = game.core.io.mouse_y + UI_form_pointer->data.drag_offset_y;
+                            drag_delta_x = drag_delta_x - UI_form_pointer->data.position.x;
+                            drag_delta_y = drag_delta_y - UI_form_pointer->data.position.y;
+                            UI_form_pointer->data.title.position.x     -= drag_delta_x;
+                            UI_form_pointer->data.title.position.y     -= drag_delta_y;
+                            UI_form_pointer->data.title_bar.position.x -= drag_delta_x;
+                            UI_form_pointer->data.title_bar.position.y -= drag_delta_y;
+                            if(UI_form_pointer->data.number_of_elements > 0)
                             {
-                                if (UI_form_pointer->data.element[element_number].active)
+                                for (int element_number = 0; element_number < UI_form_pointer->data.number_of_elements; element_number++)
                                 {
-                                    UI_form_pointer->data.element[element_number].position.x       -= drag_delta_x;
-                                    UI_form_pointer->data.element[element_number].position.y       -= drag_delta_y;
-                                    UI_form_pointer->data.element[element_number].title.position.x -= drag_delta_x;
-                                    UI_form_pointer->data.element[element_number].title.position.y -= drag_delta_y;
+                                    if (UI_form_pointer->data.element[element_number].active)
+                                    {
+                                        UI_form_pointer->data.element[element_number].position.x       -= drag_delta_x;
+                                        UI_form_pointer->data.element[element_number].position.y       -= drag_delta_y;
+                                        UI_form_pointer->data.element[element_number].title.position.x -= drag_delta_x;
+                                        UI_form_pointer->data.element[element_number].title.position.y -= drag_delta_y;
+                                    }
                                 }
                             }
+                        }
+                        else
+                        {
+                            UI_form_pointer->data.drag_active             = false;
+                            game.UI_manager.drag_in_progress  = false;
                         }
                     }
                     else
                     {
-                        UI_form_pointer->data.drag_active             = false;
-                        game.UI_manager.drag_in_progress  = false;
-                    }
-                }
-                else
-                {
-                    if ((UI_form_pointer->data.drag_enabled) && (window_in_focus))
-                    {
-                        if ((!game.UI_manager.drag_in_progress) && (UI_form_pointer->data.mouse_over_title) && (game.core.io.mouse_button_left) && (allow_drag))// start drag
+                        if ((UI_form_pointer->data.drag_enabled) && (window_in_focus))
                         {
-                            UI_form_pointer->data.drag_offset_x                = UI_form_pointer->data.position.x - game.core.io.mouse_x;
-                            UI_form_pointer->data.drag_offset_y                = UI_form_pointer->data.position.y - game.core.io.mouse_y;
-                            UI_form_pointer->data.drag_active                  = true;
-                            game.UI_manager.drag_in_progress              = true;
-                            return_value.id                               = EVENT_UI_STACK_SORT;
+                            if ((!game.UI_manager.drag_in_progress) && (UI_form_pointer->data.mouse_over_title) && (game.core.io.mouse_button_left) && (allow_drag))// start drag
+                            {
+                                UI_form_pointer->data.drag_offset_x                = UI_form_pointer->data.position.x - game.core.io.mouse_x;
+                                UI_form_pointer->data.drag_offset_y                = UI_form_pointer->data.position.y - game.core.io.mouse_y;
+                                UI_form_pointer->data.drag_active                  = true;
+                                game.UI_manager.drag_in_progress              = true;
+                                return_value.id                               = EVENT_UI_STACK_SORT;
+                            }
+                        }
+                        // user clicked on window, that is not title or an element.
+                        if ((game.core.io.mouse_button_left) && (return_value.id == EVENT_NONE) && (!UI_form_pointer->data.active))
+                        {
+                            return_value.id = EVENT_UI_STACK_SORT;
                         }
                     }
-                    // user clicked on window, that is not title or an element.
-                    if ((game.core.io.mouse_button_left) && (return_value.id == EVENT_NONE) && (!UI_form_pointer->data.active))
-                    {
-                        return_value.id = EVENT_UI_STACK_SORT;
-                    }
+                    // ------------------------- X -------------------------
+                    if (!UI_form_pointer->data.mouse_over_title) UI_form_pointer->data.mouse_over_title = return_mouse_over;
                 }
-                // ------------------------- X -------------------------
-                if (!UI_form_pointer->data.mouse_over_title) UI_form_pointer->data.mouse_over_title = return_mouse_over;
             }
         }
         //if (return_value > 0) game.core.log.file_write("returning event -> ",return_value, " - from UID - ", UI_form_pointer->data.UID);
