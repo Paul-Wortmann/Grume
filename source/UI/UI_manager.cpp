@@ -205,32 +205,20 @@ void UI_manager_class::UI_form_stack_sort(void)
             // ----------------------------- do sort ---------------------------
             UI_form_struct *UI_form_pointer_2;
             UI_form_struct *UI_form_pointer_3;
-            UI_form_struct *UI_form_pointer_1_p;
-            UI_form_struct *UI_form_pointer_1_n;
-            UI_form_struct *UI_form_pointer_2_p;
-            UI_form_struct *UI_form_pointer_2_n;
-            UI_form_struct *UI_form_data;
-            UI_form_data = new UI_form_struct;
-            for (UI_form_struct *UI_form_pointer_1 = UI_manager_class::root; UI_form_pointer_1->next!=NULL; UI_form_pointer_1 = UI_form_pointer_1->next)
+            UI_form_pointer_3 = new UI_form_struct;
+            for (UI_form_struct *UI_form_pointer_4 = UI_manager_class::root; UI_form_pointer_4->next!=NULL; UI_form_pointer_4 = UI_form_pointer_4->next)
             {
-                if ((UI_form_pointer_1->data.active) && (UI_form_pointer_1->next != NULL))
+                for (UI_form_struct *UI_form_pointer_1 = UI_manager_class::root; UI_form_pointer_1->next!=NULL; UI_form_pointer_1 = UI_form_pointer_1->next)
                 {
-                    UI_form_pointer_2 = UI_form_pointer_1->next;
-                    //save pointers
-                    UI_form_pointer_2_n = UI_form_pointer_2->next;
-                    UI_form_pointer_2_p = UI_form_pointer_2->previous;
-                    UI_form_pointer_1_n = UI_form_pointer_1->next;
-                    UI_form_pointer_1_p = UI_form_pointer_1->previous;
-                    //swap data
-                    UI_form_data->data.active      = UI_form_pointer_1->data.active;
-                    UI_form_pointer_1->data.active = UI_form_pointer_2->data.active;
-                    UI_form_pointer_2->data.active = UI_form_data->data.active;
-                    //add back origional pointers
-                    UI_form_pointer_2->next     = UI_form_pointer_2_n;
-                    UI_form_pointer_2->previous = UI_form_pointer_2_p;
-                    UI_form_pointer_1->next     = UI_form_pointer_1_n;
-                    UI_form_pointer_1->previous = UI_form_pointer_1_p;
-                    break;
+                    if ((UI_form_pointer_1->data.active) && (UI_form_pointer_1->next != NULL))
+                    {
+                        UI_form_pointer_2 = UI_form_pointer_1->next;
+                        //swap data
+                        UI_form_pointer_3->data = UI_form_pointer_1->data;
+                        UI_form_pointer_1->data = UI_form_pointer_2->data;
+                        UI_form_pointer_2->data = UI_form_pointer_3->data;
+                        break;
+                    }
                 }
             }
         }
