@@ -24,12 +24,13 @@
 
 #include "network.hpp"
 
-bool      initialize(void)
+bool network_manager_class::initialize(void)
 {
     return (false);
 };
 
-bool      set_ip_destination(ip_struct ip_address)
+bool network_manager_class::set_ip_destination(ip_struct ip_address)
 {
+    network_manager_class::ip_address_destination = ip_address;
     return (false);
 };
