@@ -455,6 +455,16 @@ void process_menu_game_new(UI_form_struct *UI_form_pointer)
                 game.UI_manager.UI_form_transition(UID_MENU_GAME_NEW,UID_MENU_MAIN);
             break;
             case ((2*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Start game menu button
+                //set player portrait
+                for (int data_position_count = 0; data_position_count <= UI_form_pointer->data.choice_selection[choice_selection_number].position_max;data_position_count++)
+                {
+                    if (UI_form_pointer->data.choice_selection[choice_selection_number].data[data_position_count].active)
+                    {
+                        game.player.portrait = UI_form_pointer->data.choice_selection[choice_selection_number].data[data_position_count].image;
+                    };
+                }
+                update_player_profile  (game.UI_manager.UI_form_get(UID_PCPROFILE));
+                update_character_window(game.UI_manager.UI_form_get(UID_CHARACTER));
                 switch (game.state)
                 {
                     case STATE_MENU:
@@ -489,16 +499,6 @@ void process_menu_game_new(UI_form_struct *UI_form_pointer)
                 game.UI_manager.UI_form_set_active(UID_ACTIONBAR);
                 UI_form_pointer->data.element[3].state = NORMAL; // Save game
                 UI_form_pointer->data.element[4].state = NORMAL; // Resume game
-                //set player portrait
-                for (int data_position_count = 0; data_position_count <= UI_form_pointer->data.choice_selection[choice_selection_number].position_max;data_position_count++)
-                {
-                    if (UI_form_pointer->data.choice_selection[choice_selection_number].data[data_position_count].active)
-                    {
-                        game.player.portrait = UI_form_pointer->data.choice_selection[choice_selection_number].data[data_position_count].image;
-                    };
-                }
-                update_player_profile  (game.UI_manager.UI_form_get(UID_PCPROFILE));
-                update_character_window(game.UI_manager.UI_form_get(UID_CHARACTER));
             break;
             case ((3*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // left arrow button for player portrait selection
                 UI_form_pointer->data.choice_selection[choice_selection_number].position++;
