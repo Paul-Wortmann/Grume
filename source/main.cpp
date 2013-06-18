@@ -99,7 +99,7 @@ extern "C" int main(int argc, char** argv)
     game.core.log.file_write("Initializing font system...");
     TTF_Init();
 //  --- resources ---
-    //game.loading_screen.display("data/loading_screen.png");
+    game.loading_screen.display("data/loading_screen.png");
     game.core.log.file_write("Loading resources....");
     game.UI_manager.cursor.normal_arrow = game.texture_manager.add_texture("data/textures/UI/cursors/default.png");
     game.music_manager.current = game.music_manager.add_music("data/music/menu_00.s3m");

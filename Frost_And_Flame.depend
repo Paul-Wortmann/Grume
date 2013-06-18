@@ -747,7 +747,7 @@
 1368859896 source:c:\_git_\frost_and_flame\source\core\rs232.cpp
 	"rs232.hpp"
 
-1370523598 source:c:\_git_\frost_and_flame\source\main.cpp
+1371564241 source:c:\_git_\frost_and_flame\source\main.cpp
 	"game.hpp"
 	<SDL/SDL.h>
 	"core/misc.hpp"
@@ -2060,7 +2060,7 @@
 1370517772 c:\_git_\frost_and_flame\source\ui\ui_loading_screen.hpp
 	<string>
 
-1370699987 c:\_git_\frost_and_flame\source\ui\ui_manager.hpp
+1371564056 c:\_git_\frost_and_flame\source\ui\ui_manager.hpp
 	"action_bar.hpp"
 	"character_window.hpp"
 	"equipment_window.hpp"
