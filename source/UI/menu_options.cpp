@@ -773,8 +773,8 @@ void process_menu_options(UI_form_struct *UI_form_pointer)
                     reset_display = true;
                 }
             break;
-            case (EVENT_UI_STACK_SORT): //Window stack sort
-                game.UI_manager.UI_form_stack_sort();
+            case (EVENT_UI_LIST_SORT): //Window stack sort
+                game.UI_manager.UI_form_list_sort();
                 game.UI_manager.event.id = EVENT_NONE;
             break;
             case (EVENT_ELEMENT_DRAG): //Element drag event posted

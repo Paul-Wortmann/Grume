@@ -36,7 +36,7 @@
 #define EVENT_ELEMENT_MOUSE_RIGHT 2
 #define EVENT_ELEMENT_DRAG        3
 #define EVENT_BUTTON_MULTIPLIER   100
-#define EVENT_UI_STACK_SORT       10000
+#define EVENT_UI_LIST_SORT       10000
 
 #define DISABLED        0
 #define NORMAL          1

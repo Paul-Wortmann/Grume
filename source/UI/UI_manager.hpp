@@ -77,7 +77,8 @@ class UI_manager_class
         void                  UI_form_set_position(int UI_form_UID_src, int UI_form_UID_dst);
         void                  UI_form_mouse_reset(int UI_form_UID);
         void                  UI_form_set_event(int UI_form_UID, int EVENT_ID);
-        void                  UI_form_stack_sort(void);
+        int                   UI_form_get_list_position(int UI_form_UID);
+        void                  UI_form_list_sort(void);
         void                  UI_form_transition(int UI_form_UID_src, int UI_form_UID_dst);
         void                  setup(void);
         void                  render(void);

@@ -761,8 +761,8 @@ void process_action_bar(UI_form_struct *UI_form_pointer)
                 //use_item(window_number,17);
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
-            case (EVENT_UI_STACK_SORT): //Window stack sort
-                game.UI_manager.UI_form_stack_sort();
+            case (EVENT_UI_LIST_SORT): //Window stack sort
+                game.UI_manager.UI_form_list_sort();
                 game.UI_manager.event.id = EVENT_NONE;
             break;
             case (EVENT_ELEMENT_DRAG): //Element drag event posted

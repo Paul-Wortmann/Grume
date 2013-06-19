@@ -606,8 +606,8 @@ void process_menu_game_new(UI_form_struct *UI_form_pointer)
                 UI_form_pointer->data.element[9].selected                  = true;
                 UI_form_pointer->data.choice_selection[choice_selection_number].data[4].active   = true;
             break;
-            case (EVENT_UI_STACK_SORT): //Window stack sort
-                game.UI_manager.UI_form_stack_sort();
+            case (EVENT_UI_LIST_SORT): //Window stack sort
+                game.UI_manager.UI_form_list_sort();
                 game.UI_manager.event.id = EVENT_NONE;
             break;
             case (EVENT_ELEMENT_DRAG): //Element drag event posted
