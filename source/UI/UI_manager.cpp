@@ -318,7 +318,7 @@ void UI_manager_class::UI_form_transition(int UI_form_UID_src, int UI_form_UID_d
 
 void UI_manager_class::render(void)
 {
-    for (UI_form_struct *UI_form_pointer = UI_manager_class::last; UI_form_pointer != NULL; UI_form_pointer = UI_form_pointer->previous)
+    for (UI_form_struct *UI_form_pointer = UI_manager_class::root; UI_form_pointer != NULL; UI_form_pointer = UI_form_pointer->next)
     {
         // ----------------------------- render UI form ---------------------------------
         if(UI_form_pointer->data.enabled)
@@ -461,7 +461,7 @@ void UI_manager_class::process(void)
     int  UI_form_count      = 0;
     bool window_in_focus    = true;
     bool front_window_found = false;
-    for (UI_form_struct *UI_form_pointer = UI_manager_class::root; UI_form_pointer != NULL; UI_form_pointer = UI_form_pointer->next)
+    for (UI_form_struct *UI_form_pointer = UI_manager_class::last; UI_form_pointer != NULL; UI_form_pointer = UI_form_pointer->previous)
     {
         UI_form_count++;
         // ----------------------------- process UI form ---------------------------------
@@ -710,14 +710,14 @@ void UI_manager_class::process(void)
                             UI_form_pointer->data.drag_offset_y                = UI_form_pointer->data.position.y - game.core.io.mouse_y;
                             UI_form_pointer->data.drag_active                  = true;
                             game.UI_manager.drag_in_progress                   = true;
-                            if (UI_manager_class::UI_form_get_list_position(UI_form_pointer->data.UID) != 1) game.UI_manager.event.id = EVENT_UI_FORM_DRAG;
-                            game.core.log.file_write("List position -> ",UI_manager_class::UI_form_get_list_position(UI_form_pointer->data.UID)," - UID -> ",UI_form_pointer->data.UID);
+                            if (UI_manager_class::UI_form_get_list_position(UI_form_pointer->data.UID) != UI_manager_class::number_of_UI_forms) game.UI_manager.event.id = EVENT_UI_FORM_DRAG;
+                            game.core.log.file_write("UID -> ",UI_form_pointer->data.UID," - Position in list -> ",UI_manager_class::UI_form_get_list_position(UI_form_pointer->data.UID));
                         }
                     }
                     // user clicked on window, that is not title or an element.
                     if ((game.core.io.mouse_button_left) && (return_value.id == EVENT_NONE) && (!UI_form_pointer->data.active))
                     {
-                        game.UI_manager.event.id = EVENT_UI_LIST_SORT;
+                        if (UI_manager_class::UI_form_get_list_position(UI_form_pointer->data.UID) != UI_manager_class::number_of_UI_forms) game.UI_manager.event.id = EVENT_UI_LIST_SORT;
                     }
                 }
                 // ------------------------- X -------------------------
