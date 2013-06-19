@@ -389,7 +389,7 @@ void process_character_window(UI_form_struct *UI_form_pointer)
                 game.UI_manager.UI_form_list_sort();
                 game.UI_manager.event.id = EVENT_NONE;
             break;
-            case (EVENT_ELEMENT_DRAG): //Element drag event posted
+            case (EVENT_UI_ELEMENT_DRAG): //Element drag event posted
                 //game.UI_manager.source.window = CHARACTER_UID;
             break;
             default:
