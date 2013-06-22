@@ -711,12 +711,14 @@ void UI_manager_class::process(void)
                             UI_form_pointer->data.drag_active                  = true;
                             game.UI_manager.drag_in_progress                   = true;
                             if (UI_manager_class::UI_form_get_list_position(UI_form_pointer->data.UID) != UI_manager_class::number_of_UI_forms) game.UI_manager.event.id = EVENT_UI_FORM_DRAG;
+                            game.core.log.file_write("List size -> ",UI_manager_class::number_of_UI_forms);
                             game.core.log.file_write("UID -> ",UI_form_pointer->data.UID," - Position in list -> ",UI_manager_class::UI_form_get_list_position(UI_form_pointer->data.UID));
                             //write stack to log file to see whats happening....
                             game.core.log.file_write("************");
                             for (UI_form_struct *UI_form_pointer_tmp = UI_manager_class::root; UI_form_pointer_tmp != NULL; UI_form_pointer_tmp = UI_form_pointer_tmp->next)
                             {
-                                game.core.log.file_write("Stack UID -> ",UI_form_pointer_tmp->data.UID);
+                                if (UI_form_pointer_tmp->data.active) game.core.log.file_write("Active UID -> ",UI_form_pointer_tmp->data.UID);
+                                else game.core.log.file_write("UID -> ",UI_form_pointer_tmp->data.UID);
                             }
                             game.core.log.file_write("************");
                         }
