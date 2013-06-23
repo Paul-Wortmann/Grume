@@ -20,8 +20,386 @@ Starting Game...
  
 # ---------------------------------------------- #
  
+************
+UID -> 1
+UID -> 2
+UID -> 5
+UID -> 3
+UID -> 6
+UID -> 12
+UID -> 11
+UID -> 13
+UID -> 4
+UID -> 7
+UID -> 9
+Active UID -> 10
+************
+************
+Active UID -> 1
+UID -> 2
+UID -> 5
+UID -> 3
+UID -> 6
+UID -> 12
+UID -> 11
+UID -> 13
+UID -> 4
+UID -> 7
+UID -> 9
+UID -> 10
+************
+************
+Active UID -> 1
+UID -> 2
+UID -> 5
+UID -> 3
+UID -> 6
+UID -> 12
+UID -> 11
+UID -> 13
+UID -> 4
+UID -> 7
+UID -> 9
+UID -> 10
+************
+************
+Active UID -> 1
+UID -> 2
+UID -> 5
+UID -> 3
+UID -> 6
+UID -> 12
+UID -> 11
+UID -> 13
+UID -> 4
+UID -> 7
+UID -> 10
+Active UID -> 9
+************
+************
+Active UID -> 1
+UID -> 2
+UID -> 5
+UID -> 3
+UID -> 6
+UID -> 12
+UID -> 11
+UID -> 13
+UID -> 4
+UID -> 7
+UID -> 10
+Active UID -> 9
+************
+************
+Active UID -> 1
+UID -> 2
+UID -> 5
+UID -> 3
+UID -> 6
+UID -> 12
+UID -> 11
+UID -> 13
+UID -> 7
+UID -> 10
+Active UID -> 9
+Active UID -> 4
+************
+************
+Active UID -> 1
+UID -> 2
+UID -> 5
+UID -> 3
+UID -> 6
+UID -> 12
+UID -> 11
+UID -> 13
+UID -> 7
+UID -> 10
+Active UID -> 4
+Active UID -> 9
+************
+************
+Active UID -> 1
+UID -> 2
+UID -> 5
+UID -> 3
+UID -> 6
+UID -> 12
+UID -> 11
+UID -> 13
+UID -> 7
+UID -> 10
+Active UID -> 9
+Active UID -> 4
+************
+************
+Active UID -> 1
+UID -> 2
+UID -> 5
+UID -> 3
+UID -> 6
+UID -> 12
+UID -> 11
+UID -> 13
+UID -> 7
+UID -> 10
+Active UID -> 4
+Active UID -> 9
+************
 List size -> 12
 UID -> 9 - Position in list -> 12
+************
+Active UID -> 1
+UID -> 2
+UID -> 5
+UID -> 3
+UID -> 6
+UID -> 12
+UID -> 11
+UID -> 13
+UID -> 7
+UID -> 10
+Active UID -> 4
+Active UID -> 9
+************
+************
+Active UID -> 1
+UID -> 2
+UID -> 5
+UID -> 3
+UID -> 6
+UID -> 12
+UID -> 11
+UID -> 13
+UID -> 7
+UID -> 10
+Active UID -> 4
+Active UID -> 9
+************
+************
+Active UID -> 1
+UID -> 2
+UID -> 5
+UID -> 3
+UID -> 6
+UID -> 12
+UID -> 11
+UID -> 13
+UID -> 7
+UID -> 10
+Active UID -> 4
+Active UID -> 9
+************
+************
+Active UID -> 1
+UID -> 2
+UID -> 5
+UID -> 3
+UID -> 6
+UID -> 12
+UID -> 11
+UID -> 13
+UID -> 7
+UID -> 10
+Active UID -> 4
+Active UID -> 9
+************
+************
+Active UID -> 1
+UID -> 2
+UID -> 5
+UID -> 3
+UID -> 6
+UID -> 12
+UID -> 11
+UID -> 13
+UID -> 7
+UID -> 10
+Active UID -> 4
+Active UID -> 9
+************
+************
+Active UID -> 1
+UID -> 2
+UID -> 5
+UID -> 3
+UID -> 6
+UID -> 12
+UID -> 11
+UID -> 13
+UID -> 7
+UID -> 10
+Active UID -> 4
+Active UID -> 9
+************
+************
+Active UID -> 1
+UID -> 2
+UID -> 5
+UID -> 3
+UID -> 6
+UID -> 12
+UID -> 11
+UID -> 13
+UID -> 7
+UID -> 10
+Active UID -> 4
+Active UID -> 9
+************
+************
+Active UID -> 1
+UID -> 2
+UID -> 5
+UID -> 3
+UID -> 6
+UID -> 12
+UID -> 11
+UID -> 13
+UID -> 7
+UID -> 10
+Active UID -> 4
+Active UID -> 9
+************
+************
+Active UID -> 1
+UID -> 2
+UID -> 5
+UID -> 3
+UID -> 6
+UID -> 12
+UID -> 11
+UID -> 13
+UID -> 7
+UID -> 10
+Active UID -> 4
+Active UID -> 9
+************
+************
+Active UID -> 1
+UID -> 2
+UID -> 5
+UID -> 3
+UID -> 6
+UID -> 12
+UID -> 11
+UID -> 13
+UID -> 7
+UID -> 10
+Active UID -> 4
+Active UID -> 9
+************
+************
+Active UID -> 1
+UID -> 2
+UID -> 5
+UID -> 3
+UID -> 6
+UID -> 12
+UID -> 11
+UID -> 13
+UID -> 7
+UID -> 10
+Active UID -> 4
+Active UID -> 9
+************
+************
+Active UID -> 1
+UID -> 2
+UID -> 5
+UID -> 3
+UID -> 6
+UID -> 12
+UID -> 11
+UID -> 13
+UID -> 7
+UID -> 10
+Active UID -> 4
+Active UID -> 9
+************
+************
+Active UID -> 1
+UID -> 2
+UID -> 5
+UID -> 3
+UID -> 6
+UID -> 12
+UID -> 11
+UID -> 13
+UID -> 7
+UID -> 10
+Active UID -> 4
+Active UID -> 9
+************
+************
+Active UID -> 1
+UID -> 2
+UID -> 5
+UID -> 3
+UID -> 6
+UID -> 12
+UID -> 11
+UID -> 13
+UID -> 7
+UID -> 10
+Active UID -> 4
+Active UID -> 9
+************
+************
+Active UID -> 1
+UID -> 2
+UID -> 5
+UID -> 3
+UID -> 6
+UID -> 12
+UID -> 11
+UID -> 13
+UID -> 7
+UID -> 10
+Active UID -> 4
+Active UID -> 9
+************
+************
+Active UID -> 1
+UID -> 2
+UID -> 5
+UID -> 3
+UID -> 6
+UID -> 12
+UID -> 11
+UID -> 13
+UID -> 7
+UID -> 10
+Active UID -> 4
+Active UID -> 9
+************
+************
+Active UID -> 1
+UID -> 2
+UID -> 5
+UID -> 3
+UID -> 6
+UID -> 12
+UID -> 11
+UID -> 13
+UID -> 7
+UID -> 10
+Active UID -> 4
+Active UID -> 9
+************
+************
+Active UID -> 1
+UID -> 2
+UID -> 5
+UID -> 3
+UID -> 6
+UID -> 12
+UID -> 11
+UID -> 13
+UID -> 7
+UID -> 10
+Active UID -> 4
+Active UID -> 9
+************
 ************
 Active UID -> 1
 UID -> 2
@@ -52,8 +430,6 @@ UID -> 10
 Active UID -> 4
 Active UID -> 9
 ************
-List size -> 12
-UID -> 9 - Position in list -> 12
 ************
 Active UID -> 1
 UID -> 2
@@ -67,6 +443,426 @@ UID -> 7
 UID -> 10
 Active UID -> 4
 Active UID -> 9
+************
+************
+Active UID -> 1
+UID -> 2
+UID -> 5
+UID -> 3
+UID -> 6
+UID -> 12
+UID -> 11
+UID -> 13
+UID -> 7
+UID -> 10
+Active UID -> 4
+Active UID -> 9
+************
+************
+Active UID -> 1
+UID -> 2
+UID -> 5
+UID -> 3
+UID -> 6
+UID -> 12
+UID -> 11
+UID -> 13
+UID -> 7
+UID -> 10
+Active UID -> 4
+Active UID -> 9
+************
+************
+Active UID -> 1
+UID -> 2
+UID -> 5
+UID -> 3
+UID -> 6
+UID -> 12
+UID -> 11
+UID -> 13
+UID -> 7
+UID -> 10
+Active UID -> 4
+Active UID -> 9
+************
+************
+Active UID -> 1
+UID -> 2
+UID -> 5
+UID -> 3
+UID -> 6
+UID -> 12
+UID -> 11
+UID -> 13
+UID -> 7
+UID -> 10
+Active UID -> 4
+Active UID -> 9
+************
+************
+Active UID -> 1
+UID -> 2
+UID -> 5
+UID -> 3
+UID -> 6
+UID -> 12
+UID -> 11
+UID -> 13
+UID -> 7
+UID -> 10
+Active UID -> 4
+Active UID -> 9
+************
+************
+Active UID -> 1
+UID -> 2
+UID -> 5
+UID -> 3
+UID -> 6
+UID -> 12
+UID -> 11
+UID -> 13
+UID -> 7
+UID -> 10
+Active UID -> 4
+Active UID -> 9
+************
+************
+Active UID -> 1
+UID -> 2
+UID -> 5
+UID -> 3
+UID -> 6
+UID -> 12
+UID -> 11
+UID -> 13
+UID -> 7
+UID -> 10
+Active UID -> 4
+Active UID -> 9
+************
+************
+Active UID -> 1
+UID -> 2
+UID -> 5
+UID -> 3
+UID -> 6
+UID -> 12
+UID -> 11
+UID -> 13
+UID -> 7
+UID -> 10
+Active UID -> 4
+Active UID -> 9
+************
+************
+Active UID -> 1
+UID -> 2
+UID -> 5
+UID -> 3
+UID -> 6
+UID -> 12
+UID -> 11
+UID -> 13
+UID -> 7
+UID -> 10
+Active UID -> 4
+Active UID -> 9
+************
+************
+Active UID -> 1
+UID -> 2
+UID -> 5
+UID -> 3
+UID -> 6
+UID -> 12
+UID -> 11
+UID -> 13
+UID -> 7
+UID -> 10
+Active UID -> 4
+Active UID -> 9
+************
+************
+Active UID -> 1
+UID -> 2
+UID -> 5
+UID -> 3
+UID -> 6
+UID -> 12
+UID -> 11
+UID -> 13
+UID -> 7
+UID -> 10
+Active UID -> 4
+Active UID -> 9
+************
+************
+Active UID -> 1
+UID -> 2
+UID -> 5
+UID -> 3
+UID -> 6
+UID -> 12
+UID -> 11
+UID -> 13
+UID -> 7
+UID -> 10
+Active UID -> 4
+Active UID -> 9
+************
+************
+Active UID -> 1
+UID -> 2
+UID -> 5
+UID -> 3
+UID -> 6
+UID -> 12
+UID -> 11
+UID -> 13
+UID -> 7
+UID -> 10
+Active UID -> 4
+Active UID -> 9
+************
+************
+Active UID -> 1
+UID -> 2
+UID -> 5
+UID -> 3
+UID -> 6
+UID -> 12
+UID -> 11
+UID -> 13
+UID -> 7
+UID -> 10
+Active UID -> 4
+Active UID -> 9
+************
+************
+Active UID -> 1
+UID -> 2
+UID -> 5
+UID -> 3
+UID -> 6
+UID -> 12
+UID -> 11
+UID -> 13
+UID -> 7
+UID -> 10
+Active UID -> 4
+Active UID -> 9
+************
+************
+Active UID -> 1
+UID -> 2
+UID -> 5
+UID -> 3
+UID -> 6
+UID -> 12
+UID -> 11
+UID -> 13
+UID -> 7
+UID -> 10
+Active UID -> 4
+Active UID -> 9
+************
+************
+Active UID -> 1
+UID -> 2
+UID -> 5
+UID -> 3
+UID -> 6
+UID -> 12
+UID -> 11
+UID -> 13
+UID -> 7
+UID -> 10
+Active UID -> 4
+Active UID -> 9
+************
+************
+Active UID -> 1
+UID -> 2
+UID -> 5
+UID -> 3
+UID -> 6
+UID -> 12
+UID -> 11
+UID -> 13
+UID -> 7
+UID -> 10
+Active UID -> 4
+Active UID -> 9
+************
+************
+Active UID -> 1
+UID -> 2
+UID -> 5
+UID -> 3
+UID -> 6
+UID -> 12
+UID -> 11
+UID -> 13
+UID -> 7
+UID -> 10
+Active UID -> 4
+Active UID -> 9
+************
+************
+Active UID -> 1
+UID -> 2
+UID -> 5
+UID -> 3
+UID -> 6
+UID -> 12
+UID -> 11
+UID -> 13
+UID -> 7
+UID -> 10
+Active UID -> 9
+Active UID -> 4
+************
+************
+Active UID -> 1
+UID -> 2
+UID -> 5
+UID -> 3
+UID -> 6
+UID -> 12
+UID -> 11
+UID -> 13
+UID -> 7
+UID -> 10
+Active UID -> 4
+Active UID -> 9
+************
+************
+Active UID -> 1
+UID -> 2
+UID -> 5
+UID -> 3
+UID -> 6
+UID -> 12
+UID -> 11
+UID -> 13
+UID -> 7
+UID -> 10
+Active UID -> 9
+Active UID -> 4
+************
+************
+Active UID -> 1
+UID -> 2
+UID -> 5
+UID -> 3
+UID -> 6
+UID -> 12
+UID -> 11
+UID -> 13
+UID -> 7
+UID -> 10
+Active UID -> 4
+Active UID -> 9
+************
+************
+Active UID -> 1
+UID -> 2
+UID -> 5
+UID -> 3
+UID -> 6
+UID -> 12
+UID -> 11
+UID -> 13
+UID -> 7
+UID -> 10
+Active UID -> 9
+Active UID -> 4
+************
+************
+Active UID -> 1
+UID -> 2
+UID -> 5
+UID -> 3
+UID -> 6
+UID -> 12
+UID -> 11
+UID -> 13
+UID -> 7
+UID -> 10
+Active UID -> 4
+Active UID -> 9
+************
+************
+Active UID -> 1
+UID -> 2
+UID -> 5
+UID -> 3
+UID -> 6
+UID -> 12
+UID -> 11
+UID -> 13
+UID -> 7
+UID -> 10
+Active UID -> 9
+Active UID -> 4
+************
+************
+Active UID -> 1
+UID -> 2
+UID -> 5
+UID -> 3
+UID -> 6
+UID -> 12
+UID -> 11
+UID -> 13
+UID -> 7
+UID -> 10
+Active UID -> 4
+Active UID -> 9
+************
+************
+Active UID -> 1
+UID -> 2
+UID -> 5
+UID -> 3
+UID -> 6
+UID -> 12
+UID -> 11
+UID -> 13
+UID -> 7
+UID -> 10
+Active UID -> 9
+Active UID -> 4
+************
+************
+Active UID -> 1
+UID -> 2
+UID -> 5
+UID -> 3
+UID -> 6
+UID -> 12
+UID -> 11
+UID -> 13
+UID -> 7
+UID -> 10
+Active UID -> 4
+Active UID -> 9
+************
+************
+Active UID -> 1
+UID -> 2
+UID -> 5
+UID -> 3
+UID -> 6
+UID -> 12
+UID -> 11
+UID -> 13
+UID -> 7
+UID -> 10
+Active UID -> 9
+Active UID -> 4
 ************
  
 # ---------------------------------------------- #

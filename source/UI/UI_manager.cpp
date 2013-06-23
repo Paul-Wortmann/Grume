@@ -143,6 +143,8 @@ void UI_manager_class::setup(void)
     UI_manager_class::UI_form_set_active(UID_MENU_MAIN);
     //--- Enable windows. ---
     UI_manager_class::UI_form_enable(UID_MENU_MAIN);
+    //--- sort the list ---
+    UI_manager_class::UI_form_list_sort();
     // --- Allow specific textures to be rotated ----
     texture_type *temp_pointer;
     temp_pointer = game.texture_manager.add_texture("data/textures/UI/menu/arrow_normal.png");
@@ -713,14 +715,6 @@ void UI_manager_class::process(void)
                             if (UI_manager_class::UI_form_get_list_position(UI_form_pointer->data.UID) != UI_manager_class::number_of_UI_forms) game.UI_manager.event.id = EVENT_UI_FORM_DRAG;
                             game.core.log.file_write("List size -> ",UI_manager_class::number_of_UI_forms);
                             game.core.log.file_write("UID -> ",UI_form_pointer->data.UID," - Position in list -> ",UI_manager_class::UI_form_get_list_position(UI_form_pointer->data.UID));
-                            //write stack to log file to see whats happening....
-                            game.core.log.file_write("************");
-                            for (UI_form_struct *UI_form_pointer_tmp = UI_manager_class::root; UI_form_pointer_tmp != NULL; UI_form_pointer_tmp = UI_form_pointer_tmp->next)
-                            {
-                                if (UI_form_pointer_tmp->data.active) game.core.log.file_write("Active UID -> ",UI_form_pointer_tmp->data.UID);
-                                else game.core.log.file_write("UID -> ",UI_form_pointer_tmp->data.UID);
-                            }
-                            game.core.log.file_write("************");
                         }
                     }
                     // user clicked on window, that is not title or an element.
@@ -743,10 +737,26 @@ void UI_manager_class::process(void)
         case EVENT_UI_LIST_SORT:
             if (!game.UI_manager.drag_in_progress) game.UI_manager.UI_form_list_sort();
             game.UI_manager.event.id = EVENT_NONE;
+    //write stack to log file to see whats happening....
+    game.core.log.file_write("************");
+    for (UI_form_struct *UI_form_pointer_tmp = UI_manager_class::root; UI_form_pointer_tmp != NULL; UI_form_pointer_tmp = UI_form_pointer_tmp->next)
+    {
+        if (UI_form_pointer_tmp->data.active) game.core.log.file_write("Active UID -> ",UI_form_pointer_tmp->data.UID);
+        else game.core.log.file_write("UID -> ",UI_form_pointer_tmp->data.UID);
+    }
+    game.core.log.file_write("************");
         break;
         case EVENT_UI_FORM_DRAG:
             game.UI_manager.UI_form_list_sort();
             game.UI_manager.event.id = EVENT_NONE;
+    //write stack to log file to see whats happening....
+    game.core.log.file_write("************");
+    for (UI_form_struct *UI_form_pointer_tmp = UI_manager_class::root; UI_form_pointer_tmp != NULL; UI_form_pointer_tmp = UI_form_pointer_tmp->next)
+    {
+        if (UI_form_pointer_tmp->data.active) game.core.log.file_write("Active UID -> ",UI_form_pointer_tmp->data.UID);
+        else game.core.log.file_write("UID -> ",UI_form_pointer_tmp->data.UID);
+    }
+    game.core.log.file_write("************");
         break;
         default:
             game.UI_manager.event.id = EVENT_NONE;
