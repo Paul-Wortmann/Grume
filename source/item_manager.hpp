@@ -101,12 +101,8 @@ struct item_type
     sound_type      *sound_move;
     sound_type      *sound_use;
     texture_type    *image;
-    // sound move
-    // sound use
-    // texture
     bool             active;
     std::string      name;
-    //std::string      image_path;
     int              ID;
     int              type;
     int              sub_type;
@@ -145,8 +141,6 @@ void  use_item(int window_from, int element_from);
 
 sound / texture manager that is separate from the item class, so these are not repeatedly loaded.
 
-item_sound_manager_class
-item_texture_manager_class
 item_effect_class
 item_class
 
