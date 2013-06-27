@@ -37,7 +37,7 @@
 #define ITEM_FEET            5
 #define ITEM_BODY            6
 #define ITEM_BELT            7
-#define ITEM_SHIELD          8
+#define ITEM_OFFHAND         8
 #define ITEM_WEAPON          9
 
 #define ITEM_POTION          10

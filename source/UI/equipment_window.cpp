@@ -423,7 +423,7 @@ void setup_equipment_window(int UID)
     UI_form_pointer->data.element[element_number].dragable                    = true;
     UI_form_pointer->data.element[element_number].active                      = true;
     UI_form_pointer->data.element[element_number].type                        = ITEM;
-    UI_form_pointer->data.element[element_number].sub_type                    = ITEM_SHIELD;
+    UI_form_pointer->data.element[element_number].sub_type                    = ITEM_OFFHAND;
     UI_form_pointer->data.element[element_number].zoom.enabled                = false;
     UI_form_pointer->data.element[element_number].tooltip.enabled             = false;
     UI_form_pointer->data.element[element_number].value                       = -1;
