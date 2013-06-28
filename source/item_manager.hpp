@@ -82,6 +82,10 @@
 #define MAX_ITEM_EFFECTS 4
 #define MAX_ITEM_SOCKETS 4
 
+#define SOCKET_NONE   0
+#define SOCKET_GEM    1
+#define SOCKET_RUNE   2
+
 struct item_effect_type
 {
     bool enabled;
@@ -111,6 +115,7 @@ struct item_type
     int              number_of_item_effects;
     int              number_of_item_sockets;
     bool             socketable;
+    int              socket_type; // Only accept certain items
     item_effect_type effect[MAX_ITEM_EFFECTS];
     item_socket_type socket[MAX_ITEM_SOCKETS];
 };
@@ -129,6 +134,7 @@ class item_manager_class
 };
 
 void  init_items(void); // Initialize hard-coded default items, such as health potions etc...
+void  load_items(std::string file_name); // Load items from file.
 void  use_item(int window_from, int element_from);
 
 #endif // ITEM_MANAGER_H
