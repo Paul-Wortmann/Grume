@@ -1218,7 +1218,7 @@
 	"UI_types.hpp"
 	"UI_manager.hpp"
 
-1371645224 source:c:\_git_\frost_and_flame\source\ui\equipment_window.cpp
+1372338754 source:c:\_git_\frost_and_flame\source\ui\equipment_window.cpp
 	"menu_main.hpp"
 	"../game.hpp"
 
@@ -1983,7 +1983,7 @@
 	"item_manager.hpp"
 	"game.hpp"
 
-1370696653 c:\_git_\frost_and_flame\source\item_manager.hpp
+1372342999 c:\_git_\frost_and_flame\source\item_manager.hpp
 	<string>
 	"core/texture_manager.hpp"
 	"core/sound_manager.hpp"

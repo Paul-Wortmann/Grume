@@ -21,6 +21,11 @@
 			<Cursor1 position="0" topLine="0" />
 		</Cursor>
 	</File>
+	<File name="source\item_manager.hpp" open="1" top="1" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="3055" topLine="112" />
+		</Cursor>
+	</File>
 	<File name="source\UI\menu_game_new.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="57867" topLine="592" />
@@ -91,7 +96,7 @@
 			<Cursor1 position="1144" topLine="15" />
 		</Cursor>
 	</File>
-	<File name="source\UI\UI_manager.cpp" open="1" top="1" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="source\UI\UI_manager.cpp" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="10323" topLine="197" />
 		</Cursor>
@@ -118,7 +123,7 @@
 	</File>
 	<File name="source\UI\equipment_window.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="41329" topLine="452" />
+			<Cursor1 position="37171" topLine="412" />
 		</Cursor>
 	</File>
 	<File name="source\game.cpp" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
