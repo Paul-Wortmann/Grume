@@ -5,8 +5,17 @@ it may take longer than I had first anticipated.
 These are not indications that the project will be terminated in the future,
 just that time is not permitting to proceed at a fast pace, at the moment.
 
-v0.20 - (2013-06-xx)
+v0.21 - (2013-07-xx)
 LOC   -> xxxxx
+
+v0.20 - (2013-06-30)
+ITEM  -> Added use_effecct function to the item manager.
+ITEM  -> Added defines for socket types.
+ITEM  -> Renamed ITEM_SHIELD to ITEM_OFFHAND.
+NET   -> Added IP struct to network_manager_class.
+UI    -> Start of the new UI manager.
+MISC  -> Removed various redundent code.
+LOC   -> 17125
 
 v0.19 - (2013-05-30)
 UI    -> Fix: Items can be dragged to slots where a previous item was used.
@@ -128,7 +137,7 @@ UI    -> Added the base of the Quest Log window.
 UI    -> Added the base of the Skill Book window.
 UI    -> Added the base of the Equipment window.
 UI    -> Added the base of the Inventory window.
-LOC   -> 14886 (count is low due to the removal of the old item manager)
+LOC   -> 14886
 
 v0.14 - (2012-12-31)
 UI    -> Completed the Main menu system.
