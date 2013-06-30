@@ -13,7 +13,7 @@
 	</File>
 	<File name="source\item_manager.cpp" open="0" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="8295" topLine="144" />
+			<Cursor1 position="4701" topLine="9" />
 		</Cursor>
 	</File>
 	<File name="source\core\loader_tmx.hpp" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -21,9 +21,9 @@
 			<Cursor1 position="0" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="source\item_manager.hpp" open="1" top="1" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="source\item_manager.hpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="3055" topLine="112" />
+			<Cursor1 position="2660" topLine="98" />
 		</Cursor>
 	</File>
 	<File name="source\UI\menu_game_new.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -96,7 +96,7 @@
 			<Cursor1 position="1144" topLine="15" />
 		</Cursor>
 	</File>
-	<File name="source\UI\UI_manager.cpp" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="source\UI\UI_manager.cpp" open="1" top="1" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="10323" topLine="197" />
 		</Cursor>
@@ -134,6 +134,16 @@
 	<File name="source\UI\inventory_window.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="111081" topLine="1191" />
+		</Cursor>
+	</File>
+	<File name="source\core\sound_manager.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="0" topLine="76" />
+		</Cursor>
+	</File>
+	<File name="source\core\sound_manager.hpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1635" topLine="29" />
 		</Cursor>
 	</File>
 </CodeBlocks_layout_file>

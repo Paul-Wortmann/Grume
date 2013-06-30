@@ -699,7 +699,7 @@ void UI_manager_class::process(void)
                     else
                     {
                         UI_form_pointer->data.drag_active  = false;
-                        game.UI_manager.drag_in_progress  = false;
+                        game.UI_manager.drag_in_progress   = false;
                     }
                 }
                 else
@@ -712,7 +712,7 @@ void UI_manager_class::process(void)
                             UI_form_pointer->data.drag_offset_y                = UI_form_pointer->data.position.y - game.core.io.mouse_y;
                             UI_form_pointer->data.drag_active                  = true;
                             game.UI_manager.drag_in_progress                   = true;
-                            if (UI_manager_class::UI_form_get_list_position(UI_form_pointer->data.UID) != UI_manager_class::number_of_UI_forms) game.UI_manager.event.id = EVENT_UI_FORM_DRAG;
+                            if (UI_manager_class::UI_form_get_list_position(UI_form_pointer->data.UID) != UI_manager_class::number_of_UI_forms) return_value.id = EVENT_UI_FORM_DRAG;
                             game.core.log.file_write("List size -> ",UI_manager_class::number_of_UI_forms);
                             game.core.log.file_write("UID -> ",UI_form_pointer->data.UID," - Position in list -> ",UI_manager_class::UI_form_get_list_position(UI_form_pointer->data.UID));
                         }
@@ -720,7 +720,7 @@ void UI_manager_class::process(void)
                     // user clicked on window, that is not title or an element.
                     if ((game.core.io.mouse_button_left) && (return_value.id == EVENT_NONE) && (!UI_form_pointer->data.active))
                     {
-                        if (UI_manager_class::UI_form_get_list_position(UI_form_pointer->data.UID) != UI_manager_class::number_of_UI_forms) game.UI_manager.event.id = EVENT_UI_LIST_SORT;
+                        if (UI_manager_class::UI_form_get_list_position(UI_form_pointer->data.UID) != UI_manager_class::number_of_UI_forms) return_value.id = EVENT_UI_LIST_SORT;
                     }
                 }
                 // ------------------------- X -------------------------
@@ -730,6 +730,7 @@ void UI_manager_class::process(void)
         //if ((UI_form_count > 1) && (game.UI_manager.event.id == EVENT_UI_LIST_SORT)) game.UI_manager.event.id = EVENT_NONE;
         //if (return_value > 0) game.core.log.file_write("returning event -> ",return_value, " - from UID - ", UI_form_pointer->data.UID);
         //if (return_value == EVENT_UI_LIST_SORT) game.core.log.file_write("returning event -> ",return_value, " - from UID - ", UI_form_pointer->data.UID);
+        game.UI_manager.event = return_value;
         UI_form_pointer->data.event = return_value;
     }
     switch (game.UI_manager.event.id)

@@ -1979,11 +1979,11 @@
 	"rs232.hpp"
 	"rs232.hpp"
 
-1370579985 source:c:\_git_\frost_and_flame\source\item_manager.cpp
+1372512438 source:c:\_git_\frost_and_flame\source\item_manager.cpp
 	"item_manager.hpp"
 	"game.hpp"
 
-1372342999 c:\_git_\frost_and_flame\source\item_manager.hpp
+1372512921 c:\_git_\frost_and_flame\source\item_manager.hpp
 	<string>
 	"core/texture_manager.hpp"
 	"core/sound_manager.hpp"
@@ -2224,5 +2224,14 @@
 1369288494 source:/host/_git_/Frost_and_Flame/source/command_line_parser.cpp
 	<string>
 	"command_line_parser.hpp"
+	"game.hpp"
+
+1372511333 c:\_git_\frost_and_flame\source\item_effects.hpp
+	<string>
+	"core/texture_manager.hpp"
+	"core/sound_manager.hpp"
+
+1372512011 source:c:\_git_\frost_and_flame\source\item_effects.cpp
+	"item_effects.hpp"
 	"game.hpp"
 
