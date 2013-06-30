@@ -189,3 +189,19 @@ void  use_item(int window_from, int element_from)
     */
 };
 
+void  use_effect(int effect_ID, float value)
+{
+    switch (effect_ID)
+    {
+        case EFFECT_NONE:
+        break;
+        case EFFECT_MOD_HEALTH:
+            game.player.health.current += value;
+        break;
+        case EFFECT_MOD_MANA:
+            game.player.mana.current   += value;
+        break;
+        default:
+        break;
+    }
+};

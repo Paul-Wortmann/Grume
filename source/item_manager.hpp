@@ -29,6 +29,10 @@
 #include "core/texture_manager.hpp"
 #include "core/sound_manager.hpp"
 
+#define EFFECT_NONE          0
+#define EFFECT_MOD_HEALTH    1
+#define EFFECT_MOD_MANA      2
+
 #define ITEM_NONE            0
 #define ITEM_RING            1
 #define ITEM_NECK            2
@@ -76,9 +80,6 @@
 #define WEAPON         19
 */
 
-#define EFFECT_MOD_HEALTH 100
-#define EFFECT_MOD_MANA   101
-
 #define MAX_ITEM_EFFECTS 4
 #define MAX_ITEM_SOCKETS 4
 
@@ -89,6 +90,7 @@
 struct item_effect_type
 {
     bool enabled;
+    bool passive;
     int  type;
     int  value;
 };
@@ -135,7 +137,8 @@ class item_manager_class
 
 void  init_items(void); // Initialize hard-coded default items, such as health potions etc...
 void  load_items(std::string file_name); // Load items from file.
-void  use_item(int window_from, int element_from);
+void  use_item(void);
+void  use_effect(int effect_ID, float value);
 
 #endif // ITEM_MANAGER_H
 
