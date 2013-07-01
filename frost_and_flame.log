@@ -1,4 +1,4 @@
-# Frost and Flame V0.20 - www.physhexgames.co.nr #
+# Frost and Flame V0.21 - www.physhexgames.co.nr #
 # ---------------------------------------------- #
  
 Initializing PhysicsFS file system....
@@ -20,30 +20,6 @@ Starting Game...
  
 # ---------------------------------------------- #
  
-List size -> 12
-UID -> 9 - Position in list -> 12
-List size -> 12
-UID -> 4 - Position in list -> 11
-Unable to process event - 10001 - UID - 4
-List size -> 12
-UID -> 9 - Position in list -> 12
-List size -> 12
-UID -> 4 - Position in list -> 11
-Unable to process event - 10001 - UID - 4
-List size -> 12
-UID -> 4 - Position in list -> 11
-Unable to process event - 10001 - UID - 4
-List size -> 12
-UID -> 4 - Position in list -> 12
-List size -> 12
-UID -> 9 - Position in list -> 11
-Unable to process event - 10001 - UID - 9
-List size -> 12
-UID -> 9 - Position in list -> 11
-Unable to process event - 10001 - UID - 9
-List size -> 12
-UID -> 9 - Position in list -> 11
-Unable to process event - 10001 - UID - 9
  
 # ---------------------------------------------- #
  
