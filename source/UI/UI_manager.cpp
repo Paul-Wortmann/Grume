@@ -730,10 +730,10 @@ void UI_manager_class::process(void)
         //if ((UI_form_count > 1) && (game.UI_manager.event.id == EVENT_UI_LIST_SORT)) game.UI_manager.event.id = EVENT_NONE;
         //if (return_value > 0) game.core.log.file_write("returning event -> ",return_value, " - from UID - ", UI_form_pointer->data.UID);
         //if (return_value == EVENT_UI_LIST_SORT) game.core.log.file_write("returning event -> ",return_value, " - from UID - ", UI_form_pointer->data.UID);
-        game.UI_manager.event = return_value;
         UI_form_pointer->data.event = return_value;
         if ((UI_form_pointer->data.event.id == EVENT_UI_LIST_SORT) || (UI_form_pointer->data.event.id == EVENT_UI_FORM_DRAG))
         {
+            game.UI_manager.event = return_value;
             //UI_form_pointer->data.event.id = EVENT_NONE;
         }
     }
