@@ -38,6 +38,7 @@ item_manager_class::~item_manager_class(void)
     delete [] item_manager_class::item;
 };
 
+/*
 void item_manager_class::reset_item(int item_number)
 {
     item_manager_class::item[item_number].type                   = ITEM_NONE;
@@ -51,41 +52,22 @@ void item_manager_class::reset_item(int item_number)
     item_manager_class::item[item_number].number_of_item_sockets = 0;
     for (int item_effect_count = 0; item_effect_count < MAX_ITEM_EFFECTS; item_effect_count++)
     {
-        item_manager_class::item[item_number].effect[item_effect_count].type = ITEM_NONE;
+        item_manager_class::item[item_number].effect[item_effect_count].enabled = false;
+        item_manager_class::item[item_number].effect[item_effect_count].type    = ITEM_NONE;
     }
     for (int item_socket_count = 0; item_socket_count < MAX_ITEM_SOCKETS; item_socket_count++)
     {
-        item_manager_class::item[item_number].socket[item_socket_count].type = ITEM_NONE;
+        item_manager_class::item[item_number].socket[item_socket_count].enabled = false;
+        item_manager_class::item[item_number].socket[item_socket_count].type    = ITEM_NONE;
     }
 };
-
-int item_manager_class::get_new_ID(void)
-{
-    for (int item_count = 0; item_count < item_manager_class::number_of_items; item_count++)
-    {
-        if (!item_manager_class::item[item_count].active) return (item_count);
-    }
-    return (-1);
-};
-
-int item_manager_class::get_item_ID(int temp_item_type)
-{
-    for (int item_count = 0; item_count < item_manager_class::number_of_items; item_count++)
-    {
-        if (item_manager_class::item[item_count].ID == temp_item_type) return (item_count);
-    }
-    return (-1);
-};
-
-int item_manager_class::get_item_type(int item_ID)
-{
-    return(item_manager_class::item[item_ID].type);
-};
+*/
 
 //----------------------------------------------------------------------------------------------------------------
 
 void  init_items(void) // Initialize hard-coded default items, such as health potions etc...
 {
+    /*
     game.item_manager.number_of_items = 3;
     game.item_manager.item = new item_type[game.item_manager.number_of_items];
     for (int item_count = 0; item_count < game.item_manager.number_of_items;item_count++)
@@ -93,12 +75,12 @@ void  init_items(void) // Initialize hard-coded default items, such as health po
         game.item_manager.item[item_count].active = false;
     }
     //------------------------------------------------------------------------------------------------------------
-    int item_number = -1;
+    int item_number = 0;
     //------------------------- Potions --------------------------------------------------------------------------
-    item_number = game.item_manager.get_new_ID();
+    item_number++;// = game.item_manager.get_new_ID();
     if (item_number > -1) // Health potion
     {
-        game.item_manager.reset_item(item_number);
+        //game.item_manager.reset_item(item_number);
         game.item_manager.item[item_number].active                 = true;
         game.item_manager.item[item_number].type                   = ITEM_POTION;
         game.item_manager.item[item_number].sub_type               = ITEM_POTION_LARGE;
@@ -114,10 +96,10 @@ void  init_items(void) // Initialize hard-coded default items, such as health po
         game.item_manager.item[item_number].sound_move             = game.sound_manager.add_sound("data/sound/inventory/bottle_01.wav");
         game.item_manager.item[item_number].sound_use              = game.sound_manager.add_sound("data/sound/inventory/bubble_01.wav");
     }
-    item_number = game.item_manager.get_new_ID();
+    item_number++;// = game.item_manager.get_new_ID();
     if (item_number > -1) // Mana potion
     {
-        game.item_manager.reset_item(item_number);
+        //game.item_manager.reset_item(item_number);
         game.item_manager.item[item_number].active                 = true;
         game.item_manager.item[item_number].type                   = ITEM_POTION;
         game.item_manager.item[item_number].ID                     = item_number;
@@ -132,10 +114,10 @@ void  init_items(void) // Initialize hard-coded default items, such as health po
         game.item_manager.item[item_number].sound_move             = game.sound_manager.add_sound("data/sound/inventory/bottle_01.wav");
         game.item_manager.item[item_number].sound_use              = game.sound_manager.add_sound("data/sound/inventory/bubble_03.wav");
     }
-    item_number = game.item_manager.get_new_ID();
+    item_number++;// = game.item_manager.get_new_ID();
     if (item_number > -1) // test spell 1
     {
-        game.item_manager.reset_item(item_number);
+        //game.item_manager.reset_item(item_number);
         game.item_manager.item[item_number].active                 = true;
         game.item_manager.item[item_number].type                   = ITEM_SPELL_BOOK;
         game.item_manager.item[item_number].ID                     = item_number;
@@ -153,6 +135,7 @@ void  init_items(void) // Initialize hard-coded default items, such as health po
         game.item_manager.item[item_number].sound_use              = game.sound_manager.add_sound("data/sound/inventory/book_01.wav");
     }
     //------------------------------------------------------------------------------------------------------------
+*/
 };
 
 void  use_item(int window_from, int element_from)

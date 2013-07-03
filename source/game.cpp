@@ -103,7 +103,7 @@ void game_class::init(void)
     tmx_load(&tmx_map,"data/maps/town.tmx");
     game.map_2D.calculate_tile_positions(&tmx_map,DEFAULT_FRAME_WIDTH/game.zoom.current/2.0f,DEFAULT_FRAME_HEIGHT/game.zoom.current/2.0f);
     game.map_2D.center_on_tile(&tmx_map,(tmx_map.data.number_of_tiles/2)+(tmx_map.data.map_width/2));
-
+/*
     // Add default items to the inventory
     UI_form_struct *UI_form_pointer;
     UI_form_pointer = game.UI_manager.UI_form_get(UID_INVENTORY);
@@ -140,6 +140,7 @@ void game_class::init(void)
     UI_form_pointer->data.element[element_number].value    = item_ID;
     UI_form_pointer->data.element[element_number].quantity = 1;
     UI_form_pointer->data.element[element_number].texture.normal = game.item_manager.item[item_ID].image;
+    */
 };
 
 void game_class::process(void)

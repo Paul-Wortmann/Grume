@@ -120,6 +120,7 @@ struct item_type
     int              socket_type; // Only accept certain items
     item_effect_type effect[MAX_ITEM_EFFECTS];
     item_socket_type socket[MAX_ITEM_SOCKETS];
+    item_type       *next;
 };
 
 class item_manager_class
@@ -128,16 +129,15 @@ class item_manager_class
         item_manager_class(void);
        ~item_manager_class(void);
         int             number_of_items;
+        item_type      *root;
         item_type      *item;
-        void            reset_item(int item_number);
-        int             get_new_ID(void);
-        int             get_item_ID(int temp_item_type);
-        int             get_item_type(int item_ID);
+        item_type      *add_item(std::string file_name);
+        item_type      *add_item(item_type *item_pointer);
+        void            use_item(item_type *item_pointer);
 };
 
 void  init_items(void); // Initialize hard-coded default items, such as health potions etc...
 void  load_items(std::string file_name); // Load items from file.
-void  use_item(void);
 void  use_effect(int effect_ID, float value);
 
 #endif // ITEM_MANAGER_H
