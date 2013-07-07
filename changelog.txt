@@ -5,6 +5,9 @@ it may take longer than I had first anticipated.
 These are not indications that the project will be terminated in the future,
 just that time is not permitting to proceed at a fast pace, at the moment.
 
+V0.28 -> (2014-02-28)
+LOC   -> xxxxx
+
 V0.27 -> (2014-01-31)
 DATA  -> Added 3D model development files to git repo.
 UI    -> Rendered font text scalled correctly.
