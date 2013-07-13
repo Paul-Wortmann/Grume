@@ -38,8 +38,8 @@ ESCAPE   - Open / close the main menu.
 Compiling:
 ---------
 Included are the project files for use with the Code::Blocks IDE. (http://www.codeblocks.org/)
-Also required are the SDL development librarys.
-It is recommended that you build the DLL files (SDL etc...) with the same compiler that you use to build Frost and Flame.
+Also required are the SDL2 development librarys.
+It is recommended that you build the DLL files (SDL2 etc...) with the same compiler that you use to build Frost and Flame.
 Also included is the CMakeLists.txt file, which should help with Linux builds.
 
 Contributions:
