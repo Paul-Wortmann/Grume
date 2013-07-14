@@ -184,7 +184,7 @@ extern "C" int main(int argc, char** argv)
     game.core.log.file_write("Shutting down...");
     //PHYSFS_deinit();
     SDL_Quit();
-    return(true);
+    return(0);
 };
 
 
