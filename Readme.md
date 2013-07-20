@@ -1,4 +1,4 @@
-![Frost and Flame](http://www.weebly.com/uploads/5/9/6/4/596446/1455581.png?327)
+![Frost and Flame](http://www.weebly.com/uploads/5/9/6/4/596446/76313.png?399)
 
 README file for Frost and Flame
 =============================
