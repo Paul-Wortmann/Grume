@@ -140,6 +140,13 @@ void  init_items(void) // Initialize hard-coded default items, such as health po
 
 void  use_item(int window_from, int element_from)
 {
+    int delme = window_from + element_from;
+    for (int i = 0; i < 10; i++)
+    {
+        delme++;
+        if ((delme <= 0) || (delme > 0)) break;
+    }
+
     /*
     if (game.window_manager.window[window_from].element[element_from].active)
     {
