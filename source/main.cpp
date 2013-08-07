@@ -37,6 +37,7 @@ SDL_Surface*             application_icon_surface;
 // --------------------------------------------------------------------------------------------------------------------------
 extern "C" int main(int argc, char** argv)
 {
+//  --- Application initialization ---
     game.debug = true;
     game.core.application_name = "Frost and Flame V0.28 - www.physhexgames.co.nr";
     game.core.application_icon = "data/icon.bmp";
@@ -57,9 +58,6 @@ extern "C" int main(int argc, char** argv)
     game.command_line.process(argc,argv);
     game.core.log.file_write("Loading language file -> data/configuration/languages/"+game.core.config.language+".txt");
     game.language.load("data/configuration/languages/"+game.core.config.language+".txt");
-// --------------------------------------------------------------------------------------------------------------------------
-// | Application initialization
-// --------------------------------------------------------------------------------------------------------------------------
 //  --- graphics ---
     game.core.log.file_write("Starting graphics subsystem...");
     if (!game.core.graphics.init_sdl())
