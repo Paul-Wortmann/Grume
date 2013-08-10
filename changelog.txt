@@ -5,8 +5,13 @@ it may take longer than I had first anticipated.
 These are not indications that the project will be terminated in the future,
 just that time is not permitting to proceed at a fast pace, at the moment.
 
-v0.21 - (2013-07-xx)
+v0.22 - (2013-08-xx)
 LOC   -> xxxxx
+
+v0.21 - (2013-07-31)
+MISC  -> Commented out some code to temporarily avoid compiler warnings.
+UI    -> More work on the UI and manager.
+LOC   -> 16987
 
 v0.20 - (2013-06-30)
 ITEM  -> Added use_effecct function to the item manager.
