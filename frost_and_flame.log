@@ -20,56 +20,13 @@ Starting Game...
  
 # ---------------------------------------------- #
  
--> map_gen_room_add_exits() called 
-Node next -> 5 - tile - 5051 - tile_F -> 260
-Node next -> 7 - tile - 5151 - tile_F -> 260
-Node next -> 7 - tile - 5251 - tile_F -> 260
-Node next -> 7 - tile - 5351 - tile_F -> 260
-Node next -> 4 - tile - 5350 - tile_F -> 280
-Node next -> 7 - tile - 5450 - tile_F -> 280
-Node next -> 7 - tile - 5550 - tile_F -> 280
-Node next -> 7 - tile - 5650 - tile_F -> 280
-Node next -> 7 - tile - 5750 - tile_F -> 280
-Node next -> 7 - tile - 5850 - tile_F -> 280
-Node next -> 7 - tile - 5950 - tile_F -> 280
-Node next -> 7 - tile - 6050 - tile_F -> 280
-Node next -> 7 - tile - 6150 - tile_F -> 280
-Node next -> 7 - tile - 6250 - tile_F -> 280
-Node next -> 7 - tile - 6350 - tile_F -> 280
-Node next -> 7 - tile - 6450 - tile_F -> 280
-Node next -> 7 - tile - 6550 - tile_F -> 280
-Node next -> 5 - tile - 6551 - tile_F -> 280
-Node next -> 7 - tile - 6651 - tile_F -> 280
-Node next -> 7 - tile - 6751 - tile_F -> 280
-Node next -> 7 - tile - 6851 - tile_F -> 280
-Node next -> 7 - tile - 6951 - tile_F -> 280
-Node next -> 7 - tile - 7051 - tile_F -> 280
-Node next -> 7 - tile - 7151 - tile_F -> 280
-Node next -> 7 - tile - 7251 - tile_F -> 280
-Node next -> 7 - tile - 7351 - tile_F -> 280
-Node next -> 7 - tile - 7451 - tile_F -> 280
- Path end found! 
--> map_gen_room_add_exits() called 
-Node next -> 5 - tile - 505 - tile_F -> 130
-Node next -> 5 - tile - 506 - tile_F -> 130
-Node next -> 5 - tile - 507 - tile_F -> 130
-Node next -> 5 - tile - 508 - tile_F -> 130
-Node next -> 5 - tile - 509 - tile_F -> 130
-Node next -> 5 - tile - 510 - tile_F -> 130
-Node next -> 5 - tile - 511 - tile_F -> 130
-Node next -> 5 - tile - 512 - tile_F -> 130
-Node next -> 5 - tile - 513 - tile_F -> 130
-Node next -> 5 - tile - 514 - tile_F -> 130
-Node next -> 5 - tile - 515 - tile_F -> 130
-Node next -> 5 - tile - 516 - tile_F -> 130
- Path end found! 
  
 # ---------------------------------------------- #
  
 Font    count -> 1
 Music   count -> 1
-Sound   count -> 13
-Texture count -> 238
+Sound   count -> 11
+Texture count -> 194
 Item    count -> 56
 Effect  count -> 46
  
