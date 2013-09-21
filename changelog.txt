@@ -5,8 +5,17 @@ it may take longer than I had first anticipated.
 These are not indications that the project will be terminated in the future,
 just that time is not permitting to proceed at a fast pace, at the moment.
 
-v0.22 - (2013-08-xx)
+v0.24 - (2013-10-xx)
 LOC   -> xxxxx
+
+v0.23 - (2013-09-30)
+MAP   -> Fixed pointer error in BSP generator.
+PATH  -> Added a custom A* path finding algorithm.
+TEST  -> Extended keys 1-5 for testing random map generation.
+LOC   -> xxxxx
+
+v0.22 - (2013-08-31)
+LOC   -> 16987
 
 v0.21 - (2013-07-31)
 MISC  -> Commented out some code to temporarily avoid compiler warnings.
