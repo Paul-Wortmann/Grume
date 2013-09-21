@@ -363,6 +363,7 @@ void game_class::process(void)
             game.map_2D.center_on_tile(&tmx_map,(tmx_map.data.number_of_tiles/2)+(tmx_map.data.map_width/2));
             game.core.io.key_1                     = false;
             game.core.io.keyboard_delay_count      = 0;
+            path_type* path = map_path_find(&tmx_map,2,2,10,10);
         }
         if (game.core.io.key_2) // generate a random CA cave
         {
