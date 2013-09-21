@@ -328,16 +328,16 @@ void map_gen_BSP(tmx_map_type *tmx_map_pointer)
         tmx_map_pointer->layer[layer_wall].tile[tile_count].tile           = -1;
         tmx_map_pointer->layer[layer_wall].tile[tile_count].tile_tileset   = 0;
     }
-    map_node_type temp_map;
-    temp_map.data.size.x          = tmx_map_pointer->data.map_width;
-    temp_map.data.size.y          = tmx_map_pointer->data.map_height;
-    temp_map.data.number_of_tiles = temp_map.data.size.x * temp_map.data.size.y;
-    temp_map.data.tile            = new tmx_tile_type[temp_map.data.number_of_tiles];
-    temp_map.data.tile            = tmx_map_pointer->layer[layer_floor].tile;
-    temp_map.leaf                 = false;
-    map_gen_BSP_split(&temp_map);
-    tmx_map_pointer->layer[layer_floor].tile = temp_map.data.tile;
-    delete [] &temp_map;
+    map_node_type* temp_map = new map_node_type;
+    temp_map->data.size.x          = tmx_map_pointer->data.map_width;
+    temp_map->data.size.y          = tmx_map_pointer->data.map_height;
+    temp_map->data.number_of_tiles = temp_map->data.size.x * temp_map->data.size.y;
+    temp_map->data.tile            = new tmx_tile_type[temp_map->data.number_of_tiles];
+    temp_map->data.tile            = tmx_map_pointer->layer[layer_floor].tile;
+    temp_map->leaf                 = false;
+    map_gen_BSP_split(temp_map);
+    tmx_map_pointer->layer[layer_floor].tile = temp_map->data.tile;
+    delete temp_map;
 };
 
 void map_gen_BSP(tmx_map_type *tmx_map_pointer, int seed)
