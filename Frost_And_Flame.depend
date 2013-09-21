@@ -2327,12 +2327,12 @@
 	"texture_manager.hpp"
 	"map_gen.hpp"
 
-1375577407 /media/paul/Data_0/_git_/Frost_and_Flame/source/core/map_gen.hpp
+1379748413 /media/paul/Data_0/_git_/Frost_and_Flame/source/core/map_gen.hpp
 	<string>
 	"loader_tmx.hpp"
 	"types.hpp"
 
-1375577407 /media/paul/Data_0/_git_/Frost_and_Flame/source/core/loader_tmx.hpp
+1379748314 /media/paul/Data_0/_git_/Frost_and_Flame/source/core/loader_tmx.hpp
 	"texture_manager.hpp"
 	"types.hpp"
 
@@ -2429,12 +2429,13 @@
 1375577407 /media/paul/Data_0/_git_/Frost_and_Flame/source/UI/UI_cursor.hpp
 	"UI_types.hpp"
 
-1375577407 /media/paul/Data_0/_git_/Frost_and_Flame/source/player.hpp
+1379608348 /media/paul/Data_0/_git_/Frost_and_Flame/source/player.hpp
 	<string>
 	"core/pathfinding.hpp"
 	"core/texture_manager.hpp"
 
-1375577407 /media/paul/Data_0/_git_/Frost_and_Flame/source/core/pathfinding.hpp
+1379609675 /media/paul/Data_0/_git_/Frost_and_Flame/source/core/pathfinding.hpp
+	"loader_tmx.hpp"
 
 1375577407 /media/paul/Data_0/_git_/Frost_and_Flame/source/item_manager.hpp
 	<string>
@@ -2522,7 +2523,7 @@
 	"graphics.hpp"
 	"texture_manager.hpp"
 
-1375577407 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/core/loader_tmx.cpp
+1379747674 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/core/loader_tmx.cpp
 	<iostream>
 	<fstream>
 	<stdio.h>
@@ -2535,7 +2536,7 @@
 	<fstream>
 	"log.hpp"
 
-1375577407 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/core/map_2D.cpp
+1379748449 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/core/map_2D.cpp
 	<iostream>
 	<fstream>
 	<stdio.h>
@@ -2572,7 +2573,7 @@
 	"map_3D.hpp"
 	"physics.hpp"
 
-1375577407 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/core/map_gen.cpp
+1379748501 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/core/map_gen.cpp
 	"map_gen.hpp"
 	<stdio.h>
 	<stdlib.h>
@@ -2608,8 +2609,12 @@
 1375577407 /media/paul/Data_0/_git_/Frost_and_Flame/source/core/particles.hpp
 	<string>
 
-1375577407 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/core/pathfinding.cpp
+1379748314 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/core/pathfinding.cpp
 	"pathfinding.hpp"
+	"loader_tmx.hpp"
+	"map_gen.hpp"
+	<stdio.h>
+	<stdlib.h>
 
 1375577407 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/core/physics.cpp
 	"physics.hpp"
@@ -2662,7 +2667,7 @@
 	"core/misc.hpp"
 	"language.hpp"
 
-1376103328 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/main.cpp
+1376104708 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/main.cpp
 	"game.hpp"
 	<SDL/SDL.h>
 	"core/misc.hpp"
@@ -2747,7 +2752,7 @@
 	"../core/texture_manager.hpp"
 	"../game.hpp"
 
-1375577407 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/UI/UI_manager.cpp
+1377436006 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/UI/UI_manager.cpp
 	"UI_manager.hpp"
 	"../game.hpp"
 

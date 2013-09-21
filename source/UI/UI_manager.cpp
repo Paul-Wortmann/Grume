@@ -458,6 +458,9 @@ void UI_manager_class::render(void)
     }
 };
 
+//decouple processing into smaller modules?
+
+
 void UI_manager_class::process(void)
 {
     int  UI_form_count      = 0;

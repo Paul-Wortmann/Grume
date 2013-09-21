@@ -79,6 +79,7 @@ struct tmx_data_type
 
 struct tmx_path_data_type
 {
+    int  tile_data;
     int  parent_tile;
     bool open_list;
     bool closed_list;

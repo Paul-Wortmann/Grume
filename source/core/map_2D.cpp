@@ -479,21 +479,21 @@ void map_2D_class::apply_tileset(tmx_map_type *tmx_map_pointer, int pre_defined_
     {
         switch (temp_tile_data[tile_count].tile)
         {
-            case FLOOR_TILE:
+            case TILE_FLOOR:
                 tmx_map_pointer->layer[layer_floor].tile[tile_count].tile_tileset = TILE_SET_FLOOR;
                 random_seed     = tmx_map_pointer->tileset[TILE_SET_FLOOR].number_of_tiles;
                 random_number   = random(random_seed*4);
                 if (random_number <= (random_seed*3)) tmx_map_pointer->layer[layer_floor].tile[tile_count].tile = 1;
                 else tmx_map_pointer->layer[layer_floor].tile[tile_count].tile = (random_number - random_seed*3);
                 // Randomly add cave objects.
-                if (   (temp_tile_data[tile_count+1].tile         == FLOOR_TILE)
-                    && (temp_tile_data[tile_count-1].tile         == FLOOR_TILE)
-                    && (temp_tile_data[tile_count+tmx_map_pointer->data.map_width].tile   == FLOOR_TILE)
-                    && (temp_tile_data[tile_count+tmx_map_pointer->data.map_width+1].tile == FLOOR_TILE)
-                    && (temp_tile_data[tile_count+tmx_map_pointer->data.map_width-1].tile == FLOOR_TILE)
-                    && (temp_tile_data[tile_count-tmx_map_pointer->data.map_width].tile   == FLOOR_TILE)
-                    && (temp_tile_data[tile_count-tmx_map_pointer->data.map_width+1].tile == FLOOR_TILE)
-                    && (temp_tile_data[tile_count-tmx_map_pointer->data.map_width-1].tile == FLOOR_TILE))
+                if (   (temp_tile_data[tile_count+1].tile         == TILE_FLOOR)
+                    && (temp_tile_data[tile_count-1].tile         == TILE_FLOOR)
+                    && (temp_tile_data[tile_count+tmx_map_pointer->data.map_width].tile   == TILE_FLOOR)
+                    && (temp_tile_data[tile_count+tmx_map_pointer->data.map_width+1].tile == TILE_FLOOR)
+                    && (temp_tile_data[tile_count+tmx_map_pointer->data.map_width-1].tile == TILE_FLOOR)
+                    && (temp_tile_data[tile_count-tmx_map_pointer->data.map_width].tile   == TILE_FLOOR)
+                    && (temp_tile_data[tile_count-tmx_map_pointer->data.map_width+1].tile == TILE_FLOOR)
+                    && (temp_tile_data[tile_count-tmx_map_pointer->data.map_width-1].tile == TILE_FLOOR))
                     {
                         if(random(1000) < 10)
                         {
@@ -505,11 +505,11 @@ void map_2D_class::apply_tileset(tmx_map_type *tmx_map_pointer, int pre_defined_
                         }
                     }
             break;
-            case WALL_TILE:
+            case TILE_WALL:
                 wall_placed = false;
                 if((tile_count >= 0) && (tile_count+1 <= tmx_map_pointer->data.map_width))
                 {//North wall.
-                    if ((temp_tile_data[tile_count+tmx_map_pointer->data.map_width].tile == FLOOR_TILE))
+                    if ((temp_tile_data[tile_count+tmx_map_pointer->data.map_width].tile == TILE_FLOOR))
                     {
                         tmx_map_pointer->layer[layer_wall].tile[tile_count].tile_tileset = TILE_SET_WALL_SOUTH;
                         random_seed     = tmx_map_pointer->tileset[TILE_SET_WALL_SOUTH].number_of_tiles;
@@ -519,8 +519,8 @@ void map_2D_class::apply_tileset(tmx_map_type *tmx_map_pointer, int pre_defined_
                         wall_placed = true;
                         place_floor = true;
                     }
-                    if ((temp_tile_data[tile_count-1].tile == WALL_TILE) && (temp_tile_data[tile_count+tmx_map_pointer->data.map_width].tile == WALL_TILE)
-                        && (temp_tile_data[tile_count+tmx_map_pointer->data.map_width-1].tile == FLOOR_TILE))
+                    if ((temp_tile_data[tile_count-1].tile == TILE_WALL) && (temp_tile_data[tile_count+tmx_map_pointer->data.map_width].tile == TILE_WALL)
+                        && (temp_tile_data[tile_count+tmx_map_pointer->data.map_width-1].tile == TILE_FLOOR))
                     {//North east concave wall
                         tmx_map_pointer->layer[layer_wall].tile[tile_count].tile_tileset = TILE_SET_WALL_NORTH_EAST_CONCAVE;
                         random_seed     = tmx_map_pointer->tileset[TILE_SET_WALL_NORTH_EAST_CONCAVE].number_of_tiles;
@@ -530,8 +530,8 @@ void map_2D_class::apply_tileset(tmx_map_type *tmx_map_pointer, int pre_defined_
                         wall_placed = true;
                         place_floor = true;
                     }
-                    if ((temp_tile_data[tile_count+1].tile == WALL_TILE) && (temp_tile_data[tile_count+tmx_map_pointer->data.map_width].tile == WALL_TILE)
-                        && (temp_tile_data[tile_count+tmx_map_pointer->data.map_width+1].tile == FLOOR_TILE))
+                    if ((temp_tile_data[tile_count+1].tile == TILE_WALL) && (temp_tile_data[tile_count+tmx_map_pointer->data.map_width].tile == TILE_WALL)
+                        && (temp_tile_data[tile_count+tmx_map_pointer->data.map_width+1].tile == TILE_FLOOR))
                     {//North west concave wall
                         tmx_map_pointer->layer[layer_wall].tile[tile_count].tile_tileset = TILE_SET_WALL_NORTH_WEST_CONCAVE;
                         random_seed     = tmx_map_pointer->tileset[TILE_SET_WALL_NORTH_WEST_CONCAVE].number_of_tiles;
@@ -544,7 +544,7 @@ void map_2D_class::apply_tileset(tmx_map_type *tmx_map_pointer, int pre_defined_
                 }
                 if((tile_count-1) >= (tmx_map_pointer->data.number_of_tiles-tmx_map_pointer->data.map_width))
                 {//South wall.
-                    if ((temp_tile_data[tile_count-tmx_map_pointer->data.map_width].tile == FLOOR_TILE))
+                    if ((temp_tile_data[tile_count-tmx_map_pointer->data.map_width].tile == TILE_FLOOR))
                     {
                         tmx_map_pointer->layer[layer_wall].tile[tile_count].tile_tileset = TILE_SET_WALL_NORTH;
                         random_seed     = tmx_map_pointer->tileset[TILE_SET_WALL_NORTH].number_of_tiles;
@@ -554,8 +554,8 @@ void map_2D_class::apply_tileset(tmx_map_type *tmx_map_pointer, int pre_defined_
                         wall_placed = true;
                         place_floor = false;
                     }
-                    if ((temp_tile_data[tile_count-1].tile == WALL_TILE) && (temp_tile_data[tile_count-tmx_map_pointer->data.map_width].tile == WALL_TILE)
-                        && (temp_tile_data[tile_count-tmx_map_pointer->data.map_width-1].tile == FLOOR_TILE))
+                    if ((temp_tile_data[tile_count-1].tile == TILE_WALL) && (temp_tile_data[tile_count-tmx_map_pointer->data.map_width].tile == TILE_WALL)
+                        && (temp_tile_data[tile_count-tmx_map_pointer->data.map_width-1].tile == TILE_FLOOR))
                     {//South east concave wall
                         tmx_map_pointer->layer[layer_wall].tile[tile_count].tile_tileset = TILE_SET_WALL_SOUTH_EAST_CONCAVE;
                         random_seed     = tmx_map_pointer->tileset[TILE_SET_WALL_SOUTH_EAST_CONCAVE].number_of_tiles;
@@ -565,8 +565,8 @@ void map_2D_class::apply_tileset(tmx_map_type *tmx_map_pointer, int pre_defined_
                         wall_placed = true;
                         place_floor = false;
                     }
-                    if ((temp_tile_data[tile_count+1].tile == WALL_TILE) && (temp_tile_data[tile_count-tmx_map_pointer->data.map_width].tile == WALL_TILE)
-                        && (temp_tile_data[tile_count-tmx_map_pointer->data.map_width+1].tile == FLOOR_TILE))
+                    if ((temp_tile_data[tile_count+1].tile == TILE_WALL) && (temp_tile_data[tile_count-tmx_map_pointer->data.map_width].tile == TILE_WALL)
+                        && (temp_tile_data[tile_count-tmx_map_pointer->data.map_width+1].tile == TILE_FLOOR))
                     {//South west concave wall
                         tmx_map_pointer->layer[layer_wall].tile[tile_count].tile_tileset = TILE_SET_WALL_SOUTH_WEST_CONCAVE;
                         random_seed     = tmx_map_pointer->tileset[TILE_SET_WALL_SOUTH_WEST_CONCAVE].number_of_tiles;
@@ -580,9 +580,9 @@ void map_2D_class::apply_tileset(tmx_map_type *tmx_map_pointer, int pre_defined_
                 if((tile_count-1 >= 0) && (tile_count+1 <= tmx_map_pointer->data.number_of_tiles)
                    && (tile_count-tmx_map_pointer->data.map_width >= 0) && (tile_count+tmx_map_pointer->data.map_width <= tmx_map_pointer->data.number_of_tiles))
                 {
-                    if ((temp_tile_data[tile_count-1].tile == WALL_TILE) && (temp_tile_data[tile_count+1].tile == WALL_TILE))
+                    if ((temp_tile_data[tile_count-1].tile == TILE_WALL) && (temp_tile_data[tile_count+1].tile == TILE_WALL))
                     {
-                        if(temp_tile_data[tile_count-tmx_map_pointer->data.map_width].tile == FLOOR_TILE)
+                        if(temp_tile_data[tile_count-tmx_map_pointer->data.map_width].tile == TILE_FLOOR)
                         {// North wall
                             tmx_map_pointer->layer[layer_wall].tile[tile_count].tile_tileset = TILE_SET_WALL_NORTH;
                             random_seed     = tmx_map_pointer->tileset[TILE_SET_WALL_NORTH].number_of_tiles;
@@ -592,7 +592,7 @@ void map_2D_class::apply_tileset(tmx_map_type *tmx_map_pointer, int pre_defined_
                             wall_placed = true;
                             place_floor = false;
                         }
-                        if(temp_tile_data[tile_count+tmx_map_pointer->data.map_width].tile == FLOOR_TILE)
+                        if(temp_tile_data[tile_count+tmx_map_pointer->data.map_width].tile == TILE_FLOOR)
                         {// South wall
                             tmx_map_pointer->layer[layer_wall].tile[tile_count].tile_tileset = TILE_SET_WALL_SOUTH;
                             random_seed     = tmx_map_pointer->tileset[TILE_SET_WALL_SOUTH].number_of_tiles;
@@ -603,9 +603,9 @@ void map_2D_class::apply_tileset(tmx_map_type *tmx_map_pointer, int pre_defined_
                             place_floor = true;
                         }
                     }
-                    if ((temp_tile_data[tile_count-tmx_map_pointer->data.map_width].tile == WALL_TILE) && (temp_tile_data[tile_count+tmx_map_pointer->data.map_width].tile == WALL_TILE))
+                    if ((temp_tile_data[tile_count-tmx_map_pointer->data.map_width].tile == TILE_WALL) && (temp_tile_data[tile_count+tmx_map_pointer->data.map_width].tile == TILE_WALL))
                     {
-                        if(temp_tile_data[tile_count+1].tile == FLOOR_TILE)
+                        if(temp_tile_data[tile_count+1].tile == TILE_FLOOR)
                         {// East wall
                             tmx_map_pointer->layer[layer_wall].tile[tile_count].tile_tileset = TILE_SET_WALL_EAST;
                             random_seed     = tmx_map_pointer->tileset[TILE_SET_WALL_EAST].number_of_tiles;
@@ -615,7 +615,7 @@ void map_2D_class::apply_tileset(tmx_map_type *tmx_map_pointer, int pre_defined_
                             wall_placed = true;
                             place_floor = true;
                         }
-                        if(temp_tile_data[tile_count-1].tile == FLOOR_TILE)
+                        if(temp_tile_data[tile_count-1].tile == TILE_FLOOR)
                         {// West wall
                             tmx_map_pointer->layer[layer_wall].tile[tile_count].tile_tileset = TILE_SET_WALL_WEST;
                             random_seed     = tmx_map_pointer->tileset[TILE_SET_WALL_WEST].number_of_tiles;
@@ -626,9 +626,9 @@ void map_2D_class::apply_tileset(tmx_map_type *tmx_map_pointer, int pre_defined_
                             place_floor = false;
                         }
                     }
-                    if ((temp_tile_data[tile_count-1].tile == WALL_TILE) && (temp_tile_data[tile_count+tmx_map_pointer->data.map_width].tile == WALL_TILE)
-                        && (temp_tile_data[tile_count+1].tile == FLOOR_TILE)
-                        && (temp_tile_data[tile_count-tmx_map_pointer->data.map_width].tile == FLOOR_TILE))
+                    if ((temp_tile_data[tile_count-1].tile == TILE_WALL) && (temp_tile_data[tile_count+tmx_map_pointer->data.map_width].tile == TILE_WALL)
+                        && (temp_tile_data[tile_count+1].tile == TILE_FLOOR)
+                        && (temp_tile_data[tile_count-tmx_map_pointer->data.map_width].tile == TILE_FLOOR))
                     {//North east convex wall
                         tmx_map_pointer->layer[layer_wall].tile[tile_count].tile_tileset = TILE_SET_WALL_NORTH_EAST_CONVEX;
                         random_seed     = tmx_map_pointer->tileset[TILE_SET_WALL_NORTH_EAST_CONVEX].number_of_tiles;
@@ -638,9 +638,9 @@ void map_2D_class::apply_tileset(tmx_map_type *tmx_map_pointer, int pre_defined_
                         wall_placed = true;
                         place_floor = true;
                     }
-                    if ((temp_tile_data[tile_count+1].tile == WALL_TILE) && (temp_tile_data[tile_count+tmx_map_pointer->data.map_width].tile == WALL_TILE)
-                        && (temp_tile_data[tile_count-1].tile == FLOOR_TILE)
-                        && (temp_tile_data[tile_count-tmx_map_pointer->data.map_width].tile == FLOOR_TILE))
+                    if ((temp_tile_data[tile_count+1].tile == TILE_WALL) && (temp_tile_data[tile_count+tmx_map_pointer->data.map_width].tile == TILE_WALL)
+                        && (temp_tile_data[tile_count-1].tile == TILE_FLOOR)
+                        && (temp_tile_data[tile_count-tmx_map_pointer->data.map_width].tile == TILE_FLOOR))
                     {//North west convex wall
                         tmx_map_pointer->layer[layer_wall].tile[tile_count].tile_tileset = TILE_SET_WALL_NORTH_WEST_CONVEX;
                         random_seed     = tmx_map_pointer->tileset[TILE_SET_WALL_NORTH_WEST_CONVEX].number_of_tiles;
@@ -650,9 +650,9 @@ void map_2D_class::apply_tileset(tmx_map_type *tmx_map_pointer, int pre_defined_
                         wall_placed = true;
                         place_floor = false;
                     }
-                    if ((temp_tile_data[tile_count-1].tile == WALL_TILE) && (temp_tile_data[tile_count-tmx_map_pointer->data.map_width].tile == WALL_TILE)
-                        && (temp_tile_data[tile_count+1].tile == FLOOR_TILE)
-                        && (temp_tile_data[tile_count+tmx_map_pointer->data.map_width].tile == FLOOR_TILE))
+                    if ((temp_tile_data[tile_count-1].tile == TILE_WALL) && (temp_tile_data[tile_count-tmx_map_pointer->data.map_width].tile == TILE_WALL)
+                        && (temp_tile_data[tile_count+1].tile == TILE_FLOOR)
+                        && (temp_tile_data[tile_count+tmx_map_pointer->data.map_width].tile == TILE_FLOOR))
                     {//South east convex wall
                         tmx_map_pointer->layer[layer_wall].tile[tile_count].tile_tileset = TILE_SET_WALL_SOUTH_EAST_CONVEX;
                         random_seed     = tmx_map_pointer->tileset[TILE_SET_WALL_SOUTH_EAST_CONVEX].number_of_tiles;
@@ -662,9 +662,9 @@ void map_2D_class::apply_tileset(tmx_map_type *tmx_map_pointer, int pre_defined_
                         wall_placed = true;
                         place_floor = true;
                     }
-                    if ((temp_tile_data[tile_count+1].tile == WALL_TILE) && (temp_tile_data[tile_count-tmx_map_pointer->data.map_width].tile == WALL_TILE)
-                        && (temp_tile_data[tile_count-1].tile == FLOOR_TILE)
-                        && (temp_tile_data[tile_count+tmx_map_pointer->data.map_width].tile == FLOOR_TILE))
+                    if ((temp_tile_data[tile_count+1].tile == TILE_WALL) && (temp_tile_data[tile_count-tmx_map_pointer->data.map_width].tile == TILE_WALL)
+                        && (temp_tile_data[tile_count-1].tile == TILE_FLOOR)
+                        && (temp_tile_data[tile_count+tmx_map_pointer->data.map_width].tile == TILE_FLOOR))
                     {//South west convex wall
                         tmx_map_pointer->layer[layer_wall].tile[tile_count].tile_tileset = TILE_SET_WALL_SOUTH_WEST_CONVEX;
                         random_seed     = tmx_map_pointer->tileset[TILE_SET_WALL_SOUTH_WEST_CONVEX].number_of_tiles;
@@ -674,8 +674,8 @@ void map_2D_class::apply_tileset(tmx_map_type *tmx_map_pointer, int pre_defined_
                         wall_placed = true;
                         place_floor = true;
                     }
-                    if ((temp_tile_data[tile_count-1].tile == WALL_TILE) && (temp_tile_data[tile_count+tmx_map_pointer->data.map_width].tile == WALL_TILE)
-                        && (temp_tile_data[tile_count+tmx_map_pointer->data.map_width-1].tile == FLOOR_TILE))
+                    if ((temp_tile_data[tile_count-1].tile == TILE_WALL) && (temp_tile_data[tile_count+tmx_map_pointer->data.map_width].tile == TILE_WALL)
+                        && (temp_tile_data[tile_count+tmx_map_pointer->data.map_width-1].tile == TILE_FLOOR))
                     {//North east concave wall
                         tmx_map_pointer->layer[layer_wall].tile[tile_count].tile_tileset = TILE_SET_WALL_NORTH_EAST_CONCAVE;
                         random_seed     = tmx_map_pointer->tileset[TILE_SET_WALL_NORTH_EAST_CONCAVE].number_of_tiles;
@@ -685,8 +685,8 @@ void map_2D_class::apply_tileset(tmx_map_type *tmx_map_pointer, int pre_defined_
                         wall_placed = true;
                         place_floor = false;
                     }
-                    if ((temp_tile_data[tile_count+1].tile == WALL_TILE) && (temp_tile_data[tile_count+tmx_map_pointer->data.map_width].tile == WALL_TILE)
-                        && (temp_tile_data[tile_count+tmx_map_pointer->data.map_width+1].tile == FLOOR_TILE))
+                    if ((temp_tile_data[tile_count+1].tile == TILE_WALL) && (temp_tile_data[tile_count+tmx_map_pointer->data.map_width].tile == TILE_WALL)
+                        && (temp_tile_data[tile_count+tmx_map_pointer->data.map_width+1].tile == TILE_FLOOR))
                     {//North west concave wall
                         tmx_map_pointer->layer[layer_wall].tile[tile_count].tile_tileset = TILE_SET_WALL_NORTH_WEST_CONCAVE;
                         random_seed     = tmx_map_pointer->tileset[TILE_SET_WALL_NORTH_WEST_CONCAVE].number_of_tiles;
@@ -696,8 +696,8 @@ void map_2D_class::apply_tileset(tmx_map_type *tmx_map_pointer, int pre_defined_
                         wall_placed = true;
                         place_floor = false;
                     }
-                    if ((temp_tile_data[tile_count-1].tile == WALL_TILE) && (temp_tile_data[tile_count-tmx_map_pointer->data.map_width].tile == WALL_TILE)
-                        && (temp_tile_data[tile_count-tmx_map_pointer->data.map_width-1].tile == FLOOR_TILE))
+                    if ((temp_tile_data[tile_count-1].tile == TILE_WALL) && (temp_tile_data[tile_count-tmx_map_pointer->data.map_width].tile == TILE_WALL)
+                        && (temp_tile_data[tile_count-tmx_map_pointer->data.map_width-1].tile == TILE_FLOOR))
                     {//South east concave wall
                         tmx_map_pointer->layer[layer_wall].tile[tile_count].tile_tileset = TILE_SET_WALL_SOUTH_EAST_CONCAVE;
                         random_seed     = tmx_map_pointer->tileset[TILE_SET_WALL_SOUTH_EAST_CONCAVE].number_of_tiles;
@@ -707,8 +707,8 @@ void map_2D_class::apply_tileset(tmx_map_type *tmx_map_pointer, int pre_defined_
                         wall_placed = true;
                         place_floor = false;
                     }
-                    if ((temp_tile_data[tile_count+1].tile == WALL_TILE) && (temp_tile_data[tile_count-tmx_map_pointer->data.map_width].tile == WALL_TILE)
-                        && (temp_tile_data[tile_count-tmx_map_pointer->data.map_width+1].tile == FLOOR_TILE))
+                    if ((temp_tile_data[tile_count+1].tile == TILE_WALL) && (temp_tile_data[tile_count-tmx_map_pointer->data.map_width].tile == TILE_WALL)
+                        && (temp_tile_data[tile_count-tmx_map_pointer->data.map_width+1].tile == TILE_FLOOR))
                     {//South west concave wall
                         tmx_map_pointer->layer[layer_wall].tile[tile_count].tile_tileset = TILE_SET_WALL_SOUTH_WEST_CONCAVE;
                         random_seed     = tmx_map_pointer->tileset[TILE_SET_WALL_SOUTH_WEST_CONCAVE].number_of_tiles;
@@ -747,7 +747,7 @@ void map_2D_class::apply_tileset(tmx_map_type *tmx_map_pointer, int pre_defined_
     }
     for (int tile_count = 0; tile_count < tmx_map_pointer->data.number_of_tiles; tile_count++)
     {
-        if (temp_tile_data[tile_count].tile == FLOOR_TILE)
+        if (temp_tile_data[tile_count].tile == TILE_FLOOR)
         {
             tmx_map_pointer->layer[layer_floor].tile[tile_count].collision = false;
         }
@@ -768,69 +768,69 @@ void map_2D_class::smooth_map(tmx_map_type *tmx_map_pointer)
     {
         for (int tile_count = mw; tile_count < (tmx_map_pointer->data.number_of_tiles-tmx_map_pointer->data.map_width-1); tile_count++)
         {
-            if(tmx_map_pointer->layer[layer_count].tile[tile_count].tile == WALL_TILE)
+            if(tmx_map_pointer->layer[layer_count].tile[tile_count].tile == TILE_WALL)
             {
                 // Remove single tiles
                 // OOO
                 // OXO
                 // OOO
                 //--------------------
-                if(  (tmx_map_pointer->layer[layer_count].tile[tile_count+1].tile    == FLOOR_TILE)
-                   &&(tmx_map_pointer->layer[layer_count].tile[tile_count-1].tile    == FLOOR_TILE)
-                   &&(tmx_map_pointer->layer[layer_count].tile[tile_count+mw].tile   == FLOOR_TILE)
-                   &&(tmx_map_pointer->layer[layer_count].tile[tile_count+mw+1].tile == FLOOR_TILE)
-                   &&(tmx_map_pointer->layer[layer_count].tile[tile_count+mw-1].tile == FLOOR_TILE)
-                   &&(tmx_map_pointer->layer[layer_count].tile[tile_count-mw].tile   == FLOOR_TILE)
-                   &&(tmx_map_pointer->layer[layer_count].tile[tile_count-mw+1].tile == FLOOR_TILE)
-                   &&(tmx_map_pointer->layer[layer_count].tile[tile_count-mw-1].tile == FLOOR_TILE))
+                if(  (tmx_map_pointer->layer[layer_count].tile[tile_count+1].tile    == TILE_FLOOR)
+                   &&(tmx_map_pointer->layer[layer_count].tile[tile_count-1].tile    == TILE_FLOOR)
+                   &&(tmx_map_pointer->layer[layer_count].tile[tile_count+mw].tile   == TILE_FLOOR)
+                   &&(tmx_map_pointer->layer[layer_count].tile[tile_count+mw+1].tile == TILE_FLOOR)
+                   &&(tmx_map_pointer->layer[layer_count].tile[tile_count+mw-1].tile == TILE_FLOOR)
+                   &&(tmx_map_pointer->layer[layer_count].tile[tile_count-mw].tile   == TILE_FLOOR)
+                   &&(tmx_map_pointer->layer[layer_count].tile[tile_count-mw+1].tile == TILE_FLOOR)
+                   &&(tmx_map_pointer->layer[layer_count].tile[tile_count-mw-1].tile == TILE_FLOOR))
                 {
-                    tmx_map_pointer->layer[layer_count].tile[tile_count].tile = FLOOR_TILE;
+                    tmx_map_pointer->layer[layer_count].tile[tile_count].tile = TILE_FLOOR;
                 }
                 // Remove single horizontal tiles
                 // ???
                 // OXO
                 // ???
                 //--------------------
-                if(  (tmx_map_pointer->layer[layer_count].tile[tile_count+1].tile    == FLOOR_TILE)
-                   &&(tmx_map_pointer->layer[layer_count].tile[tile_count-1].tile    == FLOOR_TILE))
+                if(  (tmx_map_pointer->layer[layer_count].tile[tile_count+1].tile    == TILE_FLOOR)
+                   &&(tmx_map_pointer->layer[layer_count].tile[tile_count-1].tile    == TILE_FLOOR))
                 {
-                    tmx_map_pointer->layer[layer_count].tile[tile_count].tile = FLOOR_TILE;
+                    tmx_map_pointer->layer[layer_count].tile[tile_count].tile = TILE_FLOOR;
                 }
                 // Remove single vertical tiles
                 // ?O?
                 // ?X?
                 // ?O?
                 //--------------------
-                if(  (tmx_map_pointer->layer[layer_count].tile[tile_count+mw].tile   == FLOOR_TILE)
-                   &&(tmx_map_pointer->layer[layer_count].tile[tile_count-mw].tile   == FLOOR_TILE))
+                if(  (tmx_map_pointer->layer[layer_count].tile[tile_count+mw].tile   == TILE_FLOOR)
+                   &&(tmx_map_pointer->layer[layer_count].tile[tile_count-mw].tile   == TILE_FLOOR))
                 {
-                    tmx_map_pointer->layer[layer_count].tile[tile_count].tile = FLOOR_TILE;
+                    tmx_map_pointer->layer[layer_count].tile[tile_count].tile = TILE_FLOOR;
                 }
                 // Remove cross right tiles
                 // O?X
                 // ?X?
                 // X?O
                 //--------------------
-                if(  (tmx_map_pointer->layer[layer_count].tile[tile_count+mw+1].tile == WALL_TILE)
-                   &&(tmx_map_pointer->layer[layer_count].tile[tile_count+mw-1].tile == FLOOR_TILE)
-                   &&(tmx_map_pointer->layer[layer_count].tile[tile_count-mw+1].tile == FLOOR_TILE)
-                   &&(tmx_map_pointer->layer[layer_count].tile[tile_count-mw-1].tile == WALL_TILE))
+                if(  (tmx_map_pointer->layer[layer_count].tile[tile_count+mw+1].tile == TILE_WALL)
+                   &&(tmx_map_pointer->layer[layer_count].tile[tile_count+mw-1].tile == TILE_FLOOR)
+                   &&(tmx_map_pointer->layer[layer_count].tile[tile_count-mw+1].tile == TILE_FLOOR)
+                   &&(tmx_map_pointer->layer[layer_count].tile[tile_count-mw-1].tile == TILE_WALL))
                 {
-                    tmx_map_pointer->layer[layer_count].tile[tile_count+mw-1].tile = WALL_TILE;
-                    tmx_map_pointer->layer[layer_count].tile[tile_count-mw+1].tile = WALL_TILE;
+                    tmx_map_pointer->layer[layer_count].tile[tile_count+mw-1].tile = TILE_WALL;
+                    tmx_map_pointer->layer[layer_count].tile[tile_count-mw+1].tile = TILE_WALL;
                 }
                 // Remove cross left tiles
                 // X?O
                 // ?X?
                 // O?X
                 //--------------------
-                if(  (tmx_map_pointer->layer[layer_count].tile[tile_count+mw+1].tile == FLOOR_TILE)
-                   &&(tmx_map_pointer->layer[layer_count].tile[tile_count+mw-1].tile == WALL_TILE)
-                   &&(tmx_map_pointer->layer[layer_count].tile[tile_count-mw+1].tile == WALL_TILE)
-                   &&(tmx_map_pointer->layer[layer_count].tile[tile_count-mw-1].tile == FLOOR_TILE))
+                if(  (tmx_map_pointer->layer[layer_count].tile[tile_count+mw+1].tile == TILE_FLOOR)
+                   &&(tmx_map_pointer->layer[layer_count].tile[tile_count+mw-1].tile == TILE_WALL)
+                   &&(tmx_map_pointer->layer[layer_count].tile[tile_count-mw+1].tile == TILE_WALL)
+                   &&(tmx_map_pointer->layer[layer_count].tile[tile_count-mw-1].tile == TILE_FLOOR))
                 {
-                    tmx_map_pointer->layer[layer_count].tile[tile_count+mw+1].tile = WALL_TILE;
-                    tmx_map_pointer->layer[layer_count].tile[tile_count-mw-1].tile = WALL_TILE;
+                    tmx_map_pointer->layer[layer_count].tile[tile_count+mw+1].tile = TILE_WALL;
+                    tmx_map_pointer->layer[layer_count].tile[tile_count-mw-1].tile = TILE_WALL;
                 }
             }
         }
@@ -844,16 +844,16 @@ void map_2D_class::smooth_map(tmx_map_type *tmx_map_pointer)
                 // XXX
                 // XOO
                 //--------------------
-                if(  (tmx_map_pointer->layer[layer_count].tile[tile_count+1].tile    == WALL_TILE)
-                   &&(tmx_map_pointer->layer[layer_count].tile[tile_count-1].tile    == WALL_TILE)
-                   &&(tmx_map_pointer->layer[layer_count].tile[tile_count+mw].tile   == WALL_TILE)
-                   &&(tmx_map_pointer->layer[layer_count].tile[tile_count+mw+1].tile == FLOOR_TILE)
-                   &&(tmx_map_pointer->layer[layer_count].tile[tile_count+mw-1].tile == WALL_TILE)
-                   &&(tmx_map_pointer->layer[layer_count].tile[tile_count-mw].tile   == WALL_TILE)
-                   &&(tmx_map_pointer->layer[layer_count].tile[tile_count-mw+1].tile == WALL_TILE)
-                   &&(tmx_map_pointer->layer[layer_count].tile[tile_count-mw-1].tile == FLOOR_TILE))
+                if(  (tmx_map_pointer->layer[layer_count].tile[tile_count+1].tile    == TILE_WALL)
+                   &&(tmx_map_pointer->layer[layer_count].tile[tile_count-1].tile    == TILE_WALL)
+                   &&(tmx_map_pointer->layer[layer_count].tile[tile_count+mw].tile   == TILE_WALL)
+                   &&(tmx_map_pointer->layer[layer_count].tile[tile_count+mw+1].tile == TILE_FLOOR)
+                   &&(tmx_map_pointer->layer[layer_count].tile[tile_count+mw-1].tile == TILE_WALL)
+                   &&(tmx_map_pointer->layer[layer_count].tile[tile_count-mw].tile   == TILE_WALL)
+                   &&(tmx_map_pointer->layer[layer_count].tile[tile_count-mw+1].tile == TILE_WALL)
+                   &&(tmx_map_pointer->layer[layer_count].tile[tile_count-mw-1].tile == TILE_FLOOR))
                 {
-                    tmx_map_pointer->layer[layer_count].tile[tile_count+mw+1].tile = WALL_TILE;
-                    tmx_map_pointer->layer[layer_count].tile[tile_count-mw-1].tile = WALL_TILE;
+                    tmx_map_pointer->layer[layer_count].tile[tile_count+mw+1].tile = TILE_WALL;
+                    tmx_map_pointer->layer[layer_count].tile[tile_count-mw-1].tile = TILE_WALL;
                 }
 */

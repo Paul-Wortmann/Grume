@@ -25,18 +25,22 @@
 #ifndef PATHFINDING_H
 #define PATHFINDING_H
 
-class pathfinding_class
+#include "loader_tmx.hpp"
+
+struct path_type
 {
-    private:
-    public:
-        int cost_heuristic;
-        int cost_final;
-        int cost_grid;
-        // node tree
-        // origin
-        // destination
-        pathfinding_class(void);
-       ~pathfinding_class(void);
+    int       tile_start;
+    int       tile_end;
+    int       tile_current;
+    int       path_length;
+    int*      path_data;
 };
+
+void map_path_reset (tmx_map_type *tmx_map_pointer);
+int  map_distance_H (tmx_map_type *tmx_map_pointer, int tile_current, int tile_end);
+int  map_distance_G (tmx_map_type *tmx_map_pointer, int tile_current);
+int  map_tile_calc  (tmx_map_type *tmx_map_pointer, int tile_current, int tile_parent, int tile_end);
+path_type* map_path_find (tmx_map_type *tmx_map_pointer, int position_1_x, int position_1_y, int position_2_x, int position_2_y);
+path_type* map_path_find (tmx_map_type *tmx_map_pointer, int tile_1, int tile_2);
 
 #endif //PATHFINDING_H

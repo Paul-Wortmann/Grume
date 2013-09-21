@@ -144,7 +144,7 @@ void map_gen_BSP_split(map_node_type *map_node)
         int passage_x_2 = (map_node->right->data.size.x/2)+map_node->left->data.size.x;
         for (int pos_x = passage_x_1;pos_x < passage_x_2;pos_x++)
         {
-            map_node->data.tile[((passage_y*map_node->data.size.x)+pos_x)].tile = FLOOR_TILE;
+            map_node->data.tile[((passage_y*map_node->data.size.x)+pos_x)].tile = TILE_FLOOR;
         }
         delete [] map_node->left;
         delete [] map_node->right;
@@ -231,7 +231,7 @@ void map_gen_BSP_split(map_node_type *map_node)
         int passage_y_2 = (map_node->right->data.size.y/2)+map_node->left->data.size.y;
         for (int pos_y = passage_y_1;pos_y < passage_y_2;pos_y++)
         {
-            map_node->data.tile[((pos_y*map_node->data.size.x)+passage_x)].tile = FLOOR_TILE;
+            map_node->data.tile[((pos_y*map_node->data.size.x)+passage_x)].tile = TILE_FLOOR;
         }
         delete [] map_node->left;
         delete [] map_node->right;
@@ -258,7 +258,7 @@ void map_gen_BSP_split(map_node_type *map_node)
         {
             for (int x_position = (room_size_x+1); x_position < (map_node->data.size.x-1-room_size_x); x_position++)
             {
-                map_node->data.tile[((y_position*map_node->data.size.x)+x_position)].tile = FLOOR_TILE;
+                map_node->data.tile[((y_position*map_node->data.size.x)+x_position)].tile = TILE_FLOOR;
             }
 
         }
@@ -311,7 +311,7 @@ void map_gen_BSP(tmx_map_type *tmx_map_pointer)
             tile_count_temp = (tile_count_y * tmx_map_pointer->data.map_width) + tile_count_x;
             tmx_map_pointer->layer[layer_floor].tile[tile_count_temp].position.x   = tile_count_x;
             tmx_map_pointer->layer[layer_floor].tile[tile_count_temp].position.y   = tile_count_y;
-            tmx_map_pointer->layer[layer_floor].tile[tile_count_temp].tile         = WALL_TILE;
+            tmx_map_pointer->layer[layer_floor].tile[tile_count_temp].tile         = TILE_WALL;
             tmx_map_pointer->layer[layer_floor].tile[tile_count_temp].tile_tileset = tileset_count;
         }
     }
@@ -386,7 +386,7 @@ void map_gen_CA (tmx_map_type *tmx_map_pointer)
             tile_count_temp = (tile_count_y * tmx_map_pointer->data.map_width) + tile_count_x;
             tmx_map_pointer->layer[layer_floor].tile[tile_count_temp].position.x   = tile_count_x;
             tmx_map_pointer->layer[layer_floor].tile[tile_count_temp].position.y   = tile_count_y;
-            tmx_map_pointer->layer[layer_floor].tile[tile_count_temp].tile         = WALL_TILE;
+            tmx_map_pointer->layer[layer_floor].tile[tile_count_temp].tile         = TILE_WALL;
             tmx_map_pointer->layer[layer_floor].tile[tile_count_temp].tile_tileset = tileset_count;
         }
     }
@@ -422,36 +422,36 @@ void map_gen_CA (tmx_map_type *tmx_map_pointer)
     {
         for (int tile_count = 0; tile_count < tmx_map_pointer->data.number_of_tiles; tile_count++)
         {
-            tmx_map_pointer->layer[layer_floor].tile[tile_count].tile  = FLOOR_TILE;
+            tmx_map_pointer->layer[layer_floor].tile[tile_count].tile  = TILE_FLOOR;
         }
         for (int tile_count = 0; tile_count < ca_random_tile_number; tile_count++)
         {
-            tmx_map_pointer->layer[layer_floor].tile[rand()%tmx_map_pointer->data.number_of_tiles].tile = WALL_TILE;
+            tmx_map_pointer->layer[layer_floor].tile[rand()%tmx_map_pointer->data.number_of_tiles].tile = TILE_WALL;
         }
         //add a 3x3 floored room to the middle of the map
         //this is for use later when checking for disjointed parts.
         {
             int middle_tile_number = ((tmx_map_pointer->data.number_of_tiles/2)+(tmx_map_pointer->data.map_width/2));
-            tmx_map_pointer->layer[layer_floor].tile[middle_tile_number].tile                       = FLOOR_TILE;
-            tmx_map_pointer->layer[layer_floor].tile[middle_tile_number+1].tile                     = FLOOR_TILE;
-            tmx_map_pointer->layer[layer_floor].tile[middle_tile_number-1].tile                     = FLOOR_TILE;
-            tmx_map_pointer->layer[layer_floor].tile[middle_tile_number+tmx_map_pointer->data.map_width].tile   = FLOOR_TILE;
-            tmx_map_pointer->layer[layer_floor].tile[middle_tile_number+tmx_map_pointer->data.map_width+1].tile = FLOOR_TILE;
-            tmx_map_pointer->layer[layer_floor].tile[middle_tile_number+tmx_map_pointer->data.map_width-1].tile = FLOOR_TILE;
-            tmx_map_pointer->layer[layer_floor].tile[middle_tile_number-tmx_map_pointer->data.map_width].tile   = FLOOR_TILE;
-            tmx_map_pointer->layer[layer_floor].tile[middle_tile_number-tmx_map_pointer->data.map_width+1].tile = FLOOR_TILE;
-            tmx_map_pointer->layer[layer_floor].tile[middle_tile_number-tmx_map_pointer->data.map_width-1].tile = FLOOR_TILE;
+            tmx_map_pointer->layer[layer_floor].tile[middle_tile_number].tile                       = TILE_FLOOR;
+            tmx_map_pointer->layer[layer_floor].tile[middle_tile_number+1].tile                     = TILE_FLOOR;
+            tmx_map_pointer->layer[layer_floor].tile[middle_tile_number-1].tile                     = TILE_FLOOR;
+            tmx_map_pointer->layer[layer_floor].tile[middle_tile_number+tmx_map_pointer->data.map_width].tile   = TILE_FLOOR;
+            tmx_map_pointer->layer[layer_floor].tile[middle_tile_number+tmx_map_pointer->data.map_width+1].tile = TILE_FLOOR;
+            tmx_map_pointer->layer[layer_floor].tile[middle_tile_number+tmx_map_pointer->data.map_width-1].tile = TILE_FLOOR;
+            tmx_map_pointer->layer[layer_floor].tile[middle_tile_number-tmx_map_pointer->data.map_width].tile   = TILE_FLOOR;
+            tmx_map_pointer->layer[layer_floor].tile[middle_tile_number-tmx_map_pointer->data.map_width+1].tile = TILE_FLOOR;
+            tmx_map_pointer->layer[layer_floor].tile[middle_tile_number-tmx_map_pointer->data.map_width-1].tile = TILE_FLOOR;
         }
         //fill perimeter with wall tiles
         for (int tile_count = 0; tile_count < tmx_map_pointer->data.map_width; tile_count++)
         {
-            tmx_map_pointer->layer[layer_floor].tile[tile_count].tile                                = WALL_TILE;
-            tmx_map_pointer->layer[layer_floor].tile[tmx_map_pointer->data.number_of_tiles-tile_count].tile  = WALL_TILE;
+            tmx_map_pointer->layer[layer_floor].tile[tile_count].tile                                = TILE_WALL;
+            tmx_map_pointer->layer[layer_floor].tile[tmx_map_pointer->data.number_of_tiles-tile_count].tile  = TILE_WALL;
         }
         for (int tile_count = 0; tile_count < tmx_map_pointer->data.map_height; tile_count++)
         {
-            tmx_map_pointer->layer[layer_floor].tile[tile_count*tmx_map_pointer->data.map_width].tile                         = WALL_TILE;
-            tmx_map_pointer->layer[layer_floor].tile[(tile_count*tmx_map_pointer->data.map_width)+tmx_map_pointer->data.map_width-1].tile = WALL_TILE;
+            tmx_map_pointer->layer[layer_floor].tile[tile_count*tmx_map_pointer->data.map_width].tile                         = TILE_WALL;
+            tmx_map_pointer->layer[layer_floor].tile[(tile_count*tmx_map_pointer->data.map_width)+tmx_map_pointer->data.map_width-1].tile = TILE_WALL;
         }
         //smooth map, depending on neighboring tiles.
         for (int refine_count = 0; refine_count < ca_iterations; refine_count++)
@@ -462,25 +462,25 @@ void map_gen_CA (tmx_map_type *tmx_map_pointer)
             {
                 number_of_neighbors = 0;
                 temp_tile_number    = 0;
-                temp_map[tile_count].tile = FLOOR_TILE; // new tile is initially a floor tile
+                temp_map[tile_count].tile = TILE_FLOOR; // new tile is initially a floor tile
                 temp_tile_number = tile_count+1;
-                if ((temp_tile_number >= 0) && (temp_tile_number <= tmx_map_pointer->data.number_of_tiles) && (tmx_map_pointer->layer[layer_floor].tile[temp_tile_number].tile == WALL_TILE)) number_of_neighbors++;
+                if ((temp_tile_number >= 0) && (temp_tile_number <= tmx_map_pointer->data.number_of_tiles) && (tmx_map_pointer->layer[layer_floor].tile[temp_tile_number].tile == TILE_WALL)) number_of_neighbors++;
                 temp_tile_number = tile_count-1;
-                if ((temp_tile_number >= 0) && (temp_tile_number <= tmx_map_pointer->data.number_of_tiles) && (tmx_map_pointer->layer[layer_floor].tile[temp_tile_number].tile == WALL_TILE)) number_of_neighbors++;
+                if ((temp_tile_number >= 0) && (temp_tile_number <= tmx_map_pointer->data.number_of_tiles) && (tmx_map_pointer->layer[layer_floor].tile[temp_tile_number].tile == TILE_WALL)) number_of_neighbors++;
                 temp_tile_number = tile_count+tmx_map_pointer->data.map_width;
-                if ((temp_tile_number >= 0) && (temp_tile_number <= tmx_map_pointer->data.number_of_tiles) && (tmx_map_pointer->layer[layer_floor].tile[temp_tile_number].tile == WALL_TILE)) number_of_neighbors++;
+                if ((temp_tile_number >= 0) && (temp_tile_number <= tmx_map_pointer->data.number_of_tiles) && (tmx_map_pointer->layer[layer_floor].tile[temp_tile_number].tile == TILE_WALL)) number_of_neighbors++;
                 temp_tile_number = tile_count+tmx_map_pointer->data.map_width+1;
-                if ((temp_tile_number >= 0) && (temp_tile_number <= tmx_map_pointer->data.number_of_tiles) && (tmx_map_pointer->layer[layer_floor].tile[temp_tile_number].tile == WALL_TILE)) number_of_neighbors++;
+                if ((temp_tile_number >= 0) && (temp_tile_number <= tmx_map_pointer->data.number_of_tiles) && (tmx_map_pointer->layer[layer_floor].tile[temp_tile_number].tile == TILE_WALL)) number_of_neighbors++;
                 temp_tile_number = tile_count+tmx_map_pointer->data.map_width-1;
-                if ((temp_tile_number >= 0) && (temp_tile_number <= tmx_map_pointer->data.number_of_tiles) && (tmx_map_pointer->layer[layer_floor].tile[temp_tile_number].tile == WALL_TILE)) number_of_neighbors++;
+                if ((temp_tile_number >= 0) && (temp_tile_number <= tmx_map_pointer->data.number_of_tiles) && (tmx_map_pointer->layer[layer_floor].tile[temp_tile_number].tile == TILE_WALL)) number_of_neighbors++;
                 temp_tile_number = tile_count-tmx_map_pointer->data.map_width;
-                if ((temp_tile_number >= 0) && (temp_tile_number <= tmx_map_pointer->data.number_of_tiles) && (tmx_map_pointer->layer[layer_floor].tile[temp_tile_number].tile == WALL_TILE)) number_of_neighbors++;
+                if ((temp_tile_number >= 0) && (temp_tile_number <= tmx_map_pointer->data.number_of_tiles) && (tmx_map_pointer->layer[layer_floor].tile[temp_tile_number].tile == TILE_WALL)) number_of_neighbors++;
                 temp_tile_number = tile_count-tmx_map_pointer->data.map_width+1;
-                if ((temp_tile_number >= 0) && (temp_tile_number <= tmx_map_pointer->data.number_of_tiles) && (tmx_map_pointer->layer[layer_floor].tile[temp_tile_number].tile == WALL_TILE)) number_of_neighbors++;
+                if ((temp_tile_number >= 0) && (temp_tile_number <= tmx_map_pointer->data.number_of_tiles) && (tmx_map_pointer->layer[layer_floor].tile[temp_tile_number].tile == TILE_WALL)) number_of_neighbors++;
                 temp_tile_number = tile_count-tmx_map_pointer->data.map_width-1;
-                if ((temp_tile_number >= 0) && (temp_tile_number <= tmx_map_pointer->data.number_of_tiles) && (tmx_map_pointer->layer[layer_floor].tile[temp_tile_number].tile == WALL_TILE)) number_of_neighbors++;
-                if ((tmx_map_pointer->layer[layer_floor].tile[tile_count].tile  == WALL_TILE)  && (number_of_neighbors >= ca_wall_stay)) temp_map[tile_count].tile = WALL_TILE; //Tile on temp map is a wall
-                if ((tmx_map_pointer->layer[layer_floor].tile[tile_count].tile  == FLOOR_TILE) && (number_of_neighbors >= ca_wall_new )) temp_map[tile_count].tile = WALL_TILE; //Tile on temp map is a wall
+                if ((temp_tile_number >= 0) && (temp_tile_number <= tmx_map_pointer->data.number_of_tiles) && (tmx_map_pointer->layer[layer_floor].tile[temp_tile_number].tile == TILE_WALL)) number_of_neighbors++;
+                if ((tmx_map_pointer->layer[layer_floor].tile[tile_count].tile  == TILE_WALL)  && (number_of_neighbors >= ca_wall_stay)) temp_map[tile_count].tile = TILE_WALL; //Tile on temp map is a wall
+                if ((tmx_map_pointer->layer[layer_floor].tile[tile_count].tile  == TILE_FLOOR) && (number_of_neighbors >= ca_wall_new )) temp_map[tile_count].tile = TILE_WALL; //Tile on temp map is a wall
             }
             //copy tiles from temp map to the main map.
             for(int tile_count = 0; tile_count < tmx_map_pointer->data.number_of_tiles; tile_count++)
@@ -490,13 +490,13 @@ void map_gen_CA (tmx_map_type *tmx_map_pointer)
             //fill perimeter with wall tiles
             for (int tile_count = 0; tile_count < tmx_map_pointer->data.map_width; tile_count++)
             {
-                tmx_map_pointer->layer[layer_floor].tile[tile_count].tile                                = WALL_TILE;
-                tmx_map_pointer->layer[layer_floor].tile[tmx_map_pointer->data.number_of_tiles-tile_count].tile  = WALL_TILE;
+                tmx_map_pointer->layer[layer_floor].tile[tile_count].tile                                        = TILE_WALL;
+                tmx_map_pointer->layer[layer_floor].tile[tmx_map_pointer->data.number_of_tiles-tile_count].tile  = TILE_WALL;
             }
             for (int tile_count = 0; tile_count < tmx_map_pointer->data.map_height; tile_count++)
             {
-                tmx_map_pointer->layer[layer_floor].tile[tile_count*tmx_map_pointer->data.map_width].tile                         = WALL_TILE;
-                tmx_map_pointer->layer[layer_floor].tile[(tile_count*tmx_map_pointer->data.map_width)+tmx_map_pointer->data.map_width-1].tile = WALL_TILE;
+                tmx_map_pointer->layer[layer_floor].tile[tile_count*tmx_map_pointer->data.map_width].tile                                     = TILE_WALL;
+                tmx_map_pointer->layer[layer_floor].tile[(tile_count*tmx_map_pointer->data.map_width)+tmx_map_pointer->data.map_width-1].tile = TILE_WALL;
             }
         }
         // find out if cave from the center is the largest part, and discard disjointed parts
@@ -574,7 +574,7 @@ void map_gen_CA (tmx_map_type *tmx_map_pointer)
                     }
                 }
                 fill_data[tile_count].processed = true;
-                if ((is_an_adjoining_tile) and (fill_data[tile_count].tile_data == FLOOR_TILE)) fill_data[tile_count].adjoining_tile = true;
+                if ((is_an_adjoining_tile) and (fill_data[tile_count].tile_data == TILE_FLOOR)) fill_data[tile_count].adjoining_tile = true;
             }
         }
         ca_map_good = (number_found >= ((tmx_map_pointer->data.number_of_tiles*ca_minimum_cave_size)/100.0f)) ? true : false;
@@ -582,8 +582,8 @@ void map_gen_CA (tmx_map_type *tmx_map_pointer)
     // write new values to array discarding disjointed tiles
     for (int tile_count = 0; tile_count < tmx_map_pointer->data.number_of_tiles; tile_count++)
     {
-        if (fill_data[tile_count].adjoining_tile) fill_data[tile_count].tile_data = FLOOR_TILE;
-        else fill_data[tile_count].tile_data = WALL_TILE;
+        if (fill_data[tile_count].adjoining_tile) fill_data[tile_count].tile_data = TILE_FLOOR;
+        else fill_data[tile_count].tile_data = TILE_WALL;
     }
     // Push data from fill struct back to map.
     for(int tile_count = 0; tile_count < tmx_map_pointer->data.number_of_tiles; tile_count++)

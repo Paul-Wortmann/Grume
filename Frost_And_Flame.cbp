@@ -94,7 +94,6 @@
 				</Compiler>
 				<Linker>
 					<Add option="-pg" />
-					<Add option="-pg -lgmon" />
 					<Add option="-static-libstdc++" />
 					<Add option="-static-libgcc" />
 					<Add library="SDLmain" />
