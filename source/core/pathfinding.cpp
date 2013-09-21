@@ -27,9 +27,13 @@
 #include "map_gen.hpp"
 #include <stdio.h>
 #include <stdlib.h>
+#include "../game.hpp"
+
+extern game_class        game;
 
 void map_path_reset (tmx_map_type *tmx_map_pointer)
 {
+    if (!tmx_map_pointer->path_data) tmx_map_pointer->path_data = new tmx_path_data_type[tmx_map_pointer->data.number_of_tiles+1];
     for (int tile_count = 0; tile_count < tmx_map_pointer->data.number_of_tiles; tile_count++)
     {
         tmx_map_pointer->path_data[tile_count].tile_data   = TILE_NONE;
@@ -89,6 +93,7 @@ path_type* map_path_find(tmx_map_type *tmx_map_pointer, int position_1_x, int po
 
 path_type* map_path_find (tmx_map_type *tmx_map_pointer, int tile_1, int tile_2)
 {
+    map_path_reset(tmx_map_pointer);
     int      tile_start     = tile_1;
     int      tile_end       = tile_2;
     int      tile_current   = tile_start;
@@ -100,7 +105,7 @@ path_type* map_path_find (tmx_map_type *tmx_map_pointer, int tile_1, int tile_2)
     bool     border_right   = (((tile_current+1) % tmx_map_pointer->data.map_width) == 0);
     tmx_map_pointer->path_data[tile_current].open_list = true;
     tmx_map_pointer->path_data[tile_current].tile_data = TILE_PATH;
-    while ((tile_current != tile_end) && (tile_next_t2 >= 0))
+    while ((tile_current <= tile_end) && (tile_next_t2 >= 0))
     {
         tile_next       =  -1;
         if (!border_left)
@@ -233,6 +238,7 @@ path_type* map_path_find (tmx_map_type *tmx_map_pointer, int tile_1, int tile_2)
     return_path->path_data[0] = tile_1;
     for (int current_tile = tile_1, path_position = 0; path_position  < path_length; path_position++)
     {
+        //game.core.log.file_write("Path: ",current_tile);
         found_next_tile      = false;
         temp_tile = previous_tile_1 - tmx_map_pointer->data.map_width - 1;
         if ((!found_next_tile) && (temp_tile >= 0) && (temp_tile <= tmx_map_pointer->data.number_of_tiles) && (tmx_map_pointer->path_data[temp_tile].tile_data == TILE_PATH) && (temp_tile != previous_tile_2))
