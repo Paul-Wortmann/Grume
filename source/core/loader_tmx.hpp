@@ -51,7 +51,7 @@ struct tmx_tileset_type
     int           image_width;
     int           image_height;
     int           number_of_tiles;
-    texture_type *tile;
+    texture_type* tile;
 };
 
 struct tmx_layer_type
@@ -59,7 +59,7 @@ struct tmx_layer_type
     std::string        name;
     int                width;
     int                height;
-    tmx_tile_type     *tile;
+    tmx_tile_type*     tile;
 };
 
 struct tmx_data_type
@@ -77,15 +77,26 @@ struct tmx_data_type
     int                number_of_tilesets;
 };
 
-struct tmx_map_type
+struct tmx_path_data_type
 {
-    tmx_data_type     data;
-    tmx_layer_type   *layer;
-    tmx_tileset_type *tileset;
+    int  parent_tile;
+    bool open_list;
+    bool closed_list;
+    int  F;
+    int  G;
+    int  H;
 };
 
-void tmx_load(tmx_map_type *tmx_map_pointer, std::string file_name);
-void tmx_save(tmx_map_type *tmx_map_pointer, std::string file_name);
+struct tmx_map_type
+{
+    tmx_path_data_type* path_data;
+    tmx_data_type       data;
+    tmx_layer_type*     layer;
+    tmx_tileset_type*   tileset;
+};
+
+void tmx_load(tmx_map_type* tmx_map_pointer, std::string file_name);
+void tmx_save(tmx_map_type* tmx_map_pointer, std::string file_name);
 
 #endif //LOADER_TMX_H
 
