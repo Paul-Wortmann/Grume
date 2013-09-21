@@ -66,7 +66,6 @@ class stat_class
         float             current;
         float             maximum;
         float             regeneration;
-        pathfinding_class pathfinding;
         void              process(void);
         void              draw(void);
 };
