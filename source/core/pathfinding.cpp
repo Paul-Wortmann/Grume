@@ -32,7 +32,7 @@ void map_path_reset (tmx_map_type *tmx_map_pointer)
 {
     for (int tile_count = 0; tile_count < tmx_map_pointer->data.number_of_tiles; tile_count++)
     {
-        tmx_map_pointer->path_data[tile_count].tile_data   = -1;
+        tmx_map_pointer->path_data[tile_count].tile_data   = TILE_NONE;
         tmx_map_pointer->path_data[tile_count].parent_tile = -1;
         tmx_map_pointer->path_data[tile_count].closed_list = false;
         tmx_map_pointer->path_data[tile_count].open_list   = false;
@@ -99,6 +99,7 @@ path_type* map_path_find (tmx_map_type *tmx_map_pointer, int tile_1, int tile_2)
     bool     border_left    = ((tile_current % tmx_map_pointer->data.map_width) == 0);
     bool     border_right   = (((tile_current+1) % tmx_map_pointer->data.map_width) == 0);
     tmx_map_pointer->path_data[tile_current].open_list = true;
+    tmx_map_pointer->path_data[tile_current].tile_data = TILE_PATH;
     while ((tile_current != tile_end) && (tile_next_t2 >= 0))
     {
         tile_next       =  -1;
@@ -215,5 +216,76 @@ path_type* map_path_find (tmx_map_type *tmx_map_pointer, int tile_1, int tile_2)
         border_left    = ((tile_current % tmx_map_pointer->data.map_width) == 0);
         border_right   = (((tile_current+1) % tmx_map_pointer->data.map_width) == 0);
     }
+    tmx_map_pointer->path_data[tile_2].tile_data = TILE_PATH;
+    // Return path.
+    path_type* return_path;
+    int  previous_tile        = -1;
+    int  temp_tile            = -1;
+    bool found_next_tile      = false;
+    return_path               = new path_type;
+    return_path->path_length  = path_length;
+    return_path->tile_start   = tile_1;
+    return_path->tile_end     = tile_2;
+    return_path->tile_current = return_path->tile_start;
+    return_path->path_length  = path_length;
+    return_path->path_data    = new int[return_path->path_length];
+    return_path->path_data[0] = tile_1;
+    for (int current_tile = tile_1, path_position = 1; path_position  < path_length; path_position++)
+    {
+        found_next_tile      = false;
+        temp_tile = previous_tile - tmx_map_pointer->data.map_width - 1;
+        if ((!found_next_tile) && (temp_tile >= 0) && (temp_tile <= tmx_map_pointer->data.number_of_tiles) && (tmx_map_pointer->path_data[temp_tile].tile_data == TILE_PATH) && (temp_tile != previous_tile))
+        {
+            current_tile    = temp_tile;
+            found_next_tile = true;
+        }
+        temp_tile = previous_tile - tmx_map_pointer->data.map_width;
+        if ((!found_next_tile) && (temp_tile >= 0) && (temp_tile <= tmx_map_pointer->data.number_of_tiles) && (tmx_map_pointer->path_data[temp_tile].tile_data == TILE_PATH) && (temp_tile != previous_tile))
+        {
+            current_tile    = temp_tile;
+            found_next_tile = true;
+        }
+        temp_tile = previous_tile - tmx_map_pointer->data.map_width + 1;
+        if ((!found_next_tile) && (temp_tile >= 0) && (temp_tile <= tmx_map_pointer->data.number_of_tiles) && (tmx_map_pointer->path_data[temp_tile].tile_data == TILE_PATH) && (temp_tile != previous_tile))
+        {
+            current_tile    = temp_tile;
+            found_next_tile = true;
+        }
+        temp_tile = previous_tile - 1;
+        if ((!found_next_tile) && (temp_tile >= 0) && (temp_tile <= tmx_map_pointer->data.number_of_tiles) && (tmx_map_pointer->path_data[temp_tile].tile_data == TILE_PATH) && (temp_tile != previous_tile))
+        {
+            current_tile    = temp_tile;
+            found_next_tile = true;
+        }
+        temp_tile = previous_tile + 1;
+        if ((!found_next_tile) && (temp_tile >= 0) && (temp_tile <= tmx_map_pointer->data.number_of_tiles) && (tmx_map_pointer->path_data[temp_tile].tile_data == TILE_PATH) && (temp_tile != previous_tile))
+        {
+            current_tile    = temp_tile;
+            found_next_tile = true;
+        }
+        temp_tile = previous_tile + tmx_map_pointer->data.map_width - 1;
+        if ((!found_next_tile) && (temp_tile >= 0) && (temp_tile <= tmx_map_pointer->data.number_of_tiles) && (tmx_map_pointer->path_data[temp_tile].tile_data == TILE_PATH) && (temp_tile != previous_tile))
+        {
+            current_tile    = temp_tile;
+            found_next_tile = true;
+        }
+        temp_tile = previous_tile + tmx_map_pointer->data.map_width;
+        if ((!found_next_tile) && (temp_tile >= 0) && (temp_tile <= tmx_map_pointer->data.number_of_tiles) && (tmx_map_pointer->path_data[temp_tile].tile_data == TILE_PATH) && (temp_tile != previous_tile))
+        {
+            current_tile    = temp_tile;
+            found_next_tile = true;
+        }
+        temp_tile = previous_tile + tmx_map_pointer->data.map_width + 1;
+        if ((!found_next_tile) && (temp_tile >= 0) && (temp_tile <= tmx_map_pointer->data.number_of_tiles) && (tmx_map_pointer->path_data[temp_tile].tile_data == TILE_PATH) && (temp_tile != previous_tile))
+        {
+            current_tile    = temp_tile;
+            found_next_tile = true;
+        }
+        printf("Tile %i -> %i ",current_tile,tmx_map_pointer->path_data[current_tile].tile_data);
+        printf("Previous tile -> %i\n",previous_tile);
+        if (tmx_map_pointer->path_data[current_tile].tile_data == TILE_PATH) return_path->path_data[path_position] = current_tile;
+        previous_tile = current_tile;
+    }
+    return(return_path);
 };
 
