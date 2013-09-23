@@ -28,12 +28,12 @@
 
 extern game_class game;
 
-font_manager_class::font_manager_class(void)
+font_manager_class::font_manager_class (void)
 {
     font_manager_class::number_of_fonts = 0;
 };
 
-font_manager_class::~font_manager_class(void)
+font_manager_class::~font_manager_class (void)
 {
     font_type* temp_pointer;
     temp_pointer = new font_type;
@@ -48,7 +48,7 @@ font_manager_class::~font_manager_class(void)
     }
 };
 
-font_type *font_manager_class::add_font(std::string file_name)
+font_type *font_manager_class::add_font (std::string file_name)
 {
     if (font_manager_class::number_of_fonts == 0)
     {
@@ -79,10 +79,10 @@ font_type *font_manager_class::add_font(std::string file_name)
     font_manager_class::last->path = file_name.c_str();
     font_manager_class::last->loaded = font_manager_class::load_font(last);
     if (font_manager_class::last->loaded) font_manager_class::number_of_fonts++;
-    return(font_manager_class::last);
+    return (font_manager_class::last);
 };
 
-bool font_manager_class::load_font(font_type *font)
+bool font_manager_class::load_font (font_type *font)
 {
     bool return_value = false;
     font->font_data = TTF_OpenFont(font->path.c_str(), 48);
@@ -91,7 +91,7 @@ bool font_manager_class::load_font(font_type *font)
     return (return_value);
 };
 
-bool font_manager_class::load_font(font_type *font, int pt_size)
+bool font_manager_class::load_font (font_type *font, int pt_size)
 {
     bool return_value = false;
     font->font_data = TTF_OpenFont(font->path.c_str(),pt_size);
@@ -100,15 +100,15 @@ bool font_manager_class::load_font(font_type *font, int pt_size)
     return (return_value);
 };
 
-bool font_manager_class::write(font_type *font, Uint8 r,Uint8 g,Uint8 b,Uint8 a,float x,float y,std::string text,int int_data)
+bool font_manager_class::write (font_type *font, Uint8 r,Uint8 g,Uint8 b,Uint8 a,float x,float y,std::string text,int int_data)
 {
     if ((text.length() > 0) && (font->font_data != NULL))
     {
-        GLuint texture_data;
-        GLenum texture_format;
-        GLint  nOfColors;
-        float  width;
-        float  height;
+        GLuint      texture_data;
+        GLenum      texture_format;
+        GLint       nOfColors;
+        float       width;
+        float       height;
         const char *write_data;
         std::stringstream temp_string;
         temp_string << int_data;
@@ -118,8 +118,8 @@ bool font_manager_class::write(font_type *font, Uint8 r,Uint8 g,Uint8 b,Uint8 a,
         SDL_Surface *font_string = TTF_RenderUTF8_Blended(font->font_data,write_data,font_color);
         width  = ((font_string->w / game.core.config.display_resolution_x ) -1);
         height = ((font_string->h / game.core.config.display_resolution_y ) -1);
-        if(width  < 0)  width  *= -1;
-        if(height < 0)  height *= -1;
+        if (width  < 0) width  *= -1;
+        if (height < 0) height *= -1;
         width  = width  / 8.0f;
         height = height / 16.0f;
         nOfColors = font_string->format->BytesPerPixel;
@@ -143,20 +143,20 @@ bool font_manager_class::write(font_type *font, Uint8 r,Uint8 g,Uint8 b,Uint8 a,
         glPopMatrix();
         glDeleteTextures(1, &texture_data);
         SDL_FreeSurface(font_string);
-        return(true);
+        return (true);
     }
-    else return(false);
+    else return (false);
 };
 
-bool font_manager_class::write(font_type *font, Uint8 r,Uint8 g,Uint8 b,Uint8 a,float x,float y,std::string text,float float_data)
+bool font_manager_class::write (font_type *font, Uint8 r,Uint8 g,Uint8 b,Uint8 a,float x,float y,std::string text,float float_data)
 {
     if ((text.length() > 0) && (font->font_data != NULL))
     {
-        GLuint texture_data;
-        GLenum texture_format;
-        GLint  nOfColors;
-        float  width;
-        float  height;
+        GLuint      texture_data;
+        GLenum      texture_format;
+        GLint       nOfColors;
+        float       width;
+        float       height;
         const char *write_data;
         std::stringstream temp_string;
         temp_string << float_data;
@@ -166,8 +166,8 @@ bool font_manager_class::write(font_type *font, Uint8 r,Uint8 g,Uint8 b,Uint8 a,
         SDL_Surface *font_string = TTF_RenderUTF8_Blended(font->font_data,write_data,font_color);
         width  = ((font_string->w / game.core.config.display_resolution_x ) -1);
         height = ((font_string->h / game.core.config.display_resolution_y ) -1);
-        if(width  < 0)  width  *= -1;
-        if(height < 0)  height *= -1;
+        if (width  < 0) width  *= -1;
+        if (height < 0) height *= -1;
         width  = width  / 8.0f;
         height = height / 16.0f;
         nOfColors = font_string->format->BytesPerPixel;
@@ -191,27 +191,27 @@ bool font_manager_class::write(font_type *font, Uint8 r,Uint8 g,Uint8 b,Uint8 a,
         glPopMatrix();
         glDeleteTextures(1, &texture_data);
         SDL_FreeSurface(font_string);
-        return(true);
+        return (true);
     }
-    else return(false);
+    else return (false);
 };
 
-bool font_manager_class::write(font_type *font, Uint8 r,Uint8 g,Uint8 b,Uint8 a,float x,float y,std::string text)
+bool font_manager_class::write (font_type *font, Uint8 r,Uint8 g,Uint8 b,Uint8 a,float x,float y,std::string text)
 {
     if ((text.length() > 0) && (font->font_data != NULL))
     {
-        GLuint texture_data;
-        GLenum texture_format;
-        GLint  nOfColors;
-        float  width;
-        float  height;
+        GLuint       texture_data;
+        GLenum       texture_format;
+        GLint        nOfColors;
+        float        width;
+        float        height;
         const char *write_data = text.c_str();
         SDL_Color font_color = {b,g,r,a};
         SDL_Surface *font_string = TTF_RenderUTF8_Blended(font->font_data,write_data,font_color);
         width  = ((font_string->w / game.core.config.display_resolution_x) -1);
         height = ((font_string->h / game.core.config.display_resolution_y) -1);
-        if(width  < 0)  width  *= -1;
-        if(height < 0)  height *= -1;
+        if (width  < 0) width  *= -1;
+        if (height < 0) height *= -1;
         width  = width  / 8.0f;
         height = height / 16.0f;
         nOfColors = font_string->format->BytesPerPixel;
@@ -235,27 +235,27 @@ bool font_manager_class::write(font_type *font, Uint8 r,Uint8 g,Uint8 b,Uint8 a,
         glPopMatrix();
         glDeleteTextures(1, &texture_data);
         SDL_FreeSurface(font_string);
-        return(true);
+        return (true);
     }
-    else return(false);
+    else return (false);
 };
 
-bool font_manager_class::write(font_type *font, Uint8 r,Uint8 g,Uint8 b,Uint8 a,float x,float y,float ws,float hs,std::string text)
+bool font_manager_class::write (font_type *font, Uint8 r,Uint8 g,Uint8 b,Uint8 a,float x,float y,float ws,float hs,std::string text)
 {
     if ((text.length() > 0) && (font->font_data != NULL))
     {
-        GLuint texture_data;
-        GLenum texture_format;
-        GLint  nOfColors;
-        float  width;
-        float  height;
+        GLuint       texture_data;
+        GLenum       texture_format;
+        GLint        nOfColors;
+        float        width;
+        float        height;
         const  char* write_data = text.c_str();
         SDL_Color font_color = {b,g,r,a};
         SDL_Surface *font_string = TTF_RenderUTF8_Blended(font->font_data,write_data,font_color);
         width  = ((font_string->w / game.core.config.display_resolution_x) -1);
         height = ((font_string->h / game.core.config.display_resolution_y) -1);
-        if(width  < 0)  width  *= -1;
-        if(height < 0)  height *= -1;
+        if (width  < 0) width  *= -1;
+        if (height < 0) height *= -1;
         if (ws == 0) ws = width;
         if (hs == 0) hs = height;
         width  = width  / ws;
@@ -281,22 +281,22 @@ bool font_manager_class::write(font_type *font, Uint8 r,Uint8 g,Uint8 b,Uint8 a,
         glPopMatrix();
         glDeleteTextures(1, &texture_data);
         SDL_FreeSurface(font_string);
-        return(true);
+        return (true);
     }
-    else return(false);
+    else return (false);
 };
 
 
 
-bool font_manager_class::write(font_type *font, Uint8 r,Uint8 g,Uint8 b,Uint8 a,float x,float y,float ws,float hs,std::string text,int int_data)
+bool font_manager_class::write (font_type *font, Uint8 r,Uint8 g,Uint8 b,Uint8 a,float x,float y,float ws,float hs,std::string text,int int_data)
 {
     if ((text.length() > 0) && (font->font_data != NULL))
     {
-        GLuint             texture_data;
-        GLenum             texture_format;
-        GLint              nOfColors;
-        float              width;
-        float              height;
+        GLuint      texture_data;
+        GLenum      texture_format;
+        GLint       nOfColors;
+        float       width;
+        float       height;
         const char *write_data;
         std::string string_data( text.begin(), text.end() );
         std::stringstream temp_string;
@@ -307,8 +307,8 @@ bool font_manager_class::write(font_type *font, Uint8 r,Uint8 g,Uint8 b,Uint8 a,
         SDL_Surface *font_string = TTF_RenderUTF8_Blended(font->font_data,write_data,font_color);
         width  = ((font_string->w / game.core.config.display_resolution_x) -1);
         height = ((font_string->h / game.core.config.display_resolution_y) -1);
-        if(width  < 0)  width  *= -1;
-        if(height < 0)  height *= -1;
+        if (width  < 0) width  *= -1;
+        if (height < 0) height *= -1;
         if (ws == 0) ws = width;
         if (hs == 0) hs = height;
         width  = width  / ws;
@@ -334,20 +334,20 @@ bool font_manager_class::write(font_type *font, Uint8 r,Uint8 g,Uint8 b,Uint8 a,
         glPopMatrix();
         glDeleteTextures(1, &texture_data);
         SDL_FreeSurface(font_string);
-        return(true);
+        return (true);
     }
-    else return(false);
+    else return (false);
 };
 
-bool font_manager_class::write(font_type *font, Uint8 r,Uint8 g,Uint8 b,Uint8 a,float x,float y,float ws,float hs,std::string text,float float_data)
+bool font_manager_class::write (font_type *font, Uint8 r,Uint8 g,Uint8 b,Uint8 a,float x,float y,float ws,float hs,std::string text,float float_data)
 {
     if ((text.length() > 0) && (font->font_data != NULL))
     {
-        GLuint             texture_data;
-        GLenum             texture_format;
-        GLint              nOfColors;
-        float              width;
-        float              height;
+        GLuint      texture_data;
+        GLenum      texture_format;
+        GLint       nOfColors;
+        float       width;
+        float       height;
         const char *write_data;
         std::string string_data( text.begin(), text.end() );
         std::stringstream temp_string;
@@ -390,15 +390,15 @@ bool font_manager_class::write(font_type *font, Uint8 r,Uint8 g,Uint8 b,Uint8 a,
     else return(false);
 };
 
-bool font_manager_class::write(font_type *font, Uint8 r,Uint8 g,Uint8 b,Uint8 a,float x,float y,float ws,float hs,std::string text,int int_data,std::string text_2)
+bool font_manager_class::write (font_type *font, Uint8 r,Uint8 g,Uint8 b,Uint8 a,float x,float y,float ws,float hs,std::string text,int int_data,std::string text_2)
 {
     if ((text.length() > 0) && (font->font_data != NULL))
     {
-        GLuint             texture_data;
-        GLenum             texture_format;
-        GLint              nOfColors;
-        float              width;
-        float              height;
+        GLuint      texture_data;
+        GLenum      texture_format;
+        GLint       nOfColors;
+        float       width;
+        float       height;
         const char *write_data;
         std::string string_data( text.begin(), text.end() );
         std::stringstream temp_string;
@@ -410,8 +410,8 @@ bool font_manager_class::write(font_type *font, Uint8 r,Uint8 g,Uint8 b,Uint8 a,
         SDL_Surface *font_string = TTF_RenderUTF8_Blended(font->font_data,write_data,font_color);
         width  = ((font_string->w / game.core.config.display_resolution_x) -1);
         height = ((font_string->h / game.core.config.display_resolution_y) -1);
-        if(width  < 0)  width  *= -1;
-        if(height < 0)  height *= -1;
+        if (width  < 0) width  *= -1;
+        if (height < 0) height *= -1;
         if (ws == 0) ws = width;
         if (hs == 0) hs = height;
         width  = width  / ws;
@@ -437,20 +437,20 @@ bool font_manager_class::write(font_type *font, Uint8 r,Uint8 g,Uint8 b,Uint8 a,
         glPopMatrix();
         glDeleteTextures(1, &texture_data);
         SDL_FreeSurface(font_string);
-        return(true);
+        return (true);
     }
-    else return(false);
+    else return (false);
 };
 
-bool font_manager_class::write(font_type *font, Uint8 r,Uint8 g,Uint8 b,Uint8 a,float x,float y,float ws,float hs,std::string text,float float_data,std::string text_2)
+bool font_manager_class::write (font_type *font, Uint8 r,Uint8 g,Uint8 b,Uint8 a,float x,float y,float ws,float hs,std::string text,float float_data,std::string text_2)
 {
     if ((text.length() > 0) && (font->font_data != NULL))
     {
-        GLuint             texture_data;
-        GLenum             texture_format;
-        GLint              nOfColors;
-        float              width;
-        float              height;
+        GLuint      texture_data;
+        GLenum      texture_format;
+        GLint       nOfColors;
+        float       width;
+        float       height;
         const char *write_data;
         std::string string_data( text.begin(), text.end() );
         std::stringstream temp_string;
@@ -462,8 +462,8 @@ bool font_manager_class::write(font_type *font, Uint8 r,Uint8 g,Uint8 b,Uint8 a,
         SDL_Surface *font_string = TTF_RenderUTF8_Blended(font->font_data,write_data,font_color);
         width  = ((font_string->w / game.core.config.display_resolution_x) -1);
         height = ((font_string->h / game.core.config.display_resolution_y) -1);
-        if(width  < 0)  width  *= -1;
-        if(height < 0)  height *= -1;
+        if (width  < 0) width  *= -1;
+        if (height < 0) height *= -1;
         if (ws == 0) ws = width;
         if (hs == 0) hs = height;
         width  = width  / ws;
@@ -489,20 +489,20 @@ bool font_manager_class::write(font_type *font, Uint8 r,Uint8 g,Uint8 b,Uint8 a,
         glPopMatrix();
         glDeleteTextures(1, &texture_data);
         SDL_FreeSurface(font_string);
-        return(true);
+        return (true);
     }
-    else return(false);
+    else return (false);
 };
 
-bool font_manager_class::write(font_type *font, Uint8 r,Uint8 g,Uint8 b,Uint8 a,float x,float y,float ws,float hs,float float_data,std::string text)
+bool font_manager_class::write (font_type *font, Uint8 r,Uint8 g,Uint8 b,Uint8 a,float x,float y,float ws,float hs,float float_data,std::string text)
 {
     if ((text.length() > 0) && (font->font_data != NULL))
     {
-        GLuint             texture_data;
-        GLenum             texture_format;
-        GLint              nOfColors;
-        float              width;
-        float              height;
+        GLuint      texture_data;
+        GLenum      texture_format;
+        GLint       nOfColors;
+        float       width;
+        float       height;
         const char *write_data;
         std::string string_data_2( text.begin(), text.end() );
         std::string string_data;
@@ -515,8 +515,8 @@ bool font_manager_class::write(font_type *font, Uint8 r,Uint8 g,Uint8 b,Uint8 a,
         SDL_Surface *font_string = TTF_RenderUTF8_Blended(font->font_data,write_data,font_color);
         width  = ((font_string->w / game.core.config.display_resolution_x) -1);
         height = ((font_string->h / game.core.config.display_resolution_y) -1);
-        if(width  < 0)  width  *= -1;
-        if(height < 0)  height *= -1;
+        if (width  < 0) width  *= -1;
+        if (height < 0) height *= -1;
         if (ws == 0) ws = width;
         if (hs == 0) hs = height;
         width  = width  / ws;
@@ -542,20 +542,20 @@ bool font_manager_class::write(font_type *font, Uint8 r,Uint8 g,Uint8 b,Uint8 a,
         glPopMatrix();
         glDeleteTextures(1, &texture_data);
         SDL_FreeSurface(font_string);
-        return(true);
+        return (true);
     }
-    else return(false);
+    else return (false);
 };
 
-bool font_manager_class::write(font_type *font, Uint8 r,Uint8 g,Uint8 b,Uint8 a,float x,float y,float ws,float hs,unsigned long long ullint_data,std::string text)
+bool font_manager_class::write (font_type *font, Uint8 r,Uint8 g,Uint8 b,Uint8 a,float x,float y,float ws,float hs,unsigned long long ullint_data,std::string text)
 {
     if ((text.length() > 0) && (font->font_data != NULL))
     {
-        GLuint             texture_data;
-        GLenum             texture_format;
-        GLint              nOfColors;
-        float              width;
-        float              height;
+        GLuint      texture_data;
+        GLenum      texture_format;
+        GLint       nOfColors;
+        float       width;
+        float       height;
         const char *write_data;
         std::string string_data_2( text.begin(), text.end() );
         std::string string_data;
@@ -568,8 +568,8 @@ bool font_manager_class::write(font_type *font, Uint8 r,Uint8 g,Uint8 b,Uint8 a,
         SDL_Surface *font_string = TTF_RenderUTF8_Blended(font->font_data,write_data,font_color);
         width  = ((font_string->w / game.core.config.display_resolution_x) -1);
         height = ((font_string->h / game.core.config.display_resolution_y) -1);
-        if(width  < 0)  width  *= -1;
-        if(height < 0)  height *= -1;
+        if (width  < 0) width  *= -1;
+        if (height < 0) height *= -1;
         if (ws == 0) ws = width;
         if (hs == 0) hs = height;
         width  = width  / ws;
@@ -595,20 +595,20 @@ bool font_manager_class::write(font_type *font, Uint8 r,Uint8 g,Uint8 b,Uint8 a,
         glPopMatrix();
         glDeleteTextures(1, &texture_data);
         SDL_FreeSurface(font_string);
-        return(true);
+        return (true);
     }
-    else return(false);
+    else return (false);
 };
 
-bool font_manager_class::write(font_type *font, Uint8 r,Uint8 g,Uint8 b,Uint8 a,float x,float y,float ws,float hs,int int_data,std::string text)
+bool font_manager_class::write (font_type *font, Uint8 r,Uint8 g,Uint8 b,Uint8 a,float x,float y,float ws,float hs,int int_data,std::string text)
 {
     if ((text.length() > 0) && (font->font_data != NULL))
     {
-        GLuint             texture_data;
-        GLenum             texture_format;
-        GLint              nOfColors;
-        float              width;
-        float              height;
+        GLuint      texture_data;
+        GLenum      texture_format;
+        GLint       nOfColors;
+        float       width;
+        float       height;
         const char *write_data;
         std::string string_data_2( text.begin(), text.end() );
         std::string string_data;
@@ -621,8 +621,8 @@ bool font_manager_class::write(font_type *font, Uint8 r,Uint8 g,Uint8 b,Uint8 a,
         SDL_Surface *font_string = TTF_RenderUTF8_Blended(font->font_data,write_data,font_color);
         width  = ((font_string->w / game.core.config.display_resolution_x) -1);
         height = ((font_string->h / game.core.config.display_resolution_y) -1);
-        if(width  < 0)  width  *= -1;
-        if(height < 0)  height *= -1;
+        if (width  < 0) width  *= -1;
+        if (height < 0) height *= -1;
         if (ws == 0) ws = width;
         if (hs == 0) hs = height;
         width  = width  / ws;
@@ -648,20 +648,20 @@ bool font_manager_class::write(font_type *font, Uint8 r,Uint8 g,Uint8 b,Uint8 a,
         glPopMatrix();
         glDeleteTextures(1, &texture_data);
         SDL_FreeSurface(font_string);
-        return(true);
+        return (true);
     }
-    else return(false);
+    else return (false);
 };
 
-bool font_manager_class::write(font_type *font, Uint8 r,Uint8 g,Uint8 b,Uint8 a,float x,float y,float ws,float hs,std::string text_data,std::string text)
+bool font_manager_class::write (font_type *font, Uint8 r,Uint8 g,Uint8 b,Uint8 a,float x,float y,float ws,float hs,std::string text_data,std::string text)
 {
     if ((text.length() > 0) && (font->font_data != NULL))
     {
-        GLuint             texture_data;
-        GLenum             texture_format;
-        GLint              nOfColors;
-        float              width;
-        float              height;
+        GLuint      texture_data;
+        GLenum      texture_format;
+        GLint       nOfColors;
+        float       width;
+        float       height;
         const char *write_data;
         std::string string_data( text_data.begin(), text_data.end() );
         string_data += text;
@@ -670,8 +670,8 @@ bool font_manager_class::write(font_type *font, Uint8 r,Uint8 g,Uint8 b,Uint8 a,
         SDL_Surface *font_string = TTF_RenderUTF8_Blended(font->font_data,write_data,font_color);
         width  = ((font_string->w / game.core.config.display_resolution_x) -1);
         height = ((font_string->h / game.core.config.display_resolution_y) -1);
-        if(width  < 0)  width  *= -1;
-        if(height < 0)  height *= -1;
+        if (width  < 0) width  *= -1;
+        if (height < 0) height *= -1;
         if (ws == 0) ws = width;
         if (hs == 0) hs = height;
         width  = width  / ws;
@@ -697,20 +697,20 @@ bool font_manager_class::write(font_type *font, Uint8 r,Uint8 g,Uint8 b,Uint8 a,
         glPopMatrix();
         glDeleteTextures(1, &texture_data);
         SDL_FreeSurface(font_string);
-        return(true);
+        return (true);
     }
-    else return(false);
+    else return (false);
 };
 
-bool font_manager_class::write(font_type *font, Uint8 r,Uint8 g,Uint8 b,Uint8 a,float x,float y,float ws,float hs,std::string text,unsigned long long ullint_data)
+bool font_manager_class::write (font_type *font, Uint8 r,Uint8 g,Uint8 b,Uint8 a,float x,float y,float ws,float hs,std::string text,unsigned long long ullint_data)
 {
     if ((text.length() > 0) && (font->font_data != NULL))
     {
-        GLuint             texture_data;
-        GLenum             texture_format;
-        GLint              nOfColors;
-        float              width;
-        float              height;
+        GLuint      texture_data;
+        GLenum      texture_format;
+        GLint       nOfColors;
+        float       width;
+        float       height;
         const char *write_data;
         std::string string_data( text.begin(), text.end() );
         std::stringstream temp_string;
@@ -721,8 +721,8 @@ bool font_manager_class::write(font_type *font, Uint8 r,Uint8 g,Uint8 b,Uint8 a,
         SDL_Surface *font_string = TTF_RenderUTF8_Blended(font->font_data,write_data,font_color);
         width  = ((font_string->w / game.core.config.display_resolution_x) -1);
         height = ((font_string->h / game.core.config.display_resolution_y) -1);
-        if(width  < 0)  width  *= -1;
-        if(height < 0)  height *= -1;
+        if (width  < 0) width  *= -1;
+        if (height < 0) height *= -1;
         if (ws == 0) ws = width;
         if (hs == 0) hs = height;
         width  = width  / ws;
@@ -748,20 +748,20 @@ bool font_manager_class::write(font_type *font, Uint8 r,Uint8 g,Uint8 b,Uint8 a,
         glPopMatrix();
         glDeleteTextures(1, &texture_data);
         SDL_FreeSurface(font_string);
-        return(true);
+        return (true);
     }
-    else return(false);
+    else return (false);
 };
 
-bool font_manager_class::write(font_type *font, Uint8 r,Uint8 g,Uint8 b,Uint8 a,float x,float y,float ws,float hs,std::string text,unsigned long long ullint_data,std::string text_2)
+bool font_manager_class::write (font_type *font, Uint8 r,Uint8 g,Uint8 b,Uint8 a,float x,float y,float ws,float hs,std::string text,unsigned long long ullint_data,std::string text_2)
 {
     if ((text.length() > 0) && (font->font_data != NULL))
     {
-        GLuint             texture_data;
-        GLenum             texture_format;
-        GLint              nOfColors;
-        float              width;
-        float              height;
+        GLuint      texture_data;
+        GLenum      texture_format;
+        GLint       nOfColors;
+        float       width;
+        float       height;
         const char *write_data;
         std::string string_data( text.begin(), text.end() );
         std::stringstream temp_string;
@@ -773,8 +773,8 @@ bool font_manager_class::write(font_type *font, Uint8 r,Uint8 g,Uint8 b,Uint8 a,
         SDL_Surface *font_string = TTF_RenderUTF8_Blended(font->font_data,write_data,font_color);
         width  = ((font_string->w / game.core.config.display_resolution_x) -1);
         height = ((font_string->h / game.core.config.display_resolution_y) -1);
-        if(width  < 0)  width  *= -1;
-        if(height < 0)  height *= -1;
+        if (width  < 0) width  *= -1;
+        if (height < 0) height *= -1;
         if (ws == 0) ws = width;
         if (hs == 0) hs = height;
         width  = width  / ws;
@@ -800,20 +800,20 @@ bool font_manager_class::write(font_type *font, Uint8 r,Uint8 g,Uint8 b,Uint8 a,
         glPopMatrix();
         glDeleteTextures(1, &texture_data);
         SDL_FreeSurface(font_string);
-        return(true);
+        return (true);
     }
-    else return(false);
+    else return (false);
 };
 
-bool font_manager_class::write(font_type *font, Uint8 r,Uint8 g,Uint8 b,Uint8 a,float x,float y,float ws,float hs,std::string text,int int_data,std::string text_2,int int_data_2,std::string text_3)
+bool font_manager_class::write (font_type *font, Uint8 r,Uint8 g,Uint8 b,Uint8 a,float x,float y,float ws,float hs,std::string text,int int_data,std::string text_2,int int_data_2,std::string text_3)
 {
     if ((text.length() > 0) && (font->font_data != NULL))
     {
-        GLuint             texture_data;
-        GLenum             texture_format;
-        GLint              nOfColors;
-        float              width;
-        float              height;
+        GLuint      texture_data;
+        GLenum      texture_format;
+        GLint       nOfColors;
+        float       width;
+        float       height;
         const char *write_data;
         std::string string_data( text.begin(), text.end() );
         std::stringstream temp_string;
@@ -829,8 +829,8 @@ bool font_manager_class::write(font_type *font, Uint8 r,Uint8 g,Uint8 b,Uint8 a,
         SDL_Surface *font_string = TTF_RenderUTF8_Blended(font->font_data,write_data,font_color);
         width  = ((font_string->w / game.core.config.display_resolution_x) -1);
         height = ((font_string->h / game.core.config.display_resolution_y) -1);
-        if(width  < 0)  width  *= -1;
-        if(height < 0)  height *= -1;
+        if (width  < 0) width  *= -1;
+        if (height < 0) height *= -1;
         if (ws == 0) ws = width;
         if (hs == 0) hs = height;
         width  = width  / ws;
@@ -856,7 +856,7 @@ bool font_manager_class::write(font_type *font, Uint8 r,Uint8 g,Uint8 b,Uint8 a,
         glPopMatrix();
         glDeleteTextures(1, &texture_data);
         SDL_FreeSurface(font_string);
-        return(true);
+        return (true);
     }
-    else return(false);
+    else return (false);
 };
