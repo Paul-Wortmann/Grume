@@ -65,6 +65,8 @@ UI_form_struct *UI_manager_class::UI_form_add(int UI_form_UID)
         UI_manager_class::last->previous = temp_pointer;
     }
     UI_manager_class::last->data.active                             = false;
+    UI_manager_class::last->data.enabled                            = false;
+    UI_manager_class::last->data.set_behind                         = false;
     UI_manager_class::last->data.color.disabled.r                   = 255;
     UI_manager_class::last->data.color.disabled.g                   = 255;
     UI_manager_class::last->data.color.disabled.b                   = 255;
@@ -81,7 +83,6 @@ UI_form_struct *UI_manager_class::UI_form_add(int UI_form_UID)
     UI_manager_class::last->data.drag_enabled                       = true;
     UI_manager_class::last->data.drag_offset_x                      = 0.0f;
     UI_manager_class::last->data.drag_offset_y                      = 0.0f;
-    UI_manager_class::last->data.enabled                            = false;
     UI_manager_class::last->data.event.id                           = EVENT_NONE;
     UI_manager_class::last->data.mouse_delay.enabled                = true;
     UI_manager_class::last->data.mouse_delay.maximum                = 30;
@@ -94,7 +95,6 @@ UI_form_struct *UI_manager_class::UI_form_add(int UI_form_UID)
     UI_manager_class::last->data.position.x                         = 0.0f;
     UI_manager_class::last->data.position.y                         = 0.0f;
     UI_manager_class::last->data.position.z                         = 0.0f;
-    UI_manager_class::last->data.set_behind                         = false;
     UI_manager_class::last->data.size.x                             = 0.0f;
     UI_manager_class::last->data.size.y                             = 0.0f;
     UI_manager_class::last->data.size.z                             = 0.0f;
@@ -458,9 +458,9 @@ void UI_manager_class::render(void)
     }
 };
 
-//decouple processing into smaller modules?
 event_struct  UI_manager_class::process_form_elements(UI_form_struct *UI_form_pointer,bool window_in_focus)
 {
+    //window_in_focus  = true; // --------------------------- TESTING!!! --------------------------
     event_struct      return_value;
     return_value.id = EVENT_NONE;
     // ------------------------- Process elements -------------------------
@@ -631,122 +631,127 @@ event_struct UI_manager_class::process_form(UI_form_struct *UI_form_pointer)
     event_struct      return_value;
     return_value.id = EVENT_NONE;
     // ----------------------------- process UI form ---------------------------------
-    float        drag_delta_x       = 0.0f;
-    float        drag_delta_y       = 0.0f;
-    bool         return_mouse_over  = false;
-    bool         allow_drag         = true;
-    bool window_in_focus            = true;
-    bool front_window_found         = false;
-    if (UI_form_pointer->data.enabled)
-    {
-        if (!game.UI_manager.drag_in_progress)
-        {
-            UI_form_pointer->data.mouse_over_menu = (game.core.physics.point_in_quadrangle(UI_form_pointer->data.position.x,UI_form_pointer->data.size.x,UI_form_pointer->data.position.y,UI_form_pointer->data.size.y,game.core.io.mouse_x,game.core.io.mouse_y));
-        }
-        if (UI_form_pointer->data.mouse_over_menu)
-        {
-            if (!front_window_found)
-            {
-                window_in_focus    = true;
-                front_window_found = true;
-            }
-            else window_in_focus = false;
-        }
-        else window_in_focus = false;
-        // ------------------------- Process mouse delay -------------------------
-        if (UI_form_pointer->data.mouse_delay.enabled)
-        {
-            UI_form_pointer->data.mouse_delay.value++;
-            if (UI_form_pointer->data.mouse_delay.value >= UI_form_pointer->data.mouse_delay.maximum)
-            {
-                UI_form_pointer->data.mouse_delay.ready = true;
-                UI_form_pointer->data.mouse_delay.value = UI_form_pointer->data.mouse_delay.maximum;
-            }
-        }
-        //-----------------------------------------------------------------------------------------------------
-        return_value = process_form_elements(UI_form_pointer,window_in_focus);
-        //-----------------------------------------------------------------------------------------------------
-        if (return_value.id == EVENT_NONE)
-        {
-            // ------------------------- Drag -------------------------
-            if (!game.UI_manager.drag_in_progress)
-            {
-                UI_form_pointer->data.mouse_over_title = (game.core.physics.point_in_quadrangle(UI_form_pointer->data.title_bar.position.x,UI_form_pointer->data.title_bar.size.x,UI_form_pointer->data.title_bar.position.y,UI_form_pointer->data.title_bar.size.y,game.core.io.mouse_x,game.core.io.mouse_y));
-            }
-            if (UI_form_pointer->data.drag_active)
-            {
-                if (game.core.io.mouse_button_left)
-                {
-                    drag_delta_x = UI_form_pointer->data.position.x;
-                    drag_delta_y = UI_form_pointer->data.position.y;
-                    UI_form_pointer->data.position.x = game.core.io.mouse_x + UI_form_pointer->data.drag_offset_x;
-                    UI_form_pointer->data.position.y = game.core.io.mouse_y + UI_form_pointer->data.drag_offset_y;
-                    drag_delta_x = drag_delta_x - UI_form_pointer->data.position.x;
-                    drag_delta_y = drag_delta_y - UI_form_pointer->data.position.y;
-                    UI_form_pointer->data.title.position.x     -= drag_delta_x;
-                    UI_form_pointer->data.title.position.y     -= drag_delta_y;
-                    UI_form_pointer->data.title_bar.position.x -= drag_delta_x;
-                    UI_form_pointer->data.title_bar.position.y -= drag_delta_y;
-                    if(UI_form_pointer->data.number_of_elements > 0)
-                    {
-                        for (int element_number = 0; element_number < UI_form_pointer->data.number_of_elements; element_number++)
-                        {
-                            if (UI_form_pointer->data.element[element_number].active)
-                            {
-                                UI_form_pointer->data.element[element_number].position.x       -= drag_delta_x;
-                                UI_form_pointer->data.element[element_number].position.y       -= drag_delta_y;
-                                UI_form_pointer->data.element[element_number].title.position.x -= drag_delta_x;
-                                UI_form_pointer->data.element[element_number].title.position.y -= drag_delta_y;
-                            }
-                        }
-                    }
-                }
-                else
-                {
-                    UI_form_pointer->data.drag_active  = false;
-                    game.UI_manager.drag_in_progress   = false;
-                }
-            }
-            else
-            {
-                if ((UI_form_pointer->data.drag_enabled) && (window_in_focus))
-                {
-                    if ((!game.UI_manager.drag_in_progress) && (UI_form_pointer->data.mouse_over_title) && (game.core.io.mouse_button_left) && (allow_drag))// start drag
-                    {
-                        UI_form_pointer->data.drag_offset_x                = UI_form_pointer->data.position.x - game.core.io.mouse_x;
-                        UI_form_pointer->data.drag_offset_y                = UI_form_pointer->data.position.y - game.core.io.mouse_y;
-                        UI_form_pointer->data.drag_active                  = true;
-                        game.UI_manager.drag_in_progress                   = true;
-                        if (UI_manager_class::UI_form_get_list_position(UI_form_pointer->data.UID) != UI_manager_class::number_of_UI_forms) return_value.id = EVENT_UI_FORM_DRAG;
-                        game.core.log.file_write("List size -> ",UI_manager_class::number_of_UI_forms);
-                        game.core.log.file_write("UID -> ",UI_form_pointer->data.UID," - Position in list -> ",UI_manager_class::UI_form_get_list_position(UI_form_pointer->data.UID));
-                    }
-                }
-                // user clicked on window, that is not title or an element.
-                if ((game.core.io.mouse_button_left) && (return_value.id == EVENT_NONE) && (!UI_form_pointer->data.active))
-                {
-                    if (UI_manager_class::UI_form_get_list_position(UI_form_pointer->data.UID) != UI_manager_class::number_of_UI_forms) return_value.id = EVENT_UI_LIST_SORT;
-                }
-            }
-            // ------------------------- X -------------------------
-            if (!UI_form_pointer->data.mouse_over_title) UI_form_pointer->data.mouse_over_title = return_mouse_over;
-        }
-    }
-    //if ((UI_form_count > 1) && (game.UI_manager.event.id == EVENT_UI_LIST_SORT)) game.UI_manager.event.id = EVENT_NONE;
-    //if (return_value > 0) game.core.log.file_write("returning event -> ",return_value, " - from UID - ", UI_form_pointer->data.UID);
-    //if (return_value == EVENT_UI_LIST_SORT) game.core.log.file_write("returning event -> ",return_value, " - from UID - ", UI_form_pointer->data.UID);
-    UI_form_pointer->data.event = return_value;
-    if ((UI_form_pointer->data.event.id == EVENT_UI_LIST_SORT) || (UI_form_pointer->data.event.id == EVENT_UI_FORM_DRAG))
-    {
-        //game.UI_manager.event = return_value;
-        //UI_form_pointer->data.event.id = EVENT_NONE;
-    }
     return (return_value);
 };
 
 void UI_manager_class::process(void)
 {
-    for (UI_form_struct *UI_form_pointer = UI_manager_class::last; UI_form_pointer != NULL; UI_form_pointer = UI_form_pointer->previous) game.UI_manager.event = process_form(UI_form_pointer);
+    event_struct      return_value;
+    return_value.id = EVENT_NONE;
+        bool window_in_focus            = true;
+        bool front_window_found         = false;
+    for (UI_form_struct *UI_form_pointer = UI_manager_class::last; UI_form_pointer != NULL; UI_form_pointer = UI_form_pointer->previous)
+    {
+        // ----------------------------- process UI form ---------------------------------
+        float        drag_delta_x       = 0.0f;
+        float        drag_delta_y       = 0.0f;
+        bool         return_mouse_over  = false;
+        bool         allow_drag         = true;
+        if (UI_form_pointer->data.enabled)
+        {
+            if (!game.UI_manager.drag_in_progress)
+            {
+                UI_form_pointer->data.mouse_over_menu = (game.core.physics.point_in_quadrangle(UI_form_pointer->data.position.x,UI_form_pointer->data.size.x,UI_form_pointer->data.position.y,UI_form_pointer->data.size.y,game.core.io.mouse_x,game.core.io.mouse_y));
+            }
+            if (UI_form_pointer->data.mouse_over_menu)
+            {
+                if ((!front_window_found) || ((UI_form_pointer->data.set_behind)))
+                {
+                    window_in_focus    = true;
+                    front_window_found = true;
+                }
+                else window_in_focus = false;
+            }
+            else window_in_focus = false;
+            // ------------------------- Process mouse delay -------------------------
+            if (UI_form_pointer->data.mouse_delay.enabled)
+            {
+                UI_form_pointer->data.mouse_delay.value++;
+                if (UI_form_pointer->data.mouse_delay.value >= UI_form_pointer->data.mouse_delay.maximum)
+                {
+                    UI_form_pointer->data.mouse_delay.ready = true;
+                    UI_form_pointer->data.mouse_delay.value = UI_form_pointer->data.mouse_delay.maximum;
+                }
+            }
+            //-----------------------------------------------------------------------------------------------------
+            return_value = process_form_elements(UI_form_pointer,window_in_focus);
+            //-----------------------------------------------------------------------------------------------------
+            if (return_value.id == EVENT_NONE)
+            {
+                // ------------------------- Drag -------------------------
+                if (!game.UI_manager.drag_in_progress)
+                {
+                    UI_form_pointer->data.mouse_over_title = (game.core.physics.point_in_quadrangle(UI_form_pointer->data.title_bar.position.x,UI_form_pointer->data.title_bar.size.x,UI_form_pointer->data.title_bar.position.y,UI_form_pointer->data.title_bar.size.y,game.core.io.mouse_x,game.core.io.mouse_y));
+                }
+                if (UI_form_pointer->data.drag_active)
+                {
+                    if (game.core.io.mouse_button_left)
+                    {
+                        drag_delta_x = UI_form_pointer->data.position.x;
+                        drag_delta_y = UI_form_pointer->data.position.y;
+                        UI_form_pointer->data.position.x = game.core.io.mouse_x + UI_form_pointer->data.drag_offset_x;
+                        UI_form_pointer->data.position.y = game.core.io.mouse_y + UI_form_pointer->data.drag_offset_y;
+                        drag_delta_x = drag_delta_x - UI_form_pointer->data.position.x;
+                        drag_delta_y = drag_delta_y - UI_form_pointer->data.position.y;
+                        UI_form_pointer->data.title.position.x     -= drag_delta_x;
+                        UI_form_pointer->data.title.position.y     -= drag_delta_y;
+                        UI_form_pointer->data.title_bar.position.x -= drag_delta_x;
+                        UI_form_pointer->data.title_bar.position.y -= drag_delta_y;
+                        if(UI_form_pointer->data.number_of_elements > 0)
+                        {
+                            for (int element_number = 0; element_number < UI_form_pointer->data.number_of_elements; element_number++)
+                            {
+                                if (UI_form_pointer->data.element[element_number].active)
+                                {
+                                    UI_form_pointer->data.element[element_number].position.x       -= drag_delta_x;
+                                    UI_form_pointer->data.element[element_number].position.y       -= drag_delta_y;
+                                    UI_form_pointer->data.element[element_number].title.position.x -= drag_delta_x;
+                                    UI_form_pointer->data.element[element_number].title.position.y -= drag_delta_y;
+                                }
+                            }
+                        }
+                    }
+                    else
+                    {
+                        UI_form_pointer->data.drag_active  = false;
+                        game.UI_manager.drag_in_progress   = false;
+                    }
+                }
+                else
+                {
+                    if ((UI_form_pointer->data.drag_enabled) && (window_in_focus))
+                    {
+                        if ((!game.UI_manager.drag_in_progress) && (UI_form_pointer->data.mouse_over_title) && (game.core.io.mouse_button_left) && (allow_drag))// start drag
+                        {
+                            UI_form_pointer->data.drag_offset_x                = UI_form_pointer->data.position.x - game.core.io.mouse_x;
+                            UI_form_pointer->data.drag_offset_y                = UI_form_pointer->data.position.y - game.core.io.mouse_y;
+                            UI_form_pointer->data.drag_active                  = true;
+                            game.UI_manager.drag_in_progress                   = true;
+                            if (UI_manager_class::UI_form_get_list_position(UI_form_pointer->data.UID) != UI_manager_class::number_of_UI_forms) return_value.id = EVENT_UI_FORM_DRAG;
+                            game.core.log.file_write("List size -> ",UI_manager_class::number_of_UI_forms);
+                            game.core.log.file_write("UID -> ",UI_form_pointer->data.UID," - Position in list -> ",UI_manager_class::UI_form_get_list_position(UI_form_pointer->data.UID));
+                        }
+                    }
+                    // user clicked on window, that is not title or an element.
+                    if ((game.core.io.mouse_button_left) && (return_value.id == EVENT_NONE) && (!UI_form_pointer->data.active))
+                    {
+                        if (UI_manager_class::UI_form_get_list_position(UI_form_pointer->data.UID) != UI_manager_class::number_of_UI_forms) return_value.id = EVENT_UI_LIST_SORT;
+                    }
+                }
+                // ------------------------- X -------------------------
+                if (!UI_form_pointer->data.mouse_over_title) UI_form_pointer->data.mouse_over_title = return_mouse_over;
+            }
+        }
+        //if ((UI_form_count > 1) && (game.UI_manager.event.id == EVENT_UI_LIST_SORT)) game.UI_manager.event.id = EVENT_NONE;
+        //if (return_value > 0) game.core.log.file_write("returning event -> ",return_value, " - from UID - ", UI_form_pointer->data.UID);
+        //if (return_value == EVENT_UI_LIST_SORT) game.core.log.file_write("returning event -> ",return_value, " - from UID - ", UI_form_pointer->data.UID);
+        UI_form_pointer->data.event = return_value;
+        if ((UI_form_pointer->data.event.id == EVENT_UI_LIST_SORT) || (UI_form_pointer->data.event.id == EVENT_UI_FORM_DRAG))
+        {
+            game.UI_manager.event = return_value;
+            UI_form_pointer->data.event.id = EVENT_NONE;
+        }
+    }
     switch (game.UI_manager.event.id)
     {
         case EVENT_UI_LIST_SORT:
