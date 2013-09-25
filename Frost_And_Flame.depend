@@ -2354,7 +2354,7 @@
 1375577407 /media/paul/Data_0/_git_/Frost_and_Flame/source/UI/UI_loading_screen.hpp
 	<string>
 
-1375577407 /media/paul/Data_0/_git_/Frost_and_Flame/source/UI/UI_manager.hpp
+1379852560 /media/paul/Data_0/_git_/Frost_and_Flame/source/UI/UI_manager.hpp
 	"action_bar.hpp"
 	"character_window.hpp"
 	"equipment_window.hpp"
@@ -2689,7 +2689,7 @@
 	"spells.hpp"
 	"game.hpp"
 
-1375577407 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/UI/action_bar.cpp
+1379951400 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/UI/action_bar.cpp
 	"action_bar.hpp"
 	"../game.hpp"
 	"../core/misc.hpp"
@@ -2711,7 +2711,7 @@
 	"menu_game_load.hpp"
 	"../game.hpp"
 
-1375577407 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/UI/menu_game_new.cpp
+1379947974 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/UI/menu_game_new.cpp
 	"menu_game_new.hpp"
 	"../game.hpp"
 
@@ -2753,7 +2753,7 @@
 	"../core/texture_manager.hpp"
 	"../game.hpp"
 
-1377436006 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/UI/UI_manager.cpp
+1380039061 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/UI/UI_manager.cpp
 	"UI_manager.hpp"
 	"../game.hpp"
 
