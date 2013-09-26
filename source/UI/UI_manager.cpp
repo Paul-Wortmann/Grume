@@ -840,3 +840,37 @@ void UI_manager_class::process(void)
         // -------------------------------------------------------------------------------
     }
 };
+
+
+/*
+
+process UI forms
+    only if mouse over
+
+
+sort UI forms
+    keep UI forms such as "action bar" at the top of the list.
+    then UI forms in order of precidence, ie. front most in focus UI form.
+    UI forms bubble to the top of the list as they come into focus.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+*/
+
+

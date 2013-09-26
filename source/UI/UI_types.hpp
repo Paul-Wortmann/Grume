@@ -39,73 +39,73 @@
 #define EVENT_UI_FORM_DRAG        10001
 #define EVENT_UI_ELEMENT_DRAG     10002
 
-#define DISABLED        0
-#define NORMAL          1
-#define HIGHLIGHTED     2
+#define DISABLED            0
+#define NORMAL              1
+#define HIGHLIGHTED         2
 
-#define BUTTON          3
-#define TEXTLABEL       4
-#define IMAGE           5
-#define SLIDER          6
-#define BAR             7
-#define TOGGLE          8
-#define CHECKBOX        9
-#define DROPDOWN        10
-#define SELECTION       11
-#define ITEM            12
+#define BUTTON              3
+#define TEXTLABEL           4
+#define IMAGE               5
+#define SLIDER              6
+#define BAR                 7
+#define TOGGLE              8
+#define CHECKBOX            9
+#define DROPDOWN            10
+#define SELECTION           11
+#define ITEM                12
 
 struct event_struct
 {
-    int             id;
+    int                     id;
 };
 
 struct location_struct
 {
     bool                    enabled;
-    std::string             text;
-    f3_type                 size;
-    f3_type                 position;
+    texture_type*           image;
     bool                    image_enabled;
-    texture_type           *image;
     f3_type                 image_size;
+    f3_type                 position;
+    f3_type                 size;
+    std::string             text;
 };
 
 struct zoom_struct
 {
-    bool  enabled;
-    float maximum;
-    float value;
-    float speed;
+    bool                    enabled;
+    float                   maximum;
+    float                   speed;
+    float                   value;
 };
 
 struct color_struct
 {
-    int r;
-    int g;
-    int b;
-    int a;
+    int                     r;
+    int                     g;
+    int                     b;
+    int                     a;
 };
 
 struct color_state_struct
 {
-    color_struct normal;
-    color_struct highlighted;
-    color_struct disabled;
+    color_struct            disabled;
+    color_struct            highlighted;
+    color_struct            normal;
 };
 
 struct texture_state_struct
 {
     float angle;
-    texture_type   *base;
-    texture_type   *normal;
-    texture_type   *highlighted;
-    texture_type   *disabled;
+    texture_type*           base;
+    texture_type*           disabled;
+    texture_type*           highlighted;
+    texture_type*           normal;
 };
 
 struct sound_struct
 {
     bool                    enabled;
-    sound_type             *sound;
+    sound_type*             sound;
 };
 
 struct sound_state_struct
@@ -119,73 +119,75 @@ struct sound_state_struct
 struct delay_struct
 {
     bool                    enabled;
+    int                     maximum;
     bool                    ready;
     int                     value;
-    int                     maximum;
 };
 
 struct selection_data_type
 {
-    int           value_int;
     bool          active;
-    texture_type *image;
+    texture_type* image;
+    int           value_int;
     std::string   value_string;
 };
 
 
 struct choice_selection_type
 {
-    int                         selected;
-    int                         position;
-    int                         position_max;
-    int                         number_of_data;
-    selection_data_type        *data;
+    selection_data_type*    data;
+    int                     number_of_data;
+    int                     position;
+    int                     position_max;
+    int                     selected;
 };
 
 struct UI_element_struct
 {
-    int                     window_UID;
-    int                     element_UID;
-    location_struct         title;
-    location_struct         tooltip;
-    event_struct            event;
-    int                     state;
-    bool                    selected;
-    int                     type;
-    int                     sub_type;
-    int                     quantity;
-    float                   value;
-    float                   value_max;
-    bool                    mouse_over;
     bool                    active;
     bool                    clicked;
     bool                    click_enabled;
+    color_state_struct      color;
     bool                    dragable;
     bool                    drag_active;
     float                   drag_offset_x;
     float                   drag_offset_y;
+    int                     element_UID;
+    event_struct            event;
+    font_type*              font;
     delay_struct            mouse_delay;
-    f3_type                 size;
+    bool                    mouse_over;
     f3_type                 position;
     f3_type                 position_origional;
-    zoom_struct             zoom;
-    color_state_struct      color;
+    int                     quantity;
+    bool                    selected;
+    f3_type                 size;
+    int                     state;
     sound_state_struct      sound;
+    int                     sub_type;
     texture_state_struct    texture;
-    font_type              *font;
+    location_struct         title;
+    location_struct         tooltip;
+    int                     type;
+    float                   value;
+    float                   value_max;
+    int                     window_UID;
+    zoom_struct             zoom;
 };
 
 struct UI_form_data_struct
 {
     bool                    active;
+    choice_selection_type*  choice_selection;
     color_state_struct      color;
     bool                    drag_active;
     bool                    drag_enabled;
     float                   drag_offset_x;
     float                   drag_offset_y;
     bool                    enabled;
+    UI_element_struct*      element;
     event_struct            event;
-    font_type              *font;
+    font_type*              font;
     delay_struct            mouse_delay;
     bool                    mouse_over_menu;
     bool                    mouse_over_title;
@@ -201,15 +203,13 @@ struct UI_form_data_struct
     color_struct            title_color;
     int                     UID;
     zoom_struct             zoom;
-    UI_element_struct      *element;
-    choice_selection_type  *choice_selection;
 };
 
 struct UI_form_struct
 {
     UI_form_data_struct     data;
-    UI_form_struct         *next;
-    UI_form_struct         *previous;
+    UI_form_struct*         next;
+    UI_form_struct*         previous;
 };
 
 #endif // UI_TYPES_H
