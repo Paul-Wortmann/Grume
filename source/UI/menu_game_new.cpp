@@ -38,7 +38,7 @@ void setup_menu_game_new(int UID)
     UI_form_pointer = game.UI_manager.UI_form_add(UID_MENU_GAME_NEW);
 
     UI_form_pointer->data.UID                     = UID;
-    UI_form_pointer->data.active                  = false;
+    UI_form_pointer->data.enabled                 = false;
     UI_form_pointer->data.mouse_over_menu         = false;
     UI_form_pointer->data.mouse_over_title        = false;
     UI_form_pointer->data.position.x              = 0.0f;
@@ -494,9 +494,7 @@ void process_menu_game_new(UI_form_struct *UI_form_pointer)
                 game.UI_manager.UI_form_disable(UID_NPCVENDOR);
                 game.core.npcvendor_active = false;
                 game.UI_manager.UI_form_enable(UID_PCPROFILE);
-                game.UI_manager.UI_form_set_active(UID_PCPROFILE);
                 game.UI_manager.UI_form_enable(UID_ACTIONBAR);
-                game.UI_manager.UI_form_set_active(UID_ACTIONBAR);
                 UI_form_pointer->data.element[3].state = NORMAL; // Save game
                 UI_form_pointer->data.element[4].state = NORMAL; // Resume game
             break;

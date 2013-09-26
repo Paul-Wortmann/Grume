@@ -39,7 +39,7 @@ void setup_menu_main(int UID)
     UI_form_pointer = game.UI_manager.UI_form_add(UID_MENU_MAIN);
 
     UI_form_pointer->data.UID                         = UID;
-    UI_form_pointer->data.active                      = false;
+    UI_form_pointer->data.enabled                     = false;
     UI_form_pointer->data.enabled                     = true;
     UI_form_pointer->data.mouse_over_menu             = false;
     UI_form_pointer->data.mouse_over_title            = false;

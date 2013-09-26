@@ -64,7 +64,6 @@ UI_form_struct *UI_manager_class::UI_form_add(int UI_form_UID)
         UI_manager_class::last->next     = NULL;
         UI_manager_class::last->previous = temp_pointer;
     }
-    UI_manager_class::last->data.active                             = false;
     UI_manager_class::last->data.enabled                            = false;
     UI_manager_class::last->data.set_behind                         = false;
     UI_manager_class::last->data.color.disabled.r                   = 255;
@@ -139,8 +138,6 @@ void UI_manager_class::setup(void)
     setup_menu_options    (UID_MENU_OPTIONS);
     setup_quest_log_window(UID_QUEST_LOG);
     setup_skillbook_window(UID_SKILLBOOK);
-    //--- Set the main menu as the default active window. ---
-    UI_manager_class::UI_form_set_active(UID_MENU_MAIN);
     //--- Enable windows. ---
     UI_manager_class::UI_form_enable(UID_MENU_MAIN);
     //--- sort the list ---
@@ -173,7 +170,6 @@ void UI_manager_class::UI_form_enable(int UI_form_UID)
     {
         if (UI_form_pointer->data.UID == UI_form_UID)
         {
-            UI_form_pointer->data.active  = true;
             UI_form_pointer->data.enabled = true;
         }
     }
@@ -186,7 +182,6 @@ void UI_manager_class::UI_form_disable(int UI_form_UID)
         if (UI_form_pointer->data.UID == UI_form_UID)
         {
             UI_form_pointer->data.enabled = false;
-            UI_form_pointer->data.active  = false;
         }
     }
 };
@@ -213,7 +208,7 @@ void UI_manager_class::UI_form_list_sort(void)
         {
             for (UI_form_struct *UI_form_pointer_1 = UI_manager_class::root; UI_form_pointer_1->next!=NULL; UI_form_pointer_1 = UI_form_pointer_1->next)
             {
-                if ((UI_form_pointer_1->data.active) && (!UI_form_pointer_1->data.set_behind) && (UI_form_pointer_1->next != NULL))
+                if ((UI_form_pointer_1->data.enabled) && (!UI_form_pointer_1->data.set_behind) && (UI_form_pointer_1->next != NULL))
                 {
                     UI_form_pointer_2 = UI_form_pointer_1->next;
                     UI_form_pointer_3->data = UI_form_pointer_1->data;
@@ -224,28 +219,6 @@ void UI_manager_class::UI_form_list_sort(void)
         }
     }
 }
-
-void UI_manager_class::UI_form_set_active(int UI_form_UID)
-{
-    for (UI_form_struct *UI_form_pointer = UI_manager_class::root; UI_form_pointer != NULL; UI_form_pointer = UI_form_pointer->next)
-    {
-        if (UI_form_pointer->data.UID == UI_form_UID) UI_form_pointer->data.active  = true;
-        else UI_form_pointer->data.active  = false;
-    }
-};
-
-bool UI_manager_class::UI_form_get_active(int UI_form_UID)
-{
-    bool return_value = false;
-    for (UI_form_struct *UI_form_pointer = UI_manager_class::root; UI_form_pointer != NULL; UI_form_pointer = UI_form_pointer->next)
-    {
-        if (UI_form_pointer->data.UID == UI_form_UID)
-        {
-            return_value = UI_form_pointer->data.active;
-        }
-    }
-    return (return_value);
-};
 
 void UI_manager_class::UI_form_set_position(int UI_form_UID_src, int UI_form_UID_dst)
 {
@@ -313,7 +286,6 @@ void UI_manager_class::UI_form_transition(int UI_form_UID_src, int UI_form_UID_d
     UI_manager_class::UI_form_set_event(UI_form_UID_dst,EVENT_NONE);
     UI_manager_class::UI_form_set_event(UI_form_UID_src,EVENT_NONE);
     UI_manager_class::UI_form_enable(UI_form_UID_dst);
-    UI_manager_class::UI_form_set_active(UI_form_UID_dst);
     UI_manager_class::event.id = EVENT_UI_LIST_SORT;
     game.core.io.mouse_button_left = false;
 };
@@ -733,7 +705,7 @@ void UI_manager_class::process(void)
                         }
                     }
                     // user clicked on window, that is not title or an element.
-                    if ((game.core.io.mouse_button_left) && (return_value.id == EVENT_NONE) && (!UI_form_pointer->data.active))
+                    if ((game.core.io.mouse_button_left) && (return_value.id == EVENT_NONE) && (!UI_form_pointer->data.enabled))
                     {
                         if (UI_manager_class::UI_form_get_list_position(UI_form_pointer->data.UID) != UI_manager_class::number_of_UI_forms) return_value.id = EVENT_UI_LIST_SORT;
                     }

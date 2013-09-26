@@ -177,7 +177,6 @@ struct UI_element_struct
 
 struct UI_form_data_struct
 {
-    bool                    active;
     choice_selection_type*  choice_selection;
     color_state_struct      color;
     bool                    drag_active;
