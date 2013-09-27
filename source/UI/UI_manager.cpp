@@ -197,6 +197,17 @@ int UI_manager_class::UI_form_get_list_position(int UI_form_UID)
     return (return_value);
 };
 
+bool UI_manager_class::UI_form_get_is_top_of_list(int UI_form_UID)
+{
+    int return_value = 0;
+    for (UI_form_struct *UI_form_pointer = UI_manager_class::root; UI_form_pointer != NULL; UI_form_pointer = UI_form_pointer->next)
+    {
+        return_value++;
+        if (UI_form_pointer->data.UID == UI_form_UID) break;
+    }
+    return (return_value);
+};
+
 void UI_manager_class::UI_form_list_sort(void)
 {
     if ((UI_manager_class::number_of_UI_forms > 1) && (!UI_manager_class::element_drag_in_progress))
