@@ -2261,7 +2261,7 @@
 	"player.hpp"
 	"spells.hpp"
 
-1375577407 /media/paul/Data_0/_git_/Frost_and_Flame/source/core/core.hpp
+1380470627 /media/paul/Data_0/_git_/Frost_and_Flame/source/core/core.hpp
 	"background.hpp"
 	"config.hpp"
 	"file.hpp"
@@ -2275,21 +2275,21 @@
 	"texture_manager.hpp"
 	<string>
 
-1375577407 /media/paul/Data_0/_git_/Frost_and_Flame/source/core/texture_manager.hpp
+1380467715 /media/paul/Data_0/_git_/Frost_and_Flame/source/core/texture_manager.hpp
 	<GL/gl.h>
-	<SDL/SDL.h>
-	<SDL/SDL_image.h>
+	<SDL2/SDL.h>
+	<SDL2/SDL_image.h>
 	<string>
 
-1375577407 /media/paul/Data_0/_git_/Frost_and_Flame/source/core/config.hpp
-	<SDL/SDL.h>
+1380467883 /media/paul/Data_0/_git_/Frost_and_Flame/source/core/config.hpp
+	<SDL2/SDL.h>
 	<string>
 
 1375577407 /media/paul/Data_0/_git_/Frost_and_Flame/source/core/file.hpp
 
 1375577407 /media/paul/Data_0/_git_/Frost_and_Flame/source/core/graphics.hpp
 
-1375577407 /media/paul/Data_0/_git_/Frost_and_Flame/source/core/io.hpp
+1380468697 /media/paul/Data_0/_git_/Frost_and_Flame/source/core/io.hpp
 	"rs232.hpp"
 
 1375577407 /media/paul/Data_0/_git_/Frost_and_Flame/source/core/rs232.hpp
@@ -2318,9 +2318,9 @@
 
 1375577407 /media/paul/Data_0/_git_/Frost_and_Flame/source/core/timer.hpp
 
-1375577407 /media/paul/Data_0/_git_/Frost_and_Flame/source/core/font_manager.hpp
-	<SDL/SDL.h>
-	<SDL/SDL_ttf.h>
+1380467715 /media/paul/Data_0/_git_/Frost_and_Flame/source/core/font_manager.hpp
+	<SDL2/SDL.h>
+	<SDL2/SDL_ttf.h>
 	<string>
 
 1375577407 /media/paul/Data_0/_git_/Frost_and_Flame/source/core/map_2D.hpp
@@ -2336,9 +2336,9 @@
 	"texture_manager.hpp"
 	"types.hpp"
 
-1375577407 /media/paul/Data_0/_git_/Frost_and_Flame/source/core/music_manager.hpp
-	<SDL/SDL.h>
-	<SDL/SDL_mixer.h>
+1380467715 /media/paul/Data_0/_git_/Frost_and_Flame/source/core/music_manager.hpp
+	<SDL2/SDL.h>
+	<SDL2/SDL_mixer.h>
 	<string>
 
 1375577407 /media/paul/Data_0/_git_/Frost_and_Flame/source/core/network.hpp
@@ -2346,15 +2346,15 @@
 
 1375577407 /media/paul/Data_0/_git_/Frost_and_Flame/source/core/savegame.hpp
 
-1375577407 /media/paul/Data_0/_git_/Frost_and_Flame/source/core/sound_manager.hpp
-	<SDL/SDL.h>
-	<SDL/SDL_mixer.h>
+1380467715 /media/paul/Data_0/_git_/Frost_and_Flame/source/core/sound_manager.hpp
+	<SDL2/SDL.h>
+	<SDL2/SDL_mixer.h>
 	<string>
 
 1375577407 /media/paul/Data_0/_git_/Frost_and_Flame/source/UI/UI_loading_screen.hpp
 	<string>
 
-1379852560 /media/paul/Data_0/_git_/Frost_and_Flame/source/UI/UI_manager.hpp
+1380290792 /media/paul/Data_0/_git_/Frost_and_Flame/source/UI/UI_manager.hpp
 	"action_bar.hpp"
 	"character_window.hpp"
 	"equipment_window.hpp"
@@ -2375,7 +2375,7 @@
 	"UI_types.hpp"
 	"UI_manager.hpp"
 
-1380183419 /media/paul/Data_0/_git_/Frost_and_Flame/source/UI/UI_types.hpp
+1380288473 /media/paul/Data_0/_git_/Frost_and_Flame/source/UI/UI_types.hpp
 	<string>
 	"../core/font_manager.hpp"
 	"../core/sound_manager.hpp"
@@ -2456,7 +2456,7 @@
 	"../game.hpp"
 	"background.hpp"
 
-1375577407 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/core/config.cpp
+1380467897 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/core/config.cpp
 	<fstream>
 	"config.hpp"
 
@@ -2473,15 +2473,15 @@
 	"font_manager.hpp"
 	"../game.hpp"
 
-1375577407 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/core/graphics.cpp
+1380470690 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/core/graphics.cpp
 	<GL/gl.h>
 	"core.hpp"
 	"graphics.hpp"
 	"../game.hpp"
 
-1375577407 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/core/io.cpp
-	<SDL/SDL.h>
-	<SDL/SDL_events.h>
+1380469364 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/core/io.cpp
+	<SDL2/SDL.h>
+	<SDL2/SDL_events.h>
 	"../game.hpp"
 	"io.hpp"
 
@@ -2503,15 +2503,15 @@
 1375577407 /media/paul/Data_0/_git_/Frost_and_Flame/source/core/misc.hpp
 	<string>
 
-1375577407 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/core/loader_obj.cpp
+1380467715 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/core/loader_obj.cpp
 	<iostream>
 	<fstream>
 	<stdio.h>
 	<stdlib.h>
 	<string>
 	<GL/gl.h>
-	<SDL/SDL.h>
-	<SDL/SDL_image.h>
+	<SDL2/SDL.h>
+	<SDL2/SDL_image.h>
 	"texture_manager.hpp"
 	"loader_obj.hpp"
 	"../game.hpp"
@@ -2548,10 +2548,10 @@
 	"texture_manager.hpp"
 	"misc.hpp"
 
-1375577407 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/core/map_3D.cpp
+1380467715 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/core/map_3D.cpp
 	<GL/gl.h>
-	<SDL/SDL.h>
-	<SDL/SDL_image.h>
+	<SDL2/SDL.h>
+	<SDL2/SDL_image.h>
 	<iostream>
 	<fstream>
 	<stdio.h>
@@ -2668,9 +2668,9 @@
 	"core/misc.hpp"
 	"language.hpp"
 
-1379786658 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/main.cpp
+1380470498 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/main.cpp
 	"game.hpp"
-	<SDL/SDL.h>
+	<SDL2/SDL.h>
 	"core/misc.hpp"
 
 1375577407 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/npc.cpp
@@ -2689,56 +2689,56 @@
 	"spells.hpp"
 	"game.hpp"
 
-1379951400 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/UI/action_bar.cpp
+1380194765 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/UI/action_bar.cpp
 	"action_bar.hpp"
 	"../game.hpp"
 	"../core/misc.hpp"
 
-1375577407 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/UI/character_window.cpp
+1380194773 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/UI/character_window.cpp
 	"menu_main.hpp"
 	"../game.hpp"
 	"../core/misc.hpp"
 
-1375577407 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/UI/equipment_window.cpp
+1380194778 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/UI/equipment_window.cpp
 	"menu_main.hpp"
 	"../game.hpp"
 
-1375577407 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/UI/inventory_window.cpp
+1380194782 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/UI/inventory_window.cpp
 	"menu_main.hpp"
 	"../game.hpp"
 
-1375577407 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/UI/menu_game_load.cpp
+1380194786 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/UI/menu_game_load.cpp
 	"menu_game_load.hpp"
 	"../game.hpp"
 
-1379947974 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/UI/menu_game_new.cpp
+1380195403 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/UI/menu_game_new.cpp
 	"menu_game_new.hpp"
 	"../game.hpp"
 
-1375577407 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/UI/menu_game_save.cpp
+1380194793 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/UI/menu_game_save.cpp
 	"menu_game_save.hpp"
 	"../game.hpp"
 
-1375577407 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/UI/menu_main.cpp
+1380194796 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/UI/menu_main.cpp
 	"menu_main.hpp"
 	"UI_manager.hpp"
 	"../game.hpp"
 
-1375577407 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/UI/menu_options.cpp
+1380194800 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/UI/menu_options.cpp
 	"menu_options.hpp"
 	<string>
 	"../game.hpp"
 
-1375577407 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/UI/player_profile.cpp
+1380194803 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/UI/player_profile.cpp
 	"player_profile.hpp"
 	"../game.hpp"
 	"../core/misc.hpp"
 
-1375577407 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/UI/quest_log_window.cpp
+1380194806 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/UI/quest_log_window.cpp
 	"menu_main.hpp"
 	"../game.hpp"
 
-1375577407 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/UI/skillbook_window.cpp
+1380194813 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/UI/skillbook_window.cpp
 	"menu_main.hpp"
 	"../game.hpp"
 
@@ -2746,14 +2746,536 @@
 	"UI_cursor.hpp"
 	"../game.hpp"
 
-1375577407 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/UI/UI_loading_screen.cpp
-	<SDL/SDL.h>
+1380470532 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/UI/UI_loading_screen.cpp
+	<SDL2/SDL.h>
 	<GL/gl.h>
 	"UI_loading_screen.hpp"
 	"../core/texture_manager.hpp"
 	"../game.hpp"
 
-1380183334 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/UI/UI_manager.cpp
+1380290917 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/UI/UI_manager.cpp
+	"UI_manager.hpp"
+	"../game.hpp"
+
+1375577407 source:/media/paul/Data_0/_git_/Frost_and_Flame - SDL2/source/command_line_parser.cpp
+	<string>
+	"command_line_parser.hpp"
+	"game.hpp"
+
+1375577407 /media/paul/Data_0/_git_/Frost_and_Flame - SDL2/source/command_line_parser.hpp
+
+1375577407 /media/paul/Data_0/_git_/Frost_and_Flame - SDL2/source/game.hpp
+	"core/core.hpp"
+	"core/font_manager.hpp"
+	"core/map_2D.hpp"
+	"core/music_manager.hpp"
+	"core/network.hpp"
+	"core/savegame.hpp"
+	"core/sound_manager.hpp"
+	"core/texture_manager.hpp"
+	"core/types.hpp"
+	"UI/UI_loading_screen.hpp"
+	"UI/UI_manager.hpp"
+	"command_line_parser.hpp"
+	"item_manager.hpp"
+	"language.hpp"
+	"npc.hpp"
+	"player.hpp"
+	"spells.hpp"
+
+1380470627 /media/paul/Data_0/_git_/Frost_and_Flame - SDL2/source/core/core.hpp
+	"background.hpp"
+	"config.hpp"
+	"file.hpp"
+	"graphics.hpp"
+	"io.hpp"
+	"log.hpp"
+	"physics.hpp"
+	"timer.hpp"
+
+1375577407 /media/paul/Data_0/_git_/Frost_and_Flame - SDL2/source/core/background.hpp
+	"texture_manager.hpp"
+	<string>
+
+1380467715 /media/paul/Data_0/_git_/Frost_and_Flame - SDL2/source/core/texture_manager.hpp
+	<GL/gl.h>
+	<SDL2/SDL.h>
+	<SDL2/SDL_image.h>
+	<string>
+
+1380467883 /media/paul/Data_0/_git_/Frost_and_Flame - SDL2/source/core/config.hpp
+	<SDL2/SDL.h>
+	<string>
+
+1375577407 /media/paul/Data_0/_git_/Frost_and_Flame - SDL2/source/core/file.hpp
+
+1375577407 /media/paul/Data_0/_git_/Frost_and_Flame - SDL2/source/core/graphics.hpp
+
+1380468697 /media/paul/Data_0/_git_/Frost_and_Flame - SDL2/source/core/io.hpp
+	"rs232.hpp"
+
+1375577407 /media/paul/Data_0/_git_/Frost_and_Flame - SDL2/source/core/rs232.hpp
+	<stdio.h>
+	<string.h>
+	<termios.h>
+	<sys/ioctl.h>
+	<unistd.h>
+	<fcntl.h>
+	<sys/types.h>
+	<sys/stat.h>
+	<limits.h>
+	<windows.h>
+
+1375577407 /media/paul/Data_0/_git_/Frost_and_Flame - SDL2/source/core/log.hpp
+	<string>
+
+1375577407 /media/paul/Data_0/_git_/Frost_and_Flame - SDL2/source/core/physics.hpp
+	"vector.hpp"
+
+1375577407 /media/paul/Data_0/_git_/Frost_and_Flame - SDL2/source/core/vector.hpp
+	<math.h>
+	"types.hpp"
+
+1375577407 /media/paul/Data_0/_git_/Frost_and_Flame - SDL2/source/core/types.hpp
+
+1375577407 /media/paul/Data_0/_git_/Frost_and_Flame - SDL2/source/core/timer.hpp
+
+1380467715 /media/paul/Data_0/_git_/Frost_and_Flame - SDL2/source/core/font_manager.hpp
+	<SDL2/SDL.h>
+	<SDL2/SDL_ttf.h>
+	<string>
+
+1375577407 /media/paul/Data_0/_git_/Frost_and_Flame - SDL2/source/core/map_2D.hpp
+	"texture_manager.hpp"
+	"map_gen.hpp"
+
+1379748413 /media/paul/Data_0/_git_/Frost_and_Flame - SDL2/source/core/map_gen.hpp
+	<string>
+	"loader_tmx.hpp"
+	"types.hpp"
+
+1379748314 /media/paul/Data_0/_git_/Frost_and_Flame - SDL2/source/core/loader_tmx.hpp
+	"texture_manager.hpp"
+	"types.hpp"
+
+1380467715 /media/paul/Data_0/_git_/Frost_and_Flame - SDL2/source/core/music_manager.hpp
+	<SDL2/SDL.h>
+	<SDL2/SDL_mixer.h>
+	<string>
+
+1375577407 /media/paul/Data_0/_git_/Frost_and_Flame - SDL2/source/core/network.hpp
+	"SDL/SDL_net.h"
+
+1375577407 /media/paul/Data_0/_git_/Frost_and_Flame - SDL2/source/core/savegame.hpp
+
+1380467715 /media/paul/Data_0/_git_/Frost_and_Flame - SDL2/source/core/sound_manager.hpp
+	<SDL2/SDL.h>
+	<SDL2/SDL_mixer.h>
+	<string>
+
+1375577407 /media/paul/Data_0/_git_/Frost_and_Flame - SDL2/source/UI/UI_loading_screen.hpp
+	<string>
+
+1380290792 /media/paul/Data_0/_git_/Frost_and_Flame - SDL2/source/UI/UI_manager.hpp
+	"action_bar.hpp"
+	"character_window.hpp"
+	"equipment_window.hpp"
+	"inventory_window.hpp"
+	"menu_game_load.hpp"
+	"menu_game_new.hpp"
+	"menu_game_save.hpp"
+	"menu_main.hpp"
+	"menu_options.hpp"
+	"player_profile.hpp"
+	"quest_log_window.hpp"
+	"skillbook_window.hpp"
+	"UI_cursor.hpp"
+	"UI_types.hpp"
+	"../player.hpp"
+
+1375577407 /media/paul/Data_0/_git_/Frost_and_Flame - SDL2/source/UI/action_bar.hpp
+	"UI_types.hpp"
+	"UI_manager.hpp"
+
+1380288473 /media/paul/Data_0/_git_/Frost_and_Flame - SDL2/source/UI/UI_types.hpp
+	<string>
+	"../core/font_manager.hpp"
+	"../core/sound_manager.hpp"
+	"../core/texture_manager.hpp"
+	"../core/types.hpp"
+
+1375577407 /media/paul/Data_0/_git_/Frost_and_Flame - SDL2/source/UI/character_window.hpp
+	"UI_types.hpp"
+	"UI_manager.hpp"
+
+1375577407 /media/paul/Data_0/_git_/Frost_and_Flame - SDL2/source/UI/equipment_window.hpp
+	"UI_types.hpp"
+	"UI_manager.hpp"
+
+1375577407 /media/paul/Data_0/_git_/Frost_and_Flame - SDL2/source/UI/inventory_window.hpp
+	"UI_types.hpp"
+	"UI_manager.hpp"
+
+1375577407 /media/paul/Data_0/_git_/Frost_and_Flame - SDL2/source/UI/menu_game_load.hpp
+	"UI_types.hpp"
+	"UI_manager.hpp"
+
+1375577407 /media/paul/Data_0/_git_/Frost_and_Flame - SDL2/source/UI/menu_game_new.hpp
+	"UI_types.hpp"
+	"UI_manager.hpp"
+
+1375577407 /media/paul/Data_0/_git_/Frost_and_Flame - SDL2/source/UI/menu_game_save.hpp
+	"UI_types.hpp"
+	"UI_manager.hpp"
+
+1375577407 /media/paul/Data_0/_git_/Frost_and_Flame - SDL2/source/UI/menu_main.hpp
+	"UI_types.hpp"
+	"UI_types.hpp"
+
+1375577407 /media/paul/Data_0/_git_/Frost_and_Flame - SDL2/source/UI/menu_options.hpp
+	"UI_types.hpp"
+	"UI_manager.hpp"
+
+1375577407 /media/paul/Data_0/_git_/Frost_and_Flame - SDL2/source/UI/player_profile.hpp
+	"UI_types.hpp"
+	"UI_manager.hpp"
+
+1375577407 /media/paul/Data_0/_git_/Frost_and_Flame - SDL2/source/UI/quest_log_window.hpp
+	"UI_types.hpp"
+	"UI_manager.hpp"
+
+1375577407 /media/paul/Data_0/_git_/Frost_and_Flame - SDL2/source/UI/skillbook_window.hpp
+	"UI_types.hpp"
+	"UI_manager.hpp"
+
+1375577407 /media/paul/Data_0/_git_/Frost_and_Flame - SDL2/source/UI/UI_cursor.hpp
+	"UI_types.hpp"
+
+1379608348 /media/paul/Data_0/_git_/Frost_and_Flame - SDL2/source/player.hpp
+	<string>
+	"core/pathfinding.hpp"
+	"core/texture_manager.hpp"
+
+1379609675 /media/paul/Data_0/_git_/Frost_and_Flame - SDL2/source/core/pathfinding.hpp
+	"loader_tmx.hpp"
+
+1375577407 /media/paul/Data_0/_git_/Frost_and_Flame - SDL2/source/item_manager.hpp
+	<string>
+	"core/texture_manager.hpp"
+	"core/sound_manager.hpp"
+
+1375577407 /media/paul/Data_0/_git_/Frost_and_Flame - SDL2/source/language.hpp
+	<string>
+
+1375577407 /media/paul/Data_0/_git_/Frost_and_Flame - SDL2/source/npc.hpp
+	<string>
+
+1375577407 /media/paul/Data_0/_git_/Frost_and_Flame - SDL2/source/spells.hpp
+	<string>
+
+1375577407 source:/media/paul/Data_0/_git_/Frost_and_Flame - SDL2/source/core/background.cpp
+	"core.hpp"
+	"../game.hpp"
+	"background.hpp"
+
+1380467897 source:/media/paul/Data_0/_git_/Frost_and_Flame - SDL2/source/core/config.cpp
+	<fstream>
+	"config.hpp"
+
+1375577407 source:/media/paul/Data_0/_git_/Frost_and_Flame - SDL2/source/core/core.cpp
+	"core.hpp"
+
+1375577407 source:/media/paul/Data_0/_git_/Frost_and_Flame - SDL2/source/core/file.cpp
+	<string>
+	"core.hpp"
+	"file.hpp"
+
+1375577407 source:/media/paul/Data_0/_git_/Frost_and_Flame - SDL2/source/core/font_manager.cpp
+	<sstream>
+	"font_manager.hpp"
+	"../game.hpp"
+
+1380470690 source:/media/paul/Data_0/_git_/Frost_and_Flame - SDL2/source/core/graphics.cpp
+	<GL/gl.h>
+	"core.hpp"
+	"graphics.hpp"
+	"../game.hpp"
+
+1380469364 source:/media/paul/Data_0/_git_/Frost_and_Flame - SDL2/source/core/io.cpp
+	<SDL2/SDL.h>
+	<SDL2/SDL_events.h>
+	"../game.hpp"
+	"io.hpp"
+
+1375577407 source:/media/paul/Data_0/_git_/Frost_and_Flame - SDL2/source/core/loader_md2.cpp
+	<iostream>
+	<fstream>
+	<stdio.h>
+	<stdlib.h>
+	<string>
+	"loader_md2.hpp"
+	"../game.hpp"
+	"misc.hpp"
+
+1375577407 /media/paul/Data_0/_git_/Frost_and_Flame - SDL2/source/core/loader_md2.hpp
+	<string>
+	"graphics.hpp"
+	"texture_manager.hpp"
+
+1375577407 /media/paul/Data_0/_git_/Frost_and_Flame - SDL2/source/core/misc.hpp
+	<string>
+
+1380467715 source:/media/paul/Data_0/_git_/Frost_and_Flame - SDL2/source/core/loader_obj.cpp
+	<iostream>
+	<fstream>
+	<stdio.h>
+	<stdlib.h>
+	<string>
+	<GL/gl.h>
+	<SDL2/SDL.h>
+	<SDL2/SDL_image.h>
+	"texture_manager.hpp"
+	"loader_obj.hpp"
+	"../game.hpp"
+	"misc.hpp"
+
+1375577407 /media/paul/Data_0/_git_/Frost_and_Flame - SDL2/source/core/loader_obj.hpp
+	<GL/gl.h>
+	<string>
+	"graphics.hpp"
+	"texture_manager.hpp"
+
+1379747674 source:/media/paul/Data_0/_git_/Frost_and_Flame - SDL2/source/core/loader_tmx.cpp
+	<iostream>
+	<fstream>
+	<stdio.h>
+	<stdlib.h>
+	<string>
+	"loader_tmx.hpp"
+	"../game.hpp"
+
+1375577407 source:/media/paul/Data_0/_git_/Frost_and_Flame - SDL2/source/core/log.cpp
+	<fstream>
+	"log.hpp"
+
+1379748449 source:/media/paul/Data_0/_git_/Frost_and_Flame - SDL2/source/core/map_2D.cpp
+	<iostream>
+	<fstream>
+	<stdio.h>
+	<stdlib.h>
+	<string>
+	"map_2D.hpp"
+	"loader_tmx.hpp"
+	"../game.hpp"
+	"texture_manager.hpp"
+	"misc.hpp"
+
+1380467715 source:/media/paul/Data_0/_git_/Frost_and_Flame - SDL2/source/core/map_3D.cpp
+	<GL/gl.h>
+	<SDL2/SDL.h>
+	<SDL2/SDL_image.h>
+	<iostream>
+	<fstream>
+	<stdio.h>
+	<stdlib.h>
+	<string>
+	"map_2D.hpp"
+	"map_3D.hpp"
+	"../game.hpp"
+	"texture_manager.hpp"
+	"loader_obj.hpp"
+	"misc.hpp"
+	"../game.hpp"
+
+1375577407 /media/paul/Data_0/_git_/Frost_and_Flame - SDL2/source/core/map_3D.hpp
+	"GL/gl.h"
+	"texture_manager.hpp"
+	"graphics.hpp"
+	"map_2D.hpp"
+	"map_3D.hpp"
+	"physics.hpp"
+
+1379784397 source:/media/paul/Data_0/_git_/Frost_and_Flame - SDL2/source/core/map_gen.cpp
+	"map_gen.hpp"
+	<stdio.h>
+	<stdlib.h>
+	<iostream>
+	<fstream>
+	<string>
+
+1375577407 source:/media/paul/Data_0/_git_/Frost_and_Flame - SDL2/source/core/misc.cpp
+	<time.h>
+	<stdlib.h>
+	<math.h>
+	<string>
+	<algorithm>
+	<sstream>
+	<fstream>
+	"misc.hpp"
+
+1375577407 source:/media/paul/Data_0/_git_/Frost_and_Flame - SDL2/source/core/music_manager.cpp
+	"music_manager.hpp"
+	"../game.hpp"
+
+1375577407 source:/media/paul/Data_0/_git_/Frost_and_Flame - SDL2/source/core/network.cpp
+	"network.hpp"
+
+1375577407 source:/media/paul/Data_0/_git_/Frost_and_Flame - SDL2/source/core/particles.cpp
+	<fstream>
+	<stdio.h>
+	<stdlib.h>
+	<string>
+	"particles.hpp"
+	"../game.hpp"
+
+1375577407 /media/paul/Data_0/_git_/Frost_and_Flame - SDL2/source/core/particles.hpp
+	<string>
+
+1379785562 source:/media/paul/Data_0/_git_/Frost_and_Flame - SDL2/source/core/pathfinding.cpp
+	"pathfinding.hpp"
+	"loader_tmx.hpp"
+	"map_gen.hpp"
+	<stdio.h>
+	<stdlib.h>
+	"../game.hpp"
+
+1375577407 source:/media/paul/Data_0/_git_/Frost_and_Flame - SDL2/source/core/physics.cpp
+	"physics.hpp"
+	<math.h>
+
+1375577407 source:/media/paul/Data_0/_git_/Frost_and_Flame - SDL2/source/core/rs232.cpp
+	"rs232.hpp"
+
+1375577407 source:/media/paul/Data_0/_git_/Frost_and_Flame - SDL2/source/core/savegame.cpp
+	<fstream>
+	"savegame.hpp"
+	"../game.hpp"
+	"../save_data.hpp"
+
+1375577407 /media/paul/Data_0/_git_/Frost_and_Flame - SDL2/source/save_data.hpp
+	"core/core.hpp"
+	"core/savegame.hpp"
+	"game.hpp"
+
+1375577407 source:/media/paul/Data_0/_git_/Frost_and_Flame - SDL2/source/core/sound_manager.cpp
+	"sound_manager.hpp"
+	"../game.hpp"
+
+1375577407 source:/media/paul/Data_0/_git_/Frost_and_Flame - SDL2/source/core/texture_manager.cpp
+	"texture_manager.hpp"
+	"../game.hpp"
+
+1375577407 source:/media/paul/Data_0/_git_/Frost_and_Flame - SDL2/source/core/timer.cpp
+	"SDL/SDL.h"
+	"timer.hpp"
+
+1375577407 source:/media/paul/Data_0/_git_/Frost_and_Flame - SDL2/source/core/vector.cpp
+	"vector.hpp"
+
+1379786276 source:/media/paul/Data_0/_git_/Frost_and_Flame - SDL2/source/game.cpp
+	"core/map_2D.hpp"
+	"game.hpp"
+
+1375577407 source:/media/paul/Data_0/_git_/Frost_and_Flame - SDL2/source/item_manager.cpp
+	"item_manager.hpp"
+	"game.hpp"
+
+1375577407 source:/media/paul/Data_0/_git_/Frost_and_Flame - SDL2/source/language.cpp
+	<iostream>
+	<fstream>
+	<stdio.h>
+	<stdlib.h>
+	<string>
+	"game.hpp"
+	"core/misc.hpp"
+	"language.hpp"
+
+1380470498 source:/media/paul/Data_0/_git_/Frost_and_Flame - SDL2/source/main.cpp
+	"game.hpp"
+	<SDL2/SDL.h>
+	"core/misc.hpp"
+
+1375577407 source:/media/paul/Data_0/_git_/Frost_and_Flame - SDL2/source/npc.cpp
+	"npc.hpp"
+	"game.hpp"
+
+1375577407 source:/media/paul/Data_0/_git_/Frost_and_Flame - SDL2/source/player.cpp
+	"player.hpp"
+	"game.hpp"
+
+1375577407 source:/media/paul/Data_0/_git_/Frost_and_Flame - SDL2/source/save_data.cpp
+	"save_data.hpp"
+	"game.hpp"
+
+1375577407 source:/media/paul/Data_0/_git_/Frost_and_Flame - SDL2/source/spells.cpp
+	"spells.hpp"
+	"game.hpp"
+
+1380194765 source:/media/paul/Data_0/_git_/Frost_and_Flame - SDL2/source/UI/action_bar.cpp
+	"action_bar.hpp"
+	"../game.hpp"
+	"../core/misc.hpp"
+
+1380194773 source:/media/paul/Data_0/_git_/Frost_and_Flame - SDL2/source/UI/character_window.cpp
+	"menu_main.hpp"
+	"../game.hpp"
+	"../core/misc.hpp"
+
+1380194778 source:/media/paul/Data_0/_git_/Frost_and_Flame - SDL2/source/UI/equipment_window.cpp
+	"menu_main.hpp"
+	"../game.hpp"
+
+1380194782 source:/media/paul/Data_0/_git_/Frost_and_Flame - SDL2/source/UI/inventory_window.cpp
+	"menu_main.hpp"
+	"../game.hpp"
+
+1380194786 source:/media/paul/Data_0/_git_/Frost_and_Flame - SDL2/source/UI/menu_game_load.cpp
+	"menu_game_load.hpp"
+	"../game.hpp"
+
+1380195403 source:/media/paul/Data_0/_git_/Frost_and_Flame - SDL2/source/UI/menu_game_new.cpp
+	"menu_game_new.hpp"
+	"../game.hpp"
+
+1380194793 source:/media/paul/Data_0/_git_/Frost_and_Flame - SDL2/source/UI/menu_game_save.cpp
+	"menu_game_save.hpp"
+	"../game.hpp"
+
+1380194796 source:/media/paul/Data_0/_git_/Frost_and_Flame - SDL2/source/UI/menu_main.cpp
+	"menu_main.hpp"
+	"UI_manager.hpp"
+	"../game.hpp"
+
+1380194800 source:/media/paul/Data_0/_git_/Frost_and_Flame - SDL2/source/UI/menu_options.cpp
+	"menu_options.hpp"
+	<string>
+	"../game.hpp"
+
+1380194803 source:/media/paul/Data_0/_git_/Frost_and_Flame - SDL2/source/UI/player_profile.cpp
+	"player_profile.hpp"
+	"../game.hpp"
+	"../core/misc.hpp"
+
+1380194806 source:/media/paul/Data_0/_git_/Frost_and_Flame - SDL2/source/UI/quest_log_window.cpp
+	"menu_main.hpp"
+	"../game.hpp"
+
+1380194813 source:/media/paul/Data_0/_git_/Frost_and_Flame - SDL2/source/UI/skillbook_window.cpp
+	"menu_main.hpp"
+	"../game.hpp"
+
+1375577407 source:/media/paul/Data_0/_git_/Frost_and_Flame - SDL2/source/UI/UI_cursor.cpp
+	"UI_cursor.hpp"
+	"../game.hpp"
+
+1380470532 source:/media/paul/Data_0/_git_/Frost_and_Flame - SDL2/source/UI/UI_loading_screen.cpp
+	<SDL2/SDL.h>
+	<GL/gl.h>
+	"UI_loading_screen.hpp"
+	"../core/texture_manager.hpp"
+	"../game.hpp"
+
+1380290917 source:/media/paul/Data_0/_git_/Frost_and_Flame - SDL2/source/UI/UI_manager.cpp
 	"UI_manager.hpp"
 	"../game.hpp"
 

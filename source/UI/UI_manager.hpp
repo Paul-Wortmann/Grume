@@ -83,7 +83,7 @@ class UI_manager_class
         void                  render(void);
         void                  process(void);
         event_struct          process_form_elements(UI_form_struct *UI_form_pointer,bool window_in_focus);
-        event_struct          process_form(UI_form_struct *UI_form_pointer);
+        void                  process_forms(void);
 };
 
 

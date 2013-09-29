@@ -22,7 +22,7 @@
  * @date 2011-11-11
  */
 
-#include <SDL/SDL.h>
+#include <SDL2/SDL.h>
 #include <GL/gl.h>
 #include "UI_loading_screen.hpp"
 #include "../core/texture_manager.hpp"
@@ -35,7 +35,7 @@ void UI_loading_screen_class::display(std::string file_name)
     texture_type* loading_screen_texture;
     loading_screen_texture = game.texture_manager.add_texture(file_name.c_str(),false);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-    SDL_GL_SwapBuffers();
+    SDL_GL_SwapWindow(game.core.window_pointer);
     game.texture_manager.draw(loading_screen_texture,false,0.0f,0.0f,0.9f,2.0f,2.0f);
-    SDL_GL_SwapBuffers();
+    SDL_GL_SwapWindow(game.core.window_pointer);
 };

@@ -25,7 +25,7 @@
 #ifndef CONFIG_H
 #define CONFIG_H
 
-#include <SDL/SDL.h>
+#include <SDL2/SDL.h>
 #include <string>
 
 class config_class
@@ -34,7 +34,7 @@ class config_class
     public:
         std::string  file_name;
         std::string  file_header;
-        const        SDL_VideoInfo* display_info;
+        //const        SDL_VideoInfo* display_info;
         int          display_resolution;
         int          display_resolution_x;
         int          display_resolution_y;

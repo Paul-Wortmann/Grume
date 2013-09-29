@@ -22,8 +22,8 @@
  * @date 2011-11-11
  */
 
-#include <SDL/SDL.h>
-#include <SDL/SDL_events.h>
+#include <SDL2/SDL.h>
+#include <SDL2/SDL_events.h>
 #include "../game.hpp"
 #include "io.hpp"
 
@@ -36,7 +36,7 @@ bool events_init(void)
    SDL_Joystick *joystick;
    SDL_JoystickEventState(SDL_ENABLE);
    joystick = SDL_JoystickOpen(0);
-   if (SDL_JoystickOpened(0) == 1)
+   if ((SDL_NumJoysticks() > 0) && (joystick))
    {
       game.core.config.joystick_enabled        = true;
       game.core.io.joystick_sensitivity        = 6400;
@@ -73,6 +73,8 @@ bool events_init(void)
    game.core.io.joystick_button_9          = false;
    game.core.io.joystick_button_10         = false;
    game.core.io.joystick_button_11         = false;
+   game.core.io.mouse_wheel_x              = 0;
+   game.core.io.mouse_wheel_y              = 0;
    game.core.io.mouse_wheel_up             = false;
    game.core.io.mouse_wheel_down           = false;
    game.core.io.mouse_button_left          = false;
@@ -178,16 +180,28 @@ bool events_process(void)
             game.core.io.mouse_yrel   = game.core.graphics.res_to_gl(game.core.event.motion.yrel,game.core.config.mouse_resolution_y);
             game.core.io.mouse_y *= -1;
         }
+        if (game.core.event.type == SDL_MOUSEWHEEL)
+        {
+            game.core.io.mouse_wheel_x = game.core.event.wheel.x;
+            game.core.io.mouse_wheel_y = game.core.event.wheel.y;
+            game.core.io.mouse_wheel += game.core.io.mouse_wheel_y;
+            if (game.core.io.mouse_wheel_y > 0)
+            {
+                if (game.core.io.mouse_wheel > 65535) game.core.io.mouse_wheel = 65535;
+                game.core.io.mouse_wheel_up = true;
+            }
+            else game.core.io.mouse_wheel_up = false;
+            if (game.core.io.mouse_wheel_y < 0)
+            {
+                if (game.core.io.mouse_wheel < -65535) game.core.io.mouse_wheel = -65535;
+                game.core.io.mouse_wheel_down = true;
+            }
+            else game.core.io.mouse_wheel_down = false;
+        }
         if (game.core.event.type == SDL_MOUSEBUTTONUP)
         {
             switch(game.core.event.button.button)
             {
-                case SDL_BUTTON_WHEELUP:
-                    game.core.io.mouse_wheel_up = false;
-                break;
-                case SDL_BUTTON_WHEELDOWN:
-                    game.core.io.mouse_wheel_down = false;
-                break;
                 case SDL_BUTTON_LEFT:
                     game.core.io.mouse_button_left = false;
                 break;
@@ -205,16 +219,6 @@ bool events_process(void)
         {
             switch(game.core.event.button.button)
             {
-                case SDL_BUTTON_WHEELUP:
-                    game.core.io.mouse_wheel++;
-                    if (game.core.io.mouse_wheel > 65535) game.core.io.mouse_wheel = 65535;
-                    game.core.io.mouse_wheel_up = true;
-                break;
-                case SDL_BUTTON_WHEELDOWN:
-                    game.core.io.mouse_wheel--;
-                    if (game.core.io.mouse_wheel < -65535) game.core.io.mouse_wheel = -65535;
-                    game.core.io.mouse_wheel_down = true;
-                break;
                 case SDL_BUTTON_LEFT:
                     if (game.core.io.mouse_button_delay_count >= game.core.io.mouse_button_delay)
                     {

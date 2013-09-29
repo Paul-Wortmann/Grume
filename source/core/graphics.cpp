@@ -144,6 +144,7 @@ bool   graphics_class::init_sdl(void)
         game.core.log.file_write("Video initialization failed.");
         return_value = false;
     }
+    /*
     game.core.config.display_info = SDL_GetVideoInfo( );
     if(!game.core.config.display_info)
     {
@@ -151,14 +152,17 @@ bool   graphics_class::init_sdl(void)
         return_value = false;
     }
     game.core.config.display_bpp    = game.core.config.display_info->vfmt->BitsPerPixel;
+    */
     SDL_GL_SetAttribute( SDL_GL_RED_SIZE, 8 );
     SDL_GL_SetAttribute( SDL_GL_GREEN_SIZE, 8 );
     SDL_GL_SetAttribute( SDL_GL_BLUE_SIZE, 8 );
     SDL_GL_SetAttribute( SDL_GL_DEPTH_SIZE, 16 );
     SDL_GL_SetAttribute( SDL_GL_DOUBLEBUFFER, 1 );
-    if (game.core.config.display_fullscreen) game.core.config.display_flags = SDL_OPENGL | SDL_FULLSCREEN;
-    else game.core.config.display_flags = SDL_OPENGL;
-    if(SDL_SetVideoMode( game.core.config.display_resolution_x, game.core.config.display_resolution_y, game.core.config.display_bpp, game.core.config.display_flags ) == 0 )
+    if (game.core.config.display_fullscreen) game.core.config.display_flags = SDL_WINDOW_OPENGL | SDL_WINDOW_FULLSCREEN;
+    else game.core.config.display_flags = SDL_WINDOW_OPENGL;
+    game.core.window_pointer = SDL_CreateWindow(game.core.application_name,SDL_WINDOWPOS_CENTERED,SDL_WINDOWPOS_CENTERED,game.core.config.display_resolution_x, game.core.config.display_resolution_y, game.core.config.display_flags );
+    game.core.glcontext = SDL_GL_CreateContext(game.core.window_pointer);
+    if (!game.core.window_pointer)
     {
         game.core.log.file_write("Video mode set failed.");
         return_value = false;

@@ -28,19 +28,19 @@
 
 config_class::config_class(void)
 {
-    config_class::display_info                 = NULL;
+    //config_class::display_info                 = NULL;
 };
 
 config_class::~config_class(void)
 {
-    config_class::display_info                 = NULL;
+    //config_class::display_info                 = NULL;
 };
 
 void       config_class::set_defaults(void)
 {
     config_class::file_name                  = "default.cfg";
     config_class::file_header                = "www.PhysHexGames.co.nr game config file";
-    config_class::display_info               = NULL;
+    //config_class::display_info               = NULL;
     config_class::display_resolution         = 0;
     config_class::display_resolution_x       = 800;
     config_class::display_resolution_y       = 600;

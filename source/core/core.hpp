@@ -37,6 +37,10 @@
 class core_class
 {
     public:
+        const char*       application_name;
+        const char*       application_icon;
+        SDL_Window*       window_pointer;
+        SDL_GLContext     glcontext;
         int               FPS;
         int               last_ticks;
         bool              process_ready;

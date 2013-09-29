@@ -23,14 +23,11 @@
  */
 
 #include "game.hpp"
-#include <SDL/SDL.h>
+#include <SDL2/SDL.h>
 //#include <physfs.h>
 #include "core/misc.hpp"
 
 extern game_class    game;
-
-const char application_name[] = ("Frost and Flame V0.23 - www.physhexgames.co.nr");
-const char application_icon[] = ("data/icon.bmp");
 
 Uint32                   colorkey;
 SDL_Surface             *application_icon_surface;
@@ -40,9 +37,11 @@ SDL_Surface             *application_icon_surface;
 // --------------------------------------------------------------------------------------------------------------------------
 extern "C" int main(int argc, char** argv)
 {
+    game.core.application_name = "Frost and Flame V0.23 - www.physhexgames.co.nr";
+    game.core.application_icon = "data/icon.bmp";
     game.core.log.file_set("frost_and_flame.log");
     game.core.log.file_clear();
-    game.core.log.file_write("# ",application_name," #");
+    game.core.log.file_write("# ",game.core.application_name," #");
     game.core.log.file_write("# ---------------------------------------------- #");
     game.core.log.file_write(" ");
     game.core.log.file_write("Initializing PhysicsFS file system....");
@@ -51,7 +50,7 @@ extern "C" int main(int argc, char** argv)
     game.core.log.file_write("Loading configuration...");
     game.core.config.set_defaults();
     game.core.config.file_set("frost_and_flame.cfg");
-    game.core.config.file_header = application_name;
+    game.core.config.file_header = game.core.application_name;
     game.core.config.file_load();
     game.core.log.file_write("Processing command line switches...");
     game.command_line.process(argc,argv);
@@ -75,13 +74,11 @@ extern "C" int main(int argc, char** argv)
     }
     game.core.log.file_write("Starting OpenGL...");
     game.core.graphics.init_gl(game.core.config.display_resolution_x,game.core.config.display_resolution_y);
-    application_icon_surface = SDL_LoadBMP(application_icon);
-    colorkey = SDL_MapRGB(application_icon_surface->format, 255, 0, 255);
-    SDL_SetColorKey(application_icon_surface, SDL_SRCCOLORKEY, colorkey);
-    SDL_WM_SetIcon(application_icon_surface,NULL);
-    SDL_WM_SetCaption(application_name, 0);
+    application_icon_surface = SDL_LoadBMP(game.core.application_icon);
+    SDL_SetWindowIcon(game.core.window_pointer, application_icon_surface);
+    SDL_FreeSurface(application_icon_surface);
     SDL_ShowCursor(SDL_DISABLE);
-    SDL_Init(SDL_INIT_EVENTTHREAD);
+    SDL_Init(SDL_INIT_EVENTS);
 //  --- audio ---
     game.core.log.file_write("Starting sound system...");
     SDL_Init(SDL_INIT_AUDIO);
@@ -90,8 +87,10 @@ extern "C" int main(int argc, char** argv)
     Mix_Volume(-1,game.core.config.audio_volume_sound);
     Mix_VolumeMusic(game.core.config.audio_volume_music);
 //  --- joysticks ---
-    //game.core.log.file_write("Initializing joystick system...");
-    //SDL_Init(SDL_INIT_JOYSTICK);
+    game.core.log.file_write("Initializing joystick system...");
+    SDL_Init(SDL_INIT_JOYSTICK);
+    SDL_Init(SDL_INIT_HAPTIC);
+    SDL_Init(SDL_INIT_GAMECONTROLLER);
     //SDL_Joystick *joystick;
     //SDL_JoystickEventState(SDL_ENABLE);
     //joystick = SDL_JoystickOpen(0);
@@ -116,7 +115,7 @@ extern "C" int main(int argc, char** argv)
     game.core.log.file_write(" ");
     game.core.log.file_write("# ---------------------------------------------- #");
     game.core.log.file_write(" ");
-
+    SDL_Init(SDL_INIT_TIMER);
     game.core.timer.start();
     game.core.last_ticks = game.core.timer.getticks();
 // --------------------------------------------------------------------------------------------------------------------------
@@ -163,7 +162,7 @@ extern "C" int main(int argc, char** argv)
         }
         else game.core.process_ready = false;
         game.texture_manager.draw(game.UI_manager.cursor.normal_arrow,false,game.core.io.mouse_x+0.012f,game.core.io.mouse_y-0.018f,0.001f,0.04f,0.04f,345.0f);
-        SDL_GL_SwapBuffers();
+        SDL_GL_SwapWindow(game.core.window_pointer);
     }
 // --------------------------------------------------------------------------------------------------------------------------
 // | Application terminated, cleanup and free resources etc...

@@ -43,13 +43,12 @@
 				<Linker>
 					<Add option="-static-libstdc++" />
 					<Add option="-static-libgcc" />
-					<Add library="SDLmain" />
-					<Add library="SDL" />
-					<Add library="SDL_mixer" />
-					<Add library="SDL_image" />
+					<Add library="SDL2" />
+					<Add library="SDL2_mixer" />
+					<Add library="SDL2_image" />
 					<Add library="freetype" />
-					<Add library="SDL_net" />
-					<Add library="SDL_ttf" />
+					<Add library="SDL2_net" />
+					<Add library="SDL2_ttf" />
 					<Add library="GL" />
 					<Add library="libGL" />
 					<Add directory="/host/Program Files (x86)/CodeBlocks/MinGW/lib" />
@@ -96,13 +95,12 @@
 					<Add option="-pg" />
 					<Add option="-static-libstdc++" />
 					<Add option="-static-libgcc" />
-					<Add library="SDLmain" />
-					<Add library="SDL" />
-					<Add library="SDL_mixer" />
-					<Add library="SDL_image" />
+					<Add library="SDL2" />
+					<Add library="SDL2_mixer" />
+					<Add library="SDL2_image" />
 					<Add library="freetype" />
-					<Add library="SDL_net" />
-					<Add library="SDL_ttf" />
+					<Add library="SDL2_net" />
+					<Add library="SDL2_ttf" />
 					<Add library="GL" />
 					<Add library="libGL" />
 					<Add directory="/host/Program Files (x86)/CodeBlocks/MinGW/lib" />

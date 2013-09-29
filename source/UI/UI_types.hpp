@@ -31,13 +31,14 @@
 #include "../core/texture_manager.hpp"
 #include "../core/types.hpp"
 
-#define EVENT_NONE                0
-#define EVENT_ELEMENT_MOUSE_LEFT  1
-#define EVENT_ELEMENT_MOUSE_RIGHT 2
-#define EVENT_BUTTON_MULTIPLIER   100
-#define EVENT_UI_LIST_SORT        10000
-#define EVENT_UI_FORM_DRAG        10001
-#define EVENT_UI_ELEMENT_DRAG     10002
+#define EVENT_VALUE_NONE          -1
+#define EVENT_NONE                 0
+#define EVENT_ELEMENT_MOUSE_LEFT   1
+#define EVENT_ELEMENT_MOUSE_RIGHT  2
+#define EVENT_BUTTON_MULTIPLIER    100
+#define EVENT_UI_LIST_SORT         10000
+#define EVENT_UI_FORM_DRAG         10001
+#define EVENT_UI_ELEMENT_DRAG      10002
 
 #define DISABLED            0
 #define NORMAL              1
@@ -56,6 +57,7 @@
 
 struct event_struct
 {
+    int                     value;
     int                     id;
 };
 
