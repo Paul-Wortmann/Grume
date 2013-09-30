@@ -9,10 +9,13 @@ v0.24 - (2013-10-xx)
 LOC   -> xxxxx
 
 v0.23 - (2013-09-30)
+Core  -> Ported FnF to SDL2.
+UI    -> Removed active variable from UI forms due to ambiguity.
+UI    -> Seperated code for form and element processing into seperate functions.
 MAP   -> Fixed pointer error in BSP generator.
 PATH  -> Added a custom A* path finding algorithm.
 TEST  -> Extended keys 1-5 for testing random map generation.
-LOC   -> xxxxx
+LOC   -> 17294
 
 v0.22 - (2013-08-31)
 LOC   -> 16987
