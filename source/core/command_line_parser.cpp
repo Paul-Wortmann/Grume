@@ -28,7 +28,7 @@
 
 extern game_class game;
 
-command_line_parser_class::command_line_parser_class(void)
+command_line_parser_class::command_line_parser_class (void)
 {
     command_line_parser_class::number_of_args = 0;
 };
@@ -37,7 +37,7 @@ command_line_parser_class::~command_line_parser_class(void)
 {
 };
 
-void command_line_parser_class::process(int arg_count,char** arg_data)
+void command_line_parser_class::process (int arg_count, char** arg_data)
 {
     std::string temp_string;
     command_line_parser_class::number_of_args = arg_count;
