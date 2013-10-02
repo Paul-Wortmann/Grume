@@ -151,6 +151,7 @@ void UI_manager_class::setup(void)
     temp_pointer->rotate_able = true;
     temp_pointer = game.texture_manager.add_texture("data/textures/UI/menu/arrow_disabled.png");
     temp_pointer->rotate_able = true;
+    UI_manager_class::UI_form_list_log();
 }
 
 UI_form_struct *UI_manager_class::UI_form_get(int UI_form_UID)
@@ -221,6 +222,29 @@ void UI_manager_class::UI_form_list_sort(void)
         UI_form_struct *UI_form_pointer_2;
         UI_form_struct *UI_form_pointer_3;
         UI_form_pointer_3 = new UI_form_struct;
+        for (UI_form_struct *UI_form_pointer_4 = UI_manager_class::root; UI_form_pointer_4->next!=NULL; UI_form_pointer_4 = UI_form_pointer_4->next)
+        {
+            for (UI_form_struct *UI_form_pointer_1 = UI_manager_class::root; UI_form_pointer_1->next!=NULL; UI_form_pointer_1 = UI_form_pointer_1->next)
+            {
+                if ((UI_form_pointer_1->data.enabled) && (!UI_form_pointer_1->data.set_behind) && (UI_form_pointer_1->next != NULL))
+                {
+                    UI_form_pointer_2 = UI_form_pointer_1->next;
+                    UI_form_pointer_3->data = UI_form_pointer_1->data;
+                    UI_form_pointer_1->data = UI_form_pointer_2->data;
+                    UI_form_pointer_2->data = UI_form_pointer_3->data;
+                }
+            }
+        }
+    }
+}
+
+void UI_manager_class::UI_form_list_sort(int UI_form_UID)
+{
+    if ((UI_manager_class::number_of_UI_forms > 1) && (!UI_manager_class::element_drag_in_progress))
+    {
+        UI_form_struct *UI_form_pointer_2;
+        UI_form_struct *UI_form_pointer_3;
+        UI_form_pointer_3 = new UI_form_struct;
         //for (int form_count = 0; form_count <= UI_manager_class::number_of_UI_forms; form_count++)
         {
             for (UI_form_struct *UI_form_pointer_4 = UI_manager_class::root; UI_form_pointer_4->next!=NULL; UI_form_pointer_4 = UI_form_pointer_4->next)
@@ -239,6 +263,42 @@ void UI_manager_class::UI_form_list_sort(void)
         }
     }
 }
+
+void UI_manager_class::UI_form_list_log(void)
+{
+    int list_pos = 0;
+    game.core.log.file_write("------------------------------------------");
+    game.core.log.file_write("| UI list status                         |");
+    game.core.log.file_write("------------------------------------------");
+    game.core.log.file_write("| Active   | List pos| Set Behind  | UID |");
+    for (UI_form_struct *UI_form_pointer_tmp = UI_manager_class::root; UI_form_pointer_tmp != NULL; UI_form_pointer_tmp = UI_form_pointer_tmp->next)
+    {
+        if (UI_form_pointer_tmp->data.enabled&&UI_form_pointer_tmp->data.set_behind)
+        {
+            if (list_pos < 10) game.core.log.file_write("| Enabled  |    ",list_pos,"    | Set_behind  | ",UI_form_pointer_tmp->data.UID);
+            else  game.core.log.file_write("| Enabled  |    ",list_pos,"   | Set_behind  | ",UI_form_pointer_tmp->data.UID);
+        }
+        if (!UI_form_pointer_tmp->data.enabled&&UI_form_pointer_tmp->data.set_behind)
+        {
+            if (list_pos < 10) game.core.log.file_write("| Disabled |    ",list_pos,"    | Set_behind  | ",UI_form_pointer_tmp->data.UID);
+            else game.core.log.file_write("| Disabled |    ",list_pos,"   | Set_behind  | ",UI_form_pointer_tmp->data.UID);
+        }
+        if (UI_form_pointer_tmp->data.enabled&&!UI_form_pointer_tmp->data.set_behind)
+        {
+            if (list_pos < 10) game.core.log.file_write("| Enabled  |    ",list_pos,"    | normal      | ",UI_form_pointer_tmp->data.UID);
+            else game.core.log.file_write("| Enabled  |    ",list_pos,"   | normal      | ",UI_form_pointer_tmp->data.UID);
+        }
+        if (!UI_form_pointer_tmp->data.enabled&&!UI_form_pointer_tmp->data.set_behind)
+        {
+            if (list_pos < 10) game.core.log.file_write("| Disabled |    ",list_pos,"    | normal      | ",UI_form_pointer_tmp->data.UID);
+            else game.core.log.file_write("| Disabled |    ",list_pos,"   | normal      | ",UI_form_pointer_tmp->data.UID);
+        }
+        list_pos++;
+    }
+    game.core.log.file_write("| List size -> ",UI_manager_class::number_of_UI_forms);
+    game.core.log.file_write("------------------------------------------");
+};
+
 
 void UI_manager_class::UI_form_set_position(int UI_form_UID_src, int UI_form_UID_dst)
 {

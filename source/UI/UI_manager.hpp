@@ -78,6 +78,8 @@ class UI_manager_class
         int                   UI_form_get_list_position(int UI_form_UID);
         bool                  UI_form_get_is_top_of_list(int UI_form_UID);
         void                  UI_form_list_sort(void);
+        void                  UI_form_list_sort(int UI_form_UID);
+        void                  UI_form_list_log(void);
         void                  UI_form_transition(int UI_form_UID_src, int UI_form_UID_dst);
         void                  setup(void);
         void                  render(void);
@@ -88,4 +90,8 @@ class UI_manager_class
 
 
 #endif // UI_MANAGER_H
+
+
+
+
 
