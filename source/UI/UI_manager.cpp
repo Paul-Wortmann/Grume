@@ -792,6 +792,11 @@ void UI_manager_class::process_forms(void)
                             game.core.log.file_write("List size -> ",UI_manager_class::number_of_UI_forms);
                             game.core.log.file_write("UID -> ",UI_form_pointer->data.UID," - Position in list -> ",UI_manager_class::UI_form_get_list_position(UI_form_pointer->data.UID));
                         }
+                        if ((!game.UI_manager.drag_in_progress) && (!UI_form_pointer->data.mouse_over_title) && (game.core.io.mouse_button_left))
+                        {
+                            return_value.id    = EVENT_UI_LIST_SORT;
+                            return_value.value = UI_form_pointer->data.UID;
+                        }
                     }
                     // user clicked on window, that is not title or an element.
                     if ((game.core.io.mouse_button_left) && (return_value.id == EVENT_NONE) && (!UI_form_pointer->data.enabled))
