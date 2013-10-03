@@ -611,7 +611,9 @@ void process_action_bar(UI_form_struct *UI_form_pointer)
                 if (!game.core.game_menu_active)
                 {
                     game.UI_manager.UI_form_enable(UID_MENU_MAIN);
-                    game.core.game_menu_active                   = true;
+                    game.UI_manager.event.id    = EVENT_UI_LIST_SORT;
+                    game.UI_manager.event.value = UID_MENU_MAIN;
+                    game.core.game_menu_active  = true;
                 }
                 else
                 {
@@ -625,6 +627,8 @@ void process_action_bar(UI_form_struct *UI_form_pointer)
                 if (!game.core.quest_log_active)
                 {
                     game.UI_manager.UI_form_enable(UID_QUEST_LOG);
+                    game.UI_manager.event.id    = EVENT_UI_LIST_SORT;
+                    game.UI_manager.event.value = UID_QUEST_LOG;
                     game.core.quest_log_active                   = true;
                 }
                 else
@@ -639,6 +643,8 @@ void process_action_bar(UI_form_struct *UI_form_pointer)
                 if (!game.core.skillbook_active)
                 {
                     game.UI_manager.UI_form_enable(UID_SKILLBOOK);
+                    game.UI_manager.event.id    = EVENT_UI_LIST_SORT;
+                    game.UI_manager.event.value = UID_SKILLBOOK;
                     game.core.skillbook_active                   = true;
                 }
                 else
@@ -653,6 +659,8 @@ void process_action_bar(UI_form_struct *UI_form_pointer)
                 if (!game.core.character_active)
                 {
                     game.UI_manager.UI_form_enable(UID_CHARACTER);
+                    game.UI_manager.event.id    = EVENT_UI_LIST_SORT;
+                    game.UI_manager.event.value = UID_CHARACTER;
                     game.core.character_active                   = true;
                 }
                 else
@@ -667,6 +675,8 @@ void process_action_bar(UI_form_struct *UI_form_pointer)
                 if (!game.core.equipment_active)
                 {
                     game.UI_manager.UI_form_enable(UID_EQUIPMENT);
+                    game.UI_manager.event.id    = EVENT_UI_LIST_SORT;
+                    game.UI_manager.event.value = UID_EQUIPMENT;
                     game.core.equipment_active                   = true;
                 }
                 else
@@ -681,6 +691,8 @@ void process_action_bar(UI_form_struct *UI_form_pointer)
                 if (!game.core.inventory_active)
                 {
                     game.UI_manager.UI_form_enable(UID_INVENTORY);
+                    game.UI_manager.event.id    = EVENT_UI_LIST_SORT;
+                    game.UI_manager.event.value = UID_INVENTORY;
                     game.core.inventory_active                   = true;
                 }
                 else
@@ -763,7 +775,8 @@ void process_action_bar(UI_form_struct *UI_form_pointer)
             break;
             case (EVENT_UI_LIST_SORT): //Window stack sort
                 UI_form_pointer->data.event.id = EVENT_NONE;
-                game.UI_manager.event.id = EVENT_UI_LIST_SORT;
+                game.UI_manager.event.id    = EVENT_UI_LIST_SORT;
+                game.UI_manager.event.value = UI_form_pointer->data.UID;
             break;
             case (EVENT_UI_ELEMENT_DRAG): //Element drag event posted
                 //game.UI_manager.source.window = ACTIONBAR_UID;

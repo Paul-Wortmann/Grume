@@ -72,6 +72,7 @@ class UI_manager_class
         UI_form_struct       *UI_form_get(int UI_form_UID);
         void                  UI_form_enable(int UI_form_UID);
         void                  UI_form_disable(int UI_form_UID);
+        bool                  UI_form_is_enable(int UI_form_UID);
         void                  UI_form_set_position(int UI_form_UID_src, int UI_form_UID_dst);
         void                  UI_form_mouse_reset(int UI_form_UID);
         void                  UI_form_set_event(int UI_form_UID, int EVENT_ID);

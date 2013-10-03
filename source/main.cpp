@@ -143,7 +143,7 @@ extern "C" int main(int argc, char** argv)
             case STATE_GAME:// game active, menus can be utilized in game, but the game will stay in this state.
                 if (game.core.process_ready) game.process();
                 if (game.core.process_ready) game.UI_manager.process();
-                if (game.event == 65535) game.state = STATE_QUIT;
+                //if (game.event == 65535) game.state = STATE_QUIT;
                 game.render();
             break;
             case STATE_QUIT:// game has received a quit event, do nothing...

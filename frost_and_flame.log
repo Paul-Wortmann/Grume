@@ -1,4 +1,4 @@
-# Frost and Flame V0.23 - www.physhexgames.co.nr #
+# Frost and Flame V0.24 - www.physhexgames.co.nr #
 # ---------------------------------------------- #
  
 Initializing PhysicsFS file system....
@@ -14,6 +14,24 @@ Initializing font system...
 Loading resources....
 Seeding random...
 Initializing UI system...
+------------------------------------------
+| UI list status                         |
+------------------------------------------
+| Active   | List pos| Set Behind  | UID |
+| Disabled |    0    | Set_behind  | 1
+| Disabled |    1    | Set_behind  | 2
+| Disabled |    2    | normal      | 5
+| Disabled |    3    | normal      | 3
+| Disabled |    4    | normal      | 6
+| Disabled |    5    | normal      | 12
+| Disabled |    6    | normal      | 10
+| Disabled |    7    | normal      | 11
+| Disabled |    8    | normal      | 13
+| Disabled |    9    | normal      | 4
+| Disabled |    10   | normal      | 7
+| Enabled  |    11   | normal      | 9
+| List size -> 12
+------------------------------------------
 Initializing game system...
 Loading TMX map file -> data/maps/town.tmx
 Initializing event handlers...
@@ -21,24 +39,1212 @@ Starting Game...
  
 # ---------------------------------------------- #
  
+Pushing form to list top -> 10
+------------------------------------------
+| UI list status                         |
+------------------------------------------
+| Active   | List pos| Set Behind  | UID |
+| Disabled |    0    | Set_behind  | 1
+| Disabled |    1    | Set_behind  | 2
+| Disabled |    2    | normal      | 5
+| Disabled |    3    | normal      | 3
+| Disabled |    4    | normal      | 6
+| Disabled |    5    | normal      | 12
+| Enabled  |    6    | normal      | 10
+| Disabled |    7    | normal      | 11
+| Disabled |    8    | normal      | 13
+| Disabled |    9    | normal      | 4
+| Disabled |    10   | normal      | 7
+| Disabled |    11   | normal      | 9
+| List size -> 12
+------------------------------------------
+Pushing form to list top -> 9
+------------------------------------------
+| UI list status                         |
+------------------------------------------
+| Active   | List pos| Set Behind  | UID |
+| Enabled  |    0    | Set_behind  | 1
+| Enabled  |    1    | Set_behind  | 2
+| Disabled |    2    | normal      | 5
+| Disabled |    3    | normal      | 3
+| Disabled |    4    | normal      | 6
+| Disabled |    5    | normal      | 12
+| Disabled |    6    | normal      | 11
+| Disabled |    7    | normal      | 13
+| Disabled |    8    | normal      | 4
+| Disabled |    9    | normal      | 7
+| Enabled  |    10   | normal      | 9
+| Disabled |    11   | normal      | 10
+| List size -> 12
+------------------------------------------
+Pushing form to list top -> 4
+------------------------------------------
+| UI list status                         |
+------------------------------------------
+| Active   | List pos| Set Behind  | UID |
+| Enabled  |    0    | Set_behind  | 1
+| Enabled  |    1    | Set_behind  | 2
+| Disabled |    2    | normal      | 5
+| Disabled |    3    | normal      | 3
+| Disabled |    4    | normal      | 6
+| Disabled |    5    | normal      | 12
+| Disabled |    6    | normal      | 11
+| Disabled |    7    | normal      | 13
+| Enabled  |    8    | normal      | 4
+| Disabled |    9    | normal      | 7
+| Disabled |    10   | normal      | 10
+| Enabled  |    11   | normal      | 9
+| List size -> 12
+------------------------------------------
+Pushing form to list top -> 7
+------------------------------------------
+| UI list status                         |
+------------------------------------------
+| Active   | List pos| Set Behind  | UID |
+| Enabled  |    0    | Set_behind  | 1
+| Enabled  |    1    | Set_behind  | 2
+| Disabled |    2    | normal      | 5
+| Disabled |    3    | normal      | 3
+| Disabled |    4    | normal      | 6
+| Disabled |    5    | normal      | 12
+| Disabled |    6    | normal      | 11
+| Disabled |    7    | normal      | 13
+| Enabled  |    8    | normal      | 7
+| Disabled |    9    | normal      | 10
+| Enabled  |    10   | normal      | 9
+| Enabled  |    11   | normal      | 4
+| List size -> 12
+------------------------------------------
 List size -> 12
-UID -> 9 - Position in list -> 11
-List size -> 12
-UID -> 4 - Position in list -> 12
-List size -> 12
-UID -> 9 - Position in list -> 11
+UID -> 7 - Position in list -> 12
 List size -> 12
 UID -> 4 - Position in list -> 11
+Pushing form to list top -> 4
+------------------------------------------
+| UI list status                         |
+------------------------------------------
+| Active   | List pos| Set Behind  | UID |
+| Enabled  |    0    | Set_behind  | 1
+| Enabled  |    1    | Set_behind  | 2
+| Disabled |    2    | normal      | 5
+| Disabled |    3    | normal      | 3
+| Disabled |    4    | normal      | 6
+| Disabled |    5    | normal      | 12
+| Disabled |    6    | normal      | 11
+| Disabled |    7    | normal      | 13
+| Disabled |    8    | normal      | 10
+| Enabled  |    9    | normal      | 9
+| Enabled  |    10   | normal      | 4
+| Enabled  |    11   | normal      | 7
+| List size -> 12
+------------------------------------------
 List size -> 12
-UID -> 9 - Position in list -> 11
+UID -> 9 - Position in list -> 10
+Pushing form to list top -> 9
+------------------------------------------
+| UI list status                         |
+------------------------------------------
+| Active   | List pos| Set Behind  | UID |
+| Enabled  |    0    | Set_behind  | 1
+| Enabled  |    1    | Set_behind  | 2
+| Disabled |    2    | normal      | 5
+| Disabled |    3    | normal      | 3
+| Disabled |    4    | normal      | 6
+| Disabled |    5    | normal      | 12
+| Disabled |    6    | normal      | 11
+| Disabled |    7    | normal      | 13
+| Disabled |    8    | normal      | 10
+| Enabled  |    9    | normal      | 9
+| Enabled  |    10   | normal      | 7
+| Enabled  |    11   | normal      | 4
+| List size -> 12
+------------------------------------------
+Pushing form to list top -> 5
+------------------------------------------
+| UI list status                         |
+------------------------------------------
+| Active   | List pos| Set Behind  | UID |
+| Enabled  |    0    | Set_behind  | 1
+| Enabled  |    1    | Set_behind  | 2
+| Enabled  |    2    | normal      | 5
+| Disabled |    3    | normal      | 3
+| Disabled |    4    | normal      | 6
+| Disabled |    5    | normal      | 12
+| Disabled |    6    | normal      | 11
+| Disabled |    7    | normal      | 13
+| Disabled |    8    | normal      | 10
+| Enabled  |    9    | normal      | 7
+| Enabled  |    10   | normal      | 4
+| Enabled  |    11   | normal      | 9
+| List size -> 12
+------------------------------------------
+Pushing form to list top -> 3
+------------------------------------------
+| UI list status                         |
+------------------------------------------
+| Active   | List pos| Set Behind  | UID |
+| Enabled  |    0    | Set_behind  | 1
+| Enabled  |    1    | Set_behind  | 2
+| Enabled  |    2    | normal      | 3
+| Disabled |    3    | normal      | 6
+| Disabled |    4    | normal      | 12
+| Disabled |    5    | normal      | 11
+| Disabled |    6    | normal      | 13
+| Disabled |    7    | normal      | 10
+| Enabled  |    8    | normal      | 4
+| Enabled  |    9    | normal      | 9
+| Enabled  |    10   | normal      | 7
+| Enabled  |    11   | normal      | 5
+| List size -> 12
+------------------------------------------
+Pushing form to list top -> 3
+------------------------------------------
+| UI list status                         |
+------------------------------------------
+| Active   | List pos| Set Behind  | UID |
+| Enabled  |    0    | Set_behind  | 1
+| Enabled  |    1    | Set_behind  | 2
+| Disabled |    2    | normal      | 6
+| Disabled |    3    | normal      | 12
+| Disabled |    4    | normal      | 11
+| Disabled |    5    | normal      | 13
+| Disabled |    6    | normal      | 10
+| Enabled  |    7    | normal      | 7
+| Enabled  |    8    | normal      | 5
+| Enabled  |    9    | normal      | 4
+| Enabled  |    10   | normal      | 9
+| Enabled  |    11   | normal      | 3
+| List size -> 12
+------------------------------------------
+Pushing form to list top -> 6
+------------------------------------------
+| UI list status                         |
+------------------------------------------
+| Active   | List pos| Set Behind  | UID |
+| Enabled  |    0    | Set_behind  | 1
+| Enabled  |    1    | Set_behind  | 2
+| Enabled  |    2    | normal      | 6
+| Disabled |    3    | normal      | 12
+| Disabled |    4    | normal      | 11
+| Disabled |    5    | normal      | 13
+| Disabled |    6    | normal      | 10
+| Enabled  |    7    | normal      | 7
+| Enabled  |    8    | normal      | 5
+| Enabled  |    9    | normal      | 4
+| Enabled  |    10   | normal      | 9
+| Enabled  |    11   | normal      | 3
+| List size -> 12
+------------------------------------------
+Pushing form to list top -> 5
+------------------------------------------
+| UI list status                         |
+------------------------------------------
+| Active   | List pos| Set Behind  | UID |
+| Enabled  |    0    | Set_behind  | 1
+| Enabled  |    1    | Set_behind  | 2
+| Disabled |    2    | normal      | 12
+| Disabled |    3    | normal      | 11
+| Disabled |    4    | normal      | 13
+| Disabled |    5    | normal      | 10
+| Enabled  |    6    | normal      | 7
+| Enabled  |    7    | normal      | 5
+| Enabled  |    8    | normal      | 4
+| Enabled  |    9    | normal      | 9
+| Disabled |    10   | normal      | 3
+| Disabled |    11   | normal      | 6
+| List size -> 12
+------------------------------------------
+Pushing form to list top -> 5
+------------------------------------------
+| UI list status                         |
+------------------------------------------
+| Active   | List pos| Set Behind  | UID |
+| Enabled  |    0    | Set_behind  | 1
+| Enabled  |    1    | Set_behind  | 2
+| Disabled |    2    | normal      | 12
+| Disabled |    3    | normal      | 11
+| Disabled |    4    | normal      | 13
+| Disabled |    5    | normal      | 10
+| Disabled |    6    | normal      | 3
+| Disabled |    7    | normal      | 6
+| Enabled  |    8    | normal      | 4
+| Enabled  |    9    | normal      | 9
+| Enabled  |    10   | normal      | 7
+| Enabled  |    11   | normal      | 5
+| List size -> 12
+------------------------------------------
+Pushing form to list top -> 7
+------------------------------------------
+| UI list status                         |
+------------------------------------------
+| Active   | List pos| Set Behind  | UID |
+| Enabled  |    0    | Set_behind  | 1
+| Enabled  |    1    | Set_behind  | 2
+| Disabled |    2    | normal      | 12
+| Disabled |    3    | normal      | 11
+| Disabled |    4    | normal      | 13
+| Disabled |    5    | normal      | 10
+| Disabled |    6    | normal      | 3
+| Disabled |    7    | normal      | 6
+| Enabled  |    8    | normal      | 4
+| Enabled  |    9    | normal      | 9
+| Enabled  |    10   | normal      | 7
+| Enabled  |    11   | normal      | 5
+| List size -> 12
+------------------------------------------
+Pushing form to list top -> 7
+------------------------------------------
+| UI list status                         |
+------------------------------------------
+| Active   | List pos| Set Behind  | UID |
+| Enabled  |    0    | Set_behind  | 1
+| Enabled  |    1    | Set_behind  | 2
+| Disabled |    2    | normal      | 12
+| Disabled |    3    | normal      | 11
+| Disabled |    4    | normal      | 13
+| Disabled |    5    | normal      | 10
+| Disabled |    6    | normal      | 3
+| Disabled |    7    | normal      | 6
+| Enabled  |    8    | normal      | 4
+| Enabled  |    9    | normal      | 5
+| Enabled  |    10   | normal      | 9
+| Enabled  |    11   | normal      | 7
+| List size -> 12
+------------------------------------------
+Pushing form to list top -> 4
+------------------------------------------
+| UI list status                         |
+------------------------------------------
+| Active   | List pos| Set Behind  | UID |
+| Enabled  |    0    | Set_behind  | 1
+| Enabled  |    1    | Set_behind  | 2
+| Disabled |    2    | normal      | 12
+| Disabled |    3    | normal      | 11
+| Disabled |    4    | normal      | 13
+| Disabled |    5    | normal      | 10
+| Disabled |    6    | normal      | 3
+| Disabled |    7    | normal      | 6
+| Enabled  |    8    | normal      | 4
+| Enabled  |    9    | normal      | 5
+| Enabled  |    10   | normal      | 9
+| Enabled  |    11   | normal      | 7
+| List size -> 12
+------------------------------------------
+Pushing form to list top -> 4
+------------------------------------------
+| UI list status                         |
+------------------------------------------
+| Active   | List pos| Set Behind  | UID |
+| Enabled  |    0    | Set_behind  | 1
+| Enabled  |    1    | Set_behind  | 2
+| Disabled |    2    | normal      | 12
+| Disabled |    3    | normal      | 11
+| Disabled |    4    | normal      | 13
+| Disabled |    5    | normal      | 10
+| Disabled |    6    | normal      | 3
+| Disabled |    7    | normal      | 6
+| Enabled  |    8    | normal      | 9
+| Enabled  |    9    | normal      | 7
+| Enabled  |    10   | normal      | 5
+| Enabled  |    11   | normal      | 4
+| List size -> 12
+------------------------------------------
+Pushing form to list top -> 9
+------------------------------------------
+| UI list status                         |
+------------------------------------------
+| Active   | List pos| Set Behind  | UID |
+| Enabled  |    0    | Set_behind  | 1
+| Enabled  |    1    | Set_behind  | 2
+| Disabled |    2    | normal      | 12
+| Disabled |    3    | normal      | 11
+| Disabled |    4    | normal      | 13
+| Disabled |    5    | normal      | 10
+| Disabled |    6    | normal      | 3
+| Disabled |    7    | normal      | 6
+| Enabled  |    8    | normal      | 9
+| Enabled  |    9    | normal      | 7
+| Enabled  |    10   | normal      | 5
+| Enabled  |    11   | normal      | 4
+| List size -> 12
+------------------------------------------
+Pushing form to list top -> 4
+------------------------------------------
+| UI list status                         |
+------------------------------------------
+| Active   | List pos| Set Behind  | UID |
+| Enabled  |    0    | Set_behind  | 1
+| Enabled  |    1    | Set_behind  | 2
+| Disabled |    2    | normal      | 12
+| Disabled |    3    | normal      | 11
+| Disabled |    4    | normal      | 13
+| Disabled |    5    | normal      | 10
+| Disabled |    6    | normal      | 3
+| Disabled |    7    | normal      | 6
+| Enabled  |    8    | normal      | 5
+| Enabled  |    9    | normal      | 4
+| Enabled  |    10   | normal      | 7
+| Disabled |    11   | normal      | 9
+| List size -> 12
+------------------------------------------
+Pushing form to list top -> 7
+------------------------------------------
+| UI list status                         |
+------------------------------------------
+| Active   | List pos| Set Behind  | UID |
+| Enabled  |    0    | Set_behind  | 1
+| Enabled  |    1    | Set_behind  | 2
+| Disabled |    2    | normal      | 12
+| Disabled |    3    | normal      | 11
+| Disabled |    4    | normal      | 13
+| Disabled |    5    | normal      | 10
+| Disabled |    6    | normal      | 3
+| Disabled |    7    | normal      | 6
+| Disabled |    8    | normal      | 9
+| Enabled  |    9    | normal      | 5
+| Enabled  |    10   | normal      | 7
+| Enabled  |    11   | normal      | 4
+| List size -> 12
+------------------------------------------
+Pushing form to list top -> 5
+------------------------------------------
+| UI list status                         |
+------------------------------------------
+| Active   | List pos| Set Behind  | UID |
+| Enabled  |    0    | Set_behind  | 1
+| Enabled  |    1    | Set_behind  | 2
+| Disabled |    2    | normal      | 12
+| Disabled |    3    | normal      | 11
+| Disabled |    4    | normal      | 13
+| Disabled |    5    | normal      | 10
+| Disabled |    6    | normal      | 3
+| Disabled |    7    | normal      | 6
+| Disabled |    8    | normal      | 9
+| Enabled  |    9    | normal      | 5
+| Enabled  |    10   | normal      | 4
+| Enabled  |    11   | normal      | 7
+| List size -> 12
+------------------------------------------
+Pushing form to list top -> 3
+------------------------------------------
+| UI list status                         |
+------------------------------------------
+| Active   | List pos| Set Behind  | UID |
+| Enabled  |    0    | Set_behind  | 1
+| Enabled  |    1    | Set_behind  | 2
+| Disabled |    2    | normal      | 12
+| Disabled |    3    | normal      | 11
+| Disabled |    4    | normal      | 13
+| Disabled |    5    | normal      | 10
+| Enabled  |    6    | normal      | 3
+| Disabled |    7    | normal      | 6
+| Disabled |    8    | normal      | 9
+| Enabled  |    9    | normal      | 4
+| Enabled  |    10   | normal      | 7
+| Enabled  |    11   | normal      | 5
+| List size -> 12
+------------------------------------------
+Pushing form to list top -> 3
+------------------------------------------
+| UI list status                         |
+------------------------------------------
+| Active   | List pos| Set Behind  | UID |
+| Enabled  |    0    | Set_behind  | 1
+| Enabled  |    1    | Set_behind  | 2
+| Disabled |    2    | normal      | 12
+| Disabled |    3    | normal      | 11
+| Disabled |    4    | normal      | 13
+| Disabled |    5    | normal      | 10
+| Disabled |    6    | normal      | 6
+| Disabled |    7    | normal      | 9
+| Enabled  |    8    | normal      | 7
+| Enabled  |    9    | normal      | 5
+| Enabled  |    10   | normal      | 4
+| Enabled  |    11   | normal      | 3
+| List size -> 12
+------------------------------------------
+Pushing form to list top -> 6
+------------------------------------------
+| UI list status                         |
+------------------------------------------
+| Active   | List pos| Set Behind  | UID |
+| Enabled  |    0    | Set_behind  | 1
+| Enabled  |    1    | Set_behind  | 2
+| Disabled |    2    | normal      | 12
+| Disabled |    3    | normal      | 11
+| Disabled |    4    | normal      | 13
+| Disabled |    5    | normal      | 10
+| Enabled  |    6    | normal      | 6
+| Disabled |    7    | normal      | 9
+| Enabled  |    8    | normal      | 7
+| Enabled  |    9    | normal      | 5
+| Enabled  |    10   | normal      | 4
+| Enabled  |    11   | normal      | 3
+| List size -> 12
+------------------------------------------
+Pushing form to list top -> 6
+------------------------------------------
+| UI list status                         |
+------------------------------------------
+| Active   | List pos| Set Behind  | UID |
+| Enabled  |    0    | Set_behind  | 1
+| Enabled  |    1    | Set_behind  | 2
+| Disabled |    2    | normal      | 12
+| Disabled |    3    | normal      | 11
+| Disabled |    4    | normal      | 13
+| Disabled |    5    | normal      | 10
+| Disabled |    6    | normal      | 9
+| Enabled  |    7    | normal      | 4
+| Enabled  |    8    | normal      | 3
+| Enabled  |    9    | normal      | 7
+| Enabled  |    10   | normal      | 5
+| Enabled  |    11   | normal      | 6
+| List size -> 12
+------------------------------------------
+Pushing form to list top -> 6
+------------------------------------------
+| UI list status                         |
+------------------------------------------
+| Active   | List pos| Set Behind  | UID |
+| Enabled  |    0    | Set_behind  | 1
+| Enabled  |    1    | Set_behind  | 2
+| Disabled |    2    | normal      | 12
+| Disabled |    3    | normal      | 11
+| Disabled |    4    | normal      | 13
+| Disabled |    5    | normal      | 10
+| Disabled |    6    | normal      | 9
+| Enabled  |    7    | normal      | 4
+| Enabled  |    8    | normal      | 3
+| Enabled  |    9    | normal      | 7
+| Enabled  |    10   | normal      | 5
+| Enabled  |    11   | normal      | 6
+| List size -> 12
+------------------------------------------
+List size -> 12
+UID -> 6 - Position in list -> 12
+List size -> 12
+UID -> 5 - Position in list -> 11
+Pushing form to list top -> 5
+------------------------------------------
+| UI list status                         |
+------------------------------------------
+| Active   | List pos| Set Behind  | UID |
+| Enabled  |    0    | Set_behind  | 1
+| Enabled  |    1    | Set_behind  | 2
+| Disabled |    2    | normal      | 12
+| Disabled |    3    | normal      | 11
+| Disabled |    4    | normal      | 13
+| Disabled |    5    | normal      | 10
+| Disabled |    6    | normal      | 9
+| Enabled  |    7    | normal      | 4
+| Enabled  |    8    | normal      | 3
+| Enabled  |    9    | normal      | 7
+| Enabled  |    10   | normal      | 5
+| Enabled  |    11   | normal      | 6
+| List size -> 12
+------------------------------------------
+List size -> 12
+UID -> 3 - Position in list -> 10
+Pushing form to list top -> 3
+------------------------------------------
+| UI list status                         |
+------------------------------------------
+| Active   | List pos| Set Behind  | UID |
+| Enabled  |    0    | Set_behind  | 1
+| Enabled  |    1    | Set_behind  | 2
+| Disabled |    2    | normal      | 12
+| Disabled |    3    | normal      | 11
+| Disabled |    4    | normal      | 13
+| Disabled |    5    | normal      | 10
+| Disabled |    6    | normal      | 9
+| Enabled  |    7    | normal      | 4
+| Enabled  |    8    | normal      | 6
+| Enabled  |    9    | normal      | 3
+| Enabled  |    10   | normal      | 7
+| Enabled  |    11   | normal      | 5
+| List size -> 12
+------------------------------------------
+List size -> 12
+UID -> 4 - Position in list -> 11
+Pushing form to list top -> 4
+------------------------------------------
+| UI list status                         |
+------------------------------------------
+| Active   | List pos| Set Behind  | UID |
+| Enabled  |    0    | Set_behind  | 1
+| Enabled  |    1    | Set_behind  | 2
+| Disabled |    2    | normal      | 12
+| Disabled |    3    | normal      | 11
+| Disabled |    4    | normal      | 13
+| Disabled |    5    | normal      | 10
+| Disabled |    6    | normal      | 9
+| Enabled  |    7    | normal      | 7
+| Enabled  |    8    | normal      | 5
+| Enabled  |    9    | normal      | 6
+| Enabled  |    10   | normal      | 4
+| Enabled  |    11   | normal      | 3
+| List size -> 12
+------------------------------------------
+List size -> 12
+UID -> 7 - Position in list -> 8
+Pushing form to list top -> 7
+------------------------------------------
+| UI list status                         |
+------------------------------------------
+| Active   | List pos| Set Behind  | UID |
+| Enabled  |    0    | Set_behind  | 1
+| Enabled  |    1    | Set_behind  | 2
+| Disabled |    2    | normal      | 12
+| Disabled |    3    | normal      | 11
+| Disabled |    4    | normal      | 13
+| Disabled |    5    | normal      | 10
+| Disabled |    6    | normal      | 9
+| Enabled  |    7    | normal      | 7
+| Enabled  |    8    | normal      | 3
+| Enabled  |    9    | normal      | 5
+| Enabled  |    10   | normal      | 6
+| Enabled  |    11   | normal      | 4
+| List size -> 12
+------------------------------------------
+List size -> 12
+UID -> 5 - Position in list -> 11
+Pushing form to list top -> 5
+------------------------------------------
+| UI list status                         |
+------------------------------------------
+| Active   | List pos| Set Behind  | UID |
+| Enabled  |    0    | Set_behind  | 1
+| Enabled  |    1    | Set_behind  | 2
+| Disabled |    2    | normal      | 12
+| Disabled |    3    | normal      | 11
+| Disabled |    4    | normal      | 13
+| Disabled |    5    | normal      | 10
+| Disabled |    6    | normal      | 9
+| Enabled  |    7    | normal      | 6
+| Enabled  |    8    | normal      | 4
+| Enabled  |    9    | normal      | 3
+| Enabled  |    10   | normal      | 5
+| Enabled  |    11   | normal      | 7
+| List size -> 12
+------------------------------------------
+List size -> 12
+UID -> 3 - Position in list -> 11
+Pushing form to list top -> 3
+------------------------------------------
+| UI list status                         |
+------------------------------------------
+| Active   | List pos| Set Behind  | UID |
+| Enabled  |    0    | Set_behind  | 1
+| Enabled  |    1    | Set_behind  | 2
+| Disabled |    2    | normal      | 12
+| Disabled |    3    | normal      | 11
+| Disabled |    4    | normal      | 13
+| Disabled |    5    | normal      | 10
+| Disabled |    6    | normal      | 9
+| Enabled  |    7    | normal      | 6
+| Enabled  |    8    | normal      | 7
+| Enabled  |    9    | normal      | 4
+| Enabled  |    10   | normal      | 3
+| Enabled  |    11   | normal      | 5
+| List size -> 12
+------------------------------------------
+List size -> 12
+UID -> 4 - Position in list -> 11
+Pushing form to list top -> 4
+------------------------------------------
+| UI list status                         |
+------------------------------------------
+| Active   | List pos| Set Behind  | UID |
+| Enabled  |    0    | Set_behind  | 1
+| Enabled  |    1    | Set_behind  | 2
+| Disabled |    2    | normal      | 12
+| Disabled |    3    | normal      | 11
+| Disabled |    4    | normal      | 13
+| Disabled |    5    | normal      | 10
+| Disabled |    6    | normal      | 9
+| Enabled  |    7    | normal      | 6
+| Enabled  |    8    | normal      | 5
+| Enabled  |    9    | normal      | 7
+| Enabled  |    10   | normal      | 4
+| Enabled  |    11   | normal      | 3
+| List size -> 12
+------------------------------------------
+List size -> 12
+UID -> 7 - Position in list -> 11
+Pushing form to list top -> 7
+------------------------------------------
+| UI list status                         |
+------------------------------------------
+| Active   | List pos| Set Behind  | UID |
+| Enabled  |    0    | Set_behind  | 1
+| Enabled  |    1    | Set_behind  | 2
+| Disabled |    2    | normal      | 12
+| Disabled |    3    | normal      | 11
+| Disabled |    4    | normal      | 13
+| Disabled |    5    | normal      | 10
+| Disabled |    6    | normal      | 9
+| Enabled  |    7    | normal      | 6
+| Enabled  |    8    | normal      | 3
+| Enabled  |    9    | normal      | 5
+| Enabled  |    10   | normal      | 7
+| Enabled  |    11   | normal      | 4
+| List size -> 12
+------------------------------------------
+List size -> 12
+UID -> 6 - Position in list -> 8
+Pushing form to list top -> 6
+------------------------------------------
+| UI list status                         |
+------------------------------------------
+| Active   | List pos| Set Behind  | UID |
+| Enabled  |    0    | Set_behind  | 1
+| Enabled  |    1    | Set_behind  | 2
+| Disabled |    2    | normal      | 12
+| Disabled |    3    | normal      | 11
+| Disabled |    4    | normal      | 13
+| Disabled |    5    | normal      | 10
+| Disabled |    6    | normal      | 9
+| Enabled  |    7    | normal      | 6
+| Enabled  |    8    | normal      | 4
+| Enabled  |    9    | normal      | 3
+| Enabled  |    10   | normal      | 5
+| Enabled  |    11   | normal      | 7
+| List size -> 12
+------------------------------------------
+List size -> 12
+UID -> 6 - Position in list -> 12
+List size -> 12
+UID -> 6 - Position in list -> 12
+List size -> 12
+UID -> 6 - Position in list -> 12
+List size -> 12
+UID -> 3 - Position in list -> 11
+Pushing form to list top -> 3
+------------------------------------------
+| UI list status                         |
+------------------------------------------
+| Active   | List pos| Set Behind  | UID |
+| Enabled  |    0    | Set_behind  | 1
+| Enabled  |    1    | Set_behind  | 2
+| Disabled |    2    | normal      | 12
+| Disabled |    3    | normal      | 11
+| Disabled |    4    | normal      | 13
+| Disabled |    5    | normal      | 10
+| Disabled |    6    | normal      | 9
+| Enabled  |    7    | normal      | 5
+| Enabled  |    8    | normal      | 7
+| Enabled  |    9    | normal      | 4
+| Enabled  |    10   | normal      | 3
+| Enabled  |    11   | normal      | 6
+| List size -> 12
+------------------------------------------
+List size -> 12
+UID -> 4 - Position in list -> 11
+Pushing form to list top -> 4
+------------------------------------------
+| UI list status                         |
+------------------------------------------
+| Active   | List pos| Set Behind  | UID |
+| Enabled  |    0    | Set_behind  | 1
+| Enabled  |    1    | Set_behind  | 2
+| Disabled |    2    | normal      | 12
+| Disabled |    3    | normal      | 11
+| Disabled |    4    | normal      | 13
+| Disabled |    5    | normal      | 10
+| Disabled |    6    | normal      | 9
+| Enabled  |    7    | normal      | 5
+| Enabled  |    8    | normal      | 6
+| Enabled  |    9    | normal      | 7
+| Enabled  |    10   | normal      | 4
+| Enabled  |    11   | normal      | 3
+| List size -> 12
+------------------------------------------
+List size -> 12
+UID -> 7 - Position in list -> 11
+Pushing form to list top -> 7
+------------------------------------------
+| UI list status                         |
+------------------------------------------
+| Active   | List pos| Set Behind  | UID |
+| Enabled  |    0    | Set_behind  | 1
+| Enabled  |    1    | Set_behind  | 2
+| Disabled |    2    | normal      | 12
+| Disabled |    3    | normal      | 11
+| Disabled |    4    | normal      | 13
+| Disabled |    5    | normal      | 10
+| Disabled |    6    | normal      | 9
+| Enabled  |    7    | normal      | 5
+| Enabled  |    8    | normal      | 3
+| Enabled  |    9    | normal      | 6
+| Enabled  |    10   | normal      | 7
+| Enabled  |    11   | normal      | 4
+| List size -> 12
+------------------------------------------
+List size -> 12
+UID -> 6 - Position in list -> 11
+Pushing form to list top -> 6
+------------------------------------------
+| UI list status                         |
+------------------------------------------
+| Active   | List pos| Set Behind  | UID |
+| Enabled  |    0    | Set_behind  | 1
+| Enabled  |    1    | Set_behind  | 2
+| Disabled |    2    | normal      | 12
+| Disabled |    3    | normal      | 11
+| Disabled |    4    | normal      | 13
+| Disabled |    5    | normal      | 10
+| Disabled |    6    | normal      | 9
+| Enabled  |    7    | normal      | 5
+| Enabled  |    8    | normal      | 4
+| Enabled  |    9    | normal      | 3
+| Enabled  |    10   | normal      | 6
+| Enabled  |    11   | normal      | 7
+| List size -> 12
+------------------------------------------
+List size -> 12
+UID -> 3 - Position in list -> 11
+Pushing form to list top -> 3
+------------------------------------------
+| UI list status                         |
+------------------------------------------
+| Active   | List pos| Set Behind  | UID |
+| Enabled  |    0    | Set_behind  | 1
+| Enabled  |    1    | Set_behind  | 2
+| Disabled |    2    | normal      | 12
+| Disabled |    3    | normal      | 11
+| Disabled |    4    | normal      | 13
+| Disabled |    5    | normal      | 10
+| Disabled |    6    | normal      | 9
+| Enabled  |    7    | normal      | 5
+| Enabled  |    8    | normal      | 7
+| Enabled  |    9    | normal      | 4
+| Enabled  |    10   | normal      | 3
+| Enabled  |    11   | normal      | 6
+| List size -> 12
+------------------------------------------
+List size -> 12
+UID -> 5 - Position in list -> 8
+Pushing form to list top -> 5
+------------------------------------------
+| UI list status                         |
+------------------------------------------
+| Active   | List pos| Set Behind  | UID |
+| Enabled  |    0    | Set_behind  | 1
+| Enabled  |    1    | Set_behind  | 2
+| Disabled |    2    | normal      | 12
+| Disabled |    3    | normal      | 11
+| Disabled |    4    | normal      | 13
+| Disabled |    5    | normal      | 10
+| Disabled |    6    | normal      | 9
+| Enabled  |    7    | normal      | 5
+| Enabled  |    8    | normal      | 6
+| Enabled  |    9    | normal      | 7
+| Enabled  |    10   | normal      | 4
+| Enabled  |    11   | normal      | 3
+| List size -> 12
+------------------------------------------
+List size -> 12
+UID -> 7 - Position in list -> 11
+Pushing form to list top -> 7
+------------------------------------------
+| UI list status                         |
+------------------------------------------
+| Active   | List pos| Set Behind  | UID |
+| Enabled  |    0    | Set_behind  | 1
+| Enabled  |    1    | Set_behind  | 2
+| Disabled |    2    | normal      | 12
+| Disabled |    3    | normal      | 11
+| Disabled |    4    | normal      | 13
+| Disabled |    5    | normal      | 10
+| Disabled |    6    | normal      | 9
+| Enabled  |    7    | normal      | 4
+| Enabled  |    8    | normal      | 3
+| Enabled  |    9    | normal      | 6
+| Enabled  |    10   | normal      | 7
+| Enabled  |    11   | normal      | 5
+| List size -> 12
+------------------------------------------
+List size -> 12
+UID -> 4 - Position in list -> 8
+Pushing form to list top -> 4
+------------------------------------------
+| UI list status                         |
+------------------------------------------
+| Active   | List pos| Set Behind  | UID |
+| Enabled  |    0    | Set_behind  | 1
+| Enabled  |    1    | Set_behind  | 2
+| Disabled |    2    | normal      | 12
+| Disabled |    3    | normal      | 11
+| Disabled |    4    | normal      | 13
+| Disabled |    5    | normal      | 10
+| Disabled |    6    | normal      | 9
+| Enabled  |    7    | normal      | 4
+| Enabled  |    8    | normal      | 5
+| Enabled  |    9    | normal      | 3
+| Enabled  |    10   | normal      | 6
+| Enabled  |    11   | normal      | 7
+| List size -> 12
+------------------------------------------
+List size -> 12
+UID -> 3 - Position in list -> 11
+Pushing form to list top -> 3
+------------------------------------------
+| UI list status                         |
+------------------------------------------
+| Active   | List pos| Set Behind  | UID |
+| Enabled  |    0    | Set_behind  | 1
+| Enabled  |    1    | Set_behind  | 2
+| Disabled |    2    | normal      | 12
+| Disabled |    3    | normal      | 11
+| Disabled |    4    | normal      | 13
+| Disabled |    5    | normal      | 10
+| Disabled |    6    | normal      | 9
+| Enabled  |    7    | normal      | 6
+| Enabled  |    8    | normal      | 7
+| Enabled  |    9    | normal      | 5
+| Enabled  |    10   | normal      | 3
+| Enabled  |    11   | normal      | 4
+| List size -> 12
+------------------------------------------
+List size -> 12
+UID -> 5 - Position in list -> 11
+Pushing form to list top -> 5
+------------------------------------------
+| UI list status                         |
+------------------------------------------
+| Active   | List pos| Set Behind  | UID |
+| Enabled  |    0    | Set_behind  | 1
+| Enabled  |    1    | Set_behind  | 2
+| Disabled |    2    | normal      | 12
+| Disabled |    3    | normal      | 11
+| Disabled |    4    | normal      | 13
+| Disabled |    5    | normal      | 10
+| Disabled |    6    | normal      | 9
+| Enabled  |    7    | normal      | 6
+| Enabled  |    8    | normal      | 4
+| Enabled  |    9    | normal      | 7
+| Enabled  |    10   | normal      | 5
+| Enabled  |    11   | normal      | 3
+| List size -> 12
+------------------------------------------
+List size -> 12
+UID -> 7 - Position in list -> 11
+Pushing form to list top -> 7
+------------------------------------------
+| UI list status                         |
+------------------------------------------
+| Active   | List pos| Set Behind  | UID |
+| Enabled  |    0    | Set_behind  | 1
+| Enabled  |    1    | Set_behind  | 2
+| Disabled |    2    | normal      | 12
+| Disabled |    3    | normal      | 11
+| Disabled |    4    | normal      | 13
+| Disabled |    5    | normal      | 10
+| Disabled |    6    | normal      | 9
+| Enabled  |    7    | normal      | 6
+| Enabled  |    8    | normal      | 3
+| Enabled  |    9    | normal      | 4
+| Enabled  |    10   | normal      | 7
+| Enabled  |    11   | normal      | 5
+| List size -> 12
+------------------------------------------
+List size -> 12
+UID -> 4 - Position in list -> 11
+Pushing form to list top -> 4
+------------------------------------------
+| UI list status                         |
+------------------------------------------
+| Active   | List pos| Set Behind  | UID |
+| Enabled  |    0    | Set_behind  | 1
+| Enabled  |    1    | Set_behind  | 2
+| Disabled |    2    | normal      | 12
+| Disabled |    3    | normal      | 11
+| Disabled |    4    | normal      | 13
+| Disabled |    5    | normal      | 10
+| Disabled |    6    | normal      | 9
+| Enabled  |    7    | normal      | 6
+| Enabled  |    8    | normal      | 5
+| Enabled  |    9    | normal      | 3
+| Enabled  |    10   | normal      | 4
+| Enabled  |    11   | normal      | 7
+| List size -> 12
+------------------------------------------
+List size -> 12
+UID -> 6 - Position in list -> 8
+Pushing form to list top -> 6
+------------------------------------------
+| UI list status                         |
+------------------------------------------
+| Active   | List pos| Set Behind  | UID |
+| Enabled  |    0    | Set_behind  | 1
+| Enabled  |    1    | Set_behind  | 2
+| Disabled |    2    | normal      | 12
+| Disabled |    3    | normal      | 11
+| Disabled |    4    | normal      | 13
+| Disabled |    5    | normal      | 10
+| Disabled |    6    | normal      | 9
+| Enabled  |    7    | normal      | 6
+| Enabled  |    8    | normal      | 7
+| Enabled  |    9    | normal      | 5
+| Enabled  |    10   | normal      | 3
+| Enabled  |    11   | normal      | 4
+| List size -> 12
+------------------------------------------
+List size -> 12
+UID -> 5 - Position in list -> 11
+Pushing form to list top -> 5
+------------------------------------------
+| UI list status                         |
+------------------------------------------
+| Active   | List pos| Set Behind  | UID |
+| Enabled  |    0    | Set_behind  | 1
+| Enabled  |    1    | Set_behind  | 2
+| Disabled |    2    | normal      | 12
+| Disabled |    3    | normal      | 11
+| Disabled |    4    | normal      | 13
+| Disabled |    5    | normal      | 10
+| Disabled |    6    | normal      | 9
+| Enabled  |    7    | normal      | 3
+| Enabled  |    8    | normal      | 4
+| Enabled  |    9    | normal      | 7
+| Enabled  |    10   | normal      | 5
+| Enabled  |    11   | normal      | 6
+| List size -> 12
+------------------------------------------
+List size -> 12
+UID -> 7 - Position in list -> 11
+Pushing form to list top -> 7
+------------------------------------------
+| UI list status                         |
+------------------------------------------
+| Active   | List pos| Set Behind  | UID |
+| Enabled  |    0    | Set_behind  | 1
+| Enabled  |    1    | Set_behind  | 2
+| Disabled |    2    | normal      | 12
+| Disabled |    3    | normal      | 11
+| Disabled |    4    | normal      | 13
+| Disabled |    5    | normal      | 10
+| Disabled |    6    | normal      | 9
+| Enabled  |    7    | normal      | 3
+| Enabled  |    8    | normal      | 6
+| Enabled  |    9    | normal      | 4
+| Enabled  |    10   | normal      | 7
+| Enabled  |    11   | normal      | 5
+| List size -> 12
+------------------------------------------
+List size -> 12
+UID -> 6 - Position in list -> 10
+Pushing form to list top -> 6
+------------------------------------------
+| UI list status                         |
+------------------------------------------
+| Active   | List pos| Set Behind  | UID |
+| Enabled  |    0    | Set_behind  | 1
+| Enabled  |    1    | Set_behind  | 2
+| Disabled |    2    | normal      | 12
+| Disabled |    3    | normal      | 11
+| Disabled |    4    | normal      | 13
+| Disabled |    5    | normal      | 10
+| Disabled |    6    | normal      | 9
+| Enabled  |    7    | normal      | 3
+| Enabled  |    8    | normal      | 5
+| Enabled  |    9    | normal      | 6
+| Enabled  |    10   | normal      | 4
+| Enabled  |    11   | normal      | 7
+| List size -> 12
+------------------------------------------
+List size -> 12
+UID -> 6 - Position in list -> 12
+List size -> 12
+UID -> 3 - Position in list -> 11
+Pushing form to list top -> 3
+------------------------------------------
+| UI list status                         |
+------------------------------------------
+| Active   | List pos| Set Behind  | UID |
+| Enabled  |    0    | Set_behind  | 1
+| Enabled  |    1    | Set_behind  | 2
+| Disabled |    2    | normal      | 12
+| Disabled |    3    | normal      | 11
+| Disabled |    4    | normal      | 13
+| Disabled |    5    | normal      | 10
+| Disabled |    6    | normal      | 9
+| Enabled  |    7    | normal      | 4
+| Enabled  |    8    | normal      | 7
+| Enabled  |    9    | normal      | 5
+| Enabled  |    10   | normal      | 3
+| Enabled  |    11   | normal      | 6
+| List size -> 12
+------------------------------------------
+List size -> 12
+UID -> 4 - Position in list -> 8
+Pushing form to list top -> 4
+------------------------------------------
+| UI list status                         |
+------------------------------------------
+| Active   | List pos| Set Behind  | UID |
+| Enabled  |    0    | Set_behind  | 1
+| Enabled  |    1    | Set_behind  | 2
+| Disabled |    2    | normal      | 12
+| Disabled |    3    | normal      | 11
+| Disabled |    4    | normal      | 13
+| Disabled |    5    | normal      | 10
+| Disabled |    6    | normal      | 9
+| Enabled  |    7    | normal      | 4
+| Enabled  |    8    | normal      | 6
+| Enabled  |    9    | normal      | 7
+| Enabled  |    10   | normal      | 5
+| Enabled  |    11   | normal      | 3
+| List size -> 12
+------------------------------------------
+List size -> 12
+UID -> 6 - Position in list -> 10
+Pushing form to list top -> 6
+------------------------------------------
+| UI list status                         |
+------------------------------------------
+| Active   | List pos| Set Behind  | UID |
+| Enabled  |    0    | Set_behind  | 1
+| Enabled  |    1    | Set_behind  | 2
+| Disabled |    2    | normal      | 12
+| Disabled |    3    | normal      | 11
+| Disabled |    4    | normal      | 13
+| Disabled |    5    | normal      | 10
+| Disabled |    6    | normal      | 9
+| Enabled  |    7    | normal      | 5
+| Enabled  |    8    | normal      | 3
+| Enabled  |    9    | normal      | 6
+| Enabled  |    10   | normal      | 7
+| Enabled  |    11   | normal      | 4
+| List size -> 12
+------------------------------------------
+List size -> 12
+UID -> 5 - Position in list -> 11
+Pushing form to list top -> 5
+------------------------------------------
+| UI list status                         |
+------------------------------------------
+| Active   | List pos| Set Behind  | UID |
+| Enabled  |    0    | Set_behind  | 1
+| Enabled  |    1    | Set_behind  | 2
+| Disabled |    2    | normal      | 12
+| Disabled |    3    | normal      | 11
+| Disabled |    4    | normal      | 13
+| Disabled |    5    | normal      | 10
+| Disabled |    6    | normal      | 9
+| Enabled  |    7    | normal      | 7
+| Enabled  |    8    | normal      | 4
+| Enabled  |    9    | normal      | 3
+| Enabled  |    10   | normal      | 5
+| Enabled  |    11   | normal      | 6
+| List size -> 12
+------------------------------------------
+List size -> 12
+UID -> 7 - Position in list -> 8
+Pushing form to list top -> 7
+------------------------------------------
+| UI list status                         |
+------------------------------------------
+| Active   | List pos| Set Behind  | UID |
+| Enabled  |    0    | Set_behind  | 1
+| Enabled  |    1    | Set_behind  | 2
+| Disabled |    2    | normal      | 12
+| Disabled |    3    | normal      | 11
+| Disabled |    4    | normal      | 13
+| Disabled |    5    | normal      | 10
+| Disabled |    6    | normal      | 9
+| Enabled  |    7    | normal      | 7
+| Enabled  |    8    | normal      | 6
+| Enabled  |    9    | normal      | 4
+| Enabled  |    10   | normal      | 3
+| Enabled  |    11   | normal      | 5
+| List size -> 12
+------------------------------------------
+Pushing form to list top -> 9
+------------------------------------------
+| UI list status                         |
+------------------------------------------
+| Active   | List pos| Set Behind  | UID |
+| Enabled  |    0    | Set_behind  | 1
+| Enabled  |    1    | Set_behind  | 2
+| Disabled |    2    | normal      | 12
+| Disabled |    3    | normal      | 11
+| Disabled |    4    | normal      | 13
+| Disabled |    5    | normal      | 10
+| Enabled  |    6    | normal      | 9
+| Enabled  |    7    | normal      | 3
+| Enabled  |    8    | normal      | 5
+| Enabled  |    9    | normal      | 6
+| Enabled  |    10   | normal      | 4
+| Enabled  |    11   | normal      | 7
+| List size -> 12
+------------------------------------------
 Processing event - 101
+Pushing form to list top -> 9
+------------------------------------------
+| UI list status                         |
+------------------------------------------
+| Active   | List pos| Set Behind  | UID |
+| Enabled  |    0    | Set_behind  | 1
+| Enabled  |    1    | Set_behind  | 2
+| Disabled |    2    | normal      | 12
+| Disabled |    3    | normal      | 11
+| Disabled |    4    | normal      | 13
+| Disabled |    5    | normal      | 10
+| Disabled |    6    | normal      | 3
+| Disabled |    7    | normal      | 5
+| Disabled |    8    | normal      | 6
+| Disabled |    9    | normal      | 4
+| Disabled |    10   | normal      | 7
+| Enabled  |    11   | normal      | 9
+| List size -> 12
+------------------------------------------
+Pushing form to list top -> 10
+------------------------------------------
+| UI list status                         |
+------------------------------------------
+| Active   | List pos| Set Behind  | UID |
+| Enabled  |    0    | Set_behind  | 1
+| Enabled  |    1    | Set_behind  | 2
+| Disabled |    2    | normal      | 12
+| Disabled |    3    | normal      | 11
+| Disabled |    4    | normal      | 13
+| Enabled  |    5    | normal      | 10
+| Disabled |    6    | normal      | 3
+| Disabled |    7    | normal      | 5
+| Disabled |    8    | normal      | 6
+| Disabled |    9    | normal      | 4
+| Disabled |    10   | normal      | 7
+| Disabled |    11   | normal      | 9
+| List size -> 12
+------------------------------------------
+Loading TMX map file -> data/maps/town.tmx
+Pushing form to list top -> 9
+------------------------------------------
+| UI list status                         |
+------------------------------------------
+| Active   | List pos| Set Behind  | UID |
+| Enabled  |    0    | Set_behind  | 1
+| Enabled  |    1    | Set_behind  | 2
+| Disabled |    2    | normal      | 12
+| Disabled |    3    | normal      | 11
+| Disabled |    4    | normal      | 13
+| Disabled |    5    | normal      | 3
+| Disabled |    6    | normal      | 5
+| Disabled |    7    | normal      | 6
+| Disabled |    8    | normal      | 4
+| Disabled |    9    | normal      | 7
+| Enabled  |    10   | normal      | 9
+| Disabled |    11   | normal      | 10
+| List size -> 12
+------------------------------------------
  
 # ---------------------------------------------- #
  
 Font    count -> 2
 Music   count -> 1
 Sound   count -> 3
-Texture count -> 89
+Texture count -> 90
  
 # ---------------------------------------------- #
  

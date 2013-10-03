@@ -775,7 +775,8 @@ void process_menu_options(UI_form_struct *UI_form_pointer)
             break;
             case (EVENT_UI_LIST_SORT): //Window stack sort
                 UI_form_pointer->data.event.id = EVENT_NONE;
-                game.UI_manager.event.id = EVENT_UI_LIST_SORT;
+                game.UI_manager.event.id    = EVENT_UI_LIST_SORT;
+                game.UI_manager.event.value = UI_form_pointer->data.UID;
             break;
             case (EVENT_UI_ELEMENT_DRAG): //Element drag event posted
                 //game.UI_manager.source.window = MENU_OPTIONS_UID;
@@ -875,6 +876,11 @@ void process_menu_options(UI_form_struct *UI_form_pointer)
             game.texture_manager.reload_textures();
             update_menu_game_new(UID_MENU_GAME_NEW);
         }
+    }
+    if (UI_form_pointer->data.event.id != EVENT_NONE)
+    {
+        game.UI_manager.event.id    = EVENT_UI_LIST_SORT;
+        game.UI_manager.event.value = UI_form_pointer->data.UID;
     }
     UI_form_pointer->data.event.id = EVENT_NONE;
 };
