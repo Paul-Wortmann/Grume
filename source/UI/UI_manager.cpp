@@ -246,8 +246,8 @@ void UI_manager_class::UI_form_list_sort(int UI_form_UID)
 {
     if ((UI_manager_class::number_of_UI_forms > 1) && (!UI_manager_class::element_drag_in_progress) && (UI_manager_class::UI_form_is_enable(UI_form_UID)) && (UI_form_UID <= UI_manager_class::number_of_UI_forms) && (UI_form_UID >= 0))
     {
-        game.core.log.file_write("Pushing form to list top -> ",UI_form_UID);
-        UI_form_list_log();
+        //game.core.log.file_write("Pushing form to list top -> ",UI_form_UID);
+        //UI_form_list_log();
         UI_form_struct *UI_form_pointer_2;
         UI_form_struct *UI_form_pointer_3;
         UI_form_pointer_3 = new UI_form_struct;
