@@ -24,7 +24,7 @@
 
 #include "menu_options.hpp"
 #include <string>
-#include "../game.hpp"
+#include "../game/game.hpp"
 
 extern game_class         game;
 extern tmx_map_type       tmx_map;

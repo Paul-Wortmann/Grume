@@ -24,8 +24,8 @@
 
 #include <fstream>
 #include "savegame.hpp"
-#include "../game.hpp"
-#include "../save_data.hpp"
+#include "../game/game.hpp"
+#include "../game/save_data.hpp"
 
 extern game_class      game;
 extern save_data_type save_data;

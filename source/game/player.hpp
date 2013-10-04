@@ -26,8 +26,8 @@
 #define PLAYER_H
 
 #include <string>
-#include "core/pathfinding.hpp"
-#include "core/texture_manager.hpp"
+#include "../core/pathfinding.hpp"
+#include "../core/texture_manager.hpp"
 
 #define MAX_PLAYERS 4
 

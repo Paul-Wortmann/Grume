@@ -29,7 +29,7 @@
 #include <string>
 #include "map_2D.hpp"
 #include "loader_tmx.hpp"
-#include "../game.hpp"
+#include "../game/game.hpp"
 #include "texture_manager.hpp"
 #include "misc.hpp"
 

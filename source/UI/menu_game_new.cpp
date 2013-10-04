@@ -23,7 +23,7 @@
  */
 
 #include "menu_game_new.hpp"
-#include "../game.hpp"
+#include "../game/game.hpp"
 
 extern game_class         game;
 

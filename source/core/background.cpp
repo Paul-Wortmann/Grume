@@ -23,7 +23,7 @@
  */
 
 #include "core.hpp"
-#include "../game.hpp"
+#include "../game/game.hpp"
 #include "background.hpp"
 
 extern game_class game;

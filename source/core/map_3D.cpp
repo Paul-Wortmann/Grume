@@ -32,11 +32,10 @@
 #include <string>
 #include "map_2D.hpp"
 #include "map_3D.hpp"
-#include "../game.hpp"
+#include "../game/game.hpp"
 #include "texture_manager.hpp"
 #include "loader_obj.hpp"
 #include "misc.hpp"
-#include "../game.hpp"
 
 extern game_class         game;
 

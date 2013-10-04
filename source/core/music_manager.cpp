@@ -47,7 +47,7 @@
  */
 
 #include "music_manager.hpp"
-#include "../game.hpp"
+#include "../game/game.hpp"
 
 extern game_class game;
 

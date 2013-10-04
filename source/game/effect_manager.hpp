@@ -22,20 +22,49 @@
  * @date 2011-11-11
  */
 
-#include <SDL2/SDL.h>
-#include <GL/gl.h>
-#include "UI_loading_screen.hpp"
+#ifndef EFFECT_MANAGER_H
+#define EFFECT_MANAGER_H
+
+#include <string>
 #include "../core/texture_manager.hpp"
-#include "../game/game.hpp"
+#include "../core/sound_manager.hpp"
 
-extern game_class game;
+#define EFFECT_NONE          0
+#define EFFECT_MOD_HEALTH    1
+#define EFFECT_MOD_MANA      2
 
-void UI_loading_screen_class::display(std::string file_name)
+
+struct effect_data_type
 {
-    texture_type* loading_screen_texture;
-    loading_screen_texture = game.texture_manager.add_texture(file_name.c_str(),false);
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-    SDL_GL_SwapWindow(game.core.window_pointer);
-    game.texture_manager.draw(loading_screen_texture,false,0.0f,0.0f,0.9f,2.0f,2.0f);
-    SDL_GL_SwapWindow(game.core.window_pointer);
+    bool             passive;
+    int              type;
+    int              value;
+    bool             active;
+    std::string      name;
+    int              sub_type;
+    int              UID;
 };
+
+struct effect_type
+{
+    effect_data_type  data;
+    effect_type      *next;
+};
+
+
+class effect_manager_class
+{
+    public:
+        effect_manager_class(void);
+       ~effect_manager_class(void);
+        int                 number_of_effects;
+        effect_type        *root;
+        effect_type        *last;
+        effect_type        *effect;
+        effect_type        *add_effect(int effect_UID);
+};
+
+void  use_effect(int effect_UID, float value);
+
+#endif // EFFECT_MANAGER_H
+

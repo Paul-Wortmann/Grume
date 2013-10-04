@@ -28,7 +28,7 @@
 #include <stdlib.h>
 #include <string>
 #include "loader_md2.hpp"
-#include "../game.hpp"
+#include "../game/game.hpp"
 #include "misc.hpp"
 
 extern game_class         game;

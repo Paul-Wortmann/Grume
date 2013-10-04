@@ -22,7 +22,7 @@
  * @date 2011-11-11
  */
 
-#include "game.hpp"
+#include "game/game.hpp"
 #include <SDL2/SDL.h>
 //#include <physfs.h>
 #include "core/misc.hpp"

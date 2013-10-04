@@ -25,7 +25,7 @@
 #include <GL/gl.h>
 #include "core.hpp"
 #include "graphics.hpp"
-#include "../game.hpp"
+#include "../game/game.hpp"
 
 extern game_class game;
 

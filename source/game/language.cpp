@@ -28,7 +28,7 @@
 #include <stdlib.h>
 #include <string>
 #include "game.hpp"
-#include "core/misc.hpp"
+#include "../core/misc.hpp"
 #include "language.hpp"
 
 extern  game_class                game;

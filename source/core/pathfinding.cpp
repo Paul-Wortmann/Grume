@@ -27,7 +27,7 @@
 #include "map_gen.hpp"
 #include <stdio.h>
 #include <stdlib.h>
-#include "../game.hpp"
+#include "../game/game.hpp"
 
 extern game_class        game;
 

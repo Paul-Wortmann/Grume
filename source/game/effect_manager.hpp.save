@@ -22,15 +22,42 @@
  * @date 2011-11-11
  */
 
-#include "UI_cursor.hpp"
-#include "../game/game.hpp"
+#ifndef EFFECT_MANAGER_H
+#define EFFECT_MANAGER_H
 
-extern game_class game;
+#include <string>
+#include "core/texture_manager.hpp"
+#include "core/sound_manager.hpp"
 
-void UI_cursor_class::draw(void)
+#define EFFECT_NONE          0
+#define EFFECT_MOD_HEALTH    1
+#define EFFECT_MOD_MANA      2
+
+
+struct effect_data_type
 {
-    game.texture_manager.draw(UI_cursor_class::pointer,false,game.core.io.mouse_x+0.012f,game.core.io.mouse_y-0.018f,0.001f,0.04f,0.04f,345.0f);
+    int             number_of_items;
+    bool passive;
+    int  type;
+    int  value;
+    bool             active;
+    std::string      name;
+    int              sub_type;
+};
+
+class item_manager_class
+{
+    public:
+        item_manager_class(void);
+       ~item_manager_class(void);
+        item_type        *root;
+        item_type        *item;
+        effect_data_type  data;
+        item_type        *add_item(std::string file_name);
+        item_type        *add_item(item_type *item_pointer);
+        void              use_item(item_type *item_pointer);
 };
 
 
+#endif // EFFECT_MANAGER_H
 

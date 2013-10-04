@@ -22,7 +22,7 @@
  * @date 2011-11-11
  */
 
-#include "core/map_2D.hpp"
+#include "../core/map_2D.hpp"
 #include "game.hpp"
 
 game_class        game;

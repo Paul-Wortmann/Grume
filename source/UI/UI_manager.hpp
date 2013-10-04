@@ -39,7 +39,7 @@
 #include "skillbook_window.hpp"
 #include "UI_cursor.hpp"
 #include "UI_types.hpp"
-#include "../player.hpp"
+#include "../game/player.hpp"
 
 #define    UID_ACTIONBAR          1
 #define    UID_PCPROFILE          2

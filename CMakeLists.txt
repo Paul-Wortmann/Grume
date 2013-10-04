@@ -2,7 +2,7 @@ Project ("Frost and Flame")
 cmake_minimum_required (VERSION 2.6)
 
 Set (PACKAGE "FROST_AND_FLAME")
-Set (VERSION "0.17")
+Set (VERSION "0.24")
 
 
 # Default definitions
@@ -141,15 +141,16 @@ Set (FROST_AND_FLAME_SOURCES
 	./source/UI/UI_loading_screen.cpp
 	./source/UI/UI_manager.cpp
 	#./source/UI/UI_types.cpp
-	./source/command_line_parser.cpp
-	./source/game.cpp
-	./source/item_manager.cpp
-	./source/language.cpp
+	./source/game/command_line_parser.cpp
+	./source/game/effect_manager.cpp
+	./source/game/game.cpp
+	./source/game/item_manager.cpp
+	./source/game/language.cpp
+	./source/game/npc.cpp
+	./source/game/player.cpp
+	./source/game/save_data.cpp
+	./source/game/spells.cpp
 	./source/main.cpp
-	./source/npc.cpp
-	./source/player.cpp
-	./source/save_data.cpp
-	./source/spells.cpp
 )
 
 # Add icon and file info to executable for Windows systems

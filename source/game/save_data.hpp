@@ -25,8 +25,8 @@
 #ifndef SAVE_DATA_H
 #define SAVE_DATA_H
 
-#include "core/core.hpp"
-#include "core/savegame.hpp"
+#include "../core/core.hpp"
+#include "../core/savegame.hpp"
 #include "game.hpp"
 
 struct save_data_type

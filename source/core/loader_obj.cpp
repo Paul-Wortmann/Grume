@@ -32,7 +32,7 @@
 #include <SDL2/SDL_image.h>
 #include "texture_manager.hpp"
 #include "loader_obj.hpp"
-#include "../game.hpp"
+#include "../game/game.hpp"
 #include "misc.hpp"
 
 #define GL_BGR  0x80E0
