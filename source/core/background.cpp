@@ -28,15 +28,15 @@
 
 extern game_class game;
 
-background_class::background_class       (void)
+background_class::background_class (void)
 {
-    for(int layer_number = 1; layer_number < MAX_LAYERS+1; layer_number++)
+    for (int layer_number = 1; layer_number < MAX_LAYERS+1; layer_number++)
     {
-        background_class::layer[layer_number].active      = false;
+        background_class::layer[layer_number].active    = false;
     }
 };
 
-void background_class::set_data          (int layer_number, int dx, int dy, float px, float py, float srx, float sry, std::string image_path)
+void background_class::set_data (int layer_number, int dx, int dy, float px, float py, float srx, float sry, std::string image_path)
 {
     background_class::layer[layer_number].active        = true;
     background_class::layer[layer_number].dir_x         = dx;
@@ -49,16 +49,16 @@ void background_class::set_data          (int layer_number, int dx, int dy, floa
     background_class::layer[layer_number].image         = game.texture_manager.add_texture(image_path);
 };
 
-void background_class::set_image         (int layer_number, std::string image_path)
+void background_class::set_image (int layer_number, std::string image_path)
 {
     background_class::layer[layer_number].image_path    = image_path;
     background_class::layer[layer_number].image         = game.texture_manager.add_texture(image_path);
 };
 
-bool  background_class::scroll_up        (void)
+bool  background_class::scroll_up (void)
 {
     bool return_value = false;
-    for(int layer_number = 1; layer_number < MAX_LAYERS+1; layer_number++)
+    for (int layer_number = 1; layer_number < MAX_LAYERS+1; layer_number++)
     {
         background_class::layer[layer_number].pos_y -= background_class::layer[layer_number].scroll_rate_y;
         if (background_class::layer[layer_number].pos_y < -1.0f) background_class::layer[layer_number].pos_y = -1.0f;
@@ -67,10 +67,10 @@ bool  background_class::scroll_up        (void)
     return(return_value);
 };
 
-bool  background_class::scroll_down      (void)
+bool  background_class::scroll_down (void)
 {
     bool return_value = false;
-    for(int layer_number = 1; layer_number < MAX_LAYERS+1; layer_number++)
+    for (int layer_number = 1; layer_number < MAX_LAYERS+1; layer_number++)
     {
         background_class::layer[layer_number].pos_y += background_class::layer[layer_number].scroll_rate_y;
         if (background_class::layer[layer_number].pos_y > 1.0f) background_class::layer[layer_number].pos_y = 1.0f;
@@ -79,14 +79,14 @@ bool  background_class::scroll_down      (void)
     return(return_value);
 };
 
-void background_class::process           (void)
+void background_class::process (void)
 {
     switch (background_class::movemennt_type)
     {
         case BOUNCE:
-            for(int layer_number = 1; layer_number < MAX_LAYERS+1; layer_number++)
+            for (int layer_number = 1; layer_number < MAX_LAYERS+1; layer_number++)
             {
-                if(background_class::layer[layer_number].dir_x == 0)
+                if (background_class::layer[layer_number].dir_x == 0)
                 {
                     background_class::layer[layer_number].pos_x -= background_class::layer[layer_number].scroll_rate_x;
                     if (background_class::layer[layer_number].pos_x < 0.0f) background_class::layer[layer_number].dir_x = 1;
@@ -96,7 +96,7 @@ void background_class::process           (void)
                     background_class::layer[layer_number].pos_x += background_class::layer[layer_number].scroll_rate_x;
                     if (background_class::layer[layer_number].pos_x > 1.0f) background_class::layer[layer_number].dir_x = 0;
                 }
-                if(background_class::layer[layer_number].dir_y == 0)
+                if (background_class::layer[layer_number].dir_y == 0)
                 {
                     background_class::layer[layer_number].pos_y -= background_class::layer[layer_number].scroll_rate_y;
                     if (background_class::layer[layer_number].pos_y < 0.0f) background_class::layer[layer_number].dir_y = 1;
@@ -109,14 +109,14 @@ void background_class::process           (void)
             }
         break;
         case SCROLL:
-            for(int layer_number = 1; layer_number < MAX_LAYERS+1; layer_number++)
+            for (int layer_number = 1; layer_number < MAX_LAYERS+1; layer_number++)
             {
                 background_class::layer[layer_number].pos_x -= background_class::layer[layer_number].scroll_rate_x;
                 if (background_class::layer[layer_number].pos_x <= -4.0f) background_class::layer[layer_number].pos_x = 4.0f;
             }
         break;
         case FRONT_SCROLL:
-            for(int layer_number = 1; layer_number < MAX_LAYERS+1; layer_number++)
+            for (int layer_number = 1; layer_number < MAX_LAYERS+1; layer_number++)
             {
                 if (layer_number != 2)
                 {
@@ -130,12 +130,12 @@ void background_class::process           (void)
     }
 };
 
-void background_class::draw             (void)
+void background_class::draw (void)
 {
     float z_pos = 0.15f;
-    for(int layer_number = 0; layer_number <= MAX_LAYERS; layer_number++)
+    for (int layer_number = 0; layer_number <= MAX_LAYERS; layer_number++)
     {
-        if(background_class::layer[layer_number].active)
+        if (background_class::layer[layer_number].active)
         {
             switch (background_class::movemennt_type)
             {
@@ -157,7 +157,7 @@ void background_class::draw             (void)
     }
 }
 
-void background_class::reload_textures(void)
+void background_class::reload_textures (void)
 {
     for (int layer_number = 0; layer_number <= MAX_LAYERS; layer_number++)
     {
