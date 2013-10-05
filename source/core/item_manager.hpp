@@ -84,14 +84,6 @@
 #define SOCKET_GEM    1
 #define SOCKET_RUNE   2
 
-struct item_effect_type
-{
-    bool enabled;
-    bool passive;
-    int  type;
-    int  value;
-};
-
 struct item_socket_type
 {
     bool enabled;
@@ -99,25 +91,31 @@ struct item_socket_type
     int  value;
 };
 
-struct item_type
+struct item_data_type
 {
-    sound_type      *sound_move;
-    sound_type      *sound_use;
-    texture_type    *image;
+    sound_type*      sound_move;
+    sound_type*      sound_use;
+    texture_type*    image;
     bool             active;
     std::string      name;
-    int              ID;
+    int              UID;
     int              type;
     int              sub_type;
     int              quantity;
     int              quantity_max;
     int              number_of_item_effects;
     int              number_of_item_sockets;
-    bool             socketable;
+    bool             socketable;  // has sockets, or can gain sockets via NPC etc...
+    int              socket_max;  // max_number of allowed sockets for item, ie. ring == 1 etc...
     int              socket_type; // Only accept certain items
-    item_effect_type effect[MAX_ITEM_EFFECTS];
+    effect_type*     effect[MAX_ITEM_EFFECTS];
     item_socket_type socket[MAX_ITEM_SOCKETS];
-    item_type       *next;
+};
+
+struct item_type
+{
+    item_data_type   data;
+    item_type*       next;
 };
 
 class item_manager_class
@@ -126,16 +124,13 @@ class item_manager_class
         item_manager_class(void);
        ~item_manager_class(void);
         int             number_of_items;
-        item_type      *root;
-        item_type      *item;
-        item_type      *add_item(std::string file_name);
-        item_type      *add_item(item_type *item_pointer);
+        item_type*      root;
+        item_type*      last;
+        item_type*      item;
+        item_type*      add_item(std::string file_name);
+        item_type*      add_item(int item_UID);
         void            use_item(item_type *item_pointer);
 };
-
-void  init_items(void); // Initialize hard-coded default items, such as health potions etc...
-void  load_items(std::string file_name); // Load items from file.
-void  use_effect(int effect_ID, float value); // this should be in effect_manager.xpp!
 
 #endif // ITEM_MANAGER_H
 

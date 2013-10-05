@@ -154,8 +154,6 @@
 		<Unit filename="source/UI/quest_log_window.hpp" />
 		<Unit filename="source/UI/skillbook_window.cpp" />
 		<Unit filename="source/UI/skillbook_window.hpp" />
-		<Unit filename="source/command_line_parser.cpp" />
-		<Unit filename="source/command_line_parser.hpp" />
 		<Unit filename="source/core/background.cpp" />
 		<Unit filename="source/core/background.hpp" />
 		<Unit filename="source/core/config.cpp" />
@@ -209,24 +207,26 @@
 		<Unit filename="source/core/types.hpp" />
 		<Unit filename="source/core/vector.cpp" />
 		<Unit filename="source/core/vector.hpp" />
-		<Unit filename="source/game.cpp" />
-		<Unit filename="source/game.hpp" />
-		<Unit filename="source/icon.rc">
-			<Option compilerVar="WINDRES" />
-		</Unit>
-		<Unit filename="source/item_manager.cpp" />
-		<Unit filename="source/item_manager.hpp" />
-		<Unit filename="source/language.cpp" />
-		<Unit filename="source/language.hpp" />
+		<Unit filename="source/game/command_line_parser.cpp" />
+		<Unit filename="source/game/command_line_parser.hpp" />
+		<Unit filename="source/game/effect_manager.cpp" />
+		<Unit filename="source/game/effect_manager.hpp" />
+		<Unit filename="source/game/game.cpp" />
+		<Unit filename="source/game/game.hpp" />
+		<Unit filename="source/game/item_manager.cpp" />
+		<Unit filename="source/game/item_manager.hpp" />
+		<Unit filename="source/game/language.cpp" />
+		<Unit filename="source/game/language.hpp" />
+		<Unit filename="source/game/npc.cpp" />
+		<Unit filename="source/game/npc.hpp" />
+		<Unit filename="source/game/player.cpp" />
+		<Unit filename="source/game/player.hpp" />
+		<Unit filename="source/game/save_data.cpp" />
+		<Unit filename="source/game/save_data.hpp" />
+		<Unit filename="source/game/spells.cpp" />
+		<Unit filename="source/game/spells.hpp" />
+		<Unit filename="source/icon.ico" />
 		<Unit filename="source/main.cpp" />
-		<Unit filename="source/npc.cpp" />
-		<Unit filename="source/npc.hpp" />
-		<Unit filename="source/player.cpp" />
-		<Unit filename="source/player.hpp" />
-		<Unit filename="source/save_data.cpp" />
-		<Unit filename="source/save_data.hpp" />
-		<Unit filename="source/spells.cpp" />
-		<Unit filename="source/spells.hpp" />
 		<Extensions>
 			<code_completion />
 			<envvars />

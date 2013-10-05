@@ -99,11 +99,14 @@ endif (OPENGL_FOUND)
 
 Set (FROST_AND_FLAME_SOURCES
 	./source/core/background.cpp
+	./source/core/command_line_parser.cpp
 	./source/core/config.cpp
 	./source/core/core.cpp
+	./source/core/effect_manager.cpp
 	./source/core/file.cpp
 	./source/core/font_manager.cpp
 	./source/core/graphics.cpp
+	./source/core/item_manager.cpp
 	./source/core/io.cpp
 	./source/core/loader_md2.cpp
 	./source/core/loader_obj.cpp
@@ -141,10 +144,9 @@ Set (FROST_AND_FLAME_SOURCES
 	./source/UI/UI_loading_screen.cpp
 	./source/UI/UI_manager.cpp
 	#./source/UI/UI_types.cpp
-	./source/game/command_line_parser.cpp
-	./source/game/effect_manager.cpp
+	./source/game/effects.cpp
 	./source/game/game.cpp
-	./source/game/item_manager.cpp
+	./source/game/items.cpp
 	./source/game/language.cpp
 	./source/game/npc.cpp
 	./source/game/player.cpp

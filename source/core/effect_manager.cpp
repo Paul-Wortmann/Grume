@@ -23,7 +23,7 @@
  */
 
 #include "effect_manager.hpp"
-#include "game.hpp"
+#include "../game/game.hpp"
 
 extern game_class game;
 
@@ -80,20 +80,3 @@ effect_type* effect_manager_class::add_effect(int effect_UID)
     return(effect_manager_class::last);
 };
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------------
-void  use_effect(int effect_UID, float value)
-{
-    switch (effect_UID)
-    {
-        case EFFECT_NONE:
-        break;
-        case EFFECT_MOD_HEALTH:
-            game.player.health.current += value;
-        break;
-        case EFFECT_MOD_MANA:
-            game.player.mana.current   += value;
-        break;
-        default:
-        break;
-    }
-};

@@ -22,49 +22,20 @@
  * @date 2011-11-11
  */
 
-#ifndef EFFECT_MANAGER_H
-#define EFFECT_MANAGER_H
+#ifndef ITEMS_H
+#define ITEMS_H
 
 #include <string>
-#include "../core/texture_manager.hpp"
-#include "../core/sound_manager.hpp"
+#include "../core/item_manager.hpp"
 
-#define EFFECT_NONE          0
-#define EFFECT_MOD_HEALTH    1
-#define EFFECT_MOD_MANA      2
-
-
-struct effect_data_type
-{
-    bool             passive;
-    int              type;
-    int              value;
-    bool             active;
-    std::string      name;
-    int              sub_type;
-    int              UID;
-};
-
-struct effect_type
-{
-    effect_data_type  data;
-    effect_type      *next;
-};
-
-
-class effect_manager_class
+class item_class
 {
     public:
-        effect_manager_class(void);
-       ~effect_manager_class(void);
-        int                 number_of_effects;
-        effect_type        *root;
-        effect_type        *last;
-        effect_type        *effect;
-        effect_type        *add_effect(int effect_UID);
+        item_type*      item_health_potion;
+        void            init_items(void); // Initialize hard-coded default items, such as health potions etc...
+        void            load_items(std::string file_name); // Load items from file.
+        void            use_item(int window_from, int element_from);
 };
 
-void  use_effect(int effect_UID, float value);
-
-#endif // EFFECT_MANAGER_H
+#endif // ITEMS_H
 

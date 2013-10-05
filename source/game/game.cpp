@@ -94,8 +94,9 @@ void game_class::init(void)
 
     //--- other ---
     game.music_manager.next_track = true;
+    game.effect.init_effects();
+    game.item.init_items();
     init_spells();
-    init_items();
 
 
     //zoom out for testing

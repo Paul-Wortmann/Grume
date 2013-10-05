@@ -26,38 +26,42 @@
 #define EFFECT_MANAGER_H
 
 #include <string>
-#include "core/texture_manager.hpp"
-#include "core/sound_manager.hpp"
+#include "../core/texture_manager.hpp"
+#include "../core/sound_manager.hpp"
 
 #define EFFECT_NONE          0
 #define EFFECT_MOD_HEALTH    1
 #define EFFECT_MOD_MANA      2
 
-
 struct effect_data_type
 {
-    int             number_of_items;
-    bool passive;
-    int  type;
-    int  value;
+    bool             passive;
+    int              type;
+    int              value;
     bool             active;
     std::string      name;
     int              sub_type;
+    int              UID;
 };
 
-class item_manager_class
+struct effect_type
+{
+    effect_data_type  data;
+    effect_type      *next;
+};
+
+
+class effect_manager_class
 {
     public:
-        item_manager_class(void);
-       ~item_manager_class(void);
-        item_type        *root;
-        item_type        *item;
-        effect_data_type  data;
-        item_type        *add_item(std::string file_name);
-        item_type        *add_item(item_type *item_pointer);
-        void              use_item(item_type *item_pointer);
+        effect_manager_class(void);
+       ~effect_manager_class(void);
+        int                 number_of_effects;
+        effect_type        *root;
+        effect_type        *last;
+        effect_type        *effect;
+        effect_type        *add_effect(int effect_UID);
 };
-
 
 #endif // EFFECT_MANAGER_H
 

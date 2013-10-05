@@ -24,7 +24,7 @@
 
 #include <string>
 #include "command_line_parser.hpp"
-#include "game.hpp"
+#include "../game/game.hpp"
 
 extern game_class game;
 

@@ -25,8 +25,11 @@
 #ifndef GAME_H
 #define GAME_H
 
+#include "../core/command_line_parser.hpp"
 #include "../core/core.hpp"
+#include "../core/effect_manager.hpp"
 #include "../core/font_manager.hpp"
+#include "../core/item_manager.hpp"
 #include "../core/map_2D.hpp"
 #include "../core/music_manager.hpp"
 #include "../core/network.hpp"
@@ -36,8 +39,8 @@
 #include "../core/types.hpp"
 #include "../UI/UI_loading_screen.hpp"
 #include "../UI/UI_manager.hpp"
-#include "command_line_parser.hpp"
-#include "item_manager.hpp"
+#include "effects.hpp"
+#include "items.hpp"
 #include "language.hpp"
 #include "npc.hpp"
 #include "player.hpp"
@@ -70,9 +73,12 @@ class game_class
         // ----------------------------------------------------------
         command_line_parser_class command_line;
         core_class                core;
+        effect_class              effect;
+        effect_manager_class      effect_manager;
         int                       event;
         font_manager_class        font_manager;
         light_type                global_ambient;
+        item_class                item;
         item_manager_class        item_manager;
         language_class            language;
         map_2D_class              map_2D;
