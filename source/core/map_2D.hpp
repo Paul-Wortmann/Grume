@@ -38,15 +38,15 @@ const float  TILE_HEIGHT_HALF    = TILE_HEIGHT/2.0f;
 class map_2D_class
 {
     public:
-        void render(fmx_map_type *fmx_map_pointer);
-        void process(fmx_map_type *fmx_map_pointer);
-        void scroll_map(fmx_map_type *fmx_map_pointer, int x_dir, int y_dir);
-        bool tile_visible(fmx_map_type *fmx_map_pointer, int layer_number, int tile_number);
-        void center_on_tile(fmx_map_type *fmx_map_pointer, int tile_ID);
+        void render                  (fmx_map_type *fmx_map_pointer);
+        void process                 (fmx_map_type *fmx_map_pointer);
+        void scroll_map              (fmx_map_type *fmx_map_pointer, int x_dir, int y_dir);
+        bool tile_visible            (fmx_map_type *fmx_map_pointer, int layer_number, int tile_number);
+        void center_on_tile          (fmx_map_type *fmx_map_pointer, int tile_ID);
         void calculate_tile_positions(fmx_map_type *fmx_map_pointer);
-        void calculate_tile_positions(fmx_map_type *fmx_map_pointer, float tile_width_half_specify,float tile_height_half_specify);
-        int  mouse_over_tile(fmx_map_type *fmx_map_pointer);
-        void apply_tileset(fmx_map_type *fmx_map_pointer, int pre_defined_tileset_value);
+        void calculate_tile_positions(fmx_map_type *fmx_map_pointer, float tile_width_half_specify, float tile_height_half_specify);
+        int  mouse_over_tile         (fmx_map_type *fmx_map_pointer);
+        void apply_tileset           (fmx_map_type *fmx_map_pointer, int pre_defined_tileset_value);
 };
 
 #endif //MAP_H_2D
