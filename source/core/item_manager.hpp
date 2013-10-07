@@ -50,8 +50,8 @@
 
 
 //temp---------------
-#define HEALTH_POTION  20
-#define MANA_POTION    21
+#define ITEM_HEALTH_POTION  20
+#define ITEM_MANA_POTION    21
 
 /*
 #define NULL_ITEM     -1
@@ -97,6 +97,7 @@ struct item_data_type
     sound_type*      sound_use;
     texture_type*    image;
     bool             active;
+    bool             consumable;
     std::string      name;
     int              UID;
     int              type;

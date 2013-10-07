@@ -91,12 +91,10 @@ music_type *music_manager_class::add_music(std::string file_name)
         temp_pointer = music_manager_class::root;
         if (temp_pointer != NULL)
         {
+            if (strcmp(file_name.c_str(),temp_pointer->path.c_str()) == 0) return(temp_pointer);
             while (temp_pointer->next != NULL)
             {
-                if (strcmp(file_name.c_str(),temp_pointer->path.c_str()) == 0)
-                {
-                    return(temp_pointer);
-                }
+                if (strcmp(file_name.c_str(),temp_pointer->path.c_str()) == 0) return(temp_pointer);
                 temp_pointer = temp_pointer->next;
             }
         }

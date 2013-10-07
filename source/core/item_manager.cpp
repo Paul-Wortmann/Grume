@@ -55,12 +55,13 @@ item_type* item_manager_class::add_item(int item_UID)
         temp_pointer = item_manager_class::root;
         if (temp_pointer != NULL)
         {
+            if (temp_pointer != NULL)
+            {
+                if (temp_pointer->data.UID == item_UID) return(temp_pointer);
+            }
             while (temp_pointer->next != NULL)
             {
-                if (temp_pointer->data.UID == item_UID)
-                {
-                    return(temp_pointer);
-                }
+                if (temp_pointer->data.UID == item_UID) return(temp_pointer);
                 temp_pointer = temp_pointer->next;
             }
         }
@@ -70,6 +71,7 @@ item_type* item_manager_class::add_item(int item_UID)
         item_manager_class::last->next = NULL;
     }
     item_manager_class::last->data.active                 = false;
+    item_manager_class::last->data.consumable             = false;
     item_manager_class::last->data.name                   = "";
     item_manager_class::last->data.number_of_item_effects = 0;
     item_manager_class::last->data.number_of_item_sockets = 0;
@@ -84,3 +86,4 @@ item_type* item_manager_class::add_item(int item_UID)
     item_manager_class::number_of_items++;
     return(item_manager_class::last);
 };
+
