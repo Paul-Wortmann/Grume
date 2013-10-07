@@ -119,6 +119,11 @@ void game_class::init(void)
     UI_form_pointer->data.element[element_number].value          = temp_item_pointer->data.UID;
     UI_form_pointer->data.element[element_number].quantity       = 3;
     UI_form_pointer->data.element[element_number].texture.normal = temp_item_pointer->data.image;
+    element_number    = 3;
+    temp_item_pointer = game.item_manager.add_item(ITEM_REJUVINATION_POTION);
+    UI_form_pointer->data.element[element_number].value          = temp_item_pointer->data.UID;
+    UI_form_pointer->data.element[element_number].quantity       = 2;
+    UI_form_pointer->data.element[element_number].texture.normal = temp_item_pointer->data.image;
 
     /*
     element_number = 2;

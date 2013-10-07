@@ -47,6 +47,14 @@ void  effect_class::init_effects(void) // Initialize hard-coded default effects,
     temp_effect_pointer->data.value    = 10.0f;
     temp_effect_pointer->data.type     = EFFECT_MOD_MANA;
     temp_effect_pointer->data.sub_type = ITEM_POTION_SMALL;
+    //------------------------- Mod Mana Effect --------------------------------------------------------------------------
+    temp_effect_pointer                = game.effect_manager.add_effect(EFFECT_MOD_MANA_HEALTH);
+    temp_effect_pointer->data.active   = true;
+    temp_effect_pointer->data.name     = "Mod Player Mana + health";
+    temp_effect_pointer->data.passive  = false;
+    temp_effect_pointer->data.value    = 10.0f;
+    temp_effect_pointer->data.type     = EFFECT_MOD_MANA_HEALTH;
+    temp_effect_pointer->data.sub_type = ITEM_POTION_SMALL;
 }
 
 void  effect_class::use_effect(int effect_UID, float value)

@@ -29,9 +29,10 @@
 #include "../core/texture_manager.hpp"
 #include "../core/sound_manager.hpp"
 
-#define EFFECT_NONE          0
-#define EFFECT_MOD_HEALTH    1
-#define EFFECT_MOD_MANA      2
+#define EFFECT_NONE            0
+#define EFFECT_MOD_HEALTH      1
+#define EFFECT_MOD_MANA        2
+#define EFFECT_MOD_MANA_HEALTH 3
 
 struct effect_data_type
 {

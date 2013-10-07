@@ -58,6 +58,19 @@ void  item_class::init_items(void) // Initialize hard-coded default items, such 
     temp_item_pointer->data.sub_type               = ITEM_POTION_LARGE;
     temp_item_pointer->data.effect[0]              = new effect_type;
     temp_item_pointer->data.effect[0]              = game.effect_manager.add_effect(EFFECT_MOD_MANA);
+    //------------------------- Rejuvination Potion --------------------------------------------------------------------------
+    temp_item_pointer = game.item_manager.add_item(ITEM_REJUVINATION_POTION);
+    temp_item_pointer->data.active                 = true;
+    temp_item_pointer->data.consumable             = true;
+    temp_item_pointer->data.name                   = "Mana Potion";
+    temp_item_pointer->data.number_of_item_effects = 1;
+    temp_item_pointer->data.image                  = game.texture_manager.add_texture("data/textures/UI/icons/potions/potion_24.png");
+    temp_item_pointer->data.sound_move             = game.sound_manager.add_sound("data/sound/inventory/bottle_01.wav");
+    temp_item_pointer->data.sound_use              = game.sound_manager.add_sound("data/sound/inventory/bubble_01.wav");
+    temp_item_pointer->data.type                   = EFFECT_MOD_MANA_HEALTH;
+    temp_item_pointer->data.sub_type               = ITEM_POTION_LARGE;
+    temp_item_pointer->data.effect[0]              = new effect_type;
+    temp_item_pointer->data.effect[0]              = game.effect_manager.add_effect(EFFECT_MOD_MANA_HEALTH);
     //------------------------------------------------------------------------------------------------------------
 };
 
@@ -78,6 +91,10 @@ void item_class::use_item(UI_form_struct *UI_form_pointer, int element_number)
                     break;
                     case EFFECT_MOD_MANA:
                         game.player.mana.current += temp_item_pointer->data.effect[effect_count]->data.value;
+                    break;
+                    case EFFECT_MOD_MANA_HEALTH:
+                        game.player.health.current += temp_item_pointer->data.effect[effect_count]->data.value;
+                        game.player.mana.current   += temp_item_pointer->data.effect[effect_count]->data.value;
                     break;
                     default:
                     break;
