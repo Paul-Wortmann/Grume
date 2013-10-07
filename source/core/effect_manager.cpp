@@ -55,12 +55,9 @@ effect_type* effect_manager_class::add_effect(int effect_UID)
         temp_pointer = effect_manager_class::root;
         if (temp_pointer != NULL)
         {
-            while (temp_pointer->next != NULL)
+            while (temp_pointer != NULL)
             {
-                if (temp_pointer->data.UID == effect_UID)
-                {
-                    return(temp_pointer);
-                }
+                if (temp_pointer->data.UID == effect_UID) return(temp_pointer);
                 temp_pointer = temp_pointer->next;
             }
         }

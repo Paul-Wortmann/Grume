@@ -65,12 +65,9 @@ font_type *font_manager_class::add_font(std::string file_name)
         temp_pointer = font_manager_class::root;
         if (temp_pointer != NULL)
         {
-            while (temp_pointer->next != NULL)
+            while (temp_pointer != NULL)
             {
-                if (strcmp(file_name.c_str(),temp_pointer->path.c_str()) == 0)
-                {
-                    return(temp_pointer);
-                }
+                if (strcmp(file_name.c_str(),temp_pointer->path.c_str()) == 0) return(temp_pointer);
                 temp_pointer = temp_pointer->next;
             }
         }

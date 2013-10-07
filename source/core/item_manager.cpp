@@ -55,11 +55,7 @@ item_type* item_manager_class::add_item(int item_UID)
         temp_pointer = item_manager_class::root;
         if (temp_pointer != NULL)
         {
-            if (temp_pointer != NULL)
-            {
-                if (temp_pointer->data.UID == item_UID) return(temp_pointer);
-            }
-            while (temp_pointer->next != NULL)
+            while (temp_pointer != NULL)
             {
                 if (temp_pointer->data.UID == item_UID) return(temp_pointer);
                 temp_pointer = temp_pointer->next;
