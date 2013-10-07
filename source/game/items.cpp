@@ -65,12 +65,10 @@ void item_class::use_item(UI_form_struct *UI_form_pointer, int element_number)
 {
     if (UI_form_pointer->data.element[element_number].active)
     {
-        game.core.log.file_write("Effect  count -> ", game.effect_manager.number_of_effects);
         item_type* temp_item_pointer;
-        temp_item_pointer = game.item_manager.add_item(ITEM_HEALTH_POTION);
+        temp_item_pointer = game.item_manager.add_item(UI_form_pointer->data.element[element_number].value);
         if (temp_item_pointer->data.consumable)
         {
-            //int item_value = UI_form_pointer->data.element[element_number].value;
             for (int effect_count = 0; effect_count < temp_item_pointer->data.number_of_item_effects; effect_count++)
             {
                 switch (temp_item_pointer->data.effect[effect_count]->data.type)
