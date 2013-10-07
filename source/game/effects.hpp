@@ -31,7 +31,6 @@
 class effect_class
 {
     public:
-        effect_type        *effect_health_potion;
         void                init_effects(void);
         void                use_effect(int effect_UID, float value);
 };

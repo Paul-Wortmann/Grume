@@ -1,7 +1,6 @@
 # Frost and Flame V0.24 - www.physhexgames.co.nr #
 # ---------------------------------------------- #
  
-Initializing PhysicsFS file system....
 Loading configuration...
 Processing command line switches...
 Loading language file -> data/configuration/languages/english.txt
@@ -15,10 +14,10 @@ Loading resources....
 Seeding random...
 Initializing UI system...
 Initializing game system...
------- data_image -> 20
+Effect  count -> 2
+Effect  UID -> 1
+Effect  UID -> 2
 Loading TMX map file -> data/maps/town.tmx
------- data_image -> 20
------- data_image -> 1
 Initializing event handlers...
 Starting Game...
  
@@ -27,10 +26,12 @@ Starting Game...
  
 # ---------------------------------------------- #
  
-Font    count -> 2
+Font    count -> 1
 Music   count -> 1
-Sound   count -> 5
-Texture count -> 90
+Sound   count -> 4
+Texture count -> 71
+Item    count -> 2
+Effect  count -> 2
  
 # ---------------------------------------------- #
  

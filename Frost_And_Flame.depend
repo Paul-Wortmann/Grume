@@ -2468,7 +2468,7 @@
 	"core.hpp"
 	"file.hpp"
 
-1380907716 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/core/font_manager.cpp
+1381156257 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/core/font_manager.cpp
 	<sstream>
 	"font_manager.hpp"
 	"../game/game.hpp"
@@ -2590,7 +2590,7 @@
 	<fstream>
 	"misc.hpp"
 
-1380907762 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/core/music_manager.cpp
+1381155783 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/core/music_manager.cpp
 	"music_manager.hpp"
 	"../game/game.hpp"
 
@@ -2634,11 +2634,11 @@
 	"core/savegame.hpp"
 	"game.hpp"
 
-1380907781 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/core/sound_manager.cpp
+1381155760 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/core/sound_manager.cpp
 	"sound_manager.hpp"
 	"../game/game.hpp"
 
-1380907785 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/core/texture_manager.cpp
+1381155796 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/core/texture_manager.cpp
 	"texture_manager.hpp"
 	"../game/game.hpp"
 
@@ -2667,7 +2667,7 @@
 	"core/misc.hpp"
 	"language.hpp"
 
-1380907797 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/main.cpp
+1381157188 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/main.cpp
 	"game/game.hpp"
 	<SDL2/SDL.h>
 	"core/misc.hpp"
@@ -3331,7 +3331,7 @@
 	"effect_manager.hpp"
 	"game.hpp"
 
-1381155454 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/game/game.cpp
+1381157188 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/game/game.cpp
 	"../core/map_2D.hpp"
 	"game.hpp"
 
@@ -3393,30 +3393,30 @@
 	"command_line_parser.hpp"
 	"../game/game.hpp"
 
-1380939145 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/core/effect_manager.cpp
+1381157873 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/core/effect_manager.cpp
 	"effect_manager.hpp"
 	"../game/game.hpp"
 
-1380988239 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/core/item_manager.cpp
+1381156284 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/core/item_manager.cpp
 	"item_manager.hpp"
 	"../game/game.hpp"
 
-1380986028 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/game/effects.cpp
+1381157358 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/game/effects.cpp
 	"effects.hpp"
 	"game.hpp"
 
 1375577407 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/UI/UI_types.cpp
 	"UI_types.hpp"
 
-1380939391 /media/paul/Data_0/_git_/Frost_and_Flame/source/game/effects.hpp
+1381156543 /media/paul/Data_0/_git_/Frost_and_Flame/source/game/effects.hpp
 	<string>
 	"../core/effect_manager.hpp"
 
-1381155230 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/game/items.cpp
+1381157873 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/game/items.cpp
 	"items.hpp"
 	"game.hpp"
 
-1381154875 /media/paul/Data_0/_git_/Frost_and_Flame/source/game/items.hpp
+1381156050 /media/paul/Data_0/_git_/Frost_and_Flame/source/game/items.hpp
 	<string>
 	"../core/item_manager.hpp"
 	"../UI/UI_types.hpp"

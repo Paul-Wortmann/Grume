@@ -30,18 +30,28 @@ extern game_class game;
 //----------------------------------------------------------------------------------------------------------------------------------------------------------
 void  effect_class::init_effects(void) // Initialize hard-coded default effects, such as mod health etc...
 {
-    effect_class::effect_health_potion   = new effect_type;
-    effect_class::effect_health_potion                = game.effect_manager.add_effect(EFFECT_MOD_HEALTH);
-    effect_class::effect_health_potion->data.active   = true;
-    effect_class::effect_health_potion->data.name     = "Mod Player Health";
-    effect_class::effect_health_potion->data.passive  = false;
-    effect_class::effect_health_potion->data.value    = 10.0f;
-    effect_class::effect_health_potion->data.type     = ITEM_POTION;
-    effect_class::effect_health_potion->data.sub_type = ITEM_POTION_SMALL;
+    effect_type* temp_effect_pointer;
+    //------------------------- Mod Health Effect --------------------------------------------------------------------------
+    temp_effect_pointer                = game.effect_manager.add_effect(EFFECT_MOD_HEALTH);
+    temp_effect_pointer->data.active   = true;
+    temp_effect_pointer->data.name     = "Mod Player Health";
+    temp_effect_pointer->data.passive  = false;
+    temp_effect_pointer->data.value    = 10.0f;
+    temp_effect_pointer->data.type     = EFFECT_MOD_HEALTH;
+    temp_effect_pointer->data.sub_type = ITEM_POTION_SMALL;
+    //------------------------- Mod Mana Effect --------------------------------------------------------------------------
+    temp_effect_pointer                = game.effect_manager.add_effect(EFFECT_MOD_MANA);
+    temp_effect_pointer->data.active   = true;
+    temp_effect_pointer->data.name     = "Mod Player Mana";
+    temp_effect_pointer->data.passive  = false;
+    temp_effect_pointer->data.value    = 10.0f;
+    temp_effect_pointer->data.type     = EFFECT_MOD_MANA;
+    temp_effect_pointer->data.sub_type = ITEM_POTION_SMALL;
 }
 
 void  effect_class::use_effect(int effect_UID, float value)
 {
+    // redundant function? O_o
     switch (effect_UID)
     {
         case EFFECT_NONE:

@@ -107,12 +107,20 @@ void game_class::init(void)
 
     // Add default items to the inventory
     UI_form_struct* UI_form_pointer;
-    item_type*      temp_item_pointer;
+    item_type*      temp_item_pointer;// = new item_type;
     int             element_number    = 1;
     UI_form_pointer   = game.UI_manager.UI_form_get(UID_INVENTORY);
     temp_item_pointer = game.item_manager.add_item(ITEM_HEALTH_POTION);
     UI_form_pointer->data.element[element_number].value          = temp_item_pointer->data.UID;
-    UI_form_pointer->data.element[element_number].quantity       = 1;
+    UI_form_pointer->data.element[element_number].quantity       = 4;
+    UI_form_pointer->data.element[element_number].texture.normal = temp_item_pointer->data.image;
+    
+    game.core.log.file_write();
+    /*
+    element_number    = 2;
+    temp_item_pointer = game.item_manager.add_item(ITEM_MANA_POTION);
+    UI_form_pointer->data.element[element_number].value          = temp_item_pointer->data.UID;
+    UI_form_pointer->data.element[element_number].quantity       = 3;
     UI_form_pointer->data.element[element_number].texture.normal = temp_item_pointer->data.image;
 
     /*

@@ -32,7 +32,6 @@
 class item_class
 {
     public:
-        item_type*      temp_item;
         void            init_items(void); // Initialize hard-coded default items, such as health potions etc...
         void            load_items(std::string file_name); // Load items from file.
         void            use_item(UI_form_struct *UI_form_pointer, int element_number);

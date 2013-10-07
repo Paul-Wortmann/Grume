@@ -44,7 +44,7 @@ extern "C" int main(int argc, char** argv)
     game.core.log.file_write("# ",game.core.application_name," #");
     game.core.log.file_write("# ---------------------------------------------- #");
     game.core.log.file_write(" ");
-    game.core.log.file_write("Initializing PhysicsFS file system....");
+    //game.core.log.file_write("Initializing PhysicsFS file system....");
     //PHYSFS_init(argv[0]);
     //PHYSFS_addToSearchPath("data.fnf", 1);
     game.core.log.file_write("Loading configuration...");
@@ -174,6 +174,8 @@ extern "C" int main(int argc, char** argv)
     game.core.log.file_write("Music   count -> ", game.music_manager.number_of_music);
     game.core.log.file_write("Sound   count -> ", game.sound_manager.number_of_sounds);
     game.core.log.file_write("Texture count -> ", game.texture_manager.number_of_textures);
+    game.core.log.file_write("Item    count -> ", game.item_manager.number_of_items);
+    game.core.log.file_write("Effect  count -> ", game.effect_manager.number_of_effects);
     game.core.log.file_write(" ");
     game.core.log.file_write("# ---------------------------------------------- #");
     game.core.log.file_write(" ");

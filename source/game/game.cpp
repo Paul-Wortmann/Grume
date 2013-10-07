@@ -111,17 +111,14 @@ void game_class::init(void)
     int             element_number    = 1;
     UI_form_pointer   = game.UI_manager.UI_form_get(UID_INVENTORY);
     temp_item_pointer = game.item_manager.add_item(ITEM_HEALTH_POTION);
-    game.core.log.file_write("------ data_image -> ",temp_item_pointer->data.UID);
-    game.core.log.file_write("------ data_image -> ",game.item_manager.number_of_items);
-    //if (temp_item_pointer != NULL) game.core.log.file_write("------ data_image -> ",temp_item_pointer->data.name);
-    //if (temp_item_pointer->data.image->frame[0].data) game.core.log.file_write("------ data_image -> frame 0 active");
-    //UI_form_pointer->data.element[element_number].value          = temp_item_pointer->data.UID;
-    //UI_form_pointer->data.element[element_number].quantity       = 1;
-    //UI_form_pointer->data.element[element_number].active         = false;
-    //UI_form_pointer->data.element[element_number].texture.normal = game.texture_manager.add_texture("data/textures/UI/icons/potions/potion_23.png");
-    //UI_form_pointer->data.element[element_number].texture.normal = game.texture_manager.add_texture(temp_item_pointer->data.image->path.c_str());
-    //game.core.log.file_write("------ data_image -> ",UI_form_pointer->data.element[element_number].texture.normal->path.c_str());
-    //game.core.log.file_write("------ data_image -> ",temp_item_pointer->data.image->path.c_str());
+    UI_form_pointer->data.element[element_number].value          = temp_item_pointer->data.UID;
+    UI_form_pointer->data.element[element_number].quantity       = 4;
+    UI_form_pointer->data.element[element_number].texture.normal = temp_item_pointer->data.image;
+    element_number    = 2;
+    temp_item_pointer = game.item_manager.add_item(ITEM_MANA_POTION);
+    UI_form_pointer->data.element[element_number].value          = temp_item_pointer->data.UID;
+    UI_form_pointer->data.element[element_number].quantity       = 3;
+    UI_form_pointer->data.element[element_number].texture.normal = temp_item_pointer->data.image;
 
     /*
     element_number = 2;
