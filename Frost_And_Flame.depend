@@ -2702,7 +2702,7 @@
 	"menu_main.hpp"
 	"../game/game.hpp"
 
-1380907809 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/UI/inventory_window.cpp
+1380987820 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/UI/inventory_window.cpp
 	"menu_main.hpp"
 	"../game/game.hpp"
 
@@ -2752,7 +2752,7 @@
 	"../core/texture_manager.hpp"
 	"../game/game.hpp"
 
-1380907665 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/UI/UI_manager.cpp
+1380990701 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/UI/UI_manager.cpp
 	"UI_manager.hpp"
 	"../game/game.hpp"
 
@@ -3331,7 +3331,7 @@
 	"effect_manager.hpp"
 	"game.hpp"
 
-1380939407 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/game/game.cpp
+1381155454 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/game/game.cpp
 	"../core/map_2D.hpp"
 	"game.hpp"
 
@@ -3382,7 +3382,7 @@
 	"../core/texture_manager.hpp"
 	"../core/sound_manager.hpp"
 
-1380939123 /media/paul/Data_0/_git_/Frost_and_Flame/source/core/item_manager.hpp
+1380988689 /media/paul/Data_0/_git_/Frost_and_Flame/source/core/item_manager.hpp
 	<string>
 	"../core/texture_manager.hpp"
 	"../core/sound_manager.hpp"
@@ -3397,11 +3397,11 @@
 	"effect_manager.hpp"
 	"../game/game.hpp"
 
-1380939148 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/core/item_manager.cpp
+1380988239 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/core/item_manager.cpp
 	"item_manager.hpp"
 	"../game/game.hpp"
 
-1380939480 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/game/effects.cpp
+1380986028 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/game/effects.cpp
 	"effects.hpp"
 	"game.hpp"
 
@@ -3412,11 +3412,12 @@
 	<string>
 	"../core/effect_manager.hpp"
 
-1380939528 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/game/items.cpp
+1381155230 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/game/items.cpp
 	"items.hpp"
 	"game.hpp"
 
-1380939528 /media/paul/Data_0/_git_/Frost_and_Flame/source/game/items.hpp
+1381154875 /media/paul/Data_0/_git_/Frost_and_Flame/source/game/items.hpp
 	<string>
 	"../core/item_manager.hpp"
+	"../UI/UI_types.hpp"
 

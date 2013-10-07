@@ -30,14 +30,14 @@ extern game_class game;
 //----------------------------------------------------------------------------------------------------------------------------------------------------------
 void  effect_class::init_effects(void) // Initialize hard-coded default effects, such as mod health etc...
 {
-    effect_class::effect_health_potion   = new effect_type;
-    effect_class::effect_health_potion                = game.effect_manager.add_effect(EFFECT_MOD_HEALTH);
-    effect_class::effect_health_potion->data.active   = true;
-    effect_class::effect_health_potion->data.name     = "Mod Player Health";
-    effect_class::effect_health_potion->data.passive  = false;
-    effect_class::effect_health_potion->data.value    = 10.0f;
-    effect_class::effect_health_potion->data.type     = ITEM_POTION;
-    effect_class::effect_health_potion->data.sub_type = ITEM_POTION_SMALL;
+    effect_class::effect_health_mod   = new effect_type;
+    effect_health_mod                = game.effect_manager.add_effect(EFFECT_MOD_HEALTH);
+    effect_health_mod->data.active   = true;
+    effect_health_mod->data.name     = "Mod Player Health";
+    effect_health_mod->data.passive  = false;
+    effect_health_mod->data.value    = 10.0f;
+    effect_health_mod->data.type     = ITEM_POTION;
+    effect_health_mod->data.sub_type = ITEM_POTION_SMALL;
 }
 
 void  effect_class::use_effect(int effect_UID, float value)

@@ -14,26 +14,11 @@ Initializing font system...
 Loading resources....
 Seeding random...
 Initializing UI system...
-------------------------------------------
-| UI list status                         |
-------------------------------------------
-| Active   | List pos| Set Behind  | UID |
-| Disabled |    0    | Set_behind  | 1
-| Disabled |    1    | Set_behind  | 2
-| Disabled |    2    | normal      | 5
-| Disabled |    3    | normal      | 3
-| Disabled |    4    | normal      | 6
-| Disabled |    5    | normal      | 12
-| Disabled |    6    | normal      | 10
-| Disabled |    7    | normal      | 11
-| Disabled |    8    | normal      | 13
-| Disabled |    9    | normal      | 4
-| Disabled |    10   | normal      | 7
-| Enabled  |    11   | normal      | 9
-| List size -> 12
-------------------------------------------
 Initializing game system...
+------ data_image -> 20
 Loading TMX map file -> data/maps/town.tmx
+------ data_image -> 20
+------ data_image -> 1
 Initializing event handlers...
 Starting Game...
  
@@ -44,8 +29,8 @@ Starting Game...
  
 Font    count -> 2
 Music   count -> 1
-Sound   count -> 3
-Texture count -> 89
+Sound   count -> 5
+Texture count -> 90
  
 # ---------------------------------------------- #
  

@@ -1213,336 +1213,336 @@ void process_inventory_window(UI_form_struct *UI_form_pointer)
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((1*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
-                //use_item(window_number,1);
+                game.item.use_item(UI_form_pointer,1);
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((2*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((2*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
-                //use_item(window_number,2);
+                game.item.use_item(UI_form_pointer,2);
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((3*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((3*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
-                //use_item(window_number,3);
+                game.item.use_item(UI_form_pointer,3);
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((4*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((4*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
-                //use_item(window_number,4);
+                game.item.use_item(UI_form_pointer,4);
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((5*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((5*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
-                //use_item(window_number,5);
+                game.item.use_item(UI_form_pointer,5);
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((6*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((6*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
-                //use_item(window_number,6);
+                game.item.use_item(UI_form_pointer,6);
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((7*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((7*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
-                //use_item(window_number,7);
+                game.item.use_item(UI_form_pointer,7);
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((8*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((8*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
-                //use_item(window_number,8);
+                game.item.use_item(UI_form_pointer,8);
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((9*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((9*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
-                //use_item(window_number,9);
+                game.item.use_item(UI_form_pointer,9);
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((10*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((10*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
-                //use_item(window_number,10);
+                game.item.use_item(UI_form_pointer,10);
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((11*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((11*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
-                //use_item(window_number,11);
+                game.item.use_item(UI_form_pointer,11);
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((12*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((12*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
-                //use_item(window_number,12);
+                game.item.use_item(UI_form_pointer,12);
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((13*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((13*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
-                //use_item(window_number,13);
+                game.item.use_item(UI_form_pointer,13);
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((14*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((14*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
-                //use_item(window_number,14);
+                game.item.use_item(UI_form_pointer,14);
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((15*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((15*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
-                //use_item(window_number,15);
+                game.item.use_item(UI_form_pointer,15);
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((16*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((16*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
-                //use_item(window_number,16);
+                game.item.use_item(UI_form_pointer,16);
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((17*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((17*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
-                //use_item(window_number,17);
+                game.item.use_item(UI_form_pointer,17);
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((18*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((18*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
-                //use_item(window_number,18);
+                game.item.use_item(UI_form_pointer,18);
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((19*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((19*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
-                //use_item(window_number,19);
+                game.item.use_item(UI_form_pointer,19);
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((20*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((20*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
-                //use_item(window_number,20);
+                game.item.use_item(UI_form_pointer,20);
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((21*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((21*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
-                //use_item(window_number,21);
+                game.item.use_item(UI_form_pointer,21);
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((22*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((22*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
-                //use_item(window_number,22);
+                game.item.use_item(UI_form_pointer,22);
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((23*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((23*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
-                //use_item(window_number,23);
+                game.item.use_item(UI_form_pointer,23);
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((24*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((24*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
-                //use_item(window_number,24);
+                game.item.use_item(UI_form_pointer,24);
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((25*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((25*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
-                //use_item(window_number,25);
+                game.item.use_item(UI_form_pointer,25);
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((26*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((26*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
-                //use_item(window_number,26);
+                game.item.use_item(UI_form_pointer,26);
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((27*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((27*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
-                //use_item(window_number,27);
+                game.item.use_item(UI_form_pointer,27);
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((28*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((28*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
-                //use_item(window_number,28);
+                game.item.use_item(UI_form_pointer,28);
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((29*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((29*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
-                //use_item(window_number,29);
+                game.item.use_item(UI_form_pointer,29);
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((30*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((30*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
-                //use_item(window_number,30);
+                game.item.use_item(UI_form_pointer,30);
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((31*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((31*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
-                //use_item(window_number,31);
+                game.item.use_item(UI_form_pointer,31);
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((32*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((32*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
-                //use_item(window_number,32);
+                game.item.use_item(UI_form_pointer,32);
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((33*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((33*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
-                //use_item(window_number,33);
+                game.item.use_item(UI_form_pointer,33);
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((34*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((34*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
-                //use_item(window_number,34);
+                game.item.use_item(UI_form_pointer,34);
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((35*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((35*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
-                //use_item(window_number,35);
+                game.item.use_item(UI_form_pointer,35);
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((36*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((36*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
-                //use_item(window_number,36);
+                game.item.use_item(UI_form_pointer,36);
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((37*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((37*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
-                //use_item(window_number,37);
+                game.item.use_item(UI_form_pointer,37);
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((38*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((38*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
-                //use_item(window_number,38);
+                game.item.use_item(UI_form_pointer,38);
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((39*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((39*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
-                //use_item(window_number,39);
+                game.item.use_item(UI_form_pointer,39);
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((40*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((40*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
-                //use_item(window_number,40);
+                game.item.use_item(UI_form_pointer,40);
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((41*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((41*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
-                //use_item(window_number,41);
+                game.item.use_item(UI_form_pointer,41);
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((42*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((42*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
-                //use_item(window_number,42);
+                game.item.use_item(UI_form_pointer,42);
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((43*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((43*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
-                //use_item(window_number,43);
+                game.item.use_item(UI_form_pointer,43);
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((44*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((44*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
-                //use_item(window_number,44);
+                game.item.use_item(UI_form_pointer,44);
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((45*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((45*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
-                //use_item(window_number,45);
+                game.item.use_item(UI_form_pointer,45);
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((46*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((46*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
-                //use_item(window_number,46);
+                game.item.use_item(UI_form_pointer,46);
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((47*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((47*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
-                //use_item(window_number,47);
+                game.item.use_item(UI_form_pointer,47);
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((48*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((48*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
-                //use_item(window_number,48);
+                game.item.use_item(UI_form_pointer,48);
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             default:

@@ -151,7 +151,7 @@ void UI_manager_class::setup(void)
     temp_pointer->rotate_able = true;
     temp_pointer = game.texture_manager.add_texture("data/textures/UI/menu/arrow_disabled.png");
     temp_pointer->rotate_able = true;
-    UI_manager_class::UI_form_list_log();
+    //UI_manager_class::UI_form_list_log();
 }
 
 UI_form_struct *UI_manager_class::UI_form_get(int UI_form_UID)
