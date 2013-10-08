@@ -176,7 +176,7 @@ void item_class::use_item(UI_form_struct *UI_form_pointer, int element_number)
         temp_item_pointer = game.item_manager.add_item(UI_form_pointer->data.element[element_number].value);
         if (temp_item_pointer->data.consumable)
         {
-            game.core.log.file_write("---- use item function ------");
+            //game.core.log.file_write("---- use item function ------");
             for (int effect_count = 0; effect_count < temp_item_pointer->data.number_of_item_effects; effect_count++)
             {
                 switch (temp_item_pointer->data.effect[effect_count]->data.type)
