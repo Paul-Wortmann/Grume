@@ -169,6 +169,7 @@ void item_class::load_items(std::string file_name)
 
 void item_class::use_item(UI_form_struct *UI_form_pointer, int element_number)
 {
+    bool used_item = false;
     if (UI_form_pointer->data.element[element_number].active)
     {
         item_type* temp_item_pointer;
@@ -181,23 +182,34 @@ void item_class::use_item(UI_form_struct *UI_form_pointer, int element_number)
                 switch (temp_item_pointer->data.effect[effect_count]->data.type)
                 {
                     case EFFECT_MOD_HEALTH:
-                        game.player.health.current += temp_item_pointer->data.effect[effect_count]->data.value;
+                        if (game.player.health.current < game.player.health.maximum)
+                        {
+                            used_item = true;
+                            game.player.health.current += temp_item_pointer->data.effect[effect_count]->data.value;
+                        }
                     break;
                     case EFFECT_MOD_MANA:
-                        game.player.mana.current += temp_item_pointer->data.effect[effect_count]->data.value;
+                        if (game.player.mana.current < game.player.mana.maximum)
+                        {
+                            used_item = true;
+                            game.player.mana.current += temp_item_pointer->data.effect[effect_count]->data.value;
+                        }
                     break;
                     default:
                     break;
                 }
             }
-            UI_form_pointer->data.element[element_number].quantity--;
-            if (UI_form_pointer->data.element[element_number].quantity <= 0)
+            if (used_item)
             {
-                UI_form_pointer->data.element[element_number].active   = false;
-                UI_form_pointer->data.element[element_number].value    = -1;
-                UI_form_pointer->data.element[element_number].quantity = 0;
+                UI_form_pointer->data.element[element_number].quantity--;
+                if (UI_form_pointer->data.element[element_number].quantity <= 0)
+                {
+                    UI_form_pointer->data.element[element_number].active   = false;
+                    UI_form_pointer->data.element[element_number].value    = -1;
+                    UI_form_pointer->data.element[element_number].quantity = 0;
+                }
+                game.sound_manager.play(temp_item_pointer->data.sound_use);
             }
-            game.sound_manager.play(temp_item_pointer->data.sound_use);
         }
     }
 };
