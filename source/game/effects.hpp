@@ -33,6 +33,7 @@ class effect_class
     public:
         void                init_effects(void);
         void                use_effect(int effect_UID, float value);
+        void                load_effects(std::string file_name);
 };
 
 #endif // EFFECTS_H

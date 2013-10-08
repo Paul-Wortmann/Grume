@@ -1,0 +1,18 @@
+# These items will be loaded after the hard coded items,
+# using a UID lower than 100 may overwrite hard coded items.
+# Use uppercase for the key names and bool values. (TRUE/FALSE)
+# All vaules need to be within ""s.
+# Will add hard coded items to this list at a later date.
+
+# --------- test item -------------------
+UID              = "101"
+NAME             = "TEST ITEM"
+NUM_ITEM_SOCKETS = "0"
+NUM_ITEM_EFFECTS = "3"
+EFFECT_0         = "101"
+EFFECT_1         = "1"
+EFFECT_2         = "2"
+IMAGE            = "data/textures/UI/icons/potions/potion_20.png"
+SOUND_MOVE       = "data/sound/inventory/bottle_01.wav"
+SOUND_USE        = "data/sound/inventory/bubble_01.wav"
+

@@ -52,7 +52,7 @@
 //temp---------------
 #define ITEM_HEALTH_POTION          20
 #define ITEM_MANA_POTION            21
-#define ITEM_REJUVINATION_POTION    22
+#define ITEM_REJUVENATION_POTION    22
 
 /*
 #define NULL_ITEM     -1
