@@ -53,9 +53,9 @@ void setup_player_profile(int UID)
     UI_form_pointer->data.texture.normal              = game.texture_manager.add_texture("data/textures/UI/menu/button_normal.png");
     UI_form_pointer->data.texture.highlighted         = game.texture_manager.add_texture("data/textures/UI/menu/button_highlighted.png");
     UI_form_pointer->data.texture.disabled            = game.texture_manager.add_texture("data/textures/UI/menu/button_disabled.png");
-    UI_form_pointer->data.sound.on_click.enabled      = true;
+    UI_form_pointer->data.sound.on_click.enabled      = false;
     UI_form_pointer->data.sound.on_click.sound        = game.sound_manager.add_sound("data/sound/menu/menu_select_00.wav");
-    UI_form_pointer->data.sound.on_mouse_over.enabled = true;
+    UI_form_pointer->data.sound.on_mouse_over.enabled = false;
     UI_form_pointer->data.sound.on_mouse_over.sound   = game.sound_manager.add_sound("data/sound/menu/menu_move_00.wav");
     UI_form_pointer->data.font                        = game.font_manager.add_font("data/fonts/font_001.ttf");
     UI_form_pointer->data.mouse_delay.maximum     = 30;
