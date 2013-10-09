@@ -355,48 +355,30 @@ void UI_manager_class::UI_form_mouse_reset(int UI_form_UID)
     }
 };
 
-int  UI_manager_class::UI_form_mouse_over_window(void)
+int  UI_manager_class::UI_form_mouse_over(void)
 {
     int return_value = MOUSE_OVER_MAP;
-/*
-    for (int window_count = 0; window_count < UI_manager_class::data.number_of_UI_forms; window_count++)
+    for (UI_form_struct *UI_form_pointer = UI_manager_class::root; UI_form_pointer != NULL; UI_form_pointer = UI_form_pointer->next)
     {
-        if (UI_manager_class::window[UI_manager_class::[window_count]].enabled)
+        if ((UI_form_pointer->data.enabled) && (UI_form_pointer->data.mouse_over_menu))
         {
-            if (UI_manager_class::window[UI_manager_class::window_stack[window_count]].mouse_over_menu)
-            {
-                return_value = UI_manager_class::window[UI_manager_class::window_stack[window_count]].UID;
-            }
+            return_value = UI_form_pointer->data.UID;
         }
     }
-*/
     return (return_value);
 };
 
 int UI_manager_class::UI_form_mouse_over_element(int UID)
 {
     int return_value = MOUSE_OVER_MAP;
-    /*
-    int window_count = 0;
-    if (UI_manager_class::number_of_windows > 0) // only processed if there are actually windows in the list.
+    UI_form_struct*  UI_form_pointer  = UI_form_get(UID);
+    for (int element_count = 0; element_count < UI_form_pointer->data.number_of_elements; element_count++)
     {
-        for (int window_count_2 = 0; window_count_2 < UI_manager_class::number_of_windows; window_count_2++)
+        if ((UI_form_pointer->data.element[element_count].active) && (UI_form_pointer->data.element[element_count].drag_active) && (UI_form_pointer->data.element[element_count].mouse_over))
         {
-            if (UI_manager_class::window[UI_manager_class::window_stack[window_count_2]].UID == UID) window_count = window_count_2;
+            return_value = element_count;
         }
     }
-    for (int element_count = 0; element_count < UI_manager_class::window[UI_manager_class::window_stack[window_count]].number_of_elements; element_count++)
-    {
-        if (    (UI_manager_class::window[UI_manager_class::window_stack[window_count]].element[element_count].active)
-            && (!UI_manager_class::window[UI_manager_class::window_stack[window_count]].element[element_count].drag_active))
-        {
-            if (UI_manager_class::window[UI_manager_class::window_stack[window_count]].element[element_count].mouse_over_element())
-            {
-                return_value = element_count;
-            }
-        }
-    }
-    */
     return (return_value);
 };
 
@@ -623,7 +605,7 @@ event_struct  UI_manager_class::process_form_elements(UI_form_struct *UI_form_po
                             }
                             else
                             {
-                                int window_over  = game.UI_manager.UI_form_mouse_over_window();
+                                int window_over  = game.UI_manager.UI_form_mouse_over();
                                 int window_from  = UI_form_pointer->data.element[element_number].window_UID;
                                 int element_from = UI_form_pointer->data.element[element_number].element_UID;
                                 int element_over = 0;
@@ -634,8 +616,7 @@ event_struct  UI_manager_class::process_form_elements(UI_form_struct *UI_form_po
                                     element_over = game.UI_manager.UI_form_mouse_over_element(window_over);
                                     if (element_over != MOUSE_OVER_MAP)
                                     {
-                                        //swap
-                                        //swap_elements(window_from,element_from,window_over,element_over);
+                                        swap_elements(window_from,element_from,window_over,element_over);
                                     }
                                 }
                                 game.UI_manager.data.element_drag_in_progress                   = false;
