@@ -427,6 +427,7 @@ void UI_manager_class::UI_form_transition(int UI_form_UID_src, int UI_form_UID_d
 
 void UI_manager_class::render(void)
 {
+    int element_draged = -1;
     for (UI_form_struct *UI_form_pointer = UI_manager_class::root; UI_form_pointer != NULL; UI_form_pointer = UI_form_pointer->next)
     {
         // ----------------------------- render UI form ---------------------------------
@@ -438,103 +439,107 @@ void UI_manager_class::render(void)
             // ------------------------- Render elements -------------------------
             if (UI_form_pointer->data.number_of_elements > 0)
             {
+                element_draged = -1;
                 for (int element_number = 0; element_number < UI_form_pointer->data.number_of_elements; element_number++)
                 {
                     if (UI_form_pointer->data.element[element_number].active)
                     {
                         float zoom_value = (UI_form_pointer->data.element[element_number].zoom.enabled) ? UI_form_pointer->data.element[element_number].zoom.value : 0.0f;
                         float temp_float = 0.0f;
-                        if (UI_form_pointer->data.element[element_number].active)
+                        switch (UI_form_pointer->data.element[element_number].type)
                         {
-                            switch (UI_form_pointer->data.element[element_number].type)
-                            {
-                                case IMAGE:
-                                    if (UI_form_pointer->data.element[element_number].selected) game.texture_manager.draw(UI_form_pointer->data.element[element_number].texture.highlighted,false,UI_form_pointer->data.element[element_number].position.x,UI_form_pointer->data.element[element_number].position.y,UI_form_pointer->data.element[element_number].position.z,UI_form_pointer->data.element[element_number].size.x+zoom_value,UI_form_pointer->data.element[element_number].size.y+zoom_value,UI_form_pointer->data.element[element_number].texture.angle);
-                                    game.texture_manager.draw(UI_form_pointer->data.element[element_number].texture.normal,false,UI_form_pointer->data.element[element_number].position.x,UI_form_pointer->data.element[element_number].position.y,UI_form_pointer->data.element[element_number].position.z,UI_form_pointer->data.element[element_number].size.x+zoom_value,UI_form_pointer->data.element[element_number].size.y+zoom_value,UI_form_pointer->data.element[element_number].texture.angle);
-                                    if ((UI_form_pointer->data.element[element_number].title.enabled) && (UI_form_pointer->data.element[element_number].mouse_over))
-                                    {
-                                        game.font_manager.write(UI_form_pointer->data.element[element_number].font,UI_form_pointer->data.element[element_number].color.highlighted.r,UI_form_pointer->data.element[element_number].color.highlighted.g,UI_form_pointer->data.element[element_number].color.highlighted.b,UI_form_pointer->data.element[element_number].color.highlighted.a,UI_form_pointer->data.element[element_number].title.position.x,UI_form_pointer->data.element[element_number].title.position.y,UI_form_pointer->data.element[element_number].title.size.x,UI_form_pointer->data.element[element_number].title.size.y,UI_form_pointer->data.element[element_number].title.text);
-                                    }
-                                break;
-                                case BUTTON:
-                                    switch (UI_form_pointer->data.element[element_number].state)
-                                    {
-                                        case NORMAL:
-                                            game.texture_manager.draw(UI_form_pointer->data.element[element_number].texture.normal,false,UI_form_pointer->data.element[element_number].position.x,UI_form_pointer->data.element[element_number].position.y,UI_form_pointer->data.element[element_number].position.z,UI_form_pointer->data.element[element_number].size.x+zoom_value,UI_form_pointer->data.element[element_number].size.y+zoom_value,UI_form_pointer->data.element[element_number].texture.angle);
-                                            if (UI_form_pointer->data.element[element_number].title.enabled) game.font_manager.write(UI_form_pointer->data.element[element_number].font,UI_form_pointer->data.element[element_number].color.normal.r,UI_form_pointer->data.element[element_number].color.normal.g,UI_form_pointer->data.element[element_number].color.normal.b,UI_form_pointer->data.element[element_number].color.normal.a,UI_form_pointer->data.element[element_number].title.position.x,UI_form_pointer->data.element[element_number].title.position.y,UI_form_pointer->data.element[element_number].title.size.x,UI_form_pointer->data.element[element_number].title.size.y,UI_form_pointer->data.element[element_number].title.text);
-                                        break;
-                                        case HIGHLIGHTED:
-                                            game.texture_manager.draw(UI_form_pointer->data.element[element_number].texture.highlighted,false,UI_form_pointer->data.element[element_number].position.x,UI_form_pointer->data.element[element_number].position.y,UI_form_pointer->data.element[element_number].position.z,UI_form_pointer->data.element[element_number].size.x+zoom_value,UI_form_pointer->data.element[element_number].size.y+zoom_value,UI_form_pointer->data.element[element_number].texture.angle);
-                                            if (UI_form_pointer->data.element[element_number].title.enabled) game.font_manager.write(UI_form_pointer->data.element[element_number].font,UI_form_pointer->data.element[element_number].color.highlighted.r,UI_form_pointer->data.element[element_number].color.highlighted.g,UI_form_pointer->data.element[element_number].color.highlighted.b,UI_form_pointer->data.element[element_number].color.highlighted.a,UI_form_pointer->data.element[element_number].title.position.x,UI_form_pointer->data.element[element_number].title.position.y,UI_form_pointer->data.element[element_number].title.size.x,UI_form_pointer->data.element[element_number].title.size.y,UI_form_pointer->data.element[element_number].title.text);
-                                        break;
-                                        case DISABLED:
-                                            game.texture_manager.draw(UI_form_pointer->data.element[element_number].texture.disabled,false,UI_form_pointer->data.element[element_number].position.x,UI_form_pointer->data.element[element_number].position.y,UI_form_pointer->data.element[element_number].position.z,UI_form_pointer->data.element[element_number].size.x+zoom_value,UI_form_pointer->data.element[element_number].size.y+zoom_value,UI_form_pointer->data.element[element_number].texture.angle);
-                                            if (UI_form_pointer->data.element[element_number].title.enabled) game.font_manager.write(UI_form_pointer->data.element[element_number].font,UI_form_pointer->data.element[element_number].color.disabled.r,UI_form_pointer->data.element[element_number].color.disabled.g,UI_form_pointer->data.element[element_number].color.disabled.b,UI_form_pointer->data.element[element_number].color.disabled.a,UI_form_pointer->data.element[element_number].title.position.x,UI_form_pointer->data.element[element_number].title.position.y,UI_form_pointer->data.element[element_number].title.size.x,UI_form_pointer->data.element[element_number].title.size.y,UI_form_pointer->data.element[element_number].title.text);
-                                        break;
-                                        default:
-                                        break;
-                                    }
-                                break;
-                                case TEXTLABEL:
-                                    switch (UI_form_pointer->data.element[element_number].state)
-                                    {
-                                        case NORMAL:
-                                            if (UI_form_pointer->data.element[element_number].title.enabled) game.font_manager.write(UI_form_pointer->data.element[element_number].font,UI_form_pointer->data.element[element_number].color.normal.r,UI_form_pointer->data.element[element_number].color.normal.g,UI_form_pointer->data.element[element_number].color.normal.b,UI_form_pointer->data.element[element_number].color.normal.a,UI_form_pointer->data.element[element_number].title.position.x,UI_form_pointer->data.element[element_number].title.position.y,UI_form_pointer->data.element[element_number].title.size.x,UI_form_pointer->data.element[element_number].title.size.y,UI_form_pointer->data.element[element_number].title.text);
-                                        break;
-                                        case HIGHLIGHTED:
-                                            if (UI_form_pointer->data.element[element_number].title.enabled) game.font_manager.write(UI_form_pointer->data.element[element_number].font,UI_form_pointer->data.element[element_number].color.highlighted.r,UI_form_pointer->data.element[element_number].color.highlighted.g,UI_form_pointer->data.element[element_number].color.highlighted.b,UI_form_pointer->data.element[element_number].color.highlighted.a,UI_form_pointer->data.element[element_number].title.position.x,UI_form_pointer->data.element[element_number].title.position.y,UI_form_pointer->data.element[element_number].title.size.x,UI_form_pointer->data.element[element_number].title.size.y,UI_form_pointer->data.element[element_number].title.text);
-                                        break;
-                                        case DISABLED:
-                                            if (UI_form_pointer->data.element[element_number].title.enabled) game.font_manager.write(UI_form_pointer->data.element[element_number].font,UI_form_pointer->data.element[element_number].color.disabled.r,UI_form_pointer->data.element[element_number].color.disabled.g,UI_form_pointer->data.element[element_number].color.disabled.b,UI_form_pointer->data.element[element_number].color.disabled.a,UI_form_pointer->data.element[element_number].title.position.x,UI_form_pointer->data.element[element_number].title.position.y,UI_form_pointer->data.element[element_number].title.size.x,UI_form_pointer->data.element[element_number].title.size.y,UI_form_pointer->data.element[element_number].title.text);
-                                        break;
-                                        default:
-                                        break;
-                                    }
-                                break;
-                                case SLIDER:
-                                break;
-                                case BAR:
-                                    switch (UI_form_pointer->data.element[element_number].state)
-                                    {
-                                        case NORMAL:
-                                            temp_float = (UI_form_pointer->data.element[element_number].value / UI_form_pointer->data.element[element_number].value_max) * (UI_form_pointer->data.element[element_number].size.x+zoom_value);
-                                            game.texture_manager.draw(UI_form_pointer->data.element[element_number].texture.normal,false,UI_form_pointer->data.element[element_number].position.x-((UI_form_pointer->data.element[element_number].size.x/2)+zoom_value)+(temp_float/2.0f),UI_form_pointer->data.element[element_number].position.y,UI_form_pointer->data.element[element_number].position.z,temp_float,UI_form_pointer->data.element[element_number].size.y+zoom_value,UI_form_pointer->data.element[element_number].texture.angle);
-                                            if (UI_form_pointer->data.element[element_number].title.enabled) game.font_manager.write(UI_form_pointer->data.element[element_number].font,UI_form_pointer->data.element[element_number].color.normal.r,UI_form_pointer->data.element[element_number].color.normal.g,UI_form_pointer->data.element[element_number].color.normal.b,UI_form_pointer->data.element[element_number].color.normal.a,UI_form_pointer->data.element[element_number].title.position.x,UI_form_pointer->data.element[element_number].title.position.y,UI_form_pointer->data.element[element_number].title.size.x,UI_form_pointer->data.element[element_number].title.size.y,UI_form_pointer->data.element[element_number].title.text);
-                                        break;
-                                        case HIGHLIGHTED:
-                                            temp_float = (UI_form_pointer->data.element[element_number].value / UI_form_pointer->data.element[element_number].value_max) * (UI_form_pointer->data.element[element_number].size.x+zoom_value);
-                                            game.texture_manager.draw(UI_form_pointer->data.element[element_number].texture.highlighted,false,UI_form_pointer->data.element[element_number].position.x-((UI_form_pointer->data.element[element_number].size.x/2)+zoom_value)+(temp_float/2.0f),UI_form_pointer->data.element[element_number].position.y,UI_form_pointer->data.element[element_number].position.z,temp_float,UI_form_pointer->data.element[element_number].size.y+zoom_value,UI_form_pointer->data.element[element_number].texture.angle);
-                                            if (UI_form_pointer->data.element[element_number].title.enabled) game.font_manager.write(UI_form_pointer->data.element[element_number].font,UI_form_pointer->data.element[element_number].color.highlighted.r,UI_form_pointer->data.element[element_number].color.highlighted.g,UI_form_pointer->data.element[element_number].color.highlighted.b,UI_form_pointer->data.element[element_number].color.highlighted.a,UI_form_pointer->data.element[element_number].title.position.x,UI_form_pointer->data.element[element_number].title.position.y,UI_form_pointer->data.element[element_number].title.size.x,UI_form_pointer->data.element[element_number].title.size.y,UI_form_pointer->data.element[element_number].title.text);
-                                        break;
-                                        case DISABLED:
-                                            temp_float = (UI_form_pointer->data.element[element_number].value / UI_form_pointer->data.element[element_number].value_max) * (UI_form_pointer->data.element[element_number].size.x+zoom_value);
-                                            game.texture_manager.draw(UI_form_pointer->data.element[element_number].texture.disabled,false,UI_form_pointer->data.element[element_number].position.x-((UI_form_pointer->data.element[element_number].size.x/2)+zoom_value)+(temp_float/2.0f),UI_form_pointer->data.element[element_number].position.y,UI_form_pointer->data.element[element_number].position.z,temp_float,UI_form_pointer->data.element[element_number].size.y+zoom_value,UI_form_pointer->data.element[element_number].texture.angle);
-                                            if (UI_form_pointer->data.element[element_number].title.enabled) game.font_manager.write(UI_form_pointer->data.element[element_number].font,UI_form_pointer->data.element[element_number].color.disabled.r,UI_form_pointer->data.element[element_number].color.disabled.g,UI_form_pointer->data.element[element_number].color.disabled.b,UI_form_pointer->data.element[element_number].color.disabled.a,UI_form_pointer->data.element[element_number].title.position.x,UI_form_pointer->data.element[element_number].title.position.y,UI_form_pointer->data.element[element_number].title.size.x,UI_form_pointer->data.element[element_number].title.size.y,UI_form_pointer->data.element[element_number].title.text);
-                                        break;
-                                        default:
-                                        break;
-                                    }
-                                break;
-                                case TOGGLE:
-                                break;
-                                case CHECKBOX:
-                                break;
-                                case DROPDOWN:
-                                break;
-                                case SELECTION:
-                                break;
-                                case ITEM:
-                                    if (UI_form_pointer->data.element[element_number].value > -1)
-                                    {
+                            case IMAGE:
+                                if (UI_form_pointer->data.element[element_number].selected) game.texture_manager.draw(UI_form_pointer->data.element[element_number].texture.highlighted,false,UI_form_pointer->data.element[element_number].position.x,UI_form_pointer->data.element[element_number].position.y,UI_form_pointer->data.element[element_number].position.z,UI_form_pointer->data.element[element_number].size.x+zoom_value,UI_form_pointer->data.element[element_number].size.y+zoom_value,UI_form_pointer->data.element[element_number].texture.angle);
+                                game.texture_manager.draw(UI_form_pointer->data.element[element_number].texture.normal,false,UI_form_pointer->data.element[element_number].position.x,UI_form_pointer->data.element[element_number].position.y,UI_form_pointer->data.element[element_number].position.z,UI_form_pointer->data.element[element_number].size.x+zoom_value,UI_form_pointer->data.element[element_number].size.y+zoom_value,UI_form_pointer->data.element[element_number].texture.angle);
+                                if ((UI_form_pointer->data.element[element_number].title.enabled) && (UI_form_pointer->data.element[element_number].mouse_over))
+                                {
+                                    game.font_manager.write(UI_form_pointer->data.element[element_number].font,UI_form_pointer->data.element[element_number].color.highlighted.r,UI_form_pointer->data.element[element_number].color.highlighted.g,UI_form_pointer->data.element[element_number].color.highlighted.b,UI_form_pointer->data.element[element_number].color.highlighted.a,UI_form_pointer->data.element[element_number].title.position.x,UI_form_pointer->data.element[element_number].title.position.y,UI_form_pointer->data.element[element_number].title.size.x,UI_form_pointer->data.element[element_number].title.size.y,UI_form_pointer->data.element[element_number].title.text);
+                                }
+                            break;
+                            case BUTTON:
+                                switch (UI_form_pointer->data.element[element_number].state)
+                                {
+                                    case NORMAL:
                                         game.texture_manager.draw(UI_form_pointer->data.element[element_number].texture.normal,false,UI_form_pointer->data.element[element_number].position.x,UI_form_pointer->data.element[element_number].position.y,UI_form_pointer->data.element[element_number].position.z,UI_form_pointer->data.element[element_number].size.x+zoom_value,UI_form_pointer->data.element[element_number].size.y+zoom_value,UI_form_pointer->data.element[element_number].texture.angle);
-                                    }
-                                    // Font write -> Item quantity
-                                break;
-                                default:
-                                break;
-                            }
+                                        if (UI_form_pointer->data.element[element_number].title.enabled) game.font_manager.write(UI_form_pointer->data.element[element_number].font,UI_form_pointer->data.element[element_number].color.normal.r,UI_form_pointer->data.element[element_number].color.normal.g,UI_form_pointer->data.element[element_number].color.normal.b,UI_form_pointer->data.element[element_number].color.normal.a,UI_form_pointer->data.element[element_number].title.position.x,UI_form_pointer->data.element[element_number].title.position.y,UI_form_pointer->data.element[element_number].title.size.x,UI_form_pointer->data.element[element_number].title.size.y,UI_form_pointer->data.element[element_number].title.text);
+                                    break;
+                                    case HIGHLIGHTED:
+                                        game.texture_manager.draw(UI_form_pointer->data.element[element_number].texture.highlighted,false,UI_form_pointer->data.element[element_number].position.x,UI_form_pointer->data.element[element_number].position.y,UI_form_pointer->data.element[element_number].position.z,UI_form_pointer->data.element[element_number].size.x+zoom_value,UI_form_pointer->data.element[element_number].size.y+zoom_value,UI_form_pointer->data.element[element_number].texture.angle);
+                                        if (UI_form_pointer->data.element[element_number].title.enabled) game.font_manager.write(UI_form_pointer->data.element[element_number].font,UI_form_pointer->data.element[element_number].color.highlighted.r,UI_form_pointer->data.element[element_number].color.highlighted.g,UI_form_pointer->data.element[element_number].color.highlighted.b,UI_form_pointer->data.element[element_number].color.highlighted.a,UI_form_pointer->data.element[element_number].title.position.x,UI_form_pointer->data.element[element_number].title.position.y,UI_form_pointer->data.element[element_number].title.size.x,UI_form_pointer->data.element[element_number].title.size.y,UI_form_pointer->data.element[element_number].title.text);
+                                    break;
+                                    case DISABLED:
+                                        game.texture_manager.draw(UI_form_pointer->data.element[element_number].texture.disabled,false,UI_form_pointer->data.element[element_number].position.x,UI_form_pointer->data.element[element_number].position.y,UI_form_pointer->data.element[element_number].position.z,UI_form_pointer->data.element[element_number].size.x+zoom_value,UI_form_pointer->data.element[element_number].size.y+zoom_value,UI_form_pointer->data.element[element_number].texture.angle);
+                                        if (UI_form_pointer->data.element[element_number].title.enabled) game.font_manager.write(UI_form_pointer->data.element[element_number].font,UI_form_pointer->data.element[element_number].color.disabled.r,UI_form_pointer->data.element[element_number].color.disabled.g,UI_form_pointer->data.element[element_number].color.disabled.b,UI_form_pointer->data.element[element_number].color.disabled.a,UI_form_pointer->data.element[element_number].title.position.x,UI_form_pointer->data.element[element_number].title.position.y,UI_form_pointer->data.element[element_number].title.size.x,UI_form_pointer->data.element[element_number].title.size.y,UI_form_pointer->data.element[element_number].title.text);
+                                    break;
+                                    default:
+                                    break;
+                                }
+                            break;
+                            case TEXTLABEL:
+                                switch (UI_form_pointer->data.element[element_number].state)
+                                {
+                                    case NORMAL:
+                                        if (UI_form_pointer->data.element[element_number].title.enabled) game.font_manager.write(UI_form_pointer->data.element[element_number].font,UI_form_pointer->data.element[element_number].color.normal.r,UI_form_pointer->data.element[element_number].color.normal.g,UI_form_pointer->data.element[element_number].color.normal.b,UI_form_pointer->data.element[element_number].color.normal.a,UI_form_pointer->data.element[element_number].title.position.x,UI_form_pointer->data.element[element_number].title.position.y,UI_form_pointer->data.element[element_number].title.size.x,UI_form_pointer->data.element[element_number].title.size.y,UI_form_pointer->data.element[element_number].title.text);
+                                    break;
+                                    case HIGHLIGHTED:
+                                        if (UI_form_pointer->data.element[element_number].title.enabled) game.font_manager.write(UI_form_pointer->data.element[element_number].font,UI_form_pointer->data.element[element_number].color.highlighted.r,UI_form_pointer->data.element[element_number].color.highlighted.g,UI_form_pointer->data.element[element_number].color.highlighted.b,UI_form_pointer->data.element[element_number].color.highlighted.a,UI_form_pointer->data.element[element_number].title.position.x,UI_form_pointer->data.element[element_number].title.position.y,UI_form_pointer->data.element[element_number].title.size.x,UI_form_pointer->data.element[element_number].title.size.y,UI_form_pointer->data.element[element_number].title.text);
+                                    break;
+                                    case DISABLED:
+                                        if (UI_form_pointer->data.element[element_number].title.enabled) game.font_manager.write(UI_form_pointer->data.element[element_number].font,UI_form_pointer->data.element[element_number].color.disabled.r,UI_form_pointer->data.element[element_number].color.disabled.g,UI_form_pointer->data.element[element_number].color.disabled.b,UI_form_pointer->data.element[element_number].color.disabled.a,UI_form_pointer->data.element[element_number].title.position.x,UI_form_pointer->data.element[element_number].title.position.y,UI_form_pointer->data.element[element_number].title.size.x,UI_form_pointer->data.element[element_number].title.size.y,UI_form_pointer->data.element[element_number].title.text);
+                                    break;
+                                    default:
+                                    break;
+                                }
+                            break;
+                            case SLIDER:
+                            break;
+                            case BAR:
+                                switch (UI_form_pointer->data.element[element_number].state)
+                                {
+                                    case NORMAL:
+                                        temp_float = (UI_form_pointer->data.element[element_number].value / UI_form_pointer->data.element[element_number].value_max) * (UI_form_pointer->data.element[element_number].size.x+zoom_value);
+                                        game.texture_manager.draw(UI_form_pointer->data.element[element_number].texture.normal,false,UI_form_pointer->data.element[element_number].position.x-((UI_form_pointer->data.element[element_number].size.x/2)+zoom_value)+(temp_float/2.0f),UI_form_pointer->data.element[element_number].position.y,UI_form_pointer->data.element[element_number].position.z,temp_float,UI_form_pointer->data.element[element_number].size.y+zoom_value,UI_form_pointer->data.element[element_number].texture.angle);
+                                        if (UI_form_pointer->data.element[element_number].title.enabled) game.font_manager.write(UI_form_pointer->data.element[element_number].font,UI_form_pointer->data.element[element_number].color.normal.r,UI_form_pointer->data.element[element_number].color.normal.g,UI_form_pointer->data.element[element_number].color.normal.b,UI_form_pointer->data.element[element_number].color.normal.a,UI_form_pointer->data.element[element_number].title.position.x,UI_form_pointer->data.element[element_number].title.position.y,UI_form_pointer->data.element[element_number].title.size.x,UI_form_pointer->data.element[element_number].title.size.y,UI_form_pointer->data.element[element_number].title.text);
+                                    break;
+                                    case HIGHLIGHTED:
+                                        temp_float = (UI_form_pointer->data.element[element_number].value / UI_form_pointer->data.element[element_number].value_max) * (UI_form_pointer->data.element[element_number].size.x+zoom_value);
+                                        game.texture_manager.draw(UI_form_pointer->data.element[element_number].texture.highlighted,false,UI_form_pointer->data.element[element_number].position.x-((UI_form_pointer->data.element[element_number].size.x/2)+zoom_value)+(temp_float/2.0f),UI_form_pointer->data.element[element_number].position.y,UI_form_pointer->data.element[element_number].position.z,temp_float,UI_form_pointer->data.element[element_number].size.y+zoom_value,UI_form_pointer->data.element[element_number].texture.angle);
+                                        if (UI_form_pointer->data.element[element_number].title.enabled) game.font_manager.write(UI_form_pointer->data.element[element_number].font,UI_form_pointer->data.element[element_number].color.highlighted.r,UI_form_pointer->data.element[element_number].color.highlighted.g,UI_form_pointer->data.element[element_number].color.highlighted.b,UI_form_pointer->data.element[element_number].color.highlighted.a,UI_form_pointer->data.element[element_number].title.position.x,UI_form_pointer->data.element[element_number].title.position.y,UI_form_pointer->data.element[element_number].title.size.x,UI_form_pointer->data.element[element_number].title.size.y,UI_form_pointer->data.element[element_number].title.text);
+                                    break;
+                                    case DISABLED:
+                                        temp_float = (UI_form_pointer->data.element[element_number].value / UI_form_pointer->data.element[element_number].value_max) * (UI_form_pointer->data.element[element_number].size.x+zoom_value);
+                                        game.texture_manager.draw(UI_form_pointer->data.element[element_number].texture.disabled,false,UI_form_pointer->data.element[element_number].position.x-((UI_form_pointer->data.element[element_number].size.x/2)+zoom_value)+(temp_float/2.0f),UI_form_pointer->data.element[element_number].position.y,UI_form_pointer->data.element[element_number].position.z,temp_float,UI_form_pointer->data.element[element_number].size.y+zoom_value,UI_form_pointer->data.element[element_number].texture.angle);
+                                        if (UI_form_pointer->data.element[element_number].title.enabled) game.font_manager.write(UI_form_pointer->data.element[element_number].font,UI_form_pointer->data.element[element_number].color.disabled.r,UI_form_pointer->data.element[element_number].color.disabled.g,UI_form_pointer->data.element[element_number].color.disabled.b,UI_form_pointer->data.element[element_number].color.disabled.a,UI_form_pointer->data.element[element_number].title.position.x,UI_form_pointer->data.element[element_number].title.position.y,UI_form_pointer->data.element[element_number].title.size.x,UI_form_pointer->data.element[element_number].title.size.y,UI_form_pointer->data.element[element_number].title.text);
+                                    break;
+                                    default:
+                                    break;
+                                }
+                            break;
+                            case TOGGLE:
+                            break;
+                            case CHECKBOX:
+                            break;
+                            case DROPDOWN:
+                            break;
+                            case SELECTION:
+                            break;
+                            case ITEM:
+                                if (UI_form_pointer->data.element[element_number].value > -1)
+                                {
+                                    if (UI_form_pointer->data.element[element_number].drag_active) element_draged = element_number;
+                                    else game.texture_manager.draw(UI_form_pointer->data.element[element_number].texture.normal,false,UI_form_pointer->data.element[element_number].position.x,UI_form_pointer->data.element[element_number].position.y,UI_form_pointer->data.element[element_number].position.z,UI_form_pointer->data.element[element_number].size.x+zoom_value,UI_form_pointer->data.element[element_number].size.y+zoom_value,UI_form_pointer->data.element[element_number].texture.angle);
+                                }
+                                // Font write -> Item quantity
+                            break;
+                            default:
+                            break;
                         }
                     }
+                }
+                if ((element_draged >= 0) && (UI_form_pointer->data.element[element_draged].active) && (UI_form_pointer->data.element[element_draged].value > -1))
+                {
+                    float zoom_value = (UI_form_pointer->data.element[element_draged].zoom.enabled) ? UI_form_pointer->data.element[element_draged].zoom.value : 0.0f;
+                    game.texture_manager.draw(UI_form_pointer->data.element[element_draged].texture.normal,false,UI_form_pointer->data.element[element_draged].position.x,UI_form_pointer->data.element[element_draged].position.y,UI_form_pointer->data.element[element_draged].position.z,UI_form_pointer->data.element[element_draged].size.x+zoom_value,UI_form_pointer->data.element[element_draged].size.y+zoom_value,UI_form_pointer->data.element[element_draged].texture.angle);
                 }
             }
             // ------------------------- Render element tool tips -------------------------
@@ -955,36 +960,51 @@ void UI_manager_class::process(void)
     }
 };
 
-
+void UI_manager_class::swap_elements(int UI_form_UID_src, int UI_element_src, int UI_form_UID_dst, int UI_element_dst)
+{
 /*
-
-process UI forms
-    only if mouse over
-
-
-sort UI forms
-    keep UI forms such as "action bar" at the top of the list.
-    then UI forms in order of precidence, ie. front most in focus UI form.
-    UI forms bubble to the top of the list as they come into focus.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-*/
-
-
+    texture_type *temp_texture_pointer;
+    bool allow_swap_elements = true; // test
+    if ((window_src == INVENTORY_UID) && (window_dst == INVENTORY_UID)) allow_swap_elements = true;
+    if ((window_src == ACTIONBAR_UID) && (window_dst == ACTIONBAR_UID)) allow_swap_elements = true;
+    if ((window_src == INVENTORY_UID) && (window_dst == ACTIONBAR_UID)) allow_swap_elements = true;
+    if ((window_src == ACTIONBAR_UID) && (window_dst == INVENTORY_UID)) allow_swap_elements = true;
+    window_src = game.window_manager.window_get_number(window_src);
+    window_dst = game.window_manager.window_get_number(window_dst);
+    game.core.log.file_write("Moving element from - ",window_src," - ",element_src," to - ",window_dst," - ",element_dst);
+    if ((allow_swap_elements) && ((game.window_manager.window[window_src].element[element_src].type == ITEM)&&(game.window_manager.window[window_dst].element[element_dst].type == ITEM)))
+    {
+        if    ((game.item_manager.item[(int)game.window_manager.window[window_src].element[element_src].value].type     == game.item_manager.item[(int)game.window_manager.window[window_dst].element[element_dst].value].type)
+            && (game.item_manager.item[(int)game.window_manager.window[window_src].element[element_src].value].sub_type == game.item_manager.item[(int)game.window_manager.window[window_dst].element[element_dst].value].sub_type)
+            && (game.item_manager.item[(int)game.window_manager.window[window_src].element[element_src].value].quantity_max > 1)
+            && (game.item_manager.item[(int)game.window_manager.window[window_dst].element[element_dst].value].quantity_max > 1))
+        {
+            game.window_manager.window[window_dst].element[element_dst].quantity += game.window_manager.window[window_src].element[element_src].quantity;
+            game.window_manager.window[window_src].element[element_src].quantity = 0;
+            if (game.window_manager.window[window_dst].element[element_dst].quantity > game.item_manager.item[(int)game.window_manager.window[window_dst].element[element_dst].value].quantity_max)
+            {
+                game.window_manager.window[window_src].element[element_src].quantity  = game.window_manager.window[window_dst].element[element_dst].quantity - game.item_manager.item[(int)game.window_manager.window[window_dst].element[element_dst].value].quantity_max;
+                game.window_manager.window[window_dst].element[element_dst].quantity -= game.item_manager.item[(int)game.window_manager.window[window_dst].element[element_dst].value].quantity_max;
+            }
+            if (game.window_manager.window[window_src].element[element_src].quantity <= 0)
+            {
+                game.window_manager.window[window_src].element[element_src].value    = -1;
+                game.window_manager.window[window_src].element[element_src].quantity = 0;
+            }
+        }
+       else
+        {
+            int tmp_value    = game.window_manager.window[window_src].element[element_src].value;
+            int tmp_quantity = game.window_manager.window[window_src].element[element_src].quantity;
+            game.window_manager.window[window_src].element[element_src].value    = game.window_manager.window[window_dst].element[element_dst].value;
+            game.window_manager.window[window_src].element[element_src].quantity = game.window_manager.window[window_dst].element[element_dst].quantity;
+            game.window_manager.window[window_dst].element[element_dst].value    = tmp_value;
+            game.window_manager.window[window_dst].element[element_dst].quantity = tmp_quantity;
+        }
+        game.sound_manager.play(game.item_manager.item[(int)game.window_manager.window[window_dst].element[element_dst].value].sound_move);
+        temp_texture_pointer = game.window_manager.window[window_src].element[element_src].texture.normal;
+        game.window_manager.window[window_src].element[element_src].texture.normal = game.window_manager.window[window_dst].element[element_dst].texture.normal;
+        game.window_manager.window[window_dst].element[element_dst].texture.normal = temp_texture_pointer;
+    }
+    */
+};

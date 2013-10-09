@@ -78,22 +78,23 @@ class UI_manager_class
         void                  UI_form_enable(int UI_form_UID);
         void                  UI_form_disable(int UI_form_UID);
         bool                  UI_form_is_enable(int UI_form_UID);
-        void                  UI_form_set_position(int UI_form_UID_src, int UI_form_UID_dst);
-        void                  UI_form_mouse_reset(int UI_form_UID);
-        int                   UI_form_mouse_over_window(void);
-        int                   UI_form_mouse_over_element(int UID);
-        void                  UI_form_set_event(int UI_form_UID, int EVENT_ID);
         int                   UI_form_get_list_position(int UI_form_UID);
         bool                  UI_form_get_is_top_of_list(int UI_form_UID);
+        void                  UI_form_list_log(void);
         void                  UI_form_list_sort(void);
         void                  UI_form_list_sort(int UI_form_UID);
-        void                  UI_form_list_log(void);
+        int                   UI_form_mouse_over_element(int UID);
+        int                   UI_form_mouse_over_window(void);
+        void                  UI_form_mouse_reset(int UI_form_UID);
+        void                  UI_form_set_event(int UI_form_UID, int EVENT_ID);
+        void                  UI_form_set_position(int UI_form_UID_src, int UI_form_UID_dst);
         void                  UI_form_transition(int UI_form_UID_src, int UI_form_UID_dst);
-        void                  setup(void);
-        void                  render(void);
         void                  process(void);
         event_struct          process_form_elements(UI_form_struct *UI_form_pointer,bool window_in_focus);
         void                  process_forms(void);
+        void                  render(void);
+        void                  setup(void);
+        void                  swap_elements(int UI_form_UID_src, int UI_element_src, int UI_form_UID_dst, int UI_element_dst);
 };
 
 
