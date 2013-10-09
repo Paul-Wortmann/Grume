@@ -100,7 +100,7 @@ extern "C" int main(int argc, char** argv)
 //  --- resources ---
     game.loading_screen.display("data/loading_screen.png");
     game.core.log.file_write("Loading resources....");
-    game.UI_manager.cursor.normal_arrow = game.texture_manager.add_texture("data/textures/UI/cursors/default.png");
+    game.UI_manager.data.cursor.normal_arrow = game.texture_manager.add_texture("data/textures/UI/cursors/default.png");
     game.music_manager.current = game.music_manager.add_music("data/music/menu_00.s3m");
 //  --- miscellaneous ---
     game.core.log.file_write("Seeding random...");
@@ -161,7 +161,7 @@ extern "C" int main(int argc, char** argv)
             game.core.process_ready = true;
         }
         else game.core.process_ready = false;
-        game.texture_manager.draw(game.UI_manager.cursor.normal_arrow,false,game.core.io.mouse_x+0.012f,game.core.io.mouse_y-0.018f,0.001f,0.04f,0.04f,345.0f);
+        game.texture_manager.draw(game.UI_manager.data.cursor.normal_arrow,false,game.core.io.mouse_x+0.012f,game.core.io.mouse_y-0.018f,0.001f,0.04f,0.04f,345.0f);
         SDL_GL_SwapWindow(game.core.window_pointer);
     }
 // --------------------------------------------------------------------------------------------------------------------------

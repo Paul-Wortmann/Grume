@@ -387,8 +387,8 @@ void process_character_window(UI_form_struct *UI_form_pointer)
             break;
             case (EVENT_UI_LIST_SORT): //Window stack sort
                 UI_form_pointer->data.event.id = EVENT_NONE;
-                game.UI_manager.event.id    = EVENT_UI_LIST_SORT;
-                game.UI_manager.event.value = UI_form_pointer->data.UID;
+                game.UI_manager.data.event.id    = EVENT_UI_LIST_SORT;
+                game.UI_manager.data.event.value = UI_form_pointer->data.UID;
             break;
             case (EVENT_UI_ELEMENT_DRAG): //Element drag event posted
                 //game.UI_manager.source.window = CHARACTER_UID;
@@ -401,8 +401,8 @@ void process_character_window(UI_form_struct *UI_form_pointer)
     }
     if (UI_form_pointer->data.event.id != EVENT_NONE)
     {
-        game.UI_manager.event.id    = EVENT_UI_LIST_SORT;
-        game.UI_manager.event.value = UI_form_pointer->data.UID;
+        game.UI_manager.data.event.id    = EVENT_UI_LIST_SORT;
+        game.UI_manager.data.event.value = UI_form_pointer->data.UID;
     }
     UI_form_pointer->data.event.id = EVENT_NONE;
 };

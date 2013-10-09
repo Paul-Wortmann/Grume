@@ -31,6 +31,8 @@
 #include "../core/texture_manager.hpp"
 #include "../core/types.hpp"
 
+#define MOUSE_OVER_MAP             65535
+
 #define EVENT_VALUE_NONE          -1
 #define EVENT_NONE                 0
 #define EVENT_ELEMENT_MOUSE_LEFT   1
@@ -40,20 +42,20 @@
 #define EVENT_UI_FORM_DRAG         10001
 #define EVENT_UI_ELEMENT_DRAG      10002
 
-#define DISABLED            0
-#define NORMAL              1
-#define HIGHLIGHTED         2
+#define DISABLED                   0
+#define NORMAL                     1
+#define HIGHLIGHTED                2
 
-#define BUTTON              3
-#define TEXTLABEL           4
-#define IMAGE               5
-#define SLIDER              6
-#define BAR                 7
-#define TOGGLE              8
-#define CHECKBOX            9
-#define DROPDOWN            10
-#define SELECTION           11
-#define ITEM                12
+#define BUTTON                     3
+#define TEXTLABEL                  4
+#define IMAGE                      5
+#define SLIDER                     6
+#define BAR                        7
+#define TOGGLE                     8
+#define CHECKBOX                   9
+#define DROPDOWN                   10
+#define SELECTION                  11
+#define ITEM                       12
 
 struct event_struct
 {

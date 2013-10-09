@@ -152,13 +152,6 @@ void item_class::load_items(std::string file_name)
                         if (temp_string_key == "EFFECT_3")         temp_item_pointer->data.effect[3]              = game.effect_manager.add_effect(atoi(temp_string_data.c_str()));
                         if (temp_string_key == "EFFECT_4")         temp_item_pointer->data.effect[4]              = game.effect_manager.add_effect(atoi(temp_string_data.c_str()));
                         if (temp_string_key == "EFFECT_5")         temp_item_pointer->data.effect[5]              = game.effect_manager.add_effect(atoi(temp_string_data.c_str()));
-                        if ((temp_string_key == "NUM_ITEM_EFFECTS") && (temp_item_pointer->data.number_of_item_effects > 0))
-                        {
-                            for (int num_item_effects = 0; num_item_effects < temp_item_pointer->data.number_of_item_effects;num_item_effects++)
-                            {
-                                temp_item_pointer->data.effect[num_item_effects] = new effect_type;
-                            }
-                        }
                     }
                 }
             }

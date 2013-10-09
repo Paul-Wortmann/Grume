@@ -57,15 +57,20 @@
 #define    UID_MENU_GAME_OVER     14
 #define    UID_MENU_PAUSE         15
 
+struct UI_manager_data_type
+{
+    UI_cursor_class       cursor;
+    bool                  drag_in_progress;
+    bool                  element_drag_in_progress;
+    event_struct          event;
+    int                   number_of_UI_forms;
+};
+
 class UI_manager_class
 {
     public:
         UI_manager_class(void);
-        UI_cursor_class       cursor;
-        bool                  drag_in_progress;
-        bool                  element_drag_in_progress;
-        event_struct          event;
-        int                   number_of_UI_forms;
+        UI_manager_data_type  data;
         UI_form_struct       *root;
         UI_form_struct       *last;
         UI_form_struct       *UI_form_add(int UI_form_UID);
@@ -75,6 +80,8 @@ class UI_manager_class
         bool                  UI_form_is_enable(int UI_form_UID);
         void                  UI_form_set_position(int UI_form_UID_src, int UI_form_UID_dst);
         void                  UI_form_mouse_reset(int UI_form_UID);
+        int                   UI_form_mouse_over_window(void);
+        int                   UI_form_mouse_over_element(int UID);
         void                  UI_form_set_event(int UI_form_UID, int EVENT_ID);
         int                   UI_form_get_list_position(int UI_form_UID);
         bool                  UI_form_get_is_top_of_list(int UI_form_UID);

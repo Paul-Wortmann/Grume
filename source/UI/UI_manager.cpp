@@ -29,14 +29,14 @@ extern game_class         game;
 
 UI_manager_class::UI_manager_class(void)
 {
-    UI_manager_class::event.id             = EVENT_NONE;
-    UI_manager_class::event.value          = EVENT_VALUE_NONE;
-    UI_manager_class::number_of_UI_forms   = 0;
+    UI_manager_class::data.event.id             = EVENT_NONE;
+    UI_manager_class::data.event.value          = EVENT_VALUE_NONE;
+    UI_manager_class::data.number_of_UI_forms   = 0;
 }
 
 UI_form_struct *UI_manager_class::UI_form_add(int UI_form_UID)
 {
-    if (UI_manager_class::number_of_UI_forms == 0)
+    if (UI_manager_class::data.number_of_UI_forms == 0)
     {
         UI_manager_class::root           = new UI_form_struct;
         UI_manager_class::root->next     = NULL;
@@ -121,7 +121,7 @@ UI_form_struct *UI_manager_class::UI_form_add(int UI_form_UID)
     UI_manager_class::last->data.zoom.maximum                       = 0.01f;
     UI_manager_class::last->data.zoom.value                         = 0.0f;
     UI_manager_class::last->data.zoom.speed                         = 0.001f;
-    UI_manager_class::number_of_UI_forms++;
+    UI_manager_class::data.number_of_UI_forms++;
     return (UI_manager_class::last);
 };
 
@@ -221,7 +221,7 @@ bool UI_manager_class::UI_form_get_is_top_of_list(int UI_form_UID)
 
 void UI_manager_class::UI_form_list_sort(void)
 {
-    if ((UI_manager_class::number_of_UI_forms > 1) && (!UI_manager_class::element_drag_in_progress))
+    if ((UI_manager_class::data.number_of_UI_forms > 1) && (!UI_manager_class::data.element_drag_in_progress))
     {
         UI_form_struct *UI_form_pointer_2;
         UI_form_struct *UI_form_pointer_3;
@@ -244,7 +244,7 @@ void UI_manager_class::UI_form_list_sort(void)
 
 void UI_manager_class::UI_form_list_sort(int UI_form_UID)
 {
-    if ((UI_manager_class::number_of_UI_forms > 1) && (!UI_manager_class::element_drag_in_progress) && (UI_manager_class::UI_form_is_enable(UI_form_UID)) && (UI_form_UID <= UI_manager_class::number_of_UI_forms) && (UI_form_UID >= 0))
+    if ((UI_manager_class::data.number_of_UI_forms > 1) && (!UI_manager_class::data.element_drag_in_progress) && (UI_manager_class::UI_form_is_enable(UI_form_UID)) && (UI_form_UID <= UI_manager_class::data.number_of_UI_forms) && (UI_form_UID >= 0))
     {
         //game.core.log.file_write("Pushing form to list top -> ",UI_form_UID);
         //UI_form_list_log();
@@ -304,7 +304,7 @@ void UI_manager_class::UI_form_list_log(void)
         }
         list_pos++;
     }
-    game.core.log.file_write("| List size -> ",UI_manager_class::number_of_UI_forms);
+    game.core.log.file_write("| List size -> ",UI_manager_class::data.number_of_UI_forms);
     game.core.log.file_write("------------------------------------------");
 };
 
@@ -355,6 +355,51 @@ void UI_manager_class::UI_form_mouse_reset(int UI_form_UID)
     }
 };
 
+int  UI_manager_class::UI_form_mouse_over_window(void)
+{
+    int return_value = MOUSE_OVER_MAP;
+/*
+    for (int window_count = 0; window_count < UI_manager_class::data.number_of_UI_forms; window_count++)
+    {
+        if (UI_manager_class::window[UI_manager_class::[window_count]].enabled)
+        {
+            if (UI_manager_class::window[UI_manager_class::window_stack[window_count]].mouse_over_menu)
+            {
+                return_value = UI_manager_class::window[UI_manager_class::window_stack[window_count]].UID;
+            }
+        }
+    }
+*/
+    return (return_value);
+};
+
+int UI_manager_class::UI_form_mouse_over_element(int UID)
+{
+    int return_value = MOUSE_OVER_MAP;
+    /*
+    int window_count = 0;
+    if (UI_manager_class::number_of_windows > 0) // only processed if there are actually windows in the list.
+    {
+        for (int window_count_2 = 0; window_count_2 < UI_manager_class::number_of_windows; window_count_2++)
+        {
+            if (UI_manager_class::window[UI_manager_class::window_stack[window_count_2]].UID == UID) window_count = window_count_2;
+        }
+    }
+    for (int element_count = 0; element_count < UI_manager_class::window[UI_manager_class::window_stack[window_count]].number_of_elements; element_count++)
+    {
+        if (    (UI_manager_class::window[UI_manager_class::window_stack[window_count]].element[element_count].active)
+            && (!UI_manager_class::window[UI_manager_class::window_stack[window_count]].element[element_count].drag_active))
+        {
+            if (UI_manager_class::window[UI_manager_class::window_stack[window_count]].element[element_count].mouse_over_element())
+            {
+                return_value = element_count;
+            }
+        }
+    }
+    */
+    return (return_value);
+};
+
 void UI_manager_class::UI_form_set_event(int UI_form_UID, int EVENT_ID)
 {
     for (UI_form_struct *UI_form_pointer = UI_manager_class::root; UI_form_pointer != NULL; UI_form_pointer = UI_form_pointer->next)
@@ -375,8 +420,8 @@ void UI_manager_class::UI_form_transition(int UI_form_UID_src, int UI_form_UID_d
     UI_manager_class::UI_form_set_event(UI_form_UID_dst,EVENT_NONE);
     UI_manager_class::UI_form_set_event(UI_form_UID_src,EVENT_NONE);
     UI_manager_class::UI_form_enable(UI_form_UID_dst);
-    UI_manager_class::event.id    = EVENT_UI_LIST_SORT;
-    UI_manager_class::event.value = UI_form_UID_dst;
+    UI_manager_class::data.event.id    = EVENT_UI_LIST_SORT;
+    UI_manager_class::data.event.value = UI_form_UID_dst;
     game.core.io.mouse_button_left = false;
 };
 
@@ -573,8 +618,7 @@ event_struct  UI_manager_class::process_form_elements(UI_form_struct *UI_form_po
                             }
                             else
                             {
-                                /*
-                                int window_over  = game.UI_manager.mouse_over_window();
+                                int window_over  = game.UI_manager.UI_form_mouse_over_window();
                                 int window_from  = UI_form_pointer->data.element[element_number].window_UID;
                                 int element_from = UI_form_pointer->data.element[element_number].element_UID;
                                 int element_over = 0;
@@ -582,23 +626,22 @@ event_struct  UI_manager_class::process_form_elements(UI_form_struct *UI_form_po
                                 UI_form_pointer->data.element[element_number].position.y = UI_form_pointer->data.element[element_number].position_origional.y;
                                 if (window_over != MOUSE_OVER_MAP)
                                 {
-                                    element_over = game.UI_manager.mouse_over_element(window_over);
+                                    element_over = game.UI_manager.UI_form_mouse_over_element(window_over);
                                     if (element_over != MOUSE_OVER_MAP)
                                     {
                                         //swap
-                                        swap_elements(window_from,element_from,window_over,element_over);
+                                        //swap_elements(window_from,element_from,window_over,element_over);
                                     }
                                 }
-                                */
-                                game.UI_manager.element_drag_in_progress                   = false;
-                                game.UI_manager.drag_in_progress                           = false;
+                                game.UI_manager.data.element_drag_in_progress                   = false;
+                                game.UI_manager.data.drag_in_progress                           = false;
                                 UI_form_pointer->data.element[element_number].drag_active  = false;
                                 UI_form_pointer->data.element[element_number].event.id     = EVENT_NONE;
                             }
                         }
                         else
                         {
-                            if ((UI_form_pointer->data.element[element_number].dragable) && (window_in_focus) && (UI_form_pointer->data.element[element_number].mouse_over) && (!game.UI_manager.drag_in_progress))
+                            if ((UI_form_pointer->data.element[element_number].dragable) && (window_in_focus) && (UI_form_pointer->data.element[element_number].mouse_over) && (!game.UI_manager.data.drag_in_progress))
                             {
                                 if ((game.core.io.mouse_button_left) && (allow_drag))// start drag
                                 {
@@ -607,8 +650,8 @@ event_struct  UI_manager_class::process_form_elements(UI_form_struct *UI_form_po
                                     UI_form_pointer->data.element[element_number].drag_offset_x          = UI_form_pointer->data.element[element_number].position.x - game.core.io.mouse_x;
                                     UI_form_pointer->data.element[element_number].drag_offset_y          = UI_form_pointer->data.element[element_number].position.y - game.core.io.mouse_y;
                                     UI_form_pointer->data.element[element_number].drag_active            = true;
-                                    game.UI_manager.drag_in_progress         = true;
-                                    game.UI_manager.element_drag_in_progress = true;
+                                    game.UI_manager.data.drag_in_progress         = true;
+                                    game.UI_manager.data.element_drag_in_progress = true;
                                 }
                             }
                         }
@@ -631,7 +674,7 @@ event_struct  UI_manager_class::process_form_elements(UI_form_struct *UI_form_po
                             else dragged_by_x = UI_form_pointer->data.element[element_number].position.x - UI_form_pointer->data.element[element_number].position_origional.x;
                             if (UI_form_pointer->data.element[element_number].position_origional.y > UI_form_pointer->data.element[element_number].position.y) dragged_by_y = UI_form_pointer->data.element[element_number].position_origional.y - UI_form_pointer->data.element[element_number].position.y;
                             else dragged_by_y = UI_form_pointer->data.element[element_number].position.y - UI_form_pointer->data.element[element_number].position_origional.y;
-                            if (((dragged_by_x < 0.01f) && (dragged_by_y < 0.01f) && (window_in_focus)) || ((!game.UI_manager.drag_in_progress) && (window_in_focus)))
+                            if (((dragged_by_x < 0.01f) && (dragged_by_y < 0.01f) && (window_in_focus)) || ((!game.UI_manager.data.drag_in_progress) && (window_in_focus)))
                             {
                                 if (UI_form_pointer->data.element[element_number].click_enabled)
                                 {
@@ -705,7 +748,7 @@ void UI_manager_class::process_forms(void)
         bool         allow_drag         = true;
         if (UI_form_pointer->data.enabled)
         {
-            if (!game.UI_manager.drag_in_progress)
+            if (!game.UI_manager.data.drag_in_progress)
             {
                 UI_form_pointer->data.mouse_over_menu = (game.core.physics.point_in_quadrangle(UI_form_pointer->data.position.x,UI_form_pointer->data.size.x,UI_form_pointer->data.position.y,UI_form_pointer->data.size.y,game.core.io.mouse_x,game.core.io.mouse_y));
             }
@@ -735,7 +778,7 @@ void UI_manager_class::process_forms(void)
             if (return_value.id == EVENT_NONE)
             {
                 // ------------------------- Drag -------------------------
-                if (!game.UI_manager.drag_in_progress)
+                if (!game.UI_manager.data.drag_in_progress)
                 {
                     UI_form_pointer->data.mouse_over_title = (game.core.physics.point_in_quadrangle(UI_form_pointer->data.title_bar.position.x,UI_form_pointer->data.title_bar.size.x,UI_form_pointer->data.title_bar.position.y,UI_form_pointer->data.title_bar.size.y,game.core.io.mouse_x,game.core.io.mouse_y));
                 }
@@ -770,29 +813,29 @@ void UI_manager_class::process_forms(void)
                     else
                     {
                         UI_form_pointer->data.drag_active  = false;
-                        game.UI_manager.drag_in_progress   = false;
+                        game.UI_manager.data.drag_in_progress   = false;
                     }
                 }
                 else
                 {
                     if ((UI_form_pointer->data.drag_enabled) && (window_in_focus))
                     {
-                        if ((!game.UI_manager.drag_in_progress) && (UI_form_pointer->data.mouse_over_title) && (game.core.io.mouse_button_left) && (allow_drag))// start drag
+                        if ((!game.UI_manager.data.drag_in_progress) && (UI_form_pointer->data.mouse_over_title) && (game.core.io.mouse_button_left) && (allow_drag))// start drag
                         {
                             UI_form_pointer->data.drag_offset_x                = UI_form_pointer->data.position.x - game.core.io.mouse_x;
                             UI_form_pointer->data.drag_offset_y                = UI_form_pointer->data.position.y - game.core.io.mouse_y;
                             UI_form_pointer->data.drag_active                  = true;
-                            game.UI_manager.drag_in_progress                   = true;
+                            game.UI_manager.data.drag_in_progress                   = true;
                             //if (UI_manager_class::UI_form_get_is_top_of_list(UI_form_pointer->data.UID)) return_value.id = EVENT_UI_FORM_DRAG;
-                            if (UI_manager_class::UI_form_get_list_position(UI_form_pointer->data.UID) != UI_manager_class::number_of_UI_forms)
+                            if (UI_manager_class::UI_form_get_list_position(UI_form_pointer->data.UID) != UI_manager_class::data.number_of_UI_forms)
                             {
                                 return_value.id    = EVENT_UI_FORM_DRAG;
                                 return_value.value = UI_form_pointer->data.UID;
                             }
-                            game.core.log.file_write("List size -> ",UI_manager_class::number_of_UI_forms);
+                            game.core.log.file_write("List size -> ",UI_manager_class::data.number_of_UI_forms);
                             game.core.log.file_write("UID -> ",UI_form_pointer->data.UID," - Position in list -> ",UI_manager_class::UI_form_get_list_position(UI_form_pointer->data.UID));
                         }
-                        if ((!game.UI_manager.drag_in_progress) && (!UI_form_pointer->data.mouse_over_title) && (game.core.io.mouse_button_left))
+                        if ((!game.UI_manager.data.drag_in_progress) && (!UI_form_pointer->data.mouse_over_title) && (game.core.io.mouse_button_left))
                         {
                             return_value.id    = EVENT_UI_LIST_SORT;
                             return_value.value = UI_form_pointer->data.UID;
@@ -801,7 +844,7 @@ void UI_manager_class::process_forms(void)
                     // user clicked on window, that is not title or an element.
                     if ((game.core.io.mouse_button_left) && (return_value.id == EVENT_NONE) && (!UI_form_pointer->data.enabled))
                     {
-                        if (UI_manager_class::UI_form_get_list_position(UI_form_pointer->data.UID) != UI_manager_class::number_of_UI_forms)
+                        if (UI_manager_class::UI_form_get_list_position(UI_form_pointer->data.UID) != UI_manager_class::data.number_of_UI_forms)
                         {
                             return_value.id    = EVENT_UI_LIST_SORT;
                             return_value.value = UI_form_pointer->data.UID;
@@ -813,7 +856,7 @@ void UI_manager_class::process_forms(void)
                 if (!UI_form_pointer->data.mouse_over_title) UI_form_pointer->data.mouse_over_title = return_mouse_over;
             }
         }
-        //if ((UI_form_count > 1) && (game.UI_manager.event.id == EVENT_UI_LIST_SORT)) game.UI_manager.event.id = EVENT_NONE;
+        //if ((UI_form_count > 1) && (game.UI_manager.data.event.id == EVENT_UI_LIST_SORT)) game.UI_manager.data.event.id = EVENT_NONE;
         //if (return_value > 0) game.core.log.file_write("returning event -> ",return_value, " - from UID - ", UI_form_pointer->data.UID);
         //if (return_value == EVENT_UI_LIST_SORT) game.core.log.file_write("returning event -> ",return_value, " - from UID - ", UI_form_pointer->data.UID);
         UI_form_pointer->data.event = return_value;
@@ -821,8 +864,8 @@ void UI_manager_class::process_forms(void)
         {
             if (!UI_manager_class::UI_form_get_is_top_of_list(UI_form_pointer->data.UID))
             {
-                game.UI_manager.event.value = UI_form_pointer->data.UID;
-                game.UI_manager.event       = return_value;
+                game.UI_manager.data.event.value = UI_form_pointer->data.UID;
+                game.UI_manager.data.event       = return_value;
             }
             UI_form_pointer->data.event.id    = EVENT_NONE;
             UI_form_pointer->data.event.value = EVENT_VALUE_NONE;
@@ -833,14 +876,14 @@ void UI_manager_class::process_forms(void)
 void UI_manager_class::process(void)
 {
     UI_manager_class::process_forms();
-    switch (game.UI_manager.event.id)
+    switch (game.UI_manager.data.event.id)
     {
         case EVENT_UI_LIST_SORT:
-            if (game.UI_manager.drag_in_progress) break;
+            if (game.UI_manager.data.drag_in_progress) break;
         case EVENT_UI_FORM_DRAG:
-            game.UI_manager.UI_form_list_sort(game.UI_manager.event.value);
-            game.UI_manager.event.id    = EVENT_NONE;
-            game.UI_manager.event.value = EVENT_VALUE_NONE;
+            game.UI_manager.UI_form_list_sort(game.UI_manager.data.event.value);
+            game.UI_manager.data.event.id    = EVENT_NONE;
+            game.UI_manager.data.event.value = EVENT_VALUE_NONE;
             /*
     //write stack to log file to see whats happening....
     game.core.log.file_write("************");
@@ -853,8 +896,8 @@ void UI_manager_class::process(void)
     */
         break;
         default:
-            game.UI_manager.event.id    = EVENT_NONE;
-            game.UI_manager.event.value = EVENT_VALUE_NONE;
+            game.UI_manager.data.event.id    = EVENT_NONE;
+            game.UI_manager.data.event.value = EVENT_VALUE_NONE;
         break;
     }
     for (UI_form_struct *UI_form_pointer = UI_manager_class::root; UI_form_pointer != NULL; UI_form_pointer = UI_form_pointer->next)
@@ -862,7 +905,7 @@ void UI_manager_class::process(void)
         // ----------------------------- process UI form events ---------------------------------
         if (UI_form_pointer->data.enabled)
         {
-            if (game.UI_manager.event.id == EVENT_NONE)
+            if (game.UI_manager.data.event.id == EVENT_NONE)
             {
                 switch(UI_form_pointer->data.UID)
                 {
