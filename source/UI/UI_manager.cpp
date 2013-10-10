@@ -619,8 +619,8 @@ event_struct  UI_manager_class::process_form_elements(UI_form_struct *UI_form_po
                                         swap_elements(window_from,element_from,window_over,element_over);
                                     }
                                 }
-                                game.UI_manager.data.element_drag_in_progress                   = false;
-                                game.UI_manager.data.drag_in_progress                           = false;
+                                game.UI_manager.data.element_drag_in_progress              = false;
+                                game.UI_manager.data.drag_in_progress                      = false;
                                 UI_form_pointer->data.element[element_number].drag_active  = false;
                                 UI_form_pointer->data.element[element_number].event.id     = EVENT_NONE;
                             }
@@ -943,49 +943,49 @@ void UI_manager_class::process(void)
 
 void UI_manager_class::swap_elements(int UI_form_UID_src, int UI_element_src, int UI_form_UID_dst, int UI_element_dst)
 {
-/*
     texture_type *temp_texture_pointer;
     bool allow_swap_elements = true; // test
-    if ((window_src == INVENTORY_UID) && (window_dst == INVENTORY_UID)) allow_swap_elements = true;
-    if ((window_src == ACTIONBAR_UID) && (window_dst == ACTIONBAR_UID)) allow_swap_elements = true;
-    if ((window_src == INVENTORY_UID) && (window_dst == ACTIONBAR_UID)) allow_swap_elements = true;
-    if ((window_src == ACTIONBAR_UID) && (window_dst == INVENTORY_UID)) allow_swap_elements = true;
-    window_src = game.window_manager.window_get_number(window_src);
-    window_dst = game.window_manager.window_get_number(window_dst);
-    game.core.log.file_write("Moving element from - ",window_src," - ",element_src," to - ",window_dst," - ",element_dst);
-    if ((allow_swap_elements) && ((game.window_manager.window[window_src].element[element_src].type == ITEM)&&(game.window_manager.window[window_dst].element[element_dst].type == ITEM)))
+    if (((UI_form_UID_src == UID_INVENTORY) || (UI_form_UID_src == UID_ACTIONBAR)) &&
+        ((UI_form_UID_dst == UID_INVENTORY) || (UI_form_UID_dst == UID_ACTIONBAR))) allow_swap_elements = true;
+    UI_form_struct* UI_form_UID_src_pointer = game.UI_manager.UI_form_get(UI_form_UID_src);
+    UI_form_struct* UI_form_UID_dst_pointer = game.UI_manager.UI_form_get(UI_form_UID_dst);
+    game.core.log.file_write("Moving element from - ",UI_form_UID_src," - ",UI_element_src," to - ",UI_form_UID_dst," - ",UI_element_dst);
+    if     ((allow_swap_elements)
+        &&  (UI_form_UID_src_pointer->data.element[UI_element_src].type == ITEM)
+        &&  (UI_form_UID_dst_pointer->data.element[UI_element_dst].type == ITEM))
     {
-        if    ((game.item_manager.item[(int)game.window_manager.window[window_src].element[element_src].value].type     == game.item_manager.item[(int)game.window_manager.window[window_dst].element[element_dst].value].type)
-            && (game.item_manager.item[(int)game.window_manager.window[window_src].element[element_src].value].sub_type == game.item_manager.item[(int)game.window_manager.window[window_dst].element[element_dst].value].sub_type)
-            && (game.item_manager.item[(int)game.window_manager.window[window_src].element[element_src].value].quantity_max > 1)
-            && (game.item_manager.item[(int)game.window_manager.window[window_dst].element[element_dst].value].quantity_max > 1))
+        item_type* temp_item_pointer = game.item_manager.add_item(UI_form_UID_src_pointer->data.element[UI_element_src].value);
+        if     ((UI_form_UID_src_pointer->data.element[UI_element_src].value == UI_form_UID_dst_pointer->data.element[UI_element_dst].value)
+            &&  (UI_form_UID_src_pointer->data.element[UI_element_src].quantity > 1)
+            &&  (UI_form_UID_dst_pointer->data.element[UI_element_dst].quantity > 1)
+            &&  (UI_form_UID_src_pointer->data.element[UI_element_src].value >= 0)
+            &&  (UI_form_UID_dst_pointer->data.element[UI_element_dst].value >= 0))
         {
-            game.window_manager.window[window_dst].element[element_dst].quantity += game.window_manager.window[window_src].element[element_src].quantity;
-            game.window_manager.window[window_src].element[element_src].quantity = 0;
-            if (game.window_manager.window[window_dst].element[element_dst].quantity > game.item_manager.item[(int)game.window_manager.window[window_dst].element[element_dst].value].quantity_max)
+            UI_form_UID_dst_pointer->data.element[UI_element_dst].quantity += UI_form_UID_src_pointer->data.element[UI_element_src].quantity;
+            if (UI_form_UID_dst_pointer->data.element[UI_element_dst].quantity > temp_item_pointer->data.quantity_max)
             {
-                game.window_manager.window[window_src].element[element_src].quantity  = game.window_manager.window[window_dst].element[element_dst].quantity - game.item_manager.item[(int)game.window_manager.window[window_dst].element[element_dst].value].quantity_max;
-                game.window_manager.window[window_dst].element[element_dst].quantity -= game.item_manager.item[(int)game.window_manager.window[window_dst].element[element_dst].value].quantity_max;
+                UI_form_UID_src_pointer->data.element[UI_element_src].quantity =  UI_form_UID_dst_pointer->data.element[UI_element_dst].quantity - temp_item_pointer->data.quantity_max;
+                UI_form_UID_dst_pointer->data.element[UI_element_dst].quantity -= temp_item_pointer->data.quantity_max;
             }
-            if (game.window_manager.window[window_src].element[element_src].quantity <= 0)
+            else UI_form_UID_src_pointer->data.element[UI_element_src].quantity = 0;
+            if (UI_form_UID_src_pointer->data.element[UI_element_src].quantity <= 0)
             {
-                game.window_manager.window[window_src].element[element_src].value    = -1;
-                game.window_manager.window[window_src].element[element_src].quantity = 0;
+                UI_form_UID_src_pointer->data.element[UI_element_src].quantity = 0;
+                UI_form_UID_src_pointer->data.element[UI_element_src].value    = -1;
             }
         }
-       else
+        else
         {
-            int tmp_value    = game.window_manager.window[window_src].element[element_src].value;
-            int tmp_quantity = game.window_manager.window[window_src].element[element_src].quantity;
-            game.window_manager.window[window_src].element[element_src].value    = game.window_manager.window[window_dst].element[element_dst].value;
-            game.window_manager.window[window_src].element[element_src].quantity = game.window_manager.window[window_dst].element[element_dst].quantity;
-            game.window_manager.window[window_dst].element[element_dst].value    = tmp_value;
-            game.window_manager.window[window_dst].element[element_dst].quantity = tmp_quantity;
+            int temp_value    = UI_form_UID_src_pointer->data.element[UI_element_src].value;
+            int temp_quantity = UI_form_UID_src_pointer->data.element[UI_element_src].quantity;
+            texture_type* temp_texture_pointer = UI_form_UID_src_pointer->data.element[UI_element_src].texture.normal;
+            UI_form_UID_src_pointer->data.element[UI_element_src].value          = UI_form_UID_dst_pointer->data.element[UI_element_dst].value;
+            UI_form_UID_src_pointer->data.element[UI_element_src].quantity       = UI_form_UID_dst_pointer->data.element[UI_element_dst].quantity;
+            UI_form_UID_src_pointer->data.element[UI_element_src].texture.normal = UI_form_UID_dst_pointer->data.element[UI_element_dst].texture.normal;
+            UI_form_UID_dst_pointer->data.element[UI_element_dst].value          = temp_value;
+            UI_form_UID_dst_pointer->data.element[UI_element_dst].quantity       = temp_quantity;
+            UI_form_UID_dst_pointer->data.element[UI_element_dst].texture.normal = temp_texture_pointer;
         }
-        game.sound_manager.play(game.item_manager.item[(int)game.window_manager.window[window_dst].element[element_dst].value].sound_move);
-        temp_texture_pointer = game.window_manager.window[window_src].element[element_src].texture.normal;
-        game.window_manager.window[window_src].element[element_src].texture.normal = game.window_manager.window[window_dst].element[element_dst].texture.normal;
-        game.window_manager.window[window_dst].element[element_dst].texture.normal = temp_texture_pointer;
+        if (temp_item_pointer->data.sound_move) game.sound_manager.play(temp_item_pointer->data.sound_move);
     }
-    */
 };
