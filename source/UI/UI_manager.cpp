@@ -848,8 +848,8 @@ void UI_manager_class::process_forms(void)
                                 return_value.id    = EVENT_UI_FORM_DRAG;
                                 return_value.value = UI_form_pointer->data.UID;
                             }
-                            game.core.log.file_write("List size -> ",UI_manager_class::data.number_of_UI_forms);
-                            game.core.log.file_write("UID -> ",UI_form_pointer->data.UID," - Position in list -> ",UI_manager_class::UI_form_get_list_position(UI_form_pointer->data.UID));
+                            //game.core.log.file_write("List size -> ",UI_manager_class::data.number_of_UI_forms);
+                            //game.core.log.file_write("UID -> ",UI_form_pointer->data.UID," - Position in list -> ",UI_manager_class::UI_form_get_list_position(UI_form_pointer->data.UID));
                         }
                         if ((!game.UI_manager.data.drag_in_progress) && (!UI_form_pointer->data.mouse_over_title) && (game.core.io.mouse_button_left))
                         {
@@ -978,7 +978,7 @@ void UI_manager_class::swap_elements(int UI_form_UID_src, int UI_element_src, in
         ((UI_form_UID_dst == UID_INVENTORY) || (UI_form_UID_dst == UID_ACTIONBAR))) allow_swap_elements = true;
     UI_form_struct* UI_form_UID_src_pointer = game.UI_manager.UI_form_get(UI_form_UID_src);
     UI_form_struct* UI_form_UID_dst_pointer = game.UI_manager.UI_form_get(UI_form_UID_dst);
-    game.core.log.file_write("Moving element from - ",UI_form_UID_src," - ",UI_element_src," to - ",UI_form_UID_dst," - ",UI_element_dst);
+    //game.core.log.file_write("Moving element from - ",UI_form_UID_src," - ",UI_element_src," to - ",UI_form_UID_dst," - ",UI_element_dst);
     if     ((allow_swap_elements)
         &&  (UI_form_UID_src_pointer->data.element[UI_element_src].type == ITEM)
         &&  (UI_form_UID_dst_pointer->data.element[UI_element_dst].type == ITEM))
