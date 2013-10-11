@@ -974,8 +974,8 @@ void UI_manager_class::process(void)
 void UI_manager_class::swap_elements(int UI_form_UID_src, int UI_element_src, int UI_form_UID_dst, int UI_element_dst)
 {
     bool allow_swap_elements = true; // test
-    if (((UI_form_UID_src == UID_INVENTORY) || (UI_form_UID_src == UID_ACTIONBAR)) &&
-        ((UI_form_UID_dst == UID_INVENTORY) || (UI_form_UID_dst == UID_ACTIONBAR))) allow_swap_elements = true;
+    if (((UI_form_UID_src == UID_INVENTORY) || (UI_form_UID_src == UID_ACTIONBAR) || (UI_form_UID_src == UID_EQUIPMENT)) &&
+        ((UI_form_UID_dst == UID_INVENTORY) || (UI_form_UID_dst == UID_ACTIONBAR) || (UI_form_UID_dst == UID_EQUIPMENT))) allow_swap_elements = true;
     UI_form_struct* UI_form_UID_src_pointer = game.UI_manager.UI_form_get(UI_form_UID_src);
     UI_form_struct* UI_form_UID_dst_pointer = game.UI_manager.UI_form_get(UI_form_UID_dst);
     //game.core.log.file_write("Moving element from - ",UI_form_UID_src," - ",UI_element_src," to - ",UI_form_UID_dst," - ",UI_element_dst);
@@ -983,18 +983,20 @@ void UI_manager_class::swap_elements(int UI_form_UID_src, int UI_element_src, in
         &&  (UI_form_UID_src_pointer->data.element[UI_element_src].type == ITEM)
         &&  (UI_form_UID_dst_pointer->data.element[UI_element_dst].type == ITEM))
     {
-        item_type* temp_item_pointer = game.item_manager.add_item(UI_form_UID_src_pointer->data.element[UI_element_src].value);
+        item_type* item_pointer_src = game.item_manager.add_item(UI_form_UID_src_pointer->data.element[UI_element_src].value);
+        item_type* item_pointer_dst = game.item_manager.add_item(UI_form_UID_src_pointer->data.element[UI_element_src].value);
         if     ((UI_form_UID_src_pointer->data.element[UI_element_src].value == UI_form_UID_dst_pointer->data.element[UI_element_dst].value)
+            &&  (item_pointer_src->data.quantity_max > 1)
             &&  (UI_form_UID_src_pointer->data.element[UI_element_src].quantity > 1)
             &&  (UI_form_UID_dst_pointer->data.element[UI_element_dst].quantity > 1)
             &&  (UI_form_UID_src_pointer->data.element[UI_element_src].value >= 0)
             &&  (UI_form_UID_dst_pointer->data.element[UI_element_dst].value >= 0))
         {
             UI_form_UID_dst_pointer->data.element[UI_element_dst].quantity += UI_form_UID_src_pointer->data.element[UI_element_src].quantity;
-            if (UI_form_UID_dst_pointer->data.element[UI_element_dst].quantity > temp_item_pointer->data.quantity_max)
+            if (UI_form_UID_dst_pointer->data.element[UI_element_dst].quantity > item_pointer_src->data.quantity_max)
             {
-                UI_form_UID_src_pointer->data.element[UI_element_src].quantity =  UI_form_UID_dst_pointer->data.element[UI_element_dst].quantity - temp_item_pointer->data.quantity_max;
-                UI_form_UID_dst_pointer->data.element[UI_element_dst].quantity -= temp_item_pointer->data.quantity_max;
+                UI_form_UID_src_pointer->data.element[UI_element_src].quantity =  UI_form_UID_dst_pointer->data.element[UI_element_dst].quantity - item_pointer_src->data.quantity_max;
+                UI_form_UID_dst_pointer->data.element[UI_element_dst].quantity -= item_pointer_src->data.quantity_max;
             }
             else UI_form_UID_src_pointer->data.element[UI_element_src].quantity = 0;
             if (UI_form_UID_src_pointer->data.element[UI_element_src].quantity <= 0)
@@ -1014,7 +1016,20 @@ void UI_manager_class::swap_elements(int UI_form_UID_src, int UI_element_src, in
             UI_form_UID_dst_pointer->data.element[UI_element_dst].value          = temp_value;
             UI_form_UID_dst_pointer->data.element[UI_element_dst].quantity       = temp_quantity;
             UI_form_UID_dst_pointer->data.element[UI_element_dst].texture.normal = temp_texture_pointer;
+            if ((UI_form_UID_src == UID_EQUIPMENT) || (UI_form_UID_dst == UID_EQUIPMENT))
+            {
+                if (UI_form_UID_dst == UID_EQUIPMENT)
+                {
+                    game.item.equip_item (item_pointer_src);
+                    game.item.unequip_item(item_pointer_dst);
+                }
+                else
+                {
+                    game.item.equip_item (item_pointer_dst);
+                    game.item.unequip_item(item_pointer_src);
+                }
+            }
         }
-        if (temp_item_pointer->data.sound_move) game.sound_manager.play(temp_item_pointer->data.sound_move);
+        if (item_pointer_src->data.sound_move) game.sound_manager.play(item_pointer_src->data.sound_move);
     }
 };

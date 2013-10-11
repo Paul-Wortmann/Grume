@@ -29,9 +29,46 @@
 #include "../core/texture_manager.hpp"
 #include "../core/sound_manager.hpp"
 
-#define EFFECT_NONE            0
-#define EFFECT_MOD_HEALTH      1
-#define EFFECT_MOD_MANA        2
+#define EFFECT_NONE             0
+#define EFFECT_SPELL            1
+#define EFFECT_MOD_HEALTH       2
+#define EFFECT_MOD_MANA         3
+#define EFFECT_MOD_CRIT_CHANCE  4
+#define EFFECT_MOD_CRIT_DAMMAGE 5
+#define EFFECT_MOD_WALK_SPEED   6
+#define EFFECT_MOD_LIGHT_RADIUS 7
+
+/*
+defense                           = 0
+add_defense                       = 0
+sub_defense                       = 0
+min_damage                        = 0
+max_damage                        = 0
+add_min_damage                    = 0
+add_max_damage                    = 0
+sub_min_damage                    = 0
+sub_max_damage                    = 0
+add_max_health                    = 0
+sub_max_health                    = 0
+add_max_mana                      = 0
+sub_max_mana                      = 0
+add_health_regeneration           = 0
+sub_health_regeneration           = 0
+add_mana_regeneration             = 0
+sub_mana_regeneration             = 0
+add_crit_chance                   = 0
+sub_crit_chance                   = 0
+add_walk_speed                    = 0
+sub_walk_speed                    = 0
+add_light_radius                  = 0
+sub_light_radius                  = 0
+add_spell                         = 0
+spell_type                        = 0
+add_health                        = 10
+add_mana                          = 0
+*/
+
+
 
 struct effect_data_type
 {
