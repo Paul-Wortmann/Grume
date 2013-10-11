@@ -83,8 +83,10 @@ class UI_manager_class
         void                  UI_form_list_log(void);
         void                  UI_form_list_sort(void);
         void                  UI_form_list_sort(int UI_form_UID);
-        int                   UI_form_mouse_over_element(int UID);
-        int                   UI_form_mouse_over(void);
+        int                   UI_form_mouse_over_element(int UI_form_UID);
+        int                   UI_form_mouse_over_element(int UI_form_UID, int UI_element_number);
+        int                   UI_form_mouse_over_form(int UI_form_UID);
+        int                   UI_form_mouse_over_form(void);
         void                  UI_form_mouse_reset(int UI_form_UID);
         void                  UI_form_set_event(int UI_form_UID, int EVENT_ID);
         void                  UI_form_set_position(int UI_form_UID_src, int UI_form_UID_dst);

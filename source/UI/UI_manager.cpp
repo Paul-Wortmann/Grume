@@ -355,7 +355,54 @@ void UI_manager_class::UI_form_mouse_reset(int UI_form_UID)
     }
 };
 
-int  UI_manager_class::UI_form_mouse_over(void)
+int UI_manager_class::UI_form_mouse_over_element(int UI_form_UID)
+{
+    int return_value = MOUSE_OVER_MAP;
+    UI_form_struct*  UI_form_pointer  = UI_form_get(UI_form_UID);
+    for (int element_count = 0; element_count < UI_form_pointer->data.number_of_elements; element_count++)
+    {
+        if ((UI_form_pointer->data.element[element_count].active) && (UI_form_pointer->data.element[element_count].drag_active) && (UI_form_pointer->data.element[element_count].mouse_over))
+        {
+            return_value = element_count;
+        }
+    }
+    return (return_value);
+};
+
+int UI_manager_class::UI_form_mouse_over_element(int UI_form_UID, int UI_element_number)
+{
+    int return_value = MOUSE_OVER_MAP;
+    UI_form_struct*  UI_form_pointer  = UI_manager_class::UI_form_get(UI_form_UID);
+    for (int element_count = 0; element_count < UI_form_pointer->data.number_of_elements; element_count++)
+    {
+        if ((element_count != UI_element_number) || (return_value == MOUSE_OVER_MAP))
+        {
+            if ((UI_form_pointer->data.element[element_count].active) && (UI_form_pointer->data.element[element_count].mouse_over))
+            {
+                return_value = element_count;
+            }
+        }
+    }
+    return (return_value);
+};
+
+int UI_manager_class::UI_form_mouse_over_form(int UI_form_UID)
+{
+    int return_value = MOUSE_OVER_MAP;
+    for (UI_form_struct *UI_form_pointer = UI_manager_class::root; UI_form_pointer != NULL; UI_form_pointer = UI_form_pointer->next)
+    {
+        if ((UI_form_pointer->data.UID != UI_form_UID) || (return_value == MOUSE_OVER_MAP))
+        {
+            if ((UI_form_pointer->data.enabled) && (UI_form_pointer->data.mouse_over_menu))
+            {
+                return_value = UI_form_pointer->data.UID;
+            }
+        }
+    }
+    return (return_value);
+};
+
+int  UI_manager_class::UI_form_mouse_over_form(void)
 {
     int return_value = MOUSE_OVER_MAP;
     for (UI_form_struct *UI_form_pointer = UI_manager_class::root; UI_form_pointer != NULL; UI_form_pointer = UI_form_pointer->next)
@@ -363,20 +410,6 @@ int  UI_manager_class::UI_form_mouse_over(void)
         if ((UI_form_pointer->data.enabled) && (UI_form_pointer->data.mouse_over_menu))
         {
             return_value = UI_form_pointer->data.UID;
-        }
-    }
-    return (return_value);
-};
-
-int UI_manager_class::UI_form_mouse_over_element(int UID)
-{
-    int return_value = MOUSE_OVER_MAP;
-    UI_form_struct*  UI_form_pointer  = UI_form_get(UID);
-    for (int element_count = 0; element_count < UI_form_pointer->data.number_of_elements; element_count++)
-    {
-        if ((UI_form_pointer->data.element[element_count].active) && (UI_form_pointer->data.element[element_count].drag_active) && (UI_form_pointer->data.element[element_count].mouse_over))
-        {
-            return_value = element_count;
         }
     }
     return (return_value);
@@ -605,15 +638,15 @@ event_struct  UI_manager_class::process_form_elements(UI_form_struct *UI_form_po
                             }
                             else
                             {
-                                int window_over  = game.UI_manager.UI_form_mouse_over();
-                                int window_from  = UI_form_pointer->data.element[element_number].window_UID;
+                                int window_from  = UI_form_pointer->data.UID;
                                 int element_from = UI_form_pointer->data.element[element_number].element_UID;
+                                int window_over  = game.UI_manager.UI_form_mouse_over_form(window_from);
                                 int element_over = 0;
                                 UI_form_pointer->data.element[element_number].position.x = UI_form_pointer->data.element[element_number].position_origional.x;
                                 UI_form_pointer->data.element[element_number].position.y = UI_form_pointer->data.element[element_number].position_origional.y;
                                 if (window_over != MOUSE_OVER_MAP)
                                 {
-                                    element_over = game.UI_manager.UI_form_mouse_over_element(window_over);
+                                    element_over = game.UI_manager.UI_form_mouse_over_element(window_over,element_from);
                                     if (element_over != MOUSE_OVER_MAP)
                                     {
                                         swap_elements(window_from,element_from,window_over,element_over);
@@ -734,10 +767,7 @@ void UI_manager_class::process_forms(void)
         bool         allow_drag         = true;
         if (UI_form_pointer->data.enabled)
         {
-            if (!game.UI_manager.data.drag_in_progress)
-            {
-                UI_form_pointer->data.mouse_over_menu = (game.core.physics.point_in_quadrangle(UI_form_pointer->data.position.x,UI_form_pointer->data.size.x,UI_form_pointer->data.position.y,UI_form_pointer->data.size.y,game.core.io.mouse_x,game.core.io.mouse_y));
-            }
+            UI_form_pointer->data.mouse_over_menu = (game.core.physics.point_in_quadrangle(UI_form_pointer->data.position.x,UI_form_pointer->data.size.x,UI_form_pointer->data.position.y,UI_form_pointer->data.size.y,game.core.io.mouse_x,game.core.io.mouse_y));
             if (UI_form_pointer->data.mouse_over_menu)
             {
                 if ((!front_window_found) || ((UI_form_pointer->data.set_behind)))
@@ -943,7 +973,6 @@ void UI_manager_class::process(void)
 
 void UI_manager_class::swap_elements(int UI_form_UID_src, int UI_element_src, int UI_form_UID_dst, int UI_element_dst)
 {
-    texture_type *temp_texture_pointer;
     bool allow_swap_elements = true; // test
     if (((UI_form_UID_src == UID_INVENTORY) || (UI_form_UID_src == UID_ACTIONBAR)) &&
         ((UI_form_UID_dst == UID_INVENTORY) || (UI_form_UID_dst == UID_ACTIONBAR))) allow_swap_elements = true;
