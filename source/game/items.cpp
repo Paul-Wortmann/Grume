@@ -236,5 +236,27 @@ void item_class::equip_item(item_type* item_pointer)
 
 void item_class::unequip_item(item_type* item_pointer)
 {
-
+    for (int effect_count = 0; effect_count < item_pointer->data.number_of_item_effects; effect_count++)
+    {
+        switch (item_pointer->data.effect[effect_count]->data.type)
+        {
+            case EFFECT_MOD_CRIT_CHANCE:
+            break;
+            case EFFECT_MOD_CRIT_DAMMAGE:
+            break;
+            case EFFECT_MOD_HEALTH:
+                if (item_pointer->data.effect[effect_count]->data.passive) game.player.health.regeneration -= item_pointer->data.effect[effect_count]->data.value;
+            break;
+            case EFFECT_MOD_LIGHT_RADIUS:
+            break;
+            case EFFECT_MOD_MANA:
+            break;
+            case EFFECT_MOD_WALK_SPEED:
+            break;
+            case EFFECT_SPELL:
+            break;
+            default:
+            break;
+        }
+    }
 };
