@@ -120,12 +120,54 @@ void game_class::init(void)
     UI_form_pointer->data.element[element_number].quantity       = 3;
     UI_form_pointer->data.element[element_number].texture.normal = temp_item_pointer->data.image;
     element_number    = 3;
-    temp_item_pointer = game.item_manager.add_item(ITEM_MANA_POTION);
+    temp_item_pointer = game.item_manager.add_item(ITEM_REJUVENATION_POTION);
     UI_form_pointer->data.element[element_number].value          = temp_item_pointer->data.UID;
-    UI_form_pointer->data.element[element_number].quantity       = 3;
+    UI_form_pointer->data.element[element_number].quantity       = 2;
+    UI_form_pointer->data.element[element_number].texture.normal = temp_item_pointer->data.image;
+    element_number    = 4;
+    temp_item_pointer = game.item_manager.add_item(101);
+    UI_form_pointer->data.element[element_number].value          = temp_item_pointer->data.UID;
+    UI_form_pointer->data.element[element_number].quantity       = 2;
+    UI_form_pointer->data.element[element_number].texture.normal = temp_item_pointer->data.image;
+    element_number    = 5;
+    temp_item_pointer = game.item_manager.add_item(game.item_manager.gen_item(ITEM_RING,ITEM_RING,100));
+    UI_form_pointer->data.element[element_number].value          = temp_item_pointer->data.UID;
+    UI_form_pointer->data.element[element_number].quantity       = 1;
+    UI_form_pointer->data.element[element_number].texture.normal = temp_item_pointer->data.image;
+    element_number    = 6;
+    temp_item_pointer = game.item_manager.add_item(game.item_manager.gen_item(ITEM_BELT,ITEM_BELT,100));
+    UI_form_pointer->data.element[element_number].value          = temp_item_pointer->data.UID;
+    UI_form_pointer->data.element[element_number].quantity       = 1;
+    UI_form_pointer->data.element[element_number].texture.normal = temp_item_pointer->data.image;
+    element_number    = 7;
+    temp_item_pointer = game.item_manager.add_item(game.item_manager.gen_item(ITEM_BODY,ITEM_BODY,100));
+    UI_form_pointer->data.element[element_number].value          = temp_item_pointer->data.UID;
+    UI_form_pointer->data.element[element_number].quantity       = 1;
+    UI_form_pointer->data.element[element_number].texture.normal = temp_item_pointer->data.image;
+    element_number    = 8;
+    temp_item_pointer = game.item_manager.add_item(game.item_manager.gen_item(ITEM_FEET,ITEM_FEET,100));
+    UI_form_pointer->data.element[element_number].value          = temp_item_pointer->data.UID;
+    UI_form_pointer->data.element[element_number].quantity       = 1;
+    UI_form_pointer->data.element[element_number].texture.normal = temp_item_pointer->data.image;
+    element_number    = 9;
+    temp_item_pointer = game.item_manager.add_item(game.item_manager.gen_item(ITEM_HAND,ITEM_HAND,100));
+    UI_form_pointer->data.element[element_number].value          = temp_item_pointer->data.UID;
+    UI_form_pointer->data.element[element_number].quantity       = 1;
+    UI_form_pointer->data.element[element_number].texture.normal = temp_item_pointer->data.image;
+    element_number    = 10;
+    temp_item_pointer = game.item_manager.add_item(game.item_manager.gen_item(ITEM_HEAD,ITEM_HEAD,100));
+    UI_form_pointer->data.element[element_number].value          = temp_item_pointer->data.UID;
+    UI_form_pointer->data.element[element_number].quantity       = 1;
+    UI_form_pointer->data.element[element_number].texture.normal = temp_item_pointer->data.image;
+    element_number    = 11;
+    temp_item_pointer = game.item_manager.add_item(game.item_manager.gen_item(ITEM_NECK,ITEM_NECK,100));
+    UI_form_pointer->data.element[element_number].value          = temp_item_pointer->data.UID;
+    UI_form_pointer->data.element[element_number].quantity       = 1;
     UI_form_pointer->data.element[element_number].texture.normal = temp_item_pointer->data.image;
 
+
     /*
+
     element_number = 2;
     item_ID = game.item_manager.get_item_ID(MANA_POTION); // Mana Potion
     UI_form_pointer->data.element[element_number].value = item_ID;
@@ -220,8 +262,8 @@ void game_class::process(void)
             if (!game.core.game_menu_active)
             {
                 game.UI_manager.UI_form_enable(UID_MENU_MAIN);
-                game.UI_manager.event.id    = EVENT_UI_LIST_SORT;
-                game.UI_manager.event.value = UID_MENU_MAIN;
+                game.UI_manager.data.event.id    = EVENT_UI_LIST_SORT;
+                game.UI_manager.data.event.value = UID_MENU_MAIN;
                 game.core.game_menu_active                   = true;
             }
             else
@@ -237,8 +279,8 @@ void game_class::process(void)
             if (!game.core.character_active)
             {
                 game.UI_manager.UI_form_enable(UID_CHARACTER);
-                game.UI_manager.event.id    = EVENT_UI_LIST_SORT;
-                game.UI_manager.event.value = UID_CHARACTER;
+                game.UI_manager.data.event.id    = EVENT_UI_LIST_SORT;
+                game.UI_manager.data.event.value = UID_CHARACTER;
                 game.core.character_active                   = true;
             }
             else
@@ -254,8 +296,8 @@ void game_class::process(void)
             if (!game.core.equipment_active)
             {
                 game.UI_manager.UI_form_enable(UID_EQUIPMENT);
-                game.UI_manager.event.id    = EVENT_UI_LIST_SORT;
-                game.UI_manager.event.value = UID_EQUIPMENT;
+                game.UI_manager.data.event.id    = EVENT_UI_LIST_SORT;
+                game.UI_manager.data.event.value = UID_EQUIPMENT;
                 game.core.equipment_active                   = true;
             }
             else
@@ -271,8 +313,8 @@ void game_class::process(void)
             if (!game.core.quest_log_active)
             {
                 game.UI_manager.UI_form_enable(UID_QUEST_LOG);
-                game.UI_manager.event.id    = EVENT_UI_LIST_SORT;
-                game.UI_manager.event.value = UID_QUEST_LOG;
+                game.UI_manager.data.event.id    = EVENT_UI_LIST_SORT;
+                game.UI_manager.data.event.value = UID_QUEST_LOG;
                 game.core.quest_log_active                   = true;
             }
             else
@@ -288,8 +330,8 @@ void game_class::process(void)
             if (!game.core.inventory_active)
             {
                 game.UI_manager.UI_form_enable(UID_INVENTORY);
-                game.UI_manager.event.id    = EVENT_UI_LIST_SORT;
-                game.UI_manager.event.value = UID_INVENTORY;
+                game.UI_manager.data.event.id    = EVENT_UI_LIST_SORT;
+                game.UI_manager.data.event.value = UID_INVENTORY;
                 game.core.inventory_active                   = true;
             }
             else
@@ -305,8 +347,8 @@ void game_class::process(void)
             if (!game.core.skillbook_active)
             {
                 game.UI_manager.UI_form_enable(UID_SKILLBOOK);
-                game.UI_manager.event.id    = EVENT_UI_LIST_SORT;
-                game.UI_manager.event.value = UID_SKILLBOOK;
+                game.UI_manager.data.event.id    = EVENT_UI_LIST_SORT;
+                game.UI_manager.data.event.value = UID_SKILLBOOK;
                 game.core.skillbook_active                   = true;
             }
             else

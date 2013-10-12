@@ -134,7 +134,51 @@ void game_class::init(void)
     UI_form_pointer->data.element[element_number].value          = temp_item_pointer->data.UID;
     UI_form_pointer->data.element[element_number].quantity       = 1;
     UI_form_pointer->data.element[element_number].texture.normal = temp_item_pointer->data.image;
-
+    element_number    = 6;
+    temp_item_pointer = game.item_manager.add_item(game.item_manager.gen_item(ITEM_BELT,ITEM_BELT,100));
+    UI_form_pointer->data.element[element_number].value          = temp_item_pointer->data.UID;
+    UI_form_pointer->data.element[element_number].quantity       = 1;
+    UI_form_pointer->data.element[element_number].texture.normal = temp_item_pointer->data.image;
+    element_number    = 7;
+    temp_item_pointer = game.item_manager.add_item(game.item_manager.gen_item(ITEM_BODY,ITEM_BODY,100));
+    UI_form_pointer->data.element[element_number].value          = temp_item_pointer->data.UID;
+    UI_form_pointer->data.element[element_number].quantity       = 1;
+    UI_form_pointer->data.element[element_number].texture.normal = temp_item_pointer->data.image;
+    element_number    = 8;
+    temp_item_pointer = game.item_manager.add_item(game.item_manager.gen_item(ITEM_FEET,ITEM_FEET,100));
+    UI_form_pointer->data.element[element_number].value          = temp_item_pointer->data.UID;
+    UI_form_pointer->data.element[element_number].quantity       = 1;
+    UI_form_pointer->data.element[element_number].texture.normal = temp_item_pointer->data.image;
+    element_number    = 9;
+    temp_item_pointer = game.item_manager.add_item(game.item_manager.gen_item(ITEM_HAND,ITEM_HAND,100));
+    UI_form_pointer->data.element[element_number].value          = temp_item_pointer->data.UID;
+    UI_form_pointer->data.element[element_number].quantity       = 1;
+    UI_form_pointer->data.element[element_number].texture.normal = temp_item_pointer->data.image;
+    element_number    = 10;
+    temp_item_pointer = game.item_manager.add_item(game.item_manager.gen_item(ITEM_HEAD,ITEM_HEAD,100));
+    UI_form_pointer->data.element[element_number].value          = temp_item_pointer->data.UID;
+    UI_form_pointer->data.element[element_number].quantity       = 1;
+    UI_form_pointer->data.element[element_number].texture.normal = temp_item_pointer->data.image;
+    element_number    = 11;
+    temp_item_pointer = game.item_manager.add_item(game.item_manager.gen_item(ITEM_NECK,ITEM_NECK,100));
+    UI_form_pointer->data.element[element_number].value          = temp_item_pointer->data.UID;
+    UI_form_pointer->data.element[element_number].quantity       = 1;
+    UI_form_pointer->data.element[element_number].texture.normal = temp_item_pointer->data.image;
+    element_number    = 12;
+    temp_item_pointer = game.item_manager.add_item(game.item_manager.gen_item(ITEM_OFFHAND,ITEM_OFFHAND,100));
+    UI_form_pointer->data.element[element_number].value          = temp_item_pointer->data.UID;
+    UI_form_pointer->data.element[element_number].quantity       = 1;
+    UI_form_pointer->data.element[element_number].texture.normal = temp_item_pointer->data.image;
+    element_number    = 13;
+    temp_item_pointer = game.item_manager.add_item(game.item_manager.gen_item(ITEM_WEAPON,ITEM_WEAPON,100));
+    UI_form_pointer->data.element[element_number].value          = temp_item_pointer->data.UID;
+    UI_form_pointer->data.element[element_number].quantity       = 1;
+    UI_form_pointer->data.element[element_number].texture.normal = temp_item_pointer->data.image;
+    element_number    = 14;
+    temp_item_pointer = game.item_manager.add_item(game.item_manager.gen_item(ITEM_SPELL_BOOK,ITEM_SPELL_BOOK,100));
+    UI_form_pointer->data.element[element_number].value          = temp_item_pointer->data.UID;
+    UI_form_pointer->data.element[element_number].quantity       = 1;
+    UI_form_pointer->data.element[element_number].texture.normal = temp_item_pointer->data.image;
 
     /*
 

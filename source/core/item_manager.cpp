@@ -89,7 +89,7 @@ item_type* item_manager_class::add_item(int item_UID)
 int item_manager_class::get_new_item_UID(void)
 {
     item_type* item_pointer;
-    int  UID_max    = sizeof(int);
+    int  UID_max    = sizeof(int)*CHAR_BIT;
     bool found = true;
     for (int  temp_UID = 0; temp_UID < UID_max; temp_UID++)
     {
@@ -98,9 +98,14 @@ int item_manager_class::get_new_item_UID(void)
         {
             if (item_pointer->data.UID == temp_UID) found = false;
         }
-        if (found) return (temp_UID);
+        if (found)
+        {
+            game.core.log.file_write("Found item UID ->", temp_UID);
+            return (temp_UID);
+        }
     }
-    return (-1);
+    game.core.log.file_write("Found item UID NOT found... -> ",UID_max);
+    return (RETURN_FAIL);
 };
 
 void item_manager_class::load_items(std::string file_name)
@@ -281,6 +286,9 @@ int  item_manager_class::gen_item(int item_type_UID, int item_sub_type_UID, int 
                 case ITEM_RING:
                     temp_item_pointer->data.equipable = true;
                 break;
+                case ITEM_WEAPON:
+                    temp_item_pointer->data.equipable = true;
+                break;
                 default:
                     game.core.log.file_write("Unable to generate item -> ",item_type_UID," - ", item_sub_type_UID," - ", quality_level);
                 break;
@@ -320,7 +328,7 @@ void  item_manager_class::gen_item_texture(item_type* temp_item_pointer,int item
             temp_item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/boots/boots_06.png");
         break;
         case ITEM_HAND:
-            temp_item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/gloves/gloves_00.png");
+            temp_item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/gloves/gloves_03.png");
         break;
         case ITEM_HEAD:
             temp_item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/helms/helm_00.png");
@@ -333,6 +341,9 @@ void  item_manager_class::gen_item_texture(item_type* temp_item_pointer,int item
         break;
         case ITEM_RING:
             temp_item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/rings/ring_00.png");
+        break;
+        case ITEM_WEAPON:
+            temp_item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/swords/sword_03.png");
         break;
         default:
             game.core.log.file_write("Unable to generate item textures -> ",item_type_UID," - ", item_sub_type_UID," - ", quality_level);
@@ -353,36 +364,40 @@ void  item_manager_class::gen_item_sounds(item_type* temp_item_pointer,int item_
             temp_item_pointer->data.sound_use  = game.sound_manager.add_sound("data/sound/inventory/book_00.wav");
         break;
         case ITEM_BELT:
-            temp_item_pointer->data.sound_move = game.sound_manager.add_sound("data/sound/inventory/bottle_01.wav");
-            temp_item_pointer->data.sound_use  = game.sound_manager.add_sound("data/sound/inventory/bubble_01.wav");
+            temp_item_pointer->data.sound_move = game.sound_manager.add_sound("data/sound/inventory/leather_00.wav");
+            temp_item_pointer->data.sound_use  = game.sound_manager.add_sound("data/sound/inventory/leather_00.wav");
         break;
         case ITEM_BODY:
-            temp_item_pointer->data.sound_move = game.sound_manager.add_sound("data/sound/inventory/bottle_01.wav");
-            temp_item_pointer->data.sound_use  = game.sound_manager.add_sound("data/sound/inventory/bubble_01.wav");
+            temp_item_pointer->data.sound_move = game.sound_manager.add_sound("data/sound/inventory/leather_00.wav");
+            temp_item_pointer->data.sound_use  = game.sound_manager.add_sound("data/sound/inventory/leather_00.wav");
         break;
         case ITEM_FEET:
-            temp_item_pointer->data.sound_move = game.sound_manager.add_sound("data/sound/inventory/bottle_01.wav");
-            temp_item_pointer->data.sound_use  = game.sound_manager.add_sound("data/sound/inventory/bubble_01.wav");
+            temp_item_pointer->data.sound_move = game.sound_manager.add_sound("data/sound/inventory/cloth_00.wav");
+            temp_item_pointer->data.sound_use  = game.sound_manager.add_sound("data/sound/inventory/cloth_00.wav");
         break;
         case ITEM_HAND:
-            temp_item_pointer->data.sound_move = game.sound_manager.add_sound("data/sound/inventory/bottle_01.wav");
-            temp_item_pointer->data.sound_use  = game.sound_manager.add_sound("data/sound/inventory/bubble_01.wav");
+            temp_item_pointer->data.sound_move = game.sound_manager.add_sound("data/sound/inventory/metal_00.wav");
+            temp_item_pointer->data.sound_use  = game.sound_manager.add_sound("data/sound/inventory/metal_00.wav");
         break;
         case ITEM_HEAD:
-            temp_item_pointer->data.sound_move = game.sound_manager.add_sound("data/sound/inventory/bottle_01.wav");
-            temp_item_pointer->data.sound_use  = game.sound_manager.add_sound("data/sound/inventory/bubble_01.wav");
+            temp_item_pointer->data.sound_move = game.sound_manager.add_sound("data/sound/inventory/leather_00.wav");
+            temp_item_pointer->data.sound_use  = game.sound_manager.add_sound("data/sound/inventory/leather_00.wav");
         break;
         case ITEM_NECK:
-            temp_item_pointer->data.sound_move = game.sound_manager.add_sound("data/sound/inventory/bottle_01.wav");
-            temp_item_pointer->data.sound_use  = game.sound_manager.add_sound("data/sound/inventory/bubble_01.wav");
-        break;
-        case ITEM_OFFHAND:
-            temp_item_pointer->data.sound_move = game.sound_manager.add_sound("data/sound/inventory/bottle_01.wav");
-            temp_item_pointer->data.sound_use  = game.sound_manager.add_sound("data/sound/inventory/bubble_01.wav");
-        break;
-        case ITEM_RING:
             temp_item_pointer->data.sound_move = game.sound_manager.add_sound("data/sound/inventory/ring_00.wav");
             temp_item_pointer->data.sound_use  = game.sound_manager.add_sound("data/sound/inventory/ring_00.wav");
+        break;
+        case ITEM_OFFHAND:
+            temp_item_pointer->data.sound_move = game.sound_manager.add_sound("data/sound/inventory/leather_00.wav");
+            temp_item_pointer->data.sound_use  = game.sound_manager.add_sound("data/sound/inventory/leather_00.wav");
+        break;
+        case ITEM_RING:
+            temp_item_pointer->data.sound_move = game.sound_manager.add_sound("data/sound/inventory/ring_01.wav");
+            temp_item_pointer->data.sound_use  = game.sound_manager.add_sound("data/sound/inventory/ring_01.wav");
+        break;
+        case ITEM_WEAPON:
+            temp_item_pointer->data.sound_move = game.sound_manager.add_sound("data/sound/inventory/metal_00.wav");
+            temp_item_pointer->data.sound_use  = game.sound_manager.add_sound("data/sound/inventory/metal_00.wav");
         break;
         default:
             game.core.log.file_write("Unable to generate item textures -> ",item_type_UID," - ", item_sub_type_UID," - ", quality_level);
