@@ -20,15 +20,14 @@ Starting Game...
  
 # ---------------------------------------------- #
  
-Unable to process event - 1201 - UID - 3
  
 # ---------------------------------------------- #
  
 Font    count -> 1
 Music   count -> 1
 Sound   count -> 4
-Texture count -> 73
-Item    count -> 4
+Texture count -> 74
+Item    count -> 5
 Effect  count -> 7
  
 # ---------------------------------------------- #

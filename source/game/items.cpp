@@ -74,23 +74,5 @@ void  item_class::init_items(void) // Initialize hard-coded default items, such 
     temp_item_pointer->data.effect[1]              = new effect_type;
     temp_item_pointer->data.effect[1]              = game.effect_manager.add_effect(EFFECT_MOD_MANA);
     //------------------------------------------------------------------------------------------------------------
-
-    //------------------------- Helm 1 --------------------------------------------------------------------------
-    temp_item_pointer = game.item_manager.add_item(ITEM_REJUVENATION_POTION);
-    temp_item_pointer->data.active                 = true;
-    temp_item_pointer->data.consumable             = true;
-    temp_item_pointer->data.name                   = "Rejuvenation Potion";
-    temp_item_pointer->data.number_of_item_effects = 2;
-    temp_item_pointer->data.image                  = game.texture_manager.add_texture("data/textures/UI/icons/potions/potion_24.png");
-    temp_item_pointer->data.sound_move             = game.sound_manager.add_sound("data/sound/inventory/bottle_01.wav");
-    temp_item_pointer->data.sound_use              = game.sound_manager.add_sound("data/sound/inventory/bubble_01.wav");
-    temp_item_pointer->data.type                   = EFFECT_MOD_HEALTH;
-    temp_item_pointer->data.sub_type               = ITEM_POTION_LARGE;
-    temp_item_pointer->data.effect[0]              = new effect_type;
-    temp_item_pointer->data.effect[0]              = game.effect_manager.add_effect(EFFECT_MOD_HEALTH);
-    temp_item_pointer->data.effect[1]              = new effect_type;
-    temp_item_pointer->data.effect[1]              = game.effect_manager.add_effect(EFFECT_MOD_MANA);
-    //------------------------------------------------------------------------------------------------------------
-
     game.item_manager.load_items("data/scripts/items.txt");
 };

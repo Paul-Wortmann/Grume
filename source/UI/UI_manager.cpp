@@ -973,7 +973,7 @@ void UI_manager_class::process(void)
 
 void UI_manager_class::swap_elements(int UI_form_UID_src, int UI_element_src, int UI_form_UID_dst, int UI_element_dst)
 {
-    bool allow_swap_elements = true; // test
+    bool allow_swap_elements = false;
     if (((UI_form_UID_src == UID_INVENTORY) || (UI_form_UID_src == UID_ACTIONBAR) || (UI_form_UID_src == UID_EQUIPMENT)) &&
         ((UI_form_UID_dst == UID_INVENTORY) || (UI_form_UID_dst == UID_ACTIONBAR) || (UI_form_UID_dst == UID_EQUIPMENT))) allow_swap_elements = true;
     UI_form_struct* UI_form_UID_src_pointer = game.UI_manager.UI_form_get(UI_form_UID_src);
@@ -1020,12 +1020,12 @@ void UI_manager_class::swap_elements(int UI_form_UID_src, int UI_element_src, in
             {
                 if (UI_form_UID_dst == UID_EQUIPMENT)
                 {
-                    game.item_manager.equip_item (item_pointer_src);
+                    game.item_manager.equip_item  (item_pointer_src);
                     game.item_manager.unequip_item(item_pointer_dst);
                 }
                 else
                 {
-                    game.item_manager.equip_item (item_pointer_dst);
+                    game.item_manager.equip_item  (item_pointer_dst);
                     game.item_manager.unequip_item(item_pointer_src);
                 }
             }

@@ -140,6 +140,10 @@ class item_manager_class
         void            use_item(UI_form_struct *UI_form_pointer, int element_number);
         void            equip_item(item_type* item_pointer);
         void            unequip_item(item_type* item_pointer);
+        int             gen_item(int item_type_UID, int item_sub_type_UID, int quality_level);
+        void            gen_item_name(item_type* temp_item_pointer,int item_type_UID, int item_sub_type_UID, int quality_level);
+        void            gen_item_texture(item_type* temp_item_pointer,int item_type_UID, int item_sub_type_UID, int quality_level);
+        void            gen_item_sounds(item_type* temp_item_pointer,int item_type_UID, int item_sub_type_UID, int quality_level);
 };
 
 #endif // ITEM_MANAGER_H

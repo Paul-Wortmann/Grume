@@ -25,16 +25,12 @@
 #ifndef EFFECTS_H
 #define EFFECTS_H
 
-#include <string>
 #include "../core/effect_manager.hpp"
 
 class effect_class
 {
     public:
         void                init_effects(void);
-        bool                use_effect(effect_type* temp_effect_pointer);
-        bool                use_effect(effect_type* temp_effect_pointer, float value);
-        void                load_effects(std::string file_name);
 };
 
 #endif // EFFECTS_H

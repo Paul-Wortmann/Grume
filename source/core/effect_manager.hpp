@@ -77,6 +77,9 @@ class effect_manager_class
         effect_type        *last;
         effect_type        *effect;
         effect_type        *add_effect(int effect_UID);
+        bool                use_effect(effect_type* temp_effect_pointer);
+        bool                use_effect(effect_type* temp_effect_pointer, float value);
+        void                load_effects(std::string file_name);
 };
 
 #endif // EFFECT_MANAGER_H

@@ -34,6 +34,8 @@
 #include "physics.hpp"
 #include "timer.hpp"
 
+#define RETURN_FAIL -1
+
 class core_class
 {
     public:

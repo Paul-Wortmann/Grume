@@ -129,8 +129,15 @@ void game_class::init(void)
     UI_form_pointer->data.element[element_number].value          = temp_item_pointer->data.UID;
     UI_form_pointer->data.element[element_number].quantity       = 2;
     UI_form_pointer->data.element[element_number].texture.normal = temp_item_pointer->data.image;
+    element_number    = 5;
+    temp_item_pointer = game.item_manager.add_item(game.item_manager.gen_item(ITEM_RING,ITEM_RING,100));
+    UI_form_pointer->data.element[element_number].value          = temp_item_pointer->data.UID;
+    UI_form_pointer->data.element[element_number].quantity       = 1;
+    UI_form_pointer->data.element[element_number].texture.normal = temp_item_pointer->data.image;
+
 
     /*
+
     element_number = 2;
     item_ID = game.item_manager.get_item_ID(MANA_POTION); // Mana Potion
     UI_form_pointer->data.element[element_number].value = item_ID;
