@@ -381,8 +381,8 @@ void  item_manager_class::gen_item_sounds(item_type* temp_item_pointer,int item_
             temp_item_pointer->data.sound_use  = game.sound_manager.add_sound("data/sound/inventory/bubble_01.wav");
         break;
         case ITEM_RING:
-            temp_item_pointer->data.sound_move = game.sound_manager.add_sound("data/sound/inventory/bottle_01.wav");
-            temp_item_pointer->data.sound_use  = game.sound_manager.add_sound("data/sound/inventory/bubble_01.wav");
+            temp_item_pointer->data.sound_move = game.sound_manager.add_sound("data/sound/inventory/ring_00.wav");
+            temp_item_pointer->data.sound_use  = game.sound_manager.add_sound("data/sound/inventory/ring_00.wav");
         break;
         default:
             game.core.log.file_write("Unable to generate item textures -> ",item_type_UID," - ", item_sub_type_UID," - ", quality_level);
