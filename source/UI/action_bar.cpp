@@ -707,70 +707,70 @@ void process_action_bar(UI_form_struct *UI_form_pointer)
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((8*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
-                game.item.use_item(UI_form_pointer,8);
+                game.item_manager.use_item(UI_form_pointer,8);
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((9*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((9*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
-                game.item.use_item(UI_form_pointer,9);
+                game.item_manager.use_item(UI_form_pointer,9);
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((10*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((10*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
-                game.item.use_item(UI_form_pointer,10);
+                game.item_manager.use_item(UI_form_pointer,10);
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((11*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((11*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
-                game.item.use_item(UI_form_pointer,11);
+                game.item_manager.use_item(UI_form_pointer,11);
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((12*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((12*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
-                game.item.use_item(UI_form_pointer,12);
+                game.item_manager.use_item(UI_form_pointer,12);
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((13*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((13*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
-                game.item.use_item(UI_form_pointer,13);
+                game.item_manager.use_item(UI_form_pointer,13);
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((14*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((14*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
-                game.item.use_item(UI_form_pointer,14);
+                game.item_manager.use_item(UI_form_pointer,14);
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((15*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((15*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
-                game.item.use_item(UI_form_pointer,15);
+                game.item_manager.use_item(UI_form_pointer,15);
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((16*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((16*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
-                game.item.use_item(UI_form_pointer,16);
+                game.item_manager.use_item(UI_form_pointer,16);
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((17*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((17*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
-                game.item.use_item(UI_form_pointer,17);
+                game.item_manager.use_item(UI_form_pointer,17);
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case (EVENT_UI_LIST_SORT): //Window stack sort

@@ -1020,13 +1020,13 @@ void UI_manager_class::swap_elements(int UI_form_UID_src, int UI_element_src, in
             {
                 if (UI_form_UID_dst == UID_EQUIPMENT)
                 {
-                    game.item.equip_item (item_pointer_src);
-                    game.item.unequip_item(item_pointer_dst);
+                    game.item_manager.equip_item (item_pointer_src);
+                    game.item_manager.unequip_item(item_pointer_dst);
                 }
                 else
                 {
-                    game.item.equip_item (item_pointer_dst);
-                    game.item.unequip_item(item_pointer_src);
+                    game.item_manager.equip_item (item_pointer_dst);
+                    game.item_manager.unequip_item(item_pointer_src);
                 }
             }
         }
