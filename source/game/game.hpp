@@ -33,6 +33,7 @@
 #include "../core/map_2D.hpp"
 #include "../core/music_manager.hpp"
 #include "../core/network.hpp"
+#include "../core/rendered_text_manager.hpp"
 #include "../core/savegame.hpp"
 #include "../core/sound_manager.hpp"
 #include "../core/texture_manager.hpp"
@@ -67,45 +68,44 @@ class game_class
 {
     private:
     public:
-        int                       test_1; // ---- DELETE ME -----------
-        int                       test_2; // ---- DELETE ME -----------
-        bool                      debug;
+        bool                       debug;
         // ----------------------------------------------------------
-        command_line_parser_class command_line;
-        core_class                core;
-        effect_class              effect;
-        effect_manager_class      effect_manager;
-        int                       event;
-        font_manager_class        font_manager;
-        light_type                global_ambient;
-        item_class                item;
-        item_manager_class        item_manager;
-        language_class            language;
-        map_2D_class              map_2D;
-        music_manager_class       music_manager;
-        network_manager_class     network_manager;
-        npc_class                 npc;
-        player_class              player;
-        rumble_type               rumble;
-        save_game_class           save_01;
-        save_game_class           save_02;
-        save_game_class           save_03;
-        save_game_class           save_04;
-        save_game_class           save_05;
-        save_game_class           save_06;
-        save_game_class           save_07;
-        spell_class               spell[MAX_SPELLS];
-        int                       state;
-        sound_manager_class       sound_manager;
-        texture_manager_class     texture_manager;
-        UI_loading_screen_class   loading_screen;
-        UI_manager_class          UI_manager;
-        light_type                world_ambient;
-        zoom_type                 zoom;
+        command_line_parser_class   command_line;
+        core_class                  core;
+        effect_class                effect;
+        effect_manager_class        effect_manager;
+        int                         event;
+        font_manager_class          font_manager;
+        light_type                  global_ambient;
+        item_class                  item;
+        item_manager_class          item_manager;
+        language_class              language;
+        map_2D_class                map_2D;
+        music_manager_class         music_manager;
+        network_manager_class       network_manager;
+        npc_class                   npc;
+        player_class                player;
+        rumble_type                 rumble;
+        save_game_class             save_01;
+        save_game_class             save_02;
+        save_game_class             save_03;
+        save_game_class             save_04;
+        save_game_class             save_05;
+        save_game_class             save_06;
+        save_game_class             save_07;
+        spell_class                 spell[MAX_SPELLS];
+        int                         state;
+        rendered_text_manager_class rendered_text_manager;
+        sound_manager_class         sound_manager;
+        texture_manager_class       texture_manager;
+        UI_loading_screen_class     loading_screen;
+        UI_manager_class            UI_manager;
+        light_type                  world_ambient;
+        zoom_type                   zoom;
         game_class(void);
-        void                      init(void);
-        void                      process(void);
-        void                      render(void);
+        void                        init(void);
+        void                        process(void);
+        void                        render(void);
 };
 
 #endif //GAME_H
