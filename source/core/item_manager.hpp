@@ -31,60 +31,45 @@
 #include "../UI/UI_types.hpp"
 #include "effect_manager.hpp"
 
+#define MAX_ITEM_EFFECTS     4
+#define MAX_ITEM_SOCKETS     4
+
+#define SOCKET_NONE          0
+#define SOCKET_GEM           1
+#define SOCKET_RUNE          2
+
 #define ITEM_NONE            0
-#define ITEM_RING            1
-#define ITEM_NECK            2
-#define ITEM_HEAD            3
-#define ITEM_HAND            4
-#define ITEM_FEET            5
-#define ITEM_BODY            6
-#define ITEM_BELT            7
-#define ITEM_OFFHAND         8
-#define ITEM_WEAPON          9
-
-#define ITEM_POTION          10
-#define ITEM_POTION_SMALL    11
-#define ITEM_POTION_MEDIUM   12
-#define ITEM_POTION_LARGE    13
-#define ITEM_SPELL           14
-#define ITEM_SPELL_BOOK      15
-
+#define ITEM_POTION          1
+#define ITEM_POTION_SMALL    2
+#define ITEM_POTION_MEDIUM   3
+#define ITEM_POTION_LARGE    4
+#define ITEM_SPELL           5
+#define ITEM_SPELL_BOOK      6
+#define ITEM_SPELL_SCROLL    7
+#define ITEM_RING            8
+#define ITEM_NECK            9
+#define ITEM_HEAD            10
+#define ITEM_HAND            11
+#define ITEM_FEET            12
+#define ITEM_BODY            13
+#define ITEM_BELT            14
+#define ITEM_OFFHAND         15
+#define ITEM_WEAPON          16
+#define ITEM_HELM            17
+#define ITEM_BOOTS           18
+#define ITEM_ARMOUR          19
+#define ITEM_GLOVES          20
+#define ITEM_AMULET          21
+#define ITEM_SHIELD          22
+#define ITEM_WAND            23
+#define ITEM_SWORD           24
+#define ITEM_DAGGER          25
+#define ITEM_BOW             26
 
 //temp---------------
-#define ITEM_HEALTH_POTION          20
-#define ITEM_MANA_POTION            21
-#define ITEM_REJUVENATION_POTION    22
-
-/*
-#define NULL_ITEM     -1
-#define HEALTH_POTION  0
-#define MANA_POTION    1
-
-#define SPELL          2
-#define SPELL_BOOK     4
-#define SPELL_SCROLL   5
-#define HELM           6
-#define BOOTS          7
-#define ARMOUR         8
-#define GLOVES         9
-#define RING           10
-#define AMULET         11
-#define SHIELD         12
-#define WAND           13
-#define SWORD          14
-#define DAGGER         15
-#define BELT           16
-#define BOW            17
-#define SLING          18
-#define WEAPON         19
-*/
-
-#define MAX_ITEM_EFFECTS 4
-#define MAX_ITEM_SOCKETS 4
-
-#define SOCKET_NONE   0
-#define SOCKET_GEM    1
-#define SOCKET_RUNE   2
+#define ITEM_HEALTH_POTION          120
+#define ITEM_MANA_POTION            121
+#define ITEM_REJUVENATION_POTION    122
 
 struct item_socket_type
 {

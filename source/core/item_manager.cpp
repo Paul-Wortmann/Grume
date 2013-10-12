@@ -98,13 +98,8 @@ int item_manager_class::get_new_item_UID(void)
         {
             if (item_pointer->data.UID == temp_UID) found = false;
         }
-        if (found)
-        {
-            game.core.log.file_write("Found item UID ->", temp_UID);
-            return (temp_UID);
-        }
+        if (found) return (temp_UID);
     }
-    game.core.log.file_write("Found item UID NOT found... -> ",UID_max);
     return (RETURN_FAIL);
 };
 
@@ -293,6 +288,8 @@ int  item_manager_class::gen_item(int item_type_UID, int item_sub_type_UID, int 
                     game.core.log.file_write("Unable to generate item -> ",item_type_UID," - ", item_sub_type_UID," - ", quality_level);
                 break;
             }
+            temp_item_pointer->data.type     = item_type_UID;
+            temp_item_pointer->data.sub_type = item_sub_type_UID;
             item_manager_class::gen_item_name   (temp_item_pointer,item_type_UID, item_sub_type_UID, quality_level);
             item_manager_class::gen_item_texture(temp_item_pointer,item_type_UID, item_sub_type_UID, quality_level);
             item_manager_class::gen_item_sounds (temp_item_pointer,item_type_UID, item_sub_type_UID, quality_level);

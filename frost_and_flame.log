@@ -15,16 +15,6 @@ Seeding random...
 Initializing UI system...
 Initializing game system...
 Loading TMX map file -> data/maps/town.tmx
-Found item UID ->0
-Found item UID ->1
-Found item UID ->2
-Found item UID ->3
-Found item UID ->4
-Found item UID ->5
-Found item UID ->6
-Found item UID ->7
-Found item UID ->8
-Found item UID ->9
 Initializing event handlers...
 Starting Game...
  

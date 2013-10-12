@@ -587,7 +587,6 @@ void UI_manager_class::render(void)
 
 event_struct  UI_manager_class::process_form_elements(UI_form_struct *UI_form_pointer,bool window_in_focus)
 {
-    //window_in_focus  = true; // --------------------------- TESTING!!! --------------------------
     event_struct      return_value;
     return_value.id = EVENT_NONE;
     // ------------------------- Process elements -------------------------
@@ -743,7 +742,6 @@ event_struct  UI_manager_class::process_form_elements(UI_form_struct *UI_form_po
                 if (UI_form_pointer->data.element[element_number].mouse_over)
                 {
                     allow_drag        = false;
-                    //return_mouse_over = true;
                 }
             }
         }
@@ -842,7 +840,6 @@ void UI_manager_class::process_forms(void)
                             UI_form_pointer->data.drag_offset_y                = UI_form_pointer->data.position.y - game.core.io.mouse_y;
                             UI_form_pointer->data.drag_active                  = true;
                             game.UI_manager.data.drag_in_progress                   = true;
-                            //if (UI_manager_class::UI_form_get_is_top_of_list(UI_form_pointer->data.UID)) return_value.id = EVENT_UI_FORM_DRAG;
                             if (UI_manager_class::UI_form_get_list_position(UI_form_pointer->data.UID) != UI_manager_class::data.number_of_UI_forms)
                             {
                                 return_value.id    = EVENT_UI_FORM_DRAG;
@@ -865,16 +862,12 @@ void UI_manager_class::process_forms(void)
                             return_value.id    = EVENT_UI_LIST_SORT;
                             return_value.value = UI_form_pointer->data.UID;
                         }
-                        //if (UI_manager_class::UI_form_get_is_top_of_list(UI_form_pointer->data.UID)) return_value.id = EVENT_UI_LIST_SORT;
                     }
                 }
                 // ------------------------- X -------------------------
                 if (!UI_form_pointer->data.mouse_over_title) UI_form_pointer->data.mouse_over_title = return_mouse_over;
             }
         }
-        //if ((UI_form_count > 1) && (game.UI_manager.data.event.id == EVENT_UI_LIST_SORT)) game.UI_manager.data.event.id = EVENT_NONE;
-        //if (return_value > 0) game.core.log.file_write("returning event -> ",return_value, " - from UID - ", UI_form_pointer->data.UID);
-        //if (return_value == EVENT_UI_LIST_SORT) game.core.log.file_write("returning event -> ",return_value, " - from UID - ", UI_form_pointer->data.UID);
         UI_form_pointer->data.event = return_value;
         if ((UI_form_pointer->data.event.id == EVENT_UI_LIST_SORT) || (UI_form_pointer->data.event.id == EVENT_UI_FORM_DRAG))
         {
@@ -900,16 +893,6 @@ void UI_manager_class::process(void)
             game.UI_manager.UI_form_list_sort(game.UI_manager.data.event.value);
             game.UI_manager.data.event.id    = EVENT_NONE;
             game.UI_manager.data.event.value = EVENT_VALUE_NONE;
-            /*
-    //write stack to log file to see whats happening....
-    game.core.log.file_write("************");
-    for (UI_form_struct *UI_form_pointer_tmp = UI_manager_class::root; UI_form_pointer_tmp != NULL; UI_form_pointer_tmp = UI_form_pointer_tmp->next)
-    {
-        if (UI_form_pointer_tmp->data.active) game.core.log.file_write("Active UID -> ",UI_form_pointer_tmp->data.UID);
-        else game.core.log.file_write("UID -> ",UI_form_pointer_tmp->data.UID);
-    }
-    game.core.log.file_write("************");
-    */
         break;
         default:
             game.UI_manager.data.event.id    = EVENT_NONE;
@@ -1007,26 +990,49 @@ void UI_manager_class::swap_elements(int UI_form_UID_src, int UI_element_src, in
         }
         else
         {
-            int temp_value    = UI_form_UID_src_pointer->data.element[UI_element_src].value;
-            int temp_quantity = UI_form_UID_src_pointer->data.element[UI_element_src].quantity;
-            texture_type* temp_texture_pointer = UI_form_UID_src_pointer->data.element[UI_element_src].texture.normal;
-            UI_form_UID_src_pointer->data.element[UI_element_src].value          = UI_form_UID_dst_pointer->data.element[UI_element_dst].value;
-            UI_form_UID_src_pointer->data.element[UI_element_src].quantity       = UI_form_UID_dst_pointer->data.element[UI_element_dst].quantity;
-            UI_form_UID_src_pointer->data.element[UI_element_src].texture.normal = UI_form_UID_dst_pointer->data.element[UI_element_dst].texture.normal;
-            UI_form_UID_dst_pointer->data.element[UI_element_dst].value          = temp_value;
-            UI_form_UID_dst_pointer->data.element[UI_element_dst].quantity       = temp_quantity;
-            UI_form_UID_dst_pointer->data.element[UI_element_dst].texture.normal = temp_texture_pointer;
-            if ((UI_form_UID_src == UID_EQUIPMENT) || (UI_form_UID_dst == UID_EQUIPMENT))
+            bool allow_swap = false;
+            switch (UI_form_UID_dst)
             {
-                if (UI_form_UID_dst == UID_EQUIPMENT)
+                case UID_ACTIONBAR:
+                    if ((item_pointer_src->data.type == ITEM_POTION)
+                     || (item_pointer_src->data.type == ITEM_SPELL))
+                    allow_swap = true;
+                break;
+                case UID_INVENTORY:
+                    if (item_pointer_src->data.type != ITEM_SPELL)
+                    allow_swap = true;
+                break;
+                case UID_EQUIPMENT:
+                    if (item_pointer_src->data.type == UI_form_UID_dst_pointer->data.element[UI_element_dst].sub_type)
+                    allow_swap = true;
+                break;
+                default:
+                    allow_swap = false;
+                break;
+            }
+            if (allow_swap)
+            {
+                int temp_value    = UI_form_UID_src_pointer->data.element[UI_element_src].value;
+                int temp_quantity = UI_form_UID_src_pointer->data.element[UI_element_src].quantity;
+                texture_type* temp_texture_pointer = UI_form_UID_src_pointer->data.element[UI_element_src].texture.normal;
+                UI_form_UID_src_pointer->data.element[UI_element_src].value          = UI_form_UID_dst_pointer->data.element[UI_element_dst].value;
+                UI_form_UID_src_pointer->data.element[UI_element_src].quantity       = UI_form_UID_dst_pointer->data.element[UI_element_dst].quantity;
+                UI_form_UID_src_pointer->data.element[UI_element_src].texture.normal = UI_form_UID_dst_pointer->data.element[UI_element_dst].texture.normal;
+                UI_form_UID_dst_pointer->data.element[UI_element_dst].value          = temp_value;
+                UI_form_UID_dst_pointer->data.element[UI_element_dst].quantity       = temp_quantity;
+                UI_form_UID_dst_pointer->data.element[UI_element_dst].texture.normal = temp_texture_pointer;
+                if ((UI_form_UID_src == UID_EQUIPMENT) || (UI_form_UID_dst == UID_EQUIPMENT))
                 {
-                    game.item_manager.equip_item  (item_pointer_src);
-                    game.item_manager.unequip_item(item_pointer_dst);
-                }
-                else
-                {
-                    game.item_manager.equip_item  (item_pointer_dst);
-                    game.item_manager.unequip_item(item_pointer_src);
+                    if (UI_form_UID_dst == UID_EQUIPMENT)
+                    {
+                        game.item_manager.equip_item  (item_pointer_src);
+                        game.item_manager.unequip_item(item_pointer_dst);
+                    }
+                    else
+                    {
+                        game.item_manager.equip_item  (item_pointer_dst);
+                        game.item_manager.unequip_item(item_pointer_src);
+                    }
                 }
             }
         }

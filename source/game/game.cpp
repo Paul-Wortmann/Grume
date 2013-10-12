@@ -180,49 +180,18 @@ void game_class::init(void)
     UI_form_pointer->data.element[element_number].quantity       = 1;
     UI_form_pointer->data.element[element_number].texture.normal = temp_item_pointer->data.image;
 
-    /*
-
-    element_number = 2;
-    item_ID = game.item_manager.get_item_ID(MANA_POTION); // Mana Potion
-    UI_form_pointer->data.element[element_number].value = item_ID;
-    UI_form_pointer->data.element[element_number].quantity = 4;
-    UI_form_pointer->data.element[element_number].texture.normal = game.item_manager.item[item_ID].image;
-
     // Add default items to the action bar
     UI_form_pointer = game.UI_manager.UI_form_get(UID_ACTIONBAR);
-    element_number = 16;
-    item_ID = game.item_manager.get_item_ID(ITEM_SPELL); // ----
-    UI_form_pointer->data.element[element_number].value    = item_ID;
-    UI_form_pointer->data.element[element_number].quantity = 1;
-    UI_form_pointer->data.element[element_number].texture.normal = game.item_manager.item[item_ID].image;
-    element_number = 17;
-    item_ID = game.item_manager.get_item_ID(ITEM_SPELL); // ----
-    UI_form_pointer->data.element[element_number].value    = item_ID;
-    UI_form_pointer->data.element[element_number].quantity = 1;
-    UI_form_pointer->data.element[element_number].texture.normal = game.item_manager.item[item_ID].image;
-
-    // Add default items to the equipment menu
-    UI_form_pointer = game.UI_manager.UI_form_get(UID_EQUIPMENT);
-    element_number = 13;
-    item_ID = 0;
-    item_ID = game.item_manager.get_item_ID(ITEM_SPELL); // ----
-    UI_form_pointer->data.element[element_number].value    = item_ID;
-    UI_form_pointer->data.element[element_number].quantity = 1;
-    UI_form_pointer->data.element[element_number].texture.normal = game.item_manager.item[item_ID].image;
-    */
+    element_number = 8;
+    temp_item_pointer = game.item_manager.add_item(ITEM_HEALTH_POTION);
+    UI_form_pointer->data.element[element_number].value          = temp_item_pointer->data.UID;
+    UI_form_pointer->data.element[element_number].quantity       = 1;
+    UI_form_pointer->data.element[element_number].texture.normal = temp_item_pointer->data.image;
 };
 
 void game_class::process(void)
 {
     path_type* path;
-    /*
-    game.test_1 = game.UI_manager.mouse_over_window();
-    if (game.test_1 != MOUSE_OVER_MAP)
-    {
-        game.test_2 = game.UI_manager.mouse_over_element(game.test_1);
-    }
-    else game.test_2 = 0;
-        */
     game.player.process();
     game.npc.process();
     game.map_2D.process(&tmx_map);
