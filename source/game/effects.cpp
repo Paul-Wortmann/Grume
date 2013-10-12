@@ -129,6 +129,7 @@ bool  effect_class::use_effect(effect_type* temp_effect_pointer, float value)
         default:
         break;
     }
+    return (used_item);
 };
 
 void effect_class::load_effects(std::string file_name)

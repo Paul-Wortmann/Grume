@@ -28,6 +28,7 @@
 #include <string>
 #include "../core/texture_manager.hpp"
 #include "../core/sound_manager.hpp"
+#include "../UI/UI_types.hpp"
 #include "effect_manager.hpp"
 
 #define ITEM_NONE            0
@@ -134,6 +135,11 @@ class item_manager_class
         item_type*      add_item(std::string file_name);
         item_type*      add_item(int item_UID);
         void            use_item(item_type *item_pointer);
+        int             get_new_item_UID(void);
+        void            load_items(std::string file_name);
+        void            use_item(UI_form_struct *UI_form_pointer, int element_number);
+        void            equip_item(item_type* item_pointer);
+        void            unequip_item(item_type* item_pointer);
 };
 
 #endif // ITEM_MANAGER_H
