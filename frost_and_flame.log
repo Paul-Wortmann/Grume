@@ -20,8 +20,9 @@ Starting Game...
  
 # ---------------------------------------------- #
  
-Unable to process event - 1202 - UID - 3
-Unable to process event - 1202 - UID - 3
+Unable to process event - 1301 - UID - 3
+Unable to process event - 1101 - UID - 3
+Unable to process event - 701 - UID - 3
  
 # ---------------------------------------------- #
  
@@ -30,7 +31,7 @@ Music   count -> 1
 Sound   count -> 4
 Texture count -> 73
 Item    count -> 4
-Effect  count -> 3
+Effect  count -> 7
  
 # ---------------------------------------------- #
  

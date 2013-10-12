@@ -68,6 +68,8 @@ item_type* item_manager_class::add_item(int item_UID)
     }
     item_manager_class::last->data.active                 = false;
     item_manager_class::last->data.consumable             = false;
+    item_manager_class::last->data.equipable              = false;
+    item_manager_class::last->data.quest                  = false;
     item_manager_class::last->data.name                   = "";
     item_manager_class::last->data.number_of_item_effects = 0;
     item_manager_class::last->data.number_of_item_sockets = 0;

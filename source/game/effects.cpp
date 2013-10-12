@@ -35,35 +35,96 @@ void  effect_class::init_effects(void) // Initialize hard-coded default effects,
     //------------------------- Mod Health Effect --------------------------------------------------------------------------
     temp_effect_pointer                = game.effect_manager.add_effect(EFFECT_MOD_HEALTH);
     temp_effect_pointer->data.active   = true;
-    temp_effect_pointer->data.name     = "Mod Player Health";
+    temp_effect_pointer->data.name     = "Mod player health";
     temp_effect_pointer->data.passive  = false;
     temp_effect_pointer->data.value    = 10.0f;
     temp_effect_pointer->data.type     = EFFECT_MOD_HEALTH;
-    temp_effect_pointer->data.sub_type = ITEM_POTION_SMALL;
+    temp_effect_pointer->data.sub_type = EFFECT_MOD_HEALTH;
+    //-------------------------- Mod Health max --------------------------------------------------------------------------
+    temp_effect_pointer                = game.effect_manager.add_effect(EFFECT_MOD_HEALTH_MAX);
+    temp_effect_pointer->data.active   = true;
+    temp_effect_pointer->data.name     = "Mod player health max";
+    temp_effect_pointer->data.passive  = false;
+    temp_effect_pointer->data.value    = 100.0f;
+    temp_effect_pointer->data.type     = EFFECT_MOD_HEALTH_MAX;
+    temp_effect_pointer->data.sub_type = EFFECT_MOD_HEALTH;
+    //-------------------------- Mod Health regen --------------------------------------------------------------------------
+    temp_effect_pointer                = game.effect_manager.add_effect(EFFECT_MOD_HEALTH_REGEN);
+    temp_effect_pointer->data.active   = true;
+    temp_effect_pointer->data.name     = "Mod player health regen";
+    temp_effect_pointer->data.passive  = true;
+    temp_effect_pointer->data.value    = 1.0f;
+    temp_effect_pointer->data.type     = EFFECT_MOD_HEALTH_REGEN;
+    temp_effect_pointer->data.sub_type = EFFECT_MOD_HEALTH;
     //------------------------- Mod Mana Effect --------------------------------------------------------------------------
     temp_effect_pointer                = game.effect_manager.add_effect(EFFECT_MOD_MANA);
     temp_effect_pointer->data.active   = true;
-    temp_effect_pointer->data.name     = "Mod Player Mana";
+    temp_effect_pointer->data.name     = "Mod player mana";
     temp_effect_pointer->data.passive  = false;
     temp_effect_pointer->data.value    = 10.0f;
     temp_effect_pointer->data.type     = EFFECT_MOD_MANA;
-    temp_effect_pointer->data.sub_type = ITEM_POTION_SMALL;
+    temp_effect_pointer->data.sub_type = EFFECT_MOD_MANA;
+    //-------------------------- Mod Mana max --------------------------------------------------------------------------
+    temp_effect_pointer                = game.effect_manager.add_effect(EFFECT_MOD_MANA_MAX);
+    temp_effect_pointer->data.active   = true;
+    temp_effect_pointer->data.name     = "Mod player mana max";
+    temp_effect_pointer->data.passive  = false;
+    temp_effect_pointer->data.value    = 100.0f;
+    temp_effect_pointer->data.type     = EFFECT_MOD_MANA_MAX;
+    temp_effect_pointer->data.sub_type = EFFECT_MOD_MANA;
+    //-------------------------- Mod Mana regen --------------------------------------------------------------------------
+    temp_effect_pointer                = game.effect_manager.add_effect(EFFECT_MOD_MANA_REGEN);
+    temp_effect_pointer->data.active   = true;
+    temp_effect_pointer->data.name     = "Mod player mana regen";
+    temp_effect_pointer->data.passive  = true;
+    temp_effect_pointer->data.value    = 1.0f;
+    temp_effect_pointer->data.type     = EFFECT_MOD_MANA_REGEN;
+    temp_effect_pointer->data.sub_type = EFFECT_MOD_MANA;
     //--------------------------------------------------------------------------------------------------------------------
     effect_class::load_effects("data/scripts/effects.txt");
 }
 
-void  effect_class::use_effect(int effect_UID, float value)
+bool  effect_class::use_effect(effect_type* temp_effect_pointer)
 {
-    // redundant function? O_o
-    switch (effect_UID)
+    return(effect_class::use_effect(temp_effect_pointer,temp_effect_pointer->data.value));
+};
+
+bool  effect_class::use_effect(effect_type* temp_effect_pointer, float value)
+{
+    bool used_item = false;
+    switch (temp_effect_pointer->data.UID)
     {
         case EFFECT_NONE:
         break;
         case EFFECT_MOD_HEALTH:
-            game.player.health.current += value;
+            if (game.player.health.current < game.player.health.maximum)
+            {
+                used_item = true;
+                game.player.health.current += value;
+            }
+        break;
+        case EFFECT_MOD_HEALTH_MAX:
+            used_item = true;
+            game.player.health.maximum += value;
+        break;
+        case EFFECT_MOD_HEALTH_REGEN:
+            used_item = true;
+            game.player.health.regeneration += value;
         break;
         case EFFECT_MOD_MANA:
-            game.player.mana.current   += value;
+            if (game.player.mana.current < game.player.mana.maximum)
+            {
+                used_item = true;
+                game.player.mana.current += value;
+            }
+        break;
+        case EFFECT_MOD_MANA_MAX:
+            used_item = true;
+            game.player.mana.maximum += value;
+        break;
+        case EFFECT_MOD_MANA_REGEN:
+            used_item = true;
+            game.player.mana.regeneration += value;
         break;
         default:
         break;

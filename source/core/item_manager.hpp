@@ -99,6 +99,8 @@ struct item_data_type
     texture_type*    image;
     bool             active;
     bool             consumable;
+    bool             equipable;
+    bool             quest;
     std::string      name;
     int              UID;
     int              type;

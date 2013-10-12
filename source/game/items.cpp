@@ -138,6 +138,8 @@ void item_class::load_items(std::string file_name)
                     if (temp_item_pointer != NULL)
                     {
                         temp_item_pointer->data.consumable = ((temp_string_key == "CONSUMABLE")&&(temp_string_data == "TRUE")) ? true : false;
+                        temp_item_pointer->data.consumable = ((temp_string_key == "EQUIPABLE") &&(temp_string_data == "TRUE")) ? true : false;
+                        temp_item_pointer->data.consumable = ((temp_string_key == "QUEST")     &&(temp_string_data == "TRUE")) ? true : false;
                         if (temp_string_key == "NAME")             temp_item_pointer->data.name                   = temp_string_data.c_str();
                         if (temp_string_key == "TYPE")             temp_item_pointer->data.type                   = atoi(temp_string_data.c_str());
                         if (temp_string_key == "SUB_TYPE")         temp_item_pointer->data.sub_type               = atoi(temp_string_data.c_str());
@@ -172,25 +174,7 @@ void item_class::use_item(UI_form_struct *UI_form_pointer, int element_number)
             //game.core.log.file_write("---- use item function ------");
             for (int effect_count = 0; effect_count < temp_item_pointer->data.number_of_item_effects; effect_count++)
             {
-                switch (temp_item_pointer->data.effect[effect_count]->data.type)
-                {
-                    case EFFECT_MOD_HEALTH:
-                        if (game.player.health.current < game.player.health.maximum)
-                        {
-                            used_item = true;
-                            game.player.health.current += temp_item_pointer->data.effect[effect_count]->data.value;
-                        }
-                    break;
-                    case EFFECT_MOD_MANA:
-                        if (game.player.mana.current < game.player.mana.maximum)
-                        {
-                            used_item = true;
-                            game.player.mana.current += temp_item_pointer->data.effect[effect_count]->data.value;
-                        }
-                    break;
-                    default:
-                    break;
-                }
+                used_item = game.effect.use_effect(temp_item_pointer->data.effect[effect_count]);
             }
             if (used_item)
             {
@@ -211,25 +195,9 @@ void item_class::equip_item(item_type* item_pointer)
 {
     for (int effect_count = 0; effect_count < item_pointer->data.number_of_item_effects; effect_count++)
     {
-        switch (item_pointer->data.effect[effect_count]->data.type)
+        if (item_pointer->data.equipable)
         {
-            case EFFECT_MOD_CRIT_CHANCE:
-            break;
-            case EFFECT_MOD_CRIT_DAMMAGE:
-            break;
-            case EFFECT_MOD_HEALTH:
-                if (item_pointer->data.effect[effect_count]->data.passive) game.player.health.regeneration += item_pointer->data.effect[effect_count]->data.value;
-            break;
-            case EFFECT_MOD_LIGHT_RADIUS:
-            break;
-            case EFFECT_MOD_MANA:
-            break;
-            case EFFECT_MOD_WALK_SPEED:
-            break;
-            case EFFECT_SPELL:
-            break;
-            default:
-            break;
+            game.effect.use_effect(item_pointer->data.effect[effect_count]);
         }
     }
 };
@@ -238,25 +206,9 @@ void item_class::unequip_item(item_type* item_pointer)
 {
     for (int effect_count = 0; effect_count < item_pointer->data.number_of_item_effects; effect_count++)
     {
-        switch (item_pointer->data.effect[effect_count]->data.type)
+        if (item_pointer->data.equipable)
         {
-            case EFFECT_MOD_CRIT_CHANCE:
-            break;
-            case EFFECT_MOD_CRIT_DAMMAGE:
-            break;
-            case EFFECT_MOD_HEALTH:
-                if (item_pointer->data.effect[effect_count]->data.passive) game.player.health.regeneration -= item_pointer->data.effect[effect_count]->data.value;
-            break;
-            case EFFECT_MOD_LIGHT_RADIUS:
-            break;
-            case EFFECT_MOD_MANA:
-            break;
-            case EFFECT_MOD_WALK_SPEED:
-            break;
-            case EFFECT_SPELL:
-            break;
-            default:
-            break;
+            game.effect.use_effect(item_pointer->data.effect[effect_count],(item_pointer->data.effect[effect_count]->data.value * -1));
         }
     }
 };
