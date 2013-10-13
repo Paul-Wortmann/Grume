@@ -85,7 +85,7 @@ font_type *font_manager_class::add_font(std::string file_name)
 bool font_manager_class::load_font(font_type *font)
 {
     bool return_value = false;
-    font->font_data = TTF_OpenFont(font->path.c_str(), 12);
+    font->font_data = TTF_OpenFont(font->path.c_str(), 48);
     if (font->font_data != NULL) return_value = true;
     else game.core.log.file_write("Failed to load font ->",font->path.c_str());
     return (return_value);

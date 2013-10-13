@@ -59,7 +59,7 @@ struct text_color_type
 struct text_data_type
 {
     std::string      text_string;
-    int              text_size;
+    float            text_size;
     text_color_type  color;
     font_type*       font;
 };
@@ -69,8 +69,8 @@ struct texture_data_type
     bool             loaded;
     int              texture_flag;
     std::string      path;
-    int              width;
-    int              height;
+    float            width;
+    float            height;
     bool             rotate_able;
     float            rotate_speed;
     int              rotate_direction;
@@ -102,8 +102,8 @@ class texture_manager_class
         texture_type *add_texture(std::string file_name, bool is_sprite_sheet);
         texture_type *add_texture(std::string file_name, bool is_sprite_sheet, int width_set, int height_set);
         texture_type *add_texture(std::string file_name, int width_set, int height_set, int texture_flag);
-        texture_type *add_texture(font_type* font, std::string text_string, int text_size, int width_set, int height_set, int texture_flag);
-        texture_type *add_texture(font_type* font, std::string text_string, int text_size, int width_set, int height_set, int r, int g, int b, int a, int texture_flag);
+        texture_type *add_texture(font_type* font, std::string text_string, float text_size, int width_set, int height_set, int texture_flag);
+        texture_type *add_texture(font_type* font, std::string text_string, float text_size, int width_set, int height_set, int r, int g, int b, int a, int texture_flag);
         void          load_textures(void);
         void          reload_textures(void);
         bool          load_texture(texture_type *texure);

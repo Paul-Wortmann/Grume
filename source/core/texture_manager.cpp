@@ -71,12 +71,12 @@ texture_type* texture_manager_class::add_texture(std::string file_name, int widt
     return (texture_manager_class::add_texture(NULL,file_name,height_set,width_set,height_set,texture_flag));
 };
 
-texture_type* texture_manager_class::add_texture(font_type* font, std::string text_string, int text_size, int width_set, int height_set, int texture_flag)
+texture_type* texture_manager_class::add_texture(font_type* font, std::string text_string, float text_size, int width_set, int height_set, int texture_flag)
 {
-    return (texture_manager_class::add_texture(font,text_string,height_set,width_set,height_set,255,255,255,255,texture_flag));
+    return (texture_manager_class::add_texture(font,text_string,text_size,width_set,height_set,255,255,255,255,texture_flag));
 };
 
-texture_type* texture_manager_class::add_texture(font_type* font, std::string text_string, int text_size, int width_set, int height_set, int r, int g, int b, int a, int texture_flag)
+texture_type* texture_manager_class::add_texture(font_type* font, std::string text_string, float text_size, int width_set, int height_set, int r, int g, int b, int a, int texture_flag)
 {
     if (texture_manager_class::number_of_textures == 0)
     {
@@ -303,7 +303,7 @@ bool texture_manager_class::load_sprite_sheet(texture_type *texture, int width_s
                 {
                     for (int x_count = 0; x_count < texture->data.width-1; x_count++)
                     {
-                        out_pixels[out_pixel_count] = in_pixels[((sprite_sheet->w*y_count)+(((frame_count)*(texture->data.width))+x_count))];
+                        out_pixels[out_pixel_count] = in_pixels[((sprite_sheet->w*y_count)+(((frame_count)*((int)texture->data.width))+x_count))];
                         out_pixel_count++;
                     }
                 }
@@ -346,10 +346,13 @@ bool texture_manager_class::load_string(texture_type *texture)
         GLenum          texture_format = 0;
         texture->data.frame_max        = 0;
         texture->data.frame            = new frame_type[texture->data.frame_max+1];
-        const char *write_data = texture->data.text.text_string.c_str();
+        const char*         write_data = texture->data.text.text_string.c_str();
         SDL_Color font_color = {texture->data.text.color.b,texture->data.text.color.g,texture->data.text.color.r,texture->data.text.color.a};
+
         if ((image_surface = TTF_RenderUTF8_Blended(texture->data.text.font->font_data,write_data,font_color)))
         {
+            texture->data.width  = (float)image_surface->w / (float)game.core.config.display_resolution_x * texture->data.text.text_size;
+            texture->data.height = (float)image_surface->h / (float)game.core.config.display_resolution_y * texture->data.text.text_size;
             return_value = true;
             number_of_colors = image_surface->format->BytesPerPixel;
             if (number_of_colors == 4)

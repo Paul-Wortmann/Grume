@@ -188,7 +188,7 @@ void game_class::init(void)
     UI_form_pointer->data.element[element_number].quantity       = 1;
     UI_form_pointer->data.element[element_number].texture.normal = temp_item_pointer->data.image;
 
-    game.render_text = game.texture_manager.add_texture(game.font_manager.root,"---TEST---",0,0,0,TEXTURE_STRING);
+    game.render_text = game.texture_manager.add_texture(game.font_manager.root,"Pre-rendered, improved rendering, texture buffered text.",1.6f,0,0,TEXTURE_STRING);
 };
 
 void game_class::process(void)
@@ -495,6 +495,8 @@ void game_class::render(void)
 
     glLightModelfv(GL_LIGHT_MODEL_AMBIENT,global_ambient_light);
     game.UI_manager.render();
-    game.texture_manager.draw(game.render_text,false,0,0,game.render_text->data.width,game.render_text->data.height,0);
+    game.texture_manager.draw(game.render_text,false,0,0,0,game.render_text->data.width,game.render_text->data.height);
+    game.core.log.file_write("Render_text width  -> ",game.render_text->data.width);
+    game.core.log.file_write("Render_text height -> ",game.render_text->data.height);
 };
 
