@@ -51,15 +51,22 @@ texture_manager_class::~texture_manager_class(void)
 
 texture_type *texture_manager_class::add_texture(std::string file_name)
 {
-    return(texture_manager_class::add_texture(file_name,false));
+    return (texture_manager_class::add_texture(file_name,DEFAULT_FRAME_WIDTH,DEFAULT_FRAME_HEIGHT,TEXTURE_IMAGE));
 };
 
 texture_type *texture_manager_class::add_texture(std::string file_name, bool is_sprite_sheet)
 {
-    return(texture_manager_class::add_texture(file_name,is_sprite_sheet,DEFAULT_FRAME_WIDTH,DEFAULT_FRAME_HEIGHT));
+    if (is_sprite_sheet) return (texture_manager_class::add_texture(file_name,DEFAULT_FRAME_WIDTH,DEFAULT_FRAME_HEIGHT,TEXTURE_SPRITESHEET));
+    else return (texture_manager_class::add_texture(file_name,DEFAULT_FRAME_WIDTH,DEFAULT_FRAME_HEIGHT,TEXTURE_IMAGE));
 };
 
 texture_type *texture_manager_class::add_texture(std::string file_name, bool is_sprite_sheet, int width_set, int height_set)
+{
+    if (is_sprite_sheet) return (texture_manager_class::add_texture(file_name,width_set,height_set,TEXTURE_SPRITESHEET));
+    else return (texture_manager_class::add_texture(file_name,width_set,height_set,TEXTURE_IMAGE));
+};
+
+texture_type *texture_manager_class::add_texture(std::string file_name, int width_set, int height_set, int texture_flag)
 {
     if (texture_manager_class::number_of_textures == 0)
     {
@@ -87,7 +94,8 @@ texture_type *texture_manager_class::add_texture(std::string file_name, bool is_
         texture_manager_class::last->next = new texture_type;
         texture_manager_class::last->next = NULL;
     }
-    texture_manager_class::last->sprite_sheet       = is_sprite_sheet;
+    //if (texture_flag == TEXTURE_SPRITESHEET) texture_manager_class::last->sprite_sheet = true;
+    //else texture_manager_class::last->sprite_sheet  = false;
     texture_manager_class::last->path               = file_name.c_str();
     texture_manager_class::last->width              = width_set;
     texture_manager_class::last->height             = height_set;
@@ -100,8 +108,21 @@ texture_type *texture_manager_class::add_texture(std::string file_name, bool is_
     texture_manager_class::last->frame_delay_max    = 0.0f;
     texture_manager_class::last->frame_number       = 0;
     texture_manager_class::last->frame_max          = 0;
-    if (is_sprite_sheet) texture_manager_class::last->loaded = texture_manager_class::load_sprite_sheet(last,texture_manager_class::last->width,texture_manager_class::last->height);
-    else  texture_manager_class::last->loaded = texture_manager_class::load_texture(last);
+    switch (texture_flag)
+    {
+        case TEXTURE_IMAGE:
+            texture_manager_class::last->loaded = texture_manager_class::load_texture(last);
+        break;
+        case TEXTURE_SPRITESHEET:
+            texture_manager_class::last->loaded = texture_manager_class::load_sprite_sheet(last,texture_manager_class::last->width,texture_manager_class::last->height);
+        break;
+        case TEXTURE_STRING:
+            texture_manager_class::last->loaded = texture_manager_class::load_string(last);
+        break;
+        default:
+            texture_manager_class::last->loaded = false;
+        break;
+    }
     if (texture_manager_class::last->loaded) texture_manager_class::number_of_textures++;
     return(texture_manager_class::last);
 };
@@ -119,8 +140,21 @@ void texture_manager_class::load_textures(void)
             {
                 if (temp_pointer->path.length() > 4)
                 {
-                    if (temp_pointer->sprite_sheet) load_sprite_sheet(temp_pointer);
-                    else load_texture(temp_pointer);
+                    switch (temp_pointer->texture_flag)
+                    {
+                        case TEXTURE_IMAGE:
+                            texture_manager_class::last->loaded = texture_manager_class::load_texture(last);
+                        break;
+                        case TEXTURE_SPRITESHEET:
+                            texture_manager_class::last->loaded = texture_manager_class::load_sprite_sheet(last);
+                        break;
+                        case TEXTURE_STRING:
+                            texture_manager_class::last->loaded = texture_manager_class::load_string(last);
+                        break;
+                        default:
+                            texture_manager_class::last->loaded = false;
+                        break;
+                    }
                 }
             }
             temp_pointer = temp_pointer->next;
@@ -137,8 +171,21 @@ void texture_manager_class::reload_textures(void)
     {
         while (temp_pointer->next != NULL)
         {
-            if (temp_pointer->sprite_sheet) load_sprite_sheet(temp_pointer);
-            else load_texture(temp_pointer);
+            switch (temp_pointer->texture_flag)
+            {
+                case TEXTURE_IMAGE:
+                    texture_manager_class::last->loaded = texture_manager_class::load_texture(last);
+                break;
+                case TEXTURE_SPRITESHEET:
+                    texture_manager_class::last->loaded = texture_manager_class::load_sprite_sheet(last);
+                break;
+                case TEXTURE_STRING:
+                    texture_manager_class::last->loaded = texture_manager_class::load_string(last);
+                break;
+                default:
+                    texture_manager_class::last->loaded = false;
+                break;
+            }
             temp_pointer = temp_pointer->next;
         }
     }
@@ -152,7 +199,7 @@ bool texture_manager_class::load_texture(texture_type *texture)
     bool            return_value   = false;
     texture->frame_max              = 0;
     texture->frame                  = new frame_type[texture->frame_max+1];
-    texture->sprite_sheet          = false;
+    //texture->sprite_sheet          = false;
     if ((image_surface = IMG_Load(texture->path.c_str())))
     {
         return_value = true;
@@ -197,7 +244,7 @@ bool texture_manager_class::load_sprite_sheet(texture_type *texture)
 
 bool texture_manager_class::load_sprite_sheet(texture_type *texture, int width_set, int height_set)
 {
-    texture->sprite_sheet           = true;
+    //texture->sprite_sheet           = true;
     texture->width                  = width_set;
     texture->height                 = height_set;
     int             frames_x;
@@ -273,6 +320,11 @@ bool texture_manager_class::load_sprite_sheet(texture_type *texture, int width_s
     if (temp_surface) SDL_FreeSurface(temp_surface);
     texture->loaded = return_value;
     return(return_value);
+};
+
+bool texture_manager_class::load_string(texture_type *texture)
+{
+    return (NULL);
 };
 
 void texture_manager_class::bind_image(texture_type *texture)

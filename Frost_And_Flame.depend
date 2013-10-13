@@ -2275,7 +2275,7 @@
 	"texture_manager.hpp"
 	<string>
 
-1380467715 /media/paul/Data_0/_git_/Frost_and_Flame/source/core/texture_manager.hpp
+1381638407 /media/paul/Data_0/_git_/Frost_and_Flame/source/core/texture_manager.hpp
 	<GL/gl.h>
 	<SDL2/SDL.h>
 	<SDL2/SDL_image.h>
@@ -2638,7 +2638,7 @@
 	"sound_manager.hpp"
 	"../game/game.hpp"
 
-1381157926 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/core/texture_manager.cpp
+1381638513 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/core/texture_manager.cpp
 	"texture_manager.hpp"
 	"../game/game.hpp"
 
@@ -3428,7 +3428,7 @@
 	"rendered_text_manager.hpp"
 	<string>
 
-1381598644 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/core/rendered_text_manager.cpp
+1381599689 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/core/rendered_text_manager.cpp
 	"core.hpp"
 	"../game/game.hpp"
 	"rendered_text_manager.hpp"

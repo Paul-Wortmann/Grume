@@ -36,6 +36,11 @@
 #define DEFAULT_FRAME_WIDTH     64
 #define DEFAULT_FRAME_HEIGHT    32
 
+#define TEXTURE_NONE            0
+#define TEXTURE_IMAGE           1
+#define TEXTURE_SPRITESHEET     2
+#define TEXTURE_STRING          3
+
 struct frame_type
 {
     bool      active;
@@ -45,7 +50,9 @@ struct frame_type
 struct texture_type
 {
     bool             loaded;
-    bool             sprite_sheet;
+    //bool             sprite_sheet;
+    int              texture_flag;
+    std::string      text_string;
     std::string      path;
     int              width;
     int              height;
@@ -73,11 +80,13 @@ class texture_manager_class
         texture_type *add_texture(std::string file_name);
         texture_type *add_texture(std::string file_name, bool is_sprite_sheet);
         texture_type *add_texture(std::string file_name, bool is_sprite_sheet, int width_set, int height_set);
+        texture_type *add_texture(std::string file_name, int width_set, int height_set, int texture_flag);
         void          load_textures(void);
         void          reload_textures(void);
         bool          load_texture(texture_type *texure);
         bool          load_sprite_sheet(texture_type *texure);
         bool          load_sprite_sheet(texture_type *texure, int width_set, int height_set);
+        bool          load_string(texture_type *texure);
         void          bind_image(texture_type *texure);
         void          process(texture_type *texure);
         void          draw(texture_type *texure, bool rumble_set, float pos_x, float pos_y, float pos_z, float width_set, float height_set);
