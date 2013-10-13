@@ -33,7 +33,6 @@
 #include "../core/map_2D.hpp"
 #include "../core/music_manager.hpp"
 #include "../core/network.hpp"
-#include "../core/rendered_text_manager.hpp"
 #include "../core/savegame.hpp"
 #include "../core/sound_manager.hpp"
 #include "../core/texture_manager.hpp"
@@ -95,7 +94,6 @@ class game_class
         save_game_class             save_07;
         spell_class                 spell[MAX_SPELLS];
         int                         state;
-        rendered_text_manager_class rendered_text_manager;
         sound_manager_class         sound_manager;
         texture_manager_class       texture_manager;
         UI_loading_screen_class     loading_screen;

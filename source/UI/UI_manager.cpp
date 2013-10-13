@@ -146,11 +146,11 @@ void UI_manager_class::setup(void)
     // --- Allow specific textures to be rotated ----
     texture_type *temp_pointer;
     temp_pointer = game.texture_manager.add_texture("data/textures/UI/menu/arrow_normal.png");
-    temp_pointer->rotate_able = true;
+    temp_pointer->data.rotate_able = true;
     temp_pointer = game.texture_manager.add_texture("data/textures/UI/menu/arrow_highlighted.png");
-    temp_pointer->rotate_able = true;
+    temp_pointer->data.rotate_able = true;
     temp_pointer = game.texture_manager.add_texture("data/textures/UI/menu/arrow_disabled.png");
-    temp_pointer->rotate_able = true;
+    temp_pointer->data.rotate_able = true;
     //UI_manager_class::UI_form_list_log();
 }
 

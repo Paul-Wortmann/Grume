@@ -283,7 +283,7 @@ void loader_obj_class::load_mtl(std::string file_name)
                                 loader_obj_class::material[number_of_materials_count].data_d.file_name = game.core.file.extension_remove(loader_obj_class::material[number_of_materials_count].data_d.file_name);
                                 loader_obj_class::material[number_of_materials_count].data_d.file_name = game.core.file.extension_add(loader_obj_class::material[number_of_materials_count].data_d.file_name,".png");
                                 loader_obj_class::material[number_of_materials_count].data_d.texture = game.texture_manager.add_texture(loader_obj_class::material[number_of_materials_count].data_d.file_name.c_str());
-                                if (loader_obj_class::material[number_of_materials_count].data_d.texture->frame[0].active)
+                                if (loader_obj_class::material[number_of_materials_count].data_d.texture->data.frame[0].active)
                                      loader_obj_class::material[number_of_materials_count].data_d.active    = true;
                                 else loader_obj_class::material[number_of_materials_count].data_d.active    = false;
                             break;
@@ -300,7 +300,7 @@ void loader_obj_class::load_mtl(std::string file_name)
                                 loader_obj_class::material[number_of_materials_count].data_Kd.file_name = game.core.file.extension_remove(loader_obj_class::material[number_of_materials_count].data_Kd.file_name);
                                 loader_obj_class::material[number_of_materials_count].data_Kd.file_name = game.core.file.extension_add(loader_obj_class::material[number_of_materials_count].data_Kd.file_name,".png");
                                 loader_obj_class::material[number_of_materials_count].data_Kd.texture = game.texture_manager.add_texture(loader_obj_class::material[number_of_materials_count].data_Kd.file_name.c_str());
-                                if (loader_obj_class::material[number_of_materials_count].data_Kd.texture->frame[0].active)
+                                if (loader_obj_class::material[number_of_materials_count].data_Kd.texture->data.frame[0].active)
                                      loader_obj_class::material[number_of_materials_count].data_Kd.active    = true;
                                 else loader_obj_class::material[number_of_materials_count].data_Kd.active    = false;
                             break;
@@ -317,7 +317,7 @@ void loader_obj_class::load_mtl(std::string file_name)
                                 loader_obj_class::material[number_of_materials_count].data_Bump.file_name = game.core.file.extension_remove(loader_obj_class::material[number_of_materials_count].data_Bump.file_name);
                                 loader_obj_class::material[number_of_materials_count].data_Bump.file_name = game.core.file.extension_add(loader_obj_class::material[number_of_materials_count].data_Bump.file_name,".png");
                                 loader_obj_class::material[number_of_materials_count].data_Bump.texture = game.texture_manager.add_texture(loader_obj_class::material[number_of_materials_count].data_Bump.file_name.c_str());
-                                if (loader_obj_class::material[number_of_materials_count].data_Bump.texture->frame[0].active)
+                                if (loader_obj_class::material[number_of_materials_count].data_Bump.texture->data.frame[0].active)
                                      loader_obj_class::material[number_of_materials_count].data_Bump.active    = true;
                                 else loader_obj_class::material[number_of_materials_count].data_Bump.active    = false;
                             break;

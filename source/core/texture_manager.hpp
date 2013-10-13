@@ -47,10 +47,9 @@ struct frame_type
     GLuint    data;
 };
 
-struct texture_type
+struct texture_data_type
 {
     bool             loaded;
-    //bool             sprite_sheet;
     int              texture_flag;
     std::string      text_string;
     std::string      path;
@@ -66,6 +65,11 @@ struct texture_type
     int              frame_number;
     int              frame_max;
     frame_type*      frame;
+};
+
+struct texture_type
+{
+    texture_data_type data;
     texture_type    *next;
 };
 
