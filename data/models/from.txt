@@ -35,3 +35,10 @@ http://opengameart.org/content/tombwoof
 Author: Hythlodaeus
 License(s): CC-BY 3.0
 
+data/models/NPCs/golem.blend
+-------------------------------------
+http://opengameart.org/content/fireicestone-golem
+Author: umask007
+License(s): CC-BY 3.0 CC-BY-SA 3.0
+
+
