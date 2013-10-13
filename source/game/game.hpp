@@ -104,6 +104,7 @@ class game_class
         void                        init(void);
         void                        process(void);
         void                        render(void);
+        texture_type*               render_text;
 };
 
 #endif //GAME_H

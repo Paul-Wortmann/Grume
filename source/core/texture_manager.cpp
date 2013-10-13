@@ -49,24 +49,34 @@ texture_manager_class::~texture_manager_class(void)
     //delete [] last;
 };
 
-texture_type *texture_manager_class::add_texture(std::string file_name)
+texture_type* texture_manager_class::add_texture(std::string file_name)
 {
     return (texture_manager_class::add_texture(file_name,DEFAULT_FRAME_WIDTH,DEFAULT_FRAME_HEIGHT,TEXTURE_IMAGE));
 };
 
-texture_type *texture_manager_class::add_texture(std::string file_name, bool is_sprite_sheet)
+texture_type* texture_manager_class::add_texture(std::string file_name, bool is_sprite_sheet)
 {
     if (is_sprite_sheet) return (texture_manager_class::add_texture(file_name,DEFAULT_FRAME_WIDTH,DEFAULT_FRAME_HEIGHT,TEXTURE_SPRITESHEET));
     else return (texture_manager_class::add_texture(file_name,DEFAULT_FRAME_WIDTH,DEFAULT_FRAME_HEIGHT,TEXTURE_IMAGE));
 };
 
-texture_type *texture_manager_class::add_texture(std::string file_name, bool is_sprite_sheet, int width_set, int height_set)
+texture_type* texture_manager_class::add_texture(std::string file_name, bool is_sprite_sheet, int width_set, int height_set)
 {
     if (is_sprite_sheet) return (texture_manager_class::add_texture(file_name,width_set,height_set,TEXTURE_SPRITESHEET));
     else return (texture_manager_class::add_texture(file_name,width_set,height_set,TEXTURE_IMAGE));
 };
 
-texture_type *texture_manager_class::add_texture(std::string file_name, int width_set, int height_set, int texture_flag)
+texture_type* texture_manager_class::add_texture(std::string file_name, int width_set, int height_set, int texture_flag)
+{
+    return (texture_manager_class::add_texture(NULL,file_name,height_set,width_set,height_set,texture_flag));
+};
+
+texture_type* texture_manager_class::add_texture(font_type* font, std::string text_string, int text_size, int width_set, int height_set, int texture_flag)
+{
+    return (texture_manager_class::add_texture(font,text_string,height_set,width_set,height_set,255,255,255,255,texture_flag));
+};
+
+texture_type* texture_manager_class::add_texture(font_type* font, std::string text_string, int text_size, int width_set, int height_set, int r, int g, int b, int a, int texture_flag)
 {
     if (texture_manager_class::number_of_textures == 0)
     {
@@ -85,7 +95,7 @@ texture_type *texture_manager_class::add_texture(std::string file_name, int widt
         {
             while (temp_pointer != NULL)
             {
-                if (strcmp(file_name.c_str(),temp_pointer->data.path.c_str()) == 0) return(temp_pointer);
+                if (strcmp(text_string.c_str(),temp_pointer->data.path.c_str()) == 0) return(temp_pointer);
                 temp_pointer = temp_pointer->next;
             }
         }
@@ -94,8 +104,14 @@ texture_type *texture_manager_class::add_texture(std::string file_name, int widt
         texture_manager_class::last->next = new texture_type;
         texture_manager_class::last->next = NULL;
     }
-    texture_manager_class::last->data.text.text_string   = file_name.c_str();
-    texture_manager_class::last->data.path               = file_name.c_str();
+    texture_manager_class::last->data.text.font          = font;
+    texture_manager_class::last->data.text.color.r       = r;
+    texture_manager_class::last->data.text.color.g       = g;
+    texture_manager_class::last->data.text.color.b       = b;
+    texture_manager_class::last->data.text.color.a       = a;
+    texture_manager_class::last->data.text.text_size     = text_size;
+    texture_manager_class::last->data.text.text_string   = text_string.c_str();
+    texture_manager_class::last->data.path               = text_string.c_str();
     texture_manager_class::last->data.width              = width_set;
     texture_manager_class::last->data.height             = height_set;
     texture_manager_class::last->data.rotate_able        = false;
