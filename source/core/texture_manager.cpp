@@ -94,7 +94,7 @@ texture_type *texture_manager_class::add_texture(std::string file_name, int widt
         texture_manager_class::last->next = new texture_type;
         texture_manager_class::last->next = NULL;
     }
-    texture_manager_class::last->data.text_string        = file_name.c_str();
+    texture_manager_class::last->data.text.text_string   = file_name.c_str();
     texture_manager_class::last->data.path               = file_name.c_str();
     texture_manager_class::last->data.width              = width_set;
     texture_manager_class::last->data.height             = height_set;
@@ -196,9 +196,8 @@ bool texture_manager_class::load_texture(texture_type *texture)
     SDL_Surface    *image_surface  = NULL;
     GLenum          texture_format = 0;
     bool            return_value   = false;
-    texture->data.frame_max              = 0;
-    texture->data.frame                  = new frame_type[texture->data.frame_max+1];
-    //texture->sprite_sheet          = false;
+    texture->data.frame_max        = 0;
+    texture->data.frame            = new frame_type[texture->data.frame_max+1];
     if ((image_surface = IMG_Load(texture->data.path.c_str())))
     {
         return_value = true;
@@ -243,9 +242,8 @@ bool texture_manager_class::load_sprite_sheet(texture_type *texture)
 
 bool texture_manager_class::load_sprite_sheet(texture_type *texture, int width_set, int height_set)
 {
-    //texture->sprite_sheet           = true;
-    texture->data.width                  = width_set;
-    texture->data.height                 = height_set;
+    texture->data.width            = width_set;
+    texture->data.height           = height_set;
     int             frames_x;
     int             frames_y;
     int             frame_count    = 0;
@@ -313,7 +311,7 @@ bool texture_manager_class::load_sprite_sheet(texture_type *texture, int width_s
     else
     {
         return_value = false;
-        game.core.log.file_write("Failed to load image ->",texture->data.path.c_str());
+        game.core.log.file_write("Failed to load sprite sheet ->",texture->data.path.c_str());
     }
     if (sprite_sheet) SDL_FreeSurface(sprite_sheet);
     if (temp_surface) SDL_FreeSurface(temp_surface);
@@ -323,8 +321,53 @@ bool texture_manager_class::load_sprite_sheet(texture_type *texture, int width_s
 
 bool texture_manager_class::load_string(texture_type *texture)
 {
-    int need_to_implement;
-    return (NULL);
+    if (texture->data.text.font == NULL) texture->data.text.font = game.font_manager.root;
+    bool return_value   = false;
+    if ((texture->data.text.text_string.length() > 0) && (texture->data.text.font != NULL))
+    {
+        GLint           number_of_colors;
+        SDL_Surface    *image_surface  = NULL;
+        GLenum          texture_format = 0;
+        texture->data.frame_max        = 0;
+        texture->data.frame            = new frame_type[texture->data.frame_max+1];
+        const char *write_data = texture->data.text.text_string.c_str();
+        SDL_Color font_color = {texture->data.text.color.b,texture->data.text.color.g,texture->data.text.color.r,texture->data.text.color.a};
+        if ((image_surface = TTF_RenderUTF8_Blended(texture->data.text.font->font_data,write_data,font_color)))
+        {
+            return_value = true;
+            number_of_colors = image_surface->format->BytesPerPixel;
+            if (number_of_colors == 4)
+            {
+                if (image_surface->format->Rmask == 0x000000ff) texture_format = GL_RGBA;
+                else texture_format = GL_BGRA;
+            }
+            else if (number_of_colors == 3)
+            {
+                if (image_surface->format->Rmask == 0x000000ff) texture_format = GL_RGB;
+                else texture_format = GL_BGR;
+            }
+            glGenTextures  (1, &texture->data.frame[texture->data.frame_number].data);
+            glBindTexture  (GL_TEXTURE_2D, texture->data.frame[texture->data.frame_number].data);
+            glEnable       (GL_BLEND);
+            glBlendFunc    (GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+            glPixelStorei  (GL_UNPACK_ALIGNMENT, 1);
+            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+            glTexEnvf      (GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
+            glTexImage2D   (GL_TEXTURE_2D, 0, number_of_colors, image_surface->w, image_surface->h, 0, texture_format, GL_UNSIGNED_BYTE, image_surface->pixels);
+        }
+        else
+        {
+            return_value = false;
+            if (image_surface) SDL_FreeSurface(image_surface);
+            game.core.log.file_write("Failed to load string ->",texture->data.text.text_string.c_str());
+        }
+        if (image_surface) SDL_FreeSurface(image_surface);
+        texture->data.loaded = return_value;
+    }
+    return(return_value);
 };
 
 void texture_manager_class::bind_image(texture_type *texture)

@@ -29,6 +29,7 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 #include <string>
+#include "font_manager.hpp"
 
 #define GL_BGR  0x80E0
 #define GL_BGRA 0x80E1
@@ -47,11 +48,26 @@ struct frame_type
     GLuint    data;
 };
 
+struct text_color_type
+{
+    Uint8 r;
+    Uint8 g;
+    Uint8 b;
+    Uint8 a;
+};
+
+struct text_data_type
+{
+    std::string      text_string;
+    text_color_type  color;
+    int              font_size;
+    font_type*       font;
+};
+
 struct texture_data_type
 {
     bool             loaded;
     int              texture_flag;
-    std::string      text_string;
     std::string      path;
     int              width;
     int              height;
@@ -65,6 +81,7 @@ struct texture_data_type
     int              frame_number;
     int              frame_max;
     frame_type*      frame;
+    text_data_type   text;
 };
 
 struct texture_type
