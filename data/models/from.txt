@@ -41,4 +41,15 @@ http://opengameart.org/content/fireicestone-golem
 Author: umask007
 License(s): CC-BY 3.0 CC-BY-SA 3.0
 
+data/models/NPCs/new_thin_zombie.blend
+-------------------------------------
+http://opengameart.org/content/thin-zombie-awake-zombie-asset
+Author: Rosswet Mobile
+License(s): CC-BY 3.0
+
+
+
+
+
+
 
