@@ -188,7 +188,7 @@ void game_class::init(void)
     UI_form_pointer->data.element[element_number].quantity       = 1;
     UI_form_pointer->data.element[element_number].texture.normal = temp_item_pointer->data.image;
 
-    game.render_text = game.texture_manager.add_texture(game.font_manager.root,"Pre-rendered, improved rendering, texture buffered text.",1.6f,0,0,TEXTURE_STRING);
+    game.render_text = game.texture_manager.add_texture(game.font_manager.root,"Awesome new font system!",1.6f,0,0,TEXTURE_STRING);
 };
 
 void game_class::process(void)
