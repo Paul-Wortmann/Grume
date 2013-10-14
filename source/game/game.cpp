@@ -496,7 +496,5 @@ void game_class::render(void)
     glLightModelfv(GL_LIGHT_MODEL_AMBIENT,global_ambient_light);
     game.UI_manager.render();
     game.texture_manager.draw(game.render_text,false,0,0,0,game.render_text->data.width,game.render_text->data.height);
-    game.core.log.file_write("Render_text width  -> ",game.render_text->data.width);
-    game.core.log.file_write("Render_text height -> ",game.render_text->data.height);
 };
 

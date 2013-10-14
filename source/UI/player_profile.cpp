@@ -76,9 +76,9 @@ void setup_player_profile(int UID)
     UI_form_pointer->data.zoom.maximum            = 0.02f;
     UI_form_pointer->data.zoom.speed              = 0.004f;
     UI_form_pointer->data.texture.angle           = 0.0f;
-    UI_form_pointer->data.title.text              = "";
-    UI_form_pointer->data.title.size.x            = UI_form_pointer->data.title.text.length()/1.2f;
-    UI_form_pointer->data.title.size.y            = UI_form_pointer->data.title.size.x*4;
+    UI_form_pointer->data.title.text              = NULL;
+    UI_form_pointer->data.title.size.x            = 0;//UI_form_pointer->data.title.text.length()/1.2f;
+    UI_form_pointer->data.title.size.y            = 0;//UI_form_pointer->data.title.size.x*4;
     UI_form_pointer->data.title.position.x        = UI_form_pointer->data.position.x - (UI_form_pointer->data.title.size.x/100.0f);
     UI_form_pointer->data.title.position.y        = UI_form_pointer->data.position.y + (UI_form_pointer->data.size.y/2.0f) - (UI_form_pointer->data.title.size.y / 440.0f);
     UI_form_pointer->data.title_bar.size.x        = UI_form_pointer->data.size.x; // x/2.0f for middle section
@@ -105,7 +105,7 @@ void setup_player_profile(int UID)
         UI_form_pointer->data.element[element_count].position.y                     = 0.0f;
         UI_form_pointer->data.element[element_count].position.z                     = 0.0f;
         UI_form_pointer->data.element[element_count].title.enabled                  = false;
-        UI_form_pointer->data.element[element_count].title.text                     = "";
+        UI_form_pointer->data.element[element_count].title.text                     = NULL;
         UI_form_pointer->data.element[element_count].title.position.x               = 0.0f;
         UI_form_pointer->data.element[element_count].title.position.y               = 0.0f;
         UI_form_pointer->data.element[element_count].title.position.z               = 0.0f;
@@ -113,7 +113,7 @@ void setup_player_profile(int UID)
         UI_form_pointer->data.element[element_count].title.size.y                   = 0.0f;
         UI_form_pointer->data.element[element_count].title.size.z                   = 0.0f;
         UI_form_pointer->data.element[element_count].tooltip.enabled                = false;
-        UI_form_pointer->data.element[element_count].tooltip.text                   = "";
+        UI_form_pointer->data.element[element_count].tooltip.text                   = NULL;
         UI_form_pointer->data.element[element_count].tooltip.position.x             = 0.0f;
         UI_form_pointer->data.element[element_count].tooltip.position.y             = 0.0f;
         UI_form_pointer->data.element[element_count].tooltip.position.z             = 0.0f;
@@ -158,13 +158,13 @@ void setup_player_profile(int UID)
     element_number = 0; //--- Player profile image ---
     UI_form_pointer->data.element[element_number].window_UID                = UI_form_pointer->data.UID;
     UI_form_pointer->data.element[element_number].element_UID               = element_number;
-    UI_form_pointer->data.element[element_number].title.text                = "";
+    UI_form_pointer->data.element[element_number].title.text                = NULL;
     UI_form_pointer->data.element[element_number].title.enabled             = false;
     UI_form_pointer->data.element[element_number].active                    = true;
     UI_form_pointer->data.element[element_number].type                      = IMAGE;
     UI_form_pointer->data.element[element_number].zoom.enabled              = false;
     UI_form_pointer->data.element[element_number].tooltip.enabled           = true;
-    UI_form_pointer->data.element[element_number].tooltip.text              = "Not Set";
+    UI_form_pointer->data.element[element_number].tooltip.text              = NULL;
     UI_form_pointer->data.element[element_number].tooltip.size.x            = 12.0f;
     UI_form_pointer->data.element[element_number].tooltip.size.y            = 30.0f;
     UI_form_pointer->data.element[element_number].color                     = UI_form_pointer->data.color;
@@ -180,7 +180,7 @@ void setup_player_profile(int UID)
     element_number = 1; //--- Player profile bar background ---
     UI_form_pointer->data.element[element_number].window_UID                = UI_form_pointer->data.UID;
     UI_form_pointer->data.element[element_number].element_UID               = element_number;
-    UI_form_pointer->data.element[element_number].title.text                = "";
+    UI_form_pointer->data.element[element_number].title.text                = NULL;
     UI_form_pointer->data.element[element_number].title.enabled             = false;
     UI_form_pointer->data.element[element_number].active                    = true;
     UI_form_pointer->data.element[element_number].type                      = IMAGE;
@@ -199,7 +199,7 @@ void setup_player_profile(int UID)
     element_number = 2; //--- Player health bar ---
     UI_form_pointer->data.element[element_number].window_UID                = UI_form_pointer->data.UID;
     UI_form_pointer->data.element[element_number].element_UID               = element_number;
-    UI_form_pointer->data.element[element_number].title.text                = "";
+    UI_form_pointer->data.element[element_number].title.text                = NULL;
     UI_form_pointer->data.element[element_number].title.enabled             = false;
     UI_form_pointer->data.element[element_number].active                    = true;
     UI_form_pointer->data.element[element_number].type                      = BAR;
@@ -207,7 +207,7 @@ void setup_player_profile(int UID)
     UI_form_pointer->data.element[element_number].value_max                 = 100;
     UI_form_pointer->data.element[element_number].zoom.enabled              = false;
     UI_form_pointer->data.element[element_number].tooltip.enabled           = true;
-    UI_form_pointer->data.element[element_number].tooltip.text              = "0%";
+    UI_form_pointer->data.element[element_number].tooltip.text              = game.texture_manager.add_texture(game.font_manager.root,"0%",1.6f,0,0,TEXTURE_STRING);
     UI_form_pointer->data.element[element_number].tooltip.size.x            = 12.0f;
     UI_form_pointer->data.element[element_number].tooltip.size.y            = 30.0f;
     UI_form_pointer->data.element[element_number].color                     = UI_form_pointer->data.color;
@@ -223,7 +223,7 @@ void setup_player_profile(int UID)
     element_number = 3; //--- Player mana bar ---
     UI_form_pointer->data.element[element_number].window_UID                = UI_form_pointer->data.UID;
     UI_form_pointer->data.element[element_number].element_UID               = element_number;
-    UI_form_pointer->data.element[element_number].title.text                = "";
+    UI_form_pointer->data.element[element_number].title.text                = NULL;
     UI_form_pointer->data.element[element_number].title.enabled             = false;
     UI_form_pointer->data.element[element_number].active                    = true;
     UI_form_pointer->data.element[element_number].type                      = BAR;
@@ -231,7 +231,7 @@ void setup_player_profile(int UID)
     UI_form_pointer->data.element[element_number].value_max                 = 100;
     UI_form_pointer->data.element[element_number].zoom.enabled              = false;
     UI_form_pointer->data.element[element_number].tooltip.enabled           = true;
-    UI_form_pointer->data.element[element_number].tooltip.text              = "0%";
+    UI_form_pointer->data.element[element_number].tooltip.text              = game.texture_manager.add_texture(game.font_manager.root,"0%",1.6f,0,0,TEXTURE_STRING);
     UI_form_pointer->data.element[element_number].tooltip.size.x            = 12.0f;
     UI_form_pointer->data.element[element_number].tooltip.size.y            = 30.0f;
     UI_form_pointer->data.element[element_number].color                     = UI_form_pointer->data.color;
@@ -247,7 +247,7 @@ void setup_player_profile(int UID)
     element_number = 4; //--- Player profile bar foreground ---
     UI_form_pointer->data.element[element_number].window_UID                = UI_form_pointer->data.UID;
     UI_form_pointer->data.element[element_number].element_UID               = element_number;
-    UI_form_pointer->data.element[element_number].title.text                = "";
+    UI_form_pointer->data.element[element_number].title.text                = NULL;
     UI_form_pointer->data.element[element_number].title.enabled             = false;
     UI_form_pointer->data.element[element_number].active                    = true;
     UI_form_pointer->data.element[element_number].type                      = IMAGE;
@@ -279,7 +279,7 @@ void update_player_profile(UI_form_struct *UI_form_pointer)
 void process_player_profile(UI_form_struct *UI_form_pointer)
 {
     int element_number = 0; //--- Player name ---
-    UI_form_pointer->data.element[element_number].tooltip.text = game.player.name;
+    UI_form_pointer->data.element[element_number].tooltip.text = game.texture_manager.add_texture(game.font_manager.root,game.player.name,1.6f,0,0,TEXTURE_STRING);
     //Update the health and mana bars.
     std::string temp_string = "";
     element_number = 2; //--- Player health bar ---
@@ -289,7 +289,7 @@ void process_player_profile(UI_form_struct *UI_form_pointer)
     if (game.player.health.current >  9) temp_string += ' ';
     if (game.player.health.current > 99) temp_string += ' ';
     temp_string += "    ";
-    UI_form_pointer->data.element[element_number].tooltip.text = temp_string;
+    UI_form_pointer->data.element[element_number].tooltip.text = game.texture_manager.add_texture(game.font_manager.root,temp_string,1.6f,0,0,TEXTURE_STRING);
     element_number     = 3; //--- Player mana bar ---
     UI_form_pointer->data.element[element_number].value = game.player.mana.current;
     temp_string  = int_to_string(game.player.mana.current);
@@ -297,7 +297,7 @@ void process_player_profile(UI_form_struct *UI_form_pointer)
     if (game.player.mana.current >  9) temp_string += ' ';
     if (game.player.mana.current > 99) temp_string += ' ';
     temp_string += "    ";
-    UI_form_pointer->data.element[element_number].tooltip.text = temp_string;
+    UI_form_pointer->data.element[element_number].tooltip.text = game.texture_manager.add_texture(game.font_manager.root,temp_string,1.6f,0,0,TEXTURE_STRING);
     if(UI_form_pointer->data.event.id > EVENT_NONE)
     {
         switch (UI_form_pointer->data.event.id)

@@ -71,7 +71,7 @@ struct location_struct
     f3_type                 image_size;
     f3_type                 position;
     f3_type                 size;
-    std::string             text;
+    texture_type*           text;
 };
 
 struct zoom_struct
@@ -133,7 +133,7 @@ struct selection_data_type
     bool          active;
     texture_type* image;
     int           value_int;
-    std::string   value_string;
+    texture_type* value_string;
 };
 
 

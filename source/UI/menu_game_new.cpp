@@ -74,10 +74,10 @@ void setup_menu_game_new(int UID)
     UI_form_pointer->data.zoom.maximum            = 0.02f;
     UI_form_pointer->data.zoom.speed              = 0.004f;
     UI_form_pointer->data.texture.angle           = 0.0f;
-    UI_form_pointer->data.title.text              = "New Game";
+    UI_form_pointer->data.title.text              = game.texture_manager.add_texture(game.font_manager.root,"New Game",1.6f,0,0,TEXTURE_STRING);
     UI_form_pointer->data.title.enabled           = true;
-    UI_form_pointer->data.title.size.x            = UI_form_pointer->data.title.text.length()/1.2f;
-    UI_form_pointer->data.title.size.y            = UI_form_pointer->data.title.size.x*4;
+    UI_form_pointer->data.title.size.x            = 0;//UI_form_pointer->data.title.text.length()/1.2f;
+    UI_form_pointer->data.title.size.y            = 0;//UI_form_pointer->data.title.size.x*4;
     UI_form_pointer->data.title.position.x        = UI_form_pointer->data.position.x - (UI_form_pointer->data.title.size.x/100.0f);
     UI_form_pointer->data.title.position.y        = UI_form_pointer->data.position.y + (UI_form_pointer->data.size.y/2.0f) - (UI_form_pointer->data.title.size.y / 380.0f);
     UI_form_pointer->data.title_bar.size.x        = UI_form_pointer->data.size.x; // x/2.0f for middle section
@@ -104,7 +104,7 @@ void setup_menu_game_new(int UID)
         UI_form_pointer->data.element[element_count].position.y                     = 0.0f;
         UI_form_pointer->data.element[element_count].position.z                     = 0.0f;
         UI_form_pointer->data.element[element_count].title.enabled                  = false;
-        UI_form_pointer->data.element[element_count].title.text                     = "";
+        UI_form_pointer->data.element[element_count].title.text                     = NULL;
         UI_form_pointer->data.element[element_count].title.position.x               = 0.0f;
         UI_form_pointer->data.element[element_count].title.position.y               = 0.0f;
         UI_form_pointer->data.element[element_count].title.position.z               = 0.0f;
@@ -112,7 +112,7 @@ void setup_menu_game_new(int UID)
         UI_form_pointer->data.element[element_count].title.size.y                   = 0.0f;
         UI_form_pointer->data.element[element_count].title.size.z                   = 0.0f;
         UI_form_pointer->data.element[element_count].tooltip.enabled                = false;
-        UI_form_pointer->data.element[element_count].tooltip.text                   = "";
+        UI_form_pointer->data.element[element_count].tooltip.text                   = NULL;
         UI_form_pointer->data.element[element_count].tooltip.position.x             = 0.0f;
         UI_form_pointer->data.element[element_count].tooltip.position.y             = 0.0f;
         UI_form_pointer->data.element[element_count].tooltip.position.z             = 0.0f;
@@ -157,7 +157,7 @@ void setup_menu_game_new(int UID)
     element_number = 0; //--- Close button ---
     UI_form_pointer->data.element[element_number].window_UID                = UI_form_pointer->data.UID;
     UI_form_pointer->data.element[element_number].element_UID               = element_number;
-    UI_form_pointer->data.element[element_number].title.text                = "";
+    UI_form_pointer->data.element[element_number].title.text                = NULL;
     UI_form_pointer->data.element[element_number].title.enabled             = false;
     UI_form_pointer->data.element[element_number].active                    = true;
     UI_form_pointer->data.element[element_number].type                      = BUTTON;
@@ -177,7 +177,7 @@ void setup_menu_game_new(int UID)
     element_number = 1; //--- Main menu button ---
     UI_form_pointer->data.element[element_number].window_UID                = UI_form_pointer->data.UID;
     UI_form_pointer->data.element[element_number].element_UID               = element_number;
-    UI_form_pointer->data.element[element_number].title.text                = "Main Menu";
+    UI_form_pointer->data.element[element_number].title.text                = game.texture_manager.add_texture(game.font_manager.root,"Main Menu",1.6f,0,0,TEXTURE_STRING);
     UI_form_pointer->data.element[element_number].title.enabled             = true;
     UI_form_pointer->data.element[element_number].active                    = true;
     UI_form_pointer->data.element[element_number].type                      = BUTTON;
@@ -189,8 +189,8 @@ void setup_menu_game_new(int UID)
     UI_form_pointer->data.element[element_number].position.x                = UI_form_pointer->data.position.x;
     UI_form_pointer->data.element[element_number].position.y                = UI_form_pointer->data.position.y+(UI_form_pointer->data.size.y/2.0f)-(UI_form_pointer->data.element[element_number].size.y*9.0f);
     UI_form_pointer->data.element[element_number].texture                   = UI_form_pointer->data.texture;
-    UI_form_pointer->data.element[element_number].title.size.x              = UI_form_pointer->data.element[element_number].title.text.length()/1.2f;
-    UI_form_pointer->data.element[element_number].title.size.y              = UI_form_pointer->data.element[element_number].title.size.x*4;;
+    UI_form_pointer->data.element[element_number].title.size.x              = 0;//UI_form_pointer->data.element[element_number].title.text.length()/1.2f;
+    UI_form_pointer->data.element[element_number].title.size.y              = 0;//UI_form_pointer->data.element[element_number].title.size.x*4;;
     UI_form_pointer->data.element[element_number].title.position.x          = UI_form_pointer->data.element[element_number].position.x-(UI_form_pointer->data.element[element_number].title.size.x/100.0f);
     UI_form_pointer->data.element[element_number].title.position.y          = UI_form_pointer->data.element[element_number].position.y-(UI_form_pointer->data.element[element_number].title.size.y/1480.0f);
     UI_form_pointer->data.element[element_number].sound                     = UI_form_pointer->data.sound;
@@ -200,7 +200,7 @@ void setup_menu_game_new(int UID)
     element_number = 2; //--- Start game menu button ---
     UI_form_pointer->data.element[element_number].window_UID                = UI_form_pointer->data.UID;
     UI_form_pointer->data.element[element_number].element_UID               = element_number;
-    UI_form_pointer->data.element[element_number].title.text                = "Start Game";
+    UI_form_pointer->data.element[element_number].title.text                = game.texture_manager.add_texture(game.font_manager.root,"Start Game",1.6f,0,0,TEXTURE_STRING);
     UI_form_pointer->data.element[element_number].title.enabled             = true;
     UI_form_pointer->data.element[element_number].active                    = true;
     UI_form_pointer->data.element[element_number].type                      = BUTTON;
@@ -212,8 +212,8 @@ void setup_menu_game_new(int UID)
     UI_form_pointer->data.element[element_number].position.x                = UI_form_pointer->data.position.x;
     UI_form_pointer->data.element[element_number].position.y                = UI_form_pointer->data.position.y+(UI_form_pointer->data.size.y/2.0f)-(UI_form_pointer->data.element[element_number].size.y*7.5f);
     UI_form_pointer->data.element[element_number].texture                   = UI_form_pointer->data.texture;
-    UI_form_pointer->data.element[element_number].title.size.x              = UI_form_pointer->data.element[element_number].title.text.length()/1.2f;
-    UI_form_pointer->data.element[element_number].title.size.y              = UI_form_pointer->data.element[element_number].title.size.x*4;;
+    UI_form_pointer->data.element[element_number].title.size.x              = 0;//UI_form_pointer->data.element[element_number].title.text.length()/1.2f;
+    UI_form_pointer->data.element[element_number].title.size.y              = 0;//UI_form_pointer->data.element[element_number].title.size.x*4;;
     UI_form_pointer->data.element[element_number].title.position.x          = UI_form_pointer->data.element[element_number].position.x-(UI_form_pointer->data.element[element_number].title.size.x/100.0f);
     UI_form_pointer->data.element[element_number].title.position.y          = UI_form_pointer->data.element[element_number].position.y-(UI_form_pointer->data.element[element_number].title.size.y/1480.0f);
     UI_form_pointer->data.element[element_number].sound                     = UI_form_pointer->data.sound;
@@ -234,7 +234,7 @@ void setup_menu_game_new(int UID)
         {
             UI_form_pointer->data.choice_selection[choice_selection_count].data[data_count].active       = false;
             UI_form_pointer->data.choice_selection[choice_selection_count].data[data_count].value_int    = 0;
-            UI_form_pointer->data.choice_selection[choice_selection_count].data[data_count].value_string = "";
+            UI_form_pointer->data.choice_selection[choice_selection_count].data[data_count].value_string = NULL;
         }
     }
     int choice_selection_number = 0;
@@ -266,7 +266,7 @@ void setup_menu_game_new(int UID)
     element_number = 3; // left arrow button for player portrait selection
     UI_form_pointer->data.element[element_number].window_UID                = UI_form_pointer->data.UID;
     UI_form_pointer->data.element[element_number].element_UID               = element_number;
-    UI_form_pointer->data.element[element_number].title.text                = "";
+    UI_form_pointer->data.element[element_number].title.text                = NULL;
     UI_form_pointer->data.element[element_number].active                    = true;
     UI_form_pointer->data.element[element_number].type                      = BUTTON;
     UI_form_pointer->data.element[element_number].color                     = UI_form_pointer->data.color;
@@ -281,8 +281,8 @@ void setup_menu_game_new(int UID)
     UI_form_pointer->data.element[element_number].texture.highlighted       = game.texture_manager.add_texture("data/textures/UI/menu/arrow_highlighted.png");
     UI_form_pointer->data.element[element_number].texture.disabled          = game.texture_manager.add_texture("data/textures/UI/menu/arrow_disabled.png");
     UI_form_pointer->data.element[element_number].texture.angle             = 0.0f;
-    UI_form_pointer->data.element[element_number].title.size.x              = UI_form_pointer->data.element[element_number].title.text.length()/1.2f;
-    UI_form_pointer->data.element[element_number].title.size.y              = UI_form_pointer->data.element[element_number].title.size.x*4;;
+    UI_form_pointer->data.element[element_number].title.size.x              = 0;//UI_form_pointer->data.element[element_number].title.text.length()/1.2f;
+    UI_form_pointer->data.element[element_number].title.size.y              = 0;//UI_form_pointer->data.element[element_number].title.size.x*4;;
     UI_form_pointer->data.element[element_number].title.position.x          = UI_form_pointer->data.element[element_number].position.x-(UI_form_pointer->data.element[element_number].title.size.x/100.0f);
     UI_form_pointer->data.element[element_number].title.position.y          = UI_form_pointer->data.element[element_number].position.y-(UI_form_pointer->data.element[element_number].title.size.y/1480.0f);
     UI_form_pointer->data.element[element_number].sound                     = UI_form_pointer->data.sound;
@@ -292,7 +292,7 @@ void setup_menu_game_new(int UID)
     element_number = 4; // Right arrow button for player portrait selection
     UI_form_pointer->data.element[element_number].window_UID                = UI_form_pointer->data.UID;
     UI_form_pointer->data.element[element_number].element_UID               = element_number;
-    UI_form_pointer->data.element[element_number].title.text                = "";
+    UI_form_pointer->data.element[element_number].title.text                = NULL;
     UI_form_pointer->data.element[element_number].active                    = true;
     UI_form_pointer->data.element[element_number].type                      = BUTTON;
     UI_form_pointer->data.element[element_number].color                     = UI_form_pointer->data.color;
@@ -307,8 +307,8 @@ void setup_menu_game_new(int UID)
     UI_form_pointer->data.element[element_number].texture.highlighted       = game.texture_manager.add_texture("data/textures/UI/menu/arrow_highlighted.png");
     UI_form_pointer->data.element[element_number].texture.disabled          = game.texture_manager.add_texture("data/textures/UI/menu/arrow_disabled.png");
     UI_form_pointer->data.element[element_number].texture.angle             = 180.0f;
-    UI_form_pointer->data.element[element_number].title.size.x              = UI_form_pointer->data.element[element_number].title.text.length()/1.2f;
-    UI_form_pointer->data.element[element_number].title.size.y              = UI_form_pointer->data.element[element_number].title.size.x*4;;
+    UI_form_pointer->data.element[element_number].title.size.x              = 0;//UI_form_pointer->data.element[element_number].title.text.length()/1.2f;
+    UI_form_pointer->data.element[element_number].title.size.y              = 0;//UI_form_pointer->data.element[element_number].title.size.x*4;;
     UI_form_pointer->data.element[element_number].title.position.x          = UI_form_pointer->data.element[element_number].position.x-(UI_form_pointer->data.element[element_number].title.size.x/100.0f);
     UI_form_pointer->data.element[element_number].title.position.y          = UI_form_pointer->data.element[element_number].position.y-(UI_form_pointer->data.element[element_number].title.size.y/1480.0f);
     UI_form_pointer->data.element[element_number].sound                     = UI_form_pointer->data.sound;
@@ -318,7 +318,7 @@ void setup_menu_game_new(int UID)
     element_number = 5; // Image 0 of the player portrait selection
     UI_form_pointer->data.element[element_number].window_UID                = UI_form_pointer->data.UID;
     UI_form_pointer->data.element[element_number].element_UID               = element_number;
-    UI_form_pointer->data.element[element_number].title.text                = "";
+    UI_form_pointer->data.element[element_number].title.text                = NULL;
     UI_form_pointer->data.element[element_number].selected                  = true;
     UI_form_pointer->data.element[element_number].active                    = true;
     UI_form_pointer->data.element[element_number].type                      = IMAGE;
@@ -338,7 +338,7 @@ void setup_menu_game_new(int UID)
     element_number = 6; // Image 1 of the player portrait selection
     UI_form_pointer->data.element[element_number].window_UID                = UI_form_pointer->data.UID;
     UI_form_pointer->data.element[element_number].element_UID               = element_number;
-    UI_form_pointer->data.element[element_number].title.text                = "";
+    UI_form_pointer->data.element[element_number].title.text                = NULL;
     UI_form_pointer->data.element[element_number].selected                  = false;
     UI_form_pointer->data.element[element_number].active                    = true;
     UI_form_pointer->data.element[element_number].type                      = IMAGE;
@@ -358,7 +358,7 @@ void setup_menu_game_new(int UID)
     element_number = 7; // Image 2 of the player portrait selection
     UI_form_pointer->data.element[element_number].window_UID                = UI_form_pointer->data.UID;
     UI_form_pointer->data.element[element_number].element_UID               = element_number;
-    UI_form_pointer->data.element[element_number].title.text                = "";
+    UI_form_pointer->data.element[element_number].title.text                = NULL;
     UI_form_pointer->data.element[element_number].selected                  = false;
     UI_form_pointer->data.element[element_number].active                    = true;
     UI_form_pointer->data.element[element_number].type                      = IMAGE;
@@ -378,7 +378,7 @@ void setup_menu_game_new(int UID)
     element_number = 8; // Image 3 of the player portrait selection
     UI_form_pointer->data.element[element_number].window_UID                = UI_form_pointer->data.UID;
     UI_form_pointer->data.element[element_number].element_UID               = element_number;
-    UI_form_pointer->data.element[element_number].title.text                = "";
+    UI_form_pointer->data.element[element_number].title.text                = NULL;
     UI_form_pointer->data.element[element_number].selected                  = false;
     UI_form_pointer->data.element[element_number].active                    = true;
     UI_form_pointer->data.element[element_number].type                      = IMAGE;
@@ -398,7 +398,7 @@ void setup_menu_game_new(int UID)
     element_number = 9; // Image 4 of the player portrait selection
     UI_form_pointer->data.element[element_number].window_UID                = UI_form_pointer->data.UID;
     UI_form_pointer->data.element[element_number].element_UID               = element_number;
-    UI_form_pointer->data.element[element_number].title.text                = "";
+    UI_form_pointer->data.element[element_number].title.text                = NULL;
     UI_form_pointer->data.element[element_number].selected                  = false;
     UI_form_pointer->data.element[element_number].active                    = true;
     UI_form_pointer->data.element[element_number].type                      = IMAGE;

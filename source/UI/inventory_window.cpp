@@ -74,10 +74,10 @@ void setup_inventory_window(int UID)
     UI_form_pointer->data.zoom.maximum            = 0.02f;
     UI_form_pointer->data.zoom.speed              = 0.004f;
     UI_form_pointer->data.texture.angle           = 0.0f;
-    UI_form_pointer->data.title.text              = "Inventory";
+    UI_form_pointer->data.title.text              = game.texture_manager.add_texture(game.font_manager.root,"Inventory",1.6f,0,0,TEXTURE_STRING);
     UI_form_pointer->data.title.enabled           = true;
-    UI_form_pointer->data.title.size.x            = UI_form_pointer->data.title.text.length()/1.2f;
-    UI_form_pointer->data.title.size.y            = UI_form_pointer->data.title.size.x*4;
+    UI_form_pointer->data.title.size.x            = 0;//UI_form_pointer->data.title.text.length()/1.2f;
+    UI_form_pointer->data.title.size.y            = 0;//UI_form_pointer->data.title.size.x*4;
     UI_form_pointer->data.title.position.x        = UI_form_pointer->data.position.x - (UI_form_pointer->data.title.size.x/100.0f);
     UI_form_pointer->data.title.position.y        = UI_form_pointer->data.position.y + (UI_form_pointer->data.size.y/2.0f) - (UI_form_pointer->data.title.size.y / 380.0f);
     UI_form_pointer->data.title_bar.size.x        = UI_form_pointer->data.size.x; // x/2.0f for middle section
@@ -104,7 +104,7 @@ void setup_inventory_window(int UID)
         UI_form_pointer->data.element[element_count].position.y                     = 0.0f;
         UI_form_pointer->data.element[element_count].position.z                     = 0.0f;
         UI_form_pointer->data.element[element_count].title.enabled                  = false;
-        UI_form_pointer->data.element[element_count].title.text                     = "";
+        UI_form_pointer->data.element[element_count].title.text                     = NULL;
         UI_form_pointer->data.element[element_count].title.position.x               = 0.0f;
         UI_form_pointer->data.element[element_count].title.position.y               = 0.0f;
         UI_form_pointer->data.element[element_count].title.position.z               = 0.0f;
@@ -112,7 +112,7 @@ void setup_inventory_window(int UID)
         UI_form_pointer->data.element[element_count].title.size.y                   = 0.0f;
         UI_form_pointer->data.element[element_count].title.size.z                   = 0.0f;
         UI_form_pointer->data.element[element_count].tooltip.enabled                = false;
-        UI_form_pointer->data.element[element_count].tooltip.text                   = "";
+        UI_form_pointer->data.element[element_count].tooltip.text                   = NULL;
         UI_form_pointer->data.element[element_count].tooltip.position.x             = 0.0f;
         UI_form_pointer->data.element[element_count].tooltip.position.y             = 0.0f;
         UI_form_pointer->data.element[element_count].tooltip.position.z             = 0.0f;
@@ -157,7 +157,7 @@ void setup_inventory_window(int UID)
     element_number = 0; //--- Close button ---
     UI_form_pointer->data.element[element_number].window_UID                  = UI_form_pointer->data.UID;
     UI_form_pointer->data.element[element_number].element_UID                 = element_number;
-    UI_form_pointer->data.element[element_number].title.text                  = "";
+    UI_form_pointer->data.element[element_number].title.text                  = NULL;
     UI_form_pointer->data.element[element_number].title.enabled               = false;
     UI_form_pointer->data.element[element_number].active                      = true;
     UI_form_pointer->data.element[element_number].type                        = BUTTON;
@@ -176,7 +176,7 @@ void setup_inventory_window(int UID)
     element_number = 1; //--- Inventory cell
     UI_form_pointer->data.element[element_number].window_UID                  = UI_form_pointer->data.UID;
     UI_form_pointer->data.element[element_number].element_UID                 = element_number;
-    UI_form_pointer->data.element[element_number].title.text                  = "";
+    UI_form_pointer->data.element[element_number].title.text                  = NULL;
     UI_form_pointer->data.element[element_number].title.enabled               = false;
     UI_form_pointer->data.element[element_number].dragable                    = true;
     UI_form_pointer->data.element[element_number].active                      = true;
@@ -197,7 +197,7 @@ void setup_inventory_window(int UID)
     element_number = 2; //--- Inventory cell
     UI_form_pointer->data.element[element_number].window_UID                  = UI_form_pointer->data.UID;
     UI_form_pointer->data.element[element_number].element_UID                 = element_number;
-    UI_form_pointer->data.element[element_number].title.text                  = "";
+    UI_form_pointer->data.element[element_number].title.text                  = NULL;
     UI_form_pointer->data.element[element_number].title.enabled               = false;
     UI_form_pointer->data.element[element_number].dragable                    = true;
     UI_form_pointer->data.element[element_number].active                      = true;
@@ -218,7 +218,7 @@ void setup_inventory_window(int UID)
     element_number = 3; //--- Inventory cell
     UI_form_pointer->data.element[element_number].window_UID                  = UI_form_pointer->data.UID;
     UI_form_pointer->data.element[element_number].element_UID                 = element_number;
-    UI_form_pointer->data.element[element_number].title.text                  = "";
+    UI_form_pointer->data.element[element_number].title.text                  = NULL;
     UI_form_pointer->data.element[element_number].title.enabled               = false;
     UI_form_pointer->data.element[element_number].dragable                    = true;
     UI_form_pointer->data.element[element_number].active                      = true;
@@ -239,7 +239,7 @@ void setup_inventory_window(int UID)
     element_number = 4; //--- Inventory cell
     UI_form_pointer->data.element[element_number].window_UID                  = UI_form_pointer->data.UID;
     UI_form_pointer->data.element[element_number].element_UID                 = element_number;
-    UI_form_pointer->data.element[element_number].title.text                  = "";
+    UI_form_pointer->data.element[element_number].title.text                  = NULL;
     UI_form_pointer->data.element[element_number].title.enabled               = false;
     UI_form_pointer->data.element[element_number].dragable                    = true;
     UI_form_pointer->data.element[element_number].active                      = true;
@@ -260,7 +260,7 @@ void setup_inventory_window(int UID)
     element_number = 5; //--- Inventory cell
     UI_form_pointer->data.element[element_number].window_UID                  = UI_form_pointer->data.UID;
     UI_form_pointer->data.element[element_number].element_UID                 = element_number;
-    UI_form_pointer->data.element[element_number].title.text                  = "";
+    UI_form_pointer->data.element[element_number].title.text                  = NULL;
     UI_form_pointer->data.element[element_number].title.enabled               = false;
     UI_form_pointer->data.element[element_number].dragable                    = true;
     UI_form_pointer->data.element[element_number].active                      = true;
@@ -281,7 +281,7 @@ void setup_inventory_window(int UID)
     element_number = 6; //--- Inventory cell
     UI_form_pointer->data.element[element_number].window_UID                  = UI_form_pointer->data.UID;
     UI_form_pointer->data.element[element_number].element_UID                 = element_number;
-    UI_form_pointer->data.element[element_number].title.text                  = "";
+    UI_form_pointer->data.element[element_number].title.text                  = NULL;
     UI_form_pointer->data.element[element_number].title.enabled               = false;
     UI_form_pointer->data.element[element_number].dragable                    = true;
     UI_form_pointer->data.element[element_number].active                      = true;
@@ -303,7 +303,7 @@ void setup_inventory_window(int UID)
     element_number = 7; //--- Inventory cell
     UI_form_pointer->data.element[element_number].window_UID                  = UI_form_pointer->data.UID;
     UI_form_pointer->data.element[element_number].element_UID                 = element_number;
-    UI_form_pointer->data.element[element_number].title.text                  = "";
+    UI_form_pointer->data.element[element_number].title.text                  = NULL;
     UI_form_pointer->data.element[element_number].title.enabled               = false;
     UI_form_pointer->data.element[element_number].dragable                    = true;
     UI_form_pointer->data.element[element_number].active                      = true;
@@ -324,7 +324,7 @@ void setup_inventory_window(int UID)
     element_number = 8; //--- Inventory cell
     UI_form_pointer->data.element[element_number].window_UID                  = UI_form_pointer->data.UID;
     UI_form_pointer->data.element[element_number].element_UID                 = element_number;
-    UI_form_pointer->data.element[element_number].title.text                  = "";
+    UI_form_pointer->data.element[element_number].title.text                  = NULL;
     UI_form_pointer->data.element[element_number].title.enabled               = false;
     UI_form_pointer->data.element[element_number].dragable                    = true;
     UI_form_pointer->data.element[element_number].active                      = true;
@@ -345,7 +345,7 @@ void setup_inventory_window(int UID)
     element_number = 9; //--- Inventory cell
     UI_form_pointer->data.element[element_number].window_UID                  = UI_form_pointer->data.UID;
     UI_form_pointer->data.element[element_number].element_UID                 = element_number;
-    UI_form_pointer->data.element[element_number].title.text                  = "";
+    UI_form_pointer->data.element[element_number].title.text                  = NULL;
     UI_form_pointer->data.element[element_number].title.enabled               = false;
     UI_form_pointer->data.element[element_number].dragable                    = true;
     UI_form_pointer->data.element[element_number].active                      = true;
@@ -366,7 +366,7 @@ void setup_inventory_window(int UID)
     element_number = 10; //--- Inventory cell
     UI_form_pointer->data.element[element_number].window_UID                  = UI_form_pointer->data.UID;
     UI_form_pointer->data.element[element_number].element_UID                 = element_number;
-    UI_form_pointer->data.element[element_number].title.text                  = "";
+    UI_form_pointer->data.element[element_number].title.text                  = NULL;
     UI_form_pointer->data.element[element_number].title.enabled               = false;
     UI_form_pointer->data.element[element_number].dragable                    = true;
     UI_form_pointer->data.element[element_number].active                      = true;
@@ -387,7 +387,7 @@ void setup_inventory_window(int UID)
     element_number = 11; //--- Inventory cell
     UI_form_pointer->data.element[element_number].window_UID                  = UI_form_pointer->data.UID;
     UI_form_pointer->data.element[element_number].element_UID                 = element_number;
-    UI_form_pointer->data.element[element_number].title.text                  = "";
+    UI_form_pointer->data.element[element_number].title.text                  = NULL;
     UI_form_pointer->data.element[element_number].title.enabled               = false;
     UI_form_pointer->data.element[element_number].dragable                    = true;
     UI_form_pointer->data.element[element_number].active                      = true;
@@ -408,7 +408,7 @@ void setup_inventory_window(int UID)
     element_number = 12; //--- Inventory cell
     UI_form_pointer->data.element[element_number].window_UID                  = UI_form_pointer->data.UID;
     UI_form_pointer->data.element[element_number].element_UID                 = element_number;
-    UI_form_pointer->data.element[element_number].title.text                  = "";
+    UI_form_pointer->data.element[element_number].title.text                  = NULL;
     UI_form_pointer->data.element[element_number].title.enabled               = false;
     UI_form_pointer->data.element[element_number].dragable                    = true;
     UI_form_pointer->data.element[element_number].active                      = true;
@@ -430,7 +430,7 @@ void setup_inventory_window(int UID)
     element_number = 13; //--- Inventory cell
     UI_form_pointer->data.element[element_number].window_UID                  = UI_form_pointer->data.UID;
     UI_form_pointer->data.element[element_number].element_UID                 = element_number;
-    UI_form_pointer->data.element[element_number].title.text                  = "";
+    UI_form_pointer->data.element[element_number].title.text                  = NULL;
     UI_form_pointer->data.element[element_number].title.enabled               = false;
     UI_form_pointer->data.element[element_number].dragable                    = true;
     UI_form_pointer->data.element[element_number].active                      = true;
@@ -451,7 +451,7 @@ void setup_inventory_window(int UID)
     element_number = 14; //--- Inventory cell
     UI_form_pointer->data.element[element_number].window_UID                  = UI_form_pointer->data.UID;
     UI_form_pointer->data.element[element_number].element_UID                 = element_number;
-    UI_form_pointer->data.element[element_number].title.text                  = "";
+    UI_form_pointer->data.element[element_number].title.text                  = NULL;
     UI_form_pointer->data.element[element_number].title.enabled               = false;
     UI_form_pointer->data.element[element_number].dragable                    = true;
     UI_form_pointer->data.element[element_number].active                      = true;
@@ -472,7 +472,7 @@ void setup_inventory_window(int UID)
     element_number = 15; //--- Inventory cell
     UI_form_pointer->data.element[element_number].window_UID                  = UI_form_pointer->data.UID;
     UI_form_pointer->data.element[element_number].element_UID                 = element_number;
-    UI_form_pointer->data.element[element_number].title.text                  = "";
+    UI_form_pointer->data.element[element_number].title.text                  = NULL;
     UI_form_pointer->data.element[element_number].title.enabled               = false;
     UI_form_pointer->data.element[element_number].dragable                    = true;
     UI_form_pointer->data.element[element_number].active                      = true;
@@ -493,7 +493,7 @@ void setup_inventory_window(int UID)
     element_number = 16; //--- Inventory cell
     UI_form_pointer->data.element[element_number].window_UID                  = UI_form_pointer->data.UID;
     UI_form_pointer->data.element[element_number].element_UID                 = element_number;
-    UI_form_pointer->data.element[element_number].title.text                  = "";
+    UI_form_pointer->data.element[element_number].title.text                  = NULL;
     UI_form_pointer->data.element[element_number].title.enabled               = false;
     UI_form_pointer->data.element[element_number].dragable                    = true;
     UI_form_pointer->data.element[element_number].active                      = true;
@@ -514,7 +514,7 @@ void setup_inventory_window(int UID)
     element_number = 17; //--- Inventory cell
     UI_form_pointer->data.element[element_number].window_UID                  = UI_form_pointer->data.UID;
     UI_form_pointer->data.element[element_number].element_UID                 = element_number;
-    UI_form_pointer->data.element[element_number].title.text                  = "";
+    UI_form_pointer->data.element[element_number].title.text                  = NULL;
     UI_form_pointer->data.element[element_number].title.enabled               = false;
     UI_form_pointer->data.element[element_number].dragable                    = true;
     UI_form_pointer->data.element[element_number].active                      = true;
@@ -535,7 +535,7 @@ void setup_inventory_window(int UID)
     element_number = 18; //--- Inventory cell
     UI_form_pointer->data.element[element_number].window_UID                  = UI_form_pointer->data.UID;
     UI_form_pointer->data.element[element_number].element_UID                 = element_number;
-    UI_form_pointer->data.element[element_number].title.text                  = "";
+    UI_form_pointer->data.element[element_number].title.text                  = NULL;
     UI_form_pointer->data.element[element_number].title.enabled               = false;
     UI_form_pointer->data.element[element_number].dragable                    = true;
     UI_form_pointer->data.element[element_number].active                      = true;
@@ -557,7 +557,7 @@ void setup_inventory_window(int UID)
     element_number = 19; //--- Inventory cell
     UI_form_pointer->data.element[element_number].window_UID                  = UI_form_pointer->data.UID;
     UI_form_pointer->data.element[element_number].element_UID                 = element_number;
-    UI_form_pointer->data.element[element_number].title.text                  = "";
+    UI_form_pointer->data.element[element_number].title.text                  = NULL;
     UI_form_pointer->data.element[element_number].title.enabled               = false;
     UI_form_pointer->data.element[element_number].dragable                    = true;
     UI_form_pointer->data.element[element_number].active                      = true;
@@ -578,7 +578,7 @@ void setup_inventory_window(int UID)
     element_number = 20; //--- Inventory cell
     UI_form_pointer->data.element[element_number].window_UID                  = UI_form_pointer->data.UID;
     UI_form_pointer->data.element[element_number].element_UID                 = element_number;
-    UI_form_pointer->data.element[element_number].title.text                  = "";
+    UI_form_pointer->data.element[element_number].title.text                  = NULL;
     UI_form_pointer->data.element[element_number].title.enabled               = false;
     UI_form_pointer->data.element[element_number].dragable                    = true;
     UI_form_pointer->data.element[element_number].active                      = true;
@@ -599,7 +599,7 @@ void setup_inventory_window(int UID)
     element_number = 21; //--- Inventory cell
     UI_form_pointer->data.element[element_number].window_UID                  = UI_form_pointer->data.UID;
     UI_form_pointer->data.element[element_number].element_UID                 = element_number;
-    UI_form_pointer->data.element[element_number].title.text                  = "";
+    UI_form_pointer->data.element[element_number].title.text                  = NULL;
     UI_form_pointer->data.element[element_number].title.enabled               = false;
     UI_form_pointer->data.element[element_number].dragable                    = true;
     UI_form_pointer->data.element[element_number].active                      = true;
@@ -620,7 +620,7 @@ void setup_inventory_window(int UID)
     element_number = 22; //--- Inventory cell
     UI_form_pointer->data.element[element_number].window_UID                  = UI_form_pointer->data.UID;
     UI_form_pointer->data.element[element_number].element_UID                 = element_number;
-    UI_form_pointer->data.element[element_number].title.text                  = "";
+    UI_form_pointer->data.element[element_number].title.text                  = NULL;
     UI_form_pointer->data.element[element_number].title.enabled               = false;
     UI_form_pointer->data.element[element_number].dragable                    = true;
     UI_form_pointer->data.element[element_number].active                      = true;
@@ -641,7 +641,7 @@ void setup_inventory_window(int UID)
     element_number = 23; //--- Inventory cell
     UI_form_pointer->data.element[element_number].window_UID                  = UI_form_pointer->data.UID;
     UI_form_pointer->data.element[element_number].element_UID                 = element_number;
-    UI_form_pointer->data.element[element_number].title.text                  = "";
+    UI_form_pointer->data.element[element_number].title.text                  = NULL;
     UI_form_pointer->data.element[element_number].title.enabled               = false;
     UI_form_pointer->data.element[element_number].dragable                    = true;
     UI_form_pointer->data.element[element_number].active                      = true;
@@ -662,7 +662,7 @@ void setup_inventory_window(int UID)
     element_number = 24; //--- Inventory cell
     UI_form_pointer->data.element[element_number].window_UID                  = UI_form_pointer->data.UID;
     UI_form_pointer->data.element[element_number].element_UID                 = element_number;
-    UI_form_pointer->data.element[element_number].title.text                  = "";
+    UI_form_pointer->data.element[element_number].title.text                  = NULL;
     UI_form_pointer->data.element[element_number].title.enabled               = false;
     UI_form_pointer->data.element[element_number].dragable                    = true;
     UI_form_pointer->data.element[element_number].active                      = true;
@@ -684,7 +684,7 @@ void setup_inventory_window(int UID)
     element_number = 25; //--- Inventory cell
     UI_form_pointer->data.element[element_number].window_UID                  = UI_form_pointer->data.UID;
     UI_form_pointer->data.element[element_number].element_UID                 = element_number;
-    UI_form_pointer->data.element[element_number].title.text                  = "";
+    UI_form_pointer->data.element[element_number].title.text                  = NULL;
     UI_form_pointer->data.element[element_number].title.enabled               = false;
     UI_form_pointer->data.element[element_number].dragable                    = true;
     UI_form_pointer->data.element[element_number].active                      = true;
@@ -705,7 +705,7 @@ void setup_inventory_window(int UID)
     element_number = 26; //--- Inventory cell
     UI_form_pointer->data.element[element_number].window_UID                  = UI_form_pointer->data.UID;
     UI_form_pointer->data.element[element_number].element_UID                 = element_number;
-    UI_form_pointer->data.element[element_number].title.text                  = "";
+    UI_form_pointer->data.element[element_number].title.text                  = NULL;
     UI_form_pointer->data.element[element_number].title.enabled               = false;
     UI_form_pointer->data.element[element_number].dragable                    = true;
     UI_form_pointer->data.element[element_number].active                      = true;
@@ -726,7 +726,7 @@ void setup_inventory_window(int UID)
     element_number = 27; //--- Inventory cell
     UI_form_pointer->data.element[element_number].window_UID                  = UI_form_pointer->data.UID;
     UI_form_pointer->data.element[element_number].element_UID                 = element_number;
-    UI_form_pointer->data.element[element_number].title.text                  = "";
+    UI_form_pointer->data.element[element_number].title.text                  = NULL;
     UI_form_pointer->data.element[element_number].title.enabled               = false;
     UI_form_pointer->data.element[element_number].dragable                    = true;
     UI_form_pointer->data.element[element_number].active                      = true;
@@ -747,7 +747,7 @@ void setup_inventory_window(int UID)
     element_number = 28; //--- Inventory cell
     UI_form_pointer->data.element[element_number].window_UID                  = UI_form_pointer->data.UID;
     UI_form_pointer->data.element[element_number].element_UID                 = element_number;
-    UI_form_pointer->data.element[element_number].title.text                  = "";
+    UI_form_pointer->data.element[element_number].title.text                  = NULL;
     UI_form_pointer->data.element[element_number].title.enabled               = false;
     UI_form_pointer->data.element[element_number].dragable                    = true;
     UI_form_pointer->data.element[element_number].active                      = true;
@@ -768,7 +768,7 @@ void setup_inventory_window(int UID)
     element_number = 29; //--- Inventory cell
     UI_form_pointer->data.element[element_number].window_UID                  = UI_form_pointer->data.UID;
     UI_form_pointer->data.element[element_number].element_UID                 = element_number;
-    UI_form_pointer->data.element[element_number].title.text                  = "";
+    UI_form_pointer->data.element[element_number].title.text                  = NULL;
     UI_form_pointer->data.element[element_number].title.enabled               = false;
     UI_form_pointer->data.element[element_number].dragable                    = true;
     UI_form_pointer->data.element[element_number].active                      = true;
@@ -789,7 +789,7 @@ void setup_inventory_window(int UID)
     element_number = 30; //--- Inventory cell
     UI_form_pointer->data.element[element_number].window_UID                  = UI_form_pointer->data.UID;
     UI_form_pointer->data.element[element_number].element_UID                 = element_number;
-    UI_form_pointer->data.element[element_number].title.text                  = "";
+    UI_form_pointer->data.element[element_number].title.text                  = NULL;
     UI_form_pointer->data.element[element_number].title.enabled               = false;
     UI_form_pointer->data.element[element_number].dragable                    = true;
     UI_form_pointer->data.element[element_number].active                      = true;
@@ -811,7 +811,7 @@ void setup_inventory_window(int UID)
     element_number = 31; //--- Inventory cell
     UI_form_pointer->data.element[element_number].window_UID                  = UI_form_pointer->data.UID;
     UI_form_pointer->data.element[element_number].element_UID                 = element_number;
-    UI_form_pointer->data.element[element_number].title.text                  = "";
+    UI_form_pointer->data.element[element_number].title.text                  = NULL;
     UI_form_pointer->data.element[element_number].title.enabled               = false;
     UI_form_pointer->data.element[element_number].dragable                    = true;
     UI_form_pointer->data.element[element_number].active                      = true;
@@ -832,7 +832,7 @@ void setup_inventory_window(int UID)
     element_number = 32; //--- Inventory cell
     UI_form_pointer->data.element[element_number].window_UID                  = UI_form_pointer->data.UID;
     UI_form_pointer->data.element[element_number].element_UID                 = element_number;
-    UI_form_pointer->data.element[element_number].title.text                  = "";
+    UI_form_pointer->data.element[element_number].title.text                  = NULL;
     UI_form_pointer->data.element[element_number].title.enabled               = false;
     UI_form_pointer->data.element[element_number].dragable                    = true;
     UI_form_pointer->data.element[element_number].active                      = true;
@@ -853,7 +853,7 @@ void setup_inventory_window(int UID)
     element_number = 33; //--- Inventory cell
     UI_form_pointer->data.element[element_number].window_UID                  = UI_form_pointer->data.UID;
     UI_form_pointer->data.element[element_number].element_UID                 = element_number;
-    UI_form_pointer->data.element[element_number].title.text                  = "";
+    UI_form_pointer->data.element[element_number].title.text                  = NULL;
     UI_form_pointer->data.element[element_number].title.enabled               = false;
     UI_form_pointer->data.element[element_number].dragable                    = true;
     UI_form_pointer->data.element[element_number].active                      = true;
@@ -874,7 +874,7 @@ void setup_inventory_window(int UID)
     element_number = 34; //--- Inventory cell
     UI_form_pointer->data.element[element_number].window_UID                  = UI_form_pointer->data.UID;
     UI_form_pointer->data.element[element_number].element_UID                 = element_number;
-    UI_form_pointer->data.element[element_number].title.text                  = "";
+    UI_form_pointer->data.element[element_number].title.text                  = NULL;
     UI_form_pointer->data.element[element_number].title.enabled               = false;
     UI_form_pointer->data.element[element_number].dragable                    = true;
     UI_form_pointer->data.element[element_number].active                      = true;
@@ -895,7 +895,7 @@ void setup_inventory_window(int UID)
     element_number = 35; //--- Inventory cell
     UI_form_pointer->data.element[element_number].window_UID                  = UI_form_pointer->data.UID;
     UI_form_pointer->data.element[element_number].element_UID                 = element_number;
-    UI_form_pointer->data.element[element_number].title.text                  = "";
+    UI_form_pointer->data.element[element_number].title.text                  = NULL;
     UI_form_pointer->data.element[element_number].title.enabled               = false;
     UI_form_pointer->data.element[element_number].dragable                    = true;
     UI_form_pointer->data.element[element_number].active                      = true;
@@ -916,7 +916,7 @@ void setup_inventory_window(int UID)
     element_number = 36; //--- Inventory cell
     UI_form_pointer->data.element[element_number].window_UID                  = UI_form_pointer->data.UID;
     UI_form_pointer->data.element[element_number].element_UID                 = element_number;
-    UI_form_pointer->data.element[element_number].title.text                  = "";
+    UI_form_pointer->data.element[element_number].title.text                  = NULL;
     UI_form_pointer->data.element[element_number].title.enabled               = false;
     UI_form_pointer->data.element[element_number].dragable                    = true;
     UI_form_pointer->data.element[element_number].active                      = true;
@@ -938,7 +938,7 @@ void setup_inventory_window(int UID)
     element_number = 37; //--- Inventory cell
     UI_form_pointer->data.element[element_number].window_UID                  = UI_form_pointer->data.UID;
     UI_form_pointer->data.element[element_number].element_UID                 = element_number;
-    UI_form_pointer->data.element[element_number].title.text                  = "";
+    UI_form_pointer->data.element[element_number].title.text                  = NULL;
     UI_form_pointer->data.element[element_number].title.enabled               = false;
     UI_form_pointer->data.element[element_number].dragable                    = true;
     UI_form_pointer->data.element[element_number].active                      = true;
@@ -959,7 +959,7 @@ void setup_inventory_window(int UID)
     element_number = 38; //--- Inventory cell
     UI_form_pointer->data.element[element_number].window_UID                  = UI_form_pointer->data.UID;
     UI_form_pointer->data.element[element_number].element_UID                 = element_number;
-    UI_form_pointer->data.element[element_number].title.text                  = "";
+    UI_form_pointer->data.element[element_number].title.text                  = NULL;
     UI_form_pointer->data.element[element_number].title.enabled               = false;
     UI_form_pointer->data.element[element_number].dragable                    = true;
     UI_form_pointer->data.element[element_number].active                      = true;
@@ -980,7 +980,7 @@ void setup_inventory_window(int UID)
     element_number = 39; //--- Inventory cell
     UI_form_pointer->data.element[element_number].window_UID                  = UI_form_pointer->data.UID;
     UI_form_pointer->data.element[element_number].element_UID                 = element_number;
-    UI_form_pointer->data.element[element_number].title.text                  = "";
+    UI_form_pointer->data.element[element_number].title.text                  = NULL;
     UI_form_pointer->data.element[element_number].title.enabled               = false;
     UI_form_pointer->data.element[element_number].dragable                    = true;
     UI_form_pointer->data.element[element_number].active                      = true;
@@ -1001,7 +1001,7 @@ void setup_inventory_window(int UID)
     element_number = 40; //--- Inventory cell
     UI_form_pointer->data.element[element_number].window_UID                  = UI_form_pointer->data.UID;
     UI_form_pointer->data.element[element_number].element_UID                 = element_number;
-    UI_form_pointer->data.element[element_number].title.text                  = "";
+    UI_form_pointer->data.element[element_number].title.text                  = NULL;
     UI_form_pointer->data.element[element_number].title.enabled               = false;
     UI_form_pointer->data.element[element_number].dragable                    = true;
     UI_form_pointer->data.element[element_number].active                      = true;
@@ -1022,7 +1022,7 @@ void setup_inventory_window(int UID)
     element_number = 41; //--- Inventory cell
     UI_form_pointer->data.element[element_number].window_UID                  = UI_form_pointer->data.UID;
     UI_form_pointer->data.element[element_number].element_UID                 = element_number;
-    UI_form_pointer->data.element[element_number].title.text                  = "";
+    UI_form_pointer->data.element[element_number].title.text                  = NULL;
     UI_form_pointer->data.element[element_number].title.enabled               = false;
     UI_form_pointer->data.element[element_number].dragable                    = true;
     UI_form_pointer->data.element[element_number].active                      = true;
@@ -1043,7 +1043,7 @@ void setup_inventory_window(int UID)
     element_number = 42; //--- Inventory cell
     UI_form_pointer->data.element[element_number].window_UID                  = UI_form_pointer->data.UID;
     UI_form_pointer->data.element[element_number].element_UID                 = element_number;
-    UI_form_pointer->data.element[element_number].title.text                  = "";
+    UI_form_pointer->data.element[element_number].title.text                  = NULL;
     UI_form_pointer->data.element[element_number].title.enabled               = false;
     UI_form_pointer->data.element[element_number].dragable                    = true;
     UI_form_pointer->data.element[element_number].active                      = true;
@@ -1065,7 +1065,7 @@ void setup_inventory_window(int UID)
     element_number = 43; //--- Inventory cell
     UI_form_pointer->data.element[element_number].window_UID                  = UI_form_pointer->data.UID;
     UI_form_pointer->data.element[element_number].element_UID                 = element_number;
-    UI_form_pointer->data.element[element_number].title.text                  = "";
+    UI_form_pointer->data.element[element_number].title.text                  = NULL;
     UI_form_pointer->data.element[element_number].title.enabled               = false;
     UI_form_pointer->data.element[element_number].dragable                    = true;
     UI_form_pointer->data.element[element_number].active                      = true;
@@ -1086,7 +1086,7 @@ void setup_inventory_window(int UID)
     element_number = 44; //--- Inventory cell
     UI_form_pointer->data.element[element_number].window_UID                  = UI_form_pointer->data.UID;
     UI_form_pointer->data.element[element_number].element_UID                 = element_number;
-    UI_form_pointer->data.element[element_number].title.text                  = "";
+    UI_form_pointer->data.element[element_number].title.text                  = NULL;
     UI_form_pointer->data.element[element_number].title.enabled               = false;
     UI_form_pointer->data.element[element_number].dragable                    = true;
     UI_form_pointer->data.element[element_number].active                      = true;
@@ -1107,7 +1107,7 @@ void setup_inventory_window(int UID)
     element_number = 45; //--- Inventory cell
     UI_form_pointer->data.element[element_number].window_UID                  = UI_form_pointer->data.UID;
     UI_form_pointer->data.element[element_number].element_UID                 = element_number;
-    UI_form_pointer->data.element[element_number].title.text                  = "";
+    UI_form_pointer->data.element[element_number].title.text                  = NULL;
     UI_form_pointer->data.element[element_number].title.enabled               = false;
     UI_form_pointer->data.element[element_number].dragable                    = true;
     UI_form_pointer->data.element[element_number].active                      = true;
@@ -1128,7 +1128,7 @@ void setup_inventory_window(int UID)
     element_number = 46; //--- Inventory cell
     UI_form_pointer->data.element[element_number].window_UID                  = UI_form_pointer->data.UID;
     UI_form_pointer->data.element[element_number].element_UID                 = element_number;
-    UI_form_pointer->data.element[element_number].title.text                  = "";
+    UI_form_pointer->data.element[element_number].title.text                  = NULL;
     UI_form_pointer->data.element[element_number].title.enabled               = false;
     UI_form_pointer->data.element[element_number].dragable                    = true;
     UI_form_pointer->data.element[element_number].active                      = true;
@@ -1149,7 +1149,7 @@ void setup_inventory_window(int UID)
     element_number = 47; //--- Inventory cell
     UI_form_pointer->data.element[element_number].window_UID                  = UI_form_pointer->data.UID;
     UI_form_pointer->data.element[element_number].element_UID                 = element_number;
-    UI_form_pointer->data.element[element_number].title.text                  = "";
+    UI_form_pointer->data.element[element_number].title.text                  = NULL;
     UI_form_pointer->data.element[element_number].title.enabled               = false;
     UI_form_pointer->data.element[element_number].dragable                    = true;
     UI_form_pointer->data.element[element_number].active                      = true;
@@ -1170,7 +1170,7 @@ void setup_inventory_window(int UID)
     element_number = 48; //--- Inventory cell
     UI_form_pointer->data.element[element_number].window_UID                  = UI_form_pointer->data.UID;
     UI_form_pointer->data.element[element_number].element_UID                 = element_number;
-    UI_form_pointer->data.element[element_number].title.text                  = "";
+    UI_form_pointer->data.element[element_number].title.text                  = NULL;
     UI_form_pointer->data.element[element_number].title.enabled               = false;
     UI_form_pointer->data.element[element_number].dragable                    = true;
     UI_form_pointer->data.element[element_number].active                      = true;
