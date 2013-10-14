@@ -351,8 +351,8 @@ bool texture_manager_class::load_string(texture_type *texture)
 
         if ((image_surface = TTF_RenderUTF8_Blended(texture->data.text.font->font_data,write_data,font_color)))
         {
-            texture->data.width  = (float)image_surface->w / (float)game.core.config.display_resolution_x * texture->data.text.text_size;
-            texture->data.height = (float)image_surface->h / (float)game.core.config.display_resolution_y * texture->data.text.text_size;
+            texture->data.width  = ((float)image_surface->w / (float)game.core.config.display_resolution_x) * texture->data.text.text_size;
+            texture->data.height = ((float)image_surface->h / (float)game.core.config.display_resolution_y) * texture->data.text.text_size;
             return_value = true;
             number_of_colors = image_surface->format->BytesPerPixel;
             if (number_of_colors == 4)
@@ -429,7 +429,7 @@ void texture_manager_class::draw(texture_type *texture, bool rumble_set, float p
         pos_x += game.rumble.counter.x;
         pos_y += game.rumble.counter.y;
     }
-    if (sizeof(texture->data.frame[texture->data.frame_number].data) > 0) // Only render if data is available.
+    if (texture->data.frame[texture->data.frame_number].data) // Only render if data is available.
     {
         int temp_angle;
         if (texture->data.angle != 0) temp_angle = 360 - texture->data.angle;

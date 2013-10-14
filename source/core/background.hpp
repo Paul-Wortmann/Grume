@@ -38,6 +38,7 @@ const int MAX_LAYERS = 6;
 class background_class
 {
     private:
+    public:
         struct layer_type
         {
             bool  active;
@@ -52,20 +53,9 @@ class background_class
         };
         layer_type  layer[MAX_LAYERS+1];
         int         movemennt_type;
-    public:
         background_class        (void);
-        void  set_movement_type (int type_data);
-        int   get_movement_type (void);
         void  set_data          (int layer_number, int dx, int dy, float px, float py, float srx, float sry, std::string image_path);
         void  set_image         (int layer_number, std::string image_path);
-        void  set_active        (int layer_number, bool bool_data);
-        bool  get_active        (int layer_number);
-        float get_scroll_x      (int layer_number);
-        float get_scroll_y      (int layer_number);
-        int   get_dir_x         (int layer_number);
-        int   get_dir_y         (int layer_number);
-        float get_pos_x         (int layer_number);
-        float get_pos_y         (int layer_number);
         bool  scroll_up         (void);
         bool  scroll_down       (void);
         void  process           (void);

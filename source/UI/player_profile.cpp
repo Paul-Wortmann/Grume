@@ -79,8 +79,8 @@ void setup_player_profile(int UID)
     UI_form_pointer->data.title.text              = NULL;
     UI_form_pointer->data.title.size.x            = 0;//UI_form_pointer->data.title.text.length()/1.2f;
     UI_form_pointer->data.title.size.y            = 0;//UI_form_pointer->data.title.size.x*4;
-    UI_form_pointer->data.title.position.x        = UI_form_pointer->data.position.x - (UI_form_pointer->data.title.size.x/100.0f);
-    UI_form_pointer->data.title.position.y        = UI_form_pointer->data.position.y + (UI_form_pointer->data.size.y/2.0f) - (UI_form_pointer->data.title.size.y / 440.0f);
+    UI_form_pointer->data.title.position.x            = UI_form_pointer->data.position.x;
+    UI_form_pointer->data.title.position.y            = UI_form_pointer->data.position.y+(UI_form_pointer->data.size.y/2.24f);
     UI_form_pointer->data.title_bar.size.x        = UI_form_pointer->data.size.x; // x/2.0f for middle section
     UI_form_pointer->data.title_bar.size.y        = UI_form_pointer->data.size.y / 10.0f;
     UI_form_pointer->data.title_bar.position.x    = UI_form_pointer->data.position.x;
@@ -207,7 +207,7 @@ void setup_player_profile(int UID)
     UI_form_pointer->data.element[element_number].value_max                 = 100;
     UI_form_pointer->data.element[element_number].zoom.enabled              = false;
     UI_form_pointer->data.element[element_number].tooltip.enabled           = true;
-    UI_form_pointer->data.element[element_number].tooltip.text              = game.texture_manager.add_texture(game.font_manager.root,"0%",1.6f,0,0,TEXTURE_STRING);
+    UI_form_pointer->data.element[element_number].tooltip.text              = game.texture_manager.add_texture(game.font_manager.root,"0%",0.8f,0,0,TEXTURE_STRING);
     UI_form_pointer->data.element[element_number].tooltip.size.x            = 12.0f;
     UI_form_pointer->data.element[element_number].tooltip.size.y            = 30.0f;
     UI_form_pointer->data.element[element_number].color                     = UI_form_pointer->data.color;
@@ -231,7 +231,7 @@ void setup_player_profile(int UID)
     UI_form_pointer->data.element[element_number].value_max                 = 100;
     UI_form_pointer->data.element[element_number].zoom.enabled              = false;
     UI_form_pointer->data.element[element_number].tooltip.enabled           = true;
-    UI_form_pointer->data.element[element_number].tooltip.text              = game.texture_manager.add_texture(game.font_manager.root,"0%",1.6f,0,0,TEXTURE_STRING);
+    UI_form_pointer->data.element[element_number].tooltip.text              = game.texture_manager.add_texture(game.font_manager.root,"0%",0.8f,0,0,TEXTURE_STRING);
     UI_form_pointer->data.element[element_number].tooltip.size.x            = 12.0f;
     UI_form_pointer->data.element[element_number].tooltip.size.y            = 30.0f;
     UI_form_pointer->data.element[element_number].color                     = UI_form_pointer->data.color;
@@ -279,7 +279,7 @@ void update_player_profile(UI_form_struct *UI_form_pointer)
 void process_player_profile(UI_form_struct *UI_form_pointer)
 {
     int element_number = 0; //--- Player name ---
-    UI_form_pointer->data.element[element_number].tooltip.text = game.texture_manager.add_texture(game.font_manager.root,game.player.name,1.6f,0,0,TEXTURE_STRING);
+    UI_form_pointer->data.element[element_number].tooltip.text = game.texture_manager.add_texture(game.font_manager.root,game.player.name,0.8f,0,0,TEXTURE_STRING);
     //Update the health and mana bars.
     std::string temp_string = "";
     element_number = 2; //--- Player health bar ---
@@ -289,7 +289,7 @@ void process_player_profile(UI_form_struct *UI_form_pointer)
     if (game.player.health.current >  9) temp_string += ' ';
     if (game.player.health.current > 99) temp_string += ' ';
     temp_string += "    ";
-    UI_form_pointer->data.element[element_number].tooltip.text = game.texture_manager.add_texture(game.font_manager.root,temp_string,1.6f,0,0,TEXTURE_STRING);
+    UI_form_pointer->data.element[element_number].tooltip.text = game.texture_manager.add_texture(game.font_manager.root,temp_string,0.8f,0,0,TEXTURE_STRING);
     element_number     = 3; //--- Player mana bar ---
     UI_form_pointer->data.element[element_number].value = game.player.mana.current;
     temp_string  = int_to_string(game.player.mana.current);
@@ -297,7 +297,7 @@ void process_player_profile(UI_form_struct *UI_form_pointer)
     if (game.player.mana.current >  9) temp_string += ' ';
     if (game.player.mana.current > 99) temp_string += ' ';
     temp_string += "    ";
-    UI_form_pointer->data.element[element_number].tooltip.text = game.texture_manager.add_texture(game.font_manager.root,temp_string,1.6f,0,0,TEXTURE_STRING);
+    UI_form_pointer->data.element[element_number].tooltip.text = game.texture_manager.add_texture(game.font_manager.root,temp_string,0.8f,0,0,TEXTURE_STRING);
     if(UI_form_pointer->data.event.id > EVENT_NONE)
     {
         switch (UI_form_pointer->data.event.id)

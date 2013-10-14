@@ -87,7 +87,7 @@ struct texture_data_type
 struct texture_type
 {
     texture_data_type data;
-    texture_type    *next;
+    texture_type*     next;
 };
 
 class texture_manager_class

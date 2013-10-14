@@ -29,7 +29,7 @@ extern game_class game;
 
 void UI_cursor_class::draw(void)
 {
-    game.texture_manager.draw(UI_cursor_class::pointer,false,game.core.io.mouse_x+0.012f,game.core.io.mouse_y-0.018f,0.001f,0.04f,0.04f,345.0f);
+    game.texture_manager.draw(UI_cursor_class::pointer,false,game.core.io.mouse_x+0.012f,game.core.io.mouse_y-0.018f,0.001f,0.04f,0.04f,0.0f);
 };
 
 

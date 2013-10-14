@@ -46,7 +46,7 @@ void game_class::init(void)
     game.core.background.set_data ( 4, 1, 0, 4.0f, 0.0f, 0.0010f, 0.00065f, "data/textures/UI/backgrounds/background_03.png");
     game.core.background.set_data ( 5, 1, 0, 0.0f, 0.0f, 0.0040f, 0.00075f, "data/textures/UI/backgrounds/background_03.png");
     game.core.background.set_data ( 6, 1, 0, 4.0f, 0.0f, 0.0040f, 0.00075f, "data/textures/UI/backgrounds/background_03.png");
-    game.core.background.set_movement_type(FRONT_SCROLL);
+    game.core.background.movemennt_type = FRONT_SCROLL;
     //--- other ---
 
     //game.model_3D.tree_palm.save("test_palm.obj");
@@ -187,8 +187,6 @@ void game_class::init(void)
     UI_form_pointer->data.element[element_number].value          = temp_item_pointer->data.UID;
     UI_form_pointer->data.element[element_number].quantity       = 1;
     UI_form_pointer->data.element[element_number].texture.normal = temp_item_pointer->data.image;
-
-    game.render_text = game.texture_manager.add_texture(game.font_manager.root,"Awesome new font system!",1.6f,0,0,TEXTURE_STRING);
 };
 
 void game_class::process(void)
@@ -495,6 +493,5 @@ void game_class::render(void)
 
     glLightModelfv(GL_LIGHT_MODEL_AMBIENT,global_ambient_light);
     game.UI_manager.render();
-    game.texture_manager.draw(game.render_text,false,0,0,0,game.render_text->data.width,game.render_text->data.height);
 };
 

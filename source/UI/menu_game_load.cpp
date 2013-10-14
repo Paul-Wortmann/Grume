@@ -75,11 +75,11 @@ void setup_menu_game_load(int UID)
     UI_form_pointer->data.zoom.speed              = 0.004f;
     UI_form_pointer->data.texture.angle           = 0.0f;
     UI_form_pointer->data.title.enabled           = true;
-    UI_form_pointer->data.title.text              = game.texture_manager.add_texture(game.font_manager.root,"Load Game",1.6f,0,0,TEXTURE_STRING);
+    UI_form_pointer->data.title.text              = game.texture_manager.add_texture(game.font_manager.root,"Load Game",0.8f,0,0,TEXTURE_STRING);
     UI_form_pointer->data.title.size.x            = 0;//UI_form_pointer->data.title.text.length()/1.2f;
     UI_form_pointer->data.title.size.y            = 0;//UI_form_pointer->data.title.size.x*4;
-    UI_form_pointer->data.title.position.x        = UI_form_pointer->data.position.x - (UI_form_pointer->data.title.size.x/100.0f);
-    UI_form_pointer->data.title.position.y        = UI_form_pointer->data.position.y + (UI_form_pointer->data.size.y/2.0f) - (UI_form_pointer->data.title.size.y / 380.0f);
+    UI_form_pointer->data.title.position.x            = UI_form_pointer->data.position.x;
+    UI_form_pointer->data.title.position.y            = UI_form_pointer->data.position.y+(UI_form_pointer->data.size.y/2.24f);
     UI_form_pointer->data.title_bar.size.x        = UI_form_pointer->data.size.x; // x/2.0f for middle section
     UI_form_pointer->data.title_bar.size.y        = UI_form_pointer->data.size.y / 10.0f;
     UI_form_pointer->data.title_bar.position.x    = UI_form_pointer->data.position.x;
@@ -166,8 +166,8 @@ void setup_menu_game_load(int UID)
     UI_form_pointer->data.element[element_number].color                     = UI_form_pointer->data.color;
     UI_form_pointer->data.element[element_number].size.x                    = 0.1f;
     UI_form_pointer->data.element[element_number].size.y                    = 0.1f;
-    UI_form_pointer->data.element[element_number].position.x                = UI_form_pointer->data.position.x+(UI_form_pointer->data.size.x/2.0f)-(UI_form_pointer->data.element[element_number].size.x/1.8f);
-    UI_form_pointer->data.element[element_number].position.y                = UI_form_pointer->data.title.position.y+(UI_form_pointer->data.element[element_number].size.y/8.0f);
+    UI_form_pointer->data.element[element_number].position.x                = UI_form_pointer->data.position.x+(UI_form_pointer->data.size.x/2.5f);
+    UI_form_pointer->data.element[element_number].position.y                = UI_form_pointer->data.position.y+(UI_form_pointer->data.size.y/2.25f);
     UI_form_pointer->data.element[element_number].texture.normal            = game.texture_manager.add_texture("data/textures/UI/menu/close_button.png");
     UI_form_pointer->data.element[element_number].texture.highlighted       = game.texture_manager.add_texture("data/textures/UI/menu/close_button_highlighted.png");
     UI_form_pointer->data.element[element_number].sound                     = UI_form_pointer->data.sound;
@@ -176,7 +176,7 @@ void setup_menu_game_load(int UID)
     element_number = 1; //--- Save Game 1 ---
     UI_form_pointer->data.element[element_number].window_UID                = UI_form_pointer->data.UID;
     UI_form_pointer->data.element[element_number].element_UID               = element_number;
-    UI_form_pointer->data.element[element_number].title.text                = game.texture_manager.add_texture(game.font_manager.root,"Load Slot 1",1.6f,0,0,TEXTURE_STRING);
+    UI_form_pointer->data.element[element_number].title.text                = game.texture_manager.add_texture(game.font_manager.root,"Load Slot 1",0.8f,0,0,TEXTURE_STRING);
     UI_form_pointer->data.element[element_number].title.enabled             = true;
     UI_form_pointer->data.element[element_number].active                    = true;
     UI_form_pointer->data.element[element_number].state                     = DISABLED;
@@ -199,7 +199,7 @@ void setup_menu_game_load(int UID)
     element_number = 2; //--- Save Game 2 ---
     UI_form_pointer->data.element[element_number].window_UID                = UI_form_pointer->data.UID;
     UI_form_pointer->data.element[element_number].element_UID               = element_number;
-    UI_form_pointer->data.element[element_number].title.text                = game.texture_manager.add_texture(game.font_manager.root,"Load Slot 2",1.6f,0,0,TEXTURE_STRING);
+    UI_form_pointer->data.element[element_number].title.text                = game.texture_manager.add_texture(game.font_manager.root,"Load Slot 2",0.8f,0,0,TEXTURE_STRING);
     UI_form_pointer->data.element[element_number].title.enabled             = true;
     UI_form_pointer->data.element[element_number].active                    = true;
     UI_form_pointer->data.element[element_number].state                     = DISABLED;
@@ -222,7 +222,7 @@ void setup_menu_game_load(int UID)
     element_number = 3; //--- Save Game 3 ---
     UI_form_pointer->data.element[element_number].window_UID                = UI_form_pointer->data.UID;
     UI_form_pointer->data.element[element_number].element_UID               = element_number;
-    UI_form_pointer->data.element[element_number].title.text                = game.texture_manager.add_texture(game.font_manager.root,"Load Slot 3",1.6f,0,0,TEXTURE_STRING);
+    UI_form_pointer->data.element[element_number].title.text                = game.texture_manager.add_texture(game.font_manager.root,"Load Slot 3",0.8f,0,0,TEXTURE_STRING);
     UI_form_pointer->data.element[element_number].title.enabled             = true;
     UI_form_pointer->data.element[element_number].active                    = true;
     UI_form_pointer->data.element[element_number].state                     = DISABLED;
@@ -245,7 +245,7 @@ void setup_menu_game_load(int UID)
     element_number = 4; //--- Save Game 4 ---
     UI_form_pointer->data.element[element_number].window_UID                = UI_form_pointer->data.UID;
     UI_form_pointer->data.element[element_number].element_UID               = element_number;
-    UI_form_pointer->data.element[element_number].title.text                = game.texture_manager.add_texture(game.font_manager.root,"Load Slot 4",1.6f,0,0,TEXTURE_STRING);
+    UI_form_pointer->data.element[element_number].title.text                = game.texture_manager.add_texture(game.font_manager.root,"Load Slot 4",0.8f,0,0,TEXTURE_STRING);
     UI_form_pointer->data.element[element_number].title.enabled             = true;
     UI_form_pointer->data.element[element_number].active                    = true;
     UI_form_pointer->data.element[element_number].state                     = DISABLED;
@@ -268,7 +268,7 @@ void setup_menu_game_load(int UID)
     element_number = 5; //--- Save Game 5 ---
     UI_form_pointer->data.element[element_number].window_UID                = UI_form_pointer->data.UID;
     UI_form_pointer->data.element[element_number].element_UID               = element_number;
-    UI_form_pointer->data.element[element_number].title.text                = game.texture_manager.add_texture(game.font_manager.root,"Load Slot 5",1.6f,0,0,TEXTURE_STRING);
+    UI_form_pointer->data.element[element_number].title.text                = game.texture_manager.add_texture(game.font_manager.root,"Load Slot 5",0.8f,0,0,TEXTURE_STRING);
     UI_form_pointer->data.element[element_number].title.enabled             = true;
     UI_form_pointer->data.element[element_number].active                    = true;
     UI_form_pointer->data.element[element_number].state                     = DISABLED;
@@ -291,7 +291,7 @@ void setup_menu_game_load(int UID)
     element_number = 6; //--- Main Menu button ---
     UI_form_pointer->data.element[element_number].window_UID                = UI_form_pointer->data.UID;
     UI_form_pointer->data.element[element_number].element_UID               = element_number;
-    UI_form_pointer->data.element[element_number].title.text                = game.texture_manager.add_texture(game.font_manager.root,"Main Menu",1.6f,0,0,TEXTURE_STRING);
+    UI_form_pointer->data.element[element_number].title.text                = game.texture_manager.add_texture(game.font_manager.root,"Main Menu",0.8f,0,0,TEXTURE_STRING);
     UI_form_pointer->data.element[element_number].title.enabled             = true;
     UI_form_pointer->data.element[element_number].active                    = true;
     UI_form_pointer->data.element[element_number].type                      = BUTTON;
