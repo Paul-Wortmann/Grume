@@ -37,3 +37,49 @@ class item_class
 
 #endif // ITEMS_H
 
+/*
+//---------------------------------------
++  Max mana
++  Mana after each kill
++  Mana after each hit
++  Mana regeneration
++  Mana steal
+//---------------------------------------
++  Max health
++  Health after each kill
++  Health after each hit
++  Health regeneration
++  Health steal
+//---------------------------------------
++  Magic find
++  Gold find
++  Light radius
++  Movement speed
++% Chance to cast level x spell when hit
++% Chance to cast level x spell on hit
++  x experience after each kill
++  x to spell y
++  x to y spell category
++  x to all spells
++  x to all attributes
++  x Strength
++  x Dexterity
++  x Intelligence
++  x Vitality
+//---------------------------------------
++  x Physical damage
++  x Maximum damage
++  x Minimum damage
++  x Elemental damage
++  x Ice damage
++  x Fire damage
++  x Lightning damage
++  x Poison damage
+//---------------------------------------
++  x Elemental resistance
++  x Physical resistance
++  x Ice resistance
++  x Fire resistance
++  x Lightning resistance
++  x Poison resistance
+*/
