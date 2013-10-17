@@ -46,10 +46,6 @@
 #define UI_NORMAL                  1
 #define UI_HIGHLIGHTED             2
 
-#define DISABLED                0
-#define NORMAL                  1
-#define HIGHLIGHTED             2
-
 #define UI_ELEMENT_BUTTON          3
 #define UI_ELEMENT_TEXTLABEL       4
 #define UI_ELEMENT_IMAGE           5

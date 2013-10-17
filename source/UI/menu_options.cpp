@@ -138,7 +138,7 @@ void setup_menu_options(int UID)
         UI_form_pointer->data.element[element_count].color.disabled.b               = 0;
         UI_form_pointer->data.element[element_count].color.disabled.a               = 0;
         UI_form_pointer->data.element[element_count].event.id                       = 0;
-        UI_form_pointer->data.element[element_count].state                          = NORMAL;
+        UI_form_pointer->data.element[element_count].state                          = UI_NORMAL;
         UI_form_pointer->data.element[element_count].selected                       = false;
         UI_form_pointer->data.element[element_count].type                           = UI_ELEMENT_BUTTON;
         UI_form_pointer->data.element[element_count].sub_type                       = 0;//ITEM_NONE;// TEST
@@ -247,7 +247,7 @@ void setup_menu_options(int UID)
     UI_form_pointer->data.element[element_number].element_UID               = element_number;
     UI_form_pointer->data.element[element_number].title.text                = NULL;
     UI_form_pointer->data.element[element_number].active                    = true;
-    UI_form_pointer->data.element[element_number].state                     = DISABLED;
+    UI_form_pointer->data.element[element_number].state                     = UI_DISABLED;
     UI_form_pointer->data.element[element_number].type                      = UI_ELEMENT_IMAGE;
     UI_form_pointer->data.element[element_number].color                     = UI_form_pointer->data.color;
     UI_form_pointer->data.element[element_number].zoom                      = UI_form_pointer->data.zoom;

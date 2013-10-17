@@ -141,7 +141,7 @@ void setup_menu_main(int UID)
         UI_form_pointer->data.element[element_count].color.disabled.b               = 0;
         UI_form_pointer->data.element[element_count].color.disabled.a               = 0;
         UI_form_pointer->data.element[element_count].event.id                       = 0;
-        UI_form_pointer->data.element[element_count].state                          = NORMAL;
+        UI_form_pointer->data.element[element_count].state                          = UI_NORMAL;
         UI_form_pointer->data.element[element_count].selected                       = false;
         UI_form_pointer->data.element[element_count].type                           = UI_ELEMENT_BUTTON;
         UI_form_pointer->data.element[element_count].sub_type                       = ITEM_NONE;
@@ -227,7 +227,7 @@ void setup_menu_main(int UID)
     UI_form_pointer->data.element[element_number].title.text                = game.texture_manager.add_texture(game.font_manager.root,"Save Game",0.8f,0,0,TEXTURE_STRING);
     UI_form_pointer->data.element[element_number].title.enabled             = true;
     UI_form_pointer->data.element[element_number].active                    = true;
-    UI_form_pointer->data.element[element_number].state                     = DISABLED;
+    UI_form_pointer->data.element[element_number].state                     = UI_DISABLED;
     UI_form_pointer->data.element[element_number].type                      = UI_ELEMENT_BUTTON;
     UI_form_pointer->data.element[element_number].color                     = UI_form_pointer->data.color;
     UI_form_pointer->data.element[element_number].zoom                      = UI_form_pointer->data.zoom;
@@ -250,7 +250,7 @@ void setup_menu_main(int UID)
     UI_form_pointer->data.element[element_number].title.text                = game.texture_manager.add_texture(game.font_manager.root,"Resume Game",0.8f,0,0,TEXTURE_STRING);
     UI_form_pointer->data.element[element_number].title.enabled             = true;
     UI_form_pointer->data.element[element_number].active                    = true;
-    UI_form_pointer->data.element[element_number].state                     = DISABLED;
+    UI_form_pointer->data.element[element_number].state                     = UI_DISABLED;
     UI_form_pointer->data.element[element_number].type                      = UI_ELEMENT_BUTTON;
     UI_form_pointer->data.element[element_number].color                     = UI_form_pointer->data.color;
     UI_form_pointer->data.element[element_number].zoom                      = UI_form_pointer->data.zoom;
@@ -318,10 +318,10 @@ void process_menu_main(UI_form_struct *UI_form_pointer)
     int element_number   = 0;
     if(UI_form_pointer->data.event.id > EVENT_NONE)
     {
-        if (game.state == STATE_GAME) UI_form_pointer->data.element[3].state = NORMAL; // Save game
-        else UI_form_pointer->data.element[3].state = DISABLED;
-        if (game.state == STATE_GAME) UI_form_pointer->data.element[4].state = NORMAL; // Resume game
-        else UI_form_pointer->data.element[4].state = DISABLED;
+        if (game.state == STATE_GAME) UI_form_pointer->data.element[3].state = UI_NORMAL; // Save game
+        else UI_form_pointer->data.element[3].state = UI_DISABLED;
+        if (game.state == STATE_GAME) UI_form_pointer->data.element[4].state = UI_NORMAL; // Resume game
+        else UI_form_pointer->data.element[4].state = UI_DISABLED;
         switch (UI_form_pointer->data.event.id)
         {
             case ((0*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Close menu button
@@ -348,24 +348,24 @@ void process_menu_main(UI_form_struct *UI_form_pointer)
                 {
                     element_number   = 1;
                     game.save_01.Assign_File("save/slot_01.sav");
-                    if (game.save_01.File_Exists()) load_menu_pointer->data.element[element_number].state = NORMAL;
-                    else load_menu_pointer->data.element[element_number].state = DISABLED;
+                    if (game.save_01.File_Exists()) load_menu_pointer->data.element[element_number].state = UI_NORMAL;
+                    else load_menu_pointer->data.element[element_number].state = UI_DISABLED;
                     element_number   = 2;
                     game.save_02.Assign_File("save/slot_02.sav");
-                    if (game.save_02.File_Exists()) load_menu_pointer->data.element[element_number].state = NORMAL;
-                    else load_menu_pointer->data.element[element_number].state = DISABLED;
+                    if (game.save_02.File_Exists()) load_menu_pointer->data.element[element_number].state = UI_NORMAL;
+                    else load_menu_pointer->data.element[element_number].state = UI_DISABLED;
                     element_number   = 3;
                     game.save_03.Assign_File("save/slot_03.sav");
-                    if (game.save_03.File_Exists()) load_menu_pointer->data.element[element_number].state = NORMAL;
-                    else load_menu_pointer->data.element[element_number].state = DISABLED;
+                    if (game.save_03.File_Exists()) load_menu_pointer->data.element[element_number].state = UI_NORMAL;
+                    else load_menu_pointer->data.element[element_number].state = UI_DISABLED;
                     element_number   = 4;
                     game.save_04.Assign_File("save/slot_04.sav");
-                    if (game.save_04.File_Exists()) load_menu_pointer->data.element[element_number].state = NORMAL;
-                    else load_menu_pointer->data.element[element_number].state = DISABLED;
+                    if (game.save_04.File_Exists()) load_menu_pointer->data.element[element_number].state = UI_NORMAL;
+                    else load_menu_pointer->data.element[element_number].state = UI_DISABLED;
                     element_number   = 5;
                     game.save_05.Assign_File("save/slot_05.sav");
-                    if (game.save_05.File_Exists()) load_menu_pointer->data.element[element_number].state = NORMAL;
-                    else load_menu_pointer->data.element[element_number].state = DISABLED;
+                    if (game.save_05.File_Exists()) load_menu_pointer->data.element[element_number].state = UI_NORMAL;
+                    else load_menu_pointer->data.element[element_number].state = UI_DISABLED;
                     game.UI_manager.UI_form_transition(UID_MENU_MAIN,UID_MENU_GAME_LOAD);
                 }
             break;

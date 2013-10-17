@@ -136,7 +136,7 @@ void setup_menu_game_new(int UID)
         UI_form_pointer->data.element[element_count].color.disabled.b               = 0;
         UI_form_pointer->data.element[element_count].color.disabled.a               = 0;
         UI_form_pointer->data.element[element_count].event.id                       = 0;
-        UI_form_pointer->data.element[element_count].state                          = NORMAL;
+        UI_form_pointer->data.element[element_count].state                          = UI_NORMAL;
         UI_form_pointer->data.element[element_count].selected                       = false;
         UI_form_pointer->data.element[element_count].type                           = UI_ELEMENT_BUTTON;
         UI_form_pointer->data.element[element_count].sub_type                       = 0;//ITEM_NONE;// TEST
@@ -495,8 +495,8 @@ void process_menu_game_new(UI_form_struct *UI_form_pointer)
                 game.core.npcvendor_active = false;
                 game.UI_manager.UI_form_enable(UID_PCPROFILE);
                 game.UI_manager.UI_form_enable(UID_ACTIONBAR);
-                UI_form_pointer->data.element[3].state = NORMAL; // Save game
-                UI_form_pointer->data.element[4].state = NORMAL; // Resume game
+                UI_form_pointer->data.element[3].state = UI_NORMAL; // Save game
+                UI_form_pointer->data.element[4].state = UI_NORMAL; // Resume game
             break;
             case ((3*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // left arrow button for player portrait selection
                 UI_form_pointer->data.choice_selection[choice_selection_number].position++;

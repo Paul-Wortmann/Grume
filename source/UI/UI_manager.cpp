@@ -474,15 +474,15 @@ void UI_manager_class::render(void)
                             case UI_ELEMENT_BUTTON:
                                 switch (UI_form_pointer->data.element[element_number].state)
                                 {
-                                    case NORMAL:
+                                    case UI_NORMAL:
                                         game.texture_manager.draw(UI_form_pointer->data.element[element_number].texture.normal,false,UI_form_pointer->data.element[element_number].position.x,UI_form_pointer->data.element[element_number].position.y,UI_form_pointer->data.element[element_number].position.z,UI_form_pointer->data.element[element_number].size.x+zoom_value,UI_form_pointer->data.element[element_number].size.y+zoom_value,UI_form_pointer->data.element[element_number].texture.angle);
                                         if (UI_form_pointer->data.element[element_number].title.enabled) game.texture_manager.draw(UI_form_pointer->data.element[element_number].title.text,false,UI_form_pointer->data.element[element_number].title.position.x,UI_form_pointer->data.element[element_number].title.position.y,UI_form_pointer->data.element[element_number].title.position.z,UI_form_pointer->data.element[element_number].title.text->data.width,UI_form_pointer->data.element[element_number].title.text->data.height);
                                     break;
-                                    case HIGHLIGHTED:
+                                    case UI_HIGHLIGHTED:
                                         game.texture_manager.draw(UI_form_pointer->data.element[element_number].texture.highlighted,false,UI_form_pointer->data.element[element_number].position.x,UI_form_pointer->data.element[element_number].position.y,UI_form_pointer->data.element[element_number].position.z,UI_form_pointer->data.element[element_number].size.x+zoom_value,UI_form_pointer->data.element[element_number].size.y+zoom_value,UI_form_pointer->data.element[element_number].texture.angle);
                                         if (UI_form_pointer->data.element[element_number].title.enabled) game.texture_manager.draw(UI_form_pointer->data.element[element_number].title.text,false,UI_form_pointer->data.element[element_number].title.position.x,UI_form_pointer->data.element[element_number].title.position.y,UI_form_pointer->data.element[element_number].title.position.z,UI_form_pointer->data.element[element_number].title.text->data.width,UI_form_pointer->data.element[element_number].title.text->data.height);
                                     break;
-                                    case DISABLED:
+                                    case UI_DISABLED:
                                         game.texture_manager.draw(UI_form_pointer->data.element[element_number].texture.disabled,false,UI_form_pointer->data.element[element_number].position.x,UI_form_pointer->data.element[element_number].position.y,UI_form_pointer->data.element[element_number].position.z,UI_form_pointer->data.element[element_number].size.x+zoom_value,UI_form_pointer->data.element[element_number].size.y+zoom_value,UI_form_pointer->data.element[element_number].texture.angle);
                                         if (UI_form_pointer->data.element[element_number].title.enabled) game.texture_manager.draw(UI_form_pointer->data.element[element_number].title.text,false,UI_form_pointer->data.element[element_number].title.position.x,UI_form_pointer->data.element[element_number].title.position.y,UI_form_pointer->data.element[element_number].title.position.z,UI_form_pointer->data.element[element_number].title.text->data.width,UI_form_pointer->data.element[element_number].title.text->data.height);
                                     break;
@@ -493,13 +493,13 @@ void UI_manager_class::render(void)
                             case UI_ELEMENT_TEXTLABEL:
                                 switch (UI_form_pointer->data.element[element_number].state)
                                 {
-                                    case NORMAL:
+                                    case UI_NORMAL:
                                         if (UI_form_pointer->data.element[element_number].title.enabled) game.texture_manager.draw(UI_form_pointer->data.element[element_number].title.text,false,UI_form_pointer->data.element[element_number].title.position.x,UI_form_pointer->data.element[element_number].title.position.y,UI_form_pointer->data.element[element_number].title.position.z,UI_form_pointer->data.element[element_number].title.text->data.width,UI_form_pointer->data.element[element_number].title.text->data.height);
                                     break;
-                                    case HIGHLIGHTED:
+                                    case UI_HIGHLIGHTED:
                                         if (UI_form_pointer->data.element[element_number].title.enabled) game.texture_manager.draw(UI_form_pointer->data.element[element_number].title.text,false,UI_form_pointer->data.element[element_number].title.position.x,UI_form_pointer->data.element[element_number].title.position.y,UI_form_pointer->data.element[element_number].title.position.z,UI_form_pointer->data.element[element_number].title.text->data.width,UI_form_pointer->data.element[element_number].title.text->data.height);
                                     break;
-                                    case DISABLED:
+                                    case UI_DISABLED:
                                         if (UI_form_pointer->data.element[element_number].title.enabled) game.texture_manager.draw(UI_form_pointer->data.element[element_number].title.text,false,UI_form_pointer->data.element[element_number].title.position.x,UI_form_pointer->data.element[element_number].title.position.y,UI_form_pointer->data.element[element_number].title.position.z,UI_form_pointer->data.element[element_number].title.text->data.width,UI_form_pointer->data.element[element_number].title.text->data.height);
                                     break;
                                     default:
@@ -511,17 +511,17 @@ void UI_manager_class::render(void)
                             case UI_ELEMENT_BAR:
                                 switch (UI_form_pointer->data.element[element_number].state)
                                 {
-                                    case NORMAL:
+                                    case UI_NORMAL:
                                         temp_float = (UI_form_pointer->data.element[element_number].value / UI_form_pointer->data.element[element_number].value_max) * (UI_form_pointer->data.element[element_number].size.x+zoom_value);
                                         game.texture_manager.draw(UI_form_pointer->data.element[element_number].texture.normal,false,UI_form_pointer->data.element[element_number].position.x-((UI_form_pointer->data.element[element_number].size.x/2)+zoom_value)+(temp_float/2.0f),UI_form_pointer->data.element[element_number].position.y,UI_form_pointer->data.element[element_number].position.z,temp_float,UI_form_pointer->data.element[element_number].size.y+zoom_value,UI_form_pointer->data.element[element_number].texture.angle);
                                         if (UI_form_pointer->data.element[element_number].tooltip.enabled) game.texture_manager.draw(UI_form_pointer->data.element[element_number].tooltip.text,false,UI_form_pointer->data.element[element_number].tooltip.position.x,UI_form_pointer->data.element[element_number].tooltip.position.y,UI_form_pointer->data.element[element_number].tooltip.position.z,UI_form_pointer->data.element[element_number].tooltip.text->data.width,UI_form_pointer->data.element[element_number].tooltip.text->data.height);
                                     break;
-                                    case HIGHLIGHTED:
+                                    case UI_HIGHLIGHTED:
                                         temp_float = (UI_form_pointer->data.element[element_number].value / UI_form_pointer->data.element[element_number].value_max) * (UI_form_pointer->data.element[element_number].size.x+zoom_value);
                                         game.texture_manager.draw(UI_form_pointer->data.element[element_number].texture.highlighted,false,UI_form_pointer->data.element[element_number].position.x-((UI_form_pointer->data.element[element_number].size.x/2)+zoom_value)+(temp_float/2.0f),UI_form_pointer->data.element[element_number].position.y,UI_form_pointer->data.element[element_number].position.z,temp_float,UI_form_pointer->data.element[element_number].size.y+zoom_value,UI_form_pointer->data.element[element_number].texture.angle);
                                         if (UI_form_pointer->data.element[element_number].tooltip.enabled) game.texture_manager.draw(UI_form_pointer->data.element[element_number].tooltip.text,false,UI_form_pointer->data.element[element_number].tooltip.position.x,UI_form_pointer->data.element[element_number].tooltip.position.y,UI_form_pointer->data.element[element_number].tooltip.position.z,UI_form_pointer->data.element[element_number].tooltip.text->data.width,UI_form_pointer->data.element[element_number].tooltip.text->data.height);
                                     break;
-                                    case DISABLED:
+                                    case UI_DISABLED:
                                         temp_float = (UI_form_pointer->data.element[element_number].value / UI_form_pointer->data.element[element_number].value_max) * (UI_form_pointer->data.element[element_number].size.x+zoom_value);
                                         game.texture_manager.draw(UI_form_pointer->data.element[element_number].texture.disabled,false,UI_form_pointer->data.element[element_number].position.x-((UI_form_pointer->data.element[element_number].size.x/2)+zoom_value)+(temp_float/2.0f),UI_form_pointer->data.element[element_number].position.y,UI_form_pointer->data.element[element_number].position.z,temp_float,UI_form_pointer->data.element[element_number].size.y+zoom_value,UI_form_pointer->data.element[element_number].texture.angle);
                                         if (UI_form_pointer->data.element[element_number].tooltip.enabled) game.texture_manager.draw(UI_form_pointer->data.element[element_number].tooltip.text,false,UI_form_pointer->data.element[element_number].tooltip.position.x,UI_form_pointer->data.element[element_number].tooltip.position.y,UI_form_pointer->data.element[element_number].tooltip.position.z,UI_form_pointer->data.element[element_number].tooltip.text->data.width,UI_form_pointer->data.element[element_number].tooltip.text->data.height);
@@ -620,7 +620,7 @@ event_struct  UI_manager_class::process_form_elements(UI_form_struct *UI_form_po
                 if ((UI_form_pointer->data.element[element_number].type == UI_ELEMENT_ITEM) && (UI_form_pointer->data.element[element_number].value < 0)) allow_process = false;
                 if (allow_process)
                 {
-                    if (UI_form_pointer->data.element[element_number].state != DISABLED)
+                    if (UI_form_pointer->data.element[element_number].state != UI_DISABLED)
                     {
                         // ------------------------- Drag n drop -------------------------
                         if (UI_form_pointer->data.element[element_number].drag_active)
@@ -679,12 +679,12 @@ event_struct  UI_manager_class::process_form_elements(UI_form_struct *UI_form_po
                             // ----------------- highlighting element ------------------------------
                             if (window_in_focus)
                             {
-                                if ((UI_form_pointer->data.element[element_number].state  != HIGHLIGHTED) && (UI_form_pointer->data.element[element_number].sound.on_mouse_over.enabled)) game.sound_manager.play(UI_form_pointer->data.element[element_number].sound.on_mouse_over.sound);
-                                UI_form_pointer->data.element[element_number].state        = HIGHLIGHTED;
+                                if ((UI_form_pointer->data.element[element_number].state  != UI_HIGHLIGHTED) && (UI_form_pointer->data.element[element_number].sound.on_mouse_over.enabled)) game.sound_manager.play(UI_form_pointer->data.element[element_number].sound.on_mouse_over.sound);
+                                UI_form_pointer->data.element[element_number].state        = UI_HIGHLIGHTED;
                             }
                             else
                             {
-                                UI_form_pointer->data.element[element_number].state        = NORMAL;
+                                UI_form_pointer->data.element[element_number].state        = UI_NORMAL;
                             }
                             // ------------------------- clicked element -------------------------
                             float dragged_by_x = 0.0f;
@@ -717,15 +717,15 @@ event_struct  UI_manager_class::process_form_elements(UI_form_struct *UI_form_po
                         }
                         else
                         {
-                            UI_form_pointer->data.element[element_number].state = NORMAL;
+                            UI_form_pointer->data.element[element_number].state = UI_NORMAL;
                         }
                     }
-                    if (UI_form_pointer->data.element[element_number].state == HIGHLIGHTED)
+                    if (UI_form_pointer->data.element[element_number].state == UI_HIGHLIGHTED)
                     {
                         UI_form_pointer->data.element[element_number].zoom.value += UI_form_pointer->data.element[element_number].zoom.speed;
                         if (UI_form_pointer->data.element[element_number].zoom.value > UI_form_pointer->data.element[element_number].zoom.maximum) UI_form_pointer->data.element[element_number].zoom.value = UI_form_pointer->data.element[element_number].zoom.maximum;
                     }
-                    if ((UI_form_pointer->data.element[element_number].state != HIGHLIGHTED) && (UI_form_pointer->data.element[element_number].zoom.value > 0.0f))
+                    if ((UI_form_pointer->data.element[element_number].state != UI_HIGHLIGHTED) && (UI_form_pointer->data.element[element_number].zoom.value > 0.0f))
                     {
                         UI_form_pointer->data.element[element_number].zoom.value -= UI_form_pointer->data.element[element_number].zoom.speed;
                         if (UI_form_pointer->data.element[element_number].zoom.value < 0.0f) UI_form_pointer->data.element[element_number].zoom.value = 0.0f;
