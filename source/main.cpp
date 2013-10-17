@@ -121,6 +121,41 @@ extern "C" int main(int argc, char** argv)
 // --------------------------------------------------------------------------------------------------------------------------
 // | Main application loop
 // --------------------------------------------------------------------------------------------------------------------------
+
+    // --- TEST ---
+    if (1 == 1)
+    {
+        game.state = STATE_GAME;
+        if (game.music_manager.next_track)
+        {
+            game.music_manager.play(game.music_manager.current);
+            game.music_manager.next_track = false;
+        }
+        update_player_profile  (game.UI_manager.UI_form_get(UID_PCPROFILE));
+        update_character_window(game.UI_manager.UI_form_get(UID_CHARACTER));
+        game.music_manager.next_track = true;
+        game.UI_manager.UI_form_transition(UID_MENU_GAME_NEW,UID_MENU_MAIN);
+        game.UI_manager.UI_form_disable(UID_MENU_MAIN);
+        game.core.game_menu_active = false;
+        game.UI_manager.UI_form_disable(UID_EQUIPMENT);
+        game.core.equipment_active = false;
+        game.UI_manager.UI_form_disable(UID_QUEST_LOG);
+        game.core.quest_log_active = false;
+        game.UI_manager.UI_form_disable(UID_CHARACTER);
+        game.core.character_active = false;
+        game.UI_manager.UI_form_disable(UID_INVENTORY);
+        game.core.inventory_active = false;
+        game.UI_manager.UI_form_disable(UID_SKILLBOOK);
+        game.core.skillbook_active = false;
+        game.UI_manager.UI_form_disable(UID_NPCVENDOR);
+        game.core.npcvendor_active = false;
+        game.UI_manager.UI_form_enable(UID_PCPROFILE);
+        game.UI_manager.UI_form_enable(UID_ACTIONBAR);
+    }
+// --------------------------------------------------------------------------------------------------------------------------
+
+
+
     while (game.state != STATE_QUIT)
     {
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);

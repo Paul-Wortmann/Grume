@@ -24,6 +24,7 @@
 
 #include "menu_main.hpp"
 #include "../game/game.hpp"
+#include "../core/misc.hpp"
 
 extern game_class         game;
 
@@ -37,16 +38,16 @@ void setup_inventory_window(int UID)
     UI_form_pointer = new UI_form_struct;
     UI_form_pointer = game.UI_manager.UI_form_add(UID_INVENTORY);
 
-    UI_form_pointer->data.UID                     = UID;
-    UI_form_pointer->data.enabled                 = false;
-    UI_form_pointer->data.mouse_over_menu         = false;
-    UI_form_pointer->data.mouse_over_title        = false;
-    UI_form_pointer->data.position.x              = 0.0f;
-    UI_form_pointer->data.position.y              = 0.0f;
-    UI_form_pointer->data.position.z              = 0.0f;
-    UI_form_pointer->data.size.x                  = 0.5f;
-    UI_form_pointer->data.size.y                  = UI_form_pointer->data.size.x * 2.5f;
-    UI_form_pointer->data.texture.angle           = 0.0f;
+    UI_form_pointer->data.UID                         = UID;
+    UI_form_pointer->data.enabled                     = false;
+    UI_form_pointer->data.mouse_over_menu             = false;
+    UI_form_pointer->data.mouse_over_title            = false;
+    UI_form_pointer->data.position.x                  = 0.0f;
+    UI_form_pointer->data.position.y                  = 0.0f;
+    UI_form_pointer->data.position.z                  = 0.0f;
+    UI_form_pointer->data.size.x                      = 0.5f;
+    UI_form_pointer->data.size.y                      = UI_form_pointer->data.size.x * 2.5f;
+    UI_form_pointer->data.texture.angle               = 0.0f;
     UI_form_pointer->data.texture.base                = game.texture_manager.add_texture("data/textures/UI/menu/inventory_background.png");
     UI_form_pointer->data.texture.normal              = game.texture_manager.add_texture("data/textures/UI/menu/button_normal.png");
     UI_form_pointer->data.texture.highlighted         = game.texture_manager.add_texture("data/textures/UI/menu/button_highlighted.png");
@@ -56,34 +57,34 @@ void setup_inventory_window(int UID)
     UI_form_pointer->data.sound.on_mouse_over.enabled = true;
     UI_form_pointer->data.sound.on_mouse_over.sound   = game.sound_manager.add_sound("data/sound/menu/menu_move_00.wav");
     UI_form_pointer->data.font                        = game.font_manager.add_font("data/fonts/font_001.ttf");
-    UI_form_pointer->data.mouse_delay.maximum     = 30;
-    UI_form_pointer->data.event.id                = 0;
-    UI_form_pointer->data.color.normal.r          = 128;
-    UI_form_pointer->data.color.normal.b          = 128;
-    UI_form_pointer->data.color.normal.g          = 128;
-    UI_form_pointer->data.color.normal.a          = 255;
-    UI_form_pointer->data.color.highlighted.r     = 192;
-    UI_form_pointer->data.color.highlighted.b     = 192;
-    UI_form_pointer->data.color.highlighted.g     = 192;
-    UI_form_pointer->data.color.highlighted.a     = 255;
-    UI_form_pointer->data.color.disabled.r        = 064;
-    UI_form_pointer->data.color.disabled.b        = 064;
-    UI_form_pointer->data.color.disabled.g        = 064;
-    UI_form_pointer->data.color.disabled.a        = 128;
-    UI_form_pointer->data.zoom.enabled            = true;
-    UI_form_pointer->data.zoom.maximum            = 0.02f;
-    UI_form_pointer->data.zoom.speed              = 0.004f;
-    UI_form_pointer->data.texture.angle           = 0.0f;
-    UI_form_pointer->data.title.text              = game.texture_manager.add_texture(game.font_manager.root,"Inventory",0.8f,0,0,TEXTURE_STRING);
-    UI_form_pointer->data.title.enabled           = true;
-    UI_form_pointer->data.title.size.x            = 0;//UI_form_pointer->data.title.text.length()/1.2f;
-    UI_form_pointer->data.title.size.y            = 0;//UI_form_pointer->data.title.size.x*4;
+    UI_form_pointer->data.mouse_delay.maximum         = 30;
+    UI_form_pointer->data.event.id                    = 0;
+    UI_form_pointer->data.color.normal.r              = 128;
+    UI_form_pointer->data.color.normal.b              = 128;
+    UI_form_pointer->data.color.normal.g              = 128;
+    UI_form_pointer->data.color.normal.a              = 255;
+    UI_form_pointer->data.color.highlighted.r         = 192;
+    UI_form_pointer->data.color.highlighted.b         = 192;
+    UI_form_pointer->data.color.highlighted.g         = 192;
+    UI_form_pointer->data.color.highlighted.a         = 255;
+    UI_form_pointer->data.color.disabled.r            = 064;
+    UI_form_pointer->data.color.disabled.b            = 064;
+    UI_form_pointer->data.color.disabled.g            = 064;
+    UI_form_pointer->data.color.disabled.a            = 128;
+    UI_form_pointer->data.zoom.enabled                = true;
+    UI_form_pointer->data.zoom.maximum                = 0.02f;
+    UI_form_pointer->data.zoom.speed                  = 0.004f;
+    UI_form_pointer->data.texture.angle               = 0.0f;
+    UI_form_pointer->data.title.text                  = game.texture_manager.add_texture(game.font_manager.root,"Inventory",0.8f,0,0,TEXTURE_STRING);
+    UI_form_pointer->data.title.enabled               = true;
+    UI_form_pointer->data.title.size.x                = 0;//UI_form_pointer->data.title.text.length()/1.2f;
+    UI_form_pointer->data.title.size.y                = 0;//UI_form_pointer->data.title.size.x*4;
     UI_form_pointer->data.title.position.x            = UI_form_pointer->data.position.x;
     UI_form_pointer->data.title.position.y            = UI_form_pointer->data.position.y+(UI_form_pointer->data.size.y/2.24f);
-    UI_form_pointer->data.title_bar.size.x        = UI_form_pointer->data.size.x; // x/2.0f for middle section
-    UI_form_pointer->data.title_bar.size.y        = UI_form_pointer->data.size.y / 10.0f;
-    UI_form_pointer->data.title_bar.position.x    = UI_form_pointer->data.position.x;
-    UI_form_pointer->data.title_bar.position.y    = UI_form_pointer->data.position.y+(UI_form_pointer->data.size.y/2.0f)-(UI_form_pointer->data.title_bar.size.y/2.0f);
+    UI_form_pointer->data.title_bar.size.x            = UI_form_pointer->data.size.x; // x/2.0f for middle section
+    UI_form_pointer->data.title_bar.size.y            = UI_form_pointer->data.size.y / 10.0f;
+    UI_form_pointer->data.title_bar.position.x        = UI_form_pointer->data.position.x;
+    UI_form_pointer->data.title_bar.position.y        = UI_form_pointer->data.position.y+(UI_form_pointer->data.size.y/2.0f)-(UI_form_pointer->data.title_bar.size.y/2.0f);
 
     // ---------------------------- Setup window elements ----------------------------------------------------
     UI_form_pointer->data.number_of_elements = 51;
@@ -1212,8 +1213,7 @@ void setup_inventory_window(int UID)
     element_number = 50; //--- Gold amount
     UI_form_pointer->data.element[element_number].window_UID                  = UI_form_pointer->data.UID;
     UI_form_pointer->data.element[element_number].element_UID                 = element_number;
-    UI_form_pointer->data.element[element_number].title.text                  = NULL;
-    UI_form_pointer->data.element[element_number].title.enabled               = false;
+    UI_form_pointer->data.element[element_number].title.enabled               = true;
     UI_form_pointer->data.element[element_number].dragable                    = false;
     UI_form_pointer->data.element[element_number].active                      = true;
     UI_form_pointer->data.element[element_number].type                        = TEXTLABEL;
@@ -1229,13 +1229,17 @@ void setup_inventory_window(int UID)
     UI_form_pointer->data.element[element_number].sound.on_click.enabled      = false;
     UI_form_pointer->data.element[element_number].sound.on_mouse_over.enabled = false;
     UI_form_pointer->data.element[element_number].mouse_delay.maximum         = 30;
-    UI_form_pointer->data.element[element_number].tooltip.text                = game.texture_manager.add_texture(game.font_manager.root,"0",0.8f,0,0,TEXTURE_STRING);
-    UI_form_pointer->data.element[element_number].tooltip.position.x          = UI_form_pointer->data.position.x-(UI_form_pointer->data.size.x/3.20f);
-    UI_form_pointer->data.element[element_number].tooltip.position.y          = UI_form_pointer->data.position.y-(UI_form_pointer->data.size.y/2.40f);
+    UI_form_pointer->data.element[element_number].title.text                  = new texture_type;
+    game.texture_manager.load_string(UI_form_pointer->data.element[element_number].title.text,game.font_manager.root,"0",0.8f,255,255,255,255);
+    UI_form_pointer->data.element[element_number].title.position.x            = UI_form_pointer->data.position.x-(UI_form_pointer->data.size.x/3.80f);
+    UI_form_pointer->data.element[element_number].title.position.y            = UI_form_pointer->data.position.y-(UI_form_pointer->data.size.y/2.40f);
 };
 
 void process_inventory_window(UI_form_struct *UI_form_pointer)
 {
+    int element_number = 50; // Gold amount
+    game.texture_manager.load_string(UI_form_pointer->data.element[element_number].title.text,game.font_manager.root,ullint_to_string(game.player.gold),0.8f,255,255,255,255,TEXTURE_RENDER_LEFT);
+    game.player.gold++;
     if (UI_form_pointer->data.event.id > EVENT_NONE)
     {
         switch (UI_form_pointer->data.event.id)
@@ -1246,7 +1250,7 @@ void process_inventory_window(UI_form_struct *UI_form_pointer)
                 game.core.io.mouse_button_left = false;
             break;
             case (EVENT_UI_LIST_SORT): //Window stack sort
-                UI_form_pointer->data.event.id = EVENT_NONE;
+                UI_form_pointer->data.event.id   = EVENT_NONE;
                 game.UI_manager.data.event.id    = EVENT_UI_LIST_SORT;
                 game.UI_manager.data.event.value = UI_form_pointer->data.UID;
             break;

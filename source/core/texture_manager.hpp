@@ -42,6 +42,11 @@
 #define TEXTURE_SPRITESHEET     2
 #define TEXTURE_STRING          3
 
+#define TEXTURE_RENDER_CENTERED 100
+#define TEXTURE_RENDER_LEFT     101
+#define TEXTURE_RENDER_RIGHT    102
+
+
 struct frame_type
 {
     bool      active;
@@ -68,6 +73,7 @@ struct texture_data_type
 {
     bool             loaded;
     int              texture_flag;
+    int              render_positioning;
     std::string      path;
     float            width;
     float            height;
@@ -110,6 +116,8 @@ class texture_manager_class
         bool          load_sprite_sheet(texture_type *texure);
         bool          load_sprite_sheet(texture_type *texure, int width_set, int height_set);
         bool          load_string(texture_type *texure);
+        bool          load_string(texture_type *texture_pointer, font_type* font_pointer, std::string text_string, float text_size, int r, int g, int b, int a);
+        bool          load_string(texture_type *texture_pointer, font_type* font_pointer, std::string text_string, float text_size, int r, int g, int b, int a, int render_position);
         void          bind_image(texture_type *texure);
         void          process(texture_type *texure);
         void          draw(texture_type *texure, bool rumble_set, float pos_x, float pos_y, float pos_z, float width_set, float height_set);
