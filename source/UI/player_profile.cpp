@@ -139,7 +139,7 @@ void setup_player_profile(int UID)
         UI_form_pointer->data.element[element_count].event.id                       = 0;
         UI_form_pointer->data.element[element_count].state                          = NORMAL;
         UI_form_pointer->data.element[element_count].selected                       = false;
-        UI_form_pointer->data.element[element_count].type                           = BUTTON;
+        UI_form_pointer->data.element[element_count].type                           = UI_ELEMENT_BUTTON;
         UI_form_pointer->data.element[element_count].sub_type                       = 0;//ITEM_NONE;// TEST
         UI_form_pointer->data.element[element_count].quantity                       = 1;
         UI_form_pointer->data.element[element_count].value                          = 0.0f;
@@ -161,7 +161,7 @@ void setup_player_profile(int UID)
     UI_form_pointer->data.element[element_number].title.text                = NULL;
     UI_form_pointer->data.element[element_number].title.enabled             = false;
     UI_form_pointer->data.element[element_number].active                    = true;
-    UI_form_pointer->data.element[element_number].type                      = IMAGE;
+    UI_form_pointer->data.element[element_number].type                      = UI_ELEMENT_IMAGE;
     UI_form_pointer->data.element[element_number].zoom.enabled              = false;
     UI_form_pointer->data.element[element_number].tooltip.enabled           = true;
     UI_form_pointer->data.element[element_number].tooltip.text              = NULL;
@@ -183,7 +183,7 @@ void setup_player_profile(int UID)
     UI_form_pointer->data.element[element_number].title.text                = NULL;
     UI_form_pointer->data.element[element_number].title.enabled             = false;
     UI_form_pointer->data.element[element_number].active                    = true;
-    UI_form_pointer->data.element[element_number].type                      = IMAGE;
+    UI_form_pointer->data.element[element_number].type                      = UI_ELEMENT_IMAGE;
     UI_form_pointer->data.element[element_number].zoom.enabled              = false;
     UI_form_pointer->data.element[element_number].tooltip.enabled           = false;
     UI_form_pointer->data.element[element_number].color                     = UI_form_pointer->data.color;
@@ -202,7 +202,7 @@ void setup_player_profile(int UID)
     UI_form_pointer->data.element[element_number].title.text                = NULL;
     UI_form_pointer->data.element[element_number].title.enabled             = false;
     UI_form_pointer->data.element[element_number].active                    = true;
-    UI_form_pointer->data.element[element_number].type                      = BAR;
+    UI_form_pointer->data.element[element_number].type                      = UI_ELEMENT_BAR;
     UI_form_pointer->data.element[element_number].value                     = 0;
     UI_form_pointer->data.element[element_number].value_max                 = 100;
     UI_form_pointer->data.element[element_number].zoom.enabled              = false;
@@ -226,7 +226,7 @@ void setup_player_profile(int UID)
     UI_form_pointer->data.element[element_number].title.text                = NULL;
     UI_form_pointer->data.element[element_number].title.enabled             = false;
     UI_form_pointer->data.element[element_number].active                    = true;
-    UI_form_pointer->data.element[element_number].type                      = BAR;
+    UI_form_pointer->data.element[element_number].type                      = UI_ELEMENT_BAR;
     UI_form_pointer->data.element[element_number].value                     = 100;
     UI_form_pointer->data.element[element_number].value_max                 = 100;
     UI_form_pointer->data.element[element_number].zoom.enabled              = false;
@@ -250,7 +250,7 @@ void setup_player_profile(int UID)
     UI_form_pointer->data.element[element_number].title.text                = NULL;
     UI_form_pointer->data.element[element_number].title.enabled             = false;
     UI_form_pointer->data.element[element_number].active                    = true;
-    UI_form_pointer->data.element[element_number].type                      = IMAGE;
+    UI_form_pointer->data.element[element_number].type                      = UI_ELEMENT_IMAGE;
     UI_form_pointer->data.element[element_number].zoom.enabled              = false;
     UI_form_pointer->data.element[element_number].tooltip.enabled           = false;
     UI_form_pointer->data.element[element_number].color                     = UI_form_pointer->data.color;

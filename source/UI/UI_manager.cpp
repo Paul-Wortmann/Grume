@@ -463,7 +463,7 @@ void UI_manager_class::render(void)
                         float temp_float = 0.0f;
                         switch (UI_form_pointer->data.element[element_number].type)
                         {
-                            case IMAGE:
+                            case UI_ELEMENT_IMAGE:
                                 if (UI_form_pointer->data.element[element_number].selected) game.texture_manager.draw(UI_form_pointer->data.element[element_number].texture.highlighted,false,UI_form_pointer->data.element[element_number].position.x,UI_form_pointer->data.element[element_number].position.y,UI_form_pointer->data.element[element_number].position.z,UI_form_pointer->data.element[element_number].size.x+zoom_value,UI_form_pointer->data.element[element_number].size.y+zoom_value,UI_form_pointer->data.element[element_number].texture.angle);
                                 game.texture_manager.draw(UI_form_pointer->data.element[element_number].texture.normal,false,UI_form_pointer->data.element[element_number].position.x,UI_form_pointer->data.element[element_number].position.y,UI_form_pointer->data.element[element_number].position.z,UI_form_pointer->data.element[element_number].size.x+zoom_value,UI_form_pointer->data.element[element_number].size.y+zoom_value,UI_form_pointer->data.element[element_number].texture.angle);
                                 if ((UI_form_pointer->data.element[element_number].title.enabled) && (UI_form_pointer->data.element[element_number].mouse_over))
@@ -471,7 +471,7 @@ void UI_manager_class::render(void)
                                     game.texture_manager.draw(UI_form_pointer->data.element[element_number].title.text,false,UI_form_pointer->data.element[element_number].title.position.x,UI_form_pointer->data.element[element_number].title.position.y,UI_form_pointer->data.element[element_number].title.position.z,UI_form_pointer->data.element[element_number].title.text->data.width,UI_form_pointer->data.element[element_number].title.text->data.height);
                                 }
                             break;
-                            case BUTTON:
+                            case UI_ELEMENT_BUTTON:
                                 switch (UI_form_pointer->data.element[element_number].state)
                                 {
                                     case NORMAL:
@@ -490,7 +490,7 @@ void UI_manager_class::render(void)
                                     break;
                                 }
                             break;
-                            case TEXTLABEL:
+                            case UI_ELEMENT_TEXTLABEL:
                                 switch (UI_form_pointer->data.element[element_number].state)
                                 {
                                     case NORMAL:
@@ -506,9 +506,9 @@ void UI_manager_class::render(void)
                                     break;
                                 }
                             break;
-                            case SLIDER:
+                            case UI_ELEMENT_SLIDER:
                             break;
-                            case BAR:
+                            case UI_ELEMENT_BAR:
                                 switch (UI_form_pointer->data.element[element_number].state)
                                 {
                                     case NORMAL:
@@ -530,15 +530,15 @@ void UI_manager_class::render(void)
                                     break;
                                 }
                             break;
-                            case TOGGLE:
+                            case UI_ELEMENT_TOGGLE:
                             break;
-                            case CHECKBOX:
+                            case UI_ELEMENT_CHECKBOX:
                             break;
-                            case DROPDOWN:
+                            case UI_ELEMENT_DROPDOWN:
                             break;
-                            case SELECTION:
+                            case UI_ELEMENT_SELECTION:
                             break;
-                            case ITEM:
+                            case UI_ELEMENT_ITEM:
                                 if (UI_form_pointer->data.element[element_number].value > -1)
                                 {
                                     if (UI_form_pointer->data.element[element_number].drag_active) element_draged = element_number;
@@ -549,7 +549,7 @@ void UI_manager_class::render(void)
                             default:
                             break;
                         }
-                        if ((UI_form_pointer->data.element[element_number].tooltip.text)&&(UI_form_pointer->data.element[element_number].tooltip.enabled)) game.texture_manager.draw(UI_form_pointer->data.element[element_number].tooltip.text,false,UI_form_pointer->data.element[element_number].tooltip.position.x,UI_form_pointer->data.element[element_number].tooltip.position.y,UI_form_pointer->data.element[element_number].tooltip.position.z,UI_form_pointer->data.element[element_number].tooltip.text->data.width,UI_form_pointer->data.element[element_number].tooltip.text->data.height);
+                        //if ((UI_form_pointer->data.element[element_number].tooltip.text)&&(UI_form_pointer->data.element[element_number].tooltip.enabled)) game.texture_manager.draw(UI_form_pointer->data.element[element_number].tooltip.text,false,UI_form_pointer->data.element[element_number].tooltip.position.x,UI_form_pointer->data.element[element_number].tooltip.position.y,UI_form_pointer->data.element[element_number].tooltip.position.z,UI_form_pointer->data.element[element_number].tooltip.text->data.width,UI_form_pointer->data.element[element_number].tooltip.text->data.height);
                     }
                 }
                 if ((element_draged >= 0) && (UI_form_pointer->data.element[element_draged].active) && (UI_form_pointer->data.element[element_draged].value > -1))
@@ -617,7 +617,7 @@ event_struct  UI_manager_class::process_form_elements(UI_form_struct *UI_form_po
                 // ------------------------- -------------------------
                 if ((UI_form_pointer->data.element[element_number].event.id == EVENT_ELEMENT_MOUSE_RIGHT) || (UI_form_pointer->data.element[element_number].event.id == EVENT_ELEMENT_MOUSE_LEFT)) UI_form_pointer->data.element[element_number].event.id = EVENT_NONE;
                 if (!UI_form_pointer->data.element[element_number].active) allow_process = false;
-                if ((UI_form_pointer->data.element[element_number].type == ITEM) && (UI_form_pointer->data.element[element_number].value < 0)) allow_process = false;
+                if ((UI_form_pointer->data.element[element_number].type == UI_ELEMENT_ITEM) && (UI_form_pointer->data.element[element_number].value < 0)) allow_process = false;
                 if (allow_process)
                 {
                     if (UI_form_pointer->data.element[element_number].state != DISABLED)
@@ -964,8 +964,8 @@ void UI_manager_class::swap_elements(int UI_form_UID_src, int UI_element_src, in
     UI_form_struct* UI_form_UID_dst_pointer = game.UI_manager.UI_form_get(UI_form_UID_dst);
     //game.core.log.file_write("Moving element from - ",UI_form_UID_src," - ",UI_element_src," to - ",UI_form_UID_dst," - ",UI_element_dst);
     if     ((allow_swap_elements)
-        &&  (UI_form_UID_src_pointer->data.element[UI_element_src].type == ITEM)
-        &&  (UI_form_UID_dst_pointer->data.element[UI_element_dst].type == ITEM))
+        &&  (UI_form_UID_src_pointer->data.element[UI_element_src].type == UI_ELEMENT_ITEM)
+        &&  (UI_form_UID_dst_pointer->data.element[UI_element_dst].type == UI_ELEMENT_ITEM))
     {
         item_type* item_pointer_src = game.item_manager.add_item(UI_form_UID_src_pointer->data.element[UI_element_src].value);
         item_type* item_pointer_dst = game.item_manager.add_item(UI_form_UID_src_pointer->data.element[UI_element_src].value);

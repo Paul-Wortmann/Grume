@@ -42,20 +42,24 @@
 #define EVENT_UI_FORM_DRAG         10001
 #define EVENT_UI_ELEMENT_DRAG      10002
 
-#define DISABLED                   0
-#define NORMAL                     1
-#define HIGHLIGHTED                2
+#define UI_DISABLED                0
+#define UI_NORMAL                  1
+#define UI_HIGHLIGHTED             2
 
-#define BUTTON                     3
-#define TEXTLABEL                  4
-#define IMAGE                      5
-#define SLIDER                     6
-#define BAR                        7
-#define TOGGLE                     8
-#define CHECKBOX                   9
-#define DROPDOWN                   10
-#define SELECTION                  11
-#define ITEM                       12
+#define DISABLED                0
+#define NORMAL                  1
+#define HIGHLIGHTED             2
+
+#define UI_ELEMENT_BUTTON          3
+#define UI_ELEMENT_TEXTLABEL       4
+#define UI_ELEMENT_IMAGE           5
+#define UI_ELEMENT_SLIDER          6
+#define UI_ELEMENT_BAR             7
+#define UI_ELEMENT_TOGGLE          8
+#define UI_ELEMENT_CHECKBOX        9
+#define UI_ELEMENT_DROPDOWN        10
+#define UI_ELEMENT_SELECTION       11
+#define UI_ELEMENT_ITEM            12
 
 struct event_struct
 {

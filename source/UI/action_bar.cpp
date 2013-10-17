@@ -141,7 +141,7 @@ void setup_action_bar(int UID)
         UI_form_pointer->data.element[element_count].event.id                       = 0;
         UI_form_pointer->data.element[element_count].state                          = NORMAL;
         UI_form_pointer->data.element[element_count].selected                       = false;
-        UI_form_pointer->data.element[element_count].type                           = BUTTON;
+        UI_form_pointer->data.element[element_count].type                           = UI_ELEMENT_BUTTON;
         UI_form_pointer->data.element[element_count].sub_type                       = 0;//ITEM_NONE;// TEST
         UI_form_pointer->data.element[element_count].quantity                       = 1;
         UI_form_pointer->data.element[element_count].value                          = 0.0f;
@@ -163,12 +163,13 @@ void setup_action_bar(int UID)
     UI_form_pointer->data.element[element_number].title.text                = NULL;
     UI_form_pointer->data.element[element_number].active                    = true;
     UI_form_pointer->data.element[element_number].click_enabled             = false;
-    UI_form_pointer->data.element[element_number].type                      = BAR;
+    UI_form_pointer->data.element[element_number].type                      = UI_ELEMENT_BAR;
     UI_form_pointer->data.element[element_number].value                     = 0;
     UI_form_pointer->data.element[element_number].value_max                 = 1000;
     UI_form_pointer->data.element[element_number].zoom.enabled              = false;
     UI_form_pointer->data.element[element_number].tooltip.enabled           = true;
-    UI_form_pointer->data.element[element_number].tooltip.text              = game.texture_manager.add_texture(game.font_manager.root,"0%",0.8f,0,0,TEXTURE_STRING);
+    UI_form_pointer->data.element[element_number].tooltip.text              = new texture_type;
+    game.texture_manager.load_string(UI_form_pointer->data.element[element_number].tooltip.text,game.font_manager.root,"0",0.8f,255,255,255,255);
     UI_form_pointer->data.element[element_number].tooltip.size.x            = 12.0f;
     UI_form_pointer->data.element[element_number].tooltip.size.y            = 30.0f;
     UI_form_pointer->data.element[element_number].color                     = UI_form_pointer->data.color;
@@ -187,7 +188,7 @@ void setup_action_bar(int UID)
     UI_form_pointer->data.element[element_number].title.text                = NULL;
     UI_form_pointer->data.element[element_number].active                    = true;
     UI_form_pointer->data.element[element_number].click_enabled             = false;
-    UI_form_pointer->data.element[element_number].type                      = IMAGE;
+    UI_form_pointer->data.element[element_number].type                      = UI_ELEMENT_IMAGE;
     UI_form_pointer->data.element[element_number].zoom.enabled              = false;
     UI_form_pointer->data.element[element_number].tooltip.enabled           = false;
     UI_form_pointer->data.element[element_number].color                     = UI_form_pointer->data.color;
@@ -210,7 +211,7 @@ void setup_action_bar(int UID)
     UI_form_pointer->data.element[element_number].tooltip.size.x            = 12.0f;
     UI_form_pointer->data.element[element_number].tooltip.size.y            = 30.0f;
     UI_form_pointer->data.element[element_number].active                    = true;
-    UI_form_pointer->data.element[element_number].type                      = BUTTON;
+    UI_form_pointer->data.element[element_number].type                      = UI_ELEMENT_BUTTON;
     UI_form_pointer->data.element[element_number].color                     = UI_form_pointer->data.color;
     UI_form_pointer->data.element[element_number].zoom                      = UI_form_pointer->data.zoom;
     UI_form_pointer->data.element[element_number].zoom.enabled              = false;
@@ -235,7 +236,7 @@ void setup_action_bar(int UID)
     UI_form_pointer->data.element[element_number].tooltip.size.x            = 12.0f;
     UI_form_pointer->data.element[element_number].tooltip.size.y            = 30.0f;
     UI_form_pointer->data.element[element_number].active                    = true;
-    UI_form_pointer->data.element[element_number].type                      = BUTTON;
+    UI_form_pointer->data.element[element_number].type                      = UI_ELEMENT_BUTTON;
     UI_form_pointer->data.element[element_number].color                     = UI_form_pointer->data.color;
     UI_form_pointer->data.element[element_number].zoom                      = UI_form_pointer->data.zoom;
     UI_form_pointer->data.element[element_number].zoom.enabled              = false;
@@ -260,7 +261,7 @@ void setup_action_bar(int UID)
     UI_form_pointer->data.element[element_number].tooltip.size.x            = 12.0f;
     UI_form_pointer->data.element[element_number].tooltip.size.y            = 30.0f;
     UI_form_pointer->data.element[element_number].active                    = true;
-    UI_form_pointer->data.element[element_number].type                      = BUTTON;
+    UI_form_pointer->data.element[element_number].type                      = UI_ELEMENT_BUTTON;
     UI_form_pointer->data.element[element_number].color                     = UI_form_pointer->data.color;
     UI_form_pointer->data.element[element_number].zoom                      = UI_form_pointer->data.zoom;
     UI_form_pointer->data.element[element_number].zoom.enabled              = false;
@@ -285,7 +286,7 @@ void setup_action_bar(int UID)
     UI_form_pointer->data.element[element_number].tooltip.size.x            = 12.0f;
     UI_form_pointer->data.element[element_number].tooltip.size.y            = 30.0f;
     UI_form_pointer->data.element[element_number].active                    = true;
-    UI_form_pointer->data.element[element_number].type                      = BUTTON;
+    UI_form_pointer->data.element[element_number].type                      = UI_ELEMENT_BUTTON;
     UI_form_pointer->data.element[element_number].color                     = UI_form_pointer->data.color;
     UI_form_pointer->data.element[element_number].zoom                      = UI_form_pointer->data.zoom;
     UI_form_pointer->data.element[element_number].zoom.enabled              = false;
@@ -310,7 +311,7 @@ void setup_action_bar(int UID)
     UI_form_pointer->data.element[element_number].tooltip.size.x            = 12.0f;
     UI_form_pointer->data.element[element_number].tooltip.size.y            = 30.0f;
     UI_form_pointer->data.element[element_number].active                    = true;
-    UI_form_pointer->data.element[element_number].type                      = BUTTON;
+    UI_form_pointer->data.element[element_number].type                      = UI_ELEMENT_BUTTON;
     UI_form_pointer->data.element[element_number].color                     = UI_form_pointer->data.color;
     UI_form_pointer->data.element[element_number].zoom                      = UI_form_pointer->data.zoom;
     UI_form_pointer->data.element[element_number].zoom.enabled              = false;
@@ -335,7 +336,7 @@ void setup_action_bar(int UID)
     UI_form_pointer->data.element[element_number].tooltip.size.x            = 12.0f;
     UI_form_pointer->data.element[element_number].tooltip.size.y            = 30.0f;
     UI_form_pointer->data.element[element_number].active                    = true;
-    UI_form_pointer->data.element[element_number].type                      = BUTTON;
+    UI_form_pointer->data.element[element_number].type                      = UI_ELEMENT_BUTTON;
     UI_form_pointer->data.element[element_number].color                     = UI_form_pointer->data.color;
     UI_form_pointer->data.element[element_number].zoom                      = UI_form_pointer->data.zoom;
     UI_form_pointer->data.element[element_number].zoom.enabled              = false;
@@ -358,7 +359,7 @@ void setup_action_bar(int UID)
     UI_form_pointer->data.element[element_number].dragable                    = true;
     UI_form_pointer->data.element[element_number].click_enabled               = true;
     UI_form_pointer->data.element[element_number].active                      = true;
-    UI_form_pointer->data.element[element_number].type                        = ITEM;
+    UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_ITEM;
     UI_form_pointer->data.element[element_number].zoom.enabled                = false;
     UI_form_pointer->data.element[element_number].tooltip.enabled             = false;
     UI_form_pointer->data.element[element_number].value                       = -1;
@@ -380,7 +381,7 @@ void setup_action_bar(int UID)
     UI_form_pointer->data.element[element_number].dragable                    = true;
     UI_form_pointer->data.element[element_number].click_enabled               = true;
     UI_form_pointer->data.element[element_number].active                      = true;
-    UI_form_pointer->data.element[element_number].type                        = ITEM;
+    UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_ITEM;
     UI_form_pointer->data.element[element_number].zoom.enabled                = false;
     UI_form_pointer->data.element[element_number].tooltip.enabled             = false;
     UI_form_pointer->data.element[element_number].value                       = -1;
@@ -402,7 +403,7 @@ void setup_action_bar(int UID)
     UI_form_pointer->data.element[element_number].dragable                    = true;
     UI_form_pointer->data.element[element_number].click_enabled               = true;
     UI_form_pointer->data.element[element_number].active                      = true;
-    UI_form_pointer->data.element[element_number].type                        = ITEM;
+    UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_ITEM;
     UI_form_pointer->data.element[element_number].zoom.enabled                = false;
     UI_form_pointer->data.element[element_number].tooltip.enabled             = false;
     UI_form_pointer->data.element[element_number].value                       = -1;
@@ -424,7 +425,7 @@ void setup_action_bar(int UID)
     UI_form_pointer->data.element[element_number].dragable                    = true;
     UI_form_pointer->data.element[element_number].click_enabled               = true;
     UI_form_pointer->data.element[element_number].active                      = true;
-    UI_form_pointer->data.element[element_number].type                        = ITEM;
+    UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_ITEM;
     UI_form_pointer->data.element[element_number].zoom.enabled                = false;
     UI_form_pointer->data.element[element_number].tooltip.enabled             = false;
     UI_form_pointer->data.element[element_number].value                       = -1;
@@ -446,7 +447,7 @@ void setup_action_bar(int UID)
     UI_form_pointer->data.element[element_number].dragable                    = true;
     UI_form_pointer->data.element[element_number].click_enabled               = true;
     UI_form_pointer->data.element[element_number].active                      = true;
-    UI_form_pointer->data.element[element_number].type                        = ITEM;
+    UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_ITEM;
     UI_form_pointer->data.element[element_number].zoom.enabled                = false;
     UI_form_pointer->data.element[element_number].tooltip.enabled             = false;
     UI_form_pointer->data.element[element_number].value                       = -1;
@@ -468,7 +469,7 @@ void setup_action_bar(int UID)
     UI_form_pointer->data.element[element_number].dragable                    = true;
     UI_form_pointer->data.element[element_number].click_enabled               = true;
     UI_form_pointer->data.element[element_number].active                      = true;
-    UI_form_pointer->data.element[element_number].type                        = ITEM;
+    UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_ITEM;
     UI_form_pointer->data.element[element_number].zoom.enabled                = false;
     UI_form_pointer->data.element[element_number].tooltip.enabled             = false;
     UI_form_pointer->data.element[element_number].value                       = -1;
@@ -490,7 +491,7 @@ void setup_action_bar(int UID)
     UI_form_pointer->data.element[element_number].dragable                    = true;
     UI_form_pointer->data.element[element_number].click_enabled               = true;
     UI_form_pointer->data.element[element_number].active                      = true;
-    UI_form_pointer->data.element[element_number].type                        = ITEM;
+    UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_ITEM;
     UI_form_pointer->data.element[element_number].zoom.enabled                = false;
     UI_form_pointer->data.element[element_number].tooltip.enabled             = false;
     UI_form_pointer->data.element[element_number].value                       = -1;
@@ -512,7 +513,7 @@ void setup_action_bar(int UID)
     UI_form_pointer->data.element[element_number].dragable                    = true;
     UI_form_pointer->data.element[element_number].click_enabled               = true;
     UI_form_pointer->data.element[element_number].active                      = true;
-    UI_form_pointer->data.element[element_number].type                        = ITEM;
+    UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_ITEM;
     UI_form_pointer->data.element[element_number].zoom.enabled                = false;
     UI_form_pointer->data.element[element_number].tooltip.enabled             = false;
     UI_form_pointer->data.element[element_number].value                       = -1;
@@ -534,7 +535,7 @@ void setup_action_bar(int UID)
     UI_form_pointer->data.element[element_number].dragable                    = true;
     UI_form_pointer->data.element[element_number].click_enabled               = true;
     UI_form_pointer->data.element[element_number].active                      = true;
-    UI_form_pointer->data.element[element_number].type                        = ITEM;
+    UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_ITEM;
     UI_form_pointer->data.element[element_number].zoom.enabled                = false;
     UI_form_pointer->data.element[element_number].tooltip.enabled             = false;
     UI_form_pointer->data.element[element_number].value                       = -1;
@@ -556,7 +557,7 @@ void setup_action_bar(int UID)
     UI_form_pointer->data.element[element_number].dragable                    = true;
     UI_form_pointer->data.element[element_number].click_enabled               = true;
     UI_form_pointer->data.element[element_number].active                      = true;
-    UI_form_pointer->data.element[element_number].type                        = ITEM;
+    UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_ITEM;
     UI_form_pointer->data.element[element_number].zoom.enabled                = false;
     UI_form_pointer->data.element[element_number].tooltip.enabled             = false;
     UI_form_pointer->data.element[element_number].value                       = -1;
@@ -590,13 +591,13 @@ void process_action_bar(UI_form_struct *UI_form_pointer)
             unsigned long long  temp_max = (game.player.level.experience[game.player.level.current+1] - game.player.level.experience[game.player.level.current]);
             int                 temp_per = (((float)temp_val / (float)temp_max) * UI_form_pointer->data.element[element_number].value_max);
             UI_form_pointer->data.element[element_number].value = temp_per;
-            temp_per /= 10;
-            std::string temp_string  = int_to_string(temp_per);
-            temp_string += "%";
-            if (temp_per >  9) temp_string += ' ';
-            if (temp_per > 99) temp_string += ' ';
-            temp_string += "    ";
-            UI_form_pointer->data.element[element_number].tooltip.text = game.texture_manager.add_texture(game.font_manager.root,temp_string,0.8f,0,0,TEXTURE_STRING);
+            if (UI_form_pointer->data.element[element_number].mouse_over)
+            {
+                temp_per /= 10;
+                std::string temp_string  = int_to_string(temp_per);
+                temp_string += "%";
+                game.texture_manager.load_string(UI_form_pointer->data.element[element_number].tooltip.text,game.font_manager.root,temp_string,0.8f,255,255,255,255,TEXTURE_RENDER_LEFT);
+            }
         }
     }
     if(UI_form_pointer->data.event.id > EVENT_NONE) // Handle element events

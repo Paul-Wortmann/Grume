@@ -138,7 +138,7 @@ void setup_equipment_window(int UID)
         UI_form_pointer->data.element[element_count].event.id                       = 0;
         UI_form_pointer->data.element[element_count].state                          = NORMAL;
         UI_form_pointer->data.element[element_count].selected                       = false;
-        UI_form_pointer->data.element[element_count].type                           = BUTTON;
+        UI_form_pointer->data.element[element_count].type                           = UI_ELEMENT_BUTTON;
         UI_form_pointer->data.element[element_count].sub_type                       = 0;//ITEM_NONE;// TEST
         UI_form_pointer->data.element[element_count].quantity                       = 1;
         UI_form_pointer->data.element[element_count].value                          = 0.0f;
@@ -160,7 +160,7 @@ void setup_equipment_window(int UID)
     UI_form_pointer->data.element[element_number].title.text                = NULL;
     UI_form_pointer->data.element[element_number].title.enabled             = false;
     UI_form_pointer->data.element[element_number].active                    = true;
-    UI_form_pointer->data.element[element_number].type                      = BUTTON;
+    UI_form_pointer->data.element[element_number].type                      = UI_ELEMENT_BUTTON;
     UI_form_pointer->data.element[element_number].zoom.enabled              = false;
     UI_form_pointer->data.element[element_number].tooltip.enabled             = false;
     UI_form_pointer->data.element[element_number].color                     = UI_form_pointer->data.color;
@@ -180,7 +180,7 @@ void setup_equipment_window(int UID)
     UI_form_pointer->data.element[element_number].title.enabled               = false;
     UI_form_pointer->data.element[element_number].dragable                    = true;
     UI_form_pointer->data.element[element_number].active                      = true;
-    UI_form_pointer->data.element[element_number].type                        = ITEM;
+    UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_ITEM;
     UI_form_pointer->data.element[element_number].sub_type                    = ITEM_NECK;
     UI_form_pointer->data.element[element_number].zoom.enabled                = false;
     UI_form_pointer->data.element[element_number].tooltip.enabled             = false;
@@ -202,7 +202,7 @@ void setup_equipment_window(int UID)
     UI_form_pointer->data.element[element_number].title.enabled               = false;
     UI_form_pointer->data.element[element_number].dragable                    = true;
     UI_form_pointer->data.element[element_number].active                      = true;
-    UI_form_pointer->data.element[element_number].type                        = ITEM;
+    UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_ITEM;
     UI_form_pointer->data.element[element_number].sub_type                    = ITEM_NECK;
     UI_form_pointer->data.element[element_number].zoom.enabled                = false;
     UI_form_pointer->data.element[element_number].tooltip.enabled             = false;
@@ -224,7 +224,7 @@ void setup_equipment_window(int UID)
     UI_form_pointer->data.element[element_number].title.enabled               = false;
     UI_form_pointer->data.element[element_number].dragable                    = true;
     UI_form_pointer->data.element[element_number].active                      = true;
-    UI_form_pointer->data.element[element_number].type                        = ITEM;
+    UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_ITEM;
     UI_form_pointer->data.element[element_number].sub_type                    = ITEM_RING;
     UI_form_pointer->data.element[element_number].zoom.enabled                = false;
     UI_form_pointer->data.element[element_number].tooltip.enabled             = false;
@@ -246,7 +246,7 @@ void setup_equipment_window(int UID)
     UI_form_pointer->data.element[element_number].title.enabled               = false;
     UI_form_pointer->data.element[element_number].dragable                    = true;
     UI_form_pointer->data.element[element_number].active                      = true;
-    UI_form_pointer->data.element[element_number].type                        = ITEM;
+    UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_ITEM;
     UI_form_pointer->data.element[element_number].sub_type                    = ITEM_RING;
     UI_form_pointer->data.element[element_number].zoom.enabled                = false;
     UI_form_pointer->data.element[element_number].tooltip.enabled             = false;
@@ -268,7 +268,7 @@ void setup_equipment_window(int UID)
     UI_form_pointer->data.element[element_number].title.enabled               = false;
     UI_form_pointer->data.element[element_number].dragable                    = true;
     UI_form_pointer->data.element[element_number].active                      = true;
-    UI_form_pointer->data.element[element_number].type                        = ITEM;
+    UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_ITEM;
     UI_form_pointer->data.element[element_number].sub_type                    = ITEM_RING;
     UI_form_pointer->data.element[element_number].zoom.enabled                = false;
     UI_form_pointer->data.element[element_number].tooltip.enabled             = false;
@@ -290,7 +290,7 @@ void setup_equipment_window(int UID)
     UI_form_pointer->data.element[element_number].title.enabled               = false;
     UI_form_pointer->data.element[element_number].dragable                    = true;
     UI_form_pointer->data.element[element_number].active                      = true;
-    UI_form_pointer->data.element[element_number].type                        = ITEM;
+    UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_ITEM;
     UI_form_pointer->data.element[element_number].sub_type                    = ITEM_RING;
     UI_form_pointer->data.element[element_number].zoom.enabled                = false;
     UI_form_pointer->data.element[element_number].tooltip.enabled             = false;
@@ -312,7 +312,7 @@ void setup_equipment_window(int UID)
     UI_form_pointer->data.element[element_number].title.enabled               = false;
     UI_form_pointer->data.element[element_number].dragable                    = true;
     UI_form_pointer->data.element[element_number].active                      = true;
-    UI_form_pointer->data.element[element_number].type                        = ITEM;
+    UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_ITEM;
     UI_form_pointer->data.element[element_number].sub_type                    = ITEM_HEAD;
     UI_form_pointer->data.element[element_number].zoom.enabled                = false;
     UI_form_pointer->data.element[element_number].tooltip.enabled             = false;
@@ -334,7 +334,7 @@ void setup_equipment_window(int UID)
     UI_form_pointer->data.element[element_number].title.enabled               = false;
     UI_form_pointer->data.element[element_number].dragable                    = true;
     UI_form_pointer->data.element[element_number].active                      = true;
-    UI_form_pointer->data.element[element_number].type                        = ITEM;
+    UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_ITEM;
     UI_form_pointer->data.element[element_number].sub_type                    = ITEM_FEET;
     UI_form_pointer->data.element[element_number].zoom.enabled                = false;
     UI_form_pointer->data.element[element_number].tooltip.enabled             = false;
@@ -356,7 +356,7 @@ void setup_equipment_window(int UID)
     UI_form_pointer->data.element[element_number].title.enabled               = false;
     UI_form_pointer->data.element[element_number].dragable                    = true;
     UI_form_pointer->data.element[element_number].active                      = true;
-    UI_form_pointer->data.element[element_number].type                        = ITEM;
+    UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_ITEM;
     UI_form_pointer->data.element[element_number].sub_type                    = ITEM_HAND;
     UI_form_pointer->data.element[element_number].zoom.enabled                = false;
     UI_form_pointer->data.element[element_number].tooltip.enabled             = false;
@@ -378,7 +378,7 @@ void setup_equipment_window(int UID)
     UI_form_pointer->data.element[element_number].title.enabled               = false;
     UI_form_pointer->data.element[element_number].dragable                    = true;
     UI_form_pointer->data.element[element_number].active                      = true;
-    UI_form_pointer->data.element[element_number].type                        = ITEM;
+    UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_ITEM;
     UI_form_pointer->data.element[element_number].sub_type                    = ITEM_BELT;
     UI_form_pointer->data.element[element_number].zoom.enabled                = false;
     UI_form_pointer->data.element[element_number].tooltip.enabled             = false;
@@ -400,7 +400,7 @@ void setup_equipment_window(int UID)
     UI_form_pointer->data.element[element_number].title.enabled               = false;
     UI_form_pointer->data.element[element_number].dragable                    = true;
     UI_form_pointer->data.element[element_number].active                      = true;
-    UI_form_pointer->data.element[element_number].type                        = ITEM;
+    UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_ITEM;
     UI_form_pointer->data.element[element_number].sub_type                    = ITEM_BODY;
     UI_form_pointer->data.element[element_number].zoom.enabled                = false;
     UI_form_pointer->data.element[element_number].tooltip.enabled             = false;
@@ -422,7 +422,7 @@ void setup_equipment_window(int UID)
     UI_form_pointer->data.element[element_number].title.enabled               = false;
     UI_form_pointer->data.element[element_number].dragable                    = true;
     UI_form_pointer->data.element[element_number].active                      = true;
-    UI_form_pointer->data.element[element_number].type                        = ITEM;
+    UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_ITEM;
     UI_form_pointer->data.element[element_number].sub_type                    = ITEM_OFFHAND;
     UI_form_pointer->data.element[element_number].zoom.enabled                = false;
     UI_form_pointer->data.element[element_number].tooltip.enabled             = false;
@@ -444,7 +444,7 @@ void setup_equipment_window(int UID)
     UI_form_pointer->data.element[element_number].title.enabled               = false;
     UI_form_pointer->data.element[element_number].dragable                    = true;
     UI_form_pointer->data.element[element_number].active                      = true;
-    UI_form_pointer->data.element[element_number].type                        = ITEM;
+    UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_ITEM;
     UI_form_pointer->data.element[element_number].sub_type                    = ITEM_WEAPON;
     UI_form_pointer->data.element[element_number].zoom.enabled                = false;
     UI_form_pointer->data.element[element_number].tooltip.enabled             = false;

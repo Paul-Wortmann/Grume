@@ -140,7 +140,7 @@ void setup_menu_options(int UID)
         UI_form_pointer->data.element[element_count].event.id                       = 0;
         UI_form_pointer->data.element[element_count].state                          = NORMAL;
         UI_form_pointer->data.element[element_count].selected                       = false;
-        UI_form_pointer->data.element[element_count].type                           = BUTTON;
+        UI_form_pointer->data.element[element_count].type                           = UI_ELEMENT_BUTTON;
         UI_form_pointer->data.element[element_count].sub_type                       = 0;//ITEM_NONE;// TEST
         UI_form_pointer->data.element[element_count].quantity                       = 1;
         UI_form_pointer->data.element[element_count].value                          = 0.0f;
@@ -161,7 +161,7 @@ void setup_menu_options(int UID)
     UI_form_pointer->data.element[element_number].element_UID               = element_number;
     UI_form_pointer->data.element[element_number].title.text                = NULL;
     UI_form_pointer->data.element[element_number].active                    = true;
-    UI_form_pointer->data.element[element_number].type                      = BUTTON;
+    UI_form_pointer->data.element[element_number].type                      = UI_ELEMENT_BUTTON;
     UI_form_pointer->data.element[element_number].zoom.enabled              = false;
     UI_form_pointer->data.element[element_number].tooltip.enabled           = false;
     UI_form_pointer->data.element[element_number].color                     = UI_form_pointer->data.color;
@@ -181,7 +181,7 @@ void setup_menu_options(int UID)
     UI_form_pointer->data.element[element_number].title.text                = game.texture_manager.add_texture(game.font_manager.root,"Main Menu",0.8f,0,0,TEXTURE_STRING);
     UI_form_pointer->data.element[element_number].title.enabled             = true;
     UI_form_pointer->data.element[element_number].active                    = true;
-    UI_form_pointer->data.element[element_number].type                      = BUTTON;
+    UI_form_pointer->data.element[element_number].type                      = UI_ELEMENT_BUTTON;
     UI_form_pointer->data.element[element_number].color                     = UI_form_pointer->data.color;
     UI_form_pointer->data.element[element_number].zoom                      = UI_form_pointer->data.zoom;
     UI_form_pointer->data.element[element_number].tooltip.enabled           = false;
@@ -248,7 +248,7 @@ void setup_menu_options(int UID)
     UI_form_pointer->data.element[element_number].title.text                = NULL;
     UI_form_pointer->data.element[element_number].active                    = true;
     UI_form_pointer->data.element[element_number].state                     = DISABLED;
-    UI_form_pointer->data.element[element_number].type                      = IMAGE;
+    UI_form_pointer->data.element[element_number].type                      = UI_ELEMENT_IMAGE;
     UI_form_pointer->data.element[element_number].color                     = UI_form_pointer->data.color;
     UI_form_pointer->data.element[element_number].zoom                      = UI_form_pointer->data.zoom;
     UI_form_pointer->data.element[element_number].zoom.enabled              = false;
@@ -270,7 +270,7 @@ void setup_menu_options(int UID)
     UI_form_pointer->data.element[element_number].title.text                = UI_form_pointer->data.choice_selection[0].data[0].value_string;
     UI_form_pointer->data.element[element_number].selected                  = UI_form_pointer->data.choice_selection[0].data[0].active;
     UI_form_pointer->data.element[element_number].active                    = true;
-    UI_form_pointer->data.element[element_number].type                      = IMAGE;
+    UI_form_pointer->data.element[element_number].type                      = UI_ELEMENT_IMAGE;
     UI_form_pointer->data.element[element_number].color                     = UI_form_pointer->data.color;
     UI_form_pointer->data.element[element_number].zoom                      = UI_form_pointer->data.zoom;
     UI_form_pointer->data.element[element_number].tooltip.enabled           = false;
@@ -297,7 +297,7 @@ void setup_menu_options(int UID)
     UI_form_pointer->data.element[element_number].title.text                = UI_form_pointer->data.choice_selection[0].data[1].value_string;
     UI_form_pointer->data.element[element_number].selected                  = UI_form_pointer->data.choice_selection[0].data[1].active;
     UI_form_pointer->data.element[element_number].active                    = true;
-    UI_form_pointer->data.element[element_number].type                      = IMAGE;
+    UI_form_pointer->data.element[element_number].type                      = UI_ELEMENT_IMAGE;
     UI_form_pointer->data.element[element_number].color                     = UI_form_pointer->data.color;
     UI_form_pointer->data.element[element_number].zoom                      = UI_form_pointer->data.zoom;
     UI_form_pointer->data.element[element_number].tooltip.enabled           = false;
@@ -324,7 +324,7 @@ void setup_menu_options(int UID)
     UI_form_pointer->data.element[element_number].title.text                = UI_form_pointer->data.choice_selection[0].data[2].value_string;
     UI_form_pointer->data.element[element_number].selected                  = UI_form_pointer->data.choice_selection[0].data[2].active;
     UI_form_pointer->data.element[element_number].active                    = true;
-    UI_form_pointer->data.element[element_number].type                      = IMAGE;
+    UI_form_pointer->data.element[element_number].type                      = UI_ELEMENT_IMAGE;
     UI_form_pointer->data.element[element_number].color                     = UI_form_pointer->data.color;
     UI_form_pointer->data.element[element_number].zoom                      = UI_form_pointer->data.zoom;
     UI_form_pointer->data.element[element_number].tooltip.enabled           = false;
@@ -351,7 +351,7 @@ void setup_menu_options(int UID)
     UI_form_pointer->data.element[element_number].title.text                = UI_form_pointer->data.choice_selection[0].data[3].value_string;
     UI_form_pointer->data.element[element_number].selected                  = UI_form_pointer->data.choice_selection[0].data[3].active;
     UI_form_pointer->data.element[element_number].active                    = true;
-    UI_form_pointer->data.element[element_number].type                      = IMAGE;
+    UI_form_pointer->data.element[element_number].type                      = UI_ELEMENT_IMAGE;
     UI_form_pointer->data.element[element_number].color                     = UI_form_pointer->data.color;
     UI_form_pointer->data.element[element_number].zoom                      = UI_form_pointer->data.zoom;
     UI_form_pointer->data.element[element_number].tooltip.enabled           = false;
@@ -378,7 +378,7 @@ void setup_menu_options(int UID)
     UI_form_pointer->data.element[element_number].title.text                = UI_form_pointer->data.choice_selection[0].data[4].value_string;
     UI_form_pointer->data.element[element_number].selected                  = UI_form_pointer->data.choice_selection[0].data[4].active;
     UI_form_pointer->data.element[element_number].active                    = true;
-    UI_form_pointer->data.element[element_number].type                      = IMAGE;
+    UI_form_pointer->data.element[element_number].type                      = UI_ELEMENT_IMAGE;
     UI_form_pointer->data.element[element_number].color                     = UI_form_pointer->data.color;
     UI_form_pointer->data.element[element_number].zoom                      = UI_form_pointer->data.zoom;
     UI_form_pointer->data.element[element_number].tooltip.enabled           = false;
@@ -403,7 +403,7 @@ void setup_menu_options(int UID)
     UI_form_pointer->data.element[element_number].element_UID               = element_number;
     UI_form_pointer->data.element[element_number].title.text                = NULL;
     UI_form_pointer->data.element[element_number].active                    = true;
-    UI_form_pointer->data.element[element_number].type                      = BUTTON;
+    UI_form_pointer->data.element[element_number].type                      = UI_ELEMENT_BUTTON;
     UI_form_pointer->data.element[element_number].color                     = UI_form_pointer->data.color;
     UI_form_pointer->data.element[element_number].zoom                      = UI_form_pointer->data.zoom;
     UI_form_pointer->data.element[element_number].tooltip.enabled           = false;
@@ -423,7 +423,7 @@ void setup_menu_options(int UID)
     UI_form_pointer->data.element[element_number].element_UID               = element_number;
     UI_form_pointer->data.element[element_number].title.text                = NULL;
     UI_form_pointer->data.element[element_number].active                    = true;
-    UI_form_pointer->data.element[element_number].type                      = BUTTON;
+    UI_form_pointer->data.element[element_number].type                      = UI_ELEMENT_BUTTON;
     UI_form_pointer->data.element[element_number].color                     = UI_form_pointer->data.color;
     UI_form_pointer->data.element[element_number].zoom                      = UI_form_pointer->data.zoom;
     UI_form_pointer->data.element[element_number].tooltip.enabled           = false;
@@ -444,7 +444,7 @@ void setup_menu_options(int UID)
     UI_form_pointer->data.element[element_number].element_UID               = element_number;
     UI_form_pointer->data.element[element_number].title.text                = NULL;
     UI_form_pointer->data.element[element_number].active                    = true;
-    UI_form_pointer->data.element[element_number].type                      = BUTTON;
+    UI_form_pointer->data.element[element_number].type                      = UI_ELEMENT_BUTTON;
     UI_form_pointer->data.element[element_number].color                     = UI_form_pointer->data.color;
     UI_form_pointer->data.element[element_number].zoom                      = UI_form_pointer->data.zoom;
     UI_form_pointer->data.element[element_number].tooltip.enabled           = false;
@@ -465,7 +465,7 @@ void setup_menu_options(int UID)
     UI_form_pointer->data.element[element_number].element_UID               = element_number;
     UI_form_pointer->data.element[element_number].title.text                = NULL;
     UI_form_pointer->data.element[element_number].active                    = true;
-    UI_form_pointer->data.element[element_number].type                      = BUTTON;
+    UI_form_pointer->data.element[element_number].type                      = UI_ELEMENT_BUTTON;
     UI_form_pointer->data.element[element_number].color                     = UI_form_pointer->data.color;
     UI_form_pointer->data.element[element_number].zoom                      = UI_form_pointer->data.zoom;
     UI_form_pointer->data.element[element_number].tooltip.enabled           = false;
@@ -489,7 +489,7 @@ void setup_menu_options(int UID)
     UI_form_pointer->data.element[element_number].value                     = game.core.config.audio_volume_sound;
     UI_form_pointer->data.element[element_number].value_max                 = 127.0f;
     UI_form_pointer->data.element[element_number].active                    = true;
-    UI_form_pointer->data.element[element_number].type                      = BAR;
+    UI_form_pointer->data.element[element_number].type                      = UI_ELEMENT_BAR;
     UI_form_pointer->data.element[element_number].color                     = UI_form_pointer->data.color;
     UI_form_pointer->data.element[element_number].zoom.enabled              = false;
     UI_form_pointer->data.element[element_number].tooltip.enabled           = false;
@@ -513,7 +513,7 @@ void setup_menu_options(int UID)
     UI_form_pointer->data.element[element_number].element_UID               = element_number;
     UI_form_pointer->data.element[element_number].title.text                = NULL;
     UI_form_pointer->data.element[element_number].active                    = true;
-    UI_form_pointer->data.element[element_number].type                      = BUTTON;
+    UI_form_pointer->data.element[element_number].type                      = UI_ELEMENT_BUTTON;
     UI_form_pointer->data.element[element_number].color                     = UI_form_pointer->data.color;
     UI_form_pointer->data.element[element_number].zoom                      = UI_form_pointer->data.zoom;
     UI_form_pointer->data.element[element_number].tooltip.enabled           = false;
@@ -534,7 +534,7 @@ void setup_menu_options(int UID)
     UI_form_pointer->data.element[element_number].element_UID               = element_number;
     UI_form_pointer->data.element[element_number].title.text                = NULL;
     UI_form_pointer->data.element[element_number].active                    = true;
-    UI_form_pointer->data.element[element_number].type                      = BUTTON;
+    UI_form_pointer->data.element[element_number].type                      = UI_ELEMENT_BUTTON;
     UI_form_pointer->data.element[element_number].color                     = UI_form_pointer->data.color;
     UI_form_pointer->data.element[element_number].zoom                      = UI_form_pointer->data.zoom;
     UI_form_pointer->data.element[element_number].tooltip.enabled           = false;
@@ -558,7 +558,7 @@ void setup_menu_options(int UID)
     UI_form_pointer->data.element[element_number].value                     = game.core.config.audio_volume_music;
     UI_form_pointer->data.element[element_number].value_max                 = 127.0f;
     UI_form_pointer->data.element[element_number].active                    = true;
-    UI_form_pointer->data.element[element_number].type                      = BAR;
+    UI_form_pointer->data.element[element_number].type                      = UI_ELEMENT_BAR;
     UI_form_pointer->data.element[element_number].color                     = UI_form_pointer->data.color;
     UI_form_pointer->data.element[element_number].zoom.enabled              = false;
     UI_form_pointer->data.element[element_number].tooltip.enabled           = false;
@@ -582,7 +582,7 @@ void setup_menu_options(int UID)
     UI_form_pointer->data.element[element_number].title.text                = game.texture_manager.add_texture(game.font_manager.root,"Fullscreen",0.8f,0,0,TEXTURE_STRING);
     UI_form_pointer->data.element[element_number].title.enabled             = true;
     UI_form_pointer->data.element[element_number].active                    = true;
-    UI_form_pointer->data.element[element_number].type                      = BUTTON;
+    UI_form_pointer->data.element[element_number].type                      = UI_ELEMENT_BUTTON;
     UI_form_pointer->data.element[element_number].color                     = UI_form_pointer->data.color;
     UI_form_pointer->data.element[element_number].zoom                      = UI_form_pointer->data.zoom;
     UI_form_pointer->data.element[element_number].tooltip.enabled           = false;
@@ -603,7 +603,7 @@ void setup_menu_options(int UID)
     UI_form_pointer->data.element[element_number].element_UID               = element_number;
     UI_form_pointer->data.element[element_number].title.text                = NULL;
     UI_form_pointer->data.element[element_number].active                    = true;
-    UI_form_pointer->data.element[element_number].type                      = BUTTON;
+    UI_form_pointer->data.element[element_number].type                      = UI_ELEMENT_BUTTON;
     UI_form_pointer->data.element[element_number].zoom.enabled              = false;
     UI_form_pointer->data.element[element_number].tooltip.enabled           = false;
     UI_form_pointer->data.element[element_number].value                     = 1.0f;
