@@ -185,10 +185,10 @@ void setup_character_window(int UID)
     UI_form_pointer->data.element[element_number].zoom.enabled                = false;
     UI_form_pointer->data.element[element_number].tooltip.enabled             = false;
     UI_form_pointer->data.element[element_number].color                       = UI_form_pointer->data.color;
-    UI_form_pointer->data.element[element_number].size.x                      = 0.129f;
+    UI_form_pointer->data.element[element_number].size.x                      = 0.124f;
     UI_form_pointer->data.element[element_number].size.y                      = UI_form_pointer->data.element[element_number].size.x*1.5f;
-    UI_form_pointer->data.element[element_number].position.x                  = UI_form_pointer->data.position.x-(UI_form_pointer->data.size.x / 3.73f);
-    UI_form_pointer->data.element[element_number].position.y                  = UI_form_pointer->data.position.y+(UI_form_pointer->data.size.y / 4.02f);
+    UI_form_pointer->data.element[element_number].position.x                  = UI_form_pointer->data.position.x-(UI_form_pointer->data.size.x / 3.78f);
+    UI_form_pointer->data.element[element_number].position.y                  = UI_form_pointer->data.position.y+(UI_form_pointer->data.size.y / 4.10f);
     UI_form_pointer->data.element[element_number].texture.normal              = game.texture_manager.add_texture("data/textures/UI/menu/character_portrait_frame.png");
     UI_form_pointer->data.element[element_number].texture.highlighted         = game.texture_manager.add_texture("data/textures/UI/menu/character_portrait_frame.png");
     UI_form_pointer->data.element[element_number].sound                       = UI_form_pointer->data.sound;
@@ -199,11 +199,12 @@ void setup_character_window(int UID)
     element_number = 2; //--- Player Name ---
     UI_form_pointer->data.element[element_number].window_UID                  = UI_form_pointer->data.UID;
     UI_form_pointer->data.element[element_number].element_UID                 = element_number;
-    UI_form_pointer->data.element[element_number].title.text                  = game.texture_manager.add_texture(game.font_manager.root,"Name: ",0.8f,0,0,TEXTURE_STRING);
+    UI_form_pointer->data.element[element_number].title.text                  = new texture_type;
+    game.texture_manager.load_string(UI_form_pointer->data.element[element_number].title.text,game.font_manager.root,"Name: ",0.8f,255,255,255,255,TEXTURE_RENDER_LEFT);
     UI_form_pointer->data.element[element_number].title.enabled               = true;
     UI_form_pointer->data.element[element_number].title.size.y                = 28;
     UI_form_pointer->data.element[element_number].title.size.x                = 0;//((float)UI_form_pointer->data.element[element_number].title.size.y / 10.0f) * (float)UI_form_pointer->data.element[element_number].title.text.length();
-    UI_form_pointer->data.element[element_number].title.position.x            = UI_form_pointer->data.position.x;// - (UI_form_pointer->data.size.x * 0.125f);
+    UI_form_pointer->data.element[element_number].title.position.x            = UI_form_pointer->data.position.x - (UI_form_pointer->data.size.x * 0.1f);
     UI_form_pointer->data.element[element_number].title.position.y            = UI_form_pointer->data.position.y + (UI_form_pointer->data.size.y * 0.32f);
     UI_form_pointer->data.element[element_number].active                      = true;
     UI_form_pointer->data.element[element_number].click_enabled               = false;
@@ -224,11 +225,12 @@ void setup_character_window(int UID)
     element_number = 3; //--- Player Level ---
     UI_form_pointer->data.element[element_number].window_UID                  = UI_form_pointer->data.UID;
     UI_form_pointer->data.element[element_number].element_UID                 = element_number;
-    UI_form_pointer->data.element[element_number].title.text                  = game.texture_manager.add_texture(game.font_manager.root,"Level: ",0.8f,0,0,TEXTURE_STRING);
+    UI_form_pointer->data.element[element_number].title.text                  = new texture_type;
+    game.texture_manager.load_string(UI_form_pointer->data.element[element_number].title.text,game.font_manager.root,"Level: ",0.6f,255,255,255,255,TEXTURE_RENDER_LEFT);
     UI_form_pointer->data.element[element_number].title.enabled               = true;
     UI_form_pointer->data.element[element_number].title.size.y                = 28;
-    UI_form_pointer->data.element[element_number].title.size.x                = //((float)UI_form_pointer->data.element[element_number].title.size.y / (float)UI_form_pointer->data.element[element_number].title.text.length()) * 4.5f;
-    UI_form_pointer->data.element[element_number].title.position.x            = UI_form_pointer->data.position.x;// - (UI_form_pointer->data.size.x * 0.125f);
+    UI_form_pointer->data.element[element_number].title.size.x                = 0;//((float)UI_form_pointer->data.element[element_number].title.size.y / (float)UI_form_pointer->data.element[element_number].title.text.length()) * 4.5f;
+    UI_form_pointer->data.element[element_number].title.position.x            = UI_form_pointer->data.position.x - (UI_form_pointer->data.size.x * 0.1f);
     UI_form_pointer->data.element[element_number].title.position.y            = UI_form_pointer->data.position.y + (UI_form_pointer->data.size.y * 0.28f);
     UI_form_pointer->data.element[element_number].active                      = true;
     UI_form_pointer->data.element[element_number].click_enabled               = false;
@@ -249,11 +251,12 @@ void setup_character_window(int UID)
     element_number = 4; //--- Player Experience ---
     UI_form_pointer->data.element[element_number].window_UID                  = UI_form_pointer->data.UID;
     UI_form_pointer->data.element[element_number].element_UID                 = element_number;
-    UI_form_pointer->data.element[element_number].title.text                  = game.texture_manager.add_texture(game.font_manager.root,"Exp: ",0.8f,0,0,TEXTURE_STRING);
+    UI_form_pointer->data.element[element_number].title.text                  = new texture_type;
+    game.texture_manager.load_string(UI_form_pointer->data.element[element_number].title.text,game.font_manager.root,"Exp: ",0.6f,255,255,255,255,TEXTURE_RENDER_LEFT);
     UI_form_pointer->data.element[element_number].title.enabled               = true;
     UI_form_pointer->data.element[element_number].title.size.y                = 28;
-    UI_form_pointer->data.element[element_number].title.size.x                = //((float)UI_form_pointer->data.element[element_number].title.size.y / (float)UI_form_pointer->data.element[element_number].title.text.length()) * 4.5f;
-    UI_form_pointer->data.element[element_number].title.position.x            = UI_form_pointer->data.position.x;// - (UI_form_pointer->data.size.x * 0.125f);
+    UI_form_pointer->data.element[element_number].title.size.x                = 0;//((float)UI_form_pointer->data.element[element_number].title.size.y / (float)UI_form_pointer->data.element[element_number].title.text.length()) * 4.5f;
+    UI_form_pointer->data.element[element_number].title.position.x            = UI_form_pointer->data.position.x - (UI_form_pointer->data.size.x * 0.1f);
     UI_form_pointer->data.element[element_number].title.position.y            = UI_form_pointer->data.position.y + (UI_form_pointer->data.size.y * 0.24f);
     UI_form_pointer->data.element[element_number].active                      = true;
     UI_form_pointer->data.element[element_number].click_enabled               = false;
@@ -274,11 +277,12 @@ void setup_character_window(int UID)
     element_number = 5; //--- Player Experience for next level ---
     UI_form_pointer->data.element[element_number].window_UID                  = UI_form_pointer->data.UID;
     UI_form_pointer->data.element[element_number].element_UID                 = element_number;
-    UI_form_pointer->data.element[element_number].title.text                  = game.texture_manager.add_texture(game.font_manager.root,"Next: ",0.8f,0,0,TEXTURE_STRING);
+    UI_form_pointer->data.element[element_number].title.text                  = new texture_type;
+    game.texture_manager.load_string(UI_form_pointer->data.element[element_number].title.text,game.font_manager.root,"Next: ",0.6f,255,255,255,255,TEXTURE_RENDER_LEFT);
     UI_form_pointer->data.element[element_number].title.enabled               = true;
     UI_form_pointer->data.element[element_number].title.size.y                = 28;
     UI_form_pointer->data.element[element_number].title.size.x                = 0;//((float)UI_form_pointer->data.element[element_number].title.size.y / (float)UI_form_pointer->data.element[element_number].title.text.length()) * 4.5f;
-    UI_form_pointer->data.element[element_number].title.position.x            = UI_form_pointer->data.position.x;// - (UI_form_pointer->data.size.x * 0.125f);
+    UI_form_pointer->data.element[element_number].title.position.x            = UI_form_pointer->data.position.x - (UI_form_pointer->data.size.x * 0.1f);
     UI_form_pointer->data.element[element_number].title.position.y            = UI_form_pointer->data.position.y + (UI_form_pointer->data.size.y * 0.20f);
     UI_form_pointer->data.element[element_number].active                      = true;
     UI_form_pointer->data.element[element_number].click_enabled               = false;
@@ -304,17 +308,14 @@ void update_character_window(UI_form_struct *UI_form_pointer)
     UI_form_pointer->data.element[element_number].texture.normal              = game.player.portrait;
     UI_form_pointer->data.element[element_number].texture.highlighted         = game.player.portrait;
     element_number = 2; //--- Player Name ---
-    UI_form_pointer->data.element[element_number].title.text                  = game.texture_manager.add_texture(game.font_manager.root,"Name: " + game.player.name,0.8f,0,0,TEXTURE_STRING);
-    UI_form_pointer->data.element[element_number].title.size.x                = 0;//((float)UI_form_pointer->data.element[element_number].title.size.y / (float)UI_form_pointer->data.element[element_number].title.text.length()) * 4.5f;
+    game.texture_manager.load_string(UI_form_pointer->data.element[element_number].title.text,game.font_manager.root,"Name: " + game.player.name,0.8f,255,255,255,255,TEXTURE_RENDER_LEFT);
     element_number = 3; //--- Player Level ---
-    UI_form_pointer->data.element[element_number].title.text                  = game.texture_manager.add_texture(game.font_manager.root,"Level: " + int_to_string(game.player.level.current),0.8f,0,0,TEXTURE_STRING);
-    UI_form_pointer->data.element[element_number].title.size.x                = 0;//((float)UI_form_pointer->data.element[element_number].title.size.y / (float)UI_form_pointer->data.element[element_number].title.text.length()) * 4.5f;
+    game.texture_manager.load_string(UI_form_pointer->data.element[element_number].title.text,game.font_manager.root,"Level: " + int_to_string(game.player.level.current),0.75f,255,255,255,255,TEXTURE_RENDER_LEFT);
     element_number = 4; //--- Player Experience ---
-    UI_form_pointer->data.element[element_number].title.text                  = game.texture_manager.add_texture(game.font_manager.root,"Exp: " + ullint_to_string(game.player.level.current_experience),0.8f,0,0,TEXTURE_STRING);
-    UI_form_pointer->data.element[element_number].title.size.x                = 0;//((float)UI_form_pointer->data.element[element_number].title.size.y / (float)UI_form_pointer->data.element[element_number].title.text.length()) * 4.5f;
+    game.texture_manager.load_string(UI_form_pointer->data.element[element_number].title.text,game.font_manager.root,"Exp: " + ullint_to_string(game.player.level.current_experience),0.75f,255,255,255,255,TEXTURE_RENDER_LEFT);
     element_number = 5; //--- Player Experience for next level ---
-    UI_form_pointer->data.element[element_number].title.text                  = game.texture_manager.add_texture(game.font_manager.root,"Next: " + ullint_to_string(game.player.level.experience[game.player.level.current+1]),0.8f,0,0,TEXTURE_STRING);
-    UI_form_pointer->data.element[element_number].title.size.x                = 0;//((float)UI_form_pointer->data.element[element_number].title.size.y / (float)UI_form_pointer->data.element[element_number].title.text.length()) * 4.5f;
+    game.texture_manager.load_string(UI_form_pointer->data.element[element_number].title.text,game.font_manager.root,"Next: " + ullint_to_string(game.player.level.experience[game.player.level.current+1]),0.75f,255,255,255,255,TEXTURE_RENDER_LEFT);
+
 };
 
 void process_character_window(UI_form_struct *UI_form_pointer)
