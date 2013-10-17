@@ -284,8 +284,8 @@ void setup_menu_options(int UID)
     UI_form_pointer->data.element[element_number].texture.disabled          = game.texture_manager.add_texture("data/textures/UI/menu/selection_box.png");
     UI_form_pointer->data.element[element_number].title.size.x              = 0;//0;//UI_form_pointer->data.element[element_number].title.text.length()/2.4f;;
     UI_form_pointer->data.element[element_number].title.size.y              = 0;//0;//UI_form_pointer->data.element[element_number].title.size.x*4.0f;
-    UI_form_pointer->data.element[element_number].title.position.x          = UI_form_pointer->data.position.x - (UI_form_pointer->data.element[element_number].title.size.x/42.0f);
-    UI_form_pointer->data.element[element_number].title.position.y          = UI_form_pointer->data.element[element_number].position.y - (UI_form_pointer->data.element[element_number].title.size.y/120.0f);
+    UI_form_pointer->data.element[element_number].title.position.x          = UI_form_pointer->data.position.x - (UI_form_pointer->data.element[element_number].title.size.x/2.0f);
+    UI_form_pointer->data.element[element_number].title.position.y          = UI_form_pointer->data.position.y - (UI_form_pointer->data.size.y/13.0f) - (UI_form_pointer->data.element[element_number].title.size.y/2.0f);
     UI_form_pointer->data.element[element_number].sound                     = UI_form_pointer->data.sound;
     UI_form_pointer->data.element[element_number].font                      = UI_form_pointer->data.font;
     UI_form_pointer->data.element[element_number].mouse_delay.maximum       = 10;
@@ -311,8 +311,8 @@ void setup_menu_options(int UID)
     UI_form_pointer->data.element[element_number].texture.disabled          = game.texture_manager.add_texture("data/textures/UI/menu/selection_box.png");
     UI_form_pointer->data.element[element_number].title.size.x              = 0;//UI_form_pointer->data.element[element_number].title.text.length()/2.4f;;
     UI_form_pointer->data.element[element_number].title.size.y              = 0;//UI_form_pointer->data.element[element_number].title.size.x*4.0f;
-    UI_form_pointer->data.element[element_number].title.position.x          = UI_form_pointer->data.position.x - (UI_form_pointer->data.element[element_number].title.size.x/42.0f);
-    UI_form_pointer->data.element[element_number].title.position.y          = UI_form_pointer->data.element[element_number].position.y - (UI_form_pointer->data.element[element_number].title.size.y/120.0f);
+    UI_form_pointer->data.element[element_number].title.position.x          = UI_form_pointer->data.position.x - (UI_form_pointer->data.element[element_number].title.size.x/2.0f);
+    UI_form_pointer->data.element[element_number].title.position.y          = UI_form_pointer->data.position.y - (UI_form_pointer->data.size.y/13.0f) - (UI_form_pointer->data.element[element_number].title.size.y/2.0f);
     UI_form_pointer->data.element[element_number].sound                     = UI_form_pointer->data.sound;
     UI_form_pointer->data.element[element_number].font                      = UI_form_pointer->data.font;
     UI_form_pointer->data.element[element_number].mouse_delay.maximum       = 10;
@@ -338,8 +338,8 @@ void setup_menu_options(int UID)
     UI_form_pointer->data.element[element_number].texture.disabled          = game.texture_manager.add_texture("data/textures/UI/menu/selection_box.png");
     UI_form_pointer->data.element[element_number].title.size.x              = 0;//UI_form_pointer->data.element[element_number].title.text.length()/2.4f;;
     UI_form_pointer->data.element[element_number].title.size.y              = 0;//UI_form_pointer->data.element[element_number].title.size.x*4.0f;
-    UI_form_pointer->data.element[element_number].title.position.x          = UI_form_pointer->data.position.x - (UI_form_pointer->data.element[element_number].title.size.x/42.0f);
-    UI_form_pointer->data.element[element_number].title.position.y          = UI_form_pointer->data.element[element_number].position.y - (UI_form_pointer->data.element[element_number].title.size.y/120.0f);
+    UI_form_pointer->data.element[element_number].title.position.x          = UI_form_pointer->data.position.x - (UI_form_pointer->data.element[element_number].title.size.x/2.0f);
+    UI_form_pointer->data.element[element_number].title.position.y          = UI_form_pointer->data.position.y - (UI_form_pointer->data.size.y/13.0f) - (UI_form_pointer->data.element[element_number].title.size.y/2.0f);
     UI_form_pointer->data.element[element_number].sound                     = UI_form_pointer->data.sound;
     UI_form_pointer->data.element[element_number].font                      = UI_form_pointer->data.font;
     UI_form_pointer->data.element[element_number].mouse_delay.maximum       = 10;
@@ -365,8 +365,8 @@ void setup_menu_options(int UID)
     UI_form_pointer->data.element[element_number].texture.disabled          = game.texture_manager.add_texture("data/textures/UI/menu/selection_box.png");
     UI_form_pointer->data.element[element_number].title.size.x              = 0;//UI_form_pointer->data.element[element_number].title.text.length()/2.4f;;
     UI_form_pointer->data.element[element_number].title.size.y              = 0;//UI_form_pointer->data.element[element_number].title.size.x*4.0f;
-    UI_form_pointer->data.element[element_number].title.position.x          = UI_form_pointer->data.position.x - (UI_form_pointer->data.element[element_number].title.size.x/42.0f);
-    UI_form_pointer->data.element[element_number].title.position.y          = UI_form_pointer->data.element[element_number].position.y - (UI_form_pointer->data.element[element_number].title.size.y/120.0f);
+    UI_form_pointer->data.element[element_number].title.position.x          = UI_form_pointer->data.position.x - (UI_form_pointer->data.element[element_number].title.size.x/2.0f);
+    UI_form_pointer->data.element[element_number].title.position.y          = UI_form_pointer->data.position.y - (UI_form_pointer->data.size.y/13.0f) - (UI_form_pointer->data.element[element_number].title.size.y/2.0f);
     UI_form_pointer->data.element[element_number].sound                     = UI_form_pointer->data.sound;
     UI_form_pointer->data.element[element_number].font                      = UI_form_pointer->data.font;
     UI_form_pointer->data.element[element_number].mouse_delay.maximum       = 10;
@@ -392,8 +392,8 @@ void setup_menu_options(int UID)
     UI_form_pointer->data.element[element_number].texture.disabled          = game.texture_manager.add_texture("data/textures/UI/menu/selection_box.png");
     UI_form_pointer->data.element[element_number].title.size.x              = 0;//UI_form_pointer->data.element[element_number].title.text.length()/2.4f;;
     UI_form_pointer->data.element[element_number].title.size.y              = 0;//UI_form_pointer->data.element[element_number].title.size.x*4.0f;
-    UI_form_pointer->data.element[element_number].title.position.x          = UI_form_pointer->data.position.x - (UI_form_pointer->data.element[element_number].title.size.x/42.0f);
-    UI_form_pointer->data.element[element_number].title.position.y          = UI_form_pointer->data.element[element_number].position.y - (UI_form_pointer->data.element[element_number].title.size.y/120.0f);
+    UI_form_pointer->data.element[element_number].title.position.x          = UI_form_pointer->data.position.x - (UI_form_pointer->data.element[element_number].title.size.x/2.0f);
+    UI_form_pointer->data.element[element_number].title.position.y          = UI_form_pointer->data.position.y - (UI_form_pointer->data.size.y/13.0f) - (UI_form_pointer->data.element[element_number].title.size.y/2.0f);
     UI_form_pointer->data.element[element_number].sound                     = UI_form_pointer->data.sound;
     UI_form_pointer->data.element[element_number].font                      = UI_form_pointer->data.font;
     UI_form_pointer->data.element[element_number].mouse_delay.maximum       = 10;
