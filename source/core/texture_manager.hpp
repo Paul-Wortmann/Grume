@@ -42,9 +42,11 @@
 #define TEXTURE_SPRITESHEET     2
 #define TEXTURE_STRING          3
 
-#define TEXTURE_RENDER_CENTERED 100
-#define TEXTURE_RENDER_LEFT     101
-#define TEXTURE_RENDER_RIGHT    102
+#define TEXTURE_RENDER_CENTERED 0
+#define TEXTURE_RENDER_LEFT     1
+#define TEXTURE_RENDER_RIGHT    2
+#define TEXTURE_RENDER_UP       4
+#define TEXTURE_RENDER_DOWN     8
 
 
 struct frame_type

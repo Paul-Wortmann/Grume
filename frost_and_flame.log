@@ -21,13 +21,14 @@ Starting Game...
 # ---------------------------------------------- #
  
 Loading TMX map file -> data/maps/town.tmx
+Processing event - 101
  
 # ---------------------------------------------- #
  
 Font    count -> 1
 Music   count -> 1
 Sound   count -> 11
-Texture count -> 128
+Texture count -> 118
 Item    count -> 24
 Effect  count -> 7
  
