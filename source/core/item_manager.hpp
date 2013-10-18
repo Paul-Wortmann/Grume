@@ -31,7 +31,7 @@
 #include "../UI/UI_types.hpp"
 #include "effect_manager.hpp"
 
-#define MAX_ITEM_EFFECTS     4
+#define MAX_ITEM_EFFECTS     6
 #define MAX_ITEM_SOCKETS     4
 
 #define SOCKET_NONE          0

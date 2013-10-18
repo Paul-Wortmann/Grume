@@ -25,6 +25,7 @@
 #include <fstream>
 #include "item_manager.hpp"
 #include "../game/game.hpp"
+#include "../core/misc.hpp"
 
 extern game_class game;
 
@@ -241,6 +242,56 @@ void item_manager_class::unequip_item(item_type* item_pointer)
 
 int  item_manager_class::gen_item(int item_type_UID, int item_sub_type_UID, int quality_level)
 {
+    int number_sockets = 0;
+    int number_effects = 0;
+    if (quality_level <= 10)
+    {
+        number_sockets = 0;
+        number_effects = 1;
+    }
+    if ((quality_level > 10)&&(quality_level <= 20))
+    {
+        number_sockets = 0;
+        number_effects = random_int(1,2);
+    }
+    if ((quality_level > 20)&&(quality_level <= 30))
+    {
+        number_effects = random_int(0,1);
+        number_effects = random_int(1,2);
+    }
+    if ((quality_level > 30)&&(quality_level <= 40))
+    {
+        number_effects = random_int(0,1);
+        number_effects = random_int(2,3);
+    }
+    if ((quality_level > 40)&&(quality_level <= 50))
+    {
+        number_effects = random_int(1,2);
+        number_effects = random_int(2,3);
+    }
+    if ((quality_level > 50)&&(quality_level <= 60))
+    {
+        number_effects = random_int(1,2);
+        number_effects = random_int(3,4);
+    }
+    if ((quality_level > 60)&&(quality_level <= 70))
+    {
+        number_effects = random_int(2,3);
+        number_effects = random_int(3,4);
+    }
+    if ((quality_level > 70)&&(quality_level <= 80))
+    {
+        number_effects = random_int(2,3);
+        number_effects = random_int(4,5);
+    }
+    if (quality_level > 80)
+    {
+        number_effects = random_int(3,4);
+        number_effects = random_int(5,6);
+    }
+    if (number_sockets > MAX_ITEM_SOCKETS) number_sockets = MAX_ITEM_SOCKETS;
+    if (number_effects > MAX_ITEM_EFFECTS) number_effects = MAX_ITEM_EFFECTS;
+
     int new_UID = RETURN_FAIL;
         new_UID = game.item_manager.get_new_item_UID();
     if (new_UID >= 0)
@@ -253,37 +304,62 @@ int  item_manager_class::gen_item(int item_type_UID, int item_sub_type_UID, int 
             switch (item_type_UID)
             {
                 case ITEM_POTION:
-                    temp_item_pointer->data.consumable = true;
+                    temp_item_pointer->data.stackable    = true;
+                    temp_item_pointer->data.consumable   = true;
+                    temp_item_pointer->data.quantity     = 1;
+                    temp_item_pointer->data.quantity_max = 100;
                 break;
                 case ITEM_SPELL_BOOK:
-                    temp_item_pointer->data.consumable = true;
+                    temp_item_pointer->data.consumable   = true;
+                    temp_item_pointer->data.quantity     = 1;
+                    temp_item_pointer->data.quantity_max = 1;
                 break;
                 case ITEM_BELT:
-                    temp_item_pointer->data.equipable = true;
+                    temp_item_pointer->data.equipable    = true;
+                    temp_item_pointer->data.quantity     = 1;
+                    temp_item_pointer->data.quantity_max = 1;
                 break;
                 case ITEM_BODY:
-                    temp_item_pointer->data.equipable = true;
+                    temp_item_pointer->data.equipable    = true;
+                    temp_item_pointer->data.quantity     = 1;
+                    temp_item_pointer->data.quantity_max = 1;
                 break;
                 case ITEM_FEET:
-                    temp_item_pointer->data.equipable = true;
+                    temp_item_pointer->data.equipable    = true;
+                    temp_item_pointer->data.quantity     = 1;
+                    temp_item_pointer->data.quantity_max = 1;
                 break;
                 case ITEM_HAND:
-                    temp_item_pointer->data.equipable = true;
+                    temp_item_pointer->data.equipable    = true;
+                    temp_item_pointer->data.quantity     = 1;
+                    temp_item_pointer->data.quantity_max = 1;
                 break;
                 case ITEM_HEAD:
-                    temp_item_pointer->data.equipable = true;
+                    temp_item_pointer->data.equipable    = true;
+                    temp_item_pointer->data.quantity     = 1;
+                    temp_item_pointer->data.quantity_max = 1;
                 break;
                 case ITEM_NECK:
-                    temp_item_pointer->data.equipable = true;
+                    temp_item_pointer->data.equipable    = true;
+                    temp_item_pointer->data.quantity     = 1;
+                    temp_item_pointer->data.quantity_max = 1;
                 break;
                 case ITEM_OFFHAND:
-                    temp_item_pointer->data.equipable = true;
+                    temp_item_pointer->data.equipable    = true;
+                    temp_item_pointer->data.quantity     = 1;
+                    temp_item_pointer->data.quantity_max = 1;
                 break;
                 case ITEM_RING:
-                    temp_item_pointer->data.equipable = true;
+                    temp_item_pointer->data.equipable    = true;
+                    temp_item_pointer->data.quantity     = 1;
+                    temp_item_pointer->data.quantity_max = 1;
                 break;
                 case ITEM_WEAPON:
-                    temp_item_pointer->data.equipable = true;
+                    temp_item_pointer->data.equipable    = true;
+                    temp_item_pointer->data.quantity     = 1;
+                    temp_item_pointer->data.quantity_max = 1;
+                    temp_item_pointer->data.effect[0]    = game.effect_manager.add_effect(EFFECT_MOD_DAMAGE);
+                    temp_item_pointer->data.effect[0]->data.value = quality_level;
                 break;
                 default:
                     game.core.log.file_write("Unable to generate item -> ",item_type_UID," - ", item_sub_type_UID," - ", quality_level);
@@ -402,3 +478,56 @@ void  item_manager_class::gen_item_sounds(item_type* temp_item_pointer,int item_
         break;
     }
 };
+
+
+
+/*
+#define EFFECT_NONE                 0
+#define EFFECT_MOD_STRENGTH         1
+#define EFFECT_MOD_INTELLECT        2
+#define EFFECT_MOD_DEXTERITY        3
+#define EFFECT_MOD_ALL_ATTRIBUTES   4
+//---------------------------------------
+#define EFFECT_MOD_ARMOUR           5
+//---------------------------------------
+#define EFFECT_MOD_DAMAGE           6
+#define EFFECT_MOD_DAMAGE_MAX       7
+#define EFFECT_MOD_DAMAGE_MIN       8
+#define EFFECT_MOD_DAMAGE_ICE       9
+#define EFFECT_MOD_DAMAGE_FIRE      10
+#define EFFECT_MOD_DAMAGE_LIGHTNING 11
+#define EFFECT_MOD_DAMAGE_ELEMENTAL 12
+//---------------------------------------
+#define EFFECT_MOD_RESIST_PHYSICAL  13
+#define EFFECT_MOD_RESIST_ICE       14
+#define EFFECT_MOD_RESIST_FIRE      15
+#define EFFECT_MOD_RESIST_LIGHTNING 16
+#define EFFECT_MOD_RESIST_ALL       17
+//---------------------------------------
+#define EFFECT_MOD_HEALTH           18
+#define EFFECT_MOD_HEALTH_MAX       19
+#define EFFECT_MOD_HEALTH_REGEN     20
+#define EFFECT_MOD_HEALTH_HIT       21
+#define EFFECT_MOD_HEALTH_KILL      22
+//---------------------------------------
+#define EFFECT_MOD_MANA             23
+#define EFFECT_MOD_MANA_MAX         24
+#define EFFECT_MOD_MANA_REGEN       25
+#define EFFECT_MOD_MANA_HIT         26
+#define EFFECT_MOD_MANA_KILL        27
+//---------------------------------------
+#define EFFECT_MOD_CRIT_CHANCE      28
+#define EFFECT_MOD_CRIT_DAMAGE      29
+#define EFFECT_MOD_MOVEMENT_SPEED   30
+#define EFFECT_MOD_LIGHT_RADIUS     31
+#define EFFECT_MOD_MAGIC_FIND       32
+#define EFFECT_MOD_GOLD_FIND        33
+#define EFFECT_MOD_EXP_PER_KILL     34
+//---------------------------------------
+#define EFFECT_MOD_SPELL            35
+#define EFFECT_MOD_SPELL_TYPE       36
+#define EFFECT_MOD_SPELL_ALL        37
+#define EFFECT_MOD_SPELL_CAST_KILL  38
+#define EFFECT_MOD_SPELL_CAST_HIT   39
+#define EFFECT_MOD_SPELL_CAST_DMG   40
+*/

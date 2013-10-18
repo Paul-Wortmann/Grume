@@ -29,25 +29,54 @@
 #include "../core/texture_manager.hpp"
 #include "../core/sound_manager.hpp"
 
-#define EFFECT_NONE             0
-#define EFFECT_MOD_STRENGTH     1
-#define EFFECT_MOD_INTELECT     2
-#define EFFECT_MOD_DEXTERITY    3
-#define EFFECT_MOD_DAMAGE       4
-#define EFFECT_MOD_DAMAGE_MAX   5
-#define EFFECT_MOD_DAMAGE_MIN   6
-#define EFFECT_MOD_ARMOUR       7
-#define EFFECT_SPELL            8
-#define EFFECT_MOD_HEALTH       9
-#define EFFECT_MOD_HEALTH_MAX   10
-#define EFFECT_MOD_HEALTH_REGEN 11
-#define EFFECT_MOD_MANA         12
-#define EFFECT_MOD_MANA_MAX     13
-#define EFFECT_MOD_MANA_REGEN   14
-#define EFFECT_MOD_CRIT_CHANCE  15
-#define EFFECT_MOD_CRIT_DAMMAGE 16
-#define EFFECT_MOD_WALK_SPEED   17
-#define EFFECT_MOD_LIGHT_RADIUS 18
+#define EFFECT_NONE                 0
+#define EFFECT_MOD_STRENGTH         1
+#define EFFECT_MOD_INTELLECT        2
+#define EFFECT_MOD_DEXTERITY        3
+#define EFFECT_MOD_ALL_ATTRIBUTES   4
+//---------------------------------------
+#define EFFECT_MOD_ARMOUR           5
+//---------------------------------------
+#define EFFECT_MOD_DAMAGE           6
+#define EFFECT_MOD_DAMAGE_MAX       7
+#define EFFECT_MOD_DAMAGE_MIN       8
+#define EFFECT_MOD_DAMAGE_ICE       9
+#define EFFECT_MOD_DAMAGE_FIRE      10
+#define EFFECT_MOD_DAMAGE_LIGHTNING 11
+#define EFFECT_MOD_DAMAGE_ELEMENTAL 12
+//---------------------------------------
+#define EFFECT_MOD_RESIST_PHYSICAL  13
+#define EFFECT_MOD_RESIST_ICE       14
+#define EFFECT_MOD_RESIST_FIRE      15
+#define EFFECT_MOD_RESIST_LIGHTNING 16
+#define EFFECT_MOD_RESIST_ALL       17
+//---------------------------------------
+#define EFFECT_MOD_HEALTH           18
+#define EFFECT_MOD_HEALTH_MAX       19
+#define EFFECT_MOD_HEALTH_REGEN     20
+#define EFFECT_MOD_HEALTH_HIT       21
+#define EFFECT_MOD_HEALTH_KILL      22
+//---------------------------------------
+#define EFFECT_MOD_MANA             23
+#define EFFECT_MOD_MANA_MAX         24
+#define EFFECT_MOD_MANA_REGEN       25
+#define EFFECT_MOD_MANA_HIT         26
+#define EFFECT_MOD_MANA_KILL        27
+//---------------------------------------
+#define EFFECT_MOD_CRIT_CHANCE      28
+#define EFFECT_MOD_CRIT_DAMAGE      29
+#define EFFECT_MOD_MOVEMENT_SPEED   30
+#define EFFECT_MOD_LIGHT_RADIUS     31
+#define EFFECT_MOD_MAGIC_FIND       32
+#define EFFECT_MOD_GOLD_FIND        33
+#define EFFECT_MOD_EXP_PER_KILL     34
+//---------------------------------------
+#define EFFECT_MOD_SPELL            35
+#define EFFECT_MOD_SPELL_TYPE       36
+#define EFFECT_MOD_SPELL_ALL        37
+#define EFFECT_MOD_SPELL_CAST_KILL  38
+#define EFFECT_MOD_SPELL_CAST_HIT   39
+#define EFFECT_MOD_SPELL_CAST_DMG   40
 
 struct effect_data_type
 {
