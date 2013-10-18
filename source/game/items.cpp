@@ -34,9 +34,11 @@ void  item_class::init_items(void) // Initialize hard-coded default items, such 
     item_type*      temp_item_pointer;
     //------------------------- Health Potion --------------------------------------------------------------------------
     temp_item_pointer = game.item_manager.add_item(ITEM_HEALTH_POTION);
-    temp_item_pointer->data.active                 = true;
-    temp_item_pointer->data.consumable             = true;
     temp_item_pointer->data.name                   = "Health Potion";
+    temp_item_pointer->data.active                 = true;
+    temp_item_pointer->data.stackable              = true;
+    temp_item_pointer->data.consumable             = true;
+    temp_item_pointer->data.quantity_max           = 100;
     temp_item_pointer->data.number_of_item_effects = 1;
     temp_item_pointer->data.image                  = game.texture_manager.add_texture("data/textures/UI/icons/potions/potion_23.png");
     temp_item_pointer->data.sound_move             = game.sound_manager.add_sound("data/sound/inventory/bottle_01.wav");
@@ -47,9 +49,11 @@ void  item_class::init_items(void) // Initialize hard-coded default items, such 
     temp_item_pointer->data.effect[0]              = game.effect_manager.add_effect(EFFECT_MOD_HEALTH);
     //------------------------- Mana Potion --------------------------------------------------------------------------
     temp_item_pointer = game.item_manager.add_item(ITEM_MANA_POTION);
+    temp_item_pointer->data.name                   = "Mana Potion";
     temp_item_pointer->data.active                 = true;
     temp_item_pointer->data.consumable             = true;
-    temp_item_pointer->data.name                   = "Mana Potion";
+    temp_item_pointer->data.stackable              = true;
+    temp_item_pointer->data.quantity_max           = 100;
     temp_item_pointer->data.number_of_item_effects = 1;
     temp_item_pointer->data.image                  = game.texture_manager.add_texture("data/textures/UI/icons/potions/potion_22.png");
     temp_item_pointer->data.sound_move             = game.sound_manager.add_sound("data/sound/inventory/bottle_01.wav");
@@ -60,9 +64,11 @@ void  item_class::init_items(void) // Initialize hard-coded default items, such 
     temp_item_pointer->data.effect[0]              = game.effect_manager.add_effect(EFFECT_MOD_MANA);
     //------------------------- Rejuvination Potion --------------------------------------------------------------------------
     temp_item_pointer = game.item_manager.add_item(ITEM_REJUVENATION_POTION);
+    temp_item_pointer->data.name                   = "Rejuvenation Potion";
     temp_item_pointer->data.active                 = true;
     temp_item_pointer->data.consumable             = true;
-    temp_item_pointer->data.name                   = "Rejuvenation Potion";
+    temp_item_pointer->data.stackable              = true;
+    temp_item_pointer->data.quantity_max           = 100;
     temp_item_pointer->data.number_of_item_effects = 2;
     temp_item_pointer->data.image                  = game.texture_manager.add_texture("data/textures/UI/icons/potions/potion_24.png");
     temp_item_pointer->data.sound_move             = game.sound_manager.add_sound("data/sound/inventory/bottle_01.wav");

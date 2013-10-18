@@ -128,7 +128,7 @@ extern "C" int main(int argc, char** argv)
         game.state = STATE_GAME;
         if (game.music_manager.next_track)
         {
-            game.music_manager.play(game.music_manager.current);
+            //game.music_manager.play(game.music_manager.current);
             game.music_manager.next_track = false;
         }
         update_player_profile  (game.UI_manager.UI_form_get(UID_PCPROFILE));

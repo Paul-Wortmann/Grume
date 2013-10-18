@@ -2668,7 +2668,7 @@
 	"core/misc.hpp"
 	"language.hpp"
 
-1382014357 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/main.cpp
+1382102831 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/main.cpp
 	"game/game.hpp"
 	<SDL2/SDL.h>
 	"core/misc.hpp"
@@ -2703,7 +2703,7 @@
 	"menu_main.hpp"
 	"../game/game.hpp"
 
-1382019911 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/UI/inventory_window.cpp
+1382104321 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/UI/inventory_window.cpp
 	"menu_main.hpp"
 	"../game/game.hpp"
 	"../core/misc.hpp"
@@ -2754,9 +2754,10 @@
 	"../core/texture_manager.hpp"
 	"../game/game.hpp"
 
-1382022573 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/UI/UI_manager.cpp
+1382106840 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/UI/UI_manager.cpp
 	"UI_manager.hpp"
 	"../game/game.hpp"
+	"../core/misc.hpp"
 
 1375577407 source:/media/paul/Data_0/_git_/Frost_and_Flame - SDL2/source/command_line_parser.cpp
 	<string>
@@ -3333,7 +3334,7 @@
 	"effect_manager.hpp"
 	"game.hpp"
 
-1381748598 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/game/game.cpp
+1382106806 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/game/game.cpp
 	"../core/map_2D.hpp"
 	"game.hpp"
 
@@ -3384,7 +3385,7 @@
 	"../core/texture_manager.hpp"
 	"../core/sound_manager.hpp"
 
-1381592217 /media/paul/Data_0/_git_/Frost_and_Flame/source/core/item_manager.hpp
+1382103017 /media/paul/Data_0/_git_/Frost_and_Flame/source/core/item_manager.hpp
 	<string>
 	"../core/texture_manager.hpp"
 	"../core/sound_manager.hpp"
@@ -3401,7 +3402,7 @@
 	"effect_manager.hpp"
 	"../game/game.hpp"
 
-1381581915 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/core/item_manager.cpp
+1382103017 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/core/item_manager.cpp
 	<fstream>
 	"item_manager.hpp"
 	"../game/game.hpp"
@@ -3416,7 +3417,7 @@
 1381561260 /media/paul/Data_0/_git_/Frost_and_Flame/source/game/effects.hpp
 	"../core/effect_manager.hpp"
 
-1381582274 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/game/items.cpp
+1382103126 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/game/items.cpp
 	"items.hpp"
 	"game.hpp"
 

@@ -24,6 +24,7 @@
 
 #include "UI_manager.hpp"
 #include "../game/game.hpp"
+#include "../core/misc.hpp"
 
 extern game_class         game;
 
@@ -543,6 +544,14 @@ void UI_manager_class::render(void)
                                 {
                                     if (UI_form_pointer->data.element[element_number].drag_active) element_draged = element_number;
                                     else game.texture_manager.draw(UI_form_pointer->data.element[element_number].texture.normal,false,UI_form_pointer->data.element[element_number].position.x,UI_form_pointer->data.element[element_number].position.y,UI_form_pointer->data.element[element_number].position.z,UI_form_pointer->data.element[element_number].size.x+zoom_value,UI_form_pointer->data.element[element_number].size.y+zoom_value,UI_form_pointer->data.element[element_number].texture.angle);
+                                    if ((!UI_form_pointer->data.element[element_number].drag_active)&&(UI_form_pointer->data.element[element_number].quantity > 1))
+                                    {
+                                        UI_form_pointer->data.element[element_number].title.image = new texture_type;
+                                        float temp_x = UI_form_pointer->data.element[element_number].position.x - (UI_form_pointer->data.element[element_number].size.x/2.5f);
+                                        float temp_y = UI_form_pointer->data.element[element_number].position.y - (UI_form_pointer->data.element[element_number].size.y/2.5f);
+                                        game.texture_manager.load_string(UI_form_pointer->data.element[element_number].title.image,game.font_manager.root,int_to_string(UI_form_pointer->data.element[element_number].quantity),0.8f,255,255,255,255,TEXTURE_RENDER_LEFT);
+                                        game.texture_manager.draw(UI_form_pointer->data.element[element_number].title.image,false,temp_x,temp_y,UI_form_pointer->data.element[element_number].position.z,UI_form_pointer->data.element[element_number].title.image->data.width,UI_form_pointer->data.element[element_number].title.image->data.height);
+                                    }
                                 }
                                 // Font write -> Item quantity
                             break;
@@ -961,25 +970,27 @@ void UI_manager_class::swap_elements(int UI_form_UID_src, int UI_element_src, in
         ((UI_form_UID_dst == UID_INVENTORY) || (UI_form_UID_dst == UID_ACTIONBAR) || (UI_form_UID_dst == UID_EQUIPMENT))) allow_swap_elements = true;
     UI_form_struct* UI_form_UID_src_pointer = game.UI_manager.UI_form_get(UI_form_UID_src);
     UI_form_struct* UI_form_UID_dst_pointer = game.UI_manager.UI_form_get(UI_form_UID_dst);
+    item_type* item_pointer_src = game.item_manager.add_item(UI_form_UID_src_pointer->data.element[UI_element_src].value);
+    item_type* item_pointer_dst = game.item_manager.add_item(UI_form_UID_src_pointer->data.element[UI_element_src].value);
     //game.core.log.file_write("Moving element from - ",UI_form_UID_src," - ",UI_element_src," to - ",UI_form_UID_dst," - ",UI_element_dst);
+    if     ((allow_swap_elements)&&(UI_form_UID_src == UI_form_UID_dst)&&(UI_element_src == UI_element_dst)) allow_swap_elements = false;
     if     ((allow_swap_elements)
         &&  (UI_form_UID_src_pointer->data.element[UI_element_src].type == UI_ELEMENT_ITEM)
         &&  (UI_form_UID_dst_pointer->data.element[UI_element_dst].type == UI_ELEMENT_ITEM))
     {
-        item_type* item_pointer_src = game.item_manager.add_item(UI_form_UID_src_pointer->data.element[UI_element_src].value);
-        item_type* item_pointer_dst = game.item_manager.add_item(UI_form_UID_src_pointer->data.element[UI_element_src].value);
         if     ((UI_form_UID_src_pointer->data.element[UI_element_src].value == UI_form_UID_dst_pointer->data.element[UI_element_dst].value)
+            &&  (item_pointer_src->data.stackable)
             &&  (item_pointer_src->data.quantity_max > 1)
-            &&  (UI_form_UID_src_pointer->data.element[UI_element_src].quantity > 1)
-            &&  (UI_form_UID_dst_pointer->data.element[UI_element_dst].quantity > 1)
+            &&  (UI_form_UID_src_pointer->data.element[UI_element_src].quantity >= 1)
+            &&  (UI_form_UID_dst_pointer->data.element[UI_element_dst].quantity >= 1)
             &&  (UI_form_UID_src_pointer->data.element[UI_element_src].value >= 0)
             &&  (UI_form_UID_dst_pointer->data.element[UI_element_dst].value >= 0))
         {
             UI_form_UID_dst_pointer->data.element[UI_element_dst].quantity += UI_form_UID_src_pointer->data.element[UI_element_src].quantity;
             if (UI_form_UID_dst_pointer->data.element[UI_element_dst].quantity > item_pointer_src->data.quantity_max)
             {
-                UI_form_UID_src_pointer->data.element[UI_element_src].quantity =  UI_form_UID_dst_pointer->data.element[UI_element_dst].quantity - item_pointer_src->data.quantity_max;
-                UI_form_UID_dst_pointer->data.element[UI_element_dst].quantity -= item_pointer_src->data.quantity_max;
+                UI_form_UID_src_pointer->data.element[UI_element_src].quantity  = UI_form_UID_dst_pointer->data.element[UI_element_dst].quantity - item_pointer_src->data.quantity_max;
+                UI_form_UID_dst_pointer->data.element[UI_element_dst].quantity  = item_pointer_src->data.quantity_max;
             }
             else UI_form_UID_src_pointer->data.element[UI_element_src].quantity = 0;
             if (UI_form_UID_src_pointer->data.element[UI_element_src].quantity <= 0)
@@ -1038,4 +1049,5 @@ void UI_manager_class::swap_elements(int UI_form_UID_src, int UI_element_src, in
         }
         if (item_pointer_src->data.sound_move) game.sound_manager.play(item_pointer_src->data.sound_move);
     }
+    else game.sound_manager.play(item_pointer_src->data.sound_move);
 };

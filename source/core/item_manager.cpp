@@ -68,14 +68,15 @@ item_type* item_manager_class::add_item(int item_UID)
         item_manager_class::last->next = NULL;
     }
     item_manager_class::last->data.active                 = false;
+    item_manager_class::last->data.stackable              = false;
     item_manager_class::last->data.consumable             = false;
     item_manager_class::last->data.equipable              = false;
     item_manager_class::last->data.quest                  = false;
     item_manager_class::last->data.name                   = "";
     item_manager_class::last->data.number_of_item_effects = 0;
     item_manager_class::last->data.number_of_item_sockets = 0;
-    item_manager_class::last->data.quantity               = 0;
-    item_manager_class::last->data.quantity_max           = 0;
+    item_manager_class::last->data.quantity               = 1;
+    item_manager_class::last->data.quantity_max           = 1;
     item_manager_class::last->data.socketable             = false;
     item_manager_class::last->data.socket_max             = 0;
     item_manager_class::last->data.socket_type            = SOCKET_NONE;

@@ -84,6 +84,7 @@ struct item_data_type
     sound_type*      sound_use;
     texture_type*    image;
     bool             active;
+    bool             stackable;
     bool             consumable;
     bool             equipable;
     bool             quest;

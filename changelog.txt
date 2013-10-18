@@ -5,8 +5,12 @@ it may take longer than I had first anticipated.
 These are not indications that the project will be terminated in the future,
 just that time is not permitting to proceed at a fast pace, at the moment.
 
-v0.24 - (2013-10-xx)
+v0.25 - (2013-11-xx)
 LOC   -> xxxxx
+
+v0.24 - (2013-10-31) Happy Halloween!
+
+LOC   -> 18659
 
 v0.23 - (2013-09-30)
 Core  -> Ported FnF to SDL2.
