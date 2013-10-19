@@ -178,6 +178,8 @@ void setup_equipment_window(int UID)
     UI_form_pointer->data.element[element_number].element_UID                 = element_number;
     UI_form_pointer->data.element[element_number].title.text                  = NULL;
     UI_form_pointer->data.element[element_number].title.enabled               = false;
+    UI_form_pointer->data.element[element_number].title.image                 = game.texture_manager.add_texture("data/textures/UI/menu/item_stat_background.png");
+    UI_form_pointer->data.element[element_number].title.image->data.render_positioning = TEXTURE_RENDER_LEFT+TEXTURE_RENDER_DOWN;
     UI_form_pointer->data.element[element_number].dragable                    = true;
     UI_form_pointer->data.element[element_number].active                      = true;
     UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_ITEM;
@@ -200,6 +202,8 @@ void setup_equipment_window(int UID)
     UI_form_pointer->data.element[element_number].element_UID                 = element_number;
     UI_form_pointer->data.element[element_number].title.text                  = NULL;
     UI_form_pointer->data.element[element_number].title.enabled               = false;
+    UI_form_pointer->data.element[element_number].title.image                 = game.texture_manager.add_texture("data/textures/UI/menu/item_stat_background.png");
+    UI_form_pointer->data.element[element_number].title.image->data.render_positioning = TEXTURE_RENDER_LEFT+TEXTURE_RENDER_DOWN;
     UI_form_pointer->data.element[element_number].dragable                    = true;
     UI_form_pointer->data.element[element_number].active                      = true;
     UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_ITEM;
@@ -222,6 +226,8 @@ void setup_equipment_window(int UID)
     UI_form_pointer->data.element[element_number].element_UID                 = element_number;
     UI_form_pointer->data.element[element_number].title.text                  = NULL;
     UI_form_pointer->data.element[element_number].title.enabled               = false;
+    UI_form_pointer->data.element[element_number].title.image                 = game.texture_manager.add_texture("data/textures/UI/menu/item_stat_background.png");
+    UI_form_pointer->data.element[element_number].title.image->data.render_positioning = TEXTURE_RENDER_LEFT+TEXTURE_RENDER_DOWN;
     UI_form_pointer->data.element[element_number].dragable                    = true;
     UI_form_pointer->data.element[element_number].active                      = true;
     UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_ITEM;
@@ -244,6 +250,8 @@ void setup_equipment_window(int UID)
     UI_form_pointer->data.element[element_number].element_UID                 = element_number;
     UI_form_pointer->data.element[element_number].title.text                  = NULL;
     UI_form_pointer->data.element[element_number].title.enabled               = false;
+    UI_form_pointer->data.element[element_number].title.image                 = game.texture_manager.add_texture("data/textures/UI/menu/item_stat_background.png");
+    UI_form_pointer->data.element[element_number].title.image->data.render_positioning = TEXTURE_RENDER_LEFT+TEXTURE_RENDER_DOWN;
     UI_form_pointer->data.element[element_number].dragable                    = true;
     UI_form_pointer->data.element[element_number].active                      = true;
     UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_ITEM;
@@ -266,6 +274,8 @@ void setup_equipment_window(int UID)
     UI_form_pointer->data.element[element_number].element_UID                 = element_number;
     UI_form_pointer->data.element[element_number].title.text                  = NULL;
     UI_form_pointer->data.element[element_number].title.enabled               = false;
+    UI_form_pointer->data.element[element_number].title.image                 = game.texture_manager.add_texture("data/textures/UI/menu/item_stat_background.png");
+    UI_form_pointer->data.element[element_number].title.image->data.render_positioning = TEXTURE_RENDER_LEFT+TEXTURE_RENDER_DOWN;
     UI_form_pointer->data.element[element_number].dragable                    = true;
     UI_form_pointer->data.element[element_number].active                      = true;
     UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_ITEM;
@@ -288,6 +298,8 @@ void setup_equipment_window(int UID)
     UI_form_pointer->data.element[element_number].element_UID                 = element_number;
     UI_form_pointer->data.element[element_number].title.text                  = NULL;
     UI_form_pointer->data.element[element_number].title.enabled               = false;
+    UI_form_pointer->data.element[element_number].title.image                 = game.texture_manager.add_texture("data/textures/UI/menu/item_stat_background.png");
+    UI_form_pointer->data.element[element_number].title.image->data.render_positioning = TEXTURE_RENDER_LEFT+TEXTURE_RENDER_DOWN;
     UI_form_pointer->data.element[element_number].dragable                    = true;
     UI_form_pointer->data.element[element_number].active                      = true;
     UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_ITEM;
@@ -310,6 +322,8 @@ void setup_equipment_window(int UID)
     UI_form_pointer->data.element[element_number].element_UID                 = element_number;
     UI_form_pointer->data.element[element_number].title.text                  = NULL;
     UI_form_pointer->data.element[element_number].title.enabled               = false;
+    UI_form_pointer->data.element[element_number].title.image                 = game.texture_manager.add_texture("data/textures/UI/menu/item_stat_background.png");
+    UI_form_pointer->data.element[element_number].title.image->data.render_positioning = TEXTURE_RENDER_LEFT+TEXTURE_RENDER_DOWN;
     UI_form_pointer->data.element[element_number].dragable                    = true;
     UI_form_pointer->data.element[element_number].active                      = true;
     UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_ITEM;
@@ -332,6 +346,8 @@ void setup_equipment_window(int UID)
     UI_form_pointer->data.element[element_number].element_UID                 = element_number;
     UI_form_pointer->data.element[element_number].title.text                  = NULL;
     UI_form_pointer->data.element[element_number].title.enabled               = false;
+    UI_form_pointer->data.element[element_number].title.image                 = game.texture_manager.add_texture("data/textures/UI/menu/item_stat_background.png");
+    UI_form_pointer->data.element[element_number].title.image->data.render_positioning = TEXTURE_RENDER_LEFT+TEXTURE_RENDER_DOWN;
     UI_form_pointer->data.element[element_number].dragable                    = true;
     UI_form_pointer->data.element[element_number].active                      = true;
     UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_ITEM;
@@ -354,6 +370,8 @@ void setup_equipment_window(int UID)
     UI_form_pointer->data.element[element_number].element_UID                 = element_number;
     UI_form_pointer->data.element[element_number].title.text                  = NULL;
     UI_form_pointer->data.element[element_number].title.enabled               = false;
+    UI_form_pointer->data.element[element_number].title.image                 = game.texture_manager.add_texture("data/textures/UI/menu/item_stat_background.png");
+    UI_form_pointer->data.element[element_number].title.image->data.render_positioning = TEXTURE_RENDER_LEFT+TEXTURE_RENDER_DOWN;
     UI_form_pointer->data.element[element_number].dragable                    = true;
     UI_form_pointer->data.element[element_number].active                      = true;
     UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_ITEM;
@@ -376,6 +394,8 @@ void setup_equipment_window(int UID)
     UI_form_pointer->data.element[element_number].element_UID                 = element_number;
     UI_form_pointer->data.element[element_number].title.text                  = NULL;
     UI_form_pointer->data.element[element_number].title.enabled               = false;
+    UI_form_pointer->data.element[element_number].title.image                 = game.texture_manager.add_texture("data/textures/UI/menu/item_stat_background.png");
+    UI_form_pointer->data.element[element_number].title.image->data.render_positioning = TEXTURE_RENDER_LEFT+TEXTURE_RENDER_DOWN;
     UI_form_pointer->data.element[element_number].dragable                    = true;
     UI_form_pointer->data.element[element_number].active                      = true;
     UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_ITEM;
@@ -398,6 +418,8 @@ void setup_equipment_window(int UID)
     UI_form_pointer->data.element[element_number].element_UID                 = element_number;
     UI_form_pointer->data.element[element_number].title.text                  = NULL;
     UI_form_pointer->data.element[element_number].title.enabled               = false;
+    UI_form_pointer->data.element[element_number].title.image                 = game.texture_manager.add_texture("data/textures/UI/menu/item_stat_background.png");
+    UI_form_pointer->data.element[element_number].title.image->data.render_positioning = TEXTURE_RENDER_LEFT+TEXTURE_RENDER_DOWN;
     UI_form_pointer->data.element[element_number].dragable                    = true;
     UI_form_pointer->data.element[element_number].active                      = true;
     UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_ITEM;
@@ -420,6 +442,8 @@ void setup_equipment_window(int UID)
     UI_form_pointer->data.element[element_number].element_UID                 = element_number;
     UI_form_pointer->data.element[element_number].title.text                  = NULL;
     UI_form_pointer->data.element[element_number].title.enabled               = false;
+    UI_form_pointer->data.element[element_number].title.image                 = game.texture_manager.add_texture("data/textures/UI/menu/item_stat_background.png");
+    UI_form_pointer->data.element[element_number].title.image->data.render_positioning = TEXTURE_RENDER_LEFT+TEXTURE_RENDER_DOWN;
     UI_form_pointer->data.element[element_number].dragable                    = true;
     UI_form_pointer->data.element[element_number].active                      = true;
     UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_ITEM;
@@ -442,6 +466,8 @@ void setup_equipment_window(int UID)
     UI_form_pointer->data.element[element_number].element_UID                 = element_number;
     UI_form_pointer->data.element[element_number].title.text                  = NULL;
     UI_form_pointer->data.element[element_number].title.enabled               = false;
+    UI_form_pointer->data.element[element_number].title.image                 = game.texture_manager.add_texture("data/textures/UI/menu/item_stat_background.png");
+    UI_form_pointer->data.element[element_number].title.image->data.render_positioning = TEXTURE_RENDER_LEFT+TEXTURE_RENDER_DOWN;
     UI_form_pointer->data.element[element_number].dragable                    = true;
     UI_form_pointer->data.element[element_number].active                      = true;
     UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_ITEM;

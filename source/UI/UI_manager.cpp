@@ -546,11 +546,11 @@ void UI_manager_class::render(void)
                                     else game.texture_manager.draw(UI_form_pointer->data.element[element_number].texture.normal,false,UI_form_pointer->data.element[element_number].position.x,UI_form_pointer->data.element[element_number].position.y,UI_form_pointer->data.element[element_number].position.z,UI_form_pointer->data.element[element_number].size.x+zoom_value,UI_form_pointer->data.element[element_number].size.y+zoom_value,UI_form_pointer->data.element[element_number].texture.angle);
                                     if ((!UI_form_pointer->data.element[element_number].drag_active)&&(UI_form_pointer->data.element[element_number].quantity > 1))
                                     {
-                                        UI_form_pointer->data.element[element_number].title.image = new texture_type;
+                                        UI_form_pointer->data.element[element_number].title.text = new texture_type;
                                         float temp_x = UI_form_pointer->data.element[element_number].position.x - (UI_form_pointer->data.element[element_number].size.x/2.5f);
                                         float temp_y = UI_form_pointer->data.element[element_number].position.y - (UI_form_pointer->data.element[element_number].size.y/2.5f);
-                                        game.texture_manager.load_string(UI_form_pointer->data.element[element_number].title.image,game.font_manager.root,int_to_string(UI_form_pointer->data.element[element_number].quantity),0.8f,255,255,255,255,TEXTURE_RENDER_LEFT);
-                                        game.texture_manager.draw(UI_form_pointer->data.element[element_number].title.image,false,temp_x,temp_y,UI_form_pointer->data.element[element_number].position.z,UI_form_pointer->data.element[element_number].title.image->data.width,UI_form_pointer->data.element[element_number].title.image->data.height);
+                                        game.texture_manager.load_string(UI_form_pointer->data.element[element_number].title.text,game.font_manager.root,int_to_string(UI_form_pointer->data.element[element_number].quantity),0.8f,255,255,255,255,TEXTURE_RENDER_LEFT);
+                                        game.texture_manager.draw(UI_form_pointer->data.element[element_number].title.text,false,temp_x,temp_y,UI_form_pointer->data.element[element_number].position.z,UI_form_pointer->data.element[element_number].title.text->data.width,UI_form_pointer->data.element[element_number].title.text->data.height);
                                     }
                                 }
                                 // Font write -> Item quantity
@@ -571,20 +571,32 @@ void UI_manager_class::render(void)
             {
                 for (int element_number = 0; element_number < UI_form_pointer->data.number_of_elements; element_number++)
                 {
-                    if (UI_form_pointer->data.element[element_number].active)
+                    if ((UI_form_pointer->data.element[element_number].mouse_over)&&(UI_form_pointer->data.element[element_number].active))
                     {
-                        if ((UI_form_pointer->data.element[element_number].active) && (UI_form_pointer->data.element[element_number].tooltip.enabled))
+                        if ((UI_form_pointer->data.element[element_number].tooltip.enabled) && (UI_form_pointer->data.element[element_number].tooltip.image_enabled))
                         {
-                            if (UI_form_pointer->data.element[element_number].mouse_over)
-                            {
-                                if ((UI_form_pointer->data.element[element_number].tooltip.enabled) && (UI_form_pointer->data.element[element_number].tooltip.image_enabled))
-                                {
-                                    float temp_size_x = UI_form_pointer->data.element[element_number].tooltip.image_size.x;
-                                    float temp_size_y = UI_form_pointer->data.element[element_number].tooltip.image_size.y;
-                                    game.texture_manager.draw(UI_form_pointer->data.element[element_number].tooltip.image,false,game.core.io.mouse_x+(temp_size_x*0.25f),game.core.io.mouse_y+(temp_size_y*0.25f),UI_form_pointer->data.element[element_number].tooltip.position.z,temp_size_x,temp_size_y,UI_form_pointer->data.element[element_number].texture.angle);
-                                }
-                                if (UI_form_pointer->data.element[element_number].tooltip.enabled) game.texture_manager.draw(UI_form_pointer->data.element[element_number].tooltip.text,false,game.core.io.mouse_x,game.core.io.mouse_y,UI_form_pointer->data.element[element_number].tooltip.position.z,UI_form_pointer->data.element[element_number].tooltip.text->data.width,UI_form_pointer->data.element[element_number].tooltip.text->data.height);
-                            }
+                            float temp_size_x = UI_form_pointer->data.element[element_number].tooltip.image_size.x;
+                            float temp_size_y = UI_form_pointer->data.element[element_number].tooltip.image_size.y;
+                            game.texture_manager.draw(UI_form_pointer->data.element[element_number].tooltip.image,false,game.core.io.mouse_x+(temp_size_x*0.25f),game.core.io.mouse_y+(temp_size_y*0.25f),UI_form_pointer->data.element[element_number].tooltip.position.z,temp_size_x,temp_size_y,UI_form_pointer->data.element[element_number].texture.angle);
+                        }
+                        if (UI_form_pointer->data.element[element_number].tooltip.enabled) game.texture_manager.draw(UI_form_pointer->data.element[element_number].tooltip.text,false,game.core.io.mouse_x,game.core.io.mouse_y,UI_form_pointer->data.element[element_number].tooltip.position.z,UI_form_pointer->data.element[element_number].tooltip.text->data.width,UI_form_pointer->data.element[element_number].tooltip.text->data.height);
+                        // ------------------- Display Item stats -----------------------------
+                        if ((UI_form_pointer->data.element[element_number].type == UI_ELEMENT_ITEM)&&(UI_form_pointer->data.element[element_number].value >= 0))
+                        {
+                            item_type* item_pointer = new item_type;
+                            item_pointer = game.item_manager.add_item(UI_form_pointer->data.element[element_number].value);
+                            float texture_background_x = game.core.io.mouse_x;
+                            float texture_background_y = game.core.io.mouse_y;
+                            texture_type* texture_pointer_name = new texture_type;
+                            texture_pointer_name = game.texture_manager.add_texture(game.font_manager.root,item_pointer->data.name.c_str(),0.8f,0,0,255,255,255,255,TEXTURE_STRING);
+                            texture_pointer_name->data.render_positioning = TEXTURE_RENDER_DOWN+TEXTURE_RENDER_LEFT;
+                            float texture_background_padding = texture_pointer_name->data.height;
+                            float texture_name_x = texture_background_x+(texture_background_padding/2.0f);
+                            float texture_name_y = texture_background_y-(texture_background_padding/2.0f);
+                            float texture_background_size_x = texture_pointer_name->data.width+texture_background_padding;
+                            float texture_background_size_y = texture_pointer_name->data.height+texture_background_padding;
+                            game.texture_manager.draw(UI_form_pointer->data.element[element_number].title.image,false,texture_background_x,texture_background_y,UI_form_pointer->data.element[element_number].position.z,texture_background_size_x,texture_background_size_y);
+                            game.texture_manager.draw(texture_pointer_name,false,texture_name_x,texture_name_y,UI_form_pointer->data.element[element_number].position.z,texture_pointer_name->data.width,texture_pointer_name->data.height);
                         }
                     }
                 }
