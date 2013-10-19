@@ -35,7 +35,7 @@
 #define EFFECT_MOD_DEXTERITY        3
 #define EFFECT_MOD_ALL_ATTRIBUTES   4
 //---------------------------------------
-#define EFFECT_MOD_ARMOUR           5
+#define EFFECT_MOD_ARMOR            5
 //---------------------------------------
 #define EFFECT_MOD_DAMAGE           6
 #define EFFECT_MOD_DAMAGE_MAX       7

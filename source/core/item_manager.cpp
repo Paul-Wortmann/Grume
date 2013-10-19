@@ -358,7 +358,7 @@ int  item_manager_class::gen_item(int item_type_UID, int item_sub_type_UID, int 
                     temp_item_pointer->data.equipable              = true;
                     temp_item_pointer->data.quantity               = 1;
                     temp_item_pointer->data.quantity_max           = 1;
-                    temp_item_pointer->data.number_of_item_effects = 1;
+                    temp_item_pointer->data.number_of_item_effects = number_effects;
                     temp_item_pointer->data.effect[0]              = game.effect_manager.add_effect(EFFECT_MOD_DAMAGE);
                     temp_item_pointer->data.effect[0]->data.value  = quality_level;
                     temp_item_pointer->data.effect[0]->data.active = true;
