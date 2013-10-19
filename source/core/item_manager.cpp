@@ -304,62 +304,64 @@ int  item_manager_class::gen_item(int item_type_UID, int item_sub_type_UID, int 
             switch (item_type_UID)
             {
                 case ITEM_POTION:
-                    temp_item_pointer->data.stackable    = true;
-                    temp_item_pointer->data.consumable   = true;
-                    temp_item_pointer->data.quantity     = 1;
-                    temp_item_pointer->data.quantity_max = 100;
+                    temp_item_pointer->data.stackable              = true;
+                    temp_item_pointer->data.consumable             = true;
+                    temp_item_pointer->data.quantity               = 1;
+                    temp_item_pointer->data.quantity_max           = 100;
                 break;
                 case ITEM_SPELL_BOOK:
-                    temp_item_pointer->data.consumable   = true;
-                    temp_item_pointer->data.quantity     = 1;
-                    temp_item_pointer->data.quantity_max = 1;
+                    temp_item_pointer->data.consumable             = true;
+                    temp_item_pointer->data.quantity               = 1;
+                    temp_item_pointer->data.quantity_max           = 1;
                 break;
                 case ITEM_BELT:
-                    temp_item_pointer->data.equipable    = true;
-                    temp_item_pointer->data.quantity     = 1;
-                    temp_item_pointer->data.quantity_max = 1;
+                    temp_item_pointer->data.equipable              = true;
+                    temp_item_pointer->data.quantity               = 1;
+                    temp_item_pointer->data.quantity_max           = 1;
                 break;
                 case ITEM_BODY:
-                    temp_item_pointer->data.equipable    = true;
-                    temp_item_pointer->data.quantity     = 1;
-                    temp_item_pointer->data.quantity_max = 1;
+                    temp_item_pointer->data.equipable              = true;
+                    temp_item_pointer->data.quantity               = 1;
+                    temp_item_pointer->data.quantity_max           = 1;
                 break;
                 case ITEM_FEET:
-                    temp_item_pointer->data.equipable    = true;
-                    temp_item_pointer->data.quantity     = 1;
-                    temp_item_pointer->data.quantity_max = 1;
+                    temp_item_pointer->data.equipable              = true;
+                    temp_item_pointer->data.quantity               = 1;
+                    temp_item_pointer->data.quantity_max           = 1;
                 break;
                 case ITEM_HAND:
-                    temp_item_pointer->data.equipable    = true;
-                    temp_item_pointer->data.quantity     = 1;
-                    temp_item_pointer->data.quantity_max = 1;
+                    temp_item_pointer->data.equipable              = true;
+                    temp_item_pointer->data.quantity               = 1;
+                    temp_item_pointer->data.quantity_max           = 1;
                 break;
                 case ITEM_HEAD:
-                    temp_item_pointer->data.equipable    = true;
-                    temp_item_pointer->data.quantity     = 1;
-                    temp_item_pointer->data.quantity_max = 1;
+                    temp_item_pointer->data.equipable              = true;
+                    temp_item_pointer->data.quantity               = 1;
+                    temp_item_pointer->data.quantity_max           = 1;
                 break;
                 case ITEM_NECK:
-                    temp_item_pointer->data.equipable    = true;
-                    temp_item_pointer->data.quantity     = 1;
-                    temp_item_pointer->data.quantity_max = 1;
+                    temp_item_pointer->data.equipable              = true;
+                    temp_item_pointer->data.quantity               = 1;
+                    temp_item_pointer->data.quantity_max           = 1;
                 break;
                 case ITEM_OFFHAND:
-                    temp_item_pointer->data.equipable    = true;
-                    temp_item_pointer->data.quantity     = 1;
-                    temp_item_pointer->data.quantity_max = 1;
+                    temp_item_pointer->data.equipable              = true;
+                    temp_item_pointer->data.quantity               = 1;
+                    temp_item_pointer->data.quantity_max           = 1;
                 break;
                 case ITEM_RING:
-                    temp_item_pointer->data.equipable    = true;
-                    temp_item_pointer->data.quantity     = 1;
-                    temp_item_pointer->data.quantity_max = 1;
+                    temp_item_pointer->data.equipable              = true;
+                    temp_item_pointer->data.quantity               = 1;
+                    temp_item_pointer->data.quantity_max           = 1;
                 break;
                 case ITEM_WEAPON:
-                    temp_item_pointer->data.equipable    = true;
-                    temp_item_pointer->data.quantity     = 1;
-                    temp_item_pointer->data.quantity_max = 1;
-                    temp_item_pointer->data.effect[0]    = game.effect_manager.add_effect(EFFECT_MOD_DAMAGE);
-                    temp_item_pointer->data.effect[0]->data.value = quality_level;
+                    temp_item_pointer->data.equipable              = true;
+                    temp_item_pointer->data.quantity               = 1;
+                    temp_item_pointer->data.quantity_max           = 1;
+                    temp_item_pointer->data.number_of_item_effects = 1;
+                    temp_item_pointer->data.effect[0]              = game.effect_manager.add_effect(EFFECT_MOD_DAMAGE);
+                    temp_item_pointer->data.effect[0]->data.value  = quality_level;
+                    temp_item_pointer->data.effect[0]->data.active = true;
                 break;
                 default:
                     game.core.log.file_write("Unable to generate item -> ",item_type_UID," - ", item_sub_type_UID," - ", quality_level);

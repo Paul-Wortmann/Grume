@@ -80,6 +80,15 @@ void  effect_class::init_effects(void) // Initialize hard-coded default effects,
     temp_effect_pointer->data.type     = EFFECT_MOD_MANA_REGEN;
     temp_effect_pointer->data.sub_type = EFFECT_MOD_MANA;
     //--------------------------------------------------------------------------------------------------------------------
+
+    //-------------------------- Mod damage --------------------------------------------------------------------------
+    temp_effect_pointer                = game.effect_manager.add_effect(EFFECT_MOD_DAMAGE);
+    temp_effect_pointer->data.active   = true;
+    temp_effect_pointer->data.name     = "Mod player damage";
+    temp_effect_pointer->data.value    = 1.0f;
+    temp_effect_pointer->data.type     = EFFECT_MOD_DAMAGE;
+    temp_effect_pointer->data.sub_type = EFFECT_MOD_DAMAGE;
+    //--------------------------------------------------------------------------------------------------------------------
     game.effect_manager.load_effects("data/scripts/effects.txt");
 }
 
