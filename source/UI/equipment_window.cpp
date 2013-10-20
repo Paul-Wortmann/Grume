@@ -341,7 +341,7 @@ void setup_equipment_window(int UID)
     UI_form_pointer->data.element[element_number].sound.on_mouse_over.enabled = false;
     UI_form_pointer->data.element[element_number].mouse_delay.maximum         = 30;
     UI_form_pointer->data.element[element_number].font                        = UI_form_pointer->data.font;
-    element_number = 8; //--- Boots
+    element_number = 8; //--- Gloves
     UI_form_pointer->data.element[element_number].window_UID                  = UI_form_pointer->data.UID;
     UI_form_pointer->data.element[element_number].element_UID                 = element_number;
     UI_form_pointer->data.element[element_number].title.text                  = NULL;
@@ -351,7 +351,7 @@ void setup_equipment_window(int UID)
     UI_form_pointer->data.element[element_number].dragable                    = true;
     UI_form_pointer->data.element[element_number].active                      = true;
     UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_ITEM;
-    UI_form_pointer->data.element[element_number].sub_type                    = ITEM_FEET;
+    UI_form_pointer->data.element[element_number].sub_type                    = ITEM_HAND;
     UI_form_pointer->data.element[element_number].zoom.enabled                = false;
     UI_form_pointer->data.element[element_number].tooltip.enabled             = false;
     UI_form_pointer->data.element[element_number].value                       = -1;
@@ -365,7 +365,7 @@ void setup_equipment_window(int UID)
     UI_form_pointer->data.element[element_number].sound.on_mouse_over.enabled = false;
     UI_form_pointer->data.element[element_number].mouse_delay.maximum         = 30;
     UI_form_pointer->data.element[element_number].font                        = UI_form_pointer->data.font;
-    element_number = 9; //--- Gloves
+    element_number = 9; //--- Boots
     UI_form_pointer->data.element[element_number].window_UID                  = UI_form_pointer->data.UID;
     UI_form_pointer->data.element[element_number].element_UID                 = element_number;
     UI_form_pointer->data.element[element_number].title.text                  = NULL;
@@ -375,7 +375,7 @@ void setup_equipment_window(int UID)
     UI_form_pointer->data.element[element_number].dragable                    = true;
     UI_form_pointer->data.element[element_number].active                      = true;
     UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_ITEM;
-    UI_form_pointer->data.element[element_number].sub_type                    = ITEM_HAND;
+    UI_form_pointer->data.element[element_number].sub_type                    = ITEM_FEET;
     UI_form_pointer->data.element[element_number].zoom.enabled                = false;
     UI_form_pointer->data.element[element_number].tooltip.enabled             = false;
     UI_form_pointer->data.element[element_number].value                       = -1;
