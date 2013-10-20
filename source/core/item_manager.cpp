@@ -107,7 +107,7 @@ int item_manager_class::get_new_item_UID(void)
 
 void item_manager_class::load_items(std::string file_name)
 {
-    item_type*     temp_item_pointer;
+    item_type*     item_pointer;
     int            temp_char_UTF32  = ' ';
     std::string    temp_string_data;
     std::string    temp_string_key;
@@ -158,29 +158,29 @@ void item_manager_class::load_items(std::string file_name)
                     temp_string_data = temp_string_value.c_str();
                     if (temp_string_key == "UID")
                     {
-                        temp_item_pointer = game.item_manager.add_item(atoi(temp_string_data.c_str()));
-                        temp_item_pointer->data.UID     = atoi(temp_string_data.c_str());
-                        temp_item_pointer->data.active   = true;
+                        item_pointer = game.item_manager.add_item(atoi(temp_string_data.c_str()));
+                        item_pointer->data.UID     = atoi(temp_string_data.c_str());
+                        item_pointer->data.active   = true;
                     }
-                    if (temp_item_pointer != NULL)
+                    if (item_pointer != NULL)
                     {
-                        temp_item_pointer->data.consumable = ((temp_string_key == "CONSUMABLE")&&(temp_string_data == "TRUE")) ? true : false;
-                        temp_item_pointer->data.consumable = ((temp_string_key == "EQUIPABLE") &&(temp_string_data == "TRUE")) ? true : false;
-                        temp_item_pointer->data.consumable = ((temp_string_key == "QUEST")     &&(temp_string_data == "TRUE")) ? true : false;
-                        if (temp_string_key == "NAME")             temp_item_pointer->data.name                   = temp_string_data.c_str();
-                        if (temp_string_key == "TYPE")             temp_item_pointer->data.type                   = atoi(temp_string_data.c_str());
-                        if (temp_string_key == "SUB_TYPE")         temp_item_pointer->data.sub_type               = atoi(temp_string_data.c_str());
-                        if (temp_string_key == "NUM_ITEM_EFFECTS") temp_item_pointer->data.number_of_item_effects = atoi(temp_string_data.c_str());
-                        if (temp_string_key == "NUM_ITEM_SOCKETS") temp_item_pointer->data.number_of_item_sockets = atoi(temp_string_data.c_str());
-                        if (temp_string_key == "IMAGE")            temp_item_pointer->data.image                  = game.texture_manager.add_texture(temp_string_data.c_str());
-                        if (temp_string_key == "SOUND_MOVE")       temp_item_pointer->data.sound_move             = game.sound_manager.add_sound(temp_string_data.c_str());
-                        if (temp_string_key == "SOUND_USE")        temp_item_pointer->data.sound_use              = game.sound_manager.add_sound(temp_string_data.c_str());
-                        if (temp_string_key == "EFFECT_0")         temp_item_pointer->data.effect[0]              = game.effect_manager.add_effect(atoi(temp_string_data.c_str()));
-                        if (temp_string_key == "EFFECT_1")         temp_item_pointer->data.effect[1]              = game.effect_manager.add_effect(atoi(temp_string_data.c_str()));
-                        if (temp_string_key == "EFFECT_2")         temp_item_pointer->data.effect[2]              = game.effect_manager.add_effect(atoi(temp_string_data.c_str()));
-                        if (temp_string_key == "EFFECT_3")         temp_item_pointer->data.effect[3]              = game.effect_manager.add_effect(atoi(temp_string_data.c_str()));
-                        if (temp_string_key == "EFFECT_4")         temp_item_pointer->data.effect[4]              = game.effect_manager.add_effect(atoi(temp_string_data.c_str()));
-                        if (temp_string_key == "EFFECT_5")         temp_item_pointer->data.effect[5]              = game.effect_manager.add_effect(atoi(temp_string_data.c_str()));
+                        item_pointer->data.consumable = ((temp_string_key == "CONSUMABLE")&&(temp_string_data == "TRUE")) ? true : false;
+                        item_pointer->data.consumable = ((temp_string_key == "EQUIPABLE") &&(temp_string_data == "TRUE")) ? true : false;
+                        item_pointer->data.consumable = ((temp_string_key == "QUEST")     &&(temp_string_data == "TRUE")) ? true : false;
+                        if (temp_string_key == "NAME")             item_pointer->data.name                   = temp_string_data.c_str();
+                        if (temp_string_key == "TYPE")             item_pointer->data.type                   = atoi(temp_string_data.c_str());
+                        if (temp_string_key == "SUB_TYPE")         item_pointer->data.sub_type               = atoi(temp_string_data.c_str());
+                        if (temp_string_key == "NUM_ITEM_EFFECTS") item_pointer->data.number_of_item_effects = atoi(temp_string_data.c_str());
+                        if (temp_string_key == "NUM_ITEM_SOCKETS") item_pointer->data.number_of_item_sockets = atoi(temp_string_data.c_str());
+                        if (temp_string_key == "IMAGE")            item_pointer->data.image                  = game.texture_manager.add_texture(temp_string_data.c_str());
+                        if (temp_string_key == "SOUND_MOVE")       item_pointer->data.sound_move             = game.sound_manager.add_sound(temp_string_data.c_str());
+                        if (temp_string_key == "SOUND_USE")        item_pointer->data.sound_use              = game.sound_manager.add_sound(temp_string_data.c_str());
+                        if (temp_string_key == "EFFECT_0")         item_pointer->data.effect[0]              = game.effect_manager.add_effect(atoi(temp_string_data.c_str()));
+                        if (temp_string_key == "EFFECT_1")         item_pointer->data.effect[1]              = game.effect_manager.add_effect(atoi(temp_string_data.c_str()));
+                        if (temp_string_key == "EFFECT_2")         item_pointer->data.effect[2]              = game.effect_manager.add_effect(atoi(temp_string_data.c_str()));
+                        if (temp_string_key == "EFFECT_3")         item_pointer->data.effect[3]              = game.effect_manager.add_effect(atoi(temp_string_data.c_str()));
+                        if (temp_string_key == "EFFECT_4")         item_pointer->data.effect[4]              = game.effect_manager.add_effect(atoi(temp_string_data.c_str()));
+                        if (temp_string_key == "EFFECT_5")         item_pointer->data.effect[5]              = game.effect_manager.add_effect(atoi(temp_string_data.c_str()));
                     }
                 }
             }
@@ -194,14 +194,14 @@ void item_manager_class::use_item(UI_form_struct *UI_form_pointer, int element_n
     bool used_item = false;
     if (UI_form_pointer->data.element[element_number].active)
     {
-        item_type* temp_item_pointer;
-        temp_item_pointer = game.item_manager.add_item(UI_form_pointer->data.element[element_number].value);
-        if (temp_item_pointer->data.consumable)
+        item_type* item_pointer;
+        item_pointer = game.item_manager.add_item(UI_form_pointer->data.element[element_number].value);
+        if (item_pointer->data.consumable)
         {
             //game.core.log.file_write("---- use item function ------");
-            for (int effect_count = 0; effect_count < temp_item_pointer->data.number_of_item_effects; effect_count++)
+            for (int effect_count = 0; effect_count < item_pointer->data.number_of_item_effects; effect_count++)
             {
-                used_item = game.effect_manager.use_effect(temp_item_pointer->data.effect[effect_count]);
+                used_item = game.effect_manager.use_effect(item_pointer->data.effect[effect_count]);
             }
             if (used_item)
             {
@@ -212,7 +212,7 @@ void item_manager_class::use_item(UI_form_struct *UI_form_pointer, int element_n
                     UI_form_pointer->data.element[element_number].value    = -1;
                     UI_form_pointer->data.element[element_number].quantity = 0;
                 }
-                game.sound_manager.play(temp_item_pointer->data.sound_use);
+                game.sound_manager.play(item_pointer->data.sound_use);
             }
         }
     }
@@ -242,184 +242,215 @@ void item_manager_class::unequip_item(item_type* item_pointer)
 
 int  item_manager_class::gen_item(int item_type_UID, int item_sub_type_UID, int quality_level)
 {
-    int number_sockets = 0;
-    int number_effects = 0;
-    if (quality_level <= 10)
-    {
-        number_sockets = 0;
-        number_effects = 1;
-    }
-    if ((quality_level > 10)&&(quality_level <= 20))
-    {
-        number_sockets = 0;
-        number_effects = random_int(1,2);
-    }
-    if ((quality_level > 20)&&(quality_level <= 30))
-    {
-        number_effects = random_int(0,1);
-        number_effects = random_int(1,2);
-    }
-    if ((quality_level > 30)&&(quality_level <= 40))
-    {
-        number_effects = random_int(0,1);
-        number_effects = random_int(2,3);
-    }
-    if ((quality_level > 40)&&(quality_level <= 50))
-    {
-        number_effects = random_int(1,2);
-        number_effects = random_int(2,3);
-    }
-    if ((quality_level > 50)&&(quality_level <= 60))
-    {
-        number_effects = random_int(1,2);
-        number_effects = random_int(3,4);
-    }
-    if ((quality_level > 60)&&(quality_level <= 70))
-    {
-        number_effects = random_int(2,3);
-        number_effects = random_int(3,4);
-    }
-    if ((quality_level > 70)&&(quality_level <= 80))
-    {
-        number_effects = random_int(2,3);
-        number_effects = random_int(4,5);
-    }
-    if (quality_level > 80)
-    {
-        number_effects = random_int(3,4);
-        number_effects = random_int(5,6);
-    }
-    if (number_sockets > MAX_ITEM_SOCKETS) number_sockets = MAX_ITEM_SOCKETS;
-    if (number_effects > MAX_ITEM_EFFECTS) number_effects = MAX_ITEM_EFFECTS;
-
     int new_UID = RETURN_FAIL;
         new_UID = game.item_manager.get_new_item_UID();
     if (new_UID >= 0)
     {
-        item_type*      temp_item_pointer;
-        temp_item_pointer = game.item_manager.add_item(new_UID);
-        if (temp_item_pointer)
+        item_type* item_pointer = new item_type;
+        item_pointer = game.item_manager.add_item(new_UID);
+        if (item_pointer)
         {
-            temp_item_pointer->data.active = true;
+            // ----------------> Socket and Effect <---------------------------------------------
+            if (quality_level <= 10)
+            {
+                item_pointer->data.number_of_item_sockets = 0;
+                item_pointer->data.number_of_item_effects = 1;
+            }
+            if ((quality_level > 10)&&(quality_level <= 20))
+            {
+                item_pointer->data.number_of_item_sockets = 0;
+                item_pointer->data.number_of_item_effects = random_int(1,2);
+            }
+            if ((quality_level > 20)&&(quality_level <= 30))
+            {
+                item_pointer->data.number_of_item_sockets = random_int(0,1);
+                item_pointer->data.number_of_item_effects = random_int(1,2);
+            }
+            if ((quality_level > 30)&&(quality_level <= 40))
+            {
+                item_pointer->data.number_of_item_sockets = random_int(0,1);
+                item_pointer->data.number_of_item_effects = random_int(2,3);
+            }
+            if ((quality_level > 40)&&(quality_level <= 50))
+            {
+                item_pointer->data.number_of_item_sockets = random_int(1,2);
+                item_pointer->data.number_of_item_effects = random_int(2,3);
+            }
+            if ((quality_level > 50)&&(quality_level <= 60))
+            {
+                item_pointer->data.number_of_item_sockets = random_int(1,2);
+                item_pointer->data.number_of_item_effects = random_int(3,4);
+            }
+            if ((quality_level > 60)&&(quality_level <= 70))
+            {
+                item_pointer->data.number_of_item_sockets = random_int(2,3);
+                item_pointer->data.number_of_item_effects = random_int(3,4);
+            }
+            if ((quality_level > 70)&&(quality_level <= 80))
+            {
+                item_pointer->data.number_of_item_sockets = random_int(2,3);
+                item_pointer->data.number_of_item_effects = random_int(4,5);
+            }
+            if (quality_level > 80)
+            {
+                item_pointer->data.number_of_item_sockets = random_int(3,4);
+                item_pointer->data.number_of_item_effects = random_int(5,6);
+            }
+            if (item_pointer->data.number_of_item_sockets < 0) item_pointer->data.number_of_item_sockets = 0;
+            if (item_pointer->data.number_of_item_effects < 1) item_pointer->data.number_of_item_effects = 1;
+            if (item_pointer->data.number_of_item_sockets > MAX_ITEM_SOCKETS) item_pointer->data.number_of_item_sockets = MAX_ITEM_SOCKETS;
+            if (item_pointer->data.number_of_item_effects > MAX_ITEM_EFFECTS) item_pointer->data.number_of_item_effects = MAX_ITEM_EFFECTS;
+            for (int socket_count = 0; socket_count < MAX_ITEM_SOCKETS; socket_count++)
+            {
+                item_pointer->data.socket[socket_count].enabled = false;
+            }
+            if (item_pointer->data.number_of_item_effects > 0)
+            {
+                for (int effect_count = 0; effect_count < item_pointer->data.number_of_item_effects; effect_count++)
+                {
+                    item_pointer->data.effect[effect_count] = new effect_type;
+                    item_pointer->data.effect[effect_count]->data.active = false;
+                }
+            }
+            // ----------------------------------------------------------------------------------
+            item_pointer->data.active = true;
             switch (item_type_UID)
             {
                 case ITEM_POTION:
-                    temp_item_pointer->data.stackable              = true;
-                    temp_item_pointer->data.consumable             = true;
-                    temp_item_pointer->data.quantity               = 1;
-                    temp_item_pointer->data.quantity_max           = 100;
+                    item_pointer->data.stackable              = true;
+                    item_pointer->data.consumable             = true;
+                    item_pointer->data.quantity               = 1;
+                    item_pointer->data.quantity_max           = 100;
+                    if (item_pointer->data.number_of_item_sockets > 0) item_pointer->data.number_of_item_sockets = 0;
+                    if (item_pointer->data.number_of_item_effects > 1) item_pointer->data.number_of_item_effects = 1;
                 break;
                 case ITEM_SPELL_BOOK:
-                    temp_item_pointer->data.consumable             = true;
-                    temp_item_pointer->data.quantity               = 1;
-                    temp_item_pointer->data.quantity_max           = 1;
+                    item_pointer->data.consumable             = true;
+                    item_pointer->data.quantity               = 1;
+                    item_pointer->data.quantity_max           = 1;
+                    if (item_pointer->data.number_of_item_sockets > 0) item_pointer->data.number_of_item_sockets = 0;
+                    if (item_pointer->data.number_of_item_effects > 1) item_pointer->data.number_of_item_effects = 1;
                 break;
                 case ITEM_BELT:
-                    temp_item_pointer->data.equipable              = true;
-                    temp_item_pointer->data.quantity               = 1;
-                    temp_item_pointer->data.quantity_max           = 1;
+                    item_pointer->data.equipable              = true;
+                    item_pointer->data.quantity               = 1;
+                    item_pointer->data.quantity_max           = 1;
+                    if (item_pointer->data.number_of_item_sockets > 0) item_pointer->data.number_of_item_sockets = 0;
                 break;
                 case ITEM_BODY:
-                    temp_item_pointer->data.equipable              = true;
-                    temp_item_pointer->data.quantity               = 1;
-                    temp_item_pointer->data.quantity_max           = 1;
+                    item_pointer->data.equipable              = true;
+                    item_pointer->data.quantity               = 1;
+                    item_pointer->data.quantity_max           = 1;
                 break;
                 case ITEM_FEET:
-                    temp_item_pointer->data.equipable              = true;
-                    temp_item_pointer->data.quantity               = 1;
-                    temp_item_pointer->data.quantity_max           = 1;
+                    item_pointer->data.equipable              = true;
+                    item_pointer->data.quantity               = 1;
+                    item_pointer->data.quantity_max           = 1;
+                    if (item_pointer->data.number_of_item_sockets > 0) item_pointer->data.number_of_item_sockets = 0;
                 break;
                 case ITEM_HAND:
-                    temp_item_pointer->data.equipable              = true;
-                    temp_item_pointer->data.quantity               = 1;
-                    temp_item_pointer->data.quantity_max           = 1;
+                    item_pointer->data.equipable              = true;
+                    item_pointer->data.quantity               = 1;
+                    item_pointer->data.quantity_max           = 1;
+                    if (item_pointer->data.number_of_item_sockets > 0) item_pointer->data.number_of_item_sockets = 0;
                 break;
                 case ITEM_HEAD:
-                    temp_item_pointer->data.equipable              = true;
-                    temp_item_pointer->data.quantity               = 1;
-                    temp_item_pointer->data.quantity_max           = 1;
+                    item_pointer->data.equipable              = true;
+                    item_pointer->data.quantity               = 1;
+                    item_pointer->data.quantity_max           = 1;
+                    if (item_pointer->data.number_of_item_sockets > 1) item_pointer->data.number_of_item_sockets = 1;
                 break;
                 case ITEM_NECK:
-                    temp_item_pointer->data.equipable              = true;
-                    temp_item_pointer->data.quantity               = 1;
-                    temp_item_pointer->data.quantity_max           = 1;
+                    item_pointer->data.equipable              = true;
+                    item_pointer->data.quantity               = 1;
+                    item_pointer->data.quantity_max           = 1;
+                    if (item_pointer->data.number_of_item_sockets > 0) item_pointer->data.number_of_item_sockets = 0;
                 break;
                 case ITEM_OFFHAND:
-                    temp_item_pointer->data.equipable              = true;
-                    temp_item_pointer->data.quantity               = 1;
-                    temp_item_pointer->data.quantity_max           = 1;
+                    item_pointer->data.equipable              = true;
+                    item_pointer->data.quantity               = 1;
+                    item_pointer->data.quantity_max           = 1;
                 break;
                 case ITEM_RING:
-                    temp_item_pointer->data.equipable              = true;
-                    temp_item_pointer->data.quantity               = 1;
-                    temp_item_pointer->data.quantity_max           = 1;
+                    item_pointer->data.equipable              = true;
+                    item_pointer->data.quantity               = 1;
+                    item_pointer->data.quantity_max           = 1;
+                    if (item_pointer->data.number_of_item_sockets > 0) item_pointer->data.number_of_item_sockets = 0;
                 break;
                 case ITEM_WEAPON:
-                    temp_item_pointer->data.equipable              = true;
-                    temp_item_pointer->data.quantity               = 1;
-                    temp_item_pointer->data.quantity_max           = 1;
-                    temp_item_pointer->data.number_of_item_effects = number_effects;
-                    temp_item_pointer->data.effect[0]              = game.effect_manager.add_effect(EFFECT_MOD_DAMAGE);
-                    temp_item_pointer->data.effect[0]->data.value  = quality_level;
-                    temp_item_pointer->data.effect[0]->data.active = true;
+                    game.core.log.file_write("Number of sockets - ",item_pointer->data.number_of_item_sockets);
+                    game.core.log.file_write("Number of effects - ",item_pointer->data.number_of_item_effects);
+                    item_pointer->data.equipable              = true;
+                    item_pointer->data.quantity               = 1;
+                    item_pointer->data.quantity_max           = 1;
+                    item_pointer->data.effect[0]              = game.effect_manager.add_effect(EFFECT_MOD_DAMAGE);
+                    item_pointer->data.effect[0]->data.value  = quality_level;
+                    item_pointer->data.effect[0]->data.active = true;
+                    if (item_pointer->data.number_of_item_effects > 1)
+                    {
+                        for (int effect_count = 1; effect_count < item_pointer->data.number_of_item_effects; effect_count++)
+                        {
+                            item_pointer->data.effect[effect_count]->data.active = false;
+                        }
+                    }
                 break;
                 default:
                     game.core.log.file_write("Unable to generate item -> ",item_type_UID," - ", item_sub_type_UID," - ", quality_level);
                 break;
             }
-            temp_item_pointer->data.type     = item_type_UID;
-            temp_item_pointer->data.sub_type = item_sub_type_UID;
-            item_manager_class::gen_item_name   (temp_item_pointer,item_type_UID, item_sub_type_UID, quality_level);
-            item_manager_class::gen_item_texture(temp_item_pointer,item_type_UID, item_sub_type_UID, quality_level);
-            item_manager_class::gen_item_sounds (temp_item_pointer,item_type_UID, item_sub_type_UID, quality_level);
+            item_pointer->data.type     = item_type_UID;
+            item_pointer->data.sub_type = item_sub_type_UID;
+            item_manager_class::gen_item_name   (item_pointer,item_type_UID, item_sub_type_UID, quality_level);
+            item_manager_class::gen_item_texture(item_pointer,item_type_UID, item_sub_type_UID, quality_level);
+            item_manager_class::gen_item_sounds (item_pointer,item_type_UID, item_sub_type_UID, quality_level);
         }
         else new_UID = RETURN_FAIL;
     }
     return (new_UID);
 };
 
-void  item_manager_class::gen_item_name(item_type* temp_item_pointer,int item_type_UID, int item_sub_type_UID, int quality_level)
+void  item_manager_class::gen_item_name(item_type* item_pointer,int item_type_UID, int item_sub_type_UID, int quality_level)
 {
-    temp_item_pointer->data.name = "Randomly generated item";
+    item_pointer->data.name = "Randomly generated item";
     //game.core.log.file_write("Unable to generate item -> ",item_type_UID," - ", item_sub_type_UID," - ", quality_level);
 };
 
-void  item_manager_class::gen_item_texture(item_type* temp_item_pointer,int item_type_UID, int item_sub_type_UID, int quality_level)
+void  item_manager_class::gen_item_texture(item_type* item_pointer,int item_type_UID, int item_sub_type_UID, int quality_level)
 {
     switch (item_type_UID)
     {
         case ITEM_POTION:
-            temp_item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/potions/potion_24.png");
+            item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/potions/potion_24.png");
         break;
         case ITEM_SPELL_BOOK:
-            temp_item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/books/book_19.png");
+            item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/books/book_19.png");
         break;
         case ITEM_BELT:
-            temp_item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/belts/belt_00.png");
+            item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/belts/belt_00.png");
         break;
         case ITEM_BODY:
-            temp_item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/armour/armour_00.png");
+            item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/armour/armour_00.png");
         break;
         case ITEM_FEET:
-            temp_item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/boots/boots_06.png");
+            item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/boots/boots_06.png");
         break;
         case ITEM_HAND:
-            temp_item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/gloves/gloves_03.png");
+            item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/gloves/gloves_03.png");
         break;
         case ITEM_HEAD:
-            temp_item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/helms/helm_00.png");
+            item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/helms/helm_00.png");
         break;
         case ITEM_NECK:
-            temp_item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/amulets/amulet_00.png");
+            item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/amulets/amulet_00.png");
         break;
         case ITEM_OFFHAND:
-            temp_item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/shields/shield_03.png");
+            item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/shields/shield_03.png");
         break;
         case ITEM_RING:
-            temp_item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/rings/ring_00.png");
+            item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/rings/ring_00.png");
         break;
         case ITEM_WEAPON:
-            temp_item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/swords/sword_03.png");
+            item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/swords/sword_03.png");
         break;
         default:
             game.core.log.file_write("Unable to generate item textures -> ",item_type_UID," - ", item_sub_type_UID," - ", quality_level);
@@ -427,53 +458,53 @@ void  item_manager_class::gen_item_texture(item_type* temp_item_pointer,int item
     }
 };
 
-void  item_manager_class::gen_item_sounds(item_type* temp_item_pointer,int item_type_UID, int item_sub_type_UID, int quality_level)
+void  item_manager_class::gen_item_sounds(item_type* item_pointer,int item_type_UID, int item_sub_type_UID, int quality_level)
 {
     switch (item_type_UID)
     {
         case ITEM_POTION:
-            temp_item_pointer->data.sound_move = game.sound_manager.add_sound("data/sound/inventory/bottle_01.wav");
-            temp_item_pointer->data.sound_use  = game.sound_manager.add_sound("data/sound/inventory/bubble_01.wav");
+            item_pointer->data.sound_move = game.sound_manager.add_sound("data/sound/inventory/bottle_01.wav");
+            item_pointer->data.sound_use  = game.sound_manager.add_sound("data/sound/inventory/bubble_01.wav");
         break;
         case ITEM_SPELL_BOOK:
-            temp_item_pointer->data.sound_move = game.sound_manager.add_sound("data/sound/inventory/book_02.wav");
-            temp_item_pointer->data.sound_use  = game.sound_manager.add_sound("data/sound/inventory/book_00.wav");
+            item_pointer->data.sound_move = game.sound_manager.add_sound("data/sound/inventory/book_02.wav");
+            item_pointer->data.sound_use  = game.sound_manager.add_sound("data/sound/inventory/book_00.wav");
         break;
         case ITEM_BELT:
-            temp_item_pointer->data.sound_move = game.sound_manager.add_sound("data/sound/inventory/leather_00.wav");
-            temp_item_pointer->data.sound_use  = game.sound_manager.add_sound("data/sound/inventory/leather_00.wav");
+            item_pointer->data.sound_move = game.sound_manager.add_sound("data/sound/inventory/leather_00.wav");
+            item_pointer->data.sound_use  = game.sound_manager.add_sound("data/sound/inventory/leather_00.wav");
         break;
         case ITEM_BODY:
-            temp_item_pointer->data.sound_move = game.sound_manager.add_sound("data/sound/inventory/leather_00.wav");
-            temp_item_pointer->data.sound_use  = game.sound_manager.add_sound("data/sound/inventory/leather_00.wav");
+            item_pointer->data.sound_move = game.sound_manager.add_sound("data/sound/inventory/leather_00.wav");
+            item_pointer->data.sound_use  = game.sound_manager.add_sound("data/sound/inventory/leather_00.wav");
         break;
         case ITEM_FEET:
-            temp_item_pointer->data.sound_move = game.sound_manager.add_sound("data/sound/inventory/cloth_00.wav");
-            temp_item_pointer->data.sound_use  = game.sound_manager.add_sound("data/sound/inventory/cloth_00.wav");
+            item_pointer->data.sound_move = game.sound_manager.add_sound("data/sound/inventory/cloth_00.wav");
+            item_pointer->data.sound_use  = game.sound_manager.add_sound("data/sound/inventory/cloth_00.wav");
         break;
         case ITEM_HAND:
-            temp_item_pointer->data.sound_move = game.sound_manager.add_sound("data/sound/inventory/metal_00.wav");
-            temp_item_pointer->data.sound_use  = game.sound_manager.add_sound("data/sound/inventory/metal_00.wav");
+            item_pointer->data.sound_move = game.sound_manager.add_sound("data/sound/inventory/metal_00.wav");
+            item_pointer->data.sound_use  = game.sound_manager.add_sound("data/sound/inventory/metal_00.wav");
         break;
         case ITEM_HEAD:
-            temp_item_pointer->data.sound_move = game.sound_manager.add_sound("data/sound/inventory/leather_00.wav");
-            temp_item_pointer->data.sound_use  = game.sound_manager.add_sound("data/sound/inventory/leather_00.wav");
+            item_pointer->data.sound_move = game.sound_manager.add_sound("data/sound/inventory/leather_00.wav");
+            item_pointer->data.sound_use  = game.sound_manager.add_sound("data/sound/inventory/leather_00.wav");
         break;
         case ITEM_NECK:
-            temp_item_pointer->data.sound_move = game.sound_manager.add_sound("data/sound/inventory/ring_00.wav");
-            temp_item_pointer->data.sound_use  = game.sound_manager.add_sound("data/sound/inventory/ring_00.wav");
+            item_pointer->data.sound_move = game.sound_manager.add_sound("data/sound/inventory/ring_00.wav");
+            item_pointer->data.sound_use  = game.sound_manager.add_sound("data/sound/inventory/ring_00.wav");
         break;
         case ITEM_OFFHAND:
-            temp_item_pointer->data.sound_move = game.sound_manager.add_sound("data/sound/inventory/leather_00.wav");
-            temp_item_pointer->data.sound_use  = game.sound_manager.add_sound("data/sound/inventory/leather_00.wav");
+            item_pointer->data.sound_move = game.sound_manager.add_sound("data/sound/inventory/leather_00.wav");
+            item_pointer->data.sound_use  = game.sound_manager.add_sound("data/sound/inventory/leather_00.wav");
         break;
         case ITEM_RING:
-            temp_item_pointer->data.sound_move = game.sound_manager.add_sound("data/sound/inventory/ring_01.wav");
-            temp_item_pointer->data.sound_use  = game.sound_manager.add_sound("data/sound/inventory/ring_01.wav");
+            item_pointer->data.sound_move = game.sound_manager.add_sound("data/sound/inventory/ring_01.wav");
+            item_pointer->data.sound_use  = game.sound_manager.add_sound("data/sound/inventory/ring_01.wav");
         break;
         case ITEM_WEAPON:
-            temp_item_pointer->data.sound_move = game.sound_manager.add_sound("data/sound/inventory/metal_00.wav");
-            temp_item_pointer->data.sound_use  = game.sound_manager.add_sound("data/sound/inventory/metal_00.wav");
+            item_pointer->data.sound_move = game.sound_manager.add_sound("data/sound/inventory/metal_00.wav");
+            item_pointer->data.sound_use  = game.sound_manager.add_sound("data/sound/inventory/metal_00.wav");
         break;
         default:
             game.core.log.file_write("Unable to generate item textures -> ",item_type_UID," - ", item_sub_type_UID," - ", quality_level);
