@@ -437,7 +437,7 @@ void setup_equipment_window(int UID)
     UI_form_pointer->data.element[element_number].sound.on_mouse_over.enabled = false;
     UI_form_pointer->data.element[element_number].mouse_delay.maximum         = 30;
     UI_form_pointer->data.element[element_number].font                        = UI_form_pointer->data.font;
-    element_number = 12; //--- Off hand
+    element_number = 12; //--- Weapon
     UI_form_pointer->data.element[element_number].window_UID                  = UI_form_pointer->data.UID;
     UI_form_pointer->data.element[element_number].element_UID                 = element_number;
     UI_form_pointer->data.element[element_number].title.text                  = NULL;
@@ -447,7 +447,7 @@ void setup_equipment_window(int UID)
     UI_form_pointer->data.element[element_number].dragable                    = true;
     UI_form_pointer->data.element[element_number].active                      = true;
     UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_ITEM;
-    UI_form_pointer->data.element[element_number].sub_type                    = ITEM_OFFHAND;
+    UI_form_pointer->data.element[element_number].sub_type                    = ITEM_WEAPON;
     UI_form_pointer->data.element[element_number].zoom.enabled                = false;
     UI_form_pointer->data.element[element_number].tooltip.enabled             = false;
     UI_form_pointer->data.element[element_number].value                       = -1;
@@ -461,7 +461,7 @@ void setup_equipment_window(int UID)
     UI_form_pointer->data.element[element_number].sound.on_mouse_over.enabled = false;
     UI_form_pointer->data.element[element_number].mouse_delay.maximum         = 30;
     UI_form_pointer->data.element[element_number].font                        = UI_form_pointer->data.font;
-    element_number = 13; //--- Weapon
+    element_number = 13; //--- Off hand
     UI_form_pointer->data.element[element_number].window_UID                  = UI_form_pointer->data.UID;
     UI_form_pointer->data.element[element_number].element_UID                 = element_number;
     UI_form_pointer->data.element[element_number].title.text                  = NULL;
@@ -471,7 +471,7 @@ void setup_equipment_window(int UID)
     UI_form_pointer->data.element[element_number].dragable                    = true;
     UI_form_pointer->data.element[element_number].active                      = true;
     UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_ITEM;
-    UI_form_pointer->data.element[element_number].sub_type                    = ITEM_WEAPON;
+    UI_form_pointer->data.element[element_number].sub_type                    = ITEM_OFFHAND;
     UI_form_pointer->data.element[element_number].zoom.enabled                = false;
     UI_form_pointer->data.element[element_number].tooltip.enabled             = false;
     UI_form_pointer->data.element[element_number].value                       = -1;
