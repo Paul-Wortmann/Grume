@@ -15,8 +15,6 @@ Seeding random...
 Initializing UI system...
 Initializing game system...
 Loading TMX map file -> data/maps/town.tmx
-Number of sockets - 3
-Number of effects - 5
 Initializing event handlers...
 Starting Game...
  
@@ -28,8 +26,8 @@ Starting Game...
 Font    count -> 1
 Music   count -> 1
 Sound   count -> 11
-Texture count -> 128
-Item    count -> 14
+Texture count -> 124
+Item    count -> 18
 Effect  count -> 42
  
 # ---------------------------------------------- #

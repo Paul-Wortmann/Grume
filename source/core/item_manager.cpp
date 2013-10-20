@@ -243,7 +243,8 @@ void item_manager_class::unequip_item(item_type* item_pointer)
 int  item_manager_class::gen_item(int item_type_UID, int item_sub_type_UID, int quality_level)
 {
     int new_UID = RETURN_FAIL;
-        new_UID = game.item_manager.get_new_item_UID();
+    if (item_type_UID == ITEM_POTION) item_type_UID = (random(2) == 1) ? ITEM_HEALTH_POTION : ITEM_MANA_POTION;
+    new_UID = game.item_manager.get_new_item_UID();
     if (new_UID >= 0)
     {
         item_type* item_pointer = new item_type;
@@ -316,13 +317,34 @@ int  item_manager_class::gen_item(int item_type_UID, int item_sub_type_UID, int 
             item_pointer->data.active = true;
             switch (item_type_UID)
             {
-                case ITEM_POTION:
+                case ITEM_HEALTH_POTION:
+                    item_pointer->data.name                   = "Health Potion";
+                    item_pointer->data.type                   = ITEM_POTION;
+                    item_pointer->data.sub_type               = ITEM_POTION_LARGE;
                     item_pointer->data.stackable              = true;
                     item_pointer->data.consumable             = true;
                     item_pointer->data.quantity               = 1;
                     item_pointer->data.quantity_max           = 100;
                     if (item_pointer->data.number_of_item_sockets > 0) item_pointer->data.number_of_item_sockets = 0;
                     if (item_pointer->data.number_of_item_effects > 1) item_pointer->data.number_of_item_effects = 1;
+                    item_pointer->data.effect[0]              = game.effect_manager.add_effect(EFFECT_MOD_HEALTH);
+                    item_pointer->data.effect[0]->data.active = true;
+                    item_pointer->data.effect[0]->data.value  = 25;
+                break;
+                case ITEM_MANA_POTION:
+                    item_pointer->data.name                   = "Mana Potion";
+                    item_pointer->data.type                   = ITEM_POTION;
+                    item_pointer->data.sub_type               = ITEM_POTION_LARGE;
+                    item_pointer->data.stackable              = true;
+                    item_pointer->data.consumable             = true;
+                    item_pointer->data.quantity               = 1;
+                    item_pointer->data.quantity_max           = 100;
+                    if (item_pointer->data.number_of_item_sockets > 0) item_pointer->data.number_of_item_sockets = 0;
+                    if (item_pointer->data.number_of_item_effects > 1) item_pointer->data.number_of_item_effects = 1;
+                    item_pointer->data.effect[0]              = game.effect_manager.add_effect(EFFECT_MOD_MANA);
+                    item_pointer->data.effect[0]->data.active = true;
+                    item_pointer->data.effect[0]->data.value  = 25;
+                break;
                 break;
                 case ITEM_SPELL_BOOK:
                     item_pointer->data.consumable             = true;
@@ -378,19 +400,24 @@ int  item_manager_class::gen_item(int item_type_UID, int item_sub_type_UID, int 
                     if (item_pointer->data.number_of_item_sockets > 0) item_pointer->data.number_of_item_sockets = 0;
                 break;
                 case ITEM_WEAPON:
-                    game.core.log.file_write("Number of sockets - ",item_pointer->data.number_of_item_sockets);
-                    game.core.log.file_write("Number of effects - ",item_pointer->data.number_of_item_effects);
                     item_pointer->data.equipable              = true;
                     item_pointer->data.quantity               = 1;
                     item_pointer->data.quantity_max           = 1;
                     item_pointer->data.effect[0]              = game.effect_manager.add_effect(EFFECT_MOD_DAMAGE);
                     item_pointer->data.effect[0]->data.value  = quality_level;
-                    item_pointer->data.effect[0]->data.active = true;
                     if (item_pointer->data.number_of_item_effects > 1)
                     {
                         for (int effect_count = 1; effect_count < item_pointer->data.number_of_item_effects; effect_count++)
                         {
-                            item_pointer->data.effect[effect_count]->data.active = false;
+                            switch (random(1))
+                            {
+                                case 0:
+                                    //item_pointer->data.effect[effect_count]->data.active = true;
+                                break;
+                                default:
+                                    item_pointer->data.effect[effect_count]->data.active = false;
+                                break;
+                            }
                         }
                     }
                 break;
@@ -421,6 +448,12 @@ void  item_manager_class::gen_item_texture(item_type* item_pointer,int item_type
     {
         case ITEM_POTION:
             item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/potions/potion_24.png");
+        break;
+        case ITEM_HEALTH_POTION:
+            item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/potions/potion_23.png");
+        break;
+        case ITEM_MANA_POTION:
+            item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/potions/potion_22.png");
         break;
         case ITEM_SPELL_BOOK:
             item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/books/book_19.png");
@@ -463,6 +496,14 @@ void  item_manager_class::gen_item_sounds(item_type* item_pointer,int item_type_
     switch (item_type_UID)
     {
         case ITEM_POTION:
+            item_pointer->data.sound_move = game.sound_manager.add_sound("data/sound/inventory/bottle_01.wav");
+            item_pointer->data.sound_use  = game.sound_manager.add_sound("data/sound/inventory/bubble_01.wav");
+        break;
+        case ITEM_HEALTH_POTION:
+            item_pointer->data.sound_move = game.sound_manager.add_sound("data/sound/inventory/bottle_01.wav");
+            item_pointer->data.sound_use  = game.sound_manager.add_sound("data/sound/inventory/bubble_01.wav");
+        break;
+        case ITEM_MANA_POTION:
             item_pointer->data.sound_move = game.sound_manager.add_sound("data/sound/inventory/bottle_01.wav");
             item_pointer->data.sound_use  = game.sound_manager.add_sound("data/sound/inventory/bubble_01.wav");
         break;
