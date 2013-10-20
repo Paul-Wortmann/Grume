@@ -1077,6 +1077,7 @@ void UI_manager_class::swap_elements(int UI_form_UID_src, int UI_element_src, in
                     if ((item_pointer_src->data.type == ITEM_POTION) ||
                         (item_pointer_src->data.type == ITEM_HEALTH_POTION) ||
                         (item_pointer_src->data.type == ITEM_MANA_POTION) ||
+                        (item_pointer_src->data.type == ITEM_REJUVENATION_POTION) ||
                         (item_pointer_src->data.type == ITEM_SPELL))
                     allow_swap = true;
                 break;
