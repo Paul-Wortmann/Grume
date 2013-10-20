@@ -436,15 +436,64 @@ int  item_manager_class::gen_item(int item_type_UID, int item_sub_type_UID, int 
                     item_pointer->data.quantity               = 1;
                     item_pointer->data.quantity_max           = 1;
                     item_pointer->data.effect[0]              = game.effect_manager.add_effect(EFFECT_MOD_DAMAGE);
-                    item_pointer->data.effect[0]->data.value  = quality_level;
+                    item_pointer->data.effect[0]->data.value  = random(quality_level);
                     if (item_pointer->data.number_of_item_effects > 1)
                     {
                         for (int effect_count = 1; effect_count < item_pointer->data.number_of_item_effects; effect_count++)
                         {
-                            switch (random(1))
+                            switch (random(13))
                             {
                                 case 0:
-                                    //item_pointer->data.effect[effect_count]->data.active = true;
+                                    item_pointer->data.effect[effect_count]              = game.effect_manager.add_effect(EFFECT_MOD_DAMAGE_MAX);
+                                    item_pointer->data.effect[effect_count]->data.value  = random(quality_level);
+                                break;
+                                case 1:
+                                    item_pointer->data.effect[effect_count]              = game.effect_manager.add_effect(EFFECT_MOD_DAMAGE_MIN);
+                                    item_pointer->data.effect[effect_count]->data.value  = random(quality_level);
+                                break;
+                                case 2:
+                                    item_pointer->data.effect[effect_count]              = game.effect_manager.add_effect(EFFECT_MOD_DAMAGE_ICE);
+                                    item_pointer->data.effect[effect_count]->data.value  = random(quality_level);
+                                break;
+                                case 3:
+                                    item_pointer->data.effect[effect_count]              = game.effect_manager.add_effect(EFFECT_MOD_DAMAGE_FIRE);
+                                    item_pointer->data.effect[effect_count]->data.value  = random(quality_level);
+                                break;
+                                case 4:
+                                    item_pointer->data.effect[effect_count]              = game.effect_manager.add_effect(EFFECT_MOD_DAMAGE_LIGHTNING);
+                                    item_pointer->data.effect[effect_count]->data.value  = random(quality_level);
+                                break;
+                                case 5:
+                                    item_pointer->data.effect[effect_count]              = game.effect_manager.add_effect(EFFECT_MOD_DAMAGE_ELEMENTAL);
+                                    item_pointer->data.effect[effect_count]->data.value  = random(quality_level);
+                                break;
+                                case 6:
+                                    item_pointer->data.effect[effect_count]              = game.effect_manager.add_effect(EFFECT_MOD_MANA_HIT);
+                                    item_pointer->data.effect[effect_count]->data.value  = random(quality_level);
+                                break;
+                                case 7:
+                                    item_pointer->data.effect[effect_count]              = game.effect_manager.add_effect(EFFECT_MOD_MANA_KILL);
+                                    item_pointer->data.effect[effect_count]->data.value  = random(quality_level);
+                                break;
+                                case 8:
+                                    item_pointer->data.effect[effect_count]              = game.effect_manager.add_effect(EFFECT_MOD_HEALTH_HIT);
+                                    item_pointer->data.effect[effect_count]->data.value  = random(quality_level);
+                                break;
+                                case 9:
+                                    item_pointer->data.effect[effect_count]              = game.effect_manager.add_effect(EFFECT_MOD_HEALTH_KILL);
+                                    item_pointer->data.effect[effect_count]->data.value  = random(quality_level);
+                                break;
+                                case 10:
+                                    item_pointer->data.effect[effect_count]              = game.effect_manager.add_effect(EFFECT_MOD_CRIT_CHANCE);
+                                    item_pointer->data.effect[effect_count]->data.value  = random(quality_level);
+                                break;
+                                case 11:
+                                    item_pointer->data.effect[effect_count]              = game.effect_manager.add_effect(EFFECT_MOD_CRIT_DAMAGE);
+                                    item_pointer->data.effect[effect_count]->data.value  = random(quality_level);
+                                break;
+                                case 12:
+                                    item_pointer->data.effect[effect_count]              = game.effect_manager.add_effect(EFFECT_MOD_EXP_PER_KILL);
+                                    item_pointer->data.effect[effect_count]->data.value  = random(quality_level);
                                 break;
                                 default:
                                     item_pointer->data.effect[effect_count]->data.active = false;

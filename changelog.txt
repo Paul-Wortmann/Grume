@@ -10,7 +10,7 @@ LOC   -> xxxxx
 
 v0.24 - (2013-10-31) Happy Halloween!
 
-LOC   -> 18659
+LOC   -> 19364
 
 v0.23 - (2013-09-30)
 Core  -> Ported FnF to SDL2.
