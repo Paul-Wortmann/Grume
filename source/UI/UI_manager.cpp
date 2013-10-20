@@ -571,7 +571,7 @@ void UI_manager_class::render(void)
             {
                 for (int element_number = 0; element_number < UI_form_pointer->data.number_of_elements; element_number++)
                 {
-                    if ((UI_form_pointer->data.element[element_number].mouse_over)&&(UI_form_pointer->data.element[element_number].active))
+                    if ((!UI_manager_class::data.element_drag_in_progress)&&(UI_form_pointer->data.element[element_number].mouse_over)&&(UI_form_pointer->data.element[element_number].active))
                     {
                         if ((UI_form_pointer->data.element[element_number].tooltip.enabled) && (UI_form_pointer->data.element[element_number].tooltip.image_enabled))
                         {

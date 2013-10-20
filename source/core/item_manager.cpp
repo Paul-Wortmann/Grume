@@ -484,6 +484,9 @@ void  item_manager_class::gen_item_name(item_type* item_pointer,int item_type_UI
         case ITEM_REJUVENATION_POTION:
             item_pointer->data.name = "Rejuvenation Potion";
         break;
+        case ITEM_FEET:
+            item_pointer->data.name = "Randomly generated item";
+        break;
         default:
             //game.core.log.file_write("Unable to generate item -> ",item_type_UID," - ", item_sub_type_UID," - ", quality_level);
             item_pointer->data.name = "Randomly generated item";
