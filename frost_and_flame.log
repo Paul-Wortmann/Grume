@@ -20,48 +20,13 @@ Starting Game...
  
 # ---------------------------------------------- #
  
-Unable to process event - 1201 - UID - 3
-Unable to process event - 1201 - UID - 3
-Unable to process event - 1101 - UID - 3
-Unable to process event - 901 - UID - 3
-Unable to process event - 901 - UID - 3
-Unable to process event - 901 - UID - 3
-Unable to process event - 901 - UID - 3
-Unable to process event - 701 - UID - 3
-Unable to process event - 701 - UID - 3
-Unable to process event - 701 - UID - 3
-Unable to process event - 701 - UID - 3
-Unable to process event - 701 - UID - 3
-Unable to process event - 101 - UID - 3
-Unable to process event - 101 - UID - 3
-Unable to process event - 401 - UID - 3
-Unable to process event - 301 - UID - 3
-Unable to process event - 401 - UID - 3
-Unable to process event - 101 - UID - 3
-Unable to process event - 401 - UID - 3
-Unable to process event - 301 - UID - 3
-Unable to process event - 501 - UID - 3
-Unable to process event - 601 - UID - 3
-Unable to process event - 101 - UID - 3
-Unable to process event - 1101 - UID - 3
-Unable to process event - 1101 - UID - 3
-Unable to process event - 1101 - UID - 3
-Unable to process event - 801 - UID - 3
-Unable to process event - 801 - UID - 3
-Unable to process event - 801 - UID - 3
-Unable to process event - 801 - UID - 3
-Unable to process event - 801 - UID - 3
-Unable to process event - 801 - UID - 3
-Unable to process event - 801 - UID - 3
-Unable to process event - 801 - UID - 3
-Unable to process event - 801 - UID - 3
  
 # ---------------------------------------------- #
  
 Font    count -> 1
 Music   count -> 1
 Sound   count -> 11
-Texture count -> 127
+Texture count -> 125
 Item    count -> 14
 Effect  count -> 42
  

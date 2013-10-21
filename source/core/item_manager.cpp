@@ -439,9 +439,27 @@ int  item_manager_class::gen_item(int item_type_UID, int item_sub_type_UID, int 
                     item_pointer->data.effect[0]->data.value  = random(quality_level);
                     if (item_pointer->data.number_of_item_effects > 1)
                     {
+                        int AVAILABLE_EFFECT_COUNT = 13;
+                        int add_effect = 0;
+                        bool found = false;
+                        bool effect_used[AVAILABLE_EFFECT_COUNT];
+                        for (int temp_count = 0; temp_count < AVAILABLE_EFFECT_COUNT; temp_count++)
+                        {
+                            effect_used[temp_count] = false;
+                        }
                         for (int effect_count = 1; effect_count < item_pointer->data.number_of_item_effects; effect_count++)
                         {
-                            switch (random(13))
+                            found = false;
+                            while (!found)
+                            {
+                                add_effect = random(AVAILABLE_EFFECT_COUNT);
+                                if (!effect_used[add_effect])
+                                {
+                                    effect_used[add_effect] = true;
+                                    found = true;
+                                }
+                            }
+                            switch (add_effect)
                             {
                                 case 0:
                                     item_pointer->data.effect[effect_count]              = game.effect_manager.add_effect(EFFECT_MOD_DAMAGE_MAX);
