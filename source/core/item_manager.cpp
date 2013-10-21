@@ -336,359 +336,244 @@ int  item_manager_class::gen_item(int item_type_UID, int item_sub_type_UID, int 
         }
     }
     //if (item_type_UID == ITEM_POTION) item_type_UID = (random(2) == 1) ? ITEM_HEALTH_POTION : ITEM_MANA_POTION;
-    if ((item_sub_type_UID == ITEM_POTION_SMALL) || (item_sub_type_UID == ITEM_POTION_MEDIUM) || (item_sub_type_UID == ITEM_POTION_LARGE)) new_UID = item_type_UID;
-    else new_UID = game.item_manager.get_new_item_UID();
-    if (new_UID >= 0)
+    if ((item_type_UID == ITEM_POTION_S_HEALTH) ||
+        (item_type_UID == ITEM_POTION_M_HEALTH) ||
+        (item_type_UID == ITEM_POTION_L_HEALTH) ||
+        (item_type_UID == ITEM_POTION_S_MANA) ||
+        (item_type_UID == ITEM_POTION_M_MANA) ||
+        (item_type_UID == ITEM_POTION_L_MANA) ||
+        (item_type_UID == ITEM_POTION_S_REJUVENATION) ||
+        (item_type_UID == ITEM_POTION_M_REJUVENATION) ||
+        (item_type_UID == ITEM_POTION_L_REJUVENATION)) new_UID = item_type_UID;
+    else
     {
-        item_type* item_pointer = new item_type;
-        item_pointer = game.item_manager.add_item(new_UID);
-        if (item_pointer)
+        new_UID = game.item_manager.get_new_item_UID();
+        if (new_UID >= 0)
         {
-            // ----------------> Socket and Effect <---------------------------------------------
-            if (quality_level <= 10)
+            item_type* item_pointer = new item_type;
+            item_pointer = game.item_manager.add_item(new_UID);
+            if (item_pointer)
             {
-                item_pointer->data.number_of_item_sockets = 0;
-                item_pointer->data.number_of_item_effects = 1;
-            }
-            if ((quality_level > 10)&&(quality_level <= 20))
-            {
-                item_pointer->data.number_of_item_sockets = 0;
-                item_pointer->data.number_of_item_effects = random_int(1,2);
-            }
-            if ((quality_level > 20)&&(quality_level <= 30))
-            {
-                item_pointer->data.number_of_item_sockets = random_int(0,1);
-                item_pointer->data.number_of_item_effects = random_int(1,2);
-            }
-            if ((quality_level > 30)&&(quality_level <= 40))
-            {
-                item_pointer->data.number_of_item_sockets = random_int(0,1);
-                item_pointer->data.number_of_item_effects = random_int(2,3);
-            }
-            if ((quality_level > 40)&&(quality_level <= 50))
-            {
-                item_pointer->data.number_of_item_sockets = random_int(1,2);
-                item_pointer->data.number_of_item_effects = random_int(2,3);
-            }
-            if ((quality_level > 50)&&(quality_level <= 60))
-            {
-                item_pointer->data.number_of_item_sockets = random_int(1,2);
-                item_pointer->data.number_of_item_effects = random_int(3,4);
-            }
-            if ((quality_level > 60)&&(quality_level <= 70))
-            {
-                item_pointer->data.number_of_item_sockets = random_int(2,3);
-                item_pointer->data.number_of_item_effects = random_int(3,4);
-            }
-            if ((quality_level > 70)&&(quality_level <= 80))
-            {
-                item_pointer->data.number_of_item_sockets = random_int(2,3);
-                item_pointer->data.number_of_item_effects = random_int(4,5);
-            }
-            if (quality_level > 80)
-            {
-                item_pointer->data.number_of_item_sockets = random_int(3,4);
-                item_pointer->data.number_of_item_effects = random_int(5,6);
-            }
-            if (item_pointer->data.number_of_item_sockets < 0) item_pointer->data.number_of_item_sockets = 0;
-            if (item_pointer->data.number_of_item_effects < 1) item_pointer->data.number_of_item_effects = 1;
-            if (item_pointer->data.number_of_item_sockets > MAX_ITEM_SOCKETS) item_pointer->data.number_of_item_sockets = MAX_ITEM_SOCKETS;
-            if (item_pointer->data.number_of_item_effects > MAX_ITEM_EFFECTS) item_pointer->data.number_of_item_effects = MAX_ITEM_EFFECTS;
-            for (int socket_count = 0; socket_count < MAX_ITEM_SOCKETS; socket_count++)
-            {
-                item_pointer->data.socket[socket_count].enabled = false;
-            }
-            if (item_pointer->data.number_of_item_effects > 0)
-            {
-                for (int effect_count = 0; effect_count < item_pointer->data.number_of_item_effects; effect_count++)
+                // ----------------> Socket and Effect <---------------------------------------------
+                if (quality_level <= 10)
                 {
-                    item_pointer->data.effect[effect_count] = new effect_type;
-                    item_pointer->data.effect[effect_count]->data.active = false;
+                    item_pointer->data.number_of_item_sockets = 0;
+                    item_pointer->data.number_of_item_effects = 1;
                 }
-            }
-            // ----------------------------------------------------------------------------------
-            item_pointer->data.active = true;
-            switch (item_type_UID)
-            {
-                case ITEM_POTION_S_HEALTH:
-                    item_pointer->data.type                   = ITEM_POTION;
-                    item_pointer->data.sub_type               = ITEM_POTION_SMALL;
-                    item_pointer->data.stackable              = true;
-                    item_pointer->data.consumable             = true;
-                    item_pointer->data.quantity               = 1;
-                    item_pointer->data.quantity_max           = 100;
+                if ((quality_level > 10)&&(quality_level <= 20))
+                {
                     item_pointer->data.number_of_item_sockets = 0;
-                    item_pointer->data.number_of_item_effects = 1;
-                    item_pointer->data.effect[0]              = game.effect_manager.add_effect(EFFECT_MOD_HEALTH);
-                    item_pointer->data.effect[0]->data.active = true;
-                    item_pointer->data.effect[0]->data.value  = 5;
-                break;
-                case ITEM_POTION_M_HEALTH:
-                    item_pointer->data.type                   = ITEM_POTION;
-                    item_pointer->data.sub_type               = ITEM_POTION_MEDIUM;
-                    item_pointer->data.stackable              = true;
-                    item_pointer->data.consumable             = true;
-                    item_pointer->data.quantity               = 1;
-                    item_pointer->data.quantity_max           = 100;
-                    item_pointer->data.number_of_item_sockets = 0;
-                    item_pointer->data.number_of_item_effects = 1;
-                    item_pointer->data.effect[0]              = game.effect_manager.add_effect(EFFECT_MOD_HEALTH);
-                    item_pointer->data.effect[0]->data.active = true;
-                    item_pointer->data.effect[0]->data.value  = 15;
-                break;
-                case ITEM_POTION_L_HEALTH:
-                    item_pointer->data.type                   = ITEM_POTION;
-                    item_pointer->data.sub_type               = ITEM_POTION_LARGE;
-                    item_pointer->data.stackable              = true;
-                    item_pointer->data.consumable             = true;
-                    item_pointer->data.quantity               = 1;
-                    item_pointer->data.quantity_max           = 100;
-                    item_pointer->data.number_of_item_sockets = 0;
-                    item_pointer->data.number_of_item_effects = 1;
-                    item_pointer->data.effect[0]              = game.effect_manager.add_effect(EFFECT_MOD_HEALTH);
-                    item_pointer->data.effect[0]->data.active = true;
-                    item_pointer->data.effect[0]->data.value  = 45;
-                break;
-                case ITEM_POTION_S_MANA:
-                    item_pointer->data.type                   = ITEM_POTION;
-                    item_pointer->data.sub_type               = ITEM_POTION_SMALL;
-                    item_pointer->data.stackable              = true;
-                    item_pointer->data.consumable             = true;
-                    item_pointer->data.quantity               = 1;
-                    item_pointer->data.quantity_max           = 100;
-                    item_pointer->data.number_of_item_sockets = 0;
-                    item_pointer->data.number_of_item_effects = 1;
-                    item_pointer->data.effect[0]              = game.effect_manager.add_effect(EFFECT_MOD_MANA);
-                    item_pointer->data.effect[0]->data.active = true;
-                    item_pointer->data.effect[0]->data.value  = 5;
-                break;
-                case ITEM_POTION_M_MANA:
-                    item_pointer->data.type                   = ITEM_POTION;
-                    item_pointer->data.sub_type               = ITEM_POTION_MEDIUM;
-                    item_pointer->data.stackable              = true;
-                    item_pointer->data.consumable             = true;
-                    item_pointer->data.quantity               = 1;
-                    item_pointer->data.quantity_max           = 100;
-                    item_pointer->data.number_of_item_sockets = 0;
-                    item_pointer->data.number_of_item_effects = 1;
-                    item_pointer->data.effect[0]              = game.effect_manager.add_effect(EFFECT_MOD_MANA);
-                    item_pointer->data.effect[0]->data.active = true;
-                    item_pointer->data.effect[0]->data.value  = 15;
-                break;
-                case ITEM_POTION_L_MANA:
-                    item_pointer->data.type                   = ITEM_POTION;
-                    item_pointer->data.sub_type               = ITEM_POTION_LARGE;
-                    item_pointer->data.stackable              = true;
-                    item_pointer->data.consumable             = true;
-                    item_pointer->data.quantity               = 1;
-                    item_pointer->data.quantity_max           = 100;
-                    item_pointer->data.number_of_item_sockets = 0;
-                    item_pointer->data.number_of_item_effects = 1;
-                    item_pointer->data.effect[0]              = game.effect_manager.add_effect(EFFECT_MOD_MANA);
-                    item_pointer->data.effect[0]->data.active = true;
-                    item_pointer->data.effect[0]->data.value  = 45;
-                break;
-                case ITEM_POTION_S_REJUVENATION:
-                    item_pointer->data.type                   = ITEM_POTION;
-                    item_pointer->data.sub_type               = ITEM_POTION_SMALL;
-                    item_pointer->data.stackable              = true;
-                    item_pointer->data.consumable             = true;
-                    item_pointer->data.quantity               = 1;
-                    item_pointer->data.quantity_max           = 100;
-                    item_pointer->data.number_of_item_sockets = 0;
-                    item_pointer->data.number_of_item_effects = 2;
-                    item_pointer->data.effect[0]              = game.effect_manager.add_effect(EFFECT_MOD_MANA);
-                    item_pointer->data.effect[0]->data.active = true;
-                    item_pointer->data.effect[0]->data.value  = 5;
-                    item_pointer->data.effect[1]              = game.effect_manager.add_effect(EFFECT_MOD_HEALTH);
-                    item_pointer->data.effect[1]->data.active = true;
-                    item_pointer->data.effect[1]->data.value  = 5;
-                break;
-                case ITEM_POTION_M_REJUVENATION:
-                    item_pointer->data.type                   = ITEM_POTION;
-                    item_pointer->data.sub_type               = ITEM_POTION_MEDIUM;
-                    item_pointer->data.stackable              = true;
-                    item_pointer->data.consumable             = true;
-                    item_pointer->data.quantity               = 1;
-                    item_pointer->data.quantity_max           = 100;
-                    item_pointer->data.number_of_item_sockets = 0;
-                    item_pointer->data.number_of_item_effects = 2;
-                    item_pointer->data.effect[0]              = game.effect_manager.add_effect(EFFECT_MOD_MANA);
-                    item_pointer->data.effect[0]->data.active = true;
-                    item_pointer->data.effect[0]->data.value  = 5;
-                    item_pointer->data.effect[1]              = game.effect_manager.add_effect(EFFECT_MOD_HEALTH);
-                    item_pointer->data.effect[1]->data.active = true;
-                    item_pointer->data.effect[1]->data.value  = 15;
-                break;
-                case ITEM_POTION_L_REJUVENATION:
-                    item_pointer->data.type                   = ITEM_POTION;
-                    item_pointer->data.sub_type               = ITEM_POTION_LARGE;
-                    item_pointer->data.stackable              = true;
-                    item_pointer->data.consumable             = true;
-                    item_pointer->data.quantity               = 1;
-                    item_pointer->data.quantity_max           = 100;
-                    item_pointer->data.number_of_item_sockets = 0;
-                    item_pointer->data.number_of_item_effects = 2;
-                    item_pointer->data.effect[0]              = game.effect_manager.add_effect(EFFECT_MOD_MANA);
-                    item_pointer->data.effect[0]->data.active = true;
-                    item_pointer->data.effect[0]->data.value  = 5;
-                    item_pointer->data.effect[1]              = game.effect_manager.add_effect(EFFECT_MOD_HEALTH);
-                    item_pointer->data.effect[1]->data.active = true;
-                    item_pointer->data.effect[1]->data.value  = 45;
-                break;
-                case ITEM_SPELL_BOOK:
-                    item_pointer->data.consumable             = true;
-                    item_pointer->data.quantity               = 1;
-                    item_pointer->data.quantity_max           = 1;
-                    if (item_pointer->data.number_of_item_sockets > 0) item_pointer->data.number_of_item_sockets = 0;
-                    if (item_pointer->data.number_of_item_effects > 1) item_pointer->data.number_of_item_effects = 1;
-                break;
-                case ITEM_BELT:
-                    item_pointer->data.equipable              = true;
-                    item_pointer->data.quantity               = 1;
-                    item_pointer->data.quantity_max           = 1;
-                    if (item_pointer->data.number_of_item_sockets > 0) item_pointer->data.number_of_item_sockets = 0;
-                break;
-                case ITEM_BODY:
-                    item_pointer->data.equipable              = true;
-                    item_pointer->data.quantity               = 1;
-                    item_pointer->data.quantity_max           = 1;
-                break;
-                case ITEM_FEET:
-                    item_pointer->data.equipable              = true;
-                    item_pointer->data.quantity               = 1;
-                    item_pointer->data.quantity_max           = 1;
-                    if (item_pointer->data.number_of_item_sockets > 0) item_pointer->data.number_of_item_sockets = 0;
-                break;
-                case ITEM_HAND:
-                    item_pointer->data.equipable              = true;
-                    item_pointer->data.quantity               = 1;
-                    item_pointer->data.quantity_max           = 1;
-                    if (item_pointer->data.number_of_item_sockets > 0) item_pointer->data.number_of_item_sockets = 0;
-                break;
-                case ITEM_HEAD:
-                    item_pointer->data.equipable              = true;
-                    item_pointer->data.quantity               = 1;
-                    item_pointer->data.quantity_max           = 1;
-                    if (item_pointer->data.number_of_item_sockets > 1) item_pointer->data.number_of_item_sockets = 1;
-                break;
-                case ITEM_NECK:
-                    item_pointer->data.equipable              = true;
-                    item_pointer->data.quantity               = 1;
-                    item_pointer->data.quantity_max           = 1;
-                    if (item_pointer->data.number_of_item_sockets > 0) item_pointer->data.number_of_item_sockets = 0;
-                break;
-                case ITEM_OFFHAND:
-                    item_pointer->data.equipable              = true;
-                    item_pointer->data.quantity               = 1;
-                    item_pointer->data.quantity_max           = 1;
-                break;
-                case ITEM_RING:
-                    item_pointer->data.equipable              = true;
-                    item_pointer->data.quantity               = 1;
-                    item_pointer->data.quantity_max           = 1;
-                    if (item_pointer->data.number_of_item_sockets > 0) item_pointer->data.number_of_item_sockets = 0;
-                break;
-                case ITEM_WEAPON:
-                    item_pointer->data.equipable              = true;
-                    item_pointer->data.quantity               = 1;
-                    item_pointer->data.quantity_max           = 1;
-                    item_pointer->data.effect[0]              = game.effect_manager.add_effect(EFFECT_MOD_DAMAGE);
-                    item_pointer->data.effect[0]->data.value  = random(quality_level);
-                    if (item_pointer->data.number_of_item_effects > 1)
+                    item_pointer->data.number_of_item_effects = random_int(1,2);
+                }
+                if ((quality_level > 20)&&(quality_level <= 30))
+                {
+                    item_pointer->data.number_of_item_sockets = random_int(0,1);
+                    item_pointer->data.number_of_item_effects = random_int(1,2);
+                }
+                if ((quality_level > 30)&&(quality_level <= 40))
+                {
+                    item_pointer->data.number_of_item_sockets = random_int(0,1);
+                    item_pointer->data.number_of_item_effects = random_int(2,3);
+                }
+                if ((quality_level > 40)&&(quality_level <= 50))
+                {
+                    item_pointer->data.number_of_item_sockets = random_int(1,2);
+                    item_pointer->data.number_of_item_effects = random_int(2,3);
+                }
+                if ((quality_level > 50)&&(quality_level <= 60))
+                {
+                    item_pointer->data.number_of_item_sockets = random_int(1,2);
+                    item_pointer->data.number_of_item_effects = random_int(3,4);
+                }
+                if ((quality_level > 60)&&(quality_level <= 70))
+                {
+                    item_pointer->data.number_of_item_sockets = random_int(2,3);
+                    item_pointer->data.number_of_item_effects = random_int(3,4);
+                }
+                if ((quality_level > 70)&&(quality_level <= 80))
+                {
+                    item_pointer->data.number_of_item_sockets = random_int(2,3);
+                    item_pointer->data.number_of_item_effects = random_int(4,5);
+                }
+                if (quality_level > 80)
+                {
+                    item_pointer->data.number_of_item_sockets = random_int(3,4);
+                    item_pointer->data.number_of_item_effects = random_int(5,6);
+                }
+                if (item_pointer->data.number_of_item_sockets < 0) item_pointer->data.number_of_item_sockets = 0;
+                if (item_pointer->data.number_of_item_effects < 1) item_pointer->data.number_of_item_effects = 1;
+                if (item_pointer->data.number_of_item_sockets > MAX_ITEM_SOCKETS) item_pointer->data.number_of_item_sockets = MAX_ITEM_SOCKETS;
+                if (item_pointer->data.number_of_item_effects > MAX_ITEM_EFFECTS) item_pointer->data.number_of_item_effects = MAX_ITEM_EFFECTS;
+                for (int socket_count = 0; socket_count < MAX_ITEM_SOCKETS; socket_count++)
+                {
+                    item_pointer->data.socket[socket_count].enabled = false;
+                }
+                if (item_pointer->data.number_of_item_effects > 0)
+                {
+                    for (int effect_count = 0; effect_count < item_pointer->data.number_of_item_effects; effect_count++)
                     {
-                        int  AVAILABLE_EFFECT_COUNT = 13;
-                        int  add_effect             = 0;
-                        bool found                  = false;
-                        bool effect_used[AVAILABLE_EFFECT_COUNT];
-                        for (int temp_count = 0; temp_count < AVAILABLE_EFFECT_COUNT; temp_count++)
+                        item_pointer->data.effect[effect_count] = new effect_type;
+                        item_pointer->data.effect[effect_count]->data.active = false;
+                    }
+                }
+                // ----------------------------------------------------------------------------------
+                item_pointer->data.active = true;
+                switch (item_type_UID)
+                {
+                    case ITEM_SPELL_BOOK:
+                        item_pointer->data.consumable             = true;
+                        item_pointer->data.quantity               = 1;
+                        item_pointer->data.quantity_max           = 1;
+                        if (item_pointer->data.number_of_item_sockets > 0) item_pointer->data.number_of_item_sockets = 0;
+                        if (item_pointer->data.number_of_item_effects > 1) item_pointer->data.number_of_item_effects = 1;
+                    break;
+                    case ITEM_BELT:
+                        item_pointer->data.equipable              = true;
+                        item_pointer->data.quantity               = 1;
+                        item_pointer->data.quantity_max           = 1;
+                        if (item_pointer->data.number_of_item_sockets > 0) item_pointer->data.number_of_item_sockets = 0;
+                    break;
+                    case ITEM_BODY:
+                        item_pointer->data.equipable              = true;
+                        item_pointer->data.quantity               = 1;
+                        item_pointer->data.quantity_max           = 1;
+                    break;
+                    case ITEM_FEET:
+                        item_pointer->data.equipable              = true;
+                        item_pointer->data.quantity               = 1;
+                        item_pointer->data.quantity_max           = 1;
+                        if (item_pointer->data.number_of_item_sockets > 0) item_pointer->data.number_of_item_sockets = 0;
+                    break;
+                    case ITEM_HAND:
+                        item_pointer->data.equipable              = true;
+                        item_pointer->data.quantity               = 1;
+                        item_pointer->data.quantity_max           = 1;
+                        if (item_pointer->data.number_of_item_sockets > 0) item_pointer->data.number_of_item_sockets = 0;
+                    break;
+                    case ITEM_HEAD:
+                        item_pointer->data.equipable              = true;
+                        item_pointer->data.quantity               = 1;
+                        item_pointer->data.quantity_max           = 1;
+                        if (item_pointer->data.number_of_item_sockets > 1) item_pointer->data.number_of_item_sockets = 1;
+                    break;
+                    case ITEM_NECK:
+                        item_pointer->data.equipable              = true;
+                        item_pointer->data.quantity               = 1;
+                        item_pointer->data.quantity_max           = 1;
+                        if (item_pointer->data.number_of_item_sockets > 0) item_pointer->data.number_of_item_sockets = 0;
+                    break;
+                    case ITEM_OFFHAND:
+                        item_pointer->data.equipable              = true;
+                        item_pointer->data.quantity               = 1;
+                        item_pointer->data.quantity_max           = 1;
+                    break;
+                    case ITEM_RING:
+                        item_pointer->data.equipable              = true;
+                        item_pointer->data.quantity               = 1;
+                        item_pointer->data.quantity_max           = 1;
+                        if (item_pointer->data.number_of_item_sockets > 0) item_pointer->data.number_of_item_sockets = 0;
+                    break;
+                    case ITEM_WEAPON:
+                        item_pointer->data.equipable              = true;
+                        item_pointer->data.quantity               = 1;
+                        item_pointer->data.quantity_max           = 1;
+                        item_pointer->data.effect[0]              = game.effect_manager.add_effect(EFFECT_MOD_DAMAGE);
+                        item_pointer->data.effect[0]->data.value  = random(quality_level);
+                        if (item_pointer->data.number_of_item_effects > 1)
                         {
-                            effect_used[temp_count] = false;
-                        }
-                        for (int effect_count = 1; effect_count < item_pointer->data.number_of_item_effects; effect_count++)
-                        {
-                            found = false;
-                            while (!found)
+                            int  AVAILABLE_EFFECT_COUNT = 13;
+                            int  add_effect             = 0;
+                            bool found                  = false;
+                            bool effect_used[AVAILABLE_EFFECT_COUNT];
+                            for (int temp_count = 0; temp_count < AVAILABLE_EFFECT_COUNT; temp_count++)
                             {
-                                add_effect = random(AVAILABLE_EFFECT_COUNT);
-                                if (!effect_used[add_effect])
+                                effect_used[temp_count] = false;
+                            }
+                            for (int effect_count = 1; effect_count < item_pointer->data.number_of_item_effects; effect_count++)
+                            {
+                                found = false;
+                                while (!found)
                                 {
-                                    effect_used[add_effect] = true;
-                                    found = true;
+                                    add_effect = random(AVAILABLE_EFFECT_COUNT);
+                                    if (!effect_used[add_effect])
+                                    {
+                                        effect_used[add_effect] = true;
+                                        found = true;
+                                    }
+                                }
+                                switch (add_effect)
+                                {
+                                    case 0:
+                                        item_pointer->data.effect[effect_count]              = game.effect_manager.add_effect(EFFECT_MOD_DAMAGE_MAX);
+                                        item_pointer->data.effect[effect_count]->data.value  = random(quality_level);
+                                    break;
+                                    case 1:
+                                        item_pointer->data.effect[effect_count]              = game.effect_manager.add_effect(EFFECT_MOD_DAMAGE_MIN);
+                                        item_pointer->data.effect[effect_count]->data.value  = random(quality_level);
+                                    break;
+                                    case 2:
+                                        item_pointer->data.effect[effect_count]              = game.effect_manager.add_effect(EFFECT_MOD_DAMAGE_ICE);
+                                        item_pointer->data.effect[effect_count]->data.value  = random(quality_level);
+                                    break;
+                                    case 3:
+                                        item_pointer->data.effect[effect_count]              = game.effect_manager.add_effect(EFFECT_MOD_DAMAGE_FIRE);
+                                        item_pointer->data.effect[effect_count]->data.value  = random(quality_level);
+                                    break;
+                                    case 4:
+                                        item_pointer->data.effect[effect_count]              = game.effect_manager.add_effect(EFFECT_MOD_DAMAGE_LIGHTNING);
+                                        item_pointer->data.effect[effect_count]->data.value  = random(quality_level);
+                                    break;
+                                    case 5:
+                                        item_pointer->data.effect[effect_count]              = game.effect_manager.add_effect(EFFECT_MOD_DAMAGE_ELEMENTAL);
+                                        item_pointer->data.effect[effect_count]->data.value  = random(quality_level);
+                                    break;
+                                    case 6:
+                                        item_pointer->data.effect[effect_count]              = game.effect_manager.add_effect(EFFECT_MOD_MANA_HIT);
+                                        item_pointer->data.effect[effect_count]->data.value  = random(quality_level);
+                                    break;
+                                    case 7:
+                                        item_pointer->data.effect[effect_count]              = game.effect_manager.add_effect(EFFECT_MOD_MANA_KILL);
+                                        item_pointer->data.effect[effect_count]->data.value  = random(quality_level);
+                                    break;
+                                    case 8:
+                                        item_pointer->data.effect[effect_count]              = game.effect_manager.add_effect(EFFECT_MOD_HEALTH_HIT);
+                                        item_pointer->data.effect[effect_count]->data.value  = random(quality_level);
+                                    break;
+                                    case 9:
+                                        item_pointer->data.effect[effect_count]              = game.effect_manager.add_effect(EFFECT_MOD_HEALTH_KILL);
+                                        item_pointer->data.effect[effect_count]->data.value  = random(quality_level);
+                                    break;
+                                    case 10:
+                                        item_pointer->data.effect[effect_count]              = game.effect_manager.add_effect(EFFECT_MOD_CRIT_CHANCE);
+                                        item_pointer->data.effect[effect_count]->data.value  = random(quality_level);
+                                    break;
+                                    case 11:
+                                        item_pointer->data.effect[effect_count]              = game.effect_manager.add_effect(EFFECT_MOD_CRIT_DAMAGE);
+                                        item_pointer->data.effect[effect_count]->data.value  = random(quality_level);
+                                    break;
+                                    case 12:
+                                        item_pointer->data.effect[effect_count]              = game.effect_manager.add_effect(EFFECT_MOD_EXP_PER_KILL);
+                                        item_pointer->data.effect[effect_count]->data.value  = random(quality_level);
+                                    break;
+                                    default:
+                                        item_pointer->data.effect[effect_count]->data.active = false;
+                                    break;
                                 }
                             }
-                            switch (add_effect)
-                            {
-                                case 0:
-                                    item_pointer->data.effect[effect_count]              = game.effect_manager.add_effect(EFFECT_MOD_DAMAGE_MAX);
-                                    item_pointer->data.effect[effect_count]->data.value  = random(quality_level);
-                                break;
-                                case 1:
-                                    item_pointer->data.effect[effect_count]              = game.effect_manager.add_effect(EFFECT_MOD_DAMAGE_MIN);
-                                    item_pointer->data.effect[effect_count]->data.value  = random(quality_level);
-                                break;
-                                case 2:
-                                    item_pointer->data.effect[effect_count]              = game.effect_manager.add_effect(EFFECT_MOD_DAMAGE_ICE);
-                                    item_pointer->data.effect[effect_count]->data.value  = random(quality_level);
-                                break;
-                                case 3:
-                                    item_pointer->data.effect[effect_count]              = game.effect_manager.add_effect(EFFECT_MOD_DAMAGE_FIRE);
-                                    item_pointer->data.effect[effect_count]->data.value  = random(quality_level);
-                                break;
-                                case 4:
-                                    item_pointer->data.effect[effect_count]              = game.effect_manager.add_effect(EFFECT_MOD_DAMAGE_LIGHTNING);
-                                    item_pointer->data.effect[effect_count]->data.value  = random(quality_level);
-                                break;
-                                case 5:
-                                    item_pointer->data.effect[effect_count]              = game.effect_manager.add_effect(EFFECT_MOD_DAMAGE_ELEMENTAL);
-                                    item_pointer->data.effect[effect_count]->data.value  = random(quality_level);
-                                break;
-                                case 6:
-                                    item_pointer->data.effect[effect_count]              = game.effect_manager.add_effect(EFFECT_MOD_MANA_HIT);
-                                    item_pointer->data.effect[effect_count]->data.value  = random(quality_level);
-                                break;
-                                case 7:
-                                    item_pointer->data.effect[effect_count]              = game.effect_manager.add_effect(EFFECT_MOD_MANA_KILL);
-                                    item_pointer->data.effect[effect_count]->data.value  = random(quality_level);
-                                break;
-                                case 8:
-                                    item_pointer->data.effect[effect_count]              = game.effect_manager.add_effect(EFFECT_MOD_HEALTH_HIT);
-                                    item_pointer->data.effect[effect_count]->data.value  = random(quality_level);
-                                break;
-                                case 9:
-                                    item_pointer->data.effect[effect_count]              = game.effect_manager.add_effect(EFFECT_MOD_HEALTH_KILL);
-                                    item_pointer->data.effect[effect_count]->data.value  = random(quality_level);
-                                break;
-                                case 10:
-                                    item_pointer->data.effect[effect_count]              = game.effect_manager.add_effect(EFFECT_MOD_CRIT_CHANCE);
-                                    item_pointer->data.effect[effect_count]->data.value  = random(quality_level);
-                                break;
-                                case 11:
-                                    item_pointer->data.effect[effect_count]              = game.effect_manager.add_effect(EFFECT_MOD_CRIT_DAMAGE);
-                                    item_pointer->data.effect[effect_count]->data.value  = random(quality_level);
-                                break;
-                                case 12:
-                                    item_pointer->data.effect[effect_count]              = game.effect_manager.add_effect(EFFECT_MOD_EXP_PER_KILL);
-                                    item_pointer->data.effect[effect_count]->data.value  = random(quality_level);
-                                break;
-                                default:
-                                    item_pointer->data.effect[effect_count]->data.active = false;
-                                break;
-                            }
                         }
-                    }
-                break;
-                default:
-                    game.core.log.file_write("Unable to generate item -> ",item_type_UID," - ", item_sub_type_UID," - ", quality_level);
-                break;
+                    break;
+                    default:
+                        game.core.log.file_write("Unable to generate item -> ",item_type_UID," - ", item_sub_type_UID," - ", quality_level);
+                    break;
+                }
+                item_pointer->data.type     = item_type_UID;
+                item_pointer->data.sub_type = item_sub_type_UID;
+                item_manager_class::gen_item_name   (item_pointer,item_type_UID, item_sub_type_UID, quality_level);
+                item_manager_class::gen_item_texture(item_pointer,item_type_UID, item_sub_type_UID, quality_level);
+                item_manager_class::gen_item_sounds (item_pointer,item_type_UID, item_sub_type_UID, quality_level);
             }
-            item_pointer->data.type     = item_type_UID;
-            item_pointer->data.sub_type = item_sub_type_UID;
-            item_manager_class::gen_item_name   (item_pointer,item_type_UID, item_sub_type_UID, quality_level);
-            item_manager_class::gen_item_texture(item_pointer,item_type_UID, item_sub_type_UID, quality_level);
-            item_manager_class::gen_item_sounds (item_pointer,item_type_UID, item_sub_type_UID, quality_level);
+            else new_UID = RETURN_FAIL;
         }
-        else new_UID = RETURN_FAIL;
     }
     return (new_UID);
 };
