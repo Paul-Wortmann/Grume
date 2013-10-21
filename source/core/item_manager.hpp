@@ -66,10 +66,16 @@
 #define ITEM_DAGGER          25
 #define ITEM_BOW             26
 
-//temp---------------
-#define ITEM_HEALTH_POTION          120
-#define ITEM_MANA_POTION            121
-#define ITEM_REJUVENATION_POTION    122
+//--- Predefined items ---------------
+#define ITEM_POTION_S_HEALTH          120
+#define ITEM_POTION_M_HEALTH          121
+#define ITEM_POTION_L_HEALTH          122
+#define ITEM_POTION_S_MANA            123
+#define ITEM_POTION_M_MANA            124
+#define ITEM_POTION_L_MANA            125
+#define ITEM_POTION_S_REJUVENATION    126
+#define ITEM_POTION_M_REJUVENATION    127
+#define ITEM_POTION_L_REJUVENATION    128
 
 struct item_socket_type
 {
