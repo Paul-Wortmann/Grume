@@ -242,7 +242,8 @@ void item_manager_class::unequip_item(item_type* item_pointer)
 
 int  item_manager_class::gen_item(int item_type_UID, int item_sub_type_UID, int quality_level)
 {
-    int new_UID = RETURN_FAIL;
+    int  new_UID           = RETURN_FAIL;
+    int  item_effect_value = 0;
     if (item_type_UID == ITEM_POTION)
     {
         switch (random(3))
@@ -258,6 +259,24 @@ int  item_manager_class::gen_item(int item_type_UID, int item_sub_type_UID, int 
             break;
             default:
                 item_type_UID = ITEM_HEALTH_POTION;
+            break;
+        }
+    }
+    if (item_sub_type_UID == ITEM_POTION)
+    {
+        switch (random(3))
+        {
+            case 0:
+                item_sub_type_UID = ITEM_POTION_SMALL;
+            break;
+            case 1:
+                item_sub_type_UID = ITEM_POTION_MEDIUM;
+            break;
+            case 2:
+                item_sub_type_UID = ITEM_POTION_LARGE;
+            break;
+            default:
+                item_sub_type_UID = ITEM_POTION_LARGE;
             break;
         }
     }
@@ -338,7 +357,7 @@ int  item_manager_class::gen_item(int item_type_UID, int item_sub_type_UID, int 
             {
                 case ITEM_HEALTH_POTION:
                     item_pointer->data.type                   = ITEM_POTION;
-                    item_pointer->data.sub_type               = ITEM_POTION_LARGE;
+                    item_pointer->data.sub_type               = item_sub_type_UID;
                     item_pointer->data.stackable              = true;
                     item_pointer->data.consumable             = true;
                     item_pointer->data.quantity               = 1;
@@ -347,11 +366,25 @@ int  item_manager_class::gen_item(int item_type_UID, int item_sub_type_UID, int 
                     item_pointer->data.number_of_item_effects = 1;
                     item_pointer->data.effect[0]              = game.effect_manager.add_effect(EFFECT_MOD_HEALTH);
                     item_pointer->data.effect[0]->data.active = true;
-                    item_pointer->data.effect[0]->data.value  = 25;
+                    switch (item_sub_type_UID)
+                    {
+                        case ITEM_POTION_SMALL:
+                            item_pointer->data.effect[0]->data.value  = 5;
+                        break;
+                        case ITEM_POTION_MEDIUM:
+                            item_pointer->data.effect[0]->data.value  = 15;
+                        break;
+                        case ITEM_POTION_LARGE:
+                            item_pointer->data.effect[0]->data.value  = 45;
+                        break;
+                        default:
+                            item_pointer->data.effect[0]->data.value  = 1;
+                        break;
+                    }
                 break;
                 case ITEM_MANA_POTION:
                     item_pointer->data.type                   = ITEM_POTION;
-                    item_pointer->data.sub_type               = ITEM_POTION_LARGE;
+                    item_pointer->data.sub_type               = item_sub_type_UID;
                     item_pointer->data.stackable              = true;
                     item_pointer->data.consumable             = true;
                     item_pointer->data.quantity               = 1;
@@ -360,11 +393,25 @@ int  item_manager_class::gen_item(int item_type_UID, int item_sub_type_UID, int 
                     item_pointer->data.number_of_item_effects = 1;
                     item_pointer->data.effect[0]              = game.effect_manager.add_effect(EFFECT_MOD_MANA);
                     item_pointer->data.effect[0]->data.active = true;
-                    item_pointer->data.effect[0]->data.value  = 25;
+                    switch (item_sub_type_UID)
+                    {
+                        case ITEM_POTION_SMALL:
+                            item_pointer->data.effect[0]->data.value  = 5;
+                        break;
+                        case ITEM_POTION_MEDIUM:
+                            item_pointer->data.effect[0]->data.value  = 15;
+                        break;
+                        case ITEM_POTION_LARGE:
+                            item_pointer->data.effect[0]->data.value  = 45;
+                        break;
+                        default:
+                            item_pointer->data.effect[0]->data.value  = 1;
+                        break;
+                    }
                 break;
                 case ITEM_REJUVENATION_POTION:
                     item_pointer->data.type                   = ITEM_POTION;
-                    item_pointer->data.sub_type               = ITEM_POTION_LARGE;
+                    item_pointer->data.sub_type               = item_sub_type_UID;
                     item_pointer->data.stackable              = true;
                     item_pointer->data.consumable             = true;
                     item_pointer->data.quantity               = 1;
@@ -373,10 +420,27 @@ int  item_manager_class::gen_item(int item_type_UID, int item_sub_type_UID, int 
                     item_pointer->data.number_of_item_effects = 2;
                     item_pointer->data.effect[0]              = game.effect_manager.add_effect(EFFECT_MOD_MANA);
                     item_pointer->data.effect[0]->data.active = true;
-                    item_pointer->data.effect[0]->data.value  = 25;
                     item_pointer->data.effect[1]              = game.effect_manager.add_effect(EFFECT_MOD_HEALTH);
                     item_pointer->data.effect[1]->data.active = true;
-                    item_pointer->data.effect[1]->data.value  = 25;
+                    switch (item_sub_type_UID)
+                    {
+                        case ITEM_POTION_SMALL:
+                            item_pointer->data.effect[0]->data.value  = 5;
+                            item_pointer->data.effect[1]->data.value  = 5;
+                        break;
+                        case ITEM_POTION_MEDIUM:
+                            item_pointer->data.effect[0]->data.value  = 15;
+                            item_pointer->data.effect[1]->data.value  = 15;
+                        break;
+                        case ITEM_POTION_LARGE:
+                            item_pointer->data.effect[0]->data.value  = 45;
+                            item_pointer->data.effect[1]->data.value  = 45;
+                        break;
+                        default:
+                            item_pointer->data.effect[0]->data.value  = 1;
+                            item_pointer->data.effect[1]->data.value  = 1;
+                        break;
+                    }
                 break;
                 case ITEM_SPELL_BOOK:
                     item_pointer->data.consumable             = true;
@@ -439,9 +503,9 @@ int  item_manager_class::gen_item(int item_type_UID, int item_sub_type_UID, int 
                     item_pointer->data.effect[0]->data.value  = random(quality_level);
                     if (item_pointer->data.number_of_item_effects > 1)
                     {
-                        int AVAILABLE_EFFECT_COUNT = 13;
-                        int add_effect = 0;
-                        bool found = false;
+                        int  AVAILABLE_EFFECT_COUNT = 13;
+                        int  add_effect             = 0;
+                        bool found                  = false;
                         bool effect_used[AVAILABLE_EFFECT_COUNT];
                         for (int temp_count = 0; temp_count < AVAILABLE_EFFECT_COUNT; temp_count++)
                         {
@@ -543,13 +607,55 @@ void  item_manager_class::gen_item_name(item_type* item_pointer,int item_type_UI
             item_pointer->data.name = "Potion";
         break;
         case ITEM_HEALTH_POTION:
-            item_pointer->data.name = "Health Potion";
+            switch (item_sub_type_UID)
+            {
+                case ITEM_POTION_SMALL:
+                    item_pointer->data.name = "Small Health Potion";
+                break;
+                case ITEM_POTION_MEDIUM:
+                    item_pointer->data.name = "Medium Health Potion";
+                break;
+                case ITEM_POTION_LARGE:
+                    item_pointer->data.name = "Large Health Potion";
+                break;
+                default:
+                    item_pointer->data.name = "Health Potion";
+                break;
+            }
         break;
         case ITEM_MANA_POTION:
-            item_pointer->data.name = "Mana Potion";
+            switch (item_sub_type_UID)
+            {
+                case ITEM_POTION_SMALL:
+                    item_pointer->data.name = "Small Mana Potion";
+                break;
+                case ITEM_POTION_MEDIUM:
+                    item_pointer->data.name = "Medium Mana Potion";
+                break;
+                case ITEM_POTION_LARGE:
+                    item_pointer->data.name = "Large Mana Potion";
+                break;
+                default:
+                    item_pointer->data.name = "Mana Potion";
+                break;
+            }
         break;
         case ITEM_REJUVENATION_POTION:
-            item_pointer->data.name = "Rejuvenation Potion";
+            switch (item_sub_type_UID)
+            {
+                case ITEM_POTION_SMALL:
+                    item_pointer->data.name = "Small Rejuvenation Potion";
+                break;
+                case ITEM_POTION_MEDIUM:
+                    item_pointer->data.name = "Medium Rejuvenation Potion";
+                break;
+                case ITEM_POTION_LARGE:
+                    item_pointer->data.name = "Large Rejuvenation Potion";
+                break;
+                default:
+                    item_pointer->data.name = "Rejuvenation Potion";
+                break;
+            }
         break;
         case ITEM_FEET:
             item_pointer->data.name = "Randomly generated item";
@@ -566,16 +672,58 @@ void  item_manager_class::gen_item_texture(item_type* item_pointer,int item_type
     switch (item_type_UID)
     {
         case ITEM_POTION:
-            item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/potions/potion_24.png");
+            item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/potions/potion_21.png");
         break;
         case ITEM_HEALTH_POTION:
-            item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/potions/potion_23.png");
+            switch (item_sub_type_UID)
+            {
+                case ITEM_POTION_SMALL:
+                    item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/potions/potion_01.png");
+                break;
+                case ITEM_POTION_MEDIUM:
+                    item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/potions/potion_02.png");
+                break;
+                case ITEM_POTION_LARGE:
+                    item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/potions/potion_23.png");
+                break;
+                default:
+                    item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/potions/potion_23.png");
+                break;
+            }
         break;
         case ITEM_MANA_POTION:
-            item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/potions/potion_22.png");
+            switch (item_sub_type_UID)
+            {
+                case ITEM_POTION_SMALL:
+                    item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/potions/potion_08.png");
+                break;
+                case ITEM_POTION_MEDIUM:
+                    item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/potions/potion_09.png");
+                break;
+                case ITEM_POTION_LARGE:
+                    item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/potions/potion_22.png");
+                break;
+                default:
+                    item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/potions/potion_22.png");
+                break;
+            }
         break;
         case ITEM_REJUVENATION_POTION:
-            item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/potions/potion_24.png");
+            switch (item_sub_type_UID)
+            {
+                case ITEM_POTION_SMALL:
+                    item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/potions/potion_24.png");
+                break;
+                case ITEM_POTION_MEDIUM:
+                    item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/potions/potion_24.png");
+                break;
+                case ITEM_POTION_LARGE:
+                    item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/potions/potion_24.png");
+                break;
+                default:
+                    item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/potions/potion_24.png");
+                break;
+            }
         break;
         case ITEM_SPELL_BOOK:
             item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/books/book_19.png");
