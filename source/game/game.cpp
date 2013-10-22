@@ -196,6 +196,8 @@ void game_class::init(void)
 
 void game_class::process(void)
 {
+    UI_form_struct* UI_form_pointer;
+    int             element_number    = 1;
     path_type* path;
     game.player.process();
     game.npc.process();
@@ -206,39 +208,6 @@ void game_class::process(void)
         game.music_manager.next_track = false;
         //if (game.core.music_track ==  0) game.resource.music.menu_00.play();
     }
-    /*
-    if (game.core.io.mouse_wheel != 0)
-    {
-        if (game.core.io.mouse_wheel < 0)
-        {
-            while (game.core.io.mouse_wheel < 0)
-            {
-                game.core.io.mouse_wheel++;
-                game.zoom.current += game.zoom.speed;
-            }
-            if (game.zoom.current > game.zoom.max) game.zoom.current = game.zoom.max;
-            else
-            {
-                //game.resource.map_2D.tile[0].pos_y -= (DEFAULT_FRAME_HEIGHT/game.zoom.current/2.0f);
-                //game.resource.map_2D.calculate_tile_positions(DEFAULT_FRAME_WIDTH/game.zoom.current/2.0f,DEFAULT_FRAME_HEIGHT/game.zoom.current/2.0f);
-            }
-        }
-        if (game.core.io.mouse_wheel > 0)
-        {
-            while (game.core.io.mouse_wheel > 0)
-            {
-                game.core.io.mouse_wheel--;
-                game.zoom.current -= game.zoom.speed;
-            }
-            if (game.zoom.current < game.zoom.min) game.zoom.current = game.zoom.min;
-            else
-            {
-                //game.resource.map_2D.tile[0].pos_y += (DEFAULT_FRAME_HEIGHT/game.zoom.current/2.0f);
-                //game.resource.map_2D.calculate_tile_positions(DEFAULT_FRAME_WIDTH/game.zoom.current/2.0f,DEFAULT_FRAME_HEIGHT/game.zoom.current/2.0f);
-            }
-        }
-    }
-    */
     if (game.core.io.keyboard_ready)
     {
         if (game.core.io.key_escape) // Main menu
@@ -397,19 +366,135 @@ void game_class::process(void)
             game.core.io.keyboard_delay_count      = 0;
         }
 ///------------------------------------------------------------------------------------------
+        /*
         if (game.core.io.key_d) // toggle debug.
         {
             game.debug = !game.debug;
             game.core.io.key_d                     = false;
             game.core.io.keyboard_delay_count      = 0;
         }
+        */
         if (game.core.io.key_t) // test exp++
         {
             game.player.level.current_experience++;
             game.core.io.key_t                     = false;
             game.core.io.keyboard_delay_count      = 0;
         }
-        if (game.core.io.key_1) // generate a random BSP dungeon
+///------------------------------------------------------------------------------------------
+///                 Action Bar Keys
+///------------------------------------------------------------------------------------------
+        if (game.core.io.key_1) // Action Bar Key 1
+        {
+            element_number = 8;
+            UI_form_pointer = game.UI_manager.UI_form_get(UID_ACTIONBAR);
+            if (UI_form_pointer->data.element[element_number].value >= 0)
+            {
+                game.item_manager.use_item(UI_form_pointer,8);
+            }
+            game.core.io.key_1                     = false;
+            game.core.io.keyboard_delay_count      = 0;
+        }
+        if (game.core.io.key_2) // Action Bar Key 2
+        {
+            element_number = 9;
+            UI_form_pointer = game.UI_manager.UI_form_get(UID_ACTIONBAR);
+            if (UI_form_pointer->data.element[element_number].value >= 0)
+            {
+                game.item_manager.use_item(UI_form_pointer,9);
+            }
+            game.core.io.key_2                     = false;
+            game.core.io.keyboard_delay_count      = 0;
+        }
+        if (game.core.io.key_3) // Action Bar Key 3
+        {
+            element_number = 10;
+            UI_form_pointer = game.UI_manager.UI_form_get(UID_ACTIONBAR);
+            if (UI_form_pointer->data.element[element_number].value >= 0)
+            {
+                game.item_manager.use_item(UI_form_pointer,10);
+            }
+            game.core.io.key_3                     = false;
+            game.core.io.keyboard_delay_count      = 0;
+        }
+        if (game.core.io.key_4) // Action Bar Key 4
+        {
+            element_number = 11;
+            UI_form_pointer = game.UI_manager.UI_form_get(UID_ACTIONBAR);
+            if (UI_form_pointer->data.element[element_number].value >= 0)
+            {
+                game.item_manager.use_item(UI_form_pointer,11);
+            }
+            game.core.io.key_4                     = false;
+            game.core.io.keyboard_delay_count      = 0;
+        }
+        if (game.core.io.key_5) // Action Bar Key 5
+        {
+            element_number = 12;
+            UI_form_pointer = game.UI_manager.UI_form_get(UID_ACTIONBAR);
+            if (UI_form_pointer->data.element[element_number].value >= 0)
+            {
+                game.item_manager.use_item(UI_form_pointer,12);
+            }
+            game.core.io.key_5                     = false;
+            game.core.io.keyboard_delay_count      = 0;
+        }
+        if (game.core.io.key_6) // Action Bar Key 6
+        {
+            element_number = 13;
+            UI_form_pointer = game.UI_manager.UI_form_get(UID_ACTIONBAR);
+            if (UI_form_pointer->data.element[element_number].value >= 0)
+            {
+                game.item_manager.use_item(UI_form_pointer,13);
+            }
+            game.core.io.key_6                     = false;
+            game.core.io.keyboard_delay_count      = 0;
+        }
+        if (game.core.io.key_7) // Action Bar Key 7
+        {
+            element_number = 14;
+            UI_form_pointer = game.UI_manager.UI_form_get(UID_ACTIONBAR);
+            if (UI_form_pointer->data.element[element_number].value >= 0)
+            {
+                game.item_manager.use_item(UI_form_pointer,14);
+            }
+            game.core.io.key_7                     = false;
+            game.core.io.keyboard_delay_count      = 0;
+        }
+        if (game.core.io.key_8) // Action Bar Key 8
+        {
+            element_number = 15;
+            UI_form_pointer = game.UI_manager.UI_form_get(UID_ACTIONBAR);
+            if (UI_form_pointer->data.element[element_number].value >= 0)
+            {
+                game.item_manager.use_item(UI_form_pointer,15);
+            }
+            game.core.io.key_8                     = false;
+            game.core.io.keyboard_delay_count      = 0;
+        }
+        if (game.core.io.key_9) // Action Bar Key 9
+        {
+            element_number = 16;
+            UI_form_pointer = game.UI_manager.UI_form_get(UID_ACTIONBAR);
+            if (UI_form_pointer->data.element[element_number].value >= 0)
+            {
+                game.item_manager.use_item(UI_form_pointer,16);
+            }
+            game.core.io.key_9                     = false;
+            game.core.io.keyboard_delay_count      = 0;
+        }
+        if (game.core.io.key_0) // Action Bar Key 0
+        {
+            element_number = 17;
+            UI_form_pointer = game.UI_manager.UI_form_get(UID_ACTIONBAR);
+            if (UI_form_pointer->data.element[element_number].value >= 0)
+            {
+                game.item_manager.use_item(UI_form_pointer,17);
+            }
+            game.core.io.key_0                     = false;
+            game.core.io.keyboard_delay_count      = 0;
+        }
+///------------------------------------------------------------------------------------------
+        if (game.core.io.key_a) // generate a random BSP dungeon
         {
             game.loading_screen.display("data/loading_screen.png");
             map_gen_BSP(&tmx_map);
@@ -417,11 +502,11 @@ void game_class::process(void)
             game.map_2D.apply_tileset(&tmx_map,DUNGEON);
             game.map_2D.calculate_tile_positions(&tmx_map,DEFAULT_FRAME_WIDTH/game.zoom.current/2.0f,DEFAULT_FRAME_HEIGHT/game.zoom.current/2.0f);
             game.map_2D.center_on_tile(&tmx_map,(tmx_map.data.number_of_tiles/2)+(tmx_map.data.map_width/2));
-            game.core.io.key_1                     = false;
+            game.core.io.key_a                     = false;
             game.core.io.keyboard_delay_count      = 0;
             path = map_path_find(&tmx_map,2,2,10,10);
         }
-        if (game.core.io.key_2) // generate a random BSP dungeon
+        if (game.core.io.key_s) // generate a random BSP dungeon
         {
             game.loading_screen.display("data/loading_screen.png");
             map_gen_BSP(&tmx_map);
@@ -429,11 +514,11 @@ void game_class::process(void)
             game.map_2D.apply_tileset(&tmx_map,CAVE);
             game.map_2D.calculate_tile_positions(&tmx_map,DEFAULT_FRAME_WIDTH/game.zoom.current/2.0f,DEFAULT_FRAME_HEIGHT/game.zoom.current/2.0f);
             game.map_2D.center_on_tile(&tmx_map,(tmx_map.data.number_of_tiles/2)+(tmx_map.data.map_width/2));
-            game.core.io.key_2                     = false;
+            game.core.io.key_s                     = false;
             game.core.io.keyboard_delay_count      = 0;
             path = map_path_find(&tmx_map,2,2,10,10);
         }
-        if (game.core.io.key_3) // generate a random CA cave
+        if (game.core.io.key_d) // generate a random CA cave
         {
             game.loading_screen.display("data/loading_screen.png");
             map_gen_CA(&tmx_map);
@@ -441,10 +526,10 @@ void game_class::process(void)
             game.map_2D.apply_tileset(&tmx_map,CAVE);
             game.map_2D.calculate_tile_positions(&tmx_map,DEFAULT_FRAME_WIDTH/game.zoom.current/2.0f,DEFAULT_FRAME_HEIGHT/game.zoom.current/2.0f);
             game.map_2D.center_on_tile(&tmx_map,(tmx_map.data.number_of_tiles/2)+(tmx_map.data.map_width/2));
-            game.core.io.key_3                     = false;
+            game.core.io.key_d                     = false;
             game.core.io.keyboard_delay_count      = 0;
         }
-        if (game.core.io.key_4) // generate a random CA grassland
+        if (game.core.io.key_f) // generate a random CA grassland
         {
             game.loading_screen.display("data/loading_screen.png");
             map_gen_CA(&tmx_map);
@@ -452,10 +537,10 @@ void game_class::process(void)
             game.map_2D.apply_tileset(&tmx_map,GRASSLAND);
             game.map_2D.calculate_tile_positions(&tmx_map,DEFAULT_FRAME_WIDTH/game.zoom.current/2.0f,DEFAULT_FRAME_HEIGHT/game.zoom.current/2.0f);
             game.map_2D.center_on_tile(&tmx_map,(tmx_map.data.number_of_tiles/2)+(tmx_map.data.map_width/2));
-            game.core.io.key_4                     = false;
+            game.core.io.key_f                     = false;
             game.core.io.keyboard_delay_count      = 0;
         }
-        if (game.core.io.key_5) // generate a random CA dungeon
+        if (game.core.io.key_g) // generate a random CA dungeon
         {
             game.loading_screen.display("data/loading_screen.png");
             map_gen_CA(&tmx_map);
@@ -463,7 +548,7 @@ void game_class::process(void)
             game.map_2D.apply_tileset(&tmx_map,DUNGEON);
             game.map_2D.calculate_tile_positions(&tmx_map,DEFAULT_FRAME_WIDTH/game.zoom.current/2.0f,DEFAULT_FRAME_HEIGHT/game.zoom.current/2.0f);
             game.map_2D.center_on_tile(&tmx_map,(tmx_map.data.number_of_tiles/2)+(tmx_map.data.map_width/2));
-            game.core.io.key_4                     = false;
+            game.core.io.key_g                     = false;
             game.core.io.keyboard_delay_count      = 0;
         }
     }
