@@ -315,12 +315,11 @@ void update_character_window(UI_form_struct *UI_form_pointer)
     game.texture_manager.load_string(UI_form_pointer->data.element[element_number].title.text,game.font_manager.root,"Exp: " + ullint_to_string(game.player.level.current_experience),0.75f,255,255,255,255,TEXTURE_RENDER_LEFT);
     element_number = 5; //--- Player Experience for next level ---
     game.texture_manager.load_string(UI_form_pointer->data.element[element_number].title.text,game.font_manager.root,"Next: " + ullint_to_string(game.player.level.experience[game.player.level.current+1]),0.75f,255,255,255,255,TEXTURE_RENDER_LEFT);
-
 };
 
 void process_character_window(UI_form_struct *UI_form_pointer)
 {
-    //update_character_window(CHARACTER_UID);
+    update_character_window(UI_form_pointer);
     if(UI_form_pointer->data.event.id > EVENT_NONE)
     {
         switch (UI_form_pointer->data.event.id)
