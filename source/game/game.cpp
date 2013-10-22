@@ -23,6 +23,7 @@
  */
 
 #include "../core/map_2D.hpp"
+#include "../core/misc.hpp"
 #include "game.hpp"
 
 game_class        game;
@@ -112,17 +113,17 @@ void game_class::init(void)
     UI_form_pointer   = game.UI_manager.UI_form_get(UID_INVENTORY);
     temp_item_pointer = game.item_manager.add_item(ITEM_POTION_L_HEALTH);
     UI_form_pointer->data.element[element_number].value          = temp_item_pointer->data.UID;
-    UI_form_pointer->data.element[element_number].quantity       = 54;
+    UI_form_pointer->data.element[element_number].quantity       = random(100);
     UI_form_pointer->data.element[element_number].texture.normal = temp_item_pointer->data.image;
     element_number    = 2;
     temp_item_pointer = game.item_manager.add_item(ITEM_POTION_L_MANA);
     UI_form_pointer->data.element[element_number].value          = temp_item_pointer->data.UID;
-    UI_form_pointer->data.element[element_number].quantity       = 3;
+    UI_form_pointer->data.element[element_number].quantity       = random(100);
     UI_form_pointer->data.element[element_number].texture.normal = temp_item_pointer->data.image;
     element_number    = 3;
     temp_item_pointer = game.item_manager.add_item(ITEM_POTION_L_REJUVENATION);
     UI_form_pointer->data.element[element_number].value          = temp_item_pointer->data.UID;
-    UI_form_pointer->data.element[element_number].quantity       = 2;
+    UI_form_pointer->data.element[element_number].quantity       = random(100);
     UI_form_pointer->data.element[element_number].texture.normal = temp_item_pointer->data.image;
     element_number    = 4;
     temp_item_pointer = game.item_manager.add_item(101);
@@ -175,22 +176,22 @@ void game_class::init(void)
     element_number = 8;
     temp_item_pointer = game.item_manager.add_item(game.item_manager.gen_item(ITEM_POTION,ITEM_POTION,100));
     UI_form_pointer->data.element[element_number].value          = temp_item_pointer->data.UID;
-    UI_form_pointer->data.element[element_number].quantity       = 90;
+    UI_form_pointer->data.element[element_number].quantity       = random(100);
     UI_form_pointer->data.element[element_number].texture.normal = temp_item_pointer->data.image;
     element_number = 9;
     temp_item_pointer = game.item_manager.add_item(game.item_manager.gen_item(ITEM_POTION,ITEM_POTION,100));
     UI_form_pointer->data.element[element_number].value          = temp_item_pointer->data.UID;
-    UI_form_pointer->data.element[element_number].quantity       = 1;
+    UI_form_pointer->data.element[element_number].quantity       = random(100);
     UI_form_pointer->data.element[element_number].texture.normal = temp_item_pointer->data.image;
     element_number = 10;
     temp_item_pointer = game.item_manager.add_item(game.item_manager.gen_item(ITEM_POTION,ITEM_POTION,100));
     UI_form_pointer->data.element[element_number].value          = temp_item_pointer->data.UID;
-    UI_form_pointer->data.element[element_number].quantity       = 1;
+    UI_form_pointer->data.element[element_number].quantity       = random(100);
     UI_form_pointer->data.element[element_number].texture.normal = temp_item_pointer->data.image;
     element_number = 11;
     temp_item_pointer = game.item_manager.add_item(game.item_manager.gen_item(ITEM_POTION,ITEM_POTION,100));
     UI_form_pointer->data.element[element_number].value          = temp_item_pointer->data.UID;
-    UI_form_pointer->data.element[element_number].quantity       = 1;
+    UI_form_pointer->data.element[element_number].quantity       = random(100);
     UI_form_pointer->data.element[element_number].texture.normal = temp_item_pointer->data.image;
 };
 

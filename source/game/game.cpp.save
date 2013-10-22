@@ -110,17 +110,17 @@ void game_class::init(void)
     item_type*      temp_item_pointer;// = new item_type;
     int             element_number    = 1;
     UI_form_pointer   = game.UI_manager.UI_form_get(UID_INVENTORY);
-    temp_item_pointer = game.item_manager.add_item(ITEM_HEALTH_POTION);
+    temp_item_pointer = game.item_manager.add_item(ITEM_POTION_L_HEALTH);
     UI_form_pointer->data.element[element_number].value          = temp_item_pointer->data.UID;
     UI_form_pointer->data.element[element_number].quantity       = 54;
     UI_form_pointer->data.element[element_number].texture.normal = temp_item_pointer->data.image;
     element_number    = 2;
-    temp_item_pointer = game.item_manager.add_item(ITEM_MANA_POTION);
+    temp_item_pointer = game.item_manager.add_item(ITEM_POTION_L_MANA);
     UI_form_pointer->data.element[element_number].value          = temp_item_pointer->data.UID;
     UI_form_pointer->data.element[element_number].quantity       = 3;
     UI_form_pointer->data.element[element_number].texture.normal = temp_item_pointer->data.image;
     element_number    = 3;
-    temp_item_pointer = game.item_manager.add_item(ITEM_REJUVENATION_POTION);
+    temp_item_pointer = game.item_manager.add_item(ITEM_POTION_L_REJUVENATION);
     UI_form_pointer->data.element[element_number].value          = temp_item_pointer->data.UID;
     UI_form_pointer->data.element[element_number].quantity       = 2;
     UI_form_pointer->data.element[element_number].texture.normal = temp_item_pointer->data.image;
@@ -192,11 +192,13 @@ void game_class::init(void)
     UI_form_pointer->data.element[element_number].value          = temp_item_pointer->data.UID;
     UI_form_pointer->data.element[element_number].quantity       = 1;
     UI_form_pointer->data.element[element_number].texture.normal = temp_item_pointer->data.image;
-    */
 };
 
 void game_class::process(void)
 {
+    UI_form_struct* UI_form_pointer;
+    item_type*      item_pointer;
+    int             element_number    = 1;
     path_type* path;
     game.player.process();
     game.npc.process();
@@ -398,19 +400,47 @@ void game_class::process(void)
             game.core.io.keyboard_delay_count      = 0;
         }
 ///------------------------------------------------------------------------------------------
+        /*
         if (game.core.io.key_d) // toggle debug.
         {
             game.debug = !game.debug;
             game.core.io.key_d                     = false;
             game.core.io.keyboard_delay_count      = 0;
         }
+        */
         if (game.core.io.key_t) // test exp++
         {
             game.player.level.current_experience++;
             game.core.io.key_t                     = false;
             game.core.io.keyboard_delay_count      = 0;
         }
-        if (game.core.io.key_1) // generate a random BSP dungeon
+///------------------------------------------------------------------------------------------
+///                 Action Bar Keys
+///------------------------------------------------------------------------------------------
+        if (game.core.io.key_1) // Action Bar Key 1
+        {
+
+
+//UI_form_pointer->data.element[element_number].window_UID
+    element_number = 8;
+    UI_form_pointer = game.UI_manager.UI_form_get(UID_ACTIONBAR);
+    if (UI_form_pointer->data.element[element_number].value >= 0)
+    {
+        
+    }
+    item_pointer = game.item_manager.add_item();
+    UI_form_pointer->data.element[element_number].value          = temp_item_pointer->data.UID;
+    UI_form_pointer->data.element[element_number].quantity       = 90;
+    UI_form_pointer->data.element[element_number].texture.normal = temp_item_pointer->data.image;
+
+
+
+
+            game.core.io.key_1                     = false;
+            game.core.io.keyboard_delay_count      = 0;
+        }
+///------------------------------------------------------------------------------------------
+        if (game.core.io.key_a) // generate a random BSP dungeon
         {
             game.loading_screen.display("data/loading_screen.png");
             map_gen_BSP(&tmx_map);
@@ -418,11 +448,11 @@ void game_class::process(void)
             game.map_2D.apply_tileset(&tmx_map,DUNGEON);
             game.map_2D.calculate_tile_positions(&tmx_map,DEFAULT_FRAME_WIDTH/game.zoom.current/2.0f,DEFAULT_FRAME_HEIGHT/game.zoom.current/2.0f);
             game.map_2D.center_on_tile(&tmx_map,(tmx_map.data.number_of_tiles/2)+(tmx_map.data.map_width/2));
-            game.core.io.key_1                     = false;
+            game.core.io.key_a                     = false;
             game.core.io.keyboard_delay_count      = 0;
             path = map_path_find(&tmx_map,2,2,10,10);
         }
-        if (game.core.io.key_2) // generate a random BSP dungeon
+        if (game.core.io.key_s) // generate a random BSP dungeon
         {
             game.loading_screen.display("data/loading_screen.png");
             map_gen_BSP(&tmx_map);
@@ -430,11 +460,11 @@ void game_class::process(void)
             game.map_2D.apply_tileset(&tmx_map,CAVE);
             game.map_2D.calculate_tile_positions(&tmx_map,DEFAULT_FRAME_WIDTH/game.zoom.current/2.0f,DEFAULT_FRAME_HEIGHT/game.zoom.current/2.0f);
             game.map_2D.center_on_tile(&tmx_map,(tmx_map.data.number_of_tiles/2)+(tmx_map.data.map_width/2));
-            game.core.io.key_2                     = false;
+            game.core.io.key_s                     = false;
             game.core.io.keyboard_delay_count      = 0;
             path = map_path_find(&tmx_map,2,2,10,10);
         }
-        if (game.core.io.key_3) // generate a random CA cave
+        if (game.core.io.key_d) // generate a random CA cave
         {
             game.loading_screen.display("data/loading_screen.png");
             map_gen_CA(&tmx_map);
@@ -442,10 +472,10 @@ void game_class::process(void)
             game.map_2D.apply_tileset(&tmx_map,CAVE);
             game.map_2D.calculate_tile_positions(&tmx_map,DEFAULT_FRAME_WIDTH/game.zoom.current/2.0f,DEFAULT_FRAME_HEIGHT/game.zoom.current/2.0f);
             game.map_2D.center_on_tile(&tmx_map,(tmx_map.data.number_of_tiles/2)+(tmx_map.data.map_width/2));
-            game.core.io.key_3                     = false;
+            game.core.io.key_d                     = false;
             game.core.io.keyboard_delay_count      = 0;
         }
-        if (game.core.io.key_4) // generate a random CA grassland
+        if (game.core.io.key_f) // generate a random CA grassland
         {
             game.loading_screen.display("data/loading_screen.png");
             map_gen_CA(&tmx_map);
@@ -453,10 +483,10 @@ void game_class::process(void)
             game.map_2D.apply_tileset(&tmx_map,GRASSLAND);
             game.map_2D.calculate_tile_positions(&tmx_map,DEFAULT_FRAME_WIDTH/game.zoom.current/2.0f,DEFAULT_FRAME_HEIGHT/game.zoom.current/2.0f);
             game.map_2D.center_on_tile(&tmx_map,(tmx_map.data.number_of_tiles/2)+(tmx_map.data.map_width/2));
-            game.core.io.key_4                     = false;
+            game.core.io.key_f                     = false;
             game.core.io.keyboard_delay_count      = 0;
         }
-        if (game.core.io.key_5) // generate a random CA dungeon
+        if (game.core.io.key_g) // generate a random CA dungeon
         {
             game.loading_screen.display("data/loading_screen.png");
             map_gen_CA(&tmx_map);
@@ -464,7 +494,7 @@ void game_class::process(void)
             game.map_2D.apply_tileset(&tmx_map,DUNGEON);
             game.map_2D.calculate_tile_positions(&tmx_map,DEFAULT_FRAME_WIDTH/game.zoom.current/2.0f,DEFAULT_FRAME_HEIGHT/game.zoom.current/2.0f);
             game.map_2D.center_on_tile(&tmx_map,(tmx_map.data.number_of_tiles/2)+(tmx_map.data.map_width/2));
-            game.core.io.key_4                     = false;
+            game.core.io.key_g                     = false;
             game.core.io.keyboard_delay_count      = 0;
         }
     }
