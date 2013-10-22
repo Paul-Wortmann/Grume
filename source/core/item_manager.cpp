@@ -214,7 +214,6 @@ void item_manager_class::use_item(UI_form_struct *UI_form_pointer, int element_n
                 UI_form_pointer->data.element[element_number].quantity--;
                 if (UI_form_pointer->data.element[element_number].quantity <= 0)
                 {
-                    UI_form_pointer->data.element[element_number].active   = false;
                     UI_form_pointer->data.element[element_number].value    = -1;
                     UI_form_pointer->data.element[element_number].quantity = 0;
                 }
