@@ -77,13 +77,7 @@ effect_type* effect_manager_class::add_effect(int effect_UID)
     effect_manager_class::number_of_effects++;
     return(effect_manager_class::last);
 };
-/*
-bool  effect_manager_class::use_effect(int  effect_UID)
-{
-    effect_type* effect_pointer = game.effect_manager.add_effect(effect_UID);
-    return(effect_manager_class::use_effect(effect_UID,effect_pointer->data.value));
-};
-*/
+
 bool  effect_manager_class::use_effect(int  effect_UID, float value)
 {
     bool used_item = false;

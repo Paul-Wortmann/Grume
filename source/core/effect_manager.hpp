@@ -106,7 +106,6 @@ class effect_manager_class
         effect_type        *last;
         effect_type        *effect;
         effect_type        *add_effect(int effect_UID);
-//        bool                use_effect(int  effect_UID);
         bool                use_effect(int  effect_UID, float value);
         void                load_effects(std::string file_name);
 };
