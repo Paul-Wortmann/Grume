@@ -80,13 +80,13 @@
 
 struct effect_data_type
 {
-    bool             passive;
-    int              type;
-    int              value;
     bool             active;
     std::string      name;
+    bool             passive;
     int              sub_type;
+    int              type;
     int              UID;
+    int              value;
 };
 
 struct effect_type
@@ -106,8 +106,8 @@ class effect_manager_class
         effect_type        *last;
         effect_type        *effect;
         effect_type        *add_effect(int effect_UID);
-        bool                use_effect(effect_type* temp_effect_pointer);
-        bool                use_effect(effect_type* temp_effect_pointer, float value);
+//        bool                use_effect(int  effect_UID);
+        bool                use_effect(int  effect_UID, float value);
         void                load_effects(std::string file_name);
 };
 

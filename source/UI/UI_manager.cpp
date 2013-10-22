@@ -584,8 +584,9 @@ void UI_manager_class::render(void)
                         if ((UI_form_pointer->data.element[element_number].type == UI_ELEMENT_ITEM)&&(UI_form_pointer->data.element[element_number].value >= 0))
                         {
                             std::string temp_string = "";
+                            effect_type*  effect_pointer  = new effect_type;
+                            item_type*    item_pointer    = new item_type;
                             texture_type* texture_pointer = new texture_type;
-                            item_type* item_pointer = new item_type;
                             item_pointer = game.item_manager.add_item(UI_form_pointer->data.element[element_number].value);
                             float texture_background_x = game.core.io.mouse_x;
                             float texture_background_y = game.core.io.mouse_y;
@@ -615,9 +616,10 @@ void UI_manager_class::render(void)
                                 texture_background_size_y += (texture_background_padding/2.0f);
                                 for (int effect_count = 0; effect_count < item_pointer->data.number_of_item_effects; effect_count++)
                                 {
-                                    if (item_pointer->data.effect[effect_count]->data.active)
+                                    if (item_pointer->data.effect[effect_count].enabled)
                                     {
-                                        temp_string = item_pointer->data.effect[effect_count]->data.name + " -> " + int_to_string(item_pointer->data.effect[effect_count]->data.value);
+                                        effect_pointer = game.effect_manager.add_effect(item_pointer->data.effect[effect_count].type);
+                                        temp_string = effect_pointer->data.name + " -> " + int_to_string(item_pointer->data.effect[effect_count].value);
                                         texture_pointer = game.texture_manager.add_texture(game.font_manager.root,temp_string.c_str(),0.8f,0,0,255,255,255,255,TEXTURE_STRING);
                                         if (texture_pointer->data.width > texture_background_size_x_temp) texture_background_size_x_temp = texture_pointer->data.width;
                                         texture_background_size_y += texture_background_padding;
@@ -644,10 +646,11 @@ void UI_manager_class::render(void)
                                 texture_temp_y -= (texture_background_padding/2.0f);
                                 for (int effect_count = 0; effect_count < item_pointer->data.number_of_item_effects; effect_count++)
                                 {
-                                    if (item_pointer->data.effect[effect_count]->data.active)
+                                    if (item_pointer->data.effect[effect_count].enabled)
                                     {
+                                        effect_pointer = game.effect_manager.add_effect(item_pointer->data.effect[effect_count].type);
                                         texture_temp_y -= texture_background_padding;
-                                        temp_string = item_pointer->data.effect[effect_count]->data.name + " -> " + int_to_string(item_pointer->data.effect[effect_count]->data.value);
+                                        temp_string = effect_pointer->data.name + " -> " + int_to_string(item_pointer->data.effect[effect_count].value);
                                         texture_pointer = game.texture_manager.add_texture(game.font_manager.root,temp_string.c_str(),0.8f,0,0,255,255,255,255,TEXTURE_STRING);
                                         texture_pointer->data.render_positioning = TEXTURE_RENDER_DOWN+TEXTURE_RENDER_LEFT;
                                         game.texture_manager.draw(texture_pointer,false,texture_temp_x,texture_temp_y,UI_form_pointer->data.element[element_number].position.z,texture_pointer->data.width,texture_pointer->data.height);

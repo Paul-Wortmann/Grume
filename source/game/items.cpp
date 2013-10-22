@@ -45,9 +45,9 @@ void  item_class::init_items(void) // Initialize hard-coded default items, such 
     temp_item_pointer->data.sound_use              = game.sound_manager.add_sound("data/sound/inventory/bubble_01.wav");
     temp_item_pointer->data.type                   = ITEM_POTION;
     temp_item_pointer->data.sub_type               = ITEM_POTION_SMALL;
-    temp_item_pointer->data.effect[0]              = new effect_type;
-    temp_item_pointer->data.effect[0]              = game.effect_manager.add_effect(EFFECT_MOD_HEALTH);
-    temp_item_pointer->data.effect[0]->data.value  = 5;
+    temp_item_pointer->data.effect[0].enabled      = true;
+    temp_item_pointer->data.effect[0].type         = EFFECT_MOD_HEALTH;
+    temp_item_pointer->data.effect[0].value        = 5;
     //------------------------- Health Potion --------------------------------------------------------------------------
     temp_item_pointer = game.item_manager.add_item(ITEM_POTION_M_HEALTH);
     temp_item_pointer->data.name                   = "Medium Health Potion";
@@ -61,9 +61,9 @@ void  item_class::init_items(void) // Initialize hard-coded default items, such 
     temp_item_pointer->data.sound_use              = game.sound_manager.add_sound("data/sound/inventory/bubble_01.wav");
     temp_item_pointer->data.type                   = ITEM_POTION;
     temp_item_pointer->data.sub_type               = ITEM_POTION_MEDIUM;
-    temp_item_pointer->data.effect[0]              = new effect_type;
-    temp_item_pointer->data.effect[0]              = game.effect_manager.add_effect(EFFECT_MOD_HEALTH);
-    temp_item_pointer->data.effect[0]->data.value  = 15;
+    temp_item_pointer->data.effect[0].enabled      = true;
+    temp_item_pointer->data.effect[0].type         = EFFECT_MOD_HEALTH;
+    temp_item_pointer->data.effect[0].value        = 15;
     //------------------------- Health Potion --------------------------------------------------------------------------
     temp_item_pointer = game.item_manager.add_item(ITEM_POTION_L_HEALTH);
     temp_item_pointer->data.name                   = "Large Health Potion";
@@ -77,9 +77,9 @@ void  item_class::init_items(void) // Initialize hard-coded default items, such 
     temp_item_pointer->data.sound_use              = game.sound_manager.add_sound("data/sound/inventory/bubble_01.wav");
     temp_item_pointer->data.type                   = ITEM_POTION;
     temp_item_pointer->data.sub_type               = ITEM_POTION_LARGE;
-    temp_item_pointer->data.effect[0]              = new effect_type;
-    temp_item_pointer->data.effect[0]              = game.effect_manager.add_effect(EFFECT_MOD_HEALTH);
-    temp_item_pointer->data.effect[0]->data.value  = 45;
+    temp_item_pointer->data.effect[0].enabled      = true;
+    temp_item_pointer->data.effect[0].type         = EFFECT_MOD_HEALTH;
+    temp_item_pointer->data.effect[0].value        = 45;
     //------------------------- Mana Potion --------------------------------------------------------------------------
     temp_item_pointer = game.item_manager.add_item(ITEM_POTION_S_MANA);
     temp_item_pointer->data.name                   = "Small Mana Potion";
@@ -93,9 +93,9 @@ void  item_class::init_items(void) // Initialize hard-coded default items, such 
     temp_item_pointer->data.sound_use              = game.sound_manager.add_sound("data/sound/inventory/bubble_01.wav");
     temp_item_pointer->data.type                   = ITEM_POTION;
     temp_item_pointer->data.sub_type               = ITEM_POTION_SMALL;
-    temp_item_pointer->data.effect[0]              = new effect_type;
-    temp_item_pointer->data.effect[0]              = game.effect_manager.add_effect(EFFECT_MOD_MANA);
-    temp_item_pointer->data.effect[0]->data.value  = 5;
+    temp_item_pointer->data.effect[0].enabled      = true;
+    temp_item_pointer->data.effect[0].type         = EFFECT_MOD_MANA;
+    temp_item_pointer->data.effect[0].value        = 5;
     //------------------------- Mana Potion --------------------------------------------------------------------------
     temp_item_pointer = game.item_manager.add_item(ITEM_POTION_M_MANA);
     temp_item_pointer->data.name                   = "Medium Mana Potion";
@@ -109,9 +109,9 @@ void  item_class::init_items(void) // Initialize hard-coded default items, such 
     temp_item_pointer->data.sound_use              = game.sound_manager.add_sound("data/sound/inventory/bubble_01.wav");
     temp_item_pointer->data.type                   = ITEM_POTION;
     temp_item_pointer->data.sub_type               = ITEM_POTION_MEDIUM;
-    temp_item_pointer->data.effect[0]              = new effect_type;
-    temp_item_pointer->data.effect[0]              = game.effect_manager.add_effect(EFFECT_MOD_MANA);
-    temp_item_pointer->data.effect[0]->data.value  = 15;
+    temp_item_pointer->data.effect[0].enabled      = true;
+    temp_item_pointer->data.effect[0].type         = EFFECT_MOD_MANA;
+    temp_item_pointer->data.effect[0].value        = 15;
     //------------------------- Mana Potion --------------------------------------------------------------------------
     temp_item_pointer = game.item_manager.add_item(ITEM_POTION_L_MANA);
     temp_item_pointer->data.name                   = "Large Mana Potion";
@@ -125,9 +125,9 @@ void  item_class::init_items(void) // Initialize hard-coded default items, such 
     temp_item_pointer->data.sound_use              = game.sound_manager.add_sound("data/sound/inventory/bubble_01.wav");
     temp_item_pointer->data.type                   = ITEM_POTION;
     temp_item_pointer->data.sub_type               = ITEM_POTION_LARGE;
-    temp_item_pointer->data.effect[0]              = new effect_type;
-    temp_item_pointer->data.effect[0]              = game.effect_manager.add_effect(EFFECT_MOD_MANA);
-    temp_item_pointer->data.effect[0]->data.value  = 45;
+    temp_item_pointer->data.effect[0].enabled      = true;
+    temp_item_pointer->data.effect[0].type         = EFFECT_MOD_MANA;
+    temp_item_pointer->data.effect[0].value        = 45;
     //------------------------- Rejuvination Potion --------------------------------------------------------------------------
     temp_item_pointer = game.item_manager.add_item(ITEM_POTION_S_REJUVENATION);
     temp_item_pointer->data.name                   = "Small Rejuvenation Potion";
@@ -141,12 +141,12 @@ void  item_class::init_items(void) // Initialize hard-coded default items, such 
     temp_item_pointer->data.sound_use              = game.sound_manager.add_sound("data/sound/inventory/bubble_01.wav");
     temp_item_pointer->data.type                   = ITEM_POTION;
     temp_item_pointer->data.sub_type               = ITEM_POTION_SMALL;
-    temp_item_pointer->data.effect[0]              = new effect_type;
-    temp_item_pointer->data.effect[0]              = game.effect_manager.add_effect(EFFECT_MOD_HEALTH);
-    temp_item_pointer->data.effect[0]->data.value  = 5;
-    temp_item_pointer->data.effect[1]              = new effect_type;
-    temp_item_pointer->data.effect[1]              = game.effect_manager.add_effect(EFFECT_MOD_MANA);
-    temp_item_pointer->data.effect[1]->data.value  = 5;
+    temp_item_pointer->data.effect[0].enabled      = true;
+    temp_item_pointer->data.effect[0].type         = EFFECT_MOD_HEALTH;
+    temp_item_pointer->data.effect[0].value        = 5;
+    temp_item_pointer->data.effect[1].enabled      = true;
+    temp_item_pointer->data.effect[1].type         = EFFECT_MOD_MANA;
+    temp_item_pointer->data.effect[1].value        = 5;
     //------------------------- Rejuvination Potion --------------------------------------------------------------------------
     temp_item_pointer = game.item_manager.add_item(ITEM_POTION_M_REJUVENATION);
     temp_item_pointer->data.name                   = "Medium Rejuvenation Potion";
@@ -160,12 +160,12 @@ void  item_class::init_items(void) // Initialize hard-coded default items, such 
     temp_item_pointer->data.sound_use              = game.sound_manager.add_sound("data/sound/inventory/bubble_01.wav");
     temp_item_pointer->data.type                   = ITEM_POTION;
     temp_item_pointer->data.sub_type               = ITEM_POTION_MEDIUM;
-    temp_item_pointer->data.effect[0]              = new effect_type;
-    temp_item_pointer->data.effect[0]              = game.effect_manager.add_effect(EFFECT_MOD_HEALTH);
-    temp_item_pointer->data.effect[0]->data.value  = 15;
-    temp_item_pointer->data.effect[1]              = new effect_type;
-    temp_item_pointer->data.effect[1]              = game.effect_manager.add_effect(EFFECT_MOD_MANA);
-    temp_item_pointer->data.effect[1]->data.value  = 15;
+    temp_item_pointer->data.effect[0].enabled      = true;
+    temp_item_pointer->data.effect[0].type         = EFFECT_MOD_HEALTH;
+    temp_item_pointer->data.effect[0].value        = 15;
+    temp_item_pointer->data.effect[1].enabled      = true;
+    temp_item_pointer->data.effect[1].type         = EFFECT_MOD_MANA;
+    temp_item_pointer->data.effect[1].value        = 15;
     //------------------------- Rejuvination Potion --------------------------------------------------------------------------
     temp_item_pointer = game.item_manager.add_item(ITEM_POTION_L_REJUVENATION);
     temp_item_pointer->data.name                   = "Large Rejuvenation Potion";
@@ -179,12 +179,12 @@ void  item_class::init_items(void) // Initialize hard-coded default items, such 
     temp_item_pointer->data.sound_use              = game.sound_manager.add_sound("data/sound/inventory/bubble_01.wav");
     temp_item_pointer->data.type                   = ITEM_POTION;
     temp_item_pointer->data.sub_type               = ITEM_POTION_LARGE;
-    temp_item_pointer->data.effect[0]              = new effect_type;
-    temp_item_pointer->data.effect[0]              = game.effect_manager.add_effect(EFFECT_MOD_HEALTH);
-    temp_item_pointer->data.effect[0]->data.value  = 45;
-    temp_item_pointer->data.effect[1]              = new effect_type;
-    temp_item_pointer->data.effect[1]              = game.effect_manager.add_effect(EFFECT_MOD_MANA);
-    temp_item_pointer->data.effect[1]->data.value  = 45;
+    temp_item_pointer->data.effect[0].enabled      = true;
+    temp_item_pointer->data.effect[0].type         = EFFECT_MOD_HEALTH;
+    temp_item_pointer->data.effect[0].value        = 45;
+    temp_item_pointer->data.effect[1].enabled      = true;
+    temp_item_pointer->data.effect[1].type         = EFFECT_MOD_MANA;
+    temp_item_pointer->data.effect[1].value        = 45;
     //------------------------------------------------------------------------------------------------------------
     game.item_manager.load_items("data/scripts/items.txt");
 };
