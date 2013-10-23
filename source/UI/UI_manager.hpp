@@ -59,11 +59,12 @@
 
 struct UI_manager_data_type
 {
-    UI_cursor_class       cursor;
-    bool                  drag_in_progress;
-    bool                  element_drag_in_progress;
-    event_struct          event;
-    int                   number_of_UI_forms;
+    UI_cursor_class           cursor;
+    bool                      drag_in_progress;
+    bool                      element_drag_in_progress;
+    event_struct              event;
+    int                       number_of_UI_forms;
+    tooltip_texture_data_type tooltip_textures;
 };
 
 class UI_manager_class
@@ -95,6 +96,7 @@ class UI_manager_class
         event_struct          process_form_elements(UI_form_struct *UI_form_pointer,bool window_in_focus);
         void                  process_forms(void);
         void                  render(void);
+        void                  setup_textures(void);
         void                  setup(void);
         void                  swap_elements(int UI_form_UID_src, int UI_element_src, int UI_form_UID_dst, int UI_element_dst);
 };

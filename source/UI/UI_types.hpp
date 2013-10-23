@@ -106,6 +106,22 @@ struct texture_state_struct
     texture_type*           normal;
 };
 
+struct tooltip_textures_type
+{
+    texture_type*           background;
+    texture_type*           divider;
+    texture_type*           header;
+    texture_type*           socket;
+};
+
+struct tooltip_texture_data_type
+{
+    tooltip_textures_type   normal;
+    tooltip_textures_type   magic;
+    tooltip_textures_type   epic;
+    tooltip_textures_type   setitem;
+};
+
 struct sound_struct
 {
     bool                    enabled;

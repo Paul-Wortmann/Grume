@@ -126,8 +126,33 @@ UI_form_struct *UI_manager_class::UI_form_add(int UI_form_UID)
     return (UI_manager_class::last);
 };
 
+void UI_manager_class::setup_textures(void)
+{
+    // - Normal item tool tip -
+    UI_manager_class::data.tooltip_textures.normal.background  = game.texture_manager.add_texture("data/textures/UI/menu/item_stat_background.png");
+    UI_manager_class::data.tooltip_textures.normal.divider     = game.texture_manager.add_texture("data/textures/UI/menu/tooltip_divider_2.png");
+    UI_manager_class::data.tooltip_textures.normal.header      = game.texture_manager.add_texture("data/textures/UI/menu/tooltip_header_2.png");
+    UI_manager_class::data.tooltip_textures.normal.socket      = game.texture_manager.add_texture("data/textures/UI/menu/tooltip_socket.png");
+    // - Magic item tool tip -
+    UI_manager_class::data.tooltip_textures.magic.background   = game.texture_manager.add_texture("data/textures/UI/menu/item_stat_background.png");
+    UI_manager_class::data.tooltip_textures.magic.divider      = game.texture_manager.add_texture("data/textures/UI/menu/tooltip_divider_1.png");
+    UI_manager_class::data.tooltip_textures.magic.header       = game.texture_manager.add_texture("data/textures/UI/menu/tooltip_header_1.png");
+    UI_manager_class::data.tooltip_textures.magic.socket       = game.texture_manager.add_texture("data/textures/UI/menu/tooltip_socket.png");
+    // - Epic item tool tip -
+    UI_manager_class::data.tooltip_textures.epic.background    = game.texture_manager.add_texture("data/textures/UI/menu/item_stat_background.png");
+    UI_manager_class::data.tooltip_textures.epic.divider       = game.texture_manager.add_texture("data/textures/UI/menu/tooltip_divider_0.png");
+    UI_manager_class::data.tooltip_textures.epic.header        = game.texture_manager.add_texture("data/textures/UI/menu/tooltip_header_0.png");
+    UI_manager_class::data.tooltip_textures.epic.socket        = game.texture_manager.add_texture("data/textures/UI/menu/tooltip_socket.png");
+    // - Set item tool tip -
+    UI_manager_class::data.tooltip_textures.setitem.background = game.texture_manager.add_texture("data/textures/UI/menu/item_stat_background.png");
+    UI_manager_class::data.tooltip_textures.setitem.divider    = game.texture_manager.add_texture("data/textures/UI/menu/tooltip_divider_3.png");
+    UI_manager_class::data.tooltip_textures.setitem.header     = game.texture_manager.add_texture("data/textures/UI/menu/tooltip_header_3.png");
+    UI_manager_class::data.tooltip_textures.setitem.socket     = game.texture_manager.add_texture("data/textures/UI/menu/tooltip_socket.png");
+};
+
 void UI_manager_class::setup(void)
 {
+    UI_manager_class::setup_textures();
     setup_action_bar      (UID_ACTIONBAR);
     setup_player_profile  (UID_PCPROFILE);
     setup_character_window(UID_CHARACTER);
