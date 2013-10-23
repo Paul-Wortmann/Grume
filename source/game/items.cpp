@@ -188,3 +188,4 @@ void  item_class::init_items(void) // Initialize hard-coded default items, such 
     //------------------------------------------------------------------------------------------------------------
     game.item_manager.load_items("data/scripts/items.txt");
 };
+

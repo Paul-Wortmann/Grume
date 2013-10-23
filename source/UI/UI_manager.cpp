@@ -591,12 +591,18 @@ void UI_manager_class::render(void)
                     game.texture_manager.draw(UI_form_pointer->data.element[element_draged].texture.normal,false,UI_form_pointer->data.element[element_draged].position.x,UI_form_pointer->data.element[element_draged].position.y,UI_form_pointer->data.element[element_draged].position.z,UI_form_pointer->data.element[element_draged].size.x+zoom_value,UI_form_pointer->data.element[element_draged].size.y+zoom_value,UI_form_pointer->data.element[element_draged].texture.angle);
                 }
             }
-            // ------------------------- Render element tool tips -------------------------
+        }
+    }
+    // ------------------------- Render element tool tips -------------------------
+    for (UI_form_struct *UI_form_pointer = UI_manager_class::root; UI_form_pointer != NULL; UI_form_pointer = UI_form_pointer->next)
+    {
+        if ((UI_form_pointer->data.enabled) && (UI_form_pointer->data.mouse_over_menu))
+        {
             if (UI_form_pointer->data.number_of_elements > 0)
             {
                 for (int element_number = 0; element_number < UI_form_pointer->data.number_of_elements; element_number++)
                 {
-                    if ((!UI_manager_class::data.element_drag_in_progress)&&(UI_form_pointer->data.element[element_number].mouse_over)&&(UI_form_pointer->data.element[element_number].active))
+                    if ((!UI_manager_class::data.element_drag_in_progress)&&(UI_form_pointer->data.element[element_number].mouse_over)&&(UI_form_pointer->data.element[element_number].active)&&(UI_form_pointer->data.element[element_number].state == UI_HIGHLIGHTED))
                     {
                         if ((UI_form_pointer->data.element[element_number].tooltip.enabled) && (UI_form_pointer->data.element[element_number].tooltip.image_enabled))
                         {
@@ -687,7 +693,6 @@ void UI_manager_class::render(void)
                 }
             }
         }
-        // -------------------------------------------------------------------------------
     }
 };
 

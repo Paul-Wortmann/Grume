@@ -76,6 +76,7 @@ item_type* item_manager_class::add_item(int item_UID)
     item_manager_class::last->data.name                   = "";
     item_manager_class::last->data.number_of_item_effects = 0;
     item_manager_class::last->data.number_of_item_sockets = 0;
+    item_manager_class::last->data.qaulity_type           = ITEM_QUALITY_NORMAL;
     item_manager_class::last->data.quantity               = 1;
     item_manager_class::last->data.quantity_max           = 1;
     item_manager_class::last->data.socketable             = false;
@@ -473,6 +474,7 @@ int  item_manager_class::gen_item(int item_type_UID, int item_sub_type_UID, int 
                         if (item_pointer->data.number_of_item_sockets > 0) item_pointer->data.number_of_item_sockets = 0;
                         if (item_pointer->data.number_of_item_effects >= 1)
                         {
+                            item_pointer->data.qaulity_type = ITEM_QUALITY_MAGIC;
                             int  AVAILABLE_EFFECT_COUNT = 12;
                             int  add_effect             = 0;
                             bool found                  = false;
@@ -569,6 +571,7 @@ int  item_manager_class::gen_item(int item_type_UID, int item_sub_type_UID, int 
                         if (item_pointer->data.number_of_item_sockets > 0) item_pointer->data.number_of_item_sockets = 0;
                         if (item_pointer->data.number_of_item_effects >= 1)
                         {
+                            item_pointer->data.qaulity_type = ITEM_QUALITY_MAGIC;
                             int  AVAILABLE_EFFECT_COUNT = 12;
                             int  add_effect             = 0;
                             bool found                  = false;
@@ -666,6 +669,7 @@ int  item_manager_class::gen_item(int item_type_UID, int item_sub_type_UID, int 
                         item_pointer->data.effect[0].value        = random(quality_level);
                         if (item_pointer->data.number_of_item_effects > 1)
                         {
+                            item_pointer->data.qaulity_type = ITEM_QUALITY_MAGIC;
                             int  AVAILABLE_EFFECT_COUNT = 13;
                             int  add_effect             = 0;
                             bool found                  = false;

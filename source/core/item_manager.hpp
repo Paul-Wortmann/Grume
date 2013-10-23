@@ -34,6 +34,11 @@
 #define MAX_ITEM_EFFECTS     6
 #define MAX_ITEM_SOCKETS     4
 
+#define ITEM_QUALITY_NORMAL  0
+#define ITEM_QUALITY_MAGIC   1
+#define ITEM_QUALITY_EPIC    2
+#define ITEM_QUALITY_SET     3
+
 #define SOCKET_NONE          0
 #define SOCKET_GEM           1
 #define SOCKET_RUNE          2
@@ -96,6 +101,7 @@ struct item_data_type
     sound_type*      sound_move;
     sound_type*      sound_use;
     texture_type*    image;
+    int              qaulity_type;
     bool             active;
     bool             stackable;
     bool             consumable;
