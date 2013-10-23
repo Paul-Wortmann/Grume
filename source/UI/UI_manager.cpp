@@ -627,6 +627,7 @@ void UI_manager_class::render(void)
                             texture_pointer_name = game.texture_manager.add_texture(game.font_manager.root,item_pointer->data.name.c_str(),0.8f,0,0,255,255,255,255,TEXTURE_STRING);
                             texture_pointer_name->data.render_positioning = TEXTURE_RENDER_DOWN+TEXTURE_RENDER_LEFT;
                             float texture_background_padding = texture_pointer_name->data.height;
+                            float texture_header_size_y      = texture_background_padding*2;
                             float texture_temp_x = texture_background_x+(texture_background_padding/2.0f);
                             float texture_temp_y = texture_background_y-(texture_background_padding/2.0f);
                             float texture_background_size_x_temp = texture_pointer_name->data.width;
@@ -662,17 +663,29 @@ void UI_manager_class::render(void)
                             switch (item_pointer->data.qaulity_type)
                             {
                                 case ITEM_QUALITY_MAGIC:
+                                    game.UI_manager.data.tooltip_textures.magic.background->data.render_positioning = TEXTURE_RENDER_DOWN+TEXTURE_RENDER_LEFT;
+                                    game.UI_manager.data.tooltip_textures.magic.header->data.render_positioning     = TEXTURE_RENDER_DOWN+TEXTURE_RENDER_LEFT;
                                     game.texture_manager.draw(game.UI_manager.data.tooltip_textures.magic.background,false,texture_background_x,texture_background_y,UI_form_pointer->data.element[element_number].position.z,texture_background_size_x,texture_background_size_y);
+                                    game.texture_manager.draw(game.UI_manager.data.tooltip_textures.magic.header    ,false,texture_background_x,texture_background_y,UI_form_pointer->data.element[element_number].position.z,texture_background_size_x,texture_header_size_y);
                                 break;
                                 case ITEM_QUALITY_EPIC:
+                                    game.UI_manager.data.tooltip_textures.epic.background->data.render_positioning = TEXTURE_RENDER_DOWN+TEXTURE_RENDER_LEFT;
+                                    game.UI_manager.data.tooltip_textures.epic.header->data.render_positioning     = TEXTURE_RENDER_DOWN+TEXTURE_RENDER_LEFT;
                                     game.texture_manager.draw(game.UI_manager.data.tooltip_textures.epic.background,false,texture_background_x,texture_background_y,UI_form_pointer->data.element[element_number].position.z,texture_background_size_x,texture_background_size_y);
+                                    game.texture_manager.draw(game.UI_manager.data.tooltip_textures.epic.header    ,false,texture_background_x,texture_background_y,UI_form_pointer->data.element[element_number].position.z,texture_background_size_x,texture_header_size_y);
                                 break;
                                 case ITEM_QUALITY_SET:
+                                    game.UI_manager.data.tooltip_textures.setitem.background->data.render_positioning = TEXTURE_RENDER_DOWN+TEXTURE_RENDER_LEFT;
+                                    game.UI_manager.data.tooltip_textures.setitem.header->data.render_positioning     = TEXTURE_RENDER_DOWN+TEXTURE_RENDER_LEFT;
                                     game.texture_manager.draw(game.UI_manager.data.tooltip_textures.setitem.background,false,texture_background_x,texture_background_y,UI_form_pointer->data.element[element_number].position.z,texture_background_size_x,texture_background_size_y);
+                                    game.texture_manager.draw(game.UI_manager.data.tooltip_textures.setitem.header    ,false,texture_background_x,texture_background_y,UI_form_pointer->data.element[element_number].position.z,texture_background_size_x,texture_header_size_y);
                                 break;
                                 default:
                                 case ITEM_QUALITY_NORMAL:
+                                    game.UI_manager.data.tooltip_textures.normal.background->data.render_positioning = TEXTURE_RENDER_DOWN+TEXTURE_RENDER_LEFT;
+                                    game.UI_manager.data.tooltip_textures.normal.header->data.render_positioning     = TEXTURE_RENDER_DOWN+TEXTURE_RENDER_LEFT;
                                     game.texture_manager.draw(game.UI_manager.data.tooltip_textures.normal.background,false,texture_background_x,texture_background_y,UI_form_pointer->data.element[element_number].position.z,texture_background_size_x,texture_background_size_y);
+                                    game.texture_manager.draw(game.UI_manager.data.tooltip_textures.normal.header    ,false,texture_background_x,texture_background_y,UI_form_pointer->data.element[element_number].position.z,texture_background_size_x,texture_header_size_y);
                                 break;
                             };
                             game.texture_manager.draw(texture_pointer_name,false,texture_temp_x,texture_temp_y,UI_form_pointer->data.element[element_number].position.z,texture_pointer_name->data.width,texture_pointer_name->data.height);
