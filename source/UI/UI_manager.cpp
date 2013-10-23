@@ -659,7 +659,22 @@ void UI_manager_class::render(void)
                             }
                             texture_background_size_x += texture_background_size_x_temp+texture_background_padding;
                             texture_background_size_y += texture_pointer_name->data.height+texture_background_padding;
-                            game.texture_manager.draw(UI_form_pointer->data.element[element_number].title.image,false,texture_background_x,texture_background_y,UI_form_pointer->data.element[element_number].position.z,texture_background_size_x,texture_background_size_y);
+                            switch (item_pointer->data.qaulity_type)
+                            {
+                                case ITEM_QUALITY_MAGIC:
+                                    game.texture_manager.draw(game.UI_manager.data.tooltip_textures.magic.background,false,texture_background_x,texture_background_y,UI_form_pointer->data.element[element_number].position.z,texture_background_size_x,texture_background_size_y);
+                                break;
+                                case ITEM_QUALITY_EPIC:
+                                    game.texture_manager.draw(game.UI_manager.data.tooltip_textures.epic.background,false,texture_background_x,texture_background_y,UI_form_pointer->data.element[element_number].position.z,texture_background_size_x,texture_background_size_y);
+                                break;
+                                case ITEM_QUALITY_SET:
+                                    game.texture_manager.draw(game.UI_manager.data.tooltip_textures.setitem.background,false,texture_background_x,texture_background_y,UI_form_pointer->data.element[element_number].position.z,texture_background_size_x,texture_background_size_y);
+                                break;
+                                default:
+                                case ITEM_QUALITY_NORMAL:
+                                    game.texture_manager.draw(game.UI_manager.data.tooltip_textures.normal.background,false,texture_background_x,texture_background_y,UI_form_pointer->data.element[element_number].position.z,texture_background_size_x,texture_background_size_y);
+                                break;
+                            };
                             game.texture_manager.draw(texture_pointer_name,false,texture_temp_x,texture_temp_y,UI_form_pointer->data.element[element_number].position.z,texture_pointer_name->data.width,texture_pointer_name->data.height);
                             if (item_pointer->data.number_of_item_sockets > 0)
                             {
