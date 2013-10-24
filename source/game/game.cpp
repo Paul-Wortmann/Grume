@@ -170,6 +170,26 @@ void game_class::init(void)
     temp_item_pointer = game.item_manager.add_item(game.item_manager.gen_item(ITEM_SPELL_BOOK,ITEM_SPELL_BOOK,100));
     UI_form_pointer->data.element[element_number].value          = temp_item_pointer->data.UID;
     UI_form_pointer->data.element[element_number].texture.normal = temp_item_pointer->data.image;
+    element_number    = 15;
+    temp_item_pointer = game.item_manager.add_item(game.item_manager.gen_item(ITEM_GEM,ITEM_GEM,100));
+    UI_form_pointer->data.element[element_number].value          = temp_item_pointer->data.UID;
+    UI_form_pointer->data.element[element_number].texture.normal = temp_item_pointer->data.image;
+    element_number    = 16;
+    temp_item_pointer = game.item_manager.add_item(game.item_manager.gen_item(ITEM_GEM,ITEM_GEM,100));
+    UI_form_pointer->data.element[element_number].value          = temp_item_pointer->data.UID;
+    UI_form_pointer->data.element[element_number].texture.normal = temp_item_pointer->data.image;
+    element_number    = 17;
+    temp_item_pointer = game.item_manager.add_item(game.item_manager.gen_item(ITEM_GEM,ITEM_GEM,100));
+    UI_form_pointer->data.element[element_number].value          = temp_item_pointer->data.UID;
+    UI_form_pointer->data.element[element_number].texture.normal = temp_item_pointer->data.image;
+    element_number    = 18;
+    temp_item_pointer = game.item_manager.add_item(game.item_manager.gen_item(ITEM_GEM,ITEM_GEM,100));
+    UI_form_pointer->data.element[element_number].value          = temp_item_pointer->data.UID;
+    UI_form_pointer->data.element[element_number].texture.normal = temp_item_pointer->data.image;
+    element_number    = 19;
+    temp_item_pointer = game.item_manager.add_item(game.item_manager.gen_item(ITEM_GEM,ITEM_GEM,100));
+    UI_form_pointer->data.element[element_number].value          = temp_item_pointer->data.UID;
+    UI_form_pointer->data.element[element_number].texture.normal = temp_item_pointer->data.image;
 
     // Add default items to the action bar
     UI_form_pointer = game.UI_manager.UI_form_get(UID_ACTIONBAR);
