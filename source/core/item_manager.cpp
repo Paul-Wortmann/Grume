@@ -438,6 +438,8 @@ int  item_manager_class::gen_item(int item_type_UID, int item_sub_type_UID, int 
                         item_pointer->data.quantity               = 1;
                         item_pointer->data.quantity_max           = 1;
                         if (item_pointer->data.number_of_item_sockets > 0) item_pointer->data.number_of_item_sockets = 0;
+                        item_pointer->data.effect[0].type         = EFFECT_MOD_ARMOR;
+                        item_pointer->data.effect[0].value        = random(quality_level);
                         if (item_pointer->data.number_of_item_effects > 1)
                         {
                             item_pointer->data.qaulity_type = ITEM_QUALITY_MAGIC;
@@ -628,6 +630,8 @@ int  item_manager_class::gen_item(int item_type_UID, int item_sub_type_UID, int 
                         item_pointer->data.quantity               = 1;
                         item_pointer->data.quantity_max           = 1;
                         if (item_pointer->data.number_of_item_sockets > 0) item_pointer->data.number_of_item_sockets = 0;
+                        item_pointer->data.effect[0].type         = EFFECT_MOD_ARMOR;
+                        item_pointer->data.effect[0].value        = random(quality_level);
                         if (item_pointer->data.number_of_item_effects > 1)
                         {
                             item_pointer->data.qaulity_type = ITEM_QUALITY_MAGIC;
@@ -720,6 +724,8 @@ int  item_manager_class::gen_item(int item_type_UID, int item_sub_type_UID, int 
                         item_pointer->data.quantity               = 1;
                         item_pointer->data.quantity_max           = 1;
                         if (item_pointer->data.number_of_item_sockets > 0) item_pointer->data.number_of_item_sockets = 0;
+                        item_pointer->data.effect[0].type         = EFFECT_MOD_ARMOR;
+                        item_pointer->data.effect[0].value        = random(quality_level);
                         if (item_pointer->data.number_of_item_effects > 1)
                         {
                             item_pointer->data.qaulity_type = ITEM_QUALITY_MAGIC;
@@ -817,6 +823,8 @@ int  item_manager_class::gen_item(int item_type_UID, int item_sub_type_UID, int 
                         item_pointer->data.quantity               = 1;
                         item_pointer->data.quantity_max           = 1;
                         if (item_pointer->data.number_of_item_sockets > 1) item_pointer->data.number_of_item_sockets = 1;
+                        item_pointer->data.effect[0].type         = EFFECT_MOD_ARMOR;
+                        item_pointer->data.effect[0].value        = random(quality_level);
                         if (item_pointer->data.number_of_item_effects > 1)
                         {
                             item_pointer->data.qaulity_type = ITEM_QUALITY_MAGIC;
@@ -898,6 +906,199 @@ int  item_manager_class::gen_item(int item_type_UID, int item_sub_type_UID, int 
                         item_pointer->data.equipable              = true;
                         item_pointer->data.quantity               = 1;
                         item_pointer->data.quantity_max           = 1;
+                        item_pointer->data.effect[0].type         = EFFECT_MOD_ARMOR;
+                        item_pointer->data.effect[0].value        = random(quality_level);
+                        if (item_pointer->data.number_of_item_effects > 1)
+                        {
+                            switch (item_sub_type_UID)
+                            {
+                                case ITEM_SOURCE:
+                                    {
+                                        item_pointer->data.qaulity_type = ITEM_QUALITY_MAGIC;
+                                        int  AVAILABLE_EFFECT_COUNT = 14;
+                                        int  add_effect             = 0;
+                                        bool found                  = false;
+                                        bool effect_used_source[AVAILABLE_EFFECT_COUNT];
+                                        for (int temp_count = 0; temp_count < AVAILABLE_EFFECT_COUNT; temp_count++)
+                                        {
+                                            effect_used_source[temp_count] = false;
+                                        }
+                                        for (int effect_count = 1; effect_count < item_pointer->data.number_of_item_effects; effect_count++)
+                                        {
+                                            found = false;
+                                            while (!found)
+                                            {
+                                                add_effect = random(AVAILABLE_EFFECT_COUNT);
+                                                if (!effect_used_source[add_effect])
+                                                {
+                                                    effect_used_source[add_effect] = true;
+                                                    found = true;
+                                                }
+                                            }
+                                            switch (add_effect)
+                                            {
+                                                case 0:
+                                                    item_pointer->data.effect[effect_count].enabled      = true;
+                                                    item_pointer->data.effect[effect_count].type         = EFFECT_MOD_INTELLECT;
+                                                    item_pointer->data.effect[effect_count].value        = random(quality_level);
+                                                break;
+                                                case 1:
+                                                    item_pointer->data.effect[effect_count].enabled      = true;
+                                                    item_pointer->data.effect[effect_count].type         = EFFECT_MOD_ALL_ATTRIBUTES;
+                                                    item_pointer->data.effect[effect_count].value        = random(quality_level);
+                                                break;
+                                                case 2:
+                                                    item_pointer->data.effect[effect_count].enabled      = true;
+                                                    item_pointer->data.effect[effect_count].type         = EFFECT_MOD_RESIST_PHYSICAL;
+                                                    item_pointer->data.effect[effect_count].value        = random(quality_level);
+                                                break;
+                                                case 3:
+                                                    item_pointer->data.effect[effect_count].enabled      = true;
+                                                    item_pointer->data.effect[effect_count].type         = EFFECT_MOD_RESIST_FIRE;
+                                                    item_pointer->data.effect[effect_count].value        = random(quality_level);
+                                                break;
+                                                case 4:
+                                                    item_pointer->data.effect[effect_count].enabled      = true;
+                                                    item_pointer->data.effect[effect_count].type         = EFFECT_MOD_RESIST_ICE;
+                                                    item_pointer->data.effect[effect_count].value        = random(quality_level);
+                                                break;
+                                                case 5:
+                                                    item_pointer->data.effect[effect_count].enabled      = true;
+                                                    item_pointer->data.effect[effect_count].type         = EFFECT_MOD_RESIST_LIGHTNING;
+                                                    item_pointer->data.effect[effect_count].value        = random(quality_level);
+                                                break;
+                                                case 6:
+                                                    item_pointer->data.effect[effect_count].enabled      = true;
+                                                    item_pointer->data.effect[effect_count].type         = EFFECT_MOD_RESIST_ALL;
+                                                    item_pointer->data.effect[effect_count].value        = random(quality_level);
+                                                break;
+                                                case 7:
+                                                    item_pointer->data.effect[effect_count].enabled      = true;
+                                                    item_pointer->data.effect[effect_count].type         = EFFECT_MOD_HEALTH_REGEN;
+                                                    item_pointer->data.effect[effect_count].value        = random(quality_level);
+                                                break;
+                                                case 8:
+                                                    item_pointer->data.effect[effect_count].enabled      = true;
+                                                    item_pointer->data.effect[effect_count].type         = EFFECT_MOD_MANA_REGEN;
+                                                    item_pointer->data.effect[effect_count].value        = random(quality_level);
+                                                break;
+                                                case 9:
+                                                    item_pointer->data.effect[effect_count].enabled      = true;
+                                                    item_pointer->data.effect[effect_count].type         = EFFECT_MOD_SPELL_CAST_DMG;
+                                                    item_pointer->data.effect[effect_count].value        = random(quality_level);
+                                                break;
+                                                case 10:
+                                                    item_pointer->data.effect[effect_count].enabled      = true;
+                                                    item_pointer->data.effect[effect_count].type         = EFFECT_MOD_LIGHT_RADIUS;
+                                                    item_pointer->data.effect[effect_count].value        = random(quality_level);
+                                                break;
+                                                case 11:
+                                                    item_pointer->data.effect[effect_count].enabled      = true;
+                                                    item_pointer->data.effect[effect_count].type         = EFFECT_MOD_SPELL;
+                                                    item_pointer->data.effect[effect_count].value        = random(quality_level);
+                                                break;
+                                                case 12:
+                                                    item_pointer->data.effect[effect_count].enabled      = true;
+                                                    item_pointer->data.effect[effect_count].type         = EFFECT_MOD_SPELL_TYPE;
+                                                    item_pointer->data.effect[effect_count].value        = random(quality_level);
+                                                break;
+                                                case 13:
+                                                    item_pointer->data.effect[effect_count].enabled      = true;
+                                                    item_pointer->data.effect[effect_count].type         = EFFECT_MOD_SPELL_ALL;
+                                                    item_pointer->data.effect[effect_count].value        = random(quality_level);
+                                                break;
+                                                default:
+                                                    item_pointer->data.effect[effect_count].enabled       = false;
+                                                break;
+                                            }
+                                        }
+                                    }
+                                break;
+                                case ITEM_SHIELD:
+                                default:
+                                    {
+                                        item_pointer->data.qaulity_type = ITEM_QUALITY_MAGIC;
+                                        int  AVAILABLE_EFFECT_COUNT = 14;
+                                        int  add_effect             = 0;
+                                        bool found                  = false;
+                                        bool effect_used_shield[AVAILABLE_EFFECT_COUNT];
+                                        for (int temp_count = 0; temp_count < AVAILABLE_EFFECT_COUNT; temp_count++)
+                                        {
+                                            effect_used_shield[temp_count] = false;
+                                        }
+                                        for (int effect_count = 1; effect_count < item_pointer->data.number_of_item_effects; effect_count++)
+                                        {
+                                            found = false;
+                                            while (!found)
+                                            {
+                                                add_effect = random(AVAILABLE_EFFECT_COUNT);
+                                                if (!effect_used_shield[add_effect])
+                                                {
+                                                    effect_used_shield[add_effect] = true;
+                                                    found = true;
+                                                }
+                                            }
+                                            switch (add_effect)
+                                            {
+                                                case 0:
+                                                    item_pointer->data.effect[effect_count].enabled      = true;
+                                                    item_pointer->data.effect[effect_count].type         = EFFECT_MOD_STRENGTH;
+                                                    item_pointer->data.effect[effect_count].value        = random(quality_level);
+                                                break;
+                                                case 1:
+                                                    item_pointer->data.effect[effect_count].enabled      = true;
+                                                    item_pointer->data.effect[effect_count].type         = EFFECT_MOD_DEXTERITY;
+                                                    item_pointer->data.effect[effect_count].value        = random(quality_level);
+                                                break;
+                                                case 2:
+                                                    item_pointer->data.effect[effect_count].enabled      = true;
+                                                    item_pointer->data.effect[effect_count].type         = EFFECT_MOD_RESIST_PHYSICAL;
+                                                    item_pointer->data.effect[effect_count].value        = random(quality_level);
+                                                break;
+                                                case 3:
+                                                    item_pointer->data.effect[effect_count].enabled      = true;
+                                                    item_pointer->data.effect[effect_count].type         = EFFECT_MOD_RESIST_FIRE;
+                                                    item_pointer->data.effect[effect_count].value        = random(quality_level);
+                                                break;
+                                                case 4:
+                                                    item_pointer->data.effect[effect_count].enabled      = true;
+                                                    item_pointer->data.effect[effect_count].type         = EFFECT_MOD_RESIST_ICE;
+                                                    item_pointer->data.effect[effect_count].value        = random(quality_level);
+                                                break;
+                                                case 5:
+                                                    item_pointer->data.effect[effect_count].enabled      = true;
+                                                    item_pointer->data.effect[effect_count].type         = EFFECT_MOD_RESIST_LIGHTNING;
+                                                    item_pointer->data.effect[effect_count].value        = random(quality_level);
+                                                break;
+                                                case 6:
+                                                    item_pointer->data.effect[effect_count].enabled      = true;
+                                                    item_pointer->data.effect[effect_count].type         = EFFECT_MOD_RESIST_ALL;
+                                                    item_pointer->data.effect[effect_count].value        = random(quality_level);
+                                                break;
+                                                case 7:
+                                                    item_pointer->data.effect[effect_count].enabled      = true;
+                                                    item_pointer->data.effect[effect_count].type         = EFFECT_MOD_HEALTH_MAX;
+                                                    item_pointer->data.effect[effect_count].value        = random(quality_level);
+                                                break;
+                                                case 8:
+                                                    item_pointer->data.effect[effect_count].enabled      = true;
+                                                    item_pointer->data.effect[effect_count].type         = EFFECT_MOD_MANA_MAX;
+                                                    item_pointer->data.effect[effect_count].value        = random(quality_level);
+                                                break;
+                                                case 9:
+                                                    item_pointer->data.effect[effect_count].enabled      = true;
+                                                    item_pointer->data.effect[effect_count].type         = EFFECT_MOD_SPELL_CAST_DMG;
+                                                    item_pointer->data.effect[effect_count].value        = random(quality_level);
+                                                break;
+                                                default:
+                                                    item_pointer->data.effect[effect_count].enabled       = false;
+                                                break;
+                                            }
+                                        }
+                                    }
+                                break;
+                            }
+                        }
                     break;
                     case ITEM_NECK:
                         item_pointer->data.equipable              = true;

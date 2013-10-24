@@ -72,10 +72,11 @@
 #define ITEM_GLOVES          26
 #define ITEM_AMULET          27
 #define ITEM_SHIELD          28
-#define ITEM_WAND            29
-#define ITEM_SWORD           30
-#define ITEM_DAGGER          31
-#define ITEM_BOW             32
+#define ITEM_SOURCE          29
+#define ITEM_WAND            20
+#define ITEM_SWORD           31
+#define ITEM_DAGGER          32
+#define ITEM_BOW             33
 
 //--- Predefined items ---------------
 #define ITEM_POTION_S_HEALTH          120
