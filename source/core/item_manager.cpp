@@ -447,6 +447,7 @@ int  item_manager_class::gen_item(int item_type_UID, int item_sub_type_UID, int 
                 switch (item_type_UID)
                 {
                     case ITEM_GEM:
+                        item_pointer->data.qaulity_type = ITEM_QUALITY_EPIC; // delete me? O_o
                         quality_level                             = random(quality_level);
                         item_pointer->data.consumable             = false;
                         item_pointer->data.stackable              = true;
