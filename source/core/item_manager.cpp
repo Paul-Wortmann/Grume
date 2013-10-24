@@ -443,6 +443,94 @@ int  item_manager_class::gen_item(int item_type_UID, int item_sub_type_UID, int 
                         item_pointer->data.equipable              = true;
                         item_pointer->data.quantity               = 1;
                         item_pointer->data.quantity_max           = 1;
+                        item_pointer->data.effect[0].type         = EFFECT_MOD_ARMOR;
+                        item_pointer->data.effect[0].value        = random(quality_level);
+                        if (item_pointer->data.number_of_item_effects > 1)
+                        {
+                            item_pointer->data.qaulity_type = ITEM_QUALITY_MAGIC;
+                            int  AVAILABLE_EFFECT_COUNT = 11;
+                            int  add_effect             = 0;
+                            bool found                  = false;
+                            bool effect_used[AVAILABLE_EFFECT_COUNT];
+                            for (int temp_count = 0; temp_count < AVAILABLE_EFFECT_COUNT; temp_count++)
+                            {
+                                effect_used[temp_count] = false;
+                            }
+                            for (int effect_count = 1; effect_count < item_pointer->data.number_of_item_effects; effect_count++)
+                            {
+                                found = false;
+                                while (!found)
+                                {
+                                    add_effect = random(AVAILABLE_EFFECT_COUNT);
+                                    if (!effect_used[add_effect])
+                                    {
+                                        effect_used[add_effect] = true;
+                                        found = true;
+                                    }
+                                }
+                                switch (add_effect)
+                                {
+                                    case 0:
+                                        item_pointer->data.effect[effect_count].enabled      = true;
+                                        item_pointer->data.effect[effect_count].type         = EFFECT_MOD_STRENGTH;
+                                        item_pointer->data.effect[effect_count].value        = random(quality_level);
+                                    break;
+                                    case 1:
+                                        item_pointer->data.effect[effect_count].enabled      = true;
+                                        item_pointer->data.effect[effect_count].type         = EFFECT_MOD_DEXTERITY;
+                                        item_pointer->data.effect[effect_count].value        = random(quality_level);
+                                    break;
+                                    case 2:
+                                        item_pointer->data.effect[effect_count].enabled      = true;
+                                        item_pointer->data.effect[effect_count].type         = EFFECT_MOD_RESIST_PHYSICAL;
+                                        item_pointer->data.effect[effect_count].value        = random(quality_level);
+                                    break;
+                                    case 3:
+                                        item_pointer->data.effect[effect_count].enabled      = true;
+                                        item_pointer->data.effect[effect_count].type         = EFFECT_MOD_RESIST_ICE;
+                                        item_pointer->data.effect[effect_count].value        = random(quality_level);
+                                    break;
+                                    case 4:
+                                        item_pointer->data.effect[effect_count].enabled      = true;
+                                        item_pointer->data.effect[effect_count].type         = EFFECT_MOD_RESIST_FIRE;
+                                        item_pointer->data.effect[effect_count].value        = random(quality_level);
+                                    break;
+                                    case 5:
+                                        item_pointer->data.effect[effect_count].enabled      = true;
+                                        item_pointer->data.effect[effect_count].type         = EFFECT_MOD_RESIST_LIGHTNING;
+                                        item_pointer->data.effect[effect_count].value        = random(quality_level);
+                                    break;
+                                    case 6:
+                                        item_pointer->data.effect[effect_count].enabled      = true;
+                                        item_pointer->data.effect[effect_count].type         = EFFECT_MOD_RESIST_ALL;
+                                        item_pointer->data.effect[effect_count].value        = random(quality_level);
+                                    break;
+                                    case 7:
+                                        item_pointer->data.effect[effect_count].enabled      = true;
+                                        item_pointer->data.effect[effect_count].type         = EFFECT_MOD_MANA_REGEN;
+                                        item_pointer->data.effect[effect_count].value        = random(quality_level);
+                                    break;
+                                    case 8:
+                                        item_pointer->data.effect[effect_count].enabled      = true;
+                                        item_pointer->data.effect[effect_count].type         = EFFECT_MOD_HEALTH_REGEN;
+                                        item_pointer->data.effect[effect_count].value        = random(quality_level);
+                                    break;
+                                    case 9:
+                                        item_pointer->data.effect[effect_count].enabled      = true;
+                                        item_pointer->data.effect[effect_count].type         = EFFECT_MOD_EXP_PER_KILL;
+                                        item_pointer->data.effect[effect_count].value        = random(quality_level);
+                                    break;
+                                    case 10:
+                                        item_pointer->data.effect[effect_count].enabled      = true;
+                                        item_pointer->data.effect[effect_count].type         = EFFECT_MOD_SPELL_CAST_DMG;
+                                        item_pointer->data.effect[effect_count].value        = random(quality_level);
+                                    break;
+                                    default:
+                                        item_pointer->data.effect[effect_count].enabled       = false;
+                                    break;
+                                }
+                            }
+                        }
                     break;
                     case ITEM_FEET:
                         item_pointer->data.equipable              = true;
@@ -828,6 +916,66 @@ void  item_manager_class::gen_item_texture(item_type* item_pointer,int item_type
 {
     switch (item_type_UID)
     {
+        case ITEM_GEM_EMERALD:
+            if (quality_level < 20)
+                item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/gems/gem_6_0.png");
+            if ((quality_level >= 20)&&(quality_level < 40))
+                item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/gems/gem_6_1.png");
+            if ((quality_level >= 40)&&(quality_level < 60))
+                item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/gems/gem_6_2.png");
+            if ((quality_level >= 60)&&(quality_level < 80))
+                item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/gems/gem_6_3.png");
+            if (quality_level >= 80)
+                item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/gems/gem_6_4.png");
+        break;
+        case ITEM_GEM_OPAL:
+            if (quality_level < 20)
+                item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/gems/gem_8_0.png");
+            if ((quality_level >= 20)&&(quality_level < 40))
+                item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/gems/gem_8_1.png");
+            if ((quality_level >= 40)&&(quality_level < 60))
+                item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/gems/gem_8_2.png");
+            if ((quality_level >= 60)&&(quality_level < 80))
+                item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/gems/gem_8_3.png");
+            if (quality_level >= 80)
+                item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/gems/gem_8_4.png");
+        break;
+        case ITEM_GEM_RUBY:
+            if (quality_level < 20)
+                item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/gems/gem_7_0.png");
+            if ((quality_level >= 20)&&(quality_level < 40))
+                item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/gems/gem_7_1.png");
+            if ((quality_level >= 40)&&(quality_level < 60))
+                item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/gems/gem_7_2.png");
+            if ((quality_level >= 60)&&(quality_level < 80))
+                item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/gems/gem_7_3.png");
+            if (quality_level >= 80)
+                item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/gems/gem_7_4.png");
+        break;
+        case ITEM_GEM_SAPPHIRE:
+            if (quality_level < 20)
+                item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/gems/gem_5_0.png");
+            if ((quality_level >= 20)&&(quality_level < 40))
+                item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/gems/gem_5_1.png");
+            if ((quality_level >= 40)&&(quality_level < 60))
+                item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/gems/gem_5_2.png");
+            if ((quality_level >= 60)&&(quality_level < 80))
+                item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/gems/gem_5_3.png");
+            if (quality_level >= 80)
+                item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/gems/gem_5_4.png");
+        break;
+        case ITEM_GEM_TOPAZ:
+            if (quality_level < 20)
+                item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/gems/gem_9_0.png");
+            if ((quality_level >= 20)&&(quality_level < 40))
+                item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/gems/gem_9_1.png");
+            if ((quality_level >= 40)&&(quality_level < 60))
+                item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/gems/gem_9_2.png");
+            if ((quality_level >= 60)&&(quality_level < 80))
+                item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/gems/gem_9_3.png");
+            if (quality_level >= 80)
+                item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/gems/gem_9_4.png");
+        break;
         case ITEM_POTION:
             item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/potions/potion_21.png");
         break;
