@@ -469,22 +469,16 @@ int  item_manager_class::gen_item(int item_type_UID, int item_sub_type_UID, int 
                                 item_pointer->data.effect[0].value        = quality_level/10;
                             break;
                             case ITEM_GEM_RUBY:
-                                item_pointer->data.number_of_item_effects = 2;
+                                item_pointer->data.number_of_item_effects = 1;
                                 item_pointer->data.effect[0].enabled      = true;
                                 item_pointer->data.effect[0].type         = EFFECT_MOD_HEALTH_MAX;
                                 item_pointer->data.effect[0].value        = random(quality_level);
-                                item_pointer->data.effect[1].enabled      = true;
-                                item_pointer->data.effect[1].type         = EFFECT_MOD_HEALTH_REGEN;
-                                item_pointer->data.effect[1].value        = random(quality_level);
                             break;
                             case ITEM_GEM_SAPPHIRE:
-                                item_pointer->data.number_of_item_effects = 2;
+                                item_pointer->data.number_of_item_effects = 1;
                                 item_pointer->data.effect[0].enabled      = true;
                                 item_pointer->data.effect[0].type         = EFFECT_MOD_MANA_MAX;
                                 item_pointer->data.effect[0].value        = random(quality_level);
-                                item_pointer->data.effect[1].enabled      = true;
-                                item_pointer->data.effect[1].type         = EFFECT_MOD_MANA_REGEN;
-                                item_pointer->data.effect[1].value        = random(quality_level);
                             break;
                             case ITEM_GEM_TOPAZ:
                                 item_pointer->data.number_of_item_effects = 1;
