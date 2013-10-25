@@ -1743,7 +1743,7 @@ void  item_manager_class::gen_item_sounds(item_type* item_pointer,int item_type_
             item_pointer->data.sound_use  = game.sound_manager.add_sound("data/sound/inventory/metal_00.wav");
         break;
         default:
-            game.core.log.file_write("Unable to generate item textures -> ",item_type_UID," - ", item_sub_type_UID," - ", quality_level);
+            game.core.log.file_write("Unable to generate item sounds -> ",item_type_UID," - ", item_sub_type_UID," - ", quality_level);
         break;
     }
 };

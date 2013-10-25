@@ -614,10 +614,11 @@ void UI_manager_class::render(void)
                         // ------------------- Display Item stats -----------------------------
                         if ((UI_form_pointer->data.element[element_number].type == UI_ELEMENT_ITEM)&&(UI_form_pointer->data.element[element_number].value >= 0))
                         {
-                            std::string temp_string = "";
-                            effect_type*  effect_pointer  = new effect_type;
-                            item_type*    item_pointer    = new item_type;
-                            texture_type* texture_pointer = new texture_type;
+                            std::string   temp_string         = "";
+                            effect_type*  effect_pointer      = new effect_type;
+                            item_type*    item_pointer        = new item_type;
+                            item_type*    socket_item_pointer = new item_type;
+                            texture_type* texture_pointer     = new texture_type;
                             item_pointer = game.item_manager.add_item(UI_form_pointer->data.element[element_number].value);
                             float texture_background_x = game.core.io.mouse_x;
                             float texture_background_y = game.core.io.mouse_y;
@@ -640,7 +641,13 @@ void UI_manager_class::render(void)
                                     texture_background_size_y += texture_background_padding;
                                     if (item_pointer->data.socket[socket_count].enabled)
                                     {
-                                        // fetch socketed item name...
+                                        int effect_count = 0;
+                                        socket_item_pointer = game.item_manager.add_item(item_pointer->data.socket[socket_count].value);
+                                        effect_pointer = game.effect_manager.add_effect(socket_item_pointer->data.effect[effect_count].type);
+                                        temp_string = effect_pointer->data.name + " -> " + int_to_string(socket_item_pointer->data.effect[effect_count].value);
+                                        texture_pointer = game.texture_manager.add_texture(game.font_manager.root,temp_string.c_str(),0.8f,0,0,255,255,255,255,TEXTURE_STRING);
+                                        game.texture_manager.draw(texture_pointer,false,texture_temp_x+texture_background_padding,texture_temp_y,UI_form_pointer->data.element[element_number].position.z,texture_pointer->data.width,texture_pointer->data.height);
+                                        if (texture_pointer->data.width+texture_background_padding > texture_background_size_x_temp) texture_background_size_x_temp = texture_pointer->data.width+texture_background_padding;
                                     }
                                 }
                                 texture_background_size_y += texture_background_padding;
@@ -753,7 +760,16 @@ void UI_manager_class::render(void)
                                     game.texture_manager.draw(texture_pointer,false,texture_temp_x,texture_temp_y,UI_form_pointer->data.element[element_number].position.z,texture_background_padding,texture_background_padding);
                                     if (item_pointer->data.socket[socket_count].enabled)
                                     {
-                                        // fetch socketed item name...
+                                        int effect_count = 0;
+                                        socket_item_pointer = game.item_manager.add_item(item_pointer->data.socket[socket_count].value);
+                                        texture_pointer = socket_item_pointer->data.image;
+                                        texture_pointer->data.render_positioning = TEXTURE_RENDER_DOWN+TEXTURE_RENDER_LEFT;
+                                        game.texture_manager.draw(texture_pointer,false,texture_temp_x,texture_temp_y,UI_form_pointer->data.element[element_number].position.z,texture_background_padding,texture_background_padding);
+                                        effect_pointer = game.effect_manager.add_effect(socket_item_pointer->data.effect[effect_count].type);
+                                        temp_string = effect_pointer->data.name + " -> " + int_to_string(socket_item_pointer->data.effect[effect_count].value);
+                                        texture_pointer = game.texture_manager.add_texture(game.font_manager.root,temp_string.c_str(),0.8f,0,0,255,255,255,255,TEXTURE_STRING);
+                                        texture_pointer->data.render_positioning = TEXTURE_RENDER_DOWN+TEXTURE_RENDER_LEFT;
+                                        game.texture_manager.draw(texture_pointer,false,texture_temp_x+texture_background_padding,texture_temp_y,UI_form_pointer->data.element[element_number].position.z,texture_pointer->data.width,texture_pointer->data.height);
                                     }
                                     else
                                     {
@@ -1142,13 +1158,14 @@ void UI_manager_class::process(void)
 
 void UI_manager_class::swap_elements(int UI_form_UID_src, int UI_element_src, int UI_form_UID_dst, int UI_element_dst)
 {
+    bool posible_swap        = true;
     bool allow_swap_elements = false;
     if (((UI_form_UID_src == UID_INVENTORY) || (UI_form_UID_src == UID_ACTIONBAR) || (UI_form_UID_src == UID_EQUIPMENT)) &&
         ((UI_form_UID_dst == UID_INVENTORY) || (UI_form_UID_dst == UID_ACTIONBAR) || (UI_form_UID_dst == UID_EQUIPMENT))) allow_swap_elements = true;
     UI_form_struct* UI_form_UID_src_pointer = game.UI_manager.UI_form_get(UI_form_UID_src);
     UI_form_struct* UI_form_UID_dst_pointer = game.UI_manager.UI_form_get(UI_form_UID_dst);
     item_type* item_pointer_src = game.item_manager.add_item(UI_form_UID_src_pointer->data.element[UI_element_src].value);
-    item_type* item_pointer_dst = game.item_manager.add_item(UI_form_UID_src_pointer->data.element[UI_element_src].value);
+    item_type* item_pointer_dst = game.item_manager.add_item(UI_form_UID_dst_pointer->data.element[UI_element_dst].value);
     //game.core.log.file_write("Moving element from - ",UI_form_UID_src," - ",UI_element_src," to - ",UI_form_UID_dst," - ",UI_element_dst);
     if     ((allow_swap_elements)&&(UI_form_UID_src == UI_form_UID_dst)&&(UI_element_src == UI_element_dst)) allow_swap_elements = false;
     if     ((allow_swap_elements)
@@ -1175,8 +1192,33 @@ void UI_manager_class::swap_elements(int UI_form_UID_src, int UI_element_src, in
                 UI_form_UID_src_pointer->data.element[UI_element_src].quantity = 0;
                 UI_form_UID_src_pointer->data.element[UI_element_src].value    = -1;
             }
+            posible_swap = false;
         }
-        else
+
+        if (item_pointer_src->data.number_of_item_sockets >= 1) game.core.log.file_write("item source has sockets -> ",item_pointer_src->data.number_of_item_sockets);
+        if (item_pointer_src->data.type == ITEM_GEM) game.core.log.file_write("item source is a gem");
+        if (item_pointer_dst->data.number_of_item_sockets >= 1) game.core.log.file_write("item destination has sockets -> ",item_pointer_dst->data.number_of_item_sockets);
+        if (item_pointer_dst->data.type == ITEM_GEM) game.core.log.file_write("item destination is a gem");
+
+
+        if   ((item_pointer_dst->data.number_of_item_sockets >= 1) && (item_pointer_src->data.type == ITEM_GEM))
+        {
+            bool socket_done = false;
+            for (int socket_count = 0; socket_count < item_pointer_dst->data.number_of_item_sockets+1; socket_count++)
+            {
+                if ((!socket_done)&&(!item_pointer_dst->data.socket[socket_count].enabled))
+                {
+                    socket_done = true;
+                    item_pointer_dst->data.socket[socket_count].enabled = true;
+                    item_pointer_dst->data.socket[socket_count].type    = item_pointer_src->data.type;
+                    item_pointer_dst->data.socket[socket_count].value   = item_pointer_src->data.UID;
+                    UI_form_UID_src_pointer->data.element[UI_element_src].quantity = 0;
+                    UI_form_UID_src_pointer->data.element[UI_element_src].value    = -1;
+                }
+            }
+            if (socket_done) posible_swap = false;
+        }
+        if (posible_swap)
         {
             bool allow_swap = false;
             switch (UI_form_UID_dst)
