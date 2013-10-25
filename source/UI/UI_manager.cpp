@@ -643,7 +643,7 @@ void UI_manager_class::render(void)
                                         // fetch socketed item name...
                                     }
                                 }
-                                texture_background_size_y += texture_background_padding*2;
+                                texture_background_size_y += texture_background_padding;
                             }
                             if (item_pointer->data.number_of_item_effects > 0)
                             {
@@ -732,9 +732,34 @@ void UI_manager_class::render(void)
                                 game.texture_manager.draw(texture_pointer,false,texture_temp_x,texture_temp_y,UI_form_pointer->data.element[element_number].position.z,texture_divider_size_x,texture_divider_size_y);
                                 for (int socket_count = 0; socket_count < item_pointer->data.number_of_item_sockets; socket_count++)
                                 {
+                                    texture_temp_y -= (texture_background_padding);
+                                    switch (item_pointer->data.qaulity_type)
+                                    {
+                                        case ITEM_QUALITY_MAGIC:
+                                            texture_pointer = game.UI_manager.data.tooltip_textures.magic.socket;
+                                        break;
+                                        case ITEM_QUALITY_EPIC:
+                                            texture_pointer = game.UI_manager.data.tooltip_textures.epic.socket;
+                                        break;
+                                        case ITEM_QUALITY_SET:
+                                            texture_pointer = game.UI_manager.data.tooltip_textures.setitem.socket;
+                                        break;
+                                        case ITEM_QUALITY_NORMAL:
+                                        default:
+                                            texture_pointer = game.UI_manager.data.tooltip_textures.normal.socket;
+                                        break;
+                                    }
+                                    texture_pointer->data.render_positioning = TEXTURE_RENDER_DOWN+TEXTURE_RENDER_LEFT;
+                                    game.texture_manager.draw(texture_pointer,false,texture_temp_x,texture_temp_y,UI_form_pointer->data.element[element_number].position.z,texture_background_padding,texture_background_padding);
                                     if (item_pointer->data.socket[socket_count].enabled)
                                     {
                                         // fetch socketed item name...
+                                    }
+                                    else
+                                    {
+                                        texture_pointer = game.texture_manager.add_texture(game.font_manager.root,"Empty socket",0.8f,0,0,255,255,255,255,TEXTURE_STRING);
+                                        texture_pointer->data.render_positioning = TEXTURE_RENDER_DOWN+TEXTURE_RENDER_LEFT;
+                                        game.texture_manager.draw(texture_pointer,false,texture_temp_x+texture_background_padding,texture_temp_y,UI_form_pointer->data.element[element_number].position.z,texture_pointer->data.width,texture_pointer->data.height);
                                     }
                                 }
                             }
