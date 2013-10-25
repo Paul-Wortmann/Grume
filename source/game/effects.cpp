@@ -42,7 +42,7 @@ void  effect_class::init_effects(void) // Initialize hard-coded default effects,
     //------------------------- Mod Strength --------------------------------------------------------------------------
     temp_effect_pointer                = game.effect_manager.add_effect(EFFECT_MOD_STRENGTH);
     temp_effect_pointer->data.active   = true;
-    temp_effect_pointer->data.name     = "Mod player strength";
+    temp_effect_pointer->data.name     = "Strength";
     temp_effect_pointer->data.passive  = false;
     temp_effect_pointer->data.value    = 1.0f;
     temp_effect_pointer->data.type     = EFFECT_MOD_STRENGTH;
@@ -50,7 +50,7 @@ void  effect_class::init_effects(void) // Initialize hard-coded default effects,
     //------------------------- Mod intellect --------------------------------------------------------------------------
     temp_effect_pointer                = game.effect_manager.add_effect(EFFECT_MOD_INTELLECT);
     temp_effect_pointer->data.active   = true;
-    temp_effect_pointer->data.name     = "Mod player intellect";
+    temp_effect_pointer->data.name     = "Intellect";
     temp_effect_pointer->data.passive  = false;
     temp_effect_pointer->data.value    = 1.0f;
     temp_effect_pointer->data.type     = EFFECT_MOD_INTELLECT;
@@ -58,7 +58,7 @@ void  effect_class::init_effects(void) // Initialize hard-coded default effects,
     //------------------------- Mod dexterity --------------------------------------------------------------------------
     temp_effect_pointer                = game.effect_manager.add_effect(EFFECT_MOD_DEXTERITY);
     temp_effect_pointer->data.active   = true;
-    temp_effect_pointer->data.name     = "Mod player dexterity";
+    temp_effect_pointer->data.name     = "Dexterity";
     temp_effect_pointer->data.passive  = false;
     temp_effect_pointer->data.value    = 1.0f;
     temp_effect_pointer->data.type     = EFFECT_MOD_DEXTERITY;
@@ -66,7 +66,7 @@ void  effect_class::init_effects(void) // Initialize hard-coded default effects,
     //------------------------- Mod attributes --------------------------------------------------------------------------
     temp_effect_pointer                = game.effect_manager.add_effect(EFFECT_MOD_ALL_ATTRIBUTES);
     temp_effect_pointer->data.active   = true;
-    temp_effect_pointer->data.name     = "Mod player attributes";
+    temp_effect_pointer->data.name     = "All attributes";
     temp_effect_pointer->data.passive  = false;
     temp_effect_pointer->data.value    = 1.0f;
     temp_effect_pointer->data.type     = EFFECT_MOD_ALL_ATTRIBUTES;
@@ -74,7 +74,7 @@ void  effect_class::init_effects(void) // Initialize hard-coded default effects,
     //------------------------- Mod armor --------------------------------------------------------------------------
     temp_effect_pointer                = game.effect_manager.add_effect(EFFECT_MOD_ARMOR);
     temp_effect_pointer->data.active   = true;
-    temp_effect_pointer->data.name     = "Mod player armor";
+    temp_effect_pointer->data.name     = "Armor";
     temp_effect_pointer->data.passive  = false;
     temp_effect_pointer->data.value    = 1.0f;
     temp_effect_pointer->data.type     = EFFECT_MOD_ARMOR;
@@ -82,7 +82,7 @@ void  effect_class::init_effects(void) // Initialize hard-coded default effects,
     //------------------------- Mod damage --------------------------------------------------------------------------
     temp_effect_pointer                = game.effect_manager.add_effect(EFFECT_MOD_DAMAGE);
     temp_effect_pointer->data.active   = true;
-    temp_effect_pointer->data.name     = "Mod player damage";
+    temp_effect_pointer->data.name     = "Damage";
     temp_effect_pointer->data.passive  = false;
     temp_effect_pointer->data.value    = 1.0f;
     temp_effect_pointer->data.type     = EFFECT_MOD_DAMAGE;
@@ -90,7 +90,7 @@ void  effect_class::init_effects(void) // Initialize hard-coded default effects,
     //------------------------- Mod damage max --------------------------------------------------------------------------
     temp_effect_pointer                = game.effect_manager.add_effect(EFFECT_MOD_DAMAGE_MAX);
     temp_effect_pointer->data.active   = true;
-    temp_effect_pointer->data.name     = "Mod player max damage";
+    temp_effect_pointer->data.name     = "Max damage";
     temp_effect_pointer->data.passive  = false;
     temp_effect_pointer->data.value    = 1.0f;
     temp_effect_pointer->data.type     = EFFECT_MOD_DAMAGE_MAX;
@@ -98,7 +98,7 @@ void  effect_class::init_effects(void) // Initialize hard-coded default effects,
     //------------------------- Mod damage min --------------------------------------------------------------------------
     temp_effect_pointer                = game.effect_manager.add_effect(EFFECT_MOD_DAMAGE_MIN);
     temp_effect_pointer->data.active   = true;
-    temp_effect_pointer->data.name     = "Mod player min damage";
+    temp_effect_pointer->data.name     = "Min damage";
     temp_effect_pointer->data.passive  = false;
     temp_effect_pointer->data.value    = 1.0f;
     temp_effect_pointer->data.type     = EFFECT_MOD_DAMAGE_MIN;
@@ -106,7 +106,7 @@ void  effect_class::init_effects(void) // Initialize hard-coded default effects,
     //------------------------- Mod damage ice --------------------------------------------------------------------------
     temp_effect_pointer                = game.effect_manager.add_effect(EFFECT_MOD_DAMAGE_ICE);
     temp_effect_pointer->data.active   = true;
-    temp_effect_pointer->data.name     = "Mod player ice damage";
+    temp_effect_pointer->data.name     = "Ice damage";
     temp_effect_pointer->data.passive  = false;
     temp_effect_pointer->data.value    = 1.0f;
     temp_effect_pointer->data.type     = EFFECT_MOD_DAMAGE_ICE;
@@ -114,7 +114,7 @@ void  effect_class::init_effects(void) // Initialize hard-coded default effects,
     //------------------------- Mod damage fire --------------------------------------------------------------------------
     temp_effect_pointer                = game.effect_manager.add_effect(EFFECT_MOD_DAMAGE_FIRE);
     temp_effect_pointer->data.active   = true;
-    temp_effect_pointer->data.name     = "Mod player fire damage";
+    temp_effect_pointer->data.name     = "Fire damage";
     temp_effect_pointer->data.passive  = false;
     temp_effect_pointer->data.value    = 1.0f;
     temp_effect_pointer->data.type     = EFFECT_MOD_DAMAGE_FIRE;
@@ -122,7 +122,7 @@ void  effect_class::init_effects(void) // Initialize hard-coded default effects,
     //------------------------- Mod damage lightning --------------------------------------------------------------------------
     temp_effect_pointer                = game.effect_manager.add_effect(EFFECT_MOD_DAMAGE_LIGHTNING);
     temp_effect_pointer->data.active   = true;
-    temp_effect_pointer->data.name     = "Mod player lightning damage";
+    temp_effect_pointer->data.name     = "Lightning damage";
     temp_effect_pointer->data.passive  = false;
     temp_effect_pointer->data.value    = 1.0f;
     temp_effect_pointer->data.type     = EFFECT_MOD_DAMAGE_LIGHTNING;
@@ -130,7 +130,7 @@ void  effect_class::init_effects(void) // Initialize hard-coded default effects,
     //------------------------- Mod damage elemental --------------------------------------------------------------------------
     temp_effect_pointer                = game.effect_manager.add_effect(EFFECT_MOD_DAMAGE_ELEMENTAL);
     temp_effect_pointer->data.active   = true;
-    temp_effect_pointer->data.name     = "Mod player elemental damage";
+    temp_effect_pointer->data.name     = "Elemental damage";
     temp_effect_pointer->data.passive  = false;
     temp_effect_pointer->data.value    = 1.0f;
     temp_effect_pointer->data.type     = EFFECT_MOD_DAMAGE_ELEMENTAL;
@@ -138,7 +138,7 @@ void  effect_class::init_effects(void) // Initialize hard-coded default effects,
     //------------------------- Mod physical resistance --------------------------------------------------------------------------
     temp_effect_pointer                = game.effect_manager.add_effect(EFFECT_MOD_RESIST_PHYSICAL);
     temp_effect_pointer->data.active   = true;
-    temp_effect_pointer->data.name     = "Mod player physical resistance";
+    temp_effect_pointer->data.name     = "Physical resistance";
     temp_effect_pointer->data.passive  = false;
     temp_effect_pointer->data.value    = 1.0f;
     temp_effect_pointer->data.type     = EFFECT_MOD_RESIST_PHYSICAL;
@@ -146,7 +146,7 @@ void  effect_class::init_effects(void) // Initialize hard-coded default effects,
     //------------------------- Mod ice resistance --------------------------------------------------------------------------
     temp_effect_pointer                = game.effect_manager.add_effect(EFFECT_MOD_RESIST_ICE);
     temp_effect_pointer->data.active   = true;
-    temp_effect_pointer->data.name     = "Mod player ice resistance";
+    temp_effect_pointer->data.name     = "Ice resistance";
     temp_effect_pointer->data.passive  = false;
     temp_effect_pointer->data.value    = 1.0f;
     temp_effect_pointer->data.type     = EFFECT_MOD_RESIST_ICE;
@@ -154,7 +154,7 @@ void  effect_class::init_effects(void) // Initialize hard-coded default effects,
     //------------------------- Mod fire resistance --------------------------------------------------------------------------
     temp_effect_pointer                = game.effect_manager.add_effect(EFFECT_MOD_RESIST_FIRE);
     temp_effect_pointer->data.active   = true;
-    temp_effect_pointer->data.name     = "Mod player fire resistance";
+    temp_effect_pointer->data.name     = "Fire resistance";
     temp_effect_pointer->data.passive  = false;
     temp_effect_pointer->data.value    = 1.0f;
     temp_effect_pointer->data.type     = EFFECT_MOD_RESIST_FIRE;
@@ -162,7 +162,7 @@ void  effect_class::init_effects(void) // Initialize hard-coded default effects,
     //------------------------- Mod lightning resistance --------------------------------------------------------------------------
     temp_effect_pointer                = game.effect_manager.add_effect(EFFECT_MOD_RESIST_LIGHTNING);
     temp_effect_pointer->data.active   = true;
-    temp_effect_pointer->data.name     = "Mod player lightning resistance";
+    temp_effect_pointer->data.name     = "Lightning resistance";
     temp_effect_pointer->data.passive  = false;
     temp_effect_pointer->data.value    = 1.0f;
     temp_effect_pointer->data.type     = EFFECT_MOD_RESIST_LIGHTNING;
@@ -170,7 +170,7 @@ void  effect_class::init_effects(void) // Initialize hard-coded default effects,
     //------------------------- Mod all resistance --------------------------------------------------------------------------
     temp_effect_pointer                = game.effect_manager.add_effect(EFFECT_MOD_RESIST_ALL);
     temp_effect_pointer->data.active   = true;
-    temp_effect_pointer->data.name     = "Mod player resist all";
+    temp_effect_pointer->data.name     = "Resist all";
     temp_effect_pointer->data.passive  = false;
     temp_effect_pointer->data.value    = 1.0f;
     temp_effect_pointer->data.type     = EFFECT_MOD_RESIST_ALL;
@@ -178,7 +178,7 @@ void  effect_class::init_effects(void) // Initialize hard-coded default effects,
     //------------------------- Mod Health Effect --------------------------------------------------------------------------
     temp_effect_pointer                = game.effect_manager.add_effect(EFFECT_MOD_HEALTH);
     temp_effect_pointer->data.active   = true;
-    temp_effect_pointer->data.name     = "Mod player health";
+    temp_effect_pointer->data.name     = "Health";
     temp_effect_pointer->data.passive  = false;
     temp_effect_pointer->data.value    = 10.0f;
     temp_effect_pointer->data.type     = EFFECT_MOD_HEALTH;
@@ -186,7 +186,7 @@ void  effect_class::init_effects(void) // Initialize hard-coded default effects,
     //-------------------------- Mod Health max --------------------------------------------------------------------------
     temp_effect_pointer                = game.effect_manager.add_effect(EFFECT_MOD_HEALTH_MAX);
     temp_effect_pointer->data.active   = true;
-    temp_effect_pointer->data.name     = "Mod player health max";
+    temp_effect_pointer->data.name     = "Max health";
     temp_effect_pointer->data.passive  = false;
     temp_effect_pointer->data.value    = 100.0f;
     temp_effect_pointer->data.type     = EFFECT_MOD_HEALTH_MAX;
@@ -194,7 +194,7 @@ void  effect_class::init_effects(void) // Initialize hard-coded default effects,
     //-------------------------- Mod Health regen --------------------------------------------------------------------------
     temp_effect_pointer                = game.effect_manager.add_effect(EFFECT_MOD_HEALTH_REGEN);
     temp_effect_pointer->data.active   = true;
-    temp_effect_pointer->data.name     = "Mod player health regen";
+    temp_effect_pointer->data.name     = "Health regeneration";
     temp_effect_pointer->data.passive  = true;
     temp_effect_pointer->data.value    = 1.0f;
     temp_effect_pointer->data.type     = EFFECT_MOD_HEALTH_REGEN;
@@ -202,7 +202,7 @@ void  effect_class::init_effects(void) // Initialize hard-coded default effects,
     //------------------------- Mod player health on hit --------------------------------------------------------------------------
     temp_effect_pointer                = game.effect_manager.add_effect(EFFECT_MOD_HEALTH_HIT);
     temp_effect_pointer->data.active   = true;
-    temp_effect_pointer->data.name     = "Mod player health on hit";
+    temp_effect_pointer->data.name     = "Health on hit";
     temp_effect_pointer->data.passive  = false;
     temp_effect_pointer->data.value    = 10.0f;
     temp_effect_pointer->data.type     = EFFECT_MOD_HEALTH_HIT;
@@ -210,7 +210,7 @@ void  effect_class::init_effects(void) // Initialize hard-coded default effects,
     //------------------------- Mod player health on kill --------------------------------------------------------------------------
     temp_effect_pointer                = game.effect_manager.add_effect(EFFECT_MOD_HEALTH_KILL);
     temp_effect_pointer->data.active   = true;
-    temp_effect_pointer->data.name     = "Mod player health on kill";
+    temp_effect_pointer->data.name     = "Health on kill";
     temp_effect_pointer->data.passive  = false;
     temp_effect_pointer->data.value    = 10.0f;
     temp_effect_pointer->data.type     = EFFECT_MOD_HEALTH_KILL;
@@ -218,7 +218,7 @@ void  effect_class::init_effects(void) // Initialize hard-coded default effects,
     //------------------------- Mod Mana Effect --------------------------------------------------------------------------
     temp_effect_pointer                = game.effect_manager.add_effect(EFFECT_MOD_MANA);
     temp_effect_pointer->data.active   = true;
-    temp_effect_pointer->data.name     = "Mod player mana";
+    temp_effect_pointer->data.name     = "Mana";
     temp_effect_pointer->data.passive  = false;
     temp_effect_pointer->data.value    = 10.0f;
     temp_effect_pointer->data.type     = EFFECT_MOD_MANA;
@@ -226,7 +226,7 @@ void  effect_class::init_effects(void) // Initialize hard-coded default effects,
     //-------------------------- Mod Mana max --------------------------------------------------------------------------
     temp_effect_pointer                = game.effect_manager.add_effect(EFFECT_MOD_MANA_MAX);
     temp_effect_pointer->data.active   = true;
-    temp_effect_pointer->data.name     = "Mod player mana max";
+    temp_effect_pointer->data.name     = "Max mana";
     temp_effect_pointer->data.passive  = false;
     temp_effect_pointer->data.value    = 100.0f;
     temp_effect_pointer->data.type     = EFFECT_MOD_MANA_MAX;
@@ -234,7 +234,7 @@ void  effect_class::init_effects(void) // Initialize hard-coded default effects,
     //-------------------------- Mod Mana regen --------------------------------------------------------------------------
     temp_effect_pointer                = game.effect_manager.add_effect(EFFECT_MOD_MANA_REGEN);
     temp_effect_pointer->data.active   = true;
-    temp_effect_pointer->data.name     = "Mod player mana regen";
+    temp_effect_pointer->data.name     = "Mana regeneration";
     temp_effect_pointer->data.passive  = true;
     temp_effect_pointer->data.value    = 1.0f;
     temp_effect_pointer->data.type     = EFFECT_MOD_MANA_REGEN;
@@ -242,7 +242,7 @@ void  effect_class::init_effects(void) // Initialize hard-coded default effects,
     //-------------------------- Mod Mana on hit --------------------------------------------------------------------------
     temp_effect_pointer                = game.effect_manager.add_effect(EFFECT_MOD_MANA_HIT);
     temp_effect_pointer->data.active   = true;
-    temp_effect_pointer->data.name     = "Mod player mana on hit";
+    temp_effect_pointer->data.name     = "Mana on hit";
     temp_effect_pointer->data.passive  = false;
     temp_effect_pointer->data.value    = 1.0f;
     temp_effect_pointer->data.type     = EFFECT_MOD_MANA_HIT;
@@ -250,7 +250,7 @@ void  effect_class::init_effects(void) // Initialize hard-coded default effects,
     //-------------------------- Mod Mana on kill --------------------------------------------------------------------------
     temp_effect_pointer                = game.effect_manager.add_effect(EFFECT_MOD_MANA_KILL);
     temp_effect_pointer->data.active   = true;
-    temp_effect_pointer->data.name     = "Mod player mana on kill";
+    temp_effect_pointer->data.name     = "Mana on kill";
     temp_effect_pointer->data.passive  = false;
     temp_effect_pointer->data.value    = 1.0f;
     temp_effect_pointer->data.type     = EFFECT_MOD_MANA_KILL;
@@ -258,7 +258,7 @@ void  effect_class::init_effects(void) // Initialize hard-coded default effects,
     //-------------------------- Mod crit chance --------------------------------------------------------------------------
     temp_effect_pointer                = game.effect_manager.add_effect(EFFECT_MOD_CRIT_CHANCE);
     temp_effect_pointer->data.active   = true;
-    temp_effect_pointer->data.name     = "Mod player crit chance";
+    temp_effect_pointer->data.name     = "Crit chance";
     temp_effect_pointer->data.passive  = false;
     temp_effect_pointer->data.value    = 1.0f;
     temp_effect_pointer->data.type     = EFFECT_MOD_CRIT_CHANCE;
@@ -266,7 +266,7 @@ void  effect_class::init_effects(void) // Initialize hard-coded default effects,
     //-------------------------- Mod crit damage --------------------------------------------------------------------------
     temp_effect_pointer                = game.effect_manager.add_effect(EFFECT_MOD_CRIT_DAMAGE);
     temp_effect_pointer->data.active   = true;
-    temp_effect_pointer->data.name     = "Mod player crit damage";
+    temp_effect_pointer->data.name     = "Crit damage";
     temp_effect_pointer->data.passive  = false;
     temp_effect_pointer->data.value    = 1.0f;
     temp_effect_pointer->data.type     = EFFECT_MOD_CRIT_DAMAGE;
@@ -274,7 +274,7 @@ void  effect_class::init_effects(void) // Initialize hard-coded default effects,
     //-------------------------- Mod movement speed --------------------------------------------------------------------------
     temp_effect_pointer                = game.effect_manager.add_effect(EFFECT_MOD_MOVEMENT_SPEED);
     temp_effect_pointer->data.active   = true;
-    temp_effect_pointer->data.name     = "Mod player movement speed";
+    temp_effect_pointer->data.name     = "Movement speed";
     temp_effect_pointer->data.passive  = false;
     temp_effect_pointer->data.value    = 1.0f;
     temp_effect_pointer->data.type     = EFFECT_MOD_MOVEMENT_SPEED;
@@ -282,7 +282,7 @@ void  effect_class::init_effects(void) // Initialize hard-coded default effects,
     //-------------------------- Mod light radius --------------------------------------------------------------------------
     temp_effect_pointer                = game.effect_manager.add_effect(EFFECT_MOD_LIGHT_RADIUS);
     temp_effect_pointer->data.active   = true;
-    temp_effect_pointer->data.name     = "Mod player light radius";
+    temp_effect_pointer->data.name     = "Light radius";
     temp_effect_pointer->data.passive  = false;
     temp_effect_pointer->data.value    = 1.0f;
     temp_effect_pointer->data.type     = EFFECT_MOD_LIGHT_RADIUS;
@@ -290,7 +290,7 @@ void  effect_class::init_effects(void) // Initialize hard-coded default effects,
     //-------------------------- Mod magic find --------------------------------------------------------------------------
     temp_effect_pointer                = game.effect_manager.add_effect(EFFECT_MOD_MAGIC_FIND);
     temp_effect_pointer->data.active   = true;
-    temp_effect_pointer->data.name     = "Mod player magic find";
+    temp_effect_pointer->data.name     = "Magic find";
     temp_effect_pointer->data.passive  = false;
     temp_effect_pointer->data.value    = 1.0f;
     temp_effect_pointer->data.type     = EFFECT_MOD_MAGIC_FIND;
@@ -298,7 +298,7 @@ void  effect_class::init_effects(void) // Initialize hard-coded default effects,
     //-------------------------- Mod gold find --------------------------------------------------------------------------
     temp_effect_pointer                = game.effect_manager.add_effect(EFFECT_MOD_GOLD_FIND);
     temp_effect_pointer->data.active   = true;
-    temp_effect_pointer->data.name     = "Mod player gold damage";
+    temp_effect_pointer->data.name     = "Gold find";
     temp_effect_pointer->data.passive  = false;
     temp_effect_pointer->data.value    = 1.0f;
     temp_effect_pointer->data.type     = EFFECT_MOD_GOLD_FIND;
@@ -306,7 +306,7 @@ void  effect_class::init_effects(void) // Initialize hard-coded default effects,
     //-------------------------- Mod experience per kill --------------------------------------------------------------------------
     temp_effect_pointer                = game.effect_manager.add_effect(EFFECT_MOD_EXP_PER_KILL);
     temp_effect_pointer->data.active   = true;
-    temp_effect_pointer->data.name     = "Mod player experience per kill";
+    temp_effect_pointer->data.name     = "Experience per kill";
     temp_effect_pointer->data.passive  = false;
     temp_effect_pointer->data.value    = 1.0f;
     temp_effect_pointer->data.type     = EFFECT_MOD_EXP_PER_KILL;
@@ -314,7 +314,7 @@ void  effect_class::init_effects(void) // Initialize hard-coded default effects,
     //-------------------------- Mod spell --------------------------------------------------------------------------
     temp_effect_pointer                = game.effect_manager.add_effect(EFFECT_MOD_SPELL);
     temp_effect_pointer->data.active   = true;
-    temp_effect_pointer->data.name     = "Mod player spell";
+    temp_effect_pointer->data.name     = "+1 to spell";
     temp_effect_pointer->data.passive  = false;
     temp_effect_pointer->data.value    = 1.0f;
     temp_effect_pointer->data.type     = EFFECT_MOD_SPELL;
@@ -322,7 +322,7 @@ void  effect_class::init_effects(void) // Initialize hard-coded default effects,
     //-------------------------- Mod spell type --------------------------------------------------------------------------
     temp_effect_pointer                = game.effect_manager.add_effect(EFFECT_MOD_SPELL_TYPE);
     temp_effect_pointer->data.active   = true;
-    temp_effect_pointer->data.name     = "Mod player spell type";
+    temp_effect_pointer->data.name     = "+1 to spell type";
     temp_effect_pointer->data.passive  = false;
     temp_effect_pointer->data.value    = 1.0f;
     temp_effect_pointer->data.type     = EFFECT_MOD_SPELL_TYPE;
@@ -330,7 +330,7 @@ void  effect_class::init_effects(void) // Initialize hard-coded default effects,
     //-------------------------- Mod spell all --------------------------------------------------------------------------
     temp_effect_pointer                = game.effect_manager.add_effect(EFFECT_MOD_SPELL_ALL);
     temp_effect_pointer->data.active   = true;
-    temp_effect_pointer->data.name     = "Mod player spell all";
+    temp_effect_pointer->data.name     = "+1 to all spells";
     temp_effect_pointer->data.passive  = false;
     temp_effect_pointer->data.value    = 1.0f;
     temp_effect_pointer->data.type     = EFFECT_MOD_SPELL_ALL;
@@ -338,7 +338,7 @@ void  effect_class::init_effects(void) // Initialize hard-coded default effects,
     //-------------------------- Mod spell cast on kill--------------------------------------------------------------------------
     temp_effect_pointer                = game.effect_manager.add_effect(EFFECT_MOD_SPELL_CAST_KILL);
     temp_effect_pointer->data.active   = true;
-    temp_effect_pointer->data.name     = "Mod player spell cast on kill";
+    temp_effect_pointer->data.name     = "Cast spell on kill";
     temp_effect_pointer->data.passive  = false;
     temp_effect_pointer->data.value    = 1.0f;
     temp_effect_pointer->data.type     = EFFECT_MOD_SPELL_CAST_KILL;
@@ -346,7 +346,7 @@ void  effect_class::init_effects(void) // Initialize hard-coded default effects,
     //-------------------------- Mod spell cast on hit --------------------------------------------------------------------------
     temp_effect_pointer                = game.effect_manager.add_effect(EFFECT_MOD_SPELL_CAST_HIT);
     temp_effect_pointer->data.active   = true;
-    temp_effect_pointer->data.name     = "Mod player spell cast on hit";
+    temp_effect_pointer->data.name     = "Cast spell on hit";
     temp_effect_pointer->data.passive  = false;
     temp_effect_pointer->data.value    = 1.0f;
     temp_effect_pointer->data.type     = EFFECT_MOD_SPELL_CAST_HIT;
@@ -354,7 +354,7 @@ void  effect_class::init_effects(void) // Initialize hard-coded default effects,
     //-------------------------- Mod player spell cast on damage taken --------------------------------------------------------------------------
     temp_effect_pointer                = game.effect_manager.add_effect(EFFECT_MOD_SPELL_CAST_DMG);
     temp_effect_pointer->data.active   = true;
-    temp_effect_pointer->data.name     = "Mod player spell cast on damage taken";
+    temp_effect_pointer->data.name     = "Cast spell when damage taken";
     temp_effect_pointer->data.passive  = false;
     temp_effect_pointer->data.value    = 1.0f;
     temp_effect_pointer->data.type     = EFFECT_MOD_SPELL_CAST_DMG;
