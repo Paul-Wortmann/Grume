@@ -35,6 +35,7 @@
 #include "../core/network.hpp"
 #include "../core/savegame.hpp"
 #include "../core/sound_manager.hpp"
+#include "../core/spell_manager.hpp"
 #include "../core/texture_manager.hpp"
 #include "../core/types.hpp"
 #include "../UI/UI_loading_screen.hpp"
@@ -95,6 +96,7 @@ class game_class
         spell_class                 spell[MAX_SPELLS];
         int                         state;
         sound_manager_class         sound_manager;
+        spell_manager_class         spell_manager;
         texture_manager_class       texture_manager;
         UI_loading_screen_class     loading_screen;
         UI_manager_class            UI_manager;
