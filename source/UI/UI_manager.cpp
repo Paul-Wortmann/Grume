@@ -615,6 +615,7 @@ void UI_manager_class::render(void)
                         if ((UI_form_pointer->data.element[element_number].type == UI_ELEMENT_ITEM)&&(UI_form_pointer->data.element[element_number].value >= 0))
                         {
                             std::string   temp_string         = "";
+                            std::string   sign_string         = " ";
                             effect_type*  effect_pointer      = new effect_type;
                             item_type*    item_pointer        = new item_type;
                             item_type*    socket_item_pointer = new item_type;
@@ -644,7 +645,10 @@ void UI_manager_class::render(void)
                                         int effect_count = 0;
                                         socket_item_pointer = game.item_manager.add_item(item_pointer->data.socket[socket_count].value);
                                         effect_pointer = game.effect_manager.add_effect(socket_item_pointer->data.effect[effect_count].type);
-                                        temp_string = effect_pointer->data.name + " -> " + int_to_string(socket_item_pointer->data.effect[effect_count].value);
+                                        if (socket_item_pointer->data.effect[effect_count].value >  0) sign_string = "+";
+                                        if (socket_item_pointer->data.effect[effect_count].value == 0) sign_string = " ";
+                                        if (socket_item_pointer->data.effect[effect_count].value <  0) sign_string = "-";
+                                        temp_string = effect_pointer->data.name + " -> " + sign_string + int_to_string(socket_item_pointer->data.effect[effect_count].value);
                                         texture_pointer = game.texture_manager.add_texture(game.font_manager.root,temp_string.c_str(),0.8f,0,0,255,255,255,255,TEXTURE_STRING);
                                         game.texture_manager.draw(texture_pointer,false,texture_temp_x+texture_background_padding,texture_temp_y,UI_form_pointer->data.element[element_number].position.z,texture_pointer->data.width,texture_pointer->data.height);
                                         if (texture_pointer->data.width+texture_background_padding > texture_background_size_x_temp) texture_background_size_x_temp = texture_pointer->data.width+texture_background_padding;
@@ -707,7 +711,10 @@ void UI_manager_class::render(void)
                                     {
                                         effect_pointer = game.effect_manager.add_effect(item_pointer->data.effect[effect_count].type);
                                         texture_temp_y -= texture_background_padding;
-                                        temp_string = effect_pointer->data.name + " -> " + int_to_string(item_pointer->data.effect[effect_count].value);
+                                        if (item_pointer->data.effect[effect_count].value >  0) sign_string = "+";
+                                        if (item_pointer->data.effect[effect_count].value == 0) sign_string = " ";
+                                        if (item_pointer->data.effect[effect_count].value <  0) sign_string = "-";
+                                        temp_string = effect_pointer->data.name + " -> " + sign_string + int_to_string(item_pointer->data.effect[effect_count].value);
                                         texture_pointer = game.texture_manager.add_texture(game.font_manager.root,temp_string.c_str(),0.8f,0,0,255,255,255,255,TEXTURE_STRING);
                                         texture_pointer->data.render_positioning = TEXTURE_RENDER_DOWN+TEXTURE_RENDER_LEFT;
                                         game.texture_manager.draw(texture_pointer,false,texture_temp_x,texture_temp_y,UI_form_pointer->data.element[element_number].position.z,texture_pointer->data.width,texture_pointer->data.height);
@@ -736,7 +743,7 @@ void UI_manager_class::render(void)
                                     break;
                                 }
                                 texture_pointer->data.render_positioning = TEXTURE_RENDER_DOWN+TEXTURE_RENDER_LEFT;
-                                game.texture_manager.draw(texture_pointer,false,texture_temp_x,texture_temp_y-texture_background_padding/2.0f,UI_form_pointer->data.element[element_number].position.z,texture_divider_size_x,texture_divider_size_y);
+                                game.texture_manager.draw(texture_pointer,false,texture_temp_x,texture_temp_y-texture_background_padding/4.0f,UI_form_pointer->data.element[element_number].position.z,texture_divider_size_x,texture_divider_size_y);
                                 for (int socket_count = 0; socket_count < item_pointer->data.number_of_item_sockets; socket_count++)
                                 {
                                     texture_temp_y -= (texture_background_padding);
@@ -766,7 +773,10 @@ void UI_manager_class::render(void)
                                         texture_pointer->data.render_positioning = TEXTURE_RENDER_DOWN+TEXTURE_RENDER_LEFT;
                                         game.texture_manager.draw(texture_pointer,false,texture_temp_x,texture_temp_y,UI_form_pointer->data.element[element_number].position.z,texture_background_padding,texture_background_padding);
                                         effect_pointer = game.effect_manager.add_effect(socket_item_pointer->data.effect[effect_count].type);
-                                        temp_string = effect_pointer->data.name + " -> " + int_to_string(socket_item_pointer->data.effect[effect_count].value);
+                                        if (socket_item_pointer->data.effect[effect_count].value >  0) sign_string = "+";
+                                        if (socket_item_pointer->data.effect[effect_count].value == 0) sign_string = " ";
+                                        if (socket_item_pointer->data.effect[effect_count].value <  0) sign_string = "-";
+                                        temp_string = effect_pointer->data.name + " -> " + sign_string + int_to_string(socket_item_pointer->data.effect[effect_count].value);
                                         texture_pointer = game.texture_manager.add_texture(game.font_manager.root,temp_string.c_str(),0.8f,0,0,255,255,255,255,TEXTURE_STRING);
                                         texture_pointer->data.render_positioning = TEXTURE_RENDER_DOWN+TEXTURE_RENDER_LEFT;
                                         game.texture_manager.draw(texture_pointer,false,texture_temp_x+texture_background_padding,texture_temp_y,UI_form_pointer->data.element[element_number].position.z,texture_pointer->data.width,texture_pointer->data.height);
