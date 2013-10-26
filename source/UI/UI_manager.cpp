@@ -1204,13 +1204,6 @@ void UI_manager_class::swap_elements(int UI_form_UID_src, int UI_element_src, in
             }
             posible_swap = false;
         }
-
-        if (item_pointer_src->data.number_of_item_sockets >= 1) game.core.log.file_write("item source has sockets -> ",item_pointer_src->data.number_of_item_sockets);
-        if (item_pointer_src->data.type == ITEM_GEM) game.core.log.file_write("item source is a gem");
-        if (item_pointer_dst->data.number_of_item_sockets >= 1) game.core.log.file_write("item destination has sockets -> ",item_pointer_dst->data.number_of_item_sockets);
-        if (item_pointer_dst->data.type == ITEM_GEM) game.core.log.file_write("item destination is a gem");
-
-
         if   ((item_pointer_dst->data.number_of_item_sockets >= 1) && (item_pointer_src->data.type == ITEM_GEM))
         {
             bool socket_done = false;
