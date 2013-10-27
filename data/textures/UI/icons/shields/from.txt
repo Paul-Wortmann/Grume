@@ -10,4 +10,10 @@ Shield_05 - Shield_06
 CCO - Public domain
 blarumyrran (blarumyrran@gmail.com)
 
+Shield_07
+---------------------
+Author: WeaponGuy
+License(s): CC-BY 3.0
+http://opengameart.org/content/tower-shield
+
 
