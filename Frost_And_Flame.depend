@@ -2754,7 +2754,7 @@
 	"../core/texture_manager.hpp"
 	"../game/game.hpp"
 
-1382541765 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/UI/UI_manager.cpp
+1382764182 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/UI/UI_manager.cpp
 	"UI_manager.hpp"
 	"../game/game.hpp"
 	"../core/misc.hpp"
@@ -3293,7 +3293,7 @@
 
 1375577407 /media/paul/Data_0/_git_/Frost_and_Flame/source/game/command_line_parser.hpp
 
-1381748598 /media/paul/Data_0/_git_/Frost_and_Flame/source/game/game.hpp
+1382764769 /media/paul/Data_0/_git_/Frost_and_Flame/source/game/game.hpp
 	"../core/command_line_parser.hpp"
 	"../core/core.hpp"
 	"../core/effect_manager.hpp"
@@ -3304,6 +3304,7 @@
 	"../core/network.hpp"
 	"../core/savegame.hpp"
 	"../core/sound_manager.hpp"
+	"../core/spell_manager.hpp"
 	"../core/texture_manager.hpp"
 	"../core/types.hpp"
 	"../UI/UI_loading_screen.hpp"
@@ -3398,18 +3399,18 @@
 	"command_line_parser.hpp"
 	"../game/game.hpp"
 
-1382454297 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/core/effect_manager.cpp
+1382720464 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/core/effect_manager.cpp
 	<fstream>
 	"effect_manager.hpp"
 	"../game/game.hpp"
 
-1382624282 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/core/item_manager.cpp
+1382768959 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/core/item_manager.cpp
 	<fstream>
 	"item_manager.hpp"
 	"../game/game.hpp"
 	"../core/misc.hpp"
 
-1382197872 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/game/effects.cpp
+1382720824 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/game/effects.cpp
 	"effects.hpp"
 	"game.hpp"
 
@@ -3419,7 +3420,7 @@
 1381561260 /media/paul/Data_0/_git_/Frost_and_Flame/source/game/effects.hpp
 	"../core/effect_manager.hpp"
 
-1382539494 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/game/items.cpp
+1382629921 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/game/items.cpp
 	"items.hpp"
 	"game.hpp"
 
@@ -3436,4 +3437,13 @@
 	"core.hpp"
 	"../game/game.hpp"
 	"rendered_text_manager.hpp"
+
+1382764890 /media/paul/Data_0/_git_/Frost_and_Flame/source/core/spell_manager.hpp
+	<string>
+	"../core/texture_manager.hpp"
+	"../core/sound_manager.hpp"
+
+1382764816 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/core/spell_manager.cpp
+	"spell_manager.hpp"
+	"../game/game.hpp"
 
