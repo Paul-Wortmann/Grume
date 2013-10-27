@@ -15,3 +15,9 @@ Sword_25 - Sword_27
 CCO - Public domain
 blarumyrran (blarumyrran@gmail.com)
 
+Sword_28
+-------------------
+Author: WeaponGuy
+License(s): CC-BY 3.0
+http://opengameart.org/content/seraphim-sword
+
