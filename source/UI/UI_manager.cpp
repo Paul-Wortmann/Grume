@@ -671,7 +671,7 @@ void UI_manager_class::render(void)
                                     }
                                 }
                             }
-                            texture_background_size_x += texture_background_size_x_temp+texture_background_padding;
+                            texture_background_size_x += texture_background_size_x_temp+(texture_background_padding*1.5f);
                             texture_background_size_y += texture_pointer_name->data.height+texture_background_padding;
                             switch (item_pointer->data.qaulity_type)
                             {

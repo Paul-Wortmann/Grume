@@ -1684,13 +1684,13 @@ void  item_manager_class::gen_item_texture(item_type* item_pointer,int item_type
             item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/amulets/amulet_00.png");
         break;
         case ITEM_OFFHAND:
-            item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/shields/shield_03.png");
+            item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/shields/shield_07.png");
         break;
         case ITEM_RING:
             item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/rings/ring_00.png");
         break;
         case ITEM_WEAPON:
-            item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/swords/sword_21.png");
+            item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/swords/sword_28.png");
         break;
         default:
             game.core.log.file_write("Unable to generate item textures -> ",item_type_UID," - ", item_sub_type_UID," - ", quality_level);
