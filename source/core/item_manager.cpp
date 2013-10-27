@@ -1646,7 +1646,24 @@ void  item_manager_class::gen_item_texture(item_type* item_pointer,int item_type
             item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/potions/potion_24.png");
         break;
         case ITEM_SPELL_BOOK:
-            item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/books/book_19.png");
+            switch (item_sub_type_UID)
+            {
+                case SPELL_FIRE_ARROW:
+                    item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/books/book_05.png");
+                break;
+                case SPELL_ICE_ARROW:
+                    item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/books/book_19.png");
+                break;
+                case SPELL_LIGHTNING_ARROW:
+                    item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/books/book_15.png");
+                break;
+                case SPELL_ELEMENTAL_ARROW:
+                    item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/books/book_17.png");
+                break;
+                default:
+                    item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/books/book_04.png");
+                break;
+            }
         break;
         case ITEM_BELT:
             item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/belts/belt_00.png");
