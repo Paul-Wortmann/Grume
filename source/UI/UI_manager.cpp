@@ -1227,20 +1227,42 @@ void UI_manager_class::swap_elements(int UI_form_UID_src, int UI_element_src, in
             switch (UI_form_UID_dst)
             {
                 case UID_ACTIONBAR:
-                    if ((item_pointer_src->data.type == ITEM_POTION) ||
+                    if ((item_pointer_src->data.type     == ITEM_POTION) ||
                         (item_pointer_src->data.sub_type == ITEM_POTION_SMALL) ||
                         (item_pointer_src->data.sub_type == ITEM_POTION_MEDIUM) ||
                         (item_pointer_src->data.sub_type == ITEM_POTION_LARGE) ||
-                        (item_pointer_src->data.type == ITEM_SPELL))
-                    allow_swap = true;
+                        (item_pointer_src->data.type     == ITEM_SPELL))
+                            allow_swap = true;
                 break;
                 case UID_INVENTORY:
-                    if (item_pointer_src->data.type != ITEM_SPELL)
-                    allow_swap = true;
+                    switch (UI_form_UID_src)
+                    {
+                        case UID_ACTIONBAR:
+                    if  ((item_pointer_dst->data.type     != ITEM_SPELL)
+                    and ((item_pointer_dst->data.type     == ITEM_POTION) ||
+                         (item_pointer_dst->data.sub_type == ITEM_POTION_SMALL) ||
+                         (item_pointer_dst->data.sub_type == ITEM_POTION_MEDIUM) ||
+                         (item_pointer_dst->data.sub_type == ITEM_POTION_LARGE) ||
+                         (item_pointer_dst->data.type     == ITEM_SPELL) ||
+                         (UI_form_UID_dst_pointer->data.element[UI_element_dst].value == -1)))
+                            allow_swap = true;
+                        break;
+                        case UID_EQUIPMENT:
+                            if ((item_pointer_src->data.type == UI_form_UID_dst_pointer->data.element[UI_element_dst].sub_type) ||
+                                (UI_form_UID_dst_pointer->data.element[UI_element_dst].value == -1))
+                                    allow_swap = true;
+                        break;
+                        case UID_INVENTORY:
+                            allow_swap = true;
+                        break;
+                        default:
+                            allow_swap = false;
+                        break;
+                    }
                 break;
                 case UID_EQUIPMENT:
                     if (item_pointer_src->data.type == UI_form_UID_dst_pointer->data.element[UI_element_dst].sub_type)
-                    allow_swap = true;
+                        allow_swap = true;
                 break;
                 default:
                     allow_swap = false;
