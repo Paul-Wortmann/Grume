@@ -1480,6 +1480,9 @@ int  item_manager_class::gen_item(int item_type_UID, int item_sub_type_UID, int 
 
 void  item_manager_class::gen_item_name(item_type* item_pointer,int item_type_UID, int item_sub_type_UID, int quality_level)
 {
+    std::string pre_name  = "Randomly ";
+    std::string base_name = "generated ";
+    std::string post_name = "item";
     switch (item_type_UID)
     {
         case ITEM_GEM:
@@ -1540,7 +1543,7 @@ void  item_manager_class::gen_item_name(item_type* item_pointer,int item_type_UI
         break;
         default:
             //game.core.log.file_write("Unable to generate item -> ",item_type_UID," - ", item_sub_type_UID," - ", quality_level);
-            item_pointer->data.name = "Randomly generated item";
+            item_pointer->data.name = pre_name+base_name+post_name;
         break;
     }
 };
