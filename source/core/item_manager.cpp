@@ -1488,11 +1488,30 @@ int  item_manager_class::gen_item(int item_type_UID, int item_sub_type_UID, int 
     return (new_UID);
 };
 
+int   item_manager_class::get_item_best_effect(item_type* item_pointer)
+{
+    int return_value = EFFECT_NONE;
+    int temp_value   = 0;
+    for (int effect_count = 0; effect_count < item_pointer->data.number_of_item_effects; effect_count++)
+    {
+        if (item_pointer->data.effect[effect_count].enabled)
+        {
+            if (item_pointer->data.effect[effect_count].value > temp_value)
+            {
+                temp_value   = item_pointer->data.effect[effect_count].value;
+                return_value = item_pointer->data.effect[effect_count].type;
+            }
+        }
+    }
+    return (return_value);
+}
+
 void  item_manager_class::gen_item_name(item_type* item_pointer,int item_type_UID, int item_sub_type_UID, int quality_level)
 {
-    std::string pre_name  = "Randomly ";
-    std::string base_name = "generated ";
-    std::string post_name = "item";
+    int         best_effect = item_manager_class::get_item_best_effect(item_pointer);
+    std::string pre_name    = "Randomly ";
+    std::string base_name   = "generated ";
+    std::string post_name   = "item";
     if  (quality_level <= (MAX_ITEM_QUALITY*0.1f))                                              pre_name = "Standard ";
     if ((quality_level >= (MAX_ITEM_QUALITY*0.1f))&&(quality_level <= (MAX_ITEM_QUALITY*0.2f))) pre_name = "Adventurer's ";
     if ((quality_level >= (MAX_ITEM_QUALITY*0.2f))&&(quality_level <= (MAX_ITEM_QUALITY*0.3f))) pre_name = "Superb ";
