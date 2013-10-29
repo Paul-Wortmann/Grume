@@ -468,7 +468,6 @@ void UI_manager_class::UI_form_transition(int UI_form_UID_src, int UI_form_UID_d
 
 void UI_manager_class::render(void)
 {
-    int element_draged = -1;
     for (UI_form_struct *UI_form_pointer = UI_manager_class::root; UI_form_pointer != NULL; UI_form_pointer = UI_form_pointer->next)
     {
         // ----------------------------- render UI form ---------------------------------
@@ -480,7 +479,6 @@ void UI_manager_class::render(void)
             // ------------------------- Render elements -------------------------
             if (UI_form_pointer->data.number_of_elements > 0)
             {
-                element_draged = -1;
                 for (int element_number = 0; element_number < UI_form_pointer->data.number_of_elements; element_number++)
                 {
                     if (UI_form_pointer->data.element[element_number].active)
@@ -565,10 +563,9 @@ void UI_manager_class::render(void)
                             case UI_ELEMENT_SELECTION:
                             break;
                             case UI_ELEMENT_ITEM:
-                                if (UI_form_pointer->data.element[element_number].value > -1)
+                                if ((UI_form_pointer->data.element[element_number].value > -1)&&(!UI_form_pointer->data.element[element_number].drag_active))
                                 {
-                                    if (UI_form_pointer->data.element[element_number].drag_active) element_draged = element_number;
-                                    else game.texture_manager.draw(UI_form_pointer->data.element[element_number].texture.normal,false,UI_form_pointer->data.element[element_number].position.x,UI_form_pointer->data.element[element_number].position.y,UI_form_pointer->data.element[element_number].position.z,UI_form_pointer->data.element[element_number].size.x+zoom_value,UI_form_pointer->data.element[element_number].size.y+zoom_value,UI_form_pointer->data.element[element_number].texture.angle);
+                                    game.texture_manager.draw(UI_form_pointer->data.element[element_number].texture.normal,false,UI_form_pointer->data.element[element_number].position.x,UI_form_pointer->data.element[element_number].position.y,UI_form_pointer->data.element[element_number].position.z,UI_form_pointer->data.element[element_number].size.x+zoom_value,UI_form_pointer->data.element[element_number].size.y+zoom_value,UI_form_pointer->data.element[element_number].texture.angle);
                                     if ((!UI_form_pointer->data.element[element_number].drag_active)&&(UI_form_pointer->data.element[element_number].quantity > 1))
                                     {
                                         UI_form_pointer->data.element[element_number].title.text = new texture_type;
@@ -584,11 +581,6 @@ void UI_manager_class::render(void)
                             break;
                         }
                     }
-                }
-                if ((element_draged >= 0) && (UI_form_pointer->data.element[element_draged].active) && (UI_form_pointer->data.element[element_draged].value > -1))
-                {
-                    float zoom_value = (UI_form_pointer->data.element[element_draged].zoom.enabled) ? UI_form_pointer->data.element[element_draged].zoom.value : 0.0f;
-                    game.texture_manager.draw(UI_form_pointer->data.element[element_draged].texture.normal,false,UI_form_pointer->data.element[element_draged].position.x,UI_form_pointer->data.element[element_draged].position.y,UI_form_pointer->data.element[element_draged].position.z,UI_form_pointer->data.element[element_draged].size.x+zoom_value,UI_form_pointer->data.element[element_draged].size.y+zoom_value,UI_form_pointer->data.element[element_draged].texture.angle);
                 }
             }
         }
@@ -791,6 +783,21 @@ void UI_manager_class::render(void)
                             }
                         }
                     }
+                }
+            }
+        }
+    }
+    // render dragged item
+    for (UI_form_struct *UI_form_pointer = UI_manager_class::root; UI_form_pointer != NULL; UI_form_pointer = UI_form_pointer->next)
+    {
+        if ((UI_form_pointer->data.enabled) && (UI_form_pointer->data.number_of_elements > 0))
+        {
+            for (int element_number = 0; element_number < UI_form_pointer->data.number_of_elements; element_number++)
+            {
+                if ((UI_form_pointer->data.element[element_number].type == UI_ELEMENT_ITEM) && (UI_form_pointer->data.element[element_number].value > -1) && (UI_form_pointer->data.element[element_number].drag_active))
+                {
+                    float zoom_value = (UI_form_pointer->data.element[element_number].zoom.enabled) ? UI_form_pointer->data.element[element_number].zoom.value : 0.0f;
+                    game.texture_manager.draw(UI_form_pointer->data.element[element_number].texture.normal,false,UI_form_pointer->data.element[element_number].position.x,UI_form_pointer->data.element[element_number].position.y,UI_form_pointer->data.element[element_number].position.z,UI_form_pointer->data.element[element_number].size.x+zoom_value,UI_form_pointer->data.element[element_number].size.y+zoom_value,UI_form_pointer->data.element[element_number].texture.angle);
                 }
             }
         }
