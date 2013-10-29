@@ -506,6 +506,7 @@ int  item_manager_class::gen_item(int item_type_UID, int item_sub_type_UID, int 
                         item_pointer->data.quantity               = 1;
                         item_pointer->data.quantity_max           = 1;
                         if (item_pointer->data.number_of_item_sockets > 0) item_pointer->data.number_of_item_sockets = 0;
+                        item_pointer->data.effect[0].enabled      = true;
                         item_pointer->data.effect[0].type         = EFFECT_MOD_ARMOR;
                         item_pointer->data.effect[0].value        = random(quality_level);
                         if (item_pointer->data.number_of_item_effects > 1)
@@ -604,6 +605,7 @@ int  item_manager_class::gen_item(int item_type_UID, int item_sub_type_UID, int 
                         item_pointer->data.equipable              = true;
                         item_pointer->data.quantity               = 1;
                         item_pointer->data.quantity_max           = 1;
+                        item_pointer->data.effect[0].enabled      = true;
                         item_pointer->data.effect[0].type         = EFFECT_MOD_ARMOR;
                         item_pointer->data.effect[0].value        = random(quality_level);
                         if (item_pointer->data.number_of_item_effects > 1)
@@ -698,6 +700,7 @@ int  item_manager_class::gen_item(int item_type_UID, int item_sub_type_UID, int 
                         item_pointer->data.quantity               = 1;
                         item_pointer->data.quantity_max           = 1;
                         if (item_pointer->data.number_of_item_sockets > 0) item_pointer->data.number_of_item_sockets = 0;
+                        item_pointer->data.effect[0].enabled      = true;
                         item_pointer->data.effect[0].type         = EFFECT_MOD_ARMOR;
                         item_pointer->data.effect[0].value        = random(quality_level);
                         if (item_pointer->data.number_of_item_effects > 1)
@@ -792,6 +795,7 @@ int  item_manager_class::gen_item(int item_type_UID, int item_sub_type_UID, int 
                         item_pointer->data.quantity               = 1;
                         item_pointer->data.quantity_max           = 1;
                         if (item_pointer->data.number_of_item_sockets > 0) item_pointer->data.number_of_item_sockets = 0;
+                        item_pointer->data.effect[0].enabled      = true;
                         item_pointer->data.effect[0].type         = EFFECT_MOD_ARMOR;
                         item_pointer->data.effect[0].value        = random(quality_level);
                         if (item_pointer->data.number_of_item_effects > 1)
@@ -891,6 +895,7 @@ int  item_manager_class::gen_item(int item_type_UID, int item_sub_type_UID, int 
                         item_pointer->data.quantity               = 1;
                         item_pointer->data.quantity_max           = 1;
                         if (item_pointer->data.number_of_item_sockets > 1) item_pointer->data.number_of_item_sockets = 1;
+                        item_pointer->data.effect[0].enabled      = true;
                         item_pointer->data.effect[0].type         = EFFECT_MOD_ARMOR;
                         item_pointer->data.effect[0].value        = random(quality_level);
                         if (item_pointer->data.number_of_item_effects > 1)
@@ -974,6 +979,7 @@ int  item_manager_class::gen_item(int item_type_UID, int item_sub_type_UID, int 
                         item_pointer->data.equipable              = true;
                         item_pointer->data.quantity               = 1;
                         item_pointer->data.quantity_max           = 1;
+                        item_pointer->data.effect[0].enabled      = true;
                         item_pointer->data.effect[0].type         = EFFECT_MOD_ARMOR;
                         item_pointer->data.effect[0].value        = random(quality_level);
                         if (item_pointer->data.number_of_item_effects > 1)
@@ -1366,6 +1372,7 @@ int  item_manager_class::gen_item(int item_type_UID, int item_sub_type_UID, int 
                         item_pointer->data.equipable              = true;
                         item_pointer->data.quantity               = 1;
                         item_pointer->data.quantity_max           = 1;
+                        item_pointer->data.effect[0].enabled      = true;
                         item_pointer->data.effect[0].type         = EFFECT_MOD_DAMAGE;
                         item_pointer->data.effect[0].value        = random(quality_level);
                         if (item_pointer->data.number_of_item_effects > 1)
@@ -1491,7 +1498,6 @@ void  item_manager_class::gen_item_name(item_type* item_pointer,int item_type_UI
     if ((quality_level >= (MAX_ITEM_QUALITY*0.4f))&&(quality_level < (MAX_ITEM_QUALITY*0.6f))) pre_name = "Exceptional ";
     if ((quality_level >= (MAX_ITEM_QUALITY*0.6f))&&(quality_level < (MAX_ITEM_QUALITY*0.8f))) pre_name = "Heroic ";
     if  (quality_level >= (MAX_ITEM_QUALITY*0.8f))                                             pre_name = "Legendary ";
-
     switch (item_type_UID)
     {
         case ITEM_GEM:
@@ -1518,8 +1524,9 @@ void  item_manager_class::gen_item_name(item_type* item_pointer,int item_type_UI
             }
         break;
         case ITEM_SPELL_BOOK:
+            pre_name  = "Wizard's ";
             base_name = "tome ";
-
+            post_name = "of spell craft";
             item_pointer->data.name = pre_name+base_name+post_name;
         break;
         case ITEM_POTION:
