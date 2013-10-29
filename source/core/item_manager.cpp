@@ -1527,6 +1527,24 @@ void  item_manager_class::gen_item_name(item_type* item_pointer,int item_type_UI
             pre_name  = "Wizard's ";
             base_name = "tome ";
             post_name = "of spell craft";
+            switch (item_sub_type_UID)
+            {
+                case SPELL_FIRE_ARROW:
+                    item_pointer->data.name = "of fire arrow";
+                break;
+                case SPELL_ICE_ARROW:
+                    item_pointer->data.name = "of ice arrow";
+                break;
+                case SPELL_LIGHTNING_ARROW:
+                    item_pointer->data.name = "of lightning arrow";
+                break;
+                case SPELL_ELEMENTAL_ARROW:
+                    item_pointer->data.name = "of elemental arrow";
+                break;
+                default:
+                    item_pointer->data.name = "of spell craft";
+                break;
+            }
             item_pointer->data.name = pre_name+base_name+post_name;
         break;
         case ITEM_POTION:
