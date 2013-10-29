@@ -23,6 +23,7 @@
  */
 
 #include "../core/map_2D.hpp"
+#include "../core/misc.hpp"
 #include "game.hpp"
 
 game_class        game;
@@ -112,92 +113,111 @@ void game_class::init(void)
     UI_form_pointer   = game.UI_manager.UI_form_get(UID_INVENTORY);
     temp_item_pointer = game.item_manager.add_item(ITEM_POTION_L_HEALTH);
     UI_form_pointer->data.element[element_number].value          = temp_item_pointer->data.UID;
-    UI_form_pointer->data.element[element_number].quantity       = 54;
+    UI_form_pointer->data.element[element_number].quantity       = random(100);
     UI_form_pointer->data.element[element_number].texture.normal = temp_item_pointer->data.image;
     element_number    = 2;
     temp_item_pointer = game.item_manager.add_item(ITEM_POTION_L_MANA);
     UI_form_pointer->data.element[element_number].value          = temp_item_pointer->data.UID;
-    UI_form_pointer->data.element[element_number].quantity       = 3;
+    UI_form_pointer->data.element[element_number].quantity       = random(100);
     UI_form_pointer->data.element[element_number].texture.normal = temp_item_pointer->data.image;
     element_number    = 3;
     temp_item_pointer = game.item_manager.add_item(ITEM_POTION_L_REJUVENATION);
     UI_form_pointer->data.element[element_number].value          = temp_item_pointer->data.UID;
-    UI_form_pointer->data.element[element_number].quantity       = 2;
+    UI_form_pointer->data.element[element_number].quantity       = random(100);
     UI_form_pointer->data.element[element_number].texture.normal = temp_item_pointer->data.image;
     element_number    = 4;
     temp_item_pointer = game.item_manager.add_item(101);
+    temp_item_pointer = game.item_manager.add_item(game.item_manager.gen_item(ITEM_RING,ITEM_RING,random(MAX_ITEM_QUALITY)));
     UI_form_pointer->data.element[element_number].value          = temp_item_pointer->data.UID;
-    UI_form_pointer->data.element[element_number].quantity       = 2;
     UI_form_pointer->data.element[element_number].texture.normal = temp_item_pointer->data.image;
     element_number    = 5;
-    temp_item_pointer = game.item_manager.add_item(game.item_manager.gen_item(ITEM_RING,ITEM_RING,100));
+    temp_item_pointer = game.item_manager.add_item(game.item_manager.gen_item(ITEM_RING,ITEM_RING,random(MAX_ITEM_QUALITY)));
     UI_form_pointer->data.element[element_number].value          = temp_item_pointer->data.UID;
     UI_form_pointer->data.element[element_number].texture.normal = temp_item_pointer->data.image;
     element_number    = 6;
-    temp_item_pointer = game.item_manager.add_item(game.item_manager.gen_item(ITEM_BELT,ITEM_BELT,100));
+    temp_item_pointer = game.item_manager.add_item(game.item_manager.gen_item(ITEM_BELT,ITEM_BELT,random(MAX_ITEM_QUALITY)));
     UI_form_pointer->data.element[element_number].value          = temp_item_pointer->data.UID;
     UI_form_pointer->data.element[element_number].texture.normal = temp_item_pointer->data.image;
     element_number    = 7;
-    temp_item_pointer = game.item_manager.add_item(game.item_manager.gen_item(ITEM_BODY,ITEM_BODY,100));
+    temp_item_pointer = game.item_manager.add_item(game.item_manager.gen_item(ITEM_BODY,ITEM_BODY,random(MAX_ITEM_QUALITY)));
     UI_form_pointer->data.element[element_number].value          = temp_item_pointer->data.UID;
     UI_form_pointer->data.element[element_number].texture.normal = temp_item_pointer->data.image;
     element_number    = 8;
-    temp_item_pointer = game.item_manager.add_item(game.item_manager.gen_item(ITEM_FEET,ITEM_FEET,100));
+    temp_item_pointer = game.item_manager.add_item(game.item_manager.gen_item(ITEM_FEET,ITEM_FEET,random(MAX_ITEM_QUALITY)));
     UI_form_pointer->data.element[element_number].value          = temp_item_pointer->data.UID;
     UI_form_pointer->data.element[element_number].texture.normal = temp_item_pointer->data.image;
     element_number    = 9;
-    temp_item_pointer = game.item_manager.add_item(game.item_manager.gen_item(ITEM_HAND,ITEM_HAND,100));
+    temp_item_pointer = game.item_manager.add_item(game.item_manager.gen_item(ITEM_HAND,ITEM_HAND,random(MAX_ITEM_QUALITY)));
     UI_form_pointer->data.element[element_number].value          = temp_item_pointer->data.UID;
     UI_form_pointer->data.element[element_number].texture.normal = temp_item_pointer->data.image;
     element_number    = 10;
-    temp_item_pointer = game.item_manager.add_item(game.item_manager.gen_item(ITEM_HEAD,ITEM_HEAD,100));
+    temp_item_pointer = game.item_manager.add_item(game.item_manager.gen_item(ITEM_HEAD,ITEM_HEAD,random(MAX_ITEM_QUALITY)));
     UI_form_pointer->data.element[element_number].value          = temp_item_pointer->data.UID;
     UI_form_pointer->data.element[element_number].texture.normal = temp_item_pointer->data.image;
     element_number    = 11;
-    temp_item_pointer = game.item_manager.add_item(game.item_manager.gen_item(ITEM_NECK,ITEM_NECK,100));
+    temp_item_pointer = game.item_manager.add_item(game.item_manager.gen_item(ITEM_NECK,ITEM_NECK,random(MAX_ITEM_QUALITY)));
     UI_form_pointer->data.element[element_number].value          = temp_item_pointer->data.UID;
     UI_form_pointer->data.element[element_number].texture.normal = temp_item_pointer->data.image;
     element_number    = 12;
-    temp_item_pointer = game.item_manager.add_item(game.item_manager.gen_item(ITEM_OFFHAND,ITEM_OFFHAND,100));
+    temp_item_pointer = game.item_manager.add_item(game.item_manager.gen_item(ITEM_OFFHAND,ITEM_OFFHAND,random(MAX_ITEM_QUALITY)));
     UI_form_pointer->data.element[element_number].value          = temp_item_pointer->data.UID;
     UI_form_pointer->data.element[element_number].texture.normal = temp_item_pointer->data.image;
     element_number    = 13;
-    temp_item_pointer = game.item_manager.add_item(game.item_manager.gen_item(ITEM_WEAPON,ITEM_WEAPON,100));
+    temp_item_pointer = game.item_manager.add_item(game.item_manager.gen_item(ITEM_WEAPON,ITEM_WEAPON,random(MAX_ITEM_QUALITY)));
     UI_form_pointer->data.element[element_number].value          = temp_item_pointer->data.UID;
     UI_form_pointer->data.element[element_number].texture.normal = temp_item_pointer->data.image;
     element_number    = 14;
-    temp_item_pointer = game.item_manager.add_item(game.item_manager.gen_item(ITEM_SPELL_BOOK,ITEM_SPELL_BOOK,100));
+    temp_item_pointer = game.item_manager.add_item(game.item_manager.gen_item(ITEM_SPELL_BOOK,ITEM_SPELL_BOOK,random(MAX_ITEM_QUALITY)));
+    UI_form_pointer->data.element[element_number].value          = temp_item_pointer->data.UID;
+    UI_form_pointer->data.element[element_number].texture.normal = temp_item_pointer->data.image;
+    element_number    = 15;
+    temp_item_pointer = game.item_manager.add_item(game.item_manager.gen_item(ITEM_GEM,ITEM_GEM,random(MAX_ITEM_QUALITY)));
+    UI_form_pointer->data.element[element_number].value          = temp_item_pointer->data.UID;
+    UI_form_pointer->data.element[element_number].texture.normal = temp_item_pointer->data.image;
+    element_number    = 16;
+    temp_item_pointer = game.item_manager.add_item(game.item_manager.gen_item(ITEM_GEM,ITEM_GEM,random(MAX_ITEM_QUALITY)));
+    UI_form_pointer->data.element[element_number].value          = temp_item_pointer->data.UID;
+    UI_form_pointer->data.element[element_number].texture.normal = temp_item_pointer->data.image;
+    element_number    = 17;
+    temp_item_pointer = game.item_manager.add_item(game.item_manager.gen_item(ITEM_GEM,ITEM_GEM,random(MAX_ITEM_QUALITY)));
+    UI_form_pointer->data.element[element_number].value          = temp_item_pointer->data.UID;
+    UI_form_pointer->data.element[element_number].texture.normal = temp_item_pointer->data.image;
+    element_number    = 18;
+    temp_item_pointer = game.item_manager.add_item(game.item_manager.gen_item(ITEM_GEM,ITEM_GEM,random(MAX_ITEM_QUALITY)));
+    UI_form_pointer->data.element[element_number].value          = temp_item_pointer->data.UID;
+    UI_form_pointer->data.element[element_number].texture.normal = temp_item_pointer->data.image;
+    element_number    = 19;
+    temp_item_pointer = game.item_manager.add_item(game.item_manager.gen_item(ITEM_GEM,ITEM_GEM,random(MAX_ITEM_QUALITY)));
     UI_form_pointer->data.element[element_number].value          = temp_item_pointer->data.UID;
     UI_form_pointer->data.element[element_number].texture.normal = temp_item_pointer->data.image;
 
     // Add default items to the action bar
     UI_form_pointer = game.UI_manager.UI_form_get(UID_ACTIONBAR);
     element_number = 8;
-    temp_item_pointer = game.item_manager.add_item(game.item_manager.gen_item(ITEM_POTION,ITEM_POTION,100));
+    temp_item_pointer = game.item_manager.add_item(game.item_manager.gen_item(ITEM_POTION,ITEM_POTION,random(MAX_ITEM_QUALITY)));
     UI_form_pointer->data.element[element_number].value          = temp_item_pointer->data.UID;
-    UI_form_pointer->data.element[element_number].quantity       = 90;
+    UI_form_pointer->data.element[element_number].quantity       = random(100);
     UI_form_pointer->data.element[element_number].texture.normal = temp_item_pointer->data.image;
     element_number = 9;
-    temp_item_pointer = game.item_manager.add_item(game.item_manager.gen_item(ITEM_POTION,ITEM_POTION,100));
+    temp_item_pointer = game.item_manager.add_item(game.item_manager.gen_item(ITEM_POTION,ITEM_POTION,random(MAX_ITEM_QUALITY)));
     UI_form_pointer->data.element[element_number].value          = temp_item_pointer->data.UID;
-    UI_form_pointer->data.element[element_number].quantity       = 1;
+    UI_form_pointer->data.element[element_number].quantity       = random(100);
     UI_form_pointer->data.element[element_number].texture.normal = temp_item_pointer->data.image;
     element_number = 10;
-    temp_item_pointer = game.item_manager.add_item(game.item_manager.gen_item(ITEM_POTION,ITEM_POTION,100));
+    temp_item_pointer = game.item_manager.add_item(game.item_manager.gen_item(ITEM_POTION,ITEM_POTION,random(MAX_ITEM_QUALITY)));
     UI_form_pointer->data.element[element_number].value          = temp_item_pointer->data.UID;
-    UI_form_pointer->data.element[element_number].quantity       = 1;
+    UI_form_pointer->data.element[element_number].quantity       = random(100);
     UI_form_pointer->data.element[element_number].texture.normal = temp_item_pointer->data.image;
     element_number = 11;
-    temp_item_pointer = game.item_manager.add_item(game.item_manager.gen_item(ITEM_POTION,ITEM_POTION,100));
+    temp_item_pointer = game.item_manager.add_item(game.item_manager.gen_item(ITEM_POTION,ITEM_POTION,random(MAX_ITEM_QUALITY)));
     UI_form_pointer->data.element[element_number].value          = temp_item_pointer->data.UID;
-    UI_form_pointer->data.element[element_number].quantity       = 1;
+    UI_form_pointer->data.element[element_number].quantity       = random(100);
     UI_form_pointer->data.element[element_number].texture.normal = temp_item_pointer->data.image;
 };
 
 void game_class::process(void)
 {
     UI_form_struct* UI_form_pointer;
-    item_type*      item_pointer;
     int             element_number    = 1;
     path_type* path;
     game.player.process();
@@ -209,39 +229,6 @@ void game_class::process(void)
         game.music_manager.next_track = false;
         //if (game.core.music_track ==  0) game.resource.music.menu_00.play();
     }
-    /*
-    if (game.core.io.mouse_wheel != 0)
-    {
-        if (game.core.io.mouse_wheel < 0)
-        {
-            while (game.core.io.mouse_wheel < 0)
-            {
-                game.core.io.mouse_wheel++;
-                game.zoom.current += game.zoom.speed;
-            }
-            if (game.zoom.current > game.zoom.max) game.zoom.current = game.zoom.max;
-            else
-            {
-                //game.resource.map_2D.tile[0].pos_y -= (DEFAULT_FRAME_HEIGHT/game.zoom.current/2.0f);
-                //game.resource.map_2D.calculate_tile_positions(DEFAULT_FRAME_WIDTH/game.zoom.current/2.0f,DEFAULT_FRAME_HEIGHT/game.zoom.current/2.0f);
-            }
-        }
-        if (game.core.io.mouse_wheel > 0)
-        {
-            while (game.core.io.mouse_wheel > 0)
-            {
-                game.core.io.mouse_wheel--;
-                game.zoom.current -= game.zoom.speed;
-            }
-            if (game.zoom.current < game.zoom.min) game.zoom.current = game.zoom.min;
-            else
-            {
-                //game.resource.map_2D.tile[0].pos_y += (DEFAULT_FRAME_HEIGHT/game.zoom.current/2.0f);
-                //game.resource.map_2D.calculate_tile_positions(DEFAULT_FRAME_WIDTH/game.zoom.current/2.0f,DEFAULT_FRAME_HEIGHT/game.zoom.current/2.0f);
-            }
-        }
-    }
-    */
     if (game.core.io.keyboard_ready)
     {
         if (game.core.io.key_escape) // Main menu
@@ -419,24 +406,112 @@ void game_class::process(void)
 ///------------------------------------------------------------------------------------------
         if (game.core.io.key_1) // Action Bar Key 1
         {
-
-
-//UI_form_pointer->data.element[element_number].window_UID
-    element_number = 8;
-    UI_form_pointer = game.UI_manager.UI_form_get(UID_ACTIONBAR);
-    if (UI_form_pointer->data.element[element_number].value >= 0)
-    {
-        
-    }
-    item_pointer = game.item_manager.add_item();
-    UI_form_pointer->data.element[element_number].value          = temp_item_pointer->data.UID;
-    UI_form_pointer->data.element[element_number].quantity       = 90;
-    UI_form_pointer->data.element[element_number].texture.normal = temp_item_pointer->data.image;
-
-
-
-
+            element_number = 8;
+            UI_form_pointer = game.UI_manager.UI_form_get(UID_ACTIONBAR);
+            if (UI_form_pointer->data.element[element_number].value >= 0)
+            {
+                game.item_manager.use_item(UI_form_pointer,8);
+            }
             game.core.io.key_1                     = false;
+            game.core.io.keyboard_delay_count      = 0;
+        }
+        if (game.core.io.key_2) // Action Bar Key 2
+        {
+            element_number = 9;
+            UI_form_pointer = game.UI_manager.UI_form_get(UID_ACTIONBAR);
+            if (UI_form_pointer->data.element[element_number].value >= 0)
+            {
+                game.item_manager.use_item(UI_form_pointer,9);
+            }
+            game.core.io.key_2                     = false;
+            game.core.io.keyboard_delay_count      = 0;
+        }
+        if (game.core.io.key_3) // Action Bar Key 3
+        {
+            element_number = 10;
+            UI_form_pointer = game.UI_manager.UI_form_get(UID_ACTIONBAR);
+            if (UI_form_pointer->data.element[element_number].value >= 0)
+            {
+                game.item_manager.use_item(UI_form_pointer,10);
+            }
+            game.core.io.key_3                     = false;
+            game.core.io.keyboard_delay_count      = 0;
+        }
+        if (game.core.io.key_4) // Action Bar Key 4
+        {
+            element_number = 11;
+            UI_form_pointer = game.UI_manager.UI_form_get(UID_ACTIONBAR);
+            if (UI_form_pointer->data.element[element_number].value >= 0)
+            {
+                game.item_manager.use_item(UI_form_pointer,11);
+            }
+            game.core.io.key_4                     = false;
+            game.core.io.keyboard_delay_count      = 0;
+        }
+        if (game.core.io.key_5) // Action Bar Key 5
+        {
+            element_number = 12;
+            UI_form_pointer = game.UI_manager.UI_form_get(UID_ACTIONBAR);
+            if (UI_form_pointer->data.element[element_number].value >= 0)
+            {
+                game.item_manager.use_item(UI_form_pointer,12);
+            }
+            game.core.io.key_5                     = false;
+            game.core.io.keyboard_delay_count      = 0;
+        }
+        if (game.core.io.key_6) // Action Bar Key 6
+        {
+            element_number = 13;
+            UI_form_pointer = game.UI_manager.UI_form_get(UID_ACTIONBAR);
+            if (UI_form_pointer->data.element[element_number].value >= 0)
+            {
+                game.item_manager.use_item(UI_form_pointer,13);
+            }
+            game.core.io.key_6                     = false;
+            game.core.io.keyboard_delay_count      = 0;
+        }
+        if (game.core.io.key_7) // Action Bar Key 7
+        {
+            element_number = 14;
+            UI_form_pointer = game.UI_manager.UI_form_get(UID_ACTIONBAR);
+            if (UI_form_pointer->data.element[element_number].value >= 0)
+            {
+                game.item_manager.use_item(UI_form_pointer,14);
+            }
+            game.core.io.key_7                     = false;
+            game.core.io.keyboard_delay_count      = 0;
+        }
+        if (game.core.io.key_8) // Action Bar Key 8
+        {
+            element_number = 15;
+            UI_form_pointer = game.UI_manager.UI_form_get(UID_ACTIONBAR);
+            if (UI_form_pointer->data.element[element_number].value >= 0)
+            {
+                game.item_manager.use_item(UI_form_pointer,15);
+            }
+            game.core.io.key_8                     = false;
+            game.core.io.keyboard_delay_count      = 0;
+        }
+        if (game.core.io.key_9) // Action Bar Key 9
+        {
+            element_number = 16;
+            UI_form_pointer = game.UI_manager.UI_form_get(UID_ACTIONBAR);
+            if (UI_form_pointer->data.element[element_number].value >= 0)
+            {
+                game.item_manager.use_item(UI_form_pointer,16);
+            }
+            game.core.io.key_9                     = false;
+            game.core.io.keyboard_delay_count      = 0;
+        }
+        if (game.core.io.key_0) // Action Bar Key 0
+        {
+            element_number = 17;
+            UI_form_pointer = game.UI_manager.UI_form_get(UID_ACTIONBAR);
+            if (UI_form_pointer->data.element[element_number].value >= 0)
+            {
+                game.item_manager.use_item(UI_form_pointer,17);
+            }
+            game.core.io.key_0                     = false;
             game.core.io.keyboard_delay_count      = 0;
         }
 ///------------------------------------------------------------------------------------------

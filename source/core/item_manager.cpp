@@ -1493,11 +1493,15 @@ void  item_manager_class::gen_item_name(item_type* item_pointer,int item_type_UI
     std::string pre_name  = "Randomly ";
     std::string base_name = "generated ";
     std::string post_name = "item";
-    if  (quality_level <  (MAX_ITEM_QUALITY*0.2f))                                             pre_name = "Standard ";
-    if ((quality_level >= (MAX_ITEM_QUALITY*0.2f))&&(quality_level < (MAX_ITEM_QUALITY*0.4f))) pre_name = "Adventurer's ";
-    if ((quality_level >= (MAX_ITEM_QUALITY*0.4f))&&(quality_level < (MAX_ITEM_QUALITY*0.6f))) pre_name = "Exceptional ";
-    if ((quality_level >= (MAX_ITEM_QUALITY*0.6f))&&(quality_level < (MAX_ITEM_QUALITY*0.8f))) pre_name = "Heroic ";
-    if  (quality_level >= (MAX_ITEM_QUALITY*0.8f))                                             pre_name = "Legendary ";
+    if  (quality_level <= (MAX_ITEM_QUALITY*0.1f))                                              pre_name = "Standard ";
+    if ((quality_level >= (MAX_ITEM_QUALITY*0.1f))&&(quality_level <= (MAX_ITEM_QUALITY*0.2f))) pre_name = "Adventurer's ";
+    if ((quality_level >= (MAX_ITEM_QUALITY*0.2f))&&(quality_level <= (MAX_ITEM_QUALITY*0.3f))) pre_name = "Superb ";
+    if ((quality_level >= (MAX_ITEM_QUALITY*0.3f))&&(quality_level <= (MAX_ITEM_QUALITY*0.4f))) pre_name = "Excellent ";
+    if ((quality_level >= (MAX_ITEM_QUALITY*0.4f))&&(quality_level <= (MAX_ITEM_QUALITY*0.5f))) pre_name = "Superior ";
+    if ((quality_level >= (MAX_ITEM_QUALITY*0.5f))&&(quality_level <= (MAX_ITEM_QUALITY*0.6f))) pre_name = "Exceptional ";
+    if ((quality_level >= (MAX_ITEM_QUALITY*0.6f))&&(quality_level <= (MAX_ITEM_QUALITY*0.7f))) pre_name = "Wondrous ";
+    if ((quality_level >= (MAX_ITEM_QUALITY*0.7f))&&(quality_level <= (MAX_ITEM_QUALITY*0.8f))) pre_name = "Heroic ";
+    if  (quality_level >= (MAX_ITEM_QUALITY*0.8f))                                              pre_name = "Legendary ";
     switch (item_type_UID)
     {
         case ITEM_GEM:
@@ -1526,7 +1530,6 @@ void  item_manager_class::gen_item_name(item_type* item_pointer,int item_type_UI
         case ITEM_SPELL_BOOK:
             pre_name  = "Wizard's ";
             base_name = "tome ";
-            post_name = "of spell craft";
             switch (item_sub_type_UID)
             {
                 case SPELL_FIRE_ARROW:
@@ -1856,3 +1859,270 @@ void  item_manager_class::gen_item_sounds(item_type* item_pointer,int item_type_
         break;
     }
 };
+
+
+
+
+
+/*
+
+//------------------------------ unique name generation based on randomly generated stats -------------------------------
+    std::string temp_name_prefix = "Random";
+    std::string temp_name_type   = "item";
+    std::string temp_name_suffix = "of randomness";
+
+    temp_random = (quality+level)/2;
+    if  (temp_random <   5)                         temp_name_prefix = "Discarded";
+    if ((temp_random >=  5) && (temp_random <= 10)) temp_name_prefix = "Damaged";
+    if ((temp_random >= 10) && (temp_random <= 25)) temp_name_prefix = "Average";
+    if ((temp_random >= 25) && (temp_random <= 40)) temp_name_prefix = "Awesome";
+    if ((temp_random >= 40) && (temp_random <= 50)) temp_name_prefix = "Superb";
+    if ((temp_random >= 50) && (temp_random <= 60)) temp_name_prefix = "Excellent";
+    if ((temp_random >= 60) && (temp_random <= 70)) temp_name_prefix = "Superior";
+    if ((temp_random >= 70) && (temp_random <= 80)) temp_name_prefix = "Exceptional";
+    if ((temp_random >= 80) && (temp_random <= 95)) temp_name_prefix = "Wondrous";
+    if  (temp_random >= 95)                         temp_name_prefix = "Heroic";
+
+    switch (type)
+    {
+        case HELM:
+            temp_range = random(7);
+            if (temp_range <=  0) temp_name_type = "hat";
+            if (temp_range ==  1) temp_name_type = "bonnet";
+            if (temp_range ==  2) temp_name_type = "headgear";
+            if (temp_range ==  3) temp_name_type = "headpiece";
+            if (temp_range ==  4) temp_name_type = "helmet";
+            if (temp_range ==  5) temp_name_type = "cap";
+            if (temp_range >=  6) temp_name_type = "helm";
+        break;
+        case BOOTS:
+            temp_range = random(7);
+            if (temp_range <=  0) temp_name_type = "slippers";
+            if (temp_range ==  1) temp_name_type = "footwear";
+            if (temp_range ==  2) temp_name_type = "footgear";
+            if (temp_range ==  3) temp_name_type = "clogs";
+            if (temp_range ==  4) temp_name_type = "sandals";
+            if (temp_range ==  5) temp_name_type = "shoes";
+            if (temp_range >=  6) temp_name_type = "boots";
+        break;
+        case ARMOUR:
+            temp_range = random(6);
+            if (temp_range <=  0) temp_name_type = "guard";
+            if (temp_range ==  1) temp_name_type = "vest";
+            if (temp_range ==  2) temp_name_type = "mail";
+            if (temp_range ==  3) temp_name_type = "plate";
+            if (temp_range ==  4) temp_name_type = "husk";
+            if (temp_range >=  5) temp_name_type = "armor";
+        break;
+        case SHIELD:
+            temp_range = random(6);
+            if (temp_range <=  0) temp_name_type = "absorber";
+            if (temp_range ==  1) temp_name_type = "armament";
+            if (temp_range ==  2) temp_name_type = "buckler";
+            if (temp_range ==  3) temp_name_type = "buffer";
+            if (temp_range ==  4) temp_name_type = "ward";
+            if (temp_range >=  5) temp_name_type = "shield";
+        break;
+        case GLOVES:
+            temp_range = random(4);
+            if (temp_range <=  0) temp_name_type = "gauntlets";
+            if (temp_range ==  1) temp_name_type = "gage";
+            if (temp_range ==  2) temp_name_type = "mitts";
+            if (temp_range >=  3) temp_name_type = "gloves";
+        break;
+        case BELT:
+            temp_range = random(4);
+            if (temp_range <=  0) temp_name_type = "bind";
+            if (temp_range ==  1) temp_name_type = "wrap";
+            if (temp_range ==  2) temp_name_type = "sash";
+            if (temp_range >=  3) temp_name_type = "belt";
+        break;
+        case RING:
+            temp_range = random(4);
+            if (temp_range <=  0) temp_name_type = "band";
+            if (temp_range ==  1) temp_name_type = "loop";
+            if (temp_range ==  2) temp_name_type = "ringlet";
+            if (temp_range >=  3) temp_name_type = "ring";
+        break;
+        case AMULET:
+            temp_range = random(6);
+            if (temp_range <=  0) temp_name_type = "ornament";
+            if (temp_range ==  1) temp_name_type = "charm";
+            if (temp_range ==  2) temp_name_type = "talisman";
+            if (temp_range ==  3) temp_name_type = "chain";
+            if (temp_range ==  4) temp_name_type = "pendant";
+            if (temp_range >=  5) temp_name_type = "amulet";
+        break;
+        case WAND:
+            temp_range = random(6);
+            if (temp_range <=  0) temp_name_type = "rod";
+            if (temp_range ==  1) temp_name_type = "stick";
+            if (temp_range ==  2) temp_name_type = "twig";
+            if (temp_range ==  3) temp_name_type = "staff";
+            if (temp_range ==  4) temp_name_type = "scepter";
+            if (temp_range >=  5) temp_name_type = "wand";
+        break;
+        case SWORD:
+            temp_range = random(6);
+            if (temp_range <=  0) temp_name_type = "scimitar";
+            if (temp_range ==  1) temp_name_type = "rapier";
+            if (temp_range ==  2) temp_name_type = "cutlass";
+            if (temp_range ==  3) temp_name_type = "katana";
+            if (temp_range ==  4) temp_name_type = "saber";
+            if (temp_range >=  5) temp_name_type = "sword";
+        break;
+        case DAGGER:
+            temp_range = random(6);
+            if (temp_range <=  0) temp_name_type = "knife";
+            if (temp_range ==  1) temp_name_type = "dirk";
+            if (temp_range ==  2) temp_name_type = "poniard";
+            if (temp_range ==  3) temp_name_type = "edge";
+            if (temp_range ==  4) temp_name_type = "blade";
+            if (temp_range >=  5) temp_name_type = "dagger";
+        break;
+        case BOW:
+            temp_range = random(4);
+            if (temp_range <=  0) temp_name_type = "crossbow";
+            if (temp_range ==  1) temp_name_type = "arbalest";
+            if (temp_range ==  2) temp_name_type = "ballista";
+            if (temp_range >=  3) temp_name_type = "bow";
+        break;
+        case SLING:
+            temp_range = random(2);
+            if (temp_range <=  0) temp_name_type = "slingshot";
+            if (temp_range >=  1) temp_name_type = "sling";
+        break;
+        default:
+        break;
+    }
+    switch (type)
+    {
+        case HELM:
+            temp_range = random(6);
+            if (temp_range <=  0) temp_name_suffix = "protection";
+            if (temp_range ==  1) temp_name_suffix = "stone";
+            if (temp_range ==  2) temp_name_suffix = "wrath";
+            if (temp_range ==  3) temp_name_suffix = "doom";
+            if (temp_range ==  4) temp_name_suffix = "cover";
+            if (temp_range >=  5) temp_name_suffix = "glory";
+        break;
+        case BOOTS:
+            temp_range = random(7);
+            if (temp_range <=  0) temp_name_suffix = "walking";
+            if (temp_range ==  1) temp_name_suffix = "stomping";
+            if (temp_range ==  2) temp_name_suffix = "running";
+            if (temp_range ==  3) temp_name_suffix = "striding";
+            if (temp_range ==  4) temp_name_suffix = "treading";
+            if (temp_range ==  5) temp_name_suffix = "kicking";
+            if (temp_range >=  6) temp_name_suffix = "agility";
+        break;
+        case ARMOUR:
+            temp_range = random(6);
+            if (temp_range <=  0) temp_name_suffix = "gloom";
+            if (temp_range ==  1) temp_name_suffix = "cover";
+            if (temp_range ==  2) temp_name_suffix = "stealth";
+            if (temp_range ==  3) temp_name_suffix = "honor";
+            if (temp_range ==  4) temp_name_suffix = "courage";
+            if (temp_range >=  5) temp_name_suffix = "bravery";
+        break;
+        case SHIELD:
+            temp_range = random(6);
+            if (temp_range <=  0) temp_name_suffix = "blocking";
+            if (temp_range ==  1) temp_name_suffix = "warding";
+            if (temp_range ==  2) temp_name_suffix = "stopping";
+            if (temp_range ==  3) temp_name_suffix = "safety";
+            if (temp_range ==  4) temp_name_suffix = "misery";
+            if (temp_range >=  5) temp_name_suffix = "woe";
+        break;
+        case GLOVES:
+            temp_range = random(6);
+            if (temp_range <=  0) temp_name_suffix = "might";
+            if (temp_range ==  1) temp_name_suffix = "fist";
+            if (temp_range ==  2) temp_name_suffix = "straggle";
+            if (temp_range ==  3) temp_name_suffix = "grip";
+            if (temp_range ==  4) temp_name_suffix = "punching";
+            if (temp_range >=  5) temp_name_suffix = "pounding";
+        break;
+        case BELT:
+            temp_range = random(6);
+            if (temp_range <=  0) temp_name_suffix = "security";
+            if (temp_range ==  1) temp_name_suffix = "holding";
+            if (temp_range ==  2) temp_name_suffix = "pride";
+            if (temp_range ==  3) temp_name_suffix = "perseverance";
+            if (temp_range ==  4) temp_name_suffix = "deliverance";
+            if (temp_range >=  5) temp_name_suffix = "justice";
+        break;
+        case RING:
+            temp_range = random(6);
+            if (temp_range <=  0) temp_name_suffix = "myth";
+            if (temp_range ==  1) temp_name_suffix = "the adventurer";
+            if (temp_range ==  2) temp_name_suffix = "trickery";
+            if (temp_range ==  3) temp_name_suffix = "trade";
+            if (temp_range ==  4) temp_name_suffix = "the lord";
+            if (temp_range >=  5) temp_name_suffix = "infinity";
+        break;
+        case AMULET:
+            temp_range = random(6);
+            if (temp_range <=  0) temp_name_suffix = "glow";
+            if (temp_range ==  1) temp_name_suffix = "luck";
+            if (temp_range ==  2) temp_name_suffix = "dreams";
+            if (temp_range ==  3) temp_name_suffix = "determination";
+            if (temp_range ==  4) temp_name_suffix = "superstition";
+            if (temp_range >=  5) temp_name_suffix = "witches";
+        break;
+        case WAND:
+            temp_range = random(7);
+            if (temp_range <=  0) temp_name_suffix = "wizardry";
+            if (temp_range ==  1) temp_name_suffix = "magic";
+            if (temp_range ==  2) temp_name_suffix = "witchcraft";
+            if (temp_range ==  3) temp_name_suffix = "sorcery";
+            if (temp_range ==  4) temp_name_suffix = "alchemy";
+            if (temp_range ==  5) temp_name_suffix = "mysticism";
+            if (temp_range >=  6) temp_name_suffix = "mystery";
+        break;
+        case SWORD:
+            temp_range = random(6);
+            if (temp_range <=  0) temp_name_suffix = "slashing";
+            if (temp_range ==  1) temp_name_suffix = "chopping";
+            if (temp_range ==  2) temp_name_suffix = "decapitation";
+            if (temp_range ==  3) temp_name_suffix = "slicing";
+            if (temp_range ==  4) temp_name_suffix = "slaying";
+            if (temp_range >=  5) temp_name_suffix = "legends";
+        break;
+        case DAGGER:
+            temp_range = random(6);
+            if (temp_range <=  0) temp_name_suffix = "stabbing";
+            if (temp_range ==  1) temp_name_suffix = "gouging";
+            if (temp_range ==  2) temp_name_suffix = "piercing";
+            if (temp_range ==  3) temp_name_suffix = "pain";
+            if (temp_range ==  4) temp_name_suffix = "blinding";
+            if (temp_range >=  5) temp_name_suffix = "sacrifice";
+        break;
+        case BOW:
+            temp_range = random(6);
+            if (temp_range <=  0) temp_name_suffix = "accuracy";
+            if (temp_range ==  1) temp_name_suffix = "silent death";
+            if (temp_range ==  2) temp_name_suffix = "raining death";
+            if (temp_range ==  3) temp_name_suffix = "precision";
+            if (temp_range ==  4) temp_name_suffix = "torture";
+            if (temp_range >=  5) temp_name_suffix = "the hunt";
+        break;
+        case SLING:
+            temp_range = random(6);
+            if (temp_range <=  0) temp_name_suffix = "rebellion";
+            if (temp_range ==  1) temp_name_suffix = "slaughter";
+            if (temp_range ==  2) temp_name_suffix = "savagery";
+            if (temp_range ==  3) temp_name_suffix = "punishment";
+            if (temp_range ==  4) temp_name_suffix = "provoking";
+            if (temp_range >=  5) temp_name_suffix = "the uprising";
+        break;
+        default:
+        break;
+    }
+    game.item[item_ID].name = temp_name_prefix + " " + temp_name_type + " of " + temp_name_suffix;
+    // add name padding...
+
+    init_item_sounds(item_ID); // add sounds to item
+};
+
+*/
