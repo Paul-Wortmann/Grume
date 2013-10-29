@@ -273,7 +273,11 @@ int  item_manager_class::gen_item(int item_type_UID, int item_sub_type_UID, int 
     }
     if (item_sub_type_UID == ITEM_POTION)
     {
-        switch (random(3))
+        int rand_number = 1;
+        if (quality_level <= (MAX_ITEM_QUALITY*0.8f)) rand_number = 3;
+        if (quality_level <= (MAX_ITEM_QUALITY*0.5f)) rand_number = 2;
+        if (quality_level <= (MAX_ITEM_QUALITY*0.2f)) rand_number = 1;
+        switch (random(rand_number))
         {
             case 0:
                 item_sub_type_UID = ITEM_POTION_SMALL;
@@ -381,47 +385,47 @@ int  item_manager_class::gen_item(int item_type_UID, int item_sub_type_UID, int 
             if (item_pointer)
             {
                 // ----------------> Socket and Effect <---------------------------------------------
-                if (quality_level <= 10)
+                if (quality_level <= (MAX_ITEM_QUALITY*0.1f))
                 {
                     item_pointer->data.number_of_item_sockets = 0;
                     item_pointer->data.number_of_item_effects = 1;
                 }
-                if ((quality_level > 10)&&(quality_level <= 20))
+                if ((quality_level > (MAX_ITEM_QUALITY*0.1f))&&(quality_level <= (MAX_ITEM_QUALITY*0.2f)))
                 {
                     item_pointer->data.number_of_item_sockets = 0;
                     item_pointer->data.number_of_item_effects = random_int(1,2);
                 }
-                if ((quality_level > 20)&&(quality_level <= 30))
+                if ((quality_level > (MAX_ITEM_QUALITY*0.2f))&&(quality_level <= (MAX_ITEM_QUALITY*0.3f)))
                 {
                     item_pointer->data.number_of_item_sockets = random_int(0,1);
                     item_pointer->data.number_of_item_effects = random_int(1,2);
                 }
-                if ((quality_level > 30)&&(quality_level <= 40))
+                if ((quality_level > (MAX_ITEM_QUALITY*0.3f))&&(quality_level <= (MAX_ITEM_QUALITY*0.4f)))
                 {
                     item_pointer->data.number_of_item_sockets = random_int(0,1);
                     item_pointer->data.number_of_item_effects = random_int(2,3);
                 }
-                if ((quality_level > 40)&&(quality_level <= 50))
+                if ((quality_level > (MAX_ITEM_QUALITY*0.4f))&&(quality_level <= (MAX_ITEM_QUALITY*0.5f)))
                 {
                     item_pointer->data.number_of_item_sockets = random_int(1,2);
                     item_pointer->data.number_of_item_effects = random_int(2,3);
                 }
-                if ((quality_level > 50)&&(quality_level <= 60))
+                if ((quality_level > (MAX_ITEM_QUALITY*0.5f))&&(quality_level <= (MAX_ITEM_QUALITY*0.6f)))
                 {
                     item_pointer->data.number_of_item_sockets = random_int(1,2);
                     item_pointer->data.number_of_item_effects = random_int(3,4);
                 }
-                if ((quality_level > 60)&&(quality_level <= 70))
+                if ((quality_level > (MAX_ITEM_QUALITY*0.6f))&&(quality_level <= (MAX_ITEM_QUALITY*0.7f)))
                 {
                     item_pointer->data.number_of_item_sockets = random_int(2,3);
                     item_pointer->data.number_of_item_effects = random_int(3,4);
                 }
-                if ((quality_level > 70)&&(quality_level <= 80))
+                if ((quality_level > (MAX_ITEM_QUALITY*0.7f))&&(quality_level <= (MAX_ITEM_QUALITY*0.8f)))
                 {
                     item_pointer->data.number_of_item_sockets = random_int(2,3);
                     item_pointer->data.number_of_item_effects = random_int(4,5);
                 }
-                if (quality_level > 80)
+                if (quality_level > (MAX_ITEM_QUALITY*0.8f))
                 {
                     item_pointer->data.number_of_item_sockets = random_int(3,4);
                     item_pointer->data.number_of_item_effects = random_int(5,6);
@@ -1483,6 +1487,12 @@ void  item_manager_class::gen_item_name(item_type* item_pointer,int item_type_UI
     std::string pre_name  = "Randomly ";
     std::string base_name = "generated ";
     std::string post_name = "item";
+    if  (quality_level <  (MAX_ITEM_QUALITY*0.2f))                                             pre_name = "Standard ";
+    if ((quality_level >= (MAX_ITEM_QUALITY*0.2f))&&(quality_level < (MAX_ITEM_QUALITY*0.4f))) pre_name = "Adventurer's ";
+    if ((quality_level >= (MAX_ITEM_QUALITY*0.4f))&&(quality_level < (MAX_ITEM_QUALITY*0.6f))) pre_name = "Exceptional ";
+    if ((quality_level >= (MAX_ITEM_QUALITY*0.6f))&&(quality_level < (MAX_ITEM_QUALITY*0.8f))) pre_name = "Heroic ";
+    if  (quality_level >= (MAX_ITEM_QUALITY*0.8f))                                             pre_name = "Legendary ";
+
     switch (item_type_UID)
     {
         case ITEM_GEM:
@@ -1507,6 +1517,11 @@ void  item_manager_class::gen_item_name(item_type* item_pointer,int item_type_UI
                     item_pointer->data.name = "Gem";
                 break;
             }
+        break;
+        case ITEM_SPELL_BOOK:
+            base_name = "tome ";
+
+            item_pointer->data.name = pre_name+base_name+post_name;
         break;
         case ITEM_POTION:
             item_pointer->data.name = "Potion";
@@ -1539,7 +1554,49 @@ void  item_manager_class::gen_item_name(item_type* item_pointer,int item_type_UI
             item_pointer->data.name = "Large Rejuvenation Potion";
         break;
         case ITEM_FEET:
-            item_pointer->data.name = "Randomly generated item";
+            base_name = "boots ";
+
+            item_pointer->data.name = pre_name+base_name+post_name;
+        break;
+        case ITEM_BELT:
+            base_name = "belt ";
+
+            item_pointer->data.name = pre_name+base_name+post_name;
+        break;
+        case ITEM_HEAD:
+            base_name = "helm ";
+
+            item_pointer->data.name = pre_name+base_name+post_name;
+        break;
+        case ITEM_BODY:
+            base_name = "armor ";
+
+            item_pointer->data.name = pre_name+base_name+post_name;
+        break;
+        case ITEM_HAND:
+            base_name = "gloves ";
+
+            item_pointer->data.name = pre_name+base_name+post_name;
+        break;
+        case ITEM_RING:
+            base_name = "ring ";
+
+            item_pointer->data.name = pre_name+base_name+post_name;
+        break;
+        case ITEM_NECK:
+            base_name = "amulet ";
+
+            item_pointer->data.name = pre_name+base_name+post_name;
+        break;
+        case ITEM_OFFHAND:
+            base_name = "shield ";
+
+            item_pointer->data.name = pre_name+base_name+post_name;
+        break;
+        case ITEM_WEAPON:
+            base_name = "sword ";
+
+            item_pointer->data.name = pre_name+base_name+post_name;
         break;
         default:
             //game.core.log.file_write("Unable to generate item -> ",item_type_UID," - ", item_sub_type_UID," - ", quality_level);
@@ -1556,64 +1613,64 @@ void  item_manager_class::gen_item_texture(item_type* item_pointer,int item_type
             switch (item_sub_type_UID)
             {
                 case ITEM_GEM_EMERALD:
-                    if (quality_level < 20)
+                    if (quality_level < (MAX_ITEM_QUALITY*0.2f))
                         item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/gems/gem_6_0.png");
-                    if ((quality_level >= 20)&&(quality_level < 40))
+                    if ((quality_level >= (MAX_ITEM_QUALITY*0.2f))&&(quality_level < (MAX_ITEM_QUALITY*0.4f)))
                         item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/gems/gem_6_1.png");
-                    if ((quality_level >= 40)&&(quality_level < 60))
+                    if ((quality_level >= (MAX_ITEM_QUALITY*0.4f))&&(quality_level < (MAX_ITEM_QUALITY*0.6f)))
                         item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/gems/gem_6_2.png");
-                    if ((quality_level >= 60)&&(quality_level < 80))
+                    if ((quality_level >= (MAX_ITEM_QUALITY*0.6f))&&(quality_level < (MAX_ITEM_QUALITY*0.8f)))
                         item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/gems/gem_6_3.png");
-                    if (quality_level >= 80)
+                    if (quality_level >= (MAX_ITEM_QUALITY*0.8f))
                         item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/gems/gem_6_4.png");
                 break;
                 case ITEM_GEM_OPAL:
-                    if (quality_level < 20)
+                    if (quality_level < (MAX_ITEM_QUALITY*0.2f))
                         item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/gems/gem_8_0.png");
-                    if ((quality_level >= 20)&&(quality_level < 40))
+                    if ((quality_level >= (MAX_ITEM_QUALITY*0.2f))&&(quality_level < (MAX_ITEM_QUALITY*0.4f)))
                         item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/gems/gem_8_1.png");
-                    if ((quality_level >= 40)&&(quality_level < 60))
+                    if ((quality_level >= (MAX_ITEM_QUALITY*0.4f))&&(quality_level < (MAX_ITEM_QUALITY*0.6f)))
                         item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/gems/gem_8_2.png");
-                    if ((quality_level >= 60)&&(quality_level < 80))
+                    if ((quality_level >= (MAX_ITEM_QUALITY*0.6f))&&(quality_level < (MAX_ITEM_QUALITY*0.8f)))
                         item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/gems/gem_8_3.png");
-                    if (quality_level >= 80)
+                    if (quality_level >= (MAX_ITEM_QUALITY*0.8f))
                         item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/gems/gem_8_4.png");
                 break;
                 case ITEM_GEM_RUBY:
-                    if (quality_level < 20)
+                    if (quality_level < (MAX_ITEM_QUALITY*0.2f))
                         item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/gems/gem_7_0.png");
-                    if ((quality_level >= 20)&&(quality_level < 40))
+                    if ((quality_level >= (MAX_ITEM_QUALITY*0.2f))&&(quality_level < (MAX_ITEM_QUALITY*0.4f)))
                         item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/gems/gem_7_1.png");
-                    if ((quality_level >= 40)&&(quality_level < 60))
+                    if ((quality_level >= (MAX_ITEM_QUALITY*0.4f))&&(quality_level < (MAX_ITEM_QUALITY*0.6f)))
                         item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/gems/gem_7_2.png");
-                    if ((quality_level >= 60)&&(quality_level < 80))
+                    if ((quality_level >= (MAX_ITEM_QUALITY*0.6f))&&(quality_level < (MAX_ITEM_QUALITY*0.8f)))
                         item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/gems/gem_7_3.png");
-                    if (quality_level >= 80)
+                    if (quality_level >= (MAX_ITEM_QUALITY*0.8f))
                         item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/gems/gem_7_4.png");
                 break;
                 case ITEM_GEM_SAPPHIRE:
-                    if (quality_level < 20)
+                    if (quality_level < (MAX_ITEM_QUALITY*0.2f))
                         item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/gems/gem_5_0.png");
-                    if ((quality_level >= 20)&&(quality_level < 40))
+                    if ((quality_level >= (MAX_ITEM_QUALITY*0.2f))&&(quality_level < (MAX_ITEM_QUALITY*0.4f)))
                         item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/gems/gem_5_1.png");
-                if ((quality_level >= 40)&&(quality_level < 60))
+                if ((quality_level >= (MAX_ITEM_QUALITY*0.4f))&&(quality_level < (MAX_ITEM_QUALITY*0.6f)))
                         item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/gems/gem_5_2.png");
-                    if ((quality_level >= 60)&&(quality_level < 80))
+                    if ((quality_level >= (MAX_ITEM_QUALITY*0.6f))&&(quality_level < (MAX_ITEM_QUALITY*0.8f)))
                         item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/gems/gem_5_3.png");
-                    if (quality_level >= 80)
+                    if (quality_level >= (MAX_ITEM_QUALITY*0.8f))
                         item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/gems/gem_5_4.png");
                 break;
                 case ITEM_GEM_TOPAZ:
                 default:
-                    if (quality_level < 20)
+                    if (quality_level < (MAX_ITEM_QUALITY*0.2f))
                         item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/gems/gem_9_0.png");
-                    if ((quality_level >= 20)&&(quality_level < 40))
+                    if ((quality_level >= (MAX_ITEM_QUALITY*0.2f))&&(quality_level < (MAX_ITEM_QUALITY*0.4f)))
                         item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/gems/gem_9_1.png");
-                    if ((quality_level >= 40)&&(quality_level < 60))
+                    if ((quality_level >= (MAX_ITEM_QUALITY*0.4f))&&(quality_level < (MAX_ITEM_QUALITY*0.6f)))
                         item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/gems/gem_9_2.png");
-                    if ((quality_level >= 60)&&(quality_level < 80))
+                    if ((quality_level >= (MAX_ITEM_QUALITY*0.6f))&&(quality_level < (MAX_ITEM_QUALITY*0.8f)))
                         item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/gems/gem_9_3.png");
-                    if (quality_level >= 80)
+                    if (quality_level >= (MAX_ITEM_QUALITY*0.8f))
                         item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/gems/gem_9_4.png");
                 break;
             }

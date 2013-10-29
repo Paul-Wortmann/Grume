@@ -33,6 +33,7 @@
 
 #define MAX_ITEM_EFFECTS     6
 #define MAX_ITEM_SOCKETS     4
+#define MAX_ITEM_QUALITY     100
 
 #define ITEM_QUALITY_NORMAL  0
 #define ITEM_QUALITY_MAGIC   1
