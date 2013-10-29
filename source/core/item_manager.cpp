@@ -452,11 +452,10 @@ int  item_manager_class::gen_item(int item_type_UID, int item_sub_type_UID, int 
                 {
                     case ITEM_GEM:
                         item_pointer->data.qaulity_type = ITEM_QUALITY_EPIC; // delete me? O_o
-                        quality_level                             = random(quality_level);
                         item_pointer->data.consumable             = false;
-                        item_pointer->data.stackable              = true;
+                        item_pointer->data.stackable              = false;
                         item_pointer->data.quantity               = 1;
-                        item_pointer->data.quantity_max           = 100;
+                        item_pointer->data.quantity_max           = 1;
                         if (item_pointer->data.number_of_item_sockets > 0) item_pointer->data.number_of_item_sockets = 0;
                         switch (item_sub_type_UID)
                         {
@@ -1589,8 +1588,16 @@ void  item_manager_class::gen_item_name(item_type* item_pointer,int item_type_UI
             item_pointer->data.name = pre_name+base_name+post_name;
         break;
         case ITEM_OFFHAND:
-            base_name = "shield ";
-
+            switch (item_sub_type_UID)
+            {
+                case ITEM_SOURCE:
+                    base_name = "source ";
+                break;
+                case ITEM_SHIELD:
+                default:
+                    base_name = "shield ";
+                break;
+            }
             item_pointer->data.name = pre_name+base_name+post_name;
         break;
         case ITEM_WEAPON:
