@@ -20,15 +20,15 @@ Starting Game...
  
 # ---------------------------------------------- #
  
-Loading TMX map file -> data/maps/town.tmx
+Unable to process event - 801 - UID - 3
  
 # ---------------------------------------------- #
  
 Font    count -> 1
 Music   count -> 1
 Sound   count -> 11
-Texture count -> 287
-Item    count -> 42
+Texture count -> 159
+Item    count -> 27
 Effect  count -> 42
  
 # ---------------------------------------------- #

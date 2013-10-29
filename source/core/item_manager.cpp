@@ -1601,12 +1601,112 @@ void  item_manager_class::gen_item_name(item_type* item_pointer,int item_type_UI
         break;
         case ITEM_FEET:
             base_name = "boots ";
-
+            switch (best_effect)
+            {
+                case EFFECT_MOD_DEXTERITY:
+                    post_name = "of nimbus";
+                break;
+                case EFFECT_MOD_RESIST_PHYSICAL:
+                    post_name = "of the brute";
+                break;
+                case EFFECT_MOD_RESIST_ICE:
+                    post_name = "of frost";
+                break;
+                case EFFECT_MOD_RESIST_FIRE:
+                    post_name = "of flame";
+                break;
+                case EFFECT_MOD_RESIST_LIGHTNING:
+                    post_name = "of thunder";
+                break;
+                case EFFECT_MOD_RESIST_ALL:
+                    post_name = "of resistance";
+                break;
+                case EFFECT_MOD_HEALTH_REGEN:
+                    post_name = "of life";
+                break;
+                case EFFECT_MOD_MANA_MAX:
+                    post_name = "of wizardry";
+                break;
+                case EFFECT_MOD_MOVEMENT_SPEED:
+                    post_name = "of speed";
+                break;
+                case EFFECT_MOD_MAGIC_FIND:
+                    post_name = "of luck";
+                break;
+                case EFFECT_MOD_GOLD_FIND:
+                    post_name = "of the leprechaun";
+                break;
+                case EFFECT_MOD_ARMOR:
+                default:
+                    switch (random(6))
+                    {
+                        case 0:
+                            post_name = "of walking";
+                        break;
+                        case 1:
+                            post_name = "of stomping";
+                        break;
+                        case 2:
+                            post_name = "of running";
+                        break;
+                        case 3:
+                            post_name = "of striding";
+                        break;
+                        case 4:
+                            post_name = "of treading";
+                        break;
+                        case 5:
+                            post_name = "of kicking";
+                        break;
+                        default:
+                        break;
+                    }
+                break;
+            }
             item_pointer->data.name = pre_name+base_name+post_name;
         break;
         case ITEM_BELT:
             base_name = "belt ";
-
+            switch (best_effect)
+            {
+                case EFFECT_MOD_DEXTERITY:
+                    post_name = "of nimbus";
+                break;
+                case EFFECT_MOD_RESIST_PHYSICAL:
+                    post_name = "of the brute";
+                break;
+                case EFFECT_MOD_RESIST_ICE:
+                    post_name = "of frost";
+                break;
+                case EFFECT_MOD_RESIST_FIRE:
+                    post_name = "of flame";
+                break;
+                case EFFECT_MOD_RESIST_LIGHTNING:
+                    post_name = "of thunder";
+                break;
+                case EFFECT_MOD_RESIST_ALL:
+                    post_name = "of resistance";
+                break;
+                case EFFECT_MOD_HEALTH_REGEN:
+                    post_name = "of life";
+                break;
+                case EFFECT_MOD_MANA_MAX:
+                    post_name = "of wizardry";
+                break;
+                case EFFECT_MOD_MOVEMENT_SPEED:
+                    post_name = "of speed";
+                break;
+                case EFFECT_MOD_MAGIC_FIND:
+                    post_name = "of luck";
+                break;
+                case EFFECT_MOD_GOLD_FIND:
+                    post_name = "of the leprechaun";
+                break;
+                case EFFECT_MOD_ARMOR:
+                default:
+                    post_name = "";
+                break;
+            }
             item_pointer->data.name = pre_name+base_name+post_name;
         break;
         case ITEM_HEAD:
@@ -1886,21 +1986,6 @@ void  item_manager_class::gen_item_sounds(item_type* item_pointer,int item_type_
 /*
 
 //------------------------------ unique name generation based on randomly generated stats -------------------------------
-    std::string temp_name_prefix = "Random";
-    std::string temp_name_type   = "item";
-    std::string temp_name_suffix = "of randomness";
-
-    temp_random = (quality+level)/2;
-    if  (temp_random <   5)                         temp_name_prefix = "Discarded";
-    if ((temp_random >=  5) && (temp_random <= 10)) temp_name_prefix = "Damaged";
-    if ((temp_random >= 10) && (temp_random <= 25)) temp_name_prefix = "Average";
-    if ((temp_random >= 25) && (temp_random <= 40)) temp_name_prefix = "Awesome";
-    if ((temp_random >= 40) && (temp_random <= 50)) temp_name_prefix = "Superb";
-    if ((temp_random >= 50) && (temp_random <= 60)) temp_name_prefix = "Excellent";
-    if ((temp_random >= 60) && (temp_random <= 70)) temp_name_prefix = "Superior";
-    if ((temp_random >= 70) && (temp_random <= 80)) temp_name_prefix = "Exceptional";
-    if ((temp_random >= 80) && (temp_random <= 95)) temp_name_prefix = "Wondrous";
-    if  (temp_random >= 95)                         temp_name_prefix = "Heroic";
 
     switch (type)
     {
