@@ -2685,7 +2685,7 @@ void  item_manager_class::gen_item_texture(item_type* item_pointer,int item_type
             item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/belts/belt_00.png");
         break;
         case ITEM_BODY:
-            item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/armour/armour_00.png");
+            item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/armor/armor_00.png");
         break;
         case ITEM_FEET:
             item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/boots/boots_06.png");
@@ -2782,16 +2782,36 @@ void  item_manager_class::gen_item_sounds(item_type* item_pointer,int item_type_
             item_pointer->data.sound_use  = game.sound_manager.add_sound("data/sound/inventory/ring_00.wav");
         break;
         case ITEM_OFFHAND:
-            item_pointer->data.sound_move = game.sound_manager.add_sound("data/sound/inventory/leather_00.wav");
-            item_pointer->data.sound_use  = game.sound_manager.add_sound("data/sound/inventory/leather_00.wav");
+            switch (item_sub_type_UID)
+            {
+                case ITEM_SHIELD:
+                    item_pointer->data.sound_move = game.sound_manager.add_sound("data/sound/inventory/leather_00.wav");
+                    item_pointer->data.sound_use  = game.sound_manager.add_sound("data/sound/inventory/leather_00.wav");
+                break;
+                case ITEM_SOURCE:
+                default:
+                    item_pointer->data.sound_move = game.sound_manager.add_sound("data/sound/inventory/leather_00.wav");
+                    item_pointer->data.sound_use  = game.sound_manager.add_sound("data/sound/inventory/leather_00.wav");
+                break;
+            }
         break;
         case ITEM_RING:
             item_pointer->data.sound_move = game.sound_manager.add_sound("data/sound/inventory/ring_01.wav");
             item_pointer->data.sound_use  = game.sound_manager.add_sound("data/sound/inventory/ring_01.wav");
         break;
         case ITEM_WEAPON:
-            item_pointer->data.sound_move = game.sound_manager.add_sound("data/sound/inventory/metal_00.wav");
-            item_pointer->data.sound_use  = game.sound_manager.add_sound("data/sound/inventory/metal_00.wav");
+            switch (item_sub_type_UID)
+            {
+                case ITEM_SWORD:
+                    item_pointer->data.sound_move = game.sound_manager.add_sound("data/sound/inventory/metal_00.wav");
+                    item_pointer->data.sound_use  = game.sound_manager.add_sound("data/sound/inventory/metal_00.wav");
+                break;
+                case ITEM_WAND:
+                default:
+                    item_pointer->data.sound_move = game.sound_manager.add_sound("data/sound/inventory/metal_00.wav");
+                    item_pointer->data.sound_use  = game.sound_manager.add_sound("data/sound/inventory/metal_00.wav");
+                break;
+            }
         break;
         default:
             game.core.log.file_write("Unable to generate item sounds -> ",item_type_UID," - ", item_sub_type_UID," - ", quality_level);
