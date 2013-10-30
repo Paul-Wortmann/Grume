@@ -1811,7 +1811,91 @@ void  item_manager_class::gen_item_name(item_type* item_pointer,int item_type_UI
         break;
         case ITEM_BODY:
             base_name = "armor ";
-
+            switch (best_effect)
+            {
+                case EFFECT_MOD_STRENGTH:
+                    post_name = "of power";
+                break;
+                case EFFECT_MOD_DEXTERITY:
+                    post_name = "of nimbus";
+                break;
+                case EFFECT_MOD_INTELLECT:
+                    post_name = "of the mind";
+                break;
+                case EFFECT_MOD_ALL_ATTRIBUTES:
+                    post_name = "of skill";
+                break;
+                case EFFECT_MOD_RESIST_PHYSICAL:
+                    post_name = "of the brute";
+                break;
+                case EFFECT_MOD_RESIST_ICE:
+                    post_name = "of frost";
+                break;
+                case EFFECT_MOD_RESIST_FIRE:
+                    post_name = "of flame";
+                break;
+                case EFFECT_MOD_RESIST_LIGHTNING:
+                    post_name = "of thunder";
+                break;
+                case EFFECT_MOD_RESIST_ALL:
+                    post_name = "of resistance";
+                break;
+                case EFFECT_MOD_MANA_REGEN:
+                    post_name = "of hexing";
+                break;
+                case EFFECT_MOD_HEALTH_REGEN:
+                    post_name = "of life";
+                break;
+                case EFFECT_MOD_MANA_MAX:
+                    post_name = "of wizardry";
+                break;
+                case EFFECT_MOD_HEALTH_MAX:
+                    post_name = "of constitution";
+                break;
+                case EFFECT_MOD_MOVEMENT_SPEED:
+                    post_name = "of speed";
+                break;
+                case EFFECT_MOD_MAGIC_FIND:
+                    post_name = "of luck";
+                break;
+                case EFFECT_MOD_GOLD_FIND:
+                    post_name = "of the leprechaun";
+                break;
+                case EFFECT_MOD_LIGHT_RADIUS:
+                    post_name = "of the brilliance";
+                break;
+                case EFFECT_MOD_EXP_PER_KILL:
+                    post_name = "of wisdom";
+                break;
+                case EFFECT_MOD_SPELL_CAST_DMG:
+                    post_name = "of reflection";
+                break;
+                case EFFECT_MOD_ARMOR:
+                default:
+                    switch (random(6))
+                    {
+                        case 0:
+                            post_name = "of gloom";
+                        break;
+                        case 1:
+                            post_name = "of cover";
+                        break;
+                        case 2:
+                            post_name = "of stealth";
+                        break;
+                        case 3:
+                            post_name = "of honor";
+                        break;
+                        case 4:
+                            post_name = "of courage";
+                        break;
+                        case 5:
+                        default:
+                            post_name = "of bravery";
+                        break;
+                    }
+                break;
+            }
             item_pointer->data.name = pre_name+base_name+post_name;
         break;
         case ITEM_HAND:
@@ -2333,6 +2417,9 @@ void  item_manager_class::gen_item_sounds(item_type* item_pointer,int item_type_
                 case EFFECT_MOD_MANA_MAX:
                     post_name = "of wizardry";
                 break;
+                case EFFECT_MOD_HEALTH_MAX:
+                    post_name = "of constitution";
+                break;
                 case EFFECT_MOD_MOVEMENT_SPEED:
                     post_name = "of speed";
                 break;
@@ -2348,6 +2435,11 @@ void  item_manager_class::gen_item_sounds(item_type* item_pointer,int item_type_
                 case EFFECT_MOD_EXP_PER_KILL:
                     post_name = "of wisdom";
                 break;
-                case EFFECT_MOD_ARMOR:
+                case EFFECT_MOD_SPELL_CAST_DMG:
+                    post_name = "of reflection";
                 break;
+                case EFFECT_MOD_ARMOR:
 */
+
+
+
