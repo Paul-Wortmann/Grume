@@ -1840,17 +1840,29 @@ void  item_manager_class::gen_item_name(item_type* item_pointer,int item_type_UI
                 case EFFECT_MOD_RESIST_ALL:
                     post_name = "of resistance";
                 break;
-                case EFFECT_MOD_MANA_REGEN:
-                    post_name = "of hexing";
-                break;
                 case EFFECT_MOD_HEALTH_REGEN:
                     post_name = "of life";
+                break;
+                case EFFECT_MOD_HEALTH_MAX:
+                    post_name = "of constitution";
+                break;
+                case EFFECT_MOD_HEALTH_HIT:
+                    post_name = "of life leach";
+                break;
+                case EFFECT_MOD_HEALTH_KILL:
+                    post_name = "of life steal";
+                break;
+                case EFFECT_MOD_MANA_REGEN:
+                    post_name = "of hexing";
                 break;
                 case EFFECT_MOD_MANA_MAX:
                     post_name = "of wizardry";
                 break;
-                case EFFECT_MOD_HEALTH_MAX:
-                    post_name = "of constitution";
+                case EFFECT_MOD_MANA_HIT:
+                    post_name = "of mana drain";
+                break;
+                case EFFECT_MOD_MANA_KILL:
+                    post_name = "of mana steal";
                 break;
                 case EFFECT_MOD_MOVEMENT_SPEED:
                     post_name = "of speed";
@@ -1869,6 +1881,12 @@ void  item_manager_class::gen_item_name(item_type* item_pointer,int item_type_UI
                 break;
                 case EFFECT_MOD_SPELL_CAST_DMG:
                     post_name = "of reflection";
+                break;
+                case EFFECT_MOD_SPELL_CAST_HIT:
+                    post_name = "of magic";
+                break;
+                case EFFECT_MOD_SPELL_CAST_KILL:
+                    post_name = "of spawning";
                 break;
                 case EFFECT_MOD_ARMOR:
                 default:
@@ -1900,7 +1918,109 @@ void  item_manager_class::gen_item_name(item_type* item_pointer,int item_type_UI
         break;
         case ITEM_HAND:
             base_name = "gloves ";
-
+            switch (best_effect)
+            {
+                case EFFECT_MOD_STRENGTH:
+                    post_name = "of power";
+                break;
+                case EFFECT_MOD_DEXTERITY:
+                    post_name = "of nimbus";
+                break;
+                case EFFECT_MOD_INTELLECT:
+                    post_name = "of the mind";
+                break;
+                case EFFECT_MOD_ALL_ATTRIBUTES:
+                    post_name = "of skill";
+                break;
+                case EFFECT_MOD_RESIST_PHYSICAL:
+                    post_name = "of the brute";
+                break;
+                case EFFECT_MOD_RESIST_ICE:
+                    post_name = "of frost";
+                break;
+                case EFFECT_MOD_RESIST_FIRE:
+                    post_name = "of flame";
+                break;
+                case EFFECT_MOD_RESIST_LIGHTNING:
+                    post_name = "of thunder";
+                break;
+                case EFFECT_MOD_RESIST_ALL:
+                    post_name = "of resistance";
+                break;
+                case EFFECT_MOD_HEALTH_REGEN:
+                    post_name = "of life";
+                break;
+                case EFFECT_MOD_HEALTH_MAX:
+                    post_name = "of constitution";
+                break;
+                case EFFECT_MOD_HEALTH_HIT:
+                    post_name = "of life leach";
+                break;
+                case EFFECT_MOD_HEALTH_KILL:
+                    post_name = "of life steal";
+                break;
+                case EFFECT_MOD_MANA_REGEN:
+                    post_name = "of hexing";
+                break;
+                case EFFECT_MOD_MANA_MAX:
+                    post_name = "of wizardry";
+                break;
+                case EFFECT_MOD_MANA_HIT:
+                    post_name = "of mana drain";
+                break;
+                case EFFECT_MOD_MANA_KILL:
+                    post_name = "of mana steal";
+                break;
+                case EFFECT_MOD_MOVEMENT_SPEED:
+                    post_name = "of speed";
+                break;
+                case EFFECT_MOD_MAGIC_FIND:
+                    post_name = "of luck";
+                break;
+                case EFFECT_MOD_GOLD_FIND:
+                    post_name = "of the leprechaun";
+                break;
+                case EFFECT_MOD_LIGHT_RADIUS:
+                    post_name = "of the brilliance";
+                break;
+                case EFFECT_MOD_EXP_PER_KILL:
+                    post_name = "of wisdom";
+                break;
+                case EFFECT_MOD_SPELL_CAST_DMG:
+                    post_name = "of reflection";
+                break;
+                case EFFECT_MOD_SPELL_CAST_HIT:
+                    post_name = "of magic";
+                break;
+                case EFFECT_MOD_SPELL_CAST_KILL:
+                    post_name = "of spawning";
+                break;
+                case EFFECT_MOD_ARMOR:
+                default:
+                    switch (random(6))
+                    {
+                        case 0:
+                            post_name = "of might";
+                        break;
+                        case 1:
+                            post_name = "of iron fist";
+                        break;
+                        case 2:
+                            post_name = "of straggle";
+                        break;
+                        case 3:
+                            post_name = "of grip";
+                        break;
+                        case 4:
+                            post_name = "of punching";
+                        break;
+                        case 5:
+                        default:
+                            post_name = "of pounding";
+                        break;
+                    }
+                break;
+            }
             item_pointer->data.name = pre_name+base_name+post_name;
         break;
         case ITEM_RING:
@@ -2168,120 +2288,6 @@ void  item_manager_class::gen_item_sounds(item_type* item_pointer,int item_type_
 
     switch (type)
     {
-        case HELM:
-            temp_range = random(7);
-            if (temp_range <=  0) temp_name_type = "hat";
-            if (temp_range ==  1) temp_name_type = "bonnet";
-            if (temp_range ==  2) temp_name_type = "headgear";
-            if (temp_range ==  3) temp_name_type = "headpiece";
-            if (temp_range ==  4) temp_name_type = "helmet";
-            if (temp_range ==  5) temp_name_type = "cap";
-            if (temp_range >=  6) temp_name_type = "helm";
-        break;
-        case BOOTS:
-            temp_range = random(7);
-            if (temp_range <=  0) temp_name_type = "slippers";
-            if (temp_range ==  1) temp_name_type = "footwear";
-            if (temp_range ==  2) temp_name_type = "footgear";
-            if (temp_range ==  3) temp_name_type = "clogs";
-            if (temp_range ==  4) temp_name_type = "sandals";
-            if (temp_range ==  5) temp_name_type = "shoes";
-            if (temp_range >=  6) temp_name_type = "boots";
-        break;
-        case ARMOUR:
-            temp_range = random(6);
-            if (temp_range <=  0) temp_name_type = "guard";
-            if (temp_range ==  1) temp_name_type = "vest";
-            if (temp_range ==  2) temp_name_type = "mail";
-            if (temp_range ==  3) temp_name_type = "plate";
-            if (temp_range ==  4) temp_name_type = "husk";
-            if (temp_range >=  5) temp_name_type = "armor";
-        break;
-        case SHIELD:
-            temp_range = random(6);
-            if (temp_range <=  0) temp_name_type = "absorber";
-            if (temp_range ==  1) temp_name_type = "armament";
-            if (temp_range ==  2) temp_name_type = "buckler";
-            if (temp_range ==  3) temp_name_type = "buffer";
-            if (temp_range ==  4) temp_name_type = "ward";
-            if (temp_range >=  5) temp_name_type = "shield";
-        break;
-        case GLOVES:
-            temp_range = random(4);
-            if (temp_range <=  0) temp_name_type = "gauntlets";
-            if (temp_range ==  1) temp_name_type = "gage";
-            if (temp_range ==  2) temp_name_type = "mitts";
-            if (temp_range >=  3) temp_name_type = "gloves";
-        break;
-        case BELT:
-            temp_range = random(4);
-            if (temp_range <=  0) temp_name_type = "bind";
-            if (temp_range ==  1) temp_name_type = "wrap";
-            if (temp_range ==  2) temp_name_type = "sash";
-            if (temp_range >=  3) temp_name_type = "belt";
-        break;
-        case RING:
-            temp_range = random(4);
-            if (temp_range <=  0) temp_name_type = "band";
-            if (temp_range ==  1) temp_name_type = "loop";
-            if (temp_range ==  2) temp_name_type = "ringlet";
-            if (temp_range >=  3) temp_name_type = "ring";
-        break;
-        case AMULET:
-            temp_range = random(6);
-            if (temp_range <=  0) temp_name_type = "ornament";
-            if (temp_range ==  1) temp_name_type = "charm";
-            if (temp_range ==  2) temp_name_type = "talisman";
-            if (temp_range ==  3) temp_name_type = "chain";
-            if (temp_range ==  4) temp_name_type = "pendant";
-            if (temp_range >=  5) temp_name_type = "amulet";
-        break;
-        case WAND:
-            temp_range = random(6);
-            if (temp_range <=  0) temp_name_type = "rod";
-            if (temp_range ==  1) temp_name_type = "stick";
-            if (temp_range ==  2) temp_name_type = "twig";
-            if (temp_range ==  3) temp_name_type = "staff";
-            if (temp_range ==  4) temp_name_type = "scepter";
-            if (temp_range >=  5) temp_name_type = "wand";
-        break;
-        case SWORD:
-            temp_range = random(6);
-            if (temp_range <=  0) temp_name_type = "scimitar";
-            if (temp_range ==  1) temp_name_type = "rapier";
-            if (temp_range ==  2) temp_name_type = "cutlass";
-            if (temp_range ==  3) temp_name_type = "katana";
-            if (temp_range ==  4) temp_name_type = "saber";
-            if (temp_range >=  5) temp_name_type = "sword";
-        break;
-        case DAGGER:
-            temp_range = random(6);
-            if (temp_range <=  0) temp_name_type = "knife";
-            if (temp_range ==  1) temp_name_type = "dirk";
-            if (temp_range ==  2) temp_name_type = "poniard";
-            if (temp_range ==  3) temp_name_type = "edge";
-            if (temp_range ==  4) temp_name_type = "blade";
-            if (temp_range >=  5) temp_name_type = "dagger";
-        break;
-        case BOW:
-            temp_range = random(4);
-            if (temp_range <=  0) temp_name_type = "crossbow";
-            if (temp_range ==  1) temp_name_type = "arbalest";
-            if (temp_range ==  2) temp_name_type = "ballista";
-            if (temp_range >=  3) temp_name_type = "bow";
-        break;
-    }
-    switch (type)
-    {
-        case ARMOUR:
-            temp_range = random(6);
-            if (temp_range <=  0) temp_name_suffix = "gloom";
-            if (temp_range ==  1) temp_name_suffix = "cover";
-            if (temp_range ==  2) temp_name_suffix = "stealth";
-            if (temp_range ==  3) temp_name_suffix = "honor";
-            if (temp_range ==  4) temp_name_suffix = "courage";
-            if (temp_range >=  5) temp_name_suffix = "bravery";
-        break;
         case SHIELD:
             temp_range = random(6);
             if (temp_range <=  0) temp_name_suffix = "blocking";
@@ -2290,15 +2296,6 @@ void  item_manager_class::gen_item_sounds(item_type* item_pointer,int item_type_
             if (temp_range ==  3) temp_name_suffix = "safety";
             if (temp_range ==  4) temp_name_suffix = "misery";
             if (temp_range >=  5) temp_name_suffix = "woe";
-        break;
-        case GLOVES:
-            temp_range = random(6);
-            if (temp_range <=  0) temp_name_suffix = "might";
-            if (temp_range ==  1) temp_name_suffix = "fist";
-            if (temp_range ==  2) temp_name_suffix = "straggle";
-            if (temp_range ==  3) temp_name_suffix = "grip";
-            if (temp_range ==  4) temp_name_suffix = "punching";
-            if (temp_range >=  5) temp_name_suffix = "pounding";
         break;
         case RING:
             temp_range = random(6);
@@ -2408,17 +2405,29 @@ void  item_manager_class::gen_item_sounds(item_type* item_pointer,int item_type_
                 case EFFECT_MOD_RESIST_ALL:
                     post_name = "of resistance";
                 break;
-                case EFFECT_MOD_MANA_REGEN:
-                    post_name = "of hexing";
-                break;
                 case EFFECT_MOD_HEALTH_REGEN:
                     post_name = "of life";
+                break;
+                case EFFECT_MOD_HEALTH_MAX:
+                    post_name = "of constitution";
+                break;
+                case EFFECT_MOD_HEALTH_HIT:
+                    post_name = "of life leach";
+                break;
+                case EFFECT_MOD_HEALTH_KILL:
+                    post_name = "of life steal";
+                break;
+                case EFFECT_MOD_MANA_REGEN:
+                    post_name = "of hexing";
                 break;
                 case EFFECT_MOD_MANA_MAX:
                     post_name = "of wizardry";
                 break;
-                case EFFECT_MOD_HEALTH_MAX:
-                    post_name = "of constitution";
+                case EFFECT_MOD_MANA_HIT:
+                    post_name = "of mana drain";
+                break;
+                case EFFECT_MOD_MANA_KILL:
+                    post_name = "of mana steal";
                 break;
                 case EFFECT_MOD_MOVEMENT_SPEED:
                     post_name = "of speed";
@@ -2438,8 +2447,12 @@ void  item_manager_class::gen_item_sounds(item_type* item_pointer,int item_type_
                 case EFFECT_MOD_SPELL_CAST_DMG:
                     post_name = "of reflection";
                 break;
+                case EFFECT_MOD_SPELL_CAST_HIT:
+                    post_name = "of magic";
+                break;
+                case EFFECT_MOD_SPELL_CAST_KILL:
+                    post_name = "of spawning";
+                break;
                 case EFFECT_MOD_ARMOR:
 */
-
-
 
