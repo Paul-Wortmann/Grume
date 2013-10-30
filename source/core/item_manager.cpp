@@ -249,6 +249,25 @@ void item_manager_class::unequip_item(item_type* item_pointer)
 int  item_manager_class::gen_item(int item_type_UID, int item_sub_type_UID, int quality_level)
 {
     int  new_UID           = RETURN_FAIL;
+    if (item_sub_type_UID == ITEM_SPELL_BOOK)
+    {
+        switch (random(4))
+        {
+            case 0:
+                item_sub_type_UID = SPELL_FIRE_ARROW;
+            break;
+            case 1:
+                item_sub_type_UID = SPELL_ICE_ARROW;
+            break;
+            case 2:
+                item_sub_type_UID = SPELL_LIGHTNING_ARROW;
+            break;
+            case 3:
+            default:
+                item_sub_type_UID = SPELL_ELEMENTAL_ARROW;
+            break;
+        }
+    }
     if (item_sub_type_UID == ITEM_GEM)
     {
         switch (random(5))
@@ -1552,19 +1571,19 @@ void  item_manager_class::gen_item_name(item_type* item_pointer,int item_type_UI
             switch (item_sub_type_UID)
             {
                 case SPELL_FIRE_ARROW:
-                    item_pointer->data.name = "of fire arrow";
+                    post_name = "of fire arrow";
                 break;
                 case SPELL_ICE_ARROW:
-                    item_pointer->data.name = "of ice arrow";
+                    post_name = "of ice arrow";
                 break;
                 case SPELL_LIGHTNING_ARROW:
-                    item_pointer->data.name = "of lightning arrow";
+                    post_name = "of lightning arrow";
                 break;
                 case SPELL_ELEMENTAL_ARROW:
-                    item_pointer->data.name = "of elemental arrow";
+                    post_name = "of elemental arrow";
                 break;
                 default:
-                    item_pointer->data.name = "of spell craft";
+                    post_name = "of spell craft";
                 break;
             }
             item_pointer->data.name = pre_name+base_name+post_name;
@@ -2118,6 +2137,7 @@ void  item_manager_class::gen_item_name(item_type* item_pointer,int item_type_UI
                             post_name = "of myth";
                         break;
                         case 1:
+                        default:
                             post_name = "of infinity";
                         break;
                     }
@@ -2127,7 +2147,117 @@ void  item_manager_class::gen_item_name(item_type* item_pointer,int item_type_UI
         break;
         case ITEM_NECK:
             base_name = "amulet ";
-
+            switch (best_effect)
+            {
+                case EFFECT_MOD_STRENGTH:
+                    post_name = "of power";
+                break;
+                case EFFECT_MOD_DEXTERITY:
+                    post_name = "of nimbus";
+                break;
+                case EFFECT_MOD_INTELLECT:
+                    post_name = "of the mind";
+                break;
+                case EFFECT_MOD_ALL_ATTRIBUTES:
+                    post_name = "of skill";
+                break;
+                case EFFECT_MOD_RESIST_PHYSICAL:
+                    post_name = "of the brute";
+                break;
+                case EFFECT_MOD_RESIST_ICE:
+                    post_name = "of frost";
+                break;
+                case EFFECT_MOD_RESIST_FIRE:
+                    post_name = "of flame";
+                break;
+                case EFFECT_MOD_RESIST_LIGHTNING:
+                    post_name = "of thunder";
+                break;
+                case EFFECT_MOD_RESIST_ALL:
+                    post_name = "of resistance";
+                break;
+                case EFFECT_MOD_HEALTH_REGEN:
+                    post_name = "of life";
+                break;
+                case EFFECT_MOD_HEALTH_MAX:
+                    post_name = "of constitution";
+                break;
+                case EFFECT_MOD_HEALTH_HIT:
+                    post_name = "of life leach";
+                break;
+                case EFFECT_MOD_HEALTH_KILL:
+                    post_name = "of life steal";
+                break;
+                case EFFECT_MOD_MANA_REGEN:
+                    post_name = "of hexing";
+                break;
+                case EFFECT_MOD_MANA_MAX:
+                    post_name = "of wizardry";
+                break;
+                case EFFECT_MOD_MANA_HIT:
+                    post_name = "of mana drain";
+                break;
+                case EFFECT_MOD_MANA_KILL:
+                    post_name = "of mana steal";
+                break;
+                case EFFECT_MOD_MOVEMENT_SPEED:
+                    post_name = "of speed";
+                break;
+                case EFFECT_MOD_MAGIC_FIND:
+                    post_name = "of luck";
+                break;
+                case EFFECT_MOD_GOLD_FIND:
+                    post_name = "of the leprechaun";
+                break;
+                case EFFECT_MOD_LIGHT_RADIUS:
+                    post_name = "of brilliance";
+                break;
+                case EFFECT_MOD_EXP_PER_KILL:
+                    post_name = "of wisdom";
+                break;
+                case EFFECT_MOD_SPELL_CAST_DMG:
+                    post_name = "of reflection";
+                break;
+                case EFFECT_MOD_SPELL_CAST_HIT:
+                    post_name = "of magic";
+                break;
+                case EFFECT_MOD_SPELL_CAST_KILL:
+                    post_name = "of spawning";
+                break;
+                case EFFECT_MOD_SPELL:
+                    post_name = "of Beltane";
+                break;
+                case EFFECT_MOD_SPELL_TYPE:
+                    post_name = "of Samhain";
+                break;
+                case EFFECT_MOD_SPELL_ALL:
+                    post_name = "of the Coven";
+                break;
+                default:
+                    switch (random(6))
+                    {
+                        case 0:
+                            post_name = "of glow";
+                        break;
+                        case 1:
+                            post_name = "of luck";
+                        break;
+                        case 2:
+                            post_name = "of dreams";
+                        break;
+                        case 3:
+                            post_name = "of determination";
+                        break;
+                        case 4:
+                            post_name = "of superstition";
+                        break;
+                        case 5:
+                        default:
+                            post_name = "of witches";
+                        break;
+                    }
+                break;
+            }
             item_pointer->data.name = pre_name+base_name+post_name;
         break;
         case ITEM_OFFHAND:
@@ -2393,24 +2523,6 @@ void  item_manager_class::gen_item_sounds(item_type* item_pointer,int item_type_
             if (temp_range ==  3) temp_name_suffix = "safety";
             if (temp_range ==  4) temp_name_suffix = "misery";
             if (temp_range >=  5) temp_name_suffix = "woe";
-        break;
-        case RING:
-            temp_range = random(6);
-            if (temp_range <=  0) temp_name_suffix = "myth";
-            if (temp_range ==  1) temp_name_suffix = "the adventurer";
-            if (temp_range ==  2) temp_name_suffix = "trickery";
-            if (temp_range ==  3) temp_name_suffix = "trade";
-            if (temp_range ==  4) temp_name_suffix = "the lord";
-            if (temp_range >=  5) temp_name_suffix = "infinity";
-        break;
-        case AMULET:
-            temp_range = random(6);
-            if (temp_range <=  0) temp_name_suffix = "glow";
-            if (temp_range ==  1) temp_name_suffix = "luck";
-            if (temp_range ==  2) temp_name_suffix = "dreams";
-            if (temp_range ==  3) temp_name_suffix = "determination";
-            if (temp_range ==  4) temp_name_suffix = "superstition";
-            if (temp_range >=  5) temp_name_suffix = "witches";
         break;
         case WAND:
             temp_range = random(7);
