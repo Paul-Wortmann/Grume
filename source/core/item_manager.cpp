@@ -1669,6 +1669,9 @@ void  item_manager_class::gen_item_name(item_type* item_pointer,int item_type_UI
             base_name = "belt ";
             switch (best_effect)
             {
+                case EFFECT_MOD_STRENGTH:
+                    post_name = "of power";
+                break;
                 case EFFECT_MOD_DEXTERITY:
                     post_name = "of nimbus";
                 break;
@@ -1687,14 +1690,14 @@ void  item_manager_class::gen_item_name(item_type* item_pointer,int item_type_UI
                 case EFFECT_MOD_RESIST_ALL:
                     post_name = "of resistance";
                 break;
+                case EFFECT_MOD_MANA_REGEN:
+                    post_name = "of hexing";
+                break;
                 case EFFECT_MOD_HEALTH_REGEN:
                     post_name = "of life";
                 break;
                 case EFFECT_MOD_MANA_MAX:
                     post_name = "of wizardry";
-                break;
-                case EFFECT_MOD_MOVEMENT_SPEED:
-                    post_name = "of speed";
                 break;
                 case EFFECT_MOD_MAGIC_FIND:
                     post_name = "of luck";
@@ -1704,7 +1707,29 @@ void  item_manager_class::gen_item_name(item_type* item_pointer,int item_type_UI
                 break;
                 case EFFECT_MOD_ARMOR:
                 default:
-                    post_name = "";
+                    switch (random(6))
+                    {
+                        case 0:
+                            post_name = "of security";
+                        break;
+                        case 1:
+                            post_name = "of perseverance";
+                        break;
+                        case 2:
+                            post_name = "of deliverance";
+                        break;
+                        case 3:
+                            post_name = "of justice";
+                        break;
+                        case 4:
+                            post_name = "of pride";
+                        break;
+                        case 5:
+                            post_name = "of holding";
+                        break;
+                        default:
+                        break;
+                    }
                 break;
             }
             item_pointer->data.name = pre_name+base_name+post_name;
@@ -2110,16 +2135,6 @@ void  item_manager_class::gen_item_sounds(item_type* item_pointer,int item_type_
             if (temp_range ==  4) temp_name_suffix = "cover";
             if (temp_range >=  5) temp_name_suffix = "glory";
         break;
-        case BOOTS:
-            temp_range = random(7);
-            if (temp_range <=  0) temp_name_suffix = "walking";
-            if (temp_range ==  1) temp_name_suffix = "stomping";
-            if (temp_range ==  2) temp_name_suffix = "running";
-            if (temp_range ==  3) temp_name_suffix = "striding";
-            if (temp_range ==  4) temp_name_suffix = "treading";
-            if (temp_range ==  5) temp_name_suffix = "kicking";
-            if (temp_range >=  6) temp_name_suffix = "agility";
-        break;
         case ARMOUR:
             temp_range = random(6);
             if (temp_range <=  0) temp_name_suffix = "gloom";
@@ -2146,15 +2161,6 @@ void  item_manager_class::gen_item_sounds(item_type* item_pointer,int item_type_
             if (temp_range ==  3) temp_name_suffix = "grip";
             if (temp_range ==  4) temp_name_suffix = "punching";
             if (temp_range >=  5) temp_name_suffix = "pounding";
-        break;
-        case BELT:
-            temp_range = random(6);
-            if (temp_range <=  0) temp_name_suffix = "security";
-            if (temp_range ==  1) temp_name_suffix = "holding";
-            if (temp_range ==  2) temp_name_suffix = "pride";
-            if (temp_range ==  3) temp_name_suffix = "perseverance";
-            if (temp_range ==  4) temp_name_suffix = "deliverance";
-            if (temp_range >=  5) temp_name_suffix = "justice";
         break;
         case RING:
             temp_range = random(6);
@@ -2230,3 +2236,10 @@ void  item_manager_class::gen_item_sounds(item_type* item_pointer,int item_type_
 };
 
 */
+
+
+
+
+
+
+
