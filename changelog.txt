@@ -5,12 +5,51 @@ it may take longer than I had first anticipated.
 These are not indications that the project will be terminated in the future,
 just that time is not permitting to proceed at a fast pace, at the moment.
 
-v0.25 - (2013-11-xx)
+v0.25 - (2013-11-30)
 LOC   -> xxxxx
 
 v0.24 - (2013-10-31) Happy Halloween!
-
-LOC   -> 19364
+ITEM  -> Improved random item generation for sub types.
+ITEM  -> Random name generation implemented.
+ITEM  -> Calculate via MAX_ITEM_QUALITY.
+ITEM  -> Randomly generated name split into pre+base+post for generation.
+UI    -> Improved UI swap based on item type.
+UI    -> Added new shield icon.
+UI    -> Added new book icon.
+UI    -> Added new sword icon
+UI    -> New equipment background.
+CORE  -> Added spell manager.
+UI    -> Gems socketable in items.
+UI    -> Re-rendered potion icons for more detail.
+UI    -> Added randomly generated gems.
+UI    -> Added gem textures.
+UI    -> Item tool tip textures based on item qaulity type.
+UI    -> Added tooltip textures.
+UI    -> Number keys to 1-0 to use items on the action bar.
+UI    -> Randomly generated potions implemented.
+UI    -> Added more Item affixes and code for effect / socket slot number generation.
+UI    -> Items now stackable with quanity displayed below.
+CORE  -> Textures can be rendered centered or justified left or right.
+UI    -> Added inventory gold icon.
+UI    -> Changed default mouse cursor.
+CORE  -> Rendering strings from textures -> color.
+CORE  -> Initial "bool texture_manager_class::load_string(texture_type *texture)"
+MODEL -> Added data/models/NPCs/new_thin_zombie.blend.
+MODEL -> Added data/models/NPCs/golem.blend
+CORE  -> Moved texture data to its own struct.
+CORE  -> Start on a new rendered text manager.
+UI    -> Items only equiped in valid equipment slots.
+UI    -> Added aditional inventory item sounds.
+UI    -> Basic equipment equip + unequip implemented.
+UI    -> Items usable from the action bar.
+UI    -> Drag and drop (inventory + action bar) implemented.
+UI    -> Dragged items always rendered on top of other items.
+UI    -> Moved UI_manager data to seperate struct.
+UI    -> Added rejuvination potion - item.
+CORE  -> Further optimized the various resource managers linked lists.
+CORE  -> Fixed fault with root nodes in the linked lists used by the various resource managers.
+UI    -> UI form rendering / processing order completed.
+LOC   -> 22138
 
 v0.23 - (2013-09-30)
 Core  -> Ported FnF to SDL2.
