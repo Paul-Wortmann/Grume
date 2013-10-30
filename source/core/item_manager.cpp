@@ -2385,8 +2385,160 @@ void  item_manager_class::gen_item_name(item_type* item_pointer,int item_type_UI
             item_pointer->data.name = pre_name+base_name+post_name;
         break;
         case ITEM_WEAPON:
-            base_name = "sword ";
-
+            switch (item_sub_type_UID)
+            {
+                case ITEM_SWORD:
+                    base_name = "sword ";
+                break;
+                case ITEM_WAND:
+                default:
+                    base_name = "wand ";
+                break;
+            }
+            switch (best_effect)
+            {
+                case EFFECT_MOD_STRENGTH:
+                    post_name = "of power";
+                break;
+                case EFFECT_MOD_DEXTERITY:
+                    post_name = "of nimbus";
+                break;
+                case EFFECT_MOD_INTELLECT:
+                    post_name = "of the mind";
+                break;
+                case EFFECT_MOD_ALL_ATTRIBUTES:
+                    post_name = "of skill";
+                break;
+                case EFFECT_MOD_RESIST_PHYSICAL:
+                    post_name = "of the brute";
+                break;
+                case EFFECT_MOD_RESIST_ICE:
+                    post_name = "of frost";
+                break;
+                case EFFECT_MOD_RESIST_FIRE:
+                    post_name = "of flame";
+                break;
+                case EFFECT_MOD_RESIST_LIGHTNING:
+                    post_name = "of thunder";
+                break;
+                case EFFECT_MOD_RESIST_ALL:
+                    post_name = "of resistance";
+                break;
+                case EFFECT_MOD_HEALTH_REGEN:
+                    post_name = "of life";
+                break;
+                case EFFECT_MOD_HEALTH_MAX:
+                    post_name = "of constitution";
+                break;
+                case EFFECT_MOD_HEALTH_HIT:
+                    post_name = "of life leach";
+                break;
+                case EFFECT_MOD_HEALTH_KILL:
+                    post_name = "of life steal";
+                break;
+                case EFFECT_MOD_MANA_REGEN:
+                    post_name = "of hexing";
+                break;
+                case EFFECT_MOD_MANA_MAX:
+                    post_name = "of wizardry";
+                break;
+                case EFFECT_MOD_MANA_HIT:
+                    post_name = "of mana drain";
+                break;
+                case EFFECT_MOD_MANA_KILL:
+                    post_name = "of mana steal";
+                break;
+                case EFFECT_MOD_MOVEMENT_SPEED:
+                    post_name = "of speed";
+                break;
+                case EFFECT_MOD_MAGIC_FIND:
+                    post_name = "of luck";
+                break;
+                case EFFECT_MOD_GOLD_FIND:
+                    post_name = "of the leprechaun";
+                break;
+                case EFFECT_MOD_LIGHT_RADIUS:
+                    post_name = "of brilliance";
+                break;
+                case EFFECT_MOD_EXP_PER_KILL:
+                    post_name = "of wisdom";
+                break;
+                case EFFECT_MOD_SPELL_CAST_DMG:
+                    post_name = "of reflection";
+                break;
+                case EFFECT_MOD_SPELL_CAST_HIT:
+                    post_name = "of magic";
+                break;
+                case EFFECT_MOD_SPELL_CAST_KILL:
+                    post_name = "of spawning";
+                break;
+                case EFFECT_MOD_SPELL:
+                    post_name = "of Beltane";
+                break;
+                case EFFECT_MOD_SPELL_TYPE:
+                    post_name = "of Samhain";
+                break;
+                case EFFECT_MOD_SPELL_ALL:
+                    post_name = "of the Coven";
+                break;
+                default:
+                    switch (item_sub_type_UID)
+                    {
+                        case ITEM_SWORD:
+                            switch (random(6))
+                            {
+                                case 0:
+                                    post_name = "of slashing";
+                                break;
+                                case 1:
+                                    post_name = "of chopping";
+                                break;
+                                case 2:
+                                    post_name = "of decapitation";
+                                break;
+                                case 3:
+                                    post_name = "of slicing";
+                                break;
+                                case 4:
+                                    post_name = "of slaying";
+                                break;
+                                case 5:
+                                default:
+                                    post_name = "of legends";
+                                break;
+                            }
+                        break;
+                        case ITEM_WAND:
+                        default:
+                            switch (random(7))
+                            {
+                                case 0:
+                                    post_name = "of wizardry";
+                                break;
+                                case 1:
+                                    post_name = "of magic";
+                                break;
+                                case 2:
+                                    post_name = "of witchcraft";
+                                break;
+                                case 3:
+                                    post_name = "of sorcery";
+                                break;
+                                case 4:
+                                    post_name = "of alchemy";
+                                break;
+                                case 5:
+                                    post_name = "of mystery";
+                                break;
+                                case 6:
+                                default:
+                                    post_name = "of mysticism";
+                                break;
+                            }
+                        break;
+                    }
+                break;
+            }
             item_pointer->data.name = pre_name+base_name+post_name;
         break;
         default:
@@ -2616,81 +2768,6 @@ void  item_manager_class::gen_item_sounds(item_type* item_pointer,int item_type_
     }
 };
 
-
-
-
-
-/*
-
-//------------------------------ unique name generation based on randomly generated stats -------------------------------
-
-    switch (type)
-    {
-        case SHIELD:
-            temp_range = random(6);
-            if (temp_range <=  0) temp_name_suffix = "blocking";
-            if (temp_range ==  1) temp_name_suffix = "warding";
-            if (temp_range ==  2) temp_name_suffix = "stopping";
-            if (temp_range ==  3) temp_name_suffix = "safety";
-            if (temp_range ==  4) temp_name_suffix = "misery";
-            if (temp_range >=  5) temp_name_suffix = "woe";
-        break;
-        case WAND:
-            temp_range = random(7);
-            if (temp_range <=  0) temp_name_suffix = "wizardry";
-            if (temp_range ==  1) temp_name_suffix = "magic";
-            if (temp_range ==  2) temp_name_suffix = "witchcraft";
-            if (temp_range ==  3) temp_name_suffix = "sorcery";
-            if (temp_range ==  4) temp_name_suffix = "alchemy";
-            if (temp_range ==  5) temp_name_suffix = "mysticism";
-            if (temp_range >=  6) temp_name_suffix = "mystery";
-        break;
-        case SWORD:
-            temp_range = random(6);
-            if (temp_range <=  0) temp_name_suffix = "slashing";
-            if (temp_range ==  1) temp_name_suffix = "chopping";
-            if (temp_range ==  2) temp_name_suffix = "decapitation";
-            if (temp_range ==  3) temp_name_suffix = "slicing";
-            if (temp_range ==  4) temp_name_suffix = "slaying";
-            if (temp_range >=  5) temp_name_suffix = "legends";
-        break;
-        case DAGGER:
-            temp_range = random(6);
-            if (temp_range <=  0) temp_name_suffix = "stabbing";
-            if (temp_range ==  1) temp_name_suffix = "gouging";
-            if (temp_range ==  2) temp_name_suffix = "piercing";
-            if (temp_range ==  3) temp_name_suffix = "pain";
-            if (temp_range ==  4) temp_name_suffix = "blinding";
-            if (temp_range >=  5) temp_name_suffix = "sacrifice";
-        break;
-        case BOW:
-            temp_range = random(6);
-            if (temp_range <=  0) temp_name_suffix = "accuracy";
-            if (temp_range ==  1) temp_name_suffix = "silent death";
-            if (temp_range ==  2) temp_name_suffix = "raining death";
-            if (temp_range ==  3) temp_name_suffix = "precision";
-            if (temp_range ==  4) temp_name_suffix = "torture";
-            if (temp_range >=  5) temp_name_suffix = "the hunt";
-        break;
-        case SLING:
-            temp_range = random(6);
-            if (temp_range <=  0) temp_name_suffix = "rebellion";
-            if (temp_range ==  1) temp_name_suffix = "slaughter";
-            if (temp_range ==  2) temp_name_suffix = "savagery";
-            if (temp_range ==  3) temp_name_suffix = "punishment";
-            if (temp_range ==  4) temp_name_suffix = "provoking";
-            if (temp_range >=  5) temp_name_suffix = "the uprising";
-        break;
-        default:
-        break;
-    }
-    game.item[item_ID].name = temp_name_prefix + " " + temp_name_type + " of " + temp_name_suffix;
-    // add name padding...
-
-    init_item_sounds(item_ID); // add sounds to item
-};
-
-*/
 
 
 
