@@ -30,9 +30,13 @@ extern game_class         game;
 
 UI_manager_class::UI_manager_class(void)
 {
-    UI_manager_class::data.event.id             = EVENT_NONE;
-    UI_manager_class::data.event.value          = EVENT_VALUE_NONE;
-    UI_manager_class::data.number_of_UI_forms   = 0;
+    UI_manager_class::data.drag_in_progress         = false;
+    UI_manager_class::data.element_drag_in_progress = false;
+    UI_manager_class::data.element_type_over        = ITEM_NONE;
+    UI_manager_class::data.element_sub_type_over    = ITEM_NONE;
+    UI_manager_class::data.event.id                 = EVENT_NONE;
+    UI_manager_class::data.event.value              = EVENT_VALUE_NONE;
+    UI_manager_class::data.number_of_UI_forms       = 0;
 }
 
 UI_form_struct *UI_manager_class::UI_form_add(int UI_form_UID)
@@ -563,16 +567,23 @@ void UI_manager_class::render(void)
                             case UI_ELEMENT_SELECTION:
                             break;
                             case UI_ELEMENT_ITEM:
-                                if ((UI_form_pointer->data.element[element_number].value > -1)&&(!UI_form_pointer->data.element[element_number].drag_active))
+                                if ((!UI_form_pointer->data.element[element_number].drag_active)&&(UI_form_pointer->data.element[element_number].sub_type != ITEM_NONE)&&(UI_form_pointer->data.element[element_number].sub_type == game.UI_manager.data.element_type_over))
                                 {
-                                    game.texture_manager.draw(UI_form_pointer->data.element[element_number].texture.normal,false,UI_form_pointer->data.element[element_number].position.x,UI_form_pointer->data.element[element_number].position.y,UI_form_pointer->data.element[element_number].position.z,UI_form_pointer->data.element[element_number].size.x+zoom_value,UI_form_pointer->data.element[element_number].size.y+zoom_value,UI_form_pointer->data.element[element_number].texture.angle);
-                                    if ((!UI_form_pointer->data.element[element_number].drag_active)&&(UI_form_pointer->data.element[element_number].quantity > 1))
+                                    game.texture_manager.draw(UI_form_pointer->data.element[element_number].texture.highlighted,false,UI_form_pointer->data.element[element_number].position.x,UI_form_pointer->data.element[element_number].position.y,UI_form_pointer->data.element[element_number].position.z,UI_form_pointer->data.element[element_number].size.x+zoom_value,UI_form_pointer->data.element[element_number].size.y+zoom_value,UI_form_pointer->data.element[element_number].texture.angle);
+                                }
+                                if (UI_form_pointer->data.element[element_number].value > -1)
+                                {
+                                    if (!UI_form_pointer->data.element[element_number].drag_active)
                                     {
-                                        UI_form_pointer->data.element[element_number].title.text = new texture_type;
-                                        float temp_x = UI_form_pointer->data.element[element_number].position.x - (UI_form_pointer->data.element[element_number].size.x/2.5f);
-                                        float temp_y = UI_form_pointer->data.element[element_number].position.y - (UI_form_pointer->data.element[element_number].size.y/2.5f);
-                                        game.texture_manager.load_string(UI_form_pointer->data.element[element_number].title.text,game.font_manager.root,int_to_string(UI_form_pointer->data.element[element_number].quantity),0.8f,255,255,255,255,TEXTURE_RENDER_LEFT);
-                                        game.texture_manager.draw(UI_form_pointer->data.element[element_number].title.text,false,temp_x,temp_y,UI_form_pointer->data.element[element_number].position.z,UI_form_pointer->data.element[element_number].title.text->data.width,UI_form_pointer->data.element[element_number].title.text->data.height);
+                                        game.texture_manager.draw(UI_form_pointer->data.element[element_number].texture.normal,false,UI_form_pointer->data.element[element_number].position.x,UI_form_pointer->data.element[element_number].position.y,UI_form_pointer->data.element[element_number].position.z,UI_form_pointer->data.element[element_number].size.x+zoom_value,UI_form_pointer->data.element[element_number].size.y+zoom_value,UI_form_pointer->data.element[element_number].texture.angle);
+                                        if (UI_form_pointer->data.element[element_number].quantity > 1)
+                                        {
+                                            UI_form_pointer->data.element[element_number].title.text = new texture_type;
+                                            float temp_x = UI_form_pointer->data.element[element_number].position.x - (UI_form_pointer->data.element[element_number].size.x/2.5f);
+                                            float temp_y = UI_form_pointer->data.element[element_number].position.y - (UI_form_pointer->data.element[element_number].size.y/2.5f);
+                                            game.texture_manager.load_string(UI_form_pointer->data.element[element_number].title.text,game.font_manager.root,int_to_string(UI_form_pointer->data.element[element_number].quantity),0.8f,255,255,255,255,TEXTURE_RENDER_LEFT);
+                                            game.texture_manager.draw(UI_form_pointer->data.element[element_number].title.text,false,temp_x,temp_y,UI_form_pointer->data.element[element_number].position.z,UI_form_pointer->data.element[element_number].title.text->data.width,UI_form_pointer->data.element[element_number].title.text->data.height);
+                                        }
                                     }
                                 }
                                 // Font write -> Item quantity
@@ -897,6 +908,11 @@ event_struct  UI_manager_class::process_form_elements(UI_form_struct *UI_form_po
                             // ----------------- highlighting element ------------------------------
                             if (window_in_focus)
                             {
+                                if ((!game.UI_manager.data.drag_in_progress)&&(UI_form_pointer->data.element[element_number].type == UI_ELEMENT_ITEM) && (UI_form_pointer->data.element[element_number].value >= 0))
+                                {
+                                    item_type* item_pointer = game.item_manager.add_item(UI_form_pointer->data.element[element_number].value);
+                                    UI_manager_class::data.element_type_over        = item_pointer->data.type;
+                                }
                                 if ((UI_form_pointer->data.element[element_number].state  != UI_HIGHLIGHTED) && (UI_form_pointer->data.element[element_number].sound.on_mouse_over.enabled)) game.sound_manager.play(UI_form_pointer->data.element[element_number].sound.on_mouse_over.sound);
                                 UI_form_pointer->data.element[element_number].state        = UI_HIGHLIGHTED;
                             }
@@ -970,6 +986,8 @@ event_struct  UI_manager_class::process_form_elements(UI_form_struct *UI_form_po
 
 void UI_manager_class::process_forms(void)
 {
+    UI_manager_class::data.element_type_over        = ITEM_NONE;
+    UI_manager_class::data.element_sub_type_over    = ITEM_NONE;
     event_struct      return_value;
     return_value.id    = EVENT_NONE;
     return_value.value = EVENT_VALUE_NONE;

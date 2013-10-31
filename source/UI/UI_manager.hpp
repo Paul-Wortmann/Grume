@@ -62,6 +62,8 @@ struct UI_manager_data_type
     UI_cursor_class           cursor;
     bool                      drag_in_progress;
     bool                      element_drag_in_progress;
+    int                       element_type_over;
+    int                       element_sub_type_over;
     event_struct              event;
     int                       number_of_UI_forms;
     tooltip_texture_data_type tooltip_textures;

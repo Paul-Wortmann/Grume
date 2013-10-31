@@ -37,16 +37,16 @@ void setup_equipment_window(int UID)
     UI_form_pointer = new UI_form_struct;
     UI_form_pointer = game.UI_manager.UI_form_add(UID_EQUIPMENT);
 
-    UI_form_pointer->data.UID                     = UID;
-    UI_form_pointer->data.enabled                 = false;
-    UI_form_pointer->data.mouse_over_menu         = false;
-    UI_form_pointer->data.mouse_over_title        = false;
-    UI_form_pointer->data.position.x              = 0.0f;
-    UI_form_pointer->data.position.y              = 0.0f;
-    UI_form_pointer->data.position.z              = 0.0f;
-    UI_form_pointer->data.size.x                  = 0.5f;
-    UI_form_pointer->data.size.y                  = UI_form_pointer->data.size.x * 2.5f;
-    UI_form_pointer->data.texture.angle           = 0.0f;
+    UI_form_pointer->data.UID                         = UID;
+    UI_form_pointer->data.enabled                     = false;
+    UI_form_pointer->data.mouse_over_menu             = false;
+    UI_form_pointer->data.mouse_over_title            = false;
+    UI_form_pointer->data.position.x                  = 0.0f;
+    UI_form_pointer->data.position.y                  = 0.0f;
+    UI_form_pointer->data.position.z                  = 0.0f;
+    UI_form_pointer->data.size.x                      = 0.5f;
+    UI_form_pointer->data.size.y                      = UI_form_pointer->data.size.x * 2.5f;
+    UI_form_pointer->data.texture.angle               = 0.0f;
     UI_form_pointer->data.texture.base                = game.texture_manager.add_texture("data/textures/UI/menu/equipment_background.png");
     UI_form_pointer->data.texture.normal              = game.texture_manager.add_texture("data/textures/UI/menu/button_normal.png");
     UI_form_pointer->data.texture.highlighted         = game.texture_manager.add_texture("data/textures/UI/menu/button_highlighted.png");
@@ -139,7 +139,7 @@ void setup_equipment_window(int UID)
         UI_form_pointer->data.element[element_count].state                          = UI_NORMAL;
         UI_form_pointer->data.element[element_count].selected                       = false;
         UI_form_pointer->data.element[element_count].type                           = UI_ELEMENT_BUTTON;
-        UI_form_pointer->data.element[element_count].sub_type                       = 0;//ITEM_NONE;// TEST
+        UI_form_pointer->data.element[element_count].sub_type                       = ITEM_NONE;
         UI_form_pointer->data.element[element_count].quantity                       = 1;
         UI_form_pointer->data.element[element_count].value                          = 0.0f;
         UI_form_pointer->data.element[element_count].value_max                      = 0.0f;
@@ -155,24 +155,24 @@ void setup_equipment_window(int UID)
         UI_form_pointer->data.element[element_count].zoom.speed                     = 0.0f;
     }
     element_number = 0; //--- Close button ---
-    UI_form_pointer->data.element[element_number].window_UID                = UI_form_pointer->data.UID;
-    UI_form_pointer->data.element[element_number].element_UID               = element_number;
-    UI_form_pointer->data.element[element_number].title.text                = NULL;
-    UI_form_pointer->data.element[element_number].title.enabled             = false;
-    UI_form_pointer->data.element[element_number].active                    = true;
-    UI_form_pointer->data.element[element_number].type                      = UI_ELEMENT_BUTTON;
-    UI_form_pointer->data.element[element_number].zoom.enabled              = false;
+    UI_form_pointer->data.element[element_number].window_UID                  = UI_form_pointer->data.UID;
+    UI_form_pointer->data.element[element_number].element_UID                 = element_number;
+    UI_form_pointer->data.element[element_number].title.text                  = NULL;
+    UI_form_pointer->data.element[element_number].title.enabled               = false;
+    UI_form_pointer->data.element[element_number].active                      = true;
+    UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_BUTTON;
+    UI_form_pointer->data.element[element_number].zoom.enabled                = false;
     UI_form_pointer->data.element[element_number].tooltip.enabled             = false;
-    UI_form_pointer->data.element[element_number].color                     = UI_form_pointer->data.color;
-    UI_form_pointer->data.element[element_number].size.x                    = 0.1f;
-    UI_form_pointer->data.element[element_number].size.y                    = 0.1f;
-    UI_form_pointer->data.element[element_number].position.x                = UI_form_pointer->data.position.x+(UI_form_pointer->data.size.x/2.5f);
-    UI_form_pointer->data.element[element_number].position.y                = UI_form_pointer->data.position.y+(UI_form_pointer->data.size.y/2.25f);
-    UI_form_pointer->data.element[element_number].texture.normal            = game.texture_manager.add_texture("data/textures/UI/menu/close_button.png");
-    UI_form_pointer->data.element[element_number].texture.highlighted       = game.texture_manager.add_texture("data/textures/UI/menu/close_button_highlighted.png");
-    UI_form_pointer->data.element[element_number].sound                     = UI_form_pointer->data.sound;
-    UI_form_pointer->data.element[element_number].mouse_delay.maximum       = 30;
-    UI_form_pointer->data.element[element_number].font                      = UI_form_pointer->data.font;
+    UI_form_pointer->data.element[element_number].color                       = UI_form_pointer->data.color;
+    UI_form_pointer->data.element[element_number].size.x                      = 0.1f;
+    UI_form_pointer->data.element[element_number].size.y                      = 0.1f;
+    UI_form_pointer->data.element[element_number].position.x                  = UI_form_pointer->data.position.x+(UI_form_pointer->data.size.x/2.5f);
+    UI_form_pointer->data.element[element_number].position.y                  = UI_form_pointer->data.position.y+(UI_form_pointer->data.size.y/2.25f);
+    UI_form_pointer->data.element[element_number].texture.normal              = game.texture_manager.add_texture("data/textures/UI/menu/close_button.png");
+    UI_form_pointer->data.element[element_number].texture.highlighted         = game.texture_manager.add_texture("data/textures/UI/menu/close_button_highlighted.png");
+    UI_form_pointer->data.element[element_number].sound                       = UI_form_pointer->data.sound;
+    UI_form_pointer->data.element[element_number].mouse_delay.maximum         = 30;
+    UI_form_pointer->data.element[element_number].font                        = UI_form_pointer->data.font;
     element_number = 1; //--- Neck 1
     UI_form_pointer->data.element[element_number].window_UID                  = UI_form_pointer->data.UID;
     UI_form_pointer->data.element[element_number].element_UID                 = element_number;
@@ -195,6 +195,7 @@ void setup_equipment_window(int UID)
     UI_form_pointer->data.element[element_number].sound                       = UI_form_pointer->data.sound;
     UI_form_pointer->data.element[element_number].sound.on_click.enabled      = false;
     UI_form_pointer->data.element[element_number].sound.on_mouse_over.enabled = false;
+    UI_form_pointer->data.element[element_number].texture.highlighted         = game.texture_manager.add_texture("data/textures/UI/menu/equipment_highlight.png");
     UI_form_pointer->data.element[element_number].mouse_delay.maximum         = 30;
     UI_form_pointer->data.element[element_number].font                        = UI_form_pointer->data.font;
     element_number = 2; //--- Neck 2
@@ -219,6 +220,7 @@ void setup_equipment_window(int UID)
     UI_form_pointer->data.element[element_number].sound                       = UI_form_pointer->data.sound;
     UI_form_pointer->data.element[element_number].sound.on_click.enabled      = false;
     UI_form_pointer->data.element[element_number].sound.on_mouse_over.enabled = false;
+    UI_form_pointer->data.element[element_number].texture.highlighted         = game.texture_manager.add_texture("data/textures/UI/menu/equipment_highlight.png");
     UI_form_pointer->data.element[element_number].mouse_delay.maximum         = 30;
     UI_form_pointer->data.element[element_number].font                        = UI_form_pointer->data.font;
     element_number = 3; //--- Ring 1
@@ -243,6 +245,7 @@ void setup_equipment_window(int UID)
     UI_form_pointer->data.element[element_number].sound                       = UI_form_pointer->data.sound;
     UI_form_pointer->data.element[element_number].sound.on_click.enabled      = false;
     UI_form_pointer->data.element[element_number].sound.on_mouse_over.enabled = false;
+    UI_form_pointer->data.element[element_number].texture.highlighted         = game.texture_manager.add_texture("data/textures/UI/menu/equipment_highlight.png");
     UI_form_pointer->data.element[element_number].mouse_delay.maximum         = 30;
     UI_form_pointer->data.element[element_number].font                        = UI_form_pointer->data.font;
     element_number = 4; //--- Ring 2
@@ -267,6 +270,7 @@ void setup_equipment_window(int UID)
     UI_form_pointer->data.element[element_number].sound                       = UI_form_pointer->data.sound;
     UI_form_pointer->data.element[element_number].sound.on_click.enabled      = false;
     UI_form_pointer->data.element[element_number].sound.on_mouse_over.enabled = false;
+    UI_form_pointer->data.element[element_number].texture.highlighted         = game.texture_manager.add_texture("data/textures/UI/menu/equipment_highlight.png");
     UI_form_pointer->data.element[element_number].mouse_delay.maximum         = 30;
     UI_form_pointer->data.element[element_number].font                        = UI_form_pointer->data.font;
     element_number = 5; //--- Ring 3
@@ -291,6 +295,7 @@ void setup_equipment_window(int UID)
     UI_form_pointer->data.element[element_number].sound                       = UI_form_pointer->data.sound;
     UI_form_pointer->data.element[element_number].sound.on_click.enabled      = false;
     UI_form_pointer->data.element[element_number].sound.on_mouse_over.enabled = false;
+    UI_form_pointer->data.element[element_number].texture.highlighted         = game.texture_manager.add_texture("data/textures/UI/menu/equipment_highlight.png");
     UI_form_pointer->data.element[element_number].mouse_delay.maximum         = 30;
     UI_form_pointer->data.element[element_number].font                        = UI_form_pointer->data.font;
     element_number = 6; //--- Ring 4
@@ -315,6 +320,7 @@ void setup_equipment_window(int UID)
     UI_form_pointer->data.element[element_number].sound                       = UI_form_pointer->data.sound;
     UI_form_pointer->data.element[element_number].sound.on_click.enabled      = false;
     UI_form_pointer->data.element[element_number].sound.on_mouse_over.enabled = false;
+    UI_form_pointer->data.element[element_number].texture.highlighted         = game.texture_manager.add_texture("data/textures/UI/menu/equipment_highlight.png");
     UI_form_pointer->data.element[element_number].mouse_delay.maximum         = 30;
     UI_form_pointer->data.element[element_number].font                        = UI_form_pointer->data.font;
     element_number = 7; //--- Helm
@@ -339,6 +345,7 @@ void setup_equipment_window(int UID)
     UI_form_pointer->data.element[element_number].sound                       = UI_form_pointer->data.sound;
     UI_form_pointer->data.element[element_number].sound.on_click.enabled      = false;
     UI_form_pointer->data.element[element_number].sound.on_mouse_over.enabled = false;
+    UI_form_pointer->data.element[element_number].texture.highlighted         = game.texture_manager.add_texture("data/textures/UI/menu/equipment_highlight.png");
     UI_form_pointer->data.element[element_number].mouse_delay.maximum         = 30;
     UI_form_pointer->data.element[element_number].font                        = UI_form_pointer->data.font;
     element_number = 8; //--- Gloves
@@ -363,6 +370,7 @@ void setup_equipment_window(int UID)
     UI_form_pointer->data.element[element_number].sound                       = UI_form_pointer->data.sound;
     UI_form_pointer->data.element[element_number].sound.on_click.enabled      = false;
     UI_form_pointer->data.element[element_number].sound.on_mouse_over.enabled = false;
+    UI_form_pointer->data.element[element_number].texture.highlighted         = game.texture_manager.add_texture("data/textures/UI/menu/equipment_highlight.png");
     UI_form_pointer->data.element[element_number].mouse_delay.maximum         = 30;
     UI_form_pointer->data.element[element_number].font                        = UI_form_pointer->data.font;
     element_number = 9; //--- Boots
@@ -387,6 +395,7 @@ void setup_equipment_window(int UID)
     UI_form_pointer->data.element[element_number].sound                       = UI_form_pointer->data.sound;
     UI_form_pointer->data.element[element_number].sound.on_click.enabled      = false;
     UI_form_pointer->data.element[element_number].sound.on_mouse_over.enabled = false;
+    UI_form_pointer->data.element[element_number].texture.highlighted         = game.texture_manager.add_texture("data/textures/UI/menu/equipment_highlight.png");
     UI_form_pointer->data.element[element_number].mouse_delay.maximum         = 30;
     UI_form_pointer->data.element[element_number].font                        = UI_form_pointer->data.font;
     element_number = 10; //--- Belt
@@ -411,6 +420,7 @@ void setup_equipment_window(int UID)
     UI_form_pointer->data.element[element_number].sound                       = UI_form_pointer->data.sound;
     UI_form_pointer->data.element[element_number].sound.on_click.enabled      = false;
     UI_form_pointer->data.element[element_number].sound.on_mouse_over.enabled = false;
+    UI_form_pointer->data.element[element_number].texture.highlighted         = game.texture_manager.add_texture("data/textures/UI/menu/equipment_highlight.png");
     UI_form_pointer->data.element[element_number].mouse_delay.maximum         = 30;
     UI_form_pointer->data.element[element_number].font                        = UI_form_pointer->data.font;
     element_number = 11; //--- Body Armour
@@ -435,6 +445,7 @@ void setup_equipment_window(int UID)
     UI_form_pointer->data.element[element_number].sound                       = UI_form_pointer->data.sound;
     UI_form_pointer->data.element[element_number].sound.on_click.enabled      = false;
     UI_form_pointer->data.element[element_number].sound.on_mouse_over.enabled = false;
+    UI_form_pointer->data.element[element_number].texture.highlighted         = game.texture_manager.add_texture("data/textures/UI/menu/equipment_highlight.png");
     UI_form_pointer->data.element[element_number].mouse_delay.maximum         = 30;
     UI_form_pointer->data.element[element_number].font                        = UI_form_pointer->data.font;
     element_number = 12; //--- Weapon
@@ -459,6 +470,7 @@ void setup_equipment_window(int UID)
     UI_form_pointer->data.element[element_number].sound                       = UI_form_pointer->data.sound;
     UI_form_pointer->data.element[element_number].sound.on_click.enabled      = false;
     UI_form_pointer->data.element[element_number].sound.on_mouse_over.enabled = false;
+    UI_form_pointer->data.element[element_number].texture.highlighted         = game.texture_manager.add_texture("data/textures/UI/menu/equipment_highlight.png");
     UI_form_pointer->data.element[element_number].mouse_delay.maximum         = 30;
     UI_form_pointer->data.element[element_number].font                        = UI_form_pointer->data.font;
     element_number = 13; //--- Off hand
@@ -483,6 +495,7 @@ void setup_equipment_window(int UID)
     UI_form_pointer->data.element[element_number].sound                       = UI_form_pointer->data.sound;
     UI_form_pointer->data.element[element_number].sound.on_click.enabled      = false;
     UI_form_pointer->data.element[element_number].sound.on_mouse_over.enabled = false;
+    UI_form_pointer->data.element[element_number].texture.highlighted         = game.texture_manager.add_texture("data/textures/UI/menu/equipment_highlight.png");
     UI_form_pointer->data.element[element_number].mouse_delay.maximum         = 30;
     UI_form_pointer->data.element[element_number].font                        = UI_form_pointer->data.font;
 };

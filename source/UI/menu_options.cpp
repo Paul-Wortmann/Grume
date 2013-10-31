@@ -141,7 +141,7 @@ void setup_menu_options(int UID)
         UI_form_pointer->data.element[element_count].state                          = UI_NORMAL;
         UI_form_pointer->data.element[element_count].selected                       = false;
         UI_form_pointer->data.element[element_count].type                           = UI_ELEMENT_BUTTON;
-        UI_form_pointer->data.element[element_count].sub_type                       = 0;//ITEM_NONE;// TEST
+        UI_form_pointer->data.element[element_count].sub_type                       = ITEM_NONE;
         UI_form_pointer->data.element[element_count].quantity                       = 1;
         UI_form_pointer->data.element[element_count].value                          = 0.0f;
         UI_form_pointer->data.element[element_count].value_max                      = 0.0f;
