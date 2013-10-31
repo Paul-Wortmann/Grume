@@ -1,23 +1,29 @@
-Sword_00 - Sword_23
+sword_00 - sword_23
 -------------------
 CCO - Public domain
 http://opengameart.org/content/flare-item-variation-60x60-only
 
-Sword_24 - Sword_24
+sword_24 - sword_24
 -------------------
 Stephen Challener (Redshrike)
 CC-BY 3.0
 http://opengameart.org/content/flare-compatible-ish-item-icons
 http://opengameart.org/content/flare-compatible-jewelry
 
-Sword_25 - Sword_27
+sword_25 - sword_27
 -------------------
 CCO - Public domain
 blarumyrran (blarumyrran@gmail.com)
 
-Sword_28
+sword_28
 -------------------
 Author: WeaponGuy
 License(s): CC-BY 3.0
 http://opengameart.org/content/seraphim-sword
+
+sword_29 - sword_30
+-------------------
+http://opengameart.org/content/fantasy-items-set
+Author: Justin Nichol
+License(s): GPL 2.0, GPL 3.0, CC-BY-SA 3.0
 
