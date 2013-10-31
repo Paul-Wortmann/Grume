@@ -22,7 +22,7 @@ Author: Clint Bellanger
 License(s): CC-BY-SA 3.0
 http://opengameart.org/content/iron-buckler
 
-helm_10
+Shield_10
 -----------------
 http://opengameart.org/content/fantasy-items-set
 Author: Justin Nichol
