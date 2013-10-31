@@ -249,6 +249,19 @@ void item_manager_class::unequip_item(item_type* item_pointer)
 int  item_manager_class::gen_item(int item_type_UID, int item_sub_type_UID, int quality_level)
 {
     int  new_UID           = RETURN_FAIL;
+    if (item_sub_type_UID == ITEM_OFFHAND)
+    {
+        switch (random(2))
+        {
+            case 0:
+                item_sub_type_UID = ITEM_SOURCE;
+            break;
+            case 1:
+            default:
+                item_sub_type_UID = ITEM_SHIELD;
+            break;
+        }
+    }
     if (item_sub_type_UID == ITEM_WEAPON)
     {
         switch (random(2))
@@ -2703,7 +2716,7 @@ void  item_manager_class::gen_item_texture(item_type* item_pointer,int item_type
             switch (item_sub_type_UID)
             {
                 case ITEM_SHIELD:
-                    item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/shields/shield_07.png");
+                    item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/shields/shield_08.png");
                 break;
                 case ITEM_SOURCE:
                 default:
