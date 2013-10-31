@@ -2716,7 +2716,7 @@ void  item_manager_class::gen_item_texture(item_type* item_pointer,int item_type
             switch (item_sub_type_UID)
             {
                 case ITEM_SHIELD:
-                    item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/shields/shield_08.png");
+                    item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/shields/shield_07.png");
                 break;
                 case ITEM_SOURCE:
                 default:
