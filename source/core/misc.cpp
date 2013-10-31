@@ -60,7 +60,7 @@ int random_int(void)
    return(rand()%65535);
 }
 
-int    random(int range)
+int    random(int range) // Do not call with range < 1
 {
     return(rand()%range);
 }

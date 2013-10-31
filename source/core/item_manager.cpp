@@ -248,6 +248,7 @@ void item_manager_class::unequip_item(item_type* item_pointer)
 
 int  item_manager_class::gen_item(int item_type_UID, int item_sub_type_UID, int quality_level)
 {
+    if (quality_level < 1) quality_level = 1;
     int  new_UID           = RETURN_FAIL;
     if (item_sub_type_UID == ITEM_OFFHAND)
     {
