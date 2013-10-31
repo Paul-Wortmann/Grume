@@ -10,9 +10,15 @@ CC-BY 3.0
 http://opengameart.org/content/flare-compatible-ish-item-icons
 http://opengameart.org/content/flare-compatible-jewelry
 
-Ring_19 - Ring_28
+ring_19 - ring_28
 -----------------
 Clint Bellanger
 CC-BY 3.0
 http://opengameart.org/content/ring-set-precious-metals
+
+ring_29
+-----------------
+http://opengameart.org/content/fantasy-items-set
+Author: Justin Nichol
+License(s): GPL 2.0, GPL 3.0, CC-BY-SA 3.0
 
