@@ -1,12 +1,18 @@
-Armor_00 - Armor_05
+armor_00 - armor_05
 ---------------------
 Stephen Challener (Redshrike)
 CC-BY 3.0
 http://opengameart.org/content/flare-compatible-ish-item-icons
 http://opengameart.org/content/flare-compatible-jewelry
 
-Armor_06 - Armor_08
+armor_06 - armor_08
 ---------------------
 CCO - Public domain
 blarumyrran (blarumyrran@gmail.com)
+
+armor_09
+-----------------
+http://opengameart.org/content/fantasy-items-set
+Author: Justin Nichol
+License(s): GPL 2.0, GPL 3.0, CC-BY-SA 3.0
 
