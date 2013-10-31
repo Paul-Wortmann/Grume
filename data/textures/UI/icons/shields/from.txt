@@ -16,4 +16,10 @@ Author: WeaponGuy
 License(s): CC-BY 3.0
 http://opengameart.org/content/tower-shield
 
+Shield_08
+---------------------
+Author: Clint Bellanger
+License(s): CC-BY-SA 3.0
+http://opengameart.org/content/iron-buckler
+
 
