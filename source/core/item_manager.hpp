@@ -79,6 +79,7 @@
 #define ITEM_SWORD           32
 #define ITEM_DAGGER          33
 #define ITEM_BOW             34
+#define ITEM_MACE            35
 
 //--- Predefined items ---------------
 #define ITEM_POTION_S_HEALTH          120
