@@ -265,7 +265,7 @@ int  item_manager_class::gen_item(int item_type_UID, int item_sub_type_UID, int 
     }
     if (item_sub_type_UID == ITEM_WEAPON)
     {
-        switch (random(3))
+        switch (random(4))
         {
             case 0:
                 item_sub_type_UID = ITEM_SWORD;
@@ -274,6 +274,9 @@ int  item_manager_class::gen_item(int item_type_UID, int item_sub_type_UID, int 
                 item_sub_type_UID = ITEM_MACE;
             break;
             case 2:
+                item_sub_type_UID = ITEM_HAMMER;
+            break;
+            case 3:
             default:
                 item_sub_type_UID = ITEM_WAND;
             break;
@@ -2423,6 +2426,9 @@ void  item_manager_class::gen_item_name(item_type* item_pointer,int item_type_UI
                 case ITEM_SWORD:
                     base_name = "sword ";
                 break;
+                case ITEM_HAMMER:
+                    base_name = "hammer ";
+                break;
                 case ITEM_WAND:
                 default:
                     base_name = "wand ";
@@ -2581,6 +2587,30 @@ void  item_manager_class::gen_item_name(item_type* item_pointer,int item_type_UI
                                 case 5:
                                 default:
                                     post_name = "of legends";
+                                break;
+                            }
+                        break;
+                        case ITEM_HAMMER:
+                            switch (random(6))
+                            {
+                                case 0:
+                                    post_name = "of bashing";
+                                break;
+                                case 1:
+                                    post_name = "of maiming";
+                                break;
+                                case 2:
+                                    post_name = "of force";
+                                break;
+                                case 3:
+                                    post_name = "of concussion";
+                                break;
+                                case 4:
+                                    post_name = "of smashing";
+                                break;
+                                case 5:
+                                default:
+                                    post_name = "of pounding";
                                 break;
                             }
                         break;
@@ -2786,6 +2816,9 @@ void  item_manager_class::gen_item_texture(item_type* item_pointer,int item_type
                 case ITEM_SWORD:
                     item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/swords/sword_30.png");
                 break;
+                case ITEM_HAMMER:
+                    item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/hammers/hammer_00.png");
+                break;
                 case ITEM_WAND:
                 default:
                     item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/wands/wand_05.png");
@@ -2873,6 +2906,10 @@ void  item_manager_class::gen_item_sounds(item_type* item_pointer,int item_type_
                     item_pointer->data.sound_use  = game.sound_manager.add_sound("data/sound/inventory/metal_00.wav");
                 break;
                 case ITEM_SWORD:
+                    item_pointer->data.sound_move = game.sound_manager.add_sound("data/sound/inventory/metal_00.wav");
+                    item_pointer->data.sound_use  = game.sound_manager.add_sound("data/sound/inventory/metal_00.wav");
+                break;
+                case ITEM_HAMMER:
                     item_pointer->data.sound_move = game.sound_manager.add_sound("data/sound/inventory/metal_00.wav");
                     item_pointer->data.sound_use  = game.sound_manager.add_sound("data/sound/inventory/metal_00.wav");
                 break;
