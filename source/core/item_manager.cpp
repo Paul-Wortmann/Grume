@@ -2901,6 +2901,10 @@ void  item_manager_class::gen_item_sounds(item_type* item_pointer,int item_type_
         case ITEM_WEAPON:
             switch (item_sub_type_UID)
             {
+                case ITEM_BOW:
+                    item_pointer->data.sound_move = game.sound_manager.add_sound("data/sound/inventory/metal_00.wav");
+                    item_pointer->data.sound_use  = game.sound_manager.add_sound("data/sound/inventory/metal_00.wav");
+                break;
                 case ITEM_MACE:
                     item_pointer->data.sound_move = game.sound_manager.add_sound("data/sound/inventory/metal_00.wav");
                     item_pointer->data.sound_use  = game.sound_manager.add_sound("data/sound/inventory/metal_00.wav");
