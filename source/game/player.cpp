@@ -68,9 +68,9 @@ void level_class::process(void)
         level_class::current = temp_level;
         if(game.player.auto_allocate)
         {
-            game.player.offence   += 1;
-            game.player.defense   += 1;
-            game.player.intellect += 1;
+            game.player.stats.strength  += 1;
+            game.player.stats.intellect += 1;
+            game.player.stats.dexterity += 1;
         }
         else game.player.allocatable_points += 3;
 
@@ -114,19 +114,35 @@ player_class::player_class(void)
     player_class::pos_x                         = 0.0f;
     player_class::pos_y                         = 0.0f;
     player_class::pos_z                         = 0.0f;
-    player_class::offence                       = 1;
-    player_class::defense                       = 1;
-    player_class::intellect                     = 1;
-    player_class::armor                         = 0.0f;
-    player_class::critical_chance               = 0.0f;
-    player_class::damage_physical_maximum       = 2.0f;
-    player_class::damage_physical_minimum       = 1.0f;
-    player_class::damage_frost                  = 0.0f;
-    player_class::damage_flame                  = 0.0f;
-    player_class::damage_lightning              = 0.0f;
-    player_class::resistance_frost              = 0.0f;
-    player_class::resistance_flame              = 0.0f;
-    player_class::resistance_lightning          = 0.0f;
+    player_class::stats.strength                = 0;
+    player_class::stats.intellect               = 0;
+    player_class::stats.dexterity               = 0;
+    player_class::stats.armor                   = 0;
+    player_class::stats.damage                  = 0;
+    player_class::stats.damage_max              = 0;
+    player_class::stats.damage_min              = 0;
+    player_class::stats.damage_ice              = 0;
+    player_class::stats.damage_fire             = 0;
+    player_class::stats.damage_lightning        = 0;
+    player_class::stats.resist_physical         = 0;
+    player_class::stats.resist_ice              = 0;
+    player_class::stats.resist_fire             = 0;
+    player_class::stats.resist_lightning        = 0;
+    player_class::stats.health_hit              = 0;
+    player_class::stats.health_kill             = 0;
+    player_class::stats.mana_hit                = 0;
+    player_class::stats.mana_kill               = 0;
+    player_class::stats.crit_chance             = 0;
+    player_class::stats.crit_damage             = 0;
+    player_class::stats.movement_speed          = 0;
+    player_class::stats.light_radius            = 0;
+    player_class::stats.magic_find              = 0;
+    player_class::stats.gold_find               = 0;
+    player_class::stats.exp_per_kill            = 0;
+    player_class::spells.arrow_fire             = 0;
+    player_class::spells.arrow_ice              = 0;
+    player_class::spells.arrow_lightning        = 0;
+    player_class::spells.arrow_elemental        = 0;
     player_class::allocatable_points            = 0;
     player_class::auto_allocate                 = true;
 };

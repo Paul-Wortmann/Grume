@@ -70,6 +70,51 @@ class stat_class
         void              draw(void);
 };
 
+struct player_stats_type
+{
+    int strength;
+    int intellect;
+    int dexterity;
+    int armor;
+    int damage;
+    int damage_max;
+    int damage_min;
+    int damage_ice;
+    int damage_fire;
+    int damage_lightning;
+    int resist_physical;
+    int resist_ice;
+    int resist_fire;
+    int resist_lightning;
+    int health_hit;
+    int health_kill;
+    int mana_hit;
+    int mana_kill;
+    int crit_chance;
+    int crit_damage;
+    int movement_speed;
+    int light_radius;
+    int magic_find;
+    int gold_find;
+    int exp_per_kill;
+/*
+Probably make an array to hold max_cast_effects here....
+        case EFFECT_MOD_SPELL_CAST_KILL:
+        break;
+        case EFFECT_MOD_SPELL_CAST_HIT:
+        break;
+        case EFFECT_MOD_SPELL_CAST_DMG:
+*/
+};
+
+struct player_spell_type
+{
+    int arrow_fire;
+    int arrow_ice;
+    int arrow_lightning;
+    int arrow_elemental;
+};
+
 class player_class
 {
     public:
@@ -78,22 +123,12 @@ class player_class
         texture_type      *portrait;
         std::string        name;
         level_class        level;
+        stat_class         health;
+        stat_class         mana;
         unsigned long long gold;
-        int                offence;
-        int                defense;
-        int                intellect;
-        float              armor;
-        float              critical_chance;
-        float              walk_speed;
-        float              light_radius;
-        float              damage_physical_maximum;
-        float              damage_physical_minimum;
-        float              damage_frost;
-        float              damage_flame;
-        float              damage_lightning;
-        float              resistance_frost;
-        float              resistance_flame;
-        float              resistance_lightning;
+        player_stats_type  stats;
+        player_spell_type  spells;
+
         int                allocatable_points;
         bool               auto_allocate;
         float              pos_x;
@@ -103,8 +138,6 @@ class player_class
         bool               destination_set;
         bool               path_set;
         int                movement_type;
-        stat_class         mana;
-        stat_class         health;
         void               process(void);
         void               render(void);
         void               path_calculate(void);

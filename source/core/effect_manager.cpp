@@ -86,38 +86,79 @@ bool  effect_manager_class::use_effect(int  effect_UID, float value)
         case EFFECT_NONE:
         break;
         case EFFECT_MOD_STRENGTH:
+            used_item = true;
+            game.player.stats.strength += value;
         break;
         case EFFECT_MOD_INTELLECT:
+            used_item = true;
+            game.player.stats.intellect += value;
         break;
         case EFFECT_MOD_DEXTERITY:
+            used_item = true;
+            game.player.stats.dexterity += value;
         break;
         case EFFECT_MOD_ALL_ATTRIBUTES:
+            used_item = true;
+            game.player.stats.strength  += value;
+            game.player.stats.intellect += value;
+            game.player.stats.dexterity += value;
         break;
         case EFFECT_MOD_ARMOR:
+            used_item = true;
+            game.player.stats.armor += value;
         break;
         case EFFECT_MOD_DAMAGE:
+            used_item = true;
+            game.player.stats.damage += value;
         break;
         case EFFECT_MOD_DAMAGE_MAX:
+            used_item = true;
+            game.player.stats.damage_max += value;
         break;
         case EFFECT_MOD_DAMAGE_MIN:
+            used_item = true;
+            game.player.stats.damage_min += value;
         break;
         case EFFECT_MOD_DAMAGE_ICE:
+            used_item = true;
+            game.player.stats.damage_ice += value;
         break;
         case EFFECT_MOD_DAMAGE_FIRE:
+            used_item = true;
+            game.player.stats.damage_fire += value;
         break;
         case EFFECT_MOD_DAMAGE_LIGHTNING:
+            used_item = true;
+            game.player.stats.damage_lightning += value;
         break;
         case EFFECT_MOD_DAMAGE_ELEMENTAL:
+            used_item = true;
+            game.player.stats.damage_ice       += value;
+            game.player.stats.damage_fire      += value;
+            game.player.stats.damage_lightning += value;
         break;
         case EFFECT_MOD_RESIST_PHYSICAL:
+            used_item = true;
+            game.player.stats.resist_physical += value;
         break;
         case EFFECT_MOD_RESIST_ICE:
+            used_item = true;
+            game.player.stats.resist_ice += value;
         break;
         case EFFECT_MOD_RESIST_FIRE:
+            used_item = true;
+            game.player.stats.resist_fire += value;
         break;
         case EFFECT_MOD_RESIST_LIGHTNING:
+            used_item = true;
+            game.player.stats.resist_lightning += value;
         break;
         case EFFECT_MOD_RESIST_ALL:
+            used_item = true;
+            game.player.stats.resist_physical  += value;
+            game.player.stats.resist_ice       += value;
+            game.player.stats.resist_fire      += value;
+            game.player.stats.resist_lightning += value;
         break;
         case EFFECT_MOD_HEALTH:
             if (game.player.health.current < game.player.health.maximum)
@@ -137,8 +178,12 @@ bool  effect_manager_class::use_effect(int  effect_UID, float value)
             game.player.health.regeneration += value;
         break;
         case EFFECT_MOD_HEALTH_HIT:
+            used_item = true;
+            game.player.stats.health_hit += value;
         break;
         case EFFECT_MOD_HEALTH_KILL:
+            used_item = true;
+            game.player.stats.health_kill += value;
         break;
         case EFFECT_MOD_MANA:
             if (game.player.mana.current < game.player.mana.maximum)
@@ -158,24 +203,58 @@ bool  effect_manager_class::use_effect(int  effect_UID, float value)
             game.player.mana.regeneration += value;
         break;
         case EFFECT_MOD_MANA_HIT:
+            used_item = true;
+            game.player.stats.mana_hit += value;
         break;
         case EFFECT_MOD_MANA_KILL:
+            used_item = true;
+            game.player.stats.mana_kill += value;
         break;
         case EFFECT_MOD_CRIT_CHANCE:
+            used_item = true;
+            game.player.stats.crit_chance += value;
         break;
         case EFFECT_MOD_CRIT_DAMAGE:
+            used_item = true;
+            game.player.stats.crit_damage += value;
         break;
         case EFFECT_MOD_MOVEMENT_SPEED:
+            used_item = true;
+            game.player.stats.movement_speed += value;
         break;
         case EFFECT_MOD_LIGHT_RADIUS:
+            used_item = true;
+            game.player.stats.light_radius += value;
         break;
         case EFFECT_MOD_MAGIC_FIND:
+            used_item = true;
+            game.player.stats.magic_find += value;
         break;
         case EFFECT_MOD_GOLD_FIND:
+            used_item = true;
+            game.player.stats.gold_find += value;
         break;
         case EFFECT_MOD_EXP_PER_KILL:
+            used_item = true;
+            game.player.stats.exp_per_kill += value;
         break;
         case EFFECT_MOD_SPELL:
+            {
+                int spell_name = value;
+                if (value < 0)
+                {
+                    spell_name *= -1;
+                    value = -1;
+                }
+                else value = 1;
+                switch (spell_name)
+                {
+                    case SPELL_FIRE_ARROW:
+                    break;
+                    default:
+                    break;
+                }
+            }
         break;
         case EFFECT_MOD_SPELL_TYPE:
         break;
