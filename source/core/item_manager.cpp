@@ -2810,6 +2810,9 @@ void  item_manager_class::gen_item_texture(item_type* item_pointer,int item_type
         case ITEM_WEAPON:
             switch (item_sub_type_UID)
             {
+                case ITEM_BOW:
+                    item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/bows/bow_03.png");
+                break;
                 case ITEM_MACE:
                     item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/maces/mace_00.png");
                 break;
