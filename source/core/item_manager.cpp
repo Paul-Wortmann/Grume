@@ -226,22 +226,46 @@ void item_manager_class::use_item(UI_form_struct *UI_form_pointer, int element_n
 
 void item_manager_class::equip_item(item_type* item_pointer)
 {
-    for (int effect_count = 0; effect_count < item_pointer->data.number_of_item_effects; effect_count++)
+    if (item_pointer->data.equipable)
     {
-        if (item_pointer->data.equipable)
+        for (int effect_count = 0; effect_count < item_pointer->data.number_of_item_effects; effect_count++)
         {
             game.effect_manager.use_effect(item_pointer->data.effect[effect_count].type,item_pointer->data.effect[effect_count].value);
+        }
+        if (item_pointer->data.number_of_item_sockets > 0)
+        {
+            for (int socket_count = 0; socket_count < item_pointer->data.number_of_item_sockets; socket_count++)
+            {
+                if (item_pointer->data.socket[socket_count].enabled)
+                {
+                    int effect_count = 0;
+                    item_type* socket_item_pointer = game.item_manager.add_item(item_pointer->data.socket[socket_count].value);
+                    game.effect_manager.use_effect(socket_item_pointer->data.effect[effect_count].type,socket_item_pointer->data.effect[effect_count].value);
+                }
+            }
         }
     }
 };
 
 void item_manager_class::unequip_item(item_type* item_pointer)
 {
-    for (int effect_count = 0; effect_count < item_pointer->data.number_of_item_effects; effect_count++)
+    if (item_pointer->data.equipable)
     {
-        if (item_pointer->data.equipable)
+        for (int effect_count = 0; effect_count < item_pointer->data.number_of_item_effects; effect_count++)
         {
             game.effect_manager.use_effect(item_pointer->data.effect[effect_count].type,(item_pointer->data.effect[effect_count].value * -1));
+        }
+        if (item_pointer->data.number_of_item_sockets > 0)
+        {
+            for (int socket_count = 0; socket_count < item_pointer->data.number_of_item_sockets; socket_count++)
+            {
+                if (item_pointer->data.socket[socket_count].enabled)
+                {
+                    int effect_count = 0;
+                    item_type* socket_item_pointer = game.item_manager.add_item(item_pointer->data.socket[socket_count].value);
+                    game.effect_manager.use_effect(socket_item_pointer->data.effect[effect_count].type,(socket_item_pointer->data.effect[effect_count].value * -1));
+                }
+            }
         }
     }
 };
