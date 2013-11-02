@@ -277,6 +277,9 @@ int  item_manager_class::gen_item(int item_type_UID, int item_sub_type_UID, int 
                 item_sub_type_UID = ITEM_HAMMER;
             break;
             case 3:
+                item_sub_type_UID = ITEM_BOW;
+            break;
+            case 4:
             default:
                 item_sub_type_UID = ITEM_WAND;
             break;
@@ -2420,6 +2423,9 @@ void  item_manager_class::gen_item_name(item_type* item_pointer,int item_type_UI
         case ITEM_WEAPON:
             switch (item_sub_type_UID)
             {
+                case ITEM_BOW:
+                    base_name = "bow ";
+                break;
                 case ITEM_MACE:
                     base_name = "mace ";
                 break;
