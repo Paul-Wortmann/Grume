@@ -2542,6 +2542,30 @@ void  item_manager_class::gen_item_name(item_type* item_pointer,int item_type_UI
                 default:
                     switch (item_sub_type_UID)
                     {
+                        case ITEM_BOW:
+                            switch (random(6))
+                            {
+                                case 0:
+                                    post_name = "of puncturing";
+                                break;
+                                case 1:
+                                    post_name = "of piercing";
+                                break;
+                                case 2:
+                                    post_name = "of penetration";
+                                break;
+                                case 3:
+                                    post_name = "of sniping";
+                                break;
+                                case 4:
+                                    post_name = "of pricking";
+                                break;
+                                case 5:
+                                default:
+                                    post_name = "of probing";
+                                break;
+                            }
+                        break;
                         case ITEM_MACE:
                             switch (random(6))
                             {
