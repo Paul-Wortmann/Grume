@@ -43,6 +43,8 @@ void setup_player_profile(int UID)
     UI_form_pointer->data.mouse_over_menu             = false;
     UI_form_pointer->data.mouse_over_title            = false;
     UI_form_pointer->data.set_behind                  = true;
+    UI_form_pointer->data.drag_active                 = false;
+    UI_form_pointer->data.drag_enabled                = false;
     UI_form_pointer->data.size.x                      =  0.448f;
     UI_form_pointer->data.size.y                      =  UI_form_pointer->data.size.x * 0.5f;
     UI_form_pointer->data.position.x                  = -1.0f + (UI_form_pointer->data.size.x / 2.0f);
