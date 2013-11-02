@@ -133,6 +133,7 @@ void   graphics_class::init_gl(void)
 
 bool   graphics_class::init_sdl(void)
 {
+    if (game.core.window_pointer) SDL_DestroyWindow(game.core.window_pointer);
     char SDL_VID_WIN_POS[] = "SDL_VIDEO_WINDOW_POS";
     char SDL_VID_CENTERD[] = "SDL_VIDEO_CENTERED=1";
     bool return_value = true;
@@ -158,7 +159,7 @@ bool   graphics_class::init_sdl(void)
     SDL_GL_SetAttribute( SDL_GL_BLUE_SIZE, 8 );
     SDL_GL_SetAttribute( SDL_GL_DEPTH_SIZE, 16 );
     SDL_GL_SetAttribute( SDL_GL_DOUBLEBUFFER, 1 );
-    if (game.core.config.display_fullscreen) game.core.config.display_flags = SDL_WINDOW_OPENGL | SDL_WINDOW_FULLSCREEN;
+    if (game.core.config.display_fullscreen) game.core.config.display_flags = SDL_WINDOW_OPENGL | SDL_WINDOW_FULLSCREEN_DESKTOP;
     else game.core.config.display_flags = SDL_WINDOW_OPENGL;
     game.core.window_pointer = SDL_CreateWindow(game.core.application_name,SDL_WINDOWPOS_CENTERED,SDL_WINDOWPOS_CENTERED,game.core.config.display_resolution_x, game.core.config.display_resolution_y, game.core.config.display_flags );
     game.core.glcontext = SDL_GL_CreateContext(game.core.window_pointer);
@@ -167,6 +168,7 @@ bool   graphics_class::init_sdl(void)
         game.core.log.file_write("Video mode set failed.");
         return_value = false;
     }
+    else game.texture_manager.reload_textures();
     return(return_value);
 };
 
