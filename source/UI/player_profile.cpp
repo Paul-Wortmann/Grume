@@ -204,7 +204,7 @@ void setup_player_profile(int UID)
     UI_form_pointer->data.element[element_number].title.enabled             = false;
     UI_form_pointer->data.element[element_number].active                    = true;
     UI_form_pointer->data.element[element_number].type                      = UI_ELEMENT_BAR;
-    UI_form_pointer->data.element[element_number].value                     = 0;
+    UI_form_pointer->data.element[element_number].value                     = 100;
     UI_form_pointer->data.element[element_number].value_max                 = 100;
     UI_form_pointer->data.element[element_number].zoom.enabled              = false;
     UI_form_pointer->data.element[element_number].tooltip.enabled           = true;
@@ -274,26 +274,33 @@ void update_player_profile(UI_form_struct *UI_form_pointer)
     UI_form_pointer->data.element[element_number].texture.normal      = game.player.portrait;
     UI_form_pointer->data.element[element_number].texture.highlighted = game.player.portrait;
     element_number = 2; //--- Player health bar ---
-    UI_form_pointer->data.element[element_number].value = game.player.health.current;
+    UI_form_pointer->data.element[element_number].value     = game.player.health.current;
+    UI_form_pointer->data.element[element_number].value_max = game.player.health.maximum;
     element_number = 3; //--- Player mana bar ---
-    UI_form_pointer->data.element[element_number].value = game.player.mana.current;
+    UI_form_pointer->data.element[element_number].value     = game.player.mana.current;
+    UI_form_pointer->data.element[element_number].value_max = game.player.mana.maximum;
 };
 
 void process_player_profile(UI_form_struct *UI_form_pointer)
 {
+    int temp_value     = 0;
     int element_number = 0; //--- Player name ---
     std::string temp_string = "";
     temp_string  = "   " + game.player.name;
     game.texture_manager.load_string(UI_form_pointer->data.element[element_number].tooltip.text,game.font_manager.root,temp_string,0.8f,255,255,255,255,TEXTURE_RENDER_LEFT+TEXTURE_RENDER_DOWN);
     //Update the health and mana bars.
     element_number = 2; //--- Player health bar ---
-    UI_form_pointer->data.element[element_number].value = game.player.health.current;
-    temp_string  = "   " + int_to_string(game.player.health.current);
+    UI_form_pointer->data.element[element_number].value     = game.player.health.current;
+    UI_form_pointer->data.element[element_number].value_max = game.player.health.maximum;
+    temp_value = (game.player.health.current / game.player.health.maximum) * 100;
+    temp_string  = "   " + int_to_string(temp_value);
     temp_string += "%";
     game.texture_manager.load_string(UI_form_pointer->data.element[element_number].tooltip.text,game.font_manager.root,temp_string,0.8f,255,255,255,255,TEXTURE_RENDER_LEFT+TEXTURE_RENDER_DOWN);
     element_number     = 3; //--- Player mana bar ---
-    UI_form_pointer->data.element[element_number].value = game.player.mana.current;
-    temp_string  = "   " + int_to_string(game.player.mana.current);
+    UI_form_pointer->data.element[element_number].value     = game.player.mana.current;
+    UI_form_pointer->data.element[element_number].value_max = game.player.mana.maximum;
+    temp_value = (game.player.mana.current / game.player.mana.maximum) * 100;
+    temp_string  = "   " + int_to_string(temp_value);
     temp_string += "%";
     game.texture_manager.load_string(UI_form_pointer->data.element[element_number].tooltip.text,game.font_manager.root,temp_string,0.8f,255,255,255,255,TEXTURE_RENDER_LEFT+TEXTURE_RENDER_DOWN);
     if(UI_form_pointer->data.event.id > EVENT_NONE)
