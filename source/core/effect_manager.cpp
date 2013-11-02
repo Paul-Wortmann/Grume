@@ -132,7 +132,8 @@ bool  effect_manager_class::use_effect(int  effect_UID, float value)
         break;
         case EFFECT_MOD_HEALTH_REGEN:
             used_item = true;
-            if (value >= 1) value = value / 1000.0f;
+            if (value >=  1) value = value / 1000.0f;
+            if (value <= -1) value = value / 1000.0f;
             game.player.health.regeneration += value;
         break;
         case EFFECT_MOD_HEALTH_HIT:
@@ -152,7 +153,8 @@ bool  effect_manager_class::use_effect(int  effect_UID, float value)
         break;
         case EFFECT_MOD_MANA_REGEN:
             used_item = true;
-            if (value >= 1) value = value / 1000.0f;
+            if (value >=  1) value = value / 1000.0f;
+            if (value <= -1) value = value / 1000.0f;
             game.player.mana.regeneration += value;
         break;
         case EFFECT_MOD_MANA_HIT:
