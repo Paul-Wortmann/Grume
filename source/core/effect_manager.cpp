@@ -85,6 +85,40 @@ bool  effect_manager_class::use_effect(int  effect_UID, float value)
     {
         case EFFECT_NONE:
         break;
+        case EFFECT_MOD_STRENGTH:
+        break;
+        case EFFECT_MOD_INTELLECT:
+        break;
+        case EFFECT_MOD_DEXTERITY:
+        break;
+        case EFFECT_MOD_ALL_ATTRIBUTES:
+        break;
+        case EFFECT_MOD_ARMOR:
+        break;
+        case EFFECT_MOD_DAMAGE:
+        break;
+        case EFFECT_MOD_DAMAGE_MAX:
+        break;
+        case EFFECT_MOD_DAMAGE_MIN:
+        break;
+        case EFFECT_MOD_DAMAGE_ICE:
+        break;
+        case EFFECT_MOD_DAMAGE_FIRE:
+        break;
+        case EFFECT_MOD_DAMAGE_LIGHTNING:
+        break;
+        case EFFECT_MOD_DAMAGE_ELEMENTAL:
+        break;
+        case EFFECT_MOD_RESIST_PHYSICAL:
+        break;
+        case EFFECT_MOD_RESIST_ICE:
+        break;
+        case EFFECT_MOD_RESIST_FIRE:
+        break;
+        case EFFECT_MOD_RESIST_LIGHTNING:
+        break;
+        case EFFECT_MOD_RESIST_ALL:
+        break;
         case EFFECT_MOD_HEALTH:
             if (game.player.health.current < game.player.health.maximum)
             {
@@ -100,6 +134,10 @@ bool  effect_manager_class::use_effect(int  effect_UID, float value)
             used_item = true;
             if (value >= 1) value = value / 1000.0f;
             game.player.health.regeneration += value;
+        break;
+        case EFFECT_MOD_HEALTH_HIT:
+        break;
+        case EFFECT_MOD_HEALTH_KILL:
         break;
         case EFFECT_MOD_MANA:
             if (game.player.mana.current < game.player.mana.maximum)
@@ -117,7 +155,38 @@ bool  effect_manager_class::use_effect(int  effect_UID, float value)
             if (value >= 1) value = value / 1000.0f;
             game.player.mana.regeneration += value;
         break;
+        case EFFECT_MOD_MANA_HIT:
+        break;
+        case EFFECT_MOD_MANA_KILL:
+        break;
+        case EFFECT_MOD_CRIT_CHANCE:
+        break;
+        case EFFECT_MOD_CRIT_DAMAGE:
+        break;
+        case EFFECT_MOD_MOVEMENT_SPEED:
+        break;
+        case EFFECT_MOD_LIGHT_RADIUS:
+        break;
+        case EFFECT_MOD_MAGIC_FIND:
+        break;
+        case EFFECT_MOD_GOLD_FIND:
+        break;
+        case EFFECT_MOD_EXP_PER_KILL:
+        break;
+        case EFFECT_MOD_SPELL:
+        break;
+        case EFFECT_MOD_SPELL_TYPE:
+        break;
+        case EFFECT_MOD_SPELL_ALL:
+        break;
+        case EFFECT_MOD_SPELL_CAST_KILL:
+        break;
+        case EFFECT_MOD_SPELL_CAST_HIT:
+        break;
+        case EFFECT_MOD_SPELL_CAST_DMG:
+        break;
         default:
+            game.core.log.file_write("Unable to use effect -> ",effect_UID);
         break;
     }
     return (used_item);
