@@ -309,25 +309,6 @@ int  item_manager_class::gen_item(int item_type_UID, int item_sub_type_UID, int 
             break;
         }
     }
-    if (item_sub_type_UID == ITEM_SPELL_BOOK)
-    {
-        switch (random(4))
-        {
-            case 0:
-                item_sub_type_UID = SPELL_FIRE_ARROW;
-            break;
-            case 1:
-                item_sub_type_UID = SPELL_ICE_ARROW;
-            break;
-            case 2:
-                item_sub_type_UID = SPELL_LIGHTNING_ARROW;
-            break;
-            case 3:
-            default:
-                item_sub_type_UID = SPELL_ELEMENTAL_ARROW;
-            break;
-        }
-    }
     if (item_sub_type_UID == ITEM_GEM)
     {
         switch (random(5))
@@ -574,11 +555,45 @@ int  item_manager_class::gen_item(int item_type_UID, int item_sub_type_UID, int 
                         if ((item_pointer->data.effect[1].enabled) && (item_pointer->data.effect[1].value <= 0)) item_pointer->data.effect[1].value = 1;
                     break;
                     case ITEM_SPELL_BOOK:
-                        item_pointer->data.consumable             = true;
-                        item_pointer->data.quantity               = 1;
-                        item_pointer->data.quantity_max           = 1;
-                        if (item_pointer->data.number_of_item_sockets > 0) item_pointer->data.number_of_item_sockets = 0;
-                        if (item_pointer->data.number_of_item_effects > 1) item_pointer->data.number_of_item_effects = 1;
+                        {
+                            int spell_level = 4;
+                            if (quality_level <= (MAX_ITEM_QUALITY*0.2f))                                              spell_level = 4;
+                            if ((quality_level > (MAX_ITEM_QUALITY*0.2f))&&(quality_level <= (MAX_ITEM_QUALITY*0.4f))) spell_level = 8;
+                            if ((quality_level > (MAX_ITEM_QUALITY*0.4f))&&(quality_level <= (MAX_ITEM_QUALITY*0.6f))) spell_level = 12;
+                            if ((quality_level > (MAX_ITEM_QUALITY*0.6f))&&(quality_level <= (MAX_ITEM_QUALITY*0.8f))) spell_level = 16;
+                            if (quality_level > (MAX_ITEM_QUALITY*0.8f))                                               spell_level = 20;
+                            spell_level = 4; // remove for testing-------------!!!!----
+                            if (item_sub_type_UID == ITEM_SPELL_BOOK)
+                            {
+                                switch (random(spell_level))
+                                {
+                                    case 0:
+                                        item_sub_type_UID = SPELL_FIRE_ARROW;
+                                    break;
+                                    case 1:
+                                        item_sub_type_UID = SPELL_ICE_ARROW;
+                                    break;
+                                    case 2:
+                                        item_sub_type_UID = SPELL_LIGHTNING_ARROW;
+                                    break;
+                                    case 3:
+                                        item_sub_type_UID = SPELL_ELEMENTAL_ARROW;
+                                    break;
+
+                                    default:
+                                        item_sub_type_UID = SPELL_ELEMENTAL_ARROW;
+                                    break;
+                                }
+                            }
+                            item_pointer->data.consumable             = true;
+                            item_pointer->data.quantity               = 1;
+                            item_pointer->data.quantity_max           = 1;
+                            if (item_pointer->data.number_of_item_sockets > 0) item_pointer->data.number_of_item_sockets = 0;
+                            if (item_pointer->data.number_of_item_effects > 1) item_pointer->data.number_of_item_effects = 1;
+                            item_pointer->data.effect[0].enabled      = true;
+                            item_pointer->data.effect[0].type         = EFFECT_MOD_SPELL;
+                            item_pointer->data.effect[0].value        = item_sub_type_UID;
+                        }
                     break;
                     case ITEM_BELT:
                         item_pointer->data.equipable              = true;
