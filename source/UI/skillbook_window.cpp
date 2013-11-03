@@ -182,18 +182,21 @@ void setup_skillbook_window(int UID)
     UI_form_pointer->data.element[element_number].title.image->data.render_positioning = TEXTURE_RENDER_LEFT+TEXTURE_RENDER_DOWN;
     UI_form_pointer->data.element[element_number].dragable                    = true;
     UI_form_pointer->data.element[element_number].active                      = true;
-    UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_ITEM;
+    UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_ITEM; // UI_ELEMENT_SPELL ???????
+    UI_form_pointer->data.element[element_number].sub_type                    = SPELL_FIRE_ARROW;
     UI_form_pointer->data.element[element_number].zoom.enabled                = false;
-    UI_form_pointer->data.element[element_number].value                       = -1;
+    UI_form_pointer->data.element[element_number].value                       = 1;
     UI_form_pointer->data.element[element_number].color                       = UI_form_pointer->data.color;
-    UI_form_pointer->data.element[element_number].size.x                      = 0.050f;
-    UI_form_pointer->data.element[element_number].size.y                      = 0.085f;
-    UI_form_pointer->data.element[element_number].position.x                  = UI_form_pointer->data.position.x-(UI_form_pointer->data.size.x/2.82f);
-    UI_form_pointer->data.element[element_number].position.y                  = UI_form_pointer->data.position.y+(UI_form_pointer->data.size.y/3.26f);
+    UI_form_pointer->data.element[element_number].size.x                      = (UI_form_pointer->data.size.x/8.2f);
+    UI_form_pointer->data.element[element_number].size.y                      = (UI_form_pointer->data.size.y/10.4f);
+    UI_form_pointer->data.element[element_number].position.x                  = UI_form_pointer->data.position.x-(UI_form_pointer->data.size.x/2.98f);
+    UI_form_pointer->data.element[element_number].position.y                  = UI_form_pointer->data.position.y+(UI_form_pointer->data.size.y/3.72f);
     UI_form_pointer->data.element[element_number].sound                       = UI_form_pointer->data.sound;
     UI_form_pointer->data.element[element_number].sound.on_click.enabled      = false;
     UI_form_pointer->data.element[element_number].sound.on_mouse_over.enabled = false;
     UI_form_pointer->data.element[element_number].mouse_delay.maximum         = 30;
+    UI_form_pointer->data.element[element_number].texture.normal              = game.texture_manager.add_texture("data/textures/UI/icons/spells/fire-arrows-1.png");
+    UI_form_pointer->data.element[element_number].texture.highlighted         = game.texture_manager.add_texture("data/textures/UI/icons/spells/fire-arrows-1.png");
     UI_form_pointer->data.element[element_number].font                        = UI_form_pointer->data.font;
 };
 
