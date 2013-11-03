@@ -133,7 +133,12 @@ void   graphics_class::init_gl(void)
 
 bool   graphics_class::init_sdl(void)
 {
-    if (game.core.window_pointer) SDL_DestroyWindow(game.core.window_pointer);
+    bool reload_textures = false;
+    if (game.core.window_pointer)
+    {
+        reload_textures = true;
+        SDL_DestroyWindow(game.core.window_pointer);
+    }
     char SDL_VID_WIN_POS[] = "SDL_VIDEO_WINDOW_POS";
     char SDL_VID_CENTERD[] = "SDL_VIDEO_CENTERED=1";
     bool return_value = true;
@@ -168,7 +173,7 @@ bool   graphics_class::init_sdl(void)
         game.core.log.file_write("Video mode set failed.");
         return_value = false;
     }
-    else game.texture_manager.reload_textures();
+    if (reload_textures) game.texture_manager.reload_textures();
     return(return_value);
 };
 
