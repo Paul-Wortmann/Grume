@@ -81,6 +81,7 @@
 #define ITEM_BOW             34
 #define ITEM_MACE            35
 #define ITEM_HAMMER          36
+#define ITEM_AXE             37
 
 //--- Spell IDs ---
 //Reserved for spells IDs 100-199
