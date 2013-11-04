@@ -70,9 +70,6 @@ spell_type* spell_manager_class::add_spell(int spell_UID)
     spell_manager_class::last->data.name                   = "";
     spell_manager_class::last->data.UID                    = spell_UID;
     spell_manager_class::last->data.passive                = false;
-    spell_manager_class::last->data.type                   = EFFECT_NONE;
-    spell_manager_class::last->data.sub_type               = EFFECT_NONE;
-    spell_manager_class::last->data.value                  = 0;
     spell_manager_class::number_of_spells++;
     return(spell_manager_class::last);
 };

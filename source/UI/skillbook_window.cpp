@@ -182,10 +182,10 @@ void setup_skillbook_window(int UID)
     UI_form_pointer->data.element[element_number].title.image->data.render_positioning = TEXTURE_RENDER_LEFT+TEXTURE_RENDER_DOWN;
     UI_form_pointer->data.element[element_number].dragable                    = true;
     UI_form_pointer->data.element[element_number].active                      = true;
-    UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_ITEM; // UI_ELEMENT_SPELL ???????
-    UI_form_pointer->data.element[element_number].sub_type                    = SPELL_FIRE_ARROW;
+    UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_ITEM;
+    UI_form_pointer->data.element[element_number].sub_type                    = ITEM_SPELL;
     UI_form_pointer->data.element[element_number].zoom.enabled                = false;
-    UI_form_pointer->data.element[element_number].value                       = 1;
+    UI_form_pointer->data.element[element_number].value                       = SPELL_ARROW_FIRE;
     UI_form_pointer->data.element[element_number].color                       = UI_form_pointer->data.color;
     UI_form_pointer->data.element[element_number].size.x                      = (UI_form_pointer->data.size.x/8.2f);
     UI_form_pointer->data.element[element_number].size.y                      = (UI_form_pointer->data.size.y/10.4f);
@@ -202,6 +202,11 @@ void setup_skillbook_window(int UID)
 
 void process_skillbook_window(UI_form_struct *UI_form_pointer)
 {
+    int element_number = 1;
+    UI_form_pointer->data.element[element_number].quantity = game.player.spells.arrow_fire;
+
+
+
     if(UI_form_pointer->data.event.id > EVENT_NONE)
     {
         switch (UI_form_pointer->data.event.id)

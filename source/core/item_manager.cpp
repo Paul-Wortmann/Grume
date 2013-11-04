@@ -568,20 +568,20 @@ int  item_manager_class::gen_item(int item_type_UID, int item_sub_type_UID, int 
                                 switch (random(spell_level))
                                 {
                                     case 0:
-                                        item_sub_type_UID = SPELL_FIRE_ARROW;
+                                        item_sub_type_UID = SPELL_ARROW_FIRE;
                                     break;
                                     case 1:
-                                        item_sub_type_UID = SPELL_ICE_ARROW;
+                                        item_sub_type_UID = SPELL_ARROW_ICE;
                                     break;
                                     case 2:
-                                        item_sub_type_UID = SPELL_LIGHTNING_ARROW;
+                                        item_sub_type_UID = SPELL_ARROW_LIGHTNING;
                                     break;
                                     case 3:
-                                        item_sub_type_UID = SPELL_ELEMENTAL_ARROW;
+                                        item_sub_type_UID = SPELL_ARROW_ELEMENTAL;
                                     break;
 
                                     default:
-                                        item_sub_type_UID = SPELL_ELEMENTAL_ARROW;
+                                        item_sub_type_UID = SPELL_ARROW_ELEMENTAL;
                                     break;
                                 }
                             }
@@ -1645,16 +1645,16 @@ void  item_manager_class::gen_item_name(item_type* item_pointer,int item_type_UI
             base_name = "tome ";
             switch (item_sub_type_UID)
             {
-                case SPELL_FIRE_ARROW:
+                case SPELL_ARROW_FIRE:
                     post_name = "of fire arrow";
                 break;
-                case SPELL_ICE_ARROW:
+                case SPELL_ARROW_ICE:
                     post_name = "of ice arrow";
                 break;
-                case SPELL_LIGHTNING_ARROW:
+                case SPELL_ARROW_LIGHTNING:
                     post_name = "of lightning arrow";
                 break;
-                case SPELL_ELEMENTAL_ARROW:
+                case SPELL_ARROW_ELEMENTAL:
                     post_name = "of elemental arrow";
                 break;
                 default:
@@ -2826,16 +2826,16 @@ void  item_manager_class::gen_item_texture(item_type* item_pointer,int item_type
         case ITEM_SPELL_BOOK:
             switch (item_sub_type_UID)
             {
-                case SPELL_FIRE_ARROW:
+                case SPELL_ARROW_FIRE:
                     item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/books/book_05.png");
                 break;
-                case SPELL_ICE_ARROW:
+                case SPELL_ARROW_ICE:
                     item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/books/book_19.png");
                 break;
-                case SPELL_LIGHTNING_ARROW:
+                case SPELL_ARROW_LIGHTNING:
                     item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/books/book_15.png");
                 break;
-                case SPELL_ELEMENTAL_ARROW:
+                case SPELL_ARROW_ELEMENTAL:
                     item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/books/book_17.png");
                 break;
                 default:

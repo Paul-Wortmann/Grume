@@ -29,21 +29,57 @@
 #include "../core/texture_manager.hpp"
 #include "../core/sound_manager.hpp"
 
+#define MAX_SPELL_EFFECTS          4
+#define MAX_SPELL_LEVEL            30
+
 #define SPELL_NONE                 0
-#define SPELL_FIRE_ARROW           1
-#define SPELL_ICE_ARROW            2
-#define SPELL_LIGHTNING_ARROW      3
-#define SPELL_ELEMENTAL_ARROW      4
+#define SPELL_ARROW_FIRE           101
+#define SPELL_ARROW_ICE            102
+#define SPELL_ARROW_LIGHTNING      103
+#define SPELL_ARROW_ELEMENTAL      104
+
+struct spell_sound_type
+{
+    sound_type*    on_use;
+    sound_type*    on_move;
+};
+
+struct spell_image_type
+{
+    int              number;
+    texture_type*    level_0;
+    texture_type*    level_1;
+    texture_type*    level_2;
+};
+
+struct spell_cooldown_type
+{
+    float            maximum;
+    float            current;
+    float            rate;
+};
+
+struct spell_level_type
+{
+    int              maximum;
+    int              current;
+    float            experience;
+    int              next;
+};
 
 struct spell_data_type
 {
-    bool             active;
-    std::string      name;
-    bool             passive;
-    int              sub_type;
-    int              type;
-    int              UID;
-    int              value;
+    bool                active;
+    spell_cooldown_type cooldown;
+    spell_cooldown_type duration;
+    spell_image_type    image;
+    spell_level_type    level;
+    std::string         name;
+    float               mana_cost;
+    bool                passive;
+    int                 projectile_number;
+    spell_sound_type    sound;
+    int                 UID;
 };
 
 struct spell_type
@@ -51,7 +87,6 @@ struct spell_type
     spell_data_type  data;
     spell_type      *next;
 };
-
 
 class spell_manager_class
 {
@@ -64,6 +99,7 @@ class spell_manager_class
         spell_type         *spell;
         spell_type         *add_spell(int spell_UID);
         bool                use_spell(int  spell_UID, float value);
+        void                process_spells(void);
 };
 
 #endif // SPELL_MANAGER_H

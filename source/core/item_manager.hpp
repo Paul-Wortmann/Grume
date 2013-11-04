@@ -82,16 +82,19 @@
 #define ITEM_MACE            35
 #define ITEM_HAMMER          36
 
+//--- Spell IDs ---
+//Reserved for spells IDs 100-199
+
 //--- Predefined items ---------------
-#define ITEM_POTION_S_HEALTH          120
-#define ITEM_POTION_M_HEALTH          121
-#define ITEM_POTION_L_HEALTH          122
-#define ITEM_POTION_S_MANA            123
-#define ITEM_POTION_M_MANA            124
-#define ITEM_POTION_L_MANA            125
-#define ITEM_POTION_S_REJUVENATION    126
-#define ITEM_POTION_M_REJUVENATION    127
-#define ITEM_POTION_L_REJUVENATION    128
+#define ITEM_POTION_S_HEALTH          220
+#define ITEM_POTION_M_HEALTH          221
+#define ITEM_POTION_L_HEALTH          222
+#define ITEM_POTION_S_MANA            223
+#define ITEM_POTION_M_MANA            224
+#define ITEM_POTION_L_MANA            225
+#define ITEM_POTION_S_REJUVENATION    226
+#define ITEM_POTION_M_REJUVENATION    227
+#define ITEM_POTION_L_REJUVENATION    228
 
 struct item_socket_type
 {

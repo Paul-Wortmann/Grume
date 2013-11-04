@@ -249,7 +249,17 @@ bool  effect_manager_class::use_effect(int  effect_UID, float value)
                 else value = 1;
                 switch (spell_name)
                 {
-                    case SPELL_FIRE_ARROW:
+                    case SPELL_ARROW_FIRE:
+                        game.player.spells.arrow_fire += value;
+                    break;
+                    case SPELL_ARROW_ICE:
+                        game.player.spells.arrow_ice += value;
+                    break;
+                    case SPELL_ARROW_LIGHTNING:
+                        game.player.spells.arrow_lightning += value;
+                    break;
+                    case SPELL_ARROW_ELEMENTAL:
+                        game.player.spells.arrow_elemental += value;
                     break;
                     default:
                     break;

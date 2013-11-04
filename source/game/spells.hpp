@@ -26,35 +26,13 @@
 #define SPELLS_H
 
 #include <string>
-
-const int MAX_SPELLS = 24;
+#include "../core/spell_manager.hpp"
+#include "../UI/UI_types.hpp"
 
 class spell_class
 {
     public:
-        std::string name;
-        int         item_type;
-        int         level;
-        int         image_level_1;
-        int         image_level_2;
-        int         image_level_3;
-        int         experience_level_1;
-        int         experience_level_2;
-        int         experience_level_3;
-        int         experience;
-        float       cooldown_speed;
-        float       cooldown_count;
-        float       mana_cost_level_1;
-        float       mana_cost_level_2;
-        float       mana_cost_level_3;
-        float       cooldown_level_1;
-        float       cooldown_level_2;
-        float       cooldown_level_3;
-        spell_class(void);
-       ~spell_class(void);
+        void            init_spells(void);
 };
 
-void    init_spells(void);
-
 #endif // SPELLS_H
-

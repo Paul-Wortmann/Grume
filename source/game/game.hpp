@@ -93,7 +93,7 @@ class game_class
         save_game_class             save_05;
         save_game_class             save_06;
         save_game_class             save_07;
-        spell_class                 spell[MAX_SPELLS];
+        spell_class                 spell;
         int                         state;
         sound_manager_class         sound_manager;
         spell_manager_class         spell_manager;
