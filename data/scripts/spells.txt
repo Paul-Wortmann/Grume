@@ -1,0 +1,14 @@
+# These spells will be loaded after the hard coded spells,
+# using a UID lower than 1000 may overwrite hard coded spells.
+# Use uppercase for the key names and bool values. (TRUE/FALSE)
+# All vaules need to be within ""s.
+# Will add hard coded items to this list at a later date.
+
+# --------- test spell -------------------
+UID              = "1001"
+NAME             = "TEST SPELL"
+EFFECT_0         = "1001"
+IMAGE            = "data/textures/UI/icons/potions/potion_20.png"
+SOUND_MOVE       = "data/sound/inventory/bottle_01.wav"
+SOUND_USE        = "data/sound/inventory/bubble_01.wav"
+
