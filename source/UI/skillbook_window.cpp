@@ -679,6 +679,12 @@ void process_skillbook_window(UI_form_struct *UI_form_pointer)
 {
     int element_number = 1;
     UI_form_pointer->data.element[element_number].quantity = game.player.spells.arrow_fire;
+    element_number = 2;
+    UI_form_pointer->data.element[element_number].quantity = game.player.spells.arrow_ice;
+    element_number = 3;
+    UI_form_pointer->data.element[element_number].quantity = game.player.spells.arrow_lightning;
+    element_number = 4;
+    UI_form_pointer->data.element[element_number].quantity = game.player.spells.arrow_elemental;
 
 
 
