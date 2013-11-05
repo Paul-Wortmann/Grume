@@ -63,7 +63,6 @@ spell_type* spell_manager_class::add_spell(int spell_UID)
         }
         spell_manager_class::last->next = new spell_type;
         spell_manager_class::last = spell_manager_class::last->next;
-        spell_manager_class::last->next = new spell_type;
         spell_manager_class::last->next = NULL;
     }
     spell_manager_class::last->data.active                 = false;
