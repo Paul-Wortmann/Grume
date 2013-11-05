@@ -210,7 +210,7 @@ void setup_skillbook_window(int UID)
     UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_ITEM;
     UI_form_pointer->data.element[element_number].sub_type                    = ITEM_SPELL;
     UI_form_pointer->data.element[element_number].zoom.enabled                = false;
-    UI_form_pointer->data.element[element_number].value                       = SPELL_ARROW_FIRE;
+    UI_form_pointer->data.element[element_number].value                       = SPELL_ARROW_ICE;
     UI_form_pointer->data.element[element_number].color                       = UI_form_pointer->data.color;
     UI_form_pointer->data.element[element_number].size.x                      = (UI_form_pointer->data.size.x/6.2f);
     UI_form_pointer->data.element[element_number].size.y                      = (UI_form_pointer->data.size.y/9.3f);
@@ -235,7 +235,7 @@ void setup_skillbook_window(int UID)
     UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_ITEM;
     UI_form_pointer->data.element[element_number].sub_type                    = ITEM_SPELL;
     UI_form_pointer->data.element[element_number].zoom.enabled                = false;
-    UI_form_pointer->data.element[element_number].value                       = SPELL_ARROW_FIRE;
+    UI_form_pointer->data.element[element_number].value                       = SPELL_ARROW_LIGHTNING;
     UI_form_pointer->data.element[element_number].color                       = UI_form_pointer->data.color;
     UI_form_pointer->data.element[element_number].size.x                      = (UI_form_pointer->data.size.x/6.2f);
     UI_form_pointer->data.element[element_number].size.y                      = (UI_form_pointer->data.size.y/9.3f);
@@ -260,7 +260,7 @@ void setup_skillbook_window(int UID)
     UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_ITEM;
     UI_form_pointer->data.element[element_number].sub_type                    = ITEM_SPELL;
     UI_form_pointer->data.element[element_number].zoom.enabled                = false;
-    UI_form_pointer->data.element[element_number].value                       = SPELL_ARROW_FIRE;
+    UI_form_pointer->data.element[element_number].value                       = SPELL_ARROW_ELEMENTAL;
     UI_form_pointer->data.element[element_number].color                       = UI_form_pointer->data.color;
     UI_form_pointer->data.element[element_number].size.x                      = (UI_form_pointer->data.size.x/6.2f);
     UI_form_pointer->data.element[element_number].size.y                      = (UI_form_pointer->data.size.y/9.3f);
@@ -285,7 +285,7 @@ void setup_skillbook_window(int UID)
     UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_ITEM;
     UI_form_pointer->data.element[element_number].sub_type                    = ITEM_SPELL;
     UI_form_pointer->data.element[element_number].zoom.enabled                = false;
-    UI_form_pointer->data.element[element_number].value                       = SPELL_ARROW_FIRE;
+    UI_form_pointer->data.element[element_number].value                       = -1;
     UI_form_pointer->data.element[element_number].color                       = UI_form_pointer->data.color;
     UI_form_pointer->data.element[element_number].size.x                      = (UI_form_pointer->data.size.x/6.2f);
     UI_form_pointer->data.element[element_number].size.y                      = (UI_form_pointer->data.size.y/9.3f);
@@ -310,7 +310,7 @@ void setup_skillbook_window(int UID)
     UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_ITEM;
     UI_form_pointer->data.element[element_number].sub_type                    = ITEM_SPELL;
     UI_form_pointer->data.element[element_number].zoom.enabled                = false;
-    UI_form_pointer->data.element[element_number].value                       = SPELL_ARROW_FIRE;
+    UI_form_pointer->data.element[element_number].value                       = -1;
     UI_form_pointer->data.element[element_number].color                       = UI_form_pointer->data.color;
     UI_form_pointer->data.element[element_number].size.x                      = (UI_form_pointer->data.size.x/6.2f);
     UI_form_pointer->data.element[element_number].size.y                      = (UI_form_pointer->data.size.y/9.3f);
@@ -335,7 +335,7 @@ void setup_skillbook_window(int UID)
     UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_ITEM;
     UI_form_pointer->data.element[element_number].sub_type                    = ITEM_SPELL;
     UI_form_pointer->data.element[element_number].zoom.enabled                = false;
-    UI_form_pointer->data.element[element_number].value                       = SPELL_ARROW_FIRE;
+    UI_form_pointer->data.element[element_number].value                       = -1;
     UI_form_pointer->data.element[element_number].color                       = UI_form_pointer->data.color;
     UI_form_pointer->data.element[element_number].size.x                      = (UI_form_pointer->data.size.x/6.2f);
     UI_form_pointer->data.element[element_number].size.y                      = (UI_form_pointer->data.size.y/9.3f);
@@ -360,7 +360,7 @@ void setup_skillbook_window(int UID)
     UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_ITEM;
     UI_form_pointer->data.element[element_number].sub_type                    = ITEM_SPELL;
     UI_form_pointer->data.element[element_number].zoom.enabled                = false;
-    UI_form_pointer->data.element[element_number].value                       = SPELL_ARROW_FIRE;
+    UI_form_pointer->data.element[element_number].value                       = -1;
     UI_form_pointer->data.element[element_number].color                       = UI_form_pointer->data.color;
     UI_form_pointer->data.element[element_number].size.x                      = (UI_form_pointer->data.size.x/6.2f);
     UI_form_pointer->data.element[element_number].size.y                      = (UI_form_pointer->data.size.y/9.3f);
@@ -385,7 +385,7 @@ void setup_skillbook_window(int UID)
     UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_ITEM;
     UI_form_pointer->data.element[element_number].sub_type                    = ITEM_SPELL;
     UI_form_pointer->data.element[element_number].zoom.enabled                = false;
-    UI_form_pointer->data.element[element_number].value                       = SPELL_ARROW_FIRE;
+    UI_form_pointer->data.element[element_number].value                       = -1;
     UI_form_pointer->data.element[element_number].color                       = UI_form_pointer->data.color;
     UI_form_pointer->data.element[element_number].size.x                      = (UI_form_pointer->data.size.x/6.2f);
     UI_form_pointer->data.element[element_number].size.y                      = (UI_form_pointer->data.size.y/9.3f);
@@ -410,7 +410,7 @@ void setup_skillbook_window(int UID)
     UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_ITEM;
     UI_form_pointer->data.element[element_number].sub_type                    = ITEM_SPELL;
     UI_form_pointer->data.element[element_number].zoom.enabled                = false;
-    UI_form_pointer->data.element[element_number].value                       = SPELL_ARROW_FIRE;
+    UI_form_pointer->data.element[element_number].value                       = -1;
     UI_form_pointer->data.element[element_number].color                       = UI_form_pointer->data.color;
     UI_form_pointer->data.element[element_number].size.x                      = (UI_form_pointer->data.size.x/6.2f);
     UI_form_pointer->data.element[element_number].size.y                      = (UI_form_pointer->data.size.y/9.3f);
@@ -435,7 +435,7 @@ void setup_skillbook_window(int UID)
     UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_ITEM;
     UI_form_pointer->data.element[element_number].sub_type                    = ITEM_SPELL;
     UI_form_pointer->data.element[element_number].zoom.enabled                = false;
-    UI_form_pointer->data.element[element_number].value                       = SPELL_ARROW_FIRE;
+    UI_form_pointer->data.element[element_number].value                       = -1;
     UI_form_pointer->data.element[element_number].color                       = UI_form_pointer->data.color;
     UI_form_pointer->data.element[element_number].size.x                      = (UI_form_pointer->data.size.x/6.2f);
     UI_form_pointer->data.element[element_number].size.y                      = (UI_form_pointer->data.size.y/9.3f);
@@ -460,7 +460,7 @@ void setup_skillbook_window(int UID)
     UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_ITEM;
     UI_form_pointer->data.element[element_number].sub_type                    = ITEM_SPELL;
     UI_form_pointer->data.element[element_number].zoom.enabled                = false;
-    UI_form_pointer->data.element[element_number].value                       = SPELL_ARROW_FIRE;
+    UI_form_pointer->data.element[element_number].value                       = -1;
     UI_form_pointer->data.element[element_number].color                       = UI_form_pointer->data.color;
     UI_form_pointer->data.element[element_number].size.x                      = (UI_form_pointer->data.size.x/6.2f);
     UI_form_pointer->data.element[element_number].size.y                      = (UI_form_pointer->data.size.y/9.3f);
@@ -485,7 +485,7 @@ void setup_skillbook_window(int UID)
     UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_ITEM;
     UI_form_pointer->data.element[element_number].sub_type                    = ITEM_SPELL;
     UI_form_pointer->data.element[element_number].zoom.enabled                = false;
-    UI_form_pointer->data.element[element_number].value                       = SPELL_ARROW_FIRE;
+    UI_form_pointer->data.element[element_number].value                       = -1;
     UI_form_pointer->data.element[element_number].color                       = UI_form_pointer->data.color;
     UI_form_pointer->data.element[element_number].size.x                      = (UI_form_pointer->data.size.x/6.2f);
     UI_form_pointer->data.element[element_number].size.y                      = (UI_form_pointer->data.size.y/9.3f);
@@ -510,7 +510,7 @@ void setup_skillbook_window(int UID)
     UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_ITEM;
     UI_form_pointer->data.element[element_number].sub_type                    = ITEM_SPELL;
     UI_form_pointer->data.element[element_number].zoom.enabled                = false;
-    UI_form_pointer->data.element[element_number].value                       = SPELL_ARROW_FIRE;
+    UI_form_pointer->data.element[element_number].value                       = -1;
     UI_form_pointer->data.element[element_number].color                       = UI_form_pointer->data.color;
     UI_form_pointer->data.element[element_number].size.x                      = (UI_form_pointer->data.size.x/6.2f);
     UI_form_pointer->data.element[element_number].size.y                      = (UI_form_pointer->data.size.y/9.3f);
@@ -535,7 +535,7 @@ void setup_skillbook_window(int UID)
     UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_ITEM;
     UI_form_pointer->data.element[element_number].sub_type                    = ITEM_SPELL;
     UI_form_pointer->data.element[element_number].zoom.enabled                = false;
-    UI_form_pointer->data.element[element_number].value                       = SPELL_ARROW_FIRE;
+    UI_form_pointer->data.element[element_number].value                       = -1;
     UI_form_pointer->data.element[element_number].color                       = UI_form_pointer->data.color;
     UI_form_pointer->data.element[element_number].size.x                      = (UI_form_pointer->data.size.x/6.2f);
     UI_form_pointer->data.element[element_number].size.y                      = (UI_form_pointer->data.size.y/9.3f);
@@ -560,7 +560,7 @@ void setup_skillbook_window(int UID)
     UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_ITEM;
     UI_form_pointer->data.element[element_number].sub_type                    = ITEM_SPELL;
     UI_form_pointer->data.element[element_number].zoom.enabled                = false;
-    UI_form_pointer->data.element[element_number].value                       = SPELL_ARROW_FIRE;
+    UI_form_pointer->data.element[element_number].value                       = -1;
     UI_form_pointer->data.element[element_number].color                       = UI_form_pointer->data.color;
     UI_form_pointer->data.element[element_number].size.x                      = (UI_form_pointer->data.size.x/6.2f);
     UI_form_pointer->data.element[element_number].size.y                      = (UI_form_pointer->data.size.y/9.3f);
@@ -585,7 +585,7 @@ void setup_skillbook_window(int UID)
     UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_ITEM;
     UI_form_pointer->data.element[element_number].sub_type                    = ITEM_SPELL;
     UI_form_pointer->data.element[element_number].zoom.enabled                = false;
-    UI_form_pointer->data.element[element_number].value                       = SPELL_ARROW_FIRE;
+    UI_form_pointer->data.element[element_number].value                       = -1;
     UI_form_pointer->data.element[element_number].color                       = UI_form_pointer->data.color;
     UI_form_pointer->data.element[element_number].size.x                      = (UI_form_pointer->data.size.x/6.2f);
     UI_form_pointer->data.element[element_number].size.y                      = (UI_form_pointer->data.size.y/9.3f);
@@ -610,7 +610,7 @@ void setup_skillbook_window(int UID)
     UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_ITEM;
     UI_form_pointer->data.element[element_number].sub_type                    = ITEM_SPELL;
     UI_form_pointer->data.element[element_number].zoom.enabled                = false;
-    UI_form_pointer->data.element[element_number].value                       = SPELL_ARROW_FIRE;
+    UI_form_pointer->data.element[element_number].value                       = -1;
     UI_form_pointer->data.element[element_number].color                       = UI_form_pointer->data.color;
     UI_form_pointer->data.element[element_number].size.x                      = (UI_form_pointer->data.size.x/6.2f);
     UI_form_pointer->data.element[element_number].size.y                      = (UI_form_pointer->data.size.y/9.3f);
@@ -635,7 +635,7 @@ void setup_skillbook_window(int UID)
     UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_ITEM;
     UI_form_pointer->data.element[element_number].sub_type                    = ITEM_SPELL;
     UI_form_pointer->data.element[element_number].zoom.enabled                = false;
-    UI_form_pointer->data.element[element_number].value                       = SPELL_ARROW_FIRE;
+    UI_form_pointer->data.element[element_number].value                       = -1;
     UI_form_pointer->data.element[element_number].color                       = UI_form_pointer->data.color;
     UI_form_pointer->data.element[element_number].size.x                      = (UI_form_pointer->data.size.x/6.2f);
     UI_form_pointer->data.element[element_number].size.y                      = (UI_form_pointer->data.size.y/9.3f);
@@ -660,7 +660,7 @@ void setup_skillbook_window(int UID)
     UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_ITEM;
     UI_form_pointer->data.element[element_number].sub_type                    = ITEM_SPELL;
     UI_form_pointer->data.element[element_number].zoom.enabled                = false;
-    UI_form_pointer->data.element[element_number].value                       = SPELL_ARROW_FIRE;
+    UI_form_pointer->data.element[element_number].value                       = -1;
     UI_form_pointer->data.element[element_number].color                       = UI_form_pointer->data.color;
     UI_form_pointer->data.element[element_number].size.x                      = (UI_form_pointer->data.size.x/6.2f);
     UI_form_pointer->data.element[element_number].size.y                      = (UI_form_pointer->data.size.y/9.3f);

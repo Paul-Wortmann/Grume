@@ -1200,133 +1200,144 @@ void UI_manager_class::process(void)
 
 void UI_manager_class::swap_elements(int UI_form_UID_src, int UI_element_src, int UI_form_UID_dst, int UI_element_dst)
 {
-    bool posible_swap        = true;
-    bool allow_swap_elements = false;
-    if (((UI_form_UID_src == UID_INVENTORY) || (UI_form_UID_src == UID_ACTIONBAR) || (UI_form_UID_src == UID_EQUIPMENT)) &&
-        ((UI_form_UID_dst == UID_INVENTORY) || (UI_form_UID_dst == UID_ACTIONBAR) || (UI_form_UID_dst == UID_EQUIPMENT))) allow_swap_elements = true;
-    UI_form_struct* UI_form_UID_src_pointer = game.UI_manager.UI_form_get(UI_form_UID_src);
-    UI_form_struct* UI_form_UID_dst_pointer = game.UI_manager.UI_form_get(UI_form_UID_dst);
-    item_type* item_pointer_src = game.item_manager.add_item(UI_form_UID_src_pointer->data.element[UI_element_src].value);
-    item_type* item_pointer_dst = game.item_manager.add_item(UI_form_UID_dst_pointer->data.element[UI_element_dst].value);
-    //game.core.log.file_write("Moving element from - ",UI_form_UID_src," - ",UI_element_src," to - ",UI_form_UID_dst," - ",UI_element_dst);
-    if     ((allow_swap_elements)&&(UI_form_UID_src == UI_form_UID_dst)&&(UI_element_src == UI_element_dst)) allow_swap_elements = false;
-    if     ((allow_swap_elements)
-        &&  (UI_form_UID_src_pointer->data.element[UI_element_src].type == UI_ELEMENT_ITEM)
-        &&  (UI_form_UID_dst_pointer->data.element[UI_element_dst].type == UI_ELEMENT_ITEM))
+    if (UI_form_UID_src == UID_SKILLBOOK)
     {
-        if     ((UI_form_UID_src_pointer->data.element[UI_element_src].value == UI_form_UID_dst_pointer->data.element[UI_element_dst].value)
-            &&  (item_pointer_src->data.stackable)
-            &&  (item_pointer_src->data.quantity_max > 1)
-            &&  (UI_form_UID_src_pointer->data.element[UI_element_src].quantity >= 1)
-            &&  (UI_form_UID_dst_pointer->data.element[UI_element_dst].quantity >= 1)
-            &&  (UI_form_UID_src_pointer->data.element[UI_element_src].value >= 0)
-            &&  (UI_form_UID_dst_pointer->data.element[UI_element_dst].value >= 0))
+        if (UI_form_UID_dst == UID_ACTIONBAR)
         {
-            UI_form_UID_dst_pointer->data.element[UI_element_dst].quantity += UI_form_UID_src_pointer->data.element[UI_element_src].quantity;
-            if (UI_form_UID_dst_pointer->data.element[UI_element_dst].quantity > item_pointer_src->data.quantity_max)
-            {
-                UI_form_UID_src_pointer->data.element[UI_element_src].quantity  = UI_form_UID_dst_pointer->data.element[UI_element_dst].quantity - item_pointer_src->data.quantity_max;
-                UI_form_UID_dst_pointer->data.element[UI_element_dst].quantity  = item_pointer_src->data.quantity_max;
-            }
-            else UI_form_UID_src_pointer->data.element[UI_element_src].quantity = 0;
-            if (UI_form_UID_src_pointer->data.element[UI_element_src].quantity <= 0)
-            {
-                UI_form_UID_src_pointer->data.element[UI_element_src].quantity = 0;
-                UI_form_UID_src_pointer->data.element[UI_element_src].value    = -1;
-            }
-            posible_swap = false;
+
         }
-        if   ((item_pointer_dst->data.number_of_item_sockets >= 1) && (item_pointer_src->data.type == ITEM_GEM))
+    }
+    else
+    {
+        bool posible_swap        = true;
+        bool allow_swap_elements = false;
+        if (((UI_form_UID_src == UID_INVENTORY) || (UI_form_UID_src == UID_ACTIONBAR) || (UI_form_UID_src == UID_EQUIPMENT)) &&
+            ((UI_form_UID_dst == UID_INVENTORY) || (UI_form_UID_dst == UID_ACTIONBAR) || (UI_form_UID_dst == UID_EQUIPMENT))) allow_swap_elements = true;
+        UI_form_struct* UI_form_UID_src_pointer = game.UI_manager.UI_form_get(UI_form_UID_src);
+        UI_form_struct* UI_form_UID_dst_pointer = game.UI_manager.UI_form_get(UI_form_UID_dst);
+        //if (UI_form_UID_src_pointer->data.element[UI_element_src].value == UI_ELEMENT_ITEM)
+        item_type* item_pointer_src = game.item_manager.add_item(UI_form_UID_src_pointer->data.element[UI_element_src].value);
+        item_type* item_pointer_dst = game.item_manager.add_item(UI_form_UID_dst_pointer->data.element[UI_element_dst].value);
+        //game.core.log.file_write("Moving element from - ",UI_form_UID_src," - ",UI_element_src," to - ",UI_form_UID_dst," - ",UI_element_dst);
+        if     ((allow_swap_elements)&&(UI_form_UID_src == UI_form_UID_dst)&&(UI_element_src == UI_element_dst)) allow_swap_elements = false;
+        if     ((allow_swap_elements)
+            &&  (UI_form_UID_src_pointer->data.element[UI_element_src].type == UI_ELEMENT_ITEM)
+            &&  (UI_form_UID_dst_pointer->data.element[UI_element_dst].type == UI_ELEMENT_ITEM))
         {
-            bool socket_done = false;
-            for (int socket_count = 0; socket_count < item_pointer_dst->data.number_of_item_sockets+1; socket_count++)
+            if     ((UI_form_UID_src_pointer->data.element[UI_element_src].value == UI_form_UID_dst_pointer->data.element[UI_element_dst].value)
+                &&  (item_pointer_src->data.stackable)
+                &&  (item_pointer_src->data.quantity_max > 1)
+                &&  (UI_form_UID_src_pointer->data.element[UI_element_src].quantity >= 1)
+                &&  (UI_form_UID_dst_pointer->data.element[UI_element_dst].quantity >= 1)
+                &&  (UI_form_UID_src_pointer->data.element[UI_element_src].value >= 0)
+                &&  (UI_form_UID_dst_pointer->data.element[UI_element_dst].value >= 0))
             {
-                if ((!socket_done)&&(!item_pointer_dst->data.socket[socket_count].enabled))
+                UI_form_UID_dst_pointer->data.element[UI_element_dst].quantity += UI_form_UID_src_pointer->data.element[UI_element_src].quantity;
+                if (UI_form_UID_dst_pointer->data.element[UI_element_dst].quantity > item_pointer_src->data.quantity_max)
                 {
-                    socket_done = true;
-                    item_pointer_dst->data.socket[socket_count].enabled = true;
-                    item_pointer_dst->data.socket[socket_count].type    = item_pointer_src->data.type;
-                    item_pointer_dst->data.socket[socket_count].value   = item_pointer_src->data.UID;
+                    UI_form_UID_src_pointer->data.element[UI_element_src].quantity  = UI_form_UID_dst_pointer->data.element[UI_element_dst].quantity - item_pointer_src->data.quantity_max;
+                    UI_form_UID_dst_pointer->data.element[UI_element_dst].quantity  = item_pointer_src->data.quantity_max;
+                }
+                else UI_form_UID_src_pointer->data.element[UI_element_src].quantity = 0;
+                if (UI_form_UID_src_pointer->data.element[UI_element_src].quantity <= 0)
+                {
                     UI_form_UID_src_pointer->data.element[UI_element_src].quantity = 0;
                     UI_form_UID_src_pointer->data.element[UI_element_src].value    = -1;
                 }
+                posible_swap = false;
             }
-            if (socket_done) posible_swap = false;
-        }
-        if (posible_swap)
-        {
-            bool allow_swap = false;
-            switch (UI_form_UID_dst)
+            if   ((item_pointer_dst->data.number_of_item_sockets >= 1) && (item_pointer_src->data.type == ITEM_GEM))
             {
-                case UID_ACTIONBAR:
-                    if ((item_pointer_src->data.type     == ITEM_POTION) ||
-                        (item_pointer_src->data.sub_type == ITEM_POTION_SMALL) ||
-                        (item_pointer_src->data.sub_type == ITEM_POTION_MEDIUM) ||
-                        (item_pointer_src->data.sub_type == ITEM_POTION_LARGE) ||
-                        (item_pointer_src->data.type     == ITEM_SPELL))
-                            allow_swap = true;
-                break;
-                case UID_INVENTORY:
-                    switch (UI_form_UID_src)
-                    {
-                        case UID_ACTIONBAR:
-                    if  ((item_pointer_dst->data.type     != ITEM_SPELL)
-                    and ((item_pointer_dst->data.type     == ITEM_POTION) ||
-                         (item_pointer_dst->data.sub_type == ITEM_POTION_SMALL) ||
-                         (item_pointer_dst->data.sub_type == ITEM_POTION_MEDIUM) ||
-                         (item_pointer_dst->data.sub_type == ITEM_POTION_LARGE) ||
-                         (item_pointer_dst->data.type     == ITEM_SPELL) ||
-                         (UI_form_UID_dst_pointer->data.element[UI_element_dst].value == -1)))
-                            allow_swap = true;
-                        break;
-                        case UID_EQUIPMENT:
-                            if ((item_pointer_src->data.type == UI_form_UID_dst_pointer->data.element[UI_element_dst].sub_type) ||
-                                (UI_form_UID_dst_pointer->data.element[UI_element_dst].value == -1))
-                                    allow_swap = true;
-                        break;
-                        case UID_INVENTORY:
-                            allow_swap = true;
-                        break;
-                        default:
-                            allow_swap = false;
-                        break;
-                    }
-                break;
-                case UID_EQUIPMENT:
-                    if (item_pointer_src->data.type == UI_form_UID_dst_pointer->data.element[UI_element_dst].sub_type)
-                        allow_swap = true;
-                break;
-                default:
-                    allow_swap = false;
-                break;
-            }
-            if (allow_swap)
-            {
-                int temp_value    = UI_form_UID_src_pointer->data.element[UI_element_src].value;
-                int temp_quantity = UI_form_UID_src_pointer->data.element[UI_element_src].quantity;
-                texture_type* temp_texture_pointer = UI_form_UID_src_pointer->data.element[UI_element_src].texture.normal;
-                UI_form_UID_src_pointer->data.element[UI_element_src].value          = UI_form_UID_dst_pointer->data.element[UI_element_dst].value;
-                UI_form_UID_src_pointer->data.element[UI_element_src].quantity       = UI_form_UID_dst_pointer->data.element[UI_element_dst].quantity;
-                UI_form_UID_src_pointer->data.element[UI_element_src].texture.normal = UI_form_UID_dst_pointer->data.element[UI_element_dst].texture.normal;
-                UI_form_UID_dst_pointer->data.element[UI_element_dst].value          = temp_value;
-                UI_form_UID_dst_pointer->data.element[UI_element_dst].quantity       = temp_quantity;
-                UI_form_UID_dst_pointer->data.element[UI_element_dst].texture.normal = temp_texture_pointer;
-                if ((UI_form_UID_src == UID_EQUIPMENT) || (UI_form_UID_dst == UID_EQUIPMENT))
+                bool socket_done = false;
+                for (int socket_count = 0; socket_count < item_pointer_dst->data.number_of_item_sockets+1; socket_count++)
                 {
-                    if (UI_form_UID_dst == UID_EQUIPMENT)
+                    if ((!socket_done)&&(!item_pointer_dst->data.socket[socket_count].enabled))
                     {
-                        game.item_manager.equip_item  (item_pointer_src);
-                        game.item_manager.unequip_item(item_pointer_dst);
+                        socket_done = true;
+                        item_pointer_dst->data.socket[socket_count].enabled = true;
+                        item_pointer_dst->data.socket[socket_count].type    = item_pointer_src->data.type;
+                        item_pointer_dst->data.socket[socket_count].value   = item_pointer_src->data.UID;
+                        UI_form_UID_src_pointer->data.element[UI_element_src].quantity = 0;
+                        UI_form_UID_src_pointer->data.element[UI_element_src].value    = -1;
                     }
-                    else
+                }
+                if (socket_done) posible_swap = false;
+            }
+            if (posible_swap)
+            {
+                bool allow_swap = false;
+                switch (UI_form_UID_dst)
+                {
+                    case UID_ACTIONBAR:
+                        if ((item_pointer_src->data.type     == ITEM_POTION) ||
+                            (item_pointer_src->data.sub_type == ITEM_POTION_SMALL) ||
+                            (item_pointer_src->data.sub_type == ITEM_POTION_MEDIUM) ||
+                            (item_pointer_src->data.sub_type == ITEM_POTION_LARGE) ||
+                            (item_pointer_src->data.type     == ITEM_SPELL))
+                                allow_swap = true;
+                    break;
+                    case UID_INVENTORY:
+                        switch (UI_form_UID_src)
+                        {
+                            case UID_ACTIONBAR:
+                        if  ((item_pointer_dst->data.type     != ITEM_SPELL)
+                        and ((item_pointer_dst->data.type     == ITEM_POTION) ||
+                             (item_pointer_dst->data.sub_type == ITEM_POTION_SMALL) ||
+                             (item_pointer_dst->data.sub_type == ITEM_POTION_MEDIUM) ||
+                             (item_pointer_dst->data.sub_type == ITEM_POTION_LARGE) ||
+                             (item_pointer_dst->data.type     == ITEM_SPELL) ||
+                             (UI_form_UID_dst_pointer->data.element[UI_element_dst].value == -1)))
+                                allow_swap = true;
+                            break;
+                            case UID_EQUIPMENT:
+                                if ((item_pointer_src->data.type == UI_form_UID_dst_pointer->data.element[UI_element_dst].sub_type) ||
+                                    (UI_form_UID_dst_pointer->data.element[UI_element_dst].value == -1))
+                                        allow_swap = true;
+                            break;
+                            case UID_INVENTORY:
+                                allow_swap = true;
+                            break;
+                            default:
+                                allow_swap = false;
+                            break;
+                        }
+                    break;
+                    case UID_EQUIPMENT:
+                        if (item_pointer_src->data.type == UI_form_UID_dst_pointer->data.element[UI_element_dst].sub_type)
+                            allow_swap = true;
+                    break;
+                    default:
+                        allow_swap = false;
+                    break;
+                }
+                if (allow_swap)
+                {
+                    int temp_value    = UI_form_UID_src_pointer->data.element[UI_element_src].value;
+                    int temp_quantity = UI_form_UID_src_pointer->data.element[UI_element_src].quantity;
+                    texture_type* temp_texture_pointer = UI_form_UID_src_pointer->data.element[UI_element_src].texture.normal;
+                    UI_form_UID_src_pointer->data.element[UI_element_src].value          = UI_form_UID_dst_pointer->data.element[UI_element_dst].value;
+                    UI_form_UID_src_pointer->data.element[UI_element_src].quantity       = UI_form_UID_dst_pointer->data.element[UI_element_dst].quantity;
+                    UI_form_UID_src_pointer->data.element[UI_element_src].texture.normal = UI_form_UID_dst_pointer->data.element[UI_element_dst].texture.normal;
+                    UI_form_UID_dst_pointer->data.element[UI_element_dst].value          = temp_value;
+                    UI_form_UID_dst_pointer->data.element[UI_element_dst].quantity       = temp_quantity;
+                    UI_form_UID_dst_pointer->data.element[UI_element_dst].texture.normal = temp_texture_pointer;
+                    if ((UI_form_UID_src == UID_EQUIPMENT) || (UI_form_UID_dst == UID_EQUIPMENT))
                     {
-                        game.item_manager.equip_item  (item_pointer_dst);
-                        game.item_manager.unequip_item(item_pointer_src);
+                        if (UI_form_UID_dst == UID_EQUIPMENT)
+                        {
+                            game.item_manager.equip_item  (item_pointer_src);
+                            game.item_manager.unequip_item(item_pointer_dst);
+                        }
+                        else
+                        {
+                            game.item_manager.equip_item  (item_pointer_dst);
+                            game.item_manager.unequip_item(item_pointer_src);
+                        }
                     }
                 }
             }
+            if (item_pointer_src->data.sound_move) game.sound_manager.play(item_pointer_src->data.sound_move);
         }
-        if (item_pointer_src->data.sound_move) game.sound_manager.play(item_pointer_src->data.sound_move);
+        else game.sound_manager.play(item_pointer_src->data.sound_move);
     }
-    else game.sound_manager.play(item_pointer_src->data.sound_move);
 };
