@@ -181,7 +181,7 @@ void setup_skillbook_window(int UID)
     UI_form_pointer->data.element[element_number].title.image                 = game.texture_manager.add_texture("data/textures/UI/menu/item_stat_background.png");
     UI_form_pointer->data.element[element_number].title.image->data.render_positioning = TEXTURE_RENDER_LEFT+TEXTURE_RENDER_DOWN;
     UI_form_pointer->data.element[element_number].dragable                    = true;
-    UI_form_pointer->data.element[element_number].active                      = true;
+    UI_form_pointer->data.element[element_number].active                      = false;
     UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_ITEM;
     UI_form_pointer->data.element[element_number].sub_type                    = ITEM_SPELL;
     UI_form_pointer->data.element[element_number].zoom.enabled                = false;
@@ -206,7 +206,7 @@ void setup_skillbook_window(int UID)
     UI_form_pointer->data.element[element_number].title.image                 = game.texture_manager.add_texture("data/textures/UI/menu/item_stat_background.png");
     UI_form_pointer->data.element[element_number].title.image->data.render_positioning = TEXTURE_RENDER_LEFT+TEXTURE_RENDER_DOWN;
     UI_form_pointer->data.element[element_number].dragable                    = true;
-    UI_form_pointer->data.element[element_number].active                      = true;
+    UI_form_pointer->data.element[element_number].active                      = false;
     UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_ITEM;
     UI_form_pointer->data.element[element_number].sub_type                    = ITEM_SPELL;
     UI_form_pointer->data.element[element_number].zoom.enabled                = false;
@@ -231,7 +231,7 @@ void setup_skillbook_window(int UID)
     UI_form_pointer->data.element[element_number].title.image                 = game.texture_manager.add_texture("data/textures/UI/menu/item_stat_background.png");
     UI_form_pointer->data.element[element_number].title.image->data.render_positioning = TEXTURE_RENDER_LEFT+TEXTURE_RENDER_DOWN;
     UI_form_pointer->data.element[element_number].dragable                    = true;
-    UI_form_pointer->data.element[element_number].active                      = true;
+    UI_form_pointer->data.element[element_number].active                      = false;
     UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_ITEM;
     UI_form_pointer->data.element[element_number].sub_type                    = ITEM_SPELL;
     UI_form_pointer->data.element[element_number].zoom.enabled                = false;
@@ -256,7 +256,7 @@ void setup_skillbook_window(int UID)
     UI_form_pointer->data.element[element_number].title.image                 = game.texture_manager.add_texture("data/textures/UI/menu/item_stat_background.png");
     UI_form_pointer->data.element[element_number].title.image->data.render_positioning = TEXTURE_RENDER_LEFT+TEXTURE_RENDER_DOWN;
     UI_form_pointer->data.element[element_number].dragable                    = true;
-    UI_form_pointer->data.element[element_number].active                      = true;
+    UI_form_pointer->data.element[element_number].active                      = false;
     UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_ITEM;
     UI_form_pointer->data.element[element_number].sub_type                    = ITEM_SPELL;
     UI_form_pointer->data.element[element_number].zoom.enabled                = false;
@@ -281,7 +281,7 @@ void setup_skillbook_window(int UID)
     UI_form_pointer->data.element[element_number].title.image                 = game.texture_manager.add_texture("data/textures/UI/menu/item_stat_background.png");
     UI_form_pointer->data.element[element_number].title.image->data.render_positioning = TEXTURE_RENDER_LEFT+TEXTURE_RENDER_DOWN;
     UI_form_pointer->data.element[element_number].dragable                    = true;
-    UI_form_pointer->data.element[element_number].active                      = true;
+    UI_form_pointer->data.element[element_number].active                      = false;
     UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_ITEM;
     UI_form_pointer->data.element[element_number].sub_type                    = ITEM_SPELL;
     UI_form_pointer->data.element[element_number].zoom.enabled                = false;
@@ -306,7 +306,7 @@ void setup_skillbook_window(int UID)
     UI_form_pointer->data.element[element_number].title.image                 = game.texture_manager.add_texture("data/textures/UI/menu/item_stat_background.png");
     UI_form_pointer->data.element[element_number].title.image->data.render_positioning = TEXTURE_RENDER_LEFT+TEXTURE_RENDER_DOWN;
     UI_form_pointer->data.element[element_number].dragable                    = true;
-    UI_form_pointer->data.element[element_number].active                      = true;
+    UI_form_pointer->data.element[element_number].active                      = false;
     UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_ITEM;
     UI_form_pointer->data.element[element_number].sub_type                    = ITEM_SPELL;
     UI_form_pointer->data.element[element_number].zoom.enabled                = false;
@@ -331,7 +331,7 @@ void setup_skillbook_window(int UID)
     UI_form_pointer->data.element[element_number].title.image                 = game.texture_manager.add_texture("data/textures/UI/menu/item_stat_background.png");
     UI_form_pointer->data.element[element_number].title.image->data.render_positioning = TEXTURE_RENDER_LEFT+TEXTURE_RENDER_DOWN;
     UI_form_pointer->data.element[element_number].dragable                    = true;
-    UI_form_pointer->data.element[element_number].active                      = true;
+    UI_form_pointer->data.element[element_number].active                      = false;
     UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_ITEM;
     UI_form_pointer->data.element[element_number].sub_type                    = ITEM_SPELL;
     UI_form_pointer->data.element[element_number].zoom.enabled                = false;
@@ -356,7 +356,7 @@ void setup_skillbook_window(int UID)
     UI_form_pointer->data.element[element_number].title.image                 = game.texture_manager.add_texture("data/textures/UI/menu/item_stat_background.png");
     UI_form_pointer->data.element[element_number].title.image->data.render_positioning = TEXTURE_RENDER_LEFT+TEXTURE_RENDER_DOWN;
     UI_form_pointer->data.element[element_number].dragable                    = true;
-    UI_form_pointer->data.element[element_number].active                      = true;
+    UI_form_pointer->data.element[element_number].active                      = false;
     UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_ITEM;
     UI_form_pointer->data.element[element_number].sub_type                    = ITEM_SPELL;
     UI_form_pointer->data.element[element_number].zoom.enabled                = false;
@@ -381,7 +381,7 @@ void setup_skillbook_window(int UID)
     UI_form_pointer->data.element[element_number].title.image                 = game.texture_manager.add_texture("data/textures/UI/menu/item_stat_background.png");
     UI_form_pointer->data.element[element_number].title.image->data.render_positioning = TEXTURE_RENDER_LEFT+TEXTURE_RENDER_DOWN;
     UI_form_pointer->data.element[element_number].dragable                    = true;
-    UI_form_pointer->data.element[element_number].active                      = true;
+    UI_form_pointer->data.element[element_number].active                      = false;
     UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_ITEM;
     UI_form_pointer->data.element[element_number].sub_type                    = ITEM_SPELL;
     UI_form_pointer->data.element[element_number].zoom.enabled                = false;
@@ -406,7 +406,7 @@ void setup_skillbook_window(int UID)
     UI_form_pointer->data.element[element_number].title.image                 = game.texture_manager.add_texture("data/textures/UI/menu/item_stat_background.png");
     UI_form_pointer->data.element[element_number].title.image->data.render_positioning = TEXTURE_RENDER_LEFT+TEXTURE_RENDER_DOWN;
     UI_form_pointer->data.element[element_number].dragable                    = true;
-    UI_form_pointer->data.element[element_number].active                      = true;
+    UI_form_pointer->data.element[element_number].active                      = false;
     UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_ITEM;
     UI_form_pointer->data.element[element_number].sub_type                    = ITEM_SPELL;
     UI_form_pointer->data.element[element_number].zoom.enabled                = false;
@@ -431,7 +431,7 @@ void setup_skillbook_window(int UID)
     UI_form_pointer->data.element[element_number].title.image                 = game.texture_manager.add_texture("data/textures/UI/menu/item_stat_background.png");
     UI_form_pointer->data.element[element_number].title.image->data.render_positioning = TEXTURE_RENDER_LEFT+TEXTURE_RENDER_DOWN;
     UI_form_pointer->data.element[element_number].dragable                    = true;
-    UI_form_pointer->data.element[element_number].active                      = true;
+    UI_form_pointer->data.element[element_number].active                      = false;
     UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_ITEM;
     UI_form_pointer->data.element[element_number].sub_type                    = ITEM_SPELL;
     UI_form_pointer->data.element[element_number].zoom.enabled                = false;
@@ -456,7 +456,7 @@ void setup_skillbook_window(int UID)
     UI_form_pointer->data.element[element_number].title.image                 = game.texture_manager.add_texture("data/textures/UI/menu/item_stat_background.png");
     UI_form_pointer->data.element[element_number].title.image->data.render_positioning = TEXTURE_RENDER_LEFT+TEXTURE_RENDER_DOWN;
     UI_form_pointer->data.element[element_number].dragable                    = true;
-    UI_form_pointer->data.element[element_number].active                      = true;
+    UI_form_pointer->data.element[element_number].active                      = false;
     UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_ITEM;
     UI_form_pointer->data.element[element_number].sub_type                    = ITEM_SPELL;
     UI_form_pointer->data.element[element_number].zoom.enabled                = false;
@@ -481,7 +481,7 @@ void setup_skillbook_window(int UID)
     UI_form_pointer->data.element[element_number].title.image                 = game.texture_manager.add_texture("data/textures/UI/menu/item_stat_background.png");
     UI_form_pointer->data.element[element_number].title.image->data.render_positioning = TEXTURE_RENDER_LEFT+TEXTURE_RENDER_DOWN;
     UI_form_pointer->data.element[element_number].dragable                    = true;
-    UI_form_pointer->data.element[element_number].active                      = true;
+    UI_form_pointer->data.element[element_number].active                      = false;
     UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_ITEM;
     UI_form_pointer->data.element[element_number].sub_type                    = ITEM_SPELL;
     UI_form_pointer->data.element[element_number].zoom.enabled                = false;
@@ -506,7 +506,7 @@ void setup_skillbook_window(int UID)
     UI_form_pointer->data.element[element_number].title.image                 = game.texture_manager.add_texture("data/textures/UI/menu/item_stat_background.png");
     UI_form_pointer->data.element[element_number].title.image->data.render_positioning = TEXTURE_RENDER_LEFT+TEXTURE_RENDER_DOWN;
     UI_form_pointer->data.element[element_number].dragable                    = true;
-    UI_form_pointer->data.element[element_number].active                      = true;
+    UI_form_pointer->data.element[element_number].active                      = false;
     UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_ITEM;
     UI_form_pointer->data.element[element_number].sub_type                    = ITEM_SPELL;
     UI_form_pointer->data.element[element_number].zoom.enabled                = false;
@@ -531,7 +531,7 @@ void setup_skillbook_window(int UID)
     UI_form_pointer->data.element[element_number].title.image                 = game.texture_manager.add_texture("data/textures/UI/menu/item_stat_background.png");
     UI_form_pointer->data.element[element_number].title.image->data.render_positioning = TEXTURE_RENDER_LEFT+TEXTURE_RENDER_DOWN;
     UI_form_pointer->data.element[element_number].dragable                    = true;
-    UI_form_pointer->data.element[element_number].active                      = true;
+    UI_form_pointer->data.element[element_number].active                      = false;
     UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_ITEM;
     UI_form_pointer->data.element[element_number].sub_type                    = ITEM_SPELL;
     UI_form_pointer->data.element[element_number].zoom.enabled                = false;
@@ -556,7 +556,7 @@ void setup_skillbook_window(int UID)
     UI_form_pointer->data.element[element_number].title.image                 = game.texture_manager.add_texture("data/textures/UI/menu/item_stat_background.png");
     UI_form_pointer->data.element[element_number].title.image->data.render_positioning = TEXTURE_RENDER_LEFT+TEXTURE_RENDER_DOWN;
     UI_form_pointer->data.element[element_number].dragable                    = true;
-    UI_form_pointer->data.element[element_number].active                      = true;
+    UI_form_pointer->data.element[element_number].active                      = false;
     UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_ITEM;
     UI_form_pointer->data.element[element_number].sub_type                    = ITEM_SPELL;
     UI_form_pointer->data.element[element_number].zoom.enabled                = false;
@@ -581,7 +581,7 @@ void setup_skillbook_window(int UID)
     UI_form_pointer->data.element[element_number].title.image                 = game.texture_manager.add_texture("data/textures/UI/menu/item_stat_background.png");
     UI_form_pointer->data.element[element_number].title.image->data.render_positioning = TEXTURE_RENDER_LEFT+TEXTURE_RENDER_DOWN;
     UI_form_pointer->data.element[element_number].dragable                    = true;
-    UI_form_pointer->data.element[element_number].active                      = true;
+    UI_form_pointer->data.element[element_number].active                      = false;
     UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_ITEM;
     UI_form_pointer->data.element[element_number].sub_type                    = ITEM_SPELL;
     UI_form_pointer->data.element[element_number].zoom.enabled                = false;
@@ -606,7 +606,7 @@ void setup_skillbook_window(int UID)
     UI_form_pointer->data.element[element_number].title.image                 = game.texture_manager.add_texture("data/textures/UI/menu/item_stat_background.png");
     UI_form_pointer->data.element[element_number].title.image->data.render_positioning = TEXTURE_RENDER_LEFT+TEXTURE_RENDER_DOWN;
     UI_form_pointer->data.element[element_number].dragable                    = true;
-    UI_form_pointer->data.element[element_number].active                      = true;
+    UI_form_pointer->data.element[element_number].active                      = false;
     UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_ITEM;
     UI_form_pointer->data.element[element_number].sub_type                    = ITEM_SPELL;
     UI_form_pointer->data.element[element_number].zoom.enabled                = false;
@@ -631,7 +631,7 @@ void setup_skillbook_window(int UID)
     UI_form_pointer->data.element[element_number].title.image                 = game.texture_manager.add_texture("data/textures/UI/menu/item_stat_background.png");
     UI_form_pointer->data.element[element_number].title.image->data.render_positioning = TEXTURE_RENDER_LEFT+TEXTURE_RENDER_DOWN;
     UI_form_pointer->data.element[element_number].dragable                    = true;
-    UI_form_pointer->data.element[element_number].active                      = true;
+    UI_form_pointer->data.element[element_number].active                      = false;
     UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_ITEM;
     UI_form_pointer->data.element[element_number].sub_type                    = ITEM_SPELL;
     UI_form_pointer->data.element[element_number].zoom.enabled                = false;
@@ -656,7 +656,7 @@ void setup_skillbook_window(int UID)
     UI_form_pointer->data.element[element_number].title.image                 = game.texture_manager.add_texture("data/textures/UI/menu/item_stat_background.png");
     UI_form_pointer->data.element[element_number].title.image->data.render_positioning = TEXTURE_RENDER_LEFT+TEXTURE_RENDER_DOWN;
     UI_form_pointer->data.element[element_number].dragable                    = true;
-    UI_form_pointer->data.element[element_number].active                      = true;
+    UI_form_pointer->data.element[element_number].active                      = false;
     UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_ITEM;
     UI_form_pointer->data.element[element_number].sub_type                    = ITEM_SPELL;
     UI_form_pointer->data.element[element_number].zoom.enabled                = false;
@@ -679,12 +679,16 @@ void process_skillbook_window(UI_form_struct *UI_form_pointer)
 {
     int element_number = 1;
     UI_form_pointer->data.element[element_number].quantity = game.player.spells.arrow_fire;
+    if (UI_form_pointer->data.element[element_number].quantity > 0) UI_form_pointer->data.element[element_number].active = true;
     element_number = 2;
     UI_form_pointer->data.element[element_number].quantity = game.player.spells.arrow_ice;
+    if (UI_form_pointer->data.element[element_number].quantity > 0) UI_form_pointer->data.element[element_number].active = true;
     element_number = 3;
     UI_form_pointer->data.element[element_number].quantity = game.player.spells.arrow_lightning;
+    if (UI_form_pointer->data.element[element_number].quantity > 0) UI_form_pointer->data.element[element_number].active = true;
     element_number = 4;
     UI_form_pointer->data.element[element_number].quantity = game.player.spells.arrow_elemental;
+    if (UI_form_pointer->data.element[element_number].quantity > 0) UI_form_pointer->data.element[element_number].active = true;
 
 
 
