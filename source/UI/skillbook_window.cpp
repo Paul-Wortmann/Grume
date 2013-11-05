@@ -187,10 +187,10 @@ void setup_skillbook_window(int UID)
     UI_form_pointer->data.element[element_number].zoom.enabled                = false;
     UI_form_pointer->data.element[element_number].value                       = SPELL_ARROW_FIRE;
     UI_form_pointer->data.element[element_number].color                       = UI_form_pointer->data.color;
-    UI_form_pointer->data.element[element_number].size.x                      = (UI_form_pointer->data.size.x/8.2f);
-    UI_form_pointer->data.element[element_number].size.y                      = (UI_form_pointer->data.size.y/10.4f);
-    UI_form_pointer->data.element[element_number].position.x                  = UI_form_pointer->data.position.x-(UI_form_pointer->data.size.x/2.98f);
-    UI_form_pointer->data.element[element_number].position.y                  = UI_form_pointer->data.position.y+(UI_form_pointer->data.size.y/3.72f);
+    UI_form_pointer->data.element[element_number].size.x                      = (UI_form_pointer->data.size.x/6.6f);
+    UI_form_pointer->data.element[element_number].size.y                      = (UI_form_pointer->data.size.y/9.7f);
+    UI_form_pointer->data.element[element_number].position.x                  = UI_form_pointer->data.position.x-(UI_form_pointer->data.size.x/3.06f);
+    UI_form_pointer->data.element[element_number].position.y                  = UI_form_pointer->data.position.y+(UI_form_pointer->data.size.y/3.86f);
     UI_form_pointer->data.element[element_number].sound                       = UI_form_pointer->data.sound;
     UI_form_pointer->data.element[element_number].sound.on_click.enabled      = false;
     UI_form_pointer->data.element[element_number].sound.on_mouse_over.enabled = false;
