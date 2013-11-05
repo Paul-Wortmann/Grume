@@ -220,8 +220,8 @@ void setup_skillbook_window(int UID)
     UI_form_pointer->data.element[element_number].sound.on_click.enabled      = false;
     UI_form_pointer->data.element[element_number].sound.on_mouse_over.enabled = false;
     UI_form_pointer->data.element[element_number].mouse_delay.maximum         = 30;
-    UI_form_pointer->data.element[element_number].texture.normal              = game.texture_manager.add_texture("data/textures/UI/icons/spells/fire-arrows-1.png");
-    UI_form_pointer->data.element[element_number].texture.highlighted         = game.texture_manager.add_texture("data/textures/UI/icons/spells/fire-arrows-1.png");
+    UI_form_pointer->data.element[element_number].texture.normal              = game.texture_manager.add_texture("data/textures/UI/icons/spells/ice-blue-1.png");
+    UI_form_pointer->data.element[element_number].texture.highlighted         = game.texture_manager.add_texture("data/textures/UI/icons/spells/ice-blue-1.png");
     UI_form_pointer->data.element[element_number].font                        = UI_form_pointer->data.font;
     element_number = 3; //--- Spell slot 3
     UI_form_pointer->data.element[element_number].window_UID                  = UI_form_pointer->data.UID;
@@ -245,8 +245,8 @@ void setup_skillbook_window(int UID)
     UI_form_pointer->data.element[element_number].sound.on_click.enabled      = false;
     UI_form_pointer->data.element[element_number].sound.on_mouse_over.enabled = false;
     UI_form_pointer->data.element[element_number].mouse_delay.maximum         = 30;
-    UI_form_pointer->data.element[element_number].texture.normal              = game.texture_manager.add_texture("data/textures/UI/icons/spells/fire-arrows-1.png");
-    UI_form_pointer->data.element[element_number].texture.highlighted         = game.texture_manager.add_texture("data/textures/UI/icons/spells/fire-arrows-1.png");
+    UI_form_pointer->data.element[element_number].texture.normal              = game.texture_manager.add_texture("data/textures/UI/icons/spells/lightning-blue-1.png");
+    UI_form_pointer->data.element[element_number].texture.highlighted         = game.texture_manager.add_texture("data/textures/UI/icons/spells/lightning-blue-1.png");
     UI_form_pointer->data.element[element_number].font                        = UI_form_pointer->data.font;
     element_number = 4; //--- Spell slot 4
     UI_form_pointer->data.element[element_number].window_UID                  = UI_form_pointer->data.UID;
@@ -270,8 +270,8 @@ void setup_skillbook_window(int UID)
     UI_form_pointer->data.element[element_number].sound.on_click.enabled      = false;
     UI_form_pointer->data.element[element_number].sound.on_mouse_over.enabled = false;
     UI_form_pointer->data.element[element_number].mouse_delay.maximum         = 30;
-    UI_form_pointer->data.element[element_number].texture.normal              = game.texture_manager.add_texture("data/textures/UI/icons/spells/fire-arrows-1.png");
-    UI_form_pointer->data.element[element_number].texture.highlighted         = game.texture_manager.add_texture("data/textures/UI/icons/spells/fire-arrows-1.png");
+    UI_form_pointer->data.element[element_number].texture.normal              = game.texture_manager.add_texture("data/textures/UI/icons/spells/beam-royal-1.png");
+    UI_form_pointer->data.element[element_number].texture.highlighted         = game.texture_manager.add_texture("data/textures/UI/icons/spells/beam-royal-1.png");
     UI_form_pointer->data.element[element_number].font                        = UI_form_pointer->data.font;
     element_number = 5; //--- Spell slot 5
     UI_form_pointer->data.element[element_number].window_UID                  = UI_form_pointer->data.UID;
