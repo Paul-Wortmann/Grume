@@ -1204,7 +1204,11 @@ void UI_manager_class::swap_elements(int UI_form_UID_src, int UI_element_src, in
     {
         if (UI_form_UID_dst == UID_ACTIONBAR)
         {
-
+            UI_form_struct* UI_form_UID_src_pointer = game.UI_manager.UI_form_get(UI_form_UID_src);
+            UI_form_struct* UI_form_UID_dst_pointer = game.UI_manager.UI_form_get(UI_form_UID_dst);
+            UI_form_UID_dst_pointer->data.element[UI_element_dst].value          = UI_form_UID_src_pointer->data.element[UI_element_src].value;
+            UI_form_UID_dst_pointer->data.element[UI_element_dst].quantity       = 1;
+            UI_form_UID_dst_pointer->data.element[UI_element_dst].texture.normal = UI_form_UID_src_pointer->data.element[UI_element_src].texture.normal;
         }
     }
     else
