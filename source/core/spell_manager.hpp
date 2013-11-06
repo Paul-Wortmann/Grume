@@ -29,14 +29,14 @@
 #include "../core/texture_manager.hpp"
 #include "../core/sound_manager.hpp"
 
-#define MAX_SPELL_EFFECTS          4
-#define MAX_SPELL_LEVEL            30
+#define MAX_SPELL_EFFECTS        4
+#define MAX_SPELL_LEVEL          30
 
-#define SPELL_NONE                 0
-#define SPELL_ARROW_FIRE           101
-#define SPELL_ARROW_ICE            102
-#define SPELL_ARROW_LIGHTNING      103
-#define SPELL_ARROW_ELEMENTAL      104
+#define SPELL_NONE               0
+#define SPELL_ARROW_FIRE         101
+#define SPELL_ARROW_ICE          102
+#define SPELL_ARROW_LIGHTNING    103
+#define SPELL_ARROW_ELEMENTAL    104
 
 struct spell_sound_type
 {
