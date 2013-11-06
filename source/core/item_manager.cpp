@@ -2923,7 +2923,7 @@ void  item_manager_class::gen_item_texture(item_type* item_pointer,int item_type
                     item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/hammers/hammer_00.png");
                 break;
                 case ITEM_AXE:
-                    item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/hammers/hammer_00.png");
+                    item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/axes/axe_00.png");
                 break;
                 case ITEM_WAND:
                 default:
