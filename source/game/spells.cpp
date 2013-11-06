@@ -33,8 +33,8 @@ void  spell_class::init_spells(void)
 {
     spell_type*      temp_spell_pointer;
     //------------------------- Fire arrow --------------------------------------------------------------------------
-    temp_spell_pointer = game.spell_manager.add_spell(SPELL_ARROW_FIRE);
-    temp_spell_pointer->data.UID                    = SPELL_ARROW_FIRE;
+    temp_spell_pointer = game.spell_manager.add_spell(ITEM_SPELL_ARROW_FIRE);
+    temp_spell_pointer->data.UID                    = ITEM_SPELL_ARROW_FIRE;
     temp_spell_pointer->data.name                   = "Fire Arrow";
     temp_spell_pointer->data.active                 = true;
     temp_spell_pointer->data.cooldown.current       = 10;
@@ -56,8 +56,8 @@ void  spell_class::init_spells(void)
     temp_spell_pointer->data.sound.on_move          = game.sound_manager.add_sound("data/sound/inventory/bottle_01.wav");
     temp_spell_pointer->data.sound.on_use           = game.sound_manager.add_sound("data/sound/inventory/bubble_01.wav");
     //------------------------- Ice arrow --------------------------------------------------------------------------
-    temp_spell_pointer = game.spell_manager.add_spell(SPELL_ARROW_ICE);
-    temp_spell_pointer->data.UID                    = SPELL_ARROW_ICE;
+    temp_spell_pointer = game.spell_manager.add_spell(ITEM_SPELL_ARROW_ICE);
+    temp_spell_pointer->data.UID                    = ITEM_SPELL_ARROW_ICE;
     temp_spell_pointer->data.name                   = "ICE Arrow";
     temp_spell_pointer->data.active                 = true;
     temp_spell_pointer->data.cooldown.current       = 10;
@@ -79,8 +79,8 @@ void  spell_class::init_spells(void)
     temp_spell_pointer->data.sound.on_move          = game.sound_manager.add_sound("data/sound/inventory/bottle_01.wav");
     temp_spell_pointer->data.sound.on_use           = game.sound_manager.add_sound("data/sound/inventory/bubble_01.wav");
     //------------------------- Lightning arrow --------------------------------------------------------------------------
-    temp_spell_pointer = game.spell_manager.add_spell(SPELL_ARROW_LIGHTNING);
-    temp_spell_pointer->data.UID                    = SPELL_ARROW_LIGHTNING;
+    temp_spell_pointer = game.spell_manager.add_spell(ITEM_SPELL_ARROW_LIGHTNING);
+    temp_spell_pointer->data.UID                    = ITEM_SPELL_ARROW_LIGHTNING;
     temp_spell_pointer->data.name                   = "Lightning Arrow";
     temp_spell_pointer->data.active                 = true;
     temp_spell_pointer->data.cooldown.current       = 10;
@@ -102,8 +102,8 @@ void  spell_class::init_spells(void)
     temp_spell_pointer->data.sound.on_move          = game.sound_manager.add_sound("data/sound/inventory/bottle_01.wav");
     temp_spell_pointer->data.sound.on_use           = game.sound_manager.add_sound("data/sound/inventory/bubble_01.wav");
     //------------------------- Elemental arrow --------------------------------------------------------------------------
-    temp_spell_pointer = game.spell_manager.add_spell(SPELL_ARROW_ELEMENTAL);
-    temp_spell_pointer->data.UID                    = SPELL_ARROW_ELEMENTAL;
+    temp_spell_pointer = game.spell_manager.add_spell(ITEM_SPELL_ARROW_ELEMENTAL);
+    temp_spell_pointer->data.UID                    = ITEM_SPELL_ARROW_ELEMENTAL;
     temp_spell_pointer->data.name                   = "Elemental Arrow";
     temp_spell_pointer->data.active                 = true;
     temp_spell_pointer->data.cooldown.current       = 10;

@@ -85,6 +85,10 @@
 
 //--- Spell IDs ---
 //Reserved for spells IDs 100-199
+#define ITEM_SPELL_ARROW_FIRE         101
+#define ITEM_SPELL_ARROW_ICE          102
+#define ITEM_SPELL_ARROW_LIGHTNING    103
+#define ITEM_SPELL_ARROW_ELEMENTAL    104
 
 //--- Predefined items ---------------
 #define ITEM_POTION_S_HEALTH          220
@@ -121,6 +125,7 @@ struct item_data_type
     bool             stackable;
     bool             consumable;
     bool             equipable;
+    bool             spell;
     bool             quest;
     std::string      name;
     int              UID;
