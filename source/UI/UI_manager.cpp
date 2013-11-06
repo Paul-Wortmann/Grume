@@ -1206,9 +1206,12 @@ void UI_manager_class::swap_elements(int UI_form_UID_src, int UI_element_src, in
         {
             UI_form_struct* UI_form_UID_src_pointer = game.UI_manager.UI_form_get(UI_form_UID_src);
             UI_form_struct* UI_form_UID_dst_pointer = game.UI_manager.UI_form_get(UI_form_UID_dst);
-            UI_form_UID_dst_pointer->data.element[UI_element_dst].value          = UI_form_UID_src_pointer->data.element[UI_element_src].value;
-            UI_form_UID_dst_pointer->data.element[UI_element_dst].quantity       = 1;
-            UI_form_UID_dst_pointer->data.element[UI_element_dst].texture.normal = UI_form_UID_src_pointer->data.element[UI_element_src].texture.normal;
+            if (UI_form_UID_dst_pointer->data.element[UI_element_dst].value == ITEM_NONE)
+            {
+                UI_form_UID_dst_pointer->data.element[UI_element_dst].value          = UI_form_UID_src_pointer->data.element[UI_element_src].value;
+                UI_form_UID_dst_pointer->data.element[UI_element_dst].quantity       = 1;
+                UI_form_UID_dst_pointer->data.element[UI_element_dst].texture.normal = UI_form_UID_src_pointer->data.element[UI_element_src].texture.normal;
+            }
         }
     }
     else
@@ -1246,7 +1249,7 @@ void UI_manager_class::swap_elements(int UI_form_UID_src, int UI_element_src, in
                 if (UI_form_UID_src_pointer->data.element[UI_element_src].quantity <= 0)
                 {
                     UI_form_UID_src_pointer->data.element[UI_element_src].quantity = 0;
-                    UI_form_UID_src_pointer->data.element[UI_element_src].value    = -1;
+                    UI_form_UID_src_pointer->data.element[UI_element_src].value    = ITEM_NONE;
                 }
                 posible_swap = false;
             }
@@ -1262,7 +1265,7 @@ void UI_manager_class::swap_elements(int UI_form_UID_src, int UI_element_src, in
                         item_pointer_dst->data.socket[socket_count].type    = item_pointer_src->data.type;
                         item_pointer_dst->data.socket[socket_count].value   = item_pointer_src->data.UID;
                         UI_form_UID_src_pointer->data.element[UI_element_src].quantity = 0;
-                        UI_form_UID_src_pointer->data.element[UI_element_src].value    = -1;
+                        UI_form_UID_src_pointer->data.element[UI_element_src].value    = ITEM_NONE;
                     }
                 }
                 if (socket_done) posible_swap = false;
@@ -1290,12 +1293,12 @@ void UI_manager_class::swap_elements(int UI_form_UID_src, int UI_element_src, in
                              (item_pointer_dst->data.sub_type == ITEM_POTION_MEDIUM) ||
                              (item_pointer_dst->data.sub_type == ITEM_POTION_LARGE) ||
                              (item_pointer_dst->data.type     == ITEM_SPELL) ||
-                             (UI_form_UID_dst_pointer->data.element[UI_element_dst].value == -1)))
+                             (UI_form_UID_dst_pointer->data.element[UI_element_dst].value == ITEM_NONE)))
                                 allow_swap = true;
                             break;
                             case UID_EQUIPMENT:
                                 if ((item_pointer_src->data.type == UI_form_UID_dst_pointer->data.element[UI_element_dst].sub_type) ||
-                                    (UI_form_UID_dst_pointer->data.element[UI_element_dst].value == -1))
+                                    (UI_form_UID_dst_pointer->data.element[UI_element_dst].value == ITEM_NONE))
                                         allow_swap = true;
                             break;
                             case UID_INVENTORY:

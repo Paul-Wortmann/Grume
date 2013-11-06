@@ -370,7 +370,7 @@ void setup_action_bar(int UID)
     UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_ITEM;
     UI_form_pointer->data.element[element_number].zoom.enabled                = false;
     UI_form_pointer->data.element[element_number].tooltip.enabled             = false;
-    UI_form_pointer->data.element[element_number].value                       = -1;
+    UI_form_pointer->data.element[element_number].value                       = ITEM_NONE;
     UI_form_pointer->data.element[element_number].color                       = UI_form_pointer->data.color;
     UI_form_pointer->data.element[element_number].size.x                      = UI_form_pointer->data.size.y/2.35;
     UI_form_pointer->data.element[element_number].size.y                      = UI_form_pointer->data.size.y/2.25;
@@ -394,7 +394,7 @@ void setup_action_bar(int UID)
     UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_ITEM;
     UI_form_pointer->data.element[element_number].zoom.enabled                = false;
     UI_form_pointer->data.element[element_number].tooltip.enabled             = false;
-    UI_form_pointer->data.element[element_number].value                       = -1;
+    UI_form_pointer->data.element[element_number].value                       = ITEM_NONE;
     UI_form_pointer->data.element[element_number].color                       = UI_form_pointer->data.color;
     UI_form_pointer->data.element[element_number].size.x                      = UI_form_pointer->data.size.y/2.35;
     UI_form_pointer->data.element[element_number].size.y                      = UI_form_pointer->data.size.y/2.25;
@@ -418,7 +418,7 @@ void setup_action_bar(int UID)
     UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_ITEM;
     UI_form_pointer->data.element[element_number].zoom.enabled                = false;
     UI_form_pointer->data.element[element_number].tooltip.enabled             = false;
-    UI_form_pointer->data.element[element_number].value                       = -1;
+    UI_form_pointer->data.element[element_number].value                       = ITEM_NONE;
     UI_form_pointer->data.element[element_number].color                       = UI_form_pointer->data.color;
     UI_form_pointer->data.element[element_number].size.x                      = UI_form_pointer->data.size.y/2.35;
     UI_form_pointer->data.element[element_number].size.y                      = UI_form_pointer->data.size.y/2.25;
@@ -442,7 +442,7 @@ void setup_action_bar(int UID)
     UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_ITEM;
     UI_form_pointer->data.element[element_number].zoom.enabled                = false;
     UI_form_pointer->data.element[element_number].tooltip.enabled             = false;
-    UI_form_pointer->data.element[element_number].value                       = -1;
+    UI_form_pointer->data.element[element_number].value                       = ITEM_NONE;
     UI_form_pointer->data.element[element_number].color                       = UI_form_pointer->data.color;
     UI_form_pointer->data.element[element_number].size.x                      = UI_form_pointer->data.size.y/2.35;
     UI_form_pointer->data.element[element_number].size.y                      = UI_form_pointer->data.size.y/2.25;
@@ -466,7 +466,7 @@ void setup_action_bar(int UID)
     UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_ITEM;
     UI_form_pointer->data.element[element_number].zoom.enabled                = false;
     UI_form_pointer->data.element[element_number].tooltip.enabled             = false;
-    UI_form_pointer->data.element[element_number].value                       = -1;
+    UI_form_pointer->data.element[element_number].value                       = ITEM_NONE;
     UI_form_pointer->data.element[element_number].color                       = UI_form_pointer->data.color;
     UI_form_pointer->data.element[element_number].size.x                      = UI_form_pointer->data.size.y/2.35;
     UI_form_pointer->data.element[element_number].size.y                      = UI_form_pointer->data.size.y/2.25;
@@ -490,7 +490,7 @@ void setup_action_bar(int UID)
     UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_ITEM;
     UI_form_pointer->data.element[element_number].zoom.enabled                = false;
     UI_form_pointer->data.element[element_number].tooltip.enabled             = false;
-    UI_form_pointer->data.element[element_number].value                       = -1;
+    UI_form_pointer->data.element[element_number].value                       = ITEM_NONE;
     UI_form_pointer->data.element[element_number].color                       = UI_form_pointer->data.color;
     UI_form_pointer->data.element[element_number].size.x                      = UI_form_pointer->data.size.y/2.35;
     UI_form_pointer->data.element[element_number].size.y                      = UI_form_pointer->data.size.y/2.25;
@@ -514,7 +514,7 @@ void setup_action_bar(int UID)
     UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_ITEM;
     UI_form_pointer->data.element[element_number].zoom.enabled                = false;
     UI_form_pointer->data.element[element_number].tooltip.enabled             = false;
-    UI_form_pointer->data.element[element_number].value                       = -1;
+    UI_form_pointer->data.element[element_number].value                       = ITEM_NONE;
     UI_form_pointer->data.element[element_number].color                       = UI_form_pointer->data.color;
     UI_form_pointer->data.element[element_number].size.x                      = UI_form_pointer->data.size.y/2.35;
     UI_form_pointer->data.element[element_number].size.y                      = UI_form_pointer->data.size.y/2.25;
@@ -538,7 +538,7 @@ void setup_action_bar(int UID)
     UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_ITEM;
     UI_form_pointer->data.element[element_number].zoom.enabled                = false;
     UI_form_pointer->data.element[element_number].tooltip.enabled             = false;
-    UI_form_pointer->data.element[element_number].value                       = -1;
+    UI_form_pointer->data.element[element_number].value                       = ITEM_NONE;
     UI_form_pointer->data.element[element_number].color                       = UI_form_pointer->data.color;
     UI_form_pointer->data.element[element_number].size.x                      = UI_form_pointer->data.size.y/2.35;
     UI_form_pointer->data.element[element_number].size.y                      = UI_form_pointer->data.size.y/2.25;
@@ -562,7 +562,7 @@ void setup_action_bar(int UID)
     UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_ITEM;
     UI_form_pointer->data.element[element_number].zoom.enabled                = false;
     UI_form_pointer->data.element[element_number].tooltip.enabled             = false;
-    UI_form_pointer->data.element[element_number].value                       = -1;
+    UI_form_pointer->data.element[element_number].value                       = ITEM_NONE;
     UI_form_pointer->data.element[element_number].color                       = UI_form_pointer->data.color;
     UI_form_pointer->data.element[element_number].size.x                      = UI_form_pointer->data.size.y/2.35;
     UI_form_pointer->data.element[element_number].size.y                      = UI_form_pointer->data.size.y/2.25;
@@ -586,7 +586,7 @@ void setup_action_bar(int UID)
     UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_ITEM;
     UI_form_pointer->data.element[element_number].zoom.enabled                = false;
     UI_form_pointer->data.element[element_number].tooltip.enabled             = false;
-    UI_form_pointer->data.element[element_number].value                       = -1;
+    UI_form_pointer->data.element[element_number].value                       = ITEM_NONE;
     UI_form_pointer->data.element[element_number].color                       = UI_form_pointer->data.color;
     UI_form_pointer->data.element[element_number].size.x                      = UI_form_pointer->data.size.y/2.35;
     UI_form_pointer->data.element[element_number].size.y                      = UI_form_pointer->data.size.y/2.25;

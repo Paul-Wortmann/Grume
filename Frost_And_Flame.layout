@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <CodeBlocks_layout_file>
 	<ActiveTarget name="Debug_Linux" />
-	<File name="source/core/item_manager.cpp" open="1" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="source/core/item_manager.cpp" open="0" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="159887" topLine="192" />
+			<Cursor1 position="156515" topLine="2997" />
 		</Cursor>
 	</File>
 	<File name="source/core/effect_manager.hpp" open="0" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -51,9 +51,9 @@
 			<Cursor1 position="20905" topLine="446" />
 		</Cursor>
 	</File>
-	<File name="source/core/item_manager.hpp" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="source/core/item_manager.hpp" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="2633" topLine="58" />
+			<Cursor1 position="3727" topLine="91" />
 		</Cursor>
 	</File>
 	<File name="source/game/items.hpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -71,7 +71,7 @@
 			<Cursor1 position="9989" topLine="126" />
 		</Cursor>
 	</File>
-	<File name="source/UI/UI_manager.cpp" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="source/UI/UI_manager.cpp" open="1" top="1" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="90023" topLine="1181" />
 		</Cursor>
@@ -93,7 +93,7 @@
 	</File>
 	<File name="source/core/spell_manager.hpp" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="1099" topLine="61" />
+			<Cursor1 position="1106" topLine="54" />
 		</Cursor>
 	</File>
 	<File name="source/UI/inventory_window.cpp" open="0" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -126,9 +126,9 @@
 			<Cursor1 position="9989" topLine="105" />
 		</Cursor>
 	</File>
-	<File name="source/UI/skillbook_window.cpp" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="source/UI/skillbook_window.cpp" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="17262" topLine="656" />
+			<Cursor1 position="14559" topLine="167" />
 		</Cursor>
 	</File>
 	<File name="source/UI/UI_manager.hpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -138,7 +138,7 @@
 	</File>
 	<File name="source/core/effect_manager.cpp" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="9259" topLine="225" />
+			<Cursor1 position="9268" topLine="225" />
 		</Cursor>
 	</File>
 	<File name="source/UI/action_bar.cpp" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -146,14 +146,14 @@
 			<Cursor1 position="12080" topLine="146" />
 		</Cursor>
 	</File>
-	<File name="source/UI/equipment_window.cpp" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="source/UI/equipment_window.cpp" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="14300" topLine="170" />
 		</Cursor>
 	</File>
-	<File name="source/game/spells.cpp" open="1" top="1" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="source/game/spells.cpp" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="7876" topLine="85" />
+			<Cursor1 position="7642" topLine="85" />
 		</Cursor>
 	</File>
 	<File name="source/game/player.cpp" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -161,9 +161,9 @@
 			<Cursor1 position="5078" topLine="110" />
 		</Cursor>
 	</File>
-	<File name="source/game/items.cpp" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="source/game/items.cpp" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="4509" topLine="49" />
+			<Cursor1 position="4539" topLine="41" />
 		</Cursor>
 	</File>
 	<File name="source/core/core.hpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">

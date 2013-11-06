@@ -44,7 +44,7 @@
 #define SOCKET_GEM           1
 #define SOCKET_RUNE          2
 
-#define ITEM_NONE            0
+#define ITEM_NONE            -1
 #define ITEM_POTION          1
 #define ITEM_POTION_SMALL    2
 #define ITEM_POTION_MEDIUM   3
