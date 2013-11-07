@@ -566,7 +566,7 @@ int  item_manager_class::gen_item(int item_type_UID, int item_sub_type_UID, int 
                             if ((quality_level > (MAX_ITEM_QUALITY*0.4f))&&(quality_level <= (MAX_ITEM_QUALITY*0.6f))) spell_level = 12;
                             if ((quality_level > (MAX_ITEM_QUALITY*0.6f))&&(quality_level <= (MAX_ITEM_QUALITY*0.8f))) spell_level = 16;
                             if (quality_level > (MAX_ITEM_QUALITY*0.8f))                                               spell_level = 20;
-                            spell_level = 4; // remove for testing-------------!!!!----
+                            spell_level = 8; // remove for testing-------------!!!!----
                             if (item_sub_type_UID == ITEM_SPELL_BOOK)
                             {
                                 switch (random(spell_level))
@@ -582,6 +582,18 @@ int  item_manager_class::gen_item(int item_type_UID, int item_sub_type_UID, int 
                                     break;
                                     case 3:
                                         item_sub_type_UID = ITEM_SPELL_ARROW_ELEMENTAL;
+                                    break;
+                                    case 4:
+                                        item_sub_type_UID = ITEM_SPELL_BALL_FIRE;
+                                    break;
+                                    case 5:
+                                        item_sub_type_UID = ITEM_SPELL_BALL_ICE;
+                                    break;
+                                    case 6:
+                                        item_sub_type_UID = ITEM_SPELL_BALL_LIGHTNING;
+                                    break;
+                                    case 7:
+                                        item_sub_type_UID = ITEM_SPELL_BALL_ELEMENTAL;
                                     break;
 
                                     default:
@@ -1660,6 +1672,18 @@ void  item_manager_class::gen_item_name(item_type* item_pointer,int item_type_UI
                 break;
                 case ITEM_SPELL_ARROW_ELEMENTAL:
                     post_name = "of elemental arrow";
+                break;
+                case ITEM_SPELL_BALL_FIRE:
+                    post_name = "of fire ball";
+                break;
+                case ITEM_SPELL_BALL_ICE:
+                    post_name = "of ice ball";
+                break;
+                case ITEM_SPELL_BALL_LIGHTNING:
+                    post_name = "of lightning ball";
+                break;
+                case ITEM_SPELL_BALL_ELEMENTAL:
+                    post_name = "of elemental ball";
                 break;
                 default:
                     post_name = "of spell craft";
@@ -2867,6 +2891,18 @@ void  item_manager_class::gen_item_texture(item_type* item_pointer,int item_type
                     item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/books/book_15.png");
                 break;
                 case ITEM_SPELL_ARROW_ELEMENTAL:
+                    item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/books/book_17.png");
+                break;
+                case ITEM_SPELL_BALL_FIRE:
+                    item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/books/book_05.png");
+                break;
+                case ITEM_SPELL_BALL_ICE:
+                    item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/books/book_19.png");
+                break;
+                case ITEM_SPELL_BALL_LIGHTNING:
+                    item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/books/book_15.png");
+                break;
+                case ITEM_SPELL_BALL_ELEMENTAL:
                     item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/books/book_17.png");
                 break;
                 default:

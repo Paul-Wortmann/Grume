@@ -142,7 +142,6 @@ struct item_data_type
     bool             socketable;  // has sockets, or can gain sockets via NPC etc...
     int              socket_max;  // max_number of allowed sockets for item, ie. ring == 1 etc...
     int              socket_type; // Only accept certain items
-    //effect_type*     effect[MAX_ITEM_EFFECTS];
     item_effect_type effect[MAX_ITEM_EFFECTS];
     item_socket_type socket[MAX_ITEM_SOCKETS];
 };
