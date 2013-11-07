@@ -1206,7 +1206,9 @@ void UI_manager_class::swap_elements(int UI_form_UID_src, int UI_element_src, in
         {
             UI_form_struct* UI_form_UID_src_pointer = game.UI_manager.UI_form_get(UI_form_UID_src);
             UI_form_struct* UI_form_UID_dst_pointer = game.UI_manager.UI_form_get(UI_form_UID_dst);
-            if (UI_form_UID_dst_pointer->data.element[UI_element_dst].value == ITEM_NONE)
+            item_type* item_pointer_src = game.item_manager.add_item(UI_form_UID_src_pointer->data.element[UI_element_src].value);
+            item_type* item_pointer_dst = game.item_manager.add_item(UI_form_UID_dst_pointer->data.element[UI_element_dst].value);
+            if ((UI_form_UID_dst_pointer->data.element[UI_element_dst].value == ITEM_NONE) || (item_pointer_dst->data.type == ITEM_SPELL))
             {
                 UI_form_UID_dst_pointer->data.element[UI_element_dst].value          = UI_form_UID_src_pointer->data.element[UI_element_src].value;
                 UI_form_UID_dst_pointer->data.element[UI_element_dst].quantity       = 1;
@@ -1222,10 +1224,8 @@ void UI_manager_class::swap_elements(int UI_form_UID_src, int UI_element_src, in
             ((UI_form_UID_dst == UID_INVENTORY) || (UI_form_UID_dst == UID_ACTIONBAR) || (UI_form_UID_dst == UID_EQUIPMENT))) allow_swap_elements = true;
         UI_form_struct* UI_form_UID_src_pointer = game.UI_manager.UI_form_get(UI_form_UID_src);
         UI_form_struct* UI_form_UID_dst_pointer = game.UI_manager.UI_form_get(UI_form_UID_dst);
-        //if (UI_form_UID_src_pointer->data.element[UI_element_src].value == UI_ELEMENT_ITEM)
         item_type* item_pointer_src = game.item_manager.add_item(UI_form_UID_src_pointer->data.element[UI_element_src].value);
         item_type* item_pointer_dst = game.item_manager.add_item(UI_form_UID_dst_pointer->data.element[UI_element_dst].value);
-        //game.core.log.file_write("Moving element from - ",UI_form_UID_src," - ",UI_element_src," to - ",UI_form_UID_dst," - ",UI_element_dst);
         if     ((allow_swap_elements)&&(UI_form_UID_src == UI_form_UID_dst)&&(UI_element_src == UI_element_dst)) allow_swap_elements = false;
         if     ((allow_swap_elements)
             &&  (UI_form_UID_src_pointer->data.element[UI_element_src].type == UI_ELEMENT_ITEM)
