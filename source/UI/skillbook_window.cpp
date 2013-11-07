@@ -285,7 +285,7 @@ void setup_skillbook_window(int UID)
     UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_ITEM;
     UI_form_pointer->data.element[element_number].sub_type                    = ITEM_SPELL;
     UI_form_pointer->data.element[element_number].zoom.enabled                = false;
-    UI_form_pointer->data.element[element_number].value                       = -1;
+    UI_form_pointer->data.element[element_number].value                       = ITEM_SPELL_BALL_FIRE;
     UI_form_pointer->data.element[element_number].color                       = UI_form_pointer->data.color;
     UI_form_pointer->data.element[element_number].size.x                      = (UI_form_pointer->data.size.x/6.2f);
     UI_form_pointer->data.element[element_number].size.y                      = (UI_form_pointer->data.size.y/9.3f);
@@ -310,7 +310,7 @@ void setup_skillbook_window(int UID)
     UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_ITEM;
     UI_form_pointer->data.element[element_number].sub_type                    = ITEM_SPELL;
     UI_form_pointer->data.element[element_number].zoom.enabled                = false;
-    UI_form_pointer->data.element[element_number].value                       = -1;
+    UI_form_pointer->data.element[element_number].value                       = ITEM_SPELL_BALL_ICE;
     UI_form_pointer->data.element[element_number].color                       = UI_form_pointer->data.color;
     UI_form_pointer->data.element[element_number].size.x                      = (UI_form_pointer->data.size.x/6.2f);
     UI_form_pointer->data.element[element_number].size.y                      = (UI_form_pointer->data.size.y/9.3f);
@@ -335,7 +335,7 @@ void setup_skillbook_window(int UID)
     UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_ITEM;
     UI_form_pointer->data.element[element_number].sub_type                    = ITEM_SPELL;
     UI_form_pointer->data.element[element_number].zoom.enabled                = false;
-    UI_form_pointer->data.element[element_number].value                       = -1;
+    UI_form_pointer->data.element[element_number].value                       = ITEM_SPELL_BALL_LIGHTNING;
     UI_form_pointer->data.element[element_number].color                       = UI_form_pointer->data.color;
     UI_form_pointer->data.element[element_number].size.x                      = (UI_form_pointer->data.size.x/6.2f);
     UI_form_pointer->data.element[element_number].size.y                      = (UI_form_pointer->data.size.y/9.3f);
@@ -360,7 +360,7 @@ void setup_skillbook_window(int UID)
     UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_ITEM;
     UI_form_pointer->data.element[element_number].sub_type                    = ITEM_SPELL;
     UI_form_pointer->data.element[element_number].zoom.enabled                = false;
-    UI_form_pointer->data.element[element_number].value                       = -1;
+    UI_form_pointer->data.element[element_number].value                       = ITEM_SPELL_BALL_ELEMENTAL;
     UI_form_pointer->data.element[element_number].color                       = UI_form_pointer->data.color;
     UI_form_pointer->data.element[element_number].size.x                      = (UI_form_pointer->data.size.x/6.2f);
     UI_form_pointer->data.element[element_number].size.y                      = (UI_form_pointer->data.size.y/9.3f);
@@ -688,6 +688,18 @@ void process_skillbook_window(UI_form_struct *UI_form_pointer)
     if (UI_form_pointer->data.element[element_number].quantity > 0) UI_form_pointer->data.element[element_number].active = true;
     element_number = 4;
     UI_form_pointer->data.element[element_number].quantity = game.player.spells.arrow_elemental;
+    if (UI_form_pointer->data.element[element_number].quantity > 0) UI_form_pointer->data.element[element_number].active = true;
+    element_number = 5;
+    UI_form_pointer->data.element[element_number].quantity = game.player.spells.ball_fire;
+    if (UI_form_pointer->data.element[element_number].quantity > 0) UI_form_pointer->data.element[element_number].active = true;
+    element_number = 6;
+    UI_form_pointer->data.element[element_number].quantity = game.player.spells.ball_ice;
+    if (UI_form_pointer->data.element[element_number].quantity > 0) UI_form_pointer->data.element[element_number].active = true;
+    element_number = 7;
+    UI_form_pointer->data.element[element_number].quantity = game.player.spells.ball_lightning;
+    if (UI_form_pointer->data.element[element_number].quantity > 0) UI_form_pointer->data.element[element_number].active = true;
+    element_number = 8;
+    UI_form_pointer->data.element[element_number].quantity = game.player.spells.ball_elemental;
     if (UI_form_pointer->data.element[element_number].quantity > 0) UI_form_pointer->data.element[element_number].active = true;
 
 
