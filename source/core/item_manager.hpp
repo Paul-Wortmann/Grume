@@ -89,6 +89,10 @@
 #define ITEM_SPELL_ARROW_ICE          102
 #define ITEM_SPELL_ARROW_LIGHTNING    103
 #define ITEM_SPELL_ARROW_ELEMENTAL    104
+#define ITEM_SPELL_BALL_FIRE          105
+#define ITEM_SPELL_BALL_ICE           106
+#define ITEM_SPELL_BALL_LIGHTNING     107
+#define ITEM_SPELL_BALL_ELEMENTAL     108
 
 //--- Predefined items ---------------
 #define ITEM_POTION_S_HEALTH          220
