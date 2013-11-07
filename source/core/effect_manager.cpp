@@ -261,6 +261,18 @@ bool  effect_manager_class::use_effect(int  effect_UID, float value)
                     case ITEM_SPELL_ARROW_ELEMENTAL:
                         game.player.spells.arrow_elemental += value;
                     break;
+                    case ITEM_SPELL_BALL_FIRE:
+                        game.player.spells.ball_fire += value;
+                    break;
+                    case ITEM_SPELL_BALL_ICE:
+                        game.player.spells.ball_ice += value;
+                    break;
+                    case ITEM_SPELL_BALL_LIGHTNING:
+                        game.player.spells.ball_lightning += value;
+                    break;
+                    case ITEM_SPELL_BALL_ELEMENTAL:
+                        game.player.spells.ball_elemental += value;
+                    break;
                     default:
                     break;
                 }

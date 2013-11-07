@@ -191,6 +191,40 @@ void game_class::init(void)
     UI_form_pointer->data.element[element_number].value          = temp_item_pointer->data.UID;
     UI_form_pointer->data.element[element_number].texture.normal = temp_item_pointer->data.image;
 
+    element_number    = 41;
+    temp_item_pointer = game.item_manager.add_item(game.item_manager.gen_item(ITEM_SPELL_BOOK,ITEM_SPELL_BOOK,random(MAX_ITEM_QUALITY)));
+    UI_form_pointer->data.element[element_number].value          = temp_item_pointer->data.UID;
+    UI_form_pointer->data.element[element_number].texture.normal = temp_item_pointer->data.image;
+    element_number    = 42;
+    temp_item_pointer = game.item_manager.add_item(game.item_manager.gen_item(ITEM_SPELL_BOOK,ITEM_SPELL_BOOK,random(MAX_ITEM_QUALITY)));
+    UI_form_pointer->data.element[element_number].value          = temp_item_pointer->data.UID;
+    UI_form_pointer->data.element[element_number].texture.normal = temp_item_pointer->data.image;
+    element_number    = 43;
+    temp_item_pointer = game.item_manager.add_item(game.item_manager.gen_item(ITEM_SPELL_BOOK,ITEM_SPELL_BOOK,random(MAX_ITEM_QUALITY)));
+    UI_form_pointer->data.element[element_number].value          = temp_item_pointer->data.UID;
+    UI_form_pointer->data.element[element_number].texture.normal = temp_item_pointer->data.image;
+    element_number    = 44;
+    temp_item_pointer = game.item_manager.add_item(game.item_manager.gen_item(ITEM_SPELL_BOOK,ITEM_SPELL_BOOK,random(MAX_ITEM_QUALITY)));
+    UI_form_pointer->data.element[element_number].value          = temp_item_pointer->data.UID;
+    UI_form_pointer->data.element[element_number].texture.normal = temp_item_pointer->data.image;
+    element_number    = 45;
+    temp_item_pointer = game.item_manager.add_item(game.item_manager.gen_item(ITEM_SPELL_BOOK,ITEM_SPELL_BOOK,random(MAX_ITEM_QUALITY)));
+    UI_form_pointer->data.element[element_number].value          = temp_item_pointer->data.UID;
+    UI_form_pointer->data.element[element_number].texture.normal = temp_item_pointer->data.image;
+    element_number    = 46;
+    temp_item_pointer = game.item_manager.add_item(game.item_manager.gen_item(ITEM_SPELL_BOOK,ITEM_SPELL_BOOK,random(MAX_ITEM_QUALITY)));
+    UI_form_pointer->data.element[element_number].value          = temp_item_pointer->data.UID;
+    UI_form_pointer->data.element[element_number].texture.normal = temp_item_pointer->data.image;
+    element_number    = 47;
+    temp_item_pointer = game.item_manager.add_item(game.item_manager.gen_item(ITEM_SPELL_BOOK,ITEM_SPELL_BOOK,random(MAX_ITEM_QUALITY)));
+    UI_form_pointer->data.element[element_number].value          = temp_item_pointer->data.UID;
+    UI_form_pointer->data.element[element_number].texture.normal = temp_item_pointer->data.image;
+    element_number    = 48;
+    temp_item_pointer = game.item_manager.add_item(game.item_manager.gen_item(ITEM_SPELL_BOOK,ITEM_SPELL_BOOK,random(MAX_ITEM_QUALITY)));
+    UI_form_pointer->data.element[element_number].value          = temp_item_pointer->data.UID;
+    UI_form_pointer->data.element[element_number].texture.normal = temp_item_pointer->data.image;
+
+
     // Add default items to the action bar
     UI_form_pointer = game.UI_manager.UI_form_get(UID_ACTIONBAR);
     element_number = 8;
