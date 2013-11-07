@@ -113,6 +113,10 @@ struct player_spell_type
     int arrow_ice;
     int arrow_lightning;
     int arrow_elemental;
+    int ball_fire;
+    int ball_ice;
+    int ball_lightning;
+    int ball_elemental;
 };
 
 class player_class

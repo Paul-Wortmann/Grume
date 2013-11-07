@@ -143,6 +143,10 @@ player_class::player_class(void)
     player_class::spells.arrow_ice              = 0;
     player_class::spells.arrow_lightning        = 0;
     player_class::spells.arrow_elemental        = 0;
+    player_class::spells.ball_fire              = 0;
+    player_class::spells.ball_ice               = 0;
+    player_class::spells.ball_lightning         = 0;
+    player_class::spells.ball_elemental         = 0;
     player_class::allocatable_points            = 0;
     player_class::auto_allocate                 = true;
 };
