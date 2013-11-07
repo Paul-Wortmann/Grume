@@ -621,7 +621,7 @@ void UI_manager_class::render(void)
                             {
                                 //display spell stats on mouse over
                             }
-                            else
+                            //else
                             {
                                 std::string   temp_string         = "";
                                 std::string   sign_string         = " ";
