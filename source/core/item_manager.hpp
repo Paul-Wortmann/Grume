@@ -85,14 +85,26 @@
 
 //--- Spell IDs ---
 //Reserved for spells IDs 100-199
-#define ITEM_SPELL_ARROW_FIRE         101
-#define ITEM_SPELL_ARROW_ICE          102
-#define ITEM_SPELL_ARROW_LIGHTNING    103
-#define ITEM_SPELL_ARROW_ELEMENTAL    104
-#define ITEM_SPELL_BALL_FIRE          105
-#define ITEM_SPELL_BALL_ICE           106
-#define ITEM_SPELL_BALL_LIGHTNING     107
-#define ITEM_SPELL_BALL_ELEMENTAL     108
+#define ITEM_SPELL_ALL                100
+#define ITEM_SPELL_FIRE               101
+#define ITEM_SPELL_ICE                102
+#define ITEM_SPELL_LIGHTNING          103
+#define ITEM_SPELL_ELEMENTAL          104
+#define ITEM_SPELL_ARROW_FIRE         105
+#define ITEM_SPELL_ARROW_ICE          106
+#define ITEM_SPELL_ARROW_LIGHTNING    107
+#define ITEM_SPELL_ARROW_ELEMENTAL    108
+#define ITEM_SPELL_BALL_FIRE          109
+#define ITEM_SPELL_BALL_ICE           110
+#define ITEM_SPELL_BALL_LIGHTNING     111
+#define ITEM_SPELL_BALL_ELEMENTAL     112
+
+#define ITEM_SPELL_SHIELD_FIRE        117
+#define ITEM_SPELL_SHIELD_ICE         118
+#define ITEM_SPELL_SHIELD_LIGHTNING   119
+#define ITEM_SPELL_SHIELD_ELEMENTAL   120
+#define ITEM_SPELL_HEAL               121
+
 
 //--- Predefined items ---------------
 #define ITEM_POTION_S_HEALTH          220
