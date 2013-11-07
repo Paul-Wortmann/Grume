@@ -80,7 +80,54 @@ void  item_class::init_items(void) // Initialize hard-coded default items, such 
     temp_item_pointer->data.sound_use              = game.sound_manager.add_sound("data/sound/inventory/bubble_01.wav");
     temp_item_pointer->data.type                   = ITEM_SPELL;
     temp_item_pointer->data.sub_type               = ITEM_SPELL_ARROW_ELEMENTAL;
-
+    //------------------------- Fire Ball --------------------------------------------------------------------------
+    temp_item_pointer = game.item_manager.add_item(ITEM_SPELL_BALL_FIRE);
+    temp_item_pointer->data.name                   = "Fire Ball";
+    temp_item_pointer->data.active                 = true;
+    temp_item_pointer->data.spell                  = true;
+    temp_item_pointer->data.quantity_max           = 1;
+    temp_item_pointer->data.number_of_item_effects = 0;
+    temp_item_pointer->data.image                  = game.texture_manager.add_texture("data/textures/UI/icons/spells/fireball-red-1.png");
+    temp_item_pointer->data.sound_move             = game.sound_manager.add_sound("data/sound/inventory/bottle_01.wav");
+    temp_item_pointer->data.sound_use              = game.sound_manager.add_sound("data/sound/inventory/bubble_01.wav");
+    temp_item_pointer->data.type                   = ITEM_SPELL;
+    temp_item_pointer->data.sub_type               = ITEM_SPELL_BALL_FIRE;
+    //------------------------- Ice Ball --------------------------------------------------------------------------
+    temp_item_pointer = game.item_manager.add_item(ITEM_SPELL_BALL_ICE);
+    temp_item_pointer->data.name                   = "Ice Ball";
+    temp_item_pointer->data.active                 = true;
+    temp_item_pointer->data.spell                  = true;
+    temp_item_pointer->data.quantity_max           = 1;
+    temp_item_pointer->data.number_of_item_effects = 0;
+    temp_item_pointer->data.image                  = game.texture_manager.add_texture("data/textures/UI/icons/spells/fireball-sky-1.png");
+    temp_item_pointer->data.sound_move             = game.sound_manager.add_sound("data/sound/inventory/bottle_01.wav");
+    temp_item_pointer->data.sound_use              = game.sound_manager.add_sound("data/sound/inventory/bubble_01.wav");
+    temp_item_pointer->data.type                   = ITEM_SPELL;
+    temp_item_pointer->data.sub_type               = ITEM_SPELL_BALL_ICE;
+    //------------------------- Lightning Ball --------------------------------------------------------------------------
+    temp_item_pointer = game.item_manager.add_item(ITEM_SPELL_BALL_LIGHTNING);
+    temp_item_pointer->data.name                   = "Lightning Ball";
+    temp_item_pointer->data.active                 = true;
+    temp_item_pointer->data.spell                  = true;
+    temp_item_pointer->data.quantity_max           = 1;
+    temp_item_pointer->data.number_of_item_effects = 0;
+    temp_item_pointer->data.image                  = game.texture_manager.add_texture("data/textures/UI/icons/spells/light-blue-1.png");
+    temp_item_pointer->data.sound_move             = game.sound_manager.add_sound("data/sound/inventory/bottle_01.wav");
+    temp_item_pointer->data.sound_use              = game.sound_manager.add_sound("data/sound/inventory/bubble_01.wav");
+    temp_item_pointer->data.type                   = ITEM_SPELL;
+    temp_item_pointer->data.sub_type               = ITEM_SPELL_BALL_LIGHTNING;
+    //------------------------- Elemental Ball --------------------------------------------------------------------------
+    temp_item_pointer = game.item_manager.add_item(ITEM_SPELL_BALL_ELEMENTAL);
+    temp_item_pointer->data.name                   = "Elemental Ball";
+    temp_item_pointer->data.active                 = true;
+    temp_item_pointer->data.spell                  = true;
+    temp_item_pointer->data.quantity_max           = 1;
+    temp_item_pointer->data.number_of_item_effects = 0;
+    temp_item_pointer->data.image                  = game.texture_manager.add_texture("data/textures/UI/icons/spells/explosion-royal-1.png");
+    temp_item_pointer->data.sound_move             = game.sound_manager.add_sound("data/sound/inventory/bottle_01.wav");
+    temp_item_pointer->data.sound_use              = game.sound_manager.add_sound("data/sound/inventory/bubble_01.wav");
+    temp_item_pointer->data.type                   = ITEM_SPELL;
+    temp_item_pointer->data.sub_type               = ITEM_SPELL_BALL_ELEMENTAL;
 
     //------------------------- Health Potion --------------------------------------------------------------------------
     temp_item_pointer = game.item_manager.add_item(ITEM_POTION_S_HEALTH);
