@@ -273,6 +273,21 @@ bool  effect_manager_class::use_effect(int  effect_UID, float value)
                     case ITEM_SPELL_BALL_ELEMENTAL:
                         game.player.spells.ball_elemental += value;
                     break;
+                    case ITEM_SPELL_SHIELD_FIRE:
+                        game.player.spells.shield_fire += value;
+                    break;
+                    case ITEM_SPELL_SHIELD_ICE:
+                        game.player.spells.shield_ice += value;
+                    break;
+                    case ITEM_SPELL_SHIELD_LIGHTNING:
+                        game.player.spells.shield_lightning += value;
+                    break;
+                    case ITEM_SPELL_SHIELD_ELEMENTAL:
+                        game.player.spells.shield_elemental += value;
+                    break;
+                    case ITEM_SPELL_HEAL:
+                        game.player.spells.heal += value;
+                    break;
                     default:
                     break;
                 }

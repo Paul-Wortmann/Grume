@@ -117,6 +117,12 @@ struct player_spell_type
     int ball_ice;
     int ball_lightning;
     int ball_elemental;
+
+    int shield_fire;
+    int shield_ice;
+    int shield_lightning;
+    int shield_elemental;
+    int heal;
 };
 
 class player_class

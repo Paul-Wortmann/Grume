@@ -566,7 +566,7 @@ int  item_manager_class::gen_item(int item_type_UID, int item_sub_type_UID, int 
                             if ((quality_level > (MAX_ITEM_QUALITY*0.4f))&&(quality_level <= (MAX_ITEM_QUALITY*0.6f))) spell_level = 12;
                             if ((quality_level > (MAX_ITEM_QUALITY*0.6f))&&(quality_level <= (MAX_ITEM_QUALITY*0.8f))) spell_level = 16;
                             if (quality_level > (MAX_ITEM_QUALITY*0.8f))                                               spell_level = 20;
-                            spell_level = 8; // remove for testing-------------!!!!----
+                            spell_level = 12; // remove for testing-------------!!!!----
                             if (item_sub_type_UID == ITEM_SPELL_BOOK)
                             {
                                 switch (random(spell_level))
@@ -596,6 +596,22 @@ int  item_manager_class::gen_item(int item_type_UID, int item_sub_type_UID, int 
                                         item_sub_type_UID = ITEM_SPELL_BALL_ELEMENTAL;
                                     break;
 
+
+                                    case 8: // should be 13!!!
+                                        item_sub_type_UID = ITEM_SPELL_SHIELD_FIRE;
+                                    break;
+                                    case 9:
+                                        item_sub_type_UID = ITEM_SPELL_SHIELD_ICE;
+                                    break;
+                                    case 10:
+                                        item_sub_type_UID = ITEM_SPELL_SHIELD_LIGHTNING;
+                                    break;
+                                    case 11:
+                                        item_sub_type_UID = ITEM_SPELL_SHIELD_ELEMENTAL;
+                                    break;
+                                    case 12:
+                                        item_sub_type_UID = ITEM_SPELL_HEAL;
+                                    break;
                                     default:
                                         item_sub_type_UID = ITEM_SPELL_ARROW_ELEMENTAL;
                                     break;
@@ -1684,6 +1700,22 @@ void  item_manager_class::gen_item_name(item_type* item_pointer,int item_type_UI
                 break;
                 case ITEM_SPELL_BALL_ELEMENTAL:
                     post_name = "of elemental ball";
+                break;
+
+                case ITEM_SPELL_SHIELD_FIRE:
+                    post_name = "of fire shield";
+                break;
+                case ITEM_SPELL_SHIELD_ICE:
+                    post_name = "of ice shield";
+                break;
+                case ITEM_SPELL_SHIELD_LIGHTNING:
+                    post_name = "of lightning shield";
+                break;
+                case ITEM_SPELL_SHIELD_ELEMENTAL:
+                    post_name = "of elemental shield";
+                break;
+                case ITEM_SPELL_HEAL:
+                    post_name = "of healing";
                 break;
                 default:
                     post_name = "of spell craft";
@@ -2904,6 +2936,22 @@ void  item_manager_class::gen_item_texture(item_type* item_pointer,int item_type
                 break;
                 case ITEM_SPELL_BALL_ELEMENTAL:
                     item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/books/book_17.png");
+                break;
+
+                case ITEM_SPELL_SHIELD_FIRE:
+                    item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/books/book_05.png");
+                break;
+                case ITEM_SPELL_SHIELD_ICE:
+                    item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/books/book_19.png");
+                break;
+                case ITEM_SPELL_SHIELD_LIGHTNING:
+                    item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/books/book_15.png");
+                break;
+                case ITEM_SPELL_SHIELD_ELEMENTAL:
+                    item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/books/book_17.png");
+                break;
+                case ITEM_SPELL_HEAL:
+                    item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/books/book_05.png");
                 break;
                 default:
                     item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/books/book_04.png");
