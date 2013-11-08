@@ -295,8 +295,25 @@ bool  effect_manager_class::use_effect(int  effect_UID, float value)
             }
         break;
         case EFFECT_MOD_SPELL_TYPE:
+            used_item = true;
         break;
         case EFFECT_MOD_SPELL_ALL:
+            used_item = true;
+            if (value > 0) value = 1;
+            else value = -1;
+            game.player.spells.arrow_fire += value;
+            game.player.spells.arrow_ice += value;
+            game.player.spells.arrow_lightning += value;
+            game.player.spells.arrow_elemental += value;
+            game.player.spells.ball_fire += value;
+            game.player.spells.ball_ice += value;
+            game.player.spells.ball_lightning += value;
+            game.player.spells.ball_elemental += value;
+            game.player.spells.shield_fire += value;
+            game.player.spells.shield_ice += value;
+            game.player.spells.shield_lightning += value;
+            game.player.spells.shield_elemental += value;
+            game.player.spells.heal += value;
         break;
         case EFFECT_MOD_SPELL_CAST_KILL:
         break;
