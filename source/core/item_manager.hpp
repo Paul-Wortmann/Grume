@@ -31,57 +31,67 @@
 #include "../UI/UI_types.hpp"
 #include "effect_manager.hpp"
 
-#define MAX_ITEM_EFFECTS     6
-#define MAX_ITEM_SOCKETS     4
-#define MAX_ITEM_QUALITY     100
+#define MAX_ITEM_EFFECTS              6
+#define MAX_ITEM_SOCKETS              4
+#define MAX_ITEM_QUALITY              100
 
-#define ITEM_QUALITY_NORMAL  0
-#define ITEM_QUALITY_MAGIC   1
-#define ITEM_QUALITY_EPIC    2
-#define ITEM_QUALITY_SET     3
+#define ITEM_MATERIAL_NONE            0
+#define ITEM_MATERIAL_METAL           1
+#define ITEM_MATERIAL_WOOD            2
+#define ITEM_MATERIAL_LEATHER         3
+#define ITEM_MATERIAL_POTION          4
+#define ITEM_MATERIAL_BOOK            5
+#define ITEM_MATERIAL_GEM             6
+#define ITEM_MATERIAL_RING            7
+#define ITEM_MATERIAL_AMULET          8
 
-#define SOCKET_NONE          0
-#define SOCKET_GEM           1
-#define SOCKET_RUNE          2
+#define ITEM_QUALITY_NORMAL           0
+#define ITEM_QUALITY_MAGIC            1
+#define ITEM_QUALITY_EPIC             2
+#define ITEM_QUALITY_SET              3
 
-#define ITEM_NONE            -1
-#define ITEM_POTION          1
-#define ITEM_POTION_SMALL    2
-#define ITEM_POTION_MEDIUM   3
-#define ITEM_POTION_LARGE    4
-#define ITEM_SPELL           5
-#define ITEM_SPELL_BOOK      6
-#define ITEM_SPELL_SCROLL    7
-#define ITEM_GEM_NONE        8
-#define ITEM_GEM             9
-#define ITEM_GEM_EMERALD     10
-#define ITEM_GEM_OPAL        11
-#define ITEM_GEM_RUBY        12
-#define ITEM_GEM_SAPPHIRE    13
-#define ITEM_GEM_TOPAZ       14
-#define ITEM_RING            15
-#define ITEM_NECK            16
-#define ITEM_HEAD            17
-#define ITEM_HAND            18
-#define ITEM_FEET            19
-#define ITEM_BODY            20
-#define ITEM_BELT            21
-#define ITEM_OFFHAND         22
-#define ITEM_WEAPON          23
-#define ITEM_HELM            24
-#define ITEM_BOOTS           25
-#define ITEM_ARMOUR          26
-#define ITEM_GLOVES          27
-#define ITEM_AMULET          28
-#define ITEM_SHIELD          29
-#define ITEM_SOURCE          30
-#define ITEM_WAND            31
-#define ITEM_SWORD           32
-#define ITEM_DAGGER          33
-#define ITEM_BOW             34
-#define ITEM_MACE            35
-#define ITEM_HAMMER          36
-#define ITEM_AXE             37
+#define SOCKET_NONE                   0
+#define SOCKET_GEM                    1
+#define SOCKET_RUNE                   2
+
+#define ITEM_NONE                     -1
+#define ITEM_POTION                   1
+#define ITEM_POTION_SMALL             2
+#define ITEM_POTION_MEDIUM            3
+#define ITEM_POTION_LARGE             4
+#define ITEM_SPELL                    5
+#define ITEM_SPELL_BOOK               6
+#define ITEM_SPELL_SCROLL             7
+#define ITEM_GEM_NONE                 8
+#define ITEM_GEM                      9
+#define ITEM_GEM_EMERALD              10
+#define ITEM_GEM_OPAL                 11
+#define ITEM_GEM_RUBY                 12
+#define ITEM_GEM_SAPPHIRE             13
+#define ITEM_GEM_TOPAZ                14
+#define ITEM_RING                     15
+#define ITEM_NECK                     16
+#define ITEM_HEAD                     17
+#define ITEM_HAND                     18
+#define ITEM_FEET                     19
+#define ITEM_BODY                     20
+#define ITEM_BELT                     21
+#define ITEM_OFFHAND                  22
+#define ITEM_WEAPON                   23
+#define ITEM_HELM                     24
+#define ITEM_BOOTS                    25
+#define ITEM_ARMOUR                   26
+#define ITEM_GLOVES                   27
+#define ITEM_AMULET                   28
+#define ITEM_SHIELD                   29
+#define ITEM_SOURCE                   30
+#define ITEM_WAND                     31
+#define ITEM_SWORD                    32
+#define ITEM_DAGGER                   33
+#define ITEM_BOW                      34
+#define ITEM_MACE                     35
+#define ITEM_HAMMER                   36
+#define ITEM_AXE                      37
 
 //--- Spell IDs ---
 //Reserved for spells IDs 100-199
@@ -133,29 +143,30 @@ struct item_effect_type
 
 struct item_data_type
 {
-    sound_type*      sound_move;
-    sound_type*      sound_use;
-    texture_type*    image;
-    int              qaulity_type;
     bool             active;
-    bool             stackable;
     bool             consumable;
+    item_effect_type effect[MAX_ITEM_EFFECTS];
     bool             equipable;
-    bool             spell;
-    bool             quest;
+    texture_type*    image;
     std::string      name;
-    int              UID;
-    int              type;
-    int              sub_type;
-    int              quantity;
-    int              quantity_max;
     int              number_of_item_effects;
     int              number_of_item_sockets;
+    int              material_type;
+    int              qaulity_type;
+    int              quantity;
+    int              quantity_max;
+    bool             quest;
+    item_socket_type socket[MAX_ITEM_SOCKETS];
     bool             socketable;  // has sockets, or can gain sockets via NPC etc...
     int              socket_max;  // max_number of allowed sockets for item, ie. ring == 1 etc...
     int              socket_type; // Only accept certain items
-    item_effect_type effect[MAX_ITEM_EFFECTS];
-    item_socket_type socket[MAX_ITEM_SOCKETS];
+    sound_type*      sound_move;
+    sound_type*      sound_use;
+    bool             spell;
+    bool             stackable;
+    int              sub_type;
+    int              type;
+    int              UID;
 };
 
 struct item_type
