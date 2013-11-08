@@ -239,6 +239,7 @@ bool  effect_manager_class::use_effect(int  effect_UID, float value)
             game.player.stats.exp_per_kill += value;
         break;
         case EFFECT_MOD_SPELL:
+            used_item = true;
             {
                 int spell_name = value;
                 if (value < 0)
