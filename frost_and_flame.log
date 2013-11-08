@@ -15,46 +15,19 @@ Seeding random...
 Initializing UI system...
 Initializing game system...
 Loading TMX map file -> data/maps/town.tmx
+Failed to load sound ->data/sound/inventory/wood_00i.wav
 Initializing event handlers...
 Starting Game...
  
 # ---------------------------------------------- #
  
-Unable to process event - 601 - UID - 3
-Unable to process event - 601 - UID - 3
-Unable to process event - 601 - UID - 3
-Unable to process event - 601 - UID - 3
-Unable to process event - 301 - UID - 3
-Unable to process event - 1201 - UID - 3
-Unable to process event - 1201 - UID - 3
-Unable to process event - 1201 - UID - 3
-Unable to process event - 1701 - UID - 7
-Unable to process event - 1701 - UID - 7
-Unable to process event - 1701 - UID - 7
-Unable to process event - 1701 - UID - 7
-Unable to process event - 1301 - UID - 7
-Unable to process event - 1701 - UID - 7
-Unable to process event - 1701 - UID - 7
-Unable to process event - 1701 - UID - 7
-Unable to process event - 1701 - UID - 7
-Unable to process event - 301 - UID - 7
-Unable to process event - 1601 - UID - 7
-Unable to process event - 1601 - UID - 7
-Unable to process event - 1601 - UID - 7
-Unable to process event - 1601 - UID - 7
-Unable to process event - 1601 - UID - 7
-Unable to process event - 1601 - UID - 7
-Unable to process event - 1701 - UID - 7
-Unable to process event - 1701 - UID - 7
-Unable to process event - 1701 - UID - 7
-Unable to process event - 601 - UID - 7
  
 # ---------------------------------------------- #
  
 Font    count -> 1
 Music   count -> 1
-Sound   count -> 11
-Texture count -> 302
+Sound   count -> 12
+Texture count -> 203
 Item    count -> 49
 Effect  count -> 42
  

@@ -3078,8 +3078,8 @@ void  item_manager_class::gen_item_sounds(item_type* item_pointer,int item_type_
             item_pointer->data.sound_use  = game.sound_manager.add_sound("data/sound/inventory/metal_00.wav");
         break;
         case ITEM_MATERIAL_WOOD:
-            item_pointer->data.sound_move = game.sound_manager.add_sound("data/sound/inventory/cloth_00.wav");
-            item_pointer->data.sound_use  = game.sound_manager.add_sound("data/sound/inventory/cloth_00.wav");
+            item_pointer->data.sound_move = game.sound_manager.add_sound("data/sound/inventory/wood_00.wav");
+            item_pointer->data.sound_use  = game.sound_manager.add_sound("data/sound/inventory/wood_03.wav");
         break;
         case ITEM_MATERIAL_LEATHER:
             item_pointer->data.sound_move = game.sound_manager.add_sound("data/sound/inventory/leather_00.wav");
