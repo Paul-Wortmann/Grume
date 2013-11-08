@@ -15,19 +15,19 @@ Seeding random...
 Initializing UI system...
 Initializing game system...
 Loading TMX map file -> data/maps/town.tmx
-Failed to load sound ->data/sound/inventory/wood_00i.wav
 Initializing event handlers...
 Starting Game...
  
 # ---------------------------------------------- #
  
+Unable to process event - 401 - UID - 7
  
 # ---------------------------------------------- #
  
 Font    count -> 1
 Music   count -> 1
-Sound   count -> 12
-Texture count -> 203
+Sound   count -> 11
+Texture count -> 261
 Item    count -> 49
 Effect  count -> 42
  
