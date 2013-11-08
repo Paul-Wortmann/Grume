@@ -77,6 +77,7 @@ item_type* item_manager_class::add_item(int item_UID)
     item_manager_class::last->data.name                   = "";
     item_manager_class::last->data.number_of_item_effects = 0;
     item_manager_class::last->data.number_of_item_sockets = 0;
+    item_manager_class::last->data.material_type          = ITEM_MATERIAL_NONE;
     item_manager_class::last->data.qaulity_type           = ITEM_QUALITY_NORMAL;
     item_manager_class::last->data.quantity               = 1;
     item_manager_class::last->data.quantity_max           = 1;
@@ -2815,6 +2816,7 @@ void  item_manager_class::gen_item_texture(item_type* item_pointer,int item_type
     switch (item_type_UID)
     {
         case ITEM_GEM:
+            item_pointer->data.material_type = ITEM_MATERIAL_GEM;
             switch (item_sub_type_UID)
             {
                 case ITEM_GEM_EMERALD:
@@ -2881,36 +2883,47 @@ void  item_manager_class::gen_item_texture(item_type* item_pointer,int item_type
             }
         break;
         case ITEM_POTION:
+            item_pointer->data.material_type = ITEM_MATERIAL_POTION;
             item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/potions/potion_21.png");
         break;
         case ITEM_POTION_S_HEALTH:
+            item_pointer->data.material_type = ITEM_MATERIAL_POTION;
             item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/potions/potion_01.png");
         break;
         case ITEM_POTION_M_HEALTH:
+            item_pointer->data.material_type = ITEM_MATERIAL_POTION;
             item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/potions/potion_02.png");
         break;
         case ITEM_POTION_L_HEALTH:
+            item_pointer->data.material_type = ITEM_MATERIAL_POTION;
             item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/potions/potion_23.png");
         break;
         case ITEM_POTION_S_MANA:
+            item_pointer->data.material_type = ITEM_MATERIAL_POTION;
             item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/potions/potion_08.png");
         break;
         case ITEM_POTION_M_MANA:
+            item_pointer->data.material_type = ITEM_MATERIAL_POTION;
             item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/potions/potion_09.png");
         break;
         case ITEM_POTION_L_MANA:
+            item_pointer->data.material_type = ITEM_MATERIAL_POTION;
             item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/potions/potion_22.png");
         break;
         case ITEM_POTION_S_REJUVENATION:
+            item_pointer->data.material_type = ITEM_MATERIAL_POTION;
             item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/potions/potion_24.png");
         break;
         case ITEM_POTION_M_REJUVENATION:
+            item_pointer->data.material_type = ITEM_MATERIAL_POTION;
             item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/potions/potion_24.png");
         break;
         case ITEM_POTION_L_REJUVENATION:
+            item_pointer->data.material_type = ITEM_MATERIAL_POTION;
             item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/potions/potion_24.png");
         break;
         case ITEM_SPELL_BOOK:
+            item_pointer->data.material_type = ITEM_MATERIAL_BOOK;
             switch (item_sub_type_UID)
             {
                 case ITEM_SPELL_ARROW_FIRE:
@@ -2959,58 +2972,73 @@ void  item_manager_class::gen_item_texture(item_type* item_pointer,int item_type
             }
         break;
         case ITEM_BELT:
+            item_pointer->data.material_type = ITEM_MATERIAL_LEATHER;
             item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/belts/belt_00.png");
         break;
         case ITEM_BODY:
+            item_pointer->data.material_type = ITEM_MATERIAL_METAL;
             item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/armor/armor_09.png");
         break;
         case ITEM_FEET:
+            item_pointer->data.material_type = ITEM_MATERIAL_LEATHER;
             item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/boots/boots_06.png");
         break;
         case ITEM_HAND:
+            item_pointer->data.material_type = ITEM_MATERIAL_METAL;
             item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/gloves/gloves_03.png");
         break;
         case ITEM_HEAD:
+            item_pointer->data.material_type = ITEM_MATERIAL_METAL;
             item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/helms/helm_00.png");
         break;
         case ITEM_NECK:
+            item_pointer->data.material_type = ITEM_MATERIAL_AMULET;
             item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/amulets/amulet_00.png");
         break;
         case ITEM_OFFHAND:
             switch (item_sub_type_UID)
             {
                 case ITEM_SHIELD:
+                    item_pointer->data.material_type = ITEM_MATERIAL_WOOD;
                     item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/shields/shield_09.png");
                 break;
                 case ITEM_SOURCE:
                 default:
+                    item_pointer->data.material_type = ITEM_MATERIAL_LEATHER;
                     item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/shields/shield_09.png");
                 break;
             }
         break;
         case ITEM_RING:
+            item_pointer->data.material_type = ITEM_MATERIAL_RING;
             item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/rings/ring_00.png");
         break;
         case ITEM_WEAPON:
             switch (item_sub_type_UID)
             {
                 case ITEM_BOW:
+                    item_pointer->data.material_type = ITEM_MATERIAL_WOOD;
                     item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/bows/bow_03.png");
                 break;
                 case ITEM_MACE:
+                    item_pointer->data.material_type = ITEM_MATERIAL_METAL;
                     item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/maces/mace_00.png");
                 break;
                 case ITEM_SWORD:
+                    item_pointer->data.material_type = ITEM_MATERIAL_METAL;
                     item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/swords/sword_30.png");
                 break;
                 case ITEM_HAMMER:
+                    item_pointer->data.material_type = ITEM_MATERIAL_METAL;
                     item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/hammers/hammer_00.png");
                 break;
                 case ITEM_AXE:
+                    item_pointer->data.material_type = ITEM_MATERIAL_METAL;
                     item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/axes/axe_00.png");
                 break;
                 case ITEM_WAND:
                 default:
+                    item_pointer->data.material_type = ITEM_MATERIAL_WOOD;
                     item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/wands/wand_05.png");
                 break;
             }
@@ -3023,104 +3051,44 @@ void  item_manager_class::gen_item_texture(item_type* item_pointer,int item_type
 
 void  item_manager_class::gen_item_sounds(item_type* item_pointer,int item_type_UID, int item_sub_type_UID, int quality_level)
 {
-    switch (item_type_UID)
+    switch (item_pointer->data.material_type)
     {
-        case ITEM_POTION:
-        case ITEM_POTION_S_HEALTH:
-        case ITEM_POTION_M_HEALTH:
-        case ITEM_POTION_L_HEALTH:
-        case ITEM_POTION_S_MANA:
-        case ITEM_POTION_M_MANA:
-        case ITEM_POTION_L_MANA:
-        case ITEM_POTION_S_REJUVENATION:
-        case ITEM_POTION_M_REJUVENATION:
-        case ITEM_POTION_L_REJUVENATION:
+        case ITEM_MATERIAL_POTION:
             item_pointer->data.sound_move = game.sound_manager.add_sound("data/sound/inventory/bottle_01.wav");
             item_pointer->data.sound_use  = game.sound_manager.add_sound("data/sound/inventory/bubble_01.wav");
         break;
-        case ITEM_GEM:
+        case ITEM_MATERIAL_GEM:
             item_pointer->data.sound_move = game.sound_manager.add_sound("data/sound/inventory/ring_00.wav");
             item_pointer->data.sound_use  = game.sound_manager.add_sound("data/sound/inventory/ring_00.wav");
         break;
-        case ITEM_SPELL_BOOK:
+        case ITEM_MATERIAL_BOOK:
             item_pointer->data.sound_move = game.sound_manager.add_sound("data/sound/inventory/book_02.wav");
             item_pointer->data.sound_use  = game.sound_manager.add_sound("data/sound/inventory/book_00.wav");
         break;
-        case ITEM_BELT:
-            item_pointer->data.sound_move = game.sound_manager.add_sound("data/sound/inventory/leather_00.wav");
-            item_pointer->data.sound_use  = game.sound_manager.add_sound("data/sound/inventory/leather_00.wav");
-        break;
-        case ITEM_BODY:
-            item_pointer->data.sound_move = game.sound_manager.add_sound("data/sound/inventory/leather_00.wav");
-            item_pointer->data.sound_use  = game.sound_manager.add_sound("data/sound/inventory/leather_00.wav");
-        break;
-        case ITEM_FEET:
-            item_pointer->data.sound_move = game.sound_manager.add_sound("data/sound/inventory/cloth_00.wav");
-            item_pointer->data.sound_use  = game.sound_manager.add_sound("data/sound/inventory/cloth_00.wav");
-        break;
-        case ITEM_HAND:
-            item_pointer->data.sound_move = game.sound_manager.add_sound("data/sound/inventory/metal_00.wav");
-            item_pointer->data.sound_use  = game.sound_manager.add_sound("data/sound/inventory/metal_00.wav");
-        break;
-        case ITEM_HEAD:
-            item_pointer->data.sound_move = game.sound_manager.add_sound("data/sound/inventory/leather_00.wav");
-            item_pointer->data.sound_use  = game.sound_manager.add_sound("data/sound/inventory/leather_00.wav");
-        break;
-        case ITEM_NECK:
-            item_pointer->data.sound_move = game.sound_manager.add_sound("data/sound/inventory/ring_00.wav");
-            item_pointer->data.sound_use  = game.sound_manager.add_sound("data/sound/inventory/ring_00.wav");
-        break;
-        case ITEM_OFFHAND:
-            switch (item_sub_type_UID)
-            {
-                case ITEM_SHIELD:
-                    item_pointer->data.sound_move = game.sound_manager.add_sound("data/sound/inventory/leather_00.wav");
-                    item_pointer->data.sound_use  = game.sound_manager.add_sound("data/sound/inventory/leather_00.wav");
-                break;
-                case ITEM_SOURCE:
-                default:
-                    item_pointer->data.sound_move = game.sound_manager.add_sound("data/sound/inventory/leather_00.wav");
-                    item_pointer->data.sound_use  = game.sound_manager.add_sound("data/sound/inventory/leather_00.wav");
-                break;
-            }
-        break;
-        case ITEM_RING:
+        case ITEM_MATERIAL_RING:
             item_pointer->data.sound_move = game.sound_manager.add_sound("data/sound/inventory/ring_01.wav");
             item_pointer->data.sound_use  = game.sound_manager.add_sound("data/sound/inventory/ring_01.wav");
         break;
-        case ITEM_WEAPON:
-            switch (item_sub_type_UID)
-            {
-                case ITEM_BOW:
-                    item_pointer->data.sound_move = game.sound_manager.add_sound("data/sound/inventory/metal_00.wav");
-                    item_pointer->data.sound_use  = game.sound_manager.add_sound("data/sound/inventory/metal_00.wav");
-                break;
-                case ITEM_MACE:
-                    item_pointer->data.sound_move = game.sound_manager.add_sound("data/sound/inventory/metal_00.wav");
-                    item_pointer->data.sound_use  = game.sound_manager.add_sound("data/sound/inventory/metal_00.wav");
-                break;
-                case ITEM_SWORD:
-                    item_pointer->data.sound_move = game.sound_manager.add_sound("data/sound/inventory/metal_00.wav");
-                    item_pointer->data.sound_use  = game.sound_manager.add_sound("data/sound/inventory/metal_00.wav");
-                break;
-                case ITEM_HAMMER:
-                    item_pointer->data.sound_move = game.sound_manager.add_sound("data/sound/inventory/metal_00.wav");
-                    item_pointer->data.sound_use  = game.sound_manager.add_sound("data/sound/inventory/metal_00.wav");
-                break;
-                case ITEM_AXE:
-                    item_pointer->data.sound_move = game.sound_manager.add_sound("data/sound/inventory/metal_00.wav");
-                    item_pointer->data.sound_use  = game.sound_manager.add_sound("data/sound/inventory/metal_00.wav");
-                break;
-                case ITEM_WAND:
-                default:
-                    item_pointer->data.sound_move = game.sound_manager.add_sound("data/sound/inventory/metal_00.wav");
-                    item_pointer->data.sound_use  = game.sound_manager.add_sound("data/sound/inventory/metal_00.wav");
-                break;
-            }
+        case ITEM_MATERIAL_AMULET:
+            item_pointer->data.sound_move = game.sound_manager.add_sound("data/sound/inventory/cloth_00.wav");
+            item_pointer->data.sound_use  = game.sound_manager.add_sound("data/sound/inventory/cloth_00.wav");
+        break;
+        case ITEM_MATERIAL_METAL:
+            item_pointer->data.sound_move = game.sound_manager.add_sound("data/sound/inventory/metal_00.wav");
+            item_pointer->data.sound_use  = game.sound_manager.add_sound("data/sound/inventory/metal_00.wav");
+        break;
+        case ITEM_MATERIAL_WOOD:
+            item_pointer->data.sound_move = game.sound_manager.add_sound("data/sound/inventory/cloth_00.wav");
+            item_pointer->data.sound_use  = game.sound_manager.add_sound("data/sound/inventory/cloth_00.wav");
+        break;
+        case ITEM_MATERIAL_LEATHER:
+            item_pointer->data.sound_move = game.sound_manager.add_sound("data/sound/inventory/leather_00.wav");
+            item_pointer->data.sound_use  = game.sound_manager.add_sound("data/sound/inventory/leather_00.wav");
         break;
         default:
             game.core.log.file_write("Unable to generate item sounds -> ",item_type_UID," - ", item_sub_type_UID," - ", quality_level);
         break;
     }
 };
+
 
