@@ -5,11 +5,9 @@ http://opengameart.org/content/rpg-sound-pack
 Author:  artisticdude
 License(s): GPL 2.0, GPL 3.0, CC-BY 3.0
 
-
 book_00.wav - book_02.wav
 -------------------------
 http://www.soundjay.com/page-flip-sounds-1.html
-
 
 ring_00.wav
 -----------
@@ -23,4 +21,9 @@ http://opengameart.org/content/inventory-sound-effects
 Author:  artisticdude
 License(s): GPL 2.0, GPL 3.0, CC-BY 3.0, CC-BY-SA 3.0
 
+wood_00.wav - wood_03.wav
+-------------------------
+http://opengameart.org/content/metal-and-wood-impact-sound-effects
+Author: Ogrebane
+License(s): CC-BY 3.0
 
