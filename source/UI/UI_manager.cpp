@@ -1058,13 +1058,10 @@ void UI_manager_class::process_forms(void)
                         {
                             for (int element_number = 0; element_number < UI_form_pointer->data.number_of_elements; element_number++)
                             {
-                                if (UI_form_pointer->data.element[element_number].active)
-                                {
-                                    UI_form_pointer->data.element[element_number].position.x       -= drag_delta_x;
-                                    UI_form_pointer->data.element[element_number].position.y       -= drag_delta_y;
-                                    UI_form_pointer->data.element[element_number].title.position.x -= drag_delta_x;
-                                    UI_form_pointer->data.element[element_number].title.position.y -= drag_delta_y;
-                                }
+                                UI_form_pointer->data.element[element_number].position.x       -= drag_delta_x;
+                                UI_form_pointer->data.element[element_number].position.y       -= drag_delta_y;
+                                UI_form_pointer->data.element[element_number].title.position.x -= drag_delta_x;
+                                UI_form_pointer->data.element[element_number].title.position.y -= drag_delta_y;
                             }
                         }
                     }
