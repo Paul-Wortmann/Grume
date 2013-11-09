@@ -37,6 +37,7 @@ int          random_int(void);
 float        random_GLcoord(void);
 std::string  const_char_to_string(const char *const_char_in);
 std::string  int_to_string(int int_in);
+std::string  float_to_string(float float_in);
 std::string  ullint_to_string(unsigned long long ullint_in);
 bool         file_exists(const char* file_name);
 int          round_double(double x);
