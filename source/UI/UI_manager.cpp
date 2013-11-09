@@ -617,12 +617,35 @@ void UI_manager_class::render(void)
                         // ------------------- Display Item stats -----------------------------
                         if ((UI_form_pointer->data.element[element_number].type == UI_ELEMENT_ITEM)&&(UI_form_pointer->data.element[element_number].value >= 0))
                         {
+                            //display spell stats on mouse over
                             if (UI_form_pointer->data.element[element_number].sub_type == ITEM_SPELL)
                             {
-                                //display spell stats on mouse over
+                                spell_type*    spell_pointer          = new spell_type;
+                                spell_pointer = game.spell_manager.add_spell(UI_form_pointer->data.element[element_number].value);
+                                std::string   temp_string_name      = spell_pointer->data.name;
+                                std::string   temp_string_level     = "Level - " + int_to_string(spell_pointer->data.level.current);
+                                std::string   temp_string_mana_cost = "Mana cost - " + float_to_string(spell_pointer->data.mana_cost);
+                                texture_type* texture_pointer_name  = new texture_type;
+                                texture_pointer_name = game.texture_manager.add_texture(game.font_manager.root,temp_string_name.c_str(),0.8f,0,0,255,255,255,255,TEXTURE_STRING);
+                                texture_pointer_name->data.render_positioning = TEXTURE_RENDER_DOWN+TEXTURE_RENDER_LEFT;
+                                texture_type* texture_pointer_level = new texture_type;
+                                texture_pointer_level = game.texture_manager.add_texture(game.font_manager.root,temp_string_level.c_str(),0.8f,0,0,255,255,255,255,TEXTURE_STRING);
+                                texture_pointer_level->data.render_positioning = TEXTURE_RENDER_DOWN+TEXTURE_RENDER_LEFT;
+                                texture_type* texture_pointer_mana_cost  = new texture_type;
+                                texture_pointer_mana_cost = game.texture_manager.add_texture(game.font_manager.root,temp_string_name.c_str(),0.8f,0,0,255,255,255,255,TEXTURE_STRING);
+                                texture_pointer_mana_cost->data.render_positioning = TEXTURE_RENDER_DOWN+TEXTURE_RENDER_LEFT;
+                                float texture_background_x = game.core.io.mouse_x;
+                                float texture_background_y = game.core.io.mouse_y;
+                                float texture_background_padding = texture_pointer_name->data.height;
+                                float texture_background_size_x  = texture_pointer_name->data.width;
+                                float texture_background_size_y  = texture_pointer_name->data.height*4;
+                                if (texture_pointer_level->data.width > texture_background_size_x) texture_background_size_x = texture_pointer_level->data.width;
+                                if (texture_pointer_mana_cost->data.width > texture_background_size_x) texture_background_size_x = texture_pointer_mana_cost->data.width;
+                                texture_background_size_x += (texture_background_padding*1.5f);
                             }
-                            //else
+                            else
                             {
+                                //display item stats on mouse over
                                 std::string   temp_string         = "";
                                 std::string   sign_string         = " ";
                                 effect_type*  effect_pointer      = new effect_type;
@@ -1203,7 +1226,6 @@ void UI_manager_class::swap_elements(int UI_form_UID_src, int UI_element_src, in
         {
             UI_form_struct* UI_form_UID_src_pointer = game.UI_manager.UI_form_get(UI_form_UID_src);
             UI_form_struct* UI_form_UID_dst_pointer = game.UI_manager.UI_form_get(UI_form_UID_dst);
-            item_type* item_pointer_src = game.item_manager.add_item(UI_form_UID_src_pointer->data.element[UI_element_src].value);
             item_type* item_pointer_dst = game.item_manager.add_item(UI_form_UID_dst_pointer->data.element[UI_element_dst].value);
             if ((UI_form_UID_dst_pointer->data.element[UI_element_dst].value == ITEM_NONE) || (item_pointer_dst->data.type == ITEM_SPELL))
             {
