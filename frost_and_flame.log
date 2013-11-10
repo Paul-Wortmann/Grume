@@ -20,32 +20,18 @@ Starting Game...
  
 # ---------------------------------------------- #
  
-Unable to process event - 1201 - UID - 3
-Unable to process event - 1201 - UID - 3
-Unable to process event - 1201 - UID - 3
-Unable to process event - 1201 - UID - 3
-Unable to process event - 1301 - UID - 3
-Unable to process event - 1301 - UID - 3
-Unable to process event - 1301 - UID - 3
-Unable to process event - 1301 - UID - 3
-Unable to process event - 1301 - UID - 3
-Unable to process event - 1101 - UID - 3
-Unable to process event - 1201 - UID - 3
-Unable to process event - 1201 - UID - 3
-Unable to process event - 1101 - UID - 3
-Unable to process event - 1301 - UID - 3
-Unable to process event - 1301 - UID - 3
-Unable to process event - 1301 - UID - 3
-Unable to process event - 1301 - UID - 3
-Unable to process event - 1301 - UID - 3
-Unable to process event - 1101 - UID - 3
+Unable to process event - 501 - UID - 3
+Unable to process event - 501 - UID - 3
+Unable to process event - 501 - UID - 3
+Unable to process event - 1701 - UID - 7
+Unable to process event - 1701 - UID - 7
  
 # ---------------------------------------------- #
  
 Font    count -> 1
 Music   count -> 1
-Sound   count -> 13
-Texture count -> 284
+Sound   count -> 11
+Texture count -> 294
 Item    count -> 49
 Effect  count -> 42
  
