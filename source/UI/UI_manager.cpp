@@ -1275,7 +1275,7 @@ void UI_manager_class::swap_elements(int UI_form_UID_src, int UI_element_src, in
             if   ((item_pointer_dst->data.number_of_item_sockets >= 1) && (item_pointer_src->data.type == ITEM_GEM))
             {
                 bool socket_done = false;
-                for (int socket_count = 0; socket_count < item_pointer_dst->data.number_of_item_sockets+1; socket_count++)
+                for (int socket_count = 0; socket_count < item_pointer_dst->data.number_of_item_sockets; socket_count++)
                 {
                     if ((!socket_done)&&(!item_pointer_dst->data.socket[socket_count].enabled))
                     {
