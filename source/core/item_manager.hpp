@@ -141,9 +141,30 @@ struct item_effect_type
     int  value;
 };
 
+struct item_spell_cooldown_type
+{
+    float            maximum;
+    float            current;
+    float            rate;
+};
+
+struct item_spell_level_type
+{
+    int              maximum;
+    int              current;
+    float            experience;
+    int              next;
+};
+
 struct item_spell_data_type
 {
-
+    bool                     active;
+    item_spell_cooldown_type cooldown;
+    item_spell_cooldown_type duration;
+    item_spell_level_type    level;
+    float                    mana_cost;
+    bool                     passive;
+    int                      projectile_number;
 };
 
 struct item_sound_type
