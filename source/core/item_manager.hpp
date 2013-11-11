@@ -141,32 +141,43 @@ struct item_effect_type
     int  value;
 };
 
+struct item_spell_data_type
+{
+
+};
+
+struct item_sound_type
+{
+    sound_type*    on_use;
+    sound_type*    on_move;
+};
+
 struct item_data_type
 {
-    bool             active;
-    bool             consumable;
-    item_effect_type effect[MAX_ITEM_EFFECTS];
-    bool             equipable;
-    texture_type*    image;
-    std::string      name;
-    int              number_of_item_effects;
-    int              number_of_item_sockets;
-    int              material_type;
-    int              qaulity_type;
-    int              quantity;
-    int              quantity_max;
-    bool             quest;
-    item_socket_type socket[MAX_ITEM_SOCKETS];
-    bool             socketable;  // has sockets, or can gain sockets via NPC etc...
-    int              socket_max;  // max_number of allowed sockets for item, ie. ring == 1 etc...
-    int              socket_type; // Only accept certain items
-    sound_type*      sound_move;
-    sound_type*      sound_use;
-    bool             spell;
-    bool             stackable;
-    int              sub_type;
-    int              type;
-    int              UID;
+    bool                  active;
+    bool                  consumable;
+    item_effect_type      effect[MAX_ITEM_EFFECTS];
+    bool                  equipable;
+    texture_type*         image;
+    std::string           name;
+    int                   number_of_item_effects;
+    int                   number_of_item_sockets;
+    int                   material_type;
+    int                   qaulity_type;
+    int                   quantity;
+    int                   quantity_max;
+    bool                  quest;
+    item_socket_type      socket[MAX_ITEM_SOCKETS];
+    bool                  socketable;  // has sockets, or can gain sockets via NPC etc...
+    int                   socket_max;  // max_number of allowed sockets for item, ie. ring == 1 etc...
+    int                   socket_type; // Only accept certain items
+    item_sound_type       sound;
+    bool                  spell;
+    item_spell_data_type* spell_data;
+    bool                  stackable;
+    int                   sub_type;
+    int                   type;
+    int                   UID;
 };
 
 struct item_type

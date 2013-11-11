@@ -176,8 +176,8 @@ void item_manager_class::load_items(std::string file_name)
                         if (temp_string_key == "NUM_ITEM_EFFECTS") item_pointer->data.number_of_item_effects = atoi(temp_string_data.c_str());
                         if (temp_string_key == "NUM_ITEM_SOCKETS") item_pointer->data.number_of_item_sockets = atoi(temp_string_data.c_str());
                         if (temp_string_key == "IMAGE")            item_pointer->data.image                  = game.texture_manager.add_texture(temp_string_data.c_str());
-                        if (temp_string_key == "SOUND_MOVE")       item_pointer->data.sound_move             = game.sound_manager.add_sound(temp_string_data.c_str());
-                        if (temp_string_key == "SOUND_USE")        item_pointer->data.sound_use              = game.sound_manager.add_sound(temp_string_data.c_str());
+                        if (temp_string_key == "SOUND_MOVE")       item_pointer->data.sound.on_move         = game.sound_manager.add_sound(temp_string_data.c_str());
+                        if (temp_string_key == "SOUND_USE")        item_pointer->data.sound.on_use          = game.sound_manager.add_sound(temp_string_data.c_str());
                         /*
                         if (temp_string_key == "EFFECT_0")         item_pointer->data.effect[0]              = game.effect_manager.add_effect(atoi(temp_string_data.c_str()));
                         if (temp_string_key == "EFFECT_1")         item_pointer->data.effect[1]              = game.effect_manager.add_effect(atoi(temp_string_data.c_str()));
@@ -220,7 +220,7 @@ void item_manager_class::use_item(UI_form_struct *UI_form_pointer, int element_n
                     UI_form_pointer->data.element[element_number].value    = -1;
                     UI_form_pointer->data.element[element_number].quantity = 0;
                 }
-                game.sound_manager.play(item_pointer->data.sound_use);
+                game.sound_manager.play(item_pointer->data.sound.on_use);
             }
         }
     }
@@ -3054,36 +3054,36 @@ void  item_manager_class::gen_item_sounds(item_type* item_pointer,int item_type_
     switch (item_pointer->data.material_type)
     {
         case ITEM_MATERIAL_POTION:
-            item_pointer->data.sound_move = game.sound_manager.add_sound("data/sound/inventory/bottle_01.wav");
-            item_pointer->data.sound_use  = game.sound_manager.add_sound("data/sound/inventory/bubble_01.wav");
+            item_pointer->data.sound.on_move = game.sound_manager.add_sound("data/sound/inventory/bottle_01.wav");
+            item_pointer->data.sound.on_use  = game.sound_manager.add_sound("data/sound/inventory/bubble_01.wav");
         break;
         case ITEM_MATERIAL_GEM:
-            item_pointer->data.sound_move = game.sound_manager.add_sound("data/sound/inventory/ring_00.wav");
-            item_pointer->data.sound_use  = game.sound_manager.add_sound("data/sound/inventory/ring_00.wav");
+            item_pointer->data.sound.on_move = game.sound_manager.add_sound("data/sound/inventory/ring_00.wav");
+            item_pointer->data.sound.on_use  = game.sound_manager.add_sound("data/sound/inventory/ring_00.wav");
         break;
         case ITEM_MATERIAL_BOOK:
-            item_pointer->data.sound_move = game.sound_manager.add_sound("data/sound/inventory/book_02.wav");
-            item_pointer->data.sound_use  = game.sound_manager.add_sound("data/sound/inventory/book_00.wav");
+            item_pointer->data.sound.on_move = game.sound_manager.add_sound("data/sound/inventory/book_02.wav");
+            item_pointer->data.sound.on_use  = game.sound_manager.add_sound("data/sound/inventory/book_00.wav");
         break;
         case ITEM_MATERIAL_RING:
-            item_pointer->data.sound_move = game.sound_manager.add_sound("data/sound/inventory/ring_01.wav");
-            item_pointer->data.sound_use  = game.sound_manager.add_sound("data/sound/inventory/ring_01.wav");
+            item_pointer->data.sound.on_move = game.sound_manager.add_sound("data/sound/inventory/ring_01.wav");
+            item_pointer->data.sound.on_use  = game.sound_manager.add_sound("data/sound/inventory/ring_01.wav");
         break;
         case ITEM_MATERIAL_AMULET:
-            item_pointer->data.sound_move = game.sound_manager.add_sound("data/sound/inventory/cloth_00.wav");
-            item_pointer->data.sound_use  = game.sound_manager.add_sound("data/sound/inventory/cloth_00.wav");
+            item_pointer->data.sound.on_move = game.sound_manager.add_sound("data/sound/inventory/cloth_00.wav");
+            item_pointer->data.sound.on_use  = game.sound_manager.add_sound("data/sound/inventory/cloth_00.wav");
         break;
         case ITEM_MATERIAL_METAL:
-            item_pointer->data.sound_move = game.sound_manager.add_sound("data/sound/inventory/metal_00.wav");
-            item_pointer->data.sound_use  = game.sound_manager.add_sound("data/sound/inventory/metal_00.wav");
+            item_pointer->data.sound.on_move = game.sound_manager.add_sound("data/sound/inventory/metal_00.wav");
+            item_pointer->data.sound.on_use  = game.sound_manager.add_sound("data/sound/inventory/metal_00.wav");
         break;
         case ITEM_MATERIAL_WOOD:
-            item_pointer->data.sound_move = game.sound_manager.add_sound("data/sound/inventory/wood_00.wav");
-            item_pointer->data.sound_use  = game.sound_manager.add_sound("data/sound/inventory/wood_03.wav");
+            item_pointer->data.sound.on_move = game.sound_manager.add_sound("data/sound/inventory/wood_00.wav");
+            item_pointer->data.sound.on_use  = game.sound_manager.add_sound("data/sound/inventory/wood_03.wav");
         break;
         case ITEM_MATERIAL_LEATHER:
-            item_pointer->data.sound_move = game.sound_manager.add_sound("data/sound/inventory/leather_00.wav");
-            item_pointer->data.sound_use  = game.sound_manager.add_sound("data/sound/inventory/leather_00.wav");
+            item_pointer->data.sound.on_move = game.sound_manager.add_sound("data/sound/inventory/leather_00.wav");
+            item_pointer->data.sound.on_use  = game.sound_manager.add_sound("data/sound/inventory/leather_00.wav");
         break;
         default:
             game.core.log.file_write("Unable to generate item sounds -> ",item_type_UID," - ", item_sub_type_UID," - ", quality_level);

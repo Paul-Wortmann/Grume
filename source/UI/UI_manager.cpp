@@ -1361,8 +1361,8 @@ void UI_manager_class::swap_elements(int UI_form_UID_src, int UI_element_src, in
                     }
                 }
             }
-            if (item_pointer_src->data.sound_move) game.sound_manager.play(item_pointer_src->data.sound_move);
+            if (item_pointer_src->data.sound.on_move) game.sound_manager.play(item_pointer_src->data.sound.on_move);
         }
-        else game.sound_manager.play(item_pointer_src->data.sound_move);
+        else game.sound_manager.play(item_pointer_src->data.sound.on_move);
     }
 };
