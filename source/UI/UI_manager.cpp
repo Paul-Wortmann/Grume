@@ -801,7 +801,7 @@ void UI_manager_class::render(void)
                                         {
                                             int effect_count = 0;
                                             socket_item_pointer = game.item_manager.add_item(item_pointer->data.socket[socket_count].value);
-                                            texture_pointer = socket_item_pointer->data.image;
+                                            texture_pointer = socket_item_pointer->data.image.level_0;
                                             texture_pointer->data.render_positioning = TEXTURE_RENDER_DOWN+TEXTURE_RENDER_LEFT;
                                             game.texture_manager.draw(texture_pointer,false,texture_temp_x,texture_temp_y,UI_form_pointer->data.element[element_number].position.z,texture_background_padding,texture_background_padding);
                                             effect_pointer = game.effect_manager.add_effect(socket_item_pointer->data.effect[effect_count].type);

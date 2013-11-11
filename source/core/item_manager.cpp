@@ -175,9 +175,9 @@ void item_manager_class::load_items(std::string file_name)
                         if (temp_string_key == "SUB_TYPE")         item_pointer->data.sub_type               = atoi(temp_string_data.c_str());
                         if (temp_string_key == "NUM_ITEM_EFFECTS") item_pointer->data.number_of_item_effects = atoi(temp_string_data.c_str());
                         if (temp_string_key == "NUM_ITEM_SOCKETS") item_pointer->data.number_of_item_sockets = atoi(temp_string_data.c_str());
-                        if (temp_string_key == "IMAGE")            item_pointer->data.image                  = game.texture_manager.add_texture(temp_string_data.c_str());
-                        if (temp_string_key == "SOUND_MOVE")       item_pointer->data.sound.on_move         = game.sound_manager.add_sound(temp_string_data.c_str());
-                        if (temp_string_key == "SOUND_USE")        item_pointer->data.sound.on_use          = game.sound_manager.add_sound(temp_string_data.c_str());
+                        if (temp_string_key == "IMAGE")            item_pointer->data.image.level_0          = game.texture_manager.add_texture(temp_string_data.c_str());
+                        if (temp_string_key == "SOUND_MOVE")       item_pointer->data.sound.on_move          = game.sound_manager.add_sound(temp_string_data.c_str());
+                        if (temp_string_key == "SOUND_USE")        item_pointer->data.sound.on_use           = game.sound_manager.add_sound(temp_string_data.c_str());
                         /*
                         if (temp_string_key == "EFFECT_0")         item_pointer->data.effect[0]              = game.effect_manager.add_effect(atoi(temp_string_data.c_str()));
                         if (temp_string_key == "EFFECT_1")         item_pointer->data.effect[1]              = game.effect_manager.add_effect(atoi(temp_string_data.c_str()));
@@ -2821,225 +2821,225 @@ void  item_manager_class::gen_item_texture(item_type* item_pointer,int item_type
             {
                 case ITEM_GEM_EMERALD:
                     if (quality_level < (MAX_ITEM_QUALITY*0.2f))
-                        item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/gems/gem_6_0.png");
+                        item_pointer->data.image.level_0 = game.texture_manager.add_texture("data/textures/UI/icons/gems/gem_6_0.png");
                     if ((quality_level >= (MAX_ITEM_QUALITY*0.2f))&&(quality_level < (MAX_ITEM_QUALITY*0.4f)))
-                        item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/gems/gem_6_1.png");
+                        item_pointer->data.image.level_0 = game.texture_manager.add_texture("data/textures/UI/icons/gems/gem_6_1.png");
                     if ((quality_level >= (MAX_ITEM_QUALITY*0.4f))&&(quality_level < (MAX_ITEM_QUALITY*0.6f)))
-                        item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/gems/gem_6_2.png");
+                        item_pointer->data.image.level_0 = game.texture_manager.add_texture("data/textures/UI/icons/gems/gem_6_2.png");
                     if ((quality_level >= (MAX_ITEM_QUALITY*0.6f))&&(quality_level < (MAX_ITEM_QUALITY*0.8f)))
-                        item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/gems/gem_6_3.png");
+                        item_pointer->data.image.level_0 = game.texture_manager.add_texture("data/textures/UI/icons/gems/gem_6_3.png");
                     if (quality_level >= (MAX_ITEM_QUALITY*0.8f))
-                        item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/gems/gem_6_4.png");
+                        item_pointer->data.image.level_0 = game.texture_manager.add_texture("data/textures/UI/icons/gems/gem_6_4.png");
                 break;
                 case ITEM_GEM_OPAL:
                     if (quality_level < (MAX_ITEM_QUALITY*0.2f))
-                        item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/gems/gem_8_0.png");
+                        item_pointer->data.image.level_0 = game.texture_manager.add_texture("data/textures/UI/icons/gems/gem_8_0.png");
                     if ((quality_level >= (MAX_ITEM_QUALITY*0.2f))&&(quality_level < (MAX_ITEM_QUALITY*0.4f)))
-                        item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/gems/gem_8_1.png");
+                        item_pointer->data.image.level_0 = game.texture_manager.add_texture("data/textures/UI/icons/gems/gem_8_1.png");
                     if ((quality_level >= (MAX_ITEM_QUALITY*0.4f))&&(quality_level < (MAX_ITEM_QUALITY*0.6f)))
-                        item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/gems/gem_8_2.png");
+                        item_pointer->data.image.level_0 = game.texture_manager.add_texture("data/textures/UI/icons/gems/gem_8_2.png");
                     if ((quality_level >= (MAX_ITEM_QUALITY*0.6f))&&(quality_level < (MAX_ITEM_QUALITY*0.8f)))
-                        item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/gems/gem_8_3.png");
+                        item_pointer->data.image.level_0 = game.texture_manager.add_texture("data/textures/UI/icons/gems/gem_8_3.png");
                     if (quality_level >= (MAX_ITEM_QUALITY*0.8f))
-                        item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/gems/gem_8_4.png");
+                        item_pointer->data.image.level_0 = game.texture_manager.add_texture("data/textures/UI/icons/gems/gem_8_4.png");
                 break;
                 case ITEM_GEM_RUBY:
                     if (quality_level < (MAX_ITEM_QUALITY*0.2f))
-                        item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/gems/gem_7_0.png");
+                        item_pointer->data.image.level_0 = game.texture_manager.add_texture("data/textures/UI/icons/gems/gem_7_0.png");
                     if ((quality_level >= (MAX_ITEM_QUALITY*0.2f))&&(quality_level < (MAX_ITEM_QUALITY*0.4f)))
-                        item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/gems/gem_7_1.png");
+                        item_pointer->data.image.level_0 = game.texture_manager.add_texture("data/textures/UI/icons/gems/gem_7_1.png");
                     if ((quality_level >= (MAX_ITEM_QUALITY*0.4f))&&(quality_level < (MAX_ITEM_QUALITY*0.6f)))
-                        item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/gems/gem_7_2.png");
+                        item_pointer->data.image.level_0 = game.texture_manager.add_texture("data/textures/UI/icons/gems/gem_7_2.png");
                     if ((quality_level >= (MAX_ITEM_QUALITY*0.6f))&&(quality_level < (MAX_ITEM_QUALITY*0.8f)))
-                        item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/gems/gem_7_3.png");
+                        item_pointer->data.image.level_0 = game.texture_manager.add_texture("data/textures/UI/icons/gems/gem_7_3.png");
                     if (quality_level >= (MAX_ITEM_QUALITY*0.8f))
-                        item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/gems/gem_7_4.png");
+                        item_pointer->data.image.level_0 = game.texture_manager.add_texture("data/textures/UI/icons/gems/gem_7_4.png");
                 break;
                 case ITEM_GEM_SAPPHIRE:
                     if (quality_level < (MAX_ITEM_QUALITY*0.2f))
-                        item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/gems/gem_5_0.png");
+                        item_pointer->data.image.level_0 = game.texture_manager.add_texture("data/textures/UI/icons/gems/gem_5_0.png");
                     if ((quality_level >= (MAX_ITEM_QUALITY*0.2f))&&(quality_level < (MAX_ITEM_QUALITY*0.4f)))
-                        item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/gems/gem_5_1.png");
+                        item_pointer->data.image.level_0 = game.texture_manager.add_texture("data/textures/UI/icons/gems/gem_5_1.png");
                 if ((quality_level >= (MAX_ITEM_QUALITY*0.4f))&&(quality_level < (MAX_ITEM_QUALITY*0.6f)))
-                        item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/gems/gem_5_2.png");
+                        item_pointer->data.image.level_0 = game.texture_manager.add_texture("data/textures/UI/icons/gems/gem_5_2.png");
                     if ((quality_level >= (MAX_ITEM_QUALITY*0.6f))&&(quality_level < (MAX_ITEM_QUALITY*0.8f)))
-                        item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/gems/gem_5_3.png");
+                        item_pointer->data.image.level_0 = game.texture_manager.add_texture("data/textures/UI/icons/gems/gem_5_3.png");
                     if (quality_level >= (MAX_ITEM_QUALITY*0.8f))
-                        item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/gems/gem_5_4.png");
+                        item_pointer->data.image.level_0 = game.texture_manager.add_texture("data/textures/UI/icons/gems/gem_5_4.png");
                 break;
                 case ITEM_GEM_TOPAZ:
                 default:
                     if (quality_level < (MAX_ITEM_QUALITY*0.2f))
-                        item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/gems/gem_9_0.png");
+                        item_pointer->data.image.level_0 = game.texture_manager.add_texture("data/textures/UI/icons/gems/gem_9_0.png");
                     if ((quality_level >= (MAX_ITEM_QUALITY*0.2f))&&(quality_level < (MAX_ITEM_QUALITY*0.4f)))
-                        item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/gems/gem_9_1.png");
+                        item_pointer->data.image.level_0 = game.texture_manager.add_texture("data/textures/UI/icons/gems/gem_9_1.png");
                     if ((quality_level >= (MAX_ITEM_QUALITY*0.4f))&&(quality_level < (MAX_ITEM_QUALITY*0.6f)))
-                        item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/gems/gem_9_2.png");
+                        item_pointer->data.image.level_0 = game.texture_manager.add_texture("data/textures/UI/icons/gems/gem_9_2.png");
                     if ((quality_level >= (MAX_ITEM_QUALITY*0.6f))&&(quality_level < (MAX_ITEM_QUALITY*0.8f)))
-                        item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/gems/gem_9_3.png");
+                        item_pointer->data.image.level_0 = game.texture_manager.add_texture("data/textures/UI/icons/gems/gem_9_3.png");
                     if (quality_level >= (MAX_ITEM_QUALITY*0.8f))
-                        item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/gems/gem_9_4.png");
+                        item_pointer->data.image.level_0 = game.texture_manager.add_texture("data/textures/UI/icons/gems/gem_9_4.png");
                 break;
             }
         break;
         case ITEM_POTION:
             item_pointer->data.material_type = ITEM_MATERIAL_POTION;
-            item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/potions/potion_21.png");
+            item_pointer->data.image.level_0 = game.texture_manager.add_texture("data/textures/UI/icons/potions/potion_21.png");
         break;
         case ITEM_POTION_S_HEALTH:
             item_pointer->data.material_type = ITEM_MATERIAL_POTION;
-            item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/potions/potion_01.png");
+            item_pointer->data.image.level_0 = game.texture_manager.add_texture("data/textures/UI/icons/potions/potion_01.png");
         break;
         case ITEM_POTION_M_HEALTH:
             item_pointer->data.material_type = ITEM_MATERIAL_POTION;
-            item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/potions/potion_02.png");
+            item_pointer->data.image.level_0 = game.texture_manager.add_texture("data/textures/UI/icons/potions/potion_02.png");
         break;
         case ITEM_POTION_L_HEALTH:
             item_pointer->data.material_type = ITEM_MATERIAL_POTION;
-            item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/potions/potion_23.png");
+            item_pointer->data.image.level_0 = game.texture_manager.add_texture("data/textures/UI/icons/potions/potion_23.png");
         break;
         case ITEM_POTION_S_MANA:
             item_pointer->data.material_type = ITEM_MATERIAL_POTION;
-            item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/potions/potion_08.png");
+            item_pointer->data.image.level_0 = game.texture_manager.add_texture("data/textures/UI/icons/potions/potion_08.png");
         break;
         case ITEM_POTION_M_MANA:
             item_pointer->data.material_type = ITEM_MATERIAL_POTION;
-            item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/potions/potion_09.png");
+            item_pointer->data.image.level_0 = game.texture_manager.add_texture("data/textures/UI/icons/potions/potion_09.png");
         break;
         case ITEM_POTION_L_MANA:
             item_pointer->data.material_type = ITEM_MATERIAL_POTION;
-            item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/potions/potion_22.png");
+            item_pointer->data.image.level_0 = game.texture_manager.add_texture("data/textures/UI/icons/potions/potion_22.png");
         break;
         case ITEM_POTION_S_REJUVENATION:
             item_pointer->data.material_type = ITEM_MATERIAL_POTION;
-            item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/potions/potion_24.png");
+            item_pointer->data.image.level_0 = game.texture_manager.add_texture("data/textures/UI/icons/potions/potion_24.png");
         break;
         case ITEM_POTION_M_REJUVENATION:
             item_pointer->data.material_type = ITEM_MATERIAL_POTION;
-            item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/potions/potion_24.png");
+            item_pointer->data.image.level_0 = game.texture_manager.add_texture("data/textures/UI/icons/potions/potion_24.png");
         break;
         case ITEM_POTION_L_REJUVENATION:
             item_pointer->data.material_type = ITEM_MATERIAL_POTION;
-            item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/potions/potion_24.png");
+            item_pointer->data.image.level_0 = game.texture_manager.add_texture("data/textures/UI/icons/potions/potion_24.png");
         break;
         case ITEM_SPELL_BOOK:
             item_pointer->data.material_type = ITEM_MATERIAL_BOOK;
             switch (item_sub_type_UID)
             {
                 case ITEM_SPELL_ARROW_FIRE:
-                    item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/books/book_05.png");
+                    item_pointer->data.image.level_0 = game.texture_manager.add_texture("data/textures/UI/icons/books/book_05.png");
                 break;
                 case ITEM_SPELL_ARROW_ICE:
-                    item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/books/book_24.png");
+                    item_pointer->data.image.level_0 = game.texture_manager.add_texture("data/textures/UI/icons/books/book_24.png");
                 break;
                 case ITEM_SPELL_ARROW_LIGHTNING:
-                    item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/books/book_25.png");
+                    item_pointer->data.image.level_0 = game.texture_manager.add_texture("data/textures/UI/icons/books/book_25.png");
                 break;
                 case ITEM_SPELL_ARROW_ELEMENTAL:
-                    item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/books/book_17.png");
+                    item_pointer->data.image.level_0 = game.texture_manager.add_texture("data/textures/UI/icons/books/book_17.png");
                 break;
                 case ITEM_SPELL_BALL_FIRE:
-                    item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/books/book_05.png");
+                    item_pointer->data.image.level_0 = game.texture_manager.add_texture("data/textures/UI/icons/books/book_05.png");
                 break;
                 case ITEM_SPELL_BALL_ICE:
-                    item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/books/book_19.png");
+                    item_pointer->data.image.level_0 = game.texture_manager.add_texture("data/textures/UI/icons/books/book_19.png");
                 break;
                 case ITEM_SPELL_BALL_LIGHTNING:
-                    item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/books/book_15.png");
+                    item_pointer->data.image.level_0 = game.texture_manager.add_texture("data/textures/UI/icons/books/book_15.png");
                 break;
                 case ITEM_SPELL_BALL_ELEMENTAL:
-                    item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/books/book_17.png");
+                    item_pointer->data.image.level_0 = game.texture_manager.add_texture("data/textures/UI/icons/books/book_17.png");
                 break;
 
                 case ITEM_SPELL_SHIELD_FIRE:
-                    item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/books/book_05.png");
+                    item_pointer->data.image.level_0 = game.texture_manager.add_texture("data/textures/UI/icons/books/book_05.png");
                 break;
                 case ITEM_SPELL_SHIELD_ICE:
-                    item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/books/book_19.png");
+                    item_pointer->data.image.level_0 = game.texture_manager.add_texture("data/textures/UI/icons/books/book_19.png");
                 break;
                 case ITEM_SPELL_SHIELD_LIGHTNING:
-                    item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/books/book_15.png");
+                    item_pointer->data.image.level_0 = game.texture_manager.add_texture("data/textures/UI/icons/books/book_15.png");
                 break;
                 case ITEM_SPELL_SHIELD_ELEMENTAL:
-                    item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/books/book_17.png");
+                    item_pointer->data.image.level_0 = game.texture_manager.add_texture("data/textures/UI/icons/books/book_17.png");
                 break;
                 case ITEM_SPELL_HEAL:
-                    item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/books/book_23.png");
+                    item_pointer->data.image.level_0 = game.texture_manager.add_texture("data/textures/UI/icons/books/book_23.png");
                 break;
                 default:
-                    item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/books/book_04.png");
+                    item_pointer->data.image.level_0 = game.texture_manager.add_texture("data/textures/UI/icons/books/book_04.png");
                 break;
             }
         break;
         case ITEM_BELT:
             item_pointer->data.material_type = ITEM_MATERIAL_LEATHER;
-            item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/belts/belt_00.png");
+            item_pointer->data.image.level_0 = game.texture_manager.add_texture("data/textures/UI/icons/belts/belt_00.png");
         break;
         case ITEM_BODY:
             item_pointer->data.material_type = ITEM_MATERIAL_METAL;
-            item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/armor/armor_09.png");
+            item_pointer->data.image.level_0 = game.texture_manager.add_texture("data/textures/UI/icons/armor/armor_09.png");
         break;
         case ITEM_FEET:
             item_pointer->data.material_type = ITEM_MATERIAL_LEATHER;
-            item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/boots/boots_06.png");
+            item_pointer->data.image.level_0 = game.texture_manager.add_texture("data/textures/UI/icons/boots/boots_06.png");
         break;
         case ITEM_HAND:
             item_pointer->data.material_type = ITEM_MATERIAL_METAL;
-            item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/gloves/gloves_03.png");
+            item_pointer->data.image.level_0 = game.texture_manager.add_texture("data/textures/UI/icons/gloves/gloves_03.png");
         break;
         case ITEM_HEAD:
             item_pointer->data.material_type = ITEM_MATERIAL_METAL;
-            item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/helms/helm_00.png");
+            item_pointer->data.image.level_0 = game.texture_manager.add_texture("data/textures/UI/icons/helms/helm_00.png");
         break;
         case ITEM_NECK:
             item_pointer->data.material_type = ITEM_MATERIAL_AMULET;
-            item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/amulets/amulet_00.png");
+            item_pointer->data.image.level_0 = game.texture_manager.add_texture("data/textures/UI/icons/amulets/amulet_00.png");
         break;
         case ITEM_OFFHAND:
             switch (item_sub_type_UID)
             {
                 case ITEM_SHIELD:
                     item_pointer->data.material_type = ITEM_MATERIAL_WOOD;
-                    item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/shields/shield_09.png");
+                    item_pointer->data.image.level_0 = game.texture_manager.add_texture("data/textures/UI/icons/shields/shield_09.png");
                 break;
                 case ITEM_SOURCE:
                 default:
                     item_pointer->data.material_type = ITEM_MATERIAL_LEATHER;
-                    item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/shields/shield_09.png");
+                    item_pointer->data.image.level_0 = game.texture_manager.add_texture("data/textures/UI/icons/shields/shield_09.png");
                 break;
             }
         break;
         case ITEM_RING:
             item_pointer->data.material_type = ITEM_MATERIAL_RING;
-            item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/rings/ring_00.png");
+            item_pointer->data.image.level_0 = game.texture_manager.add_texture("data/textures/UI/icons/rings/ring_00.png");
         break;
         case ITEM_WEAPON:
             switch (item_sub_type_UID)
             {
                 case ITEM_BOW:
                     item_pointer->data.material_type = ITEM_MATERIAL_WOOD;
-                    item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/bows/bow_03.png");
+                    item_pointer->data.image.level_0 = game.texture_manager.add_texture("data/textures/UI/icons/bows/bow_03.png");
                 break;
                 case ITEM_MACE:
                     item_pointer->data.material_type = ITEM_MATERIAL_METAL;
-                    item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/maces/mace_00.png");
+                    item_pointer->data.image.level_0 = game.texture_manager.add_texture("data/textures/UI/icons/maces/mace_00.png");
                 break;
                 case ITEM_SWORD:
                     item_pointer->data.material_type = ITEM_MATERIAL_METAL;
-                    item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/swords/sword_30.png");
+                    item_pointer->data.image.level_0 = game.texture_manager.add_texture("data/textures/UI/icons/swords/sword_30.png");
                 break;
                 case ITEM_HAMMER:
                     item_pointer->data.material_type = ITEM_MATERIAL_METAL;
-                    item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/hammers/hammer_00.png");
+                    item_pointer->data.image.level_0 = game.texture_manager.add_texture("data/textures/UI/icons/hammers/hammer_00.png");
                 break;
                 case ITEM_AXE:
                     item_pointer->data.material_type = ITEM_MATERIAL_METAL;
-                    item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/axes/axe_00.png");
+                    item_pointer->data.image.level_0 = game.texture_manager.add_texture("data/textures/UI/icons/axes/axe_00.png");
                 break;
                 case ITEM_WAND:
                 default:
                     item_pointer->data.material_type = ITEM_MATERIAL_WOOD;
-                    item_pointer->data.image = game.texture_manager.add_texture("data/textures/UI/icons/wands/wand_05.png");
+                    item_pointer->data.image.level_0 = game.texture_manager.add_texture("data/textures/UI/icons/wands/wand_05.png");
                 break;
             }
         break;

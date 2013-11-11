@@ -152,13 +152,21 @@ struct item_sound_type
     sound_type*    on_move;
 };
 
+struct item_image_type
+{
+    int              number;
+    texture_type*    level_0;
+    texture_type*    level_1;
+    texture_type*    level_2;
+};
+
 struct item_data_type
 {
     bool                  active;
     bool                  consumable;
     item_effect_type      effect[MAX_ITEM_EFFECTS];
     bool                  equipable;
-    texture_type*         image;
+    item_image_type       image;
     std::string           name;
     int                   number_of_item_effects;
     int                   number_of_item_sockets;
