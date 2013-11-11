@@ -30,5 +30,6 @@
 
 void setup_inventory_window(int UID);
 void process_inventory_window(UI_form_struct *UI_form_pointer);
+void process_inventory_item(UI_form_struct *UI_form_pointer,int element_number);
 
 #endif // INVENTORY_WINDOW_H

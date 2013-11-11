@@ -1366,3 +1366,32 @@ void UI_manager_class::swap_elements(int UI_form_UID_src, int UI_element_src, in
         else game.sound_manager.play(item_pointer_src->data.sound.on_move);
     }
 };
+
+void UI_manager_class::swap_equipment(int UI_form_UID_src, int UI_element_src, int UI_form_UID_dst)
+{
+    UI_form_struct* UI_form_UID_src_pointer = game.UI_manager.UI_form_get(UI_form_UID_src);
+    UI_form_struct* UI_form_UID_dst_pointer = game.UI_manager.UI_form_get(UI_form_UID_dst);
+    item_type* item_pointer_src = game.item_manager.add_item(UI_form_UID_src_pointer->data.element[UI_element_src].value);
+    for (int UI_element_dst = 0; UI_element_dst < UI_form_UID_dst_pointer->data.number_of_elements; UI_element_dst++)
+    {
+        if ((UI_form_UID_dst_pointer->data.element[UI_element_dst].sub_type == item_pointer_src->data.sub_type) ||
+            (UI_form_UID_dst_pointer->data.element[UI_element_dst].sub_type == item_pointer_src->data.type))
+        {
+            if (item_pointer_src->data.sound.on_move) game.sound_manager.play(item_pointer_src->data.sound.on_move);
+            int temp_value    = UI_form_UID_src_pointer->data.element[UI_element_src].value;
+            int temp_quantity = UI_form_UID_src_pointer->data.element[UI_element_src].quantity;
+            texture_type* temp_texture_pointer = UI_form_UID_src_pointer->data.element[UI_element_src].texture.normal;
+            UI_form_UID_src_pointer->data.element[UI_element_src].value          = UI_form_UID_dst_pointer->data.element[UI_element_dst].value;
+            UI_form_UID_src_pointer->data.element[UI_element_src].quantity       = UI_form_UID_dst_pointer->data.element[UI_element_dst].quantity;
+            UI_form_UID_src_pointer->data.element[UI_element_src].texture.normal = UI_form_UID_dst_pointer->data.element[UI_element_dst].texture.normal;
+            UI_form_UID_dst_pointer->data.element[UI_element_dst].value          = temp_value;
+            UI_form_UID_dst_pointer->data.element[UI_element_dst].quantity       = temp_quantity;
+            UI_form_UID_dst_pointer->data.element[UI_element_dst].texture.normal = temp_texture_pointer;
+        }
+    }
+};
+
+
+
+
+

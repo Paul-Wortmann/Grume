@@ -185,7 +185,7 @@ void setup_inventory_window(int UID)
     UI_form_pointer->data.element[element_number].active                      = true;
     UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_ITEM;
     UI_form_pointer->data.element[element_number].zoom.enabled                = false;
-    UI_form_pointer->data.element[element_number].value                       = -1;
+    UI_form_pointer->data.element[element_number].value                       = ITEM_NONE;
     UI_form_pointer->data.element[element_number].color                       = UI_form_pointer->data.color;
     UI_form_pointer->data.element[element_number].size.x                      = 0.050f;
     UI_form_pointer->data.element[element_number].size.y                      = 0.085f;
@@ -208,7 +208,7 @@ void setup_inventory_window(int UID)
     UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_ITEM;
     UI_form_pointer->data.element[element_number].zoom.enabled                = false;
     UI_form_pointer->data.element[element_number].tooltip.enabled             = false;
-    UI_form_pointer->data.element[element_number].value                       = -1;
+    UI_form_pointer->data.element[element_number].value                       = ITEM_NONE;
     UI_form_pointer->data.element[element_number].color                       = UI_form_pointer->data.color;
     UI_form_pointer->data.element[element_number].size.x                      = 0.050f;
     UI_form_pointer->data.element[element_number].size.y                      = 0.085f;
@@ -231,7 +231,7 @@ void setup_inventory_window(int UID)
     UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_ITEM;
     UI_form_pointer->data.element[element_number].zoom.enabled                = false;
     UI_form_pointer->data.element[element_number].tooltip.enabled             = false;
-    UI_form_pointer->data.element[element_number].value                       = -1;
+    UI_form_pointer->data.element[element_number].value                       = ITEM_NONE;
     UI_form_pointer->data.element[element_number].color                       = UI_form_pointer->data.color;
     UI_form_pointer->data.element[element_number].size.x                      = 0.050f;
     UI_form_pointer->data.element[element_number].size.y                      = 0.085f;
@@ -254,7 +254,7 @@ void setup_inventory_window(int UID)
     UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_ITEM;
     UI_form_pointer->data.element[element_number].zoom.enabled                = false;
     UI_form_pointer->data.element[element_number].tooltip.enabled             = false;
-    UI_form_pointer->data.element[element_number].value                       = -1;
+    UI_form_pointer->data.element[element_number].value                       = ITEM_NONE;
     UI_form_pointer->data.element[element_number].color                       = UI_form_pointer->data.color;
     UI_form_pointer->data.element[element_number].size.x                      = 0.050f;
     UI_form_pointer->data.element[element_number].size.y                      = 0.085f;
@@ -277,7 +277,7 @@ void setup_inventory_window(int UID)
     UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_ITEM;
     UI_form_pointer->data.element[element_number].zoom.enabled                = false;
     UI_form_pointer->data.element[element_number].tooltip.enabled             = false;
-    UI_form_pointer->data.element[element_number].value                       = -1;
+    UI_form_pointer->data.element[element_number].value                       = ITEM_NONE;
     UI_form_pointer->data.element[element_number].color                       = UI_form_pointer->data.color;
     UI_form_pointer->data.element[element_number].size.x                      = 0.050f;
     UI_form_pointer->data.element[element_number].size.y                      = 0.085f;
@@ -300,7 +300,7 @@ void setup_inventory_window(int UID)
     UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_ITEM;
     UI_form_pointer->data.element[element_number].zoom.enabled                = false;
     UI_form_pointer->data.element[element_number].tooltip.enabled             = false;
-    UI_form_pointer->data.element[element_number].value                       = -1;
+    UI_form_pointer->data.element[element_number].value                       = ITEM_NONE;
     UI_form_pointer->data.element[element_number].color                       = UI_form_pointer->data.color;
     UI_form_pointer->data.element[element_number].size.x                      = 0.050f;
     UI_form_pointer->data.element[element_number].size.y                      = 0.085f;
@@ -324,7 +324,7 @@ void setup_inventory_window(int UID)
     UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_ITEM;
     UI_form_pointer->data.element[element_number].zoom.enabled                = false;
     UI_form_pointer->data.element[element_number].tooltip.enabled             = false;
-    UI_form_pointer->data.element[element_number].value                       = -1;
+    UI_form_pointer->data.element[element_number].value                       = ITEM_NONE;
     UI_form_pointer->data.element[element_number].color                       = UI_form_pointer->data.color;
     UI_form_pointer->data.element[element_number].size.x                      = 0.050f;
     UI_form_pointer->data.element[element_number].size.y                      = 0.085f;
@@ -347,7 +347,7 @@ void setup_inventory_window(int UID)
     UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_ITEM;
     UI_form_pointer->data.element[element_number].zoom.enabled                = false;
     UI_form_pointer->data.element[element_number].tooltip.enabled             = false;
-    UI_form_pointer->data.element[element_number].value                       = -1;
+    UI_form_pointer->data.element[element_number].value                       = ITEM_NONE;
     UI_form_pointer->data.element[element_number].color                       = UI_form_pointer->data.color;
     UI_form_pointer->data.element[element_number].size.x                      = 0.050f;
     UI_form_pointer->data.element[element_number].size.y                      = 0.085f;
@@ -370,7 +370,7 @@ void setup_inventory_window(int UID)
     UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_ITEM;
     UI_form_pointer->data.element[element_number].zoom.enabled                = false;
     UI_form_pointer->data.element[element_number].tooltip.enabled             = false;
-    UI_form_pointer->data.element[element_number].value                       = -1;
+    UI_form_pointer->data.element[element_number].value                       = ITEM_NONE;
     UI_form_pointer->data.element[element_number].color                       = UI_form_pointer->data.color;
     UI_form_pointer->data.element[element_number].size.x                      = 0.050f;
     UI_form_pointer->data.element[element_number].size.y                      = 0.085f;
@@ -393,7 +393,7 @@ void setup_inventory_window(int UID)
     UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_ITEM;
     UI_form_pointer->data.element[element_number].zoom.enabled                = false;
     UI_form_pointer->data.element[element_number].tooltip.enabled             = false;
-    UI_form_pointer->data.element[element_number].value                       = -1;
+    UI_form_pointer->data.element[element_number].value                       = ITEM_NONE;
     UI_form_pointer->data.element[element_number].color                       = UI_form_pointer->data.color;
     UI_form_pointer->data.element[element_number].size.x                      = 0.050f;
     UI_form_pointer->data.element[element_number].size.y                      = 0.085f;
@@ -416,7 +416,7 @@ void setup_inventory_window(int UID)
     UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_ITEM;
     UI_form_pointer->data.element[element_number].zoom.enabled                = false;
     UI_form_pointer->data.element[element_number].tooltip.enabled             = false;
-    UI_form_pointer->data.element[element_number].value                       = -1;
+    UI_form_pointer->data.element[element_number].value                       = ITEM_NONE;
     UI_form_pointer->data.element[element_number].color                       = UI_form_pointer->data.color;
     UI_form_pointer->data.element[element_number].size.x                      = 0.050f;
     UI_form_pointer->data.element[element_number].size.y                      = 0.085f;
@@ -439,7 +439,7 @@ void setup_inventory_window(int UID)
     UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_ITEM;
     UI_form_pointer->data.element[element_number].zoom.enabled                = false;
     UI_form_pointer->data.element[element_number].tooltip.enabled             = false;
-    UI_form_pointer->data.element[element_number].value                       = -1;
+    UI_form_pointer->data.element[element_number].value                       = ITEM_NONE;
     UI_form_pointer->data.element[element_number].color                       = UI_form_pointer->data.color;
     UI_form_pointer->data.element[element_number].size.x                      = 0.050f;
     UI_form_pointer->data.element[element_number].size.y                      = 0.085f;
@@ -463,7 +463,7 @@ void setup_inventory_window(int UID)
     UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_ITEM;
     UI_form_pointer->data.element[element_number].zoom.enabled                = false;
     UI_form_pointer->data.element[element_number].tooltip.enabled             = false;
-    UI_form_pointer->data.element[element_number].value                       = -1;
+    UI_form_pointer->data.element[element_number].value                       = ITEM_NONE;
     UI_form_pointer->data.element[element_number].color                       = UI_form_pointer->data.color;
     UI_form_pointer->data.element[element_number].size.x                      = 0.050f;
     UI_form_pointer->data.element[element_number].size.y                      = 0.085f;
@@ -486,7 +486,7 @@ void setup_inventory_window(int UID)
     UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_ITEM;
     UI_form_pointer->data.element[element_number].zoom.enabled                = false;
     UI_form_pointer->data.element[element_number].tooltip.enabled             = false;
-    UI_form_pointer->data.element[element_number].value                       = -1;
+    UI_form_pointer->data.element[element_number].value                       = ITEM_NONE;
     UI_form_pointer->data.element[element_number].color                       = UI_form_pointer->data.color;
     UI_form_pointer->data.element[element_number].size.x                      = 0.050f;
     UI_form_pointer->data.element[element_number].size.y                      = 0.085f;
@@ -509,7 +509,7 @@ void setup_inventory_window(int UID)
     UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_ITEM;
     UI_form_pointer->data.element[element_number].zoom.enabled                = false;
     UI_form_pointer->data.element[element_number].tooltip.enabled             = false;
-    UI_form_pointer->data.element[element_number].value                       = -1;
+    UI_form_pointer->data.element[element_number].value                       = ITEM_NONE;
     UI_form_pointer->data.element[element_number].color                       = UI_form_pointer->data.color;
     UI_form_pointer->data.element[element_number].size.x                      = 0.050f;
     UI_form_pointer->data.element[element_number].size.y                      = 0.085f;
@@ -532,7 +532,7 @@ void setup_inventory_window(int UID)
     UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_ITEM;
     UI_form_pointer->data.element[element_number].zoom.enabled                = false;
     UI_form_pointer->data.element[element_number].tooltip.enabled             = false;
-    UI_form_pointer->data.element[element_number].value                       = -1;
+    UI_form_pointer->data.element[element_number].value                       = ITEM_NONE;
     UI_form_pointer->data.element[element_number].color                       = UI_form_pointer->data.color;
     UI_form_pointer->data.element[element_number].size.x                      = 0.050f;
     UI_form_pointer->data.element[element_number].size.y                      = 0.085f;
@@ -555,7 +555,7 @@ void setup_inventory_window(int UID)
     UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_ITEM;
     UI_form_pointer->data.element[element_number].zoom.enabled                = false;
     UI_form_pointer->data.element[element_number].tooltip.enabled             = false;
-    UI_form_pointer->data.element[element_number].value                       = -1;
+    UI_form_pointer->data.element[element_number].value                       = ITEM_NONE;
     UI_form_pointer->data.element[element_number].color                       = UI_form_pointer->data.color;
     UI_form_pointer->data.element[element_number].size.x                      = 0.050f;
     UI_form_pointer->data.element[element_number].size.y                      = 0.085f;
@@ -578,7 +578,7 @@ void setup_inventory_window(int UID)
     UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_ITEM;
     UI_form_pointer->data.element[element_number].zoom.enabled                = false;
     UI_form_pointer->data.element[element_number].tooltip.enabled             = false;
-    UI_form_pointer->data.element[element_number].value                       = -1;
+    UI_form_pointer->data.element[element_number].value                       = ITEM_NONE;
     UI_form_pointer->data.element[element_number].color                       = UI_form_pointer->data.color;
     UI_form_pointer->data.element[element_number].size.x                      = 0.050f;
     UI_form_pointer->data.element[element_number].size.y                      = 0.085f;
@@ -602,7 +602,7 @@ void setup_inventory_window(int UID)
     UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_ITEM;
     UI_form_pointer->data.element[element_number].zoom.enabled                = false;
     UI_form_pointer->data.element[element_number].tooltip.enabled             = false;
-    UI_form_pointer->data.element[element_number].value                       = -1;
+    UI_form_pointer->data.element[element_number].value                       = ITEM_NONE;
     UI_form_pointer->data.element[element_number].color                       = UI_form_pointer->data.color;
     UI_form_pointer->data.element[element_number].size.x                      = 0.050f;
     UI_form_pointer->data.element[element_number].size.y                      = 0.085f;
@@ -625,7 +625,7 @@ void setup_inventory_window(int UID)
     UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_ITEM;
     UI_form_pointer->data.element[element_number].zoom.enabled                = false;
     UI_form_pointer->data.element[element_number].tooltip.enabled             = false;
-    UI_form_pointer->data.element[element_number].value                       = -1;
+    UI_form_pointer->data.element[element_number].value                       = ITEM_NONE;
     UI_form_pointer->data.element[element_number].color                       = UI_form_pointer->data.color;
     UI_form_pointer->data.element[element_number].size.x                      = 0.050f;
     UI_form_pointer->data.element[element_number].size.y                      = 0.085f;
@@ -648,7 +648,7 @@ void setup_inventory_window(int UID)
     UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_ITEM;
     UI_form_pointer->data.element[element_number].zoom.enabled                = false;
     UI_form_pointer->data.element[element_number].tooltip.enabled             = false;
-    UI_form_pointer->data.element[element_number].value                       = -1;
+    UI_form_pointer->data.element[element_number].value                       = ITEM_NONE;
     UI_form_pointer->data.element[element_number].color                       = UI_form_pointer->data.color;
     UI_form_pointer->data.element[element_number].size.x                      = 0.050f;
     UI_form_pointer->data.element[element_number].size.y                      = 0.085f;
@@ -671,7 +671,7 @@ void setup_inventory_window(int UID)
     UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_ITEM;
     UI_form_pointer->data.element[element_number].zoom.enabled                = false;
     UI_form_pointer->data.element[element_number].tooltip.enabled             = false;
-    UI_form_pointer->data.element[element_number].value                       = -1;
+    UI_form_pointer->data.element[element_number].value                       = ITEM_NONE;
     UI_form_pointer->data.element[element_number].color                       = UI_form_pointer->data.color;
     UI_form_pointer->data.element[element_number].size.x                      = 0.050f;
     UI_form_pointer->data.element[element_number].size.y                      = 0.085f;
@@ -694,7 +694,7 @@ void setup_inventory_window(int UID)
     UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_ITEM;
     UI_form_pointer->data.element[element_number].zoom.enabled                = false;
     UI_form_pointer->data.element[element_number].tooltip.enabled             = false;
-    UI_form_pointer->data.element[element_number].value                       = -1;
+    UI_form_pointer->data.element[element_number].value                       = ITEM_NONE;
     UI_form_pointer->data.element[element_number].color                       = UI_form_pointer->data.color;
     UI_form_pointer->data.element[element_number].size.x                      = 0.050f;
     UI_form_pointer->data.element[element_number].size.y                      = 0.085f;
@@ -717,7 +717,7 @@ void setup_inventory_window(int UID)
     UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_ITEM;
     UI_form_pointer->data.element[element_number].zoom.enabled                = false;
     UI_form_pointer->data.element[element_number].tooltip.enabled             = false;
-    UI_form_pointer->data.element[element_number].value                       = -1;
+    UI_form_pointer->data.element[element_number].value                       = ITEM_NONE;
     UI_form_pointer->data.element[element_number].color                       = UI_form_pointer->data.color;
     UI_form_pointer->data.element[element_number].size.x                      = 0.050f;
     UI_form_pointer->data.element[element_number].size.y                      = 0.085f;
@@ -741,7 +741,7 @@ void setup_inventory_window(int UID)
     UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_ITEM;
     UI_form_pointer->data.element[element_number].zoom.enabled                = false;
     UI_form_pointer->data.element[element_number].tooltip.enabled             = false;
-    UI_form_pointer->data.element[element_number].value                       = -1;
+    UI_form_pointer->data.element[element_number].value                       = ITEM_NONE;
     UI_form_pointer->data.element[element_number].color                       = UI_form_pointer->data.color;
     UI_form_pointer->data.element[element_number].size.x                      = 0.050f;
     UI_form_pointer->data.element[element_number].size.y                      = 0.085f;
@@ -764,7 +764,7 @@ void setup_inventory_window(int UID)
     UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_ITEM;
     UI_form_pointer->data.element[element_number].zoom.enabled                = false;
     UI_form_pointer->data.element[element_number].tooltip.enabled             = false;
-    UI_form_pointer->data.element[element_number].value                       = -1;
+    UI_form_pointer->data.element[element_number].value                       = ITEM_NONE;
     UI_form_pointer->data.element[element_number].color                       = UI_form_pointer->data.color;
     UI_form_pointer->data.element[element_number].size.x                      = 0.050f;
     UI_form_pointer->data.element[element_number].size.y                      = 0.085f;
@@ -787,7 +787,7 @@ void setup_inventory_window(int UID)
     UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_ITEM;
     UI_form_pointer->data.element[element_number].zoom.enabled                = false;
     UI_form_pointer->data.element[element_number].tooltip.enabled             = false;
-    UI_form_pointer->data.element[element_number].value                       = -1;
+    UI_form_pointer->data.element[element_number].value                       = ITEM_NONE;
     UI_form_pointer->data.element[element_number].color                       = UI_form_pointer->data.color;
     UI_form_pointer->data.element[element_number].size.x                      = 0.050f;
     UI_form_pointer->data.element[element_number].size.y                      = 0.085f;
@@ -810,7 +810,7 @@ void setup_inventory_window(int UID)
     UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_ITEM;
     UI_form_pointer->data.element[element_number].zoom.enabled                = false;
     UI_form_pointer->data.element[element_number].tooltip.enabled             = false;
-    UI_form_pointer->data.element[element_number].value                       = -1;
+    UI_form_pointer->data.element[element_number].value                       = ITEM_NONE;
     UI_form_pointer->data.element[element_number].color                       = UI_form_pointer->data.color;
     UI_form_pointer->data.element[element_number].size.x                      = 0.050f;
     UI_form_pointer->data.element[element_number].size.y                      = 0.085f;
@@ -833,7 +833,7 @@ void setup_inventory_window(int UID)
     UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_ITEM;
     UI_form_pointer->data.element[element_number].zoom.enabled                = false;
     UI_form_pointer->data.element[element_number].tooltip.enabled             = false;
-    UI_form_pointer->data.element[element_number].value                       = -1;
+    UI_form_pointer->data.element[element_number].value                       = ITEM_NONE;
     UI_form_pointer->data.element[element_number].color                       = UI_form_pointer->data.color;
     UI_form_pointer->data.element[element_number].size.x                      = 0.050f;
     UI_form_pointer->data.element[element_number].size.y                      = 0.085f;
@@ -856,7 +856,7 @@ void setup_inventory_window(int UID)
     UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_ITEM;
     UI_form_pointer->data.element[element_number].zoom.enabled                = false;
     UI_form_pointer->data.element[element_number].tooltip.enabled             = false;
-    UI_form_pointer->data.element[element_number].value                       = -1;
+    UI_form_pointer->data.element[element_number].value                       = ITEM_NONE;
     UI_form_pointer->data.element[element_number].color                       = UI_form_pointer->data.color;
     UI_form_pointer->data.element[element_number].size.x                      = 0.050f;
     UI_form_pointer->data.element[element_number].size.y                      = 0.085f;
@@ -880,7 +880,7 @@ void setup_inventory_window(int UID)
     UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_ITEM;
     UI_form_pointer->data.element[element_number].zoom.enabled                = false;
     UI_form_pointer->data.element[element_number].tooltip.enabled             = false;
-    UI_form_pointer->data.element[element_number].value                       = -1;
+    UI_form_pointer->data.element[element_number].value                       = ITEM_NONE;
     UI_form_pointer->data.element[element_number].color                       = UI_form_pointer->data.color;
     UI_form_pointer->data.element[element_number].size.x                      = 0.050f;
     UI_form_pointer->data.element[element_number].size.y                      = 0.085f;
@@ -903,7 +903,7 @@ void setup_inventory_window(int UID)
     UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_ITEM;
     UI_form_pointer->data.element[element_number].zoom.enabled                = false;
     UI_form_pointer->data.element[element_number].tooltip.enabled             = false;
-    UI_form_pointer->data.element[element_number].value                       = -1;
+    UI_form_pointer->data.element[element_number].value                       = ITEM_NONE;
     UI_form_pointer->data.element[element_number].color                       = UI_form_pointer->data.color;
     UI_form_pointer->data.element[element_number].size.x                      = 0.050f;
     UI_form_pointer->data.element[element_number].size.y                      = 0.085f;
@@ -926,7 +926,7 @@ void setup_inventory_window(int UID)
     UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_ITEM;
     UI_form_pointer->data.element[element_number].zoom.enabled                = false;
     UI_form_pointer->data.element[element_number].tooltip.enabled             = false;
-    UI_form_pointer->data.element[element_number].value                       = -1;
+    UI_form_pointer->data.element[element_number].value                       = ITEM_NONE;
     UI_form_pointer->data.element[element_number].color                       = UI_form_pointer->data.color;
     UI_form_pointer->data.element[element_number].size.x                      = 0.050f;
     UI_form_pointer->data.element[element_number].size.y                      = 0.085f;
@@ -949,7 +949,7 @@ void setup_inventory_window(int UID)
     UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_ITEM;
     UI_form_pointer->data.element[element_number].zoom.enabled                = false;
     UI_form_pointer->data.element[element_number].tooltip.enabled             = false;
-    UI_form_pointer->data.element[element_number].value                       = -1;
+    UI_form_pointer->data.element[element_number].value                       = ITEM_NONE;
     UI_form_pointer->data.element[element_number].color                       = UI_form_pointer->data.color;
     UI_form_pointer->data.element[element_number].size.x                      = 0.050f;
     UI_form_pointer->data.element[element_number].size.y                      = 0.085f;
@@ -972,7 +972,7 @@ void setup_inventory_window(int UID)
     UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_ITEM;
     UI_form_pointer->data.element[element_number].zoom.enabled                = false;
     UI_form_pointer->data.element[element_number].tooltip.enabled             = false;
-    UI_form_pointer->data.element[element_number].value                       = -1;
+    UI_form_pointer->data.element[element_number].value                       = ITEM_NONE;
     UI_form_pointer->data.element[element_number].color                       = UI_form_pointer->data.color;
     UI_form_pointer->data.element[element_number].size.x                      = 0.050f;
     UI_form_pointer->data.element[element_number].size.y                      = 0.085f;
@@ -995,7 +995,7 @@ void setup_inventory_window(int UID)
     UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_ITEM;
     UI_form_pointer->data.element[element_number].zoom.enabled                = false;
     UI_form_pointer->data.element[element_number].tooltip.enabled             = false;
-    UI_form_pointer->data.element[element_number].value                       = -1;
+    UI_form_pointer->data.element[element_number].value                       = ITEM_NONE;
     UI_form_pointer->data.element[element_number].color                       = UI_form_pointer->data.color;
     UI_form_pointer->data.element[element_number].size.x                      = 0.050f;
     UI_form_pointer->data.element[element_number].size.y                      = 0.085f;
@@ -1019,7 +1019,7 @@ void setup_inventory_window(int UID)
     UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_ITEM;
     UI_form_pointer->data.element[element_number].zoom.enabled                = false;
     UI_form_pointer->data.element[element_number].tooltip.enabled             = false;
-    UI_form_pointer->data.element[element_number].value                       = -1;
+    UI_form_pointer->data.element[element_number].value                       = ITEM_NONE;
     UI_form_pointer->data.element[element_number].color                       = UI_form_pointer->data.color;
     UI_form_pointer->data.element[element_number].size.x                      = 0.050f;
     UI_form_pointer->data.element[element_number].size.y                      = 0.085f;
@@ -1042,7 +1042,7 @@ void setup_inventory_window(int UID)
     UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_ITEM;
     UI_form_pointer->data.element[element_number].zoom.enabled                = false;
     UI_form_pointer->data.element[element_number].tooltip.enabled             = false;
-    UI_form_pointer->data.element[element_number].value                       = -1;
+    UI_form_pointer->data.element[element_number].value                       = ITEM_NONE;
     UI_form_pointer->data.element[element_number].color                       = UI_form_pointer->data.color;
     UI_form_pointer->data.element[element_number].size.x                      = 0.050f;
     UI_form_pointer->data.element[element_number].size.y                      = 0.085f;
@@ -1065,7 +1065,7 @@ void setup_inventory_window(int UID)
     UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_ITEM;
     UI_form_pointer->data.element[element_number].zoom.enabled                = false;
     UI_form_pointer->data.element[element_number].tooltip.enabled             = false;
-    UI_form_pointer->data.element[element_number].value                       = -1;
+    UI_form_pointer->data.element[element_number].value                       = ITEM_NONE;
     UI_form_pointer->data.element[element_number].color                       = UI_form_pointer->data.color;
     UI_form_pointer->data.element[element_number].size.x                      = 0.050f;
     UI_form_pointer->data.element[element_number].size.y                      = 0.085f;
@@ -1088,7 +1088,7 @@ void setup_inventory_window(int UID)
     UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_ITEM;
     UI_form_pointer->data.element[element_number].zoom.enabled                = false;
     UI_form_pointer->data.element[element_number].tooltip.enabled             = false;
-    UI_form_pointer->data.element[element_number].value                       = -1;
+    UI_form_pointer->data.element[element_number].value                       = ITEM_NONE;
     UI_form_pointer->data.element[element_number].color                       = UI_form_pointer->data.color;
     UI_form_pointer->data.element[element_number].size.x                      = 0.050f;
     UI_form_pointer->data.element[element_number].size.y                      = 0.085f;
@@ -1111,7 +1111,7 @@ void setup_inventory_window(int UID)
     UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_ITEM;
     UI_form_pointer->data.element[element_number].zoom.enabled                = false;
     UI_form_pointer->data.element[element_number].tooltip.enabled             = false;
-    UI_form_pointer->data.element[element_number].value                       = -1;
+    UI_form_pointer->data.element[element_number].value                       = ITEM_NONE;
     UI_form_pointer->data.element[element_number].color                       = UI_form_pointer->data.color;
     UI_form_pointer->data.element[element_number].size.x                      = 0.050f;
     UI_form_pointer->data.element[element_number].size.y                      = 0.085f;
@@ -1134,7 +1134,7 @@ void setup_inventory_window(int UID)
     UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_ITEM;
     UI_form_pointer->data.element[element_number].zoom.enabled                = false;
     UI_form_pointer->data.element[element_number].tooltip.enabled             = false;
-    UI_form_pointer->data.element[element_number].value                       = -1;
+    UI_form_pointer->data.element[element_number].value                       = ITEM_NONE;
     UI_form_pointer->data.element[element_number].color                       = UI_form_pointer->data.color;
     UI_form_pointer->data.element[element_number].size.x                      = 0.050f;
     UI_form_pointer->data.element[element_number].size.y                      = 0.085f;
@@ -1158,7 +1158,7 @@ void setup_inventory_window(int UID)
     UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_ITEM;
     UI_form_pointer->data.element[element_number].zoom.enabled                = false;
     UI_form_pointer->data.element[element_number].tooltip.enabled             = false;
-    UI_form_pointer->data.element[element_number].value                       = -1;
+    UI_form_pointer->data.element[element_number].value                       = ITEM_NONE;
     UI_form_pointer->data.element[element_number].color                       = UI_form_pointer->data.color;
     UI_form_pointer->data.element[element_number].size.x                      = 0.050f;
     UI_form_pointer->data.element[element_number].size.y                      = 0.085f;
@@ -1181,7 +1181,7 @@ void setup_inventory_window(int UID)
     UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_ITEM;
     UI_form_pointer->data.element[element_number].zoom.enabled                = false;
     UI_form_pointer->data.element[element_number].tooltip.enabled             = false;
-    UI_form_pointer->data.element[element_number].value                       = -1;
+    UI_form_pointer->data.element[element_number].value                       = ITEM_NONE;
     UI_form_pointer->data.element[element_number].color                       = UI_form_pointer->data.color;
     UI_form_pointer->data.element[element_number].size.x                      = 0.050f;
     UI_form_pointer->data.element[element_number].size.y                      = 0.085f;
@@ -1204,7 +1204,7 @@ void setup_inventory_window(int UID)
     UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_ITEM;
     UI_form_pointer->data.element[element_number].zoom.enabled                = false;
     UI_form_pointer->data.element[element_number].tooltip.enabled             = false;
-    UI_form_pointer->data.element[element_number].value                       = -1;
+    UI_form_pointer->data.element[element_number].value                       = ITEM_NONE;
     UI_form_pointer->data.element[element_number].color                       = UI_form_pointer->data.color;
     UI_form_pointer->data.element[element_number].size.x                      = 0.050f;
     UI_form_pointer->data.element[element_number].size.y                      = 0.085f;
@@ -1227,7 +1227,7 @@ void setup_inventory_window(int UID)
     UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_ITEM;
     UI_form_pointer->data.element[element_number].zoom.enabled                = false;
     UI_form_pointer->data.element[element_number].tooltip.enabled             = false;
-    UI_form_pointer->data.element[element_number].value                       = -1;
+    UI_form_pointer->data.element[element_number].value                       = ITEM_NONE;
     UI_form_pointer->data.element[element_number].color                       = UI_form_pointer->data.color;
     UI_form_pointer->data.element[element_number].size.x                      = 0.050f;
     UI_form_pointer->data.element[element_number].size.y                      = 0.085f;
@@ -1250,7 +1250,7 @@ void setup_inventory_window(int UID)
     UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_ITEM;
     UI_form_pointer->data.element[element_number].zoom.enabled                = false;
     UI_form_pointer->data.element[element_number].tooltip.enabled             = false;
-    UI_form_pointer->data.element[element_number].value                       = -1;
+    UI_form_pointer->data.element[element_number].value                       = ITEM_NONE;
     UI_form_pointer->data.element[element_number].color                       = UI_form_pointer->data.color;
     UI_form_pointer->data.element[element_number].size.x                      = 0.050f;
     UI_form_pointer->data.element[element_number].size.y                      = 0.085f;
@@ -1273,7 +1273,7 @@ void setup_inventory_window(int UID)
     UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_ITEM;
     UI_form_pointer->data.element[element_number].zoom.enabled                = false;
     UI_form_pointer->data.element[element_number].tooltip.enabled             = false;
-    UI_form_pointer->data.element[element_number].value                       = -1;
+    UI_form_pointer->data.element[element_number].value                       = ITEM_NONE;
     UI_form_pointer->data.element[element_number].color                       = UI_form_pointer->data.color;
     UI_form_pointer->data.element[element_number].size.x                      = 0.050f;
     UI_form_pointer->data.element[element_number].size.y                      = 0.085f;
@@ -1295,7 +1295,7 @@ void setup_inventory_window(int UID)
     UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_IMAGE;
     UI_form_pointer->data.element[element_number].zoom.enabled                = false;
     UI_form_pointer->data.element[element_number].tooltip.enabled             = false;
-    UI_form_pointer->data.element[element_number].value                       = -1;
+    UI_form_pointer->data.element[element_number].value                       = ITEM_NONE;
     UI_form_pointer->data.element[element_number].color                       = UI_form_pointer->data.color;
     UI_form_pointer->data.element[element_number].size.x                      = 0.050f;
     UI_form_pointer->data.element[element_number].size.y                      = 0.050f;
@@ -1315,7 +1315,7 @@ void setup_inventory_window(int UID)
     UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_TEXTLABEL;
     UI_form_pointer->data.element[element_number].zoom.enabled                = false;
     UI_form_pointer->data.element[element_number].tooltip.enabled             = false;
-    UI_form_pointer->data.element[element_number].value                       = -1;
+    UI_form_pointer->data.element[element_number].value                       = ITEM_NONE;
     UI_form_pointer->data.element[element_number].color                       = UI_form_pointer->data.color;
     UI_form_pointer->data.element[element_number].size.x                      = 0.050f;
     UI_form_pointer->data.element[element_number].size.y                      = 0.050f;
@@ -1331,11 +1331,32 @@ void setup_inventory_window(int UID)
     UI_form_pointer->data.element[element_number].title.position.y            = UI_form_pointer->data.position.y-(UI_form_pointer->data.size.y/2.40f);
 };
 
+void process_inventory_item(UI_form_struct *UI_form_pointer,int element_number)
+{
+    item_type* item_pointer = new item_type;
+    item_pointer = NULL;
+    if ((UI_form_pointer->data.element[element_number].type == UI_ELEMENT_ITEM) && (UI_form_pointer->data.element[element_number].value != ITEM_NONE))
+    {
+        item_pointer = game.item_manager.add_item(UI_form_pointer->data.element[element_number].value);
+        if (item_pointer->data.equipable)
+        {
+            game.UI_manager.swap_equipment(UID_INVENTORY,element_number,UID_EQUIPMENT);
+        }
+        if (item_pointer->data.consumable)
+        {
+            game.item_manager.use_item(UI_form_pointer,element_number);
+        }
+    }
+}
+
 void process_inventory_window(UI_form_struct *UI_form_pointer)
 {
     int element_number = 50; // Gold amount
     game.texture_manager.load_string(UI_form_pointer->data.element[element_number].title.text,game.font_manager.root,ullint_to_string(game.player.gold),0.8f,255,255,255,255,TEXTURE_RENDER_LEFT);
     game.player.gold++;
+
+    item_type* item_pointer = new item_type;
+    item_pointer = NULL;
     if (UI_form_pointer->data.event.id > EVENT_NONE)
     {
         switch (UI_form_pointer->data.event.id)
@@ -1357,336 +1378,336 @@ void process_inventory_window(UI_form_struct *UI_form_pointer)
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((1*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
-                game.item_manager.use_item(UI_form_pointer,1);
+                process_inventory_item(UI_form_pointer,1);
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((2*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((2*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
-                game.item_manager.use_item(UI_form_pointer,2);
+                process_inventory_item(UI_form_pointer,2);
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((3*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((3*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
-                game.item_manager.use_item(UI_form_pointer,3);
+                process_inventory_item(UI_form_pointer,3);
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((4*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((4*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
-                game.item_manager.use_item(UI_form_pointer,4);
+                process_inventory_item(UI_form_pointer,4);
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((5*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((5*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
-                game.item_manager.use_item(UI_form_pointer,5);
+                process_inventory_item(UI_form_pointer,5);
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((6*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((6*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
-                game.item_manager.use_item(UI_form_pointer,6);
+                process_inventory_item(UI_form_pointer,6);
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((7*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((7*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
-                game.item_manager.use_item(UI_form_pointer,7);
+                process_inventory_item(UI_form_pointer,7);
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((8*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((8*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
-                game.item_manager.use_item(UI_form_pointer,8);
+                process_inventory_item(UI_form_pointer,8);
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((9*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((9*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
-                game.item_manager.use_item(UI_form_pointer,9);
+                process_inventory_item(UI_form_pointer,9);
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((10*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((10*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
-                game.item_manager.use_item(UI_form_pointer,10);
+                process_inventory_item(UI_form_pointer,10);
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((11*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((11*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
-                game.item_manager.use_item(UI_form_pointer,11);
+                process_inventory_item(UI_form_pointer,11);
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((12*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((12*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
-                game.item_manager.use_item(UI_form_pointer,12);
+                process_inventory_item(UI_form_pointer,12);
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((13*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((13*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
-                game.item_manager.use_item(UI_form_pointer,13);
+                process_inventory_item(UI_form_pointer,13);
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((14*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((14*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
-                game.item_manager.use_item(UI_form_pointer,14);
+                process_inventory_item(UI_form_pointer,14);
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((15*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((15*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
-                game.item_manager.use_item(UI_form_pointer,15);
+                process_inventory_item(UI_form_pointer,15);
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((16*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((16*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
-                game.item_manager.use_item(UI_form_pointer,16);
+                process_inventory_item(UI_form_pointer,16);
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((17*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((17*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
-                game.item_manager.use_item(UI_form_pointer,17);
+                process_inventory_item(UI_form_pointer,17);
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((18*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((18*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
-                game.item_manager.use_item(UI_form_pointer,18);
+                process_inventory_item(UI_form_pointer,18);
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((19*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((19*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
-                game.item_manager.use_item(UI_form_pointer,19);
+                process_inventory_item(UI_form_pointer,19);
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((20*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((20*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
-                game.item_manager.use_item(UI_form_pointer,20);
+                process_inventory_item(UI_form_pointer,20);
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((21*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((21*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
-                game.item_manager.use_item(UI_form_pointer,21);
+                process_inventory_item(UI_form_pointer,21);
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((22*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((22*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
-                game.item_manager.use_item(UI_form_pointer,22);
+                process_inventory_item(UI_form_pointer,22);
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((23*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((23*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
-                game.item_manager.use_item(UI_form_pointer,23);
+                process_inventory_item(UI_form_pointer,23);
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((24*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((24*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
-                game.item_manager.use_item(UI_form_pointer,24);
+                process_inventory_item(UI_form_pointer,24);
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((25*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((25*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
-                game.item_manager.use_item(UI_form_pointer,25);
+                process_inventory_item(UI_form_pointer,25);
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((26*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((26*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
-                game.item_manager.use_item(UI_form_pointer,26);
+                process_inventory_item(UI_form_pointer,26);
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((27*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((27*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
-                game.item_manager.use_item(UI_form_pointer,27);
+                process_inventory_item(UI_form_pointer,27);
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((28*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((28*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
-                game.item_manager.use_item(UI_form_pointer,28);
+                process_inventory_item(UI_form_pointer,28);
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((29*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((29*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
-                game.item_manager.use_item(UI_form_pointer,29);
+                process_inventory_item(UI_form_pointer,29);
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((30*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((30*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
-                game.item_manager.use_item(UI_form_pointer,30);
+                process_inventory_item(UI_form_pointer,30);
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((31*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((31*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
-                game.item_manager.use_item(UI_form_pointer,31);
+                process_inventory_item(UI_form_pointer,31);
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((32*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((32*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
-                game.item_manager.use_item(UI_form_pointer,32);
+                process_inventory_item(UI_form_pointer,32);
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((33*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((33*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
-                game.item_manager.use_item(UI_form_pointer,33);
+                process_inventory_item(UI_form_pointer,33);
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((34*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((34*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
-                game.item_manager.use_item(UI_form_pointer,34);
+                process_inventory_item(UI_form_pointer,34);
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((35*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((35*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
-                game.item_manager.use_item(UI_form_pointer,35);
+                process_inventory_item(UI_form_pointer,35);
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((36*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((36*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
-                game.item_manager.use_item(UI_form_pointer,36);
+                process_inventory_item(UI_form_pointer,36);
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((37*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((37*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
-                game.item_manager.use_item(UI_form_pointer,37);
+                process_inventory_item(UI_form_pointer,37);
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((38*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((38*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
-                game.item_manager.use_item(UI_form_pointer,38);
+                process_inventory_item(UI_form_pointer,38);
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((39*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((39*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
-                game.item_manager.use_item(UI_form_pointer,39);
+                process_inventory_item(UI_form_pointer,39);
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((40*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((40*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
-                game.item_manager.use_item(UI_form_pointer,40);
+                process_inventory_item(UI_form_pointer,40);
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((41*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((41*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
-                game.item_manager.use_item(UI_form_pointer,41);
+                process_inventory_item(UI_form_pointer,41);
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((42*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((42*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
-                game.item_manager.use_item(UI_form_pointer,42);
+                process_inventory_item(UI_form_pointer,42);
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((43*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((43*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
-                game.item_manager.use_item(UI_form_pointer,43);
+                process_inventory_item(UI_form_pointer,43);
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((44*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((44*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
-                game.item_manager.use_item(UI_form_pointer,44);
+                process_inventory_item(UI_form_pointer,44);
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((45*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((45*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
-                game.item_manager.use_item(UI_form_pointer,45);
+                process_inventory_item(UI_form_pointer,45);
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((46*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((46*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
-                game.item_manager.use_item(UI_form_pointer,46);
+                process_inventory_item(UI_form_pointer,46);
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((47*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((47*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
-                game.item_manager.use_item(UI_form_pointer,47);
+                process_inventory_item(UI_form_pointer,47);
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((48*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             case ((48*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
-                game.item_manager.use_item(UI_form_pointer,48);
+                process_inventory_item(UI_form_pointer,48);
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             default:
