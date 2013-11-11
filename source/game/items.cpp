@@ -46,6 +46,20 @@ void  item_class::init_items(void) // Initialize hard-coded default items, such 
     temp_item_pointer->data.sound.on_use           = game.sound_manager.add_sound("data/sound/inventory/bubble_01.wav");
     temp_item_pointer->data.type                   = ITEM_SPELL;
     temp_item_pointer->data.sub_type               = ITEM_SPELL_ARROW_FIRE;
+    temp_item_pointer->data.spell_data                         = new item_spell_data_type;
+    temp_item_pointer->data.spell_data->cooldown.current       = 10;
+    temp_item_pointer->data.spell_data->cooldown.maximum       = 10;
+    temp_item_pointer->data.spell_data->cooldown.rate          = 0.1f;
+    temp_item_pointer->data.spell_data->duration.current       = 0;
+    temp_item_pointer->data.spell_data->duration.maximum       = 10;
+    temp_item_pointer->data.spell_data->duration.rate          = 0.2f;
+    temp_item_pointer->data.spell_data->level.current          = 1;
+    temp_item_pointer->data.spell_data->level.maximum          = MAX_SPELL_LEVEL;
+    temp_item_pointer->data.spell_data->level.experience       = 0.0f;
+    temp_item_pointer->data.spell_data->level.next             = 2;
+    temp_item_pointer->data.spell_data->mana_cost              = 2;
+    temp_item_pointer->data.spell_data->passive                = false;
+    temp_item_pointer->data.spell_data->projectile_number      = 1;
     //------------------------- Ice Arrow --------------------------------------------------------------------------
     temp_item_pointer = game.item_manager.add_item(ITEM_SPELL_ARROW_ICE);
     temp_item_pointer->data.name                   = "Ice Arrow";
@@ -60,6 +74,20 @@ void  item_class::init_items(void) // Initialize hard-coded default items, such 
     temp_item_pointer->data.sound.on_use           = game.sound_manager.add_sound("data/sound/inventory/bubble_01.wav");
     temp_item_pointer->data.type                   = ITEM_SPELL;
     temp_item_pointer->data.sub_type               = ITEM_SPELL_ARROW_ICE;
+    temp_item_pointer->data.spell_data                         = new item_spell_data_type;
+    temp_item_pointer->data.spell_data->cooldown.current       = 10;
+    temp_item_pointer->data.spell_data->cooldown.maximum       = 10;
+    temp_item_pointer->data.spell_data->cooldown.rate          = 0.1f;
+    temp_item_pointer->data.spell_data->duration.current       = 0;
+    temp_item_pointer->data.spell_data->duration.maximum       = 10;
+    temp_item_pointer->data.spell_data->duration.rate          = 0.2f;
+    temp_item_pointer->data.spell_data->level.current          = 1;
+    temp_item_pointer->data.spell_data->level.maximum          = MAX_SPELL_LEVEL;
+    temp_item_pointer->data.spell_data->level.experience       = 0.0f;
+    temp_item_pointer->data.spell_data->level.next             = 2;
+    temp_item_pointer->data.spell_data->mana_cost              = 2;
+    temp_item_pointer->data.spell_data->passive                = false;
+    temp_item_pointer->data.spell_data->projectile_number      = 1;
     //------------------------- Lightning Arrow --------------------------------------------------------------------------
     temp_item_pointer = game.item_manager.add_item(ITEM_SPELL_ARROW_LIGHTNING);
     temp_item_pointer->data.name                   = "Lightning Arrow";
@@ -74,6 +102,20 @@ void  item_class::init_items(void) // Initialize hard-coded default items, such 
     temp_item_pointer->data.sound.on_use           = game.sound_manager.add_sound("data/sound/inventory/bubble_01.wav");
     temp_item_pointer->data.type                   = ITEM_SPELL;
     temp_item_pointer->data.sub_type               = ITEM_SPELL_ARROW_LIGHTNING;
+    temp_item_pointer->data.spell_data                         = new item_spell_data_type;
+    temp_item_pointer->data.spell_data->cooldown.current       = 10;
+    temp_item_pointer->data.spell_data->cooldown.maximum       = 10;
+    temp_item_pointer->data.spell_data->cooldown.rate          = 0.1f;
+    temp_item_pointer->data.spell_data->duration.current       = 0;
+    temp_item_pointer->data.spell_data->duration.maximum       = 10;
+    temp_item_pointer->data.spell_data->duration.rate          = 0.2f;
+    temp_item_pointer->data.spell_data->level.current          = 1;
+    temp_item_pointer->data.spell_data->level.maximum          = MAX_SPELL_LEVEL;
+    temp_item_pointer->data.spell_data->level.experience       = 0.0f;
+    temp_item_pointer->data.spell_data->level.next             = 2;
+    temp_item_pointer->data.spell_data->mana_cost              = 2;
+    temp_item_pointer->data.spell_data->passive                = false;
+    temp_item_pointer->data.spell_data->projectile_number      = 1;
     //------------------------- Elemental Arrow --------------------------------------------------------------------------
     temp_item_pointer = game.item_manager.add_item(ITEM_SPELL_ARROW_ELEMENTAL);
     temp_item_pointer->data.name                   = "Elemental Arrow";
@@ -88,6 +130,20 @@ void  item_class::init_items(void) // Initialize hard-coded default items, such 
     temp_item_pointer->data.sound.on_use           = game.sound_manager.add_sound("data/sound/inventory/bubble_01.wav");
     temp_item_pointer->data.type                   = ITEM_SPELL;
     temp_item_pointer->data.sub_type               = ITEM_SPELL_ARROW_ELEMENTAL;
+    temp_item_pointer->data.spell_data                         = new item_spell_data_type;
+    temp_item_pointer->data.spell_data->cooldown.current       = 10;
+    temp_item_pointer->data.spell_data->cooldown.maximum       = 10;
+    temp_item_pointer->data.spell_data->cooldown.rate          = 0.1f;
+    temp_item_pointer->data.spell_data->duration.current       = 0;
+    temp_item_pointer->data.spell_data->duration.maximum       = 10;
+    temp_item_pointer->data.spell_data->duration.rate          = 0.2f;
+    temp_item_pointer->data.spell_data->level.current          = 1;
+    temp_item_pointer->data.spell_data->level.maximum          = MAX_SPELL_LEVEL;
+    temp_item_pointer->data.spell_data->level.experience       = 0.0f;
+    temp_item_pointer->data.spell_data->level.next             = 2;
+    temp_item_pointer->data.spell_data->mana_cost              = 2;
+    temp_item_pointer->data.spell_data->passive                = false;
+    temp_item_pointer->data.spell_data->projectile_number      = 1;
     //------------------------- Fire Ball --------------------------------------------------------------------------
     temp_item_pointer = game.item_manager.add_item(ITEM_SPELL_BALL_FIRE);
     temp_item_pointer->data.name                   = "Fire Ball";
@@ -102,6 +158,20 @@ void  item_class::init_items(void) // Initialize hard-coded default items, such 
     temp_item_pointer->data.sound.on_use           = game.sound_manager.add_sound("data/sound/inventory/bubble_01.wav");
     temp_item_pointer->data.type                   = ITEM_SPELL;
     temp_item_pointer->data.sub_type               = ITEM_SPELL_BALL_FIRE;
+    temp_item_pointer->data.spell_data                         = new item_spell_data_type;
+    temp_item_pointer->data.spell_data->cooldown.current       = 10;
+    temp_item_pointer->data.spell_data->cooldown.maximum       = 10;
+    temp_item_pointer->data.spell_data->cooldown.rate          = 0.1f;
+    temp_item_pointer->data.spell_data->duration.current       = 0;
+    temp_item_pointer->data.spell_data->duration.maximum       = 10;
+    temp_item_pointer->data.spell_data->duration.rate          = 0.2f;
+    temp_item_pointer->data.spell_data->level.current          = 1;
+    temp_item_pointer->data.spell_data->level.maximum          = MAX_SPELL_LEVEL;
+    temp_item_pointer->data.spell_data->level.experience       = 0.0f;
+    temp_item_pointer->data.spell_data->level.next             = 2;
+    temp_item_pointer->data.spell_data->mana_cost              = 2;
+    temp_item_pointer->data.spell_data->passive                = false;
+    temp_item_pointer->data.spell_data->projectile_number      = 1;
     //------------------------- Ice Ball --------------------------------------------------------------------------
     temp_item_pointer = game.item_manager.add_item(ITEM_SPELL_BALL_ICE);
     temp_item_pointer->data.name                   = "Ice Ball";
@@ -116,6 +186,20 @@ void  item_class::init_items(void) // Initialize hard-coded default items, such 
     temp_item_pointer->data.sound.on_use           = game.sound_manager.add_sound("data/sound/inventory/bubble_01.wav");
     temp_item_pointer->data.type                   = ITEM_SPELL;
     temp_item_pointer->data.sub_type               = ITEM_SPELL_BALL_ICE;
+    temp_item_pointer->data.spell_data                         = new item_spell_data_type;
+    temp_item_pointer->data.spell_data->cooldown.current       = 10;
+    temp_item_pointer->data.spell_data->cooldown.maximum       = 10;
+    temp_item_pointer->data.spell_data->cooldown.rate          = 0.1f;
+    temp_item_pointer->data.spell_data->duration.current       = 0;
+    temp_item_pointer->data.spell_data->duration.maximum       = 10;
+    temp_item_pointer->data.spell_data->duration.rate          = 0.2f;
+    temp_item_pointer->data.spell_data->level.current          = 1;
+    temp_item_pointer->data.spell_data->level.maximum          = MAX_SPELL_LEVEL;
+    temp_item_pointer->data.spell_data->level.experience       = 0.0f;
+    temp_item_pointer->data.spell_data->level.next             = 2;
+    temp_item_pointer->data.spell_data->mana_cost              = 2;
+    temp_item_pointer->data.spell_data->passive                = false;
+    temp_item_pointer->data.spell_data->projectile_number      = 1;
     //------------------------- Lightning Ball --------------------------------------------------------------------------
     temp_item_pointer = game.item_manager.add_item(ITEM_SPELL_BALL_LIGHTNING);
     temp_item_pointer->data.name                   = "Lightning Ball";
@@ -130,6 +214,20 @@ void  item_class::init_items(void) // Initialize hard-coded default items, such 
     temp_item_pointer->data.sound.on_use           = game.sound_manager.add_sound("data/sound/inventory/bubble_01.wav");
     temp_item_pointer->data.type                   = ITEM_SPELL;
     temp_item_pointer->data.sub_type               = ITEM_SPELL_BALL_LIGHTNING;
+    temp_item_pointer->data.spell_data                         = new item_spell_data_type;
+    temp_item_pointer->data.spell_data->cooldown.current       = 10;
+    temp_item_pointer->data.spell_data->cooldown.maximum       = 10;
+    temp_item_pointer->data.spell_data->cooldown.rate          = 0.1f;
+    temp_item_pointer->data.spell_data->duration.current       = 0;
+    temp_item_pointer->data.spell_data->duration.maximum       = 10;
+    temp_item_pointer->data.spell_data->duration.rate          = 0.2f;
+    temp_item_pointer->data.spell_data->level.current          = 1;
+    temp_item_pointer->data.spell_data->level.maximum          = MAX_SPELL_LEVEL;
+    temp_item_pointer->data.spell_data->level.experience       = 0.0f;
+    temp_item_pointer->data.spell_data->level.next             = 2;
+    temp_item_pointer->data.spell_data->mana_cost              = 2;
+    temp_item_pointer->data.spell_data->passive                = false;
+    temp_item_pointer->data.spell_data->projectile_number      = 1;
     //------------------------- Elemental Ball --------------------------------------------------------------------------
     temp_item_pointer = game.item_manager.add_item(ITEM_SPELL_BALL_ELEMENTAL);
     temp_item_pointer->data.name                   = "Elemental Ball";
@@ -144,7 +242,20 @@ void  item_class::init_items(void) // Initialize hard-coded default items, such 
     temp_item_pointer->data.sound.on_use           = game.sound_manager.add_sound("data/sound/inventory/bubble_01.wav");
     temp_item_pointer->data.type                   = ITEM_SPELL;
     temp_item_pointer->data.sub_type               = ITEM_SPELL_BALL_ELEMENTAL;
-
+    temp_item_pointer->data.spell_data                         = new item_spell_data_type;
+    temp_item_pointer->data.spell_data->cooldown.current       = 10;
+    temp_item_pointer->data.spell_data->cooldown.maximum       = 10;
+    temp_item_pointer->data.spell_data->cooldown.rate          = 0.1f;
+    temp_item_pointer->data.spell_data->duration.current       = 0;
+    temp_item_pointer->data.spell_data->duration.maximum       = 10;
+    temp_item_pointer->data.spell_data->duration.rate          = 0.2f;
+    temp_item_pointer->data.spell_data->level.current          = 1;
+    temp_item_pointer->data.spell_data->level.maximum          = MAX_SPELL_LEVEL;
+    temp_item_pointer->data.spell_data->level.experience       = 0.0f;
+    temp_item_pointer->data.spell_data->level.next             = 2;
+    temp_item_pointer->data.spell_data->mana_cost              = 2;
+    temp_item_pointer->data.spell_data->passive                = false;
+    temp_item_pointer->data.spell_data->projectile_number      = 1;
     //------------------------- Fire Shield --------------------------------------------------------------------------
     temp_item_pointer = game.item_manager.add_item(ITEM_SPELL_SHIELD_FIRE);
     temp_item_pointer->data.name                   = "Fire Shield";
@@ -159,6 +270,20 @@ void  item_class::init_items(void) // Initialize hard-coded default items, such 
     temp_item_pointer->data.sound.on_use           = game.sound_manager.add_sound("data/sound/inventory/bubble_01.wav");
     temp_item_pointer->data.type                   = ITEM_SPELL;
     temp_item_pointer->data.sub_type               = ITEM_SPELL_SHIELD_FIRE;
+    temp_item_pointer->data.spell_data                         = new item_spell_data_type;
+    temp_item_pointer->data.spell_data->cooldown.current       = 10;
+    temp_item_pointer->data.spell_data->cooldown.maximum       = 10;
+    temp_item_pointer->data.spell_data->cooldown.rate          = 0.1f;
+    temp_item_pointer->data.spell_data->duration.current       = 0;
+    temp_item_pointer->data.spell_data->duration.maximum       = 10;
+    temp_item_pointer->data.spell_data->duration.rate          = 0.2f;
+    temp_item_pointer->data.spell_data->level.current          = 1;
+    temp_item_pointer->data.spell_data->level.maximum          = MAX_SPELL_LEVEL;
+    temp_item_pointer->data.spell_data->level.experience       = 0.0f;
+    temp_item_pointer->data.spell_data->level.next             = 2;
+    temp_item_pointer->data.spell_data->mana_cost              = 2;
+    temp_item_pointer->data.spell_data->passive                = false;
+    temp_item_pointer->data.spell_data->projectile_number      = 1;
     //------------------------- Ice Shield --------------------------------------------------------------------------
     temp_item_pointer = game.item_manager.add_item(ITEM_SPELL_SHIELD_ICE);
     temp_item_pointer->data.name                   = "Ice Shield";
@@ -173,6 +298,20 @@ void  item_class::init_items(void) // Initialize hard-coded default items, such 
     temp_item_pointer->data.sound.on_use           = game.sound_manager.add_sound("data/sound/inventory/bubble_01.wav");
     temp_item_pointer->data.type                   = ITEM_SPELL;
     temp_item_pointer->data.sub_type               = ITEM_SPELL_SHIELD_ICE;
+    temp_item_pointer->data.spell_data                         = new item_spell_data_type;
+    temp_item_pointer->data.spell_data->cooldown.current       = 10;
+    temp_item_pointer->data.spell_data->cooldown.maximum       = 10;
+    temp_item_pointer->data.spell_data->cooldown.rate          = 0.1f;
+    temp_item_pointer->data.spell_data->duration.current       = 0;
+    temp_item_pointer->data.spell_data->duration.maximum       = 10;
+    temp_item_pointer->data.spell_data->duration.rate          = 0.2f;
+    temp_item_pointer->data.spell_data->level.current          = 1;
+    temp_item_pointer->data.spell_data->level.maximum          = MAX_SPELL_LEVEL;
+    temp_item_pointer->data.spell_data->level.experience       = 0.0f;
+    temp_item_pointer->data.spell_data->level.next             = 2;
+    temp_item_pointer->data.spell_data->mana_cost              = 2;
+    temp_item_pointer->data.spell_data->passive                = false;
+    temp_item_pointer->data.spell_data->projectile_number      = 1;
     //------------------------- Lightning Shield --------------------------------------------------------------------------
     temp_item_pointer = game.item_manager.add_item(ITEM_SPELL_SHIELD_LIGHTNING);
     temp_item_pointer->data.name                   = "Lightning Shield";
@@ -187,6 +326,20 @@ void  item_class::init_items(void) // Initialize hard-coded default items, such 
     temp_item_pointer->data.sound.on_use           = game.sound_manager.add_sound("data/sound/inventory/bubble_01.wav");
     temp_item_pointer->data.type                   = ITEM_SPELL;
     temp_item_pointer->data.sub_type               = ITEM_SPELL_SHIELD_LIGHTNING;
+    temp_item_pointer->data.spell_data                         = new item_spell_data_type;
+    temp_item_pointer->data.spell_data->cooldown.current       = 10;
+    temp_item_pointer->data.spell_data->cooldown.maximum       = 10;
+    temp_item_pointer->data.spell_data->cooldown.rate          = 0.1f;
+    temp_item_pointer->data.spell_data->duration.current       = 0;
+    temp_item_pointer->data.spell_data->duration.maximum       = 10;
+    temp_item_pointer->data.spell_data->duration.rate          = 0.2f;
+    temp_item_pointer->data.spell_data->level.current          = 1;
+    temp_item_pointer->data.spell_data->level.maximum          = MAX_SPELL_LEVEL;
+    temp_item_pointer->data.spell_data->level.experience       = 0.0f;
+    temp_item_pointer->data.spell_data->level.next             = 2;
+    temp_item_pointer->data.spell_data->mana_cost              = 2;
+    temp_item_pointer->data.spell_data->passive                = false;
+    temp_item_pointer->data.spell_data->projectile_number      = 1;
     //------------------------- Elemental Shield --------------------------------------------------------------------------
     temp_item_pointer = game.item_manager.add_item(ITEM_SPELL_SHIELD_ELEMENTAL);
     temp_item_pointer->data.name                   = "Elemental Shield";
@@ -201,6 +354,20 @@ void  item_class::init_items(void) // Initialize hard-coded default items, such 
     temp_item_pointer->data.sound.on_use           = game.sound_manager.add_sound("data/sound/inventory/bubble_01.wav");
     temp_item_pointer->data.type                   = ITEM_SPELL;
     temp_item_pointer->data.sub_type               = ITEM_SPELL_SHIELD_ELEMENTAL;
+    temp_item_pointer->data.spell_data                         = new item_spell_data_type;
+    temp_item_pointer->data.spell_data->cooldown.current       = 10;
+    temp_item_pointer->data.spell_data->cooldown.maximum       = 10;
+    temp_item_pointer->data.spell_data->cooldown.rate          = 0.1f;
+    temp_item_pointer->data.spell_data->duration.current       = 0;
+    temp_item_pointer->data.spell_data->duration.maximum       = 10;
+    temp_item_pointer->data.spell_data->duration.rate          = 0.2f;
+    temp_item_pointer->data.spell_data->level.current          = 1;
+    temp_item_pointer->data.spell_data->level.maximum          = MAX_SPELL_LEVEL;
+    temp_item_pointer->data.spell_data->level.experience       = 0.0f;
+    temp_item_pointer->data.spell_data->level.next             = 2;
+    temp_item_pointer->data.spell_data->mana_cost              = 2;
+    temp_item_pointer->data.spell_data->passive                = false;
+    temp_item_pointer->data.spell_data->projectile_number      = 1;
     //------------------------- Heal --------------------------------------------------------------------------
     temp_item_pointer = game.item_manager.add_item(ITEM_SPELL_HEAL);
     temp_item_pointer->data.name                   = "Heal";
@@ -215,6 +382,20 @@ void  item_class::init_items(void) // Initialize hard-coded default items, such 
     temp_item_pointer->data.sound.on_use           = game.sound_manager.add_sound("data/sound/inventory/bubble_01.wav");
     temp_item_pointer->data.type                   = ITEM_SPELL;
     temp_item_pointer->data.sub_type               = ITEM_SPELL_HEAL;
+    temp_item_pointer->data.spell_data                         = new item_spell_data_type;
+    temp_item_pointer->data.spell_data->cooldown.current       = 10;
+    temp_item_pointer->data.spell_data->cooldown.maximum       = 10;
+    temp_item_pointer->data.spell_data->cooldown.rate          = 0.1f;
+    temp_item_pointer->data.spell_data->duration.current       = 0;
+    temp_item_pointer->data.spell_data->duration.maximum       = 10;
+    temp_item_pointer->data.spell_data->duration.rate          = 0.2f;
+    temp_item_pointer->data.spell_data->level.current          = 1;
+    temp_item_pointer->data.spell_data->level.maximum          = MAX_SPELL_LEVEL;
+    temp_item_pointer->data.spell_data->level.experience       = 0.0f;
+    temp_item_pointer->data.spell_data->level.next             = 2;
+    temp_item_pointer->data.spell_data->mana_cost              = 2;
+    temp_item_pointer->data.spell_data->passive                = false;
+    temp_item_pointer->data.spell_data->projectile_number      = 1;
 
     //------------------------- Health Potion --------------------------------------------------------------------------
     temp_item_pointer = game.item_manager.add_item(ITEM_POTION_S_HEALTH);
