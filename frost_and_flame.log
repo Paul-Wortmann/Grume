@@ -20,14 +20,16 @@ Starting Game...
  
 # ---------------------------------------------- #
  
+Unable to process event - 1401 - UID - 7
+Unable to process event - 1401 - UID - 7
  
 # ---------------------------------------------- #
  
 Font    count -> 1
 Music   count -> 1
-Sound   count -> 13
-Texture count -> 178
-Item    count -> 48
+Sound   count -> 11
+Texture count -> 202
+Item    count -> 49
 Effect  count -> 42
  
 # ---------------------------------------------- #

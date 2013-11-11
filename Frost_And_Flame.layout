@@ -16,7 +16,7 @@
 			<Cursor1 position="1392" topLine="1" />
 		</Cursor>
 	</File>
-	<File name="source/UI/skillbook_window.cpp" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="source/UI/skillbook_window.cpp" open="1" top="1" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="70679" topLine="680" />
 		</Cursor>
@@ -131,7 +131,7 @@
 			<Cursor1 position="9989" topLine="126" />
 		</Cursor>
 	</File>
-	<File name="source/game/items.cpp" open="1" top="1" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="source/game/items.cpp" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="14146" topLine="161" />
 		</Cursor>
