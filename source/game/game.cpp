@@ -167,7 +167,7 @@ void game_class::init(void)
     UI_form_pointer->data.element[element_number].value          = temp_item_pointer->data.UID;
     UI_form_pointer->data.element[element_number].texture.normal = temp_item_pointer->data.image.level_0;
     element_number    = 14;
-    temp_item_pointer = game.item_manager.add_item(game.item_manager.gen_item(ITEM_SPELL_BOOK,ITEM_SPELL_BOOK,random(MAX_ITEM_QUALITY)));
+    temp_item_pointer = game.item_manager.add_item(game.item_manager.gen_item(ITEM_RING,ITEM_RING,random(MAX_ITEM_QUALITY)));
     UI_form_pointer->data.element[element_number].value          = temp_item_pointer->data.UID;
     UI_form_pointer->data.element[element_number].texture.normal = temp_item_pointer->data.image.level_0;
     element_number    = 15;
@@ -188,6 +188,22 @@ void game_class::init(void)
     UI_form_pointer->data.element[element_number].texture.normal = temp_item_pointer->data.image.level_0;
     element_number    = 19;
     temp_item_pointer = game.item_manager.add_item(game.item_manager.gen_item(ITEM_GEM,ITEM_GEM,random(MAX_ITEM_QUALITY)));
+    UI_form_pointer->data.element[element_number].value          = temp_item_pointer->data.UID;
+    UI_form_pointer->data.element[element_number].texture.normal = temp_item_pointer->data.image.level_0;
+    element_number    = 20;
+    temp_item_pointer = game.item_manager.add_item(game.item_manager.gen_item(ITEM_OFFHAND,ITEM_OFFHAND,random(MAX_ITEM_QUALITY)));
+    UI_form_pointer->data.element[element_number].value          = temp_item_pointer->data.UID;
+    UI_form_pointer->data.element[element_number].texture.normal = temp_item_pointer->data.image.level_0;
+    element_number    = 21;
+    temp_item_pointer = game.item_manager.add_item(game.item_manager.gen_item(ITEM_WEAPON,ITEM_WEAPON,random(MAX_ITEM_QUALITY)));
+    UI_form_pointer->data.element[element_number].value          = temp_item_pointer->data.UID;
+    UI_form_pointer->data.element[element_number].texture.normal = temp_item_pointer->data.image.level_0;
+    element_number    = 22;
+    temp_item_pointer = game.item_manager.add_item(game.item_manager.gen_item(ITEM_RING,ITEM_RING,random(MAX_ITEM_QUALITY)));
+    UI_form_pointer->data.element[element_number].value          = temp_item_pointer->data.UID;
+    UI_form_pointer->data.element[element_number].texture.normal = temp_item_pointer->data.image.level_0;
+    element_number    = 23;
+    temp_item_pointer = game.item_manager.add_item(game.item_manager.gen_item(ITEM_RING,ITEM_RING,random(MAX_ITEM_QUALITY)));
     UI_form_pointer->data.element[element_number].value          = temp_item_pointer->data.UID;
     UI_form_pointer->data.element[element_number].texture.normal = temp_item_pointer->data.image.level_0;
 
