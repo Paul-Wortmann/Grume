@@ -2977,7 +2977,7 @@ void  item_manager_class::gen_item_texture(item_type* item_pointer,int item_type
         break;
         case ITEM_BODY:
             item_pointer->data.material_type = ITEM_MATERIAL_METAL;
-            item_pointer->data.image.level_0 = game.texture_manager.add_texture("data/textures/UI/icons/armor/armor_09.png");
+            item_pointer->data.image.level_0 = game.texture_manager.add_texture("data/textures/UI/icons/armor/armor_10.png");
         break;
         case ITEM_FEET:
             item_pointer->data.material_type = ITEM_MATERIAL_LEATHER;
@@ -3030,7 +3030,7 @@ void  item_manager_class::gen_item_texture(item_type* item_pointer,int item_type
                 break;
                 case ITEM_HAMMER:
                     item_pointer->data.material_type = ITEM_MATERIAL_METAL;
-                    item_pointer->data.image.level_0 = game.texture_manager.add_texture("data/textures/UI/icons/hammers/hammer_00.png");
+                    item_pointer->data.image.level_0 = game.texture_manager.add_texture("data/textures/UI/icons/hammers/hammer_01.png");
                 break;
                 case ITEM_AXE:
                     item_pointer->data.material_type = ITEM_MATERIAL_METAL;

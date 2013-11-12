@@ -16,3 +16,10 @@ http://opengameart.org/content/fantasy-items-set
 Author: Justin Nichol
 License(s): GPL 2.0, GPL 3.0, CC-BY-SA 3.0
 
+armor_10
+-----------------
+http://opengameart.org/content/leather-breastplate
+Author: WeaponGuy
+License(s): CC-BY 3.0
+
+
