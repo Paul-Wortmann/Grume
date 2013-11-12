@@ -3,3 +3,11 @@ hammer_00
 http://opengameart.org/content/hammer-skorpio-2
 Author: yd
 License(s): CC-BY-SA 3.0
+
+hammer_01
+---------------------
+http://opengameart.org/content/medieval-weapon-set
+Author: umask007
+License(s): CC0
+
+
