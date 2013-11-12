@@ -3026,7 +3026,7 @@ void  item_manager_class::gen_item_texture(item_type* item_pointer,int item_type
                 break;
                 case ITEM_SWORD:
                     item_pointer->data.material_type = ITEM_MATERIAL_METAL;
-                    item_pointer->data.image.level_0 = game.texture_manager.add_texture("data/textures/UI/icons/swords/sword_30.png");
+                    item_pointer->data.image.level_0 = game.texture_manager.add_texture("data/textures/UI/icons/swords/sword_31.png");
                 break;
                 case ITEM_HAMMER:
                     item_pointer->data.material_type = ITEM_MATERIAL_METAL;
@@ -3034,7 +3034,7 @@ void  item_manager_class::gen_item_texture(item_type* item_pointer,int item_type
                 break;
                 case ITEM_AXE:
                     item_pointer->data.material_type = ITEM_MATERIAL_METAL;
-                    item_pointer->data.image.level_0 = game.texture_manager.add_texture("data/textures/UI/icons/axes/axe_00.png");
+                    item_pointer->data.image.level_0 = game.texture_manager.add_texture("data/textures/UI/icons/axes/axe_03.png");
                 break;
                 case ITEM_WAND:
                 default:
