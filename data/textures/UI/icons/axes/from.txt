@@ -10,4 +10,10 @@ http://opengameart.org/content/hand-axe-low-poly
 Author: jjmoser
 License(s): CC-BY 3.0
 
+axe_02 - axe_03
+---------------------
+http://opengameart.org/content/medieval-weapon-set
+Author: umask007
+License(s): CC0
+
 
