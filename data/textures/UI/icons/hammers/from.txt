@@ -6,8 +6,8 @@ License(s): CC-BY-SA 3.0
 
 hammer_01
 ---------------------
-http://opengameart.org/content/medieval-weapon-set
-Author: umask007
-License(s): CC0
+http://opengameart.org/content/warhammer-weapon
+Author: WeaponGuy
+License(s): CC-BY 3.0
 
 
