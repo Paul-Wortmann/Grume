@@ -27,7 +27,13 @@ http://opengameart.org/content/fantasy-items-set
 Author: Justin Nichol
 License(s): GPL 2.0, GPL 3.0, CC-BY-SA 3.0
 
-sword_31 - sword_32
+sword_31
+---------------------
+http://opengameart.org/content/broken-heart-sword
+Author: WeaponGuy
+License(s): CC0
+
+sword_32
 ---------------------
 http://opengameart.org/content/medieval-weapon-set
 Author: umask007
