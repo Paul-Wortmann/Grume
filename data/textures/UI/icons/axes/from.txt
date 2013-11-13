@@ -18,8 +18,9 @@ License(s): CC0
 
 axe_03
 ---------------------
-http://opengameart.org/content/medieval-weapon-set
-Author: umask007
-License(s): CC0
+http://opengameart.org/content/low-poly-pick-axe
+Author: p0ss
+License(s): CC-BY 3.0, CC-BY-SA 3.0, GPL 3.0, GPL 2.0
+
 
 
