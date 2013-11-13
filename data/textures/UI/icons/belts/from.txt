@@ -1,5 +1,7 @@
-Belt_00
+Belt_00 - Belt_05
 -----------------
-CCO - Public domain
-blarumyrran (blarumyrran@gmail.com)
+http://opengameart.org/content/studded-belt
+Author: Clint Bellanger
+License(s): CC-BY 3.0
+
 
