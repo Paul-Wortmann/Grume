@@ -57,4 +57,10 @@ http://opengameart.org/content/fantasy-sword
 Author: djonvincent
 License(s): CC0
 
+sword_36
+---------------------
+http://opengameart.org/content/fantasy-sword-hand-painted-unfinished
+Author: mactinite
+License(s): CC0
+
 
