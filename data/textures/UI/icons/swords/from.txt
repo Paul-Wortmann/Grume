@@ -39,4 +39,10 @@ http://opengameart.org/content/rune-sword
 Author: WeaponGuy
 License(s): CC-BY 3.0
 
+sword_33
+---------------------
+http://opengameart.org/content/spartan-sword
+Author: WeaponGuy
+License(s): CC-BY 3.0
+
 
