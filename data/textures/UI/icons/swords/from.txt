@@ -45,4 +45,10 @@ http://opengameart.org/content/spartan-sword
 Author: WeaponGuy
 License(s): CC-BY 3.0
 
+sword_34
+---------------------
+http://opengameart.org/content/long-sword
+Author: WeaponGuy
+License(s): CC-BY 3.0
+
 
