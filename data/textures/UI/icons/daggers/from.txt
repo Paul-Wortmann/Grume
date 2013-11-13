@@ -10,9 +10,16 @@ CC-BY 3.0
 http://opengameart.org/content/flare-compatible-ish-item-icons
 http://opengameart.org/content/flare-compatible-jewelry
 
-Dagger_27 - Dagger_27
+Dagger_27
 ---------------------
 CCO - Public domain
 blarumyrran (blarumyrran@gmail.com)
+
+Dagger_28
+---------------------
+http://opengameart.org/content/basic-daggershortsword
+Author: WeaponGuy
+License(s): CC0
+
 
 
