@@ -276,69 +276,6 @@ int  item_manager_class::gen_item(int item_type_UID, int item_sub_type_UID, int 
 {
     if (quality_level < 1) quality_level = 1;
     int  new_UID           = RETURN_FAIL;
-    if (item_sub_type_UID == ITEM_OFFHAND)
-    {
-        switch (random(2))
-        {
-            case 0:
-                item_sub_type_UID = ITEM_SOURCE;
-            break;
-            case 1:
-            default:
-                item_sub_type_UID = ITEM_SHIELD;
-            break;
-        }
-    }
-    if (item_sub_type_UID == ITEM_WEAPON)
-    {
-        switch (random(7))
-        {
-            case 0:
-                item_sub_type_UID = ITEM_SWORD;
-            break;
-            case 1:
-                item_sub_type_UID = ITEM_MACE;
-            break;
-            case 2:
-                item_sub_type_UID = ITEM_HAMMER;
-            break;
-            case 3:
-                item_sub_type_UID = ITEM_BOW;
-            break;
-            case 4:
-                item_sub_type_UID = ITEM_AXE;
-            break;
-            case 5:
-                item_sub_type_UID = ITEM_DAGGER;
-            break;
-            case 6:
-            default:
-                item_sub_type_UID = ITEM_WAND;
-            break;
-        }
-    }
-    if (item_sub_type_UID == ITEM_GEM)
-    {
-        switch (random(5))
-        {
-            case 0:
-                item_sub_type_UID = ITEM_GEM_EMERALD;
-            break;
-            case 1:
-                item_sub_type_UID = ITEM_GEM_OPAL;
-            break;
-            case 2:
-                item_sub_type_UID = ITEM_GEM_RUBY;
-            break;
-            case 3:
-                item_sub_type_UID = ITEM_GEM_SAPPHIRE;
-            break;
-            case 4:
-            default:
-                item_sub_type_UID = ITEM_GEM_TOPAZ;
-            break;
-        }
-    }
     if (item_sub_type_UID == ITEM_POTION)
     {
         int rand_number = 1;
@@ -519,6 +456,28 @@ int  item_manager_class::gen_item(int item_type_UID, int item_sub_type_UID, int 
                 switch (item_type_UID)
                 {
                     case ITEM_GEM:
+                        if (item_sub_type_UID == ITEM_GEM)
+                        {
+                            switch (random(5))
+                            {
+                                case 0:
+                                    item_sub_type_UID = ITEM_GEM_EMERALD;
+                                break;
+                                case 1:
+                                    item_sub_type_UID = ITEM_GEM_OPAL;
+                                break;
+                                case 2:
+                                    item_sub_type_UID = ITEM_GEM_RUBY;
+                                break;
+                                case 3:
+                                    item_sub_type_UID = ITEM_GEM_SAPPHIRE;
+                                break;
+                                case 4:
+                                default:
+                                    item_sub_type_UID = ITEM_GEM_TOPAZ;
+                                break;
+                            }
+                        }
                         item_pointer->data.qaulity_type = ITEM_QUALITY_EPIC; // delete me? O_o
                         item_pointer->data.consumable             = false;
                         item_pointer->data.stackable              = false;
@@ -1106,6 +1065,19 @@ int  item_manager_class::gen_item(int item_type_UID, int item_sub_type_UID, int 
                         }
                     break;
                     case ITEM_OFFHAND:
+                        if (item_sub_type_UID == ITEM_OFFHAND)
+                        {
+                            switch (random(2))
+                            {
+                                case 0:
+                                    item_sub_type_UID = ITEM_SOURCE;
+                                break;
+                                case 1:
+                                default:
+                                    item_sub_type_UID = ITEM_SHIELD;
+                                break;
+                            }
+                        }
                         item_pointer->data.equipable              = true;
                         item_pointer->data.quantity               = 1;
                         item_pointer->data.quantity_max           = 1;
@@ -1499,6 +1471,34 @@ int  item_manager_class::gen_item(int item_type_UID, int item_sub_type_UID, int 
                         }
                     break;
                     case ITEM_WEAPON:
+                        if (item_sub_type_UID == ITEM_WEAPON)
+                        {
+                            switch (random(7))
+                            {
+                                case 0:
+                                    item_sub_type_UID = ITEM_SWORD;
+                                break;
+                                case 1:
+                                    item_sub_type_UID = ITEM_MACE;
+                                break;
+                                case 2:
+                                    item_sub_type_UID = ITEM_HAMMER;
+                                break;
+                                case 3:
+                                    item_sub_type_UID = ITEM_BOW;
+                                break;
+                                case 4:
+                                    item_sub_type_UID = ITEM_AXE;
+                                break;
+                                case 5:
+                                    item_sub_type_UID = ITEM_DAGGER;
+                                break;
+                                case 6:
+                                default:
+                                    item_sub_type_UID = ITEM_WAND;
+                                break;
+                            }
+                        }
                         item_pointer->data.equipable              = true;
                         item_pointer->data.quantity               = 1;
                         item_pointer->data.quantity_max           = 1;
