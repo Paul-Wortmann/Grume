@@ -51,4 +51,10 @@ http://opengameart.org/content/long-sword
 Author: WeaponGuy
 License(s): CC-BY 3.0
 
+sword_35
+---------------------
+http://opengameart.org/content/fantasy-sword
+Author: djonvincent
+License(s): CC0
+
 
