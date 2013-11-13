@@ -35,8 +35,8 @@ License(s): CC0
 
 sword_32
 ---------------------
-http://opengameart.org/content/medieval-weapon-set
-Author: umask007
-License(s): CC0
+http://opengameart.org/content/rune-sword
+Author: WeaponGuy
+License(s): CC-BY 3.0
 
 
