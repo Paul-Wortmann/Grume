@@ -291,7 +291,7 @@ int  item_manager_class::gen_item(int item_type_UID, int item_sub_type_UID, int 
     }
     if (item_sub_type_UID == ITEM_WEAPON)
     {
-        switch (random(5))
+        switch (random(7))
         {
             case 0:
                 item_sub_type_UID = ITEM_SWORD;
@@ -309,6 +309,9 @@ int  item_manager_class::gen_item(int item_type_UID, int item_sub_type_UID, int 
                 item_sub_type_UID = ITEM_AXE;
             break;
             case 5:
+                item_sub_type_UID = ITEM_DAGGER;
+            break;
+            case 6:
             default:
                 item_sub_type_UID = ITEM_WAND;
             break;
@@ -2523,6 +2526,9 @@ void  item_manager_class::gen_item_name(item_type* item_pointer,int item_type_UI
         case ITEM_WEAPON:
             switch (item_sub_type_UID)
             {
+                case ITEM_DAGGER:
+                    base_name = "dagger ";
+                break;
                 case ITEM_BOW:
                     base_name = "bow ";
                 break;
@@ -2651,6 +2657,30 @@ void  item_manager_class::gen_item_name(item_type* item_pointer,int item_type_UI
                 default:
                     switch (item_sub_type_UID)
                     {
+                        case ITEM_DAGGER:
+                            switch (random(6))
+                            {
+                                case 0:
+                                    post_name = "of puncturing";
+                                break;
+                                case 1:
+                                    post_name = "of poking";
+                                break;
+                                case 2:
+                                    post_name = "of penetration";
+                                break;
+                                case 3:
+                                    post_name = "of severing";
+                                break;
+                                case 4:
+                                    post_name = "of pricking";
+                                break;
+                                case 5:
+                                default:
+                                    post_name = "of probing";
+                                break;
+                            }
+                        break;
                         case ITEM_BOW:
                             switch (random(6))
                             {
@@ -3016,6 +3046,10 @@ void  item_manager_class::gen_item_texture(item_type* item_pointer,int item_type
         case ITEM_WEAPON:
             switch (item_sub_type_UID)
             {
+                case ITEM_DAGGER:
+                    item_pointer->data.material_type = ITEM_MATERIAL_METAL;
+                    item_pointer->data.image.level_0 = game.texture_manager.add_texture("data/textures/UI/icons/daggers/dagger_28.png");
+                break;
                 case ITEM_BOW:
                     item_pointer->data.material_type = ITEM_MATERIAL_WOOD;
                     item_pointer->data.image.level_0 = game.texture_manager.add_texture("data/textures/UI/icons/bows/bow_03.png");
@@ -3026,7 +3060,7 @@ void  item_manager_class::gen_item_texture(item_type* item_pointer,int item_type
                 break;
                 case ITEM_SWORD:
                     item_pointer->data.material_type = ITEM_MATERIAL_METAL;
-                    item_pointer->data.image.level_0 = game.texture_manager.add_texture("data/textures/UI/icons/swords/sword_31.png");
+                    item_pointer->data.image.level_0 = game.texture_manager.add_texture("data/textures/UI/icons/swords/sword_32.png");
                 break;
                 case ITEM_HAMMER:
                     item_pointer->data.material_type = ITEM_MATERIAL_METAL;
