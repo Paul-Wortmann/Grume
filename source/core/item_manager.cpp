@@ -2843,6 +2843,8 @@ void  item_manager_class::gen_item_name(item_type* item_pointer,int item_type_UI
 
 void  item_manager_class::gen_item_texture(item_type* item_pointer,int item_type_UID, int item_sub_type_UID, int quality_level)
 {
+    std::string temp_string = "";
+    int         temp_int    =  0;
     switch (item_type_UID)
     {
         case ITEM_GEM:
@@ -3023,7 +3025,11 @@ void  item_manager_class::gen_item_texture(item_type* item_pointer,int item_type
         break;
         case ITEM_NECK:
             item_pointer->data.material_type = ITEM_MATERIAL_AMULET;
-            item_pointer->data.image.level_0 = game.texture_manager.add_texture("data/textures/UI/icons/amulets/amulet_00.png");
+            temp_int = random(14);
+            temp_string = "data/textures/UI/icons/amulets/amulet_";
+            if (temp_int < 10) temp_string += "0";
+            temp_string += int_to_string(temp_int) + ".png";
+            item_pointer->data.image.level_0 = game.texture_manager.add_texture(temp_string);
         break;
         case ITEM_OFFHAND:
             switch (item_sub_type_UID)
