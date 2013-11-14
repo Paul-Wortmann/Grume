@@ -3071,7 +3071,11 @@ void  item_manager_class::gen_item_texture(item_type* item_pointer,int item_type
         break;
         case ITEM_RING:
             item_pointer->data.material_type = ITEM_MATERIAL_RING;
-            item_pointer->data.image.level_0 = game.texture_manager.add_texture("data/textures/UI/icons/rings/ring_28.png");
+            temp_int = random(30);
+            temp_string = "data/textures/UI/icons/rings/ring_";
+            if (temp_int < 10) temp_string += "0";
+            temp_string += int_to_string(temp_int) + ".png";
+            item_pointer->data.image.level_0 = game.texture_manager.add_texture(temp_string);
         break;
         case ITEM_WEAPON:
             switch (item_sub_type_UID)
