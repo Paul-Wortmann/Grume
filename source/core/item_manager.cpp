@@ -3003,7 +3003,7 @@ void  item_manager_class::gen_item_texture(item_type* item_pointer,int item_type
         break;
         case ITEM_BELT:
             item_pointer->data.material_type = ITEM_MATERIAL_LEATHER;
-            item_pointer->data.image.level_0 = game.texture_manager.add_texture("data/textures/UI/icons/belts/belt_00.png");
+            item_pointer->data.image.level_0 = game.texture_manager.add_texture("data/textures/UI/icons/belts/belt_01.png");
         break;
         case ITEM_BODY:
             item_pointer->data.material_type = ITEM_MATERIAL_METAL;
@@ -3041,7 +3041,7 @@ void  item_manager_class::gen_item_texture(item_type* item_pointer,int item_type
         break;
         case ITEM_RING:
             item_pointer->data.material_type = ITEM_MATERIAL_RING;
-            item_pointer->data.image.level_0 = game.texture_manager.add_texture("data/textures/UI/icons/rings/ring_00.png");
+            item_pointer->data.image.level_0 = game.texture_manager.add_texture("data/textures/UI/icons/rings/ring_28.png");
         break;
         case ITEM_WEAPON:
             switch (item_sub_type_UID)
@@ -3060,7 +3060,7 @@ void  item_manager_class::gen_item_texture(item_type* item_pointer,int item_type
                 break;
                 case ITEM_SWORD:
                     item_pointer->data.material_type = ITEM_MATERIAL_METAL;
-                    item_pointer->data.image.level_0 = game.texture_manager.add_texture("data/textures/UI/icons/swords/sword_32.png");
+                    item_pointer->data.image.level_0 = game.texture_manager.add_texture("data/textures/UI/icons/swords/sword_35.png");
                 break;
                 case ITEM_HAMMER:
                     item_pointer->data.material_type = ITEM_MATERIAL_METAL;
