@@ -3102,7 +3102,11 @@ void  item_manager_class::gen_item_texture(item_type* item_pointer,int item_type
                 break;
                 case ITEM_SWORD:
                     item_pointer->data.material_type = ITEM_MATERIAL_METAL;
-                    item_pointer->data.image.level_0 = game.texture_manager.add_texture("data/textures/UI/icons/swords/sword_35.png");
+                    temp_int = random(37);
+                    temp_string = "data/textures/UI/icons/swords/sword_";
+                    if (temp_int < 10) temp_string += "0";
+                    temp_string += int_to_string(temp_int) + ".png";
+                    item_pointer->data.image.level_0 = game.texture_manager.add_texture(temp_string);
                 break;
                 case ITEM_HAMMER:
                     item_pointer->data.material_type = ITEM_MATERIAL_METAL;
