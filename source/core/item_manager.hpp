@@ -152,7 +152,7 @@ struct item_spell_level_type
     int              maximum;
     int              current;
     float            experience;
-    int              next;
+    float            next;
 };
 
 struct item_spell_data_type

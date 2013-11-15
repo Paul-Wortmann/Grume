@@ -682,15 +682,11 @@ void UI_manager_class::render(void)
                                 };
                                 game.texture_manager.draw(texture_pointer_name     ,false,texture_temp_x,texture_temp_y,UI_form_pointer->data.element[element_number].position.z,texture_pointer_name->data.width,texture_pointer_name->data.height);
                                 game.texture_manager.draw(texture_pointer_level    ,false,texture_temp_x,texture_temp_y-texture_background_padding*1.5,UI_form_pointer->data.element[element_number].position.z,texture_pointer_level->data.width,texture_pointer_level->data.height);
-
                                 game.texture_manager.draw(game.UI_manager.data.tooltip_textures.bar_background,false,texture_temp_x,texture_temp_y-texture_background_padding*3,UI_form_pointer->data.element[element_number].position.z,texture_bar_size_x,texture_bar_size_y);
-                                //bar here
-
-//    UI_manager_class::data.tooltip_textures.bar                = game.texture_manager.add_texture("data/textures/UI/menu/experience_bar.png");
-//    UI_manager_class::data.tooltip_textures.bar_background     = game.texture_manager.add_texture("data/textures/UI/menu/slider_highlighted.png");
-
+                                float texture_bar_x = texture_temp_x + (texture_bar_size_x/12.0);
+                                texture_bar_size_x  = (texture_bar_size_x/1.2) * (item_pointer->data.spell_data->level.experience/item_pointer->data.spell_data->level.next);
+                                game.texture_manager.draw(game.UI_manager.data.tooltip_textures.bar           ,false,texture_bar_x,texture_temp_y-texture_background_padding*3-(texture_bar_size_y/4.0f),UI_form_pointer->data.element[element_number].position.z,texture_bar_size_x,texture_bar_size_y/2.0f);
                                 game.texture_manager.draw(texture_pointer_mana_cost,false,texture_temp_x,texture_temp_y-texture_background_padding*4.5,UI_form_pointer->data.element[element_number].position.z,texture_pointer_mana_cost->data.width,texture_pointer_mana_cost->data.height);
-
                             }
                             else
                             {
