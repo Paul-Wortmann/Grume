@@ -115,7 +115,6 @@
 #define ITEM_SPELL_SHIELD_ELEMENTAL   120
 #define ITEM_SPELL_HEAL               121
 
-
 //--- Predefined items ---------------
 #define ITEM_POTION_S_HEALTH          220
 #define ITEM_POTION_M_HEALTH          221

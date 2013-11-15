@@ -623,8 +623,8 @@ void UI_manager_class::render(void)
                                 item_type*    item_pointer          = new item_type;
                                 item_pointer = game.item_manager.add_item(UI_form_pointer->data.element[element_number].value);
                                 std::string   temp_string_name      = item_pointer->data.name;
-                                std::string   temp_string_level     = "Level - " + int_to_string(item_pointer->data.spell_data->level.current);
-                                std::string   temp_string_mana_cost = "Mana cost - " + float_to_string(item_pointer->data.spell_data->mana_cost);
+                                std::string   temp_string_level     = "Level -> " + int_to_string(item_pointer->data.spell_data->level.current);
+                                std::string   temp_string_mana_cost = "Mana cost -> " + float_to_string(item_pointer->data.spell_data->mana_cost);
                                 texture_type* texture_pointer_name  = new texture_type;
                                 texture_pointer_name = game.texture_manager.add_texture(game.font_manager.root,temp_string_name.c_str(),0.8f,0,0,255,255,255,255,TEXTURE_STRING);
                                 texture_pointer_name->data.render_positioning = TEXTURE_RENDER_DOWN+TEXTURE_RENDER_LEFT;
@@ -638,7 +638,7 @@ void UI_manager_class::render(void)
                                 float texture_background_y = game.core.io.mouse_y;
                                 float texture_background_padding = texture_pointer_name->data.height;
                                 float texture_background_size_x  = texture_pointer_name->data.width;
-                                float texture_background_size_y  = texture_pointer_name->data.height*4;
+                                float texture_background_size_y  = texture_pointer_name->data.height*5.5;
                                 float texture_header_size_y  = texture_pointer_name->data.height*2;
                                 float texture_temp_x = texture_background_x+(texture_background_padding/2.0f);
                                 float texture_temp_y = texture_background_y-(texture_background_padding/2.0f);
@@ -673,7 +673,12 @@ void UI_manager_class::render(void)
                                         game.texture_manager.draw(game.UI_manager.data.tooltip_textures.normal.header    ,false,texture_background_x,texture_background_y,UI_form_pointer->data.element[element_number].position.z,texture_background_size_x,texture_header_size_y);
                                     break;
                                 };
-                                game.texture_manager.draw(texture_pointer_name,false,texture_temp_x,texture_temp_y,UI_form_pointer->data.element[element_number].position.z,texture_pointer_name->data.width,texture_pointer_name->data.height);
+                                game.texture_manager.draw(texture_pointer_name     ,false,texture_temp_x,texture_temp_y,UI_form_pointer->data.element[element_number].position.z,texture_pointer_name->data.width,texture_pointer_name->data.height);
+                                game.texture_manager.draw(texture_pointer_level    ,false,texture_temp_x,texture_temp_y-texture_background_padding*1.5,UI_form_pointer->data.element[element_number].position.z,texture_pointer_name->data.width,texture_pointer_name->data.height);
+
+                                //bar here
+
+                                game.texture_manager.draw(texture_pointer_mana_cost,false,texture_temp_x,texture_temp_y-texture_background_padding*3.5,UI_form_pointer->data.element[element_number].position.z,texture_pointer_name->data.width,texture_pointer_name->data.height);
 
                             }
                             else
