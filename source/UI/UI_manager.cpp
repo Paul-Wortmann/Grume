@@ -637,7 +637,7 @@ void UI_manager_class::render(void)
                                 texture_pointer_level = game.texture_manager.add_texture(game.font_manager.root,temp_string_level.c_str(),0.8f,0,0,255,255,255,255,TEXTURE_STRING);
                                 texture_pointer_level->data.render_positioning = TEXTURE_RENDER_DOWN+TEXTURE_RENDER_LEFT;
                                 texture_type* texture_pointer_mana_cost  = new texture_type;
-                                texture_pointer_mana_cost = game.texture_manager.add_texture(game.font_manager.root,temp_string_name.c_str(),0.8f,0,0,255,255,255,255,TEXTURE_STRING);
+                                texture_pointer_mana_cost = game.texture_manager.add_texture(game.font_manager.root,temp_string_mana_cost.c_str(),0.8f,0,0,255,255,255,255,TEXTURE_STRING);
                                 texture_pointer_mana_cost->data.render_positioning = TEXTURE_RENDER_DOWN+TEXTURE_RENDER_LEFT;
                                 float texture_background_x = game.core.io.mouse_x;
                                 float texture_background_y = game.core.io.mouse_y;
