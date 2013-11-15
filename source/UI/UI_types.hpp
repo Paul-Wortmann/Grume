@@ -120,6 +120,8 @@ struct tooltip_texture_data_type
     tooltip_textures_type   magic;
     tooltip_textures_type   epic;
     tooltip_textures_type   setitem;
+    texture_type*           bar;
+    texture_type*           bar_background;
 };
 
 struct sound_struct
