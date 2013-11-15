@@ -21,5 +21,10 @@ http://opengameart.org/content/basic-daggershortsword
 Author: WeaponGuy
 License(s): CC0
 
+Dagger_29
+---------------------
+http://opengameart.org/content/dagger-rogues-talon
+Author: Quandtum
+License(s): CC-BY-SA 3.0
 
 
