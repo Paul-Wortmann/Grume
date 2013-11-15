@@ -152,6 +152,11 @@ void UI_manager_class::setup_textures(void)
     UI_manager_class::data.tooltip_textures.setitem.divider    = game.texture_manager.add_texture("data/textures/UI/menu/tooltip_divider_3.png");
     UI_manager_class::data.tooltip_textures.setitem.header     = game.texture_manager.add_texture("data/textures/UI/menu/tooltip_header_3.png");
     UI_manager_class::data.tooltip_textures.setitem.socket     = game.texture_manager.add_texture("data/textures/UI/menu/tooltip_socket.png");
+    // - Tool tip bar -
+    UI_manager_class::data.tooltip_textures.bar                = game.texture_manager.add_texture("data/textures/UI/menu/experience_bar.png");
+    UI_manager_class::data.tooltip_textures.bar->data.render_positioning = TEXTURE_RENDER_DOWN+TEXTURE_RENDER_LEFT;
+    UI_manager_class::data.tooltip_textures.bar_background     = game.texture_manager.add_texture("data/textures/UI/menu/slider_highlighted.png");
+    UI_manager_class::data.tooltip_textures.bar_background->data.render_positioning = TEXTURE_RENDER_DOWN+TEXTURE_RENDER_LEFT;
 };
 
 void UI_manager_class::setup(void)
@@ -620,12 +625,12 @@ void UI_manager_class::render(void)
                             //display spell stats on mouse over
                             if (UI_form_pointer->data.element[element_number].sub_type == ITEM_SPELL)
                             {
-                                item_type*    item_pointer          = new item_type;
+                                item_type*    item_pointer           = new item_type;
                                 item_pointer = game.item_manager.add_item(UI_form_pointer->data.element[element_number].value);
-                                std::string   temp_string_name      = item_pointer->data.name;
-                                std::string   temp_string_level     = "Level -> " + int_to_string(item_pointer->data.spell_data->level.current);
-                                std::string   temp_string_mana_cost = "Mana cost -> " + float_to_string(item_pointer->data.spell_data->mana_cost);
-                                texture_type* texture_pointer_name  = new texture_type;
+                                std::string   temp_string_name       = item_pointer->data.name;
+                                std::string   temp_string_level      = "Level -> " + int_to_string(item_pointer->data.spell_data->level.current);
+                                std::string   temp_string_mana_cost  = "Mana cost -> " + float_to_string(item_pointer->data.spell_data->mana_cost);
+                                texture_type* texture_pointer_name   = new texture_type;
                                 texture_pointer_name = game.texture_manager.add_texture(game.font_manager.root,temp_string_name.c_str(),0.8f,0,0,255,255,255,255,TEXTURE_STRING);
                                 texture_pointer_name->data.render_positioning = TEXTURE_RENDER_DOWN+TEXTURE_RENDER_LEFT;
                                 texture_type* texture_pointer_level = new texture_type;
@@ -638,12 +643,14 @@ void UI_manager_class::render(void)
                                 float texture_background_y = game.core.io.mouse_y;
                                 float texture_background_padding = texture_pointer_name->data.height;
                                 float texture_background_size_x  = texture_pointer_name->data.width;
-                                float texture_background_size_y  = texture_pointer_name->data.height*5.5;
+                                float texture_background_size_y  = texture_pointer_name->data.height*6;
                                 float texture_header_size_y  = texture_pointer_name->data.height*2;
                                 float texture_temp_x = texture_background_x+(texture_background_padding/2.0f);
                                 float texture_temp_y = texture_background_y-(texture_background_padding/2.0f);
                                 if (texture_pointer_level->data.width > texture_background_size_x) texture_background_size_x = texture_pointer_level->data.width;
                                 if (texture_pointer_mana_cost->data.width > texture_background_size_x) texture_background_size_x = texture_pointer_mana_cost->data.width;
+                                float texture_bar_size_x  = texture_background_size_x + (texture_background_padding/2.0);
+                                float texture_bar_size_y  = texture_background_padding;
                                 texture_background_size_x += (texture_background_padding*1.5f);
                                 switch (item_pointer->data.qaulity_type)
                                 {
@@ -674,11 +681,15 @@ void UI_manager_class::render(void)
                                     break;
                                 };
                                 game.texture_manager.draw(texture_pointer_name     ,false,texture_temp_x,texture_temp_y,UI_form_pointer->data.element[element_number].position.z,texture_pointer_name->data.width,texture_pointer_name->data.height);
-                                game.texture_manager.draw(texture_pointer_level    ,false,texture_temp_x,texture_temp_y-texture_background_padding*1.5,UI_form_pointer->data.element[element_number].position.z,texture_pointer_name->data.width,texture_pointer_name->data.height);
+                                game.texture_manager.draw(texture_pointer_level    ,false,texture_temp_x,texture_temp_y-texture_background_padding*1.5,UI_form_pointer->data.element[element_number].position.z,texture_pointer_level->data.width,texture_pointer_level->data.height);
 
+                                game.texture_manager.draw(game.UI_manager.data.tooltip_textures.bar_background,false,texture_temp_x,texture_temp_y-texture_background_padding*3,UI_form_pointer->data.element[element_number].position.z,texture_bar_size_x,texture_bar_size_y);
                                 //bar here
 
-                                game.texture_manager.draw(texture_pointer_mana_cost,false,texture_temp_x,texture_temp_y-texture_background_padding*3.5,UI_form_pointer->data.element[element_number].position.z,texture_pointer_name->data.width,texture_pointer_name->data.height);
+//    UI_manager_class::data.tooltip_textures.bar                = game.texture_manager.add_texture("data/textures/UI/menu/experience_bar.png");
+//    UI_manager_class::data.tooltip_textures.bar_background     = game.texture_manager.add_texture("data/textures/UI/menu/slider_highlighted.png");
+
+                                game.texture_manager.draw(texture_pointer_mana_cost,false,texture_temp_x,texture_temp_y-texture_background_padding*4.5,UI_form_pointer->data.element[element_number].position.z,texture_pointer_mana_cost->data.width,texture_pointer_mana_cost->data.height);
 
                             }
                             else
