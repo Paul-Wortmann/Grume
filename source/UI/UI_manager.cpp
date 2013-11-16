@@ -625,7 +625,11 @@ void UI_manager_class::render(void)
                             //display spell stats on mouse over
                             if (UI_form_pointer->data.element[element_number].sub_type == ITEM_SPELL)
                             {
+                                item_type*    socket_item_pointer    = new item_type;
                                 item_type*    item_pointer           = new item_type;
+                                effect_type*  effect_pointer         = new effect_type;
+                                std::string   temp_string            = "";
+                                std::string   sign_string            = " ";
                                 item_pointer = game.item_manager.add_item(UI_form_pointer->data.element[element_number].value);
                                 std::string   temp_string_name       = item_pointer->data.name;
                                 std::string   temp_string_level      = "Level -> " + int_to_string(item_pointer->data.spell_data->level.current);
@@ -653,6 +657,25 @@ void UI_manager_class::render(void)
                                 float texture_bar_size_x  = texture_background_size_x + (texture_background_padding/2.0);
                                 float texture_bar_size_y  = texture_background_padding;
                                 texture_background_size_x += (texture_background_padding*1.5f);
+                                if (item_pointer->data.number_of_item_sockets > 0)
+                                {
+                                    for (int socket_count = 0; socket_count < item_pointer->data.number_of_item_sockets; socket_count++)
+                                    {
+                                        if (item_pointer->data.socket[socket_count].enabled)
+                                        {
+                                            int effect_count = 0;
+                                            socket_item_pointer = game.item_manager.add_item(item_pointer->data.socket[socket_count].value);
+                                            effect_pointer = game.effect_manager.add_effect(socket_item_pointer->data.effect[effect_count].type);
+                                            if (socket_item_pointer->data.effect[effect_count].value >  0) sign_string = "+";
+                                            if (socket_item_pointer->data.effect[effect_count].value == 0) sign_string = " ";
+                                            if (socket_item_pointer->data.effect[effect_count].value <  0) sign_string = "-";
+                                            temp_string = effect_pointer->data.name + " -> " + sign_string + int_to_string(socket_item_pointer->data.effect[effect_count].value);
+                                            texture_pointer = game.texture_manager.add_texture(game.font_manager.root,temp_string.c_str(),0.8f,0,0,255,255,255,255,TEXTURE_STRING);
+                                            game.texture_manager.draw(texture_pointer,false,texture_temp_x+texture_background_padding,texture_temp_y,UI_form_pointer->data.element[element_number].position.z,texture_pointer->data.width,texture_pointer->data.height);
+                                            if (texture_pointer->data.width+texture_background_padding > texture_background_size_x) texture_background_size_x = texture_pointer->data.width+texture_background_padding;
+                                        }
+                                    }
+                                }
                                 switch (item_pointer->data.qaulity_type)
                                 {
                                     case ITEM_QUALITY_MAGIC:
@@ -709,6 +732,24 @@ void UI_manager_class::render(void)
                                     }
                                     texture_pointer->data.render_positioning = TEXTURE_RENDER_DOWN+TEXTURE_RENDER_LEFT;
                                     game.texture_manager.draw(texture_pointer,false,texture_temp_x,texture_temp_y-texture_background_padding*4.5,UI_form_pointer->data.element[element_number].position.z,texture_background_padding,texture_background_padding);
+                                    if (item_pointer->data.socket[socket_count].enabled)
+                                    {
+                                        int effect_count = 0;
+                                        socket_item_pointer = game.item_manager.add_item(item_pointer->data.socket[socket_count].value);
+                                        effect_pointer = game.effect_manager.add_effect(socket_item_pointer->data.effect[effect_count].type);
+                                        if (socket_item_pointer->data.effect[effect_count].value >  0) sign_string = "+";
+                                        if (socket_item_pointer->data.effect[effect_count].value == 0) sign_string = " ";
+                                        if (socket_item_pointer->data.effect[effect_count].value <  0) sign_string = "-";
+                                        temp_string = effect_pointer->data.name + " -> " + sign_string + int_to_string(socket_item_pointer->data.effect[effect_count].value);
+                                        texture_pointer = game.texture_manager.add_texture(game.font_manager.root,temp_string.c_str(),0.8f,0,0,255,255,255,255,TEXTURE_STRING);
+                                        game.texture_manager.draw(texture_pointer,false,texture_temp_x+texture_background_padding,texture_temp_y-texture_background_padding*4.5,UI_form_pointer->data.element[element_number].position.z,texture_pointer->data.width,texture_pointer->data.height);
+                                    }
+                                    else
+                                    {
+                                        texture_pointer = game.texture_manager.add_texture(game.font_manager.root,"Empty socket",0.8f,0,0,255,255,255,255,TEXTURE_STRING);
+                                        texture_pointer->data.render_positioning = TEXTURE_RENDER_DOWN+TEXTURE_RENDER_LEFT;
+                                        game.texture_manager.draw(texture_pointer,false,texture_temp_x+texture_background_padding,texture_temp_y-texture_background_padding*4.5,UI_form_pointer->data.element[element_number].position.z,texture_pointer->data.width,texture_pointer->data.height);
+                                    }
                                 }
                             }
                             else
