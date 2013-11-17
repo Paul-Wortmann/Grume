@@ -478,7 +478,6 @@ int  item_manager_class::gen_item(int item_type_UID, int item_sub_type_UID, int 
                                 break;
                             }
                         }
-                        item_pointer->data.qaulity_type = ITEM_QUALITY_EPIC; // delete me? O_o
                         item_pointer->data.consumable             = false;
                         item_pointer->data.stackable              = false;
                         item_pointer->data.quantity               = 1;
@@ -487,30 +486,35 @@ int  item_manager_class::gen_item(int item_type_UID, int item_sub_type_UID, int 
                         switch (item_sub_type_UID)
                         {
                             case ITEM_GEM_EMERALD:
+                                item_pointer->data.qaulity_type           = ITEM_QUALITY_EPIC;
                                 item_pointer->data.number_of_item_effects = 1;
                                 item_pointer->data.effect[0].enabled      = true;
                                 item_pointer->data.effect[0].type         = EFFECT_MOD_DEXTERITY;
                                 item_pointer->data.effect[0].value        = quality_level/10;
                             break;
                             case ITEM_GEM_OPAL:
+                                item_pointer->data.qaulity_type           = ITEM_QUALITY_EPIC;
                                 item_pointer->data.number_of_item_effects = 1;
                                 item_pointer->data.effect[0].enabled      = true;
                                 item_pointer->data.effect[0].type         = EFFECT_MOD_STRENGTH;
                                 item_pointer->data.effect[0].value        = quality_level/10;
                             break;
                             case ITEM_GEM_RUBY:
+                                item_pointer->data.qaulity_type           = ITEM_QUALITY_EPIC;
                                 item_pointer->data.number_of_item_effects = 1;
                                 item_pointer->data.effect[0].enabled      = true;
                                 item_pointer->data.effect[0].type         = EFFECT_MOD_HEALTH_MAX;
                                 item_pointer->data.effect[0].value        = random(quality_level);
                             break;
                             case ITEM_GEM_SAPPHIRE:
+                                item_pointer->data.qaulity_type           = ITEM_QUALITY_EPIC;
                                 item_pointer->data.number_of_item_effects = 1;
                                 item_pointer->data.effect[0].enabled      = true;
                                 item_pointer->data.effect[0].type         = EFFECT_MOD_MANA_MAX;
                                 item_pointer->data.effect[0].value        = random(quality_level);
                             break;
                             case ITEM_GEM_TOPAZ:
+                                item_pointer->data.qaulity_type           = ITEM_QUALITY_EPIC;
                                 item_pointer->data.number_of_item_effects = 1;
                                 item_pointer->data.effect[0].enabled      = true;
                                 item_pointer->data.effect[0].type         = EFFECT_MOD_INTELLECT;
