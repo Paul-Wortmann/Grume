@@ -41,7 +41,7 @@
 			<Cursor1 position="30446" topLine="411" />
 		</Cursor>
 	</File>
-	<File name="source/game/effects.cpp" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="source/game/effects.cpp" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="23600" topLine="322" />
 		</Cursor>
@@ -51,7 +51,7 @@
 			<Cursor1 position="1121" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="source/game/game.cpp" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="source/game/game.cpp" open="1" top="1" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="13240" topLine="179" />
 		</Cursor>
@@ -146,9 +146,9 @@
 			<Cursor1 position="2344" topLine="68" />
 		</Cursor>
 	</File>
-	<File name="source/core/effect_manager.hpp" open="1" top="1" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="source/core/effect_manager.hpp" open="0" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="2760" topLine="58" />
+			<Cursor1 position="2955" topLine="37" />
 		</Cursor>
 	</File>
 	<File name="source/UI/UI_types.hpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
