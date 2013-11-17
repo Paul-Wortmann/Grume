@@ -654,9 +654,6 @@ void UI_manager_class::render(void)
                                 float texture_temp_y = texture_background_y-(texture_background_padding/2.0f);
                                 if (texture_pointer_level->data.width > texture_background_size_x) texture_background_size_x = texture_pointer_level->data.width;
                                 if (texture_pointer_mana_cost->data.width > texture_background_size_x) texture_background_size_x = texture_pointer_mana_cost->data.width;
-                                float texture_bar_size_x  = texture_background_size_x + (texture_background_padding/2.0);
-                                float texture_bar_size_y  = texture_background_padding;
-                                texture_background_size_x += (texture_background_padding*1.5f);
                                 if (item_pointer->data.number_of_item_sockets > 0)
                                 {
                                     for (int socket_count = 0; socket_count < item_pointer->data.number_of_item_sockets; socket_count++)
@@ -671,11 +668,13 @@ void UI_manager_class::render(void)
                                             if (socket_item_pointer->data.effect[effect_count].value <  0) sign_string = "-";
                                             temp_string = effect_pointer->data.name + " -> " + sign_string + int_to_string(socket_item_pointer->data.effect[effect_count].value);
                                             texture_pointer = game.texture_manager.add_texture(game.font_manager.root,temp_string.c_str(),0.8f,0,0,255,255,255,255,TEXTURE_STRING);
-                                            game.texture_manager.draw(texture_pointer,false,texture_temp_x+texture_background_padding,texture_temp_y,UI_form_pointer->data.element[element_number].position.z,texture_pointer->data.width,texture_pointer->data.height);
                                             if (texture_pointer->data.width+texture_background_padding > texture_background_size_x) texture_background_size_x = texture_pointer->data.width+texture_background_padding;
                                         }
                                     }
                                 }
+                                float texture_bar_size_x  = texture_background_size_x + (texture_background_padding/2.0);
+                                float texture_bar_size_y  = texture_background_padding;
+                                texture_background_size_x += (texture_background_padding*1.5f);
                                 switch (item_pointer->data.qaulity_type)
                                 {
                                     case ITEM_QUALITY_MAGIC:
