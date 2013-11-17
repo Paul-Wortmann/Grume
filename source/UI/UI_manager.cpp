@@ -738,7 +738,7 @@ void UI_manager_class::render(void)
                                         socket_item_pointer = game.item_manager.add_item(item_pointer->data.socket[socket_count].value);
                                         effect_pointer = game.effect_manager.add_effect(socket_item_pointer->data.effect[effect_count].type);
                                         texture_pointer = socket_item_pointer->data.image.level_0;
-                                        game.texture_manager.draw(texture_pointer,false,texture_temp_x+(texture_background_padding/2.0f),texture_temp_y-(texture_background_padding/2.0f),UI_form_pointer->data.element[element_number].position.z,texture_background_padding,texture_background_padding);
+                                        game.texture_manager.draw(texture_pointer,false,texture_temp_x+(texture_background_padding/2.0f),texture_temp_y-texture_background_padding*4.5-(texture_background_padding/2.0f),UI_form_pointer->data.element[element_number].position.z,texture_background_padding,texture_background_padding);
                                         if (socket_item_pointer->data.effect[effect_count].value >  0) sign_string = "+";
                                         if (socket_item_pointer->data.effect[effect_count].value == 0) sign_string = " ";
                                         if (socket_item_pointer->data.effect[effect_count].value <  0) sign_string = "-";
