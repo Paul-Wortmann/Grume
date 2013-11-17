@@ -1348,8 +1348,8 @@ void UI_manager_class::swap_elements(int UI_form_UID_src, int UI_element_src, in
     {
         bool posible_swap        = true;
         bool allow_swap_elements = false;
-        if (((UI_form_UID_src == UID_INVENTORY) || (UI_form_UID_src == UID_ACTIONBAR) || (UI_form_UID_src == UID_EQUIPMENT)) &&
-            ((UI_form_UID_dst == UID_INVENTORY) || (UI_form_UID_dst == UID_ACTIONBAR) || (UI_form_UID_dst == UID_EQUIPMENT))) allow_swap_elements = true;
+        if (((UI_form_UID_src == UID_INVENTORY) || (UI_form_UID_src == UID_ACTIONBAR) || (UI_form_UID_src == UID_EQUIPMENT) || (UI_form_UID_src == UID_SKILLBOOK)) &&
+            ((UI_form_UID_dst == UID_INVENTORY) || (UI_form_UID_dst == UID_ACTIONBAR) || (UI_form_UID_dst == UID_EQUIPMENT) || (UI_form_UID_dst == UID_SKILLBOOK))) allow_swap_elements = true;
         UI_form_struct* UI_form_UID_src_pointer = game.UI_manager.UI_form_get(UI_form_UID_src);
         UI_form_struct* UI_form_UID_dst_pointer = game.UI_manager.UI_form_get(UI_form_UID_dst);
         item_type* item_pointer_src = game.item_manager.add_item(UI_form_UID_src_pointer->data.element[UI_element_src].value);
