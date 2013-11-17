@@ -536,21 +536,21 @@ int  item_manager_class::gen_item(int item_type_UID, int item_sub_type_UID, int 
                                 item_pointer->data.qaulity_type           = ITEM_QUALITY_SET;
                                 item_pointer->data.number_of_item_effects = 1;
                                 item_pointer->data.effect[0].enabled      = true;
-                                item_pointer->data.effect[0].type         = EFFECT_MOD_INTELLECT;
+                                item_pointer->data.effect[0].type         = EFFECT_MOD_SPELL_DURATION;
                                 item_pointer->data.effect[0].value        = quality_level/10;
                             break;
                             case ITEM_GEM_AQUAMARINE:
                                 item_pointer->data.qaulity_type           = ITEM_QUALITY_SET;
                                 item_pointer->data.number_of_item_effects = 1;
                                 item_pointer->data.effect[0].enabled      = true;
-                                item_pointer->data.effect[0].type         = EFFECT_MOD_INTELLECT;
+                                item_pointer->data.effect[0].type         = EFFECT_MOD_SPELL_COOLDOWN;
                                 item_pointer->data.effect[0].value        = quality_level/10;
                             break;
                             case ITEM_GEM_JADE:
                                 item_pointer->data.qaulity_type           = ITEM_QUALITY_SET;
                                 item_pointer->data.number_of_item_effects = 1;
                                 item_pointer->data.effect[0].enabled      = true;
-                                item_pointer->data.effect[0].type         = EFFECT_MOD_INTELLECT;
+                                item_pointer->data.effect[0].type         = EFFECT_MOD_SPELL_DAMAGE;
                                 item_pointer->data.effect[0].value        = quality_level/10;
                             break;
                             default:
@@ -558,7 +558,7 @@ int  item_manager_class::gen_item(int item_type_UID, int item_sub_type_UID, int 
                                 item_pointer->data.qaulity_type           = ITEM_QUALITY_SET;
                                 item_pointer->data.number_of_item_effects = 1;
                                 item_pointer->data.effect[0].enabled      = true;
-                                item_pointer->data.effect[0].type         = EFFECT_MOD_INTELLECT;
+                                item_pointer->data.effect[0].type         = EFFECT_MOD_SPELL_MANA_COST;
                                 item_pointer->data.effect[0].value        = quality_level/10;
                             break;
                         }

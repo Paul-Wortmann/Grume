@@ -206,6 +206,22 @@ void game_class::init(void)
     temp_item_pointer = game.item_manager.add_item(game.item_manager.gen_item(ITEM_RING,ITEM_RING,random(MAX_ITEM_QUALITY)));
     UI_form_pointer->data.element[element_number].value          = temp_item_pointer->data.UID;
     UI_form_pointer->data.element[element_number].texture.normal = temp_item_pointer->data.image.level_0;
+    element_number    = 24;
+    temp_item_pointer = game.item_manager.add_item(game.item_manager.gen_item(ITEM_GEM,ITEM_GEM_AMERTINE,random(MAX_ITEM_QUALITY)));
+    UI_form_pointer->data.element[element_number].value          = temp_item_pointer->data.UID;
+    UI_form_pointer->data.element[element_number].texture.normal = temp_item_pointer->data.image.level_0;
+    element_number    = 25;
+    temp_item_pointer = game.item_manager.add_item(game.item_manager.gen_item(ITEM_GEM,ITEM_GEM_AQUAMARINE,random(MAX_ITEM_QUALITY)));
+    UI_form_pointer->data.element[element_number].value          = temp_item_pointer->data.UID;
+    UI_form_pointer->data.element[element_number].texture.normal = temp_item_pointer->data.image.level_0;
+    element_number    = 26;
+    temp_item_pointer = game.item_manager.add_item(game.item_manager.gen_item(ITEM_GEM,ITEM_GEM_JADE,random(MAX_ITEM_QUALITY)));
+    UI_form_pointer->data.element[element_number].value          = temp_item_pointer->data.UID;
+    UI_form_pointer->data.element[element_number].texture.normal = temp_item_pointer->data.image.level_0;
+    element_number    = 27;
+    temp_item_pointer = game.item_manager.add_item(game.item_manager.gen_item(ITEM_GEM,ITEM_GEM_MORGANITE,random(MAX_ITEM_QUALITY)));
+    UI_form_pointer->data.element[element_number].value          = temp_item_pointer->data.UID;
+    UI_form_pointer->data.element[element_number].texture.normal = temp_item_pointer->data.image.level_0;
 
     element_number    = 41;
     temp_item_pointer = game.item_manager.add_item(game.item_manager.gen_item(ITEM_SPELL_BOOK,ITEM_SPELL_BOOK,random(MAX_ITEM_QUALITY)));

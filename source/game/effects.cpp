@@ -359,6 +359,38 @@ void  effect_class::init_effects(void) // Initialize hard-coded default effects,
     temp_effect_pointer->data.value    = 1.0f;
     temp_effect_pointer->data.type     = EFFECT_MOD_SPELL_CAST_DMG;
     temp_effect_pointer->data.sub_type = EFFECT_MOD_SPELL;
+    //-------------------------- Mana cost reduction --------------------------------------------------------------------------
+    temp_effect_pointer                = game.effect_manager.add_effect(EFFECT_MOD_SPELL_MANA_COST);
+    temp_effect_pointer->data.active   = true;
+    temp_effect_pointer->data.name     = "Mana cost reduction";
+    temp_effect_pointer->data.passive  = false;
+    temp_effect_pointer->data.value    = 1.0f;
+    temp_effect_pointer->data.type     = EFFECT_MOD_SPELL_MANA_COST;
+    temp_effect_pointer->data.sub_type = EFFECT_MOD_SPELL;
+    //-------------------------- Increased spell damage --------------------------------------------------------------------------
+    temp_effect_pointer                = game.effect_manager.add_effect(EFFECT_MOD_SPELL_DAMAGE);
+    temp_effect_pointer->data.active   = true;
+    temp_effect_pointer->data.name     = "Increased spell damage";
+    temp_effect_pointer->data.passive  = false;
+    temp_effect_pointer->data.value    = 1.0f;
+    temp_effect_pointer->data.type     = EFFECT_MOD_SPELL_DAMAGE;
+    temp_effect_pointer->data.sub_type = EFFECT_MOD_SPELL;
+    //-------------------------- Reduced spell cool down --------------------------------------------------------------------------
+    temp_effect_pointer                = game.effect_manager.add_effect(EFFECT_MOD_SPELL_COOLDOWN);
+    temp_effect_pointer->data.active   = true;
+    temp_effect_pointer->data.name     = "Reduced spell cool down";
+    temp_effect_pointer->data.passive  = false;
+    temp_effect_pointer->data.value    = 1.0f;
+    temp_effect_pointer->data.type     = EFFECT_MOD_SPELL_COOLDOWN;
+    temp_effect_pointer->data.sub_type = EFFECT_MOD_SPELL;
+    //-------------------------- Increased spell duration --------------------------------------------------------------------------
+    temp_effect_pointer                = game.effect_manager.add_effect(EFFECT_MOD_SPELL_DURATION);
+    temp_effect_pointer->data.active   = true;
+    temp_effect_pointer->data.name     = "Increased spell duration";
+    temp_effect_pointer->data.passive  = false;
+    temp_effect_pointer->data.value    = 1.0f;
+    temp_effect_pointer->data.type     = EFFECT_MOD_SPELL_DURATION;
+    temp_effect_pointer->data.sub_type = EFFECT_MOD_SPELL;
     //--------------------------------------------------------------------------------------------------------------------
     game.effect_manager.load_effects("data/scripts/effects.txt");
 }
