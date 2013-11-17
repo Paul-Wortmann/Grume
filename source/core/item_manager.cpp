@@ -458,7 +458,7 @@ int  item_manager_class::gen_item(int item_type_UID, int item_sub_type_UID, int 
                     case ITEM_GEM:
                         if (item_sub_type_UID == ITEM_GEM)
                         {
-                            switch (random(5))
+                            switch (random(9))
                             {
                                 case 0:
                                     item_sub_type_UID = ITEM_GEM_EMERALD;
@@ -473,8 +473,20 @@ int  item_manager_class::gen_item(int item_type_UID, int item_sub_type_UID, int 
                                     item_sub_type_UID = ITEM_GEM_SAPPHIRE;
                                 break;
                                 case 4:
-                                default:
                                     item_sub_type_UID = ITEM_GEM_TOPAZ;
+                                break;
+                                case 5:
+                                    item_sub_type_UID = ITEM_GEM_JADE;
+                                break;
+                                case 6:
+                                    item_sub_type_UID = ITEM_GEM_MORGANITE;
+                                break;
+                                case 7:
+                                    item_sub_type_UID = ITEM_GEM_AMERTINE;
+                                break;
+                                case 8:
+                                default:
+                                    item_sub_type_UID = ITEM_GEM_AQUAMARINE;
                                 break;
                             }
                         }
@@ -519,7 +531,35 @@ int  item_manager_class::gen_item(int item_type_UID, int item_sub_type_UID, int 
                                 item_pointer->data.effect[0].enabled      = true;
                                 item_pointer->data.effect[0].type         = EFFECT_MOD_INTELLECT;
                                 item_pointer->data.effect[0].value        = quality_level/10;
+                            break;
+                            case ITEM_GEM_AMERTINE:
+                                item_pointer->data.qaulity_type           = ITEM_QUALITY_SET;
+                                item_pointer->data.number_of_item_effects = 1;
+                                item_pointer->data.effect[0].enabled      = true;
+                                item_pointer->data.effect[0].type         = EFFECT_MOD_INTELLECT;
+                                item_pointer->data.effect[0].value        = quality_level/10;
+                            break;
+                            case ITEM_GEM_AQUAMARINE:
+                                item_pointer->data.qaulity_type           = ITEM_QUALITY_SET;
+                                item_pointer->data.number_of_item_effects = 1;
+                                item_pointer->data.effect[0].enabled      = true;
+                                item_pointer->data.effect[0].type         = EFFECT_MOD_INTELLECT;
+                                item_pointer->data.effect[0].value        = quality_level/10;
+                            break;
+                            case ITEM_GEM_JADE:
+                                item_pointer->data.qaulity_type           = ITEM_QUALITY_SET;
+                                item_pointer->data.number_of_item_effects = 1;
+                                item_pointer->data.effect[0].enabled      = true;
+                                item_pointer->data.effect[0].type         = EFFECT_MOD_INTELLECT;
+                                item_pointer->data.effect[0].value        = quality_level/10;
+                            break;
                             default:
+                            case ITEM_GEM_MORGANITE:
+                                item_pointer->data.qaulity_type           = ITEM_QUALITY_SET;
+                                item_pointer->data.number_of_item_effects = 1;
+                                item_pointer->data.effect[0].enabled      = true;
+                                item_pointer->data.effect[0].type         = EFFECT_MOD_INTELLECT;
+                                item_pointer->data.effect[0].value        = quality_level/10;
                             break;
                         }
                         if ((item_pointer->data.effect[0].enabled) && (item_pointer->data.effect[0].value <= 0)) item_pointer->data.effect[0].value = 1;
