@@ -1715,6 +1715,18 @@ void  item_manager_class::gen_item_name(item_type* item_pointer,int item_type_UI
                 case ITEM_GEM_TOPAZ:
                     item_pointer->data.name = "Topaz";
                 break;
+                case ITEM_GEM_AMERTINE:
+                    item_pointer->data.name = "Amertine";
+                break;
+                case ITEM_GEM_AQUAMARINE:
+                    item_pointer->data.name = "Aquamarine";
+                break;
+                case ITEM_GEM_JADE:
+                    item_pointer->data.name = "Jade";
+                break;
+                case ITEM_GEM_MORGANITE:
+                    item_pointer->data.name = "Morganite";
+                break;
                 default:
                     item_pointer->data.name = "Gem";
                 break;
