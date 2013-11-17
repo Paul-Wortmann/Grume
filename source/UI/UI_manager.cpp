@@ -738,8 +738,7 @@ void UI_manager_class::render(void)
                                         socket_item_pointer = game.item_manager.add_item(item_pointer->data.socket[socket_count].value);
                                         effect_pointer = game.effect_manager.add_effect(socket_item_pointer->data.effect[effect_count].type);
                                         texture_pointer = socket_item_pointer->data.image.level_0;
-                                        texture_pointer->data.render_positioning = TEXTURE_RENDER_DOWN+TEXTURE_RENDER_LEFT;
-                                        game.texture_manager.draw(texture_pointer,false,texture_temp_x,texture_temp_y-texture_background_padding*4.5,UI_form_pointer->data.element[element_number].position.z,texture_background_padding,texture_background_padding);
+                                        game.texture_manager.draw(texture_pointer,false,texture_temp_x+(texture_background_padding/2.0f),texture_temp_y-(texture_background_padding/2.0f),UI_form_pointer->data.element[element_number].position.z,texture_background_padding,texture_background_padding);
                                         if (socket_item_pointer->data.effect[effect_count].value >  0) sign_string = "+";
                                         if (socket_item_pointer->data.effect[effect_count].value == 0) sign_string = " ";
                                         if (socket_item_pointer->data.effect[effect_count].value <  0) sign_string = "-";
@@ -914,8 +913,7 @@ void UI_manager_class::render(void)
                                             int effect_count = 0;
                                             socket_item_pointer = game.item_manager.add_item(item_pointer->data.socket[socket_count].value);
                                             texture_pointer = socket_item_pointer->data.image.level_0;
-                                            texture_pointer->data.render_positioning = TEXTURE_RENDER_DOWN+TEXTURE_RENDER_LEFT;
-                                            game.texture_manager.draw(texture_pointer,false,texture_temp_x,texture_temp_y,UI_form_pointer->data.element[element_number].position.z,texture_background_padding,texture_background_padding);
+                                            game.texture_manager.draw(texture_pointer,false,texture_temp_x+(texture_background_padding/2.0f),texture_temp_y-(texture_background_padding/2.0f),UI_form_pointer->data.element[element_number].position.z,texture_background_padding,texture_background_padding);
                                             effect_pointer = game.effect_manager.add_effect(socket_item_pointer->data.effect[effect_count].type);
                                             if (socket_item_pointer->data.effect[effect_count].value >  0) sign_string = "+";
                                             if (socket_item_pointer->data.effect[effect_count].value == 0) sign_string = " ";
@@ -1387,17 +1385,38 @@ void UI_manager_class::swap_elements(int UI_form_UID_src, int UI_element_src, in
             if   ((item_pointer_dst->data.number_of_item_sockets >= 1) && (item_pointer_src->data.type == ITEM_GEM))
             {
                 bool socket_done = false;
-                for (int socket_count = 0; socket_count < item_pointer_dst->data.number_of_item_sockets; socket_count++)
+                switch (UI_form_UID_dst)
                 {
-                    if ((!socket_done)&&(!item_pointer_dst->data.socket[socket_count].enabled))
-                    {
-                        socket_done = true;
-                        item_pointer_dst->data.socket[socket_count].enabled = true;
-                        item_pointer_dst->data.socket[socket_count].type    = item_pointer_src->data.type;
-                        item_pointer_dst->data.socket[socket_count].value   = item_pointer_src->data.UID;
-                        UI_form_UID_src_pointer->data.element[UI_element_src].quantity = 0;
-                        UI_form_UID_src_pointer->data.element[UI_element_src].value    = ITEM_NONE;
-                    }
+                    case UID_EQUIPMENT:
+                        for (int socket_count = 0; socket_count < item_pointer_dst->data.number_of_item_sockets; socket_count++)
+                        {
+                            if ((!socket_done)&&(!item_pointer_dst->data.socket[socket_count].enabled))
+                            {
+                                socket_done = true;
+                                item_pointer_dst->data.socket[socket_count].enabled = true;
+                                item_pointer_dst->data.socket[socket_count].type    = item_pointer_src->data.type;
+                                item_pointer_dst->data.socket[socket_count].value   = item_pointer_src->data.UID;
+                                UI_form_UID_src_pointer->data.element[UI_element_src].quantity = 0;
+                                UI_form_UID_src_pointer->data.element[UI_element_src].value    = ITEM_NONE;
+                            }
+                        }
+                    break;
+                    case UID_SKILLBOOK:
+                        for (int socket_count = 0; socket_count < item_pointer_dst->data.number_of_item_sockets; socket_count++)
+                        {
+                            if ((!socket_done)&&(!item_pointer_dst->data.socket[socket_count].enabled))
+                            {
+                                socket_done = true;
+                                item_pointer_dst->data.socket[socket_count].enabled = true;
+                                item_pointer_dst->data.socket[socket_count].type    = item_pointer_src->data.type;
+                                item_pointer_dst->data.socket[socket_count].value   = item_pointer_src->data.UID;
+                                UI_form_UID_src_pointer->data.element[UI_element_src].quantity = 0;
+                                UI_form_UID_src_pointer->data.element[UI_element_src].value    = ITEM_NONE;
+                            }
+                        }
+                    break;
+                    default:
+                    break;
                 }
                 if (socket_done) posible_swap = false;
             }
