@@ -1384,39 +1384,56 @@ void UI_manager_class::swap_elements(int UI_form_UID_src, int UI_element_src, in
             }
             if   ((item_pointer_dst->data.number_of_item_sockets >= 1) && (item_pointer_src->data.type == ITEM_GEM))
             {
-                bool socket_done = false;
-                switch (UI_form_UID_dst)
+                bool socket_done  = false;
+                bool socket_allow = false;
+                switch (item_pointer_src->data.sub_type)
                 {
-                    case UID_EQUIPMENT:
-                        for (int socket_count = 0; socket_count < item_pointer_dst->data.number_of_item_sockets; socket_count++)
-                        {
-                            if ((!socket_done)&&(!item_pointer_dst->data.socket[socket_count].enabled))
-                            {
-                                socket_done = true;
-                                item_pointer_dst->data.socket[socket_count].enabled = true;
-                                item_pointer_dst->data.socket[socket_count].type    = item_pointer_src->data.type;
-                                item_pointer_dst->data.socket[socket_count].value   = item_pointer_src->data.UID;
-                                UI_form_UID_src_pointer->data.element[UI_element_src].quantity = 0;
-                                UI_form_UID_src_pointer->data.element[UI_element_src].value    = ITEM_NONE;
-                            }
-                        }
+                    case ITEM_GEM_EMERALD:
+                        if (UI_form_UID_dst == UID_EQUIPMENT) socket_allow = true;
                     break;
-                    case UID_SKILLBOOK:
-                        for (int socket_count = 0; socket_count < item_pointer_dst->data.number_of_item_sockets; socket_count++)
-                        {
-                            if ((!socket_done)&&(!item_pointer_dst->data.socket[socket_count].enabled))
-                            {
-                                socket_done = true;
-                                item_pointer_dst->data.socket[socket_count].enabled = true;
-                                item_pointer_dst->data.socket[socket_count].type    = item_pointer_src->data.type;
-                                item_pointer_dst->data.socket[socket_count].value   = item_pointer_src->data.UID;
-                                UI_form_UID_src_pointer->data.element[UI_element_src].quantity = 0;
-                                UI_form_UID_src_pointer->data.element[UI_element_src].value    = ITEM_NONE;
-                            }
-                        }
+                    case ITEM_GEM_OPAL:
+                        if (UI_form_UID_dst == UID_EQUIPMENT) socket_allow = true;
                     break;
+                    case ITEM_GEM_RUBY:
+                        if (UI_form_UID_dst == UID_EQUIPMENT) socket_allow = true;
+                    break;
+                    case ITEM_GEM_SAPPHIRE:
+                        if (UI_form_UID_dst == UID_EQUIPMENT) socket_allow = true;
+                    break;
+                    case ITEM_GEM_TOPAZ:
+                        if (UI_form_UID_dst == UID_EQUIPMENT) socket_allow = true;
+                    break;
+                    case ITEM_GEM_AMERTINE:
+                        if (UI_form_UID_dst == UID_SKILLBOOK) socket_allow = true;
+                    break;
+                    case ITEM_GEM_AQUAMARINE:
+                        if (UI_form_UID_dst == UID_SKILLBOOK) socket_allow = true;
+                    break;
+                    case ITEM_GEM_JADE:
+                        if (UI_form_UID_dst == UID_SKILLBOOK) socket_allow = true;
+                    break;
+                    case ITEM_GEM_MORGANITE:
+                        if (UI_form_UID_dst == UID_SKILLBOOK) socket_allow = true;
+                    break;
+                    case ITEM_GEM_NONE:
                     default:
+                        socket_allow = false;
                     break;
+                }
+                if (socket_allow)
+                {
+                    for (int socket_count = 0; socket_count < item_pointer_dst->data.number_of_item_sockets; socket_count++)
+                    {
+                        if ((!socket_done)&&(!item_pointer_dst->data.socket[socket_count].enabled))
+                        {
+                            socket_done = true;
+                            item_pointer_dst->data.socket[socket_count].enabled = true;
+                            item_pointer_dst->data.socket[socket_count].type    = item_pointer_src->data.type;
+                            item_pointer_dst->data.socket[socket_count].value   = item_pointer_src->data.UID;
+                            UI_form_UID_src_pointer->data.element[UI_element_src].quantity = 0;
+                            UI_form_UID_src_pointer->data.element[UI_element_src].value    = ITEM_NONE;
+                        }
+                    }
                 }
                 if (socket_done) posible_swap = false;
             }
