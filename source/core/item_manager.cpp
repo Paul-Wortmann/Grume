@@ -2948,7 +2948,7 @@ void  item_manager_class::gen_item_texture(item_type* item_pointer,int item_type
                         item_pointer->data.image.level_0 = game.texture_manager.add_texture("data/textures/UI/icons/gems/gem_5_0.png");
                     if ((quality_level >= (MAX_ITEM_QUALITY*0.2f))&&(quality_level < (MAX_ITEM_QUALITY*0.4f)))
                         item_pointer->data.image.level_0 = game.texture_manager.add_texture("data/textures/UI/icons/gems/gem_5_1.png");
-                if ((quality_level >= (MAX_ITEM_QUALITY*0.4f))&&(quality_level < (MAX_ITEM_QUALITY*0.6f)))
+                    if ((quality_level >= (MAX_ITEM_QUALITY*0.4f))&&(quality_level < (MAX_ITEM_QUALITY*0.6f)))
                         item_pointer->data.image.level_0 = game.texture_manager.add_texture("data/textures/UI/icons/gems/gem_5_2.png");
                     if ((quality_level >= (MAX_ITEM_QUALITY*0.6f))&&(quality_level < (MAX_ITEM_QUALITY*0.8f)))
                         item_pointer->data.image.level_0 = game.texture_manager.add_texture("data/textures/UI/icons/gems/gem_5_3.png");
@@ -2956,7 +2956,6 @@ void  item_manager_class::gen_item_texture(item_type* item_pointer,int item_type
                         item_pointer->data.image.level_0 = game.texture_manager.add_texture("data/textures/UI/icons/gems/gem_5_4.png");
                 break;
                 case ITEM_GEM_TOPAZ:
-                default:
                     if (quality_level < (MAX_ITEM_QUALITY*0.2f))
                         item_pointer->data.image.level_0 = game.texture_manager.add_texture("data/textures/UI/icons/gems/gem_9_0.png");
                     if ((quality_level >= (MAX_ITEM_QUALITY*0.2f))&&(quality_level < (MAX_ITEM_QUALITY*0.4f)))
@@ -2967,6 +2966,39 @@ void  item_manager_class::gen_item_texture(item_type* item_pointer,int item_type
                         item_pointer->data.image.level_0 = game.texture_manager.add_texture("data/textures/UI/icons/gems/gem_9_3.png");
                     if (quality_level >= (MAX_ITEM_QUALITY*0.8f))
                         item_pointer->data.image.level_0 = game.texture_manager.add_texture("data/textures/UI/icons/gems/gem_9_4.png");
+                break;
+                case ITEM_GEM_AMERTINE:
+                    if (quality_level < (MAX_ITEM_QUALITY*0.33f))
+                        item_pointer->data.image.level_0 = game.texture_manager.add_texture("data/textures/UI/icons/gems/gem_0_0.png");
+                    if ((quality_level >= (MAX_ITEM_QUALITY*0.33f))&&(quality_level < (MAX_ITEM_QUALITY*0.66f)))
+                        item_pointer->data.image.level_0 = game.texture_manager.add_texture("data/textures/UI/icons/gems/gem_0_1.png");
+                    if (quality_level >= (MAX_ITEM_QUALITY*0.66f))
+                        item_pointer->data.image.level_0 = game.texture_manager.add_texture("data/textures/UI/icons/gems/gem_0_2.png");
+                break;
+                case ITEM_GEM_AQUAMARINE:
+                    if (quality_level < (MAX_ITEM_QUALITY*0.33f))
+                        item_pointer->data.image.level_0 = game.texture_manager.add_texture("data/textures/UI/icons/gems/gem_1_0.png");
+                    if ((quality_level >= (MAX_ITEM_QUALITY*0.33f))&&(quality_level < (MAX_ITEM_QUALITY*0.66f)))
+                        item_pointer->data.image.level_0 = game.texture_manager.add_texture("data/textures/UI/icons/gems/gem_1_1.png");
+                    if (quality_level >= (MAX_ITEM_QUALITY*0.66f))
+                        item_pointer->data.image.level_0 = game.texture_manager.add_texture("data/textures/UI/icons/gems/gem_1_2.png");
+                break;
+                case ITEM_GEM_JADE:
+                    if (quality_level < (MAX_ITEM_QUALITY*0.33f))
+                        item_pointer->data.image.level_0 = game.texture_manager.add_texture("data/textures/UI/icons/gems/gem_2_0.png");
+                    if ((quality_level >= (MAX_ITEM_QUALITY*0.33f))&&(quality_level < (MAX_ITEM_QUALITY*0.66f)))
+                        item_pointer->data.image.level_0 = game.texture_manager.add_texture("data/textures/UI/icons/gems/gem_2_1.png");
+                    if (quality_level >= (MAX_ITEM_QUALITY*0.66f))
+                        item_pointer->data.image.level_0 = game.texture_manager.add_texture("data/textures/UI/icons/gems/gem_2_2.png");
+                break;
+                case ITEM_GEM_MORGANITE:
+                default:
+                    if (quality_level < (MAX_ITEM_QUALITY*0.33f))
+                        item_pointer->data.image.level_0 = game.texture_manager.add_texture("data/textures/UI/icons/gems/gem_3_0.png");
+                    if ((quality_level >= (MAX_ITEM_QUALITY*0.33f))&&(quality_level < (MAX_ITEM_QUALITY*0.66f)))
+                        item_pointer->data.image.level_0 = game.texture_manager.add_texture("data/textures/UI/icons/gems/gem_3_1.png");
+                    if (quality_level >= (MAX_ITEM_QUALITY*0.66f))
+                        item_pointer->data.image.level_0 = game.texture_manager.add_texture("data/textures/UI/icons/gems/gem_3_2.png");
                 break;
             }
         break;
