@@ -20,14 +20,22 @@ Starting Game...
  
 # ---------------------------------------------- #
  
+Unable to process event - 1301 - UID - 3
+Unable to process event - 1301 - UID - 3
+Unable to process event - 1301 - UID - 3
+Unable to process event - 1301 - UID - 3
+Unable to process event - 1301 - UID - 3
+Unable to process event - 1301 - UID - 3
+Unable to process event - 1301 - UID - 3
+Unable to process event - 1301 - UID - 3
  
 # ---------------------------------------------- #
  
 Font    count -> 1
 Music   count -> 1
 Sound   count -> 13
-Texture count -> 212
-Item    count -> 56
+Texture count -> 342
+Item    count -> 57
 Effect  count -> 46
  
 # ---------------------------------------------- #
