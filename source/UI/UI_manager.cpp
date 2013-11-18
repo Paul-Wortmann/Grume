@@ -1388,19 +1388,19 @@ void UI_manager_class::swap_elements(int UI_form_UID_src, int UI_element_src, in
                 switch (item_pointer_src->data.sub_type)
                 {
                     case ITEM_GEM_EMERALD:
-                        if (UI_form_UID_dst == UID_EQUIPMENT) socket_allow = true;
+                        if ((UI_form_UID_dst == UID_EQUIPMENT) || (UI_form_UID_dst == UID_INVENTORY)) socket_allow = true;
                     break;
                     case ITEM_GEM_OPAL:
-                        if (UI_form_UID_dst == UID_EQUIPMENT) socket_allow = true;
+                        if ((UI_form_UID_dst == UID_EQUIPMENT) || (UI_form_UID_dst == UID_INVENTORY)) socket_allow = true;
                     break;
                     case ITEM_GEM_RUBY:
-                        if (UI_form_UID_dst == UID_EQUIPMENT) socket_allow = true;
+                        if ((UI_form_UID_dst == UID_EQUIPMENT) || (UI_form_UID_dst == UID_INVENTORY)) socket_allow = true;
                     break;
                     case ITEM_GEM_SAPPHIRE:
-                        if (UI_form_UID_dst == UID_EQUIPMENT) socket_allow = true;
+                        if ((UI_form_UID_dst == UID_EQUIPMENT) || (UI_form_UID_dst == UID_INVENTORY)) socket_allow = true;
                     break;
                     case ITEM_GEM_TOPAZ:
-                        if (UI_form_UID_dst == UID_EQUIPMENT) socket_allow = true;
+                        if ((UI_form_UID_dst == UID_EQUIPMENT) || (UI_form_UID_dst == UID_INVENTORY)) socket_allow = true;
                     break;
                     case ITEM_GEM_AMERTINE:
                         if (UI_form_UID_dst == UID_SKILLBOOK) socket_allow = true;
