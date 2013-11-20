@@ -30,7 +30,7 @@
 extern game_class    game;
 
 Uint32                   colorkey;
-SDL_Surface             *application_icon_surface;
+SDL_Surface*             application_icon_surface;
 
 // --------------------------------------------------------------------------------------------------------------------------
 // | Main()
