@@ -351,7 +351,12 @@ void process_character_window(UI_form_struct *UI_form_pointer)
     UI_form_pointer->data.event.id = EVENT_NONE;
 };
 
+/* --- note ---
 
+edit character window, indent blocks to hold specific data, ie:
+block 1 -> basic 3, Str, Int, Dex
+block 2 -> damage, fire, ice, poison etc...
+block 3 -> resistances - fire, ice, elec etc...
+block 4 -> misc -  magic / gold find etc...
 
-
-
+-----------------*/
