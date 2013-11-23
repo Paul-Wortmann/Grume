@@ -185,10 +185,10 @@ void setup_character_window(int UID)
     UI_form_pointer->data.element[element_number].zoom.enabled                = false;
     UI_form_pointer->data.element[element_number].tooltip.enabled             = false;
     UI_form_pointer->data.element[element_number].color                       = UI_form_pointer->data.color;
-    UI_form_pointer->data.element[element_number].size.x                      = 0.124f;
+    UI_form_pointer->data.element[element_number].size.x                      = 0.128f;
     UI_form_pointer->data.element[element_number].size.y                      = UI_form_pointer->data.element[element_number].size.x*1.5f;
-    UI_form_pointer->data.element[element_number].position.x                  = UI_form_pointer->data.position.x-(UI_form_pointer->data.size.x / 3.78f);
-    UI_form_pointer->data.element[element_number].position.y                  = UI_form_pointer->data.position.y+(UI_form_pointer->data.size.y / 4.10f);
+    UI_form_pointer->data.element[element_number].position.x                  = UI_form_pointer->data.position.x-(UI_form_pointer->data.size.x / 3.59f);
+    UI_form_pointer->data.element[element_number].position.y                  = UI_form_pointer->data.position.y+(UI_form_pointer->data.size.y / 3.97f);
     UI_form_pointer->data.element[element_number].texture.normal              = game.texture_manager.add_texture("data/textures/UI/menu/character_portrait_frame.png");
     UI_form_pointer->data.element[element_number].texture.highlighted         = game.texture_manager.add_texture("data/textures/UI/menu/character_portrait_frame.png");
     UI_form_pointer->data.element[element_number].sound                       = UI_form_pointer->data.sound;
@@ -223,7 +223,7 @@ void setup_character_window(int UID)
     game.texture_manager.load_string(UI_form_pointer->data.element[element_number].title.text,game.font_manager.root,"Level: ",0.75f,255,255,255,255,TEXTURE_RENDER_LEFT);
     UI_form_pointer->data.element[element_number].title.enabled               = true;
     UI_form_pointer->data.element[element_number].title.position.x            = UI_form_pointer->data.position.x - (UI_form_pointer->data.size.x * 0.1f);
-    UI_form_pointer->data.element[element_number].title.position.y            = UI_form_pointer->data.position.y + (UI_form_pointer->data.size.y * 0.28f);
+    UI_form_pointer->data.element[element_number].title.position.y            = UI_form_pointer->data.position.y + (UI_form_pointer->data.size.y * 0.30f);
     UI_form_pointer->data.element[element_number].active                      = true;
     UI_form_pointer->data.element[element_number].click_enabled               = false;
     UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_TEXTLABEL;
@@ -243,7 +243,7 @@ void setup_character_window(int UID)
     game.texture_manager.load_string(UI_form_pointer->data.element[element_number].title.text,game.font_manager.root,"Exp: ",0.75f,255,255,255,255,TEXTURE_RENDER_LEFT);
     UI_form_pointer->data.element[element_number].title.enabled               = true;
     UI_form_pointer->data.element[element_number].title.position.x            = UI_form_pointer->data.position.x - (UI_form_pointer->data.size.x * 0.1f);
-    UI_form_pointer->data.element[element_number].title.position.y            = UI_form_pointer->data.position.y + (UI_form_pointer->data.size.y * 0.24f);
+    UI_form_pointer->data.element[element_number].title.position.y            = UI_form_pointer->data.position.y + (UI_form_pointer->data.size.y * 0.28f);
     UI_form_pointer->data.element[element_number].active                      = true;
     UI_form_pointer->data.element[element_number].click_enabled               = false;
     UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_TEXTLABEL;
@@ -263,7 +263,7 @@ void setup_character_window(int UID)
     game.texture_manager.load_string(UI_form_pointer->data.element[element_number].title.text,game.font_manager.root,"Next: ",0.75f,255,255,255,255,TEXTURE_RENDER_LEFT);
     UI_form_pointer->data.element[element_number].title.enabled               = true;
     UI_form_pointer->data.element[element_number].title.position.x            = UI_form_pointer->data.position.x - (UI_form_pointer->data.size.x * 0.1f);
-    UI_form_pointer->data.element[element_number].title.position.y            = UI_form_pointer->data.position.y + (UI_form_pointer->data.size.y * 0.20f);
+    UI_form_pointer->data.element[element_number].title.position.y            = UI_form_pointer->data.position.y + (UI_form_pointer->data.size.y * 0.26f);
     UI_form_pointer->data.element[element_number].active                      = true;
     UI_form_pointer->data.element[element_number].click_enabled               = false;
     UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_TEXTLABEL;
@@ -282,8 +282,8 @@ void setup_character_window(int UID)
     UI_form_pointer->data.element[element_number].title.text                  = new texture_type;
     game.texture_manager.load_string(UI_form_pointer->data.element[element_number].title.text,game.font_manager.root,"Strength: ",0.75f,255,255,255,255,TEXTURE_RENDER_LEFT);
     UI_form_pointer->data.element[element_number].title.enabled               = true;
-    UI_form_pointer->data.element[element_number].title.position.x            = UI_form_pointer->data.position.x - (UI_form_pointer->data.size.x * 0.38f);
-    UI_form_pointer->data.element[element_number].title.position.y            = UI_form_pointer->data.position.y + (UI_form_pointer->data.size.y * 0.14f);
+    UI_form_pointer->data.element[element_number].title.position.x            = UI_form_pointer->data.position.x - (UI_form_pointer->data.size.x * 0.1f);
+    UI_form_pointer->data.element[element_number].title.position.y            = UI_form_pointer->data.position.y + (UI_form_pointer->data.size.y * 0.24f);
     UI_form_pointer->data.element[element_number].active                      = true;
     UI_form_pointer->data.element[element_number].click_enabled               = false;
     UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_TEXTLABEL;
@@ -302,8 +302,8 @@ void setup_character_window(int UID)
     UI_form_pointer->data.element[element_number].title.text                  = new texture_type;
     game.texture_manager.load_string(UI_form_pointer->data.element[element_number].title.text,game.font_manager.root,"Intellect: ",0.75f,255,255,255,255,TEXTURE_RENDER_LEFT);
     UI_form_pointer->data.element[element_number].title.enabled               = true;
-    UI_form_pointer->data.element[element_number].title.position.x            = UI_form_pointer->data.position.x - (UI_form_pointer->data.size.x * 0.38f);
-    UI_form_pointer->data.element[element_number].title.position.y            = UI_form_pointer->data.position.y + (UI_form_pointer->data.size.y * 0.12f);
+    UI_form_pointer->data.element[element_number].title.position.x            = UI_form_pointer->data.position.x - (UI_form_pointer->data.size.x * 0.1f);
+    UI_form_pointer->data.element[element_number].title.position.y            = UI_form_pointer->data.position.y + (UI_form_pointer->data.size.y * 0.22f);
     UI_form_pointer->data.element[element_number].active                      = true;
     UI_form_pointer->data.element[element_number].click_enabled               = false;
     UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_TEXTLABEL;
@@ -322,8 +322,8 @@ void setup_character_window(int UID)
     UI_form_pointer->data.element[element_number].title.text                  = new texture_type;
     game.texture_manager.load_string(UI_form_pointer->data.element[element_number].title.text,game.font_manager.root,"Dexterity: ",0.75f,255,255,255,255,TEXTURE_RENDER_LEFT);
     UI_form_pointer->data.element[element_number].title.enabled               = true;
-    UI_form_pointer->data.element[element_number].title.position.x            = UI_form_pointer->data.position.x - (UI_form_pointer->data.size.x * 0.38f);
-    UI_form_pointer->data.element[element_number].title.position.y            = UI_form_pointer->data.position.y + (UI_form_pointer->data.size.y * 0.10f);
+    UI_form_pointer->data.element[element_number].title.position.x            = UI_form_pointer->data.position.x - (UI_form_pointer->data.size.x * 0.1f);
+    UI_form_pointer->data.element[element_number].title.position.y            = UI_form_pointer->data.position.y + (UI_form_pointer->data.size.y * 0.20f);
     UI_form_pointer->data.element[element_number].active                      = true;
     UI_form_pointer->data.element[element_number].click_enabled               = false;
     UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_TEXTLABEL;
