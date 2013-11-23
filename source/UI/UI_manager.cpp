@@ -583,7 +583,7 @@ void UI_manager_class::render(void)
                                         game.texture_manager.draw(UI_form_pointer->data.element[element_number].texture.normal,false,UI_form_pointer->data.element[element_number].position.x,UI_form_pointer->data.element[element_number].position.y,UI_form_pointer->data.element[element_number].position.z,UI_form_pointer->data.element[element_number].size.x+zoom_value,UI_form_pointer->data.element[element_number].size.y+zoom_value,UI_form_pointer->data.element[element_number].texture.angle);
                                         if (UI_form_pointer->data.element[element_number].quantity > 1)
                                         {
-                                            UI_form_pointer->data.element[element_number].title.text = new texture_type;
+                                            if (UI_form_pointer->data.element[element_number].title.text == NULL) UI_form_pointer->data.element[element_number].title.text = new texture_type;
                                             float temp_x = UI_form_pointer->data.element[element_number].position.x - (UI_form_pointer->data.element[element_number].size.x/2.5f);
                                             float temp_y = UI_form_pointer->data.element[element_number].position.y - (UI_form_pointer->data.element[element_number].size.y/2.5f);
                                             game.texture_manager.load_string(UI_form_pointer->data.element[element_number].title.text,game.font_manager.root,int_to_string(UI_form_pointer->data.element[element_number].quantity),0.8f,255,255,255,255,TEXTURE_RENDER_LEFT);
