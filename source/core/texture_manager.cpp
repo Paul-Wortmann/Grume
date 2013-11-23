@@ -379,7 +379,7 @@ bool texture_manager_class::load_string(texture_type *texture)
         texture->data.frame_max        = 0;
         texture->data.frame            = new frame_type[texture->data.frame_max+1];
         const char*         write_data = texture->data.text.text_string.c_str();
-        SDL_Color font_color = {texture->data.text.color.b,texture->data.text.color.g,texture->data.text.color.r,texture->data.text.color.a};
+        SDL_Color font_color = {texture->data.text.color.r,texture->data.text.color.g,texture->data.text.color.b,texture->data.text.color.a};
 
         if ((image_surface = TTF_RenderUTF8_Blended(texture->data.text.font->font_data,write_data,font_color)))
         {
