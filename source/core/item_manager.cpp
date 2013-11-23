@@ -563,7 +563,6 @@ int  item_manager_class::gen_item(int item_type_UID, int item_sub_type_UID, int 
                             break;
                         }
                         if ((item_pointer->data.effect[0].enabled) && (item_pointer->data.effect[0].value <= 0)) item_pointer->data.effect[0].value = 1;
-                        if ((item_pointer->data.effect[1].enabled) && (item_pointer->data.effect[1].value <= 0)) item_pointer->data.effect[1].value = 1;
                     break;
                     case ITEM_SPELL_BOOK:
                         {
