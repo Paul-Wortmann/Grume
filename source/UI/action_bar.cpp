@@ -179,6 +179,8 @@ void setup_action_bar(int UID)
     UI_form_pointer->data.element[element_number].position.y                = UI_form_pointer->data.position.y - (UI_form_pointer->data.size.y * 0.38f);
     UI_form_pointer->data.element[element_number].texture.normal            = game.texture_manager.add_texture("data/textures/UI/menu/experience_bar.png");
     UI_form_pointer->data.element[element_number].texture.highlighted       = game.texture_manager.add_texture("data/textures/UI/menu/experience_bar.png");
+    UI_form_pointer->data.element[element_number].texture.normal->data.render_positioning = TEXTURE_RENDER_UP;
+    UI_form_pointer->data.element[element_number].texture.highlighted->data.render_positioning = TEXTURE_RENDER_UP;
     UI_form_pointer->data.element[element_number].sound                     = UI_form_pointer->data.sound;
     UI_form_pointer->data.element[element_number].font                      = UI_form_pointer->data.font;
     UI_form_pointer->data.element[element_number].mouse_delay.maximum       = 30;
