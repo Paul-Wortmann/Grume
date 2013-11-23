@@ -436,6 +436,26 @@ void setup_character_window(int UID)
     UI_form_pointer->data.element[element_number].sound.on_mouse_over.enabled = false;
     UI_form_pointer->data.element[element_number].mouse_delay.maximum         = 30;
     UI_form_pointer->data.element[element_number].font                        = UI_form_pointer->data.font;
+    element_number = 14; //--- Player Damage - lightning ---
+    UI_form_pointer->data.element[element_number].window_UID                  = UI_form_pointer->data.UID;
+    UI_form_pointer->data.element[element_number].element_UID                 = element_number;
+    UI_form_pointer->data.element[element_number].title.text                  = new texture_type;
+    game.texture_manager.load_string(UI_form_pointer->data.element[element_number].title.text,game.font_manager.root,"Lightning Damage: ",0.75f,255,255,127,255,TEXTURE_RENDER_LEFT);
+    UI_form_pointer->data.element[element_number].title.enabled               = true;
+    UI_form_pointer->data.element[element_number].title.position.x            = UI_form_pointer->data.position.x - (UI_form_pointer->data.size.x * 0.38f);
+    UI_form_pointer->data.element[element_number].title.position.y            = UI_form_pointer->data.position.y + (UI_form_pointer->data.size.y * 0.04f);
+    UI_form_pointer->data.element[element_number].active                      = true;
+    UI_form_pointer->data.element[element_number].click_enabled               = false;
+    UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_TEXTLABEL;
+    UI_form_pointer->data.element[element_number].zoom.enabled                = false;
+    UI_form_pointer->data.element[element_number].tooltip.enabled             = false;
+    UI_form_pointer->data.element[element_number].color                       = UI_form_pointer->data.color;
+    UI_form_pointer->data.element[element_number].color.normal                = UI_form_pointer->data.element[element_number].color.highlighted;
+    UI_form_pointer->data.element[element_number].sound                       = UI_form_pointer->data.sound;
+    UI_form_pointer->data.element[element_number].sound.on_click.enabled      = false;
+    UI_form_pointer->data.element[element_number].sound.on_mouse_over.enabled = false;
+    UI_form_pointer->data.element[element_number].mouse_delay.maximum         = 30;
+    UI_form_pointer->data.element[element_number].font                        = UI_form_pointer->data.font;
 };
 
 void update_character_window(UI_form_struct *UI_form_pointer)
@@ -468,14 +488,9 @@ void update_character_window(UI_form_struct *UI_form_pointer)
     game.texture_manager.load_string(UI_form_pointer->data.element[element_number].title.text,game.font_manager.root,"Fire Damage: " + ullint_to_string(game.player.stats.damage_max),0.75f,255,127,127,255,TEXTURE_RENDER_LEFT);
     element_number = 13; //--- Player Damage - Ice ---
     game.texture_manager.load_string(UI_form_pointer->data.element[element_number].title.text,game.font_manager.root,"Ice Damage: " + ullint_to_string(game.player.stats.damage_max),0.75f,127,127,255,255,TEXTURE_RENDER_LEFT);
+    element_number = 14; //--- Player Damage - Lightning ---
+    game.texture_manager.load_string(UI_form_pointer->data.element[element_number].title.text,game.font_manager.root,"Lightning Damage: " + ullint_to_string(game.player.stats.damage_max),0.75f,255,255,127,255,TEXTURE_RENDER_LEFT);
 
-
-/*
-    player_class::stats.damage_min              = 0;
-    player_class::stats.damage_ice              = 0;
-    player_class::stats.damage_fire             = 0;
-    player_class::stats.damage_lightning        = 0;
-*/
 
 };
 
