@@ -87,7 +87,7 @@ void setup_character_window(int UID)
     UI_form_pointer->data.title_bar.position.y        = UI_form_pointer->data.position.y+(UI_form_pointer->data.size.y/2.0f)-(UI_form_pointer->data.title_bar.size.y/2.0f);
 
     // ---------------------------- Setup window elements ----------------------------------------------------
-    UI_form_pointer->data.number_of_elements = 11;
+    UI_form_pointer->data.number_of_elements = 21; // change me / delete me!!!!!!!
     UI_form_pointer->data.element = new UI_element_struct[UI_form_pointer->data.number_of_elements];
     for (int element_count = 0; element_count < UI_form_pointer->data.number_of_elements; element_count++)
     {
@@ -336,6 +336,26 @@ void setup_character_window(int UID)
     UI_form_pointer->data.element[element_number].sound.on_mouse_over.enabled = false;
     UI_form_pointer->data.element[element_number].mouse_delay.maximum         = 30;
     UI_form_pointer->data.element[element_number].font                        = UI_form_pointer->data.font;
+    element_number = 9; //--- Player Damage ---
+    UI_form_pointer->data.element[element_number].window_UID                  = UI_form_pointer->data.UID;
+    UI_form_pointer->data.element[element_number].element_UID                 = element_number;
+    UI_form_pointer->data.element[element_number].title.text                  = new texture_type;
+    game.texture_manager.load_string(UI_form_pointer->data.element[element_number].title.text,game.font_manager.root,"Damage: ",0.75f,255,255,255,255,TEXTURE_RENDER_LEFT);
+    UI_form_pointer->data.element[element_number].title.enabled               = true;
+    UI_form_pointer->data.element[element_number].title.position.x            = UI_form_pointer->data.position.x - (UI_form_pointer->data.size.x * 0.38f);
+    UI_form_pointer->data.element[element_number].title.position.y            = UI_form_pointer->data.position.y + (UI_form_pointer->data.size.y * 0.14f);
+    UI_form_pointer->data.element[element_number].active                      = true;
+    UI_form_pointer->data.element[element_number].click_enabled               = false;
+    UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_TEXTLABEL;
+    UI_form_pointer->data.element[element_number].zoom.enabled                = false;
+    UI_form_pointer->data.element[element_number].tooltip.enabled             = false;
+    UI_form_pointer->data.element[element_number].color                       = UI_form_pointer->data.color;
+    UI_form_pointer->data.element[element_number].color.normal                = UI_form_pointer->data.element[element_number].color.highlighted;
+    UI_form_pointer->data.element[element_number].sound                       = UI_form_pointer->data.sound;
+    UI_form_pointer->data.element[element_number].sound.on_click.enabled      = false;
+    UI_form_pointer->data.element[element_number].sound.on_mouse_over.enabled = false;
+    UI_form_pointer->data.element[element_number].mouse_delay.maximum         = 30;
+    UI_form_pointer->data.element[element_number].font                        = UI_form_pointer->data.font;
 };
 
 void update_character_window(UI_form_struct *UI_form_pointer)
@@ -357,6 +377,19 @@ void update_character_window(UI_form_struct *UI_form_pointer)
     game.texture_manager.load_string(UI_form_pointer->data.element[element_number].title.text,game.font_manager.root,"Intellect: " + ullint_to_string(game.player.stats.intellect),0.75f,255,255,255,255,TEXTURE_RENDER_LEFT);
     element_number = 8; //--- Player Dexterity ---
     game.texture_manager.load_string(UI_form_pointer->data.element[element_number].title.text,game.font_manager.root,"Dexterity: " + ullint_to_string(game.player.stats.dexterity),0.75f,255,255,255,255,TEXTURE_RENDER_LEFT);
+
+    element_number = 9; //--- Player Damage ---
+    game.texture_manager.load_string(UI_form_pointer->data.element[element_number].title.text,game.font_manager.root,"Damage: " + ullint_to_string(game.player.stats.damage),0.75f,255,255,255,255,TEXTURE_RENDER_LEFT);
+
+/*
+    player_class::stats.damage                  = 0;
+    player_class::stats.damage_max              = 0;
+    player_class::stats.damage_min              = 0;
+    player_class::stats.damage_ice              = 0;
+    player_class::stats.damage_fire             = 0;
+    player_class::stats.damage_lightning        = 0;
+*/
+
 };
 
 void process_character_window(UI_form_struct *UI_form_pointer)
