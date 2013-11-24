@@ -336,11 +336,11 @@ void setup_character_window(int UID)
     UI_form_pointer->data.element[element_number].sound.on_mouse_over.enabled = false;
     UI_form_pointer->data.element[element_number].mouse_delay.maximum         = 30;
     UI_form_pointer->data.element[element_number].font                        = UI_form_pointer->data.font;
-    element_number = 9; //--- Player Damage ---
+    element_number = 9; //--- Damage Label---
     UI_form_pointer->data.element[element_number].window_UID                  = UI_form_pointer->data.UID;
     UI_form_pointer->data.element[element_number].element_UID                 = element_number;
     UI_form_pointer->data.element[element_number].title.text                  = new texture_type;
-    game.texture_manager.load_string(UI_form_pointer->data.element[element_number].title.text,game.font_manager.root,"Damage: ",0.75f,255,255,255,255,TEXTURE_RENDER_LEFT);
+    game.texture_manager.load_string(UI_form_pointer->data.element[element_number].title.text,game.font_manager.root,"Damage:",1.0f,255,255,255,255,TEXTURE_RENDER_LEFT);
     UI_form_pointer->data.element[element_number].title.enabled               = true;
     UI_form_pointer->data.element[element_number].title.position.x            = UI_form_pointer->data.position.x - (UI_form_pointer->data.size.x * 0.38f);
     UI_form_pointer->data.element[element_number].title.position.y            = UI_form_pointer->data.position.y + (UI_form_pointer->data.size.y * 0.14f);
@@ -356,31 +356,11 @@ void setup_character_window(int UID)
     UI_form_pointer->data.element[element_number].sound.on_mouse_over.enabled = false;
     UI_form_pointer->data.element[element_number].mouse_delay.maximum         = 30;
     UI_form_pointer->data.element[element_number].font                        = UI_form_pointer->data.font;
-    element_number = 10; //--- Player Damage - max ---
+    element_number = 10; //--- Player Damage ---
     UI_form_pointer->data.element[element_number].window_UID                  = UI_form_pointer->data.UID;
     UI_form_pointer->data.element[element_number].element_UID                 = element_number;
     UI_form_pointer->data.element[element_number].title.text                  = new texture_type;
-    game.texture_manager.load_string(UI_form_pointer->data.element[element_number].title.text,game.font_manager.root,"Max Damage: ",0.75f,255,255,255,255,TEXTURE_RENDER_LEFT);
-    UI_form_pointer->data.element[element_number].title.enabled               = true;
-    UI_form_pointer->data.element[element_number].title.position.x            = UI_form_pointer->data.position.x - (UI_form_pointer->data.size.x * 0.38f);
-    UI_form_pointer->data.element[element_number].title.position.y            = UI_form_pointer->data.position.y + (UI_form_pointer->data.size.y * 0.12f);
-    UI_form_pointer->data.element[element_number].active                      = true;
-    UI_form_pointer->data.element[element_number].click_enabled               = false;
-    UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_TEXTLABEL;
-    UI_form_pointer->data.element[element_number].zoom.enabled                = false;
-    UI_form_pointer->data.element[element_number].tooltip.enabled             = false;
-    UI_form_pointer->data.element[element_number].color                       = UI_form_pointer->data.color;
-    UI_form_pointer->data.element[element_number].color.normal                = UI_form_pointer->data.element[element_number].color.highlighted;
-    UI_form_pointer->data.element[element_number].sound                       = UI_form_pointer->data.sound;
-    UI_form_pointer->data.element[element_number].sound.on_click.enabled      = false;
-    UI_form_pointer->data.element[element_number].sound.on_mouse_over.enabled = false;
-    UI_form_pointer->data.element[element_number].mouse_delay.maximum         = 30;
-    UI_form_pointer->data.element[element_number].font                        = UI_form_pointer->data.font;
-    element_number = 11; //--- Player Damage - min ---
-    UI_form_pointer->data.element[element_number].window_UID                  = UI_form_pointer->data.UID;
-    UI_form_pointer->data.element[element_number].element_UID                 = element_number;
-    UI_form_pointer->data.element[element_number].title.text                  = new texture_type;
-    game.texture_manager.load_string(UI_form_pointer->data.element[element_number].title.text,game.font_manager.root,"Min Damage: ",0.75f,255,255,255,255,TEXTURE_RENDER_LEFT);
+    game.texture_manager.load_string(UI_form_pointer->data.element[element_number].title.text,game.font_manager.root,"Damage: ",0.75f,255,255,255,255,TEXTURE_RENDER_LEFT);
     UI_form_pointer->data.element[element_number].title.enabled               = true;
     UI_form_pointer->data.element[element_number].title.position.x            = UI_form_pointer->data.position.x - (UI_form_pointer->data.size.x * 0.38f);
     UI_form_pointer->data.element[element_number].title.position.y            = UI_form_pointer->data.position.y + (UI_form_pointer->data.size.y * 0.10f);
@@ -396,11 +376,11 @@ void setup_character_window(int UID)
     UI_form_pointer->data.element[element_number].sound.on_mouse_over.enabled = false;
     UI_form_pointer->data.element[element_number].mouse_delay.maximum         = 30;
     UI_form_pointer->data.element[element_number].font                        = UI_form_pointer->data.font;
-    element_number = 12; //--- Player Damage - fire ---
+    element_number = 11; //--- Player Damage - max ---
     UI_form_pointer->data.element[element_number].window_UID                  = UI_form_pointer->data.UID;
     UI_form_pointer->data.element[element_number].element_UID                 = element_number;
     UI_form_pointer->data.element[element_number].title.text                  = new texture_type;
-    game.texture_manager.load_string(UI_form_pointer->data.element[element_number].title.text,game.font_manager.root,"Fire Damage: ",0.75f,255,127,127,255,TEXTURE_RENDER_LEFT);
+    game.texture_manager.load_string(UI_form_pointer->data.element[element_number].title.text,game.font_manager.root,"Max Damage: ",0.75f,255,255,255,255,TEXTURE_RENDER_LEFT);
     UI_form_pointer->data.element[element_number].title.enabled               = true;
     UI_form_pointer->data.element[element_number].title.position.x            = UI_form_pointer->data.position.x - (UI_form_pointer->data.size.x * 0.38f);
     UI_form_pointer->data.element[element_number].title.position.y            = UI_form_pointer->data.position.y + (UI_form_pointer->data.size.y * 0.08f);
@@ -416,11 +396,11 @@ void setup_character_window(int UID)
     UI_form_pointer->data.element[element_number].sound.on_mouse_over.enabled = false;
     UI_form_pointer->data.element[element_number].mouse_delay.maximum         = 30;
     UI_form_pointer->data.element[element_number].font                        = UI_form_pointer->data.font;
-    element_number = 13; //--- Player Damage - ice ---
+    element_number = 12; //--- Player Damage - min ---
     UI_form_pointer->data.element[element_number].window_UID                  = UI_form_pointer->data.UID;
     UI_form_pointer->data.element[element_number].element_UID                 = element_number;
     UI_form_pointer->data.element[element_number].title.text                  = new texture_type;
-    game.texture_manager.load_string(UI_form_pointer->data.element[element_number].title.text,game.font_manager.root,"Ice Damage: ",0.75f,127,127,255,255,TEXTURE_RENDER_LEFT);
+    game.texture_manager.load_string(UI_form_pointer->data.element[element_number].title.text,game.font_manager.root,"Min Damage: ",0.75f,255,255,255,255,TEXTURE_RENDER_LEFT);
     UI_form_pointer->data.element[element_number].title.enabled               = true;
     UI_form_pointer->data.element[element_number].title.position.x            = UI_form_pointer->data.position.x - (UI_form_pointer->data.size.x * 0.38f);
     UI_form_pointer->data.element[element_number].title.position.y            = UI_form_pointer->data.position.y + (UI_form_pointer->data.size.y * 0.06f);
@@ -436,11 +416,11 @@ void setup_character_window(int UID)
     UI_form_pointer->data.element[element_number].sound.on_mouse_over.enabled = false;
     UI_form_pointer->data.element[element_number].mouse_delay.maximum         = 30;
     UI_form_pointer->data.element[element_number].font                        = UI_form_pointer->data.font;
-    element_number = 14; //--- Player Damage - lightning ---
+    element_number = 13; //--- Player Damage - fire ---
     UI_form_pointer->data.element[element_number].window_UID                  = UI_form_pointer->data.UID;
     UI_form_pointer->data.element[element_number].element_UID                 = element_number;
     UI_form_pointer->data.element[element_number].title.text                  = new texture_type;
-    game.texture_manager.load_string(UI_form_pointer->data.element[element_number].title.text,game.font_manager.root,"Lightning Damage: ",0.75f,255,255,127,255,TEXTURE_RENDER_LEFT);
+    game.texture_manager.load_string(UI_form_pointer->data.element[element_number].title.text,game.font_manager.root,"Fire Damage: ",0.75f,255,127,127,255,TEXTURE_RENDER_LEFT);
     UI_form_pointer->data.element[element_number].title.enabled               = true;
     UI_form_pointer->data.element[element_number].title.position.x            = UI_form_pointer->data.position.x - (UI_form_pointer->data.size.x * 0.38f);
     UI_form_pointer->data.element[element_number].title.position.y            = UI_form_pointer->data.position.y + (UI_form_pointer->data.size.y * 0.04f);
@@ -456,15 +436,95 @@ void setup_character_window(int UID)
     UI_form_pointer->data.element[element_number].sound.on_mouse_over.enabled = false;
     UI_form_pointer->data.element[element_number].mouse_delay.maximum         = 30;
     UI_form_pointer->data.element[element_number].font                        = UI_form_pointer->data.font;
-
-    element_number = 15; //--- Player armor ---
+    element_number = 14; //--- Player Damage - ice ---
     UI_form_pointer->data.element[element_number].window_UID                  = UI_form_pointer->data.UID;
     UI_form_pointer->data.element[element_number].element_UID                 = element_number;
     UI_form_pointer->data.element[element_number].title.text                  = new texture_type;
-    game.texture_manager.load_string(UI_form_pointer->data.element[element_number].title.text,game.font_manager.root,"Armor: " + ullint_to_string(game.player.stats.damage),0.75f,255,255,255,255,TEXTURE_RENDER_LEFT);
+    game.texture_manager.load_string(UI_form_pointer->data.element[element_number].title.text,game.font_manager.root,"Ice Damage: ",0.75f,127,127,255,255,TEXTURE_RENDER_LEFT);
+    UI_form_pointer->data.element[element_number].title.enabled               = true;
+    UI_form_pointer->data.element[element_number].title.position.x            = UI_form_pointer->data.position.x - (UI_form_pointer->data.size.x * 0.38f);
+    UI_form_pointer->data.element[element_number].title.position.y            = UI_form_pointer->data.position.y + (UI_form_pointer->data.size.y * 0.02f);
+    UI_form_pointer->data.element[element_number].active                      = true;
+    UI_form_pointer->data.element[element_number].click_enabled               = false;
+    UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_TEXTLABEL;
+    UI_form_pointer->data.element[element_number].zoom.enabled                = false;
+    UI_form_pointer->data.element[element_number].tooltip.enabled             = false;
+    UI_form_pointer->data.element[element_number].color                       = UI_form_pointer->data.color;
+    UI_form_pointer->data.element[element_number].color.normal                = UI_form_pointer->data.element[element_number].color.highlighted;
+    UI_form_pointer->data.element[element_number].sound                       = UI_form_pointer->data.sound;
+    UI_form_pointer->data.element[element_number].sound.on_click.enabled      = false;
+    UI_form_pointer->data.element[element_number].sound.on_mouse_over.enabled = false;
+    UI_form_pointer->data.element[element_number].mouse_delay.maximum         = 30;
+    UI_form_pointer->data.element[element_number].font                        = UI_form_pointer->data.font;
+    element_number = 15; //--- Player Damage - lightning ---
+    UI_form_pointer->data.element[element_number].window_UID                  = UI_form_pointer->data.UID;
+    UI_form_pointer->data.element[element_number].element_UID                 = element_number;
+    UI_form_pointer->data.element[element_number].title.text                  = new texture_type;
+    game.texture_manager.load_string(UI_form_pointer->data.element[element_number].title.text,game.font_manager.root,"Lightning Damage: ",0.75f,255,255,127,255,TEXTURE_RENDER_LEFT);
+    UI_form_pointer->data.element[element_number].title.enabled               = true;
+    UI_form_pointer->data.element[element_number].title.position.x            = UI_form_pointer->data.position.x - (UI_form_pointer->data.size.x * 0.38f);
+    UI_form_pointer->data.element[element_number].title.position.y            = UI_form_pointer->data.position.y + (UI_form_pointer->data.size.y * 0.00f);
+    UI_form_pointer->data.element[element_number].active                      = true;
+    UI_form_pointer->data.element[element_number].click_enabled               = false;
+    UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_TEXTLABEL;
+    UI_form_pointer->data.element[element_number].zoom.enabled                = false;
+    UI_form_pointer->data.element[element_number].tooltip.enabled             = false;
+    UI_form_pointer->data.element[element_number].color                       = UI_form_pointer->data.color;
+    UI_form_pointer->data.element[element_number].color.normal                = UI_form_pointer->data.element[element_number].color.highlighted;
+    UI_form_pointer->data.element[element_number].sound                       = UI_form_pointer->data.sound;
+    UI_form_pointer->data.element[element_number].sound.on_click.enabled      = false;
+    UI_form_pointer->data.element[element_number].sound.on_mouse_over.enabled = false;
+    UI_form_pointer->data.element[element_number].mouse_delay.maximum         = 30;
+    UI_form_pointer->data.element[element_number].font                        = UI_form_pointer->data.font;
+
+    element_number = 16; //--- Armor / Resistance Label---
+    UI_form_pointer->data.element[element_number].window_UID                  = UI_form_pointer->data.UID;
+    UI_form_pointer->data.element[element_number].element_UID                 = element_number;
+    UI_form_pointer->data.element[element_number].title.text                  = new texture_type;
+    game.texture_manager.load_string(UI_form_pointer->data.element[element_number].title.text,game.font_manager.root,"Resistances:",1.0f,255,255,255,255,TEXTURE_RENDER_LEFT);
     UI_form_pointer->data.element[element_number].title.enabled               = true;
     UI_form_pointer->data.element[element_number].title.position.x            = UI_form_pointer->data.position.x + (UI_form_pointer->data.size.x * 0.036f);
     UI_form_pointer->data.element[element_number].title.position.y            = UI_form_pointer->data.position.y + (UI_form_pointer->data.size.y * 0.14f);
+    UI_form_pointer->data.element[element_number].active                      = true;
+    UI_form_pointer->data.element[element_number].click_enabled               = false;
+    UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_TEXTLABEL;
+    UI_form_pointer->data.element[element_number].zoom.enabled                = false;
+    UI_form_pointer->data.element[element_number].tooltip.enabled             = false;
+    UI_form_pointer->data.element[element_number].color                       = UI_form_pointer->data.color;
+    UI_form_pointer->data.element[element_number].color.normal                = UI_form_pointer->data.element[element_number].color.highlighted;
+    UI_form_pointer->data.element[element_number].sound                       = UI_form_pointer->data.sound;
+    UI_form_pointer->data.element[element_number].sound.on_click.enabled      = false;
+    UI_form_pointer->data.element[element_number].sound.on_mouse_over.enabled = false;
+    UI_form_pointer->data.element[element_number].mouse_delay.maximum         = 30;
+    UI_form_pointer->data.element[element_number].font                        = UI_form_pointer->data.font;
+    element_number = 17; //--- Player armor ---
+    UI_form_pointer->data.element[element_number].window_UID                  = UI_form_pointer->data.UID;
+    UI_form_pointer->data.element[element_number].element_UID                 = element_number;
+    UI_form_pointer->data.element[element_number].title.text                  = new texture_type;
+    game.texture_manager.load_string(UI_form_pointer->data.element[element_number].title.text,game.font_manager.root,"Armor: " + ullint_to_string(game.player.stats.armor),0.75f,255,255,255,255,TEXTURE_RENDER_LEFT);
+    UI_form_pointer->data.element[element_number].title.enabled               = true;
+    UI_form_pointer->data.element[element_number].title.position.x            = UI_form_pointer->data.position.x + (UI_form_pointer->data.size.x * 0.036f);
+    UI_form_pointer->data.element[element_number].title.position.y            = UI_form_pointer->data.position.y + (UI_form_pointer->data.size.y * 0.10f);
+    UI_form_pointer->data.element[element_number].active                      = true;
+    UI_form_pointer->data.element[element_number].click_enabled               = false;
+    UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_TEXTLABEL;
+    UI_form_pointer->data.element[element_number].zoom.enabled                = false;
+    UI_form_pointer->data.element[element_number].tooltip.enabled             = false;
+    UI_form_pointer->data.element[element_number].color                       = UI_form_pointer->data.color;
+    UI_form_pointer->data.element[element_number].color.normal                = UI_form_pointer->data.element[element_number].color.highlighted;
+    UI_form_pointer->data.element[element_number].sound                       = UI_form_pointer->data.sound;
+    UI_form_pointer->data.element[element_number].sound.on_click.enabled      = false;
+    UI_form_pointer->data.element[element_number].sound.on_mouse_over.enabled = false;
+    UI_form_pointer->data.element[element_number].mouse_delay.maximum         = 30;
+    UI_form_pointer->data.element[element_number].font                        = UI_form_pointer->data.font;
+    element_number = 18; //--- Player resistance - physical ---
+    UI_form_pointer->data.element[element_number].window_UID                  = UI_form_pointer->data.UID;
+    UI_form_pointer->data.element[element_number].element_UID                 = element_number;
+    UI_form_pointer->data.element[element_number].title.text                  = new texture_type;
+    game.texture_manager.load_string(UI_form_pointer->data.element[element_number].title.text,game.font_manager.root,"Physical: " + ullint_to_string(game.player.stats.resist_physical),0.75f,255,255,255,255,TEXTURE_RENDER_LEFT);
+    UI_form_pointer->data.element[element_number].title.enabled               = true;
+    UI_form_pointer->data.element[element_number].title.position.x            = UI_form_pointer->data.position.x + (UI_form_pointer->data.size.x * 0.036f);
+    UI_form_pointer->data.element[element_number].title.position.y            = UI_form_pointer->data.position.y + (UI_form_pointer->data.size.y * 0.08f);
     UI_form_pointer->data.element[element_number].active                      = true;
     UI_form_pointer->data.element[element_number].click_enabled               = false;
     UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_TEXTLABEL;
@@ -501,21 +561,23 @@ void update_character_window(UI_form_struct *UI_form_pointer)
     element_number = 8; //--- Player Dexterity ---
     game.texture_manager.load_string(UI_form_pointer->data.element[element_number].title.text,game.font_manager.root,"Dexterity: " + ullint_to_string(game.player.stats.dexterity),0.75f,255,255,255,255,TEXTURE_RENDER_LEFT);
 
-    element_number = 9; //--- Player Damage ---
+    element_number = 10; //--- Player Damage ---
     game.texture_manager.load_string(UI_form_pointer->data.element[element_number].title.text,game.font_manager.root,"Damage: " + ullint_to_string(game.player.stats.damage),0.75f,255,255,255,255,TEXTURE_RENDER_LEFT);
-    element_number = 10; //--- Player Damage - Max ---
-    game.texture_manager.load_string(UI_form_pointer->data.element[element_number].title.text,game.font_manager.root,"Max Damage: " + ullint_to_string(game.player.stats.damage_max),0.75f,255,255,255,255,TEXTURE_RENDER_LEFT);
-    element_number = 11; //--- Player Damage - Min ---
-    game.texture_manager.load_string(UI_form_pointer->data.element[element_number].title.text,game.font_manager.root,"Min Damage: " + ullint_to_string(game.player.stats.damage_max),0.75f,255,255,255,255,TEXTURE_RENDER_LEFT);
-    element_number = 12; //--- Player Damage - Fire ---
-    game.texture_manager.load_string(UI_form_pointer->data.element[element_number].title.text,game.font_manager.root,"Fire Damage: " + ullint_to_string(game.player.stats.damage_max),0.75f,255,127,127,255,TEXTURE_RENDER_LEFT);
-    element_number = 13; //--- Player Damage - Ice ---
-    game.texture_manager.load_string(UI_form_pointer->data.element[element_number].title.text,game.font_manager.root,"Ice Damage: " + ullint_to_string(game.player.stats.damage_max),0.75f,127,127,255,255,TEXTURE_RENDER_LEFT);
-    element_number = 14; //--- Player Damage - Lightning ---
-    game.texture_manager.load_string(UI_form_pointer->data.element[element_number].title.text,game.font_manager.root,"Lightning Damage: " + ullint_to_string(game.player.stats.damage_max),0.75f,255,255,127,255,TEXTURE_RENDER_LEFT);
+    element_number = 11; //--- Player Damage - Max ---
+    game.texture_manager.load_string(UI_form_pointer->data.element[element_number].title.text,game.font_manager.root,"Maximum: " + ullint_to_string(game.player.stats.damage_max),0.75f,255,255,255,255,TEXTURE_RENDER_LEFT);
+    element_number = 12; //--- Player Damage - Min ---
+    game.texture_manager.load_string(UI_form_pointer->data.element[element_number].title.text,game.font_manager.root,"Minimum: " + ullint_to_string(game.player.stats.damage_max),0.75f,255,255,255,255,TEXTURE_RENDER_LEFT);
+    element_number = 13; //--- Player Damage - Fire ---
+    game.texture_manager.load_string(UI_form_pointer->data.element[element_number].title.text,game.font_manager.root,"Fire: " + ullint_to_string(game.player.stats.damage_max),0.75f,255,127,127,255,TEXTURE_RENDER_LEFT);
+    element_number = 14; //--- Player Damage - Ice ---
+    game.texture_manager.load_string(UI_form_pointer->data.element[element_number].title.text,game.font_manager.root,"Ice: " + ullint_to_string(game.player.stats.damage_max),0.75f,127,127,255,255,TEXTURE_RENDER_LEFT);
+    element_number = 15; //--- Player Damage - Lightning ---
+    game.texture_manager.load_string(UI_form_pointer->data.element[element_number].title.text,game.font_manager.root,"Lightning: " + ullint_to_string(game.player.stats.damage_max),0.75f,255,255,127,255,TEXTURE_RENDER_LEFT);
 
-    element_number = 15; //--- Player armor ---
-    game.texture_manager.load_string(UI_form_pointer->data.element[element_number].title.text,game.font_manager.root,"Armor: " + ullint_to_string(game.player.stats.damage),0.75f,255,255,255,255,TEXTURE_RENDER_LEFT);
+    element_number = 17; //--- Player armor ---
+    game.texture_manager.load_string(UI_form_pointer->data.element[element_number].title.text,game.font_manager.root,"Armor: " + ullint_to_string(game.player.stats.armor),0.75f,255,255,255,255,TEXTURE_RENDER_LEFT);
+    element_number = 18; //--- Player resistance - physical---
+    game.texture_manager.load_string(UI_form_pointer->data.element[element_number].title.text,game.font_manager.root,"Physical: " + ullint_to_string(game.player.stats.resist_physical),0.75f,255,255,255,255,TEXTURE_RENDER_LEFT);
 
 //    player_class::stats.armor                   = 0;
 /*
