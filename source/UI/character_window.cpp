@@ -645,12 +645,24 @@ void update_character_window(UI_form_struct *UI_form_pointer)
     element_number = 21; //--- Player resistance - lightning ---
     game.texture_manager.load_string(UI_form_pointer->data.element[element_number].title.text,game.font_manager.root,"Lightning: " + ullint_to_string(game.player.stats.resist_lightning),0.75f,255,255,127,255,TEXTURE_RENDER_LEFT);
 
-//    player_class::stats.armor                   = 0;
 /*
-    player_class::stats.resist_physical         = 0;
-    player_class::stats.resist_ice              = 0;
-    player_class::stats.resist_fire             = 0;
-    player_class::stats.resist_lightning        = 0;
+mana
+health
+
+    int health_hit;
+    int health_kill;
+    int mana_hit;
+    int mana_kill;
+
+
+    int crit_chance;
+    int crit_damage;
+    int movement_speed;
+    int light_radius;
+    int magic_find;
+    int gold_find;
+    int exp_per_kill;
+
 */
 };
 
