@@ -20,16 +20,13 @@ Starting Game...
  
 # ---------------------------------------------- #
  
-Unable to process event - 701 - UID - 7
-Unable to process event - 701 - UID - 7
-Unable to process event - 101 - UID - 7
  
 # ---------------------------------------------- #
  
 Font    count -> 1
 Music   count -> 1
 Sound   count -> 13
-Texture count -> 351
+Texture count -> 312
 Item    count -> 57
 Effect  count -> 46
  
