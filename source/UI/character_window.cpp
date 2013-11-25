@@ -638,6 +638,67 @@ void setup_character_window(int UID)
     UI_form_pointer->data.element[element_number].mouse_delay.maximum         = 30;
     UI_form_pointer->data.element[element_number].font                        = UI_form_pointer->data.font;
 
+    element_number = 24; //--- Player mana ---
+    UI_form_pointer->data.element[element_number].window_UID                  = UI_form_pointer->data.UID;
+    UI_form_pointer->data.element[element_number].element_UID                 = element_number;
+    UI_form_pointer->data.element[element_number].title.text                  = new texture_type;
+    game.texture_manager.load_string(UI_form_pointer->data.element[element_number].title.text,game.font_manager.root,"Mana: ",0.75f,127,127,255,255,TEXTURE_RENDER_LEFT);
+    UI_form_pointer->data.element[element_number].title.enabled               = true;
+    UI_form_pointer->data.element[element_number].title.position.x            = UI_form_pointer->data.position.x - (UI_form_pointer->data.size.x * 0.38f);
+    UI_form_pointer->data.element[element_number].title.position.y            = UI_form_pointer->data.position.y - (UI_form_pointer->data.size.y * 0.14f);
+    UI_form_pointer->data.element[element_number].active                      = true;
+    UI_form_pointer->data.element[element_number].click_enabled               = false;
+    UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_TEXTLABEL;
+    UI_form_pointer->data.element[element_number].zoom.enabled                = false;
+    UI_form_pointer->data.element[element_number].tooltip.enabled             = false;
+    UI_form_pointer->data.element[element_number].color                       = UI_form_pointer->data.color;
+    UI_form_pointer->data.element[element_number].color.normal                = UI_form_pointer->data.element[element_number].color.highlighted;
+    UI_form_pointer->data.element[element_number].sound                       = UI_form_pointer->data.sound;
+    UI_form_pointer->data.element[element_number].sound.on_click.enabled      = false;
+    UI_form_pointer->data.element[element_number].sound.on_mouse_over.enabled = false;
+    UI_form_pointer->data.element[element_number].mouse_delay.maximum         = 30;
+    UI_form_pointer->data.element[element_number].font                        = UI_form_pointer->data.font;
+    element_number = 25; //--- Player mana on hit---
+    UI_form_pointer->data.element[element_number].window_UID                  = UI_form_pointer->data.UID;
+    UI_form_pointer->data.element[element_number].element_UID                 = element_number;
+    UI_form_pointer->data.element[element_number].title.text                  = new texture_type;
+    game.texture_manager.load_string(UI_form_pointer->data.element[element_number].title.text,game.font_manager.root,"Mana on hit: ",0.75f,127,127,255,255,TEXTURE_RENDER_LEFT);
+    UI_form_pointer->data.element[element_number].title.enabled               = true;
+    UI_form_pointer->data.element[element_number].title.position.x            = UI_form_pointer->data.position.x - (UI_form_pointer->data.size.x * 0.38f);
+    UI_form_pointer->data.element[element_number].title.position.y            = UI_form_pointer->data.position.y - (UI_form_pointer->data.size.y * 0.16f);
+    UI_form_pointer->data.element[element_number].active                      = true;
+    UI_form_pointer->data.element[element_number].click_enabled               = false;
+    UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_TEXTLABEL;
+    UI_form_pointer->data.element[element_number].zoom.enabled                = false;
+    UI_form_pointer->data.element[element_number].tooltip.enabled             = false;
+    UI_form_pointer->data.element[element_number].color                       = UI_form_pointer->data.color;
+    UI_form_pointer->data.element[element_number].color.normal                = UI_form_pointer->data.element[element_number].color.highlighted;
+    UI_form_pointer->data.element[element_number].sound                       = UI_form_pointer->data.sound;
+    UI_form_pointer->data.element[element_number].sound.on_click.enabled      = false;
+    UI_form_pointer->data.element[element_number].sound.on_mouse_over.enabled = false;
+    UI_form_pointer->data.element[element_number].mouse_delay.maximum         = 30;
+    UI_form_pointer->data.element[element_number].font                        = UI_form_pointer->data.font;
+    element_number = 26; //--- Player mana on kill---
+    UI_form_pointer->data.element[element_number].window_UID                  = UI_form_pointer->data.UID;
+    UI_form_pointer->data.element[element_number].element_UID                 = element_number;
+    UI_form_pointer->data.element[element_number].title.text                  = new texture_type;
+    game.texture_manager.load_string(UI_form_pointer->data.element[element_number].title.text,game.font_manager.root,"Mana on kill: ",0.75f,127,127,255,255,TEXTURE_RENDER_LEFT);
+    UI_form_pointer->data.element[element_number].title.enabled               = true;
+    UI_form_pointer->data.element[element_number].title.position.x            = UI_form_pointer->data.position.x - (UI_form_pointer->data.size.x * 0.38f);
+    UI_form_pointer->data.element[element_number].title.position.y            = UI_form_pointer->data.position.y - (UI_form_pointer->data.size.y * 0.18f);
+    UI_form_pointer->data.element[element_number].active                      = true;
+    UI_form_pointer->data.element[element_number].click_enabled               = false;
+    UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_TEXTLABEL;
+    UI_form_pointer->data.element[element_number].zoom.enabled                = false;
+    UI_form_pointer->data.element[element_number].tooltip.enabled             = false;
+    UI_form_pointer->data.element[element_number].color                       = UI_form_pointer->data.color;
+    UI_form_pointer->data.element[element_number].color.normal                = UI_form_pointer->data.element[element_number].color.highlighted;
+    UI_form_pointer->data.element[element_number].sound                       = UI_form_pointer->data.sound;
+    UI_form_pointer->data.element[element_number].sound.on_click.enabled      = false;
+    UI_form_pointer->data.element[element_number].sound.on_mouse_over.enabled = false;
+    UI_form_pointer->data.element[element_number].mouse_delay.maximum         = 30;
+    UI_form_pointer->data.element[element_number].font                        = UI_form_pointer->data.font;
+
 
 };
 
@@ -678,7 +739,6 @@ void update_character_window(UI_form_struct *UI_form_pointer)
     element_number = 17; //--- Player Damage - Lightning ---
     game.texture_manager.load_string(UI_form_pointer->data.element[element_number].title.text,game.font_manager.root,"Lightning: " + ullint_to_string(game.player.stats.damage_max),0.75f,255,255,127,255,TEXTURE_RENDER_LEFT);
 
-
     element_number = 19; //--- Player armor ---
     game.texture_manager.load_string(UI_form_pointer->data.element[element_number].title.text,game.font_manager.root,"Armor: " + ullint_to_string(game.player.stats.armor),0.75f,191,191,191,255,TEXTURE_RENDER_LEFT);
     element_number = 20; //--- Player resistance - physical---
@@ -690,18 +750,23 @@ void update_character_window(UI_form_struct *UI_form_pointer)
     element_number = 23; //--- Player resistance - lightning ---
     game.texture_manager.load_string(UI_form_pointer->data.element[element_number].title.text,game.font_manager.root,"Lightning: " + ullint_to_string(game.player.stats.resist_lightning),0.75f,255,255,127,255,TEXTURE_RENDER_LEFT);
 
-/*
-mana
-health
+    element_number = 24; //--- Player mana ---
+    game.texture_manager.load_string(UI_form_pointer->data.element[element_number].title.text,game.font_manager.root,"Mana: " + ullint_to_string(game.player.mana.maximum),0.75f,127,127,255,255,TEXTURE_RENDER_LEFT);
+    element_number = 25; //--- Player mana on hit---
+    game.texture_manager.load_string(UI_form_pointer->data.element[element_number].title.text,game.font_manager.root,"Mana on hit: " + ullint_to_string(game.player.stats.mana_hit),0.75f,127,127,255,255,TEXTURE_RENDER_LEFT);
+    element_number = 26; //--- Player mana on kill---
+    game.texture_manager.load_string(UI_form_pointer->data.element[element_number].title.text,game.font_manager.root,"Mana on kill: " + ullint_to_string(game.player.stats.mana_kill),0.75f,127,127,255,255,TEXTURE_RENDER_LEFT);
 
-    int health_hit;
-    int health_kill;
+
+/*
+    max mana
     int mana_hit;
     int mana_kill;
+    max health
+    int health_hit;
+    int health_kill;
 
 
-    int crit_chance;
-    int crit_damage;
     int movement_speed;
     int light_radius;
     int magic_find;
