@@ -20,24 +20,14 @@ Starting Game...
  
 # ---------------------------------------------- #
  
-Unable to process event - 301 - UID - 3
-Unable to process event - 301 - UID - 3
-Unable to process event - 301 - UID - 3
-Unable to process event - 401 - UID - 3
-Unable to process event - 401 - UID - 3
-Unable to process event - 501 - UID - 3
-Unable to process event - 501 - UID - 3
-Unable to process event - 401 - UID - 3
-Unable to process event - 401 - UID - 3
-Unable to process event - 301 - UID - 3
  
 # ---------------------------------------------- #
  
 Font    count -> 1
 Music   count -> 1
 Sound   count -> 13
-Texture count -> 269
-Item    count -> 57
+Texture count -> 190
+Item    count -> 56
 Effect  count -> 46
  
 # ---------------------------------------------- #
