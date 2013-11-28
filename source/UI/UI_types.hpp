@@ -101,6 +101,7 @@ struct texture_state_struct
 {
     float angle;
     texture_type*           base;
+    texture_type*           cover;
     texture_type*           disabled;
     texture_type*           highlighted;
     texture_type*           normal;
