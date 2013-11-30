@@ -584,7 +584,8 @@ void UI_manager_class::render(void)
                                 {
                                     if (!UI_form_pointer->data.element[element_number].drag_active)
                                     {
-                                        game.texture_manager.draw(UI_form_pointer->data.element[element_number].texture.normal,false,UI_form_pointer->data.element[element_number].position.x,UI_form_pointer->data.element[element_number].position.y,UI_form_pointer->data.element[element_number].position.z,UI_form_pointer->data.element[element_number].size.x+zoom_value,UI_form_pointer->data.element[element_number].size.y+zoom_value,UI_form_pointer->data.element[element_number].texture.angle);
+                                        game.texture_manager.draw(UI_form_pointer->data.element[element_number].texture.normal ,false,UI_form_pointer->data.element[element_number].position.x,UI_form_pointer->data.element[element_number].position.y,UI_form_pointer->data.element[element_number].position.z,UI_form_pointer->data.element[element_number].size.x+zoom_value,UI_form_pointer->data.element[element_number].size.y+zoom_value,UI_form_pointer->data.element[element_number].texture.angle);
+                                        if (UI_form_pointer->data.element[element_number].overlay_enabled) game.texture_manager.draw(UI_form_pointer->data.element[element_number].texture.overlay,false,UI_form_pointer->data.element[element_number].position.x,UI_form_pointer->data.element[element_number].position.y,UI_form_pointer->data.element[element_number].position.z,UI_form_pointer->data.element[element_number].size.x+zoom_value,UI_form_pointer->data.element[element_number].size.y+zoom_value,UI_form_pointer->data.element[element_number].texture.angle);
                                         if (UI_form_pointer->data.element[element_number].quantity > 1)
                                         {
                                             if (UI_form_pointer->data.element[element_number].title.text == NULL) UI_form_pointer->data.element[element_number].title.text = new texture_type;
@@ -952,6 +953,7 @@ void UI_manager_class::render(void)
                 {
                     float zoom_value = (UI_form_pointer->data.element[element_number].zoom.enabled) ? UI_form_pointer->data.element[element_number].zoom.value : 0.0f;
                     game.texture_manager.draw(UI_form_pointer->data.element[element_number].texture.normal,false,UI_form_pointer->data.element[element_number].position.x,UI_form_pointer->data.element[element_number].position.y,UI_form_pointer->data.element[element_number].position.z,UI_form_pointer->data.element[element_number].size.x+zoom_value,UI_form_pointer->data.element[element_number].size.y+zoom_value,UI_form_pointer->data.element[element_number].texture.angle);
+                    if (UI_form_pointer->data.element[element_number].overlay_enabled) game.texture_manager.draw(UI_form_pointer->data.element[element_number].texture.overlay,false,UI_form_pointer->data.element[element_number].position.x,UI_form_pointer->data.element[element_number].position.y,UI_form_pointer->data.element[element_number].position.z,UI_form_pointer->data.element[element_number].size.x+zoom_value,UI_form_pointer->data.element[element_number].size.y+zoom_value,UI_form_pointer->data.element[element_number].texture.angle);
                 }
             }
         }
@@ -1342,9 +1344,10 @@ void UI_manager_class::swap_elements(int UI_form_UID_src, int UI_element_src, in
             item_type* item_pointer_dst = game.item_manager.add_item(UI_form_UID_dst_pointer->data.element[UI_element_dst].value);
             if ((UI_form_UID_dst_pointer->data.element[UI_element_dst].value == ITEM_NONE) || (item_pointer_dst->data.type == ITEM_SPELL))
             {
-                UI_form_UID_dst_pointer->data.element[UI_element_dst].value          = UI_form_UID_src_pointer->data.element[UI_element_src].value;
-                UI_form_UID_dst_pointer->data.element[UI_element_dst].quantity       = 1;
-                UI_form_UID_dst_pointer->data.element[UI_element_dst].texture.normal = UI_form_UID_src_pointer->data.element[UI_element_src].texture.normal;
+                UI_form_UID_dst_pointer->data.element[UI_element_dst].value           = UI_form_UID_src_pointer->data.element[UI_element_src].value;
+                UI_form_UID_dst_pointer->data.element[UI_element_dst].quantity        = 1;
+                UI_form_UID_dst_pointer->data.element[UI_element_dst].texture.normal  = UI_form_UID_src_pointer->data.element[UI_element_src].texture.normal;
+                UI_form_UID_dst_pointer->data.element[UI_element_dst].texture.overlay = UI_form_UID_src_pointer->data.element[UI_element_src].texture.overlay;
             }
         }
     }
@@ -1490,13 +1493,16 @@ void UI_manager_class::swap_elements(int UI_form_UID_src, int UI_element_src, in
                 {
                     int temp_value    = UI_form_UID_src_pointer->data.element[UI_element_src].value;
                     int temp_quantity = UI_form_UID_src_pointer->data.element[UI_element_src].quantity;
-                    texture_type* temp_texture_pointer = UI_form_UID_src_pointer->data.element[UI_element_src].texture.normal;
-                    UI_form_UID_src_pointer->data.element[UI_element_src].value          = UI_form_UID_dst_pointer->data.element[UI_element_dst].value;
-                    UI_form_UID_src_pointer->data.element[UI_element_src].quantity       = UI_form_UID_dst_pointer->data.element[UI_element_dst].quantity;
-                    UI_form_UID_src_pointer->data.element[UI_element_src].texture.normal = UI_form_UID_dst_pointer->data.element[UI_element_dst].texture.normal;
-                    UI_form_UID_dst_pointer->data.element[UI_element_dst].value          = temp_value;
-                    UI_form_UID_dst_pointer->data.element[UI_element_dst].quantity       = temp_quantity;
-                    UI_form_UID_dst_pointer->data.element[UI_element_dst].texture.normal = temp_texture_pointer;
+                texture_type* temp_texture_pointer_1 = UI_form_UID_src_pointer->data.element[UI_element_src].texture.normal;
+                texture_type* temp_texture_pointer_2 = UI_form_UID_src_pointer->data.element[UI_element_src].texture.overlay;
+                UI_form_UID_src_pointer->data.element[UI_element_src].value           = UI_form_UID_dst_pointer->data.element[UI_element_dst].value;
+                UI_form_UID_src_pointer->data.element[UI_element_src].quantity        = UI_form_UID_dst_pointer->data.element[UI_element_dst].quantity;
+                UI_form_UID_src_pointer->data.element[UI_element_src].texture.normal  = UI_form_UID_dst_pointer->data.element[UI_element_dst].texture.normal;
+                UI_form_UID_src_pointer->data.element[UI_element_src].texture.overlay = UI_form_UID_dst_pointer->data.element[UI_element_dst].texture.overlay;
+                UI_form_UID_dst_pointer->data.element[UI_element_dst].value           = temp_value;
+                UI_form_UID_dst_pointer->data.element[UI_element_dst].quantity        = temp_quantity;
+                UI_form_UID_dst_pointer->data.element[UI_element_dst].texture.normal  = temp_texture_pointer_1;
+                UI_form_UID_dst_pointer->data.element[UI_element_dst].texture.overlay = temp_texture_pointer_2;
                     if ((UI_form_UID_src == UID_EQUIPMENT) || (UI_form_UID_dst == UID_EQUIPMENT))
                     {
                         if (UI_form_UID_dst == UID_EQUIPMENT)
@@ -1547,13 +1553,16 @@ void UI_manager_class::swap_equipment(int UI_form_UID_src, int UI_element_src, i
                 if (item_pointer_src->data.sound.on_move) game.sound_manager.play(item_pointer_src->data.sound.on_move);
                 int temp_value    = UI_form_UID_src_pointer->data.element[UI_element_src].value;
                 int temp_quantity = UI_form_UID_src_pointer->data.element[UI_element_src].quantity;
-                texture_type* temp_texture_pointer = UI_form_UID_src_pointer->data.element[UI_element_src].texture.normal;
-                UI_form_UID_src_pointer->data.element[UI_element_src].value          = UI_form_UID_dst_pointer->data.element[UI_element_dst].value;
-                UI_form_UID_src_pointer->data.element[UI_element_src].quantity       = UI_form_UID_dst_pointer->data.element[UI_element_dst].quantity;
-                UI_form_UID_src_pointer->data.element[UI_element_src].texture.normal = UI_form_UID_dst_pointer->data.element[UI_element_dst].texture.normal;
-                UI_form_UID_dst_pointer->data.element[UI_element_dst].value          = temp_value;
-                UI_form_UID_dst_pointer->data.element[UI_element_dst].quantity       = temp_quantity;
-                UI_form_UID_dst_pointer->data.element[UI_element_dst].texture.normal = temp_texture_pointer;
+                texture_type* temp_texture_pointer_1 = UI_form_UID_src_pointer->data.element[UI_element_src].texture.normal;
+                texture_type* temp_texture_pointer_2 = UI_form_UID_src_pointer->data.element[UI_element_src].texture.overlay;
+                UI_form_UID_src_pointer->data.element[UI_element_src].value           = UI_form_UID_dst_pointer->data.element[UI_element_dst].value;
+                UI_form_UID_src_pointer->data.element[UI_element_src].quantity        = UI_form_UID_dst_pointer->data.element[UI_element_dst].quantity;
+                UI_form_UID_src_pointer->data.element[UI_element_src].texture.normal  = UI_form_UID_dst_pointer->data.element[UI_element_dst].texture.normal;
+                UI_form_UID_src_pointer->data.element[UI_element_src].texture.overlay = UI_form_UID_dst_pointer->data.element[UI_element_dst].texture.overlay;
+                UI_form_UID_dst_pointer->data.element[UI_element_dst].value           = temp_value;
+                UI_form_UID_dst_pointer->data.element[UI_element_dst].quantity        = temp_quantity;
+                UI_form_UID_dst_pointer->data.element[UI_element_dst].texture.normal  = temp_texture_pointer_1;
+                UI_form_UID_dst_pointer->data.element[UI_element_dst].texture.overlay = temp_texture_pointer_2;
                 swap_done = true;
             }
         }

@@ -179,6 +179,7 @@ struct item_sound_type
 struct item_image_type
 {
     int              number;
+    texture_type*    overlay;
     texture_type*    level_0;
     texture_type*    level_1;
     texture_type*    level_2;

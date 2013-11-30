@@ -103,6 +103,7 @@ void setup_player_profile(int UID)
         UI_form_pointer->data.element[element_count].size.x                         = 0.0f;
         UI_form_pointer->data.element[element_count].size.y                         = 0.0f;
         UI_form_pointer->data.element[element_count].size.z                         = 0.0f;
+        UI_form_pointer->data.element[element_count].overlay_enabled                = false;
         UI_form_pointer->data.element[element_count].position.x                     = 0.0f;
         UI_form_pointer->data.element[element_count].position.y                     = 0.0f;
         UI_form_pointer->data.element[element_count].position.z                     = 0.0f;

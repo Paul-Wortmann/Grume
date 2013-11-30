@@ -101,7 +101,7 @@ struct texture_state_struct
 {
     float angle;
     texture_type*           base;
-    texture_type*           cover;
+    texture_type*           overlay;
     texture_type*           disabled;
     texture_type*           highlighted;
     texture_type*           normal;
@@ -179,6 +179,7 @@ struct UI_element_struct
     event_struct            event;
     font_type*              font;
     delay_struct            mouse_delay;
+    bool                    overlay_enabled;
     bool                    mouse_over;
     f3_type                 position;
     f3_type                 position_origional;

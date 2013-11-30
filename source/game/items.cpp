@@ -41,6 +41,7 @@ void  item_class::init_items(void) // Initialize hard-coded default items, such 
     temp_item_pointer->data.number_of_item_effects = 0;
     temp_item_pointer->data.number_of_item_sockets = 1;
     temp_item_pointer->data.socket[0].enabled      = false;
+    temp_item_pointer->data.image.overlay          = game.texture_manager.add_texture("data/textures/UI/icons/spells/frame-3-red.png");
     temp_item_pointer->data.image.level_0          = game.texture_manager.add_texture("data/textures/UI/icons/spells/fire-arrows-1.png");
     temp_item_pointer->data.image.level_1          = game.texture_manager.add_texture("data/textures/UI/icons/spells/fire-arrows-2.png");
     temp_item_pointer->data.image.level_2          = game.texture_manager.add_texture("data/textures/UI/icons/spells/fire-arrows-3.png");
@@ -71,6 +72,7 @@ void  item_class::init_items(void) // Initialize hard-coded default items, such 
     temp_item_pointer->data.number_of_item_effects = 0;
     temp_item_pointer->data.number_of_item_sockets = 1;
     temp_item_pointer->data.socket[0].enabled      = false;
+    temp_item_pointer->data.image.overlay          = game.texture_manager.add_texture("data/textures/UI/icons/spells/frame-7-blue.png");
     temp_item_pointer->data.image.level_0          = game.texture_manager.add_texture("data/textures/UI/icons/spells/ice-blue-1.png");
     temp_item_pointer->data.image.level_1          = game.texture_manager.add_texture("data/textures/UI/icons/spells/ice-blue-2.png");
     temp_item_pointer->data.image.level_2          = game.texture_manager.add_texture("data/textures/UI/icons/spells/ice-blue-3.png");
@@ -101,6 +103,7 @@ void  item_class::init_items(void) // Initialize hard-coded default items, such 
     temp_item_pointer->data.number_of_item_effects = 0;
     temp_item_pointer->data.number_of_item_sockets = 1;
     temp_item_pointer->data.socket[0].enabled      = false;
+    temp_item_pointer->data.image.overlay          = game.texture_manager.add_texture("data/textures/UI/icons/spells/frame-5-orange.png");
     temp_item_pointer->data.image.level_0          = game.texture_manager.add_texture("data/textures/UI/icons/spells/lightning-blue-1.png");
     temp_item_pointer->data.image.level_1          = game.texture_manager.add_texture("data/textures/UI/icons/spells/lightning-blue-2.png");
     temp_item_pointer->data.image.level_2          = game.texture_manager.add_texture("data/textures/UI/icons/spells/lightning-blue-3.png");
@@ -131,6 +134,7 @@ void  item_class::init_items(void) // Initialize hard-coded default items, such 
     temp_item_pointer->data.number_of_item_effects = 0;
     temp_item_pointer->data.number_of_item_sockets = 1;
     temp_item_pointer->data.socket[0].enabled      = false;
+    temp_item_pointer->data.image.overlay          = game.texture_manager.add_texture("data/textures/UI/icons/spells/frame-8-eerie.png");
     temp_item_pointer->data.image.level_0          = game.texture_manager.add_texture("data/textures/UI/icons/spells/beam-royal-1.png");
     temp_item_pointer->data.image.level_1          = game.texture_manager.add_texture("data/textures/UI/icons/spells/beam-royal-2.png");
     temp_item_pointer->data.image.level_2          = game.texture_manager.add_texture("data/textures/UI/icons/spells/beam-royal-3.png");
@@ -161,6 +165,7 @@ void  item_class::init_items(void) // Initialize hard-coded default items, such 
     temp_item_pointer->data.number_of_item_effects = 0;
     temp_item_pointer->data.number_of_item_sockets = 1;
     temp_item_pointer->data.socket[0].enabled      = false;
+    temp_item_pointer->data.image.overlay          = game.texture_manager.add_texture("data/textures/UI/icons/spells/frame-3-red.png");
     temp_item_pointer->data.image.level_0          = game.texture_manager.add_texture("data/textures/UI/icons/spells/fireball-red-1.png");
     temp_item_pointer->data.image.level_1          = game.texture_manager.add_texture("data/textures/UI/icons/spells/fireball-red-2.png");
     temp_item_pointer->data.image.level_2          = game.texture_manager.add_texture("data/textures/UI/icons/spells/fireball-red-3.png");
@@ -191,6 +196,7 @@ void  item_class::init_items(void) // Initialize hard-coded default items, such 
     temp_item_pointer->data.number_of_item_effects = 0;
     temp_item_pointer->data.number_of_item_sockets = 1;
     temp_item_pointer->data.socket[0].enabled      = false;
+    temp_item_pointer->data.image.overlay          = game.texture_manager.add_texture("data/textures/UI/icons/spells/frame-7-blue.png");
     temp_item_pointer->data.image.level_0          = game.texture_manager.add_texture("data/textures/UI/icons/spells/fireball-sky-1.png");
     temp_item_pointer->data.image.level_1          = game.texture_manager.add_texture("data/textures/UI/icons/spells/fireball-sky-2.png");
     temp_item_pointer->data.image.level_2          = game.texture_manager.add_texture("data/textures/UI/icons/spells/fireball-sky-3.png");
@@ -221,6 +227,7 @@ void  item_class::init_items(void) // Initialize hard-coded default items, such 
     temp_item_pointer->data.number_of_item_effects = 0;
     temp_item_pointer->data.number_of_item_sockets = 1;
     temp_item_pointer->data.socket[0].enabled      = false;
+    temp_item_pointer->data.image.overlay          = game.texture_manager.add_texture("data/textures/UI/icons/spells/frame-5-orange.png");
     temp_item_pointer->data.image.level_0          = game.texture_manager.add_texture("data/textures/UI/icons/spells/light-blue-1.png");
     temp_item_pointer->data.image.level_1          = game.texture_manager.add_texture("data/textures/UI/icons/spells/light-blue-2.png");
     temp_item_pointer->data.image.level_2          = game.texture_manager.add_texture("data/textures/UI/icons/spells/light-blue-3.png");
@@ -251,6 +258,7 @@ void  item_class::init_items(void) // Initialize hard-coded default items, such 
     temp_item_pointer->data.number_of_item_effects = 0;
     temp_item_pointer->data.number_of_item_sockets = 1;
     temp_item_pointer->data.socket[0].enabled      = false;
+    temp_item_pointer->data.image.overlay          = game.texture_manager.add_texture("data/textures/UI/icons/spells/frame-8-eerie.png");
     temp_item_pointer->data.image.level_0          = game.texture_manager.add_texture("data/textures/UI/icons/spells/explosion-royal-1.png");
     temp_item_pointer->data.image.level_1          = game.texture_manager.add_texture("data/textures/UI/icons/spells/explosion-royal-2.png");
     temp_item_pointer->data.image.level_2          = game.texture_manager.add_texture("data/textures/UI/icons/spells/explosion-royal-3.png");
@@ -281,6 +289,7 @@ void  item_class::init_items(void) // Initialize hard-coded default items, such 
     temp_item_pointer->data.number_of_item_effects = 0;
     temp_item_pointer->data.number_of_item_sockets = 1;
     temp_item_pointer->data.socket[0].enabled      = false;
+    temp_item_pointer->data.image.overlay          = game.texture_manager.add_texture("data/textures/UI/icons/spells/frame-3-red.png");
     temp_item_pointer->data.image.level_0          = game.texture_manager.add_texture("data/textures/UI/icons/spells/protect-red-1.png");
     temp_item_pointer->data.image.level_1          = game.texture_manager.add_texture("data/textures/UI/icons/spells/protect-red-2.png");
     temp_item_pointer->data.image.level_2          = game.texture_manager.add_texture("data/textures/UI/icons/spells/protect-red-3.png");
@@ -311,6 +320,7 @@ void  item_class::init_items(void) // Initialize hard-coded default items, such 
     temp_item_pointer->data.number_of_item_effects = 0;
     temp_item_pointer->data.number_of_item_sockets = 1;
     temp_item_pointer->data.socket[0].enabled      = false;
+    temp_item_pointer->data.image.overlay          = game.texture_manager.add_texture("data/textures/UI/icons/spells/frame-7-blue.png");
     temp_item_pointer->data.image.level_0          = game.texture_manager.add_texture("data/textures/UI/icons/spells/protect-blue-1.png");
     temp_item_pointer->data.image.level_1          = game.texture_manager.add_texture("data/textures/UI/icons/spells/protect-blue-2.png");
     temp_item_pointer->data.image.level_2          = game.texture_manager.add_texture("data/textures/UI/icons/spells/protect-blue-3.png");
@@ -341,6 +351,7 @@ void  item_class::init_items(void) // Initialize hard-coded default items, such 
     temp_item_pointer->data.number_of_item_effects = 0;
     temp_item_pointer->data.number_of_item_sockets = 1;
     temp_item_pointer->data.socket[0].enabled      = false;
+    temp_item_pointer->data.image.overlay          = game.texture_manager.add_texture("data/textures/UI/icons/spells/frame-5-orange.png");
     temp_item_pointer->data.image.level_0          = game.texture_manager.add_texture("data/textures/UI/icons/spells/protect-sky-1.png");
     temp_item_pointer->data.image.level_1          = game.texture_manager.add_texture("data/textures/UI/icons/spells/protect-sky-2.png");
     temp_item_pointer->data.image.level_2          = game.texture_manager.add_texture("data/textures/UI/icons/spells/protect-sky-3.png");
@@ -371,6 +382,7 @@ void  item_class::init_items(void) // Initialize hard-coded default items, such 
     temp_item_pointer->data.number_of_item_effects = 0;
     temp_item_pointer->data.number_of_item_sockets = 1;
     temp_item_pointer->data.socket[0].enabled      = false;
+    temp_item_pointer->data.image.overlay          = game.texture_manager.add_texture("data/textures/UI/icons/spells/frame-8-eerie.png");
     temp_item_pointer->data.image.level_0          = game.texture_manager.add_texture("data/textures/UI/icons/spells/protect-acid-1.png");
     temp_item_pointer->data.image.level_1          = game.texture_manager.add_texture("data/textures/UI/icons/spells/protect-acid-2.png");
     temp_item_pointer->data.image.level_2          = game.texture_manager.add_texture("data/textures/UI/icons/spells/protect-acid-3.png");
@@ -401,6 +413,7 @@ void  item_class::init_items(void) // Initialize hard-coded default items, such 
     temp_item_pointer->data.number_of_item_effects = 0;
     temp_item_pointer->data.number_of_item_sockets = 1;
     temp_item_pointer->data.socket[0].enabled      = false;
+    temp_item_pointer->data.image.overlay          = game.texture_manager.add_texture("data/textures/UI/icons/spells/frame-9-red.png");
     temp_item_pointer->data.image.level_0          = game.texture_manager.add_texture("data/textures/UI/icons/spells/heal-royal-1.png");
     temp_item_pointer->data.image.level_1          = game.texture_manager.add_texture("data/textures/UI/icons/spells/heal-royal-2.png");
     temp_item_pointer->data.image.level_2          = game.texture_manager.add_texture("data/textures/UI/icons/spells/heal-royal-3.png");
