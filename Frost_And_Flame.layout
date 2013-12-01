@@ -93,7 +93,7 @@
 	</File>
 	<File name="source/game/items.cpp" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="30909" topLine="382" />
+			<Cursor1 position="32687" topLine="404" />
 		</Cursor>
 	</File>
 	<File name="source/UI/inventory_window.cpp" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -101,9 +101,9 @@
 			<Cursor1 position="6587" topLine="76" />
 		</Cursor>
 	</File>
-	<File name="source/UI/skillbook_window.cpp" open="1" top="1" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="source/UI/skillbook_window.cpp" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="71264" topLine="693" />
+			<Cursor1 position="72063" topLine="673" />
 		</Cursor>
 	</File>
 	<File name="source/UI/menu_game_load.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -126,9 +126,9 @@
 			<Cursor1 position="6407" topLine="134" />
 		</Cursor>
 	</File>
-	<File name="source/UI/UI_manager.cpp" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="source/UI/UI_manager.cpp" open="1" top="1" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="24648" topLine="591" />
+			<Cursor1 position="81745" topLine="936" />
 		</Cursor>
 	</File>
 	<File name="source/core/core.hpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
