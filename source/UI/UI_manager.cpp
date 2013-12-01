@@ -1347,6 +1347,7 @@ void UI_manager_class::swap_elements(int UI_form_UID_src, int UI_element_src, in
                 UI_form_UID_dst_pointer->data.element[UI_element_dst].value           = UI_form_UID_src_pointer->data.element[UI_element_src].value;
                 UI_form_UID_dst_pointer->data.element[UI_element_dst].quantity        = 1;
                 UI_form_UID_dst_pointer->data.element[UI_element_dst].texture.normal  = UI_form_UID_src_pointer->data.element[UI_element_src].texture.normal;
+                UI_form_UID_dst_pointer->data.element[UI_element_dst].overlay_enabled = true;
                 UI_form_UID_dst_pointer->data.element[UI_element_dst].texture.overlay = UI_form_UID_src_pointer->data.element[UI_element_src].texture.overlay;
             }
         }
@@ -1491,18 +1492,21 @@ void UI_manager_class::swap_elements(int UI_form_UID_src, int UI_element_src, in
                 }
                 if (allow_swap)
                 {
-                    int temp_value    = UI_form_UID_src_pointer->data.element[UI_element_src].value;
-                    int temp_quantity = UI_form_UID_src_pointer->data.element[UI_element_src].quantity;
-                texture_type* temp_texture_pointer_1 = UI_form_UID_src_pointer->data.element[UI_element_src].texture.normal;
-                texture_type* temp_texture_pointer_2 = UI_form_UID_src_pointer->data.element[UI_element_src].texture.overlay;
-                UI_form_UID_src_pointer->data.element[UI_element_src].value           = UI_form_UID_dst_pointer->data.element[UI_element_dst].value;
-                UI_form_UID_src_pointer->data.element[UI_element_src].quantity        = UI_form_UID_dst_pointer->data.element[UI_element_dst].quantity;
-                UI_form_UID_src_pointer->data.element[UI_element_src].texture.normal  = UI_form_UID_dst_pointer->data.element[UI_element_dst].texture.normal;
-                UI_form_UID_src_pointer->data.element[UI_element_src].texture.overlay = UI_form_UID_dst_pointer->data.element[UI_element_dst].texture.overlay;
-                UI_form_UID_dst_pointer->data.element[UI_element_dst].value           = temp_value;
-                UI_form_UID_dst_pointer->data.element[UI_element_dst].quantity        = temp_quantity;
-                UI_form_UID_dst_pointer->data.element[UI_element_dst].texture.normal  = temp_texture_pointer_1;
-                UI_form_UID_dst_pointer->data.element[UI_element_dst].texture.overlay = temp_texture_pointer_2;
+                    int  temp_value    = UI_form_UID_src_pointer->data.element[UI_element_src].value;
+                    int  temp_quantity = UI_form_UID_src_pointer->data.element[UI_element_src].quantity;
+                    bool temp_overlay  = UI_form_UID_src_pointer->data.element[UI_element_src].overlay_enabled;
+                    texture_type* temp_texture_pointer_1 = UI_form_UID_src_pointer->data.element[UI_element_src].texture.normal;
+                    texture_type* temp_texture_pointer_2 = UI_form_UID_src_pointer->data.element[UI_element_src].texture.overlay;
+                    UI_form_UID_src_pointer->data.element[UI_element_src].value           = UI_form_UID_dst_pointer->data.element[UI_element_dst].value;
+                    UI_form_UID_src_pointer->data.element[UI_element_src].quantity        = UI_form_UID_dst_pointer->data.element[UI_element_dst].quantity;
+                    UI_form_UID_src_pointer->data.element[UI_element_src].texture.normal  = UI_form_UID_dst_pointer->data.element[UI_element_dst].texture.normal;
+                    UI_form_UID_src_pointer->data.element[UI_element_src].texture.overlay = UI_form_UID_dst_pointer->data.element[UI_element_dst].texture.overlay;
+                    UI_form_UID_src_pointer->data.element[UI_element_src].overlay_enabled = UI_form_UID_dst_pointer->data.element[UI_element_dst].overlay_enabled;
+                    UI_form_UID_dst_pointer->data.element[UI_element_dst].value           = temp_value;
+                    UI_form_UID_dst_pointer->data.element[UI_element_dst].quantity        = temp_quantity;
+                    UI_form_UID_dst_pointer->data.element[UI_element_dst].texture.normal  = temp_texture_pointer_1;
+                    UI_form_UID_dst_pointer->data.element[UI_element_dst].texture.overlay = temp_texture_pointer_2;
+                    UI_form_UID_dst_pointer->data.element[UI_element_dst].overlay_enabled = temp_overlay;
                     if ((UI_form_UID_src == UID_EQUIPMENT) || (UI_form_UID_dst == UID_EQUIPMENT))
                     {
                         if (UI_form_UID_dst == UID_EQUIPMENT)
