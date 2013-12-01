@@ -5,8 +5,178 @@ it may take longer than I had first anticipated.
 These are not indications that the project will be terminated in the future,
 just that time is not permitting to proceed at a fast pace, at the moment.
 
-v0.25 - (2013-11-30)
+v0.26 - (2013-12-31)
 LOC   -> xxxxx
+
+v0.25 - (2013-11-30)
+UI    -> Initial spell border overlay implemented.
+UI    -> Corrected rendering position for options menu bars.
+UI    -> Text on element_bar effected by zoom value.
+UI    -> Text on buttons effected by zoom value.
+UI    -> Display exp per kill stat.
+UI    -> Display movement speed stat.
+UI    -> Display light radius stat.
+UI    -> Display gold find stat.
+UI    -> Display magic find stat.
+UI    -> Added health regen stat display.
+UI    -> Added mana regen stat display.
+UI    -> Display mana related stats.
+UI    -> Display crit chance and damage.
+UI    -> Display lightning resistance.
+UI    -> Display Ice resistance
+UI    -> Display fire resistance.
+UI    -> Display physical resistance and lables for damage and resistance.
+UI    -> Display character armor
+UI    -> Display lightning damage.
+UI    -> Corrected position of experience bar.
+UI    -> Display ice damage.
+UI    -> Display fire damage.
+UI    -> String texture color rendered correctly
+UI    -> Display min damage.
+UI    -> Display max damage.
+UI    -> Display player damage.
+BUG   -> Fix invalid conditional jump.
+BUG   -> Fix mem leak.
+UI    -> Relocated character stats on character window.
+UI    -> New character window texture.
+UI    -> Display player intellect and dexterity in the character window.
+UI    -> Display player strength in character window.
+UI    -> Allow socketing of items within the inventory.
+UI    -> Improved Spell mouse overs.
+UI    -> Spell gems using new spell gem effects.
+UI    -> Defined 4 new effects for spell gems.
+UI    -> Generate 4 new spell gem textures.
+UI    -> Generate 4 new spell gem names.
+UI    -> Spell mouse overs display gem texture in correct location.
+UI    -> Initial code to generate 4 new spell gems.
+UI    -> Allow socketing gems if correct location.
+UI    -> Added 4 more gem item defines.
+UI    -> Fix rendering socketed gems mouse overs affecting inventory gems of s… …
+UI    -> Spells draw socketed gem on mouse over.
+UI    -> Gems to generate specific quality type.
+UI    -> Allow spells to accept socketable items.
+UI    -> Spell socket effect name displayed.
+UI    -> Spell mouse over, mana cost displayed correctly.
+UI    -> Spell mouse over, spell bar implemented.
+UI    -> Initial spell mouse over spell level bar background implementation.
+UI    -> UI manager to store spell level bar textures.
+UI    -> Spell mouse overs show spell level and mana cost.
+UI    -> Spell mouse over headers with spell name.
+UI    -> Added dagger_29 texture.
+UI    -> Rings to use random texture.
+UI    -> Wands to use random texture.
+UI    -> Axes to use random texture.
+UI    -> Hammers to use random texture.
+UI    -> Swords to use random texture.
+UI    -> Maces to use random texture.
+UI    -> Bows to use random texture.
+UI    -> Daggers to use random texture.
+UI    -> Shields to use random texture.
+UI    -> Helms to use random texture.
+UI    -> Gloves to use random texture.
+UI    -> Boots to use random texture.
+UI    -> Armor to use random texture.
+UI    -> Belts to use random texture.
+UI    -> Amulets to use random texture.
+UI    -> Added / Improved belt_00 - belt_05 texture/s.
+UI    -> Added / Improved axe_03 texture.
+UI    -> Added sword_36 texture.
+UI    -> Added sword_35 texture.
+UI    -> Added improved axe_02 texture.
+CORE  -> Slight code recactor, keep related code together.
+UI    -> Added ITEM_DAGGER to random item genorater.
+UI    -> Added dagger_28
+UI    -> Added sword_34.png
+UI    -> Added sword_33.png
+UI    -> Added improved sword_28 texture.
+UI    -> Added improved sword_32 texture.
+UI    -> Added improved sword_31 texture.
+UI    -> Added armor_10.png
+UI    -> Better hammer_01 texture.
+UI    -> Added 1 more mace texture.
+UI    -> Added 1 more hammer texture.
+UI    -> Added 1 more bow texture.
+UI    -> Added 2 more sword textures.
+UI    -> Added 2 more axe textures.
+UI    -> Better handeling of equiping items with multiple slots.
+UI    -> Added a few more items to the inventory for testing.
+UI    -> Right click equipable item in the inventory to equip.
+UI    -> Removed redundant spell code.
+BUG   -> Fix possbly segfault waiting to happen...
+UI    -> Skill book using ITEM_NONE instead of -1.
+UI    -> Spell data added to current spell items.
+UI    -> Item_spell textures assigned.
+UI    -> Added item_spell_data
+UI    -> Item image/s moved to struct item_image_type.
+UI    -> Items sounds moved to item_sound_type.
+UI    -> Initial display spell stats on mouse over.
+CORE  -> Added std::string float_to_string(float float_in);
+UI    -> Hammer_00 rotated to more pleasing angle.
+UI    -> Adjust position of non active elements on form drag.
+UI    -> Integrated new spell book textures.
+UI    -> Added new book textures.
+UI    -> Removed redundant textures.
+UI    -> Integrated new UI wood sounds.
+UI    -> Added 4 UI wood sounds.
+UI    -> EFFECT_MOD_SPELL_TYPE now operational.
+UI    -> EFFECT_MOD_SPELL_ALL now operational.
+UI    -> Spell books used correctly.
+UI    -> Generate item UI sounds based on material type.
+UI    -> Initial ITEM_MATERIAL_x defines.
+UI    -> Added 5 spells, 4 shields and heal.
+UI    -> Added more spell defines.
+UI    -> Allow spells to replace spells on the action bar.
+UI    -> Allow baisc spell name on mouse over.
+UI    -> Spell_ball_x fully integrated into the UI.
+UI    -> Spell_ball_x added to player class.
+UI    -> Added spell_ball_x to skillbook.
+UI    -> Item manager support to generate spell_ball_x.
+UI    -> Added item_spell_ball_x as spells.
+UI    -> Added item_spell_ball_x as items.
+UI    -> Added item spell ball x defines.
+UI    -> Don't allow ITEM_SPELL to be moved from the actionbar to the inventory.
+UI    -> Added axe_01.png
+UI    -> Axe_00.png rendered at different angle.
+UI    -> Random item generator to use axe_00.png
+UI    -> Added axe_00.png
+UI    -> Use ITEM_NONE define instead of -1
+UI    -> Drag spells to the action bar.
+UI    -> Added ITEM_SPELL_ARROW_ELEMENTAL
+UI    -> Added ITEM_SPELL_ARROW_LIGHTNING
+UI    -> Added ITEM_SPELL_ARROW_ICE
+UI    -> Added ITEM_SPELL_ARROW_FIRE
+UI    -> Spells defined items.
+UI    -> Better formatting of defines in the spell manager.
+BUG   -> Dont crash on moving a spell.
+UI    -> spells only active if quantity > 0
+UI    -> First 4 spell textures assigned.
+UI    -> First 4 spells updated on skill book process.
+BUG   -> Removed redundant pointer creation.
+UI    -> Added all 20 skillbook slots.
+UI    -> Altered skillbook slot positions.
+UI    -> Added code for ITEM_AXE.
+UI    -> New skillbook background.
+UI    -> Initial spell system.
+UI    -> Loaded items from UID 1000
+UI    -> Loaded effects from UID 1000
+UI    -> Base spells.txt
+UI    -> Gimp background source -> Spellbook.
+UI    -> Default position for skillbook.
+CORE  -> Init reload textures when re-init window.
+BUG   -> If SDL2 window already open, destroy it first before opening a new one.
+UI    -> Unequiped items with regen value > 1, now functioning correctly.
+UI    -> Further work on random spellbook generation.
+UI    -> Added base effect cases to use effect function.
+UI    -> Socketed items processed on equip / unequip.
+BUG   -> Fix FnF freeze on player profile click.
+UI    -> Fixed mana + health bar mouse over tool tips.
+UI    -> Health / mana bars scaled correctly and correct value shown.
+UI    -> Regen calculated correctly.
+UI    -> Added ITEM_BOW.
+UI    -> Randomly generated ITEM_BOW names.
+UI    -> Randomly generated ITEM_BOW texture.
+UI    -> Randomly generated ITEM_BOW sounds.
+LOC   -> 24994
 
 v0.24 - (2013-10-31) Happy Halloween!
 ITEM  -> Improved random item generation for sub types.
