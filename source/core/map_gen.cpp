@@ -321,11 +321,11 @@ void map_gen_BSP(tmx_map_type *tmx_map_pointer)
     {
         tmx_map_pointer->layer[layer_object].tile[tile_count].position.x   = 0;
         tmx_map_pointer->layer[layer_object].tile[tile_count].position.y   = 0;
-        tmx_map_pointer->layer[layer_object].tile[tile_count].tile         = -1;
+        tmx_map_pointer->layer[layer_object].tile[tile_count].tile         = TILE_NONE;
         tmx_map_pointer->layer[layer_object].tile[tile_count].tile_tileset = 0;
         tmx_map_pointer->layer[layer_wall].tile[tile_count].position.x     = 0;
         tmx_map_pointer->layer[layer_wall].tile[tile_count].position.y     = 0;
-        tmx_map_pointer->layer[layer_wall].tile[tile_count].tile           = -1;
+        tmx_map_pointer->layer[layer_wall].tile[tile_count].tile           = TILE_NONE;
         tmx_map_pointer->layer[layer_wall].tile[tile_count].tile_tileset   = 0;
     }
     map_node_type* temp_map = new map_node_type;
@@ -396,11 +396,11 @@ void map_gen_CA (tmx_map_type *tmx_map_pointer)
     {
         tmx_map_pointer->layer[layer_object].tile[tile_count].position.x   = 0;
         tmx_map_pointer->layer[layer_object].tile[tile_count].position.y   = 0;
-        tmx_map_pointer->layer[layer_object].tile[tile_count].tile         = -1;
+        tmx_map_pointer->layer[layer_object].tile[tile_count].tile         = TILE_NONE;
         tmx_map_pointer->layer[layer_object].tile[tile_count].tile_tileset = 0;
         tmx_map_pointer->layer[layer_wall].tile[tile_count].position.x     = 0;
         tmx_map_pointer->layer[layer_wall].tile[tile_count].position.y     = 0;
-        tmx_map_pointer->layer[layer_wall].tile[tile_count].tile           = -1;
+        tmx_map_pointer->layer[layer_wall].tile[tile_count].tile           = TILE_NONE;
         tmx_map_pointer->layer[layer_wall].tile[tile_count].tile_tileset   = 0;
     }
     struct flood_fill_type
