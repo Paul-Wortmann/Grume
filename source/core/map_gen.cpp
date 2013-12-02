@@ -33,6 +33,65 @@ int node_count         = 0;
 int map_gen_size_x     = 100;
 int map_gen_size_y     = 100;
 
+void map_gen_base(tmx_map_type *tmx_map_pointer)
+{
+    int tile_count_temp                                     = 0;
+    int layer_floor                                         = 0;
+    int layer_object                                        = 1;
+    int layer_wall                                          = 2;
+    int tileset_count                                       = 0;
+    tmx_map_pointer->data.map_width                         = map_gen_size_x;
+    tmx_map_pointer->data.map_height                        = map_gen_size_y;
+    tmx_map_pointer->data.map_tile_width                    = 64;
+    tmx_map_pointer->data.map_tile_height                   = 32;
+    tmx_map_pointer->data.number_of_tiles                   = map_gen_size_x*map_gen_size_y;
+    tmx_map_pointer->data.number_of_layers                  = 3;
+    tmx_map_pointer->data.number_of_tilesets                = 1;
+    tmx_map_pointer->layer                                  = new tmx_layer_type[tmx_map_pointer->data.number_of_layers];
+    tmx_map_pointer->layer[layer_floor].name                = "generated_floor";
+    tmx_map_pointer->layer[layer_floor].width               = map_gen_size_x;
+    tmx_map_pointer->layer[layer_floor].height              = map_gen_size_y;
+    tmx_map_pointer->layer[layer_object].name               = "generated_object";
+    tmx_map_pointer->layer[layer_object].width              = map_gen_size_x;
+    tmx_map_pointer->layer[layer_object].height             = map_gen_size_y;
+    tmx_map_pointer->layer[layer_wall].name                 = "generated_wall";
+    tmx_map_pointer->layer[layer_wall].width                = map_gen_size_x;
+    tmx_map_pointer->layer[layer_wall].height               = map_gen_size_y;
+    tmx_map_pointer->tileset                                = new tmx_tileset_type[tmx_map_pointer->data.number_of_tilesets];
+    tmx_map_pointer->tileset[tileset_count].first_gid       = 1;
+    tmx_map_pointer->tileset[tileset_count].image_source    = "data/tilesets/default_tileset.png";
+    tmx_map_pointer->tileset[tileset_count].image_width     = 256;
+    tmx_map_pointer->tileset[tileset_count].image_height    = 32;
+    tmx_map_pointer->tileset[tileset_count].tile_width      = 64;
+    tmx_map_pointer->tileset[tileset_count].tile_height     = 32;
+    tmx_map_pointer->tileset[tileset_count].number_of_tiles = 4;
+    tmx_map_pointer->layer[layer_floor].tile   = new tmx_tile_type [tmx_map_pointer->data.number_of_tiles];
+    for (int tile_count_x = 0; tile_count_x < tmx_map_pointer->data.map_width; tile_count_x++)
+    {
+        for (int tile_count_y = 0; tile_count_y < tmx_map_pointer->data.map_height; tile_count_y++)
+        {
+            tile_count_temp = (tile_count_y * tmx_map_pointer->data.map_width) + tile_count_x;
+            tmx_map_pointer->layer[layer_floor].tile[tile_count_temp].position.x   = tile_count_x;
+            tmx_map_pointer->layer[layer_floor].tile[tile_count_temp].position.y   = tile_count_y;
+            tmx_map_pointer->layer[layer_floor].tile[tile_count_temp].tile         = TILE_WALL;
+            tmx_map_pointer->layer[layer_floor].tile[tile_count_temp].tile_tileset = tileset_count;
+        }
+    }
+    tmx_map_pointer->layer[layer_object].tile = new tmx_tile_type [tmx_map_pointer->data.number_of_tiles];
+    tmx_map_pointer->layer[layer_wall].tile   = new tmx_tile_type [tmx_map_pointer->data.number_of_tiles];
+    for (int tile_count = 0; tile_count < tmx_map_pointer->data.number_of_tiles; tile_count++)
+    {
+        tmx_map_pointer->layer[layer_object].tile[tile_count].position.x   = 0;
+        tmx_map_pointer->layer[layer_object].tile[tile_count].position.y   = 0;
+        tmx_map_pointer->layer[layer_object].tile[tile_count].tile         = TILE_NONE;
+        tmx_map_pointer->layer[layer_object].tile[tile_count].tile_tileset = 0;
+        tmx_map_pointer->layer[layer_wall].tile[tile_count].position.x     = 0;
+        tmx_map_pointer->layer[layer_wall].tile[tile_count].position.y     = 0;
+        tmx_map_pointer->layer[layer_wall].tile[tile_count].tile           = TILE_NONE;
+        tmx_map_pointer->layer[layer_wall].tile[tile_count].tile_tileset   = 0;
+    }
+};
+
 void map_gen_BSP_split(map_node_type *map_node)
 {
     int  x_range = map_node->data.size.x  - (ROOM_MAX_X*2);
@@ -273,62 +332,9 @@ void map_gen_BSP_split(map_node_type *map_node)
 
 void map_gen_BSP(tmx_map_type *tmx_map_pointer)
 {
-    int tile_count_temp                                     = 0;
-    int layer_floor                                         = 0;
-    int layer_object                                        = 1;
-    int layer_wall                                          = 2;
-    int tileset_count                                       = 0;
-    tmx_map_pointer->data.map_width                         = map_gen_size_x;
-    tmx_map_pointer->data.map_height                        = map_gen_size_y;
-    tmx_map_pointer->data.map_tile_width                    = 64;
-    tmx_map_pointer->data.map_tile_height                   = 32;
-    tmx_map_pointer->data.number_of_tiles                   = map_gen_size_x*map_gen_size_y;
-    tmx_map_pointer->data.number_of_layers                  = 3;
-    tmx_map_pointer->data.number_of_tilesets                = 1;
-    tmx_map_pointer->layer                                  = new tmx_layer_type[tmx_map_pointer->data.number_of_layers];
-    tmx_map_pointer->layer[layer_floor].name                = "generated_floor";
-    tmx_map_pointer->layer[layer_floor].width               = map_gen_size_x;
-    tmx_map_pointer->layer[layer_floor].height              = map_gen_size_y;
-    tmx_map_pointer->layer[layer_object].name               = "generated_object";
-    tmx_map_pointer->layer[layer_object].width              = map_gen_size_x;
-    tmx_map_pointer->layer[layer_object].height             = map_gen_size_y;
-    tmx_map_pointer->layer[layer_wall].name                 = "generated_wall";
-    tmx_map_pointer->layer[layer_wall].width                = map_gen_size_x;
-    tmx_map_pointer->layer[layer_wall].height               = map_gen_size_y;
-    tmx_map_pointer->tileset                                = new tmx_tileset_type[tmx_map_pointer->data.number_of_tilesets];
-    tmx_map_pointer->tileset[tileset_count].first_gid       = 1;
-    tmx_map_pointer->tileset[tileset_count].image_source    = "data/tilesets/default_tileset.png";
-    tmx_map_pointer->tileset[tileset_count].image_width     = 256;
-    tmx_map_pointer->tileset[tileset_count].image_height    = 32;
-    tmx_map_pointer->tileset[tileset_count].tile_width      = 64;
-    tmx_map_pointer->tileset[tileset_count].tile_height     = 32;
-    tmx_map_pointer->tileset[tileset_count].number_of_tiles = 4;
-    tmx_map_pointer->layer[layer_floor].tile   = new tmx_tile_type [tmx_map_pointer->data.number_of_tiles];
-    for (int tile_count_x = 0; tile_count_x < tmx_map_pointer->data.map_width; tile_count_x++)
-    {
-        for (int tile_count_y = 0; tile_count_y < tmx_map_pointer->data.map_height; tile_count_y++)
-        {
-            tile_count_temp = (tile_count_y * tmx_map_pointer->data.map_width) + tile_count_x;
-            tmx_map_pointer->layer[layer_floor].tile[tile_count_temp].position.x   = tile_count_x;
-            tmx_map_pointer->layer[layer_floor].tile[tile_count_temp].position.y   = tile_count_y;
-            tmx_map_pointer->layer[layer_floor].tile[tile_count_temp].tile         = TILE_WALL;
-            tmx_map_pointer->layer[layer_floor].tile[tile_count_temp].tile_tileset = tileset_count;
-        }
-    }
-    tmx_map_pointer->layer[layer_object].tile = new tmx_tile_type [tmx_map_pointer->data.number_of_tiles];
-    tmx_map_pointer->layer[layer_wall].tile   = new tmx_tile_type [tmx_map_pointer->data.number_of_tiles];
-    for (int tile_count = 0; tile_count < tmx_map_pointer->data.number_of_tiles; tile_count++)
-    {
-        tmx_map_pointer->layer[layer_object].tile[tile_count].position.x   = 0;
-        tmx_map_pointer->layer[layer_object].tile[tile_count].position.y   = 0;
-        tmx_map_pointer->layer[layer_object].tile[tile_count].tile         = TILE_NONE;
-        tmx_map_pointer->layer[layer_object].tile[tile_count].tile_tileset = 0;
-        tmx_map_pointer->layer[layer_wall].tile[tile_count].position.x     = 0;
-        tmx_map_pointer->layer[layer_wall].tile[tile_count].position.y     = 0;
-        tmx_map_pointer->layer[layer_wall].tile[tile_count].tile           = TILE_NONE;
-        tmx_map_pointer->layer[layer_wall].tile[tile_count].tile_tileset   = 0;
-    }
-    map_node_type* temp_map = new map_node_type;
+    int layer_floor                = 0;
+    map_gen_base(tmx_map_pointer);
+    map_node_type* temp_map        = new map_node_type;
     temp_map->data.size.x          = tmx_map_pointer->data.map_width;
     temp_map->data.size.y          = tmx_map_pointer->data.map_height;
     temp_map->data.number_of_tiles = temp_map->data.size.x * temp_map->data.size.y;
@@ -348,61 +354,8 @@ void map_gen_BSP(tmx_map_type *tmx_map_pointer, int seed)
 
 void map_gen_CA (tmx_map_type *tmx_map_pointer)
 {
-    int tile_count_temp                                     = 0;
-    int layer_floor                                         = 0;
-    int layer_object                                        = 1;
-    int layer_wall                                          = 2;
-    int tileset_count                                       = 0;
-    tmx_map_pointer->data.map_width                         = map_gen_size_x;
-    tmx_map_pointer->data.map_height                        = map_gen_size_y;
-    tmx_map_pointer->data.map_tile_width                    = 64;
-    tmx_map_pointer->data.map_tile_height                   = 32;
-    tmx_map_pointer->data.number_of_tiles                   = map_gen_size_x*map_gen_size_y;
-    tmx_map_pointer->data.number_of_layers                  = 3;
-    tmx_map_pointer->data.number_of_tilesets                = 1;
-    tmx_map_pointer->layer                                  = new tmx_layer_type[tmx_map_pointer->data.number_of_layers];
-    tmx_map_pointer->layer[layer_floor].name                = "generated_floor";
-    tmx_map_pointer->layer[layer_floor].width               = map_gen_size_x;
-    tmx_map_pointer->layer[layer_floor].height              = map_gen_size_y;
-    tmx_map_pointer->layer[layer_object].name               = "generated_object";
-    tmx_map_pointer->layer[layer_object].width              = map_gen_size_x;
-    tmx_map_pointer->layer[layer_object].height             = map_gen_size_y;
-    tmx_map_pointer->layer[layer_wall].name                 = "generated_wall";
-    tmx_map_pointer->layer[layer_wall].width                = map_gen_size_x;
-    tmx_map_pointer->layer[layer_wall].height               = map_gen_size_y;
-    tmx_map_pointer->tileset                                = new tmx_tileset_type[tmx_map_pointer->data.number_of_tilesets];
-    tmx_map_pointer->tileset[tileset_count].first_gid       = 1;
-    tmx_map_pointer->tileset[tileset_count].image_source    = "data/tilesets/default_tileset.png";
-    tmx_map_pointer->tileset[tileset_count].image_width     = 256;
-    tmx_map_pointer->tileset[tileset_count].image_height    = 32;
-    tmx_map_pointer->tileset[tileset_count].tile_width      = 64;
-    tmx_map_pointer->tileset[tileset_count].tile_height     = 32;
-    tmx_map_pointer->tileset[tileset_count].number_of_tiles = 4;
-    tmx_map_pointer->layer[layer_floor].tile   = new tmx_tile_type [tmx_map_pointer->data.number_of_tiles];
-    for (int tile_count_x = 0; tile_count_x < tmx_map_pointer->data.map_width; tile_count_x++)
-    {
-        for (int tile_count_y = 0; tile_count_y < tmx_map_pointer->data.map_height; tile_count_y++)
-        {
-            tile_count_temp = (tile_count_y * tmx_map_pointer->data.map_width) + tile_count_x;
-            tmx_map_pointer->layer[layer_floor].tile[tile_count_temp].position.x   = tile_count_x;
-            tmx_map_pointer->layer[layer_floor].tile[tile_count_temp].position.y   = tile_count_y;
-            tmx_map_pointer->layer[layer_floor].tile[tile_count_temp].tile         = TILE_WALL;
-            tmx_map_pointer->layer[layer_floor].tile[tile_count_temp].tile_tileset = tileset_count;
-        }
-    }
-    tmx_map_pointer->layer[layer_object].tile = new tmx_tile_type [tmx_map_pointer->data.number_of_tiles];
-    tmx_map_pointer->layer[layer_wall].tile   = new tmx_tile_type [tmx_map_pointer->data.number_of_tiles];
-    for (int tile_count = 0; tile_count < tmx_map_pointer->data.number_of_tiles; tile_count++)
-    {
-        tmx_map_pointer->layer[layer_object].tile[tile_count].position.x   = 0;
-        tmx_map_pointer->layer[layer_object].tile[tile_count].position.y   = 0;
-        tmx_map_pointer->layer[layer_object].tile[tile_count].tile         = TILE_NONE;
-        tmx_map_pointer->layer[layer_object].tile[tile_count].tile_tileset = 0;
-        tmx_map_pointer->layer[layer_wall].tile[tile_count].position.x     = 0;
-        tmx_map_pointer->layer[layer_wall].tile[tile_count].position.y     = 0;
-        tmx_map_pointer->layer[layer_wall].tile[tile_count].tile           = TILE_NONE;
-        tmx_map_pointer->layer[layer_wall].tile[tile_count].tile_tileset   = 0;
-    }
+    int layer_floor                = 0;
+    map_gen_base(tmx_map_pointer);
     struct flood_fill_type
     {
         int  tile_data;
@@ -600,7 +553,8 @@ void map_gen_CA (tmx_map_type *tmx_map_pointer, int seed)
 
 void map_gen_GG (tmx_map_type *tmx_map_pointer)
 {
-
+//    int layer_floor                = 0;
+    map_gen_base(tmx_map_pointer);
 };
 
 void map_gen_GG (tmx_map_type *tmx_map_pointer, int seed)

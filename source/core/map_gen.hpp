@@ -62,13 +62,14 @@ struct map_node_type
     map_node_type *right;
 };
 
+void map_gen_base(tmx_map_type *tmx_map_pointer);
 void map_gen_BSP_split(map_node_type *map_node);
-void map_gen_BSP(tmx_map_type *tmx_map_pointer);
-void map_gen_BSP(tmx_map_type *tmx_map_pointer, int seed);
-void map_gen_CA (tmx_map_type *tmx_map_pointer);
-void map_gen_CA (tmx_map_type *tmx_map_pointer, int seed);
-void map_gen_GG (tmx_map_type *tmx_map_pointer);
-void map_gen_GG (tmx_map_type *tmx_map_pointer, int seed);
+void map_gen_BSP (tmx_map_type *tmx_map_pointer);
+void map_gen_BSP (tmx_map_type *tmx_map_pointer, int seed);
+void map_gen_CA  (tmx_map_type *tmx_map_pointer);
+void map_gen_CA  (tmx_map_type *tmx_map_pointer, int seed);
+void map_gen_GG  (tmx_map_type *tmx_map_pointer);
+void map_gen_GG  (tmx_map_type *tmx_map_pointer, int seed);
 
 #endif //MAP_GEN_HPP
 
