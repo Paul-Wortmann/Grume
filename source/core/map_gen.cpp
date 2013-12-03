@@ -595,7 +595,10 @@ void map_gen_GG (tmx_map_type *tmx_map_pointer)
     {
         if (room_node[node_count_1].active)
         {
-            //create room
+            int room_x = random_int(ROOM_MIN_X,ROOM_MAX_X);
+            int room_y = random_int(ROOM_MIN_Y,ROOM_MAX_Y);
+            int room_start_x = room_node[node_count_1].position.x - (room_x/2);
+            int room_start_y = room_node[node_count_1].position.y - (room_y/2);
         }
     }
     // gen connecting paths
