@@ -38,6 +38,8 @@
 #define TILE_PATH   3
 
 #define ROOM_PATH  2
+#define ROOM_MIN_X 3
+#define ROOM_MIN_Y 3
 #define ROOM_MAX_X 9
 #define ROOM_MAX_Y 9
 #define ROOM_MAX_R (int)(sqrt((ROOM_MAX_X * ROOM_MAX_X) + (ROOM_MAX_Y * ROOM_MAX_Y)) + ROOM_PATH)
