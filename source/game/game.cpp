@@ -638,6 +638,17 @@ void game_class::process(void)
             game.core.io.key_g                     = false;
             game.core.io.keyboard_delay_count      = 0;
         }
+        if (game.core.io.key_h) // generate a random GG dungeon
+        {
+            game.loading_screen.display("data/loading_screen.png");
+            map_gen_GG(&tmx_map);
+            game.map_2D.smooth_map(&tmx_map);
+            game.map_2D.apply_tileset(&tmx_map,CAVE);
+            game.map_2D.calculate_tile_positions(&tmx_map,DEFAULT_FRAME_WIDTH/game.zoom.current/2.0f,DEFAULT_FRAME_HEIGHT/game.zoom.current/2.0f);
+            game.map_2D.center_on_tile(&tmx_map,(tmx_map.data.number_of_tiles/2)+(tmx_map.data.map_width/2));
+            game.core.io.key_h                     = false;
+            game.core.io.keyboard_delay_count      = 0;
+        }
     }
 ///------------------------------------------------------------------------------------------
 };
