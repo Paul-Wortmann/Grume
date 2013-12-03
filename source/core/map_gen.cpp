@@ -558,12 +558,14 @@ void map_gen_CA (tmx_map_type *tmx_map_pointer, int seed)
 
 void map_gen_GG (tmx_map_type *tmx_map_pointer)
 {
+    int layer_floor = 0;
     map_gen_base(tmx_map_pointer);
     int number_of_circles = (tmx_map_pointer->data.map_width / ROOM_MAX_X) * (tmx_map_pointer->data.map_height / ROOM_MAX_Y);
     struct room_node_type
     {
         bool    active;
         i2_type position;
+        i2_type dimension;
     };
     room_node_type room_node[number_of_circles+1];
     room_node[0].position.x = (tmx_map_pointer->data.map_width  / 2);
@@ -574,13 +576,13 @@ void map_gen_GG (tmx_map_type *tmx_map_pointer)
         room_node[node_count].position.x = random_int(ROOM_MAX_R,(tmx_map_pointer->data.map_width  - ROOM_MAX_R));
         room_node[node_count].position.y = random_int(ROOM_MAX_R,(tmx_map_pointer->data.map_height - ROOM_MAX_R));
     }
-    for (int node_count_1 = 0; node_count_1 < (number_of_circles-1); node_count_1++)
+    for (int node_count_1 = 0; node_count_1 < number_of_circles; node_count_1++)
     {
         if (room_node[node_count_1].active)
         {
-            for (int node_count_2 = 1; node_count_2 < number_of_circles; node_count_2++)
+            for (int node_count_2 = 0; node_count_2 < number_of_circles; node_count_2++)
             {
-                if (room_node[node_count_2].active)
+                if ((room_node[node_count_2].active) && (node_count_1 != node_count_2))
                 {
                     if (game.core.physics.circle_collision(room_node[node_count_1].position.x,room_node[node_count_1].position.y,ROOM_MAX_R,room_node[node_count_2].position.x,room_node[node_count_2].position.y,ROOM_MAX_R))
                     {
@@ -590,15 +592,23 @@ void map_gen_GG (tmx_map_type *tmx_map_pointer)
             }
         }
     }
-    // gen rooms in circles
-    for (int node_count_1 = 0; node_count_1 < (number_of_circles-1); node_count_1++)
+    // gen rooms in the circles
+    for (int node_count_1 = 0; node_count_1 < number_of_circles; node_count_1++)
     {
         if (room_node[node_count_1].active)
         {
-            int room_x = random_int(ROOM_MIN_X,ROOM_MAX_X);
-            int room_y = random_int(ROOM_MIN_Y,ROOM_MAX_Y);
-            int room_start_x = room_node[node_count_1].position.x - (room_x/2);
-            int room_start_y = room_node[node_count_1].position.y - (room_y/2);
+            room_node[node_count_1].dimension.x = random_int(ROOM_MIN_X,ROOM_MAX_X);
+            room_node[node_count_1].dimension.y = random_int(ROOM_MIN_Y,ROOM_MAX_Y);
+            int room_start_x = room_node[node_count_1].position.x - (room_node[node_count_1].dimension.x/2);
+            int room_start_y = room_node[node_count_1].position.y - (room_node[node_count_1].dimension.y/2);
+            for (int count_y = 0; count_y < room_node[node_count_1].dimension.y; count_y++)
+            {
+                for (int count_x = 0; count_x < room_node[node_count_1].dimension.x; count_x++)
+                {
+                    int tile_count_temp = (count_x + room_start_x) + (tmx_map_pointer->data.map_width * (count_y + room_start_y));
+                    tmx_map_pointer->layer[layer_floor].tile[tile_count_temp].tile = TILE_FLOOR;
+                }
+            }
         }
     }
     // gen connecting paths
