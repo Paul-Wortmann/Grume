@@ -66,14 +66,14 @@
 			<Cursor1 position="1043" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="source/core/physics.hpp" open="1" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="source/core/physics.hpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="0" topLine="0" />
+			<Cursor1 position="5386" topLine="121" />
 		</Cursor>
 	</File>
 	<File name="source/core/map_gen.cpp" open="1" top="1" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="36042" topLine="566" />
+			<Cursor1 position="33804" topLine="555" />
 		</Cursor>
 	</File>
 	<File name="source/game/game.cpp" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -158,7 +158,7 @@
 	</File>
 	<File name="source/main.cpp" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="1168" topLine="15" />
+			<Cursor1 position="950" topLine="15" />
 		</Cursor>
 	</File>
 	<File name="source/game/player.hpp" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -198,7 +198,7 @@
 	</File>
 	<File name="source/core/map_gen.hpp" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="1961" topLine="27" />
+			<Cursor1 position="1298" topLine="23" />
 		</Cursor>
 	</File>
 	<File name="source/core/core.hpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
