@@ -591,6 +591,13 @@ void map_gen_GG (tmx_map_type *tmx_map_pointer)
         }
     }
     // gen rooms in circles
+    for (int node_count_1 = 0; node_count_1 < (number_of_circles-1); node_count_1++)
+    {
+        if (room_node[node_count_1].active)
+        {
+            //create room
+        }
+    }
     // gen connecting paths
 };
 
