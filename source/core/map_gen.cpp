@@ -52,6 +52,7 @@ void map_gen_base(fmx_map_type *fmx_map_pointer)
     fmx_map_pointer->data.number_of_tiles                   = map_gen_size_x*map_gen_size_y;
     fmx_map_pointer->data.number_of_layers                  = 3;
     fmx_map_pointer->data.number_of_tilesets                = 1;
+    fmx_map_pointer->data.number_of_rooms                   = 0;
     fmx_map_pointer->layer                                  = new fmx_layer_type[fmx_map_pointer->data.number_of_layers];
     fmx_map_pointer->layer[layer_floor].name                = "generated_floor";
     fmx_map_pointer->layer[layer_floor].width               = map_gen_size_x;
@@ -353,6 +354,7 @@ void map_gen_BSP(fmx_map_type *fmx_map_pointer)
     map_gen_BSP_split(fmx_map_pointer,temp_map);
     fmx_map_pointer->layer[layer_floor].tile = temp_map->data.tile;
     delete temp_map;
+    map_gen_room_connections(fmx_map_pointer);
 };
 
 void map_gen_BSP(fmx_map_type *fmx_map_pointer, int seed)
@@ -616,11 +618,17 @@ void map_gen_GG (fmx_map_type *fmx_map_pointer)
         }
     }
     // gen connecting paths
+    map_gen_room_connections(fmx_map_pointer);
 };
 
 void map_gen_GG (fmx_map_type *fmx_map_pointer, int seed)
 {
     srand(seed);
     map_gen_GG(fmx_map_pointer);
+};
+
+void map_gen_room_connections(fmx_map_type *fmx_map_pointer)
+{
+
 };
 

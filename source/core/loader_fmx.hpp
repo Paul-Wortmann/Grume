@@ -84,7 +84,6 @@ struct fmx_path_data_type
     int  H;
 };
 
-
 struct fmx_room_data_type
 {
     bool       active;
