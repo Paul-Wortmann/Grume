@@ -108,6 +108,7 @@ Set (FROST_AND_FLAME_SOURCES
 	./source/core/graphics.cpp
 	./source/core/item_manager.cpp
 	./source/core/io.cpp
+	./source/core/loader_fmx.cpp
 	./source/core/loader_md2.cpp
 	./source/core/loader_obj.cpp
 	./source/core/loader_tmx.cpp
