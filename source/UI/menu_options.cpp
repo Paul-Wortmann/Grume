@@ -27,7 +27,6 @@
 #include "../game/game.hpp"
 
 extern game_class         game;
-extern tmx_map_type       tmx_map;
 
 //----------------------------------------------------------
 

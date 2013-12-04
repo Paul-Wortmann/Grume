@@ -28,9 +28,9 @@
 #include "texture_manager.hpp"
 #include "map_gen.hpp"
 
-#define DUNGEON   1
-#define CAVE      2
-#define GRASSLAND 3
+#define MAP_DUNGEON   1
+#define MAP_CAVE      2
+#define MAP_GRASSLAND 3
 
 const float  MAP_SCROLL_SPEED    = 0.02f;
 const float  TILE_SCALE_DEFAULT  = 200.0f;
@@ -42,16 +42,16 @@ const float  TILE_HEIGHT_HALF    = TILE_HEIGHT/2.0f;
 class map_2D_class
 {
     public:
-        void render(tmx_map_type *tmx_map_pointer);
-        void process(tmx_map_type *tmx_map_pointer);
-        void scroll_map(tmx_map_type *tmx_map_pointer, int x_dir, int y_dir);
-        bool tile_visible(tmx_map_type *tmx_map_pointer, int layer_number, int tile_number);
-        void center_on_tile(tmx_map_type *tmx_map_pointer, int tile_ID);
-        void calculate_tile_positions(tmx_map_type *tmx_map_pointer);
-        void calculate_tile_positions(tmx_map_type *tmx_map_pointer, float tile_width_half_specify,float tile_height_half_specify);
-        int  mouse_over_tile(tmx_map_type *tmx_map_pointer);
-        void apply_tileset(tmx_map_type *tmx_map_pointer, int pre_defined_tileset_value);
-        void smooth_map(tmx_map_type *tmx_map_pointer);
+        void render(fmx_map_type *fmx_map_pointer);
+        void process(fmx_map_type *fmx_map_pointer);
+        void scroll_map(fmx_map_type *fmx_map_pointer, int x_dir, int y_dir);
+        bool tile_visible(fmx_map_type *fmx_map_pointer, int layer_number, int tile_number);
+        void center_on_tile(fmx_map_type *fmx_map_pointer, int tile_ID);
+        void calculate_tile_positions(fmx_map_type *fmx_map_pointer);
+        void calculate_tile_positions(fmx_map_type *fmx_map_pointer, float tile_width_half_specify,float tile_height_half_specify);
+        int  mouse_over_tile(fmx_map_type *fmx_map_pointer);
+        void apply_tileset(fmx_map_type *fmx_map_pointer, int pre_defined_tileset_value);
+        void smooth_map(fmx_map_type *fmx_map_pointer);
 };
 
 #endif //MAP_H_2D

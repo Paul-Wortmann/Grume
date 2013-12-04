@@ -99,7 +99,6 @@ struct effect_type
     effect_type      *next;
 };
 
-
 class effect_manager_class
 {
     public:

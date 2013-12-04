@@ -26,7 +26,7 @@
 #define MAP_GEN_HPP
 
 #include <string>
-#include "loader_tmx.hpp"
+#include "loader_fmx.hpp"
 #include "types.hpp"
 
 // ROOM_MAX should be an even number!
@@ -44,36 +44,36 @@
 #define ROOM_MAX_Y 9
 #define ROOM_MAX_R (int)(sqrt(((ROOM_MAX_X/2) * (ROOM_MAX_X/2)) + ((ROOM_MAX_Y/2) * (ROOM_MAX_Y/2))) + ROOM_PATH)
 
-struct room_type
+struct room_data_type
 {
     i2_type    size;
-    i2_type    center;
+    i2_type    position;
 };
 
 struct map_type
 {
     int            number_of_tiles;
     i2_type        size;
-    tmx_tile_type *tile;
+    fmx_tile_type *tile;
 };
 
 struct map_node_type
 {
     bool           leaf;
-    room_type      room;
+    room_data_type room;
     map_type       data;
     map_node_type *left;
     map_node_type *right;
 };
 
-void map_gen_base(tmx_map_type *tmx_map_pointer);
-void map_gen_BSP_split(map_node_type *map_node);
-void map_gen_BSP (tmx_map_type *tmx_map_pointer);
-void map_gen_BSP (tmx_map_type *tmx_map_pointer, int seed);
-void map_gen_CA  (tmx_map_type *tmx_map_pointer);
-void map_gen_CA  (tmx_map_type *tmx_map_pointer, int seed);
-void map_gen_GG  (tmx_map_type *tmx_map_pointer);
-void map_gen_GG  (tmx_map_type *tmx_map_pointer, int seed);
+void map_gen_base(fmx_map_type *fmx_map_pointer);
+void map_gen_BSP_split(fmx_map_type *fmx_map_pointer, map_node_type *map_node);
+void map_gen_BSP (fmx_map_type *fmx_map_pointer);
+void map_gen_BSP (fmx_map_type *fmx_map_pointer, int seed);
+void map_gen_CA  (fmx_map_type *fmx_map_pointer);
+void map_gen_CA  (fmx_map_type *fmx_map_pointer, int seed);
+void map_gen_GG  (fmx_map_type *fmx_map_pointer);
+void map_gen_GG  (fmx_map_type *fmx_map_pointer, int seed);
 
 #endif //MAP_GEN_HPP
 
