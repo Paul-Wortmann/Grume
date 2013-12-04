@@ -171,6 +171,8 @@
 		<Unit filename="source/core/io.hpp" />
 		<Unit filename="source/core/item_manager.cpp" />
 		<Unit filename="source/core/item_manager.hpp" />
+		<Unit filename="source/core/loader_fmx.cpp" />
+		<Unit filename="source/core/loader_fmx.hpp" />
 		<Unit filename="source/core/loader_md2.cpp" />
 		<Unit filename="source/core/loader_md2.hpp" />
 		<Unit filename="source/core/loader_obj.cpp" />
