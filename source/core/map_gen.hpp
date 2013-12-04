@@ -75,6 +75,7 @@ void map_gen_CA              (fmx_map_type *fmx_map_pointer, int seed);
 void map_gen_GG              (fmx_map_type *fmx_map_pointer);
 void map_gen_GG              (fmx_map_type *fmx_map_pointer, int seed);
 void map_gen_room_connections(fmx_map_type *fmx_map_pointer);
+int  map_gen_room_add        (fmx_map_type *fmx_map_pointer);
 
 #endif //MAP_GEN_HPP
 

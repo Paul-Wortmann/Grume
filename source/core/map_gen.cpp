@@ -337,6 +337,13 @@ void map_gen_BSP_split(fmx_map_type *fmx_map_pointer, map_node_type *map_node)
         map_node->room.position.x = map_node->data.tile[map_node->room.size.x/2].position.x;
         map_node->room.position.y = map_node->data.tile[map_node->room.size.y/2].position.y;
         // Save to room list for future usage?
+        int room_num = map_gen_room_add(fmx_map_pointer);
+        fmx_map_pointer->room[room_num].active                    = true;
+        fmx_map_pointer->room[room_num].size.x                    = map_node->room.size.x;
+        fmx_map_pointer->room[room_num].size.y                    = map_node->room.size.y;
+        fmx_map_pointer->room[room_num].position.x                = map_node->room.position.x;
+        fmx_map_pointer->room[room_num].position.y                = map_node->room.position.y;
+        fmx_map_pointer->room[room_num].number_of_connected_rooms = 0;
     }
 };
 
@@ -603,6 +610,7 @@ void map_gen_GG (fmx_map_type *fmx_map_pointer)
     {
         if (room_node[node_count_1].active)
         {
+            fmx_map_pointer->data.number_of_rooms++;
             room_node[node_count_1].dimension.x = random_int(ROOM_MIN_X,ROOM_MAX_X);
             room_node[node_count_1].dimension.y = random_int(ROOM_MIN_Y,ROOM_MAX_Y);
             int room_start_x = room_node[node_count_1].position.x - (room_node[node_count_1].dimension.x/2);
@@ -615,6 +623,21 @@ void map_gen_GG (fmx_map_type *fmx_map_pointer)
                     fmx_map_pointer->layer[layer_floor].tile[tile_count_temp].tile = TILE_FLOOR;
                 }
             }
+        }
+    }
+    fmx_map_pointer->room = new fmx_room_data_type[fmx_map_pointer->data.number_of_rooms+1];
+    int room_count = 0;
+    for (int node_count_1 = 0; node_count_1 < number_of_circles; node_count_1++)
+    {
+        if (room_node[node_count_1].active)
+        {
+            fmx_map_pointer->room[room_count].active                    = true;
+            fmx_map_pointer->room[room_count].size.x                    = room_node[node_count_1].dimension.x;
+            fmx_map_pointer->room[room_count].size.y                    = room_node[node_count_1].dimension.y;
+            fmx_map_pointer->room[room_count].position.x                = room_node[node_count_1].position.x;
+            fmx_map_pointer->room[room_count].position.y                = room_node[node_count_1].position.y;
+            fmx_map_pointer->room[room_count].number_of_connected_rooms = 0;
+            room_count++;
         }
     }
     // gen connecting paths
@@ -632,3 +655,22 @@ void map_gen_room_connections(fmx_map_type *fmx_map_pointer)
 
 };
 
+int  map_gen_room_add        (fmx_map_type *fmx_map_pointer)
+{
+    int return_value = 0;
+    if (fmx_map_pointer->data.number_of_rooms > 0)
+    {
+        fmx_room_data_type *temp_room_data =  new fmx_room_data_type[fmx_map_pointer->data.number_of_rooms+1];
+        temp_room_data = fmx_map_pointer->room;
+        fmx_map_pointer->data.number_of_rooms++;
+        delete fmx_map_pointer->room;
+        fmx_map_pointer->room = new fmx_room_data_type[fmx_map_pointer->data.number_of_rooms+1];
+        for (int room_count = 0; room_count < fmx_map_pointer->data.number_of_rooms-1; room_count++)
+        {
+            fmx_map_pointer->room[room_count] = temp_room_data[room_count];
+        }
+        delete temp_room_data;
+    }
+    fmx_map_pointer->room = new fmx_room_data_type[fmx_map_pointer->data.number_of_rooms+1];
+    return (return_value);
+};
