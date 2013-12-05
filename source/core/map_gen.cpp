@@ -650,12 +650,21 @@ void map_gen_GG (fmx_map_type *fmx_map_pointer, int seed)
     map_gen_GG(fmx_map_pointer);
 };
 
+int  map_gen_room_check_path(fmx_map_type *fmx_map_pointer, int room_1, int room_2)
+{
+    int return_value = 0;
+    // return number of new floor tiles for path, return 0 if an obstacle was encountered.
+    return (return_value);
+}
+
 void map_gen_room_connect(fmx_map_type *fmx_map_pointer, int room_1, int room_2)
 {
     bool  r1_left    = false;
     bool  r1_right   = false;
     bool  r1_up      = false;
     bool  r1_down    = false;
+    bool  x_first    = false;
+    bool  y_first    = false;
     int   x_length   = 0;
     int   y_length   = 0;
     if (fmx_map_pointer->room[room_1].size.x > fmx_map_pointer->room[room_2].size.x)
