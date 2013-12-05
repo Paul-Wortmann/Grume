@@ -658,15 +658,46 @@ void map_gen_room_connect(fmx_map_type *fmx_map_pointer, int room_1, int room_2)
     bool  r1_down    = false;
     int   x_length   = 0;
     int   y_length   = 0;
-    if (fmx_map_pointer->room[room_1].size.x > fmx_map_pointer->room[room_2].size.x) x_length  = fmx_map_pointer->room[room_1].size.x - fmx_map_pointer->room[room_2].size.x;
-    else x_length  = fmx_map_pointer->room[room_2].size.x - fmx_map_pointer->room[room_1].size.x;
-    if (fmx_map_pointer->room[room_1].size.y > fmx_map_pointer->room[room_2].size.y) y_length  = fmx_map_pointer->room[room_1].size.y - fmx_map_pointer->room[room_2].size.y;
-    else y_length  = fmx_map_pointer->room[room_2].size.y - fmx_map_pointer->room[room_1].size.y;
+    if (fmx_map_pointer->room[room_1].size.x > fmx_map_pointer->room[room_2].size.x)
+    {
+        x_length  = fmx_map_pointer->room[room_1].size.x - fmx_map_pointer->room[room_2].size.x;
+        r1_right  = true;
+    }
+    else
+    {
+        x_length  = fmx_map_pointer->room[room_2].size.x - fmx_map_pointer->room[room_1].size.x;
+        r1_left   = true;
+    }
+    if (fmx_map_pointer->room[room_1].size.y > fmx_map_pointer->room[room_2].size.y)
+    {
+        y_length  = fmx_map_pointer->room[room_1].size.y - fmx_map_pointer->room[room_2].size.y;
+        r1_down   = true;
+    }
+    else
+    {
+        y_length  = fmx_map_pointer->room[room_2].size.y - fmx_map_pointer->room[room_1].size.y;
+        r1_up     = true;
+    }
     float x_ratio_1 = ((fmx_map_pointer->room[room_1].size.x/2)/(x_length - (fmx_map_pointer->room[room_1].size.x/2)));
     float x_ratio_2 = ((fmx_map_pointer->room[room_2].size.x/2)/(x_length - (fmx_map_pointer->room[room_2].size.x/2)));
     float y_ratio_1 = ((fmx_map_pointer->room[room_1].size.y/2)/(y_length - (fmx_map_pointer->room[room_1].size.y/2)));
     float y_ratio_2 = ((fmx_map_pointer->room[room_2].size.y/2)/(y_length - (fmx_map_pointer->room[room_2].size.y/2)));
+    if (r1_up && r1_left)
+    {
 
+    }
+    if (r1_up && r1_right)
+    {
+
+    }
+    if (r1_down && r1_left)
+    {
+
+    }
+    if (r1_down && r1_right)
+    {
+
+    }
 };
 
 void map_gen_room_connections(fmx_map_type *fmx_map_pointer)
