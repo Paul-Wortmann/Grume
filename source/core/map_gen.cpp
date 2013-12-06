@@ -737,6 +737,8 @@ int  map_gen_room_check_path(fmx_map_type *fmx_map_pointer, int room_1, int room
 
 void  map_gen_room_path(fmx_map_type *fmx_map_pointer, int room_1, int room_2, bool x_then_y)
 {
+    fmx_map_pointer->room[room_1].number_of_connected_rooms++;
+    fmx_map_pointer->room[room_2].number_of_connected_rooms++;
     int layer_floor = 0;
     int r1_x = fmx_map_pointer->room[room_1].position.x;
     int r1_y = fmx_map_pointer->room[room_1].position.y;
@@ -826,8 +828,11 @@ void map_gen_room_connect    (fmx_map_type *fmx_map_pointer)
         int room_2 = 1;
         for (int room_count = 0; room_count < fmx_map_pointer->data.number_of_rooms-1; room_count++)
         {
-            if (map_gen_room_check_path(fmx_map_pointer, room_1, room_2, true) > (map_gen_room_check_path(fmx_map_pointer, room_1, room_2, false))) map_gen_room_path(fmx_map_pointer, room_1, room_2, true);
-            else map_gen_room_path(fmx_map_pointer, room_1, room_2, false);
+            if ((fmx_map_pointer->room[room_1].number_of_connected_rooms == 0)&&(fmx_map_pointer->room[room_2].number_of_connected_rooms == 0))
+            {
+                if (map_gen_room_check_path(fmx_map_pointer, room_1, room_2, true) > (map_gen_room_check_path(fmx_map_pointer, room_1, room_2, false))) map_gen_room_path(fmx_map_pointer, room_1, room_2, true);
+                else map_gen_room_path(fmx_map_pointer, room_1, room_2, false);
+            }
             room_1++;
             room_2++;
         }
