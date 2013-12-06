@@ -76,8 +76,7 @@ void map_gen_GG              (fmx_map_type *fmx_map_pointer);
 void map_gen_GG              (fmx_map_type *fmx_map_pointer, int seed);
 int  map_gen_room_check_path (fmx_map_type *fmx_map_pointer, int room_1, int room_2, bool x_then_y);
 void map_gen_room_path       (fmx_map_type *fmx_map_pointer, int room_1, int room_2, bool x_then_y);
-void map_gen_room_connect    (fmx_map_type *fmx_map_pointer, int room_1, int room_2);
-void map_gen_room_connections(fmx_map_type *fmx_map_pointer);
+void map_gen_room_connect    (fmx_map_type *fmx_map_pointer);
 int  map_gen_room_add        (fmx_map_type *fmx_map_pointer);
 
 #endif //MAP_GEN_HPP

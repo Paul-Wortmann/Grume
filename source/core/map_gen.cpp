@@ -361,7 +361,7 @@ void map_gen_BSP(fmx_map_type *fmx_map_pointer)
     map_gen_BSP_split(fmx_map_pointer,temp_map);
     fmx_map_pointer->layer[layer_floor].tile = temp_map->data.tile;
     delete temp_map;
-    map_gen_room_connections(fmx_map_pointer);
+    map_gen_room_connect(fmx_map_pointer);
 };
 
 void map_gen_BSP(fmx_map_type *fmx_map_pointer, int seed)
@@ -641,7 +641,7 @@ void map_gen_GG (fmx_map_type *fmx_map_pointer)
         }
     }
     // gen connecting paths
-    map_gen_room_connections(fmx_map_pointer);
+    map_gen_room_connect(fmx_map_pointer);
 };
 
 void map_gen_GG (fmx_map_type *fmx_map_pointer, int seed)
@@ -818,55 +818,13 @@ void  map_gen_room_path(fmx_map_type *fmx_map_pointer, int room_1, int room_2, b
     }
 }
 
-void map_gen_room_connect(fmx_map_type *fmx_map_pointer, int room_1, int room_2)
-{
-    /*
-    use map_gen_room_check_path
-    use longest path for gen
-    */
-    /*
-    bool  r1_left    = false;
-    bool  r1_right   = false;
-    bool  r1_up      = false;
-    bool  r1_down    = false;
-    bool  x_first    = false;
-    bool  y_first    = false;
-    int   x_length   = 0;
-    int   y_length   = 0;
-    if (fmx_map_pointer->room[room_1].size.x > fmx_map_pointer->room[room_2].size.x)
-    {
-        x_length  = fmx_map_pointer->room[room_1].size.x - fmx_map_pointer->room[room_2].size.x;
-        r1_right  = true;
-    }
-    else
-    {
-        x_length  = fmx_map_pointer->room[room_2].size.x - fmx_map_pointer->room[room_1].size.x;
-        r1_left   = true;
-    }
-    if (fmx_map_pointer->room[room_1].size.y > fmx_map_pointer->room[room_2].size.y)
-    {
-        y_length  = fmx_map_pointer->room[room_1].size.y - fmx_map_pointer->room[room_2].size.y;
-        r1_down   = true;
-    }
-    else
-    {
-        y_length  = fmx_map_pointer->room[room_2].size.y - fmx_map_pointer->room[room_1].size.y;
-        r1_up     = true;
-    }
-    float x_ratio_1 = ((fmx_map_pointer->room[room_1].size.x/2)/(x_length - (fmx_map_pointer->room[room_1].size.x/2)));
-    float x_ratio_2 = ((fmx_map_pointer->room[room_2].size.x/2)/(x_length - (fmx_map_pointer->room[room_2].size.x/2)));
-    float y_ratio_1 = ((fmx_map_pointer->room[room_1].size.y/2)/(y_length - (fmx_map_pointer->room[room_1].size.y/2)));
-    float y_ratio_2 = ((fmx_map_pointer->room[room_2].size.y/2)/(y_length - (fmx_map_pointer->room[room_2].size.y/2)));
-    */
-};
-
-void map_gen_room_connections(fmx_map_type *fmx_map_pointer)
+void map_gen_room_connect    (fmx_map_type *fmx_map_pointer)
 {
     if (fmx_map_pointer->data.number_of_rooms > 0)
     {
         int room_1 = 0;
         int room_2 = 1;
-        for (int room_count = 0; room_count < fmx_map_pointer->data.number_of_rooms-1; room_count+=2)
+        for (int room_count = 0; room_count < fmx_map_pointer->data.number_of_rooms-1; room_count++)
         {
             if (map_gen_room_check_path(fmx_map_pointer, room_1, room_2, true) > (map_gen_room_check_path(fmx_map_pointer, room_1, room_2, false))) map_gen_room_path(fmx_map_pointer, room_1, room_2, true);
             else map_gen_room_path(fmx_map_pointer, room_1, room_2, false);
