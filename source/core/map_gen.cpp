@@ -650,15 +650,98 @@ void map_gen_GG (fmx_map_type *fmx_map_pointer, int seed)
     map_gen_GG(fmx_map_pointer);
 };
 
-int  map_gen_room_check_path(fmx_map_type *fmx_map_pointer, int room_1, int room_2)
+int  map_gen_room_check_path(fmx_map_type *fmx_map_pointer, int room_1, int room_2, bool x_then_y)
 {
+    int layer_floor = 0;
+    int r1_x = fmx_map_pointer->room[room_1].position.x;
+    int r1_y = fmx_map_pointer->room[room_1].position.y;
+    int r2_x = fmx_map_pointer->room[room_2].position.x;
+    int r2_y = fmx_map_pointer->room[room_2].position.y;
     int return_value = 0;
-    // return number of new floor tiles for path, return 0 if an obstacle was encountered.
+    if (x_then_y)
+    {
+        int x_count = r1_x;
+        int y_count = r1_y;
+        if (r1_x > r2_x)
+        {
+            for (x_count = r1_x; x_count > r2_x; x_count--)
+            {
+                int tile_count = x_count + (fmx_map_pointer->data.map_width * (y_count));
+                if (fmx_map_pointer->layer[layer_floor].tile[tile_count].tile == TILE_FLOOR) return_value++;
+            }
+        }
+        else
+        {
+            for (x_count = r1_x; x_count < r2_x; x_count++)
+            {
+                int tile_count = x_count + (fmx_map_pointer->data.map_width * (y_count));
+                if (fmx_map_pointer->layer[layer_floor].tile[tile_count].tile == TILE_FLOOR) return_value++;
+            }
+        }
+        if (r1_y > r2_y)
+        {
+            for (y_count = r1_y; y_count > r2_y; y_count--)
+            {
+                int tile_count = x_count + (fmx_map_pointer->data.map_width * (y_count));
+                if (fmx_map_pointer->layer[layer_floor].tile[tile_count].tile == TILE_FLOOR) return_value++;
+            }
+        }
+        else
+        {
+            for (y_count = r1_y; y_count < r2_y; y_count++)
+            {
+                int tile_count = x_count + (fmx_map_pointer->data.map_width * (y_count));
+                if (fmx_map_pointer->layer[layer_floor].tile[tile_count].tile == TILE_FLOOR) return_value++;
+            }
+        }
+    }
+    else
+    {
+        int x_count = r1_x;
+        int y_count = r1_y;
+        if (r1_y > r2_y)
+        {
+            for (y_count = r1_y; y_count > r2_y; y_count--)
+            {
+                int tile_count = x_count + (fmx_map_pointer->data.map_width * (y_count));
+                if (fmx_map_pointer->layer[layer_floor].tile[tile_count].tile == TILE_FLOOR) return_value++;
+            }
+        }
+        else
+        {
+            for (y_count = r1_y; y_count < r2_y; y_count++)
+            {
+                int tile_count = x_count + (fmx_map_pointer->data.map_width * (y_count));
+                if (fmx_map_pointer->layer[layer_floor].tile[tile_count].tile == TILE_FLOOR) return_value++;
+            }
+        }
+        if (r1_x > r2_x)
+        {
+            for (x_count = r1_x; x_count > r2_x; x_count--)
+            {
+                int tile_count = x_count + (fmx_map_pointer->data.map_width * (y_count));
+                if (fmx_map_pointer->layer[layer_floor].tile[tile_count].tile == TILE_FLOOR) return_value++;
+            }
+        }
+        else
+        {
+            for (x_count = r1_x; x_count < r2_x; x_count++)
+            {
+                int tile_count = x_count + (fmx_map_pointer->data.map_width * (y_count));
+                if (fmx_map_pointer->layer[layer_floor].tile[tile_count].tile == TILE_FLOOR) return_value++;
+            }
+        }
+    }
     return (return_value);
 }
 
 void map_gen_room_connect(fmx_map_type *fmx_map_pointer, int room_1, int room_2)
 {
+    /*
+    use map_gen_room_check_path
+    use longest path for gen
+    */
+    /*
     bool  r1_left    = false;
     bool  r1_right   = false;
     bool  r1_up      = false;
@@ -691,22 +774,7 @@ void map_gen_room_connect(fmx_map_type *fmx_map_pointer, int room_1, int room_2)
     float x_ratio_2 = ((fmx_map_pointer->room[room_2].size.x/2)/(x_length - (fmx_map_pointer->room[room_2].size.x/2)));
     float y_ratio_1 = ((fmx_map_pointer->room[room_1].size.y/2)/(y_length - (fmx_map_pointer->room[room_1].size.y/2)));
     float y_ratio_2 = ((fmx_map_pointer->room[room_2].size.y/2)/(y_length - (fmx_map_pointer->room[room_2].size.y/2)));
-    if (r1_up && r1_left)
-    {
-
-    }
-    if (r1_up && r1_right)
-    {
-
-    }
-    if (r1_down && r1_left)
-    {
-
-    }
-    if (r1_down && r1_right)
-    {
-
-    }
+    */
 };
 
 void map_gen_room_connections(fmx_map_type *fmx_map_pointer)
