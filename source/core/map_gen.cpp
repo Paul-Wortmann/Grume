@@ -799,7 +799,7 @@ void  map_gen_room_path(fmx_map_type *fmx_map_pointer, int room_1, int room_2, b
                 {
                     fmx_map_pointer->room[room_1].connected_rooms[room_count] = temp_room_list[room_count];
                 }
-                delete temp_room_list;
+                //if (temp_room_list) delete temp_room_list;
             }
             fmx_map_pointer->room[room_1].connected_rooms[fmx_map_pointer->room[room_1].number_of_connected_rooms-1] = room_2;
        }
@@ -829,7 +829,7 @@ void  map_gen_room_path(fmx_map_type *fmx_map_pointer, int room_1, int room_2, b
                 {
                     fmx_map_pointer->room[room_2].connected_rooms[room_count] = temp_room_list[room_count];
                 }
-                delete temp_room_list;
+                //if (temp_room_list) delete temp_room_list;
             }
             fmx_map_pointer->room[room_2].connected_rooms[fmx_map_pointer->room[room_2].number_of_connected_rooms-1] = room_1;
         }
@@ -924,6 +924,46 @@ void map_gen_room_connect    (fmx_map_type *fmx_map_pointer)
 {
     if (fmx_map_pointer->data.number_of_rooms > 0)
     {
+        for (int room_count_1 = 0; room_count_1 < fmx_map_pointer->data.number_of_rooms; room_count_1++)
+        {
+            int closest_room_1 = room_count_1;
+            int closest_room_2 = room_count_1;
+            int distance_closest_room_1 = fmx_map_pointer->data.number_of_tiles;
+            int distance_closest_room_2 = fmx_map_pointer->data.number_of_tiles;
+            for (int room_count_2 = 0; room_count_2 < fmx_map_pointer->data.number_of_rooms; room_count_2++)
+            {
+                if (room_count_1 != room_count_2)
+                {
+                    int distance_temp_1 = map_gen_room_check_path(fmx_map_pointer, room_count_1, room_count_2, true );
+                    int distance_temp_2 = map_gen_room_check_path(fmx_map_pointer, room_count_1, room_count_2, false);
+                    int distance_temp = (distance_temp_1 < distance_temp_2) ? distance_temp_1 : distance_temp_2;
+                    if  ((distance_temp > 0) && (distance_temp < distance_closest_room_2))
+                    {
+                        distance_closest_room_1 = distance_closest_room_2;
+                        closest_room_1          = closest_room_2;
+                        distance_closest_room_2 = distance_temp;
+                        closest_room_2          = room_count_2;
+                    }
+                }
+            }
+            //if (room_count_1 != closest_room_2)
+            {
+                if (map_gen_room_check_path(fmx_map_pointer, room_count_1, closest_room_2, true) > (map_gen_room_check_path(fmx_map_pointer, room_count_1, closest_room_2, false))) map_gen_room_path(fmx_map_pointer, room_count_1, closest_room_2, true);
+                else map_gen_room_path(fmx_map_pointer, room_count_1, closest_room_2, false);
+            }
+            {
+                if (fmx_map_pointer->room[closest_room_1].number_of_connected_rooms < 1)
+                {
+                    if (map_gen_room_check_path(fmx_map_pointer, room_count_1, closest_room_1, true) > (map_gen_room_check_path(fmx_map_pointer, room_count_1, closest_room_1, false))) map_gen_room_path(fmx_map_pointer, room_count_1, closest_room_1, true);
+                    else map_gen_room_path(fmx_map_pointer, room_count_1, closest_room_1, false);
+                }
+            }
+        }
+    }
+
+/*
+    if (fmx_map_pointer->data.number_of_rooms > 0)
+    {
         int room_1 = 0;
         int room_2 = 1;
         for (int room_count = 0; room_count < fmx_map_pointer->data.number_of_rooms; room_count++)
@@ -937,6 +977,7 @@ void map_gen_room_connect    (fmx_map_type *fmx_map_pointer)
             room_2++;
         }
     }
+*/
 };
 
 int  map_gen_room_add        (fmx_map_type *fmx_map_pointer)
