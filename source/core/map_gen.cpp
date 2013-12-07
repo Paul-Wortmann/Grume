@@ -650,15 +650,6 @@ void map_gen_GG (fmx_map_type *fmx_map_pointer, int seed)
     map_gen_GG(fmx_map_pointer);
 };
 
-bool  map_gen_is_path(fmx_map_type *fmx_map_pointer, int room_1, int room_2)
-{
-    bool return_value = false;
-    {
-
-    }
-    return (return_value);
-}
-
 int  map_gen_room_check_path(fmx_map_type *fmx_map_pointer, int room_1, int room_2, bool x_then_y)
 {
     int layer_floor          = 0;
@@ -946,38 +937,15 @@ void map_gen_room_connect    (fmx_map_type *fmx_map_pointer)
                     }
                 }
             }
-            //if (room_count_1 != closest_room_2)
+            if (map_gen_room_check_path(fmx_map_pointer, room_count_1, closest_room_2, true) > (map_gen_room_check_path(fmx_map_pointer, room_count_1, closest_room_2, false))) map_gen_room_path(fmx_map_pointer, room_count_1, closest_room_2, true);
+            else map_gen_room_path(fmx_map_pointer, room_count_1, closest_room_2, false);
+            if (fmx_map_pointer->room[closest_room_1].number_of_connected_rooms < 1)
             {
-                if (map_gen_room_check_path(fmx_map_pointer, room_count_1, closest_room_2, true) > (map_gen_room_check_path(fmx_map_pointer, room_count_1, closest_room_2, false))) map_gen_room_path(fmx_map_pointer, room_count_1, closest_room_2, true);
-                else map_gen_room_path(fmx_map_pointer, room_count_1, closest_room_2, false);
-            }
-            {
-                if (fmx_map_pointer->room[closest_room_1].number_of_connected_rooms < 1)
-                {
-                    if (map_gen_room_check_path(fmx_map_pointer, room_count_1, closest_room_1, true) > (map_gen_room_check_path(fmx_map_pointer, room_count_1, closest_room_1, false))) map_gen_room_path(fmx_map_pointer, room_count_1, closest_room_1, true);
-                    else map_gen_room_path(fmx_map_pointer, room_count_1, closest_room_1, false);
-                }
+                if (map_gen_room_check_path(fmx_map_pointer, room_count_1, closest_room_1, true) > (map_gen_room_check_path(fmx_map_pointer, room_count_1, closest_room_1, false))) map_gen_room_path(fmx_map_pointer, room_count_1, closest_room_1, true);
+                else map_gen_room_path(fmx_map_pointer, room_count_1, closest_room_1, false);
             }
         }
     }
-
-/*
-    if (fmx_map_pointer->data.number_of_rooms > 0)
-    {
-        int room_1 = 0;
-        int room_2 = 1;
-        for (int room_count = 0; room_count < fmx_map_pointer->data.number_of_rooms; room_count++)
-        {
-            if ((fmx_map_pointer->room[room_1].number_of_connected_rooms == 0)&&(fmx_map_pointer->room[room_2].number_of_connected_rooms == 0))
-            {
-                if (map_gen_room_check_path(fmx_map_pointer, room_1, room_2, true) > (map_gen_room_check_path(fmx_map_pointer, room_1, room_2, false))) map_gen_room_path(fmx_map_pointer, room_1, room_2, true);
-                else map_gen_room_path(fmx_map_pointer, room_1, room_2, false);
-            }
-            room_1++;
-            room_2++;
-        }
-    }
-*/
 };
 
 int  map_gen_room_add        (fmx_map_type *fmx_map_pointer)
