@@ -68,7 +68,7 @@ extern "C" int main(int argc, char** argv)
                 game.core.log.file_write("Starting default graphics configuration...");
             if (!game.core.graphics.init_sdl())
             {
-                game.core.log.file_write("terminating game...");
+                game.core.log.file_write("Terminating game...");
                 game.state = STATE_QUIT;
             }
     }
