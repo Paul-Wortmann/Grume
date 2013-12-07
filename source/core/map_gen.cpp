@@ -650,6 +650,11 @@ void map_gen_GG (fmx_map_type *fmx_map_pointer, int seed)
     map_gen_GG(fmx_map_pointer);
 };
 
+bool map_gen_room_flood_fill (fmx_map_type *fmx_map_pointer)
+{
+
+};
+
 int  map_gen_room_check_path(fmx_map_type *fmx_map_pointer, int room_1, int room_2, bool x_then_y)
 {
     int layer_floor          = 0;
