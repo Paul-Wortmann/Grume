@@ -363,8 +363,8 @@ void map_gen_BSP(fmx_map_type *fmx_map_pointer)
     map_gen_BSP_split(fmx_map_pointer,temp_map);
     fmx_map_pointer->layer[layer_floor].tile = temp_map->data.tile;
     delete temp_map;
-    game.core.log.file_write("-> Generated map with rooms -> ",fmx_map_pointer->data.number_of_rooms);
     map_gen_room_find(fmx_map_pointer);
+    //game.core.log.file_write("-> Generated map with rooms -> ",fmx_map_pointer->data.number_of_rooms);
     map_gen_room_connect(fmx_map_pointer);
 };
 
@@ -963,7 +963,6 @@ void map_gen_room_connect    (fmx_map_type *fmx_map_pointer)
         {
             int closest_room_1 = room_count_1;
             int closest_room_2 = room_count_1;
-            int distance_closest_room_1 = fmx_map_pointer->data.number_of_tiles;
             int distance_closest_room_2 = fmx_map_pointer->data.number_of_tiles;
             for (int room_count_2 = 0; room_count_2 < fmx_map_pointer->data.number_of_rooms; room_count_2++)
             {
@@ -974,7 +973,6 @@ void map_gen_room_connect    (fmx_map_type *fmx_map_pointer)
                     int distance_temp = (distance_temp_1 < distance_temp_2) ? distance_temp_1 : distance_temp_2;
                     if  ((distance_temp > 0) && (distance_temp < distance_closest_room_2))
                     {
-                        distance_closest_room_1 = distance_closest_room_2;
                         closest_room_1          = closest_room_2;
                         distance_closest_room_2 = distance_temp;
                         closest_room_2          = room_count_2;
@@ -994,28 +992,89 @@ void map_gen_room_connect    (fmx_map_type *fmx_map_pointer)
 
 int  map_gen_room_add        (fmx_map_type *fmx_map_pointer)
 {
-    int return_value = 0;
     if (fmx_map_pointer->data.number_of_rooms > 0)
     {
-        fmx_room_data_type *temp_room_data =  new fmx_room_data_type[fmx_map_pointer->data.number_of_rooms+1];
+        fmx_room_data_type *temp_room_data =  new fmx_room_data_type[fmx_map_pointer->data.number_of_rooms];
         temp_room_data = fmx_map_pointer->room;
-        fmx_map_pointer->data.number_of_rooms++;
-        delete fmx_map_pointer->room;
         fmx_map_pointer->room = new fmx_room_data_type[fmx_map_pointer->data.number_of_rooms+1];
-        for (int room_count = 0; room_count < fmx_map_pointer->data.number_of_rooms-1; room_count++)
+        for (int room_count = 0; room_count < fmx_map_pointer->data.number_of_rooms; room_count++)
         {
             fmx_map_pointer->room[room_count] = temp_room_data[room_count];
         }
-        //delete temp_room_data;
+        fmx_map_pointer->data.number_of_rooms++;
     }
-    else fmx_map_pointer->data.number_of_rooms++;
-    fmx_map_pointer->room = new fmx_room_data_type[fmx_map_pointer->data.number_of_rooms+1];
+    else
+    {
+        fmx_map_pointer->data.number_of_rooms = 1;
+        fmx_map_pointer->room = new fmx_room_data_type[fmx_map_pointer->data.number_of_rooms];
+    }
     return (fmx_map_pointer->data.number_of_rooms-1);
+};
+
+room_data_type map_gen_room_find_stats (fmx_map_type *fmx_map_pointer, flood_fill_type *fill_data, int tile_number)
+{
+    room_data_type return_data;
+    return_data.size.x     = 0;
+    return_data.size.y     = 0;
+    int tile_count         = tile_number;
+    while (fill_data[tile_count].tile_data == TILE_FLOOR)
+    {
+        return_data.size.x++;
+        tile_count++;
+    }
+    tile_count = tile_number;
+    while (fill_data[tile_count].tile_data == TILE_FLOOR)
+    {
+        return_data.size.y++;
+        tile_count += fmx_map_pointer->data.map_width;
+    }
+    return_data.position.x = tile_number + (return_data.size.x / 2);
+    return_data.position.y = tile_number + ((return_data.size.y / 2) * fmx_map_pointer->data.map_width);
+    map_gen_flood_fill_tile(fmx_map_pointer,fill_data,tile_number);
+    return (return_data);
 };
 
 void map_gen_room_find       (fmx_map_type *fmx_map_pointer)
 {
-    //use flood fill to find rooms!
-    // then add them to the room list.
-//    here!
+    int            layer_floor = 0;
+    int            room_number = -1;
+    room_data_type room_data;
+    flood_fill_type fill_data[fmx_map_pointer->data.number_of_tiles];
+    fmx_map_pointer->data.number_of_rooms = 0;
+    for (int tile_count = 0; tile_count < fmx_map_pointer->data.number_of_tiles; tile_count++)
+    {
+        fill_data[tile_count].tile_data       = fmx_map_pointer->layer[layer_floor].tile[tile_count].tile ;
+        fill_data[tile_count].processed       = false;
+        fill_data[tile_count].adjoining_tile  = false;
+    }
+    for (int tile_count = 0; tile_count < fmx_map_pointer->data.number_of_tiles; tile_count++)
+    {
+        if ((fill_data[tile_count].tile_data == TILE_FLOOR) && (!fill_data[tile_count].processed))
+        {
+            room_data   = map_gen_room_find_stats (fmx_map_pointer,fill_data,tile_count);
+            room_number = map_gen_room_add        (fmx_map_pointer);
+            fmx_map_pointer->room[room_number].active                    = true;
+            fmx_map_pointer->room[room_number].size.x                    = room_data.size.x;
+            fmx_map_pointer->room[room_number].size.y                    = room_data.size.y;
+            fmx_map_pointer->room[room_number].position.x                = room_data.position.x;
+            fmx_map_pointer->room[room_number].position.y                = room_data.position.y;
+            fmx_map_pointer->room[room_number].number_of_connected_rooms = 0;
+        }
+    }
+            game.core.log.file_write("-> Found rooms -> ",fmx_map_pointer->data.number_of_rooms);
+            //if (room_number >= 1)
+            for (int room_number = 0; room_number < fmx_map_pointer->data.number_of_rooms; room_number++)
+            {
+                //room_number = 0;
+                game.core.log.file_write("-> Room - ",room_number," - size.x - ",fmx_map_pointer->room[room_number].size.x);
+                game.core.log.file_write("-> Room - ",room_number," - size.y - ",fmx_map_pointer->room[room_number].size.y);
+                game.core.log.file_write("-> Room - ",room_number," - position.x - ",fmx_map_pointer->room[room_number].position.x);
+                game.core.log.file_write("-> Room - ",room_number," - position.y - ",fmx_map_pointer->room[room_number].position.y);
+            }
 };
+
+
+
+
+
+

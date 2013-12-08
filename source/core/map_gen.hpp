@@ -75,22 +75,23 @@ struct map_node_type
     map_node_type *right;
 };
 
-void map_gen_base            (fmx_map_type *fmx_map_pointer);
-void map_gen_BSP_split       (fmx_map_type *fmx_map_pointer, map_node_type *map_node);
-void map_gen_BSP             (fmx_map_type *fmx_map_pointer);
-void map_gen_BSP             (fmx_map_type *fmx_map_pointer, int seed);
-void map_gen_CA              (fmx_map_type *fmx_map_pointer);
-void map_gen_CA              (fmx_map_type *fmx_map_pointer, int seed);
-void map_gen_RC_internal     (fmx_map_type *fmx_map_pointer);
-void map_gen_RC              (fmx_map_type *fmx_map_pointer, int seed);
-void map_gen_RC              (fmx_map_type *fmx_map_pointer);
-int  map_gen_flood_fill_tile (fmx_map_type *fmx_map_pointer, flood_fill_type *fill_data, int tile_number);
-bool map_gen_room_flood_fill (fmx_map_type *fmx_map_pointer);
-int  map_gen_room_check_path (fmx_map_type *fmx_map_pointer, int room_1, int room_2, bool x_then_y);
-void map_gen_room_path       (fmx_map_type *fmx_map_pointer, int room_1, int room_2, bool x_then_y);
-void map_gen_room_connect    (fmx_map_type *fmx_map_pointer);
-void map_gen_room_find       (fmx_map_type *fmx_map_pointer);
-int  map_gen_room_add        (fmx_map_type *fmx_map_pointer);
+void           map_gen_base            (fmx_map_type *fmx_map_pointer);
+void           map_gen_BSP_split       (fmx_map_type *fmx_map_pointer, map_node_type *map_node);
+void           map_gen_BSP             (fmx_map_type *fmx_map_pointer);
+void           map_gen_BSP             (fmx_map_type *fmx_map_pointer, int seed);
+void           map_gen_CA              (fmx_map_type *fmx_map_pointer);
+void           map_gen_CA              (fmx_map_type *fmx_map_pointer, int seed);
+void           map_gen_RC_internal     (fmx_map_type *fmx_map_pointer);
+void           map_gen_RC              (fmx_map_type *fmx_map_pointer, int seed);
+void           map_gen_RC              (fmx_map_type *fmx_map_pointer);
+int            map_gen_flood_fill_tile (fmx_map_type *fmx_map_pointer, flood_fill_type *fill_data, int tile_number);
+bool           map_gen_room_flood_fill (fmx_map_type *fmx_map_pointer);
+int            map_gen_room_check_path (fmx_map_type *fmx_map_pointer, int room_1, int room_2, bool x_then_y);
+void           map_gen_room_path       (fmx_map_type *fmx_map_pointer, int room_1, int room_2, bool x_then_y);
+void           map_gen_room_connect    (fmx_map_type *fmx_map_pointer);
+room_data_type map_gen_room_find_stats (fmx_map_type *fmx_map_pointer, flood_fill_type *fill_data, int tile_number);
+void           map_gen_room_find       (fmx_map_type *fmx_map_pointer);
+int            map_gen_room_add        (fmx_map_type *fmx_map_pointer);
 
 #endif //MAP_GEN_HPP
 
