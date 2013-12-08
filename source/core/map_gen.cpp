@@ -804,7 +804,6 @@ int  map_gen_room_check_path(fmx_map_type *fmx_map_pointer, int room_1, int room
 
 void  map_gen_room_path(fmx_map_type *fmx_map_pointer, int room_1, int room_2, bool x_then_y)
 {
-
     //if (map_gen_is_path(fmx_map_pointer,room_1,room_2))
     bool connect_rooms = true;
     {
@@ -1017,6 +1016,8 @@ room_data_type map_gen_room_find_stats (fmx_map_type *fmx_map_pointer, flood_fil
     return_data.size.x     = 0;
     return_data.size.y     = 0;
     int tile_count         = tile_number;
+    int tile_x             = tile_number % fmx_map_pointer->data.map_width;
+    int tile_y             = tile_number / fmx_map_pointer->data.map_width;
     while (fill_data[tile_count].tile_data == TILE_FLOOR)
     {
         return_data.size.x++;
@@ -1028,8 +1029,9 @@ room_data_type map_gen_room_find_stats (fmx_map_type *fmx_map_pointer, flood_fil
         return_data.size.y++;
         tile_count += fmx_map_pointer->data.map_width;
     }
-    return_data.position.x = tile_number + (return_data.size.x / 2);
-    return_data.position.y = tile_number + ((return_data.size.y / 2) * fmx_map_pointer->data.map_width);
+
+    return_data.position.x = tile_x + (return_data.size.x / 2);
+    return_data.position.y = tile_y + (return_data.size.y / 2);
     map_gen_flood_fill_tile(fmx_map_pointer,fill_data,tile_number);
     return (return_data);
 };
