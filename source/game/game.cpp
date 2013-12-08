@@ -641,7 +641,7 @@ void game_class::process(void)
         if (game.core.io.key_h) // generate a random GG dungeon
         {
             game.loading_screen.display("data/loading_screen.png");
-            map_gen_GG(&fmx_map);
+            map_gen_RC(&fmx_map);
             game.map_2D.smooth_map(&fmx_map);
             game.map_2D.apply_tileset(&fmx_map,MAP_CAVE);
             game.map_2D.calculate_tile_positions(&fmx_map,DEFAULT_FRAME_WIDTH/game.zoom.current/2.0f,DEFAULT_FRAME_HEIGHT/game.zoom.current/2.0f);
