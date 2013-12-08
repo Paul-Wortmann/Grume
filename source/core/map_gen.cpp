@@ -661,13 +661,10 @@ bool map_gen_room_flood_fill (fmx_map_type *fmx_map_pointer)
     int  layer_floor  = 0;
     bool return_value = true;
     flood_fill_type fill_data[fmx_map_pointer->data.number_of_tiles];
-    for (int tile_count = 0; tile_count < fmx_map_pointer->data.number_of_tiles; tile_count++)
+    for(int tile_count = 0; tile_count < fmx_map_pointer->data.number_of_tiles; tile_count++)
     {
         if (fmx_map_pointer->layer[layer_floor].tile[tile_count].tile == TILE_FLOOR) floor_count++;
         if ((floor_count == 1) && (first_floor < 0)) first_floor = tile_count;
-    }
-    for(int tile_count = 0; tile_count < fmx_map_pointer->data.number_of_tiles; tile_count++)
-    {
         fill_data[tile_count].tile_data       = fmx_map_pointer->layer[layer_floor].tile[tile_count].tile ;
         fill_data[tile_count].processed       = false;
         fill_data[tile_count].adjoining_tile  = false;
