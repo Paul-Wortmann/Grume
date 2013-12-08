@@ -349,7 +349,7 @@ void map_gen_BSP_split(fmx_map_type *fmx_map_pointer, map_node_type *map_node)
     }
 };
 
-void map_gen_BSP(fmx_map_type *fmx_map_pointer)
+void map_gen_BSP_internal(fmx_map_type *fmx_map_pointer)
 {
     int layer_floor                = 0;
     map_gen_base(fmx_map_pointer);
@@ -366,6 +366,12 @@ void map_gen_BSP(fmx_map_type *fmx_map_pointer)
     map_gen_room_find(fmx_map_pointer);
     //game.core.log.file_write("-> Generated map with rooms -> ",fmx_map_pointer->data.number_of_rooms);
     map_gen_room_connect(fmx_map_pointer);
+};
+
+void map_gen_BSP (fmx_map_type *fmx_map_pointer)
+{
+    map_gen_BSP_internal(fmx_map_pointer);
+    while (!map_gen_room_flood_fill(fmx_map_pointer)) map_gen_BSP_internal(fmx_map_pointer);
 };
 
 void map_gen_BSP(fmx_map_type *fmx_map_pointer, int seed)
@@ -1063,16 +1069,6 @@ void map_gen_room_find       (fmx_map_type *fmx_map_pointer)
             fmx_map_pointer->room[room_number].number_of_connected_rooms = 0;
         }
     }
-            game.core.log.file_write("-> Found rooms -> ",fmx_map_pointer->data.number_of_rooms);
-            //if (room_number >= 1)
-            for (int room_number = 0; room_number < fmx_map_pointer->data.number_of_rooms; room_number++)
-            {
-                //room_number = 0;
-                game.core.log.file_write("-> Room - ",room_number," - size.x - ",fmx_map_pointer->room[room_number].size.x);
-                game.core.log.file_write("-> Room - ",room_number," - size.y - ",fmx_map_pointer->room[room_number].size.y);
-                game.core.log.file_write("-> Room - ",room_number," - position.x - ",fmx_map_pointer->room[room_number].position.x);
-                game.core.log.file_write("-> Room - ",room_number," - position.y - ",fmx_map_pointer->room[room_number].position.y);
-            }
 };
 
 
