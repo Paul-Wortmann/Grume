@@ -337,6 +337,7 @@ void map_gen_BSP_split(fmx_map_type *fmx_map_pointer, map_node_type *map_node)
         map_node->room.position.x = map_node->data.tile[map_node->room.size.x/2].position.x;
         map_node->room.position.y = map_node->data.tile[map_node->room.size.y/2].position.y;
         // Save to room list for future usage?
+        /*
         int room_num = map_gen_room_add(fmx_map_pointer);
         fmx_map_pointer->room[room_num].active                    = true;
         fmx_map_pointer->room[room_num].size.x                    = map_node->room.size.x;
@@ -344,6 +345,7 @@ void map_gen_BSP_split(fmx_map_type *fmx_map_pointer, map_node_type *map_node)
         fmx_map_pointer->room[room_num].position.x                = map_node->room.position.x;
         fmx_map_pointer->room[room_num].position.y                = map_node->room.position.y;
         fmx_map_pointer->room[room_num].number_of_connected_rooms = 0;
+        */
     }
 };
 
@@ -361,6 +363,8 @@ void map_gen_BSP(fmx_map_type *fmx_map_pointer)
     map_gen_BSP_split(fmx_map_pointer,temp_map);
     fmx_map_pointer->layer[layer_floor].tile = temp_map->data.tile;
     delete temp_map;
+    game.core.log.file_write("-> Generated map with rooms -> ",fmx_map_pointer->data.number_of_rooms);
+    map_gen_room_find(fmx_map_pointer);
     map_gen_room_connect(fmx_map_pointer);
 };
 
@@ -374,12 +378,6 @@ void map_gen_CA (fmx_map_type *fmx_map_pointer)
 {
     int layer_floor                = 0;
     map_gen_base(fmx_map_pointer);
-    struct flood_fill_type
-    {
-        int  tile_data;
-        bool processed;
-        bool adjoining_tile;
-    };
     flood_fill_type fill_data[fmx_map_pointer->data.number_of_tiles];
     bool ca_map_good               = false;
     int  ca_minimum_cave_size      = 60;
@@ -480,18 +478,18 @@ void map_gen_CA (fmx_map_type *fmx_map_pointer)
         }
         // we already know these are floor tiles, so mark as part of the fill.
         int middle_tile_number = ((fmx_map_pointer->data.number_of_tiles/2)+(fmx_map_pointer->data.map_width/2));
-        fill_data[middle_tile_number].processed                            = true;
-        fill_data[middle_tile_number+1].processed                          = true;
-        fill_data[middle_tile_number-1].processed                          = true;
+        fill_data[middle_tile_number].processed                                        = true;
+        fill_data[middle_tile_number+1].processed                                      = true;
+        fill_data[middle_tile_number-1].processed                                      = true;
         fill_data[middle_tile_number+fmx_map_pointer->data.map_width].processed        = true;
         fill_data[middle_tile_number+fmx_map_pointer->data.map_width+1].processed      = true;
         fill_data[middle_tile_number+fmx_map_pointer->data.map_width-1].processed      = true;
         fill_data[middle_tile_number-fmx_map_pointer->data.map_width].processed        = true;
         fill_data[middle_tile_number-fmx_map_pointer->data.map_width+1].processed      = true;
         fill_data[middle_tile_number-fmx_map_pointer->data.map_width-1].processed      = true;
-        fill_data[middle_tile_number].adjoining_tile                       = true;
-        fill_data[middle_tile_number+1].adjoining_tile                     = true;
-        fill_data[middle_tile_number-1].adjoining_tile                     = true;
+        fill_data[middle_tile_number].adjoining_tile                                   = true;
+        fill_data[middle_tile_number+1].adjoining_tile                                 = true;
+        fill_data[middle_tile_number-1].adjoining_tile                                 = true;
         fill_data[middle_tile_number+fmx_map_pointer->data.map_width].adjoining_tile   = true;
         fill_data[middle_tile_number+fmx_map_pointer->data.map_width+1].adjoining_tile = true;
         fill_data[middle_tile_number+fmx_map_pointer->data.map_width-1].adjoining_tile = true;
@@ -569,7 +567,7 @@ void map_gen_CA (fmx_map_type *fmx_map_pointer, int seed)
     map_gen_CA(fmx_map_pointer);
 };
 
-void map_gen_GG (fmx_map_type *fmx_map_pointer)
+void map_gen_RC_internal (fmx_map_type *fmx_map_pointer)
 {
     int layer_floor = 0;
     map_gen_base(fmx_map_pointer);
@@ -644,15 +642,70 @@ void map_gen_GG (fmx_map_type *fmx_map_pointer)
     map_gen_room_connect(fmx_map_pointer);
 };
 
-void map_gen_GG (fmx_map_type *fmx_map_pointer, int seed)
+void map_gen_RC (fmx_map_type *fmx_map_pointer, int seed)
 {
     srand(seed);
-    map_gen_GG(fmx_map_pointer);
+    map_gen_RC(fmx_map_pointer);
+};
+
+void map_gen_RC (fmx_map_type *fmx_map_pointer)
+{
+    map_gen_RC_internal(fmx_map_pointer);
+    while (!map_gen_room_flood_fill(fmx_map_pointer)) map_gen_RC_internal(fmx_map_pointer);
 };
 
 bool map_gen_room_flood_fill (fmx_map_type *fmx_map_pointer)
 {
-
+    int  floor_count  = 0;
+    int  first_floor  = -1;
+    int  layer_floor  = 0;
+    bool return_value = true;
+    flood_fill_type fill_data[fmx_map_pointer->data.number_of_tiles];
+    for (int tile_count = 0; tile_count < fmx_map_pointer->data.number_of_tiles; tile_count++)
+    {
+        if (fmx_map_pointer->layer[layer_floor].tile[tile_count].tile == TILE_FLOOR) floor_count++;
+        if ((floor_count == 1) && (first_floor < 0)) first_floor = tile_count;
+    }
+    for(int tile_count = 0; tile_count < fmx_map_pointer->data.number_of_tiles; tile_count++)
+    {
+        fill_data[tile_count].tile_data       = fmx_map_pointer->layer[layer_floor].tile[tile_count].tile ;
+        fill_data[tile_count].processed       = false;
+        fill_data[tile_count].adjoining_tile  = false;
+    }
+    fill_data[first_floor].processed      = true;
+    fill_data[first_floor].adjoining_tile = true;
+    int   number_found         = 1;
+    int   temp_tile            = 0;
+    bool  is_an_adjoining_tile = false;
+    for(int repeat_count = 0; repeat_count < ((fmx_map_pointer->data.map_width+fmx_map_pointer->data.map_height)/2); repeat_count++)
+    {
+        for(int tile_count = 0; tile_count < fmx_map_pointer->data.number_of_tiles; tile_count++)
+        {
+            // we don't need to check if temp_tile is going passed the borders as the borders are always walls
+            is_an_adjoining_tile  = false;
+            temp_tile = tile_count+1;
+            if((temp_tile >= 0) && (temp_tile <= fmx_map_pointer->data.number_of_tiles) && (fill_data[temp_tile].adjoining_tile)) is_an_adjoining_tile = true;
+            temp_tile = tile_count-1;
+            if((temp_tile >= 0) && (temp_tile <= fmx_map_pointer->data.number_of_tiles) && (fill_data[temp_tile].adjoining_tile)) is_an_adjoining_tile = true;
+            temp_tile = tile_count+fmx_map_pointer->data.map_width;
+            if((temp_tile >= 0) && (temp_tile <= fmx_map_pointer->data.number_of_tiles) && (fill_data[temp_tile].adjoining_tile)) is_an_adjoining_tile = true;
+            temp_tile = tile_count-fmx_map_pointer->data.map_width;
+            if((temp_tile >= 0) && (temp_tile <= fmx_map_pointer->data.number_of_tiles) && (fill_data[temp_tile].adjoining_tile)) is_an_adjoining_tile = true;
+            fill_data[tile_count].processed = true;
+            if ((is_an_adjoining_tile) and (fill_data[tile_count].tile_data == TILE_FLOOR))
+            {
+                fill_data[tile_count].adjoining_tile = true;
+                number_found++;
+            }
+        }
+    }
+    if (number_found < floor_count) return_value = false;
+    if (return_value)
+    {
+        game.core.log.file_write("-> Flood fill - floor count  -> ",floor_count);
+        game.core.log.file_write("-> Flood fill - number found -> ",number_found);
+    }
+    return (return_value);
 };
 
 int  map_gen_room_check_path(fmx_map_type *fmx_map_pointer, int room_1, int room_2, bool x_then_y)
@@ -967,8 +1020,16 @@ int  map_gen_room_add        (fmx_map_type *fmx_map_pointer)
         {
             fmx_map_pointer->room[room_count] = temp_room_data[room_count];
         }
-        delete temp_room_data;
+        //delete temp_room_data;
     }
+    else fmx_map_pointer->data.number_of_rooms++;
     fmx_map_pointer->room = new fmx_room_data_type[fmx_map_pointer->data.number_of_rooms+1];
-    return (return_value);
+    return (fmx_map_pointer->data.number_of_rooms-1);
+};
+
+void map_gen_room_find       (fmx_map_type *fmx_map_pointer)
+{
+    //use flood fill to find rooms!
+    // then add them to the room list.
+//    here!
 };

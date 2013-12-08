@@ -35,7 +35,9 @@
 #define TILE_NONE  -1
 #define TILE_FLOOR  1
 #define TILE_WALL   2
-#define TILE_PATH   3
+#define TILE_DOOR   3
+#define TILE_EXIT   4
+#define TILE_PATH   5
 
 #define ROOM_PATH  2
 #define ROOM_MIN_X 7
@@ -43,6 +45,13 @@
 #define ROOM_MAX_X 9
 #define ROOM_MAX_Y 9
 #define ROOM_MAX_R (int)(sqrt(((ROOM_MAX_X/2) * (ROOM_MAX_X/2)) + ((ROOM_MAX_Y/2) * (ROOM_MAX_Y/2))) + ROOM_PATH)
+
+struct flood_fill_type
+{
+    int  tile_data;
+    bool processed;
+    bool adjoining_tile;
+};
 
 struct room_data_type
 {
@@ -72,12 +81,14 @@ void map_gen_BSP             (fmx_map_type *fmx_map_pointer);
 void map_gen_BSP             (fmx_map_type *fmx_map_pointer, int seed);
 void map_gen_CA              (fmx_map_type *fmx_map_pointer);
 void map_gen_CA              (fmx_map_type *fmx_map_pointer, int seed);
-void map_gen_GG              (fmx_map_type *fmx_map_pointer);
-void map_gen_GG              (fmx_map_type *fmx_map_pointer, int seed);
+void map_gen_RC_internal     (fmx_map_type *fmx_map_pointer);
+void map_gen_RC              (fmx_map_type *fmx_map_pointer, int seed);
+void map_gen_RC              (fmx_map_type *fmx_map_pointer);
 bool map_gen_room_flood_fill (fmx_map_type *fmx_map_pointer);
 int  map_gen_room_check_path (fmx_map_type *fmx_map_pointer, int room_1, int room_2, bool x_then_y);
 void map_gen_room_path       (fmx_map_type *fmx_map_pointer, int room_1, int room_2, bool x_then_y);
 void map_gen_room_connect    (fmx_map_type *fmx_map_pointer);
+void map_gen_room_find       (fmx_map_type *fmx_map_pointer);
 int  map_gen_room_add        (fmx_map_type *fmx_map_pointer);
 
 #endif //MAP_GEN_HPP
