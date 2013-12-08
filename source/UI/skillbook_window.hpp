@@ -29,6 +29,7 @@
 #include "UI_manager.hpp"
 
 void setup_skillbook_window(int UID);
+void process_skillbook_item(UI_form_struct *UI_form_pointer,int element_number);
 void process_skillbook_window(UI_form_struct *UI_form_pointer);
 
 #endif // SKILLBOOK_WINDOW_H

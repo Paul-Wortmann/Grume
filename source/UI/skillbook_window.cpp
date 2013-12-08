@@ -716,6 +716,36 @@ void setup_skillbook_window(int UID)
     UI_form_pointer->data.element[element_number].font                        = UI_form_pointer->data.font;
 };
 
+void process_skillbook_item(UI_form_struct *UI_form_pointer,int element_number)
+{
+    item_type* item_pointer = new item_type;
+    item_pointer = NULL;
+    UI_form_struct *UI_form_pointer_AB = game.UI_manager.UI_form_get(UID_ACTIONBAR);
+    if ((UI_form_pointer->data.element[element_number].type == UI_ELEMENT_ITEM) && (UI_form_pointer->data.element[element_number].value != ITEM_NONE))
+    {
+        bool element_found   = false;
+        int  dest_UI_element = 0;
+        item_pointer = game.item_manager.add_item(UI_form_pointer->data.element[element_number].value);
+        for (int element_count = UI_form_pointer_AB->data.number_of_elements; element_count > 0; element_count--)
+        {
+            if ((!element_found) && (UI_form_pointer_AB->data.element[element_count].type == UI_ELEMENT_ITEM) && (UI_form_pointer_AB->data.element[element_count].value == ITEM_NONE))
+            {
+                game.UI_manager.swap_equipment(UID_SKILLBOOK,element_number,UID_ACTIONBAR);
+                element_found      = true;
+                dest_UI_element = element_count;
+            }
+        }
+        if (element_found)
+        {
+            UI_form_pointer_AB->data.element[dest_UI_element].overlay_enabled = true;
+            UI_form_pointer_AB->data.element[dest_UI_element].value           = UI_form_pointer->data.element[element_number].value;
+            UI_form_pointer_AB->data.element[dest_UI_element].quantity        = UI_form_pointer->data.element[element_number].quantity;
+            UI_form_pointer_AB->data.element[dest_UI_element].texture.normal  = UI_form_pointer->data.element[element_number].texture.normal;
+            UI_form_pointer_AB->data.element[dest_UI_element].texture.overlay = UI_form_pointer->data.element[element_number].texture.overlay;
+        }
+    }
+}
+
 void process_skillbook_window(UI_form_struct *UI_form_pointer)
 {
     int element_number = 1;
@@ -776,6 +806,146 @@ void process_skillbook_window(UI_form_struct *UI_form_pointer)
             break;
             case (EVENT_UI_ELEMENT_DRAG): //Element drag event posted
                 //game.UI_manager.source.window = SKILLBOOK_UID;
+            break;
+            case ((1*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
+                UI_form_pointer->data.event.id = EVENT_NONE;
+            break;
+            case ((1*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
+                process_skillbook_item(UI_form_pointer,1);
+                UI_form_pointer->data.event.id = EVENT_NONE;
+            break;
+            case ((2*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
+                UI_form_pointer->data.event.id = EVENT_NONE;
+            break;
+            case ((2*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
+                process_skillbook_item(UI_form_pointer,2);
+                UI_form_pointer->data.event.id = EVENT_NONE;
+            break;
+            case ((3*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
+                UI_form_pointer->data.event.id = EVENT_NONE;
+            break;
+            case ((3*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
+                process_skillbook_item(UI_form_pointer,3);
+                UI_form_pointer->data.event.id = EVENT_NONE;
+            break;
+            case ((4*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
+                UI_form_pointer->data.event.id = EVENT_NONE;
+            break;
+            case ((4*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
+                process_skillbook_item(UI_form_pointer,4);
+                UI_form_pointer->data.event.id = EVENT_NONE;
+            break;
+            case ((5*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
+                UI_form_pointer->data.event.id = EVENT_NONE;
+            break;
+            case ((5*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
+                process_skillbook_item(UI_form_pointer,5);
+                UI_form_pointer->data.event.id = EVENT_NONE;
+            break;
+            case ((6*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
+                UI_form_pointer->data.event.id = EVENT_NONE;
+            break;
+            case ((6*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
+                process_skillbook_item(UI_form_pointer,6);
+                UI_form_pointer->data.event.id = EVENT_NONE;
+            break;
+            case ((7*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
+                UI_form_pointer->data.event.id = EVENT_NONE;
+            break;
+            case ((7*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
+                process_skillbook_item(UI_form_pointer,7);
+                UI_form_pointer->data.event.id = EVENT_NONE;
+            break;
+            case ((8*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
+                UI_form_pointer->data.event.id = EVENT_NONE;
+            break;
+            case ((8*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
+                process_skillbook_item(UI_form_pointer,8);
+                UI_form_pointer->data.event.id = EVENT_NONE;
+            break;
+            case ((9*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
+                UI_form_pointer->data.event.id = EVENT_NONE;
+            break;
+            case ((9*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
+                process_skillbook_item(UI_form_pointer,9);
+                UI_form_pointer->data.event.id = EVENT_NONE;
+            break;
+            case ((10*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
+                UI_form_pointer->data.event.id = EVENT_NONE;
+            break;
+            case ((10*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
+                process_skillbook_item(UI_form_pointer,10);
+                UI_form_pointer->data.event.id = EVENT_NONE;
+            break;
+            case ((11*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
+                UI_form_pointer->data.event.id = EVENT_NONE;
+            break;
+            case ((11*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
+                process_skillbook_item(UI_form_pointer,11);
+                UI_form_pointer->data.event.id = EVENT_NONE;
+            break;
+            case ((12*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
+                UI_form_pointer->data.event.id = EVENT_NONE;
+            break;
+            case ((12*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
+                process_skillbook_item(UI_form_pointer,12);
+                UI_form_pointer->data.event.id = EVENT_NONE;
+            break;
+            case ((13*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
+                UI_form_pointer->data.event.id = EVENT_NONE;
+            break;
+            case ((13*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
+                process_skillbook_item(UI_form_pointer,13);
+                UI_form_pointer->data.event.id = EVENT_NONE;
+            break;
+            case ((14*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
+                UI_form_pointer->data.event.id = EVENT_NONE;
+            break;
+            case ((14*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
+                process_skillbook_item(UI_form_pointer,14);
+                UI_form_pointer->data.event.id = EVENT_NONE;
+            break;
+            case ((15*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
+                UI_form_pointer->data.event.id = EVENT_NONE;
+            break;
+            case ((15*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
+                process_skillbook_item(UI_form_pointer,15);
+                UI_form_pointer->data.event.id = EVENT_NONE;
+            break;
+            case ((16*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
+                UI_form_pointer->data.event.id = EVENT_NONE;
+            break;
+            case ((16*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
+                process_skillbook_item(UI_form_pointer,16);
+                UI_form_pointer->data.event.id = EVENT_NONE;
+            break;
+            case ((17*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
+                UI_form_pointer->data.event.id = EVENT_NONE;
+            break;
+            case ((17*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
+                process_skillbook_item(UI_form_pointer,17);
+                UI_form_pointer->data.event.id = EVENT_NONE;
+            break;
+            case ((18*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
+                UI_form_pointer->data.event.id = EVENT_NONE;
+            break;
+            case ((18*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
+                process_skillbook_item(UI_form_pointer,18);
+                UI_form_pointer->data.event.id = EVENT_NONE;
+            break;
+            case ((19*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
+                UI_form_pointer->data.event.id = EVENT_NONE;
+            break;
+            case ((19*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
+                process_skillbook_item(UI_form_pointer,19);
+                UI_form_pointer->data.event.id = EVENT_NONE;
+            break;
+            case ((20*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
+                UI_form_pointer->data.event.id = EVENT_NONE;
+            break;
+            case ((20*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_RIGHT): // Process item 0
+                process_skillbook_item(UI_form_pointer,20);
+                UI_form_pointer->data.event.id = EVENT_NONE;
             break;
             default:
                 game.core.log.file_write("Unable to process event - ",UI_form_pointer->data.event.id, " - UID - ",UI_form_pointer->data.UID);
