@@ -765,13 +765,14 @@ void map_2D_class::apply_tileset(fmx_map_type *fmx_map_pointer, int pre_defined_
     }
     for (int tile_count = 0; tile_count < fmx_map_pointer->data.number_of_tiles; tile_count++)
     {
-        if (temp_tile_data[tile_count].tile == TILE_FLOOR)
+        switch (fmx_map_pointer->path_data[tile_count].tile_data)
         {
-            fmx_map_pointer->layer[LAYER_FLOOR].tile[tile_count].collision = false;
-        }
-        else
-        {
-            fmx_map_pointer->layer[LAYER_FLOOR].tile[tile_count].collision = true;
+            case TILE_PATH:
+                fmx_map_pointer->layer[LAYER_FLOOR].tile[tile_count].tile_tileset = TILE_SET_DEFAULT;
+                fmx_map_pointer->layer[LAYER_FLOOR].tile[tile_count].tile = 2;
+            break;
+            default:
+            break;
         }
     }
     delete [] temp_tile_data;

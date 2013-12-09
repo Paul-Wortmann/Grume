@@ -97,6 +97,7 @@ void           map_gen_room_connect    (fmx_map_type *fmx_map_pointer);
 room_data_type map_gen_room_find_stats (fmx_map_type *fmx_map_pointer, flood_fill_type *fill_data, int tile_number);
 void           map_gen_room_find       (fmx_map_type *fmx_map_pointer);
 int            map_gen_room_add        (fmx_map_type *fmx_map_pointer);
+void           map_gen_room_collision  (fmx_map_type *fmx_map_pointer);
 void           map_gen_room_add_exits  (fmx_map_type *fmx_map_pointer);
 
 #endif //MAP_GEN_HPP
