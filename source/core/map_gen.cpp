@@ -1072,7 +1072,18 @@ void map_gen_room_find       (fmx_map_type *fmx_map_pointer)
 
 void           map_gen_room_add_exits  (fmx_map_type *fmx_map_pointer)
 {
+    int room_s = 0;
+    int room_e = 0;
+    for (int room_1 = 0; room_1 < fmx_map_pointer->data.number_of_rooms; room_1++)
+    {
+        for (int room_2 = 0; room_2 < fmx_map_pointer->data.number_of_rooms; room_2++)
+        {
+            if (room_1 != room_2)
+            {
 
+            }
+        }
+    }
 };
 
 
