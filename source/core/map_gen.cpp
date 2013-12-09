@@ -364,7 +364,6 @@ void map_gen_BSP_internal(fmx_map_type *fmx_map_pointer)
     fmx_map_pointer->layer[layer_floor].tile = temp_map->data.tile;
     delete temp_map;
     map_gen_room_find(fmx_map_pointer);
-    //game.core.log.file_write("-> Generated map with rooms -> ",fmx_map_pointer->data.number_of_rooms);
     map_gen_room_connect(fmx_map_pointer);
 };
 
@@ -1071,6 +1070,10 @@ void map_gen_room_find       (fmx_map_type *fmx_map_pointer)
     }
 };
 
+void           map_gen_room_add_exits  (fmx_map_type *fmx_map_pointer)
+{
+
+};
 
 
 

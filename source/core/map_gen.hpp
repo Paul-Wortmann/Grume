@@ -35,8 +35,8 @@
 #define TILE_NONE  -1
 #define TILE_FLOOR  1
 #define TILE_WALL   2
-#define TILE_DOOR   3
-#define TILE_EXIT   4
+#define TILE_EXIT   3
+#define TILE_DOOR   4
 #define TILE_PATH   5
 
 #define ROOM_PATH  2
@@ -93,6 +93,7 @@ void           map_gen_room_connect    (fmx_map_type *fmx_map_pointer);
 room_data_type map_gen_room_find_stats (fmx_map_type *fmx_map_pointer, flood_fill_type *fill_data, int tile_number);
 void           map_gen_room_find       (fmx_map_type *fmx_map_pointer);
 int            map_gen_room_add        (fmx_map_type *fmx_map_pointer);
+void           map_gen_room_add_exits  (fmx_map_type *fmx_map_pointer);
 
 #endif //MAP_GEN_HPP
 
