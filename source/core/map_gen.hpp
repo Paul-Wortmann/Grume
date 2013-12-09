@@ -32,6 +32,10 @@
 // ROOM_MAX should be an even number!
 #define MAX_ROOMS  0 // 0 for unlimited number possible
 
+#define LAYER_FLOOR  0
+#define LAYER_OBJECT 1
+#define LAYER_WALL   2
+
 #define TILE_NONE  -1
 #define TILE_FLOOR  1
 #define TILE_WALL   2
