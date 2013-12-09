@@ -20,3 +20,17 @@ Starting Game...
  
 # ---------------------------------------------- #
  
+ 
+# ---------------------------------------------- #
+ 
+Font    count -> 1
+Music   count -> 1
+Sound   count -> 13
+Texture count -> 210
+Item    count -> 56
+Effect  count -> 46
+ 
+# ---------------------------------------------- #
+ 
+Saving configuration...
+Shutting down...
