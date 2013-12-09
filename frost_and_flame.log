@@ -20,13 +20,60 @@ Starting Game...
  
 # ---------------------------------------------- #
  
+-> distance found - 25
+-> distance found - 68
+-> distance found - 101
+-> distance found - 159
+-> distance found - 256
+-> distance found - 293
+-> distance found - 312
+-> distance found - 319
+-> distance found - 14
+-> distance found - 26
+-> distance found - 77
+-> distance found - 95
+-> distance found - 107
+-> distance found - 210
+-> distance found - 211
+-> distance found - 225
+-> distance found - 389
+-> distance found - 420
+-> distance found - 548
+-> distance found - 559
+-> distance found - 566
+-> distance found - 577
+-> distance found - 578
+-> distance found - 589
+-> distance found - 595
+-> distance found - 606
+-> distance found - 625
+-> distance found - 336
+-> distance found - 351
+-> distance found - 25
+-> distance found - 41
+-> distance found - 119
+-> distance found - 206
+-> distance found - 265
+-> distance found - 423
+-> distance found - 42
+-> distance found - 162
+-> distance found - 164
+-> distance found - 205
+-> distance found - 235
+-> distance found - 370
+-> distance found - 38
+-> distance found - 46
+-> distance found - 178
+-> distance found - 265
+-> distance found - 379
+-> distance found - 401
  
 # ---------------------------------------------- #
  
 Font    count -> 1
 Music   count -> 1
 Sound   count -> 13
-Texture count -> 210
+Texture count -> 229
 Item    count -> 56
 Effect  count -> 46
  
