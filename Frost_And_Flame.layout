@@ -31,9 +31,9 @@
 			<Cursor1 position="25434" topLine="533" />
 		</Cursor>
 	</File>
-	<File name="source/core/pathfinding.hpp" open="1" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="source/core/pathfinding.hpp" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="1017" topLine="1" />
+			<Cursor1 position="1488" topLine="1" />
 		</Cursor>
 	</File>
 	<File name="source/core/map_3D.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -71,14 +71,14 @@
 			<Cursor1 position="1221" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="source/core/pathfinding.cpp" open="1" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="source/core/pathfinding.cpp" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="3844" topLine="35" />
+			<Cursor1 position="3258" topLine="62" />
 		</Cursor>
 	</File>
 	<File name="source/core/map_gen.hpp" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="3436" topLine="52" />
+			<Cursor1 position="3506" topLine="58" />
 		</Cursor>
 	</File>
 	<File name="source/UI/inventory_window.cpp" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -106,9 +106,9 @@
 			<Cursor1 position="973" topLine="9" />
 		</Cursor>
 	</File>
-	<File name="source/core/map_2D.cpp" open="1" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="source/core/map_2D.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="59648" topLine="727" />
+			<Cursor1 position="60796" topLine="745" />
 		</Cursor>
 	</File>
 	<File name="source/core/loader_fmx.hpp" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -213,7 +213,7 @@
 	</File>
 	<File name="source/core/map_gen.cpp" open="1" top="1" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="58073" topLine="1046" />
+			<Cursor1 position="57917" topLine="1050" />
 		</Cursor>
 	</File>
 	<File name="source/UI/action_bar.cpp" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
