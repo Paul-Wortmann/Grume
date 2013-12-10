@@ -1067,7 +1067,7 @@ void           map_gen_room_collision  (fmx_map_type *fmx_map_pointer)
 {
     for (int tile_count = 0; tile_count < fmx_map_pointer->data.number_of_tiles; tile_count++)
     {
-        if (fmx_map_pointer->layer[LAYER_FLOOR].tile[tile_count].tile == TILE_FLOOR)
+        if ((fmx_map_pointer->layer[LAYER_FLOOR].tile[tile_count].tile == TILE_FLOOR)||(fmx_map_pointer->layer[LAYER_FLOOR].tile[tile_count].tile == TILE_EXIT))
         {
             fmx_map_pointer->layer[LAYER_FLOOR].tile[tile_count].collision = false;
         }
@@ -1090,7 +1090,7 @@ void           map_gen_room_add_exits  (fmx_map_type *fmx_map_pointer)
         {
             if ((room_1 != room_2)&&(fmx_map_pointer->room[room_1].active)&&(fmx_map_pointer->room[room_2].active))
             {
-                path_data = map_path_find(fmx_map_pointer,fmx_map_pointer->room[room_1].position.x,fmx_map_pointer->room[room_1].position.y,fmx_map_pointer->room[room_2].position.x,fmx_map_pointer->room[room_2].position.y);
+                path_data = _map_path_find(fmx_map_pointer,fmx_map_pointer->room[room_1].position.x,fmx_map_pointer->room[room_1].position.y,fmx_map_pointer->room[room_2].position.x,fmx_map_pointer->room[room_2].position.y);
                 if (path_data->path_length > distance_temp)
                 {
                     distance_temp = path_data->path_length;
@@ -1106,7 +1106,7 @@ void           map_gen_room_add_exits  (fmx_map_type *fmx_map_pointer)
         fmx_map_pointer->layer[LAYER_FLOOR].tile[(fmx_map_pointer->room[room_e].position.x + (fmx_map_pointer->room[room_e].position.y * fmx_map_pointer->data.map_width))].tile = TILE_EXIT;
         fmx_map_pointer->layer[LAYER_FLOOR].tile[(fmx_map_pointer->room[room_s].position.x + (fmx_map_pointer->room[room_s].position.y * fmx_map_pointer->data.map_width))].tile = TILE_EXIT;
 
-map_path_find(fmx_map_pointer,fmx_map_pointer->room[room_e].position.x,fmx_map_pointer->room[room_e].position.y,fmx_map_pointer->room[room_s].position.x,fmx_map_pointer->room[room_s].position.y);
+_map_path_find(fmx_map_pointer,fmx_map_pointer->room[room_e].position.x,fmx_map_pointer->room[room_e].position.y,fmx_map_pointer->room[room_s].position.x,fmx_map_pointer->room[room_s].position.y);
 
     }
 };

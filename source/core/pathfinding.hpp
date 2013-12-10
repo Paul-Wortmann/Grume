@@ -27,6 +27,30 @@
 
 #include "loader_fmx.hpp"
 
+struct path_node_type
+{
+    int             tile_start_x;
+    int             tile_start_y;
+    int             tile_end_x;
+    int             tile_end_y;
+    int             tile_x;
+    int             tile_y;
+    bool            end_found;
+    bool            closed_list;
+    int             F;
+    int             G;
+    int             H;
+    path_node_type* parent;
+    path_node_type* node_1;
+    path_node_type* node_2;
+    path_node_type* node_3;
+    path_node_type* node_4;
+    path_node_type* node_5;
+    path_node_type* node_6;
+    path_node_type* node_7;
+    path_node_type* node_8;
+};
+
 struct path_type
 {
     int       tile_start;
@@ -42,5 +66,10 @@ int  map_distance_G (fmx_map_type *fmx_map_pointer, int tile_current);
 int  map_tile_calc  (fmx_map_type *fmx_map_pointer, int tile_current, int tile_parent, int tile_end);
 path_type* map_path_find (fmx_map_type *fmx_map_pointer, int position_1_x, int position_1_y, int position_2_x, int position_2_y);
 path_type* map_path_find (fmx_map_type *fmx_map_pointer, int tile_1, int tile_2);
+
+
+path_type*      _map_path_find(fmx_map_type *fmx_map_pointer, int position_1_x, int position_1_y, int position_2_x, int position_2_y);
+path_node_type* map_path_find_internal_calc(fmx_map_type *fmx_map_pointer, path_node_type* parent_node_pointer, int position_1_x, int position_1_y);
+path_type*      map_path_find_internal(fmx_map_type *fmx_map_pointer, path_node_type* path_node_pointer, int position_1_x, int position_1_y);
 
 #endif //PATHFINDING_H
