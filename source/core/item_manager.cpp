@@ -3201,7 +3201,7 @@ void  item_manager_class::gen_item_texture(item_type* item_pointer,int item_type
                 break;
                 case ITEM_HAMMER:
                     item_pointer->data.material_type = ITEM_MATERIAL_METAL;
-                    temp_int = random(2);
+                    temp_int = random(3);
                     temp_string = "data/textures/UI/icons/hammers/hammer_";
                     if (temp_int < 10) temp_string += "0";
                     temp_string += int_to_string(temp_int) + ".png";
