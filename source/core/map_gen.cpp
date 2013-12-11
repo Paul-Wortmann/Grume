@@ -1080,6 +1080,8 @@ void           map_gen_room_collision  (fmx_map_type *fmx_map_pointer)
 
 void           map_gen_room_add_exits  (fmx_map_type *fmx_map_pointer)
 {
+game.core.log.file_write("-> map_gen_room_add_exits() called ");
+
     int room_e        = 0;
     int room_s        = 0;
     int distance_temp = 0;
@@ -1106,7 +1108,9 @@ void           map_gen_room_add_exits  (fmx_map_type *fmx_map_pointer)
         fmx_map_pointer->layer[LAYER_FLOOR].tile[(fmx_map_pointer->room[room_e].position.x + (fmx_map_pointer->room[room_e].position.y * fmx_map_pointer->data.map_width))].tile = TILE_EXIT;
         fmx_map_pointer->layer[LAYER_FLOOR].tile[(fmx_map_pointer->room[room_s].position.x + (fmx_map_pointer->room[room_s].position.y * fmx_map_pointer->data.map_width))].tile = TILE_EXIT;
 
-_map_path_find(fmx_map_pointer,fmx_map_pointer->room[room_e].position.x,fmx_map_pointer->room[room_e].position.y,fmx_map_pointer->room[room_s].position.x,fmx_map_pointer->room[room_s].position.y);
+path_data = _map_path_find(fmx_map_pointer,fmx_map_pointer->room[room_e].position.x,fmx_map_pointer->room[room_e].position.y,fmx_map_pointer->room[room_s].position.x,fmx_map_pointer->room[room_s].position.y);
+distance_temp = path_data->path_length;
+game.core.log.file_write("-> distance found - ",distance_temp);
 
     }
 };

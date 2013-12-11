@@ -44,6 +44,7 @@ void map_path_reset (fmx_map_type *fmx_map_pointer)
         fmx_map_pointer->path_data[tile_count].H           = 0;
         fmx_map_pointer->path_data[tile_count].F           = 0;
     }
+    fmx_map_pointer->data.path_length = 0;
 };
 
 int  map_distance_H (fmx_map_type *fmx_map_pointer, int tile_current, int tile_end)
@@ -316,6 +317,7 @@ path_type* _map_path_find(fmx_map_type *fmx_map_pointer, int position_1_x, int p
     path_node_pointer->F              = 0;
     path_node_pointer->G              = 0;
     path_node_pointer->H              = 0;
+    path_node_pointer->path_length    = 0;
     path_node_pointer->parent         = NULL;
     return (map_path_find_internal(fmx_map_pointer, path_node_pointer, position_1_x, position_1_y));
 };
@@ -338,9 +340,14 @@ path_node_type* map_path_find_internal_calc(fmx_map_type *fmx_map_pointer, path_
         return_node_pointer->tile_y         = position_1_y;
         return_node_pointer->parent         = parent_node_pointer;
         if ((return_node_pointer->tile_end_x == return_node_pointer->tile_x) && (return_node_pointer->tile_end_y == return_node_pointer->tile_y)) return_node_pointer->end_found = true;
+        game.core.log.file_write(" Tile end x -> ",return_node_pointer->tile_end_x);
+        game.core.log.file_write(" Tile end y -> ",return_node_pointer->tile_end_y);
+        game.core.log.file_write(" Tile     x -> ",return_node_pointer->tile_x);
+        game.core.log.file_write(" Tile     y -> ",return_node_pointer->tile_y);
         return_node_pointer->H              = ((abs(return_node_pointer->tile_x - return_node_pointer->tile_end_x)+abs(return_node_pointer->tile_y - return_node_pointer->tile_end_y))*10);
         return_node_pointer->G              = (parent_node_pointer->G + ((return_node_pointer->tile_x == parent_node_pointer->tile_y || return_node_pointer->tile_y == parent_node_pointer->tile_y) ? 10 : 14));
         return_node_pointer->F              = return_node_pointer->H + return_node_pointer->G;
+        return_node_pointer->path_length    = parent_node_pointer->path_length + 1;
     }
     return (return_node_pointer);
 };
@@ -352,7 +359,6 @@ path_type* map_path_find_internal(fmx_map_type *fmx_map_pointer, path_node_type*
     int        temp_node  = 0;
     bool       end_found  = false;
     path_type* return_path;
-    path_type* return_path_temp;
     // -------------- compute adjoining node values ------------------------
     path_node_pointer->node_1 = map_path_find_internal_calc(fmx_map_pointer,path_node_pointer,path_node_pointer->tile_x+1,path_node_pointer->tile_y);
     path_node_pointer->node_2 = map_path_find_internal_calc(fmx_map_pointer,path_node_pointer,path_node_pointer->tile_x-1,path_node_pointer->tile_y);
@@ -362,131 +368,109 @@ path_type* map_path_find_internal(fmx_map_type *fmx_map_pointer, path_node_type*
     path_node_pointer->node_6 = map_path_find_internal_calc(fmx_map_pointer,path_node_pointer,path_node_pointer->tile_x  ,path_node_pointer->tile_y-1);
     path_node_pointer->node_7 = map_path_find_internal_calc(fmx_map_pointer,path_node_pointer,path_node_pointer->tile_x+1,path_node_pointer->tile_y-1);
     path_node_pointer->node_8 = map_path_find_internal_calc(fmx_map_pointer,path_node_pointer,path_node_pointer->tile_x-1,path_node_pointer->tile_y-1);
+    if ((path_node_pointer->node_1 != NULL) && (path_node_pointer->node_1->end_found)) end_found = true;
+    if ((path_node_pointer->node_2 != NULL) && (path_node_pointer->node_2->end_found)) end_found = true;
+    if ((path_node_pointer->node_3 != NULL) && (path_node_pointer->node_3->end_found)) end_found = true;
+    if ((path_node_pointer->node_4 != NULL) && (path_node_pointer->node_4->end_found)) end_found = true;
+    if ((path_node_pointer->node_5 != NULL) && (path_node_pointer->node_5->end_found)) end_found = true;
+    if ((path_node_pointer->node_6 != NULL) && (path_node_pointer->node_6->end_found)) end_found = true;
+    if ((path_node_pointer->node_7 != NULL) && (path_node_pointer->node_7->end_found)) end_found = true;
+    if ((path_node_pointer->node_8 != NULL) && (path_node_pointer->node_8->end_found)) end_found = true;
+    if (end_found) path_node_pointer->end_found = true;
+    if (end_found) game.core.log.file_write("END FOUND!!!!");
     for (int node_count = 0; node_count < NUM_NODES; node_count++)
     {
         int  temp_F     = 0;
         int  temp_node  = 0;
         if ((!end_found) && (path_node_pointer->node_1 != NULL) && (!path_node_pointer->node_1->closed_list))
         {
-            end_found = path_node_pointer->node_1->end_found;
-            if (!end_found)
+            if ((temp_F = 0) || (path_node_pointer->node_1->F < temp_F))
             {
-                if ((temp_F = 0) || (path_node_pointer->node_1->F < temp_F))
-                {
-                    temp_F    = path_node_pointer->node_1->F;
-                    temp_node = 1;
-                }
+                temp_F    = path_node_pointer->node_1->F;
+                temp_node = 1;
             }
         }
         if ((!end_found) && (path_node_pointer->node_2 != NULL) && (!path_node_pointer->node_2->closed_list))
         {
-            end_found = path_node_pointer->node_2->end_found;
-            if (!end_found)
+            if ((temp_F = 0) || (path_node_pointer->node_2->F < temp_F))
             {
-                if ((temp_F = 0) || (path_node_pointer->node_2->F < temp_F))
-                {
-                    temp_F    = path_node_pointer->node_2->F;
-                    temp_node = 2;
-                }
+                temp_F    = path_node_pointer->node_2->F;
+                temp_node = 2;
             }
         }
         if ((!end_found) && (path_node_pointer->node_3 != NULL) && (!path_node_pointer->node_3->closed_list))
         {
-            end_found = path_node_pointer->node_3->end_found;
-            if (!end_found)
+            if ((temp_F = 0) || (path_node_pointer->node_3->F < temp_F))
             {
-                if ((temp_F = 0) || (path_node_pointer->node_3->F < temp_F))
-                {
-                    temp_F    = path_node_pointer->node_3->F;
-                    temp_node = 3;
-                }
+                temp_F    = path_node_pointer->node_3->F;
+                temp_node = 3;
             }
         }
         if ((!end_found) && (path_node_pointer->node_4 != NULL) && (!path_node_pointer->node_4->closed_list))
         {
-            end_found = path_node_pointer->node_4->end_found;
-            if (!end_found)
+            if ((temp_F = 0) || (path_node_pointer->node_4->F < temp_F))
             {
-                if ((temp_F = 0) || (path_node_pointer->node_4->F < temp_F))
-                {
-                    temp_F    = path_node_pointer->node_4->F;
-                    temp_node = 4;
-                }
+                temp_F    = path_node_pointer->node_4->F;
+                temp_node = 4;
             }
         }
         if ((!end_found) && (path_node_pointer->node_5 != NULL) && (!path_node_pointer->node_5->closed_list))
         {
-            end_found = path_node_pointer->node_5->end_found;
-            if (!end_found)
+            if ((temp_F = 0) || (path_node_pointer->node_5->F < temp_F))
             {
-                if ((temp_F = 0) || (path_node_pointer->node_5->F < temp_F))
-                {
-                    temp_F    = path_node_pointer->node_5->F;
-                    temp_node = 5;
-                }
+                temp_F    = path_node_pointer->node_5->F;
+                temp_node = 5;
             }
         }
         if ((!end_found) && (path_node_pointer->node_6 != NULL) && (!path_node_pointer->node_6->closed_list))
         {
-            end_found = path_node_pointer->node_6->end_found;
-            if (!end_found)
+            if ((temp_F = 0) || (path_node_pointer->node_6->F < temp_F))
             {
-                if ((temp_F = 0) || (path_node_pointer->node_6->F < temp_F))
-                {
-                    temp_F    = path_node_pointer->node_6->F;
-                    temp_node = 6;
-                }
+                temp_F    = path_node_pointer->node_6->F;
+                temp_node = 6;
             }
         }
         if ((!end_found) && (path_node_pointer->node_7 != NULL) && (!path_node_pointer->node_7->closed_list))
         {
-            end_found = path_node_pointer->node_7->end_found;
-            if (!end_found)
+            if ((temp_F = 0) || (path_node_pointer->node_7->F < temp_F))
             {
-                if ((temp_F = 0) || (path_node_pointer->node_7->F < temp_F))
-                {
-                    temp_F    = path_node_pointer->node_7->F;
-                    temp_node = 7;
-                }
+                temp_F    = path_node_pointer->node_7->F;
+                temp_node = 7;
             }
         }
         if ((!end_found) && (path_node_pointer->node_8 != NULL) && (!path_node_pointer->node_8->closed_list))
         {
-            end_found = path_node_pointer->node_8->end_found;
-            if (!end_found)
+            if ((temp_F = 0) || (path_node_pointer->node_8->F < temp_F))
             {
-                if ((temp_F = 0) || (path_node_pointer->node_8->F < temp_F))
-                {
-                    temp_F    = path_node_pointer->node_8->F;
-                    temp_node = 8;
-                }
+                temp_F    = path_node_pointer->node_8->F;
+                temp_node = 8;
             }
         }
         switch (temp_node)
         {
             case 1:
-                return_path_temp = map_path_find_internal(fmx_map_pointer,path_node_pointer->node_1, path_node_pointer->node_1->tile_x, path_node_pointer->node_1->tile_y);
+                return_path = map_path_find_internal(fmx_map_pointer,path_node_pointer->node_1, path_node_pointer->node_1->tile_x, path_node_pointer->node_1->tile_y);
             break;
             case 2:
-                return_path_temp = map_path_find_internal(fmx_map_pointer,path_node_pointer->node_2, path_node_pointer->node_2->tile_x, path_node_pointer->node_2->tile_y);
+                return_path = map_path_find_internal(fmx_map_pointer,path_node_pointer->node_2, path_node_pointer->node_2->tile_x, path_node_pointer->node_2->tile_y);
             break;
             case 3:
-                return_path_temp = map_path_find_internal(fmx_map_pointer,path_node_pointer->node_3, path_node_pointer->node_3->tile_x, path_node_pointer->node_3->tile_y);
+                return_path = map_path_find_internal(fmx_map_pointer,path_node_pointer->node_3, path_node_pointer->node_3->tile_x, path_node_pointer->node_3->tile_y);
             break;
             case 4:
-                return_path_temp = map_path_find_internal(fmx_map_pointer,path_node_pointer->node_4, path_node_pointer->node_4->tile_x, path_node_pointer->node_4->tile_y);
+                return_path = map_path_find_internal(fmx_map_pointer,path_node_pointer->node_4, path_node_pointer->node_4->tile_x, path_node_pointer->node_4->tile_y);
             break;
             case 5:
-                return_path_temp = map_path_find_internal(fmx_map_pointer,path_node_pointer->node_5, path_node_pointer->node_5->tile_x, path_node_pointer->node_5->tile_y);
+                return_path = map_path_find_internal(fmx_map_pointer,path_node_pointer->node_5, path_node_pointer->node_5->tile_x, path_node_pointer->node_5->tile_y);
             break;
             case 6:
-                return_path_temp = map_path_find_internal(fmx_map_pointer,path_node_pointer->node_6, path_node_pointer->node_6->tile_x, path_node_pointer->node_6->tile_y);
+                return_path = map_path_find_internal(fmx_map_pointer,path_node_pointer->node_6, path_node_pointer->node_6->tile_x, path_node_pointer->node_6->tile_y);
             break;
             case 7:
-                return_path_temp = map_path_find_internal(fmx_map_pointer,path_node_pointer->node_7, path_node_pointer->node_7->tile_x, path_node_pointer->node_7->tile_y);
+                return_path = map_path_find_internal(fmx_map_pointer,path_node_pointer->node_7, path_node_pointer->node_7->tile_x, path_node_pointer->node_7->tile_y);
             break;
             case 8:
-                return_path_temp = map_path_find_internal(fmx_map_pointer,path_node_pointer->node_8, path_node_pointer->node_8->tile_x, path_node_pointer->node_8->tile_y);
+                return_path = map_path_find_internal(fmx_map_pointer,path_node_pointer->node_8, path_node_pointer->node_8->tile_x, path_node_pointer->node_8->tile_y);
             break;
             default:
             break;
@@ -494,29 +478,12 @@ path_type* map_path_find_internal(fmx_map_type *fmx_map_pointer, path_node_type*
     }
     if (end_found)
     {
+        return_path->path_length++;
+        game.core.log.file_write("- - -  is called? - - - ");
         fmx_map_pointer->path_data[position_1_x+(position_1_y*fmx_map_pointer->data.map_width)].tile_data = TILE_PATH;
-        fmx_map_pointer->path_data.path_length++;
-        return_path = new path_type;
+        fmx_map_pointer->data.path_length = return_path->path_length;
     }
     return (return_path);
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 

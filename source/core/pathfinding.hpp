@@ -40,6 +40,7 @@ struct path_node_type
     int             F;
     int             G;
     int             H;
+    int             path_length;
     path_node_type* parent;
     path_node_type* node_1;
     path_node_type* node_2;
