@@ -1083,9 +1083,10 @@ void           map_gen_room_add_exits  (fmx_map_type *fmx_map_pointer)
 game.core.log.file_write("-> map_gen_room_add_exits() called ");
 
     int room_e        = 0;
-    int room_s        = 0;
+    int room_s        = 1;
     int distance_temp = 0;
     path_type* path_data;
+    /*
     for (int room_1 = 0; room_1 < fmx_map_pointer->data.number_of_rooms; room_1++)
     {
         for (int room_2 = 0; room_2 < fmx_map_pointer->data.number_of_rooms; room_2++)
@@ -1113,6 +1114,19 @@ distance_temp = path_data->path_length;
 game.core.log.file_write("-> distance found - ",distance_temp);
 
     }
+    */
+    for (int tile_count_x = 0; tile_count_x < fmx_map_pointer->data.map_width; tile_count_x++)
+    {
+        for (int tile_count_y = 0; tile_count_y < fmx_map_pointer->data.map_height; tile_count_y++)
+        {
+            int tile_count_temp = (tile_count_y * fmx_map_pointer->data.map_width) + tile_count_x;
+            fmx_map_pointer->layer[LAYER_FLOOR].tile[tile_count_temp].tile          = TILE_FLOOR;
+        }
+    }
+        fmx_map_pointer->layer[LAYER_FLOOR].tile[(fmx_map_pointer->room[room_e].position.x + (fmx_map_pointer->room[room_e].position.y * fmx_map_pointer->data.map_width))].tile = TILE_EXIT;
+        fmx_map_pointer->layer[LAYER_FLOOR].tile[(fmx_map_pointer->room[room_s].position.x + (fmx_map_pointer->room[room_s].position.y * fmx_map_pointer->data.map_width))].tile = TILE_EXIT;
+path_data = _map_path_find(fmx_map_pointer,fmx_map_pointer->room[room_e].position.x,fmx_map_pointer->room[room_e].position.y,fmx_map_pointer->room[room_s].position.x,fmx_map_pointer->room[room_s].position.y);
+
 };
 
 
