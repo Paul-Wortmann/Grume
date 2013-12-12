@@ -47,40 +47,31 @@ void map_path_reset (fmx_map_type *fmx_map_pointer)
     fmx_map_pointer->data.path_length = 0;
 };
 
-int  map_distance_H (fmx_map_type *fmx_map_pointer, int tile_current, int tile_end)
-{
-    int p_1_x = tile_current % fmx_map_pointer->data.map_width;
-    int p_1_y = tile_current / fmx_map_pointer->data.map_width;
-    int p_2_x = tile_end     % fmx_map_pointer->data.map_width;
-    int p_2_y = tile_end     / fmx_map_pointer->data.map_width;
-    return((abs(p_1_x - p_2_x)+abs(p_1_y - p_2_y))*10);
-};
-
-int  map_distance_G (fmx_map_type *fmx_map_pointer, int tile_current)
-{
-    int p_1_x = tile_current % fmx_map_pointer->data.map_width;
-    int p_1_y = tile_current / fmx_map_pointer->data.map_width;
-    int p_2_x = fmx_map_pointer->path_data[tile_current].parent_tile % fmx_map_pointer->data.map_width;
-    int p_2_y = fmx_map_pointer->path_data[tile_current].parent_tile / fmx_map_pointer->data.map_width;
-    int p_2_G = fmx_map_pointer->path_data[fmx_map_pointer->path_data[tile_current].parent_tile].G;
-    return (p_2_G + ((p_1_x == p_2_x || p_1_y == p_2_y) ? 10 : 14));
-};
-
 int map_tile_calc (fmx_map_type *fmx_map_pointer, int tile_current, int tile_parent, int tile_end)
 {
+    int p_1_x = tile_current % fmx_map_pointer->data.map_width;
+    int p_1_y = tile_current / fmx_map_pointer->data.map_width;
     int  return_value  = -1;
     int  layer_floor   = 0;
     if ((tile_current > -1) && (tile_current < fmx_map_pointer->data.number_of_tiles) && !fmx_map_pointer->path_data[tile_current].closed_list)
     {
         if (!fmx_map_pointer->layer[layer_floor].tile[tile_current].collision)
         {
+            int p_1_x = tile_current % fmx_map_pointer->data.map_width;
+            int p_1_y = tile_current / fmx_map_pointer->data.map_width;
+            int p_2_x = fmx_map_pointer->path_data[tile_current].parent_tile % fmx_map_pointer->data.map_width;
+            int p_2_y = fmx_map_pointer->path_data[tile_current].parent_tile / fmx_map_pointer->data.map_width;
+            int p_2_G = fmx_map_pointer->path_data[fmx_map_pointer->path_data[tile_current].parent_tile].G;
+            int p_3_x = tile_end     % fmx_map_pointer->data.map_width;
+            int p_3_y = tile_end     / fmx_map_pointer->data.map_width;
             fmx_map_pointer->path_data[tile_current].parent_tile = tile_parent;
             fmx_map_pointer->path_data[tile_current].open_list   = true;
-            fmx_map_pointer->path_data[tile_current].G           = map_distance_G(fmx_map_pointer,tile_current);
-            fmx_map_pointer->path_data[tile_current].H           = map_distance_H(fmx_map_pointer,tile_current,tile_end);
+            fmx_map_pointer->path_data[tile_current].G           = (p_2_G + ((p_1_x == p_2_x || p_1_y == p_2_y) ? 10 : 14));
+            fmx_map_pointer->path_data[tile_current].H           = ((abs(p_1_x - p_3_x)+abs(p_1_y - p_3_y))*10);
             fmx_map_pointer->path_data[tile_current].F           = fmx_map_pointer->path_data[tile_current].G + fmx_map_pointer->path_data[tile_current].H;
             return_value = fmx_map_pointer->path_data[tile_current].F;
         }
+        else fmx_map_pointer->path_data[tile_current].closed_list = true;
     }
     return (return_value);
 };
@@ -301,22 +292,27 @@ path_type* map_path_find (fmx_map_type *fmx_map_pointer, int tile_1, int tile_2)
 
 // ------------------  new ----------------------------
 
-void        map_path_find_tile_calc(fmx_map_type *fmx_map_pointer, int tile_x, int tile_y)
+path_type*  _map_path_find(fmx_map_type *fmx_map_pointer, int position_1_x, int position_1_y, int position_2_x, int position_2_y)
 {
-
+    int tile_1 = (position_1_y * fmx_map_pointer->data.map_width) + position_1_x;
+    int tile_2 = (position_2_y * fmx_map_pointer->data.map_width) + position_2_x;
+    return(_map_path_find (fmx_map_pointer,tile_1,tile_2));
 };
 
-path_type*  _map_path_find(fmx_map_type *fmx_map_pointer, int position_1_x, int position_1_y, int position_2_x, int position_2_y)
+path_type*  _map_path_find(fmx_map_type *fmx_map_pointer, int start_tile, int end_tile)
 {
     map_path_reset(fmx_map_pointer);
     path_type* return_path = new path_type;
     return (return_path);
 };
 
-path_type*  map_path_find_internal(fmx_map_type *fmx_map_pointer, path_node_type* path_node_pointer, int position_1_x, int position_1_y)
+path_type*  _map_path_find_internal(fmx_map_type *fmx_map_pointer, path_node_type* path_node_pointer, int position_1_x, int position_1_y)
 {
     path_type* return_path = new path_type;
     return (return_path);
 };
+
+
+
 
 
