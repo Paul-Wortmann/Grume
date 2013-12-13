@@ -53,7 +53,7 @@ path_type* map_path_find (fmx_map_type *fmx_map_pointer, int tile_1, int tile_2)
 
 
 path_type*  _map_path_find(fmx_map_type *fmx_map_pointer, int position_1_x, int position_1_y, int position_2_x, int position_2_y);
-path_type*  _map_path_find(fmx_map_type *fmx_map_pointer, int start_tile, int end_tile);
-path_type*  _map_path_find_internal(fmx_map_type *fmx_map_pointer, path_node_type* path_node_pointer, int position_1_x, int position_1_y);
+path_type*  _map_path_find(fmx_map_type *fmx_map_pointer, int tile_start, int tile_end);
+path_type*  _map_path_find_internal(fmx_map_type *fmx_map_pointer, path_node_type* path_node_pointer, int tile_start, int tile_end);
 
 #endif //PATHFINDING_H
