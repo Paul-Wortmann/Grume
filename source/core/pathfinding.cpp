@@ -302,7 +302,12 @@ path_type*  _map_path_find(fmx_map_type *fmx_map_pointer, int position_1_x, int 
 path_type*  _map_path_find(fmx_map_type *fmx_map_pointer, int start_tile, int end_tile)
 {
     map_path_reset(fmx_map_pointer);
-    path_type* return_path = new path_type;
+    path_node_type* path_node_pointer = new path_node_type;
+    path_node_pointer->root = path_node_pointer;
+    path_node_pointer->next = path_node_pointer;
+    path_node_pointer->last = path_node_pointer;
+    path_node_pointer->tile = start_tile;
+    path_type* return_path = _map_path_find_internal(fmx_map_pointer, path_node_pointer, start_tile % fmx_map_pointer->data.map_width, start_tile / fmx_map_pointer->data.map_width);
     return (return_path);
 };
 
@@ -311,8 +316,5 @@ path_type*  _map_path_find_internal(fmx_map_type *fmx_map_pointer, path_node_typ
     path_type* return_path = new path_type;
     return (return_path);
 };
-
-
-
 
 
