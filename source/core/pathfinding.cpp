@@ -49,8 +49,8 @@ void map_path_reset (fmx_map_type *fmx_map_pointer)
 
 int map_tile_calc (fmx_map_type *fmx_map_pointer, int tile_current, int tile_parent, int tile_end)
 {
-    int p_1_x = tile_current % fmx_map_pointer->data.map_width;
-    int p_1_y = tile_current / fmx_map_pointer->data.map_width;
+    int p_1_x = 0;
+    int p_1_y = 0;
     int  return_value  = -1;
     int  layer_floor   = 0;
     if ((tile_current > -1) && (tile_current < fmx_map_pointer->data.number_of_tiles) && !fmx_map_pointer->path_data[tile_current].closed_list)
@@ -323,44 +323,89 @@ path_type*  _map_path_find_internal(fmx_map_type *fmx_map_pointer, path_node_typ
     int node_6_F     = -1;
     int node_7_F     = -1;
     int node_8_F     = -1;
-    int next_node    = 0;
+    int node_1_tile  = -1;
+    int node_2_tile  = -1;
+    int node_3_tile  = -1;
+    int node_4_tile  = -1;
+    int node_5_tile  = -1;
+    int node_6_tile  = -1;
+    int node_7_tile  = -1;
+    int node_8_tile  = -1;
+    int node_next    = -1;
+    int node_next_F  = -1;
     path_type* return_path = new path_type;
     bool end_found = (path_node_pointer->tile == tile_end) ? true : false;
     if (!end_found)
     {
-        tile_current = path_node_pointer->tile-fmx_map_pointer->data.map_tile_width-1;
-        if ((tile_current >= 0) && (tile_current < fmx_map_pointer->data.number_of_tiles))
-            node_1_F = map_tile_calc (fmx_map_pointer, tile_current, path_node_pointer->tile,tile_end);
-            game.core.log.file_write("Node 1 tile = ",tile_current);
-        tile_current = path_node_pointer->tile-fmx_map_pointer->data.map_tile_width;
-        if ((tile_current >= 0) && (tile_current < fmx_map_pointer->data.number_of_tiles))
-            node_2_F = map_tile_calc (fmx_map_pointer, tile_current, path_node_pointer->tile,tile_end);
-            game.core.log.file_write("Node 2 tile = ",tile_current);
-        tile_current = path_node_pointer->tile-fmx_map_pointer->data.map_tile_width+1;
-        if ((tile_current >= 0) && (tile_current < fmx_map_pointer->data.number_of_tiles))
-            node_3_F = map_tile_calc (fmx_map_pointer, tile_current, path_node_pointer->tile,tile_end);
-            game.core.log.file_write("Node 3 tile = ",tile_current);
-        tile_current = path_node_pointer->tile-1;
-        if ((tile_current >= 0) && (tile_current < fmx_map_pointer->data.number_of_tiles))
-            node_4_F = map_tile_calc (fmx_map_pointer, tile_current, path_node_pointer->tile,tile_end);
-            game.core.log.file_write("Node 4 tile = ",tile_current);
-        tile_current = path_node_pointer->tile+1;
-        if ((tile_current >= 0) && (tile_current < fmx_map_pointer->data.number_of_tiles))
-            node_5_F = map_tile_calc (fmx_map_pointer, tile_current, path_node_pointer->tile,tile_end);
-            game.core.log.file_write("Node 5 tile = ",tile_current);
-        tile_current = path_node_pointer->tile+fmx_map_pointer->data.map_tile_width-1;
-        if ((tile_current >= 0) && (tile_current < fmx_map_pointer->data.number_of_tiles))
-            node_6_F = map_tile_calc (fmx_map_pointer, tile_current, path_node_pointer->tile,tile_end);
-            game.core.log.file_write("Node 6 tile = ",tile_current);
-        tile_current = path_node_pointer->tile+fmx_map_pointer->data.map_tile_width;
-        if ((tile_current >= 0) && (tile_current < fmx_map_pointer->data.number_of_tiles))
-            node_7_F = map_tile_calc (fmx_map_pointer, tile_current, path_node_pointer->tile,tile_end);
-            game.core.log.file_write("Node 7 tile = ",tile_current);
-        tile_current = path_node_pointer->tile+fmx_map_pointer->data.map_tile_width+1;
-        if ((tile_current >= 0) && (tile_current < fmx_map_pointer->data.number_of_tiles))
-            node_8_F = map_tile_calc (fmx_map_pointer, tile_current, path_node_pointer->tile,tile_end);
-            game.core.log.file_write("Node 8 tile = ",tile_current);
-            if ((node_1_F+node_2_F+node_3_F+node_4_F+node_5_F+node_6_F+node_7_F+node_8_F) > -8)
+        node_1_tile = path_node_pointer->tile-fmx_map_pointer->data.map_width-1;
+        if ((node_1_tile >= 0) && (node_1_tile < fmx_map_pointer->data.number_of_tiles))
+            node_1_F = map_tile_calc (fmx_map_pointer, node_1_tile, path_node_pointer->tile,tile_end);
+        if ((node_1_tile > -1) && ((node_next_F == -1) || (node_next_F > node_1_F)))
+        {
+            node_next   = node_1_tile;
+            node_next_F = node_1_F;
+        }
+        node_2_tile = path_node_pointer->tile-fmx_map_pointer->data.map_width;
+        if ((node_2_tile >= 0) && (node_2_tile < fmx_map_pointer->data.number_of_tiles))
+            node_2_F = map_tile_calc (fmx_map_pointer, node_2_tile, path_node_pointer->tile,tile_end);
+        if ((node_2_tile > -1) && ((node_next_F == -1) || (node_next_F > node_2_F)))
+        {
+            node_next   = node_2_tile;
+            node_next_F = node_2_F;
+        }
+        node_3_tile = path_node_pointer->tile-fmx_map_pointer->data.map_width+1;
+        if ((node_3_tile >= 0) && (node_3_tile < fmx_map_pointer->data.number_of_tiles))
+            node_3_F = map_tile_calc (fmx_map_pointer, node_3_tile, path_node_pointer->tile,tile_end);
+        if ((node_3_tile > -1) && ((node_next_F == -1) || (node_next_F > node_3_F)))
+        {
+            node_next   = node_3_tile;
+            node_next_F = node_3_F;
+        }
+        node_4_tile = path_node_pointer->tile-1;
+        if ((node_4_tile >= 0) && (node_4_tile < fmx_map_pointer->data.number_of_tiles))
+            node_4_F = map_tile_calc (fmx_map_pointer, node_4_tile, path_node_pointer->tile,tile_end);
+        if ((node_4_tile > -1) && ((node_next_F == -1) || (node_next_F > node_4_F)))
+        {
+            node_next   = node_4_tile;
+            node_next_F = node_4_F;
+        }
+        node_5_tile = path_node_pointer->tile+1;
+        if ((node_5_tile >= 0) && (node_5_tile < fmx_map_pointer->data.number_of_tiles))
+            node_5_F = map_tile_calc (fmx_map_pointer, node_5_tile, path_node_pointer->tile,tile_end);
+        if ((node_5_tile > -1) && ((node_next_F == -1) || (node_next_F > node_5_F)))
+        {
+            node_next   = node_5_tile;
+            node_next_F = node_5_F;
+        }
+        node_6_tile = path_node_pointer->tile+fmx_map_pointer->data.map_width-1;
+        if ((node_6_tile >= 0) && (node_6_tile < fmx_map_pointer->data.number_of_tiles))
+            node_6_F = map_tile_calc (fmx_map_pointer, node_6_tile, path_node_pointer->tile,tile_end);
+        if ((node_6_tile > -1) && ((node_next_F == -1) || (node_next_F > node_6_F)))
+        {
+            node_next   = node_6_tile;
+            node_next_F = node_6_F;
+        }
+        node_7_tile = path_node_pointer->tile+fmx_map_pointer->data.map_width;
+        if ((node_7_tile >= 0) && (node_7_tile < fmx_map_pointer->data.number_of_tiles))
+            node_7_F = map_tile_calc (fmx_map_pointer, node_7_tile, path_node_pointer->tile,tile_end);
+        if ((node_7_tile > -1) && ((node_next_F == -1) || (node_next_F > node_7_F)))
+        {
+            node_next   = node_7_tile;
+            node_next_F = node_7_F;
+        }
+        node_8_tile = path_node_pointer->tile+fmx_map_pointer->data.map_width+1;
+        if ((node_8_tile >= 0) && (node_8_tile < fmx_map_pointer->data.number_of_tiles))
+            node_8_F = map_tile_calc (fmx_map_pointer, node_8_tile, path_node_pointer->tile,tile_end);
+        if ((node_8_tile > -1) && ((node_next_F == -1) || (node_next_F > node_8_F)))
+        {
+            node_next   = node_8_tile;
+            node_next_F = node_8_F;
+        }
+            game.core.log.file_write("Node next -> ",node_next);
+            game.core.log.file_write("Node F -> ",node_next_F);
+
+
+            if (!(node_1_F+node_2_F+node_3_F+node_4_F+node_5_F+node_6_F+node_7_F+node_8_F) > -8)
             {
                 game.core.log.file_write("Node 1 -> ",node_1_F);
                 game.core.log.file_write("Node 2 -> ",node_2_F);
