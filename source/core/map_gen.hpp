@@ -29,8 +29,8 @@
 #include "loader_fmx.hpp"
 #include "types.hpp"
 
-// ROOM_MAX should be an even number!
-#define MAX_ROOMS  0 // 0 for unlimited number possible
+#define MAX_ROOMS  0 // 0 for unlimited number possible, should be an even number!
+#define MAX_NODES  8
 
 #define LAYER_FLOOR  0
 #define LAYER_OBJECT 1

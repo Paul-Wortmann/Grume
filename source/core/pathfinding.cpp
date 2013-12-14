@@ -315,138 +315,142 @@ path_type*  _map_path_find(fmx_map_type *fmx_map_pointer, int tile_start, int ti
 
 path_type*  _map_path_find_internal(fmx_map_type *fmx_map_pointer, path_node_type* path_node_pointer, int tile_start, int tile_end)
 {
-    fmx_map_pointer->path_data[path_node_pointer->tile].tile_data = TILE_PATH;
-    int tile_current = path_node_pointer->tile;
-    int node_1_F     = -1;
-    int node_2_F     = -1;
-    int node_3_F     = -1;
-    int node_4_F     = -1;
-    int node_5_F     = -1;
-    int node_6_F     = -1;
-    int node_7_F     = -1;
-    int node_8_F     = -1;
-    int node_1_tile  = -1;
-    int node_2_tile  = -1;
-    int node_3_tile  = -1;
-    int node_4_tile  = -1;
-    int node_5_tile  = -1;
-    int node_6_tile  = -1;
-    int node_7_tile  = -1;
-    int node_8_tile  = -1;
-    int node_next    = -1;
-    int node_next_F  = -1;
+
     path_type* return_path = new path_type;
-    fmx_map_pointer->data.path_end_found = (path_node_pointer->tile == tile_end) ? true : false;
-    //for (int tile_count = 0; tile_count < ; tile_count++){};
-    if (!fmx_map_pointer->data.path_end_found)
+    for (int tile_count = 0; tile_count < MAX_NODES; tile_count++)
     {
-        node_1_tile = path_node_pointer->tile-fmx_map_pointer->data.map_width-1;
-        if ((node_1_tile >= 0) && (node_1_tile < fmx_map_pointer->data.number_of_tiles))
-            node_1_F = map_tile_calc (fmx_map_pointer, node_1_tile, path_node_pointer->tile,tile_end);
-        if ((node_1_tile > -1) && ((node_next_F == -1) || (node_next_F > node_1_F)))
-        {
-            node_next   = 1;
-            node_next_F = node_1_F;
-        }
-        node_2_tile = path_node_pointer->tile-fmx_map_pointer->data.map_width;
-        if ((node_2_tile >= 0) && (node_2_tile < fmx_map_pointer->data.number_of_tiles))
-            node_2_F = map_tile_calc (fmx_map_pointer, node_2_tile, path_node_pointer->tile,tile_end);
-        if ((node_2_tile > -1) && ((node_next_F == -1) || (node_next_F > node_2_F)))
-        {
-            node_next   = 2;
-            node_next_F = node_2_F;
-        }
-        node_3_tile = path_node_pointer->tile-fmx_map_pointer->data.map_width+1;
-        if ((node_3_tile >= 0) && (node_3_tile < fmx_map_pointer->data.number_of_tiles))
-            node_3_F = map_tile_calc (fmx_map_pointer, node_3_tile, path_node_pointer->tile,tile_end);
-        if ((node_3_tile > -1) && ((node_next_F == -1) || (node_next_F > node_3_F)))
-        {
-            node_next   = 3;
-            node_next_F = node_3_F;
-        }
-        node_4_tile = path_node_pointer->tile-1;
-        if ((node_4_tile >= 0) && (node_4_tile < fmx_map_pointer->data.number_of_tiles))
-            node_4_F = map_tile_calc (fmx_map_pointer, node_4_tile, path_node_pointer->tile,tile_end);
-        if ((node_4_tile > -1) && ((node_next_F == -1) || (node_next_F > node_4_F)))
-        {
-            node_next   = 4;
-            node_next_F = node_4_F;
-        }
-        node_5_tile = path_node_pointer->tile+1;
-        if ((node_5_tile >= 0) && (node_5_tile < fmx_map_pointer->data.number_of_tiles))
-            node_5_F = map_tile_calc (fmx_map_pointer, node_5_tile, path_node_pointer->tile,tile_end);
-        if ((node_5_tile > -1) && ((node_next_F == -1) || (node_next_F > node_5_F)))
-        {
-            node_next   = 5;
-            node_next_F = node_5_F;
-        }
-        node_6_tile = path_node_pointer->tile+fmx_map_pointer->data.map_width-1;
-        if ((node_6_tile >= 0) && (node_6_tile < fmx_map_pointer->data.number_of_tiles))
-            node_6_F = map_tile_calc (fmx_map_pointer, node_6_tile, path_node_pointer->tile,tile_end);
-        if ((node_6_tile > -1) && ((node_next_F == -1) || (node_next_F > node_6_F)))
-        {
-            node_next   = 6;
-            node_next_F = node_6_F;
-        }
-        node_7_tile = path_node_pointer->tile+fmx_map_pointer->data.map_width;
-        if ((node_7_tile >= 0) && (node_7_tile < fmx_map_pointer->data.number_of_tiles))
-            node_7_F = map_tile_calc (fmx_map_pointer, node_7_tile, path_node_pointer->tile,tile_end);
-        if ((node_7_tile > -1) && ((node_next_F == -1) || (node_next_F > node_7_F)))
-        {
-            node_next   = 7;
-            node_next_F = node_7_F;
-        }
-        node_8_tile = path_node_pointer->tile+fmx_map_pointer->data.map_width+1;
-        if ((node_8_tile >= 0) && (node_8_tile < fmx_map_pointer->data.number_of_tiles))
-            node_8_F = map_tile_calc (fmx_map_pointer, node_8_tile, path_node_pointer->tile,tile_end);
-        if ((node_8_tile > -1) && ((node_next_F == -1) || (node_next_F > node_8_F)))
-        {
-            node_next   = 8;
-            node_next_F = node_8_F;
-        }
-            game.core.log.file_write("Node next -> ",node_next);
-            game.core.log.file_write("Node F -> ",node_next_F);
-        if (node_next == -1)
-        {
-            fmx_map_pointer->path_data->closed_list = true;
-            fmx_map_pointer->data.path_end_found    = true;
-        }
+        fmx_map_pointer->path_data[path_node_pointer->tile].tile_data = TILE_PATH;
+        int tile_current = path_node_pointer->tile;
+        int node_1_F     = -1;
+        int node_2_F     = -1;
+        int node_3_F     = -1;
+        int node_4_F     = -1;
+        int node_5_F     = -1;
+        int node_6_F     = -1;
+        int node_7_F     = -1;
+        int node_8_F     = -1;
+        int node_1_tile  = -1;
+        int node_2_tile  = -1;
+        int node_3_tile  = -1;
+        int node_4_tile  = -1;
+        int node_5_tile  = -1;
+        int node_6_tile  = -1;
+        int node_7_tile  = -1;
+        int node_8_tile  = -1;
+        int node_next    = -1;
+        int node_next_F  = -1;
+        fmx_map_pointer->data.path_end_found = (path_node_pointer->tile == tile_end) ? true : false;
         if (!fmx_map_pointer->data.path_end_found)
         {
-            if (!path_node_pointer->next != NULL) delete path_node_pointer->next;
-            path_node_pointer->next = new path_node_type;
-            switch (node_next)
+            node_1_tile = path_node_pointer->tile-fmx_map_pointer->data.map_width-1;
+            if ((node_1_tile >= 0) && (node_1_tile < fmx_map_pointer->data.number_of_tiles))
+                node_1_F = map_tile_calc (fmx_map_pointer, node_1_tile, path_node_pointer->tile,tile_end);
+            if ((node_1_tile > -1) && ((node_next_F == -1) || (node_next_F > node_1_F)))
             {
-                case 1:
-                    path_node_pointer->next->tile = node_1_tile;
-                break;
-                case 2:
-                    path_node_pointer->next->tile = node_2_tile;
-                break;
-                case 3:
-                    path_node_pointer->next->tile = node_3_tile;
-                break;
-                case 4:
-                    path_node_pointer->next->tile = node_4_tile;
-                break;
-                case 5:
-                    path_node_pointer->next->tile = node_5_tile;
-                break;
-                case 6:
-                    path_node_pointer->next->tile = node_6_tile;
-                break;
-                case 7:
-                    path_node_pointer->next->tile = node_7_tile;
-                break;
-                case 8:
-                    path_node_pointer->next->tile = node_8_tile;
-                break;
-                default:
-                break;
+                node_next   = 1;
+                node_next_F = node_1_F;
             }
-            path_node_pointer->last = path_node_pointer->next;
-            path_node_pointer = path_node_pointer->next;
-            return_path = _map_path_find_internal(fmx_map_pointer, path_node_pointer, tile_start , tile_end);
+            node_2_tile = path_node_pointer->tile-fmx_map_pointer->data.map_width;
+            if ((node_2_tile >= 0) && (node_2_tile < fmx_map_pointer->data.number_of_tiles))
+                node_2_F = map_tile_calc (fmx_map_pointer, node_2_tile, path_node_pointer->tile,tile_end);
+            if ((node_2_tile > -1) && ((node_next_F == -1) || (node_next_F > node_2_F)))
+            {
+                node_next   = 2;
+                node_next_F = node_2_F;
+            }
+            node_3_tile = path_node_pointer->tile-fmx_map_pointer->data.map_width+1;
+            if ((node_3_tile >= 0) && (node_3_tile < fmx_map_pointer->data.number_of_tiles))
+                node_3_F = map_tile_calc (fmx_map_pointer, node_3_tile, path_node_pointer->tile,tile_end);
+            if ((node_3_tile > -1) && ((node_next_F == -1) || (node_next_F > node_3_F)))
+            {
+                node_next   = 3;
+                node_next_F = node_3_F;
+            }
+            node_4_tile = path_node_pointer->tile-1;
+            if ((node_4_tile >= 0) && (node_4_tile < fmx_map_pointer->data.number_of_tiles))
+                node_4_F = map_tile_calc (fmx_map_pointer, node_4_tile, path_node_pointer->tile,tile_end);
+            if ((node_4_tile > -1) && ((node_next_F == -1) || (node_next_F > node_4_F)))
+            {
+                node_next   = 4;
+                node_next_F = node_4_F;
+            }
+            node_5_tile = path_node_pointer->tile+1;
+            if ((node_5_tile >= 0) && (node_5_tile < fmx_map_pointer->data.number_of_tiles))
+                node_5_F = map_tile_calc (fmx_map_pointer, node_5_tile, path_node_pointer->tile,tile_end);
+            if ((node_5_tile > -1) && ((node_next_F == -1) || (node_next_F > node_5_F)))
+            {
+                node_next   = 5;
+                node_next_F = node_5_F;
+            }
+            node_6_tile = path_node_pointer->tile+fmx_map_pointer->data.map_width-1;
+            if ((node_6_tile >= 0) && (node_6_tile < fmx_map_pointer->data.number_of_tiles))
+                node_6_F = map_tile_calc (fmx_map_pointer, node_6_tile, path_node_pointer->tile,tile_end);
+            if ((node_6_tile > -1) && ((node_next_F == -1) || (node_next_F > node_6_F)))
+            {
+                node_next   = 6;
+                node_next_F = node_6_F;
+            }
+            node_7_tile = path_node_pointer->tile+fmx_map_pointer->data.map_width;
+            if ((node_7_tile >= 0) && (node_7_tile < fmx_map_pointer->data.number_of_tiles))
+                node_7_F = map_tile_calc (fmx_map_pointer, node_7_tile, path_node_pointer->tile,tile_end);
+            if ((node_7_tile > -1) && ((node_next_F == -1) || (node_next_F > node_7_F)))
+            {
+                node_next   = 7;
+                node_next_F = node_7_F;
+            }
+            node_8_tile = path_node_pointer->tile+fmx_map_pointer->data.map_width+1;
+            if ((node_8_tile >= 0) && (node_8_tile < fmx_map_pointer->data.number_of_tiles))
+                node_8_F = map_tile_calc (fmx_map_pointer, node_8_tile, path_node_pointer->tile,tile_end);
+            if ((node_8_tile > -1) && ((node_next_F == -1) || (node_next_F > node_8_F)))
+            {
+                node_next   = 8;
+                node_next_F = node_8_F;
+            }
+            if (node_next_F == -1)
+            {
+                fmx_map_pointer->path_data->closed_list = true;
+                path_node_pointer = path_node_pointer->last;
+            }
+            else
+            {
+                game.core.log.file_write("Node next -> ",node_next);
+                if (!path_node_pointer->next != NULL) delete path_node_pointer->next;
+                path_node_pointer->next = new path_node_type;
+                path_node_pointer->next->next = NULL;
+                path_node_pointer->next->last = new path_node_type;
+                path_node_pointer->next->last = path_node_pointer;
+                switch (node_next)
+                {
+                    case 1:
+                        path_node_pointer->next->tile = node_1_tile;
+                    break;
+                    case 2:
+                        path_node_pointer->next->tile = node_2_tile;
+                    break;
+                    case 3:
+                        path_node_pointer->next->tile = node_3_tile;
+                    break;
+                    case 4:
+                        path_node_pointer->next->tile = node_4_tile;
+                    break;
+                    case 5:
+                        path_node_pointer->next->tile = node_5_tile;
+                    break;
+                    case 6:
+                        path_node_pointer->next->tile = node_6_tile;
+                    break;
+                    case 7:
+                        path_node_pointer->next->tile = node_7_tile;
+                    break;
+                    case 8:
+                        path_node_pointer->next->tile = node_8_tile;
+                    break;
+                    default:
+                    break;
+                }
+                path_node_pointer = path_node_pointer->next;
+                return_path = _map_path_find_internal(fmx_map_pointer, path_node_pointer, tile_start , tile_end);
+            }
         }
     }
     return (return_path);
