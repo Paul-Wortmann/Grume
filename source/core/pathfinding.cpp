@@ -315,11 +315,10 @@ path_type*  _map_path_find(fmx_map_type *fmx_map_pointer, int tile_start, int ti
 
 path_type*  _map_path_find_internal(fmx_map_type *fmx_map_pointer, path_node_type* path_node_pointer, int tile_start, int tile_end)
 {
-
     path_type* return_path = new path_type;
+    fmx_map_pointer->data.path_end_found = (path_node_pointer->tile == tile_end) ? true : false;
     for (int tile_count = 0; tile_count < MAX_NODES; tile_count++)
     {
-        fmx_map_pointer->path_data[path_node_pointer->tile].tile_data = TILE_PATH;
         int tile_current = path_node_pointer->tile;
         int node_1_F     = -1;
         int node_2_F     = -1;
@@ -339,7 +338,6 @@ path_type*  _map_path_find_internal(fmx_map_type *fmx_map_pointer, path_node_typ
         int node_8_tile  = -1;
         int node_next    = -1;
         int node_next_F  = -1;
-        fmx_map_pointer->data.path_end_found = (path_node_pointer->tile == tile_end) ? true : false;
         if (!fmx_map_pointer->data.path_end_found)
         {
             node_1_tile = path_node_pointer->tile-fmx_map_pointer->data.map_width-1;
@@ -408,12 +406,15 @@ path_type*  _map_path_find_internal(fmx_map_type *fmx_map_pointer, path_node_typ
             }
             if (node_next_F == -1)
             {
-                fmx_map_pointer->path_data->closed_list = true;
+                game.core.log.file_write(" No suitable node found...");
+                fmx_map_pointer->path_data[path_node_pointer->tile].closed_list = true;
                 path_node_pointer = path_node_pointer->last;
+                //if (path_node_pointer == path_node_pointer->root)
+                //fmx_map_pointer->data.path_end_found = true;
             }
             else
             {
-                game.core.log.file_write("Node next -> ",node_next);
+                game.core.log.file_write("Node next -> ",node_next," - tile_F -> ",node_next_F);
                 if (!path_node_pointer->next != NULL) delete path_node_pointer->next;
                 path_node_pointer->next = new path_node_type;
                 path_node_pointer->next->next = NULL;
@@ -453,5 +454,6 @@ path_type*  _map_path_find_internal(fmx_map_type *fmx_map_pointer, path_node_typ
             }
         }
     }
+    fmx_map_pointer->path_data[path_node_pointer->tile].tile_data = TILE_PATH;
     return (return_path);
 };
