@@ -21,15 +21,29 @@ Starting Game...
 # ---------------------------------------------- #
  
 -> map_gen_room_add_exits() called 
--> map_gen_room_add_exits() called 
--> map_gen_room_add_exits() called 
+Node 1 tile = 4985
+Node 2 tile = 4986
+Node 3 tile = 4987
+Node 4 tile = 5049
+Node 5 tile = 5051
+Node 6 tile = 5113
+Node 7 tile = 5114
+Node 8 tile = 5115
+Node 1 -> 764
+Node 2 -> 774
+Node 3 -> 784
+Node 4 -> 390
+Node 5 -> 410
+Node 6 -> 524
+Node 7 -> 514
+Node 8 -> 504
  
 # ---------------------------------------------- #
  
 Font    count -> 1
 Music   count -> 1
 Sound   count -> 13
-Texture count -> 211
+Texture count -> 207
 Item    count -> 56
 Effect  count -> 46
  
