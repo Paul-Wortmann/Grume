@@ -67,11 +67,12 @@ struct fmx_data_type
     int                map_height;
     int                map_tile_width;
     int                map_tile_height;
-    int                path_length;
     int                number_of_layers;
     int                number_of_tiles;
     int                number_of_tilesets;
     int                number_of_rooms;
+    int                path_length;
+    bool               path_end_found;
 };
 
 struct fmx_path_data_type

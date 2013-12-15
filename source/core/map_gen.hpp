@@ -29,26 +29,27 @@
 #include "loader_fmx.hpp"
 #include "types.hpp"
 
-// ROOM_MAX should be an even number!
-#define MAX_ROOMS  0 // 0 for unlimited number possible
+#define MAX_ROOMS    0 // 0 for unlimited number possible, should be an even number!
+#define MAX_NODES    8
 
 #define LAYER_FLOOR  0
 #define LAYER_OBJECT 1
 #define LAYER_WALL   2
 
-#define TILE_NONE  -1
-#define TILE_FLOOR  1
-#define TILE_WALL   2
-#define TILE_EXIT   3
-#define TILE_DOOR   4
-#define TILE_PATH   5
+#define TILE_NONE   -1
+#define TILE_FLOOR   1
+#define TILE_WALL    2
+#define TILE_EXIT    3
+#define TILE_DOOR    4
+#define TILE_PATH    5
+#define TILE_PATH_NO 6
 
-#define ROOM_PATH  2
-#define ROOM_MIN_X 7
-#define ROOM_MIN_Y 7
-#define ROOM_MAX_X 9
-#define ROOM_MAX_Y 9
-#define ROOM_MAX_R (int)(sqrt(((ROOM_MAX_X/2) * (ROOM_MAX_X/2)) + ((ROOM_MAX_Y/2) * (ROOM_MAX_Y/2))) + ROOM_PATH)
+#define ROOM_PATH    2
+#define ROOM_MIN_X   7
+#define ROOM_MIN_Y   7
+#define ROOM_MAX_X   9
+#define ROOM_MAX_Y   9
+#define ROOM_MAX_R   (int)(sqrt(((ROOM_MAX_X/2) * (ROOM_MAX_X/2)) + ((ROOM_MAX_Y/2) * (ROOM_MAX_Y/2))) + ROOM_PATH)
 
 struct flood_fill_type
 {
