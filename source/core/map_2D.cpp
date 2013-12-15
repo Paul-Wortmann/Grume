@@ -778,6 +778,15 @@ void map_2D_class::apply_tileset(fmx_map_type *fmx_map_pointer, int pre_defined_
             default:
             break;
         }
+        switch (fmx_map_pointer->layer[LAYER_FLOOR].tile[tile_count].collision)
+        {
+            case true:
+                fmx_map_pointer->layer[LAYER_FLOOR].tile[tile_count].tile_tileset = TILE_SET_DEFAULT;
+                fmx_map_pointer->layer[LAYER_FLOOR].tile[tile_count].tile = 3;
+            break;
+            default:
+            break;
+        }
     }
     delete [] temp_tile_data;
 };
