@@ -22,7 +22,7 @@
  * @date 2011-11-11
  */
 
-#include "SDL/SDL.h"
+#include "SDL2/SDL.h"
 #include "timer.hpp"
 
 timer_class::timer_class()

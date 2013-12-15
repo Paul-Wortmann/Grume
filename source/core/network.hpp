@@ -25,7 +25,7 @@
 #ifndef NETWORK_H
 #define NETWORK_H
 
-#include "SDL/SDL_net.h"
+#include "SDL2/SDL_net.h"
 
 struct ip_struct
 {
