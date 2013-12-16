@@ -365,6 +365,7 @@ void map_gen_BSP (fmx_map_type *fmx_map_pointer)
 {
     map_gen_BSP_internal(fmx_map_pointer);
     while (!map_gen_room_flood_fill(fmx_map_pointer)) map_gen_BSP_internal(fmx_map_pointer);
+    map_gen_check_tiles(fmx_map_pointer);
     map_gen_room_collision(fmx_map_pointer);
     map_gen_room_add_exits(fmx_map_pointer);
 };
@@ -559,6 +560,7 @@ void map_gen_CA (fmx_map_type *fmx_map_pointer)
     {
         fmx_map_pointer->layer[LAYER_FLOOR].tile[tile_count].tile  = fill_data[tile_count].tile_data;
     }
+    map_gen_check_tiles(fmx_map_pointer); // probably don't need this?
     map_gen_room_collision(fmx_map_pointer);
 };
 
@@ -652,6 +654,7 @@ void map_gen_RC (fmx_map_type *fmx_map_pointer)
 {
     map_gen_RC_internal(fmx_map_pointer);
     while (!map_gen_room_flood_fill(fmx_map_pointer)) map_gen_RC_internal(fmx_map_pointer);
+    map_gen_check_tiles(fmx_map_pointer);
     map_gen_room_collision(fmx_map_pointer);
     map_gen_room_add_exits(fmx_map_pointer);
 };
@@ -1076,6 +1079,11 @@ void           map_gen_room_collision  (fmx_map_type *fmx_map_pointer)
             fmx_map_pointer->layer[LAYER_FLOOR].tile[tile_count].collision = true;
         }
     }
+};
+
+void           map_gen_check_tiles     (fmx_map_type *fmx_map_pointer)
+{
+
 };
 
 void           map_gen_room_add_exits  (fmx_map_type *fmx_map_pointer)
