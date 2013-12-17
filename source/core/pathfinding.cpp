@@ -464,8 +464,8 @@ path_type*  _map_path_find_internal(fmx_map_type *fmx_map_pointer, path_node_typ
                     //if (path_node_pointer->last->tile == node_next_tile) fmx_map_pointer->path_data[path_node_pointer->tile].closed_list = true;
                     game.core.log.file_write("Node next -> ",node_next," - tile_F -> ",node_next_F);
                     fmx_map_pointer->path_data[path_node_pointer->tile].tile_data = TILE_PATH;
-                    path_node_pointer->next = new path_node_type;
                     path_node_type* path_node_pointer_old = path_node_pointer;
+                    path_node_pointer->next = new path_node_type;
                     path_node_pointer = path_node_pointer->next;
                     path_node_pointer->next = NULL;
                     path_node_pointer->last = path_node_pointer_old;
