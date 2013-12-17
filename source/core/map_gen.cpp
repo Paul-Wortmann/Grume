@@ -1114,7 +1114,7 @@ game.core.log.file_write("-> map_gen_room_add_exits() called ");
         {
             if ((room_1 != room_2)&&(fmx_map_pointer->room[room_1].active)&&(fmx_map_pointer->room[room_2].active))
             {
-                path_data = _map_path_find(fmx_map_pointer,fmx_map_pointer->room[room_1].position.x,fmx_map_pointer->room[room_1].position.y,fmx_map_pointer->room[room_2].position.x,fmx_map_pointer->room[room_2].position.y);
+                path_data = map_path_find(fmx_map_pointer,fmx_map_pointer->room[room_1].position.x,fmx_map_pointer->room[room_1].position.y,fmx_map_pointer->room[room_2].position.x,fmx_map_pointer->room[room_2].position.y);
                 if (path_data->path_length > distance_temp)
                 {
                     distance_temp = path_data->path_length;
@@ -1130,18 +1130,19 @@ game.core.log.file_write("-> map_gen_room_add_exits() called ");
         fmx_map_pointer->layer[LAYER_FLOOR].tile[(fmx_map_pointer->room[room_e].position.x + (fmx_map_pointer->room[room_e].position.y * fmx_map_pointer->data.map_width))].tile = TILE_EXIT;
         fmx_map_pointer->layer[LAYER_FLOOR].tile[(fmx_map_pointer->room[room_s].position.x + (fmx_map_pointer->room[room_s].position.y * fmx_map_pointer->data.map_width))].tile = TILE_EXIT;
 
-path_data = _map_path_find(fmx_map_pointer,fmx_map_pointer->room[room_e].position.x,fmx_map_pointer->room[room_e].position.y,fmx_map_pointer->room[room_s].position.x,fmx_map_pointer->room[room_s].position.y);
+path_data = map_path_find(fmx_map_pointer,fmx_map_pointer->room[room_e].position.x,fmx_map_pointer->room[room_e].position.y,fmx_map_pointer->room[room_s].position.x,fmx_map_pointer->room[room_s].position.y);
 distance_temp = path_data->path_length;
 game.core.log.file_write("-> distance found - ",distance_temp);
 
     }
+
     */
     for (int tile_count_x = 0; tile_count_x < fmx_map_pointer->data.map_width; tile_count_x++)
     {
         for (int tile_count_y = 0; tile_count_y < fmx_map_pointer->data.map_height; tile_count_y++)
         {
             int tile_count_temp = (tile_count_y * fmx_map_pointer->data.map_width) + tile_count_x;
-            //fmx_map_pointer->layer[LAYER_FLOOR].tile[tile_count_temp].tile          = TILE_FLOOR;
+            fmx_map_pointer->layer[LAYER_FLOOR].tile[tile_count_temp].tile          = TILE_FLOOR;
             //fmx_map_pointer->layer[LAYER_FLOOR].tile[tile_count_temp].collision     = false;
         }
     }
