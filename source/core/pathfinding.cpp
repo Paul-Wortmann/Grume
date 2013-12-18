@@ -318,7 +318,7 @@ path_type*  _map_path_find_internal(fmx_map_type *fmx_map_pointer, path_node_typ
     if (path_node_pointer->tile == tile_end)
     {
         fmx_map_pointer->data.path_end_found = true;
-        fmx_map_pointer->path_data[path_node_pointer->tile].tile_data = TILE_PATH;
+        //fmx_map_pointer->path_data[path_node_pointer->tile].tile_data = TILE_PATH;
         game.core.log.file_write(" Path end found! ");
     }
     if (!fmx_map_pointer->data.path_end_found)
@@ -516,8 +516,9 @@ path_type*  _map_path_find_internal(fmx_map_type *fmx_map_pointer, path_node_typ
                     else
                     {
                         if (node_parent > 0) fmx_map_pointer->path_data[tile_current].closed_list = true;
+                        if (fmx_map_pointer->path_data[tile_current].closed_list) fmx_map_pointer->path_data[tile_current].tile_data = TILE_PATH_NO;
+                        fmx_map_pointer->path_data[node_next].tile_data = TILE_PATH;
                         game.core.log.file_write("Node next -> ",node_next," - tile - ",node_next_tile," - tile_F -> ",node_next_F);
-                        fmx_map_pointer->path_data[tile_current].tile_data = TILE_PATH;
                         path_node_type* path_node_pointer_old = path_node_pointer;
                         path_node_pointer->next = new path_node_type;
                         path_node_pointer = path_node_pointer->next;

@@ -662,6 +662,17 @@ void map_gen_RC (fmx_map_type *fmx_map_pointer)
     map_gen_room_add_exits(fmx_map_pointer);
 };
 
+void           map_gen_M1              (fmx_map_type *fmx_map_pointer, int seed)
+{
+    srand(seed);
+    map_gen_M1(fmx_map_pointer);
+};
+
+void           map_gen_M1              (fmx_map_type *fmx_map_pointer)
+{
+
+};
+
 int map_gen_flood_fill_tile(fmx_map_type *fmx_map_pointer, flood_fill_type *fill_data, int tile_number)
 {
     int return_value = 0;
