@@ -763,29 +763,32 @@ void map_2D_class::apply_tileset(fmx_map_type *fmx_map_pointer, int pre_defined_
             break;
         }
     }
-    for (int tile_count = 0; tile_count < fmx_map_pointer->data.number_of_tiles; tile_count++)
+    if (fmx_map_pointer->path_data != NULL)
     {
-        switch (fmx_map_pointer->path_data[tile_count].tile_data)
+        for (int tile_count = 0; tile_count < fmx_map_pointer->data.number_of_tiles; tile_count++)
         {
-            case TILE_PATH:
-                fmx_map_pointer->layer[LAYER_FLOOR].tile[tile_count].tile_tileset = TILE_SET_DEFAULT;
-                fmx_map_pointer->layer[LAYER_FLOOR].tile[tile_count].tile = 2;
-            break;
-            case TILE_PATH_NO:
-                fmx_map_pointer->layer[LAYER_FLOOR].tile[tile_count].tile_tileset = TILE_SET_DEFAULT;
-                fmx_map_pointer->layer[LAYER_FLOOR].tile[tile_count].tile = 1;
-            break;
-            default:
-            break;
-        }
-        switch (fmx_map_pointer->layer[LAYER_FLOOR].tile[tile_count].collision)
-        {
-            case true:
-                fmx_map_pointer->layer[LAYER_FLOOR].tile[tile_count].tile_tileset = TILE_SET_DEFAULT;
-                fmx_map_pointer->layer[LAYER_FLOOR].tile[tile_count].tile = 3;
-            break;
-            default:
-            break;
+            switch (fmx_map_pointer->path_data[tile_count].tile_data)
+            {
+                case TILE_PATH:
+                    fmx_map_pointer->layer[LAYER_FLOOR].tile[tile_count].tile_tileset = TILE_SET_DEFAULT;
+                    fmx_map_pointer->layer[LAYER_FLOOR].tile[tile_count].tile = 2;
+                break;
+                case TILE_PATH_NO:
+                    fmx_map_pointer->layer[LAYER_FLOOR].tile[tile_count].tile_tileset = TILE_SET_DEFAULT;
+                    fmx_map_pointer->layer[LAYER_FLOOR].tile[tile_count].tile = 1;
+                break;
+                default:
+                break;
+            }
+            switch (fmx_map_pointer->layer[LAYER_FLOOR].tile[tile_count].collision)
+            {
+                case true:
+                    fmx_map_pointer->layer[LAYER_FLOOR].tile[tile_count].tile_tileset = TILE_SET_DEFAULT;
+                    fmx_map_pointer->layer[LAYER_FLOOR].tile[tile_count].tile = 3;
+                break;
+                default:
+                break;
+            }
         }
     }
     delete [] temp_tile_data;
