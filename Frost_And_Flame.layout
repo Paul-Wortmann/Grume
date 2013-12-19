@@ -31,7 +31,7 @@
 			<Cursor1 position="1033" topLine="7" />
 		</Cursor>
 	</File>
-	<File name="source/game/game.cpp" open="1" top="1" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="source/game/game.cpp" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="36003" topLine="621" />
 		</Cursor>
@@ -148,7 +148,7 @@
 	</File>
 	<File name="source/core/map_2D.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="61384" topLine="752" />
+			<Cursor1 position="61580" topLine="751" />
 		</Cursor>
 	</File>
 	<File name="source/UI/quest_log_window.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -178,10 +178,10 @@
 	</File>
 	<File name="source/core/map_2D.hpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="1016" topLine="10" />
+			<Cursor1 position="2112" topLine="9" />
 		</Cursor>
 	</File>
-	<File name="source/core/pathfinding.cpp" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="source/core/pathfinding.cpp" open="1" top="1" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="25296" topLine="489" />
 		</Cursor>
