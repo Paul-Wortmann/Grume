@@ -29,6 +29,10 @@
 #include "loader_fmx.hpp"
 #include "types.hpp"
 
+#define MAP_DUNGEON   1
+#define MAP_CAVE      2
+#define MAP_GRASSLAND 3
+
 #define MAX_ROOMS    0 // 0 for unlimited number possible, should be an even number!
 #define MAX_NODES    8
 
@@ -92,6 +96,7 @@ void           map_gen_RC              (fmx_map_type *fmx_map_pointer, int seed)
 void           map_gen_RC              (fmx_map_type *fmx_map_pointer);
 void           map_gen_M1              (fmx_map_type *fmx_map_pointer, int seed);
 void           map_gen_M1              (fmx_map_type *fmx_map_pointer);
+bool           map_gen_room            (fmx_map_type *fmx_map_pointer, room_data_type room, int number_of_exits);
 int            map_gen_flood_fill_tile (fmx_map_type *fmx_map_pointer, flood_fill_type *fill_data, int tile_number);
 bool           map_gen_room_flood_fill (fmx_map_type *fmx_map_pointer);
 int            map_gen_room_check_path (fmx_map_type *fmx_map_pointer, int room_1, int room_2, bool x_then_y);

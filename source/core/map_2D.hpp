@@ -28,10 +28,6 @@
 #include "texture_manager.hpp"
 #include "map_gen.hpp"
 
-#define MAP_DUNGEON   1
-#define MAP_CAVE      2
-#define MAP_GRASSLAND 3
-
 const float  MAP_SCROLL_SPEED    = 0.02f;
 const float  TILE_SCALE_DEFAULT  = 200.0f;
 const float  TILE_WIDTH          = (float)DEFAULT_FRAME_WIDTH  / TILE_SCALE_DEFAULT;
