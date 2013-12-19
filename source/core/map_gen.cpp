@@ -670,8 +670,48 @@ void           map_gen_M1              (fmx_map_type *fmx_map_pointer, int seed)
 
 void           map_gen_M1              (fmx_map_type *fmx_map_pointer)
 {
+    room_data_type room_data;
+    room_data.position.x = 0;
+    room_data.position.y = 0;
+    room_data.size.x     = 0;
+    room_data.size.y     = 0;
     map_gen_base(fmx_map_pointer);
-    map_gen_room(fmx_map_type *fmx_map_pointer,map_gen_room_type room);
+    map_gen_room(fmx_map_pointer,room_data,1);
+    map_gen_room(fmx_map_pointer,room_data,1);
+    map_gen_room(fmx_map_pointer,room_data,2);
+    map_gen_room(fmx_map_pointer,room_data,2);
+};
+
+bool           map_gen_room            (fmx_map_type *fmx_map_pointer, room_data_type room, int number_of_exits)
+{
+    bool return_value = true;
+    if (room.position.x <= 0) room.position.x = random(fmx_map_pointer->data.map_width -((ROOM_MAX_X+2)*2)+(ROOM_MAX_X+2));
+    if (room.position.y <= 0) room.position.y = random(fmx_map_pointer->data.map_height-((ROOM_MAX_Y+2)*2)+(ROOM_MAX_Y+2));
+    if (room.size.x <= 0) room.size.x = random_int(ROOM_MIN_X,ROOM_MAX_X);
+    if (room.size.y <= 0) room.size.y = random_int(ROOM_MIN_Y,ROOM_MAX_Y);
+    int temp_pos_x = room.position.x - (room.size.x/2)-1;
+    int temp_pos_y = room.position.y - (room.size.y/2)-1;
+    int temp_tile = 0;
+    for (int count_x = 0; count_x < room.size.x+2; count_x++)
+    {
+        for (int count_y = 0; count_y < room.size.y+2; count_y++)
+        {
+            temp_tile = (fmx_map_pointer->data.map_width*(room.position.y+count_y))+(room.position.x+count_x);
+            if (fmx_map_pointer->layer[LAYER_FLOOR].tile[temp_tile].tile != TILE_WALL) return_value = false;
+        }
+    }
+    if (return_value)
+    {
+        for (int count_x = 1; count_x < room.size.x; count_x++)
+        {
+            for (int count_y = 1; count_y < room.size.y; count_y++)
+            {
+                temp_tile = (fmx_map_pointer->data.map_width*(room.position.y+count_y))+(room.position.x+count_x);
+                fmx_map_pointer->layer[LAYER_FLOOR].tile[temp_tile].tile = TILE_FLOOR;
+            }
+        }
+    }
+    return (return_value);
 };
 
 int map_gen_flood_fill_tile(fmx_map_type *fmx_map_pointer, flood_fill_type *fill_data, int tile_number)
