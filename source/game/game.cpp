@@ -638,10 +638,21 @@ void game_class::process(void)
             game.core.io.key_g                     = false;
             game.core.io.keyboard_delay_count      = 0;
         }
-        if (game.core.io.key_h) // generate a random GG dungeon
+        if (game.core.io.key_h) // generate a random RC dungeon
         {
             game.loading_screen.display("data/loading_screen.png");
             map_gen_RC(&fmx_map);
+            game.map_2D.smooth_map(&fmx_map);
+            game.map_2D.apply_tileset(&fmx_map,MAP_CAVE);
+            game.map_2D.calculate_tile_positions(&fmx_map,DEFAULT_FRAME_WIDTH/game.zoom.current/2.0f,DEFAULT_FRAME_HEIGHT/game.zoom.current/2.0f);
+            game.map_2D.center_on_tile(&fmx_map,(fmx_map.data.number_of_tiles/2)+(fmx_map.data.map_width/2));
+            game.core.io.key_h                     = false;
+            game.core.io.keyboard_delay_count      = 0;
+        }
+        if (game.core.io.key_j) // generate a random M1 dungeon
+        {
+            game.loading_screen.display("data/loading_screen.png");
+            map_gen_M1(&fmx_map);
             game.map_2D.smooth_map(&fmx_map);
             game.map_2D.apply_tileset(&fmx_map,MAP_CAVE);
             game.map_2D.calculate_tile_positions(&fmx_map,DEFAULT_FRAME_WIDTH/game.zoom.current/2.0f,DEFAULT_FRAME_HEIGHT/game.zoom.current/2.0f);
