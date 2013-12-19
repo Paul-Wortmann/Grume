@@ -76,230 +76,14 @@ int map_tile_calc (fmx_map_type *fmx_map_pointer, int tile_current, int tile_par
     return (return_value);
 };
 
-path_type* map_path_find(fmx_map_type *fmx_map_pointer, int position_1_x, int position_1_y, int position_2_x, int position_2_y)
+path_type*  map_path_find(fmx_map_type *fmx_map_pointer, int position_1_x, int position_1_y, int position_2_x, int position_2_y)
 {
     int tile_1 = (position_1_y * fmx_map_pointer->data.map_width) + position_1_x;
     int tile_2 = (position_2_y * fmx_map_pointer->data.map_width) + position_2_x;
     return(map_path_find (fmx_map_pointer,tile_1,tile_2));
-}
-
-path_type* map_path_find (fmx_map_type *fmx_map_pointer, int tile_1, int tile_2)
-{
-    map_path_reset(fmx_map_pointer);
-    int      tile_start     = tile_1;
-    int      tile_end       = tile_2;
-    int      tile_current   = tile_start;
-    int      path_length    =  0;
-    int      tile_next      =  0;
-    int      tile_next_t1   = -1;
-    int      tile_next_t2   =  0;
-    bool     border_left    = ((tile_current % fmx_map_pointer->data.map_width) == 0);
-    bool     border_right   = (((tile_current+1) % fmx_map_pointer->data.map_width) == 0);
-    fmx_map_pointer->path_data[tile_current].open_list = true;
-    fmx_map_pointer->path_data[tile_current].tile_data = TILE_PATH;
-    while ((tile_current <= tile_end) && (tile_next_t2 >= 0))
-    {
-        tile_next       =  -1;
-        if (!border_left)
-        {
-            tile_next_t1    = map_tile_calc(fmx_map_pointer,(tile_current - fmx_map_pointer->data.map_width - 1),tile_current,tile_end);
-            if (tile_next  <= -1)
-            {
-                tile_next    = tile_next_t1;
-                tile_next_t2 = (tile_current - fmx_map_pointer->data.map_width - 1);
-            }
-            if ((tile_next_t1 > -1) && (tile_next_t1 < tile_next))
-            {
-                tile_next = tile_next_t1;
-                tile_next_t2 = (tile_current - fmx_map_pointer->data.map_width - 1);
-            }
-        }
-        tile_next_t1    = map_tile_calc(fmx_map_pointer,(tile_current - fmx_map_pointer->data.map_width    ),tile_current,tile_end);
-        if (tile_next  <= -1)
-        {
-            tile_next = tile_next_t1;
-            tile_next_t2 = (tile_current - fmx_map_pointer->data.map_width);
-        }
-        if ((tile_next_t1 > -1) && (tile_next_t1 < tile_next))
-        {
-            tile_next = tile_next_t1;
-            tile_next_t2 = (tile_current - fmx_map_pointer->data.map_width);
-        }
-        if (!border_right)
-        {
-            tile_next_t1    = map_tile_calc(fmx_map_pointer,(tile_current - fmx_map_pointer->data.map_width + 1),tile_current,tile_end);
-            if (tile_next  <= -1)
-            {
-                tile_next = tile_next_t1;
-                tile_next_t2 = (tile_current - fmx_map_pointer->data.map_width + 1);
-            }
-            if ((tile_next_t1 > -1) && (tile_next_t1 < tile_next))
-            {
-                tile_next = tile_next_t1;
-                tile_next_t2 = (tile_current - fmx_map_pointer->data.map_width + 1);
-            }
-        }
-        if (!border_left)
-        {
-            tile_next_t1    = map_tile_calc(fmx_map_pointer,(tile_current - 1                          ),tile_current,tile_end);
-            if (tile_next  <= -1)
-            {
-                tile_next = tile_next_t1;
-                tile_next_t2 = (tile_current - 1);
-            }
-            if ((tile_next_t1 > -1) && (tile_next_t1 < tile_next))
-            {
-                tile_next = tile_next_t1;
-                tile_next_t2 = (tile_current - 1);
-            }
-        }
-        if (!border_right)
-        {
-            tile_next_t1    = map_tile_calc(fmx_map_pointer,(tile_current + 1                          ),tile_current,tile_end);
-            if (tile_next  <= -1)
-            {
-                tile_next = tile_next_t1;
-                tile_next_t2 = (tile_current + 1);
-            }
-            if ((tile_next_t1 > -1) && (tile_next_t1 < tile_next))
-            {
-                tile_next = tile_next_t1;
-                tile_next_t2 = (tile_current + 1);
-            }
-        }
-        if (!border_left)
-        {
-            tile_next_t1    = map_tile_calc(fmx_map_pointer,(tile_current + fmx_map_pointer->data.map_width - 1),tile_current,tile_end);
-            if (tile_next  <= -1)
-            {
-                tile_next = tile_next_t1;
-                tile_next_t2 = (tile_current + fmx_map_pointer->data.map_width - 1);
-            }
-            if ((tile_next_t1 > -1) && (tile_next_t1 < tile_next))
-            {
-                tile_next = tile_next_t1;
-                tile_next_t2 = (tile_current + fmx_map_pointer->data.map_width - 1);
-            }
-        }
-        tile_next_t1    = map_tile_calc(fmx_map_pointer,(tile_current + fmx_map_pointer->data.map_width    ),tile_current,tile_end);
-        if (tile_next  <= -1)
-        {
-            tile_next = tile_next_t1;
-            tile_next_t2 = (tile_current + fmx_map_pointer->data.map_width);
-        }
-        if ((tile_next_t1 > -1) && (tile_next_t1 < tile_next))
-        {
-            tile_next = tile_next_t1;
-            tile_next_t2 = (tile_current + fmx_map_pointer->data.map_width);
-        }
-        if (!border_right)
-        {
-            tile_next_t1    = map_tile_calc(fmx_map_pointer,(tile_current + fmx_map_pointer->data.map_width + 1),tile_current,tile_end);
-            if (tile_next  <= -1)
-            {
-                tile_next = tile_next_t1;
-                tile_next_t2 = (tile_current + fmx_map_pointer->data.map_width + 1);
-            }
-            if ((tile_next_t1 > -1) && (tile_next_t1 < tile_next))
-            {
-                tile_next = tile_next_t1;
-                tile_next_t2 = (tile_current + fmx_map_pointer->data.map_width + 1);
-            }
-        }
-        path_length++;
-        fmx_map_pointer->path_data[tile_current].tile_data   = TILE_PATH;
-        fmx_map_pointer->path_data[tile_current].closed_list = true;
-        tile_current    = tile_next_t2;
-        border_left    = ((tile_current % fmx_map_pointer->data.map_width) == 0);
-        border_right   = (((tile_current+1) % fmx_map_pointer->data.map_width) == 0);
-    }
-    fmx_map_pointer->path_data[tile_2].tile_data = TILE_PATH;
-    // Return path.
-    path_type* return_path;
-    int  previous_tile_1      = -1;
-    int  previous_tile_2      = -1;
-    int  temp_tile            = -1;
-    bool found_next_tile      = false;
-    return_path               = new path_type;
-    return_path->path_length  = path_length;
-    return_path->tile_start   = tile_1;
-    return_path->tile_end     = tile_2;
-    return_path->tile_current = return_path->tile_start;
-    return_path->path_length  = path_length;
-    return_path->path_data    = new int[return_path->path_length];
-    return_path->path_data[0] = tile_1;
-    for (int current_tile = tile_1, path_position = 0; path_position  < path_length; path_position++)
-    {
-        //game.core.log.file_write("Path: ",current_tile);
-        found_next_tile      = false;
-        temp_tile = previous_tile_1 - fmx_map_pointer->data.map_width - 1;
-        if ((!found_next_tile) && (temp_tile >= 0) && (temp_tile <= fmx_map_pointer->data.number_of_tiles) && (fmx_map_pointer->path_data[temp_tile].tile_data == TILE_PATH) && (temp_tile != previous_tile_2))
-        {
-            current_tile    = temp_tile;
-            found_next_tile = true;
-        }
-        temp_tile = previous_tile_1 - fmx_map_pointer->data.map_width;
-        if ((!found_next_tile) && (temp_tile >= 0) && (temp_tile <= fmx_map_pointer->data.number_of_tiles) && (fmx_map_pointer->path_data[temp_tile].tile_data == TILE_PATH) && (temp_tile != previous_tile_2))
-        {
-            current_tile    = temp_tile;
-            found_next_tile = true;
-        }
-        temp_tile = previous_tile_1 - fmx_map_pointer->data.map_width + 1;
-        if ((!found_next_tile) && (temp_tile >= 0) && (temp_tile <= fmx_map_pointer->data.number_of_tiles) && (fmx_map_pointer->path_data[temp_tile].tile_data == TILE_PATH) && (temp_tile != previous_tile_2))
-        {
-            current_tile    = temp_tile;
-            found_next_tile = true;
-        }
-        temp_tile = previous_tile_1 - 1;
-        if ((!found_next_tile) && (temp_tile >= 0) && (temp_tile <= fmx_map_pointer->data.number_of_tiles) && (fmx_map_pointer->path_data[temp_tile].tile_data == TILE_PATH) && (temp_tile != previous_tile_2))
-        {
-            current_tile    = temp_tile;
-            found_next_tile = true;
-        }
-        temp_tile = previous_tile_1 + 1;
-        if ((!found_next_tile) && (temp_tile >= 0) && (temp_tile <= fmx_map_pointer->data.number_of_tiles) && (fmx_map_pointer->path_data[temp_tile].tile_data == TILE_PATH) && (temp_tile != previous_tile_2))
-        {
-            current_tile    = temp_tile;
-            found_next_tile = true;
-        }
-        temp_tile = previous_tile_1 + fmx_map_pointer->data.map_width - 1;
-        if ((!found_next_tile) && (temp_tile >= 0) && (temp_tile <= fmx_map_pointer->data.number_of_tiles) && (fmx_map_pointer->path_data[temp_tile].tile_data == TILE_PATH) && (temp_tile != previous_tile_2))
-        {
-            current_tile    = temp_tile;
-            found_next_tile = true;
-        }
-        temp_tile = previous_tile_1 + fmx_map_pointer->data.map_width;
-        if ((!found_next_tile) && (temp_tile >= 0) && (temp_tile <= fmx_map_pointer->data.number_of_tiles) && (fmx_map_pointer->path_data[temp_tile].tile_data == TILE_PATH) && (temp_tile != previous_tile_2))
-        {
-            current_tile    = temp_tile;
-            found_next_tile = true;
-        }
-        temp_tile = previous_tile_1 + fmx_map_pointer->data.map_width + 1;
-        if ((!found_next_tile) && (temp_tile >= 0) && (temp_tile <= fmx_map_pointer->data.number_of_tiles) && (fmx_map_pointer->path_data[temp_tile].tile_data == TILE_PATH) && (temp_tile != previous_tile_2))
-        {
-            current_tile    = temp_tile;
-            found_next_tile = true;
-        }
-        if (fmx_map_pointer->path_data[current_tile].tile_data == TILE_PATH) return_path->path_data[path_position] = current_tile;
-        previous_tile_2 = previous_tile_1;
-        previous_tile_1 = current_tile;
-    }
-    return(return_path);
 };
 
-
-
-
-// ------------------  new ----------------------------
-
-path_type*  _map_path_find(fmx_map_type *fmx_map_pointer, int position_1_x, int position_1_y, int position_2_x, int position_2_y)
-{
-    int tile_1 = (position_1_y * fmx_map_pointer->data.map_width) + position_1_x;
-    int tile_2 = (position_2_y * fmx_map_pointer->data.map_width) + position_2_x;
-    return(_map_path_find (fmx_map_pointer,tile_1,tile_2));
-};
-
-path_type*  _map_path_find(fmx_map_type *fmx_map_pointer, int tile_start, int tile_end)
+path_type*  map_path_find(fmx_map_type *fmx_map_pointer, int tile_start, int tile_end)
 {
     map_path_reset(fmx_map_pointer);
     path_node_type* path_node_pointer = new path_node_type;
@@ -308,11 +92,15 @@ path_type*  _map_path_find(fmx_map_type *fmx_map_pointer, int tile_start, int ti
     path_node_pointer->last = path_node_pointer;
     path_node_pointer->tile = tile_start;
     map_tile_calc (fmx_map_pointer, tile_start, tile_start,tile_end);
-    path_type* return_path = _map_path_find_internal(fmx_map_pointer, path_node_pointer, tile_start , tile_end);
+    path_type* return_path = map_path_find_internal(fmx_map_pointer, path_node_pointer, tile_start , tile_end);
+    for (path_node_pointer = path_node_pointer->root;path_node_pointer != NULL; path_node_pointer = path_node_pointer->next)
+    {
+        fmx_map_pointer->path_data[path_node_pointer->tile].tile_data = TILE_PATH;
+    }
     return (return_path);
 };
 
-path_type*  _map_path_find_internal(fmx_map_type *fmx_map_pointer, path_node_type* path_node_pointer, int tile_start, int tile_end)
+path_type*  map_path_find_internal(fmx_map_type *fmx_map_pointer, path_node_type* path_node_pointer, int tile_start, int tile_end)
 {
     path_type* return_path;
     if (path_node_pointer->tile == tile_end)
@@ -465,7 +253,7 @@ path_type*  _map_path_find_internal(fmx_map_type *fmx_map_pointer, path_node_typ
                     }
                     if (node_next < 0)
                     {
-                        node_next = node_parent;
+                        //node_next = node_parent;
                         if (node_parent > 0) game.core.log.file_write("Next best is parent - ",node_parent);
                     }
                     switch (node_next)
@@ -516,8 +304,8 @@ path_type*  _map_path_find_internal(fmx_map_type *fmx_map_pointer, path_node_typ
                     else
                     {
                         if (node_parent > 0) fmx_map_pointer->path_data[tile_current].closed_list = true;
-                        if (fmx_map_pointer->path_data[tile_current].closed_list) fmx_map_pointer->path_data[tile_current].tile_data = TILE_PATH_NO;
-                        fmx_map_pointer->path_data[node_next].tile_data = TILE_PATH;
+                        //if (fmx_map_pointer->path_data[tile_current].closed_list) fmx_map_pointer->path_data[tile_current].tile_data = TILE_PATH_NO;
+                        //fmx_map_pointer->path_data[node_next].tile_data = TILE_PATH;
                         game.core.log.file_write("Node next -> ",node_next," - tile - ",node_next_tile," - tile_F -> ",node_next_F);
                         path_node_type* path_node_pointer_old = path_node_pointer;
                         path_node_pointer->next = new path_node_type;
@@ -525,7 +313,7 @@ path_type*  _map_path_find_internal(fmx_map_type *fmx_map_pointer, path_node_typ
                         path_node_pointer->next = NULL;
                         path_node_pointer->last = path_node_pointer_old;
                         path_node_pointer->tile = node_next_tile;
-                        return_path = _map_path_find_internal(fmx_map_pointer, path_node_pointer, tile_start , tile_end);
+                        return_path = map_path_find_internal(fmx_map_pointer, path_node_pointer, tile_start , tile_end);
                     }
                 }
             }

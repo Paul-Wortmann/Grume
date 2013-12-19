@@ -1265,7 +1265,7 @@ game.core.log.file_write("-> distance found - ",distance_temp);
     }
         fmx_map_pointer->layer[LAYER_FLOOR].tile[(fmx_map_pointer->room[room_e].position.x + (fmx_map_pointer->room[room_e].position.y * fmx_map_pointer->data.map_width))].tile = TILE_EXIT;
         fmx_map_pointer->layer[LAYER_FLOOR].tile[(fmx_map_pointer->room[room_s].position.x + (fmx_map_pointer->room[room_s].position.y * fmx_map_pointer->data.map_width))].tile = TILE_EXIT;
-path_data = _map_path_find(fmx_map_pointer,fmx_map_pointer->room[room_e].position.x,fmx_map_pointer->room[room_e].position.y,fmx_map_pointer->room[room_s].position.x,fmx_map_pointer->room[room_s].position.y);
+path_data = map_path_find(fmx_map_pointer,fmx_map_pointer->room[room_e].position.x,fmx_map_pointer->room[room_e].position.y,fmx_map_pointer->room[room_s].position.x,fmx_map_pointer->room[room_s].position.y);
 
 };
 
