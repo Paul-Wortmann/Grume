@@ -575,7 +575,6 @@ void map_gen_CA (fmx_map_type *fmx_map_pointer, int seed)
 
 void map_gen_RC_internal (fmx_map_type *fmx_map_pointer)
 {
-    map_gen_base(fmx_map_pointer);
     int number_of_circles = (fmx_map_pointer->data.map_width / ROOM_MAX_X) * (fmx_map_pointer->data.map_height / ROOM_MAX_Y);
     struct room_node_type
     {
@@ -655,6 +654,7 @@ void map_gen_RC (fmx_map_type *fmx_map_pointer, int seed)
 
 void map_gen_RC (fmx_map_type *fmx_map_pointer)
 {
+    map_gen_base(fmx_map_pointer);
     map_gen_RC_internal(fmx_map_pointer);
     while (!map_gen_room_flood_fill(fmx_map_pointer)) map_gen_RC_internal(fmx_map_pointer);
     map_gen_check_tiles(fmx_map_pointer);
@@ -670,7 +670,8 @@ void           map_gen_M1              (fmx_map_type *fmx_map_pointer, int seed)
 
 void           map_gen_M1              (fmx_map_type *fmx_map_pointer)
 {
-
+    map_gen_base(fmx_map_pointer);
+    map_gen_room(fmx_map_type *fmx_map_pointer,map_gen_room_type room);
 };
 
 int map_gen_flood_fill_tile(fmx_map_type *fmx_map_pointer, flood_fill_type *fill_data, int tile_number)
