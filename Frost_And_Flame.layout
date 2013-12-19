@@ -31,7 +31,7 @@
 			<Cursor1 position="1033" topLine="7" />
 		</Cursor>
 	</File>
-	<File name="source/game/game.cpp" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="source/game/game.cpp" open="1" top="1" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="36003" topLine="621" />
 		</Cursor>
@@ -58,7 +58,7 @@
 	</File>
 	<File name="source/core/misc.hpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="1191" topLine="1" />
+			<Cursor1 position="1090" topLine="1" />
 		</Cursor>
 	</File>
 	<File name="source/core/physics.hpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -106,7 +106,7 @@
 			<Cursor1 position="122870" topLine="1531" />
 		</Cursor>
 	</File>
-	<File name="source/core/map_gen.cpp" open="1" top="1" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="source/core/map_gen.cpp" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="37940" topLine="645" />
 		</Cursor>
@@ -178,7 +178,7 @@
 	</File>
 	<File name="source/core/map_2D.hpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="2121" topLine="14" />
+			<Cursor1 position="1016" topLine="10" />
 		</Cursor>
 	</File>
 	<File name="source/core/pathfinding.cpp" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
