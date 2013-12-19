@@ -47,7 +47,6 @@ class map_2D_class
         void calculate_tile_positions(fmx_map_type *fmx_map_pointer, float tile_width_half_specify,float tile_height_half_specify);
         int  mouse_over_tile(fmx_map_type *fmx_map_pointer);
         void apply_tileset(fmx_map_type *fmx_map_pointer, int pre_defined_tileset_value);
-        void smooth_map(fmx_map_type *fmx_map_pointer);
 };
 
 #endif //MAP_H_2D

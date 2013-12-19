@@ -680,6 +680,8 @@ void           map_gen_M1              (fmx_map_type *fmx_map_pointer)
     map_gen_room(fmx_map_pointer,room_data,1);
     map_gen_room(fmx_map_pointer,room_data,2);
     map_gen_room(fmx_map_pointer,room_data,2);
+    map_gen_check_tiles(fmx_map_pointer);
+    map_gen_room_collision(fmx_map_pointer);
 };
 
 bool           map_gen_room            (fmx_map_type *fmx_map_pointer, room_data_type room, int number_of_exits)
@@ -1138,16 +1140,79 @@ void           map_gen_room_collision  (fmx_map_type *fmx_map_pointer)
 
 void           map_gen_check_tiles     (fmx_map_type *fmx_map_pointer)
 {
-    for (int tile_count = fmx_map_pointer->data.map_tile_width; tile_count < (fmx_map_pointer->data.number_of_tiles-fmx_map_pointer->data.map_tile_width); tile_count++)
+    int iterations  = 2;
+    int layer_count = 0;
+    int mw          = fmx_map_pointer->data.map_width;
+    for (int iteration_count = 0; iteration_count < iterations; iteration_count++)
     {
-        if ((fmx_map_pointer->layer[LAYER_FLOOR].tile[tile_count].tile   == TILE_WALL)  &&
-            (fmx_map_pointer->layer[LAYER_FLOOR].tile[tile_count-1].tile == TILE_FLOOR) &&
-            (fmx_map_pointer->layer[LAYER_FLOOR].tile[tile_count+1].tile == TILE_FLOOR))
-            fmx_map_pointer->layer[LAYER_FLOOR].tile[tile_count].tile     = TILE_FLOOR;
-        if ((fmx_map_pointer->layer[LAYER_FLOOR].tile[tile_count].tile                                 == TILE_WALL)  &&
-            (fmx_map_pointer->layer[LAYER_FLOOR].tile[tile_count-fmx_map_pointer->data.map_width].tile == TILE_FLOOR) &&
-            (fmx_map_pointer->layer[LAYER_FLOOR].tile[tile_count+fmx_map_pointer->data.map_width].tile == TILE_FLOOR))
-            fmx_map_pointer->layer[LAYER_FLOOR].tile[tile_count].tile     = TILE_FLOOR;
+        for (int tile_count = mw; tile_count < (fmx_map_pointer->data.number_of_tiles-fmx_map_pointer->data.map_width-1); tile_count++)
+        {
+            if(fmx_map_pointer->layer[layer_count].tile[tile_count].tile == TILE_WALL)
+            {
+                // Remove single tiles
+                // OOO
+                // OXO
+                // OOO
+                //--------------------
+                if(  (fmx_map_pointer->layer[layer_count].tile[tile_count+1].tile    == TILE_FLOOR)
+                   &&(fmx_map_pointer->layer[layer_count].tile[tile_count-1].tile    == TILE_FLOOR)
+                   &&(fmx_map_pointer->layer[layer_count].tile[tile_count+mw].tile   == TILE_FLOOR)
+                   &&(fmx_map_pointer->layer[layer_count].tile[tile_count+mw+1].tile == TILE_FLOOR)
+                   &&(fmx_map_pointer->layer[layer_count].tile[tile_count+mw-1].tile == TILE_FLOOR)
+                   &&(fmx_map_pointer->layer[layer_count].tile[tile_count-mw].tile   == TILE_FLOOR)
+                   &&(fmx_map_pointer->layer[layer_count].tile[tile_count-mw+1].tile == TILE_FLOOR)
+                   &&(fmx_map_pointer->layer[layer_count].tile[tile_count-mw-1].tile == TILE_FLOOR))
+                {
+                    fmx_map_pointer->layer[layer_count].tile[tile_count].tile = TILE_FLOOR;
+                }
+                // Remove single horizontal tiles
+                // ???
+                // OXO
+                // ???
+                //--------------------
+                if(  (fmx_map_pointer->layer[layer_count].tile[tile_count+1].tile    == TILE_FLOOR)
+                   &&(fmx_map_pointer->layer[layer_count].tile[tile_count-1].tile    == TILE_FLOOR))
+                {
+                    fmx_map_pointer->layer[layer_count].tile[tile_count].tile = TILE_FLOOR;
+                }
+                // Remove single vertical tiles
+                // ?O?
+                // ?X?
+                // ?O?
+                //--------------------
+                if(  (fmx_map_pointer->layer[layer_count].tile[tile_count+mw].tile   == TILE_FLOOR)
+                   &&(fmx_map_pointer->layer[layer_count].tile[tile_count-mw].tile   == TILE_FLOOR))
+                {
+                    fmx_map_pointer->layer[layer_count].tile[tile_count].tile = TILE_FLOOR;
+                }
+                // Remove cross right tiles
+                // O?X
+                // ?X?
+                // X?O
+                //--------------------
+                if(  (fmx_map_pointer->layer[layer_count].tile[tile_count+mw+1].tile == TILE_WALL)
+                   &&(fmx_map_pointer->layer[layer_count].tile[tile_count+mw-1].tile == TILE_FLOOR)
+                   &&(fmx_map_pointer->layer[layer_count].tile[tile_count-mw+1].tile == TILE_FLOOR)
+                   &&(fmx_map_pointer->layer[layer_count].tile[tile_count-mw-1].tile == TILE_WALL))
+                {
+                    fmx_map_pointer->layer[layer_count].tile[tile_count+mw-1].tile = TILE_WALL;
+                    fmx_map_pointer->layer[layer_count].tile[tile_count-mw+1].tile = TILE_WALL;
+                }
+                // Remove cross left tiles
+                // X?O
+                // ?X?
+                // O?X
+                //--------------------
+                if(  (fmx_map_pointer->layer[layer_count].tile[tile_count+mw+1].tile == TILE_FLOOR)
+                   &&(fmx_map_pointer->layer[layer_count].tile[tile_count+mw-1].tile == TILE_WALL)
+                   &&(fmx_map_pointer->layer[layer_count].tile[tile_count-mw+1].tile == TILE_WALL)
+                   &&(fmx_map_pointer->layer[layer_count].tile[tile_count-mw-1].tile == TILE_FLOOR))
+                {
+                    fmx_map_pointer->layer[layer_count].tile[tile_count+mw+1].tile = TILE_WALL;
+                    fmx_map_pointer->layer[layer_count].tile[tile_count-mw-1].tile = TILE_WALL;
+                }
+            }
+        }
     }
 };
 
