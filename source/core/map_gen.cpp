@@ -764,97 +764,103 @@ int  map_gen_room_check_path(fmx_map_type *fmx_map_pointer, int room_1, int room
     int r1_y = fmx_map_pointer->room[room_1].position.y;
     int r2_x = fmx_map_pointer->room[room_2].position.x;
     int r2_y = fmx_map_pointer->room[room_2].position.y;
-    if (x_then_y)
+    if ((r1_x >= 0) && (r1_x <= fmx_map_pointer->data.map_width) &&
+        (r1_y >= 0) && (r1_y <= fmx_map_pointer->data.map_height) &&
+        (r2_x >= 0) && (r2_x <= fmx_map_pointer->data.map_width) &&
+        (r2_y >= 0) && (r2_y <= fmx_map_pointer->data.map_height))
     {
-        previous_tile = TILE_NONE;
-        to_floor_transitions = 0;
-        int x_count = r1_x;
-        int y_count = r1_y;
-        if (r1_x > r2_x)
+        if (x_then_y)
         {
-            for (x_count = r1_x; x_count > r2_x; x_count--)
+            previous_tile = TILE_NONE;
+            to_floor_transitions = 0;
+            int x_count = r1_x;
+            int y_count = r1_y;
+            if (r1_x > r2_x)
             {
-                int tile_count = x_count + (fmx_map_pointer->data.map_width * (y_count));
-                if (fmx_map_pointer->layer[LAYER_FLOOR].tile[tile_count].tile == TILE_WALL) return_value++;
-                if ((fmx_map_pointer->layer[LAYER_FLOOR].tile[tile_count].tile == TILE_FLOOR) && (previous_tile == TILE_WALL)) to_floor_transitions++;
-                previous_tile = fmx_map_pointer->layer[LAYER_FLOOR].tile[tile_count].tile;
+                for (x_count = r1_x; x_count > r2_x; x_count--)
+                {
+                    int tile_count = x_count + (fmx_map_pointer->data.map_width * (y_count));
+                    if (fmx_map_pointer->layer[LAYER_FLOOR].tile[tile_count].tile == TILE_WALL) return_value++;
+                    if ((fmx_map_pointer->layer[LAYER_FLOOR].tile[tile_count].tile == TILE_FLOOR) && (previous_tile == TILE_WALL)) to_floor_transitions++;
+                    previous_tile = fmx_map_pointer->layer[LAYER_FLOOR].tile[tile_count].tile;
+                }
+            }
+            else
+            {
+                for (x_count = r1_x; x_count < r2_x; x_count++)
+                {
+                    int tile_count = x_count + (fmx_map_pointer->data.map_width * (y_count));
+                    if (fmx_map_pointer->layer[LAYER_FLOOR].tile[tile_count].tile == TILE_WALL) return_value++;
+                    if ((fmx_map_pointer->layer[LAYER_FLOOR].tile[tile_count].tile == TILE_FLOOR) && (previous_tile == TILE_WALL)) to_floor_transitions++;
+                    previous_tile = fmx_map_pointer->layer[LAYER_FLOOR].tile[tile_count].tile;
+                }
+            }
+            if (r1_y > r2_y)
+            {
+                for (y_count = r1_y; y_count > r2_y; y_count--)
+                {
+                    int tile_count = x_count + (fmx_map_pointer->data.map_width * (y_count));
+                    if (fmx_map_pointer->layer[LAYER_FLOOR].tile[tile_count].tile == TILE_WALL) return_value++;
+                    if ((fmx_map_pointer->layer[LAYER_FLOOR].tile[tile_count].tile == TILE_FLOOR) && (previous_tile == TILE_WALL)) to_floor_transitions++;
+                    previous_tile = fmx_map_pointer->layer[LAYER_FLOOR].tile[tile_count].tile;
+                }
+            }
+            else
+            {
+                for (y_count = r1_y; y_count < r2_y; y_count++)
+                {
+                    int tile_count = x_count + (fmx_map_pointer->data.map_width * (y_count));
+                    if (fmx_map_pointer->layer[LAYER_FLOOR].tile[tile_count].tile == TILE_WALL) return_value++;
+                    if ((fmx_map_pointer->layer[LAYER_FLOOR].tile[tile_count].tile == TILE_FLOOR) && (previous_tile == TILE_WALL)) to_floor_transitions++;
+                    previous_tile = fmx_map_pointer->layer[LAYER_FLOOR].tile[tile_count].tile;
+                }
             }
         }
         else
         {
-            for (x_count = r1_x; x_count < r2_x; x_count++)
+            previous_tile = TILE_NONE;
+            to_floor_transitions = 0;
+            int x_count = r1_x;
+            int y_count = r1_y;
+            if (r1_y > r2_y)
             {
-                int tile_count = x_count + (fmx_map_pointer->data.map_width * (y_count));
-                if (fmx_map_pointer->layer[LAYER_FLOOR].tile[tile_count].tile == TILE_WALL) return_value++;
-                if ((fmx_map_pointer->layer[LAYER_FLOOR].tile[tile_count].tile == TILE_FLOOR) && (previous_tile == TILE_WALL)) to_floor_transitions++;
-                previous_tile = fmx_map_pointer->layer[LAYER_FLOOR].tile[tile_count].tile;
+                for (y_count = r1_y; y_count > r2_y; y_count--)
+                {
+                    int tile_count = x_count + (fmx_map_pointer->data.map_width * (y_count));
+                    if (fmx_map_pointer->layer[LAYER_FLOOR].tile[tile_count].tile == TILE_WALL) return_value++;
+                    if ((fmx_map_pointer->layer[LAYER_FLOOR].tile[tile_count].tile == TILE_FLOOR) && (previous_tile == TILE_WALL)) to_floor_transitions++;
+                    previous_tile = fmx_map_pointer->layer[LAYER_FLOOR].tile[tile_count].tile;
+                }
             }
-        }
-        if (r1_y > r2_y)
-        {
-            for (y_count = r1_y; y_count > r2_y; y_count--)
+            else
             {
-                int tile_count = x_count + (fmx_map_pointer->data.map_width * (y_count));
-                if (fmx_map_pointer->layer[LAYER_FLOOR].tile[tile_count].tile == TILE_WALL) return_value++;
-                if ((fmx_map_pointer->layer[LAYER_FLOOR].tile[tile_count].tile == TILE_FLOOR) && (previous_tile == TILE_WALL)) to_floor_transitions++;
-                previous_tile = fmx_map_pointer->layer[LAYER_FLOOR].tile[tile_count].tile;
+                for (y_count = r1_y; y_count < r2_y; y_count++)
+                {
+                    int tile_count = x_count + (fmx_map_pointer->data.map_width * (y_count));
+                    if (fmx_map_pointer->layer[LAYER_FLOOR].tile[tile_count].tile == TILE_WALL) return_value++;
+                    if ((fmx_map_pointer->layer[LAYER_FLOOR].tile[tile_count].tile == TILE_FLOOR) && (previous_tile == TILE_WALL)) to_floor_transitions++;
+                    previous_tile = fmx_map_pointer->layer[LAYER_FLOOR].tile[tile_count].tile;
+                }
             }
-        }
-        else
-        {
-            for (y_count = r1_y; y_count < r2_y; y_count++)
+            if (r1_x > r2_x)
             {
-                int tile_count = x_count + (fmx_map_pointer->data.map_width * (y_count));
-                if (fmx_map_pointer->layer[LAYER_FLOOR].tile[tile_count].tile == TILE_WALL) return_value++;
-                if ((fmx_map_pointer->layer[LAYER_FLOOR].tile[tile_count].tile == TILE_FLOOR) && (previous_tile == TILE_WALL)) to_floor_transitions++;
-                previous_tile = fmx_map_pointer->layer[LAYER_FLOOR].tile[tile_count].tile;
+                for (x_count = r1_x; x_count > r2_x; x_count--)
+                {
+                    int tile_count = x_count + (fmx_map_pointer->data.map_width * (y_count));
+                    if (fmx_map_pointer->layer[LAYER_FLOOR].tile[tile_count].tile == TILE_WALL) return_value++;
+                    if ((fmx_map_pointer->layer[LAYER_FLOOR].tile[tile_count].tile == TILE_FLOOR) && (previous_tile == TILE_WALL)) to_floor_transitions++;
+                    previous_tile = fmx_map_pointer->layer[LAYER_FLOOR].tile[tile_count].tile;
+                }
             }
-        }
-    }
-    else
-    {
-        previous_tile = TILE_NONE;
-        to_floor_transitions = 0;
-        int x_count = r1_x;
-        int y_count = r1_y;
-        if (r1_y > r2_y)
-        {
-            for (y_count = r1_y; y_count > r2_y; y_count--)
+            else
             {
-                int tile_count = x_count + (fmx_map_pointer->data.map_width * (y_count));
-                if (fmx_map_pointer->layer[LAYER_FLOOR].tile[tile_count].tile == TILE_WALL) return_value++;
-                if ((fmx_map_pointer->layer[LAYER_FLOOR].tile[tile_count].tile == TILE_FLOOR) && (previous_tile == TILE_WALL)) to_floor_transitions++;
-                previous_tile = fmx_map_pointer->layer[LAYER_FLOOR].tile[tile_count].tile;
-            }
-        }
-        else
-        {
-            for (y_count = r1_y; y_count < r2_y; y_count++)
-            {
-                int tile_count = x_count + (fmx_map_pointer->data.map_width * (y_count));
-                if (fmx_map_pointer->layer[LAYER_FLOOR].tile[tile_count].tile == TILE_WALL) return_value++;
-                if ((fmx_map_pointer->layer[LAYER_FLOOR].tile[tile_count].tile == TILE_FLOOR) && (previous_tile == TILE_WALL)) to_floor_transitions++;
-                previous_tile = fmx_map_pointer->layer[LAYER_FLOOR].tile[tile_count].tile;
-            }
-        }
-        if (r1_x > r2_x)
-        {
-            for (x_count = r1_x; x_count > r2_x; x_count--)
-            {
-                int tile_count = x_count + (fmx_map_pointer->data.map_width * (y_count));
-                if (fmx_map_pointer->layer[LAYER_FLOOR].tile[tile_count].tile == TILE_WALL) return_value++;
-                if ((fmx_map_pointer->layer[LAYER_FLOOR].tile[tile_count].tile == TILE_FLOOR) && (previous_tile == TILE_WALL)) to_floor_transitions++;
-                previous_tile = fmx_map_pointer->layer[LAYER_FLOOR].tile[tile_count].tile;
-            }
-        }
-        else
-        {
-            for (x_count = r1_x; x_count < r2_x; x_count++)
-            {
-                int tile_count = x_count + (fmx_map_pointer->data.map_width * (y_count));
-                if (fmx_map_pointer->layer[LAYER_FLOOR].tile[tile_count].tile == TILE_WALL) return_value++;
-                if ((fmx_map_pointer->layer[LAYER_FLOOR].tile[tile_count].tile == TILE_FLOOR) && (previous_tile == TILE_WALL)) to_floor_transitions++;
-                previous_tile = fmx_map_pointer->layer[LAYER_FLOOR].tile[tile_count].tile;
+                for (x_count = r1_x; x_count < r2_x; x_count++)
+                {
+                    int tile_count = x_count + (fmx_map_pointer->data.map_width * (y_count));
+                    if (fmx_map_pointer->layer[LAYER_FLOOR].tile[tile_count].tile == TILE_WALL) return_value++;
+                    if ((fmx_map_pointer->layer[LAYER_FLOOR].tile[tile_count].tile == TILE_FLOOR) && (previous_tile == TILE_WALL)) to_floor_transitions++;
+                    previous_tile = fmx_map_pointer->layer[LAYER_FLOOR].tile[tile_count].tile;
+                }
             }
         }
     }
@@ -864,149 +870,152 @@ int  map_gen_room_check_path(fmx_map_type *fmx_map_pointer, int room_1, int room
 
 void  map_gen_room_path(fmx_map_type *fmx_map_pointer, int room_1, int room_2, bool x_then_y)
 {
-    //if (map_gen_is_path(fmx_map_pointer,room_1,room_2))
-    bool connect_rooms = true;
+    if (room_1 != room_2)
     {
-        bool add_room = true;
-        if (fmx_map_pointer->room[room_1].number_of_connected_rooms > 0)
+        //if (map_gen_is_path(fmx_map_pointer,room_1,room_2))
+        bool connect_rooms = true;
         {
-            for (int room_count = 0; room_count < fmx_map_pointer->room[room_1].number_of_connected_rooms; room_count++)
-            {
-                if (fmx_map_pointer->room[room_1].connected_rooms[room_count] == room_2) add_room = false;
-            }
-            connect_rooms = add_room;
-        }
-        if (add_room)
-        {
-            int *temp_room_list;
+            bool add_room = true;
             if (fmx_map_pointer->room[room_1].number_of_connected_rooms > 0)
             {
-                temp_room_list = new int[fmx_map_pointer->room[room_1].number_of_connected_rooms];
-                temp_room_list = fmx_map_pointer->room[room_1].connected_rooms;
-                delete fmx_map_pointer->room[room_1].connected_rooms;
-            }
-            fmx_map_pointer->room[room_1].number_of_connected_rooms++;
-            fmx_map_pointer->room[room_1].connected_rooms = new int[fmx_map_pointer->room[room_1].number_of_connected_rooms];
-            if (fmx_map_pointer->room[room_1].number_of_connected_rooms > 1)
-            {
-                for (int room_count = 0; room_count < fmx_map_pointer->room[room_1].number_of_connected_rooms-1; room_count++)
+                for (int room_count = 0; room_count < fmx_map_pointer->room[room_1].number_of_connected_rooms; room_count++)
                 {
-                    fmx_map_pointer->room[room_1].connected_rooms[room_count] = temp_room_list[room_count];
+                    if (fmx_map_pointer->room[room_1].connected_rooms[room_count] == room_2) add_room = false;
                 }
-                //if (temp_room_list) delete temp_room_list;
+                connect_rooms = add_room;
             }
-            fmx_map_pointer->room[room_1].connected_rooms[fmx_map_pointer->room[room_1].number_of_connected_rooms-1] = room_2;
-       }
-        add_room = true;
-        if (fmx_map_pointer->room[room_2].number_of_connected_rooms > 0)
-        {
-            for (int room_count = 0; room_count < fmx_map_pointer->room[room_2].number_of_connected_rooms; room_count++)
+            if (add_room)
             {
-                if (fmx_map_pointer->room[room_2].connected_rooms[room_count] == room_1) add_room = false;
-            }
-            if (connect_rooms) connect_rooms = add_room;
-        }
-        if (add_room)
-        {
-            int *temp_room_list;
+                int *temp_room_list;
+                if (fmx_map_pointer->room[room_1].number_of_connected_rooms > 0)
+                {
+                    temp_room_list = new int[fmx_map_pointer->room[room_1].number_of_connected_rooms];
+                    temp_room_list = fmx_map_pointer->room[room_1].connected_rooms;
+                    delete fmx_map_pointer->room[room_1].connected_rooms;
+                }
+                fmx_map_pointer->room[room_1].number_of_connected_rooms++;
+                fmx_map_pointer->room[room_1].connected_rooms = new int[fmx_map_pointer->room[room_1].number_of_connected_rooms];
+                if (fmx_map_pointer->room[room_1].number_of_connected_rooms > 1)
+                {
+                    for (int room_count = 0; room_count < fmx_map_pointer->room[room_1].number_of_connected_rooms-1; room_count++)
+                    {
+                        fmx_map_pointer->room[room_1].connected_rooms[room_count] = temp_room_list[room_count];
+                    }
+                    //if (temp_room_list) delete temp_room_list;
+                }
+                fmx_map_pointer->room[room_1].connected_rooms[fmx_map_pointer->room[room_1].number_of_connected_rooms-1] = room_2;
+           }
+            add_room = true;
             if (fmx_map_pointer->room[room_2].number_of_connected_rooms > 0)
             {
-                temp_room_list = new int[fmx_map_pointer->room[room_2].number_of_connected_rooms];
-                temp_room_list = fmx_map_pointer->room[room_2].connected_rooms;
-                delete fmx_map_pointer->room[room_2].connected_rooms;
+                for (int room_count = 0; room_count < fmx_map_pointer->room[room_2].number_of_connected_rooms; room_count++)
+                {
+                    if (fmx_map_pointer->room[room_2].connected_rooms[room_count] == room_1) add_room = false;
+                }
+                if (connect_rooms) connect_rooms = add_room;
             }
+            if (add_room)
+            {
+                int *temp_room_list;
+                if (fmx_map_pointer->room[room_2].number_of_connected_rooms > 0)
+                {
+                    temp_room_list = new int[fmx_map_pointer->room[room_2].number_of_connected_rooms];
+                    temp_room_list = fmx_map_pointer->room[room_2].connected_rooms;
+                    delete fmx_map_pointer->room[room_2].connected_rooms;
+                }
+                fmx_map_pointer->room[room_2].number_of_connected_rooms++;
+                fmx_map_pointer->room[room_2].connected_rooms = new int[fmx_map_pointer->room[room_2].number_of_connected_rooms];
+                if (fmx_map_pointer->room[room_2].number_of_connected_rooms > 1)
+                {
+                    for (int room_count = 0; room_count < fmx_map_pointer->room[room_2].number_of_connected_rooms-1; room_count++)
+                    {
+                        fmx_map_pointer->room[room_2].connected_rooms[room_count] = temp_room_list[room_count];
+                    }
+                    //if (temp_room_list) delete temp_room_list;
+                }
+                fmx_map_pointer->room[room_2].connected_rooms[fmx_map_pointer->room[room_2].number_of_connected_rooms-1] = room_1;
+            }
+        }
+        if (connect_rooms)
+        {
+            fmx_map_pointer->room[room_1].number_of_connected_rooms++;
             fmx_map_pointer->room[room_2].number_of_connected_rooms++;
-            fmx_map_pointer->room[room_2].connected_rooms = new int[fmx_map_pointer->room[room_2].number_of_connected_rooms];
-            if (fmx_map_pointer->room[room_2].number_of_connected_rooms > 1)
+            int r1_x = fmx_map_pointer->room[room_1].position.x;
+            int r1_y = fmx_map_pointer->room[room_1].position.y;
+            int r2_x = fmx_map_pointer->room[room_2].position.x;
+            int r2_y = fmx_map_pointer->room[room_2].position.y;
+            if (x_then_y)
             {
-                for (int room_count = 0; room_count < fmx_map_pointer->room[room_2].number_of_connected_rooms-1; room_count++)
+                int x_count = r1_x;
+                int y_count = r1_y;
+                if (r1_x > r2_x)
                 {
-                    fmx_map_pointer->room[room_2].connected_rooms[room_count] = temp_room_list[room_count];
+                    for (x_count = r1_x; x_count > r2_x; x_count--)
+                    {
+                        int tile_count = x_count + (fmx_map_pointer->data.map_width * (y_count));
+                        fmx_map_pointer->layer[LAYER_FLOOR].tile[tile_count].tile = TILE_FLOOR;
+                    }
                 }
-                //if (temp_room_list) delete temp_room_list;
-            }
-            fmx_map_pointer->room[room_2].connected_rooms[fmx_map_pointer->room[room_2].number_of_connected_rooms-1] = room_1;
-        }
-    }
-    if (connect_rooms)
-    {
-        fmx_map_pointer->room[room_1].number_of_connected_rooms++;
-        fmx_map_pointer->room[room_2].number_of_connected_rooms++;
-        int r1_x = fmx_map_pointer->room[room_1].position.x;
-        int r1_y = fmx_map_pointer->room[room_1].position.y;
-        int r2_x = fmx_map_pointer->room[room_2].position.x;
-        int r2_y = fmx_map_pointer->room[room_2].position.y;
-        if (x_then_y)
-        {
-            int x_count = r1_x;
-            int y_count = r1_y;
-            if (r1_x > r2_x)
-            {
-                for (x_count = r1_x; x_count > r2_x; x_count--)
+                else
                 {
-                    int tile_count = x_count + (fmx_map_pointer->data.map_width * (y_count));
-                    fmx_map_pointer->layer[LAYER_FLOOR].tile[tile_count].tile = TILE_FLOOR;
+                    for (x_count = r1_x; x_count < r2_x; x_count++)
+                    {
+                        int tile_count = x_count + (fmx_map_pointer->data.map_width * (y_count));
+                        fmx_map_pointer->layer[LAYER_FLOOR].tile[tile_count].tile = TILE_FLOOR;
+                    }
                 }
-            }
-            else
-            {
-                for (x_count = r1_x; x_count < r2_x; x_count++)
+                if (r1_y > r2_y)
                 {
-                    int tile_count = x_count + (fmx_map_pointer->data.map_width * (y_count));
-                    fmx_map_pointer->layer[LAYER_FLOOR].tile[tile_count].tile = TILE_FLOOR;
+                    for (y_count = r1_y; y_count > r2_y; y_count--)
+                    {
+                        int tile_count = x_count + (fmx_map_pointer->data.map_width * (y_count));
+                        fmx_map_pointer->layer[LAYER_FLOOR].tile[tile_count].tile = TILE_FLOOR;
+                    }
                 }
-            }
-            if (r1_y > r2_y)
-            {
-                for (y_count = r1_y; y_count > r2_y; y_count--)
+                else
                 {
-                    int tile_count = x_count + (fmx_map_pointer->data.map_width * (y_count));
-                    fmx_map_pointer->layer[LAYER_FLOOR].tile[tile_count].tile = TILE_FLOOR;
+                    for (y_count = r1_y; y_count < r2_y; y_count++)
+                    {
+                        int tile_count = x_count + (fmx_map_pointer->data.map_width * (y_count));
+                        fmx_map_pointer->layer[LAYER_FLOOR].tile[tile_count].tile = TILE_FLOOR;
+                    }
                 }
             }
             else
             {
-                for (y_count = r1_y; y_count < r2_y; y_count++)
+                int x_count = r1_x;
+                int y_count = r1_y;
+                if (r1_y > r2_y)
                 {
-                    int tile_count = x_count + (fmx_map_pointer->data.map_width * (y_count));
-                    fmx_map_pointer->layer[LAYER_FLOOR].tile[tile_count].tile = TILE_FLOOR;
+                    for (y_count = r1_y; y_count > r2_y; y_count--)
+                    {
+                        int tile_count = x_count + (fmx_map_pointer->data.map_width * (y_count));
+                        fmx_map_pointer->layer[LAYER_FLOOR].tile[tile_count].tile = TILE_FLOOR;
+                    }
                 }
-            }
-        }
-        else
-        {
-            int x_count = r1_x;
-            int y_count = r1_y;
-            if (r1_y > r2_y)
-            {
-                for (y_count = r1_y; y_count > r2_y; y_count--)
+                else
                 {
-                    int tile_count = x_count + (fmx_map_pointer->data.map_width * (y_count));
-                    fmx_map_pointer->layer[LAYER_FLOOR].tile[tile_count].tile = TILE_FLOOR;
+                    for (y_count = r1_y; y_count < r2_y; y_count++)
+                    {
+                        int tile_count = x_count + (fmx_map_pointer->data.map_width * (y_count));
+                        fmx_map_pointer->layer[LAYER_FLOOR].tile[tile_count].tile = TILE_FLOOR;
+                    }
                 }
-            }
-            else
-            {
-                for (y_count = r1_y; y_count < r2_y; y_count++)
+                if (r1_x > r2_x)
                 {
-                    int tile_count = x_count + (fmx_map_pointer->data.map_width * (y_count));
-                    fmx_map_pointer->layer[LAYER_FLOOR].tile[tile_count].tile = TILE_FLOOR;
+                    for (x_count = r1_x; x_count > r2_x; x_count--)
+                    {
+                        int tile_count = x_count + (fmx_map_pointer->data.map_width * (y_count));
+                        fmx_map_pointer->layer[LAYER_FLOOR].tile[tile_count].tile = TILE_FLOOR;
+                    }
                 }
-            }
-            if (r1_x > r2_x)
-            {
-                for (x_count = r1_x; x_count > r2_x; x_count--)
+                else
                 {
-                    int tile_count = x_count + (fmx_map_pointer->data.map_width * (y_count));
-                    fmx_map_pointer->layer[LAYER_FLOOR].tile[tile_count].tile = TILE_FLOOR;
-                }
-            }
-            else
-            {
-                for (x_count = r1_x; x_count < r2_x; x_count++)
-                {
-                    int tile_count = x_count + (fmx_map_pointer->data.map_width * (y_count));
-                    fmx_map_pointer->layer[LAYER_FLOOR].tile[tile_count].tile = TILE_FLOOR;
+                    for (x_count = r1_x; x_count < r2_x; x_count++)
+                    {
+                        int tile_count = x_count + (fmx_map_pointer->data.map_width * (y_count));
+                        fmx_map_pointer->layer[LAYER_FLOOR].tile[tile_count].tile = TILE_FLOOR;
+                    }
                 }
             }
         }
