@@ -55,7 +55,7 @@ int map_tile_calc (fmx_map_type *fmx_map_pointer, int tile_current, int tile_par
     int  return_value  = -1;
     if ((tile_current > -1) && (tile_current < fmx_map_pointer->data.number_of_tiles) && !fmx_map_pointer->path_data[tile_current].closed_list)
     {
-        if (!fmx_map_pointer->layer[LAYER_FLOOR].tile[tile_current].collision)
+        if (!fmx_map_pointer->tile_data[tile_current].collision)
         {
             fmx_map_pointer->path_data[tile_current].parent_tile = tile_parent;
             int p_1_x = tile_current % fmx_map_pointer->data.map_width;

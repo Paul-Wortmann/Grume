@@ -482,7 +482,6 @@ void map_2D_class::apply_tileset(fmx_map_type *fmx_map_pointer, int pre_defined_
     {
         temp_tile_data[tile_count].tile         = fmx_map_pointer->layer[LAYER_FLOOR].tile[tile_count].tile;
         temp_tile_data[tile_count].tile_tileset = fmx_map_pointer->layer[LAYER_FLOOR].tile[tile_count].tile_tileset;
-        temp_tile_data[tile_count].collision    = fmx_map_pointer->layer[LAYER_FLOOR].tile[tile_count].collision;
     }
     for (int tile_count = 0; tile_count < fmx_map_pointer->data.number_of_tiles; tile_count++)
     {
@@ -780,7 +779,7 @@ void map_2D_class::apply_tileset(fmx_map_type *fmx_map_pointer, int pre_defined_
                 default:
                 break;
             }
-            switch (fmx_map_pointer->layer[LAYER_FLOOR].tile[tile_count].collision)
+            switch (fmx_map_pointer->tile_data[tile_count].collision)
             {
                 case true:
                     fmx_map_pointer->layer[LAYER_FLOOR].tile[tile_count].tile_tileset = TILE_SET_DEFAULT;

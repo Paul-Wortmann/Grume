@@ -140,8 +140,9 @@ void fmx_load(fmx_map_type *fmx_map_pointer, std::string file_name)
         fmx_map_pointer->data.number_of_tilesets = tileset_count;
         script_file.clear();
         script_file.seekg(0, std::ios::beg);
-        fmx_map_pointer->tileset      = new fmx_tileset_type[fmx_map_pointer->data.number_of_tilesets+1];
-        fmx_map_pointer->layer        = new fmx_layer_type  [fmx_map_pointer->data.number_of_layers+1];
+        fmx_map_pointer->tileset      = new fmx_tileset_type  [fmx_map_pointer->data.number_of_tilesets+1];
+        fmx_map_pointer->layer        = new fmx_layer_type    [fmx_map_pointer->data.number_of_layers+1];
+        fmx_map_pointer->tile_data    = new fmx_tile_data_type[fmx_map_pointer->data.number_of_tiles+1];
         for(layer_count = 0; layer_count <= fmx_map_pointer->data.number_of_layers; layer_count++)
         {
             fmx_map_pointer->layer[layer_count].tile = new fmx_tile_type   [fmx_map_pointer->data.number_of_tiles+1];
@@ -276,7 +277,7 @@ void fmx_load(fmx_map_type *fmx_map_pointer, std::string file_name)
                                 temp_int_data -= fmx_map_pointer->tileset[fmx_map_pointer->layer[layer_count].tile[tile_count].tile_tileset].first_gid;
                                 temp_int_data += 1;
                                 fmx_map_pointer->layer[layer_count].tile[tile_count].tile         = temp_int_data;
-                                fmx_map_pointer->layer[layer_count].tile[tile_count].collision    = false;
+                                fmx_map_pointer->tile_data[tile_count].collision                  = false;
                                 tile_count++;
                             }
                         }

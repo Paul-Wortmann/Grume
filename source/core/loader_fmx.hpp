@@ -28,11 +28,15 @@
 #include "texture_manager.hpp"
 #include "types.hpp"
 
+struct fmx_tile_data_type
+{
+    bool          collision;
+};
+
 struct fmx_tile_type
 {
     int           tile;
     int           tile_tileset;
-    bool          collision;
     f2_type       position;
 };
 
@@ -100,6 +104,7 @@ struct fmx_map_type
     fmx_path_data_type* path_data;
     fmx_data_type       data;
     fmx_layer_type*     layer;
+    fmx_tile_data_type* tile_data;
     fmx_tileset_type*   tileset;
     fmx_room_data_type* room;
 };
