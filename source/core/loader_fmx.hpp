@@ -31,6 +31,7 @@
 struct fmx_tile_data_type
 {
     bool          collision;
+    int           attribute;
 };
 
 struct fmx_tile_type
