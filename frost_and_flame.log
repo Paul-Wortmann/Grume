@@ -21,59 +21,62 @@ Starting Game...
 # ---------------------------------------------- #
  
 -> map_gen_room_add_exits() called 
-Node next -> 3 - tile - 4951 - tile_F -> 344
-Node next -> 2 - tile - 4851 - tile_F -> 344
-Node next -> 2 - tile - 4751 - tile_F -> 344
-Node next -> 2 - tile - 4651 - tile_F -> 344
-Node next -> 1 - tile - 4550 - tile_F -> 358
-Node next -> 2 - tile - 4450 - tile_F -> 358
-Node next -> 2 - tile - 4350 - tile_F -> 358
-Node next -> 2 - tile - 4250 - tile_F -> 358
-Node next -> 2 - tile - 4150 - tile_F -> 358
-Node next -> 2 - tile - 4050 - tile_F -> 358
-Node next -> 2 - tile - 3950 - tile_F -> 358
-Node next -> 2 - tile - 3850 - tile_F -> 358
-Node next -> 2 - tile - 3750 - tile_F -> 358
-Node next -> 2 - tile - 3650 - tile_F -> 358
-Node next -> 1 - tile - 3549 - tile_F -> 372
-Node next -> 2 - tile - 3449 - tile_F -> 372
-Node next -> 2 - tile - 3349 - tile_F -> 372
-Node next -> 2 - tile - 3249 - tile_F -> 372
-Node next -> 2 - tile - 3149 - tile_F -> 372
-Node next -> 3 - tile - 3050 - tile_F -> 366
-Node next -> 3 - tile - 2951 - tile_F -> 360
-Node next -> 2 - tile - 2851 - tile_F -> 360
-Node next -> 2 - tile - 2751 - tile_F -> 360
-Node next -> 2 - tile - 2651 - tile_F -> 360
-Node next -> 2 - tile - 2551 - tile_F -> 360
-Node next -> 2 - tile - 2451 - tile_F -> 360
-Node next -> 5 - tile - 2452 - tile_F -> 380
-Node next -> 5 - tile - 2453 - tile_F -> 400
-Node next -> 6 - tile - 2552 - tile_F -> 414
-Node next -> 5 - tile - 2553 - tile_F -> 434
-Node next -> 3 - tile - 2454 - tile_F -> 448
-Node next -> 3 - tile - 2355 - tile_F -> 462
-Node next -> 2 - tile - 2255 - tile_F -> 462
-Node next -> 2 - tile - 2155 - tile_F -> 462
-Node next -> 1 - tile - 2054 - tile_F -> 456
-Node next -> 1 - tile - 1953 - tile_F -> 450
-Node next -> 1 - tile - 1852 - tile_F -> 444
-Node next -> 1 - tile - 1751 - tile_F -> 438
- Path end found! 
--> map_gen_room_add_exits() called 
-Node next -> 5 - tile - 509 - tile_F -> 140
-Node next -> 5 - tile - 510 - tile_F -> 140
-Node next -> 5 - tile - 511 - tile_F -> 140
-Node next -> 5 - tile - 512 - tile_F -> 140
-Node next -> 5 - tile - 513 - tile_F -> 140
-Node next -> 5 - tile - 514 - tile_F -> 140
-Node next -> 5 - tile - 515 - tile_F -> 140
-Node next -> 5 - tile - 516 - tile_F -> 140
-Node next -> 5 - tile - 517 - tile_F -> 140
-Node next -> 5 - tile - 518 - tile_F -> 140
-Node next -> 5 - tile - 519 - tile_F -> 140
-Node next -> 5 - tile - 520 - tile_F -> 140
-Node next -> 5 - tile - 521 - tile_F -> 140
+Node next -> 1 - tile - 4949 - tile_F -> 504
+Node next -> 1 - tile - 4848 - tile_F -> 498
+Node next -> 1 - tile - 4747 - tile_F -> 492
+Node next -> 2 - tile - 4647 - tile_F -> 492
+Node next -> 5 - tile - 4648 - tile_F -> 512
+Node next -> 5 - tile - 4649 - tile_F -> 532
+Node next -> 6 - tile - 4748 - tile_F -> 546
+Node next -> 6 - tile - 4847 - tile_F -> 560
+Node next -> 7 - tile - 4947 - tile_F -> 580
+Node next -> 6 - tile - 5046 - tile_F -> 594
+Node next -> 4 - tile - 5045 - tile_F -> 594
+Node next -> 4 - tile - 5044 - tile_F -> 594
+Node next -> 4 - tile - 5043 - tile_F -> 594
+Node next -> 4 - tile - 5042 - tile_F -> 594
+Node next -> 4 - tile - 5041 - tile_F -> 594
+Node next -> 4 - tile - 5040 - tile_F -> 594
+Node next -> 1 - tile - 4939 - tile_F -> 608
+Node next -> 2 - tile - 4839 - tile_F -> 608
+Node next -> 2 - tile - 4739 - tile_F -> 608
+Node next -> 2 - tile - 4639 - tile_F -> 608
+Node next -> 2 - tile - 4539 - tile_F -> 608
+Node next -> 2 - tile - 4439 - tile_F -> 608
+Node next -> 2 - tile - 4339 - tile_F -> 608
+Node next -> 2 - tile - 4239 - tile_F -> 608
+Node next -> 2 - tile - 4139 - tile_F -> 608
+Node next -> 2 - tile - 4039 - tile_F -> 608
+Node next -> 3 - tile - 3940 - tile_F -> 602
+Node next -> 2 - tile - 3840 - tile_F -> 602
+Node next -> 2 - tile - 3740 - tile_F -> 602
+Node next -> 2 - tile - 3640 - tile_F -> 602
+Node next -> 2 - tile - 3540 - tile_F -> 602
+Node next -> 2 - tile - 3440 - tile_F -> 602
+Node next -> 2 - tile - 3340 - tile_F -> 602
+Node next -> 1 - tile - 3239 - tile_F -> 616
+Node next -> 2 - tile - 3139 - tile_F -> 616
+Node next -> 2 - tile - 3039 - tile_F -> 616
+Node next -> 2 - tile - 2939 - tile_F -> 616
+Node next -> 2 - tile - 2839 - tile_F -> 616
+Node next -> 2 - tile - 2739 - tile_F -> 616
+Node next -> 2 - tile - 2639 - tile_F -> 616
+Node next -> 2 - tile - 2539 - tile_F -> 616
+Node next -> 2 - tile - 2439 - tile_F -> 616
+Node next -> 2 - tile - 2339 - tile_F -> 616
+Node next -> 2 - tile - 2239 - tile_F -> 616
+Node next -> 2 - tile - 2139 - tile_F -> 616
+Node next -> 2 - tile - 2039 - tile_F -> 616
+Node next -> 2 - tile - 1939 - tile_F -> 616
+Node next -> 2 - tile - 1839 - tile_F -> 616
+Node next -> 2 - tile - 1739 - tile_F -> 616
+Node next -> 2 - tile - 1639 - tile_F -> 616
+Node next -> 2 - tile - 1539 - tile_F -> 616
+Node next -> 2 - tile - 1439 - tile_F -> 616
+Node next -> 3 - tile - 1340 - tile_F -> 610
+Node next -> 2 - tile - 1240 - tile_F -> 610
+Node next -> 2 - tile - 1140 - tile_F -> 610
+Node next -> 2 - tile - 1040 - tile_F -> 610
  Path end found! 
  
 # ---------------------------------------------- #
@@ -81,7 +84,7 @@ Node next -> 5 - tile - 521 - tile_F -> 140
 Font    count -> 1
 Music   count -> 1
 Sound   count -> 13
-Texture count -> 236
+Texture count -> 223
 Item    count -> 56
 Effect  count -> 46
  
