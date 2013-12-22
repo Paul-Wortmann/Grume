@@ -29,9 +29,9 @@
 #include "loader_fmx.hpp"
 #include "types.hpp"
 
-#define MAP_DUNGEON                 1
-#define MAP_CAVE                    2
-#define MAP_GRASSLAND               3
+#define MAP_TILESET_DUNGEON        1
+#define MAP_TILESET_CAVE           2
+#define MAP_TILESET_GRASSLAND      3
 
 #define MAX_ROOMS                  0 // 0 for unlimited number possible, should be an even number!
 #define MAX_NODES                  8

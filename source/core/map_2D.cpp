@@ -293,7 +293,7 @@ void map_2D_class::apply_tileset(fmx_map_type *fmx_map_pointer, int pre_defined_
     // ----------------------------------------- set tileset based on type ---------------------------------------
     switch (pre_defined_tileset_value)
     {
-        case MAP_DUNGEON:
+        case MAP_TILESET_DUNGEON:
             floor_width  = 64;
             floor_height = 32;
             wall_width   = 64;
@@ -315,7 +315,7 @@ void map_2D_class::apply_tileset(fmx_map_type *fmx_map_pointer, int pre_defined_
             tile_set_name_objects                 = "data/tilesets/dungeon_objects.png";
             tile_set_name_exits                   = "data/tilesets/stairs.png";
         break;
-        case MAP_CAVE:
+        case MAP_TILESET_CAVE:
             floor_width  = 64;
             floor_height = 32;
             wall_width   = 64;
@@ -337,7 +337,7 @@ void map_2D_class::apply_tileset(fmx_map_type *fmx_map_pointer, int pre_defined_
             tile_set_name_objects                 = "data/tilesets/cave_objects.png";
             tile_set_name_exits                   = "data/tilesets/stairs.png";
         break;
-        case MAP_GRASSLAND:
+        case MAP_TILESET_GRASSLAND:
             floor_width  = 64;
             floor_height = 128;
             wall_width   = 64;
