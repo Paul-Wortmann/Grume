@@ -20,13 +20,68 @@ Starting Game...
  
 # ---------------------------------------------- #
  
+-> map_gen_room_add_exits() called 
+Node next -> 3 - tile - 4951 - tile_F -> 344
+Node next -> 2 - tile - 4851 - tile_F -> 344
+Node next -> 2 - tile - 4751 - tile_F -> 344
+Node next -> 2 - tile - 4651 - tile_F -> 344
+Node next -> 1 - tile - 4550 - tile_F -> 358
+Node next -> 2 - tile - 4450 - tile_F -> 358
+Node next -> 2 - tile - 4350 - tile_F -> 358
+Node next -> 2 - tile - 4250 - tile_F -> 358
+Node next -> 2 - tile - 4150 - tile_F -> 358
+Node next -> 2 - tile - 4050 - tile_F -> 358
+Node next -> 2 - tile - 3950 - tile_F -> 358
+Node next -> 2 - tile - 3850 - tile_F -> 358
+Node next -> 2 - tile - 3750 - tile_F -> 358
+Node next -> 2 - tile - 3650 - tile_F -> 358
+Node next -> 1 - tile - 3549 - tile_F -> 372
+Node next -> 2 - tile - 3449 - tile_F -> 372
+Node next -> 2 - tile - 3349 - tile_F -> 372
+Node next -> 2 - tile - 3249 - tile_F -> 372
+Node next -> 2 - tile - 3149 - tile_F -> 372
+Node next -> 3 - tile - 3050 - tile_F -> 366
+Node next -> 3 - tile - 2951 - tile_F -> 360
+Node next -> 2 - tile - 2851 - tile_F -> 360
+Node next -> 2 - tile - 2751 - tile_F -> 360
+Node next -> 2 - tile - 2651 - tile_F -> 360
+Node next -> 2 - tile - 2551 - tile_F -> 360
+Node next -> 2 - tile - 2451 - tile_F -> 360
+Node next -> 5 - tile - 2452 - tile_F -> 380
+Node next -> 5 - tile - 2453 - tile_F -> 400
+Node next -> 6 - tile - 2552 - tile_F -> 414
+Node next -> 5 - tile - 2553 - tile_F -> 434
+Node next -> 3 - tile - 2454 - tile_F -> 448
+Node next -> 3 - tile - 2355 - tile_F -> 462
+Node next -> 2 - tile - 2255 - tile_F -> 462
+Node next -> 2 - tile - 2155 - tile_F -> 462
+Node next -> 1 - tile - 2054 - tile_F -> 456
+Node next -> 1 - tile - 1953 - tile_F -> 450
+Node next -> 1 - tile - 1852 - tile_F -> 444
+Node next -> 1 - tile - 1751 - tile_F -> 438
+ Path end found! 
+-> map_gen_room_add_exits() called 
+Node next -> 5 - tile - 509 - tile_F -> 140
+Node next -> 5 - tile - 510 - tile_F -> 140
+Node next -> 5 - tile - 511 - tile_F -> 140
+Node next -> 5 - tile - 512 - tile_F -> 140
+Node next -> 5 - tile - 513 - tile_F -> 140
+Node next -> 5 - tile - 514 - tile_F -> 140
+Node next -> 5 - tile - 515 - tile_F -> 140
+Node next -> 5 - tile - 516 - tile_F -> 140
+Node next -> 5 - tile - 517 - tile_F -> 140
+Node next -> 5 - tile - 518 - tile_F -> 140
+Node next -> 5 - tile - 519 - tile_F -> 140
+Node next -> 5 - tile - 520 - tile_F -> 140
+Node next -> 5 - tile - 521 - tile_F -> 140
+ Path end found! 
  
 # ---------------------------------------------- #
  
 Font    count -> 1
 Music   count -> 1
-Sound   count -> 11
-Texture count -> 193
+Sound   count -> 13
+Texture count -> 236
 Item    count -> 56
 Effect  count -> 46
  
