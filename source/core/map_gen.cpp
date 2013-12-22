@@ -96,6 +96,34 @@ void map_gen_base(fmx_map_type *fmx_map_pointer)
     }
 };
 
+void           map_gen                 (fmx_map_type *fmx_map_pointer, int generator_algorithm)
+{
+    switch (generator_algorithm)
+    {
+        case MAP_GEN_BSP:
+            map_gen_BSP(fmx_map_pointer);
+        break;
+        case MAP_GEN_CA:
+            map_gen_CA(fmx_map_pointer);
+        break;
+        case MAP_GEN_M1:
+            map_gen_M1(fmx_map_pointer);
+        break;
+        case MAP_GEN_RC:
+        default:
+            map_gen_RC(fmx_map_pointer);
+        break;
+    }
+};
+
+void           map_gen                 (fmx_map_type *fmx_map_pointer, int generator_algorithm, int tileset_type)
+{
+    map_gen(fmx_map_pointer,generator_algorithm);
+    game.map_2D.apply_tileset(fmx_map_pointer,tileset_type);
+    game.map_2D.calculate_tile_positions(fmx_map_pointer,DEFAULT_FRAME_WIDTH/game.zoom.current/2.0f,DEFAULT_FRAME_HEIGHT/game.zoom.current/2.0f);
+    game.map_2D.center_on_tile(fmx_map_pointer,(fmx_map_pointer->data.number_of_tiles/2)+(fmx_map_pointer->data.map_width/2));
+};
+
 void map_gen_BSP_split(fmx_map_type *fmx_map_pointer, map_node_type *map_node)
 {
     int  x_range = map_node->data.size.x  - (ROOM_MAX_X*2);

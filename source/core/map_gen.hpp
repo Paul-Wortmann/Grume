@@ -29,6 +29,11 @@
 #include "loader_fmx.hpp"
 #include "types.hpp"
 
+#define MAP_GEN_BSP                1
+#define MAP_GEN_CA                 2
+#define MAP_GEN_RC                 3
+#define MAP_GEN_M1                 4
+
 #define MAP_TILESET_DUNGEON        1
 #define MAP_TILESET_CAVE           2
 #define MAP_TILESET_GRASSLAND      3
@@ -88,6 +93,8 @@ struct map_node_type
 };
 
 void           map_gen_base            (fmx_map_type *fmx_map_pointer);
+void           map_gen                 (fmx_map_type *fmx_map_pointer, int generator_algorithm);
+void           map_gen                 (fmx_map_type *fmx_map_pointer, int generator_algorithm, int tileset_type);
 void           map_gen_BSP_split       (fmx_map_type *fmx_map_pointer, map_node_type *map_node);
 void           map_gen_BSP             (fmx_map_type *fmx_map_pointer);
 void           map_gen_BSP_internal    (fmx_map_type *fmx_map_pointer);
