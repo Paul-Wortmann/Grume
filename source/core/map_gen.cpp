@@ -73,6 +73,7 @@ void map_gen_base(fmx_map_type *fmx_map_pointer)
     fmx_map_pointer->layer[LAYER_OBJECT].tile  = new fmx_tile_type[fmx_map_pointer->data.number_of_tiles];
     fmx_map_pointer->layer[LAYER_WALL].tile    = new fmx_tile_type[fmx_map_pointer->data.number_of_tiles];
     fmx_map_pointer->tile_data                 = new fmx_tile_data_type[fmx_map_pointer->data.number_of_tiles];
+    fmx_map_pointer->path_data                 = new fmx_path_data_type[fmx_map_pointer->data.number_of_tiles];
     for (int tile_count_x = 0; tile_count_x < fmx_map_pointer->data.map_width; tile_count_x++)
     {
         for (int tile_count_y = 0; tile_count_y < fmx_map_pointer->data.map_height; tile_count_y++)
