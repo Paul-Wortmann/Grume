@@ -285,7 +285,6 @@ void game_class::process(void)
 {
     UI_form_struct* UI_form_pointer;
     int             element_number    = 1;
-    path_type* path;
     game.player.process();
     game.npc.process();
     game.map_2D.process(&fmx_map);
@@ -584,52 +583,35 @@ void game_class::process(void)
         if (game.core.io.key_a) // generate a random BSP dungeon
         {
             game.loading_screen.display("data/loading_screen.png");
-            map_gen_BSP(&fmx_map);
-            game.map_2D.apply_tileset(&fmx_map,MAP_TILESET_DUNGEON);
-            game.map_2D.calculate_tile_positions(&fmx_map,DEFAULT_FRAME_WIDTH/game.zoom.current/2.0f,DEFAULT_FRAME_HEIGHT/game.zoom.current/2.0f);
-            game.map_2D.center_on_tile(&fmx_map,(fmx_map.data.number_of_tiles/2)+(fmx_map.data.map_width/2));
+            map_gen(&fmx_map,MAP_GEN_BSP,MAP_TILESET_DUNGEON);
             game.core.io.key_a                     = false;
             game.core.io.keyboard_delay_count      = 0;
-            path = map_path_find(&fmx_map,2,2,10,10);
         }
         if (game.core.io.key_s) // generate a random BSP dungeon
         {
             game.loading_screen.display("data/loading_screen.png");
-            map_gen_BSP(&fmx_map);
-            game.map_2D.apply_tileset(&fmx_map,MAP_TILESET_CAVE);
-            game.map_2D.calculate_tile_positions(&fmx_map,DEFAULT_FRAME_WIDTH/game.zoom.current/2.0f,DEFAULT_FRAME_HEIGHT/game.zoom.current/2.0f);
-            game.map_2D.center_on_tile(&fmx_map,(fmx_map.data.number_of_tiles/2)+(fmx_map.data.map_width/2));
+            map_gen(&fmx_map,MAP_GEN_BSP,MAP_TILESET_CAVE);
             game.core.io.key_s                     = false;
             game.core.io.keyboard_delay_count      = 0;
-            path = map_path_find(&fmx_map,2,2,10,10);
         }
         if (game.core.io.key_d) // generate a random CA cave
         {
             game.loading_screen.display("data/loading_screen.png");
-            map_gen_CA(&fmx_map);
-            game.map_2D.apply_tileset(&fmx_map,MAP_TILESET_CAVE);
-            game.map_2D.calculate_tile_positions(&fmx_map,DEFAULT_FRAME_WIDTH/game.zoom.current/2.0f,DEFAULT_FRAME_HEIGHT/game.zoom.current/2.0f);
-            game.map_2D.center_on_tile(&fmx_map,(fmx_map.data.number_of_tiles/2)+(fmx_map.data.map_width/2));
+            map_gen(&fmx_map,MAP_GEN_CA,MAP_TILESET_CAVE);
             game.core.io.key_d                     = false;
             game.core.io.keyboard_delay_count      = 0;
         }
         if (game.core.io.key_f) // generate a random CA grassland
         {
             game.loading_screen.display("data/loading_screen.png");
-            map_gen_CA(&fmx_map);
-            game.map_2D.apply_tileset(&fmx_map,MAP_TILESET_GRASSLAND);
-            game.map_2D.calculate_tile_positions(&fmx_map,DEFAULT_FRAME_WIDTH/game.zoom.current/2.0f,DEFAULT_FRAME_HEIGHT/game.zoom.current/2.0f);
-            game.map_2D.center_on_tile(&fmx_map,(fmx_map.data.number_of_tiles/2)+(fmx_map.data.map_width/2));
+            map_gen(&fmx_map,MAP_GEN_CA,MAP_TILESET_GRASSLAND);
             game.core.io.key_f                     = false;
             game.core.io.keyboard_delay_count      = 0;
         }
         if (game.core.io.key_g) // generate a random CA dungeon
         {
             game.loading_screen.display("data/loading_screen.png");
-            map_gen_CA(&fmx_map);
-            game.map_2D.apply_tileset(&fmx_map,MAP_TILESET_DUNGEON);
-            game.map_2D.calculate_tile_positions(&fmx_map,DEFAULT_FRAME_WIDTH/game.zoom.current/2.0f,DEFAULT_FRAME_HEIGHT/game.zoom.current/2.0f);
-            game.map_2D.center_on_tile(&fmx_map,(fmx_map.data.number_of_tiles/2)+(fmx_map.data.map_width/2));
+            map_gen(&fmx_map,MAP_GEN_CA,MAP_TILESET_DUNGEON);
             game.core.io.key_g                     = false;
             game.core.io.keyboard_delay_count      = 0;
         }
