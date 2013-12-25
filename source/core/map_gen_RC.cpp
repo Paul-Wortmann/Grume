@@ -23,16 +23,9 @@
  */
 
 #include "../game/game.hpp"
-#include "map_gen_RC.hpp"
 #include "map_gen.hpp"
+#include "map_gen_RC.hpp"
 #include "misc.hpp"
-#include "pathfinding.hpp"
-#include "physics.hpp"
-#include <stdio.h>
-#include <stdlib.h>
-#include <iostream>
-#include <fstream>
-#include <string>
 
 extern game_class    game;
 

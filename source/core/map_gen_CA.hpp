@@ -26,7 +26,6 @@
 #define MAP_GEN_CA_HPP
 
 #include <string>
-#include "map_gen.hpp"
 #include "loader_fmx.hpp"
 #include "types.hpp"
 

@@ -29,6 +29,9 @@
 #include "loader_fmx.hpp"
 #include "types.hpp"
 
+#define MAP_GEN_TILES_X            100
+#define MAP_GEN_TILES_Y            100
+
 #define MAP_GEN_BSP                1
 #define MAP_GEN_CA                 2
 #define MAP_GEN_RC                 3
@@ -94,6 +97,7 @@ struct map_node_type
     map_node_type *right;
 };
 
+void           map_gen_base            (fmx_map_type *fmx_map_pointer, int map_size_x, int map_size_y);
 void           map_gen_base            (fmx_map_type *fmx_map_pointer);
 void           map_gen                 (fmx_map_type *fmx_map_pointer, int generator_algorithm);
 void           map_gen                 (fmx_map_type *fmx_map_pointer, int generator_algorithm, int tileset_type);

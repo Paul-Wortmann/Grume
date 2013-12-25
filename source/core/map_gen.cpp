@@ -29,41 +29,31 @@
 #include "map_gen_M1.hpp"
 #include "map_gen_RC.hpp"
 #include "misc.hpp"
-#include "pathfinding.hpp"
-#include "physics.hpp"
-#include <stdio.h>
-#include <stdlib.h>
-#include <iostream>
-#include <fstream>
-#include <string>
 
 extern game_class    game;
 
-int map_gen_size_x     = 100;
-int map_gen_size_y     = 100;
-
-void map_gen_base(fmx_map_type *fmx_map_pointer)
+void map_gen_base(fmx_map_type *fmx_map_pointer, int map_size_x, int map_size_y)
 {
     int tile_count_temp                                     = 0;
     int tileset_count                                       = 0;
-    fmx_map_pointer->data.map_width                         = map_gen_size_x;
-    fmx_map_pointer->data.map_height                        = map_gen_size_y;
+    fmx_map_pointer->data.map_width                         = map_size_x;
+    fmx_map_pointer->data.map_height                        = map_size_y;
     fmx_map_pointer->data.map_tile_width                    = 64;
     fmx_map_pointer->data.map_tile_height                   = 32;
-    fmx_map_pointer->data.number_of_tiles                   = map_gen_size_x*map_gen_size_y;
+    fmx_map_pointer->data.number_of_tiles                   = map_size_x*map_size_y;
     fmx_map_pointer->data.number_of_layers                  = 3;
     fmx_map_pointer->data.number_of_tilesets                = 1;
     fmx_map_pointer->data.number_of_rooms                   = 0;
     fmx_map_pointer->layer                                  = new fmx_layer_type[fmx_map_pointer->data.number_of_layers];
     fmx_map_pointer->layer[LAYER_FLOOR].name                = "generated_floor";
-    fmx_map_pointer->layer[LAYER_FLOOR].width               = map_gen_size_x;
-    fmx_map_pointer->layer[LAYER_FLOOR].height              = map_gen_size_y;
+    fmx_map_pointer->layer[LAYER_FLOOR].width               = map_size_x;
+    fmx_map_pointer->layer[LAYER_FLOOR].height              = map_size_y;
     fmx_map_pointer->layer[LAYER_OBJECT].name               = "generated_object";
-    fmx_map_pointer->layer[LAYER_OBJECT].width              = map_gen_size_x;
-    fmx_map_pointer->layer[LAYER_OBJECT].height             = map_gen_size_y;
+    fmx_map_pointer->layer[LAYER_OBJECT].width              = map_size_x;
+    fmx_map_pointer->layer[LAYER_OBJECT].height             = map_size_y;
     fmx_map_pointer->layer[LAYER_WALL].name                 = "generated_wall";
-    fmx_map_pointer->layer[LAYER_WALL].width                = map_gen_size_x;
-    fmx_map_pointer->layer[LAYER_WALL].height               = map_gen_size_y;
+    fmx_map_pointer->layer[LAYER_WALL].width                = map_size_x;
+    fmx_map_pointer->layer[LAYER_WALL].height               = map_size_y;
     fmx_map_pointer->tileset                                = new fmx_tileset_type[fmx_map_pointer->data.number_of_tilesets];
     fmx_map_pointer->tileset[tileset_count].first_gid       = 1;
     fmx_map_pointer->tileset[tileset_count].image_source    = "data/tilesets/default_tileset.png";
@@ -97,6 +87,11 @@ void map_gen_base(fmx_map_type *fmx_map_pointer)
             fmx_map_pointer->tile_data[tile_count_temp].collision                   = true;
         }
     }
+};
+
+void map_gen_base(fmx_map_type *fmx_map_pointer)
+{
+    map_gen_base(fmx_map_pointer,MAP_GEN_TILES_X,MAP_GEN_TILES_Y);
 };
 
 void           map_gen                 (fmx_map_type *fmx_map_pointer, int generator_algorithm)

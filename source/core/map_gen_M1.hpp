@@ -27,7 +27,6 @@
 
 #include <string>
 #include "loader_fmx.hpp"
-#include "map_gen.hpp"
 #include "types.hpp"
 
 void           map_gen_M1              (fmx_map_type *fmx_map_pointer, int seed);
