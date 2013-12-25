@@ -2328,7 +2328,7 @@
 	"texture_manager.hpp"
 	"map_gen.hpp"
 
-1387877424 /media/paul/Data_0/_git_/Frost_and_Flame/source/core/map_gen.hpp
+1387983109 /media/paul/Data_0/_git_/Frost_and_Flame/source/core/map_gen.hpp
 	<string>
 	"loader_fmx.hpp"
 	"types.hpp"
@@ -2573,17 +2573,14 @@
 	"map_3D.hpp"
 	"physics.hpp"
 
-1387877424 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/core/map_gen.cpp
+1387982905 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/core/map_gen.cpp
 	"../game/game.hpp"
 	"map_gen.hpp"
+	"map_gen_BSP.hpp"
+	"map_gen_CA.hpp"
+	"map_gen_M1.hpp"
+	"map_gen_RC.hpp"
 	"misc.hpp"
-	"pathfinding.hpp"
-	"physics.hpp"
-	<stdio.h>
-	<stdlib.h>
-	<iostream>
-	<fstream>
-	<string>
 
 1384005408 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/core/misc.cpp
 	<time.h>
@@ -2613,7 +2610,7 @@
 1375577407 /media/paul/Data_0/_git_/Frost_and_Flame/source/core/particles.hpp
 	<string>
 
-1387599953 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/core/pathfinding.cpp
+1387955137 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/core/pathfinding.cpp
 	"pathfinding.hpp"
 	"loader_fmx.hpp"
 	"map_gen.hpp"
@@ -2621,7 +2618,7 @@
 	<stdlib.h>
 	"../game/game.hpp"
 
-1375577407 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/core/physics.cpp
+1387981958 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/core/physics.cpp
 	"physics.hpp"
 	<math.h>
 
@@ -4055,4 +4052,45 @@
 
 1386421500 source:/home/paul/_git_/Frost_and_Flame/source/UI/UI_types.cpp
 	"UI_types.hpp"
+
+1387982469 /media/paul/Data_0/_git_/Frost_and_Flame/source/core/map_gen_BSP.hpp
+	<string>
+	"loader_fmx.hpp"
+	"types.hpp"
+
+1387982487 /media/paul/Data_0/_git_/Frost_and_Flame/source/core/map_gen_CA.hpp
+	<string>
+	"loader_fmx.hpp"
+	"types.hpp"
+
+1387982487 /media/paul/Data_0/_git_/Frost_and_Flame/source/core/map_gen_M1.hpp
+	<string>
+	"loader_fmx.hpp"
+	"types.hpp"
+
+1387982487 /media/paul/Data_0/_git_/Frost_and_Flame/source/core/map_gen_RC.hpp
+	<string>
+	"loader_fmx.hpp"
+	"types.hpp"
+
+1387982673 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/core/map_gen_BSP.cpp
+	"../game/game.hpp"
+	"map_gen.hpp"
+	"map_gen_BSP.hpp"
+
+1387982629 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/core/map_gen_CA.cpp
+	"../game/game.hpp"
+	"map_gen.hpp"
+	"map_gen_CA.hpp"
+
+1387982601 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/core/map_gen_M1.cpp
+	"../game/game.hpp"
+	"map_gen.hpp"
+	"map_gen_M1.hpp"
+
+1387982559 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/core/map_gen_RC.cpp
+	"../game/game.hpp"
+	"map_gen.hpp"
+	"map_gen_RC.hpp"
+	"misc.hpp"
 
