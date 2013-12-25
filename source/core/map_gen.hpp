@@ -97,17 +97,6 @@ struct map_node_type
 void           map_gen_base            (fmx_map_type *fmx_map_pointer);
 void           map_gen                 (fmx_map_type *fmx_map_pointer, int generator_algorithm);
 void           map_gen                 (fmx_map_type *fmx_map_pointer, int generator_algorithm, int tileset_type);
-void           map_gen_BSP_split       (fmx_map_type *fmx_map_pointer, map_node_type *map_node);
-void           map_gen_BSP             (fmx_map_type *fmx_map_pointer);
-void           map_gen_BSP_internal    (fmx_map_type *fmx_map_pointer);
-void           map_gen_BSP             (fmx_map_type *fmx_map_pointer, int seed);
-void           map_gen_CA              (fmx_map_type *fmx_map_pointer);
-void           map_gen_CA              (fmx_map_type *fmx_map_pointer, int seed);
-void           map_gen_RC_internal     (fmx_map_type *fmx_map_pointer);
-void           map_gen_RC              (fmx_map_type *fmx_map_pointer, int seed);
-void           map_gen_RC              (fmx_map_type *fmx_map_pointer);
-void           map_gen_M1              (fmx_map_type *fmx_map_pointer, int seed);
-void           map_gen_M1              (fmx_map_type *fmx_map_pointer);
 bool           map_gen_room            (fmx_map_type *fmx_map_pointer, room_data_type room, int number_of_exits);
 int            map_gen_flood_fill_tile (fmx_map_type *fmx_map_pointer, flood_fill_type *fill_data, int tile_number);
 bool           map_gen_room_flood_fill (fmx_map_type *fmx_map_pointer);
