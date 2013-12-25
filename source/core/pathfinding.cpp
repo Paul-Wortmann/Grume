@@ -66,7 +66,7 @@ int map_tile_calc (fmx_map_type *fmx_map_pointer, int tile_current, int tile_par
             int p_3_x = tile_end     % fmx_map_pointer->data.map_width;
             int p_3_y = tile_end     / fmx_map_pointer->data.map_width;
             fmx_map_pointer->path_data[tile_current].open_list   = true;
-            fmx_map_pointer->path_data[tile_current].G           = (p_2_G + ((p_1_x == p_2_x || p_1_y == p_2_y) ? 10 : 22));
+            fmx_map_pointer->path_data[tile_current].G           = (p_2_G + ((p_1_x == p_2_x || p_1_y == p_2_y) ? 10 : 21));
             fmx_map_pointer->path_data[tile_current].H           = ((abs(p_1_x - p_3_x)+abs(p_1_y - p_3_y))*10);
             fmx_map_pointer->path_data[tile_current].F           = fmx_map_pointer->path_data[tile_current].G + fmx_map_pointer->path_data[tile_current].H;
             return_value = fmx_map_pointer->path_data[tile_current].F;
