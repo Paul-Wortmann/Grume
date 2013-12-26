@@ -150,6 +150,10 @@ bool           map_gen_room            (fmx_map_type *fmx_map_pointer, room_data
                 fmx_map_pointer->layer[LAYER_FLOOR].tile[temp_tile].tile = TILE_FLOOR;
             }
         }
+        int room_number = map_gen_room_add(fmx_map_pointer);
+        fmx_map_pointer->room[room_number].active   = true;
+        fmx_map_pointer->room[room_number].position = room.position;
+        fmx_map_pointer->room[room_number].size     = room.size;
     }
     return (return_value);
 };
