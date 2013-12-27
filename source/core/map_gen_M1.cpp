@@ -36,7 +36,7 @@ void           map_gen_M1              (fmx_map_type *fmx_map_pointer, int seed)
 
 void           map_gen_maze            (fmx_map_type *fmx_map_pointer, int tile_x, int tile_y)
 {
-
+    int start_tile = (tile_y * fmx_map_pointer->data.map_width) + tile_x;
 };
 
 void           map_gen_M1              (fmx_map_type *fmx_map_pointer)
