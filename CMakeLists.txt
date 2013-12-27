@@ -114,8 +114,12 @@ Set (FROST_AND_FLAME_SOURCES
 	./source/core/loader_tmx.cpp
 	./source/core/log.cpp
 	./source/core/map_2D.cpp
-	./source/core/map_gen.cpp
 	./source/core/map_3D.cpp
+	./source/core/map_gen.cpp
+	./source/core/map_gen_BSP.cpp
+	./source/core/map_gen_CA.cpp
+	./source/core/map_gen_RC.cpp
+	./source/core/map_gen_M1.cpp
 	./source/core/misc.cpp
 	./source/core/music_manager.cpp
 	./source/core/network.cpp
