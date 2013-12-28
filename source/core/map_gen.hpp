@@ -61,6 +61,7 @@
 #define TILE_ATTRIBUTE_NONE        10
 #define TILE_ATTRIBUTE_PROCESSED   11
 #define TILE_ATTRIBUTE_ROAD        12
+#define TILE_ATTRIBUTE_CORRIDOR    13
 
 #define ROOM_PATH                  2
 #define ROOM_MIN_X                 7
