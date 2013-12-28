@@ -41,7 +41,7 @@
 #define MAP_TILESET_CAVE           2
 #define MAP_TILESET_GRASSLAND      3
 
-#define MAX_ROOMS                  0 // 0 for unlimited number possible, should be an even number!
+#define MAX_ROOMS                  0 // 0 for unlimited number, should be an even number!
 #define MAX_NODES                  8
 
 #define LAYER_FLOOR                0
