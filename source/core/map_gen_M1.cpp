@@ -34,10 +34,19 @@ void           map_gen_M1              (fmx_map_type *fmx_map_pointer, int seed)
     map_gen_M1(fmx_map_pointer);
 };
 
+bool map_gen_maze_tile_OK              (fmx_map_type *fmx_map_pointer, int tile_number)
+{
+    bool return_value = false;
+
+
+    return (return_value);
+}
+
 void           map_gen_maze            (fmx_map_type *fmx_map_pointer, int tile_x, int tile_y)
 {
     int start_tile = (tile_y * fmx_map_pointer->data.map_width) + tile_x;
     // recursive?
+    // check tile func
 };
 
 void           map_gen_M1              (fmx_map_type *fmx_map_pointer)

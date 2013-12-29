@@ -29,6 +29,8 @@
 #include "loader_fmx.hpp"
 #include "types.hpp"
 
+bool           map_gen_maze_tile_OK    (fmx_map_type *fmx_map_pointer, int tile_number);
+void           map_gen_maze            (fmx_map_type *fmx_map_pointer, int tile_x, int tile_y);
 void           map_gen_M1              (fmx_map_type *fmx_map_pointer, int seed);
 void           map_gen_M1              (fmx_map_type *fmx_map_pointer);
 
