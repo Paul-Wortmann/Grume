@@ -42,11 +42,15 @@ bool map_gen_maze_tile_OK              (fmx_map_type *fmx_map_pointer, int tile_
     return (return_value);
 }
 
-void           map_gen_maze            (fmx_map_type *fmx_map_pointer, int tile_x, int tile_y)
+void           map_gen_maze            (fmx_map_type *fmx_map_pointer, int tile_in)
 {
-    int start_tile = (tile_y * fmx_map_pointer->data.map_width) + tile_x;
     // recursive?
     // check tile func
+};
+
+void           map_gen_maze            (fmx_map_type *fmx_map_pointer, int tile_x, int tile_y)
+{
+    map_gen_maze(fmx_map_pointer,(tile_y * fmx_map_pointer->data.map_width) + tile_x);
 };
 
 void           map_gen_M1              (fmx_map_type *fmx_map_pointer)
@@ -61,7 +65,7 @@ void           map_gen_M1              (fmx_map_type *fmx_map_pointer)
     map_gen_room(fmx_map_pointer,room_data,1);
     map_gen_room(fmx_map_pointer,room_data,2);
     map_gen_room(fmx_map_pointer,room_data,2);
-    map_gen_maze(fmx_map_pointer,0,0);
+    map_gen_maze(fmx_map_pointer,fmx_map_pointer->data.map_width/2,fmx_map_pointer->data.map_width * (fmx_map_pointer->data.map_height-1));
 
 
     map_gen_check_tiles(fmx_map_pointer);
