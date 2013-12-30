@@ -47,32 +47,44 @@ bool map_gen_maze_check_tile(fmx_map_type *fmx_map_pointer, int tile_count, int 
         switch (direction_bias)
         {
             case DIRECTION_BIAS_NORTH:
-                if (fmx_map_pointer->layer[LAYER_FLOOR].tile[tile_count-1].tile != TILE_WALL) return_value = false;
-                if (fmx_map_pointer->layer[LAYER_FLOOR].tile[tile_count+1].tile != TILE_WALL) return_value = false;
-                if (fmx_map_pointer->layer[LAYER_FLOOR].tile[tile_count-fmx_map_pointer->data.map_width].tile != TILE_WALL) return_value = false;
-                if (fmx_map_pointer->layer[LAYER_FLOOR].tile[tile_count-fmx_map_pointer->data.map_width-1].tile != TILE_WALL) return_value = false;
-                if (fmx_map_pointer->layer[LAYER_FLOOR].tile[tile_count-fmx_map_pointer->data.map_width+1].tile != TILE_WALL) return_value = false;
+                for (int wall_count = 1; wall_count <= WALL_WIDTH; wall_count++)
+                {
+                    if (fmx_map_pointer->layer[LAYER_FLOOR].tile[tile_count-wall_count].tile != TILE_WALL) return_value = false;
+                    if (fmx_map_pointer->layer[LAYER_FLOOR].tile[tile_count+wall_count].tile != TILE_WALL) return_value = false;
+                    if (fmx_map_pointer->layer[LAYER_FLOOR].tile[tile_count-fmx_map_pointer->data.map_width*wall_count].tile != TILE_WALL) return_value = false;
+                    if (fmx_map_pointer->layer[LAYER_FLOOR].tile[tile_count-fmx_map_pointer->data.map_width-wall_count].tile != TILE_WALL) return_value = false;
+                    if (fmx_map_pointer->layer[LAYER_FLOOR].tile[tile_count-fmx_map_pointer->data.map_width+wall_count].tile != TILE_WALL) return_value = false;
+                }
             break;
             case DIRECTION_BIAS_SOUTH:
-                if (fmx_map_pointer->layer[LAYER_FLOOR].tile[tile_count-1].tile != TILE_WALL) return_value = false;
-                if (fmx_map_pointer->layer[LAYER_FLOOR].tile[tile_count+1].tile != TILE_WALL) return_value = false;
-                if (fmx_map_pointer->layer[LAYER_FLOOR].tile[tile_count+fmx_map_pointer->data.map_width].tile != TILE_WALL) return_value = false;
-                if (fmx_map_pointer->layer[LAYER_FLOOR].tile[tile_count+fmx_map_pointer->data.map_width-1].tile != TILE_WALL) return_value = false;
-                if (fmx_map_pointer->layer[LAYER_FLOOR].tile[tile_count+fmx_map_pointer->data.map_width+1].tile != TILE_WALL) return_value = false;
+                for (int wall_count = 1; wall_count <= WALL_WIDTH; wall_count++)
+                {
+                    if (fmx_map_pointer->layer[LAYER_FLOOR].tile[tile_count-wall_count].tile != TILE_WALL) return_value = false;
+                    if (fmx_map_pointer->layer[LAYER_FLOOR].tile[tile_count+wall_count].tile != TILE_WALL) return_value = false;
+                    if (fmx_map_pointer->layer[LAYER_FLOOR].tile[tile_count+fmx_map_pointer->data.map_width*wall_count].tile != TILE_WALL) return_value = false;
+                    if (fmx_map_pointer->layer[LAYER_FLOOR].tile[tile_count+fmx_map_pointer->data.map_width-wall_count].tile != TILE_WALL) return_value = false;
+                    if (fmx_map_pointer->layer[LAYER_FLOOR].tile[tile_count+fmx_map_pointer->data.map_width+wall_count].tile != TILE_WALL) return_value = false;
+                }
             break;
             case DIRECTION_BIAS_EAST:
-                if (fmx_map_pointer->layer[LAYER_FLOOR].tile[tile_count-1].tile != TILE_WALL) return_value = false;
-                if (fmx_map_pointer->layer[LAYER_FLOOR].tile[tile_count-fmx_map_pointer->data.map_width].tile != TILE_WALL) return_value = false;
-                if (fmx_map_pointer->layer[LAYER_FLOOR].tile[tile_count-fmx_map_pointer->data.map_width-1].tile != TILE_WALL) return_value = false;
-                if (fmx_map_pointer->layer[LAYER_FLOOR].tile[tile_count+fmx_map_pointer->data.map_width].tile != TILE_WALL) return_value = false;
-                if (fmx_map_pointer->layer[LAYER_FLOOR].tile[tile_count+fmx_map_pointer->data.map_width-1].tile != TILE_WALL) return_value = false;
+                for (int wall_count = 1; wall_count <= WALL_WIDTH; wall_count++)
+                {
+                    if (fmx_map_pointer->layer[LAYER_FLOOR].tile[tile_count-wall_count].tile != TILE_WALL) return_value = false;
+                    if (fmx_map_pointer->layer[LAYER_FLOOR].tile[tile_count-fmx_map_pointer->data.map_width*wall_count].tile != TILE_WALL) return_value = false;
+                    if (fmx_map_pointer->layer[LAYER_FLOOR].tile[tile_count-fmx_map_pointer->data.map_width-wall_count].tile != TILE_WALL) return_value = false;
+                    if (fmx_map_pointer->layer[LAYER_FLOOR].tile[tile_count+fmx_map_pointer->data.map_width*wall_count].tile != TILE_WALL) return_value = false;
+                    if (fmx_map_pointer->layer[LAYER_FLOOR].tile[tile_count+fmx_map_pointer->data.map_width-wall_count].tile != TILE_WALL) return_value = false;
+                }
             break;
             case DIRECTION_BIAS_WEST:
-                if (fmx_map_pointer->layer[LAYER_FLOOR].tile[tile_count+1].tile != TILE_WALL) return_value = false;
-                if (fmx_map_pointer->layer[LAYER_FLOOR].tile[tile_count-fmx_map_pointer->data.map_width].tile != TILE_WALL) return_value = false;
-                if (fmx_map_pointer->layer[LAYER_FLOOR].tile[tile_count-fmx_map_pointer->data.map_width+1].tile != TILE_WALL) return_value = false;
-                if (fmx_map_pointer->layer[LAYER_FLOOR].tile[tile_count+fmx_map_pointer->data.map_width].tile != TILE_WALL) return_value = false;
-                if (fmx_map_pointer->layer[LAYER_FLOOR].tile[tile_count+fmx_map_pointer->data.map_width+1].tile != TILE_WALL) return_value = false;
+                for (int wall_count = 1; wall_count <= WALL_WIDTH; wall_count++)
+                {
+                    if (fmx_map_pointer->layer[LAYER_FLOOR].tile[tile_count+wall_count].tile != TILE_WALL) return_value = false;
+                    if (fmx_map_pointer->layer[LAYER_FLOOR].tile[tile_count-fmx_map_pointer->data.map_width*wall_count].tile != TILE_WALL) return_value = false;
+                    if (fmx_map_pointer->layer[LAYER_FLOOR].tile[tile_count-fmx_map_pointer->data.map_width+wall_count].tile != TILE_WALL) return_value = false;
+                    if (fmx_map_pointer->layer[LAYER_FLOOR].tile[tile_count+fmx_map_pointer->data.map_width*wall_count].tile != TILE_WALL) return_value = false;
+                    if (fmx_map_pointer->layer[LAYER_FLOOR].tile[tile_count+fmx_map_pointer->data.map_width+wall_count].tile != TILE_WALL) return_value = false;
+                }
             break;
             case DIRECTION_BIAS_NONE:
             default:

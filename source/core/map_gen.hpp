@@ -77,6 +77,8 @@
 #define ROOM_MAX_Y                 9
 #define ROOM_MAX_R                 (int)(sqrt(((ROOM_MAX_X/2) * (ROOM_MAX_X/2)) + ((ROOM_MAX_Y/2) * (ROOM_MAX_Y/2))) + ROOM_PATH)
 
+#define WALL_WIDTH                 4
+
 struct flood_fill_type
 {
     int  tile_data;
