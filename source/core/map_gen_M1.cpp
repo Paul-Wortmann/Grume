@@ -176,6 +176,6 @@ void           map_gen_M1              (fmx_map_type *fmx_map_pointer)
     map_gen_room(fmx_map_pointer,room_data,1);
     map_gen_room(fmx_map_pointer,room_data,2);
     map_gen_room(fmx_map_pointer,room_data,2);
-    map_gen_maze(fmx_map_pointer,fmx_map_pointer->data.map_width/2,fmx_map_pointer->data.map_width * (fmx_map_pointer->data.map_height-1),DIRECTION_BIAS_NONE);
+    map_gen_maze(fmx_map_pointer,fmx_map_pointer->data.map_width/2,fmx_map_pointer->data.map_height/2,DIRECTION_BIAS_NONE);
     map_gen_check_tiles(fmx_map_pointer);
 };
