@@ -704,7 +704,7 @@ game.core.log.file_write("-> distance found - ",distance_temp);
         for (int tile_count_y = 0; tile_count_y < fmx_map_pointer->data.map_height; tile_count_y++)
         {
             int tile_count_temp = (tile_count_y * fmx_map_pointer->data.map_width) + tile_count_x;
-            fmx_map_pointer->layer[LAYER_FLOOR].tile[tile_count_temp].tile          = TILE_FLOOR;
+            //fmx_map_pointer->layer[LAYER_FLOOR].tile[tile_count_temp].tile          = TILE_FLOOR;
             //fmx_map_pointer->layer[LAYER_FLOOR].tile[tile_count_temp].collision     = false;
         }
     }
