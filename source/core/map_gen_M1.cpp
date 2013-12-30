@@ -37,7 +37,7 @@ void           map_gen_M1              (fmx_map_type *fmx_map_pointer, int seed)
 bool map_gen_maze_tile_OK              (fmx_map_type *fmx_map_pointer, int tile_number)
 {
     bool return_value = false;
-
+    if (fmx_map_pointer->layer[LAYER_FLOOR].tile[tile_number].tile != TILE_WALL) return_value = false; else return_value = true;
 
     return (return_value);
 }
