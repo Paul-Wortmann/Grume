@@ -5,7 +5,29 @@ it may take longer than I had first anticipated.
 These are not indications that the project will be terminated in the future,
 just that time is not permitting to proceed at a fast pace, at the moment.
 
-v0.26 - (2013-12-31)
+V0.26 -> (2013-12-31) Happy new year!
+UI       -> Use 'h' key to generate a random RC cave map.
+UI       -> Use 'j' key to generate a random M1 dungeon map.
+MAP   -> Created new map data structure -> FMX
+MAP   -> FMX map type to hold room data.
+MAP   -> FMX map type to hold extended tile attributes.
+MAP   -> FMX map type to only one collision array.
+MAP   -> Renamed tile / tileset defines for better code readability.
+MAP   -> Implemented new random dungeon genorator algorithm -> M1 - Maze
+MAP   -> Implemented new random dungeon genorator algorithm -> RC - Based on random circles.
+MAP   -> Restructured map generation algorithms into different files.
+MAP   -> Placed different map gen algorithms in different files.
+MAP   -> Implemented room generation function/s.
+MAP   -> Implemented room interconnect function/s.
+MAP   -> Improved function to check map consistancey.
+CORE -> Found lingering SDL code/includes and converted to SDL2.
+GFX    -> Added Hammer_02 texture.
+GFX    -> Added stairs tileset for testing.
+MAP    -> Improved BSP generated room interconnects.
+MAP    -> Vastly improved flood fill based on a recursive algorithm.
+UI       -> Right click skills to equip them in vacant actionbar slots.
+UI       -> Enable spell icon overlays on the actionbar.
+MAP   -> Start of new recursive A* path finding algorithm.
 LOC   -> xxxxx
 
 v0.25 - (2013-11-30)
