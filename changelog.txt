@@ -28,7 +28,7 @@ MAP    -> Vastly improved flood fill based on a recursive algorithm.
 UI       -> Right click skills to equip them in vacant actionbar slots.
 UI       -> Enable spell icon overlays on the actionbar.
 MAP   -> Start of new recursive A* path finding algorithm.
-LOC   -> xxxxx
+LOC   -> 26484
 
 v0.25 - (2013-11-30)
 UI    -> Initial spell border overlay implemented.
