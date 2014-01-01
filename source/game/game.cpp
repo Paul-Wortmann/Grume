@@ -31,6 +31,7 @@ fmx_map_type      fmx_map;
 
 game_class::game_class(void)
 {
+    game_class::debug = false;
     game_class::event = 0;
     game_class::state = STATE_MENU;
 };
@@ -38,7 +39,6 @@ game_class::game_class(void)
 void game_class::init(void)
 {
     game.loading_screen.display("data/loading_screen.png");
-    game_class::debug = false;
     glDisable(GL_DEPTH_TEST);
     //--- initial state of the background ---
     game.core.background.set_data ( 1, 1, 0, 0.0f, 0.0f, 0.0000f, 0.00000f, "data/textures/UI/backgrounds/background_01.png");

@@ -37,6 +37,7 @@ SDL_Surface*             application_icon_surface;
 // --------------------------------------------------------------------------------------------------------------------------
 extern "C" int main(int argc, char** argv)
 {
+    game.debug = true;
     game.core.application_name = "Frost and Flame V0.26 - www.physhexgames.co.nr";
     game.core.application_icon = "data/icon.bmp";
     game.core.log.file_set("frost_and_flame.log");
@@ -118,12 +119,13 @@ extern "C" int main(int argc, char** argv)
     SDL_Init(SDL_INIT_TIMER);
     game.core.timer.start();
     game.core.last_ticks = game.core.timer.getticks();
+    if (game.debug) game.core.log.file_write("Developer demo enabled.");
 // --------------------------------------------------------------------------------------------------------------------------
 // | Main application loop
 // --------------------------------------------------------------------------------------------------------------------------
 
     // --- TEST ---
-    if (1 == 1)
+    if (game.debug)
     {
         game.state = STATE_GAME;
         if (game.music_manager.next_track)
