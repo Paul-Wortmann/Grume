@@ -123,7 +123,7 @@ extern "C" int main(int argc, char** argv)
 // --------------------------------------------------------------------------------------------------------------------------
 
     // --- TEST ---
-    if (1 == 0)
+    if (1 == 1)
     {
         game.state = STATE_GAME;
         if (game.music_manager.next_track)
