@@ -63,9 +63,9 @@
 #define TILE_ATTRIBUTE_ROAD        12
 #define TILE_ATTRIBUTE_CORRIDOR    13
 
-#define WALL_WIDTH                 4
+#define WALL_WIDTH                 2
 
-#define DIRECTION_BIAS_THRESHOLD   8 // Higher numbers result in mazes with longer passages.
+#define DIRECTION_BIAS_THRESHOLD   32 // Higher numbers result in mazes with longer passages.
 #define DIRECTION_BIAS_NONE        0
 #define DIRECTION_BIAS_NORTH       1
 #define DIRECTION_BIAS_EAST        2
