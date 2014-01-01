@@ -52,6 +52,14 @@ void command_line_parser_class::process(int arg_count,char** arg_data)
         {
             game.core.config.display_fullscreen = false;
         }
+        if (temp_string.compare("-debug") == 0)
+        {
+            game.debug = true;
+        }
+        if (temp_string.compare("-d") == 0)
+        {
+            game.debug = true;
+        }
     }
 };
 
