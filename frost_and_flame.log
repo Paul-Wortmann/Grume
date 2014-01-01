@@ -20,625 +20,73 @@ Starting Game...
  
 # ---------------------------------------------- #
  
--> map_gen_room_add_exits() called 
-Node next -> 2 - tile - 4950 - tile_F -> 390
-Node next -> 2 - tile - 4850 - tile_F -> 390
-Node next -> 2 - tile - 4750 - tile_F -> 390
-Node next -> 5 - tile - 4751 - tile_F -> 390
-Node next -> 5 - tile - 4752 - tile_F -> 390
-Node next -> 5 - tile - 4753 - tile_F -> 390
-Node next -> 7 - tile - 4853 - tile_F -> 410
-Node next -> 4 - tile - 4852 - tile_F -> 430
-Node next -> 4 - tile - 4851 - tile_F -> 450
-Node next -> 7 - tile - 4951 - tile_F -> 470
-Node next -> 5 - tile - 4952 - tile_F -> 470
-Node next -> 5 - tile - 4953 - tile_F -> 470
-Node next -> 7 - tile - 5053 - tile_F -> 490
-Node next -> 4 - tile - 5052 - tile_F -> 510
-Node next -> 4 - tile - 5051 - tile_F -> 530
-Node next -> 4 - tile - 5050 - tile_F -> 550
-Node next -> 4 - tile - 5049 - tile_F -> 570
-Node next -> 2 - tile - 4949 - tile_F -> 570
-Node next -> 2 - tile - 4849 - tile_F -> 570
-Node next -> 2 - tile - 4749 - tile_F -> 570
-Node next -> 4 - tile - 4748 - tile_F -> 590
-Node next -> 4 - tile - 4747 - tile_F -> 610
-Node next -> 7 - tile - 4847 - tile_F -> 630
-Node next -> 5 - tile - 4848 - tile_F -> 630
-Node next -> 7 - tile - 4948 - tile_F -> 650
-Node next -> 4 - tile - 4947 - tile_F -> 670
-Node next -> 7 - tile - 5047 - tile_F -> 690
-Node next -> 5 - tile - 5048 - tile_F -> 690
-Node next -> 7 - tile - 5148 - tile_F -> 710
-Node next -> 5 - tile - 5149 - tile_F -> 710
-Node next -> 5 - tile - 5150 - tile_F -> 710
-Node next -> 5 - tile - 5151 - tile_F -> 710
-Node next -> 5 - tile - 5152 - tile_F -> 710
-Node next -> 5 - tile - 5153 - tile_F -> 710
-Node next -> 7 - tile - 5253 - tile_F -> 730
-Node next -> 4 - tile - 5252 - tile_F -> 750
-Node next -> 4 - tile - 5251 - tile_F -> 770
-Node next -> 4 - tile - 5250 - tile_F -> 790
-Node next -> 4 - tile - 5249 - tile_F -> 810
-Node next -> 4 - tile - 5248 - tile_F -> 830
-Node next -> 4 - tile - 5247 - tile_F -> 850
-Node next -> 2 - tile - 5147 - tile_F -> 850
-Next best is parent - 7
- No suitable node found...
-Node next -> 7 - tile - 5347 - tile_F -> 870
-Node next -> 5 - tile - 5348 - tile_F -> 870
-Node next -> 5 - tile - 5349 - tile_F -> 870
-Node next -> 5 - tile - 5350 - tile_F -> 870
-Node next -> 5 - tile - 5351 - tile_F -> 870
-Node next -> 5 - tile - 5352 - tile_F -> 870
-Node next -> 5 - tile - 5353 - tile_F -> 870
-Next best is parent - 4
- No suitable node found...
-Next best is parent - 4
- No suitable node found...
-Node next -> 6 - tile - 5450 - tile_F -> 911
-Node next -> 7 - tile - 5550 - tile_F -> 931
-Node next -> 7 - tile - 5650 - tile_F -> 951
-Node next -> 7 - tile - 5750 - tile_F -> 971
-Node next -> 7 - tile - 5850 - tile_F -> 991
-Node next -> 7 - tile - 5950 - tile_F -> 1011
-Node next -> 7 - tile - 6050 - tile_F -> 1031
-Node next -> 7 - tile - 6150 - tile_F -> 1051
-Node next -> 7 - tile - 6250 - tile_F -> 1071
-Node next -> 7 - tile - 6350 - tile_F -> 1091
-Node next -> 7 - tile - 6450 - tile_F -> 1111
-Node next -> 7 - tile - 6550 - tile_F -> 1131
-Node next -> 7 - tile - 6650 - tile_F -> 1151
-Node next -> 7 - tile - 6750 - tile_F -> 1171
-Node next -> 7 - tile - 6850 - tile_F -> 1191
-Node next -> 7 - tile - 6950 - tile_F -> 1211
-Node next -> 7 - tile - 7050 - tile_F -> 1231
-Node next -> 7 - tile - 7150 - tile_F -> 1251
-Node next -> 5 - tile - 7151 - tile_F -> 1251
-Node next -> 5 - tile - 7152 - tile_F -> 1251
-Node next -> 7 - tile - 7252 - tile_F -> 1271
-Node next -> 4 - tile - 7251 - tile_F -> 1291
-Node next -> 4 - tile - 7250 - tile_F -> 1311
-Node next -> 4 - tile - 7249 - tile_F -> 1331
-Node next -> 2 - tile - 7149 - tile_F -> 1331
-Node next -> 4 - tile - 7148 - tile_F -> 1351
-Node next -> 4 - tile - 7147 - tile_F -> 1371
-Node next -> 4 - tile - 7146 - tile_F -> 1391
-Node next -> 4 - tile - 7145 - tile_F -> 1411
-Node next -> 7 - tile - 7245 - tile_F -> 1431
-Node next -> 5 - tile - 7246 - tile_F -> 1431
-Node next -> 5 - tile - 7247 - tile_F -> 1431
-Node next -> 5 - tile - 7248 - tile_F -> 1431
-Node next -> 7 - tile - 7348 - tile_F -> 1451
-Node next -> 5 - tile - 7349 - tile_F -> 1451
-Node next -> 5 - tile - 7350 - tile_F -> 1451
-Node next -> 5 - tile - 7351 - tile_F -> 1451
-Node next -> 5 - tile - 7352 - tile_F -> 1451
-Node next -> 7 - tile - 7452 - tile_F -> 1471
-Node next -> 4 - tile - 7451 - tile_F -> 1491
-Node next -> 4 - tile - 7450 - tile_F -> 1511
-Node next -> 4 - tile - 7449 - tile_F -> 1531
-Node next -> 4 - tile - 7448 - tile_F -> 1551
-Node next -> 4 - tile - 7447 - tile_F -> 1571
-Node next -> 2 - tile - 7347 - tile_F -> 1571
-Node next -> 4 - tile - 7346 - tile_F -> 1591
-Node next -> 4 - tile - 7345 - tile_F -> 1611
-Node next -> 7 - tile - 7445 - tile_F -> 1631
-Node next -> 5 - tile - 7446 - tile_F -> 1631
-Node next -> 7 - tile - 7546 - tile_F -> 1651
-Node next -> 5 - tile - 7547 - tile_F -> 1651
-Node next -> 5 - tile - 7548 - tile_F -> 1651
-Node next -> 5 - tile - 7549 - tile_F -> 1651
-Node next -> 5 - tile - 7550 - tile_F -> 1651
-Node next -> 5 - tile - 7551 - tile_F -> 1651
-Node next -> 5 - tile - 7552 - tile_F -> 1651
-Node next -> 7 - tile - 7652 - tile_F -> 1671
-Node next -> 4 - tile - 7651 - tile_F -> 1691
-Node next -> 4 - tile - 7650 - tile_F -> 1711
-Node next -> 4 - tile - 7649 - tile_F -> 1731
-Node next -> 4 - tile - 7648 - tile_F -> 1751
-Node next -> 4 - tile - 7647 - tile_F -> 1771
-Node next -> 4 - tile - 7646 - tile_F -> 1791
-Node next -> 4 - tile - 7645 - tile_F -> 1811
-Node next -> 2 - tile - 7545 - tile_F -> 1811
-Next best is parent - 7
- No suitable node found...
-Node next -> 7 - tile - 7745 - tile_F -> 1831
-Node next -> 5 - tile - 7746 - tile_F -> 1831
-Node next -> 5 - tile - 7747 - tile_F -> 1831
-Node next -> 5 - tile - 7748 - tile_F -> 1831
-Node next -> 5 - tile - 7749 - tile_F -> 1831
-Node next -> 5 - tile - 7750 - tile_F -> 1831
-Node next -> 5 - tile - 7751 - tile_F -> 1831
-Node next -> 5 - tile - 7752 - tile_F -> 1831
-Node next -> 7 - tile - 7852 - tile_F -> 1851
-Node next -> 4 - tile - 7851 - tile_F -> 1871
-Node next -> 4 - tile - 7850 - tile_F -> 1891
-Node next -> 4 - tile - 7849 - tile_F -> 1911
-Node next -> 4 - tile - 7848 - tile_F -> 1931
-Node next -> 4 - tile - 7847 - tile_F -> 1951
-Node next -> 4 - tile - 7846 - tile_F -> 1971
-Node next -> 4 - tile - 7845 - tile_F -> 1991
-Next best is parent - 5
- No suitable node found...
-Next best is parent - 5
- No suitable node found...
-Next best is parent - 5
- No suitable node found...
-Node next -> 8 - tile - 7949 - tile_F -> 1952
-Node next -> 7 - tile - 8049 - tile_F -> 1972
-Node next -> 7 - tile - 8149 - tile_F -> 1992
-Node next -> 7 - tile - 8249 - tile_F -> 2012
-Node next -> 4 - tile - 8248 - tile_F -> 2032
-Node next -> 4 - tile - 8247 - tile_F -> 2052
-Node next -> 4 - tile - 8246 - tile_F -> 2072
-Node next -> 4 - tile - 8245 - tile_F -> 2092
-Node next -> 4 - tile - 8244 - tile_F -> 2112
-Node next -> 4 - tile - 8243 - tile_F -> 2132
-Node next -> 4 - tile - 8242 - tile_F -> 2152
-Node next -> 4 - tile - 8241 - tile_F -> 2172
-Node next -> 4 - tile - 8240 - tile_F -> 2192
-Node next -> 4 - tile - 8239 - tile_F -> 2212
-Node next -> 4 - tile - 8238 - tile_F -> 2232
-Node next -> 2 - tile - 8138 - tile_F -> 2232
-Node next -> 2 - tile - 8038 - tile_F -> 2232
-Node next -> 2 - tile - 7938 - tile_F -> 2232
-Node next -> 4 - tile - 7937 - tile_F -> 2252
-Node next -> 4 - tile - 7936 - tile_F -> 2272
-Node next -> 4 - tile - 7935 - tile_F -> 2292
-Node next -> 2 - tile - 7835 - tile_F -> 2292
-Node next -> 2 - tile - 7735 - tile_F -> 2292
-Node next -> 2 - tile - 7635 - tile_F -> 2292
-Node next -> 2 - tile - 7535 - tile_F -> 2292
-Node next -> 2 - tile - 7435 - tile_F -> 2292
-Node next -> 2 - tile - 7335 - tile_F -> 2292
-Node next -> 2 - tile - 7235 - tile_F -> 2292
-Node next -> 2 - tile - 7135 - tile_F -> 2292
-Node next -> 2 - tile - 7035 - tile_F -> 2292
-Node next -> 2 - tile - 6935 - tile_F -> 2292
-Node next -> 2 - tile - 6835 - tile_F -> 2292
-Node next -> 2 - tile - 6735 - tile_F -> 2292
-Node next -> 2 - tile - 6635 - tile_F -> 2292
-Node next -> 2 - tile - 6535 - tile_F -> 2292
-Node next -> 2 - tile - 6435 - tile_F -> 2292
-Node next -> 2 - tile - 6335 - tile_F -> 2292
-Node next -> 2 - tile - 6235 - tile_F -> 2292
-Node next -> 2 - tile - 6135 - tile_F -> 2292
-Node next -> 2 - tile - 6035 - tile_F -> 2292
-Node next -> 2 - tile - 5935 - tile_F -> 2292
-Node next -> 2 - tile - 5835 - tile_F -> 2292
-Node next -> 2 - tile - 5735 - tile_F -> 2292
-Node next -> 2 - tile - 5635 - tile_F -> 2292
-Node next -> 2 - tile - 5535 - tile_F -> 2292
-Node next -> 2 - tile - 5435 - tile_F -> 2292
-Node next -> 2 - tile - 5335 - tile_F -> 2292
-Node next -> 2 - tile - 5235 - tile_F -> 2292
-Node next -> 2 - tile - 5135 - tile_F -> 2292
-Node next -> 2 - tile - 5035 - tile_F -> 2292
-Node next -> 2 - tile - 4935 - tile_F -> 2292
-Node next -> 2 - tile - 4835 - tile_F -> 2292
-Node next -> 2 - tile - 4735 - tile_F -> 2292
-Node next -> 2 - tile - 4635 - tile_F -> 2292
-Node next -> 2 - tile - 4535 - tile_F -> 2292
-Node next -> 5 - tile - 4536 - tile_F -> 2292
-Node next -> 5 - tile - 4537 - tile_F -> 2292
-Node next -> 7 - tile - 4637 - tile_F -> 2312
-Node next -> 4 - tile - 4636 - tile_F -> 2332
-Node next -> 7 - tile - 4736 - tile_F -> 2352
-Node next -> 5 - tile - 4737 - tile_F -> 2352
-Node next -> 7 - tile - 4837 - tile_F -> 2372
-Node next -> 5 - tile - 4838 - tile_F -> 2372
-Node next -> 5 - tile - 4839 - tile_F -> 2372
-Node next -> 5 - tile - 4840 - tile_F -> 2372
-Node next -> 5 - tile - 4841 - tile_F -> 2372
-Node next -> 5 - tile - 4842 - tile_F -> 2372
-Node next -> 5 - tile - 4843 - tile_F -> 2372
-Node next -> 5 - tile - 4844 - tile_F -> 2372
-Node next -> 5 - tile - 4845 - tile_F -> 2372
-Node next -> 5 - tile - 4846 - tile_F -> 2372
-Next best is parent - 4
- No suitable node found...
-Next best is parent - 4
- No suitable node found...
-Next best is parent - 4
- No suitable node found...
-Next best is parent - 4
- No suitable node found...
-Next best is parent - 4
- No suitable node found...
-Next best is parent - 4
- No suitable node found...
-Next best is parent - 4
- No suitable node found...
-Next best is parent - 4
- No suitable node found...
-Next best is parent - 4
- No suitable node found...
-Next best is parent - 4
- No suitable node found...
-Next best is parent - 4
- No suitable node found...
-Next best is parent - 4
- No suitable node found...
-Next best is parent - 4
- No suitable node found...
-Next best is parent - 4
- No suitable node found...
-Next best is parent - 4
- No suitable node found...
-Next best is parent - 4
- No suitable node found...
-Next best is parent - 4
- No suitable node found...
-Next best is parent - 4
- No suitable node found...
-Next best is parent - 4
- No suitable node found...
-Next best is parent - 4
- No suitable node found...
-Next best is parent - 4
- No suitable node found...
-Next best is parent - 4
- No suitable node found...
-Next best is parent - 4
- No suitable node found...
-Next best is parent - 4
- No suitable node found...
-Next best is parent - 4
- No suitable node found...
-Next best is parent - 4
- No suitable node found...
-Next best is parent - 4
- No suitable node found...
-Next best is parent - 4
- No suitable node found...
-Node next -> 6 - tile - 4937 - tile_F -> 2413
-Node next -> 4 - tile - 4936 - tile_F -> 2433
-Node next -> 2 - tile - 4836 - tile_F -> 2433
-Next best is parent - 7
- No suitable node found...
-Node next -> 7 - tile - 5036 - tile_F -> 2453
-Node next -> 5 - tile - 5037 - tile_F -> 2453
-Node next -> 7 - tile - 5137 - tile_F -> 2473
-Node next -> 4 - tile - 5136 - tile_F -> 2493
-Next best is parent - 5
- No suitable node found...
-Next best is parent - 2
- No suitable node found...
-Next best is parent - 4
- No suitable node found...
-Next best is parent - 2
- No suitable node found...
-Next best is parent - 5
- No suitable node found...
-Next best is parent - 3
- No suitable node found...
-Next best is parent - 4
- No suitable node found...
-Next best is parent - 2
- No suitable node found...
-Next best is parent - 5
- No suitable node found...
-Next best is parent - 2
- No suitable node found...
-Next best is parent - 4
- No suitable node found...
-Next best is parent - 2
- No suitable node found...
-Next best is parent - 5
- No suitable node found...
-Next best is parent - 3
- No suitable node found...
-Next best is parent - 4
- No suitable node found...
-Next best is parent - 2
- No suitable node found...
-Next best is parent - 4
- No suitable node found...
-Next best is parent - 2
- No suitable node found...
-Next best is parent - 5
- No suitable node found...
-Next best is parent - 3
- No suitable node found...
-Next best is parent - 4
- No suitable node found...
-Next best is parent - 2
- No suitable node found...
-Next best is parent - 4
- No suitable node found...
-Next best is parent - 2
- No suitable node found...
-Next best is parent - 5
- No suitable node found...
-Next best is parent - 3
- No suitable node found...
-Next best is parent - 4
- No suitable node found...
-Next best is parent - 2
- No suitable node found...
-Next best is parent - 4
- No suitable node found...
-Next best is parent - 2
- No suitable node found...
-Next best is parent - 5
- No suitable node found...
-Next best is parent - 3
- No suitable node found...
-Next best is parent - 4
- No suitable node found...
-Next best is parent - 2
- No suitable node found...
-Next best is parent - 4
- No suitable node found...
-Next best is parent - 7
- No suitable node found...
-Next best is parent - 5
- No suitable node found...
-Next best is parent - 3
- No suitable node found...
-Next best is parent - 4
- No suitable node found...
-Next best is parent - 2
- No suitable node found...
-Next best is parent - 4
- No suitable node found...
-Next best is parent - 2
- No suitable node found...
-Next best is parent - 5
- No suitable node found...
-Next best is parent - 3
- No suitable node found...
-Next best is parent - 4
- No suitable node found...
-Next best is parent - 2
- No suitable node found...
-Next best is parent - 4
- No suitable node found...
-Next best is parent - 2
- No suitable node found...
-Next best is parent - 5
- No suitable node found...
-Next best is parent - 4
- No suitable node found...
-Next best is parent - 4
- No suitable node found...
-Next best is parent - 4
- No suitable node found...
-Next best is parent - 4
- No suitable node found...
-Next best is parent - 4
- No suitable node found...
-Next best is parent - 4
- No suitable node found...
-Next best is parent - 2
- No suitable node found...
-Next best is parent - 4
- No suitable node found...
-Next best is parent - 4
- No suitable node found...
-Next best is parent - 4
- No suitable node found...
-Next best is parent - 4
- No suitable node found...
-Next best is parent - 4
- No suitable node found...
-Next best is parent - 2
- No suitable node found...
-Next best is parent - 4
- No suitable node found...
-Next best is parent - 4
- No suitable node found...
-Next best is parent - 4
- No suitable node found...
-Next best is parent - 4
- No suitable node found...
-Next best is parent - 4
- No suitable node found...
-Next best is parent - 2
- No suitable node found...
-Next best is parent - 4
- No suitable node found...
-Next best is parent - 2
- No suitable node found...
-Next best is parent - 4
- No suitable node found...
-Next best is parent - 4
- No suitable node found...
-Next best is parent - 4
- No suitable node found...
-Next best is parent - 2
- No suitable node found...
-Next best is parent - 4
- No suitable node found...
-Next best is parent - 2
- No suitable node found...
-Next best is parent - 5
- No suitable node found...
-Next best is parent - 4
- No suitable node found...
-Next best is parent - 4
- No suitable node found...
-Next best is parent - 2
- No suitable node found...
-Next best is parent - 4
- No suitable node found...
-Next best is parent - 2
- No suitable node found...
-Next best is parent - 5
- No suitable node found...
-Next best is parent - 2
- No suitable node found...
-Next best is parent - 4
- No suitable node found...
-Next best is parent - 2
- No suitable node found...
-Next best is parent - 4
- No suitable node found...
-Next best is parent - 2
- No suitable node found...
-Next best is parent - 5
- No suitable node found...
-Next best is parent - 2
- No suitable node found...
-Next best is parent - 4
- No suitable node found...
-Next best is parent - 2
- No suitable node found...
-Next best is parent - 4
- No suitable node found...
-Next best is parent - 2
- No suitable node found...
-Next best is parent - 5
- No suitable node found...
-Next best is parent - 2
- No suitable node found...
-Next best is parent - 4
- No suitable node found...
-Next best is parent - 4
- No suitable node found...
-Next best is parent - 4
- No suitable node found...
-Next best is parent - 2
- No suitable node found...
-Next best is parent - 5
- No suitable node found...
-Next best is parent - 2
- No suitable node found...
-Next best is parent - 4
- No suitable node found...
-Next best is parent - 4
- No suitable node found...
-Node next -> 4 - tile - 4534 - tile_F -> 2312
-Node next -> 2 - tile - 4434 - tile_F -> 2312
-Node next -> 2 - tile - 4334 - tile_F -> 2312
-Node next -> 2 - tile - 4234 - tile_F -> 2312
-Node next -> 2 - tile - 4134 - tile_F -> 2312
-Node next -> 2 - tile - 4034 - tile_F -> 2312
-Node next -> 2 - tile - 3934 - tile_F -> 2312
-Node next -> 2 - tile - 3834 - tile_F -> 2312
-Node next -> 2 - tile - 3734 - tile_F -> 2312
-Node next -> 2 - tile - 3634 - tile_F -> 2312
-Node next -> 2 - tile - 3534 - tile_F -> 2312
-Node next -> 2 - tile - 3434 - tile_F -> 2312
-Node next -> 2 - tile - 3334 - tile_F -> 2312
-Node next -> 2 - tile - 3234 - tile_F -> 2312
-Node next -> 2 - tile - 3134 - tile_F -> 2312
-Node next -> 2 - tile - 3034 - tile_F -> 2312
-Node next -> 2 - tile - 2934 - tile_F -> 2312
-Node next -> 5 - tile - 2935 - tile_F -> 2312
-Node next -> 5 - tile - 2936 - tile_F -> 2312
-Node next -> 2 - tile - 2836 - tile_F -> 2312
-Node next -> 2 - tile - 2736 - tile_F -> 2312
-Node next -> 2 - tile - 2636 - tile_F -> 2312
-Node next -> 5 - tile - 2637 - tile_F -> 2312
-Node next -> 5 - tile - 2638 - tile_F -> 2312
-Node next -> 5 - tile - 2639 - tile_F -> 2312
-Node next -> 5 - tile - 2640 - tile_F -> 2312
-Node next -> 2 - tile - 2540 - tile_F -> 2312
-Node next -> 2 - tile - 2440 - tile_F -> 2312
-Node next -> 2 - tile - 2340 - tile_F -> 2312
-Node next -> 2 - tile - 2240 - tile_F -> 2312
-Node next -> 2 - tile - 2140 - tile_F -> 2312
-Node next -> 2 - tile - 2040 - tile_F -> 2312
-Node next -> 2 - tile - 1940 - tile_F -> 2312
-Node next -> 2 - tile - 1840 - tile_F -> 2312
-Node next -> 2 - tile - 1740 - tile_F -> 2312
-Node next -> 2 - tile - 1640 - tile_F -> 2332
-Node next -> 2 - tile - 1540 - tile_F -> 2352
-Node next -> 2 - tile - 1440 - tile_F -> 2372
-Node next -> 2 - tile - 1340 - tile_F -> 2392
-Node next -> 2 - tile - 1240 - tile_F -> 2412
-Node next -> 2 - tile - 1140 - tile_F -> 2432
-Node next -> 2 - tile - 1040 - tile_F -> 2452
-Node next -> 2 - tile - 940 - tile_F -> 2472
-Node next -> 5 - tile - 941 - tile_F -> 2472
-Node next -> 5 - tile - 942 - tile_F -> 2472
-Node next -> 5 - tile - 943 - tile_F -> 2472
-Node next -> 5 - tile - 944 - tile_F -> 2472
-Node next -> 5 - tile - 945 - tile_F -> 2472
-Node next -> 5 - tile - 946 - tile_F -> 2472
-Node next -> 5 - tile - 947 - tile_F -> 2472
-Node next -> 5 - tile - 948 - tile_F -> 2472
-Node next -> 5 - tile - 949 - tile_F -> 2472
-Node next -> 5 - tile - 950 - tile_F -> 2472
-Node next -> 5 - tile - 951 - tile_F -> 2472
-Node next -> 5 - tile - 952 - tile_F -> 2472
-Node next -> 5 - tile - 953 - tile_F -> 2472
-Node next -> 5 - tile - 954 - tile_F -> 2472
-Node next -> 5 - tile - 955 - tile_F -> 2472
-Node next -> 5 - tile - 956 - tile_F -> 2492
-Node next -> 5 - tile - 957 - tile_F -> 2512
-Node next -> 5 - tile - 958 - tile_F -> 2532
-Node next -> 5 - tile - 959 - tile_F -> 2552
-Node next -> 5 - tile - 960 - tile_F -> 2572
-Node next -> 5 - tile - 961 - tile_F -> 2592
-Node next -> 5 - tile - 962 - tile_F -> 2612
-Node next -> 5 - tile - 963 - tile_F -> 2632
-Node next -> 5 - tile - 964 - tile_F -> 2652
-Node next -> 7 - tile - 1064 - tile_F -> 2652
-Node next -> 7 - tile - 1164 - tile_F -> 2652
-Node next -> 7 - tile - 1264 - tile_F -> 2652
-Node next -> 5 - tile - 1265 - tile_F -> 2672
-Node next -> 2 - tile - 1165 - tile_F -> 2692
-Node next -> 2 - tile - 1065 - tile_F -> 2712
-Node next -> 2 - tile - 965 - tile_F -> 2732
-Node next -> 2 - tile - 865 - tile_F -> 2752
-Node next -> 4 - tile - 864 - tile_F -> 2752
-Node next -> 2 - tile - 764 - tile_F -> 2772
-Node next -> 2 - tile - 664 - tile_F -> 2792
-Node next -> 5 - tile - 665 - tile_F -> 2812
-Node next -> 7 - tile - 765 - tile_F -> 2812
-Node next -> 5 - tile - 766 - tile_F -> 2832
-Node next -> 7 - tile - 866 - tile_F -> 2832
-Node next -> 7 - tile - 966 - tile_F -> 2832
-Node next -> 7 - tile - 1066 - tile_F -> 2832
-Node next -> 7 - tile - 1166 - tile_F -> 2832
-Node next -> 7 - tile - 1266 - tile_F -> 2832
-Node next -> 5 - tile - 1267 - tile_F -> 2852
-Node next -> 2 - tile - 1167 - tile_F -> 2872
-Node next -> 2 - tile - 1067 - tile_F -> 2892
-Node next -> 2 - tile - 967 - tile_F -> 2912
-Node next -> 2 - tile - 867 - tile_F -> 2932
-Node next -> 2 - tile - 767 - tile_F -> 2952
-Node next -> 2 - tile - 667 - tile_F -> 2972
-Node next -> 4 - tile - 666 - tile_F -> 2972
-Next best is parent - 5
- No suitable node found...
-Node next -> 5 - tile - 668 - tile_F -> 2992
-Node next -> 7 - tile - 768 - tile_F -> 2992
-Node next -> 7 - tile - 868 - tile_F -> 2992
-Node next -> 7 - tile - 968 - tile_F -> 2992
-Node next -> 7 - tile - 1068 - tile_F -> 2992
-Node next -> 7 - tile - 1168 - tile_F -> 2992
-Node next -> 7 - tile - 1268 - tile_F -> 2992
-Node next -> 7 - tile - 1368 - tile_F -> 2992
-Node next -> 7 - tile - 1468 - tile_F -> 2992
-Node next -> 7 - tile - 1568 - tile_F -> 2992
-Node next -> 7 - tile - 1668 - tile_F -> 2992
-Node next -> 7 - tile - 1768 - tile_F -> 2992
-Node next -> 4 - tile - 1767 - tile_F -> 2992
-Node next -> 4 - tile - 1766 - tile_F -> 2992
-Node next -> 4 - tile - 1765 - tile_F -> 2992
-Node next -> 4 - tile - 1764 - tile_F -> 2992
-Node next -> 4 - tile - 1763 - tile_F -> 2992
-Node next -> 4 - tile - 1762 - tile_F -> 2992
-Node next -> 4 - tile - 1761 - tile_F -> 2992
-Node next -> 4 - tile - 1760 - tile_F -> 2992
-Node next -> 4 - tile - 1759 - tile_F -> 2992
-Node next -> 4 - tile - 1758 - tile_F -> 2992
-Node next -> 4 - tile - 1757 - tile_F -> 2992
-Node next -> 4 - tile - 1756 - tile_F -> 2992
-Node next -> 4 - tile - 1755 - tile_F -> 2992
- Path end found! 
+Developer demo enabled.
+Unable to process event - 1201 - UID - 3
+Unable to process event - 1201 - UID - 3
+Unable to process event - 1201 - UID - 3
+Unable to process event - 1201 - UID - 3
+Unable to process event - 1201 - UID - 3
+Unable to process event - 1201 - UID - 3
+Unable to process event - 1201 - UID - 3
+Unable to process event - 1201 - UID - 3
+Unable to process event - 1201 - UID - 3
+Unable to process event - 1201 - UID - 3
+Unable to process event - 1201 - UID - 3
+Unable to process event - 1201 - UID - 3
+Unable to process event - 1201 - UID - 3
+Unable to process event - 1201 - UID - 3
+Unable to process event - 1201 - UID - 3
+Unable to process event - 1201 - UID - 3
+Unable to process event - 1201 - UID - 3
+Unable to process event - 1201 - UID - 3
+Unable to process event - 1201 - UID - 3
+Unable to process event - 1201 - UID - 3
+Unable to process event - 1201 - UID - 3
+Unable to process event - 1201 - UID - 3
+Unable to process event - 1201 - UID - 3
+Unable to process event - 1201 - UID - 3
+Unable to process event - 1201 - UID - 3
+Unable to process event - 1201 - UID - 3
+Unable to process event - 1201 - UID - 3
+Unable to process event - 1201 - UID - 3
+Unable to process event - 1201 - UID - 3
+Unable to process event - 1201 - UID - 3
+Unable to process event - 1201 - UID - 3
+Unable to process event - 1201 - UID - 3
+Unable to process event - 1201 - UID - 3
+Unable to process event - 1201 - UID - 3
+Unable to process event - 1201 - UID - 3
+Unable to process event - 1201 - UID - 3
+Unable to process event - 1201 - UID - 3
+Unable to process event - 1201 - UID - 3
+Unable to process event - 1201 - UID - 3
+Unable to process event - 1201 - UID - 3
+Unable to process event - 1201 - UID - 3
+Unable to process event - 1201 - UID - 3
+Unable to process event - 1201 - UID - 3
+Unable to process event - 1202 - UID - 3
+Unable to process event - 1201 - UID - 3
+Unable to process event - 1201 - UID - 3
+Unable to process event - 1201 - UID - 3
+Unable to process event - 1201 - UID - 3
+Unable to process event - 1201 - UID - 3
+Unable to process event - 1201 - UID - 3
+Unable to process event - 1201 - UID - 3
+Unable to process event - 1201 - UID - 3
+Unable to process event - 1201 - UID - 3
+Unable to process event - 1202 - UID - 3
+Unable to process event - 1201 - UID - 3
+Unable to process event - 1201 - UID - 3
+Unable to process event - 1201 - UID - 3
+Unable to process event - 1201 - UID - 3
  
 # ---------------------------------------------- #
  
 Font    count -> 1
 Music   count -> 1
-Sound   count -> 11
-Texture count -> 227
-Item    count -> 56
+Sound   count -> 13
+Texture count -> 222
+Item    count -> 57
 Effect  count -> 46
  
 # ---------------------------------------------- #
