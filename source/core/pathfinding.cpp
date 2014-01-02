@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2011-2013 Paul Wortmann, PhysHex Games, www.physhexgames.co.nr
+ * Copyright (C) 2011-2014 Paul Wortmann, PhysHex Games, www.physhexgames.co.nr
  * This file is part of "Frost And Flame"
  *
  * "Frost And Flame" is free software: you can redistribute it and/or modify
@@ -106,7 +106,7 @@ path_type*  map_path_find_internal(fmx_map_type *fmx_map_pointer, path_node_type
     if (path_node_pointer->tile == tile_end)
     {
         fmx_map_pointer->data.path_end_found = true;
-        //fmx_map_pointer->path_data[path_node_pointer->tile].tile_data = TILE_PATH;
+        fmx_map_pointer->path_data[path_node_pointer->tile].tile_data = TILE_PATH;
         game.core.log.file_write(" Path end found! ");
     }
     if (!fmx_map_pointer->data.path_end_found)
