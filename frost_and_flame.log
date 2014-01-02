@@ -21,50 +21,13 @@ Starting Game...
 # ---------------------------------------------- #
  
 Developer demo enabled.
--> map_gen_room_add_exits() called 
-Node next -> 4 - tile - 5049 - tile_F -> 260
-Node next -> 4 - tile - 5048 - tile_F -> 260
-Node next -> 4 - tile - 5047 - tile_F -> 260
-Node next -> 7 - tile - 5147 - tile_F -> 260
-Node next -> 7 - tile - 5247 - tile_F -> 260
-Node next -> 7 - tile - 5347 - tile_F -> 260
-Node next -> 5 - tile - 5348 - tile_F -> 280
-Node next -> 2 - tile - 5248 - tile_F -> 300
-Node next -> 2 - tile - 5148 - tile_F -> 320
-Node next -> 5 - tile - 5149 - tile_F -> 340
-Node next -> 7 - tile - 5249 - tile_F -> 340
-Node next -> 7 - tile - 5349 - tile_F -> 340
-Node next -> 5 - tile - 5350 - tile_F -> 360
-Node next -> 7 - tile - 5450 - tile_F -> 360
-Node next -> 7 - tile - 5550 - tile_F -> 360
-Node next -> 7 - tile - 5650 - tile_F -> 360
-Node next -> 7 - tile - 5750 - tile_F -> 360
-Node next -> 7 - tile - 5850 - tile_F -> 360
-Node next -> 7 - tile - 5950 - tile_F -> 360
-Node next -> 7 - tile - 6050 - tile_F -> 360
-Node next -> 4 - tile - 6049 - tile_F -> 360
-Node next -> 4 - tile - 6048 - tile_F -> 360
-Node next -> 4 - tile - 6047 - tile_F -> 360
-Node next -> 4 - tile - 6046 - tile_F -> 360
-Node next -> 4 - tile - 6045 - tile_F -> 360
-Node next -> 4 - tile - 6044 - tile_F -> 360
-Node next -> 4 - tile - 6043 - tile_F -> 360
-Node next -> 4 - tile - 6042 - tile_F -> 360
-Node next -> 4 - tile - 6041 - tile_F -> 360
-Node next -> 4 - tile - 6040 - tile_F -> 360
-Node next -> 4 - tile - 6039 - tile_F -> 360
-Node next -> 4 - tile - 6038 - tile_F -> 360
-Node next -> 4 - tile - 6037 - tile_F -> 360
-Node next -> 4 - tile - 6036 - tile_F -> 360
-Node next -> 4 - tile - 6035 - tile_F -> 360
- Path end found! 
  
 # ---------------------------------------------- #
  
 Font    count -> 1
 Music   count -> 1
 Sound   count -> 13
-Texture count -> 224
+Texture count -> 208
 Item    count -> 56
 Effect  count -> 46
  
