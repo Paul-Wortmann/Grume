@@ -28,7 +28,7 @@
 
 extern game_class    game;
 
-void           map_gen_M1              (fmx_map_type *fmx_map_pointer, int seed)
+void map_gen_M1(fmx_map_type *fmx_map_pointer, int seed)
 {
     srand(seed);
     map_gen_M1(fmx_map_pointer);
