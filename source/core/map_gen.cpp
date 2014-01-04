@@ -578,7 +578,7 @@ void           map_gen_room_collision  (fmx_map_type *fmx_map_pointer)
 {
     for (int tile_count = 0; tile_count < fmx_map_pointer->data.number_of_tiles; tile_count++)
     {
-        fmx_map_pointer->tile_data[tile_count].collision = (fmx_map_pointer->layer[LAYER_FLOOR].tile[tile_count].tile == TILE_WALL) ? true : false;
+        fmx_map_pointer->tile_data[tile_count].collision = (fmx_map_pointer->layer[LAYER_FLOOR].tile[tile_count].tile == TILE_FLOOR) ? false : true;
     }
 };
 
