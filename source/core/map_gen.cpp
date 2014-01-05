@@ -574,7 +574,7 @@ void map_gen_room_find       (fmx_map_type *fmx_map_pointer)
     }
 };
 
-void           map_gen_room_collision  (fmx_map_type *fmx_map_pointer)
+void map_gen_room_collision  (fmx_map_type *fmx_map_pointer)
 {
     for (int tile_count = 0; tile_count < fmx_map_pointer->data.number_of_tiles; tile_count++)
     {
