@@ -31,7 +31,7 @@ extern game_class game;
 
 void  spell_class::init_spells(void)
 {
-    spell_type*      temp_spell_pointer;
+    //spell_type*      temp_spell_pointer;
     //------------------------------------------------------------------------------------------------------------
 };
 

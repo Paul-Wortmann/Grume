@@ -50,8 +50,8 @@ void map_path_reset (fmx_map_type *fmx_map_pointer)
 
 int map_tile_calc (fmx_map_type *fmx_map_pointer, int tile_current, int tile_parent, int tile_end)
 {
-    int p_1_x = 0;
-    int p_1_y = 0;
+    //int p_1_x = 0;
+    //int p_1_y = 0;
     int  return_value  = -1;
     if ((tile_current > -1) && (tile_current < fmx_map_pointer->data.number_of_tiles) && !fmx_map_pointer->path_data[tile_current].closed_list)
     {

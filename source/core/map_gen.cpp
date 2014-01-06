@@ -129,8 +129,8 @@ bool           map_gen_room            (fmx_map_type *fmx_map_pointer, room_data
     if (room.position.y <= 0) room.position.y = random(fmx_map_pointer->data.map_height-((ROOM_MAX_Y+2)*2)+(ROOM_MAX_Y+2));
     if (room.size.x <= 0) room.size.x = random_int(ROOM_MIN_X,ROOM_MAX_X);
     if (room.size.y <= 0) room.size.y = random_int(ROOM_MIN_Y,ROOM_MAX_Y);
-    int temp_pos_x = room.position.x - (room.size.x/2)-1;
-    int temp_pos_y = room.position.y - (room.size.y/2)-1;
+    //int temp_pos_x = room.position.x - (room.size.x/2)-1;
+    //int temp_pos_y = room.position.y - (room.size.y/2)-1;
     int temp_tile = 0;
     for (int count_x = 0; count_x < room.size.x+2; count_x++)
     {
@@ -667,9 +667,9 @@ game.core.log.file_write("-> map_gen_room_add_exits() called ");
 
     int room_e        = 0;
     int room_s        = 1;
+    /*
     int distance_temp = 0;
     path_type* path_data;
-    /*
     for (int room_1 = 0; room_1 < fmx_map_pointer->data.number_of_rooms; room_1++)
     {
         for (int room_2 = 0; room_2 < fmx_map_pointer->data.number_of_rooms; room_2++)
@@ -703,14 +703,15 @@ game.core.log.file_write("-> distance found - ",distance_temp);
     {
         for (int tile_count_y = 0; tile_count_y < fmx_map_pointer->data.map_height; tile_count_y++)
         {
-            int tile_count_temp = (tile_count_y * fmx_map_pointer->data.map_width) + tile_count_x;
+            //int tile_count_temp = (tile_count_y * fmx_map_pointer->data.map_width) + tile_count_x;
             //fmx_map_pointer->layer[LAYER_FLOOR].tile[tile_count_temp].tile          = TILE_FLOOR;
             //fmx_map_pointer->layer[LAYER_FLOOR].tile[tile_count_temp].collision     = false;
         }
     }
         fmx_map_pointer->layer[LAYER_FLOOR].tile[(fmx_map_pointer->room[room_e].position.x + (fmx_map_pointer->room[room_e].position.y * fmx_map_pointer->data.map_width))].tile = TILE_EXIT;
         fmx_map_pointer->layer[LAYER_FLOOR].tile[(fmx_map_pointer->room[room_s].position.x + (fmx_map_pointer->room[room_s].position.y * fmx_map_pointer->data.map_width))].tile = TILE_EXIT;
-path_data = map_path_find(fmx_map_pointer,fmx_map_pointer->room[room_e].position.x,fmx_map_pointer->room[room_e].position.y,fmx_map_pointer->room[room_s].position.x,fmx_map_pointer->room[room_s].position.y);
+//path_data = map_path_find(fmx_map_pointer,fmx_map_pointer->room[room_e].position.x,fmx_map_pointer->room[room_e].position.y,fmx_map_pointer->room[room_s].position.x,fmx_map_pointer->room[room_s].position.y);
+map_path_find(fmx_map_pointer,fmx_map_pointer->room[room_e].position.x,fmx_map_pointer->room[room_e].position.y,fmx_map_pointer->room[room_s].position.x,fmx_map_pointer->room[room_s].position.y);
 
 };
 

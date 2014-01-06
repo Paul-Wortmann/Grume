@@ -1356,8 +1356,8 @@ void process_inventory_window(UI_form_struct *UI_form_pointer)
     game.texture_manager.load_string(UI_form_pointer->data.element[element_number].title.text,game.font_manager.root,ullint_to_string(game.player.gold),0.8f,255,255,255,255,TEXTURE_RENDER_LEFT);
     game.player.gold++;
 
-    item_type* item_pointer = new item_type;
-    item_pointer = NULL;
+    //item_type* item_pointer = new item_type;
+    //item_pointer = NULL;
     if (UI_form_pointer->data.event.id > EVENT_NONE)
     {
         switch (UI_form_pointer->data.event.id)

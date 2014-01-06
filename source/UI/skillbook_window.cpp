@@ -718,14 +718,14 @@ void setup_skillbook_window(int UID)
 
 void process_skillbook_item(UI_form_struct *UI_form_pointer,int element_number)
 {
-    item_type* item_pointer = new item_type;
-    item_pointer = NULL;
+    //item_type* item_pointer = new item_type;
+    //item_pointer = NULL;
     UI_form_struct *UI_form_pointer_AB = game.UI_manager.UI_form_get(UID_ACTIONBAR);
     if ((UI_form_pointer->data.element[element_number].type == UI_ELEMENT_ITEM) && (UI_form_pointer->data.element[element_number].value != ITEM_NONE))
     {
         bool element_found   = false;
         int  dest_UI_element = 0;
-        item_pointer = game.item_manager.add_item(UI_form_pointer->data.element[element_number].value);
+        //item_pointer = game.item_manager.add_item(UI_form_pointer->data.element[element_number].value);
         for (int element_count = UI_form_pointer_AB->data.number_of_elements; element_count > 0; element_count--)
         {
             if ((!element_found) && (UI_form_pointer_AB->data.element[element_count].type == UI_ELEMENT_ITEM) && (UI_form_pointer_AB->data.element[element_count].value == ITEM_NONE))
