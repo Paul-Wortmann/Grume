@@ -94,7 +94,7 @@ void map_gen_base(fmx_map_type *fmx_map_pointer)
     map_gen_base(fmx_map_pointer,MAP_GEN_TILES_X,MAP_GEN_TILES_Y);
 };
 
-void           map_gen                 (fmx_map_type *fmx_map_pointer, int generator_algorithm)
+void map_gen (fmx_map_type *fmx_map_pointer, int generator_algorithm)
 {
     switch (generator_algorithm)
     {
@@ -114,7 +114,7 @@ void           map_gen                 (fmx_map_type *fmx_map_pointer, int gener
     }
 };
 
-void           map_gen                 (fmx_map_type *fmx_map_pointer, int generator_algorithm, int tileset_type)
+void map_gen (fmx_map_type *fmx_map_pointer, int generator_algorithm, int tileset_type)
 {
     map_gen(fmx_map_pointer,generator_algorithm);
     game.map_2D.apply_tileset(fmx_map_pointer,tileset_type);
@@ -122,7 +122,7 @@ void           map_gen                 (fmx_map_type *fmx_map_pointer, int gener
     game.map_2D.center_on_tile(fmx_map_pointer,(fmx_map_pointer->data.number_of_tiles/2)+(fmx_map_pointer->data.map_width/2));
 };
 
-bool           map_gen_room            (fmx_map_type *fmx_map_pointer, room_data_type room, int number_of_exits)
+bool map_gen_room (fmx_map_type *fmx_map_pointer, room_data_type room, int number_of_exits)
 {
     bool return_value = true;
     if (room.position.x <= 0) room.position.x = random(fmx_map_pointer->data.map_width -((ROOM_MAX_X+2)*2)+(ROOM_MAX_X+2));
@@ -158,7 +158,7 @@ bool           map_gen_room            (fmx_map_type *fmx_map_pointer, room_data
     return (return_value);
 };
 
-int map_gen_flood_fill_tile(fmx_map_type *fmx_map_pointer, flood_fill_type *fill_data, int tile_number)
+int map_gen_flood_fill_tile (fmx_map_type *fmx_map_pointer, flood_fill_type *fill_data, int tile_number)
 {
     int return_value = 0;
     if ((fill_data[tile_number].tile_data == TILE_FLOOR) && (!fill_data[tile_number].processed))
@@ -197,7 +197,7 @@ bool map_gen_room_flood_fill (fmx_map_type *fmx_map_pointer)
     return (return_value);
 };
 
-int  map_gen_room_check_path(fmx_map_type *fmx_map_pointer, int room_1, int room_2, bool x_then_y)
+int map_gen_room_check_path (fmx_map_type *fmx_map_pointer, int room_1, int room_2, bool x_then_y)
 {
     int return_value         = 0;
     int previous_tile        = TILE_NONE;
@@ -310,7 +310,7 @@ int  map_gen_room_check_path(fmx_map_type *fmx_map_pointer, int room_1, int room
     return (return_value);
 }
 
-void  map_gen_room_path(fmx_map_type *fmx_map_pointer, int room_1, int room_2, bool x_then_y)
+void map_gen_room_path (fmx_map_type *fmx_map_pointer, int room_1, int room_2, bool x_then_y)
 {
     if (room_1 != room_2)
     {
