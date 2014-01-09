@@ -464,7 +464,7 @@ void map_gen_room_path (fmx_map_type *fmx_map_pointer, int room_1, int room_2, b
     }
 }
 
-void map_gen_room_connect    (fmx_map_type *fmx_map_pointer)
+void map_gen_room_connect (fmx_map_type *fmx_map_pointer)
 {
     if (fmx_map_pointer->data.number_of_rooms > 0)
     {
@@ -499,7 +499,7 @@ void map_gen_room_connect    (fmx_map_type *fmx_map_pointer)
     }
 };
 
-int  map_gen_room_add        (fmx_map_type *fmx_map_pointer)
+int map_gen_room_add (fmx_map_type *fmx_map_pointer)
 {
     if (fmx_map_pointer->data.number_of_rooms > 0)
     {
@@ -546,7 +546,7 @@ room_data_type map_gen_room_find_stats (fmx_map_type *fmx_map_pointer, flood_fil
     return (return_data);
 };
 
-void map_gen_room_find       (fmx_map_type *fmx_map_pointer)
+void map_gen_room_find (fmx_map_type *fmx_map_pointer)
 {
     int            room_number = -1;
     room_data_type room_data;
@@ -661,7 +661,7 @@ void map_gen_check_tiles (fmx_map_type *fmx_map_pointer)
     map_gen_room_collision(fmx_map_pointer);
 };
 
-void           map_gen_room_add_exits  (fmx_map_type *fmx_map_pointer)
+void map_gen_room_add_exits (fmx_map_type *fmx_map_pointer)
 {
 game.core.log.file_write("-> map_gen_room_add_exits() called ");
 
