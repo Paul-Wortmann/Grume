@@ -29,39 +29,39 @@
 
 extern game_class game;
 
-graphics_class::graphics_class(void)
+graphics_class::graphics_class (void)
 {
     graphics_class::resolution_x = 640;
     graphics_class::resolution_y = 480;
 };
 
-void  graphics_class::set_resolution(int x_res, int y_res)
+void graphics_class::set_resolution (int x_res, int y_res)
 {
     graphics_class::resolution_x = x_res;
     graphics_class::resolution_y = y_res;
 };
 
-int   graphics_class::get_resolution_x(void)
+int graphics_class::get_resolution_x (void)
 {
-    return(graphics_class::resolution_x);
+    return (graphics_class::resolution_x);
 };
 
-int   graphics_class::get_resolution_y(void)
+int graphics_class::get_resolution_y (void)
 {
-    return(graphics_class::resolution_y);
+    return (graphics_class::resolution_y);
 };
 
-int   graphics_class::gl_to_res(float gl_coord, int max_res)
+int   graphics_class::gl_to_res (float gl_coord, int max_res)
 {
-   return((gl_coord+1)*(max_res / 2));
+   return ((gl_coord+1)*(max_res / 2));
 }
 
-float graphics_class::res_to_gl(int  res_coord, int max_res)
+float graphics_class::res_to_gl (int res_coord, int max_res)
 {
-   return((((float) res_coord / (float) max_res) *2) -1);
+   return ((((float) res_coord / (float) max_res) *2) -1);
 }
 
-void  graphics_class::init_gl(int x_res, int y_res)
+void graphics_class::init_gl (int x_res, int y_res)
 {
     glViewport(0, 0,x_res,y_res);
     glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
@@ -126,12 +126,12 @@ void  graphics_class::init_gl(int x_res, int y_res)
     glDisable(GL_DEPTH_TEST);
 }
 
-void   graphics_class::init_gl(void)
+void graphics_class::init_gl (void)
 {
     graphics_class::init_gl(game.core.config.display_resolution_x,game.core.config.display_resolution_y);
 };
 
-bool   graphics_class::init_sdl(void)
+bool graphics_class::init_sdl (void)
 {
     bool reload_textures = false;
     if (game.core.window_pointer)
@@ -174,6 +174,6 @@ bool   graphics_class::init_sdl(void)
         return_value = false;
     }
     if (reload_textures) game.texture_manager.reload_textures();
-    return(return_value);
+    return (return_value);
 };
 
