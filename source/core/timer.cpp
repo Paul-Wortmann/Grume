@@ -37,7 +37,7 @@ timer_class::~timer_class()
 
 void timer_class::start()
 {
-	if(timer_class::running == false)
+	if (!timer_class::running)
 	{
 		timer_class::running = true;
 		timer_class::startticks = SDL_GetTicks();
@@ -46,7 +46,7 @@ void timer_class::start()
 
 void timer_class::stop()
 {
-	if(timer_class::running == true)
+	if (timer_class::running)
 	{
 		timer_class::running = false;
 	}
@@ -54,7 +54,7 @@ void timer_class::stop()
 
 int timer_class::getticks()
 {
-    if (timer_class::running == true) return(SDL_GetTicks() - timer_class::startticks);
+    if (timer_class::running) return(SDL_GetTicks() - timer_class::startticks);
     else return(0);
 }
 
