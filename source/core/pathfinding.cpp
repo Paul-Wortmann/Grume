@@ -66,7 +66,7 @@ int map_tile_calc (fmx_map_type *fmx_map_pointer, int tile_current, int tile_par
             int p_3_x = tile_end     % fmx_map_pointer->data.map_width;
             int p_3_y = tile_end     / fmx_map_pointer->data.map_width;
             fmx_map_pointer->path_data[tile_current].open_list   = true;
-            fmx_map_pointer->path_data[tile_current].G           = (p_2_G + ((p_1_x == p_2_x || p_1_y == p_2_y) ? 10 : 21));
+            fmx_map_pointer->path_data[tile_current].G           = (p_2_G + ((p_1_x == p_2_x || p_1_y == p_2_y) ? 10 : 14));
             fmx_map_pointer->path_data[tile_current].H           = ((abs(p_1_x - p_3_x)+abs(p_1_y - p_3_y))*10);
             fmx_map_pointer->path_data[tile_current].F           = fmx_map_pointer->path_data[tile_current].G + fmx_map_pointer->path_data[tile_current].H;
             return_value = fmx_map_pointer->path_data[tile_current].F;
@@ -324,4 +324,21 @@ path_type*  map_path_find_internal(fmx_map_type *fmx_map_pointer, path_node_type
         }
     }
     return (return_path);
+};
+
+int path_find_heuristic_manhattan(int tile_1_x, int tile_1_y, int tile_2_x, int tile_2_y)
+{
+    return((abs(tile_1_x - tile_2_x)+abs(tile_1_y - tile_2_y)));
+};
+
+int path_find_heuristic_chebyshev(int tile_1_x, int tile_1_y, int tile_2_x, int tile_2_y)
+{
+    int return_value = 0;
+
+    return (return_value);
+};
+
+int path_find_heuristic_euclidean(int tile_1_x, int tile_1_y, int tile_2_x, int tile_2_y)
+{
+    return(sqrt(((abs(tile_1_x - tile_2_x)) * (abs(tile_1_x - tile_2_x))) + ((abs(tile_1_y - tile_2_y)) * (abs(tile_1_y - tile_2_y)))));
 };
