@@ -51,9 +51,9 @@ path_type*  map_path_find(fmx_map_type *fmx_map_pointer, int position_1_x, int p
 path_type*  map_path_find(fmx_map_type *fmx_map_pointer, int tile_start, int tile_end);
 path_type*  map_path_find_internal(fmx_map_type *fmx_map_pointer, path_node_type* path_node_pointer, int tile_start, int tile_end);
 
-int path_find_heuristic_manhattan(int tile_1_x, int tile_1_y, int tile_2_x, int tile_2_y);
-int path_find_heuristic_chebyshev(int tile_1_x, int tile_1_y, int tile_2_x, int tile_2_y);
-int path_find_heuristic_euclidean(int tile_1_x, int tile_1_y, int tile_2_x, int tile_2_y);
+int map_path_find_heuristic_manhattan(int tile_1_x, int tile_1_y, int tile_2_x, int tile_2_y);
+int map_path_find_heuristic_chebyshev(int tile_1_x, int tile_1_y, int tile_2_x, int tile_2_y);
+int map_path_find_heuristic_euclidean(int tile_1_x, int tile_1_y, int tile_2_x, int tile_2_y);
 
 #endif //PATHFINDING_H
 

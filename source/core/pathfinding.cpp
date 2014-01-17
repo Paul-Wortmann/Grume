@@ -326,19 +326,19 @@ path_type*  map_path_find_internal(fmx_map_type *fmx_map_pointer, path_node_type
     return (return_path);
 };
 
-int path_find_heuristic_manhattan(int tile_1_x, int tile_1_y, int tile_2_x, int tile_2_y)
+int map_path_find_heuristic_manhattan(int tile_1_x, int tile_1_y, int tile_2_x, int tile_2_y)
 {
     return((abs(tile_1_x - tile_2_x)+abs(tile_1_y - tile_2_y)));
 };
 
-int path_find_heuristic_chebyshev(int tile_1_x, int tile_1_y, int tile_2_x, int tile_2_y)
+int map_path_find_heuristic_chebyshev(int tile_1_x, int tile_1_y, int tile_2_x, int tile_2_y)
 {
     int return_value = 0;
 
     return (return_value);
 };
 
-int path_find_heuristic_euclidean(int tile_1_x, int tile_1_y, int tile_2_x, int tile_2_y)
+int map_path_find_heuristic_euclidean(int tile_1_x, int tile_1_y, int tile_2_x, int tile_2_y)
 {
     return(sqrt(((abs(tile_1_x - tile_2_x)) * (abs(tile_1_x - tile_2_x))) + ((abs(tile_1_y - tile_2_y)) * (abs(tile_1_y - tile_2_y)))));
 };
