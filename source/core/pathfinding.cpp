@@ -333,9 +333,7 @@ int map_path_find_heuristic_manhattan(int tile_1_x, int tile_1_y, int tile_2_x, 
 
 int map_path_find_heuristic_chebyshev(int tile_1_x, int tile_1_y, int tile_2_x, int tile_2_y)
 {
-    int return_value = 0;
-
-    return (return_value);
+    return(std::max(abs(tile_1_x - tile_2_x),abs(tile_1_y - tile_2_y)));
 };
 
 int map_path_find_heuristic_euclidean(int tile_1_x, int tile_1_y, int tile_2_x, int tile_2_y)
