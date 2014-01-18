@@ -120,13 +120,13 @@ Set (FROST_AND_FLAME_SOURCES
 	./source/core/map_gen_CA.cpp
 	./source/core/map_gen_RC.cpp
 	./source/core/map_gen_M1.cpp
+	./source/core/math.cpp
 	./source/core/misc.cpp
 	./source/core/music_manager.cpp
 	./source/core/network.cpp
 	./source/core/particles.cpp
 	./source/core/pathfinding.cpp
 	./source/core/physics.cpp
-	#./source/core/rendered_text_manager.cpp
 	./source/core/rs232.cpp
 	./source/core/savegame.cpp
 	./source/core/sound_manager.cpp
