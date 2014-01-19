@@ -31,6 +31,7 @@
 #include "graphics.hpp"
 #include "io.hpp"
 #include "log.hpp"
+#include "math.hpp"
 #include "physics.hpp"
 #include "timer.hpp"
 
@@ -62,6 +63,7 @@ class core_class
         graphics_class    graphics;
         io_class          io;
         log_class         log;
+        math_class        math;
         physics_class     physics;
         SDL_Event         event;
         timer_class       timer;
