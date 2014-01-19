@@ -2611,7 +2611,7 @@
 1375577407 /media/paul/Data_0/_git_/Frost_and_Flame/source/core/particles.hpp
 	<string>
 
-1388972994 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/core/pathfinding.cpp
+1390033080 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/core/pathfinding.cpp
 	"pathfinding.hpp"
 	"loader_fmx.hpp"
 	"map_gen.hpp"
@@ -4096,4 +4096,9 @@
 	"misc.hpp"
 
 1390032099 /media/paul/Data_0/_git_/Frost_and_Flame/source/core/math.hpp
+
+1390032171 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/core/math.cpp
+	<string>
+	"core.hpp"
+	"math.hpp"
 

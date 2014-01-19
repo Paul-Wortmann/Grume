@@ -195,6 +195,8 @@
 		<Unit filename="source/core/map_gen_M1.hpp" />
 		<Unit filename="source/core/map_gen_RC.cpp" />
 		<Unit filename="source/core/map_gen_RC.hpp" />
+		<Unit filename="source/core/math.cpp" />
+		<Unit filename="source/core/math.hpp" />
 		<Unit filename="source/core/misc.cpp" />
 		<Unit filename="source/core/misc.hpp" />
 		<Unit filename="source/core/music_manager.cpp" />
