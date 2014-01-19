@@ -2261,13 +2261,14 @@
 	"player.hpp"
 	"spells.hpp"
 
-1381561016 /media/paul/Data_0/_git_/Frost_and_Flame/source/core/core.hpp
+1390094531 /media/paul/Data_0/_git_/Frost_and_Flame/source/core/core.hpp
 	"background.hpp"
 	"config.hpp"
 	"file.hpp"
 	"graphics.hpp"
 	"io.hpp"
 	"log.hpp"
+	"math.hpp"
 	"physics.hpp"
 	"timer.hpp"
 
@@ -4093,4 +4094,6 @@
 	"map_gen.hpp"
 	"map_gen_RC.hpp"
 	"misc.hpp"
+
+1390032099 /media/paul/Data_0/_git_/Frost_and_Flame/source/core/math.hpp
 
