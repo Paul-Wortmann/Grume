@@ -340,3 +340,8 @@ int map_path_find_heuristic_euclidean(int tile_1_x, int tile_1_y, int tile_2_x, 
 {
     return(sqrt(((abs(tile_1_x - tile_2_x)) * (abs(tile_1_x - tile_2_x))) + ((abs(tile_1_y - tile_2_y)) * (abs(tile_1_y - tile_2_y)))));
 };
+
+int map_path_find_JPS(int start_tile, int end_tile)
+{
+    return (0);
+};
