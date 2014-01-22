@@ -55,6 +55,7 @@ int map_path_find_heuristic_manhattan(int tile_1_x, int tile_1_y, int tile_2_x, 
 int map_path_find_heuristic_chebyshev(int tile_1_x, int tile_1_y, int tile_2_x, int tile_2_y);
 int map_path_find_heuristic_euclidean(int tile_1_x, int tile_1_y, int tile_2_x, int tile_2_y);
 int map_path_find_JPS(int start_tile, int end_tile);
+int map_path_find_AS(int start_tile, int end_tile);
 
 #endif //PATHFINDING_H
 

@@ -345,3 +345,8 @@ int map_path_find_JPS(int start_tile, int end_tile)
 {
     return (0);
 };
+
+int map_path_find_AS(int start_tile, int end_tile)
+{
+    return (0);
+};
