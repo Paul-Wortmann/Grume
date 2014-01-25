@@ -383,8 +383,8 @@ bool texture_manager_class::load_string(texture_type *texture)
 
         if ((image_surface = TTF_RenderUTF8_Blended(texture->data.text.font->font_data,write_data,font_color)))
         {
-            texture->data.width  = ((float)image_surface->w / (float)game.core.config.display_resolution_x) * texture->data.text.text_size;
-            texture->data.height = ((float)image_surface->h / (float)game.core.config.display_resolution_y) * texture->data.text.text_size;
+            texture->data.width  = ((float)image_surface->w / (float)game.core.config.display_resolution_x) * texture->data.text.text_size * game.core.config.font_scale_x;
+            texture->data.height = ((float)image_surface->h / (float)game.core.config.display_resolution_y) * texture->data.text.text_size * game.core.config.font_scale_y;
             return_value = true;
             number_of_colors = image_surface->format->BytesPerPixel;
             if (number_of_colors == 4)
