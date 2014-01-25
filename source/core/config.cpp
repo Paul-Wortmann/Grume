@@ -44,6 +44,10 @@ void       config_class::set_defaults(void)
     config_class::display_resolution         = 0;
     config_class::display_resolution_x       = 800;
     config_class::display_resolution_y       = 600;
+    config_class::font_base_resolution_x     = 1920;
+    config_class::font_base_resolution_y     = 1080;
+    config_class::font_scale_x               = (float)config_class::display_resolution_x/(float)config_class::font_base_resolution_x;
+    config_class::font_scale_y               = (float)config_class::display_resolution_y/(float)config_class::font_base_resolution_y;
     config_class::display_bpp                = 32;
     config_class::display_fullscreen         = false;
     config_class::display_touchscreen        = false;
@@ -197,6 +201,8 @@ bool         config_class::file_load(void) //the problem is most likely with the
     if ((config_class::display_resolution_x == 1440) && (config_class::display_resolution_y ==  900)) config_class::display_resolution = 5;
     if ((config_class::display_resolution_x == 1680) && (config_class::display_resolution_y == 1050)) config_class::display_resolution = 6;
     if ((config_class::display_resolution_x == 1920) && (config_class::display_resolution_y == 1080)) config_class::display_resolution = 7;
+    config_class::font_scale_x               = (float)config_class::display_resolution_x/(float)config_class::font_base_resolution_x;
+    config_class::font_scale_y               = (float)config_class::display_resolution_y/(float)config_class::font_base_resolution_y;
     config_class::mouse_resolution_x   = config_class::display_resolution_x;
     config_class::mouse_resolution_y   = config_class::display_resolution_y;
     return(true);

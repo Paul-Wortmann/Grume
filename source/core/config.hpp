@@ -42,6 +42,10 @@ class config_class
         bool         display_fullscreen;
         bool         display_touchscreen;
         int          display_flags;
+        int          font_base_resolution_x;
+        int          font_base_resolution_y;
+        float        font_scale_x;
+        float        font_scale_y;
         bool         mouse_autohide;
         int          mouse_autohide_timer;
         int          mouse_autohide_timer_count;

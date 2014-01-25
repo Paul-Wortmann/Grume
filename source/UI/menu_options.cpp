@@ -848,6 +848,8 @@ void process_menu_options(UI_form_struct *UI_form_pointer)
                 }
                 else
                 {
+                    game.core.config.font_scale_x = (float)game.core.config.display_resolution_x/(float)game.core.config.font_base_resolution_x;
+                    game.core.config.font_scale_y = (float)game.core.config.display_resolution_y/(float)game.core.config.font_base_resolution_y;
                     game.core.config.mouse_resolution_x   = game.core.config.display_resolution_x;
                     game.core.config.mouse_resolution_y   = game.core.config.display_resolution_y;
                     for (int data_position_count = 0; data_position_count < UI_form_pointer->data.choice_selection[0].position_max;data_position_count++)
