@@ -23,6 +23,8 @@
  */
 
 #include <fstream>
+#include <iostream>
+#include <limits.h>
 #include "item_manager.hpp"
 #include "../game/game.hpp"
 #include "../core/misc.hpp"
