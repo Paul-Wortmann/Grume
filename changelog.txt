@@ -5,6 +5,9 @@ it may take longer than I had first anticipated.
 These are not indications that the project will be terminated in the future,
 just that time is not permitting to proceed at a fast pace, at the moment.
 
+V0.27 -> (2014-01-31)
+LOC   -> xxxxx
+
 V0.26 -> (2013-12-31) Happy new year!
 UI    -> Use 'h' key to generate a random RC cave map.
 UI    -> Use 'j' key to generate a random M1 dungeon map.
