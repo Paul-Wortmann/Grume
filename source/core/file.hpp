@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2011-2013 Paul Wortmann, PhysHex Games, www.physhexgames.co.nr
+ * Copyright (C) 2011-2014 Paul Wortmann, PhysHex Games, www.physhexgames.co.nr
  * This file is part of "Frost And Flame"
  *
  * "Frost And Flame" is free software: you can redistribute it and/or modify
