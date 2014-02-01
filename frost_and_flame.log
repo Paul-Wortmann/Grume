@@ -1,4 +1,4 @@
-# Frost and Flame V0.26 - www.physhexgames.co.nr #
+# Frost and Flame V0.27 - www.physhexgames.co.nr #
 # ---------------------------------------------- #
  
 Loading configuration...
@@ -26,9 +26,9 @@ Developer demo enabled.
  
 Font    count -> 1
 Music   count -> 1
-Sound   count -> 11
-Texture count -> 207
-Item    count -> 57
+Sound   count -> 13
+Texture count -> 194
+Item    count -> 56
 Effect  count -> 46
  
 # ---------------------------------------------- #
