@@ -6,7 +6,14 @@ These are not indications that the project will be terminated in the future,
 just that time is not permitting to proceed at a fast pace, at the moment.
 
 V0.27 -> (2014-01-31)
-
+DATA  -> Added 3D model development files to git repo.
+UI    -> Rendered font text scalled correctly.
+DOC   -> Updated game guide.
+CORE  -> Slight code cleanup.
+MAP   -> Tweaked A* pathfinder.
+MAP   -> Calculate heuristic_manhattan function added.
+MAP   -> Calculate heuristic_chebyshev function added.
+MAP   -> Calculate heuristic_euclidean function added.
 LOC   -> 26550
 
 V0.26 -> (2013-12-31) Happy new year!
