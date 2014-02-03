@@ -20,14 +20,15 @@ Starting Game...
  
 # ---------------------------------------------- #
  
+Developer demo enabled.
  
 # ---------------------------------------------- #
  
 Font    count -> 1
 Music   count -> 1
 Sound   count -> 13
-Texture count -> 194
-Item    count -> 56
+Texture count -> 213
+Item    count -> 57
 Effect  count -> 46
  
 # ---------------------------------------------- #
