@@ -33,6 +33,7 @@
 #include "../core/map_2D.hpp"
 #include "../core/music_manager.hpp"
 #include "../core/network.hpp"
+#include "../core/object_manager.hpp"
 #include "../core/savegame.hpp"
 #include "../core/sound_manager.hpp"
 #include "../core/spell_manager.hpp"
@@ -84,6 +85,7 @@ class game_class
         music_manager_class         music_manager;
         network_manager_class       network_manager;
         npc_class                   npc;
+        object_manager_class        object_manager;
         player_class                player;
         rumble_type                 rumble;
         save_game_class             save_01;
