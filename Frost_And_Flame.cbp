@@ -203,6 +203,8 @@
 		<Unit filename="source/core/music_manager.hpp" />
 		<Unit filename="source/core/network.cpp" />
 		<Unit filename="source/core/network.hpp" />
+		<Unit filename="source/core/object_manager.cpp" />
+		<Unit filename="source/core/object_manager.hpp" />
 		<Unit filename="source/core/particles.cpp" />
 		<Unit filename="source/core/particles.hpp" />
 		<Unit filename="source/core/pathfinding.cpp" />
