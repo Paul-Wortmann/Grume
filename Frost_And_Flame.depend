@@ -2593,7 +2593,7 @@
 	<fstream>
 	"misc.hpp"
 
-1378831794 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/core/music_manager.cpp
+1392107386 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/core/music_manager.cpp
 	"music_manager.hpp"
 	"../game/game.hpp"
 
@@ -3295,7 +3295,7 @@
 
 1375577407 /media/paul/Data_0/_git_/Frost_and_Flame/source/game/command_line_parser.hpp
 
-1373475781 /media/paul/Data_0/_git_/Frost_and_Flame/source/game/game.hpp
+1392107643 /media/paul/Data_0/_git_/Frost_and_Flame/source/game/game.hpp
 	"../core/command_line_parser.hpp"
 	"../core/core.hpp"
 	"../core/effect_manager.hpp"
@@ -3304,6 +3304,7 @@
 	"../core/map_2D.hpp"
 	"../core/music_manager.hpp"
 	"../core/network.hpp"
+	"../core/object_manager.hpp"
 	"../core/savegame.hpp"
 	"../core/sound_manager.hpp"
 	"../core/spell_manager.hpp"
@@ -4103,4 +4104,11 @@
 	<string>
 	"core.hpp"
 	"math.hpp"
+
+1392107820 /media/paul/Data_0/_git_/Frost_and_Flame/source/core/object_manager.hpp
+	<string>
+
+1392107870 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/core/object_manager.cpp
+	"object_manager.hpp"
+	"../game/game.hpp"
 
