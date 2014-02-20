@@ -6,6 +6,7 @@ These are not indications that the project will be terminated in the future,
 just that time is not permitting to proceed at a fast pace, at the moment.
 
 V0.28 -> (2014-02-28)
+CORE  -> Start of new object_manager.
 LOC   -> xxxxx
 
 V0.27 -> (2014-01-31)
@@ -331,7 +332,7 @@ BUG   -> Dont allow window element processing if a window drag is in progress.
 LOC   -> 16528
 
 v0.18 - (2013-04-30)
-MAP   -> Enabled keys 1,2,3 to generate maps for testing. 
+MAP   -> Enabled keys 1,2,3 to generate maps for testing.
 MAP   -> Started "apply_tileset()"
 MAP   -> Generated maps display correctly with default tileset.
 MAP   -> Tileset reload textures on display setting change.
@@ -438,13 +439,13 @@ UI    -> Completed player portrait selection on the new game menu.
 UI    -> Added player portrait images to the new game menu.
 UI    -> Added left and right arrow buttons to the new game menu for player portrait selection.
 UI    -> Enabled the colse menu button on the options menu.
-UI    -> Re-implemented the load game menu. 
+UI    -> Re-implemented the load game menu.
 GFX   -> Added two new potion icons.
 UI    -> Resume game and save game buttons now active on first reopening of the main menu after starting a game.
 UI    -> Re-implemented the save game menu.
-MAP2D -> map_2D_class::calculate_tile_positions Segmentation fault fixed. 
-UI    -> Main menu can be toggled in game with the escape key. 
-UI    -> Windows transitioning correctly, disabled window stack sort. 
+MAP2D -> map_2D_class::calculate_tile_positions Segmentation fault fixed.
+UI    -> Main menu can be toggled in game with the escape key.
+UI    -> Windows transitioning correctly, disabled window stack sort.
 LOC   -> 13839
 
 v0.12 - (2012-10-31)
