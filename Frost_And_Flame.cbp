@@ -118,6 +118,7 @@
 			<Add directory='&quot;C:/MinGW/lib&quot;' />
 			<Add directory="/usr/lib" />
 		</Linker>
+		<Unit filename="changelog.txt" />
 		<Unit filename="frost_and_flame.log" />
 		<Unit filename="source/UI/UI_cursor.cpp" />
 		<Unit filename="source/UI/UI_cursor.hpp" />
