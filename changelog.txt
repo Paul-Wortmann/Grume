@@ -8,7 +8,7 @@ just that time is not permitting to proceed at a fast pace, at the moment.
 V0.28 -> (2014-02-28)
 CORE  -> Start of new object_manager.
 MISC  -> Improved game icon.
-LOC   -> xxxxx
+LOC   -> 26644
 
 V0.27 -> (2014-01-31)
 DATA  -> Added 3D model development files to git repo.
