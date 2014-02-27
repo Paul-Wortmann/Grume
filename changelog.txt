@@ -15,7 +15,7 @@ LOC   -> 26644
 
 V0.27 -> (2014-01-31)
 DATA  -> Added 3D model development files to git repo.
-UI    -> Rendered font text scalled correctly.
+UI    -> Rendered font text scaled correctly.
 DOC   -> Updated game guide.
 CORE  -> Slight code cleanup.
 MAP   -> Tweaked A* pathfinder.
@@ -31,7 +31,7 @@ MAP   -> Created new map data structure -> FMX
 MAP   -> FMX map type to hold room data.
 MAP   -> FMX map type to hold extended tile attributes.
 MAP   -> FMX map type to only one collision array.
-MAP   -> Renamed tile / tileset defines for better code readability.
+MAP   -> Renamed tile / tile set defines for better code readability.
 MAP   -> Implemented new random dungeon generator algorithm -> M1 - Maze
 MAP   -> Implemented new random dungeon generator algorithm -> RC - Based on random circles.
 MAP   -> Restructured map generation algorithms into different files.
@@ -41,11 +41,11 @@ MAP   -> Implemented room interconnect function/s.
 MAP   -> Improved function to check map consistency.
 CORE  -> Found lingering SDL code/includes and converted to SDL2.
 GFX   -> Added Hammer_02 texture.
-GFX   -> Added stairs tileset for testing.
+GFX   -> Added stairs tile set for testing.
 MAP   -> Improved BSP generated room interconnects.
 MAP   -> Vastly improved flood fill based on a recursive algorithm.
-UI    -> Right click skills to equip them in vacant actionbar slots.
-UI    -> Enable spell icon overlays on the actionbar.
+UI    -> Right click skills to equip them in vacant action bar slots.
+UI    -> Enable spell icon overlays on the action bar.
 MAP   -> Start of new recursive A* path finding algorithm.
 LOC   -> 26484
 
