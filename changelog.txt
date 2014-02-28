@@ -59,8 +59,8 @@ UI    -> Display movement speed stat.
 UI    -> Display light radius stat.
 UI    -> Display gold find stat.
 UI    -> Display magic find stat.
-UI    -> Added health regen stat display.
-UI    -> Added mana regen stat display.
+UI    -> Added health regeneration stat display.
+UI    -> Added mana regeneration stat display.
 UI    -> Display mana related stats.
 UI    -> Display crit chance and damage.
 UI    -> Display lightning resistance.
@@ -77,7 +77,7 @@ UI    -> Display min damage.
 UI    -> Display max damage.
 UI    -> Display player damage.
 BUG   -> Fix invalid conditional jump.
-BUG   -> Fix mem leak.
+BUG   -> Fix memory leak.
 UI    -> Relocated character stats on character window.
 UI    -> New character window texture.
 UI    -> Display player intellect and dexterity in the character window.
