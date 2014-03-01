@@ -14,7 +14,7 @@ MISC  -> Improved game icon.
 LOC   -> 26644
 
 V0.27 -> (2014-01-31)
-DATA  -> Added 3D model development files to git repo.
+DATA  -> Added 3D model development files to git repository.
 UI    -> Rendered font text scaled correctly.
 DOC   -> Updated game guide.
 CORE  -> Slight code cleanup.
@@ -66,7 +66,7 @@ UI    -> Display crit chance and damage.
 UI    -> Display lightning resistance.
 UI    -> Display Ice resistance
 UI    -> Display fire resistance.
-UI    -> Display physical resistance and lables for damage and resistance.
+UI    -> Display physical resistance and labels for damage and resistance.
 UI    -> Display character armor
 UI    -> Display lightning damage.
 UI    -> Corrected position of experience bar.
@@ -92,10 +92,10 @@ UI    -> Spell mouse overs display gem texture in correct location.
 UI    -> Initial code to generate 4 new spell gems.
 UI    -> Allow socketing gems if correct location.
 UI    -> Added 4 more gem item defines.
-UI    -> Fix rendering socketed gems mouse overs affecting inventory gems of s… …
+UI    -> Fix rendering socketed gems mouse overs affecting inventory gems.
 UI    -> Spells draw socketed gem on mouse over.
 UI    -> Gems to generate specific quality type.
-UI    -> Allow spells to accept socketable items.
+UI    -> Allow spells to accept socket-able items.
 UI    -> Spell socket effect name displayed.
 UI    -> Spell mouse over, mana cost displayed correctly.
 UI    -> Spell mouse over, spell bar implemented.
@@ -124,8 +124,8 @@ UI    -> Added / Improved axe_03 texture.
 UI    -> Added sword_36 texture.
 UI    -> Added sword_35 texture.
 UI    -> Added improved axe_02 texture.
-CORE  -> Slight code recactor, keep related code together.
-UI    -> Added ITEM_DAGGER to random item genorater.
+CORE  -> Slight code re-factor, keep related code together.
+UI    -> Added ITEM_DAGGER to random item generator.
 UI    -> Added dagger_28
 UI    -> Added sword_34.png
 UI    -> Added sword_33.png
@@ -139,11 +139,11 @@ UI    -> Added 1 more hammer texture.
 UI    -> Added 1 more bow texture.
 UI    -> Added 2 more sword textures.
 UI    -> Added 2 more axe textures.
-UI    -> Better handeling of equiping items with multiple slots.
+UI    -> Better handling of equipping items with multiple slots.
 UI    -> Added a few more items to the inventory for testing.
-UI    -> Right click equipable item in the inventory to equip.
+UI    -> Right click equippable item in the inventory to equip.
 UI    -> Removed redundant spell code.
-BUG   -> Fix possbly segfault waiting to happen...
+BUG   -> Fix possible segfault waiting to happen.
 UI    -> Skill book using ITEM_NONE instead of -1.
 UI    -> Spell data added to current spell items.
 UI    -> Item_spell textures assigned.
@@ -167,7 +167,7 @@ UI    -> Initial ITEM_MATERIAL_x defines.
 UI    -> Added 5 spells, 4 shields and heal.
 UI    -> Added more spell defines.
 UI    -> Allow spells to replace spells on the action bar.
-UI    -> Allow baisc spell name on mouse over.
+UI    -> Allow basic spell name on mouse over.
 UI    -> Spell_ball_x fully integrated into the UI.
 UI    -> Spell_ball_x added to player class.
 UI    -> Added spell_ball_x to skillbook.
@@ -188,7 +188,7 @@ UI    -> Added ITEM_SPELL_ARROW_ICE
 UI    -> Added ITEM_SPELL_ARROW_FIRE
 UI    -> Spells defined items.
 UI    -> Better formatting of defines in the spell manager.
-BUG   -> Dont crash on moving a spell.
+BUG   -> Don't crash on moving a spell.
 UI    -> spells only active if quantity > 0
 UI    -> First 4 spell textures assigned.
 UI    -> First 4 spells updated on skill book process.
@@ -203,9 +203,9 @@ UI    -> Loaded effects from UID 1000
 UI    -> Base spells.txt
 UI    -> Gimp background source -> Spellbook.
 UI    -> Default position for skillbook.
-CORE  -> Init reload textures when re-init window.
+CORE  -> Initialize reload textures when re-init window.
 BUG   -> If SDL2 window already open, destroy it first before opening a new one.
-UI    -> Unequiped items with regen value > 1, now functioning correctly.
+UI    -> Unequipped items with regen value > 1, now functioning correctly.
 UI    -> Further work on random spellbook generation.
 UI    -> Added base effect cases to use effect function.
 UI    -> Socketed items processed on equip / unequip.
@@ -230,16 +230,16 @@ UI    -> Added new book icon.
 UI    -> Added new sword icon
 UI    -> New equipment background.
 CORE  -> Added spell manager.
-UI    -> Gems socketable in items.
+UI    -> Gems socket-able in items.
 UI    -> Re-rendered potion icons for more detail.
 UI    -> Added randomly generated gems.
 UI    -> Added gem textures.
-UI    -> Item tool tip textures based on item qaulity type.
+UI    -> Item tool tip textures based on item quality type.
 UI    -> Added tooltip textures.
 UI    -> Number keys to 1-0 to use items on the action bar.
 UI    -> Randomly generated potions implemented.
 UI    -> Added more Item affixes and code for effect / socket slot number generation.
-UI    -> Items now stackable with quanity displayed below.
+UI    -> Items now stackable with quantity displayed below.
 CORE  -> Textures can be rendered centered or justified left or right.
 UI    -> Added inventory gold icon.
 UI    -> Changed default mouse cursor.
@@ -249,14 +249,14 @@ MODEL -> Added data/models/NPCs/new_thin_zombie.blend.
 MODEL -> Added data/models/NPCs/golem.blend
 CORE  -> Moved texture data to its own struct.
 CORE  -> Start on a new rendered text manager.
-UI    -> Items only equiped in valid equipment slots.
-UI    -> Added aditional inventory item sounds.
+UI    -> Items only equipped in valid equipment slots.
+UI    -> Added additional inventory item sounds.
 UI    -> Basic equipment equip + unequip implemented.
 UI    -> Items usable from the action bar.
 UI    -> Drag and drop (inventory + action bar) implemented.
 UI    -> Dragged items always rendered on top of other items.
-UI    -> Moved UI_manager data to seperate struct.
-UI    -> Added rejuvination potion - item.
+UI    -> Moved UI_manager data to separate struct.
+UI    -> Added rejuvenation potion - item.
 CORE  -> Further optimized the various resource managers linked lists.
 CORE  -> Fixed fault with root nodes in the linked lists used by the various resource managers.
 UI    -> UI form rendering / processing order completed.
@@ -265,7 +265,7 @@ LOC   -> 22138
 v0.23 - (2013-09-30)
 Core  -> Ported FnF to SDL2.
 UI    -> Removed active variable from UI forms due to ambiguity.
-UI    -> Seperated code for form and element processing into seperate functions.
+UI    -> Separated code for form and element processing into separate functions.
 MAP   -> Fixed pointer error in BSP generator.
 PATH  -> Added a custom A* path finding algorithm.
 TEST  -> Extended keys 1-5 for testing random map generation.
@@ -280,12 +280,12 @@ UI    -> More work on the UI and manager.
 LOC   -> 16987
 
 v0.20 - (2013-06-30)
-ITEM  -> Added use_effecct function to the item manager.
+ITEM  -> Added use_effect function to the item manager.
 ITEM  -> Added defines for socket types.
 ITEM  -> Renamed ITEM_SHIELD to ITEM_OFFHAND.
 NET   -> Added IP struct to network_manager_class.
 UI    -> Start of the new UI manager.
-MISC  -> Removed various redundent code.
+MISC  -> Removed various redundant code.
 LOC   -> 17125
 
 v0.19 - (2013-05-30)
@@ -306,7 +306,7 @@ MISC  -> Fixed compiler warnings in rs232.cpp
 UI    -> Added element sub types to cater for differing equipment slots.
 UI    -> Process item stacking code started.
 UI    -> Initial drag and drop completed.
-UI    -> Only alow swapping of ITEM type elements.
+UI    -> Only allow swapping of ITEM type elements.
 UI    -> All equipment items slots now usable.
 UI    -> All inventory items slots now usable.
 UI    -> All action-bar items slots now usable.
@@ -318,21 +318,21 @@ UI    -> Improved mouse over on elements.
 UI    -> Windows and elements to hold UID.
 UI    -> Converted all struct_3f to f3_type and removed struct_3f definition.
 UI    -> Initial swap_element() function implemented.
-MAP   -> Corrected tileset apply to top left corner of generated maps.
-MAP   -> Added smooth_map() to remove anomilies formed by map generation.
+MAP   -> Corrected tile set apply to top left corner of generated maps.
+MAP   -> Added smooth_map() to remove anomalies formed by map generation.
 MAP   -> Added object layer.
-MAP   -> Improved apply tileset.
-MAP   -> 2D tilesets applied to maps.
-MAP   -> Added temp tile data array to apply tileset.
-MAP   -> Correct tile collision on floor tiles after applying a tileset.
+MAP   -> Improved apply tile set.
+MAP   -> 2D tile sets applied to maps.
+MAP   -> Added temp tile data array to apply tile set.
+MAP   -> Correct tile collision on floor tiles after applying a tile set.
 MAP   -> Added bool collision to tmx_tile_class.
-CORE  -> Added types.hpp for easier usge of common types.
-MISC  -> Removed various bits of redundent code.
+CORE  -> Added types.hpp for easier usage of common types.
+MISC  -> Removed various bits of redundant code.
 MISC  -> Fixed may compiler warnings.
 BUG   -> Resolved segfault in element swap code.
-BUG   -> Dont close multiple windows if there close buttons overlap.
+BUG   -> Don't close multiple windows if there close buttons overlap.
 BUG   -> Fixed bug where calling main menu did not close sub menus first.
-BUG   -> Dont allow window element processing if a window drag is in progress.
+BUG   -> Don't allow window element processing if a window drag is in progress.
 LOC   -> 16528
 
 v0.18 - (2013-04-30)
@@ -344,18 +344,18 @@ MAP   -> Fixed rendering of TMX maps.
 MAP   -> Added a few tilesets for testing...
 MAP   -> Updated map_2D and related code to the new &tmx_map data type.
 MAP   -> Added default tileset data to gen functions.
-MAP   -> map_gen_BSP using tmx_map data tructure.
-MAP   -> map_gen_CA using tmx_map data tructure.
-MAP   -> erged map init into the map gen functions.
+MAP   -> map_gen_BSP using tmx_map data structure.
+MAP   -> map_gen_CA using tmx_map data structure.
+MAP   -> Merged map init into the map gen functions.
 MAP   -> Re-write of TMX loader.
 MAP   -> Added functions to allow for generating from a seed.
 MAP   -> Added map_generator, for generating cave like maps, using cellular automation.
 MAP   -> Fixed inter-node passage gen.
 MAP   -> Fixed node splitting.
-MAP   -> Resolved segfault in vertical node spilit.
+MAP   -> Resolved segfault in vertical node split.
 MAP   -> Added initial passage gen code to BSP dungeon gen.
 MAP   -> Fixed tmx export function.
-MAP   -> Removed redundent code in the map_gen save_map function.
+MAP   -> Removed redundant code in the map_gen save_map function.
 MISC  -> Slight code cleanup.
 MISC  -> Fixed many compiler warnings.
 MISC  -> Fixed compiler warning: unused variable.
@@ -366,21 +366,21 @@ v0.17 - (2013-03-31)
 MAP   -> Start of random dungeon generation using a recursive binary tree.
 MAP   -> Fix: BSP leaves splitting below desired threshold.
 MAP   -> Fixed freeing node memory.
-MAP   -> Fixes to horizonltal node splitting....
+MAP   -> Fixes to horizontal node splitting....
 MAP   -> Rooms generated in leaf nodes.
 UI    -> UI members set source / destination for drag and drop events.
-UI    -> Extended the event type to allow for more complex event handeling.
+UI    -> Extended the event type to allow for more complex event handling.
 MISC  -> Disabling physfs due to issues with continuous integration.
 MISC  -> Removed clang compiler from travis.yml, due to issues with <math.h>.
-MISC  -> Removed various redundent code.
+MISC  -> Removed various redundant code.
 MISC  -> Fixed may compiler warnings.
 LOC   -> 15315
 
 v0.16 - (2013-02-28)
 ITEM  -> Added base of a mana potion for testing.
-UI    -> Improved window element drag handeling.
+UI    -> Improved window element drag handling.
 UI    -> Improved window-mouse interaction.
-UI    -> Improved window stack sort event handeling.
+UI    -> Improved window stack sort event handling.
 LOC   -> 14973
 
 v0.15 - (2013-01-31)
@@ -399,8 +399,8 @@ GFX   -> Improved equipment window background.
 GFX   -> Improved character window background.
 GFX   -> Standardized window color.
 UI    -> New window manager.
-UI    -> Improved handeling of windows, new window stack.
-UI    -> Improved visual apearance of windows by adjusting window size.
+UI    -> Improved handling of windows, new window stack.
+UI    -> Improved visual appearance of windows by adjusting window size.
 GFX   -> Unified various menu related texture directories.
 UI    -> Added the 6 window buttons to the action bar.
 UI    -> Added the base of the Character window.
@@ -442,7 +442,7 @@ CORE  -> Added bounds checking to int random_int(int minimum, int maximum).
 UI    -> Completed player portrait selection on the new game menu.
 UI    -> Added player portrait images to the new game menu.
 UI    -> Added left and right arrow buttons to the new game menu for player portrait selection.
-UI    -> Enabled the colse menu button on the options menu.
+UI    -> Enabled the close menu button on the options menu.
 UI    -> Re-implemented the load game menu.
 GFX   -> Added two new potion icons.
 UI    -> Resume game and save game buttons now active on first reopening of the main menu after starting a game.
@@ -459,16 +459,16 @@ UI    -> Added base UI class.
 UI    -> Added functions to enable / disable windows.
 UI    -> Added the options menu base.
 UI    -> Added button labels for the Save and Load game menus.
-UI    -> Only process buttons on the front most window when the ouse is over, not windows in the background.
-UI    -> Dragging a window, pushes it to the top of the stack and as such it is "brough to the front", rendered on top of other windows.
+UI    -> Only process buttons on the front most window when the mouse is over, not windows in the background.
+UI    -> Dragging a window, pushes it to the top of the stack and as such it is "brought to the front", rendered on top of other windows.
 UI    -> All windows in the list now rendered.
 UI    -> Improved window manager code.
-UI    -> Added a windows_manager_stack_class, this will take care of handeling the UIDs and remove the need to delete and re-create all previously defined windows.
+UI    -> Added a windows_manager_stack_class, this will take care of handling the UIDs and remove the need to delete and re-create all previously defined windows.
 UI    -> Added 2 more layers to the background class.
 UI    -> Windows and window_elements now manage their own fonts.
 UI    -> Do not segfault when attempting to write an unloaded font, send error to log file if unable to load a font.
 UI    -> Renamed font functions to use code conventions already established in Frost and Flame.
-UI    -> Removed unneccesary z_layer code.
+UI    -> Removed unnecessary z_layer code.
 UI    -> Background layers reordered to be displayed correctly.
 UI    -> Removed resource manager due to memory leaks. Started a new UI management system.
 LOC   -> 13129
