@@ -22,7 +22,7 @@
  * @date 2011-11-11
  */
 
-#include <GL3/gl3.h>
+#include <GL/gl.h>
 #include "core.hpp"
 #include "graphics.hpp"
 #include "../game/game.hpp"
