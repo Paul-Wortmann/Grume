@@ -1,6 +1,8 @@
 # Frost and Flame V0.29 - www.physhexgames.co.nr #
 # ---------------------------------------------- #
  
+Logfile created: Wed Apr  2 14:08:01 2014
+
 Loading configuration...
 Processing command line switches...
 Loading language file -> data/configuration/languages/english.txt
@@ -27,7 +29,7 @@ Developer demo enabled.
 Font    count -> 1
 Music   count -> 1
 Sound   count -> 13
-Texture count -> 196
+Texture count -> 192
 Item    count -> 56
 Effect  count -> 46
  
