@@ -5,6 +5,9 @@ it may take longer than I had first anticipated.
 These are not indications that the project will be terminated in the future,
 just that time is not permitting to proceed at a fast pace, at the moment.
 
+V0.30 -> (2014-04-30)
+LOC   -> xxxxx
+
 V0.29 -> (2014-03-31)
 LOG   -> Implemented - time stamp in log file.
 LOC   -> 26661
