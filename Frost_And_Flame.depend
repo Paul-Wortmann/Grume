@@ -2306,7 +2306,7 @@
 	<limits.h>
 	<windows.h>
 
-1373475777 /media/paul/Data_0/_git_/Frost_and_Flame/source/core/log.hpp
+1396286982 /media/paul/Data_0/_git_/Frost_and_Flame/source/core/log.hpp
 	<string>
 
 1373475779 /media/paul/Data_0/_git_/Frost_and_Flame/source/core/physics.hpp
@@ -2534,8 +2534,10 @@
 	"loader_tmx.hpp"
 	"../game/game.hpp"
 
-1378831794 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/core/log.cpp
+1396287467 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/core/log.cpp
 	<fstream>
+	<ctime>
+	<iostream>
 	"log.hpp"
 
 1378831794 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/core/map_2D.cpp
@@ -2670,7 +2672,7 @@
 	"core/misc.hpp"
 	"language.hpp"
 
-1394267006 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/main.cpp
+1396286934 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/main.cpp
 	"game/game.hpp"
 	<SDL2/SDL.h>
 	"core/misc.hpp"
