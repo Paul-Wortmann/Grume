@@ -344,7 +344,7 @@ bool log_class::file_write_time_stamp(void)
     if (logfile.is_open())
     {
         std::time_t result = std::time(NULL);
-        logfile << std::asctime(std::localtime(&result));
+        logfile << "Logfile created: " << std::asctime(std::localtime(&result));
         logfile << "\n";
         logfile.close();
     }
