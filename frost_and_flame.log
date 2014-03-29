@@ -1,7 +1,7 @@
 # Frost and Flame V0.30 - www.physhexgames.co.nr #
 # ---------------------------------------------- #
  
-Logfile created: Tue Mar 18 14:56:32 2014
+Logfile created: Thu Mar 27 15:09:14 2014
 
 Loading configuration...
 Processing command line switches...
@@ -29,8 +29,8 @@ Developer mode enabled.
 Font    count -> 1
 Music   count -> 1
 Sound   count -> 13
-Texture count -> 194
-Item    count -> 56
+Texture count -> 305
+Item    count -> 57
 Effect  count -> 46
  
 # ---------------------------------------------- #
