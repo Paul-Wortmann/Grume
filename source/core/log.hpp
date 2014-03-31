@@ -56,6 +56,7 @@ class log_class
         bool file_write(std::string log_data_1, int   log_data_2, std::string log_data_3, int   log_data_4, std::string log_data_5, int   log_data_6);
         bool file_write(std::string log_data_1, int   log_data_2, std::string log_data_3, int   log_data_4, std::string log_data_5, int   log_data_6, std::string log_data_7, int   log_data_8);
         bool file_write(std::string log_data_1, float log_data_2, std::string log_data_3, float log_data_4);
+        bool file_write_time_stamp(void);
 };
 
 #endif //LOG_H

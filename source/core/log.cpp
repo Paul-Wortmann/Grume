@@ -23,6 +23,8 @@
  */
 
 #include <fstream>
+#include <ctime>
+#include <iostream>
 #include "log.hpp"
 
 log_class::log_class(void)
@@ -335,3 +337,18 @@ bool log_class::file_write(std::string log_data_1, float log_data_2 ,std::string
     else return(false);
     return(true);
 };
+
+bool log_class::file_write_time_stamp(void)
+{
+    std::fstream logfile(log_class::file_name.c_str(),std::ios::out|std::ios::app);
+    if (logfile.is_open())
+    {
+        std::time_t result = std::time(NULL);
+        logfile << std::asctime(std::localtime(&result));
+        logfile << "\n";
+        logfile.close();
+    }
+    else return(false);
+    return(true);
+};
+

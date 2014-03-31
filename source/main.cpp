@@ -46,6 +46,7 @@ extern "C" int main(int argc, char** argv)
     game.core.log.file_write("# ",game.core.application_name," #");
     game.core.log.file_write("# ---------------------------------------------- #");
     game.core.log.file_write(" ");
+    game.core.log.file_write_time_stamp();
     //game.core.log.file_write("Initializing PhysicsFS file system....");
     //PHYSFS_init(argv[0]);
     //PHYSFS_addToSearchPath("data.fnf", 1);
