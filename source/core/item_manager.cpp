@@ -3211,12 +3211,22 @@ void  item_manager_class::gen_item_texture(item_type* item_pointer,int item_type
                 break;
                 case ITEM_AXE:
                     item_pointer->data.material_type = ITEM_MATERIAL_METAL;
-                    temp_int = random(4);
+                    temp_int = random(5);
                     temp_string = "data/textures/UI/icons/axes/axe_";
                     if (temp_int < 10) temp_string += "0";
                     temp_string += int_to_string(temp_int) + ".png";
                     item_pointer->data.image.level_0 = game.texture_manager.add_texture(temp_string);
                 break;
+/*
+                case ITEM_SICKLE:
+                    item_pointer->data.material_type = ITEM_MATERIAL_METAL;
+                    temp_int = 0;//random(4);
+                    temp_string = "data/textures/UI/icons/sickles/sickle_";
+                    if (temp_int < 10) temp_string += "0";
+                    temp_string += int_to_string(temp_int) + ".png";
+                    item_pointer->data.image.level_0 = game.texture_manager.add_texture(temp_string);
+                break;
+*/
                 case ITEM_WAND:
                 default:
                     item_pointer->data.material_type = ITEM_MATERIAL_WOOD;
