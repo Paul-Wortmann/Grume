@@ -42,8 +42,8 @@ void       config_class::set_defaults(void)
     config_class::file_header                = "www.PhysHexGames.co.nr game config file";
     //config_class::display_info               = NULL;
     config_class::display_resolution         = 0;
-    config_class::display_resolution_x       = 800;
-    config_class::display_resolution_y       = 600;
+    config_class::display_resolution_x       = 1024;
+    config_class::display_resolution_y       = 768;
     config_class::font_base_resolution_x     = 1920;
     config_class::font_base_resolution_y     = 1080;
     config_class::font_scale_x               = (float)config_class::display_resolution_x/(float)config_class::font_base_resolution_x;
