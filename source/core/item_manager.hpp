@@ -96,6 +96,7 @@
 #define ITEM_MACE                     39
 #define ITEM_HAMMER                   40
 #define ITEM_AXE                      31
+#define ITEM_SICKLE                   32
 
 //--- Spell IDs ---
 //Reserved for spells IDs 100-199

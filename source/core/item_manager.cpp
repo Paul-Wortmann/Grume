@@ -1518,7 +1518,7 @@ int  item_manager_class::gen_item(int item_type_UID, int item_sub_type_UID, int 
                     case ITEM_WEAPON:
                         if (item_sub_type_UID == ITEM_WEAPON)
                         {
-                            switch (random(7))
+                            switch (random(8))
                             {
                                 case 0:
                                     item_sub_type_UID = ITEM_SWORD;
@@ -1539,6 +1539,9 @@ int  item_manager_class::gen_item(int item_type_UID, int item_sub_type_UID, int 
                                     item_sub_type_UID = ITEM_DAGGER;
                                 break;
                                 case 6:
+                                    item_sub_type_UID = ITEM_SICKLE;
+                                break;
+                                case 7:
                                 default:
                                     item_sub_type_UID = ITEM_WAND;
                                 break;
@@ -2601,6 +2604,9 @@ void  item_manager_class::gen_item_name(item_type* item_pointer,int item_type_UI
                 case ITEM_AXE:
                     base_name = "axe ";
                 break;
+                case ITEM_SICKLE:
+                    base_name = "sickle ";
+                break;
                 case ITEM_WAND:
                 default:
                     base_name = "wand ";
@@ -2851,6 +2857,30 @@ void  item_manager_class::gen_item_name(item_type* item_pointer,int item_type_UI
                                 break;
                                 case 4:
                                     post_name = "of mauling";
+                                break;
+                                case 5:
+                                default:
+                                    post_name = "of slicing";
+                                break;
+                            }
+                        break;
+                        case ITEM_SICKLE:
+                            switch (random(6))
+                            {
+                                case 0:
+                                    post_name = "of chopping";
+                                break;
+                                case 1:
+                                    post_name = "of slashing";
+                                break;
+                                case 2:
+                                    post_name = "of dicing";
+                                break;
+                                case 3:
+                                    post_name = "of hacking";
+                                break;
+                                case 4:
+                                    post_name = "of piercing";
                                 break;
                                 case 5:
                                 default:
