@@ -44,48 +44,55 @@ EndIf(NOT IS_ABSOLUTE "${DATADIR}")
 
 # Detect missing dependencies
 
-Find_Package (SDL2 REQUIRED)
+Include(FindPkgConfig)
+
+PKG_SEARCH_MODULE(SDL2 REQUIRED sdl2)
 If (NOT SDL2_FOUND)
-  Message (FATAL_ERROR "Couldn't find SDL2 development files. On Debian-based systems (such as Ubuntu) you should install the 'libsdl2-dev' package.")
+    Message (ERROR "Couldn't find SDL2 development files. On Debian-based systems (such as Ubuntu) you should install the 'libsdl2-dev' package.")
+    Set (USE_SDL2 Off)
 Else (NOT SDL2_FOUND)
-  Include_Directories (${SDL2_INCLUDE_DIR})
+    INCLUDE_DIRECTORIES(${SDL2_INCLUDE_DIRS})
 EndIf (NOT SDL2_FOUND)
 
-Find_Package (SDL2_mixer REQUIRED)
-If (NOT SDL2MIXER_FOUND)
-  Message (FATAL_ERROR "Couldn't find SDL2-mixer development files. On Debian-based systems (such as Ubuntu) you should install the 'libsdl2-mixer-dev' package.")
-Else (NOT SDL2MIXER_FOUND)
-  Include_Directories (${SDL2MIXER_INCLUDE_DIR})
-EndIf (NOT SDL2MIXER_FOUND)
-
-Find_Package (SDL2_image REQUIRED)
+PKG_SEARCH_MODULE(SDL2IMAGE REQUIRED SDL2_image)
 If (NOT SDL2IMAGE_FOUND)
-  Message (FATAL_ERROR "Couldn't find SDL2-image development files. On Debian-based systems (such as Ubuntu) you should install the 'libsdl2-image-dev' package.")
+    Message (ERROR "Couldn't find SDL2-image development files. On Debian-based systems (such as Ubuntu) you should install the 'libsdl2-image-dev' package.")
+    Set (USE_SDL2 Off)
 Else (NOT SDL2IMAGE_FOUND)
-  Include_Directories (${SDL2IMAGE_INCLUDE_DIR})
+    INCLUDE_DIRECTORIES(${SDL2IMAGE_INCLUDE_DIRS})
 EndIf (NOT SDL2IMAGE_FOUND)
 
-Find_Package (SDL2_ttf REQUIRED)
-If (NOT SDL2TTF_FOUND)
-  Message (FATAL_ERROR "Couldn't find SDL2-ttf development files. On Debian-based systems (such as Ubuntu) you should install the 'libsdl2-ttf-dev' package.")
-Else (NOT SDL2TTF_FOUND)
-  Include_Directories (${SDL2TTF_INCLUDE_DIR})
-EndIf (NOT SDL2TTF_FOUND)
+PKG_SEARCH_MODULE(SDL2MIXER REQUIRED SDL2_mixer)
+If (NOT SDL2MIXER_FOUND)
+    Message (ERROR "Couldn't find SDL2-mixer development files. On Debian-based systems (such as Ubuntu) you should install the 'libsdl2-mixer-dev' package.")
+    Set (USE_SDL2 Off)
+Else (NOT SDL2MIXER_FOUND)
+    INCLUDE_DIRECTORIES(${SDL2MIXER_INCLUDE_DIRS})
+EndIf (NOT SDL2MIXER_FOUND)
 
-Find_Package (SDL2_net REQUIRED)
+PKG_SEARCH_MODULE(SDL2MIXER REQUIRED SDL2_net)
 If (NOT SDL2NET_FOUND)
-  Message (FATAL_ERROR "Couldn't find SDL2-net development files. On Debian-based systems (such as Ubuntu) you should install the 'libsdl2-net-dev' package.")
+    Message (ERROR "Couldn't find SDL2_net development files. On Debian-based systems (such as Ubuntu) you should install the 'libsdl2-net-dev' package.")
+    Set (USE_SDL2 Off)
 Else (NOT SDL2NET_FOUND)
-  Include_Directories (${SDL2NET_INCLUDE_DIR})
+    INCLUDE_DIRECTORIES(${SDL2NET_INCLUDE_DIRS})
 EndIf (NOT SDL2NET_FOUND)
 
-Find_Package (PhysFS REQUIRED)
-If (NOT PHYSFS_FOUND)
-  Message (FATAL_ERROR "Couldn't find libphysfs development files. On Debian-based systems (such as Ubuntu) you should install the 'libphysfs-dev' package.")
-Else (NOT PHYSFS_FOUND)
-  Include_Directories (${PHYSFS_INCLUDE_DIR})
-  link_directories(${PHYSFS_LIBRARIES})
-EndIf (NOT PHYSFS_FOUND)
+PKG_SEARCH_MODULE(SDL2TTF REQUIRED SDL2_ttf)
+If (NOT SDL2TTF_FOUND)
+    Message (ERROR "Couldn't find SDL2-ttf development files. On Debian-based systems (such as Ubuntu) you should install the 'libsdl2-ttf-dev' package.")
+    Set (USE_SDL2 Off)
+Else (NOT SDL2TTF_FOUND)
+    INCLUDE_DIRECTORIES(${SDL2TTF_INCLUDE_DIRS})
+EndIf (NOT SDL2TTF_FOUND)
+
+# Find_Package (PhysFS REQUIRED)
+# If (NOT PHYSFS_FOUND)
+#   Message (FATAL_ERROR "Couldn't find libphysfs development files. On Debian-based systems (such as Ubuntu) you should install the 'libphysfs-dev' package.")
+# Else (NOT PHYSFS_FOUND)
+#   Include_Directories (${PHYSFS_INCLUDE_DIR})
+#   link_directories(${PHYSFS_LIBRARIES})
+# EndIf (NOT PHYSFS_FOUND)
 
 find_package(OpenGL)
 if (OPENGL_FOUND)
@@ -174,35 +181,6 @@ ENDIF (WIN32)
 
 Add_Executable (frost_and_flame ${FROST_AND_FLAME_SOURCES})
 
-# libSDL2Main comes with libSDL2 if needed on certain platforms
-If (NOT SDL2MAIN_LIBRARY)
-  Set (SDL2MAIN_LIBRARY "")
-EndIf (NOT SDL2MAIN_LIBRARY)
-
-Target_Link_Libraries (frost_and_flame ${CMAKE_LD_FLAGS} ${SDL2_LIBRARY} ${SDL2MIXER_LIBRARY} ${SDL2IMAGE_LIBRARY} ${SDL2TTF_LIBRARY} ${SDL2NET_LIBRARY} ${SDL2MAIN_LIBRARY} ${PHYSFS_INCLUDE_DIR} ${OPENGL_LIBRARIES})
-
-
-# desktop file
-#If(NOT IS_ABSOLUTE "${BINDIR}")
-#	set(FROST_AND_FLAME_EXECUTABLE_PATH ${CMAKE_INSTALL_PREFIX}/${BINDIR}/frost_and_flame)
-#Else(NOT IS_ABSOLUTE "${BINDIR}")
-#	set(FROST_AND_FLAME_EXECUTABLE_PATH ${BINDIR}/frost_and_flame)
-#EndIf(NOT IS_ABSOLUTE "${BINDIR}")
-#configure_file("${CMAKE_CURRENT_SOURCE_DIR}/distribution/frost_and_flame.desktop.in" "${CMAKE_CURRENT_BINARY_DIR}/frost_and_flame.desktop")
-
-
-# installing to the proper places
-#install(PROGRAMS
-#  ${CMAKE_CURRENT_BINARY_DIR}/frost_and_flame
-#  DESTINATION ${BINDIR})
-#install(DIRECTORY
-#  "${CMAKE_CURRENT_SOURCE_DIR}/mods"
-#  DESTINATION ${DATADIR})
-#install(FILES
-#  "${CMAKE_CURRENT_BINARY_DIR}/frost_and_flame.desktop"
-#  DESTINATION ${CMAKE_INSTALL_PREFIX}/share/applications)
-#install(FILES
-#  "${CMAKE_CURRENT_SOURCE_DIR}/distribution/frost_and_flame_logo.svg"
-#  DESTINATION ${CMAKE_INSTALL_PREFIX}/share/icons/hicolor/scalable/apps
-#  RENAME frost_and_flame.svg)
+# Target_Link_Libraries (frost_and_flame ${CMAKE_LD_FLAGS} ${SDL2_LIBRARY} ${SDL2MIXER_LIBRARY} ${SDL2IMAGE_LIBRARY} ${SDL2TTF_LIBRARY} ${SDL2NET_LIBRARY} ${SDL2MAIN_LIBRARY} ${PHYSFS_INCLUDE_DIR} ${OPENGL_LIBRARIES})
+Target_Link_Libraries (frost_and_flame ${CMAKE_LD_FLAGS} ${SDL2_LIBRARY} ${SDL2MIXER_LIBRARY} ${SDL2IMAGE_LIBRARY} ${SDL2TTF_LIBRARY} ${SDL2NET_LIBRARY} ${SDL2MAIN_LIBRARY} ${OPENGL_LIBRARIES})
 
