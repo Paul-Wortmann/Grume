@@ -167,6 +167,7 @@ bool graphics_class::init_sdl (void)
     if (game.core.config.display_fullscreen) game.core.config.display_flags = SDL_WINDOW_OPENGL | SDL_WINDOW_FULLSCREEN_DESKTOP;
     else game.core.config.display_flags = SDL_WINDOW_OPENGL;
     game.core.window_pointer = SDL_CreateWindow(game.core.application_name,SDL_WINDOWPOS_CENTERED,SDL_WINDOWPOS_CENTERED,game.core.config.display_resolution_x, game.core.config.display_resolution_y, game.core.config.display_flags );
+
     game.core.glcontext = SDL_GL_CreateContext(game.core.window_pointer);
     if (!game.core.window_pointer)
     {
