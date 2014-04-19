@@ -96,7 +96,7 @@ EndIf (NOT SDL2TTF_FOUND)
 
 find_package(OpenGL)
 if (OPENGL_FOUND)
-  include_directories(${OPENGL_INCLUDE_DIR})
+  INCLUDE_DIRECTORIES(${OPENGL_INCLUDE_DIR})
   link_directories(${OPENGL_LIBRARIES})
 Else (OPENGL_FOUND)
   Message (FATAL_ERROR "Couldn't find OpenGl development files. On Debian-based systems (such as Ubuntu) you should install the OpenGL development package.")
@@ -181,6 +181,5 @@ ENDIF (WIN32)
 
 Add_Executable (frost_and_flame ${FROST_AND_FLAME_SOURCES})
 
-# Target_Link_Libraries (frost_and_flame ${CMAKE_LD_FLAGS} ${SDL2_LIBRARY} ${SDL2MIXER_LIBRARY} ${SDL2IMAGE_LIBRARY} ${SDL2TTF_LIBRARY} ${SDL2NET_LIBRARY} ${SDL2MAIN_LIBRARY} ${PHYSFS_INCLUDE_DIR} ${OPENGL_LIBRARIES})
-Target_Link_Libraries (frost_and_flame ${CMAKE_LD_FLAGS} ${SDL2_LIBRARY} ${SDL2MIXER_LIBRARY} ${SDL2IMAGE_LIBRARY} ${SDL2TTF_LIBRARY} ${SDL2MAIN_LIBRARY} ${OPENGL_LIBRARIES})
-
+# Target_Link_Libraries (frost_and_flame ${CMAKE_LD_FLAGS} ${SDL2_LIBRARIES} ${SDL2IMAGE_LIBRARIES} ${SDL2MIXER_LIBRARIES} ${SDL2TTF_LIBRARIES} ${SDL2NET_LIBRARIES} ${OPENGL_LIBRARIES} ${PHYSFS_INCLUDE_DIR})
+Target_Link_Libraries (frost_and_flame ${CMAKE_LD_FLAGS} ${SDL2_LIBRARIES} ${SDL2IMAGE_LIBRARIES} ${SDL2MIXER_LIBRARIES} ${SDL2TTF_LIBRARIES} ${OPENGL_LIBRARIES})
