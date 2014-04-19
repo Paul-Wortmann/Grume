@@ -22,9 +22,13 @@
  * @date 2011-11-11
  */
 
+//#include <physfs.h>
 #include "game/game.hpp"
 #include <SDL2/SDL.h>
-//#include <physfs.h>
+#include <SDL2/SDL_image.h>
+#include <SDL2/SDL_mixer.h>
+#include <SDL2/SDL_opengl.h>
+#include <SDL2/SDL_ttf.h>
 #include "core/misc.hpp"
 
 extern game_class    game;
