@@ -108,6 +108,7 @@ Set (FROST_AND_FLAME_SOURCES
 	./source/core/graphics.cpp
 	./source/core/item_manager.cpp
 	./source/core/io.cpp
+	./source/core/item_manager.cpp
 	./source/core/loader_fmx.cpp
 	./source/core/loader_md2.cpp
 	./source/core/loader_obj.cpp
@@ -118,18 +119,20 @@ Set (FROST_AND_FLAME_SOURCES
 	./source/core/map_gen.cpp
 	./source/core/map_gen_BSP.cpp
 	./source/core/map_gen_CA.cpp
-	./source/core/map_gen_RC.cpp
 	./source/core/map_gen_M1.cpp
+	./source/core/map_gen_RC.cpp
 	./source/core/math.cpp
 	./source/core/misc.cpp
 	./source/core/music_manager.cpp
 	./source/core/network.cpp
+	./source/core/object_manager.cpp
 	./source/core/particles.cpp
 	./source/core/pathfinding.cpp
 	./source/core/physics.cpp
 	./source/core/rs232.cpp
 	./source/core/savegame.cpp
 	./source/core/sound_manager.cpp
+	./source/core/spell_manager.cpp
 	./source/core/texture_manager.cpp
 	./source/core/timer.cpp
 	#./source/core/types.cpp
@@ -149,7 +152,7 @@ Set (FROST_AND_FLAME_SOURCES
 	./source/UI/UI_cursor.cpp
 	./source/UI/UI_loading_screen.cpp
 	./source/UI/UI_manager.cpp
-	#./source/UI/UI_types.cpp
+	./source/UI/UI_types.cpp
 	./source/game/effects.cpp
 	./source/game/game.cpp
 	./source/game/items.cpp
