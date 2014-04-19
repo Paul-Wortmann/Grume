@@ -1,7 +1,7 @@
 # Frost and Flame V0.30 - www.physhexgames.co.nr #
 # ---------------------------------------------- #
  
-Logfile created: Fri Apr 11 00:26:11 2014
+Logfile created: Sat Apr 19 11:50:17 2014
 
 Loading configuration...
 Processing command line switches...
@@ -23,19 +23,14 @@ Starting Game...
 # ---------------------------------------------- #
  
 Developer mode enabled.
-Unable to process event - 1201 - UID - 3
-Unable to process event - 1201 - UID - 3
-Unable to process event - 1201 - UID - 3
-Unable to process event - 1201 - UID - 3
-Unable to process event - 1201 - UID - 3
  
 # ---------------------------------------------- #
  
 Font    count -> 1
 Music   count -> 1
 Sound   count -> 11
-Texture count -> 242
-Item    count -> 57
+Texture count -> 201
+Item    count -> 56
 Effect  count -> 46
  
 # ---------------------------------------------- #
