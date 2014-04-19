@@ -1,8 +1,8 @@
 Project ("Frost and Flame")
-cmake_minimum_required (VERSION 2.6)
+cmake_minimum_required (VERSION 2.8)
 
 Set (PACKAGE "FROST_AND_FLAME")
-Set (VERSION "0.26")
+Set (VERSION "0.30")
 
 
 # Default definitions
@@ -44,40 +44,40 @@ EndIf(NOT IS_ABSOLUTE "${DATADIR}")
 
 # Detect missing dependencies
 
-Find_Package (SDL REQUIRED)
-If (NOT SDL_FOUND)
-  Message (FATAL_ERROR "Couldn't find SDL development files. On Debian-based systems (such as Ubuntu) you should install the 'libsdl1.2-dev' package.")
-Else (NOT SDL_FOUND)
-  Include_Directories (${SDL_INCLUDE_DIR})
-EndIf (NOT SDL_FOUND)
+Find_Package (SDL2 REQUIRED)
+If (NOT SDL2_FOUND)
+  Message (FATAL_ERROR "Couldn't find SDL2 development files. On Debian-based systems (such as Ubuntu) you should install the 'libsdl2-dev' package.")
+Else (NOT SDL2_FOUND)
+  Include_Directories (${SDL2_INCLUDE_DIR})
+EndIf (NOT SDL2_FOUND)
 
-Find_Package (SDL_mixer REQUIRED)
-If (NOT SDLMIXER_FOUND)
-  Message (FATAL_ERROR "Couldn't find SDL-mixer development files. On Debian-based systems (such as Ubuntu) you should install the 'libsdl-mixer1.2-dev' package.")
-Else (NOT SDLMIXER_FOUND)
-  Include_Directories (${SDLMIXER_INCLUDE_DIR})
-EndIf (NOT SDLMIXER_FOUND)
+Find_Package (SDL2_mixer REQUIRED)
+If (NOT SDL2MIXER_FOUND)
+  Message (FATAL_ERROR "Couldn't find SDL2-mixer development files. On Debian-based systems (such as Ubuntu) you should install the 'libsdl2-mixer-dev' package.")
+Else (NOT SDL2MIXER_FOUND)
+  Include_Directories (${SDL2MIXER_INCLUDE_DIR})
+EndIf (NOT SDL2MIXER_FOUND)
 
-Find_Package (SDL_image REQUIRED)
-If (NOT SDLIMAGE_FOUND)
-  Message (FATAL_ERROR "Couldn't find SDL-image development files. On Debian-based systems (such as Ubuntu) you should install the 'libsdl-image1.2-dev' package.")
-Else (NOT SDLIMAGE_FOUND)
-  Include_Directories (${SDLIMAGE_INCLUDE_DIR})
-EndIf (NOT SDLIMAGE_FOUND)
+Find_Package (SDL2_image REQUIRED)
+If (NOT SDL2IMAGE_FOUND)
+  Message (FATAL_ERROR "Couldn't find SDL2-image development files. On Debian-based systems (such as Ubuntu) you should install the 'libsdl2-image-dev' package.")
+Else (NOT SDL2IMAGE_FOUND)
+  Include_Directories (${SDL2IMAGE_INCLUDE_DIR})
+EndIf (NOT SDL2IMAGE_FOUND)
 
-Find_Package (SDL_ttf REQUIRED)
-If (NOT SDLTTF_FOUND)
-  Message (FATAL_ERROR "Couldn't find SDL-ttf development files. On Debian-based systems (such as Ubuntu) you should install the 'libsdl-ttf2.0-dev' package.")
-Else (NOT SDLTTF_FOUND)
-  Include_Directories (${SDLTTF_INCLUDE_DIR})
-EndIf (NOT SDLTTF_FOUND)
+Find_Package (SDL2_ttf REQUIRED)
+If (NOT SDL2TTF_FOUND)
+  Message (FATAL_ERROR "Couldn't find SDL2-ttf development files. On Debian-based systems (such as Ubuntu) you should install the 'libsdl2-ttf-dev' package.")
+Else (NOT SDL2TTF_FOUND)
+  Include_Directories (${SDL2TTF_INCLUDE_DIR})
+EndIf (NOT SDL2TTF_FOUND)
 
-Find_Package (SDL_net REQUIRED)
-If (NOT SDLNET_FOUND)
-  Message (FATAL_ERROR "Couldn't find SDL-net development files. On Debian-based systems (such as Ubuntu) you should install the 'libsdl-net2.1-dev' package.")
-Else (NOT SDLNET_FOUND)
-  Include_Directories (${SDLNET_INCLUDE_DIR})
-EndIf (NOT SDLNET_FOUND)
+Find_Package (SDL2_net REQUIRED)
+If (NOT SDL2NET_FOUND)
+  Message (FATAL_ERROR "Couldn't find SDL2-net development files. On Debian-based systems (such as Ubuntu) you should install the 'libsdl2-net-dev' package.")
+Else (NOT SDL2NET_FOUND)
+  Include_Directories (${SDL2NET_INCLUDE_DIR})
+EndIf (NOT SDL2NET_FOUND)
 
 Find_Package (PhysFS REQUIRED)
 If (NOT PHYSFS_FOUND)
@@ -174,12 +174,12 @@ ENDIF (WIN32)
 
 Add_Executable (frost_and_flame ${FROST_AND_FLAME_SOURCES})
 
-# libSDLMain comes with libSDL if needed on certain platforms
-If (NOT SDLMAIN_LIBRARY)
-  Set (SDLMAIN_LIBRARY "")
-EndIf (NOT SDLMAIN_LIBRARY)
+# libSDL2Main comes with libSDL2 if needed on certain platforms
+If (NOT SDL2MAIN_LIBRARY)
+  Set (SDL2MAIN_LIBRARY "")
+EndIf (NOT SDL2MAIN_LIBRARY)
 
-Target_Link_Libraries (frost_and_flame ${CMAKE_LD_FLAGS} ${SDL_LIBRARY} ${SDLMIXER_LIBRARY} ${SDLIMAGE_LIBRARY} ${SDLTTF_LIBRARY} ${SDLNET_LIBRARY} ${SDLMAIN_LIBRARY} ${PHYSFS_INCLUDE_DIR} ${OPENGL_LIBRARIES})
+Target_Link_Libraries (frost_and_flame ${CMAKE_LD_FLAGS} ${SDL2_LIBRARY} ${SDL2MIXER_LIBRARY} ${SDL2IMAGE_LIBRARY} ${SDL2TTF_LIBRARY} ${SDL2NET_LIBRARY} ${SDL2MAIN_LIBRARY} ${PHYSFS_INCLUDE_DIR} ${OPENGL_LIBRARIES})
 
 
 # desktop file
