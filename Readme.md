@@ -42,6 +42,17 @@ Also required are the SDL2 development librarys.
 It is recommended that you build the DLL files (SDL2 etc...) with the same compiler that you use to build Frost and Flame.
 Also included is the CMakeLists.txt file, which should help with Linux builds.
 
+Compiling under Ubuntu:
+-----------------------
+Make sure you have all the relevant dependencies installed:
+sudo apt-get install libsdl2-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-ttf-dev libsdl2-net-dev libphysfs-dev
+
+Generate make file:
+cmake CMakeLists.txt
+
+Make:
+make
+
 Contributions:
 ------------
 Please note, I am not looking for code contributions. While I do appreciate the offer, this is a personal project I use for testing ideas and improving my code.
