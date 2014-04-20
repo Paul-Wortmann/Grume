@@ -38,7 +38,7 @@ ESCAPE   - Open / close the main menu.
 Compiling:
 ---------
 Included are the project files for use with the Code::Blocks IDE. (http://www.codeblocks.org/)
-Also required are the SDL2 development librarys.
+Also required are the SDL2 development libraries.
 It is recommended that you build the DLL files (SDL2 etc...) with the same compiler that you use to build Frost and Flame.
 Also included is the CMakeLists.txt file, which should help with Linux builds.
 
@@ -61,7 +61,7 @@ sudo apt-get install libsdl2-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-ttf
 Next you need to generate a make file, you can use the following command, make sure you are in the Frost and Flame directory:
 cmake CMakeLists.txt
 
-And finaly you can use make to build the Frost and Flame binary:
+And finally you can use make to build the Frost and Flame binary:
 make
 
 So in summery the commands are as follows:
