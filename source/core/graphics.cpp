@@ -28,27 +28,6 @@
 
 extern game_class game;
 
-graphics_class::graphics_class (void)
-{
-    graphics_class::resolution_x = 640;
-    graphics_class::resolution_y = 480;
-};
-
-void graphics_class::set_resolution (int x_res, int y_res)
-{
-    graphics_class::resolution_x = x_res;
-    graphics_class::resolution_y = y_res;
-};
-
-int graphics_class::get_resolution_x (void)
-{
-    return (graphics_class::resolution_x);
-};
-
-int graphics_class::get_resolution_y (void)
-{
-    return (graphics_class::resolution_y);
-};
 
 int   graphics_class::gl_to_res (float gl_coord, int max_res)
 {
