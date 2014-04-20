@@ -46,8 +46,6 @@ struct core_struct
     bool              debug;
     const char*       application_name;
     const char*       application_icon;
-    SDL_Window*       window_pointer;
-    SDL_GLContext     glcontext;
     int               FPS;
     int               last_ticks;
     bool              process_ready;
@@ -64,8 +62,7 @@ struct core_struct
     background_class  background;
     config_class      config;
     file_class        file;
-    graphics_class    graphics;
-    render_GL_struct  gfx;
+    render_GL_struct  graphics;
     io_class          io;
     log_class         log;
     math_class        math;

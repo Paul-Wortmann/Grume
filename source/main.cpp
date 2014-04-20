@@ -67,21 +67,9 @@ extern "C" int main(int argc, char** argv)
     game.language.load("data/configuration/languages/"+game.core.config.language+".txt");
 //  --- graphics ---
     game.core.log.file_write("Starting graphics subsystem...");
-    if (!game.core.graphics.init_sdl())
-    {
-        game.core.log.file_write("Loading default configuration...");
-        game.core.config.set_defaults();
-                game.core.log.file_write("Starting default graphics configuration...");
-            if (!game.core.graphics.init_sdl())
-            {
-                game.core.log.file_write("Terminating game...");
-                game.state = STATE_QUIT;
-            }
-    }
-    game.core.log.file_write("Starting OpenGL...");
-    game.core.graphics.init_gl(game.core.config.display_resolution_x,game.core.config.display_resolution_y);
+    GL_init_old();
     application_icon_surface = SDL_LoadBMP(game.core.application_icon);
-    SDL_SetWindowIcon(game.core.window_pointer, application_icon_surface);
+    SDL_SetWindowIcon(game.core.graphics.window, application_icon_surface);
     SDL_FreeSurface(application_icon_surface);
     SDL_ShowCursor(SDL_DISABLE);
     SDL_Init(SDL_INIT_EVENTS);
@@ -160,9 +148,6 @@ extern "C" int main(int argc, char** argv)
         game.UI_manager.UI_form_enable(UID_ACTIONBAR);
     }
 // --------------------------------------------------------------------------------------------------------------------------
-
-
-
     while (game.state != STATE_QUIT)
     {
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -202,7 +187,7 @@ extern "C" int main(int argc, char** argv)
         }
         else game.core.process_ready = false;
         game.texture_manager.draw(game.UI_manager.data.cursor.normal_arrow,false,game.core.io.mouse_x+0.012f,game.core.io.mouse_y-0.018f,0.001f,0.04f,0.04f,0.0f);
-        SDL_GL_SwapWindow(game.core.window_pointer);
+        SDL_GL_SwapWindow(game.core.graphics.window);
     }
 // --------------------------------------------------------------------------------------------------------------------------
 // | Application terminated, cleanup and free resources etc...

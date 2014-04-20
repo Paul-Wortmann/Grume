@@ -154,39 +154,65 @@ std::string pixel_format_from_int(int pfi)
 
 bool GL_init(void)
 {
+    /*
+    bool reload_textures = false;
+    if (game.core.window_pointer)
+    {
+        reload_textures = true;
+        SDL_DestroyWindow(game.core.window_pointer);
+    }
+    char SDL_VID_WIN_POS[] = "SDL_VIDEO_WINDOW_POS";
+    char SDL_VID_CENTERD[] = "SDL_VIDEO_CENTERED=1";
+    game.core.log.file_write("Initializing graphics subsystem...");
+    putenv(SDL_VID_WIN_POS);
+    putenv(SDL_VID_CENTERD);
+    if(SDL_Init(SDL_INIT_VIDEO) < 0)
+    {
+        game.core.log.file_write("Video initialization failed.");
+        return_value = false;
+    }
+*/
+
+
+
+
+
+
+
+
     bool return_value   = true;
     int  glew_status    = 0;
     int  version_status = 0;
-    game.core.gfx.number_VAO  = 1;
-    game.core.gfx.major_version_number = 0;
-    game.core.gfx.minor_version_number = 0;
+    game.core.graphics.number_VAO  = 1;
+    game.core.graphics.major_version_number = 0;
+    game.core.graphics.minor_version_number = 0;
     SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION,  RENDERER_CONTEXT_MAJOR);
     SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION,  RENDERER_CONTEXT_MINOR);
     SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
     SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
     SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE, 24);
     SDL_GL_SetSwapInterval(1);
-    game.core.gfx.current_display      = 0;
-    game.core.gfx.current_display_mode = 0;
-    game.core.gfx.number_displays      = SDL_GetNumVideoDisplays();
-    std::cout << "Number of attached displays -> " << game.core.gfx.number_displays << std::endl;
-    game.core.gfx.number_display_modes = SDL_GetNumDisplayModes(game.core.gfx.current_display);
-    SDL_DisplayMode *mode = new SDL_DisplayMode[game.core.gfx.number_display_modes+1];
-    std::cout << "Number of display modes -> " << game.core.gfx.number_display_modes << std::endl;
-    for (int i = 0; i < game.core.gfx.number_display_modes; i++)
+    game.core.graphics.current_display      = 0;
+    game.core.graphics.current_display_mode = 0;
+    game.core.graphics.number_displays      = SDL_GetNumVideoDisplays();
+    std::cout << "Number of attached displays -> " << game.core.graphics.number_displays << std::endl;
+    game.core.graphics.number_display_modes = SDL_GetNumDisplayModes(game.core.graphics.current_display);
+    SDL_DisplayMode *mode = new SDL_DisplayMode[game.core.graphics.number_display_modes+1];
+    std::cout << "Number of display modes -> " << game.core.graphics.number_display_modes << std::endl;
+    for (int i = 0; i < game.core.graphics.number_display_modes; i++)
     {
-        if (SDL_GetDisplayMode(game.core.gfx.current_display,i,&mode[i]) == 0) std::cout << "Display mode - " << i << " - x - " << mode[i].w << " - y - " << mode[i].h << " - refresh rate - " << mode[i].refresh_rate << std::endl;
+        if (SDL_GetDisplayMode(game.core.graphics.current_display,i,&mode[i]) == 0) std::cout << "Display mode - " << i << " - x - " << mode[i].w << " - y - " << mode[i].h << " - refresh rate - " << mode[i].refresh_rate << std::endl;
     }
-    SDL_GetDisplayMode(game.core.gfx.current_display,game.core.gfx.current_display_mode,&mode[game.core.gfx.current_display_mode]);
-    game.core.gfx.window_x    = mode[game.core.gfx.current_display_mode].w;
-    game.core.gfx.window_y    = mode[game.core.gfx.current_display_mode].h;
-    game.core.gfx.window_x    = 800;
-    game.core.gfx.window_y    = 600;
-    std::cout << "Setting display mode - " << game.core.gfx.current_display_mode << " - x - " << mode[game.core.gfx.current_display_mode].w << " - y - " << mode[game.core.gfx.current_display_mode].h << " - refresh rate - " << mode[game.core.gfx.current_display_mode].refresh_rate << std::endl;
-    std::cout << "Using pixel format - " << pixel_format_from_int(mode[game.core.gfx.current_display_mode].format) << std::endl;
+    SDL_GetDisplayMode(game.core.graphics.current_display,game.core.graphics.current_display_mode,&mode[game.core.graphics.current_display_mode]);
+    game.core.graphics.window_x    = mode[game.core.graphics.current_display_mode].w;
+    game.core.graphics.window_y    = mode[game.core.graphics.current_display_mode].h;
+    game.core.graphics.window_x    = 800;
+    game.core.graphics.window_y    = 600;
+    std::cout << "Setting display mode - " << game.core.graphics.current_display_mode << " - x - " << mode[game.core.graphics.current_display_mode].w << " - y - " << mode[game.core.graphics.current_display_mode].h << " - refresh rate - " << mode[game.core.graphics.current_display_mode].refresh_rate << std::endl;
+    std::cout << "Using pixel format - " << pixel_format_from_int(mode[game.core.graphics.current_display_mode].format) << std::endl;
     std::cout << "Creating window..." << std::endl;
-    game.core.gfx.window = SDL_CreateWindow(PROGRAM_NAME, SDL_WINDOWPOS_CENTERED,SDL_WINDOWPOS_CENTERED, game.core.gfx.window_x, game.core.gfx.window_y, SDL_WINDOW_SHOWN|SDL_WINDOW_OPENGL);
-    if (!game.core.gfx.window)
+    game.core.graphics.window = SDL_CreateWindow(PROGRAM_NAME, SDL_WINDOWPOS_CENTERED,SDL_WINDOWPOS_CENTERED, game.core.graphics.window_x, game.core.graphics.window_y, SDL_WINDOW_SHOWN|SDL_WINDOW_OPENGL);
+    if (!game.core.graphics.window)
     {
         return_value = false;
         std::cout << "FAIL -> Unable to create window." << std::endl;
@@ -194,12 +220,12 @@ bool GL_init(void)
     else
     {
         std::cout << "Starting OpenGL..." << std::endl;
-        game.core.gfx.context = SDL_GL_CreateContext(game.core.gfx.window);
-        version_status += SDL_GL_GetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, &game.core.gfx.major_version_number);
-        version_status += SDL_GL_GetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, &game.core.gfx.minor_version_number);
+        game.core.graphics.context = SDL_GL_CreateContext(game.core.graphics.window);
+        version_status += SDL_GL_GetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, &game.core.graphics.major_version_number);
+        version_status += SDL_GL_GetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, &game.core.graphics.minor_version_number);
         if (version_status == 0)
         {
-            std::cout << "OpenGl Version -> " << game.core.gfx.major_version_number << "." << game.core.gfx.minor_version_number << std::endl;
+            std::cout << "OpenGl Version -> " << game.core.graphics.major_version_number << "." << game.core.graphics.minor_version_number << std::endl;
             glewExperimental = GL_TRUE;
             glew_status = glewInit();
             if(glew_status != GLEW_OK)
@@ -216,53 +242,53 @@ bool GL_init(void)
                 if (game.core.debug) for (int j = 0; j < i; j++) std::cout << "Loaded OpenGL Extension -> " << glGetStringi(GL_EXTENSIONS, j) << std::endl;
                 glClearColor( 0.0f, 0.0f, 0.0f, 0.0f );
                 // Vertex Shader
-                game.core.gfx.vertexsource = game.core.file.filetobuf("data/shaders/aabb.vert");
-                game.core.gfx.vertexshader = glCreateShader(GL_VERTEX_SHADER);
-                glShaderSource(game.core.gfx.vertexshader, 1, (const GLchar**)&game.core.gfx.vertexsource, 0);
-                glCompileShader(game.core.gfx.vertexshader);
-                glGetShaderiv(game.core.gfx.vertexshader, GL_COMPILE_STATUS, &game.core.gfx.IsCompiled_VS);
-                if(game.core.gfx.IsCompiled_VS == false)
+                game.core.graphics.vertexsource = game.core.file.filetobuf("data/shaders/aabb.vert");
+                game.core.graphics.vertexshader = glCreateShader(GL_VERTEX_SHADER);
+                glShaderSource(game.core.graphics.vertexshader, 1, (const GLchar**)&game.core.graphics.vertexsource, 0);
+                glCompileShader(game.core.graphics.vertexshader);
+                glGetShaderiv(game.core.graphics.vertexshader, GL_COMPILE_STATUS, &game.core.graphics.IsCompiled_VS);
+                if(game.core.graphics.IsCompiled_VS == false)
                 {
                     int maxLength;
-                    glGetShaderiv(game.core.gfx.vertexshader, GL_INFO_LOG_LENGTH, &maxLength);
-                    game.core.gfx.vertexInfoLog = (char *)malloc(maxLength);
-                    glGetShaderInfoLog(game.core.gfx.vertexshader, maxLength, &maxLength, game.core.gfx.vertexInfoLog);
+                    glGetShaderiv(game.core.graphics.vertexshader, GL_INFO_LOG_LENGTH, &maxLength);
+                    game.core.graphics.vertexInfoLog = (char *)malloc(maxLength);
+                    glGetShaderInfoLog(game.core.graphics.vertexshader, maxLength, &maxLength, game.core.graphics.vertexInfoLog);
                     std::cout << "FAIL -> Error loading Vertex Shader." << std::endl;
-                    free(game.core.gfx.vertexInfoLog);
+                    free(game.core.graphics.vertexInfoLog);
                 }
                 // Fragment Shader
-                game.core.gfx.fragmentsource = game.core.file.filetobuf("data/shaders/aabb.frag");
-                game.core.gfx.fragmentshader = glCreateShader(GL_FRAGMENT_SHADER);
-                glShaderSource(game.core.gfx.fragmentshader, 1, (const GLchar**)&game.core.gfx.fragmentsource, 0);
-                glCompileShader(game.core.gfx.fragmentshader);
-                glGetShaderiv(game.core.gfx.fragmentshader, GL_COMPILE_STATUS, &game.core.gfx.IsCompiled_FS);
-                if(game.core.gfx.IsCompiled_FS == false)
+                game.core.graphics.fragmentsource = game.core.file.filetobuf("data/shaders/aabb.frag");
+                game.core.graphics.fragmentshader = glCreateShader(GL_FRAGMENT_SHADER);
+                glShaderSource(game.core.graphics.fragmentshader, 1, (const GLchar**)&game.core.graphics.fragmentsource, 0);
+                glCompileShader(game.core.graphics.fragmentshader);
+                glGetShaderiv(game.core.graphics.fragmentshader, GL_COMPILE_STATUS, &game.core.graphics.IsCompiled_FS);
+                if(game.core.graphics.IsCompiled_FS == false)
                 {
                     int maxLength;
-                    glGetShaderiv(game.core.gfx.fragmentshader, GL_INFO_LOG_LENGTH, &maxLength);
-                    game.core.gfx.fragmentInfoLog = (char *)malloc(maxLength);
-                    glGetShaderInfoLog(game.core.gfx.fragmentshader, maxLength, &maxLength, game.core.gfx.fragmentInfoLog);
+                    glGetShaderiv(game.core.graphics.fragmentshader, GL_INFO_LOG_LENGTH, &maxLength);
+                    game.core.graphics.fragmentInfoLog = (char *)malloc(maxLength);
+                    glGetShaderInfoLog(game.core.graphics.fragmentshader, maxLength, &maxLength, game.core.graphics.fragmentInfoLog);
                     std::cout << "FAIL -> Error loading Fragment Shader." << std::endl;
-                    free(game.core.gfx.fragmentInfoLog);
+                    free(game.core.graphics.fragmentInfoLog);
                 }
                 // Shader Program
-                game.core.gfx.shaderprogram = glCreateProgram();
-                glAttachShader(game.core.gfx.shaderprogram, game.core.gfx.vertexshader);
-                glAttachShader(game.core.gfx.shaderprogram, game.core.gfx.fragmentshader);
-                glBindAttribLocation(game.core.gfx.shaderprogram, 0, "in_Position");
-                glBindAttribLocation(game.core.gfx.shaderprogram, 1, "in_Color");
-                glLinkProgram(game.core.gfx.shaderprogram);
-                glGetProgramiv(game.core.gfx.shaderprogram, GL_LINK_STATUS, (int *)&game.core.gfx.IsLinked);
-                if(game.core.gfx.IsLinked == false)
+                game.core.graphics.shaderprogram = glCreateProgram();
+                glAttachShader(game.core.graphics.shaderprogram, game.core.graphics.vertexshader);
+                glAttachShader(game.core.graphics.shaderprogram, game.core.graphics.fragmentshader);
+                glBindAttribLocation(game.core.graphics.shaderprogram, 0, "in_Position");
+                glBindAttribLocation(game.core.graphics.shaderprogram, 1, "in_Color");
+                glLinkProgram(game.core.graphics.shaderprogram);
+                glGetProgramiv(game.core.graphics.shaderprogram, GL_LINK_STATUS, (int *)&game.core.graphics.IsLinked);
+                if(game.core.graphics.IsLinked == false)
                 {
                     int maxLength;
-                    glGetProgramiv(game.core.gfx.shaderprogram, GL_INFO_LOG_LENGTH, &maxLength);
-                    game.core.gfx.shaderProgramInfoLog = (char *)malloc(maxLength);
-                    glGetProgramInfoLog(game.core.gfx.shaderprogram, maxLength, &maxLength, game.core.gfx.shaderProgramInfoLog);
+                    glGetProgramiv(game.core.graphics.shaderprogram, GL_INFO_LOG_LENGTH, &maxLength);
+                    game.core.graphics.shaderProgramInfoLog = (char *)malloc(maxLength);
+                    glGetProgramInfoLog(game.core.graphics.shaderprogram, maxLength, &maxLength, game.core.graphics.shaderProgramInfoLog);
                     std::cout << "FAIL -> Shader program error." << std::endl;
-                    free(game.core.gfx.shaderProgramInfoLog);
+                    free(game.core.graphics.shaderProgramInfoLog);
                 }
-                glUseProgram(game.core.gfx.shaderprogram);
+                glUseProgram(game.core.graphics.shaderprogram);
 
                 /*--------------------------------------*/
                 GL_object_struct *object_1 = new GL_object_struct;
@@ -282,37 +308,39 @@ bool GL_init(void)
                 object_1->color[ 9] =  1.0f; object_1->color[10] =  1.0f; object_1->color[11] =  1.0f;
                 GL_init_vao(*object_1);
                 /*--------------------------------------*/
-                game.core.gfx.object_vao = object_1;
+                game.core.graphics.object_vao = object_1;
             }
         }
         else
         {
             return_value = false;
-            std::cout << "FAIL -> Unable to set OpenGl Version -> " << game.core.gfx.major_version_number << "." << game.core.gfx.minor_version_number << std::endl;
+            std::cout << "FAIL -> Unable to set OpenGl Version -> " << game.core.graphics.major_version_number << "." << game.core.graphics.minor_version_number << std::endl;
         }
     }
+    bool reload_textures = false;
+    if (reload_textures) game.texture_manager.reload_textures();
     return (return_value);
 };
 
 bool GL_deinit(void)
 {
     glUseProgram(0);
-    glDetachShader(game.core.gfx.shaderprogram, game.core.gfx.vertexshader);
-    glDetachShader(game.core.gfx.shaderprogram, game.core.gfx.fragmentshader);
-    glDeleteProgram(game.core.gfx.shaderprogram);
-    glDeleteShader(game.core.gfx.vertexshader);
-    glDeleteShader(game.core.gfx.fragmentshader);
-    if (game.core.gfx.number_VAO > 0)
+    glDetachShader(game.core.graphics.shaderprogram, game.core.graphics.vertexshader);
+    glDetachShader(game.core.graphics.shaderprogram, game.core.graphics.fragmentshader);
+    glDeleteProgram(game.core.graphics.shaderprogram);
+    glDeleteShader(game.core.graphics.vertexshader);
+    glDeleteShader(game.core.graphics.fragmentshader);
+    if (game.core.graphics.number_VAO > 0)
     {
-        for (int i = 0; i < game.core.gfx.number_VAO; i++)
+        for (int i = 0; i < game.core.graphics.number_VAO; i++)
         {
             glDisableVertexAttribArray(i);
         }
-        if (game.core.gfx.object_vao->number_of_vbo > 0) glDeleteBuffers(game.core.gfx.object_vao->number_of_vbo, game.core.gfx.object_vao->vbo_data);
-        if (game.core.gfx.number_VAO > 0) glDeleteVertexArrays(game.core.gfx.number_VAO, &game.core.gfx.object_vao->vao_data);
+        if (game.core.graphics.object_vao->number_of_vbo > 0) glDeleteBuffers(game.core.graphics.object_vao->number_of_vbo, game.core.graphics.object_vao->vbo_data);
+        if (game.core.graphics.number_VAO > 0) glDeleteVertexArrays(game.core.graphics.number_VAO, &game.core.graphics.object_vao->vao_data);
     }
-    free(game.core.gfx.vertexsource);
-    free(game.core.gfx.fragmentsource);
+    free(game.core.graphics.vertexsource);
+    free(game.core.graphics.fragmentsource);
 };
 
 bool GL_push_renderer_vbo(GL_object_struct &GL_object, GLuint &vao_id)
@@ -340,10 +368,230 @@ bool GL_init_vao(GL_object_struct &GL_object)
 bool GL_render(void)
 {
     glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
-    glBindVertexArray(game.core.gfx.object_vao->vao_data);
-    glDrawArrays( GL_TRIANGLE_FAN, 0, game.core.gfx.object_vao->number_of_vertex);
-    SDL_GL_SwapWindow(game.core.gfx.window);
+    glBindVertexArray(game.core.graphics.object_vao->vao_data);
+    glDrawArrays( GL_TRIANGLE_FAN, 0, game.core.graphics.object_vao->number_of_vertex);
+    SDL_GL_SwapWindow(game.core.graphics.window);
 };
 
 
 
+/*
+void graphics_class::init_gl (int x_res, int y_res)
+{
+    glViewport(0, 0,x_res,y_res);
+    glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+    glClearDepth(1.0);
+    glMatrixMode(GL_PROJECTION);
+    glLoadIdentity();
+    glMatrixMode(GL_MODELVIEW);
+    glLoadIdentity();
+    glEnable(GL_TEXTURE_2D);
+    glEnable(GL_DEPTH_TEST);
+    glDepthFunc(GL_LESS);
+    glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);
+    glEnable(GL_BLEND);
+    glBlendFunc(GL_SRC_ALPHA,GL_ONE_MINUS_SRC_ALPHA);
+    glShadeModel(GL_SMOOTH);
+	glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_FASTEST);
+    //--------------------------------------------------------------------------------------------------------------------
+	// OpenGL Lighting Setup
+	glEnable(GL_LIGHTING);
+    float global_ambient[] = { 4.0f, 4.0f, 4.0f, 4.0f };
+    glLightModelfv(GL_LIGHT_MODEL_AMBIENT, global_ambient);
+
+	glEnable(GL_LIGHT0);
+	float ambientLight0[]  = { 1.0f, 1.0f, 1.0f, 1.0f };
+	float diffuseLight0[]  = { 1.0f, 1.0f, 1.0f, 1.0f };
+	float specularLight0[] = { 1.0f, 1.0f, 1.0f, 1.0f };
+	float position0[]      = { 0.0f, 0.0f, 0.0f, 1.0f };
+	glLightfv(GL_LIGHT0, GL_AMBIENT,  ambientLight0);
+	glLightfv(GL_LIGHT0, GL_DIFFUSE,  diffuseLight0);
+	glLightfv(GL_LIGHT0, GL_SPECULAR, specularLight0);
+	glLightfv(GL_LIGHT0, GL_POSITION, position0);
+    // Position and direction (spotlight)
+	//glEnable(GL_LIGHT1);
+    //float posLight1[]     = {  0.0f,  0.0f, -1.0f,  1.0f };
+    //float spotDirection[] = {  0.0f,  0.0f, 1.0f };
+	//float ambientLight1[]  = { 1.0f, 0.5f, 0.5f, 1.0f };
+	//float diffuseLight1[]  = { 1.0f, 0.5f, 0.5f, 1.0f };
+	//float specularLight1[] = { 1.0f, 0.5f, 0.5f, 1.0f };
+    //glLightfv( GL_LIGHT1, GL_POSITION, posLight1 );
+    //glLightf ( GL_LIGHT1, GL_SPOT_CUTOFF, 60.0F );
+    //glLightfv( GL_LIGHT1, GL_SPOT_DIRECTION, spotDirection );
+	//glLightfv( GL_LIGHT1, GL_AMBIENT,  ambientLight1);
+	//glLightfv( GL_LIGHT1, GL_DIFFUSE,  diffuseLight1);
+	//glLightfv( GL_LIGHT1, GL_SPECULAR, specularLight1);
+    //glLightf ( GL_LIGHT1, GL_CONSTANT_ATTENUATION, 1.0f );
+	//glEnable(GL_LIGHT1);
+	//float ambientLight1[]  = { 1.0f, 0.5f, 0.5f, 1.0f };
+	//float diffuseLight1[]  = { 1.0f, 0.5f, 0.5f, 1.0f };
+	//float specularLight1[] = { 1.0f, 0.5f, 0.5f, 1.0f };
+	//float position1[]      = { 1.5f, 1.0f, 2.0f, 1.0f };
+	//glLightfv(GL_LIGHT1, GL_AMBIENT,  ambientLight1);
+	//glLightfv(GL_LIGHT1, GL_DIFFUSE,  diffuseLight1);
+	//glLightfv(GL_LIGHT1, GL_SPECULAR, specularLight1);
+	//glLightfv(GL_LIGHT1, GL_POSITION, position1);
+
+
+
+    glDisable(GL_DEPTH_TEST);
+}
+
+
+bool graphics_class::init_sdl (void)
+{
+    bool reload_textures = false;
+    if (game.core.window_pointer)
+    {
+        reload_textures = true;
+        SDL_DestroyWindow(game.core.window_pointer);
+    }
+    char SDL_VID_WIN_POS[] = "SDL_VIDEO_WINDOW_POS";
+    char SDL_VID_CENTERD[] = "SDL_VIDEO_CENTERED=1";
+    bool return_value = true;
+    game.core.log.file_write("Initializing graphics subsystem...");
+    putenv(SDL_VID_WIN_POS);
+    putenv(SDL_VID_CENTERD);
+    if(SDL_Init(SDL_INIT_VIDEO) < 0)
+    {
+        game.core.log.file_write("Video initialization failed.");
+        return_value = false;
+    }
+    //game.core.config.display_info = SDL_GetVideoInfo( );
+    //if(!game.core.config.display_info)
+    //{
+    //    game.core.log.file_write("Video query failed.");
+    //    return_value = false;
+    //}
+    //game.core.config.display_bpp    = game.core.config.display_info->vfmt->BitsPerPixel;
+    SDL_GL_SetAttribute( SDL_GL_RED_SIZE, 8 );
+    SDL_GL_SetAttribute( SDL_GL_GREEN_SIZE, 8 );
+    SDL_GL_SetAttribute( SDL_GL_BLUE_SIZE, 8 );
+    SDL_GL_SetAttribute( SDL_GL_DEPTH_SIZE, 16 );
+    //SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION,  RENDERER_CONTEXT_MAJOR);
+    //SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION,  RENDERER_CONTEXT_MINOR);
+    SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
+    SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
+    SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE, 24);
+    SDL_GL_SetSwapInterval(1);
+    game.core.config.display_flags = SDL_WINDOW_SHOWN | SDL_WINDOW_OPENGL;
+    if (game.core.config.display_fullscreen) game.core.config.display_flags |= SDL_WINDOW_FULLSCREEN;
+    game.core.window_pointer = SDL_CreateWindow(game.core.application_name,SDL_WINDOWPOS_CENTERED,SDL_WINDOWPOS_CENTERED,game.core.config.display_resolution_x, game.core.config.display_resolution_y, game.core.config.display_flags);
+
+    game.core.glcontext = SDL_GL_CreateContext(game.core.window_pointer);
+    if (!game.core.window_pointer)
+    {
+        game.core.log.file_write("Video mode set failed.");
+        return_value = false;
+    }
+    if (reload_textures) game.texture_manager.reload_textures();
+    return (return_value);
+};
+
+*/
+
+bool GL_init_old(void)
+{
+    bool reload_textures = false;
+    if (game.core.graphics.window)
+    {
+        reload_textures = true;
+        SDL_DestroyWindow(game.core.graphics.window);
+    }
+    char SDL_VID_WIN_POS[] = "SDL_VIDEO_WINDOW_POS";
+    char SDL_VID_CENTERD[] = "SDL_VIDEO_CENTERED=1";
+    bool return_value = true;
+    game.core.log.file_write("Initializing graphics subsystem...");
+    putenv(SDL_VID_WIN_POS);
+    putenv(SDL_VID_CENTERD);
+    if(SDL_Init(SDL_INIT_VIDEO) < 0)
+    {
+        game.core.log.file_write("Video initialization failed.");
+        return_value = false;
+    }
+    //game.core.config.display_info = SDL_GetVideoInfo( );
+    //if(!game.core.config.display_info)
+    //{
+    //    game.core.log.file_write("Video query failed.");
+    //    return_value = false;
+    //}
+    //game.core.config.display_bpp    = game.core.config.display_info->vfmt->BitsPerPixel;
+    SDL_GL_SetAttribute( SDL_GL_RED_SIZE, 8 );
+    SDL_GL_SetAttribute( SDL_GL_GREEN_SIZE, 8 );
+    SDL_GL_SetAttribute( SDL_GL_BLUE_SIZE, 8 );
+    SDL_GL_SetAttribute( SDL_GL_DEPTH_SIZE, 16 );
+    //SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION,  RENDERER_CONTEXT_MAJOR);
+    //SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION,  RENDERER_CONTEXT_MINOR);
+    SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
+    SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
+    SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE, 24);
+    SDL_GL_SetSwapInterval(1);
+    game.core.config.display_flags = SDL_WINDOW_SHOWN | SDL_WINDOW_OPENGL;
+    if (game.core.config.display_fullscreen) game.core.config.display_flags |= SDL_WINDOW_FULLSCREEN;
+    game.core.graphics.window = SDL_CreateWindow(game.core.application_name,SDL_WINDOWPOS_CENTERED,SDL_WINDOWPOS_CENTERED,game.core.config.display_resolution_x, game.core.config.display_resolution_y, game.core.config.display_flags);
+
+    game.core.graphics.context = SDL_GL_CreateContext(game.core.graphics.window);
+    if (!game.core.graphics.window)
+    {
+        game.core.log.file_write("Video mode set failed.");
+        return_value = false;
+    }
+    if (reload_textures) game.texture_manager.reload_textures();
+    glViewport(0, 0,game.core.config.display_resolution_x,game.core.config.display_resolution_y);
+    glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+    glClearDepth(1.0);
+    glMatrixMode(GL_PROJECTION);
+    glLoadIdentity();
+    glMatrixMode(GL_MODELVIEW);
+    glLoadIdentity();
+    glEnable(GL_TEXTURE_2D);
+    glEnable(GL_DEPTH_TEST);
+    glDepthFunc(GL_LESS);
+    glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);
+    glEnable(GL_BLEND);
+    glBlendFunc(GL_SRC_ALPHA,GL_ONE_MINUS_SRC_ALPHA);
+    glShadeModel(GL_SMOOTH);
+	glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_FASTEST);
+    //--------------------------------------------------------------------------------------------------------------------
+	// OpenGL Lighting Setup
+	glEnable(GL_LIGHTING);
+    float global_ambient[] = { 4.0f, 4.0f, 4.0f, 4.0f };
+    glLightModelfv(GL_LIGHT_MODEL_AMBIENT, global_ambient);
+
+	glEnable(GL_LIGHT0);
+	float ambientLight0[]  = { 1.0f, 1.0f, 1.0f, 1.0f };
+	float diffuseLight0[]  = { 1.0f, 1.0f, 1.0f, 1.0f };
+	float specularLight0[] = { 1.0f, 1.0f, 1.0f, 1.0f };
+	float position0[]      = { 0.0f, 0.0f, 0.0f, 1.0f };
+	glLightfv(GL_LIGHT0, GL_AMBIENT,  ambientLight0);
+	glLightfv(GL_LIGHT0, GL_DIFFUSE,  diffuseLight0);
+	glLightfv(GL_LIGHT0, GL_SPECULAR, specularLight0);
+	glLightfv(GL_LIGHT0, GL_POSITION, position0);
+    // Position and direction (spotlight)
+	//glEnable(GL_LIGHT1);
+    //float posLight1[]     = {  0.0f,  0.0f, -1.0f,  1.0f };
+    //float spotDirection[] = {  0.0f,  0.0f, 1.0f };
+	//float ambientLight1[]  = { 1.0f, 0.5f, 0.5f, 1.0f };
+	//float diffuseLight1[]  = { 1.0f, 0.5f, 0.5f, 1.0f };
+	//float specularLight1[] = { 1.0f, 0.5f, 0.5f, 1.0f };
+    //glLightfv( GL_LIGHT1, GL_POSITION, posLight1 );
+    //glLightf ( GL_LIGHT1, GL_SPOT_CUTOFF, 60.0F );
+    //glLightfv( GL_LIGHT1, GL_SPOT_DIRECTION, spotDirection );
+	//glLightfv( GL_LIGHT1, GL_AMBIENT,  ambientLight1);
+	//glLightfv( GL_LIGHT1, GL_DIFFUSE,  diffuseLight1);
+	//glLightfv( GL_LIGHT1, GL_SPECULAR, specularLight1);
+    //glLightf ( GL_LIGHT1, GL_CONSTANT_ATTENUATION, 1.0f );
+	//glEnable(GL_LIGHT1);
+	//float ambientLight1[]  = { 1.0f, 0.5f, 0.5f, 1.0f };
+	//float diffuseLight1[]  = { 1.0f, 0.5f, 0.5f, 1.0f };
+	//float specularLight1[] = { 1.0f, 0.5f, 0.5f, 1.0f };
+	//float position1[]      = { 1.5f, 1.0f, 2.0f, 1.0f };
+	//glLightfv(GL_LIGHT1, GL_AMBIENT,  ambientLight1);
+	//glLightfv(GL_LIGHT1, GL_DIFFUSE,  diffuseLight1);
+	//glLightfv(GL_LIGHT1, GL_SPECULAR, specularLight1);
+	//glLightfv(GL_LIGHT1, GL_POSITION, position1);
+
+
+
+    glDisable(GL_DEPTH_TEST);
+}

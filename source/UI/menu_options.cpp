@@ -838,6 +838,7 @@ void process_menu_options(UI_form_struct *UI_form_pointer)
                     game.core.config.display_resolution_x = 1920;
                     game.core.config.display_resolution_y = 1080;
                 }
+                /*
                 if (!game.core.graphics.init_sdl())
                 {
                     game.core.log.file_write("Reverting graphics configuration...");
@@ -864,15 +865,16 @@ void process_menu_options(UI_form_struct *UI_form_pointer)
                     UI_form_pointer->data.element[7].selected                  = false;
                     UI_form_pointer->data.element[temp_data_value+3].selected  = true;
                 }
-                reset_display = true;
+                */
+                //reset_display = true;
             }
         }
         if (reset_display)
         {
             game.core.log.file_write("Reinitializing SDL...");
-            game.core.graphics.init_sdl();
+            //game.core.graphics.init_sdl();
             game.core.log.file_write("Reinitializing OpenGL...");
-            game.core.graphics.init_gl();
+            //game.core.graphics.init_gl();
             game.loading_screen.display("data/loading_screen.png");
             game.core.log.file_write("Reloading resources....");
             game.texture_manager.reload_textures();

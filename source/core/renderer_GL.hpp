@@ -30,7 +30,7 @@
 #include "core.hpp"
 
 #define PROGRAM_NAME "Frost and Flame -> OpenGL 3.x+ test renderer."
-#define RENDERER_CONTEXT_MAJOR 4
+#define RENDERER_CONTEXT_MAJOR 1
 #define RENDERER_CONTEXT_MINOR 2
 
 
@@ -75,6 +75,7 @@ struct render_GL_struct
 };
 
 bool GL_init(void);
+bool GL_init_old(void);
 bool GL_deinit(void);
 bool GL_push_renderer_vbo(GL_object_struct &GL_object, GLuint &vao_id);
 bool GL_init_vao(GL_object_struct &GL_object);
