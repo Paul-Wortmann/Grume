@@ -22,10 +22,16 @@
  * @date 2011-11-11
  */
 
-//#include <physfs.h>
-#include "game/game.hpp"
+#include <GL/glew.h>
 #include <SDL2/SDL.h>
+#include <SDL2/SDL_image.h>
+#include <SDL2/SDL_mixer.h>
+#include <SDL2/SDL_net.h>
+#include <SDL2/SDL_opengl.h>
+//#include <physfs.h>
+#include "core/core.hpp"
 #include "core/misc.hpp"
+#include "game/game.hpp"
 
 extern game_class    game;
 
@@ -38,7 +44,7 @@ SDL_Surface*             application_icon_surface;
 extern "C" int main(int argc, char** argv)
 {
 //  --- Application initialization ---
-    game.debug = true;
+    game.core.debug = true;
     game.core.application_name = "Frost and Flame V0.30 - www.physhexgames.co.nr";
     game.core.application_icon = "data/icon.bmp";
     game.core.log.file_set("frost_and_flame.log");
@@ -118,13 +124,13 @@ extern "C" int main(int argc, char** argv)
     SDL_Init(SDL_INIT_TIMER);
     game.core.timer.start();
     game.core.last_ticks = game.core.timer.getticks();
-    if (game.debug) game.core.log.file_write("Developer mode enabled.");
+    if (game.core.debug) game.core.log.file_write("Developer mode enabled.");
 // --------------------------------------------------------------------------------------------------------------------------
 // | Main application loop
 // --------------------------------------------------------------------------------------------------------------------------
 
     // --- TEST ---
-    if (game.debug)
+    if (game.core.debug)
     {
         game.state = STATE_GAME;
         if (game.music_manager.next_track)

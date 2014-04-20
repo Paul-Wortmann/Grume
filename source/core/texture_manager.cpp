@@ -22,6 +22,7 @@
  * @date 2011-11-11
  */
 
+#include <GL/gl.h>
 #include "texture_manager.hpp"
 #include "../game/game.hpp"
 

@@ -69,10 +69,8 @@ class game_class
 {
     private:
     public:
-        bool                       debug;
-        // ----------------------------------------------------------
         command_line_parser_class   command_line;
-        core_class                  core;
+        core_struct                 core;
         effect_class                effect;
         effect_manager_class        effect_manager;
         int                         event;

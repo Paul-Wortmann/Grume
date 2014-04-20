@@ -25,6 +25,9 @@
 #ifndef CORE_H
 #define CORE_H
 
+#include <iostream>
+#include <string>
+
 #include "background.hpp"
 #include "config.hpp"
 #include "file.hpp"
@@ -33,40 +36,42 @@
 #include "log.hpp"
 #include "math.hpp"
 #include "physics.hpp"
+#include "renderer_GL.hpp"
 #include "timer.hpp"
 
 #define RETURN_FAIL -1
 
-class core_class
+struct core_struct
 {
-    public:
-        const char*       application_name;
-        const char*       application_icon;
-        SDL_Window*       window_pointer;
-        SDL_GLContext     glcontext;
-        int               FPS;
-        int               last_ticks;
-        bool              process_ready;
-        bool              game_paused;
-        bool              game_active;
-        bool              game_resume;
-        bool              game_menu_active;
-        bool              quest_log_active;
-        bool              character_active;
-        bool              skillbook_active;
-        bool              inventory_active;
-        bool              equipment_active;
-        bool              npcvendor_active;
-        background_class  background;
-        config_class      config;
-        file_class        file;
-        graphics_class    graphics;
-        io_class          io;
-        log_class         log;
-        math_class        math;
-        physics_class     physics;
-        SDL_Event         event;
-        timer_class       timer;
+    bool              debug;
+    const char*       application_name;
+    const char*       application_icon;
+    SDL_Window*       window_pointer;
+    SDL_GLContext     glcontext;
+    int               FPS;
+    int               last_ticks;
+    bool              process_ready;
+    bool              game_paused;
+    bool              game_active;
+    bool              game_resume;
+    bool              game_menu_active;
+    bool              quest_log_active;
+    bool              character_active;
+    bool              skillbook_active;
+    bool              inventory_active;
+    bool              equipment_active;
+    bool              npcvendor_active;
+    background_class  background;
+    config_class      config;
+    file_class        file;
+    graphics_class    graphics;
+    render_GL_struct  gfx;
+    io_class          io;
+    log_class         log;
+    math_class        math;
+    physics_class     physics;
+    SDL_Event         event;
+    timer_class       timer;
 };
 
 #endif //CORE_H

@@ -762,7 +762,7 @@ void map_2D_class::apply_tileset(fmx_map_type *fmx_map_pointer, int pre_defined_
             break;
         }
     }
-    if ((game.debug) && (fmx_map_pointer->path_data != NULL))
+    if ((game.core.debug) && (fmx_map_pointer->path_data != NULL))
     {
         for (int tile_count = 0; tile_count < fmx_map_pointer->data.number_of_tiles; tile_count++)
         {

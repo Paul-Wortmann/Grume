@@ -22,9 +22,6 @@
  * @date 2011-11-11
  */
 
-#include <GL/gl.h>
-#include <SDL2/SDL.h>
-#include <SDL2/SDL_image.h>
 #include <iostream>
 #include <fstream>
 #include <stdio.h>

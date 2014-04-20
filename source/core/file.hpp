@@ -37,6 +37,7 @@ class file_class
         std::string path_get        (std::string file_name);
         std::string path_remove     (std::string file_name);
         std::string path_add        (std::string file_name, std::string path_name);
+        char*       filetobuf       (std::string file_name);
 };
 
 

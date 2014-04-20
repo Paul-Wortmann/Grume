@@ -24,7 +24,9 @@
 
 #include <fstream>
 #include "config.hpp"
+#include "../game/game.hpp"
 
+extern game_class    game;
 
 config_class::config_class(void)
 {

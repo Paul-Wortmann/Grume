@@ -25,6 +25,9 @@
 #include <string>
 #include "core.hpp"
 #include "file.hpp"
+#include "../game/game.hpp"
+
+extern game_class game;
 
 file_class::file_class (void)
 {
@@ -114,8 +117,26 @@ std::string file_class::path_add (std::string file_name, std::string path_name)
     return (path_name+file_name);
 };
 
-
-
+char* file_class::filetobuf (std::string file_name)
+{
+    FILE *file_pointer;
+    long length;
+    char *buf;
+    file_pointer = fopen(file_name.c_str(), "rb");
+    if (!file_pointer)
+    {
+        game.core.log.file_write("Failed to load file into buffer -> ",file_name);
+        return NULL;
+    }
+    fseek(file_pointer, 0, SEEK_END);
+    length = ftell(file_pointer);
+    buf = (char*)malloc(length+1);
+    fseek(file_pointer, 0, SEEK_SET);
+    fread(buf, length, 1, file_pointer);
+    fclose(file_pointer);
+    buf[length] = 0;
+    return buf;
+}
 
 
 

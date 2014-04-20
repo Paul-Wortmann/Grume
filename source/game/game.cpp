@@ -31,7 +31,6 @@ fmx_map_type      fmx_map;
 
 game_class::game_class(void)
 {
-    game_class::debug = false;
     game_class::event = 0;
     game_class::state = STATE_MENU;
 };
