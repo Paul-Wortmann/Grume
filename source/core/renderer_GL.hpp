@@ -47,10 +47,8 @@ struct GL_object_struct
 
 struct render_GL_struct
 {
-    int window_x;
-    int window_y;
-    int major_version_number;
-    int minor_version_number;
+    int GL_major_version_number;
+    int GL_minor_version_number;
     int number_VAO;
     GL_object_struct *object_vao;
     SDL_Window*   window;

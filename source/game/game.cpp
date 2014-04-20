@@ -465,7 +465,7 @@ void game_class::process(void)
             game.core.io.key_t                     = false;
             game.core.io.keyboard_delay_count      = 0;
         }
-        if (game.core.io.key_x) // quit!!!
+        if ((game.core.debug)&&(game.core.io.key_x)) // quit!!!
         {
             game.state = STATE_QUIT;
             game.core.io.key_x                     = false;

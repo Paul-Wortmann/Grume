@@ -68,6 +68,7 @@ extern "C" int main(int argc, char** argv)
 //  --- graphics ---
     game.core.log.file_write("Starting graphics subsystem...");
     GL_init_old();
+    //GL_init();
     application_icon_surface = SDL_LoadBMP(game.core.application_icon);
     SDL_SetWindowIcon(game.core.graphics.window, application_icon_surface);
     SDL_FreeSurface(application_icon_surface);
