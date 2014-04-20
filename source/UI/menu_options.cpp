@@ -753,7 +753,7 @@ void process_menu_options(UI_form_struct *UI_form_pointer)
                 if (game.core.config.display_fullscreen)
                 {
                     int element_number = 17;
-                    game.core.config.display_fullscreen                                     = false;
+                    //game.core.config.display_fullscreen                                     = false;
                     UI_form_pointer->data.element[element_number].value = 0.0f;
                     UI_form_pointer->data.element[element_number].texture.normal        = game.texture_manager.add_texture("data/textures/UI/menu/red_button.png");
                     UI_form_pointer->data.element[element_number].texture.highlighted   = game.texture_manager.add_texture("data/textures/UI/menu/red_button_highlighted.png");
@@ -786,7 +786,7 @@ void process_menu_options(UI_form_struct *UI_form_pointer)
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
         }
-        if (resolution_selection)
+        if (1==2)//(resolution_selection)
         {
             int   temp_resolution      = 0;
             int   temp_resolution_x    = 0;
@@ -871,6 +871,7 @@ void process_menu_options(UI_form_struct *UI_form_pointer)
         }
         if (reset_display)
         {
+            /*
             game.core.log.file_write("Reinitializing SDL...");
             //game.core.graphics.init_sdl();
             game.core.log.file_write("Reinitializing OpenGL...");
@@ -879,6 +880,7 @@ void process_menu_options(UI_form_struct *UI_form_pointer)
             game.core.log.file_write("Reloading resources....");
             game.texture_manager.reload_textures();
             update_menu_game_new(UID_MENU_GAME_NEW);
+            */
         }
     }
     if (UI_form_pointer->data.event.id != EVENT_NONE)
