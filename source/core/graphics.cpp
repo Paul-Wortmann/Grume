@@ -29,12 +29,12 @@
 extern game_class game;
 
 
-int   graphics_class::gl_to_res (float gl_coord, int max_res)
+int gl_to_res (float gl_coord, int max_res)
 {
    return ((gl_coord+1)*(max_res / 2));
 }
 
-float graphics_class::res_to_gl (int res_coord, int max_res)
+float res_to_gl (int res_coord, int max_res)
 {
    return ((((float) res_coord / (float) max_res) *2) -1);
 }

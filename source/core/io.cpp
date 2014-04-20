@@ -25,6 +25,7 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_events.h>
 #include "../game/game.hpp"
+#include "graphics.hpp"
 #include "io.hpp"
 
 extern game_class          game;
@@ -174,10 +175,10 @@ bool events_process(void)
         if (game.core.event.type == SDL_MOUSEMOTION)
         {
             game.core.config.mouse_autohide_process(true);
-            game.core.io.mouse_x      = game.core.graphics.res_to_gl(game.core.event.motion.x,game.core.config.mouse_resolution_x);
-            game.core.io.mouse_y      = game.core.graphics.res_to_gl(game.core.event.motion.y,game.core.config.mouse_resolution_y);
-            game.core.io.mouse_xrel   = game.core.graphics.res_to_gl(game.core.event.motion.xrel,game.core.config.mouse_resolution_x);
-            game.core.io.mouse_yrel   = game.core.graphics.res_to_gl(game.core.event.motion.yrel,game.core.config.mouse_resolution_y);
+            game.core.io.mouse_x      = res_to_gl(game.core.event.motion.x,game.core.config.mouse_resolution_x);
+            game.core.io.mouse_y      = res_to_gl(game.core.event.motion.y,game.core.config.mouse_resolution_y);
+            game.core.io.mouse_xrel   = res_to_gl(game.core.event.motion.xrel,game.core.config.mouse_resolution_x);
+            game.core.io.mouse_yrel   = res_to_gl(game.core.event.motion.yrel,game.core.config.mouse_resolution_y);
             game.core.io.mouse_y *= -1;
         }
         if (game.core.event.type == SDL_MOUSEWHEEL)
