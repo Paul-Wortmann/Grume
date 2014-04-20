@@ -213,6 +213,8 @@
 		<Unit filename="source/core/pathfinding.hpp" />
 		<Unit filename="source/core/physics.cpp" />
 		<Unit filename="source/core/physics.hpp" />
+		<Unit filename="source/core/renderer_GL.cpp" />
+		<Unit filename="source/core/renderer_GL.hpp" />
 		<Unit filename="source/core/rs232.cpp" />
 		<Unit filename="source/core/rs232.hpp" />
 		<Unit filename="source/core/savegame.cpp" />
