@@ -94,13 +94,21 @@ EndIf (NOT SDL2TTF_FOUND)
 #   link_directories(${PHYSFS_LIBRARIES})
 # EndIf (NOT PHYSFS_FOUND)
 
-find_package(OpenGL)
+find_package(OpenGL REQUIRED)
 if (OPENGL_FOUND)
   INCLUDE_DIRECTORIES(${OPENGL_INCLUDE_DIR})
   link_directories(${OPENGL_LIBRARIES})
 Else (OPENGL_FOUND)
   Message (FATAL_ERROR "Couldn't find OpenGl development files. On Debian-based systems (such as Ubuntu) you should install the OpenGL development package.")
 endif (OPENGL_FOUND)
+
+find_package(GLEW REQUIRED)
+if (GLEW_FOUND)
+  INCLUDE_DIRECTORIES(${GLEW_INCLUDE_DIR})
+  link_directories(${GLEW_LIBRARIES})
+Else (GLEW_FOUND)
+  Message (FATAL_ERROR "Couldn't find Glew development files. On Debian-based systems (such as Ubuntu) you should install the Glew development package 'libglew-dev'.")
+endif (GLEW_FOUND)
 
 # Sources
 
@@ -183,4 +191,5 @@ ENDIF (WIN32)
 Add_Executable (frost_and_flame ${FROST_AND_FLAME_SOURCES})
 
 # Target_Link_Libraries (frost_and_flame ${CMAKE_LD_FLAGS} ${SDL2_LIBRARIES} ${SDL2IMAGE_LIBRARIES} ${SDL2MIXER_LIBRARIES} ${SDL2TTF_LIBRARIES} ${SDL2NET_LIBRARIES} ${OPENGL_LIBRARIES} ${PHYSFS_INCLUDE_DIR})
-Target_Link_Libraries (frost_and_flame ${CMAKE_LD_FLAGS} ${SDL2_LIBRARIES} ${SDL2IMAGE_LIBRARIES} ${SDL2MIXER_LIBRARIES} ${SDL2TTF_LIBRARIES} ${OPENGL_LIBRARIES})
+Target_Link_Libraries (frost_and_flame ${CMAKE_LD_FLAGS} ${SDL2_LIBRARIES} ${SDL2IMAGE_LIBRARIES} ${SDL2MIXER_LIBRARIES} ${SDL2TTF_LIBRARIES} ${OPENGL_LIBRARIES} ${GLEW_LIBRARIES})
+
