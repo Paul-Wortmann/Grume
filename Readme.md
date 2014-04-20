@@ -44,13 +44,29 @@ Also included is the CMakeLists.txt file, which should help with Linux builds.
 
 Compiling under Ubuntu:
 -----------------------
-Make sure you have all the relevant dependencies installed:
-sudo apt-get install libsdl2-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-ttf-dev libsdl2-net-dev libphysfs-dev
+Make sure you have all the relevant dependencies installed.
+The dependencies required are the SDL2 development libraries as well as OpenGL and Glew.
+To install development libraries you could use the commands below:
 
-Generate make file:
+sudo apt-get install libsdl2-dev 
+sudo apt-get install libsdl2-image-dev 
+sudo apt-get install libsdl2-mixer-dev 
+sudo apt-get install libsdl2-ttf-dev 
+sudo apt-get install libsdl2-net-dev 
+sudo apt-get install libglew-dev
+
+Or in one single line:
+sudo apt-get install libsdl2-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-ttf-dev libsdl2-net-dev libglew-dev
+
+Next you need to generate a make file, you can use the following command, make sure you are in the Frost and Flame directory:
 cmake CMakeLists.txt
 
-Make:
+And finaly you can use make to build the Frost and Flame binary:
+make
+
+So in summery the commands are as follows:
+sudo apt-get install libsdl2-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-ttf-dev libsdl2-net-dev libglew-dev
+cmake CMakeLists.txt
 make
 
 Contributions:
@@ -69,6 +85,7 @@ Please note that language files have to be saved in UTF-8 format, else they may 
 
 Known bugs:
 ----------
+I am currently writing a new graphics engine for Frost and Flame, so expect graphical glitches for now...
 As this is still a work in progress, the format of the savegames may, and does change quite often.
 It is recommended you either overwrite your older savegames with new ones, or delete the older ones when upgrading to a newer version of Frost and Flame.
 Or better still remove the older version of the game completely, before installing a newer version.
