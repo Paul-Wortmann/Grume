@@ -90,23 +90,23 @@ bool GL_init(void)
         game.core.config.display_resolution_x    = 800;
         game.core.config.display_resolution_y    = 600;
         game.core.config.display_fullscreen      = false;
-        bool display_mode_found = false;
-        if (game.core.debug)  for (int i = 0; i < game.core.graphics.number_display_modes; i++)
-        {
-            if ((game.core.config.display_resolution_x == mode[i].w) && (game.core.config.display_resolution_y == mode[i].h)) display_mode_found = true;
-        }
-        if (!display_mode_found)
-        {
-            game.core.config.display_resolution_x    = mode[0].w;
-            game.core.config.display_resolution_y    = mode[0].h;
-            game.core.config.display_fullscreen      = true;
-        }
         if ((game.core.config.display_resolution_x < mode[game.core.graphics.number_display_modes-1].w) || (game.core.config.display_resolution_y < mode[game.core.graphics.number_display_modes-1].h))
         {
             game.core.config.display_resolution_x    = mode[game.core.graphics.number_display_modes-1].w;
             game.core.config.display_resolution_y    = mode[game.core.graphics.number_display_modes-1].h;
         }
         if ((game.core.config.display_resolution_x > mode[0].w) || (game.core.config.display_resolution_y > mode[0].h))
+        {
+            game.core.config.display_resolution_x    = mode[0].w;
+            game.core.config.display_resolution_y    = mode[0].h;
+            game.core.config.display_fullscreen      = true;
+        }
+        bool display_mode_found = false;
+        if (game.core.debug)  for (int i = 0; i < game.core.graphics.number_display_modes; i++)
+        {
+            if ((game.core.config.display_resolution_x == mode[i].w) && (game.core.config.display_resolution_y == mode[i].h)) display_mode_found = true;
+        }
+        if (!display_mode_found)
         {
             game.core.config.display_resolution_x    = mode[0].w;
             game.core.config.display_resolution_y    = mode[0].h;

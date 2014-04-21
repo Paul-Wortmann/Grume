@@ -167,6 +167,7 @@ bool graphics_engine_class::init(void)
         break;
         case RENDERER_GL1:
         default:
+            graphics_engine_class::renderer = RENDERER_GL1;
             GL_legacy_init();
         break;
     }

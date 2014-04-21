@@ -87,23 +87,23 @@ bool GL_legacy_init(void)
             if (SDL_GetDisplayMode(game.core.graphics.current_display,i,&mode[i]) == 0) game.core.log.file_write("Display mode - ",i," - x - ",mode[i].w," - y - ",mode[i].h," - refresh rate - ",mode[i].refresh_rate);
         }
         SDL_GetDisplayMode(game.core.graphics.current_display,game.core.graphics.current_display_mode,&mode[game.core.graphics.current_display_mode]);
-        bool display_mode_found = false;
-        for (int i = 0; i < game.core.graphics.number_display_modes; i++)
-        {
-            if ((game.core.config.display_resolution_x == mode[i].w) && (game.core.config.display_resolution_y == mode[i].h)) display_mode_found = true;
-        }
-        if (!display_mode_found)
-        {
-            game.core.config.display_resolution_x    = mode[0].w;
-            game.core.config.display_resolution_y    = mode[0].h;
-            game.core.config.display_fullscreen      = true;
-        }
         if ((game.core.config.display_resolution_x < mode[game.core.graphics.number_display_modes-1].w) || (game.core.config.display_resolution_y < mode[game.core.graphics.number_display_modes-1].h))
         {
             game.core.config.display_resolution_x    = mode[game.core.graphics.number_display_modes-1].w;
             game.core.config.display_resolution_y    = mode[game.core.graphics.number_display_modes-1].h;
         }
         if ((game.core.config.display_resolution_x > mode[0].w) || (game.core.config.display_resolution_y > mode[0].h))
+        {
+            game.core.config.display_resolution_x    = mode[0].w;
+            game.core.config.display_resolution_y    = mode[0].h;
+            game.core.config.display_fullscreen      = true;
+        }
+        bool display_mode_found = false;
+        for (int i = 0; i < game.core.graphics.number_display_modes; i++)
+        {
+            if ((game.core.config.display_resolution_x == mode[i].w) && (game.core.config.display_resolution_y == mode[i].h)) display_mode_found = true;
+        }
+        if (!display_mode_found)
         {
             game.core.config.display_resolution_x    = mode[0].w;
             game.core.config.display_resolution_y    = mode[0].h;
@@ -200,5 +200,18 @@ bool GL_legacy_deinit(void)
 bool GL_legacy_render(void)
 {
     glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
+    switch (game.state)
+    {
+        case STATE_MENU:
+            game.core.background.draw();
+            game.UI_manager.render();
+        break;
+        case STATE_GAME:
+            game.render();
+        break;
+        default:
+        break;
+    }
+    game.texture_manager.draw(game.UI_manager.data.cursor.normal_arrow,false,game.core.io.mouse_x+0.012f,game.core.io.mouse_y-0.018f,0.001f,0.04f,0.04f,0.0f);
     SDL_GL_SwapWindow(game.core.graphics.window);
 };

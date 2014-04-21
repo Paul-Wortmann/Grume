@@ -67,8 +67,8 @@ extern "C" int main(int argc, char** argv)
     game.language.load("data/configuration/languages/"+game.core.config.language+".txt");
 //  --- graphics ---
     game.core.log.file_write("Starting graphics subsystem...");
+    game.core.graphics.renderer = RENDERER_GL1;
     game.core.graphics.init();
-    //GL_init_old();
     application_icon_surface = SDL_LoadBMP(game.core.application_icon);
     SDL_SetWindowIcon(game.core.graphics.window, application_icon_surface);
     SDL_FreeSurface(application_icon_surface);
@@ -151,11 +151,10 @@ extern "C" int main(int argc, char** argv)
 // --------------------------------------------------------------------------------------------------------------------------
     while (game.state != STATE_QUIT)
     {
-        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         events_process();
         switch (game.state)
         {
-            case STATE_MENU:// initial state of the game, only the main menu is active, not the game.
+            case STATE_MENU:
                 if (game.music_manager.next_track)
                 {
                     game.music_manager.play(game.music_manager.current);
@@ -164,15 +163,12 @@ extern "C" int main(int argc, char** argv)
                 if (game.core.process_ready) game.core.background.process();
                 if (game.core.process_ready) game.UI_manager.process();
                 if (game.core.io.key_escape) game.state = STATE_QUIT;
-                game.core.background.draw();
-                game.UI_manager.render();
             break;
-            case STATE_GAME:// game active, menus can be utilized in game, but the game will stay in this state.
+            case STATE_GAME:
                 if (game.core.process_ready) game.process();
                 if (game.core.process_ready) game.UI_manager.process();
-                game.render();
             break;
-            case STATE_QUIT:// game has received a quit event, do nothing...
+            case STATE_QUIT:
                 game.state = STATE_QUIT;
             break;
             default:
@@ -187,8 +183,7 @@ extern "C" int main(int argc, char** argv)
             game.core.process_ready = true;
         }
         else game.core.process_ready = false;
-        game.texture_manager.draw(game.UI_manager.data.cursor.normal_arrow,false,game.core.io.mouse_x+0.012f,game.core.io.mouse_y-0.018f,0.001f,0.04f,0.04f,0.0f);
-        SDL_GL_SwapWindow(game.core.graphics.window);
+        game.core.graphics.render();
     }
 // --------------------------------------------------------------------------------------------------------------------------
 // | Application terminated, cleanup and free resources etc...
@@ -209,6 +204,7 @@ extern "C" int main(int argc, char** argv)
     game.core.config.file_clear();
     game.core.config.file_save();
     game.core.log.file_write("Shutting down...");
+    game.core.graphics.deinit();
     //PHYSFS_deinit();
     SDL_Quit();
     return(0);
