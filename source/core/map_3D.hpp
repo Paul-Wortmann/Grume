@@ -25,9 +25,10 @@
 #ifndef MAP_3D_H
 #define MAP_3D_H
 
+#include "GL/glew.h"
 #include "GL/gl.h"
 #include "texture_manager.hpp"
-#include "graphics.hpp"
+#include "graphics_engine.hpp"
 #include "map_2D.hpp"
 #include "map_3D.hpp"
 #include "physics.hpp"

@@ -25,9 +25,8 @@
 #ifndef LOADER_OBJ_H
 #define LOADER_OBJ_H
 
-#include <GL/gl.h>
 #include <string>
-#include "graphics.hpp"
+#include "graphics_engine.hpp"
 #include "texture_manager.hpp"
 
 struct obj_face_type

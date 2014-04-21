@@ -125,7 +125,6 @@ void game_class::init(void)
     UI_form_pointer->data.element[element_number].quantity       = random(100);
     UI_form_pointer->data.element[element_number].texture.normal = temp_item_pointer->data.image.level_0;
     element_number    = 4;
-    temp_item_pointer = game.item_manager.add_item(101);
     temp_item_pointer = game.item_manager.add_item(game.item_manager.gen_item(ITEM_RING,ITEM_RING,random(MAX_ITEM_QUALITY)));
     UI_form_pointer->data.element[element_number].value          = temp_item_pointer->data.UID;
     UI_form_pointer->data.element[element_number].texture.normal = temp_item_pointer->data.image.level_0;

@@ -25,7 +25,7 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_events.h>
 #include "../game/game.hpp"
-#include "graphics.hpp"
+#include "graphics_engine.hpp"
 #include "io.hpp"
 
 extern game_class          game;

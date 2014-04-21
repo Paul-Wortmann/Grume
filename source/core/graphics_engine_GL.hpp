@@ -24,60 +24,16 @@
 
 
 
-#ifndef RENDERER_GL_H
-#define RENDERER_GL_H
+#ifndef GRAPHICS_ENGINE_GL_H
+#define GRAPHICS_ENGINE_GL_H
 
 #include "core.hpp"
 
-#define PROGRAM_NAME "Frost and Flame -> OpenGL 3.x+ test renderer."
-#define RENDERER_CONTEXT_MAJOR 1
-#define RENDERER_CONTEXT_MINOR 2
-
-
-struct GL_object_struct
-{
-    GLuint   vao_data;
-    GLuint  *vbo_data;
-    GLuint   vao_id;
-    int      number_of_vertex;
-    int      number_of_vbo;
-    GLfloat *vertex;
-    GLfloat *color;
-};
-
-struct render_GL_struct
-{
-    int GL_major_version_number;
-    int GL_minor_version_number;
-    int number_VAO;
-    GL_object_struct *object_vao;
-    SDL_Window*   window;
-    SDL_GLContext context;
-    int current_display;
-    int current_display_mode;
-    int number_displays;
-    int number_display_modes;
-
-    int IsCompiled_VS;
-    int IsCompiled_FS;
-    int IsLinked;
-    int maxLength;
-    char *vertexInfoLog;
-    char *fragmentInfoLog;
-    char *shaderProgramInfoLog;
-    GLchar *vertexsource;
-    GLchar *fragmentsource;
-    GLuint  vertexshader;
-    GLuint  fragmentshader;
-    GLuint  shaderprogram;
-};
-
 bool GL_init(void);
-bool GL_init_old(void);
 bool GL_deinit(void);
+bool GL_render(void);
 bool GL_push_renderer_vbo(GL_object_struct &GL_object, GLuint &vao_id);
 bool GL_init_vao(GL_object_struct &GL_object);
-bool GL_render(void);
 
-#endif // RENDERER_GL_H
+#endif // GRAPHICS_ENGINE_GL_H
 

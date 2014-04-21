@@ -26,7 +26,7 @@
 #define LOADER_MD2_H
 
 #include <string>
-#include "graphics.hpp"
+#include "graphics_engine.hpp"
 #include "texture_manager.hpp"
 
 struct md2_header_type

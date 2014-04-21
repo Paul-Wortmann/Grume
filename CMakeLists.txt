@@ -115,7 +115,9 @@ Set (FROST_AND_FLAME_SOURCES
 	./source/core/effect_manager.cpp
 	./source/core/file.cpp
 	./source/core/font_manager.cpp
-	./source/core/graphics.cpp
+	./source/core/graphics_engine.cpp
+	./source/core/graphics_engine_GL.cpp
+	./source/core/graphics_engine_GL_legacy.cpp
 	./source/core/item_manager.cpp
 	./source/core/io.cpp
 	./source/core/item_manager.cpp
@@ -139,7 +141,6 @@ Set (FROST_AND_FLAME_SOURCES
 	./source/core/particles.cpp
 	./source/core/pathfinding.cpp
 	./source/core/physics.cpp
-	./source/core/renderer_GL.cpp
 	./source/core/rs232.cpp
 	./source/core/savegame.cpp
 	./source/core/sound_manager.cpp

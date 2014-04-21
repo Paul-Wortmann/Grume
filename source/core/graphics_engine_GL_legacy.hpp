@@ -22,21 +22,14 @@
  * @date 2011-11-11
  */
 
-#include <GL/glew.h>
-#include <GL/gl.h>
-#include <SDL2/SDL.h>
-#include "UI_loading_screen.hpp"
-#include "../core/texture_manager.hpp"
-#include "../game/game.hpp"
 
-extern game_class game;
 
-void UI_loading_screen_class::display(std::string file_name)
-{
-    texture_type* loading_screen_texture;
-    loading_screen_texture = game.texture_manager.add_texture(file_name.c_str(),false);
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-    SDL_GL_SwapWindow(game.core.graphics.window);
-    game.texture_manager.draw(loading_screen_texture,false,0.0f,0.0f,0.9f,2.0f,2.0f);
-    SDL_GL_SwapWindow(game.core.graphics.window);
-};
+#ifndef GRAPHICS_ENGINE_GL_LEGACY_H
+#define GRAPHICS_ENGINE_GL_LEGACY_H
+
+bool GL_legacy_init(void);
+bool GL_legacy_deinit(void);
+bool GL_legacy_render(void);
+
+#endif // GRAPHICS_ENGINE_GL_LEGACY_H
+

@@ -471,8 +471,6 @@ void process_menu_game_new(UI_form_struct *UI_form_pointer)
                     case STATE_MENU:
                     break;
                     case STATE_GAME:
-                        game.init();
-                    break;
                     default:
                         game.init();
                     break;

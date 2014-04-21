@@ -67,8 +67,8 @@ extern "C" int main(int argc, char** argv)
     game.language.load("data/configuration/languages/"+game.core.config.language+".txt");
 //  --- graphics ---
     game.core.log.file_write("Starting graphics subsystem...");
-    GL_init_old();
-    //GL_init();
+    game.core.graphics.init();
+    //GL_init_old();
     application_icon_surface = SDL_LoadBMP(game.core.application_icon);
     SDL_SetWindowIcon(game.core.graphics.window, application_icon_surface);
     SDL_FreeSurface(application_icon_surface);
