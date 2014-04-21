@@ -35,27 +35,27 @@ extern game_class         game;
 void tmx_load(tmx_map_type *tmx_map_pointer, std::string file_name)
 {
     game.core.log.file_write("Loading TMX map file -> ",file_name);
-    int          position_count  = 0;
-    int          position_start  = 0;
-    bool         map_data        = true;
-    bool         tileset_data    = false;
-    bool         layer_data      = false;
-    int          tileset_count   = 0;
-    int          layer_count     = 0;
-    int          tile_count      = 0;
-    char         temp_char       = ' ';
-    float        temp_float_data;
-    int          temp_int_data;
-    std::string  temp_string_data;
-    std::string  temp_string_key;
-    std::string  temp_string_value;
-    std::string  data_line;
-    tmx_map_pointer->data.number_of_tiles    = 0;
-    tmx_map_pointer->data.number_of_tilesets = 0;
-    tmx_map_pointer->data.number_of_layers   = 0;
     std::fstream script_file(file_name.c_str(),std::ios::in|std::ios::binary);
     if (script_file.is_open())
     {
+        int          position_count  = 0;
+        int          position_start  = 0;
+        int          tileset_count   = 0;
+        int          layer_count     = 0;
+        int          tile_count      = 0;
+        char         temp_char       = ' ';
+        bool         map_data        = true;
+        bool         tileset_data    = false;
+        bool         layer_data      = false;
+        tmx_map_pointer->data.number_of_tiles    = 0;
+        tmx_map_pointer->data.number_of_tilesets = 0;
+        tmx_map_pointer->data.number_of_layers   = 0;
+        float        temp_float_data;
+        int          temp_int_data;
+        std::string  temp_string_data;
+        std::string  temp_string_key;
+        std::string  temp_string_value;
+        std::string  data_line;
         // find size of data and set new array size
         while (script_file.good())
         {
