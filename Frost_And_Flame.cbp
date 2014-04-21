@@ -7,7 +7,7 @@
 		<Build>
 			<Target title="Windows">
 				<Option platforms="Windows;" />
-				<Option output="Frost_And_Flame" prefix_auto="1" extension_auto="1" />
+				<Option output="frost_and_flame" prefix_auto="1" extension_auto="1" />
 				<Option type="0" />
 				<Option compiler="gcc" />
 				<Compiler>
@@ -32,7 +32,7 @@
 			</Target>
 			<Target title="Linux">
 				<Option platforms="Unix;" />
-				<Option output="Frost_And_Flame" prefix_auto="1" extension_auto="1" />
+				<Option output="frost_and_flame" prefix_auto="1" extension_auto="1" />
 				<Option type="0" />
 				<Option compiler="gcc" />
 				<Compiler>
@@ -46,7 +46,7 @@
 			</Target>
 			<Target title="Debug_Win">
 				<Option platforms="Windows;" />
-				<Option output="Frost_And_Flame" prefix_auto="1" extension_auto="1" />
+				<Option output="frost_and_flame" prefix_auto="1" extension_auto="1" />
 				<Option type="0" />
 				<Option compiler="gcc" />
 				<Compiler>
@@ -73,7 +73,7 @@
 			</Target>
 			<Target title="Debug_Linux">
 				<Option platforms="Unix;" />
-				<Option output="Frost_And_Flame" prefix_auto="1" extension_auto="1" />
+				<Option output="frost_and_flame" prefix_auto="1" extension_auto="1" />
 				<Option type="0" />
 				<Option compiler="gcc" />
 				<Compiler>
@@ -157,8 +157,12 @@
 		<Unit filename="source/core/file.hpp" />
 		<Unit filename="source/core/font_manager.cpp" />
 		<Unit filename="source/core/font_manager.hpp" />
-		<Unit filename="source/core/graphics.cpp" />
-		<Unit filename="source/core/graphics.hpp" />
+		<Unit filename="source/core/graphics_engine.cpp" />
+		<Unit filename="source/core/graphics_engine.hpp" />
+		<Unit filename="source/core/graphics_engine_GL.cpp" />
+		<Unit filename="source/core/graphics_engine_GL.hpp" />
+		<Unit filename="source/core/graphics_engine_GL_legacy.cpp" />
+		<Unit filename="source/core/graphics_engine_GL_legacy.hpp" />
 		<Unit filename="source/core/io.cpp" />
 		<Unit filename="source/core/io.hpp" />
 		<Unit filename="source/core/item_manager.cpp" />
@@ -203,8 +207,6 @@
 		<Unit filename="source/core/pathfinding.hpp" />
 		<Unit filename="source/core/physics.cpp" />
 		<Unit filename="source/core/physics.hpp" />
-		<Unit filename="source/core/renderer_GL.cpp" />
-		<Unit filename="source/core/renderer_GL.hpp" />
 		<Unit filename="source/core/rs232.cpp" />
 		<Unit filename="source/core/rs232.hpp" />
 		<Unit filename="source/core/savegame.cpp" />
