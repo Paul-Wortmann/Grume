@@ -48,26 +48,26 @@ Make sure you have all the relevant dependencies installed.
 The dependencies required are the SDL2 development libraries as well as OpenGL and Glew.
 To install development libraries you could use the commands below:
 
-sudo apt-get install libsdl2-dev 
-sudo apt-get install libsdl2-image-dev 
-sudo apt-get install libsdl2-mixer-dev 
-sudo apt-get install libsdl2-ttf-dev 
-sudo apt-get install libsdl2-net-dev 
-sudo apt-get install libglew-dev
+- sudo apt-get install libsdl2-dev 
+- sudo apt-get install libsdl2-image-dev 
+- sudo apt-get install libsdl2-mixer-dev 
+- sudo apt-get install libsdl2-ttf-dev 
+- sudo apt-get install libsdl2-net-dev 
+- sudo apt-get install libglew-dev
 
 Or in one single line:
-sudo apt-get install libsdl2-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-ttf-dev libsdl2-net-dev libglew-dev
+- sudo apt-get install libsdl2-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-ttf-dev libsdl2-net-dev libglew-dev
 
 Next you need to generate a make file, you can use the following command, make sure you are in the Frost and Flame directory:
-cmake CMakeLists.txt
+- cmake CMakeLists.txt
 
 And finally you can use make to build the Frost and Flame binary:
 make
 
 So in summery the commands are as follows:
-sudo apt-get install libsdl2-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-ttf-dev libsdl2-net-dev libglew-dev
-cmake CMakeLists.txt
-make
+- sudo apt-get install libsdl2-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-ttf-dev libsdl2-net-dev libglew-dev
+- cmake CMakeLists.txt
+- make
 
 Contributions:
 ------------
