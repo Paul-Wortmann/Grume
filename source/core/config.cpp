@@ -93,15 +93,15 @@ bool         config_class::file_write(std::string data_string)
 
 bool         config_class::file_load(void) //the problem is most likely with the loader....
 {
-    char        temp_char = ' ';
-    int         temp_int;
-    std::string temp_string_key;
-    std::string temp_string_value;
-    int         count;
-    std::string data_line;
     std::fstream configfile(config_class::file_name.c_str(),std::ios::in|std::ios::binary);
     if (configfile.is_open())
     {
+        char        temp_char = ' ';
+        int         temp_int;
+        std::string temp_string_key;
+        std::string temp_string_value;
+        int         position_count;
+        std::string data_line;
         while ( configfile.good() )
         {
             getline(configfile,data_line);
@@ -115,26 +115,26 @@ bool         config_class::file_load(void) //the problem is most likely with the
                 temp_string_key   = "";
                 temp_string_value = "";
                 temp_char = '#';
-                count = 0;
+                position_count = 0;
                 while(temp_char != ' ')
                 {
-                    temp_char = data_line[count];
+                    temp_char = data_line[position_count];
                     if(temp_char != ' ') temp_string_key += temp_char;
-                    count++;
-                    if(count > (int)data_line.length()) (temp_char = ' ');
+                    position_count++;
+                    if(position_count > (int)data_line.length()) (temp_char = ' ');
                 }
                 while((temp_char == ' ') || (temp_char == '='))
                 {
-                    temp_char = data_line[count];
-                    count++;
-                    if(count > (int)data_line.length()) (temp_char = ' ');
+                    temp_char = data_line[position_count];
+                    position_count++;
+                    if(position_count > (int)data_line.length()) (temp_char = ' ');
                 }
-                count--;
-                while(count < (int)data_line.length())
+                position_count--;
+                while(position_count < (int)data_line.length())
                 {
-                    temp_char = data_line[count];
+                    temp_char = data_line[position_count];
                     if ((temp_char != ' ') && (temp_char != '\r')) temp_string_value += temp_char;
-                    count++;
+                    position_count++;
                 }
                 temp_int = atoi(temp_string_value.c_str());
                 if (temp_string_key == "Joystick_Sensitivity")

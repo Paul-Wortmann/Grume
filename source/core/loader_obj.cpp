@@ -98,16 +98,16 @@ void loader_obj_class::set_wrap_texture(std::string file_name)
 
 void loader_obj_class::load_mtl(std::string file_name)
 {
-    loader_obj_class::number_of_materials       = -1;
-    int          number_of_materials_count      = -1;
-    int          data_count                     =  0;
-    int          position_count                 =  0;
-    std::string  temp_string_data;
-    std::string  data_line;
     //determine max values first
     std::ifstream script_file(file_name.c_str(),std::ios::in|std::ios::binary);
     if (script_file.is_open())
     {
+        loader_obj_class::number_of_materials       = -1;
+        int          number_of_materials_count      = -1;
+        int          data_count                     =  0;
+        int          position_count                 =  0;
+        std::string  temp_string_data;
+        std::string  data_line;
         while (script_file.good())
         {
             getline(script_file,data_line);
@@ -415,32 +415,32 @@ void loader_obj_class::load(std::string file_name, int obj_ID)
 
 void loader_obj_class::load(std::string file_name)
 {
-    loader_obj_class::number_of_vertices         = -1;
-    loader_obj_class::number_of_vertex_textures  = -1;
-    loader_obj_class::number_of_vertex_normals   = -1;
-    loader_obj_class::number_of_use_materials    = -1;
-    loader_obj_class::number_of_faces            = -1;
-    int          current_material                =  0;
-    int          number_of_vertices_count        =  0;
-    int          number_of_vertex_textures_count =  0;
-    int          number_of_vertex_normals_count  =  0;
-    int          number_of_faces_count           =  0;
-    int          slash_count                     =  0;
-    bool         count_slashes                   =  true;
-    int          data_count                      =  0;
-    int          data_count_v                    =  0;
-    int          data_count_vt                   =  0;
-    int          data_count_vn                   =  0;
-    int          position_count                  =  0;
-    std::string  temp_string_data;
-    std::string  temp_string_data_compare;
-    std::string  temp_string_key;
-    std::string  temp_string_value;
-    std::string  data_line;
     //determine max values first
     std::fstream script_file(file_name.c_str(),std::ios::in|std::ios::binary);
     if (script_file.is_open())
     {
+        loader_obj_class::number_of_vertices         = -1;
+        loader_obj_class::number_of_vertex_textures  = -1;
+        loader_obj_class::number_of_vertex_normals   = -1;
+        loader_obj_class::number_of_use_materials    = -1;
+        loader_obj_class::number_of_faces            = -1;
+        int          current_material                =  0;
+        int          number_of_vertices_count        =  0;
+        int          number_of_vertex_textures_count =  0;
+        int          number_of_vertex_normals_count  =  0;
+        int          number_of_faces_count           =  0;
+        int          slash_count                     =  0;
+        bool         count_slashes                   =  true;
+        int          data_count                      =  0;
+        int          data_count_v                    =  0;
+        int          data_count_vt                   =  0;
+        int          data_count_vn                   =  0;
+        int          position_count                  =  0;
+        std::string  temp_string_data;
+        std::string  temp_string_data_compare;
+        std::string  temp_string_key;
+        std::string  temp_string_value;
+        std::string  data_line;
         while (script_file.good())
         {
             getline(script_file,data_line);
@@ -752,13 +752,13 @@ void loader_obj_class::load(std::string file_name)
 
 void loader_obj_class::save(std::string file_name)
 {
-    int last_material = -1;
     if (game.core.file.extension_exist(file_name,"obj")) file_name = game.core.file.extension_remove(file_name);
     if (loader_obj_class::number_of_materials >= 0) loader_obj_class::save_mtl(game.core.file.extension_add(file_name,".mtl"));
     file_name = game.core.file.extension_add(file_name,".obj");
     std::fstream script_file(file_name.c_str(),std::ios::out|std::ios::binary|std::ios::trunc);
     if (script_file.is_open())
     {
+        int last_material = -1;
         script_file << "# Frost and Flame OBJ File: '";
         script_file << file_name;
         script_file << "'\n";

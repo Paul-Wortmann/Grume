@@ -442,11 +442,11 @@ void update_menu_game_new(int UID)
 
 void process_menu_game_new(UI_form_struct *UI_form_pointer)
 {
-    int choice_selection_number = 0;
-    texture_type *temp_data_texture;
-    bool temp_data_bool = false;
     if(UI_form_pointer->data.event.id > EVENT_NONE)
     {
+        int choice_selection_number = 0;
+        texture_type *temp_data_texture;
+        bool temp_data_bool = false;
         switch (UI_form_pointer->data.event.id)
         {
             case ((0*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Close menu button

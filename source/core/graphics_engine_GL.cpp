@@ -62,8 +62,6 @@ bool GL_init(void)
         char SDL_VID_CENTERD[] = "SDL_VIDEO_CENTERED=1";
         putenv(SDL_VID_WIN_POS);
         putenv(SDL_VID_CENTERD);
-        int  glew_status    = 0;
-        int  version_status = 0;
         game.core.graphics.render_GL.number_VAO  = 1;
         game.core.graphics.GL_major_version_number = 0;
         game.core.graphics.GL_minor_version_number = 0;
@@ -138,6 +136,7 @@ bool GL_init(void)
         {
             game.core.log.file_write("Starting OpenGL...");
             game.core.graphics.context = SDL_GL_CreateContext(game.core.graphics.window);
+            int  version_status = 0;
             version_status += SDL_GL_GetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, &game.core.graphics.GL_major_version_number);
             version_status += SDL_GL_GetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, &game.core.graphics.GL_minor_version_number);
             if (version_status == 0)
@@ -146,7 +145,7 @@ bool GL_init(void)
                 if ((game.core.graphics.GL_major_version_number >= 3) && (game.core.graphics.GL_minor_version_number >= 2))
                 {
                     glewExperimental = GL_TRUE;
-                    glew_status = glewInit();
+                    int glew_status = glewInit();
                     if(glew_status != GLEW_OK)
                     {
                         return_value = false;

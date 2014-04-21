@@ -78,31 +78,31 @@ void loader_md2_class::load(std::string file_name, int md2_ID)
 
 void loader_md2_class::load(std::string file_name)
 {
-    loader_md2_class::number_of_vertices         = -1;
-    loader_md2_class::number_of_vertex_textures  = -1;
-    loader_md2_class::number_of_vertex_normals   = -1;
-    loader_md2_class::number_of_use_materials    = -1;
-    loader_md2_class::number_of_faces            = -1;
-    int          number_of_vertices_count        =  0;
-    int          number_of_vertex_textures_count =  0;
-    int          number_of_vertex_normals_count  =  0;
-    int          number_of_use_materials_count   =  0;
-    int          number_of_faces_count           =  0;
-    int          slash_count                     =  0;
-    bool         count_slashes                   =  true;
-    int          data_count                      =  0;
-    int          data_count_v                    =  0;
-    int          data_count_vt                   =  0;
-    int          data_count_vn                   =  0;
-    int          position_count                  =  0;
-    std::string  temp_string_data;
-    std::string  temp_string_key;
-    std::string  temp_string_value;
-    std::string  data_line;
     //determine max values first
     std::fstream script_file(file_name.c_str(),std::ios::in|std::ios::binary);
     if (script_file.is_open())
     {
+        loader_md2_class::number_of_vertices         = -1;
+        loader_md2_class::number_of_vertex_textures  = -1;
+        loader_md2_class::number_of_vertex_normals   = -1;
+        loader_md2_class::number_of_use_materials    = -1;
+        loader_md2_class::number_of_faces            = -1;
+        int          number_of_vertices_count        =  0;
+        int          number_of_vertex_textures_count =  0;
+        int          number_of_vertex_normals_count  =  0;
+        int          number_of_use_materials_count   =  0;
+        int          number_of_faces_count           =  0;
+        int          slash_count                     =  0;
+        bool         count_slashes                   =  true;
+        int          data_count                      =  0;
+        int          data_count_v                    =  0;
+        int          data_count_vt                   =  0;
+        int          data_count_vn                   =  0;
+        int          position_count                  =  0;
+        std::string  temp_string_data;
+        std::string  temp_string_key;
+        std::string  temp_string_value;
+        std::string  data_line;
         while (script_file.good())
         {
             getline(script_file,data_line);

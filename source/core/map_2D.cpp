@@ -230,10 +230,11 @@ bool map_2D_class::tile_visible(fmx_map_type *fmx_map_pointer, int layer_number,
 
 int  map_2D_class::mouse_over_tile(fmx_map_type *fmx_map_pointer)
 {
-    int layer_count  = 0;
+    //int layer_count  = 0;
     int return_value = -1;
     //for(layer_count = 0; layer_count <  fmx_map_pointer->data.number_of_layers; layer_count++)
     {
+        int layer_count  = 0; // delete this if using fore loop!
         for(int tile_count = 0; tile_count <  fmx_map_pointer->data.number_of_tiles; tile_count++)
         {
             if (map_2D_class::tile_visible(fmx_map_pointer,layer_count,tile_count))

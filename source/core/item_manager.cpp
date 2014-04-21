@@ -112,16 +112,16 @@ int item_manager_class::get_new_item_UID(void)
 
 void item_manager_class::load_items(std::string file_name)
 {
-    item_type*     item_pointer;
-    int            temp_char_UTF32  = ' ';
-    std::string    temp_string_data;
-    std::string    temp_string_key;
-    std::string    temp_string_value;
-    int            count;
-    std::string    data_line;
     std::ifstream  script_file(file_name.c_str(),std::ios::in);
     if (script_file.is_open())
     {
+        item_type*     item_pointer;
+        int            temp_char_UTF32  = ' ';
+        std::string    temp_string_data;
+        std::string    temp_string_key;
+        std::string    temp_string_value;
+        int            position_count;
+        std::string    data_line;
         while ( script_file.good() )
         {
             getline(script_file,data_line);
@@ -139,26 +139,26 @@ void item_manager_class::load_items(std::string file_name)
                     temp_char_UTF32   = '#';
                     temp_string_key   = "";
                     temp_string_value = "";
-                    count = 0;
+                    position_count = 0;
                     while(temp_char_UTF32 != ' ')
                     {
-                        temp_char_UTF32 = data_line[count];
+                        temp_char_UTF32 = data_line[position_count];
                         if(temp_char_UTF32 != ' ') temp_string_key += temp_char_UTF32;
-                        count++;
-                        if(count > (int)data_line.length()) (temp_char_UTF32 = ' ');
+                        position_count++;
+                        if(position_count > (int)data_line.length()) (temp_char_UTF32 = ' ');
                     }
                     while((temp_char_UTF32 == ' ') || (temp_char_UTF32 == '='))
                     {
-                        temp_char_UTF32 = data_line[count];
-                        count++;
-                        if(count > (int)data_line.length()) (temp_char_UTF32 = '#');
+                        temp_char_UTF32 = data_line[position_count];
+                        position_count++;
+                        if(position_count > (int)data_line.length()) (temp_char_UTF32 = '#');
                     }
-                    count--;
-                    while(count < ((int)data_line.length()-1))
+                    position_count--;
+                    while(position_count < ((int)data_line.length()-1))
                     {
-                        temp_char_UTF32  = data_line[count];
+                        temp_char_UTF32  = data_line[position_count];
                         if (temp_char_UTF32 != '"') temp_string_value += temp_char_UTF32;
-                        count++;
+                        position_count++;
                     }
                     temp_string_data = temp_string_value.c_str();
                     if (temp_string_key == "UID")

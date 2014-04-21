@@ -316,9 +316,9 @@ void setup_menu_main(int UID)
 
 void process_menu_main(UI_form_struct *UI_form_pointer)
 {
-    int element_number   = 0;
     if(UI_form_pointer->data.event.id > EVENT_NONE)
     {
+        int element_number   = 0;
         if (game.state == STATE_GAME) UI_form_pointer->data.element[3].state = UI_NORMAL; // Save game
         else UI_form_pointer->data.element[3].state = UI_DISABLED;
         if (game.state == STATE_GAME) UI_form_pointer->data.element[4].state = UI_NORMAL; // Resume game
