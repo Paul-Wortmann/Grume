@@ -244,6 +244,7 @@ bool GL_init(void)
 
 bool GL_deinit(void)
 {
+    bool return_value = true;
     glUseProgram(0);
     glDetachShader(game.core.graphics.render_GL.shaderprogram, game.core.graphics.render_GL.vertexshader);
     glDetachShader(game.core.graphics.render_GL.shaderprogram, game.core.graphics.render_GL.fragmentshader);
@@ -261,18 +262,21 @@ bool GL_deinit(void)
     }
     free(game.core.graphics.render_GL.vertexsource);
     free(game.core.graphics.render_GL.fragmentsource);
-    return(true);
+    return (return_value);
 };
 
+/*
 bool GL_push_renderer_vbo(GL_object_struct &GL_object, GLuint &vao_id)
 {
     bool return_value = true;
 
     return (return_value);
 }
+*/
 
 bool GL_init_vao(GL_object_struct &GL_object)
 {
+    bool return_value = true;
     glGenVertexArrays(GL_object.vao_id, &GL_object.vao_data);
     glBindVertexArray(GL_object.vao_data);
     glGenBuffers(GL_object.number_of_vbo, GL_object.vbo_data);
@@ -284,12 +288,15 @@ bool GL_init_vao(GL_object_struct &GL_object)
     glBufferData(GL_ARRAY_BUFFER, 3*GL_object.number_of_vertex*sizeof(GLfloat), GL_object.color, GL_STATIC_DRAW);
     glVertexAttribPointer((GLuint)1, 3, GL_FLOAT, GL_FALSE, 0, 0);
     glEnableVertexAttribArray(1);
+    return (return_value);
 };
 
 bool GL_render(void)
 {
+    bool return_value = true;
     glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
     glBindVertexArray(game.core.graphics.render_GL.object_vao->vao_data);
     glDrawArrays( GL_TRIANGLE_FAN, 0, game.core.graphics.render_GL.object_vao->number_of_vertex);
     SDL_GL_SwapWindow(game.core.graphics.window);
+    return (return_value);
 };

@@ -160,45 +160,51 @@ std::string pixel_format_from_int(int pfi)
 
 bool graphics_engine_class::init(void)
 {
+    bool return_value = false;
     switch (graphics_engine_class::renderer)
     {
         case RENDERER_GL3:
-            GL_init();
+            return_value = GL_init();
         break;
         case RENDERER_GL1:
         default:
             graphics_engine_class::renderer = RENDERER_GL1;
-            GL_legacy_init();
+            return_value = GL_legacy_init();
         break;
     }
+    return(return_value);
 };
 
 bool graphics_engine_class::deinit(void)
 {
+    bool return_value = false;
     switch (graphics_engine_class::renderer)
     {
         case RENDERER_GL3:
-            GL_deinit();
+            return_value = GL_deinit();
         break;
         case RENDERER_GL1:
         default:
-            GL_legacy_deinit();
+            return_value = GL_legacy_deinit();
         break;
     }
+    return(return_value);
 };
 
 bool graphics_engine_class::render(void)
 {
+    bool return_value = false;
     switch (graphics_engine_class::renderer)
     {
         case RENDERER_GL3:
-            GL_render();
+            return_value = GL_render();
         break;
         case RENDERER_GL1:
         default:
-            GL_legacy_render();
+            return_value = GL_legacy_render();
         break;
     }
+    return(return_value);
 };
 
 graphics_engine_class::graphics_engine_class(void)

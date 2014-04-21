@@ -192,15 +192,19 @@ bool GL_legacy_init(void)
 
         glDisable(GL_DEPTH_TEST);
     }
+    return(return_value);
 }
 
 bool GL_legacy_deinit(void)
 {
-    return(true);
+    bool return_value = true;
+
+    return(return_value);
 };
 
 bool GL_legacy_render(void)
 {
+    bool return_value = true;
     glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
     switch (game.state)
     {
@@ -216,4 +220,5 @@ bool GL_legacy_render(void)
     }
     game.texture_manager.draw(game.UI_manager.data.cursor.normal_arrow,false,game.core.io.mouse_x+0.012f,game.core.io.mouse_y-0.018f,0.001f,0.04f,0.04f,0.0f);
     SDL_GL_SwapWindow(game.core.graphics.window);
+    return(return_value);
 };

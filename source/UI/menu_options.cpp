@@ -639,6 +639,8 @@ void process_menu_options(UI_form_struct *UI_form_pointer)
         bool reset_display        = false;
         bool resolution_selection = false;
         int  resolution_element   = 0;
+        if ((resolution_element == 0) && (!resolution_selection)) reset_display = false; // temp... delete... squashing compiler warnings...
+        if (!reset_display) resolution_selection = false; // temp... delete... squashing compiler warnings...
         game.core.log.file_write("Processing event - ",UI_form_pointer->data.event.id);
         switch (UI_form_pointer->data.event.id)
         {
@@ -788,6 +790,7 @@ void process_menu_options(UI_form_struct *UI_form_pointer)
         }
         if (1==2)//(resolution_selection)
         {
+            /*
             int   temp_resolution      = 0;
             int   temp_resolution_x    = 0;
             int   temp_resolution_y    = 0;
@@ -838,6 +841,7 @@ void process_menu_options(UI_form_struct *UI_form_pointer)
                     game.core.config.display_resolution_x = 1920;
                     game.core.config.display_resolution_y = 1080;
                 }
+                */
                 /*
                 if (!game.core.graphics.init_sdl())
                 {
@@ -867,11 +871,11 @@ void process_menu_options(UI_form_struct *UI_form_pointer)
                 }
                 */
                 //reset_display = true;
-            }
+            //}
         }
+        /*
         if (reset_display)
         {
-            /*
             game.core.log.file_write("Reinitializing SDL...");
             //game.core.graphics.init_sdl();
             game.core.log.file_write("Reinitializing OpenGL...");
@@ -880,8 +884,8 @@ void process_menu_options(UI_form_struct *UI_form_pointer)
             game.core.log.file_write("Reloading resources....");
             game.texture_manager.reload_textures();
             update_menu_game_new(UID_MENU_GAME_NEW);
-            */
         }
+        */
     }
     if (UI_form_pointer->data.event.id != EVENT_NONE)
     {

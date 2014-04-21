@@ -91,7 +91,9 @@ bool object_manager_class::load_object(object_type *object)
     return (return_value);
 };
 
+/*
 void object_manager_class::play(object_type *object)
 {
-    //Mix_PlayMusic(object->object_data,-1);
+//    Mix_PlayMusic(object->object_data,-1);
 };
+*/

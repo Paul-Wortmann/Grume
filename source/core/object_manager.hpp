@@ -51,7 +51,7 @@ class object_manager_class
         object_type*  current;
         object_type*  add_object(std::string file_name);
         bool          load_object(object_type *object);
-        void          play(object_type *object);
+        //void          play(object_type *object);
 };
 
 #endif // OBJECT_MANAGER_H

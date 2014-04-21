@@ -125,6 +125,7 @@ void map_gen (fmx_map_type *fmx_map_pointer, int generator_algorithm, int tilese
 bool map_gen_room (fmx_map_type *fmx_map_pointer, room_data_type room, int number_of_exits)
 {
     bool return_value = true;
+    if (number_of_exits > 0) return_value = true; //temp... to squash compiler warning...
     if (room.position.x <= 0) room.position.x = random(fmx_map_pointer->data.map_width -((ROOM_MAX_X+2)*2)+(ROOM_MAX_X+2));
     if (room.position.y <= 0) room.position.y = random(fmx_map_pointer->data.map_height-((ROOM_MAX_Y+2)*2)+(ROOM_MAX_Y+2));
     if (room.size.x <= 0) room.size.x = random_int(ROOM_MIN_X,ROOM_MAX_X);

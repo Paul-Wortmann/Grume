@@ -46,8 +46,8 @@ void       config_class::set_defaults(void)
     config_class::display_resolution         = 0;
     config_class::display_resolution_x       = 0;
     config_class::display_resolution_y       = 0;
-    config_class::font_base_resolution_x     = 19200;
-    config_class::font_base_resolution_y     = 10800;
+    config_class::font_base_resolution_x     = 1920;
+    config_class::font_base_resolution_y     = 1080;
     config_class::font_scale_x               = (float)config_class::display_resolution_x/(float)config_class::font_base_resolution_x;
     config_class::font_scale_y               = (float)config_class::display_resolution_y/(float)config_class::font_base_resolution_y;
     config_class::display_bpp                = 32;
