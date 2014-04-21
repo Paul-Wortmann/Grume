@@ -16,9 +16,9 @@
 			<Cursor1 position="30" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="source/core/graphics_engine_GL.hpp" open="1" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="source/core/graphics_engine_GL.hpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="0" topLine="0" />
+			<Cursor1 position="1020" topLine="0" />
 		</Cursor>
 	</File>
 	<File name="source/core/physics.hpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -46,7 +46,7 @@
 			<Cursor1 position="30" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="source/core/graphics_engine.cpp" open="1" top="1" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="source/core/graphics_engine.cpp" open="1" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="0" topLine="0" />
 		</Cursor>
@@ -251,9 +251,9 @@
 			<Cursor1 position="1017" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="source/core/graphics_engine_GL_legacy.hpp" open="1" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="source/core/graphics_engine_GL_legacy.hpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="1133" topLine="0" />
+			<Cursor1 position="1000" topLine="0" />
 		</Cursor>
 	</File>
 	<File name="source/UI/UI_loading_screen.hpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -271,7 +271,7 @@
 			<Cursor1 position="30" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="source/core/graphics_engine_GL_legacy.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="source/core/graphics_engine_GL_legacy.cpp" open="1" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="10450" topLine="0" />
 		</Cursor>
@@ -308,7 +308,7 @@
 	</File>
 	<File name="CMakeLists.txt" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="6454" topLine="140" />
+			<Cursor1 position="5503" topLine="116" />
 		</Cursor>
 	</File>
 	<File name="source/core/math.hpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -456,9 +456,9 @@
 			<Cursor1 position="31" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="source/core/core.hpp" open="1" top="0" tabpos="9" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="source/core/core.hpp" open="0" top="0" tabpos="9" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="1268" topLine="37" />
+			<Cursor1 position="2004" topLine="27" />
 		</Cursor>
 	</File>
 	<File name="source/game/npc.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -591,7 +591,7 @@
 			<Cursor1 position="30" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="source/core/config.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="source/core/config.cpp" open="1" top="1" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="1614" topLine="38" />
 		</Cursor>
