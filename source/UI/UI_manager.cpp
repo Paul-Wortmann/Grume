@@ -30,6 +30,8 @@ extern game_class         game;
 
 UI_manager_class::UI_manager_class(void)
 {
+    UI_manager_class::root                          = NULL;
+    UI_manager_class::last                          = NULL;
     UI_manager_class::data.drag_in_progress         = false;
     UI_manager_class::data.element_drag_in_progress = false;
     UI_manager_class::data.element_type_over        = ITEM_NONE;
@@ -50,7 +52,7 @@ UI_form_struct *UI_manager_class::UI_form_add(int UI_form_UID)
     }
     else
     {
-        UI_form_struct* temp_pointer;
+        UI_form_struct* temp_pointer = NULL;
         temp_pointer = new UI_form_struct;
         temp_pointer = UI_manager_class::root;
         if (temp_pointer != NULL)
@@ -772,8 +774,6 @@ void UI_manager_class::render(void)
                                 float texture_background_y = game.core.io.mouse_y;
                                 float texture_background_size_x = 0.0f;
                                 float texture_background_size_y = 0.0f;
-                                float texture_divider_size_x = 0.0f;
-                                float texture_divider_size_y = 0.0f;
                                 texture_type* texture_pointer_name = new texture_type;
                                 texture_pointer_name = game.texture_manager.add_texture(game.font_manager.root,item_pointer->data.name.c_str(),0.8f,0,0,255,255,255,255,TEXTURE_STRING);
                                 texture_pointer_name->data.render_positioning = TEXTURE_RENDER_DOWN+TEXTURE_RENDER_LEFT;
@@ -870,8 +870,8 @@ void UI_manager_class::render(void)
                                 }
                                 if (item_pointer->data.number_of_item_sockets > 0)
                                 {
-                                    texture_divider_size_x = texture_background_size_x - texture_background_padding;
-                                    texture_divider_size_y = texture_background_padding/4.0f;
+                                    float texture_divider_size_x = texture_background_size_x - texture_background_padding;
+                                    float texture_divider_size_y = texture_background_padding/4.0f;
                                     texture_temp_y -= (texture_background_padding);
                                     switch (item_pointer->data.qaulity_type)
                                     {
@@ -973,8 +973,6 @@ event_struct  UI_manager_class::process_form_elements(UI_form_struct *UI_form_po
             {
                 // ---------------------------------------------------------------------------------------
                 UI_form_pointer->data.element[element_number].mouse_over = (game.core.physics.point_in_quadrangle(UI_form_pointer->data.element[element_number].position.x,UI_form_pointer->data.element[element_number].size.x,UI_form_pointer->data.element[element_number].position.y,UI_form_pointer->data.element[element_number].size.y,game.core.io.mouse_x,game.core.io.mouse_y));
-                float drag_delta_x = 0.0f;
-                float drag_delta_y = 0.0f;
                 bool  allow_drag   = UI_form_pointer->data.element[element_number].dragable;
                 bool  allow_process = true;
                 UI_form_pointer->data.element[element_number].clicked = false;
@@ -1001,8 +999,8 @@ event_struct  UI_manager_class::process_form_elements(UI_form_struct *UI_form_po
                         {
                             if (game.core.io.mouse_button_left)
                             {
-                                drag_delta_x = UI_form_pointer->data.element[element_number].position.x;
-                                drag_delta_y = UI_form_pointer->data.element[element_number].position.y;
+                                float drag_delta_x = UI_form_pointer->data.element[element_number].position.x;
+                                float drag_delta_y = UI_form_pointer->data.element[element_number].position.y;
                                 UI_form_pointer->data.element[element_number].position.x = game.core.io.mouse_x + UI_form_pointer->data.element[element_number].drag_offset_x;
                                 UI_form_pointer->data.element[element_number].position.y = game.core.io.mouse_y + UI_form_pointer->data.element[element_number].drag_offset_y;
                                 drag_delta_x = drag_delta_x - UI_form_pointer->data.element[element_number].position.x;
@@ -1015,12 +1013,11 @@ event_struct  UI_manager_class::process_form_elements(UI_form_struct *UI_form_po
                                 int window_from  = UI_form_pointer->data.UID;
                                 int element_from = UI_form_pointer->data.element[element_number].element_UID;
                                 int window_over  = game.UI_manager.UI_form_mouse_over_form(window_from);
-                                int element_over = 0;
                                 UI_form_pointer->data.element[element_number].position.x = UI_form_pointer->data.element[element_number].position_origional.x;
                                 UI_form_pointer->data.element[element_number].position.y = UI_form_pointer->data.element[element_number].position_origional.y;
                                 if (window_over != MOUSE_OVER_MAP)
                                 {
-                                    element_over = game.UI_manager.UI_form_mouse_over_element(window_over,element_from);
+                                    int element_over = game.UI_manager.UI_form_mouse_over_element(window_over,element_from);
                                     if (element_over != MOUSE_OVER_MAP)
                                     {
                                         swap_elements(window_from,element_from,window_over,element_over);
@@ -1141,8 +1138,6 @@ void UI_manager_class::process_forms(void)
     for (UI_form_struct *UI_form_pointer = UI_manager_class::last; UI_form_pointer != NULL; UI_form_pointer = UI_form_pointer->previous)
     {
         // ----------------------------- process UI form ---------------------------------
-        float        drag_delta_x       = 0.0f;
-        float        drag_delta_y       = 0.0f;
         bool         return_mouse_over  = false;
         bool         allow_drag         = true;
         if (UI_form_pointer->data.enabled)
@@ -1182,8 +1177,8 @@ void UI_manager_class::process_forms(void)
                 {
                     if (game.core.io.mouse_button_left)
                     {
-                        drag_delta_x = UI_form_pointer->data.position.x;
-                        drag_delta_y = UI_form_pointer->data.position.y;
+                        float drag_delta_x = UI_form_pointer->data.position.x;
+                        float drag_delta_y = UI_form_pointer->data.position.y;
                         UI_form_pointer->data.position.x = game.core.io.mouse_x + UI_form_pointer->data.drag_offset_x;
                         UI_form_pointer->data.position.y = game.core.io.mouse_y + UI_form_pointer->data.drag_offset_y;
                         drag_delta_x = drag_delta_x - UI_form_pointer->data.position.x;
