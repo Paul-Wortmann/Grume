@@ -114,6 +114,8 @@ bool GL_legacy_init(void)
             game.core.config.display_resolution_x    = mode[game.core.graphics.current_display_mode].w;
             game.core.config.display_resolution_y    = mode[game.core.graphics.current_display_mode].h;
         }
+        game.core.config.font_base_resolution_x = mode[0].w;
+        game.core.config.font_base_resolution_y = mode[0].h;
         game.core.config.font_scale_x = (float)game.core.config.display_resolution_x/(float)game.core.config.font_base_resolution_x;
         game.core.config.font_scale_y = (float)game.core.config.display_resolution_y/(float)game.core.config.font_base_resolution_y;
         game.core.config.mouse_resolution_x   = game.core.config.display_resolution_x;
