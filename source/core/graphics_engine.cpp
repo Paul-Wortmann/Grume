@@ -207,6 +207,22 @@ bool graphics_engine_class::render(void)
     return(return_value);
 };
 
+bool graphics_engine_class::build_mode_list(void)
+{
+    bool return_value = false;
+    switch (graphics_engine_class::renderer)
+    {
+        case RENDERER_GL3:
+            return_value = GL_build_mode_list();
+        break;
+        case RENDERER_GL1:
+        default:
+            return_value = GL_legacy_build_mode_list();
+        break;
+    }
+    return(return_value);
+};
+
 graphics_engine_class::graphics_engine_class(void)
 {
     graphics_engine_class::current_display         = 0;
@@ -222,6 +238,9 @@ graphics_engine_class::graphics_engine_class(void)
     graphics_engine_class::render_GL.maxLength     = 0;
     graphics_engine_class::render_GL.number_VAO    = 0;
     graphics_engine_class::window                  = NULL;
+    graphics_engine_class::display_mode            = NULL;
+    graphics_engine_class::menu_mode_list          = NULL;
+    graphics_engine_class::menu_mode_length        = 0;
 };
 
 graphics_engine_class::~graphics_engine_class(void)

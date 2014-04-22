@@ -76,53 +76,53 @@ bool GL_init(void)
         game.core.graphics.number_displays      = SDL_GetNumVideoDisplays();
         game.core.log.file_write("Number of attached displays -> ",game.core.graphics.number_displays);
         game.core.graphics.number_display_modes = SDL_GetNumDisplayModes(game.core.graphics.current_display);
-        SDL_DisplayMode *mode = new SDL_DisplayMode[game.core.graphics.number_display_modes+1];
+        game.core.graphics.display_mode = new SDL_DisplayMode[game.core.graphics.number_display_modes+1];
         game.core.log.file_write("Number of display modes -> ",game.core.graphics.number_display_modes);
         for (int i = 0; i < game.core.graphics.number_display_modes; i++)
         {
-            if (SDL_GetDisplayMode(game.core.graphics.current_display,i,&mode[i]) == 0) game.core.log.file_write("Display mode - ",i," - x - ",mode[i].w," - y - ",mode[i].h," - refresh rate - ",mode[i].refresh_rate);
+            if (SDL_GetDisplayMode(game.core.graphics.current_display,i,&game.core.graphics.display_mode[i]) == 0) game.core.log.file_write("Display mode - ",i," - x - ",game.core.graphics.display_mode[i].w," - y - ",game.core.graphics.display_mode[i].h," - refresh rate - ",game.core.graphics.display_mode[i].refresh_rate);
         }
-        SDL_GetDisplayMode(game.core.graphics.current_display,game.core.graphics.current_display_mode,&mode[game.core.graphics.current_display_mode]);
-        game.core.config.display_resolution_x    = mode[game.core.graphics.current_display_mode].w;
-        game.core.config.display_resolution_y    = mode[game.core.graphics.current_display_mode].h;
+        SDL_GetDisplayMode(game.core.graphics.current_display,game.core.graphics.current_display_mode,&game.core.graphics.display_mode[game.core.graphics.current_display_mode]);
+        game.core.config.display_resolution_x    = game.core.graphics.display_mode[game.core.graphics.current_display_mode].w;
+        game.core.config.display_resolution_y    = game.core.graphics.display_mode[game.core.graphics.current_display_mode].h;
         game.core.config.display_resolution_x    = 800;
         game.core.config.display_resolution_y    = 600;
         game.core.config.display_fullscreen      = false;
-        if ((game.core.config.display_resolution_x < mode[game.core.graphics.number_display_modes-1].w) || (game.core.config.display_resolution_y < mode[game.core.graphics.number_display_modes-1].h))
+        if ((game.core.config.display_resolution_x < game.core.graphics.display_mode[game.core.graphics.number_display_modes-1].w) || (game.core.config.display_resolution_y < game.core.graphics.display_mode[game.core.graphics.number_display_modes-1].h))
         {
-            game.core.config.display_resolution_x    = mode[game.core.graphics.number_display_modes-1].w;
-            game.core.config.display_resolution_y    = mode[game.core.graphics.number_display_modes-1].h;
+            game.core.config.display_resolution_x    = game.core.graphics.display_mode[game.core.graphics.number_display_modes-1].w;
+            game.core.config.display_resolution_y    = game.core.graphics.display_mode[game.core.graphics.number_display_modes-1].h;
         }
-        if ((game.core.config.display_resolution_x > mode[0].w) || (game.core.config.display_resolution_y > mode[0].h))
+        if ((game.core.config.display_resolution_x > game.core.graphics.display_mode[0].w) || (game.core.config.display_resolution_y > game.core.graphics.display_mode[0].h))
         {
-            game.core.config.display_resolution_x    = mode[0].w;
-            game.core.config.display_resolution_y    = mode[0].h;
+            game.core.config.display_resolution_x    = game.core.graphics.display_mode[0].w;
+            game.core.config.display_resolution_y    = game.core.graphics.display_mode[0].h;
             game.core.config.display_fullscreen      = true;
         }
         bool display_mode_found = false;
         if (game.core.debug)  for (int i = 0; i < game.core.graphics.number_display_modes; i++)
         {
-            if ((game.core.config.display_resolution_x == mode[i].w) && (game.core.config.display_resolution_y == mode[i].h)) display_mode_found = true;
+            if ((game.core.config.display_resolution_x == game.core.graphics.display_mode[i].w) && (game.core.config.display_resolution_y == game.core.graphics.display_mode[i].h)) display_mode_found = true;
         }
         if (!display_mode_found)
         {
-            game.core.config.display_resolution_x    = mode[0].w;
-            game.core.config.display_resolution_y    = mode[0].h;
+            game.core.config.display_resolution_x    = game.core.graphics.display_mode[0].w;
+            game.core.config.display_resolution_y    = game.core.graphics.display_mode[0].h;
             game.core.config.display_fullscreen      = true;
         }
         if (game.core.config.display_fullscreen)
         {
-            game.core.config.display_resolution_x    = mode[game.core.graphics.current_display_mode].w;
-            game.core.config.display_resolution_y    = mode[game.core.graphics.current_display_mode].h;
+            game.core.config.display_resolution_x    = game.core.graphics.display_mode[game.core.graphics.current_display_mode].w;
+            game.core.config.display_resolution_y    = game.core.graphics.display_mode[game.core.graphics.current_display_mode].h;
         }
-        game.core.config.font_base_resolution_x = mode[0].w;
-        game.core.config.font_base_resolution_y = mode[0].h;
+        game.core.config.font_base_resolution_x = game.core.graphics.display_mode[0].w;
+        game.core.config.font_base_resolution_y = game.core.graphics.display_mode[0].h;
         game.core.config.font_scale_x = (float)game.core.config.display_resolution_x/(float)game.core.config.font_base_resolution_x;
         game.core.config.font_scale_y = (float)game.core.config.display_resolution_y/(float)game.core.config.font_base_resolution_y;
         game.core.config.mouse_resolution_x   = game.core.config.display_resolution_x;
         game.core.config.mouse_resolution_y   = game.core.config.display_resolution_y;
-        game.core.log.file_write("Setting display mode - ",game.core.graphics.current_display_mode," - x - ",mode[game.core.graphics.current_display_mode].w," - y - ",mode[game.core.graphics.current_display_mode].h," - refresh rate - ",mode[game.core.graphics.current_display_mode].refresh_rate);
-        game.core.log.file_write("Using pixel format - ",pixel_format_from_int(mode[game.core.graphics.current_display_mode].format));
+        game.core.log.file_write("Setting display mode - ",game.core.graphics.current_display_mode," - x - ",game.core.graphics.display_mode[game.core.graphics.current_display_mode].w," - y - ",game.core.graphics.display_mode[game.core.graphics.current_display_mode].h," - refresh rate - ",game.core.graphics.display_mode[game.core.graphics.current_display_mode].refresh_rate);
+        game.core.log.file_write("Using pixel format - ",pixel_format_from_int(game.core.graphics.display_mode[game.core.graphics.current_display_mode].format));
         game.core.log.file_write("Creating window...");
         game.core.config.display_flags = SDL_WINDOW_SHOWN | SDL_WINDOW_OPENGL;
         if (game.core.config.display_fullscreen) game.core.config.display_flags |= SDL_WINDOW_FULLSCREEN;
@@ -298,4 +298,45 @@ bool GL_render(void)
     glDrawArrays( GL_TRIANGLE_FAN, 0, game.core.graphics.render_GL.object_vao->number_of_vertex);
     SDL_GL_SwapWindow(game.core.graphics.window);
     return (return_value);
+};
+
+bool GL_build_mode_list(void)
+{
+    bool return_value = true;
+    if (game.core.graphics.number_display_modes <= 0)
+    {
+        return_value = false;
+    }
+    else
+    {
+        game.core.graphics.menu_mode_length = 1;
+        int list_position = 0;
+        int last_w = game.core.graphics.display_mode[0].w;
+        int last_h = game.core.graphics.display_mode[0].h;
+        for (int i = 0; i < game.core.graphics.number_display_modes; i++)
+        {
+            if ((last_w != game.core.graphics.display_mode[i].w) || (last_h != game.core.graphics.display_mode[i].h))
+            {
+                last_w = game.core.graphics.display_mode[i].w;
+                last_h = game.core.graphics.display_mode[i].h;
+                game.core.graphics.menu_mode_length++;
+            }
+        }
+        if (game.core.graphics.menu_mode_length > MENU_DISPLAY_LIST_LENGTH) game.core.graphics.menu_mode_length = MENU_DISPLAY_LIST_LENGTH;
+        game.core.graphics.menu_mode_list = new int[game.core.graphics.menu_mode_length+1];
+        for (int i = 0; i < game.core.graphics.number_display_modes; i++)
+        {
+            if ((last_w != game.core.graphics.display_mode[i].w) || (last_h != game.core.graphics.display_mode[i].h))
+            {
+                last_w = game.core.graphics.display_mode[i].w;
+                last_h = game.core.graphics.display_mode[i].h;
+                if (list_position < game.core.graphics.menu_mode_length)
+                {
+                    game.core.graphics.menu_mode_list[list_position] = i;
+                }
+                list_position++;
+            }
+        }
+    }
+    return(return_value);
 };

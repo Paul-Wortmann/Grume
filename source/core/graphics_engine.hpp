@@ -37,6 +37,8 @@
 #define RENDERER_GL1 1
 #define RENDERER_GL3 3
 
+#define MENU_DISPLAY_LIST_LENGTH 6
+
 struct GL_object_struct
 {
     GLuint   vao_data;
@@ -101,21 +103,25 @@ struct vertex_normal_type
 class graphics_engine_class
 {
     public:
+        SDL_Window*      window;
+        SDL_GLContext    context;
+        SDL_DisplayMode *display_mode;
+        render_GL_struct render_GL; // temp
+        int             *menu_mode_list;
+        int              menu_mode_length;
+        int              renderer;
+        int              GL_major_version_number;
+        int              GL_minor_version_number;
+        int              current_display;
+        int              current_display_mode;
+        int              number_displays;
+        int              number_display_modes;
         graphics_engine_class(void);
        ~graphics_engine_class(void);
-        int  renderer;
-        int GL_major_version_number;
-        int GL_minor_version_number;
-        SDL_Window*   window;
-        SDL_GLContext context;
-        int current_display;
-        int current_display_mode;
-        int number_displays;
-        int number_display_modes;
-        render_GL_struct render_GL; // temp
-        bool init(void);
-        bool deinit(void);
-        bool render(void);
+        bool             init(void);
+        bool             deinit(void);
+        bool             render(void);
+        bool             build_mode_list(void);
 };
 
 int   gl_to_res(float gl_coord, int max_res);

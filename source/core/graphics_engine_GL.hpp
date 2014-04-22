@@ -34,6 +34,7 @@ bool GL_deinit(void);
 bool GL_render(void);
 //bool GL_push_renderer_vbo(GL_object_struct &GL_object, GLuint &vao_id);
 bool GL_init_vao(GL_object_struct &GL_object);
+bool GL_build_mode_list(void);
 
 #endif // GRAPHICS_ENGINE_GL_H
 

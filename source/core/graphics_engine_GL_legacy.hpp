@@ -30,6 +30,7 @@
 bool GL_legacy_init(void);
 bool GL_legacy_deinit(void);
 bool GL_legacy_render(void);
+bool GL_legacy_build_mode_list(void);
 
 #endif // GRAPHICS_ENGINE_GL_LEGACY_H
 
