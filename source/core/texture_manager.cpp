@@ -210,14 +210,14 @@ void texture_manager_class::reload_textures(void)
 
 bool texture_manager_class::load_texture(texture_type *texture)
 {
-    GLint           number_of_colors;
-    SDL_Surface    *image_surface  = NULL;
-    GLenum          texture_format = 0;
     bool            return_value   = false;
-    texture->data.frame_max        = 0;
-    texture->data.frame            = new frame_type[texture->data.frame_max+1];
+    SDL_Surface    *image_surface  = NULL;
     if ((image_surface = IMG_Load(texture->data.path.c_str())))
     {
+        GLint           number_of_colors;
+        GLenum          texture_format = 0;
+        texture->data.frame_max        = 0;
+        texture->data.frame            = new frame_type[texture->data.frame_max+1];
         return_value = true;
         number_of_colors = image_surface->format->BytesPerPixel;
         if (number_of_colors == 4)
@@ -260,20 +260,20 @@ bool texture_manager_class::load_sprite_sheet(texture_type *texture)
 
 bool texture_manager_class::load_sprite_sheet(texture_type *texture, int width_set, int height_set)
 {
-    texture->data.width            = width_set;
-    texture->data.height           = height_set;
-    int             frames_x;
-    int             frames_y;
-    int             frame_count    = 0;
-    int             num_sprites    = 0;
     SDL_Surface    *sprite_sheet   = NULL;
     SDL_Surface    *temp_surface   = NULL;
-    int             flags          = 0;
-    GLenum          texture_format = 0;
-    GLint           number_of_colors;
     bool            return_value   = false;
     if ((sprite_sheet = IMG_Load(texture->data.path.c_str())))
     {
+        texture->data.width            = width_set;
+        texture->data.height           = height_set;
+        int             frames_x;
+        int             frames_y;
+        int             frame_count    = 0;
+        int             num_sprites    = 0;
+        int             flags          = 0;
+        GLenum          texture_format = 0;
+        GLint           number_of_colors;
         return_value = true;
         frames_x = sprite_sheet->w / texture->data.width;
         frames_y = sprite_sheet->h / texture->data.height;
@@ -374,16 +374,15 @@ bool texture_manager_class::load_string(texture_type *texture)
     bool return_value   = false;
     if ((texture->data.text.text_string.length() > 0) && (texture->data.text.font != NULL))
     {
-        GLint           number_of_colors;
         SDL_Surface    *image_surface  = NULL;
-        GLenum          texture_format = 0;
-        texture->data.frame_max        = 0;
-        texture->data.frame            = new frame_type[texture->data.frame_max+1];
         const char*         write_data = texture->data.text.text_string.c_str();
         SDL_Color font_color = {texture->data.text.color.r,texture->data.text.color.g,texture->data.text.color.b,texture->data.text.color.a};
-
         if ((image_surface = TTF_RenderUTF8_Blended(texture->data.text.font->font_data,write_data,font_color)))
         {
+            GLint           number_of_colors;
+            GLenum          texture_format = 0;
+            texture->data.frame_max        = 0;
+            texture->data.frame            = new frame_type[texture->data.frame_max+1];
             texture->data.width  = ((float)image_surface->w / (float)game.core.config.display_resolution_x) * texture->data.text.text_size * game.core.config.font_scale_x;
             texture->data.height = ((float)image_surface->h / (float)game.core.config.display_resolution_y) * texture->data.text.text_size * game.core.config.font_scale_y;
             return_value = true;

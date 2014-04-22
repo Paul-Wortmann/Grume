@@ -342,15 +342,15 @@ void  emitter_class::draw(void)
 
 void  emitter_class::load(std::string file_name)
 {
-    char         temp_char = ' ';
-    float        temp_float;
-    std::string  temp_string_key;
-    std::string  temp_string_value;
-    int          count;
-    std::string  data_line;
     std::fstream particle_file(file_name.c_str(),std::ios::in|std::ios::binary);
     if (particle_file.is_open())
     {
+        char         temp_char = ' ';
+        float        temp_float;
+        std::string  temp_string_key;
+        std::string  temp_string_value;
+        int          count;
+        std::string  data_line;
         while ( particle_file.good() )
         {
             getline(particle_file,data_line);

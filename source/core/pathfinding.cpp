@@ -116,29 +116,30 @@ path_type*  map_path_find_internal(fmx_map_type *fmx_map_pointer, path_node_type
         {
             if (!ignore_loop)
             {
-                int  tile_current   = path_node_pointer->tile;
-                int  node_1_F       = -1;
-                int  node_2_F       = -1;
-                int  node_3_F       = -1;
-                int  node_4_F       = -1;
-                int  node_5_F       = -1;
-                int  node_6_F       = -1;
-                int  node_7_F       = -1;
-                int  node_8_F       = -1;
-                int  node_1_tile    = -1;
-                int  node_2_tile    = -1;
-                int  node_3_tile    = -1;
-                int  node_4_tile    = -1;
-                int  node_5_tile    = -1;
-                int  node_6_tile    = -1;
-                int  node_7_tile    = -1;
-                int  node_8_tile    = -1;
-                int  node_next      = -1;
-                int  node_next_F    = -1;
-                int  node_next_tile = -1;
-                int  node_parent    = -1;
                 if (!fmx_map_pointer->data.path_end_found)
                 {
+                    int  tile_current   = path_node_pointer->tile;
+                    int  node_1_F       = -1;
+                    int  node_2_F       = -1;
+                    int  node_3_F       = -1;
+                    int  node_4_F       = -1;
+                    int  node_5_F       = -1;
+                    int  node_6_F       = -1;
+                    int  node_7_F       = -1;
+                    int  node_8_F       = -1;
+                    int  node_1_tile    = -1;
+                    int  node_2_tile    = -1;
+                    int  node_3_tile    = -1;
+                    int  node_4_tile    = -1;
+                    int  node_5_tile    = -1;
+                    int  node_6_tile    = -1;
+                    int  node_7_tile    = -1;
+                    int  node_8_tile    = -1;
+                    int  node_next      = -1;
+                    int  node_next_F    = -1;
+                    int  node_next_tile = -1;
+                    int  node_parent    = -1;
+
                     node_1_tile = tile_current-fmx_map_pointer->data.map_width-1;
                     if ((node_1_tile >= 0) && (node_1_tile < fmx_map_pointer->data.number_of_tiles))
                     {
