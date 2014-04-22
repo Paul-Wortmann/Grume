@@ -37,6 +37,14 @@ Apart from the mouse various keys are also assigned for usage:
 
 If developer mode is enabled:
 
+- A      - Random map generator 0.
+- S      - Random map generator 1.
+- D      - Random map generator 2.
+- F      - Random map generator 3.
+- G      - Random map generator 4.
+- H      - Random map generator 5.
+- J      - Random map generator 6.
+- K      - Random map generator 7.
 - X      - Attempt to force kill Frost and Flame.
 
 Compiling:
