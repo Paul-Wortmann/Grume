@@ -31,6 +31,10 @@ extern game_class game;
 
 spell_manager_class::spell_manager_class(void)
 {
+    spell_manager_class::last             = NULL;
+    spell_manager_class::root             = NULL;
+    spell_manager_class::spell            = NULL;
+    spell_manager_class::number_of_spells = 0;
 };
 
 spell_manager_class::~spell_manager_class(void)
@@ -51,7 +55,6 @@ spell_type* spell_manager_class::add_spell(int spell_UID)
     else
     {
         spell_type* temp_pointer;
-        temp_pointer = new spell_type;
         temp_pointer = spell_manager_class::root;
         if (temp_pointer != NULL)
         {

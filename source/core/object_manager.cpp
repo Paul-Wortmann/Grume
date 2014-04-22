@@ -29,6 +29,9 @@ extern game_class game;
 
 object_manager_class::object_manager_class(void)
 {
+    object_manager_class::current           = NULL;
+    object_manager_class::last              = NULL;
+    object_manager_class::root              = NULL;
     object_manager_class::number_of_objects = 0;
 };
 
@@ -36,7 +39,6 @@ object_manager_class::~object_manager_class(void)
 {
     Mix_HaltMusic();
     object_type* temp_pointer;
-    temp_pointer = new object_type;
     temp_pointer = object_manager_class::root;
     if (temp_pointer != NULL)
     {
@@ -61,7 +63,6 @@ object_type *object_manager_class::add_object(std::string file_name)
     else
     {
         object_type* temp_pointer;
-        temp_pointer = new object_type;
         temp_pointer = object_manager_class::root;
         if (temp_pointer != NULL)
         {

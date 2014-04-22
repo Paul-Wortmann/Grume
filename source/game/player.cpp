@@ -82,6 +82,11 @@ void level_class::process(void)
 
 stat_class::stat_class(void)
 {
+    stat_class::width        = 0.0f;
+    stat_class::height       = 0.0f;
+    stat_class::pos_x        = 0.0f;
+    stat_class::pos_y        = 0.0f;
+    stat_class::pos_z        = 0.0f;
     stat_class::current      = 0.0f;
     stat_class::maximum      = 0.0f;
     stat_class::regeneration = 0.0f;
@@ -154,6 +159,11 @@ player_class::player_class(void)
     player_class::spells.heal                   = 0;
     player_class::allocatable_points            = 0;
     player_class::auto_allocate                 = true;
+    player_class::portrait                      = NULL;
+    player_class::destination_tile              = 0;
+    player_class::destination_set               = false;
+    player_class::path_set                      = false;
+    player_class::movement_type                 = 0;
 };
 
 player_class::~player_class(void)

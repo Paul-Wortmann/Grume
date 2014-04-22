@@ -30,13 +30,14 @@ extern game_class game;
 
 texture_manager_class::texture_manager_class(void)
 {
+    texture_manager_class::last               = NULL;
+    texture_manager_class::root               = NULL;
     texture_manager_class::number_of_textures = 0;
 };
 
 texture_manager_class::~texture_manager_class(void)
 {
     texture_type* temp_pointer;
-    temp_pointer = new texture_type;
     temp_pointer = texture_manager_class::root;
     if (temp_pointer != NULL)
     {
@@ -90,7 +91,6 @@ texture_type* texture_manager_class::add_texture(font_type* font, std::string te
     else
     {
         texture_type* temp_pointer;
-        temp_pointer = new texture_type;
         temp_pointer = texture_manager_class::root;
         if (temp_pointer != NULL)
         {
@@ -147,7 +147,6 @@ texture_type* texture_manager_class::add_texture(font_type* font, std::string te
 void texture_manager_class::load_textures(void)
 {
     texture_type* temp_pointer;
-    temp_pointer = new texture_type;
     temp_pointer = texture_manager_class::root;
     if (temp_pointer != NULL)
     {
@@ -182,7 +181,6 @@ void texture_manager_class::load_textures(void)
 void texture_manager_class::reload_textures(void)
 {
     texture_type* temp_pointer;
-    temp_pointer = new texture_type;
     temp_pointer = texture_manager_class::root;
     if (temp_pointer != NULL)
     {

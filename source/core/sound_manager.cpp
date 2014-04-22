@@ -29,6 +29,8 @@ extern game_class game;
 
 sound_manager_class::sound_manager_class(void)
 {
+    sound_manager_class::last             = NULL;
+    sound_manager_class::root             = NULL;
     sound_manager_class::number_of_sounds = 0;
 };
 
@@ -36,7 +38,6 @@ sound_manager_class::~sound_manager_class(void)
 {
     Mix_HaltChannel(-1);
     sound_type* temp_pointer;
-    temp_pointer = new sound_type;
     temp_pointer = sound_manager_class::root;
     if (temp_pointer != NULL)
     {
@@ -62,7 +63,6 @@ sound_type *sound_manager_class::add_sound(std::string file_name)
     else
     {
         sound_type* temp_pointer;
-        temp_pointer = new sound_type;
         temp_pointer = sound_manager_class::root;
         if (temp_pointer != NULL)
         {

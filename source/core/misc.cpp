@@ -46,7 +46,7 @@ double random_double(void)
            temp_d = rand()%100;
            temp_d = 0.95 - (temp_d /50.9);
        }
-       while ((temp_d > 2) and (temp_d < -2));
+       while ((temp_d > 2) || (temp_d < -2));
        return temp_d;
 }
 
@@ -84,7 +84,7 @@ float   random_GLcoord(void)
        temp_f = rand()%100;
        temp_f = (0.95 - (temp_f /50.9))/2;
        }
-       while ((temp_f > 1) and (temp_f < -1));
+       while ((temp_f > 1) || (temp_f < -1));
        return temp_f;
 }
 

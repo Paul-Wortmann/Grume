@@ -102,7 +102,7 @@ path_type*  map_path_find(fmx_map_type *fmx_map_pointer, int tile_start, int til
 
 path_type*  map_path_find_internal(fmx_map_type *fmx_map_pointer, path_node_type* path_node_pointer, int tile_start, int tile_end)
 {
-    path_type* return_path;
+    path_type* return_path = NULL;
     if (path_node_pointer->tile == tile_end)
     {
         fmx_map_pointer->data.path_end_found = true;

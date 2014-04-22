@@ -29,6 +29,9 @@ extern game_class game;
 
 music_manager_class::music_manager_class(void)
 {
+    music_manager_class::root            = NULL;
+    music_manager_class::last            = NULL;
+    music_manager_class::current         = NULL;
     music_manager_class::number_of_music = 0;
     music_manager_class::track           = 0;
     music_manager_class::next_track      = true;
@@ -38,7 +41,6 @@ music_manager_class::~music_manager_class(void)
 {
     Mix_HaltMusic();
     music_type* temp_pointer;
-    temp_pointer = new music_type;
     temp_pointer = music_manager_class::root;
     if (temp_pointer != NULL)
     {
@@ -63,7 +65,6 @@ music_type *music_manager_class::add_music(std::string file_name)
     else
     {
         music_type* temp_pointer;
-        temp_pointer = new music_type;
         temp_pointer = music_manager_class::root;
         if (temp_pointer != NULL)
         {
