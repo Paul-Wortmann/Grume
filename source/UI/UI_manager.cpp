@@ -275,7 +275,7 @@ void UI_manager_class::UI_form_list_sort(void)
                 }
             }
         }
-        free(UI_form_pointer_3);
+        delete UI_form_pointer_3;
     }
 }
 
@@ -307,7 +307,7 @@ void UI_manager_class::UI_form_list_sort(int UI_form_UID)
                 }
             }
         }
-        free(UI_form_pointer_3);
+        delete UI_form_pointer_3;
     }
 }
 
