@@ -282,7 +282,6 @@ void game_class::init(void)
 void game_class::process(void)
 {
     UI_form_struct* UI_form_pointer;
-    int             element_number    = 1;
     game.player.process();
     game.npc.process();
     game.map_2D.process(&fmx_map);
@@ -294,6 +293,7 @@ void game_class::process(void)
     }
     if (game.core.io.keyboard_ready)
     {
+        int element_number    = 1;
         if (game.core.io.key_escape) // Main menu
         {
             game.UI_manager.UI_form_disable(UID_MENU_GAME_LOAD);
@@ -458,7 +458,7 @@ void game_class::process(void)
             game.core.io.keyboard_delay_count      = 0;
         }
         */
-        if (game.core.io.key_t) // test exp++
+        if ((game.core.debug)&&(game.core.io.key_t)) // test exp++
         {
             game.player.level.current_experience++;
             game.core.io.key_t                     = false;
