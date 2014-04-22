@@ -343,12 +343,12 @@ bool log_class::file_write_time_stamp(void)
     std::fstream logfile(log_class::file_name.c_str(),std::ios::out|std::ios::app);
     if (logfile.is_open())
     {
+        tm newtime;
         std::time_t result = std::time(NULL);
-        logfile << "Logfile created: " << std::asctime(std::localtime(&result));
+        logfile << "Logfile created: " << std::asctime(localtime_r(&result,&newtime));
         logfile << "\n";
         logfile.close();
     }
     else return(false);
     return(true);
 };
-

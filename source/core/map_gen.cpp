@@ -201,7 +201,6 @@ bool map_gen_room_flood_fill (fmx_map_type *fmx_map_pointer)
 int map_gen_room_check_path (fmx_map_type *fmx_map_pointer, int room_1, int room_2, bool x_then_y)
 {
     int return_value         = 0;
-    int previous_tile        = TILE_NONE;
     int to_floor_transitions = 0;
     int r1_x = fmx_map_pointer->room[room_1].position.x;
     int r1_y = fmx_map_pointer->room[room_1].position.y;
@@ -212,6 +211,7 @@ int map_gen_room_check_path (fmx_map_type *fmx_map_pointer, int room_1, int room
         (r2_x >= 0) && (r2_x <= fmx_map_pointer->data.map_width) &&
         (r2_y >= 0) && (r2_y <= fmx_map_pointer->data.map_height))
     {
+        int previous_tile        = TILE_NONE;
         if (x_then_y)
         {
             previous_tile = TILE_NONE;
@@ -332,7 +332,7 @@ void map_gen_room_path (fmx_map_type *fmx_map_pointer, int room_1, int room_2, b
                 int *temp_room_list;
                 if (fmx_map_pointer->room[room_1].number_of_connected_rooms > 0)
                 {
-                    temp_room_list = new int[fmx_map_pointer->room[room_1].number_of_connected_rooms];
+                    temp_room_list = new int[fmx_map_pointer->room[room_1].number_of_connected_rooms+1];
                     temp_room_list = fmx_map_pointer->room[room_1].connected_rooms;
                     delete fmx_map_pointer->room[room_1].connected_rooms;
                 }
@@ -362,7 +362,7 @@ void map_gen_room_path (fmx_map_type *fmx_map_pointer, int room_1, int room_2, b
                 int *temp_room_list;
                 if (fmx_map_pointer->room[room_2].number_of_connected_rooms > 0)
                 {
-                    temp_room_list = new int[fmx_map_pointer->room[room_2].number_of_connected_rooms];
+                    temp_room_list = new int[fmx_map_pointer->room[room_2].number_of_connected_rooms+1];
                     temp_room_list = fmx_map_pointer->room[room_2].connected_rooms;
                     delete fmx_map_pointer->room[room_2].connected_rooms;
                 }

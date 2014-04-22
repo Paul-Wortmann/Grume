@@ -35,6 +35,10 @@ extern game_class game;
 
 item_manager_class::item_manager_class(void)
 {
+    item_manager_class::item            = NULL;
+    item_manager_class::last            = NULL;
+    item_manager_class::root            = NULL;
+    item_manager_class::number_of_items = 0;
 };
 
 item_manager_class::~item_manager_class(void)
@@ -55,7 +59,6 @@ item_type* item_manager_class::add_item(int item_UID)
     else
     {
         item_type* temp_pointer;
-        temp_pointer = new item_type;
         temp_pointer = item_manager_class::root;
         if (temp_pointer != NULL)
         {
@@ -387,7 +390,7 @@ int  item_manager_class::gen_item(int item_type_UID, int item_sub_type_UID, int 
         new_UID = game.item_manager.get_new_item_UID();
         if (new_UID >= 0)
         {
-            item_type* item_pointer = new item_type;
+            item_type* item_pointer;
             item_pointer = game.item_manager.add_item(new_UID);
             if (item_pointer)
             {

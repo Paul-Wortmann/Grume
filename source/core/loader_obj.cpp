@@ -39,21 +39,28 @@ extern game_class         game;
 
 loader_obj_class::loader_obj_class(void)
 {
-    loader_obj_class::wrap_texture_enabled      =  false;
-    loader_obj_class::reference_ID              =  0;
-    loader_obj_class::number_of_use_materials   = -1;
-    loader_obj_class::number_of_materials       = -1;
-    loader_obj_class::number_of_vertices        = -1;
-    loader_obj_class::number_of_faces           = -1;
-    loader_obj_class::number_of_vertex_textures = -1;
-    loader_obj_class::number_of_vertex_normals  = -1;
-    loader_obj_class::angle.rotation.x          =  0.0f;
-    loader_obj_class::angle.rotation.y          =  0.0f;
-    loader_obj_class::angle.rotation.z          =  0.0f;
-    loader_obj_class::angle.translation.x       =  0.0f;
-    loader_obj_class::angle.translation.y       =  0.0f;
-    loader_obj_class::angle.translation.z       =  0.0f;
-    loader_obj_class::vertex_texture_w          =  false;
+    loader_obj_class::wrap_texture                     = NULL;
+    loader_obj_class::material                         = NULL;
+    loader_obj_class::smooth_shading                   = true;
+    loader_obj_class::vertex                           = NULL;
+    loader_obj_class::vertex_normal                    = NULL;
+    loader_obj_class::vertex_texture                   = NULL;
+    loader_obj_class::face                             = NULL;
+    loader_obj_class::wrap_texture_enabled             =  false;
+    loader_obj_class::reference_ID                     =  0;
+    loader_obj_class::number_of_use_materials          = -1;
+    loader_obj_class::number_of_materials              = -1;
+    loader_obj_class::number_of_vertices               = -1;
+    loader_obj_class::number_of_faces                  = -1;
+    loader_obj_class::number_of_vertex_textures        = -1;
+    loader_obj_class::number_of_vertex_normals         = -1;
+    loader_obj_class::angle.rotation.x                 =  0.0f;
+    loader_obj_class::angle.rotation.y                 =  0.0f;
+    loader_obj_class::angle.rotation.z                 =  0.0f;
+    loader_obj_class::angle.translation.x              =  0.0f;
+    loader_obj_class::angle.translation.y              =  0.0f;
+    loader_obj_class::angle.translation.z              =  0.0f;
+    loader_obj_class::vertex_texture_w                 =  false;
 }
 
 loader_obj_class::~loader_obj_class(void)
@@ -438,8 +445,8 @@ void loader_obj_class::load(std::string file_name)
         int          position_count                  =  0;
         std::string  temp_string_data;
         std::string  temp_string_data_compare;
-        std::string  temp_string_key;
-        std::string  temp_string_value;
+        //std::string  temp_string_key;
+        //std::string  temp_string_value;
         std::string  data_line;
         while (script_file.good())
         {

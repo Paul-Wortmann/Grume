@@ -30,13 +30,14 @@ extern game_class game;
 
 font_manager_class::font_manager_class (void)
 {
+    font_manager_class::root            = NULL;
+    font_manager_class::last            = NULL;
     font_manager_class::number_of_fonts = 0;
 };
 
 font_manager_class::~font_manager_class (void)
 {
     font_type* temp_pointer;
-    temp_pointer = new font_type;
     temp_pointer = font_manager_class::root;
     if (temp_pointer != NULL)
     {
@@ -61,7 +62,6 @@ font_type *font_manager_class::add_font (std::string file_name)
     else
     {
         font_type* temp_pointer;
-        temp_pointer = new font_type;
         temp_pointer = font_manager_class::root;
         if (temp_pointer != NULL)
         {

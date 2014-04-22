@@ -209,7 +209,19 @@ bool graphics_engine_class::render(void)
 
 graphics_engine_class::graphics_engine_class(void)
 {
-    graphics_engine_class::renderer = RENDERER_GL1;
+    graphics_engine_class::current_display         = 0;
+    graphics_engine_class::current_display_mode    = 0;
+    graphics_engine_class::GL_major_version_number = 0;
+    graphics_engine_class::GL_minor_version_number = 0;
+    graphics_engine_class::number_displays         = 0;
+    graphics_engine_class::number_display_modes    = 0;
+    graphics_engine_class::renderer                = RENDERER_GL1;
+    graphics_engine_class::render_GL.IsCompiled_FS = 0;
+    graphics_engine_class::render_GL.IsCompiled_VS = 0;
+    graphics_engine_class::render_GL.IsLinked      = 0;
+    graphics_engine_class::render_GL.maxLength     = 0;
+    graphics_engine_class::render_GL.number_VAO    = 0;
+    graphics_engine_class::window                  = NULL;
 };
 
 graphics_engine_class::~graphics_engine_class(void)

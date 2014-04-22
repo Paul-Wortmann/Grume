@@ -35,21 +35,46 @@ extern game_class         game;
 
 loader_md2_class::loader_md2_class(void)
 {
-    loader_md2_class::wrap_texture_enabled      =  false;
-    loader_md2_class::reference_ID              =  0;
-    loader_md2_class::number_of_use_materials   = -1;
-    loader_md2_class::number_of_materials       = -1;
-    loader_md2_class::number_of_vertices        = -1;
-    loader_md2_class::number_of_faces           = -1;
-    loader_md2_class::number_of_vertex_textures = -1;
-    loader_md2_class::number_of_vertex_normals  = -1;
-    loader_md2_class::angle.rotation.x          =  0.0f;
-    loader_md2_class::angle.rotation.y          =  0.0f;
-    loader_md2_class::angle.rotation.z          =  0.0f;
-    loader_md2_class::angle.translation.x       =  0.0f;
-    loader_md2_class::angle.translation.y       =  0.0f;
-    loader_md2_class::angle.translation.z       =  0.0f;
-    loader_md2_class::vertex_texture_w          =  false;
+    loader_md2_class::header.frame_size                = 0;
+    loader_md2_class::header.md2_ID                    = 0;
+    loader_md2_class::header.number_of_frames          = 0;
+    loader_md2_class::header.number_of_opengl_comands  = 0;
+    loader_md2_class::header.number_of_skins           = 0;
+    loader_md2_class::header.number_of_texture_coords  = 0;
+    loader_md2_class::header.number_of_triangles       = 0;
+    loader_md2_class::header.number_of_vertices        = 0;
+    loader_md2_class::header.offset_eof                = 0;
+    loader_md2_class::header.offset_frame_data         = 0;
+    loader_md2_class::header.offset_opengl_comand_data = 0;
+    loader_md2_class::header.offset_texture_coord_data = 0;
+    loader_md2_class::header.offset_texture_data       = 0;
+    loader_md2_class::header.offset_triangle_data      = 0;
+    loader_md2_class::header.texture_height            = 0;
+    loader_md2_class::header.texture_width             = 0;
+    loader_md2_class::header.version                   = 0;
+    loader_md2_class::wrap_texture                     = NULL;
+    loader_md2_class::use_material                     = NULL;
+    loader_md2_class::material                         = NULL;
+    loader_md2_class::smooth_shading                   = true;
+    loader_md2_class::vertex                           = NULL;
+    loader_md2_class::vertex_normal                    = NULL;
+    loader_md2_class::vertex_texture                   = NULL;
+    loader_md2_class::face                             = NULL;
+    loader_md2_class::wrap_texture_enabled             =  false;
+    loader_md2_class::reference_ID                     =  0;
+    loader_md2_class::number_of_use_materials          = -1;
+    loader_md2_class::number_of_materials              = -1;
+    loader_md2_class::number_of_vertices               = -1;
+    loader_md2_class::number_of_faces                  = -1;
+    loader_md2_class::number_of_vertex_textures        = -1;
+    loader_md2_class::number_of_vertex_normals         = -1;
+    loader_md2_class::angle.rotation.x                 =  0.0f;
+    loader_md2_class::angle.rotation.y                 =  0.0f;
+    loader_md2_class::angle.rotation.z                 =  0.0f;
+    loader_md2_class::angle.translation.x              =  0.0f;
+    loader_md2_class::angle.translation.y              =  0.0f;
+    loader_md2_class::angle.translation.z              =  0.0f;
+    loader_md2_class::vertex_texture_w                 =  false;
 }
 
 loader_md2_class::~loader_md2_class(void)
@@ -100,8 +125,8 @@ void loader_md2_class::load(std::string file_name)
         int          data_count_vn                   =  0;
         int          position_count                  =  0;
         std::string  temp_string_data;
-        std::string  temp_string_key;
-        std::string  temp_string_value;
+        //std::string  temp_string_key;
+        //std::string  temp_string_value;
         std::string  data_line;
         while (script_file.good())
         {
