@@ -35,7 +35,6 @@ void setup_character_window(int UID)
     int element_number = 0;
 
     UI_form_struct   *UI_form_pointer;
-    UI_form_pointer = new UI_form_struct;
     UI_form_pointer = game.UI_manager.UI_form_add(UID_CHARACTER);
 
     UI_form_pointer->data.UID                         = UID;

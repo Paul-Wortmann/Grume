@@ -34,7 +34,6 @@ void setup_menu_game_save(int UID)
     int element_number = 0;
 
     UI_form_struct   *UI_form_pointer;
-    UI_form_pointer = new UI_form_struct;
     UI_form_pointer = game.UI_manager.UI_form_add(UID_MENU_GAME_SAVE);
 
     UI_form_pointer->data.UID                     = UID;

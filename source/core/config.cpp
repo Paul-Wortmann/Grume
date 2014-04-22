@@ -30,7 +30,35 @@ extern game_class    game;
 
 config_class::config_class(void)
 {
-    //config_class::display_info                 = NULL;
+    config_class::file_name                  = "default.cfg";
+    config_class::file_header                = "www.PhysHexGames.co.nr game config file";
+    config_class::display_resolution         = 0;
+    config_class::display_resolution_x       = 0;
+    config_class::display_resolution_y       = 0;
+    config_class::font_base_resolution_x     = 1920;
+    config_class::font_base_resolution_y     = 1080;
+    config_class::font_scale_x               = (float)config_class::display_resolution_x/(float)config_class::font_base_resolution_x;
+    config_class::font_scale_y               = (float)config_class::display_resolution_y/(float)config_class::font_base_resolution_y;
+    config_class::display_bpp                = 32;
+    config_class::display_fullscreen         = true;
+    config_class::display_touchscreen        = false;
+    config_class::display_flags              = 0;
+    config_class::mouse_autohide             = false;
+    config_class::mouse_autohide_timer       = 128;
+    config_class::mouse_autohide_timer_count = 0;
+    config_class::menu_delay                 = 128;
+    config_class::menu_delay_count           = 0;
+    config_class::mouse_resolution_x         = config_class::display_resolution_x;
+    config_class::mouse_resolution_y         = config_class::display_resolution_y;
+    config_class::joystick_sensitivity       = 6400;
+    config_class::joystick_enabled           = false;
+    config_class::joystick_no_buttons        = 0;
+    config_class::audio_rate                 = 44100;
+    config_class::audio_channels             = 32;
+    config_class::audio_buffers              = 1024;
+    config_class::audio_volume_music         = 32;
+    config_class::audio_volume_sound         = 64;
+    config_class::language                   = "english";
 };
 
 config_class::~config_class(void)
@@ -42,7 +70,6 @@ void       config_class::set_defaults(void)
 {
     config_class::file_name                  = "default.cfg";
     config_class::file_header                = "www.PhysHexGames.co.nr game config file";
-    //config_class::display_info               = NULL;
     config_class::display_resolution         = 0;
     config_class::display_resolution_x       = 0;
     config_class::display_resolution_y       = 0;

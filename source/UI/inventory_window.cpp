@@ -35,7 +35,6 @@ void setup_inventory_window(int UID)
     int element_number = 0;
 
     UI_form_struct   *UI_form_pointer;
-    UI_form_pointer = new UI_form_struct;
     UI_form_pointer = game.UI_manager.UI_form_add(UID_INVENTORY);
 
     UI_form_pointer->data.UID                         = UID;
@@ -1334,7 +1333,7 @@ void setup_inventory_window(int UID)
 
 void process_inventory_item(UI_form_struct *UI_form_pointer,int element_number)
 {
-    item_type* item_pointer = new item_type;
+    item_type* item_pointer;
     item_pointer = NULL;
     if ((UI_form_pointer->data.element[element_number].type == UI_ELEMENT_ITEM) && (UI_form_pointer->data.element[element_number].value != ITEM_NONE))
     {

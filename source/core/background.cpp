@@ -30,6 +30,7 @@ extern game_class game;
 
 background_class::background_class (void)
 {
+    background_class::movemennt_type = SCROLL;
     for (int layer_number = 1; layer_number < MAX_LAYERS+1; layer_number++)
     {
         background_class::layer[layer_number].active    = false;

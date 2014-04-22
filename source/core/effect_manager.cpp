@@ -32,6 +32,10 @@ extern game_class game;
 
 effect_manager_class::effect_manager_class(void)
 {
+    effect_manager_class::effect            = NULL;
+    effect_manager_class::root              = NULL;
+    effect_manager_class::last              = NULL;
+    effect_manager_class::number_of_effects = 0;
 };
 
 effect_manager_class::~effect_manager_class(void)
@@ -52,7 +56,6 @@ effect_type* effect_manager_class::add_effect(int effect_UID)
     else
     {
         effect_type* temp_pointer;
-        temp_pointer = new effect_type;
         temp_pointer = effect_manager_class::root;
         if (temp_pointer != NULL)
         {
