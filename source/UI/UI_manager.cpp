@@ -633,23 +633,23 @@ void UI_manager_class::render(void)
                             //display spell stats on mouse over
                             if (UI_form_pointer->data.element[element_number].sub_type == ITEM_SPELL)
                             {
-                                item_type*    socket_item_pointer    = new item_type;
-                                item_type*    item_pointer           = new item_type;
-                                effect_type*  effect_pointer         = new effect_type;
+                                item_type*    socket_item_pointer;
+                                item_type*    item_pointer;
+                                effect_type*  effect_pointer;
                                 std::string   temp_string            = "";
                                 std::string   sign_string            = " ";
                                 item_pointer = game.item_manager.add_item(UI_form_pointer->data.element[element_number].value);
                                 std::string   temp_string_name       = item_pointer->data.name;
                                 std::string   temp_string_level      = "Level -> " + int_to_string(item_pointer->data.spell_data->level.current);
                                 std::string   temp_string_mana_cost  = "Mana cost -> " + float_to_string(item_pointer->data.spell_data->mana_cost);
-                                texture_type* texture_pointer        = new texture_type;
-                                texture_type* texture_pointer_name   = new texture_type;
+                                texture_type* texture_pointer;
+                                texture_type* texture_pointer_name;
                                 texture_pointer_name = game.texture_manager.add_texture(game.font_manager.root,temp_string_name.c_str(),0.8f,0,0,255,255,255,255,TEXTURE_STRING);
                                 texture_pointer_name->data.render_positioning = TEXTURE_RENDER_DOWN+TEXTURE_RENDER_LEFT;
-                                texture_type* texture_pointer_level = new texture_type;
+                                texture_type* texture_pointer_level;
                                 texture_pointer_level = game.texture_manager.add_texture(game.font_manager.root,temp_string_level.c_str(),0.8f,0,0,255,255,255,255,TEXTURE_STRING);
                                 texture_pointer_level->data.render_positioning = TEXTURE_RENDER_DOWN+TEXTURE_RENDER_LEFT;
-                                texture_type* texture_pointer_mana_cost  = new texture_type;
+                                texture_type* texture_pointer_mana_cost;
                                 texture_pointer_mana_cost = game.texture_manager.add_texture(game.font_manager.root,temp_string_mana_cost.c_str(),0.8f,0,0,255,255,255,255,TEXTURE_STRING);
                                 texture_pointer_mana_cost->data.render_positioning = TEXTURE_RENDER_DOWN+TEXTURE_RENDER_LEFT;
                                 float texture_background_x = game.core.io.mouse_x;
@@ -766,16 +766,16 @@ void UI_manager_class::render(void)
                                 //display item stats on mouse over
                                 std::string   temp_string         = "";
                                 std::string   sign_string         = " ";
-                                effect_type*  effect_pointer      = new effect_type;
-                                item_type*    item_pointer        = new item_type;
-                                item_type*    socket_item_pointer = new item_type;
-                                texture_type* texture_pointer     = new texture_type;
+                                effect_type*  effect_pointer;
+                                item_type*    item_pointer;
+                                item_type*    socket_item_pointer;
+                                texture_type* texture_pointer;
                                 item_pointer = game.item_manager.add_item(UI_form_pointer->data.element[element_number].value);
                                 float texture_background_x = game.core.io.mouse_x;
                                 float texture_background_y = game.core.io.mouse_y;
                                 float texture_background_size_x = 0.0f;
                                 float texture_background_size_y = 0.0f;
-                                texture_type* texture_pointer_name = new texture_type;
+                                texture_type* texture_pointer_name;
                                 texture_pointer_name = game.texture_manager.add_texture(game.font_manager.root,item_pointer->data.name.c_str(),0.8f,0,0,255,255,255,255,TEXTURE_STRING);
                                 texture_pointer_name->data.render_positioning = TEXTURE_RENDER_DOWN+TEXTURE_RENDER_LEFT;
                                 float texture_background_padding = texture_pointer_name->data.height;
