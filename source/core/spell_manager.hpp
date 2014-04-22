@@ -87,9 +87,9 @@ class spell_manager_class
         spell_manager_class(void);
        ~spell_manager_class(void);
         int                 number_of_spells;
-        spell_type         *root;
-        spell_type         *last;
-        spell_type         *spell;
+        spell_type         *root  = NULL;
+        spell_type         *last  = NULL;
+        spell_type         *spell = NULL;
         spell_type         *add_spell(int spell_UID);
         bool                use_spell(int  spell_UID, float value);
         void                process_spells(void);
