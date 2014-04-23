@@ -348,7 +348,7 @@ bool log_class::file_write_time_stamp(std::string message)
         rawtime = time(&rawtime);
         char buffer [80];
         strftime (buffer,80,"%Y-%m-%d - %H:%M:%S - %Z",localtime_r(&rawtime, &newtime));
-        logfile << message << buffer << std::endl << std::endl;
+        logfile << message << buffer << std::endl;
         logfile.close();
     }
     else return(false);

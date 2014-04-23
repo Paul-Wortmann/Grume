@@ -39,6 +39,8 @@ spell_manager_class::spell_manager_class(void)
 
 spell_manager_class::~spell_manager_class(void)
 {
+    delete [] spell_manager_class::root;
+    delete [] spell_manager_class::last;
     delete [] spell_manager_class::spell;
 };
 

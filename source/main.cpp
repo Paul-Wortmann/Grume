@@ -107,7 +107,6 @@ extern "C" int main(int argc, char** argv)
     game.core.log.file_write("Initializing event handlers...");
     events_init();
     game.core.log.file_write("Starting Game...");
-    game.core.log.file_write(" ");
     game.core.log.file_write("# ---------------------------------------------- #");
     game.core.log.file_write(" ");
     SDL_Init(SDL_INIT_TIMER);
@@ -190,16 +189,13 @@ extern "C" int main(int argc, char** argv)
 // --------------------------------------------------------------------------------------------------------------------------
     game.core.log.file_write(" ");
     game.core.log.file_write("# ---------------------------------------------- #");
-    game.core.log.file_write(" ");
     game.core.log.file_write("Font    count -> ", game.font_manager.number_of_fonts);
     game.core.log.file_write("Music   count -> ", game.music_manager.number_of_music);
     game.core.log.file_write("Sound   count -> ", game.sound_manager.number_of_sounds);
     game.core.log.file_write("Texture count -> ", game.texture_manager.number_of_textures);
     game.core.log.file_write("Item    count -> ", game.item_manager.number_of_items);
     game.core.log.file_write("Effect  count -> ", game.effect_manager.number_of_effects);
-    game.core.log.file_write(" ");
     game.core.log.file_write("# ---------------------------------------------- #");
-    game.core.log.file_write(" ");
     game.core.log.file_write("Saving configuration...");
     game.core.config.file_clear();
     game.core.config.file_save();

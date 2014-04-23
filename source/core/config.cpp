@@ -245,7 +245,7 @@ bool         config_class::file_save(void)
         char buffer [80];
         strftime (buffer,80,"%Y-%m-%d - %H:%M:%S - %Z",localtime_r(&rawtime, &newtime));
         configfile << "# " << game.core.application_name << " #" << std::endl;
-        configfile << "# -------------------------------------------------------- #" << std::endl;
+        configfile << "# ---------------------------------------------- #" << std::endl;
         configfile << std::endl;
         configfile << "# Configuration file created: " << buffer << std::endl;
         configfile << std::endl;
