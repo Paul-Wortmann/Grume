@@ -44,21 +44,27 @@ void command_line_parser_class::process (int arg_count, char** arg_data)
     for (int arg_number = 0; arg_number < arg_count; arg_number++)
     {
         temp_string = arg_data[arg_number];
-        if (temp_string.compare("-window") == 0)
+        if ((temp_string.compare("-window") == 0) ||
+            (temp_string.compare("-w") == 0))
         {
-            game.core.config.display_fullscreen = false;
+            game.core.config.display_fullscreen   = false;
+            game.core.config.display_resolution_x = 0;
+            game.core.config.display_resolution_y = 0;
+            std::cout << "Windowed mode enabled." << std::endl;
         }
-        if (temp_string.compare("-w") == 0)
-        {
-            game.core.config.display_fullscreen = false;
-        }
-        if (temp_string.compare("-debug") == 0)
+        if ((temp_string.compare("-debug") == 0) ||
+            (temp_string.compare("-d") == 0))
         {
             game.core.debug = true;
+            std::cout << "Developer mode enabled." << std::endl;
         }
-        if (temp_string.compare("-d") == 0)
+        if ((temp_string.compare("--help") == 0) ||
+            (temp_string.compare("-help") == 0) ||
+            (temp_string.compare("-h") == 0))
         {
-            game.core.debug = true;
+            std::cout << "-w   Enable a windowed mode." << std::endl;
+            std::cout << "-d   Enable developer mode." << std::endl;
+            std::cout << "-h   This help screen." << std::endl;
         }
     }
 };
