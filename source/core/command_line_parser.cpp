@@ -52,19 +52,23 @@ void command_line_parser_class::process (int arg_count, char** arg_data)
             game.core.config.display_resolution_y = 0;
             std::cout << "Windowed mode enabled." << std::endl;
         }
-        if ((temp_string.compare("-debug") == 0) ||
+        else if ((temp_string.compare("-debug") == 0) ||
             (temp_string.compare("-d") == 0))
         {
             game.core.debug = true;
             std::cout << "Developer mode enabled." << std::endl;
         }
-        if ((temp_string.compare("--help") == 0) ||
+        else if ((temp_string.compare("--help") == 0) ||
             (temp_string.compare("-help") == 0) ||
             (temp_string.compare("-h") == 0))
         {
             std::cout << "-w   Enable a windowed mode." << std::endl;
             std::cout << "-d   Enable developer mode." << std::endl;
             std::cout << "-h   This help screen." << std::endl;
+        }
+        else
+        {
+            std::cout << "Unknown command line option -> " << temp_string.c_str() << std::endl;
         }
     }
 };
