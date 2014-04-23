@@ -102,6 +102,7 @@ class UI_manager_class
         void                  setup(void);
         void                  swap_elements(int UI_form_UID_src, int UI_element_src, int UI_form_UID_dst, int UI_element_dst);
         void                  swap_equipment(int UI_form_UID_src, int UI_element_src, int UI_form_UID_dst);
+        std::string           uid_to_string(int UID_number);
 };
 
 
