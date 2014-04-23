@@ -329,7 +329,7 @@ void map_gen_room_path (fmx_map_type *fmx_map_pointer, int room_1, int room_2, b
             }
             if (add_room)
             {
-                int *temp_room_list;
+                int *temp_room_list = NULL;
                 if (fmx_map_pointer->room[room_1].number_of_connected_rooms > 0)
                 {
                     temp_room_list = new int[fmx_map_pointer->room[room_1].number_of_connected_rooms];
@@ -350,7 +350,7 @@ void map_gen_room_path (fmx_map_type *fmx_map_pointer, int room_1, int room_2, b
                     //if (temp_room_list) delete temp_room_list;
                 }
                 fmx_map_pointer->room[room_1].connected_rooms[fmx_map_pointer->room[room_1].number_of_connected_rooms-1] = room_2;
-                //delete [] temp_room_list;
+                if (temp_room_list != NULL) delete [] temp_room_list;
             }
             add_room = true;
             if (fmx_map_pointer->room[room_2].number_of_connected_rooms > 0)
@@ -363,7 +363,7 @@ void map_gen_room_path (fmx_map_type *fmx_map_pointer, int room_1, int room_2, b
             }
             if (add_room)
             {
-                int *temp_room_list;
+                int *temp_room_list = NULL;
                 if (fmx_map_pointer->room[room_2].number_of_connected_rooms > 0)
                 {
                     temp_room_list = new int[fmx_map_pointer->room[room_2].number_of_connected_rooms+1];
@@ -381,6 +381,7 @@ void map_gen_room_path (fmx_map_type *fmx_map_pointer, int room_1, int room_2, b
                     //if (temp_room_list) delete temp_room_list;
                 }
                 fmx_map_pointer->room[room_2].connected_rooms[fmx_map_pointer->room[room_2].number_of_connected_rooms-1] = room_1;
+                //if (temp_room_list != NULL) delete temp_room_list;
             }
         }
         if (connect_rooms)
@@ -509,14 +510,17 @@ int map_gen_room_add (fmx_map_type *fmx_map_pointer)
     if (fmx_map_pointer->data.number_of_rooms > 0)
     {
         fmx_room_data_type *temp_room_data =  new fmx_room_data_type[fmx_map_pointer->data.number_of_rooms];
-        temp_room_data = fmx_map_pointer->room;
+        for (int i = 0; i < fmx_map_pointer->data.number_of_rooms; i++)
+        {
+            temp_room_data[i] = fmx_map_pointer->room[i];
+        }
         fmx_map_pointer->room = new fmx_room_data_type[fmx_map_pointer->data.number_of_rooms+1];
         for (int room_count = 0; room_count < fmx_map_pointer->data.number_of_rooms; room_count++)
         {
             fmx_map_pointer->room[room_count] = temp_room_data[room_count];
         }
         fmx_map_pointer->data.number_of_rooms++;
-        delete temp_room_data;
+        delete [] temp_room_data;
     }
     else
     {
