@@ -1115,12 +1115,9 @@ event_struct  UI_manager_class::process_form_elements(UI_form_struct *UI_form_po
                 {
                     return_value.value = UI_form_pointer->data.UID;
                     return_value.id += (element_number * EVENT_BUTTON_MULTIPLIER);
-                    allow_drag       = false;
+                    //allow_drag       = false;
                 }
-                if (UI_form_pointer->data.element[element_number].mouse_over)
-                {
-                    allow_drag        = false;
-                }
+                //if (UI_form_pointer->data.element[element_number].mouse_over) allow_drag = false;
             }
         }
     }
@@ -1131,7 +1128,7 @@ void UI_manager_class::process_forms(void)
 {
     UI_manager_class::data.element_type_over        = ITEM_NONE;
     UI_manager_class::data.element_sub_type_over    = ITEM_NONE;
-    event_struct      return_value;
+    event_struct return_value;
     return_value.id    = EVENT_NONE;
     return_value.value = EVENT_VALUE_NONE;
     bool window_in_focus            = true;
@@ -1139,8 +1136,6 @@ void UI_manager_class::process_forms(void)
     for (UI_form_struct *UI_form_pointer = UI_manager_class::last; UI_form_pointer != NULL; UI_form_pointer = UI_form_pointer->previous)
     {
         // ----------------------------- process UI form ---------------------------------
-        bool         return_mouse_over  = false;
-        bool         allow_drag         = true;
         if (UI_form_pointer->data.enabled)
         {
             UI_form_pointer->data.mouse_over_menu = (game.core.physics.point_in_quadrangle(UI_form_pointer->data.position.x,UI_form_pointer->data.size.x,UI_form_pointer->data.position.y,UI_form_pointer->data.size.y,game.core.io.mouse_x,game.core.io.mouse_y));
@@ -1209,7 +1204,7 @@ void UI_manager_class::process_forms(void)
                 {
                     if ((UI_form_pointer->data.drag_enabled) && (window_in_focus))
                     {
-                        if ((!game.UI_manager.data.drag_in_progress) && (UI_form_pointer->data.mouse_over_title) && (game.core.io.mouse_button_left) && (allow_drag))// start drag
+                        if ((!game.UI_manager.data.drag_in_progress) && (UI_form_pointer->data.mouse_over_title) && (game.core.io.mouse_button_left))// start drag
                         {
                             UI_form_pointer->data.drag_offset_x                = UI_form_pointer->data.position.x - game.core.io.mouse_x;
                             UI_form_pointer->data.drag_offset_y                = UI_form_pointer->data.position.y - game.core.io.mouse_y;
@@ -1240,7 +1235,7 @@ void UI_manager_class::process_forms(void)
                     }
                 }
                 // ------------------------- X -------------------------
-                if (!UI_form_pointer->data.mouse_over_title) UI_form_pointer->data.mouse_over_title = return_mouse_over;
+                if (!UI_form_pointer->data.mouse_over_title) UI_form_pointer->data.mouse_over_title = false;
             }
         }
         UI_form_pointer->data.event = return_value;
@@ -1350,7 +1345,6 @@ void UI_manager_class::swap_elements(int UI_form_UID_src, int UI_element_src, in
     }
     else
     {
-        bool posible_swap        = true;
         bool allow_swap_elements = false;
         if (((UI_form_UID_src == UID_INVENTORY) || (UI_form_UID_src == UID_ACTIONBAR) || (UI_form_UID_src == UID_EQUIPMENT) || (UI_form_UID_src == UID_SKILLBOOK)) &&
             ((UI_form_UID_dst == UID_INVENTORY) || (UI_form_UID_dst == UID_ACTIONBAR) || (UI_form_UID_dst == UID_EQUIPMENT) || (UI_form_UID_dst == UID_SKILLBOOK))) allow_swap_elements = true;
@@ -1363,6 +1357,7 @@ void UI_manager_class::swap_elements(int UI_form_UID_src, int UI_element_src, in
             &&  (UI_form_UID_src_pointer->data.element[UI_element_src].type == UI_ELEMENT_ITEM)
             &&  (UI_form_UID_dst_pointer->data.element[UI_element_dst].type == UI_ELEMENT_ITEM))
         {
+            bool posible_swap = true;
             if     ((UI_form_UID_src_pointer->data.element[UI_element_src].value == UI_form_UID_dst_pointer->data.element[UI_element_dst].value)
                 &&  (item_pointer_src->data.stackable)
                 &&  (item_pointer_src->data.quantity_max > 1)

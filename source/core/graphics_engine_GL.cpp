@@ -165,7 +165,7 @@ bool GL_init(void)
                         glShaderSource(game.core.graphics.render_GL.vertexshader, 1, (const GLchar**)&game.core.graphics.render_GL.vertexsource, 0);
                         glCompileShader(game.core.graphics.render_GL.vertexshader);
                         glGetShaderiv(game.core.graphics.render_GL.vertexshader, GL_COMPILE_STATUS, &game.core.graphics.render_GL.IsCompiled_VS);
-                        if(game.core.graphics.render_GL.IsCompiled_VS == false)
+                        if (game.core.graphics.render_GL.IsCompiled_VS != 1)
                         {
                             int maxLength;
                             glGetShaderiv(game.core.graphics.render_GL.vertexshader, GL_INFO_LOG_LENGTH, &maxLength);
@@ -180,7 +180,7 @@ bool GL_init(void)
                         glShaderSource(game.core.graphics.render_GL.fragmentshader, 1, (const GLchar**)&game.core.graphics.render_GL.fragmentsource, 0);
                         glCompileShader(game.core.graphics.render_GL.fragmentshader);
                         glGetShaderiv(game.core.graphics.render_GL.fragmentshader, GL_COMPILE_STATUS, &game.core.graphics.render_GL.IsCompiled_FS);
-                        if(game.core.graphics.render_GL.IsCompiled_FS == false)
+                        if (game.core.graphics.render_GL.IsCompiled_FS != 1)
                         {
                             int maxLength;
                             glGetShaderiv(game.core.graphics.render_GL.fragmentshader, GL_INFO_LOG_LENGTH, &maxLength);
@@ -197,7 +197,7 @@ bool GL_init(void)
                         glBindAttribLocation(game.core.graphics.render_GL.shaderprogram, 1, "in_Color");
                         glLinkProgram(game.core.graphics.render_GL.shaderprogram);
                         glGetProgramiv(game.core.graphics.render_GL.shaderprogram, GL_LINK_STATUS, (int *)&game.core.graphics.render_GL.IsLinked);
-                        if(game.core.graphics.render_GL.IsLinked == false)
+                        if (game.core.graphics.render_GL.IsLinked != 1)
                         {
                             int maxLength;
                             glGetProgramiv(game.core.graphics.render_GL.shaderprogram, GL_INFO_LOG_LENGTH, &maxLength);

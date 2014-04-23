@@ -317,7 +317,6 @@ void process_menu_main(UI_form_struct *UI_form_pointer)
 {
     if(UI_form_pointer->data.event.id > EVENT_NONE)
     {
-        int element_number   = 0;
         if (game.state == STATE_GAME) UI_form_pointer->data.element[3].state = UI_NORMAL; // Save game
         else UI_form_pointer->data.element[3].state = UI_DISABLED;
         if (game.state == STATE_GAME) UI_form_pointer->data.element[4].state = UI_NORMAL; // Resume game
@@ -346,7 +345,7 @@ void process_menu_main(UI_form_struct *UI_form_pointer)
                 load_menu_pointer = game.UI_manager.UI_form_get(UID_MENU_GAME_LOAD);
                 if (load_menu_pointer != NULL)
                 {
-                    element_number   = 1;
+                    int element_number   = 1;
                     game.save_01.Assign_File("save/slot_01.sav");
                     if (game.save_01.File_Exists()) load_menu_pointer->data.element[element_number].state = UI_NORMAL;
                     else load_menu_pointer->data.element[element_number].state = UI_DISABLED;

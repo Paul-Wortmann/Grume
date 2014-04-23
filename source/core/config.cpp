@@ -31,7 +31,6 @@ extern game_class    game;
 config_class::config_class(void)
 {
     config_class::file_name                  = "default.cfg";
-    config_class::file_header                = "www.PhysHexGames.co.nr game config file";
     config_class::display_resolution         = 0;
     config_class::display_resolution_x       = 0;
     config_class::display_resolution_y       = 0;
@@ -69,7 +68,6 @@ config_class::~config_class(void)
 void       config_class::set_defaults(void)
 {
     config_class::file_name                  = "default.cfg";
-    config_class::file_header                = "www.PhysHexGames.co.nr game config file";
     config_class::display_resolution         = 0;
     config_class::display_resolution_x       = 0;
     config_class::display_resolution_y       = 0;
@@ -111,7 +109,7 @@ bool         config_class::file_write(std::string data_string)
     if (configfile.is_open())
     {
         configfile << data_string;
-        configfile << "\n";
+        configfile << std::endl;
         configfile.close();
     }
     else return(false);
@@ -123,16 +121,15 @@ bool         config_class::file_load(void) //the problem is most likely with the
     std::fstream configfile(config_class::file_name.c_str(),std::ios::in|std::ios::binary);
     if (configfile.is_open())
     {
-        char        temp_char = ' ';
         int         temp_int;
         std::string temp_string_key;
         std::string temp_string_value;
         int         position_count;
         std::string data_line;
-        while ( configfile.good() )
+        while (configfile.good())
         {
             getline(configfile,data_line);
-            temp_char = data_line[0];
+            char temp_char = data_line[0];
             if((temp_char == '#') || ((int)data_line.length() <= 1))
             {
                 //comment or insufficient data due to line length, therefore do nothing.
@@ -242,57 +239,55 @@ bool         config_class::file_save(void)
     std::fstream configfile(config_class::file_name.c_str(),std::ios::out|std::ios::app);
     if (configfile.is_open())
     {
-        configfile << "# ";
-        configfile << config_class::file_header;
-        configfile << " #";
-        configfile << "\n";
-        configfile << "# ";
-        for (int count = 0; count < (int)config_class::file_header.length(); count++)
-        {
-            configfile << '-';
-        }
-        configfile << " #";
-        configfile << "\n";
-        configfile << "\n";
+        struct tm newtime;
+        time_t rawtime;
+        rawtime = time(&rawtime);
+        char buffer [80];
+        strftime (buffer,80,"%Y-%m-%d - %H:%M:%S - %Z",localtime_r(&rawtime, &newtime));
+        configfile << "# " << game.core.application_name << " #" << std::endl;
+        configfile << "# -------------------------------------------------------- #" << std::endl;
+        configfile << std::endl;
+        configfile << "# Configuration file created: " << buffer << std::endl;
+        configfile << std::endl;
         configfile << "Display_Fullscreen   = ";
         if (config_class::display_fullscreen) configfile << "1";
         else configfile << "0";
-        configfile << "\n";
+        configfile << std::endl;
         configfile << "Display_Resolution_X = ";
         configfile << config_class::display_resolution_x;
-        configfile << "\n";
+        configfile << std::endl;
         configfile << "Display_Resolution_Y = ";
         configfile << config_class::display_resolution_y;
-        configfile << "\n";
+        configfile << std::endl;
         configfile << "Display_BPP          = ";
         configfile << config_class::display_bpp;
-        configfile << "\n";
+        configfile << std::endl;
         configfile << "Display_Touchscreen  = ";
         if (config_class::display_touchscreen) configfile << "1";
         else configfile << "0";
-        configfile << "\n";
+        configfile << std::endl;
         configfile << "Audio_Rate           = ";
         configfile << config_class::audio_rate;
-        configfile << "\n";
+        configfile << std::endl;
         configfile << "Audio_Channels       = ";
         configfile << config_class::audio_channels;
-        configfile << "\n";
+        configfile << std::endl;
         configfile << "Audio_Buffers        = ";
         configfile << config_class::audio_buffers;
-        configfile << "\n";
+        configfile << std::endl;
         configfile << "Audio_Volume_Music   = ";
         configfile << config_class::audio_volume_music;
-        configfile << "\n";
+        configfile << std::endl;
         configfile << "Audio_Volume_Sound   = ";
         configfile << config_class::audio_volume_sound;
-        configfile << "\n";
+        configfile << std::endl;
         configfile << "Joystick_Sensitivity = ";
         configfile << config_class::joystick_sensitivity;
-        configfile << "\n";
+        configfile << std::endl;
         configfile << "Language             = ";
         configfile << config_class::language;
-        configfile << "\n";
-        configfile << "\n";
+        configfile << std::endl;
+        configfile << std::endl;
         configfile.close();
     }
     else return(false);

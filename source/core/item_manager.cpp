@@ -100,10 +100,9 @@ int item_manager_class::get_new_item_UID(void)
 {
     item_type* item_pointer;
     int  UID_max    = sizeof(int)*CHAR_BIT;
-    bool found = true;
     for (int  temp_UID = 0; temp_UID < UID_max; temp_UID++)
     {
-        found = true;
+        bool found = true;
         for (item_pointer = item_manager_class::root; item_pointer != NULL; item_pointer = item_pointer->next)
         {
             if (item_pointer->data.UID == temp_UID) found = false;
@@ -201,13 +200,12 @@ void item_manager_class::load_items(std::string file_name)
 
 void item_manager_class::use_item(UI_form_struct *UI_form_pointer, int element_number)
 {
-    bool used_item = false;
     if (UI_form_pointer->data.element[element_number].active)
     {
-        item_type* item_pointer;
-        item_pointer = game.item_manager.add_item(UI_form_pointer->data.element[element_number].value);
+        item_type* item_pointer = game.item_manager.add_item(UI_form_pointer->data.element[element_number].value);
         if (item_pointer->data.consumable)
         {
+            bool used_item = false;
             //game.core.log.file_write("---- use item function ------");
             for (int effect_count = 0; effect_count < item_pointer->data.number_of_item_effects; effect_count++)
             {
@@ -651,7 +649,6 @@ int  item_manager_class::gen_item(int item_type_UID, int item_sub_type_UID, int 
                             item_pointer->data.qaulity_type = ITEM_QUALITY_MAGIC;
                             int  AVAILABLE_EFFECT_COUNT = 12;
                             int  add_effect             = 0;
-                            bool found                  = false;
                             bool effect_used[AVAILABLE_EFFECT_COUNT];
                             for (int temp_count = 0; temp_count < AVAILABLE_EFFECT_COUNT; temp_count++)
                             {
@@ -659,7 +656,7 @@ int  item_manager_class::gen_item(int item_type_UID, int item_sub_type_UID, int 
                             }
                             for (int effect_count = 1; effect_count < item_pointer->data.number_of_item_effects; effect_count++)
                             {
-                                found = false;
+                                bool found = false;
                                 while (!found)
                                 {
                                     add_effect = random(AVAILABLE_EFFECT_COUNT);
@@ -750,7 +747,6 @@ int  item_manager_class::gen_item(int item_type_UID, int item_sub_type_UID, int 
                             item_pointer->data.qaulity_type = ITEM_QUALITY_MAGIC;
                             int  AVAILABLE_EFFECT_COUNT = 11;
                             int  add_effect             = 0;
-                            bool found                  = false;
                             bool effect_used[AVAILABLE_EFFECT_COUNT];
                             for (int temp_count = 0; temp_count < AVAILABLE_EFFECT_COUNT; temp_count++)
                             {
@@ -758,7 +754,7 @@ int  item_manager_class::gen_item(int item_type_UID, int item_sub_type_UID, int 
                             }
                             for (int effect_count = 1; effect_count < item_pointer->data.number_of_item_effects; effect_count++)
                             {
-                                found = false;
+                                bool found = false;
                                 while (!found)
                                 {
                                     add_effect = random(AVAILABLE_EFFECT_COUNT);
@@ -845,7 +841,6 @@ int  item_manager_class::gen_item(int item_type_UID, int item_sub_type_UID, int 
                             item_pointer->data.qaulity_type = ITEM_QUALITY_MAGIC;
                             int  AVAILABLE_EFFECT_COUNT = 11;
                             int  add_effect             = 0;
-                            bool found                  = false;
                             bool effect_used[AVAILABLE_EFFECT_COUNT];
                             for (int temp_count = 0; temp_count < AVAILABLE_EFFECT_COUNT; temp_count++)
                             {
@@ -853,7 +848,7 @@ int  item_manager_class::gen_item(int item_type_UID, int item_sub_type_UID, int 
                             }
                             for (int effect_count = 1; effect_count < item_pointer->data.number_of_item_effects; effect_count++)
                             {
-                                found = false;
+                                bool found = false;
                                 while (!found)
                                 {
                                     add_effect = random(AVAILABLE_EFFECT_COUNT);
@@ -940,7 +935,6 @@ int  item_manager_class::gen_item(int item_type_UID, int item_sub_type_UID, int 
                             item_pointer->data.qaulity_type = ITEM_QUALITY_MAGIC;
                             int  AVAILABLE_EFFECT_COUNT = 12;
                             int  add_effect             = 0;
-                            bool found                  = false;
                             bool effect_used[AVAILABLE_EFFECT_COUNT];
                             for (int temp_count = 0; temp_count < AVAILABLE_EFFECT_COUNT; temp_count++)
                             {
@@ -948,7 +942,7 @@ int  item_manager_class::gen_item(int item_type_UID, int item_sub_type_UID, int 
                             }
                             for (int effect_count = 1; effect_count < item_pointer->data.number_of_item_effects; effect_count++)
                             {
-                                found = false;
+                                bool found = false;
                                 while (!found)
                                 {
                                     add_effect = random(AVAILABLE_EFFECT_COUNT);
@@ -1040,7 +1034,6 @@ int  item_manager_class::gen_item(int item_type_UID, int item_sub_type_UID, int 
                             item_pointer->data.qaulity_type = ITEM_QUALITY_MAGIC;
                             int  AVAILABLE_EFFECT_COUNT = 9;
                             int  add_effect             = 0;
-                            bool found                  = false;
                             bool effect_used[AVAILABLE_EFFECT_COUNT];
                             for (int temp_count = 0; temp_count < AVAILABLE_EFFECT_COUNT; temp_count++)
                             {
@@ -1048,7 +1041,7 @@ int  item_manager_class::gen_item(int item_type_UID, int item_sub_type_UID, int 
                             }
                             for (int effect_count = 1; effect_count < item_pointer->data.number_of_item_effects; effect_count++)
                             {
-                                found = false;
+                                bool found = false;
                                 while (!found)
                                 {
                                     add_effect = random(AVAILABLE_EFFECT_COUNT);
@@ -1141,7 +1134,6 @@ int  item_manager_class::gen_item(int item_type_UID, int item_sub_type_UID, int 
                                         item_pointer->data.qaulity_type = ITEM_QUALITY_MAGIC;
                                         int  AVAILABLE_EFFECT_COUNT = 14;
                                         int  add_effect             = 0;
-                                        bool found                  = false;
                                         bool effect_used_source[AVAILABLE_EFFECT_COUNT];
                                         for (int temp_count = 0; temp_count < AVAILABLE_EFFECT_COUNT; temp_count++)
                                         {
@@ -1149,7 +1141,7 @@ int  item_manager_class::gen_item(int item_type_UID, int item_sub_type_UID, int 
                                         }
                                         for (int effect_count = 1; effect_count < item_pointer->data.number_of_item_effects; effect_count++)
                                         {
-                                            found = false;
+                                            bool found = false;
                                             while (!found)
                                             {
                                                 add_effect = random(AVAILABLE_EFFECT_COUNT);
@@ -1244,7 +1236,6 @@ int  item_manager_class::gen_item(int item_type_UID, int item_sub_type_UID, int 
                                         item_pointer->data.qaulity_type = ITEM_QUALITY_MAGIC;
                                         int  AVAILABLE_EFFECT_COUNT = 14;
                                         int  add_effect             = 0;
-                                        bool found                  = false;
                                         bool effect_used_shield[AVAILABLE_EFFECT_COUNT];
                                         for (int temp_count = 0; temp_count < AVAILABLE_EFFECT_COUNT; temp_count++)
                                         {
@@ -1252,7 +1243,7 @@ int  item_manager_class::gen_item(int item_type_UID, int item_sub_type_UID, int 
                                         }
                                         for (int effect_count = 1; effect_count < item_pointer->data.number_of_item_effects; effect_count++)
                                         {
-                                            found = false;
+                                            bool found = false;
                                             while (!found)
                                             {
                                                 add_effect = random(AVAILABLE_EFFECT_COUNT);
@@ -1334,7 +1325,6 @@ int  item_manager_class::gen_item(int item_type_UID, int item_sub_type_UID, int 
                             item_pointer->data.qaulity_type = ITEM_QUALITY_MAGIC;
                             int  AVAILABLE_EFFECT_COUNT = 12;
                             int  add_effect             = 0;
-                            bool found                  = false;
                             bool effect_used[AVAILABLE_EFFECT_COUNT];
                             for (int temp_count = 0; temp_count < AVAILABLE_EFFECT_COUNT; temp_count++)
                             {
@@ -1342,7 +1332,7 @@ int  item_manager_class::gen_item(int item_type_UID, int item_sub_type_UID, int 
                             }
                             for (int effect_count = 0; effect_count < item_pointer->data.number_of_item_effects; effect_count++)
                             {
-                                found = false;
+                                bool found = false;
                                 while (!found)
                                 {
                                     add_effect = random(AVAILABLE_EFFECT_COUNT);
@@ -1431,7 +1421,6 @@ int  item_manager_class::gen_item(int item_type_UID, int item_sub_type_UID, int 
                             item_pointer->data.qaulity_type = ITEM_QUALITY_MAGIC;
                             int  AVAILABLE_EFFECT_COUNT = 12;
                             int  add_effect             = 0;
-                            bool found                  = false;
                             bool effect_used[AVAILABLE_EFFECT_COUNT];
                             for (int temp_count = 0; temp_count < AVAILABLE_EFFECT_COUNT; temp_count++)
                             {
@@ -1439,7 +1428,7 @@ int  item_manager_class::gen_item(int item_type_UID, int item_sub_type_UID, int 
                             }
                             for (int effect_count = 0; effect_count < item_pointer->data.number_of_item_effects; effect_count++)
                             {
-                                found = false;
+                                bool found = false;
                                 while (!found)
                                 {
                                     add_effect = random(AVAILABLE_EFFECT_COUNT);
@@ -1561,7 +1550,6 @@ int  item_manager_class::gen_item(int item_type_UID, int item_sub_type_UID, int 
                             item_pointer->data.qaulity_type = ITEM_QUALITY_MAGIC;
                             int  AVAILABLE_EFFECT_COUNT = 13;
                             int  add_effect             = 0;
-                            bool found                  = false;
                             bool effect_used[AVAILABLE_EFFECT_COUNT];
                             for (int temp_count = 0; temp_count < AVAILABLE_EFFECT_COUNT; temp_count++)
                             {
@@ -1569,7 +1557,7 @@ int  item_manager_class::gen_item(int item_type_UID, int item_sub_type_UID, int 
                             }
                             for (int effect_count = 1; effect_count < item_pointer->data.number_of_item_effects; effect_count++)
                             {
-                                found = false;
+                                bool found = false;
                                 while (!found)
                                 {
                                     add_effect = random(AVAILABLE_EFFECT_COUNT);

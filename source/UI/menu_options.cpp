@@ -765,7 +765,7 @@ void process_menu_options(UI_form_struct *UI_form_pointer)
                 else
                 {
                     int element_number = 17;
-                    game.core.config.display_fullscreen                                     = true;
+                    //game.core.config.display_fullscreen                                     = true;
                     UI_form_pointer->data.element[element_number].value = 1.0f;
                     UI_form_pointer->data.element[element_number].texture.normal      = game.texture_manager.add_texture("data/textures/UI/menu/green_button.png");
                     UI_form_pointer->data.element[element_number].texture.highlighted = game.texture_manager.add_texture("data/textures/UI/menu/green_button_highlighted.png");

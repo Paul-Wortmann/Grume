@@ -33,8 +33,6 @@ class config_class
     private:
     public:
         std::string  file_name;
-        std::string  file_header;
-        //const        SDL_VideoInfo* display_info;
         int          display_resolution;
         int          display_resolution_x;
         int          display_resolution_y;

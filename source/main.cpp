@@ -52,14 +52,13 @@ extern "C" int main(int argc, char** argv)
     game.core.log.file_write("# ",game.core.application_name," #");
     game.core.log.file_write("# ---------------------------------------------- #");
     game.core.log.file_write(" ");
-    game.core.log.file_write_time_stamp();
+    game.core.log.file_write_time_stamp("Log file created: ");
     //game.core.log.file_write("Initializing PhysicsFS file system....");
     //PHYSFS_init(argv[0]);
     //PHYSFS_addToSearchPath("data.fnf", 1);
     game.core.log.file_write("Loading configuration...");
     game.core.config.set_defaults();
     game.core.config.file_set("frost_and_flame.cfg");
-    game.core.config.file_header = game.core.application_name;
     game.core.config.file_load();
     game.core.log.file_write("Processing command line switches...");
     game.command_line.process(argc,argv);
@@ -205,6 +204,7 @@ extern "C" int main(int argc, char** argv)
     game.core.config.file_clear();
     game.core.config.file_save();
     game.core.log.file_write("Shutting down...");
+    game.core.log.file_write_time_stamp("Game exited at: ");
     game.core.graphics.deinit();
     //PHYSFS_deinit();
     SDL_Quit();

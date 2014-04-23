@@ -333,6 +333,7 @@ void map_gen_room_path (fmx_map_type *fmx_map_pointer, int room_1, int room_2, b
                 if (fmx_map_pointer->room[room_1].number_of_connected_rooms > 0)
                 {
                     temp_room_list = new int[fmx_map_pointer->room[room_1].number_of_connected_rooms+1];
+                    //for (int i = 0; i < fmx_map_pointer->room[room_1].number_of_connected_rooms; i++);
                     temp_room_list = fmx_map_pointer->room[room_1].connected_rooms;
                     delete fmx_map_pointer->room[room_1].connected_rooms;
                 }

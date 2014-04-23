@@ -95,7 +95,6 @@ void map_3D_class::process(void)
 
 void map_3D_class::draw(void)
 {
-    bool set_texture = true;
     glPushMatrix();
     glMatrixMode(GL_MODELVIEW_MATRIX);
     glLoadIdentity();
@@ -108,7 +107,7 @@ void map_3D_class::draw(void)
     glRotatef (map_3D_class::y_rotate, 0.0f, 1.0f, 0.0f);
     glRotatef (map_3D_class::z_rotate, 0.0f, 0.0f, 1.0f);
 	glTranslatef(map_3D_class::position_x,map_3D_class::position_y,map_3D_class::position_z);
-    set_texture = true;
+    bool set_texture = true;
     if (map_3D_class::render_textured)
     {
         glMatrixMode(GL_MODELVIEW_MATRIX);
@@ -285,7 +284,6 @@ void map_3D_class::mesh_height_generate_heightmap(std::string file_name)
             Uint8            green        = 0;
             Uint8            blue         = 0;
             Uint32           temp_data    = 0;
-            float            temp_value   = 0.0f;
             pixel_format = temp_surface->format;
             if(SDL_MUSTLOCK(temp_surface)) SDL_LockSurface(temp_surface);
             Uint32 *pixel = (Uint32*)temp_surface->pixels;
@@ -307,7 +305,7 @@ void map_3D_class::mesh_height_generate_heightmap(std::string file_name)
                 temp_data = pixel[cell_count] & pixel_format->Amask;
                 temp_data = temp_data >> pixel_format->Ashift;
                 temp_data = temp_data << pixel_format->Aloss;
-                temp_value = float((((red+green+blue) / 768.0f) - 1.0f) / 4.0f);
+                float temp_value = float((((red+green+blue) / 768.0f) - 1.0f) / 4.0f);
                 map_3D_class::cell[cell_count].vertex[0].y = temp_value;
                 map_3D_class::cell[cell_count].vertex[1].y = temp_value;
                 map_3D_class::cell[cell_count].vertex[2].y = temp_value;
@@ -336,13 +334,9 @@ void map_3D_class::mesh_height_smooth(void)
 
 void map_3D_class::mesh_height_set_color(float y_height)
 {
-    float height_color_r = 0.0f;
+    float height_color_r = ((y_height + 0.01f) * 30);
     float height_color_g = 0.0f;
     float height_color_b = 0.0f;
-    y_height += 0.02f;
-    height_color_r = y_height;
-    y_height += 0.01f;
-    y_height *= 30;
     if (y_height > 0.5f) height_color_g = y_height;
     if (y_height < 0.5f)
     {

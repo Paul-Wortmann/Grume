@@ -1333,11 +1333,9 @@ void setup_inventory_window(int UID)
 
 void process_inventory_item(UI_form_struct *UI_form_pointer,int element_number)
 {
-    item_type* item_pointer;
-    item_pointer = NULL;
     if ((UI_form_pointer->data.element[element_number].type == UI_ELEMENT_ITEM) && (UI_form_pointer->data.element[element_number].value != ITEM_NONE))
     {
-        item_pointer = game.item_manager.add_item(UI_form_pointer->data.element[element_number].value);
+        item_type* item_pointer = game.item_manager.add_item(UI_form_pointer->data.element[element_number].value);
         if (item_pointer->data.equipable)
         {
             game.UI_manager.swap_equipment(UID_INVENTORY,element_number,UID_EQUIPMENT);

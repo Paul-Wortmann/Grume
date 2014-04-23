@@ -16,7 +16,6 @@
 					<Add directory="C:/MinGW/include/SDL" />
 				</Compiler>
 				<Linker>
-					<Add option="-s" />
 					<Add option="-static-libstdc++" />
 					<Add option="-static-libgcc" />
 					<Add library="mingw32" />
@@ -38,6 +37,7 @@
 				<Compiler>
 					<Add option="-Wextra" />
 					<Add option="-Wall" />
+					<Add option="-g" />
 				</Compiler>
 				<Linker>
 					<Add directory="/host/Program Files (x86)/CodeBlocks/MinGW/lib" />
@@ -77,6 +77,8 @@
 				<Option type="0" />
 				<Option compiler="gcc" />
 				<Compiler>
+					<Add option="-Wextra" />
+					<Add option="-Wall" />
 					<Add option="-pg" />
 					<Add option="-g" />
 				</Compiler>

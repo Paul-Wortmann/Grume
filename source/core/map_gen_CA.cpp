@@ -78,14 +78,11 @@ void map_gen_CA (fmx_map_type *fmx_map_pointer)
         //smooth map, depending on neighboring tiles.
         for (int refine_count = 0; refine_count < ca_iterations; refine_count++)
         {
-            int number_of_neighbors = 0;
-            int temp_tile_number    = 0;
             for(int tile_count = 0; tile_count < fmx_map_pointer->data.number_of_tiles; tile_count++)
             {
-                number_of_neighbors = 0;
-                temp_tile_number    = 0;
+                int number_of_neighbors = 0;
                 temp_map[tile_count].tile = TILE_FLOOR; // new tile is initially a floor tile
-                temp_tile_number = tile_count+1;
+                int temp_tile_number = tile_count+1;
                 if ((temp_tile_number >= 0) && (temp_tile_number <= fmx_map_pointer->data.number_of_tiles) && (fmx_map_pointer->layer[LAYER_FLOOR].tile[temp_tile_number].tile == TILE_WALL)) number_of_neighbors++;
                 temp_tile_number = tile_count-1;
                 if ((temp_tile_number >= 0) && (temp_tile_number <= fmx_map_pointer->data.number_of_tiles) && (fmx_map_pointer->layer[LAYER_FLOOR].tile[temp_tile_number].tile == TILE_WALL)) number_of_neighbors++;

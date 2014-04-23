@@ -63,7 +63,7 @@ bool log_class::file_write(const char  log_data[])
     if (logfile.is_open())
     {
         logfile << log_data;
-        logfile << "\n";
+        logfile << std::endl;
         logfile.close();
     }
     else return(false);
@@ -76,7 +76,7 @@ bool log_class::file_write(std::string log_data)
     if (logfile.is_open())
     {
         logfile << log_data;
-        logfile << "\n";
+        logfile << std::endl;
         logfile.close();
     }
     else return(false);
@@ -90,7 +90,7 @@ bool log_class::file_write(std::string log_data, int   log_data_int)
     {
         logfile << log_data;
         logfile << log_data_int;
-        logfile << "\n";
+        logfile << std::endl;
         logfile.close();
     }
     else return(false);
@@ -104,7 +104,7 @@ bool log_class::file_write(std::string log_data, float log_data_float)
     {
         logfile << log_data;
         logfile << log_data_float;
-        logfile << "\n";
+        logfile << std::endl;
         logfile.close();
     }
     else return(false);
@@ -119,7 +119,7 @@ bool log_class::file_write(std::string log_data, bool  log_data_bool)
         logfile << log_data;
         if(log_data_bool) logfile << "TRUE";
         else logfile << "FALSE";
-        logfile << "\n";
+        logfile << std::endl;
         logfile.close();
     }
     else return(false);
@@ -133,7 +133,7 @@ bool log_class::file_write(std::string log_data, unsigned long long log_data_ull
     {
         logfile << log_data;
         logfile << log_data_ull;
-        logfile << "\n";
+        logfile << std::endl;
         logfile.close();
     }
     else return(false);
@@ -146,7 +146,7 @@ bool log_class::file_write(int   log_data)
     if (logfile.is_open())
     {
         logfile << log_data;
-        logfile << "\n";
+        logfile << std::endl;
         logfile.close();
     }
     else return(false);
@@ -159,7 +159,7 @@ bool log_class::file_write(float log_data)
     if (logfile.is_open())
     {
         logfile << log_data;
-        logfile << "\n";
+        logfile << std::endl;
         logfile.close();
     }
     else return(false);
@@ -173,7 +173,7 @@ bool log_class::file_write(bool  log_data)
     {
         if(log_data) logfile << "TRUE";
         else logfile << "FALSE";
-        logfile << "\n";
+        logfile << std::endl;
         logfile.close();
     }
     else return(false);
@@ -187,7 +187,7 @@ bool log_class::file_write(std::string log_data_1, std::string log_data_2)
     {
         logfile << log_data_1;
         logfile << log_data_2;
-        logfile << "\n";
+        logfile << std::endl;
         logfile.close();
     }
     else return(false);
@@ -202,7 +202,7 @@ bool log_class::file_write(std::string log_data_1, std::string log_data_2, std::
         logfile << log_data_1;
         logfile << log_data_2;
         logfile << log_data_3;
-        logfile << "\n";
+        logfile << std::endl;
         logfile.close();
     }
     else return(false);
@@ -217,7 +217,7 @@ bool log_class::file_write(std::string log_data_1, const char  log_data_2[], std
         logfile << log_data_1;
         logfile << log_data_2;
         logfile << log_data_3;
-        logfile << "\n";
+        logfile << std::endl;
         logfile.close();
     }
     else return(false);
@@ -231,7 +231,7 @@ bool log_class::file_write(std::string log_data_1, const char log_data_2[])
     {
         logfile << log_data_1;
         logfile << log_data_2;
-        logfile << "\n";
+        logfile << std::endl;
         logfile.close();
     }
     else return(false);
@@ -245,7 +245,7 @@ bool log_class::file_write(std::wstring log_data_1, std::wstring log_data_2)
     {
         logfile.write(log_data_1.c_str(), log_data_1.size());
         logfile.write(log_data_2.c_str(), log_data_2.size());
-        logfile << "\n";
+        logfile << std::endl;
         logfile.close();
     }
     else return(false);
@@ -261,7 +261,7 @@ bool log_class::file_write(std::string log_data, int log_data_int ,float log_dat
         logfile << log_data_int;
         logfile << " - ";
         logfile << log_data_float;
-        logfile << "\n";
+        logfile << std::endl;
         logfile.close();
     }
     else return(false);
@@ -277,7 +277,7 @@ bool log_class::file_write(std::string log_data_1, int log_data_2 ,std::string l
         logfile << log_data_2;
         logfile << log_data_3;
         logfile << log_data_4;
-        logfile << "\n";
+        logfile << std::endl;
         logfile.close();
     }
     else return(false);
@@ -295,7 +295,7 @@ bool log_class::file_write(std::string log_data_1, int   log_data_2, std::string
         logfile << log_data_4;
         logfile << log_data_5;
         logfile << log_data_6;
-        logfile << "\n";
+        logfile << std::endl;
         logfile.close();
     }
     else return(false);
@@ -315,7 +315,7 @@ bool log_class::file_write(std::string log_data_1, int   log_data_2 ,std::string
         logfile << log_data_6;
         logfile << log_data_7;
         logfile << log_data_8;
-        logfile << "\n";
+        logfile << std::endl;
         logfile.close();
     }
     else return(false);
@@ -331,22 +331,24 @@ bool log_class::file_write(std::string log_data_1, float log_data_2 ,std::string
         logfile << log_data_2;
         logfile << log_data_3;
         logfile << log_data_4;
-        logfile << "\n";
+        logfile << std::endl;
         logfile.close();
     }
     else return(false);
     return(true);
 };
 
-bool log_class::file_write_time_stamp(void)
+bool log_class::file_write_time_stamp(std::string message)
 {
     std::fstream logfile(log_class::file_name.c_str(),std::ios::out|std::ios::app);
     if (logfile.is_open())
     {
-        tm newtime;
-        std::time_t result = std::time(NULL);
-        logfile << "Logfile created: " << std::asctime(localtime_r(&result,&newtime));
-        logfile << "\n";
+        struct tm newtime;
+        time_t rawtime;
+        rawtime = time(&rawtime);
+        char buffer [80];
+        strftime (buffer,80,"%Y-%m-%d - %H:%M:%S - %Z",localtime_r(&rawtime, &newtime));
+        logfile << message << buffer << std::endl << std::endl;
         logfile.close();
     }
     else return(false);
