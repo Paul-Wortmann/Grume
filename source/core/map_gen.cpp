@@ -366,8 +366,11 @@ void map_gen_room_path (fmx_map_type *fmx_map_pointer, int room_1, int room_2, b
                 int *temp_room_list = NULL;
                 if (fmx_map_pointer->room[room_2].number_of_connected_rooms > 0)
                 {
-                    temp_room_list = new int[fmx_map_pointer->room[room_2].number_of_connected_rooms+1];
-                    temp_room_list = fmx_map_pointer->room[room_2].connected_rooms;
+                    temp_room_list = new int[fmx_map_pointer->room[room_2].number_of_connected_rooms];
+                    for (int i = 0; i < fmx_map_pointer->room[room_2].number_of_connected_rooms; i++)
+                    {
+                        temp_room_list[i] = fmx_map_pointer->room[room_2].connected_rooms[i];
+                    }
                     delete fmx_map_pointer->room[room_2].connected_rooms;
                 }
                 fmx_map_pointer->room[room_2].number_of_connected_rooms++;
@@ -381,7 +384,7 @@ void map_gen_room_path (fmx_map_type *fmx_map_pointer, int room_1, int room_2, b
                     //if (temp_room_list) delete temp_room_list;
                 }
                 fmx_map_pointer->room[room_2].connected_rooms[fmx_map_pointer->room[room_2].number_of_connected_rooms-1] = room_1;
-                //if (temp_room_list != NULL) delete temp_room_list;
+                if (temp_room_list != NULL) delete [] temp_room_list;
             }
         }
         if (connect_rooms)
