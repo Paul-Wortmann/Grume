@@ -62,6 +62,7 @@ extern "C" int main(int argc, char** argv)
     game.core.config.file_load();
     game.core.log.file_write("Processing command line switches...");
     game.command_line.process(argc,argv);
+    if (game.core.debug) game.core.log.file_write("Developer mode enabled.");
     game.core.log.file_write("Loading language file -> data/configuration/languages/"+game.core.config.language+".txt");
     game.language.load("data/configuration/languages/"+game.core.config.language+".txt");
 //  --- graphics ---
@@ -112,7 +113,6 @@ extern "C" int main(int argc, char** argv)
     SDL_Init(SDL_INIT_TIMER);
     game.core.timer.start();
     game.core.last_ticks = game.core.timer.getticks();
-    if (game.core.debug) game.core.log.file_write("Developer mode enabled.");
 // --------------------------------------------------------------------------------------------------------------------------
 // | Main application loop
 // --------------------------------------------------------------------------------------------------------------------------
@@ -188,13 +188,13 @@ extern "C" int main(int argc, char** argv)
 // | Application terminated, cleanup and free resources etc...
 // --------------------------------------------------------------------------------------------------------------------------
     game.core.log.file_write(" ");
-    game.core.log.file_write("# ---------------------------------------------- #");
-    game.core.log.file_write("Font    count -> ", game.font_manager.number_of_fonts);
-    game.core.log.file_write("Music   count -> ", game.music_manager.number_of_music);
-    game.core.log.file_write("Sound   count -> ", game.sound_manager.number_of_sounds);
-    game.core.log.file_write("Texture count -> ", game.texture_manager.number_of_textures);
-    game.core.log.file_write("Item    count -> ", game.item_manager.number_of_items);
-    game.core.log.file_write("Effect  count -> ", game.effect_manager.number_of_effects);
+    if (game.core.debug) game.core.log.file_write("# ---------------------------------------------- #");
+    if (game.core.debug) game.core.log.file_write("Font    count -> ", game.font_manager.number_of_fonts);
+    if (game.core.debug) game.core.log.file_write("Music   count -> ", game.music_manager.number_of_music);
+    if (game.core.debug) game.core.log.file_write("Sound   count -> ", game.sound_manager.number_of_sounds);
+    if (game.core.debug) game.core.log.file_write("Texture count -> ", game.texture_manager.number_of_textures);
+    if (game.core.debug) game.core.log.file_write("Item    count -> ", game.item_manager.number_of_items);
+    if (game.core.debug) game.core.log.file_write("Effect  count -> ", game.effect_manager.number_of_effects);
     game.core.log.file_write("# ---------------------------------------------- #");
     game.core.log.file_write("Saving configuration...");
     game.core.config.file_clear();

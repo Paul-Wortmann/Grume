@@ -232,9 +232,9 @@ bool GL_legacy_build_mode_list(void)
     }
     else
     {
-        game.core.log.file_write("-----------------------------------------------------");
-        game.core.log.file_write("- Menu display list:                                -");
-        game.core.log.file_write("-----------------------------------------------------");
+        if (game.core.debug) game.core.log.file_write("-----------------------------------------------------");
+        if (game.core.debug)game.core.log.file_write("- Menu display list:                                -");
+        if (game.core.debug)game.core.log.file_write("-----------------------------------------------------");
         game.core.graphics.menu_mode_length = 1;
         int list_position = 0;
         int last_w = game.core.graphics.display_mode[0].w;
@@ -259,26 +259,12 @@ bool GL_legacy_build_mode_list(void)
                 if (list_position < game.core.graphics.menu_mode_length)
                 {
                     game.core.graphics.menu_mode_list[list_position] = i;
-                    game.core.log.file_write("Menu res - x - ",game.core.graphics.display_mode[i].w," - y - ",game.core.graphics.display_mode[i].h);
+                    if (game.core.debug)game.core.log.file_write("Menu res - x - ",game.core.graphics.display_mode[i].w," - y - ",game.core.graphics.display_mode[i].h);
                 }
                 list_position++;
             }
         }
-        game.core.log.file_write("-----------------------------------------------------");
+        if (game.core.debug)game.core.log.file_write("-----------------------------------------------------");
     }
     return(return_value);
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
