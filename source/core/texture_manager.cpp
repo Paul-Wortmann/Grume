@@ -90,8 +90,7 @@ texture_type* texture_manager_class::add_texture(font_type* font, std::string te
     }
     else
     {
-        texture_type* temp_pointer;
-        temp_pointer = texture_manager_class::root;
+        texture_type* temp_pointer = texture_manager_class::root;
         if (temp_pointer != NULL)
         {
             while (temp_pointer != NULL)
@@ -452,89 +451,98 @@ void texture_manager_class::process(texture_type *texture)
 
 void texture_manager_class::draw(texture_type *texture, bool rumble_set, float pos_x, float pos_y, float pos_z, float width_set, float height_set)
 {
-    if (rumble_set)
+    if (texture->data.loaded)
     {
-        game.rumble.counter.x = 0.0f;
-        game.rumble.counter.y = 0.0f;
-        pos_x += game.rumble.counter.x;
-        pos_y += game.rumble.counter.y;
+        if (rumble_set)
+        {
+            game.rumble.counter.x = 0.0f;
+            game.rumble.counter.y = 0.0f;
+            pos_x += game.rumble.counter.x;
+            pos_y += game.rumble.counter.y;
+        }
+        if (texture->data.frame[texture->data.frame_number].data) // Only render if data is available.
+        {
+            int   temp_angle;
+            float temp_width_p  = (width_set/2);
+            float temp_width_n  = (width_set/2)*-1;
+            float temp_height_p = (height_set/2);
+            float temp_height_n = (height_set/2)*-1;
+            if (texture->data.angle != 0) temp_angle = 360 - texture->data.angle;
+            else temp_angle = 0;
+            glPushMatrix();
+            glBindTexture( GL_TEXTURE_2D, texture->data.frame[texture->data.frame_number].data);
+            glLoadIdentity();
+            glBegin( GL_QUADS );
+            switch (texture->data.render_positioning)
+            {
+                case TEXTURE_RENDER_CENTERED:
+                break;
+                case TEXTURE_RENDER_UP:
+                    temp_height_p = temp_height_p*2.0f;
+                    temp_height_n = 0.0f;
+                break;
+                case TEXTURE_RENDER_DOWN:
+                    temp_height_p = 0.0f;
+                    temp_height_n = temp_height_n*2.0f;
+                break;
+                case TEXTURE_RENDER_LEFT:
+                    temp_width_p = temp_width_p*2.0f;
+                    temp_width_n = 0.0f;
+                break;
+                case TEXTURE_RENDER_LEFT+TEXTURE_RENDER_UP:
+                    temp_width_p = temp_width_p*2.0f;
+                    temp_width_n = 0.0f;
+                    temp_height_p = temp_height_p*2.0f;
+                    temp_height_n = 0.0f;
+                break;
+                case TEXTURE_RENDER_LEFT+TEXTURE_RENDER_DOWN:
+                    temp_width_p = temp_width_p*2.0f;
+                    temp_width_n = 0.0f;
+                    temp_height_p = 0.0f;
+                    temp_height_n = temp_height_n*2.0f;
+                break;
+                case TEXTURE_RENDER_RIGHT:
+                    temp_width_p = 0.0f;
+                    temp_width_n = temp_width_n*2.0f;
+                break;
+                case TEXTURE_RENDER_RIGHT+TEXTURE_RENDER_UP:
+                    temp_width_p = 0.0f;
+                    temp_width_n = temp_width_n*2.0f;
+                    temp_height_p = temp_height_p*2.0f;
+                    temp_height_n = 0.0f;
+                break;
+                case TEXTURE_RENDER_RIGHT+TEXTURE_RENDER_DOWN:
+                    temp_width_p = 0.0f;
+                    temp_width_n = temp_width_n*2.0f;
+                    temp_height_p = 0.0f;
+                    temp_height_n = temp_height_n*2.0f;
+                break;
+                default:
+                    game.core.log.file_write("Texture render error with render positioning -> ",texture->data.render_positioning);
+                break;
+            }
+            if (texture->data.rotate_able)
+            {
+                glTexCoord2i( 0, 1 );glVertex3f(game.core.physics.rotate_point_2D_x(pos_x, pos_y, pos_x+temp_width_n,pos_y+temp_height_n,temp_angle), game.core.physics.rotate_point_2D_y(pos_x,pos_y,pos_x+temp_width_n,pos_y+temp_height_n, temp_angle), pos_z);
+                glTexCoord2i( 0, 0 );glVertex3f(game.core.physics.rotate_point_2D_x(pos_x, pos_y, pos_x+temp_width_n,pos_y+temp_height_p,temp_angle), game.core.physics.rotate_point_2D_y(pos_x,pos_y,pos_x+temp_width_n,pos_y+temp_height_p, temp_angle), pos_z);
+                glTexCoord2i( 1, 0 );glVertex3f(game.core.physics.rotate_point_2D_x(pos_x, pos_y, pos_x+temp_width_p,pos_y+temp_height_p,temp_angle), game.core.physics.rotate_point_2D_y(pos_x,pos_y,pos_x+temp_width_p,pos_y+temp_height_p, temp_angle), pos_z);
+                glTexCoord2i( 1, 1 );glVertex3f(game.core.physics.rotate_point_2D_x(pos_x, pos_y, pos_x+temp_width_p,pos_y+temp_height_n,temp_angle), game.core.physics.rotate_point_2D_y(pos_x,pos_y,pos_x+temp_width_p,pos_y+temp_height_n, temp_angle), pos_z);        }
+            else
+            {
+                glTexCoord2i( 0, 1 );glVertex3f(pos_x+temp_width_n,pos_y+temp_height_n, pos_z);
+                glTexCoord2i( 0, 0 );glVertex3f(pos_x+temp_width_n,pos_y+temp_height_p, pos_z);
+                glTexCoord2i( 1, 0 );glVertex3f(pos_x+temp_width_p,pos_y+temp_height_p, pos_z);
+                glTexCoord2i( 1, 1 );glVertex3f(pos_x+temp_width_p,pos_y+temp_height_n, pos_z);
+            }
+            glEnd();
+            glPopMatrix();
+        }
     }
-    if (texture->data.frame[texture->data.frame_number].data) // Only render if data is available.
+    else
     {
-        int   temp_angle;
-        float temp_width_p  = (width_set/2);
-        float temp_width_n  = (width_set/2)*-1;
-        float temp_height_p = (height_set/2);
-        float temp_height_n = (height_set/2)*-1;
-        if (texture->data.angle != 0) temp_angle = 360 - texture->data.angle;
-        else temp_angle = 0;
-        glPushMatrix();
-        glBindTexture( GL_TEXTURE_2D, texture->data.frame[texture->data.frame_number].data);
-        glLoadIdentity();
-        glBegin( GL_QUADS );
-        switch (texture->data.render_positioning)
-        {
-            case TEXTURE_RENDER_CENTERED:
-            break;
-            case TEXTURE_RENDER_UP:
-                temp_height_p = temp_height_p*2.0f;
-                temp_height_n = 0.0f;
-            break;
-            case TEXTURE_RENDER_DOWN:
-                temp_height_p = 0.0f;
-                temp_height_n = temp_height_n*2.0f;
-            break;
-            case TEXTURE_RENDER_LEFT:
-                temp_width_p = temp_width_p*2.0f;
-                temp_width_n = 0.0f;
-            break;
-            case TEXTURE_RENDER_LEFT+TEXTURE_RENDER_UP:
-                temp_width_p = temp_width_p*2.0f;
-                temp_width_n = 0.0f;
-                temp_height_p = temp_height_p*2.0f;
-                temp_height_n = 0.0f;
-            break;
-            case TEXTURE_RENDER_LEFT+TEXTURE_RENDER_DOWN:
-                temp_width_p = temp_width_p*2.0f;
-                temp_width_n = 0.0f;
-                temp_height_p = 0.0f;
-                temp_height_n = temp_height_n*2.0f;
-            break;
-            case TEXTURE_RENDER_RIGHT:
-                temp_width_p = 0.0f;
-                temp_width_n = temp_width_n*2.0f;
-            break;
-            case TEXTURE_RENDER_RIGHT+TEXTURE_RENDER_UP:
-                temp_width_p = 0.0f;
-                temp_width_n = temp_width_n*2.0f;
-                temp_height_p = temp_height_p*2.0f;
-                temp_height_n = 0.0f;
-            break;
-            case TEXTURE_RENDER_RIGHT+TEXTURE_RENDER_DOWN:
-                temp_width_p = 0.0f;
-                temp_width_n = temp_width_n*2.0f;
-                temp_height_p = 0.0f;
-                temp_height_n = temp_height_n*2.0f;
-            break;
-            default:
-                game.core.log.file_write("Texture render error with render positioning -> ",texture->data.render_positioning);
-            break;
-        }
-        if (texture->data.rotate_able)
-        {
-            glTexCoord2i( 0, 1 );glVertex3f(game.core.physics.rotate_point_2D_x(pos_x, pos_y, pos_x+temp_width_n,pos_y+temp_height_n,temp_angle), game.core.physics.rotate_point_2D_y(pos_x,pos_y,pos_x+temp_width_n,pos_y+temp_height_n, temp_angle), pos_z);
-            glTexCoord2i( 0, 0 );glVertex3f(game.core.physics.rotate_point_2D_x(pos_x, pos_y, pos_x+temp_width_n,pos_y+temp_height_p,temp_angle), game.core.physics.rotate_point_2D_y(pos_x,pos_y,pos_x+temp_width_n,pos_y+temp_height_p, temp_angle), pos_z);
-            glTexCoord2i( 1, 0 );glVertex3f(game.core.physics.rotate_point_2D_x(pos_x, pos_y, pos_x+temp_width_p,pos_y+temp_height_p,temp_angle), game.core.physics.rotate_point_2D_y(pos_x,pos_y,pos_x+temp_width_p,pos_y+temp_height_p, temp_angle), pos_z);
-            glTexCoord2i( 1, 1 );glVertex3f(game.core.physics.rotate_point_2D_x(pos_x, pos_y, pos_x+temp_width_p,pos_y+temp_height_n,temp_angle), game.core.physics.rotate_point_2D_y(pos_x,pos_y,pos_x+temp_width_p,pos_y+temp_height_n, temp_angle), pos_z);        }
-        else
-        {
-            glTexCoord2i( 0, 1 );glVertex3f(pos_x+temp_width_n,pos_y+temp_height_n, pos_z);
-            glTexCoord2i( 0, 0 );glVertex3f(pos_x+temp_width_n,pos_y+temp_height_p, pos_z);
-            glTexCoord2i( 1, 0 );glVertex3f(pos_x+temp_width_p,pos_y+temp_height_p, pos_z);
-            glTexCoord2i( 1, 1 );glVertex3f(pos_x+temp_width_p,pos_y+temp_height_n, pos_z);
-        }
-        glEnd();
-        glPopMatrix();
+        game.core.log.file_write("Fail - Texture manager draw image function called without image data.");
+        game.core.log.file_write("Fail - You are most likely missing data files, please re-install.");
+        game.state = STATE_QUIT;
     }
 };
 

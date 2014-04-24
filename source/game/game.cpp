@@ -66,8 +66,8 @@ game_class::game_class(void)
     game_class::zoom.min                   = 0.0f;
     game_class::zoom.max                   = 0.0f;
     game_class::zoom.speed                 = 0.0f;
-    game_class::event = 0;
-    game_class::state = STATE_MENU;
+    game_class::event                      = 0;
+    game_class::state                      = STATE_MENU;
 };
 
 void game_class::init(void)

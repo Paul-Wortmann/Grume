@@ -78,8 +78,16 @@ font_type *font_manager_class::add_font (std::string file_name)
     }
     font_manager_class::last->path = file_name.c_str();
     font_manager_class::last->loaded = font_manager_class::load_font(last);
-    if (font_manager_class::last->loaded) font_manager_class::number_of_fonts++;
-    return (font_manager_class::last);
+    if (font_manager_class::last->loaded)
+    {
+        font_manager_class::number_of_fonts++;
+        return (font_manager_class::last);
+    }
+    else
+    {
+        game.core.log.file_write("Fail - font manager function, add font -> ",file_name.c_str());
+        return (font_manager_class::last);
+    }
 };
 
 bool font_manager_class::load_font (font_type *font)
@@ -102,7 +110,7 @@ bool font_manager_class::load_font (font_type *font, int pt_size)
 
 bool font_manager_class::write (font_type *font, Uint8 r,Uint8 g,Uint8 b,Uint8 a,float x,float y,std::string text,int int_data)
 {
-    if ((text.length() > 0) && (font->font_data != NULL))
+    if ((text.length() > 0) && (font->loaded))
     {
         GLuint      texture_data;
         GLenum      texture_format;
@@ -145,12 +153,18 @@ bool font_manager_class::write (font_type *font, Uint8 r,Uint8 g,Uint8 b,Uint8 a
         SDL_FreeSurface(font_string);
         return (true);
     }
-    else return (false);
+    else
+    {
+        game.core.log.file_write("Fail - Font manager write function called without font data.");
+        game.core.log.file_write("Fail - You are most likely missing data files, please re-install.");
+        game.state = STATE_QUIT;
+        return (false);
+    }
 };
 
 bool font_manager_class::write (font_type *font, Uint8 r,Uint8 g,Uint8 b,Uint8 a,float x,float y,std::string text,float float_data)
 {
-    if ((text.length() > 0) && (font->font_data != NULL))
+    if ((text.length() > 0) && (font->loaded))
     {
         GLuint      texture_data;
         GLenum      texture_format;
@@ -193,12 +207,18 @@ bool font_manager_class::write (font_type *font, Uint8 r,Uint8 g,Uint8 b,Uint8 a
         SDL_FreeSurface(font_string);
         return (true);
     }
-    else return (false);
+    else
+    {
+        game.core.log.file_write("Fail - Font manager write function called without font data.");
+        game.core.log.file_write("Fail - You are most likely missing data files, please re-install.");
+        game.state = STATE_QUIT;
+        return (false);
+    }
 };
 
 bool font_manager_class::write (font_type *font, Uint8 r,Uint8 g,Uint8 b,Uint8 a,float x,float y,std::string text)
 {
-    if ((text.length() > 0) && (font->font_data != NULL))
+    if ((text.length() > 0) && (font->loaded))
     {
         GLuint       texture_data;
         GLenum       texture_format;
@@ -237,12 +257,18 @@ bool font_manager_class::write (font_type *font, Uint8 r,Uint8 g,Uint8 b,Uint8 a
         SDL_FreeSurface(font_string);
         return (true);
     }
-    else return (false);
+    else
+    {
+        game.core.log.file_write("Fail - Font manager write function called without font data.");
+        game.core.log.file_write("Fail - You are most likely missing data files, please re-install.");
+        game.state = STATE_QUIT;
+        return (false);
+    }
 };
 
 bool font_manager_class::write (font_type *font, Uint8 r,Uint8 g,Uint8 b,Uint8 a,float x,float y,float ws,float hs,std::string text)
 {
-    if ((text.length() > 0) && (font->font_data != NULL))
+    if ((text.length() > 0) && (font->loaded))
     {
         GLuint       texture_data;
         GLenum       texture_format;
@@ -283,14 +309,20 @@ bool font_manager_class::write (font_type *font, Uint8 r,Uint8 g,Uint8 b,Uint8 a
         SDL_FreeSurface(font_string);
         return (true);
     }
-    else return (false);
+    else
+    {
+        game.core.log.file_write("Fail - Font manager write function called without font data.");
+        game.core.log.file_write("Fail - You are most likely missing data files, please re-install.");
+        game.state = STATE_QUIT;
+        return (false);
+    }
 };
 
 
 
 bool font_manager_class::write (font_type *font, Uint8 r,Uint8 g,Uint8 b,Uint8 a,float x,float y,float ws,float hs,std::string text,int int_data)
 {
-    if ((text.length() > 0) && (font->font_data != NULL))
+    if ((text.length() > 0) && (font->loaded))
     {
         GLuint      texture_data;
         GLenum      texture_format;
@@ -336,12 +368,18 @@ bool font_manager_class::write (font_type *font, Uint8 r,Uint8 g,Uint8 b,Uint8 a
         SDL_FreeSurface(font_string);
         return (true);
     }
-    else return (false);
+    else
+    {
+        game.core.log.file_write("Fail - Font manager write function called without font data.");
+        game.core.log.file_write("Fail - You are most likely missing data files, please re-install.");
+        game.state = STATE_QUIT;
+        return (false);
+    }
 };
 
 bool font_manager_class::write (font_type *font, Uint8 r,Uint8 g,Uint8 b,Uint8 a,float x,float y,float ws,float hs,std::string text,float float_data)
 {
-    if ((text.length() > 0) && (font->font_data != NULL))
+    if ((text.length() > 0) && (font->loaded))
     {
         GLuint      texture_data;
         GLenum      texture_format;
@@ -387,12 +425,18 @@ bool font_manager_class::write (font_type *font, Uint8 r,Uint8 g,Uint8 b,Uint8 a
         SDL_FreeSurface(font_string);
         return(true);
     }
-    else return(false);
+    else
+    {
+        game.core.log.file_write("Fail - Font manager write function called without font data.");
+        game.core.log.file_write("Fail - You are most likely missing data files, please re-install.");
+        game.state = STATE_QUIT;
+        return (false);
+    }
 };
 
 bool font_manager_class::write (font_type *font, Uint8 r,Uint8 g,Uint8 b,Uint8 a,float x,float y,float ws,float hs,std::string text,int int_data,std::string text_2)
 {
-    if ((text.length() > 0) && (font->font_data != NULL))
+    if ((text.length() > 0) && (font->loaded))
     {
         GLuint      texture_data;
         GLenum      texture_format;
@@ -439,12 +483,18 @@ bool font_manager_class::write (font_type *font, Uint8 r,Uint8 g,Uint8 b,Uint8 a
         SDL_FreeSurface(font_string);
         return (true);
     }
-    else return (false);
+    else
+    {
+        game.core.log.file_write("Fail - Font manager write function called without font data.");
+        game.core.log.file_write("Fail - You are most likely missing data files, please re-install.");
+        game.state = STATE_QUIT;
+        return (false);
+    }
 };
 
 bool font_manager_class::write (font_type *font, Uint8 r,Uint8 g,Uint8 b,Uint8 a,float x,float y,float ws,float hs,std::string text,float float_data,std::string text_2)
 {
-    if ((text.length() > 0) && (font->font_data != NULL))
+    if ((text.length() > 0) && (font->loaded))
     {
         GLuint      texture_data;
         GLenum      texture_format;
@@ -491,12 +541,18 @@ bool font_manager_class::write (font_type *font, Uint8 r,Uint8 g,Uint8 b,Uint8 a
         SDL_FreeSurface(font_string);
         return (true);
     }
-    else return (false);
+    else
+    {
+        game.core.log.file_write("Fail - Font manager write function called without font data.");
+        game.core.log.file_write("Fail - You are most likely missing data files, please re-install.");
+        game.state = STATE_QUIT;
+        return (false);
+    }
 };
 
 bool font_manager_class::write (font_type *font, Uint8 r,Uint8 g,Uint8 b,Uint8 a,float x,float y,float ws,float hs,float float_data,std::string text)
 {
-    if ((text.length() > 0) && (font->font_data != NULL))
+    if ((text.length() > 0) && (font->loaded))
     {
         GLuint      texture_data;
         GLenum      texture_format;
@@ -544,12 +600,18 @@ bool font_manager_class::write (font_type *font, Uint8 r,Uint8 g,Uint8 b,Uint8 a
         SDL_FreeSurface(font_string);
         return (true);
     }
-    else return (false);
+    else
+    {
+        game.core.log.file_write("Fail - Font manager write function called without font data.");
+        game.core.log.file_write("Fail - You are most likely missing data files, please re-install.");
+        game.state = STATE_QUIT;
+        return (false);
+    }
 };
 
 bool font_manager_class::write (font_type *font, Uint8 r,Uint8 g,Uint8 b,Uint8 a,float x,float y,float ws,float hs,unsigned long long ullint_data,std::string text)
 {
-    if ((text.length() > 0) && (font->font_data != NULL))
+    if ((text.length() > 0) && (font->loaded))
     {
         GLuint      texture_data;
         GLenum      texture_format;
@@ -597,12 +659,18 @@ bool font_manager_class::write (font_type *font, Uint8 r,Uint8 g,Uint8 b,Uint8 a
         SDL_FreeSurface(font_string);
         return (true);
     }
-    else return (false);
+    else
+    {
+        game.core.log.file_write("Fail - Font manager write function called without font data.");
+        game.core.log.file_write("Fail - You are most likely missing data files, please re-install.");
+        game.state = STATE_QUIT;
+        return (false);
+    }
 };
 
 bool font_manager_class::write (font_type *font, Uint8 r,Uint8 g,Uint8 b,Uint8 a,float x,float y,float ws,float hs,int int_data,std::string text)
 {
-    if ((text.length() > 0) && (font->font_data != NULL))
+    if ((text.length() > 0) && (font->loaded))
     {
         GLuint      texture_data;
         GLenum      texture_format;
@@ -650,12 +718,18 @@ bool font_manager_class::write (font_type *font, Uint8 r,Uint8 g,Uint8 b,Uint8 a
         SDL_FreeSurface(font_string);
         return (true);
     }
-    else return (false);
+    else
+    {
+        game.core.log.file_write("Fail - Font manager write function called without font data.");
+        game.core.log.file_write("Fail - You are most likely missing data files, please re-install.");
+        game.state = STATE_QUIT;
+        return (false);
+    }
 };
 
 bool font_manager_class::write (font_type *font, Uint8 r,Uint8 g,Uint8 b,Uint8 a,float x,float y,float ws,float hs,std::string text_data,std::string text)
 {
-    if ((text.length() > 0) && (font->font_data != NULL))
+    if ((text.length() > 0) && (font->loaded))
     {
         GLuint      texture_data;
         GLenum      texture_format;
@@ -699,12 +773,18 @@ bool font_manager_class::write (font_type *font, Uint8 r,Uint8 g,Uint8 b,Uint8 a
         SDL_FreeSurface(font_string);
         return (true);
     }
-    else return (false);
+    else
+    {
+        game.core.log.file_write("Fail - Font manager write function called without font data.");
+        game.core.log.file_write("Fail - You are most likely missing data files, please re-install.");
+        game.state = STATE_QUIT;
+        return (false);
+    }
 };
 
 bool font_manager_class::write (font_type *font, Uint8 r,Uint8 g,Uint8 b,Uint8 a,float x,float y,float ws,float hs,std::string text,unsigned long long ullint_data)
 {
-    if ((text.length() > 0) && (font->font_data != NULL))
+    if ((text.length() > 0) && (font->loaded))
     {
         GLuint      texture_data;
         GLenum      texture_format;
@@ -750,12 +830,18 @@ bool font_manager_class::write (font_type *font, Uint8 r,Uint8 g,Uint8 b,Uint8 a
         SDL_FreeSurface(font_string);
         return (true);
     }
-    else return (false);
+    else
+    {
+        game.core.log.file_write("Fail - Font manager write function called without font data.");
+        game.core.log.file_write("Fail - You are most likely missing data files, please re-install.");
+        game.state = STATE_QUIT;
+        return (false);
+    }
 };
 
 bool font_manager_class::write (font_type *font, Uint8 r,Uint8 g,Uint8 b,Uint8 a,float x,float y,float ws,float hs,std::string text,unsigned long long ullint_data,std::string text_2)
 {
-    if ((text.length() > 0) && (font->font_data != NULL))
+    if ((text.length() > 0) && (font->loaded))
     {
         GLuint      texture_data;
         GLenum      texture_format;
@@ -802,12 +888,18 @@ bool font_manager_class::write (font_type *font, Uint8 r,Uint8 g,Uint8 b,Uint8 a
         SDL_FreeSurface(font_string);
         return (true);
     }
-    else return (false);
+    else
+    {
+        game.core.log.file_write("Fail - Font manager write function called without font data.");
+        game.core.log.file_write("Fail - You are most likely missing data files, please re-install.");
+        game.state = STATE_QUIT;
+        return (false);
+    }
 };
 
 bool font_manager_class::write (font_type *font, Uint8 r,Uint8 g,Uint8 b,Uint8 a,float x,float y,float ws,float hs,std::string text,int int_data,std::string text_2,int int_data_2,std::string text_3)
 {
-    if ((text.length() > 0) && (font->font_data != NULL))
+    if ((text.length() > 0) && (font->loaded))
     {
         GLuint      texture_data;
         GLenum      texture_format;
@@ -858,5 +950,11 @@ bool font_manager_class::write (font_type *font, Uint8 r,Uint8 g,Uint8 b,Uint8 a
         SDL_FreeSurface(font_string);
         return (true);
     }
-    else return (false);
+    else
+    {
+        game.core.log.file_write("Fail - Font manager write function called without font data.");
+        game.core.log.file_write("Fail - You are most likely missing data files, please re-install.");
+        game.state = STATE_QUIT;
+        return (false);
+    }
 };
