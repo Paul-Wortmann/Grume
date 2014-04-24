@@ -84,6 +84,7 @@ class UI_manager_class
         int                   UI_form_get_list_position(int UI_form_UID);
         bool                  UI_form_get_is_top_of_list(int UI_form_UID);
         void                  UI_form_list_log(void);
+        void                  UI_form_position_log(void);
         void                  UI_form_list_sort(void);
         void                  UI_form_list_sort(int UI_form_UID);
         int                   UI_form_mouse_over_element(int UI_form_UID);

@@ -42,8 +42,8 @@ void setup_menu_main(int UID)
     UI_form_pointer->data.enabled                     = true;
     UI_form_pointer->data.mouse_over_menu             = false;
     UI_form_pointer->data.mouse_over_title            = false;
-    UI_form_pointer->data.position.x                  = 0.0f;
-    UI_form_pointer->data.position.y                  = 0.0f;
+    UI_form_pointer->data.position.x                  = -0.245833f;
+    UI_form_pointer->data.position.y                  = -0.34f;
     UI_form_pointer->data.position.z                  = 0.0f;
     UI_form_pointer->data.size.x                      = 0.5f;
     UI_form_pointer->data.size.y                      = UI_form_pointer->data.size.x * 2.5f;

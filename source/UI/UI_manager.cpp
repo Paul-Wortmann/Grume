@@ -346,6 +346,14 @@ void UI_manager_class::UI_form_list_log(void)
     game.core.log.file_write("------------------------------------------");
 };
 
+void UI_manager_class::UI_form_position_log(void)
+{
+    for (UI_form_struct *UI_form_pointer_tmp = UI_manager_class::root; UI_form_pointer_tmp != NULL; UI_form_pointer_tmp = UI_form_pointer_tmp->next)
+    {
+        game.core.log.file_write(game.UI_manager.uid_to_string(UI_form_pointer_tmp->data.UID)+" - x -",UI_form_pointer_tmp->data.position.x," - y - ",UI_form_pointer_tmp->data.position.y);
+    }
+};
+
 
 void UI_manager_class::UI_form_set_position(int UI_form_UID_src, int UI_form_UID_dst)
 {

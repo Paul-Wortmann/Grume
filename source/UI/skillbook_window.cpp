@@ -40,8 +40,8 @@ void setup_skillbook_window(int UID)
     UI_form_pointer->data.enabled                     = false;
     UI_form_pointer->data.mouse_over_menu             = false;
     UI_form_pointer->data.mouse_over_title            = false;
-    UI_form_pointer->data.position.x                  = 0.75f;
-    UI_form_pointer->data.position.y                  = 0.31f;
+    UI_form_pointer->data.position.x                  = 0.739583f;
+    UI_form_pointer->data.position.y                  = 0.26f;
     UI_form_pointer->data.position.z                  = 0.001f;
     UI_form_pointer->data.size.x                      = 0.5f;
     UI_form_pointer->data.size.y                      = UI_form_pointer->data.size.x * 2.5f;

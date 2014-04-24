@@ -196,6 +196,8 @@ extern "C" int main(int argc, char** argv)
     if (game.core.debug) game.core.log.file_write("Item    count -> ", game.item_manager.number_of_items);
     if (game.core.debug) game.core.log.file_write("Effect  count -> ", game.effect_manager.number_of_effects);
     game.core.log.file_write("# ---------------------------------------------- #");
+    //if (game.core.debug) game.UI_manager.UI_form_position_log();
+    //game.core.log.file_write("# ---------------------------------------------- #");
     game.core.log.file_write("Saving configuration...");
     game.core.config.file_clear();
     game.core.config.file_save();
