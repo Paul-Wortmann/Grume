@@ -131,6 +131,18 @@ struct io_class
         bool           down;
         bool           left;
         bool           right;
+        bool           key_f1;
+        bool           key_f2;
+        bool           key_f3;
+        bool           key_f4;
+        bool           key_f5;
+        bool           key_f6;
+        bool           key_f7;
+        bool           key_f8;
+        bool           key_f9;
+        bool           key_f10;
+        bool           key_f11;
+        bool           key_f12;
 };
 
 bool events_init(void);

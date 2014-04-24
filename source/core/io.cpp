@@ -138,6 +138,18 @@ bool events_init(void)
    game.core.io.down                       = false;
    game.core.io.left                       = false;
    game.core.io.right                      = false;
+   game.core.io.key_f1                     = false;
+   game.core.io.key_f2                     = false;
+   game.core.io.key_f3                     = false;
+   game.core.io.key_f4                     = false;
+   game.core.io.key_f5                     = false;
+   game.core.io.key_f6                     = false;
+   game.core.io.key_f7                     = false;
+   game.core.io.key_f8                     = false;
+   game.core.io.key_f9                     = false;
+   game.core.io.key_f10                    = false;
+   game.core.io.key_f11                    = false;
+   game.core.io.key_f12                    = false;
    return(true);
 };
 
@@ -440,6 +452,18 @@ bool events_process(void)
           if (game.core.event.key.keysym.sym == SDLK_x)      game.core.io.key_x      = true;
           if (game.core.event.key.keysym.sym == SDLK_y)      game.core.io.key_y      = true;
           if (game.core.event.key.keysym.sym == SDLK_z)      game.core.io.key_z      = true;
+          if (game.core.event.key.keysym.sym == SDLK_F1)     game.core.io.key_f1     = true;
+          if (game.core.event.key.keysym.sym == SDLK_F2)     game.core.io.key_f2     = true;
+          if (game.core.event.key.keysym.sym == SDLK_F3)     game.core.io.key_f3     = true;
+          if (game.core.event.key.keysym.sym == SDLK_F4)     game.core.io.key_f4     = true;
+          if (game.core.event.key.keysym.sym == SDLK_F5)     game.core.io.key_f5     = true;
+          if (game.core.event.key.keysym.sym == SDLK_F6)     game.core.io.key_f6     = true;
+          if (game.core.event.key.keysym.sym == SDLK_F7)     game.core.io.key_f7     = true;
+          if (game.core.event.key.keysym.sym == SDLK_F8)     game.core.io.key_f8     = true;
+          if (game.core.event.key.keysym.sym == SDLK_F9)     game.core.io.key_f9     = true;
+          if (game.core.event.key.keysym.sym == SDLK_F10)    game.core.io.key_f10    = true;
+          if (game.core.event.key.keysym.sym == SDLK_F11)    game.core.io.key_f11    = true;
+          if (game.core.event.key.keysym.sym == SDLK_F12)    game.core.io.key_f12    = true;
        }
        if (game.core.event.type == SDL_KEYUP)
        {
@@ -494,6 +518,18 @@ bool events_process(void)
           if (game.core.event.key.keysym.sym == SDLK_x)      game.core.io.key_x      = false;
           if (game.core.event.key.keysym.sym == SDLK_y)      game.core.io.key_y      = false;
           if (game.core.event.key.keysym.sym == SDLK_z)      game.core.io.key_z      = false;
+          if (game.core.event.key.keysym.sym == SDLK_F1)     game.core.io.key_f1     = false;
+          if (game.core.event.key.keysym.sym == SDLK_F2)     game.core.io.key_f2     = false;
+          if (game.core.event.key.keysym.sym == SDLK_F3)     game.core.io.key_f3     = false;
+          if (game.core.event.key.keysym.sym == SDLK_F4)     game.core.io.key_f4     = false;
+          if (game.core.event.key.keysym.sym == SDLK_F5)     game.core.io.key_f5     = false;
+          if (game.core.event.key.keysym.sym == SDLK_F6)     game.core.io.key_f6     = false;
+          if (game.core.event.key.keysym.sym == SDLK_F7)     game.core.io.key_f7     = false;
+          if (game.core.event.key.keysym.sym == SDLK_F8)     game.core.io.key_f8     = false;
+          if (game.core.event.key.keysym.sym == SDLK_F9)     game.core.io.key_f9     = false;
+          if (game.core.event.key.keysym.sym == SDLK_F10)    game.core.io.key_f10    = false;
+          if (game.core.event.key.keysym.sym == SDLK_F11)    game.core.io.key_f11    = false;
+          if (game.core.event.key.keysym.sym == SDLK_F12)    game.core.io.key_f12    = false;
        }
     }
     //---------------------------------------------------------------------------------------------

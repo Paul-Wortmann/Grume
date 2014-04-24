@@ -167,6 +167,7 @@ void UI_manager_class::setup(void)
     setup_player_profile  (UID_PCPROFILE);
     setup_character_window(UID_CHARACTER);
     setup_equipment_window(UID_EQUIPMENT);
+    setup_help_window     (UID_HELPWINDOW);
     setup_inventory_window(UID_INVENTORY);
     setup_menu_game_load  (UID_MENU_GAME_LOAD);
     setup_menu_game_new   (UID_MENU_GAME_NEW);
@@ -1322,6 +1323,9 @@ void UI_manager_class::process(void)
                     case UID_SKILLBOOK:
                         process_skillbook_window(UI_form_pointer);
                     break;
+                    case UID_HELPWINDOW:
+                        process_help_window(UI_form_pointer);
+                    break;
                     default:
                         game.core.log.file_write("Unable to process UID - ",UI_form_pointer->data.UID," - ",game.UI_manager.uid_to_string(UI_form_pointer->data.UID));
                     break;
@@ -1620,6 +1624,9 @@ std::string UI_manager_class::uid_to_string(int UID_number)
         break;
         case UID_MENU_PAUSE:
             return("UID_MENU_PAUSE");
+        break;
+        case UID_HELPWINDOW:
+            return("UID_HELPWINDOW");
         break;
         default:
             return("UID_UNKNOWN");

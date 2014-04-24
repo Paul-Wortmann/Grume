@@ -51,13 +51,14 @@ struct core_struct
     bool                  game_paused;
     bool                  game_active;
     bool                  game_resume;
-    bool                  game_menu_active;
-    bool                  quest_log_active;
     bool                  character_active;
-    bool                  skillbook_active;
-    bool                  inventory_active;
     bool                  equipment_active;
+    bool                  game_menu_active;
+    bool                  inventory_active;
+    bool                  help_menu_active;
     bool                  npcvendor_active;
+    bool                  quest_log_active;
+    bool                  skillbook_active;
     background_class      background;
     config_class          config;
     file_class            file;

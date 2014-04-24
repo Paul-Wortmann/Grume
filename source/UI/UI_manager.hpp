@@ -28,6 +28,7 @@
 #include "action_bar.hpp"
 #include "character_window.hpp"
 #include "equipment_window.hpp"
+#include "help_window.hpp"
 #include "inventory_window.hpp"
 #include "menu_game_load.hpp"
 #include "menu_game_new.hpp"
@@ -56,6 +57,7 @@
 #define    UID_MENU_OPTIONS       13
 #define    UID_MENU_GAME_OVER     14
 #define    UID_MENU_PAUSE         15
+#define    UID_HELPWINDOW         16
 
 struct UI_manager_data_type
 {

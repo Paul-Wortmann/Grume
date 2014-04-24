@@ -107,6 +107,7 @@ void game_class::init(void)
     game.core.character_active                    = false;
     game.core.skillbook_active                    = false;
     game.core.inventory_active                    = false;
+    game.core.help_menu_active                    = false;
     game.core.npcvendor_active                    = false;
 
     game.player.name                              =  "Kanchi";
@@ -401,6 +402,23 @@ void game_class::process(void)
             game.core.io.key_q                     = false;
             game.core.io.keyboard_delay_count      = 0;
         }
+        if (game.core.io.key_f1) // Help menu
+        {
+            if (!game.core.help_menu_active)
+            {
+                game.UI_manager.UI_form_enable(UID_HELPWINDOW);
+                game.UI_manager.data.event.id    = EVENT_UI_LIST_SORT;
+                game.UI_manager.data.event.value = UID_HELPWINDOW;
+                game.core.help_menu_active       = true;
+            }
+            else
+            {
+                game.UI_manager.UI_form_disable(UID_HELPWINDOW);
+                game.core.help_menu_active       = false;
+            }
+            game.core.io.key_f1                  = false;
+            game.core.io.keyboard_delay_count    = 0;
+        }
         if (game.core.io.key_i) // Inventory menu
         {
             if (!game.core.inventory_active)
@@ -465,6 +483,11 @@ void game_class::process(void)
             {
                 game.UI_manager.UI_form_disable(UID_INVENTORY);
                 game.core.inventory_active                   = false;
+            }
+            if (game.core.help_menu_active)
+            {
+                game.UI_manager.UI_form_disable(UID_HELPWINDOW);
+                game.core.help_menu_active                   = false;
             }
             if (game.core.skillbook_active)
             {

@@ -22,25 +22,25 @@
  * @date 2011-11-11
  */
 
-#include "menu_main.hpp"
+#include "help_window.hpp"
 #include "../game/game.hpp"
 
 extern game_class         game;
 
 //----------------------------------------------------------
 
-void setup_quest_log_window(int UID)
+void setup_help_window(int UID)
 {
     int element_number = 0;
 
     UI_form_struct   *UI_form_pointer;
-    UI_form_pointer = game.UI_manager.UI_form_add(UID_QUEST_LOG);
+    UI_form_pointer = game.UI_manager.UI_form_add(UID_HELPWINDOW);
 
     UI_form_pointer->data.UID                         = UID;
     UI_form_pointer->data.enabled                     = false;
     UI_form_pointer->data.mouse_over_menu             = false;
     UI_form_pointer->data.mouse_over_title            = false;
-    UI_form_pointer->data.position.x                  = 0.491667f;
+    UI_form_pointer->data.position.x                  = -0.492709f;
     UI_form_pointer->data.position.y                  = -0.34f;
     UI_form_pointer->data.position.z                  = 0.0f;
     UI_form_pointer->data.size.x                      = 0.5f;
@@ -73,12 +73,12 @@ void setup_quest_log_window(int UID)
     UI_form_pointer->data.zoom.maximum            = 0.02f;
     UI_form_pointer->data.zoom.speed              = 0.004f;
     UI_form_pointer->data.texture.angle           = 0.0f;
-    UI_form_pointer->data.title.text              = game.texture_manager.add_texture(game.font_manager.root,"Quest Log",0.8f,0,0,TEXTURE_STRING);
+    UI_form_pointer->data.title.text              = game.texture_manager.add_texture(game.font_manager.root,"Help Menu",0.8f,0,0,TEXTURE_STRING);
     UI_form_pointer->data.title.enabled           = true;
     UI_form_pointer->data.title.size.x            = 0;//UI_form_pointer->data.title.text.length()/1.2f;
     UI_form_pointer->data.title.size.y            = 0;//UI_form_pointer->data.title.size.x*4;
-    UI_form_pointer->data.title.position.x            = UI_form_pointer->data.position.x;
-    UI_form_pointer->data.title.position.y            = UI_form_pointer->data.position.y+(UI_form_pointer->data.size.y/2.24f);
+    UI_form_pointer->data.title.position.x        = UI_form_pointer->data.position.x;
+    UI_form_pointer->data.title.position.y        = UI_form_pointer->data.position.y+(UI_form_pointer->data.size.y/2.24f);
     UI_form_pointer->data.title_bar.size.x        = UI_form_pointer->data.size.x; // x/2.0f for middle section
     UI_form_pointer->data.title_bar.size.y        = UI_form_pointer->data.size.y / 10.0f;
     UI_form_pointer->data.title_bar.position.x    = UI_form_pointer->data.position.x;
@@ -175,15 +175,15 @@ void setup_quest_log_window(int UID)
     UI_form_pointer->data.element[element_number].font                      = UI_form_pointer->data.font;
 };
 
-void process_quest_log_window(UI_form_struct *UI_form_pointer)
+void process_help_window(UI_form_struct *UI_form_pointer)
 {
     if(UI_form_pointer->data.event.id > EVENT_NONE)
     {
         switch (UI_form_pointer->data.event.id)
         {
             case ((0*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Close menu button
-                game.UI_manager.UI_form_disable(UID_QUEST_LOG);
-                game.core.quest_log_active     = false;
+                game.UI_manager.UI_form_disable(UID_HELPWINDOW);
+                game.core.help_menu_active     = false;
                 game.core.io.mouse_button_left = false;
             break;
             case (EVENT_UI_LIST_SORT): //Window stack sort
@@ -192,7 +192,7 @@ void process_quest_log_window(UI_form_struct *UI_form_pointer)
                 game.UI_manager.data.event.value = UI_form_pointer->data.UID;
             break;
             case (EVENT_UI_ELEMENT_DRAG): //Element drag event posted
-                //game.UI_manager.source.window = QUEST_LOG_UID;
+                //game.UI_manager.source.window = UID_HELPWINDOW;
                 game.UI_manager.data.event.id = EVENT_NONE;
             break;
             case (EVENT_UI_FORM_DRAG): //Form drag event posted

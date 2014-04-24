@@ -127,6 +127,8 @@
 		<Unit filename="source/UI/character_window.hpp" />
 		<Unit filename="source/UI/equipment_window.cpp" />
 		<Unit filename="source/UI/equipment_window.hpp" />
+		<Unit filename="source/UI/help_window.cpp" />
+		<Unit filename="source/UI/help_window.hpp" />
 		<Unit filename="source/UI/inventory_window.cpp" />
 		<Unit filename="source/UI/inventory_window.hpp" />
 		<Unit filename="source/UI/menu_game_load.cpp" />

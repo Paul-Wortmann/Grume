@@ -152,6 +152,7 @@ Set (FROST_AND_FLAME_SOURCES
 	./source/UI/action_bar.cpp
 	./source/UI/character_window.cpp
 	./source/UI/equipment_window.cpp
+	./source/UI/help_window.cpp
 	./source/UI/inventory_window.cpp
 	./source/UI/menu_game_load.cpp
 	./source/UI/menu_game_new.cpp

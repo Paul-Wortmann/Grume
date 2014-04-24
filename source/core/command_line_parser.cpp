@@ -68,7 +68,7 @@ void command_line_parser_class::process (int arg_count, char** arg_data)
         }
         else
         {
-            std::cout << "Unknown command line option -> " << temp_string.c_str() << std::endl;
+            if ( arg_number > 0) std::cout << "Unknown command line option -> " << temp_string.c_str() << std::endl;
         }
     }
 };
