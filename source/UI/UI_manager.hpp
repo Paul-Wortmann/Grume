@@ -28,7 +28,7 @@
 #include "action_bar.hpp"
 #include "character_window.hpp"
 #include "equipment_window.hpp"
-#include "help_window.hpp"
+#include "menu_help.hpp"
 #include "inventory_window.hpp"
 #include "menu_game_load.hpp"
 #include "menu_game_new.hpp"
@@ -43,21 +43,22 @@
 #include "../game/player.hpp"
 
 #define    UID_ACTIONBAR          1
-#define    UID_PCPROFILE          2
+#define    UID_CHARACTER          2
 #define    UID_EQUIPMENT          3
-#define    UID_QUEST_LOG          4
-#define    UID_CHARACTER          5
-#define    UID_INVENTORY          6
-#define    UID_SKILLBOOK          7
-#define    UID_NPCVENDOR          8
-#define    UID_MENU_MAIN          9
-#define    UID_MENU_GAME_NEW      10
-#define    UID_MENU_GAME_SAVE     11
-#define    UID_MENU_GAME_LOAD     12
-#define    UID_MENU_OPTIONS       13
-#define    UID_MENU_GAME_OVER     14
-#define    UID_MENU_PAUSE         15
-#define    UID_HELPWINDOW         16
+#define    UID_INVENTORY          4
+#define    UID_MENU_GAME_LOAD     5
+#define    UID_MENU_GAME_NEW      6
+#define    UID_MENU_GAME_OVER     7
+#define    UID_MENU_GAME_SAVE     8
+#define    UID_MENU_HELP          9
+#define    UID_MENU_MAIN          10
+#define    UID_MENU_OPTIONS       11
+#define    UID_MENU_PAUSE         12
+#define    UID_NPCVENDOR          13
+#define    UID_PCPROFILE          14
+#define    UID_QUEST_LOG          15
+#define    UID_SKILLBOOK          16
+
 
 struct UI_manager_data_type
 {

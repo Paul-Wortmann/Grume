@@ -22,19 +22,19 @@
  * @date 2011-11-11
  */
 
-#include "help_window.hpp"
+#include "menu_help.hpp"
 #include "../game/game.hpp"
 
 extern game_class         game;
 
 //----------------------------------------------------------
 
-void setup_help_window(int UID)
+void setup_menu_help(int UID)
 {
     int element_number = 0;
 
     UI_form_struct   *UI_form_pointer;
-    UI_form_pointer = game.UI_manager.UI_form_add(UID_HELPWINDOW);
+    UI_form_pointer = game.UI_manager.UI_form_add(UID_MENU_HELP);
 
     UI_form_pointer->data.UID                         = UID;
     UI_form_pointer->data.enabled                     = false;
@@ -175,34 +175,33 @@ void setup_help_window(int UID)
     UI_form_pointer->data.element[element_number].font                      = UI_form_pointer->data.font;
 };
 
-void process_help_window(UI_form_struct *UI_form_pointer)
+void process_menu_help(UI_form_struct *UI_form_pointer)
 {
-    if(UI_form_pointer->data.event.id > EVENT_NONE)
+    switch (UI_form_pointer->data.event.id)
     {
-        switch (UI_form_pointer->data.event.id)
-        {
-            case ((0*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Close menu button
-                game.UI_manager.UI_form_disable(UID_HELPWINDOW);
-                game.core.help_menu_active     = false;
-                game.core.io.mouse_button_left = false;
-            break;
-            case (EVENT_UI_LIST_SORT): //Window stack sort
-                UI_form_pointer->data.event.id = EVENT_NONE;
-                game.UI_manager.data.event.id    = EVENT_UI_LIST_SORT;
-                game.UI_manager.data.event.value = UI_form_pointer->data.UID;
-            break;
-            case (EVENT_UI_ELEMENT_DRAG): //Element drag event posted
-                //game.UI_manager.source.window = UID_HELPWINDOW;
-                game.UI_manager.data.event.id = EVENT_NONE;
-            break;
-            case (EVENT_UI_FORM_DRAG): //Form drag event posted
-                game.UI_manager.data.event.id = EVENT_NONE;
-            break;
-            default:
-                game.core.log.file_write("Unable to process event - ",UI_form_pointer->data.event.id, " - UID - ",UI_form_pointer->data.UID, " - ",game.UI_manager.uid_to_string(UI_form_pointer->data.UID));
-                UI_form_pointer->data.event.id = EVENT_NONE;
-            break;
-        }
+        case EVENT_NONE: // No event, do nothing.
+        break;
+        case ((0*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Close menu button
+            game.UI_manager.UI_form_disable(UID_MENU_HELP);
+            game.core.help_menu_active     = false;
+            game.core.io.mouse_button_left = false;
+        break;
+        case (EVENT_UI_LIST_SORT): //Window stack sort
+            UI_form_pointer->data.event.id   = EVENT_NONE;
+            game.UI_manager.data.event.id    = EVENT_UI_LIST_SORT;
+            game.UI_manager.data.event.value = UI_form_pointer->data.UID;
+        break;
+        case (EVENT_UI_ELEMENT_DRAG): //Element drag event posted
+            //game.UI_manager.source.window = UID_HELPWINDOW;
+            game.UI_manager.data.event.id = EVENT_NONE;
+        break;
+        case (EVENT_UI_FORM_DRAG): //Form drag event posted
+            game.UI_manager.data.event.id = EVENT_NONE;
+        break;
+        default:
+            game.core.log.file_write("Unable to process event - ",UI_form_pointer->data.event.id, " - UID - ",UI_form_pointer->data.UID, " - ",game.UI_manager.uid_to_string(UI_form_pointer->data.UID));
+            UI_form_pointer->data.event.id = EVENT_NONE;
+        break;
     }
     if (UI_form_pointer->data.event.id != EVENT_NONE)
     {

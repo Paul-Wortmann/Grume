@@ -512,7 +512,7 @@ void process_equipment_window(UI_form_struct *UI_form_pointer)
                 game.core.io.mouse_button_left = false;
             break;
             case (EVENT_UI_LIST_SORT): //Window stack sort
-                UI_form_pointer->data.event.id = EVENT_NONE;
+                UI_form_pointer->data.event.id   = EVENT_NONE;
                 game.UI_manager.data.event.id    = EVENT_UI_LIST_SORT;
                 game.UI_manager.data.event.value = UI_form_pointer->data.UID;
             break;

@@ -406,14 +406,14 @@ void game_class::process(void)
         {
             if (!game.core.help_menu_active)
             {
-                game.UI_manager.UI_form_enable(UID_HELPWINDOW);
+                game.UI_manager.UI_form_enable(UID_MENU_HELP);
                 game.UI_manager.data.event.id    = EVENT_UI_LIST_SORT;
-                game.UI_manager.data.event.value = UID_HELPWINDOW;
+                game.UI_manager.data.event.value = UID_MENU_HELP;
                 game.core.help_menu_active       = true;
             }
             else
             {
-                game.UI_manager.UI_form_disable(UID_HELPWINDOW);
+                game.UI_manager.UI_form_disable(UID_MENU_HELP);
                 game.core.help_menu_active       = false;
             }
             game.core.io.key_f1                  = false;
@@ -486,7 +486,7 @@ void game_class::process(void)
             }
             if (game.core.help_menu_active)
             {
-                game.UI_manager.UI_form_disable(UID_HELPWINDOW);
+                game.UI_manager.UI_form_disable(UID_MENU_HELP);
                 game.core.help_menu_active                   = false;
             }
             if (game.core.skillbook_active)

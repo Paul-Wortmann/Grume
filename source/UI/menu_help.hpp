@@ -22,13 +22,13 @@
  * @date 2011-11-11
  */
 
-#ifndef HELP_WINDOW_H
-#define HELP_WINDOW_H
+#ifndef MENU_HELP_H
+#define MENU_HELP_H
 
 #include "UI_types.hpp"
 #include "UI_manager.hpp"
 
-void setup_help_window(int UID);
-void process_help_window(UI_form_struct *UI_form_pointer);
+void setup_menu_help(int UID);
+void process_menu_help(UI_form_struct *UI_form_pointer);
 
-#endif // HELP_WINDOW_H
+#endif // MENU_HELP_H
