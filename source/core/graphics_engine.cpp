@@ -223,6 +223,25 @@ bool graphics_engine_class::build_mode_list(void)
     return(return_value);
 };
 
+std::string graphics_engine_class::get_display_mode(int mode_number)
+{
+    std::string return_value = "error";
+    switch (graphics_engine_class::renderer)
+    {
+        case RENDERER_GL3:
+            return_value = GL_get_display_mode(mode_number);
+        break;
+        case RENDERER_GL1:
+        default:
+            return_value = GL_legacy_get_display_mode(mode_number);
+        break;
+    }
+    return(return_value);
+};
+
+
+
+
 graphics_engine_class::graphics_engine_class(void)
 {
     graphics_engine_class::current_display         = 0;

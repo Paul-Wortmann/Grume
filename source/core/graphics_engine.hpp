@@ -37,8 +37,6 @@
 #define RENDERER_GL1 1
 #define RENDERER_GL3 3
 
-#define MENU_DISPLAY_LIST_LENGTH 6
-
 struct GL_object_struct
 {
     GLuint   vao_data;
@@ -122,6 +120,7 @@ class graphics_engine_class
         bool             deinit(void);
         bool             render(void);
         bool             build_mode_list(void);
+        std::string      get_display_mode(int mode_number);
 };
 
 int   gl_to_res(float gl_coord, int max_res);

@@ -219,14 +219,6 @@ bool         config_class::file_load(void) //the problem is most likely with the
         configfile.close();
     }
     else return(false);
-    if ((config_class::display_resolution_x ==  640) && (config_class::display_resolution_y ==  480)) config_class::display_resolution = 0;
-    if ((config_class::display_resolution_x ==  800) && (config_class::display_resolution_y ==  600)) config_class::display_resolution = 1;
-    if ((config_class::display_resolution_x == 1024) && (config_class::display_resolution_y ==  768)) config_class::display_resolution = 2;
-    if ((config_class::display_resolution_x == 1280) && (config_class::display_resolution_y == 1024)) config_class::display_resolution = 3;
-    if ((config_class::display_resolution_x == 1366) && (config_class::display_resolution_y ==  768)) config_class::display_resolution = 4;
-    if ((config_class::display_resolution_x == 1440) && (config_class::display_resolution_y ==  900)) config_class::display_resolution = 5;
-    if ((config_class::display_resolution_x == 1680) && (config_class::display_resolution_y == 1050)) config_class::display_resolution = 6;
-    if ((config_class::display_resolution_x == 1920) && (config_class::display_resolution_y == 1080)) config_class::display_resolution = 7;
     config_class::font_scale_x               = (float)config_class::display_resolution_x/(float)config_class::font_base_resolution_x;
     config_class::font_scale_y               = (float)config_class::display_resolution_y/(float)config_class::font_base_resolution_y;
     config_class::mouse_resolution_x   = config_class::display_resolution_x;

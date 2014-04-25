@@ -27,6 +27,7 @@
 #include "graphics_engine.hpp"
 #include "graphics_engine_GL_legacy.hpp"
 #include "../game/game.hpp"
+#include "misc.hpp"
 
 extern game_class game;
 
@@ -91,28 +92,40 @@ bool GL_legacy_init(void)
         {
             game.core.config.display_resolution_x    = game.core.graphics.display_mode[game.core.graphics.number_display_modes-1].w;
             game.core.config.display_resolution_y    = game.core.graphics.display_mode[game.core.graphics.number_display_modes-1].h;
+            game.core.graphics.current_display_mode  = game.core.graphics.number_display_modes-1;
         }
         if ((game.core.config.display_resolution_x > game.core.graphics.display_mode[0].w) || (game.core.config.display_resolution_y > game.core.graphics.display_mode[0].h))
         {
             game.core.config.display_resolution_x    = game.core.graphics.display_mode[0].w;
             game.core.config.display_resolution_y    = game.core.graphics.display_mode[0].h;
+            game.core.graphics.current_display_mode  = 0;
             game.core.config.display_fullscreen      = true;
         }
         bool display_mode_found = false;
         for (int i = 0; i < game.core.graphics.number_display_modes; i++)
         {
-            if ((game.core.config.display_resolution_x == game.core.graphics.display_mode[i].w) && (game.core.config.display_resolution_y == game.core.graphics.display_mode[i].h)) display_mode_found = true;
+            if ((game.core.config.display_resolution_x == game.core.graphics.display_mode[i].w) && (game.core.config.display_resolution_y == game.core.graphics.display_mode[i].h))
+            {
+                game.core.graphics.current_display_mode = i;
+                display_mode_found                      = true;
+            }
         }
         if (!display_mode_found)
         {
             game.core.config.display_resolution_x    = game.core.graphics.display_mode[0].w;
             game.core.config.display_resolution_y    = game.core.graphics.display_mode[0].h;
+            game.core.graphics.current_display_mode  = 0;
             game.core.config.display_fullscreen      = true;
         }
-        if (game.core.config.display_fullscreen)
+        else
         {
             game.core.config.display_resolution_x    = game.core.graphics.display_mode[game.core.graphics.current_display_mode].w;
             game.core.config.display_resolution_y    = game.core.graphics.display_mode[game.core.graphics.current_display_mode].h;
+        }
+        if (game.core.config.display_fullscreen)
+        {
+            game.core.config.display_resolution_x    = game.core.graphics.display_mode[0].w;
+            game.core.config.display_resolution_y    = game.core.graphics.display_mode[0].h;
         }
         game.core.config.font_base_resolution_x = game.core.graphics.display_mode[0].w;
         game.core.config.font_base_resolution_y = game.core.graphics.display_mode[0].h;
@@ -248,7 +261,6 @@ bool GL_legacy_build_mode_list(void)
                 game.core.graphics.menu_mode_length++;
             }
         }
-        if (game.core.graphics.menu_mode_length > MENU_DISPLAY_LIST_LENGTH) game.core.graphics.menu_mode_length = MENU_DISPLAY_LIST_LENGTH;
         game.core.graphics.menu_mode_list = new int[game.core.graphics.menu_mode_length+1];
         for (int i = 0; i < game.core.graphics.number_display_modes; i++)
         {
@@ -268,3 +280,16 @@ bool GL_legacy_build_mode_list(void)
     }
     return(return_value);
 };
+
+std::string GL_legacy_get_display_mode(int mode_number)
+{
+    std::string padding_left  = "";
+    std::string padding_right = "";
+    if (mode_number > game.core.graphics.menu_mode_length) mode_number = game.core.graphics.menu_mode_length;
+    mode_number = game.core.graphics.menu_mode_list[mode_number];
+    if (game.core.graphics.display_mode[mode_number].w < 1000) padding_left  = " ";
+    if (game.core.graphics.display_mode[mode_number].h < 1000) padding_right = " ";
+    return(padding_left+int_to_string(game.core.graphics.display_mode[mode_number].w)+" X "+int_to_string(game.core.graphics.display_mode[mode_number].h)+padding_right);
+};
+
+

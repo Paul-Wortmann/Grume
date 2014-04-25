@@ -33,6 +33,7 @@
 #include "graphics_engine.hpp"
 #include "graphics_engine_GL.hpp"
 #include "../game/game.hpp"
+#include "misc.hpp"
 
 extern game_class game;
 
@@ -78,42 +79,49 @@ bool GL_init(void)
         game.core.graphics.number_display_modes = SDL_GetNumDisplayModes(game.core.graphics.current_display);
         game.core.graphics.display_mode = new SDL_DisplayMode[game.core.graphics.number_display_modes+1];
         game.core.log.file_write("Number of display modes -> ",game.core.graphics.number_display_modes);
-        for (int i = 0; i < game.core.graphics.number_display_modes; i++)
+        if (game.core.debug) for (int i = 0; i < game.core.graphics.number_display_modes; i++)
         {
             if (SDL_GetDisplayMode(game.core.graphics.current_display,i,&game.core.graphics.display_mode[i]) == 0) game.core.log.file_write("Display mode - ",i," - x - ",game.core.graphics.display_mode[i].w," - y - ",game.core.graphics.display_mode[i].h," - refresh rate - ",game.core.graphics.display_mode[i].refresh_rate);
         }
         SDL_GetDisplayMode(game.core.graphics.current_display,game.core.graphics.current_display_mode,&game.core.graphics.display_mode[game.core.graphics.current_display_mode]);
-        game.core.config.display_resolution_x    = game.core.graphics.display_mode[game.core.graphics.current_display_mode].w;
-        game.core.config.display_resolution_y    = game.core.graphics.display_mode[game.core.graphics.current_display_mode].h;
-        game.core.config.display_resolution_x    = 800;
-        game.core.config.display_resolution_y    = 600;
-        game.core.config.display_fullscreen      = false;
         if ((game.core.config.display_resolution_x < game.core.graphics.display_mode[game.core.graphics.number_display_modes-1].w) || (game.core.config.display_resolution_y < game.core.graphics.display_mode[game.core.graphics.number_display_modes-1].h))
         {
             game.core.config.display_resolution_x    = game.core.graphics.display_mode[game.core.graphics.number_display_modes-1].w;
             game.core.config.display_resolution_y    = game.core.graphics.display_mode[game.core.graphics.number_display_modes-1].h;
+            game.core.graphics.current_display_mode  = game.core.graphics.number_display_modes-1;
         }
         if ((game.core.config.display_resolution_x > game.core.graphics.display_mode[0].w) || (game.core.config.display_resolution_y > game.core.graphics.display_mode[0].h))
         {
             game.core.config.display_resolution_x    = game.core.graphics.display_mode[0].w;
             game.core.config.display_resolution_y    = game.core.graphics.display_mode[0].h;
+            game.core.graphics.current_display_mode  = 0;
             game.core.config.display_fullscreen      = true;
         }
         bool display_mode_found = false;
-        if (game.core.debug)  for (int i = 0; i < game.core.graphics.number_display_modes; i++)
+        for (int i = 0; i < game.core.graphics.number_display_modes; i++)
         {
-            if ((game.core.config.display_resolution_x == game.core.graphics.display_mode[i].w) && (game.core.config.display_resolution_y == game.core.graphics.display_mode[i].h)) display_mode_found = true;
+            if ((game.core.config.display_resolution_x == game.core.graphics.display_mode[i].w) && (game.core.config.display_resolution_y == game.core.graphics.display_mode[i].h))
+            {
+                game.core.graphics.current_display_mode = i;
+                display_mode_found                      = true;
+            }
         }
         if (!display_mode_found)
         {
             game.core.config.display_resolution_x    = game.core.graphics.display_mode[0].w;
             game.core.config.display_resolution_y    = game.core.graphics.display_mode[0].h;
+            game.core.graphics.current_display_mode  = 0;
             game.core.config.display_fullscreen      = true;
         }
-        if (game.core.config.display_fullscreen)
+        else
         {
             game.core.config.display_resolution_x    = game.core.graphics.display_mode[game.core.graphics.current_display_mode].w;
             game.core.config.display_resolution_y    = game.core.graphics.display_mode[game.core.graphics.current_display_mode].h;
+        }
+        if (game.core.config.display_fullscreen)
+        {
+            game.core.config.display_resolution_x    = game.core.graphics.display_mode[0].w;
+            game.core.config.display_resolution_y    = game.core.graphics.display_mode[0].h;
         }
         game.core.config.font_base_resolution_x = game.core.graphics.display_mode[0].w;
         game.core.config.font_base_resolution_y = game.core.graphics.display_mode[0].h;
@@ -325,7 +333,6 @@ bool GL_build_mode_list(void)
                 game.core.graphics.menu_mode_length++;
             }
         }
-        if (game.core.graphics.menu_mode_length > MENU_DISPLAY_LIST_LENGTH) game.core.graphics.menu_mode_length = MENU_DISPLAY_LIST_LENGTH;
         game.core.graphics.menu_mode_list = new int[game.core.graphics.menu_mode_length+1];
         for (int i = 0; i < game.core.graphics.number_display_modes; i++)
         {
@@ -344,4 +351,15 @@ bool GL_build_mode_list(void)
         if (game.core.debug)game.core.log.file_write("-----------------------------------------------------");
     }
     return(return_value);
+};
+
+std::string GL_get_display_mode(int mode_number)
+{
+    std::string padding_left  = "";
+    std::string padding_right = "";
+    if (mode_number > game.core.graphics.menu_mode_length) mode_number = game.core.graphics.menu_mode_length;
+    mode_number = game.core.graphics.menu_mode_list[mode_number];
+    if (game.core.graphics.display_mode[mode_number].w < 1000) padding_left  = " ";
+    if (game.core.graphics.display_mode[mode_number].h < 1000) padding_right = " ";
+    return(padding_left+int_to_string(game.core.graphics.display_mode[mode_number].w)+" X "+int_to_string(game.core.graphics.display_mode[mode_number].h)+padding_right);
 };

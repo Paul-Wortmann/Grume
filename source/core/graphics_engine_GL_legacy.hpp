@@ -27,10 +27,11 @@
 #ifndef GRAPHICS_ENGINE_GL_LEGACY_H
 #define GRAPHICS_ENGINE_GL_LEGACY_H
 
-bool GL_legacy_init(void);
-bool GL_legacy_deinit(void);
-bool GL_legacy_render(void);
-bool GL_legacy_build_mode_list(void);
+bool        GL_legacy_init(void);
+bool        GL_legacy_deinit(void);
+bool        GL_legacy_render(void);
+bool        GL_legacy_build_mode_list(void);
+std::string GL_legacy_get_display_mode(int mode_number);
 
 #endif // GRAPHICS_ENGINE_GL_LEGACY_H
 

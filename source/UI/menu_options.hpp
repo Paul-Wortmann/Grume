@@ -30,5 +30,6 @@
 
 void setup_menu_options(int UID);
 void process_menu_options(UI_form_struct *UI_form_pointer);
+void update_options_menu(void);
 
 #endif // MENU_OPTIONS_H
