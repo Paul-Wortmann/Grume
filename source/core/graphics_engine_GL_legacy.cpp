@@ -39,6 +39,7 @@ bool GL_legacy_init(void)
     {
         reload_textures = true;
         game.core.log.file_write("Closing previous window....");
+        SDL_GL_DeleteContext(game.core.graphics.context);
         SDL_DestroyWindow(game.core.graphics.window);
     }
     if(SDL_Init(SDL_INIT_VIDEO) < 0)
