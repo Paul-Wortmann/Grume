@@ -83,7 +83,7 @@ void setup_menu_options(int UID)
     UI_form_pointer->data.title_bar.position.y        = UI_form_pointer->data.position.y+(UI_form_pointer->data.size.y/2.0f)-(UI_form_pointer->data.title_bar.size.y/2.0f);
 
     // ---------------------------- Setup window elements ----------------------------------------------------
-    UI_form_pointer->data.number_of_elements = 28;
+    UI_form_pointer->data.number_of_elements = 25;
     UI_form_pointer->data.element = new UI_element_struct[UI_form_pointer->data.number_of_elements];
     for (int element_count = 0; element_count < UI_form_pointer->data.number_of_elements; element_count++)
     {
@@ -856,7 +856,7 @@ void update_options_menu(void)
 {
 // ------------------------------------------- Display Settings ------------------------------------------------------------
     int element_number = 9; //--- Background_frame_02 ---
-    UI_form_struct   *UI_form_pointer = game.UI_manager.UI_form_add(UID_MENU_OPTIONS);
+    UI_form_struct   *UI_form_pointer = game.UI_manager.UI_form_get(UID_MENU_OPTIONS);
     UI_form_pointer->data.element[element_number].active                      = !game.core.config.display_fullscreen;
     element_number = 10; //--- Full screen button ---
     if (game.core.config.display_fullscreen)
@@ -1069,14 +1069,9 @@ void process_menu_options(UI_form_struct *UI_form_pointer)
 {
     if (UI_form_pointer->data.event.id > EVENT_NONE)
     {
-        bool reset_display        = false;
-        bool resolution_selection = false;
-        int  resolution_element   = 0;
-        if ((resolution_element == 0) && (!resolution_selection)) reset_display = false; // temp... delete... squashing compiler warnings...
-        if (!reset_display) resolution_selection = false; // temp... delete... squashing compiler warnings...
-
-        //update_options_menu();
-        if (game.core.debug) game.core.log.file_write("Processing event - ",UI_form_pointer->data.event.id);
+        bool update_display = false;
+        update_options_menu();
+        if (game.core.debug) game.core.log.file_write("Processing event - ",UI_form_pointer->data.event.id, " - UID - ",UI_form_pointer->data.UID, " - ",game.UI_manager.uid_to_string(UI_form_pointer->data.UID));
         switch (UI_form_pointer->data.event.id)
         {
             case ((0*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Close menu button
@@ -1109,53 +1104,80 @@ void process_menu_options(UI_form_struct *UI_form_pointer)
                 UI_form_pointer->data.element[8].value = game.core.config.audio_volume_music;
                 Mix_VolumeMusic(game.core.config.audio_volume_music);
             break;
-/*
-            case ((3*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Resolution selection element 0
-                resolution_selection = true;
-                resolution_element   = 0;
+            case ((10*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Full screen button 1
+                update_display = true;
+                game.core.config.display_fullscreen = !game.core.config.display_fullscreen;
             break;
-            case ((4*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Resolution selection element 1
-                resolution_selection = true;
-                resolution_element   = 1;
+            case ((11*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Resolution selection button 1
+                update_display = true;
+                game.core.config.display_resolution_x = game.core.graphics.display_mode[game.core.graphics.menu_mode_list[0]].w;
+                game.core.config.display_resolution_y = game.core.graphics.display_mode[game.core.graphics.menu_mode_list[0]].h;
             break;
-            case ((5*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Resolution selection element 2
-                resolution_selection = true;
-                resolution_element   = 2;
+            case ((12*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Resolution selection button 2
+                update_display = true;
+                game.core.config.display_resolution_x = game.core.graphics.display_mode[game.core.graphics.menu_mode_list[1]].w;
+                game.core.config.display_resolution_y = game.core.graphics.display_mode[game.core.graphics.menu_mode_list[1]].h;
             break;
-            case ((6*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Resolution selection element 3
-                resolution_selection = true;
-                resolution_element   = 3;
+            case ((13*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Resolution selection button 3
+                update_display = true;
+                game.core.config.display_resolution_x = game.core.graphics.display_mode[game.core.graphics.menu_mode_list[2]].w;
+                game.core.config.display_resolution_y = game.core.graphics.display_mode[game.core.graphics.menu_mode_list[2]].h;
             break;
-            case ((7*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Resolution selection element 4
-                resolution_selection = true;
-                resolution_element   = 4;
+            case ((14*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Resolution selection button 4
+                update_display = true;
+                game.core.config.display_resolution_x = game.core.graphics.display_mode[game.core.graphics.menu_mode_list[3]].w;
+                game.core.config.display_resolution_y = game.core.graphics.display_mode[game.core.graphics.menu_mode_list[3]].h;
             break;
-            case ((16*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Full screen button
-            case ((17*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Full screen colored button
-                if (game.core.config.display_fullscreen)
-                {
-                    int element_number = 17;
-                    //game.core.config.display_fullscreen                                     = false;
-                    UI_form_pointer->data.element[element_number].value = 0.0f;
-                    UI_form_pointer->data.element[element_number].texture.normal        = game.texture_manager.add_texture("data/textures/UI/menu/red_button.png");
-                    UI_form_pointer->data.element[element_number].texture.highlighted   = game.texture_manager.add_texture("data/textures/UI/menu/red_button_highlighted.png");
-                    UI_form_pointer->data.element[element_number].texture.disabled      = game.texture_manager.add_texture("data/textures/UI/menu/green_button.png");
-                    UI_form_pointer->data.element[element_number].texture.base          = game.texture_manager.add_texture("data/textures/UI/menu/green_button_highlighted.png");
-                    reset_display = true;
-                }
-                else
-                {
-                    int element_number = 17;
-                    //game.core.config.display_fullscreen                                     = true;
-                    UI_form_pointer->data.element[element_number].value = 1.0f;
-                    UI_form_pointer->data.element[element_number].texture.normal      = game.texture_manager.add_texture("data/textures/UI/menu/green_button.png");
-                    UI_form_pointer->data.element[element_number].texture.highlighted = game.texture_manager.add_texture("data/textures/UI/menu/green_button_highlighted.png");
-                    UI_form_pointer->data.element[element_number].texture.disabled    = game.texture_manager.add_texture("data/textures/UI/menu/red_button.png");
-                    UI_form_pointer->data.element[element_number].texture.base        = game.texture_manager.add_texture("data/textures/UI/menu/red_button_highlighted.png");
-                    reset_display = true;
-                }
+            case ((15*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Resolution selection button 5
+                update_display = true;
+                game.core.config.display_resolution_x = game.core.graphics.display_mode[game.core.graphics.menu_mode_list[4]].w;
+                game.core.config.display_resolution_y = game.core.graphics.display_mode[game.core.graphics.menu_mode_list[4]].h;
             break;
-*/
+            case ((16*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Resolution selection button 6
+                update_display = true;
+                game.core.config.display_resolution_x = game.core.graphics.display_mode[game.core.graphics.menu_mode_list[5]].w;
+                game.core.config.display_resolution_y = game.core.graphics.display_mode[game.core.graphics.menu_mode_list[5]].h;
+            break;
+            case ((17*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Resolution selection button 7
+                update_display = true;
+                game.core.config.display_resolution_x = game.core.graphics.display_mode[game.core.graphics.menu_mode_list[6]].w;
+                game.core.config.display_resolution_y = game.core.graphics.display_mode[game.core.graphics.menu_mode_list[6]].h;
+            break;
+            case ((18*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Resolution selection button 8
+                update_display = true;
+                game.core.config.display_resolution_x = game.core.graphics.display_mode[game.core.graphics.menu_mode_list[7]].w;
+                game.core.config.display_resolution_y = game.core.graphics.display_mode[game.core.graphics.menu_mode_list[7]].h;
+            break;
+            case ((19*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Resolution selection button 9
+                update_display = true;
+                game.core.config.display_resolution_x = game.core.graphics.display_mode[game.core.graphics.menu_mode_list[8]].w;
+                game.core.config.display_resolution_y = game.core.graphics.display_mode[game.core.graphics.menu_mode_list[8]].h;
+            break;
+            case ((20*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Resolution selection button 10
+                update_display = true;
+                game.core.config.display_resolution_x = game.core.graphics.display_mode[game.core.graphics.menu_mode_list[9]].w;
+                game.core.config.display_resolution_y = game.core.graphics.display_mode[game.core.graphics.menu_mode_list[9]].h;
+            break;
+            case ((21*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Resolution selection button 11
+                update_display = true;
+                game.core.config.display_resolution_x = game.core.graphics.display_mode[game.core.graphics.menu_mode_list[10]].w;
+                game.core.config.display_resolution_y = game.core.graphics.display_mode[game.core.graphics.menu_mode_list[10]].h;
+            break;
+            case ((22*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Resolution selection button 12
+                update_display = true;
+                game.core.config.display_resolution_x = game.core.graphics.display_mode[game.core.graphics.menu_mode_list[11]].w;
+                game.core.config.display_resolution_y = game.core.graphics.display_mode[game.core.graphics.menu_mode_list[11]].h;
+            break;
+            case ((23*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Resolution selection button 13
+                update_display = true;
+                game.core.config.display_resolution_x = game.core.graphics.display_mode[game.core.graphics.menu_mode_list[12]].w;
+                game.core.config.display_resolution_y = game.core.graphics.display_mode[game.core.graphics.menu_mode_list[12]].h;
+            break;
+            case ((24*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Resolution selection button 14
+                update_display = true;
+                game.core.config.display_resolution_x = game.core.graphics.display_mode[game.core.graphics.menu_mode_list[13]].w;
+                game.core.config.display_resolution_y = game.core.graphics.display_mode[game.core.graphics.menu_mode_list[13]].h;
+            break;
             case (EVENT_UI_LIST_SORT): //Window stack sort
                 UI_form_pointer->data.event.id   = EVENT_NONE;
                 game.UI_manager.data.event.id    = EVENT_UI_LIST_SORT;
@@ -1169,104 +1191,15 @@ void process_menu_options(UI_form_struct *UI_form_pointer)
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
         }
-        if (1==2)//(resolution_selection)
+        if (update_display)
         {
-            /*
-            int   temp_resolution      = 0;
-            int   temp_resolution_x    = 0;
-            int   temp_resolution_y    = 0;
-            int   temp_data_value      = resolution_element;
-            if (UI_form_pointer->data.choice_selection[0].data[temp_data_value].value_int != game.core.config.display_resolution)
-            {
-                temp_resolution      = game.core.config.display_resolution;
-                temp_resolution_x    = game.core.config.display_resolution_x;
-                temp_resolution_y    = game.core.config.display_resolution_y;
-                game.core.config.display_resolution = UI_form_pointer->data.choice_selection[0].data[temp_data_value].value_int;
-                if (game.core.config.display_resolution == 0)
-                {
-                    game.core.config.display_resolution_x = 640;
-                    game.core.config.display_resolution_y = 480;
-                }
-                if (game.core.config.display_resolution == 1)
-                {
-                    game.core.config.display_resolution_x = 800;
-                    game.core.config.display_resolution_y = 600;
-                }
-                if (game.core.config.display_resolution == 2)
-                {
-                    game.core.config.display_resolution_x = 1024;
-                    game.core.config.display_resolution_y = 768;
-                }
-                if (game.core.config.display_resolution == 3)
-                {
-                    game.core.config.display_resolution_x = 1280;
-                    game.core.config.display_resolution_y = 1024;
-                }
-                if (game.core.config.display_resolution == 4)
-                {
-                    game.core.config.display_resolution_x = 1366;
-                    game.core.config.display_resolution_y = 768;
-                }
-                if (game.core.config.display_resolution == 5)
-                {
-                    game.core.config.display_resolution_x = 1440;
-                    game.core.config.display_resolution_y = 900;
-                }
-                if (game.core.config.display_resolution == 6)
-                {
-                    game.core.config.display_resolution_x = 1680;
-                    game.core.config.display_resolution_y = 1050;
-                }
-                if (game.core.config.display_resolution == 7)
-                {
-                    game.core.config.display_resolution_x = 1920;
-                    game.core.config.display_resolution_y = 1080;
-                }
-                */
-                /*
-                if (!game.core.graphics.init_sdl())
-                {
-                    game.core.log.file_write("Reverting graphics configuration...");
-                    game.core.config.display_resolution    = temp_resolution;
-                    game.core.config.display_resolution_x  = temp_resolution_x;
-                    game.core.config.display_resolution_y  = temp_resolution_y;
-                    game.core.graphics.init_sdl();
-                }
-                else
-                {
-                    game.core.config.font_scale_x = (float)game.core.config.display_resolution_x/(float)game.core.config.font_base_resolution_x;
-                    game.core.config.font_scale_y = (float)game.core.config.display_resolution_y/(float)game.core.config.font_base_resolution_y;
-                    game.core.config.mouse_resolution_x   = game.core.config.display_resolution_x;
-                    game.core.config.mouse_resolution_y   = game.core.config.display_resolution_y;
-                    for (int data_position_count = 0; data_position_count < UI_form_pointer->data.choice_selection[0].position_max;data_position_count++)
-                    {
-                        UI_form_pointer->data.choice_selection[0].data[data_position_count].active = false;
-                    }
-                    UI_form_pointer->data.choice_selection[0].data[temp_data_value].active    = true;
-                    UI_form_pointer->data.element[3].selected                  = false;
-                    UI_form_pointer->data.element[4].selected                  = false;
-                    UI_form_pointer->data.element[5].selected                  = false;
-                    UI_form_pointer->data.element[6].selected                  = false;
-                    UI_form_pointer->data.element[7].selected                  = false;
-                    UI_form_pointer->data.element[temp_data_value+3].selected  = true;
-                }
-                */
-                //reset_display = true;
-            //}
-        }
-        /*
-        if (reset_display)
-        {
-            game.core.log.file_write("Reinitializing SDL...");
-            //game.core.graphics.init_sdl();
             game.core.log.file_write("Reinitializing OpenGL...");
-            //game.core.graphics.init_gl();
+            game.core.graphics.init();
             game.loading_screen.display("data/loading_screen.png");
             game.core.log.file_write("Reloading resources....");
             game.texture_manager.reload_textures();
             update_menu_game_new(UID_MENU_GAME_NEW);
         }
-        */
     }
     if (UI_form_pointer->data.event.id != EVENT_NONE)
     {
