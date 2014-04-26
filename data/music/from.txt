@@ -1,0 +1,6 @@
+
+menu_00.s3m
+-----------------------------------------------
+http://modarchive.org/index.php?request=view_by_moduleid&query=70934 (diablo_part_2.s3m)
+Licensed under the Mod Archive Distribution license
+
