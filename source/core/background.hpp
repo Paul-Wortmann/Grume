@@ -22,7 +22,6 @@
  * @date 2011-11-11
  */
 
-
 #ifndef BACKGROUND_H
 #define BACKGROUND_H
 

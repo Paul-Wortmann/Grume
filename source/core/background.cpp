@@ -23,8 +23,8 @@
  */
 
 #include "core.hpp"
-#include "../game/game.hpp"
 #include "background.hpp"
+#include "../game/game.hpp"
 
 extern game_class game;
 
@@ -35,7 +35,7 @@ background_class::background_class (void)
     {
         background_class::layer[layer_number].active    = false;
     }
-};
+}
 
 void background_class::set_data (int layer_number, int dx, int dy, float px, float py, float srx, float sry, std::string image_path)
 {
@@ -48,13 +48,13 @@ void background_class::set_data (int layer_number, int dx, int dy, float px, flo
     background_class::layer[layer_number].scroll_rate_y = sry;
     background_class::layer[layer_number].image_path    = image_path;
     background_class::layer[layer_number].image         = game.texture_manager.add_texture(image_path);
-};
+}
 
 void background_class::set_image (int layer_number, std::string image_path)
 {
     background_class::layer[layer_number].image_path    = image_path;
     background_class::layer[layer_number].image         = game.texture_manager.add_texture(image_path);
-};
+}
 
 bool  background_class::scroll_up (void)
 {
@@ -66,7 +66,7 @@ bool  background_class::scroll_up (void)
         else return_value = true;
     }
     return(return_value);
-};
+}
 
 bool  background_class::scroll_down (void)
 {
@@ -78,7 +78,7 @@ bool  background_class::scroll_down (void)
         else return_value = true;
     }
     return(return_value);
-};
+}
 
 void background_class::process (void)
 {
@@ -129,7 +129,7 @@ void background_class::process (void)
         default:
         break;
     }
-};
+}
 
 void background_class::draw (void)
 {
