@@ -61,8 +61,10 @@ bool GL_init(void)
         game.core.log.file_write("SDL linked version -> ",linked.major,".",linked.minor,".",linked.patch);
         char SDL_VID_WIN_POS[] = "SDL_VIDEO_WINDOW_POS";
         char SDL_VID_CENTERD[] = "SDL_VIDEO_CENTERED=1";
-        putenv(SDL_VID_WIN_POS);
-        putenv(SDL_VID_CENTERD);
+        #ifndef __MINGW32__
+            putenv(SDL_VID_WIN_POS);
+            putenv(SDL_VID_CENTERD);
+        #endif
         game.core.graphics.render_GL.number_VAO  = 1;
         game.core.graphics.GL_major_version_number = 0;
         game.core.graphics.GL_minor_version_number = 0;
@@ -177,10 +179,10 @@ bool GL_init(void)
                         {
                             int maxLength;
                             glGetShaderiv(game.core.graphics.render_GL.vertexshader, GL_INFO_LOG_LENGTH, &maxLength);
-                            game.core.graphics.render_GL.vertexInfoLog = (char *)malloc(maxLength);
+                            game.core.graphics.render_GL.vertexInfoLog = new char[maxLength];
                             glGetShaderInfoLog(game.core.graphics.render_GL.vertexshader, maxLength, &maxLength, game.core.graphics.render_GL.vertexInfoLog);
                             game.core.log.file_write("FAIL -> Error loading Vertex Shader.");
-                            free(game.core.graphics.render_GL.vertexInfoLog);
+                            delete game.core.graphics.render_GL.vertexInfoLog;
                         }
                         // Fragment Shader
                         game.core.graphics.render_GL.fragmentsource = game.core.file.filetobuf("data/shaders/aabb.frag");
@@ -192,10 +194,10 @@ bool GL_init(void)
                         {
                             int maxLength;
                             glGetShaderiv(game.core.graphics.render_GL.fragmentshader, GL_INFO_LOG_LENGTH, &maxLength);
-                            game.core.graphics.render_GL.fragmentInfoLog = (char *)malloc(maxLength);
+                            game.core.graphics.render_GL.fragmentInfoLog = new char[maxLength];
                             glGetShaderInfoLog(game.core.graphics.render_GL.fragmentshader, maxLength, &maxLength, game.core.graphics.render_GL.fragmentInfoLog);
                             game.core.log.file_write("FAIL -> Error loading Fragment Shader.");
-                            free(game.core.graphics.render_GL.fragmentInfoLog);
+                            delete game.core.graphics.render_GL.fragmentInfoLog;
                         }
                         // Shader Program
                         game.core.graphics.render_GL.shaderprogram = glCreateProgram();
@@ -209,10 +211,10 @@ bool GL_init(void)
                         {
                             int maxLength;
                             glGetProgramiv(game.core.graphics.render_GL.shaderprogram, GL_INFO_LOG_LENGTH, &maxLength);
-                            game.core.graphics.render_GL.shaderProgramInfoLog = (char *)malloc(maxLength);
+                            game.core.graphics.render_GL.shaderProgramInfoLog = new char[maxLength];
                             glGetProgramInfoLog(game.core.graphics.render_GL.shaderprogram, maxLength, &maxLength, game.core.graphics.render_GL.shaderProgramInfoLog);
                             game.core.log.file_write("FAIL -> Shader program error.");
-                            free(game.core.graphics.render_GL.shaderProgramInfoLog);
+                            delete game.core.graphics.render_GL.shaderProgramInfoLog;
                         }
                         glUseProgram(game.core.graphics.render_GL.shaderprogram);
 
@@ -267,8 +269,8 @@ bool GL_deinit(void)
         if (game.core.graphics.render_GL.object_vao->number_of_vbo > 0) glDeleteBuffers(game.core.graphics.render_GL.object_vao->number_of_vbo, game.core.graphics.render_GL.object_vao->vbo_data);
         if (game.core.graphics.render_GL.number_VAO > 0) glDeleteVertexArrays(game.core.graphics.render_GL.number_VAO, &game.core.graphics.render_GL.object_vao->vao_data);
     }
-    free(game.core.graphics.render_GL.vertexsource);
-    free(game.core.graphics.render_GL.fragmentsource);
+    delete game.core.graphics.render_GL.vertexsource;
+    delete game.core.graphics.render_GL.fragmentsource;
     return (return_value);
 };
 

@@ -23,6 +23,7 @@
  */
 
 #include <fstream>
+#include <time.h>
 #include "config.hpp"
 #include "../game/game.hpp"
 
@@ -231,11 +232,15 @@ bool         config_class::file_save(void)
     std::fstream configfile(config_class::file_name.c_str(),std::ios::out|std::ios::app);
     if (configfile.is_open())
     {
-        struct tm newtime;
         time_t rawtime;
         rawtime = time(&rawtime);
         char buffer [80];
-        strftime (buffer,80,"%Y-%m-%d - %H:%M:%S - %Z",localtime_r(&rawtime, &newtime));
+        #ifdef __MINGW32__
+            strftime (buffer,80,"%Y-%m-%d - %H:%M:%S - %Z",localtime(&rawtime));
+        #else
+            struct tm newtime;
+            strftime (buffer,80,"%Y-%m-%d - %H:%M:%S - %Z",localtime_r(&rawtime, &newtime));
+        #endif
         configfile << "# " << game.core.application_name << " #" << std::endl;
         configfile << "# ---------------------------------------------- #" << std::endl;
         configfile << std::endl;

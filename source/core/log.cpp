@@ -379,11 +379,15 @@ bool log_class::file_write_time_stamp(std::string message)
     std::fstream logfile(log_class::file_name.c_str(),std::ios::out|std::ios::app);
     if (logfile.is_open())
     {
-        struct tm newtime;
         time_t rawtime;
         rawtime = time(&rawtime);
         char buffer [80];
-        strftime (buffer,80,"%Y-%m-%d - %H:%M:%S - %Z",localtime_r(&rawtime, &newtime));
+        #ifdef __MINGW32__
+            strftime (buffer,80,"%Y-%m-%d - %H:%M:%S - %Z",localtime(&rawtime));
+        #else
+            struct tm newtime;
+            strftime (buffer,80,"%Y-%m-%d - %H:%M:%S - %Z",localtime_r(&rawtime, &newtime));
+        #endif
         logfile << message << buffer << std::endl;
         logfile.close();
     }
