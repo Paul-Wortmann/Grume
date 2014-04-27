@@ -6,7 +6,7 @@
 		<Option compiler="gcc" />
 		<Build>
 			<Target title="Windows">
-				<Option platforms="Windows;" />
+				<Option platforms="Windows;Unix;" />
 				<Option output="frost_and_flame" prefix_auto="1" extension_auto="1" />
 				<Option type="0" />
 				<Option compiler="gcc" />
@@ -16,16 +16,9 @@
 					<Add directory="C:/MinGW/include/SDL" />
 				</Compiler>
 				<Linker>
-					<Add option="-static-libstdc++" />
-					<Add option="-static-libgcc" />
 					<Add library="mingw32" />
-					<Add library="SDLmain" />
-					<Add library="SDL" />
-					<Add library="SDL_image" />
-					<Add library="SDL_mixer" />
-					<Add library="SDL_ttf" />
-					<Add library="SDL_net" />
 					<Add library="opengl32" />
+					<Add library="glew32" />
 					<Add directory="C:/MinGW/lib" />
 				</Linker>
 			</Target>
@@ -40,12 +33,15 @@
 					<Add option="-g" />
 				</Compiler>
 				<Linker>
+					<Add library="GL" />
+					<Add library="libGL" />
+					<Add library="libGLEW" />
 					<Add directory="/host/Program Files (x86)/CodeBlocks/MinGW/lib" />
 					<Add directory="/usr/lib" />
 				</Linker>
 			</Target>
 			<Target title="Debug_Win">
-				<Option platforms="Windows;" />
+				<Option platforms="Windows;Unix;" />
 				<Option output="frost_and_flame" prefix_auto="1" extension_auto="1" />
 				<Option type="0" />
 				<Option compiler="gcc" />
@@ -56,18 +52,11 @@
 					<Add directory="C:/MinGW/include/SDL" />
 				</Compiler>
 				<Linker>
+					<Add option="-pg" />
 					<Add option="-pg -lgmon" />
-					<Add option="-static-libstdc++" />
-					<Add option="-static-libgcc" />
 					<Add library="mingw32" />
-					<Add library="SDLmain" />
-					<Add library="SDL" />
-					<Add library="SDL_image" />
-					<Add library="SDL_mixer" />
-					<Add library="SDL_ttf" />
-					<Add library="SDL_net" />
 					<Add library="opengl32" />
-					<Add library="libphysfs" />
+					<Add library="glew32" />
 					<Add directory="C:/MinGW/lib" />
 				</Linker>
 			</Target>
@@ -84,6 +73,24 @@
 				</Compiler>
 				<Linker>
 					<Add option="-pg" />
+					<Add library="GL" />
+					<Add library="libGL" />
+					<Add library="libGLEW" />
+					<Add directory="/host/Program Files (x86)/CodeBlocks/MinGW/lib" />
+					<Add directory="/usr/lib" />
+				</Linker>
+			</Target>
+			<Target title="Cross-MinGW32">
+				<Option platforms="Windows;Unix;" />
+				<Option output="frost_and_flame" prefix_auto="1" extension_auto="1" />
+				<Option type="0" />
+				<Option compiler="cross-windows" />
+				<Compiler>
+					<Add option="-Wextra" />
+					<Add option="-Wall" />
+					<Add option="-g" />
+				</Compiler>
+				<Linker>
 					<Add directory="/host/Program Files (x86)/CodeBlocks/MinGW/lib" />
 					<Add directory="/usr/lib" />
 				</Linker>
@@ -104,9 +111,6 @@
 			<Add library="freetype" />
 			<Add library="SDL2_net" />
 			<Add library="SDL2_ttf" />
-			<Add library="GL" />
-			<Add library="libGL" />
-			<Add library="libGLEW" />
 			<Add directory='&quot;C:/MinGW/lib&quot;' />
 			<Add directory="/usr/lib" />
 		</Linker>
