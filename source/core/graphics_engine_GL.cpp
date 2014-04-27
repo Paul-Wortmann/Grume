@@ -59,9 +59,9 @@ bool GL_init(void)
         SDL_GetVersion(&linked);
         game.core.log.file_write("SDL build version ->  ",compiled.major,".",compiled.minor,".",compiled.patch);
         game.core.log.file_write("SDL linked version -> ",linked.major,".",linked.minor,".",linked.patch);
-        char SDL_VID_WIN_POS[] = "SDL_VIDEO_WINDOW_POS";
-        char SDL_VID_CENTERD[] = "SDL_VIDEO_CENTERED=1";
         #ifndef __MINGW32__
+            char SDL_VID_WIN_POS[] = "SDL_VIDEO_WINDOW_POS";
+            char SDL_VID_CENTERD[] = "SDL_VIDEO_CENTERED=1";
             putenv(SDL_VID_WIN_POS);
             putenv(SDL_VID_CENTERD);
         #endif

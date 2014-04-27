@@ -50,7 +50,7 @@ void level_class::init(void)
     for (int exp_count = 1; exp_count < MAX_LEVELS; exp_count++)
     {
         temp_exp = temp_exp * level_class::multiplier;
-        if (temp_exp > 9223372036854775808u) temp_exp = 9223372036854775808u;
+        if (temp_exp > 9223372036854775808ULL) temp_exp = 9223372036854775808ULL;
         level_class::experience[exp_count] = temp_exp;
     }
 };
@@ -58,7 +58,7 @@ void level_class::init(void)
 void level_class::process(void)
 {
     int temp_level = 0;
-    if (level_class::current_experience > 9223372036854775808u) level_class::current_experience = 9223372036854775808u;
+    if (level_class::current_experience > 9223372036854775808ULL) level_class::current_experience = 9223372036854775808ULL;
     for (int exp_count = 1; exp_count < MAX_LEVELS; exp_count++)
     {
         if (level_class::current_experience >= level_class::experience[exp_count]) temp_level = exp_count;
