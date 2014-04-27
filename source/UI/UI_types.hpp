@@ -99,7 +99,8 @@ struct color_state_struct
 
 struct texture_state_struct
 {
-    float angle;
+    bool                    enabled;
+    float                   angle;
     texture_type*           base;
     texture_type*           overlay;
     texture_type*           disabled;
