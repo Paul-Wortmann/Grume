@@ -44,6 +44,7 @@ void setup_menu_options(int UID)
     UI_form_pointer->data.size.x                      = 0.5f;
     UI_form_pointer->data.size.y                      = UI_form_pointer->data.size.x * 2.5f;
     UI_form_pointer->data.texture.angle               = 0.0f;
+    UI_form_pointer->data.texture.enabled             = true;
     UI_form_pointer->data.texture.base                = game.texture_manager.add_texture("data/textures/UI/menu/background_02.png");
     UI_form_pointer->data.texture.normal              = game.texture_manager.add_texture("data/textures/UI/menu/button_normal.png");
     UI_form_pointer->data.texture.highlighted         = game.texture_manager.add_texture("data/textures/UI/menu/button_highlighted.png");
@@ -71,6 +72,7 @@ void setup_menu_options(int UID)
     UI_form_pointer->data.zoom.maximum                = 0.02f;
     UI_form_pointer->data.zoom.speed                  = 0.004f;
     UI_form_pointer->data.texture.angle               = 0.0f;
+    UI_form_pointer->data.texture.enabled             = true;
     UI_form_pointer->data.title.text                  = game.texture_manager.add_texture(game.font_manager.root,"Options",0.8f,0,0,TEXTURE_STRING);
     UI_form_pointer->data.title.enabled               = true;
     UI_form_pointer->data.title.size.x                = 0;//UI_form_pointer->data.title.text.length()/1.2f;
@@ -147,6 +149,7 @@ void setup_menu_options(int UID)
         UI_form_pointer->data.element[element_count].dragable                       = false;
         UI_form_pointer->data.element[element_count].drag_active                    = false;
         UI_form_pointer->data.element[element_count].texture.angle                  = 0.0f;
+        UI_form_pointer->data.element[element_count].texture.enabled                = true;
         UI_form_pointer->data.element[element_count].zoom.enabled                   = true;
         UI_form_pointer->data.element[element_count].zoom.maximum                   = 0.0f;
         UI_form_pointer->data.element[element_count].zoom.value                     = 0.0f;
@@ -434,17 +437,20 @@ void setup_menu_options(int UID)
         UI_form_pointer->data.element[element_number].title.position.x            = UI_form_pointer->data.position.x;
         UI_form_pointer->data.element[element_number].title.position.y            = UI_form_pointer->data.position.y + (UI_form_pointer->data.size.y * 0.1f);
         UI_form_pointer->data.element[element_number].active                      = !game.core.config.display_fullscreen;
-        UI_form_pointer->data.element[element_number].click_enabled               = false;
+        UI_form_pointer->data.element[element_number].click_enabled               = true;
         UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_TEXTLABEL;
-        UI_form_pointer->data.element[element_number].zoom.enabled                = false;
+        UI_form_pointer->data.element[element_number].zoom                        = UI_form_pointer->data.zoom;
+        UI_form_pointer->data.element[element_number].zoom.enabled                = true;
+        UI_form_pointer->data.element[element_number].zoom.maximum                = 0.1f;
         UI_form_pointer->data.element[element_number].tooltip.enabled             = false;
         UI_form_pointer->data.element[element_number].color                       = UI_form_pointer->data.color;
         UI_form_pointer->data.element[element_number].color.normal                = UI_form_pointer->data.element[element_number].color.highlighted;
         UI_form_pointer->data.element[element_number].sound                       = UI_form_pointer->data.sound;
-        UI_form_pointer->data.element[element_number].sound.on_click.enabled      = false;
-        UI_form_pointer->data.element[element_number].sound.on_mouse_over.enabled = false;
+        UI_form_pointer->data.element[element_number].sound.on_click.enabled      = true;
+        UI_form_pointer->data.element[element_number].sound.on_mouse_over.enabled = true;
         UI_form_pointer->data.element[element_number].mouse_delay.maximum         = 30;
         UI_form_pointer->data.element[element_number].font                        = UI_form_pointer->data.font;
+        UI_form_pointer->data.element[element_number].texture.enabled             = false;
     }
     element_number = 12; //--- Display resolution button 2 ---
     display_mode   = 1;

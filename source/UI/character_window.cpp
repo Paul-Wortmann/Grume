@@ -47,6 +47,7 @@ void setup_character_window(int UID)
     UI_form_pointer->data.size.x                      = 0.5f;
     UI_form_pointer->data.size.y                      = UI_form_pointer->data.size.x * 2.5f;
     UI_form_pointer->data.texture.angle               = 0.0f;
+    UI_form_pointer->data.texture.enabled             = true;
     UI_form_pointer->data.texture.base                = game.texture_manager.add_texture("data/textures/UI/menu/character_background.png");
     UI_form_pointer->data.texture.normal              = game.texture_manager.add_texture("data/textures/UI/menu/button_normal.png");
     UI_form_pointer->data.texture.highlighted         = game.texture_manager.add_texture("data/textures/UI/menu/button_highlighted.png");
@@ -74,6 +75,7 @@ void setup_character_window(int UID)
     UI_form_pointer->data.zoom.maximum                = 0.02f;
     UI_form_pointer->data.zoom.speed                  = 0.004f;
     UI_form_pointer->data.texture.angle               = 0.0f;
+    UI_form_pointer->data.texture.enabled             = true;
     UI_form_pointer->data.title.text                  = game.texture_manager.add_texture(game.font_manager.root,"Character",0.8f,0,0,TEXTURE_STRING);
     UI_form_pointer->data.title.enabled               = true;
     UI_form_pointer->data.title.size.x                = 0;//UI_form_pointer->data.title.text.length()/1.2f;
@@ -150,6 +152,7 @@ void setup_character_window(int UID)
         UI_form_pointer->data.element[element_count].dragable                       = false;
         UI_form_pointer->data.element[element_count].drag_active                    = false;
         UI_form_pointer->data.element[element_count].texture.angle                  = 0.0f;
+        UI_form_pointer->data.element[element_count].texture.enabled                = true;
         UI_form_pointer->data.element[element_count].zoom.enabled                   = true;
         UI_form_pointer->data.element[element_count].zoom.maximum                   = 0.0f;
         UI_form_pointer->data.element[element_count].zoom.value                     = 0.0f;
@@ -216,6 +219,7 @@ void setup_character_window(int UID)
     UI_form_pointer->data.element[element_number].sound.on_mouse_over.enabled = false;
     UI_form_pointer->data.element[element_number].mouse_delay.maximum         = 30;
     UI_form_pointer->data.element[element_number].font                        = UI_form_pointer->data.font;
+    UI_form_pointer->data.element[element_number].texture.enabled             = false;
     element_number = 3; //--- Player Level ---
     UI_form_pointer->data.element[element_number].window_UID                  = UI_form_pointer->data.UID;
     UI_form_pointer->data.element[element_number].element_UID                 = element_number;
@@ -236,6 +240,7 @@ void setup_character_window(int UID)
     UI_form_pointer->data.element[element_number].sound.on_mouse_over.enabled = false;
     UI_form_pointer->data.element[element_number].mouse_delay.maximum         = 30;
     UI_form_pointer->data.element[element_number].font                        = UI_form_pointer->data.font;
+    UI_form_pointer->data.element[element_number].texture.enabled             = false;
     element_number = 4; //--- Player Experience ---
     UI_form_pointer->data.element[element_number].window_UID                  = UI_form_pointer->data.UID;
     UI_form_pointer->data.element[element_number].element_UID                 = element_number;
@@ -256,6 +261,7 @@ void setup_character_window(int UID)
     UI_form_pointer->data.element[element_number].sound.on_mouse_over.enabled = false;
     UI_form_pointer->data.element[element_number].mouse_delay.maximum         = 30;
     UI_form_pointer->data.element[element_number].font                        = UI_form_pointer->data.font;
+    UI_form_pointer->data.element[element_number].texture.enabled             = false;
     element_number = 5; //--- Player Experience for next level ---
     UI_form_pointer->data.element[element_number].window_UID                  = UI_form_pointer->data.UID;
     UI_form_pointer->data.element[element_number].element_UID                 = element_number;
@@ -276,6 +282,7 @@ void setup_character_window(int UID)
     UI_form_pointer->data.element[element_number].sound.on_mouse_over.enabled = false;
     UI_form_pointer->data.element[element_number].mouse_delay.maximum         = 30;
     UI_form_pointer->data.element[element_number].font                        = UI_form_pointer->data.font;
+    UI_form_pointer->data.element[element_number].texture.enabled             = false;
     element_number = 6; //--- Player Strength ---
     UI_form_pointer->data.element[element_number].window_UID                  = UI_form_pointer->data.UID;
     UI_form_pointer->data.element[element_number].element_UID                 = element_number;
@@ -296,6 +303,7 @@ void setup_character_window(int UID)
     UI_form_pointer->data.element[element_number].sound.on_mouse_over.enabled = false;
     UI_form_pointer->data.element[element_number].mouse_delay.maximum         = 30;
     UI_form_pointer->data.element[element_number].font                        = UI_form_pointer->data.font;
+    UI_form_pointer->data.element[element_number].texture.enabled             = false;
     element_number = 7; //--- Player Intellect ---
     UI_form_pointer->data.element[element_number].window_UID                  = UI_form_pointer->data.UID;
     UI_form_pointer->data.element[element_number].element_UID                 = element_number;
@@ -316,6 +324,7 @@ void setup_character_window(int UID)
     UI_form_pointer->data.element[element_number].sound.on_mouse_over.enabled = false;
     UI_form_pointer->data.element[element_number].mouse_delay.maximum         = 30;
     UI_form_pointer->data.element[element_number].font                        = UI_form_pointer->data.font;
+    UI_form_pointer->data.element[element_number].texture.enabled             = false;
     element_number = 8; //--- Player Dexterity ---
     UI_form_pointer->data.element[element_number].window_UID                  = UI_form_pointer->data.UID;
     UI_form_pointer->data.element[element_number].element_UID                 = element_number;
@@ -336,6 +345,7 @@ void setup_character_window(int UID)
     UI_form_pointer->data.element[element_number].sound.on_mouse_over.enabled = false;
     UI_form_pointer->data.element[element_number].mouse_delay.maximum         = 30;
     UI_form_pointer->data.element[element_number].font                        = UI_form_pointer->data.font;
+    UI_form_pointer->data.element[element_number].texture.enabled             = false;
     element_number = 9; //--- Damage Label---
     UI_form_pointer->data.element[element_number].window_UID                  = UI_form_pointer->data.UID;
     UI_form_pointer->data.element[element_number].element_UID                 = element_number;
@@ -356,6 +366,7 @@ void setup_character_window(int UID)
     UI_form_pointer->data.element[element_number].sound.on_mouse_over.enabled = false;
     UI_form_pointer->data.element[element_number].mouse_delay.maximum         = 30;
     UI_form_pointer->data.element[element_number].font                        = UI_form_pointer->data.font;
+    UI_form_pointer->data.element[element_number].texture.enabled             = false;
     element_number = 10; //--- Player Damage ---
     UI_form_pointer->data.element[element_number].window_UID                  = UI_form_pointer->data.UID;
     UI_form_pointer->data.element[element_number].element_UID                 = element_number;
@@ -376,6 +387,7 @@ void setup_character_window(int UID)
     UI_form_pointer->data.element[element_number].sound.on_mouse_over.enabled = false;
     UI_form_pointer->data.element[element_number].mouse_delay.maximum         = 30;
     UI_form_pointer->data.element[element_number].font                        = UI_form_pointer->data.font;
+    UI_form_pointer->data.element[element_number].texture.enabled             = false;
     element_number = 11; //--- Player Damage - max ---
     UI_form_pointer->data.element[element_number].window_UID                  = UI_form_pointer->data.UID;
     UI_form_pointer->data.element[element_number].element_UID                 = element_number;
@@ -396,6 +408,7 @@ void setup_character_window(int UID)
     UI_form_pointer->data.element[element_number].sound.on_mouse_over.enabled = false;
     UI_form_pointer->data.element[element_number].mouse_delay.maximum         = 30;
     UI_form_pointer->data.element[element_number].font                        = UI_form_pointer->data.font;
+    UI_form_pointer->data.element[element_number].texture.enabled             = false;
     element_number = 12; //--- Player Damage - min ---
     UI_form_pointer->data.element[element_number].window_UID                  = UI_form_pointer->data.UID;
     UI_form_pointer->data.element[element_number].element_UID                 = element_number;
@@ -416,6 +429,7 @@ void setup_character_window(int UID)
     UI_form_pointer->data.element[element_number].sound.on_mouse_over.enabled = false;
     UI_form_pointer->data.element[element_number].mouse_delay.maximum         = 30;
     UI_form_pointer->data.element[element_number].font                        = UI_form_pointer->data.font;
+    UI_form_pointer->data.element[element_number].texture.enabled             = false;
     element_number = 13; //--- Player Damage - critical chance ---
     UI_form_pointer->data.element[element_number].window_UID                  = UI_form_pointer->data.UID;
     UI_form_pointer->data.element[element_number].element_UID                 = element_number;
@@ -436,6 +450,7 @@ void setup_character_window(int UID)
     UI_form_pointer->data.element[element_number].sound.on_mouse_over.enabled = false;
     UI_form_pointer->data.element[element_number].mouse_delay.maximum         = 30;
     UI_form_pointer->data.element[element_number].font                        = UI_form_pointer->data.font;
+    UI_form_pointer->data.element[element_number].texture.enabled             = false;
     element_number = 14; //--- Player Damage - critical damage ---
     UI_form_pointer->data.element[element_number].window_UID                  = UI_form_pointer->data.UID;
     UI_form_pointer->data.element[element_number].element_UID                 = element_number;
@@ -456,6 +471,7 @@ void setup_character_window(int UID)
     UI_form_pointer->data.element[element_number].sound.on_mouse_over.enabled = false;
     UI_form_pointer->data.element[element_number].mouse_delay.maximum         = 30;
     UI_form_pointer->data.element[element_number].font                        = UI_form_pointer->data.font;
+    UI_form_pointer->data.element[element_number].texture.enabled             = false;
     element_number = 15; //--- Player Damage - fire ---
     UI_form_pointer->data.element[element_number].window_UID                  = UI_form_pointer->data.UID;
     UI_form_pointer->data.element[element_number].element_UID                 = element_number;
@@ -476,6 +492,7 @@ void setup_character_window(int UID)
     UI_form_pointer->data.element[element_number].sound.on_mouse_over.enabled = false;
     UI_form_pointer->data.element[element_number].mouse_delay.maximum         = 30;
     UI_form_pointer->data.element[element_number].font                        = UI_form_pointer->data.font;
+    UI_form_pointer->data.element[element_number].texture.enabled             = false;
     element_number = 16; //--- Player Damage - ice ---
     UI_form_pointer->data.element[element_number].window_UID                  = UI_form_pointer->data.UID;
     UI_form_pointer->data.element[element_number].element_UID                 = element_number;
@@ -496,6 +513,7 @@ void setup_character_window(int UID)
     UI_form_pointer->data.element[element_number].sound.on_mouse_over.enabled = false;
     UI_form_pointer->data.element[element_number].mouse_delay.maximum         = 30;
     UI_form_pointer->data.element[element_number].font                        = UI_form_pointer->data.font;
+    UI_form_pointer->data.element[element_number].texture.enabled             = false;
     element_number = 17; //--- Player Damage - lightning ---
     UI_form_pointer->data.element[element_number].window_UID                  = UI_form_pointer->data.UID;
     UI_form_pointer->data.element[element_number].element_UID                 = element_number;
@@ -516,6 +534,7 @@ void setup_character_window(int UID)
     UI_form_pointer->data.element[element_number].sound.on_mouse_over.enabled = false;
     UI_form_pointer->data.element[element_number].mouse_delay.maximum         = 30;
     UI_form_pointer->data.element[element_number].font                        = UI_form_pointer->data.font;
+    UI_form_pointer->data.element[element_number].texture.enabled             = false;
 
     element_number = 18; //--- Armor / Resistance Label---
     UI_form_pointer->data.element[element_number].window_UID                  = UI_form_pointer->data.UID;
@@ -537,6 +556,7 @@ void setup_character_window(int UID)
     UI_form_pointer->data.element[element_number].sound.on_mouse_over.enabled = false;
     UI_form_pointer->data.element[element_number].mouse_delay.maximum         = 30;
     UI_form_pointer->data.element[element_number].font                        = UI_form_pointer->data.font;
+    UI_form_pointer->data.element[element_number].texture.enabled             = false;
     element_number = 19; //--- Player armor ---
     UI_form_pointer->data.element[element_number].window_UID                  = UI_form_pointer->data.UID;
     UI_form_pointer->data.element[element_number].element_UID                 = element_number;
@@ -557,6 +577,7 @@ void setup_character_window(int UID)
     UI_form_pointer->data.element[element_number].sound.on_mouse_over.enabled = false;
     UI_form_pointer->data.element[element_number].mouse_delay.maximum         = 30;
     UI_form_pointer->data.element[element_number].font                        = UI_form_pointer->data.font;
+    UI_form_pointer->data.element[element_number].texture.enabled             = false;
     element_number = 20; //--- Player resistance - physical ---
     UI_form_pointer->data.element[element_number].window_UID                  = UI_form_pointer->data.UID;
     UI_form_pointer->data.element[element_number].element_UID                 = element_number;
@@ -577,6 +598,7 @@ void setup_character_window(int UID)
     UI_form_pointer->data.element[element_number].sound.on_mouse_over.enabled = false;
     UI_form_pointer->data.element[element_number].mouse_delay.maximum         = 30;
     UI_form_pointer->data.element[element_number].font                        = UI_form_pointer->data.font;
+    UI_form_pointer->data.element[element_number].texture.enabled             = false;
     element_number = 21; //--- Player resistance - fire ---
     UI_form_pointer->data.element[element_number].window_UID                  = UI_form_pointer->data.UID;
     UI_form_pointer->data.element[element_number].element_UID                 = element_number;
@@ -597,6 +619,7 @@ void setup_character_window(int UID)
     UI_form_pointer->data.element[element_number].sound.on_mouse_over.enabled = false;
     UI_form_pointer->data.element[element_number].mouse_delay.maximum         = 30;
     UI_form_pointer->data.element[element_number].font                        = UI_form_pointer->data.font;
+    UI_form_pointer->data.element[element_number].texture.enabled             = false;
     element_number = 22; //--- Player resistance - ice ---
     UI_form_pointer->data.element[element_number].window_UID                  = UI_form_pointer->data.UID;
     UI_form_pointer->data.element[element_number].element_UID                 = element_number;
@@ -617,6 +640,7 @@ void setup_character_window(int UID)
     UI_form_pointer->data.element[element_number].sound.on_mouse_over.enabled = false;
     UI_form_pointer->data.element[element_number].mouse_delay.maximum         = 30;
     UI_form_pointer->data.element[element_number].font                        = UI_form_pointer->data.font;
+    UI_form_pointer->data.element[element_number].texture.enabled             = false;
     element_number = 23; //--- Player resistance - lightning ---
     UI_form_pointer->data.element[element_number].window_UID                  = UI_form_pointer->data.UID;
     UI_form_pointer->data.element[element_number].element_UID                 = element_number;
@@ -637,6 +661,7 @@ void setup_character_window(int UID)
     UI_form_pointer->data.element[element_number].sound.on_mouse_over.enabled = false;
     UI_form_pointer->data.element[element_number].mouse_delay.maximum         = 30;
     UI_form_pointer->data.element[element_number].font                        = UI_form_pointer->data.font;
+    UI_form_pointer->data.element[element_number].texture.enabled             = false;
 
     element_number = 24; //--- Player mana ---
     UI_form_pointer->data.element[element_number].window_UID                  = UI_form_pointer->data.UID;
@@ -658,6 +683,7 @@ void setup_character_window(int UID)
     UI_form_pointer->data.element[element_number].sound.on_mouse_over.enabled = false;
     UI_form_pointer->data.element[element_number].mouse_delay.maximum         = 30;
     UI_form_pointer->data.element[element_number].font                        = UI_form_pointer->data.font;
+    UI_form_pointer->data.element[element_number].texture.enabled             = false;
     element_number = 25; //--- Player mana on hit---
     UI_form_pointer->data.element[element_number].window_UID                  = UI_form_pointer->data.UID;
     UI_form_pointer->data.element[element_number].element_UID                 = element_number;
@@ -678,6 +704,7 @@ void setup_character_window(int UID)
     UI_form_pointer->data.element[element_number].sound.on_mouse_over.enabled = false;
     UI_form_pointer->data.element[element_number].mouse_delay.maximum         = 30;
     UI_form_pointer->data.element[element_number].font                        = UI_form_pointer->data.font;
+    UI_form_pointer->data.element[element_number].texture.enabled             = false;
     element_number = 26; //--- Player mana on kill---
     UI_form_pointer->data.element[element_number].window_UID                  = UI_form_pointer->data.UID;
     UI_form_pointer->data.element[element_number].element_UID                 = element_number;
@@ -698,6 +725,7 @@ void setup_character_window(int UID)
     UI_form_pointer->data.element[element_number].sound.on_mouse_over.enabled = false;
     UI_form_pointer->data.element[element_number].mouse_delay.maximum         = 30;
     UI_form_pointer->data.element[element_number].font                        = UI_form_pointer->data.font;
+    UI_form_pointer->data.element[element_number].texture.enabled             = false;
     element_number = 27; //--- Player mana regen ---
     UI_form_pointer->data.element[element_number].window_UID                  = UI_form_pointer->data.UID;
     UI_form_pointer->data.element[element_number].element_UID                 = element_number;
@@ -718,6 +746,7 @@ void setup_character_window(int UID)
     UI_form_pointer->data.element[element_number].sound.on_mouse_over.enabled = false;
     UI_form_pointer->data.element[element_number].mouse_delay.maximum         = 30;
     UI_form_pointer->data.element[element_number].font                        = UI_form_pointer->data.font;
+    UI_form_pointer->data.element[element_number].texture.enabled             = false;
 
     element_number = 28; //--- Player health ---
     UI_form_pointer->data.element[element_number].window_UID                  = UI_form_pointer->data.UID;
@@ -739,6 +768,7 @@ void setup_character_window(int UID)
     UI_form_pointer->data.element[element_number].sound.on_mouse_over.enabled = false;
     UI_form_pointer->data.element[element_number].mouse_delay.maximum         = 30;
     UI_form_pointer->data.element[element_number].font                        = UI_form_pointer->data.font;
+    UI_form_pointer->data.element[element_number].texture.enabled             = false;
     element_number = 29; //--- Player health on hit---
     UI_form_pointer->data.element[element_number].window_UID                  = UI_form_pointer->data.UID;
     UI_form_pointer->data.element[element_number].element_UID                 = element_number;
@@ -759,6 +789,7 @@ void setup_character_window(int UID)
     UI_form_pointer->data.element[element_number].sound.on_mouse_over.enabled = false;
     UI_form_pointer->data.element[element_number].mouse_delay.maximum         = 30;
     UI_form_pointer->data.element[element_number].font                        = UI_form_pointer->data.font;
+    UI_form_pointer->data.element[element_number].texture.enabled             = false;
     element_number = 30; //--- Player health on kill---
     UI_form_pointer->data.element[element_number].window_UID                  = UI_form_pointer->data.UID;
     UI_form_pointer->data.element[element_number].element_UID                 = element_number;
@@ -779,6 +810,7 @@ void setup_character_window(int UID)
     UI_form_pointer->data.element[element_number].sound.on_mouse_over.enabled = false;
     UI_form_pointer->data.element[element_number].mouse_delay.maximum         = 30;
     UI_form_pointer->data.element[element_number].font                        = UI_form_pointer->data.font;
+    UI_form_pointer->data.element[element_number].texture.enabled             = false;
     element_number = 31; //--- Player health regen ---
     UI_form_pointer->data.element[element_number].window_UID                  = UI_form_pointer->data.UID;
     UI_form_pointer->data.element[element_number].element_UID                 = element_number;
@@ -799,6 +831,7 @@ void setup_character_window(int UID)
     UI_form_pointer->data.element[element_number].sound.on_mouse_over.enabled = false;
     UI_form_pointer->data.element[element_number].mouse_delay.maximum         = 30;
     UI_form_pointer->data.element[element_number].font                        = UI_form_pointer->data.font;
+    UI_form_pointer->data.element[element_number].texture.enabled             = false;
     element_number = 32; //--- Player magic find ---
     UI_form_pointer->data.element[element_number].window_UID                  = UI_form_pointer->data.UID;
     UI_form_pointer->data.element[element_number].element_UID                 = element_number;
@@ -819,6 +852,7 @@ void setup_character_window(int UID)
     UI_form_pointer->data.element[element_number].sound.on_mouse_over.enabled = false;
     UI_form_pointer->data.element[element_number].mouse_delay.maximum         = 30;
     UI_form_pointer->data.element[element_number].font                        = UI_form_pointer->data.font;
+    UI_form_pointer->data.element[element_number].texture.enabled             = false;
     element_number = 33; //--- Player gold find ---
     UI_form_pointer->data.element[element_number].window_UID                  = UI_form_pointer->data.UID;
     UI_form_pointer->data.element[element_number].element_UID                 = element_number;
@@ -839,6 +873,7 @@ void setup_character_window(int UID)
     UI_form_pointer->data.element[element_number].sound.on_mouse_over.enabled = false;
     UI_form_pointer->data.element[element_number].mouse_delay.maximum         = 30;
     UI_form_pointer->data.element[element_number].font                        = UI_form_pointer->data.font;
+    UI_form_pointer->data.element[element_number].texture.enabled             = false;
     element_number = 34; //--- Player light radius ---
     UI_form_pointer->data.element[element_number].window_UID                  = UI_form_pointer->data.UID;
     UI_form_pointer->data.element[element_number].element_UID                 = element_number;
@@ -859,6 +894,7 @@ void setup_character_window(int UID)
     UI_form_pointer->data.element[element_number].sound.on_mouse_over.enabled = false;
     UI_form_pointer->data.element[element_number].mouse_delay.maximum         = 30;
     UI_form_pointer->data.element[element_number].font                        = UI_form_pointer->data.font;
+    UI_form_pointer->data.element[element_number].texture.enabled             = false;
     element_number = 35; //--- Player movement speed ---
     UI_form_pointer->data.element[element_number].window_UID                  = UI_form_pointer->data.UID;
     UI_form_pointer->data.element[element_number].element_UID                 = element_number;
@@ -879,6 +915,7 @@ void setup_character_window(int UID)
     UI_form_pointer->data.element[element_number].sound.on_mouse_over.enabled = false;
     UI_form_pointer->data.element[element_number].mouse_delay.maximum         = 30;
     UI_form_pointer->data.element[element_number].font                        = UI_form_pointer->data.font;
+    UI_form_pointer->data.element[element_number].texture.enabled             = false;
     element_number = 36; //--- Player epx per kill ---
     UI_form_pointer->data.element[element_number].window_UID                  = UI_form_pointer->data.UID;
     UI_form_pointer->data.element[element_number].element_UID                 = element_number;
@@ -899,6 +936,7 @@ void setup_character_window(int UID)
     UI_form_pointer->data.element[element_number].sound.on_mouse_over.enabled = false;
     UI_form_pointer->data.element[element_number].mouse_delay.maximum         = 30;
     UI_form_pointer->data.element[element_number].font                        = UI_form_pointer->data.font;
+    UI_form_pointer->data.element[element_number].texture.enabled             = false;
 };
 
 void update_character_window(UI_form_struct *UI_form_pointer)

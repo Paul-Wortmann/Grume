@@ -46,6 +46,7 @@ void setup_equipment_window(int UID)
     UI_form_pointer->data.size.x                      = 0.5f;
     UI_form_pointer->data.size.y                      = UI_form_pointer->data.size.x * 2.5f;
     UI_form_pointer->data.texture.angle               = 0.0f;
+    UI_form_pointer->data.texture.enabled             = true;
     UI_form_pointer->data.texture.base                = game.texture_manager.add_texture("data/textures/UI/menu/equipment_background.png");
     UI_form_pointer->data.texture.normal              = game.texture_manager.add_texture("data/textures/UI/menu/button_normal.png");
     UI_form_pointer->data.texture.highlighted         = game.texture_manager.add_texture("data/textures/UI/menu/button_highlighted.png");

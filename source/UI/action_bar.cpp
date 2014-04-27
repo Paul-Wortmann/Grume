@@ -50,6 +50,7 @@ void setup_action_bar(int UID)
     UI_form_pointer->data.position.y                  = -1.0f + (UI_form_pointer->data.size.y/2.0f)-0.012f;
     UI_form_pointer->data.position.z                  =  0.0f;
     UI_form_pointer->data.texture.angle               =  0.0f;
+    UI_form_pointer->data.texture.enabled             = true;
     UI_form_pointer->data.texture.base                = game.texture_manager.add_texture("data/textures/UI/menu/action_bar.png");
     UI_form_pointer->data.texture.normal              = game.texture_manager.add_texture("data/textures/UI/menu/button_normal.png");
     UI_form_pointer->data.texture.highlighted         = game.texture_manager.add_texture("data/textures/UI/menu/button_highlighted.png");
@@ -152,6 +153,7 @@ void setup_action_bar(int UID)
         UI_form_pointer->data.element[element_count].dragable                       = false;
         UI_form_pointer->data.element[element_count].drag_active                    = false;
         UI_form_pointer->data.element[element_count].texture.angle                  = 0.0f;
+        UI_form_pointer->data.element[element_count].texture.enabled                = true;
         UI_form_pointer->data.element[element_count].zoom.enabled                   = true;
         UI_form_pointer->data.element[element_count].zoom.maximum                   = 0.0f;
         UI_form_pointer->data.element[element_count].zoom.value                     = 0.0f;

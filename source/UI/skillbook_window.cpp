@@ -73,6 +73,7 @@ void setup_skillbook_window(int UID)
     UI_form_pointer->data.zoom.maximum                = 0.02f;
     UI_form_pointer->data.zoom.speed                  = 0.004f;
     UI_form_pointer->data.texture.angle               = 0.0f;
+    UI_form_pointer->data.texture.enabled             = true;
     UI_form_pointer->data.title.text                  = game.texture_manager.add_texture(game.font_manager.root,"SkillBook",0.8f,0,0,TEXTURE_STRING);
     UI_form_pointer->data.title.enabled               = true;
     UI_form_pointer->data.title.size.x                = 0;//UI_form_pointer->data.title.text.length()/1.2f;
@@ -149,6 +150,7 @@ void setup_skillbook_window(int UID)
         UI_form_pointer->data.element[element_count].dragable                       = false;
         UI_form_pointer->data.element[element_count].drag_active                    = false;
         UI_form_pointer->data.element[element_count].texture.angle                  = 0.0f;
+        UI_form_pointer->data.element[element_count].texture.enabled                = true;
         UI_form_pointer->data.element[element_count].zoom.enabled                   = true;
         UI_form_pointer->data.element[element_count].zoom.maximum                   = 0.0f;
         UI_form_pointer->data.element[element_count].zoom.value                     = 0.0f;
