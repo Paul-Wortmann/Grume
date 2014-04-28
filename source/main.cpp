@@ -44,7 +44,7 @@ SDL_Surface*             application_icon_surface;
 extern "C" int main(int argc, char** argv)
 {
 //  --- Application initialization ---
-    game.core.debug = true;
+    game.core.debug = false;
     game.core.application_name = "Frost and Flame V0.30 - www.physhexgames.co.nr";
     game.core.application_icon = "data/icon.ico";
     game.core.log.file_set("frost_and_flame.log");

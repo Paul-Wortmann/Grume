@@ -88,7 +88,7 @@ music_type *music_manager_class::add_music(std::string file_name)
 bool music_manager_class::load_music(music_type *music)
 {
     bool return_value = false;
-    music->music_data = Mix_LoadMUS(music->path.c_str());
+    music->music_data = game.core.file.load_music(music->path.c_str());
     if (music->music_data != NULL) return_value = true;
     else game.core.log.file_write("Failed to load music ->",music->path.c_str());
     return (return_value);

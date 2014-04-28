@@ -235,3 +235,83 @@ void file_class::load_font(font_type *font, int pt_size)
     }
     if (!font->font_data) game.state = STATE_QUIT;
 }
+
+Mix_Music *file_class::load_music(std::string file_name)
+{
+    Mix_Music *temp_music = NULL;
+    if (PHYSFS_exists(file_name.c_str()))
+    {
+        PHYSFS_openRead(file_name.c_str());
+        PHYSFS_File *file_pointer = NULL;
+        file_pointer = PHYSFS_openRead(file_name.c_str());
+        if (file_pointer)
+        {
+            PHYSFS_sint64 file_size = PHYSFS_fileLength(file_pointer);
+            char *file_data = new char[file_size];
+            PHYSFS_read(file_pointer, file_data, 1, file_size);
+            SDL_RWops *rwops_pointer = NULL;
+            rwops_pointer = SDL_RWFromMem(file_data, file_size);
+            if (rwops_pointer != NULL)
+            {
+                temp_music  = Mix_LoadMUS_RW(rwops_pointer, false);
+                if (rwops_pointer) SDL_FreeRW(rwops_pointer);
+            }
+            else
+            {
+                game.core.log.file_write("Fail -> PhysicsFS unable to allocate rwops pointer for file - ",file_name.c_str());
+            }
+            if (file_data) delete [] file_data;
+            if (file_pointer) PHYSFS_close(file_pointer);
+        }
+        else
+        {
+            game.core.log.file_write("Fail -> PhysicsFS unable to open file - ",file_name.c_str());
+        }
+    }
+    else
+    {
+        game.core.log.file_write("Fail -> PhysicsFS unable to find file - ",file_name.c_str());
+    }
+    if (!temp_music) game.state = STATE_QUIT;
+    return(temp_music);
+}
+
+Mix_Chunk *file_class::load_sound(std::string file_name)
+{
+    Mix_Chunk *temp_sound = NULL;
+    if (PHYSFS_exists(file_name.c_str()))
+    {
+        PHYSFS_openRead(file_name.c_str());
+        PHYSFS_File *file_pointer = NULL;
+        file_pointer = PHYSFS_openRead(file_name.c_str());
+        if (file_pointer)
+        {
+            PHYSFS_sint64 file_size = PHYSFS_fileLength(file_pointer);
+            char *file_data = new char[file_size];
+            PHYSFS_read(file_pointer, file_data, 1, file_size);
+            SDL_RWops *rwops_pointer = NULL;
+            rwops_pointer = SDL_RWFromMem(file_data, file_size);
+            if (rwops_pointer != NULL)
+            {
+                temp_sound  = Mix_LoadWAV_RW(rwops_pointer, false);
+                if (rwops_pointer) SDL_FreeRW(rwops_pointer);
+            }
+            else
+            {
+                game.core.log.file_write("Fail -> PhysicsFS unable to allocate rwops pointer for file - ",file_name.c_str());
+            }
+            if (file_data) delete [] file_data;
+            if (file_pointer) PHYSFS_close(file_pointer);
+        }
+        else
+        {
+            game.core.log.file_write("Fail -> PhysicsFS unable to open file - ",file_name.c_str());
+        }
+    }
+    else
+    {
+        game.core.log.file_write("Fail -> PhysicsFS unable to find file - ",file_name.c_str());
+    }
+    if (!temp_sound) game.state = STATE_QUIT;
+    return(temp_sound);
+}

@@ -26,6 +26,7 @@
 #define FILE_H
 
 #include <SDL2/SDL.h>
+#include <SDL2/SDL_mixer.h>
 
 class file_class
 {
@@ -44,6 +45,8 @@ class file_class
         void         file_system_deinit(void);
         SDL_Surface *load_image        (std::string file_name);
         void         load_font         (font_type *font, int pt_size);
+        Mix_Music   *load_music        (std::string file_name);
+        Mix_Chunk   *load_sound        (std::string file_name);
 };
 
 

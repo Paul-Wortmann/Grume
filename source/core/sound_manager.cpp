@@ -87,7 +87,7 @@ sound_type *sound_manager_class::add_sound(std::string file_name)
 bool sound_manager_class::load_sound(sound_type *sound)
 {
     bool return_value = false;
-    sound->sound_data = Mix_LoadWAV(sound->path.c_str());
+    sound->sound_data = game.core.file.load_sound(sound->path.c_str());
     if (sound->sound_data != NULL) return_value = true;
     else game.core.log.file_write("Failed to load sound ->",sound->path.c_str());
     return (return_value);
