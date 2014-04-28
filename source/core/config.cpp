@@ -98,13 +98,13 @@ void       config_class::set_defaults(void)
     config_class::language                   = "english";
 };
 
-bool         config_class::file_set(std::string file_name_in)
+bool config_class::file_set(std::string file_name_in)
 {
     config_class::file_name = file_name_in.c_str();
     return(true);
 };
 
-bool         config_class::file_write(std::string data_string)
+bool config_class::file_write(std::string data_string)
 {
     std::fstream configfile(config_class::file_name.c_str(),std::ios::out|std::ios::app);
     if (configfile.is_open())
@@ -117,111 +117,123 @@ bool         config_class::file_write(std::string data_string)
     return(true);
 };
 
-bool         config_class::file_load(void) //the problem is most likely with the loader....
+bool config_class::file_load(void)
 {
-    std::fstream configfile(config_class::file_name.c_str(),std::ios::in|std::ios::binary);
-    if (configfile.is_open())
+    if (config_class::file_name.length() < 5)
     {
-        int         temp_int;
-        std::string temp_string_key;
-        std::string temp_string_value;
-        int         position_count;
-        std::string data_line;
-        while (configfile.good())
-        {
-            getline(configfile,data_line);
-            char temp_char = data_line[0];
-            if((temp_char == '#') || ((int)data_line.length() <= 1))
-            {
-                //comment or insufficient data due to line length, therefore do nothing.
-            }
-            else
-            {
-                temp_string_key   = "";
-                temp_string_value = "";
-                temp_char = '#';
-                position_count = 0;
-                while(temp_char != ' ')
-                {
-                    temp_char = data_line[position_count];
-                    if(temp_char != ' ') temp_string_key += temp_char;
-                    position_count++;
-                    if(position_count > (int)data_line.length()) (temp_char = ' ');
-                }
-                while((temp_char == ' ') || (temp_char == '='))
-                {
-                    temp_char = data_line[position_count];
-                    position_count++;
-                    if(position_count > (int)data_line.length()) (temp_char = ' ');
-                }
-                position_count--;
-                while(position_count < (int)data_line.length())
-                {
-                    temp_char = data_line[position_count];
-                    if ((temp_char != ' ') && (temp_char != '\r')) temp_string_value += temp_char;
-                    position_count++;
-                }
-                temp_int = atoi(temp_string_value.c_str());
-                if (temp_string_key == "Joystick_Sensitivity")
-                {
-                    config_class::joystick_sensitivity = temp_int;
-                }
-                if (temp_string_key == "Display_Touchscreen")
-                {
-                    if (temp_int == 1) config_class::display_touchscreen = true;
-                    else config_class::display_touchscreen = false;
-                }
-                if (temp_string_key == "Display_Fullscreen")
-                {
-                    if (temp_int == 1) config_class::display_fullscreen = true;
-                    else config_class::display_fullscreen = false;
-                }
-                if (temp_string_key == "Audio_Rate")
-                {
-                    if (temp_int == 11) temp_int = 11025;
-                    if (temp_int == 22) temp_int = 22050;
-                    if (temp_int == 44) temp_int = 44100;
-                    if ((temp_int == 11025) || (temp_int == 22050) || (temp_int == 44100)) config_class::audio_rate = temp_int;
-                }
-                if (temp_string_key == "Audio_Channels")
-                {
-                    if ((temp_int >= 1) && (temp_int <= 128)) config_class::audio_channels = temp_int;
-                }
-                if (temp_string_key == "Audio_Buffers")
-                {
-                    if ((temp_int >= 512) && (temp_int <= 2048)) config_class::audio_buffers = temp_int;
-                }
-                if (temp_string_key == "Audio_Volume_Music")
-                {
-                    if ((temp_int >= 0) && (temp_int <= 100)) config_class::audio_volume_music = temp_int;
-                }
-                if (temp_string_key == "Audio_Volume_Sound")
-                {
-                    if ((temp_int >= 0) && (temp_int <= 100)) config_class::audio_volume_sound = temp_int;
-                }
-                if (temp_string_key == "Display_BPP")
-                {
-                    config_class::display_bpp = temp_int;
-                }
-                if (temp_string_key == "Display_Resolution_X")
-                {
-                    config_class::display_resolution_x = temp_int;
-                }
-                if (temp_string_key == "Display_Resolution_Y")
-                {
-                    config_class::display_resolution_y = temp_int;
-                }
-                if (temp_string_key == "Language")
-                {
-                    config_class::language = temp_string_value.c_str();
-                }
-            }
-        }
-        configfile.close();
+        game.core.log.file_write("Fail -> Configuration file name invalid - ",config_class::file_name.c_str());
+        return(false);
     }
-    else return(false);
-    config_class::font_scale_x               = (float)config_class::display_resolution_x/(float)config_class::font_base_resolution_x;
-    config_class::font_scale_y               = (float)config_class::display_resolution_y/(float)config_class::font_base_resolution_y;
+    else
+    {
+        std::fstream configfile(config_class::file_name.c_str(),std::ios::in|std::ios::binary);
+        if (configfile.is_open())
+        {
+            int         temp_int;
+            std::string temp_string_key;
+            std::string temp_string_value;
+            int         position_count;
+            std::string data_line;
+            while (configfile.good())
+            {
+                getline(configfile,data_line);
+                char temp_char = data_line[0];
+                if((temp_char == '#') || ((int)data_line.length() <= 1))
+                {
+                    //comment or insufficient data due to line length, therefore do nothing.
+                }
+                else
+                {
+                    temp_string_key   = "";
+                    temp_string_value = "";
+                    temp_char = '#';
+                    position_count = 0;
+                    while(temp_char != ' ')
+                    {
+                        temp_char = data_line[position_count];
+                        if(temp_char != ' ') temp_string_key += temp_char;
+                        position_count++;
+                        if(position_count > (int)data_line.length()) (temp_char = ' ');
+                    }
+                    while((temp_char == ' ') || (temp_char == '='))
+                    {
+                        temp_char = data_line[position_count];
+                        position_count++;
+                        if(position_count > (int)data_line.length()) (temp_char = ' ');
+                    }
+                    position_count--;
+                    while(position_count < (int)data_line.length())
+                    {
+                        temp_char = data_line[position_count];
+                        if ((temp_char != ' ') && (temp_char != '\r')) temp_string_value += temp_char;
+                        position_count++;
+                    }
+                    temp_int = atoi(temp_string_value.c_str());
+                    if (temp_string_key == "Joystick_Sensitivity")
+                    {
+                        config_class::joystick_sensitivity = temp_int;
+                    }
+                    if (temp_string_key == "Display_Touchscreen")
+                    {
+                        if (temp_int == 1) config_class::display_touchscreen = true;
+                        else config_class::display_touchscreen = false;
+                    }
+                    if (temp_string_key == "Display_Fullscreen")
+                    {
+                        if (temp_int == 1) config_class::display_fullscreen = true;
+                        else config_class::display_fullscreen = false;
+                    }
+                    if (temp_string_key == "Audio_Rate")
+                    {
+                        if (temp_int == 11) temp_int = 11025;
+                        if (temp_int == 22) temp_int = 22050;
+                        if (temp_int == 44) temp_int = 44100;
+                        if ((temp_int == 11025) || (temp_int == 22050) || (temp_int == 44100)) config_class::audio_rate = temp_int;
+                    }
+                    if (temp_string_key == "Audio_Channels")
+                    {
+                        if ((temp_int >= 1) && (temp_int <= 128)) config_class::audio_channels = temp_int;
+                    }
+                    if (temp_string_key == "Audio_Buffers")
+                    {
+                        if ((temp_int >= 512) && (temp_int <= 2048)) config_class::audio_buffers = temp_int;
+                    }
+                    if (temp_string_key == "Audio_Volume_Music")
+                    {
+                        if ((temp_int >= 0) && (temp_int <= 100)) config_class::audio_volume_music = temp_int;
+                    }
+                    if (temp_string_key == "Audio_Volume_Sound")
+                    {
+                        if ((temp_int >= 0) && (temp_int <= 100)) config_class::audio_volume_sound = temp_int;
+                    }
+                    if (temp_string_key == "Display_BPP")
+                    {
+                        config_class::display_bpp = temp_int;
+                    }
+                    if (temp_string_key == "Display_Resolution_X")
+                    {
+                        config_class::display_resolution_x = temp_int;
+                    }
+                    if (temp_string_key == "Display_Resolution_Y")
+                    {
+                        config_class::display_resolution_y = temp_int;
+                    }
+                    if (temp_string_key == "Language")
+                    {
+                        config_class::language = temp_string_value.c_str();
+                    }
+                }
+            }
+            configfile.close();
+        }
+        else
+        {
+            game.core.log.file_write("Fail -> Configuration file unable to open - ",config_class::file_name.c_str());
+            return(false);
+        }
+    }
+    config_class::font_scale_x         = (float)config_class::display_resolution_x/(float)config_class::font_base_resolution_x;
+    config_class::font_scale_y         = (float)config_class::display_resolution_y/(float)config_class::font_base_resolution_y;
     config_class::mouse_resolution_x   = config_class::display_resolution_x;
     config_class::mouse_resolution_y   = config_class::display_resolution_y;
     return(true);
@@ -229,65 +241,77 @@ bool         config_class::file_load(void) //the problem is most likely with the
 
 bool         config_class::file_save(void)
 {
-    std::fstream configfile(config_class::file_name.c_str(),std::ios::out|std::ios::app);
-    if (configfile.is_open())
+    if (config_class::file_name.length() < 5)
     {
-        time_t rawtime;
-        rawtime = time(&rawtime);
-        char buffer [80];
-        #ifdef __MINGW32__
-            strftime (buffer,80,"%Y-%m-%d - %H:%M:%S - %Z",localtime(&rawtime));
-        #else
-            struct tm newtime;
-            strftime (buffer,80,"%Y-%m-%d - %H:%M:%S - %Z",localtime_r(&rawtime, &newtime));
-        #endif
-        configfile << "# " << game.core.application_name << " #" << std::endl;
-        configfile << "# ---------------------------------------------- #" << std::endl;
-        configfile << std::endl;
-        configfile << "# Configuration file created: " << buffer << std::endl;
-        configfile << std::endl;
-        configfile << "Display_Fullscreen   = ";
-        if (config_class::display_fullscreen) configfile << "1";
-        else configfile << "0";
-        configfile << std::endl;
-        configfile << "Display_Resolution_X = ";
-        configfile << config_class::display_resolution_x;
-        configfile << std::endl;
-        configfile << "Display_Resolution_Y = ";
-        configfile << config_class::display_resolution_y;
-        configfile << std::endl;
-        configfile << "Display_BPP          = ";
-        configfile << config_class::display_bpp;
-        configfile << std::endl;
-        configfile << "Display_Touchscreen  = ";
-        if (config_class::display_touchscreen) configfile << "1";
-        else configfile << "0";
-        configfile << std::endl;
-        configfile << "Audio_Rate           = ";
-        configfile << config_class::audio_rate;
-        configfile << std::endl;
-        configfile << "Audio_Channels       = ";
-        configfile << config_class::audio_channels;
-        configfile << std::endl;
-        configfile << "Audio_Buffers        = ";
-        configfile << config_class::audio_buffers;
-        configfile << std::endl;
-        configfile << "Audio_Volume_Music   = ";
-        configfile << config_class::audio_volume_music;
-        configfile << std::endl;
-        configfile << "Audio_Volume_Sound   = ";
-        configfile << config_class::audio_volume_sound;
-        configfile << std::endl;
-        configfile << "Joystick_Sensitivity = ";
-        configfile << config_class::joystick_sensitivity;
-        configfile << std::endl;
-        configfile << "Language             = ";
-        configfile << config_class::language;
-        configfile << std::endl;
-        configfile << std::endl;
-        configfile.close();
+        game.core.log.file_write("Fail -> Configuration file name invalid - ",config_class::file_name.c_str());
+        return(false);
     }
-    else return(false);
+    else
+    {
+        std::fstream configfile(config_class::file_name.c_str(),std::ios::out|std::ios::app);
+        if (configfile.is_open())
+        {
+            time_t rawtime;
+            rawtime = time(&rawtime);
+            char buffer [80];
+            #ifdef __MINGW32__
+                strftime (buffer,80,"%Y-%m-%d - %H:%M:%S - %Z",localtime(&rawtime));
+            #else
+                struct tm newtime;
+                strftime (buffer,80,"%Y-%m-%d - %H:%M:%S - %Z",localtime_r(&rawtime, &newtime));
+            #endif
+            configfile << "# " << game.core.application_name << " #" << std::endl;
+            configfile << "# ---------------------------------------------- #" << std::endl;
+            configfile << std::endl;
+            configfile << "# Configuration file created: " << buffer << std::endl;
+            configfile << std::endl;
+            configfile << "Display_Fullscreen   = ";
+            if (config_class::display_fullscreen) configfile << "1";
+            else configfile << "0";
+            configfile << std::endl;
+            configfile << "Display_Resolution_X = ";
+            configfile << config_class::display_resolution_x;
+            configfile << std::endl;
+            configfile << "Display_Resolution_Y = ";
+            configfile << config_class::display_resolution_y;
+            configfile << std::endl;
+            configfile << "Display_BPP          = ";
+            configfile << config_class::display_bpp;
+            configfile << std::endl;
+            configfile << "Display_Touchscreen  = ";
+            if (config_class::display_touchscreen) configfile << "1";
+            else configfile << "0";
+            configfile << std::endl;
+            configfile << "Audio_Rate           = ";
+            configfile << config_class::audio_rate;
+            configfile << std::endl;
+            configfile << "Audio_Channels       = ";
+            configfile << config_class::audio_channels;
+            configfile << std::endl;
+            configfile << "Audio_Buffers        = ";
+            configfile << config_class::audio_buffers;
+            configfile << std::endl;
+            configfile << "Audio_Volume_Music   = ";
+            configfile << config_class::audio_volume_music;
+            configfile << std::endl;
+            configfile << "Audio_Volume_Sound   = ";
+            configfile << config_class::audio_volume_sound;
+            configfile << std::endl;
+            configfile << "Joystick_Sensitivity = ";
+            configfile << config_class::joystick_sensitivity;
+            configfile << std::endl;
+            configfile << "Language             = ";
+            configfile << config_class::language;
+            configfile << std::endl;
+            configfile << std::endl;
+            configfile.close();
+        }
+        else
+        {
+            game.core.log.file_write("Fail -> Configuration file unable to open - ",config_class::file_name.c_str());
+            return(false);
+        }
+    }
     return(true);
 };
 

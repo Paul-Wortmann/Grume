@@ -59,6 +59,8 @@ extern "C" int main(int argc, char** argv)
     game.core.log.file_write("Loading configuration...");
     game.core.config.set_defaults();
     game.core.config.file_set("frost_and_flame.cfg");
+    game.core.config.file_clear();
+    game.core.config.file_save();
     game.core.config.file_load();
     game.core.log.file_write("Processing command line switches...");
     game.command_line.process(argc,argv);
