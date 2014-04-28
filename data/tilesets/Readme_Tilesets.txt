@@ -1,1 +1,0 @@
-Tiles sets have to have a minimum of two tiles!

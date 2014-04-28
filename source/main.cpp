@@ -28,7 +28,7 @@
 #include <SDL2/SDL_mixer.h>
 #include <SDL2/SDL_net.h>
 #include <SDL2/SDL_opengl.h>
-//#include <physfs.h>
+#include <physfs.h>
 #include "core/core.hpp"
 #include "core/misc.hpp"
 #include "game/game.hpp"
@@ -46,21 +46,19 @@ extern "C" int main(int argc, char** argv)
 //  --- Application initialization ---
     game.core.debug = true;
     game.core.application_name = "Frost and Flame V0.30 - www.physhexgames.co.nr";
-    game.core.application_icon = "data/icon.bmp";
+    game.core.application_icon = "data/icon.ico";
     game.core.log.file_set("frost_and_flame.log");
     game.core.log.file_clear();
     game.core.log.file_write("# ",game.core.application_name," #");
     game.core.log.file_write("# ---------------------------------------------- #");
     game.core.log.file_write(" ");
     game.core.log.file_write_time_stamp("Log file created: ");
-    //game.core.log.file_write("Initializing PhysicsFS file system....");
-    //PHYSFS_init(argv[0]);
-    //PHYSFS_addToSearchPath("data.fnf", 1);
+    game.core.log.file_write("Initializing PhysicsFS file system....");
+    PHYSFS_init(argv[0]);
+    PHYSFS_addToSearchPath("frost_and_flame.dat", 1);
     game.core.log.file_write("Loading configuration...");
     game.core.config.set_defaults();
     game.core.config.file_set("frost_and_flame.cfg");
-    game.core.config.file_clear();
-    game.core.config.file_save();
     game.core.config.file_load();
     game.core.log.file_write("Processing command line switches...");
     game.command_line.process(argc,argv);
@@ -72,7 +70,7 @@ extern "C" int main(int argc, char** argv)
     game.core.graphics.renderer = RENDERER_GL1;
     game.core.graphics.init();
     game.core.graphics.build_mode_list();
-    application_icon_surface = SDL_LoadBMP(game.core.application_icon);
+    application_icon_surface = game.core.file.load_image(game.core.application_icon);
     SDL_SetWindowIcon(game.core.graphics.window, application_icon_surface);
     SDL_FreeSurface(application_icon_surface);
     SDL_ShowCursor(SDL_DISABLE);
@@ -206,7 +204,7 @@ extern "C" int main(int argc, char** argv)
     game.core.log.file_write("Shutting down...");
     game.core.log.file_write_time_stamp("Game exited at: ");
     game.core.graphics.deinit();
-    //PHYSFS_deinit();
+    PHYSFS_deinit();
     SDL_Quit();
     return(0);
 };

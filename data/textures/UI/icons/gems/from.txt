@@ -1,9 +1,0 @@
-gem_0_0.png to gem_9_4.png
--------------------------------------------------------------
-URL: http://opengameart.org/content/basic-gems-icon-set-remix
-Author: prdatur
-License(s): CC-BY 3.0
--------------------------------------------------------------
-
-
-

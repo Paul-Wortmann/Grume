@@ -209,7 +209,7 @@ bool texture_manager_class::load_texture(texture_type *texture)
 {
     bool            return_value   = false;
     SDL_Surface    *image_surface  = NULL;
-    if ((image_surface = IMG_Load(texture->data.path.c_str())))
+    if ((image_surface = game.core.file.load_image(texture->data.path.c_str())))
     {
         GLint           number_of_colors;
         GLenum          texture_format = 0;
@@ -260,7 +260,7 @@ bool texture_manager_class::load_sprite_sheet(texture_type *texture, int width_s
     SDL_Surface    *sprite_sheet   = NULL;
     SDL_Surface    *temp_surface   = NULL;
     bool            return_value   = false;
-    if ((sprite_sheet = IMG_Load(texture->data.path.c_str())))
+    if ((sprite_sheet = game.core.file.load_image(texture->data.path.c_str())))
     {
         texture->data.width            = width_set;
         texture->data.height           = height_set;

@@ -57,7 +57,7 @@ Also included is the CMakeLists.txt file, which should help with Linux builds.
 Compiling under Ubuntu:
 -----------------------
 Make sure you have all the relevant dependencies installed.
-The dependencies required are the SDL2 development libraries as well as OpenGL and Glew.
+The dependencies required are the SDL2 development libraries as well as OpenGL, Glew and Physfs.
 To install development libraries you could use the commands below:
 
 - sudo apt-get install libsdl2-dev 
@@ -66,10 +66,11 @@ To install development libraries you could use the commands below:
 - sudo apt-get install libsdl2-ttf-dev 
 - sudo apt-get install libsdl2-net-dev 
 - sudo apt-get install libglew-dev
+- sudo apt-get install libphysfs-dev
 
 Or in one single line:
 
-- sudo apt-get install libsdl2-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-ttf-dev libsdl2-net-dev libglew-dev
+- sudo apt-get install libsdl2-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-ttf-dev libsdl2-net-dev libglew-dev libphysfs-dev
 
 Next you need to generate a make file, you can use the following command, make sure you are in the Frost and Flame directory:
 

@@ -67,12 +67,12 @@ Else (NOT SDL2MIXER_FOUND)
     INCLUDE_DIRECTORIES(${SDL2MIXER_INCLUDE_DIRS})
 EndIf (NOT SDL2MIXER_FOUND)
 
-# PKG_SEARCH_MODULE(SDL2MIXER REQUIRED SDL2_net)
-# If (NOT SDL2NET_FOUND)
-#     Message (ERROR "Couldn't find SDL2_net development files. On Debian-based systems (such as Ubuntu) you should install the 'libsdl2-net-dev' package.")
-# Else (NOT SDL2NET_FOUND)
-#     INCLUDE_DIRECTORIES(${SDL2NET_INCLUDE_DIRS})
-# EndIf (NOT SDL2NET_FOUND)
+ PKG_SEARCH_MODULE(SDL2NET REQUIRED SDL2_net)
+ If (NOT SDL2NET_FOUND)
+     Message (ERROR "Couldn't find SDL2_net development files. On Debian-based systems (such as Ubuntu) you should install the 'libsdl2-net-dev' package.")
+ Else (NOT SDL2NET_FOUND)
+     INCLUDE_DIRECTORIES(${SDL2NET_INCLUDE_DIRS})
+ EndIf (NOT SDL2NET_FOUND)
 
 PKG_SEARCH_MODULE(SDL2TTF REQUIRED SDL2_ttf)
 If (NOT SDL2TTF_FOUND)
@@ -81,13 +81,20 @@ Else (NOT SDL2TTF_FOUND)
     INCLUDE_DIRECTORIES(${SDL2TTF_INCLUDE_DIRS})
 EndIf (NOT SDL2TTF_FOUND)
 
-# Find_Package (PhysFS REQUIRED)
-# If (NOT PHYSFS_FOUND)
-#   Message (FATAL_ERROR "Couldn't find libphysfs development files. On Debian-based systems (such as Ubuntu) you should install the 'libphysfs-dev' package.")
-# Else (NOT PHYSFS_FOUND)
-#   Include_Directories (${PHYSFS_INCLUDE_DIR})
-#   link_directories(${PHYSFS_LIBRARIES})
-# EndIf (NOT PHYSFS_FOUND)
+#PKG_SEARCH_MODULE(PHYSFS REQUIRED PhysFS)
+#If (NOT PHYSFS_FOUND)
+#    Message (ERROR "Couldn't find PhysicsFS development files. On Debian-based systems (such as Ubuntu) you should install the 'libphysfs-dev' package.")
+#Else (NOT PHYSFS_FOUND)
+#    INCLUDE_DIRECTORIES(${PHYSFS_INCLUDE_DIRS})
+#EndIf (NOT PHYSFS_FOUND)
+
+find_package(PhysFS REQUIRED)
+if (PHYSFS_FOUND)
+  INCLUDE_DIRECTORIES(${PHYSFS_INCLUDE_DIR})
+  link_directories(${PHYSFS_LIBRARY})
+Else (PHYSFS_FOUND)
+   Message (FATAL_ERROR "Couldn't find libphysfs development files. On Debian-based systems (such as Ubuntu) you should install the 'libphysfs-dev' package.")
+endif (PHYSFS_FOUND)
 
 find_package(OpenGL REQUIRED)
 if (OPENGL_FOUND)
@@ -102,8 +109,10 @@ If (NOT GLEW_FOUND)
     Message (ERROR "Couldn't find glew development files. On Debian-based systems (such as Ubuntu) you should install the 'libglew-dev' package.")
 Else (NOT GLEW_FOUND)
     INCLUDE_DIRECTORIES(${GLEW_INCLUDE_DIRS})
+    #link_directories(${GLEW_LIBRARIES})
 EndIf (NOT GLEW_FOUND)
 
+include_directories(/usr/include)
 
 # Sources
 
@@ -187,6 +196,8 @@ ENDIF (WIN32)
 
 Add_Executable (frost_and_flame ${FROST_AND_FLAME_SOURCES})
 
-# Target_Link_Libraries (frost_and_flame ${CMAKE_LD_FLAGS} ${SDL2_LIBRARIES} ${SDL2IMAGE_LIBRARIES} ${SDL2MIXER_LIBRARIES} ${SDL2TTF_LIBRARIES} ${SDL2NET_LIBRARIES} ${OPENGL_LIBRARIES} ${PHYSFS_INCLUDE_DIR})
-Target_Link_Libraries (frost_and_flame ${CMAKE_LD_FLAGS} ${SDL2_LIBRARIES} ${SDL2IMAGE_LIBRARIES} ${SDL2MIXER_LIBRARIES} ${SDL2TTF_LIBRARIES} ${OPENGL_LIBRARIES} ${GLEW_LIBRARIES})
+link_directories( /path/to/PHYSFSlibs/)
+
+Target_Link_Libraries (frost_and_flame ${CMAKE_LD_FLAGS}  ${PHYSFS_LIBRARY} ${SDL2_LIBRARIES} ${SDL2IMAGE_LIBRARIES} ${SDL2MIXER_LIBRARIES} ${SDL2TTF_LIBRARIES} ${SDL2NET_LIBRARIES} ${OPENGL_LIBRARIES} ${GLEW_LIBRARIES})
+
 

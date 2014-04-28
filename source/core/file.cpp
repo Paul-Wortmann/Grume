@@ -27,6 +27,10 @@
 #include "file.hpp"
 #include "../game/game.hpp"
 
+#include <SDL2/SDL.h>
+#include <SDL2/SDL_image.h>
+#include <physfs.h>
+
 extern game_class game;
 
 file_class::file_class (void)
@@ -138,19 +142,42 @@ char* file_class::filetobuf (std::string file_name)
     return buf;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+SDL_Surface * file_class::load_image(std::string file_name)
+{
+    SDL_Surface *temp_serface = NULL;
+    if (PHYSFS_exists(file_name.c_str()))
+    {
+        PHYSFS_openRead(file_name.c_str());
+        PHYSFS_File *file_pointer = NULL;
+        file_pointer = PHYSFS_openRead(file_name.c_str());
+        if (file_pointer)
+        {
+            PHYSFS_sint64 file_size = PHYSFS_fileLength(file_pointer);
+            char *file_data = new char[file_size];
+            PHYSFS_read(file_pointer, file_data, 1, file_size);
+            SDL_RWops *rwops_pointer = NULL;
+            rwops_pointer = SDL_RWFromMem(file_data, file_size);
+            if (rwops_pointer != NULL)
+            {
+                temp_serface  = IMG_Load_RW(rwops_pointer, false);
+                if (rwops_pointer) SDL_FreeRW(rwops_pointer);
+            }
+            else
+            {
+                game.core.log.file_write("Fail -> PysicsFS unable to allocate rwops pointer for file - ",file_name.c_str());
+            }
+            if (file_data) delete [] file_data;
+            if (file_pointer) PHYSFS_close(file_pointer);
+        }
+        else
+        {
+            game.core.log.file_write("Fail -> PysicsFS unable to open file - ",file_name.c_str());
+        }
+    }
+    else
+    {
+        game.core.log.file_write("Fail -> PysicsFS unable to find file - ",file_name.c_str());
+    }
+    return(temp_serface);
+}
 
