@@ -151,7 +151,12 @@ void file_class::file_system_init(char** arg_data)
     PHYSFS_Version version_info;
     PHYSFS_getLinkedVersion(&version_info);
     game.core.log.file_write("PhysFS Version -> ",version_info.major,".",version_info.minor,".",version_info.patch);
-    PHYSFS_addToSearchPath("frost_and_flame.dat", 1);
+    int load_error = PHYSFS_addToSearchPath("frost_and_flame.dat", 1);
+    if (load_error != 1)
+    {
+        game.core.log.file_write("Fail -> Unable to load Frost and Flame data file: ",load_error);
+        game.state = STATE_QUIT;
+    }
 }
 
 void file_class::file_system_deinit(void)

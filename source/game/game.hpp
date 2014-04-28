@@ -51,6 +51,7 @@
 #define STATE_QUIT 0
 #define STATE_MENU 1
 #define STATE_GAME 2
+#define STATE_INIT 3
 
 struct zoom_type
 {
