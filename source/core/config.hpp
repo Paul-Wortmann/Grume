@@ -70,6 +70,7 @@ class config_class
         bool         file_clear(void);
         bool         file_delete(void);
         void         mouse_autohide_process(bool set_active);
+        void         log_system_configuration(void);
 };
 
 #endif //CONFIG_H

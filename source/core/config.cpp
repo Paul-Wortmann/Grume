@@ -350,5 +350,26 @@ void config_class::mouse_autohide_process(bool set_active)
     }
 };
 
+void config_class::log_system_configuration(void)
+{
+    game.core.log.file_write("# ------------ System Information -------------- #");
+    game.core.log.file_write("Detected - ",SDL_GetPlatform(), " Operating System");
+    game.core.log.file_write("Detected - ",SDL_GetCPUCount()," logical CPU cores");
+    game.core.log.file_write("Detected - ",SDL_GetCPUCacheLineSize()," CPU cache line size");
+    game.core.log.file_write("Detected - ",SDL_GetSystemRAM(),"MB system RAM");
+    if (SDL_Has3DNow())   game.core.log.file_write("Detected - 3D Now");
+    if (SDL_HasAVX())     game.core.log.file_write("Detected - AVX");
+    if (SDL_HasAltiVec()) game.core.log.file_write("Detected - AltiVec");
+    if (SDL_HasMMX())     game.core.log.file_write("Detected - MMX");
+    if (SDL_HasRDTSC())   game.core.log.file_write("Detected - RDTSC");
+    if (SDL_HasSSE())     game.core.log.file_write("Detected - SSE");
+    if (SDL_HasSSE2())    game.core.log.file_write("Detected - SSE2");
+    if (SDL_HasSSE3())    game.core.log.file_write("Detected - SSE3");
+    if (SDL_HasSSE41())   game.core.log.file_write("Detected - SSE41");
+    if (SDL_HasSSE42())   game.core.log.file_write("Detected - SSE42");
 
+
+
+    game.core.log.file_write("# ---------------------------------------------- #");
+}
 
