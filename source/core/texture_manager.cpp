@@ -369,12 +369,13 @@ bool texture_manager_class::load_string(texture_type *texture)
 {
     if (texture->data.text.font == NULL) texture->data.text.font = game.font_manager.root;
     bool return_value   = false;
-    if ((texture->data.text.text_string.length() > 0) && (texture->data.text.font != NULL))
+    if ((texture->data.text.text_string.length() > 0) && (texture->data.text.font->font_data != NULL))
     {
         SDL_Surface    *image_surface  = NULL;
         const char*         write_data = texture->data.text.text_string.c_str();
         SDL_Color font_color = {texture->data.text.color.r,texture->data.text.color.g,texture->data.text.color.b,texture->data.text.color.a};
-        if ((image_surface = TTF_RenderUTF8_Blended(texture->data.text.font->font_data,write_data,font_color)))
+        image_surface = TTF_RenderUTF8_Blended(texture->data.text.font->font_data,write_data,font_color);
+        if (image_surface)
         {
             GLint           number_of_colors;
             GLenum          texture_format = 0;

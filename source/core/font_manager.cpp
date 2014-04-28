@@ -44,10 +44,31 @@ font_manager_class::~font_manager_class (void)
         while (temp_pointer->next != NULL)
         {
             TTF_CloseFont(temp_pointer->font_data);
+            if (temp_pointer->rwops_pointer) SDL_FreeRW(temp_pointer->rwops_pointer);
+            if (temp_pointer->file_data) delete [] temp_pointer->file_data;
             temp_pointer = temp_pointer->next;
         }
     }
 };
+
+void font_manager_class::init(void)
+{
+    game.core.log.file_write("Initializing font manager.");
+    if(!TTF_WasInit() && TTF_Init()==-1)
+    {
+        game.core.log.file_write("Fail -> TTF_Init: ",TTF_GetError());
+    }
+    const SDL_version *linked_version = TTF_Linked_Version();
+    SDL_version compiled_version;
+    SDL_TTF_VERSION(&compiled_version);
+    game.core.log.file_write("SDL_TTF compiled version: ",compiled_version.major,".",compiled_version.minor,".",compiled_version.patch);
+    game.core.log.file_write("SDL_TTF Linked version:   ",linked_version->major,".",linked_version->minor,".",linked_version->patch);
+}
+
+void font_manager_class::deinit(void)
+{
+    if (TTF_WasInit()) TTF_Quit();
+}
 
 font_type *font_manager_class::add_font (std::string file_name)
 {
@@ -76,7 +97,7 @@ font_type *font_manager_class::add_font (std::string file_name)
         font_manager_class::last->next = new font_type;
         font_manager_class::last->next = NULL;
     }
-    font_manager_class::last->path = file_name.c_str();
+    font_manager_class::last->path          = file_name.c_str();
     font_manager_class::last->loaded = font_manager_class::load_font(last);
     if (font_manager_class::last->loaded)
     {
@@ -85,27 +106,27 @@ font_type *font_manager_class::add_font (std::string file_name)
     }
     else
     {
-        game.core.log.file_write("Fail - font manager function, add font -> ",file_name.c_str());
+        game.core.log.file_write("Fail - Font manager function, add font -> ",file_name.c_str());
         return (font_manager_class::last);
     }
 };
 
-bool font_manager_class::load_font (font_type *font)
+bool font_manager_class::load_font (font_type *font, int pt_size)
 {
-    bool return_value = false;
-    font->font_data = TTF_OpenFont(font->path.c_str(), 48);
-    if (font->font_data != NULL) return_value = true;
-    else game.core.log.file_write("Failed to load font ->",font->path.c_str());
+    bool return_value   = false;
+    game.core.file.load_font(font,pt_size);
+    if (font->font_data != NULL)
+    {
+        //game.core.log.file_write("Loaded font -> ",font->path.c_str());
+        return_value = true;
+    }
+    else game.core.log.file_write("Failed to load font -> ",font->path.c_str());
     return (return_value);
 };
 
-bool font_manager_class::load_font (font_type *font, int pt_size)
+bool font_manager_class::load_font (font_type *font)
 {
-    bool return_value = false;
-    font->font_data = TTF_OpenFont(font->path.c_str(),pt_size);
-    if (font->font_data != NULL) return_value = true;
-    else game.core.log.file_write("Failed to load font ->",font->path.c_str());
-    return (return_value);
+    return (font_manager_class::load_font (font, 48));
 };
 
 bool font_manager_class::write (font_type *font, Uint8 r,Uint8 g,Uint8 b,Uint8 a,float x,float y,std::string text,int int_data)

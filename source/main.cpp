@@ -90,18 +90,17 @@ extern "C" int main(int argc, char** argv)
     //SDL_JoystickEventState(SDL_ENABLE);
     //joystick = SDL_JoystickOpen(0);
 //  --- font ---
-    game.core.log.file_write("Initializing font system...");
-    TTF_Init();
+    game.font_manager.init();
 //  --- resources ---
     game.loading_screen.display("data/loading_screen.png");
     game.core.log.file_write("Loading resources....");
-    game.UI_manager.data.cursor.normal_arrow = game.texture_manager.add_texture("data/textures/UI/cursors/default.png");
-    game.music_manager.current = game.music_manager.add_music("data/music/menu_00.s3m");
 //  --- miscellaneous ---
     game.core.log.file_write("Seeding random...");
     seed_rand();
     game.core.log.file_write("Initializing UI system...");
     game.UI_manager.setup();
+    game.UI_manager.data.cursor.normal_arrow = game.texture_manager.add_texture("data/textures/UI/cursors/default.png");
+    game.music_manager.current = game.music_manager.add_music("data/music/menu_00.s3m");
     game.core.log.file_write("Initializing game system...");
     game.init();
     game.core.log.file_write("Initializing event handlers...");
@@ -203,6 +202,7 @@ extern "C" int main(int argc, char** argv)
     game.core.log.file_write("Shutting down...");
     game.core.log.file_write_time_stamp("Game exited at: ");
     game.core.graphics.deinit();
+    game.font_manager.deinit();
     game.core.file.file_system_deinit();
     SDL_Quit();
     return(0);

@@ -620,7 +620,7 @@ void UI_manager_class::render(void)
                                             float temp_x = UI_form_pointer->data.element[element_number].position.x - (UI_form_pointer->data.element[element_number].size.x/2.5f);
                                             float temp_y = UI_form_pointer->data.element[element_number].position.y - (UI_form_pointer->data.element[element_number].size.y/2.5f);
                                             game.texture_manager.load_string(UI_form_pointer->data.element[element_number].title.text,game.font_manager.root,int_to_string(UI_form_pointer->data.element[element_number].quantity),0.8f,255,255,255,255,TEXTURE_RENDER_LEFT);
-                                            game.texture_manager.draw(UI_form_pointer->data.element[element_number].title.text,false,temp_x,temp_y,UI_form_pointer->data.element[element_number].position.z,UI_form_pointer->data.element[element_number].title.text->data.width,UI_form_pointer->data.element[element_number].title.text->data.height);
+                                            if(UI_form_pointer->data.element[element_number].title.text) game.texture_manager.draw(UI_form_pointer->data.element[element_number].title.text,false,temp_x,temp_y,UI_form_pointer->data.element[element_number].position.z,UI_form_pointer->data.element[element_number].title.text->data.width,UI_form_pointer->data.element[element_number].title.text->data.height);
                                         }
                                     }
                                 }

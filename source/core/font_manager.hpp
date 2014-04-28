@@ -34,6 +34,8 @@ struct font_type
     bool            loaded;
     std::string     path;
     TTF_Font       *font_data;
+    SDL_RWops      *rwops_pointer;
+    char           *file_data;
     font_type      *next;
 };
 
@@ -46,6 +48,8 @@ class font_manager_class
         font_type    *root;
         font_type    *last;
         font_type    *add_font(std::string file_name);
+        void          init(void);
+        void          deinit(void);
         bool          load_font(font_type *font);
         bool          load_font(font_type *font, int pt_size);
         bool          write(font_type *font, Uint8 r,Uint8 g,Uint8 b,Uint8 a,float x,float y,std::string text,int   int_data);

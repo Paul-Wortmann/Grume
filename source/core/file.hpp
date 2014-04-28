@@ -43,6 +43,7 @@ class file_class
         void         file_system_init  (char** arg_data);
         void         file_system_deinit(void);
         SDL_Surface *load_image        (std::string file_name);
+        void         load_font         (font_type *font, int pt_size);
 };
 
 

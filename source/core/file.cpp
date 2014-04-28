@@ -29,6 +29,8 @@
 
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
+#include <SDL2/SDL_ttf.h>
+#include <string>
 #include <physfs.h>
 
 extern game_class game;
@@ -194,16 +196,42 @@ SDL_Surface * file_class::load_image(std::string file_name)
     {
         game.core.log.file_write("Fail -> PhysicsFS unable to find file - ",file_name.c_str());
     }
+    if (!temp_serface) game.state = STATE_QUIT;
     return(temp_serface);
 }
 
-
-/*
-// load font.ttf at size 16 into font
-TTF_Font *font;
-font=TTF_OpenFontRW(SDL_RWFromFile("font.ttf"), 1, 16);
-if(!font) {
-    printf("TTF_OpenFontRW: %s\n", TTF_GetError());
-    // handle error
+void file_class::load_font(font_type *font, int pt_size)
+{
+    if (PHYSFS_exists(font->path.c_str()))
+    {
+        PHYSFS_openRead(font->path.c_str());
+        PHYSFS_File *file_pointer = NULL;
+        file_pointer = PHYSFS_openRead(font->path.c_str());
+        if (file_pointer)
+        {
+            PHYSFS_sint64 file_size = PHYSFS_fileLength(file_pointer);
+            font->file_data = new char[file_size];
+            PHYSFS_read(file_pointer, font->file_data, 1, file_size);
+            font->rwops_pointer = SDL_RWFromMem(font->file_data, file_size);
+            if (font->rwops_pointer != NULL)
+            {
+                font->font_data = TTF_OpenFontRW(font->rwops_pointer, false,pt_size);
+                if (!font->font_data) game.core.log.file_write("Fail -> TTF_OpenFontRW: ",TTF_GetError());
+            }
+            else
+            {
+                game.core.log.file_write("Fail -> PhysicsFS unable to allocate rwops pointer for file - ",font->path.c_str());
+            }
+            if (file_pointer) PHYSFS_close(file_pointer);
+        }
+        else
+        {
+            game.core.log.file_write("Fail -> PhysicsFS unable to open file - ",font->path.c_str());
+        }
+    }
+    else
+    {
+        game.core.log.file_write("Fail -> PhysicsFS unable to find file - ",font->path.c_str());
+    }
+    if (!font->font_data) game.state = STATE_QUIT;
 }
-*/
