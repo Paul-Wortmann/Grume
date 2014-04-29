@@ -5,47 +5,13 @@ README file for Frost and Flame
 
 This is Frost and Flame, a free/open source computer game.
 
+- More information can be found in the game_guide.pdf file.
+
 About:
 -----
 Frost and Flame is still in its early stages of infancy.  Currently a non-playable WIP.
 Frost and flame is an isometric, action role playing game.
 Planned features include, a particle engine, rich in content and re-playability with random item, quest and level generation.
-
-Features:
---------
-- Menu, UI, action bar, inventory etc...
-- Items, books, potions, weapons, armor etc...
-- Import / export maps in the "Tiled" map editor format. (http://www.mapeditor.org/)
-- Random dungeon and cave generation.
-
-More information may be found in the changelog.txt file.
-
-Usage:
------
-Game play and menu interaction is primerily controlled via the mouse.
-The left mouse button is used for draging menus and items about.
-The Right mouse button is used for item usage.
-Apart from the mouse various keys are also assigned for usage:
-
-- E      - Open / close the Equipment window.
-- Q      - Open / close the Quest log.
-- C      - Open / close the Character window.
-- I      - Open / close the Inventory.
-- B      - Open / close the Skill Book.
-- SPACE  - Close all open windows.
-- ESCAPE - Open / close the main menu.
-
-If developer mode is enabled:
-
-- A      - Random map generator 0.
-- S      - Random map generator 1.
-- D      - Random map generator 2.
-- F      - Random map generator 3.
-- G      - Random map generator 4.
-- H      - Random map generator 5.
-- J      - Random map generator 6.
-- K      - Random map generator 7.
-- X      - Attempt to force kill Frost and Flame.
 
 Compiling:
 ---------
@@ -93,13 +59,6 @@ Although if you are interested in creating resources for Frost and Flame, I may 
 But at this moment in time, I am undecided as to what direction the game will go, probably 3D at some point, thus 2D resources would probably be unnecessary in the long run.
 As for music I am interested in Diablo 2 style music in MOD form....
 
-Multiple language support:
----------------------
-You can set your desired language in the config file. (Frost_And_Flame.cfg)
-The value to set should be identical to the language files name, excluding the ".txt". 
-ie. for "english.txt" set Language = english in the config file.
-Please note that language files have to be saved in UTF-8 format, else they may fail to function correctly.
-
 Known bugs:
 ----------
 I am currently writing a new graphics engine for Frost and Flame, so expect graphical glitches for now...
@@ -107,10 +66,6 @@ As this is still a work in progress, the format of the savegames may, and does c
 It is recommended you either overwrite your older savegames with new ones, or delete the older ones when upgrading to a newer version of Frost and Flame.
 Or better still remove the older version of the game completely, before installing a newer version.
 If the game fails to load, try deleting the Frost_And_Flame.cfg file, this may be due to recent improvements to the game.
-
-Credits:
--------
-This information can be found in the credits_license.txt file.
 
 License:
 -------
