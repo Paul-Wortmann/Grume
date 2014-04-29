@@ -170,51 +170,54 @@ bool GL_init(void)
                         if (game.core.debug) for (int j = 0; j < i; j++) game.core.log.file_write("Loaded OpenGL Extension -> ",(const char*)glGetStringi(GL_EXTENSIONS, j));
                         glClearColor( 0.0f, 0.0f, 0.0f, 0.0f );
                         // Vertex Shader
-                        game.core.graphics.render_GL.vertexsource = game.core.file.filetobuf("data/shaders/aabb.vert");
+                        int shader_compile_status = 0;
+                        GLchar *vertex_shader_file = game.core.file.load_file_to_buffer("data/shaders/aabb.vert");
                         game.core.graphics.render_GL.vertexshader = glCreateShader(GL_VERTEX_SHADER);
-                        glShaderSource(game.core.graphics.render_GL.vertexshader, 1, (const GLchar**)&game.core.graphics.render_GL.vertexsource, 0);
+                        glShaderSource(game.core.graphics.render_GL.vertexshader, 1, (const GLchar**)&vertex_shader_file, 0);
                         glCompileShader(game.core.graphics.render_GL.vertexshader);
-                        glGetShaderiv(game.core.graphics.render_GL.vertexshader, GL_COMPILE_STATUS, &game.core.graphics.render_GL.IsCompiled_VS);
-                        if (game.core.graphics.render_GL.IsCompiled_VS != 1)
+                        glGetShaderiv(game.core.graphics.render_GL.vertexshader, GL_COMPILE_STATUS, &shader_compile_status);
+                        if (shader_compile_status != 1)
                         {
                             int maxLength;
                             glGetShaderiv(game.core.graphics.render_GL.vertexshader, GL_INFO_LOG_LENGTH, &maxLength);
-                            game.core.graphics.render_GL.vertexInfoLog = new char[maxLength];
-                            glGetShaderInfoLog(game.core.graphics.render_GL.vertexshader, maxLength, &maxLength, game.core.graphics.render_GL.vertexInfoLog);
-                            game.core.log.file_write("FAIL -> Error loading Vertex Shader.");
-                            delete game.core.graphics.render_GL.vertexInfoLog;
+                            char *vertex_info_Log = new char[maxLength];
+                            glGetShaderInfoLog(game.core.graphics.render_GL.vertexshader, maxLength, &maxLength, vertex_info_Log);
+                            game.core.log.file_write("FAIL -> Error loading Vertex Shader: ",vertex_info_Log);
+                            delete vertex_info_Log;
                         }
                         // Fragment Shader
-                        game.core.graphics.render_GL.fragmentsource = game.core.file.filetobuf("data/shaders/aabb.frag");
+                        shader_compile_status = 0;
+                        GLchar *fragment_shader_file = game.core.file.load_file_to_buffer("data/shaders/aabb.frag");
                         game.core.graphics.render_GL.fragmentshader = glCreateShader(GL_FRAGMENT_SHADER);
-                        glShaderSource(game.core.graphics.render_GL.fragmentshader, 1, (const GLchar**)&game.core.graphics.render_GL.fragmentsource, 0);
+                        glShaderSource(game.core.graphics.render_GL.fragmentshader, 1, (const GLchar**)&fragment_shader_file, 0);
                         glCompileShader(game.core.graphics.render_GL.fragmentshader);
-                        glGetShaderiv(game.core.graphics.render_GL.fragmentshader, GL_COMPILE_STATUS, &game.core.graphics.render_GL.IsCompiled_FS);
-                        if (game.core.graphics.render_GL.IsCompiled_FS != 1)
+                        glGetShaderiv(game.core.graphics.render_GL.fragmentshader, GL_COMPILE_STATUS, &shader_compile_status);
+                        if (shader_compile_status != 1)
                         {
                             int maxLength;
                             glGetShaderiv(game.core.graphics.render_GL.fragmentshader, GL_INFO_LOG_LENGTH, &maxLength);
-                            game.core.graphics.render_GL.fragmentInfoLog = new char[maxLength];
-                            glGetShaderInfoLog(game.core.graphics.render_GL.fragmentshader, maxLength, &maxLength, game.core.graphics.render_GL.fragmentInfoLog);
-                            game.core.log.file_write("FAIL -> Error loading Fragment Shader.");
-                            delete game.core.graphics.render_GL.fragmentInfoLog;
+                            char *fragment_info_Log = new char[maxLength];
+                            glGetShaderInfoLog(game.core.graphics.render_GL.fragmentshader, maxLength, &maxLength, fragment_info_Log);
+                            game.core.log.file_write("FAIL -> Error loading Fragment Shader: ",fragment_info_Log);
+                            delete fragment_info_Log;
                         }
                         // Shader Program
+                        int shader_program_link_status = 0;
                         game.core.graphics.render_GL.shaderprogram = glCreateProgram();
                         glAttachShader(game.core.graphics.render_GL.shaderprogram, game.core.graphics.render_GL.vertexshader);
                         glAttachShader(game.core.graphics.render_GL.shaderprogram, game.core.graphics.render_GL.fragmentshader);
                         glBindAttribLocation(game.core.graphics.render_GL.shaderprogram, 0, "in_Position");
                         glBindAttribLocation(game.core.graphics.render_GL.shaderprogram, 1, "in_Color");
                         glLinkProgram(game.core.graphics.render_GL.shaderprogram);
-                        glGetProgramiv(game.core.graphics.render_GL.shaderprogram, GL_LINK_STATUS, (int *)&game.core.graphics.render_GL.IsLinked);
-                        if (game.core.graphics.render_GL.IsLinked != 1)
+                        glGetProgramiv(game.core.graphics.render_GL.shaderprogram, GL_LINK_STATUS, (int *)&shader_program_link_status);
+                        if (shader_program_link_status != 1)
                         {
                             int maxLength;
                             glGetProgramiv(game.core.graphics.render_GL.shaderprogram, GL_INFO_LOG_LENGTH, &maxLength);
-                            game.core.graphics.render_GL.shaderProgramInfoLog = new char[maxLength];
-                            glGetProgramInfoLog(game.core.graphics.render_GL.shaderprogram, maxLength, &maxLength, game.core.graphics.render_GL.shaderProgramInfoLog);
-                            game.core.log.file_write("FAIL -> Shader program error.");
-                            delete game.core.graphics.render_GL.shaderProgramInfoLog;
+                            char *shader_program_info_Log = new char[maxLength];
+                            glGetProgramInfoLog(game.core.graphics.render_GL.shaderprogram, maxLength, &maxLength, shader_program_info_Log);
+                            game.core.log.file_write("FAIL -> Shader program error: ",shader_program_info_Log);
+                            delete shader_program_info_Log;
                         }
                         glUseProgram(game.core.graphics.render_GL.shaderprogram);
 
@@ -269,8 +272,8 @@ bool GL_deinit(void)
         if (game.core.graphics.render_GL.object_vao->number_of_vbo > 0) glDeleteBuffers(game.core.graphics.render_GL.object_vao->number_of_vbo, game.core.graphics.render_GL.object_vao->vbo_data);
         if (game.core.graphics.render_GL.number_VAO > 0) glDeleteVertexArrays(game.core.graphics.render_GL.number_VAO, &game.core.graphics.render_GL.object_vao->vao_data);
     }
-    delete game.core.graphics.render_GL.vertexsource;
-    delete game.core.graphics.render_GL.fragmentsource;
+    //delete game.core.graphics.render_GL.vertexsource;
+    //delete game.core.graphics.render_GL.fragmentsource;
     return (return_value);
 };
 

@@ -320,3 +320,41 @@ Mix_Chunk *file_class::load_sound(std::string file_name)
     if (!temp_sound) game.state = STATE_QUIT;
     return(temp_sound);
 }
+
+char *file_class::load_file_to_buffer (std::string file_name)
+{
+    char *temp_buffer = NULL;
+    if (PHYSFS_exists(file_name.c_str()))
+    {
+        PHYSFS_openRead(file_name.c_str());
+        PHYSFS_File *file_pointer = NULL;
+        file_pointer = PHYSFS_openRead(file_name.c_str());
+        if (file_pointer)
+        {
+            PHYSFS_sint64 file_size = PHYSFS_fileLength(file_pointer);
+            temp_buffer = new char[file_size+1];
+            int length_read = PHYSFS_read(file_pointer, temp_buffer, 1, file_size);
+            temp_buffer[file_size] = 0; // added for GL shader loading
+            if (file_size != length_read)
+            {
+                game.core.log.file_write("Fail -> PhysicsFS ERROR loading file into buffer - ",file_name.c_str());
+                game.core.log.file_write("   File size - ", (int)file_size, " data length read into buffer - ", length_read);
+            }
+            if (file_pointer) PHYSFS_close(file_pointer);
+        }
+        else
+        {
+            game.core.log.file_write("Fail -> PhysicsFS unable to open file - ",file_name.c_str());
+        }
+    }
+    else
+    {
+        game.core.log.file_write("Fail -> PhysicsFS unable to find file - ",file_name.c_str());
+    }
+    if (temp_buffer == NULL)
+    {
+        game.core.log.file_write("Fail -> PhysicsFS unable to load file into buffer - ",file_name.c_str());
+        game.state = STATE_QUIT;
+    }
+    return(temp_buffer);
+}

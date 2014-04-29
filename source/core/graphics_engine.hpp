@@ -53,15 +53,6 @@ struct render_GL_struct
     int number_VAO;
     GL_object_struct *object_vao;
 
-    int IsCompiled_VS;
-    int IsCompiled_FS;
-    int IsLinked;
-    int maxLength;
-    char *vertexInfoLog;
-    char *fragmentInfoLog;
-    char *shaderProgramInfoLog;
-    GLchar *vertexsource;
-    GLchar *fragmentsource;
     GLuint  vertexshader;
     GLuint  fragmentshader;
     GLuint  shaderprogram;

@@ -33,20 +33,21 @@ class file_class
     public:
          file_class(void);
         ~file_class(void);
-        bool         extension_exist   (std::string file_name);
-        bool         extension_exist   (std::string file_name, std::string file_extension);
-        std::string  extension_add     (std::string file_name, std::string file_extension);
-        std::string  extension_remove  (std::string file_name);
-        std::string  path_get          (std::string file_name);
-        std::string  path_remove       (std::string file_name);
-        std::string  path_add          (std::string file_name, std::string path_name);
-        char        *filetobuf         (std::string file_name);
-        void         file_system_init  (char** arg_data);
-        void         file_system_deinit(void);
-        SDL_Surface *load_image        (std::string file_name);
-        void         load_font         (font_type *font, int pt_size);
-        Mix_Music   *load_music        (std::string file_name);
-        Mix_Chunk   *load_sound        (std::string file_name);
+        bool         extension_exist    (std::string file_name);
+        bool         extension_exist    (std::string file_name, std::string file_extension);
+        std::string  extension_add      (std::string file_name, std::string file_extension);
+        std::string  extension_remove   (std::string file_name);
+        std::string  path_get           (std::string file_name);
+        std::string  path_remove        (std::string file_name);
+        std::string  path_add           (std::string file_name, std::string path_name);
+        char        *filetobuf          (std::string file_name);
+        void         file_system_init   (char** arg_data);
+        void         file_system_deinit (void);
+        SDL_Surface *load_image         (std::string file_name);
+        void         load_font          (font_type *font, int pt_size);
+        Mix_Music   *load_music         (std::string file_name);
+        Mix_Chunk   *load_sound         (std::string file_name);
+        char        *load_file_to_buffer(std::string file_name);
 };
 
 
