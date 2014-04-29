@@ -170,8 +170,7 @@ void setup_action_bar(int UID)
     UI_form_pointer->data.element[element_number].value_max                 = 1000;
     UI_form_pointer->data.element[element_number].zoom.enabled              = false;
     UI_form_pointer->data.element[element_number].tooltip.enabled           = true;
-    UI_form_pointer->data.element[element_number].tooltip.text              = new texture_type;
-    game.texture_manager.load_string(UI_form_pointer->data.element[element_number].tooltip.text,game.font_manager.root,"0",0.8f,255,255,255,255);
+    UI_form_pointer->data.element[element_number].tooltip.text              = game.texture_manager.add_texture(game.font_manager.root,"0",0.8f,0,0,255,255,255,255,TEXTURE_STRING);
     UI_form_pointer->data.element[element_number].tooltip.size.x            = 12.0f;
     UI_form_pointer->data.element[element_number].tooltip.size.y            = 30.0f;
     UI_form_pointer->data.element[element_number].color                     = UI_form_pointer->data.color;
@@ -211,8 +210,8 @@ void setup_action_bar(int UID)
     UI_form_pointer->data.element[element_number].title.text                = NULL;
     UI_form_pointer->data.element[element_number].title.enabled             = false;
     UI_form_pointer->data.element[element_number].tooltip.enabled           = true;
-    UI_form_pointer->data.element[element_number].tooltip.text              = new texture_type;
-    game.texture_manager.load_string(UI_form_pointer->data.element[element_number].tooltip.text,game.font_manager.root,"Main Menu",0.8f,255,255,255,255,TEXTURE_RENDER_LEFT+TEXTURE_RENDER_UP);
+    UI_form_pointer->data.element[element_number].tooltip.text              = game.texture_manager.add_texture(game.font_manager.root," Main Menu",0.8f,0,0,255,255,255,255,TEXTURE_STRING);
+    UI_form_pointer->data.element[element_number].tooltip.text->data.render_positioning = TEXTURE_RENDER_LEFT+TEXTURE_RENDER_UP;
     UI_form_pointer->data.element[element_number].tooltip.size.x            = 12.0f;
     UI_form_pointer->data.element[element_number].tooltip.size.y            = 30.0f;
     UI_form_pointer->data.element[element_number].active                    = true;
@@ -237,8 +236,8 @@ void setup_action_bar(int UID)
     UI_form_pointer->data.element[element_number].title.text                = NULL;
     UI_form_pointer->data.element[element_number].title.enabled             = false;
     UI_form_pointer->data.element[element_number].tooltip.enabled           = true;
-    UI_form_pointer->data.element[element_number].tooltip.text              = new texture_type;
-    game.texture_manager.load_string(UI_form_pointer->data.element[element_number].tooltip.text,game.font_manager.root,"Quest Log",0.8f,255,255,255,255,TEXTURE_RENDER_LEFT+TEXTURE_RENDER_UP);
+    UI_form_pointer->data.element[element_number].tooltip.text              = game.texture_manager.add_texture(game.font_manager.root," Quest Log",0.8f,0,0,255,255,255,255,TEXTURE_STRING);
+    UI_form_pointer->data.element[element_number].tooltip.text->data.render_positioning = TEXTURE_RENDER_LEFT+TEXTURE_RENDER_UP;
     UI_form_pointer->data.element[element_number].tooltip.size.x            = 12.0f;
     UI_form_pointer->data.element[element_number].tooltip.size.y            = 30.0f;
     UI_form_pointer->data.element[element_number].active                    = true;
@@ -263,8 +262,8 @@ void setup_action_bar(int UID)
     UI_form_pointer->data.element[element_number].title.text                = NULL;
     UI_form_pointer->data.element[element_number].title.enabled             = false;
     UI_form_pointer->data.element[element_number].tooltip.enabled           = true;
-    UI_form_pointer->data.element[element_number].tooltip.text              = new texture_type;
-    game.texture_manager.load_string(UI_form_pointer->data.element[element_number].tooltip.text,game.font_manager.root,"Skill Book",0.8f,255,255,255,255,TEXTURE_RENDER_LEFT+TEXTURE_RENDER_UP);
+    UI_form_pointer->data.element[element_number].tooltip.text              = game.texture_manager.add_texture(game.font_manager.root," Skill Book",0.8f,0,0,255,255,255,255,TEXTURE_STRING);
+    UI_form_pointer->data.element[element_number].tooltip.text->data.render_positioning = TEXTURE_RENDER_LEFT+TEXTURE_RENDER_UP;
     UI_form_pointer->data.element[element_number].tooltip.size.x            = 12.0f;
     UI_form_pointer->data.element[element_number].tooltip.size.y            = 30.0f;
     UI_form_pointer->data.element[element_number].active                    = true;
@@ -289,8 +288,8 @@ void setup_action_bar(int UID)
     UI_form_pointer->data.element[element_number].title.text                = NULL;
     UI_form_pointer->data.element[element_number].title.enabled             = false;
     UI_form_pointer->data.element[element_number].tooltip.enabled           = true;
-    UI_form_pointer->data.element[element_number].tooltip.text              = new texture_type;
-    game.texture_manager.load_string(UI_form_pointer->data.element[element_number].tooltip.text,game.font_manager.root,"Character",0.8f,255,255,255,255,TEXTURE_RENDER_LEFT+TEXTURE_RENDER_UP);
+    UI_form_pointer->data.element[element_number].tooltip.text              = game.texture_manager.add_texture(game.font_manager.root," Character",0.8f,0,0,255,255,255,255,TEXTURE_STRING);
+    UI_form_pointer->data.element[element_number].tooltip.text->data.render_positioning = TEXTURE_RENDER_LEFT+TEXTURE_RENDER_UP;
     UI_form_pointer->data.element[element_number].tooltip.size.x            = 12.0f;
     UI_form_pointer->data.element[element_number].tooltip.size.y            = 30.0f;
     UI_form_pointer->data.element[element_number].active                    = true;
@@ -315,8 +314,8 @@ void setup_action_bar(int UID)
     UI_form_pointer->data.element[element_number].title.text                = NULL;
     UI_form_pointer->data.element[element_number].title.enabled             = false;
     UI_form_pointer->data.element[element_number].tooltip.enabled           = true;
-    UI_form_pointer->data.element[element_number].tooltip.text              = new texture_type;
-    game.texture_manager.load_string(UI_form_pointer->data.element[element_number].tooltip.text,game.font_manager.root,"Equipment",0.8f,255,255,255,255,TEXTURE_RENDER_LEFT+TEXTURE_RENDER_UP);
+    UI_form_pointer->data.element[element_number].tooltip.text              = game.texture_manager.add_texture(game.font_manager.root," Equipment",0.8f,0,0,255,255,255,255,TEXTURE_STRING);
+    UI_form_pointer->data.element[element_number].tooltip.text->data.render_positioning = TEXTURE_RENDER_LEFT+TEXTURE_RENDER_UP;
     UI_form_pointer->data.element[element_number].tooltip.size.x            = 12.0f;
     UI_form_pointer->data.element[element_number].tooltip.size.y            = 30.0f;
     UI_form_pointer->data.element[element_number].active                    = true;
@@ -341,8 +340,8 @@ void setup_action_bar(int UID)
     UI_form_pointer->data.element[element_number].title.text                = NULL;
     UI_form_pointer->data.element[element_number].title.enabled             = false;
     UI_form_pointer->data.element[element_number].tooltip.enabled           = true;
-    UI_form_pointer->data.element[element_number].tooltip.text              = new texture_type;
-    game.texture_manager.load_string(UI_form_pointer->data.element[element_number].tooltip.text,game.font_manager.root,"Inventory",0.8f,255,255,255,255,TEXTURE_RENDER_LEFT+TEXTURE_RENDER_UP);
+    UI_form_pointer->data.element[element_number].tooltip.text              = game.texture_manager.add_texture(game.font_manager.root," Inventory",0.8f,0,0,255,255,255,255,TEXTURE_STRING);
+    UI_form_pointer->data.element[element_number].tooltip.text->data.render_positioning = TEXTURE_RENDER_LEFT+TEXTURE_RENDER_UP;
     UI_form_pointer->data.element[element_number].tooltip.size.x            = 12.0f;
     UI_form_pointer->data.element[element_number].tooltip.size.y            = 30.0f;
     UI_form_pointer->data.element[element_number].active                    = true;
