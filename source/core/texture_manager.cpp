@@ -201,16 +201,13 @@ void texture_manager_class::reload_textures(void)
             switch (temp_pointer->data.texture_flag)
             {
                 case TEXTURE_IMAGE:
-                    game.core.log.file_write("Reloading texture - ",temp_pointer->data.path.c_str());
                     temp_pointer->data.loaded = texture_manager_class::load_texture(temp_pointer);
                 break;
                 case TEXTURE_SPRITESHEET:
-                    game.core.log.file_write("Reloading sprite sheet - ",temp_pointer->data.path.c_str());
                     temp_pointer->data.loaded = texture_manager_class::load_sprite_sheet(temp_pointer,temp_pointer->data.width,temp_pointer->data.height);
                 break;
                 case TEXTURE_STRING:
-                    game.core.log.file_write("Reloading string - ",temp_pointer->data.path.c_str());
-                    temp_pointer->data.loaded = texture_manager_class::load_string(temp_pointer);
+                    temp_pointer->data.loaded = texture_manager_class::load_string(temp_pointer,temp_pointer->data.text.font,temp_pointer->data.text.text_string,temp_pointer->data.text.text_size,temp_pointer->data.text.color.r,temp_pointer->data.text.color.g,temp_pointer->data.text.color.b,temp_pointer->data.text.color.a,temp_pointer->data.render_positioning);
                 break;
                 default:
                     game.core.log.file_write("Fail -> Reloading texture, unknown texture flag. - ",temp_pointer->data.texture_flag);
@@ -219,6 +216,34 @@ void texture_manager_class::reload_textures(void)
             }
             temp_pointer = temp_pointer->next;
         }
+    }
+};
+
+void texture_manager_class::reload_texture(texture_type *texure)
+{
+    if (texure != NULL)
+    {
+        game.core.log.file_write("Reloading texture - ",texure->data.path.c_str());
+        switch (texure->data.texture_flag)
+        {
+            case TEXTURE_IMAGE:
+                texure->data.loaded = texture_manager_class::load_texture(texure);
+            break;
+            case TEXTURE_SPRITESHEET:
+                texure->data.loaded = texture_manager_class::load_sprite_sheet(texure,texure->data.width,texure->data.height);
+            break;
+            case TEXTURE_STRING:
+                texure->data.loaded = texture_manager_class::load_string(texure,texure->data.text.font,texure->data.text.text_string,texure->data.text.text_size,texure->data.text.color.r,texure->data.text.color.g,texure->data.text.color.b,texure->data.text.color.a,texure->data.render_positioning);
+            break;
+            default:
+                game.core.log.file_write("Fail -> Reloading texture, unknown texture flag. - ",texure->data.texture_flag);
+                texure->data.loaded = false;
+            break;
+        }
+    }
+    else
+    {
+        game.core.log.file_write("Fail -> Reloading texture - NULL pointer passed to function.");
     }
 };
 

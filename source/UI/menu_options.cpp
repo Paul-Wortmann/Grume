@@ -1205,6 +1205,7 @@ void process_menu_options(UI_form_struct *UI_form_pointer)
             game.loading_screen.display("data/loading_screen.png");
             game.texture_manager.reload_textures();
             update_menu_game_new(UID_MENU_GAME_NEW);
+            update_options_menu();
         }
     }
     if (UI_form_pointer->data.event.id != EVENT_NONE)

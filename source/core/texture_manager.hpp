@@ -115,6 +115,7 @@ class texture_manager_class
         texture_type *add_texture(font_type* font, std::string text_string, float text_size, int width_set, int height_set, int r, int g, int b, int a, int texture_flag);
         void          load_textures(void);
         void          reload_textures(void);
+        void          reload_texture(texture_type *texure);
         bool          load_texture(texture_type *texure);
         bool          load_sprite_sheet(texture_type *texure);
         bool          load_sprite_sheet(texture_type *texure, int width_set, int height_set);
