@@ -206,7 +206,7 @@ void texture_manager_class::reload_textures(void)
                 break;
                 case TEXTURE_SPRITESHEET:
                     game.core.log.file_write("Reloading sprite sheet - ",temp_pointer->data.path.c_str());
-                    temp_pointer->data.loaded = texture_manager_class::load_sprite_sheet(temp_pointer);
+                    temp_pointer->data.loaded = texture_manager_class::load_sprite_sheet(temp_pointer,temp_pointer->data.width,temp_pointer->data.height);
                 break;
                 case TEXTURE_STRING:
                     game.core.log.file_write("Reloading string - ",temp_pointer->data.path.c_str());
@@ -280,13 +280,13 @@ bool texture_manager_class::load_sprite_sheet(texture_type *texture, int width_s
     {
         texture->data.width            = width_set;
         texture->data.height           = height_set;
-        int             frames_x;
-        int             frames_y;
         int             frame_count    = 0;
         int             num_sprites    = 0;
         int             flags          = 0;
         GLenum          texture_format = 0;
         GLint           number_of_colors;
+        int             frames_x;
+        int             frames_y;
         return_value = true;
         frames_x = sprite_sheet->w / texture->data.width;
         frames_y = sprite_sheet->h / texture->data.height;
