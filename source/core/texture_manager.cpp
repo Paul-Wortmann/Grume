@@ -223,7 +223,7 @@ void texture_manager_class::reload_texture(texture_type *texure)
 {
     if (texure != NULL)
     {
-        game.core.log.file_write("Reloading texture - ",texure->data.path.c_str());
+        //game.core.log.file_write("Reloading texture - ",texure->data.path.c_str());
         switch (texure->data.texture_flag)
         {
             case TEXTURE_IMAGE:
@@ -379,6 +379,7 @@ bool texture_manager_class::load_string(texture_type *texture_pointer, font_type
 {
     return (texture_manager_class::load_string(texture_pointer,font_pointer,text_string,text_size,r,g,b,a,TEXTURE_RENDER_CENTERED));
 }
+
 bool texture_manager_class::load_string(texture_type *texture_pointer, font_type* font_pointer, std::string text_string, float text_size, int r, int g, int b, int a, int render_position)
 {
     texture_pointer->data.texture_flag       = TEXTURE_STRING;
@@ -404,7 +405,6 @@ bool texture_manager_class::load_string(texture_type *texture_pointer, font_type
     texture_pointer->data.frame_max          = 0;
     return (texture_manager_class::load_string(texture_pointer));
 }
-
 
 bool texture_manager_class::load_string(texture_type *texture)
 {

@@ -266,6 +266,7 @@ bool GL_legacy_build_mode_list(void)
             {
                 last_w = game.core.graphics.display_mode[i].w;
                 last_h = game.core.graphics.display_mode[i].h;
+                if ((last_w == game.core.config.display_resolution_x) && (last_h == game.core.config.display_resolution_y)) game.core.config.display_resolution = i;
                 if (list_position < game.core.graphics.menu_mode_length)
                 {
                     game.core.graphics.menu_mode_list[list_position] = i;
@@ -289,5 +290,4 @@ std::string GL_legacy_get_display_mode(int mode_number)
     if (game.core.graphics.display_mode[mode_number].h < 1000) padding_right = " ";
     return(padding_left+int_to_string(game.core.graphics.display_mode[mode_number].w)+" X "+int_to_string(game.core.graphics.display_mode[mode_number].h)+padding_right);
 };
-
 

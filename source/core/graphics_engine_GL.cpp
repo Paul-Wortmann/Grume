@@ -342,6 +342,7 @@ bool GL_build_mode_list(void)
             {
                 last_w = game.core.graphics.display_mode[i].w;
                 last_h = game.core.graphics.display_mode[i].h;
+                if ((last_w == game.core.config.display_resolution_x) && (last_h == game.core.config.display_resolution_y)) game.core.config.display_resolution = i;
                 if (list_position < game.core.graphics.menu_mode_length)
                 {
                     game.core.graphics.menu_mode_list[list_position] = i;
