@@ -183,7 +183,7 @@ bool GL_init(void)
                             char *vertex_info_Log = new char[maxLength];
                             glGetShaderInfoLog(game.core.graphics.render_GL.vertexshader, maxLength, &maxLength, vertex_info_Log);
                             game.core.log.file_write("FAIL -> Error loading Vertex Shader: ",vertex_info_Log);
-                            delete vertex_info_Log;
+                            delete [] vertex_info_Log;
                         }
                         // Fragment Shader
                         shader_compile_status = 0;
@@ -199,7 +199,7 @@ bool GL_init(void)
                             char *fragment_info_Log = new char[maxLength];
                             glGetShaderInfoLog(game.core.graphics.render_GL.fragmentshader, maxLength, &maxLength, fragment_info_Log);
                             game.core.log.file_write("FAIL -> Error loading Fragment Shader: ",fragment_info_Log);
-                            delete fragment_info_Log;
+                            delete [] fragment_info_Log;
                         }
                         // Shader Program
                         int shader_program_link_status = 0;
@@ -217,7 +217,7 @@ bool GL_init(void)
                             char *shader_program_info_Log = new char[maxLength];
                             glGetProgramInfoLog(game.core.graphics.render_GL.shaderprogram, maxLength, &maxLength, shader_program_info_Log);
                             game.core.log.file_write("FAIL -> Shader program error: ",shader_program_info_Log);
-                            delete shader_program_info_Log;
+                            delete [] shader_program_info_Log;
                         }
                         glUseProgram(game.core.graphics.render_GL.shaderprogram);
 
