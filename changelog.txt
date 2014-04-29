@@ -1,12 +1,61 @@
-﻿Due to studies, work and the responsibilities of life,
-I feel that Frost and Flame has been coming on very slowly these past few months.
-It may be slow at the moment, but I am determined to complete this game,
-it may take longer than I had first anticipated.
-These are not indications that the project will be terminated in the future,
-just that time is not permitting to proceed at a fast pace, at the moment.
+/**
+ * Copyright (C) 2011-2014 Paul Wortmann, PhysHex Games, www.physhexgames.co.nr
+ * This file is part of "Frost And Flame"
+ *
+ * "Frost And Flame" is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * "Frost And Flame" is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with "Frost And Flame" If not, see <http://www.gnu.org/licenses/>.
+ *
+ * @author  Paul Wortmann
+ * @email   physhex@gmail.com
+ * @website www.physhexgames.co.nr
+ * @license GPL V3
+ **/
+
+V0.31 -> (2014-05-31)
+LOC   -> xxxxx
 
 V0.30 -> (2014-04-30)
-LOC   -> xxxxx
+UI    -> Improved options menu resolution selection.
+DATA  -> Loading screen reloaded first on texture reloading.
+DATA  -> Map data to be loaded from FnF data file.
+DATA  -> Language files now loaded from data file.
+DATA  -> OpenGL shaders loading from data file.
+DATA  -> Sound / Music in data file loaded via rwops.
+DATA  -> Font data loaded via rwops in data file.
+LOG   -> Log system information.
+CORE  -> Initial reintegration of Physics FS.
+CORE  -> Improved code portability.
+DATA  -> Added frame_00.png
+DATA  -> Better handeling of missing textures.
+UI    -> Added base of new in game help menu.
+UI    -> Default positions for standard UI_forms.
+UI    -> Report UID name when logging unknown UI events.
+CORE  -> Improve config and log file, and some minor code tweaks.
+CORE  -> Added '--help' command line option.
+CORE  -> Handle unknown command line arguments.
+CORE  -> Fix possible memory leaks.
+CORE  -> Minor code cleanup.
+CORE  -> Default font scale based on native display resolution.
+CORE  -> Improved resolution validity checking.
+CORE  -> Abstracted graphics engine to allow for different render backends.
+CORE  -> More robust window creation.
+UI    -> Added 'x' key to kill game, debug needs to be enabled!
+CORE  -> Added start of new graphics engine.
+DATA  -> Removed unnecessary files from repo.
+CORE  -> GL context creation simplified slightly.
+GFX   -> added sickle 0 texture.
+GFX   -> added axe 4 texture.
+LOC   -> 28801
 
 V0.29 -> (2014-03-31)
 LOG   -> Implemented - time stamp in log file.
