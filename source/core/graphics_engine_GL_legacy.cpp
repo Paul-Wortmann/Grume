@@ -34,10 +34,8 @@ extern game_class game;
 bool GL_legacy_init(void)
 {
     bool return_value = true;
-    bool reload_textures = false;
     if (game.core.graphics.window)
     {
-        reload_textures = true;
         game.core.log.file_write("Closing previous window....");
         SDL_GL_DeleteContext(game.core.graphics.context);
         SDL_DestroyWindow(game.core.graphics.window);
@@ -147,7 +145,6 @@ bool GL_legacy_init(void)
             game.core.log.file_write("Video mode set failed.");
             return_value = false;
         }
-        if (reload_textures) game.texture_manager.reload_textures();
         glViewport(0, 0,game.core.config.display_resolution_x,game.core.config.display_resolution_y);
         glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
         glClearDepth(1.0);

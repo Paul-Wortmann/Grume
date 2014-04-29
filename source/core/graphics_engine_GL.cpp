@@ -40,10 +40,8 @@ extern game_class game;
 bool GL_init(void)
 {
     bool return_value    = true;
-    bool reload_textures = false;
     if (game.core.graphics.window)
     {
-        reload_textures = true;
         SDL_DestroyWindow(game.core.graphics.window);
     }
     if (SDL_Init(SDL_INIT_VIDEO) < 0)
@@ -250,7 +248,6 @@ bool GL_init(void)
             }
         }
     }
-    if (reload_textures) game.texture_manager.reload_textures();
     return (return_value);
 };
 

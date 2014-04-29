@@ -229,11 +229,11 @@ extern "C" int main(int argc, char** argv)
     game.core.config.file_clear();
     game.core.config.file_save();
     game.core.log.file_write("Shutting down...");
-    game.core.log.file_write_time_stamp("Game exited at: ");
     game.core.graphics.deinit();
     game.font_manager.deinit();
     game.core.file.file_system_deinit();
     SDL_Quit();
+    game.core.log.file_write_time_stamp("Game exited at: ");
     return(0);
 };
 
