@@ -73,7 +73,7 @@ struct text_type
 class language_class
 {
     public:
-        void load(std::string file_name);
+        void load(std::string language_name);
         text_type text;
         language_class(void);
 };

@@ -354,6 +354,7 @@ void config_class::log_system_configuration(void)
 {
     game.core.log.file_write("# ------------ System Information -------------- #");
     game.core.log.file_write("Detected - ",SDL_GetPlatform(), " Operating System");
+    if (strcmp(SDL_GetPlatform(),"Linux") != 0) game.core.log.file_write("For better performance, upgrade to Linux!");
     game.core.log.file_write("Detected - ",SDL_GetCPUCount()," logical CPU cores");
     game.core.log.file_write("Detected - ",SDL_GetCPUCacheLineSize()," CPU cache line size");
     game.core.log.file_write("Detected - ",SDL_GetSystemRAM(),"MB system RAM");

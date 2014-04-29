@@ -65,8 +65,7 @@ extern "C" int main(int argc, char** argv)
         game.core.log.file_write("Processing command line switches...");
         game.command_line.process(argc,argv);
         if (game.core.debug) game.core.log.file_write("Developer mode enabled.");
-        game.core.log.file_write("Loading language file -> data/configuration/languages/"+game.core.config.language+".txt");
-        game.language.load("data/configuration/languages/"+game.core.config.language+".txt");
+        game.language.load(game.core.config.language);
     }
 //  --- graphics ---
     if (game.state == STATE_INIT)
