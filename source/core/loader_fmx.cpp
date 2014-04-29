@@ -22,6 +22,10 @@
  * @date 2011-11-11
  */
 
+#include <SDL2/SDL.h>
+#include <SDL2/SDL_image.h>
+#include <SDL2/SDL_ttf.h>
+#include <physfs.h>
 #include <iostream>
 #include <fstream>
 #include <stdio.h>
@@ -35,32 +39,45 @@ extern game_class         game;
 void fmx_load(fmx_map_type *fmx_map_pointer, std::string file_name)
 {
     game.core.log.file_write("Loading FMX map file -> ",file_name);
-    std::fstream script_file(file_name.c_str(),std::ios::in|std::ios::binary);
-    if (script_file.is_open())
+    if (PHYSFS_exists(file_name.c_str()))
     {
-        int          position_count  = 0;
-        int          position_start  = 0;
-        bool         map_data        = true;
-        bool         tileset_data    = false;
-        bool         layer_data      = false;
-        int          tileset_count   = 0;
-        int          layer_count     = 0;
-        int          tile_count      = 0;
-        char         temp_char       = ' ';
-        float        temp_float_data;
-        int          temp_int_data;
-        std::string  temp_string_data;
-        std::string  temp_string_key;
-        std::string  temp_string_value;
-        std::string  data_line;
-        fmx_map_pointer->data.number_of_tiles    = 0;
-        fmx_map_pointer->data.number_of_tilesets = 0;
-        fmx_map_pointer->data.number_of_layers   = 0;
-        // find size of data and set new array size
-        while (script_file.good())
+        PHYSFS_openRead(file_name.c_str());
+        PHYSFS_File *file_pointer = NULL;
+        file_pointer = PHYSFS_openRead(file_name.c_str());
+        if (file_pointer)
         {
-            getline(script_file,data_line);
+            fmx_map_pointer->data.number_of_tiles    = 0;
+            fmx_map_pointer->data.number_of_tilesets = 0;
+            fmx_map_pointer->data.number_of_layers   = 0;
+            float          temp_float_data;
+            int            temp_int_data;
+            std::string    temp_string_data;
+            std::string    temp_string_key;
+            std::string    temp_string_value;
+            std::string    data_line;
+            int            position_count  = 0;
+            int            position_start  = 0;
+            bool           map_data        = true;
+            bool           tileset_data    = false;
+            bool           layer_data      = false;
+            int            tileset_count   = 0;
+            int            layer_count     = 0;
+            int            tile_count      = 0;
+            char           temp_char       = ' ';
+            bool           eof_found       = false;
+            char          *char_buffer     = new char[2];
+            while (!eof_found)
             {
+                data_line = "";
+                bool endl_found = false;
+                while (!endl_found)
+                {
+                    PHYSFS_read(file_pointer, char_buffer, 1, 1);
+                    if (char_buffer[0] < 32) endl_found = true;
+                    eof_found = PHYSFS_eof(file_pointer);
+                    if (eof_found) endl_found = true;
+                    if ((!endl_found)&&(!eof_found)) data_line += char_buffer[0];
+                }
                 position_count = 0;
                 if ((data_line[position_count] == ' ') && (data_line.length() > 2))
                 {
@@ -135,34 +152,42 @@ void fmx_load(fmx_map_type *fmx_map_pointer, std::string file_name)
                     }
                 }
             }
-        }
-        fmx_map_pointer->data.number_of_tiles    = fmx_map_pointer->data.map_width * fmx_map_pointer->data.map_height;
-        fmx_map_pointer->data.number_of_tilesets = tileset_count;
-        script_file.clear();
-        script_file.seekg(0, std::ios::beg);
-        fmx_map_pointer->tileset      = new fmx_tileset_type  [fmx_map_pointer->data.number_of_tilesets+1];
-        fmx_map_pointer->layer        = new fmx_layer_type    [fmx_map_pointer->data.number_of_layers+1];
-        fmx_map_pointer->tile_data    = new fmx_tile_data_type[fmx_map_pointer->data.number_of_tiles+1];
-        for(layer_count = 0; layer_count <= fmx_map_pointer->data.number_of_layers; layer_count++)
-        {
-            fmx_map_pointer->layer[layer_count].tile = new fmx_tile_type   [fmx_map_pointer->data.number_of_tiles+1];
-        }
-        position_count                           = 0;
-        position_start                           = 0;
-        map_data                                 = true;
-        tileset_data                             = false;
-        layer_data                               = false;
-        tileset_count                            = 0;
-        layer_count                              = 0;
-        tile_count                               = 0;
-        temp_char                                = ' ';
-        fmx_map_pointer->data.number_of_tiles    = 0;
-        fmx_map_pointer->data.number_of_tilesets = 0;
-        // load data
-        while (script_file.good())
-        {
-            getline(script_file,data_line);
+            fmx_map_pointer->data.number_of_tiles    = fmx_map_pointer->data.map_width * fmx_map_pointer->data.map_height;
+            fmx_map_pointer->data.number_of_tilesets = tileset_count;
+            if (file_pointer) PHYSFS_close(file_pointer);
+            file_pointer = PHYSFS_openRead(file_name.c_str());
+            fmx_map_pointer->tileset      = new fmx_tileset_type  [fmx_map_pointer->data.number_of_tilesets+1];
+            fmx_map_pointer->layer        = new fmx_layer_type    [fmx_map_pointer->data.number_of_layers+1];
+            fmx_map_pointer->tile_data    = new fmx_tile_data_type[fmx_map_pointer->data.number_of_tiles+1];
+            for(layer_count = 0; layer_count <= fmx_map_pointer->data.number_of_layers; layer_count++)
             {
+                fmx_map_pointer->layer[layer_count].tile = new fmx_tile_type   [fmx_map_pointer->data.number_of_tiles+1];
+            }
+            position_count                           = 0;
+            position_start                           = 0;
+            map_data                                 = true;
+            tileset_data                             = false;
+            layer_data                               = false;
+            tileset_count                            = 0;
+            layer_count                              = 0;
+            tile_count                               = 0;
+            temp_char                                = ' ';
+            fmx_map_pointer->data.number_of_tiles    = 0;
+            fmx_map_pointer->data.number_of_tilesets = 0;
+            // load data
+            eof_found       = false;
+            while (!eof_found)
+            {
+                data_line = "";
+                bool endl_found = false;
+                while (!endl_found)
+                {
+                    PHYSFS_read(file_pointer, char_buffer, 1, 1);
+                    if (char_buffer[0] < 32) endl_found = true;
+                    eof_found = PHYSFS_eof(file_pointer);
+                    if (eof_found) endl_found = true;
+                    if ((!endl_found)&&(!eof_found)) data_line += char_buffer[0];
+                }
                 position_count = 0;
                 if ((data_line[position_count] == ' ') && (data_line.length() > 2))
                 {
@@ -284,20 +309,28 @@ void fmx_load(fmx_map_type *fmx_map_pointer, std::string file_name)
                     }
                 }
             }
+            if (file_pointer) PHYSFS_close(file_pointer);
+            fmx_map_pointer->data.number_of_tiles    = fmx_map_pointer->data.map_width * fmx_map_pointer->data.map_height;
+            fmx_map_pointer->data.number_of_tilesets = tileset_count;
+            fmx_map_pointer->data.number_of_layers   = layer_count;
+            for (int tileset_number = 0; tileset_number < fmx_map_pointer->data.number_of_tilesets; tileset_number++)
+            {
+                fmx_map_pointer->tileset[tileset_number].image_source    = game.core.file.path_remove(fmx_map_pointer->tileset[tileset_number].image_source);
+                fmx_map_pointer->tileset[tileset_number].image_source    = game.core.file.path_add(fmx_map_pointer->tileset[tileset_number].image_source,"data/tilesets/");
+                fmx_map_pointer->tileset[tileset_number].tile            = game.texture_manager.add_texture(fmx_map_pointer->tileset[tileset_number].image_source.c_str(),true,fmx_map_pointer->tileset[tileset_number].tile_width,fmx_map_pointer->tileset[tileset_number].tile_height);
+                fmx_map_pointer->tileset[tileset_number].number_of_tiles = fmx_map_pointer->tileset[tileset_number].tile->data.frame_max;
+            }
+            if (file_pointer) PHYSFS_close(file_pointer);
         }
-        script_file.close();
-        fmx_map_pointer->data.number_of_tiles    = fmx_map_pointer->data.map_width * fmx_map_pointer->data.map_height;
-        fmx_map_pointer->data.number_of_tilesets = tileset_count;
-        fmx_map_pointer->data.number_of_layers   = layer_count;
-        for (int tileset_number = 0; tileset_number < fmx_map_pointer->data.number_of_tilesets; tileset_number++)
+        else
         {
-            fmx_map_pointer->tileset[tileset_number].image_source    = game.core.file.path_remove(fmx_map_pointer->tileset[tileset_number].image_source);
-            fmx_map_pointer->tileset[tileset_number].image_source    = game.core.file.path_add(fmx_map_pointer->tileset[tileset_number].image_source,"data/tilesets/");
-            fmx_map_pointer->tileset[tileset_number].tile            = game.texture_manager.add_texture(fmx_map_pointer->tileset[tileset_number].image_source.c_str(),true,fmx_map_pointer->tileset[tileset_number].tile_width,fmx_map_pointer->tileset[tileset_number].tile_height);
-            fmx_map_pointer->tileset[tileset_number].number_of_tiles = fmx_map_pointer->tileset[tileset_number].tile->data.frame_max;
+            game.core.log.file_write("Fail -> PhysicsFS unable to open file - ",file_name.c_str());
         }
     }
-    else game.core.log.file_write("Unable to load FMX map file -> ",file_name);
+    else
+    {
+        game.core.log.file_write("Fail -> PhysicsFS unable to find file - ",file_name.c_str());
+    }
 };
 
 void fmx_save(fmx_map_type *fmx_map_pointer, std::string file_name)

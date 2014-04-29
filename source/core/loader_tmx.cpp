@@ -22,6 +22,10 @@
  * @date 2011-11-11
  */
 
+#include <SDL2/SDL.h>
+#include <SDL2/SDL_image.h>
+#include <SDL2/SDL_ttf.h>
+#include <physfs.h>
 #include <iostream>
 #include <fstream>
 #include <stdio.h>
@@ -35,32 +39,45 @@ extern game_class         game;
 void tmx_load(tmx_map_type *tmx_map_pointer, std::string file_name)
 {
     game.core.log.file_write("Loading TMX map file -> ",file_name);
-    std::fstream script_file(file_name.c_str(),std::ios::in|std::ios::binary);
-    if (script_file.is_open())
+    if (PHYSFS_exists(file_name.c_str()))
     {
-        int          position_count  = 0;
-        int          position_start  = 0;
-        int          tileset_count   = 0;
-        int          layer_count     = 0;
-        int          tile_count      = 0;
-        char         temp_char       = ' ';
-        bool         map_data        = true;
-        bool         tileset_data    = false;
-        bool         layer_data      = false;
-        tmx_map_pointer->data.number_of_tiles    = 0;
-        tmx_map_pointer->data.number_of_tilesets = 0;
-        tmx_map_pointer->data.number_of_layers   = 0;
-        float        temp_float_data;
-        int          temp_int_data;
-        std::string  temp_string_data;
-        std::string  temp_string_key;
-        std::string  temp_string_value;
-        std::string  data_line;
-        // find size of data and set new array size
-        while (script_file.good())
+        PHYSFS_openRead(file_name.c_str());
+        PHYSFS_File *file_pointer = NULL;
+        file_pointer = PHYSFS_openRead(file_name.c_str());
+        if (file_pointer)
         {
-            getline(script_file,data_line);
+            tmx_map_pointer->data.number_of_tiles    = 0;
+            tmx_map_pointer->data.number_of_tilesets = 0;
+            tmx_map_pointer->data.number_of_layers   = 0;
+            float          temp_float_data;
+            int            temp_int_data;
+            std::string    temp_string_data;
+            std::string    temp_string_key;
+            std::string    temp_string_value;
+            std::string    data_line;
+            int            position_count  = 0;
+            int            position_start  = 0;
+            bool           map_data        = true;
+            bool           tileset_data    = false;
+            bool           layer_data      = false;
+            int            tileset_count   = 0;
+            int            layer_count     = 0;
+            int            tile_count      = 0;
+            char           temp_char       = ' ';
+            bool           eof_found       = false;
+            char          *char_buffer     = new char[2];
+            while (!eof_found)
             {
+                data_line = "";
+                bool endl_found = false;
+                while (!endl_found)
+                {
+                    PHYSFS_read(file_pointer, char_buffer, 1, 1);
+                    if (char_buffer[0] < 32) endl_found = true;
+                    eof_found = PHYSFS_eof(file_pointer);
+                    if (eof_found) endl_found = true;
+                    if ((!endl_found)&&(!eof_found)) data_line += char_buffer[0];
+                }
                 position_count = 0;
                 if ((data_line[position_count] == ' ') && (data_line.length() > 2))
                 {
@@ -135,33 +152,41 @@ void tmx_load(tmx_map_type *tmx_map_pointer, std::string file_name)
                     }
                 }
             }
-        }
-        tmx_map_pointer->data.number_of_tiles    = tmx_map_pointer->data.map_width * tmx_map_pointer->data.map_height;
-        tmx_map_pointer->data.number_of_tilesets = tileset_count;
-        script_file.clear();
-        script_file.seekg(0, std::ios::beg);
-        tmx_map_pointer->tileset      = new tmx_tileset_type[tmx_map_pointer->data.number_of_tilesets+1];
-        tmx_map_pointer->layer        = new tmx_layer_type  [tmx_map_pointer->data.number_of_layers+1];
-        for(layer_count = 0; layer_count <= tmx_map_pointer->data.number_of_layers; layer_count++)
-        {
-            tmx_map_pointer->layer[layer_count].tile = new tmx_tile_type   [tmx_map_pointer->data.number_of_tiles+1];
-        }
-        position_count                           = 0;
-        position_start                           = 0;
-        map_data                                 = true;
-        tileset_data                             = false;
-        layer_data                               = false;
-        tileset_count                            = 0;
-        layer_count                              = 0;
-        tile_count                               = 0;
-        temp_char                                = ' ';
-        tmx_map_pointer->data.number_of_tiles    = 0;
-        tmx_map_pointer->data.number_of_tilesets = 0;
-        // load data
-        while (script_file.good())
-        {
-            getline(script_file,data_line);
+            tmx_map_pointer->data.number_of_tiles    = tmx_map_pointer->data.map_width * tmx_map_pointer->data.map_height;
+            tmx_map_pointer->data.number_of_tilesets = tileset_count;
+            if (file_pointer) PHYSFS_close(file_pointer);
+            file_pointer = PHYSFS_openRead(file_name.c_str());
+            tmx_map_pointer->tileset      = new tmx_tileset_type  [tmx_map_pointer->data.number_of_tilesets+1];
+            tmx_map_pointer->layer        = new tmx_layer_type    [tmx_map_pointer->data.number_of_layers+1];
+            for(layer_count = 0; layer_count <= tmx_map_pointer->data.number_of_layers; layer_count++)
             {
+                tmx_map_pointer->layer[layer_count].tile = new tmx_tile_type   [tmx_map_pointer->data.number_of_tiles+1];
+            }
+            position_count                           = 0;
+            position_start                           = 0;
+            map_data                                 = true;
+            tileset_data                             = false;
+            layer_data                               = false;
+            tileset_count                            = 0;
+            layer_count                              = 0;
+            tile_count                               = 0;
+            temp_char                                = ' ';
+            tmx_map_pointer->data.number_of_tiles    = 0;
+            tmx_map_pointer->data.number_of_tilesets = 0;
+            // load data
+            eof_found       = false;
+            while (!eof_found)
+            {
+                data_line = "";
+                bool endl_found = false;
+                while (!endl_found)
+                {
+                    PHYSFS_read(file_pointer, char_buffer, 1, 1);
+                    if (char_buffer[0] < 32) endl_found = true;
+                    eof_found = PHYSFS_eof(file_pointer);
+                    if (eof_found) endl_found = true;
+                    if ((!endl_found)&&(!eof_found)) data_line += char_buffer[0];
+                }
                 position_count = 0;
                 if ((data_line[position_count] == ' ') && (data_line.length() > 2))
                 {
@@ -276,27 +301,34 @@ void tmx_load(tmx_map_type *tmx_map_pointer, std::string file_name)
                                 temp_int_data -= tmx_map_pointer->tileset[tmx_map_pointer->layer[layer_count].tile[tile_count].tile_tileset].first_gid;
                                 temp_int_data += 1;
                                 tmx_map_pointer->layer[layer_count].tile[tile_count].tile         = temp_int_data;
-                                tmx_map_pointer->layer[layer_count].tile[tile_count].collision    = false;
                                 tile_count++;
                             }
                         }
                     }
                 }
             }
+            if (file_pointer) PHYSFS_close(file_pointer);
+            tmx_map_pointer->data.number_of_tiles    = tmx_map_pointer->data.map_width * tmx_map_pointer->data.map_height;
+            tmx_map_pointer->data.number_of_tilesets = tileset_count;
+            tmx_map_pointer->data.number_of_layers   = layer_count;
+            for (int tileset_number = 0; tileset_number < tmx_map_pointer->data.number_of_tilesets; tileset_number++)
+            {
+                tmx_map_pointer->tileset[tileset_number].image_source    = game.core.file.path_remove(tmx_map_pointer->tileset[tileset_number].image_source);
+                tmx_map_pointer->tileset[tileset_number].image_source    = game.core.file.path_add(tmx_map_pointer->tileset[tileset_number].image_source,"data/tilesets/");
+                tmx_map_pointer->tileset[tileset_number].tile            = game.texture_manager.add_texture(tmx_map_pointer->tileset[tileset_number].image_source.c_str(),true,tmx_map_pointer->tileset[tileset_number].tile_width,tmx_map_pointer->tileset[tileset_number].tile_height);
+                tmx_map_pointer->tileset[tileset_number].number_of_tiles = tmx_map_pointer->tileset[tileset_number].tile->data.frame_max;
+            }
+            if (file_pointer) PHYSFS_close(file_pointer);
         }
-        script_file.close();
-        tmx_map_pointer->data.number_of_tiles    = tmx_map_pointer->data.map_width * tmx_map_pointer->data.map_height;
-        tmx_map_pointer->data.number_of_tilesets = tileset_count;
-        tmx_map_pointer->data.number_of_layers   = layer_count;
-        for (int tileset_number = 0; tileset_number < tmx_map_pointer->data.number_of_tilesets; tileset_number++)
+        else
         {
-            tmx_map_pointer->tileset[tileset_number].image_source    = game.core.file.path_remove(tmx_map_pointer->tileset[tileset_number].image_source);
-            tmx_map_pointer->tileset[tileset_number].image_source    = game.core.file.path_add(tmx_map_pointer->tileset[tileset_number].image_source,"data/tilesets/");
-            tmx_map_pointer->tileset[tileset_number].tile            = game.texture_manager.add_texture(tmx_map_pointer->tileset[tileset_number].image_source.c_str(),true,tmx_map_pointer->tileset[tileset_number].tile_width,tmx_map_pointer->tileset[tileset_number].tile_height);
-            tmx_map_pointer->tileset[tileset_number].number_of_tiles = tmx_map_pointer->tileset[tileset_number].tile->data.frame_max;
+            game.core.log.file_write("Fail -> PhysicsFS unable to open file - ",file_name.c_str());
         }
     }
-    else game.core.log.file_write("Unable to load TMX map file -> ",file_name);
+    else
+    {
+        game.core.log.file_write("Fail -> PhysicsFS unable to find file - ",file_name.c_str());
+    }
 };
 
 void tmx_save(tmx_map_type *tmx_map_pointer, std::string file_name)
