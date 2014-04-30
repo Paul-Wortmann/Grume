@@ -54,7 +54,11 @@ extern "C" int main(int argc, char** argv)
     game.core.log.file_write("# ---------------------------------------------- #");
     game.core.log.file_write(" ");
     game.core.log.file_write_time_stamp("Log file created: ");
-    game.core.config.log_system_configuration();
+    game.core.log.file_write("Initializing SDL...");
+    int SDL_error = SDL_Init(SDL_INIT_EVERYTHING);
+    if (SDL_error != 0) game.core.log.file_write("SDL initialization error: ",SDL_error);
+    game.core.config.get_system_information();
+    game.core.config.log_system_information();
     game.core.file.file_system_init(argv);
     if (game.state == STATE_INIT)
     {

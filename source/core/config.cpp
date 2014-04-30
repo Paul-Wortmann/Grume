@@ -31,34 +31,48 @@ extern game_class    game;
 
 config_class::config_class(void)
 {
-    config_class::file_name                  = "default.cfg";
-    config_class::display_resolution         = 0;
-    config_class::display_resolution_x       = 0;
-    config_class::display_resolution_y       = 0;
-    config_class::font_base_resolution_x     = 1920;
-    config_class::font_base_resolution_y     = 1080;
-    config_class::font_scale_x               = (float)config_class::display_resolution_x/(float)config_class::font_base_resolution_x;
-    config_class::font_scale_y               = (float)config_class::display_resolution_y/(float)config_class::font_base_resolution_y;
-    config_class::display_bpp                = 32;
-    config_class::display_fullscreen         = true;
-    config_class::display_touchscreen        = false;
-    config_class::display_flags              = 0;
-    config_class::mouse_autohide             = false;
-    config_class::mouse_autohide_timer       = 128;
-    config_class::mouse_autohide_timer_count = 0;
-    config_class::menu_delay                 = 128;
-    config_class::menu_delay_count           = 0;
-    config_class::mouse_resolution_x         = config_class::display_resolution_x;
-    config_class::mouse_resolution_y         = config_class::display_resolution_y;
-    config_class::joystick_sensitivity       = 6400;
-    config_class::joystick_enabled           = false;
-    config_class::joystick_no_buttons        = 0;
-    config_class::audio_rate                 = 44100;
-    config_class::audio_channels             = 32;
-    config_class::audio_buffers              = 1024;
-    config_class::audio_volume_music         = 32;
-    config_class::audio_volume_sound         = 64;
-    config_class::language                   = "english";
+    config_class::file_name                       = "default.cfg";
+    config_class::display_resolution              = 0;
+    config_class::display_resolution_x            = 0;
+    config_class::display_resolution_y            = 0;
+    config_class::font_base_resolution_x          = 1920;
+    config_class::font_base_resolution_y          = 1080;
+    config_class::font_scale_x                    = (float)config_class::display_resolution_x/(float)config_class::font_base_resolution_x;
+    config_class::font_scale_y                    = (float)config_class::display_resolution_y/(float)config_class::font_base_resolution_y;
+    config_class::display_bpp                     = 32;
+    config_class::display_fullscreen              = true;
+    config_class::display_touchscreen             = false;
+    config_class::display_flags                   = 0;
+    config_class::mouse_autohide                  = false;
+    config_class::mouse_autohide_timer            = 128;
+    config_class::mouse_autohide_timer_count      = 0;
+    config_class::menu_delay                      = 128;
+    config_class::menu_delay_count                = 0;
+    config_class::mouse_resolution_x              = config_class::display_resolution_x;
+    config_class::mouse_resolution_y              = config_class::display_resolution_y;
+    config_class::joystick_sensitivity            = 6400;
+    config_class::joystick_enabled                = false;
+    config_class::joystick_no_buttons             = 0;
+    config_class::audio_rate                      = 44100;
+    config_class::audio_channels                  = 32;
+    config_class::audio_buffers                   = 1024;
+    config_class::audio_volume_music              = 32;
+    config_class::audio_volume_sound              = 64;
+    config_class::language                        = "english";
+    config_class::system_info.platform            = "Unknown";
+    config_class::system_info.CPU_count           = 0;
+    config_class::system_info.CPU_cache_line_size = 0;
+    config_class::system_info.system_RAM          = 0;
+    config_class::system_info.has_3DNow           = false;
+    config_class::system_info.has_AltiVec         = false;
+    config_class::system_info.has_AVX             = false;
+    config_class::system_info.has_MMX             = false;
+    config_class::system_info.has_RDTSC           = false;
+    config_class::system_info.has_SSE             = false;
+    config_class::system_info.has_SSE2            = false;
+    config_class::system_info.has_SSE3            = false;
+    config_class::system_info.has_SSE41           = false;
+    config_class::system_info.has_SSE42           = false;
 };
 
 config_class::~config_class(void)
@@ -350,27 +364,43 @@ void config_class::mouse_autohide_process(bool set_active)
     }
 };
 
-void config_class::log_system_configuration(void)
+void config_class::get_system_information(void)
 {
+    config_class::system_info.platform            = SDL_GetPlatform();
+    config_class::system_info.CPU_count           = SDL_GetCPUCount();
+    config_class::system_info.CPU_cache_line_size = SDL_GetCPUCacheLineSize();
+    config_class::system_info.system_RAM          = SDL_GetSystemRAM();
+    config_class::system_info.has_3DNow           = SDL_Has3DNow();
+    config_class::system_info.has_AVX             = SDL_HasAVX();
+    config_class::system_info.has_AltiVec         = SDL_HasAltiVec();
+    config_class::system_info.has_MMX             = SDL_HasMMX();
+    config_class::system_info.has_RDTSC           = SDL_HasRDTSC();
+    config_class::system_info.has_SSE             = SDL_HasSSE();
+    config_class::system_info.has_SSE2            = SDL_HasSSE2();
+    config_class::system_info.has_SSE3            = SDL_HasSSE3();
+    config_class::system_info.has_SSE41           = SDL_HasSSE41();
+    config_class::system_info.has_SSE42           = SDL_HasSSE42();
+}
+
+void config_class::log_system_information(void)
+{
+    config_class::get_system_information();
     game.core.log.file_write("# ------------ System Information -------------- #");
-    game.core.log.file_write("Detected - ",SDL_GetPlatform(), " Operating System");
-    if (strcmp(SDL_GetPlatform(),"Linux") != 0) game.core.log.file_write("For better performance, upgrade to Linux!");
-    game.core.log.file_write("Detected - ",SDL_GetCPUCount()," logical CPU cores");
-    game.core.log.file_write("Detected - ",SDL_GetCPUCacheLineSize()," CPU cache line size");
-    game.core.log.file_write("Detected - ",SDL_GetSystemRAM(),"MB system RAM");
-    if (SDL_Has3DNow())   game.core.log.file_write("Detected - 3D Now");
-    if (SDL_HasAVX())     game.core.log.file_write("Detected - AVX");
-    if (SDL_HasAltiVec()) game.core.log.file_write("Detected - AltiVec");
-    if (SDL_HasMMX())     game.core.log.file_write("Detected - MMX");
-    if (SDL_HasRDTSC())   game.core.log.file_write("Detected - RDTSC");
-    if (SDL_HasSSE())     game.core.log.file_write("Detected - SSE");
-    if (SDL_HasSSE2())    game.core.log.file_write("Detected - SSE2");
-    if (SDL_HasSSE3())    game.core.log.file_write("Detected - SSE3");
-    if (SDL_HasSSE41())   game.core.log.file_write("Detected - SSE41");
-    if (SDL_HasSSE42())   game.core.log.file_write("Detected - SSE42");
-
-
-
+    game.core.log.file_write("Detected - ",config_class::system_info.platform, " Operating System");
+    if (strcmp(config_class::system_info.platform.c_str(),"Linux") != 0) game.core.log.file_write("For better performance, upgrade to Linux!");
+    game.core.log.file_write("Detected - ",config_class::system_info.CPU_count," logical CPU cores");
+    game.core.log.file_write("Detected - ",config_class::system_info.CPU_cache_line_size," CPU cache line size");
+    game.core.log.file_write("Detected - ",config_class::system_info.system_RAM,"MB system RAM");
+    if (config_class::system_info.has_3DNow)   game.core.log.file_write("Detected - 3D Now");
+    if (config_class::system_info.has_AVX)     game.core.log.file_write("Detected - AVX");
+    if (config_class::system_info.has_AltiVec) game.core.log.file_write("Detected - AltiVec");
+    if (config_class::system_info.has_MMX)     game.core.log.file_write("Detected - MMX");
+    if (config_class::system_info.has_RDTSC)   game.core.log.file_write("Detected - RDTSC");
+    if (config_class::system_info.has_SSE)     game.core.log.file_write("Detected - SSE");
+    if (config_class::system_info.has_SSE2)    game.core.log.file_write("Detected - SSE2");
+    if (config_class::system_info.has_SSE3)    game.core.log.file_write("Detected - SSE3");
+    if (config_class::system_info.has_SSE41)   game.core.log.file_write("Detected - SSE41");
+    if (config_class::system_info.has_SSE42)   game.core.log.file_write("Detected - SSE42");
     game.core.log.file_write("# ---------------------------------------------- #");
 }
 
