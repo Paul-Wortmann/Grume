@@ -56,8 +56,8 @@ config_class::config_class(void)
     config_class::audio_rate                      = 44100;
     config_class::audio_channels                  = 32;
     config_class::audio_buffers                   = 1024;
-    config_class::audio_volume_music              = 32;
-    config_class::audio_volume_sound              = 64;
+    config_class::audio_volume_music              = 24;
+    config_class::audio_volume_sound              = 48;
     config_class::language                        = "english";
     config_class::system_info.platform            = "Unknown";
     config_class::system_info.CPU_count           = 0;
