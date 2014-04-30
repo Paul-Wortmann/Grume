@@ -150,6 +150,7 @@ void setup_menu_game_new(int UID)
         UI_form_pointer->data.element[element_count].dragable                       = false;
         UI_form_pointer->data.element[element_count].drag_active                    = false;
         UI_form_pointer->data.element[element_count].texture.angle                  = 0.0f;
+        UI_form_pointer->data.element[element_count].texture.enabled                = true;
         UI_form_pointer->data.element[element_count].zoom.enabled                   = true;
         UI_form_pointer->data.element[element_count].zoom.maximum                   = 0.0f;
         UI_form_pointer->data.element[element_count].zoom.value                     = 0.0f;
