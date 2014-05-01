@@ -3123,7 +3123,7 @@ void  item_manager_class::gen_item_texture(item_type* item_pointer,int item_type
         break;
         case ITEM_BODY:
             item_pointer->data.material_type = ITEM_MATERIAL_METAL;
-            temp_int = random(11);
+            temp_int = random(2);
             temp_string = "data/textures/UI/icons/armor/armor_";
             if (temp_int < 10) temp_string += "0";
             temp_string += int_to_string(temp_int) + ".png";
@@ -3166,7 +3166,7 @@ void  item_manager_class::gen_item_texture(item_type* item_pointer,int item_type
             {
                 case ITEM_SHIELD:
                     item_pointer->data.material_type = ITEM_MATERIAL_WOOD;
-                    temp_int = random(19);
+                    temp_int = random(12);
                     temp_string = "data/textures/UI/icons/shields/shield_";
                     if (temp_int < 10) temp_string += "0";
                     temp_string += int_to_string(temp_int) + ".png";
@@ -3181,7 +3181,7 @@ void  item_manager_class::gen_item_texture(item_type* item_pointer,int item_type
         break;
         case ITEM_RING:
             item_pointer->data.material_type = ITEM_MATERIAL_RING;
-            temp_int = random(30);
+            temp_int = random(11);
             temp_string = "data/textures/UI/icons/rings/ring_";
             if (temp_int < 10) temp_string += "0";
             temp_string += int_to_string(temp_int) + ".png";
@@ -3192,7 +3192,7 @@ void  item_manager_class::gen_item_texture(item_type* item_pointer,int item_type
             {
                 case ITEM_DAGGER:
                     item_pointer->data.material_type = ITEM_MATERIAL_METAL;
-                    temp_int = random(30);
+                    temp_int = random(3);
                     temp_string = "data/textures/UI/icons/daggers/dagger_";
                     if (temp_int < 10) temp_string += "0";
                     temp_string += int_to_string(temp_int) + ".png";
@@ -3200,7 +3200,7 @@ void  item_manager_class::gen_item_texture(item_type* item_pointer,int item_type
                 break;
                 case ITEM_BOW:
                     item_pointer->data.material_type = ITEM_MATERIAL_WOOD;
-                    temp_int = random(5);
+                    temp_int = random(3);
                     temp_string = "data/textures/UI/icons/bows/bow_";
                     if (temp_int < 10) temp_string += "0";
                     temp_string += int_to_string(temp_int) + ".png";
@@ -3216,7 +3216,7 @@ void  item_manager_class::gen_item_texture(item_type* item_pointer,int item_type
                 break;
                 case ITEM_SWORD:
                     item_pointer->data.material_type = ITEM_MATERIAL_METAL;
-                    temp_int = random(37);
+                    temp_int = random(9);
                     temp_string = "data/textures/UI/icons/swords/sword_";
                     if (temp_int < 10) temp_string += "0";
                     temp_string += int_to_string(temp_int) + ".png";
@@ -3249,7 +3249,7 @@ void  item_manager_class::gen_item_texture(item_type* item_pointer,int item_type
                 case ITEM_WAND:
                 default:
                     item_pointer->data.material_type = ITEM_MATERIAL_WOOD;
-                    temp_int = random(23);
+                    temp_int = random(3);
                     if (temp_int == 22) item_pointer->data.material_type = ITEM_MATERIAL_METAL;
                     temp_string = "data/textures/UI/icons/wands/wand_";
                     if (temp_int < 10) temp_string += "0";
