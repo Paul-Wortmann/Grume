@@ -575,7 +575,7 @@ int  item_manager_class::gen_item(int item_type_UID, int item_sub_type_UID, int 
                             if ((quality_level > (MAX_ITEM_QUALITY*0.4f))&&(quality_level <= (MAX_ITEM_QUALITY*0.6f))) spell_level = 12;
                             if ((quality_level > (MAX_ITEM_QUALITY*0.6f))&&(quality_level <= (MAX_ITEM_QUALITY*0.8f))) spell_level = 16;
                             if (quality_level > (MAX_ITEM_QUALITY*0.8f))                                               spell_level = 20;
-                            spell_level = 12; // remove for testing-------------!!!!----
+                            spell_level = 13; // remove for testing-------------!!!!----
                             if (item_sub_type_UID == ITEM_SPELL_BOOK)
                             {
                                 switch (random(spell_level))
@@ -3069,47 +3069,47 @@ void  item_manager_class::gen_item_texture(item_type* item_pointer,int item_type
             switch (item_sub_type_UID)
             {
                 case ITEM_SPELL_ARROW_FIRE:
-                    item_pointer->data.image.level_0 = game.texture_manager.add_texture("data/textures/UI/icons/books/book_05.png");
+                    item_pointer->data.image.level_0 = game.texture_manager.add_texture("data/textures/UI/icons/books/book_00.png");
                 break;
                 case ITEM_SPELL_ARROW_ICE:
-                    item_pointer->data.image.level_0 = game.texture_manager.add_texture("data/textures/UI/icons/books/book_24.png");
+                    item_pointer->data.image.level_0 = game.texture_manager.add_texture("data/textures/UI/icons/books/book_04.png");
                 break;
                 case ITEM_SPELL_ARROW_LIGHTNING:
-                    item_pointer->data.image.level_0 = game.texture_manager.add_texture("data/textures/UI/icons/books/book_25.png");
+                    item_pointer->data.image.level_0 = game.texture_manager.add_texture("data/textures/UI/icons/books/book_07.png");
                 break;
                 case ITEM_SPELL_ARROW_ELEMENTAL:
-                    item_pointer->data.image.level_0 = game.texture_manager.add_texture("data/textures/UI/icons/books/book_17.png");
+                    item_pointer->data.image.level_0 = game.texture_manager.add_texture("data/textures/UI/icons/books/book_01.png");
                 break;
                 case ITEM_SPELL_BALL_FIRE:
-                    item_pointer->data.image.level_0 = game.texture_manager.add_texture("data/textures/UI/icons/books/book_05.png");
+                    item_pointer->data.image.level_0 = game.texture_manager.add_texture("data/textures/UI/icons/books/book_00.png");
                 break;
                 case ITEM_SPELL_BALL_ICE:
-                    item_pointer->data.image.level_0 = game.texture_manager.add_texture("data/textures/UI/icons/books/book_19.png");
+                    item_pointer->data.image.level_0 = game.texture_manager.add_texture("data/textures/UI/icons/books/book_04.png");
                 break;
                 case ITEM_SPELL_BALL_LIGHTNING:
-                    item_pointer->data.image.level_0 = game.texture_manager.add_texture("data/textures/UI/icons/books/book_15.png");
+                    item_pointer->data.image.level_0 = game.texture_manager.add_texture("data/textures/UI/icons/books/book_07.png");
                 break;
                 case ITEM_SPELL_BALL_ELEMENTAL:
-                    item_pointer->data.image.level_0 = game.texture_manager.add_texture("data/textures/UI/icons/books/book_17.png");
+                    item_pointer->data.image.level_0 = game.texture_manager.add_texture("data/textures/UI/icons/books/book_01.png");
                 break;
 
                 case ITEM_SPELL_SHIELD_FIRE:
-                    item_pointer->data.image.level_0 = game.texture_manager.add_texture("data/textures/UI/icons/books/book_05.png");
+                    item_pointer->data.image.level_0 = game.texture_manager.add_texture("data/textures/UI/icons/books/book_00.png");
                 break;
                 case ITEM_SPELL_SHIELD_ICE:
-                    item_pointer->data.image.level_0 = game.texture_manager.add_texture("data/textures/UI/icons/books/book_19.png");
+                    item_pointer->data.image.level_0 = game.texture_manager.add_texture("data/textures/UI/icons/books/book_04.png");
                 break;
                 case ITEM_SPELL_SHIELD_LIGHTNING:
-                    item_pointer->data.image.level_0 = game.texture_manager.add_texture("data/textures/UI/icons/books/book_15.png");
+                    item_pointer->data.image.level_0 = game.texture_manager.add_texture("data/textures/UI/icons/books/book_07.png");
                 break;
                 case ITEM_SPELL_SHIELD_ELEMENTAL:
-                    item_pointer->data.image.level_0 = game.texture_manager.add_texture("data/textures/UI/icons/books/book_17.png");
+                    item_pointer->data.image.level_0 = game.texture_manager.add_texture("data/textures/UI/icons/books/book_01.png");
                 break;
                 case ITEM_SPELL_HEAL:
-                    item_pointer->data.image.level_0 = game.texture_manager.add_texture("data/textures/UI/icons/books/book_23.png");
+                    item_pointer->data.image.level_0 = game.texture_manager.add_texture("data/textures/UI/icons/books/book_06.png");
                 break;
                 default:
-                    item_pointer->data.image.level_0 = game.texture_manager.add_texture("data/textures/UI/icons/books/book_04.png");
+                    item_pointer->data.image.level_0 = game.texture_manager.add_texture("data/textures/UI/icons/books/book_02i.png");
                 break;
             }
         break;
@@ -3200,7 +3200,7 @@ void  item_manager_class::gen_item_texture(item_type* item_pointer,int item_type
                 break;
                 case ITEM_BOW:
                     item_pointer->data.material_type = ITEM_MATERIAL_WOOD;
-                    temp_int = random(3);
+                    temp_int = random(2);
                     temp_string = "data/textures/UI/icons/bows/bow_";
                     if (temp_int < 10) temp_string += "0";
                     temp_string += int_to_string(temp_int) + ".png";
