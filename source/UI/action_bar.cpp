@@ -175,9 +175,9 @@ void setup_action_bar(int UID)
     UI_form_pointer->data.element[element_number].tooltip.size.y            = 30.0f;
     UI_form_pointer->data.element[element_number].color                     = UI_form_pointer->data.color;
     UI_form_pointer->data.element[element_number].size.x                    = UI_form_pointer->data.size.x * 0.952f;
-    UI_form_pointer->data.element[element_number].size.y                    = UI_form_pointer->data.size.y * 0.2f;
+    UI_form_pointer->data.element[element_number].size.y                    = UI_form_pointer->data.size.y * 0.14f;
     UI_form_pointer->data.element[element_number].position.x                = UI_form_pointer->data.position.x;// - (UI_form_pointer->data.size.x * 0.25f);
-    UI_form_pointer->data.element[element_number].position.y                = UI_form_pointer->data.position.y - (UI_form_pointer->data.size.y * 0.38f);
+    UI_form_pointer->data.element[element_number].position.y                = UI_form_pointer->data.position.y - (UI_form_pointer->data.size.y * 0.36f);
     UI_form_pointer->data.element[element_number].texture.normal            = game.texture_manager.add_texture("data/textures/UI/menu/experience_bar.png");
     UI_form_pointer->data.element[element_number].texture.highlighted       = game.texture_manager.add_texture("data/textures/UI/menu/experience_bar.png");
     UI_form_pointer->data.element[element_number].texture.normal->data.render_positioning = TEXTURE_RENDER_UP;
