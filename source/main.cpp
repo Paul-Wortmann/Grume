@@ -33,6 +33,10 @@
 #include "core/misc.hpp"
 #include "game/game.hpp"
 
+#define FNF_MAJOR_VERSION 0
+#define FNF_MINOR_VERSION 31
+#define FNF_PATCH_VERSION 1
+
 extern game_class    game;
 
 Uint32                   colorkey;
