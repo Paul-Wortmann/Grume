@@ -239,6 +239,7 @@ class item_manager_class
         void            unequip_item(item_type* item_pointer);
         int             gen_item(int item_type_UID, int item_sub_type_UID, int quality_level);
         int             get_item_best_effect(item_type* item_pointer);
+        std::string     get_item_effect_string(int effect_name);
         void            gen_item_name(item_type* temp_item_pointer,int item_type_UID, int item_sub_type_UID, int quality_level);
         void            gen_item_texture(item_type* temp_item_pointer,int item_type_UID, int item_sub_type_UID, int quality_level);
         void            gen_item_sounds(item_type* temp_item_pointer,int item_type_UID, int item_sub_type_UID, int quality_level);

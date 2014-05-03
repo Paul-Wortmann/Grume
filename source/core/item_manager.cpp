@@ -1675,6 +1675,190 @@ int   item_manager_class::get_item_best_effect(item_type* item_pointer)
     return (return_value);
 }
 
+std::string item_manager_class::get_item_effect_string(int effect_name)
+{
+    std::string return_value = "of error";
+    switch (effect_name)
+    {
+        case EFFECT_MOD_STRENGTH:
+            return_value = "of power";
+        break;
+        case EFFECT_MOD_INTELLECT:
+            return_value = "of the mind";
+        break;
+        case EFFECT_MOD_DEXTERITY:
+            return_value = "of nimbus";
+        break;
+        case EFFECT_MOD_ALL_ATTRIBUTES:
+            return_value = "of skill";
+        break;
+        case EFFECT_MOD_ARMOR:
+            return_value = "of armor";
+        break;
+        case EFFECT_MOD_DAMAGE:
+            return_value = "of damage";
+        break;
+        case EFFECT_MOD_DAMAGE_MAX:
+            return_value = "of might";
+        break;
+        case EFFECT_MOD_DAMAGE_MIN:
+            return_value = "of skill";
+        break;
+        case EFFECT_MOD_DAMAGE_ELEMENTAL:
+            return_value = "of wizardry";
+        break;
+        case EFFECT_MOD_RESIST_PHYSICAL:
+            return_value = "of the brute";
+        break;
+        case EFFECT_MOD_DAMAGE_ICE:
+        case EFFECT_MOD_RESIST_ICE:
+            switch (random(2))
+            {
+                case 0:
+                    return_value = "of frost";
+                break;
+                case 1:
+                default:
+                    return_value = "of cold";
+                break;
+            }
+        break;
+        case EFFECT_MOD_DAMAGE_FIRE:
+        case EFFECT_MOD_RESIST_FIRE:
+            switch (random(6))
+            {
+                case 0:
+                    return_value = "of flame";
+                break;
+                case 1:
+                    return_value = "of burning";
+                break;
+                case 2:
+                    return_value = "of hellfire";
+                break;
+                case 3:
+                    return_value = "of brimstone";
+                break;
+                case 4:
+                    return_value = "of charing";
+                break;
+                case 5:
+                default:
+                    return_value = "of the flame";
+                break;
+            }
+        break;
+        case EFFECT_MOD_DAMAGE_LIGHTNING:
+        case EFFECT_MOD_RESIST_LIGHTNING:
+            switch (random(3))
+            {
+                case 0:
+                    return_value = "of thunder";
+                break;
+                case 1:
+                    return_value = "of lightning";
+                break;
+                case 2:
+                default:
+                    return_value = "of sparking";
+                break;
+            }
+        break;
+        case EFFECT_MOD_RESIST_ALL:
+            return_value = "of resistance";
+        break;
+        case EFFECT_MOD_HEALTH:
+            return_value = "of health";
+        break;
+        case EFFECT_MOD_HEALTH_MAX:
+            return_value = "of constitution";
+        break;
+        case EFFECT_MOD_HEALTH_REGEN:
+            return_value = "of life";
+        break;
+        case EFFECT_MOD_HEALTH_HIT:
+            return_value = "of life leach";
+        break;
+        case EFFECT_MOD_HEALTH_KILL:
+            return_value = "of life steal";
+        break;
+        case EFFECT_MOD_MANA:
+            return_value = "of mana";
+        break;
+        case EFFECT_MOD_MANA_MAX:
+            return_value = "of wizardry";
+        break;
+        case EFFECT_MOD_MANA_REGEN:
+            return_value = "of hexing";
+        break;
+        case EFFECT_MOD_MANA_HIT:
+            return_value = "of mana drain";
+        break;
+        case EFFECT_MOD_MANA_KILL:
+            return_value = "of mana steal";
+        break;
+        case EFFECT_MOD_CRIT_CHANCE:
+        break;
+        case EFFECT_MOD_CRIT_DAMAGE:
+        break;
+        case EFFECT_MOD_MOVEMENT_SPEED:
+            switch (random(2))
+            {
+                case 0:
+                    return_value = "of speed";
+                break;
+                case 1:
+                default:
+                    return_value = "of haste";
+                break;
+            }
+        break;
+        case EFFECT_MOD_LIGHT_RADIUS:
+            return_value = "of brilliance";
+        break;
+        case EFFECT_MOD_MAGIC_FIND:
+            return_value = "of luck";
+        break;
+        case EFFECT_MOD_GOLD_FIND:
+            return_value = "of the leprechaun";
+        break;
+        case EFFECT_MOD_EXP_PER_KILL:
+            return_value = "of wisdom";
+        break;
+        case EFFECT_MOD_SPELL:
+            return_value = "of Beltane";
+        break;
+        case EFFECT_MOD_SPELL_TYPE:
+            return_value = "of Samhain";
+        break;
+        case EFFECT_MOD_SPELL_ALL:
+            return_value = "of the Coven";
+        break;
+        case EFFECT_MOD_SPELL_CAST_KILL:
+            return_value = "of spawning";
+        break;
+        case EFFECT_MOD_SPELL_CAST_HIT:
+            return_value = "of magic";
+        break;
+        case EFFECT_MOD_SPELL_CAST_DMG:
+            return_value = "of reflection";
+        break;
+        case EFFECT_MOD_SPELL_MANA_COST:
+        break;
+        case EFFECT_MOD_SPELL_DAMAGE:
+        break;
+        case EFFECT_MOD_SPELL_COOLDOWN:
+        break;
+        case EFFECT_MOD_SPELL_DURATION:
+        break;
+        case EFFECT_NONE:
+        default:
+            return_value = "of nothing";
+        break;
+    }
+    return (return_value);
+}
+
 void  item_manager_class::gen_item_name(item_type* item_pointer,int item_type_UID, int item_sub_type_UID, int quality_level)
 {
     int         best_effect = item_manager_class::get_item_best_effect(item_pointer);
@@ -1810,643 +1994,214 @@ void  item_manager_class::gen_item_name(item_type* item_pointer,int item_type_UI
         break;
         case ITEM_FEET:
             base_name = "boots ";
-            switch (best_effect)
+            if ((best_effect != EFFECT_NONE) && (best_effect != EFFECT_MOD_ARMOR))
             {
-                case EFFECT_MOD_DEXTERITY:
-                    post_name = "of nimbus";
-                break;
-                case EFFECT_MOD_RESIST_PHYSICAL:
-                    post_name = "of the brute";
-                break;
-                case EFFECT_MOD_RESIST_ICE:
-                    post_name = "of frost";
-                break;
-                case EFFECT_MOD_RESIST_FIRE:
-                    post_name = "of flame";
-                break;
-                case EFFECT_MOD_RESIST_LIGHTNING:
-                    post_name = "of thunder";
-                break;
-                case EFFECT_MOD_RESIST_ALL:
-                    post_name = "of resistance";
-                break;
-                case EFFECT_MOD_HEALTH_REGEN:
-                    post_name = "of life";
-                break;
-                case EFFECT_MOD_MANA_MAX:
-                    post_name = "of wizardry";
-                break;
-                case EFFECT_MOD_MOVEMENT_SPEED:
-                    post_name = "of speed";
-                break;
-                case EFFECT_MOD_MAGIC_FIND:
-                    post_name = "of luck";
-                break;
-                case EFFECT_MOD_GOLD_FIND:
-                    post_name = "of the leprechaun";
-                break;
-                case EFFECT_MOD_ARMOR:
-                default:
-                    switch (random(6))
-                    {
-                        case 0:
-                            post_name = "of walking";
-                        break;
-                        case 1:
-                            post_name = "of stomping";
-                        break;
-                        case 2:
-                            post_name = "of running";
-                        break;
-                        case 3:
-                            post_name = "of striding";
-                        break;
-                        case 4:
-                            post_name = "of treading";
-                        break;
-                        case 5:
-                        default:
-                            post_name = "of kicking";
-                        break;
-                    }
-                break;
+                post_name = item_manager_class::get_item_effect_string(best_effect);
+            }
+            else
+            {
+                switch (random(6))
+                {
+                    case 0:
+                        post_name = "of walking";
+                    break;
+                    case 1:
+                        post_name = "of stomping";
+                    break;
+                    case 2:
+                        post_name = "of running";
+                    break;
+                    case 3:
+                        post_name = "of striding";
+                    break;
+                    case 4:
+                        post_name = "of treading";
+                    break;
+                    case 5:
+                    default:
+                        post_name = "of kicking";
+                    break;
+                }
             }
             item_pointer->data.name = pre_name+base_name+post_name;
         break;
         case ITEM_BELT:
             base_name = "belt ";
-            switch (best_effect)
+            if ((best_effect != EFFECT_NONE) && (best_effect != EFFECT_MOD_ARMOR))
             {
-                case EFFECT_MOD_STRENGTH:
-                    post_name = "of power";
-                break;
-                case EFFECT_MOD_DEXTERITY:
-                    post_name = "of nimbus";
-                break;
-                case EFFECT_MOD_RESIST_PHYSICAL:
-                    post_name = "of the brute";
-                break;
-                case EFFECT_MOD_RESIST_ICE:
-                    post_name = "of frost";
-                break;
-                case EFFECT_MOD_RESIST_FIRE:
-                    post_name = "of flame";
-                break;
-                case EFFECT_MOD_RESIST_LIGHTNING:
-                    post_name = "of thunder";
-                break;
-                case EFFECT_MOD_RESIST_ALL:
-                    post_name = "of resistance";
-                break;
-                case EFFECT_MOD_MANA_REGEN:
-                    post_name = "of hexing";
-                break;
-                case EFFECT_MOD_HEALTH_REGEN:
-                    post_name = "of life";
-                break;
-                case EFFECT_MOD_MANA_MAX:
-                    post_name = "of wizardry";
-                break;
-                case EFFECT_MOD_MAGIC_FIND:
-                    post_name = "of luck";
-                break;
-                case EFFECT_MOD_GOLD_FIND:
-                    post_name = "of the leprechaun";
-                break;
-                case EFFECT_MOD_ARMOR:
-                default:
-                    switch (random(6))
-                    {
-                        case 0:
-                            post_name = "of security";
-                        break;
-                        case 1:
-                            post_name = "of perseverance";
-                        break;
-                        case 2:
-                            post_name = "of deliverance";
-                        break;
-                        case 3:
-                            post_name = "of justice";
-                        break;
-                        case 4:
-                            post_name = "of pride";
-                        break;
-                        case 5:
-                        default:
-                            post_name = "of holding";
-                        break;
-                    }
-                break;
+                post_name = item_manager_class::get_item_effect_string(best_effect);
+            }
+            else
+            {
+                switch (random(6))
+                {
+                    case 0:
+                        post_name = "of security";
+                    break;
+                    case 1:
+                        post_name = "of perseverance";
+                    break;
+                    case 2:
+                        post_name = "of deliverance";
+                    break;
+                    case 3:
+                        post_name = "of justice";
+                    break;
+                    case 4:
+                        post_name = "of pride";
+                    break;
+                    case 5:
+                    default:
+                        post_name = "of holding";
+                    break;
+                }
             }
             item_pointer->data.name = pre_name+base_name+post_name;
         break;
         case ITEM_HEAD:
             base_name = "helm ";
-            switch (best_effect)
+            if ((best_effect != EFFECT_NONE) && (best_effect != EFFECT_MOD_ARMOR))
             {
-                case EFFECT_MOD_STRENGTH:
-                    post_name = "of power";
-                break;
-                case EFFECT_MOD_DEXTERITY:
-                    post_name = "of nimbus";
-                break;
-                case EFFECT_MOD_INTELLECT:
-                    post_name = "of the mind";
-                break;
-                case EFFECT_MOD_ALL_ATTRIBUTES:
-                    post_name = "of skill";
-                break;
-                case EFFECT_MOD_RESIST_PHYSICAL:
-                    post_name = "of the brute";
-                break;
-                case EFFECT_MOD_RESIST_ICE:
-                    post_name = "of frost";
-                break;
-                case EFFECT_MOD_RESIST_FIRE:
-                    post_name = "of flame";
-                break;
-                case EFFECT_MOD_RESIST_LIGHTNING:
-                    post_name = "of thunder";
-                break;
-                case EFFECT_MOD_RESIST_ALL:
-                    post_name = "of resistance";
-                break;
-                case EFFECT_MOD_MANA_REGEN:
-                    post_name = "of hexing";
-                break;
-                case EFFECT_MOD_HEALTH_REGEN:
-                    post_name = "of life";
-                break;
-                case EFFECT_MOD_MANA_MAX:
-                    post_name = "of wizardry";
-                break;
-                case EFFECT_MOD_MOVEMENT_SPEED:
-                    post_name = "of speed";
-                break;
-                case EFFECT_MOD_MAGIC_FIND:
-                    post_name = "of luck";
-                break;
-                case EFFECT_MOD_GOLD_FIND:
-                    post_name = "of the leprechaun";
-                break;
-                case EFFECT_MOD_LIGHT_RADIUS:
-                    post_name = "of brilliance";
-                break;
-                case EFFECT_MOD_EXP_PER_KILL:
-                    post_name = "of wisdom";
-                break;
-                case EFFECT_MOD_ARMOR:
-                default:
-                    switch (random(4))
-                    {
-                        case 0:
-                            post_name = "of protection";
-                        break;
-                        case 1:
-                            post_name = "of wrath";
-                        break;
-                        case 2:
-                            post_name = "of doom";
-                        break;
-                        case 3:
-                        default:
-                            post_name = "of glory";
-                        break;
-                    }
-                break;
+                post_name = item_manager_class::get_item_effect_string(best_effect);
+            }
+            else
+            {
+                switch (random(4))
+                {
+                    case 0:
+                        post_name = "of protection";
+                    break;
+                    case 1:
+                        post_name = "of wrath";
+                    break;
+                    case 2:
+                        post_name = "of doom";
+                    break;
+                    case 3:
+                    default:
+                        post_name = "of glory";
+                    break;
+                }
             }
             item_pointer->data.name = pre_name+base_name+post_name;
         break;
         case ITEM_BODY:
             base_name = "armor ";
-            switch (best_effect)
+            if ((best_effect != EFFECT_NONE) && (best_effect != EFFECT_MOD_ARMOR))
             {
-                case EFFECT_MOD_STRENGTH:
-                    post_name = "of power";
-                break;
-                case EFFECT_MOD_DEXTERITY:
-                    post_name = "of nimbus";
-                break;
-                case EFFECT_MOD_INTELLECT:
-                    post_name = "of the mind";
-                break;
-                case EFFECT_MOD_ALL_ATTRIBUTES:
-                    post_name = "of skill";
-                break;
-                case EFFECT_MOD_RESIST_PHYSICAL:
-                    post_name = "of the brute";
-                break;
-                case EFFECT_MOD_RESIST_ICE:
-                    post_name = "of frost";
-                break;
-                case EFFECT_MOD_RESIST_FIRE:
-                    post_name = "of flame";
-                break;
-                case EFFECT_MOD_RESIST_LIGHTNING:
-                    post_name = "of thunder";
-                break;
-                case EFFECT_MOD_RESIST_ALL:
-                    post_name = "of resistance";
-                break;
-                case EFFECT_MOD_HEALTH_REGEN:
-                    post_name = "of life";
-                break;
-                case EFFECT_MOD_HEALTH_MAX:
-                    post_name = "of constitution";
-                break;
-                case EFFECT_MOD_HEALTH_HIT:
-                    post_name = "of life leach";
-                break;
-                case EFFECT_MOD_HEALTH_KILL:
-                    post_name = "of life steal";
-                break;
-                case EFFECT_MOD_MANA_REGEN:
-                    post_name = "of hexing";
-                break;
-                case EFFECT_MOD_MANA_MAX:
-                    post_name = "of wizardry";
-                break;
-                case EFFECT_MOD_MANA_HIT:
-                    post_name = "of mana drain";
-                break;
-                case EFFECT_MOD_MANA_KILL:
-                    post_name = "of mana steal";
-                break;
-                case EFFECT_MOD_MOVEMENT_SPEED:
-                    post_name = "of speed";
-                break;
-                case EFFECT_MOD_MAGIC_FIND:
-                    post_name = "of luck";
-                break;
-                case EFFECT_MOD_GOLD_FIND:
-                    post_name = "of the leprechaun";
-                break;
-                case EFFECT_MOD_LIGHT_RADIUS:
-                    post_name = "of brilliance";
-                break;
-                case EFFECT_MOD_EXP_PER_KILL:
-                    post_name = "of wisdom";
-                break;
-                case EFFECT_MOD_SPELL_CAST_DMG:
-                    post_name = "of reflection";
-                break;
-                case EFFECT_MOD_SPELL_CAST_HIT:
-                    post_name = "of magic";
-                break;
-                case EFFECT_MOD_SPELL_CAST_KILL:
-                    post_name = "of spawning";
-                break;
-                case EFFECT_MOD_ARMOR:
-                default:
-                    switch (random(6))
-                    {
-                        case 0:
-                            post_name = "of gloom";
-                        break;
-                        case 1:
-                            post_name = "of cover";
-                        break;
-                        case 2:
-                            post_name = "of stealth";
-                        break;
-                        case 3:
-                            post_name = "of honor";
-                        break;
-                        case 4:
-                            post_name = "of courage";
-                        break;
-                        case 5:
-                        default:
-                            post_name = "of bravery";
-                        break;
-                    }
-                break;
+                post_name = item_manager_class::get_item_effect_string(best_effect);
+            }
+            else
+            {
+                switch (random(6))
+                {
+                    case 0:
+                        post_name = "of gloom";
+                    break;
+                    case 1:
+                        post_name = "of cover";
+                    break;
+                    case 2:
+                        post_name = "of stealth";
+                    break;
+                    case 3:
+                        post_name = "of honor";
+                    break;
+                    case 4:
+                        post_name = "of courage";
+                    break;
+                    case 5:
+                    default:
+                        post_name = "of bravery";
+                    break;
+                }
             }
             item_pointer->data.name = pre_name+base_name+post_name;
         break;
         case ITEM_HAND:
             base_name = "gloves ";
-            switch (best_effect)
+            if ((best_effect != EFFECT_NONE) && (best_effect != EFFECT_MOD_ARMOR))
             {
-                case EFFECT_MOD_STRENGTH:
-                    post_name = "of power";
-                break;
-                case EFFECT_MOD_DEXTERITY:
-                    post_name = "of nimbus";
-                break;
-                case EFFECT_MOD_INTELLECT:
-                    post_name = "of the mind";
-                break;
-                case EFFECT_MOD_ALL_ATTRIBUTES:
-                    post_name = "of skill";
-                break;
-                case EFFECT_MOD_RESIST_PHYSICAL:
-                    post_name = "of the brute";
-                break;
-                case EFFECT_MOD_RESIST_ICE:
-                    post_name = "of frost";
-                break;
-                case EFFECT_MOD_RESIST_FIRE:
-                    post_name = "of flame";
-                break;
-                case EFFECT_MOD_RESIST_LIGHTNING:
-                    post_name = "of thunder";
-                break;
-                case EFFECT_MOD_RESIST_ALL:
-                    post_name = "of resistance";
-                break;
-                case EFFECT_MOD_HEALTH_REGEN:
-                    post_name = "of life";
-                break;
-                case EFFECT_MOD_HEALTH_MAX:
-                    post_name = "of constitution";
-                break;
-                case EFFECT_MOD_HEALTH_HIT:
-                    post_name = "of life leach";
-                break;
-                case EFFECT_MOD_HEALTH_KILL:
-                    post_name = "of life steal";
-                break;
-                case EFFECT_MOD_MANA_REGEN:
-                    post_name = "of hexing";
-                break;
-                case EFFECT_MOD_MANA_MAX:
-                    post_name = "of wizardry";
-                break;
-                case EFFECT_MOD_MANA_HIT:
-                    post_name = "of mana drain";
-                break;
-                case EFFECT_MOD_MANA_KILL:
-                    post_name = "of mana steal";
-                break;
-                case EFFECT_MOD_MOVEMENT_SPEED:
-                    post_name = "of speed";
-                break;
-                case EFFECT_MOD_MAGIC_FIND:
-                    post_name = "of luck";
-                break;
-                case EFFECT_MOD_GOLD_FIND:
-                    post_name = "of the leprechaun";
-                break;
-                case EFFECT_MOD_LIGHT_RADIUS:
-                    post_name = "of brilliance";
-                break;
-                case EFFECT_MOD_EXP_PER_KILL:
-                    post_name = "of wisdom";
-                break;
-                case EFFECT_MOD_SPELL_CAST_DMG:
-                    post_name = "of reflection";
-                break;
-                case EFFECT_MOD_SPELL_CAST_HIT:
-                    post_name = "of magic";
-                break;
-                case EFFECT_MOD_SPELL_CAST_KILL:
-                    post_name = "of spawning";
-                break;
-                case EFFECT_MOD_ARMOR:
-                default:
-                    switch (random(6))
-                    {
-                        case 0:
-                            post_name = "of might";
-                        break;
-                        case 1:
-                            post_name = "of iron fist";
-                        break;
-                        case 2:
-                            post_name = "of straggle";
-                        break;
-                        case 3:
-                            post_name = "of grip";
-                        break;
-                        case 4:
-                            post_name = "of punching";
-                        break;
-                        case 5:
-                        default:
-                            post_name = "of pounding";
-                        break;
-                    }
-                break;
+                post_name = item_manager_class::get_item_effect_string(best_effect);
+            }
+            else
+            {
+                switch (random(6))
+                {
+                    case 0:
+                        post_name = "of might";
+                    break;
+                    case 1:
+                        post_name = "of iron fist";
+                    break;
+                    case 2:
+                        post_name = "of straggle";
+                    break;
+                    case 3:
+                        post_name = "of grip";
+                    break;
+                    case 4:
+                        post_name = "of punching";
+                    break;
+                    case 5:
+                    default:
+                        post_name = "of pounding";
+                    break;
+                }
             }
             item_pointer->data.name = pre_name+base_name+post_name;
         break;
         case ITEM_RING:
             base_name = "ring ";
-            switch (best_effect)
+            if (best_effect != EFFECT_NONE)
             {
-                case EFFECT_MOD_STRENGTH:
-                    post_name = "of power";
-                break;
-                case EFFECT_MOD_DEXTERITY:
-                    post_name = "of nimbus";
-                break;
-                case EFFECT_MOD_INTELLECT:
-                    post_name = "of the mind";
-                break;
-                case EFFECT_MOD_ALL_ATTRIBUTES:
-                    post_name = "of skill";
-                break;
-                case EFFECT_MOD_RESIST_PHYSICAL:
-                    post_name = "of the brute";
-                break;
-                case EFFECT_MOD_RESIST_ICE:
-                    post_name = "of frost";
-                break;
-                case EFFECT_MOD_RESIST_FIRE:
-                    post_name = "of flame";
-                break;
-                case EFFECT_MOD_RESIST_LIGHTNING:
-                    post_name = "of thunder";
-                break;
-                case EFFECT_MOD_RESIST_ALL:
-                    post_name = "of resistance";
-                break;
-                case EFFECT_MOD_HEALTH_REGEN:
-                    post_name = "of life";
-                break;
-                case EFFECT_MOD_HEALTH_MAX:
-                    post_name = "of constitution";
-                break;
-                case EFFECT_MOD_HEALTH_HIT:
-                    post_name = "of life leach";
-                break;
-                case EFFECT_MOD_HEALTH_KILL:
-                    post_name = "of life steal";
-                break;
-                case EFFECT_MOD_MANA_REGEN:
-                    post_name = "of hexing";
-                break;
-                case EFFECT_MOD_MANA_MAX:
-                    post_name = "of wizardry";
-                break;
-                case EFFECT_MOD_MANA_HIT:
-                    post_name = "of mana drain";
-                break;
-                case EFFECT_MOD_MANA_KILL:
-                    post_name = "of mana steal";
-                break;
-                case EFFECT_MOD_MOVEMENT_SPEED:
-                    post_name = "of speed";
-                break;
-                case EFFECT_MOD_MAGIC_FIND:
-                    post_name = "of luck";
-                break;
-                case EFFECT_MOD_GOLD_FIND:
-                    post_name = "of the leprechaun";
-                break;
-                case EFFECT_MOD_LIGHT_RADIUS:
-                    post_name = "of brilliance";
-                break;
-                case EFFECT_MOD_EXP_PER_KILL:
-                    post_name = "of wisdom";
-                break;
-                case EFFECT_MOD_SPELL_CAST_DMG:
-                    post_name = "of reflection";
-                break;
-                case EFFECT_MOD_SPELL_CAST_HIT:
-                    post_name = "of magic";
-                break;
-                case EFFECT_MOD_SPELL_CAST_KILL:
-                    post_name = "of spawning";
-                break;
-                case EFFECT_MOD_SPELL:
-                    post_name = "of Beltane";
-                break;
-                case EFFECT_MOD_SPELL_TYPE:
-                    post_name = "of Samhain";
-                break;
-                case EFFECT_MOD_SPELL_ALL:
-                    post_name = "of the Coven";
-                break;
-                default:
-                    switch (random(2))
-                    {
-                        case 0:
-                            post_name = "of myth";
-                        break;
-                        case 1:
-                        default:
-                            post_name = "of infinity";
-                        break;
-                    }
-                break;
+                post_name = item_manager_class::get_item_effect_string(best_effect);
+            }
+            else
+            {
+                switch (random(2))
+                {
+                    case 0:
+                        post_name = "of myth";
+                    break;
+                    case 1:
+                    default:
+                        post_name = "of infinity";
+                    break;
+                }
             }
             item_pointer->data.name = pre_name+base_name+post_name;
         break;
         case ITEM_NECK:
             base_name = "amulet ";
-            switch (best_effect)
+            if (best_effect != EFFECT_NONE)
             {
-                case EFFECT_MOD_STRENGTH:
-                    post_name = "of power";
-                break;
-                case EFFECT_MOD_DEXTERITY:
-                    post_name = "of nimbus";
-                break;
-                case EFFECT_MOD_INTELLECT:
-                    post_name = "of the mind";
-                break;
-                case EFFECT_MOD_ALL_ATTRIBUTES:
-                    post_name = "of skill";
-                break;
-                case EFFECT_MOD_RESIST_PHYSICAL:
-                    post_name = "of the brute";
-                break;
-                case EFFECT_MOD_RESIST_ICE:
-                    post_name = "of frost";
-                break;
-                case EFFECT_MOD_RESIST_FIRE:
-                    post_name = "of flame";
-                break;
-                case EFFECT_MOD_RESIST_LIGHTNING:
-                    post_name = "of thunder";
-                break;
-                case EFFECT_MOD_RESIST_ALL:
-                    post_name = "of resistance";
-                break;
-                case EFFECT_MOD_HEALTH_REGEN:
-                    post_name = "of life";
-                break;
-                case EFFECT_MOD_HEALTH_MAX:
-                    post_name = "of constitution";
-                break;
-                case EFFECT_MOD_HEALTH_HIT:
-                    post_name = "of life leach";
-                break;
-                case EFFECT_MOD_HEALTH_KILL:
-                    post_name = "of life steal";
-                break;
-                case EFFECT_MOD_MANA_REGEN:
-                    post_name = "of hexing";
-                break;
-                case EFFECT_MOD_MANA_MAX:
-                    post_name = "of wizardry";
-                break;
-                case EFFECT_MOD_MANA_HIT:
-                    post_name = "of mana drain";
-                break;
-                case EFFECT_MOD_MANA_KILL:
-                    post_name = "of mana steal";
-                break;
-                case EFFECT_MOD_MOVEMENT_SPEED:
-                    post_name = "of speed";
-                break;
-                case EFFECT_MOD_MAGIC_FIND:
-                    post_name = "of luck";
-                break;
-                case EFFECT_MOD_GOLD_FIND:
-                    post_name = "of the leprechaun";
-                break;
-                case EFFECT_MOD_LIGHT_RADIUS:
-                    post_name = "of brilliance";
-                break;
-                case EFFECT_MOD_EXP_PER_KILL:
-                    post_name = "of wisdom";
-                break;
-                case EFFECT_MOD_SPELL_CAST_DMG:
-                    post_name = "of reflection";
-                break;
-                case EFFECT_MOD_SPELL_CAST_HIT:
-                    post_name = "of magic";
-                break;
-                case EFFECT_MOD_SPELL_CAST_KILL:
-                    post_name = "of spawning";
-                break;
-                case EFFECT_MOD_SPELL:
-                    post_name = "of Beltane";
-                break;
-                case EFFECT_MOD_SPELL_TYPE:
-                    post_name = "of Samhain";
-                break;
-                case EFFECT_MOD_SPELL_ALL:
-                    post_name = "of the Coven";
-                break;
-                default:
-                    switch (random(6))
-                    {
-                        case 0:
-                            post_name = "of glow";
-                        break;
-                        case 1:
-                            post_name = "of luck";
-                        break;
-                        case 2:
-                            post_name = "of dreams";
-                        break;
-                        case 3:
-                            post_name = "of determination";
-                        break;
-                        case 4:
-                            post_name = "of superstition";
-                        break;
-                        case 5:
-                        default:
-                            post_name = "of witches";
-                        break;
-                    }
-                break;
+                post_name = item_manager_class::get_item_effect_string(best_effect);
+            }
+            else
+            {
+                switch (random(6))
+                {
+                    case 0:
+                        post_name = "of glow";
+                    break;
+                    case 1:
+                        post_name = "of luck";
+                    break;
+                    case 2:
+                        post_name = "of dreams";
+                    break;
+                    case 3:
+                        post_name = "of determination";
+                    break;
+                    case 4:
+                        post_name = "of superstition";
+                    break;
+                    case 5:
+                    default:
+                        post_name = "of witches";
+                    break;
+                }
             }
             item_pointer->data.name = pre_name+base_name+post_name;
         break;
@@ -2461,116 +2216,34 @@ void  item_manager_class::gen_item_name(item_type* item_pointer,int item_type_UI
                     base_name = "shield ";
                 break;
             }
-            switch (best_effect)
+            if (best_effect != EFFECT_NONE)
             {
-                case EFFECT_MOD_STRENGTH:
-                    post_name = "of power";
-                break;
-                case EFFECT_MOD_DEXTERITY:
-                    post_name = "of nimbus";
-                break;
-                case EFFECT_MOD_INTELLECT:
-                    post_name = "of the mind";
-                break;
-                case EFFECT_MOD_ALL_ATTRIBUTES:
-                    post_name = "of skill";
-                break;
-                case EFFECT_MOD_RESIST_PHYSICAL:
-                    post_name = "of the brute";
-                break;
-                case EFFECT_MOD_RESIST_ICE:
-                    post_name = "of frost";
-                break;
-                case EFFECT_MOD_RESIST_FIRE:
-                    post_name = "of flame";
-                break;
-                case EFFECT_MOD_RESIST_LIGHTNING:
-                    post_name = "of thunder";
-                break;
-                case EFFECT_MOD_RESIST_ALL:
-                    post_name = "of resistance";
-                break;
-                case EFFECT_MOD_HEALTH_REGEN:
-                    post_name = "of life";
-                break;
-                case EFFECT_MOD_HEALTH_MAX:
-                    post_name = "of constitution";
-                break;
-                case EFFECT_MOD_HEALTH_HIT:
-                    post_name = "of life leach";
-                break;
-                case EFFECT_MOD_HEALTH_KILL:
-                    post_name = "of life steal";
-                break;
-                case EFFECT_MOD_MANA_REGEN:
-                    post_name = "of hexing";
-                break;
-                case EFFECT_MOD_MANA_MAX:
-                    post_name = "of wizardry";
-                break;
-                case EFFECT_MOD_MANA_HIT:
-                    post_name = "of mana drain";
-                break;
-                case EFFECT_MOD_MANA_KILL:
-                    post_name = "of mana steal";
-                break;
-                case EFFECT_MOD_MOVEMENT_SPEED:
-                    post_name = "of speed";
-                break;
-                case EFFECT_MOD_MAGIC_FIND:
-                    post_name = "of luck";
-                break;
-                case EFFECT_MOD_GOLD_FIND:
-                    post_name = "of the leprechaun";
-                break;
-                case EFFECT_MOD_LIGHT_RADIUS:
-                    post_name = "of brilliance";
-                break;
-                case EFFECT_MOD_EXP_PER_KILL:
-                    post_name = "of wisdom";
-                break;
-                case EFFECT_MOD_SPELL_CAST_DMG:
-                    post_name = "of reflection";
-                break;
-                case EFFECT_MOD_SPELL_CAST_HIT:
-                    post_name = "of magic";
-                break;
-                case EFFECT_MOD_SPELL_CAST_KILL:
-                    post_name = "of spawning";
-                break;
-                case EFFECT_MOD_SPELL:
-                    post_name = "of Beltane";
-                break;
-                case EFFECT_MOD_SPELL_TYPE:
-                    post_name = "of Samhain";
-                break;
-                case EFFECT_MOD_SPELL_ALL:
-                    post_name = "of the Coven";
-                break;
-                default:
-                    switch (random(6))
-                    {
-                        case 0:
-                            post_name = "of blocking";
-                        break;
-                        case 1:
-                            post_name = "of warding";
-                        break;
-                        case 2:
-                            post_name = "of stopping";
-                        break;
-                        case 3:
-                            post_name = "of safety";
-                        break;
-                        case 4:
-                            post_name = "of misery";
-                        break;
-                        case 5:
-                        default:
-                            post_name = "of woe";
-                        break;
-                    }
-                break;
+                post_name = item_manager_class::get_item_effect_string(best_effect);
+            }
+            else
+            {
+                switch (random(6))
+                {
+                    case 0:
+                        post_name = "of blocking";
+                    break;
+                    case 1:
+                        post_name = "of warding";
+                    break;
+                    case 2:
+                        post_name = "of stopping";
+                    break;
+                    case 3:
+                        post_name = "of safety";
+                    break;
+                    case 4:
+                        post_name = "of misery";
+                    break;
+                    case 5:
+                    default:
+                        post_name = "of woe";
+                    break;
+                }
             }
             item_pointer->data.name = pre_name+base_name+post_name;
         break;
@@ -2603,312 +2276,211 @@ void  item_manager_class::gen_item_name(item_type* item_pointer,int item_type_UI
                     base_name = "wand ";
                 break;
             }
-            switch (best_effect)
+            if ((best_effect != EFFECT_NONE) && (best_effect != EFFECT_MOD_DAMAGE))
             {
-                case EFFECT_MOD_STRENGTH:
-                    post_name = "of power";
-                break;
-                case EFFECT_MOD_DEXTERITY:
-                    post_name = "of nimbus";
-                break;
-                case EFFECT_MOD_INTELLECT:
-                    post_name = "of the mind";
-                break;
-                case EFFECT_MOD_ALL_ATTRIBUTES:
-                    post_name = "of skill";
-                break;
-                case EFFECT_MOD_RESIST_PHYSICAL:
-                    post_name = "of the brute";
-                break;
-                case EFFECT_MOD_RESIST_ICE:
-                    post_name = "of frost";
-                break;
-                case EFFECT_MOD_RESIST_FIRE:
-                    post_name = "of flame";
-                break;
-                case EFFECT_MOD_RESIST_LIGHTNING:
-                    post_name = "of thunder";
-                break;
-                case EFFECT_MOD_RESIST_ALL:
-                    post_name = "of resistance";
-                break;
-                case EFFECT_MOD_HEALTH_REGEN:
-                    post_name = "of life";
-                break;
-                case EFFECT_MOD_HEALTH_MAX:
-                    post_name = "of constitution";
-                break;
-                case EFFECT_MOD_HEALTH_HIT:
-                    post_name = "of life leach";
-                break;
-                case EFFECT_MOD_HEALTH_KILL:
-                    post_name = "of life steal";
-                break;
-                case EFFECT_MOD_MANA_REGEN:
-                    post_name = "of hexing";
-                break;
-                case EFFECT_MOD_MANA_MAX:
-                    post_name = "of wizardry";
-                break;
-                case EFFECT_MOD_MANA_HIT:
-                    post_name = "of mana drain";
-                break;
-                case EFFECT_MOD_MANA_KILL:
-                    post_name = "of mana steal";
-                break;
-                case EFFECT_MOD_MOVEMENT_SPEED:
-                    post_name = "of speed";
-                break;
-                case EFFECT_MOD_MAGIC_FIND:
-                    post_name = "of luck";
-                break;
-                case EFFECT_MOD_GOLD_FIND:
-                    post_name = "of the leprechaun";
-                break;
-                case EFFECT_MOD_LIGHT_RADIUS:
-                    post_name = "of brilliance";
-                break;
-                case EFFECT_MOD_EXP_PER_KILL:
-                    post_name = "of wisdom";
-                break;
-                case EFFECT_MOD_SPELL_CAST_DMG:
-                    post_name = "of reflection";
-                break;
-                case EFFECT_MOD_SPELL_CAST_HIT:
-                    post_name = "of magic";
-                break;
-                case EFFECT_MOD_SPELL_CAST_KILL:
-                    post_name = "of spawning";
-                break;
-                case EFFECT_MOD_SPELL:
-                    post_name = "of Beltane";
-                break;
-                case EFFECT_MOD_SPELL_TYPE:
-                    post_name = "of Samhain";
-                break;
-                case EFFECT_MOD_SPELL_ALL:
-                    post_name = "of the Coven";
-                break;
-                case EFFECT_MOD_DAMAGE_MAX:
-                    post_name = "of might";
-                break;
-                case EFFECT_MOD_DAMAGE_MIN:
-                    post_name = "of skill";
-                break;
-                case EFFECT_MOD_DAMAGE_ICE:
-                    post_name = "of frost";
-                break;
-                case EFFECT_MOD_DAMAGE_FIRE:
-                    post_name = "of flame";
-                break;
-                case EFFECT_MOD_DAMAGE_LIGHTNING:
-                    post_name = "of thunder";
-                break;
-                case EFFECT_MOD_DAMAGE_ELEMENTAL:
-                    post_name = "of wizardry";
-                break;
-                case EFFECT_MOD_DAMAGE:
-                default:
-                    switch (item_sub_type_UID)
-                    {
-                        case ITEM_DAGGER:
-                            switch (random(6))
-                            {
-                                case 0:
-                                    post_name = "of puncturing";
-                                break;
-                                case 1:
-                                    post_name = "of poking";
-                                break;
-                                case 2:
-                                    post_name = "of penetration";
-                                break;
-                                case 3:
-                                    post_name = "of severing";
-                                break;
-                                case 4:
-                                    post_name = "of pricking";
-                                break;
-                                case 5:
-                                default:
-                                    post_name = "of probing";
-                                break;
-                            }
-                        break;
-                        case ITEM_BOW:
-                            switch (random(6))
-                            {
-                                case 0:
-                                    post_name = "of puncturing";
-                                break;
-                                case 1:
-                                    post_name = "of piercing";
-                                break;
-                                case 2:
-                                    post_name = "of penetration";
-                                break;
-                                case 3:
-                                    post_name = "of sniping";
-                                break;
-                                case 4:
-                                    post_name = "of pricking";
-                                break;
-                                case 5:
-                                default:
-                                    post_name = "of probing";
-                                break;
-                            }
-                        break;
-                        case ITEM_MACE:
-                            switch (random(6))
-                            {
-                                case 0:
-                                    post_name = "of bashing";
-                                break;
-                                case 1:
-                                    post_name = "of maiming";
-                                break;
-                                case 2:
-                                    post_name = "of force";
-                                break;
-                                case 3:
-                                    post_name = "of concussion";
-                                break;
-                                case 4:
-                                    post_name = "of killing";
-                                break;
-                                case 5:
-                                default:
-                                    post_name = "of awe";
-                                break;
-                            }
-                        break;
-                        case ITEM_SWORD:
-                            switch (random(6))
-                            {
-                                case 0:
-                                    post_name = "of slashing";
-                                break;
-                                case 1:
-                                    post_name = "of chopping";
-                                break;
-                                case 2:
-                                    post_name = "of decapitation";
-                                break;
-                                case 3:
-                                    post_name = "of slicing";
-                                break;
-                                case 4:
-                                    post_name = "of slaying";
-                                break;
-                                case 5:
-                                default:
-                                    post_name = "of legends";
-                                break;
-                            }
-                        break;
-                        case ITEM_HAMMER:
-                            switch (random(6))
-                            {
-                                case 0:
-                                    post_name = "of bashing";
-                                break;
-                                case 1:
-                                    post_name = "of maiming";
-                                break;
-                                case 2:
-                                    post_name = "of force";
-                                break;
-                                case 3:
-                                    post_name = "of concussion";
-                                break;
-                                case 4:
-                                    post_name = "of smashing";
-                                break;
-                                case 5:
-                                default:
-                                    post_name = "of pounding";
-                                break;
-                            }
-                        break;
-                        case ITEM_AXE:
-                            switch (random(6))
-                            {
-                                case 0:
-                                    post_name = "of chopping";
-                                break;
-                                case 1:
-                                    post_name = "of slashing";
-                                break;
-                                case 2:
-                                    post_name = "of dicing";
-                                break;
-                                case 3:
-                                    post_name = "of hacking";
-                                break;
-                                case 4:
-                                    post_name = "of mauling";
-                                break;
-                                case 5:
-                                default:
-                                    post_name = "of slicing";
-                                break;
-                            }
-                        break;
-                        case ITEM_SICKLE:
-                            switch (random(6))
-                            {
-                                case 0:
-                                    post_name = "of chopping";
-                                break;
-                                case 1:
-                                    post_name = "of slashing";
-                                break;
-                                case 2:
-                                    post_name = "of dicing";
-                                break;
-                                case 3:
-                                    post_name = "of hacking";
-                                break;
-                                case 4:
-                                    post_name = "of piercing";
-                                break;
-                                case 5:
-                                default:
-                                    post_name = "of slicing";
-                                break;
-                            }
-                        break;
-                        case ITEM_WAND:
-                        default:
-                            switch (random(7))
-                            {
-                                case 0:
-                                    post_name = "of wizardry";
-                                break;
-                                case 1:
-                                    post_name = "of magic";
-                                break;
-                                case 2:
-                                    post_name = "of witchcraft";
-                                break;
-                                case 3:
-                                    post_name = "of sorcery";
-                                break;
-                                case 4:
-                                    post_name = "of alchemy";
-                                break;
-                                case 5:
-                                    post_name = "of mystery";
-                                break;
-                                case 6:
-                                default:
-                                    post_name = "of mysticism";
-                                break;
-                            }
-                        break;
-                    }
-                break;
+                post_name = item_manager_class::get_item_effect_string(best_effect);
+            }
+            else
+            {
+                switch (item_sub_type_UID)
+                {
+                    case ITEM_DAGGER:
+                        switch (random(6))
+                        {
+                            case 0:
+                                post_name = "of puncturing";
+                            break;
+                            case 1:
+                                post_name = "of poking";
+                            break;
+                            case 2:
+                                post_name = "of penetration";
+                            break;
+                            case 3:
+                                post_name = "of severing";
+                            break;
+                            case 4:
+                                post_name = "of pricking";
+                            break;
+                            case 5:
+                            default:
+                                post_name = "of probing";
+                            break;
+                        }
+                    break;
+                    case ITEM_BOW:
+                        switch (random(6))
+                        {
+                            case 0:
+                                post_name = "of puncturing";
+                            break;
+                            case 1:
+                                post_name = "of piercing";
+                            break;
+                            case 2:
+                                post_name = "of penetration";
+                            break;
+                            case 3:
+                                post_name = "of sniping";
+                            break;
+                            case 4:
+                                post_name = "of pricking";
+                            break;
+                            case 5:
+                            default:
+                                post_name = "of probing";
+                            break;
+                        }
+                    break;
+                    case ITEM_MACE:
+                        switch (random(6))
+                        {
+                            case 0:
+                                post_name = "of bashing";
+                            break;
+                            case 1:
+                                post_name = "of maiming";
+                            break;
+                            case 2:
+                                post_name = "of force";
+                            break;
+                            case 3:
+                                post_name = "of concussion";
+                            break;
+                            case 4:
+                                post_name = "of killing";
+                            break;
+                            case 5:
+                            default:
+                                post_name = "of awe";
+                            break;
+                        }
+                    break;
+                    case ITEM_SWORD:
+                        switch (random(6))
+                        {
+                            case 0:
+                                post_name = "of slashing";
+                            break;
+                            case 1:
+                                post_name = "of chopping";
+                            break;
+                            case 2:
+                                post_name = "of decapitation";
+                            break;
+                            case 3:
+                                post_name = "of slicing";
+                            break;
+                            case 4:
+                                post_name = "of slaying";
+                            break;
+                            case 5:
+                            default:
+                                post_name = "of legends";
+                            break;
+                        }
+                    break;
+                    case ITEM_HAMMER:
+                        switch (random(6))
+                        {
+                            case 0:
+                                post_name = "of bashing";
+                            break;
+                            case 1:
+                                post_name = "of maiming";
+                            break;
+                            case 2:
+                                post_name = "of force";
+                            break;
+                            case 3:
+                                post_name = "of concussion";
+                            break;
+                            case 4:
+                                post_name = "of smashing";
+                            break;
+                            case 5:
+                            default:
+                                post_name = "of pounding";
+                            break;
+                        }
+                    break;
+                    case ITEM_AXE:
+                        switch (random(6))
+                        {
+                            case 0:
+                                post_name = "of chopping";
+                            break;
+                            case 1:
+                                post_name = "of slashing";
+                            break;
+                            case 2:
+                                post_name = "of dicing";
+                            break;
+                            case 3:
+                                post_name = "of hacking";
+                            break;
+                            case 4:
+                                post_name = "of mauling";
+                            break;
+                            case 5:
+                            default:
+                                post_name = "of slicing";
+                            break;
+                        }
+                    break;
+                    case ITEM_SICKLE:
+                        switch (random(6))
+                        {
+                            case 0:
+                                post_name = "of chopping";
+                            break;
+                            case 1:
+                                post_name = "of slashing";
+                            break;
+                            case 2:
+                                post_name = "of dicing";
+                            break;
+                            case 3:
+                                post_name = "of hacking";
+                            break;
+                            case 4:
+                                post_name = "of piercing";
+                            break;
+                            case 5:
+                            default:
+                                post_name = "of slicing";
+                            break;
+                        }
+                    break;
+                    case ITEM_WAND:
+                    default:
+                        switch (random(7))
+                        {
+                            case 0:
+                                post_name = "of wizardry";
+                            break;
+                            case 1:
+                                post_name = "of magic";
+                            break;
+                            case 2:
+                                post_name = "of witchcraft";
+                            break;
+                            case 3:
+                                post_name = "of sorcery";
+                            break;
+                            case 4:
+                                post_name = "of alchemy";
+                            break;
+                            case 5:
+                                post_name = "of mystery";
+                            break;
+                            case 6:
+                            default:
+                                post_name = "of mysticism";
+                            break;
+                        }
+                    break;
+                }
             }
             item_pointer->data.name = pre_name+base_name+post_name;
         break;
