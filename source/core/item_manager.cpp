@@ -2703,7 +2703,7 @@ void  item_manager_class::gen_item_texture(item_type* item_pointer,int item_type
         break;
         case ITEM_FEET:
             item_pointer->data.material_type = ITEM_MATERIAL_LEATHER;
-            temp_int = random(12);
+            temp_int = random(4);
             temp_string = "data/textures/UI/icons/boots/boots_";
             if (temp_int < 10) temp_string += "0";
             temp_string += int_to_string(temp_int) + ".png";
@@ -2764,7 +2764,7 @@ void  item_manager_class::gen_item_texture(item_type* item_pointer,int item_type
             {
                 case ITEM_DAGGER:
                     item_pointer->data.material_type = ITEM_MATERIAL_METAL;
-                    temp_int = random(3);
+                    temp_int = random(2);
                     temp_string = "data/textures/UI/icons/daggers/dagger_";
                     if (temp_int < 10) temp_string += "0";
                     temp_string += int_to_string(temp_int) + ".png";
@@ -2821,7 +2821,7 @@ void  item_manager_class::gen_item_texture(item_type* item_pointer,int item_type
                 case ITEM_WAND:
                 default:
                     item_pointer->data.material_type = ITEM_MATERIAL_WOOD;
-                    temp_int = random(3);
+                    temp_int = random(2);
                     if (temp_int == 22) item_pointer->data.material_type = ITEM_MATERIAL_METAL;
                     temp_string = "data/textures/UI/icons/wands/wand_";
                     if (temp_int < 10) temp_string += "0";
