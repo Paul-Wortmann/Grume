@@ -2764,12 +2764,13 @@ void  item_manager_class::gen_item_texture(item_type* item_pointer,int item_type
             item_pointer->data.image.level_0 = game.texture_manager.add_texture(temp_string);
         break;
         case ITEM_WEAPON:
+            //item_sub_type_UID = ITEM_SWORD;
             switch (item_sub_type_UID)
             {
-                case ITEM_DAGGER:
+                case ITEM_AXE:
                     item_pointer->data.material_type = ITEM_MATERIAL_METAL;
-                    temp_int = random(2);
-                    temp_string = "data/textures/UI/icons/daggers/dagger_";
+                    temp_int = random(6);
+                    temp_string = "data/textures/UI/icons/axes/axe_";
                     if (temp_int < 10) temp_string += "0";
                     temp_string += int_to_string(temp_int) + ".png";
                     item_pointer->data.image.level_0 = game.texture_manager.add_texture(temp_string);
@@ -2782,18 +2783,10 @@ void  item_manager_class::gen_item_texture(item_type* item_pointer,int item_type
                     temp_string += int_to_string(temp_int) + ".png";
                     item_pointer->data.image.level_0 = game.texture_manager.add_texture(temp_string);
                 break;
-                case ITEM_MACE:
+                case ITEM_DAGGER:
                     item_pointer->data.material_type = ITEM_MATERIAL_METAL;
                     temp_int = random(2);
-                    temp_string = "data/textures/UI/icons/maces/mace_";
-                    if (temp_int < 10) temp_string += "0";
-                    temp_string += int_to_string(temp_int) + ".png";
-                    item_pointer->data.image.level_0 = game.texture_manager.add_texture(temp_string);
-                break;
-                case ITEM_SWORD:
-                    item_pointer->data.material_type = ITEM_MATERIAL_METAL;
-                    temp_int = random(12);
-                    temp_string = "data/textures/UI/icons/swords/sword_";
+                    temp_string = "data/textures/UI/icons/daggers/dagger_";
                     if (temp_int < 10) temp_string += "0";
                     temp_string += int_to_string(temp_int) + ".png";
                     item_pointer->data.image.level_0 = game.texture_manager.add_texture(temp_string);
@@ -2806,10 +2799,10 @@ void  item_manager_class::gen_item_texture(item_type* item_pointer,int item_type
                     temp_string += int_to_string(temp_int) + ".png";
                     item_pointer->data.image.level_0 = game.texture_manager.add_texture(temp_string);
                 break;
-                case ITEM_AXE:
+                case ITEM_MACE:
                     item_pointer->data.material_type = ITEM_MATERIAL_METAL;
-                    temp_int = random(5);
-                    temp_string = "data/textures/UI/icons/axes/axe_";
+                    temp_int = random(2);
+                    temp_string = "data/textures/UI/icons/maces/mace_";
                     if (temp_int < 10) temp_string += "0";
                     temp_string += int_to_string(temp_int) + ".png";
                     item_pointer->data.image.level_0 = game.texture_manager.add_texture(temp_string);
@@ -2818,6 +2811,14 @@ void  item_manager_class::gen_item_texture(item_type* item_pointer,int item_type
                     item_pointer->data.material_type = ITEM_MATERIAL_METAL;
                     temp_int = 0;//random(4);
                     temp_string = "data/textures/UI/icons/sickles/sickle_";
+                    if (temp_int < 10) temp_string += "0";
+                    temp_string += int_to_string(temp_int) + ".png";
+                    item_pointer->data.image.level_0 = game.texture_manager.add_texture(temp_string);
+                break;
+                case ITEM_SWORD:
+                    item_pointer->data.material_type = ITEM_MATERIAL_METAL;
+                    temp_int = random(13);
+                    temp_string = "data/textures/UI/icons/swords/sword_";
                     if (temp_int < 10) temp_string += "0";
                     temp_string += int_to_string(temp_int) + ".png";
                     item_pointer->data.image.level_0 = game.texture_manager.add_texture(temp_string);
