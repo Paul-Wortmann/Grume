@@ -2746,8 +2746,12 @@ void  item_manager_class::gen_item_texture(item_type* item_pointer,int item_type
                 break;
                 case ITEM_SOURCE:
                 default:
-                    item_pointer->data.material_type = ITEM_MATERIAL_LEATHER;
-                    item_pointer->data.image.level_0 = game.texture_manager.add_texture("data/textures/UI/icons/shields/shield_09.png");
+                    item_pointer->data.material_type = ITEM_MATERIAL_GEM;
+                    temp_int = random(4);
+                    temp_string = "data/textures/UI/icons/sources/source_";
+                    if (temp_int < 10) temp_string += "0";
+                    temp_string += int_to_string(temp_int) + ".png";
+                    item_pointer->data.image.level_0 = game.texture_manager.add_texture(temp_string);
                 break;
             }
         break;
@@ -2821,7 +2825,7 @@ void  item_manager_class::gen_item_texture(item_type* item_pointer,int item_type
                 case ITEM_WAND:
                 default:
                     item_pointer->data.material_type = ITEM_MATERIAL_WOOD;
-                    temp_int = random(2);
+                    temp_int = random(3);
                     if (temp_int == 22) item_pointer->data.material_type = ITEM_MATERIAL_METAL;
                     temp_string = "data/textures/UI/icons/wands/wand_";
                     if (temp_int < 10) temp_string += "0";
