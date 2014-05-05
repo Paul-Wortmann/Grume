@@ -2776,7 +2776,7 @@ void  item_manager_class::gen_item_texture(item_type* item_pointer,int item_type
             {
                 case ITEM_AXE:
                     item_pointer->data.material_type = ITEM_MATERIAL_METAL;
-                    temp_int = random(6);
+                    temp_int = random(8);
                     temp_string = "data/textures/UI/icons/axes/axe_";
                     if (temp_int < 10) temp_string += "0";
                     temp_string += int_to_string(temp_int) + ".png";

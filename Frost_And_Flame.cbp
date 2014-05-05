@@ -11,19 +11,37 @@
 				<Option type="0" />
 				<Option compiler="gcc" />
 				<Compiler>
-					<Add option="-O3" />
-					<Add directory="C:/MinGW/include" />
-					<Add directory="C:/MinGW/include/SDL2" />
+					<Add option="-std=c++98" />
+					<Add option="-Wextra" />
+					<Add option="-Wall" />
 				</Compiler>
-				<ResourceCompiler>
-					<Add directory="C:/MinGW/include" />
-					<Add directory="C:/MinGW/include/SDL2" />
-				</ResourceCompiler>
 				<Linker>
-					<Add library="mingw32" />
-					<Add library="opengl32" />
-					<Add library="glew32" />
+					<Add option="-static-libstdc++" />
+					<Add option="-static-libgcc" />
+					<Add library="SDL2main" />
+					<Add library="SDL2" />
+					<Add library="SDL2_mixer" />
+					<Add library="SDL2_image" />
+					<Add library="freetype" />
+					<Add library="SDL2_net" />
+					<Add library="SDL2_ttf" />
+					<Add library="physfs" />
+					<Add library="GL" />
+					<Add library="libGL" />
+					<Add library="libGLEW" />
+					<Add library="SDL2main" />
+					<Add library="SDL2" />
+					<Add library="SDL2_mixer" />
+					<Add library="SDL2_image" />
+					<Add library="freetype" />
+					<Add library="SDL2_net" />
+					<Add library="SDL2_ttf" />
+					<Add library="physfs" />
+					<Add library="GL" />
+					<Add library="libGL" />
+					<Add library="libGLEW" />
 					<Add directory="C:/MinGW/lib" />
+					<Add directory="/usr/lib" />
 				</Linker>
 			</Target>
 			<Target title="Linux">
@@ -40,6 +58,16 @@
 					<Add directory="/usr/include" />
 				</ResourceCompiler>
 				<Linker>
+					<Add option="-static-libstdc++" />
+					<Add option="-static-libgcc" />
+					<Add library="SDL2main" />
+					<Add library="SDL2" />
+					<Add library="SDL2_mixer" />
+					<Add library="SDL2_image" />
+					<Add library="freetype" />
+					<Add library="SDL2_net" />
+					<Add library="SDL2_ttf" />
+					<Add library="physfs" />
 					<Add library="GL" />
 					<Add library="libGL" />
 					<Add library="libGLEW" />
@@ -67,6 +95,14 @@
 					<Add library="mingw32" />
 					<Add library="opengl32" />
 					<Add library="glew32" />
+					<Add library="SDL2main" />
+					<Add library="SDL2" />
+					<Add library="SDL2_mixer" />
+					<Add library="SDL2_image" />
+					<Add library="freetype" />
+					<Add library="SDL2_net" />
+					<Add library="SDL2_ttf" />
+					<Add library="physfs" />
 					<Add directory="C:/MinGW/lib" />
 				</Linker>
 			</Target>
@@ -83,6 +119,16 @@
 				</Compiler>
 				<Linker>
 					<Add option="-pg" />
+					<Add option="-static-libstdc++" />
+					<Add option="-static-libgcc" />
+					<Add library="SDL2main" />
+					<Add library="SDL2" />
+					<Add library="SDL2_mixer" />
+					<Add library="SDL2_image" />
+					<Add library="freetype" />
+					<Add library="SDL2_net" />
+					<Add library="SDL2_ttf" />
+					<Add library="physfs" />
 					<Add library="GL" />
 					<Add library="libGL" />
 					<Add library="libGLEW" />
@@ -100,6 +146,16 @@
 					<Add option="-Wall" />
 				</Compiler>
 				<Linker>
+					<Add option="-static-libstdc++" />
+					<Add option="-static-libgcc" />
+					<Add library="SDL2main" />
+					<Add library="SDL2" />
+					<Add library="SDL2_mixer" />
+					<Add library="SDL2_image" />
+					<Add library="freetype" />
+					<Add library="SDL2_net" />
+					<Add library="SDL2_ttf" />
+					<Add library="physfs" />
 					<Add library="GL" />
 					<Add library="libGL" />
 					<Add library="libGLEW" />
@@ -113,17 +169,6 @@
 			<Add option="-Wall" />
 			<Add option="-Wno-write-strings" />
 		</Compiler>
-		<Linker>
-			<Add option="-static-libstdc++" />
-			<Add option="-static-libgcc" />
-			<Add library="SDL2" />
-			<Add library="SDL2_mixer" />
-			<Add library="SDL2_image" />
-			<Add library="freetype" />
-			<Add library="SDL2_net" />
-			<Add library="SDL2_ttf" />
-			<Add library="physfs" />
-		</Linker>
 		<Unit filename="CMakeLists.txt" />
 		<Unit filename="changelog.txt" />
 		<Unit filename="frost_and_flame.log" />
