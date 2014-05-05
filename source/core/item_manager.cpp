@@ -117,7 +117,7 @@ void item_manager_class::load_items(std::string file_name)
     std::ifstream  script_file(file_name.c_str(),std::ios::in);
     if (script_file.is_open())
     {
-        item_type*     item_pointer;
+        item_type*     item_pointer = NULL;
         int            temp_char_UTF32  = ' ';
         std::string    temp_string_data;
         std::string    temp_string_key;
