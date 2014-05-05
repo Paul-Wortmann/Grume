@@ -364,7 +364,7 @@ void effect_manager_class::load_effects(std::string file_name)
     std::ifstream  script_file(file_name.c_str(),std::ios::in);
     if (script_file.is_open())
     {
-        effect_type*   temp_effect_pointer;
+        effect_type*   temp_effect_pointer = NULL;
         int            temp_char_UTF32  = ' ';
         std::string    temp_string_data;
         std::string    temp_string_key;
