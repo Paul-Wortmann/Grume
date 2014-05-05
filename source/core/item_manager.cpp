@@ -44,7 +44,14 @@ item_manager_class::item_manager_class(void)
 item_manager_class::~item_manager_class(void)
 {
     delete [] item_manager_class::item;
+    item_manager_class::number_of_items = 0;
 };
+
+void item_manager_class::delete_items(void)
+{
+    delete [] item_manager_class::item;
+    item_manager_class::number_of_items = 0;
+}
 
 item_type* item_manager_class::add_item(int item_UID)
 {

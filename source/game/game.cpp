@@ -73,7 +73,6 @@ game_class::game_class(void)
 void game_class::init(void)
 {
     game.loading_screen.display("data/loading_screen.png");
-    glDisable(GL_DEPTH_TEST);
     //--- initial state of the background ---
     game.core.background.set_data ( 1, 1, 0, 0.0f, 0.0f, 0.0000f, 0.00000f, "data/textures/UI/backgrounds/background_01.png");
     game.core.background.set_data ( 2, 1, 0, 0.0f, 0.0f, 0.0000f, 0.00000f, "data/textures/UI/backgrounds/background_01.png");
@@ -131,6 +130,7 @@ void game_class::init(void)
     //--- other ---
     game.music_manager.next_track = true;
     game.effect.init_effects();
+    game.item_manager.delete_items();
     game.item.init_items();
     game.spell.init_spells();
 
@@ -142,8 +142,8 @@ void game_class::init(void)
     game.map_2D.center_on_tile(&fmx_map,(fmx_map.data.number_of_tiles/2)+(fmx_map.data.map_width/2));
 
     // Add default items to the inventory
-    UI_form_struct* UI_form_pointer;
-    item_type*      temp_item_pointer;// = new item_type;
+    UI_form_struct* UI_form_pointer   = NULL;
+    item_type*      temp_item_pointer = NULL;// = new item_type;
     int             element_number    = 1;
     UI_form_pointer   = game.UI_manager.UI_form_get(UID_INVENTORY);
     temp_item_pointer = game.item_manager.add_item(ITEM_POTION_L_HEALTH);
@@ -161,7 +161,7 @@ void game_class::init(void)
     UI_form_pointer->data.element[element_number].quantity       = random(100);
     UI_form_pointer->data.element[element_number].texture.normal = temp_item_pointer->data.image.level_0;
     element_number    = 4;
-    temp_item_pointer = game.item_manager.add_item(game.item_manager.gen_item(ITEM_RING,ITEM_RING,random(MAX_ITEM_QUALITY)));
+    temp_item_pointer = game.item_manager.add_item(game.item_manager.gen_item(ITEM_WEAPON,ITEM_WEAPON,random(MAX_ITEM_QUALITY)));
     UI_form_pointer->data.element[element_number].value          = temp_item_pointer->data.UID;
     UI_form_pointer->data.element[element_number].texture.normal = temp_item_pointer->data.image.level_0;
     element_number    = 5;

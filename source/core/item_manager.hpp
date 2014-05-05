@@ -229,6 +229,7 @@ class item_manager_class
         item_type*      root;
         item_type*      last;
         item_type*      item;
+        void            delete_items(void);
         item_type*      add_item(std::string file_name);
         item_type*      add_item(int item_UID);
         void            use_item(item_type *item_pointer);
