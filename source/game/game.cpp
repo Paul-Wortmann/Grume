@@ -73,6 +73,12 @@ game_class::game_class(void)
 void game_class::init(void)
 {
     game.loading_screen.display("data/loading_screen.png");
+    setup_action_bar(UID_ACTIONBAR);
+    setup_character_window(UID_CHARACTER);
+    setup_equipment_window(UID_EQUIPMENT);
+    setup_inventory_window(UID_INVENTORY);
+    setup_skillbook_window(UID_SKILLBOOK);
+
     //--- initial state of the background ---
     game.core.background.set_data ( 1, 1, 0, 0.0f, 0.0f, 0.0000f, 0.00000f, "data/textures/UI/backgrounds/background_01.png");
     game.core.background.set_data ( 2, 1, 0, 0.0f, 0.0f, 0.0000f, 0.00000f, "data/textures/UI/backgrounds/background_01.png");
@@ -109,6 +115,7 @@ void game_class::init(void)
     game.core.help_menu_active                    = false;
     game.core.npcvendor_active                    = false;
 
+    game.player.init();
     game.player.name                              =  "Kanchi";
     game.player.level.current                     =  0;
     game.player.level.base                        =  2;

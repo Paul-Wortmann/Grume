@@ -171,6 +171,60 @@ player_class::~player_class(void)
 
 };
 
+void player_class::init(void)
+{
+    player_class::name                          = "Player_Name";
+    player_class::level.current                 = 0;
+    player_class::gold                          = 0u;
+    player_class::pos_x                         = 0.0f;
+    player_class::pos_y                         = 0.0f;
+    player_class::pos_z                         = 0.0f;
+    player_class::stats.strength                = 0;
+    player_class::stats.intellect               = 0;
+    player_class::stats.dexterity               = 0;
+    player_class::stats.armor                   = 0;
+    player_class::stats.damage                  = 0;
+    player_class::stats.damage_max              = 0;
+    player_class::stats.damage_min              = 0;
+    player_class::stats.damage_ice              = 0;
+    player_class::stats.damage_fire             = 0;
+    player_class::stats.damage_lightning        = 0;
+    player_class::stats.resist_physical         = 0;
+    player_class::stats.resist_ice              = 0;
+    player_class::stats.resist_fire             = 0;
+    player_class::stats.resist_lightning        = 0;
+    player_class::stats.health_hit              = 0;
+    player_class::stats.health_kill             = 0;
+    player_class::stats.mana_hit                = 0;
+    player_class::stats.mana_kill               = 0;
+    player_class::stats.crit_chance             = 0;
+    player_class::stats.crit_damage             = 0;
+    player_class::stats.movement_speed          = 0;
+    player_class::stats.light_radius            = 0;
+    player_class::stats.magic_find              = 0;
+    player_class::stats.gold_find               = 0;
+    player_class::stats.exp_per_kill            = 0;
+    player_class::spells.arrow_fire             = 0;
+    player_class::spells.arrow_ice              = 0;
+    player_class::spells.arrow_lightning        = 0;
+    player_class::spells.arrow_elemental        = 0;
+    player_class::spells.ball_fire              = 0;
+    player_class::spells.ball_ice               = 0;
+    player_class::spells.ball_lightning         = 0;
+    player_class::spells.ball_elemental         = 0;
+    player_class::spells.shield_fire            = 0;
+    player_class::spells.shield_ice             = 0;
+    player_class::spells.shield_lightning       = 0;
+    player_class::spells.shield_elemental       = 0;
+    player_class::spells.heal                   = 0;
+    player_class::allocatable_points            = 0;
+    player_class::auto_allocate                 = true;
+    player_class::destination_tile              = 0;
+    player_class::destination_set               = false;
+    player_class::path_set                      = false;
+    player_class::movement_type                 = 0;
+}
+
 void player_class::process(void)
 {
     player_class::health.process();

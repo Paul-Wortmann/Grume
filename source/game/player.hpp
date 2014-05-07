@@ -148,6 +148,7 @@ class player_class
         bool               destination_set;
         bool               path_set;
         int                movement_type;
+        void               init(void);
         void               process(void);
         void               render(void);
         void               path_calculate(void);
