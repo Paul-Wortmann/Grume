@@ -92,8 +92,8 @@ void setup_character_window(int UID)
     UI_form_pointer->data.element = new UI_element_struct[UI_form_pointer->data.number_of_elements];
     for (int element_count = 0; element_count < UI_form_pointer->data.number_of_elements; element_count++)
     {
-        UI_form_pointer->data.element[element_count].window_UID                     = 0;
-        UI_form_pointer->data.element[element_count].element_UID                    = 0;
+        UI_form_pointer->data.element[element_count].window_UID                     = UI_form_pointer->data.UID;
+        UI_form_pointer->data.element[element_count].element_UID                    = element_count;
         UI_form_pointer->data.element[element_count].mouse_over                     = false;
         UI_form_pointer->data.element[element_count].mouse_delay.ready              = false;
         UI_form_pointer->data.element[element_count].mouse_delay.value              = 0;
