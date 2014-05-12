@@ -76,17 +76,56 @@ vao_type* vao_manager_class::add_vao(vao_data_type *vao_data_pointer)
         vao_manager_class::last              = vao_manager_class::last->next;
         vao_manager_class::last->next        = new vao_type;
         vao_manager_class::last->next        = NULL;
-        vao_manager_class::last->data.loaded = vao_data_pointer->loaded;
     }
+    vao_manager_class::last->data        = *vao_data_pointer;
     vao_manager_class::last->data.loaded = vao_manager_class::load_vao(last);
+    vao_manager_class::last->data.vao_id = vao_manager_class::number_of_vaos + 1;
     if (vao_manager_class::last->data.loaded) vao_manager_class::number_of_vaos++;
     return(vao_manager_class::last);
 }
 
 bool vao_manager_class::load_vao(vao_type *vao_pointer)
 {
-    bool return_value = false;
-
-
+    bool return_value = true;
+    glGenVertexArrays(1, &vao_pointer->data.vao_data);
+    glBindVertexArray(vao_pointer->data.vao_data);
+    core.log.file_write("VBO count -> ",vao_pointer->data.number_of_vbo);
+    glGenBuffers(vao_pointer->data.number_of_vbo, vao_pointer->data.vbo_data);
+    glBindBuffer(GL_ARRAY_BUFFER, vao_pointer->data.vbo_data[0]);
+    glBufferData(GL_ARRAY_BUFFER, 3*vao_pointer->data.number_of_vertex*sizeof(GLfloat), vao_pointer->data.vertex, GL_STATIC_DRAW);
+    glVertexAttribPointer((GLuint)0, 3, GL_FLOAT, GL_FALSE, 0, 0);
+    glEnableVertexAttribArray(0);
+    glBindBuffer(GL_ARRAY_BUFFER, vao_pointer->data.vbo_data[1]);
+    glBufferData(GL_ARRAY_BUFFER, 3*vao_pointer->data.number_of_vertex*sizeof(GLfloat), vao_pointer->data.color, GL_STATIC_DRAW);
+    glVertexAttribPointer((GLuint)1, 3, GL_FLOAT, GL_FALSE, 0, 0);
+    glEnableVertexAttribArray(1);
     return (return_value);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

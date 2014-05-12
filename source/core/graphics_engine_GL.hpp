@@ -32,8 +32,6 @@
 bool        GL_init(void);
 bool        GL_deinit(void);
 bool        GL_render(void);
-//bool        GL_push_renderer_vbo(GL_object_struct &GL_object, GLuint &vao_id);
-bool        GL_init_vao(GL_object_struct &GL_object);
 bool        GL_build_mode_list(void);
 std::string GL_get_display_mode(int mode_number);
 

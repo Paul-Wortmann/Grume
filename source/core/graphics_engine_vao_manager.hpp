@@ -29,9 +29,19 @@
 #include <GL/gl.h>
 #include <string>
 
+#define VAO_ID_NONE -1
+
 struct vao_data_type
 {
+    unsigned int     vao_id;
     bool             loaded;
+    bool             enabled;
+    unsigned int     vao_data;
+    unsigned int    *vbo_data;
+    int              number_of_vertex;
+    int              number_of_vbo;
+    GLfloat         *vertex;
+    GLfloat         *color;
 };
 
 struct vao_type
@@ -53,4 +63,3 @@ class vao_manager_class
 };
 
 #endif // VBO_MANAGER_H
-

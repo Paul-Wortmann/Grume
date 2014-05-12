@@ -63,7 +63,6 @@ bool GL_init(void)
             putenv(SDL_VID_WIN_POS);
             putenv(SDL_VID_CENTERD);
         #endif
-        game.core.graphics.render_GL.number_VAO  = 1;
         game.core.graphics.GL_major_version_number = 0;
         game.core.graphics.GL_minor_version_number = 0;
         SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION,  RENDERER_CONTEXT_MAJOR);
@@ -218,26 +217,6 @@ bool GL_init(void)
                             delete [] shader_program_info_Log;
                         }
                         glUseProgram(game.core.graphics.render_GL.shaderprogram);
-
-                        /*--------------------------------------*/
-                        GL_object_struct *object_1 = new GL_object_struct;
-                        object_1->vao_id           = 1;
-                        object_1->number_of_vbo    = 2;
-                        object_1->number_of_vertex = 4;
-                        object_1->vbo_data = new GLuint[object_1->number_of_vbo];
-                        object_1->vertex = new GLfloat[object_1->number_of_vertex*3];
-                        object_1->color  = new GLfloat[object_1->number_of_vertex*3];
-                        object_1->vertex[ 0] =  0.0f; object_1->vertex[ 1] =  1.0f; object_1->vertex[ 2] =  0.0f;
-                        object_1->vertex[ 3] =  1.0f; object_1->vertex[ 4] =  0.0f; object_1->vertex[ 5] =  0.0f;
-                        object_1->vertex[ 6] =  0.0f; object_1->vertex[ 7] = -1.0f; object_1->vertex[ 8] =  0.0f;
-                        object_1->vertex[ 9] = -1.0f; object_1->vertex[10] =  0.0f; object_1->vertex[11] =  0.0f;
-                        object_1->color[ 0] =  1.0f; object_1->color[ 1] =  0.0f; object_1->color[ 2] =  0.0f;
-                        object_1->color[ 3] =  0.0f; object_1->color[ 4] =  1.0f; object_1->color[ 5] =  0.0f;
-                        object_1->color[ 6] =  0.0f; object_1->color[ 7] =  0.0f; object_1->color[ 8] =  1.0f;
-                        object_1->color[ 9] =  1.0f; object_1->color[10] =  1.0f; object_1->color[11] =  1.0f;
-                        GL_init_vao(*object_1);
-                        /*--------------------------------------*/
-                        game.core.graphics.render_GL.object_vao = object_1;
                     }
                 }
             }
@@ -260,43 +239,8 @@ bool GL_deinit(void)
     glDeleteProgram(game.core.graphics.render_GL.shaderprogram);
     glDeleteShader(game.core.graphics.render_GL.vertexshader);
     glDeleteShader(game.core.graphics.render_GL.fragmentshader);
-    if (game.core.graphics.render_GL.number_VAO > 0)
-    {
-        for (int i = 0; i < game.core.graphics.render_GL.number_VAO; i++)
-        {
-            glDisableVertexAttribArray(i);
-        }
-        if (game.core.graphics.render_GL.object_vao->number_of_vbo > 0) glDeleteBuffers(game.core.graphics.render_GL.object_vao->number_of_vbo, game.core.graphics.render_GL.object_vao->vbo_data);
-        if (game.core.graphics.render_GL.number_VAO > 0) glDeleteVertexArrays(game.core.graphics.render_GL.number_VAO, &game.core.graphics.render_GL.object_vao->vao_data);
-    }
-    //delete game.core.graphics.render_GL.vertexsource;
-    //delete game.core.graphics.render_GL.fragmentsource;
-    return (return_value);
-};
-
-/*
-bool GL_push_renderer_vbo(GL_object_struct &GL_object, GLuint &vao_id)
-{
-    bool return_value = true;
-
-    return (return_value);
-}
-*/
-
-bool GL_init_vao(GL_object_struct &GL_object)
-{
-    bool return_value = true;
-    glGenVertexArrays(GL_object.vao_id, &GL_object.vao_data);
-    glBindVertexArray(GL_object.vao_data);
-    glGenBuffers(GL_object.number_of_vbo, GL_object.vbo_data);
-    glBindBuffer(GL_ARRAY_BUFFER, GL_object.vbo_data[0]);
-    glBufferData(GL_ARRAY_BUFFER, 3*GL_object.number_of_vertex*sizeof(GLfloat), GL_object.vertex, GL_STATIC_DRAW);
-    glVertexAttribPointer((GLuint)0, 3, GL_FLOAT, GL_FALSE, 0, 0);
-    glEnableVertexAttribArray(0);
-    glBindBuffer(GL_ARRAY_BUFFER, GL_object.vbo_data[1]);
-    glBufferData(GL_ARRAY_BUFFER, 3*GL_object.number_of_vertex*sizeof(GLfloat), GL_object.color, GL_STATIC_DRAW);
-    glVertexAttribPointer((GLuint)1, 3, GL_FLOAT, GL_FALSE, 0, 0);
-    glEnableVertexAttribArray(1);
+    SDL_GL_DeleteContext(game.core.graphics.context);
+    SDL_DestroyWindow(game.core.graphics.window);
     return (return_value);
 };
 
@@ -304,8 +248,20 @@ bool GL_render(void)
 {
     bool return_value = true;
     glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
-    glBindVertexArray(game.core.graphics.render_GL.object_vao->vao_data);
-    glDrawArrays( GL_TRIANGLE_FAN, 0, game.core.graphics.render_GL.object_vao->number_of_vertex);
+
+    if (game.core.graphics.vao_manager.number_of_vaos > 0)
+    {
+        vao_type* temp_pointer = game.core.graphics.vao_manager.root;
+        if (temp_pointer != NULL)
+        {
+            while (temp_pointer != NULL)
+            {
+                glBindVertexArray(temp_pointer->data.vao_data);
+                glDrawArrays( GL_TRIANGLE_FAN, 0, temp_pointer->data.number_of_vertex);
+                temp_pointer = temp_pointer->next;
+            }
+        }
+    }
     SDL_GL_SwapWindow(game.core.graphics.window);
     return (return_value);
 };

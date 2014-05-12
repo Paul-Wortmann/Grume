@@ -38,22 +38,8 @@
 #define RENDERER_GL1 1
 #define RENDERER_GL3 3
 
-struct GL_object_struct
-{
-    GLuint   vao_data;
-    GLuint  *vbo_data;
-    GLuint   vao_id;
-    int      number_of_vertex;
-    int      number_of_vbo;
-    GLfloat *vertex;
-    GLfloat *color;
-};
-
 struct render_GL_struct
 {
-    int number_VAO;
-    GL_object_struct *object_vao;
-
     GLuint  vertexshader;
     GLuint  fragmentshader;
     GLuint  shaderprogram;

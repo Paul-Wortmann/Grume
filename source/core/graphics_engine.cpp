@@ -258,8 +258,6 @@ graphics_engine_class::graphics_engine_class(void)
     graphics_engine_class::render_GL.fragmentshader = 0;
     graphics_engine_class::render_GL.vertexshader   = 0;
     graphics_engine_class::render_GL.shaderprogram  = 0;
-    graphics_engine_class::render_GL.object_vao     = NULL;
-    graphics_engine_class::render_GL.number_VAO     = 0;
 };
 
 graphics_engine_class::~graphics_engine_class(void)
