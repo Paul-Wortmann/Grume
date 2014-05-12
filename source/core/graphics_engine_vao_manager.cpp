@@ -23,22 +23,22 @@
  */
 
 
-#include "graphics_engine_vbo_manager.hpp"
+#include "graphics_engine_vao_manager.hpp"
 #include "core.hpp"
 
 extern core_struct core;
 
-vbo_manager_class::vbo_manager_class(void)
+vao_manager_class::vao_manager_class(void)
 {
-    vbo_manager_class::last               = NULL;
-    vbo_manager_class::root               = NULL;
-    vbo_manager_class::number_of_vbos     = 0;
+    vao_manager_class::last               = NULL;
+    vao_manager_class::root               = NULL;
+    vao_manager_class::number_of_vaos     = 0;
 };
 
-vbo_manager_class::~vbo_manager_class(void)
+vao_manager_class::~vao_manager_class(void)
 {
-    vbo_type* temp_pointer;
-    temp_pointer = vbo_manager_class::root;
+    vao_type* temp_pointer;
+    temp_pointer = vao_manager_class::root;
     if (temp_pointer != NULL)
     {
         while (temp_pointer->next != NULL)
@@ -51,39 +51,39 @@ vbo_manager_class::~vbo_manager_class(void)
     //delete [] last;
 };
 
-vbo_type* vbo_manager_class::add_vbo(std::string file_name)
+vao_type* vao_manager_class::add_vao(vao_data_type *vao_data_pointer)
 {
-    if (vbo_manager_class::number_of_vbos == 0)
+    if (vao_manager_class::number_of_vaos == 0)
     {
-        vbo_manager_class::root = new vbo_type;
-        vbo_manager_class::root->next = NULL;
-        vbo_manager_class::last = new vbo_type;
-        vbo_manager_class::last = root;
-        vbo_manager_class::last->next = NULL;
+        vao_manager_class::root = new vao_type;
+        vao_manager_class::root->next = NULL;
+        vao_manager_class::last = new vao_type;
+        vao_manager_class::last = root;
+        vao_manager_class::last->next = NULL;
     }
     else
     {
-        vbo_type* temp_pointer = vbo_manager_class::root;
+        vao_type* temp_pointer = vao_manager_class::root;
         if (temp_pointer != NULL)
         {
             while (temp_pointer != NULL)
             {
-                if (strcmp(file_name.c_str(),temp_pointer->data.file.c_str()) == 0) return(temp_pointer);
+                //if (strcmp(file_name.c_str(),temp_pointer->data.file.c_str()) == 0) return(temp_pointer);
                 temp_pointer = temp_pointer->next;
             }
         }
-        vbo_manager_class::last->next = new vbo_type;
-        vbo_manager_class::last = vbo_manager_class::last->next;
-        vbo_manager_class::last->next = new vbo_type;
-        vbo_manager_class::last->next = NULL;
+        vao_manager_class::last->next        = new vao_type;
+        vao_manager_class::last              = vao_manager_class::last->next;
+        vao_manager_class::last->next        = new vao_type;
+        vao_manager_class::last->next        = NULL;
+        vao_manager_class::last->data.loaded = vao_data_pointer->loaded;
     }
-    vbo_manager_class::last->data.file   = file_name.c_str();
-    vbo_manager_class::last->data.loaded = vbo_manager_class::load_vbo(last);
-    if (vbo_manager_class::last->data.loaded) vbo_manager_class::number_of_vbos++;
-    return(vbo_manager_class::last);
+    vao_manager_class::last->data.loaded = vao_manager_class::load_vao(last);
+    if (vao_manager_class::last->data.loaded) vao_manager_class::number_of_vaos++;
+    return(vao_manager_class::last);
 }
 
-bool vbo_manager_class::load_vbo(vbo_type *vbo_pointer)
+bool vao_manager_class::load_vao(vao_type *vao_pointer)
 {
     bool return_value = false;
 

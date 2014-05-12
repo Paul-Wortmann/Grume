@@ -29,17 +29,6 @@
 					<Add library="GL" />
 					<Add library="libGL" />
 					<Add library="libGLEW" />
-					<Add library="SDL2main" />
-					<Add library="SDL2" />
-					<Add library="SDL2_mixer" />
-					<Add library="SDL2_image" />
-					<Add library="freetype" />
-					<Add library="SDL2_net" />
-					<Add library="SDL2_ttf" />
-					<Add library="physfs" />
-					<Add library="GL" />
-					<Add library="libGL" />
-					<Add library="libGLEW" />
 					<Add directory="C:/MinGW/lib" />
 					<Add directory="/usr/lib" />
 				</Linker>
@@ -226,6 +215,8 @@
 		<Unit filename="source/core/graphics_engine_GL.hpp" />
 		<Unit filename="source/core/graphics_engine_GL_legacy.cpp" />
 		<Unit filename="source/core/graphics_engine_GL_legacy.hpp" />
+		<Unit filename="source/core/graphics_engine_vao_manager.cpp" />
+		<Unit filename="source/core/graphics_engine_vao_manager.hpp" />
 		<Unit filename="source/core/io.cpp" />
 		<Unit filename="source/core/io.hpp" />
 		<Unit filename="source/core/item_manager.cpp" />

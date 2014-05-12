@@ -29,28 +29,27 @@
 #include <GL/gl.h>
 #include <string>
 
-struct vbo_data_type
+struct vao_data_type
 {
     bool             loaded;
-    std::string      file;
 };
 
-struct vbo_type
+struct vao_type
 {
-    vbo_data_type data;
-    vbo_type*     next;
+    vao_data_type data;
+    vao_type*     next;
 };
 
-class vbo_manager_class
+class vao_manager_class
 {
     public:
-        vbo_manager_class(void);
-       ~vbo_manager_class(void);
-        int           number_of_vbos;
-        vbo_type *root;
-        vbo_type *last;
-        vbo_type *add_vbo(std::string file_name);
-        bool      load_vbo(vbo_type *vbo_pointer);
+        vao_manager_class(void);
+       ~vao_manager_class(void);
+        int           number_of_vaos;
+        vao_type *root;
+        vao_type *last;
+        vao_type *add_vao(vao_data_type *vao_data_pointer);
+        bool      load_vao(vao_type *vao_pointer);
 };
 
 #endif // VBO_MANAGER_H

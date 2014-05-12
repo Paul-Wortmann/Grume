@@ -29,7 +29,7 @@
 #include <GL/gl.h>
 #include <SDL2/SDL.h>
 #include <string>
-#include "graphics_engine_vbo_manager.hpp"
+#include "graphics_engine_vao_manager.hpp"
 
 #define PROGRAM_NAME "Frost and Flame -> OpenGL 3.x+ test renderer."
 #define RENDERER_CONTEXT_MAJOR 3
@@ -97,7 +97,7 @@ class graphics_engine_class
         SDL_GLContext     context;
         SDL_DisplayMode  *display_mode;
         render_GL_struct  render_GL; // temp
-        vbo_manager_class vbo_manager;
+        vao_manager_class vao_manager;
         int              *menu_mode_list;
         int               menu_mode_length;
         int               renderer;

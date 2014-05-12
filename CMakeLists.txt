@@ -127,7 +127,7 @@ Set (FROST_AND_FLAME_SOURCES
 	./source/core/graphics_engine.cpp
 	./source/core/graphics_engine_GL.cpp
 	./source/core/graphics_engine_GL_legacy.cpp
-	./source/core/graphics_engine_vbo_manager.cpp
+	./source/core/graphics_engine_vao_manager.cpp
 	./source/core/item_manager.cpp
 	./source/core/io.cpp
 	./source/core/item_manager.cpp
