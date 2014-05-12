@@ -137,7 +137,7 @@ bool GL_legacy_init(void)
         game.core.log.file_write("Creating window...");
         game.core.config.display_flags = SDL_WINDOW_SHOWN | SDL_WINDOW_OPENGL;
         if (game.core.config.display_fullscreen) game.core.config.display_flags |= SDL_WINDOW_FULLSCREEN;
-        game.core.graphics.window = SDL_CreateWindow(game.core.application_name,SDL_WINDOWPOS_CENTERED,SDL_WINDOWPOS_CENTERED,game.core.config.display_resolution_x, game.core.config.display_resolution_y, game.core.config.display_flags);
+        game.core.graphics.window = SDL_CreateWindow(game.core.application_name.c_str(),SDL_WINDOWPOS_CENTERED,SDL_WINDOWPOS_CENTERED,game.core.config.display_resolution_x, game.core.config.display_resolution_y, game.core.config.display_flags);
 
         game.core.graphics.context = SDL_GL_CreateContext(game.core.graphics.window);
         if (!game.core.graphics.window)

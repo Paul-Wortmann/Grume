@@ -32,7 +32,7 @@ fmx_map_type      fmx_map;
 game_class::game_class(void)
 {
     game_class::core.application_icon      = NULL;
-    game_class::core.application_name      = NULL;
+    game_class::core.application_name      = "Application name not set.";
     game_class::core.character_active      = false;
     game_class::core.debug                 = false;
     game_class::core.equipment_active      = false;

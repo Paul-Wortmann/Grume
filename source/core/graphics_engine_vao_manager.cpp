@@ -89,7 +89,6 @@ bool vao_manager_class::load_vao(vao_type *vao_pointer)
     bool return_value = true;
     glGenVertexArrays(1, &vao_pointer->data.vao_data);
     glBindVertexArray(vao_pointer->data.vao_data);
-    core.log.file_write("VBO count -> ",vao_pointer->data.number_of_vbo);
     glGenBuffers(vao_pointer->data.number_of_vbo, vao_pointer->data.vbo_data);
     glBindBuffer(GL_ARRAY_BUFFER, vao_pointer->data.vbo_data[0]);
     glBufferData(GL_ARRAY_BUFFER, 3*vao_pointer->data.number_of_vertex*sizeof(GLfloat), vao_pointer->data.vertex, GL_STATIC_DRAW);

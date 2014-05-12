@@ -43,7 +43,7 @@
 struct core_struct
 {
     bool                  debug;
-    const char*           application_name;
+    std::string           application_name;
     const char*           application_icon;
     int                   FPS;
     int                   last_ticks;
