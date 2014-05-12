@@ -63,6 +63,7 @@ extern "C" int main(int argc, char** argv)
     if (SDL_error != 0) game.core.log.file_write("SDL initialization error: ",SDL_error);
     game.core.config.get_system_information();
     game.core.config.log_system_information();
+    game.core.file.file_system_path("frost_and_flame.dat");
     game.core.file.file_system_init(argv);
     if (game.state == STATE_INIT)
     {

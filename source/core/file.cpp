@@ -37,7 +37,7 @@ extern game_class game;
 
 file_class::file_class (void)
 {
-
+    file_class::file_name = "frost_and_flame.dat";
 };
 
 file_class::~file_class (void)
@@ -144,6 +144,11 @@ char* file_class::filetobuf (std::string file_name)
     return buf;
 }
 
+void file_class::file_system_path(std::string file_name)
+{
+    file_class::file_name = file_name;
+}
+
 void file_class::file_system_init(char** arg_data)
 {
     game.core.log.file_write("Initializing Physics File System.");
@@ -151,7 +156,7 @@ void file_class::file_system_init(char** arg_data)
     PHYSFS_Version version_info;
     PHYSFS_getLinkedVersion(&version_info);
     game.core.log.file_write("PhysFS Version -> ",version_info.major,".",version_info.minor,".",version_info.patch);
-    int load_error = PHYSFS_addToSearchPath("frost_and_flame.dat", 1);
+    int load_error = PHYSFS_addToSearchPath(file_class::file_name.c_str(), 1);
     if (load_error != 1)
     {
         game.core.log.file_write("Fail -> Unable to load Frost and Flame data file: ",load_error);
