@@ -78,9 +78,9 @@ bool GL_init(void)
         game.core.graphics.number_display_modes = SDL_GetNumDisplayModes(game.core.graphics.current_display);
         game.core.graphics.display_mode = new SDL_DisplayMode[game.core.graphics.number_display_modes+1];
         game.core.log.file_write("Number of display modes -> ",game.core.graphics.number_display_modes);
-        if (game.core.debug) for (int i = 0; i < game.core.graphics.number_display_modes; i++)
+        for (int i = 0; i < game.core.graphics.number_display_modes; i++)
         {
-            if (SDL_GetDisplayMode(game.core.graphics.current_display,i,&game.core.graphics.display_mode[i]) == 0) game.core.log.file_write("Display mode - ",i," - x - ",game.core.graphics.display_mode[i].w," - y - ",game.core.graphics.display_mode[i].h," - refresh rate - ",game.core.graphics.display_mode[i].refresh_rate);
+            if ((SDL_GetDisplayMode(game.core.graphics.current_display,i,&game.core.graphics.display_mode[i]) == 0)&&(game.core.debug)) game.core.log.file_write("Display mode - ",i," - x - ",game.core.graphics.display_mode[i].w," - y - ",game.core.graphics.display_mode[i].h," - refresh rate - ",game.core.graphics.display_mode[i].refresh_rate);
         }
         SDL_GetDisplayMode(game.core.graphics.current_display,game.core.graphics.current_display_mode,&game.core.graphics.display_mode[game.core.graphics.current_display_mode]);
         if ((game.core.config.display_resolution_x < game.core.graphics.display_mode[game.core.graphics.number_display_modes-1].w) || (game.core.config.display_resolution_y < game.core.graphics.display_mode[game.core.graphics.number_display_modes-1].h))
