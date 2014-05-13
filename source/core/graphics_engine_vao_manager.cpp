@@ -64,14 +64,7 @@ vao_type* vao_manager_class::add_vao(vao_data_type *vao_data_pointer)
     else
     {
         vao_type* temp_pointer = vao_manager_class::root;
-        if (temp_pointer != NULL)
-        {
-            while (temp_pointer != NULL)
-            {
-                //if (strcmp(file_name.c_str(),temp_pointer->data.file.c_str()) == 0) return(temp_pointer);
-                temp_pointer = temp_pointer->next;
-            }
-        }
+        if (temp_pointer != NULL) while (temp_pointer != NULL) temp_pointer = temp_pointer->next;
         vao_manager_class::last->next        = new vao_type;
         vao_manager_class::last              = vao_manager_class::last->next;
         vao_manager_class::last->next        = new vao_type;
