@@ -33,10 +33,11 @@ To install development libraries you could use the commands below:
 - sudo apt-get install libsdl2-net-dev 
 - sudo apt-get install libglew-dev
 - sudo apt-get install libphysfs-dev
+- sudo apt-get install libfreetype6-dev
 
 Or in one single line:
 
-- sudo apt-get install libsdl2-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-ttf-dev libsdl2-net-dev libglew-dev libphysfs-dev
+- sudo apt-get install libsdl2-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-ttf-dev libsdl2-net-dev libglew-dev libphysfs-dev libfreetype6-dev
 
 Next you need to generate a make file, you can use the following command, make sure you are in the Frost and Flame directory:
 
