@@ -348,12 +348,12 @@ void game_class::process(void)
                 game.UI_manager.UI_form_enable(UID_MENU_MAIN);
                 game.UI_manager.data.event.id    = EVENT_UI_LIST_SORT;
                 game.UI_manager.data.event.value = UID_MENU_MAIN;
-                game.core.game_menu_active                   = true;
+                game.core.game_menu_active       = true;
             }
             else
             {
                 game.UI_manager.UI_form_disable(UID_MENU_MAIN);
-                game.core.game_menu_active                   = false;
+                game.core.game_menu_active         = false;
             }
             game.core.io.key_escape                = false;
             game.core.io.keyboard_delay_count      = 0;
@@ -365,12 +365,12 @@ void game_class::process(void)
                 game.UI_manager.UI_form_enable(UID_CHARACTER);
                 game.UI_manager.data.event.id    = EVENT_UI_LIST_SORT;
                 game.UI_manager.data.event.value = UID_CHARACTER;
-                game.core.character_active                   = true;
+                game.core.character_active       = true;
             }
             else
             {
                 game.UI_manager.UI_form_disable(UID_CHARACTER);
-                game.core.character_active                   = false;
+                game.core.character_active         = false;
             }
             game.core.io.key_c                     = false;
             game.core.io.keyboard_delay_count      = 0;
@@ -382,12 +382,12 @@ void game_class::process(void)
                 game.UI_manager.UI_form_enable(UID_EQUIPMENT);
                 game.UI_manager.data.event.id    = EVENT_UI_LIST_SORT;
                 game.UI_manager.data.event.value = UID_EQUIPMENT;
-                game.core.equipment_active                   = true;
+                game.core.equipment_active       = true;
             }
             else
             {
                 game.UI_manager.UI_form_disable(UID_EQUIPMENT);
-                game.core.equipment_active                   = false;
+                game.core.equipment_active         = false;
             }
             game.core.io.key_e                     = false;
             game.core.io.keyboard_delay_count      = 0;
@@ -399,12 +399,12 @@ void game_class::process(void)
                 game.UI_manager.UI_form_enable(UID_QUEST_LOG);
                 game.UI_manager.data.event.id    = EVENT_UI_LIST_SORT;
                 game.UI_manager.data.event.value = UID_QUEST_LOG;
-                game.core.quest_log_active                   = true;
+                game.core.quest_log_active       = true;
             }
             else
             {
                 game.UI_manager.UI_form_disable(UID_QUEST_LOG);
-                game.core.quest_log_active                   = false;
+                game.core.quest_log_active         = false;
             }
             game.core.io.key_q                     = false;
             game.core.io.keyboard_delay_count      = 0;
@@ -433,12 +433,12 @@ void game_class::process(void)
                 game.UI_manager.UI_form_enable(UID_INVENTORY);
                 game.UI_manager.data.event.id    = EVENT_UI_LIST_SORT;
                 game.UI_manager.data.event.value = UID_INVENTORY;
-                game.core.inventory_active                   = true;
+                game.core.inventory_active       = true;
             }
             else
             {
                 game.UI_manager.UI_form_disable(UID_INVENTORY);
-                game.core.inventory_active                   = false;
+                game.core.inventory_active         = false;
             }
             game.core.io.key_i                     = false;
             game.core.io.keyboard_delay_count      = 0;
@@ -450,12 +450,12 @@ void game_class::process(void)
                 game.UI_manager.UI_form_enable(UID_SKILLBOOK);
                 game.UI_manager.data.event.id    = EVENT_UI_LIST_SORT;
                 game.UI_manager.data.event.value = UID_SKILLBOOK;
-                game.core.skillbook_active                   = true;
+                game.core.skillbook_active       = true;
             }
             else
             {
                 game.UI_manager.UI_form_disable(UID_SKILLBOOK);
-                game.core.skillbook_active                   = false;
+                game.core.skillbook_active         = false;
             }
             game.core.io.key_b                     = false;
             game.core.io.keyboard_delay_count      = 0;
@@ -469,42 +469,42 @@ void game_class::process(void)
                 game.UI_manager.UI_form_disable(UID_MENU_GAME_NEW);
                 game.UI_manager.UI_form_disable(UID_MENU_GAME_SAVE);
                 game.UI_manager.UI_form_disable(UID_MENU_OPTIONS);
-                game.core.game_menu_active                   = false;
+                game.core.game_menu_active         = false;
             }
             if (game.core.equipment_active)
             {
                 game.UI_manager.UI_form_disable(UID_EQUIPMENT);
-                game.core.equipment_active                   = false;
+                game.core.equipment_active         = false;
             }
             if (game.core.quest_log_active)
             {
                 game.UI_manager.UI_form_disable(UID_QUEST_LOG);
-                game.core.quest_log_active                   = false;
+                game.core.quest_log_active         = false;
             }
             if (game.core.character_active)
             {
                 game.UI_manager.UI_form_disable(UID_CHARACTER);
-                game.core.character_active                   = false;
+                game.core.character_active         = false;
             }
             if (game.core.inventory_active)
             {
                 game.UI_manager.UI_form_disable(UID_INVENTORY);
-                game.core.inventory_active                   = false;
+                game.core.inventory_active         = false;
             }
             if (game.core.help_menu_active)
             {
                 game.UI_manager.UI_form_disable(UID_MENU_HELP);
-                game.core.help_menu_active                   = false;
+                game.core.help_menu_active         = false;
             }
             if (game.core.skillbook_active)
             {
                 game.UI_manager.UI_form_disable(UID_SKILLBOOK);
-                game.core.skillbook_active                   = false;
+                game.core.skillbook_active         = false;
             }
             if (game.core.npcvendor_active)
             {
                 game.UI_manager.UI_form_disable(UID_NPCVENDOR);
-                game.core.npcvendor_active                   = false;
+                game.core.npcvendor_active         = false;
             }
             game.core.io.key_space                 = false;
             game.core.io.keyboard_delay_count      = 0;
