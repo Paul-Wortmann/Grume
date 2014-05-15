@@ -2261,7 +2261,7 @@
 	"player.hpp"
 	"spells.hpp"
 
-1398352808 /media/paul/Data_0/_git_/Frost_and_Flame/source/core/core.hpp
+1399916516 /media/paul/Data_0/_git_/Frost_and_Flame/source/core/core.hpp
 	<iostream>
 	<string>
 	"background.hpp"
@@ -2290,7 +2290,7 @@
 	<SDL2/SDL.h>
 	<string>
 
-1398737085 /media/paul/Data_0/_git_/Frost_and_Flame/source/core/file.hpp
+1399908626 /media/paul/Data_0/_git_/Frost_and_Flame/source/core/file.hpp
 	<SDL2/SDL.h>
 	<SDL2/SDL_mixer.h>
 
@@ -2473,7 +2473,7 @@
 1378831794 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/core/core.cpp
 	"core.hpp"
 
-1398738829 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/core/file.cpp
+1399908702 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/core/file.cpp
 	<string>
 	"core.hpp"
 	"file.hpp"
@@ -2684,7 +2684,7 @@
 	"core/misc.hpp"
 	"language.hpp"
 
-1399270513 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/main.cpp
+1399916677 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/main.cpp
 	<GL/glew.h>
 	<SDL2/SDL.h>
 	<SDL2/SDL_image.h>
@@ -3362,7 +3362,7 @@
 	"effect_manager.hpp"
 	"game.hpp"
 
-1399472080 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/game/game.cpp
+1399916603 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/game/game.cpp
 	"../core/map_2D.hpp"
 	"../core/misc.hpp"
 	"game.hpp"
@@ -4156,26 +4156,26 @@
 	"renderer_GL.hpp"
 	"../game/game.hpp"
 
-1398752525 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/core/graphics_engine.cpp
+1399912784 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/core/graphics_engine.cpp
 	"graphics_engine.hpp"
 	"graphics_engine_GL.hpp"
 	"graphics_engine_GL_legacy.hpp"
 	"core.hpp"
 	"../game/game.hpp"
 
-1399864900 /media/paul/Data_0/_git_/Frost_and_Flame/source/core/graphics_engine.hpp
+1399912716 /media/paul/Data_0/_git_/Frost_and_Flame/source/core/graphics_engine.hpp
 	<GL/glew.h>
 	<GL/gl.h>
 	<SDL2/SDL.h>
 	<string>
 	"graphics_engine_vao_manager.hpp"
 
-1398436166 /media/paul/Data_0/_git_/Frost_and_Flame/source/core/graphics_engine_GL.hpp
+1399912774 /media/paul/Data_0/_git_/Frost_and_Flame/source/core/graphics_engine_GL.hpp
 	"core.hpp"
 
 1398436104 /media/paul/Data_0/_git_/Frost_and_Flame/source/core/graphics_engine_GL_legacy.hpp
 
-1398790849 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/core/graphics_engine_GL.cpp
+1399916464 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/core/graphics_engine_GL.cpp
 	<GL/glew.h>
 	<SDL2/SDL.h>
 	<SDL2/SDL_image.h>
@@ -4188,7 +4188,7 @@
 	"../game/game.hpp"
 	"misc.hpp"
 
-1398790815 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/core/graphics_engine_GL_legacy.cpp
+1399916464 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/core/graphics_engine_GL_legacy.cpp
 	"core.hpp"
 	"graphics_engine.hpp"
 	"graphics_engine_GL_legacy.hpp"
@@ -4243,14 +4243,14 @@
 
 1382363599 /usr/include/GL/glu_mangle.h
 
-1397459414 /usr/include/GL/gl.h
+1400146851 /usr/include/GL/gl.h
 	"gl_mangle.h"
 	<windows.h>
 	<GL/glext.h>
 
-1397459414 /usr/include/GL/gl_mangle.h
+1400146851 /usr/include/GL/gl_mangle.h
 
-1397459414 /usr/include/GL/glext.h
+1400146851 /usr/include/GL/glext.h
 	<windows.h>
 	<stddef.h>
 	<inttypes.h>
@@ -4260,7 +4260,7 @@
 	<stdint.h>
 	<inttypes.h>
 
-1397089450 /usr/include/SDL2/SDL.h
+1400119779 /usr/include/SDL2/SDL.h
 	"SDL_main.h"
 	"SDL_stdinc.h"
 	"SDL_assert.h"
@@ -4291,12 +4291,12 @@
 	"begin_code.h"
 	"close_code.h"
 
-1397089450 /usr/include/SDL2/SDL_main.h
+1400119779 /usr/include/SDL2/SDL_main.h
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
 
-1397089450 /usr/include/SDL2/SDL_stdinc.h
+1400119779 /usr/include/SDL2/SDL_stdinc.h
 	"SDL_config.h"
 	<sys/types.h>
 	<stdio.h>
@@ -4323,18 +4323,18 @@
 	<stdlib.h>
 	"close_code.h"
 
-1397089450 /usr/include/SDL2/SDL_config.h
+1400119779 /usr/include/SDL2/SDL_config.h
 	"SDL_platform.h"
 
-1397089450 /usr/include/SDL2/SDL_platform.h
+1400119779 /usr/include/SDL2/SDL_platform.h
 	"AvailabilityMacros.h"
 	"TargetConditionals.h"
 	"begin_code.h"
 	"close_code.h"
 
-1397089450 /usr/include/SDL2/begin_code.h
+1400119779 /usr/include/SDL2/begin_code.h
 
-1397089450 /usr/include/SDL2/close_code.h
+1400119779 /usr/include/SDL2/close_code.h
 
 1397298923 /usr/include/stdio.h
 	<features.h>
@@ -4462,7 +4462,7 @@
 	<features.h>
 	<stddef.h>
 
-1397089450 /usr/include/SDL2/SDL_assert.h
+1400119779 /usr/include/SDL2/SDL_assert.h
 	"SDL_config.h"
 	"begin_code.h"
 	<signal.h>
@@ -4494,13 +4494,13 @@
 	<bits/types.h>
 	<xlocale.h>
 
-1397089450 /usr/include/SDL2/SDL_atomic.h
+1400119779 /usr/include/SDL2/SDL_atomic.h
 	"SDL_stdinc.h"
 	"SDL_platform.h"
 	"begin_code.h"
 	"close_code.h"
 
-1397089450 /usr/include/SDL2/SDL_audio.h
+1400119779 /usr/include/SDL2/SDL_audio.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"SDL_endian.h"
@@ -4510,24 +4510,24 @@
 	"begin_code.h"
 	"close_code.h"
 
-1397089450 /usr/include/SDL2/SDL_error.h
+1400119779 /usr/include/SDL2/SDL_error.h
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
 
-1397089450 /usr/include/SDL2/SDL_endian.h
+1400119779 /usr/include/SDL2/SDL_endian.h
 	"SDL_stdinc.h"
 	<endian.h>
 	"begin_code.h"
 	"close_code.h"
 
-1397089450 /usr/include/SDL2/SDL_mutex.h
+1400119779 /usr/include/SDL2/SDL_mutex.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"begin_code.h"
 	"close_code.h"
 
-1397089450 /usr/include/SDL2/SDL_thread.h
+1400119779 /usr/include/SDL2/SDL_thread.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"SDL_atomic.h"
@@ -4536,18 +4536,18 @@
 	<process.h>
 	"close_code.h"
 
-1397089450 /usr/include/SDL2/SDL_rwops.h
+1400119779 /usr/include/SDL2/SDL_rwops.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"begin_code.h"
 	"close_code.h"
 
-1397089450 /usr/include/SDL2/SDL_clipboard.h
+1400119779 /usr/include/SDL2/SDL_clipboard.h
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
 
-1397089450 /usr/include/SDL2/SDL_cpuinfo.h
+1400119779 /usr/include/SDL2/SDL_cpuinfo.h
 	"SDL_stdinc.h"
 	<intrin.h>
 	<intrin.h>
@@ -4559,7 +4559,7 @@
 	"begin_code.h"
 	"close_code.h"
 
-1397089450 /usr/include/SDL2/SDL_events.h
+1400119779 /usr/include/SDL2/SDL_events.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"SDL_video.h"
@@ -4573,7 +4573,7 @@
 	"begin_code.h"
 	"close_code.h"
 
-1397089450 /usr/include/SDL2/SDL_video.h
+1400119779 /usr/include/SDL2/SDL_video.h
 	"SDL_stdinc.h"
 	"SDL_pixels.h"
 	"SDL_rect.h"
@@ -4581,12 +4581,12 @@
 	"begin_code.h"
 	"close_code.h"
 
-1397089450 /usr/include/SDL2/SDL_pixels.h
+1400119779 /usr/include/SDL2/SDL_pixels.h
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
 
-1397089450 /usr/include/SDL2/SDL_rect.h
+1400119779 /usr/include/SDL2/SDL_rect.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"SDL_pixels.h"
@@ -4594,7 +4594,7 @@
 	"begin_code.h"
 	"close_code.h"
 
-1397089450 /usr/include/SDL2/SDL_surface.h
+1400119779 /usr/include/SDL2/SDL_surface.h
 	"SDL_stdinc.h"
 	"SDL_pixels.h"
 	"SDL_rect.h"
@@ -4603,11 +4603,11 @@
 	"begin_code.h"
 	"close_code.h"
 
-1397089450 /usr/include/SDL2/SDL_blendmode.h
+1400119779 /usr/include/SDL2/SDL_blendmode.h
 	"begin_code.h"
 	"close_code.h"
 
-1397089450 /usr/include/SDL2/SDL_keyboard.h
+1400119779 /usr/include/SDL2/SDL_keyboard.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"SDL_keycode.h"
@@ -4615,27 +4615,27 @@
 	"begin_code.h"
 	"close_code.h"
 
-1397089450 /usr/include/SDL2/SDL_keycode.h
+1400119779 /usr/include/SDL2/SDL_keycode.h
 	"SDL_stdinc.h"
 	"SDL_scancode.h"
 
-1397089450 /usr/include/SDL2/SDL_scancode.h
+1400119779 /usr/include/SDL2/SDL_scancode.h
 	"SDL_stdinc.h"
 
-1397089450 /usr/include/SDL2/SDL_mouse.h
+1400119779 /usr/include/SDL2/SDL_mouse.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"SDL_video.h"
 	"begin_code.h"
 	"close_code.h"
 
-1397089450 /usr/include/SDL2/SDL_joystick.h
+1400119779 /usr/include/SDL2/SDL_joystick.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"begin_code.h"
 	"close_code.h"
 
-1397089450 /usr/include/SDL2/SDL_gamecontroller.h
+1400119779 /usr/include/SDL2/SDL_gamecontroller.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"SDL_rwops.h"
@@ -4643,11 +4643,11 @@
 	"begin_code.h"
 	"close_code.h"
 
-1397089450 /usr/include/SDL2/SDL_quit.h
+1400119779 /usr/include/SDL2/SDL_quit.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 
-1397089450 /usr/include/SDL2/SDL_gesture.h
+1400119779 /usr/include/SDL2/SDL_gesture.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"SDL_video.h"
@@ -4655,60 +4655,60 @@
 	"begin_code.h"
 	"close_code.h"
 
-1397089450 /usr/include/SDL2/SDL_touch.h
+1400119779 /usr/include/SDL2/SDL_touch.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"SDL_video.h"
 	"begin_code.h"
 	"close_code.h"
 
-1397089450 /usr/include/SDL2/SDL_filesystem.h
+1400119779 /usr/include/SDL2/SDL_filesystem.h
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
 
-1397089450 /usr/include/SDL2/SDL_haptic.h
+1400119779 /usr/include/SDL2/SDL_haptic.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"SDL_joystick.h"
 	"begin_code.h"
 	"close_code.h"
 
-1397089450 /usr/include/SDL2/SDL_hints.h
+1400119779 /usr/include/SDL2/SDL_hints.h
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
 
-1397089450 /usr/include/SDL2/SDL_loadso.h
+1400119779 /usr/include/SDL2/SDL_loadso.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"begin_code.h"
 	"close_code.h"
 
-1397089450 /usr/include/SDL2/SDL_log.h
+1400119779 /usr/include/SDL2/SDL_log.h
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
 
-1397089450 /usr/include/SDL2/SDL_messagebox.h
+1400119779 /usr/include/SDL2/SDL_messagebox.h
 	"SDL_stdinc.h"
 	"SDL_video.h"
 	"begin_code.h"
 	"close_code.h"
 
-1397089450 /usr/include/SDL2/SDL_power.h
+1400119779 /usr/include/SDL2/SDL_power.h
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
 
-1397089450 /usr/include/SDL2/SDL_render.h
+1400119779 /usr/include/SDL2/SDL_render.h
 	"SDL_stdinc.h"
 	"SDL_rect.h"
 	"SDL_video.h"
 	"begin_code.h"
 	"close_code.h"
 
-1397089450 /usr/include/SDL2/SDL_system.h
+1400119779 /usr/include/SDL2/SDL_system.h
 	"SDL_stdinc.h"
 	"SDL_keyboard.h"
 	"SDL_render.h"
@@ -4716,13 +4716,13 @@
 	"begin_code.h"
 	"close_code.h"
 
-1397089450 /usr/include/SDL2/SDL_timer.h
+1400119779 /usr/include/SDL2/SDL_timer.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
 	"begin_code.h"
 	"close_code.h"
 
-1397089450 /usr/include/SDL2/SDL_version.h
+1400119779 /usr/include/SDL2/SDL_version.h
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
@@ -4786,7 +4786,7 @@
 	"begin_code.h"
 	"close_code.h"
 
-1397089450 /usr/include/SDL2/SDL_opengl.h
+1400119779 /usr/include/SDL2/SDL_opengl.h
 	"SDL_config.h"
 	<windows.h>
 	<OpenGL/gl.h>
@@ -4811,8 +4811,12 @@
 	"graphics_engine_vbo_manager.hpp"
 	"core.hpp"
 
-1399864816 /media/paul/Data_0/_git_/Frost_and_Flame/source/core/graphics_engine_vao_manager.hpp
+1399911110 /media/paul/Data_0/_git_/Frost_and_Flame/source/core/graphics_engine_vao_manager.hpp
 	<GL/glew.h>
 	<GL/gl.h>
 	<string>
+
+1399991351 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/core/graphics_engine_vao_manager.cpp
+	"graphics_engine_vao_manager.hpp"
+	"core.hpp"
 
