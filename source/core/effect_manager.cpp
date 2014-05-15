@@ -353,7 +353,7 @@ bool  effect_manager_class::use_effect(int  effect_UID, float value)
         case EFFECT_MOD_SPELL_CAST_DMG:
         break;
         default:
-            game.core.log.file_write("Unable to use effect -> ",effect_UID);
+            game.core.log.write("Unable to use effect -> ",effect_UID);
         break;
     }
     return (used_item);

@@ -46,7 +46,7 @@ bool GL_init(void)
     }
     if (SDL_Init(SDL_INIT_VIDEO) < 0)
     {
-        game.core.log.file_write("SDL Video initialization failed.");
+        game.core.log.write("SDL Video initialization failed.");
         return_value = false;
     }
     else
@@ -55,8 +55,8 @@ bool GL_init(void)
         SDL_version linked;
         SDL_VERSION(&compiled);
         SDL_GetVersion(&linked);
-        game.core.log.file_write("SDL build version ->  ",compiled.major,".",compiled.minor,".",compiled.patch);
-        game.core.log.file_write("SDL linked version -> ",linked.major,".",linked.minor,".",linked.patch);
+        game.core.log.write("SDL build version ->  ",compiled.major,".",compiled.minor,".",compiled.patch);
+        game.core.log.write("SDL linked version -> ",linked.major,".",linked.minor,".",linked.patch);
         #ifndef __MINGW32__
             char SDL_VID_WIN_POS[] = "SDL_VIDEO_WINDOW_POS";
             char SDL_VID_CENTERD[] = "SDL_VIDEO_CENTERED=1";
@@ -74,13 +74,13 @@ bool GL_init(void)
         game.core.graphics.current_display      = 0;
         game.core.graphics.current_display_mode = 0;
         game.core.graphics.number_displays      = SDL_GetNumVideoDisplays();
-        game.core.log.file_write("Number of attached displays -> ",game.core.graphics.number_displays);
+        game.core.log.write("Number of attached displays -> ",game.core.graphics.number_displays);
         game.core.graphics.number_display_modes = SDL_GetNumDisplayModes(game.core.graphics.current_display);
         game.core.graphics.display_mode = new SDL_DisplayMode[game.core.graphics.number_display_modes+1];
-        game.core.log.file_write("Number of display modes -> ",game.core.graphics.number_display_modes);
+        game.core.log.write("Number of display modes -> ",game.core.graphics.number_display_modes);
         for (int i = 0; i < game.core.graphics.number_display_modes; i++)
         {
-            if ((SDL_GetDisplayMode(game.core.graphics.current_display,i,&game.core.graphics.display_mode[i]) == 0)&&(game.core.debug)) game.core.log.file_write("Display mode - ",i," - x - ",game.core.graphics.display_mode[i].w," - y - ",game.core.graphics.display_mode[i].h," - refresh rate - ",game.core.graphics.display_mode[i].refresh_rate);
+            if ((SDL_GetDisplayMode(game.core.graphics.current_display,i,&game.core.graphics.display_mode[i]) == 0)&&(game.core.debug)) game.core.log.write("Display mode - ",i," - x - ",game.core.graphics.display_mode[i].w," - y - ",game.core.graphics.display_mode[i].h," - refresh rate - ",game.core.graphics.display_mode[i].refresh_rate);
         }
         SDL_GetDisplayMode(game.core.graphics.current_display,game.core.graphics.current_display_mode,&game.core.graphics.display_mode[game.core.graphics.current_display_mode]);
         if ((game.core.config.display_resolution_x < game.core.graphics.display_mode[game.core.graphics.number_display_modes-1].w) || (game.core.config.display_resolution_y < game.core.graphics.display_mode[game.core.graphics.number_display_modes-1].h))
@@ -128,27 +128,31 @@ bool GL_init(void)
         game.core.config.font_scale_y = (float)game.core.config.display_resolution_y/(float)game.core.config.font_base_resolution_y;
         game.core.config.mouse_resolution_x   = game.core.config.display_resolution_x;
         game.core.config.mouse_resolution_y   = game.core.config.display_resolution_y;
-        game.core.log.file_write("Setting display mode - ",game.core.graphics.current_display_mode," - x - ",game.core.graphics.display_mode[game.core.graphics.current_display_mode].w," - y - ",game.core.graphics.display_mode[game.core.graphics.current_display_mode].h," - refresh rate - ",game.core.graphics.display_mode[game.core.graphics.current_display_mode].refresh_rate);
-        game.core.log.file_write("Using pixel format - ",pixel_format_from_int(game.core.graphics.display_mode[game.core.graphics.current_display_mode].format));
-        game.core.log.file_write("Creating window...");
+        game.core.log.write("Setting display mode - ",game.core.graphics.current_display_mode," - x - ",game.core.graphics.display_mode[game.core.graphics.current_display_mode].w," - y - ",game.core.graphics.display_mode[game.core.graphics.current_display_mode].h," - refresh rate - ",game.core.graphics.display_mode[game.core.graphics.current_display_mode].refresh_rate);
+        game.core.log.write("Using pixel format - ",pixel_format_from_int(game.core.graphics.display_mode[game.core.graphics.current_display_mode].format));
+        game.core.log.write("Creating window...");
         game.core.config.display_flags = SDL_WINDOW_SHOWN | SDL_WINDOW_OPENGL;
         if (game.core.config.display_fullscreen) game.core.config.display_flags |= SDL_WINDOW_FULLSCREEN;
         game.core.graphics.window = SDL_CreateWindow(game.core.application_name.c_str(),SDL_WINDOWPOS_CENTERED,SDL_WINDOWPOS_CENTERED,game.core.config.display_resolution_x, game.core.config.display_resolution_y, game.core.config.display_flags);
         if (!game.core.graphics.window)
         {
             return_value = false;
-            game.core.log.file_write("FAIL -> Unable to create window.");
+            game.core.log.write("FAIL -> Unable to create window.");
         }
         else
         {
-            game.core.log.file_write("Starting OpenGL...");
+            game.core.log.write("Starting OpenGL...");
             game.core.graphics.context = SDL_GL_CreateContext(game.core.graphics.window);
             int  version_status = 0;
             version_status += SDL_GL_GetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, &game.core.graphics.GL_major_version_number);
             version_status += SDL_GL_GetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, &game.core.graphics.GL_minor_version_number);
             if (version_status == 0)
             {
-                game.core.log.file_write("OpenGl Version -> ",game.core.graphics.GL_major_version_number,".",game.core.graphics.GL_minor_version_number);
+                game.core.log.write(glGetString(GL_VERSION));
+                game.core.log.write(glGetString(GL_VENDOR));
+                game.core.log.write(glGetString(GL_RENDERER));
+                game.core.log.write(glGetString(GL_SHADING_LANGUAGE_VERSION));
+                game.core.log.write("OpenGl Version -> ",game.core.graphics.GL_major_version_number,".",game.core.graphics.GL_minor_version_number);
                 if ((game.core.graphics.GL_major_version_number >= 3) && (game.core.graphics.GL_minor_version_number >= 2))
                 {
                     glewExperimental = GL_TRUE;
@@ -156,15 +160,15 @@ bool GL_init(void)
                     if(glew_status != GLEW_OK)
                     {
                         return_value = false;
-                        game.core.log.file_write("FAIL -> Failed to initialize GLEW -> ",(const char*)glewGetErrorString(glew_status));
+                        game.core.log.write("FAIL -> Failed to initialize GLEW -> ",(const char*)glewGetErrorString(glew_status));
                     }
                     else
                     {
-                        game.core.log.file_write("Initialized GLEW -> ",(const char*)glewGetErrorString(glew_status));
+                        game.core.log.write("Initialized GLEW -> ",(const char*)glewGetErrorString(glew_status));
                         int i;
                         glGetIntegerv(GL_NUM_EXTENSIONS,&i);
-                        game.core.log.file_write("Loaded OpenGL Extension count -> ",i);
-                        if (game.core.debug) for (int j = 0; j < i; j++) game.core.log.file_write("Loaded OpenGL Extension -> ",(const char*)glGetStringi(GL_EXTENSIONS, j));
+                        game.core.log.write("Loaded OpenGL Extension count -> ",i);
+                        if (game.core.debug) for (int j = 0; j < i; j++) game.core.log.write("Loaded OpenGL Extension -> ",(const char*)glGetStringi(GL_EXTENSIONS, j));
                         glClearColor( 0.0f, 0.0f, 0.0f, 0.0f );
                         // Vertex Shader
                         int shader_compile_status = 0;
@@ -179,7 +183,7 @@ bool GL_init(void)
                             glGetShaderiv(game.core.graphics.render_GL.vertexshader, GL_INFO_LOG_LENGTH, &maxLength);
                             char *vertex_info_Log = new char[maxLength];
                             glGetShaderInfoLog(game.core.graphics.render_GL.vertexshader, maxLength, &maxLength, vertex_info_Log);
-                            game.core.log.file_write("FAIL -> Error loading Vertex Shader: ",vertex_info_Log);
+                            game.core.log.write("FAIL -> Error loading Vertex Shader: ",vertex_info_Log);
                             delete [] vertex_info_Log;
                         }
                         // Fragment Shader
@@ -195,7 +199,7 @@ bool GL_init(void)
                             glGetShaderiv(game.core.graphics.render_GL.fragmentshader, GL_INFO_LOG_LENGTH, &maxLength);
                             char *fragment_info_Log = new char[maxLength];
                             glGetShaderInfoLog(game.core.graphics.render_GL.fragmentshader, maxLength, &maxLength, fragment_info_Log);
-                            game.core.log.file_write("FAIL -> Error loading Fragment Shader: ",fragment_info_Log);
+                            game.core.log.write("FAIL -> Error loading Fragment Shader: ",fragment_info_Log);
                             delete [] fragment_info_Log;
                         }
                         // Shader Program
@@ -213,7 +217,7 @@ bool GL_init(void)
                             glGetProgramiv(game.core.graphics.render_GL.shaderprogram, GL_INFO_LOG_LENGTH, &maxLength);
                             char *shader_program_info_Log = new char[maxLength];
                             glGetProgramInfoLog(game.core.graphics.render_GL.shaderprogram, maxLength, &maxLength, shader_program_info_Log);
-                            game.core.log.file_write("FAIL -> Shader program error: ",shader_program_info_Log);
+                            game.core.log.write("FAIL -> Shader program error: ",shader_program_info_Log);
                             delete [] shader_program_info_Log;
                         }
                         glUseProgram(game.core.graphics.render_GL.shaderprogram);
@@ -223,7 +227,7 @@ bool GL_init(void)
             else
             {
                 return_value = false;
-                game.core.log.file_write("FAIL -> Unable to set OpenGl Version -> ",game.core.graphics.GL_major_version_number,".",game.core.graphics.GL_minor_version_number);
+                game.core.log.write("FAIL -> Unable to set OpenGl Version -> ",game.core.graphics.GL_major_version_number,".",game.core.graphics.GL_minor_version_number);
             }
         }
     }
@@ -275,9 +279,9 @@ bool GL_build_mode_list(void)
     }
     else
     {
-        if (game.core.debug) game.core.log.file_write("-----------------------------------------------------");
-        if (game.core.debug)game.core.log.file_write("- Menu display list:                                -");
-        if (game.core.debug)game.core.log.file_write("-----------------------------------------------------");
+        if (game.core.debug) game.core.log.write("-----------------------------------------------------");
+        if (game.core.debug)game.core.log.write("- Menu display list:                                -");
+        if (game.core.debug)game.core.log.write("-----------------------------------------------------");
         game.core.graphics.menu_mode_length = 1;
         int list_position = 0;
         int last_w = game.core.graphics.display_mode[0].w;
@@ -302,12 +306,12 @@ bool GL_build_mode_list(void)
                 if (list_position < game.core.graphics.menu_mode_length)
                 {
                     game.core.graphics.menu_mode_list[list_position] = i;
-                    if (game.core.debug)game.core.log.file_write("Menu res - x - ",game.core.graphics.display_mode[i].w," - y - ",game.core.graphics.display_mode[i].h);
+                    if (game.core.debug)game.core.log.write("Menu res - x - ",game.core.graphics.display_mode[i].w," - y - ",game.core.graphics.display_mode[i].h);
                 }
                 list_position++;
             }
         }
-        if (game.core.debug)game.core.log.file_write("-----------------------------------------------------");
+        if (game.core.debug)game.core.log.write("-----------------------------------------------------");
     }
     return(return_value);
 };

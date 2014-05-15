@@ -37,13 +37,13 @@ log_class::~log_class(void)
 
 };
 
-bool log_class::file_set(std::string file_name_in)
+bool log_class::set_file_name(std::string file_name_in)
 {
     log_class::file_name = file_name_in;
     return(true);
 };
 
-bool log_class::file_clear(void)
+bool log_class::clear_file(void)
 {
     std::fstream logfile(log_class::file_name.c_str(),std::ios::out|std::ios::binary|std::ios::trunc);
     if (logfile.is_open()) logfile.close();
@@ -51,13 +51,13 @@ bool log_class::file_clear(void)
     return(true);
 };
 
-bool log_class::file_delete(void)
+bool log_class::delete_file(void)
 {
   if( remove(log_class::file_name.c_str()) != 0 ) return(false);
   else return(true);
 };
 
-bool log_class::file_write(const char  log_data[])
+bool log_class::write(std::string log_data)
 {
     std::fstream logfile(log_class::file_name.c_str(),std::ios::out|std::ios::app);
     if (logfile.is_open())
@@ -70,7 +70,7 @@ bool log_class::file_write(const char  log_data[])
     return(true);
 };
 
-bool log_class::file_write(std::string log_data)
+bool log_class::write(const char  log_data[])
 {
     std::fstream logfile(log_class::file_name.c_str(),std::ios::out|std::ios::app);
     if (logfile.is_open())
@@ -83,7 +83,8 @@ bool log_class::file_write(std::string log_data)
     return(true);
 };
 
-bool log_class::file_write(std::string log_data, int   log_data_int)
+
+bool log_class::write(std::string log_data, int   log_data_int)
 {
     std::fstream logfile(log_class::file_name.c_str(),std::ios::out|std::ios::app);
     if (logfile.is_open())
@@ -97,7 +98,7 @@ bool log_class::file_write(std::string log_data, int   log_data_int)
     return(true);
 };
 
-bool log_class::file_write(std::string log_data, float log_data_float)
+bool log_class::write(std::string log_data, float log_data_float)
 {
     std::fstream logfile(log_class::file_name.c_str(),std::ios::out|std::ios::app);
     if (logfile.is_open())
@@ -111,7 +112,7 @@ bool log_class::file_write(std::string log_data, float log_data_float)
     return(true);
 };
 
-bool log_class::file_write(std::string log_data, bool  log_data_bool)
+bool log_class::write(std::string log_data, bool  log_data_bool)
 {
     std::fstream logfile(log_class::file_name.c_str(),std::ios::out|std::ios::app);
     if (logfile.is_open())
@@ -126,7 +127,7 @@ bool log_class::file_write(std::string log_data, bool  log_data_bool)
     return(true);
 };
 
-bool log_class::file_write(std::string log_data, unsigned long long log_data_ull)
+bool log_class::write(std::string log_data, unsigned long long log_data_ull)
 {
     std::fstream logfile(log_class::file_name.c_str(),std::ios::out|std::ios::app);
     if (logfile.is_open())
@@ -140,7 +141,7 @@ bool log_class::file_write(std::string log_data, unsigned long long log_data_ull
     return(true);
 };
 
-bool log_class::file_write(int   log_data)
+bool log_class::write(int   log_data)
 {
     std::fstream logfile(log_class::file_name.c_str(),std::ios::out|std::ios::app);
     if (logfile.is_open())
@@ -153,7 +154,7 @@ bool log_class::file_write(int   log_data)
     return(true);
 };
 
-bool log_class::file_write(float log_data)
+bool log_class::write(float log_data)
 {
     std::fstream logfile(log_class::file_name.c_str(),std::ios::out|std::ios::app);
     if (logfile.is_open())
@@ -166,7 +167,7 @@ bool log_class::file_write(float log_data)
     return(true);
 };
 
-bool log_class::file_write(bool  log_data)
+bool log_class::write(bool  log_data)
 {
     std::fstream logfile(log_class::file_name.c_str(),std::ios::out|std::ios::app);
     if (logfile.is_open())
@@ -180,7 +181,7 @@ bool log_class::file_write(bool  log_data)
     return(true);
 };
 
-bool log_class::file_write(std::string log_data_1, std::string log_data_2)
+bool log_class::write(std::string log_data_1, std::string log_data_2)
 {
     std::fstream logfile(log_class::file_name.c_str(),std::ios::out|std::ios::app);
     if (logfile.is_open())
@@ -194,22 +195,7 @@ bool log_class::file_write(std::string log_data_1, std::string log_data_2)
     return(true);
 };
 
-bool log_class::file_write(std::string log_data_1, std::string log_data_2, std::string log_data_3)
-{
-    std::fstream logfile(log_class::file_name.c_str(),std::ios::out|std::ios::app);
-    if (logfile.is_open())
-    {
-        logfile << log_data_1;
-        logfile << log_data_2;
-        logfile << log_data_3;
-        logfile << std::endl;
-        logfile.close();
-    }
-    else return(false);
-    return(true);
-};
-
-bool log_class::file_write(std::string log_data_1, const char  log_data_2[], std::string log_data_3)
+bool log_class::write(std::string log_data_1, std::string log_data_2, std::string log_data_3)
 {
     std::fstream logfile(log_class::file_name.c_str(),std::ios::out|std::ios::app);
     if (logfile.is_open())
@@ -224,7 +210,22 @@ bool log_class::file_write(std::string log_data_1, const char  log_data_2[], std
     return(true);
 };
 
-bool log_class::file_write(std::string log_data_1, const char log_data_2[])
+bool log_class::write(std::string log_data_1, const char  log_data_2[], std::string log_data_3)
+{
+    std::fstream logfile(log_class::file_name.c_str(),std::ios::out|std::ios::app);
+    if (logfile.is_open())
+    {
+        logfile << log_data_1;
+        logfile << log_data_2;
+        logfile << log_data_3;
+        logfile << std::endl;
+        logfile.close();
+    }
+    else return(false);
+    return(true);
+};
+
+bool log_class::write(std::string log_data_1, const char log_data_2[])
 {
     std::fstream logfile(log_class::file_name.c_str(),std::ios::out|std::ios::app);
     if (logfile.is_open())
@@ -238,7 +239,7 @@ bool log_class::file_write(std::string log_data_1, const char log_data_2[])
     return(true);
 };
 
-bool log_class::file_write(std::wstring log_data_1, std::wstring log_data_2)
+bool log_class::write(std::wstring log_data_1, std::wstring log_data_2)
 {
     std::wfstream logfile(log_class::file_name.c_str(),std::ios::out|std::ios::app);
     if (logfile.is_open())
@@ -252,7 +253,7 @@ bool log_class::file_write(std::wstring log_data_1, std::wstring log_data_2)
     return(true);
 };
 
-bool log_class::file_write(std::string log_data, int log_data_int ,float log_data_float)
+bool log_class::write(std::string log_data, int log_data_int ,float log_data_float)
 {
     std::fstream logfile(log_class::file_name.c_str(),std::ios::out|std::ios::app);
     if (logfile.is_open())
@@ -268,7 +269,7 @@ bool log_class::file_write(std::string log_data, int log_data_int ,float log_dat
     return(true);
 };
 
-bool log_class::file_write(std::string log_data_1, int   log_data_2, std::string log_data_3)
+bool log_class::write(std::string log_data_1, int   log_data_2, std::string log_data_3)
 {
     std::fstream logfile(log_class::file_name.c_str(),std::ios::out|std::ios::app);
     if (logfile.is_open())
@@ -283,7 +284,7 @@ bool log_class::file_write(std::string log_data_1, int   log_data_2, std::string
     return(true);
 }
 
-bool log_class::file_write(std::string log_data_1, int log_data_2 ,std::string log_data_3, int log_data_4)
+bool log_class::write(std::string log_data_1, int log_data_2 ,std::string log_data_3, int log_data_4)
 {
     std::fstream logfile(log_class::file_name.c_str(),std::ios::out|std::ios::app);
     if (logfile.is_open())
@@ -299,7 +300,7 @@ bool log_class::file_write(std::string log_data_1, int log_data_2 ,std::string l
     return(true);
 };
 
-bool log_class::file_write(std::string log_data_1, int   log_data_2, std::string log_data_3, std::string log_data_4)
+bool log_class::write(std::string log_data_1, int   log_data_2, std::string log_data_3, std::string log_data_4)
 {
     std::fstream logfile(log_class::file_name.c_str(),std::ios::out|std::ios::app);
     if (logfile.is_open())
@@ -316,25 +317,7 @@ bool log_class::file_write(std::string log_data_1, int   log_data_2, std::string
 };
 
 
-bool log_class::file_write(std::string log_data_1, int   log_data_2, std::string log_data_3, int   log_data_4, std::string log_data_5, int   log_data_6)
-{
-    std::fstream logfile(log_class::file_name.c_str(),std::ios::out|std::ios::app);
-    if (logfile.is_open())
-    {
-        logfile << log_data_1;
-        logfile << log_data_2;
-        logfile << log_data_3;
-        logfile << log_data_4;
-        logfile << log_data_5;
-        logfile << log_data_6;
-        logfile << std::endl;
-        logfile.close();
-    }
-    else return(false);
-    return(true);
-};
-
-bool log_class::file_write(std::string log_data_1, int   log_data_2, std::string log_data_3, int   log_data_4, std::string log_data_5, std::string log_data_6)
+bool log_class::write(std::string log_data_1, int   log_data_2, std::string log_data_3, int   log_data_4, std::string log_data_5, int   log_data_6)
 {
     std::fstream logfile(log_class::file_name.c_str(),std::ios::out|std::ios::app);
     if (logfile.is_open())
@@ -352,8 +335,26 @@ bool log_class::file_write(std::string log_data_1, int   log_data_2, std::string
     return(true);
 };
 
+bool log_class::write(std::string log_data_1, int   log_data_2, std::string log_data_3, int   log_data_4, std::string log_data_5, std::string log_data_6)
+{
+    std::fstream logfile(log_class::file_name.c_str(),std::ios::out|std::ios::app);
+    if (logfile.is_open())
+    {
+        logfile << log_data_1;
+        logfile << log_data_2;
+        logfile << log_data_3;
+        logfile << log_data_4;
+        logfile << log_data_5;
+        logfile << log_data_6;
+        logfile << std::endl;
+        logfile.close();
+    }
+    else return(false);
+    return(true);
+};
 
-bool log_class::file_write(std::string log_data_1, int   log_data_2 ,std::string log_data_3, int   log_data_4,std::string log_data_5, int   log_data_6 ,std::string log_data_7, int   log_data_8)
+
+bool log_class::write(std::string log_data_1, int   log_data_2 ,std::string log_data_3, int   log_data_4,std::string log_data_5, int   log_data_6 ,std::string log_data_7, int   log_data_8)
 {
     std::fstream logfile(log_class::file_name.c_str(),std::ios::out|std::ios::app);
     if (logfile.is_open())
@@ -373,7 +374,7 @@ bool log_class::file_write(std::string log_data_1, int   log_data_2 ,std::string
     return(true);
 };
 
-bool log_class::file_write(std::string log_data_1, float log_data_2 ,std::string log_data_3, float log_data_4)
+bool log_class::write(std::string log_data_1, float log_data_2 ,std::string log_data_3, float log_data_4)
 {
     std::fstream logfile(log_class::file_name.c_str(),std::ios::out|std::ios::app);
     if (logfile.is_open())
@@ -389,7 +390,7 @@ bool log_class::file_write(std::string log_data_1, float log_data_2 ,std::string
     return(true);
 };
 
-bool log_class::file_write_time_stamp(std::string message)
+bool log_class::write_time_stamp(std::string message)
 {
     std::fstream logfile(log_class::file_name.c_str(),std::ios::out|std::ios::app);
     if (logfile.is_open())

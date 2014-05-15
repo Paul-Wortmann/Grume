@@ -88,7 +88,7 @@ bool map_gen_maze_check_tile(fmx_map_type *fmx_map_pointer, int tile_count, int 
             break;
             case DIRECTION_BIAS_NONE:
             default:
-                game.core.log.file_write("error, map_gen_maze_check_tile() passed invalid direction bias.");
+                game.core.log.write("error, map_gen_maze_check_tile() passed invalid direction bias.");
                 return_value = true;
             break;
         }
@@ -164,7 +164,7 @@ void map_gen_maze(fmx_map_type *fmx_map_pointer, int tile_count, int direction_b
                 }
             break;
             default:
-                game.core.log.file_write("error in rand tile choice -> map_gen_maze()");
+                game.core.log.write("error in rand tile choice -> map_gen_maze()");
                 tiles_available--;
             break;
         }

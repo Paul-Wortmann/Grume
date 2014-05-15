@@ -424,7 +424,7 @@ void loader_md2_class::load(std::string file_name)
         loader_md2_class::mtllib = game.core.file.path_get(file_name.c_str()) + loader_md2_class::mtllib;
         //create VBO ?? Hmmm
     }
-    else game.core.log.file_write("Failed to load md2 file - ",file_name.c_str());
+    else game.core.log.write("Failed to load md2 file - ",file_name.c_str());
 };
 
 void loader_md2_class::save(std::string file_name)

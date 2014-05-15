@@ -613,7 +613,7 @@ void process_menu_game_new(UI_form_struct *UI_form_pointer)
                 //game.UI_manager.source.window = UID_MENU_GAME_NEW;
             break;
             default:
-                game.core.log.file_write("Unable to process event - ",UI_form_pointer->data.event.id, " - UID - ",UI_form_pointer->data.UID, " - ",game.UI_manager.uid_to_string(UI_form_pointer->data.UID));
+                game.core.log.write("Unable to process event - ",UI_form_pointer->data.event.id, " - UID - ",UI_form_pointer->data.UID, " - ",game.UI_manager.uid_to_string(UI_form_pointer->data.UID));
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
         }

@@ -135,7 +135,7 @@ bool config_class::file_load(void)
 {
     if (config_class::file_name.length() < 5)
     {
-        game.core.log.file_write("Fail -> Configuration file name invalid - ",config_class::file_name.c_str());
+        game.core.log.write("Fail -> Configuration file name invalid - ",config_class::file_name.c_str());
         return(false);
     }
     else
@@ -242,7 +242,7 @@ bool config_class::file_load(void)
         }
         else
         {
-            game.core.log.file_write("Fail -> Configuration file unable to open - ",config_class::file_name.c_str());
+            game.core.log.write("Fail -> Configuration file unable to open - ",config_class::file_name.c_str());
             return(false);
         }
     }
@@ -257,7 +257,7 @@ bool         config_class::file_save(void)
 {
     if (config_class::file_name.length() < 5)
     {
-        game.core.log.file_write("Fail -> Configuration file name invalid - ",config_class::file_name.c_str());
+        game.core.log.write("Fail -> Configuration file name invalid - ",config_class::file_name.c_str());
         return(false);
     }
     else
@@ -322,7 +322,7 @@ bool         config_class::file_save(void)
         }
         else
         {
-            game.core.log.file_write("Fail -> Configuration file unable to open - ",config_class::file_name.c_str());
+            game.core.log.write("Fail -> Configuration file unable to open - ",config_class::file_name.c_str());
             return(false);
         }
     }
@@ -385,22 +385,22 @@ void config_class::get_system_information(void)
 void config_class::log_system_information(void)
 {
     config_class::get_system_information();
-    game.core.log.file_write("# ------------ System Information -------------- #");
-    game.core.log.file_write("Detected - ",config_class::system_info.platform, " Operating System");
-    if (strcmp(config_class::system_info.platform.c_str(),"Linux") != 0) game.core.log.file_write("For better performance, upgrade to Linux!");
-    game.core.log.file_write("Detected - ",config_class::system_info.CPU_count," logical CPU cores");
-    game.core.log.file_write("Detected - ",config_class::system_info.CPU_cache_line_size," CPU cache line size");
-    game.core.log.file_write("Detected - ",config_class::system_info.system_RAM,"MB system RAM");
-    if (config_class::system_info.has_3DNow)   game.core.log.file_write("Detected - 3D Now");
-    if (config_class::system_info.has_AVX)     game.core.log.file_write("Detected - AVX");
-    if (config_class::system_info.has_AltiVec) game.core.log.file_write("Detected - AltiVec");
-    if (config_class::system_info.has_MMX)     game.core.log.file_write("Detected - MMX");
-    if (config_class::system_info.has_RDTSC)   game.core.log.file_write("Detected - RDTSC");
-    if (config_class::system_info.has_SSE)     game.core.log.file_write("Detected - SSE");
-    if (config_class::system_info.has_SSE2)    game.core.log.file_write("Detected - SSE2");
-    if (config_class::system_info.has_SSE3)    game.core.log.file_write("Detected - SSE3");
-    if (config_class::system_info.has_SSE41)   game.core.log.file_write("Detected - SSE41");
-    if (config_class::system_info.has_SSE42)   game.core.log.file_write("Detected - SSE42");
-    game.core.log.file_write("# ---------------------------------------------- #");
+    game.core.log.write("# ------------ System Information -------------- #");
+    game.core.log.write("Detected - ",config_class::system_info.platform, " Operating System");
+    if (strcmp(config_class::system_info.platform.c_str(),"Linux") != 0) game.core.log.write("For better performance, upgrade to Linux!");
+    game.core.log.write("Detected - ",config_class::system_info.CPU_count," logical CPU cores");
+    game.core.log.write("Detected - ",config_class::system_info.CPU_cache_line_size," CPU cache line size");
+    game.core.log.write("Detected - ",config_class::system_info.system_RAM,"MB system RAM");
+    if (config_class::system_info.has_3DNow)   game.core.log.write("Detected - 3D Now");
+    if (config_class::system_info.has_AVX)     game.core.log.write("Detected - AVX");
+    if (config_class::system_info.has_AltiVec) game.core.log.write("Detected - AltiVec");
+    if (config_class::system_info.has_MMX)     game.core.log.write("Detected - MMX");
+    if (config_class::system_info.has_RDTSC)   game.core.log.write("Detected - RDTSC");
+    if (config_class::system_info.has_SSE)     game.core.log.write("Detected - SSE");
+    if (config_class::system_info.has_SSE2)    game.core.log.write("Detected - SSE2");
+    if (config_class::system_info.has_SSE3)    game.core.log.write("Detected - SSE3");
+    if (config_class::system_info.has_SSE41)   game.core.log.write("Detected - SSE41");
+    if (config_class::system_info.has_SSE42)   game.core.log.write("Detected - SSE42");
+    game.core.log.write("# ---------------------------------------------- #");
 }
 

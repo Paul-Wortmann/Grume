@@ -1649,7 +1649,7 @@ int  item_manager_class::gen_item(int item_type_UID, int item_sub_type_UID, int 
                         }
                     break;
                     default:
-                        game.core.log.file_write("Unable to generate item -> ",item_type_UID," - ", item_sub_type_UID," - ", quality_level);
+                        game.core.log.write("Unable to generate item -> ",item_type_UID," - ", item_sub_type_UID," - ", quality_level);
                     break;
                 }
                 item_pointer->data.type     = item_type_UID;
@@ -2843,7 +2843,7 @@ void  item_manager_class::gen_item_texture(item_type* item_pointer,int item_type
             }
         break;
         default:
-            game.core.log.file_write("Unable to generate item textures -> ",item_type_UID," - ", item_sub_type_UID," - ", quality_level);
+            game.core.log.write("Unable to generate item textures -> ",item_type_UID," - ", item_sub_type_UID," - ", quality_level);
         break;
     }
 };
@@ -2885,7 +2885,7 @@ void  item_manager_class::gen_item_sounds(item_type* item_pointer,int item_type_
             item_pointer->data.sound.on_use  = game.sound_manager.add_sound("data/sound/inventory/leather_00.wav");
         break;
         default:
-            game.core.log.file_write("Unable to generate item sounds -> ",item_type_UID," - ", item_sub_type_UID," - ", quality_level);
+            game.core.log.write("Unable to generate item sounds -> ",item_type_UID," - ", item_sub_type_UID," - ", quality_level);
         break;
     }
 };

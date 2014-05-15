@@ -79,12 +79,12 @@ bool loader_obj_class::load_texture(std::string file_name, GLuint *texture_data)
     {
         glGenTextures( 1, texture_data);
         if ( image_surface ) SDL_FreeSurface( image_surface );
-        game.core.log.file_write("loader_obj_class::load_texture loaded file -> ",file_name.c_str());
+        game.core.log.write("loader_obj_class::load_texture loaded file -> ",file_name.c_str());
         return(true);
     }
     else
     {
-        game.core.log.file_write("Failed to load image ->",file_name.c_str());
+        game.core.log.write("Failed to load image ->",file_name.c_str());
         if ( image_surface ) SDL_FreeSurface( image_surface );
         return(false);
     }
@@ -336,7 +336,7 @@ void loader_obj_class::load_mtl(std::string file_name)
         }
         script_file.close();
     }
-    else game.core.log.file_write("Unable to load file - ",file_name);
+    else game.core.log.write("Unable to load file - ",file_name);
 };
 
 void loader_obj_class::save_mtl(std::string file_name)
@@ -595,7 +595,7 @@ void loader_obj_class::load(std::string file_name)
                         }
                     break;
                     case 'u': // load material to use after this point.
-                        game.core.log.file_write("usemtl found...", loader_obj_class::number_of_materials);
+                        game.core.log.write("usemtl found...", loader_obj_class::number_of_materials);
                         position_count = 7;
                         temp_string_data = "";
                         while (position_count < (int)data_line.length())
@@ -610,7 +610,7 @@ void loader_obj_class::load(std::string file_name)
                             {
                                 loader_obj_class::face[number_of_faces_count].material = material_count;
                                 current_material = material_count;
-                                game.core.log.file_write("Current_material - > ",temp_string_data.c_str());
+                                game.core.log.write("Current_material - > ",temp_string_data.c_str());
                             }
                         }
                     break;
@@ -754,7 +754,7 @@ void loader_obj_class::load(std::string file_name)
         script_file.close();
         //create VBO ?? Hmmm
     }
-    else game.core.log.file_write("Unable to load file - ",file_name);
+    else game.core.log.write("Unable to load file - ",file_name);
 };
 
 void loader_obj_class::save(std::string file_name)

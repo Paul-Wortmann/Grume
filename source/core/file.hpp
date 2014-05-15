@@ -50,6 +50,7 @@ class file_class
         Mix_Music   *load_music         (std::string file_name);
         Mix_Chunk   *load_sound         (std::string file_name);
         char        *load_file_to_buffer(std::string file_name);
+        std::string  get_time_string    (void);
 };
 
 

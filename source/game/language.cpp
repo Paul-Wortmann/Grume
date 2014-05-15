@@ -83,7 +83,7 @@ language_class::language_class(void)
 void language_class::load(std::string language_name)
 {
     std::string file_name = "data/configuration/languages/"+language_name+".txt";
-    game.core.log.file_write("Loading language '"+language_name+"' from file -> "+file_name);
+    game.core.log.write("Loading language '"+language_name+"' from file -> "+file_name);
     if (PHYSFS_exists(file_name.c_str()))
     {
         PHYSFS_openRead(file_name.c_str());
@@ -204,11 +204,11 @@ void language_class::load(std::string language_name)
         }
         else
         {
-            game.core.log.file_write("Fail -> PhysicsFS unable to open file - ",file_name.c_str());
+            game.core.log.write("Fail -> PhysicsFS unable to open file - ",file_name.c_str());
         }
     }
     else
     {
-        game.core.log.file_write("Fail -> PhysicsFS unable to find file - ",file_name.c_str());
+        game.core.log.write("Fail -> PhysicsFS unable to find file - ",file_name.c_str());
     }
 }

@@ -90,7 +90,7 @@ bool music_manager_class::load_music(music_type *music)
     bool return_value = false;
     music->music_data = game.core.file.load_music(music->path.c_str());
     if (music->music_data != NULL) return_value = true;
-    else game.core.log.file_write("Failed to load music ->",music->path.c_str());
+    else game.core.log.write("Failed to load music ->",music->path.c_str());
     return (return_value);
 };
 

@@ -330,11 +330,11 @@ void process_menu_game_load(UI_form_struct *UI_form_pointer)
                 game.save_01.Assign_File("save/slot_01.sav");
                 if (game.save_01.Load())
                 {
-                    game.core.log.file_write("Loading game from slot 1");
+                    game.core.log.write("Loading game from slot 1");
                     game.state = STATE_GAME;
                     game.music_manager.next_track = true;
                 }
-                else game.core.log.file_write("ERROR -> Error loading game from slot 1");
+                else game.core.log.write("ERROR -> Error loading game from slot 1");
             break;
             case ((2*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Load slot 2 - menu button
                 game.UI_manager.UI_form_transition(UID_MENU_GAME_LOAD,UID_MENU_MAIN);
@@ -343,11 +343,11 @@ void process_menu_game_load(UI_form_struct *UI_form_pointer)
                 game.save_02.Assign_File("save/slot_02.sav");
                 if (game.save_02.Load())
                 {
-                    game.core.log.file_write("Loading game from slot 2");
+                    game.core.log.write("Loading game from slot 2");
                     game.state = STATE_GAME;
                     game.music_manager.next_track = true;
                 }
-                else game.core.log.file_write("ERROR -> Error loading game from slot 2");
+                else game.core.log.write("ERROR -> Error loading game from slot 2");
             break;
             case ((3*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Load slot 3 - menu button
                 game.UI_manager.UI_form_transition(UID_MENU_GAME_LOAD,UID_MENU_MAIN);
@@ -356,11 +356,11 @@ void process_menu_game_load(UI_form_struct *UI_form_pointer)
                 game.save_03.Assign_File("save/slot_03.sav");
                 if (game.save_03.Load())
                 {
-                    game.core.log.file_write("Loading game from slot 3");
+                    game.core.log.write("Loading game from slot 3");
                     game.state = STATE_GAME;
                     game.music_manager.next_track = true;
                 }
-                else game.core.log.file_write("ERROR -> Error loading game from slot 3");
+                else game.core.log.write("ERROR -> Error loading game from slot 3");
             break;
             case ((4*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Load slot 4 - menu button
                 game.UI_manager.UI_form_transition(UID_MENU_GAME_LOAD,UID_MENU_MAIN);
@@ -369,11 +369,11 @@ void process_menu_game_load(UI_form_struct *UI_form_pointer)
                 game.save_04.Assign_File("save/slot_04.sav");
                 if (game.save_04.Load())
                 {
-                    game.core.log.file_write("Loading game from slot 4");
+                    game.core.log.write("Loading game from slot 4");
                     game.state = STATE_GAME;
                     game.music_manager.next_track = true;
                 }
-                else game.core.log.file_write("ERROR -> Error loading game from slot 4");
+                else game.core.log.write("ERROR -> Error loading game from slot 4");
             break;
             case ((5*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Load slot 5 - menu button
                 game.UI_manager.UI_form_transition(UID_MENU_GAME_LOAD,UID_MENU_MAIN);
@@ -382,11 +382,11 @@ void process_menu_game_load(UI_form_struct *UI_form_pointer)
                 game.save_05.Assign_File("save/slot_05.sav");
                 if (game.save_05.Load())
                 {
-                    game.core.log.file_write("Loading game from slot 5");
+                    game.core.log.write("Loading game from slot 5");
                     game.state = STATE_GAME;
                     game.music_manager.next_track = true;
                 }
-                else game.core.log.file_write("ERROR -> Error loading game from slot 5");
+                else game.core.log.write("ERROR -> Error loading game from slot 5");
             break;
             case ((6*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Main menu button
                 game.UI_manager.UI_form_transition(UID_MENU_GAME_LOAD,UID_MENU_MAIN);
@@ -400,7 +400,7 @@ void process_menu_game_load(UI_form_struct *UI_form_pointer)
                 //game.UI_manager.source.window = UID_MENU_GAME_LOAD;
             break;
             default:
-                game.core.log.file_write("Unable to process event - ",UI_form_pointer->data.event.id, " - UID - ",UI_form_pointer->data.UID, " - ",game.UI_manager.uid_to_string(UI_form_pointer->data.UID));
+                game.core.log.write("Unable to process event - ",UI_form_pointer->data.event.id, " - UID - ",UI_form_pointer->data.UID, " - ",game.UI_manager.uid_to_string(UI_form_pointer->data.UID));
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
         }

@@ -107,7 +107,7 @@ path_type*  map_path_find_internal(fmx_map_type *fmx_map_pointer, path_node_type
     {
         fmx_map_pointer->data.path_end_found = true;
         //fmx_map_pointer->path_data[path_node_pointer->tile].tile_data = TILE_PATH;
-        game.core.log.file_write(" Path end found! ");
+        game.core.log.write(" Path end found! ");
     }
     if (!fmx_map_pointer->data.path_end_found)
     {
@@ -255,7 +255,7 @@ path_type*  map_path_find_internal(fmx_map_type *fmx_map_pointer, path_node_type
                     if (node_next < 0)
                     {
                         //node_next = node_parent;
-                        if (node_parent > 0) game.core.log.file_write("Next best is parent - ",node_parent);
+                        if (node_parent > 0) game.core.log.write("Next best is parent - ",node_parent);
                     }
                     switch (node_next)
                     {
@@ -297,7 +297,7 @@ path_type*  map_path_find_internal(fmx_map_type *fmx_map_pointer, path_node_type
                     }
                     if (node_next == -1)
                     {
-                        game.core.log.file_write(" No suitable node found...");
+                        game.core.log.write(" No suitable node found...");
                         fmx_map_pointer->path_data[tile_current].tile_data   = TILE_PATH_NO;
                         fmx_map_pointer->path_data[tile_current].closed_list = true;
                         path_node_pointer = path_node_pointer->last;
@@ -311,7 +311,7 @@ path_type*  map_path_find_internal(fmx_map_type *fmx_map_pointer, path_node_type
                         }
                         //if (fmx_map_pointer->path_data[tile_current].closed_list) fmx_map_pointer->path_data[tile_current].tile_data = TILE_PATH_NO;
                         //fmx_map_pointer->path_data[node_next].tile_data = TILE_PATH;
-                        game.core.log.file_write("Node next -> ",node_next," - tile - ",node_next_tile," - tile_F -> ",node_next_F);
+                        game.core.log.write("Node next -> ",node_next," - tile - ",node_next_tile," - tile_F -> ",node_next_F);
                         path_node_type* path_node_pointer_old = path_node_pointer;
                         path_node_pointer->next = new path_node_type;
                         path_node_pointer = path_node_pointer->next;

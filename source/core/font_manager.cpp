@@ -53,16 +53,16 @@ font_manager_class::~font_manager_class (void)
 
 void font_manager_class::init(void)
 {
-    game.core.log.file_write("Initializing font manager.");
+    game.core.log.write("Initializing font manager.");
     if(!TTF_WasInit() && TTF_Init()==-1)
     {
-        game.core.log.file_write("Fail -> TTF_Init: ",TTF_GetError());
+        game.core.log.write("Fail -> TTF_Init: ",TTF_GetError());
     }
     const SDL_version *linked_version = TTF_Linked_Version();
     SDL_version compiled_version;
     SDL_TTF_VERSION(&compiled_version);
-    game.core.log.file_write("SDL_TTF compiled version: ",compiled_version.major,".",compiled_version.minor,".",compiled_version.patch);
-    game.core.log.file_write("SDL_TTF Linked version:   ",linked_version->major,".",linked_version->minor,".",linked_version->patch);
+    game.core.log.write("SDL_TTF compiled version: ",compiled_version.major,".",compiled_version.minor,".",compiled_version.patch);
+    game.core.log.write("SDL_TTF Linked version:   ",linked_version->major,".",linked_version->minor,".",linked_version->patch);
 }
 
 void font_manager_class::deinit(void)
@@ -106,7 +106,7 @@ font_type *font_manager_class::add_font (std::string file_name)
     }
     else
     {
-        game.core.log.file_write("Fail - Font manager function, add font -> ",file_name.c_str());
+        game.core.log.write("Fail - Font manager function, add font -> ",file_name.c_str());
         return (font_manager_class::last);
     }
 };
@@ -117,10 +117,10 @@ bool font_manager_class::load_font (font_type *font, int pt_size)
     game.core.file.load_font(font,pt_size);
     if (font->font_data != NULL)
     {
-        //game.core.log.file_write("Loaded font -> ",font->path.c_str());
+        //game.core.log.write("Loaded font -> ",font->path.c_str());
         return_value = true;
     }
-    else game.core.log.file_write("Failed to load font -> ",font->path.c_str());
+    else game.core.log.write("Failed to load font -> ",font->path.c_str());
     return (return_value);
 };
 
@@ -176,8 +176,8 @@ bool font_manager_class::write (font_type *font, Uint8 r,Uint8 g,Uint8 b,Uint8 a
     }
     else
     {
-        game.core.log.file_write("Fail - Font manager write function called without font data.");
-        game.core.log.file_write("Fail - You are most likely missing data files, please re-install.");
+        game.core.log.write("Fail - Font manager write function called without font data.");
+        game.core.log.write("Fail - You are most likely missing data files, please re-install.");
         game.state = STATE_QUIT;
         return (false);
     }
@@ -230,8 +230,8 @@ bool font_manager_class::write (font_type *font, Uint8 r,Uint8 g,Uint8 b,Uint8 a
     }
     else
     {
-        game.core.log.file_write("Fail - Font manager write function called without font data.");
-        game.core.log.file_write("Fail - You are most likely missing data files, please re-install.");
+        game.core.log.write("Fail - Font manager write function called without font data.");
+        game.core.log.write("Fail - You are most likely missing data files, please re-install.");
         game.state = STATE_QUIT;
         return (false);
     }
@@ -280,8 +280,8 @@ bool font_manager_class::write (font_type *font, Uint8 r,Uint8 g,Uint8 b,Uint8 a
     }
     else
     {
-        game.core.log.file_write("Fail - Font manager write function called without font data.");
-        game.core.log.file_write("Fail - You are most likely missing data files, please re-install.");
+        game.core.log.write("Fail - Font manager write function called without font data.");
+        game.core.log.write("Fail - You are most likely missing data files, please re-install.");
         game.state = STATE_QUIT;
         return (false);
     }
@@ -332,8 +332,8 @@ bool font_manager_class::write (font_type *font, Uint8 r,Uint8 g,Uint8 b,Uint8 a
     }
     else
     {
-        game.core.log.file_write("Fail - Font manager write function called without font data.");
-        game.core.log.file_write("Fail - You are most likely missing data files, please re-install.");
+        game.core.log.write("Fail - Font manager write function called without font data.");
+        game.core.log.write("Fail - You are most likely missing data files, please re-install.");
         game.state = STATE_QUIT;
         return (false);
     }
@@ -391,8 +391,8 @@ bool font_manager_class::write (font_type *font, Uint8 r,Uint8 g,Uint8 b,Uint8 a
     }
     else
     {
-        game.core.log.file_write("Fail - Font manager write function called without font data.");
-        game.core.log.file_write("Fail - You are most likely missing data files, please re-install.");
+        game.core.log.write("Fail - Font manager write function called without font data.");
+        game.core.log.write("Fail - You are most likely missing data files, please re-install.");
         game.state = STATE_QUIT;
         return (false);
     }
@@ -448,8 +448,8 @@ bool font_manager_class::write (font_type *font, Uint8 r,Uint8 g,Uint8 b,Uint8 a
     }
     else
     {
-        game.core.log.file_write("Fail - Font manager write function called without font data.");
-        game.core.log.file_write("Fail - You are most likely missing data files, please re-install.");
+        game.core.log.write("Fail - Font manager write function called without font data.");
+        game.core.log.write("Fail - You are most likely missing data files, please re-install.");
         game.state = STATE_QUIT;
         return (false);
     }
@@ -506,8 +506,8 @@ bool font_manager_class::write (font_type *font, Uint8 r,Uint8 g,Uint8 b,Uint8 a
     }
     else
     {
-        game.core.log.file_write("Fail - Font manager write function called without font data.");
-        game.core.log.file_write("Fail - You are most likely missing data files, please re-install.");
+        game.core.log.write("Fail - Font manager write function called without font data.");
+        game.core.log.write("Fail - You are most likely missing data files, please re-install.");
         game.state = STATE_QUIT;
         return (false);
     }
@@ -564,8 +564,8 @@ bool font_manager_class::write (font_type *font, Uint8 r,Uint8 g,Uint8 b,Uint8 a
     }
     else
     {
-        game.core.log.file_write("Fail - Font manager write function called without font data.");
-        game.core.log.file_write("Fail - You are most likely missing data files, please re-install.");
+        game.core.log.write("Fail - Font manager write function called without font data.");
+        game.core.log.write("Fail - You are most likely missing data files, please re-install.");
         game.state = STATE_QUIT;
         return (false);
     }
@@ -623,8 +623,8 @@ bool font_manager_class::write (font_type *font, Uint8 r,Uint8 g,Uint8 b,Uint8 a
     }
     else
     {
-        game.core.log.file_write("Fail - Font manager write function called without font data.");
-        game.core.log.file_write("Fail - You are most likely missing data files, please re-install.");
+        game.core.log.write("Fail - Font manager write function called without font data.");
+        game.core.log.write("Fail - You are most likely missing data files, please re-install.");
         game.state = STATE_QUIT;
         return (false);
     }
@@ -682,8 +682,8 @@ bool font_manager_class::write (font_type *font, Uint8 r,Uint8 g,Uint8 b,Uint8 a
     }
     else
     {
-        game.core.log.file_write("Fail - Font manager write function called without font data.");
-        game.core.log.file_write("Fail - You are most likely missing data files, please re-install.");
+        game.core.log.write("Fail - Font manager write function called without font data.");
+        game.core.log.write("Fail - You are most likely missing data files, please re-install.");
         game.state = STATE_QUIT;
         return (false);
     }
@@ -741,8 +741,8 @@ bool font_manager_class::write (font_type *font, Uint8 r,Uint8 g,Uint8 b,Uint8 a
     }
     else
     {
-        game.core.log.file_write("Fail - Font manager write function called without font data.");
-        game.core.log.file_write("Fail - You are most likely missing data files, please re-install.");
+        game.core.log.write("Fail - Font manager write function called without font data.");
+        game.core.log.write("Fail - You are most likely missing data files, please re-install.");
         game.state = STATE_QUIT;
         return (false);
     }
@@ -796,8 +796,8 @@ bool font_manager_class::write (font_type *font, Uint8 r,Uint8 g,Uint8 b,Uint8 a
     }
     else
     {
-        game.core.log.file_write("Fail - Font manager write function called without font data.");
-        game.core.log.file_write("Fail - You are most likely missing data files, please re-install.");
+        game.core.log.write("Fail - Font manager write function called without font data.");
+        game.core.log.write("Fail - You are most likely missing data files, please re-install.");
         game.state = STATE_QUIT;
         return (false);
     }
@@ -853,8 +853,8 @@ bool font_manager_class::write (font_type *font, Uint8 r,Uint8 g,Uint8 b,Uint8 a
     }
     else
     {
-        game.core.log.file_write("Fail - Font manager write function called without font data.");
-        game.core.log.file_write("Fail - You are most likely missing data files, please re-install.");
+        game.core.log.write("Fail - Font manager write function called without font data.");
+        game.core.log.write("Fail - You are most likely missing data files, please re-install.");
         game.state = STATE_QUIT;
         return (false);
     }
@@ -911,8 +911,8 @@ bool font_manager_class::write (font_type *font, Uint8 r,Uint8 g,Uint8 b,Uint8 a
     }
     else
     {
-        game.core.log.file_write("Fail - Font manager write function called without font data.");
-        game.core.log.file_write("Fail - You are most likely missing data files, please re-install.");
+        game.core.log.write("Fail - Font manager write function called without font data.");
+        game.core.log.write("Fail - You are most likely missing data files, please re-install.");
         game.state = STATE_QUIT;
         return (false);
     }
@@ -973,8 +973,8 @@ bool font_manager_class::write (font_type *font, Uint8 r,Uint8 g,Uint8 b,Uint8 a
     }
     else
     {
-        game.core.log.file_write("Fail - Font manager write function called without font data.");
-        game.core.log.file_write("Fail - You are most likely missing data files, please re-install.");
+        game.core.log.write("Fail - Font manager write function called without font data.");
+        game.core.log.write("Fail - You are most likely missing data files, please re-install.");
         game.state = STATE_QUIT;
         return (false);
     }

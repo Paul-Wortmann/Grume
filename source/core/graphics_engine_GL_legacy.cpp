@@ -36,32 +36,32 @@ bool GL_legacy_init(void)
     bool return_value = true;
     if (game.core.graphics.window)
     {
-        game.core.log.file_write("Closing previous window....");
+        game.core.log.write("Closing previous window....");
         SDL_GL_DeleteContext(game.core.graphics.context);
         SDL_DestroyWindow(game.core.graphics.window);
     }
     if(SDL_Init(SDL_INIT_VIDEO) < 0)
     {
-        game.core.log.file_write("SDL Video initialization failed.");
+        game.core.log.write("SDL Video initialization failed.");
         return_value = false;
     }
     else
     {
-        game.core.log.file_write("SDL Video initialized correctly.");
+        game.core.log.write("SDL Video initialized correctly.");
         SDL_version compiled;
         SDL_version linked;
         SDL_VERSION(&compiled);
         SDL_GetVersion(&linked);
-        game.core.log.file_write("SDL build version ->  ",compiled.major,".",compiled.minor,".",compiled.patch);
-        game.core.log.file_write("SDL linked version -> ",linked.major,".",linked.minor,".",linked.patch);
+        game.core.log.write("SDL build version ->  ",compiled.major,".",compiled.minor,".",compiled.patch);
+        game.core.log.write("SDL linked version -> ",linked.major,".",linked.minor,".",linked.patch);
         char SDL_VID_WIN_POS[] = "SDL_VIDEO_WINDOW_POS";
         char SDL_VID_CENTERD[] = "SDL_VIDEO_CENTERED=1";
-        putenv(SDL_VID_WIN_POS);
-        putenv(SDL_VID_CENTERD);
+        //putenv(SDL_VID_WIN_POS);
+        //putenv(SDL_VID_CENTERD);
         //game.core.config.display_info = SDL_GetVideoInfo( );
         //if(!game.core.config.display_info)
         //{
-        //    game.core.log.file_write("Video query failed.");
+        //    game.core.log.write("Video query failed.");
         //    return_value = false;
         //}
         //game.core.config.display_bpp    = game.core.config.display_info->vfmt->BitsPerPixel;
@@ -78,13 +78,13 @@ bool GL_legacy_init(void)
         game.core.graphics.current_display      = 0;
         game.core.graphics.current_display_mode = 0;
         game.core.graphics.number_displays      = SDL_GetNumVideoDisplays();
-        game.core.log.file_write("Number of attached displays -> ",game.core.graphics.number_displays);
+        game.core.log.write("Number of attached displays -> ",game.core.graphics.number_displays);
         game.core.graphics.number_display_modes = SDL_GetNumDisplayModes(game.core.graphics.current_display);
         game.core.graphics.display_mode = new SDL_DisplayMode[game.core.graphics.number_display_modes+1];
-        game.core.log.file_write("Number of display modes -> ",game.core.graphics.number_display_modes);
+        game.core.log.write("Number of display modes -> ",game.core.graphics.number_display_modes);
         for (int i = 0; i < game.core.graphics.number_display_modes; i++)
         {
-            if ((SDL_GetDisplayMode(game.core.graphics.current_display,i,&game.core.graphics.display_mode[i]) == 0)&&(game.core.debug)) game.core.log.file_write("Display mode - ",i," - x - ",game.core.graphics.display_mode[i].w," - y - ",game.core.graphics.display_mode[i].h," - refresh rate - ",game.core.graphics.display_mode[i].refresh_rate);
+            if ((SDL_GetDisplayMode(game.core.graphics.current_display,i,&game.core.graphics.display_mode[i]) == 0)&&(game.core.debug)) game.core.log.write("Display mode - ",i," - x - ",game.core.graphics.display_mode[i].w," - y - ",game.core.graphics.display_mode[i].h," - refresh rate - ",game.core.graphics.display_mode[i].refresh_rate);
         }
         SDL_GetDisplayMode(game.core.graphics.current_display,game.core.graphics.current_display_mode,&game.core.graphics.display_mode[game.core.graphics.current_display_mode]);
         if ((game.core.config.display_resolution_x < game.core.graphics.display_mode[game.core.graphics.number_display_modes-1].w) || (game.core.config.display_resolution_y < game.core.graphics.display_mode[game.core.graphics.number_display_modes-1].h))
@@ -132,9 +132,9 @@ bool GL_legacy_init(void)
         game.core.config.font_scale_y = (float)game.core.config.display_resolution_y/(float)game.core.config.font_base_resolution_y;
         game.core.config.mouse_resolution_x   = game.core.config.display_resolution_x;
         game.core.config.mouse_resolution_y   = game.core.config.display_resolution_y;
-        game.core.log.file_write("Setting display mode - ",game.core.graphics.current_display_mode," - x - ",game.core.graphics.display_mode[game.core.graphics.current_display_mode].w," - y - ",game.core.graphics.display_mode[game.core.graphics.current_display_mode].h," - refresh rate - ",game.core.graphics.display_mode[game.core.graphics.current_display_mode].refresh_rate);
-        game.core.log.file_write("Using pixel format - ",pixel_format_from_int(game.core.graphics.display_mode[game.core.graphics.current_display_mode].format));
-        game.core.log.file_write("Creating window...");
+        game.core.log.write("Setting display mode - ",game.core.graphics.current_display_mode," - x - ",game.core.graphics.display_mode[game.core.graphics.current_display_mode].w," - y - ",game.core.graphics.display_mode[game.core.graphics.current_display_mode].h," - refresh rate - ",game.core.graphics.display_mode[game.core.graphics.current_display_mode].refresh_rate);
+        game.core.log.write("Using pixel format - ",pixel_format_from_int(game.core.graphics.display_mode[game.core.graphics.current_display_mode].format));
+        game.core.log.write("Creating window...");
         game.core.config.display_flags = SDL_WINDOW_SHOWN | SDL_WINDOW_OPENGL;
         if (game.core.config.display_fullscreen) game.core.config.display_flags |= SDL_WINDOW_FULLSCREEN;
         game.core.graphics.window = SDL_CreateWindow(game.core.application_name.c_str(),SDL_WINDOWPOS_CENTERED,SDL_WINDOWPOS_CENTERED,game.core.config.display_resolution_x, game.core.config.display_resolution_y, game.core.config.display_flags);
@@ -142,66 +142,74 @@ bool GL_legacy_init(void)
         game.core.graphics.context = SDL_GL_CreateContext(game.core.graphics.window);
         if (!game.core.graphics.window)
         {
-            game.core.log.file_write("Video mode set failed.");
+            game.core.log.write("Video mode set failed.");
             return_value = false;
         }
-        glViewport(0, 0,game.core.config.display_resolution_x,game.core.config.display_resolution_y);
-        glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
-        glClearDepth(1.0);
-        glMatrixMode(GL_PROJECTION);
-        glLoadIdentity();
-        glMatrixMode(GL_MODELVIEW);
-        glLoadIdentity();
-        glEnable(GL_TEXTURE_2D);
-        glEnable(GL_DEPTH_TEST);
-        glDepthFunc(GL_LESS);
-        glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);
-        glEnable(GL_BLEND);
-        glBlendFunc(GL_SRC_ALPHA,GL_ONE_MINUS_SRC_ALPHA);
-        glShadeModel(GL_SMOOTH);
-        glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_FASTEST);
-        //--------------------------------------------------------------------------------------------------------------------
-        // OpenGL Lighting Setup
-        glEnable(GL_LIGHTING);
-        float global_ambient[] = { 4.0f, 4.0f, 4.0f, 4.0f };
-        glLightModelfv(GL_LIGHT_MODEL_AMBIENT, global_ambient);
+        else
+        {
+            game.core.log.write(glGetString(GL_VERSION));
+            game.core.log.write(glGetString(GL_VENDOR));
+            game.core.log.write(glGetString(GL_RENDERER));
+            game.core.log.write(glGetString(GL_SHADING_LANGUAGE_VERSION));
 
-        glEnable(GL_LIGHT0);
-        float ambientLight0[]  = { 1.0f, 1.0f, 1.0f, 1.0f };
-        float diffuseLight0[]  = { 1.0f, 1.0f, 1.0f, 1.0f };
-        float specularLight0[] = { 1.0f, 1.0f, 1.0f, 1.0f };
-        float position0[]      = { 0.0f, 0.0f, 0.0f, 1.0f };
-        glLightfv(GL_LIGHT0, GL_AMBIENT,  ambientLight0);
-        glLightfv(GL_LIGHT0, GL_DIFFUSE,  diffuseLight0);
-        glLightfv(GL_LIGHT0, GL_SPECULAR, specularLight0);
-        glLightfv(GL_LIGHT0, GL_POSITION, position0);
-        // Position and direction (spotlight)
-        //glEnable(GL_LIGHT1);
-        //float posLight1[]     = {  0.0f,  0.0f, -1.0f,  1.0f };
-        //float spotDirection[] = {  0.0f,  0.0f, 1.0f };
-        //float ambientLight1[]  = { 1.0f, 0.5f, 0.5f, 1.0f };
-        //float diffuseLight1[]  = { 1.0f, 0.5f, 0.5f, 1.0f };
-        //float specularLight1[] = { 1.0f, 0.5f, 0.5f, 1.0f };
-        //glLightfv( GL_LIGHT1, GL_POSITION, posLight1 );
-        //glLightf ( GL_LIGHT1, GL_SPOT_CUTOFF, 60.0F );
-        //glLightfv( GL_LIGHT1, GL_SPOT_DIRECTION, spotDirection );
-        //glLightfv( GL_LIGHT1, GL_AMBIENT,  ambientLight1);
-        //glLightfv( GL_LIGHT1, GL_DIFFUSE,  diffuseLight1);
-        //glLightfv( GL_LIGHT1, GL_SPECULAR, specularLight1);
-        //glLightf ( GL_LIGHT1, GL_CONSTANT_ATTENUATION, 1.0f );
-        //glEnable(GL_LIGHT1);
-        //float ambientLight1[]  = { 1.0f, 0.5f, 0.5f, 1.0f };
-        //float diffuseLight1[]  = { 1.0f, 0.5f, 0.5f, 1.0f };
-        //float specularLight1[] = { 1.0f, 0.5f, 0.5f, 1.0f };
-        //float position1[]      = { 1.5f, 1.0f, 2.0f, 1.0f };
-        //glLightfv(GL_LIGHT1, GL_AMBIENT,  ambientLight1);
-        //glLightfv(GL_LIGHT1, GL_DIFFUSE,  diffuseLight1);
-        //glLightfv(GL_LIGHT1, GL_SPECULAR, specularLight1);
-        //glLightfv(GL_LIGHT1, GL_POSITION, position1);
+            glViewport(0, 0,game.core.config.display_resolution_x,game.core.config.display_resolution_y);
+            glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+            glClearDepth(1.0);
+            glMatrixMode(GL_PROJECTION);
+            glLoadIdentity();
+            glMatrixMode(GL_MODELVIEW);
+            glLoadIdentity();
+            glEnable(GL_TEXTURE_2D);
+            glEnable(GL_DEPTH_TEST);
+            glDepthFunc(GL_LESS);
+            glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);
+            glEnable(GL_BLEND);
+            glBlendFunc(GL_SRC_ALPHA,GL_ONE_MINUS_SRC_ALPHA);
+            glShadeModel(GL_SMOOTH);
+            glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_FASTEST);
+            //--------------------------------------------------------------------------------------------------------------------
+            // OpenGL Lighting Setup
+            glEnable(GL_LIGHTING);
+            float global_ambient[] = { 4.0f, 4.0f, 4.0f, 4.0f };
+            glLightModelfv(GL_LIGHT_MODEL_AMBIENT, global_ambient);
+
+            glEnable(GL_LIGHT0);
+            float ambientLight0[]  = { 1.0f, 1.0f, 1.0f, 1.0f };
+            float diffuseLight0[]  = { 1.0f, 1.0f, 1.0f, 1.0f };
+            float specularLight0[] = { 1.0f, 1.0f, 1.0f, 1.0f };
+            float position0[]      = { 0.0f, 0.0f, 0.0f, 1.0f };
+            glLightfv(GL_LIGHT0, GL_AMBIENT,  ambientLight0);
+            glLightfv(GL_LIGHT0, GL_DIFFUSE,  diffuseLight0);
+            glLightfv(GL_LIGHT0, GL_SPECULAR, specularLight0);
+            glLightfv(GL_LIGHT0, GL_POSITION, position0);
+            // Position and direction (spotlight)
+            //glEnable(GL_LIGHT1);
+            //float posLight1[]     = {  0.0f,  0.0f, -1.0f,  1.0f };
+            //float spotDirection[] = {  0.0f,  0.0f, 1.0f };
+            //float ambientLight1[]  = { 1.0f, 0.5f, 0.5f, 1.0f };
+            //float diffuseLight1[]  = { 1.0f, 0.5f, 0.5f, 1.0f };
+            //float specularLight1[] = { 1.0f, 0.5f, 0.5f, 1.0f };
+            //glLightfv( GL_LIGHT1, GL_POSITION, posLight1 );
+            //glLightf ( GL_LIGHT1, GL_SPOT_CUTOFF, 60.0F );
+            //glLightfv( GL_LIGHT1, GL_SPOT_DIRECTION, spotDirection );
+            //glLightfv( GL_LIGHT1, GL_AMBIENT,  ambientLight1);
+            //glLightfv( GL_LIGHT1, GL_DIFFUSE,  diffuseLight1);
+            //glLightfv( GL_LIGHT1, GL_SPECULAR, specularLight1);
+            //glLightf ( GL_LIGHT1, GL_CONSTANT_ATTENUATION, 1.0f );
+            //glEnable(GL_LIGHT1);
+            //float ambientLight1[]  = { 1.0f, 0.5f, 0.5f, 1.0f };
+            //float diffuseLight1[]  = { 1.0f, 0.5f, 0.5f, 1.0f };
+            //float specularLight1[] = { 1.0f, 0.5f, 0.5f, 1.0f };
+            //float position1[]      = { 1.5f, 1.0f, 2.0f, 1.0f };
+            //glLightfv(GL_LIGHT1, GL_AMBIENT,  ambientLight1);
+            //glLightfv(GL_LIGHT1, GL_DIFFUSE,  diffuseLight1);
+            //glLightfv(GL_LIGHT1, GL_SPECULAR, specularLight1);
+            //glLightfv(GL_LIGHT1, GL_POSITION, position1);
 
 
 
-        glDisable(GL_DEPTH_TEST);
+            glDisable(GL_DEPTH_TEST);
+        }
     }
     return(return_value);
 }
@@ -243,9 +251,9 @@ bool GL_legacy_build_mode_list(void)
     }
     else
     {
-        if (game.core.debug) game.core.log.file_write("-----------------------------------------------------");
-        if (game.core.debug)game.core.log.file_write("- Menu display list:                                -");
-        if (game.core.debug)game.core.log.file_write("-----------------------------------------------------");
+        if (game.core.debug) game.core.log.write("-----------------------------------------------------");
+        if (game.core.debug)game.core.log.write("- Menu display list:                                -");
+        if (game.core.debug)game.core.log.write("-----------------------------------------------------");
         game.core.graphics.menu_mode_length = 1;
         int list_position = 0;
         int last_w = game.core.graphics.display_mode[0].w;
@@ -270,12 +278,12 @@ bool GL_legacy_build_mode_list(void)
                 if (list_position < game.core.graphics.menu_mode_length)
                 {
                     game.core.graphics.menu_mode_list[list_position] = i;
-                    if (game.core.debug)game.core.log.file_write("Menu res - x - ",game.core.graphics.display_mode[i].w," - y - ",game.core.graphics.display_mode[i].h);
+                    if (game.core.debug)game.core.log.write("Menu res - x - ",game.core.graphics.display_mode[i].w," - y - ",game.core.graphics.display_mode[i].h);
                 }
                 list_position++;
             }
         }
-        if (game.core.debug)game.core.log.file_write("-----------------------------------------------------");
+        if (game.core.debug)game.core.log.write("-----------------------------------------------------");
     }
     return(return_value);
 };

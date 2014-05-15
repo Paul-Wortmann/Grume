@@ -38,7 +38,7 @@ extern game_class         game;
 
 void tmx_load(tmx_map_type *tmx_map_pointer, std::string file_name)
 {
-    game.core.log.file_write("Loading TMX map file -> ",file_name);
+    game.core.log.write("Loading TMX map file -> ",file_name);
     if (PHYSFS_exists(file_name.c_str()))
     {
         PHYSFS_openRead(file_name.c_str());
@@ -322,12 +322,12 @@ void tmx_load(tmx_map_type *tmx_map_pointer, std::string file_name)
         }
         else
         {
-            game.core.log.file_write("Fail -> PhysicsFS unable to open file - ",file_name.c_str());
+            game.core.log.write("Fail -> PhysicsFS unable to open file - ",file_name.c_str());
         }
     }
     else
     {
-        game.core.log.file_write("Fail -> PhysicsFS unable to find file - ",file_name.c_str());
+        game.core.log.write("Fail -> PhysicsFS unable to find file - ",file_name.c_str());
     }
 };
 

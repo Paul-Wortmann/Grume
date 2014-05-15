@@ -923,7 +923,7 @@ void process_menu_options(UI_form_struct *UI_form_pointer)
     {
         bool update_display = false;
         update_options_menu();
-        if (game.core.debug) game.core.log.file_write("Processing event - ",UI_form_pointer->data.event.id, " - UID - ",UI_form_pointer->data.UID, " - ",game.UI_manager.uid_to_string(UI_form_pointer->data.UID));
+        if (game.core.debug) game.core.log.write("Processing event - ",UI_form_pointer->data.event.id, " - UID - ",UI_form_pointer->data.UID, " - ",game.UI_manager.uid_to_string(UI_form_pointer->data.UID));
         switch (UI_form_pointer->data.event.id)
         {
             case ((0*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Close menu button
@@ -1059,13 +1059,13 @@ void process_menu_options(UI_form_struct *UI_form_pointer)
                 //game.UI_manager.source.window = MENU_OPTIONS_UID;
             break;
             default:
-                game.core.log.file_write("Unable to process event - ",UI_form_pointer->data.event.id, " - UID - ",UI_form_pointer->data.UID, " - ",game.UI_manager.uid_to_string(UI_form_pointer->data.UID));
+                game.core.log.write("Unable to process event - ",UI_form_pointer->data.event.id, " - UID - ",UI_form_pointer->data.UID, " - ",game.UI_manager.uid_to_string(UI_form_pointer->data.UID));
                 UI_form_pointer->data.event.id = EVENT_NONE;
             break;
         }
         if (update_display)
         {
-            game.core.log.file_write("Reinitializing OpenGL...");
+            game.core.log.write("Reinitializing OpenGL...");
             game.core.graphics.init();
             game.core.io.mouse_button_left = false;
             game.loading_screen.display("data/loading_screen.png");

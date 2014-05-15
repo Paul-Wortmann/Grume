@@ -137,7 +137,7 @@ texture_type* texture_manager_class::add_texture(font_type* font, std::string te
             texture_manager_class::last->data.loaded = texture_manager_class::load_string(last);
         break;
         default:
-            game.core.log.file_write("Fail -> Texture manager, unknown texture flag. - ",texture_flag);
+            game.core.log.write("Fail -> Texture manager, unknown texture flag. - ",texture_flag);
             texture_manager_class::last->data.loaded = false;
         break;
     }
@@ -169,7 +169,7 @@ void texture_manager_class::load_textures(void)
                             temp_pointer->data.loaded = texture_manager_class::load_string(temp_pointer);
                         break;
                         default:
-                            game.core.log.file_write("Fail -> Loading texture, unknown texture flag. - ",temp_pointer->data.texture_flag);
+                            game.core.log.write("Fail -> Loading texture, unknown texture flag. - ",temp_pointer->data.texture_flag);
                             temp_pointer->data.loaded = false;
                         break;
                     }
@@ -182,7 +182,7 @@ void texture_manager_class::load_textures(void)
 
 void texture_manager_class::reload_textures(void)
 {
-    game.core.log.file_write("Reloading resources....");
+    game.core.log.write("Reloading resources....");
     texture_type* temp_pointer;
     temp_pointer = texture_manager_class::root;
     if (temp_pointer != NULL)
@@ -210,7 +210,7 @@ void texture_manager_class::reload_textures(void)
                     temp_pointer->data.loaded = texture_manager_class::load_string(temp_pointer,temp_pointer->data.text.font,temp_pointer->data.text.text_string,temp_pointer->data.text.text_size,temp_pointer->data.text.color.r,temp_pointer->data.text.color.g,temp_pointer->data.text.color.b,temp_pointer->data.text.color.a,temp_pointer->data.render_positioning);
                 break;
                 default:
-                    game.core.log.file_write("Fail -> Reloading texture, unknown texture flag. - ",temp_pointer->data.texture_flag);
+                    game.core.log.write("Fail -> Reloading texture, unknown texture flag. - ",temp_pointer->data.texture_flag);
                     temp_pointer->data.loaded = false;
                 break;
             }
@@ -223,7 +223,7 @@ void texture_manager_class::reload_texture(texture_type *texure)
 {
     if (texure != NULL)
     {
-        //game.core.log.file_write("Reloading texture - ",texure->data.path.c_str());
+        //game.core.log.write("Reloading texture - ",texure->data.path.c_str());
         switch (texure->data.texture_flag)
         {
             case TEXTURE_IMAGE:
@@ -236,14 +236,14 @@ void texture_manager_class::reload_texture(texture_type *texure)
                 texure->data.loaded = texture_manager_class::load_string(texure,texure->data.text.font,texure->data.text.text_string,texure->data.text.text_size,texure->data.text.color.r,texure->data.text.color.g,texure->data.text.color.b,texure->data.text.color.a,texure->data.render_positioning);
             break;
             default:
-                game.core.log.file_write("Fail -> Reloading texture, unknown texture flag. - ",texure->data.texture_flag);
+                game.core.log.write("Fail -> Reloading texture, unknown texture flag. - ",texure->data.texture_flag);
                 texure->data.loaded = false;
             break;
         }
     }
     else
     {
-        game.core.log.file_write("Fail -> Reloading texture - NULL pointer passed to function.");
+        game.core.log.write("Fail -> Reloading texture - NULL pointer passed to function.");
     }
 };
 
@@ -284,7 +284,7 @@ bool texture_manager_class::load_texture(texture_type *texture)
     else
     {
         return_value = false;
-        game.core.log.file_write("Failed to load image ->",texture->data.path.c_str());
+        game.core.log.write("Failed to load image ->",texture->data.path.c_str());
     }
     if (image_surface) SDL_FreeSurface(image_surface);
     texture->data.loaded = return_value;
@@ -367,7 +367,7 @@ bool texture_manager_class::load_sprite_sheet(texture_type *texture, int width_s
     else
     {
         return_value = false;
-        game.core.log.file_write("Failed to load sprite sheet ->",texture->data.path.c_str());
+        game.core.log.write("Failed to load sprite sheet ->",texture->data.path.c_str());
     }
     if (sprite_sheet) SDL_FreeSurface(sprite_sheet);
     if (temp_surface) SDL_FreeSurface(temp_surface);
@@ -452,7 +452,7 @@ bool texture_manager_class::load_string(texture_type *texture)
         {
             return_value = false;
             if (image_surface) SDL_FreeSurface(image_surface);
-            game.core.log.file_write("Failed to load string ->",texture->data.text.text_string.c_str());
+            game.core.log.write("Failed to load string ->",texture->data.text.text_string.c_str());
         }
         if (image_surface) SDL_FreeSurface(image_surface);
         texture->data.loaded = return_value;
@@ -560,7 +560,7 @@ void texture_manager_class::draw(texture_type *texture, bool rumble_set, float p
                     temp_height_n = temp_height_n*2.0f;
                 break;
                 default:
-                    game.core.log.file_write("Texture render error with render positioning -> ",texture->data.render_positioning);
+                    game.core.log.write("Texture render error with render positioning -> ",texture->data.render_positioning);
                 break;
             }
             if (texture->data.rotate_able)
@@ -582,8 +582,8 @@ void texture_manager_class::draw(texture_type *texture, bool rumble_set, float p
     }
     else
     {
-        game.core.log.file_write("Fail - Texture manager draw image function called without image data.");
-        game.core.log.file_write("Fail - You are most likely missing data files, please re-install.");
+        game.core.log.write("Fail - Texture manager draw image function called without image data.");
+        game.core.log.write("Fail - You are most likely missing data files, please re-install.");
         game.state = STATE_QUIT;
     }
 };

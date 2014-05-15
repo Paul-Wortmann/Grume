@@ -361,7 +361,7 @@ void map_2D_class::apply_tileset(fmx_map_type *fmx_map_pointer, int pre_defined_
             tile_set_name_exits                   = "data/tilesets/stairs.png";
         break;
         default:
-            game.core.log.file_write("Error applying tile-set -> %d",pre_defined_tileset_value);
+            game.core.log.write("Error applying tile-set -> %d",pre_defined_tileset_value);
         break;
 
     }
@@ -759,7 +759,7 @@ void map_2D_class::apply_tileset(fmx_map_type *fmx_map_pointer, int pre_defined_
                 else fmx_map_pointer->layer[LAYER_OBJECT].tile[tile_count].tile = (random_number - random_seed*3);
             break;
             default:
-                game.core.log.file_write("Unable to apply tile-set to unknown tile type -> %d\n",temp_tile_data[tile_count].tile);
+                game.core.log.write("Unable to apply tile-set to unknown tile type -> %d\n",temp_tile_data[tile_count].tile);
             break;
         }
     }

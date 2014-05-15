@@ -131,7 +131,7 @@ char* file_class::filetobuf (std::string file_name)
     file_pointer = fopen(file_name.c_str(), "rb");
     if (!file_pointer)
     {
-        game.core.log.file_write("Failed to load file into buffer -> ",file_name);
+        game.core.log.write("Failed to load file into buffer -> ",file_name);
         return NULL;
     }
     fseek(file_pointer, 0, SEEK_END);
@@ -151,22 +151,22 @@ void file_class::file_system_path(std::string file_name)
 
 void file_class::file_system_init(char** arg_data)
 {
-    game.core.log.file_write("Initializing Physics File System.");
+    game.core.log.write("Initializing Physics File System.");
     PHYSFS_init(arg_data[0]);
     PHYSFS_Version version_info;
     PHYSFS_getLinkedVersion(&version_info);
-    game.core.log.file_write("PhysFS Version -> ",version_info.major,".",version_info.minor,".",version_info.patch);
+    game.core.log.write("PhysFS Version -> ",version_info.major,".",version_info.minor,".",version_info.patch);
     int load_error = PHYSFS_addToSearchPath(file_class::file_name.c_str(), 1);
     if (load_error != 1)
     {
-        game.core.log.file_write("Fail -> Unable to load Frost and Flame data file: ",load_error);
+        game.core.log.write("Fail -> Unable to load Frost and Flame data file: ",load_error);
         game.state = STATE_QUIT;
     }
 }
 
 void file_class::file_system_deinit(void)
 {
-    game.core.log.file_write("Shutting down Physics File System.");
+    game.core.log.write("Shutting down Physics File System.");
     PHYSFS_deinit();
 }
 
@@ -192,19 +192,19 @@ SDL_Surface * file_class::load_image(std::string file_name)
             }
             else
             {
-                game.core.log.file_write("Fail -> PhysicsFS unable to allocate rwops pointer for file - ",file_name.c_str());
+                game.core.log.write("Fail -> PhysicsFS unable to allocate rwops pointer for file - ",file_name.c_str());
             }
             if (file_data) delete [] file_data;
             if (file_pointer) PHYSFS_close(file_pointer);
         }
         else
         {
-            game.core.log.file_write("Fail -> PhysicsFS unable to open file - ",file_name.c_str());
+            game.core.log.write("Fail -> PhysicsFS unable to open file - ",file_name.c_str());
         }
     }
     else
     {
-        game.core.log.file_write("Fail -> PhysicsFS unable to find file - ",file_name.c_str());
+        game.core.log.write("Fail -> PhysicsFS unable to find file - ",file_name.c_str());
     }
     if (!temp_serface) game.state = STATE_QUIT;
     return(temp_serface);
@@ -226,22 +226,22 @@ void file_class::load_font(font_type *font, int pt_size)
             if (font->rwops_pointer != NULL)
             {
                 font->font_data = TTF_OpenFontRW(font->rwops_pointer, false,pt_size);
-                if (!font->font_data) game.core.log.file_write("Fail -> TTF_OpenFontRW: ",TTF_GetError());
+                if (!font->font_data) game.core.log.write("Fail -> TTF_OpenFontRW: ",TTF_GetError());
             }
             else
             {
-                game.core.log.file_write("Fail -> PhysicsFS unable to allocate rwops pointer for file - ",font->path.c_str());
+                game.core.log.write("Fail -> PhysicsFS unable to allocate rwops pointer for file - ",font->path.c_str());
             }
             if (file_pointer) PHYSFS_close(file_pointer);
         }
         else
         {
-            game.core.log.file_write("Fail -> PhysicsFS unable to open file - ",font->path.c_str());
+            game.core.log.write("Fail -> PhysicsFS unable to open file - ",font->path.c_str());
         }
     }
     else
     {
-        game.core.log.file_write("Fail -> PhysicsFS unable to find file - ",font->path.c_str());
+        game.core.log.write("Fail -> PhysicsFS unable to find file - ",font->path.c_str());
     }
     if (!font->font_data) game.state = STATE_QUIT;
 }
@@ -268,19 +268,19 @@ Mix_Music *file_class::load_music(std::string file_name)
             }
             else
             {
-                game.core.log.file_write("Fail -> PhysicsFS unable to allocate rwops pointer for file - ",file_name.c_str());
+                game.core.log.write("Fail -> PhysicsFS unable to allocate rwops pointer for file - ",file_name.c_str());
             }
             if (file_data) delete [] file_data;
             if (file_pointer) PHYSFS_close(file_pointer);
         }
         else
         {
-            game.core.log.file_write("Fail -> PhysicsFS unable to open file - ",file_name.c_str());
+            game.core.log.write("Fail -> PhysicsFS unable to open file - ",file_name.c_str());
         }
     }
     else
     {
-        game.core.log.file_write("Fail -> PhysicsFS unable to find file - ",file_name.c_str());
+        game.core.log.write("Fail -> PhysicsFS unable to find file - ",file_name.c_str());
     }
     if (!temp_music) game.state = STATE_QUIT;
     return(temp_music);
@@ -308,19 +308,19 @@ Mix_Chunk *file_class::load_sound(std::string file_name)
             }
             else
             {
-                game.core.log.file_write("Fail -> PhysicsFS unable to allocate rwops pointer for file - ",file_name.c_str());
+                game.core.log.write("Fail -> PhysicsFS unable to allocate rwops pointer for file - ",file_name.c_str());
             }
             if (file_data) delete [] file_data;
             if (file_pointer) PHYSFS_close(file_pointer);
         }
         else
         {
-            game.core.log.file_write("Fail -> PhysicsFS unable to open file - ",file_name.c_str());
+            game.core.log.write("Fail -> PhysicsFS unable to open file - ",file_name.c_str());
         }
     }
     else
     {
-        game.core.log.file_write("Fail -> PhysicsFS unable to find file - ",file_name.c_str());
+        game.core.log.write("Fail -> PhysicsFS unable to find file - ",file_name.c_str());
     }
     if (!temp_sound) game.state = STATE_QUIT;
     return(temp_sound);
@@ -342,24 +342,38 @@ char *file_class::load_file_to_buffer (std::string file_name)
             temp_buffer[file_size] = 0; // added for GL shader loading
             if (file_size != length_read)
             {
-                game.core.log.file_write("Fail -> PhysicsFS ERROR loading file into buffer - ",file_name.c_str());
-                game.core.log.file_write("   File size - ", (int)file_size, " data length read into buffer - ", length_read);
+                game.core.log.write("Fail -> PhysicsFS ERROR loading file into buffer - ",file_name.c_str());
+                game.core.log.write("   File size - ", (int)file_size, " data length read into buffer - ", length_read);
             }
             if (file_pointer) PHYSFS_close(file_pointer);
         }
         else
         {
-            game.core.log.file_write("Fail -> PhysicsFS unable to open file - ",file_name.c_str());
+            game.core.log.write("Fail -> PhysicsFS unable to open file - ",file_name.c_str());
         }
     }
     else
     {
-        game.core.log.file_write("Fail -> PhysicsFS unable to find file - ",file_name.c_str());
+        game.core.log.write("Fail -> PhysicsFS unable to find file - ",file_name.c_str());
     }
     if (temp_buffer == NULL)
     {
-        game.core.log.file_write("Fail -> PhysicsFS unable to load file into buffer - ",file_name.c_str());
+        game.core.log.write("Fail -> PhysicsFS unable to load file into buffer - ",file_name.c_str());
         game.state = STATE_QUIT;
     }
     return(temp_buffer);
+}
+
+std::string file_class::get_time_string(void)
+{
+    time_t rawtime;
+    rawtime = time(&rawtime);
+    char buffer [80];
+    #ifdef __MINGW32__
+        strftime (buffer,80,"%Y-%m-%d - %H:%M:%S - %Z",localtime(&rawtime));
+    #else
+        struct tm newtime;
+        strftime (buffer,80,"%Y-%m-%d - %H:%M:%S - %Z",localtime_r(&rawtime, &newtime));
+    #endif
+    return(buffer);
 }

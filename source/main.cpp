@@ -52,34 +52,34 @@ extern "C" int main(int argc, char** argv)
     game.state = STATE_INIT;
     game.core.application_name = "Frost and Flame V0.31b - www.physhexgames.co.nr";
     game.core.application_icon = "data/icon.ico";
-    game.core.log.file_set("frost_and_flame.log");
-    game.core.log.file_clear();
-    game.core.log.file_write("# ",game.core.application_name," #");
-    game.core.log.file_write("# ---------------------------------------------- #");
-    game.core.log.file_write(" ");
-    game.core.log.file_write_time_stamp("Log file created: ");
-    game.core.log.file_write("Initializing SDL...");
+    game.core.log.set_file_name("frost_and_flame.log");
+    game.core.log.clear_file();
+    game.core.log.write("# ",game.core.application_name," #");
+    game.core.log.write("# ---------------------------------------------- #");
+    game.core.log.write(" ");
+    game.core.log.write_time_stamp("Log file created: ");
+    game.core.log.write("Initializing SDL...");
     int SDL_error = SDL_Init(SDL_INIT_EVERYTHING);
-    if (SDL_error != 0) game.core.log.file_write("SDL initialization error: ",SDL_error);
+    if (SDL_error != 0) game.core.log.write("SDL initialization error: ",SDL_error);
     game.core.config.get_system_information();
     game.core.config.log_system_information();
     game.core.file.file_system_path("frost_and_flame.dat");
     game.core.file.file_system_init(argv);
     if (game.state == STATE_INIT)
     {
-        game.core.log.file_write("Loading configuration...");
+        game.core.log.write("Loading configuration...");
         game.core.config.set_defaults();
         game.core.config.file_set("frost_and_flame.cfg");
         game.core.config.file_load();
-        game.core.log.file_write("Processing command line switches...");
+        game.core.log.write("Processing command line switches...");
         game.command_line.process(argc,argv);
-        if (game.core.debug) game.core.log.file_write("Developer mode enabled.");
+        if (game.core.debug) game.core.log.write("Developer mode enabled.");
         game.language.load(game.core.config.language);
     }
 //  --- graphics ---
     if (game.state == STATE_INIT)
     {
-        game.core.log.file_write("Starting graphics subsystem...");
+        game.core.log.write("Starting graphics subsystem...");
         game.core.graphics.renderer = RENDERER_GL1;
         game.core.graphics.init();
         game.core.graphics.build_mode_list();
@@ -92,7 +92,7 @@ extern "C" int main(int argc, char** argv)
 //  --- audio ---
     if (game.state == STATE_INIT)
     {
-        game.core.log.file_write("Starting sound system...");
+        game.core.log.write("Starting sound system...");
         SDL_Init(SDL_INIT_AUDIO);
         Mix_AllocateChannels(game.core.config.audio_channels);
         Mix_OpenAudio(game.core.config.audio_rate, AUDIO_S16, 2, game.core.config.audio_buffers);
@@ -102,7 +102,7 @@ extern "C" int main(int argc, char** argv)
 //  --- joysticks ---
     if (game.state == STATE_INIT)
     {
-        game.core.log.file_write("Initializing joystick system...");
+        game.core.log.write("Initializing joystick system...");
         SDL_Init(SDL_INIT_JOYSTICK);
         SDL_Init(SDL_INIT_HAPTIC);
         SDL_Init(SDL_INIT_GAMECONTROLLER);
@@ -116,27 +116,27 @@ extern "C" int main(int argc, char** argv)
     if (game.state == STATE_INIT)
     {
         game.loading_screen.display("data/loading_screen.png");
-        game.core.log.file_write("Loading resources....");
+        game.core.log.write("Loading resources....");
     }
 //  --- miscellaneous ---
     if (game.state == STATE_INIT)
     {
-        game.core.log.file_write("Seeding random...");
+        game.core.log.write("Seeding random...");
         seed_rand();
-        game.core.log.file_write("Initializing UI system...");
+        game.core.log.write("Initializing UI system...");
         game.UI_manager.setup();
         game.UI_manager.data.cursor.normal_arrow = game.texture_manager.add_texture("data/textures/UI/cursors/default.png");
     }
     if (game.state == STATE_INIT)
     {
         game.music_manager.current = game.music_manager.add_music("data/music/menu_00.s3m");
-        game.core.log.file_write("Initializing game system...");
+        game.core.log.write("Initializing game system...");
         game.init();
-        game.core.log.file_write("Initializing event handlers...");
+        game.core.log.write("Initializing event handlers...");
         events_init();
-        game.core.log.file_write("Starting Game...");
-        game.core.log.file_write("# ---------------------------------------------- #");
-        game.core.log.file_write(" ");
+        game.core.log.write("Starting Game...");
+        game.core.log.write("# ---------------------------------------------- #");
+        game.core.log.write(" ");
         SDL_Init(SDL_INIT_TIMER);
         game.core.timer.start();
         game.core.last_ticks = game.core.timer.getticks();
@@ -203,11 +203,11 @@ extern "C" int main(int argc, char** argv)
                 game.state = STATE_QUIT;
             break;
             case STATE_INIT:
-                game.core.log.file_write("Game out of state - STATE_INIT, setting to STATE_MENU");
+                game.core.log.write("Game out of state - STATE_INIT, setting to STATE_MENU");
                 game.state = STATE_MENU;
             break;
             default:
-                game.core.log.file_write("Game out of state - terminating");
+                game.core.log.write("Game out of state - terminating");
                 game.state = STATE_QUIT;
             break;
         }
@@ -223,26 +223,26 @@ extern "C" int main(int argc, char** argv)
 // --------------------------------------------------------------------------------------------------------------------------
 // | Application terminated, cleanup and free resources etc...
 // --------------------------------------------------------------------------------------------------------------------------
-    game.core.log.file_write(" ");
-    if (game.core.debug) game.core.log.file_write("# ---------------------------------------------- #");
-    if (game.core.debug) game.core.log.file_write("Font    count -> ", game.font_manager.number_of_fonts);
-    if (game.core.debug) game.core.log.file_write("Music   count -> ", game.music_manager.number_of_music);
-    if (game.core.debug) game.core.log.file_write("Sound   count -> ", game.sound_manager.number_of_sounds);
-    if (game.core.debug) game.core.log.file_write("Texture count -> ", game.texture_manager.number_of_textures);
-    if (game.core.debug) game.core.log.file_write("Item    count -> ", game.item_manager.number_of_items);
-    if (game.core.debug) game.core.log.file_write("Effect  count -> ", game.effect_manager.number_of_effects);
-    game.core.log.file_write("# ---------------------------------------------- #");
+    game.core.log.write(" ");
+    if (game.core.debug) game.core.log.write("# ---------------------------------------------- #");
+    if (game.core.debug) game.core.log.write("Font    count -> ", game.font_manager.number_of_fonts);
+    if (game.core.debug) game.core.log.write("Music   count -> ", game.music_manager.number_of_music);
+    if (game.core.debug) game.core.log.write("Sound   count -> ", game.sound_manager.number_of_sounds);
+    if (game.core.debug) game.core.log.write("Texture count -> ", game.texture_manager.number_of_textures);
+    if (game.core.debug) game.core.log.write("Item    count -> ", game.item_manager.number_of_items);
+    if (game.core.debug) game.core.log.write("Effect  count -> ", game.effect_manager.number_of_effects);
+    game.core.log.write("# ---------------------------------------------- #");
     //if (game.core.debug) game.UI_manager.UI_form_position_log();
-    //game.core.log.file_write("# ---------------------------------------------- #");
-    game.core.log.file_write("Saving configuration...");
+    //game.core.log.write("# ---------------------------------------------- #");
+    game.core.log.write("Saving configuration...");
     game.core.config.file_clear();
     game.core.config.file_save();
-    game.core.log.file_write("Shutting down...");
+    game.core.log.write("Shutting down...");
     game.core.graphics.deinit();
     game.font_manager.deinit();
     game.core.file.file_system_deinit();
     SDL_Quit();
-    game.core.log.file_write_time_stamp("Game exited at: ");
+    game.core.log.write_time_stamp("Game exited at: ");
     return(0);
 };
 

@@ -314,7 +314,7 @@ void map_3D_class::mesh_height_generate_heightmap(std::string file_name)
             if (temp_surface) SDL_FreeSurface(temp_surface);
         }
     }
-    else game.core.log.file_write("Failed to load height map file -> ",file_name.c_str());
+    else game.core.log.write("Failed to load height map file -> ",file_name.c_str());
     map_3D_class::mesh_height_smooth();
 };
 

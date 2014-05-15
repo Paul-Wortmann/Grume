@@ -88,7 +88,7 @@ bool object_manager_class::load_object(object_type *object)
     bool return_value = false;
     //object->object_data = Mix_LoadMUS(object->path.c_str());
     if (object->object_data != NULL) return_value = true;
-    else game.core.log.file_write("Failed to load object ->",object->path.c_str());
+    else game.core.log.write("Failed to load object ->",object->path.c_str());
     return (return_value);
 };
 

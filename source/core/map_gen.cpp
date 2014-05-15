@@ -676,7 +676,7 @@ void map_gen_check_tiles (fmx_map_type *fmx_map_pointer)
 
 void map_gen_room_add_exits (fmx_map_type *fmx_map_pointer)
 {
-game.core.log.file_write("-> map_gen_room_add_exits() called ");
+game.core.log.write("-> map_gen_room_add_exits() called ");
 
     int room_e        = 0;
     int room_s        = 1;
