@@ -6,7 +6,7 @@
 		<Option compiler="gcc" />
 		<Build>
 			<Target title="Windows">
-				<Option platforms="Windows;" />
+				<Option platforms="Windows;Unix;" />
 				<Option output="frost_and_flame" prefix_auto="1" extension_auto="1" />
 				<Option type="0" />
 				<Option compiler="gcc" />
@@ -18,6 +18,9 @@
 				<Linker>
 					<Add option="-static-libstdc++" />
 					<Add option="-static-libgcc" />
+					<Add library="mingw32" />
+					<Add library="opengl32" />
+					<Add library="glew32" />
 					<Add library="SDL2main" />
 					<Add library="SDL2" />
 					<Add library="SDL2_mixer" />
@@ -26,9 +29,6 @@
 					<Add library="SDL2_net" />
 					<Add library="SDL2_ttf" />
 					<Add library="physfs" />
-					<Add library="GL" />
-					<Add library="libGL" />
-					<Add library="libGLEW" />
 					<Add directory="C:/MinGW/lib" />
 					<Add directory="/usr/lib" />
 				</Linker>
@@ -64,7 +64,7 @@
 				</Linker>
 			</Target>
 			<Target title="Debug_Win">
-				<Option platforms="Windows;" />
+				<Option platforms="Windows;Unix;" />
 				<Option output="frost_and_flame" prefix_auto="1" extension_auto="1" />
 				<Option type="0" />
 				<Option compiler="gcc" />

@@ -22,7 +22,6 @@
  * @date 2011-11-11
  */
 
-#include <string>
 #include "core.hpp"
 #include "file.hpp"
 #include "../game/game.hpp"
@@ -30,7 +29,9 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 #include <SDL2/SDL_ttf.h>
-#include <string>
+#include <ctime>
+#include <fstream>
+#include <iostream>
 #include <physfs.h>
 
 extern game_class game;
