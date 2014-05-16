@@ -33,7 +33,7 @@ class file_class
     public:
          file_class(void);
         ~file_class(void);
-        std::string  file_name;
+        std::string  file_path;
         bool         extension_exist    (std::string file_name);
         bool         extension_exist    (std::string file_name, std::string file_extension);
         std::string  extension_add      (std::string file_name, std::string file_extension);
