@@ -23,7 +23,9 @@
  */
 
 #include "physics.hpp"
+#include "math.hpp"
 #include <math.h>
+
 /*
 body_2D_class::body_2D_class         (void)
 {

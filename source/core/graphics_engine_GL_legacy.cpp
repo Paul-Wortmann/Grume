@@ -56,8 +56,10 @@ bool GL_legacy_init(void)
         game.core.log.write("SDL linked version -> ",linked.major,".",linked.minor,".",linked.patch);
         char SDL_VID_WIN_POS[] = "SDL_VIDEO_WINDOW_POS";
         char SDL_VID_CENTERD[] = "SDL_VIDEO_CENTERED=1";
-        //putenv(SDL_VID_WIN_POS);
-        //putenv(SDL_VID_CENTERD);
+        #ifndef WIN32
+            putenv(SDL_VID_WIN_POS);
+            putenv(SDL_VID_CENTERD);
+        #endif
         //game.core.config.display_info = SDL_GetVideoInfo( );
         //if(!game.core.config.display_info)
         //{

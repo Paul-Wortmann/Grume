@@ -23,6 +23,7 @@
  */
 
 #include "vector.hpp"
+#include "math.hpp"
 
 float vector_2f_class::angle(void) // radians
 {

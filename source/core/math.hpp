@@ -22,6 +22,10 @@
  * @date 2011-11-11
  */
 
+#ifndef M_PI
+    #define M_PI 3.14159265359
+#endif // M_PI
+
 #ifndef MATH_H
 #define MATH_H
 
