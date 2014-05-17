@@ -44,7 +44,6 @@ struct map_info_type
     float              version_required;
     std::string        name;
     std::string        environment_name;
-    int                environment_ID;
     i2_type            size;
     int                number_of_tiles;
     float              tile_size;
@@ -61,7 +60,7 @@ struct map_type
 
 void map_load(map_type *map_pointer, std::string file_name);
 void map_save(map_type *map_pointer, std::string file_name);
-void map_generate_tile_positions(map_type* map_pointer);
+void map_generate_tile_positions(map_type *map_pointer);
 void map_render(map_type *map_pointer);
 
 #endif //LOADER_MAP_H

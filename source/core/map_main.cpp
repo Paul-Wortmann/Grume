@@ -40,7 +40,6 @@ void map_load(map_type* map_pointer, std::string file_name)
 {
     game.core.log.write("Loading map file (new xml 3D) -> ",file_name);
 
-    map_pointer->info.environment_ID   = 0;
     map_pointer->info.environment_name = "not set";
     map_pointer->info.name             = "not set";
     map_pointer->info.number_of_tiles  = 0;
@@ -128,7 +127,7 @@ void map_load(map_type* map_pointer, std::string file_name)
                         if (temp_string_key == "game_version") map_pointer->info.version_required = temp_float_data;
                         if (temp_string_key == "name")         map_pointer->info.name             = temp_string_data;
                         if (temp_string_key == "environment")  map_pointer->info.environment_name = temp_string_data;
-                        if (temp_string_key == "environment")  game.map_environment_manager.add_map_environment(map_pointer->info.environment_name.c_str());
+                        if (temp_string_key == "environment")  map_pointer->environment           = game.map_environment_manager.add_map_environment(map_pointer->info.environment_name.c_str());
                         if (temp_string_key == "size_x")       map_pointer->info.size.x           = temp_int_data;
                         if (temp_string_key == "size_y")       map_pointer->info.size.y           = temp_int_data;
                         if (temp_string_key == "size_y")

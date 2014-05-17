@@ -31,9 +31,9 @@
 
 struct map_environment_type
 {
-    bool             loaded;
-    std::string      path;
-    map_environment_type      *next;
+    bool                  loaded;
+    std::string           path;
+    map_environment_type *next;
 };
 
 class map_environment_manager_class
@@ -41,7 +41,7 @@ class map_environment_manager_class
     public:
         map_environment_manager_class(void);
        ~map_environment_manager_class(void);
-        int                     number_of_map_environment;
+        int                     number_of_map_environments;
         map_environment_type   *root;
         map_environment_type   *last;
         map_environment_type   *current;
