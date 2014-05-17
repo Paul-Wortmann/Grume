@@ -23,7 +23,7 @@
  */
 
 #include "../core/map_2D.hpp"
-#include "../core/loader_map.hpp"
+#include "../core/map_main.hpp"
 #include "../core/misc.hpp"
 #include "game.hpp"
 

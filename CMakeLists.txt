@@ -132,13 +132,14 @@ Set (FROST_AND_FLAME_SOURCES
 	./source/core/io.cpp
 	./source/core/item_manager.cpp
 	./source/core/loader_fmx.cpp
-	./source/core/loader_map.cpp
 	./source/core/loader_md2.cpp
 	./source/core/loader_obj.cpp
 	./source/core/loader_tmx.cpp
 	./source/core/log.cpp
 	./source/core/map_2D.cpp
 	./source/core/map_3D.cpp
+	./source/core/map_main.cpp
+	./source/core/map_environment_manager.cpp
 	./source/core/map_gen.cpp
 	./source/core/map_gen_BSP.cpp
 	./source/core/map_gen_CA.cpp

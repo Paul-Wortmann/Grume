@@ -3,7 +3,7 @@
    <version>1.0</version>
    <game_version>0.31</game_version>
    <name>Dungeon 1</name>
-   <environment>dungeon</environment>
+   <environment>data/environments/dungeon.xml</environment>
    <size_x>4</size_x>
    <size_y>4</size_y>
    <tile_layer>

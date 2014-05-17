@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<environment>
+  <version>1.0</version>
+  <name>dungeon</name>
+  <loading_textures>
+    <file>data/textures/loading_screens/dungeon_00.png</file>
+  </loading_textures>
+ <music>
+    <file>data/music/dungeon_00.wav</file>
+  </music>
+ <floor_textures>
+    <file>data/textures/dungeon/floor/dungeon_floor_d_00.png</file>
+  </floor_textures>
+  <wall_textures>
+  </wall_textures>
+  <wall_models>
+  </wall_models>
+  <debris_models>
+  </debris_models>
+</environment>

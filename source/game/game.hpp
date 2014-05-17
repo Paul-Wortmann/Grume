@@ -32,7 +32,7 @@
 #include "../core/item_manager.hpp"
 #include "../core/map_2D.hpp"
 #include "../core/map_3D.hpp"
-#include "../core/loader_map.hpp"
+#include "../core/map_main.hpp"
 #include "../core/music_manager.hpp"
 #include "../core/network.hpp"
 #include "../core/object_manager.hpp"
