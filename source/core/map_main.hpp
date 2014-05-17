@@ -25,6 +25,7 @@
 #ifndef LOADER_MAP_H
 #define LOADER_MAP_H
 
+#include "map_environment_manager.hpp"
 #include "types.hpp"
 
 #define DEFAULT_TILE_SIZE 0.05f
@@ -53,14 +54,15 @@ struct map_info_type
 
 struct map_type
 {
-    map_info_type     info;
-    map_tile_type*    tile;
+    map_environment_type *environment;
+    map_info_type         info;
+    map_tile_type        *tile;
 };
 
-void map_load(map_type* map_pointer, std::string file_name);
-void map_save(map_type* map_pointer, std::string file_name);
+void map_load(map_type *map_pointer, std::string file_name);
+void map_save(map_type *map_pointer, std::string file_name);
 void map_generate_tile_positions(map_type* map_pointer);
-void map_render(map_type* map_pointer);
+void map_render(map_type *map_pointer);
 
 #endif //LOADER_MAP_H
 

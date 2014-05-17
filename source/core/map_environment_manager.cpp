@@ -29,9 +29,9 @@ extern game_class game;
 
 map_environment_manager_class::map_environment_manager_class(void)
 {
-    map_environment_manager_class::root            = NULL;
-    map_environment_manager_class::last            = NULL;
-    map_environment_manager_class::current         = NULL;
+    map_environment_manager_class::root                      = NULL;
+    map_environment_manager_class::last                      = NULL;
+    map_environment_manager_class::current                   = NULL;
     map_environment_manager_class::number_of_map_environment = 0;
 };
 
@@ -67,7 +67,7 @@ map_environment_type *map_environment_manager_class::add_map_environment(std::st
         map_environment_manager_class::last->next = NULL;
     }
     map_environment_manager_class::last->path = file_name.c_str();
-//    map_environment_manager_class::last->loaded = map_environment_manager_class::load_map_environment(last);
+    map_environment_manager_class::last->loaded = map_environment_manager_class::load_map_environment(last);
     if (map_environment_manager_class::last->loaded) map_environment_manager_class::number_of_map_environment++;
     return(map_environment_manager_class::last);
 };

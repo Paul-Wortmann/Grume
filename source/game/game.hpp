@@ -32,6 +32,7 @@
 #include "../core/item_manager.hpp"
 #include "../core/map_2D.hpp"
 #include "../core/map_3D.hpp"
+#include "../core/map_environment_manager.hpp"
 #include "../core/map_main.hpp"
 #include "../core/music_manager.hpp"
 #include "../core/network.hpp"
@@ -72,48 +73,49 @@ class game_class
 {
     private:
     public:
-        command_line_parser_class   command_line;
-        core_struct                 core;
-        effect_class                effect;
-        effect_manager_class        effect_manager;
-        int                         event;
-        font_manager_class          font_manager;
-        light_type                  global_ambient;
-        item_class                  item;
-        item_manager_class          item_manager;
-        language_class              language;
+        command_line_parser_class     command_line;
+        core_struct                   core;
+        effect_class                  effect;
+        effect_manager_class          effect_manager;
+        int                           event;
+        font_manager_class            font_manager;
+        light_type                    global_ambient;
+        item_class                    item;
+        item_manager_class            item_manager;
+        language_class                language;
 
-        map_2D_class                map_2D;
-        map_3D_class                map_3D;
+        map_2D_class                  map_2D;
+        map_3D_class                  map_3D;
 
-        map_type                   *map_3d_pointer;
+        map_type                     *map_3d_pointer;
+        map_environment_manager_class map_environment_manager;
 
-        music_manager_class         music_manager;
-        network_manager_class       network_manager;
-        npc_class                   npc;
-        object_manager_class        object_manager;
-        player_class                player;
-        rumble_type                 rumble;
-        save_game_class             save_01;
-        save_game_class             save_02;
-        save_game_class             save_03;
-        save_game_class             save_04;
-        save_game_class             save_05;
-        save_game_class             save_06;
-        save_game_class             save_07;
-        spell_class                 spell;
-        int                         state;
-        sound_manager_class         sound_manager;
-        spell_manager_class         spell_manager;
-        texture_manager_class       texture_manager;
-        UI_loading_screen_class     loading_screen;
-        UI_manager_class            UI_manager;
-        light_type                  world_ambient;
-        zoom_type                   zoom;
+        music_manager_class           music_manager;
+        network_manager_class         network_manager;
+        npc_class                     npc;
+        object_manager_class          object_manager;
+        player_class                  player;
+        rumble_type                   rumble;
+        save_game_class               save_01;
+        save_game_class               save_02;
+        save_game_class               save_03;
+        save_game_class               save_04;
+        save_game_class               save_05;
+        save_game_class               save_06;
+        save_game_class               save_07;
+        spell_class                   spell;
+        int                           state;
+        sound_manager_class           sound_manager;
+        spell_manager_class           spell_manager;
+        texture_manager_class         texture_manager;
+        UI_loading_screen_class       loading_screen;
+        UI_manager_class              UI_manager;
+        light_type                    world_ambient;
+        zoom_type                     zoom;
         game_class(void);
-        void                        init(void);
-        void                        process(void);
-        void                        render(void);
+        void                          init(void);
+        void                          process(void);
+        void                          render(void);
 };
 
 #endif //GAME_H
