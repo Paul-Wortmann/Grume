@@ -92,7 +92,7 @@ struct room_data_type
     i2_type    position;
 };
 
-struct map_type
+struct map_gen_type
 {
     int            number_of_tiles;
     i2_type        size;
@@ -103,7 +103,7 @@ struct map_node_type
 {
     bool           leaf;
     room_data_type room;
-    map_type       data;
+    map_gen_type   data;
     map_node_type *left;
     map_node_type *right;
 };

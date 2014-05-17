@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<map>
+   <version>1.0</version>
+   <game_version>0.31</game_version>
+   <name>Dungeon 1</name>
+   <environment>dungeon</environment>
+   <size_x>4</size_x>
+   <size_y>4</size_y>
+   <tile_layer>
+    <id>1</id>
+    <id>1</id>
+    <id>1</id>
+    <id>-1</id>
+   </tile_layer>
+   <object_layer>
+    <id>0</id>
+    <id>0</id>
+    <id>0</id>
+    <id>0</id>
+   </object_layer>
+</map>

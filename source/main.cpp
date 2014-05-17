@@ -115,7 +115,7 @@ extern "C" int main(int argc, char** argv)
 //  --- resources ---
     if (game.state == STATE_INIT)
     {
-        game.loading_screen.display("data/loading_screen.png");
+        game.loading_screen.display("data/textures/loading_screens/loading_screen_main.png");
         game.core.log.write("Loading resources....");
     }
 //  --- miscellaneous ---

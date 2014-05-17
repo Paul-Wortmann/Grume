@@ -23,6 +23,7 @@
  */
 
 #include "../core/map_2D.hpp"
+#include "../core/loader_map.hpp"
 #include "../core/misc.hpp"
 #include "game.hpp"
 
@@ -72,7 +73,7 @@ game_class::game_class(void)
 
 void game_class::init(void)
 {
-    game.loading_screen.display("data/loading_screen.png");
+    game.loading_screen.display("data/textures/loading_screens/loading_screen_main.png");
     setup_action_bar(UID_ACTIONBAR);
     setup_character_window(UID_CHARACTER);
     setup_equipment_window(UID_EQUIPMENT);
@@ -149,6 +150,8 @@ void game_class::init(void)
     game.map_2D.center_on_tile(&fmx_map,(fmx_map.data.number_of_tiles/2)+(fmx_map.data.map_width/2));
 
     //game.map_3D.mesh_cell_positions_generate();
+    map_type *map_3d = new map_type;
+    map_load(map_3d,"data/maps/dungeon_00.xml");
 
     // Add default items to the inventory
     UI_form_struct* UI_form_pointer   = NULL;
@@ -654,49 +657,49 @@ void game_class::process(void)
 ///------------------------------------------------------------------------------------------
         if (game.core.io.key_a) // generate a random BSP dungeon
         {
-            game.loading_screen.display("data/loading_screen.png");
+            game.loading_screen.display("data/textures/loading_screens/loading_screen_main.png");
             map_gen(&fmx_map,MAP_GEN_BSP,MAP_TILESET_DUNGEON);
             game.core.io.key_a                     = false;
             game.core.io.keyboard_delay_count      = 0;
         }
         if (game.core.io.key_s) // generate a random BSP dungeon
         {
-            game.loading_screen.display("data/loading_screen.png");
+            game.loading_screen.display("data/textures/loading_screens/loading_screen_main.png");
             map_gen(&fmx_map,MAP_GEN_BSP,MAP_TILESET_CAVE);
             game.core.io.key_s                     = false;
             game.core.io.keyboard_delay_count      = 0;
         }
         if (game.core.io.key_d) // generate a random CA cave
         {
-            game.loading_screen.display("data/loading_screen.png");
+            game.loading_screen.display("data/textures/loading_screens/loading_screen_main.png");
             map_gen(&fmx_map,MAP_GEN_CA,MAP_TILESET_CAVE);
             game.core.io.key_d                     = false;
             game.core.io.keyboard_delay_count      = 0;
         }
         if (game.core.io.key_f) // generate a random CA grassland
         {
-            game.loading_screen.display("data/loading_screen.png");
+            game.loading_screen.display("data/textures/loading_screens/loading_screen_main.png");
             map_gen(&fmx_map,MAP_GEN_CA,MAP_TILESET_GRASSLAND);
             game.core.io.key_f                     = false;
             game.core.io.keyboard_delay_count      = 0;
         }
         if (game.core.io.key_g) // generate a random CA dungeon
         {
-            game.loading_screen.display("data/loading_screen.png");
+            game.loading_screen.display("data/textures/loading_screens/loading_screen_main.png");
             map_gen(&fmx_map,MAP_GEN_CA,MAP_TILESET_DUNGEON);
             game.core.io.key_g                     = false;
             game.core.io.keyboard_delay_count      = 0;
         }
         if (game.core.io.key_h) // generate a random RC dungeon
         {
-            game.loading_screen.display("data/loading_screen.png");
+            game.loading_screen.display("data/textures/loading_screens/loading_screen_main.png");
             map_gen(&fmx_map,MAP_GEN_RC,MAP_TILESET_DUNGEON);
             game.core.io.key_h                     = false;
             game.core.io.keyboard_delay_count      = 0;
         }
         if (game.core.io.key_j) // generate a random M1 dungeon
         {
-            game.loading_screen.display("data/loading_screen.png");
+            game.loading_screen.display("data/textures/loading_screens/loading_screen_main.png");
             map_gen(&fmx_map,MAP_GEN_M1,MAP_TILESET_CAVE);
             game.core.io.key_h                     = false;
             game.core.io.keyboard_delay_count      = 0;
