@@ -44,10 +44,6 @@ void map_load(map_type* map_pointer, std::string file_name)
     map_pointer->info.environment_name = "not set";
     map_pointer->info.name             = "not set";
     map_pointer->info.number_of_tiles  = 0;
-    map_pointer->info.render_surfaces  = false;
-    map_pointer->info.render_textured  = false;
-    map_pointer->info.render_water     = false;
-    map_pointer->info.render_wireframe = true;
     map_pointer->info.rotation.x       = -45.0f;
     map_pointer->info.rotation.y       = 0.0f;
     map_pointer->info.rotation.z       = 0.0f;
@@ -214,7 +210,28 @@ void map_generate_tile_positions(map_type* map_pointer)
 
 void map_render(map_type* map_pointer)
 {
-
+    glPushMatrix();
+    glEnable(GL_TEXTURE_2D);
+    glEnable(GL_DEPTH_TEST);
+    glDepthRange(-2.0f,2.0f);
+    glRotatef (map_pointer->info.rotation.x, 1.0f, 0.0f, 0.0f);
+    glRotatef (map_pointer->info.rotation.y, 0.0f, 1.0f, 0.0f);
+    glRotatef (map_pointer->info.rotation.z, 0.0f, 0.0f, 1.0f);
+	glTranslatef(map_pointer->info.position.x,map_pointer->info.position.y,map_pointer->info.position.z);
+    //if (map_pointer->info.cell_visable(tile_count))
+    {
+        glMatrixMode(GL_MODELVIEW_MATRIX);
+            glBindTexture(GL_TEXTURE_2D, game.texture_manager.root->data.frame[0].data);
+        for (int tile_count = 0; tile_count < map_pointer->info.number_of_tiles; tile_count++)
+        {
+            glBegin (GL_QUADS);
+                glTexCoord2i( 0, 1);glVertex3f(map_pointer->tile[tile_count].vertex[0].x,map_pointer->tile[tile_count].vertex[0].y,map_pointer->tile[tile_count].vertex[0].z);
+                glTexCoord2i( 0, 0);glVertex3f(map_pointer->tile[tile_count].vertex[1].x,map_pointer->tile[tile_count].vertex[1].y,map_pointer->tile[tile_count].vertex[1].z);
+                glTexCoord2i( 1, 0);glVertex3f(map_pointer->tile[tile_count].vertex[2].x,map_pointer->tile[tile_count].vertex[2].y,map_pointer->tile[tile_count].vertex[2].z);
+                glTexCoord2i( 1, 1);glVertex3f(map_pointer->tile[tile_count].vertex[3].x,map_pointer->tile[tile_count].vertex[3].y,map_pointer->tile[tile_count].vertex[3].z);
+            glEnd ();
+        }
+    }
+    glDisable(GL_DEPTH_TEST);
+    glPopMatrix();
 }
-
-

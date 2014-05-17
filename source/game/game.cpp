@@ -710,25 +710,9 @@ void game_class::process(void)
 
 void game_class::render(void)
 {
-    /*
-    if (game.world_ambient.increase) // day / night lighting
-    {
-        game.world_ambient.intensity_R += game.world_ambient.speed;
-        game.world_ambient.intensity_G += game.world_ambient.speed;
-        game.world_ambient.intensity_B += game.world_ambient.speed;
-        if (game.world_ambient.intensity_R > game.global_ambient.intensity_R) game.world_ambient.increase = false;
-    }
-    if (!game.world_ambient.increase)
-    {
-        game.world_ambient.intensity_R -= game.world_ambient.speed;
-        game.world_ambient.intensity_G -= game.world_ambient.speed;
-        game.world_ambient.intensity_B -= game.world_ambient.speed;
-        if (game.world_ambient.intensity_R < -0.5f) game.world_ambient.increase = true;
-    }
-    */
     float  global_ambient_light[] = {game.global_ambient.intensity_R,game.global_ambient.intensity_G,game.global_ambient.intensity_B,game.global_ambient.intensity_A};
     float  world_ambient_light[]  = {game.world_ambient.intensity_R,game.world_ambient.intensity_G,game.world_ambient.intensity_B,game.world_ambient.intensity_A};
-    glLightModelfv(GL_LIGHT_MODEL_AMBIENT,world_ambient_light);
+//    glLightModelfv(GL_LIGHT_MODEL_AMBIENT,world_ambient_light);
 
     //game.map_2D.render(&fmx_map);
     //game.map_3D.draw();

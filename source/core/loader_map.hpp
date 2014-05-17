@@ -49,10 +49,6 @@ struct map_info_type
     float              tile_size;
     f3_type            position;
     f3_type            rotation;
-    bool               render_textured;
-    bool               render_surfaces;
-    bool               render_wireframe;
-    bool               render_water;
 };
 
 struct map_type
