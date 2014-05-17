@@ -27,11 +27,14 @@
 
 #include "types.hpp"
 
+#define DEFAULT_TILE_SIZE 0.05f
+
 struct map_tile_type
 {
     int           texture;
     int           object;
-    f2_type       position;
+    f3_type       position;
+    f3_type       vertex[4];
 };
 
 struct map_info_type
@@ -43,17 +46,25 @@ struct map_info_type
     int                environment_ID;
     i2_type            size;
     int                number_of_tiles;
+    float              tile_size;
+    f3_type            position;
+    f3_type            rotation;
+    bool               render_textured;
+    bool               render_surfaces;
+    bool               render_wireframe;
+    bool               render_water;
 };
 
 struct map_type
 {
-//    map_data_type     data;
     map_info_type     info;
     map_tile_type*    tile;
 };
 
 void map_load(map_type* map_pointer, std::string file_name);
 void map_save(map_type* map_pointer, std::string file_name);
+void map_generate_tile_positions(map_type* map_pointer);
+void map_render(map_type* map_pointer);
 
 #endif //LOADER_MAP_H
 

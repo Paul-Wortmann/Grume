@@ -39,6 +39,27 @@ extern game_class         game;
 void map_load(map_type* map_pointer, std::string file_name)
 {
     game.core.log.write("Loading map file (new xml 3D) -> ",file_name);
+
+    map_pointer->info.environment_ID   = 0;
+    map_pointer->info.environment_name = "not set";
+    map_pointer->info.name             = "not set";
+    map_pointer->info.number_of_tiles  = 0;
+    map_pointer->info.render_surfaces  = false;
+    map_pointer->info.render_textured  = false;
+    map_pointer->info.render_water     = false;
+    map_pointer->info.render_wireframe = true;
+    map_pointer->info.rotation.x       = -45.0f;
+    map_pointer->info.rotation.y       = 0.0f;
+    map_pointer->info.rotation.z       = 0.0f;
+    map_pointer->info.position.x       = 0.0f;
+    map_pointer->info.position.y       = 0.0f;
+    map_pointer->info.position.z       = 0.0f;
+    map_pointer->info.size.x           = 0;
+    map_pointer->info.size.y           = 0;
+    map_pointer->info.tile_size        = DEFAULT_TILE_SIZE;
+    map_pointer->info.version          = 0.0f;
+    map_pointer->info.version_required = 0.0f;
+
     if (PHYSFS_exists(file_name.c_str()))
     {
         PHYSFS_openRead(file_name.c_str());
@@ -144,6 +165,7 @@ void map_load(map_type* map_pointer, std::string file_name)
                     }
                 }
             }
+            map_generate_tile_positions(map_pointer);
             if (file_pointer) PHYSFS_close(file_pointer);
         }
         else
@@ -161,4 +183,38 @@ void map_save(map_type* map_pointer, std::string file_name)
 {
 
 };
+
+void map_generate_tile_positions(map_type* map_pointer)
+{
+    float start_x    = 0.0f;
+    float start_y    = 0.0f ;
+    int   tile_count = 0;
+    for(int x_count = 0; x_count < map_pointer->info.size.x; x_count++)
+    {
+        for(int y_count = 0; y_count < map_pointer->info.size.y; y_count++)
+        {
+            map_pointer->tile[tile_count].position.x   = (start_x - (x_count * map_pointer->info.tile_size)) + (y_count * map_pointer->info.tile_size);
+            map_pointer->tile[tile_count].position.y   = (start_y - (y_count * map_pointer->info.tile_size)) - (x_count * map_pointer->info.tile_size);
+            map_pointer->tile[tile_count].vertex[0].x  = map_pointer->tile[tile_count].position.x;
+            map_pointer->tile[tile_count].vertex[0].y  = map_pointer->tile[tile_count].position.y + map_pointer->info.tile_size;
+            map_pointer->tile[tile_count].vertex[0].z  = 0.0f;
+            map_pointer->tile[tile_count].vertex[1].x  = map_pointer->tile[tile_count].position.x + map_pointer->info.tile_size;
+            map_pointer->tile[tile_count].vertex[1].y  = map_pointer->tile[tile_count].position.y;
+            map_pointer->tile[tile_count].vertex[1].z  = 0.0f;
+            map_pointer->tile[tile_count].vertex[2].x  = map_pointer->tile[tile_count].position.x;
+            map_pointer->tile[tile_count].vertex[2].y  = map_pointer->tile[tile_count].position.y - map_pointer->info.tile_size;
+            map_pointer->tile[tile_count].vertex[2].z  = 0.0f;
+            map_pointer->tile[tile_count].vertex[3].x  = map_pointer->tile[tile_count].position.x - map_pointer->info.tile_size;
+            map_pointer->tile[tile_count].vertex[3].y  = map_pointer->tile[tile_count].position.y;
+            map_pointer->tile[tile_count].vertex[3].z  = 0.0f;
+            tile_count++;
+        }
+    }
+};
+
+void map_render(map_type* map_pointer)
+{
+
+}
+
 

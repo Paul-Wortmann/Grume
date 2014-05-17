@@ -145,13 +145,13 @@ void game_class::init(void)
 
     //zoom out for testing
     game.zoom.current = game.zoom.max;
-    fmx_load(&fmx_map,"data/maps/town.tmx");
-    game.map_2D.calculate_tile_positions(&fmx_map,DEFAULT_FRAME_WIDTH/game.zoom.current/2.0f,DEFAULT_FRAME_HEIGHT/game.zoom.current/2.0f);
-    game.map_2D.center_on_tile(&fmx_map,(fmx_map.data.number_of_tiles/2)+(fmx_map.data.map_width/2));
+    //fmx_load(&fmx_map,"data/maps/town.tmx");
+    //game.map_2D.calculate_tile_positions(&fmx_map,DEFAULT_FRAME_WIDTH/game.zoom.current/2.0f,DEFAULT_FRAME_HEIGHT/game.zoom.current/2.0f);
+    //game.map_2D.center_on_tile(&fmx_map,(fmx_map.data.number_of_tiles/2)+(fmx_map.data.map_width/2));
 
     //game.map_3D.mesh_cell_positions_generate();
-    map_type *map_3d = new map_type;
-    map_load(map_3d,"data/maps/dungeon_00.xml");
+    game.map_3d_pointer = new map_type;
+    map_load(game.map_3d_pointer,"data/maps/dungeon_00.xml");
 
     // Add default items to the inventory
     UI_form_struct* UI_form_pointer   = NULL;
@@ -332,7 +332,7 @@ void game_class::process(void)
     UI_form_struct* UI_form_pointer;
     game.player.process();
     game.npc.process();
-    game.map_2D.process(&fmx_map);
+    //game.map_2D.process(&fmx_map);
     //game.map_3D.process();
     game.core.game_resume = true;
     if (game.music_manager.next_track)
@@ -730,8 +730,11 @@ void game_class::render(void)
     float  world_ambient_light[]  = {game.world_ambient.intensity_R,game.world_ambient.intensity_G,game.world_ambient.intensity_B,game.world_ambient.intensity_A};
     glLightModelfv(GL_LIGHT_MODEL_AMBIENT,world_ambient_light);
 
-    game.map_2D.render(&fmx_map);
+    //game.map_2D.render(&fmx_map);
     //game.map_3D.draw();
+
+    map_render(game.map_3d_pointer);
+
     game.player.render();
     game.npc.render();
 
