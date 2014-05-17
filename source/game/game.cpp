@@ -148,6 +148,8 @@ void game_class::init(void)
     game.map_2D.calculate_tile_positions(&fmx_map,DEFAULT_FRAME_WIDTH/game.zoom.current/2.0f,DEFAULT_FRAME_HEIGHT/game.zoom.current/2.0f);
     game.map_2D.center_on_tile(&fmx_map,(fmx_map.data.number_of_tiles/2)+(fmx_map.data.map_width/2));
 
+    //game.map_3D.mesh_cell_positions_generate();
+
     // Add default items to the inventory
     UI_form_struct* UI_form_pointer   = NULL;
     item_type*      temp_item_pointer = NULL;// = new item_type;
@@ -328,6 +330,7 @@ void game_class::process(void)
     game.player.process();
     game.npc.process();
     game.map_2D.process(&fmx_map);
+    //game.map_3D.process();
     game.core.game_resume = true;
     if (game.music_manager.next_track)
     {
@@ -725,6 +728,7 @@ void game_class::render(void)
     glLightModelfv(GL_LIGHT_MODEL_AMBIENT,world_ambient_light);
 
     game.map_2D.render(&fmx_map);
+    //game.map_3D.draw();
     game.player.render();
     game.npc.render();
 

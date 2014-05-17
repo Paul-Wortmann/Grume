@@ -31,6 +31,7 @@
 #include "../core/font_manager.hpp"
 #include "../core/item_manager.hpp"
 #include "../core/map_2D.hpp"
+#include "../core/map_3D.hpp"
 #include "../core/music_manager.hpp"
 #include "../core/network.hpp"
 #include "../core/object_manager.hpp"
@@ -81,6 +82,7 @@ class game_class
         item_manager_class          item_manager;
         language_class              language;
         map_2D_class                map_2D;
+        map_3D_class                map_3D;
         music_manager_class         music_manager;
         network_manager_class       network_manager;
         npc_class                   npc;
