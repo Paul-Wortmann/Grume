@@ -9,6 +9,7 @@
     <file>data/music/menu_00.s3m</file>
   </music>
  <floor_textures>
+    <file>data/textures/default/black.png</file>
     <file>data/textures/dungeon/floor/dungeon_floor_d_00.png</file>
   </floor_textures>
   <wall_textures>
