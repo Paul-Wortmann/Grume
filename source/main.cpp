@@ -48,7 +48,7 @@ SDL_Surface*             application_icon_surface;
 extern "C" int main(int argc, char** argv)
 {
 //  --- Application initialization ---
-    game.core.debug = true;
+    game.core.debug = false;
     game.state = STATE_INIT;
     game.core.application_name = "Frost and Flame V0.31b - www.physhexgames.co.nr";
     game.core.application_icon = "data/icon.ico";
@@ -94,8 +94,9 @@ extern "C" int main(int argc, char** argv)
     {
         game.core.log.write("Starting sound system...");
         SDL_Init(SDL_INIT_AUDIO);
+        game.music_manager.init();
         Mix_AllocateChannels(game.core.config.audio_channels);
-        Mix_OpenAudio(game.core.config.audio_rate, AUDIO_S16, 2, game.core.config.audio_buffers);
+        Mix_OpenAudio(game.core.config.audio_rate, MIX_DEFAULT_FORMAT, 2, game.core.config.audio_buffers);
         Mix_Volume(-1,game.core.config.audio_volume_sound);
         Mix_VolumeMusic(game.core.config.audio_volume_music);
     }
@@ -130,6 +131,9 @@ extern "C" int main(int argc, char** argv)
     if (game.state == STATE_INIT)
     {
         game.music_manager.current = game.music_manager.add_music("data/music/menu_00.s3m");
+        //game.music_manager.current = game.music_manager.add_music("data/music/forest_00.ogg");
+        game.music_manager.play(game.music_manager.current);
+
         game.core.log.write("Initializing game system...");
         game.init();
         game.core.log.write("Initializing event handlers...");
