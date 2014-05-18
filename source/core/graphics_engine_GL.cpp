@@ -39,6 +39,7 @@ extern game_class game;
 
 bool GL_init(void)
 {
+    game.core.log.write("------------------------------------------");
     bool return_value    = true;
     if (game.core.graphics.window)
     {
@@ -153,6 +154,14 @@ bool GL_init(void)
                 game.core.log.write(glGetString(GL_RENDERER));
                 game.core.log.write(glGetString(GL_SHADING_LANGUAGE_VERSION));
                 game.core.log.write("OpenGl Version -> ",game.core.graphics.GL_major_version_number,".",game.core.graphics.GL_minor_version_number);
+                game.core.graphics.gl_version_string                  = std::string((const char*)glGetString(GL_VERSION));
+                game.core.graphics.gl_vendor_string                   = std::string((const char*)glGetString(GL_VENDOR));
+                game.core.graphics.gl_renderer_string                 = std::string((const char*)glGetString(GL_RENDERER));
+                game.core.graphics.gl_shading_language_version_string = std::string((const char*)glGetString(GL_SHADING_LANGUAGE_VERSION));
+                game.core.log.write("GL Driver Version           -> ",game.core.graphics.gl_version_string);
+                game.core.log.write("GL Driver Vendor            -> ",game.core.graphics.gl_vendor_string);
+                game.core.log.write("GL Renderer                 -> ",game.core.graphics.gl_renderer_string);
+                game.core.log.write("GL Shading Language Version -> ",game.core.graphics.gl_shading_language_version_string);
                 if ((game.core.graphics.GL_major_version_number >= 3) && (game.core.graphics.GL_minor_version_number >= 2))
                 {
                     glewExperimental = GL_TRUE;
@@ -165,10 +174,14 @@ bool GL_init(void)
                     else
                     {
                         game.core.log.write("Initialized GLEW -> ",(const char*)glewGetErrorString(glew_status));
-                        int i;
-                        glGetIntegerv(GL_NUM_EXTENSIONS,&i);
-                        game.core.log.write("Loaded OpenGL Extension count -> ",i);
-                        if (game.core.debug) for (int j = 0; j < i; j++) game.core.log.write("Loaded OpenGL Extension -> ",(const char*)glGetStringi(GL_EXTENSIONS, j));
+                        glGetIntegerv(GL_NUM_EXTENSIONS,&game.core.graphics.gl_extention_count);
+                        game.core.log.write("Loaded OpenGL Extension count -> ",game.core.graphics.gl_extention_count);
+                        game.core.graphics.gl_extention_names = new std::string[game.core.graphics.gl_extention_count+1];
+                        for (int j = 0; j < game.core.graphics.gl_extention_count; j++)
+                        {
+                            game.core.graphics.gl_extention_names[j] = (const char*)glGetStringi(GL_EXTENSIONS, j);
+                            if (game.core.debug) game.core.log.write("Loaded OpenGL Extension -> ",game.core.graphics.gl_extention_names[j]);
+                        }
                         glClearColor( 0.0f, 0.0f, 0.0f, 0.0f );
                         // Vertex Shader
                         int shader_compile_status = 0;
@@ -231,6 +244,7 @@ bool GL_init(void)
             }
         }
     }
+    game.core.log.write("------------------------------------------");
     return (return_value);
 };
 

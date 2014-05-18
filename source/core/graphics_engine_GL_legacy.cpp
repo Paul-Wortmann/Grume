@@ -152,11 +152,22 @@ bool GL_legacy_init(void)
         }
         else
         {
-            game.core.log.write(std::string((const char*)glGetString(GL_VERSION)));
-            game.core.log.write(std::string((const char*)glGetString(GL_VENDOR)));
-            game.core.log.write(std::string((const char*)glGetString(GL_RENDERER)));
-            game.core.log.write(std::string((const char*)glGetString(GL_SHADING_LANGUAGE_VERSION)));
-
+            game.core.graphics.gl_version_string                  = std::string((const char*)glGetString(GL_VERSION));
+            game.core.graphics.gl_vendor_string                   = std::string((const char*)glGetString(GL_VENDOR));
+            game.core.graphics.gl_renderer_string                 = std::string((const char*)glGetString(GL_RENDERER));
+            game.core.graphics.gl_shading_language_version_string = std::string((const char*)glGetString(GL_SHADING_LANGUAGE_VERSION));
+            game.core.log.write("GL Driver Version           -> ",game.core.graphics.gl_version_string);
+            game.core.log.write("GL Driver Vendor            -> ",game.core.graphics.gl_vendor_string);
+            game.core.log.write("GL Renderer                 -> ",game.core.graphics.gl_renderer_string);
+            game.core.log.write("GL Shading Language Version -> ",game.core.graphics.gl_shading_language_version_string);
+            glGetIntegerv(GL_NUM_EXTENSIONS,&game.core.graphics.gl_extention_count);
+            game.core.log.write("Loaded OpenGL Extension count -> ",game.core.graphics.gl_extention_count);
+            game.core.graphics.gl_extention_names = new std::string[game.core.graphics.gl_extention_count+1];
+            for (int j = 0; j < game.core.graphics.gl_extention_count; j++)
+            {
+                game.core.graphics.gl_extention_names[j] = (const char*)glGetStringi(GL_EXTENSIONS, j);
+                if (game.core.debug) game.core.log.write("Loaded OpenGL Extension -> ",game.core.graphics.gl_extention_names[j]);
+            }
             glViewport(0, 0,game.core.config.display_resolution_x,game.core.config.display_resolution_y);
             glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
             glClearDepth(1.0);

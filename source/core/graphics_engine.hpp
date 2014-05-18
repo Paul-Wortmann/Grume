@@ -84,6 +84,12 @@ class graphics_engine_class
         SDL_DisplayMode  *display_mode;
         render_GL_struct  render_GL; // temp
         vao_manager_class vao_manager;
+        int               gl_extention_count;
+        std::string      *gl_extention_names;
+        std::string       gl_version_string;
+        std::string       gl_vendor_string;
+        std::string       gl_renderer_string;
+        std::string       gl_shading_language_version_string;
         int              *menu_mode_list;
         int               menu_mode_length;
         int               renderer;
