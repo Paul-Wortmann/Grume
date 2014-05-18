@@ -265,6 +265,7 @@ Mix_Music *file_class::load_music(std::string file_name)
             if (rwops_pointer != NULL)
             {
                 temp_music  = Mix_LoadMUS_RW(rwops_pointer, false);
+                if (!temp_music) game.core.log.write("FAIL -> Mix_LoadMUS :", Mix_GetError());
                 if (rwops_pointer) SDL_FreeRW(rwops_pointer);
             }
             else

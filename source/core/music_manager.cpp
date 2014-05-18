@@ -52,6 +52,31 @@ music_manager_class::~music_manager_class(void)
     }
 };
 
+bool music_manager_class::init(void)
+{
+    game.core.log.write("Initializing music manager.");
+    bool return_value = true;
+    int flags=MIX_INIT_OGG;
+    flags=flags|MIX_INIT_FLAC;
+    //flags=flags|MIX_INIT_MOD;
+    int initted=Mix_Init(flags);
+    if ((initted&flags) != flags)
+    {
+        game.core.log.write("Mix_Init: Failed to initialize support for all required sound formats!");
+        game.core.log.write("Mix_Init: ",Mix_GetError());
+        return_value = false;
+    }
+    else
+    {
+        const SDL_version *linked_version = Mix_Linked_Version();
+        SDL_version compiled_version;
+        SDL_MIXER_VERSION(&compiled_version);
+        game.core.log.write("SDL_Mixer compiled version: ",compiled_version.major,".",compiled_version.minor,".",compiled_version.patch);
+        game.core.log.write("SDL_Mixer Linked version:   ",linked_version->major,".",linked_version->minor,".",linked_version->patch);
+    }
+    return (return_value);
+}
+
 music_type *music_manager_class::add_music(std::string file_name)
 {
     if (music_manager_class::number_of_music == 0)
@@ -96,5 +121,15 @@ bool music_manager_class::load_music(music_type *music)
 
 void music_manager_class::play(music_type *music)
 {
-    Mix_PlayMusic(music->music_data,-1);
+    if (music->music_data != NULL)
+    {
+        if (Mix_PlayMusic(music->music_data,-1) == -1)
+        {
+            game.core.log.write("FAIL -> unable to play music -> "+music->path);
+        }
+    }
+    else
+    {
+        game.core.log.write("FAIL -> unable to play music -> NULL pointer passed to play function.");
+    }
 };

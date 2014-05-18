@@ -48,6 +48,7 @@ class music_manager_class
         music_type   *root;
         music_type   *last;
         music_type   *current;
+        bool          init(void);
         music_type   *add_music(std::string file_name);
         bool          load_music(music_type *music);
         void          play(music_type *music);
