@@ -88,7 +88,8 @@ bool GL_legacy_init(void)
         game.core.log.write("Number of display modes -> ",game.core.graphics.number_display_modes);
         for (int i = 0; i < game.core.graphics.number_display_modes; i++)
         {
-            if ((SDL_GetDisplayMode(game.core.graphics.current_display,i,&game.core.graphics.display_mode[i]) == 0)&&(game.core.debug)) game.core.log.write("Display mode - ",i," - x - ",game.core.graphics.display_mode[i].w," - y - ",game.core.graphics.display_mode[i].h," - refresh rate - ",game.core.graphics.display_mode[i].refresh_rate);
+            SDL_GetDisplayMode(game.core.graphics.current_display,i,&game.core.graphics.display_mode[i]);
+            //if ((SDL_GetDisplayMode(game.core.graphics.current_display,i,&game.core.graphics.display_mode[i]) == 0)&&(game.core.debug)) game.core.log.write("Display mode - ",i," - x - ",game.core.graphics.display_mode[i].w," - y - ",game.core.graphics.display_mode[i].h," - refresh rate - ",game.core.graphics.display_mode[i].refresh_rate);
         }
         SDL_GetDisplayMode(game.core.graphics.current_display,game.core.graphics.current_display_mode,&game.core.graphics.display_mode[game.core.graphics.current_display_mode]);
         if ((game.core.config.display_resolution_x < game.core.graphics.display_mode[game.core.graphics.number_display_modes-1].w) || (game.core.config.display_resolution_y < game.core.graphics.display_mode[game.core.graphics.number_display_modes-1].h))
@@ -151,10 +152,10 @@ bool GL_legacy_init(void)
         }
         else
         {
-            game.core.log.write(glGetString(GL_VERSION));
-            game.core.log.write(glGetString(GL_VENDOR));
-            game.core.log.write(glGetString(GL_RENDERER));
-            game.core.log.write(glGetString(GL_SHADING_LANGUAGE_VERSION));
+            game.core.log.write(std::string((const char*)glGetString(GL_VERSION)));
+            game.core.log.write(std::string((const char*)glGetString(GL_VENDOR)));
+            game.core.log.write(std::string((const char*)glGetString(GL_RENDERER)));
+            game.core.log.write(std::string((const char*)glGetString(GL_SHADING_LANGUAGE_VERSION)));
 
             glViewport(0, 0,game.core.config.display_resolution_x,game.core.config.display_resolution_y);
             glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
@@ -248,6 +249,8 @@ bool GL_legacy_render(void)
 
 bool GL_legacy_build_mode_list(void)
 {
+    bool debug_state = game.core.debug;
+    game.core.debug = false;
     bool return_value = true;
     if (game.core.graphics.number_display_modes <= 0)
     {
@@ -289,6 +292,7 @@ bool GL_legacy_build_mode_list(void)
         }
         if (game.core.debug)game.core.log.write("-----------------------------------------------------");
     }
+    game.core.debug = debug_state;
     return(return_value);
 };
 
