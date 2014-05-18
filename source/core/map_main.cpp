@@ -162,6 +162,7 @@ void map_load(map_type* map_pointer, std::string file_name)
                 }
             }
             map_generate_tile_positions(map_pointer);
+            game.music_manager.play(map_pointer->environment->music[0].data);
             if (file_pointer) PHYSFS_close(file_pointer);
         }
         else

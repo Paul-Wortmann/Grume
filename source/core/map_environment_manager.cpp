@@ -325,7 +325,6 @@ bool map_environment_manager_class::load_map_environment(map_environment_type *m
                 {
                     map_environment->texture_load_screen[i].data = game.texture_manager.add_texture(map_environment->texture_load_screen[i].file_name);
                 }
-                // Display one of the load screens!
             }
             if (map_environment->number_of_textures_floor > 0)
             {
@@ -347,8 +346,6 @@ bool map_environment_manager_class::load_map_environment(map_environment_type *m
                 {
                     map_environment->music[i].data = game.music_manager.add_music(map_environment->music[i].file_name);
                 }
-                // change to random selection.....
-                //game.music_manager.play(map_environment->music[0].data);
             }
             if (map_environment->number_of_models_wall > 0)
             {

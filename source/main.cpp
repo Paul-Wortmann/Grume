@@ -48,7 +48,7 @@ SDL_Surface*             application_icon_surface;
 extern "C" int main(int argc, char** argv)
 {
 //  --- Application initialization ---
-    game.core.debug = false;
+    game.core.debug = true;
     game.state = STATE_INIT;
     game.core.application_name = "Frost and Flame V0.31b - www.physhexgames.co.nr";
     game.core.application_icon = "data/icon.ico";
@@ -131,9 +131,6 @@ extern "C" int main(int argc, char** argv)
     if (game.state == STATE_INIT)
     {
         game.music_manager.current = game.music_manager.add_music("data/music/menu_00.s3m");
-        //game.music_manager.current = game.music_manager.add_music("data/music/forest_00.ogg");
-        game.music_manager.play(game.music_manager.current);
-
         game.core.log.write("Initializing game system...");
         game.init();
         game.core.log.write("Initializing event handlers...");
