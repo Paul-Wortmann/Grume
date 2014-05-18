@@ -28,7 +28,9 @@
 #include "map_environment_manager.hpp"
 #include "types.hpp"
 
-#define DEFAULT_TILE_SIZE 0.05f
+#define DEFAULT_TILE_SIZE          0.4f
+#define DEFAULT_TILE_SIZE_HALF     DEFAULT_TILE_SIZE/2.0f
+#define DEFAULT_MAP_SCROLL_SPEED   DEFAULT_TILE_SIZE/20.0f
 
 struct map_tile_type
 {
@@ -61,6 +63,11 @@ struct map_type
 void map_load(map_type *map_pointer, std::string file_name);
 void map_save(map_type *map_pointer, std::string file_name);
 void map_generate_tile_positions(map_type *map_pointer);
+void map_scroll(map_type* map_pointer,int x_dir, int y_dir);
+bool map_tile_visable(map_type* map_pointer,int tile_count);
+int  map_mouse_over_tile(map_type* map_pointer);
+void map_center_on_tile(map_type* map_pointer, int tile_ID);
+void map_process(map_type *map_pointer);
 void map_render(map_type *map_pointer);
 
 #endif //LOADER_MAP_H

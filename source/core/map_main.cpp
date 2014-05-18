@@ -33,6 +33,7 @@
 #include <string>
 #include "map_main.hpp"
 #include "../game/game.hpp"
+#include "misc.hpp"
 
 extern game_class         game;
 
@@ -162,7 +163,34 @@ void map_load(map_type* map_pointer, std::string file_name)
                 }
             }
             map_generate_tile_positions(map_pointer);
-            game.music_manager.play(map_pointer->environment->music[0].data);
+            map_center_on_tile(map_pointer,(((map_pointer->info.size.y/2)*map_pointer->info.size.x) + (map_pointer->info.size.x/2)));
+            if (map_pointer->environment->number_of_load_screens > 0)
+            {
+                if (map_pointer->environment->number_of_load_screens > 1)
+                {
+                    game.texture_manager.draw(map_pointer->environment->texture_load_screen[random(map_pointer->environment->number_of_load_screens)].data,false,0.0f,0.0f,0.0f,2.0f,20.f);
+                }
+                else
+                {
+                    game.texture_manager.draw(map_pointer->environment->texture_load_screen[0].data,false,0.0f,0.0f,0.0f,2.0f,20.f);
+                }
+            }
+            if (map_pointer->environment->number_of_musics > 0)
+            {
+                if (map_pointer->environment->number_of_musics > 1)
+                {
+                    game.music_manager.play(map_pointer->environment->music[random(map_pointer->environment->number_of_load_screens)].data);
+                }
+                else
+                {
+                    game.music_manager.play(map_pointer->environment->music[0].data);
+                }
+            }
+            for (int tile_count = 0; tile_count < map_pointer->info.number_of_tiles; tile_count++)
+            {
+                if (map_pointer->tile[tile_count].texture > map_pointer->environment->number_of_textures_floor) map_pointer->tile[tile_count].texture = map_pointer->environment->number_of_textures_floor;
+                if (map_pointer->tile[tile_count].texture < 0) map_pointer->tile[tile_count].texture = random(map_pointer->environment->number_of_textures_floor);
+            }
             if (file_pointer) PHYSFS_close(file_pointer);
         }
         else
@@ -207,6 +235,65 @@ void map_generate_tile_positions(map_type* map_pointer)
             tile_count++;
         }
     }
+}
+
+void map_scroll(map_type* map_pointer,int x_dir, int y_dir)
+{
+    map_pointer->info.position.x += x_dir * DEFAULT_MAP_SCROLL_SPEED;
+    map_pointer->info.position.y += y_dir * DEFAULT_MAP_SCROLL_SPEED;
+}
+
+bool map_tile_visable(map_type* map_pointer,int tile_count)
+{
+    if ((map_pointer->tile[tile_count].position.x < ( 2.0f+DEFAULT_TILE_SIZE-map_pointer->info.position.x))
+    &&  (map_pointer->tile[tile_count].position.x > (-2.0f-DEFAULT_TILE_SIZE-map_pointer->info.position.x))
+    &&  (map_pointer->tile[tile_count].position.y < ( 2.0f+DEFAULT_TILE_SIZE-map_pointer->info.position.y))
+    &&  (map_pointer->tile[tile_count].position.y > (-2.0f-DEFAULT_TILE_SIZE-map_pointer->info.position.y))) return(true);
+    else return(false);
+}
+
+int  map_mouse_over_tile(map_type* map_pointer)
+{
+    int return_value = -1;
+    for (int tile_count = 0; tile_count < map_pointer->info.number_of_tiles; tile_count++)
+    {
+        if (map_tile_visable(map_pointer,tile_count))
+        {
+            if (game.core.physics.point_in_diamond(map_pointer->tile[tile_count].position.x,DEFAULT_TILE_SIZE_HALF,map_pointer->tile[tile_count].position.y,DEFAULT_TILE_SIZE_HALF,game.core.io.mouse_x,game.core.io.mouse_y)) return_value = tile_count;
+        }
+    }
+    return(return_value);
+}
+
+void map_process(map_type* map_pointer)
+{
+    if (game.core.io.mouse_y >=  0.99000) map_scroll(map_pointer, 0,-1);
+    if (game.core.io.mouse_y <= -0.99000) map_scroll(map_pointer, 0, 1);
+    if (game.core.io.mouse_x >=  0.99000) map_scroll(map_pointer,-1, 0);
+    if (game.core.io.mouse_x <= -0.99000) map_scroll(map_pointer, 1, 0);
+};
+
+void map_center_on_tile(map_type* map_pointer, int tile_ID)
+{
+    float temp_x    = map_pointer->tile[tile_ID].position.x;
+    float temp_y    = map_pointer->tile[tile_ID].position.y;
+    for(int tile_count = 0; tile_count <  map_pointer->info.number_of_tiles; tile_count++)
+    {
+        map_pointer->tile[tile_count].position.x -= temp_x;
+        map_pointer->tile[tile_count].position.y -= temp_y;
+        map_pointer->tile[tile_count].vertex[0].x  = map_pointer->tile[tile_count].position.x;
+        map_pointer->tile[tile_count].vertex[0].y  = map_pointer->tile[tile_count].position.y + map_pointer->info.tile_size;
+        map_pointer->tile[tile_count].vertex[0].z  = 0.0f;
+        map_pointer->tile[tile_count].vertex[1].x  = map_pointer->tile[tile_count].position.x + map_pointer->info.tile_size;
+        map_pointer->tile[tile_count].vertex[1].y  = map_pointer->tile[tile_count].position.y;
+        map_pointer->tile[tile_count].vertex[1].z  = 0.0f;
+        map_pointer->tile[tile_count].vertex[2].x  = map_pointer->tile[tile_count].position.x;
+        map_pointer->tile[tile_count].vertex[2].y  = map_pointer->tile[tile_count].position.y - map_pointer->info.tile_size;
+        map_pointer->tile[tile_count].vertex[2].z  = 0.0f;
+        map_pointer->tile[tile_count].vertex[3].x  = map_pointer->tile[tile_count].position.x - map_pointer->info.tile_size;
+        map_pointer->tile[tile_count].vertex[3].y  = map_pointer->tile[tile_count].position.y;
+        map_pointer->tile[tile_count].vertex[3].z  = 0.0f;
+    }
 };
 
 void map_render(map_type* map_pointer)
@@ -219,10 +306,11 @@ void map_render(map_type* map_pointer)
     glRotatef (map_pointer->info.rotation.y, 0.0f, 1.0f, 0.0f);
     glRotatef (map_pointer->info.rotation.z, 0.0f, 0.0f, 1.0f);
 	glTranslatef(map_pointer->info.position.x,map_pointer->info.position.y,map_pointer->info.position.z);
-    //if (map_pointer->info.cell_visable(tile_count))
+    //if (map_pointer->info.tile_visable(tile_count))
     {
         glMatrixMode(GL_MODELVIEW_MATRIX);
-            glBindTexture(GL_TEXTURE_2D, game.texture_manager.root->data.frame[0].data);
+        //ARB_multitexture_supported = true; need for bump mapping specular etc...
+        glBindTexture(GL_TEXTURE_2D, map_pointer->environment->texture_floor[1].data->data.frame[0].data);
         for (int tile_count = 0; tile_count < map_pointer->info.number_of_tiles; tile_count++)
         {
             glBegin (GL_QUADS);
