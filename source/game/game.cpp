@@ -711,8 +711,8 @@ void game_class::process(void)
 void game_class::render(void)
 {
     float  global_ambient_light[] = {game.global_ambient.intensity_R,game.global_ambient.intensity_G,game.global_ambient.intensity_B,game.global_ambient.intensity_A};
-    float  world_ambient_light[]  = {game.world_ambient.intensity_R,game.world_ambient.intensity_G,game.world_ambient.intensity_B,game.world_ambient.intensity_A};
-//    glLightModelfv(GL_LIGHT_MODEL_AMBIENT,world_ambient_light);
+    //float  world_ambient_light[]  = {game.world_ambient.intensity_R,game.world_ambient.intensity_G,game.world_ambient.intensity_B,game.world_ambient.intensity_A};
+    //glLightModelfv(GL_LIGHT_MODEL_AMBIENT,world_ambient_light);
 
     //game.map_2D.render(&fmx_map);
     //game.map_3D.draw();
