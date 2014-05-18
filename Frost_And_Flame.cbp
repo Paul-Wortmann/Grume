@@ -11,16 +11,15 @@
 				<Option type="0" />
 				<Option compiler="gcc" />
 				<Compiler>
-					<Add option="-std=c++98" />
 					<Add option="-Wextra" />
 					<Add option="-Wall" />
+					<Add option="-pg" />
+					<Add option="-g" />
 				</Compiler>
 				<Linker>
-					<Add option="-static-libstdc++" />
+					<Add option="-pg" />
 					<Add option="-static-libgcc" />
-					<Add library="mingw32" />
-					<Add library="opengl32" />
-					<Add library="glew32" />
+					<Add option="-static-libstdc++" />
 					<Add library="SDL2main" />
 					<Add library="SDL2" />
 					<Add library="SDL2_mixer" />
@@ -29,7 +28,20 @@
 					<Add library="SDL2_net" />
 					<Add library="SDL2_ttf" />
 					<Add library="physfs" />
-					<Add directory="C:/MinGW/lib" />
+					<Add library="GL" />
+					<Add library="libGL" />
+					<Add library="libGLEW" />
+					<Add library="SDL2main" />
+					<Add library="SDL2" />
+					<Add library="SDL2_mixer" />
+					<Add library="SDL2_image" />
+					<Add library="freetype" />
+					<Add library="SDL2_net" />
+					<Add library="SDL2_ttf" />
+					<Add library="physfs" />
+					<Add library="GL" />
+					<Add library="libGL" />
+					<Add library="libGLEW" />
 					<Add directory="/usr/lib" />
 				</Linker>
 			</Target>
@@ -47,8 +59,8 @@
 					<Add directory="/usr/include" />
 				</ResourceCompiler>
 				<Linker>
-					<Add option="-static-libstdc++" />
 					<Add option="-static-libgcc" />
+					<Add option="-static-libstdc++" />
 					<Add library="SDL2main" />
 					<Add library="SDL2" />
 					<Add library="SDL2_mixer" />
@@ -109,8 +121,8 @@
 				</Compiler>
 				<Linker>
 					<Add option="-pg" />
-					<Add option="-static-libstdc++" />
 					<Add option="-static-libgcc" />
+					<Add option="-static-libstdc++" />
 					<Add library="SDL2main" />
 					<Add library="SDL2" />
 					<Add library="SDL2_mixer" />
@@ -271,7 +283,6 @@
 		<Unit filename="source/game/spells.hpp" />
 		<Unit filename="source/icon.ico" />
 		<Unit filename="source/main.cpp" />
-		<Unit filename="source/resources.rc" />
 		<Extensions>
 			<code_completion />
 			<envvars />
