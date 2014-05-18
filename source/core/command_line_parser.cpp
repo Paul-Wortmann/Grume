@@ -62,14 +62,22 @@ void command_line_parser_class::process (int arg_count, char** arg_data)
             (temp_string.compare("-help") == 0) ||
             (temp_string.compare("-h") == 0))
         {
-            std::cout << "-w   Enable a windowed mode." << std::endl;
             std::cout << "-d   Enable developer mode." << std::endl;
             std::cout << "-h   This help screen." << std::endl;
+            std::cout << "-v   Version information." << std::endl;
+            std::cout << "-w   Enable a windowed mode." << std::endl;
+        }
+        else if ((temp_string.compare("--version") == 0) ||
+            (temp_string.compare("-version") == 0) ||
+            (temp_string.compare("-v") == 0))
+        {
+            std::cout << "-w   Enable a windowed mode." << std::endl;
         }
         else
         {
-            if ( arg_number > 0) std::cout << "Unknown command line option -> " << temp_string.c_str() << std::endl;
+            if ( arg_number > 0) std::cout << game.core.application_name << temp_string.c_str() << std::endl;
         }
     }
 };
+
 
