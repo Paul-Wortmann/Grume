@@ -271,6 +271,7 @@
 		<Unit filename="source/game/spells.hpp" />
 		<Unit filename="source/icon.ico" />
 		<Unit filename="source/main.cpp" />
+		<Unit filename="source/resources.rc" />
 		<Extensions>
 			<code_completion />
 			<envvars />

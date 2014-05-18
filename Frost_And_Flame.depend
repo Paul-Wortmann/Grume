@@ -2343,7 +2343,7 @@
 	"texture_manager.hpp"
 	"types.hpp"
 
-1373475778 /media/paul/Data_0/_git_/Frost_and_Flame/source/core/music_manager.hpp
+1400388847 /media/paul/Data_0/_git_/Frost_and_Flame/source/core/music_manager.hpp
 	<SDL2/SDL.h>
 	<SDL2/SDL_mixer.h>
 	<string>
@@ -2473,7 +2473,7 @@
 1378831794 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/core/core.cpp
 	"core.hpp"
 
-1400255303 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/core/file.cpp
+1400389966 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/core/file.cpp
 	"core.hpp"
 	"file.hpp"
 	"../game/game.hpp"
@@ -2608,7 +2608,7 @@
 	<fstream>
 	"misc.hpp"
 
-1400175163 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/core/music_manager.cpp
+1400390692 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/core/music_manager.cpp
 	"music_manager.hpp"
 	"../game/game.hpp"
 
@@ -2687,7 +2687,7 @@
 	"core/misc.hpp"
 	"language.hpp"
 
-1400315784 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/main.cpp
+1400390817 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/main.cpp
 	<GL/glew.h>
 	<SDL2/SDL.h>
 	<SDL2/SDL_image.h>
@@ -3368,7 +3368,7 @@
 	"effect_manager.hpp"
 	"game.hpp"
 
-1400347415 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/game/game.cpp
+1400389408 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/game/game.cpp
 	"../core/map_2D.hpp"
 	"../core/map_main.hpp"
 	"../core/misc.hpp"
@@ -4195,7 +4195,7 @@
 	"../game/game.hpp"
 	"misc.hpp"
 
-1400216581 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/core/graphics_engine_GL_legacy.cpp
+1400384517 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/core/graphics_engine_GL_legacy.cpp
 	"core.hpp"
 	"graphics_engine.hpp"
 	"graphics_engine_GL_legacy.hpp"
@@ -4847,7 +4847,7 @@
 	"map_environment_manager.hpp"
 	"types.hpp"
 
-1400349379 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/core/map_environment_manager.cpp
+1400389398 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/core/map_environment_manager.cpp
 	<physfs.h>
 	"map_environment_manager.hpp"
 	"../game/game.hpp"
@@ -4865,8 +4865,10 @@
 	"map_main.hpp"
 	"../game/game.hpp"
 
-1400349136 /media/paul/Data_0/_git_/Frost_and_Flame/source/core/map_environment_manager.hpp
+1400382728 /media/paul/Data_0/_git_/Frost_and_Flame/source/core/map_environment_manager.hpp
 	<SDL2/SDL.h>
 	<SDL2/SDL_mixer.h>
 	<string>
+	"texture_manager.hpp"
+	"music_manager.hpp"
 
