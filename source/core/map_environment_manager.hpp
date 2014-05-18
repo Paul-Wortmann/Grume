@@ -28,12 +28,44 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_mixer.h>
 #include <string>
+#include "texture_manager.hpp"
+#include "music_manager.hpp"
+
+struct mem_music_data_type
+{
+    std::string   file_name;
+    music_type*   data;
+};
+
+struct mem_texture_data_type
+{
+    std::string   file_name;
+    texture_type* data;
+};
+
+struct mem_model_data_type
+{
+    std::string file_name;
+};
 
 struct map_environment_type
 {
-    bool                  loaded;
-    std::string           path;
-    map_environment_type *next;
+    bool                   loaded;
+    std::string            path;
+    float                  version;
+    int                    number_of_musics;
+    int                    number_of_load_screens;
+    int                    number_of_textures_floor;
+    int                    number_of_textures_wall;
+    int                    number_of_models_wall;
+    int                    number_of_models_debris;
+    mem_music_data_type   *music;
+    mem_texture_data_type *texture_load_screen;
+    mem_texture_data_type *texture_floor;
+    mem_texture_data_type *texture_wall;
+    mem_model_data_type   *model_wall;
+    mem_model_data_type   *model_debris;
+    map_environment_type  *next;
 };
 
 class map_environment_manager_class
@@ -50,3 +82,4 @@ class map_environment_manager_class
 };
 
 #endif // MAP_ENVIRONMENT_H
+
