@@ -334,6 +334,8 @@ void game_class::process(void)
     game.npc.process();
     //game.map_2D.process(&fmx_map);
     //game.map_3D.process();
+    map_process(game.map_3d_pointer);
+
     game.core.game_resume = true;
     if (game.music_manager.next_track)
     {
