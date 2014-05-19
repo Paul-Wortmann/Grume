@@ -32,6 +32,7 @@ struct io_class
     private:
     public:
         rs232_class    rs232;
+        bool           mouse_in_window;
         bool           joystick_button_0;
         bool           joystick_button_1;
         bool           joystick_button_2;

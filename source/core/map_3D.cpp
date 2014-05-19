@@ -349,8 +349,14 @@ void map_3D_class::mesh_height_set_color(float y_height)
 
 void map_3D_class::scroll_map(int x_dir, int z_dir)
 {
-    map_3D_class::position_x += x_dir * MAP_SCROLL_SPEED;
-    map_3D_class::position_z += z_dir * MAP_SCROLL_SPEED;
+    if (game.core.io.mouse_in_window)
+    {
+        float x_scroll_delta = MAP_SCROLL_SPEED;
+        float z_scroll_delta = MAP_SCROLL_SPEED + (MAP_SCROLL_SPEED * (game.core.config.display_resolution_x/game.core.config.display_resolution_y));
+
+        if (((map_3D_class::position_x + x_dir) > (-2.0f+x_scroll_delta)) && ((map_3D_class::position_x + x_dir) < 2.0f-x_scroll_delta)) map_3D_class::position_x += x_dir * x_scroll_delta;
+        if (((map_3D_class::position_z + z_dir) > (-2.0f+z_scroll_delta)) && ((map_3D_class::position_z + z_dir) < 2.0f-z_scroll_delta)) map_3D_class::position_z += z_dir * z_scroll_delta;
+    }
 };
 
 int  map_3D_class::mouse_over_cell(void)

@@ -239,10 +239,14 @@ void map_generate_tile_positions(map_type* map_pointer)
 
 void map_scroll(map_type* map_pointer,int x_dir, int y_dir)
 {
-    float x_scroll_delta = MAP_SCROLL_SPEED;
-    float y_scroll_delta = MAP_SCROLL_SPEED + (MAP_SCROLL_SPEED * (game.core.config.display_resolution_x/game.core.config.display_resolution_y));
-    if (((map_pointer->info.position.x + x_dir) > (-2.0f+x_scroll_delta)) && ((map_pointer->info.position.x + x_dir) < 2.0f-x_scroll_delta)) map_pointer->info.position.x += x_dir * x_scroll_delta;
-    if (((map_pointer->info.position.y + y_dir) > (-2.0f+y_scroll_delta)) && ((map_pointer->info.position.y + y_dir) < 2.0f-y_scroll_delta)) map_pointer->info.position.y += y_dir * y_scroll_delta;
+    if (game.core.io.mouse_in_window)
+    {
+        float x_scroll_delta = MAP_SCROLL_SPEED;
+        float y_scroll_delta = MAP_SCROLL_SPEED + (MAP_SCROLL_SPEED * (game.core.config.display_resolution_x/game.core.config.display_resolution_y));
+
+        if (((map_pointer->info.position.x + x_dir) > (-2.0f+x_scroll_delta)) && ((map_pointer->info.position.x + x_dir) < 2.0f-x_scroll_delta)) map_pointer->info.position.x += x_dir * x_scroll_delta;
+        if (((map_pointer->info.position.y + y_dir) > (-2.0f+y_scroll_delta)) && ((map_pointer->info.position.y + y_dir) < 2.0f-y_scroll_delta)) map_pointer->info.position.y += y_dir * y_scroll_delta;
+    }
 }
 
 bool map_tile_visable(map_type* map_pointer,int tile_count)

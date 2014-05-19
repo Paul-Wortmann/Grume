@@ -136,7 +136,7 @@ void map_2D_class::process(fmx_map_type *fmx_map_pointer)
 void map_2D_class::scroll_map(fmx_map_type *fmx_map_pointer,int x_dir, int y_dir)
 {
     float temp_x = x_dir * MAP_SCROLL_SPEED;
-    float temp_y = y_dir * MAP_SCROLL_SPEED;
+    float temp_y = y_dir * (MAP_SCROLL_SPEED + (MAP_SCROLL_SPEED * (game.core.config.display_resolution_x/game.core.config.display_resolution_y)));
     for(int layer_count = 0; layer_count < fmx_map_pointer->data.number_of_layers; layer_count++)
     {
         for(int tile_count = 0; tile_count < fmx_map_pointer->data.number_of_tiles; tile_count++)

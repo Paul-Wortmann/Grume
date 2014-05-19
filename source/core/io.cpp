@@ -33,124 +33,125 @@ extern game_class          game;
 
 bool events_init(void)
 {
-   SDL_Init(SDL_INIT_JOYSTICK);
-   SDL_Joystick *joystick;
-   SDL_JoystickEventState(SDL_ENABLE);
-   joystick = SDL_JoystickOpen(0);
-   if ((SDL_NumJoysticks() > 0) && (joystick))
-   {
-      game.core.config.joystick_enabled        = true;
-      game.core.io.joystick_sensitivity        = 6400;
-      game.core.config.joystick_no_buttons     = SDL_JoystickNumButtons(joystick);
-   }
-   else
-   {
-      game.core.config.joystick_enabled    = false;
-      game.core.io.joystick_sensitivity    = 0;
-      game.core.config.joystick_no_buttons = 0;
-   }
-   game.core.io.mouse_button_ready         = false;
-   game.core.io.keyboard_ready             = false;
-   game.core.io.joystick_ready             = false;
-   game.core.io.mouse_button_delay         = 32;
-   game.core.io.mouse_button_delay_count   = 0;
-   game.core.io.keyboard_delay             = 24;
-   game.core.io.keyboard_delay_count       = 0;
-   game.core.io.joystick_delay             = 24;
-   game.core.io.joystick_delay_count       = 0;
-   game.core.io.joystick_up                = false;
-   game.core.io.joystick_down              = false;
-   game.core.io.joystick_left              = false;
-   game.core.io.joystick_right             = false;
-   game.core.io.joystick_button_0          = false;
-   game.core.io.joystick_button_1          = false;
-   game.core.io.joystick_button_2          = false;
-   game.core.io.joystick_button_3          = false;
-   game.core.io.joystick_button_4          = false;
-   game.core.io.joystick_button_5          = false;
-   game.core.io.joystick_button_6          = false;
-   game.core.io.joystick_button_7          = false;
-   game.core.io.joystick_button_8          = false;
-   game.core.io.joystick_button_9          = false;
-   game.core.io.joystick_button_10         = false;
-   game.core.io.joystick_button_11         = false;
-   game.core.io.mouse_wheel_x              = 0;
-   game.core.io.mouse_wheel_y              = 0;
-   game.core.io.mouse_wheel_up             = false;
-   game.core.io.mouse_wheel_down           = false;
-   game.core.io.mouse_button_left          = false;
-   game.core.io.mouse_button_middle        = false;
-   game.core.io.mouse_button_right         = false;
-   game.core.io.mouse_x                    = 0.0f;
-   game.core.io.mouse_y                    = 0.0f;
-   game.core.io.mouse_xrel                 = 0.0f;
-   game.core.io.mouse_yrel                 = 0.0f;
-   game.core.io.key_0                      = false;
-   game.core.io.key_1                      = false;
-   game.core.io.key_2                      = false;
-   game.core.io.key_3                      = false;
-   game.core.io.key_4                      = false;
-   game.core.io.key_5                      = false;
-   game.core.io.key_6                      = false;
-   game.core.io.key_7                      = false;
-   game.core.io.key_8                      = false;
-   game.core.io.key_9                      = false;
-   game.core.io.key_a                      = false;
-   game.core.io.key_b                      = false;
-   game.core.io.key_c                      = false;
-   game.core.io.key_d                      = false;
-   game.core.io.key_e                      = false;
-   game.core.io.key_f                      = false;
-   game.core.io.key_g                      = false;
-   game.core.io.key_h                      = false;
-   game.core.io.key_i                      = false;
-   game.core.io.key_j                      = false;
-   game.core.io.key_k                      = false;
-   game.core.io.key_l                      = false;
-   game.core.io.key_m                      = false;
-   game.core.io.key_n                      = false;
-   game.core.io.key_o                      = false;
-   game.core.io.key_p                      = false;
-   game.core.io.key_q                      = false;
-   game.core.io.key_r                      = false;
-   game.core.io.key_s                      = false;
-   game.core.io.key_t                      = false;
-   game.core.io.key_u                      = false;
-   game.core.io.key_v                      = false;
-   game.core.io.key_w                      = false;
-   game.core.io.key_x                      = false;
-   game.core.io.key_y                      = false;
-   game.core.io.key_z                      = false;
-   game.core.io.key_up                     = false;
-   game.core.io.key_down                   = false;
-   game.core.io.key_left                   = false;
-   game.core.io.key_right                  = false;
-   game.core.io.key_escape                 = false;
-   game.core.io.key_plus                   = false;
-   game.core.io.key_minus                  = false;
-   game.core.io.key_space                  = false;
-   game.core.io.key_enter                  = false;
-   game.core.io.key_alt                    = false;
-   game.core.io.select                     = false;
-   game.core.io.pause                      = false;
-   game.core.io.shoot                      = false;
-   game.core.io.up                         = false;
-   game.core.io.down                       = false;
-   game.core.io.left                       = false;
-   game.core.io.right                      = false;
-   game.core.io.key_f1                     = false;
-   game.core.io.key_f2                     = false;
-   game.core.io.key_f3                     = false;
-   game.core.io.key_f4                     = false;
-   game.core.io.key_f5                     = false;
-   game.core.io.key_f6                     = false;
-   game.core.io.key_f7                     = false;
-   game.core.io.key_f8                     = false;
-   game.core.io.key_f9                     = false;
-   game.core.io.key_f10                    = false;
-   game.core.io.key_f11                    = false;
-   game.core.io.key_f12                    = false;
-   return(true);
+    SDL_Init(SDL_INIT_JOYSTICK);
+    SDL_Joystick *joystick;
+    SDL_JoystickEventState(SDL_ENABLE);
+    joystick = SDL_JoystickOpen(0);
+    if ((SDL_NumJoysticks() > 0) && (joystick))
+    {
+        game.core.config.joystick_enabled        = true;
+        game.core.io.joystick_sensitivity        = 6400;
+        game.core.config.joystick_no_buttons     = SDL_JoystickNumButtons(joystick);
+    }
+    else
+    {
+        game.core.config.joystick_enabled    = false;
+        game.core.io.joystick_sensitivity    = 0;
+        game.core.config.joystick_no_buttons = 0;
+    }
+    game.core.io.mouse_in_window            = true;
+    game.core.io.mouse_button_ready         = false;
+    game.core.io.keyboard_ready             = false;
+    game.core.io.joystick_ready             = false;
+    game.core.io.mouse_button_delay         = 32;
+    game.core.io.mouse_button_delay_count   = 0;
+    game.core.io.keyboard_delay             = 24;
+    game.core.io.keyboard_delay_count       = 0;
+    game.core.io.joystick_delay             = 24;
+    game.core.io.joystick_delay_count       = 0;
+    game.core.io.joystick_up                = false;
+    game.core.io.joystick_down              = false;
+    game.core.io.joystick_left              = false;
+    game.core.io.joystick_right             = false;
+    game.core.io.joystick_button_0          = false;
+    game.core.io.joystick_button_1          = false;
+    game.core.io.joystick_button_2          = false;
+    game.core.io.joystick_button_3          = false;
+    game.core.io.joystick_button_4          = false;
+    game.core.io.joystick_button_5          = false;
+    game.core.io.joystick_button_6          = false;
+    game.core.io.joystick_button_7          = false;
+    game.core.io.joystick_button_8          = false;
+    game.core.io.joystick_button_9          = false;
+    game.core.io.joystick_button_10         = false;
+    game.core.io.joystick_button_11         = false;
+    game.core.io.mouse_wheel_x              = 0;
+    game.core.io.mouse_wheel_y              = 0;
+    game.core.io.mouse_wheel_up             = false;
+    game.core.io.mouse_wheel_down           = false;
+    game.core.io.mouse_button_left          = false;
+    game.core.io.mouse_button_middle        = false;
+    game.core.io.mouse_button_right         = false;
+    game.core.io.mouse_x                    = 0.0f;
+    game.core.io.mouse_y                    = 0.0f;
+    game.core.io.mouse_xrel                 = 0.0f;
+    game.core.io.mouse_yrel                 = 0.0f;
+    game.core.io.key_0                      = false;
+    game.core.io.key_1                      = false;
+    game.core.io.key_2                      = false;
+    game.core.io.key_3                      = false;
+    game.core.io.key_4                      = false;
+    game.core.io.key_5                      = false;
+    game.core.io.key_6                      = false;
+    game.core.io.key_7                      = false;
+    game.core.io.key_8                      = false;
+    game.core.io.key_9                      = false;
+    game.core.io.key_a                      = false;
+    game.core.io.key_b                      = false;
+    game.core.io.key_c                      = false;
+    game.core.io.key_d                      = false;
+    game.core.io.key_e                      = false;
+    game.core.io.key_f                      = false;
+    game.core.io.key_g                      = false;
+    game.core.io.key_h                      = false;
+    game.core.io.key_i                      = false;
+    game.core.io.key_j                      = false;
+    game.core.io.key_k                      = false;
+    game.core.io.key_l                      = false;
+    game.core.io.key_m                      = false;
+    game.core.io.key_n                      = false;
+    game.core.io.key_o                      = false;
+    game.core.io.key_p                      = false;
+    game.core.io.key_q                      = false;
+    game.core.io.key_r                      = false;
+    game.core.io.key_s                      = false;
+    game.core.io.key_t                      = false;
+    game.core.io.key_u                      = false;
+    game.core.io.key_v                      = false;
+    game.core.io.key_w                      = false;
+    game.core.io.key_x                      = false;
+    game.core.io.key_y                      = false;
+    game.core.io.key_z                      = false;
+    game.core.io.key_up                     = false;
+    game.core.io.key_down                   = false;
+    game.core.io.key_left                   = false;
+    game.core.io.key_right                  = false;
+    game.core.io.key_escape                 = false;
+    game.core.io.key_plus                   = false;
+    game.core.io.key_minus                  = false;
+    game.core.io.key_space                  = false;
+    game.core.io.key_enter                  = false;
+    game.core.io.key_alt                    = false;
+    game.core.io.select                     = false;
+    game.core.io.pause                      = false;
+    game.core.io.shoot                      = false;
+    game.core.io.up                         = false;
+    game.core.io.down                       = false;
+    game.core.io.left                       = false;
+    game.core.io.right                      = false;
+    game.core.io.key_f1                     = false;
+    game.core.io.key_f2                     = false;
+    game.core.io.key_f3                     = false;
+    game.core.io.key_f4                     = false;
+    game.core.io.key_f5                     = false;
+    game.core.io.key_f6                     = false;
+    game.core.io.key_f7                     = false;
+    game.core.io.key_f8                     = false;
+    game.core.io.key_f9                     = false;
+    game.core.io.key_f10                    = false;
+    game.core.io.key_f11                    = false;
+    game.core.io.key_f12                    = false;
+    return(true);
 };
 
 bool events_process(void)
@@ -184,6 +185,19 @@ bool events_process(void)
         //if (game.core.event.type == SDL_MOUSEWHEEL)
         //{
         //};
+        if (game.core.event.type == SDL_WINDOWEVENT)
+        {
+            switch (game.core.event.window.event)
+            {
+                case SDL_WINDOWEVENT_ENTER:
+                    game.core.io.mouse_in_window = true;
+                break;
+                case SDL_WINDOWEVENT_LEAVE:
+                    game.core.io.mouse_in_window = false;
+                break;
+            }
+        }
+
         if (game.core.event.type == SDL_MOUSEMOTION)
         {
             game.core.config.mouse_autohide_process(true);
