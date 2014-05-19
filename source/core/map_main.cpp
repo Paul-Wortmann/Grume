@@ -239,8 +239,10 @@ void map_generate_tile_positions(map_type* map_pointer)
 
 void map_scroll(map_type* map_pointer,int x_dir, int y_dir)
 {
-    map_pointer->info.position.x += x_dir * DEFAULT_MAP_SCROLL_SPEED;
-    map_pointer->info.position.y += y_dir * DEFAULT_MAP_SCROLL_SPEED;
+    float x_scroll_delta = MAP_SCROLL_SPEED;
+    float y_scroll_delta = MAP_SCROLL_SPEED + (MAP_SCROLL_SPEED * (game.core.config.display_resolution_x/game.core.config.display_resolution_y));
+    if (((map_pointer->info.position.x + x_dir) > (-2.0f+x_scroll_delta)) && ((map_pointer->info.position.x + x_dir) < 2.0f-x_scroll_delta)) map_pointer->info.position.x += x_dir * x_scroll_delta;
+    if (((map_pointer->info.position.y + y_dir) > (-2.0f+y_scroll_delta)) && ((map_pointer->info.position.y + y_dir) < 2.0f-y_scroll_delta)) map_pointer->info.position.y += y_dir * y_scroll_delta;
 }
 
 bool map_tile_visable(map_type* map_pointer,int tile_count)
@@ -267,10 +269,10 @@ int  map_mouse_over_tile(map_type* map_pointer)
 
 void map_process(map_type* map_pointer)
 {
-    if (game.core.io.mouse_y >=  0.99000) map_scroll(map_pointer, 0,-1);
-    if (game.core.io.mouse_y <= -0.99000) map_scroll(map_pointer, 0, 1);
-    if (game.core.io.mouse_x >=  0.99000) map_scroll(map_pointer,-1, 0);
-    if (game.core.io.mouse_x <= -0.99000) map_scroll(map_pointer, 1, 0);
+    if ((game.core.io.mouse_y >=  0.99000) || (game.core.io.up))    map_scroll(map_pointer, 0,-1);
+    if ((game.core.io.mouse_y <= -0.99000) || (game.core.io.down))  map_scroll(map_pointer, 0, 1);
+    if ((game.core.io.mouse_x <= -0.99000) || (game.core.io.left))  map_scroll(map_pointer, 1, 0);
+    if ((game.core.io.mouse_x >=  0.99000) || (game.core.io.right)) map_scroll(map_pointer,-1, 0);
 };
 
 void map_center_on_tile(map_type* map_pointer, int tile_ID)
@@ -279,7 +281,6 @@ void map_center_on_tile(map_type* map_pointer, int tile_ID)
     float temp_y    = map_pointer->tile[tile_ID].position.y;
     for(int tile_count = 0; tile_count <  map_pointer->info.number_of_tiles; tile_count++)
     {
-        map_pointer->tile[tile_count].position.x -= temp_x;
         map_pointer->tile[tile_count].position.y -= temp_y;
         map_pointer->tile[tile_count].vertex[0].x  = map_pointer->tile[tile_count].position.x;
         map_pointer->tile[tile_count].vertex[0].y  = map_pointer->tile[tile_count].position.y + map_pointer->info.tile_size;

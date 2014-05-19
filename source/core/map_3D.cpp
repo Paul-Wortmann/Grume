@@ -85,10 +85,10 @@ void map_3D_class::load(std::string file_name)
 */
 void map_3D_class::process(void)
 {
-    if (game.core.io.mouse_y >=  0.99000) map_3D_class::scroll_map( 0,-1);
-    if (game.core.io.mouse_y <= -0.99000) map_3D_class::scroll_map( 0, 1);
-    if (game.core.io.mouse_x >=  0.99000) map_3D_class::scroll_map(-1, 0);
-    if (game.core.io.mouse_x <= -0.99000) map_3D_class::scroll_map( 1, 0);
+    if ((game.core.io.mouse_y >=  0.99000) || (game.core.io.up))    map_3D_class::scroll_map( 0, 1);
+    if ((game.core.io.mouse_y <= -0.99000) || (game.core.io.down))  map_3D_class::scroll_map( 0,-1);
+    if ((game.core.io.mouse_x <= -0.99000) || (game.core.io.left))  map_3D_class::scroll_map(-1, 0);
+    if ((game.core.io.mouse_x >=  0.99000) || (game.core.io.right)) map_3D_class::scroll_map( 1, 0);
 
     game.player.gold = map_3D_class::mouse_over_cell();
 };

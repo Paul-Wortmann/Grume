@@ -127,10 +127,10 @@ void map_2D_class::render(fmx_map_type *fmx_map_pointer)
 
 void map_2D_class::process(fmx_map_type *fmx_map_pointer)
 {
-    if (game.core.io.mouse_y >=  0.99000) map_2D_class::scroll_map(fmx_map_pointer, 0, 1);
-    if (game.core.io.mouse_y <= -0.99000) map_2D_class::scroll_map(fmx_map_pointer, 0,-1);
-    if (game.core.io.mouse_x >=  0.99000) map_2D_class::scroll_map(fmx_map_pointer, 1, 0);
-    if (game.core.io.mouse_x <= -0.99000) map_2D_class::scroll_map(fmx_map_pointer,-1, 0);
+    if ((game.core.io.mouse_y >=  0.99000) || (game.core.io.up))    map_2D_class::scroll_map(fmx_map_pointer, 0, 1);
+    if ((game.core.io.mouse_y <= -0.99000) || (game.core.io.down))  map_2D_class::scroll_map(fmx_map_pointer, 0,-1);
+    if ((game.core.io.mouse_x <= -0.99000) || (game.core.io.left))  map_2D_class::scroll_map(fmx_map_pointer,-1, 0);
+    if ((game.core.io.mouse_x >=  0.99000) || (game.core.io.right)) map_2D_class::scroll_map(fmx_map_pointer, 1, 0);
 };
 
 void map_2D_class::scroll_map(fmx_map_type *fmx_map_pointer,int x_dir, int y_dir)
