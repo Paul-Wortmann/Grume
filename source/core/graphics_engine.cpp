@@ -158,6 +158,31 @@ std::string pixel_format_from_int(int pfi)
     return ("Error in pixel_format_from_int(int pfi)");
 }
 
+graphics_engine_class::graphics_engine_class(void)
+{
+    graphics_engine_class::gl_extention_count       = 0;
+    graphics_engine_class::gl_extention_names       = NULL;
+    graphics_engine_class::current_display          = 0;
+    graphics_engine_class::current_display_mode     = 0;
+    graphics_engine_class::GL_major_version_number  = 0;
+    graphics_engine_class::GL_minor_version_number  = 0;
+    graphics_engine_class::number_displays          = 0;
+    graphics_engine_class::number_display_modes     = 0;
+    graphics_engine_class::renderer                 = RENDERER_GL1;
+    graphics_engine_class::window                   = NULL;
+    graphics_engine_class::display_mode             = NULL;
+    graphics_engine_class::menu_mode_list           = NULL;
+    graphics_engine_class::menu_mode_length         = 0;
+    graphics_engine_class::render_GL.fragmentshader = 0;
+    graphics_engine_class::render_GL.vertexshader   = 0;
+    graphics_engine_class::render_GL.shaderprogram  = 0;
+}
+
+graphics_engine_class::~graphics_engine_class(void)
+{
+
+}
+
 bool graphics_engine_class::init(void)
 {
     bool return_value = false;
@@ -239,28 +264,3 @@ std::string graphics_engine_class::get_display_mode(int mode_number)
     return(return_value);
 };
 
-
-
-
-graphics_engine_class::graphics_engine_class(void)
-{
-    graphics_engine_class::current_display          = 0;
-    graphics_engine_class::current_display_mode     = 0;
-    graphics_engine_class::GL_major_version_number  = 0;
-    graphics_engine_class::GL_minor_version_number  = 0;
-    graphics_engine_class::number_displays          = 0;
-    graphics_engine_class::number_display_modes     = 0;
-    graphics_engine_class::renderer                 = RENDERER_GL1;
-    graphics_engine_class::window                   = NULL;
-    graphics_engine_class::display_mode             = NULL;
-    graphics_engine_class::menu_mode_list           = NULL;
-    graphics_engine_class::menu_mode_length         = 0;
-    graphics_engine_class::render_GL.fragmentshader = 0;
-    graphics_engine_class::render_GL.vertexshader   = 0;
-    graphics_engine_class::render_GL.shaderprogram  = 0;
-};
-
-graphics_engine_class::~graphics_engine_class(void)
-{
-
-};
