@@ -69,6 +69,7 @@ game_class::game_class(void)
     game_class::zoom.speed                 = 0.0f;
     game_class::event                      = 0;
     game_class::state                      = STATE_MENU;
+    game_class::map_3d_pointer             = NULL;
 };
 
 void game_class::init(void)

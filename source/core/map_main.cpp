@@ -285,6 +285,7 @@ void map_center_on_tile(map_type* map_pointer, int tile_ID)
     float temp_y    = map_pointer->tile[tile_ID].position.y;
     for(int tile_count = 0; tile_count <  map_pointer->info.number_of_tiles; tile_count++)
     {
+        map_pointer->tile[tile_count].position.x -= temp_x;
         map_pointer->tile[tile_count].position.y -= temp_y;
         map_pointer->tile[tile_count].vertex[0].x  = map_pointer->tile[tile_count].position.x;
         map_pointer->tile[tile_count].vertex[0].y  = map_pointer->tile[tile_count].position.y + map_pointer->info.tile_size;

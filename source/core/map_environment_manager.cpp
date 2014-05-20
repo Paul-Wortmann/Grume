@@ -99,11 +99,7 @@ bool map_environment_manager_class::load_map_environment(map_environment_type *m
             #define found_model_wall           5
             #define found_model_debris         6
             int            found_data      = found_none;
-            //float          temp_float_data;
-            //int            temp_int_data;
-            //std::string    temp_string_data;
             std::string    temp_string_key;
-            std::string    temp_string_value;
             std::string    data_line;
             int            position_count  = 0;
             char           temp_char       = ' ';
@@ -139,22 +135,12 @@ bool map_environment_manager_class::load_map_environment(map_environment_type *m
                     {
                         temp_char         = ' ';
                         temp_string_key   = "";
-                        temp_string_value = "";
                         while ((temp_char != '>') && (position_count < (int)data_line.length()))
                         {
                             temp_char = data_line[position_count];
                             if (temp_char != '>') temp_string_key += temp_char;
                             position_count++;
                         }
-                        while ((temp_char != '<') && (position_count < (int)data_line.length()))
-                        {
-                            temp_char = data_line[position_count];
-                            if (temp_char != '<') temp_string_value += temp_char;
-                            position_count++;
-                        }
-                        //temp_string_data    = temp_string_value.c_str();
-                        //temp_float_data     = atof(temp_string_value.c_str());
-                        //temp_int_data       = atoi(temp_string_value.c_str());
                         if (temp_string_key == "music")            found_data = found_music;
                         if (temp_string_key == "loading_textures") found_data = found_texture_load_screen;
                         if (temp_string_key == "floor_textures")   found_data = found_texture_floor;
