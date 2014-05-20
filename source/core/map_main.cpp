@@ -241,11 +241,26 @@ void map_scroll(map_type* map_pointer,int x_dir, int y_dir)
 {
     if (game.core.io.mouse_in_window)
     {
+        float map_size_x = (DEFAULT_TILE_DIAGONAL_LENGTH*map_pointer->info.size.x)/2.0f;
+        float map_size_y = (DEFAULT_TILE_DIAGONAL_LENGTH*map_pointer->info.size.y)/2.0f;
         float x_scroll_delta = MAP_SCROLL_SPEED;
         float y_scroll_delta = MAP_SCROLL_SPEED + (MAP_SCROLL_SPEED * (game.core.config.display_resolution_x/game.core.config.display_resolution_y));
-
-        if (((map_pointer->info.position.x + x_dir) > (-2.0f+x_scroll_delta)) && ((map_pointer->info.position.x + x_dir) < 2.0f-x_scroll_delta)) map_pointer->info.position.x += x_dir * x_scroll_delta;
-        if (((map_pointer->info.position.y + y_dir) > (-2.0f+y_scroll_delta)) && ((map_pointer->info.position.y + y_dir) < 2.0f-y_scroll_delta)) map_pointer->info.position.y += y_dir * y_scroll_delta;
+        if (x_dir > 0)
+        {
+            if ((map_pointer->info.position.x - (map_size_x)) < 0) map_pointer->info.position.x += x_scroll_delta;
+        }
+        if (x_dir < 0)
+        {
+            if ((map_pointer->info.position.x + map_size_x) > 0) map_pointer->info.position.x -= x_scroll_delta;
+        }
+        if (y_dir > 0)
+        {
+            if ((map_pointer->info.position.y - (map_size_y-DEFAULT_TILE_DIAGONAL_LENGTH)) < 0) map_pointer->info.position.y += y_scroll_delta;
+        }
+        if (y_dir < 0)
+        {
+            if ((map_pointer->info.position.y + map_size_y) > 0) map_pointer->info.position.y -= y_scroll_delta;
+        }
     }
 }
 
@@ -312,12 +327,13 @@ void map_render(map_type* map_pointer)
     glRotatef (map_pointer->info.rotation.y, 0.0f, 1.0f, 0.0f);
     glRotatef (map_pointer->info.rotation.z, 0.0f, 0.0f, 1.0f);
 	glTranslatef(map_pointer->info.position.x,map_pointer->info.position.y,map_pointer->info.position.z);
-    //if (map_pointer->info.tile_visable(tile_count))
+
+    glMatrixMode(GL_MODELVIEW_MATRIX);
+    //ARB_multitexture_supported = true; need for bump mapping specular etc...
+    glBindTexture(GL_TEXTURE_2D, map_pointer->environment->texture_floor[1].data->data.frame[0].data);
+    for (int tile_count = 0; tile_count < map_pointer->info.number_of_tiles; tile_count++)
     {
-        glMatrixMode(GL_MODELVIEW_MATRIX);
-        //ARB_multitexture_supported = true; need for bump mapping specular etc...
-        glBindTexture(GL_TEXTURE_2D, map_pointer->environment->texture_floor[1].data->data.frame[0].data);
-        for (int tile_count = 0; tile_count < map_pointer->info.number_of_tiles; tile_count++)
+        if (map_tile_visable(map_pointer,tile_count))
         {
             glBegin (GL_QUADS);
                 glTexCoord2i( 0, 1);glVertex3f(map_pointer->tile[tile_count].vertex[0].x,map_pointer->tile[tile_count].vertex[0].y,map_pointer->tile[tile_count].vertex[0].z);

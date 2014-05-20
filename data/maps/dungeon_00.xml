@@ -4,8 +4,8 @@
    <game_version>0.31</game_version>
    <name>Dungeon 1</name>
    <environment>data/environments/dungeon.xml</environment>
-   <size_x>4</size_x>
-   <size_y>4</size_y>
+   <size_x>8</size_x>
+   <size_y>8</size_y>
    <tile_layer>
     <id>1</id>
     <id>1</id>

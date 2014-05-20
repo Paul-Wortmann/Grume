@@ -28,9 +28,10 @@
 #include "map_environment_manager.hpp"
 #include "types.hpp"
 
-#define DEFAULT_TILE_SIZE          0.4f
-#define DEFAULT_TILE_SIZE_HALF     DEFAULT_TILE_SIZE/2.0f
-#define DEFAULT_MAP_SCROLL_SPEED   DEFAULT_TILE_SIZE/20.0f
+#define DEFAULT_TILE_SIZE            (0.4f)
+#define DEFAULT_TILE_SIZE_HALF       (DEFAULT_TILE_SIZE/2.0f)
+#define DEFAULT_TILE_DIAGONAL_LENGTH (sqrt(2*(DEFAULT_TILE_SIZE*DEFAULT_TILE_SIZE)))
+#define DEFAULT_MAP_SCROLL_SPEED     (DEFAULT_TILE_SIZE/20.0f)
 
 struct map_tile_type
 {

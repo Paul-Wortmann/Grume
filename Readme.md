@@ -39,13 +39,9 @@ Or in one single line:
 
 - sudo apt-get install libsdl2-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-ttf-dev libsdl2-net-dev libglew-dev libphysfs-dev libfreetype6-dev
 
-Next you need to generate a make file, you can use the following command, make sure you are in the Frost and Flame directory:
+Next you need to generate make files and build Frost and Flame, you can use the following command, make sure you are in the Frost and Flame directory:
 
-- cmake CMakeLists.txt
-
-And finally you can use make to build the Frost and Flame binary:
-
-- make
+- cmake . && make
 
 So in summery the commands are as follows:
 
