@@ -44,6 +44,9 @@ void map_gen_base(fmx_map_type *fmx_map_pointer, int map_size_x, int map_size_y)
     fmx_map_pointer->data.number_of_layers                  = 3;
     fmx_map_pointer->data.number_of_tilesets                = 1;
     fmx_map_pointer->data.number_of_rooms                   = 0;
+    fmx_map_pointer->data.position.x                        = 0.0f;
+    fmx_map_pointer->data.position.y                        = 0.0f;
+    fmx_map_pointer->data.position.z                        = 0.0f;
     fmx_map_pointer->layer                                  = new fmx_layer_type[fmx_map_pointer->data.number_of_layers];
     fmx_map_pointer->layer[LAYER_FLOOR].name                = "generated_floor";
     fmx_map_pointer->layer[LAYER_FLOOR].width               = map_size_x;

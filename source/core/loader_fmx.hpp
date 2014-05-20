@@ -78,6 +78,7 @@ struct fmx_data_type
     int                number_of_rooms;
     int                path_length;
     bool               path_end_found;
+    f3_type            position;
 };
 
 struct fmx_path_data_type

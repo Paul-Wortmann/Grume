@@ -127,49 +127,68 @@ void map_2D_class::render(fmx_map_type *fmx_map_pointer)
 
 void map_2D_class::process(fmx_map_type *fmx_map_pointer)
 {
-    if ((game.core.io.mouse_y >=  0.99000) || (game.core.io.up))    map_2D_class::scroll_map(fmx_map_pointer, 0, 1);
-    if ((game.core.io.mouse_y <= -0.99000) || (game.core.io.down))  map_2D_class::scroll_map(fmx_map_pointer, 0,-1);
-    if ((game.core.io.mouse_x <= -0.99000) || (game.core.io.left))  map_2D_class::scroll_map(fmx_map_pointer,-1, 0);
-    if ((game.core.io.mouse_x >=  0.99000) || (game.core.io.right)) map_2D_class::scroll_map(fmx_map_pointer, 1, 0);
+    if ((game.core.io.mouse_y >=  0.99000) || (game.core.io.up))    map_2D_class::scroll_map(fmx_map_pointer, 0,-1);
+    if ((game.core.io.mouse_y <= -0.99000) || (game.core.io.down))  map_2D_class::scroll_map(fmx_map_pointer, 0, 1);
+    if ((game.core.io.mouse_x <= -0.99000) || (game.core.io.left))  map_2D_class::scroll_map(fmx_map_pointer, 1, 0);
+    if ((game.core.io.mouse_x >=  0.99000) || (game.core.io.right)) map_2D_class::scroll_map(fmx_map_pointer,-1, 0);
 };
 
 void map_2D_class::scroll_map(fmx_map_type *fmx_map_pointer,int x_dir, int y_dir)
 {
-    float temp_x = x_dir * MAP_SCROLL_SPEED;
-    float temp_y = y_dir * (MAP_SCROLL_SPEED + (MAP_SCROLL_SPEED * (game.core.config.display_resolution_x/game.core.config.display_resolution_y)));
-    for(int layer_count = 0; layer_count < fmx_map_pointer->data.number_of_layers; layer_count++)
-    {
-        for(int tile_count = 0; tile_count < fmx_map_pointer->data.number_of_tiles; tile_count++)
-        {
-            fmx_map_pointer->layer[layer_count].tile[tile_count].position.x -= temp_x;
-            fmx_map_pointer->layer[layer_count].tile[tile_count].position.y -= temp_y;
-        }
-    }
-/*
     if (game.core.io.mouse_in_window)
     {
-        float map_size_x = (DEFAULT_TILE_DIAGONAL_LENGTH*map_pointer->info.size.x)/2.0f;
-        float map_size_y = (DEFAULT_TILE_DIAGONAL_LENGTH*map_pointer->info.size.y)/2.0f;
+        float delta_x = 0.0f;
+        float delta_y = 0.0f;
+        float tile_diagonal_length = sqrt(2*TILE_WIDTH*TILE_HEIGHT);
+        float map_size_x = ((tile_diagonal_length*fmx_map_pointer->data.map_width)/2.0f);
+        float map_size_y = ((tile_diagonal_length*fmx_map_pointer->data.map_height)/2.0f);
         float x_scroll_delta = MAP_SCROLL_SPEED;
         float y_scroll_delta = MAP_SCROLL_SPEED + (MAP_SCROLL_SPEED * (game.core.config.display_resolution_x/game.core.config.display_resolution_y));
         if (x_dir > 0)
         {
-            if ((map_pointer->info.position.x - (map_size_x)) < 0) map_pointer->info.position.x += x_scroll_delta;
+            if ((fmx_map_pointer->data.position.x - (map_size_x)) < 0)
+            {
+                delta_x = fmx_map_pointer->data.position.x;
+                fmx_map_pointer->data.position.x += x_scroll_delta;
+                delta_x -= fmx_map_pointer->data.position.x;
+            }
         }
         if (x_dir < 0)
         {
-            if ((map_pointer->info.position.x + map_size_x) > 0) map_pointer->info.position.x -= x_scroll_delta;
+            if ((fmx_map_pointer->data.position.x + map_size_x) > 0)
+            {
+                delta_x = fmx_map_pointer->data.position.x;
+                fmx_map_pointer->data.position.x -= x_scroll_delta;
+                delta_x -= fmx_map_pointer->data.position.x;
+            }
         }
         if (y_dir > 0)
         {
-            if ((map_pointer->info.position.y - (map_size_y-DEFAULT_TILE_DIAGONAL_LENGTH)) < 0) map_pointer->info.position.y += y_scroll_delta;
+            if ((fmx_map_pointer->data.position.y - (map_size_y-tile_diagonal_length)) < 0)
+            {
+                delta_y = fmx_map_pointer->data.position.y;
+                fmx_map_pointer->data.position.y += y_scroll_delta;
+                delta_y -= fmx_map_pointer->data.position.y;
+            }
         }
         if (y_dir < 0)
         {
-            if ((map_pointer->info.position.y + map_size_y) > 0) map_pointer->info.position.y -= y_scroll_delta;
+            if ((fmx_map_pointer->data.position.y + map_size_y) > 0)
+            {
+                delta_y = fmx_map_pointer->data.position.y;
+                fmx_map_pointer->data.position.y -= y_scroll_delta;
+                delta_y -= fmx_map_pointer->data.position.y;
+            }
+        }
+        for(int layer_count = 0; layer_count < fmx_map_pointer->data.number_of_layers; layer_count++)
+        {
+            for(int tile_count = 0; tile_count < fmx_map_pointer->data.number_of_tiles; tile_count++)
+            {
+                fmx_map_pointer->layer[layer_count].tile[tile_count].position.x -= delta_x;
+                fmx_map_pointer->layer[layer_count].tile[tile_count].position.y -= delta_y;
+            }
         }
     }
-*/
 };
 
 void map_2D_class::center_on_tile(fmx_map_type *fmx_map_pointer, int tile_ID)
