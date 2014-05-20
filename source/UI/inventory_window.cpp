@@ -1353,7 +1353,7 @@ void process_inventory_window(UI_form_struct *UI_form_pointer)
 {
     int element_number = 50; // Gold amount
     game.texture_manager.load_string(UI_form_pointer->data.element[element_number].title.text,game.font_manager.root,ullint_to_string(game.player.gold),0.8f,255,255,255,255,TEXTURE_RENDER_LEFT);
-    game.player.gold++;
+    //game.player.gold++;
 
     //item_type* item_pointer = new item_type;
     //item_pointer = NULL;

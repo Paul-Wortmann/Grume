@@ -118,6 +118,7 @@ void game_class::init(void)
 
     game.player.init();
     game.player.name                              =  "Kanchi";
+    game.player.gold                              =  100;
     game.player.level.current                     =  0;
     game.player.level.base                        =  2;
     game.player.level.multiplier                  =  1.52f;
