@@ -26,6 +26,9 @@
 #include <ctime>
 #include <iostream>
 #include "log.hpp"
+#include "../game/game.hpp"
+
+extern game_class game;
 
 log_class::log_class(void)
 {
@@ -395,16 +398,7 @@ bool log_class::write_time_stamp(std::string message)
     std::fstream logfile(log_class::file_name.c_str(),std::ios::out|std::ios::app);
     if (logfile.is_open())
     {
-        time_t rawtime;
-        rawtime = time(&rawtime);
-        char buffer [80];
-        #ifdef __MINGW32__
-            strftime (buffer,80,"%Y-%m-%d - %H:%M:%S - %Z",localtime(&rawtime));
-        #else
-            struct tm newtime;
-            strftime (buffer,80,"%Y-%m-%d - %H:%M:%S - %Z",localtime_r(&rawtime, &newtime));
-        #endif
-        logfile << message << buffer << std::endl;
+        logfile << message << game.core.file.get_time_string() << std::endl;
         logfile.close();
     }
     else return(false);
