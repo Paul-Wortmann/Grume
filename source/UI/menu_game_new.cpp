@@ -230,7 +230,7 @@ void setup_menu_game_new(int UID)
         UI_form_pointer->data.choice_selection[choice_selection_count].selected       = 0;
         UI_form_pointer->data.choice_selection[choice_selection_count].position       = 0;
         UI_form_pointer->data.choice_selection[choice_selection_count].position_max   = 0;
-        UI_form_pointer->data.choice_selection[choice_selection_count].number_of_data = 13;
+        UI_form_pointer->data.choice_selection[choice_selection_count].number_of_data = 44;
         UI_form_pointer->data.choice_selection[choice_selection_count].data = new selection_data_type[UI_form_pointer->data.choice_selection[choice_selection_count].number_of_data];
         for (int data_count = 0; data_count < UI_form_pointer->data.choice_selection[choice_selection_count].number_of_data; data_count++)
         {
@@ -453,16 +453,16 @@ void process_menu_game_new(UI_form_struct *UI_form_pointer)
             break;
             case ((4*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // left arrow button for player portrait selection
                 element_number = 6;
-                UI_form_pointer->data.choice_selection[0].position++;
-                if (UI_form_pointer->data.choice_selection[0].position > UI_form_pointer->data.choice_selection[0].position_max) UI_form_pointer->data.choice_selection[0].position = 0;
+                UI_form_pointer->data.choice_selection[0].position--;
+                if (UI_form_pointer->data.choice_selection[0].position < 0) UI_form_pointer->data.choice_selection[0].position = UI_form_pointer->data.choice_selection[0].position_max;
                 UI_form_pointer->data.element[element_number].texture.normal              = UI_form_pointer->data.choice_selection[0].data[UI_form_pointer->data.choice_selection[0].position].image;
                 UI_form_pointer->data.element[element_number].texture.highlighted         = UI_form_pointer->data.choice_selection[0].data[UI_form_pointer->data.choice_selection[0].position].image;
                 UI_form_pointer->data.element[element_number].texture.disabled            = UI_form_pointer->data.choice_selection[0].data[UI_form_pointer->data.choice_selection[0].position].image;
             break;
             case ((5*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Right arrow button for player portrait selection
                 element_number = 6;
-                UI_form_pointer->data.choice_selection[0].position--;
-                if (UI_form_pointer->data.choice_selection[0].position < 0) UI_form_pointer->data.choice_selection[0].position = UI_form_pointer->data.choice_selection[0].position_max;
+                UI_form_pointer->data.choice_selection[0].position++;
+                if (UI_form_pointer->data.choice_selection[0].position > UI_form_pointer->data.choice_selection[0].position_max) UI_form_pointer->data.choice_selection[0].position = 0;
                 UI_form_pointer->data.element[element_number].texture.normal              = UI_form_pointer->data.choice_selection[0].data[UI_form_pointer->data.choice_selection[0].position].image;
                 UI_form_pointer->data.element[element_number].texture.highlighted         = UI_form_pointer->data.choice_selection[0].data[UI_form_pointer->data.choice_selection[0].position].image;
                 UI_form_pointer->data.element[element_number].texture.disabled            = UI_form_pointer->data.choice_selection[0].data[UI_form_pointer->data.choice_selection[0].position].image;
