@@ -139,9 +139,9 @@ void map_2D_class::scroll_map(fmx_map_type *fmx_map_pointer,int x_dir, int y_dir
     {
         float delta_x = 0.0f;
         float delta_y = 0.0f;
-        float tile_diagonal_length = sqrt(2*TILE_WIDTH*TILE_HEIGHT);
-        float map_size_x = ((tile_diagonal_length*fmx_map_pointer->data.map_width)/2.0f);
-        float map_size_y = ((tile_diagonal_length*fmx_map_pointer->data.map_height)/2.0f);
+        float tile_diagonal_length = sqrt(TILE_WIDTH_HALF*TILE_HEIGHT_HALF/2);
+        float map_size_x = ((tile_diagonal_length*fmx_map_pointer->data.map_width)/2.6f);
+        float map_size_y = ((tile_diagonal_length*fmx_map_pointer->data.map_height)/6.0f);
         float x_scroll_delta = MAP_SCROLL_SPEED;
         float y_scroll_delta = MAP_SCROLL_SPEED + (MAP_SCROLL_SPEED * (game.core.config.display_resolution_x/game.core.config.display_resolution_y));
         if (x_dir > 0)
