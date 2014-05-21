@@ -86,7 +86,7 @@ void setup_menu_game_new(int UID)
     UI_form_pointer->data.title_bar.position.y    = UI_form_pointer->data.position.y+(UI_form_pointer->data.size.y/2.0f)-(UI_form_pointer->data.title_bar.size.y/2.0f);
 
     // ---------------------------- Setup window elements ----------------------------------------------------
-    UI_form_pointer->data.number_of_elements = 10;
+    UI_form_pointer->data.number_of_elements = 7;
     UI_form_pointer->data.element = new UI_element_struct[UI_form_pointer->data.number_of_elements];
     for (int element_count = 0; element_count < UI_form_pointer->data.number_of_elements; element_count++)
     {
@@ -227,9 +227,9 @@ void setup_menu_game_new(int UID)
     UI_form_pointer->data.choice_selection = new choice_selection_type[UI_form_pointer->data.number_of_choice_selections];
     for (int choice_selection_count = 0; choice_selection_count < UI_form_pointer->data.number_of_choice_selections; choice_selection_count++)
     {
-        UI_form_pointer->data.choice_selection[choice_selection_count].selected     = 0;
-        UI_form_pointer->data.choice_selection[choice_selection_count].position     = 0;
-        UI_form_pointer->data.choice_selection[choice_selection_count].position_max = 0;
+        UI_form_pointer->data.choice_selection[choice_selection_count].selected       = 0;
+        UI_form_pointer->data.choice_selection[choice_selection_count].position       = 0;
+        UI_form_pointer->data.choice_selection[choice_selection_count].position_max   = 0;
         UI_form_pointer->data.choice_selection[choice_selection_count].number_of_data = 13;
         UI_form_pointer->data.choice_selection[choice_selection_count].data = new selection_data_type[UI_form_pointer->data.choice_selection[choice_selection_count].number_of_data];
         for (int data_count = 0; data_count < UI_form_pointer->data.choice_selection[choice_selection_count].number_of_data; data_count++)
@@ -241,14 +241,9 @@ void setup_menu_game_new(int UID)
     }
     int choice_selection_number = 0;
 
-    UI_form_pointer->data.choice_selection[choice_selection_number].selected         = 0; // Player portrait selection
-    UI_form_pointer->data.choice_selection[choice_selection_number].position         = 0;
-    UI_form_pointer->data.choice_selection[choice_selection_number].position_max     = 12;
-    for (int data_position_count = 0; data_position_count <= UI_form_pointer->data.choice_selection[choice_selection_number].position_max;data_position_count++)
-    {
-        UI_form_pointer->data.choice_selection[choice_selection_number].data[data_position_count].active = false;
-    }
-    UI_form_pointer->data.choice_selection[choice_selection_number].data[ 0].active     = true;
+    UI_form_pointer->data.choice_selection[choice_selection_number].selected            = 0; // Player portrait selection
+    UI_form_pointer->data.choice_selection[choice_selection_number].position            = 0;
+    UI_form_pointer->data.choice_selection[choice_selection_number].position_max        = 43;
     UI_form_pointer->data.choice_selection[choice_selection_number].data[ 0].image      = game.texture_manager.add_texture("data/textures/UI/portraits/portrait_00.png");
     UI_form_pointer->data.choice_selection[choice_selection_number].data[ 1].image      = game.texture_manager.add_texture("data/textures/UI/portraits/portrait_01.png");
     UI_form_pointer->data.choice_selection[choice_selection_number].data[ 2].image      = game.texture_manager.add_texture("data/textures/UI/portraits/portrait_02.png");
@@ -262,10 +257,63 @@ void setup_menu_game_new(int UID)
     UI_form_pointer->data.choice_selection[choice_selection_number].data[10].image      = game.texture_manager.add_texture("data/textures/UI/portraits/portrait_10.png");
     UI_form_pointer->data.choice_selection[choice_selection_number].data[11].image      = game.texture_manager.add_texture("data/textures/UI/portraits/portrait_11.png");
     UI_form_pointer->data.choice_selection[choice_selection_number].data[12].image      = game.texture_manager.add_texture("data/textures/UI/portraits/portrait_12.png");
+    UI_form_pointer->data.choice_selection[choice_selection_number].data[13].image      = game.texture_manager.add_texture("data/textures/UI/portraits/portrait_13.png");
+    UI_form_pointer->data.choice_selection[choice_selection_number].data[14].image      = game.texture_manager.add_texture("data/textures/UI/portraits/portrait_14.png");
+    UI_form_pointer->data.choice_selection[choice_selection_number].data[15].image      = game.texture_manager.add_texture("data/textures/UI/portraits/portrait_15.png");
+    UI_form_pointer->data.choice_selection[choice_selection_number].data[16].image      = game.texture_manager.add_texture("data/textures/UI/portraits/portrait_16.png");
+    UI_form_pointer->data.choice_selection[choice_selection_number].data[17].image      = game.texture_manager.add_texture("data/textures/UI/portraits/portrait_17.png");
+    UI_form_pointer->data.choice_selection[choice_selection_number].data[18].image      = game.texture_manager.add_texture("data/textures/UI/portraits/portrait_18.png");
+    UI_form_pointer->data.choice_selection[choice_selection_number].data[19].image      = game.texture_manager.add_texture("data/textures/UI/portraits/portrait_19.png");
+    UI_form_pointer->data.choice_selection[choice_selection_number].data[20].image      = game.texture_manager.add_texture("data/textures/UI/portraits/portrait_20.png");
+    UI_form_pointer->data.choice_selection[choice_selection_number].data[21].image      = game.texture_manager.add_texture("data/textures/UI/portraits/portrait_21.png");
+    UI_form_pointer->data.choice_selection[choice_selection_number].data[22].image      = game.texture_manager.add_texture("data/textures/UI/portraits/portrait_22.png");
+    UI_form_pointer->data.choice_selection[choice_selection_number].data[23].image      = game.texture_manager.add_texture("data/textures/UI/portraits/portrait_23.png");
+    UI_form_pointer->data.choice_selection[choice_selection_number].data[24].image      = game.texture_manager.add_texture("data/textures/UI/portraits/portrait_24.png");
+    UI_form_pointer->data.choice_selection[choice_selection_number].data[25].image      = game.texture_manager.add_texture("data/textures/UI/portraits/portrait_25.png");
+    UI_form_pointer->data.choice_selection[choice_selection_number].data[26].image      = game.texture_manager.add_texture("data/textures/UI/portraits/portrait_26.png");
+    UI_form_pointer->data.choice_selection[choice_selection_number].data[27].image      = game.texture_manager.add_texture("data/textures/UI/portraits/portrait_27.png");
+    UI_form_pointer->data.choice_selection[choice_selection_number].data[28].image      = game.texture_manager.add_texture("data/textures/UI/portraits/portrait_28.png");
+    UI_form_pointer->data.choice_selection[choice_selection_number].data[29].image      = game.texture_manager.add_texture("data/textures/UI/portraits/portrait_29.png");
+    UI_form_pointer->data.choice_selection[choice_selection_number].data[30].image      = game.texture_manager.add_texture("data/textures/UI/portraits/portrait_30.png");
+    UI_form_pointer->data.choice_selection[choice_selection_number].data[31].image      = game.texture_manager.add_texture("data/textures/UI/portraits/portrait_31.png");
+    UI_form_pointer->data.choice_selection[choice_selection_number].data[32].image      = game.texture_manager.add_texture("data/textures/UI/portraits/portrait_32.png");
+    UI_form_pointer->data.choice_selection[choice_selection_number].data[33].image      = game.texture_manager.add_texture("data/textures/UI/portraits/portrait_33.png");
+    UI_form_pointer->data.choice_selection[choice_selection_number].data[34].image      = game.texture_manager.add_texture("data/textures/UI/portraits/portrait_34.png");
+    UI_form_pointer->data.choice_selection[choice_selection_number].data[35].image      = game.texture_manager.add_texture("data/textures/UI/portraits/portrait_35.png");
+    UI_form_pointer->data.choice_selection[choice_selection_number].data[36].image      = game.texture_manager.add_texture("data/textures/UI/portraits/portrait_36.png");
+    UI_form_pointer->data.choice_selection[choice_selection_number].data[37].image      = game.texture_manager.add_texture("data/textures/UI/portraits/portrait_37.png");
+    UI_form_pointer->data.choice_selection[choice_selection_number].data[38].image      = game.texture_manager.add_texture("data/textures/UI/portraits/portrait_38.png");
+    UI_form_pointer->data.choice_selection[choice_selection_number].data[39].image      = game.texture_manager.add_texture("data/textures/UI/portraits/portrait_39.png");
+    UI_form_pointer->data.choice_selection[choice_selection_number].data[40].image      = game.texture_manager.add_texture("data/textures/UI/portraits/portrait_40.png");
+    UI_form_pointer->data.choice_selection[choice_selection_number].data[41].image      = game.texture_manager.add_texture("data/textures/UI/portraits/portrait_41.png");
+    UI_form_pointer->data.choice_selection[choice_selection_number].data[42].image      = game.texture_manager.add_texture("data/textures/UI/portraits/portrait_42.png");
+    UI_form_pointer->data.choice_selection[choice_selection_number].data[43].image      = game.texture_manager.add_texture("data/textures/UI/portraits/portrait_43.png");
     game.player.portrait = UI_form_pointer->data.choice_selection[choice_selection_number].data[ 0].image;
 //----------------------------------------------------------------------------------------------------------------------
 
-    element_number = 3; // left arrow button for player portrait selection
+    element_number = 3; //--- Background_frame_01 ---
+    UI_form_pointer->data.element[element_number].window_UID                  = UI_form_pointer->data.UID;
+    UI_form_pointer->data.element[element_number].element_UID                 = element_number;
+    UI_form_pointer->data.element[element_number].title.text                  = NULL;
+    UI_form_pointer->data.element[element_number].title.enabled               = false;
+    UI_form_pointer->data.element[element_number].active                      = true;
+    UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_IMAGE;
+    UI_form_pointer->data.element[element_number].zoom.enabled                = false;
+    UI_form_pointer->data.element[element_number].tooltip.enabled             = false;
+    UI_form_pointer->data.element[element_number].color                       = UI_form_pointer->data.color;
+    UI_form_pointer->data.element[element_number].size.x                      = UI_form_pointer->data.size.x/1.6f;
+    UI_form_pointer->data.element[element_number].size.y                      = UI_form_pointer->data.size.y/3.0f;
+    UI_form_pointer->data.element[element_number].position.x                  = UI_form_pointer->data.position.x;//+(UI_form_pointer->data.size.x/2.0f);
+    UI_form_pointer->data.element[element_number].position.y                  = UI_form_pointer->data.position.y+(UI_form_pointer->data.size.y/5.0f);
+    UI_form_pointer->data.element[element_number].texture.normal              = game.texture_manager.add_texture("data/textures/UI/menu/frame_00.png");
+    UI_form_pointer->data.element[element_number].texture.highlighted         = game.texture_manager.add_texture("data/textures/UI/menu/frame_00.png");
+    UI_form_pointer->data.element[element_number].sound                       = UI_form_pointer->data.sound;
+    UI_form_pointer->data.element[element_number].sound.on_click.enabled      = false;
+    UI_form_pointer->data.element[element_number].sound.on_mouse_over.enabled = false;
+    UI_form_pointer->data.element[element_number].mouse_delay.maximum         = 30;
+    UI_form_pointer->data.element[element_number].font                        = UI_form_pointer->data.font;
+
+    element_number = 4; // left arrow button for player portrait selection
     UI_form_pointer->data.element[element_number].window_UID                = UI_form_pointer->data.UID;
     UI_form_pointer->data.element[element_number].element_UID               = element_number;
     UI_form_pointer->data.element[element_number].title.text                = NULL;
@@ -275,9 +323,9 @@ void setup_menu_game_new(int UID)
     UI_form_pointer->data.element[element_number].zoom                      = UI_form_pointer->data.zoom;
     UI_form_pointer->data.element[element_number].tooltip.enabled           = false;
     UI_form_pointer->data.element[element_number].size.x                    = (UI_form_pointer->data.size.x / 100.f)*10.0f;
-    UI_form_pointer->data.element[element_number].size.y                    = UI_form_pointer->data.size.y / 10.0f;
+    UI_form_pointer->data.element[element_number].size.y                    = UI_form_pointer->data.size.y / 16.0f;
     UI_form_pointer->data.element[element_number].position.x                = UI_form_pointer->data.position.x-(UI_form_pointer->data.size.x/2.0f)+(UI_form_pointer->data.element[element_number].size.x*1.0f);
-    UI_form_pointer->data.element[element_number].position.y                = UI_form_pointer->data.position.y+(UI_form_pointer->data.size.y/2.0f)-(UI_form_pointer->data.element[element_number].size.y*2.0f);
+    UI_form_pointer->data.element[element_number].position.y                = UI_form_pointer->data.position.y+(UI_form_pointer->data.size.y/2.0f)-(UI_form_pointer->data.element[element_number].size.y*4.8f);
     UI_form_pointer->data.element[element_number].texture                   = UI_form_pointer->data.texture;
     UI_form_pointer->data.element[element_number].texture.normal            = game.texture_manager.add_texture("data/textures/UI/menu/arrow_normal.png");
     UI_form_pointer->data.element[element_number].texture.highlighted       = game.texture_manager.add_texture("data/textures/UI/menu/arrow_highlighted.png");
@@ -291,7 +339,7 @@ void setup_menu_game_new(int UID)
     UI_form_pointer->data.element[element_number].font                      = UI_form_pointer->data.font;
     UI_form_pointer->data.element[element_number].mouse_delay.maximum       = 10;
 
-    element_number = 4; // Right arrow button for player portrait selection
+    element_number = 5; // Right arrow button for player portrait selection
     UI_form_pointer->data.element[element_number].window_UID                = UI_form_pointer->data.UID;
     UI_form_pointer->data.element[element_number].element_UID               = element_number;
     UI_form_pointer->data.element[element_number].title.text                = NULL;
@@ -301,9 +349,9 @@ void setup_menu_game_new(int UID)
     UI_form_pointer->data.element[element_number].zoom                      = UI_form_pointer->data.zoom;
     UI_form_pointer->data.element[element_number].tooltip.enabled           = false;
     UI_form_pointer->data.element[element_number].size.x                    = (UI_form_pointer->data.size.x / 100.f)*10.0f;
-    UI_form_pointer->data.element[element_number].size.y                    = UI_form_pointer->data.size.y / 10.0f;
+    UI_form_pointer->data.element[element_number].size.y                    = UI_form_pointer->data.size.y / 16.0f;
     UI_form_pointer->data.element[element_number].position.x                = UI_form_pointer->data.position.x+(UI_form_pointer->data.size.x/2.0f)-(UI_form_pointer->data.element[element_number].size.x*1.0f);
-    UI_form_pointer->data.element[element_number].position.y                = UI_form_pointer->data.position.y+(UI_form_pointer->data.size.y/2.0f)-(UI_form_pointer->data.element[element_number].size.y*2.0f);
+    UI_form_pointer->data.element[element_number].position.y                = UI_form_pointer->data.position.y+(UI_form_pointer->data.size.y/2.0f)-(UI_form_pointer->data.element[element_number].size.y*4.8f);
     UI_form_pointer->data.element[element_number].texture                   = UI_form_pointer->data.texture;
     UI_form_pointer->data.element[element_number].texture.normal            = game.texture_manager.add_texture("data/textures/UI/menu/arrow_normal.png");
     UI_form_pointer->data.element[element_number].texture.highlighted       = game.texture_manager.add_texture("data/textures/UI/menu/arrow_highlighted.png");
@@ -317,137 +365,46 @@ void setup_menu_game_new(int UID)
     UI_form_pointer->data.element[element_number].font                      = UI_form_pointer->data.font;
     UI_form_pointer->data.element[element_number].mouse_delay.maximum       = 10;
 
-    element_number = 5; // Image 0 of the player portrait selection
-    UI_form_pointer->data.element[element_number].window_UID                = UI_form_pointer->data.UID;
-    UI_form_pointer->data.element[element_number].element_UID               = element_number;
-    UI_form_pointer->data.element[element_number].title.text                = NULL;
-    UI_form_pointer->data.element[element_number].selected                  = true;
-    UI_form_pointer->data.element[element_number].active                    = true;
-    UI_form_pointer->data.element[element_number].type                      = UI_ELEMENT_IMAGE;
-    UI_form_pointer->data.element[element_number].color                     = UI_form_pointer->data.color;
-    UI_form_pointer->data.element[element_number].zoom                      = UI_form_pointer->data.zoom;
-    UI_form_pointer->data.element[element_number].tooltip.enabled           = false;
-    UI_form_pointer->data.element[element_number].size.x                    = (UI_form_pointer->data.size.x / 100.f)*10.0f;
-    UI_form_pointer->data.element[element_number].size.y                    = UI_form_pointer->data.size.y / 10.0f;
-    UI_form_pointer->data.element[element_number].position.x                = UI_form_pointer->data.position.x-(UI_form_pointer->data.size.x/2.0f)+(UI_form_pointer->data.element[element_number].size.x*2.5f);
-    UI_form_pointer->data.element[element_number].position.y                = UI_form_pointer->data.position.y+(UI_form_pointer->data.size.y/2.0f)-(UI_form_pointer->data.element[element_number].size.y*2.00f);
-    UI_form_pointer->data.element[element_number].texture.normal            = UI_form_pointer->data.choice_selection[choice_selection_number].data[0].image;
-    UI_form_pointer->data.element[element_number].texture.highlighted       = game.texture_manager.add_texture("data/textures/UI/menu/selection_box.png");
-    UI_form_pointer->data.element[element_number].sound                     = UI_form_pointer->data.sound;
-    UI_form_pointer->data.element[element_number].mouse_delay.maximum       = 10;
-    UI_form_pointer->data.element[element_number].font                      = UI_form_pointer->data.font;
+    element_number = 6; // Image of the player portrait selection
+    UI_form_pointer->data.element[element_number].window_UID                  = UI_form_pointer->data.UID;
+    UI_form_pointer->data.element[element_number].element_UID                 = element_number;
+    UI_form_pointer->data.element[element_number].title.text                  = NULL;
+    UI_form_pointer->data.element[element_number].active                      = true;
+    UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_BUTTON;
+    UI_form_pointer->data.element[element_number].color                       = UI_form_pointer->data.color;
+    UI_form_pointer->data.element[element_number].zoom                        = UI_form_pointer->data.zoom;
+    UI_form_pointer->data.element[element_number].zoom.enabled                = false;
+    UI_form_pointer->data.element[element_number].tooltip.enabled             = false;
+    UI_form_pointer->data.element[element_number].size.x                      = UI_form_pointer->data.size.x/1.6f;
+    UI_form_pointer->data.element[element_number].size.y                      = UI_form_pointer->data.size.y/3.0f;
+    UI_form_pointer->data.element[element_number].position.x                  = UI_form_pointer->data.position.x;//+(UI_form_pointer->data.size.x/2.0f);
+    UI_form_pointer->data.element[element_number].position.y                  = UI_form_pointer->data.position.y+(UI_form_pointer->data.size.y/5.0f);
+    UI_form_pointer->data.element[element_number].texture                     = UI_form_pointer->data.texture;
+    UI_form_pointer->data.element[element_number].texture.normal              = UI_form_pointer->data.choice_selection[choice_selection_number].data[0].image;
+    UI_form_pointer->data.element[element_number].texture.highlighted         = UI_form_pointer->data.choice_selection[choice_selection_number].data[0].image;
+    UI_form_pointer->data.element[element_number].texture.disabled            = UI_form_pointer->data.choice_selection[choice_selection_number].data[0].image;
+    UI_form_pointer->data.element[element_number].title.size.x                = 0;//UI_form_pointer->data.element[element_number].title.text.length()/1.2f;
+    UI_form_pointer->data.element[element_number].title.size.y                = 0;//UI_form_pointer->data.element[element_number].title.size.x*4;;
+    UI_form_pointer->data.element[element_number].title.position.x            = UI_form_pointer->data.element[element_number].position.x-(UI_form_pointer->data.element[element_number].title.size.x/100.0f);
+    UI_form_pointer->data.element[element_number].title.position.y            = UI_form_pointer->data.element[element_number].position.y-(UI_form_pointer->data.element[element_number].title.size.y/1480.0f);
+    UI_form_pointer->data.element[element_number].sound                       = UI_form_pointer->data.sound;
+    UI_form_pointer->data.element[element_number].sound.on_click.enabled      = false;
+    UI_form_pointer->data.element[element_number].sound.on_mouse_over.enabled = false;
+    UI_form_pointer->data.element[element_number].font                        = UI_form_pointer->data.font;
+    UI_form_pointer->data.element[element_number].mouse_delay.maximum         = 10;
 
-    element_number = 6; // Image 1 of the player portrait selection
-    UI_form_pointer->data.element[element_number].window_UID                = UI_form_pointer->data.UID;
-    UI_form_pointer->data.element[element_number].element_UID               = element_number;
-    UI_form_pointer->data.element[element_number].title.text                = NULL;
-    UI_form_pointer->data.element[element_number].selected                  = false;
-    UI_form_pointer->data.element[element_number].active                    = true;
-    UI_form_pointer->data.element[element_number].type                      = UI_ELEMENT_IMAGE;
-    UI_form_pointer->data.element[element_number].color                     = UI_form_pointer->data.color;
-    UI_form_pointer->data.element[element_number].zoom                      = UI_form_pointer->data.zoom;
-    UI_form_pointer->data.element[element_number].tooltip.enabled           = false;
-    UI_form_pointer->data.element[element_number].size.x                    = (UI_form_pointer->data.size.x / 100.f)*10.0f;
-    UI_form_pointer->data.element[element_number].size.y                    = UI_form_pointer->data.size.y / 10.0f;
-    UI_form_pointer->data.element[element_number].position.x                = UI_form_pointer->data.position.x-(UI_form_pointer->data.size.x/2.0f)+(UI_form_pointer->data.element[element_number].size.x*3.75f);
-    UI_form_pointer->data.element[element_number].position.y                = UI_form_pointer->data.position.y+(UI_form_pointer->data.size.y/2.0f)-(UI_form_pointer->data.element[element_number].size.y*2.00f);
-    UI_form_pointer->data.element[element_number].texture.normal            = UI_form_pointer->data.choice_selection[choice_selection_number].data[1].image;
-    UI_form_pointer->data.element[element_number].texture.highlighted       = game.texture_manager.add_texture("data/textures/UI/menu/selection_box.png");
-    UI_form_pointer->data.element[element_number].sound                     = UI_form_pointer->data.sound;
-    UI_form_pointer->data.element[element_number].mouse_delay.maximum       = 10;
-    UI_form_pointer->data.element[element_number].font                      = UI_form_pointer->data.font;
-
-    element_number = 7; // Image 2 of the player portrait selection
-    UI_form_pointer->data.element[element_number].window_UID                = UI_form_pointer->data.UID;
-    UI_form_pointer->data.element[element_number].element_UID               = element_number;
-    UI_form_pointer->data.element[element_number].title.text                = NULL;
-    UI_form_pointer->data.element[element_number].selected                  = false;
-    UI_form_pointer->data.element[element_number].active                    = true;
-    UI_form_pointer->data.element[element_number].type                      = UI_ELEMENT_IMAGE;
-    UI_form_pointer->data.element[element_number].color                     = UI_form_pointer->data.color;
-    UI_form_pointer->data.element[element_number].zoom                      = UI_form_pointer->data.zoom;
-    UI_form_pointer->data.element[element_number].tooltip.enabled           = false;
-    UI_form_pointer->data.element[element_number].size.x                    = (UI_form_pointer->data.size.x / 100.f)*10.0f;
-    UI_form_pointer->data.element[element_number].size.y                    = UI_form_pointer->data.size.y / 10.0f;
-    UI_form_pointer->data.element[element_number].position.x                = UI_form_pointer->data.position.x-(UI_form_pointer->data.size.x/2.0f)+(UI_form_pointer->data.element[element_number].size.x*5.0f);
-    UI_form_pointer->data.element[element_number].position.y                = UI_form_pointer->data.position.y+(UI_form_pointer->data.size.y/2.0f)-(UI_form_pointer->data.element[element_number].size.y*2.00f);
-    UI_form_pointer->data.element[element_number].texture.normal            = UI_form_pointer->data.choice_selection[choice_selection_number].data[2].image;
-    UI_form_pointer->data.element[element_number].texture.highlighted       = game.texture_manager.add_texture("data/textures/UI/menu/selection_box.png");
-    UI_form_pointer->data.element[element_number].sound                     = UI_form_pointer->data.sound;
-    UI_form_pointer->data.element[element_number].mouse_delay.maximum       = 10;
-    UI_form_pointer->data.element[element_number].font                      = UI_form_pointer->data.font;
-
-    element_number = 8; // Image 3 of the player portrait selection
-    UI_form_pointer->data.element[element_number].window_UID                = UI_form_pointer->data.UID;
-    UI_form_pointer->data.element[element_number].element_UID               = element_number;
-    UI_form_pointer->data.element[element_number].title.text                = NULL;
-    UI_form_pointer->data.element[element_number].selected                  = false;
-    UI_form_pointer->data.element[element_number].active                    = true;
-    UI_form_pointer->data.element[element_number].type                      = UI_ELEMENT_IMAGE;
-    UI_form_pointer->data.element[element_number].color                     = UI_form_pointer->data.color;
-    UI_form_pointer->data.element[element_number].zoom                      = UI_form_pointer->data.zoom;
-    UI_form_pointer->data.element[element_number].tooltip.enabled           = false;
-    UI_form_pointer->data.element[element_number].size.x                    = (UI_form_pointer->data.size.x / 100.f)*10.0f;
-    UI_form_pointer->data.element[element_number].size.y                    = UI_form_pointer->data.size.y / 10.0f;
-    UI_form_pointer->data.element[element_number].position.x                = UI_form_pointer->data.position.x-(UI_form_pointer->data.size.x/2.0f)+(UI_form_pointer->data.element[element_number].size.x*6.25f);
-    UI_form_pointer->data.element[element_number].position.y                = UI_form_pointer->data.position.y+(UI_form_pointer->data.size.y/2.0f)-(UI_form_pointer->data.element[element_number].size.y*2.00f);
-    UI_form_pointer->data.element[element_number].texture.normal            = UI_form_pointer->data.choice_selection[choice_selection_number].data[3].image;
-    UI_form_pointer->data.element[element_number].texture.highlighted       = game.texture_manager.add_texture("data/textures/UI/menu/selection_box.png");
-    UI_form_pointer->data.element[element_number].sound                     = UI_form_pointer->data.sound;
-    UI_form_pointer->data.element[element_number].mouse_delay.maximum       = 10;
-    UI_form_pointer->data.element[element_number].font                      = UI_form_pointer->data.font;
-
-    element_number = 9; // Image 4 of the player portrait selection
-    UI_form_pointer->data.element[element_number].window_UID                = UI_form_pointer->data.UID;
-    UI_form_pointer->data.element[element_number].element_UID               = element_number;
-    UI_form_pointer->data.element[element_number].title.text                = NULL;
-    UI_form_pointer->data.element[element_number].selected                  = false;
-    UI_form_pointer->data.element[element_number].active                    = true;
-    UI_form_pointer->data.element[element_number].type                      = UI_ELEMENT_IMAGE;
-    UI_form_pointer->data.element[element_number].color                     = UI_form_pointer->data.color;
-    UI_form_pointer->data.element[element_number].zoom                      = UI_form_pointer->data.zoom;
-    UI_form_pointer->data.element[element_number].tooltip.enabled           = false;
-    UI_form_pointer->data.element[element_number].size.x                    = (UI_form_pointer->data.size.x / 100.f)*10.0f;
-    UI_form_pointer->data.element[element_number].size.y                    = UI_form_pointer->data.size.y / 10.0f;
-    UI_form_pointer->data.element[element_number].position.x                = UI_form_pointer->data.position.x-(UI_form_pointer->data.size.x/2.0f)+(UI_form_pointer->data.element[element_number].size.x*7.5f);
-    UI_form_pointer->data.element[element_number].position.y                = UI_form_pointer->data.position.y+(UI_form_pointer->data.size.y/2.0f)-(UI_form_pointer->data.element[element_number].size.y*2.00f);
-    UI_form_pointer->data.element[element_number].texture.normal            = UI_form_pointer->data.choice_selection[choice_selection_number].data[4].image;
-    UI_form_pointer->data.element[element_number].texture.highlighted       = game.texture_manager.add_texture("data/textures/UI/menu/selection_box.png");
-    UI_form_pointer->data.element[element_number].sound                     = UI_form_pointer->data.sound;
-    UI_form_pointer->data.element[element_number].mouse_delay.maximum       = 10;
-    UI_form_pointer->data.element[element_number].font                      = UI_form_pointer->data.font;
-};
+}
 
 void update_menu_game_new(int UID)
 {
-    int element_number          = 0;
-    int choice_selection_number = 0;
-    UI_form_struct *UI_form_pointer;
-    UI_form_pointer = game.UI_manager.UI_form_get(UID);
-    element_number = 5; // Image 0 of the player portrait selection
-    UI_form_pointer->data.element[element_number].texture.normal      = UI_form_pointer->data.choice_selection[choice_selection_number].data[element_number-5].image;
-    UI_form_pointer->data.element[element_number].texture.highlighted = UI_form_pointer->data.element[element_number].texture.highlighted;
-    element_number = 6; // Image 1 of the player portrait selection
-    UI_form_pointer->data.element[element_number].texture.normal      = UI_form_pointer->data.choice_selection[choice_selection_number].data[element_number-5].image;
-    UI_form_pointer->data.element[element_number].texture.highlighted = UI_form_pointer->data.element[element_number].texture.highlighted;
-    element_number = 7; // Image 2 of the player portrait selection
-    UI_form_pointer->data.element[element_number].texture.normal      = UI_form_pointer->data.choice_selection[choice_selection_number].data[element_number-5].image;
-    UI_form_pointer->data.element[element_number].texture.highlighted = UI_form_pointer->data.element[element_number].texture.highlighted;
-    element_number = 8; // Image 3 of the player portrait selection
-    UI_form_pointer->data.element[element_number].texture.normal      = UI_form_pointer->data.choice_selection[choice_selection_number].data[element_number-5].image;
-    UI_form_pointer->data.element[element_number].texture.highlighted = UI_form_pointer->data.element[element_number].texture.highlighted;
-    element_number = 9; // Image 4 of the player portrait selection
-    UI_form_pointer->data.element[element_number].texture.normal      = UI_form_pointer->data.choice_selection[choice_selection_number].data[element_number-5].image;
-    UI_form_pointer->data.element[element_number].texture.highlighted = UI_form_pointer->data.element[element_number].texture.highlighted;
-};
+
+}
 
 void process_menu_game_new(UI_form_struct *UI_form_pointer)
 {
     if(UI_form_pointer->data.event.id > EVENT_NONE)
     {
-        int choice_selection_number = 0;
-        texture_type *temp_data_texture;
-        bool temp_data_bool = false;
+        int element_number = 0;
         switch (UI_form_pointer->data.event.id)
         {
             case ((0*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Close menu button
@@ -458,13 +415,7 @@ void process_menu_game_new(UI_form_struct *UI_form_pointer)
             break;
             case ((2*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Start game menu button
                 //set player portrait
-                for (int data_position_count = 0; data_position_count <= UI_form_pointer->data.choice_selection[choice_selection_number].position_max;data_position_count++)
-                {
-                    if (UI_form_pointer->data.choice_selection[choice_selection_number].data[data_position_count].active)
-                    {
-                        game.player.portrait = UI_form_pointer->data.choice_selection[choice_selection_number].data[data_position_count].image;
-                    };
-                }
+                game.player.portrait->data.frame[0].data = UI_form_pointer->data.element[6].texture.normal->data.frame[0].data;
                 update_player_profile  (game.UI_manager.UI_form_get(UID_PCPROFILE));
                 update_character_window(game.UI_manager.UI_form_get(UID_CHARACTER));
                 switch (game.state)
@@ -498,111 +449,25 @@ void process_menu_game_new(UI_form_struct *UI_form_pointer)
                 UI_form_pointer->data.element[3].state = UI_NORMAL; // Save game
                 UI_form_pointer->data.element[4].state = UI_NORMAL; // Resume game
             break;
-            case ((3*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // left arrow button for player portrait selection
-                UI_form_pointer->data.choice_selection[choice_selection_number].position++;
-                if (UI_form_pointer->data.choice_selection[choice_selection_number].position > UI_form_pointer->data.choice_selection[choice_selection_number].position_max+1) UI_form_pointer->data.choice_selection[choice_selection_number].position = 0;
-                temp_data_texture      = UI_form_pointer->data.choice_selection[choice_selection_number].data[0].image;
-                temp_data_bool         = UI_form_pointer->data.choice_selection[choice_selection_number].data[0].active;
-                for (int data_position_count = 0; data_position_count <= UI_form_pointer->data.choice_selection[choice_selection_number].position_max;data_position_count++)
-                {
-                    UI_form_pointer->data.choice_selection[choice_selection_number].data[data_position_count].image      = UI_form_pointer->data.choice_selection[choice_selection_number].data[data_position_count+1].image;
-                    UI_form_pointer->data.choice_selection[choice_selection_number].data[data_position_count].active     = UI_form_pointer->data.choice_selection[choice_selection_number].data[data_position_count+1].active;
-                }
-                UI_form_pointer->data.choice_selection[choice_selection_number].data[UI_form_pointer->data.choice_selection[choice_selection_number].position_max].image      = temp_data_texture;
-                UI_form_pointer->data.choice_selection[choice_selection_number].data[UI_form_pointer->data.choice_selection[choice_selection_number].position_max].active     = temp_data_bool;
-                UI_form_pointer->data.element[5].texture.normal              = UI_form_pointer->data.choice_selection[choice_selection_number].data[0].image;
-                UI_form_pointer->data.element[6].texture.normal              = UI_form_pointer->data.choice_selection[choice_selection_number].data[1].image;
-                UI_form_pointer->data.element[7].texture.normal              = UI_form_pointer->data.choice_selection[choice_selection_number].data[2].image;
-                UI_form_pointer->data.element[8].texture.normal              = UI_form_pointer->data.choice_selection[choice_selection_number].data[3].image;
-                UI_form_pointer->data.element[9].texture.normal              = UI_form_pointer->data.choice_selection[choice_selection_number].data[4].image;
-                UI_form_pointer->data.element[5].selected                    = UI_form_pointer->data.choice_selection[choice_selection_number].data[0].active;
-                UI_form_pointer->data.element[6].selected                    = UI_form_pointer->data.choice_selection[choice_selection_number].data[1].active;
-                UI_form_pointer->data.element[7].selected                    = UI_form_pointer->data.choice_selection[choice_selection_number].data[2].active;
-                UI_form_pointer->data.element[8].selected                    = UI_form_pointer->data.choice_selection[choice_selection_number].data[3].active;
-                UI_form_pointer->data.element[9].selected                    = UI_form_pointer->data.choice_selection[choice_selection_number].data[4].active;
+            case ((3*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // image background box 1
             break;
-            case ((4*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Right arrow button for player portrait selection
-                UI_form_pointer->data.choice_selection[choice_selection_number].position--;
-                if (UI_form_pointer->data.choice_selection[choice_selection_number].position < 0) UI_form_pointer->data.choice_selection[choice_selection_number].position = UI_form_pointer->data.choice_selection[choice_selection_number].position_max;
-                temp_data_texture      = UI_form_pointer->data.choice_selection[choice_selection_number].data[UI_form_pointer->data.choice_selection[choice_selection_number].position_max-1].image;
-                temp_data_bool         = UI_form_pointer->data.choice_selection[choice_selection_number].data[UI_form_pointer->data.choice_selection[choice_selection_number].position_max-1].active;
-                for (int data_position_count = UI_form_pointer->data.choice_selection[choice_selection_number].position_max-1; data_position_count > 0;data_position_count--)
-                {
-                    UI_form_pointer->data.choice_selection[choice_selection_number].data[data_position_count].image      = UI_form_pointer->data.choice_selection[choice_selection_number].data[data_position_count-1].image;
-                    UI_form_pointer->data.choice_selection[choice_selection_number].data[data_position_count].active     = UI_form_pointer->data.choice_selection[choice_selection_number].data[data_position_count-1].active;
-                }
-                UI_form_pointer->data.choice_selection[choice_selection_number].data[0].image       = temp_data_texture;
-                UI_form_pointer->data.choice_selection[choice_selection_number].data[0].active      = temp_data_bool;
-                UI_form_pointer->data.element[5].texture.normal               = UI_form_pointer->data.choice_selection[choice_selection_number].data[0].image;
-                UI_form_pointer->data.element[6].texture.normal               = UI_form_pointer->data.choice_selection[choice_selection_number].data[1].image;
-                UI_form_pointer->data.element[7].texture.normal               = UI_form_pointer->data.choice_selection[choice_selection_number].data[2].image;
-                UI_form_pointer->data.element[8].texture.normal               = UI_form_pointer->data.choice_selection[choice_selection_number].data[3].image;
-                UI_form_pointer->data.element[9].texture.normal               = UI_form_pointer->data.choice_selection[choice_selection_number].data[4].image;
-                UI_form_pointer->data.element[5].selected                     = UI_form_pointer->data.choice_selection[choice_selection_number].data[0].active;
-                UI_form_pointer->data.element[6].selected                     = UI_form_pointer->data.choice_selection[choice_selection_number].data[1].active;
-                UI_form_pointer->data.element[7].selected                     = UI_form_pointer->data.choice_selection[choice_selection_number].data[2].active;
-                UI_form_pointer->data.element[8].selected                     = UI_form_pointer->data.choice_selection[choice_selection_number].data[3].active;
-                UI_form_pointer->data.element[9].selected                     = UI_form_pointer->data.choice_selection[choice_selection_number].data[4].active;
+            case ((4*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // left arrow button for player portrait selection
+                element_number = 6;
+                UI_form_pointer->data.choice_selection[0].position++;
+                if (UI_form_pointer->data.choice_selection[0].position > UI_form_pointer->data.choice_selection[0].position_max) UI_form_pointer->data.choice_selection[0].position = 0;
+                UI_form_pointer->data.element[element_number].texture.normal              = UI_form_pointer->data.choice_selection[0].data[UI_form_pointer->data.choice_selection[0].position].image;
+                UI_form_pointer->data.element[element_number].texture.highlighted         = UI_form_pointer->data.choice_selection[0].data[UI_form_pointer->data.choice_selection[0].position].image;
+                UI_form_pointer->data.element[element_number].texture.disabled            = UI_form_pointer->data.choice_selection[0].data[UI_form_pointer->data.choice_selection[0].position].image;
             break;
-            case ((5*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Portrait 0 selected
-                for (int data_position_count = 0; data_position_count <= UI_form_pointer->data.choice_selection[choice_selection_number].position_max;data_position_count++)
-                {
-                    UI_form_pointer->data.choice_selection[choice_selection_number].data[data_position_count].active = false;
-                }
-                UI_form_pointer->data.element[5].selected                  = true;
-                UI_form_pointer->data.element[6].selected                  = false;
-                UI_form_pointer->data.element[7].selected                  = false;
-                UI_form_pointer->data.element[8].selected                  = false;
-                UI_form_pointer->data.element[9].selected                  = false;
-                UI_form_pointer->data.choice_selection[choice_selection_number].data[0].active   = true;
+            case ((5*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Right arrow button for player portrait selection
+                element_number = 6;
+                UI_form_pointer->data.choice_selection[0].position--;
+                if (UI_form_pointer->data.choice_selection[0].position < 0) UI_form_pointer->data.choice_selection[0].position = UI_form_pointer->data.choice_selection[0].position_max;
+                UI_form_pointer->data.element[element_number].texture.normal              = UI_form_pointer->data.choice_selection[0].data[UI_form_pointer->data.choice_selection[0].position].image;
+                UI_form_pointer->data.element[element_number].texture.highlighted         = UI_form_pointer->data.choice_selection[0].data[UI_form_pointer->data.choice_selection[0].position].image;
+                UI_form_pointer->data.element[element_number].texture.disabled            = UI_form_pointer->data.choice_selection[0].data[UI_form_pointer->data.choice_selection[0].position].image;
             break;
-            case ((6*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Portrait 1 selected
-                for (int data_position_count = 0; data_position_count <= UI_form_pointer->data.choice_selection[choice_selection_number].position_max;data_position_count++)
-                {
-                    UI_form_pointer->data.choice_selection[choice_selection_number].data[data_position_count].active = false;
-                }
-                UI_form_pointer->data.element[5].selected                  = false;
-                UI_form_pointer->data.element[6].selected                  = true;
-                UI_form_pointer->data.element[7].selected                  = false;
-                UI_form_pointer->data.element[8].selected                  = false;
-                UI_form_pointer->data.element[9].selected                  = false;
-                UI_form_pointer->data.choice_selection[choice_selection_number].data[1].active   = true;
-            break;
-            case ((7*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Portrait 2 selected
-                for (int data_position_count = 0; data_position_count <= UI_form_pointer->data.choice_selection[choice_selection_number].position_max;data_position_count++)
-                {
-                    UI_form_pointer->data.choice_selection[choice_selection_number].data[data_position_count].active = false;
-                }
-                UI_form_pointer->data.element[5].selected                  = false;
-                UI_form_pointer->data.element[6].selected                  = false;
-                UI_form_pointer->data.element[7].selected                  = true;
-                UI_form_pointer->data.element[8].selected                  = false;
-                UI_form_pointer->data.element[9].selected                  = false;
-                UI_form_pointer->data.choice_selection[choice_selection_number].data[2].active   = true;
-            break;
-            case ((8*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Portrait 3 selected
-                for (int data_position_count = 0; data_position_count <= UI_form_pointer->data.choice_selection[choice_selection_number].position_max;data_position_count++)
-                {
-                    UI_form_pointer->data.choice_selection[choice_selection_number].data[data_position_count].active = false;
-                }
-                UI_form_pointer->data.element[5].selected                  = false;
-                UI_form_pointer->data.element[6].selected                  = false;
-                UI_form_pointer->data.element[7].selected                  = false;
-                UI_form_pointer->data.element[8].selected                  = true;
-                UI_form_pointer->data.element[9].selected                  = false;
-                UI_form_pointer->data.choice_selection[choice_selection_number].data[3].active   = true;
-            break;
-            case ((9*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Portrait 4 selected
-                for (int data_position_count = 0; data_position_count <= UI_form_pointer->data.choice_selection[choice_selection_number].position_max;data_position_count++)
-                {
-                    UI_form_pointer->data.choice_selection[choice_selection_number].data[data_position_count].active = false;
-                }
-                UI_form_pointer->data.element[5].selected                  = false;
-                UI_form_pointer->data.element[6].selected                  = false;
-                UI_form_pointer->data.element[7].selected                  = false;
-                UI_form_pointer->data.element[8].selected                  = false;
-                UI_form_pointer->data.element[9].selected                  = true;
-                UI_form_pointer->data.choice_selection[choice_selection_number].data[4].active   = true;
+            case ((6*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Portrait 0 selected
             break;
             case (EVENT_UI_LIST_SORT): //Window stack sort
                 UI_form_pointer->data.event.id = EVENT_NONE;
