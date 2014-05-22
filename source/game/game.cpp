@@ -31,7 +31,7 @@ game_class        game;
 fmx_map_type      fmx_map;
 
 
-bool new_3D_map = false;
+bool new_3D_map = true;
 
 
 game_class::game_class(void)

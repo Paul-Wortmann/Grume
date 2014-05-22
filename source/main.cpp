@@ -50,7 +50,7 @@ extern "C" int main(int argc, char** argv)
 //  --- Application initialization ---
     game.core.debug = true;
     game.state = STATE_INIT;
-    game.core.application_name = "Frost and Flame V0.31b - www.physhexgames.co.nr";
+    game.core.application_name = "Frost and Flame V0.31 - www.physhexgames.co.nr";
     game.core.application_icon = "data/icon.ico";
     game.core.log.set_file_name("frost_and_flame.log");
     game.core.log.clear_file();
