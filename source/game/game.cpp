@@ -359,10 +359,10 @@ void game_class::process(void)
         game.music_manager.next_track = false;
         //if (game.core.music_track ==  0) game.resource.music.menu_00.play();
     }
-    if (game.core.io.keyboard_ready)
+    if (game.core.event_manager.keyboard_ready)
     {
         int element_number    = 1;
-        if (game.core.io.key_escape) // Main menu
+        if (game.core.event_manager.key_escape) // Main menu
         {
             game.UI_manager.UI_form_disable(UID_MENU_GAME_LOAD);
             game.UI_manager.UI_form_disable(UID_MENU_GAME_NEW);
@@ -380,10 +380,10 @@ void game_class::process(void)
                 game.UI_manager.UI_form_disable(UID_MENU_MAIN);
                 game.core.game_menu_active         = false;
             }
-            game.core.io.key_escape                = false;
-            game.core.io.keyboard_delay_count      = 0;
+            game.core.event_manager.key_escape                = false;
+            game.core.event_manager.keyboard_delay_count      = 0;
         }
-        if (game.core.io.key_c) // Character menu
+        if (game.core.event_manager.key_c) // Character menu
         {
             if (!game.core.character_active)
             {
@@ -397,10 +397,10 @@ void game_class::process(void)
                 game.UI_manager.UI_form_disable(UID_CHARACTER);
                 game.core.character_active         = false;
             }
-            game.core.io.key_c                     = false;
-            game.core.io.keyboard_delay_count      = 0;
+            game.core.event_manager.key_c                     = false;
+            game.core.event_manager.keyboard_delay_count      = 0;
         }
-        if (game.core.io.key_e) // Equipment menu
+        if (game.core.event_manager.key_e) // Equipment menu
         {
             if (!game.core.equipment_active)
             {
@@ -414,10 +414,10 @@ void game_class::process(void)
                 game.UI_manager.UI_form_disable(UID_EQUIPMENT);
                 game.core.equipment_active         = false;
             }
-            game.core.io.key_e                     = false;
-            game.core.io.keyboard_delay_count      = 0;
+            game.core.event_manager.key_e                     = false;
+            game.core.event_manager.keyboard_delay_count      = 0;
         }
-        if (game.core.io.key_q) // Quest log menu
+        if (game.core.event_manager.key_q) // Quest log menu
         {
             if (!game.core.quest_log_active)
             {
@@ -431,10 +431,10 @@ void game_class::process(void)
                 game.UI_manager.UI_form_disable(UID_QUEST_LOG);
                 game.core.quest_log_active         = false;
             }
-            game.core.io.key_q                     = false;
-            game.core.io.keyboard_delay_count      = 0;
+            game.core.event_manager.key_q                     = false;
+            game.core.event_manager.keyboard_delay_count      = 0;
         }
-        if (game.core.io.key_f1) // Help menu
+        if (game.core.event_manager.key_f1) // Help menu
         {
             if (!game.core.help_menu_active)
             {
@@ -448,10 +448,10 @@ void game_class::process(void)
                 game.UI_manager.UI_form_disable(UID_MENU_HELP);
                 game.core.help_menu_active       = false;
             }
-            game.core.io.key_f1                  = false;
-            game.core.io.keyboard_delay_count    = 0;
+            game.core.event_manager.key_f1                  = false;
+            game.core.event_manager.keyboard_delay_count    = 0;
         }
-        if (game.core.io.key_i) // Inventory menu
+        if (game.core.event_manager.key_i) // Inventory menu
         {
             if (!game.core.inventory_active)
             {
@@ -465,10 +465,10 @@ void game_class::process(void)
                 game.UI_manager.UI_form_disable(UID_INVENTORY);
                 game.core.inventory_active         = false;
             }
-            game.core.io.key_i                     = false;
-            game.core.io.keyboard_delay_count      = 0;
+            game.core.event_manager.key_i                     = false;
+            game.core.event_manager.keyboard_delay_count      = 0;
         }
-        if (game.core.io.key_b) // Skill book menu
+        if (game.core.event_manager.key_b) // Skill book menu
         {
             if (!game.core.skillbook_active)
             {
@@ -482,10 +482,10 @@ void game_class::process(void)
                 game.UI_manager.UI_form_disable(UID_SKILLBOOK);
                 game.core.skillbook_active         = false;
             }
-            game.core.io.key_b                     = false;
-            game.core.io.keyboard_delay_count      = 0;
+            game.core.event_manager.key_b                     = false;
+            game.core.event_manager.keyboard_delay_count      = 0;
         }
-        if (game.core.io.key_space) // close all open windows
+        if (game.core.event_manager.key_space) // close all open windows
         {
             if (game.core.game_menu_active)
             {
@@ -531,39 +531,39 @@ void game_class::process(void)
                 game.UI_manager.UI_form_disable(UID_NPCVENDOR);
                 game.core.npcvendor_active         = false;
             }
-            game.core.io.key_space                 = false;
-            game.core.io.keyboard_delay_count      = 0;
+            game.core.event_manager.key_space                 = false;
+            game.core.event_manager.keyboard_delay_count      = 0;
         }
-        if (game.core.io.key_alt) // display item names on map (loot / click-able items)
+        if (game.core.event_manager.key_alt) // display item names on map (loot / click-able items)
         {
-            game.core.io.key_alt                   = false;
-            game.core.io.keyboard_delay_count      = 0;
+            game.core.event_manager.key_alt                   = false;
+            game.core.event_manager.keyboard_delay_count      = 0;
         }
 ///------------------------------------------------------------------------------------------
         /*
-        if (game.core.io.key_d) // toggle debug.
+        if (game.core.event_manager.key_d) // toggle debug.
         {
             game.debug = !game.debug;
-            game.core.io.key_d                     = false;
-            game.core.io.keyboard_delay_count      = 0;
+            game.core.event_manager.key_d                     = false;
+            game.core.event_manager.keyboard_delay_count      = 0;
         }
         */
-        if ((game.core.debug)&&(game.core.io.key_t)) // test exp++
+        if ((game.core.debug)&&(game.core.event_manager.key_t)) // test exp++
         {
             game.player.level.current_experience++;
-            game.core.io.key_t                     = false;
-            game.core.io.keyboard_delay_count      = 0;
+            game.core.event_manager.key_t                     = false;
+            game.core.event_manager.keyboard_delay_count      = 0;
         }
-        if ((game.core.debug)&&(game.core.io.key_x)) // quit!!!
+        if ((game.core.debug)&&(game.core.event_manager.key_x)) // quit!!!
         {
             game.state = STATE_QUIT;
-            game.core.io.key_x                     = false;
-            game.core.io.keyboard_delay_count      = 0;
+            game.core.event_manager.key_x                     = false;
+            game.core.event_manager.keyboard_delay_count      = 0;
         }
 ///------------------------------------------------------------------------------------------
 ///                 Action Bar Keys
 ///------------------------------------------------------------------------------------------
-        if (game.core.io.key_1) // Action Bar Key 1
+        if (game.core.event_manager.key_1) // Action Bar Key 1
         {
             element_number = 8;
             UI_form_pointer = game.UI_manager.UI_form_get(UID_ACTIONBAR);
@@ -571,10 +571,10 @@ void game_class::process(void)
             {
                 game.item_manager.use_item(UI_form_pointer,8);
             }
-            game.core.io.key_1                     = false;
-            game.core.io.keyboard_delay_count      = 0;
+            game.core.event_manager.key_1                     = false;
+            game.core.event_manager.keyboard_delay_count      = 0;
         }
-        if (game.core.io.key_2) // Action Bar Key 2
+        if (game.core.event_manager.key_2) // Action Bar Key 2
         {
             element_number = 9;
             UI_form_pointer = game.UI_manager.UI_form_get(UID_ACTIONBAR);
@@ -582,10 +582,10 @@ void game_class::process(void)
             {
                 game.item_manager.use_item(UI_form_pointer,9);
             }
-            game.core.io.key_2                     = false;
-            game.core.io.keyboard_delay_count      = 0;
+            game.core.event_manager.key_2                     = false;
+            game.core.event_manager.keyboard_delay_count      = 0;
         }
-        if (game.core.io.key_3) // Action Bar Key 3
+        if (game.core.event_manager.key_3) // Action Bar Key 3
         {
             element_number = 10;
             UI_form_pointer = game.UI_manager.UI_form_get(UID_ACTIONBAR);
@@ -593,10 +593,10 @@ void game_class::process(void)
             {
                 game.item_manager.use_item(UI_form_pointer,10);
             }
-            game.core.io.key_3                     = false;
-            game.core.io.keyboard_delay_count      = 0;
+            game.core.event_manager.key_3                     = false;
+            game.core.event_manager.keyboard_delay_count      = 0;
         }
-        if (game.core.io.key_4) // Action Bar Key 4
+        if (game.core.event_manager.key_4) // Action Bar Key 4
         {
             element_number = 11;
             UI_form_pointer = game.UI_manager.UI_form_get(UID_ACTIONBAR);
@@ -604,10 +604,10 @@ void game_class::process(void)
             {
                 game.item_manager.use_item(UI_form_pointer,11);
             }
-            game.core.io.key_4                     = false;
-            game.core.io.keyboard_delay_count      = 0;
+            game.core.event_manager.key_4                     = false;
+            game.core.event_manager.keyboard_delay_count      = 0;
         }
-        if (game.core.io.key_5) // Action Bar Key 5
+        if (game.core.event_manager.key_5) // Action Bar Key 5
         {
             element_number = 12;
             UI_form_pointer = game.UI_manager.UI_form_get(UID_ACTIONBAR);
@@ -615,10 +615,10 @@ void game_class::process(void)
             {
                 game.item_manager.use_item(UI_form_pointer,12);
             }
-            game.core.io.key_5                     = false;
-            game.core.io.keyboard_delay_count      = 0;
+            game.core.event_manager.key_5                     = false;
+            game.core.event_manager.keyboard_delay_count      = 0;
         }
-        if (game.core.io.key_6) // Action Bar Key 6
+        if (game.core.event_manager.key_6) // Action Bar Key 6
         {
             element_number = 13;
             UI_form_pointer = game.UI_manager.UI_form_get(UID_ACTIONBAR);
@@ -626,10 +626,10 @@ void game_class::process(void)
             {
                 game.item_manager.use_item(UI_form_pointer,13);
             }
-            game.core.io.key_6                     = false;
-            game.core.io.keyboard_delay_count      = 0;
+            game.core.event_manager.key_6                     = false;
+            game.core.event_manager.keyboard_delay_count      = 0;
         }
-        if (game.core.io.key_7) // Action Bar Key 7
+        if (game.core.event_manager.key_7) // Action Bar Key 7
         {
             element_number = 14;
             UI_form_pointer = game.UI_manager.UI_form_get(UID_ACTIONBAR);
@@ -637,10 +637,10 @@ void game_class::process(void)
             {
                 game.item_manager.use_item(UI_form_pointer,14);
             }
-            game.core.io.key_7                     = false;
-            game.core.io.keyboard_delay_count      = 0;
+            game.core.event_manager.key_7                     = false;
+            game.core.event_manager.keyboard_delay_count      = 0;
         }
-        if (game.core.io.key_8) // Action Bar Key 8
+        if (game.core.event_manager.key_8) // Action Bar Key 8
         {
             element_number = 15;
             UI_form_pointer = game.UI_manager.UI_form_get(UID_ACTIONBAR);
@@ -648,10 +648,10 @@ void game_class::process(void)
             {
                 game.item_manager.use_item(UI_form_pointer,15);
             }
-            game.core.io.key_8                     = false;
-            game.core.io.keyboard_delay_count      = 0;
+            game.core.event_manager.key_8                     = false;
+            game.core.event_manager.keyboard_delay_count      = 0;
         }
-        if (game.core.io.key_9) // Action Bar Key 9
+        if (game.core.event_manager.key_9) // Action Bar Key 9
         {
             element_number = 16;
             UI_form_pointer = game.UI_manager.UI_form_get(UID_ACTIONBAR);
@@ -659,10 +659,10 @@ void game_class::process(void)
             {
                 game.item_manager.use_item(UI_form_pointer,16);
             }
-            game.core.io.key_9                     = false;
-            game.core.io.keyboard_delay_count      = 0;
+            game.core.event_manager.key_9                     = false;
+            game.core.event_manager.keyboard_delay_count      = 0;
         }
-        if (game.core.io.key_0) // Action Bar Key 0
+        if (game.core.event_manager.key_0) // Action Bar Key 0
         {
             element_number = 17;
             UI_form_pointer = game.UI_manager.UI_form_get(UID_ACTIONBAR);
@@ -670,58 +670,58 @@ void game_class::process(void)
             {
                 game.item_manager.use_item(UI_form_pointer,17);
             }
-            game.core.io.key_0                     = false;
-            game.core.io.keyboard_delay_count      = 0;
+            game.core.event_manager.key_0                     = false;
+            game.core.event_manager.keyboard_delay_count      = 0;
         }
 ///------------------------------------------------------------------------------------------
-        if (game.core.io.key_a) // generate a random BSP dungeon
+        if (game.core.event_manager.key_a) // generate a random BSP dungeon
         {
             game.loading_screen.display("data/textures/loading_screens/loading_screen_main.png");
             map_gen(&fmx_map,MAP_GEN_BSP,MAP_TILESET_DUNGEON);
-            game.core.io.key_a                     = false;
-            game.core.io.keyboard_delay_count      = 0;
+            game.core.event_manager.key_a                     = false;
+            game.core.event_manager.keyboard_delay_count      = 0;
         }
-        if (game.core.io.key_s) // generate a random BSP dungeon
+        if (game.core.event_manager.key_s) // generate a random BSP dungeon
         {
             game.loading_screen.display("data/textures/loading_screens/loading_screen_main.png");
             map_gen(&fmx_map,MAP_GEN_BSP,MAP_TILESET_CAVE);
-            game.core.io.key_s                     = false;
-            game.core.io.keyboard_delay_count      = 0;
+            game.core.event_manager.key_s                     = false;
+            game.core.event_manager.keyboard_delay_count      = 0;
         }
-        if (game.core.io.key_d) // generate a random CA cave
+        if (game.core.event_manager.key_d) // generate a random CA cave
         {
             game.loading_screen.display("data/textures/loading_screens/loading_screen_main.png");
             map_gen(&fmx_map,MAP_GEN_CA,MAP_TILESET_CAVE);
-            game.core.io.key_d                     = false;
-            game.core.io.keyboard_delay_count      = 0;
+            game.core.event_manager.key_d                     = false;
+            game.core.event_manager.keyboard_delay_count      = 0;
         }
-        if (game.core.io.key_f) // generate a random CA grassland
+        if (game.core.event_manager.key_f) // generate a random CA grassland
         {
             game.loading_screen.display("data/textures/loading_screens/loading_screen_main.png");
             map_gen(&fmx_map,MAP_GEN_CA,MAP_TILESET_GRASSLAND);
-            game.core.io.key_f                     = false;
-            game.core.io.keyboard_delay_count      = 0;
+            game.core.event_manager.key_f                     = false;
+            game.core.event_manager.keyboard_delay_count      = 0;
         }
-        if (game.core.io.key_g) // generate a random CA dungeon
+        if (game.core.event_manager.key_g) // generate a random CA dungeon
         {
             game.loading_screen.display("data/textures/loading_screens/loading_screen_main.png");
             map_gen(&fmx_map,MAP_GEN_CA,MAP_TILESET_DUNGEON);
-            game.core.io.key_g                     = false;
-            game.core.io.keyboard_delay_count      = 0;
+            game.core.event_manager.key_g                     = false;
+            game.core.event_manager.keyboard_delay_count      = 0;
         }
-        if (game.core.io.key_h) // generate a random RC dungeon
+        if (game.core.event_manager.key_h) // generate a random RC dungeon
         {
             game.loading_screen.display("data/textures/loading_screens/loading_screen_main.png");
             map_gen(&fmx_map,MAP_GEN_RC,MAP_TILESET_DUNGEON);
-            game.core.io.key_h                     = false;
-            game.core.io.keyboard_delay_count      = 0;
+            game.core.event_manager.key_h                     = false;
+            game.core.event_manager.keyboard_delay_count      = 0;
         }
-        if (game.core.io.key_j) // generate a random M1 dungeon
+        if (game.core.event_manager.key_j) // generate a random M1 dungeon
         {
             game.loading_screen.display("data/textures/loading_screens/loading_screen_main.png");
             map_gen(&fmx_map,MAP_GEN_M1,MAP_TILESET_CAVE);
-            game.core.io.key_h                     = false;
-            game.core.io.keyboard_delay_count      = 0;
+            game.core.event_manager.key_h                     = false;
+            game.core.event_manager.keyboard_delay_count      = 0;
         }
     }
 ///------------------------------------------------------------------------------------------

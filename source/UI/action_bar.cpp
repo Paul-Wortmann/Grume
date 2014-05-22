@@ -650,8 +650,8 @@ void process_action_bar(UI_form_struct *UI_form_pointer)
                     game.UI_manager.UI_form_disable(UID_MENU_MAIN);
                     game.core.game_menu_active                   = false;
                 }
-                game.core.io.key_escape                = false;
-                game.core.io.keyboard_delay_count      = 0;
+                game.core.event_manager.key_escape                = false;
+                game.core.event_manager.keyboard_delay_count      = 0;
             break;
             case ((3*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Toggle quest log
                 if (!game.core.quest_log_active)
@@ -666,8 +666,8 @@ void process_action_bar(UI_form_struct *UI_form_pointer)
                     game.UI_manager.UI_form_disable(UID_QUEST_LOG);
                     game.core.quest_log_active                   = false;
                 }
-                game.core.io.key_escape                = false;
-                game.core.io.keyboard_delay_count      = 0;
+                game.core.event_manager.key_escape                = false;
+                game.core.event_manager.keyboard_delay_count      = 0;
             break;
             case ((4*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Toggle skill book
                 if (!game.core.skillbook_active)
@@ -682,8 +682,8 @@ void process_action_bar(UI_form_struct *UI_form_pointer)
                     game.UI_manager.UI_form_disable(UID_SKILLBOOK);
                     game.core.skillbook_active                   = false;
                 }
-                game.core.io.key_escape                = false;
-                game.core.io.keyboard_delay_count      = 0;
+                game.core.event_manager.key_escape                = false;
+                game.core.event_manager.keyboard_delay_count      = 0;
             break;
             case ((5*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Toggle Character menu
                 if (!game.core.character_active)
@@ -698,8 +698,8 @@ void process_action_bar(UI_form_struct *UI_form_pointer)
                     game.UI_manager.UI_form_disable(UID_CHARACTER);
                     game.core.character_active                   = false;
                 }
-                game.core.io.key_escape                = false;
-                game.core.io.keyboard_delay_count      = 0;
+                game.core.event_manager.key_escape                = false;
+                game.core.event_manager.keyboard_delay_count      = 0;
             break;
             case ((6*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Toggle equipment menu
                 if (!game.core.equipment_active)
@@ -714,8 +714,8 @@ void process_action_bar(UI_form_struct *UI_form_pointer)
                     game.UI_manager.UI_form_disable(UID_EQUIPMENT);
                     game.core.equipment_active                   = false;
                 }
-                game.core.io.key_escape                = false;
-                game.core.io.keyboard_delay_count      = 0;
+                game.core.event_manager.key_escape                = false;
+                game.core.event_manager.keyboard_delay_count      = 0;
             break;
             case ((7*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Toggle Inventory menu
                 if (!game.core.inventory_active)
@@ -730,8 +730,8 @@ void process_action_bar(UI_form_struct *UI_form_pointer)
                     game.UI_manager.UI_form_disable(UID_INVENTORY);
                     game.core.inventory_active                   = false;
                 }
-                game.core.io.key_escape                = false;
-                game.core.io.keyboard_delay_count      = 0;
+                game.core.event_manager.key_escape                = false;
+                game.core.event_manager.keyboard_delay_count      = 0;
             break;
             case ((8*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Process item 0
                 UI_form_pointer->data.event.id = EVENT_NONE;

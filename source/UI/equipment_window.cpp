@@ -511,7 +511,7 @@ void process_equipment_window(UI_form_struct *UI_form_pointer)
             case ((0*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Close menu button
                 game.UI_manager.UI_form_disable(UID_EQUIPMENT);
                 game.core.equipment_active     = false;
-                game.core.io.mouse_button_left = false;
+                game.core.event_manager.mouse_button_left = false;
             break;
             case (EVENT_UI_LIST_SORT): //Window stack sort
                 UI_form_pointer->data.event.id   = EVENT_NONE;

@@ -239,7 +239,7 @@ void map_generate_tile_positions(map_type* map_pointer)
 
 void map_scroll(map_type* map_pointer,int x_dir, int y_dir)
 {
-    if (game.core.io.mouse_in_window)
+    if (game.core.event_manager.mouse_in_window)
     {
         float map_size_x = (DEFAULT_TILE_DIAGONAL_LENGTH*map_pointer->info.size.x)/2.0f;
         float map_size_y = (DEFAULT_TILE_DIAGONAL_LENGTH*map_pointer->info.size.y)/2.0f;
@@ -280,7 +280,7 @@ int  map_mouse_over_tile(map_type* map_pointer)
     {
         if (map_tile_visable(map_pointer,tile_count))
         {
-            if (game.core.physics.point_in_diamond(map_pointer->tile[tile_count].position.x,DEFAULT_TILE_SIZE_HALF,map_pointer->tile[tile_count].position.y,DEFAULT_TILE_SIZE_HALF,game.core.io.mouse_x,game.core.io.mouse_y)) return_value = tile_count;
+            if (game.core.physics.point_in_diamond(map_pointer->tile[tile_count].position.x,DEFAULT_TILE_SIZE_HALF,map_pointer->tile[tile_count].position.y,DEFAULT_TILE_SIZE_HALF,game.core.event_manager.mouse_x,game.core.event_manager.mouse_y)) return_value = tile_count;
         }
     }
     return(return_value);
@@ -288,10 +288,10 @@ int  map_mouse_over_tile(map_type* map_pointer)
 
 void map_process(map_type* map_pointer)
 {
-    if ((game.core.io.mouse_y >=  0.99000) || (game.core.io.up))    map_scroll(map_pointer, 0,-1);
-    if ((game.core.io.mouse_y <= -0.99000) || (game.core.io.down))  map_scroll(map_pointer, 0, 1);
-    if ((game.core.io.mouse_x <= -0.99000) || (game.core.io.left))  map_scroll(map_pointer, 1, 0);
-    if ((game.core.io.mouse_x >=  0.99000) || (game.core.io.right)) map_scroll(map_pointer,-1, 0);
+    if ((game.core.event_manager.mouse_y >=  0.99000) || (game.core.event_manager.up))    map_scroll(map_pointer, 0,-1);
+    if ((game.core.event_manager.mouse_y <= -0.99000) || (game.core.event_manager.down))  map_scroll(map_pointer, 0, 1);
+    if ((game.core.event_manager.mouse_x <= -0.99000) || (game.core.event_manager.left))  map_scroll(map_pointer, 1, 0);
+    if ((game.core.event_manager.mouse_x >=  0.99000) || (game.core.event_manager.right)) map_scroll(map_pointer,-1, 0);
 };
 
 void map_center_on_tile(map_type* map_pointer, int tile_ID)

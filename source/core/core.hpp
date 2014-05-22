@@ -32,7 +32,7 @@
 #include "config.hpp"
 #include "file.hpp"
 #include "graphics_engine.hpp"
-#include "io.hpp"
+#include "event_manager.hpp"
 #include "log.hpp"
 #include "math.hpp"
 #include "physics.hpp"
@@ -63,7 +63,7 @@ struct core_struct
     config_class          config;
     file_class            file;
     graphics_engine_class graphics;
-    io_class              io;
+    event_manager_class   event_manager;
     log_class             log;
     math_class            math;
     physics_class         physics;

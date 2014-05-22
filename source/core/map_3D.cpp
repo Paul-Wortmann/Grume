@@ -85,10 +85,10 @@ void map_3D_class::load(std::string file_name)
 */
 void map_3D_class::process(void)
 {
-    if ((game.core.io.mouse_y >=  0.99000) || (game.core.io.up))    map_3D_class::scroll_map( 0, 1);
-    if ((game.core.io.mouse_y <= -0.99000) || (game.core.io.down))  map_3D_class::scroll_map( 0,-1);
-    if ((game.core.io.mouse_x <= -0.99000) || (game.core.io.left))  map_3D_class::scroll_map(-1, 0);
-    if ((game.core.io.mouse_x >=  0.99000) || (game.core.io.right)) map_3D_class::scroll_map( 1, 0);
+    if ((game.core.event_manager.mouse_y >=  0.99000) || (game.core.event_manager.up))    map_3D_class::scroll_map( 0, 1);
+    if ((game.core.event_manager.mouse_y <= -0.99000) || (game.core.event_manager.down))  map_3D_class::scroll_map( 0,-1);
+    if ((game.core.event_manager.mouse_x <= -0.99000) || (game.core.event_manager.left))  map_3D_class::scroll_map(-1, 0);
+    if ((game.core.event_manager.mouse_x >=  0.99000) || (game.core.event_manager.right)) map_3D_class::scroll_map( 1, 0);
 
     game.player.gold = map_3D_class::mouse_over_cell();
 };
@@ -349,7 +349,7 @@ void map_3D_class::mesh_height_set_color(float y_height)
 
 void map_3D_class::scroll_map(int x_dir, int z_dir)
 {
-    if (game.core.io.mouse_in_window)
+    if (game.core.event_manager.mouse_in_window)
     {
         float x_scroll_delta = MAP_SCROLL_SPEED;
         float z_scroll_delta = MAP_SCROLL_SPEED + (MAP_SCROLL_SPEED * (game.core.config.display_resolution_x/game.core.config.display_resolution_y));
@@ -366,7 +366,7 @@ int  map_3D_class::mouse_over_cell(void)
     {
         if (map_3D_class::cell_visable(cell_count))
         {
-            if (game.core.physics.point_in_diamond(map_3D_class::cell[cell_count].x,map_3D_class::cell_spacing_half,map_3D_class::cell[cell_count].z,map_3D_class::cell_spacing_half,game.core.io.mouse_x,game.core.io.mouse_y)) return_value = cell_count;
+            if (game.core.physics.point_in_diamond(map_3D_class::cell[cell_count].x,map_3D_class::cell_spacing_half,map_3D_class::cell[cell_count].z,map_3D_class::cell_spacing_half,game.core.event_manager.mouse_x,game.core.event_manager.mouse_y)) return_value = cell_count;
         }
     }
     return(return_value);

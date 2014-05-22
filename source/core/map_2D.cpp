@@ -127,15 +127,15 @@ void map_2D_class::render(fmx_map_type *fmx_map_pointer)
 
 void map_2D_class::process(fmx_map_type *fmx_map_pointer)
 {
-    if ((game.core.io.mouse_y >=  0.99000) || (game.core.io.up))    map_2D_class::scroll_map(fmx_map_pointer, 0,-1);
-    if ((game.core.io.mouse_y <= -0.99000) || (game.core.io.down))  map_2D_class::scroll_map(fmx_map_pointer, 0, 1);
-    if ((game.core.io.mouse_x <= -0.99000) || (game.core.io.left))  map_2D_class::scroll_map(fmx_map_pointer, 1, 0);
-    if ((game.core.io.mouse_x >=  0.99000) || (game.core.io.right)) map_2D_class::scroll_map(fmx_map_pointer,-1, 0);
+    if ((game.core.event_manager.mouse_y >=  0.99000) || (game.core.event_manager.up))    map_2D_class::scroll_map(fmx_map_pointer, 0,-1);
+    if ((game.core.event_manager.mouse_y <= -0.99000) || (game.core.event_manager.down))  map_2D_class::scroll_map(fmx_map_pointer, 0, 1);
+    if ((game.core.event_manager.mouse_x <= -0.99000) || (game.core.event_manager.left))  map_2D_class::scroll_map(fmx_map_pointer, 1, 0);
+    if ((game.core.event_manager.mouse_x >=  0.99000) || (game.core.event_manager.right)) map_2D_class::scroll_map(fmx_map_pointer,-1, 0);
 };
 
 void map_2D_class::scroll_map(fmx_map_type *fmx_map_pointer,int x_dir, int y_dir)
 {
-    if (game.core.io.mouse_in_window)
+    if (game.core.event_manager.mouse_in_window)
     {
         float delta_x = 0.0f;
         float delta_y = 0.0f;
@@ -283,7 +283,7 @@ int  map_2D_class::mouse_over_tile(fmx_map_type *fmx_map_pointer)
         {
             if (map_2D_class::tile_visible(fmx_map_pointer,layer_count,tile_count))
             {
-                if (game.core.physics.point_in_diamond(fmx_map_pointer->layer[layer_count].tile[tile_count].position.x,TILE_WIDTH_HALF,fmx_map_pointer->layer[layer_count].tile[tile_count].position.y,TILE_HEIGHT_HALF,game.core.io.mouse_x,game.core.io.mouse_y)) return_value = tile_count;
+                if (game.core.physics.point_in_diamond(fmx_map_pointer->layer[layer_count].tile[tile_count].position.x,TILE_WIDTH_HALF,fmx_map_pointer->layer[layer_count].tile[tile_count].position.y,TILE_HEIGHT_HALF,game.core.event_manager.mouse_x,game.core.event_manager.mouse_y)) return_value = tile_count;
             }
         }
     }

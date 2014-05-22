@@ -230,7 +230,7 @@ void player_class::process(void)
     player_class::health.process();
     player_class::mana.process();
     player_class::level.process();
-    if (game.core.io.mouse_button_left)
+    if (game.core.event_manager.mouse_button_left)
     {
         if (!player_class::destination_set)
         {

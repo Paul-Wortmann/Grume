@@ -52,7 +52,7 @@ health_bar_class::~health_bar_class(void)
 
 void health_bar_class::draw_tooltip(void)
 {
-    //game.resource.font.font_1.Write(255,255,255,255,game.core.io.mouse_x,game.core.io.mouse_y,4.8f,32.0f,(int)((health_bar_class::value/health_bar_class::maximum)*100),"%             ");
+    //game.resource.font.font_1.Write(255,255,255,255,game.core.event_manager.mouse_x,game.core.event_manager.mouse_y,4.8f,32.0f,(int)((health_bar_class::value/health_bar_class::maximum)*100),"%             ");
 };
 
 void health_bar_class::render(void)
@@ -87,7 +87,7 @@ void health_class::process(void)
     if (health_class::value > health_class::maximum) health_class::value = health_class::maximum;
     if (health_class::value < 0.0f) health_class::value = 0.0f;
     health_class::bar.value    = health_class::value;
-    if (game.core.physics.point_in_quadrangle(health_class::bar.position_x,health_class::bar.size_x/2,health_class::bar.position_y,health_class::bar.size_y/2,game.core.io.mouse_x,game.core.io.mouse_y)) health_class::bar.mouse_over = true;
+    if (game.core.physics.point_in_quadrangle(health_class::bar.position_x,health_class::bar.size_x/2,health_class::bar.position_y,health_class::bar.size_y/2,game.core.event_manager.mouse_x,game.core.event_manager.mouse_y)) health_class::bar.mouse_over = true;
     else health_class::bar.mouse_over = false;
     if (health_class::bar.mouse_over) health_class::bar.mouse_over_count++;
     else health_class::bar.mouse_over_count = 0;

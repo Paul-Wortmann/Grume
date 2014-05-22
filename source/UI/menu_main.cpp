@@ -336,7 +336,7 @@ void process_menu_main(UI_form_struct *UI_form_pointer)
                     game.UI_manager.UI_form_disable(UID_MENU_MAIN);
                 }
                 game.core.game_menu_active     = false;
-                game.core.io.mouse_button_left = false;
+                game.core.event_manager.mouse_button_left = false;
             break;
             case ((1*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // New game menu
                 game.UI_manager.UI_form_transition(UID_MENU_MAIN,UID_MENU_GAME_NEW);
@@ -378,7 +378,7 @@ void process_menu_main(UI_form_struct *UI_form_pointer)
                 {
                     game.UI_manager.UI_form_disable(UID_MENU_MAIN);
                     game.core.game_menu_active     = false;
-                    game.core.io.mouse_button_left = false;
+                    game.core.event_manager.mouse_button_left = false;
                 }
             break;
             case ((5*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Options menu
@@ -388,7 +388,7 @@ void process_menu_main(UI_form_struct *UI_form_pointer)
                 game.state = STATE_QUIT;
                 game.UI_manager.UI_form_disable(UID_MENU_MAIN);
                 game.core.game_menu_active     = false;
-                game.core.io.mouse_button_left = false;
+                game.core.event_manager.mouse_button_left = false;
             break;
             case (EVENT_UI_LIST_SORT): //Window stack sort
                 UI_form_pointer->data.event.id = EVENT_NONE;

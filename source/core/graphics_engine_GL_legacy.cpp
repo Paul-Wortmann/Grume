@@ -253,7 +253,7 @@ bool GL_legacy_render(void)
         default:
         break;
     }
-    game.texture_manager.draw(game.UI_manager.data.cursor.normal_arrow,false,game.core.io.mouse_x+0.012f,game.core.io.mouse_y-0.018f,0.001f,0.04f,0.04f,0.0f);
+    game.texture_manager.draw(game.UI_manager.data.cursor.normal_arrow,false,game.core.event_manager.mouse_x+0.012f,game.core.event_manager.mouse_y-0.018f,0.001f,0.04f,0.04f,0.0f);
     SDL_GL_SwapWindow(game.core.graphics.window);
     return(return_value);
 };

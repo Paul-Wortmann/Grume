@@ -122,6 +122,7 @@ Set (FROST_AND_FLAME_SOURCES
 	./source/core/config.cpp
 	./source/core/core.cpp
 	./source/core/effect_manager.cpp
+	./source/core/event_manager.cpp
 	./source/core/file.cpp
 	./source/core/font_manager.cpp
 	./source/core/graphics_engine.cpp
@@ -129,7 +130,6 @@ Set (FROST_AND_FLAME_SOURCES
 	./source/core/graphics_engine_GL_legacy.cpp
 	./source/core/graphics_engine_vao_manager.cpp
 	./source/core/item_manager.cpp
-	./source/core/io.cpp
 	./source/core/item_manager.cpp
 	./source/core/loader_fmx.cpp
 	./source/core/loader_md2.cpp

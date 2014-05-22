@@ -22,12 +22,12 @@
  * @date 2011-11-11
  */
 
-#ifndef IO_H
-#define IO_H
+#ifndef EVENT_MANAGER_H
+#define EVENT_MANAGER_H
 
 #include "rs232.hpp"
 
-struct io_class
+struct event_manager_class
 {
     private:
     public:
@@ -150,5 +150,5 @@ bool events_init(void);
 bool events_process(void);
 
 
-#endif //IO_H
+#endif //EVENT_MANAGER_H
 

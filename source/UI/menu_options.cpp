@@ -1067,7 +1067,7 @@ void process_menu_options(UI_form_struct *UI_form_pointer)
         {
             game.core.log.write("Reinitializing OpenGL...");
             game.core.graphics.init();
-            game.core.io.mouse_button_left = false;
+            game.core.event_manager.mouse_button_left = false;
             game.loading_screen.display("data/textures/loading_screens/loading_screen_main.png");
             game.texture_manager.reload_textures();
             update_menu_game_new(UID_MENU_GAME_NEW);
