@@ -159,7 +159,6 @@ void setup_menu_game_new(int UID)
     element_number = 0; //--- Close button ---
     UI_form_pointer->data.element[element_number].window_UID                = UI_form_pointer->data.UID;
     UI_form_pointer->data.element[element_number].element_UID               = element_number;
-    UI_form_pointer->data.element[element_number].title.text                = NULL;
     UI_form_pointer->data.element[element_number].title.enabled             = false;
     UI_form_pointer->data.element[element_number].active                    = true;
     UI_form_pointer->data.element[element_number].type                      = UI_ELEMENT_BUTTON;
@@ -294,7 +293,6 @@ void setup_menu_game_new(int UID)
     element_number = 3; //--- Background_frame_01 ---
     UI_form_pointer->data.element[element_number].window_UID                  = UI_form_pointer->data.UID;
     UI_form_pointer->data.element[element_number].element_UID                 = element_number;
-    UI_form_pointer->data.element[element_number].title.text                  = NULL;
     UI_form_pointer->data.element[element_number].title.enabled               = false;
     UI_form_pointer->data.element[element_number].active                      = true;
     UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_IMAGE;
@@ -316,7 +314,6 @@ void setup_menu_game_new(int UID)
     element_number = 4; // left arrow button for player portrait selection
     UI_form_pointer->data.element[element_number].window_UID                = UI_form_pointer->data.UID;
     UI_form_pointer->data.element[element_number].element_UID               = element_number;
-    UI_form_pointer->data.element[element_number].title.text                = NULL;
     UI_form_pointer->data.element[element_number].active                    = true;
     UI_form_pointer->data.element[element_number].type                      = UI_ELEMENT_BUTTON;
     UI_form_pointer->data.element[element_number].color                     = UI_form_pointer->data.color;
@@ -342,7 +339,6 @@ void setup_menu_game_new(int UID)
     element_number = 5; // Right arrow button for player portrait selection
     UI_form_pointer->data.element[element_number].window_UID                = UI_form_pointer->data.UID;
     UI_form_pointer->data.element[element_number].element_UID               = element_number;
-    UI_form_pointer->data.element[element_number].title.text                = NULL;
     UI_form_pointer->data.element[element_number].active                    = true;
     UI_form_pointer->data.element[element_number].type                      = UI_ELEMENT_BUTTON;
     UI_form_pointer->data.element[element_number].color                     = UI_form_pointer->data.color;
@@ -368,7 +364,6 @@ void setup_menu_game_new(int UID)
     element_number = 6; // Image of the player portrait selection
     UI_form_pointer->data.element[element_number].window_UID                  = UI_form_pointer->data.UID;
     UI_form_pointer->data.element[element_number].element_UID                 = element_number;
-    UI_form_pointer->data.element[element_number].title.text                  = NULL;
     UI_form_pointer->data.element[element_number].active                      = true;
     UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_BUTTON;
     UI_form_pointer->data.element[element_number].color                       = UI_form_pointer->data.color;
@@ -395,8 +390,8 @@ void setup_menu_game_new(int UID)
     element_number = 7; //--- Enter player name: ---
     UI_form_pointer->data.element[element_number].window_UID                  = UI_form_pointer->data.UID;
     UI_form_pointer->data.element[element_number].element_UID                 = element_number;
-    UI_form_pointer->data.element[element_number].title.text                  = game.texture_manager.add_texture(game.font_manager.root,"Player name: ",0.75f,0,0,191,191,191,255,TEXTURE_STRING);
-    UI_form_pointer->data.element[element_number].title.text->data.render_positioning = TEXTURE_RENDER_LEFT;
+    //UI_form_pointer->data.element[element_number].title.text                  = game.texture_manager.add_texture(game.font_manager.root,"Player name: ",0.75f,0,0,191,191,191,255,TEXTURE_STRING);
+    if (UI_form_pointer->data.element[element_number].title.text != NULL) UI_form_pointer->data.element[element_number].title.text->data.render_positioning = TEXTURE_RENDER_LEFT;
     UI_form_pointer->data.element[element_number].title.enabled               = true;
     UI_form_pointer->data.element[element_number].title.position.x            = UI_form_pointer->data.position.x - (UI_form_pointer->data.size.x * 0.4f);
     UI_form_pointer->data.element[element_number].title.position.y            = UI_form_pointer->data.position.y + (UI_form_pointer->data.size.y * 0.005f);
