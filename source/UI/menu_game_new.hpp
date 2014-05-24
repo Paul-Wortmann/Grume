@@ -29,7 +29,6 @@
 #include "UI_manager.hpp"
 
 void setup_menu_game_new(int UID);
-void update_menu_game_new(int UID);
 void process_menu_game_new(UI_form_struct *UI_form_pointer);
 
 #endif // MENU_GAME_NEW_H
