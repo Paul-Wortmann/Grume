@@ -540,19 +540,22 @@ void UI_manager_class::render(void)
                                 }
                             break;
                             case UI_ELEMENT_TEXTLABEL:
-                                switch (UI_form_pointer->data.element[element_number].state)
+                                if (UI_form_pointer->data.element[element_number].title.text != NULL)
                                 {
-                                    case UI_NORMAL:
-                                        if (UI_form_pointer->data.element[element_number].title.enabled) game.texture_manager.draw(UI_form_pointer->data.element[element_number].title.text,false,UI_form_pointer->data.element[element_number].title.position.x,UI_form_pointer->data.element[element_number].title.position.y,UI_form_pointer->data.element[element_number].title.position.z,UI_form_pointer->data.element[element_number].title.text->data.width,UI_form_pointer->data.element[element_number].title.text->data.height);
-                                    break;
-                                    case UI_HIGHLIGHTED:
-                                        if (UI_form_pointer->data.element[element_number].title.enabled) game.texture_manager.draw(UI_form_pointer->data.element[element_number].title.text,false,UI_form_pointer->data.element[element_number].title.position.x,UI_form_pointer->data.element[element_number].title.position.y,UI_form_pointer->data.element[element_number].title.position.z,UI_form_pointer->data.element[element_number].title.text->data.width,UI_form_pointer->data.element[element_number].title.text->data.height);
-                                    break;
-                                    case UI_DISABLED:
-                                        if (UI_form_pointer->data.element[element_number].title.enabled) game.texture_manager.draw(UI_form_pointer->data.element[element_number].title.text,false,UI_form_pointer->data.element[element_number].title.position.x,UI_form_pointer->data.element[element_number].title.position.y,UI_form_pointer->data.element[element_number].title.position.z,UI_form_pointer->data.element[element_number].title.text->data.width,UI_form_pointer->data.element[element_number].title.text->data.height);
-                                    break;
-                                    default:
-                                    break;
+                                    switch (UI_form_pointer->data.element[element_number].state)
+                                    {
+                                        case UI_NORMAL:
+                                            if (UI_form_pointer->data.element[element_number].title.enabled) game.texture_manager.draw(UI_form_pointer->data.element[element_number].title.text,false,UI_form_pointer->data.element[element_number].title.position.x,UI_form_pointer->data.element[element_number].title.position.y,UI_form_pointer->data.element[element_number].title.position.z,UI_form_pointer->data.element[element_number].title.text->data.width,UI_form_pointer->data.element[element_number].title.text->data.height);
+                                        break;
+                                        case UI_HIGHLIGHTED:
+                                            if (UI_form_pointer->data.element[element_number].title.enabled) game.texture_manager.draw(UI_form_pointer->data.element[element_number].title.text,false,UI_form_pointer->data.element[element_number].title.position.x,UI_form_pointer->data.element[element_number].title.position.y,UI_form_pointer->data.element[element_number].title.position.z,UI_form_pointer->data.element[element_number].title.text->data.width,UI_form_pointer->data.element[element_number].title.text->data.height);
+                                        break;
+                                        case UI_DISABLED:
+                                            if (UI_form_pointer->data.element[element_number].title.enabled) game.texture_manager.draw(UI_form_pointer->data.element[element_number].title.text,false,UI_form_pointer->data.element[element_number].title.position.x,UI_form_pointer->data.element[element_number].title.position.y,UI_form_pointer->data.element[element_number].title.position.z,UI_form_pointer->data.element[element_number].title.text->data.width,UI_form_pointer->data.element[element_number].title.text->data.height);
+                                        break;
+                                        default:
+                                        break;
+                                    }
                                 }
                             break;
                             case UI_ELEMENT_SLIDER:
