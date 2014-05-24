@@ -125,6 +125,7 @@ struct event_manager_class
         bool           key_alt;
         bool           key_ctrl;
         bool           key_shift;
+        bool           key_backspace;
         bool           shoot;
         bool           select;
         bool           pause;

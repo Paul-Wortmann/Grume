@@ -197,8 +197,8 @@ extern "C" int main(int argc, char** argv)
                 if (game.core.event_manager.key_escape) game.state = STATE_QUIT;
             break;
             case STATE_GAME:
-                if (game.core.process_ready) game.process();
                 if (game.core.process_ready) game.UI_manager.process();
+                if (game.core.process_ready) game.process();
             break;
             case STATE_QUIT:
                 game.state = STATE_QUIT;

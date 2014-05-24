@@ -36,16 +36,16 @@ void setup_menu_game_new(int UID)
     UI_form_struct   *UI_form_pointer;
     UI_form_pointer = game.UI_manager.UI_form_add(UID_MENU_GAME_NEW);
 
-    UI_form_pointer->data.UID                     = UID;
-    UI_form_pointer->data.enabled                 = false;
-    UI_form_pointer->data.mouse_over_menu         = false;
-    UI_form_pointer->data.mouse_over_title        = false;
-    UI_form_pointer->data.position.x              = 0.0f;
-    UI_form_pointer->data.position.y              = -0.34f;
-    UI_form_pointer->data.position.z              = 0.0f;
-    UI_form_pointer->data.size.x                  = 0.5f;
-    UI_form_pointer->data.size.y                  = UI_form_pointer->data.size.x * 2.5f;
-    UI_form_pointer->data.texture.angle           = 0.0f;
+    UI_form_pointer->data.UID                         = UID;
+    UI_form_pointer->data.enabled                     = false;
+    UI_form_pointer->data.mouse_over_menu             = false;
+    UI_form_pointer->data.mouse_over_title            = false;
+    UI_form_pointer->data.position.x                  = 0.0f;
+    UI_form_pointer->data.position.y                  = -0.34f;
+    UI_form_pointer->data.position.z                  = 0.0f;
+    UI_form_pointer->data.size.x                      = 0.5f;
+    UI_form_pointer->data.size.y                      = UI_form_pointer->data.size.x * 2.5f;
+    UI_form_pointer->data.texture.angle               = 0.0f;
     UI_form_pointer->data.texture.enabled             = true;
     UI_form_pointer->data.texture.base                = game.texture_manager.add_texture("data/textures/UI/menu/background_02.png");
     UI_form_pointer->data.texture.normal              = game.texture_manager.add_texture("data/textures/UI/menu/button_normal.png");
@@ -56,37 +56,37 @@ void setup_menu_game_new(int UID)
     UI_form_pointer->data.sound.on_mouse_over.enabled = true;
     UI_form_pointer->data.sound.on_mouse_over.sound   = game.sound_manager.add_sound("data/sound/menu/menu_move_00.wav");
     UI_form_pointer->data.font                        = game.font_manager.add_font("data/fonts/font_001.ttf");
-    UI_form_pointer->data.mouse_delay.maximum     = 30;
-    UI_form_pointer->data.event.id                = 0;
-    UI_form_pointer->data.color.normal.r          = 128;
-    UI_form_pointer->data.color.normal.b          = 128;
-    UI_form_pointer->data.color.normal.g          = 128;
-    UI_form_pointer->data.color.normal.a          = 255;
-    UI_form_pointer->data.color.highlighted.r     = 192;
-    UI_form_pointer->data.color.highlighted.b     = 192;
-    UI_form_pointer->data.color.highlighted.g     = 192;
-    UI_form_pointer->data.color.highlighted.a     = 255;
-    UI_form_pointer->data.color.disabled.r        = 064;
-    UI_form_pointer->data.color.disabled.b        = 064;
-    UI_form_pointer->data.color.disabled.g        = 064;
-    UI_form_pointer->data.color.disabled.a        = 128;
-    UI_form_pointer->data.zoom.enabled            = true;
-    UI_form_pointer->data.zoom.maximum            = 0.02f;
-    UI_form_pointer->data.zoom.speed              = 0.004f;
-    UI_form_pointer->data.texture.angle           = 0.0f;
-    UI_form_pointer->data.title.text              = game.texture_manager.add_texture(game.font_manager.root,"New Game",0.8f,0,0,TEXTURE_STRING);
-    UI_form_pointer->data.title.enabled           = true;
-    UI_form_pointer->data.title.size.x            = 0;//UI_form_pointer->data.title.text.length()/1.2f;
-    UI_form_pointer->data.title.size.y            = 0;//UI_form_pointer->data.title.size.x*4;
+    UI_form_pointer->data.mouse_delay.maximum         = 30;
+    UI_form_pointer->data.event.id                    = 0;
+    UI_form_pointer->data.color.normal.r              = 128;
+    UI_form_pointer->data.color.normal.b              = 128;
+    UI_form_pointer->data.color.normal.g              = 128;
+    UI_form_pointer->data.color.normal.a              = 255;
+    UI_form_pointer->data.color.highlighted.r         = 192;
+    UI_form_pointer->data.color.highlighted.b         = 192;
+    UI_form_pointer->data.color.highlighted.g         = 192;
+    UI_form_pointer->data.color.highlighted.a         = 255;
+    UI_form_pointer->data.color.disabled.r            = 064;
+    UI_form_pointer->data.color.disabled.b            = 064;
+    UI_form_pointer->data.color.disabled.g            = 064;
+    UI_form_pointer->data.color.disabled.a            = 128;
+    UI_form_pointer->data.zoom.enabled                = true;
+    UI_form_pointer->data.zoom.maximum                = 0.02f;
+    UI_form_pointer->data.zoom.speed                  = 0.004f;
+    UI_form_pointer->data.texture.angle               = 0.0f;
+    UI_form_pointer->data.title.text                  = game.texture_manager.add_texture(game.font_manager.root,"New Game",0.8f,0,0,TEXTURE_STRING);
+    UI_form_pointer->data.title.enabled               = true;
+    UI_form_pointer->data.title.size.x                = 0;//UI_form_pointer->data.title.text.length()/1.2f;
+    UI_form_pointer->data.title.size.y                = 0;//UI_form_pointer->data.title.size.x*4;
     UI_form_pointer->data.title.position.x            = UI_form_pointer->data.position.x;
     UI_form_pointer->data.title.position.y            = UI_form_pointer->data.position.y+(UI_form_pointer->data.size.y/2.24f);
-    UI_form_pointer->data.title_bar.size.x        = UI_form_pointer->data.size.x; // x/2.0f for middle section
-    UI_form_pointer->data.title_bar.size.y        = UI_form_pointer->data.size.y / 10.0f;
-    UI_form_pointer->data.title_bar.position.x    = UI_form_pointer->data.position.x;
-    UI_form_pointer->data.title_bar.position.y    = UI_form_pointer->data.position.y+(UI_form_pointer->data.size.y/2.0f)-(UI_form_pointer->data.title_bar.size.y/2.0f);
+    UI_form_pointer->data.title_bar.size.x            = UI_form_pointer->data.size.x; // x/2.0f for middle section
+    UI_form_pointer->data.title_bar.size.y            = UI_form_pointer->data.size.y / 10.0f;
+    UI_form_pointer->data.title_bar.position.x        = UI_form_pointer->data.position.x;
+    UI_form_pointer->data.title_bar.position.y        = UI_form_pointer->data.position.y+(UI_form_pointer->data.size.y/2.0f)-(UI_form_pointer->data.title_bar.size.y/2.0f);
 
     // ---------------------------- Setup window elements ----------------------------------------------------
-    UI_form_pointer->data.number_of_elements = 8;
+    UI_form_pointer->data.number_of_elements = 10;
     UI_form_pointer->data.element = new UI_element_struct[UI_form_pointer->data.number_of_elements];
     for (int element_count = 0; element_count < UI_form_pointer->data.number_of_elements; element_count++)
     {
@@ -390,11 +390,52 @@ void setup_menu_game_new(int UID)
     element_number = 7; //--- Enter player name: ---
     UI_form_pointer->data.element[element_number].window_UID                  = UI_form_pointer->data.UID;
     UI_form_pointer->data.element[element_number].element_UID                 = element_number;
-    //UI_form_pointer->data.element[element_number].title.text                  = game.texture_manager.add_texture(game.font_manager.root,"Player name: ",0.75f,0,0,191,191,191,255,TEXTURE_STRING);
+    UI_form_pointer->data.element[element_number].title.text                  = game.texture_manager.add_texture(game.font_manager.root,"Player name: ",0.75f,0,0,191,191,191,255,TEXTURE_STRING);
     if (UI_form_pointer->data.element[element_number].title.text != NULL) UI_form_pointer->data.element[element_number].title.text->data.render_positioning = TEXTURE_RENDER_LEFT;
     UI_form_pointer->data.element[element_number].title.enabled               = true;
-    UI_form_pointer->data.element[element_number].title.position.x            = UI_form_pointer->data.position.x - (UI_form_pointer->data.size.x * 0.4f);
-    UI_form_pointer->data.element[element_number].title.position.y            = UI_form_pointer->data.position.y + (UI_form_pointer->data.size.y * 0.005f);
+    UI_form_pointer->data.element[element_number].title.position.x            = UI_form_pointer->data.position.x - (UI_form_pointer->data.size.x * 0.3f);
+    UI_form_pointer->data.element[element_number].title.position.y            = UI_form_pointer->data.position.y + (UI_form_pointer->data.size.y * 0.0025f);
+    UI_form_pointer->data.element[element_number].active                      = true;
+    UI_form_pointer->data.element[element_number].click_enabled               = false;
+    UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_TEXTLABEL;
+    UI_form_pointer->data.element[element_number].zoom.enabled                = false;
+    UI_form_pointer->data.element[element_number].tooltip.enabled             = false;
+    UI_form_pointer->data.element[element_number].color                       = UI_form_pointer->data.color;
+    UI_form_pointer->data.element[element_number].color.normal                = UI_form_pointer->data.element[element_number].color.highlighted;
+    UI_form_pointer->data.element[element_number].sound                       = UI_form_pointer->data.sound;
+    UI_form_pointer->data.element[element_number].sound.on_click.enabled      = false;
+    UI_form_pointer->data.element[element_number].sound.on_mouse_over.enabled = false;
+    UI_form_pointer->data.element[element_number].mouse_delay.maximum         = 30;
+    UI_form_pointer->data.element[element_number].font                        = UI_form_pointer->data.font;
+    UI_form_pointer->data.element[element_number].texture.enabled             = false;
+    element_number = 8; //--- Background_frame_02 ---
+    UI_form_pointer->data.element[element_number].window_UID                  = UI_form_pointer->data.UID;
+    UI_form_pointer->data.element[element_number].element_UID                 = element_number;
+    UI_form_pointer->data.element[element_number].title.enabled               = false;
+    UI_form_pointer->data.element[element_number].active                      = true;
+    UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_IMAGE;
+    UI_form_pointer->data.element[element_number].zoom.enabled                = false;
+    UI_form_pointer->data.element[element_number].tooltip.enabled             = false;
+    UI_form_pointer->data.element[element_number].color                       = UI_form_pointer->data.color;
+    UI_form_pointer->data.element[element_number].size.x                      = UI_form_pointer->data.size.x/1.6f;
+    UI_form_pointer->data.element[element_number].size.y                      = UI_form_pointer->data.size.y/22.0f;
+    UI_form_pointer->data.element[element_number].position.x                  = UI_form_pointer->data.position.x;//+(UI_form_pointer->data.size.x/2.0f);
+    UI_form_pointer->data.element[element_number].position.y                  = UI_form_pointer->data.position.y-(UI_form_pointer->data.size.y/20.0f);
+    UI_form_pointer->data.element[element_number].texture.normal              = game.texture_manager.add_texture("data/textures/UI/menu/frame_00.png");
+    UI_form_pointer->data.element[element_number].texture.highlighted         = game.texture_manager.add_texture("data/textures/UI/menu/frame_00.png");
+    UI_form_pointer->data.element[element_number].sound                       = UI_form_pointer->data.sound;
+    UI_form_pointer->data.element[element_number].sound.on_click.enabled      = false;
+    UI_form_pointer->data.element[element_number].sound.on_mouse_over.enabled = false;
+    UI_form_pointer->data.element[element_number].mouse_delay.maximum         = 30;
+    UI_form_pointer->data.element[element_number].font                        = UI_form_pointer->data.font;
+    element_number = 9; //--- Player name: ---
+    UI_form_pointer->data.element[element_number].window_UID                  = UI_form_pointer->data.UID;
+    UI_form_pointer->data.element[element_number].element_UID                 = element_number;
+    UI_form_pointer->data.element[element_number].title.text                  = game.texture_manager.add_texture(game.font_manager.root,"Paul",0.75f,0,0,191,191,191,255,TEXTURE_STRING);
+    if (UI_form_pointer->data.element[element_number].title.text != NULL) UI_form_pointer->data.element[element_number].title.text->data.render_positioning = TEXTURE_RENDER_LEFT;
+    UI_form_pointer->data.element[element_number].title.enabled               = true;
+    UI_form_pointer->data.element[element_number].title.position.x            = UI_form_pointer->data.position.x - (UI_form_pointer->data.size.x * 0.3f);
+    UI_form_pointer->data.element[element_number].title.position.y            = UI_form_pointer->data.position.y - (UI_form_pointer->data.size.y * 0.05f);
     UI_form_pointer->data.element[element_number].active                      = true;
     UI_form_pointer->data.element[element_number].click_enabled               = false;
     UI_form_pointer->data.element[element_number].type                        = UI_ELEMENT_TEXTLABEL;
@@ -413,9 +454,325 @@ void setup_menu_game_new(int UID)
 
 void process_menu_game_new(UI_form_struct *UI_form_pointer)
 {
+    int element_number = 9;
+    //if (UI_form_pointer->data.mouse_over_menu)
+    {
+        unsigned int max_name_length = 17;
+        if (game.core.event_manager.key_backspace)
+        {
+            if (game.player.name.size() > 1)
+            {
+                game.player.name.resize(game.player.name.size()-1);
+                game.core.event_manager.key_backspace = false;
+            }
+            else
+            {
+                game.player.name = " ";
+            }
+        }
+        if (game.core.event_manager.key_a)
+        {
+            if (game.player.name.size() < max_name_length)
+            {
+                char temp_char = 'a';
+                if (game.core.event_manager.key_shift) temp_char = 'A';
+                if (!game.player.name.compare(" ")) game.player.name = temp_char;
+                else game.player.name += temp_char;
+            }
+            game.core.event_manager.key_a = false;
+        }
+        if (game.core.event_manager.key_b)
+        {
+            if (game.player.name.size() < max_name_length)
+            {
+                char temp_char = 'b';
+                if (game.core.event_manager.key_shift) temp_char = 'B';
+                if (!game.player.name.compare(" ")) game.player.name = temp_char;
+                else game.player.name += temp_char;
+            }
+            game.core.event_manager.key_b = false;
+        }
+        if (game.core.event_manager.key_c)
+        {
+            if (game.player.name.size() < max_name_length)
+            {
+                char temp_char = 'c';
+                if (game.core.event_manager.key_shift) temp_char = 'C';
+                if (!game.player.name.compare(" ")) game.player.name = temp_char;
+                else game.player.name += temp_char;
+            }
+            game.core.event_manager.key_c = false;
+        }
+        if (game.core.event_manager.key_d)
+        {
+            if (game.player.name.size() < max_name_length)
+            {
+                char temp_char = 'd';
+                if (game.core.event_manager.key_shift) temp_char = 'D';
+                if (!game.player.name.compare(" ")) game.player.name = temp_char;
+                else game.player.name += temp_char;
+            }
+            game.core.event_manager.key_d = false;
+        }
+        if (game.core.event_manager.key_e)
+        {
+            if (game.player.name.size() < max_name_length)
+            {
+                char temp_char = 'e';
+                if (game.core.event_manager.key_shift) temp_char = 'E';
+                if (!game.player.name.compare(" ")) game.player.name = temp_char;
+                else game.player.name += temp_char;
+            }
+            game.core.event_manager.key_e = false;
+        }
+        if (game.core.event_manager.key_f)
+        {
+            if (game.player.name.size() < max_name_length)
+            {
+                char temp_char = 'f';
+                if (game.core.event_manager.key_shift) temp_char = 'F';
+                if (!game.player.name.compare(" ")) game.player.name = temp_char;
+                else game.player.name += temp_char;
+            }
+            game.core.event_manager.key_f = false;
+        }
+        if (game.core.event_manager.key_g)
+        {
+            if (game.player.name.size() < max_name_length)
+            {
+                char temp_char = 'g';
+                if (game.core.event_manager.key_shift) temp_char = 'G';
+                if (!game.player.name.compare(" ")) game.player.name = temp_char;
+                else game.player.name += temp_char;
+            }
+            game.core.event_manager.key_g = false;
+        }
+        if (game.core.event_manager.key_h)
+        {
+            if (game.player.name.size() < max_name_length)
+            {
+                char temp_char = 'h';
+                if (game.core.event_manager.key_shift) temp_char = 'H';
+                if (!game.player.name.compare(" ")) game.player.name = temp_char;
+                else game.player.name += temp_char;
+            }
+            game.core.event_manager.key_h = false;
+        }
+        if (game.core.event_manager.key_i)
+        {
+            if (game.player.name.size() < max_name_length)
+            {
+                char temp_char = 'i';
+                if (game.core.event_manager.key_shift) temp_char = 'I';
+                if (!game.player.name.compare(" ")) game.player.name = temp_char;
+                else game.player.name += temp_char;
+            }
+            game.core.event_manager.key_i = false;
+        }
+        if (game.core.event_manager.key_j)
+        {
+            if (game.player.name.size() < max_name_length)
+            {
+                char temp_char = 'j';
+                if (game.core.event_manager.key_shift) temp_char = 'J';
+                if (!game.player.name.compare(" ")) game.player.name = temp_char;
+                else game.player.name += temp_char;
+            }
+            game.core.event_manager.key_j = false;
+        }
+        if (game.core.event_manager.key_k)
+        {
+            if (game.player.name.size() < max_name_length)
+            {
+                char temp_char = 'k';
+                if (game.core.event_manager.key_shift) temp_char = 'K';
+                if (!game.player.name.compare(" ")) game.player.name = temp_char;
+                else game.player.name += temp_char;
+            }
+            game.core.event_manager.key_k = false;
+        }
+        if (game.core.event_manager.key_l)
+        {
+            if (game.player.name.size() < max_name_length)
+            {
+                char temp_char = 'l';
+                if (game.core.event_manager.key_shift) temp_char = 'L';
+                if (!game.player.name.compare(" ")) game.player.name = temp_char;
+                else game.player.name += temp_char;
+            }
+            game.core.event_manager.key_l = false;
+        }
+        if (game.core.event_manager.key_m)
+        {
+            if (game.player.name.size() < max_name_length)
+            {
+                char temp_char = 'm';
+                if (game.core.event_manager.key_shift) temp_char = 'M';
+                if (!game.player.name.compare(" ")) game.player.name = temp_char;
+                else game.player.name += temp_char;
+            }
+            game.core.event_manager.key_m = false;
+        }
+        if (game.core.event_manager.key_n)
+        {
+            if (game.player.name.size() < max_name_length)
+            {
+                char temp_char = 'n';
+                if (game.core.event_manager.key_shift) temp_char = 'N';
+                if (!game.player.name.compare(" ")) game.player.name = temp_char;
+                else game.player.name += temp_char;
+            }
+            game.core.event_manager.key_n = false;
+        }
+        if (game.core.event_manager.key_o)
+        {
+            if (game.player.name.size() < max_name_length)
+            {
+                char temp_char = 'o';
+                if (game.core.event_manager.key_shift) temp_char = 'O';
+                if (!game.player.name.compare(" ")) game.player.name = temp_char;
+                else game.player.name += temp_char;
+            }
+            game.core.event_manager.key_o = false;
+        }
+        if (game.core.event_manager.key_p)
+        {
+            if (game.player.name.size() < max_name_length)
+            {
+                char temp_char = 'p';
+                if (game.core.event_manager.key_shift) temp_char = 'P';
+                if (!game.player.name.compare(" ")) game.player.name = temp_char;
+                else game.player.name += temp_char;
+            }
+            game.core.event_manager.key_p = false;
+        }
+        if (game.core.event_manager.key_q)
+        {
+            if (game.player.name.size() < max_name_length)
+            {
+                char temp_char = 'q';
+                if (game.core.event_manager.key_shift) temp_char = 'Q';
+                if (!game.player.name.compare(" ")) game.player.name = temp_char;
+                else game.player.name += temp_char;
+            }
+            game.core.event_manager.key_q = false;
+        }
+        if (game.core.event_manager.key_r)
+        {
+            if (game.player.name.size() < max_name_length)
+            {
+                char temp_char = 'r';
+                if (game.core.event_manager.key_shift) temp_char = 'R';
+                if (!game.player.name.compare(" ")) game.player.name = temp_char;
+                else game.player.name += temp_char;
+            }
+            game.core.event_manager.key_r = false;
+        }
+        if (game.core.event_manager.key_s)
+        {
+            if (game.player.name.size() < max_name_length)
+            {
+                char temp_char = 's';
+                if (game.core.event_manager.key_shift) temp_char = 'S';
+                if (!game.player.name.compare(" ")) game.player.name = temp_char;
+                else game.player.name += temp_char;
+            }
+            game.core.event_manager.key_s = false;
+        }
+        if (game.core.event_manager.key_t)
+        {
+            if (game.player.name.size() < max_name_length)
+            {
+                char temp_char = 't';
+                if (game.core.event_manager.key_shift) temp_char = 'T';
+                if (!game.player.name.compare(" ")) game.player.name = temp_char;
+                else game.player.name += temp_char;
+            }
+            game.core.event_manager.key_t = false;
+        }
+        if (game.core.event_manager.key_u)
+        {
+            if (game.player.name.size() < max_name_length)
+            {
+                char temp_char = 'u';
+                if (game.core.event_manager.key_shift) temp_char = 'U';
+                if (!game.player.name.compare(" ")) game.player.name = temp_char;
+                else game.player.name += temp_char;
+            }
+            game.core.event_manager.key_u = false;
+        }
+        if (game.core.event_manager.key_v)
+        {
+            if (game.player.name.size() < max_name_length)
+            {
+                char temp_char = 'v';
+                if (game.core.event_manager.key_shift) temp_char = 'V';
+                if (!game.player.name.compare(" ")) game.player.name = temp_char;
+                else game.player.name += temp_char;
+            }
+            game.core.event_manager.key_v = false;
+        }
+        if (game.core.event_manager.key_w)
+        {
+            if (game.player.name.size() < max_name_length)
+            {
+                char temp_char = 'w';
+                if (game.core.event_manager.key_shift) temp_char = 'W';
+                if (!game.player.name.compare(" ")) game.player.name = temp_char;
+                else game.player.name += temp_char;
+            }
+            game.core.event_manager.key_w = false;
+        }
+        if (game.core.event_manager.key_x)
+        {
+            if (game.player.name.size() < max_name_length)
+            {
+                char temp_char = 'x';
+                if (game.core.event_manager.key_shift) temp_char = 'X';
+                if (!game.player.name.compare(" ")) game.player.name = temp_char;
+                else game.player.name += temp_char;
+            }
+            game.core.event_manager.key_x = false;
+        }
+        if (game.core.event_manager.key_y)
+        {
+            if (game.player.name.size() < max_name_length)
+            {
+                char temp_char = 'y';
+                if (game.core.event_manager.key_shift) temp_char = 'Y';
+                if (!game.player.name.compare(" ")) game.player.name = temp_char;
+                else game.player.name += temp_char;
+            }
+            game.core.event_manager.key_y = false;
+        }
+        if (game.core.event_manager.key_z)
+        {
+            if (game.player.name.size() < max_name_length)
+            {
+                char temp_char = 'z';
+                if (game.core.event_manager.key_shift) temp_char = 'Z';
+                if (!game.player.name.compare(" ")) game.player.name = temp_char;
+                else game.player.name += temp_char;
+            }
+            game.core.event_manager.key_z = false;
+        }
+        if (game.core.event_manager.key_space)
+        {
+            if (game.player.name.size() < max_name_length)
+            {
+                char temp_char = ' ';
+                if (game.core.event_manager.key_shift) temp_char = ' ';
+                if (!game.player.name.compare(" ")) game.player.name = temp_char;
+                else game.player.name += temp_char;
+            }
+            game.core.event_manager.key_space = false;
+        }
+    }
+    UI_form_pointer->data.element[element_number].title.text = game.texture_manager.add_texture(game.font_manager.root,game.player.name,0.75f,0,0,191,191,191,255,TEXTURE_STRING);
+    if (UI_form_pointer->data.element[element_number].title.text != NULL) UI_form_pointer->data.element[element_number].title.text->data.render_positioning = TEXTURE_RENDER_LEFT;
     if(UI_form_pointer->data.event.id > EVENT_NONE)
     {
-        int element_number = 0;
+        element_number = 0;
         switch (UI_form_pointer->data.event.id)
         {
             case ((0*EVENT_BUTTON_MULTIPLIER)+EVENT_ELEMENT_MOUSE_LEFT): // Close menu button
