@@ -133,6 +133,7 @@ bool font_manager_class::write (font_type *font, Uint8 r,Uint8 g,Uint8 b,Uint8 a
 {
     if ((text.length() > 0) && (font->loaded))
     {
+        /*
         GLuint      texture_data;
         GLenum      texture_format;
         GLint       nOfColors;
@@ -172,6 +173,7 @@ bool font_manager_class::write (font_type *font, Uint8 r,Uint8 g,Uint8 b,Uint8 a
         glPopMatrix();
         glDeleteTextures(1, &texture_data);
         SDL_FreeSurface(font_string);
+        */
         return (true);
     }
     else
