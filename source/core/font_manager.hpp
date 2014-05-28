@@ -52,21 +52,6 @@ class font_manager_class
         void          deinit(void);
         bool          load_font(font_type *font);
         bool          load_font(font_type *font, int pt_size);
-        bool          write(font_type *font, Uint8 r,Uint8 g,Uint8 b,Uint8 a,float x,float y,std::string text,int   int_data);
-        bool          write(font_type *font, Uint8 r,Uint8 g,Uint8 b,Uint8 a,float x,float y,std::string text,float float_data);
-        bool          write(font_type *font, Uint8 r,Uint8 g,Uint8 b,Uint8 a,float x,float y,float ws,float hs,std::string        text       ,float              float_data  );
-        bool          write(font_type *font, Uint8 r,Uint8 g,Uint8 b,Uint8 a,float x,float y,float ws,float hs,std::string        text       ,int                int_data    );
-        bool          write(font_type *font, Uint8 r,Uint8 g,Uint8 b,Uint8 a,float x,float y,float ws,float hs,std::string        text       ,int                int_data    ,std::string        text_2      );
-        bool          write(font_type *font, Uint8 r,Uint8 g,Uint8 b,Uint8 a,float x,float y,float ws,float hs,std::string        text       ,float              float_data  ,std::string        text_2      );
-        bool          write(font_type *font, Uint8 r,Uint8 g,Uint8 b,Uint8 a,float x,float y,float ws,float hs,float              float_data ,std::string        text        );
-        bool          write(font_type *font, Uint8 r,Uint8 g,Uint8 b,Uint8 a,float x,float y,float ws,float hs,unsigned long long ullint_data,std::string        text        );
-        bool          write(font_type *font, Uint8 r,Uint8 g,Uint8 b,Uint8 a,float x,float y,float ws,float hs,int                int_data   ,std::string        text        );
-        bool          write(font_type *font, Uint8 r,Uint8 g,Uint8 b,Uint8 a,float x,float y,float ws,float hs,std::string        text_data  ,std::string        text        );
-        bool          write(font_type *font, Uint8 r,Uint8 g,Uint8 b,Uint8 a,float x,float y,float ws,float hs,std::string        text       ,unsigned long long ullint_data );
-        bool          write(font_type *font, Uint8 r,Uint8 g,Uint8 b,Uint8 a,float x,float y,float ws,float hs,std::string        text       ,unsigned long long ullint_data ,std::string        text_2      );
-        bool          write(font_type *font, Uint8 r,Uint8 g,Uint8 b,Uint8 a,float x,float y,float ws,float hs,std::string        text       ,int                int_data    ,std::string        text_2      ,int                int_data_2 ,std::string        text_3      );
-
-        bool          write (font_type *font, Uint8 r,Uint8 g,Uint8 b,Uint8 a,float x,float y,float ws,float hs,std::string text);
 };
 
 #endif // FONT_MANAGER_H
