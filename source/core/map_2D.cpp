@@ -22,15 +22,11 @@
  * @date 2011-11-11
  */
 
-#include <iostream>
 #include <fstream>
-#include <stdio.h>
-#include <stdlib.h>
 #include <string>
 #include "map_2D.hpp"
 #include "loader_fmx.hpp"
 #include "../game/game.hpp"
-#include "texture_manager.hpp"
 #include "misc.hpp"
 
 extern game_class         game;
@@ -73,7 +69,6 @@ void map_2D_class::render(fmx_map_type *fmx_map_pointer)
     float tile_offset_h = 0.0f;
     float tile_offset_x = 0.0f;
     float tile_offset_y = 0.0f;
-    glDisable(GL_DEPTH_TEST);
 // ----------------------------- Draw Tile Layers ------------------------------------------------------------------
     for(int layer_count = 0; layer_count <  fmx_map_pointer->data.number_of_layers; layer_count++)
     {

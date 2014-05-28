@@ -22,14 +22,10 @@
  * @date 2011-11-11
  */
 
-#include <iostream>
 #include <fstream>
-#include <stdio.h>
-#include <stdlib.h>
 #include <string>
 #include "loader_md2.hpp"
 #include "../game/game.hpp"
-#include "misc.hpp"
 
 extern game_class         game;
 

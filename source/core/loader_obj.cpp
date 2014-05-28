@@ -22,18 +22,10 @@
  * @date 2011-11-11
  */
 
-#include <iostream>
 #include <fstream>
-#include <stdio.h>
-#include <stdlib.h>
 #include <string>
-#include "texture_manager.hpp"
 #include "loader_obj.hpp"
 #include "../game/game.hpp"
-#include "misc.hpp"
-
-#define GL_BGR  0x80E0
-#define GL_BGRA 0x80E1
 
 extern game_class         game;
 

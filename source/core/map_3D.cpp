@@ -22,15 +22,9 @@
  * @date 2011-11-11
  */
 
-#include <iostream>
-#include <fstream>
-#include <stdio.h>
-#include <stdlib.h>
 #include <string>
-#include "map_2D.hpp"
 #include "map_3D.hpp"
 #include "../game/game.hpp"
-#include "texture_manager.hpp"
 #include "loader_obj.hpp"
 #include "misc.hpp"
 
