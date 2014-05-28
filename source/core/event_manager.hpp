@@ -25,13 +25,10 @@
 #ifndef EVENT_MANAGER_H
 #define EVENT_MANAGER_H
 
-#include "rs232.hpp"
-
 struct event_manager_class
 {
     private:
     public:
-        rs232_class    rs232;
         bool           mouse_in_window;
         bool           joystick_button_0;
         bool           joystick_button_1;

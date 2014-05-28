@@ -153,7 +153,6 @@ Set (FROST_AND_FLAME_SOURCES
 	./source/core/particles.cpp
 	./source/core/pathfinding.cpp
 	./source/core/physics.cpp
-	./source/core/rs232.cpp
 	./source/core/savegame.cpp
 	./source/core/sound_manager.cpp
 	./source/core/spell_manager.cpp
