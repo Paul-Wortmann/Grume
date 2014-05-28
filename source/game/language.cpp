@@ -22,16 +22,9 @@
  * @date 2011-11-11
  */
 
-#include <SDL2/SDL.h>
-#include <SDL2/SDL_image.h>
-#include <SDL2/SDL_ttf.h>
 #include <physfs.h>
-#include <iostream>
 #include <fstream>
-#include <stdio.h>
-#include <stdlib.h>
 #include <string>
-#include "../core/misc.hpp"
 #include "game.hpp"
 #include "language.hpp"
 

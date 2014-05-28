@@ -25,8 +25,6 @@
 #ifndef TEXTURE_MANAGER_H
 #define TEXTURE_MANAGER_H
 
-#include <GL/glew.h>
-#include <GL/gl.h>
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 #include <string>
@@ -52,8 +50,8 @@
 
 struct frame_type
 {
-    bool      active;
-    GLuint    data;
+    bool         active;
+    unsigned int data;
 };
 
 struct text_color_type

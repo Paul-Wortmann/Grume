@@ -2274,13 +2274,11 @@
 	"physics.hpp"
 	"timer.hpp"
 
-1398615703 /media/paul/Data_0/_git_/Frost_and_Flame/source/core/background.hpp
+1401113085 /media/paul/Data_0/_git_/Frost_and_Flame/source/core/background.hpp
 	"texture_manager.hpp"
 	<string>
 
-1398786764 /media/paul/Data_0/_git_/Frost_and_Flame/source/core/texture_manager.hpp
-	<GL/glew.h>
-	<GL/gl.h>
+1401287194 /media/paul/Data_0/_git_/Frost_and_Flame/source/core/texture_manager.hpp
 	<SDL2/SDL.h>
 	<SDL2/SDL_image.h>
 	<string>
@@ -2325,7 +2323,7 @@
 
 1373475781 /media/paul/Data_0/_git_/Frost_and_Flame/source/core/timer.hpp
 
-1398709266 /media/paul/Data_0/_git_/Frost_and_Flame/source/core/font_manager.hpp
+1401285606 /media/paul/Data_0/_git_/Frost_and_Flame/source/core/font_manager.hpp
 	<SDL2/SDL.h>
 	<SDL2/SDL_ttf.h>
 	<string>
@@ -2406,7 +2404,7 @@
 	"UI_types.hpp"
 	"UI_manager.hpp"
 
-1373475785 /media/paul/Data_0/_git_/Frost_and_Flame/source/UI/menu_game_new.hpp
+1400907730 /media/paul/Data_0/_git_/Frost_and_Flame/source/UI/menu_game_new.hpp
 	"UI_types.hpp"
 	"UI_manager.hpp"
 
@@ -2485,7 +2483,7 @@
 	<iostream>
 	<physfs.h>
 
-1400174898 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/core/font_manager.cpp
+1401285606 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/core/font_manager.cpp
 	<sstream>
 	"font_manager.hpp"
 	"../game/game.hpp"
@@ -2502,15 +2500,11 @@
 	"graphics_engine.hpp"
 	"io.hpp"
 
-1400174996 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/core/loader_md2.cpp
-	<iostream>
+1401286179 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/core/loader_md2.cpp
 	<fstream>
-	<stdio.h>
-	<stdlib.h>
 	<string>
 	"loader_md2.hpp"
 	"../game/game.hpp"
-	"misc.hpp"
 
 1398091386 /media/paul/Data_0/_git_/Frost_and_Flame/source/core/loader_md2.hpp
 	<string>
@@ -2520,31 +2514,20 @@
 1373475778 /media/paul/Data_0/_git_/Frost_and_Flame/source/core/misc.hpp
 	<string>
 
-1400175029 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/core/loader_obj.cpp
-	<iostream>
+1401286210 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/core/loader_obj.cpp
 	<fstream>
-	<stdio.h>
-	<stdlib.h>
 	<string>
-	"texture_manager.hpp"
 	"loader_obj.hpp"
 	"../game/game.hpp"
-	"misc.hpp"
 
 1398092614 /media/paul/Data_0/_git_/Frost_and_Flame/source/core/loader_obj.hpp
 	<string>
 	"graphics_engine.hpp"
 	"texture_manager.hpp"
 
-1400175044 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/core/loader_tmx.cpp
-	<SDL2/SDL.h>
-	<SDL2/SDL_image.h>
-	<SDL2/SDL_ttf.h>
+1401286225 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/core/loader_tmx.cpp
 	<physfs.h>
-	<iostream>
 	<fstream>
-	<stdio.h>
-	<stdlib.h>
 	<string>
 	"loader_tmx.hpp"
 	"../game/game.hpp"
@@ -2556,34 +2539,22 @@
 	"log.hpp"
 	"../game/game.hpp"
 
-1400771003 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/core/map_2D.cpp
-	<iostream>
+1401286437 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/core/map_2D.cpp
 	<fstream>
-	<stdio.h>
-	<stdlib.h>
 	<string>
 	"map_2D.hpp"
 	"loader_fmx.hpp"
 	"../game/game.hpp"
-	"texture_manager.hpp"
 	"misc.hpp"
 
-1400771017 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/core/map_3D.cpp
-	<iostream>
-	<fstream>
-	<stdio.h>
-	<stdlib.h>
+1401286570 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/core/map_3D.cpp
 	<string>
-	"map_2D.hpp"
 	"map_3D.hpp"
 	"../game/game.hpp"
-	"texture_manager.hpp"
 	"loader_obj.hpp"
 	"misc.hpp"
 
-1398092566 /media/paul/Data_0/_git_/Frost_and_Flame/source/core/map_3D.hpp
-	"GL/glew.h"
-	"GL/gl.h"
+1401287182 /media/paul/Data_0/_git_/Frost_and_Flame/source/core/map_3D.hpp
 	"texture_manager.hpp"
 	"graphics_engine.hpp"
 	"map_2D.hpp"
@@ -2688,7 +2659,7 @@
 	"core/misc.hpp"
 	"language.hpp"
 
-1400771114 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/main.cpp
+1400911290 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/main.cpp
 	<GL/glew.h>
 	<SDL2/SDL.h>
 	<SDL2/SDL_image.h>
@@ -2739,7 +2710,7 @@
 	"menu_game_load.hpp"
 	"../game/game.hpp"
 
-1400680064 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/UI/menu_game_new.cpp
+1400914394 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/UI/menu_game_new.cpp
 	"menu_game_new.hpp"
 	"../game/game.hpp"
 
@@ -2752,7 +2723,7 @@
 	"UI_manager.hpp"
 	"../game/game.hpp"
 
-1400771185 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/UI/menu_options.cpp
+1400907763 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/UI/menu_options.cpp
 	"menu_options.hpp"
 	<string>
 	"../game/game.hpp"
@@ -2782,7 +2753,7 @@
 	"../core/texture_manager.hpp"
 	"../game/game.hpp"
 
-1400771226 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/UI/UI_manager.cpp
+1400907585 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/UI/UI_manager.cpp
 	"UI_manager.hpp"
 	"../game/game.hpp"
 	"../core/misc.hpp"
@@ -3369,7 +3340,7 @@
 	"effect_manager.hpp"
 	"game.hpp"
 
-1400771053 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/game/game.cpp
+1400913406 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/game/game.cpp
 	"../core/map_2D.hpp"
 	"../core/map_main.hpp"
 	"../core/misc.hpp"
@@ -3397,7 +3368,7 @@
 	"npc.hpp"
 	"game.hpp"
 
-1400771094 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/game/player.cpp
+1400913406 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/game/player.cpp
 	"player.hpp"
 	"game.hpp"
 
@@ -3488,15 +3459,9 @@
 	"spell_manager.hpp"
 	"../game/game.hpp"
 
-1400174984 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/core/loader_fmx.cpp
-	<SDL2/SDL.h>
-	<SDL2/SDL_image.h>
-	<SDL2/SDL_ttf.h>
+1401285849 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/core/loader_fmx.cpp
 	<physfs.h>
-	<iostream>
 	<fstream>
-	<stdio.h>
-	<stdlib.h>
 	<string>
 	"loader_fmx.hpp"
 	"../game/game.hpp"
@@ -4183,7 +4148,7 @@
 
 1398436104 /media/paul/Data_0/_git_/Frost_and_Flame/source/core/graphics_engine_GL_legacy.hpp
 
-1400433186 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/core/graphics_engine_GL.cpp
+1401287484 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/core/graphics_engine_GL.cpp
 	<GL/glew.h>
 	<SDL2/SDL.h>
 	<SDL2/SDL_image.h>
@@ -4874,10 +4839,9 @@
 	"texture_manager.hpp"
 	"music_manager.hpp"
 
-1400770797 /media/paul/Data_0/_git_/Frost_and_Flame/source/core/event_manager.hpp
-	"rs232.hpp"
+1401286730 /media/paul/Data_0/_git_/Frost_and_Flame/source/core/event_manager.hpp
 
-1400770941 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/core/event_manager.cpp
+1400911108 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/core/event_manager.cpp
 	<SDL2/SDL.h>
 	<SDL2/SDL_events.h>
 	"../game/game.hpp"

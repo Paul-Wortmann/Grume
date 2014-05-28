@@ -31,17 +31,6 @@
 					<Add library="GL" />
 					<Add library="libGL" />
 					<Add library="libGLEW" />
-					<Add library="SDL2main" />
-					<Add library="SDL2" />
-					<Add library="SDL2_mixer" />
-					<Add library="SDL2_image" />
-					<Add library="freetype" />
-					<Add library="SDL2_net" />
-					<Add library="SDL2_ttf" />
-					<Add library="physfs" />
-					<Add library="GL" />
-					<Add library="libGL" />
-					<Add library="libGLEW" />
 					<Add directory="/usr/lib" />
 				</Linker>
 			</Target>
@@ -190,6 +179,8 @@
 		<Unit filename="source/core/core.hpp" />
 		<Unit filename="source/core/effect_manager.cpp" />
 		<Unit filename="source/core/effect_manager.hpp" />
+		<Unit filename="source/core/event_manager.cpp" />
+		<Unit filename="source/core/event_manager.hpp" />
 		<Unit filename="source/core/file.cpp" />
 		<Unit filename="source/core/file.hpp" />
 		<Unit filename="source/core/font_manager.cpp" />
@@ -202,8 +193,6 @@
 		<Unit filename="source/core/graphics_engine_GL_legacy.hpp" />
 		<Unit filename="source/core/graphics_engine_vao_manager.cpp" />
 		<Unit filename="source/core/graphics_engine_vao_manager.hpp" />
-		<Unit filename="source/core/io.cpp" />
-		<Unit filename="source/core/io.hpp" />
 		<Unit filename="source/core/item_manager.cpp" />
 		<Unit filename="source/core/item_manager.hpp" />
 		<Unit filename="source/core/loader_fmx.cpp" />
@@ -250,8 +239,6 @@
 		<Unit filename="source/core/pathfinding.hpp" />
 		<Unit filename="source/core/physics.cpp" />
 		<Unit filename="source/core/physics.hpp" />
-		<Unit filename="source/core/rs232.cpp" />
-		<Unit filename="source/core/rs232.hpp" />
 		<Unit filename="source/core/savegame.cpp" />
 		<Unit filename="source/core/savegame.hpp" />
 		<Unit filename="source/core/sound_manager.cpp" />
