@@ -113,22 +113,22 @@ class texture_manager_class
         texture_type *add_texture(font_type* font, std::string text_string, float text_size, int width_set, int height_set, int r, int g, int b, int a, int texture_flag);
         void          load_textures(void);
         void          reload_textures(void);
-        void          reload_texture(texture_type *texure);
-        bool          load_texture(texture_type *texure);
-        bool          load_sprite_sheet(texture_type *texure);
-        bool          load_sprite_sheet(texture_type *texure, int width_set, int height_set);
-        bool          load_string(texture_type *texure);
+        void          reload_texture(texture_type *texture);
+        bool          load_texture(texture_type *texture);
+        bool          load_sprite_sheet(texture_type *texture);
+        bool          load_sprite_sheet(texture_type *texture, int width_set, int height_set);
+        bool          load_string(texture_type *texture);
         bool          load_string(texture_type *texture_pointer, font_type* font_pointer, std::string text_string, float text_size, int r, int g, int b, int a);
         bool          load_string(texture_type *texture_pointer, font_type* font_pointer, std::string text_string, float text_size, int r, int g, int b, int a, int render_position);
-        void          bind_image(texture_type *texure);
-        void          process(texture_type *texure);
-        void          draw(texture_type *texure, bool rumble_set, float pos_x, float pos_y, float pos_z, float width_set, float height_set);
-        void          draw(texture_type *texure, bool rumble_set, float pos_x, float pos_y, float pos_z, float width_set, float height_set, int   angle_set);
-        void          draw(texture_type *texure, bool rumble_set, float pos_x, float pos_y, float pos_z, float width_set, float height_set, float angle_set);
-        void          draw(texture_type *texure, bool rumble_set, float pos_x, float pos_y, float pos_z, float width_set, float height_set, float angle_set, float alpha);
-        void          draw(texture_type *texure, bool rumble_set, float pos_x, float pos_y, float pos_z, float width_set, float height_set, float angle_set, float red, float green, float blue, float alpha);
-        void          draw(texture_type *texure, bool rumble_set, float pos_x, float pos_y, float pos_z, float width_set, float height_set, float angle_set, float red, float green, float blue, float alpha, int frame_set);
-        void          draw(texture_type *texure, bool rumble_set, float pos_x, float pos_y, float pos_z, float width_set, float height_set, float angle_set, int frame_set);
+        void          bind_image(texture_type *texture);
+        void          process(texture_type *texture);
+        void          draw(texture_type *texture, bool rumble_set, float pos_x, float pos_y, float pos_z, float width_set, float height_set);
+        void          draw(texture_type *texture, bool rumble_set, float pos_x, float pos_y, float pos_z, float width_set, float height_set, int   angle_set);
+        void          draw(texture_type *texture, bool rumble_set, float pos_x, float pos_y, float pos_z, float width_set, float height_set, float angle_set);
+        void          draw(texture_type *texture, bool rumble_set, float pos_x, float pos_y, float pos_z, float width_set, float height_set, float angle_set, float alpha);
+        void          draw(texture_type *texture, bool rumble_set, float pos_x, float pos_y, float pos_z, float width_set, float height_set, float angle_set, float red, float green, float blue, float alpha);
+        void          draw(texture_type *texture, bool rumble_set, float pos_x, float pos_y, float pos_z, float width_set, float height_set, float angle_set, float red, float green, float blue, float alpha, int frame_set);
+        void          draw(texture_type *texture, bool rumble_set, float pos_x, float pos_y, float pos_z, float width_set, float height_set, float angle_set, int frame_set);
 };
 
 #endif // TEXTURE_MANAGER_H

@@ -219,25 +219,25 @@ void texture_manager_class::reload_textures(void)
     }
 };
 
-void texture_manager_class::reload_texture(texture_type *texure)
+void texture_manager_class::reload_texture(texture_type *texture)
 {
-    if (texure != NULL)
+    if (texture != NULL)
     {
-        //game.core.log.write("Reloading texture - ",texure->data.path.c_str());
-        switch (texure->data.texture_flag)
+        //game.core.log.write("Reloading texture - ",texture->data.path.c_str());
+        switch (texture->data.texture_flag)
         {
             case TEXTURE_IMAGE:
-                texure->data.loaded = texture_manager_class::load_texture(texure);
+                texture->data.loaded = texture_manager_class::load_texture(texture);
             break;
             case TEXTURE_SPRITESHEET:
-                texure->data.loaded = texture_manager_class::load_sprite_sheet(texure,texure->data.width,texure->data.height);
+                texture->data.loaded = texture_manager_class::load_sprite_sheet(texture,texture->data.width,texture->data.height);
             break;
             case TEXTURE_STRING:
-                texure->data.loaded = texture_manager_class::load_string(texure,texure->data.text.font,texure->data.text.text_string,texure->data.text.text_size,texure->data.text.color.r,texure->data.text.color.g,texure->data.text.color.b,texure->data.text.color.a,texure->data.render_positioning);
+                texture->data.loaded = texture_manager_class::load_string(texture,texture->data.text.font,texture->data.text.text_string,texture->data.text.text_size,texture->data.text.color.r,texture->data.text.color.g,texture->data.text.color.b,texture->data.text.color.a,texture->data.render_positioning);
             break;
             default:
-                game.core.log.write("Fail -> Reloading texture, unknown texture flag. - ",texure->data.texture_flag);
-                texure->data.loaded = false;
+                game.core.log.write("Fail -> Reloading texture, unknown texture flag. - ",texture->data.texture_flag);
+                texture->data.loaded = false;
             break;
         }
     }
