@@ -922,7 +922,6 @@ void process_menu_options(UI_form_struct *UI_form_pointer)
     if (UI_form_pointer->data.event.id > EVENT_NONE)
     {
         bool update_display = false;
-        update_options_menu();
         if (game.core.debug) game.core.log.write("Processing event - ",UI_form_pointer->data.event.id, " - UID - ",UI_form_pointer->data.UID, " - ",game.UI_manager.uid_to_string(UI_form_pointer->data.UID));
         switch (UI_form_pointer->data.event.id)
         {
