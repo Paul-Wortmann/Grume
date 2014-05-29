@@ -19,7 +19,7 @@
  * @email   physhex@gmail.com
  * @website www.physhexgames.co.nr
  * @license GPL V3
- * @date 2011-11-11
+ * @date    2011-11-11
  */
 
 #include <GL/glew.h>
@@ -33,6 +33,8 @@
 #include "core/misc.hpp"
 #include "game/game.hpp"
 
+#define APP_NAME_STRING   "Frost and Flame"
+#define URL_NAME_STRING   "www.physhexgames.co.nr"
 #define FNF_MAJOR_VERSION 0
 #define FNF_MINOR_VERSION 31
 #define FNF_PATCH_VERSION 1
@@ -50,7 +52,13 @@ extern "C" int main(int argc, char** argv)
 //  --- Application initialization ---
     game.core.debug = true;
     game.state = STATE_INIT;
-    game.core.application_name = "Frost and Flame V0.31 - www.physhexgames.co.nr";
+    std::string temp_string  = APP_NAME_STRING;
+                temp_string += " V"  + int_to_string(FNF_MAJOR_VERSION);
+                temp_string += "."   + int_to_string(FNF_MINOR_VERSION);
+                temp_string += "."   + int_to_string(FNF_PATCH_VERSION);
+                temp_string += " - ";
+                temp_string += URL_NAME_STRING;
+    game.core.application_name = temp_string.c_str();
     game.core.application_icon = "data/icon.ico";
     game.core.log.set_file_name("frost_and_flame.log");
     game.core.log.clear_file();
