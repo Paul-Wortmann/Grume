@@ -21,8 +21,39 @@
  * @license GPL V3
  **/
 
-V0.31 -> (2014-05-31)
+V0.32 -> (2014-06-30)
 LOC   -> xxxxx
+
+V0.31 -> (2014-05-31)
+CORE  -> Added version defines, including new patch level define.
+CORE  -> Removed unused rs232.xpp from Frost and Flame.
+CORE  -> Removed depreciated font write functions.
+CORE  -> Renamed io to event_manager.
+CORE  -> Improved io code.
+UI    -> Added a few extra player portraits.
+UI    -> Added ability to enter player name on the new game menu.
+UI    -> Improved visual display of player portrait selection in the new game menu.
+MAP   -> Keep map within view when scrolling.
+CORE  -> Removed duplicate code, that may have mulithreaded issues
+UI    -> Disable gold increase test, gold set to 100 on new game.
+MAP   -> Only allow mouse scrolling if mouse in window.
+MAP   -> Added ability to scroll map via keyboard arrow keys.
+CORE  -> added --version command line switch.
+SFX   -> Better error handling of mix_music files.
+GFX   -> Improved reporting of graphics info from OpenGL legacy renderer.
+MAP   -> Initial implementation of map_envornment_manager.
+SFX   -> Replaced default UI sound effects.
+CORE  -> Fixed code to build on Win32.
+LOG   -> Improved Log class.
+GFX   -> Initial Graphics engine VAO manager.
+GFX   -> Removed unnecessary OpenGL code.
+UI    -> Random items now regenerated on new game.
+UI    -> Improved experience bar position and size.
+UI    -> Improved random item name generation.
+UI    -> Added various new item textures.
+UI    -> Removed old item textures.
+DOC   -> Updated the credits section of the game guide.
+LOC   -> 28992
 
 V0.30 -> (2014-04-30)
 UI    -> Improved options menu resolution selection.
