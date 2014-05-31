@@ -71,7 +71,7 @@ void command_line_parser_class::process (int arg_count, char** arg_data)
             (temp_string.compare("-version") == 0) ||
             (temp_string.compare("-v") == 0))
         {
-            std::cout << "-w   Enable a windowed mode." << std::endl;
+            std::cout << game.core.application_name.c_str() << std::endl;
         }
         else
         {
