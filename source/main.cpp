@@ -37,7 +37,7 @@
 #define URL_NAME_STRING   "www.physhexgames.co.nr"
 #define FNF_MAJOR_VERSION 0
 #define FNF_MINOR_VERSION 31
-#define FNF_PATCH_VERSION 8
+#define FNF_PATCH_VERSION 9
 
 extern game_class    game;
 
@@ -50,7 +50,7 @@ SDL_Surface*         application_icon_surface;
 extern "C" int main(int argc, char** argv)
 {
 //  --- Application initialization ---
-    game.core.debug = true;
+    game.core.debug = false;
     game.state = STATE_INIT;
     std::string temp_string  = APP_NAME_STRING;
                 temp_string += " V"  + int_to_string(FNF_MAJOR_VERSION);
