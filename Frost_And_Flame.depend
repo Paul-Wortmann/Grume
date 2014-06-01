@@ -2278,7 +2278,7 @@
 	"texture_manager.hpp"
 	<string>
 
-1401287194 /media/paul/Data_0/_git_/Frost_and_Flame/source/core/texture_manager.hpp
+1401369641 /media/paul/Data_0/_git_/Frost_and_Flame/source/core/texture_manager.hpp
 	<SDL2/SDL.h>
 	<SDL2/SDL_image.h>
 	<string>
@@ -2629,7 +2629,7 @@
 	"sound_manager.hpp"
 	"../game/game.hpp"
 
-1400175268 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/core/texture_manager.cpp
+1401369604 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/core/texture_manager.cpp
 	"texture_manager.hpp"
 	"../game/game.hpp"
 
@@ -2659,7 +2659,7 @@
 	"core/misc.hpp"
 	"language.hpp"
 
-1400911290 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/main.cpp
+1401517138 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/main.cpp
 	<GL/glew.h>
 	<SDL2/SDL.h>
 	<SDL2/SDL_image.h>
@@ -2723,7 +2723,7 @@
 	"UI_manager.hpp"
 	"../game/game.hpp"
 
-1400907763 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/UI/menu_options.cpp
+1401369351 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/UI/menu_options.cpp
 	"menu_options.hpp"
 	<string>
 	"../game/game.hpp"
@@ -2745,10 +2745,7 @@
 	"UI_cursor.hpp"
 	"../game/game.hpp"
 
-1398786936 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/UI/UI_loading_screen.cpp
-	<GL/glew.h>
-	<GL/gl.h>
-	<SDL2/SDL.h>
+1401516280 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/UI/UI_loading_screen.cpp
 	"UI_loading_screen.hpp"
 	"../core/texture_manager.hpp"
 	"../game/game.hpp"
@@ -3350,17 +3347,10 @@
 	"item_manager.hpp"
 	"game.hpp"
 
-1400175285 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/game/language.cpp
-	<SDL2/SDL.h>
-	<SDL2/SDL_image.h>
-	<SDL2/SDL_ttf.h>
+1401287522 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/game/language.cpp
 	<physfs.h>
-	<iostream>
 	<fstream>
-	<stdio.h>
-	<stdlib.h>
 	<string>
-	"../core/misc.hpp"
 	"game.hpp"
 	"language.hpp"
 
@@ -3404,7 +3394,7 @@
 	"../UI/UI_types.hpp"
 	"effect_manager.hpp"
 
-1400410139 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/core/command_line_parser.cpp
+1401518407 source:/media/paul/Data_0/_git_/Frost_and_Flame/source/core/command_line_parser.cpp
 	<string>
 	"command_line_parser.hpp"
 	"../game/game.hpp"
