@@ -31,6 +31,13 @@
 
 #define VAO_ID_NONE -1
 
+struct texture_data
+{
+    bool         loaded;
+    std::string  file_name;
+    unsigned int data;
+};
+
 struct vao_data_type
 {
     unsigned int     vao_id;
@@ -40,6 +47,9 @@ struct vao_data_type
     unsigned int    *vbo_data;
     int              number_of_vertex;
     int              number_of_vbo;
+    texture_data     texture_diffuse;
+    texture_data     texture_specular;
+    texture_data     texture_normal;
     GLfloat         *vertex;
     GLfloat         *color;
 };
