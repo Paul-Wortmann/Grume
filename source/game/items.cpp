@@ -444,7 +444,7 @@ void  item_class::init_items(void) // Initialize hard-coded default items, such 
     temp_item_pointer->data.consumable             = true;
     temp_item_pointer->data.quantity_max           = 100;
     temp_item_pointer->data.number_of_item_effects = 1;
-    temp_item_pointer->data.image.level_0          = game.texture_manager.add_texture("data/textures/UI/icons/potions/potion_01.png");
+    temp_item_pointer->data.image.level_0          = game.texture_manager.add_texture("data/textures/UI/icons/potions/potion_23.png");
     temp_item_pointer->data.sound.on_move          = game.sound_manager.add_sound("data/sound/inventory/bottle_01.wav");
     temp_item_pointer->data.sound.on_use           = game.sound_manager.add_sound("data/sound/inventory/bubble_01.wav");
     temp_item_pointer->data.type                   = ITEM_POTION;
@@ -460,7 +460,7 @@ void  item_class::init_items(void) // Initialize hard-coded default items, such 
     temp_item_pointer->data.consumable             = true;
     temp_item_pointer->data.quantity_max           = 100;
     temp_item_pointer->data.number_of_item_effects = 1;
-    temp_item_pointer->data.image.level_0          = game.texture_manager.add_texture("data/textures/UI/icons/potions/potion_02.png");
+    temp_item_pointer->data.image.level_0          = game.texture_manager.add_texture("data/textures/UI/icons/potions/potion_29.png");
     temp_item_pointer->data.sound.on_move          = game.sound_manager.add_sound("data/sound/inventory/bottle_01.wav");
     temp_item_pointer->data.sound.on_use           = game.sound_manager.add_sound("data/sound/inventory/bubble_01.wav");
     temp_item_pointer->data.type                   = ITEM_POTION;
@@ -476,7 +476,7 @@ void  item_class::init_items(void) // Initialize hard-coded default items, such 
     temp_item_pointer->data.consumable             = true;
     temp_item_pointer->data.quantity_max           = 100;
     temp_item_pointer->data.number_of_item_effects = 1;
-    temp_item_pointer->data.image.level_0          = game.texture_manager.add_texture("data/textures/UI/icons/potions/potion_23.png");
+    temp_item_pointer->data.image.level_0          = game.texture_manager.add_texture("data/textures/UI/icons/potions/potion_26.png");
     temp_item_pointer->data.sound.on_move          = game.sound_manager.add_sound("data/sound/inventory/bottle_01.wav");
     temp_item_pointer->data.sound.on_use           = game.sound_manager.add_sound("data/sound/inventory/bubble_01.wav");
     temp_item_pointer->data.type                   = ITEM_POTION;
@@ -492,7 +492,7 @@ void  item_class::init_items(void) // Initialize hard-coded default items, such 
     temp_item_pointer->data.stackable              = true;
     temp_item_pointer->data.quantity_max           = 100;
     temp_item_pointer->data.number_of_item_effects = 1;
-    temp_item_pointer->data.image.level_0          = game.texture_manager.add_texture("data/textures/UI/icons/potions/potion_08.png");
+    temp_item_pointer->data.image.level_0          = game.texture_manager.add_texture("data/textures/UI/icons/potions/potion_22.png");
     temp_item_pointer->data.sound.on_move          = game.sound_manager.add_sound("data/sound/inventory/bottle_01.wav");
     temp_item_pointer->data.sound.on_use           = game.sound_manager.add_sound("data/sound/inventory/bubble_01.wav");
     temp_item_pointer->data.type                   = ITEM_POTION;
@@ -508,7 +508,7 @@ void  item_class::init_items(void) // Initialize hard-coded default items, such 
     temp_item_pointer->data.stackable              = true;
     temp_item_pointer->data.quantity_max           = 100;
     temp_item_pointer->data.number_of_item_effects = 1;
-    temp_item_pointer->data.image.level_0          = game.texture_manager.add_texture("data/textures/UI/icons/potions/potion_09.png");
+    temp_item_pointer->data.image.level_0          = game.texture_manager.add_texture("data/textures/UI/icons/potions/potion_30.png");
     temp_item_pointer->data.sound.on_move          = game.sound_manager.add_sound("data/sound/inventory/bottle_01.wav");
     temp_item_pointer->data.sound.on_use           = game.sound_manager.add_sound("data/sound/inventory/bubble_01.wav");
     temp_item_pointer->data.type                   = ITEM_POTION;
@@ -524,7 +524,7 @@ void  item_class::init_items(void) // Initialize hard-coded default items, such 
     temp_item_pointer->data.stackable              = true;
     temp_item_pointer->data.quantity_max           = 100;
     temp_item_pointer->data.number_of_item_effects = 1;
-    temp_item_pointer->data.image.level_0          = game.texture_manager.add_texture("data/textures/UI/icons/potions/potion_22.png");
+    temp_item_pointer->data.image.level_0          = game.texture_manager.add_texture("data/textures/UI/icons/potions/potion_27.png");
     temp_item_pointer->data.sound.on_move          = game.sound_manager.add_sound("data/sound/inventory/bottle_01.wav");
     temp_item_pointer->data.sound.on_use           = game.sound_manager.add_sound("data/sound/inventory/bubble_01.wav");
     temp_item_pointer->data.type                   = ITEM_POTION;
