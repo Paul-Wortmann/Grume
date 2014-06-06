@@ -2,7 +2,7 @@ Project ("Frost and Flame")
 cmake_minimum_required (VERSION 2.8)
 
 Set (PACKAGE "FROST_AND_FLAME")
-Set (VERSION "0.30")
+Set (VERSION "0.32")
 
 
 # Default definitions
