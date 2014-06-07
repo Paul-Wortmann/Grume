@@ -9,4 +9,13 @@ before_install:
   - sudo apt-get install -qq --force-yes libsdl2-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-ttf-dev libsdl2-net-dev libphysfs-dev libglew-dev cppcheck
 script: cmake . && make
 after_script: cppcheck --verbose --enable=all --std=posix --std=c++11 --quiet `git ls-files source/\*.cpp`
-
+notifications:
+  irc:
+    channels:
+      - "irc.freenode.net#www.PhysHexGames.co.nr"
+    on_success: always
+    on_failure: always
+    use_notice: true
+    skip_join: true
+    template:
+      - "%{repository} (%{commit}) : %{message} %{build_url}"
