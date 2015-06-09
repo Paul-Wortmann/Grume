@@ -12,7 +12,7 @@ after_script: cppcheck --verbose --enable=all --std=posix --std=c++11 --quiet `g
 notifications:
   irc:
     channels:
-      - "chat.freenode.net#www.PhysHexGames.co.nr"
+      - "chat.freenode.net#physhexgames"
     on_success: always
     on_failure: always
     template:
