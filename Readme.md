@@ -9,7 +9,9 @@ This is Frost and Flame, a free/open source computer game.
 
 About:
 -----
-Frost and Flame is still in its early stages of infancy.  Currently a non-playable WIP.
+Frost and Flame is still in its early stages of infancy.  
+Currently a non-playable work in progress.
+I repeat, currently a non-playable work in progress.
 Frost and flame is an isometric, action role playing game.
 Planned features include, a particle engine, rich in content and re-playability with random item, quest and level generation.
 
