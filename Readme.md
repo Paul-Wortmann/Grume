@@ -34,10 +34,14 @@ To install development libraries you could use the commands below:
 - sudo apt-get install libglew-dev
 - sudo apt-get install libphysfs-dev
 - sudo apt-get install libfreetype6-dev
+- sudo apt-get install build-essential
+- sudo apt-get install cmake
+- sudo apt-get install make
+- sudo apt-get install gcc
 
 Or in one single line:
 
-- sudo apt-get install libsdl2-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-ttf-dev libsdl2-net-dev libglew-dev libphysfs-dev libfreetype6-dev
+- sudo apt-get install libsdl2-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-ttf-dev libsdl2-net-dev libglew-dev libphysfs-dev libfreetype6-dev cmake make gcc build-essential
 
 Next you need to generate make files and build Frost and Flame, you can use the following command, make sure you are in the Frost and Flame directory:
 
@@ -80,6 +84,7 @@ Contact:
 -------
 - Paul Wortmann: physhex@gmail.com
 - Website:          http://www.physhexgames.co.nr
+- Website:          http://www.physhexgames.com
 - Downloads:      https://sourceforge.net/projects/frostandflame/
 - Development:   https://github.com/Paul-Wortmann/Frost_And_Flame
 
