@@ -162,12 +162,14 @@ bool GL_legacy_init(void)
             game.core.log.write("GL Shading Language Version -> ",game.core.graphics.gl_shading_language_version_string);
             glGetIntegerv(GL_NUM_EXTENSIONS,&game.core.graphics.gl_extention_count);
             game.core.log.write("Loaded OpenGL Extension count -> ",game.core.graphics.gl_extention_count);
+            /*
             game.core.graphics.gl_extention_names = new std::string[game.core.graphics.gl_extention_count+1];
             for (int j = 0; j < game.core.graphics.gl_extention_count; j++)
             {
                 game.core.graphics.gl_extention_names[j] = (const char*)glGetStringi(GL_EXTENSIONS, j);
                 if (game.core.debug) game.core.log.write("Loaded OpenGL Extension -> ",game.core.graphics.gl_extention_names[j]);
             }
+            */
             glViewport(0, 0,game.core.config.display_resolution_x,game.core.config.display_resolution_y);
             glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
             glClearDepth(1.0);
