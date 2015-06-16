@@ -26,12 +26,16 @@
 #define UI_LOADING_SCREEN_H
 
 #include <string>
+#include "../core/texture_manager.hpp"
 
 class UI_loading_screen_class
 {
     protected:
     private:
+        texture_type* texture;
     public:
+        UI_loading_screen_class () : texture(NULL) {};
+        ~UI_loading_screen_class () {if (texture) delete texture;};
         void display(std::string file_name);
 };
 

@@ -39,12 +39,12 @@ extern game_class game;
 file_class::file_class (void)
 {
     file_class::file_path = "frost_and_flame.dat";
-};
+}
 
 file_class::~file_class (void)
 {
 
-};
+}
 
 bool file_class::extension_exist (std::string file_name, std::string file_extension)
 {

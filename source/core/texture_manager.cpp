@@ -33,7 +33,7 @@ texture_manager_class::texture_manager_class(void)
     texture_manager_class::last               = NULL;
     texture_manager_class::root               = NULL;
     texture_manager_class::number_of_textures = 0;
-};
+}
 
 texture_manager_class::~texture_manager_class(void)
 {
@@ -49,34 +49,34 @@ texture_manager_class::~texture_manager_class(void)
     }
     //delete [] root;
     //delete [] last;
-};
+}
 
 texture_type* texture_manager_class::add_texture(std::string file_name)
 {
     return (texture_manager_class::add_texture(file_name,DEFAULT_FRAME_WIDTH,DEFAULT_FRAME_HEIGHT,TEXTURE_IMAGE));
-};
+}
 
 texture_type* texture_manager_class::add_texture(std::string file_name, bool is_sprite_sheet)
 {
     if (is_sprite_sheet) return (texture_manager_class::add_texture(file_name,DEFAULT_FRAME_WIDTH,DEFAULT_FRAME_HEIGHT,TEXTURE_SPRITESHEET));
     else return (texture_manager_class::add_texture(file_name,DEFAULT_FRAME_WIDTH,DEFAULT_FRAME_HEIGHT,TEXTURE_IMAGE));
-};
+}
 
 texture_type* texture_manager_class::add_texture(std::string file_name, bool is_sprite_sheet, int width_set, int height_set)
 {
     if (is_sprite_sheet) return (texture_manager_class::add_texture(file_name,width_set,height_set,TEXTURE_SPRITESHEET));
     else return (texture_manager_class::add_texture(file_name,width_set,height_set,TEXTURE_IMAGE));
-};
+}
 
 texture_type* texture_manager_class::add_texture(std::string file_name, int width_set, int height_set, int texture_flag)
 {
     return (texture_manager_class::add_texture(NULL,file_name,height_set,width_set,height_set,texture_flag));
-};
+}
 
 texture_type* texture_manager_class::add_texture(font_type* font, std::string text_string, float text_size, int width_set, int height_set, int texture_flag)
 {
     return (texture_manager_class::add_texture(font,text_string,text_size,width_set,height_set,255,255,255,255,texture_flag));
-};
+}
 
 texture_type* texture_manager_class::add_texture(font_type* font, std::string text_string, float text_size, int width_set, int height_set, int r, int g, int b, int a, int texture_flag)
 {
@@ -143,7 +143,7 @@ texture_type* texture_manager_class::add_texture(font_type* font, std::string te
     }
     if (texture_manager_class::last->data.loaded) texture_manager_class::number_of_textures++;
     return(texture_manager_class::last);
-};
+}
 
 void texture_manager_class::load_textures(void)
 {
@@ -178,7 +178,7 @@ void texture_manager_class::load_textures(void)
             temp_pointer = temp_pointer->next;
         }
     }
-};
+}
 
 void texture_manager_class::reload_textures(void)
 {
@@ -217,7 +217,7 @@ void texture_manager_class::reload_textures(void)
             temp_pointer = temp_pointer->next;
         }
     }
-};
+}
 
 void texture_manager_class::reload_texture(texture_type *texture)
 {
@@ -245,7 +245,7 @@ void texture_manager_class::reload_texture(texture_type *texture)
     {
         game.core.log.write("Fail -> Reloading texture - NULL pointer passed to function.");
     }
-};
+}
 
 bool texture_manager_class::load_texture(texture_type *texture)
 {
@@ -289,12 +289,12 @@ bool texture_manager_class::load_texture(texture_type *texture)
     if (image_surface) SDL_FreeSurface(image_surface);
     texture->data.loaded = return_value;
     return(return_value);
-};
+}
 
 bool texture_manager_class::load_sprite_sheet(texture_type *texture)
 {
     return(texture_manager_class::load_sprite_sheet(texture,DEFAULT_FRAME_WIDTH,DEFAULT_FRAME_HEIGHT));
-};
+}
 
 bool texture_manager_class::load_sprite_sheet(texture_type *texture, int width_set, int height_set)
 {
@@ -373,7 +373,7 @@ bool texture_manager_class::load_sprite_sheet(texture_type *texture, int width_s
     if (temp_surface) SDL_FreeSurface(temp_surface);
     texture->data.loaded = return_value;
     return(return_value);
-};
+}
 
 bool texture_manager_class::load_string(texture_type *texture_pointer, font_type* font_pointer, std::string text_string, float text_size, int r, int g, int b, int a)
 {
@@ -458,12 +458,12 @@ bool texture_manager_class::load_string(texture_type *texture)
         texture->data.loaded = return_value;
     }
     return(return_value);
-};
+}
 
 void texture_manager_class::bind_image(texture_type *texture)
 {
     glBindTexture(GL_TEXTURE_2D, texture->data.frame[0].data);
-};
+}
 
 void texture_manager_class::process(texture_type *texture)
 {
@@ -489,7 +489,7 @@ void texture_manager_class::process(texture_type *texture)
         texture->data.frame_number++;
         if (texture->data.frame_number > texture->data.frame_max) texture->data.frame_number = 0;
     }
-};
+}
 
 void texture_manager_class::draw(texture_type *texture, bool rumble_set, float pos_x, float pos_y, float pos_z, float width_set, float height_set)
 {
@@ -586,19 +586,19 @@ void texture_manager_class::draw(texture_type *texture, bool rumble_set, float p
         game.core.log.write("Fail - You are most likely missing data files, please re-install.");
         game.state = STATE_QUIT;
     }
-};
+}
 
 void texture_manager_class::draw(texture_type *texture, bool rumble_set, float pos_x, float pos_y, float pos_z, float width_set, float height_set, int angle_set)
 {
     texture->data.angle = angle_set;//game.core.physics.degrees_to_radians(angle);
     texture_manager_class::draw(texture,rumble_set,pos_x,pos_y,pos_z,width_set,height_set);
-};
+}
 
 void texture_manager_class::draw(texture_type *texture, bool rumble_set, float pos_x, float pos_y, float pos_z, float width_set, float height_set, float angle_set)
 {
     texture->data.angle = angle_set;
     texture_manager_class::draw(texture,rumble_set,pos_x,pos_y,pos_z,width_set,height_set);
-};
+}
 
 void texture_manager_class::draw(texture_type *texture, bool rumble_set, float pos_x, float pos_y, float pos_z, float width_set, float height_set, float angle_set, float alpha)
 {
@@ -606,7 +606,7 @@ void texture_manager_class::draw(texture_type *texture, bool rumble_set, float p
     glColor4f (1.0f, 1.0f, 1.0f, alpha);
     texture_manager_class::draw(texture,rumble_set,pos_x,pos_y,pos_z,width_set,height_set);
     glColor4f (1.0f, 1.0f, 1.0f,1.0f);
-};
+}
 
 void texture_manager_class::draw(texture_type *texture, bool rumble_set, float pos_x, float pos_y, float pos_z, float width_set, float height_set, float angle_set, float red, float green, float blue, float alpha)
 {
@@ -614,7 +614,7 @@ void texture_manager_class::draw(texture_type *texture, bool rumble_set, float p
     glColor4f (red, green, blue, alpha);
     texture_manager_class::draw(texture,rumble_set,pos_x,pos_y,pos_z,width_set,height_set);
     glColor4f (1.0f, 1.0f, 1.0f,1.0f);
-};
+}
 
 void texture_manager_class::draw(texture_type *texture, bool rumble_set, float pos_x, float pos_y, float pos_z, float width_set, float height_set, float angle_set, float red, float green, float blue, float alpha, int frame_set)
 {
@@ -623,11 +623,11 @@ void texture_manager_class::draw(texture_type *texture, bool rumble_set, float p
     glColor4f (red, green, blue, alpha);
     texture_manager_class::draw(texture,rumble_set,pos_x,pos_y,pos_z,width_set,height_set);
     glColor4f (1.0f, 1.0f, 1.0f,1.0f);
-};
+}
 
 void texture_manager_class::draw(texture_type *texture, bool rumble_set, float pos_x, float pos_y, float pos_z, float width_set, float height_set, float angle_set, int frame_set)
 {
     texture->data.frame_number = frame_set;
     texture->data.angle        = angle_set;
     texture_manager_class::draw(texture,rumble_set,pos_x,pos_y,pos_z,width_set,height_set);
-};
+}

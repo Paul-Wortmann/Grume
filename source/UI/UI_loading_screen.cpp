@@ -23,16 +23,15 @@
  */
 
 #include "UI_loading_screen.hpp"
-#include "../core/texture_manager.hpp"
 #include "../game/game.hpp"
 
 extern game_class game;
 
 void UI_loading_screen_class::display(std::string file_name)
 {
-    texture_type* loading_screen_texture = game.texture_manager.add_texture(file_name.c_str());
-    game.texture_manager.reload_texture(loading_screen_texture);
+    texture = game.texture_manager.add_texture(file_name.c_str());
+    game.texture_manager.reload_texture(texture);
     SDL_GL_SwapWindow(game.core.graphics.window);
-    game.texture_manager.draw(loading_screen_texture,false,0.0f,0.0f,0.9f,2.0f,2.0f);
+    game.texture_manager.draw(texture,false,0.0f,0.0f,0.9f,2.0f,2.0f);
     SDL_GL_SwapWindow(game.core.graphics.window);
-};
+}

@@ -37,7 +37,7 @@
 #define URL_NAME_STRING   "www.physhexgames.co.nr"
 #define FNF_MAJOR_VERSION 0
 #define FNF_MINOR_VERSION 31
-#define FNF_PATCH_VERSION 9
+#define FNF_PATCH_VERSION 10
 
 extern game_class    game;
 
