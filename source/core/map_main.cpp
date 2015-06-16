@@ -35,7 +35,7 @@
 #include "../game/game.hpp"
 #include "misc.hpp"
 
-extern game_class         game;
+extern game_class game;
 
 void map_load(map_type* map_pointer, std::string file_name)
 {
@@ -294,7 +294,7 @@ void map_process(map_type* map_pointer)
     if ((game.core.event_manager.mouse_y <= -0.99000) || (game.core.event_manager.down))  map_scroll(map_pointer, 0, 1);
     if ((game.core.event_manager.mouse_x <= -0.99000) || (game.core.event_manager.left))  map_scroll(map_pointer, 1, 0);
     if ((game.core.event_manager.mouse_x >=  0.99000) || (game.core.event_manager.right)) map_scroll(map_pointer,-1, 0);
-};
+}
 
 void map_center_on_tile(map_type* map_pointer, int tile_ID)
 {
@@ -317,7 +317,7 @@ void map_center_on_tile(map_type* map_pointer, int tile_ID)
         map_pointer->tile[tile_count].vertex[3].y  = map_pointer->tile[tile_count].position.y;
         map_pointer->tile[tile_count].vertex[3].z  = 0.0f;
     }
-};
+}
 
 void map_render(map_type* map_pointer)
 {

@@ -32,6 +32,8 @@ class UI_cursor_class
     protected:
     private:
     public:
+        UI_cursor_class() : normal_arrow(NULL) , pointer(NULL) {};
+        ~UI_cursor_class() {if (normal_arrow) delete normal_arrow; if (pointer) delete pointer;};
         int   active_cursor;
         int   number_of_cursors;
         float angle;
