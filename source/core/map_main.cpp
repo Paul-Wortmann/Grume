@@ -202,12 +202,14 @@ void map_load(map_type* map_pointer, std::string file_name)
     {
         game.core.log.write("Fail -> PhysicsFS unable to find file - ",file_name.c_str());
     }
-};
+}
 
+/*
 void map_save(map_type* map_pointer, std::string file_name)
 {
 
-};
+}
+*/
 
 void map_generate_tile_positions(map_type* map_pointer)
 {

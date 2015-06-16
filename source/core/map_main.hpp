@@ -62,7 +62,7 @@ struct map_type
 };
 
 void map_load(map_type *map_pointer, std::string file_name);
-void map_save(map_type *map_pointer, std::string file_name);
+//void map_save(map_type *map_pointer, std::string file_name);
 void map_generate_tile_positions(map_type *map_pointer);
 void map_scroll(map_type* map_pointer,int x_dir, int y_dir);
 bool map_tile_visable(map_type* map_pointer,int tile_count);
