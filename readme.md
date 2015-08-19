@@ -80,6 +80,6 @@ PARTICULAR PURPOSE.  See the gpl.txt file for more details.
 Contact:
 -------
 - Paul Wortmann: physhex@gmail.com
-- Website:       http://www.physhexgames.com
+- Website:            http://www.physhexgames.com
 - Development:   https://github.com/Paul-Wortmann/Frost_And_Flame
 
