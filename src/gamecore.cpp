@@ -42,10 +42,10 @@ void GameCore::init()
         setGameState(RoboEngine::EXIT);
     }
     m_map.Load("./maps/level_0.xml", m_meshManager, m_shaderManager, m_textureManager);
-    /*
-    m_graphicsObject.SetMesh("./models/tile.obj");
+
+    m_graphicsObject.SetMesh("./models/cave.obj");
     m_graphicsObject.SetShader("./shaders/default");
-    m_graphicsObject.SetTexture("./textures/tiles/blue_d.png");
+    m_graphicsObject.SetTexture("./textures/brown_1.png");
     m_graphicsObject.SetMeshManager(m_meshManager);
     m_graphicsObject.SetShaderManager(m_shaderManager);
     m_graphicsObject.SetTextureManager(m_textureManager);
@@ -53,10 +53,10 @@ void GameCore::init()
     m_graphicsObject.SetScale(1.0f,1.0f,1.0f);
     m_graphicsObject.SetRotation(0.0f,0.0f,0.0f);
     m_graphicsObject.Load();
-    */
+
 
     //m_shader.Init("./shaders/basicshader");
-    m_camera.Init(glm::vec3(0,0,-4), 70.0f, (float)m_window.GetWidth()/(float)m_window.GetHeight(), 0.01f, 1000.0f);
+    m_camera.Init(glm::vec3(0,0,-5), 140.0f, (float)m_window.GetWidth()/(float)m_window.GetHeight(), 0.01f, 1000.0f);
 
     //m_texture.Create("./textures/bricks.png");
     //m_mesh.Create("./models/wyvern.obj");
@@ -103,13 +103,13 @@ void GameCore::draw()
 
         //m_transform.GetRot().y += 1;
         //m_transform.GetRot().z += 1;
-        //m_graphicsObject.Update(m_transform, m_camera);
-        //m_graphicsObject.Draw();
+        m_graphicsObject.Update(m_transform, m_camera);
+        m_graphicsObject.Draw();
 
-        //m_shader.Update(m_transform, m_camera);
-        //m_shader.Bind();
-        //m_texture.Bind(0);
-        //m_mesh.Draw();
+        m_shader.Update(m_transform, m_camera);
+        m_shader.Bind();
+        m_texture.Bind(0);
+        m_mesh.Draw();
     }
 }
 
