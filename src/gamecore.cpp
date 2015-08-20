@@ -56,7 +56,7 @@ void GameCore::init()
 
 
     //m_shader.Init("./shaders/basicshader");
-    m_camera.Init(glm::vec3(0,0,-5), 140.0f, (float)m_window.GetWidth()/(float)m_window.GetHeight(), 0.01f, 1000.0f);
+    m_camera.Init(glm::vec3(0,2,-7), 70.0f, (float)m_window.GetWidth()/(float)m_window.GetHeight(), 0.01f, 1000.0f);
 
     //m_texture.Create("./textures/bricks.png");
     //m_mesh.Create("./models/wyvern.obj");
