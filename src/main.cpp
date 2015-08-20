@@ -27,7 +27,6 @@
 int main (int argc, char* argv[])
 {
     GameCore gamecore;
-    gamecore.run();
-    return 0;
+    return (gamecore.run(argc,argv));
 }
 

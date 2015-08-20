@@ -26,7 +26,7 @@
 #include <iostream>
 #include "gamecore.h"
 
-void GameCore::init()
+void GameCore::init(int argc, char** argv)
 {
     RoboEngine::TRoboEngineVersion RoboEngineVersion;
     setGameName("Frost and Flame");

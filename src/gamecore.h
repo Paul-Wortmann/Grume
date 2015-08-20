@@ -44,7 +44,7 @@
 class GameCore : public RoboEngine::MainGame
 {
     public:
-            void init();
+            void init(int argc, char** argv);
             void update();
             void draw();
     protected:
