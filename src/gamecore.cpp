@@ -24,7 +24,7 @@
 
 #include <GL/glew.h>
 #include <iostream>
-#include "gamecore.h"
+#include "gamecore.hpp"
 
 void GameCore::init(int argc, char** argv)
 {

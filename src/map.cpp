@@ -22,8 +22,8 @@
  * @date 2011-11-11
  */
 
-#include "map.h"
-#include <../RoboEngine/resource_management/xmlparser.h>
+#include "map.hpp"
+#include <../RoboEngine/resource_management/xmlparser.hpp>
 
 void Map::Load(const std::string& FileName, const RoboEngine::MeshManager& meshManager, const RoboEngine::ShaderManager& shaderManager, const RoboEngine::TextureManager& textureManager)
 {

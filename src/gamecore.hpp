@@ -25,21 +25,21 @@
 #ifndef GAMECORE_H
 #define GAMECORE_H
 
-#include <../RoboEngine/maingame.h>
-#include <../RoboEngine/graphics_engine/window.h>
-#include <../RoboEngine/resource_management/texturemanager.h>
-#include <../RoboEngine/resource_management/shadermanager.h>
-#include <../RoboEngine/resource_management/meshmanager.h>
-#include <../RoboEngine/system/config.h>
-#include <../RoboEngine/system/iomanager.h>
-#include <../RoboEngine/graphics_engine/camera.h>
-#include <../RoboEngine/graphics_engine/shader.h>
-#include <../RoboEngine/graphics_engine/transform.h>
-#include <../RoboEngine/graphics_engine/texture.h>
-#include <../RoboEngine/graphics_engine/mesh.h>
-#include <../RoboEngine/graphics_engine/graphicsobject.h>
+#include <../RoboEngine/maingame.hpp>
+#include <../RoboEngine/graphics_engine/window.hpp>
+#include <../RoboEngine/resource_management/texturemanager.hpp>
+#include <../RoboEngine/resource_management/shadermanager.hpp>
+#include <../RoboEngine/resource_management/meshmanager.hpp>
+#include <../RoboEngine/system/config.hpp>
+#include <../RoboEngine/system/iomanager.hpp>
+#include <../RoboEngine/graphics_engine/camera.hpp>
+#include <../RoboEngine/graphics_engine/shader.hpp>
+#include <../RoboEngine/graphics_engine/transform.hpp>
+#include <../RoboEngine/graphics_engine/texture.hpp>
+#include <../RoboEngine/graphics_engine/mesh.hpp>
+#include <../RoboEngine/graphics_engine/graphicsobject.hpp>
 
-#include "map.h"
+#include "map.hpp"
 
 class GameCore : public RoboEngine::MainGame
 {

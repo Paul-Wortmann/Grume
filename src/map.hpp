@@ -25,12 +25,12 @@
 #ifndef MAP_H
 #define MAP_H
 
-#include <../RoboEngine/graphics_engine/camera.h>
-#include <../RoboEngine/graphics_engine/graphicsobject.h>
-#include <../RoboEngine/graphics_engine/transform.h>
-#include <../RoboEngine/resource_management/texturemanager.h>
-#include <../RoboEngine/resource_management/shadermanager.h>
-#include <../RoboEngine/resource_management/meshmanager.h>
+#include <../RoboEngine/graphics_engine/camera.hpp>
+#include <../RoboEngine/graphics_engine/graphicsobject.hpp>
+#include <../RoboEngine/graphics_engine/transform.hpp>
+#include <../RoboEngine/resource_management/texturemanager.hpp>
+#include <../RoboEngine/resource_management/shadermanager.hpp>
+#include <../RoboEngine/resource_management/meshmanager.hpp>
 
 #include <string>
 

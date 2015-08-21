@@ -22,7 +22,7 @@
  * @date 2011-11-11
  */
 
-#include "gamecore.h"
+#include "gamecore.hpp"
 
 int main (int argc, char* argv[])
 {
