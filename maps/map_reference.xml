@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RoboEngineMap www="http://www.physhexgames.com" version="0.0.1">
+  <size_x>2</size_x> # tiles x
+  <size_y>2</size_y> # tiles y
+  <biome>0</biome> # 0 == forest
+  <pgt>0</pgt> # 0 == not a proceduraly generated level
+  <pgts>0</pgts> # 0 == seed
+  <layer>
+    <type>0</type> # 0 == tiled floor layer
+    <data>0,1,2,3</data> # 0 == none; 1 == floor; 2 == wall; 3 == liquid; 4 == road
+  </layer>
+  <layer>
+    <type>1</type> # 0 == object layer
+    <data>0,1,2,3</data> # 0 == none; 1 == object 1
+  </layer>
+</RoboEngineMap>
