@@ -58,9 +58,9 @@ class GameCore : public RoboEngine::MainGame
         RoboEngine::Camera         m_camera;
         RoboEngine::Transform      m_transform;
         Map                        m_map;
-        RoboEngine::Shader         m_shader;
-        RoboEngine::Texture        m_texture;
-        RoboEngine::Mesh           m_mesh;
+        //RoboEngine::Shader         m_shader;
+        //RoboEngine::Texture        m_texture;
+        //RoboEngine::Mesh           m_mesh;
         RoboEngine::GraphicsObject m_graphicsObject;
 
 };

@@ -54,7 +54,6 @@ void GameCore::init(int argc, char** argv)
     m_graphicsObject.SetRotation(0.0f,0.0f,0.0f);
     m_graphicsObject.Load();
 
-
     //m_shader.Init("./shaders/basicshader");
     m_camera.Init(glm::vec3(0,2,-7), 70.0f, (float)m_window.GetWidth()/(float)m_window.GetHeight(), 0.01f, 1000.0f);
 
@@ -106,10 +105,10 @@ void GameCore::draw()
         m_graphicsObject.Update(m_transform, m_camera);
         m_graphicsObject.Draw();
 
-        m_shader.Update(m_transform, m_camera);
-        m_shader.Bind();
-        m_texture.Bind(0);
-        m_mesh.Draw();
+        //m_shader.Update(m_transform, m_camera);
+       // m_shader.Bind();
+        //m_texture.Bind(0);
+        //m_mesh.Draw();
     }
 }
 
