@@ -62,8 +62,8 @@ class Map
         unsigned int m_size_x = 0;
         unsigned int m_size_y = 0;
         unsigned int m_size   = 0;
-        float m_tile_size_x = 0.1f;
-        float m_tile_size_y = 0.1f;
+        float m_tile_size_x   = 0.1f;
+        float m_tile_size_y   = 0.1f;
         RoboEngine::GraphicsObject* m_tile;
 };
 
