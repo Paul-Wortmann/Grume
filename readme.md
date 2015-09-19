@@ -15,7 +15,7 @@ Frost and flame is an action role playing game.
 Compiling:
 ---------
 - The RoboEngine development files are also requied.
-A CMakeLists.txt file is included.
+- A CMakeLists.txt file is included.
 
 Compiling under Ubuntu:
 -----------------------
