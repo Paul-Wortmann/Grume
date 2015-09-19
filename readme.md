@@ -5,8 +5,6 @@ README file for Frost and Flame
 
 This is Frost and Flame, a free/open source computer game.
 
-- More information can be found in the game_guide.pdf file.
-
 About:
 -----
 Frost and Flame is still in its early stages of infancy.  
@@ -16,8 +14,7 @@ Frost and flame is an action role playing game.
 
 Compiling:
 ---------
-Required are the SDL2 development libraries, and other dependencies listed below.
-It is recommended that you build the DLL files (SDL2 etc...) with the same compiler that you use to build Frost and Flame.
+- The RoboEngine development files are also requied.
 A CMakeLists.txt file is included.
 
 Compiling under Ubuntu:
@@ -47,17 +44,13 @@ Next you need to generate make files and build Frost and Flame, you can use the 
 
 - cmake . && make
 
-So in summery the commands are as follows:
-
-- sudo apt-get install libsdl2-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-ttf-dev libsdl2-net-dev libglew-dev libphysfs-dev libfreetype6-dev cmake make gcc build-essential
-- cmake . && make
-
 Contributions:
 ------------
 Please note, I am not looking for code contributions. While I do appreciate the offer, this is a personal project I use for testing ideas and improving my code.
 
 Known bugs:
 ----------
+RoboEngine missing during compilation, RoboEngine is not yet included in the distrubution, it needs a lot more work before it is mature enough for public usage.
 I am currently writing a new graphics engine for Frost and Flame, so expect graphical glitches for now...
 As this is still a work in progress, the format of the savegames may, and does change quite often.
 It is recommended you either overwrite your older savegames with new ones, or delete the older ones when upgrading to a newer version of Frost and Flame.
