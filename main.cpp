@@ -24,7 +24,7 @@
 
 #include "gamecore.hpp"
 
-int main (int argc, char* argv[])
+int main (int argc, char** argv)
 {
     GameCore gamecore;
     return (gamecore.run(argc,argv));

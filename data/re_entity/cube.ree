@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ree version="1.0" name="Cube">
+   <!--RoboEngine Entity-->
+   <reo object="cube.reo"/>
+</ree>
+
