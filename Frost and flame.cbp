@@ -61,11 +61,10 @@
 			<Add library="GL" />
 		</Linker>
 		<Unit filename="RoboEngine.log" />
-		<Unit filename="ValgrindOut.xml" />
 		<Unit filename="game.log" />
-		<Unit filename="gamecore.cpp" />
-		<Unit filename="gamecore.hpp" />
-		<Unit filename="main.cpp" />
+		<Unit filename="source/gamecore.cpp" />
+		<Unit filename="source/gamecore.hpp" />
+		<Unit filename="source/main.cpp" />
 		<Extensions>
 			<code_completion />
 			<envvars />

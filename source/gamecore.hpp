@@ -25,12 +25,12 @@
 #ifndef GAMECORE_H
 #define GAMECORE_H
 
-#include "../RoboEngine2/resource/RE_resource_manager.hpp"
-#include "../RoboEngine2/resource/RE_xml_parser.hpp"
-#include "../RoboEngine2/resource/RE_obj_loader.hpp"
-#include "../RoboEngine2/resource/RE_reo_loader.hpp"
-#include "../RoboEngine2/RE_maingame.hpp"
-#include "../RoboEngine2/system/RE_log.hpp"
+#include "../../RoboEngine2/resource/RE_resource_manager.hpp"
+#include "../../RoboEngine2/resource/RE_xml_parser.hpp"
+#include "../../RoboEngine2/resource/RE_obj_loader.hpp"
+#include "../../RoboEngine2/resource/RE_reo_loader.hpp"
+#include "../../RoboEngine2/RE_maingame.hpp"
+#include "../../RoboEngine2/system/RE_log.hpp"
 
 class GameCore : public RoboEngine::MainGame
 {
