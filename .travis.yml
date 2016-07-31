@@ -2,6 +2,7 @@ language: cpp
 compiler:
   - gcc
 before_install:
+  - sudo apt-get update && sudo apt-get upgrade
   - yes | sudo add-apt-repository -y 'deb http://ftp.us.debian.org/debian/ testing main'
   - yes | sudo add-apt-repository -y 'deb http://us.archive.ubuntu.com/ubuntu/ xenial main'
   - sudo apt-get install debian-archive-keyring
