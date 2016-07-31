@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<reo version="1.0" name="Cube">
-   <!--RoboEngine Object-->
-   <rem mesh="cube.rem"/>
-   <ret texture="cube.ret"/>
-   <res shader="cube.res"/>
-</reo>
-
