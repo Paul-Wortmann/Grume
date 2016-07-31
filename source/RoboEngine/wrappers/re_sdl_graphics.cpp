@@ -21,19 +21,11 @@
  * @date 2011-11-11
  */
 
-#include "re_sdl_timer.hpp"
+#include "re_sdl_graphics.hpp"
 
 namespace RoboEngine
 {
 
-    uint32_t RE_GetTicks(void)
-    {
-        return SDL_GetTicks();
-    }
 
-    void RE_Delay(uint32_t _ms)
-    {
-        SDL_Delay(_ms);
-    }
 
 }

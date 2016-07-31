@@ -21,8 +21,8 @@
  * @date 2011-11-11
  */
 
-#ifndef RE_SDL_TIMER_HPP
-#define RE_SDL_TIMER_HPP
+#ifndef RE_SDL_GRAPHICS_HPP
+#define RE_SDL_GRAPHICS_HPP
 
 #include <cstdint>
 #include <cstdlib>
@@ -31,8 +31,7 @@
 namespace RoboEngine
 {
 
-    uint32_t RE_GetTicks(void);
-    void RE_Delay(uint32_t _ms);
+
 }
 
-#endif //  RE_SDL_TIMER_HPP
+#endif //  RE_SDL_GRAPHICS_HPP
