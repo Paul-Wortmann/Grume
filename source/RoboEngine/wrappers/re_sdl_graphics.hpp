@@ -26,12 +26,38 @@
 
 #include <cstdint>
 #include <cstdlib>
+#include <string>
 #include <SDL2/SDL.h>
 
 namespace RoboEngine
 {
 
+    #define RE_WINDOWPOS_CENTERED SDL_WINDOWPOS_CENTERED
+    #define RE_WINDOWPOS_UNDEFINED SDL_WINDOWPOS_UNDEFINED
+
+    #define RE_WINDOW_FULLSCREEN SDL_WINDOW_FULLSCREEN
+    #define RE_WINDOW_FULLSCREEN_DESKTOP SDL_WINDOW_FULLSCREEN_DESKTOP
+    #define RE_WINDOW_OPENGL SDL_WINDOW_OPENGL
+    #define RE_WINDOW_HIDDEN SDL_WINDOW_HIDDEN
+    #define RE_WINDOW_BORDERLESS SDL_WINDOW_BORDERLESS
+    #define RE_WINDOW_RESIZABLE SDL_WINDOW_RESIZABLE
+    #define RE_WINDOW_MINIMIZED SDL_WINDOW_MINIMIZED
+    #define RE_WINDOW_MAXIMIZED SDL_WINDOW_MAXIMIZED
+    #define RE_WINDOW_INPUT_GRABBED SDL_WINDOW_INPUT_GRABBED
+    #define RE_WINDOW_ALLOW_HIGHDPI SDL_WINDOW_ALLOW_HIGHDPI
+
+    typedef SDL_Window RE_Window;
+    typedef SDL_GLContext RE_GLContext;
+
+    RE_Window* RE_CreateWindow(const std::string &_title, uint16_t _w, uint16_t _h, uint32_t _flags);
+    RE_Window* RE_CreateWindow(const std::string &_title, uint64_t _x, uint64_t _y, uint16_t _w, uint16_t _h, uint32_t _flags);
+    void RE_DestroyWindow(RE_Window* _window);
+
+    RE_GLContext RE_GL_CreateContext(RE_Window *_window);
+    void RE_GL_SwapWindow(RE_Window *_window);
+    void RE_GL_DeleteContext(RE_GLContext _glcontext);
 
 }
 
 #endif //  RE_SDL_GRAPHICS_HPP
+

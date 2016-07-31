@@ -21,6 +21,7 @@
  * @date 2011-11-11
  */
 
+#include <GL/glew.h>
 #include "re_graphics_engine.hpp"
 
 namespace RoboEngine
@@ -28,18 +29,23 @@ namespace RoboEngine
 
             void re_cGraphicsEngine::initialize(void)
             {
-
+                m_window = RE_CreateWindow("Frost and Flame", 640, 480, RE_WINDOW_OPENGL);
+                m_glcontext = SDL_GL_CreateContext(m_window);
             }
 
             void re_cGraphicsEngine::deinitialize(void)
             {
-
+                RE_DestroyWindow(m_window);
+                RE_GL_DeleteContext(m_glcontext);
             }
 
             void re_cGraphicsEngine::process(void)
             {
                 int64_t _dt = 16;
                 std::this_thread::sleep_for(std::chrono::milliseconds(_dt));
+                glClearColor(0,0,255,1);
+                glClear(GL_COLOR_BUFFER_BIT);
+                RE_GL_SwapWindow(m_window);
                 //std::cout << "FPS: " << 1000 / _dt << std::endl;
             }
 

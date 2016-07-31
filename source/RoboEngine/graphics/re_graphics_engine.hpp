@@ -28,6 +28,9 @@
 #include <cstdint>
 #include <thread>
 #include <chrono>
+#include <GL/glew.h>
+#include <GL/gl.h>
+#include "../wrappers/re_sdl_graphics.hpp"
 
 namespace RoboEngine
 {
@@ -37,10 +40,14 @@ namespace RoboEngine
         public:
             re_cGraphicsEngine(void) {}
             virtual ~re_cGraphicsEngine(void) {}
+            re_cGraphicsEngine(const re_cGraphicsEngine&) = default;
+            re_cGraphicsEngine& operator=(const re_cGraphicsEngine& rhs) {if (this == &rhs) return *this; return *this;}
             void initialize(void);
             void deinitialize(void);
             void process(void);
         private:
+            RE_Window *m_window = nullptr;
+            RE_GLContext m_glcontext = {};
     };
 
 }

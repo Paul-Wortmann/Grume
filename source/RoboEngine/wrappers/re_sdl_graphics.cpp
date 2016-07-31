@@ -26,6 +26,34 @@
 namespace RoboEngine
 {
 
+    RE_Window* RE_CreateWindow(const std::string &_title, uint16_t _w, uint16_t _h, uint32_t _flags)
+    {
+        return RE_CreateWindow(_title.c_str(), RE_WINDOWPOS_CENTERED, RE_WINDOWPOS_CENTERED, _w, _h, _flags);
+    }
 
+    RE_Window* RE_CreateWindow(const std::string &_title, uint64_t _x, uint64_t _y, uint16_t _w, uint16_t _h, uint32_t _flags)
+    {
+        return SDL_CreateWindow(_title.c_str(), _x, _y, _w, _h, _flags);
+    }
+
+    void RE_DestroyWindow(RE_Window* _window)
+    {
+        SDL_DestroyWindow(_window);
+    }
+
+    RE_GLContext RE_GL_CreateContext(RE_Window *_window)
+    {
+        return SDL_GL_CreateContext(_window);
+    }
+
+    void RE_GL_SwapWindow(RE_Window *_window)
+    {
+        SDL_GL_SwapWindow(_window);
+    }
+
+    void RE_GL_DeleteContext(RE_GLContext _glcontext)
+    {
+        SDL_GL_DeleteContext(_glcontext);
+    }
 
 }
