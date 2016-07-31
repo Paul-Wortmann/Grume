@@ -6,7 +6,14 @@ before_install:
   - yes | sudo add-apt-repository -y 'deb http://us.archive.ubuntu.com/ubuntu/ xenial main'
   - sudo apt-get install debian-archive-keyring
   - sudo apt-get clean && sudo apt-get update -qq
-  - sudo apt-get install -qq --force-yes libsdl2-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-ttf-dev libsdl2-net-dev libphysfs-dev libglew-dev cppcheck
+  - sudo apt-get install -qq --force-yes cppcheck
+  - sudo apt-get install -qq --force-yes libglew-dev
+  - sudo apt-get install -qq --force-yes libphysfs-dev
+  - sudo apt-get install -qq --force-yes libsdl2-dev
+  - sudo apt-get install -qq --force-yes libsdl2-image-dev
+  - sudo apt-get install -qq --force-yes libsdl2-mixer-dev
+  - sudo apt-get install -qq --force-yes libsdl2-ttf-dev
+  - sudo apt-get install -qq --force-yes libsdl2-net-dev
 script: cmake . && make
 after_script: cppcheck --verbose --enable=all --std=posix --std=c++11 --quiet `git ls-files source/\*.cpp`
 notifications:
