@@ -28,23 +28,45 @@
 namespace RoboEngine
 {
 
-    void log_write(const std::string &s_file_name, const std::string &s_data)
+    void log_write(const std::string &s_fileName, const std::string &s_data)
     {
-        std::fstream file_pointer;
-        file_pointer.open (s_file_name, std::fstream::out | std::fstream::app);
-        file_pointer << s_data << std::endl;
-        file_pointer.close();
-        if (!file_pointer.good())
-            std::cout << "ERROR -> log_write()  :  " << s_file_name << std::endl;
+        std::fstream filePointer;
+        filePointer.open (s_fileName, std::fstream::out | std::fstream::app);
+        filePointer << s_data << std::endl;
+        filePointer.close();
+        if (!filePointer.good())
+            std::cout << "ERROR -> log_write()  :  " << s_fileName << std::endl;
     }
 
-    void log_clear(const std::string &s_file_name)
+    void log_clear(const std::string &s_fileName)
     {
-        std::fstream file_pointer;
-        file_pointer.open (s_file_name, std::fstream::trunc | std::fstream::out);
-        file_pointer.close();
-        if (!file_pointer.good())
-            std::cout << "ERROR -> log_clear()  :  " << s_file_name << std::endl;
+        std::fstream filePointer;
+        filePointer.open (s_fileName, std::fstream::trunc | std::fstream::out);
+        filePointer.close();
+        if (!filePointer.good())
+            std::cout << "ERROR -> log_clear()  :  " << s_fileName << std::endl;
+    }
+
+    std::string stripPath(const std::string &s_fileName)
+    {
+        std::string r_returnString = "";
+        bool markerFound = false;
+        uint16_t fileLength = s_fileName.length();
+        for (int16_t i = fileLength-1; i >= 0; i--)
+        {
+            if (!markerFound)
+            {
+                if (s_fileName[i] != '/')
+                    r_returnString += s_fileName[i];
+                else
+                    markerFound = true;
+            }
+        }
+        uint16_t r_fileLength = r_returnString.length();
+        std::string returnString = "";
+        for (int16_t i = r_fileLength-1; i >= 0; i--)
+                returnString += r_returnString[i];
+        return returnString;
     }
 
 }

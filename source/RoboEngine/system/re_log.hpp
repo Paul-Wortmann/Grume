@@ -30,24 +30,26 @@ namespace RoboEngine
 {
 
     #define ROBOENGINELOG  "RoboEngine.log"
+    #define DEFAULTLOG  "default.log"
 
-    void log_write(const std::string &s_file_name, const std::string &s_data);
-    void log_clear(const std::string &s_file_name);
+    void log_write(const std::string &s_fileName, const std::string &s_data);
+    void log_clear(const std::string &s_fileName);
+    std::string stripPath(const std::string &s_fileName);
 
     class re_cLog
     {
         public:
-            re_cLog(void) {m_file_name = ROBOENGINELOG; clear();}
-            re_cLog(const std::string &file_name) {m_file_name = file_name; clear();}
+            re_cLog(void) {m_fileName = ROBOENGINELOG; clear();}
+            re_cLog(const std::string &fileName) {m_fileName = fileName; clear();}
             ~re_cLog(void) {}
             re_cLog(const re_cLog&) = default;
             re_cLog& operator=(const re_cLog& rhs) {if (this == &rhs) return *this; return *this;}
-            void inline write(const std::string &s_data) {log_write(m_file_name, s_data);}
-            void inline clear(void) {log_clear(m_file_name);}
-            void inline set_file_name(const std::string &file_name) {m_file_name = file_name; }
+            void inline write(const std::string &s_data) {log_write(m_fileName, s_data);}
+            void inline clear(void) {log_clear(m_fileName);}
+            void inline setFileName(const std::string &fileName) {m_fileName = fileName; }
         protected:
         private:
-        std::string m_file_name = "default.log";
+            std::string m_fileName = DEFAULTLOG;
     };
 
 }
