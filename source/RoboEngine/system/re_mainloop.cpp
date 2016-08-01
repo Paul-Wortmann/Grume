@@ -33,6 +33,7 @@ namespace RoboEngine
         uint16_t return_value = EXIT_SUCCESS;
         RE_STATE = RE_STATE_ENUM::RE_ACTIVE;
         m_SystemEvents.initialize();
+        m_frameTimer.initialize();
         m_graphicsEngine.initialize();
 
         return_value = initialize();
@@ -60,7 +61,9 @@ namespace RoboEngine
             m_frameTimer.frameStart();
             while(m_frameTimer.ready())
                 return_value = process_internal(m_frameTimer.frameTime());
+            //std::cout << (m_frameTimer.getFrameTime()) << std::endl;
             //RE_STATE = RE_STATE_ENUM::RE_DEACTIVATING;
+            m_graphicsEngine.render();
         }
         return_value = deinitialize_internal();
         return return_value;
@@ -73,7 +76,6 @@ namespace RoboEngine
         if (m_SystemEvents.statusQuit())
             RE_STATE = RE_STATE_ENUM::RE_DEACTIVATING;
         return_value = process(_dt);
-        m_graphicsEngine.process();
         return return_value;
     }
 

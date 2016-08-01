@@ -46,15 +46,12 @@ namespace RoboEngine
                     m_quit = true;
                 break;
                 case RE_KEYDOWN:
-                    std::cout << "key pressed!" << std::endl;
-                    m_quit = true;
                 break;
                 case RE_KEYUP:
-                    m_quit = true;
                 break;
                 default:
                     // log event not handled...
-                    std::cout << "Unknown event." << std::endl;
+                    //std::cout << "Unknown event." << std::endl;
                 break;
             }
         }

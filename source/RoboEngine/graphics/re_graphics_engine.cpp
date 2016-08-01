@@ -31,6 +31,7 @@ namespace RoboEngine
             {
                 m_window = RE_CreateWindow("Frost and Flame", 640, 480, RE_WINDOW_OPENGL);
                 m_glcontext = SDL_GL_CreateContext(m_window);
+                glClearColor(0,0,255,1);
             }
 
             void re_cGraphicsEngine::deinitialize(void)
@@ -39,11 +40,10 @@ namespace RoboEngine
                 RE_GL_DeleteContext(m_glcontext);
             }
 
-            void re_cGraphicsEngine::process(void)
+            void re_cGraphicsEngine::render(void)
             {
                 int64_t _dt = 16;
                 std::this_thread::sleep_for(std::chrono::milliseconds(_dt));
-                glClearColor(0,0,255,1);
                 glClear(GL_COLOR_BUFFER_BIT);
                 RE_GL_SwapWindow(m_window);
                 //std::cout << "FPS: " << 1000 / _dt << std::endl;

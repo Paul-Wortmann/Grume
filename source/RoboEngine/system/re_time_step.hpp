@@ -39,21 +39,22 @@ namespace RoboEngine
             re_cFrameTimer(void) { m_desiredFrameTime = 16; }
             re_cFrameTimer(uint64_t _desiredFrameTime) { m_desiredFrameTime = _desiredFrameTime; }
             virtual ~re_cFrameTimer(void) {}
+            void initialize(void);
             void frameStart(void);
             uint64_t frameTime(void);
             bool ready(void) { return m_frameReady; }
 
             void setDesiredFrameTime(uint64_t _dft) { m_desiredFrameTime = _dft; }
             uint64_t getDesiredFrameTime(void) { return m_desiredFrameTime; }
+            uint64_t getFrameTime(void) { return m_deltaFrameTime; }
 
         private:
-            uint64_t m_desiredFrameTime = 16;
-            uint64_t m_actualFrameTime = 0;
+             uint64_t m_desiredFrameTime = 16;
             uint64_t m_deltaFrameTime = 0;
             bool m_frameReady = false;
-            std::chrono::time_point<std::chrono::high_resolution_clock> m_startFrameTime = std::chrono::high_resolution_clock::now();
-            std::chrono::time_point<std::chrono::high_resolution_clock> m_endFrameTime = std::chrono::high_resolution_clock::now();
-            std::chrono::duration<double, std::milli> m_durationFrame = {};
+            uint64_t m_startFrameTime = 0;
+            uint64_t m_endFrameTime = 0;
+            uint64_t m_durationFrame = 0;
     };
 
 }

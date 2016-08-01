@@ -23,15 +23,28 @@
 
 #include "re_time_step.hpp"
 
+#include <iostream>
+#include <string>
+
 namespace RoboEngine
 {
+            void re_cFrameTimer::initialize(void)
+            {
+                m_startFrameTime = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::high_resolution_clock::now().time_since_epoch()).count();
+                m_endFrameTime = m_startFrameTime;
+            }
 
             void re_cFrameTimer::frameStart(void)
             {
                 m_endFrameTime = m_startFrameTime;
-                m_startFrameTime = std::chrono::high_resolution_clock::now();
+                m_startFrameTime = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::high_resolution_clock::now().time_since_epoch()).count();
                 m_durationFrame = m_startFrameTime - m_endFrameTime;
-                m_deltaFrameTime += m_durationFrame.count();
+                m_deltaFrameTime += m_durationFrame;
+
+                std::cout << "Start: " << std::to_string(m_startFrameTime) << " ";
+                std::cout << "End: " << std::to_string(m_endFrameTime) << " ";
+                std::cout << "Delta: " << std::to_string(m_durationFrame) <<  " ";
+                std::cout << "FPS: " << std::to_string(1080/(m_durationFrame+1)) << std::endl;
                 if (m_deltaFrameTime >= m_desiredFrameTime)
                     m_frameReady = true;
             }

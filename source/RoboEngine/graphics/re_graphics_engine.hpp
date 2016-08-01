@@ -44,7 +44,7 @@ namespace RoboEngine
             re_cGraphicsEngine& operator=(const re_cGraphicsEngine& rhs) {if (this == &rhs) return *this; return *this;}
             void initialize(void);
             void deinitialize(void);
-            void process(void);
+            void render(void);
         private:
             RE_Window *m_window = nullptr;
             RE_GLContext m_glcontext = {};
