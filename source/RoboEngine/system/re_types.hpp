@@ -21,30 +21,47 @@
  * @date 2011-11-11
  */
 
-#ifndef RE_ROBOENGINE_HPP
-#define RE_ROBOENGINE_HPP
+#ifndef RE_TYPES_HPP
+#define RE_TYPES_HPP
 
-#include <cstdlib>
-#include <cstdio>
+#include <string>
 #include <cstdint>
-#include <chrono>
-#include <thread>
-
-#include "graphics/re_graphics_engine.hpp"
-
-#include "system/re_log.hpp"
-#include "system/re_mainloop.hpp"
-#include "system/re_system_events.hpp"
-#include "system/re_time_step.hpp"
-#include "system/re_types.hpp"
-
-#include "wrappers/re_sdl.hpp"
-#include "wrappers/re_sdl_event.hpp"
-#include "wrappers/re_sdl_timer.hpp"
 
 namespace RoboEngine
 {
 
+    struct v2_f
+    {
+        v2_f() = default;
+        virtual ~v2_f() = default;
+        v2_f(float _x, float _y) {x = _x; y = _y;}
+        float x = 0.0f;
+        float y = 0.0f;
+    };
+
+    struct v3_f
+    {
+        v3_f() = default;
+        virtual ~v3_f() = default;
+        v3_f(float _x, float _y, float _z) {x = _x; y = _y; z = _z;}
+        float x = 0.0f;
+        float y = 0.0f;
+        float z = 0.0f;
+    };
+
+    struct v3_uint16
+    {
+        v3_uint16() = default;
+        virtual ~v3_uint16() = default;
+        v3_uint16(uint16_t _x, uint16_t _y, uint16_t _z) {x = _x; y = _y; z = _z;}
+        uint16_t x = 0;
+        uint16_t y = 0;
+        uint16_t z = 0;
+    };
+
 }
 
-#endif // RE_ROBOENGINE_HPP
+#endif // RE_TYPES_HPP
+
+
+
