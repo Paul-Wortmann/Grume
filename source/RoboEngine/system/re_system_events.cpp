@@ -22,7 +22,7 @@
  */
 
 #include "re_system_events.hpp"
-
+#include "re_log.hpp"
 #include "../wrappers/re_sdl.hpp"
 
 namespace RoboEngine
@@ -40,21 +40,46 @@ namespace RoboEngine
     {
         while (RE_PollEvent(&m_event))
         {
-            switch (m_event.type)
+            //std::cout << "Event ->n" << event.type << "\n";
+            switch(m_event.type)
             {
                 case RE_QUIT:
                     m_quit = true;
                 break;
+                case RE_WINDOWEVENT:
+                    switch(m_event.window.event)
+                    {
+                        case RE_WINDOWEVENT_ENTER:
+                        break;
+                        case RE_WINDOWEVENT_LEAVE:
+                        break;
+                        default:
+                            RoboEngine::log_write(ROBOENGINELOG, "Non fatal warning -> c_event_manager::process() - unable to process window event: "+std::to_string(m_event.window.event));
+                        break;
+                    }
+                break;
+                case RE_MOUSEMOTION:
+                    m_mouseX = m_event.motion.x;
+                    m_mouseY = m_event.motion.y;
+                break;
+                case RE_MOUSEBUTTONDOWN:
+                    m_keyMap[m_event.button.button] = true;
+                break;
+                case RE_MOUSEBUTTONUP:
+                    m_keyMap[m_event.button.button] = false;
+                break;
                 case RE_KEYDOWN:
+                    m_keyMap[m_event.key.keysym.sym] = true;
                 break;
                 case RE_KEYUP:
+                    m_keyMap[m_event.key.keysym.sym] = false;
                 break;
                 default:
-                    // log event not handled...
-                    //std::cout << "Unknown event." << std::endl;
+                    RoboEngine::log_write(ROBOENGINELOG, "Non fatal warning -> c_event_manager::process() - unable to process event: "+std::to_string(m_event.type));
                 break;
             }
         }
     }
 
 }
+

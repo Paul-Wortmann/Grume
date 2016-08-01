@@ -27,6 +27,7 @@
 #include <cstdint>
 #include <cstdlib>
 #include <iostream>
+#include <unordered_map>
 #include "../wrappers/re_sdl_event.hpp"
 
 namespace RoboEngine
@@ -40,11 +41,19 @@ namespace RoboEngine
             void initialize(void);
             void deinitialize(void);
             void process(void);
-            bool statusQuit(void) { return m_quit; }
+            inline bool statusQuit(void) { return m_quit; }
+            inline void set_mouseCoords(float x, float y) {m_mouseX = x; m_mouseY = y;}
+            inline float get_mouseX() const {return m_mouseX;}
+            inline float get_mouseY() const {return m_mouseY;}
+            bool keyDown(uint16_t keyID);
         private:
-            bool m_quit = false;
             RoboEngine::RE_Event m_event = {};
+            std::unordered_map<unsigned int, bool> m_keyMap = {};
+            float m_mouseX = 0.0f;
+            float m_mouseY = 0.0f;
+            bool m_quit = false;
     };
 
 }
 #endif // RE_SYSTEM_EVENTS_HPP
+
