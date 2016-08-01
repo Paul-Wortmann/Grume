@@ -32,13 +32,13 @@ namespace RoboEngine
     void log_write(const std::string &s_file_name, const std::string &s_data);
     void log_clear(const std::string &s_file_name);
 
-    class c_log
+    class re_cLog
     {
         public:
-            c_log(const std::string &file_name) {m_file_name = file_name; clear();}
-            ~c_log(void) {}
-            c_log(const c_log&) = default;
-            c_log& operator=(const c_log& rhs) {if (this == &rhs) return *this; return *this;}
+            re_cLog(const std::string &file_name) {m_file_name = file_name; clear();}
+            ~re_cLog(void) {}
+            re_cLog(const re_cLog&) = default;
+            re_cLog& operator=(const re_cLog& rhs) {if (this == &rhs) return *this; return *this;}
             void inline write(const std::string &s_data) {log_write(m_file_name, s_data);}
             void inline clear(void) {log_clear(m_file_name);}
             void inline set_file_name(const std::string &file_name) {m_file_name = file_name; }

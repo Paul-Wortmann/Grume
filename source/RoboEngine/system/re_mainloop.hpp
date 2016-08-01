@@ -24,6 +24,7 @@
 #ifndef RE_MAINLOOP_HPP
 #define RE_MAINLOOP_HPP
 
+#include "re_log.hpp"
 #include "re_system_events.hpp"
 #include "re_time_step.hpp"
 #include "../roboengine.hpp"
