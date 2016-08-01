@@ -29,12 +29,15 @@
 namespace RoboEngine
 {
 
+    #define ROBOENGINELOG  "RoboEngine.log"
+
     void log_write(const std::string &s_file_name, const std::string &s_data);
     void log_clear(const std::string &s_file_name);
 
     class re_cLog
     {
         public:
+            re_cLog(void) {m_file_name = ROBOENGINELOG; clear();}
             re_cLog(const std::string &file_name) {m_file_name = file_name; clear();}
             ~re_cLog(void) {}
             re_cLog(const re_cLog&) = default;
