@@ -28,6 +28,8 @@ namespace RoboEngine
 
     uint16_t re_cMainLoop::initialize_internal(void)
     {
+        m_log.clear();
+        m_log.write("RoboEngine started.");
         RE_SetMainReady();
         RE_Init(RE_INIT_EVERYTHING);
         uint16_t return_value = EXIT_SUCCESS;

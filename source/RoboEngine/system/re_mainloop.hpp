@@ -52,6 +52,7 @@ namespace RoboEngine
             re_cSystemEvents m_SystemEvents = {};
             re_cFrameTimer m_frameTimer = {};
             re_cGraphicsEngine m_graphicsEngine = {};
+            re_cLog m_log = re_cLog("RoboEngine.txt");
     };
 
 }
