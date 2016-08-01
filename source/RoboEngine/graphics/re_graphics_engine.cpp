@@ -43,7 +43,7 @@ namespace RoboEngine
             void re_cGraphicsEngine::render(void)
             {
                 int64_t _dt = 16;
-                std::this_thread::sleep_for(std::chrono::milliseconds(_dt));
+                //std::this_thread::sleep_for(std::chrono::milliseconds(_dt));
                 glClear(GL_COLOR_BUFFER_BIT);
                 RE_GL_SwapWindow(m_window);
                 //std::cout << "FPS: " << 1000 / _dt << std::endl;
