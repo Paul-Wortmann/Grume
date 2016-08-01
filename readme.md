@@ -7,7 +7,7 @@ This is Frost and Flame, an open source computer game.
 
 About:
 -----
-Frost and Flame is still in its early stages of infancy.  
+Frost and Flame is still in its early stages of infancy.
 Currently a non-playable work in progress.
 Frost and flame is an action role playing game.
 
@@ -34,7 +34,7 @@ If the game fails to load, try deleting all config files, the game will recreate
 
 License:
 -------
-Copyright (C) 2011-2015 Paul Wortmann.
+Copyright (C) 2011-2016 Paul Wortmann.
 
 This program is free software: you can redistribute it and/or modify it under
 the terms of the GNU General Public License as published by the Free Software
