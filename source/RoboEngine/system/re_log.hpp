@@ -21,29 +21,32 @@
  * @date 2011-11-11
  */
 
-#ifndef RE_ROBOENGINE_HPP
-#define RE_ROBOENGINE_HPP
+#ifndef RE_LOG_HPP
+#define RE_LOG_HPP
 
-#include <cstdlib>
-#include <cstdio>
-#include <cstdint>
-#include <chrono>
-#include <thread>
-
-#include "graphics/re_graphics_engine.hpp"
-
-#include "system/re_mainloop.hpp"
-#include "system/re_system_events.hpp"
-#include "system/re_time_step.hpp"
-#include "system/re_log.hpp"
-
-#include "wrappers/re_sdl.hpp"
-#include "wrappers/re_sdl_event.hpp"
-#include "wrappers/re_sdl_timer.hpp"
+#include <string>
 
 namespace RoboEngine
 {
 
+    void log_write(const std::string &s_file_name, const std::string &s_data);
+    void log_clear(const std::string &s_file_name);
+
+    class c_log
+    {
+        public:
+            c_log(const std::string &file_name) {m_file_name = file_name; clear();}
+            ~c_log(void) {}
+            c_log(const c_log&) = default;
+            c_log& operator=(const c_log& rhs) {if (this == &rhs) return *this; return *this;}
+            void inline write(const std::string &s_data) {log_write(m_file_name, s_data);}
+            void inline clear(void) {log_clear(m_file_name);}
+            void inline set_file_name(const std::string &file_name) {m_file_name = file_name; }
+        protected:
+        private:
+        std::string m_file_name = "default.log";
+    };
+
 }
 
-#endif // RE_ROBOENGINE_HPP
+#endif // RE_LOG_HPP

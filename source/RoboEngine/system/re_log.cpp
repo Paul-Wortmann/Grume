@@ -21,29 +21,30 @@
  * @date 2011-11-11
  */
 
-#ifndef RE_ROBOENGINE_HPP
-#define RE_ROBOENGINE_HPP
-
-#include <cstdlib>
-#include <cstdio>
-#include <cstdint>
-#include <chrono>
-#include <thread>
-
-#include "graphics/re_graphics_engine.hpp"
-
-#include "system/re_mainloop.hpp"
-#include "system/re_system_events.hpp"
-#include "system/re_time_step.hpp"
-#include "system/re_log.hpp"
-
-#include "wrappers/re_sdl.hpp"
-#include "wrappers/re_sdl_event.hpp"
-#include "wrappers/re_sdl_timer.hpp"
+#include "re_log.hpp"
+#include <fstream>
+#include <iostream>
 
 namespace RoboEngine
 {
 
-}
+    void log_write(const std::string &s_file_name, const std::string &s_data)
+    {
+        std::fstream file_pointer;
+        file_pointer.open (s_file_name, std::fstream::out | std::fstream::app);
+        file_pointer << s_data << std::endl;
+        file_pointer.close();
+        if (!file_pointer.good())
+            std::cout << "ERROR -> log_write()  :  " << s_file_name << std::endl;
+    }
 
-#endif // RE_ROBOENGINE_HPP
+    void log_clear(const std::string &s_file_name)
+    {
+        std::fstream file_pointer;
+        file_pointer.open (s_file_name, std::fstream::trunc | std::fstream::out);
+        file_pointer.close();
+        if (!file_pointer.good())
+            std::cout << "ERROR -> log_clear()  :  " << s_file_name << std::endl;
+    }
+
+}
