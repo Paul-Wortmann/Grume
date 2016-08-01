@@ -31,7 +31,7 @@ namespace RoboEngine
             {
                 m_window = RE_CreateWindow("Frost and Flame", 640, 480, RE_WINDOW_OPENGL);
                 m_glcontext = SDL_GL_CreateContext(m_window);
-                glClearColor(0,0,255,1);
+                glClearColor(0.1f,0.1f,0.4f,1);
             }
 
             void re_cGraphicsEngine::deinitialize(void)
