@@ -21,33 +21,22 @@
  * @date 2011-11-11
  */
 
-#ifndef RE_ROBOENGINE_HPP
-#define RE_ROBOENGINE_HPP
+#ifndef RE_OPENGL_HPP
+#define RE_OPENGL_HPP
 
-#include <cstdlib>
-#include <cstdio>
 #include <cstdint>
-#include <chrono>
-#include <thread>
-
-#include "graphics/re_graphics_engine.hpp"
-
-#include "system/re_log.hpp"
-#include "system/re_mainloop.hpp"
-#include "system/re_system_events.hpp"
-#include "system/re_time_step.hpp"
-#include "system/re_types.hpp"
-
-#include "wrappers/re_glx.hpp"
-#include "wrappers/re_opengl.hpp"
-#include "wrappers/re_sdl.hpp"
-#include "wrappers/re_sdl_event.hpp"
-#include "wrappers/re_sdl_graphics.hpp"
-#include "wrappers/re_sdl_timer.hpp"
+#include <cstdlib>
+#include <GL/gl.h>
 
 namespace RoboEngine
 {
 
+
+
 }
 
-#endif // RE_ROBOENGINE_HPP
+#endif //  RE_OPENGL_HPP
+
+
+
+
