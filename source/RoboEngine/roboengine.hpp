@@ -38,8 +38,11 @@
 #include "system/re_time_step.hpp"
 #include "system/re_types.hpp"
 
+#include "wrappers/re_glew.hpp"
+#include "wrappers/re_opengl.hpp"
 #include "wrappers/re_sdl.hpp"
 #include "wrappers/re_sdl_event.hpp"
+#include "wrappers/re_sdl_graphics.hpp"
 #include "wrappers/re_sdl_timer.hpp"
 
 namespace RoboEngine

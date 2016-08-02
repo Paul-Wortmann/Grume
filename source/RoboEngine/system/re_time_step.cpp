@@ -41,10 +41,10 @@ namespace RoboEngine
                 m_durationFrame = m_startFrameTime - m_endFrameTime;
                 m_deltaFrameTime += m_durationFrame;
 
-                std::cout << "Start: " << std::to_string(m_startFrameTime) << " ";
-                std::cout << "End: " << std::to_string(m_endFrameTime) << " ";
-                std::cout << "Delta: " << std::to_string(m_durationFrame) <<  " ";
-                std::cout << "FPS: " << std::to_string(1080/(m_durationFrame+1)) << std::endl;
+                //std::cout << "Start: " << std::to_string(m_startFrameTime) << " ";
+                //std::cout << "End: " << std::to_string(m_endFrameTime) << " ";
+                //std::cout << "Delta: " << std::to_string(m_durationFrame) <<  " ";
+                //std::cout << "FPS: " << std::to_string(1080/(m_durationFrame+1)) << std::endl;
                 if (m_deltaFrameTime >= m_desiredFrameTime)
                     m_frameReady = true;
             }
