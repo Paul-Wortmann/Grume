@@ -1,5 +1,5 @@
-#ifndef RE_GLEW_HPP
-#define RE_GLEW_HPP
+#ifndef RE_GLX_HPP
+#define RE_GXW_HPP
 
 #include <GL/gl.h>
 #include <GL/glx.h>
@@ -42,4 +42,4 @@ namespace RoboEngine
     }
 }
 
-#endif //RE_GLEW_HPP
+#endif //RE_GLX_HPP
