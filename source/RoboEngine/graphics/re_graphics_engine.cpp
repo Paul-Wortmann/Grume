@@ -23,7 +23,8 @@
 
 #include "re_graphics_engine.hpp"
 #include "../system/re_log.hpp"
-#include <GL/glew.h>
+#include "../wrappers/re_glew.hpp"
+#include "../wrappers/re_opengl.hpp"
 
 namespace RoboEngine
 {
@@ -46,22 +47,23 @@ namespace RoboEngine
                 else
                     {
                         m_glcontext = SDL_GL_CreateContext(m_window);
-                        glewExperimental = true;
-                        if (!m_glcontext)
-                            {
-                                std::string s_message = "Non fatal warning - ";
-                                s_message += RoboEngine::stripPath(__FILE__);
-                                s_message += " - ";
-                                s_message += __FUNCTION__;
-                                s_message += "() - ";
-                                s_message += std::to_string(__LINE__);
-                                s_message += " - ";
-                                s_message += "Unable to create an OpenGL context.";
-                                RoboEngine::log_write(ROBOENGINELOG, s_message);
-                            }
+                        RE_glewExperimental(true);
+                        RE_GLenum glewStatus =RE_glewInit();
+                        if (glewStatus != RE_GLEW_OK)
+                        {
+                            std::string s_message = "Fatal error - ";
+                            s_message += RoboEngine::stripPath(__FILE__);
+                            s_message += " - ";
+                            s_message += __FUNCTION__;
+                            s_message += "() - ";
+                            s_message += std::to_string(__LINE__);
+                            s_message += " - ";
+                            s_message += "Unable to initialize GLEW.";
+                            RoboEngine::log_write(ROBOENGINELOG, s_message);
+                        }
                         else
                         {
-                            glClearColor(0.1f,0.1f,0.4f,1);
+                            RE_glClearColor(0.1f,0.1f,0.4f,1);
                         }
                     }
             }
@@ -76,7 +78,7 @@ namespace RoboEngine
             {
                 //int64_t _dt = 16;
                 //std::this_thread::sleep_for(std::chrono::milliseconds(_dt));
-                glClear(GL_COLOR_BUFFER_BIT);
+                RE_glClear(GL_COLOR_BUFFER_BIT);
                 RE_GL_SwapWindow(m_window);
                 //std::cout << "FPS: " << 1000 / _dt << std::endl;
             }

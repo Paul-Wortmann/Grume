@@ -26,5 +26,14 @@
 namespace RoboEngine
 {
 
+    void RE_glClearColor(float _r, float _g, float _b, float _a)
+    {
+        glClearColor(_r, _g, _b, _a);
+    }
+
+    void RE_glClear(RE_GLbitfield _mask)
+    {
+        glClear(_mask);
+    }
 
 }

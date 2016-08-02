@@ -31,7 +31,12 @@
 namespace RoboEngine
 {
 
+    #define RE_GL_COLOR_BUFFER_BIT GL_COLOR_BUFFER_BIT
+    #define RE_GLbitfield GLbitfield
+    #define RE_GLenum GLenum
 
+    void RE_glClearColor(float _r, float _g, float _b, float _a);
+    void RE_glClear(RE_GLbitfield _mask);
 
 }
 
