@@ -33,34 +33,14 @@ namespace RoboEngine
             {
                 m_window = RE_CreateWindow("Frost and Flame", 640, 480, RE_WINDOW_OPENGL);
                 if (m_window == nullptr)
-                    {
-                        std::string s_message = "Non fatal warning - ";
-                        s_message += RoboEngine::stripPath(__FILE__);
-                        s_message += " - ";
-                        s_message += __FUNCTION__;
-                        s_message += "() - ";
-                        s_message += std::to_string(__LINE__);
-                        s_message += " - ";
-                        s_message += "Unable to create a window.";
-                        RoboEngine::log_write(ROBOENGINELOG, s_message);
-                    }
+                        RoboEngine::log_write(ROBOENGINELOG, __FILE__, __FUNCTION__, __LINE__, "Non fatal warning - Unable to create a window.");
                 else
                     {
                         m_glcontext = SDL_GL_CreateContext(m_window);
                         RE_glewExperimental(true);
                         RE_GLenum glewStatus =RE_glewInit();
                         if (glewStatus != RE_GLEW_OK)
-                        {
-                            std::string s_message = "Fatal error - ";
-                            s_message += RoboEngine::stripPath(__FILE__);
-                            s_message += " - ";
-                            s_message += __FUNCTION__;
-                            s_message += "() - ";
-                            s_message += std::to_string(__LINE__);
-                            s_message += " - ";
-                            s_message += "Unable to initialize GLEW.";
-                            RoboEngine::log_write(ROBOENGINELOG, s_message);
-                        }
+                            RoboEngine::log_write(ROBOENGINELOG, __FILE__, __FUNCTION__, __LINE__, "Fatal error - Unable to initialize GLEW.");
                         else
                         {
                             RE_glClearColor(0.1f,0.1f,0.4f,1);

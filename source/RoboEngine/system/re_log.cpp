@@ -28,25 +28,6 @@
 namespace RoboEngine
 {
 
-    void log_write(const std::string &s_fileName, const std::string &s_data)
-    {
-        std::fstream filePointer;
-        filePointer.open (s_fileName, std::fstream::out | std::fstream::app);
-        filePointer << s_data << std::endl;
-        filePointer.close();
-        if (!filePointer.good())
-            std::cout << "ERROR -> log_write()  :  " << s_fileName << std::endl;
-    }
-
-    void log_clear(const std::string &s_fileName)
-    {
-        std::fstream filePointer;
-        filePointer.open (s_fileName, std::fstream::trunc | std::fstream::out);
-        filePointer.close();
-        if (!filePointer.good())
-            std::cout << "ERROR -> log_clear()  :  " << s_fileName << std::endl;
-    }
-
     std::string stripPath(const std::string &s_fileName)
     {
         std::string r_returnString = "";
@@ -67,6 +48,37 @@ namespace RoboEngine
         for (int16_t i = r_fileLength-1; i >= 0; i--)
                 returnString += r_returnString[i];
         return returnString;
+    }
+
+    void log_clear(const std::string &s_fileName)
+    {
+        std::fstream filePointer;
+        filePointer.open (s_fileName, std::fstream::trunc | std::fstream::out);
+        filePointer.close();
+        if (!filePointer.good())
+            std::cout << "ERROR -> log_clear()  :  " << s_fileName << std::endl;
+    }
+
+    void log_write(const std::string &s_fileName, const std::string &s_data)
+    {
+        std::fstream filePointer;
+        filePointer.open (s_fileName, std::fstream::out | std::fstream::app);
+        filePointer << s_data << std::endl;
+        filePointer.close();
+        if (!filePointer.good())
+            std::cout << "ERROR -> log_write()  :  " << s_fileName << std::endl;
+    }
+
+    void log_write(const std::string &s_fileName, const std::string &s_dataFile, const std::string &s_dataFunction, const uint32_t &s_dataLine, const std::string &s_message)
+    {
+        std::string s_data = stripPath(s_dataFile);
+        s_data += " - ";
+        s_data += s_dataFunction;
+        s_data += "() - ";
+        s_data += std::to_string(s_dataLine);
+        s_data += " - ";
+        s_data += s_message;
+        log_write(s_fileName, s_data);
     }
 
 }

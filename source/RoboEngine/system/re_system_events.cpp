@@ -54,17 +54,7 @@ namespace RoboEngine
                         case RE_WINDOWEVENT_LEAVE:
                         break;
                         default:
-                            {
-                                std::string s_message = "Non fatal warning - ";
-                                s_message += RoboEngine::stripPath(__FILE__);
-                                s_message += " - ";
-                                s_message += __FUNCTION__;
-                                s_message += "() - ";
-                                s_message += std::to_string(__LINE__);
-                                s_message += " - ";
-                                s_message += "Window event not processed: "+std::to_string(m_event.window.event);
-                                RoboEngine::log_write(ROBOENGINELOG, s_message);
-                            }
+                            RoboEngine::log_write(ROBOENGINELOG, __FILE__, __FUNCTION__, __LINE__, "Non fatal warning - Window event not processed: "+std::to_string(m_event.window.event));
                         break;
                     }
                 break;
@@ -85,17 +75,7 @@ namespace RoboEngine
                     m_keyMap[m_event.key.keysym.sym] = false;
                 break;
                 default:
-                    {
-                        std::string s_message = "Non fatal warning - ";
-                        s_message += RoboEngine::stripPath(__FILE__);
-                        s_message += " - ";
-                        s_message += __FUNCTION__;
-                        s_message += "() - ";
-                        s_message += std::to_string(__LINE__);
-                        s_message += " - ";
-                        s_message += "Event not processed: "+std::to_string(m_event.type);
-                        RoboEngine::log_write(ROBOENGINELOG, s_message);
-                    }
+                        RoboEngine::log_write(ROBOENGINELOG, __FILE__, __FUNCTION__, __LINE__, "Non fatal warning - Event not processed: "+std::to_string(m_event.type));
                 break;
             }
         }
