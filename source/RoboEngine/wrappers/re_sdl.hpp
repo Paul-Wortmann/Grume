@@ -43,17 +43,18 @@ namespace RoboEngine
     #define RE_INIT_EVENTS SDL_INIT_EVENTS
     #define RE_INIT_EVERYTHING SDL_INIT_EVERYTHING
 
+    typedef SDL_GLattr RE_GLattr;
+
     int RE_Init(uint32_t _flags);
     void RE_SetMainReady(void);
     void RE_Quit(void);
     int RE_InitSubSystem(uint32_t _flags);
     void RE_QuitSubSystem(uint32_t _flags);
     uint32_t RE_WasInit(uint32_t _flags);
+    uint16_t RE_GL_SetAttribute(RE_GLattr _attribute, int _value);
 
 }
 
 #endif //  RE_SDL_HPP
-
-
 
 

@@ -46,8 +46,16 @@ namespace RoboEngine
     #define RE_WINDOW_INPUT_GRABBED SDL_WINDOW_INPUT_GRABBED
     #define RE_WINDOW_ALLOW_HIGHDPI SDL_WINDOW_ALLOW_HIGHDPI
 
+    #define RE_GL_CONTEXT_MAJOR_VERSION SDL_GL_CONTEXT_MAJOR_VERSION
+    #define RE_GL_CONTEXT_MINOR_VERSION SDL_GL_CONTEXT_MINOR_VERSION
+    #define RE_GL_CONTEXT_PROFILE_MASK SDL_GL_CONTEXT_PROFILE_MASK
+    #define RE_GL_CONTEXT_PROFILE_CORE SDL_GL_CONTEXT_PROFILE_CORE
+    #define RE_GL_DOUBLEBUFFER SDL_GL_DOUBLEBUFFER
+    #define RE_GL_DEPTH_SIZE SDL_GL_DEPTH_SIZE
+
     typedef SDL_Window RE_Window;
     typedef SDL_GLContext RE_GLContext;
+    typedef SDL_DisplayMode RE_DisplayMode;
 
     RE_Window* RE_CreateWindow(const std::string &_title, uint16_t _w, uint16_t _h, uint32_t _flags);
     RE_Window* RE_CreateWindow(const std::string &_title, uint64_t _x, uint64_t _y, uint16_t _w, uint16_t _h, uint32_t _flags);
@@ -56,6 +64,11 @@ namespace RoboEngine
     RE_GLContext RE_GL_CreateContext(RE_Window *_window);
     void RE_GL_SwapWindow(RE_Window *_window);
     void RE_GL_DeleteContext(RE_GLContext _glcontext);
+    uint16_t RE_GL_SetSwapInterval(uint16_t _interval);
+
+    uint16_t RE_GetNumVideoDisplays(void);
+    uint16_t RE_GetNumDisplayModes(uint16_t displayIndex);
+    uint16_t RE_GetDisplayMode(uint16_t displayIndex, uint16_t modeIndex, RE_DisplayMode* mode);
 
 }
 

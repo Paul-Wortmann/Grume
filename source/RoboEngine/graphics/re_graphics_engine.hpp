@@ -34,6 +34,8 @@
 
 namespace RoboEngine
 {
+    #define RE_RENDERER_CONTEXT_MAJOR 3
+    #define RE_RENDERER_CONTEXT_MINOR 2
 
     class re_cGraphicsEngine
     {
@@ -48,7 +50,14 @@ namespace RoboEngine
         private:
             RE_Window *m_window = nullptr;
             RE_GLContext m_glcontext = {};
+            uint16_t m_displayX = 640;
+            uint16_t m_displayY = 480;
+            uint16_t m_currentDisplay = 0;
+            uint16_t m_currentDisplayMode = 0;
+            uint16_t m_numberDisplays = 0;
+            uint16_t m_numberDisplayModes = 0;
     };
 
 }
 #endif // RE_GRAPHICS_HPP
+

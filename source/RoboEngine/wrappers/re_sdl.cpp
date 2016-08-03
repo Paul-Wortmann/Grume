@@ -57,4 +57,9 @@ namespace RoboEngine
         return SDL_WasInit(_flags);
     }
 
+    uint16_t RE_GL_SetAttribute(RE_GLattr _attribute, int _value)
+    {
+        return SDL_GL_SetAttribute(_attribute, _value);
+    }
+
 }

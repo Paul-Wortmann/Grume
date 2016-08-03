@@ -56,4 +56,24 @@ namespace RoboEngine
         SDL_GL_DeleteContext(_glcontext);
     }
 
+    uint16_t RE_GL_SetSwapInterval(uint16_t _interval)
+    {
+        return SDL_GL_SetSwapInterval(_interval);
+    }
+
+    uint16_t RE_GetNumVideoDisplays(void)
+    {
+        return SDL_GetNumVideoDisplays();
+    }
+
+    uint16_t RE_GetNumDisplayModes(uint16_t _displayIndex)
+    {
+        return SDL_GetNumDisplayModes(_displayIndex);
+    }
+
+    uint16_t RE_GetDisplayMode(uint16_t _displayIndex, uint16_t _modeIndex, RE_DisplayMode* _mode)
+    {
+        return SDL_GetDisplayMode(_displayIndex, _modeIndex, _mode);
+    }
+
 }

@@ -25,18 +25,31 @@
 #include "../system/re_log.hpp"
 #include "../wrappers/re_glew.hpp"
 #include "../wrappers/re_opengl.hpp"
+#include "../wrappers/re_sdl.hpp"
+#include "../wrappers/re_sdl_graphics.hpp"
 
 namespace RoboEngine
 {
 
             void re_cGraphicsEngine::initialize(void)
             {
-                m_window = RE_CreateWindow("Frost and Flame", 640, 480, RE_WINDOW_OPENGL);
+                RE_GL_SetAttribute(RE_GL_CONTEXT_MAJOR_VERSION,  RE_RENDERER_CONTEXT_MAJOR);
+                RE_GL_SetAttribute(RE_GL_CONTEXT_MINOR_VERSION,  RE_RENDERER_CONTEXT_MINOR);
+                RE_GL_SetAttribute(RE_GL_CONTEXT_PROFILE_MASK, RE_GL_CONTEXT_PROFILE_CORE);
+                RE_GL_SetAttribute(RE_GL_DOUBLEBUFFER, 1);
+                RE_GL_SetAttribute(RE_GL_DEPTH_SIZE, 24);
+                RE_GL_SetSwapInterval(1);
+                m_currentDisplay = 0;
+                m_currentDisplayMode = 0;
+                m_numberDisplays = RE_GetNumVideoDisplays();
+                m_numberDisplayModes = RE_GetNumDisplayModes(m_currentDisplay);
+
+                m_window = RE_CreateWindow("Frost and Flame", m_displayX, m_displayY, RE_WINDOW_OPENGL);
                 if (m_window == nullptr)
                         RoboEngine::log_write(ROBOENGINELOG, __FILE__, __FUNCTION__, __LINE__, "Non fatal warning - Unable to create a window.");
                 else
                     {
-                        m_glcontext = SDL_GL_CreateContext(m_window);
+                        m_glcontext = RE_GL_CreateContext(m_window);
                         RE_glewExperimental(true);
                         RE_GLenum glewStatus =RE_glewInit();
                         if (glewStatus != RE_GLEW_OK)
