@@ -140,10 +140,18 @@ include_directories(/usr/include)
 Set (FROST_AND_FLAME_SOURCES
 	./source/main.cpp
 	./source/mainloop.cpp
+
 	./source/RoboEngine/graphics/re_graphics_engine.cpp
+
+	./source/RoboEngine/system/re_log.cpp
 	./source/RoboEngine/system/re_mainloop.cpp
 	./source/RoboEngine/system/re_system_events.cpp
 	./source/RoboEngine/system/re_time_step.cpp
+	./source/RoboEngine/system/re_types.cpp
+
+	./source/RoboEngine/wrappers/re_glew.cpp
+	./source/RoboEngine/wrappers/re_glx.cpp
+	./source/RoboEngine/wrappers/re_opengl.cpp
 	./source/RoboEngine/wrappers/re_sdl.cpp
 	./source/RoboEngine/wrappers/re_sdl_event.cpp
 	./source/RoboEngine/wrappers/re_sdl_graphics.cpp
