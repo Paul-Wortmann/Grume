@@ -76,4 +76,13 @@ namespace RoboEngine
         return SDL_GetDisplayMode(_displayIndex, _modeIndex, _mode);
     }
 
+    uint16_t RE_GL_SetAttribute(RE_GLattr _attribute, int _value)
+    {
+        return SDL_GL_SetAttribute(_attribute, _value);
+    }
+
+    uint16_t RE_GL_GetAttribute(RE_GLattr _attribute, int* _value)
+    {
+        return SDL_GL_GetAttribute(_attribute, _value);
+    }
 }

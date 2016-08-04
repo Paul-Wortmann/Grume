@@ -51,7 +51,6 @@ namespace RoboEngine
     int RE_InitSubSystem(uint32_t _flags);
     void RE_QuitSubSystem(uint32_t _flags);
     uint32_t RE_WasInit(uint32_t _flags);
-    uint16_t RE_GL_SetAttribute(RE_GLattr _attribute, int _value);
 
 }
 

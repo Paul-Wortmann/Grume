@@ -36,4 +36,9 @@ namespace RoboEngine
         glClear(_mask);
     }
 
+    const unsigned char* RE_glGetString(RE_GLenum _name)
+    {
+        return glGetString(_name);
+    }
+
 }

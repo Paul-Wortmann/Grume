@@ -28,6 +28,11 @@
 namespace RoboEngine
 {
 
+    /// #delete me!
+    // This hideous global should not exist.... but it is currently convenient for testing, delete it asap!
+    bool g_logToConsole = true;
+    /// #delete me!
+
     std::string stripPath(const std::string &s_fileName)
     {
         std::string r_returnString = "";
@@ -59,17 +64,26 @@ namespace RoboEngine
             std::cout << "ERROR -> log_clear()  :  " << s_fileName << std::endl;
     }
 
-    void log_write(const std::string &s_fileName, const std::string &s_data)
+    void log_write(const std::string &s_fileName, const std::string &s_data, const bool &_consoleLogging)
     {
         std::fstream filePointer;
         filePointer.open (s_fileName, std::fstream::out | std::fstream::app);
         filePointer << s_data << std::endl;
         filePointer.close();
         if (!filePointer.good())
-            std::cout << "ERROR -> log_write()  :  " << s_fileName << std::endl;
+            std::cout  << std::endl << "ERROR -> log_write()  :  " << s_fileName << std::endl << std::endl;
+        if (_consoleLogging)
+            std::cout << s_data << std::endl;
+        if (g_logToConsole)
+            std::cout << s_data << std::endl;
     }
 
     void log_write(const std::string &s_fileName, const std::string &s_dataFile, const std::string &s_dataFunction, const uint32_t &s_dataLine, const std::string &s_message)
+    {
+        log_write(s_fileName, s_dataFile, s_dataFunction, s_dataLine, s_message, false);
+    }
+
+    void log_write(const std::string &s_fileName, const std::string &s_dataFile, const std::string &s_dataFunction, const uint32_t &s_dataLine, const std::string &s_message, const bool &_consoleLogging)
     {
         std::string s_data = stripPath(s_dataFile);
         s_data += " - ";
@@ -78,7 +92,12 @@ namespace RoboEngine
         s_data += std::to_string(s_dataLine);
         s_data += " - ";
         s_data += s_message;
-        log_write(s_fileName, s_data);
+        log_write(s_fileName, s_data, _consoleLogging);
+    }
+
+    void log_write(const std::string &s_fileName, const std::string &s_data)
+    {
+        log_write(s_fileName, s_data, false);
     }
 
 }

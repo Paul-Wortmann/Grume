@@ -43,8 +43,11 @@ namespace RoboEngine
                 m_currentDisplayMode = 0;
                 m_numberDisplays = RE_GetNumVideoDisplays();
                 m_numberDisplayModes = RE_GetNumDisplayModes(m_currentDisplay);
+                // todo: create list of available display modes, if full screen flag, set to optimal full screen resolution.
 
-                m_window = RE_CreateWindow("Frost and Flame", m_displayX, m_displayY, RE_WINDOW_OPENGL);
+                if (m_displayFullscreen)
+                    m_displayFlags |= RE_WINDOW_FULLSCREEN_DESKTOP;
+                m_window = RE_CreateWindow("Frost and Flame", m_displayX, m_displayY, m_displayFlags);
                 if (m_window == nullptr)
                         RoboEngine::log_write(ROBOENGINELOG, __FILE__, __FUNCTION__, __LINE__, "Non fatal warning - Unable to create a window.");
                 else
@@ -56,6 +59,17 @@ namespace RoboEngine
                             RoboEngine::log_write(ROBOENGINELOG, __FILE__, __FUNCTION__, __LINE__, "Fatal error - Unable to initialize GLEW.");
                         else
                         {
+                            int32_t GL_MajorVersion = 0;
+                            int32_t GL_MinorVersion = 0;
+                            RE_GL_GetAttribute(RE_GL_CONTEXT_MAJOR_VERSION, &GL_MajorVersion);
+                            RE_GL_GetAttribute(RE_GL_CONTEXT_MINOR_VERSION, &GL_MinorVersion);
+                            RoboEngine::log_write(ROBOENGINELOG, __FILE__, __FUNCTION__, __LINE__, "OpenGL Context Version: " + std::to_string(GL_MajorVersion) +  "." + std::to_string(GL_MinorVersion));
+                            RoboEngine::log_write(ROBOENGINELOG, __FILE__, __FUNCTION__, __LINE__, reinterpret_cast<const char*>(RE_glGetString(RE_GL_VERSION)));
+                            RoboEngine::log_write(ROBOENGINELOG, __FILE__, __FUNCTION__, __LINE__, reinterpret_cast<const char*>(RE_glGetString(RE_GL_VENDOR)));
+                            RoboEngine::log_write(ROBOENGINELOG, __FILE__, __FUNCTION__, __LINE__, reinterpret_cast<const char*>(RE_glGetString(RE_GL_RENDERER)));
+                            RoboEngine::log_write(ROBOENGINELOG, __FILE__, __FUNCTION__, __LINE__, reinterpret_cast<const char*>(RE_glGetString(RE_GL_SHADING_LANGUAGE_VERSION)));
+
+
                             RE_glClearColor(0.1f,0.1f,0.4f,1);
                         }
                     }

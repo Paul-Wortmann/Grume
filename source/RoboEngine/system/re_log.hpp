@@ -32,7 +32,9 @@ namespace RoboEngine
     #define ROBOENGINELOG  "RoboEngine.log"
     #define DEFAULTLOG  "default.log"
 
+    void log_write(const std::string &s_fileName, const std::string &s_data, const bool &_consoleLogging);
     void log_write(const std::string &s_fileName, const std::string &s_dataFile, const std::string &s_dataFunction, const uint32_t &s_dataLine, const std::string &s_message);
+    void log_write(const std::string &s_fileName, const std::string &s_dataFile, const std::string &s_dataFunction, const uint32_t &s_dataLine, const std::string &s_message, const bool &_consoleLogging);
     void log_write(const std::string &s_fileName, const std::string &s_data);
     void log_clear(const std::string &s_fileName);
     std::string stripPath(const std::string &s_fileName);
@@ -41,16 +43,19 @@ namespace RoboEngine
     {
         public:
             re_cLog(void) {m_fileName = ROBOENGINELOG; clear();}
-            re_cLog(const std::string &fileName) {m_fileName = fileName; clear();}
+            re_cLog(const std::string &_fileName) {m_fileName = _fileName; clear();}
             ~re_cLog(void) {}
             re_cLog(const re_cLog&) = default;
-            re_cLog& operator=(const re_cLog& rhs) {if (this == &rhs) return *this; return *this;}
-            void inline write(const std::string &s_data) {log_write(m_fileName, s_data);}
+            re_cLog& operator=(const re_cLog& _rhs) {if (this == &_rhs) return *this; return *this;}
+            void inline write(const std::string &s_data) {log_write(m_fileName, s_data, m_logToConsole);}
             void inline clear(void) {log_clear(m_fileName);}
-            void inline setFileName(const std::string &fileName) {m_fileName = fileName; }
+            void inline setFileName(const std::string &_fileName) {m_fileName = _fileName; }
+            void inline setConsoleLogging(const bool &_state) {m_logToConsole = _state; }
+            bool inline getConsoleLogging(void) { return m_logToConsole; }
         protected:
         private:
             std::string m_fileName = DEFAULTLOG;
+            bool m_logToConsole = false;
     };
 
 }

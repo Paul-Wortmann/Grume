@@ -52,6 +52,8 @@ namespace RoboEngine
             RE_GLContext m_glcontext = {};
             uint16_t m_displayX = 640;
             uint16_t m_displayY = 480;
+            bool m_displayFullscreen = false;
+            uint32_t m_displayFlags = RE_WINDOW_OPENGL;
             uint16_t m_currentDisplay = 0;
             uint16_t m_currentDisplayMode = 0;
             uint16_t m_numberDisplays = 0;

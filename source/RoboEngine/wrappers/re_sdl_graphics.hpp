@@ -28,6 +28,7 @@
 #include <cstdlib>
 #include <string>
 #include <SDL2/SDL.h>
+#include "re_sdl.hpp"
 
 namespace RoboEngine
 {
@@ -70,7 +71,9 @@ namespace RoboEngine
     uint16_t RE_GetNumDisplayModes(uint16_t displayIndex);
     uint16_t RE_GetDisplayMode(uint16_t displayIndex, uint16_t modeIndex, RE_DisplayMode* mode);
 
+    uint16_t RE_GL_SetAttribute(RE_GLattr _attribute, int _value);
+    uint16_t RE_GL_GetAttribute(RE_GLattr _attribute, int* _value);
+
 }
 
 #endif //  RE_SDL_GRAPHICS_HPP
-
