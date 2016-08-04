@@ -21,37 +21,26 @@
  * @date 2011-11-11
  */
 
-#ifndef RE_ROBOENGINE_HPP
-#define RE_ROBOENGINE_HPP
+#ifndef RE_ENTITY_HPP
+#define RE_ENTITY_HPP
 
-#include <cstdlib>
-#include <cstdio>
-#include <cstdint>
-#include <chrono>
-#include <thread>
-
-#include "entity/re_entity.hpp"
-#include "entity/re_entity_manager.hpp"
-#include "entity/re_entity_physics.hpp"
-
-#include "graphics/re_graphics_engine.hpp"
-
-#include "system/re_log.hpp"
-#include "system/re_mainloop.hpp"
-#include "system/re_system_events.hpp"
-#include "system/re_time_step.hpp"
-#include "system/re_types.hpp"
-
-#include "wrappers/re_glx.hpp"
-#include "wrappers/re_opengl.hpp"
-#include "wrappers/re_sdl.hpp"
-#include "wrappers/re_sdl_event.hpp"
-#include "wrappers/re_sdl_graphics.hpp"
-#include "wrappers/re_sdl_timer.hpp"
+#include <string>
 
 namespace RoboEngine
 {
 
+    class re_cEntity
+    {
+        public:
+            re_cEntity(void) {}
+            ~re_cEntity(void) {}
+            re_cEntity(const re_cEntity&) = default;
+            re_cEntity& operator=(const re_cEntity& _rhs) {if (this == &_rhs) return *this; return *this;}
+
+        protected:
+        private:
+    };
+
 }
 
-#endif // RE_ROBOENGINE_HPP
+#endif // RE_ENTITY_HPP
