@@ -141,6 +141,8 @@ Set (FROST_AND_FLAME_SOURCES
 	./source/main.cpp
 	./source/mainloop.cpp
 
+	./source/RoboEngine/entity/re_entity_manager.cpp
+
 	./source/RoboEngine/graphics/re_graphics_engine.cpp
 
 	./source/RoboEngine/system/re_log.cpp
