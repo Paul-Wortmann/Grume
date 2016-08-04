@@ -28,6 +28,7 @@
 #include "re_system_events.hpp"
 #include "re_time_step.hpp"
 #include "../roboengine.hpp"
+#include "../entity/re_entity_manager.hpp"
 #include "../graphics/re_graphics_engine.hpp"
 
 namespace RoboEngine
@@ -53,6 +54,7 @@ namespace RoboEngine
             re_cFrameTimer m_frameTimer = {};
             re_cGraphicsEngine m_graphicsEngine = {};
             re_cLog m_log = {};
+            re_cEntityManager m_entityManager = {};
     };
 
 }

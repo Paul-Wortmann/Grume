@@ -24,10 +24,15 @@
 #ifndef RE_ENTITY_MANAGER_HPP
 #define RE_ENTITY_MANAGER_HPP
 
-#include <string>
+#include "re_entity.hpp"
 
 namespace RoboEngine
 {
+
+    struct entity : public re_sEntity
+    {
+        entity *next = nullptr;
+    };
 
     class re_cEntityManager
     {
@@ -36,9 +41,12 @@ namespace RoboEngine
             ~re_cEntityManager(void) {}
             re_cEntityManager(const re_cEntityManager&) = default;
             re_cEntityManager& operator=(const re_cEntityManager& _rhs) {if (this == &_rhs) return *this; return *this;}
-
+            void freeAllEntities(void);
+            entity *newEntity(void);
+            entity *getEntityRoot(void) {return m_root;}
         protected:
         private:
+            entity *m_root = nullptr;
     };
 
 }

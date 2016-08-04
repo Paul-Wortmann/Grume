@@ -24,21 +24,14 @@
 #ifndef RE_ENTITY_HPP
 #define RE_ENTITY_HPP
 
-#include <string>
+#include "re_entity_physics.hpp"
 
 namespace RoboEngine
 {
 
-    class re_cEntity
+    struct re_sEntity
     {
-        public:
-            re_cEntity(void) {}
-            ~re_cEntity(void) {}
-            re_cEntity(const re_cEntity&) = default;
-            re_cEntity& operator=(const re_cEntity& _rhs) {if (this == &_rhs) return *this; return *this;}
-
-        protected:
-        private:
+            re_sEntityPhysics *physics = nullptr;
     };
 
 }
