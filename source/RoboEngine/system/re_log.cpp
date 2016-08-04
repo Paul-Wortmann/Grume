@@ -28,11 +28,6 @@
 namespace RoboEngine
 {
 
-    /// #delete me!
-    // This hideous global should not exist.... but it is currently convenient for testing, delete it asap!
-    bool g_logToConsole = true;
-    /// #delete me!
-
     std::string stripPath(const std::string &s_fileName)
     {
         std::string r_returnString = "";
@@ -72,9 +67,7 @@ namespace RoboEngine
         filePointer.close();
         if (!filePointer.good())
             std::cout  << std::endl << "ERROR -> log_write()  :  " << s_fileName << std::endl << std::endl;
-        if (_consoleLogging)
-            std::cout << s_data << std::endl;
-        if (g_logToConsole)
+        if (_consoleLogging || LOGTOCONSOLE)
             std::cout << s_data << std::endl;
     }
 

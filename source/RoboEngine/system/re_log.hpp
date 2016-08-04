@@ -31,6 +31,7 @@ namespace RoboEngine
 
     #define ROBOENGINELOG  "RoboEngine.log"
     #define DEFAULTLOG  "default.log"
+    #define LOGTOCONSOLE true
 
     void log_write(const std::string &s_fileName, const std::string &s_data, const bool &_consoleLogging);
     void log_write(const std::string &s_fileName, const std::string &s_dataFile, const std::string &s_dataFunction, const uint32_t &s_dataLine, const std::string &s_message);
