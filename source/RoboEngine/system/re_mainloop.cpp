@@ -54,6 +54,8 @@ namespace RoboEngine
         m_graphicsEngine.deinitialize();
         m_SystemEvents.deinitialize();
 
+        m_entityManager.freeAllEntities();
+
         return_value = deinitialize();
         atexit(RE_Quit);
         return return_value;
