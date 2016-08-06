@@ -28,16 +28,14 @@ namespace RoboEngine
 
     void re_cEntityManager::freeAllEntities(void)
     {
-        while (m_root->next != nullptr)
+        entity* t_entity = m_root;
+        while (t_entity != nullptr)
         {
-            entity* t_entity = m_root;
-            if (m_root->next != nullptr)
-                m_root = m_root->next;
+            m_root = m_root->next;
             delete  t_entity;
             t_entity = nullptr;
+            t_entity = m_root;
         }
-        delete  m_root;
-        m_root = nullptr;
     }
 
     entity *re_cEntityManager::newEntity(void)
