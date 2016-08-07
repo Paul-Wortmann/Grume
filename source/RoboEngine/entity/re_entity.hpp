@@ -31,7 +31,23 @@ namespace RoboEngine
 
     struct re_sEntity
     {
-            re_sEntityPhysics *physics = nullptr;
+        re_sEntityPhysics *physics = nullptr;
+        re_sEntity *next = nullptr;
+    };
+
+    class re_cEntityManager
+    {
+        public:
+            re_cEntityManager(void) {}
+            ~re_cEntityManager(void) {}
+            re_cEntityManager(const re_cEntityManager&) = default;
+            re_cEntityManager& operator=(const re_cEntityManager& _rhs) {if (this == &_rhs) return *this; return *this;}
+            void freeAllEntities(void);
+            re_sEntity *newEntity(void);
+            re_sEntity *getEntityRoot(void) {return m_root;}
+        protected:
+        private:
+            re_sEntity *m_root = nullptr;
     };
 
 }

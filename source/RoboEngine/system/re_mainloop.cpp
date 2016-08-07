@@ -38,9 +38,9 @@ namespace RoboEngine
         m_frameTimer.initialize();
         m_graphicsEngine.initialize();
 
-        entity *entity_1 = m_entityManager.newEntity();
-        entity *entity_2 = m_entityManager.newEntity();
-        entity *entity_3 = m_entityManager.newEntity();
+        re_sEntity *entity_1 = m_entityManager.newEntity();
+        re_sEntity *entity_2 = m_entityManager.newEntity();
+        re_sEntity *entity_3 = m_entityManager.newEntity();
 
 
         return_value = initialize();

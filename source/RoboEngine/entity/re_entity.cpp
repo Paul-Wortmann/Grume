@@ -26,5 +26,35 @@
 namespace RoboEngine
 {
 
+    void re_cEntityManager::freeAllEntities(void)
+    {
+        re_sEntity* t_entity = m_root;
+        while (t_entity != nullptr)
+        {
+            m_root = m_root->next;
+            delete  t_entity;
+            t_entity = nullptr;
+            t_entity = m_root;
+        }
+    }
+
+    re_sEntity *re_cEntityManager::newEntity(void)
+    {
+        if (m_root == nullptr)
+        {
+            m_root = new re_sEntity;
+            return m_root;
+        }
+        else
+        {
+            re_sEntity* t_entity = m_root;
+            for (; t_entity->next != nullptr; t_entity = t_entity->next);
+            t_entity->next = new re_sEntity;
+            t_entity = t_entity->next;
+            return t_entity;
+        }
+        return nullptr;
+    }
 
 }
+

@@ -28,7 +28,7 @@
 #include "re_system_events.hpp"
 #include "re_time_step.hpp"
 #include "../roboengine.hpp"
-#include "../entity/re_entity_manager.hpp"
+#include "../entity/re_entity.hpp"
 #include "../graphics/re_graphics_engine.hpp"
 
 namespace RoboEngine
