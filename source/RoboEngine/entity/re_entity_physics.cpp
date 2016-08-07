@@ -26,5 +26,35 @@
 namespace RoboEngine
 {
 
+    void re_cEntityPhysicsManager::freeAll(void)
+    {
+        re_sEntityPhysics* t_entity = m_head;
+        while (t_entity != nullptr)
+        {
+            m_head = m_head->next;
+            delete  t_entity;
+            t_entity = nullptr;
+            t_entity = m_head;
+        }
+        m_head = nullptr;
+        m_tail = nullptr;
+    }
+
+    re_sEntityPhysics *re_cEntityPhysicsManager::getNew(void)
+    {
+        if (m_head == nullptr)
+        {
+            m_head = new re_sEntityPhysics;
+            m_tail = m_head;
+            return m_head;
+        }
+        else
+        {
+            m_tail->next = new re_sEntityPhysics;
+            m_tail = m_tail->next;
+            return m_tail;
+        }
+        return nullptr;
+    }
 
 }

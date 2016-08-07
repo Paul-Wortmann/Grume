@@ -32,8 +32,25 @@ namespace RoboEngine
     struct re_sEntityPhysics
     {
             v3_f m_position = {};
+            re_sEntityPhysics *next = nullptr;
     };
 
+    class re_cEntityPhysicsManager
+    {
+        public:
+            re_cEntityPhysicsManager(void) {}
+            ~re_cEntityPhysicsManager(void) {}
+            re_cEntityPhysicsManager(const re_cEntityPhysicsManager&) = default;
+            re_cEntityPhysicsManager& operator=(const re_cEntityPhysicsManager& _rhs) {if (this == &_rhs) return *this; return *this;}
+            void freeAll(void);
+            re_sEntityPhysics *getNew(void);
+            re_sEntityPhysics *getHead(void) {return m_head;}
+            re_sEntityPhysics *getTail(void) {return m_tail;}
+        protected:
+        private:
+            re_sEntityPhysics *m_head = nullptr;
+            re_sEntityPhysics *m_tail = nullptr;
+    };
 }
 
 #endif // RE_ENTITY_PHYSICS_HPP
