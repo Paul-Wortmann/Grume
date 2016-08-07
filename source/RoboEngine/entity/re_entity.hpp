@@ -40,14 +40,17 @@ namespace RoboEngine
         public:
             re_cEntityManager(void) {}
             ~re_cEntityManager(void) {}
-            re_cEntityManager(const re_cEntityManager&) = default;
-            re_cEntityManager& operator=(const re_cEntityManager& _rhs) {if (this == &_rhs) return *this; return *this;}
+            inline re_cEntityManager(const re_cEntityManager&) = default;
+            inline re_cEntityManager& operator=(const re_cEntityManager& _rhs) {if (this == &_rhs) return *this; return *this;}
+            inline void addPhysics(re_sEntity *_entity) {_entity->physics =m_entityPhysicsManager.getNew();}
+            inline const re_sEntity *getHead(void) {return m_head;}
+            inline const re_sEntity *getTail(void) {return m_tail;}
             void freeAll(void);
             re_sEntity *getNew(void);
-            re_sEntity *getHead(void) {return m_head;}
-            re_sEntity *getTail(void) {return m_tail;}
         protected:
         private:
+            re_cEntityPhysicsManager m_entityPhysicsManager = {};
+            void freeEntities(void);
             re_sEntity *m_head = nullptr;
             re_sEntity *m_tail = nullptr;
     };

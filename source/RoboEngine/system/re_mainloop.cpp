@@ -39,6 +39,7 @@ namespace RoboEngine
         m_graphicsEngine.initialize();
 
         re_sEntity *entity_1 = m_entityManager.getNew();
+        m_entityManager.addPhysics(entity_1);
         re_sEntity *entity_2 = m_entityManager.getNew();
         re_sEntity *entity_3 = m_entityManager.getNew();
 

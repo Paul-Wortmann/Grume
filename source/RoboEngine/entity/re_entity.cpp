@@ -28,6 +28,12 @@ namespace RoboEngine
 
     void re_cEntityManager::freeAll(void)
     {
+        m_entityPhysicsManager.freeAll();
+        freeEntities(); // make sure freeEntities() is called last!
+    }
+
+    void re_cEntityManager::freeEntities(void)
+    {
         re_sEntity* t_entity = m_head;
         while (t_entity != nullptr)
         {
