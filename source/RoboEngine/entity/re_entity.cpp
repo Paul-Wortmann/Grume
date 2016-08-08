@@ -17,7 +17,8 @@
  * @author  Paul Wortmann
  * @email   physhex@gmail.com
  * @website www.physhexgames.com
- * @license GPL V2
+ * @license GPL V2            void addMesh(re_sEntity *_entity, std::string _fileName);
+
  * @date 2011-11-11
  */
 
@@ -28,6 +29,7 @@ namespace RoboEngine
 
     void re_cEntityManager::freeAll(void)
     {
+        m_meshManager.freeAll();
         m_textureManager.freeAll();
         m_entityRenderManager.freeAll();
         m_entityPhysicsManager.freeAll();
@@ -70,6 +72,13 @@ namespace RoboEngine
         if (_entity != nullptr)
             if (_entity->render != nullptr)
                 _entity->render->texture = m_textureManager.getNew(_fileName);
+    }
+
+    void re_cEntityManager::addMesh(re_sEntity *_entity, std::string _fileName)
+    {
+        if (_entity != nullptr)
+            if (_entity->render != nullptr)
+                _entity->render->mesh = m_meshManager.getNew(_fileName);
     }
 
 }

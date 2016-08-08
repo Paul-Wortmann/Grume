@@ -25,14 +25,26 @@
 #define RE_MESH_MANAGER_HPP
 
 #include <string>
+#include "../system/re_types.hpp"
 
 namespace RoboEngine
 {
 
+    #define TRIANGLE_VERTS 3
+
+    struct re_sIndex
+    {
+        v3_f v;
+        v2_f uv;
+        v3_f n;
+    };
+
     struct re_sMesh
     {
-            std::string fileName = "";
-            re_sMesh *next = nullptr;
+        std::string fileName = "";
+        uint16_t indexCount = 0;
+        re_sIndex* index = nullptr;
+        re_sMesh *next = nullptr;
     };
 
     class re_cMeshManager

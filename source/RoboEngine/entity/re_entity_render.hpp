@@ -24,6 +24,7 @@
 #ifndef RE_ENTITY_RENDER_HPP
 #define RE_ENTITY_RENDER_HPP
 
+#include "../resource/re_mesh_manager.hpp"
 #include "../resource/re_texture_manager.hpp"
 
 namespace RoboEngine
@@ -31,6 +32,7 @@ namespace RoboEngine
 
     struct re_sEntityRender
     {
+            re_sMesh *mesh = nullptr;
             re_sTexture *texture = nullptr;
             re_sEntityRender *next = nullptr;
     };

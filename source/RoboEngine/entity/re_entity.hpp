@@ -26,6 +26,7 @@
 
 #include "re_entity_render.hpp"
 #include "re_entity_physics.hpp"
+#include "../resource/re_mesh_manager.hpp"
 #include "../resource/re_texture_manager.hpp"
 
 namespace RoboEngine
@@ -52,12 +53,14 @@ namespace RoboEngine
             void freeAll(void);
             re_sEntity *getNew(void);
             void addTexture(re_sEntity *_entity, std::string _fileName);
+            void addMesh(re_sEntity *_entity, std::string _fileName);
 
         protected:
         private:
             re_cEntityRenderManager m_entityRenderManager = {};
             re_cEntityPhysicsManager m_entityPhysicsManager = {};
             re_cTextureManager m_textureManager = {};
+            re_cMeshManager m_meshManager = {};
             void freeEntities(void);
             re_sEntity *m_head = nullptr;
             re_sEntity *m_tail = nullptr;
