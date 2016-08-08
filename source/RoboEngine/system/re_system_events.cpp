@@ -54,7 +54,7 @@ namespace RoboEngine
                         case RE_WINDOWEVENT_LEAVE:
                         break;
                         default:
-                            RoboEngine::log_write(ROBOENGINELOG, __FILE__, __FUNCTION__, __LINE__, "Non fatal warning - Window event not processed: "+std::to_string(m_event.window.event));
+                            //RoboEngine::log_write(ROBOENGINELOG, __FILE__, __FUNCTION__, __LINE__, "Non fatal warning - Window event not processed: "+std::to_string(m_event.window.event));
                         break;
                     }
                 break;
@@ -75,7 +75,7 @@ namespace RoboEngine
                     m_keyMap[m_event.key.keysym.sym] = false;
                 break;
                 default:
-                        RoboEngine::log_write(ROBOENGINELOG, __FILE__, __FUNCTION__, __LINE__, "Non fatal warning - Event not processed: "+std::to_string(m_event.type));
+                        //RoboEngine::log_write(ROBOENGINELOG, __FILE__, __FUNCTION__, __LINE__, "Non fatal warning - Event not processed: "+std::to_string(m_event.type));
                 break;
             }
         }
