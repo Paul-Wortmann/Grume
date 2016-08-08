@@ -38,6 +38,7 @@
 #include "graphics/re_image_loader.hpp"
 
 #include "resource/re_texture_manager.hpp"
+#include "resource/re_xml_parser.hpp"
 
 #include "system/re_log.hpp"
 #include "system/re_mainloop.hpp"
