@@ -40,12 +40,15 @@ namespace RoboEngine
 
         re_sEntity *entity_1 = m_entityManager.getNew();
         m_entityManager.addPhysics(entity_1);
+        m_entityManager.addRender(entity_1);
         entity_1->physics->position.set(0.0f, 0.0f, 0.0f);
         re_sEntity *entity_2 = m_entityManager.getNew();
         m_entityManager.addPhysics(entity_2);
+        m_entityManager.addRender(entity_2);
         entity_2->physics->position.set(0.5f, 0.5f, 0.0f);
         re_sEntity *entity_3 = m_entityManager.getNew();
         m_entityManager.addPhysics(entity_3);
+        m_entityManager.addRender(entity_3);
         entity_3->physics->position.set(-0.5f, -0.5f, 0.0f);
 
         return_value = initialize();

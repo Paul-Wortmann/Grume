@@ -21,21 +21,14 @@
  * @date 2011-11-11
  */
 
-#include "re_entity.hpp"
+#include "re_entity_render.hpp"
 
 namespace RoboEngine
 {
 
-    void re_cEntityManager::freeAll(void)
+    void re_cEntityRenderManager::freeAll(void)
     {
-        m_entityRenderManager.freeAll();
-        m_entityPhysicsManager.freeAll();
-        freeEntities(); // make sure freeEntities() is called last!
-    }
-
-    void re_cEntityManager::freeEntities(void)
-    {
-        re_sEntity* t_entity = m_head;
+        re_sEntityRender* t_entity = m_head;
         while (t_entity != nullptr)
         {
             m_head = m_head->next;
@@ -47,17 +40,17 @@ namespace RoboEngine
         m_tail = nullptr;
     }
 
-    re_sEntity *re_cEntityManager::getNew(void)
+    re_sEntityRender *re_cEntityRenderManager::getNew(void)
     {
         if (m_head == nullptr)
         {
-            m_head = new re_sEntity;
+            m_head = new re_sEntityRender;
             m_tail = m_head;
             return m_head;
         }
         else
         {
-            m_tail->next = new re_sEntity;
+            m_tail->next = new re_sEntityRender;
             m_tail = m_tail->next;
             return m_tail;
         }
@@ -65,4 +58,3 @@ namespace RoboEngine
     }
 
 }
-
