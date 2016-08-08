@@ -31,7 +31,7 @@ namespace RoboEngine
 
     struct re_sEntityPhysics
     {
-            v3_f m_position = {};
+            v3_f position = {};
             re_sEntityPhysics *next = nullptr;
     };
 

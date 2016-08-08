@@ -43,7 +43,9 @@ namespace RoboEngine
     {
         v3_f() = default;
         virtual ~v3_f() = default;
-        v3_f(float _x, float _y, float _z) {x = _x; y = _y; z = _z;}
+        inline v3_f(float _x, float _y, float _z) {x = _x; y = _y; z = _z;}
+        inline void set(float _x, float _y, float _z) {x = _x; y = _y; z = _z;}
+        inline v3_f get(void) { return v3_f(x, y, z);}
         float x = 0.0f;
         float y = 0.0f;
         float z = 0.0f;
