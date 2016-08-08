@@ -37,6 +37,8 @@
 #include "graphics/re_graphics_engine.hpp"
 #include "graphics/re_image_loader.hpp"
 
+#include "resource/re_texture_manager.hpp"
+
 #include "system/re_log.hpp"
 #include "system/re_mainloop.hpp"
 #include "system/re_system_events.hpp"
