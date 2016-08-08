@@ -24,12 +24,14 @@
 #ifndef RE_ENTITY_RENDER_HPP
 #define RE_ENTITY_RENDER_HPP
 
+#include "../resource/re_texture_manager.hpp"
+
 namespace RoboEngine
 {
 
     struct re_sEntityRender
     {
-            /// data
+            re_sTexture *texture = nullptr;
             re_sEntityRender *next = nullptr;
     };
 

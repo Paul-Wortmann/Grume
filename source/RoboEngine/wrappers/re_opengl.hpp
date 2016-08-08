@@ -62,7 +62,7 @@ namespace RoboEngine
     void RE_glTexParameterf(RE_GLenum _target, RE_GLenum _pname, float _param);
     void RE_glGenerateMipmap(RE_GLenum _target);
     void RE_glGenerateTextureMipmap(uint32_t _texture);
-
+    void RE_glDeleteTextures(uint32_t _textureCount, uint32_t *_textureID);
 }
 
 #endif //  RE_OPENGL_HPP

@@ -52,4 +52,14 @@ namespace RoboEngine
         return textureID;
     }
 
+    void freeTexture(uint32_t _textureID)
+    {
+        /*
+        uint32_t *_textureArray = new uint32_t[1];
+        _textureArray[0] = _textureID;
+        RE_glDeleteTextures(1, _textureArray);
+        delete _textureArray;
+        */
+    }
+
 }

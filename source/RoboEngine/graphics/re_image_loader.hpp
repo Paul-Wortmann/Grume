@@ -30,6 +30,7 @@ namespace RoboEngine
 {
 
     uint32_t loadTexture(const std::string& _fileName);
+    void freeTexture(uint32_t _textureID);
 
 }
 

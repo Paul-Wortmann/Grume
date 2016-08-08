@@ -76,4 +76,9 @@ namespace RoboEngine
         glGenerateTextureMipmap(_texture);
     }
 
+    void RE_glDeleteTextures(uint32_t _textureCount, uint32_t *_textureID)
+    {
+        glDeleteTextures(_textureCount, _textureID);
+    }
+
 }

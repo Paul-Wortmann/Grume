@@ -32,6 +32,10 @@ namespace RoboEngine
         while (t_texture != nullptr)
         {
             m_head = m_head->next;
+            /*
+            if (t_texture->ID != 0)
+                freeTexture(t_texture->ID);
+                */
             delete  t_texture;
             t_texture = nullptr;
             t_texture = m_head;
@@ -59,7 +63,7 @@ namespace RoboEngine
             }
             m_tail->next = new re_sTexture;
             m_tail->fileName = _fileName;
-            m_tail->ID = loadTexture(_fileName);
+            //m_tail->ID = loadTexture(_fileName);
             m_tail = m_tail->next;
             return m_tail;
         }
