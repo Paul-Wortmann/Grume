@@ -21,42 +21,36 @@
  * @date 2011-11-11
  */
 
-#ifndef RE_ROBOENGINE_HPP
-#define RE_ROBOENGINE_HPP
+#ifndef RE_MESH_MANAGER_HPP
+#define RE_MESH_MANAGER_HPP
 
-#include <cstdlib>
-#include <cstdio>
-#include <cstdint>
-#include <chrono>
-#include <thread>
-
-#include "entity/re_entity.hpp"
-#include "entity/re_entity_physics.hpp"
-#include "entity/re_entity_render.hpp"
-
-#include "graphics/re_graphics_engine.hpp"
-#include "graphics/re_image_loader.hpp"
-
-#include "resource/re_mesh_manager.hpp"
-#include "resource/re_texture_manager.hpp"
-#include "resource/re_xml_parser.hpp"
-
-#include "system/re_log.hpp"
-#include "system/re_mainloop.hpp"
-#include "system/re_system_events.hpp"
-#include "system/re_time_step.hpp"
-#include "system/re_types.hpp"
-
-#include "wrappers/re_glx.hpp"
-#include "wrappers/re_opengl.hpp"
-#include "wrappers/re_sdl.hpp"
-#include "wrappers/re_sdl_event.hpp"
-#include "wrappers/re_sdl_graphics.hpp"
-#include "wrappers/re_sdl_timer.hpp"
+#include <string>
 
 namespace RoboEngine
 {
 
+    struct re_sMesh
+    {
+            std::string fileName = "";
+            re_sMesh *next = nullptr;
+    };
+
+    class re_cMeshManager
+    {
+        public:
+            re_cMeshManager(void) {}
+            ~re_cMeshManager(void) {}
+            inline re_cMeshManager(const re_cMeshManager&) = default;
+            inline re_cMeshManager& operator=(const re_cMeshManager& _rhs) {if (this == &_rhs) return *this; return *this;}
+            inline const re_sMesh *getHead(void) {return m_head;}
+            inline const re_sMesh *getTail(void) {return m_tail;}
+            void freeAll(void);
+            re_sMesh *getNew(std::string _fileName);
+        protected:
+        private:
+            re_sMesh *m_head = nullptr;
+            re_sMesh *m_tail = nullptr;
+    };
 }
 
-#endif // RE_ROBOENGINE_HPP
+#endif // RE_MESH_MANAGER_HPP

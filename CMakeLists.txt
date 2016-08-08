@@ -146,6 +146,11 @@ Set (FROST_AND_FLAME_SOURCES
 	./source/RoboEngine/entity/re_entity_render.cpp
 
 	./source/RoboEngine/graphics/re_graphics_engine.cpp
+	./source/RoboEngine/graphics/re_image_loader.cpp
+
+	./source/RoboEngine/resource/re_mesh_manager.cpp
+	./source/RoboEngine/resource/re_texture_manager.cpp
+	./source/RoboEngine/resource/re_xml_parser.cpp
 
 	./source/RoboEngine/system/re_log.cpp
 	./source/RoboEngine/system/re_mainloop.cpp
@@ -159,6 +164,7 @@ Set (FROST_AND_FLAME_SOURCES
 	./source/RoboEngine/wrappers/re_sdl.cpp
 	./source/RoboEngine/wrappers/re_sdl_event.cpp
 	./source/RoboEngine/wrappers/re_sdl_graphics.cpp
+	./source/RoboEngine/wrappers/re_sdl_image.cpp
 	./source/RoboEngine/wrappers/re_sdl_timer.cpp
 )
 
