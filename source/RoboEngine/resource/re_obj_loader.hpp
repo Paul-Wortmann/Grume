@@ -21,43 +21,41 @@
  * @date 2011-11-11
  */
 
-#ifndef RE_ROBOENGINE_HPP
-#define RE_ROBOENGINE_HPP
+#ifndef RE_OBJ_LOADER_HPP
+#define RE_OBJ_LOADER_HPP
 
-#include <cstdlib>
-#include <cstdio>
+#include <string>
 #include <cstdint>
-#include <chrono>
-#include <thread>
-
-#include "entity/re_entity.hpp"
-#include "entity/re_entity_physics.hpp"
-#include "entity/re_entity_render.hpp"
-
-#include "graphics/re_graphics_engine.hpp"
-#include "graphics/re_image_loader.hpp"
-
-#include "resource/re_mesh_manager.hpp"
-#include "resource/re_obj_loader.hpp"
-#include "resource/re_texture_manager.hpp"
-#include "resource/re_xml_parser.hpp"
-
-#include "system/re_log.hpp"
-#include "system/re_mainloop.hpp"
-#include "system/re_system_events.hpp"
-#include "system/re_time_step.hpp"
-#include "system/re_types.hpp"
-
-#include "wrappers/re_glx.hpp"
-#include "wrappers/re_opengl.hpp"
-#include "wrappers/re_sdl.hpp"
-#include "wrappers/re_sdl_event.hpp"
-#include "wrappers/re_sdl_graphics.hpp"
-#include "wrappers/re_sdl_timer.hpp"
+#include "../system/re_types.hpp"
 
 namespace RoboEngine
 {
 
+    struct obj_face_s
+    {
+        v3_f p[3];
+    };
+
+    struct obj_data_s
+    {
+        std::string name = "";
+        uint16_t vertex_count = 0;
+        uint16_t vertex_texture_count = 0;
+        uint16_t vertex_normal_count = 0;
+        uint16_t face_count = 0;
+        v3_f* vertex = nullptr;
+        v2_f* vertex_texture = nullptr;
+        v3_f* vertex_normal = nullptr;
+        obj_face_s* face = nullptr;
+    };
+
+    void obj_delete(obj_data_s *&obj_data);
+    void obj_import(const std::string &s_obj_file, obj_data_s *&obj_data);
+    void obj_export(const std::string &s_obj_file, const obj_data_s &obj_data);
+
 }
 
-#endif // RE_ROBOENGINE_HPP
+#endif // RE_OBJ_LOADER_HPP
+
+
+

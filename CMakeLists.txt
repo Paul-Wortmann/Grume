@@ -149,6 +149,7 @@ Set (FROST_AND_FLAME_SOURCES
 	./source/RoboEngine/graphics/re_image_loader.cpp
 
 	./source/RoboEngine/resource/re_mesh_manager.cpp
+	./source/RoboEngine/resource/re_obj_loader.cpp
 	./source/RoboEngine/resource/re_texture_manager.cpp
 	./source/RoboEngine/resource/re_xml_parser.cpp
 
