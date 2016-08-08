@@ -41,4 +41,39 @@ namespace RoboEngine
         return glGetString(_name);
     }
 
+    void RE_glGenTextures(uint32_t _n, uint32_t *_textures)
+    {
+        glGenTextures(_n, _textures);
+    }
+
+    void RE_glBindTexture(RE_GLenum _target, uint32_t _texture)
+    {
+        glBindTexture(_target, _texture);
+    }
+
+    void RE_glTexImage2D(RE_GLenum _target, int32_t _level, int32_t _internalformat, uint32_t _width, uint32_t _height, int32_t _border, RE_GLenum _format, RE_GLenum _type, const GLvoid *_data)
+    {
+        glTexImage2D(_target, _level, _internalformat, _width, _height, _border, _format, _type, _data);
+    }
+
+    void RE_glTexParameteri(RE_GLenum _target, RE_GLenum _pname, int32_t _param)
+    {
+        glTexParameteri(_target, _pname, _param);
+    }
+
+    void RE_glTexParameterf(RE_GLenum _target, RE_GLenum _pname, float _param)
+    {
+        glTexParameterf(_target, _pname, _param);
+    }
+
+    void RE_glGenerateMipmap(RE_GLenum _target)
+    {
+        glGenerateMipmap(_target);
+    }
+
+    void RE_glGenerateTextureMipmap(uint32_t _texture)
+    {
+        glGenerateTextureMipmap(_texture);
+    }
+
 }

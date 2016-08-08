@@ -21,38 +21,29 @@
  * @date 2011-11-11
  */
 
-#ifndef RE_ROBOENGINE_HPP
-#define RE_ROBOENGINE_HPP
+#ifndef RE_SDL_IMAGE_HPP
+#define RE_SDL_IMAGE_HPP
 
-#include <cstdlib>
-#include <cstdio>
 #include <cstdint>
-#include <chrono>
-#include <thread>
-
-#include "entity/re_entity.hpp"
-#include "entity/re_entity_physics.hpp"
-#include "entity/re_entity_render.hpp"
-
-#include "graphics/re_graphics_engine.hpp"
-#include "graphics/re_image_loader.hpp"
-
-#include "system/re_log.hpp"
-#include "system/re_mainloop.hpp"
-#include "system/re_system_events.hpp"
-#include "system/re_time_step.hpp"
-#include "system/re_types.hpp"
-
-#include "wrappers/re_glx.hpp"
-#include "wrappers/re_opengl.hpp"
-#include "wrappers/re_sdl.hpp"
-#include "wrappers/re_sdl_event.hpp"
-#include "wrappers/re_sdl_graphics.hpp"
-#include "wrappers/re_sdl_timer.hpp"
+#include <cstdlib>
+#include <SDL2/SDL.h>
+#include <SDL2/SDL_image.h>
 
 namespace RoboEngine
 {
 
+
+    typedef SDL_Surface RE_Surface;
+
+    RE_Surface *RE_IMG_Load(const char *_fileName);
+    void RE_FreeSurface(RE_Surface *_surface);
+
+/*
+    #define RE_QUIT SDL_QUIT
+*/
+
 }
 
-#endif // RE_ROBOENGINE_HPP
+#endif //  RE_SDL_IMAGE_HPP
+
+
