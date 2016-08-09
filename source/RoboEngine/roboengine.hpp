@@ -39,6 +39,7 @@
 
 #include "resource/re_mesh_manager.hpp"
 #include "resource/re_obj_loader.hpp"
+#include "resource/re_obj_mesh.hpp"
 #include "resource/re_texture_manager.hpp"
 #include "resource/re_xml_parser.hpp"
 

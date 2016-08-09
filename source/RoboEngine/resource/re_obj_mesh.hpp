@@ -21,45 +21,26 @@
  * @date 2011-11-11
  */
 
-#ifndef RE_OBJ_LOADER_HPP
-#define RE_OBJ_LOADER_HPP
+#ifndef RE_OBJ_MESH_HPP
+#define RE_OBJ_MESH_HPP
 
 #include <string>
 #include <cstdint>
 #include <fstream>
 #include <iostream>
+#include "re_mesh_manager.hpp"
+#include "re_obj_loader.hpp"
 #include "../system/re_types.hpp"
-#include "re_xml_parser.hpp"
 #include "../system/re_log.hpp"
 
 namespace RoboEngine
 {
 
-    struct re_sobjFace
-    {
-        v3_f p[3];
-    };
-
-    struct re_sobjData
-    {
-        std::string name = "";
-        uint16_t vertex_count = 0;
-        uint16_t vertex_texture_count = 0;
-        uint16_t vertex_normal_count = 0;
-        uint16_t face_count = 0;
-        v3_f* vertex = nullptr;
-        v2_f* vertex_texture = nullptr;
-        v3_f* vertex_normal = nullptr;
-        re_sobjFace* face = nullptr;
-    };
-
-    void objDelete(re_sobjData *&_objData);
-    void objImport(const std::string &_objFile, re_sobjData *&_objData);
-    void objExport(const std::string &_objFile, const re_sobjData &_objData);
+    re_sIndex *objToMesh(const std::string &_objFile);
 
 }
 
-#endif // RE_OBJ_LOADER_HPP
+#endif // RE_OBJ_MESH_HPP
 
 
 

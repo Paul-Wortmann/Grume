@@ -35,8 +35,8 @@ namespace RoboEngine
     struct re_sIndex
     {
         v3_f v;
-        v2_f uv;
         v3_f n;
+        v2_f uv;
     };
 
     struct re_sMesh
@@ -58,6 +58,7 @@ namespace RoboEngine
             inline const re_sMesh *getTail(void) {return m_tail;}
             void freeAll(void);
             re_sMesh *getNew(std::string _fileName);
+            re_sIndex *loadMesh(std::string _fileName);
         protected:
         private:
             re_sMesh *m_head = nullptr;
