@@ -21,8 +21,8 @@
  * @date 2011-11-11
  */
 
-#ifndef RE_LOADER_OBJ_HPP
-#define RE_LOADER_OBJ_HPP
+#ifndef RE_LOADER_DAE_HPP
+#define RE_LOADER_DAE_HPP
 
 #include <string>
 #include <cstdint>
@@ -35,12 +35,12 @@
 namespace RoboEngine
 {
 
-    struct re_sobjFace
+    struct re_sdaeFace
     {
         v3_f p[3];
     };
 
-    struct re_sobjData
+    struct re_sdaeData
     {
         std::string name = "";
         uint16_t vertex_count = 0;
@@ -50,16 +50,16 @@ namespace RoboEngine
         v3_f* vertex = nullptr;
         v2_f* vertex_texture = nullptr;
         v3_f* vertex_normal = nullptr;
-        re_sobjFace* face = nullptr;
+        re_sdaeFace* face = nullptr;
     };
 
-    void objDelete(re_sobjData *&_objData);
-    void objImport(const std::string &_objFile, re_sobjData *&_objData);
-    void objExport(const std::string &_objFile, const re_sobjData &_objData);
+    void daeDelete(re_sdaeData *&_daeData);
+    void daeImport(const std::string &_daeFile, re_sdaeData *&_daeData);
+    void daeExport(const std::string &_daeFile, const re_sdaeData &_daeData);
 
 }
 
-#endif // RE_LOADER_OBJ_HPP
+#endif // RE_LOADER_DAE_HPP
 
 
 
