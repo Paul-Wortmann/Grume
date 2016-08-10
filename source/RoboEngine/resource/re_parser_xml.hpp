@@ -21,8 +21,8 @@
  * @date 2011-11-11
  */
 
-#ifndef RE_XML_PARSER_HPP
-#define RE_XML_PARSER_HPP
+#ifndef RE_PARSER_XML_HPP
+#define RE_PARSER_XML_HPP
 
 #include <string>
 #include <cstdint>
@@ -66,7 +66,7 @@ namespace RoboEngine
 
 }
 
-#endif // RE_XML_PARSER_HPP
+#endif // RE_PARSER_XML_HPP
 
 
 

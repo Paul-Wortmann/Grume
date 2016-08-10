@@ -21,15 +21,15 @@
  * @date 2011-11-11
  */
 
-#ifndef RE_OBJ_LOADER_HPP
-#define RE_OBJ_LOADER_HPP
+#ifndef RE_LOADER_OBJ_HPP
+#define RE_LOADER_OBJ_HPP
 
 #include <string>
 #include <cstdint>
 #include <fstream>
 #include <iostream>
 #include "../system/re_types.hpp"
-#include "re_xml_parser.hpp"
+#include "re_parser_xml.hpp"
 #include "../system/re_log.hpp"
 
 namespace RoboEngine
@@ -59,7 +59,7 @@ namespace RoboEngine
 
 }
 
-#endif // RE_OBJ_LOADER_HPP
+#endif // RE_LOADER_OBJ_HPP
 
 
 

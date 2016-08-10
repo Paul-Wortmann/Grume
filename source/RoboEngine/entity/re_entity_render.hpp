@@ -24,8 +24,8 @@
 #ifndef RE_ENTITY_RENDER_HPP
 #define RE_ENTITY_RENDER_HPP
 
-#include "../resource/re_mesh_manager.hpp"
-#include "../resource/re_texture_manager.hpp"
+#include "../resource/re_manager_mesh.hpp"
+#include "../resource/re_manager_texture.hpp"
 
 namespace RoboEngine
 {

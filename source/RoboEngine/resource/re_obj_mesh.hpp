@@ -28,8 +28,8 @@
 #include <cstdint>
 #include <fstream>
 #include <iostream>
-#include "re_mesh_manager.hpp"
-#include "re_obj_loader.hpp"
+#include "re_manager_mesh.hpp"
+#include "re_loader_obj.hpp"
 #include "../system/re_types.hpp"
 #include "../system/re_log.hpp"
 

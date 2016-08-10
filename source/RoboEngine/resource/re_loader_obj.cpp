@@ -21,7 +21,7 @@
  * @date 2011-11-11
  */
 
-#include "re_obj_loader.hpp"
+#include "re_loader_obj.hpp"
 
 namespace RoboEngine
 {

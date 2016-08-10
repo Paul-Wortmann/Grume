@@ -21,49 +21,38 @@
  * @date 2011-11-11
  */
 
-#ifndef RE_MESH_MANAGER_HPP
-#define RE_MESH_MANAGER_HPP
+#ifndef RE_MANAGER_TEXTURE_HPP
+#define RE_MANAGER_TEXTURE_HPP
 
+#include "../graphics/re_image_loader.hpp"
 #include <string>
-#include "../system/re_types.hpp"
 
 namespace RoboEngine
 {
 
-    #define TRIANGLE_VERTS 3
-
-    struct re_sIndex
+    struct re_sTexture
     {
-        v3_f v;
-        v3_f n;
-        v2_f uv;
+            std::string fileName = "";
+            uint32_t ID = 0;
+            re_sTexture *next = nullptr;
     };
 
-    struct re_sMesh
-    {
-        std::string fileName = "";
-        uint16_t indexCount = 0;
-        re_sIndex* index = nullptr;
-        re_sMesh *next = nullptr;
-    };
-
-    class re_cMeshManager
+    class re_cTextureManager
     {
         public:
-            re_cMeshManager(void) {}
-            ~re_cMeshManager(void) {}
-            inline re_cMeshManager(const re_cMeshManager&) = default;
-            inline re_cMeshManager& operator=(const re_cMeshManager& _rhs) {if (this == &_rhs) return *this; return *this;}
-            inline const re_sMesh *getHead(void) {return m_head;}
-            inline const re_sMesh *getTail(void) {return m_tail;}
+            re_cTextureManager(void) {}
+            ~re_cTextureManager(void) {}
+            inline re_cTextureManager(const re_cTextureManager&) = default;
+            inline re_cTextureManager& operator=(const re_cTextureManager& _rhs) {if (this == &_rhs) return *this; return *this;}
+            inline const re_sTexture *getHead(void) {return m_head;}
+            inline const re_sTexture *getTail(void) {return m_tail;}
             void freeAll(void);
-            re_sMesh *getNew(std::string _fileName);
-            re_sIndex *loadMesh(std::string _fileName);
+            re_sTexture *getNew(std::string _fileName);
         protected:
         private:
-            re_sMesh *m_head = nullptr;
-            re_sMesh *m_tail = nullptr;
+            re_sTexture *m_head = nullptr;
+            re_sTexture *m_tail = nullptr;
     };
 }
 
-#endif // RE_MESH_MANAGER_HPP
+#endif // RE_MANAGER_TEXTURE_HPP

@@ -26,8 +26,8 @@
 
 #include "re_entity_render.hpp"
 #include "re_entity_physics.hpp"
-#include "../resource/re_mesh_manager.hpp"
-#include "../resource/re_texture_manager.hpp"
+#include "../resource/re_manager_mesh.hpp"
+#include "../resource/re_manager_texture.hpp"
 
 namespace RoboEngine
 {

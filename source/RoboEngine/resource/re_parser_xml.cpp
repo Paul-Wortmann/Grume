@@ -21,7 +21,7 @@
  * @date 2011-11-11
  */
 
-#include "re_xml_parser.hpp"
+#include "re_parser_xml.hpp"
 
 namespace RoboEngine
 {

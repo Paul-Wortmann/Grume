@@ -37,11 +37,11 @@
 #include "graphics/re_graphics_engine.hpp"
 #include "graphics/re_image_loader.hpp"
 
-#include "resource/re_mesh_manager.hpp"
-#include "resource/re_obj_loader.hpp"
+#include "resource/re_loader_obj.hpp"
+#include "resource/re_manager_mesh.hpp"
+#include "resource/re_manager_texture.hpp"
 #include "resource/re_obj_mesh.hpp"
-#include "resource/re_texture_manager.hpp"
-#include "resource/re_xml_parser.hpp"
+#include "resource/re_parser_xml.hpp"
 
 #include "system/re_log.hpp"
 #include "system/re_mainloop.hpp"

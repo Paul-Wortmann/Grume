@@ -21,56 +21,51 @@
  * @date 2011-11-11
  */
 
-#include "re_mesh_manager.hpp"
+#include "re_manager_texture.hpp"
 
 namespace RoboEngine
 {
 
-    void re_cMeshManager::freeAll(void)
+    void re_cTextureManager::freeAll(void)
     {
-        re_sMesh* t_mesh = m_head;
-        while (t_mesh != nullptr)
+        re_sTexture* t_texture = m_head;
+        while (t_texture != nullptr)
         {
             m_head = m_head->next;
-            delete  [] t_mesh->index;
-            t_mesh->index = nullptr;
-            delete  t_mesh;
-            t_mesh = nullptr;
-            t_mesh = m_head;
+            if (t_texture->ID != 0)
+                freeTexture(t_texture->ID);
+            delete  t_texture;
+            t_texture = nullptr;
+            t_texture = m_head;
         }
         m_head = nullptr;
         m_tail = nullptr;
     }
 
-    re_sMesh *re_cMeshManager::getNew(std::string _fileName)
+    re_sTexture *re_cTextureManager::getNew(std::string _fileName)
     {
         if (m_head == nullptr)
         {
-            m_head = new re_sMesh;
+            m_head = new re_sTexture;
             m_head->fileName = _fileName;
-            m_head->index = loadMesh(_fileName);
+            m_head->ID = loadTexture(_fileName);
             m_tail = m_head;
             return m_head;
         }
         else
         {
-            for (re_sMesh *tempMesh = m_head; tempMesh != nullptr; tempMesh = tempMesh->next)
+            for (re_sTexture *tempTex = m_head; tempTex != nullptr; tempTex = tempTex->next)
             {
-                 if (_fileName.compare(tempMesh->fileName.c_str()) == 0)
-                    return(tempMesh);
+                 if (_fileName.compare(tempTex->fileName.c_str()) == 0)
+                    return(tempTex);
             }
-            m_tail->next = new re_sMesh;
+            m_tail->next = new re_sTexture;
             m_tail->fileName = _fileName;
-            m_tail->index = loadMesh(_fileName);
+            m_tail->ID = loadTexture(_fileName);
             m_tail = m_tail->next;
             return m_tail;
         }
         return nullptr;
-    }
-
-    re_sIndex *re_cMeshManager::loadMesh(std::string _fileName)
-    {
-
     }
 
 }
