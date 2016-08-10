@@ -37,13 +37,13 @@ namespace RoboEngine
             re_sTexture *next = nullptr;
     };
 
-    class re_cTextureManager
+    class re_cManagerTexture
     {
         public:
-            re_cTextureManager(void) {}
-            ~re_cTextureManager(void) {}
-            inline re_cTextureManager(const re_cTextureManager&) = default;
-            inline re_cTextureManager& operator=(const re_cTextureManager& _rhs) {if (this == &_rhs) return *this; return *this;}
+            re_cManagerTexture(void) {}
+            ~re_cManagerTexture(void) {}
+            inline re_cManagerTexture(const re_cManagerTexture&) = default;
+            inline re_cManagerTexture& operator=(const re_cManagerTexture& _rhs) {if (this == &_rhs) return *this; return *this;}
             inline const re_sTexture *getHead(void) {return m_head;}
             inline const re_sTexture *getTail(void) {return m_tail;}
             void freeAll(void);

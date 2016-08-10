@@ -59,8 +59,8 @@ namespace RoboEngine
         private:
             re_cEntityRenderManager m_entityRenderManager = {};
             re_cEntityPhysicsManager m_entityPhysicsManager = {};
-            re_cTextureManager m_textureManager = {};
-            re_cMeshManager m_meshManager = {};
+            re_cManagerTexture m_managerTexture = {};
+            re_cManagerMesh m_managerMesh = {};
             void freeEntities(void);
             re_sEntity *m_head = nullptr;
             re_sEntity *m_tail = nullptr;

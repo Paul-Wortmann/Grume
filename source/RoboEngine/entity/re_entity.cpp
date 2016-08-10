@@ -29,8 +29,8 @@ namespace RoboEngine
 
     void re_cEntityManager::freeAll(void)
     {
-        m_meshManager.freeAll();
-        m_textureManager.freeAll();
+        m_managerMesh.freeAll();
+        m_managerTexture.freeAll();
         m_entityRenderManager.freeAll();
         m_entityPhysicsManager.freeAll();
         freeEntities(); // make sure freeEntities() is called last!
@@ -71,14 +71,14 @@ namespace RoboEngine
     {
         if (_entity != nullptr)
             if (_entity->render != nullptr)
-                _entity->render->texture = m_textureManager.getNew(_fileName);
+                _entity->render->texture = m_managerTexture.getNew(_fileName);
     }
 
     void re_cEntityManager::addMesh(re_sEntity *_entity, std::string _fileName)
     {
         if (_entity != nullptr)
             if (_entity->render != nullptr)
-                _entity->render->mesh = m_meshManager.getNew(_fileName);
+                _entity->render->mesh = m_managerMesh.getNew(_fileName);
     }
 
 }

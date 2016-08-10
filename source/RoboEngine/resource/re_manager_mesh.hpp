@@ -34,9 +34,9 @@ namespace RoboEngine
 
     struct re_sIndex
     {
-        v3_f v;
-        v3_f n;
-        v2_f uv;
+        v3_f v = {};
+        v3_f n = {};
+        v2_f uv = {};
     };
 
     struct re_sMesh
@@ -47,13 +47,13 @@ namespace RoboEngine
         re_sMesh *next = nullptr;
     };
 
-    class re_cMeshManager
+    class re_cManagerMesh
     {
         public:
-            re_cMeshManager(void) {}
-            ~re_cMeshManager(void) {}
-            inline re_cMeshManager(const re_cMeshManager&) = default;
-            inline re_cMeshManager& operator=(const re_cMeshManager& _rhs) {if (this == &_rhs) return *this; return *this;}
+            re_cManagerMesh(void) {}
+            ~re_cManagerMesh(void) {}
+            inline re_cManagerMesh(const re_cManagerMesh&) = default;
+            inline re_cManagerMesh& operator=(const re_cManagerMesh& _rhs) {if (this == &_rhs) return *this; return *this;}
             inline const re_sMesh *getHead(void) {return m_head;}
             inline const re_sMesh *getTail(void) {return m_tail;}
             void freeAll(void);

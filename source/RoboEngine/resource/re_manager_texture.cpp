@@ -26,7 +26,7 @@
 namespace RoboEngine
 {
 
-    void re_cTextureManager::freeAll(void)
+    void re_cManagerTexture::freeAll(void)
     {
         re_sTexture* t_texture = m_head;
         while (t_texture != nullptr)
@@ -42,7 +42,7 @@ namespace RoboEngine
         m_tail = nullptr;
     }
 
-    re_sTexture *re_cTextureManager::getNew(std::string _fileName)
+    re_sTexture *re_cManagerTexture::getNew(std::string _fileName)
     {
         if (m_head == nullptr)
         {

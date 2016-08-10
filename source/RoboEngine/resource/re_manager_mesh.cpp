@@ -26,7 +26,7 @@
 namespace RoboEngine
 {
 
-    void re_cMeshManager::freeAll(void)
+    void re_cManagerMesh::freeAll(void)
     {
         re_sMesh* t_mesh = m_head;
         while (t_mesh != nullptr)
@@ -42,7 +42,7 @@ namespace RoboEngine
         m_tail = nullptr;
     }
 
-    re_sMesh *re_cMeshManager::getNew(std::string _fileName)
+    re_sMesh *re_cManagerMesh::getNew(std::string _fileName)
     {
         if (m_head == nullptr)
         {
@@ -68,7 +68,7 @@ namespace RoboEngine
         return nullptr;
     }
 
-    re_sIndex *re_cMeshManager::loadMesh(std::string _fileName)
+    re_sIndex *re_cManagerMesh::loadMesh(std::string _fileName)
     {
 
     }
