@@ -35,34 +35,34 @@ namespace RoboEngine
 
     enum class XML_enum : uint16_t { XML_NONE, XML_TAG_START, XML_TAG_END, XML_COMMENT, XML_DECLARATION, XML_TAG_TEXT, XML_TAG_ATTRIBUTE, XML_TAG_ATTRIBUTE_END };
 
-    struct xml_attribute_data_s
+    struct re_sxmlAttributeData
     {
         std::string attribute = "";
         std::string value = "";
     };
 
-    struct xml_line_data_s
+    struct re_sxmlLineData
     {
         XML_enum data_type = XML_enum::XML_NONE;
         uint8_t attribute_count = 0;
         uint8_t indentation = 0;
-        xml_attribute_data_s* data = nullptr;
+        re_sxmlAttributeData* data = nullptr;
     };
 
-    struct xml_data_s
+    struct re_sxmlData
     {
         uint16_t line_count = 0;
-        xml_line_data_s* line = nullptr;
+        re_sxmlLineData* line = nullptr;
     };
 
-    void xml_delete(xml_data_s *&xml_data);
-    xml_line_data_s xml_line_parse(const std::string &s_xml_line, uint8_t &indentation);
-    void xml_parse(const std::string &s_xml_file, xml_data_s *&xml_data);
-    void xml_export(const std::string &s_xml_file, const xml_data_s &xml_data);
-    std::string xml_get_value(const xml_data_s &xml_data, XML_enum data_type, const std::string &attribute, uint16_t attribute_no);
-    std::string xml_get_sub_value(const xml_data_s &xml_data, XML_enum data_type, const std::string &attribute, uint16_t attribute_no, const std::string &sub_attribute);
-    uint16_t  xml_get_count(const xml_data_s &xml_data, XML_enum data_type, const std::string &attribute);
-    xml_line_data_s* xml_get_line(const xml_data_s &xml_data, XML_enum data_type, const std::string &attribute, uint16_t attribute_count);
+    void re_xml_delete(re_sxmlData *&xml_data);
+    re_sxmlLineData re_xml_line_parse(const std::string &_xml_line, uint8_t &_indentation);
+    void re_xml_parse(const std::string &_xml_file, re_sxmlData *&_xml_data);
+    void re_xml_export(const std::string &_xml_file, const re_sxmlData &_xml_data);
+    std::string re_xml_get_value(const re_sxmlData &_xml_data, XML_enum _data_type, const std::string &_attribute, uint16_t _attribute_no);
+    std::string re_xml_get_sub_value(const re_sxmlData &_xml_data, XML_enum _data_type, const std::string &_attribute, uint16_t _attribute_no, const std::string &_sub_attribute);
+    uint16_t  re_xml_get_count(const re_sxmlData &_xml_data, XML_enum _data_type, const std::string &_attribute);
+    re_sxmlLineData* re_xml_get_line(const re_sxmlData &_xml_data, XML_enum _data_type, const std::string &_attribute, uint16_t _attribute_count);
 
 }
 

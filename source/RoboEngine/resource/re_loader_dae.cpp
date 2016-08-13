@@ -45,151 +45,15 @@ namespace RoboEngine
 
     void daeImport(const std::string &_daeFile, re_sdaeData *&_daeData)
     {
+        re_sxmlData* xml_data = nullptr;
+        re_xml_parse(_daeFile, xml_data);
         if (!_daeData)
             _daeData = new re_sdaeData;
-        std::ifstream file_pointer;
-        file_pointer.open (_daeFile, std::ifstream::in);
-        if (!file_pointer.good())
-            RoboEngine::log_write(ROBOENGINELOG, __FILE__, __FUNCTION__, __LINE__, "ERROR -> importing COLLADA  :  " + _daeFile);
-        std::string s_temp = "";
-        while (std::getline(file_pointer, s_temp))
-        {
-            if (s_temp.length() >= 6)
-            {
-                if ((s_temp[0] == 'v') && (s_temp[1] == ' '))
-                    _daeData->vertex_count++;
-                if ((s_temp[0] == 'v') && (s_temp[1] == 't'))
-                    _daeData->vertex_texture_count++;
-                if ((s_temp[0] == 'v') && (s_temp[1] == 'n'))
-                    _daeData->vertex_normal_count++;
-                if ((s_temp[0] == 'f') && (s_temp[1] == ' '))
-                    _daeData->face_count++;
-            }
-        }
-        file_pointer.clear();
-        file_pointer.seekg(0, std::ios::beg);
-        _daeData->vertex = new v3_f[_daeData->vertex_count];
-        _daeData->vertex_texture = new v2_f[_daeData->vertex_texture_count];
-        _daeData->vertex_normal = new v3_f[_daeData->vertex_normal_count];
-        _daeData->face = new re_sdaeFace[_daeData->face_count];
-        uint16_t v_count = 0;
-        uint16_t vt_count = 0;
-        uint16_t vn_count = 0;
-        uint16_t f_count = 0;
-        while (std::getline(file_pointer, s_temp))
-        {
-            if (s_temp.length() >= 6)
-            {
-                if ((s_temp[0] == 'v') && (s_temp[1] == ' '))
-                {
-                    uint8_t s_count = 0;
-                    std::string temp = "";
-                    for (uint16_t i = 2; i < s_temp.length(); i++)
-                    {
-                        if (s_temp[i] == ' ')
-                        {
-                            s_count++;
-                            if (s_count == 1)
-                                _daeData->vertex[v_count].x = stof(temp);
-                            if (s_count == 2)
-                                _daeData->vertex[v_count].y = stof(temp);
-                            if (s_count == 3)
-                                _daeData->vertex[v_count].z = stof(temp);
-                            temp = "";
-                        }
-                        else
-                            temp += s_temp[i];
-                    }
-                    _daeData->vertex[v_count].z = stof(temp);
-                    v_count++;
-                }
-                if ((s_temp[0] == 'v') && (s_temp[1] == 't'))
-                {
-                    uint8_t s_count = 0;
-                    std::string temp = "";
-                    for (uint16_t i = 3; i < s_temp.length(); i++)
-                    {
-                        if (s_temp[i] == ' ')
-                        {
-                            s_count++;
-                            if (s_count == 1)
-                                _daeData->vertex_texture[vt_count].x = stof(temp);
-                            if (s_count == 2)
-                                _daeData->vertex_texture[vt_count].y = stof(temp);
-                            temp = "";
-                        }
-                        else
-                            temp += s_temp[i];
-                    }
-                    _daeData->vertex_texture[vt_count].y = stof(temp);
-                    vt_count++;
-                }
-                if ((s_temp[0] == 'v') && (s_temp[1] == 'n'))
-                {
-                    uint8_t s_count = 0;
-                    std::string temp = "";
-                    for (uint16_t i = 3; i < s_temp.length(); i++)
-                    {
-                        if (s_temp[i] == ' ')
-                        {
-                            s_count++;
-                            if (s_count == 1)
-                                _daeData->vertex_normal[vn_count].x = stof(temp);
-                            if (s_count == 2)
-                                _daeData->vertex_normal[vn_count].y = stof(temp);
-                            if (s_count == 3)
-                                _daeData->vertex_normal[vn_count].z = stof(temp);
-                            temp = "";
-                        }
-                        else
-                            temp += s_temp[i];
-                    }
-                    _daeData->vertex_normal[vn_count].z = stof(temp);
-                    vn_count++;
-                }
-                if ((s_temp[0] == 'f') && (s_temp[1] == ' '))
-                {
-                    uint8_t s_count = 0;
-                    uint8_t fs_count = 0;
-                    std::string temp = "";
-                    for (uint16_t i = 2; i < s_temp.length(); i++)
-                    {
-                        if ((s_temp[i] == '/') || (s_temp[i] == ' '))
-                        {
-                            fs_count++;
-                            if (fs_count == 1)
-                                _daeData->face[f_count].p[s_count].x = stoi(temp);
-                            if (fs_count == 2)
-                                _daeData->face[f_count].p[s_count].y = stoi(temp);
-                            if (fs_count == 3)
-                                _daeData->face[f_count].p[s_count].z = stoi(temp);
-                            temp = "";
-                            if (s_temp[i] == ' ')
-                            {
-                                fs_count = 0;
-                                s_count++;
-                            }
-                        }
-                        else
-                            temp += s_temp[i];
-                    }
-                    _daeData->face[f_count].p[s_count].z = stoi(temp);
-                    f_count++;
-                }
-                if ((s_temp[0] == 'o') && (s_temp[1] == ' '))
-                {
-                    for (uint16_t i = 2; i < s_temp.length(); i++)
-                    {
-                        _daeData->name += s_temp[i];
-                    }
-                }
-            }
-        }
-        file_pointer.close();
     }
 
     void daeExport(const std::string &_daeFile, const re_sdaeData &_daeData)
     {
+        /*
         if (&_daeData != nullptr)
         {
             std::ofstream file_pointer;
@@ -222,6 +86,7 @@ namespace RoboEngine
         }
         else
             RoboEngine::log_write(ROBOENGINELOG, __FILE__, __FUNCTION__, __LINE__, "ERROR -> _daeData == nullptr");
+        */
     }
 
 }

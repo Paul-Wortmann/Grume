@@ -71,6 +71,7 @@ namespace RoboEngine
     re_sIndex *re_cManagerMesh::loadMesh(std::string _fileName)
     {
         /// incomplete!!!!
+        /*
         re_sobjData *objData = nullptr;
         re_sdaeData *daeData = nullptr;
         const std::string fileExtention = "dae";
@@ -83,6 +84,7 @@ namespace RoboEngine
             daeImport(_fileName, daeData);
         }
         return nullptr;
+        */
     }
 
 }
