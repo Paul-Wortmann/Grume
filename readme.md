@@ -3,13 +3,20 @@
 README file for Frost and Flame
 =============================
 
-This is Frost and Flame, an open source computer game.
 
 About:
 -----
 Frost and Flame is still in its early stages of infancy.
 Currently a non-playable work in progress.
 Frost and flame is an action role playing game.
+
+Requirements:
+-----------------------
+- Graphics card supporting OpenGL 3.2+
+- +2GB of free RAM.
+- Linux kernel 4.2+
+- Core i7 or equivalent.
+
 
 Compiling on Linux:
 -----------------------
