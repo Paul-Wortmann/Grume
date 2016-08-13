@@ -50,7 +50,7 @@ namespace RoboEngine
         std::ifstream file_pointer;
         file_pointer.open (_daeFile, std::ifstream::in);
         if (!file_pointer.good())
-            RoboEngine::log_write(ROBOENGINELOG, __FILE__, __FUNCTION__, __LINE__, "ERROR -> importing OBJ  :  " + _daeFile);
+            RoboEngine::log_write(ROBOENGINELOG, __FILE__, __FUNCTION__, __LINE__, "ERROR -> importing COLLADA  :  " + _daeFile);
         std::string s_temp = "";
         while (std::getline(file_pointer, s_temp))
         {
@@ -197,8 +197,8 @@ namespace RoboEngine
             file_pointer.close();
             file_pointer.open (_daeFile, std::ofstream::out | std::ofstream::app);
             if (!file_pointer.good())
-                RoboEngine::log_write(ROBOENGINELOG, __FILE__, __FUNCTION__, __LINE__, "ERROR -> exporting OBJ  :  " + _daeFile);
-            file_pointer << "# RoboEngine exported OBJ File" << std::endl;
+                RoboEngine::log_write(ROBOENGINELOG, __FILE__, __FUNCTION__, __LINE__, "ERROR -> exporting COLLADA  :  " + _daeFile);
+            file_pointer << "# RoboEngine exported COLLADA File" << std::endl;
             file_pointer << "o " << _daeData.name << std::endl;
             for (uint16_t i = 0; i < _daeData.vertex_count; i++)
                 file_pointer << "v " << _daeData.vertex[i].x << " " << _daeData.vertex[i].y << " " << _daeData.vertex[i].z << std::endl;
