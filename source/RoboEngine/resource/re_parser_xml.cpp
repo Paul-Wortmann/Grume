@@ -63,6 +63,7 @@ namespace RoboEngine
         uint8_t count_b1 = 0;//    <
         uint8_t count_b2 = 0;//    >
         uint8_t count_d1 = 0;//    -
+        uint8_t count_dd = 0;//    --
         uint8_t count_e1 = 0;//    =
         uint8_t count_e2 = 0;//    !
         uint8_t count_s1 = 0;//    /
@@ -81,13 +82,15 @@ namespace RoboEngine
             if (s_temp[i] == '/') count_s1++;
             if (s_temp[i] == ' ') count_s2++;
             if (s_temp[i] == '?') count_q1++;
+            if (i < line_length-1)
+                if ((s_temp[i] == '-') && (s_temp[i+1] == '-')) count_dd++;
         }
 
         // <?declaration?>
         if ((count_b1 >= 1) && (count_b2 >= 1) && (count_q1 >= 2))
             xml_return_line_data.data_type = XML_enum::XML_DECLARATION;
         // <!--comment-->
-        else if ((count_b1 >= 1) && (count_b2 >= 1) && (count_d1 >= 4) && (count_e2 >= 1))
+        else if ((count_b1 >= 1) && (count_b2 >= 1) && (count_dd >= 2) && (count_e2 >= 1))
             xml_return_line_data.data_type = XML_enum::XML_COMMENT;
         // <tag>
         else if ((count_a1 == 0) && (count_b1 == 1) && (count_b2 == 1) && (count_d1 == 0) && (count_e1 == 0) && (count_e2 == 0) && (count_s1 == 0) && (count_s2 == 0) && (count_q1 == 0))
@@ -96,7 +99,7 @@ namespace RoboEngine
         else if ((count_a1 == 0) && (count_b1 == 1) && (count_b2 == 1) && (count_d1 == 0) && (count_e1 == 0) && (count_e2 == 0) && (count_s1 == 1) && (count_s2 == 0) && (count_q1 == 0))
             xml_return_line_data.data_type = XML_enum::XML_TAG_END;
         // <tag>text</tag>
-        else if ((count_a1 == 0) && (count_b1 == 2) && (count_b2 == 2) && (count_d1 == 0) && (count_e1 == 0) && (count_e2 == 0) && (count_s1 == 1) && (count_s2 == 0) && (count_q1 == 0))
+        else if ((count_a1 == 0) && (count_b1 == 2) && (count_b2 == 2) && (count_e1 == 0) && (count_e2 == 0) && (count_s1 == 1)&& (count_q1 == 0))
             xml_return_line_data.data_type = XML_enum::XML_TAG_TEXT;
         // <tag attribute="value">
         else if ((count_a1 == 0) && (count_b1 == 1) && (count_b2 == 1) && (count_e1 > 0) && (count_e2 == 0) && (count_s1 == 0) && (count_s2 > 0) && (count_q1 == 0))
@@ -104,6 +107,9 @@ namespace RoboEngine
         // <tag attribute="value"/>
         else if ((count_a1 == 0) && (count_b1 == 1) && (count_b2 == 1) && (count_e1 > 0) && (count_e2 == 0) && (count_s1 == 1) && (count_s2 > 0) && (count_q1 == 0))
             xml_return_line_data.data_type = XML_enum::XML_TAG_ATTRIBUTE_END;
+        // <tag attribute="value">text</tag>
+        else if ((count_a1 == 0) && (count_b1 == 2) && (count_b2 == 2) && (count_e1 > 0) && (count_e2 == 0) && (count_s1 >= 1) && (count_s2 > 0) && (count_q1 == 0))
+            xml_return_line_data.data_type = XML_enum::XML_TAG_ATTRIBUTE_TEXT;
         else
             xml_return_line_data.data_type = XML_enum::XML_NONE;
         // xml_declaration
@@ -382,6 +388,62 @@ namespace RoboEngine
                 std::cout << "/>" << std::endl;
             }
         }
+        // xml_tag_attribute_text
+        else if (xml_return_line_data.data_type == XML_enum::XML_TAG_ATTRIBUTE_TEXT)
+        {
+                std::cout << s_temp << std::endl;
+            xml_return_line_data.indentation = _indentation;
+            xml_return_line_data.attribute_count = count_s2+1;
+            xml_return_line_data.data = new re_sxmlAttributeData[xml_return_line_data.attribute_count];
+            bool tag_start = false;
+            bool attribute_start = false;
+            bool value_start = false;
+            uint8_t attribute_no = 0;
+            for (uint16_t i = 0; i < line_length; i++)
+            {
+                if ((tag_start) && (s_temp[i] == ' '))
+                {
+                    tag_start = false;
+                }
+                if (s_temp[i] == '=')
+                {
+                    attribute_start = false;
+                }
+                if (i > 1)
+                {
+                    if ((s_temp[i-1] != '=') && (s_temp[i] == '"'))
+                        value_start = false;
+                }
+                if (tag_start)
+                    xml_return_line_data.data[attribute_no].attribute += s_temp[i];
+                if (attribute_start)
+                    xml_return_line_data.data[attribute_no].attribute += s_temp[i];
+                if (value_start)
+                    xml_return_line_data.data[attribute_no].value += s_temp[i];
+                if (s_temp[i] == '<')
+                    tag_start = true;
+                if (s_temp[i] == ' ')
+                {
+                    attribute_start = true;
+                    attribute_no++;
+                }
+                if (i > 1)
+                {
+                    if ((s_temp[i-1] == '=') && (s_temp[i] == '"'))
+                        value_start = true;
+                }
+            }
+            if (debug)
+            {
+                std::cout <<  std::string(_indentation * indent_depth, ' ');
+                std::cout << "<" + xml_return_line_data.data[0].attribute;
+                for (uint16_t i = 1; i < xml_return_line_data.attribute_count; i++)
+                {
+                    std::cout << " " + xml_return_line_data.data[i].attribute + "=\"" + xml_return_line_data.data[i].value + "\"";
+                }
+                std::cout << "/>" << std::endl;
+            }
+        }
         else
         {
             if (debug)
@@ -500,7 +562,7 @@ namespace RoboEngine
             if (_xml_data.line[i].data_type == _data_type)
                 for (uint16_t j = 0; j < _xml_data.line[i].attribute_count; j++)
                 {
-                    if (_xml_data.line[i].data[j].attribute == _attribute)
+                    if (_xml_data.line[i].data[j].attribute.compare(_attribute))
                         attribute_count++;
                     if (_attribute_no == attribute_count)
                         return _xml_data.line[i].data[j].value;
@@ -515,11 +577,11 @@ namespace RoboEngine
             if (_xml_data.line[i].data_type == _data_type)
                 for (uint16_t j = 0; j < _xml_data.line[i].attribute_count; j++)
                 {
-                    if (_xml_data.line[i].data[j].attribute == _attribute)
+                    if (_xml_data.line[i].data[j].attribute.compare(_attribute))
                         attribute_count++;
                     if (_attribute_no == attribute_count)
                         for (uint16_t k = j; k < _xml_data.line[i].attribute_count; k++)
-                            if (_xml_data.line[i].data[k].attribute == _sub_attribute)
+                            if (_xml_data.line[i].data[k].attribute.compare(_sub_attribute))
                                 return _xml_data.line[i].data[k].value;
                 }
         return "XML Parser could not find requested attribute at number";
@@ -531,7 +593,7 @@ namespace RoboEngine
         for (uint16_t i = 0; i < _xml_data.line_count; i++)
             if (_xml_data.line[i].data_type == _data_type)
                 for (uint16_t j = 0; j < _xml_data.line[i].attribute_count; j++)
-                    if (_xml_data.line[i].data[j].attribute == _attribute)
+                    if (_xml_data.line[i].data[j].attribute.compare(_attribute))
                         return_count++;
         return return_count;
     }
@@ -542,7 +604,7 @@ namespace RoboEngine
         for (uint16_t i = 0; i < _xml_data.line_count; i++)
             if (_xml_data.line[i].data_type == _data_type)
                 for (uint16_t j = 0; j < _xml_data.line[i].attribute_count; j++)
-                    if ((_xml_data.line[i].data[j].attribute == _attribute) && (j == _attribute_count))
+                    if ((_xml_data.line[i].data[j].attribute.compare(_attribute)) && (j == _attribute_count))
                         return_data = _xml_data.line;
         return return_data;
     }

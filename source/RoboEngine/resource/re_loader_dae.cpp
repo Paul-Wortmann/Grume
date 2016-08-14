@@ -49,6 +49,23 @@ namespace RoboEngine
         re_xml_parse(_daeFile, xml_data);
         if (!_daeData)
             _daeData = new re_sdaeData;
+        re_xml_export("data/mesh/test.re", *xml_data);
+        if (xml_data != nullptr)
+        {
+            for (uint32_t i = 0; i < xml_data->line_count; i++)
+            {
+                for (uint32_t j = 0; j < xml_data->line[i].attribute_count; j++)
+                {
+                    //std::cout  << "-> " << xml_data->line[i].data[j].attribute << std::endl;
+
+                }
+            }
+        }
+
+        uint32_t count_a = re_xml_get_count(*xml_data, RoboEngine::XML_enum::XML_TAG_ATTRIBUTE, "float_array");
+
+        RoboEngine::log_write(ROBOENGINELOG, __FILE__, __FUNCTION__, __LINE__, "float_array count  :  " + std::to_string(count_a));
+
     }
 
     void daeExport(const std::string &_daeFile, const re_sdaeData &_daeData)

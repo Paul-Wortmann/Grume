@@ -70,6 +70,9 @@ namespace RoboEngine
 
     re_sIndex *re_cManagerMesh::loadMesh(std::string _fileName)
     {
+        re_sdaeData *daeData = nullptr;
+            daeImport(_fileName, daeData);
+        daeDelete(daeData);
         /// incomplete!!!!
         /*
         re_sobjData *objData = nullptr;
