@@ -69,6 +69,8 @@ namespace RoboEngine
         uint8_t count_s1 = 0;//    /
         uint8_t count_s2 = 0;//
         uint8_t count_q1 = 0;//    ?
+        uint8_t count_b1s1 = 0;//    </
+        uint8_t count_s1b2 = 0;//    />
         re_sxmlLineData xml_return_line_data;
         line_length = s_temp.length();
         for (uint16_t i = 0; i < line_length; i++)
@@ -83,7 +85,11 @@ namespace RoboEngine
             if (s_temp[i] == ' ') count_s2++;
             if (s_temp[i] == '?') count_q1++;
             if (i < line_length-1)
+            {
                 if ((s_temp[i] == '-') && (s_temp[i+1] == '-')) count_dd++;
+                if ((s_temp[i] == '<') && (s_temp[i+1] == '/')) count_b1s1++;
+                if ((s_temp[i] == '/') && (s_temp[i+1] == '>')) count_s1b2++;
+            }
         }
 
         // <?declaration?>
@@ -96,7 +102,7 @@ namespace RoboEngine
         else if ((count_a1 == 0) && (count_b1 == 1) && (count_b2 == 1) && (count_d1 == 0) && (count_e1 == 0) && (count_e2 == 0) && (count_s1 == 0) && (count_s2 == 0) && (count_q1 == 0))
             xml_return_line_data.data_type = XML_enum::XML_TAG_START;
         // </tag>
-        else if ((count_a1 == 0) && (count_b1 == 1) && (count_b2 == 1) && (count_d1 == 0) && (count_e1 == 0) && (count_e2 == 0) && (count_s1 == 1) && (count_s2 == 0) && (count_q1 == 0))
+        else if ((count_a1 == 0) && (count_b1 == 1) && (count_b2 == 1) && (count_d1 == 0) && (count_e1 == 0) && (count_e2 == 0) && (count_b1s1 == 1) && (count_s2 == 0) && (count_q1 == 0))
             xml_return_line_data.data_type = XML_enum::XML_TAG_END;
         // <tag>text</tag>
         else if ((count_a1 == 0) && (count_b1 == 2) && (count_b2 == 2) && (count_e1 == 0) && (count_e2 == 0) && (count_s1 == 1)&& (count_q1 == 0))
@@ -105,11 +111,14 @@ namespace RoboEngine
         else if ((count_a1 == 0) && (count_b1 == 1) && (count_b2 == 1) && (count_e1 > 0) && (count_e2 == 0) && (count_s1 == 0) && (count_s2 > 0) && (count_q1 == 0))
             xml_return_line_data.data_type = XML_enum::XML_TAG_ATTRIBUTE;
         // <tag attribute="value"/>
-        else if ((count_a1 == 0) && (count_b1 == 1) && (count_b2 == 1) && (count_e1 > 0) && (count_e2 == 0) && (count_s1 == 1) && (count_s2 > 0) && (count_q1 == 0))
+        else if ((count_a1 == 0) && (count_b1 == 1) && (count_b2 == 1) && (count_e1 > 0) && (count_e2 == 0) && (count_s1 >= 1) && (count_s2 > 0) && (count_q1 == 0))
             xml_return_line_data.data_type = XML_enum::XML_TAG_ATTRIBUTE_END;
         // <tag attribute="value">text</tag>
         else if ((count_a1 == 0) && (count_b1 == 2) && (count_b2 == 2) && (count_e1 > 0) && (count_e2 == 0) && (count_s1 >= 1) && (count_s2 > 0) && (count_q1 == 0))
             xml_return_line_data.data_type = XML_enum::XML_TAG_ATTRIBUTE_TEXT;
+        // <tag/>
+        else if ((count_a1 == 0) && (count_b1 == 1) && (count_s1b2 == 1))
+            xml_return_line_data.data_type = XML_enum::XML_TAG_SLASH;
         else
             xml_return_line_data.data_type = XML_enum::XML_NONE;
         // xml_declaration
@@ -166,6 +175,7 @@ namespace RoboEngine
                 }
                 std::cout << "?>" << std::endl;
             }
+            _indentation++;
         }
         // xml_comment
         else if (xml_return_line_data.data_type == XML_enum::XML_COMMENT)
@@ -237,6 +247,30 @@ namespace RoboEngine
             {
                 std::cout <<  std::string(_indentation * indent_depth, ' ');
                 std::cout << "</" + xml_return_line_data.data[0].value + ">"<< std::endl;
+            }
+        }
+        // xml_tag_slash
+        else if (xml_return_line_data.data_type == XML_enum::XML_TAG_SLASH)
+        {
+            xml_return_line_data.indentation = _indentation;
+            xml_return_line_data.attribute_count = 1;
+            xml_return_line_data.indentation = _indentation;
+            xml_return_line_data.data = new re_sxmlAttributeData[xml_return_line_data.attribute_count];
+            bool data_start = false;
+            bool data_end = false;
+            for (uint16_t i = 0; i < line_length; i++)
+            {
+                if (data_start && (s_temp[i] == '/'))
+                    data_end = true;
+                if (data_start && !data_end)
+                    xml_return_line_data.data[0].value += s_temp[i];
+                if (!data_end && (s_temp[i] == '<'))
+                    data_start = true;
+            }
+            if (debug)
+            {
+                std::cout <<  std::string(_indentation * indent_depth, ' ');
+                std::cout << "<" + xml_return_line_data.data[0].value + ">"<< std::endl;
             }
         }
         // xml_tag_text
@@ -537,6 +571,12 @@ namespace RoboEngine
                 file_pointer <<  std::string(_xml_data.line[j].indentation * indent_depth, indent_char);
                 file_pointer << "<" + _xml_data.line[j].data[0].value + ">"<< std::endl;
             }
+            // xml_tag_slash
+            if (_xml_data.line[j].data_type == XML_enum::XML_TAG_SLASH)
+            {
+                file_pointer <<  std::string(_xml_data.line[j].indentation * indent_depth, indent_char);
+                file_pointer << "<" + _xml_data.line[j].data[0].value + "/>"<< std::endl;
+            }
             // xml_tag_end
             if (_xml_data.line[j].data_type == XML_enum::XML_TAG_END)
             {
@@ -569,7 +609,7 @@ namespace RoboEngine
                 {
                     file_pointer << " " + _xml_data.line[j].data[i].attribute + "=\"" + _xml_data.line[j].data[i].value + "\"";
                 }
-                file_pointer << "/>" << std::endl;
+                file_pointer << ">" << std::endl;
             }
             // xml_tag_attribute_text
             if (_xml_data.line[j].data_type == XML_enum::XML_TAG_ATTRIBUTE_TEXT)
@@ -582,7 +622,7 @@ namespace RoboEngine
                 }
                 file_pointer << ">";
                 file_pointer << _xml_data.line[j].data[_xml_data.line[j].attribute_count-1].value;
-                file_pointer << "<" + _xml_data.line[j].data[0].attribute << "/>";
+                file_pointer << "</" + _xml_data.line[j].data[0].attribute << ">";
                 file_pointer << std::endl;
             }
         }
