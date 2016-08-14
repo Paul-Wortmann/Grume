@@ -636,7 +636,7 @@ namespace RoboEngine
             if (_xml_data.line[i].data_type == _data_type)
                 for (uint16_t j = 0; j < _xml_data.line[i].attribute_count; j++)
                 {
-                    if (_xml_data.line[i].data[j].attribute.compare(_attribute))
+                    if (_xml_data.line[i].data[j].attribute.compare(_attribute) == 0)
                         attribute_count++;
                     if (_attribute_no == attribute_count)
                         return _xml_data.line[i].data[j].value;
@@ -651,11 +651,11 @@ namespace RoboEngine
             if (_xml_data.line[i].data_type == _data_type)
                 for (uint16_t j = 0; j < _xml_data.line[i].attribute_count; j++)
                 {
-                    if (_xml_data.line[i].data[j].attribute.compare(_attribute))
+                    if (_xml_data.line[i].data[j].attribute.compare(_attribute) == 0)
                         attribute_count++;
                     if (_attribute_no == attribute_count)
                         for (uint16_t k = j; k < _xml_data.line[i].attribute_count; k++)
-                            if (_xml_data.line[i].data[k].attribute.compare(_sub_attribute))
+                            if (_xml_data.line[i].data[k].attribute.compare(_sub_attribute) == 0)
                                 return _xml_data.line[i].data[k].value;
                 }
         return "XML Parser could not find requested attribute at number";
@@ -667,8 +667,12 @@ namespace RoboEngine
         for (uint16_t i = 0; i < _xml_data.line_count; i++)
             if (_xml_data.line[i].data_type == _data_type)
                 for (uint16_t j = 0; j < _xml_data.line[i].attribute_count; j++)
-                    if (_xml_data.line[i].data[j].attribute.compare(_attribute))
+                    if (_xml_data.line[i].data[j].attribute.compare(_attribute.c_str()) == 0)
+                    {
+                        std::cout << _attribute << " == ";
+                        std::cout << _xml_data.line[i].data[j].attribute << std::endl;
                         return_count++;
+                    }
         return return_count;
     }
 
@@ -678,7 +682,7 @@ namespace RoboEngine
         for (uint16_t i = 0; i < _xml_data.line_count; i++)
             if (_xml_data.line[i].data_type == _data_type)
                 for (uint16_t j = 0; j < _xml_data.line[i].attribute_count; j++)
-                    if ((_xml_data.line[i].data[j].attribute.compare(_attribute)) && (j == _attribute_count))
+                    if ((_xml_data.line[i].data[j].attribute.compare(_attribute) == 0) && (j == _attribute_count))
                         return_data = _xml_data.line;
         return return_data;
     }
