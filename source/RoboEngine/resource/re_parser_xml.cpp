@@ -391,46 +391,66 @@ namespace RoboEngine
         // xml_tag_attribute_text
         else if (xml_return_line_data.data_type == XML_enum::XML_TAG_ATTRIBUTE_TEXT)
         {
-                std::cout << s_temp << std::endl;
             xml_return_line_data.indentation = _indentation;
-            xml_return_line_data.attribute_count = count_s2+1;
+            xml_return_line_data.attribute_count = count_e1+2;
             xml_return_line_data.data = new re_sxmlAttributeData[xml_return_line_data.attribute_count];
             bool tag_start = false;
+            bool tag_end = false;
+            bool text_end = false;
             bool attribute_start = false;
             bool value_start = false;
             uint8_t attribute_no = 0;
             for (uint16_t i = 0; i < line_length; i++)
             {
-                if ((tag_start) && (s_temp[i] == ' '))
+                if (s_temp[i] == '>')
                 {
-                    tag_start = false;
+                    if (!tag_end)
+                        attribute_no++;
+                    tag_end = true;
                 }
-                if (s_temp[i] == '=')
+                if (!tag_end)
                 {
-                    attribute_start = false;
+                    if ((tag_start) && (s_temp[i] == ' '))
+                    {
+                        tag_start = false;
+                    }
+                    if (s_temp[i] == '=')
+                    {
+                        attribute_start = false;
+                    }
+                    if (i > 1)
+                    {
+                        if ((s_temp[i-1] != '=') && (s_temp[i] == '"'))
+                            value_start = false;
+                    }
+                    if (tag_start)
+                        xml_return_line_data.data[attribute_no].attribute += s_temp[i];
+                    if (attribute_start)
+                        xml_return_line_data.data[attribute_no].attribute += s_temp[i];
+                    if (value_start)
+                        xml_return_line_data.data[attribute_no].value += s_temp[i];
+                    if (s_temp[i] == '<')
+                        tag_start = true;
+                    if (s_temp[i] == ' ')
+                    {
+                        attribute_start = true;
+                        attribute_no++;
+                    }
+                    if (i > 1)
+                    {
+                        if ((s_temp[i-1] == '=') && (s_temp[i] == '"'))
+                            value_start = true;
+                    }
                 }
-                if (i > 1)
+                else
                 {
-                    if ((s_temp[i-1] != '=') && (s_temp[i] == '"'))
-                        value_start = false;
-                }
-                if (tag_start)
-                    xml_return_line_data.data[attribute_no].attribute += s_temp[i];
-                if (attribute_start)
-                    xml_return_line_data.data[attribute_no].attribute += s_temp[i];
-                if (value_start)
-                    xml_return_line_data.data[attribute_no].value += s_temp[i];
-                if (s_temp[i] == '<')
-                    tag_start = true;
-                if (s_temp[i] == ' ')
-                {
-                    attribute_start = true;
-                    attribute_no++;
-                }
-                if (i > 1)
-                {
-                    if ((s_temp[i-1] == '=') && (s_temp[i] == '"'))
-                        value_start = true;
+                    if (s_temp[i] == '<')
+                        text_end = true;
+                    if (!text_end)
+                    {
+                         if ((s_temp[i] != '<') && (s_temp[i] != '>'))
+                        xml_return_line_data.data[attribute_no].value += s_temp[i];
+                    }
                 }
             }
             if (debug)
@@ -441,7 +461,7 @@ namespace RoboEngine
                 {
                     std::cout << " " + xml_return_line_data.data[i].attribute + "=\"" + xml_return_line_data.data[i].value + "\"";
                 }
-                std::cout << "/>" << std::endl;
+                std::cout << ">" << std::endl;
             }
         }
         else
@@ -550,6 +570,20 @@ namespace RoboEngine
                     file_pointer << " " + _xml_data.line[j].data[i].attribute + "=\"" + _xml_data.line[j].data[i].value + "\"";
                 }
                 file_pointer << "/>" << std::endl;
+            }
+            // xml_tag_attribute_text
+            if (_xml_data.line[j].data_type == XML_enum::XML_TAG_ATTRIBUTE_TEXT)
+            {
+                file_pointer <<  std::string(_xml_data.line[j].indentation * indent_depth, indent_char);
+                file_pointer << "<" + _xml_data.line[j].data[0].attribute;
+                for (uint16_t i = 1; i < _xml_data.line[j].attribute_count-1; i++)
+                {
+                    file_pointer << " " + _xml_data.line[j].data[i].attribute + "=\"" + _xml_data.line[j].data[i].value + "\"";
+                }
+                file_pointer << ">";
+                file_pointer << _xml_data.line[j].data[_xml_data.line[j].attribute_count-1].value;
+                file_pointer << "<" + _xml_data.line[j].data[0].attribute << "/>";
+                file_pointer << std::endl;
             }
         }
         file_pointer.close();
