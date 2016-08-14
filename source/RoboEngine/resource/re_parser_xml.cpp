@@ -676,6 +676,21 @@ namespace RoboEngine
         return return_count;
     }
 
+    uint16_t  re_xml_get_line_attribute(const re_sxmlData &_xml_data, XML_enum _data_type, const std::string &_attribute, uint16_t _attribute_no)
+    {
+        uint16_t attribute_count = 0;
+        for (uint16_t i = 0; i < _xml_data.line_count; i++)
+            if (_xml_data.line[i].data_type == _data_type)
+                for (uint16_t j = 0; j < _xml_data.line[i].attribute_count; j++)
+                {
+                    if (_xml_data.line[i].data[j].attribute.compare(_attribute) == 0)
+                        attribute_count++;
+                    if (_attribute_no == attribute_count)
+                        return i;
+                }
+        return 0;
+    }
+
     re_sxmlLineData* re_xml_get_line(const re_sxmlData &_xml_data, XML_enum _data_type, const std::string &_attribute, uint16_t _attribute_count)
     {
         re_sxmlLineData* return_data = nullptr;

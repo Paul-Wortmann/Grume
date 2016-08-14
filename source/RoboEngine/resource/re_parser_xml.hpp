@@ -62,6 +62,7 @@ namespace RoboEngine
     std::string re_xml_get_value(const re_sxmlData &_xml_data, XML_enum _data_type, const std::string &_attribute, uint16_t _attribute_no);
     std::string re_xml_get_sub_value(const re_sxmlData &_xml_data, XML_enum _data_type, const std::string &_attribute, uint16_t _attribute_no, const std::string &_sub_attribute);
     uint16_t  re_xml_get_count(const re_sxmlData &_xml_data, XML_enum _data_type, const std::string &_attribute);
+    uint16_t  re_xml_get_line_attribute(const re_sxmlData &_xml_data, XML_enum _data_type, const std::string &_attribute, uint16_t _attribute_no);
     re_sxmlLineData* re_xml_get_line(const re_sxmlData &_xml_data, XML_enum _data_type, const std::string &_attribute, uint16_t _attribute_count);
 
 }
