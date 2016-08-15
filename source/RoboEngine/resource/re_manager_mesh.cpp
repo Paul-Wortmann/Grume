@@ -48,7 +48,7 @@ namespace RoboEngine
         {
             m_head = new re_sMesh;
             m_head->fileName = _fileName;
-            m_head->index = loadMesh(_fileName);
+            loadMesh(_fileName, m_head);
             m_tail = m_head;
             return m_head;
         }
@@ -61,18 +61,32 @@ namespace RoboEngine
             }
             m_tail->next = new re_sMesh;
             m_tail->fileName = _fileName;
-            m_tail->index = loadMesh(_fileName);
+            loadMesh(_fileName, m_tail);
             m_tail = m_tail->next;
             return m_tail;
         }
         return nullptr;
     }
 
-    re_sIndex *re_cManagerMesh::loadMesh(std::string _fileName)
+    void re_cManagerMesh:: loadMesh(std::string _fileName, re_sMesh *&_mesh)
     {
         re_sdaeData *daeData = nullptr;
-            daeImport(_fileName, daeData);
+        daeImport(_fileName, daeData);
+        _mesh->indexCount = daeData->face_count;
+        _mesh->index = new v8_f[_mesh->indexCount];
+        for (uint16_t i = 0; i < _mesh->indexCount; i++)
+        {
+            _mesh->index[i].x = daeData->face[i].x;
+            _mesh->index[i].y = daeData->face[i].y;
+            _mesh->index[i].z = daeData->face[i].z;
+            _mesh->index[i].nx = daeData->face[i].nx;
+            _mesh->index[i].ny = daeData->face[i].ny;
+            _mesh->index[i].nz = daeData->face[i].nz;
+            _mesh->index[i].s = daeData->face[i].s;
+            _mesh->index[i].t = daeData->face[i].t;
+        }
         daeDelete(daeData);
+
         /// incomplete!!!!
         /*
         re_sobjData *objData = nullptr;

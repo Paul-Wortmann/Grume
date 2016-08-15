@@ -32,20 +32,11 @@
 namespace RoboEngine
 {
 
-    #define TRIANGLE_VERTS 3
-
-    struct re_sIndex
-    {
-        v3_f v = {};
-        v3_f n = {};
-        v2_f uv = {};
-    };
-
     struct re_sMesh
     {
         std::string fileName = "";
         uint16_t indexCount = 0;
-        re_sIndex* index = nullptr;
+        v8_f* index = nullptr;
         re_sMesh *next = nullptr;
     };
 
@@ -60,7 +51,7 @@ namespace RoboEngine
             inline const re_sMesh *getTail(void) {return m_tail;}
             void freeAll(void);
             re_sMesh *getNew(std::string _fileName);
-            re_sIndex *loadMesh(std::string _fileName);
+            void loadMesh(std::string _fileName, re_sMesh *&_mesh);
         protected:
         private:
             re_sMesh *m_head = nullptr;

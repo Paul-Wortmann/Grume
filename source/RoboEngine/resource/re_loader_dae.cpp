@@ -161,7 +161,6 @@ namespace RoboEngine
         uint32_t line_v = re_xml_get_line_value(*xml_data, XML_enum::XML_TAG_TEXT, "p", 1);
         const std::string data_f = xml_data->line[line_v].data[xml_data->line[line_v].attribute_count-1].value;
         _daeData->face_count = (std::count( data_f.begin(), data_f.end(), ' ' ) + 1) / 3;
-        std::cout << _daeData->face_count << std::endl;
         _daeData->face = new v8_f[_daeData->face_count];
         uint16_t data_f_l = data_f.length();
         uint16_t current_p = 0;
@@ -204,40 +203,7 @@ namespace RoboEngine
 
     void daeExport(const std::string &_daeFile, const re_sdaeData &_daeData)
     {
-        /*
-        if (&_daeData != nullptr)
-        {
-            std::ofstream file_pointer;
-            file_pointer.open (_daeFile, std::ofstream::trunc | std::ofstream::out);
-            file_pointer.close();
-            file_pointer.open (_daeFile, std::ofstream::out | std::ofstream::app);
-            if (!file_pointer.good())
-                RoboEngine::log_write(ROBOENGINELOG, __FILE__, __FUNCTION__, __LINE__, "ERROR -> exporting COLLADA  :  " + _daeFile);
-            file_pointer << "# RoboEngine exported COLLADA File" << std::endl;
-            file_pointer << "o " << _daeData.name << std::endl;
-            for (uint16_t i = 0; i < _daeData.vertex_count; i++)
-                file_pointer << "v " << _daeData.vertex[i].x << " " << _daeData.vertex[i].y << " " << _daeData.vertex[i].z << std::endl;
-            for (uint16_t i = 0; i < _daeData.vertex_texture_count; i++)
-                file_pointer << "vt " << _daeData.vertex_texture[i].x << " " << _daeData.vertex_texture[i].y << std::endl;
-            for (uint16_t i = 0; i < _daeData.vertex_normal_count; i++)
-                file_pointer << "vn " << _daeData.vertex_normal[i].x << " " << _daeData.vertex_normal[i].y << " " << _daeData.vertex_normal[i].z << std::endl;
-            file_pointer << "s off" << _daeData.name << std::endl;
-            for (uint16_t i = 0; i < _daeData.face_count; i++)
-            {
-                file_pointer << "f ";
-                for (uint16_t j = 0; j < 3; j++)
-                {
-                    file_pointer << _daeData.face[i].p[j].x << "/" << _daeData.face[i].p[j].y << "/" << _daeData.face[i].p[j].z;
-                    if (j < 2)
-                        file_pointer << " ";
-                }
-                file_pointer << std::endl;
-            }
-            file_pointer.close();
-        }
-        else
-            RoboEngine::log_write(ROBOENGINELOG, __FILE__, __FUNCTION__, __LINE__, "ERROR -> _daeData == nullptr");
-        */
+            RoboEngine::log_write(ROBOENGINELOG, __FILE__, __FUNCTION__, __LINE__, "ERROR -> not yet implemented.");
     }
 
 }

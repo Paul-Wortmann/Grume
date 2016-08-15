@@ -45,7 +45,6 @@
 #include "resource/re_loader_obj.hpp"
 #include "resource/re_manager_mesh.hpp"
 #include "resource/re_manager_texture.hpp"
-#include "resource/re_obj_mesh.hpp"
 #include "resource/re_parser_xml.hpp"
 
 #include "system/re_log.hpp"
