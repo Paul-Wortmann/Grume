@@ -199,6 +199,7 @@ namespace RoboEngine
             }
         }
         _daeData->vertex_texture[current_f].y = std::stof(temp_f);
+        re_xml_delete(xml_data);
     }
 
     void daeExport(const std::string &_daeFile, const re_sdaeData &_daeData)
