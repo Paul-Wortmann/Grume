@@ -47,6 +47,7 @@
 #include "resource/re_manager_texture.hpp"
 #include "resource/re_parser_xml.hpp"
 
+#include "system/re_file.hpp"
 #include "system/re_log.hpp"
 #include "system/re_mainloop.hpp"
 #include "system/re_system_events.hpp"

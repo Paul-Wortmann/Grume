@@ -154,6 +154,7 @@ Set (FROST_AND_FLAME_SOURCES
 	./source/RoboEngine/resource/re_manager_texture.cpp
 	./source/RoboEngine/resource/re_parser_xml.cpp
 
+	./source/RoboEngine/system/re_file.cpp
 	./source/RoboEngine/system/re_log.cpp
 	./source/RoboEngine/system/re_mainloop.cpp
 	./source/RoboEngine/system/re_system_events.cpp

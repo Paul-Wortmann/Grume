@@ -70,38 +70,38 @@ namespace RoboEngine
 
     void re_cManagerMesh:: loadMesh(std::string _fileName, re_sMesh *&_mesh)
     {
-        re_sdaeData *daeData = nullptr;
-        daeImport(_fileName, daeData);
-        _mesh->indexCount = daeData->face_count;
-        _mesh->index = new v8_f[_mesh->indexCount];
-        for (uint16_t i = 0; i < _mesh->indexCount; i++)
+        const std::string fileExt = fileExtention(_fileName);
+        if (fileExt.compare("dae") == 0)
         {
-            _mesh->index[i].x = daeData->face[i].x;
-            _mesh->index[i].y = daeData->face[i].y;
-            _mesh->index[i].z = daeData->face[i].z;
-            _mesh->index[i].nx = daeData->face[i].nx;
-            _mesh->index[i].ny = daeData->face[i].ny;
-            _mesh->index[i].nz = daeData->face[i].nz;
-            _mesh->index[i].s = daeData->face[i].s;
-            _mesh->index[i].t = daeData->face[i].t;
-        }
-        daeDelete(daeData);
-
-        /// incomplete!!!!
-        /*
-        re_sobjData *objData = nullptr;
-        re_sdaeData *daeData = nullptr;
-        const std::string fileExtention = "dae";
-        if (fileExtention.compare("obj"))
-        {
-            objImport(_fileName, objData);
-        }
-        else if (fileExtention.compare("dae"))
-        {
+            re_sdaeData *daeData = nullptr;
             daeImport(_fileName, daeData);
+            _mesh->indexCount = daeData->face_count;
+            _mesh->index = new v8_f[_mesh->indexCount];
+            for (uint16_t i = 0; i < _mesh->indexCount; i++)
+            {
+                _mesh->index[i].x = daeData->face[i].x;
+                _mesh->index[i].y = daeData->face[i].y;
+                _mesh->index[i].z = daeData->face[i].z;
+                _mesh->index[i].nx = daeData->face[i].nx;
+                _mesh->index[i].ny = daeData->face[i].ny;
+                _mesh->index[i].nz = daeData->face[i].nz;
+                _mesh->index[i].s = daeData->face[i].s;
+                _mesh->index[i].t = daeData->face[i].t;
+            }
+            daeDelete(daeData);
         }
-        return nullptr;
-        */
+        if (fileExt.compare("obj") == 0)
+        {
+            re_sobjData *objData = nullptr;
+            objImport(_fileName, objData);
+
+
+            objDelete(objData);
+        }
+        else
+        {
+            RoboEngine::log_write(ROBOENGINELOG, __FILE__, __FUNCTION__, __LINE__, "ERROR -> unsupported file type : " + _fileName);
+        }
     }
 
 }

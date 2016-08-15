@@ -38,7 +38,6 @@ namespace RoboEngine
     void log_write(const std::string &s_fileName, const std::string &s_dataFile, const std::string &s_dataFunction, const uint32_t &s_dataLine, const std::string &s_message, const bool &_consoleLogging);
     void log_write(const std::string &s_fileName, const std::string &s_data);
     void log_clear(const std::string &s_fileName);
-    std::string stripPath(const std::string &s_fileName);
 
     class re_cLog
     {

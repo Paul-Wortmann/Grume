@@ -21,34 +21,13 @@
  * @date 2011-11-11
  */
 
+#include "re_file.hpp"
 #include "re_log.hpp"
 #include <fstream>
 #include <iostream>
 
 namespace RoboEngine
 {
-
-    std::string stripPath(const std::string &s_fileName)
-    {
-        std::string r_returnString = "";
-        bool markerFound = false;
-        uint16_t fileLength = s_fileName.length();
-        for (int16_t i = fileLength-1; i >= 0; i--)
-        {
-            if (!markerFound)
-            {
-                if (s_fileName[i] != '/')
-                    r_returnString += s_fileName[i];
-                else
-                    markerFound = true;
-            }
-        }
-        uint16_t r_fileLength = r_returnString.length();
-        std::string returnString = "";
-        for (int16_t i = r_fileLength-1; i >= 0; i--)
-                returnString += r_returnString[i];
-        return returnString;
-    }
 
     void log_clear(const std::string &s_fileName)
     {
