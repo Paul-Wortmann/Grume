@@ -29,6 +29,10 @@
 #include <cstdint>
 #include <chrono>
 #include <thread>
+#include <string>
+#include <fstream>
+#include <iostream>
+#include <algorithm>
 
 #include "entity/re_entity.hpp"
 #include "entity/re_entity_physics.hpp"

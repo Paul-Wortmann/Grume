@@ -190,7 +190,7 @@ namespace RoboEngine
 
     void objExport(const std::string &_objFile, const re_sobjData &_objData)
     {
-        if (&_objData != nullptr)
+        //if (&_objData != nullptr)
         {
             std::ofstream file_pointer;
             file_pointer.open (_objFile, std::ofstream::trunc | std::ofstream::out);
@@ -220,8 +220,10 @@ namespace RoboEngine
             }
             file_pointer.close();
         }
+        /*
         else
             RoboEngine::log_write(ROBOENGINELOG, __FILE__, __FUNCTION__, __LINE__, "ERROR -> _objData == nullptr");
+        */
     }
 
 }

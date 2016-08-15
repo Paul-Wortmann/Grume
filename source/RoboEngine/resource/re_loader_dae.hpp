@@ -28,17 +28,13 @@
 #include <cstdint>
 #include <fstream>
 #include <iostream>
+#include <algorithm>
 #include "../system/re_types.hpp"
 #include "../system/re_log.hpp"
 #include "re_parser_xml.hpp"
 
 namespace RoboEngine
 {
-
-    struct re_sdaeFace
-    {
-        v3_f p[3];
-    };
 
     struct re_sdaeData
     {
@@ -50,7 +46,7 @@ namespace RoboEngine
         v3_f* vertex = nullptr;
         v2_f* vertex_texture = nullptr;
         v3_f* vertex_normal = nullptr;
-        re_sdaeFace* face = nullptr;
+        v8_f* face = nullptr;
     };
 
     void daeDelete(re_sdaeData *&_daeData);
