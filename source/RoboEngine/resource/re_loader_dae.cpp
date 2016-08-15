@@ -203,7 +203,8 @@ namespace RoboEngine
 
     void daeExport(const std::string &_daeFile, const re_sdaeData &_daeData)
     {
-            RoboEngine::log_write(ROBOENGINELOG, __FILE__, __FUNCTION__, __LINE__, "ERROR -> not yet implemented.");
+        // Not yet a requirement for the engine, but may be implemented in the future on request.
+        RoboEngine::log_write(ROBOENGINELOG, __FILE__, __FUNCTION__, __LINE__, "ERROR -> not yet implemented. " + _daeFile + " - " + _daeData.name);
     }
 
 }

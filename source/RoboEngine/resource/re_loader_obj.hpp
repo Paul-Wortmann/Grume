@@ -37,7 +37,7 @@ namespace RoboEngine
 
     struct re_sobjFace
     {
-        v3_f p[3];
+        v3_uint16 p[3];
     };
 
     struct re_sobjData
