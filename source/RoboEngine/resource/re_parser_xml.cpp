@@ -668,11 +668,18 @@ namespace RoboEngine
             if (_xml_data.line[i].data_type == _data_type)
                 for (uint16_t j = 0; j < _xml_data.line[i].attribute_count; j++)
                     if (_xml_data.line[i].data[j].attribute.compare(_attribute.c_str()) == 0)
-                    {
-                        std::cout << _attribute << " == ";
-                        std::cout << _xml_data.line[i].data[j].attribute << std::endl;
                         return_count++;
-                    }
+        return return_count;
+    }
+
+    uint16_t  re_xml_get_count_value(const re_sxmlData &_xml_data, XML_enum _data_type, const std::string &_value)
+    {
+        uint16_t return_count = 0;
+        for (uint16_t i = 0; i < _xml_data.line_count; i++)
+            if (_xml_data.line[i].data_type == _data_type)
+                for (uint16_t j = 0; j < _xml_data.line[i].attribute_count; j++)
+                    if (_xml_data.line[i].data[j].value.compare(_value.c_str()) == 0)
+                        return_count++;
         return return_count;
     }
 
@@ -686,6 +693,21 @@ namespace RoboEngine
                     if (_xml_data.line[i].data[j].attribute.compare(_attribute) == 0)
                         attribute_count++;
                     if (_attribute_no == attribute_count)
+                        return i;
+                }
+        return 0;
+    }
+
+    uint16_t  re_xml_get_line_value(const re_sxmlData &_xml_data, XML_enum _data_type, const std::string &_value, uint16_t _value_no)
+    {
+        uint16_t value_count = 0;
+        for (uint16_t i = 0; i < _xml_data.line_count; i++)
+            if (_xml_data.line[i].data_type == _data_type)
+                for (uint16_t j = 0; j < _xml_data.line[i].attribute_count; j++)
+                {
+                    if (_xml_data.line[i].data[j].value.compare(_value) == 0)
+                        value_count++;
+                    if (_value_no == value_count)
                         return i;
                 }
         return 0;
