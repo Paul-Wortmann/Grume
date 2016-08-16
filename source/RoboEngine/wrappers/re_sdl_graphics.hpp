@@ -58,21 +58,21 @@ namespace RoboEngine
     typedef SDL_GLContext RE_GLContext;
     typedef SDL_DisplayMode RE_DisplayMode;
 
-    RE_Window* RE_CreateWindow(const std::string &_title, uint16_t _w, uint16_t _h, uint32_t _flags);
-    RE_Window* RE_CreateWindow(const std::string &_title, uint64_t _x, uint64_t _y, uint16_t _w, uint16_t _h, uint32_t _flags);
-    void RE_DestroyWindow(RE_Window* _window);
+    inline RE_Window* RE_CreateWindow(const std::string &_title, uint64_t _x, uint64_t _y, uint16_t _w, uint16_t _h, uint32_t _flags) { return SDL_CreateWindow(_title.c_str(), _x, _y, _w, _h, _flags); }
+    inline RE_Window* RE_CreateWindow(const std::string &_title, uint16_t _w, uint16_t _h, uint32_t _flags) { return RE_CreateWindow(_title.c_str(), RE_WINDOWPOS_CENTERED, RE_WINDOWPOS_CENTERED, _w, _h, _flags); }
+    inline void RE_DestroyWindow(RE_Window* _window) { SDL_DestroyWindow(_window); }
 
-    RE_GLContext RE_GL_CreateContext(RE_Window *_window);
-    void RE_GL_SwapWindow(RE_Window *_window);
-    void RE_GL_DeleteContext(RE_GLContext _glcontext);
-    uint16_t RE_GL_SetSwapInterval(uint16_t _interval);
+    inline RE_GLContext RE_GL_CreateContext(RE_Window *_window) { return SDL_GL_CreateContext(_window); }
+    inline void RE_GL_SwapWindow(RE_Window *_window) { SDL_GL_SwapWindow(_window); }
+    inline void RE_GL_DeleteContext(RE_GLContext _glcontext) { SDL_GL_DeleteContext(_glcontext); }
+    inline uint16_t RE_GL_SetSwapInterval(uint16_t _interval) { return SDL_GL_SetSwapInterval(_interval); }
 
-    uint16_t RE_GetNumVideoDisplays(void);
-    uint16_t RE_GetNumDisplayModes(uint16_t displayIndex);
-    uint16_t RE_GetDisplayMode(uint16_t displayIndex, uint16_t modeIndex, RE_DisplayMode* mode);
+    inline uint16_t RE_GetNumVideoDisplays(void) { return SDL_GetNumVideoDisplays(); }
+    inline uint16_t RE_GetNumDisplayModes(uint16_t _displayIndex) { return SDL_GetNumDisplayModes(_displayIndex); }
+    inline uint16_t RE_GetDisplayMode(uint16_t _displayIndex, uint16_t _modeIndex, RE_DisplayMode* _mode) { return SDL_GetDisplayMode(_displayIndex, _modeIndex, _mode); }
 
-    uint16_t RE_GL_SetAttribute(RE_GLattr _attribute, int _value);
-    uint16_t RE_GL_GetAttribute(RE_GLattr _attribute, int* _value);
+    inline uint16_t RE_GL_SetAttribute(RE_GLattr _attribute, int _value) { return SDL_GL_SetAttribute(_attribute, _value); }
+    inline uint16_t RE_GL_GetAttribute(RE_GLattr _attribute, int* _value) { return SDL_GL_GetAttribute(_attribute, _value); }
 
 }
 

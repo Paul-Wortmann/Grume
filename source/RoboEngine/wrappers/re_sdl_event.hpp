@@ -42,7 +42,7 @@ namespace RoboEngine
     #define RE_WINDOWEVENT_LEAVE SDL_WINDOWEVENT_LEAVE
 
     typedef SDL_Event RE_Event;
-    int RE_PollEvent(RE_Event* _event);
+    inline int RE_PollEvent(RE_Event* _event) { return SDL_PollEvent(_event); }
 
 }
 

@@ -28,9 +28,4 @@
 namespace RoboEngine
 {
 
-    int RE_PollEvent(RE_Event* _event)
-    {
-        return SDL_PollEvent(_event);
-    }
-
 }

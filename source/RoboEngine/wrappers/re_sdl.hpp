@@ -45,15 +45,13 @@ namespace RoboEngine
 
     typedef SDL_GLattr RE_GLattr;
 
-    int RE_Init(uint32_t _flags);
-    void RE_SetMainReady(void);
-    void RE_Quit(void);
-    int RE_InitSubSystem(uint32_t _flags);
-    void RE_QuitSubSystem(uint32_t _flags);
-    uint32_t RE_WasInit(uint32_t _flags);
+    inline int RE_Init(uint32_t _flags) { return SDL_Init(_flags); }
+    inline void RE_SetMainReady(void) { SDL_SetMainReady(); }
+    inline void RE_Quit(void) { SDL_Quit(); }
+    inline int RE_InitSubSystem(uint32_t _flags) { return SDL_InitSubSystem(_flags); }
+    inline void RE_QuitSubSystem(uint32_t _flags) { SDL_QuitSubSystem(_flags); }
+    inline uint32_t RE_WasInit(uint32_t _flags) { return SDL_WasInit(_flags); }
 
 }
 
 #endif //  RE_SDL_HPP
-
-

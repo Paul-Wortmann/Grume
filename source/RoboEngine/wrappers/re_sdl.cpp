@@ -26,35 +26,4 @@
 namespace RoboEngine
 {
 
-    int RE_Init(uint32_t _flags)
-    {
-        SDL_Init(_flags);
-        return 0;
-    }
-
-    void RE_SetMainReady(void)
-    {
-        SDL_SetMainReady();
-    }
-
-    void RE_Quit(void)
-    {
-        SDL_Quit();
-    }
-
-    int RE_InitSubSystem(uint32_t _flags)
-    {
-        return SDL_InitSubSystem(_flags);
-    }
-
-    void RE_QuitSubSystem(uint32_t _flags)
-    {
-        SDL_QuitSubSystem(_flags);
-    }
-
-    uint32_t RE_WasInit(uint32_t _flags)
-    {
-        return SDL_WasInit(_flags);
-    }
-
 }

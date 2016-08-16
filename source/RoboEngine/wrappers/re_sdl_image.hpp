@@ -35,15 +35,9 @@ namespace RoboEngine
 
     typedef SDL_Surface RE_Surface;
 
-    RE_Surface *RE_IMG_Load(const char *_fileName);
-    void RE_FreeSurface(RE_Surface *_surface);
-
-/*
-    #define RE_QUIT SDL_QUIT
-*/
+    inline RE_Surface *RE_IMG_Load(const char *_fileName) { return IMG_Load(_fileName); }
+    inline void RE_FreeSurface(RE_Surface *_surface) { SDL_FreeSurface(_surface); }
 
 }
 
 #endif //  RE_SDL_IMAGE_HPP
-
-

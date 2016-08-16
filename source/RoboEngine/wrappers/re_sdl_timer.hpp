@@ -31,8 +31,8 @@
 namespace RoboEngine
 {
 
-    uint32_t RE_GetTicks(void);
-    void RE_Delay(uint32_t _ms);
+    inline uint32_t RE_GetTicks(void) { return SDL_GetTicks(); }
+    inline void RE_Delay(uint32_t _ms) { SDL_Delay(_ms); }
 }
 
 #endif //  RE_SDL_TIMER_HPP

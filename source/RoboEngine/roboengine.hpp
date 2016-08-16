@@ -42,6 +42,7 @@
 #include "entity/re_entity_physics.hpp"
 #include "entity/re_entity_render.hpp"
 
+#include "graphics/re_glsl.hpp"
 #include "graphics/re_graphics_engine.hpp"
 #include "graphics/re_image_loader.hpp"
 

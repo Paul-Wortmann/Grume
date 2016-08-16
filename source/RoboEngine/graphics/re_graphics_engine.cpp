@@ -49,7 +49,7 @@ namespace RoboEngine
                     m_displayFlags |= RE_WINDOW_FULLSCREEN_DESKTOP;
                 m_window = RE_CreateWindow("Frost and Flame", m_displayX, m_displayY, m_displayFlags);
                 if (m_window == nullptr)
-                        RoboEngine::log_write(ROBOENGINELOG, __FILE__, __FUNCTION__, __LINE__, "Non fatal warning - Unable to create a window.");
+                    RoboEngine::log_write(ROBOENGINELOG, __FILE__, __FUNCTION__, __LINE__, "Non fatal warning - Unable to create a window.");
                 else
                     {
                         m_glcontext = RE_GL_CreateContext(m_window);
