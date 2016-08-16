@@ -28,18 +28,18 @@
 namespace RoboEngine
 {
 
-    std::string fileExtention(const std::string &s_fileName)
+    std::string fileExtention(const std::string &_fileName)
     {
         const char16_t marker = '.';
         std::string r_returnString = "";
         bool markerFound = false;
-        uint16_t fileLength = s_fileName.length();
+        uint16_t fileLength = _fileName.length();
         for (int16_t i = fileLength-1; i >= 0; i--)
         {
             if (!markerFound)
             {
-                if (s_fileName[i] != marker)
-                    r_returnString += s_fileName[i];
+                if (_fileName[i] != marker)
+                    r_returnString += _fileName[i];
                 else
                     markerFound = true;
             }
@@ -51,18 +51,18 @@ namespace RoboEngine
         return returnString;
     }
 
-    std::string stripPath(const std::string &s_fileName)
+    std::string stripPath(const std::string &_fileName)
     {
         const char16_t marker = '/';
         std::string r_returnString = "";
         bool markerFound = false;
-        uint16_t fileLength = s_fileName.length();
+        uint16_t fileLength = _fileName.length();
         for (int16_t i = fileLength-1; i >= 0; i--)
         {
             if (!markerFound)
             {
-                if (s_fileName[i] != marker)
-                    r_returnString += s_fileName[i];
+                if (_fileName[i] != marker)
+                    r_returnString += _fileName[i];
                 else
                     markerFound = true;
             }
@@ -72,6 +72,19 @@ namespace RoboEngine
         for (int16_t i = r_fileLength-1; i >= 0; i--)
                 returnString += r_returnString[i];
         return returnString;
+    }
+
+    const char* fileToBuffer(const std::string &_fileName)
+    {
+        std::ifstream fileStream(_fileName);
+        if (fileStream.fail())
+            RoboEngine::log_write(ROBOENGINELOG, __FILE__, __FUNCTION__, __LINE__, "Error - Failed to open file:. " + _fileName);
+        std::string fileData = "";
+        std::string lineData = "";
+        while (std::getline(fileStream, lineData))
+            fileData += lineData + "\n";
+        fileStream.close();
+        return fileData.c_str();
     }
 
 }

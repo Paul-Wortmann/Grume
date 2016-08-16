@@ -24,6 +24,10 @@
 #ifndef RE_ROBOENGINE_HPP
 #define RE_ROBOENGINE_HPP
 
+#define ROBOENGINE_VERSION_MAJOR 0
+#define ROBOENGINE_VERSION_MINOR 2
+#define ROBOENGINE_VERSION_MICRO 3
+
 #include <cstdlib>
 #include <cstdio>
 #include <cstdint>

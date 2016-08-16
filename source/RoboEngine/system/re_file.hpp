@@ -25,12 +25,14 @@
 #define RE_FILE_HPP
 
 #include <string>
+#include "re_log.hpp"
 
 namespace RoboEngine
 {
 
-    std::string fileExtention(const std::string &s_fileName);
-    std::string stripPath(const std::string &s_fileName);
+    std::string fileExtention(const std::string &_fileName);
+    std::string stripPath(const std::string &_fileName);
+    const char* fileToBuffer(const std::string &_fileName);
 
 }
 
