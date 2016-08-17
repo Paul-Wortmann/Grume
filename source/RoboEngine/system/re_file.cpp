@@ -78,7 +78,10 @@ namespace RoboEngine
     {
         std::ifstream fileStream(_fileName);
         if (fileStream.fail())
+        {
+            perror(_fileName.c_str());
             RoboEngine::log_write(ROBOENGINELOG, __FILE__, __FUNCTION__, __LINE__, "Error - Failed to open file:. " + _fileName);
+        }
         std::string fileData = "";
         std::string lineData = "";
         while (std::getline(fileStream, lineData))

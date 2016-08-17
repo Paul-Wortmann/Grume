@@ -29,6 +29,7 @@
 #include <vector>
 #include "../wrappers/re_opengl.hpp"
 #include "../system/re_log.hpp"
+#include "../system/re_file.hpp"
 
 namespace RoboEngine
 {

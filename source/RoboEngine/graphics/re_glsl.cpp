@@ -46,18 +46,7 @@ namespace RoboEngine
             shader_ID = m_shaderFS_ID;
             fileName = _file_name + ".fs";
         }
-        std::ifstream shaderFile(fileName);
-        if (shaderFile.fail())
-        {
-            perror(fileName.c_str());
-            RoboEngine::log_write(ROBOENGINELOG, __FILE__, __FUNCTION__, __LINE__, "Error -> Failed to open file: " + fileName);
-        }
-        std::string fileContents = "";
-        std::string line = "";
-        while (std::getline(shaderFile, line))
-            fileContents += line + "\n";
-        shaderFile.close();
-        const char* contentsPtr = fileContents.c_str();
+        const char* contentsPtr = fileToBuffer(fileName);
         RE_glShaderSource(shader_ID, 1, &contentsPtr, nullptr);
         RE_glCompileShader(shader_ID);
         int32_t success = 0;
