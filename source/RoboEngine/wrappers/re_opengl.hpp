@@ -33,6 +33,7 @@ namespace RoboEngine
 {
 
     #define RE_GL_COLOR_BUFFER_BIT GL_COLOR_BUFFER_BIT
+    #define RE_GL_DEPTH_BUFFER_BIT GL_DEPTH_BUFFER_BIT
     #define RE_GLbitfield GLbitfield
     #define RE_GLenum GLenum
     #define RE_GL_VERSION GL_VERSION
@@ -64,6 +65,7 @@ namespace RoboEngine
     #define RE_GL_INVALID_INDEX GL_INVALID_INDEX
 
     inline void RE_glClearColor(float _r, float _g, float _b, float _a) { glClearColor(_r, _g, _b, _a); }
+    inline void RE_glClearDepth(float _d) { glClearDepth(_d); }
     inline void RE_glClear(RE_GLbitfield _mask) { glClear(_mask); }
     inline const unsigned char* RE_glGetString(RE_GLenum _name) { return glGetString(_name); }
 
@@ -94,6 +96,7 @@ namespace RoboEngine
     inline void RE_glUseProgram(uint32_t _program) { glUseProgram(_program); }
     inline void RE_glEnableVertexAttribArray(uint32_t _index) { glEnableVertexAttribArray(_index); }
     inline void RE_glDisableVertexAttribArray(uint32_t _index) { glDisableVertexAttribArray(_index); }
+    inline void RE_glUniform1f(int32_t _location, float _u) { glUniform1f(_location, _u); }
 
 }
 

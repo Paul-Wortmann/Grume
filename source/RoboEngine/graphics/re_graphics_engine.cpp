@@ -71,6 +71,8 @@ namespace RoboEngine
 
 
                             RE_glClearColor(0.1f,0.1f,0.4f,1);
+                            RE_glClearDepth(1.0);
+
                         }
                     }
             }
@@ -83,11 +85,11 @@ namespace RoboEngine
 
             void re_cGraphicsEngine::render(void)
             {
-                //int64_t _dt = 16;
-                //std::this_thread::sleep_for(std::chrono::milliseconds(_dt));
-                RE_glClear(GL_COLOR_BUFFER_BIT);
+                RE_glClear(RE_GL_COLOR_BUFFER_BIT | RE_GL_DEPTH_BUFFER_BIT);
+
+
+
                 RE_GL_SwapWindow(m_window);
-                //std::cout << "FPS: " << 1000 / _dt << std::endl;
             }
 
 }
