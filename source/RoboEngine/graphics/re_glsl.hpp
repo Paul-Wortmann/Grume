@@ -55,6 +55,10 @@ namespace RoboEngine
             void compileShader(const std::string &_file_name, e_shader_type _type);
     };
 
+    void freeShader(uint32_t _shaderID, uint32_t _numAttributes);
+    uint32_t loadShader(const std::string &_fileName);
+    uint32_t loadShaderAttribs(const std::string &_fileName);
+
 }
 
 #endif // C_GLSL_HPP

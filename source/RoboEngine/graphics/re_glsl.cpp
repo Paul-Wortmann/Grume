@@ -26,6 +26,24 @@
 namespace RoboEngine
 {
 
+    void freeShader(uint32_t _shaderID, uint32_t _numAttributes)
+    {
+
+    }
+
+    uint32_t loadShader(const std::string &_fileName)
+    {
+
+    }
+
+    uint32_t loadShaderAttribs(const std::string &_fileName)
+    {
+
+    }
+
+
+
+
     void re_cglsl::compileShader(const std::string &_file_name, e_shader_type _type)
     {
         uint32_t shader_ID = 0;

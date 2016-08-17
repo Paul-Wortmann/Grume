@@ -34,6 +34,7 @@ namespace RoboEngine
     {
             std::string fileName = "";
             uint32_t ID = 0;
+            uint32_t numAttributes = 0;
             re_sShader *next = nullptr;
     };
 
