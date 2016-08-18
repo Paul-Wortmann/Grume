@@ -33,7 +33,7 @@ namespace RoboEngine
         {
             m_head = m_head->next;
             if (t_shader->ID != 0)
-                freeShader(t_shader->ID, t_shader->numAttributes);
+                freeShader(t_shader->ID);
             delete  t_shader;
             t_shader = nullptr;
             t_shader = m_head;
@@ -48,8 +48,7 @@ namespace RoboEngine
         {
             m_head = new re_sShader;
             m_head->fileName = _fileName;
-            m_head->ID = loadShader(_fileName);
-            m_head->numAttributes = loadShaderAttribs(_fileName);
+            loadShader(_fileName, m_head->ID, m_head->numAttributes);
             m_tail = m_head;
             return m_head;
         }
@@ -62,8 +61,7 @@ namespace RoboEngine
             }
             m_tail->next = new re_sShader;
             m_tail->fileName = _fileName;
-            m_tail->ID = loadShader(_fileName);
-            m_head->numAttributes = loadShaderAttribs(_fileName);
+            loadShader(_fileName, m_tail->ID, m_tail->numAttributes);
             m_tail = m_tail->next;
             return m_tail;
         }

@@ -26,13 +26,27 @@
 namespace RoboEngine
 {
 
-    void freeShader(uint32_t _shaderID, uint32_t _numAttributes)
+    void freeShader(uint32_t _shaderID)
     {
-
+        RE_glUseProgram(0);
+        RE_glDeleteProgram(_shaderID);
     }
 
-    uint32_t loadShader(const std::string &_fileName)
+    void loadShader(const std::string &_fileName, uint32_t &_programID, uint32_t &_numAttribs)
     {
+        _programID = RE_glCreateProgram();
+        uint32_t shaderVS_ID = 0;
+        uint32_t shaderFS_ID = 0;
+        // compile shaders
+
+
+        //add attributes
+
+
+
+        //link shaders
+
+
 
     }
 

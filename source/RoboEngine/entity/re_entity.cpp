@@ -30,6 +30,7 @@ namespace RoboEngine
     void re_cEntityManager::freeAll(void)
     {
         m_managerMesh.freeAll();
+        m_managerShader.freeAll();
         m_managerTexture.freeAll();
         m_entityRenderManager.freeAll();
         m_entityPhysicsManager.freeAll();
