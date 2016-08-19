@@ -34,6 +34,7 @@ namespace RoboEngine
         RE_Init(RE_INIT_EVERYTHING);
         uint16_t return_value = EXIT_SUCCESS;
         RE_STATE = RE_STATE_ENUM::RE_ACTIVE;
+        m_entityManager.initialize();
         m_SystemEvents.initialize();
         m_frameTimer.initialize();
         m_graphicsEngine.initialize();
@@ -45,17 +46,8 @@ namespace RoboEngine
         m_entityManager.addTexture(entity_1,"data/texture/test.png");
         m_entityManager.addMesh(entity_1,"data/mesh/test.dae");
         m_entityManager.addShader(entity_1,"data/shader/shader_000");
-        re_sEntity *entity_2 = m_entityManager.getNew();
-        m_entityManager.addPhysics(entity_2);
-        m_entityManager.addRender(entity_2);
-        entity_2->physics->position.set(0.5f, 0.5f, 0.0f);
-        m_entityManager.addTexture(entity_2,"data/texture/test.png");
-        re_sEntity *entity_3 = m_entityManager.getNew();
-        m_entityManager.addPhysics(entity_3);
-        m_entityManager.addRender(entity_3);
-        entity_3->physics->position.set(-0.5f, -0.5f, 0.0f);
-        m_entityManager.addTexture(entity_3,"data/texture/test.png");
 
+        m_graphicsEngine.setEntity((re_sEntity*)m_entityManager.getHead());
         return_value = initialize();
         return return_value;
     }

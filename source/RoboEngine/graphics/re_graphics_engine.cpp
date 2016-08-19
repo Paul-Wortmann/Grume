@@ -86,26 +86,53 @@ namespace RoboEngine
             void re_cGraphicsEngine::render(void)
             {
                 RE_glClear(RE_GL_COLOR_BUFFER_BIT | RE_GL_DEPTH_BUFFER_BIT);
+                m_entity = m_entityHead;
+                if (m_entity != nullptr)
+                {
+                    while (m_entity  != nullptr)
+                    {
+                        if ((m_entity->enabled) && (m_entity->render != nullptr))
+                        {
+                            //shader
+                            if ((m_currentShader != 0) && (m_entity->render->shader != nullptr) && (m_entity->render->shader->ID != 0) && (m_currentShader != m_entity->render->shader->ID))
+                            {
+                                RE_glUseProgram(0);
+                                for (uint16_t i = 0; i < m_entity->render->shader->numAttributes; i++)
+                                    RE_glDisableVertexAttribArray(i);
+                                m_currentShader = 0;
+                            }
+                            if (m_currentShader == 0)
+                            {
+                                RE_glUseProgram(m_entity->render->shader->ID);
+                                for (uint16_t i = 0; i < m_entity->render->shader->numAttributes; i++)
+                                    RE_glEnableVertexAttribArray(i);
+                            }
+                            //mesh
 
 
+
+                        }
+                        m_entity = m_entity->next;
+                    }
+                }
+                /*
+                if ((m_currentShader != 0) && (m_currentShader != ))
+                {
+                    RE_glUseProgram(0);
+                    for (uint16_t i = 0; i < m_numAttributes; i++)
+                        RE_glDisableVertexAttribArray(i);
+                    m_currentShader = 0;
+                }
+                if (m_currentShader == 0)
+                {
+                    RE_glUseProgram(m_program_ID);
+                    for (uint16_t i = 0; i < m_numAttributes; i++)
+                        RE_glEnableVertexAttribArray(i);
+                }
+                */
 
                 RE_GL_SwapWindow(m_window);
             }
 
 }
 
-/*
-    void use(void)
-    {
-        RE_glUseProgram(m_program_ID);
-        for (uint16_t i = 0; i < m_numAttributes; i++)
-            RE_glEnableVertexAttribArray(i);
-    }
-
-    void unuse(void)
-    {
-        RE_glUseProgram(0);
-        for (uint16_t i = 0; i < m_numAttributes; i++)
-            RE_glDisableVertexAttribArray(i);
-    }
-*/

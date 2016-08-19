@@ -35,6 +35,7 @@ namespace RoboEngine
 
     struct re_sEntity
     {
+        bool enabled = true;
         re_sEntityRender *render = nullptr;
         re_sEntityPhysics *physics = nullptr;
         re_sEntity *next = nullptr;
@@ -47,6 +48,7 @@ namespace RoboEngine
             ~re_cEntityManager(void) {}
             inline re_cEntityManager(const re_cEntityManager&) = default;
             inline re_cEntityManager& operator=(const re_cEntityManager& _rhs) {if (this == &_rhs) return *this; return *this;}
+            inline void initialize(void) {}
             inline void addPhysics(re_sEntity *_entity) {_entity->physics =m_entityPhysicsManager.getNew();}
             inline void addRender(re_sEntity *_entity) {_entity->render =m_entityRenderManager.getNew();}
             inline const re_sEntity *getHead(void) {return m_head;}
