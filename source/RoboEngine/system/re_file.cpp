@@ -74,20 +74,27 @@ namespace RoboEngine
         return returnString;
     }
 
-    const char* fileToBuffer(const std::string &_fileName)
+    const char *fileToBuffer(const std::string &_fileName)
     {
-        std::ifstream fileStream(_fileName);
+        std::ifstream fileStream(_fileName, std::ifstream::in);
         if (fileStream.fail())
         {
             perror(_fileName.c_str());
             RoboEngine::log_write(ROBOENGINELOG, __FILE__, __FUNCTION__, __LINE__, "Error - Failed to open file:. " + _fileName);
         }
-        std::string fileData = "";
-        std::string lineData = "";
-        while (std::getline(fileStream, lineData))
-            fileData += lineData + "\n";
-        fileStream.close();
-        return fileData.c_str();
+        else
+        {
+            std::string fileData = "";
+            while(fileStream.good())
+            {
+                std::string lineData = "";
+                std::getline(fileStream, lineData);
+                fileData.append(lineData + "\n");
+            }
+            fileStream.close();
+            return fileData.c_str();
+        }
+        return nullptr;
     }
 
 }
