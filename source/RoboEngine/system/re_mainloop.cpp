@@ -74,8 +74,11 @@ namespace RoboEngine
         {
             m_frameTimer.frameStart();
             while(m_frameTimer.ready())
-                return_value = process_internal(m_frameTimer.frameTime());
-            //std::cout << (m_frameTimer.getFrameTime()) << std::endl;
+            {
+                uint64_t deltaTime = m_frameTimer.frameTime();
+                return_value = process_internal(deltaTime);
+                //std::cout << "Main engine running at -> " << std::to_string(deltaTime) << "ms frame time." << std::endl;
+            }
             //RE_STATE = RE_STATE_ENUM::RE_DEACTIVATING;
             m_graphicsEngine.render();
         }
