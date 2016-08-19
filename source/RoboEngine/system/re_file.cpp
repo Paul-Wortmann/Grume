@@ -74,9 +74,9 @@ namespace RoboEngine
         return returnString;
     }
 
-    const char *fileToBuffer(const std::string &_fileName)
+    std::string fileToString(const std::string &_fileName)
     {
-        std::ifstream fileStream(_fileName, std::ifstream::in);
+        std::ifstream fileStream(_fileName, std::ios::in);
         if (fileStream.fail())
         {
             perror(_fileName.c_str());
@@ -85,16 +85,21 @@ namespace RoboEngine
         else
         {
             std::string fileData = "";
-            while(fileStream.good())
+            while(!fileStream.eof())
             {
                 std::string lineData = "";
                 std::getline(fileStream, lineData);
                 fileData.append(lineData + "\n");
             }
             fileStream.close();
-            return fileData.c_str();
+            return fileData;
         }
         return nullptr;
     }
 
-}
+    const char *fileToBuffer(const std::string &_fileName)
+    {
+        return (fileToString(_fileName)).c_str();
+    }
+
+ }

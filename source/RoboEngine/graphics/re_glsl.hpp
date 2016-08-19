@@ -26,34 +26,13 @@
 
 #include <string>
 #include <fstream>
-#include <vector>
+#include <iostream>
 #include "../wrappers/re_opengl.hpp"
 #include "../system/re_log.hpp"
 #include "../system/re_file.hpp"
 
 namespace RoboEngine
 {
-
-    class re_cglsl
-    {
-        public:
-            re_cglsl() {}
-            virtual ~re_cglsl() {}
-            void compileShaders(const std::string &_file_name);
-            void linkShaders(void);
-            void addAttribute(const std::string &_attributeName);
-            int32_t getUniformLocation(const std::string &_uniformName);
-            void use(void);
-            void unuse(void);
-        protected:
-        private:
-            uint16_t m_numAttributes = 0;
-            uint32_t m_program_ID = 0;
-            uint32_t m_shaderVS_ID = 0;
-            uint32_t m_shaderFS_ID = 0;
-            enum e_shader_type {VERTEX, FRAGMENT};
-            void compileShader(const std::string &_file_name, e_shader_type _type);
-    };
 
     void freeShader(uint32_t _shaderID);
     void loadShader(const std::string &_fileName, uint32_t &_shaderID, uint32_t &_numAttribs);

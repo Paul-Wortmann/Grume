@@ -1,12 +1,7 @@
+#version 150
 
-#version 130
+out vec4 fragmentColor;
 
-in vec2 fragmentPosition;
-in vec4 fragmentColor;
-
-out vec4 color;
-
-void main()
-{
-    color = fragmentColor;
+void main(void) {
+	fragmentColor = vec4(1.0, .0, 0.0, 1.0);
 }

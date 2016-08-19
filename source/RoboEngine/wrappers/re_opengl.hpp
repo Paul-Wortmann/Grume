@@ -81,7 +81,7 @@ namespace RoboEngine
     inline uint32_t RE_glCreateShader(RE_GLenum _shaderType) { return glCreateShader(_shaderType); }
     inline void RE_glShaderSource(uint32_t _shader, int32_t _count, const char **_string, const int32_t *_length) { glShaderSource(_shader, _count, _string, _length); }
     inline void RE_glCompileShader(uint32_t _shader) { glCompileShader(_shader); }
-    inline void RE_glGetShaderiv(uint32_t _shader, RE_GLenum _pname, int32_t *_params) { RE_glGetShaderiv(_shader, _pname, _params); }
+    inline void RE_glGetShaderiv(uint32_t _shader, RE_GLenum _pname, int32_t *_params) { glGetShaderiv(_shader, _pname, _params); }
     inline void RE_glGetShaderInfoLog(uint32_t _shader, int32_t _maxLength, int32_t *_length, char *_infoLog) { glGetShaderInfoLog(_shader, _maxLength, _length, _infoLog); }
     inline void RE_glDeleteShader(uint32_t _shader) { glDeleteShader(_shader); }
     inline uint32_t RE_glCreateProgram(void) { return glCreateProgram(); }

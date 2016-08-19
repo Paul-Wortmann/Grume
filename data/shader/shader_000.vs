@@ -1,18 +1,10 @@
 
-#version 130
+#version 150
 
-in vec3 vertexPosition;
-in vec3 vertexNormal;
-in vec2 vertexTextureCoords;
-in vec4 vertexColor;
+in vec3 vertex;
 
-out vec2 fragmentPosition;
-out vec4 fragmentColor;
-
-void main()
+void main(void)
 {
-    fragmentPosition = vertexPosition;
-    fragmentColor = vertexColor;
-    gl_Position.xy = vertexPosition;
-    gl_Position.w = 1.0;
+   gl_Position = vec4(vertex, 1.0);
 }
+

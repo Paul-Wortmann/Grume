@@ -94,3 +94,18 @@ namespace RoboEngine
 
 }
 
+/*
+    void use(void)
+    {
+        RE_glUseProgram(m_program_ID);
+        for (uint16_t i = 0; i < m_numAttributes; i++)
+            RE_glEnableVertexAttribArray(i);
+    }
+
+    void unuse(void)
+    {
+        RE_glUseProgram(0);
+        for (uint16_t i = 0; i < m_numAttributes; i++)
+            RE_glDisableVertexAttribArray(i);
+    }
+*/
