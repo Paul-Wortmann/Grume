@@ -116,21 +116,10 @@ namespace RoboEngine
                         m_entity = m_entity->next;
                     }
                 }
-                /*
-                if ((m_currentShader != 0) && (m_currentShader != ))
-                {
-                    RE_glUseProgram(0);
-                    for (uint16_t i = 0; i < m_numAttributes; i++)
-                        RE_glDisableVertexAttribArray(i);
-                    m_currentShader = 0;
-                }
-                if (m_currentShader == 0)
-                {
-                    RE_glUseProgram(m_program_ID);
-                    for (uint16_t i = 0; i < m_numAttributes; i++)
-                        RE_glEnableVertexAttribArray(i);
-                }
-                */
+
+
+
+
 
                 RE_GL_SwapWindow(m_window);
             }
