@@ -101,8 +101,9 @@ namespace RoboEngine
                                     RE_glDisableVertexAttribArray(i);
                                 m_currentShader = 0;
                             }
-                            if (m_currentShader == 0)
+                            if ((m_currentShader == 0) && (m_entity->render->shader != nullptr) && (m_entity->render->shader->ID != 0) && (m_currentShader != m_entity->render->shader->ID))
                             {
+                                m_currentShader = m_entity->render->shader->ID;
                                 RE_glUseProgram(m_entity->render->shader->ID);
                                 for (uint16_t i = 0; i < m_entity->render->shader->numAttributes; i++)
                                     RE_glEnableVertexAttribArray(i);
