@@ -33,27 +33,28 @@ namespace RoboEngine
 
     struct re_sEntityRender
     {
-            re_sMesh *mesh = nullptr;
-            re_sTexture *texture = nullptr;
-            re_sShader *shader = nullptr;
-            re_sEntityRender *next = nullptr;
+      uint32_t VBO_ID = 0;
+      re_sMesh *mesh = nullptr;
+      re_sTexture *texture = nullptr;
+      re_sShader *shader = nullptr;
+      re_sEntityRender *next = nullptr;
     };
 
     class re_cEntityRenderManager
     {
-        public:
-            re_cEntityRenderManager(void) {}
-            ~re_cEntityRenderManager(void) {}
-            inline re_cEntityRenderManager(const re_cEntityRenderManager&) = default;
-            inline re_cEntityRenderManager& operator=(const re_cEntityRenderManager& _rhs) {if (this == &_rhs) return *this; return *this;}
-            inline const re_sEntityRender *getHead(void) {return m_head;}
-            inline const re_sEntityRender *getTail(void) {return m_tail;}
-            void freeAll(void);
-            re_sEntityRender *getNew(void);
-        protected:
-        private:
-            re_sEntityRender *m_head = nullptr;
-            re_sEntityRender *m_tail = nullptr;
+      public:
+         re_cEntityRenderManager(void) {}
+         ~re_cEntityRenderManager(void) {}
+         inline re_cEntityRenderManager(const re_cEntityRenderManager&) = default;
+         inline re_cEntityRenderManager& operator=(const re_cEntityRenderManager& _rhs) {if (this == &_rhs) return *this; return *this;}
+         inline const re_sEntityRender *getHead(void) {return m_head;}
+         inline const re_sEntityRender *getTail(void) {return m_tail;}
+         void freeAll(void);
+         re_sEntityRender *getNew(void);
+      protected:
+      private:
+         re_sEntityRender *m_head = nullptr;
+         re_sEntityRender *m_tail = nullptr;
     };
 }
 
