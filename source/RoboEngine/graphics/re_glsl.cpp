@@ -69,7 +69,7 @@ namespace RoboEngine
             const char *contentsPtrFS = contentsStringFS.c_str();
             RE_glShaderSource(shaderFS_ID, 1, &contentsPtrFS, nullptr);
             RE_glCompileShader(shaderFS_ID);
-            int32_t success = 0;
+            success = 0;
             RE_glGetShaderiv(shaderFS_ID, RE_GL_COMPILE_STATUS, &success);
             if (success == RE_GL_FALSE)
             {
