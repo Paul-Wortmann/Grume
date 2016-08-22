@@ -28,6 +28,8 @@
 #include "../resource/re_manager_shader.hpp"
 #include "../resource/re_manager_texture.hpp"
 
+#include "../wrappers/re_opengl.hpp"
+
 namespace RoboEngine
 {
 
