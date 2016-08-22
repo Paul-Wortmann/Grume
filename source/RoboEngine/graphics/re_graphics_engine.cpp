@@ -132,14 +132,10 @@ namespace RoboEngine
 }
 
 /*
-void glGenBuffers(GLsizei n, GLuint * buffers);
 
 
-Sprite::~Sprite()
-{
-    if (m_vboID != 0)
-        glDeleteBuffers(1, &m_vboID);
-}
+
+
 
 void Sprite::init(float x, float y, float w, float h)
 {

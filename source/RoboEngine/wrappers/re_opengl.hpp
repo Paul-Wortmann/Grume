@@ -98,6 +98,7 @@ namespace RoboEngine
     inline void RE_glDisableVertexAttribArray(uint32_t _index) { glDisableVertexAttribArray(_index); }
     inline void RE_glUniform1f(int32_t _location, float _u) { glUniform1f(_location, _u); }
 
+    inline void RE_glGenBuffers(int32_t n, uint32_t *_buffers) { glGenBuffers(n, _buffers); }
     inline void RE_glDeleteBuffers(int32_t n, uint32_t *_buffers) { glDeleteBuffers(n, _buffers); }
 
 }
