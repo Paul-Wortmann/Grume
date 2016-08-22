@@ -63,6 +63,8 @@ namespace RoboEngine
     #define RE_GL_INFO_LOG_LENGTH GL_INFO_LOG_LENGTH
     #define RE_GL_LINK_STATUS GL_LINK_STATUS
     #define RE_GL_INVALID_INDEX GL_INVALID_INDEX
+    #define RE_GL_ARRAY_BUFFER GL_ARRAY_BUFFER
+    #define RE_GL_STATIC_DRAW GL_STATIC_DRAW
 
     inline void RE_glClearColor(float _r, float _g, float _b, float _a) { glClearColor(_r, _g, _b, _a); }
     inline void RE_glClearDepth(float _d) { glClearDepth(_d); }
@@ -100,8 +102,8 @@ namespace RoboEngine
 
     inline void RE_glGenBuffers(int32_t n, uint32_t *_buffers) { glGenBuffers(n, _buffers); }
     inline void RE_glDeleteBuffers(int32_t n, uint32_t *_buffers) { glDeleteBuffers(n, _buffers); }
-
+    inline void RE_glBindBuffer(RE_GLenum _target, uint32_t _buffer) { glBindBuffer(_target, _buffer); }
+    inline void RE_glBufferData(RE_GLenum _target, uint32_t _size, const void *_data, RE_GLenum _usage) { glBufferData(_target, _size, _data, _usage); }
 }
 
 #endif //  RE_OPENGL_HPP
-

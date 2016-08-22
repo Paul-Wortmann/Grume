@@ -113,7 +113,10 @@ namespace RoboEngine
                   // initialize mesh
                   if (m_entity->render->shader->ID == 0)
                   {
-
+                     RE_glGenBuffers(1, &m_entity->render->shader->ID);
+                     RE_glBindBuffer(RE_GL_ARRAY_BUFFER, m_entity->render->shader->ID);
+                     RE_glBufferData(RE_GL_ARRAY_BUFFER, sizeof(m_entity->render->mesh->index), m_entity->render->mesh->index, RE_GL_STATIC_DRAW);
+                     RE_glBindBuffer(RE_GL_ARRAY_BUFFER, 0);
                   }
                   // render mesh
                   if (m_entity->render->shader->ID != 0)
