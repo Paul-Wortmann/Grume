@@ -21,6 +21,8 @@
  * @date 2011-11-11
  */
 
+//http://gafferongames.com/game-physics/fix-your-timestep/
+
 #ifndef RE_TIME_STEP_HPP
 #define RE_TIME_STEP_HPP
 

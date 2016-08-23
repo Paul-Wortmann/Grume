@@ -29,6 +29,8 @@ namespace RoboEngine
 
     void re_cGraphicsEngine::initialize(void)
     {
+        SDL_SetMainReady();
+        SDL_Init(SDL_INIT_EVERYTHING);
         SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, RE_RENDERER_CONTEXT_MAJOR);
         SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, RE_RENDERER_CONTEXT_MINOR);
         SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);

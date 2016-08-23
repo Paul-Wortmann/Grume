@@ -28,27 +28,33 @@ namespace RoboEngine
 
     uint16_t re_cMainLoop::initialize_internal(void)
     {
+        uint16_t return_value = EXIT_SUCCESS;
         m_log.clear();
         m_log.write("RoboEngine started.");
-        SDL_SetMainReady();
-        SDL_Init(SDL_INIT_EVERYTHING);
-        uint16_t return_value = EXIT_SUCCESS;
-        RE_STATE = RE_STATE_ENUM::RE_ACTIVE;
-        m_entityManager.initialize();
-        m_SystemEvents.initialize();
-        m_frameTimer.initialize();
-        m_graphicsEngine.initialize();
+        if(!glfwInit())
+        {
+            RoboEngine::log_write(ROBOENGINELOG, __FILE__, __FUNCTION__, __LINE__, "Fatal error - Failed to initialize glfw");
+            return EXIT_FAILURE;
+        }
+        else
+        {
+            RE_STATE = RE_STATE_ENUM::RE_ACTIVE;
+            m_entityManager.initialize();
+            m_SystemEvents.initialize();
+            m_frameTimer.initialize();
+            m_graphicsEngine.initialize();
 
-        re_sEntity *entity_1 = m_entityManager.getNew();
-        m_entityManager.addPhysics(entity_1);
-        m_entityManager.addRender(entity_1);
-        entity_1->physics->position.set(0.0f, 0.0f, 0.0f);
-        m_entityManager.addTexture(entity_1,"data/texture/test.png");
-        m_entityManager.addMesh(entity_1,"data/mesh/test.dae");
-        m_entityManager.addShader(entity_1,"data/shader/shader_000");
+            re_sEntity *entity_1 = m_entityManager.getNew();
+            m_entityManager.addPhysics(entity_1);
+            m_entityManager.addRender(entity_1);
+            entity_1->physics->position.set(0.0f, 0.0f, 0.0f);
+            m_entityManager.addTexture(entity_1,"data/texture/test.png");
+            m_entityManager.addMesh(entity_1,"data/mesh/test.dae");
+            m_entityManager.addShader(entity_1,"data/shader/shader_000");
 
-        m_graphicsEngine.setEntity((re_sEntity*)m_entityManager.getHead());
-        return_value = initialize();
+            m_graphicsEngine.setEntity((re_sEntity*)m_entityManager.getHead());
+            return_value = initialize();
+        }
         return return_value;
     }
 
@@ -62,7 +68,7 @@ namespace RoboEngine
         m_entityManager.freeAll();
 
         return_value = deinitialize();
-        atexit(SDL_Quit);
+        glfwTerminate();
         return return_value;
     }
 
@@ -97,4 +103,3 @@ namespace RoboEngine
     }
 
 }
-//http://gafferongames.com/game-physics/fix-your-timestep/
