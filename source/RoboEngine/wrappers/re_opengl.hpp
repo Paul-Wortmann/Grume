@@ -35,6 +35,7 @@ namespace RoboEngine
     #define RE_GL_COLOR_BUFFER_BIT GL_COLOR_BUFFER_BIT
     #define RE_GL_DEPTH_BUFFER_BIT GL_DEPTH_BUFFER_BIT
     #define RE_GLbitfield GLbitfield
+    #define RE_GLboolean GLboolean
     #define RE_GLenum GLenum
     #define RE_GL_VERSION GL_VERSION
     #define RE_GL_VENDOR GL_VENDOR
@@ -53,6 +54,8 @@ namespace RoboEngine
     #define RE_GL_LINEAR GL_LINEAR
     #define RE_GL_FALSE GL_FALSE
     #define RE_GL_TRUE GL_TRUE
+    #define RE_GL_FLOAT GL_FLOAT
+    #define RE_GL_UNSIGNED_BYTE GL_UNSIGNED_BYTE
     #define RE_GL_COMPUTE_SHADER GL_COMPUTE_SHADER
     #define RE_GL_VERTEX_SHADER GL_VERTEX_SHADER
     #define RE_GL_TESS_CONTROL_SHADER GL_TESS_CONTROL_SHADER
@@ -65,6 +68,7 @@ namespace RoboEngine
     #define RE_GL_INVALID_INDEX GL_INVALID_INDEX
     #define RE_GL_ARRAY_BUFFER GL_ARRAY_BUFFER
     #define RE_GL_STATIC_DRAW GL_STATIC_DRAW
+    #define RE_GL_TRIANGLES GL_TRIANGLES
 
     inline void RE_glClearColor(float _r, float _g, float _b, float _a) { glClearColor(_r, _g, _b, _a); }
     inline void RE_glClearDepth(float _d) { glClearDepth(_d); }
@@ -104,6 +108,9 @@ namespace RoboEngine
     inline void RE_glDeleteBuffers(int32_t n, uint32_t *_buffers) { glDeleteBuffers(n, _buffers); }
     inline void RE_glBindBuffer(RE_GLenum _target, uint32_t _buffer) { glBindBuffer(_target, _buffer); }
     inline void RE_glBufferData(RE_GLenum _target, uint32_t _size, const void *_data, RE_GLenum _usage) { glBufferData(_target, _size, _data, _usage); }
+    inline void RE_glVertexAttribPointer(uint32_t _index, int32_t _size, RE_GLenum _type, RE_GLboolean _normalized, uint32_t _stride, const void *_pointer) { glVertexAttribPointer(_index, _size, _type, _normalized, _stride, _pointer); }
+    inline void RE_glDrawArrays(RE_GLenum _mode, int32_t _first, int32_t _count) { glDrawArrays(_mode, _first, _count); }
+
 }
 
 #endif //  RE_OPENGL_HPP

@@ -53,11 +53,11 @@ namespace RoboEngine
 
     struct v8_f
     {
-        v8_f() = default;
-        virtual ~v8_f() = default;
-        inline v8_f(float _x, float _y, float _z, float _nx, float _ny, float _nz, float _s, float _t) {x = _x; y = _y; z = _z; nx = _nx; ny = _ny; nz = _nz; s = _s; t = _t;}
+        //v8_f() = default;
+        //virtual ~v8_f() = default;
+        //inline v8_f(float _x, float _y, float _z, float _nx, float _ny, float _nz, float _s, float _t) {x = _x; y = _y; z = _z; nx = _nx; ny = _ny; nz = _nz; s = _s; t = _t;}
         inline void set(float _x, float _y, float _z, float _nx, float _ny, float _nz, float _s, float _t) {x = _x; y = _y; z = _z; nx = _nx; ny = _ny; nz = _nz; s = _s; t = _t;}
-        inline v8_f get(void) { return v8_f(x, y, z, nx, ny, nz, s, t);}
+        //inline v8_f get(void) { return v8_f(x, y, z, nx, ny, nz, s, t);}
         float x = 0.0f;
         float y = 0.0f;
         float z = 0.0f;
