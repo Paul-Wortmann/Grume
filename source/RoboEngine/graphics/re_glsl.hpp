@@ -27,7 +27,6 @@
 #include <string>
 #include <fstream>
 #include <iostream>
-#include "../wrappers/re_opengl.hpp"
 #include "../system/re_log.hpp"
 #include "../system/re_file.hpp"
 

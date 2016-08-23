@@ -30,8 +30,8 @@ namespace RoboEngine
     {
         m_log.clear();
         m_log.write("RoboEngine started.");
-        RE_SetMainReady();
-        RE_Init(RE_INIT_EVERYTHING);
+        SDL_SetMainReady();
+        SDL_Init(SDL_INIT_EVERYTHING);
         uint16_t return_value = EXIT_SUCCESS;
         RE_STATE = RE_STATE_ENUM::RE_ACTIVE;
         m_entityManager.initialize();
@@ -62,7 +62,7 @@ namespace RoboEngine
         m_entityManager.freeAll();
 
         return_value = deinitialize();
-        atexit(RE_Quit);
+        atexit(SDL_Quit);
         return return_value;
     }
 

@@ -24,11 +24,10 @@
 #ifndef RE_ENTITY_RENDER_HPP
 #define RE_ENTITY_RENDER_HPP
 
+#include <GL/glew.h>
 #include "../resource/re_manager_mesh.hpp"
 #include "../resource/re_manager_shader.hpp"
 #include "../resource/re_manager_texture.hpp"
-
-#include "../wrappers/re_opengl.hpp"
 
 namespace RoboEngine
 {

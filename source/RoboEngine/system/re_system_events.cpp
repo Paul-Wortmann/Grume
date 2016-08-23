@@ -21,9 +21,10 @@
  * @date 2011-11-11
  */
 
+#include <SDL2/SDL.h>
+
 #include "re_system_events.hpp"
 #include "re_log.hpp"
-#include "../wrappers/re_sdl.hpp"
 
 namespace RoboEngine
 {
@@ -38,40 +39,40 @@ namespace RoboEngine
 
     void re_cSystemEvents::process(void)
     {
-        while (RE_PollEvent(&m_event))
+        while (SDL_PollEvent(&m_event))
         {
             //std::cout << "Event ->n" << event.type << "\n";
             switch(m_event.type)
             {
-                case RE_QUIT:
+                case SDL_QUIT:
                     m_quit = true;
                 break;
-                case RE_WINDOWEVENT:
+                case SDL_WINDOWEVENT:
                     switch(m_event.window.event)
                     {
-                        case RE_WINDOWEVENT_ENTER:
+                        case SDL_WINDOWEVENT_ENTER:
                         break;
-                        case RE_WINDOWEVENT_LEAVE:
+                        case SDL_WINDOWEVENT_LEAVE:
                         break;
                         default:
                             //RoboEngine::log_write(ROBOENGINELOG, __FILE__, __FUNCTION__, __LINE__, "Non fatal warning - Window event not processed: "+std::to_string(m_event.window.event));
                         break;
                     }
                 break;
-                case RE_MOUSEMOTION:
+                case SDL_MOUSEMOTION:
                     m_mouseX = m_event.motion.x;
                     m_mouseY = m_event.motion.y;
                 break;
-                case RE_MOUSEBUTTONDOWN:
+                case SDL_MOUSEBUTTONDOWN:
                     m_keyMap[m_event.button.button] = true;
                 break;
-                case RE_MOUSEBUTTONUP:
+                case SDL_MOUSEBUTTONUP:
                     m_keyMap[m_event.button.button] = false;
                 break;
-                case RE_KEYDOWN:
+                case SDL_KEYDOWN:
                     m_keyMap[m_event.key.keysym.sym] = true;
                 break;
-                case RE_KEYUP:
+                case SDL_KEYUP:
                     m_keyMap[m_event.key.keysym.sym] = false;
                 break;
                 default:

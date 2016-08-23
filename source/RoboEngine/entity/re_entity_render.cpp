@@ -33,7 +33,7 @@ namespace RoboEngine
         {
             m_head = m_head->next;
             if (t_entity->VBO_ID != 0)
-               RE_glDeleteBuffers(1, &t_entity->VBO_ID);
+               glDeleteBuffers(1, &t_entity->VBO_ID);
             delete  t_entity;
             t_entity = nullptr;
             t_entity = m_head;

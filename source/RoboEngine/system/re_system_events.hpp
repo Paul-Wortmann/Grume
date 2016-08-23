@@ -24,11 +24,12 @@
 #ifndef RE_SYSTEM_EVENTS_HPP
 #define RE_SYSTEM_EVENTS_HPP
 
+#include <SDL2/SDL.h>
+
 #include <cstdint>
 #include <cstdlib>
 #include <iostream>
 #include <unordered_map>
-#include "../wrappers/re_sdl_event.hpp"
 
 namespace RoboEngine
 {
@@ -47,7 +48,7 @@ namespace RoboEngine
             inline float get_mouseY() const {return m_mouseY;}
             bool keyDown(uint16_t keyID);
         private:
-            RoboEngine::RE_Event m_event = {};
+            SDL_Event m_event = {};
             std::unordered_map<unsigned int, bool> m_keyMap = {};
             float m_mouseX = 0.0f;
             float m_mouseY = 0.0f;

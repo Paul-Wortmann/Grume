@@ -163,14 +163,6 @@ Set (FROST_AND_FLAME_SOURCES
 	./source/RoboEngine/system/re_time_step.cpp
 	./source/RoboEngine/system/re_types.cpp
 
-	./source/RoboEngine/wrappers/re_glew.cpp
-	./source/RoboEngine/wrappers/re_glx.cpp
-	./source/RoboEngine/wrappers/re_opengl.cpp
-	./source/RoboEngine/wrappers/re_sdl.cpp
-	./source/RoboEngine/wrappers/re_sdl_event.cpp
-	./source/RoboEngine/wrappers/re_sdl_graphics.cpp
-	./source/RoboEngine/wrappers/re_sdl_image.cpp
-	./source/RoboEngine/wrappers/re_sdl_timer.cpp
 )
 
 # Add icon and file info to executable for Windows systems

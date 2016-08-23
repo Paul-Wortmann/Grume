@@ -28,15 +28,23 @@
 #define ROBOENGINE_VERSION_MINOR 2
 #define ROBOENGINE_VERSION_MICRO 3
 
-#include <cstdlib>
-#include <cstdio>
 #include <cstdint>
+#include <cstdio>
+#include <cstdlib>
+#include <algorithm>
 #include <chrono>
-#include <thread>
-#include <string>
 #include <fstream>
 #include <iostream>
-#include <algorithm>
+#include <string>
+#include <thread>
+
+#include <SDL2/SDL.h>
+#include <SDL2/SDL_image.h>
+
+#include <GL/glew.h>
+#include <GL/gl.h>
+#include <GLFW/glfw3.h>
+#include <glm/glm.hpp>
 
 #include "entity/re_entity.hpp"
 #include "entity/re_entity_physics.hpp"
@@ -59,13 +67,6 @@
 #include "system/re_system_events.hpp"
 #include "system/re_time_step.hpp"
 #include "system/re_types.hpp"
-
-#include "wrappers/re_glx.hpp"
-#include "wrappers/re_opengl.hpp"
-#include "wrappers/re_sdl.hpp"
-#include "wrappers/re_sdl_event.hpp"
-#include "wrappers/re_sdl_graphics.hpp"
-#include "wrappers/re_sdl_timer.hpp"
 
 namespace RoboEngine
 {

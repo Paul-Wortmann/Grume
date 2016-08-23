@@ -21,10 +21,11 @@
  * @date 2011-11-11
  */
 
+#include <GL/glew.h>
+#include <SDL2/SDL_image.h>
+
 #include "re_image_loader.hpp"
 #include "../system/re_log.hpp"
-#include "../wrappers/re_sdl_image.hpp"
-#include "../wrappers/re_opengl.hpp"
 
 namespace RoboEngine
 {
@@ -32,23 +33,23 @@ namespace RoboEngine
     uint32_t loadTexture(const std::string& _fileName)
     {
         uint32_t textureID = 0;
-        RE_Surface *image = nullptr;
-        image = RE_IMG_Load(_fileName.c_str());
+        SDL_Surface *image = nullptr;
+        image = IMG_Load(_fileName.c_str());
         if (image == nullptr)
         {
             RoboEngine::log_write(ROBOENGINELOG, __FILE__, __FUNCTION__, __LINE__, " Failed to load texture: " + _fileName);
             return textureID;
         }
-        RE_glGenTextures(1, &textureID);
-        RE_glBindTexture(RE_GL_TEXTURE_2D, textureID);
-        RE_glTexImage2D(RE_GL_TEXTURE_2D, 0, RE_GL_RGBA, image->w, image->h, 0, RE_GL_RGBA, RE_GL_UNSIGNED_BYTE, image->pixels);
-        RE_glTexParameteri(RE_GL_TEXTURE_2D, RE_GL_TEXTURE_WRAP_S, RE_GL_REPEAT);
-        RE_glTexParameteri(RE_GL_TEXTURE_2D, RE_GL_TEXTURE_WRAP_T, RE_GL_REPEAT);
-        RE_glTexParameterf(RE_GL_TEXTURE_2D, RE_GL_TEXTURE_MIN_FILTER, RE_GL_LINEAR_MIPMAP_LINEAR);
-        RE_glTexParameterf(RE_GL_TEXTURE_2D, RE_GL_TEXTURE_MAG_FILTER, RE_GL_LINEAR);
-        RE_glGenerateMipmap(RE_GL_TEXTURE_2D);
-        RE_glBindTexture(RE_GL_TEXTURE_2D, 0);
-        RE_FreeSurface(image);
+        glGenTextures(1, &textureID);
+        glBindTexture(GL_TEXTURE_2D, textureID);
+        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, image->w, image->h, 0, GL_RGBA, GL_UNSIGNED_BYTE, image->pixels);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+        glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
+        glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+        glGenerateMipmap(GL_TEXTURE_2D);
+        glBindTexture(GL_TEXTURE_2D, 0);
+        SDL_FreeSurface(image);
         return textureID;
     }
 
@@ -56,7 +57,7 @@ namespace RoboEngine
     {
         uint32_t *_textureArray = new uint32_t[1];
         _textureArray[0] = _textureID;
-        RE_glDeleteTextures(1, _textureArray);
+        glDeleteTextures(1, _textureArray);
         delete [] _textureArray;
     }
 

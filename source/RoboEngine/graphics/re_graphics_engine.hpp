@@ -24,13 +24,12 @@
 #ifndef RE_GRAPHICS_HPP
 #define RE_GRAPHICS_HPP
 
+#include <SDL2/SDL.h>
+
 #include <cstdlib>
 #include <cstdint>
 #include <thread>
 #include <chrono>
-#include <GL/glew.h>
-#include <GL/gl.h>
-#include "../wrappers/re_sdl_graphics.hpp"
 #include "../entity/re_entity.hpp"
 
 namespace RoboEngine
@@ -50,12 +49,12 @@ namespace RoboEngine
             void render(void);
             inline void setEntity(re_sEntity *_entityHead) {m_entityHead = _entityHead;  m_entity = _entityHead;}
         private:
-            RE_Window *m_window = nullptr;
-            RE_GLContext m_glcontext = {};
+            SDL_Window *m_window = nullptr;
+            SDL_GLContext m_glcontext = {};
             uint16_t m_displayX = 640;
             uint16_t m_displayY = 480;
             bool m_displayFullscreen = false;
-            uint32_t m_displayFlags = RE_WINDOW_OPENGL;
+            uint32_t m_displayFlags = SDL_WINDOW_OPENGL;
             uint16_t m_currentDisplay = 0;
             uint16_t m_currentDisplayMode = 0;
             uint16_t m_numberDisplays = 0;
