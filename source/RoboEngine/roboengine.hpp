@@ -51,7 +51,7 @@
 #include "graphics/re_graphics_engine.hpp"
 #include "graphics/re_image_loader.hpp"
 
-#include "resource/picopng.hpp"
+#include "resource/lodepng.h"
 #include "resource/re_loader_dae.hpp"
 #include "resource/re_loader_obj.hpp"
 #include "resource/re_manager_mesh.hpp"

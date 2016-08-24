@@ -29,7 +29,7 @@
 #include "re_image_loader.hpp"
 #include "../system/re_file.hpp"
 #include "../system/re_log.hpp"
-#include "../resource/picopng.hpp"
+#include "../resource/lodepng.h"
 
 namespace RoboEngine
 {
@@ -37,23 +37,17 @@ namespace RoboEngine
     uint32_t loadTexture(const std::string& _fileName)
     {
         uint32_t textureID = 0;
-        unsigned long width = 0;
-        unsigned long height = 0;
-        std::vector<unsigned char> in_image;
-        if (!fileToBufferV(_fileName, in_image))
+        std::vector<unsigned char> image;
+        unsigned width, height;
+        unsigned error = lodepng::decode(image, width, height, _fileName);
+        if (error)
         {
-            RoboEngine::log_write(ROBOENGINELOG, __FILE__, __FUNCTION__, __LINE__, " Failed to load texture : " + _fileName);
-        }
-        std::vector<unsigned char> out_image;
-        int32_t statusPNG = decodePNG(out_image, width, height, &in_image[0] , in_image.size());
-        if (statusPNG != 0)
-        {
-            RoboEngine::log_write(ROBOENGINELOG, __FILE__, __FUNCTION__, __LINE__, " Failed to decode png (" + std::to_string(statusPNG) + ") : " + _fileName);
+            RoboEngine::log_write(ROBOENGINELOG, __FILE__, __FUNCTION__, __LINE__, " Failed to decode png : " + _fileName + "(" + std::to_string(error) + ") : " + lodepng_error_text(error));
             return textureID;
         }
         glGenTextures(1, &textureID);
         glBindTexture(GL_TEXTURE_2D, textureID);
-        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, &out_image[0]);
+        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, &image[0]);
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
         glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
