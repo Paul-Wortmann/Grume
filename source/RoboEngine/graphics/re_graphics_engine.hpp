@@ -24,18 +24,21 @@
 #ifndef RE_GRAPHICS_HPP
 #define RE_GRAPHICS_HPP
 
-#include <SDL2/SDL.h>
+#include <GL/glew.h>
+#include <GLFW/glfw3.h>
 
 #include <cstdlib>
 #include <cstdint>
+#include <string>
 #include <thread>
 #include <chrono>
 #include "../entity/re_entity.hpp"
+#include "../system/re_log.hpp"
 
 namespace RoboEngine
 {
-    #define RE_RENDERER_CONTEXT_MAJOR 3
-    #define RE_RENDERER_CONTEXT_MINOR 2
+    #define RE_GL_CONTEXT_MAJOR 3
+    #define RE_GL_CONTEXT_MINOR 3
 
     class re_cGraphicsEngine
     {
@@ -44,17 +47,17 @@ namespace RoboEngine
             virtual ~re_cGraphicsEngine(void) {}
             re_cGraphicsEngine(const re_cGraphicsEngine&) = default;
             re_cGraphicsEngine& operator=(const re_cGraphicsEngine& rhs) {if (this == &rhs) return *this; return *this;}
-            void initialize(void);
+            uint32_t initialize(void);
             void deinitialize(void);
             void render(void);
             inline void setEntity(re_sEntity *_entityHead) {m_entityHead = _entityHead;  m_entity = _entityHead;}
         private:
-            SDL_Window *m_window = nullptr;
-            SDL_GLContext m_glcontext = {};
+            GLFWwindow* m_window = nullptr;
+            std::string m_title = "Frost and Flame";
             uint16_t m_displayX = 640;
             uint16_t m_displayY = 480;
             bool m_displayFullscreen = false;
-            uint32_t m_displayFlags = SDL_WINDOW_OPENGL;
+            uint32_t m_displayFlags = 0;
             uint16_t m_currentDisplay = 0;
             uint16_t m_currentDisplayMode = 0;
             uint16_t m_numberDisplays = 0;

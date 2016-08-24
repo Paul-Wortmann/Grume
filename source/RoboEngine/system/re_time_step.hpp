@@ -51,7 +51,7 @@ namespace RoboEngine
             uint64_t getFrameTime(void) { return m_deltaFrameTime; }
 
         private:
-             uint64_t m_desiredFrameTime = 16;
+            uint64_t m_desiredFrameTime = 16;
             uint64_t m_deltaFrameTime = 0;
             bool m_frameReady = false;
             uint64_t m_startFrameTime = 0;

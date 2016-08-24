@@ -22,46 +22,42 @@
  */
 
 #include "re_graphics_engine.hpp"
-#include "../system/re_log.hpp"
 
 namespace RoboEngine
 {
 
-    void re_cGraphicsEngine::initialize(void)
+    uint32_t re_cGraphicsEngine::initialize(void)
     {
-        SDL_SetMainReady();
-        SDL_Init(SDL_INIT_EVERYTHING);
-        SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, RE_RENDERER_CONTEXT_MAJOR);
-        SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, RE_RENDERER_CONTEXT_MINOR);
-        SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
-        SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
-        SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE, 24);
-        SDL_GL_SetSwapInterval(1);
+        uint32_t return_value = EXIT_SUCCESS;
+        glfwWindowHint(GLFW_SAMPLES, 4);
+        glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, RE_GL_CONTEXT_MAJOR);
+        glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, RE_GL_CONTEXT_MINOR);
+        glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
+        glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
         m_currentDisplay = 0;
         m_currentDisplayMode = 0;
-        m_numberDisplays = SDL_GetNumVideoDisplays();
-        m_numberDisplayModes = SDL_GetNumDisplayModes(m_currentDisplay);
         // todo: create list of available display modes, if full screen flag, set to optimal full screen resolution.
 
-        if (m_displayFullscreen)
-            m_displayFlags |= SDL_WINDOW_FULLSCREEN_DESKTOP;
-        m_window = SDL_CreateWindow("Frost and Flame", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, m_displayX, m_displayY, m_displayFlags);
+        m_window = glfwCreateWindow( m_displayX, m_displayY, m_title.c_str(), nullptr, nullptr);
         if (m_window == nullptr)
+        {
             RoboEngine::log_write(ROBOENGINELOG, __FILE__, __FUNCTION__, __LINE__, "Non fatal warning - Unable to create a window.");
+            glfwTerminate();
+            return_value = EXIT_FAILURE;
+        }
         else
         {
-            m_glcontext = SDL_GL_CreateContext(m_window);
+            glfwMakeContextCurrent(m_window);
             glewExperimental = true;
-            GLenum glewStatus =glewInit();
-            if (glewStatus != GLEW_OK)
+            glfwSwapInterval(1);
+            if (glewInit() != GLEW_OK)
+            {
                 RoboEngine::log_write(ROBOENGINELOG, __FILE__, __FUNCTION__, __LINE__, "Fatal error - Unable to initialize GLEW.");
+                glfwTerminate();
+                return_value = EXIT_FAILURE;
+            }
             else
             {
-                int32_t GL_MajorVersion = 0;
-                int32_t GL_MinorVersion = 0;
-                SDL_GL_GetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, &GL_MajorVersion);
-                SDL_GL_GetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, &GL_MinorVersion);
-                RoboEngine::log_write(ROBOENGINELOG, __FILE__, __FUNCTION__, __LINE__, "OpenGL Context Version: " + std::to_string(GL_MajorVersion) +  "." + std::to_string(GL_MinorVersion));
                 RoboEngine::log_write(ROBOENGINELOG, __FILE__, __FUNCTION__, __LINE__, reinterpret_cast<const char*>(glGetString(GL_VERSION)));
                 RoboEngine::log_write(ROBOENGINELOG, __FILE__, __FUNCTION__, __LINE__, reinterpret_cast<const char*>(glGetString(GL_VENDOR)));
                 RoboEngine::log_write(ROBOENGINELOG, __FILE__, __FUNCTION__, __LINE__, reinterpret_cast<const char*>(glGetString(GL_RENDERER)));
@@ -73,12 +69,12 @@ namespace RoboEngine
 
             }
         }
+        return return_value;
     }
 
     void re_cGraphicsEngine::deinitialize(void)
     {
-        SDL_DestroyWindow(m_window);
-        SDL_GL_DeleteContext(m_glcontext);
+        glfwDestroyWindow(m_window);
     }
 
     void re_cGraphicsEngine::render(void)
@@ -137,7 +133,7 @@ namespace RoboEngine
                 m_entity = m_entity->next;
             }
         }
-        SDL_GL_SwapWindow(m_window);
+        glfwSwapBuffers(m_window);
     }
 
 }

@@ -25,10 +25,15 @@
 
 namespace RoboEngine
 {
+    static void glfw_error_callback(int error, const char* description)
+    {
+        RoboEngine::log_write(ROBOENGINELOG, __FILE__, __FUNCTION__, __LINE__, "GLFW error - " + std::to_string(error) + " : " + description);
+    }
 
     uint16_t re_cMainLoop::initialize_internal(void)
     {
         uint16_t return_value = EXIT_SUCCESS;
+        glfwSetErrorCallback(glfw_error_callback);
         m_log.clear();
         m_log.write("RoboEngine started.");
         if(!glfwInit())
@@ -42,18 +47,24 @@ namespace RoboEngine
             m_entityManager.initialize();
             m_SystemEvents.initialize();
             m_frameTimer.initialize();
-            m_graphicsEngine.initialize();
+            return_value = m_graphicsEngine.initialize();
+            if (return_value == EXIT_FAILURE)
+            {
+                RoboEngine::log_write(ROBOENGINELOG, __FILE__, __FUNCTION__, __LINE__, "Fatal error - Failed to initialize the graphics engine");
+            }
+            else
+            {
+                re_sEntity *entity_1 = m_entityManager.getNew();
+                m_entityManager.addPhysics(entity_1);
+                m_entityManager.addRender(entity_1);
+                entity_1->physics->position.set(0.0f, 0.0f, 0.0f);
+                m_entityManager.addTexture(entity_1,"data/texture/test.png");
+                m_entityManager.addMesh(entity_1,"data/mesh/test.dae");
+                m_entityManager.addShader(entity_1,"data/shader/shader_000");
 
-            re_sEntity *entity_1 = m_entityManager.getNew();
-            m_entityManager.addPhysics(entity_1);
-            m_entityManager.addRender(entity_1);
-            entity_1->physics->position.set(0.0f, 0.0f, 0.0f);
-            m_entityManager.addTexture(entity_1,"data/texture/test.png");
-            m_entityManager.addMesh(entity_1,"data/mesh/test.dae");
-            m_entityManager.addShader(entity_1,"data/shader/shader_000");
-
-            m_graphicsEngine.setEntity((re_sEntity*)m_entityManager.getHead());
-            return_value = initialize();
+                m_graphicsEngine.setEntity((re_sEntity*)m_entityManager.getHead());
+                return_value = initialize();
+            }
         }
         return return_value;
     }
@@ -76,17 +87,20 @@ namespace RoboEngine
     {
         uint16_t return_value = EXIT_SUCCESS;
         return_value = initialize_internal();
-        while (RE_STATE == RE_STATE_ENUM::RE_ACTIVE)
+        if (return_value == EXIT_SUCCESS)
         {
-            m_frameTimer.frameStart();
-            while(m_frameTimer.ready())
+            while (RE_STATE == RE_STATE_ENUM::RE_ACTIVE)
             {
-                uint64_t deltaTime = m_frameTimer.frameTime();
-                return_value = process_internal(deltaTime);
-                //std::cout << "Main engine running at -> " << std::to_string(deltaTime) << "ms frame time." << std::endl;
+                m_frameTimer.frameStart();
+                while(m_frameTimer.ready())
+                {
+                    uint64_t deltaTime = m_frameTimer.frameTime();
+                    return_value = process_internal(deltaTime);
+                    //std::cout << "Main engine running at -> " << std::to_string(deltaTime) << "ms frame time." << std::endl;
+                }
+                //RE_STATE = RE_STATE_ENUM::RE_DEACTIVATING;
+                m_graphicsEngine.render();
             }
-            //RE_STATE = RE_STATE_ENUM::RE_DEACTIVATING;
-            m_graphicsEngine.render();
         }
         return_value = deinitialize_internal();
         return return_value;
@@ -95,7 +109,7 @@ namespace RoboEngine
     uint16_t re_cMainLoop::process_internal(int64_t _dt)
     {
         uint16_t return_value = EXIT_SUCCESS;
-        m_SystemEvents.process();
+        glfwPollEvents();
         if (m_SystemEvents.statusQuit())
             RE_STATE = RE_STATE_ENUM::RE_DEACTIVATING;
         return_value = process(_dt);
