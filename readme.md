@@ -12,7 +12,7 @@ Frost and flame is an action role playing game.
 
 Requirements:
 -----------------------
-- Graphics card supporting OpenGL 3.2+
+- Graphics card supporting OpenGL 3.3+
 - +2GB of free RAM.
 - Linux kernel 4.2+
 - Core i7 or equivalent.
@@ -22,6 +22,7 @@ Compiling on Linux:
 -----------------------
 Make sure you have all the relevant dependencies installed:
 - SDL2
+- GLFW
 - OpenGL
 - Glew
 - Physfs
