@@ -21,7 +21,6 @@ Requirements:
 Compiling on Linux:
 -----------------------
 Make sure you have all the relevant dependencies installed:
-- SDL2
 - GLFW
 - OpenGL
 - Glew

@@ -25,6 +25,7 @@
 #define RE_FILE_HPP
 
 #include <string>
+#include <vector>
 #include "re_log.hpp"
 
 namespace RoboEngine
@@ -34,6 +35,7 @@ namespace RoboEngine
     std::string stripPath(const std::string &_fileName);
     std::string fileToString(const std::string &_fileName);
     const char* fileToBuffer(const std::string &_fileName);
+    bool fileToBufferV(const std::string &_fileName, std::vector<unsigned char> &_buffer);
 
 }
 

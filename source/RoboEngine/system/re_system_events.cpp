@@ -32,7 +32,7 @@ namespace RoboEngine
         if (_window == nullptr)
             RoboEngine::log_write(ROBOENGINELOG, __FILE__, __FUNCTION__, __LINE__, "Fatal error - Failed to initialize system event manager");
         else
-            glfwSetInputMode(m_window, GLFW_STICKY_KEYS, 1);
+            glfwSetInputMode(m_window, GLFW_STICKY_KEYS, GL_TRUE);
     }
 
     void re_cSystemEvents::deinitialize(void)
@@ -41,7 +41,7 @@ namespace RoboEngine
 
     void re_cSystemEvents::process(void)
     {
-        if (glfwWindowShouldClose(m_window) == 1)
+        if (glfwWindowShouldClose(m_window) == GL_TRUE)
             m_quit = true;
     }
 

@@ -24,6 +24,8 @@
 #include "re_file.hpp"
 #include <fstream>
 #include <iostream>
+#include <cstring>
+#include <cerrno>
 
 namespace RoboEngine
 {
@@ -80,7 +82,7 @@ namespace RoboEngine
         if (fileStream.fail())
         {
             perror(_fileName.c_str());
-            RoboEngine::log_write(ROBOENGINELOG, __FILE__, __FUNCTION__, __LINE__, "Error - Failed to open file:. " + _fileName);
+            RoboEngine::log_write(ROBOENGINELOG, __FILE__, __FUNCTION__, __LINE__, "Error - Failed to open file: " + _fileName);
         }
         else
         {
@@ -100,6 +102,25 @@ namespace RoboEngine
     const char *fileToBuffer(const std::string &_fileName)
     {
         return (fileToString(_fileName)).c_str();
+    }
+
+    bool fileToBufferV(const std::string &_fileName, std::vector<unsigned char> &_buffer)
+    {
+        std::fstream fileStream(_fileName.c_str(), std::ios::in | std::ios::binary);
+        if (fileStream.fail())
+        {
+            perror(_fileName.c_str());
+            RoboEngine::log_write(ROBOENGINELOG, __FILE__, __FUNCTION__, __LINE__, "Error - Failed to open file: " + _fileName + " error : " + std::strerror(errno));
+            return false;
+        }
+        fileStream.seekg(0, std::ios::end);
+        uint16_t file_size = fileStream.tellg();
+        fileStream.seekg(0, std::ios::beg);
+        file_size -= fileStream.tellg();
+        _buffer.resize(file_size);
+        fileStream.read((char*)&(_buffer[0]), file_size);
+        fileStream.close();
+        return true;
     }
 
  }
