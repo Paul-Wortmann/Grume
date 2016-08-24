@@ -31,6 +31,8 @@ namespace RoboEngine
         m_window = _window;
         if (_window == nullptr)
             RoboEngine::log_write(ROBOENGINELOG, __FILE__, __FUNCTION__, __LINE__, "Fatal error - Failed to initialize system event manager");
+        else
+            glfwSetInputMode(m_window, GLFW_STICKY_KEYS, 1);
     }
 
     void re_cSystemEvents::deinitialize(void)
@@ -39,49 +41,8 @@ namespace RoboEngine
 
     void re_cSystemEvents::process(void)
     {
-        /*
-        while (SDL_PollEvent(&m_event))
-        {
-            //std::cout << "Event ->n" << event.type << "\n";
-            switch(m_event.type)
-            {
-                case SDL_QUIT:
-                    m_quit = true;
-                break;
-                case SDL_WINDOWEVENT:
-                    switch(m_event.window.event)
-                    {
-                        case SDL_WINDOWEVENT_ENTER:
-                        break;
-                        case SDL_WINDOWEVENT_LEAVE:
-                        break;
-                        default:
-                            //RoboEngine::log_write(ROBOENGINELOG, __FILE__, __FUNCTION__, __LINE__, "Non fatal warning - Window event not processed: "+std::to_string(m_event.window.event));
-                        break;
-                    }
-                break;
-                case SDL_MOUSEMOTION:
-                    m_mouseX = m_event.motion.x;
-                    m_mouseY = m_event.motion.y;
-                break;
-                case SDL_MOUSEBUTTONDOWN:
-                    m_keyMap[m_event.button.button] = true;
-                break;
-                case SDL_MOUSEBUTTONUP:
-                    m_keyMap[m_event.button.button] = false;
-                break;
-                case SDL_KEYDOWN:
-                    m_keyMap[m_event.key.keysym.sym] = true;
-                break;
-                case SDL_KEYUP:
-                    m_keyMap[m_event.key.keysym.sym] = false;
-                break;
-                default:
-                        //RoboEngine::log_write(ROBOENGINELOG, __FILE__, __FUNCTION__, __LINE__, "Non fatal warning - Event not processed: "+std::to_string(m_event.type));
-                break;
-            }
-        }
-        */
+        if (glfwWindowShouldClose(m_window) == 1)
+            m_quit = true;
     }
 
 }

@@ -111,6 +111,7 @@ namespace RoboEngine
     {
         uint16_t return_value = EXIT_SUCCESS;
         glfwPollEvents();
+        m_SystemEvents.process();
         if (m_SystemEvents.statusQuit())
             RE_STATE = RE_STATE_ENUM::RE_DEACTIVATING;
         return_value = process(_dt);

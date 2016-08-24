@@ -40,19 +40,19 @@ namespace RoboEngine
         public:
             re_cSystemEvents(void) {}
             virtual ~re_cSystemEvents(void) {}
+            re_cSystemEvents(const re_cSystemEvents&) = default;
+            re_cSystemEvents& operator=(const re_cSystemEvents& rhs) {if (this == &rhs) return *this; return *this;}
             void initialize(GLFWwindow* _window);
             void deinitialize(void);
             void process(void);
             inline bool statusQuit(void) { return m_quit; }
-            inline void set_mouseCoords(float x, float y) {m_mouseX = x; m_mouseY = y;}
-            inline float get_mouseX() const {return m_mouseX;}
-            inline float get_mouseY() const {return m_mouseY;}
-            bool keyDown(uint16_t keyID);
+            inline bool getKey(int32_t _key){ return (glfwGetKey(m_window, _key) != GLFW_RELEASE ); }
+            inline int32_t GetMouseButton (int32_t _button) { return glfwGetMouseButton(m_window, _button); }
+            inline void GetCursorPos (double *_xpos, double *_ypos) { glfwGetCursorPos (m_window, _xpos, _ypos); }
+            inline void SetCursorPos (double _xpos, double _ypos) { glfwSetCursorPos (m_window, _xpos, _ypos); }
+
         private:
             GLFWwindow* m_window = nullptr;
-            std::unordered_map<unsigned int, bool> m_keyMap = {};
-            float m_mouseX = 0.0f;
-            float m_mouseY = 0.0f;
             bool m_quit = false;
     };
 
