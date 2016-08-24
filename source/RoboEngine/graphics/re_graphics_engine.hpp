@@ -51,6 +51,7 @@ namespace RoboEngine
             void deinitialize(void);
             void render(void);
             inline void setEntity(re_sEntity *_entityHead) {m_entityHead = _entityHead;  m_entity = _entityHead;}
+            inline GLFWwindow* getWindow(void) { return m_window; }
         private:
             GLFWwindow* m_window = nullptr;
             std::string m_title = "Frost and Flame";

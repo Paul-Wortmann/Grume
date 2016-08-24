@@ -24,12 +24,13 @@
 #ifndef RE_SYSTEM_EVENTS_HPP
 #define RE_SYSTEM_EVENTS_HPP
 
-#include <SDL2/SDL.h>
-
+#include <GL/glew.h>
+#include <GLFW/glfw3.h>
 #include <cstdint>
 #include <cstdlib>
 #include <iostream>
 #include <unordered_map>
+#include "re_log.hpp"
 
 namespace RoboEngine
 {
@@ -39,7 +40,7 @@ namespace RoboEngine
         public:
             re_cSystemEvents(void) {}
             virtual ~re_cSystemEvents(void) {}
-            void initialize(void);
+            void initialize(GLFWwindow* _window);
             void deinitialize(void);
             void process(void);
             inline bool statusQuit(void) { return m_quit; }
@@ -48,7 +49,7 @@ namespace RoboEngine
             inline float get_mouseY() const {return m_mouseY;}
             bool keyDown(uint16_t keyID);
         private:
-            SDL_Event m_event = {};
+            GLFWwindow* m_window = nullptr;
             std::unordered_map<unsigned int, bool> m_keyMap = {};
             float m_mouseX = 0.0f;
             float m_mouseY = 0.0f;

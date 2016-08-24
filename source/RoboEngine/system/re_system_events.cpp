@@ -21,16 +21,16 @@
  * @date 2011-11-11
  */
 
-#include <SDL2/SDL.h>
-
 #include "re_system_events.hpp"
-#include "re_log.hpp"
 
 namespace RoboEngine
 {
 
-    void re_cSystemEvents::initialize(void)
+    void re_cSystemEvents::initialize(GLFWwindow* _window)
     {
+        m_window = _window;
+        if (_window == nullptr)
+            RoboEngine::log_write(ROBOENGINELOG, __FILE__, __FUNCTION__, __LINE__, "Fatal error - Failed to initialize system event manager");
     }
 
     void re_cSystemEvents::deinitialize(void)
@@ -39,6 +39,7 @@ namespace RoboEngine
 
     void re_cSystemEvents::process(void)
     {
+        /*
         while (SDL_PollEvent(&m_event))
         {
             //std::cout << "Event ->n" << event.type << "\n";
@@ -80,6 +81,7 @@ namespace RoboEngine
                 break;
             }
         }
+        */
     }
 
 }

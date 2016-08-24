@@ -45,7 +45,6 @@ namespace RoboEngine
         {
             RE_STATE = RE_STATE_ENUM::RE_ACTIVE;
             m_entityManager.initialize();
-            m_SystemEvents.initialize();
             m_frameTimer.initialize();
             return_value = m_graphicsEngine.initialize();
             if (return_value == EXIT_FAILURE)
@@ -54,6 +53,8 @@ namespace RoboEngine
             }
             else
             {
+                m_window = m_graphicsEngine.getWindow();
+                m_SystemEvents.initialize(m_window);
                 re_sEntity *entity_1 = m_entityManager.getNew();
                 m_entityManager.addPhysics(entity_1);
                 m_entityManager.addRender(entity_1);

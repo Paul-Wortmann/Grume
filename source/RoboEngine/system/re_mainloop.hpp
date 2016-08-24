@@ -40,11 +40,14 @@ namespace RoboEngine
         public:
             re_cMainLoop(void) {}
             virtual ~re_cMainLoop(void) {}
+            re_cMainLoop(const re_cMainLoop&) = default;
+            re_cMainLoop& operator=(const re_cMainLoop& _rhs) {if (this == &_rhs) return *this; return *this;}
             virtual uint16_t initialize(void) = 0;
             virtual uint16_t deinitialize(void) = 0;
             virtual uint16_t process(int64_t _dt) = 0;
             virtual uint16_t run(void) final;
         private:
+            GLFWwindow* m_window = nullptr;
             virtual uint16_t initialize_internal(void) final;
             virtual uint16_t deinitialize_internal(void) final;
             virtual uint16_t process_internal(int64_t _dt) final;
