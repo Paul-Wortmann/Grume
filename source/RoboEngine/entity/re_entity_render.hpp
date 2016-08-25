@@ -34,6 +34,7 @@ namespace RoboEngine
 
     struct re_sEntityRender
     {
+      uint32_t VAO_ID = 0;
       uint32_t VBO_ID = 0;
       re_sMesh *mesh = nullptr;
       re_sTexture *texture = nullptr;

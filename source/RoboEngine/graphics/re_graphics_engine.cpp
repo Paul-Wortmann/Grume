@@ -105,17 +105,21 @@ namespace RoboEngine
                                 glEnableVertexAttribArray(i);
                         }
                         // initialize mesh
-                        if (m_entity->render->shader->ID == 0)
+                        if (m_entity->render->VAO_ID == 0)
                         {
-                            glGenBuffers(1, &m_entity->render->shader->ID);
-                            glBindBuffer(GL_ARRAY_BUFFER, m_entity->render->shader->ID);
+                            glGenVertexArrays(1, &m_entity->render->VAO_ID);
+                            glBindVertexArray(m_entity->render->VAO_ID);
+                            glGenBuffers(1, &m_entity->render->VBO_ID);
+                            glBindBuffer(GL_ARRAY_BUFFER, m_entity->render->VBO_ID);
                             glBufferData(GL_ARRAY_BUFFER, sizeof(m_entity->render->mesh->index), m_entity->render->mesh->index, GL_STATIC_DRAW);
                             glBindBuffer(GL_ARRAY_BUFFER, 0);
+                            glBindVertexArray(0);
                         }
                         // render mesh
-                        if (m_entity->render->shader->ID != 0)
+                        if (m_entity->render->VAO_ID != 0)
                         {
-                            glBindBuffer(GL_ARRAY_BUFFER, m_entity->render->shader->ID);
+                            glBindVertexArray(m_entity->render->VAO_ID);
+                            glBindBuffer(GL_ARRAY_BUFFER, m_entity->render->VBO_ID);
                             glEnableVertexAttribArray(0);
 
                             glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(v8_f), (void*)offsetof(v8_f, x));
@@ -126,6 +130,7 @@ namespace RoboEngine
 
                             glEnableVertexAttribArray(0);
                             glBindBuffer(GL_ARRAY_BUFFER, 0);
+                            glBindVertexArray(0);
                         }
                     }
 
