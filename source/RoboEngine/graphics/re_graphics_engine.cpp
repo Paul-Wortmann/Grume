@@ -92,22 +92,29 @@ namespace RoboEngine
                     {
                         if (m_currentShader != m_entity->render->shader->ID)
                         {
+                            RoboEngine::log_write(ROBOENGINELOG, __FILE__, __FUNCTION__, __LINE__, "Disable shader program: " + std::to_string(m_currentShader));
                             glUseProgram(0);
-                            for (uint16_t i = 0; i < m_entity->render->shader->numAttributes; i++)
+                            for (uint16_t i = 0; i < m_entity->render->shader->numAttributes; i++) // error, num attributes of current shader, not active shader!
                                 glDisableVertexAttribArray(i);
                             m_currentShader = 0;
                         }
                         if (m_currentShader == 0)
                         {
                             m_currentShader = m_entity->render->shader->ID;
+                            RoboEngine::log_write(ROBOENGINELOG, __FILE__, __FUNCTION__, __LINE__, "Enabling shader program: " + std::to_string(m_currentShader));
                             glUseProgram(m_entity->render->shader->ID);
                             for (uint16_t i = 0; i < m_entity->render->shader->numAttributes; i++)
                                 glEnableVertexAttribArray(i);
                         }
+                    }
+                    //mesh
+                    if ((m_entity->render->shader != nullptr) && (m_entity->render->shader->ID != 0))
+                    {
                         // initialize mesh
                         if (m_entity->render->VAO_ID == 0)
                         {
                             glGenVertexArrays(1, &m_entity->render->VAO_ID);
+                            RoboEngine::log_write(ROBOENGINELOG, __FILE__, __FUNCTION__, __LINE__, "Initializing vao: " + std::to_string(m_entity->render->VAO_ID));
                             glBindVertexArray(m_entity->render->VAO_ID);
                             glGenBuffers(1, &m_entity->render->VBO_ID);
                             glBindBuffer(GL_ARRAY_BUFFER, m_entity->render->VBO_ID);
@@ -118,6 +125,7 @@ namespace RoboEngine
                         // render mesh
                         if (m_entity->render->VAO_ID != 0)
                         {
+                            //RoboEngine::log_write(ROBOENGINELOG, __FILE__, __FUNCTION__, __LINE__, "Rendering vao: " + std::to_string(m_entity->render->VAO_ID));
                             glBindVertexArray(m_entity->render->VAO_ID);
                             glBindBuffer(GL_ARRAY_BUFFER, m_entity->render->VBO_ID);
                             glEnableVertexAttribArray(0);
