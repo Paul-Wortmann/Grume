@@ -63,7 +63,6 @@ namespace RoboEngine
             uint16_t m_currentDisplayMode = 0;
             uint16_t m_numberDisplays = 0;
             uint16_t m_numberDisplayModes = 0;
-            uint16_t m_currentShader = 0;
             re_sEntity *m_entityHead = nullptr;
             re_sEntity *m_entity = nullptr;
     };

@@ -32,14 +32,17 @@
 namespace RoboEngine
 {
 
+    enum VBO : uint32_t {VERTEX = 0, COUNT};
+
     struct re_sEntityRender
     {
-      uint32_t VAO_ID = 0;
-      uint32_t VBO_ID = 0;
-      re_sMesh *mesh = nullptr;
-      re_sTexture *texture = nullptr;
-      re_sShader *shader = nullptr;
-      re_sEntityRender *next = nullptr;
+        uint32_t VAO_ID = 0;
+        uint32_t VBO_ID[VBO::COUNT] = {};
+
+        re_sMesh *mesh = nullptr;
+        re_sTexture *texture = nullptr;
+        re_sShader *shader = nullptr;
+        re_sEntityRender *next = nullptr;
     };
 
     class re_cEntityRenderManager
