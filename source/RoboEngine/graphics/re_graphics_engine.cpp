@@ -65,9 +65,10 @@ namespace RoboEngine
                 RoboEngine::log_write(ROBOENGINELOG, __FILE__, __FUNCTION__, __LINE__, reinterpret_cast<const char*>(glGetString(GL_RENDERER)));
                 RoboEngine::log_write(ROBOENGINELOG, __FILE__, __FUNCTION__, __LINE__, reinterpret_cast<const char*>(glGetString(GL_SHADING_LANGUAGE_VERSION)));
 
-                glClearColor(0.1f,0.1f,0.4f,1);
+                glEnable(GL_DEPTH_TEST);
+                glDepthFunc(GL_LESS);
                 glClearDepth(1.0);
-
+                glClearColor(0.1f,0.1f,0.4f,1);
             }
         }
         return return_value;
@@ -101,6 +102,9 @@ namespace RoboEngine
                         glUseProgram(m_entity->render->shader->ID);
 
                         m_entity->render->MVP_ID = glGetUniformLocation(m_entity->render->shader->ID, "MVP");
+                        glActiveTexture(GL_TEXTURE0);
+                        glBindTexture(GL_TEXTURE_2D, m_entity->render->texture->ID);
+                        glUniform1i(getUniformLocation(m_entity->render->shader->ID, "diffuse"), 0);
 
                         glEnableVertexAttribArray(0);
                         glVertexAttribPointer(0,3,GL_FLOAT,GL_FALSE,sizeof(v8_f),(void*)nullptr);

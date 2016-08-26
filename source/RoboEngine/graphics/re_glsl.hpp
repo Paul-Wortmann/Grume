@@ -35,6 +35,7 @@ namespace RoboEngine
 
     void freeShader(uint32_t _shaderID);
     void loadShader(const std::string &_fileName, uint32_t &_shaderID, uint32_t &_numAttribs);
+    int32_t getUniformLocation(uint32_t _programID, const std::string & _uniformName);
 
 }
 

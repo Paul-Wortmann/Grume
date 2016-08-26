@@ -151,15 +151,13 @@ namespace RoboEngine
         }
     }
 
-/*
-    int32_t getUniformLocation(const std::string & _uniformName)
+    int32_t getUniformLocation(uint32_t _programID, const std::string & _uniformName)
     {
-        uint32_t location = glGetUniformLocation(m_program_ID, _uniformName.c_str());
+        uint32_t location = glGetUniformLocation(_programID, _uniformName.c_str());
         if (location == GL_INVALID_INDEX)
-            RoboEngine::log_write(ROBOENGINELOG, __FILE__, __FUNCTION__, __LINE__, "Uniform " + _uniformName + "not found in shader.");
+            RoboEngine::log_write(ROBOENGINELOG, __FILE__, __FUNCTION__, __LINE__, "Error - Uniform " + _uniformName + "not found in shader.");
         return location;
     }
-*/
 
 
 }
