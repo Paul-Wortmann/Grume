@@ -63,7 +63,6 @@ namespace RoboEngine
                 RoboEngine::log_write(ROBOENGINELOG, __FILE__, __FUNCTION__, __LINE__, reinterpret_cast<const char*>(glGetString(GL_RENDERER)));
                 RoboEngine::log_write(ROBOENGINELOG, __FILE__, __FUNCTION__, __LINE__, reinterpret_cast<const char*>(glGetString(GL_SHADING_LANGUAGE_VERSION)));
 
-
                 glClearColor(0.1f,0.1f,0.4f,1);
                 glClearDepth(1.0);
 
@@ -100,7 +99,7 @@ namespace RoboEngine
                         glUseProgram(m_entity->render->shader->ID);
 
                         glEnableVertexAttribArray(0);
-                        glVertexAttribPointer(0,3,GL_FLOAT,GL_FALSE,sizeof(v8_f),(void*)0);
+                        glVertexAttribPointer(0,3,GL_FLOAT,GL_FALSE,sizeof(v8_f),(void*)nullptr);
                         glEnableVertexAttribArray(1);
                         glVertexAttribPointer(1,3,GL_FLOAT,GL_FALSE,sizeof(v8_f),(void*)(sizeof(float)*3));
                         glEnableVertexAttribArray(2);
@@ -108,6 +107,7 @@ namespace RoboEngine
 
                         RoboEngine::log_write(ROBOENGINELOG, __FILE__, __FUNCTION__, __LINE__, "Initializing vao: " + std::to_string(m_entity->render->VAO_ID));
                     }
+                    // Draw render entity
                     if (m_entity->render->VAO_ID != 0)
                     {
                         glBindVertexArray(m_entity->render->VAO_ID);
