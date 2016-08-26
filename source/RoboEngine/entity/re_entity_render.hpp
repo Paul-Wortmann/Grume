@@ -25,6 +25,7 @@
 #define RE_ENTITY_RENDER_HPP
 
 #include <GL/glew.h>
+#include <glm/glm.hpp>
 #include "../resource/re_manager_mesh.hpp"
 #include "../resource/re_manager_shader.hpp"
 #include "../resource/re_manager_texture.hpp"
@@ -38,6 +39,8 @@ namespace RoboEngine
     {
         uint32_t VAO_ID = 0;
         uint32_t VBO_ID[VBO::COUNT] = {};
+
+        glm::mat4 Model = glm::mat4(1.0f);
 
         re_sMesh *mesh = nullptr;
         re_sTexture *texture = nullptr;
