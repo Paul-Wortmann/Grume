@@ -58,6 +58,8 @@ namespace RoboEngine
             }
             else
             {
+                m_camera.initialize(m_displayX, m_displayY, 45.0f);
+                m_camera.setPosition(glm::vec3(4,3,3), glm::vec3(0,0,0));
                 RoboEngine::log_write(ROBOENGINELOG, __FILE__, __FUNCTION__, __LINE__, reinterpret_cast<const char*>(glGetString(GL_VERSION)));
                 RoboEngine::log_write(ROBOENGINELOG, __FILE__, __FUNCTION__, __LINE__, reinterpret_cast<const char*>(glGetString(GL_VENDOR)));
                 RoboEngine::log_write(ROBOENGINELOG, __FILE__, __FUNCTION__, __LINE__, reinterpret_cast<const char*>(glGetString(GL_RENDERER)));
@@ -98,6 +100,8 @@ namespace RoboEngine
 
                         glUseProgram(m_entity->render->shader->ID);
 
+                        m_entity->render->MVP_ID = glGetUniformLocation(m_entity->render->shader->ID, "MVP");
+
                         glEnableVertexAttribArray(0);
                         glVertexAttribPointer(0,3,GL_FLOAT,GL_FALSE,sizeof(v8_f),(void*)nullptr);
                         glEnableVertexAttribArray(1);
@@ -111,6 +115,8 @@ namespace RoboEngine
                     if (m_entity->render->VAO_ID != 0)
                     {
                         glBindVertexArray(m_entity->render->VAO_ID);
+                        glm::mat4 mvp = m_camera.getProjection() * m_camera.getView() * m_entity->render->Model;
+                        glUniformMatrix4fv(m_entity->render->MVP_ID, 1, GL_FALSE, &mvp[0][0]);
                         glDrawArrays(GL_TRIANGLES, 0, m_entity->render->mesh->indexCount);
                     }
                 }

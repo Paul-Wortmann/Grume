@@ -34,6 +34,7 @@
 #include <chrono>
 #include "../entity/re_entity.hpp"
 #include "../system/re_log.hpp"
+#include "re_camera.hpp"
 
 namespace RoboEngine
 {
@@ -65,6 +66,7 @@ namespace RoboEngine
             uint16_t m_numberDisplayModes = 0;
             re_sEntity *m_entityHead = nullptr;
             re_sEntity *m_entity = nullptr;
+            re_cCamera m_camera = {};
     };
 
 }

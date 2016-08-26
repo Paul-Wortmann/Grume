@@ -26,5 +26,21 @@
 namespace RoboEngine
 {
 
+    void re_cCamera::setPosition(glm::vec3 _position, glm::vec3 _lookat)
+    {
+        m_position = _position;
+        m_lookat = _lookat;
+        m_projection = glm::perspective(glm::radians(m_fov), (float)m_displayX / (float)m_displayY, 0.1f, 100.0f);
+        m_view = glm::lookAt(m_position, m_lookat, m_upvec);
+    }
+
+    void re_cCamera::initialize(uint16_t _displayX, uint16_t _displayY, float _fov)
+    {
+        m_displayX = _displayX;
+        m_displayY = _displayY;
+        m_fov = _fov;
+        m_projection = glm::perspective(glm::radians(m_fov), (float)m_displayX / (float)m_displayY, 0.1f, 100.0f);
+        m_view = glm::lookAt(m_position, m_lookat, m_upvec);
+    }
 
 }

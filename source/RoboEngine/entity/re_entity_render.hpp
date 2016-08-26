@@ -41,6 +41,7 @@ namespace RoboEngine
         uint32_t VBO_ID[VBO::COUNT] = {};
 
         glm::mat4 Model = glm::mat4(1.0f);
+        uint32_t MVP_ID = 0;
 
         re_sMesh *mesh = nullptr;
         re_sTexture *texture = nullptr;
