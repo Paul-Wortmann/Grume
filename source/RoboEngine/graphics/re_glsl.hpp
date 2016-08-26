@@ -21,8 +21,8 @@
  * @date 2011-11-11
  */
 
-#ifndef C_GLSL_HPP
-#define C_GLSL_HPP
+#ifndef RE_GLSL_HPP
+#define RE_GLSL_HPP
 
 #include <string>
 #include <fstream>
@@ -38,4 +38,4 @@ namespace RoboEngine
 
 }
 
-#endif // C_GLSL_HPP
+#endif // RE_GLSL_HPP
