@@ -46,6 +46,7 @@ namespace RoboEngine
             RE_STATE = RE_STATE_ENUM::RE_ACTIVE;
             m_entityManager.initialize();
             m_frameTimer.initialize();
+            //graphics engine
             return_value = m_graphicsEngine.initialize();
             if (return_value == EXIT_FAILURE)
             {
@@ -64,6 +65,18 @@ namespace RoboEngine
                 m_entityManager.addShader(entity_1,"data/shader/shader_000");
 
                 m_graphicsEngine.setEntity((re_sEntity*)m_entityManager.getHead());
+                m_graphicsEngine.setEntity((re_sEntity*)m_entityManager.getHead());
+                //physics engine
+                return_value = m_physicsEngine.initialize();
+                if (return_value == EXIT_FAILURE)
+                {
+                    RoboEngine::log_write(ROBOENGINELOG, __FILE__, __FUNCTION__, __LINE__, "Fatal error - Failed to initialize the physics engine");
+                }
+                else
+                {
+                    m_physicsEngine.setEntity((re_sEntity*)m_entityManager.getHead());
+                    return_value = initialize();
+                }
                 return_value = initialize();
             }
         }
@@ -75,6 +88,7 @@ namespace RoboEngine
         uint16_t return_value = EXIT_SUCCESS;
         RE_STATE = RE_STATE_ENUM::RE_INACTIVE;
         m_graphicsEngine.deinitialize();
+        m_physicsEngine.deinitialize();
         m_SystemEvents.deinitialize();
 
         m_entityManager.freeAll();
@@ -96,6 +110,7 @@ namespace RoboEngine
                 while(m_frameTimer.ready())
                 {
                     uint64_t deltaTime = m_frameTimer.frameTime();
+                    m_physicsEngine.process(deltaTime);
                     return_value = process_internal(deltaTime);
                     //std::cout << "Main engine running at -> " << std::to_string(deltaTime) << "ms frame time." << std::endl;
                 }
