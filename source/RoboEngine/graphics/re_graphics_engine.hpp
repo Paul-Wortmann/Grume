@@ -21,8 +21,8 @@
  * @date 2011-11-11
  */
 
-#ifndef RE_GRAPHICS_HPP
-#define RE_GRAPHICS_HPP
+#ifndef RE_GRAPHICS_ENGINE_HPP
+#define RE_GRAPHICS_ENGINE_HPP
 
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
@@ -38,6 +38,7 @@
 
 namespace RoboEngine
 {
+
     #define RE_GL_CONTEXT_MAJOR 3
     #define RE_GL_CONTEXT_MINOR 3
 
@@ -70,5 +71,5 @@ namespace RoboEngine
     };
 
 }
-#endif // RE_GRAPHICS_HPP
+#endif // RE_GRAPHICS_ENGINE_HPP
 
