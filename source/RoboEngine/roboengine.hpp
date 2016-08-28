@@ -42,14 +42,21 @@
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 #include <glm/glm.hpp>
+#include <glm/vec3.hpp>
+#include <glm/vec4.hpp>
+#include <glm/mat4x4.hpp>
+#include <glm/gtc/matrix_transform.hpp>
 
 #include "entity/re_entity.hpp"
 #include "entity/re_entity_physics.hpp"
 #include "entity/re_entity_render.hpp"
 
+#include "graphics/re_camera.hpp"
 #include "graphics/re_glsl.hpp"
 #include "graphics/re_graphics_engine.hpp"
 #include "graphics/re_image_loader.hpp"
+
+#include "physics/re_physics_engine.hpp"
 
 #include "resource/lodepng.h"
 #include "resource/re_loader_dae.hpp"

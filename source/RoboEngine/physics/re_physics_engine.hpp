@@ -24,6 +24,12 @@
 #ifndef RE_PHYSICS_ENGINE_HPP
 #define RE_PHYSICS_ENGINE_HPP
 
+#include <glm/glm.hpp>
+#include <glm/vec3.hpp>
+#include <glm/vec4.hpp>
+#include <glm/mat4x4.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+
 #include <cstdlib>
 #include <cstdint>
 #include <string>

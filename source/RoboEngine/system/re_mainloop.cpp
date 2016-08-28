@@ -59,7 +59,7 @@ namespace RoboEngine
                 re_sEntity *entity_1 = m_entityManager.getNew();
                 m_entityManager.addPhysics(entity_1);
                 m_entityManager.addRender(entity_1);
-                entity_1->physics->position.set(0.0f, 0.0f, 0.0f);
+                //entity_1->physics->position.set(0.0f, 0.0f, 0.0f);
                 m_entityManager.addTexture(entity_1,"data/texture/test.png");
                 m_entityManager.addMesh(entity_1,"data/mesh/test.dae");
                 m_entityManager.addShader(entity_1,"data/shader/shader_000");

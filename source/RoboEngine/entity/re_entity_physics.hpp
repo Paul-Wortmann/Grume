@@ -24,6 +24,7 @@
 #ifndef RE_ENTITY_PHYSICS_HPP
 #define RE_ENTITY_PHYSICS_HPP
 
+#include <glm/glm.hpp>
 #include "../system/re_types.hpp"
 
 namespace RoboEngine
@@ -31,7 +32,10 @@ namespace RoboEngine
 
     struct re_sEntityPhysics
     {
-            v3_f position = {};
+            glm::vec3 position = glm::vec3(0.0f);
+            glm::vec3 translation = glm::vec3(0.0f);
+            glm::vec3 rotation = glm::vec3(0.0f);
+            glm::vec3 scale = glm::vec3(1.0f);
             re_sEntityPhysics *next = nullptr;
     };
 

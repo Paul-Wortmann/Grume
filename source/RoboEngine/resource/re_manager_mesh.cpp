@@ -77,7 +77,7 @@ namespace RoboEngine
             daeImport(_fileName, daeData);
             _mesh->indexCount = daeData->face_count;
             _mesh->index = new v8_f[_mesh->indexCount];
-            for (uint16_t i = 0; i < _mesh->indexCount; i++)
+            for (uint32_t i = 0; i < _mesh->indexCount; i++)
             {
                 _mesh->index[i].x = daeData->face[i].x;
                 _mesh->index[i].y = daeData->face[i].y;
@@ -96,9 +96,9 @@ namespace RoboEngine
             objImport(_fileName, objData);
             _mesh->indexCount = objData->face_count * 3;
             _mesh->index = new v8_f[_mesh->indexCount];
-            for (uint16_t i = 0; i < objData->face_count; i++)
+            for (uint32_t i = 0; i < objData->face_count; i++)
             {
-                for (uint16_t j = 0; j < 3; j++)
+                for (uint32_t j = 0; j < 3; j++)
                 {
                     _mesh->index[(i*3)+j].x = objData->vertex[objData->face[i].p[j].x].x;
                     _mesh->index[(i*3)+j].y = objData->vertex[objData->face[i].p[j].x].y;
