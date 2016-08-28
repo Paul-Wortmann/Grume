@@ -52,55 +52,14 @@ Else(NOT IS_ABSOLUTE "${DATADIR}")
 	add_definitions(-DDATA_INSTALL_DIR="${DATADIR}")
 EndIf(NOT IS_ABSOLUTE "${DATADIR}")
 
-# Detect dependencies
-
-#FIND_LIBRARY(ROBO_ENGINE roboengine lib/libRoboEngine.a)
-
-#add_library(ROBO_ENGINE STATIC IMPORTED)
-#set_property(TARGET ROBO_ENGINE PROPERTY IMPORTED_LOCATION libRoboEngine.a)
-#If (NOT ROBO_ENGINE_FOUND)
-#    Message (ERROR " Couldn't find the RoboEngine library.")
-#Else (NOT ROBO_ENGINE_FOUND)
-#    INCLUDE_DIRECTORIES(${ROBO_ENGINE_INCLUDE_DIRS})
-#    link_directories(${ROBO_ENGINE_LIBRARY})
-#EndIf (NOT ROBO_ENGINE_FOUND)
-
 Include(FindPkgConfig)
 
-PKG_SEARCH_MODULE(SDL2 REQUIRED sdl2)
-If (NOT SDL2_FOUND)
-    Message (ERROR "Couldn't find SDL2 development files. On Debian-based systems (such as Ubuntu) you should install the 'libsdl2-dev' package.")
-Else (NOT SDL2_FOUND)
-    INCLUDE_DIRECTORIES(${SDL2_INCLUDE_DIRS})
-EndIf (NOT SDL2_FOUND)
-
-PKG_SEARCH_MODULE(SDL2IMAGE REQUIRED SDL2_image)
-If (NOT SDL2IMAGE_FOUND)
-    Message (ERROR "Couldn't find SDL2-image development files. On Debian-based systems (such as Ubuntu) you should install the 'libsdl2-image-dev' package.")
-Else (NOT SDL2IMAGE_FOUND)
-    INCLUDE_DIRECTORIES(${SDL2IMAGE_INCLUDE_DIRS})
-EndIf (NOT SDL2IMAGE_FOUND)
-
-PKG_SEARCH_MODULE(SDL2MIXER REQUIRED SDL2_mixer)
-If (NOT SDL2MIXER_FOUND)
-    Message (ERROR "Couldn't find SDL2-mixer development files. On Debian-based systems (such as Ubuntu) you should install the 'libsdl2-mixer-dev' package.")
-Else (NOT SDL2MIXER_FOUND)
-    INCLUDE_DIRECTORIES(${SDL2MIXER_INCLUDE_DIRS})
-EndIf (NOT SDL2MIXER_FOUND)
-
- PKG_SEARCH_MODULE(SDL2NET REQUIRED SDL2_net)
- If (NOT SDL2NET_FOUND)
-     Message (ERROR "Couldn't find SDL2_net development files. On Debian-based systems (such as Ubuntu) you should install the 'libsdl2-net-dev' package.")
- Else (NOT SDL2NET_FOUND)
-     INCLUDE_DIRECTORIES(${SDL2NET_INCLUDE_DIRS})
- EndIf (NOT SDL2NET_FOUND)
-
-PKG_SEARCH_MODULE(SDL2TTF REQUIRED SDL2_ttf)
-If (NOT SDL2TTF_FOUND)
-    Message (ERROR "Couldn't find SDL2-ttf development files. On Debian-based systems (such as Ubuntu) you should install the 'libsdl2-ttf-dev' package.")
-Else (NOT SDL2TTF_FOUND)
-    INCLUDE_DIRECTORIES(${SDL2TTF_INCLUDE_DIRS})
-EndIf (NOT SDL2TTF_FOUND)
+PKG_SEARCH_MODULE(GLFW3 REQUIRED glfw3)
+If (NOT GLFW3_FOUND)
+    Message (ERROR "Couldn't find GLFW3 development files. On Debian-based systems (such as Ubuntu) you should install the 'glfw3-dev' package.")
+Else (NOT GLFW3_FOUND)
+    INCLUDE_DIRECTORIES(${GLFW3_INCLUDE_DIRS})
+EndIf (NOT GLFW3_FOUND)
 
 #PKG_SEARCH_MODULE(PHYSFS REQUIRED PhysFS)
 #If (NOT PHYSFS_FOUND)
@@ -145,10 +104,14 @@ Set (FROST_AND_FLAME_SOURCES
 	./source/RoboEngine/entity/re_entity_physics.cpp
 	./source/RoboEngine/entity/re_entity_render.cpp
 
+	./source/RoboEngine/graphics/re_camera.cpp
 	./source/RoboEngine/graphics/re_glsl.cpp
 	./source/RoboEngine/graphics/re_graphics_engine.cpp
 	./source/RoboEngine/graphics/re_image_loader.cpp
 
+	./source/RoboEngine/physics/re_physics_engine.cpp
+
+	./source/RoboEngine/resource/lodepng.cpp
 	./source/RoboEngine/resource/re_loader_dae.cpp
 	./source/RoboEngine/resource/re_loader_obj.cpp
 	./source/RoboEngine/resource/re_manager_mesh.cpp
@@ -179,6 +142,6 @@ Add_Executable (frost_and_flame ${FROST_AND_FLAME_SOURCES})
 
 link_directories( /path/to/PHYSFSlibs/)
 
-Target_Link_Libraries (frost_and_flame ${CMAKE_LD_FLAGS} ${PHYSFS_LIBRARY} ${SDL2_LIBRARIES} ${SDL2IMAGE_LIBRARIES} ${SDL2MIXER_LIBRARIES} ${SDL2TTF_LIBRARIES} ${SDL2NET_LIBRARIES} ${OPENGL_LIBRARIES} ${GLEW_LIBRARIES})
+Target_Link_Libraries (frost_and_flame ${CMAKE_LD_FLAGS} ${PHYSFS_LIBRARY} ${GLFW3_LIBRARIES} ${OPENGL_LIBRARIES} ${GLEW_LIBRARIES})
 
 
