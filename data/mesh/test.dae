@@ -5,8 +5,8 @@
       <author>Blender User</author>
       <authoring_tool>Blender 2.77.0 commit date:2016-04-05, commit time:18:12, hash:abf6f08</authoring_tool>
     </contributor>
-    <created>2016-08-26T09:54:09</created>
-    <modified>2016-08-26T09:54:09</modified>
+    <created>2016-08-28T00:44:55</created>
+    <modified>2016-08-28T00:44:55</modified>
     <unit name="meter" meter="1"/>
     <up_axis>Z_UP</up_axis>
   </asset>
@@ -236,9 +236,9 @@
           </technique_common>
         </source>
         <source id="Cube_001-mesh-normals">
-          <float_array id="Cube_001-mesh-normals-array" count="33">0 0 -1 0 0 1 1 0 0 0 -1 -4.76837e-7 -1 1.19209e-7 -1.49012e-7 2.38419e-7 1 2.38419e-7 0 0 1 1 -2.98023e-7 2.98023e-7 -6.25849e-7 -1 0 -1 0 0 0 1 0</float_array>
+          <float_array id="Cube_001-mesh-normals-array" count="18">0 0 -1 0 0 1 1 0 0 0 -1 0 -1 0 0 0 1 0</float_array>
           <technique_common>
-            <accessor source="#Cube_001-mesh-normals-array" count="11" stride="3">
+            <accessor source="#Cube_001-mesh-normals-array" count="6" stride="3">
               <param name="X" type="float"/>
               <param name="Y" type="float"/>
               <param name="Z" type="float"/>
@@ -246,7 +246,7 @@
           </technique_common>
         </source>
         <source id="Cube_001-mesh-map-0">
-          <float_array id="Cube_001-mesh-map-0-array" count="72">0 0 0 1 1 1 0 0 1 1 1 0 0 0 0 1 1 1 0 0 1 1 1 0 0 0 0 1 1 1 0 0 1 1 1 0 0 0 0 1 1 1 0 0 1 1 1 0 0 0 0 1 1 1 0 0 1 1 1 0 0 0 0 1 1 1 0 0 1 1 1 0</float_array>
+          <float_array id="Cube_001-mesh-map-0-array" count="72">0.75 0.75 0.25 0.25 0.25 0.75 0.25 0.75 0.75 0.25 0.75 0.75 0.75 0.75 0.25 0.25 0.75 0.25 0.75 0.75 0.25 0.25 0.75 0.25 0.25 0.25 0.75 0.75 0.75 0.25 0.75 0.25 0.25 0.75 0.75 0.75 0.75 0.75 0.75 0.25 0.25 0.25 0.25 0.75 0.25 0.25 0.75 0.25 0.75 0.75 0.25 0.75 0.25 0.25 0.75 0.75 0.25 0.75 0.25 0.25 0.25 0.25 0.25 0.75 0.75 0.75 0.75 0.25 0.25 0.25 0.25 0.75</float_array>
           <technique_common>
             <accessor source="#Cube_001-mesh-map-0-array" count="36" stride="2">
               <param name="S" type="float"/>
@@ -262,7 +262,7 @@
           <input semantic="NORMAL" source="#Cube_001-mesh-normals" offset="1"/>
           <input semantic="TEXCOORD" source="#Cube_001-mesh-map-0" offset="2" set="0"/>
           <vcount>3 3 3 3 3 3 3 3 3 3 3 3 </vcount>
-          <p>1 0 0 3 0 1 0 0 2 7 1 3 5 1 4 4 1 5 4 2 6 1 2 7 0 2 8 5 3 9 2 3 10 1 3 11 2 4 12 7 4 13 3 4 14 0 5 15 7 5 16 4 5 17 1 0 18 2 0 19 3 0 20 7 6 21 6 6 22 5 6 23 4 7 24 5 7 25 1 7 26 5 8 27 6 8 28 2 8 29 2 9 30 6 9 31 7 9 32 0 10 33 3 10 34 7 10 35</p>
+          <p>0 0 0 2 0 1 3 0 2 7 1 3 5 1 4 4 1 5 4 2 6 1 2 7 0 2 8 5 3 9 2 3 10 1 3 11 2 4 12 7 4 13 3 4 14 0 5 15 7 5 16 4 5 17 0 0 18 1 0 19 2 0 20 7 1 21 6 1 22 5 1 23 4 2 24 5 2 25 1 2 26 5 3 27 6 3 28 2 3 29 2 4 30 6 4 31 7 4 32 0 5 33 3 5 34 7 5 35</p>
         </polylist>
       </mesh>
     </geometry>
@@ -287,7 +287,7 @@
         <instance_light url="#Lamp_001-light"/>
       </node>
       <node id="Cube" name="Cube" type="NODE">
-        <matrix sid="transform">0.5 0 0 0 0 0.5 0 0 0 0 0.5 0 0 0 0 1</matrix>
+        <matrix sid="transform">1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</matrix>
         <instance_geometry url="#Cube_001-mesh" name="Cube">
           <bind_material>
             <technique_common>
