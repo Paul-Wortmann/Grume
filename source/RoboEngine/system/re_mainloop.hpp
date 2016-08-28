@@ -30,6 +30,7 @@
 #include "../entity/re_entity.hpp"
 #include "../graphics/re_graphics_engine.hpp"
 #include "../physics/re_physics_engine.hpp"
+#include "re_random.hpp"
 
 namespace RoboEngine
 {

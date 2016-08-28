@@ -36,6 +36,7 @@ namespace RoboEngine
     struct re_sEntity
     {
         bool enabled = true;
+        uint32_t ID = 0;
         re_sEntityRender *render = nullptr;
         re_sEntityPhysics *physics = nullptr;
         re_sEntity *next = nullptr;
@@ -53,6 +54,12 @@ namespace RoboEngine
             inline void addRender(re_sEntity *_entity) {_entity->render =m_entityRenderManager.getNew();}
             inline const re_sEntity *getHead(void) {return m_head;}
             inline const re_sEntity *getTail(void) {return m_tail;}
+            inline void setPosition(re_sEntity *_entity, glm::vec3 _position) {_entity->physics->setPosition(_position);}
+            inline void setRotation(re_sEntity *_entity, glm::vec3 _rotation) {_entity->physics->setRotation(_rotation);}
+            inline void setScale(re_sEntity *_entity, glm::vec3 _scale) {_entity->physics->setScale(_scale);}
+            inline void setPosition(uint32_t _ID, glm::vec3 _position) {for(re_sEntity *tEntity = m_head; tEntity != nullptr; tEntity = tEntity->next) if(tEntity->ID == _ID) tEntity->physics->setPosition(_position);}
+            inline void setRotation(uint32_t _ID, glm::vec3 _rotation) {for(re_sEntity *tEntity = m_head; tEntity != nullptr; tEntity = tEntity->next) if(tEntity->ID == _ID) tEntity->physics->setRotation(_rotation);}
+            inline void setScale(uint32_t _ID, glm::vec3 _scale) {for(re_sEntity *tEntity = m_head; tEntity != nullptr; tEntity = tEntity->next) if(tEntity->ID == _ID) tEntity->physics->setScale(_scale);}
             void freeAll(void);
             re_sEntity *getNew(void);
             void addMesh(re_sEntity *_entity, std::string _fileName);
@@ -61,6 +68,7 @@ namespace RoboEngine
 
         protected:
         private:
+            uint32_t m_ID = 0;
             re_cEntityRenderManager m_entityRenderManager = {};
             re_cEntityPhysicsManager m_entityPhysicsManager = {};
             re_cManagerMesh m_managerMesh = {};

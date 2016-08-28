@@ -57,12 +57,14 @@ namespace RoboEngine
         {
             m_head = new re_sEntity;
             m_tail = m_head;
+            m_head->ID = ++m_ID;
             return m_head;
         }
         else
         {
             m_tail->next = new re_sEntity;
             m_tail = m_tail->next;
+            m_tail->ID = ++m_ID;
             return m_tail;
         }
         return nullptr;

@@ -122,6 +122,7 @@ Set (FROST_AND_FLAME_SOURCES
 	./source/RoboEngine/system/re_file.cpp
 	./source/RoboEngine/system/re_log.cpp
 	./source/RoboEngine/system/re_mainloop.cpp
+	./source/RoboEngine/system/re_random.cpp
 	./source/RoboEngine/system/re_system_events.cpp
 	./source/RoboEngine/system/re_time_step.cpp
 	./source/RoboEngine/system/re_types.cpp

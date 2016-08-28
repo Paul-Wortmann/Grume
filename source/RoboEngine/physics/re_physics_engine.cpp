@@ -46,28 +46,25 @@ namespace RoboEngine
                 if ((m_entity->enabled) && (m_entity->physics != nullptr))
                 {
                     // process
-                    bool updateMVP = false;
-
-                    // if data changed...
-                    updateMVP = true;
 
 
-
-
-                    // Update render entity
-                    if ((updateMVP) && (m_entity->render != nullptr))
+                    // If data changed update render entity
+                    if ((m_entity->physics->updateMVP) && (m_entity->render != nullptr))
                     {
-
-                        //m_entity->physics->rotation.x = 0.001f;
-                        m_entity->physics->rotation.y = 0.01f;
+                        //scale
                         //m_entity->physics->scale = glm::vec3(1.0f);
-
-                        m_entity->render->Model = glm::rotate(m_entity->render->Model, m_entity->physics->rotation.x, glm::vec3(1, 0, 0));
-                        m_entity->render->Model = glm::rotate(m_entity->render->Model, m_entity->physics->rotation.y, glm::vec3(0, 1, 0));
-                        m_entity->render->Model = glm::rotate(m_entity->render->Model, m_entity->physics->rotation.z, glm::vec3(0, 0, 1));
-                        m_entity->render->Model = glm::scale(m_entity->render->Model, m_entity->physics->scale);
-
-
+                        m_entity->render->Model = glm::scale(m_entity->render->Model, m_entity->physics->sScale);
+                        //rotate
+                        m_entity->render->Model = glm::rotate(m_entity->render->Model, m_entity->physics->sRotation.x, glm::vec3(1, 0, 0));
+                        m_entity->render->Model = glm::rotate(m_entity->render->Model, m_entity->physics->sRotation.y, glm::vec3(0, 1, 0));
+                        m_entity->render->Model = glm::rotate(m_entity->render->Model, m_entity->physics->sRotation.z, glm::vec3(0, 0, 1));
+                        //translate
+                        m_entity->render->Model = glm::translate(m_entity->render->Model, m_entity->physics->sPosition);
+                        //cleanup
+                        m_entity->physics->updateMVP = false;
+                        m_entity->physics->sPosition = glm::vec3(0.0f);
+                        m_entity->physics->sRotation = glm::vec3(0.0f);
+                        m_entity->physics->sScale = glm::vec3(1.0f);
                     }
                 }
                 m_entity = m_entity->next;

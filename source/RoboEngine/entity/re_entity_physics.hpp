@@ -32,11 +32,17 @@ namespace RoboEngine
 
     struct re_sEntityPhysics
     {
-            glm::vec3 position = glm::vec3(0.0f);
-            glm::vec3 translation = glm::vec3(0.0f);
-            glm::vec3 rotation = glm::vec3(0.0f);
-            glm::vec3 scale = glm::vec3(1.0f);
-            re_sEntityPhysics *next = nullptr;
+        inline void setPosition(glm::vec3 _position) {sPosition = _position; updateMVP = true;}
+        inline void setRotation(glm::vec3 _rotation) {sRotation = _rotation; updateMVP = true;}
+        inline void setScale(glm::vec3 _scale) {sScale = _scale; updateMVP = true;}
+        bool updateMVP = false;
+        glm::vec3 position = glm::vec3(0.0f);
+        glm::vec3 rotation = glm::vec3(0.0f);
+        glm::vec3 scale = glm::vec3(1.0f);
+        glm::vec3 sPosition = glm::vec3(0.0f);
+        glm::vec3 sRotation = glm::vec3(0.0f);
+        glm::vec3 sScale = glm::vec3(1.0f);
+        re_sEntityPhysics *next = nullptr;
     };
 
     class re_cEntityPhysicsManager

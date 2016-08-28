@@ -69,6 +69,7 @@
 #include "system/re_file.hpp"
 #include "system/re_log.hpp"
 #include "system/re_mainloop.hpp"
+#include "system/re_random.hpp"
 #include "system/re_system_events.hpp"
 #include "system/re_time_step.hpp"
 #include "system/re_types.hpp"
