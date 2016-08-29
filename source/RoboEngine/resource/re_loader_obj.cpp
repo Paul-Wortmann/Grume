@@ -72,10 +72,10 @@ namespace RoboEngine
         _objData->vertex_texture = new v2_f[_objData->vertex_texture_count];
         _objData->vertex_normal = new v3_f[_objData->vertex_normal_count];
         _objData->face = new v3_uint32[_objData->face_count];
-        uint32_t v_count = 0;
-        uint32_t vt_count = 0;
-        uint32_t vn_count = 0;
-        uint32_t f_count = 0;
+        uint64_t v_count = 0;
+        uint64_t vt_count = 0;
+        uint64_t vn_count = 0;
+        uint64_t f_count = 0;
         while (std::getline(file_pointer, s_temp))
         {
             if (s_temp.length() >= 6)
@@ -84,7 +84,7 @@ namespace RoboEngine
                 {
                     uint8_t s_count = 0;
                     std::string temp = "";
-                    for (uint32_t i = 2; i < s_temp.length(); i++)
+                    for (uint64_t i = 2; i < s_temp.length(); i++)
                     {
                         if (s_temp[i] == ' ')
                         {
@@ -107,7 +107,7 @@ namespace RoboEngine
                 {
                     uint8_t s_count = 0;
                     std::string temp = "";
-                    for (uint32_t i = 3; i < s_temp.length(); i++)
+                    for (uint64_t i = 3; i < s_temp.length(); i++)
                     {
                         if (s_temp[i] == ' ')
                         {
@@ -128,7 +128,7 @@ namespace RoboEngine
                 {
                     uint8_t s_count = 0;
                     std::string temp = "";
-                    for (uint32_t i = 3; i < s_temp.length(); i++)
+                    for (uint64_t i = 3; i < s_temp.length(); i++)
                     {
                         if (s_temp[i] == ' ')
                         {
@@ -151,7 +151,7 @@ namespace RoboEngine
                 {
                     uint8_t fs_count = 1;
                     std::string temp = "";
-                    for (uint32_t i = 2; i < s_temp.length(); i++)
+                    for (uint64_t i = 2; i < s_temp.length(); i++)
                     {
                         if ((s_temp[i] == '/') || (s_temp[i] == ' '))
                         {
@@ -177,7 +177,7 @@ namespace RoboEngine
                 }
                 if ((s_temp[0] == 'o') && (s_temp[1] == ' '))
                 {
-                    for (uint32_t i = 2; i < s_temp.length(); i++)
+                    for (uint64_t i = 2; i < s_temp.length(); i++)
                     {
                         _objData->name += s_temp[i];
                     }
@@ -199,17 +199,17 @@ namespace RoboEngine
                 RoboEngine::log_write(ROBOENGINELOG, __FILE__, __FUNCTION__, __LINE__, "ERROR -> exporting OBJ  :  " + _objFile);
             file_pointer << "# RoboEngine exported OBJ File" << std::endl;
             file_pointer << "o " << _objData.name << std::endl;
-            for (uint32_t i = 0; i < _objData.vertex_count; i++)
+            for (uint64_t i = 0; i < _objData.vertex_count; i++)
                 file_pointer << "v " << _objData.vertex[i].x << " " << _objData.vertex[i].y << " " << _objData.vertex[i].z << std::endl;
-            for (uint32_t i = 0; i < _objData.vertex_texture_count; i++)
+            for (uint64_t i = 0; i < _objData.vertex_texture_count; i++)
                 file_pointer << "vt " << _objData.vertex_texture[i].x << " " << _objData.vertex_texture[i].y << std::endl;
-            for (uint32_t i = 0; i < _objData.vertex_normal_count; i++)
+            for (uint64_t i = 0; i < _objData.vertex_normal_count; i++)
                 file_pointer << "vn " << _objData.vertex_normal[i].x << " " << _objData.vertex_normal[i].y << " " << _objData.vertex_normal[i].z << std::endl;
             file_pointer << "s off" << std::endl;
-            for (uint32_t i = 0; i < _objData.face_count; i+=3)
+            for (uint64_t i = 0; i < _objData.face_count; i+=3)
             {
                 file_pointer << "f ";
-                for (uint32_t j = 0; j < 3; j++)
+                for (uint64_t j = 0; j < 3; j++)
                 {
                     file_pointer << _objData.face[i+j].x << "/" << _objData.face[i+j].y << "/" << _objData.face[i+j].z;
                     if (j < 2)

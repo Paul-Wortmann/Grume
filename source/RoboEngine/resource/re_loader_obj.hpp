@@ -38,10 +38,10 @@ namespace RoboEngine
     struct re_sobjData
     {
         std::string name = "";
-        uint32_t vertex_count = 0;
-        uint32_t vertex_texture_count = 0;
-        uint32_t vertex_normal_count = 0;
-        uint32_t face_count = 0;
+        uint64_t vertex_count = 0;
+        uint64_t vertex_texture_count = 0;
+        uint64_t vertex_normal_count = 0;
+        uint64_t face_count = 0;
         v3_f* vertex = nullptr;
         v2_f* vertex_texture = nullptr;
         v3_f* vertex_normal = nullptr;

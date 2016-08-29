@@ -51,22 +51,22 @@ namespace RoboEngine
             _daeData = new re_sdaeData;
         if (xml_data != nullptr)
         {
-            uint32_t count_a = re_xml_get_count(*xml_data, XML_enum::XML_TAG_ATTRIBUTE_TEXT, "float_array");
-            for (uint32_t i = 0; i < count_a; i++)
+            uint64_t count_a = re_xml_get_count(*xml_data, XML_enum::XML_TAG_ATTRIBUTE_TEXT, "float_array");
+            for (uint64_t i = 0; i < count_a; i++)
             {
                 std::string t_value = re_xml_get_sub_value(*xml_data, XML_enum::XML_TAG_ATTRIBUTE_TEXT, "float_array", i+1, "id");
                 // vertices
                 if (t_value.find("mesh-positions-array") != std::string::npos)
                 {
                     _daeData->vertex_count = std::stof(re_xml_get_sub_value(*xml_data, XML_enum::XML_TAG_ATTRIBUTE_TEXT, "float_array", i+1, "count")) / 3;
-                    uint32_t line_no = re_xml_get_line_attribute(*xml_data, XML_enum::XML_TAG_ATTRIBUTE_TEXT, "float_array", i+1);
+                    uint64_t line_no = re_xml_get_line_attribute(*xml_data, XML_enum::XML_TAG_ATTRIBUTE_TEXT, "float_array", i+1);
                     const std::string data_v = xml_data->line[line_no].data[xml_data->line[line_no].attribute_count-1].value;
                     _daeData->vertex = new v3_f[_daeData->vertex_count];
-                    uint32_t data_v_l = data_v.length();
-                    uint32_t current_p = 0;
-                    uint32_t current_v = 0;
+                    uint64_t data_v_l = data_v.length();
+                    uint64_t current_p = 0;
+                    uint64_t current_v = 0;
                     std::string temp_v = "";
-                    for (uint32_t j = 0; j < data_v_l; j++)
+                    for (uint64_t j = 0; j < data_v_l; j++)
                     {
                         if (data_v[j] != ' ')
                             temp_v += data_v[j];
@@ -93,14 +93,14 @@ namespace RoboEngine
                 if (t_value.find("mesh-normals-array") != std::string::npos)
                 {
                     _daeData->vertex_normal_count = std::stof(re_xml_get_sub_value(*xml_data, XML_enum::XML_TAG_ATTRIBUTE_TEXT, "float_array", i+1, "count")) / 3;
-                    uint32_t line_no = re_xml_get_line_attribute(*xml_data, XML_enum::XML_TAG_ATTRIBUTE_TEXT, "float_array", i+1);
+                    uint64_t line_no = re_xml_get_line_attribute(*xml_data, XML_enum::XML_TAG_ATTRIBUTE_TEXT, "float_array", i+1);
                     const std::string data_n = xml_data->line[line_no].data[xml_data->line[line_no].attribute_count-1].value;
                     _daeData->vertex_normal = new v3_f[_daeData->vertex_normal_count];
-                    uint32_t data_n_l = data_n.length();
-                    uint32_t current_p = 0;
-                    uint32_t current_n = 0;
+                    uint64_t data_n_l = data_n.length();
+                    uint64_t current_p = 0;
+                    uint64_t current_n = 0;
                     std::string temp_n = "";
-                    for (uint32_t j = 0; j < data_n_l; j++)
+                    for (uint64_t j = 0; j < data_n_l; j++)
                     {
                         if (data_n[j] != ' ')
                             temp_n += data_n[j];
@@ -127,14 +127,14 @@ namespace RoboEngine
                 if (t_value.find("mesh-map-0-array") != std::string::npos)
                 {
                     _daeData->vertex_texture_count = std::stof(re_xml_get_sub_value(*xml_data, XML_enum::XML_TAG_ATTRIBUTE_TEXT, "float_array", i+1, "count")) / 2;
-                    uint32_t line_no = re_xml_get_line_attribute(*xml_data, XML_enum::XML_TAG_ATTRIBUTE_TEXT, "float_array", i+1);
+                    uint64_t line_no = re_xml_get_line_attribute(*xml_data, XML_enum::XML_TAG_ATTRIBUTE_TEXT, "float_array", i+1);
                     const std::string data_t = xml_data->line[line_no].data[xml_data->line[line_no].attribute_count-1].value;
                     _daeData->vertex_texture = new v2_f[_daeData->vertex_texture_count];
-                    uint32_t data_t_l = data_t.length();
-                    uint32_t current_p = 0;
-                    uint32_t current_t = 0;
+                    uint64_t data_t_l = data_t.length();
+                    uint64_t current_p = 0;
+                    uint64_t current_t = 0;
                     std::string temp_t = "";
-                    for (uint32_t j = 0; j < data_t_l; j++)
+                    for (uint64_t j = 0; j < data_t_l; j++)
                     {
                         if (data_t[j] != ' ')
                             temp_t += data_t[j];
@@ -158,15 +158,15 @@ namespace RoboEngine
             }
         }
         // faces
-        uint32_t line_v = re_xml_get_line_value(*xml_data, XML_enum::XML_TAG_TEXT, "p", 1);
+        uint64_t line_v = re_xml_get_line_value(*xml_data, XML_enum::XML_TAG_TEXT, "p", 1);
         const std::string data_f = xml_data->line[line_v].data[xml_data->line[line_v].attribute_count-1].value;
         _daeData->face_count = (std::count( data_f.begin(), data_f.end(), ' ' ) + 1) / 3;
         _daeData->face = new v8_f[_daeData->face_count];
-        uint32_t data_f_l = data_f.length();
-        uint32_t current_p = 0;
-        uint32_t current_f = 0;
+        uint64_t data_f_l = data_f.length();
+        uint64_t current_p = 0;
+        uint64_t current_f = 0;
         std::string temp_f = "";
-        for (uint32_t j = 0; j < data_f_l; j++)
+        for (uint64_t j = 0; j < data_f_l; j++)
         {
             if (data_f[j] != ' ')
                 temp_f += data_f[j];

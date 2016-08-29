@@ -61,7 +61,7 @@ namespace RoboEngine
                 m_entityManager.addPhysics(entity_1);
                 m_entityManager.addRender(entity_1);
                 m_entityManager.addTexture(entity_1,"data/texture/test.png");
-                m_entityManager.addMesh(entity_1,"data/mesh/mh.obj");
+                m_entityManager.addMesh(entity_1,"data/mesh/test.obj");
                 m_entityManager.addShader(entity_1,"data/shader/shader_000");
                 m_entityManager.setPosition(entity_1,glm::vec3(1.0f, -0.0f, 0.0f));
                 m_entityManager.setScale(entity_1,glm::vec3(1.5f, 1.5f, 1.5f));
@@ -71,7 +71,7 @@ namespace RoboEngine
                 m_entityManager.addPhysics(entity_2);
                 m_entityManager.addRender(entity_2);
                 m_entityManager.addTexture(entity_2,"data/texture/test.png");
-                m_entityManager.addMesh(entity_2,"data/mesh/mh.obj");
+                m_entityManager.addMesh(entity_2,"data/mesh/test.obj");
                 m_entityManager.addShader(entity_2,"data/shader/shader_000");
                 m_entityManager.setPosition(entity_2,glm::vec3(-2.0f, 0.0f, 0.0f));
                 m_entityManager.setScale(entity_2,glm::vec3(1.0f, 1.0f, 1.0f));
