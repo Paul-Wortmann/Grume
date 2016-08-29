@@ -78,6 +78,16 @@ namespace RoboEngine
         uint16_t z = 0;
     };
 
+    struct v3_uint32
+    {
+        v3_uint32() = default;
+        virtual ~v3_uint32() = default;
+        v3_uint32(uint16_t _x, uint16_t _y, uint16_t _z) {x = _x; y = _y; z = _z;}
+        uint16_t x = 0;
+        uint16_t y = 0;
+        uint16_t z = 0;
+    };
+
 }
 
 #endif // RE_TYPES_HPP

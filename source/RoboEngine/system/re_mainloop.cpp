@@ -56,32 +56,27 @@ namespace RoboEngine
             {
                 m_window = m_graphicsEngine.getWindow();
                 m_SystemEvents.initialize(m_window);
-                for (uint32_t i = 0; i < 2; i++)
-                {
-                    re_sEntity *entity_1 = m_entityManager.getNew();
-                    m_entityManager.addPhysics(entity_1);
-                    m_entityManager.addRender(entity_1);
-                    m_entityManager.addTexture(entity_1,"data/texture/test.png");
-                    m_entityManager.addMesh(entity_1,"data/mesh/test.dae");
-                    m_entityManager.addShader(entity_1,"data/shader/shader_000");
-                    float maxX = 6.0f;
-                    float minX = -6.0f;
-                    m_entityManager.setPosition(entity_1,glm::vec3(re_randomFloat(maxX, minX), re_randomFloat(maxX, minX), re_randomFloat(maxX, minX)));
-                    float scale = re_randomFloat(0.5f, 0.125f);
-                    m_entityManager.setScale(entity_1,glm::vec3(scale, scale, scale));
-                    RoboEngine::log_write(ROBOENGINELOG, __FILE__, __FUNCTION__, __LINE__, "Added Entity ID: " + std::to_string(entity_1->ID));
-                }
-/*
+
+                re_sEntity *entity_1 = m_entityManager.getNew();
+                m_entityManager.addPhysics(entity_1);
+                m_entityManager.addRender(entity_1);
+                m_entityManager.addTexture(entity_1,"data/texture/test.png");
+                m_entityManager.addMesh(entity_1,"data/mesh/test.obj");
+                m_entityManager.addShader(entity_1,"data/shader/shader_000");
+                m_entityManager.setPosition(entity_1,glm::vec3(1.0f, -0.0f, 0.0f));
+                m_entityManager.setScale(entity_1,glm::vec3(1.5f, 1.5f, 1.5f));
+                RoboEngine::log_write(ROBOENGINELOG, __FILE__, __FUNCTION__, __LINE__, "Added Entity ID: " + std::to_string(entity_1->ID));
+
                 re_sEntity *entity_2 = m_entityManager.getNew();
                 m_entityManager.addPhysics(entity_2);
                 m_entityManager.addRender(entity_2);
                 m_entityManager.addTexture(entity_2,"data/texture/test.png");
-                m_entityManager.addMesh(entity_2,"data/mesh/test.dae");
+                m_entityManager.addMesh(entity_2,"data/mesh/test.obj");
                 m_entityManager.addShader(entity_2,"data/shader/shader_000");
-                m_entityManager.setPosition(entity_2,glm::vec3(-1.5f, -1.5f, 0.0f));
-                m_entityManager.setScale(entity_2,glm::vec3(0.5f, 0.5f, 0.5f));
+                m_entityManager.setPosition(entity_2,glm::vec3(-2.0f, 0.0f, 0.0f));
+                m_entityManager.setScale(entity_2,glm::vec3(1.0f, 1.0f, 1.0f));
                 RoboEngine::log_write(ROBOENGINELOG, __FILE__, __FUNCTION__, __LINE__, "Added Entity ID: " + std::to_string(entity_2->ID));
-*/
+
                 m_graphicsEngine.setEntity((re_sEntity*)m_entityManager.getHead());
                 m_graphicsEngine.setEntity((re_sEntity*)m_entityManager.getHead());
                 //physics engine

@@ -35,11 +35,6 @@
 namespace RoboEngine
 {
 
-    struct re_sobjFace
-    {
-        v3_uint16 p[3];
-    };
-
     struct re_sobjData
     {
         std::string name = "";
@@ -50,7 +45,7 @@ namespace RoboEngine
         v3_f* vertex = nullptr;
         v2_f* vertex_texture = nullptr;
         v3_f* vertex_normal = nullptr;
-        re_sobjFace* face = nullptr;
+        v3_uint32* face = nullptr;
     };
 
     void objDelete(re_sobjData *&_objData);

@@ -94,21 +94,18 @@ namespace RoboEngine
         {
             re_sobjData *objData = nullptr;
             objImport(_fileName, objData);
-            _mesh->indexCount = objData->face_count * 3;
+            _mesh->indexCount = objData->face_count;
             _mesh->index = new v8_f[_mesh->indexCount];
             for (uint32_t i = 0; i < objData->face_count; i++)
             {
-                for (uint32_t j = 0; j < 3; j++)
-                {
-                    _mesh->index[(i*3)+j].x = objData->vertex[objData->face[i].p[j].x].x;
-                    _mesh->index[(i*3)+j].y = objData->vertex[objData->face[i].p[j].x].y;
-                    _mesh->index[(i*3)+j].z = objData->vertex[objData->face[i].p[j].x].z;
-                    _mesh->index[(i*3)+j].nx = objData->vertex_normal[objData->face[i].p[j].y].x;
-                    _mesh->index[(i*3)+j].ny = objData->vertex_normal[objData->face[i].p[j].y].y;
-                    _mesh->index[(i*3)+j].nz = objData->vertex_normal[objData->face[i].p[j].y].z;
-                    _mesh->index[(i*3)+j].s = objData->vertex_texture[objData->face[i].p[j].z].x;
-                    _mesh->index[(i*3)+j].t = objData->vertex_texture[objData->face[i].p[j].z].y;
-                }
+                _mesh->index[i].x = objData->vertex[objData->face[i].x-1].x;
+                _mesh->index[i].y = objData->vertex[objData->face[i].x-1].y;
+                _mesh->index[i].z = objData->vertex[objData->face[i].x-1].z;
+                _mesh->index[i].nx = objData->vertex_normal[objData->face[i].z-1].x;
+                _mesh->index[i].ny = objData->vertex_normal[objData->face[i].z-1].y;
+                _mesh->index[i].nz = objData->vertex_normal[objData->face[i].z-1].z;
+                _mesh->index[i].s = objData->vertex_texture[objData->face[i].y-1].x;
+                _mesh->index[i].t = objData->vertex_texture[objData->face[i].y-1].y;
             }
             objDelete(objData);
         }
