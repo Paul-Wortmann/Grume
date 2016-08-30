@@ -60,7 +60,7 @@ namespace RoboEngine
                 re_sEntity *entity_1 = m_entityManager.getNew();
                 m_entityManager.addPhysics(entity_1);
                 m_entityManager.addRender(entity_1);
-                m_entityManager.addTexture(entity_1,"data/texture/cube_d.png");
+                m_entityManager.addTexture(entity_1,"data/texture/skin.png");
                 m_entityManager.addMesh(entity_1,"data/mesh/mh.dae");
                 m_entityManager.addShader(entity_1,"data/shader/shader_000");
                 m_entityManager.setPosition(entity_1,glm::vec3(1.0f, -0.0f, 0.0f));
