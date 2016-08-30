@@ -119,6 +119,9 @@ namespace RoboEngine
                     if (m_entity->render->VAO_ID != 0)
                     {
                         glBindVertexArray(m_entity->render->VAO_ID);
+                        glActiveTexture(GL_TEXTURE0);
+                        glBindTexture(GL_TEXTURE_2D, m_entity->render->texture->ID);
+                        glUniform1i(getUniformLocation(m_entity->render->shader->ID, "diffuse"), 0);
                         glm::mat4 mvp = m_camera.getProjection() * m_camera.getView() * m_entity->render->Model;
                         glUniformMatrix4fv(m_entity->render->MVP_ID, 1, GL_FALSE, &mvp[0][0]);
                         glDrawArrays(GL_TRIANGLES, 0, m_entity->render->mesh->indexCount);

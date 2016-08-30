@@ -60,7 +60,7 @@ namespace RoboEngine
                 re_sEntity *entity_1 = m_entityManager.getNew();
                 m_entityManager.addPhysics(entity_1);
                 m_entityManager.addRender(entity_1);
-                m_entityManager.addTexture(entity_1,"data/texture/test.png");
+                m_entityManager.addTexture(entity_1,"data/texture/cube_d.png");
                 m_entityManager.addMesh(entity_1,"data/mesh/test.obj");
                 m_entityManager.addShader(entity_1,"data/shader/shader_000");
                 m_entityManager.setPosition(entity_1,glm::vec3(1.0f, -0.0f, 0.0f));
@@ -70,7 +70,7 @@ namespace RoboEngine
                 re_sEntity *entity_2 = m_entityManager.getNew();
                 m_entityManager.addPhysics(entity_2);
                 m_entityManager.addRender(entity_2);
-                m_entityManager.addTexture(entity_2,"data/texture/test.png");
+                m_entityManager.addTexture(entity_2,"data/texture/test_1.png");
                 m_entityManager.addMesh(entity_2,"data/mesh/test.obj");
                 m_entityManager.addShader(entity_2,"data/shader/shader_000");
                 m_entityManager.setPosition(entity_2,glm::vec3(-2.0f, 0.0f, 0.0f));

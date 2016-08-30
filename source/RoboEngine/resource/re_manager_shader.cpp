@@ -47,10 +47,11 @@ namespace RoboEngine
         if (m_head == nullptr)
         {
             m_head = new re_sShader;
-            m_head->fileName = _fileName;
-            loadShader(_fileName, m_head->ID, m_head->numAttributes);
             m_tail = m_head;
-            return m_head;
+            m_tail->next = nullptr;
+            m_tail->fileName = _fileName;
+            loadShader(_fileName, m_tail->ID, m_tail->numAttributes);
+            return m_tail;
         }
         else
         {
@@ -60,9 +61,10 @@ namespace RoboEngine
                     return(tempShader);
             }
             m_tail->next = new re_sShader;
+            m_tail = m_tail->next;
+            m_tail->next = nullptr;
             m_tail->fileName = _fileName;
             loadShader(_fileName, m_tail->ID, m_tail->numAttributes);
-            m_tail = m_tail->next;
             return m_tail;
         }
         return nullptr;

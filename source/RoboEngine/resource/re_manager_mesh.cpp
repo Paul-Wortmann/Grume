@@ -47,10 +47,11 @@ namespace RoboEngine
         if (m_head == nullptr)
         {
             m_head = new re_sMesh;
-            m_head->fileName = _fileName;
-            loadMesh(_fileName, m_head);
             m_tail = m_head;
-            return m_head;
+            m_tail->next = nullptr;
+            m_tail->fileName = _fileName;
+            loadMesh(_fileName, m_tail);
+            return m_tail;
         }
         else
         {
@@ -60,9 +61,10 @@ namespace RoboEngine
                     return(tempMesh);
             }
             m_tail->next = new re_sMesh;
+            m_tail = m_tail->next;
+            m_tail->next = nullptr;
             m_tail->fileName = _fileName;
             loadMesh(_fileName, m_tail);
-            m_tail = m_tail->next;
             return m_tail;
         }
         return nullptr;

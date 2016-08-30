@@ -82,10 +82,10 @@ namespace RoboEngine
     {
         v3_uint32() = default;
         virtual ~v3_uint32() = default;
-        v3_uint32(uint16_t _x, uint16_t _y, uint16_t _z) {x = _x; y = _y; z = _z;}
-        uint16_t x = 0;
-        uint16_t y = 0;
-        uint16_t z = 0;
+        v3_uint32(uint32_t _x, uint32_t _y, uint32_t _z) {x = _x; y = _y; z = _z;}
+        uint32_t x = 0;
+        uint32_t y = 0;
+        uint32_t z = 0;
     };
 
 }
