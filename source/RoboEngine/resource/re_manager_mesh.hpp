@@ -36,7 +36,7 @@ namespace RoboEngine
     struct re_sMesh
     {
         std::string fileName = "";
-        uint32_t indexCount = 0;
+        uint64_t indexCount = 0;
         v8_f* index = nullptr;
         re_sMesh *next = nullptr;
     };

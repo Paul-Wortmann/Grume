@@ -32,7 +32,7 @@ namespace RoboEngine
         {
             if (_xml_data->line)
             {
-                for (int16_t i = 0; i < _xml_data->line_count;i++)
+                for (uint64_t i = 0; i < _xml_data->line_count;i++)
                     if (_xml_data->line[i].data)
                         delete[] _xml_data->line[i].data;
                 delete[] _xml_data->line;
@@ -42,16 +42,16 @@ namespace RoboEngine
         }
     }
 
-    re_sxmlLineData re_xml_line_parse(const std::string &_xml_line, uint8_t &_indentation)
+    re_sxmlLineData re_xml_line_parse(const std::string &_xml_line, uint64_t &_indentation)
     {
         bool debug = false;
-        uint8_t indent_depth = 3;
+        uint64_t indent_depth = 3;
         // strip leading and trailing space
         std::string s_temp = "";
         bool b_start = false;
         bool b_end  = false;
-        uint16_t line_length = _xml_line.length();
-        for (uint16_t i = 0; i < line_length; i++)
+        uint64_t line_length = _xml_line.length();
+        for (uint64_t i = 0; i < line_length; i++)
         {
             if (_xml_line[i] == '<') b_start = true;
             if ((i  > 1) && (_xml_line[i]-1 == '>') && (_xml_line[i] == ' ')) b_end = true;
@@ -59,21 +59,21 @@ namespace RoboEngine
                     s_temp += _xml_line[i];
         }
         //  syntax character count
-        uint8_t count_a1 = 0;//    &
-        uint8_t count_b1 = 0;//    <
-        uint8_t count_b2 = 0;//    >
-        uint8_t count_d1 = 0;//    -
-        uint8_t count_dd = 0;//    --
-        uint8_t count_e1 = 0;//    =
-        uint8_t count_e2 = 0;//    !
-        uint8_t count_s1 = 0;//    /
-        uint8_t count_s2 = 0;//
-        uint8_t count_q1 = 0;//    ?
-        uint8_t count_b1s1 = 0;//    </
-        uint8_t count_s1b2 = 0;//    />
+        uint64_t count_a1 = 0;//    &
+        uint64_t count_b1 = 0;//    <
+        uint64_t count_b2 = 0;//    >
+        uint64_t count_d1 = 0;//    -
+        uint64_t count_dd = 0;//    --
+        uint64_t count_e1 = 0;//    =
+        uint64_t count_e2 = 0;//    !
+        uint64_t count_s1 = 0;//    /
+        uint64_t count_s2 = 0;//
+        uint64_t count_q1 = 0;//    ?
+        uint64_t count_b1s1 = 0;//    </
+        uint64_t count_s1b2 = 0;//    />
         re_sxmlLineData xml_return_line_data;
         line_length = s_temp.length();
-        for (uint16_t i = 0; i < line_length; i++)
+        for (uint64_t i = 0; i < line_length; i++)
         {
             if (s_temp[i] == '&') count_a1++;
             if (s_temp[i] == '<') count_b1++;
@@ -130,8 +130,8 @@ namespace RoboEngine
             bool tag_start = false;
             bool attribute_start = false;
             bool value_start = false;
-            uint8_t attribute_no = 0;
-            for (uint16_t i = 0; i < line_length; i++)
+            uint64_t attribute_no = 0;
+            for (uint64_t i = 0; i < line_length; i++)
             {
                 if ((tag_start) && (s_temp[i] == ' '))
                 {
@@ -169,7 +169,7 @@ namespace RoboEngine
             {
                 std::cout <<  std::string(_indentation * indent_depth, ' ');
                 std::cout << "<" + xml_return_line_data.data[0].attribute;
-                for (uint16_t i = 1; i < xml_return_line_data.attribute_count; i++)
+                for (uint64_t i = 1; i < xml_return_line_data.attribute_count; i++)
                 {
                     std::cout << " " + xml_return_line_data.data[i].attribute + "=\"" + xml_return_line_data.data[i].value + "\"";
                 }
@@ -185,7 +185,7 @@ namespace RoboEngine
             xml_return_line_data.data = new re_sxmlAttributeData[xml_return_line_data.attribute_count];
             bool data_start = false;
             bool data_end = false;
-            for (uint16_t i = 0; i < line_length; i++)
+            for (uint64_t i = 0; i < line_length; i++)
             {
                 if (data_start && (s_temp[i] == '-') && (s_temp[i+1] == '-'))
                     data_end = true;
@@ -208,7 +208,7 @@ namespace RoboEngine
             xml_return_line_data.data = new re_sxmlAttributeData[xml_return_line_data.attribute_count];
             bool data_start = false;
             bool data_end = false;
-            for (uint16_t i = 0; i < line_length; i++)
+            for (uint64_t i = 0; i < line_length; i++)
             {
                 if (data_start && (s_temp[i] == '>'))
                     data_end = true;
@@ -234,7 +234,7 @@ namespace RoboEngine
             xml_return_line_data.data = new re_sxmlAttributeData[xml_return_line_data.attribute_count];
             bool data_start = false;
             bool data_end = false;
-            for (uint16_t i = 0; i < line_length; i++)
+            for (uint64_t i = 0; i < line_length; i++)
             {
                 if (data_start && (s_temp[i] == '>'))
                     data_end = true;
@@ -258,7 +258,7 @@ namespace RoboEngine
             xml_return_line_data.data = new re_sxmlAttributeData[xml_return_line_data.attribute_count];
             bool data_start = false;
             bool data_end = false;
-            for (uint16_t i = 0; i < line_length; i++)
+            for (uint64_t i = 0; i < line_length; i++)
             {
                 if (data_start && (s_temp[i] == '/'))
                     data_end = true;
@@ -282,7 +282,7 @@ namespace RoboEngine
             bool tag_start = false;
             bool tag_end = false;
             bool text_start = false;
-            for (uint16_t i = 0; i < line_length; i++)
+            for (uint64_t i = 0; i < line_length; i++)
             {
                 if (tag_end)
                 {
@@ -320,8 +320,8 @@ namespace RoboEngine
             bool tag_start = false;
             bool attribute_start = false;
             bool value_start = false;
-            uint8_t attribute_no = 0;
-            for (uint16_t i = 0; i < line_length; i++)
+            uint64_t attribute_no = 0;
+            for (uint64_t i = 0; i < line_length; i++)
             {
                 if ((tag_start) && (s_temp[i] == ' '))
                 {
@@ -359,7 +359,7 @@ namespace RoboEngine
             {
                 std::cout <<  std::string(_indentation * indent_depth, ' ');
                 std::cout << "<" + xml_return_line_data.data[0].attribute;
-                for (uint16_t i = 1; i < xml_return_line_data.attribute_count; i++)
+                for (uint64_t i = 1; i < xml_return_line_data.attribute_count; i++)
                 {
                     std::cout << " " + xml_return_line_data.data[i].attribute + "=\"" + xml_return_line_data.data[i].value + "\"";
                 }
@@ -376,8 +376,8 @@ namespace RoboEngine
             bool tag_start = false;
             bool attribute_start = false;
             bool value_start = false;
-            uint8_t attribute_no = 0;
-            for (uint16_t i = 0; i < line_length; i++)
+            uint64_t attribute_no = 0;
+            for (uint64_t i = 0; i < line_length; i++)
             {
                 if ((tag_start) && (s_temp[i] == ' '))
                 {
@@ -415,7 +415,7 @@ namespace RoboEngine
             {
                 std::cout <<  std::string(_indentation * indent_depth, ' ');
                 std::cout << "<" + xml_return_line_data.data[0].attribute;
-                for (uint16_t i = 1; i < xml_return_line_data.attribute_count; i++)
+                for (uint64_t i = 1; i < xml_return_line_data.attribute_count; i++)
                 {
                     std::cout << " " + xml_return_line_data.data[i].attribute + "=\"" + xml_return_line_data.data[i].value + "\"";
                 }
@@ -433,8 +433,8 @@ namespace RoboEngine
             bool text_end = false;
             bool attribute_start = false;
             bool value_start = false;
-            uint8_t attribute_no = 0;
-            for (uint16_t i = 0; i < line_length; i++)
+            uint64_t attribute_no = 0;
+            for (uint64_t i = 0; i < line_length; i++)
             {
                 if (s_temp[i] == '>')
                 {
@@ -491,7 +491,7 @@ namespace RoboEngine
             {
                 std::cout <<  std::string(_indentation * indent_depth, ' ');
                 std::cout << "<" + xml_return_line_data.data[0].attribute;
-                for (uint16_t i = 1; i < xml_return_line_data.attribute_count; i++)
+                for (uint64_t i = 1; i < xml_return_line_data.attribute_count; i++)
                 {
                     std::cout << " " + xml_return_line_data.data[i].attribute + "=\"" + xml_return_line_data.data[i].value + "\"";
                 }
@@ -515,8 +515,8 @@ namespace RoboEngine
         file_pointer.open (_xml_file, std::ifstream::in);
         if (!file_pointer.good())
             RoboEngine::log_write(ROBOENGINELOG, __FILE__, __FUNCTION__, __LINE__, "ERROR -> parsing XML file  :  " + _xml_file);
-        uint16_t line_count = 0;
-        uint8_t indentation = 0;
+        uint64_t line_count = 0;
+        uint64_t indentation = 0;
         std::string s_temp = "";
         while (std::getline(file_pointer, s_temp))
             line_count++;
@@ -524,7 +524,7 @@ namespace RoboEngine
         file_pointer.seekg(0, std::ios::beg);
         _xml_data->line_count = line_count;
         _xml_data->line = new re_sxmlLineData[line_count];
-        uint16_t i = 0;
+        uint64_t i = 0;
         while (std::getline(file_pointer, s_temp))
         {
             _xml_data->line[i] = re_xml_line_parse(s_temp, indentation);
@@ -538,22 +538,22 @@ namespace RoboEngine
 
     void re_xml_export(const std::string &_xml_file, const re_sxmlData &_xml_data)
     {
-        uint8_t indent_depth = 3;
-        uint8_t indent_char = ' ';
+        uint64_t indent_depth = 3;
+        uint64_t indent_char = ' ';
         std::ofstream file_pointer;
         file_pointer.open (_xml_file, std::ofstream::trunc | std::ofstream::out);
         file_pointer.close();
         file_pointer.open (_xml_file, std::ofstream::out | std::ofstream::app);
         if (!file_pointer.good())
             RoboEngine::log_write(ROBOENGINELOG, __FILE__, __FUNCTION__, __LINE__, "ERROR -> parsing XML file  :  " + _xml_file);
-        for (uint16_t j = 0; j < _xml_data.line_count; j++)
+        for (uint64_t j = 0; j < _xml_data.line_count; j++)
         {
             // xml_declaration
             if (_xml_data.line[j].data_type == XML_enum::XML_DECLARATION)
             {
                 file_pointer <<  std::string(_xml_data.line[j].indentation * indent_depth, indent_char);
                 file_pointer << "<" + _xml_data.line[j].data[0].attribute;
-                for (uint16_t i = 1; i < _xml_data.line[j].attribute_count; i++)
+                for (uint64_t i = 1; i < _xml_data.line[j].attribute_count; i++)
                 {
                     file_pointer << " " + _xml_data.line[j].data[i].attribute + "=\"" + _xml_data.line[j].data[i].value + "\"";
                 }
@@ -594,7 +594,7 @@ namespace RoboEngine
             {
                 file_pointer <<  std::string(_xml_data.line[j].indentation * indent_depth, indent_char);
                 file_pointer << "<" + _xml_data.line[j].data[0].attribute;
-                for (uint16_t i = 1; i < _xml_data.line[j].attribute_count; i++)
+                for (uint64_t i = 1; i < _xml_data.line[j].attribute_count; i++)
                 {
                     file_pointer << " " + _xml_data.line[j].data[i].attribute + "=\"" + _xml_data.line[j].data[i].value + "\"";
                 }
@@ -605,7 +605,7 @@ namespace RoboEngine
             {
                 file_pointer <<  std::string(_xml_data.line[j].indentation * indent_depth, indent_char);
                 file_pointer << "<" + _xml_data.line[j].data[0].attribute;
-                for (uint16_t i = 1; i < _xml_data.line[j].attribute_count; i++)
+                for (uint64_t i = 1; i < _xml_data.line[j].attribute_count; i++)
                 {
                     file_pointer << " " + _xml_data.line[j].data[i].attribute + "=\"" + _xml_data.line[j].data[i].value + "\"";
                 }
@@ -616,7 +616,7 @@ namespace RoboEngine
             {
                 file_pointer <<  std::string(_xml_data.line[j].indentation * indent_depth, indent_char);
                 file_pointer << "<" + _xml_data.line[j].data[0].attribute;
-                for (uint16_t i = 1; i < _xml_data.line[j].attribute_count-1; i++)
+                for (uint64_t i = 1; i < _xml_data.line[j].attribute_count-1; i++)
                 {
                     file_pointer << " " + _xml_data.line[j].data[i].attribute + "=\"" + _xml_data.line[j].data[i].value + "\"";
                 }
@@ -629,12 +629,12 @@ namespace RoboEngine
         file_pointer.close();
     }
 
-    std::string re_xml_get_value(const re_sxmlData &_xml_data, XML_enum _data_type, const std::string &_attribute, uint16_t _attribute_no)
+    std::string re_xml_get_value(const re_sxmlData &_xml_data, XML_enum _data_type, const std::string &_attribute, uint64_t _attribute_no)
     {
-        uint16_t attribute_count = 0;
-        for (uint16_t i = 0; i < _xml_data.line_count; i++)
+        uint64_t attribute_count = 0;
+        for (uint64_t i = 0; i < _xml_data.line_count; i++)
             if (_xml_data.line[i].data_type == _data_type)
-                for (uint16_t j = 0; j < _xml_data.line[i].attribute_count; j++)
+                for (uint64_t j = 0; j < _xml_data.line[i].attribute_count; j++)
                 {
                     if (_xml_data.line[i].data[j].attribute.compare(_attribute) == 0)
                         attribute_count++;
@@ -644,51 +644,51 @@ namespace RoboEngine
         return "XML Parser could not find requested attribute at number";
     }
 
-    std::string re_xml_get_sub_value(const re_sxmlData &_xml_data, XML_enum _data_type, const std::string &_attribute, uint16_t _attribute_no, const std::string &_sub_attribute)
+    std::string re_xml_get_sub_value(const re_sxmlData &_xml_data, XML_enum _data_type, const std::string &_attribute, uint64_t _attribute_no, const std::string &_sub_attribute)
     {
-        uint16_t attribute_count = 0;
-        for (uint16_t i = 0; i < _xml_data.line_count; i++)
+        uint64_t attribute_count = 0;
+        for (uint64_t i = 0; i < _xml_data.line_count; i++)
             if (_xml_data.line[i].data_type == _data_type)
-                for (uint16_t j = 0; j < _xml_data.line[i].attribute_count; j++)
+                for (uint64_t j = 0; j < _xml_data.line[i].attribute_count; j++)
                 {
                     if (_xml_data.line[i].data[j].attribute.compare(_attribute) == 0)
                         attribute_count++;
                     if (_attribute_no == attribute_count)
-                        for (uint16_t k = j; k < _xml_data.line[i].attribute_count; k++)
+                        for (uint64_t k = j; k < _xml_data.line[i].attribute_count; k++)
                             if (_xml_data.line[i].data[k].attribute.compare(_sub_attribute) == 0)
                                 return _xml_data.line[i].data[k].value;
                 }
         return "XML Parser could not find requested attribute at number";
     }
 
-    uint16_t  re_xml_get_count(const re_sxmlData &_xml_data, XML_enum _data_type, const std::string &_attribute)
+    uint64_t  re_xml_get_count(const re_sxmlData &_xml_data, XML_enum _data_type, const std::string &_attribute)
     {
-        uint16_t return_count = 0;
-        for (uint16_t i = 0; i < _xml_data.line_count; i++)
+        uint64_t return_count = 0;
+        for (uint64_t i = 0; i < _xml_data.line_count; i++)
             if (_xml_data.line[i].data_type == _data_type)
-                for (uint16_t j = 0; j < _xml_data.line[i].attribute_count; j++)
+                for (uint64_t j = 0; j < _xml_data.line[i].attribute_count; j++)
                     if (_xml_data.line[i].data[j].attribute.compare(_attribute.c_str()) == 0)
                         return_count++;
         return return_count;
     }
 
-    uint16_t  re_xml_get_count_value(const re_sxmlData &_xml_data, XML_enum _data_type, const std::string &_value)
+    uint64_t  re_xml_get_count_value(const re_sxmlData &_xml_data, XML_enum _data_type, const std::string &_value)
     {
-        uint16_t return_count = 0;
-        for (uint16_t i = 0; i < _xml_data.line_count; i++)
+        uint64_t return_count = 0;
+        for (uint64_t i = 0; i < _xml_data.line_count; i++)
             if (_xml_data.line[i].data_type == _data_type)
-                for (uint16_t j = 0; j < _xml_data.line[i].attribute_count; j++)
+                for (uint64_t j = 0; j < _xml_data.line[i].attribute_count; j++)
                     if (_xml_data.line[i].data[j].value.compare(_value.c_str()) == 0)
                         return_count++;
         return return_count;
     }
 
-    uint16_t  re_xml_get_line_attribute(const re_sxmlData &_xml_data, XML_enum _data_type, const std::string &_attribute, uint16_t _attribute_no)
+    uint64_t  re_xml_get_line_attribute(const re_sxmlData &_xml_data, XML_enum _data_type, const std::string &_attribute, uint64_t _attribute_no)
     {
-        uint16_t attribute_count = 0;
-        for (uint16_t i = 0; i < _xml_data.line_count; i++)
+        uint64_t attribute_count = 0;
+        for (uint64_t i = 0; i < _xml_data.line_count; i++)
             if (_xml_data.line[i].data_type == _data_type)
-                for (uint16_t j = 0; j < _xml_data.line[i].attribute_count; j++)
+                for (uint64_t j = 0; j < _xml_data.line[i].attribute_count; j++)
                 {
                     if (_xml_data.line[i].data[j].attribute.compare(_attribute) == 0)
                         attribute_count++;
@@ -698,12 +698,12 @@ namespace RoboEngine
         return 0;
     }
 
-    uint16_t  re_xml_get_line_value(const re_sxmlData &_xml_data, XML_enum _data_type, const std::string &_value, uint16_t _value_no)
+    uint64_t  re_xml_get_line_value(const re_sxmlData &_xml_data, XML_enum _data_type, const std::string &_value, uint64_t _value_no)
     {
-        uint16_t value_count = 0;
-        for (uint16_t i = 0; i < _xml_data.line_count; i++)
+        uint64_t value_count = 0;
+        for (uint64_t i = 0; i < _xml_data.line_count; i++)
             if (_xml_data.line[i].data_type == _data_type)
-                for (uint16_t j = 0; j < _xml_data.line[i].attribute_count; j++)
+                for (uint64_t j = 0; j < _xml_data.line[i].attribute_count; j++)
                 {
                     if (_xml_data.line[i].data[j].value.compare(_value) == 0)
                         value_count++;
@@ -713,12 +713,12 @@ namespace RoboEngine
         return 0;
     }
 
-    re_sxmlLineData* re_xml_get_line(const re_sxmlData &_xml_data, XML_enum _data_type, const std::string &_attribute, uint16_t _attribute_count)
+    re_sxmlLineData* re_xml_get_line(const re_sxmlData &_xml_data, XML_enum _data_type, const std::string &_attribute, uint64_t _attribute_count)
     {
         re_sxmlLineData* return_data = nullptr;
-        for (uint16_t i = 0; i < _xml_data.line_count; i++)
+        for (uint64_t i = 0; i < _xml_data.line_count; i++)
             if (_xml_data.line[i].data_type == _data_type)
-                for (uint16_t j = 0; j < _xml_data.line[i].attribute_count; j++)
+                for (uint64_t j = 0; j < _xml_data.line[i].attribute_count; j++)
                     if ((_xml_data.line[i].data[j].attribute.compare(_attribute) == 0) && (j == _attribute_count))
                         return_data = _xml_data.line;
         return return_data;

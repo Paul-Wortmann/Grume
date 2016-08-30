@@ -33,7 +33,7 @@
 namespace RoboEngine
 {
 
-    enum class XML_enum : uint16_t { XML_NONE, XML_TAG_START, XML_TAG_END, XML_TAG_SLASH, XML_COMMENT, XML_DECLARATION, XML_TAG_TEXT, XML_TAG_ATTRIBUTE, XML_TAG_ATTRIBUTE_END, XML_TAG_ATTRIBUTE_TEXT };
+    enum class XML_enum : uint32_t { XML_NONE, XML_TAG_START, XML_TAG_END, XML_TAG_SLASH, XML_COMMENT, XML_DECLARATION, XML_TAG_TEXT, XML_TAG_ATTRIBUTE, XML_TAG_ATTRIBUTE_END, XML_TAG_ATTRIBUTE_TEXT };
 
     struct re_sxmlAttributeData
     {
@@ -44,28 +44,28 @@ namespace RoboEngine
     struct re_sxmlLineData
     {
         XML_enum data_type = XML_enum::XML_NONE;
-        uint8_t attribute_count = 0;
-        uint8_t indentation = 0;
+        uint64_t attribute_count = 0;
+        uint64_t indentation = 0;
         re_sxmlAttributeData* data = nullptr;
     };
 
     struct re_sxmlData
     {
-        uint16_t line_count = 0;
+        uint64_t line_count = 0;
         re_sxmlLineData* line = nullptr;
     };
 
     void re_xml_delete(re_sxmlData *&xml_data);
-    re_sxmlLineData re_xml_line_parse(const std::string &_xml_line, uint8_t &_indentation);
+    re_sxmlLineData re_xml_line_parse(const std::string &_xml_line, uint64_t &_indentation);
     void re_xml_parse(const std::string &_xml_file, re_sxmlData *&_xml_data);
     void re_xml_export(const std::string &_xml_file, const re_sxmlData &_xml_data);
-    std::string re_xml_get_value(const re_sxmlData &_xml_data, XML_enum _data_type, const std::string &_attribute, uint16_t _attribute_no);
-    std::string re_xml_get_sub_value(const re_sxmlData &_xml_data, XML_enum _data_type, const std::string &_attribute, uint16_t _attribute_no, const std::string &_sub_attribute);
-    uint16_t  re_xml_get_count(const re_sxmlData &_xml_data, XML_enum _data_type, const std::string &_attribute);
-    uint16_t  re_xml_get_count_value(const re_sxmlData &_xml_data, XML_enum _data_type, const std::string &_value);
-    uint16_t  re_xml_get_line_attribute(const re_sxmlData &_xml_data, XML_enum _data_type, const std::string &_attribute, uint16_t _attribute_no);
-    uint16_t  re_xml_get_line_value(const re_sxmlData &_xml_data, XML_enum _data_type, const std::string &_value, uint16_t _value_no);
-    re_sxmlLineData* re_xml_get_line(const re_sxmlData &_xml_data, XML_enum _data_type, const std::string &_attribute, uint16_t _attribute_count);
+    std::string re_xml_get_value(const re_sxmlData &_xml_data, XML_enum _data_type, const std::string &_attribute, uint64_t _attribute_no);
+    std::string re_xml_get_sub_value(const re_sxmlData &_xml_data, XML_enum _data_type, const std::string &_attribute, uint64_t _attribute_no, const std::string &_sub_attribute);
+    uint64_t re_xml_get_count(const re_sxmlData &_xml_data, XML_enum _data_type, const std::string &_attribute);
+    uint64_t re_xml_get_count_value(const re_sxmlData &_xml_data, XML_enum _data_type, const std::string &_value);
+    uint64_t re_xml_get_line_attribute(const re_sxmlData &_xml_data, XML_enum _data_type, const std::string &_attribute, uint64_t _attribute_no);
+    uint64_t re_xml_get_line_value(const re_sxmlData &_xml_data, XML_enum _data_type, const std::string &_value, uint64_t _value_no);
+    re_sxmlLineData* re_xml_get_line(const re_sxmlData &_xml_data, XML_enum _data_type, const std::string &_attribute, uint64_t _attribute_count);
 
 }
 
