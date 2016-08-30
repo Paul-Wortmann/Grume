@@ -82,7 +82,7 @@ namespace RoboEngine
             {
                 if ((s_temp[0] == 'v') && (s_temp[1] == ' '))
                 {
-                    uint8_t s_count = 0;
+                    uint16_t s_count = 0;
                     std::string temp = "";
                     for (uint64_t i = 2; i < s_temp.length(); i++)
                     {
@@ -105,7 +105,7 @@ namespace RoboEngine
                 }
                 if ((s_temp[0] == 'v') && (s_temp[1] == 't'))
                 {
-                    uint8_t s_count = 0;
+                    uint16_t s_count = 0;
                     std::string temp = "";
                     for (uint64_t i = 3; i < s_temp.length(); i++)
                     {
@@ -126,7 +126,7 @@ namespace RoboEngine
                 }
                 if ((s_temp[0] == 'v') && (s_temp[1] == 'n'))
                 {
-                    uint8_t s_count = 0;
+                    uint16_t s_count = 0;
                     std::string temp = "";
                     for (uint64_t i = 3; i < s_temp.length(); i++)
                     {
@@ -149,7 +149,7 @@ namespace RoboEngine
                 }
                 if ((s_temp[0] == 'f') && (s_temp[1] == ' '))
                 {
-                    uint8_t fs_count = 1;
+                    uint16_t fs_count = 1;
                     std::string temp = "";
                     for (uint64_t i = 2; i < s_temp.length(); i++)
                     {
