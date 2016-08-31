@@ -4,6 +4,8 @@ in vec3 Fnormal;
 in vec2 Ftexcrd;
 
 uniform sampler2D diffuse;
+// uniform sampler2D normal;
+// uniform sampler2D specular;
 
 out vec4 fragmentColor;
 

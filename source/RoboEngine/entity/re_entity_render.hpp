@@ -44,7 +44,9 @@ namespace RoboEngine
         uint32_t MVP_ID = 0;
 
         re_sMesh *mesh = nullptr;
-        re_sTexture *texture = nullptr;
+        re_sTexture *texture_diffuse = nullptr;
+        re_sTexture *texture_normal = nullptr;
+        re_sTexture *texture_specular = nullptr;
         re_sShader *shader = nullptr;
         re_sEntityRender *next = nullptr;
     };

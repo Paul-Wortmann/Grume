@@ -65,6 +65,7 @@ namespace RoboEngine
                 RoboEngine::log_write(ROBOENGINELOG, __FILE__, __FUNCTION__, __LINE__, reinterpret_cast<const char*>(glGetString(GL_RENDERER)));
                 RoboEngine::log_write(ROBOENGINELOG, __FILE__, __FUNCTION__, __LINE__, reinterpret_cast<const char*>(glGetString(GL_SHADING_LANGUAGE_VERSION)));
 
+                glEnable(GL_CULL_FACE);
                 glEnable(GL_DEPTH_TEST);
                 glDepthFunc(GL_LESS);
                 glClearDepth(1.0);
@@ -103,8 +104,17 @@ namespace RoboEngine
 
                         m_entity->render->MVP_ID = glGetUniformLocation(m_entity->render->shader->ID, "MVP");
                         glActiveTexture(GL_TEXTURE0);
-                        glBindTexture(GL_TEXTURE_2D, m_entity->render->texture->ID);
+                        glBindTexture(GL_TEXTURE_2D, m_entity->render->texture_diffuse->ID);
                         glUniform1i(getUniformLocation(m_entity->render->shader->ID, "diffuse"), 0);
+
+                        /*
+                        glActiveTexture(GL_TEXTURE1);
+                        glBindTexture(GL_TEXTURE_2D, m_entity->render->texture_normal->ID);
+                        glUniform1i(getUniformLocation(m_entity->render->shader->ID, "normal"), 0);
+                        glActiveTexture(GL_TEXTURE2);
+                        glBindTexture(GL_TEXTURE_2D, m_entity->render->texture_specular->ID);
+                        glUniform1i(getUniformLocation(m_entity->render->shader->ID, "specular"), 0);
+                        */
 
                         glEnableVertexAttribArray(0);
                         glVertexAttribPointer(0,3,GL_FLOAT,GL_FALSE,sizeof(v8_f),(void*)nullptr);
@@ -120,8 +130,16 @@ namespace RoboEngine
                     {
                         glBindVertexArray(m_entity->render->VAO_ID);
                         glActiveTexture(GL_TEXTURE0);
-                        glBindTexture(GL_TEXTURE_2D, m_entity->render->texture->ID);
+                        glBindTexture(GL_TEXTURE_2D, m_entity->render->texture_diffuse->ID);
                         glUniform1i(getUniformLocation(m_entity->render->shader->ID, "diffuse"), 0);
+                        /*
+                        glActiveTexture(GL_TEXTURE1);
+                        glBindTexture(GL_TEXTURE_2D, m_entity->render->texture_normal->ID);
+                        glUniform1i(getUniformLocation(m_entity->render->shader->ID, "normal"), 0);
+                        glActiveTexture(GL_TEXTURE2);
+                        glBindTexture(GL_TEXTURE_2D, m_entity->render->texture_specular->ID);
+                        glUniform1i(getUniformLocation(m_entity->render->shader->ID, "specular"), 0);
+                        */
                         glm::mat4 mvp = m_camera.getProjection() * m_camera.getView() * m_entity->render->Model;
                         glUniformMatrix4fv(m_entity->render->MVP_ID, 1, GL_FALSE, &mvp[0][0]);
                         glDrawArrays(GL_TRIANGLES, 0, m_entity->render->mesh->indexCount);
