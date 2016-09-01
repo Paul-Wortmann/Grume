@@ -22,3 +22,20 @@
  */
 
 #include "mainloop.hpp"
+#include "map_loader.hpp"
+
+uint16_t c_mainloop::initialize(void)
+{
+    loadMap("data/map/map");
+    return EXIT_SUCCESS;
+}
+
+uint16_t c_mainloop::deinitialize(void)
+{
+    return EXIT_SUCCESS;
+}
+
+uint16_t c_mainloop::process(int64_t _dt)
+{
+    return EXIT_SUCCESS;
+}

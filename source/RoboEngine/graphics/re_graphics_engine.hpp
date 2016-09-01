@@ -53,7 +53,11 @@ namespace RoboEngine
             void deinitialize(void);
             void render(void);
             inline void setEntity(re_sEntity *_entityHead) {m_entityHead = _entityHead;  m_entity = _entityHead;}
-            inline GLFWwindow* getWindow(void) { return m_window; }
+            inline GLFWwindow* getWindow(void) {return m_window;}
+            void setCameraPosition(glm::vec3 _position, glm::vec3 _lookat) {m_camera.setPosition(_position, _lookat);}
+            inline glm::vec3 getCameraPosition(void) {return m_camera.getPosition();}
+            inline glm::vec3 getCameraLookat(void) {return m_camera.getLookat();}
+            inline void setTitle(const std::string &_title) {m_title = _title;}
         private:
             GLFWwindow* m_window = nullptr;
             std::string m_title = "Frost and Flame";

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map name="map_1" version="1.0.0">
+    <world>
+        <gravity type="float" normalized="false">
+            <x>0.0</x>
+            <y>0.0</y>
+            <z>0.0</z>
+        </gravity>
+    </world>
+	<entity name="platform_1">
+        <texture name="platform_1"/>
+        <model name="platform_1"/>
+        <shader name="default"/>
+        <position type="float" normalized="false">
+            <x>0.0</x>
+            <y>0.0</y>
+            <z>0.0</z>
+        </position>
+        <dimension type="float" normalized="false">
+            <x>0.0</x>
+            <y>0.0</y>
+            <z>0.0</z>
+        </dimension>
+        <orientation type="float" normalized="true" angle="radians">
+            <x>0.0</x>
+            <y>0.0</y>
+            <z>0.0</z>
+        </orientation>
+        <physics body_type="dynamic">
+            <friction>0.2</friction>
+            <restitution>0.1</restitution>
+            <density>1.0</density>
+        </physics>
+    </entity>
+</map>
+

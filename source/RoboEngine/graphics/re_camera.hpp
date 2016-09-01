@@ -42,8 +42,10 @@ namespace RoboEngine
             re_cCamera& operator=(const re_cCamera& rhs) {if (this == &rhs) return *this; return *this;}
             void initialize(uint16_t _displayX, uint16_t _displayY, float _fov);
             void setPosition(glm::vec3 _position, glm::vec3 _lookat);
-            inline glm::mat4 getProjection(void) { return m_projection; }
-            inline glm::mat4 getView(void) { return m_view; }
+            inline glm::vec3 getPosition(void) {return m_position;}
+            inline glm::mat4 getProjection(void) {return m_projection;}
+            inline glm::mat4 getView(void) {return m_view;}
+            inline glm::vec3 getLookat(void) {return m_lookat;}
         private:
             uint16_t m_displayX = 640;
             uint16_t m_displayY = 480;

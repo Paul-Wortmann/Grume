@@ -21,17 +21,9 @@
  * @date 2011-11-11
  */
 
-#ifndef MAINLOOP_HPP
-#define MAINLOOP_HPP
+#include "map_loader.hpp"
 
-#include "RoboEngine/roboengine.hpp"
-
-class c_mainloop : public RoboEngine::re_cMainLoop
+void loadMap(const std::string &_fileName)
 {
-    public:
-        uint16_t initialize(void);
-        uint16_t deinitialize(void);
-        uint16_t process(int64_t _dt);
-};
 
-#endif // MAINLOOP_HPP
+}

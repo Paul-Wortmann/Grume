@@ -47,6 +47,7 @@ namespace RoboEngine
             m_entityManager.initialize();
             m_frameTimer.initialize();
             //graphics engine
+            //m_graphicsEngine.setTitle("Project 0");
             return_value = m_graphicsEngine.initialize();
             if (return_value == EXIT_FAILURE)
             {
@@ -57,24 +58,14 @@ namespace RoboEngine
                 m_window = m_graphicsEngine.getWindow();
                 m_SystemEvents.initialize(m_window);
 
-                re_sEntity *entity_1 = m_entityManager.getNew();
-                m_entityManager.addPhysics(entity_1);
-                m_entityManager.addRender(entity_1);
-                m_entityManager.addTexture(entity_1,"data/texture/skin.png");
-                m_entityManager.addMesh(entity_1,"data/mesh/mh.dae");
-                m_entityManager.addShader(entity_1,"data/shader/shader_000");
-                m_entityManager.setPosition(entity_1,glm::vec3(1.0f, -0.0f, 0.0f));
-                m_entityManager.setScale(entity_1,glm::vec3(1.0f, 1.0f, 1.0f));
-                RoboEngine::log_write(ROBOENGINELOG, __FILE__, __FUNCTION__, __LINE__, "Added Entity ID: " + std::to_string(entity_1->ID));
-
                 re_sEntity *entity_2 = m_entityManager.getNew();
                 m_entityManager.addPhysics(entity_2);
                 m_entityManager.addRender(entity_2);
-                m_entityManager.addTexture(entity_2,"data/texture/cube_d.png");
-                m_entityManager.addMesh(entity_2,"data/mesh/test.obj");
+                m_entityManager.addTexture(entity_2,"data/texture/cube");
+                m_entityManager.addMesh(entity_2,"data/mesh/cube.obj");
                 m_entityManager.addShader(entity_2,"data/shader/shader_000");
-                m_entityManager.setPosition(entity_2,glm::vec3(-2.0f, 0.0f, 0.0f));
-                m_entityManager.setScale(entity_2,glm::vec3(1.0f, 1.0f, 1.0f));
+                m_entityManager.setPosition(entity_2,glm::vec3(0.0f, 0.0f, 0.0f));
+                m_entityManager.setScale(entity_2,glm::vec3(2.0f, 2.0f, 2.0f));
                 RoboEngine::log_write(ROBOENGINELOG, __FILE__, __FUNCTION__, __LINE__, "Added Entity ID: " + std::to_string(entity_2->ID));
 
                 m_graphicsEngine.setEntity((re_sEntity*)m_entityManager.getHead());
@@ -141,14 +132,50 @@ namespace RoboEngine
         glfwPollEvents();
         m_SystemEvents.process();
         if (m_SystemEvents.statusQuit())
-            RE_STATE = RE_STATE_ENUM::RE_DEACTIVATING;
-
-        for (uint32_t i = 0; i < 3; i+=2)
         {
-            m_entityManager.setRotation(i, glm::vec3(0.01f, -0.02f, 0.03f));
-            m_entityManager.setRotation(i+1, glm::vec3(-0.02f, 0.03f, -0.01f));
+            RE_STATE = RE_STATE_ENUM::RE_DEACTIVATING;
         }
+        else
+        {
+            m_entityManager.setRotation(1, glm::vec3(0.001f, -0.002f, 0.003f));
 
+            if (m_SystemEvents.getKey(GLFW_KEY_UP))
+            {
+                float cameraSpeed = 0.01f;
+                glm::vec3 position = m_graphicsEngine.getCameraPosition();
+                glm::vec3 lookat = m_graphicsEngine.getCameraLookat();
+                position.z += cameraSpeed * _dt;
+                lookat.z += cameraSpeed * _dt;
+                m_graphicsEngine.setCameraPosition(position, lookat);
+            }
+            if (m_SystemEvents.getKey(GLFW_KEY_DOWN))
+            {
+                float cameraSpeed = 0.01f;
+                glm::vec3 position = m_graphicsEngine.getCameraPosition();
+                glm::vec3 lookat = m_graphicsEngine.getCameraLookat();
+                position.z -= cameraSpeed * _dt;
+                lookat.z -= cameraSpeed * _dt;
+                m_graphicsEngine.setCameraPosition(position, lookat);
+            }
+            if (m_SystemEvents.getKey(GLFW_KEY_LEFT))
+            {
+                float cameraSpeed = 0.01f;
+                glm::vec3 position = m_graphicsEngine.getCameraPosition();
+                glm::vec3 lookat = m_graphicsEngine.getCameraLookat();
+                position.x += cameraSpeed * _dt;
+                lookat.x += cameraSpeed * _dt;
+                m_graphicsEngine.setCameraPosition(position, lookat);
+            }
+            if (m_SystemEvents.getKey(GLFW_KEY_RIGHT))
+            {
+                float cameraSpeed = 0.01f;
+                glm::vec3 position = m_graphicsEngine.getCameraPosition();
+                glm::vec3 lookat = m_graphicsEngine.getCameraLookat();
+                position.x -= cameraSpeed * _dt;
+                lookat.x -= cameraSpeed * _dt;
+                m_graphicsEngine.setCameraPosition(position, lookat);
+            }
+        }
         return_value = process(_dt);
         return return_value;
     }

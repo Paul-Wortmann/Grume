@@ -88,7 +88,11 @@ namespace RoboEngine
     {
         if (_entity != nullptr)
             if (_entity->render != nullptr)
-                _entity->render->texture_diffuse = m_managerTexture.getNew(_fileName);
+            {
+                _entity->render->texture_diffuse = m_managerTexture.getNew(_fileName + "_d.png");
+                _entity->render->texture_normal = m_managerTexture.getNew(_fileName + "_n.png");
+                _entity->render->texture_specular = m_managerTexture.getNew(_fileName + "_s.png");
+            }
     }
 
 }
