@@ -2,7 +2,7 @@ language: cpp
 compiler:
   - gcc
 before_install:
-  - sudo apt-get install -qq --force-yes libglfw3-dev libphysfs-dev libglew-dev cppcheck
+  - sudo apt-get install -qq --force-yes libglfw3 libphysfs-dev libglew-dev cppcheck
 script: cmake . && make
 after_script: cppcheck --verbose --enable=all --std=posix --std=c++11 --quiet `git ls-files source/\*.cpp`
 notifications:
