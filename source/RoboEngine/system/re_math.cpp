@@ -21,11 +21,34 @@
  * @date 2011-11-11
  */
 
-#ifndef MAP_LOADER_HPP
-#define MAP_LOADER_HPP
+#include "re_math.hpp"
 
-#include "RoboEngine/roboengine.hpp"
+namespace RoboEngine
+{
 
-    void loadMap(const std::string &_fileName);
+    float to_radians (float _degrees)
+    {
+        return(_degrees * (M_PI/180));
+    }
 
-#endif // MAP_LOADER_HPP
+    float to_degrees (float _radians)
+    {
+        return(_radians * (180/M_PI));
+    }
+
+    int32_t sigma (int32_t _n)
+    {
+        return (_n <= 0) ? 0 : _n + sigma(_n - 1);
+    }
+
+    bool areEqualRel(float _a, float _b, float _epsilon)
+    {
+        return (std::fabs(_a - _b) <= _epsilon * std::max(std::fabs(_a), std::fabs(_b)));
+    }
+
+    bool floatsEqual(float _a, float _b)
+    {
+        return (std::fabs(_a - _b) <= FLT_EPSILON * std::max(std::fabs(_a), std::fabs(_b)));
+    }
+
+}

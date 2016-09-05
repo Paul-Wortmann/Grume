@@ -47,7 +47,6 @@ namespace RoboEngine
             m_entityManager.initialize();
             m_frameTimer.initialize();
             //graphics engine
-            //m_graphicsEngine.setTitle("Project 0");
             return_value = m_graphicsEngine.initialize();
             if (return_value == EXIT_FAILURE)
             {
@@ -58,17 +57,17 @@ namespace RoboEngine
                 m_window = m_graphicsEngine.getWindow();
                 m_SystemEvents.initialize(m_window);
 
-                re_sEntity *entity_2 = m_entityManager.getNew();
-                m_entityManager.addPhysics(entity_2);
-                m_entityManager.addRender(entity_2);
-                m_entityManager.addTexture(entity_2,"data/texture/cube");
-                m_entityManager.addMesh(entity_2,"data/mesh/cube.obj");
-                m_entityManager.addShader(entity_2,"data/shader/shader_000");
-                m_entityManager.setPosition(entity_2,glm::vec3(0.0f, 0.0f, 0.0f));
-                m_entityManager.setScale(entity_2,glm::vec3(2.0f, 2.0f, 2.0f));
-                RoboEngine::log_write(ROBOENGINELOG, __FILE__, __FUNCTION__, __LINE__, "Added Entity ID: " + std::to_string(entity_2->ID));
+                re_sEntity *entity_0 = m_entityManager.getNew();
+                m_entityManager.addPhysics(entity_0);
+                m_entityManager.addRender(entity_0);
+                m_entityManager.addTexture(entity_0, "data/texture/default");
+                m_entityManager.addMesh(entity_0, "data/mesh/default.obj");
+                m_entityManager.addShader(entity_0, "data/shader/default");
+                m_entityManager.setPosition(entity_0, glm::vec3(0.0f, 0.0f, 0.0f));
+                m_entityManager.setScale(entity_0, glm::vec3(2.0f, 2.0f, 2.0f));
+                m_entityManager.setState(entity_0, false);
+                //RoboEngine::log_write(ROBOENGINELOG, __FILE__, __FUNCTION__, __LINE__, "Added Entity ID: " + std::to_string(entity_0->ID));
 
-                m_graphicsEngine.setEntity((re_sEntity*)m_entityManager.getHead());
                 m_graphicsEngine.setEntity((re_sEntity*)m_entityManager.getHead());
                 //physics engine
                 return_value = m_physicsEngine.initialize();
@@ -81,7 +80,6 @@ namespace RoboEngine
                     m_physicsEngine.setEntity((re_sEntity*)m_entityManager.getHead());
                     return_value = initialize();
                 }
-                return_value = initialize();
             }
         }
         return return_value;
@@ -114,7 +112,6 @@ namespace RoboEngine
                 while(m_frameTimer.ready())
                 {
                     uint64_t deltaTime = m_frameTimer.frameTime();
-                    m_physicsEngine.process(deltaTime);
                     return_value = process_internal(deltaTime);
                     //std::cout << "Main engine running at -> " << std::to_string(deltaTime) << "ms frame time." << std::endl;
                 }
@@ -137,44 +134,10 @@ namespace RoboEngine
         }
         else
         {
-            m_entityManager.setRotation(1, glm::vec3(0.001f, -0.002f, 0.003f));
+            m_physicsEngine.process(_dt);
 
-            if (m_SystemEvents.getKey(GLFW_KEY_UP))
-            {
-                float cameraSpeed = 0.01f;
-                glm::vec3 position = m_graphicsEngine.getCameraPosition();
-                glm::vec3 lookat = m_graphicsEngine.getCameraLookat();
-                position.z += cameraSpeed * _dt;
-                lookat.z += cameraSpeed * _dt;
-                m_graphicsEngine.setCameraPosition(position, lookat);
-            }
-            if (m_SystemEvents.getKey(GLFW_KEY_DOWN))
-            {
-                float cameraSpeed = 0.01f;
-                glm::vec3 position = m_graphicsEngine.getCameraPosition();
-                glm::vec3 lookat = m_graphicsEngine.getCameraLookat();
-                position.z -= cameraSpeed * _dt;
-                lookat.z -= cameraSpeed * _dt;
-                m_graphicsEngine.setCameraPosition(position, lookat);
-            }
-            if (m_SystemEvents.getKey(GLFW_KEY_LEFT))
-            {
-                float cameraSpeed = 0.01f;
-                glm::vec3 position = m_graphicsEngine.getCameraPosition();
-                glm::vec3 lookat = m_graphicsEngine.getCameraLookat();
-                position.x += cameraSpeed * _dt;
-                lookat.x += cameraSpeed * _dt;
-                m_graphicsEngine.setCameraPosition(position, lookat);
-            }
-            if (m_SystemEvents.getKey(GLFW_KEY_RIGHT))
-            {
-                float cameraSpeed = 0.01f;
-                glm::vec3 position = m_graphicsEngine.getCameraPosition();
-                glm::vec3 lookat = m_graphicsEngine.getCameraLookat();
-                position.x -= cameraSpeed * _dt;
-                lookat.x -= cameraSpeed * _dt;
-                m_graphicsEngine.setCameraPosition(position, lookat);
-            }
+
+
         }
         return_value = process(_dt);
         return return_value;

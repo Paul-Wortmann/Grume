@@ -33,7 +33,19 @@
 namespace RoboEngine
 {
 
-    enum class XML_enum : uint32_t { XML_NONE, XML_TAG_START, XML_TAG_END, XML_TAG_SLASH, XML_COMMENT, XML_DECLARATION, XML_TAG_TEXT, XML_TAG_ATTRIBUTE, XML_TAG_ATTRIBUTE_END, XML_TAG_ATTRIBUTE_TEXT };
+    enum class XML_enum : uint32_t
+    {
+        XML_NONE,
+        XML_DECLARATION, // <?declaration?>
+        XML_COMMENT, // <!--comment-->
+        XML_TAG_START, // <tag>
+        XML_TAG_END, // </tag>
+        XML_TAG_TEXT, // <tag>text</tag>
+        XML_TAG_ATTRIBUTE, // <tag attribute="value">
+        XML_TAG_ATTRIBUTE_END, // <tag attribute="value"/>
+        XML_TAG_ATTRIBUTE_TEXT, // <tag attribute="value">text</tag>
+        XML_TAG_SLASH // <tag/>
+    };
 
     struct re_sxmlAttributeData
     {

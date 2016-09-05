@@ -109,6 +109,7 @@ Set (FROST_AND_FLAME_SOURCES
 	./source/RoboEngine/graphics/re_graphics_engine.cpp
 	./source/RoboEngine/graphics/re_image_loader.cpp
 
+	./source/RoboEngine/physics/re_physics.cpp
 	./source/RoboEngine/physics/re_physics_engine.cpp
 
 	./source/RoboEngine/resource/lodepng.cpp
@@ -122,6 +123,7 @@ Set (FROST_AND_FLAME_SOURCES
 	./source/RoboEngine/system/re_file.cpp
 	./source/RoboEngine/system/re_log.cpp
 	./source/RoboEngine/system/re_mainloop.cpp
+	./source/RoboEngine/system/re_math.cpp
 	./source/RoboEngine/system/re_random.cpp
 	./source/RoboEngine/system/re_system_events.cpp
 	./source/RoboEngine/system/re_time_step.cpp

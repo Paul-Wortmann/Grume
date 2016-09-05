@@ -32,6 +32,10 @@ class c_mainloop : public RoboEngine::re_cMainLoop
         uint16_t initialize(void);
         uint16_t deinitialize(void);
         uint16_t process(int64_t _dt);
+        void loadMap(const std::string &_fileName);
+    private:
+        uint32_t m_playerID = 0;
+        float m_playerSpeed = 0.01f;
 };
 
 #endif // MAINLOOP_HPP

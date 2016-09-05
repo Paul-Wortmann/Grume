@@ -24,20 +24,72 @@
 #ifndef RE_TYPES_HPP
 #define RE_TYPES_HPP
 
-#include <string>
 #include <cstdint>
+#include <cfloat>
+#include <climits>
+#include <tuple>
+#include "re_math.hpp"
 
 namespace RoboEngine
 {
 
+    template <typename T>
+    struct v2_T
+    {
+        T x = 0;
+        T y = 0;
+        inline v2_T(): x(T(0)), y(T(0)) {}
+        inline v2_T(const T& _vx, const T& _vy): x(_vx), x(_vy) {}
+        inline virtual ~v2_T() = default;
+        inline v2_T operator+(const v2_T& _v) { return v2_T(x + _v.x, y + _v.y); }
+        inline v2_T operator-(const v2_T& _v) { return v2_T(x - _v.x, y - _v.y); }
+        inline v2_T operator*(const v2_T& _v) { return v2_T(x * _v.x, y * _v.y); }
+        inline v2_T operator/(const v2_T& _v) { return v2_T(x / _v.x, y / _v.y); }
+        inline v2_T& operator+=(const v2_T& _v) { x += _v.x; y += _v.y; return *this; }
+        inline v2_T& operator-=(const v2_T& _v) { x -= _v.x; y -= _v.y; return *this; }
+        inline v2_T& operator*=(const v2_T& _v) { x *= _v.x; y *= _v.y; return *this; }
+        inline v2_T& operator/=(const v2_T& _v) { x /= _v.x; y /= _v.y; return *this; }
+        inline friend bool operator==(const v2_T& _L, const v2_T& _R) { return std::tie(_L.x, _L.y) == std::tie(_R.x, _R.y); }
+        inline friend bool operator!=(const v2_T& _L, const v2_T& _R) { return !(_L == _R); }
+        inline friend bool operator< (const v2_T& _L, const v2_T& _R) { return std::tie(_L.x, _L.y) < std::tie(_R.x, _R.y); }
+        inline friend bool operator>=(const v2_T& _L, const v2_T& _R) { return !(_L < _R); }
+        inline friend bool operator> (const v2_T& _L, const v2_T& _R) { return   _R < _L ; }
+        inline friend bool operator<=(const v2_T& _L, const v2_T& _R) { return !(_R < _L); }
+        inline v2_T operator-() const { return v2_T(-x, -y); }
+        inline v2_T& operator*=(const T& _s) { x *= _s; y *= _s; return *this; }
+        inline v2_T& operator/=(const T& _s) { x /= _s; y /= _s; return *this; }
+    };
+
     struct v2_f
     {
-        v2_f() = default;
-        virtual ~v2_f() = default;
-        v2_f(float _x, float _y) {x = _x; y = _y;}
+        inline v2_f() = default;
+        inline virtual ~v2_f() = default;
+        inline v2_f(float _x, float _y) {x = _x; y = _y;}
         float x = 0.0f;
         float y = 0.0f;
+        inline v2_f operator*(const float &_scalar) {return v2_f(x*_scalar, y*_scalar);}
+        inline v2_f operator/(const float &_scalar) {return v2_f(x/_scalar, y/_scalar);}
+        inline v2_f operator+(const v2_f &_b) {return v2_f(x + _b.x, y + _b.y);}
+        inline v2_f operator-(const v2_f &_b) {return v2_f(x - _b.x, y - _b.y);}
+        inline v2_f operator*(const v2_f &_b) {return v2_f(x * _b.x, y * _b.y);}
+        inline v2_f operator/(const v2_f &_b) {return v2_f(x / _b.x, y / _b.y);}
+        inline void operator+=(const v2_f &_b) {x += _b.x; y += _b.y;}
+        inline void operator-=(const v2_f &_b) {x -= _b.x; y -= _b.y;}
+        inline void operator*=(const v2_f &_b) {x *= _b.x; y *= _b.y;}
+        inline void operator/=(const v2_f &_b) {x /= _b.x; y /= _b.y;}
+        inline void operator*=(const float &_scalar) {x *= _scalar; y *= _scalar;}
+        inline void operator/=(const float &_scalar) {x /= _scalar; y /= _scalar;}
+        inline bool operator>(const v2_f &_b) {return ((x > _b.x)) && ((y > _b.y));}
+        inline bool operator<(const v2_f &_b) {return ((x < _b.x)) && ((y < _b.y));}
+        inline bool operator>=(const v2_f &_b) {return ((x >= _b.x)) && ((y >= _b.y));}
+        inline bool operator<=(const v2_f &_b) {return ((x <= _b.x)) && ((y <= _b.y));}
+        inline bool operator==(const v2_f &_b) {return floatsEqual(x, _b.x) && floatsEqual(y, _b.y);}
+        inline bool operator!=(const v2_f &_b) {return !floatsEqual(x, _b.x) || !floatsEqual(y, _b.y);}
+        inline v2_f operator-() {return v2_f(-x, -y);}
+        inline v2_f& operator=(const v2_f &_b) {x = _b.x; y = _b.y; return *this;}
+        inline float sqrt(const v2_f &_b) {return(std::sqrt(((x - _b.x) * (x - _b.x)) + ((y - _b.y) * (y - _b.y))));}
     };
+
 
     struct v3_f
     {

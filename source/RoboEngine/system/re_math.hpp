@@ -21,9 +21,24 @@
  * @date 2011-11-11
  */
 
-#include "map_loader.hpp"
+#ifndef MATH_HPP
+#define MATH_HPP
 
-void loadMap(const std::string &_fileName)
+#include <limits>
+#include <algorithm>
+#include <cmath>
+#include <cstdint>
+#include <cfloat>
+
+namespace RoboEngine
 {
 
+    float to_radians (float _degrees);
+    float to_degrees (float _radians);
+    int32_t sigma (int32_t _n);
+    bool areEqualRel(float _a, float _b, float _epsilon);
+    bool floatsEqual(float _a, float _b);
+
 }
+
+#endif //MATH_HPP

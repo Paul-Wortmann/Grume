@@ -48,6 +48,29 @@ namespace RoboEngine
             virtual uint16_t deinitialize(void) = 0;
             virtual uint16_t process(int64_t _dt) = 0;
             virtual uint16_t run(void) final;
+            virtual inline RE_STATE_ENUM getState(void) final {return RE_STATE;}
+            // entity manager
+            virtual inline uint32_t getNewEntity(void) final {re_sEntity *tEntity = m_entityManager.getNew(); return tEntity->ID;}
+            virtual inline void addEntityPhysics(uint32_t _ID) {m_entityManager.addPhysics(_ID);}
+            virtual inline void addEntityRender(uint32_t _ID) {m_entityManager.addRender(_ID);}
+            virtual inline void setEntityPosition(uint32_t _ID, glm::vec3 _position) final {m_entityManager.setPosition(_ID, _position);}
+            virtual inline void setEntityRotation(uint32_t _ID, glm::vec3 _rotation) final {m_entityManager.setRotation(_ID, _rotation);}
+            virtual inline void setEntityScale(uint32_t _ID, glm::vec3 _scale) final {m_entityManager.setScale(_ID, _scale);}
+            virtual inline void addEntityMesh(uint32_t _ID, std::string _fileName) final {m_entityManager.addMesh(_ID, _fileName);}
+            virtual inline void addEntityShader(uint32_t _ID, std::string _fileName) final {m_entityManager.addShader(_ID, _fileName);}
+            virtual inline void addEntityTexture(uint32_t _ID, std::string _fileName) final {m_entityManager.addTexture(_ID, _fileName);}
+            virtual inline void setEntityDynamic(uint32_t _ID, bool _state) {m_entityManager.setDynamic(_ID, _state);}
+            virtual inline glm::vec3 getEntityPosition(uint32_t _ID) final {return m_entityManager.getPosition(_ID);}
+            virtual inline glm::vec3 getEntityRotation(uint32_t _ID) final {return m_entityManager.getRotation(_ID);}
+            virtual inline glm::vec3 getEntityScale(uint32_t _ID) final {return m_entityManager.getScale(_ID);}
+            // system events
+            virtual inline bool getKey(uint32_t _key) final {return m_SystemEvents.getKey(_key);}
+            // graphics engine
+            virtual inline void setWindowTitle(const std::string& _title) final {m_graphicsEngine.setTitle(_title);}
+            virtual inline void setCameraPosition(glm::vec3 _position, glm::vec3 _lookat) final {m_graphicsEngine.setCameraPosition(_position, _lookat);}
+            virtual inline glm::vec3 getCameraPosition(void) final {return m_graphicsEngine.getCameraPosition();}
+            virtual inline glm::vec3 getCameraLookat(void) final {return m_graphicsEngine.getCameraLookat();}
+
         private:
             GLFWwindow* m_window = nullptr;
             virtual uint16_t initialize_internal(void) final;

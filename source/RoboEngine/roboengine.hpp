@@ -56,6 +56,7 @@
 #include "graphics/re_graphics_engine.hpp"
 #include "graphics/re_image_loader.hpp"
 
+#include "physics/re_physics.hpp"
 #include "physics/re_physics_engine.hpp"
 
 #include "resource/lodepng.h"
@@ -69,6 +70,7 @@
 #include "system/re_file.hpp"
 #include "system/re_log.hpp"
 #include "system/re_mainloop.hpp"
+#include "system/re_math.hpp"
 #include "system/re_random.hpp"
 #include "system/re_system_events.hpp"
 #include "system/re_time_step.hpp"

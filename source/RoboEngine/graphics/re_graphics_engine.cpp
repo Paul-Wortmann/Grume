@@ -59,15 +59,18 @@ namespace RoboEngine
             else
             {
                 m_camera.initialize(m_displayX, m_displayY, 45.0f);
-                m_camera.setPosition(glm::vec3(4,3,3), glm::vec3(0,0,0));
+                m_camera.setPosition(glm::vec3(0,0,-32), glm::vec3(0,0,0));
                 RoboEngine::log_write(ROBOENGINELOG, __FILE__, __FUNCTION__, __LINE__, reinterpret_cast<const char*>(glGetString(GL_VERSION)));
                 RoboEngine::log_write(ROBOENGINELOG, __FILE__, __FUNCTION__, __LINE__, reinterpret_cast<const char*>(glGetString(GL_VENDOR)));
                 RoboEngine::log_write(ROBOENGINELOG, __FILE__, __FUNCTION__, __LINE__, reinterpret_cast<const char*>(glGetString(GL_RENDERER)));
                 RoboEngine::log_write(ROBOENGINELOG, __FILE__, __FUNCTION__, __LINE__, reinterpret_cast<const char*>(glGetString(GL_SHADING_LANGUAGE_VERSION)));
 
+                glEnable(GL_BLEND);
+                glBlendFunc(GL_SRC_ALPHA,GL_ONE_MINUS_SRC_ALPHA);
+
                 glEnable(GL_CULL_FACE);
                 glEnable(GL_DEPTH_TEST);
-                glDepthFunc(GL_LESS);
+                glDepthFunc(GL_LEQUAL);
                 glClearDepth(1.0);
                 glClearColor(0.1f,0.1f,0.4f,1);
             }

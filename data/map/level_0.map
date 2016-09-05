@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map name="map_1" version="1.0.0">
+    <world>
+        <gravity type="float" normalized="false" x="0.0" y="0.0" z="0.0"/>
+        <bounds type="float" normalized="false" max_x="0.0" max_y="0.0" max_z="0.0" min_x="0.0" min_y="0.0" min_z="0.0"/>
+    </world>
+    <level>
+        <victory condition="kill" value="all"/>
+        <victory condition="kill" value="entity" data="1"/>
+        <victory condition="get" value="entity" data="2"/>
+    </level>
+## Player Character @ 1 blocks wide and 2 blocks high
+	<entity name="box_1" type="dynamic_object">
+        <render>
+            <texture name="cube"/>
+            <model name="cube.obj"/>
+            <shader name="default"/>
+        </render>
+        <physics body_type="dynamic">
+            <position type="float" normalized="false" x="0.0" y="0.0" z="0.0"/>
+            <dimension type="float" normalized="false" x="8.0" y="8.0" z="8.0"/>
+            <orientation type="float" normalized="true" angle="radians" x="0.0" y="0.0" z="0.0"/>
+            <friction value="0.2"/>
+            <restitution value="0.1"/>
+            <density value="0.1"/>
+            <mass value="0.1"/>
+        </physics>
+    </entity>
+</map>
+
