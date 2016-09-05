@@ -2,6 +2,7 @@ language: cpp
 compiler:
   - gcc
 before_install:
+  - sudo apt-get install -qq --force-yes libglm-dev
   - sudo apt-get install -qq --force-yes libglew-dev
   - sudo apt-get install -qq --force-yes libphysfs-dev
   - sudo apt-get install -qq --force-yes cppcheck
