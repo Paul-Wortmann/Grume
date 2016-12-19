@@ -73,7 +73,7 @@ uint32_t c_mainloop::terminate(void)
 
 uint32_t c_mainloop::process(int64_t _dt)
 {
-    if (c_mainloop::getState() != RoboEngine::RE_STATE_ENUM::RE_DEACTIVATING)
+    if (c_mainloop::getState() == RoboEngine::eState::RE_ACTV)
     {
         if (m_playerID == 0)
         {

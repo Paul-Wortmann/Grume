@@ -26,5 +26,5 @@
 int main (int argc, char** argv)
 {
     c_mainloop mainloop;
-    return mainloop.run();
+    return mainloop.run(argc, argv);
 }

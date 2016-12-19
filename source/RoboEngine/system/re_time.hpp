@@ -21,21 +21,36 @@
  * @date 2011-11-11
  */
 
-#ifndef MAINLOOP_HPP
-#define MAINLOOP_HPP
+#ifndef RE_TIME_HPP
+#define RE_TIME_HPP
 
-#include "RoboEngine/roboengine.hpp"
+#include <iostream>
+#include <chrono>
+#include <ctime>
 
-class c_mainloop : public RoboEngine::re_cRoboEngine
+namespace RoboEngine
 {
-    public:
-        uint32_t initialize(void);
-        uint32_t terminate(void);
-        uint32_t process(int64_t _dt);
-        void loadMap(const std::string &_fileName);
-    private:
-        uint32_t m_playerID = 0;
-        float m_playerSpeed = 0.01f;
-};
 
-#endif // MAINLOOP_HPP
+    class re_cTime
+    {
+        public:
+            re_cTime(void) = default;
+            virtual ~re_cTime(void) = default;
+            re_cTime(const re_cTime&) = default;
+            re_cTime& operator=(const re_cTime& _rhs) {if (this == &_rhs) return *this; return *this;}
+
+            inline uint64_t getTime(void) {return std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::high_resolution_clock::now().time_since_epoch()).count();}
+        protected:
+
+        private:
+            double m_delta = 0.0f;
+
+            inline double getDelta(void) {return m_delta;}
+            inline void setDelta(double _delta) {m_delta = _delta;}
+
+
+    };
+
+}
+
+#endif // RE_TIME_HPP

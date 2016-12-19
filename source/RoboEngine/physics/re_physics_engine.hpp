@@ -47,9 +47,9 @@ namespace RoboEngine
             re_cPhysicsEngine(const re_cPhysicsEngine&) = default;
             re_cPhysicsEngine& operator=(const re_cPhysicsEngine& rhs) {if (this == &rhs) return *this; return *this;}
             uint32_t initialize(void);
-            void deinitialize(void);
+            void terminate(void);
             bool collision2D(const re_sEntity &_entity1, const re_sEntity &_entity2);
-            void process(int64_t _dt);
+            uint32_t process(int64_t _dt);
             inline void setEntity(re_sEntity *_entityHead) {m_entityHead = _entityHead;  m_entity = _entityHead;}
         private:
             re_sEntity *m_entityHead = nullptr;

@@ -42,7 +42,7 @@
 #include <glm/glm.hpp>
 
 #include "core/re_defines.hpp"
-#include "core/re_mainloop.hpp"
+#include "core/re_engine.hpp"
 #include "core/re_time_step.hpp"
 #include "core/re_types.hpp"
 #include "core/re_version.hpp"

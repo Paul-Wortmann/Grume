@@ -21,21 +21,9 @@
  * @date 2011-11-11
  */
 
-#ifndef MAINLOOP_HPP
-#define MAINLOOP_HPP
+#include "re_time.hpp"
 
-#include "RoboEngine/roboengine.hpp"
-
-class c_mainloop : public RoboEngine::re_cRoboEngine
+namespace RoboEngine
 {
-    public:
-        uint32_t initialize(void);
-        uint32_t terminate(void);
-        uint32_t process(int64_t _dt);
-        void loadMap(const std::string &_fileName);
-    private:
-        uint32_t m_playerID = 0;
-        float m_playerSpeed = 0.01f;
-};
 
-#endif // MAINLOOP_HPP
+}

@@ -43,9 +43,9 @@ namespace RoboEngine
             re_cSystemEvents(const re_cSystemEvents&) = default;
             re_cSystemEvents& operator=(const re_cSystemEvents& rhs) {if (this == &rhs) return *this; return *this;}
             void initialize(GLFWwindow* _window);
-            void deinitialize(void);
+            void terminate(void);
             void process(void);
-            inline bool statusQuit(void) { return m_quit; }
+            inline bool windowCloseRequested(void) { return m_quit; }
             inline bool getKey(int32_t _key){ return (glfwGetKey(m_window, _key) != GLFW_RELEASE ); }
             inline int32_t GetMouseButton (int32_t _button) { return glfwGetMouseButton(m_window, _button); }
             inline void GetCursorPos (double *_xpos, double *_ypos) { glfwGetCursorPos (m_window, _xpos, _ypos); }

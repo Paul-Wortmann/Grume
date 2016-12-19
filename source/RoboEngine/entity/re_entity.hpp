@@ -49,7 +49,7 @@ namespace RoboEngine
             ~re_cEntityManager(void) {}
             inline re_cEntityManager(const re_cEntityManager&) = default;
             inline re_cEntityManager& operator=(const re_cEntityManager& _rhs) {if (this == &_rhs) return *this; return *this;}
-            inline void initialize(void) {}
+            inline uint32_t initialize(void) {return EXIT_SUCCESS;}
             inline const re_sEntity *getHead(void) {return m_head;}
             inline const re_sEntity *getTail(void) {return m_tail;}
             inline uint32_t getID(re_sEntity *_entity) {return _entity->ID;}

@@ -32,7 +32,7 @@ namespace RoboEngine
         return return_value;
     }
 
-    void re_cPhysicsEngine::deinitialize(void)
+    void re_cPhysicsEngine::terminate(void)
     {
     }
 
@@ -41,8 +41,10 @@ namespace RoboEngine
         return quadrangle_collision(_entity1.physics->position.x, _entity1.physics->position.y, _entity1.physics->scale.x, _entity1.physics->scale.y, _entity2.physics->position.x, _entity2.physics->position.y, _entity2.physics->scale.x, _entity2.physics->scale.y);
     }
 
-    void re_cPhysicsEngine::process(int64_t _dt)
+    uint32_t re_cPhysicsEngine::process(int64_t _dt)
     {
+        uint32_t return_value = EXIT_SUCCESS;
+        if (_dt < 0) return_value = EXIT_FAILURE; // delete me
         m_entity = m_entityHead;
         if (m_entity != nullptr)
         {
@@ -90,6 +92,7 @@ namespace RoboEngine
                 m_entity = m_entity->next;
             }
         }
+        return return_value;
     }
 
 }

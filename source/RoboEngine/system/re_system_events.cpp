@@ -36,7 +36,7 @@ namespace RoboEngine
             glfwSetInputMode(m_window, GLFW_STICKY_KEYS, GL_TRUE);
     }
 
-    void re_cSystemEvents::deinitialize(void)
+    void re_cSystemEvents::terminate(void)
     {
     }
 
