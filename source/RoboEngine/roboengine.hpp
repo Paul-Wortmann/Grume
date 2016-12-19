@@ -35,8 +35,10 @@
 #include <thread>
 #include <unordered_map>
 
+#define GLEW_STATIC
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
+#define GLM_FORCE_RADIANS
 #include <glm/glm.hpp>
 
 #include "core/re_defines.hpp"
