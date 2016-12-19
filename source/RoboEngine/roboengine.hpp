@@ -60,6 +60,7 @@
 #include "physics/re_physics_engine.hpp"
 
 #include "resource/lodepng.h"
+#include "resource/re_generate_mesh.hpp"
 #include "resource/re_loader_dae.hpp"
 #include "resource/re_loader_obj.hpp"
 #include "resource/re_manager_mesh.hpp"
