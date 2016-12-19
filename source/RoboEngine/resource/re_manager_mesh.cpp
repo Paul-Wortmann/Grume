@@ -22,6 +22,7 @@
  */
 
 #include "re_manager_mesh.hpp"
+#include "re_generate_mesh.hpp"
 #include "../roboengine.hpp"
 
 namespace RoboEngine
@@ -71,7 +72,36 @@ namespace RoboEngine
         return nullptr;
     }
 
-    void re_cManagerMesh:: loadMesh(std::string _fileName, re_sMesh *&_mesh)
+    re_sMesh *re_cManagerMesh::genNew(uint32_t _size)
+    {
+        std::string _fileName = std::to_string(_size);
+        if (m_head == nullptr)
+        {
+            m_head = new re_sMesh;
+            m_tail = m_head;
+            m_tail->next = nullptr;
+            m_tail->fileName = _fileName;
+            genMesh(_size, m_tail);
+            return m_tail;
+        }
+        else
+        {
+            for (re_sMesh *tempMesh = m_head; tempMesh != nullptr; tempMesh = tempMesh->next)
+            {
+                 if (_fileName.compare(tempMesh->fileName.c_str()) == 0)
+                    return(tempMesh);
+            }
+            m_tail->next = new re_sMesh;
+            m_tail = m_tail->next;
+            m_tail->next = nullptr;
+            m_tail->fileName = _fileName;
+            genMesh(_size, m_tail);
+            return m_tail;
+        }
+        return nullptr;
+    }
+
+    void re_cManagerMesh::loadMesh(std::string _fileName, re_sMesh *&_mesh)
     {
         const std::string fileExt = re_fileExtention(_fileName);
         if (fileExt.compare("dae") == 0)
@@ -115,6 +145,26 @@ namespace RoboEngine
         else
         {
             re_logWrite("ERROR -> unsupported file type : " + _fileName, RE_ENGINE_LOG, __FILE__, __LINE__, __FUNCTION__);
+        }
+    }
+
+    void re_cManagerMesh::genMesh(uint32_t _size, re_sMesh *&_mesh)
+    {
+        re_sGenMesh tMesh;
+        re_GenerateMesh(_size, tMesh);
+        _mesh->indexCount = tMesh.indexCount;
+
+        _mesh->index = new v8_f[_mesh->indexCount];
+        for (uint64_t i = 0; i < _mesh->indexCount; i++)
+        {
+            _mesh->index[i].x = tMesh.index[i].x;
+            _mesh->index[i].y = tMesh.index[i].y;
+            _mesh->index[i].z = tMesh.index[i].z;
+            _mesh->index[i].nx = tMesh.index[i].nx;
+            _mesh->index[i].ny = tMesh.index[i].ny;
+            _mesh->index[i].nz = tMesh.index[i].nz;
+            _mesh->index[i].s = tMesh.index[i].s;
+            _mesh->index[i].t = tMesh.index[i].t;
         }
     }
 

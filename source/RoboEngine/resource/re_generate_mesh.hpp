@@ -30,7 +30,13 @@
 namespace RoboEngine
 {
 
-    re_sMesh *re_GenerateMesh(void);
+    struct re_sGenMesh
+    {
+        uint64_t indexCount = 0;
+        v8_f* index = nullptr;
+    };
+
+    void re_GenerateMesh(uint32_t _size, re_sGenMesh &_mesh);
 
 }
 

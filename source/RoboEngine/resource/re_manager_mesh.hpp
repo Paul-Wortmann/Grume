@@ -52,9 +52,11 @@ namespace RoboEngine
             inline const re_sMesh *getTail(void) {return m_tail;}
             void freeAll(void);
             re_sMesh *getNew(std::string _fileName);
-            void loadMesh(std::string _fileName, re_sMesh *&_mesh);
+            re_sMesh *genNew(uint32_t _size);
         protected:
         private:
+            void loadMesh(std::string _fileName, re_sMesh *&_mesh);
+            void genMesh(uint32_t _size, re_sMesh *&_mesh);
             re_sMesh *m_head = nullptr;
             re_sMesh *m_tail = nullptr;
     };

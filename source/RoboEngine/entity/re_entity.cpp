@@ -77,6 +77,13 @@ namespace RoboEngine
                 _entity->render->mesh = m_managerMesh.getNew(_fileName);
     }
 
+    void re_cEntityManager::genMesh(re_sEntity *_entity, uint32_t _size)
+    {
+        if (_entity != nullptr)
+            if (_entity->render != nullptr)
+                _entity->render->mesh = m_managerMesh.genNew(_size);
+    }
+
     void re_cEntityManager::addShader(re_sEntity *_entity, std::string _fileName)
     {
         if (_entity != nullptr)

@@ -59,10 +59,22 @@ void c_mainloop::loadMap(const std::string &_fileName)
     re_xml_delete(xml_data);
 }
 
+void c_mainloop::GenMap(uint32_t _size)
+{
+    uint32_t entity = getNewEntity();
+    addEntityPhysics(entity);
+    addEntityRender(entity);
+    addEntityTexture(entity, "data/texture/default");
+    addEntityShader(entity, "data/shader/default");
+    genEntityMesh(entity, _size);
+    RoboEngine::re_logWrite("Added Entity ID: " + std::to_string(entity), RE_ENGINE_LOG, __FILE__, __LINE__, __FUNCTION__);
+}
+
 uint32_t c_mainloop::initialize(void)
 {
     setWindowTitle("Frost and Flame");
     loadMap("data/map/level_0");
+    GenMap(10);
     return EXIT_SUCCESS;
 }
 
