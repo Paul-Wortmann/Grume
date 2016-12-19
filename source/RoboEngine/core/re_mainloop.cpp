@@ -90,7 +90,7 @@ namespace RoboEngine
     {
         uint32_t return_value = EXIT_SUCCESS;
         RE_STATE = RE_STATE_ENUM::RE_INACTIVE;
-        m_graphicsEngine.deinitialize();
+        m_graphicsEngine.terminate();
         m_physicsEngine.deinitialize();
         m_SystemEvents.deinitialize();
 
@@ -117,7 +117,7 @@ namespace RoboEngine
                     //std::cout << "Main engine running at -> " << std::to_string(deltaTime) << "ms frame time." << std::endl;
                 }
                 //RE_STATE = RE_STATE_ENUM::RE_DEACTIVATING;
-                m_graphicsEngine.render();
+                m_graphicsEngine.process();
             }
         }
         return_value = internal_terminate();

@@ -39,52 +39,56 @@ namespace RoboEngine
         m_currentDisplayMode = 0;
         // todo: create list of available display modes, if full screen flag, set to optimal full screen resolution.
 
-        m_window = glfwCreateWindow( m_displayX, m_displayY, m_title.c_str(), nullptr, nullptr);
-        if (m_window == nullptr)
+        if (m_fullscreen)
+            m_window = glfwCreateWindow( m_width, m_height, m_title.c_str(), glfwGetPrimaryMonitor(), nullptr);
+        else
+            m_window = glfwCreateWindow( m_width, m_height, m_title.c_str(), nullptr, nullptr);
+        if( m_window == nullptr )
         {
-            re_logWrite("Fatal error - Unable to create a window.", RE_ENGINE_LOG, __FILE__, __LINE__, __FUNCTION__);
+            re_logWrite("Failed to open GLFW window.", RE_ENGINE_LOG, __FILE__, __LINE__, __FUNCTION__);
             glfwTerminate();
-            return_value = EXIT_FAILURE;
+            return EXIT_FAILURE;
+        }
+
+        glfwMakeContextCurrent(m_window);
+        glfwSwapInterval(1);
+        glewExperimental = true;
+        if (glewInit() != GLEW_OK)
+        {
+            re_logWrite("Failed to initialize GLEW.", RE_ENGINE_LOG, __FILE__, __LINE__, __FUNCTION__);
+            return EXIT_FAILURE;
         }
         else
         {
-            glfwMakeContextCurrent(m_window);
-            glewExperimental = true;
-            glfwSwapInterval(1);
-            if (glewInit() != GLEW_OK)
-            {
-                re_logWrite("Fatal error - Unable to initialize GLEW.", RE_ENGINE_LOG, __FILE__, __LINE__, __FUNCTION__);
-                glfwTerminate();
-                return_value = EXIT_FAILURE;
-            }
-            else
-            {
-                m_camera.initialize(m_displayX, m_displayY, 45.0f);
-                m_camera.setPosition(glm::vec3(0,0,-32), glm::vec3(0,0,0));
-                re_logWrite(reinterpret_cast<const char*>(glGetString(GL_VERSION)), RE_ENGINE_LOG, __FILE__, __LINE__, __FUNCTION__);
-                re_logWrite(reinterpret_cast<const char*>(glGetString(GL_VENDOR)), RE_ENGINE_LOG, __FILE__, __LINE__, __FUNCTION__);
-                re_logWrite(reinterpret_cast<const char*>(glGetString(GL_RENDERER)), RE_ENGINE_LOG, __FILE__, __LINE__, __FUNCTION__);
-                re_logWrite(reinterpret_cast<const char*>(glGetString(GL_SHADING_LANGUAGE_VERSION)), RE_ENGINE_LOG, __FILE__, __LINE__, __FUNCTION__);
+            re_logWrite(reinterpret_cast<const char*>(glGetString(GL_VERSION)), RE_ENGINE_LOG, __FILE__, __LINE__, __FUNCTION__);
+            re_logWrite(reinterpret_cast<const char*>(glGetString(GL_VENDOR)), RE_ENGINE_LOG, __FILE__, __LINE__, __FUNCTION__);
+            re_logWrite(reinterpret_cast<const char*>(glGetString(GL_RENDERER)), RE_ENGINE_LOG, __FILE__, __LINE__, __FUNCTION__);
+            re_logWrite(reinterpret_cast<const char*>(glGetString(GL_SHADING_LANGUAGE_VERSION)), RE_ENGINE_LOG, __FILE__, __LINE__, __FUNCTION__);
 
-                glEnable(GL_BLEND);
-                glBlendFunc(GL_SRC_ALPHA,GL_ONE_MINUS_SRC_ALPHA);
+            m_camera.initialize(m_width, m_height, 45.0f);
+            m_camera.setPosition(glm::vec3(0,0,-32), glm::vec3(0,0,0));
 
-                glEnable(GL_CULL_FACE);
-                glEnable(GL_DEPTH_TEST);
-                glDepthFunc(GL_LEQUAL);
-                glClearDepth(1.0);
-                glClearColor(0.1f,0.1f,0.4f,1);
-            }
+            glEnable(GL_BLEND);
+            glBlendFunc(GL_SRC_ALPHA,GL_ONE_MINUS_SRC_ALPHA);
+            glEnable(GL_CULL_FACE);
+            glEnable(GL_DEPTH_TEST);
+            glDepthFunc(GL_LESS);
+            glClearDepth(1.0);
+            glClearColor(0.1f,0.1f,0.4f,1);
         }
+
         return return_value;
     }
 
-    void re_cGraphicsEngine::deinitialize(void)
+    uint32_t re_cGraphicsEngine::terminate(void)
     {
+        uint32_t return_value = EXIT_SUCCESS;
         glfwDestroyWindow(m_window);
+        m_window = nullptr;
+        return return_value;
     }
 
-    void re_cGraphicsEngine::render(void)
+    void re_cGraphicsEngine::process(void)
     {
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         m_entity = m_entityHead;
