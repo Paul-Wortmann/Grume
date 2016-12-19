@@ -23,6 +23,14 @@ freely, subject to the following restrictions:
     distribution.
 */
 
+/*
+
+    * This is a modified version!
+    * Modified by Paul Wortmann to remove compiler warnings.
+    * 2016-12-20
+
+*/
+
 #ifndef LODEPNG_H
 #define LODEPNG_H
 

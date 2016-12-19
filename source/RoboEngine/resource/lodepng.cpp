@@ -28,6 +28,14 @@ The manual and changelog are in the header file "lodepng.h"
 Rename this file to lodepng.cpp to use it for C++, or to lodepng.c to use it for C.
 */
 
+/*
+
+    * This is a modified version!
+    * Modified by Paul Wortmann to remove compiler warnings.
+    * 2016-12-20
+
+*/
+
 #include "lodepng.h"
 
 #include <limits.h>
