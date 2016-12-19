@@ -22,6 +22,7 @@
  */
 
 #include "re_graphics_engine.hpp"
+#include "../roboengine.hpp"
 
 namespace RoboEngine
 {
@@ -41,7 +42,7 @@ namespace RoboEngine
         m_window = glfwCreateWindow( m_displayX, m_displayY, m_title.c_str(), nullptr, nullptr);
         if (m_window == nullptr)
         {
-            RoboEngine::log_write(ROBOENGINELOG, __FILE__, __FUNCTION__, __LINE__, "Non fatal warning - Unable to create a window.");
+            re_logWrite("Fatal error - Unable to create a window.", RE_ENGINE_LOG, __FILE__, __LINE__, __FUNCTION__);
             glfwTerminate();
             return_value = EXIT_FAILURE;
         }
@@ -52,7 +53,7 @@ namespace RoboEngine
             glfwSwapInterval(1);
             if (glewInit() != GLEW_OK)
             {
-                RoboEngine::log_write(ROBOENGINELOG, __FILE__, __FUNCTION__, __LINE__, "Fatal error - Unable to initialize GLEW.");
+                re_logWrite("Fatal error - Unable to initialize GLEW.", RE_ENGINE_LOG, __FILE__, __LINE__, __FUNCTION__);
                 glfwTerminate();
                 return_value = EXIT_FAILURE;
             }
@@ -60,10 +61,10 @@ namespace RoboEngine
             {
                 m_camera.initialize(m_displayX, m_displayY, 45.0f);
                 m_camera.setPosition(glm::vec3(0,0,-32), glm::vec3(0,0,0));
-                RoboEngine::log_write(ROBOENGINELOG, __FILE__, __FUNCTION__, __LINE__, reinterpret_cast<const char*>(glGetString(GL_VERSION)));
-                RoboEngine::log_write(ROBOENGINELOG, __FILE__, __FUNCTION__, __LINE__, reinterpret_cast<const char*>(glGetString(GL_VENDOR)));
-                RoboEngine::log_write(ROBOENGINELOG, __FILE__, __FUNCTION__, __LINE__, reinterpret_cast<const char*>(glGetString(GL_RENDERER)));
-                RoboEngine::log_write(ROBOENGINELOG, __FILE__, __FUNCTION__, __LINE__, reinterpret_cast<const char*>(glGetString(GL_SHADING_LANGUAGE_VERSION)));
+                re_logWrite(reinterpret_cast<const char*>(glGetString(GL_VERSION)), RE_ENGINE_LOG, __FILE__, __LINE__, __FUNCTION__);
+                re_logWrite(reinterpret_cast<const char*>(glGetString(GL_VENDOR)), RE_ENGINE_LOG, __FILE__, __LINE__, __FUNCTION__);
+                re_logWrite(reinterpret_cast<const char*>(glGetString(GL_RENDERER)), RE_ENGINE_LOG, __FILE__, __LINE__, __FUNCTION__);
+                re_logWrite(reinterpret_cast<const char*>(glGetString(GL_SHADING_LANGUAGE_VERSION)), RE_ENGINE_LOG, __FILE__, __LINE__, __FUNCTION__);
 
                 glEnable(GL_BLEND);
                 glBlendFunc(GL_SRC_ALPHA,GL_ONE_MINUS_SRC_ALPHA);
@@ -126,7 +127,7 @@ namespace RoboEngine
                         glEnableVertexAttribArray(2);
                         glVertexAttribPointer(2,2,GL_FLOAT,GL_FALSE,sizeof(v8_f),(void*)(sizeof(float)*6));
 
-                        RoboEngine::log_write(ROBOENGINELOG, __FILE__, __FUNCTION__, __LINE__, "Initializing vao: " + std::to_string(m_entity->render->VAO_ID));
+                        re_logWrite("Initializing vao: " + std::to_string(m_entity->render->VAO_ID), RE_ENGINE_LOG, __FILE__, __LINE__, __FUNCTION__);
                     }
                     // Draw render entity
                     if (m_entity->render->VAO_ID != 0)

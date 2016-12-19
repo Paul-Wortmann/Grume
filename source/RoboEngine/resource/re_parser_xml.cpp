@@ -22,6 +22,7 @@
  */
 
 #include "re_parser_xml.hpp"
+#include "../roboengine.hpp"
 
 namespace RoboEngine
 {
@@ -514,7 +515,7 @@ namespace RoboEngine
         std::ifstream file_pointer;
         file_pointer.open (_xml_file, std::ifstream::in);
         if (!file_pointer.good())
-            RoboEngine::log_write(ROBOENGINELOG, __FILE__, __FUNCTION__, __LINE__, "ERROR -> parsing XML file  :  " + _xml_file);
+            re_logWrite("ERROR -> parsing XML file  :  " + _xml_file, RE_ENGINE_LOG, __FILE__, __LINE__, __FUNCTION__);
         uint64_t line_count = 0;
         uint64_t indentation = 0;
         std::string s_temp = "";
@@ -533,7 +534,7 @@ namespace RoboEngine
         file_pointer.clear();
         file_pointer.close();
         if (!file_pointer.good())
-            RoboEngine::log_write(ROBOENGINELOG, __FILE__, __FUNCTION__, __LINE__, "ERROR -> parsing XML file  :  " + _xml_file);
+            re_logWrite("ERROR -> parsing XML file  :  " + _xml_file, RE_ENGINE_LOG, __FILE__, __LINE__, __FUNCTION__);
     }
 
     void re_xml_export(const std::string &_xml_file, const re_sxmlData &_xml_data)
@@ -545,7 +546,7 @@ namespace RoboEngine
         file_pointer.close();
         file_pointer.open (_xml_file, std::ofstream::out | std::ofstream::app);
         if (!file_pointer.good())
-            RoboEngine::log_write(ROBOENGINELOG, __FILE__, __FUNCTION__, __LINE__, "ERROR -> parsing XML file  :  " + _xml_file);
+            re_logWrite("ERROR -> parsing XML file  :  " + _xml_file, RE_ENGINE_LOG, __FILE__, __LINE__, __FUNCTION__);
         for (uint64_t j = 0; j < _xml_data.line_count; j++)
         {
             // xml_declaration

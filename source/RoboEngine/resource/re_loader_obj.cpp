@@ -22,6 +22,7 @@
  */
 
 #include "re_loader_obj.hpp"
+#include "../roboengine.hpp"
 
 namespace RoboEngine
 {
@@ -50,7 +51,7 @@ namespace RoboEngine
         std::ifstream file_pointer;
         file_pointer.open (_objFile, std::ifstream::in);
         if (!file_pointer.good())
-            RoboEngine::log_write(ROBOENGINELOG, __FILE__, __FUNCTION__, __LINE__, "ERROR -> importing OBJ  :  " + _objFile);
+            re_logWrite("ERROR -> importing OBJ  :  " + _objFile, RE_ENGINE_LOG, __FILE__, __LINE__, __FUNCTION__);
         std::string s_temp = "";
         while (std::getline(file_pointer, s_temp))
         {
@@ -196,7 +197,7 @@ namespace RoboEngine
             file_pointer.close();
             file_pointer.open (_objFile, std::ofstream::out | std::ofstream::app);
             if (!file_pointer.good())
-                RoboEngine::log_write(ROBOENGINELOG, __FILE__, __FUNCTION__, __LINE__, "ERROR -> exporting OBJ  :  " + _objFile);
+                re_logWrite("ERROR -> exporting OBJ  :  " + _objFile, RE_ENGINE_LOG, __FILE__, __LINE__, __FUNCTION__);
             file_pointer << "# RoboEngine exported OBJ File" << std::endl;
             file_pointer << "o " << _objData.name << std::endl;
             for (uint64_t i = 0; i < _objData.vertex_count; i++)

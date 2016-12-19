@@ -39,6 +39,7 @@
 #include <GLFW/glfw3.h>
 #include <glm/glm.hpp>
 
+#include "core/re_defines.hpp"
 #include "core/re_mainloop.hpp"
 #include "core/re_time_step.hpp"
 #include "core/re_types.hpp"

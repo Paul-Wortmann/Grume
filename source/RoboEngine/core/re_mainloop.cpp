@@ -22,12 +22,13 @@
  */
 
 #include "re_mainloop.hpp"
+#include "../roboengine.hpp"
 
 namespace RoboEngine
 {
     static void glfw_error_callback(int error, const char* description)
     {
-        RoboEngine::log_write(ROBOENGINELOG, __FILE__, __FUNCTION__, __LINE__, "GLFW error - " + std::to_string(error) + " : " + description);
+        re_logWrite("GLFW error - " + std::to_string(error) + " : " + description, RE_ENGINE_LOG, __FILE__, __LINE__, __FUNCTION__);
     }
 
     uint32_t re_cMainLoop::internal_initialize(void)
@@ -38,7 +39,7 @@ namespace RoboEngine
         m_log.write("RoboEngine started.");
         if(!glfwInit())
         {
-            RoboEngine::log_write(ROBOENGINELOG, __FILE__, __FUNCTION__, __LINE__, "Fatal error - Failed to initialize glfw");
+            re_logWrite("Fatal error - Failed to initialize glfw", RE_ENGINE_LOG, __FILE__, __LINE__, __FUNCTION__);
             return EXIT_FAILURE;
         }
         else
@@ -50,7 +51,7 @@ namespace RoboEngine
             return_value = m_graphicsEngine.initialize();
             if (return_value == EXIT_FAILURE)
             {
-                RoboEngine::log_write(ROBOENGINELOG, __FILE__, __FUNCTION__, __LINE__, "Fatal error - Failed to initialize the graphics engine");
+                re_logWrite("Fatal error - Failed to initialize the graphics engine", RE_ENGINE_LOG, __FILE__, __LINE__, __FUNCTION__);
             }
             else
             {
@@ -73,7 +74,7 @@ namespace RoboEngine
                 return_value = m_physicsEngine.initialize();
                 if (return_value == EXIT_FAILURE)
                 {
-                    RoboEngine::log_write(ROBOENGINELOG, __FILE__, __FUNCTION__, __LINE__, "Fatal error - Failed to initialize the physics engine");
+                    re_logWrite("Fatal error - Failed to initialize the physics engine", RE_ENGINE_LOG, __FILE__, __LINE__, __FUNCTION__);
                 }
                 else
                 {

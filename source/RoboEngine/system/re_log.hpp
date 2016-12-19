@@ -24,37 +24,52 @@
 #ifndef RE_LOG_HPP
 #define RE_LOG_HPP
 
+#include <fstream>
+#include <iostream>
 #include <string>
+
+#include "re_file.hpp"
 
 namespace RoboEngine
 {
 
-    #define ROBOENGINELOG  "RoboEngine.log"
-    #define DEFAULTLOG  "default.log"
-    #define LOGTOCONSOLE true
-
-    void log_write(const std::string &s_fileName, const std::string &s_data, const bool &_consoleLogging);
-    void log_write(const std::string &s_fileName, const std::string &s_dataFile, const std::string &s_dataFunction, const uint32_t &s_dataLine, const std::string &s_message);
-    void log_write(const std::string &s_fileName, const std::string &s_dataFile, const std::string &s_dataFunction, const uint32_t &s_dataLine, const std::string &s_message, const bool &_consoleLogging);
-    void log_write(const std::string &s_fileName, const std::string &s_data);
-    void log_clear(const std::string &s_fileName);
+    uint32_t re_logClear(const std::string &_fileName);
+    void re_logToConsole(const std::string &_message, const std::string &_mFile, const uint32_t &_mLine, const std::string &_mFunction);
+    void re_logToConsole(const std::string &_message);
+    uint32_t re_logWrite(const std::string &_message, const std::string &_fileName, const std::string &_mFile, const uint32_t &_mLine, const std::string &_mFunction);
+    uint32_t re_logWrite(const std::string &_message, const std::string &_fileName);
 
     class re_cLog
     {
         public:
-            re_cLog(void) {m_fileName = ROBOENGINELOG; clear();}
+            re_cLog(void) = default;
             re_cLog(const std::string &_fileName) {m_fileName = _fileName; clear();}
-            ~re_cLog(void) {}
+            virtual ~re_cLog(void) = default;
             re_cLog(const re_cLog&) = default;
             re_cLog& operator=(const re_cLog& _rhs) {if (this == &_rhs) return *this; return *this;}
-            void inline write(const std::string &s_data) {log_write(m_fileName, s_data, m_logToConsole);}
-            void inline clear(void) {log_clear(m_fileName);}
-            void inline setFileName(const std::string &_fileName) {m_fileName = _fileName; }
-            void inline setConsoleLogging(const bool &_state) {m_logToConsole = _state; }
-            bool inline getConsoleLogging(void) { return m_logToConsole; }
+
+            uint32_t initialize(const std::string &_fileName) {m_fileName = _fileName; return re_logClear(_fileName);}
+            uint32_t write(const std::string &_message, const std::string &_mFile, const uint32_t &_mLine, const std::string &_mFunction)
+            {
+                if(m_logToConsole) re_logToConsole(_message, _mFile, _mLine, _mFunction);
+                return re_logWrite(_message,m_fileName,  _mFile, _mLine, _mFunction);
+            }
+            uint32_t write(const std::string &_message)
+            {
+                if(m_logToConsole) re_logToConsole(_message);
+                return re_logWrite(_message, m_fileName);
+            }
+            void setLogConsole(bool _bool) {m_logToConsole = _bool;}
+
+            void clear(void)
+            {
+                re_logClear(m_fileName);
+            }
+
         protected:
+
         private:
-            std::string m_fileName = DEFAULTLOG;
+            std::string m_fileName = "RoboEngine.log";
             bool m_logToConsole = false;
     };
 

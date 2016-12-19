@@ -23,6 +23,7 @@
 
 #include <GL/glew.h>
 #include "re_glsl.hpp"
+#include "../roboengine.hpp"
 
 namespace RoboEngine
 {
@@ -41,8 +42,8 @@ namespace RoboEngine
         // compile vertex shader
         shaderVS_ID = glCreateShader(GL_VERTEX_SHADER);
         if (shaderVS_ID == 0)
-            RoboEngine::log_write(ROBOENGINELOG, __FILE__, __FUNCTION__, __LINE__, "Error -> OpenGL, failed to create and get an ID for vertex shader.");
-        std::string contentsStringVS = fileToString(_fileName + ".vs").c_str();
+            re_logWrite("Error -> OpenGL, failed to create and get an ID for vertex shader.", RE_ENGINE_LOG, __FILE__, __LINE__, __FUNCTION__);
+        std::string contentsStringVS = re_fileToString(_fileName + ".vs").c_str();
         const char *contentsPtrVS = contentsStringVS.c_str();
         glShaderSource(shaderVS_ID, 1, &contentsPtrVS, nullptr);
         glCompileShader(shaderVS_ID);
@@ -57,16 +58,16 @@ namespace RoboEngine
             std::string infoLogString = infoLog;
             delete[] infoLog;
             glDeleteShader(shaderVS_ID);
-            RoboEngine::log_write(ROBOENGINELOG, __FILE__, __FUNCTION__, __LINE__, "Error -> " + _fileName + ".vs" + " failed to compile.");
-            RoboEngine::log_write(ROBOENGINELOG, __FILE__, __FUNCTION__, __LINE__, "Compilation error -> " + infoLogString);
+            re_logWrite("Error -> " + _fileName + ".vs" + " failed to compile.", RE_ENGINE_LOG, __FILE__, __LINE__, __FUNCTION__);
+            re_logWrite("Compilation error -> " + infoLogString, RE_ENGINE_LOG, __FILE__, __LINE__, __FUNCTION__);
         }
         else
         {
             // compile fragment shader
             shaderFS_ID = glCreateShader(GL_FRAGMENT_SHADER);
             if (shaderFS_ID == 0)
-                RoboEngine::log_write(ROBOENGINELOG, __FILE__, __FUNCTION__, __LINE__, "Error -> OpenGL, failed to create and get an ID for fragment shader.");
-            std::string contentsStringFS = fileToString(_fileName + ".fs").c_str();
+                re_logWrite("Error -> OpenGL, failed to create and get an ID for fragment shader.", RE_ENGINE_LOG, __FILE__, __LINE__, __FUNCTION__);
+            std::string contentsStringFS = re_fileToString(_fileName + ".fs").c_str();
             const char *contentsPtrFS = contentsStringFS.c_str();
             glShaderSource(shaderFS_ID, 1, &contentsPtrFS, nullptr);
             glCompileShader(shaderFS_ID);
@@ -82,8 +83,8 @@ namespace RoboEngine
                 delete[] infoLog;
                 glDeleteShader(shaderVS_ID);
                 glDeleteShader(shaderFS_ID);
-                RoboEngine::log_write(ROBOENGINELOG, __FILE__, __FUNCTION__, __LINE__, "Error -> " + _fileName + ".fs" + " failed to compile.");
-                RoboEngine::log_write(ROBOENGINELOG, __FILE__, __FUNCTION__, __LINE__, "Compilation error -> " + infoLogString);
+                re_logWrite("Error -> " + _fileName + ".fs" + " failed to compile.", RE_ENGINE_LOG, __FILE__, __LINE__, __FUNCTION__);
+                re_logWrite("Compilation error -> " + infoLogString, RE_ENGINE_LOG, __FILE__, __LINE__, __FUNCTION__);
             }
             else
             {
@@ -93,7 +94,7 @@ namespace RoboEngine
                 if (fileStream.fail())
                 {
                     perror(fileName.c_str());
-                    RoboEngine::log_write(ROBOENGINELOG, __FILE__, __FUNCTION__, __LINE__, "Error - Failed to open file:. " + fileName + ".vs");
+                    re_logWrite("Error - Failed to open file:. " + fileName + ".vs", RE_ENGINE_LOG, __FILE__, __LINE__, __FUNCTION__);
                 }
                 std::string fileData = "";
                 std::string lineData = "";
@@ -140,8 +141,8 @@ namespace RoboEngine
                     glDeleteProgram(_programID);
                     glDeleteShader(shaderVS_ID);
                     glDeleteShader(shaderFS_ID);
-                    RoboEngine::log_write(ROBOENGINELOG, __FILE__, __FUNCTION__, __LINE__, "Error -> Shaders failed to link.");
-                    RoboEngine::log_write(ROBOENGINELOG, __FILE__, __FUNCTION__, __LINE__, "Linker error -> " + infoLogString);
+                    re_logWrite("Error -> Shaders failed to link.", RE_ENGINE_LOG, __FILE__, __LINE__, __FUNCTION__);
+                    re_logWrite("Linker error -> " + infoLogString, RE_ENGINE_LOG, __FILE__, __LINE__, __FUNCTION__);
                 }
                 glDetachShader(_programID, shaderVS_ID);
                 glDetachShader(_programID, shaderFS_ID);
@@ -155,7 +156,7 @@ namespace RoboEngine
     {
         uint32_t location = glGetUniformLocation(_programID, _uniformName.c_str());
         if (location == GL_INVALID_INDEX)
-            RoboEngine::log_write(ROBOENGINELOG, __FILE__, __FUNCTION__, __LINE__, "Error - Uniform " + _uniformName + "not found in shader.");
+            re_logWrite("Error - Uniform " + _uniformName + "not found in shader.", RE_ENGINE_LOG, __FILE__, __LINE__, __FUNCTION__);
         return location;
     }
 

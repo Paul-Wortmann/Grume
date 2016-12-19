@@ -21,55 +21,69 @@
  * @date 2011-11-11
  */
 
-#include "re_file.hpp"
 #include "re_log.hpp"
-#include <fstream>
-#include <iostream>
 
 namespace RoboEngine
 {
 
-    void log_clear(const std::string &s_fileName)
+    uint32_t re_logClear(const std::string &_fileName)
     {
-        std::fstream filePointer;
-        filePointer.open (s_fileName, std::fstream::trunc | std::fstream::out);
-        filePointer.close();
-        if (!filePointer.good())
-            std::cout << "ERROR -> log_clear()  :  " << s_fileName << std::endl;
+        uint32_t return_value = EXIT_SUCCESS;
+        std::ofstream fileStream;
+        fileStream.open(_fileName, std::ofstream::out | std::ofstream::trunc);
+        if (fileStream.is_open())
+            fileStream.close();
+        else
+            return EXIT_FAILURE;
+        return return_value;
     }
 
-    void log_write(const std::string &s_fileName, const std::string &s_data, const bool &_consoleLogging)
+    void re_logToConsole(const std::string &_message, const std::string &_mFile, const uint32_t &_mLine, const std::string &_mFunction)
     {
-        std::fstream filePointer;
-        filePointer.open (s_fileName, std::fstream::out | std::fstream::app);
-        filePointer << s_data << std::endl;
-        filePointer.close();
-        if (!filePointer.good())
-            std::cout  << std::endl << "ERROR -> log_write()  :  " << s_fileName << std::endl << std::endl;
-        if (_consoleLogging || LOGTOCONSOLE)
-            std::cout << s_data << std::endl;
+        std::string cTime = __TIME__;
+        std::string cDate = __DATE__;
+        std::cout << cDate << " - " << cTime;
+        std::cout << " - " << re_stripPath(_mFile) << " - " << _mFunction << "() - " << std::to_string(_mLine) << " -> ";
+        std::cout << _message << std::endl;
     }
 
-    void log_write(const std::string &s_fileName, const std::string &s_dataFile, const std::string &s_dataFunction, const uint32_t &s_dataLine, const std::string &s_message)
+    void re_logToConsole(const std::string &_message)
     {
-        log_write(s_fileName, s_dataFile, s_dataFunction, s_dataLine, s_message, false);
+        std::cout << _message << std::endl;
     }
 
-    void log_write(const std::string &s_fileName, const std::string &s_dataFile, const std::string &s_dataFunction, const uint32_t &s_dataLine, const std::string &s_message, const bool &_consoleLogging)
+    uint32_t re_logWrite(const std::string &_message, const std::string &_fileName, const std::string &_mFile, const uint32_t &_mLine, const std::string &_mFunction)
     {
-        std::string s_data = stripPath(s_dataFile);
-        s_data += " - ";
-        s_data += s_dataFunction;
-        s_data += "() - ";
-        s_data += std::to_string(s_dataLine);
-        s_data += " - ";
-        s_data += s_message;
-        log_write(s_fileName, s_data, _consoleLogging);
+        std::string cTime = __TIME__;
+        std::string cDate = __DATE__;
+        uint32_t return_value = EXIT_SUCCESS;
+        std::ofstream fileStream;
+        fileStream.open(_fileName, std::ofstream::out | std::ofstream::app);
+        if (fileStream.is_open())
+        {
+            fileStream << cDate << " - " << cTime;
+            fileStream << " - " << re_stripPath(_mFile) << " - " << _mFunction << "() - " << std::to_string(_mLine) << " -> ";
+            fileStream << _message << std::endl;
+            fileStream.close();
+        }
+        else
+            return EXIT_FAILURE;
+        return return_value;
     }
 
-    void log_write(const std::string &s_fileName, const std::string &s_data)
+    uint32_t re_logWrite(const std::string &_message, const std::string &_fileName)
     {
-        log_write(s_fileName, s_data, false);
+        uint32_t return_value = EXIT_SUCCESS;
+        std::ofstream fileStream;
+        fileStream.open(_fileName, std::ofstream::out | std::ofstream::app);
+        if (fileStream.is_open())
+        {
+            fileStream << _message << std::endl;
+            fileStream.close();
+        }
+        else
+            return EXIT_FAILURE;
+        return return_value;
     }
 
 }

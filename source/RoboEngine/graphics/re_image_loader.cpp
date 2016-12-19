@@ -30,6 +30,7 @@
 #include "../system/re_file.hpp"
 #include "../system/re_log.hpp"
 #include "../resource/lodepng.h"
+#include "../roboengine.hpp"
 
 namespace RoboEngine
 {
@@ -42,7 +43,7 @@ namespace RoboEngine
         unsigned error = lodepng::decode(image, width, height, _fileName);
         if (error)
         {
-            RoboEngine::log_write(ROBOENGINELOG, __FILE__, __FUNCTION__, __LINE__, " Failed to decode png : " + _fileName + "(" + std::to_string(error) + ") : " + lodepng_error_text(error));
+            re_logWrite(" Failed to decode png : " + _fileName + "(" + std::to_string(error) + ") : " + lodepng_error_text(error), RE_ENGINE_LOG, __FILE__, __LINE__, __FUNCTION__);
             return textureID;
         }
         glGenTextures(1, &textureID);

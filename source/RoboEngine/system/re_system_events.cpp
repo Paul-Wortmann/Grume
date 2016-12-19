@@ -22,6 +22,7 @@
  */
 
 #include "re_system_events.hpp"
+#include "../roboengine.hpp"
 
 namespace RoboEngine
 {
@@ -30,7 +31,7 @@ namespace RoboEngine
     {
         m_window = _window;
         if (_window == nullptr)
-            RoboEngine::log_write(ROBOENGINELOG, __FILE__, __FUNCTION__, __LINE__, "Fatal error - Failed to initialize system event manager");
+            re_logWrite("Fatal error - Failed to initialize system event manager", RE_ENGINE_LOG, __FILE__, __LINE__, __FUNCTION__);
         else
             glfwSetInputMode(m_window, GLFW_STICKY_KEYS, GL_TRUE);
     }

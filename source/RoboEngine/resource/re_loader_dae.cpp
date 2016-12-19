@@ -22,6 +22,7 @@
  */
 
 #include "re_loader_dae.hpp"
+#include "../roboengine.hpp"
 
 namespace RoboEngine
 {
@@ -206,7 +207,7 @@ namespace RoboEngine
     void daeExport(const std::string &_daeFile, const re_sdaeData &_daeData)
     {
         // Not yet a requirement for the engine, but may be implemented in the future on request.
-        RoboEngine::log_write(ROBOENGINELOG, __FILE__, __FUNCTION__, __LINE__, "ERROR -> not yet implemented. " + _daeFile + " - " + _daeData.name);
+        re_logWrite("ERROR -> not yet implemented. " + _daeFile + " - " + _daeData.name, RE_ENGINE_LOG, __FILE__, __LINE__, __FUNCTION__);
     }
 
 }

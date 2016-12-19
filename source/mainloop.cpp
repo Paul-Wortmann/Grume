@@ -22,6 +22,7 @@
  */
 
 #include "mainloop.hpp"
+#include "RoboEngine/roboengine.hpp"
 
 void c_mainloop::loadMap(const std::string &_fileName)
 {
@@ -52,7 +53,7 @@ void c_mainloop::loadMap(const std::string &_fileName)
                 glm::vec3 cameraPosition = getCameraPosition();
                 setCameraPosition(glm::vec3(entityPosition.x, entityPosition.y, cameraPosition.z), entityPosition);
             }
-            RoboEngine::log_write(ROBOENGINELOG, __FILE__, __FUNCTION__, __LINE__, "Added Entity ID: " + std::to_string(entity));
+            RoboEngine::re_logWrite("Added Entity ID: " + std::to_string(entity), RE_ENGINE_LOG, __FILE__, __LINE__, __FUNCTION__);
         }
     }
     re_xml_delete(xml_data);

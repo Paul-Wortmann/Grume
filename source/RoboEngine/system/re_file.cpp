@@ -21,16 +21,18 @@
  * @date 2011-11-11
  */
 
-#include "re_file.hpp"
 #include <fstream>
 #include <iostream>
 #include <cstring>
 #include <cerrno>
 
+#include "re_file.hpp"
+#include "../roboengine.hpp"
+
 namespace RoboEngine
 {
 
-    std::string fileExtention(const std::string &_fileName)
+    std::string re_fileExtention(const std::string &_fileName)
     {
         const char16_t marker = '.';
         std::string r_returnString = "";
@@ -53,7 +55,7 @@ namespace RoboEngine
         return returnString;
     }
 
-    std::string stripPath(const std::string &_fileName)
+    std::string re_stripPath(const std::string &_fileName)
     {
         const char16_t marker = '/';
         std::string r_returnString = "";
@@ -76,13 +78,13 @@ namespace RoboEngine
         return returnString;
     }
 
-    std::string fileToString(const std::string &_fileName)
+    std::string re_fileToString(const std::string &_fileName)
     {
         std::ifstream fileStream(_fileName, std::ios::in);
         if (fileStream.fail())
         {
             perror(_fileName.c_str());
-            RoboEngine::log_write(ROBOENGINELOG, __FILE__, __FUNCTION__, __LINE__, "Error - Failed to open file: " + _fileName);
+            re_logWrite("Error - Failed to open file: " + _fileName, RE_ENGINE_LOG, __FILE__, __LINE__, __FUNCTION__);
         }
         else
         {
@@ -99,18 +101,18 @@ namespace RoboEngine
         return nullptr;
     }
 
-    const char *fileToBuffer(const std::string &_fileName)
+    const char *re_fileToBuffer(const std::string &_fileName)
     {
-        return (fileToString(_fileName)).c_str();
+        return (re_fileToString(_fileName)).c_str();
     }
 
-    bool fileToBufferV(const std::string &_fileName, std::vector<unsigned char> &_buffer)
+    bool re_fileToBufferV(const std::string &_fileName, std::vector<unsigned char> &_buffer)
     {
         std::fstream fileStream(_fileName.c_str(), std::ios::in | std::ios::binary);
         if (fileStream.fail())
         {
             perror(_fileName.c_str());
-            RoboEngine::log_write(ROBOENGINELOG, __FILE__, __FUNCTION__, __LINE__, "Error - Failed to open file: " + _fileName + " error : " + std::strerror(errno));
+            re_logWrite("Error - Failed to open file: " + _fileName + " error : " + std::strerror(errno), RE_ENGINE_LOG, __FILE__, __LINE__, __FUNCTION__);
             return false;
         }
         fileStream.seekg(0, std::ios::end);

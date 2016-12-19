@@ -31,11 +31,11 @@
 namespace RoboEngine
 {
 
-    std::string fileExtention(const std::string &_fileName);
-    std::string stripPath(const std::string &_fileName);
-    std::string fileToString(const std::string &_fileName);
-    const char* fileToBuffer(const std::string &_fileName);
-    bool fileToBufferV(const std::string &_fileName, std::vector<unsigned char> &_buffer);
+    std::string re_fileExtention(const std::string &_fileName);
+    std::string re_stripPath(const std::string &_fileName);
+    std::string re_fileToString(const std::string &_fileName);
+    const char* re_fileToBuffer(const std::string &_fileName);
+    bool re_fileToBufferV(const std::string &_fileName, std::vector<unsigned char> &_buffer);
 
 }
 

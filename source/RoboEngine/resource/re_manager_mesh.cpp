@@ -22,6 +22,7 @@
  */
 
 #include "re_manager_mesh.hpp"
+#include "../roboengine.hpp"
 
 namespace RoboEngine
 {
@@ -72,7 +73,7 @@ namespace RoboEngine
 
     void re_cManagerMesh:: loadMesh(std::string _fileName, re_sMesh *&_mesh)
     {
-        const std::string fileExt = fileExtention(_fileName);
+        const std::string fileExt = re_fileExtention(_fileName);
         if (fileExt.compare("dae") == 0)
         {
             re_sdaeData *daeData = nullptr;
@@ -113,7 +114,7 @@ namespace RoboEngine
         }
         else
         {
-            RoboEngine::log_write(ROBOENGINELOG, __FILE__, __FUNCTION__, __LINE__, "ERROR -> unsupported file type : " + _fileName);
+            re_logWrite("ERROR -> unsupported file type : " + _fileName, RE_ENGINE_LOG, __FILE__, __LINE__, __FUNCTION__);
         }
     }
 
