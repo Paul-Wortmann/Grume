@@ -29,9 +29,9 @@
 class c_mainloop : public RoboEngine::re_cMainLoop
 {
     public:
-        uint16_t initialize(void);
-        uint16_t deinitialize(void);
-        uint16_t process(int64_t _dt);
+        uint32_t initialize(void);
+        uint32_t terminate(void);
+        uint32_t process(int64_t _dt);
         void loadMap(const std::string &_fileName);
     private:
         uint32_t m_playerID = 0;

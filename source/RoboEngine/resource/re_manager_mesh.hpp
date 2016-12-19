@@ -26,7 +26,7 @@
 
 #include <string>
 #include "../system/re_file.hpp"
-#include "../system/re_types.hpp"
+#include "../core/re_types.hpp"
 #include "re_loader_obj.hpp"
 #include "re_loader_dae.hpp"
 

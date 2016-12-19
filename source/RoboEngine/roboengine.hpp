@@ -24,10 +24,6 @@
 #ifndef RE_ROBOENGINE_HPP
 #define RE_ROBOENGINE_HPP
 
-#define ROBOENGINE_VERSION_MAJOR 0
-#define ROBOENGINE_VERSION_MINOR 2
-#define ROBOENGINE_VERSION_MICRO 3
-
 #include <cstdint>
 #include <cstdio>
 #include <cstdlib>
@@ -42,6 +38,11 @@
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 #include <glm/glm.hpp>
+
+#include "core/re_mainloop.hpp"
+#include "core/re_time_step.hpp"
+#include "core/re_types.hpp"
+#include "core/re_version.hpp"
 
 #include "entity/re_entity.hpp"
 #include "entity/re_entity_physics.hpp"
@@ -65,12 +66,9 @@
 
 #include "system/re_file.hpp"
 #include "system/re_log.hpp"
-#include "system/re_mainloop.hpp"
 #include "system/re_math.hpp"
 #include "system/re_random.hpp"
 #include "system/re_system_events.hpp"
-#include "system/re_time_step.hpp"
-#include "system/re_types.hpp"
 
 namespace RoboEngine
 {

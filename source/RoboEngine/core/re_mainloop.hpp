@@ -24,13 +24,13 @@
 #ifndef RE_MAINLOOP_HPP
 #define RE_MAINLOOP_HPP
 
-#include "re_log.hpp"
-#include "re_system_events.hpp"
-#include "re_time_step.hpp"
 #include "../entity/re_entity.hpp"
 #include "../graphics/re_graphics_engine.hpp"
 #include "../physics/re_physics_engine.hpp"
-#include "re_random.hpp"
+#include "../system/re_log.hpp"
+#include "../system/re_system_events.hpp"
+#include "../core/re_time_step.hpp"
+#include "../system/re_random.hpp"
 
 namespace RoboEngine
 {
@@ -44,10 +44,10 @@ namespace RoboEngine
             virtual ~re_cMainLoop(void) {}
             re_cMainLoop(const re_cMainLoop&) = default;
             re_cMainLoop& operator=(const re_cMainLoop& _rhs) {if (this == &_rhs) return *this; return *this;}
-            virtual uint16_t initialize(void) = 0;
-            virtual uint16_t deinitialize(void) = 0;
-            virtual uint16_t process(int64_t _dt) = 0;
-            virtual uint16_t run(void) final;
+            virtual uint32_t initialize(void) = 0;
+            virtual uint32_t terminate(void) = 0;
+            virtual uint32_t process(int64_t _dt) = 0;
+            virtual uint32_t run(void) final;
             virtual inline RE_STATE_ENUM getState(void) final {return RE_STATE;}
             // entity manager
             virtual inline uint32_t getNewEntity(void) final {re_sEntity *tEntity = m_entityManager.getNew(); return tEntity->ID;}
@@ -73,9 +73,9 @@ namespace RoboEngine
 
         private:
             GLFWwindow* m_window = nullptr;
-            virtual uint16_t initialize_internal(void) final;
-            virtual uint16_t deinitialize_internal(void) final;
-            virtual uint16_t process_internal(int64_t _dt) final;
+            virtual uint32_t internal_initialize(void) final;
+            virtual uint32_t internal_terminate(void) final;
+            virtual uint32_t internal_process(int64_t _dt) final;
             RE_STATE_ENUM RE_STATE = RE_STATE_ENUM::RE_ACTIVE;
             re_cSystemEvents m_SystemEvents = {};
             re_cFrameTimer m_frameTimer = {};

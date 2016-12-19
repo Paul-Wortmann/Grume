@@ -58,19 +58,19 @@ void c_mainloop::loadMap(const std::string &_fileName)
     re_xml_delete(xml_data);
 }
 
-uint16_t c_mainloop::initialize(void)
+uint32_t c_mainloop::initialize(void)
 {
     setWindowTitle("Frost and Flame");
     loadMap("data/map/level_0");
     return EXIT_SUCCESS;
 }
 
-uint16_t c_mainloop::deinitialize(void)
+uint32_t c_mainloop::terminate(void)
 {
     return EXIT_SUCCESS;
 }
 
-uint16_t c_mainloop::process(int64_t _dt)
+uint32_t c_mainloop::process(int64_t _dt)
 {
     if (c_mainloop::getState() != RoboEngine::RE_STATE_ENUM::RE_DEACTIVATING)
     {

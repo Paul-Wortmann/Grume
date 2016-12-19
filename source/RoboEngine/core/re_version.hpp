@@ -21,40 +21,19 @@
  * @date 2011-11-11
  */
 
-#ifndef RE_LOADER_OBJ_HPP
-#define RE_LOADER_OBJ_HPP
+#ifndef RE_VERSION_HPP
+#define RE_VERSION_HPP
 
-#include <string>
-#include <cstdint>
-#include <fstream>
-#include <iostream>
-#include "../core/re_types.hpp"
-#include "../system/re_log.hpp"
-#include "re_parser_xml.hpp"
+#ifndef RE_VERSION_MAJOR
+#define RE_VERSION_MAJOR 1
+#endif // RE_VERSION_MAJOR
 
-namespace RoboEngine
-{
+#ifndef RE_VERSION_MINOR
+#define RE_VERSION_MINOR 3
+#endif // RE_VERSION_MINOR
 
-    struct re_sobjData
-    {
-        std::string name = "";
-        uint64_t vertex_count = 0;
-        uint64_t vertex_texture_count = 0;
-        uint64_t vertex_normal_count = 0;
-        uint64_t face_count = 0;
-        v3_f* vertex = nullptr;
-        v2_f* vertex_texture = nullptr;
-        v3_f* vertex_normal = nullptr;
-        v3_uint32* face = nullptr;
-    };
+#ifndef RE_VERSION_PATCH
+#define RE_VERSION_PATCH 0
+#endif // RE_VERSION_PATCH
 
-    void objDelete(re_sobjData *&_objData);
-    void objImport(const std::string &_objFile, re_sobjData *&_objData);
-    void objExport(const std::string &_objFile, const re_sobjData &_objData);
-
-}
-
-#endif // RE_LOADER_OBJ_HPP
-
-
-
+#endif // RE_VERSION_HPP

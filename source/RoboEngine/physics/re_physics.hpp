@@ -24,7 +24,7 @@
 #ifndef PHYSICS_HPP
 #define PHYSICS_HPP
 
-#include "../system/re_types.hpp"
+#include "../core/re_types.hpp"
 
 namespace RoboEngine
 {

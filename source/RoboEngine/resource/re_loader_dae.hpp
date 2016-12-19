@@ -29,7 +29,7 @@
 #include <fstream>
 #include <iostream>
 #include <algorithm>
-#include "../system/re_types.hpp"
+#include "../core/re_types.hpp"
 #include "../system/re_log.hpp"
 #include "re_parser_xml.hpp"
 

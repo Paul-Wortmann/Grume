@@ -25,7 +25,7 @@
 #define RE_ENTITY_PHYSICS_HPP
 
 #include <glm/glm.hpp>
-#include "../system/re_types.hpp"
+#include "../core/re_types.hpp"
 
 namespace RoboEngine
 {

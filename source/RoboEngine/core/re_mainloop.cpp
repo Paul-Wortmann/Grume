@@ -30,9 +30,9 @@ namespace RoboEngine
         RoboEngine::log_write(ROBOENGINELOG, __FILE__, __FUNCTION__, __LINE__, "GLFW error - " + std::to_string(error) + " : " + description);
     }
 
-    uint16_t re_cMainLoop::initialize_internal(void)
+    uint32_t re_cMainLoop::internal_initialize(void)
     {
-        uint16_t return_value = EXIT_SUCCESS;
+        uint32_t return_value = EXIT_SUCCESS;
         glfwSetErrorCallback(glfw_error_callback);
         m_log.clear();
         m_log.write("RoboEngine started.");
@@ -85,9 +85,9 @@ namespace RoboEngine
         return return_value;
     }
 
-    uint16_t re_cMainLoop::deinitialize_internal(void)
+    uint32_t re_cMainLoop::internal_terminate(void)
     {
-        uint16_t return_value = EXIT_SUCCESS;
+        uint32_t return_value = EXIT_SUCCESS;
         RE_STATE = RE_STATE_ENUM::RE_INACTIVE;
         m_graphicsEngine.deinitialize();
         m_physicsEngine.deinitialize();
@@ -95,15 +95,15 @@ namespace RoboEngine
 
         m_entityManager.freeAll();
 
-        return_value = deinitialize();
+        return_value = terminate();
         glfwTerminate();
         return return_value;
     }
 
-    uint16_t re_cMainLoop::run(void)
+    uint32_t re_cMainLoop::run(void)
     {
-        uint16_t return_value = EXIT_SUCCESS;
-        return_value = initialize_internal();
+        uint32_t return_value = EXIT_SUCCESS;
+        return_value = internal_initialize();
         if (return_value == EXIT_SUCCESS)
         {
             while (RE_STATE == RE_STATE_ENUM::RE_ACTIVE)
@@ -112,20 +112,20 @@ namespace RoboEngine
                 while(m_frameTimer.ready())
                 {
                     uint64_t deltaTime = m_frameTimer.frameTime();
-                    return_value = process_internal(deltaTime);
+                    return_value = internal_process(deltaTime);
                     //std::cout << "Main engine running at -> " << std::to_string(deltaTime) << "ms frame time." << std::endl;
                 }
                 //RE_STATE = RE_STATE_ENUM::RE_DEACTIVATING;
                 m_graphicsEngine.render();
             }
         }
-        return_value = deinitialize_internal();
+        return_value = internal_terminate();
         return return_value;
     }
 
-    uint16_t re_cMainLoop::process_internal(int64_t _dt)
+    uint32_t re_cMainLoop::internal_process(int64_t _dt)
     {
-        uint16_t return_value = EXIT_SUCCESS;
+        uint32_t return_value = EXIT_SUCCESS;
         glfwPollEvents();
         m_SystemEvents.process();
         if (m_SystemEvents.statusQuit())
