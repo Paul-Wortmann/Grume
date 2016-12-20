@@ -83,6 +83,7 @@ namespace RoboEngine
             virtual inline void addEntityShader(uint32_t _ID, std::string _fileName) final {m_entityManager.addShader(_ID, _fileName);}
             virtual inline void addEntityTexture(uint32_t _ID, std::string _fileName) final {m_entityManager.addTexture(_ID, _fileName);}
             virtual inline void setEntityDynamic(uint32_t _ID, bool _state) {m_entityManager.setDynamic(_ID, _state);}
+            virtual inline void setEntityState(uint32_t _ID, bool _state) {m_entityManager.setState(_ID, _state);}
             virtual inline glm::vec3 getEntityPosition(uint32_t _ID) final {return m_entityManager.getPosition(_ID);}
             virtual inline glm::vec3 getEntityRotation(uint32_t _ID) final {return m_entityManager.getRotation(_ID);}
             virtual inline glm::vec3 getEntityScale(uint32_t _ID) final {return m_entityManager.getScale(_ID);}

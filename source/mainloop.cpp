@@ -53,6 +53,7 @@ void c_mainloop::loadMap(const std::string &_fileName)
                 glm::vec3 cameraPosition = getCameraPosition();
                 setCameraPosition(glm::vec3(entityPosition.x, entityPosition.y, cameraPosition.z), entityPosition);
             }
+            setEntityState(entity, false); // delete me, should be set in xml file
             RoboEngine::re_logWrite("Added Entity ID: " + std::to_string(entity), RE_ENGINE_LOG, __FILE__, __LINE__, __FUNCTION__);
         }
     }
