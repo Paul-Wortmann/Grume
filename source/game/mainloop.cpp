@@ -22,7 +22,7 @@
  */
 
 #include "mainloop.hpp"
-#include "RoboEngine/roboengine.hpp"
+#include "../RoboEngine/roboengine.hpp"
 
 void c_mainloop::loadMap(const std::string &_fileName)
 {
@@ -45,11 +45,11 @@ void c_mainloop::loadMap(const std::string &_fileName)
             setEntityRotation(entity, glm::vec3(std::stof(RoboEngine::re_xml_get_sub_value(*xml_data, RoboEngine::XML_enum::XML_TAG_ATTRIBUTE_END, "orientation", i, "x")), std::stof(RoboEngine::re_xml_get_sub_value(*xml_data, RoboEngine::XML_enum::XML_TAG_ATTRIBUTE_END, "orientation", i, "y")), std::stof(RoboEngine::re_xml_get_sub_value(*xml_data, RoboEngine::XML_enum::XML_TAG_ATTRIBUTE_END, "orientation", i, "z"))));
             setEntityPosition(entity, glm::vec3(std::stof(RoboEngine::re_xml_get_sub_value(*xml_data, RoboEngine::XML_enum::XML_TAG_ATTRIBUTE_END, "position", i, "x")), std::stof(RoboEngine::re_xml_get_sub_value(*xml_data, RoboEngine::XML_enum::XML_TAG_ATTRIBUTE_END, "position", i, "y")), std::stof(RoboEngine::re_xml_get_sub_value(*xml_data, RoboEngine::XML_enum::XML_TAG_ATTRIBUTE_END, "position", i, "z"))));
             if (RoboEngine::re_xml_get_sub_value(*xml_data, RoboEngine::XML_enum::XML_TAG_ATTRIBUTE, "entity", i, "type").compare("static") != 0)
-                setEntityDynamic(m_playerID, true);
+                setEntityDynamic(m_core.m_playerID, true);
             if (RoboEngine::re_xml_get_sub_value(*xml_data, RoboEngine::XML_enum::XML_TAG_ATTRIBUTE, "entity", i, "type").compare("player_character") == 0)
             {
-                m_playerID = entity;
-                glm::vec3 entityPosition = getEntityPosition(m_playerID);
+                m_core.m_playerID = entity;
+                glm::vec3 entityPosition = getEntityPosition(m_core.m_playerID);
                 glm::vec3 cameraPosition = getCameraPosition();
                 setCameraPosition(glm::vec3(entityPosition.x, entityPosition.y, cameraPosition.z), entityPosition);
             }
@@ -88,7 +88,7 @@ uint32_t c_mainloop::process(int64_t _dt)
 {
     if (c_mainloop::getState() == RoboEngine::eState::RE_ACTV)
     {
-        if (m_playerID == 0)
+        if (m_core.m_playerID == 0)
         {
             glm::vec3 rotationVec = getEntityRotation(2);
             rotationVec += glm::vec3(0.001f, -0.002f, 0.003f);
@@ -134,33 +134,33 @@ uint32_t c_mainloop::process(int64_t _dt)
         {
            if (getKey(GLFW_KEY_LEFT))
             {
-                glm::vec3 playerPosition = getEntityPosition(m_playerID);
-                playerPosition.x += m_playerSpeed * _dt;
-                setEntityPosition(m_playerID, playerPosition);
+                glm::vec3 playerPosition = getEntityPosition(m_core.m_playerID);
+                playerPosition.x += m_core.m_playerSpeed * _dt;
+                setEntityPosition(m_core.m_playerID, playerPosition);
                 glm::vec3 cameraPosition = getCameraPosition();
                 setCameraPosition(glm::vec3(playerPosition.x, playerPosition.y, cameraPosition.z), playerPosition);
             }
             if (getKey(GLFW_KEY_RIGHT))
             {
-                glm::vec3 playerPosition = getEntityPosition(m_playerID);
-                playerPosition.x -= m_playerSpeed * _dt;
-                setEntityPosition(m_playerID, playerPosition);
+                glm::vec3 playerPosition = getEntityPosition(m_core.m_playerID);
+                playerPosition.x -= m_core.m_playerSpeed * _dt;
+                setEntityPosition(m_core.m_playerID, playerPosition);
                 glm::vec3 cameraPosition = getCameraPosition();
                 setCameraPosition(glm::vec3(playerPosition.x, playerPosition.y, cameraPosition.z), playerPosition);
             }
             if (getKey(GLFW_KEY_UP))
             {
-                glm::vec3 playerPosition = getEntityPosition(m_playerID);
-                playerPosition.y += m_playerSpeed * _dt;
-                setEntityPosition(m_playerID, playerPosition);
+                glm::vec3 playerPosition = getEntityPosition(m_core.m_playerID);
+                playerPosition.y += m_core.m_playerSpeed * _dt;
+                setEntityPosition(m_core.m_playerID, playerPosition);
                 glm::vec3 cameraPosition = getCameraPosition();
                 setCameraPosition(glm::vec3(playerPosition.x, playerPosition.y, cameraPosition.z), playerPosition);
             }
             if (getKey(GLFW_KEY_DOWN))
             {
-                glm::vec3 playerPosition = getEntityPosition(m_playerID);
-                playerPosition.y -= m_playerSpeed * _dt;
-                setEntityPosition(m_playerID, playerPosition);
+                glm::vec3 playerPosition = getEntityPosition(m_core.m_playerID);
+                playerPosition.y -= m_core.m_playerSpeed * _dt;
+                setEntityPosition(m_core.m_playerID, playerPosition);
                 glm::vec3 cameraPosition = getCameraPosition();
                 setCameraPosition(glm::vec3(playerPosition.x, playerPosition.y, cameraPosition.z), playerPosition);
             }

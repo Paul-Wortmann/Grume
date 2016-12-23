@@ -29,44 +29,11 @@ namespace RoboEngine
 
     void re_GenerateMesh(uint32_t _size, re_sGenMesh &_mesh)
     {
-/*
-        struct v_uint32_t
-        {
-            float x;
-            float y;
-        };
-        // generate point matrix
-        uint32_t pointCount = _size * _size;
-        v_uint32_t *pMatrix = new v_uint32_t[pointCount];
-        for (uint32_t i = 0; i < _size; i++)
-        {
-            for (uint32_t j = 0; j < _size; j++)
-            {
-                pMatrix[(i*_size)+j].x = j;
-                pMatrix[(i*_size)+j].y = i;
-            }
-        }
-        // center point matrix at origin
-        float poisitionDelta = _size / 2.0f;
-        for (uint32_t i = 0; i < pointCount; i++)
-        {
-            pMatrix[i].x -= poisitionDelta;
-            pMatrix[i].y -= poisitionDelta;
-        }
-        // normalize points
-        float normalDelta = 1.0f / _size;
-        for (uint32_t i = 0; i < pointCount; i++)
-        {
-            pMatrix[i].x *= normalDelta;
-            pMatrix[i].y *= normalDelta;
-        }
-        delete[] pMatrix;
-*/
         _mesh.indexCount = _size * _size * 6;
         _mesh.index = new v8_f[_mesh.indexCount];
         uint64_t _indexOffset = 0;
         float _cellSize = 1.0f;
-        float poisitionDelta = (_size * _cellSize) / 2.0f;
+        float poisitionDelta = (_size * _cellSize) / 1.0f;
         for (uint32_t i = 0; i < _size; i++)
         {
             for (uint32_t j = 0; j < _size; j++)

@@ -21,10 +21,26 @@
  * @date 2011-11-11
  */
 
-#include "game/mainloop.hpp"
+#ifndef MAINLOOP_HPP
+#define MAINLOOP_HPP
 
-int main (int argc, char** argv)
+// Robo Engine
+#include "../RoboEngine/roboengine.hpp"
+
+// Game specific
+#include "core_struct.hpp"
+
+class c_mainloop : public RoboEngine::re_cRoboEngine
 {
-    c_mainloop mainloop;
-    return mainloop.run(argc, argv);
-}
+    public:
+        uint32_t initialize(void);
+        uint32_t terminate(void);
+        uint32_t process(int64_t _dt);
+        void loadMap(const std::string &_fileName);
+        void GenMap(uint32_t _size);
+    private:
+        fnf_core m_core = {};
+        //fnf_map  m_map = {};
+};
+
+#endif // MAINLOOP_HPP

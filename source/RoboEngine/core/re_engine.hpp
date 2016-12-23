@@ -72,7 +72,7 @@ namespace RoboEngine
             virtual inline eState getState(void) final {return m_state;}
 
             // entity manager
-            virtual inline uint32_t getNewEntity(void) final {re_sEntity *tEntity = m_entityManager.getNew(); return tEntity->ID;}
+            virtual inline uint32_t getNewEntity(void) final {return m_entityManager.getNew()->ID;}
             virtual inline void addEntityPhysics(uint32_t _ID) {m_entityManager.addPhysics(_ID);}
             virtual inline void addEntityRender(uint32_t _ID) {m_entityManager.addRender(_ID);}
             virtual inline void setEntityPosition(uint32_t _ID, glm::vec3 _position) final {m_entityManager.setPosition(_ID, _position);}

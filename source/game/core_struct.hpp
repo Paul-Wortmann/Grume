@@ -21,10 +21,17 @@
  * @date 2011-11-11
  */
 
-#include "game/mainloop.hpp"
+#ifndef CORE_STRUCT_HPP
+#define CORE_STRUCT_HPP
 
-int main (int argc, char** argv)
+#include "../RoboEngine/roboengine.hpp"
+
+struct fnf_core
 {
-    c_mainloop mainloop;
-    return mainloop.run(argc, argv);
-}
+    // Player Character
+    uint32_t m_playerID = 0;
+    float m_playerSpeed = 0.01f;
+
+};
+
+#endif // CORE_STRUCT_HPP

@@ -21,10 +21,16 @@
  * @date 2011-11-11
  */
 
-#include "game/mainloop.hpp"
+#ifndef MAP_LOADER_HPP
+#define MAP_LOADER_HPP
 
-int main (int argc, char** argv)
+#include "../RoboEngine/roboengine.hpp"
+
+class fnf_map
 {
-    c_mainloop mainloop;
-    return mainloop.run(argc, argv);
-}
+    public:
+        void load(const std::string &_fileName, RoboEngine::re_cEntityManager *_entityManager) {}
+        void generate(uint32_t _size) {}
+};
+
+#endif // MAP_LOADER_HPP
