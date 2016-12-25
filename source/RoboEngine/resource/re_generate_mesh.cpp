@@ -63,7 +63,7 @@ namespace RoboEngine
                 _mesh.index[_indexOffset+5].y = ((i*_cellSize*2) - _cellSize) - poisitionDelta;
                 _mesh.index[_indexOffset+5].z = 0;
 
-                taPos++; // = get tile number from file / generate it first.
+                //taPos = get tile number from file / generate it first.
                 for (uint32_t k = 0; k < 6; k++)
                 {
                     // generate uvs
@@ -75,6 +75,7 @@ namespace RoboEngine
                     _mesh.index[_indexOffset+k].ny = 0;
                     _mesh.index[_indexOffset+k].nz = -1;
                 }
+                taPos++; // remove this once file loading has been implemented.
                 _indexOffset += 6;
             }
         }
