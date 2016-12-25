@@ -33,28 +33,25 @@ namespace RoboEngine
         re_sGenTAV *tempTAV = new re_sGenTAV;
         tempTAV->indexCount = _width * _height * 6;
         tempTAV->index = new v2_f[tempTAV->indexCount];
-        uint32_t tavIndex = 0;
         float _spacingW = 1.0f / _width;
         float _spacingH = 1.0f / _height;
         for (uint32_t i = 0; i < _height; i++)
         {
             for (uint32_t j = 0; j < _width; j++)
             {
-                tempTAV->index[(i * _height) + j + tavIndex + 0].x = (j * _spacingW);
-                tempTAV->index[(i * _height) + j + tavIndex + 0].y = (i * _spacingH) + _spacingH;
-                tempTAV->index[(i * _height) + j + tavIndex + 1].x = (j * _spacingW) + _spacingW;
-                tempTAV->index[(i * _height) + j + tavIndex + 1].y = (i * _spacingH);
-                tempTAV->index[(i * _height) + j + tavIndex + 2].x = (j * _spacingW);
-                tempTAV->index[(i * _height) + j + tavIndex + 2].y = (i * _spacingH);
-
-                tempTAV->index[(i * _height) + j + tavIndex + 3].x = (j * _spacingW);
-                tempTAV->index[(i * _height) + j + tavIndex + 3].y = (i * _spacingH) + _spacingH;
-                tempTAV->index[(i * _height) + j + tavIndex + 4].x = (j * _spacingW) + _spacingW;
-                tempTAV->index[(i * _height) + j + tavIndex + 4].y = (i * _spacingH) + _spacingH;
-                tempTAV->index[(i * _height) + j + tavIndex + 5].x = (j * _spacingW) + _spacingW;
-                tempTAV->index[(i * _height) + j + tavIndex + 5].y = (i * _spacingH);
+                tempTAV->index[(((i * _height) + j) * 6) + 0].x = (j * _spacingW);
+                tempTAV->index[(((i * _height) + j) * 6) + 0].y = (i * _spacingH) + _spacingH;
+                tempTAV->index[(((i * _height) + j) * 6) + 1].x = (j * _spacingW) + _spacingW;
+                tempTAV->index[(((i * _height) + j) * 6) + 1].y = (i * _spacingH);
+                tempTAV->index[(((i * _height) + j) * 6) + 2].x = (j * _spacingW);
+                tempTAV->index[(((i * _height) + j) * 6) + 2].y = (i * _spacingH);
+                tempTAV->index[(((i * _height) + j) * 6) + 3].x = (j * _spacingW);
+                tempTAV->index[(((i * _height) + j) * 6) + 3].y = (i * _spacingH) + _spacingH;
+                tempTAV->index[(((i * _height) + j) * 6) + 4].x = (j * _spacingW) + _spacingW;
+                tempTAV->index[(((i * _height) + j) * 6) + 4].y = (i * _spacingH) + _spacingH;
+                tempTAV->index[(((i * _height) + j) * 6) + 5].x = (j * _spacingW) + _spacingW;
+                tempTAV->index[(((i * _height) + j) * 6) + 5].y = (i * _spacingH);
             }
-            tavIndex += 6;
         }
         return tempTAV;
     }

@@ -37,7 +37,7 @@ namespace RoboEngine
         float _cellSize = 1.0f;
         float poisitionDelta = (_size * _cellSize) / 1.0f;
 
-        uint32_t taPos = 1;
+        uint32_t taPos = 0;
 
         for (uint32_t i = 0; i < _size; i++)
         {
@@ -66,21 +66,21 @@ namespace RoboEngine
                 taPos++;
                 for (uint32_t k = 0; k < 6; k++)
                 {
-                    _mesh.index[_indexOffset+k].s = tempTAV->index[((taPos-1)*6)+k].x;
-                    _mesh.index[_indexOffset+k].t = tempTAV->index[((taPos-1)*6)+k].y;
+                    _mesh.index[_indexOffset+k].s = tempTAV->index[(taPos*6)+k].x;
+                    _mesh.index[_indexOffset+k].t = tempTAV->index[(taPos*6)+k].y;
                 }
                 /*
-                _mesh.index[_indexOffset+0].s = 0;
+                _mesh.index[_indexOffset+0].s = 1;
                 _mesh.index[_indexOffset+0].t = 0;
-                _mesh.index[_indexOffset+1].s = 1;
+                _mesh.index[_indexOffset+1].s = 0;
                 _mesh.index[_indexOffset+1].t = 1;
                 _mesh.index[_indexOffset+2].s = 0;
-                _mesh.index[_indexOffset+2].t = 1;
-                _mesh.index[_indexOffset+3].s = 0;
+                _mesh.index[_indexOffset+2].t = 0;
+                _mesh.index[_indexOffset+3].s = 1;
                 _mesh.index[_indexOffset+3].t = 0;
                 _mesh.index[_indexOffset+4].s = 1;
-                _mesh.index[_indexOffset+4].t = 0;
-                _mesh.index[_indexOffset+5].s = 1;
+                _mesh.index[_indexOffset+4].t = 1;
+                _mesh.index[_indexOffset+5].s = 0;
                 _mesh.index[_indexOffset+5].t = 1;
                 */
                 // generate normals
