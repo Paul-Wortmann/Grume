@@ -62,30 +62,15 @@ namespace RoboEngine
                 _mesh.index[_indexOffset+5].x = ((j*_cellSize*2) + _cellSize) - poisitionDelta;
                 _mesh.index[_indexOffset+5].y = ((i*_cellSize*2) - _cellSize) - poisitionDelta;
                 _mesh.index[_indexOffset+5].z = 0;
-                // generate uvs
-                taPos++;
+
+                taPos++; // = get tile number from file / generate it first.
                 for (uint32_t k = 0; k < 6; k++)
                 {
+                    // generate uvs
                     _mesh.index[_indexOffset+k].s = tempTAV->index[(taPos*6)+k].x;
                     _mesh.index[_indexOffset+k].t = tempTAV->index[(taPos*6)+k].y;
-                }
-                /*
-                _mesh.index[_indexOffset+0].s = 1;
-                _mesh.index[_indexOffset+0].t = 0;
-                _mesh.index[_indexOffset+1].s = 0;
-                _mesh.index[_indexOffset+1].t = 1;
-                _mesh.index[_indexOffset+2].s = 0;
-                _mesh.index[_indexOffset+2].t = 0;
-                _mesh.index[_indexOffset+3].s = 1;
-                _mesh.index[_indexOffset+3].t = 0;
-                _mesh.index[_indexOffset+4].s = 1;
-                _mesh.index[_indexOffset+4].t = 1;
-                _mesh.index[_indexOffset+5].s = 0;
-                _mesh.index[_indexOffset+5].t = 1;
-                */
-                // generate normals
-                for (uint32_t k = 0; k < 6; k++)
-                {
+
+                    // generate normals
                     _mesh.index[_indexOffset+k].nx = 0;
                     _mesh.index[_indexOffset+k].ny = 0;
                     _mesh.index[_indexOffset+k].nz = -1;
