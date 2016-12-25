@@ -22,6 +22,7 @@
  */
 
 #include "re_generate_mesh.hpp"
+#include "re_texture_atlas.hpp"
 #include "../roboengine.hpp"
 
 namespace RoboEngine
@@ -29,11 +30,15 @@ namespace RoboEngine
 
     void re_GenerateMesh(uint32_t _size, re_sGenMesh &_mesh)
     {
+        RoboEngine::re_sGenTAV *tempTAV = RoboEngine::re_genTAV(_size,_size);
         _mesh.indexCount = _size * _size * 6;
         _mesh.index = new v8_f[_mesh.indexCount];
         uint64_t _indexOffset = 0;
         float _cellSize = 1.0f;
         float poisitionDelta = (_size * _cellSize) / 1.0f;
+
+        uint32_t taPos = 1;
+
         for (uint32_t i = 0; i < _size; i++)
         {
             for (uint32_t j = 0; j < _size; j++)
@@ -58,6 +63,13 @@ namespace RoboEngine
                 _mesh.index[_indexOffset+5].y = ((i*_cellSize*2) - _cellSize) - poisitionDelta;
                 _mesh.index[_indexOffset+5].z = 0;
                 // generate uvs
+                taPos++;
+                for (uint32_t k = 0; k < 6; k++)
+                {
+                    _mesh.index[_indexOffset+k].s = tempTAV->index[((taPos-1)*6)+k].x;
+                    _mesh.index[_indexOffset+k].t = tempTAV->index[((taPos-1)*6)+k].y;
+                }
+                /*
                 _mesh.index[_indexOffset+0].s = 0;
                 _mesh.index[_indexOffset+0].t = 0;
                 _mesh.index[_indexOffset+1].s = 1;
@@ -70,6 +82,7 @@ namespace RoboEngine
                 _mesh.index[_indexOffset+4].t = 0;
                 _mesh.index[_indexOffset+5].s = 1;
                 _mesh.index[_indexOffset+5].t = 1;
+                */
                 // generate normals
                 for (uint32_t k = 0; k < 6; k++)
                 {
@@ -80,6 +93,7 @@ namespace RoboEngine
                 _indexOffset += 6;
             }
         }
+        delete[] tempTAV;
     }
 
 }
