@@ -81,6 +81,7 @@ namespace RoboEngine
                 _indexOffset += 6;
             }
         }
+        delete [] tempTAV->index;
         delete tempTAV;
     }
 
