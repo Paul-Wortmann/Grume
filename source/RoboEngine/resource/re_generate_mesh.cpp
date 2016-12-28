@@ -30,7 +30,7 @@ namespace RoboEngine
 
     void re_GenerateMesh(uint32_t _size, re_sGenMesh &_mesh)
     {
-        RoboEngine::re_sGenTAV *tempTAV = RoboEngine::re_genTAV(_size,_size);
+        RoboEngine::re_sGenTAV *tempTAV = RoboEngine::re_genTAV(2);
         _mesh.indexCount = _size * _size * 6;
         _mesh.index = new v8_f[_mesh.indexCount];
         uint64_t _indexOffset = 0;
@@ -76,10 +76,12 @@ namespace RoboEngine
                     _mesh.index[_indexOffset+k].nz = -1;
                 }
                 taPos++; // remove this once file loading has been implemented.
+                if (taPos > 3)
+                    taPos = 0;
                 _indexOffset += 6;
             }
         }
-        delete[] tempTAV;
+        delete tempTAV;
     }
 
 }

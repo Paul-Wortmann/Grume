@@ -37,7 +37,9 @@ namespace RoboEngine
     };
 
     re_sGenTAV* re_genTAV(uint32_t _width, uint32_t _height);
+    re_sGenTAV* re_genTAV(uint32_t _size);
 
 }
 
 #endif // RE_TEXTURE_ATLAS_HPP
+

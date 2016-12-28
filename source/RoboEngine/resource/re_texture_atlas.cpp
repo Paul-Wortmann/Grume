@@ -56,4 +56,10 @@ namespace RoboEngine
         return tempTAV;
     }
 
+    re_sGenTAV* re_genTAV(uint32_t _size)
+    {
+        return re_genTAV(_size, _size);
+    }
+
+
 }
