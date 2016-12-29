@@ -37,12 +37,6 @@
 namespace RoboEngine
 {
 
-    struct re_stmxTileType
-    {
-        uint32_t      tile = 0;
-        uint32_t      tile_tileset = 0;
-    };
-
     struct re_stmxTilesetType
     {
         uint32_t      first_gid = 0;
@@ -60,25 +54,25 @@ namespace RoboEngine
 
     struct re_stmxLayerType
     {
-        std::string        name = "";
-        uint32_t           width = 0;
-        uint32_t           height = 0;
-        re_stmxTileType*   tile = nullptr;
+        std::string   name = "";
+        uint32_t      width = 0;
+        uint32_t      height = 0;
+        uint32_t      number_of_tiles = 0;
+        uint32_t*     tile = nullptr;
     };
 
     struct re_stmxDataType
     {
-        float              map_version = 0.0f;
-        std::string        map_orientation = "";
-        std::string        map_renderorder = "";
-        uint32_t           map_width = 0;
-        uint32_t           map_height = 0;
-        uint32_t           map_tile_width = 0;
-        uint32_t           map_tile_height = 0;
-        uint32_t           map_nextobjectid = 0;
-        uint32_t           number_of_layers = 0;
-        uint32_t           number_of_tiles = 0;
-        uint32_t           number_of_tilesets = 0;
+        float         map_version = 0.0f;
+        std::string   map_orientation = "";
+        std::string   map_renderorder = "";
+        uint32_t      map_width = 0;
+        uint32_t      map_height = 0;
+        uint32_t      map_tile_width = 0;
+        uint32_t      map_tile_height = 0;
+        uint32_t      map_nextobjectid = 0;
+        uint32_t      number_of_layers = 0;
+        uint32_t      number_of_tilesets = 0;
     };
 
     struct re_stmxData
