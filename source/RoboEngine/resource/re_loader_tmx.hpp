@@ -67,10 +67,12 @@ namespace RoboEngine
     {
         float              map_version = 0.0f;
         std::string        map_orientation = "";
+        std::string        map_renderorder = "";
         uint32_t           map_width = 0;
         uint32_t           map_height = 0;
         uint32_t           map_tile_width = 0;
         uint32_t           map_tile_height = 0;
+        uint32_t           map_nextobjectid = 0;
         uint32_t           number_of_layers = 0;
         uint32_t           number_of_tiles = 0;
         uint32_t           number_of_tilesets = 0;

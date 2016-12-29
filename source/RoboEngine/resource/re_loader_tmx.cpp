@@ -52,6 +52,15 @@ namespace RoboEngine
             _tmxData = new re_stmxData;
         if (xml_data != nullptr)
         {
+            _tmxData->data.map_version = std::stof(RoboEngine::re_xml_get_sub_value(*xml_data, RoboEngine::XML_enum::XML_TAG_ATTRIBUTE, "map", 1, "version"));
+            _tmxData->data.map_orientation = RoboEngine::re_xml_get_sub_value(*xml_data, RoboEngine::XML_enum::XML_TAG_ATTRIBUTE, "map", 1, "orientation");
+            _tmxData->data.map_renderorder = RoboEngine::re_xml_get_sub_value(*xml_data, RoboEngine::XML_enum::XML_TAG_ATTRIBUTE, "map", 1, "renderorder");
+            _tmxData->data.map_width = std::stoi(RoboEngine::re_xml_get_sub_value(*xml_data, RoboEngine::XML_enum::XML_TAG_ATTRIBUTE, "map", 1, "width"));
+            _tmxData->data.map_height = std::stoi(RoboEngine::re_xml_get_sub_value(*xml_data, RoboEngine::XML_enum::XML_TAG_ATTRIBUTE, "map", 1, "height"));
+            _tmxData->data.map_tile_width = std::stoi(RoboEngine::re_xml_get_sub_value(*xml_data, RoboEngine::XML_enum::XML_TAG_ATTRIBUTE, "map", 1, "tilewidth"));
+            _tmxData->data.map_tile_height = std::stoi(RoboEngine::re_xml_get_sub_value(*xml_data, RoboEngine::XML_enum::XML_TAG_ATTRIBUTE, "map", 1, "tileheight"));
+            _tmxData->data.map_nextobjectid = std::stoi(RoboEngine::re_xml_get_sub_value(*xml_data, RoboEngine::XML_enum::XML_TAG_ATTRIBUTE, "map", 1, "nextobjectid"));
+
 
         }
         re_xml_delete(xml_data);
@@ -83,6 +92,10 @@ namespace RoboEngine
             script_file << '"';
             script_file << _tmxData->data.map_orientation.c_str();
             script_file << '"';
+            script_file << " renderorder=";
+            script_file << '"';
+            script_file << _tmxData->data.map_renderorder.c_str();
+            script_file << '"';
             script_file << " width=";
             script_file << '"';
             script_file << _tmxData->data.map_width;
@@ -98,6 +111,10 @@ namespace RoboEngine
             script_file << " tileheight=";
             script_file << '"';
             script_file << _tmxData->data.map_tile_height;
+            script_file << '"';
+            script_file << " nextobjectid=";
+            script_file << '"';
+            script_file << _tmxData->data.map_nextobjectid;
             script_file << '"';
             script_file << ">";
             script_file << "\n";
