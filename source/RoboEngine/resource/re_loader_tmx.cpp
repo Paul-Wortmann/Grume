@@ -65,7 +65,7 @@ namespace RoboEngine
             script_file << "<?xml version=";
             script_file << '"';
             script_file << (float)_tmxData->data.xml_version;
-            if ((float)_tmxData->data.xml_version == (int)_tmxData->data.xml_version) script_file << ".0";
+            script_file << std::to_string(_tmxData->data.xml_version) << ".0";
             script_file << '"';
             script_file << " encoding=";
             script_file << '"';
@@ -77,7 +77,7 @@ namespace RoboEngine
             script_file << "<map version=";
             script_file << '"';
             script_file << (float)_tmxData->data.map_version;
-            if ((float)_tmxData->data.map_version == (int)_tmxData->data.map_version) script_file << ".0";
+            script_file << std::to_string(_tmxData->data.map_version) << ".0";
             script_file << '"';
             script_file << " orientation=";
             script_file << '"';
@@ -117,7 +117,7 @@ namespace RoboEngine
             script_file << " </properties>";
             script_file << "\n";
 
-            for (int tileset_count = 0; tileset_count < _tmxData->data.number_of_tilesets; tileset_count++)
+            for (uint32_t tileset_count = 0; tileset_count < _tmxData->data.number_of_tilesets; tileset_count++)
             {
                 script_file << " <tileset firstgid=";
                 script_file << '"';
@@ -154,7 +154,7 @@ namespace RoboEngine
                 script_file << " </tileset>";
                 script_file << "\n";
             }
-            for (int layer_count = 0; layer_count < _tmxData->data.number_of_layers; layer_count++)
+            for (uint32_t layer_count = 0; layer_count < _tmxData->data.number_of_layers; layer_count++)
             {
                 script_file << " <layer name=";
                 script_file << '"';
@@ -172,7 +172,7 @@ namespace RoboEngine
                 script_file << "\n";
                 script_file << "  <data>";
                 script_file << "\n";
-                for (int tile_count = 0; tile_count < _tmxData->data.number_of_tiles; tile_count++)
+                for (uint32_t tile_count = 0; tile_count < _tmxData->data.number_of_tiles; tile_count++)
                 {
                     script_file << "   <tile gid=";
                     script_file << '"';
