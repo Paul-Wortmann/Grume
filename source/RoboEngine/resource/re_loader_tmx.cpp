@@ -64,35 +64,51 @@ namespace RoboEngine
 
             // tileset data
             uint64_t count_ts = RoboEngine::re_xml_get_count(*xml_data, RoboEngine::XML_enum::XML_TAG_ATTRIBUTE, "tileset");
+            _tmxData->data.number_of_tilesets = count_ts;
+            _tmxData->tileset = new re_stmxTilesetType[_tmxData->data.number_of_tilesets];
             for (uint64_t i = 0; i < count_ts; i++)
             {
-                _tmxData->data.number_of_tilesets = count_ts;
-                _tmxData->tileset = new re_stmxTilesetType[_tmxData->data.number_of_tilesets];
-                _tmxData->tileset[i].first_gid = std::stoi(RoboEngine::re_xml_get_sub_value(*xml_data, RoboEngine::XML_enum::XML_TAG_ATTRIBUTE, "tileset", i, "firstgid"));
-                _tmxData->tileset[i].name = RoboEngine::re_xml_get_sub_value(*xml_data, RoboEngine::XML_enum::XML_TAG_ATTRIBUTE, "tileset", i, "name");
-                _tmxData->tileset[i].tile_width = std::stoi(RoboEngine::re_xml_get_sub_value(*xml_data, RoboEngine::XML_enum::XML_TAG_ATTRIBUTE, "tileset", i, "tilewidth"));
-                _tmxData->tileset[i].tile_height = std::stoi(RoboEngine::re_xml_get_sub_value(*xml_data, RoboEngine::XML_enum::XML_TAG_ATTRIBUTE, "tileset", i, "tileheight"));
-                _tmxData->tileset[i].tile_count = std::stoi(RoboEngine::re_xml_get_sub_value(*xml_data, RoboEngine::XML_enum::XML_TAG_ATTRIBUTE, "tileset", i, "tilecount"));
-                _tmxData->tileset[i].tile_columns = std::stoi(RoboEngine::re_xml_get_sub_value(*xml_data, RoboEngine::XML_enum::XML_TAG_ATTRIBUTE, "tileset", i, "columns"));
+                _tmxData->tileset[i].first_gid = std::stoi(RoboEngine::re_xml_get_sub_value(*xml_data, RoboEngine::XML_enum::XML_TAG_ATTRIBUTE, "tileset", i+1, "firstgid"));
+                _tmxData->tileset[i].name = RoboEngine::re_xml_get_sub_value(*xml_data, RoboEngine::XML_enum::XML_TAG_ATTRIBUTE, "tileset", i+1, "name");
+                _tmxData->tileset[i].tile_width = std::stoi(RoboEngine::re_xml_get_sub_value(*xml_data, RoboEngine::XML_enum::XML_TAG_ATTRIBUTE, "tileset", i+1, "tilewidth"));
+                _tmxData->tileset[i].tile_height = std::stoi(RoboEngine::re_xml_get_sub_value(*xml_data, RoboEngine::XML_enum::XML_TAG_ATTRIBUTE, "tileset", i+1, "tileheight"));
+                _tmxData->tileset[i].tile_count = std::stoi(RoboEngine::re_xml_get_sub_value(*xml_data, RoboEngine::XML_enum::XML_TAG_ATTRIBUTE, "tileset", i+1, "tilecount"));
+                _tmxData->tileset[i].tile_columns = std::stoi(RoboEngine::re_xml_get_sub_value(*xml_data, RoboEngine::XML_enum::XML_TAG_ATTRIBUTE, "tileset", i+1, "columns"));
 
-                _tmxData->tileset[i].image_source = RoboEngine::re_xml_get_sub_value(*xml_data, RoboEngine::XML_enum::XML_TAG_ATTRIBUTE_END, "image", i, "source");
-                _tmxData->tileset[i].image_width = std::stoi(RoboEngine::re_xml_get_sub_value(*xml_data, RoboEngine::XML_enum::XML_TAG_ATTRIBUTE_END, "image", i, "width"));
-                _tmxData->tileset[i].image_height = std::stoi(RoboEngine::re_xml_get_sub_value(*xml_data, RoboEngine::XML_enum::XML_TAG_ATTRIBUTE_END, "image", i, "height"));
+                _tmxData->tileset[i].image_source = RoboEngine::re_xml_get_sub_value(*xml_data, RoboEngine::XML_enum::XML_TAG_ATTRIBUTE_END, "image", i+1, "source");
+                _tmxData->tileset[i].image_width = std::stoi(RoboEngine::re_xml_get_sub_value(*xml_data, RoboEngine::XML_enum::XML_TAG_ATTRIBUTE_END, "image", i+1, "width"));
+                _tmxData->tileset[i].image_height = std::stoi(RoboEngine::re_xml_get_sub_value(*xml_data, RoboEngine::XML_enum::XML_TAG_ATTRIBUTE_END, "image", i+1, "height"));
             }
 
             // layer data
             uint64_t count_l = RoboEngine::re_xml_get_count(*xml_data, RoboEngine::XML_enum::XML_TAG_ATTRIBUTE, "layer");
+            _tmxData->data.number_of_layers = count_l;
+            _tmxData->layer = new re_stmxLayerType[_tmxData->data.number_of_layers];
             for (uint64_t i = 0; i < count_l; i++)
             {
-                _tmxData->data.number_of_layers = count_l;
-                _tmxData->layer = new re_stmxLayerType[_tmxData->data.number_of_layers];
-
-                _tmxData->layer[i].name = RoboEngine::re_xml_get_sub_value(*xml_data, RoboEngine::XML_enum::XML_TAG_ATTRIBUTE, "layer", i, "name");
-                _tmxData->layer[i].width = std::stoi(RoboEngine::re_xml_get_sub_value(*xml_data, RoboEngine::XML_enum::XML_TAG_ATTRIBUTE, "layer", i, "width"));
-                _tmxData->layer[i].height = std::stoi(RoboEngine::re_xml_get_sub_value(*xml_data, RoboEngine::XML_enum::XML_TAG_ATTRIBUTE, "layer", i, "height"));
+                _tmxData->layer[i].name = RoboEngine::re_xml_get_sub_value(*xml_data, RoboEngine::XML_enum::XML_TAG_ATTRIBUTE, "layer", i+1, "name").c_str();
+                _tmxData->layer[i].width = std::stoi(RoboEngine::re_xml_get_sub_value(*xml_data, RoboEngine::XML_enum::XML_TAG_ATTRIBUTE, "layer", i+1, "width"));
+                _tmxData->layer[i].height = std::stoi(RoboEngine::re_xml_get_sub_value(*xml_data, RoboEngine::XML_enum::XML_TAG_ATTRIBUTE, "layer", i+1, "height"));
+                _tmxData->layer[i].encoding = RoboEngine::re_xml_get_sub_value(*xml_data, RoboEngine::XML_enum::XML_TAG_ATTRIBUTE_TEXT, "data", i+1, "encoding").c_str();
+                if (_tmxData->layer[i].encoding.compare("csv") == 0)
+                {
+                    std::string tempTileData = RoboEngine::re_xml_get_sub_value(*xml_data, RoboEngine::XML_enum::XML_TAG_ATTRIBUTE_TEXT, "data", i+1, "XML_TAG_ATTRIBUTE_TEXT").c_str();
+                    uint64_t tempTileDataLength = tempTileData.length();
+                    for (uint64_t j = 0; j < tempTileDataLength; j++)
+                        if (tempTileData[j] != ',')
+                            _tmxData->layer[i].number_of_tiles++;
+                    _tmxData->layer[i].tile = new uint32_t [_tmxData->layer[i].number_of_tiles];
+                    uint32_t currentTile = 0;
+                    for (uint64_t j = 0; j < tempTileDataLength; j++)
+                    {
+                        if (tempTileData[j] != ',')
+                        {
+                            _tmxData->layer[i].tile[currentTile] = tempTileData[j] - '0';
+                            currentTile++;
+                        }
+                    }
+                }
             }
-
-
         }
         re_xml_delete(xml_data);
     }
@@ -117,7 +133,7 @@ namespace RoboEngine
 
             script_file << "<map version=";
             script_file << '"';
-            script_file << std::to_string(_tmxData->data.map_version) << ".0";
+            script_file << std::to_string((uint32_t)_tmxData->data.map_version) << ".0";
             script_file << '"';
             script_file << " orientation=";
             script_file << '"';
@@ -149,7 +165,7 @@ namespace RoboEngine
             script_file << '"';
             script_file << ">";
             script_file << "\n";
-
+            /*
             script_file << " <properties>";
             script_file << "\n";
             script_file << "  <property name=";
@@ -164,7 +180,7 @@ namespace RoboEngine
             script_file << "\n";
             script_file << " </properties>";
             script_file << "\n";
-
+            */
             for (uint32_t i = 0; i < _tmxData->data.number_of_tilesets; i++)
             {
                 script_file << " <tileset firstgid=";
@@ -214,7 +230,7 @@ namespace RoboEngine
             {
                 script_file << " <layer name=";
                 script_file << '"';
-                script_file << "tile";
+                script_file << _tmxData->layer[i].name;
                 script_file << '"';
                 script_file << " width=";
                 script_file << '"';
@@ -226,19 +242,39 @@ namespace RoboEngine
                 script_file << '"';
                 script_file << ">";
                 script_file << "\n";
-                script_file << "  <data>";
-                script_file << "\n";
-                for (uint32_t j = 0; j < _tmxData->layer[i].number_of_tiles; j++)
+
+                if (_tmxData->layer[i].encoding.compare("csv") == 0)
                 {
-                    script_file << "   <tile gid=";
+                    script_file << "  <data encoding=";
                     script_file << '"';
-                    script_file << _tmxData->layer[i].tile[j];
+                    script_file << _tmxData->layer[i].encoding;
                     script_file << '"';
-                    script_file << "/>";
+                    script_file << ">";
+                    for (uint32_t j = 0; j < _tmxData->layer[i].number_of_tiles; j++)
+                    {
+                        script_file << std::to_string(_tmxData->layer[i].tile[j]);
+                        if (j != _tmxData->layer[i].number_of_tiles-1)
+                            script_file << ",";
+                    }
+                    script_file << "</data>";
                     script_file << "\n";
                 }
-                script_file << "  </data>";
-                script_file << "\n";
+                else
+                {
+                    script_file << "  <data>";
+                    script_file << "\n";
+                    for (uint32_t j = 0; j < _tmxData->layer[i].number_of_tiles; j++)
+                    {
+                        script_file << "   <tile gid=";
+                        script_file << '"';
+                        script_file << _tmxData->layer[i].tile[j];
+                        script_file << '"';
+                        script_file << "/>";
+                        script_file << "\n";
+                    }
+                    script_file << "  </data>";
+                    script_file << "\n";
+                }
                 script_file << " </layer>";
                 script_file << "\n";
             }

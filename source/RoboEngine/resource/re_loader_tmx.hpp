@@ -55,6 +55,7 @@ namespace RoboEngine
     struct re_stmxLayerType
     {
         std::string   name = "";
+        std::string   encoding = "";
         uint32_t      width = 0;
         uint32_t      height = 0;
         uint32_t      number_of_tiles = 0;
