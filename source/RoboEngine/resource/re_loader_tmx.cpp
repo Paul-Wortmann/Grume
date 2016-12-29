@@ -59,7 +59,137 @@ namespace RoboEngine
 
     void re_tmxSave(const std::string &_fileName, re_stmxData *&_tmxData)
     {
+        std::fstream script_file(_fileName.c_str(),std::ios::out|std::ios::binary|std::ios::trunc);
+        if (script_file.is_open())
+        {
+            script_file << "<?xml version=";
+            script_file << '"';
+            script_file << (float)_tmxData->data.xml_version;
+            if ((float)_tmxData->data.xml_version == (int)_tmxData->data.xml_version) script_file << ".0";
+            script_file << '"';
+            script_file << " encoding=";
+            script_file << '"';
+            script_file << _tmxData->data.xml_encoding.c_str();
+            script_file << '"';
+            script_file << "?>";
+            script_file << "\n";
 
+            script_file << "<map version=";
+            script_file << '"';
+            script_file << (float)_tmxData->data.map_version;
+            if ((float)_tmxData->data.map_version == (int)_tmxData->data.map_version) script_file << ".0";
+            script_file << '"';
+            script_file << " orientation=";
+            script_file << '"';
+            script_file << _tmxData->data.map_orientation.c_str();
+            script_file << '"';
+            script_file << " width=";
+            script_file << '"';
+            script_file << _tmxData->data.map_width;
+            script_file << '"';
+            script_file << " height=";
+            script_file << '"';
+            script_file << _tmxData->data.map_height;
+            script_file << '"';
+            script_file << " tilewidth=";
+            script_file << '"';
+            script_file << _tmxData->data.map_tile_width;
+            script_file << '"';
+            script_file << " tileheight=";
+            script_file << '"';
+            script_file << _tmxData->data.map_tile_height;
+            script_file << '"';
+            script_file << ">";
+            script_file << "\n";
+
+            script_file << " <properties>";
+            script_file << "\n";
+            script_file << "  <property name=";
+            script_file << '"';
+            script_file << "MAP_ID";
+            script_file << '"';
+            script_file << " value=";
+            script_file << '"';
+            script_file << "0";
+            script_file << '"';
+            script_file << "/>";
+            script_file << "\n";
+            script_file << " </properties>";
+            script_file << "\n";
+
+            for (int tileset_count = 0; tileset_count < _tmxData->data.number_of_tilesets; tileset_count++)
+            {
+                script_file << " <tileset firstgid=";
+                script_file << '"';
+                script_file << _tmxData->tileset[tileset_count].first_gid;
+                script_file << '"';
+                script_file << " name=";
+                script_file << '"';
+                script_file << _tmxData->tileset[tileset_count].image_name;
+                script_file << '"';
+                script_file << " tilewidth=";
+                script_file << '"';
+                script_file << _tmxData->tileset[tileset_count].tile_width;
+                script_file << '"';
+                script_file << " tileheight=";
+                script_file << '"';
+                script_file << _tmxData->tileset[tileset_count].tile_height;
+                script_file << '"';
+                script_file << ">";
+                script_file << "\n";
+                script_file << "  <image source=";
+                script_file << '"';
+                script_file << _tmxData->tileset[tileset_count].image_source;
+                script_file << '"';
+                script_file << " width=";
+                script_file << '"';
+                script_file << _tmxData->tileset[tileset_count].image_width;
+                script_file << '"';
+                script_file << " height=";
+                script_file << '"';
+                script_file << _tmxData->tileset[tileset_count].image_height;
+                script_file << '"';
+                script_file << "/>";
+                script_file << "\n";
+                script_file << " </tileset>";
+                script_file << "\n";
+            }
+            for (int layer_count = 0; layer_count < _tmxData->data.number_of_layers; layer_count++)
+            {
+                script_file << " <layer name=";
+                script_file << '"';
+                script_file << "tile";
+                script_file << '"';
+                script_file << " width=";
+                script_file << '"';
+                script_file << _tmxData->layer[layer_count].width;
+                script_file << '"';
+                script_file << " height=";
+                script_file << '"';
+                script_file << _tmxData->layer[layer_count].height;
+                script_file << '"';
+                script_file << ">";
+                script_file << "\n";
+                script_file << "  <data>";
+                script_file << "\n";
+                for (int tile_count = 0; tile_count < _tmxData->data.number_of_tiles; tile_count++)
+                {
+                    script_file << "   <tile gid=";
+                    script_file << '"';
+                    script_file << ((_tmxData->layer[layer_count].tile[tile_count].tile + _tmxData->tileset[_tmxData->layer[layer_count].tile[tile_count].tile_tileset].first_gid) - 1);
+                    script_file << '"';
+                    script_file << "/>";
+                    script_file << "\n";
+                }
+                script_file << "  </data>";
+                script_file << "\n";
+                script_file << " </layer>";
+                script_file << "\n";
+            }
+            script_file << "</map>";
+            script_file << "\n";
+            script_file.close();
+        }
     }
 
 }
