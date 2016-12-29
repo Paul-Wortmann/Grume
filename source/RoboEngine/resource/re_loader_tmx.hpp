@@ -37,13 +37,13 @@
 namespace RoboEngine
 {
 
-    struct tmx_tile_type
+    struct re_stmxTileType
     {
         uint32_t      tile = 0;
         uint32_t      tile_tileset = 0;
     };
 
-    struct tmx_tileset_type
+    struct re_stmxTilesetType
     {
         uint32_t      tile_width = 0;
         uint32_t      tile_height = 0;
@@ -55,18 +55,16 @@ namespace RoboEngine
         uint32_t      number_of_tiles = 0;
     };
 
-    struct tmx_layer_type
+    struct re_stmxLayerType
     {
         std::string        name = "";
         uint32_t           width = 0;
         uint32_t           height = 0;
-        tmx_tile_type*     tile = nullptr;
+        re_stmxTileType*   tile = nullptr;
     };
 
-    struct tmx_data_type
+    struct re_stmxDataType
     {
-        float              xml_version = 0.0f;
-        std::string        xml_encoding = "";
         float              map_version = 0.0f;
         std::string        map_orientation = "";
         uint32_t           map_width = 0;
@@ -80,9 +78,9 @@ namespace RoboEngine
 
     struct re_stmxData
     {
-        tmx_data_type       data = {};
-        tmx_layer_type*     layer = nullptr;
-        tmx_tileset_type*   tileset = nullptr;
+        re_stmxDataType       data = {};
+        re_stmxLayerType*     layer = nullptr;
+        re_stmxTilesetType*   tileset = nullptr;
     };
 
     void re_tmxDelete(re_stmxData *&_tmxData);
