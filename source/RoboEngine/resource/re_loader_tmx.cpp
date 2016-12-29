@@ -64,11 +64,13 @@ namespace RoboEngine
         {
             script_file << "<?xml version=";
             script_file << '"';
-            script_file << std::to_string(_tmxData->data.xml_version) << ".0";
+            script_file << "1.0";
+            //script_file << std::to_string(_tmxData->data.xml_version) << ".0";
             script_file << '"';
             script_file << " encoding=";
             script_file << '"';
-            script_file << _tmxData->data.xml_encoding.c_str();
+            script_file << "UTF-8";
+            //script_file << _tmxData->data.xml_encoding.c_str();
             script_file << '"';
             script_file << "?>";
             script_file << "\n";
