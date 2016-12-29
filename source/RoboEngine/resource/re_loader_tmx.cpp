@@ -52,6 +52,7 @@ namespace RoboEngine
             _tmxData = new re_stmxData;
         if (xml_data != nullptr)
         {
+            // map data
             _tmxData->data.map_version = std::stof(RoboEngine::re_xml_get_sub_value(*xml_data, RoboEngine::XML_enum::XML_TAG_ATTRIBUTE, "map", 1, "version"));
             _tmxData->data.map_orientation = RoboEngine::re_xml_get_sub_value(*xml_data, RoboEngine::XML_enum::XML_TAG_ATTRIBUTE, "map", 1, "orientation");
             _tmxData->data.map_renderorder = RoboEngine::re_xml_get_sub_value(*xml_data, RoboEngine::XML_enum::XML_TAG_ATTRIBUTE, "map", 1, "renderorder");
@@ -61,6 +62,23 @@ namespace RoboEngine
             _tmxData->data.map_tile_height = std::stoi(RoboEngine::re_xml_get_sub_value(*xml_data, RoboEngine::XML_enum::XML_TAG_ATTRIBUTE, "map", 1, "tileheight"));
             _tmxData->data.map_nextobjectid = std::stoi(RoboEngine::re_xml_get_sub_value(*xml_data, RoboEngine::XML_enum::XML_TAG_ATTRIBUTE, "map", 1, "nextobjectid"));
 
+            // tileset data
+            uint64_t count_ts = RoboEngine::re_xml_get_count(*xml_data, RoboEngine::XML_enum::XML_TAG_ATTRIBUTE, "tileset");
+            for (uint64_t i = 0; i < count_ts; i++)
+            {
+                _tmxData->data.number_of_tilesets = count_ts;
+                _tmxData->tileset = new re_stmxTilesetType[_tmxData->data.number_of_tilesets];
+                _tmxData->tileset[i].first_gid = std::stoi(RoboEngine::re_xml_get_sub_value(*xml_data, RoboEngine::XML_enum::XML_TAG_ATTRIBUTE, "tileset", i, "firstgid"));
+                _tmxData->tileset[i].name = RoboEngine::re_xml_get_sub_value(*xml_data, RoboEngine::XML_enum::XML_TAG_ATTRIBUTE, "tileset", i, "name");
+                _tmxData->tileset[i].tile_width = std::stoi(RoboEngine::re_xml_get_sub_value(*xml_data, RoboEngine::XML_enum::XML_TAG_ATTRIBUTE, "tileset", i, "tilewidth"));
+                _tmxData->tileset[i].tile_height = std::stoi(RoboEngine::re_xml_get_sub_value(*xml_data, RoboEngine::XML_enum::XML_TAG_ATTRIBUTE, "tileset", i, "tileheight"));
+                _tmxData->tileset[i].tile_count = std::stoi(RoboEngine::re_xml_get_sub_value(*xml_data, RoboEngine::XML_enum::XML_TAG_ATTRIBUTE, "tileset", i, "tilecount"));
+                _tmxData->tileset[i].tile_columns = std::stoi(RoboEngine::re_xml_get_sub_value(*xml_data, RoboEngine::XML_enum::XML_TAG_ATTRIBUTE, "tileset", i, "columns"));
+
+                _tmxData->tileset[i].image_source = RoboEngine::re_xml_get_sub_value(*xml_data, RoboEngine::XML_enum::XML_TAG_ATTRIBUTE_END, "image", i, "source");
+                _tmxData->tileset[i].image_width = std::stoi(RoboEngine::re_xml_get_sub_value(*xml_data, RoboEngine::XML_enum::XML_TAG_ATTRIBUTE_END, "image", i, "width"));
+                _tmxData->tileset[i].image_height = std::stoi(RoboEngine::re_xml_get_sub_value(*xml_data, RoboEngine::XML_enum::XML_TAG_ATTRIBUTE_END, "image", i, "height"));
+            }
 
         }
         re_xml_delete(xml_data);
@@ -134,44 +152,52 @@ namespace RoboEngine
             script_file << " </properties>";
             script_file << "\n";
 
-            for (uint32_t tileset_count = 0; tileset_count < _tmxData->data.number_of_tilesets; tileset_count++)
+            for (uint32_t i = 0; i < _tmxData->data.number_of_tilesets; i++)
             {
                 script_file << " <tileset firstgid=";
                 script_file << '"';
-                script_file << _tmxData->tileset[tileset_count].first_gid;
+                script_file << _tmxData->tileset[i].first_gid;
                 script_file << '"';
                 script_file << " name=";
                 script_file << '"';
-                script_file << _tmxData->tileset[tileset_count].image_name;
+                script_file << _tmxData->tileset[i].name;
                 script_file << '"';
                 script_file << " tilewidth=";
                 script_file << '"';
-                script_file << _tmxData->tileset[tileset_count].tile_width;
+                script_file << _tmxData->tileset[i].tile_width;
                 script_file << '"';
                 script_file << " tileheight=";
                 script_file << '"';
-                script_file << _tmxData->tileset[tileset_count].tile_height;
+                script_file << _tmxData->tileset[i].tile_height;
+                script_file << '"';
+                script_file << " tilecount=";
+                script_file << '"';
+                script_file << _tmxData->tileset[i].tile_count;
+                script_file << '"';
+                script_file << " columns=";
+                script_file << '"';
+                script_file << _tmxData->tileset[i].tile_columns;
                 script_file << '"';
                 script_file << ">";
                 script_file << "\n";
                 script_file << "  <image source=";
                 script_file << '"';
-                script_file << _tmxData->tileset[tileset_count].image_source;
+                script_file << _tmxData->tileset[i].image_source;
                 script_file << '"';
                 script_file << " width=";
                 script_file << '"';
-                script_file << _tmxData->tileset[tileset_count].image_width;
+                script_file << _tmxData->tileset[i].image_width;
                 script_file << '"';
                 script_file << " height=";
                 script_file << '"';
-                script_file << _tmxData->tileset[tileset_count].image_height;
+                script_file << _tmxData->tileset[i].image_height;
                 script_file << '"';
                 script_file << "/>";
                 script_file << "\n";
                 script_file << " </tileset>";
                 script_file << "\n";
             }
-            for (uint32_t layer_count = 0; layer_count < _tmxData->data.number_of_layers; layer_count++)
+            for (uint32_t i = 0; i < _tmxData->data.number_of_layers; i++)
             {
                 script_file << " <layer name=";
                 script_file << '"';
@@ -179,21 +205,21 @@ namespace RoboEngine
                 script_file << '"';
                 script_file << " width=";
                 script_file << '"';
-                script_file << _tmxData->layer[layer_count].width;
+                script_file << _tmxData->layer[i].width;
                 script_file << '"';
                 script_file << " height=";
                 script_file << '"';
-                script_file << _tmxData->layer[layer_count].height;
+                script_file << _tmxData->layer[i].height;
                 script_file << '"';
                 script_file << ">";
                 script_file << "\n";
                 script_file << "  <data>";
                 script_file << "\n";
-                for (uint32_t tile_count = 0; tile_count < _tmxData->data.number_of_tiles; tile_count++)
+                for (uint32_t j = 0; j < _tmxData->data.number_of_tiles; j++)
                 {
                     script_file << "   <tile gid=";
                     script_file << '"';
-                    script_file << ((_tmxData->layer[layer_count].tile[tile_count].tile + _tmxData->tileset[_tmxData->layer[layer_count].tile[tile_count].tile_tileset].first_gid) - 1);
+                    script_file << ((_tmxData->layer[i].tile[j].tile + _tmxData->tileset[_tmxData->layer[i].tile[j].tile_tileset].first_gid) - 1);
                     script_file << '"';
                     script_file << "/>";
                     script_file << "\n";

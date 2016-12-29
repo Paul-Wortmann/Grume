@@ -45,10 +45,13 @@ namespace RoboEngine
 
     struct re_stmxTilesetType
     {
+        uint32_t      first_gid = 0;
+        std::string   name = "";
         uint32_t      tile_width = 0;
         uint32_t      tile_height = 0;
-        uint32_t      first_gid = 0;
-        std::string   image_name = "";
+        uint32_t      tile_count = 0;
+        uint32_t      tile_columns = 0;
+
         std::string   image_source = "";
         uint32_t      image_width = 0;
         uint32_t      image_height = 0;
