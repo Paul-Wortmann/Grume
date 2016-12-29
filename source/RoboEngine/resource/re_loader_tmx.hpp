@@ -39,50 +39,50 @@ namespace RoboEngine
 
     struct tmx_tile_type
     {
-        uint32_t      tile;
-        uint32_t      tile_tileset;
+        uint32_t      tile = 0;
+        uint32_t      tile_tileset = 0;
     };
 
     struct tmx_tileset_type
     {
-        uint32_t      tile_width;
-        uint32_t      tile_height;
-        uint32_t      first_gid;
-        std::string   image_name;
-        std::string   image_source;
-        uint32_t      image_width;
-        uint32_t      image_height;
-        uint32_t      number_of_tiles;
+        uint32_t      tile_width = 0;
+        uint32_t      tile_height = 0;
+        uint32_t      first_gid = 0;
+        std::string   image_name = "";
+        std::string   image_source = "";
+        uint32_t      image_width = 0;
+        uint32_t      image_height = 0;
+        uint32_t      number_of_tiles = 0;
     };
 
     struct tmx_layer_type
     {
-        std::string        name;
-        uint32_t           width;
-        uint32_t           height;
-        tmx_tile_type*     tile;
+        std::string        name = "";
+        uint32_t           width = 0;
+        uint32_t           height = 0;
+        tmx_tile_type*     tile = nullptr;
     };
 
     struct tmx_data_type
     {
-        float              xml_version;
-        std::string        xml_encoding;
-        float              map_version;
-        std::string        map_orientation;
-        uint32_t           map_width;
-        uint32_t           map_height;
-        uint32_t           map_tile_width;
-        uint32_t           map_tile_height;
-        uint32_t           number_of_layers;
-        uint32_t           number_of_tiles;
-        uint32_t           number_of_tilesets;
+        float              xml_version = 0.0f;
+        std::string        xml_encoding = "";
+        float              map_version = 0.0f;
+        std::string        map_orientation = "";
+        uint32_t           map_width = 0;
+        uint32_t           map_height = 0;
+        uint32_t           map_tile_width = 0;
+        uint32_t           map_tile_height = 0;
+        uint32_t           number_of_layers = 0;
+        uint32_t           number_of_tiles = 0;
+        uint32_t           number_of_tilesets = 0;
     };
 
     struct re_stmxData
     {
-        tmx_data_type       data;
-        tmx_layer_type*     layer;
-        tmx_tileset_type*   tileset;
+        tmx_data_type       data = {};
+        tmx_layer_type*     layer = nullptr;
+        tmx_tileset_type*   tileset = nullptr;
     };
 
     void re_tmxDelete(re_stmxData *&_tmxData);
