@@ -65,8 +65,8 @@ namespace RoboEngine
             re_logWrite(reinterpret_cast<const char*>(glGetString(GL_RENDERER)), RE_ENGINE_LOG, __FILE__, __LINE__, __FUNCTION__);
             re_logWrite(reinterpret_cast<const char*>(glGetString(GL_SHADING_LANGUAGE_VERSION)), RE_ENGINE_LOG, __FILE__, __LINE__, __FUNCTION__);
 
-            m_camera.initialize(m_width, m_height, 45.0f);
-            m_camera.setPosition(glm::vec3(0,0,-32), glm::vec3(0,0,0));
+            m_camera.initialize(m_width, m_height, 90.0f);
+            m_camera.setPosition(glm::vec3(0,0,-8), glm::vec3(0,0,0));
 
             glEnable(GL_BLEND);
             glBlendFunc(GL_SRC_ALPHA,GL_ONE_MINUS_SRC_ALPHA);

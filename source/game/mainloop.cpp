@@ -75,7 +75,7 @@ uint32_t c_mainloop::initialize(void)
 {
     setWindowTitle("Frost and Flame");
     loadMap("data/map/level_0");
-    GenMap(9);
+    GenMap(5);
     return EXIT_SUCCESS;
 }
 
