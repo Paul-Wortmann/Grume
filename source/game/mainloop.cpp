@@ -70,6 +70,10 @@ void c_mainloop::GenMap(uint32_t _size)
     genEntityMesh(entity, _size);
     //setEntityMeshTAData(entity, _size);
     RoboEngine::re_logWrite("Added Entity ID: " + std::to_string(entity), RE_ENGINE_LOG, __FILE__, __LINE__, __FUNCTION__);
+    RoboEngine::re_stmxData *tmxData = nullptr;
+    RoboEngine::re_tmxLoad("data/map/ta1.tmx", tmxData);
+    RoboEngine::re_tmxSave("data/map/ta1_exp.tmx", tmxData);
+    RoboEngine::re_tmxDelete(tmxData);
 }
 
 uint32_t c_mainloop::initialize(void)
