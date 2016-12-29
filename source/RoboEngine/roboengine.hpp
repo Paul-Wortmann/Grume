@@ -63,6 +63,7 @@
 #include "resource/re_generate_mesh.hpp"
 #include "resource/re_loader_dae.hpp"
 #include "resource/re_loader_obj.hpp"
+#include "resource/re_loader_tmx.hpp"
 #include "resource/re_manager_mesh.hpp"
 #include "resource/re_manager_shader.hpp"
 #include "resource/re_manager_texture.hpp"

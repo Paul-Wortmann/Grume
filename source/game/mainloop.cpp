@@ -68,6 +68,7 @@ void c_mainloop::GenMap(uint32_t _size)
     addEntityTexture(entity, "data/texture/ta_001");
     addEntityShader(entity, "data/shader/default");
     genEntityMesh(entity, _size);
+    //setEntityMeshTAData(entity, _size);
     RoboEngine::re_logWrite("Added Entity ID: " + std::to_string(entity), RE_ENGINE_LOG, __FILE__, __LINE__, __FUNCTION__);
 }
 
