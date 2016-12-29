@@ -64,7 +64,6 @@ namespace RoboEngine
         {
             script_file << "<?xml version=";
             script_file << '"';
-            script_file << (float)_tmxData->data.xml_version;
             script_file << std::to_string(_tmxData->data.xml_version) << ".0";
             script_file << '"';
             script_file << " encoding=";
@@ -76,7 +75,6 @@ namespace RoboEngine
 
             script_file << "<map version=";
             script_file << '"';
-            script_file << (float)_tmxData->data.map_version;
             script_file << std::to_string(_tmxData->data.map_version) << ".0";
             script_file << '"';
             script_file << " orientation=";
