@@ -440,8 +440,11 @@ namespace RoboEngine
                 if (s_temp[i] == '>')
                 {
                     if (!tag_end)
+                    {
                         attribute_no++;
-                    tag_end = true;
+                        xml_return_line_data.data[attribute_no].attribute = "XML_TAG_ATTRIBUTE_TEXT";
+                        tag_end = true;
+                    }
                 }
                 if (!tag_end)
                 {
