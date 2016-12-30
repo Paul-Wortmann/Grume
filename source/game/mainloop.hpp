@@ -33,14 +33,17 @@
 class c_mainloop : public RoboEngine::re_cRoboEngine
 {
     public:
+        // mainloop
         uint32_t initialize(void);
         uint32_t terminate(void);
         uint32_t process(int64_t _dt);
+
+        // mainloop_map
         void loadMap(const std::string &_fileName);
         void GenMap(uint32_t _size);
     private:
         fnf_core m_core = {};
-        //fnf_map  m_map = {};
+
 };
 
 #endif // MAINLOOP_HPP
