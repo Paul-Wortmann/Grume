@@ -70,7 +70,7 @@ namespace RoboEngine
         return nullptr;
     }
 
-    void re_cEntityManager::addMesh(re_sEntity *_entity, std::string _fileName)
+    void re_cEntityManager::addMesh(re_sEntity *_entity, const std::string &_fileName)
     {
         if (_entity != nullptr)
             if (_entity->render != nullptr)
@@ -84,14 +84,14 @@ namespace RoboEngine
                 _entity->render->mesh = m_managerMesh.genNew(_size);
     }
 
-    void re_cEntityManager::addShader(re_sEntity *_entity, std::string _fileName)
+    void re_cEntityManager::addShader(re_sEntity *_entity, const std::string &_fileName)
     {
         if (_entity != nullptr)
             if (_entity->render != nullptr)
                 _entity->render->shader = m_managerShader.getNew(_fileName);
     }
 
-    void re_cEntityManager::addTexture(re_sEntity *_entity, std::string _fileName)
+    void re_cEntityManager::addTexture(re_sEntity *_entity, const std::string &_fileName)
     {
         if (_entity != nullptr)
             if (_entity->render != nullptr)

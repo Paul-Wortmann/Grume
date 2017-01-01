@@ -107,7 +107,7 @@ namespace RoboEngine
         if (fileExt.compare("dae") == 0)
         {
             re_sdaeData *daeData = nullptr;
-            daeImport(_fileName.c_str(), daeData);
+            daeImport(_fileName, daeData);
             _mesh->indexCount = daeData->face_count;
             _mesh->index = new v8_f[_mesh->indexCount];
             for (uint64_t i = 0; i < _mesh->indexCount; i++)
