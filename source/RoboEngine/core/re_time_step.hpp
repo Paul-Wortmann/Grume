@@ -39,7 +39,7 @@ namespace RoboEngine
         /// timer uses milliseconds
         public:
             re_cFrameTimer(void) { m_desiredFrameTime = 16; }
-            re_cFrameTimer(uint64_t _desiredFrameTime) { m_desiredFrameTime = _desiredFrameTime; }
+            explicit re_cFrameTimer(uint64_t _desiredFrameTime) { m_desiredFrameTime = _desiredFrameTime; }
             virtual ~re_cFrameTimer(void) {}
             void initialize(void);
             void frameStart(void);

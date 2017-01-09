@@ -81,7 +81,7 @@ namespace RoboEngine
             void genMesh(re_sEntity *_entity, uint32_t _size);
             void addShader(re_sEntity *_entity, const std::string &_fileName);
             void addTexture(re_sEntity *_entity, const std::string &_fileName);
-            void addMesh(uint32_t _ID, const std::string _fileName) {for(re_sEntity *tEntity = m_head; tEntity != nullptr; tEntity = tEntity->next) if(tEntity->ID == _ID) addMesh(tEntity, _fileName);}
+            void addMesh(uint32_t _ID, const std::string &_fileName) {for(re_sEntity *tEntity = m_head; tEntity != nullptr; tEntity = tEntity->next) if(tEntity->ID == _ID) addMesh(tEntity, _fileName);}
             void genMesh(uint32_t _ID, uint32_t _size) {for(re_sEntity *tEntity = m_head; tEntity != nullptr; tEntity = tEntity->next) if(tEntity->ID == _ID) genMesh(tEntity, _size);}
             void addShader(uint32_t _ID, const std::string &_fileName) {for(re_sEntity *tEntity = m_head; tEntity != nullptr; tEntity = tEntity->next) if(tEntity->ID == _ID) addShader(tEntity, _fileName);}
             void addTexture(uint32_t _ID, const std::string &_fileName) {for(re_sEntity *tEntity = m_head; tEntity != nullptr; tEntity = tEntity->next) if(tEntity->ID == _ID) addTexture(tEntity, _fileName);}

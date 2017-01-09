@@ -50,112 +50,109 @@ namespace RoboEngine
         re_xml_parse(_daeFile, xml_data);
         if (!_daeData)
             _daeData = new re_sdaeData;
-        if (xml_data != nullptr)
+        uint64_t count_a = re_xml_get_count(*xml_data, XML_enum::XML_TAG_ATTRIBUTE_TEXT, "float_array");
+        for (uint64_t i = 0; i < count_a; i++)
         {
-            uint64_t count_a = re_xml_get_count(*xml_data, XML_enum::XML_TAG_ATTRIBUTE_TEXT, "float_array");
-            for (uint64_t i = 0; i < count_a; i++)
+            std::string t_value = re_xml_get_sub_value(*xml_data, XML_enum::XML_TAG_ATTRIBUTE_TEXT, "float_array", i+1, "id");
+            // vertices
+            if (t_value.find("mesh-positions-array") != std::string::npos)
             {
-                std::string t_value = re_xml_get_sub_value(*xml_data, XML_enum::XML_TAG_ATTRIBUTE_TEXT, "float_array", i+1, "id");
-                // vertices
-                if (t_value.find("mesh-positions-array") != std::string::npos)
+                _daeData->vertex_count = std::stof(re_xml_get_sub_value(*xml_data, XML_enum::XML_TAG_ATTRIBUTE_TEXT, "float_array", i+1, "count")) / 3;
+                uint64_t line_no = re_xml_get_line_attribute(*xml_data, XML_enum::XML_TAG_ATTRIBUTE_TEXT, "float_array", i+1);
+                const std::string data_v = xml_data->line[line_no].data[xml_data->line[line_no].attribute_count-1].value;
+                _daeData->vertex = new v3_f[_daeData->vertex_count];
+                uint64_t data_v_l = data_v.length();
+                uint64_t current_p = 0;
+                uint64_t current_v = 0;
+                std::string temp_v = "";
+                for (uint64_t j = 0; j < data_v_l; j++)
                 {
-                    _daeData->vertex_count = std::stof(re_xml_get_sub_value(*xml_data, XML_enum::XML_TAG_ATTRIBUTE_TEXT, "float_array", i+1, "count")) / 3;
-                    uint64_t line_no = re_xml_get_line_attribute(*xml_data, XML_enum::XML_TAG_ATTRIBUTE_TEXT, "float_array", i+1);
-                    const std::string data_v = xml_data->line[line_no].data[xml_data->line[line_no].attribute_count-1].value;
-                    _daeData->vertex = new v3_f[_daeData->vertex_count];
-                    uint64_t data_v_l = data_v.length();
-                    uint64_t current_p = 0;
-                    uint64_t current_v = 0;
-                    std::string temp_v = "";
-                    for (uint64_t j = 0; j < data_v_l; j++)
+                    if (data_v[j] != ' ')
+                        temp_v += data_v[j];
+                    else
                     {
-                        if (data_v[j] != ' ')
-                            temp_v += data_v[j];
-                        else
+                        if (current_p == 0)
+                            _daeData->vertex[current_v].x = std::stof(temp_v);
+                        else if (current_p == 1)
+                            _daeData->vertex[current_v].y = std::stof(temp_v);
+                        else if (current_p == 2)
+                            _daeData->vertex[current_v].z = std::stof(temp_v);
+                        temp_v = "";
+                        current_p++;
+                        if (current_p > 2)
                         {
-                            if (current_p == 0)
-                                _daeData->vertex[current_v].x = std::stof(temp_v);
-                            else if (current_p == 1)
-                                _daeData->vertex[current_v].y = std::stof(temp_v);
-                            else if (current_p == 2)
-                                _daeData->vertex[current_v].z = std::stof(temp_v);
-                            temp_v = "";
-                            current_p++;
-                            if (current_p > 2)
-                            {
-                                current_p = 0;
-                                current_v++;
-                            }
+                            current_p = 0;
+                            current_v++;
                         }
                     }
-                    _daeData->vertex[current_v].z = std::stof(temp_v);
                 }
-                // normals
-                if (t_value.find("mesh-normals-array") != std::string::npos)
+                _daeData->vertex[current_v].z = std::stof(temp_v);
+            }
+            // normals
+            if (t_value.find("mesh-normals-array") != std::string::npos)
+            {
+                _daeData->vertex_normal_count = std::stof(re_xml_get_sub_value(*xml_data, XML_enum::XML_TAG_ATTRIBUTE_TEXT, "float_array", i+1, "count")) / 3;
+                uint64_t line_no = re_xml_get_line_attribute(*xml_data, XML_enum::XML_TAG_ATTRIBUTE_TEXT, "float_array", i+1);
+                const std::string data_n = xml_data->line[line_no].data[xml_data->line[line_no].attribute_count-1].value;
+                _daeData->vertex_normal = new v3_f[_daeData->vertex_normal_count];
+                uint64_t data_n_l = data_n.length();
+                uint64_t current_p = 0;
+                uint64_t current_n = 0;
+                std::string temp_n = "";
+                for (uint64_t j = 0; j < data_n_l; j++)
                 {
-                    _daeData->vertex_normal_count = std::stof(re_xml_get_sub_value(*xml_data, XML_enum::XML_TAG_ATTRIBUTE_TEXT, "float_array", i+1, "count")) / 3;
-                    uint64_t line_no = re_xml_get_line_attribute(*xml_data, XML_enum::XML_TAG_ATTRIBUTE_TEXT, "float_array", i+1);
-                    const std::string data_n = xml_data->line[line_no].data[xml_data->line[line_no].attribute_count-1].value;
-                    _daeData->vertex_normal = new v3_f[_daeData->vertex_normal_count];
-                    uint64_t data_n_l = data_n.length();
-                    uint64_t current_p = 0;
-                    uint64_t current_n = 0;
-                    std::string temp_n = "";
-                    for (uint64_t j = 0; j < data_n_l; j++)
+                    if (data_n[j] != ' ')
+                        temp_n += data_n[j];
+                    else
                     {
-                        if (data_n[j] != ' ')
-                            temp_n += data_n[j];
-                        else
+                        if (current_p == 0)
+                            _daeData->vertex_normal[current_n].x = std::stof(temp_n);
+                        else if (current_p == 1)
+                            _daeData->vertex_normal[current_n].y = std::stof(temp_n);
+                        else if (current_p == 2)
+                            _daeData->vertex_normal[current_n].z = std::stof(temp_n);
+                        temp_n = "";
+                        current_p++;
+                        if (current_p > 2)
                         {
-                            if (current_p == 0)
-                                _daeData->vertex_normal[current_n].x = std::stof(temp_n);
-                            else if (current_p == 1)
-                                _daeData->vertex_normal[current_n].y = std::stof(temp_n);
-                            else if (current_p == 2)
-                                _daeData->vertex_normal[current_n].z = std::stof(temp_n);
-                            temp_n = "";
-                            current_p++;
-                            if (current_p > 2)
-                            {
-                                current_p = 0;
-                                current_n++;
-                            }
+                            current_p = 0;
+                            current_n++;
                         }
                     }
-                    _daeData->vertex_normal[current_n].z = std::stof(temp_n);
                 }
-                // texture coords
-                if (t_value.find("mesh-map-0-array") != std::string::npos)
+                _daeData->vertex_normal[current_n].z = std::stof(temp_n);
+            }
+            // texture coords
+            if (t_value.find("mesh-map-0-array") != std::string::npos)
+            {
+                _daeData->vertex_texture_count = std::stof(re_xml_get_sub_value(*xml_data, XML_enum::XML_TAG_ATTRIBUTE_TEXT, "float_array", i+1, "count")) / 2;
+                uint64_t line_no = re_xml_get_line_attribute(*xml_data, XML_enum::XML_TAG_ATTRIBUTE_TEXT, "float_array", i+1);
+                const std::string data_t = xml_data->line[line_no].data[xml_data->line[line_no].attribute_count-1].value;
+                _daeData->vertex_texture = new v2_f[_daeData->vertex_texture_count];
+                uint64_t data_t_l = data_t.length();
+                uint64_t current_p = 0;
+                uint64_t current_t = 0;
+                std::string temp_t = "";
+                for (uint64_t j = 0; j < data_t_l; j++)
                 {
-                    _daeData->vertex_texture_count = std::stof(re_xml_get_sub_value(*xml_data, XML_enum::XML_TAG_ATTRIBUTE_TEXT, "float_array", i+1, "count")) / 2;
-                    uint64_t line_no = re_xml_get_line_attribute(*xml_data, XML_enum::XML_TAG_ATTRIBUTE_TEXT, "float_array", i+1);
-                    const std::string data_t = xml_data->line[line_no].data[xml_data->line[line_no].attribute_count-1].value;
-                    _daeData->vertex_texture = new v2_f[_daeData->vertex_texture_count];
-                    uint64_t data_t_l = data_t.length();
-                    uint64_t current_p = 0;
-                    uint64_t current_t = 0;
-                    std::string temp_t = "";
-                    for (uint64_t j = 0; j < data_t_l; j++)
+                    if (data_t[j] != ' ')
+                        temp_t += data_t[j];
+                    else
                     {
-                        if (data_t[j] != ' ')
-                            temp_t += data_t[j];
-                        else
+                        if (current_p == 0)
+                            _daeData->vertex_texture[current_t].x = std::stof(temp_t);
+                        else if (current_p == 1)
+                            _daeData->vertex_texture[current_t].y = std::stof(temp_t);
+                        temp_t = "";
+                        current_p++;
+                        if (current_p > 1)
                         {
-                            if (current_p == 0)
-                                _daeData->vertex_texture[current_t].x = std::stof(temp_t);
-                            else if (current_p == 1)
-                                _daeData->vertex_texture[current_t].y = std::stof(temp_t);
-                            temp_t = "";
-                            current_p++;
-                            if (current_p > 1)
-                            {
-                                current_p = 0;
-                                current_t++;
-                            }
+                            current_p = 0;
+                            current_t++;
                         }
                     }
-                    _daeData->vertex_texture[current_t].y = std::stof(temp_t);
                 }
+                _daeData->vertex_texture[current_t].y = std::stof(temp_t);
             }
         }
         // faces

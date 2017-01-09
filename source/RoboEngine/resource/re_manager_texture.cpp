@@ -35,7 +35,6 @@ namespace RoboEngine
             if (t_texture->ID != 0)
                 freeTexture(t_texture->ID);
             delete  t_texture;
-            t_texture = nullptr;
             t_texture = m_head;
         }
         m_head = nullptr;

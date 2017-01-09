@@ -34,8 +34,7 @@ namespace RoboEngine
 
     uint32_t re_cRoboEngine::log_initialize(const std::string &_message)
     {
-        uint32_t return_value = EXIT_SUCCESS;
-        return_value = m_log.initialize(RE_ENGINE_LOG);
+        uint32_t return_value = m_log.initialize(RE_ENGINE_LOG);
         m_log.write(_message);
         return return_value;
     }
@@ -63,11 +62,9 @@ namespace RoboEngine
         uint32_t return_value = EXIT_SUCCESS;
         if (m_state == eState::RE_INIT)
         {
-            uint32_t f_return_value = EXIT_SUCCESS;
-
             // initialize glfw3
             glfwSetErrorCallback(glfw_error_callback);
-            f_return_value = glfwInit();
+            uint32_t f_return_value = glfwInit();
             return_value = (f_return_value == GLFW_TRUE) ? EXIT_SUCCESS : EXIT_FAILURE;
             if (return_value != EXIT_SUCCESS)
                 m_log.write("Failed to initialize glfw." , __FILE__, __LINE__, __FUNCTION__);
@@ -114,8 +111,10 @@ namespace RoboEngine
                 m_entityManager.addShader(entity_1,"data/shader/default");
                 entity_1->enabled = false;
 
-                m_graphicsEngine.setEntity((re_sEntity*)m_entityManager.getHead());
-                m_physicsEngine.setEntity((re_sEntity*)m_entityManager.getHead());
+
+
+                m_graphicsEngine.setEntity(const_cast<re_sEntity*>(m_entityManager.getHead()));
+                m_physicsEngine.setEntity(const_cast<re_sEntity*>(m_entityManager.getHead()));
             }
 
         }
@@ -149,20 +148,20 @@ namespace RoboEngine
             return EXIT_FAILURE;
         if (RE_DEBUG == 1)
             m_log.setLogConsole(true);
-        uint32_t return_value = EXIT_SUCCESS;
         uint32_t f_return_value = EXIT_SUCCESS;
         std::chrono::system_clock::time_point c_time_init = std::chrono::system_clock::now();
         time_t t_time_init = std::chrono::system_clock::to_time_t(c_time_init);
         std::string s_time_init = ctime(&t_time_init);
 
         //basic core initialize
-        return_value = log_initialize("Starting RoboEngine - Version: "
+        uint32_t return_value = log_initialize("Starting RoboEngine - Version: "
                                       + std::to_string(RE_VERSION_MAJOR) + "."
                                       + std::to_string(RE_VERSION_MINOR) + "."
                                       + std::to_string(RE_VERSION_PATCH) + " - "
                                       + "Time: "
                                       + s_time_init);
-        return_value = process_cl(_argc, _argv);
+        if (return_value == EXIT_SUCCESS)
+            return_value = process_cl(_argc, _argv);
 
         //initialize
         if (return_value == EXIT_SUCCESS)
@@ -174,16 +173,15 @@ namespace RoboEngine
             return_value = (return_value == EXIT_SUCCESS) ? f_return_value : return_value;
         }
 
-        ///delete_me!
-        uint64_t fps_print_count = 0;
-        uint64_t fps_print_max = 100;
-        uint64_t fps_print_data_ups = 0;
-        uint64_t fps_print_data_fps = 0;
-        ///delete_me!
-
         //run
         if (return_value == EXIT_SUCCESS)
         {
+            ///delete_me!
+            uint64_t fps_print_count = 0;
+            uint64_t fps_print_max = 100;
+            uint64_t fps_print_data_ups = 0;
+            uint64_t fps_print_data_fps = 0;
+            ///delete_me!
             while (m_state == eState::RE_ACTV)
             {
                 if (m_SystemEvents.windowCloseRequested())
@@ -197,8 +195,10 @@ namespace RoboEngine
 
                         glfwPollEvents();
                         m_SystemEvents.process();
-                        return_value = m_physicsEngine.process(deltaTime);
-                        return_value = process(deltaTime);
+                        if (return_value == EXIT_SUCCESS)
+                            return_value = m_physicsEngine.process(deltaTime);
+                        if (return_value == EXIT_SUCCESS)
+                            return_value = process(deltaTime);
 
                         ///delete_me!
                         fps_print_count++;

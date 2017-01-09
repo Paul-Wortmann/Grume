@@ -33,7 +33,6 @@ namespace RoboEngine
         {
             m_head = m_head->next;
             delete  t_entity;
-            t_entity = nullptr;
             t_entity = m_head;
         }
         m_head = nullptr;

@@ -37,10 +37,8 @@ namespace RoboEngine
     void loadShader(const std::string &_fileName, uint32_t &_programID, uint32_t &_numAttribs)
     {
         _programID = glCreateProgram();
-        uint32_t shaderVS_ID = 0;
-        uint32_t shaderFS_ID = 0;
         // compile vertex shader
-        shaderVS_ID = glCreateShader(GL_VERTEX_SHADER);
+        uint32_t shaderVS_ID = glCreateShader(GL_VERTEX_SHADER);
         if (shaderVS_ID == 0)
             re_logWrite("Error -> OpenGL, failed to create and get an ID for vertex shader.", RE_ENGINE_LOG, __FILE__, __LINE__, __FUNCTION__);
         std::string contentsStringVS = re_fileToString(_fileName + ".vs").c_str();
@@ -64,7 +62,7 @@ namespace RoboEngine
         else
         {
             // compile fragment shader
-            shaderFS_ID = glCreateShader(GL_FRAGMENT_SHADER);
+            uint32_t shaderFS_ID = glCreateShader(GL_FRAGMENT_SHADER);
             if (shaderFS_ID == 0)
                 re_logWrite("Error -> OpenGL, failed to create and get an ID for fragment shader.", RE_ENGINE_LOG, __FILE__, __LINE__, __FUNCTION__);
             std::string contentsStringFS = re_fileToString(_fileName + ".fs").c_str();
@@ -96,12 +94,10 @@ namespace RoboEngine
                     perror(fileName.c_str());
                     re_logWrite("Error - Failed to open file:. " + fileName + ".vs", RE_ENGINE_LOG, __FILE__, __LINE__, __FUNCTION__);
                 }
-                std::string fileData = "";
                 std::string lineData = "";
-                uint32_t lineDataSize = 0;
                 while (std::getline(fileStream, lineData))
                 {
-                    lineDataSize = lineData.size();
+                    uint32_t lineDataSize = lineData.size();
                     if (lineDataSize >= 10)
                     {
                         if ((lineData[0] == 'i') && (lineData[1] == 'n') && (lineData[2] == ' ') && (lineData[3] == 'v') && (lineData[4] == 'e') && (lineData[5] == 'c'))

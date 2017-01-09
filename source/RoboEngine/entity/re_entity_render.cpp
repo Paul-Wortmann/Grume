@@ -37,7 +37,6 @@ namespace RoboEngine
             if (t_entity->VAO_ID != 0)
                 glDeleteVertexArrays(1, &t_entity->VAO_ID);
             delete  t_entity;
-            t_entity = nullptr;
             t_entity = m_head;
         }
         m_head = nullptr;

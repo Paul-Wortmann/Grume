@@ -51,7 +51,7 @@ namespace RoboEngine
     {
         public:
             re_cEntityPhysicsManager(void) {}
-            ~re_cEntityPhysicsManager(void) {}
+            ~re_cEntityPhysicsManager(void) { freeAll(); }
             inline re_cEntityPhysicsManager(const re_cEntityPhysicsManager&) = default;
             inline re_cEntityPhysicsManager& operator=(const re_cEntityPhysicsManager& _rhs) {if (this == &_rhs) return *this; return *this;}
             inline const re_sEntityPhysics *getHead(void) {return m_head;}

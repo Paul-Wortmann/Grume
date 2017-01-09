@@ -43,7 +43,7 @@ namespace RoboEngine
     {
         public:
             re_cLog(void) = default;
-            re_cLog(const std::string &_fileName) {m_fileName = _fileName; clear();}
+            explicit re_cLog(const std::string &_fileName) : m_fileName(_fileName) {clear();}
             virtual ~re_cLog(void) = default;
             re_cLog(const re_cLog&) = default;
             re_cLog& operator=(const re_cLog& _rhs) {if (this == &_rhs) return *this; return *this;}

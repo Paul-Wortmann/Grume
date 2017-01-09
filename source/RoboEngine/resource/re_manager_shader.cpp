@@ -35,7 +35,6 @@ namespace RoboEngine
             if (t_shader->ID != 0)
                 freeShader(t_shader->ID);
             delete  t_shader;
-            t_shader = nullptr;
             t_shader = m_head;
         }
         m_head = nullptr;
