@@ -24,8 +24,8 @@
 #ifndef RE_SYSTEM_EVENTS_HPP
 #define RE_SYSTEM_EVENTS_HPP
 
-#include <GL/glew.h>
-#include <GLFW/glfw3.h>
+#include "../core/re_ogl_headers.hpp"
+
 #include <cstdint>
 #include <cstdlib>
 #include <iostream>

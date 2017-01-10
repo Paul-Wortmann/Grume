@@ -24,9 +24,7 @@
 #ifndef RE_CAMERA_HPP
 #define RE_CAMERA_HPP
 
-#include <glm/glm.hpp>
-#include <glm/gtx/projection.hpp>
-#include <glm/gtx/transform2.hpp>
+#include "../core/re_ogl_headers.hpp"
 
 #include <cstdint>
 

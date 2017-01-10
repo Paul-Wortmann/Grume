@@ -24,8 +24,8 @@
 #ifndef RE_ENTITY_RENDER_HPP
 #define RE_ENTITY_RENDER_HPP
 
-#include <GL/glew.h>
-#include <glm/glm.hpp>
+#include "../core/re_ogl_headers.hpp"
+
 #include "../resource/re_manager_mesh.hpp"
 #include "../resource/re_manager_shader.hpp"
 #include "../resource/re_manager_texture.hpp"

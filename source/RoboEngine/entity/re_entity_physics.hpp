@@ -24,7 +24,8 @@
 #ifndef RE_ENTITY_PHYSICS_HPP
 #define RE_ENTITY_PHYSICS_HPP
 
-#include <glm/glm.hpp>
+#include "../core/re_ogl_headers.hpp"
+
 #include "../core/re_types.hpp"
 
 namespace RoboEngine

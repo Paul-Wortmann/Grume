@@ -21,7 +21,6 @@
  * @date 2011-11-11
  */
 
-#include <GL/glew.h>
 #include "re_glsl.hpp"
 #include "../roboengine.hpp"
 

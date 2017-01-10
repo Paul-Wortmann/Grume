@@ -34,12 +34,6 @@
 #include <ratio>
 #include <string>
 
-#define GLEW_STATIC
-#include <GL/glew.h>
-#include <GLFW/glfw3.h>
-#define GLM_FORCE_RADIANS
-#include <glm/glm.hpp>
-
 #include "../roboengine.hpp"
 #include "../entity/re_entity.hpp"
 #include "../graphics/re_graphics_engine.hpp"

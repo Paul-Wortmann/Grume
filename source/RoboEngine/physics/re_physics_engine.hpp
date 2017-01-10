@@ -24,8 +24,7 @@
 #ifndef RE_PHYSICS_ENGINE_HPP
 #define RE_PHYSICS_ENGINE_HPP
 
-#include <glm/glm.hpp>
-#include <glm/gtc/matrix_transform.hpp>
+#include "../core/re_ogl_headers.hpp"
 
 #include <cstdlib>
 #include <cstdint>

@@ -31,11 +31,7 @@
 #include <string>
 #include <thread>
 
-#define GLEW_STATIC
-#include <GL/glew.h>
-#include <GLFW/glfw3.h>
-#define GLM_FORCE_RADIANS
-#include <glm/glm.hpp>
+#include "../core/re_ogl_headers.hpp"
 
 #include "../core/re_version.hpp"
 #include "../entity/re_entity.hpp"
@@ -44,9 +40,6 @@
 
 namespace RoboEngine
 {
-
-    #define RE_GL_CONTEXT_MAJOR 3
-    #define RE_GL_CONTEXT_MINOR 3
 
     class re_cGraphicsEngine
     {
