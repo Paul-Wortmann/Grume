@@ -24,7 +24,7 @@
 #ifndef RE_CAMERA_HPP
 #define RE_CAMERA_HPP
 
-#include "../core/re_ogl_headers.hpp"
+#include "../core/re_platform_headers.hpp"
 
 #include <cstdint>
 

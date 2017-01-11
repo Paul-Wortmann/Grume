@@ -24,7 +24,7 @@
 #ifndef RE_SYSTEM_EVENTS_HPP
 #define RE_SYSTEM_EVENTS_HPP
 
-#include "../core/re_ogl_headers.hpp"
+#include "../core/re_platform_headers.hpp"
 
 #include <cstdint>
 #include <cstdlib>

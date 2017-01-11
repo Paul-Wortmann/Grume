@@ -24,6 +24,9 @@
 #ifndef RE_DEFINES_HPP
 #define RE_DEFINES_HPP
 
+#define RE_GL_CONTEXT_MAJOR 3
+#define RE_GL_CONTEXT_MINOR 3
+
 #ifndef RE_DEBUG
 #define RE_DEBUG 1
 #endif // RE_DEBUG

@@ -21,11 +21,8 @@
  * @date 2011-11-11
  */
 
-#ifndef RE_OGL_HEADERS_HPP
-#define RE_OGL_HEADERS_HPP
-
-#define RE_GL_CONTEXT_MAJOR 3
-#define RE_GL_CONTEXT_MINOR 3
+#ifndef RE_PLATFORM_HEADERS_HPP
+#define RE_PLATFORM_HEADERS_HPP
 
 #ifdef __gnu_linux__
     #define GLEW_STATIC
@@ -36,7 +33,8 @@
     #include <glm/gtc/matrix_transform.hpp>
     #include <glm/gtx/projection.hpp>
     #include <glm/gtx/transform2.hpp>
-#else
+
+#elif defined _WIN32
     #define GLEW_STATIC
     #include <gl/glew.h>
     #include <GLFW/glfw3.h>
@@ -45,6 +43,10 @@
     #include <glm/gtc/matrix_transform.hpp>
     #include <glm/gtx/projection.hpp>
     #include <glm/gtx/transform2.hpp>
+
+#else
+    #error "Platform not supported."
+
 #endif
 
-#endif // RE_OGL_HEADERS_HPP
+#endif // RE_PLATFORM_HEADERS_HPP

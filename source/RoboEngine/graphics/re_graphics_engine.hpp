@@ -31,8 +31,9 @@
 #include <string>
 #include <thread>
 
-#include "../core/re_ogl_headers.hpp"
+#include "../core/re_platform_headers.hpp"
 
+#include "../core/re_defines.hpp"
 #include "../core/re_version.hpp"
 #include "../entity/re_entity.hpp"
 #include "../system/re_log.hpp"

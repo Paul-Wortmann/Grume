@@ -24,7 +24,7 @@
 #ifndef RE_ENTITY_RENDER_HPP
 #define RE_ENTITY_RENDER_HPP
 
-#include "../core/re_ogl_headers.hpp"
+#include "../core/re_platform_headers.hpp"
 
 #include "../resource/re_manager_mesh.hpp"
 #include "../resource/re_manager_shader.hpp"
