@@ -28,7 +28,7 @@
 
 #include "re_image_loader.hpp"
 #include "../system/re_file.hpp"
-#include "../system/re_log.hpp"
+#include "../core/re_log.hpp"
 #include "../resource/lodepng.h"
 #include "../roboengine.hpp"
 

@@ -21,10 +21,23 @@
  * @date 2011-11-11
  */
 
-#ifndef RE_PLATFORM_HEADERS_HPP
-#define RE_PLATFORM_HEADERS_HPP
+// platform independent headers
+#include <algorithm>
+#include <cfloat>
+#include <chrono>
+#include <climits>
+#include <cstddef>
+#include <cstdint>
+#include <cstdlib>
+#include <fstream>
+#include <iostream>
+#include <string>
+#include <thread>
+#include <tuple>
+#include <unordered_map>
 
-#ifdef __gnu_linux__
+// platform dependent headers
+#if defined __gnu_linux__
     #define GLEW_STATIC
     #include <GL/glew.h>
     #include <GLFW/glfw3.h>
@@ -33,6 +46,7 @@
     #include <glm/gtc/matrix_transform.hpp>
     #include <glm/gtx/projection.hpp>
     #include <glm/gtx/transform2.hpp>
+    #include <Box2D/Box2D.h>
 
 #elif defined _WIN32
     #define GLEW_STATIC
@@ -43,10 +57,9 @@
     #include <glm/gtc/matrix_transform.hpp>
     #include <glm/gtx/projection.hpp>
     #include <glm/gtx/transform2.hpp>
+    #include <Box2D/Box2D.h>
 
 #else
-    #error "Platform not supported."
+    #error "Platform not supported, consider upgrading to Linux!"
 
-#endif
-
-#endif // RE_PLATFORM_HEADERS_HPP
+#endif // platform headers

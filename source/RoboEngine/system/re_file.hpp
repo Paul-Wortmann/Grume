@@ -26,7 +26,7 @@
 
 #include <string>
 #include <vector>
-#include "re_log.hpp"
+#include "../core/re_log.hpp"
 
 namespace RoboEngine
 {

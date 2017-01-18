@@ -30,7 +30,7 @@
 #include <iostream>
 #include <algorithm>
 #include "../core/re_types.hpp"
-#include "../system/re_log.hpp"
+#include "../core/re_log.hpp"
 #include "re_parser_xml.hpp"
 
 namespace RoboEngine

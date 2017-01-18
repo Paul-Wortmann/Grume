@@ -24,15 +24,29 @@
 #ifndef RE_DEFINES_HPP
 #define RE_DEFINES_HPP
 
-#define RE_GL_CONTEXT_MAJOR 3
-#define RE_GL_CONTEXT_MINOR 3
+    #ifndef RE_DEBUG
+        #define RE_DEBUG 1
+    #endif // RE_DEBUG
 
-#ifndef RE_DEBUG
-#define RE_DEBUG 1
-#endif // RE_DEBUG
+    #ifndef RE_ENGINE_LOG
+        #define RE_ENGINE_LOG "RoboEngine.log"
+    #endif // RE_ENGINE_LOG
 
-#ifndef RE_ENGINE_LOG
-#define RE_ENGINE_LOG "RoboEngine.log"
-#endif // RE_ENGINE_LOG
+    #ifndef RE_GL_CONTEXT_MAJOR
+        #define RE_GL_CONTEXT_MAJOR 3
+    #endif // RE_GL_CONTEXT_MAJOR
+    #ifndef RE_GL_CONTEXT_MINOR
+        #define RE_GL_CONTEXT_MINOR 3
+    #endif // RE_GL_CONTEXT_MINOR
+
+    #ifndef ROBOENGINE_VERSION_MAJOR
+        #define ROBOENGINE_VERSION_MAJOR 0
+    #endif // ROBOENGINE_VERSION_MAJOR
+    #ifndef ROBOENGINE_VERSION_MINOR
+        #define ROBOENGINE_VERSION_MINOR 2
+    #endif // ROBOENGINE_VERSION_MINOR
+    #ifndef ROBOENGINE_VERSION_MICRO
+        #define ROBOENGINE_VERSION_MICRO 3
+    #endif // ROBOENGINE_VERSION_MICRO
 
 #endif // RE_DEFINES_HPP

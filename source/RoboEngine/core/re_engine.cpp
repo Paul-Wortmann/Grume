@@ -155,9 +155,9 @@ namespace RoboEngine
 
         //basic core initialize
         uint32_t return_value = log_initialize("Starting RoboEngine - Version: "
-                                      + std::to_string(RE_VERSION_MAJOR) + "."
-                                      + std::to_string(RE_VERSION_MINOR) + "."
-                                      + std::to_string(RE_VERSION_PATCH) + " - "
+                                      + std::to_string(ROBOENGINE_VERSION_MAJOR) + "."
+                                      + std::to_string(ROBOENGINE_VERSION_MINOR) + "."
+                                      + std::to_string(ROBOENGINE_VERSION_MICRO) + " - "
                                       + "Time: "
                                       + s_time_init);
         if (return_value == EXIT_SUCCESS)

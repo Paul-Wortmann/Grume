@@ -24,23 +24,16 @@
 #ifndef RE_ROBOENGINE_HPP
 #define RE_ROBOENGINE_HPP
 
-#include <cstdint>
-#include <cstdio>
-#include <cstdlib>
-#include <algorithm>
-#include <chrono>
-#include <fstream>
-#include <iostream>
-#include <string>
-#include <thread>
-#include <unordered_map>
+// common headers
+#include "core/re_common_headers.hpp"
 
+// RoboEngine headers
 #include "core/re_defines.hpp"
 #include "core/re_engine.hpp"
-#include "core/re_platform_headers.hpp"
+#include "core/re_log.hpp"
+#include "core/re_math.hpp"
 #include "core/re_time_step.hpp"
 #include "core/re_types.hpp"
-#include "core/re_version.hpp"
 
 #include "entity/re_entity.hpp"
 #include "entity/re_entity_physics.hpp"
@@ -66,8 +59,6 @@
 #include "resource/re_texture_atlas.hpp"
 
 #include "system/re_file.hpp"
-#include "system/re_log.hpp"
-#include "system/re_math.hpp"
 #include "system/re_random.hpp"
 #include "system/re_system_events.hpp"
 

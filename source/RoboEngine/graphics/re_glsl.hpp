@@ -27,7 +27,7 @@
 #include <string>
 #include <fstream>
 #include <iostream>
-#include "../system/re_log.hpp"
+#include "../core/re_log.hpp"
 #include "../system/re_file.hpp"
 
 namespace RoboEngine

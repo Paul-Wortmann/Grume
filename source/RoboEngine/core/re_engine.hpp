@@ -38,7 +38,7 @@
 #include "../entity/re_entity.hpp"
 #include "../graphics/re_graphics_engine.hpp"
 #include "../physics/re_physics_engine.hpp"
-#include "../system/re_log.hpp"
+#include "../core/re_log.hpp"
 #include "../system/re_time.hpp"
 #include "../system/re_system_events.hpp"
 #include "re_time_step.hpp"

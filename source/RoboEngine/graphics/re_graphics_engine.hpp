@@ -24,19 +24,13 @@
 #ifndef RE_GRAPHICS_ENGINE_HPP
 #define RE_GRAPHICS_ENGINE_HPP
 
-#include <chrono>
-#include <cstdint>
-#include <cstdlib>
-#include <iostream>
-#include <string>
-#include <thread>
+// common headers
+#include "../core/re_common_headers.hpp"
 
-#include "../core/re_platform_headers.hpp"
-
+// RoboEngine headers
 #include "../core/re_defines.hpp"
-#include "../core/re_version.hpp"
 #include "../entity/re_entity.hpp"
-#include "../system/re_log.hpp"
+#include "../core/re_log.hpp"
 #include "re_camera.hpp"
 
 namespace RoboEngine
@@ -74,7 +68,7 @@ namespace RoboEngine
             re_sEntity *m_entityHead = nullptr;
             re_sEntity *m_entity = nullptr;
             re_cCamera m_camera = {};
-            std::string m_title = "RoboEngine " + std::to_string(RE_VERSION_MAJOR) + "." + std::to_string(RE_VERSION_MINOR) + "." + std::to_string(RE_VERSION_PATCH);
+            std::string m_title = "RoboEngine " + std::to_string(ROBOENGINE_VERSION_MAJOR) + "." + std::to_string(ROBOENGINE_VERSION_MINOR) + "." + std::to_string(ROBOENGINE_VERSION_MINOR);
             uint16_t m_width = 640;
             uint16_t m_height = 640;
             bool m_fullscreen = false;

@@ -24,15 +24,12 @@
 #ifndef RE_PHYSICS_ENGINE_HPP
 #define RE_PHYSICS_ENGINE_HPP
 
-#include "../core/re_platform_headers.hpp"
+// common headers
+#include "../core/re_common_headers.hpp"
 
-#include <cstdlib>
-#include <cstdint>
-#include <string>
-#include <thread>
-#include <chrono>
+// RoboEngine headers
 #include "../entity/re_entity.hpp"
-#include "../system/re_log.hpp"
+#include "../core/re_log.hpp"
 #include "re_physics.hpp"
 
 namespace RoboEngine

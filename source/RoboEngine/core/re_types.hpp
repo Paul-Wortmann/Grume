@@ -28,10 +28,25 @@
 #include <cfloat>
 #include <climits>
 #include <tuple>
-#include "../system/re_math.hpp"
+#include "../core/re_math.hpp"
 
 namespace RoboEngine
 {
+
+    typedef float v1f;
+
+    struct v2f
+    {
+        float x = 0.0f;
+        float y = 0.0f;
+    };
+
+    struct v3f
+    {
+        float x = 0.0f;
+        float y = 0.0f;
+        float z = 0.0f;
+    };
 
     template <typename T>
     struct v2_T

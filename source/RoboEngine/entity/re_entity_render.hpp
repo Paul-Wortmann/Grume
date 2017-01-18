@@ -24,8 +24,10 @@
 #ifndef RE_ENTITY_RENDER_HPP
 #define RE_ENTITY_RENDER_HPP
 
-#include "../core/re_platform_headers.hpp"
+// common headers
+#include "../core/re_common_headers.hpp"
 
+// RoboEngine headers
 #include "../resource/re_manager_mesh.hpp"
 #include "../resource/re_manager_shader.hpp"
 #include "../resource/re_manager_texture.hpp"

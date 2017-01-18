@@ -28,7 +28,7 @@
 #include <cstdint>
 #include <fstream>
 #include <iostream>
-#include "../system/re_log.hpp"
+#include "../core/re_log.hpp"
 
 namespace RoboEngine
 {

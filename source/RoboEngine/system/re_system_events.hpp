@@ -24,13 +24,11 @@
 #ifndef RE_SYSTEM_EVENTS_HPP
 #define RE_SYSTEM_EVENTS_HPP
 
-#include "../core/re_platform_headers.hpp"
+// common headers
+#include "../core/re_common_headers.hpp"
 
-#include <cstdint>
-#include <cstdlib>
-#include <iostream>
-#include <unordered_map>
-#include "re_log.hpp"
+// RoboEngine headers
+#include "../core/re_log.hpp"
 
 namespace RoboEngine
 {

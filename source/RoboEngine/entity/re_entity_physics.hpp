@@ -24,8 +24,10 @@
 #ifndef RE_ENTITY_PHYSICS_HPP
 #define RE_ENTITY_PHYSICS_HPP
 
-#include "../core/re_platform_headers.hpp"
+// common headers
+#include "../core/re_common_headers.hpp"
 
+// RoboEngine headers
 #include "../core/re_types.hpp"
 
 namespace RoboEngine

@@ -24,9 +24,8 @@
 #ifndef RE_CAMERA_HPP
 #define RE_CAMERA_HPP
 
-#include "../core/re_platform_headers.hpp"
-
-#include <cstdint>
+// common headers
+#include "../core/re_common_headers.hpp"
 
 namespace RoboEngine
 {
