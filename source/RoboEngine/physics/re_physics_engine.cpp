@@ -64,7 +64,6 @@ namespace RoboEngine
                                 {
                                     std::cout << "collision detected!" << std::endl;
                                 }
-
                                 tEntity = tEntity->next;
                             }
                         }

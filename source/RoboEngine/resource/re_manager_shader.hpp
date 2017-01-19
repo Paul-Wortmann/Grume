@@ -24,7 +24,6 @@
 #ifndef RE_MANAGER_SHADER_HPP
 #define RE_MANAGER_SHADER_HPP
 
-#include "../graphics/re_glsl.hpp"
 #include <string>
 
 namespace RoboEngine

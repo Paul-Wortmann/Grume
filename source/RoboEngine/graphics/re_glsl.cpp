@@ -147,11 +147,11 @@ namespace RoboEngine
         }
     }
 
-    int32_t getUniformLocation(uint32_t _programID, const std::string & _uniformName)
+    int32_t getUniformLocation(const re_sShader& _sShader, const std::string & _uniformName)
     {
-        uint32_t location = glGetUniformLocation(_programID, _uniformName.c_str());
+        uint32_t location = glGetUniformLocation(_sShader.ID, _uniformName.c_str());
         if (location == GL_INVALID_INDEX)
-            re_logWrite("Error - Uniform " + _uniformName + "not found in shader.", RE_ENGINE_LOG, __FILE__, __LINE__, __FUNCTION__);
+            re_logWrite("Warning - Uniform " + _uniformName + " not found in shader: " + _sShader.fileName, RE_ENGINE_LOG, __FILE__, __LINE__, __FUNCTION__);
         return location;
     }
 

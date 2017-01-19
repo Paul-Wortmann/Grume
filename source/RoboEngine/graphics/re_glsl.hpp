@@ -29,13 +29,14 @@
 #include <iostream>
 #include "../core/re_log.hpp"
 #include "../system/re_file.hpp"
+#include "../resource/re_manager_shader.hpp"
 
 namespace RoboEngine
 {
 
     void freeShader(uint32_t _shaderID);
-    void loadShader(const std::string &_fileName, uint32_t &_shaderID, uint32_t &_numAttribs);
-    int32_t getUniformLocation(uint32_t _programID, const std::string & _uniformName);
+    void loadShader(const std::string& _fileName, uint32_t& _shaderID, uint32_t& _numAttribs);
+    int32_t getUniformLocation(const re_sShader& _sShader, const std::string& _uniformName);
 
 }
 

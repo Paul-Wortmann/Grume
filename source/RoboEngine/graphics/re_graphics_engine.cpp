@@ -116,19 +116,19 @@ namespace RoboEngine
                         {
                             glActiveTexture(GL_TEXTURE0);
                             glBindTexture(GL_TEXTURE_2D, m_entity->render->texture_diffuse->ID);
-                            glUniform1i(getUniformLocation(m_entity->render->shader->ID, "diffuse"), 0);
+                            glUniform1i(getUniformLocation(*m_entity->render->shader, "diffuse"), 0);
                         }
                         if (m_entity->render->texture_normal != nullptr)
                         {
                             glActiveTexture(GL_TEXTURE1);
                             glBindTexture(GL_TEXTURE_2D, m_entity->render->texture_normal->ID);
-                            glUniform1i(getUniformLocation(m_entity->render->shader->ID, "normal"), 1);
+                            glUniform1i(getUniformLocation(*m_entity->render->shader, "normal"), 1);
                         }
                         if (m_entity->render->texture_specular != nullptr)
                         {
                             glActiveTexture(GL_TEXTURE2);
                             glBindTexture(GL_TEXTURE_2D, m_entity->render->texture_specular->ID);
-                            glUniform1i(getUniformLocation(m_entity->render->shader->ID, "specular"), 2);
+                            glUniform1i(getUniformLocation(*m_entity->render->shader, "specular"), 2);
                         }
 
                         glEnableVertexAttribArray(0);
@@ -149,19 +149,19 @@ namespace RoboEngine
                         {
                             glActiveTexture(GL_TEXTURE0);
                             glBindTexture(GL_TEXTURE_2D, m_entity->render->texture_diffuse->ID);
-                            glUniform1i(getUniformLocation(m_entity->render->shader->ID, "diffuse"), 0);
+                            glUniform1i(getUniformLocation(*m_entity->render->shader, "diffuse"), 0);
                         }
                         if (m_entity->render->texture_normal != nullptr)
                         {
                             glActiveTexture(GL_TEXTURE1);
                             glBindTexture(GL_TEXTURE_2D, m_entity->render->texture_normal->ID);
-                            glUniform1i(getUniformLocation(m_entity->render->shader->ID, "normal"), 1);
+                            glUniform1i(getUniformLocation(*m_entity->render->shader, "normal"), 1);
                         }
                         if (m_entity->render->texture_specular != nullptr)
                         {
                             glActiveTexture(GL_TEXTURE2);
                             glBindTexture(GL_TEXTURE_2D, m_entity->render->texture_specular->ID);
-                            glUniform1i(getUniformLocation(m_entity->render->shader->ID, "specular"), 2);
+                            glUniform1i(getUniformLocation(*m_entity->render->shader, "specular"), 2);
                         }
 
                         glm::mat4 mvp = m_camera.getProjection() * m_camera.getView() * m_entity->render->Model;

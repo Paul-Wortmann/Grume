@@ -42,7 +42,7 @@ namespace RoboEngine
     uint32_t re_cRoboEngine::process_cl(const uint32_t &_argc, char** _argv)
     {
         uint32_t return_value = EXIT_SUCCESS;
-        m_log.write("Ignoring command line argument: " + std::to_string(0) + ": " + _argv[0], __FILE__, __LINE__, __FUNCTION__);
+        //m_log.write("Ignoring command line argument: " + std::to_string(0) + ": " + _argv[0], __FILE__, __LINE__, __FUNCTION__);
         for (uint32_t i = 1; i < _argc; i++)
         {
             std::string clString = _argv[i];
@@ -92,7 +92,7 @@ namespace RoboEngine
                 f_return_value = m_physicsEngine.initialize();
                 return_value = (f_return_value == EXIT_SUCCESS) ? EXIT_SUCCESS : EXIT_FAILURE;
                 if (return_value != EXIT_SUCCESS)
-                    m_log.write("Failed to initialize graphics engine." , __FILE__, __LINE__, __FUNCTION__);
+                    m_log.write("Failed to initialize physics engine." , __FILE__, __LINE__, __FUNCTION__);
             }
 
             // initialize entity manager
