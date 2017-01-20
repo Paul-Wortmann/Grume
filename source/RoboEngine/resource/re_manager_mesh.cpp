@@ -44,7 +44,7 @@ namespace RoboEngine
         m_tail = nullptr;
     }
 
-    re_sMesh *re_cManagerMesh::getNew(std::string _fileName)
+    re_sMesh *re_cManagerMesh::getNew(const std::string &_fileName)
     {
         if (m_head == nullptr)
         {
@@ -101,7 +101,7 @@ namespace RoboEngine
         return nullptr;
     }
 
-    void re_cManagerMesh::loadMesh(std::string _fileName, re_sMesh *&_mesh)
+    void re_cManagerMesh::loadMesh(const std::string &_fileName, re_sMesh *&_mesh)
     {
         const std::string fileExt = re_fileExtention(_fileName);
         if (fileExt.compare("dae") == 0)
