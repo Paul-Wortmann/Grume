@@ -11,7 +11,8 @@ out vec4 fragmentColor;
 
 void main(void)
 {
-    fragmentColor = texture(diffuse, Ftexcrd).rgba;
+
+    fragmentColor = vec3(0.1,0.1,0.1) * texture(diffuse, Ftexcrd).rgba;
 
     //gl_FragColor = texture2D(diffuse, Ftexcrd) * clamp(dot(-vec3(0,0,1), Fnormal), 0.0, 1.0);
 }

@@ -1,9 +1,9 @@
 
-#version 330
+#version 330 core
 
-in vec3 Vvertex;
-in vec3 Vnormal;
-in vec2 Vtexcrd;
+layout (location = 0) in vec3 Vvertex;
+layout (location = 1) in vec3 Vnormal;
+layout (location = 2) in vec2 Vtexcrd;
 
 out vec3 Fnormal;
 out vec2 Ftexcrd;
