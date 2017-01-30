@@ -32,6 +32,7 @@
 
 namespace RoboEngine
 {
+    enum class eLOG_TYPE : uint32_t { RE_LOG_DEFAULT, RE_LOG_ERROR, RE_LOG_WARNING, RE_LOG_INFO};
 
     uint32_t re_logClear(const std::string &_fileName);
     void re_logToConsole(const std::string &_message, const std::string &_mFile, const uint32_t &_mLine, const std::string &_mFunction);
@@ -71,6 +72,28 @@ namespace RoboEngine
         private:
             std::string m_fileName = "RoboEngine.log";
             bool m_logToConsole = false;
+
+            inline std::string logEnumToString(eLOG_TYPE _type)
+            {
+                switch (_type)
+                {
+                    case eLOG_TYPE::RE_LOG_DEFAULT:
+                        return "Default";
+                    break;
+                    case eLOG_TYPE::RE_LOG_ERROR:
+                        return "Error";
+                    break;
+                    case eLOG_TYPE::RE_LOG_WARNING:
+                        return "Warning";
+                    break;
+                    case eLOG_TYPE::RE_LOG_INFO:
+                        return "Info";
+                    break;
+                    default:
+                        return "Invalid enum";
+                    break;
+                }
+            }
     };
 
 }
