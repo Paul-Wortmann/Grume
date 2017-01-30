@@ -69,8 +69,8 @@ namespace RoboEngine
             re_sEntity *m_entity = nullptr;
             re_cCamera m_camera = {};
             std::string m_title = "RoboEngine " + std::to_string(ROBOENGINE_VERSION_MAJOR) + "." + std::to_string(ROBOENGINE_VERSION_MINOR) + "." + std::to_string(ROBOENGINE_VERSION_MINOR);
-            uint16_t m_width = 640;
-            uint16_t m_height = 640;
+            uint32_t m_width = 640;
+            uint32_t m_height = 640;
             bool m_fullscreen = false;
             uint32_t m_displayFlags = 0;
             uint16_t m_currentDisplay = 0;
