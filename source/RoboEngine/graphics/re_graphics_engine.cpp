@@ -69,12 +69,7 @@ namespace RoboEngine
         }
         else
         {
-            int t_width = 0;
-            int t_height = 0;
-            glfwGetFramebufferSize(m_window, &t_width, &t_height);
-            glViewport(0, 0, t_width, t_height);
-            m_width = t_width;
-            m_height = t_height;
+            glViewport(0, 0, m_width, m_height);
 
             re_logWrite(reinterpret_cast<const char*>(glGetString(GL_VERSION)), RE_ENGINE_LOG, __FILE__, __LINE__, __FUNCTION__);
             re_logWrite(reinterpret_cast<const char*>(glGetString(GL_VENDOR)), RE_ENGINE_LOG, __FILE__, __LINE__, __FUNCTION__);
