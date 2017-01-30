@@ -42,6 +42,12 @@ uint32_t c_mainloop::process(int64_t _dt)
 {
     if (c_mainloop::getState() == RoboEngine::eState::RE_ACTV)
     {
+
+        if (getKey(GLFW_KEY_W))
+        {
+            setWireFrameMode(!getWireFrameMode());
+        }
+
         if (m_core.m_playerID == 0)
         {
             glm::vec3 rotationVec = getEntityRotation(2);

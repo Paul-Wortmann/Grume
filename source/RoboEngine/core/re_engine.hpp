@@ -91,6 +91,9 @@ namespace RoboEngine
             virtual inline glm::vec3 getCameraPosition(void) final {return m_graphicsEngine.getCameraPosition();}
             virtual inline glm::vec3 getCameraLookat(void) final {return m_graphicsEngine.getCameraLookat();}
 
+            virtual inline void setWireFrameMode(const bool &_state) final {m_graphicsEngine.setWireFrameMode(_state);}
+            virtual inline bool getWireFrameMode(void) final {return m_graphicsEngine.getWireFrameMode();}
+
         private:
             static void glfw_error_callback(int _error, const char* _description);
             virtual uint32_t log_initialize(const std::string &_message) final;

@@ -58,10 +58,13 @@ namespace RoboEngine
             inline uint32_t getWidth(void) {return m_width;}
             inline uint32_t getHeight(void) {return m_height;}
             inline std::string getTitle(void) {return m_title;}
+            inline bool getWireFrameMode(void) {return m_wireFrameMode;}
 
             inline void setWidth(const uint32_t &_width) {m_width = _width;}
             inline void setHeight(const uint32_t &_height) {m_height = _height;}
             inline void setTitle(const std::string &_title) {m_title = _title;}
+            void setWireFrameMode(const bool &_state);
+
 
         private:
             GLFWwindow* m_window = nullptr;
@@ -77,6 +80,8 @@ namespace RoboEngine
             uint16_t m_currentDisplayMode = 0;
             uint16_t m_numberDisplays = 0;
             uint16_t m_numberDisplayModes = 0;
+
+            bool m_wireFrameMode = false;
     };
 
 }

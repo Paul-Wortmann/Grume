@@ -26,6 +26,15 @@
 
 namespace RoboEngine
 {
+    void re_cGraphicsEngine::setWireFrameMode(const bool &_state)
+    {
+        m_wireFrameMode = _state;
+        if (m_wireFrameMode)
+            glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+        else
+            glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+
+    }
 
     uint32_t re_cGraphicsEngine::initialize(void)
     {
