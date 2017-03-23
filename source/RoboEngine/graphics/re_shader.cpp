@@ -21,7 +21,7 @@
  * @date 2011-11-11
  */
 
-#include "re_glsl.hpp"
+#include "re_shader.hpp"
 #include "../roboengine.hpp"
 
 namespace RoboEngine

@@ -46,8 +46,6 @@
     #include <glm/gtc/matrix_transform.hpp>
     #include <glm/gtx/projection.hpp>
     #include <glm/gtx/transform2.hpp>
-    #include <Box2D/Box2D.h>
-    #include <SOIL/SOIL.h>
 
 #elif defined _WIN32
     #define GLEW_STATIC
@@ -58,8 +56,6 @@
     #include <glm/gtc/matrix_transform.hpp>
     #include <glm/gtx/projection.hpp>
     #include <glm/gtx/transform2.hpp>
-    #include <Box2D.h>
-    #include <SOIL.h>
 
 #else
     #error "Platform not supported, consider upgrading to Linux!"

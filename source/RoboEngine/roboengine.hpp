@@ -40,9 +40,11 @@
 #include "entity/re_entity_render.hpp"
 
 #include "graphics/re_camera.hpp"
-#include "graphics/re_glsl.hpp"
 #include "graphics/re_graphics_engine.hpp"
 #include "graphics/re_image_loader.hpp"
+#include "graphics/re_lights.hpp"
+#include "graphics/re_light_types.hpp"
+#include "graphics/re_shader.hpp"
 
 #include "physics/re_physics.hpp"
 #include "physics/re_physics_engine.hpp"

@@ -22,7 +22,7 @@
  */
 
 #include "re_manager_shader.hpp"
-#include "../graphics/re_glsl.hpp"
+#include "../graphics/re_shader.hpp"
 
 namespace RoboEngine
 {
