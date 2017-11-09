@@ -1,4 +1,4 @@
-# Frost and Flame      [![Build Status](https://travis-ci.org/Paul-Wortmann/Frost_and_Flame.svg?branch=master)](https://travis-ci.org/Paul-Wortmann/Frost_and_Flame)    [![Coverity Scan Build Status](https://scan.coverity.com/projects/paul-wortmann-frost_and_flame)](https://img.shields.io/coverity/scan/14287.svg)
+# Frost and Flame      [![Build Status](https://travis-ci.org/Paul-Wortmann/Frost_and_Flame.svg?branch=master)](https://travis-ci.org/Paul-Wortmann/Frost_and_Flame)    [![Coverity Scan Build Status](https://img.shields.io/coverity/scan/14287.svg)](https://scan.coverity.com/projects/paul-wortmann-frost_and_flame)
 
 Copyright Paul Wortmann. GNU GPL v2
 
