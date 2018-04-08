@@ -23,6 +23,7 @@ Make sure you have all the relevant dependencies installed:
 - OpenGL
 - Glew
 - Physfs
+- [glm](https://glm.g-truc.net/)
 
 ## Contributions:
 
