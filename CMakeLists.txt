@@ -28,6 +28,14 @@ Else (OPENGL_FOUND)
   Message (FATAL_ERROR "Couldn't find OpenGl development files. On Debian-based systems you should install the OpenGL development package.")
 endif (OPENGL_FOUND)
 
+PKG_SEARCH_MODULE(ASSIMP REQUIRED assimp)
+If (NOT ASSIMP_FOUND)
+    Message (ERROR "Couldn't find assimp development files. On Debian-based systems you should install the 'assimp-dev' package.")
+Else (NOT ASSIMP_FOUND)
+    INCLUDE_DIRECTORIES(${ASSIMP_INCLUDE_DIRS})
+    #link_directories(${ASSIMP_LIBRARIES})
+EndIf (NOT ASSIMP_FOUND)
+
 PKG_SEARCH_MODULE(GLEW REQUIRED glew)
 If (NOT GLEW_FOUND)
     Message (ERROR "Couldn't find glew development files. On Debian-based systems you should install the 'libglew-dev' package.")
@@ -46,6 +54,6 @@ add_executable(frost_and_flame ${FNF_S} )
 
 link_directories( /path/to/PHYSFSlibs/)
 
-target_Link_Libraries (frost_and_flame ${PHYSFS_LIBRARY} ${GLFW3_LIBRARIES} ${OPENGL_LIBRARIES} ${GLEW_LIBRARIES})
+target_Link_Libraries (frost_and_flame ${ASSIMP_LIBRARIES} ${PHYSFS_LIBRARY} ${GLFW3_LIBRARIES} ${OPENGL_LIBRARIES} ${GLEW_LIBRARIES})
 
 
