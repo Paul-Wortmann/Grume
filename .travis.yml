@@ -12,6 +12,7 @@ before_install:
   - sudo apt-get install -qq --force-yes libphysfs-dev
   - sudo apt-get install -qq --force-yes cppcheck
   - sudo apt-get install -qq --force-yes libglfw3-dev
+  - sudo apt-get install -qq --force-yes libassimp-dev
 
 script: cmake . && make
 after_script: cppcheck --verbose --enable=all --std=posix --std=c++11 --quiet `git ls-files source/\*.cpp`
