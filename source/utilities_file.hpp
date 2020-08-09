@@ -21,38 +21,17 @@
  * @date 2011-11-11
  */
 
-#include "animation_engine.hpp"
+#ifndef UTILITIES_FILE_HPP
+#define UTILITIES_FILE_HPP
 
-cAnimationEngine::cAnimationEngine(void)
-{
-    
-};
+#include "includes.hpp"
 
-cAnimationEngine::~cAnimationEngine(void)
-{
-    
-};
+std::string fileExtention(const std::string &_fileName);
+std::string stripPath(const std::string &_fileName);
+std::string fileToString(const std::string &_fileName);
+const char* fileToBuffer(const std::string &_fileName);
+bool fileToBufferV(const std::string &_fileName, std::vector<unsigned char> &_buffer);
+bool fileExists(const std::string &_fileName);
 
-void cAnimationEngine::setEntityHandle(sEntityAnimation *_entity)
-{
-    m_entityFirst = _entity;
-}
-
-void cAnimationEngine::initialize(void)
-{
-    
-};
-
-void cAnimationEngine::terminate(void)
-{
-    
-};
-
-void cAnimationEngine::process(void)
-{
-    for (m_entityTemp = m_entityFirst; m_entityTemp != nullptr; m_entityTemp = m_entityTemp->next)
-    {
-        
-    }
-};
+#endif //UTILITIES_FILE_HPP
 

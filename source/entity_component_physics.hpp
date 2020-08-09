@@ -1,5 +1,3 @@
-
-
 /**
  * Copyright (C) Paul Wortmann, PhysHex Games, www.physhexgames.com
  * This file is part of "Frost And Flame"

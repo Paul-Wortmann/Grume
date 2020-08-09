@@ -21,7 +21,6 @@
  * @date 2011-11-11
  */
 
-
 #ifndef ENTITY_MANAGER_GRAPHICS_HPP
 #define ENTITY_MANAGER_GRAPHICS_HPP
 

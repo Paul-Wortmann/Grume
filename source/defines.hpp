@@ -25,7 +25,21 @@
 #ifndef DEFINES_HPP
 #define DEFINES_HPP
 
-
+#ifdef __linux__
+#define PLATFORM_LINUX
+#endif
+#ifdef __ANDROID__
+#define PLATFORM_ANDROID
+#endif
+#ifdef _WIN32
+#define PLATFORM_WINDOWS
+#endif
+#ifdef _WIN64
+#define PLATFORM_WINDOWS
+#endif
+#ifdef __APPLE__
+#error "Platform not supported, upgrade to Linux!"
+#endif
 
 
 

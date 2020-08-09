@@ -21,8 +21,6 @@
  * @date 2011-11-11
  */
 
-
-
 #include "physics_engine.hpp"
 
 cPhysicsEngine::cPhysicsEngine(void)

@@ -21,9 +21,6 @@
  * @date 2011-11-11
  */
 
-
-
-
 #include "entity_manager_physics.hpp"
 
 cEntityManagerPhysics::cEntityManagerPhysics(void)

@@ -21,7 +21,6 @@
  * @date 2011-11-11
  */
 
-
 #ifndef PHYSICS_ENGINE_HPP
 #define PHYSICS_ENGINE_HPP
 

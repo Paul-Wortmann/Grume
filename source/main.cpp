@@ -24,14 +24,19 @@
 #include "defines.hpp"
 #include "includes.hpp"
 
-#include "entity_manager.hpp"
 #include "animation_engine.hpp"
 #include "audio_engine.hpp"
+#include "debug_log.hpp"
+#include "entity_manager.hpp"
 #include "graphics_engine.hpp"
 #include "physics_engine.hpp"
 
 int main(int argc, char **argv)
 {
+    // setup debug
+    gLogClear();
+    gLogWrite(LOG_INFO, "Starting Frost and Flame.", __FILE__, __LINE__, __FUNCTION__);
+    
     // the entity manager needs to be initialized prior to any system initializations
     cEntityManager entityManager;
     entityManager.initialize();

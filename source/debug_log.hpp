@@ -21,38 +21,27 @@
  * @date 2011-11-11
  */
 
-#include "animation_engine.hpp"
+#ifndef DEBUG_LOG_HPP
+#define DEBUG_LOG_HPP
 
-cAnimationEngine::cAnimationEngine(void)
-{
-    
-};
+#define LOG_INFO    0
+#define LOG_WARNING 1
+#define LOG_ERROR   2
 
-cAnimationEngine::~cAnimationEngine(void)
-{
-    
-};
+#include "debug_defines.hpp"
+#include "debug_string_color.hpp"
 
-void cAnimationEngine::setEntityHandle(sEntityAnimation *_entity)
-{
-    m_entityFirst = _entity;
-}
+#include "utilities_file.hpp"
 
-void cAnimationEngine::initialize(void)
-{
-    
-};
+#include <cstdint>
+#include <cstdio>
+#include <cstdlib>
+#include <fstream>
+#include <iostream>
+#include <string>
 
-void cAnimationEngine::terminate(void)
-{
-    
-};
+void gLogClear(void);
+void gLogWrite( /* DEBUG_FILE will be used */ const uint32_t &_type, const std::string &_string, const std::string &_file, const uint32_t &_line, const std::string &_function);
+void gLogWrite(const std::string &_fileName, const uint32_t &_type, const std::string &_string, const std::string &_file, const uint32_t &_line, const std::string &_function);
 
-void cAnimationEngine::process(void)
-{
-    for (m_entityTemp = m_entityFirst; m_entityTemp != nullptr; m_entityTemp = m_entityTemp->next)
-    {
-        
-    }
-};
-
+#endif // DEBUG_LOG_HPP

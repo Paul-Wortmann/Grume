@@ -21,8 +21,6 @@
  * @date 2011-11-11
  */
 
-
-
 #include "graphics_engine.hpp"
 
 cGraphicsEngine::cGraphicsEngine(void)

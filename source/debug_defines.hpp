@@ -21,38 +21,15 @@
  * @date 2011-11-11
  */
 
-#include "animation_engine.hpp"
+#ifndef DEBUG_DEFINES_HPP
+#define DEBUG_DEFINES_HPP
 
-cAnimationEngine::cAnimationEngine(void)
-{
-    
-};
+#define DEBUG_GL // Enable OpenGL debugging
+#define DEBUG_VK // Enable Vulkan debugging
+#define DEBUG_LF // Enable Log to file
+#define DEBUG_LC // Enable Log to console
 
-cAnimationEngine::~cAnimationEngine(void)
-{
-    
-};
+#define DEBUG_FILE "debug.log" // Default debug log file name.
 
-void cAnimationEngine::setEntityHandle(sEntityAnimation *_entity)
-{
-    m_entityFirst = _entity;
-}
-
-void cAnimationEngine::initialize(void)
-{
-    
-};
-
-void cAnimationEngine::terminate(void)
-{
-    
-};
-
-void cAnimationEngine::process(void)
-{
-    for (m_entityTemp = m_entityFirst; m_entityTemp != nullptr; m_entityTemp = m_entityTemp->next)
-    {
-        
-    }
-};
+#endif //DEBUG_DEFINES_HPP
 

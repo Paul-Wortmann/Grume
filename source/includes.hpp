@@ -21,14 +21,41 @@
  * @date 2011-11-11
  */
 
-
 #ifndef INCLUDES_HPP
 #define INCLUDES_HPP
 
+#include <assimp/cimport.h>
+#include <assimp/Importer.hpp>
+#include <assimp/postprocess.h>
+#include <assimp/scene.h>
+#include <assimp/version.h>
+
+#define GLM_ENABLE_EXPERIMENTAL
+#define GLM_FORCE_RADIANS
+#include <glm/glm.hpp>
+#include <glm/common.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtc/quaternion.hpp>
+#include <glm/gtc/type_ptr.hpp>
+#include <glm/gtx/quaternion.hpp>
+#include <glm/gtx/transform.hpp>
+
+#define  GLEW_STATIC
+#include <GL/glew.h>
+#include <GL/gl.h>
+#include <GLFW/glfw3.h>
+
+#include <chrono>
 #include <cstdint>
 #include <cstdlib>
+#include <cstring>
+#include <fstream>
 #include <iostream>
+#include <streambuf>
 #include <string>
+#include <thread>
+#include <vector>
 
+#include "debug_log.hpp"
 
 #endif // INCLUDES_HPP

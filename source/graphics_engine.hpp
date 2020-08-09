@@ -21,7 +21,6 @@
  * @date 2011-11-11
  */
 
-
 #ifndef GRAPHICS_ENGINE_HPP
 #define GRAPHICS_ENGINE_HPP
 
