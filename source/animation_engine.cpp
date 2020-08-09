@@ -35,7 +35,7 @@ cAnimationEngine::~cAnimationEngine(void)
     
 };
 
-void cAnimationEngine::setEntityHandle(sEntity *_entity)
+void cAnimationEngine::setEntityHandle(sEntityAnimation *_entity)
 {
     m_entityFirst = _entity;
 }
@@ -52,6 +52,9 @@ void cAnimationEngine::terminate(void)
 
 void cAnimationEngine::process(void)
 {
-    
+    for (m_entityTemp = m_entityFirst; m_entityTemp != nullptr; m_entityTemp = m_entityTemp->next)
+    {
+        
+    }
 };
 

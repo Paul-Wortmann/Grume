@@ -42,6 +42,9 @@ void cEntityManager::initialize(void)
     managerAudio.initialize();
     managerGraphics.initialize();
     managerPhysics.initialize();
+    m_audio    = managerAudio.getFirst();
+    m_graphics = managerGraphics.getFirst();
+    m_physics  = managerPhysics.getFirst();
 
     // initialize the entity manager
     m_numEntities = 0;
@@ -136,9 +139,29 @@ sEntity *cEntityManager::getNew(void)
     return m_last;
 };
 
-sEntity *cEntityManager::getFirst(void)
+sEntity *cEntityManager::getFirstEntity(void)
 {
     return m_first;
+};
+
+sEntityAnimation *cEntityManager::getFirstAnimationComponent(void)
+{
+    return m_animation;
+};
+
+sEntityAudio *cEntityManager::getFirstAudioComponent(void)
+{
+    return m_audio;
+};
+
+sEntityGraphics *cEntityManager::getFirstGraphicsComponent(void)
+{
+    return m_graphics;
+};
+
+sEntityPhysics *cEntityManager::getFirstPhysicsComponent(void)
+{
+    return m_physics;
 };
 
 void cEntityManager::addComponentAudio(sEntity *_entity)

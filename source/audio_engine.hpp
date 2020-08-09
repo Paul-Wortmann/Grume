@@ -28,12 +28,13 @@
 #include "defines.hpp"
 #include "includes.hpp"
 
-#include "entity.hpp"
+#include "entity_component_audio.hpp"
 
 class cAudioEngine
 {
     private:
-        sEntity *m_entityFirst = nullptr;
+        sEntityAudio *m_entityFirst = nullptr;
+        sEntityAudio *m_entityTemp  = nullptr;
         
     protected:
         
@@ -45,7 +46,7 @@ class cAudioEngine
         void terminate(void);
         void process(void);
         
-        void setEntityHandle(sEntity *_entity);
+        void setEntityHandle(sEntityAudio *_entity);
 
 };
 

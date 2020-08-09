@@ -28,12 +28,13 @@
 #include "defines.hpp"
 #include "includes.hpp"
 
-#include "entity.hpp"
+#include "entity_component_graphics.hpp"
 
 class cGraphicsEngine
 {
     private:
-        sEntity *m_entityFirst = nullptr;
+        sEntityGraphics *m_entityFirst = nullptr;
+        sEntityGraphics *m_entityTemp  = nullptr;
         
     protected:
         
@@ -45,7 +46,7 @@ class cGraphicsEngine
         void terminate(void);
         void process(void);
         
-        void setEntityHandle(sEntity *_entity);
+        void setEntityHandle(sEntityGraphics *_entity);
 
 };
 

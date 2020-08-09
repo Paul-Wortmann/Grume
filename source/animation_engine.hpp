@@ -28,12 +28,13 @@
 #include "defines.hpp"
 #include "includes.hpp"
 
-#include "entity.hpp"
+#include "entity_component_animation.hpp"
 
 class cAnimationEngine
 {
     private:
-        sEntity *m_entityFirst = nullptr;
+        sEntityAnimation *m_entityFirst = nullptr;
+        sEntityAnimation *m_entityTemp  = nullptr;
         
     protected:
         
@@ -45,7 +46,7 @@ class cAnimationEngine
         void terminate(void);
         void process(void);
         
-        void setEntityHandle(sEntity *_entity);
+        void setEntityHandle(sEntityAnimation *_entity);
 
 };
 

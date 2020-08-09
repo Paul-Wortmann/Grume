@@ -38,19 +38,19 @@ int main(int argc, char **argv)
     
     // system initializations
     cAnimationEngine animationEngine;
-    animationEngine.setEntityHandle(entityManager.getFirst());
+    animationEngine.setEntityHandle(entityManager.getFirstAnimationComponent());
     animationEngine.initialize();
 
     cAudioEngine audioEngine;
-    audioEngine.setEntityHandle(entityManager.getFirst());
+    audioEngine.setEntityHandle(entityManager.getFirstAudioComponent());
     audioEngine.initialize();
 
     cGraphicsEngine graphicsEngine;
-    graphicsEngine.setEntityHandle(entityManager.getFirst());
+    graphicsEngine.setEntityHandle(entityManager.getFirstGraphicsComponent());
     graphicsEngine.initialize();
 
     cPhysicsEngine physicsEngine;
-    physicsEngine.setEntityHandle(entityManager.getFirst());
+    physicsEngine.setEntityHandle(entityManager.getFirstPhysicsComponent());
     physicsEngine.initialize();
 
     // main application loop

@@ -35,7 +35,7 @@ cPhysicsEngine::~cPhysicsEngine(void)
     
 };
 
-void cPhysicsEngine::setEntityHandle(sEntity *_entity)
+void cPhysicsEngine::setEntityHandle(sEntityPhysics *_entity)
 {
     m_entityFirst = _entity;
 }
@@ -52,6 +52,9 @@ void cPhysicsEngine::terminate(void)
 
 void cPhysicsEngine::process(void)
 {
-    
+    for (m_entityTemp = m_entityFirst; m_entityTemp != nullptr; m_entityTemp = m_entityTemp->next)
+    {
+        
+    }
 };
 

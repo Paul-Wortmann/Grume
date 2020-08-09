@@ -35,7 +35,7 @@ cGraphicsEngine::~cGraphicsEngine(void)
     
 };
 
-void cGraphicsEngine::setEntityHandle(sEntity *_entity)
+void cGraphicsEngine::setEntityHandle(sEntityGraphics *_entity)
 {
     m_entityFirst = _entity;
 }
@@ -52,6 +52,9 @@ void cGraphicsEngine::terminate(void)
 
 void cGraphicsEngine::process(void)
 {
-    
+    for (m_entityTemp = m_entityFirst; m_entityTemp != nullptr; m_entityTemp = m_entityTemp->next)
+    {
+        
+    }
 };
 

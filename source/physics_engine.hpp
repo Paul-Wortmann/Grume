@@ -28,12 +28,13 @@
 #include "defines.hpp"
 #include "includes.hpp"
 
-#include "entity.hpp"
+#include "entity_component_physics.hpp"
 
 class cPhysicsEngine
 {
     private:
-        sEntity *m_entityFirst = nullptr;
+        sEntityPhysics *m_entityFirst = nullptr;
+        sEntityPhysics *m_entityTemp  = nullptr;
         
     protected:
         
@@ -45,7 +46,7 @@ class cPhysicsEngine
         void terminate(void);
         void process(void);
         
-        void setEntityHandle(sEntity *_entity);
+        void setEntityHandle(sEntityPhysics *_entity);
 
 };
 

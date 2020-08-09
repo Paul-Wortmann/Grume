@@ -35,7 +35,7 @@ cAudioEngine::~cAudioEngine(void)
     
 };
 
-void cAudioEngine::setEntityHandle(sEntity *_entity)
+void cAudioEngine::setEntityHandle(sEntityAudio *_entity)
 {
     m_entityFirst = _entity;
 }
@@ -52,6 +52,9 @@ void cAudioEngine::terminate(void)
 
 void cAudioEngine::process(void)
 {
-    
+    for (m_entityTemp = m_entityFirst; m_entityTemp != nullptr; m_entityTemp = m_entityTemp->next)
+    {
+        
+    }
 };
 
