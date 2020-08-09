@@ -32,8 +32,29 @@
 class cGraphicsEngine
 {
     private:
+        // Linked list pointers
         sEntityGraphics *m_entityFirst = nullptr;
         sEntityGraphics *m_entityTemp  = nullptr;
+
+        // private member variables
+        static bool m_windowClosed;
+        std::string m_windowTitle      = "Frost and Flame";
+        int32_t     m_window_w         = 800;
+        int32_t     m_window_h         = 600;
+        int32_t     m_frameBuffer_w    = m_window_w;
+        int32_t     m_frameBuffer_h    = m_window_h;
+        float       m_aspectRatio      = static_cast<float>(m_window_w) / static_cast<float>(m_window_h);
+        float       m_window_fov       = 90.0f; // degrees
+        bool        m_windowActive     = false;
+        uint32_t    m_currentShader    = 0;
+        bool        m_fullscreen       = false;
+        glm::mat4   m_viewMatrix       = glm::mat4(1);
+        glm::mat4   m_projectionMatrix = glm::mat4(1);
+        
+        // GLFW
+        GLFWwindow* m_window           = nullptr;
+        static void m_errorCallback(int error, const char* description);
+        static void m_closeWindowCallback(GLFWwindow* _windowContext);
         
     protected:
         
@@ -41,7 +62,7 @@ class cGraphicsEngine
         cGraphicsEngine(void);
         ~cGraphicsEngine(void);
         
-        void initialize(void);
+        uint32_t initialize(void);
         void terminate(void);
         void process(void);
         
