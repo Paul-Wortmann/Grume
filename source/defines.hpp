@@ -25,6 +25,23 @@
 #ifndef DEFINES_HPP
 #define DEFINES_HPP
 
+#include <cstdint>
+
+#define PATH_DATA    "data/"
+#define PATH_ENTITY  "data/entities/"
+#define PATH_MODEL   "data/models/"
+#define PATH_LOG     "data/logs/"
+#define PATH_SHADER  "data/shaders/"
+#define PATH_TEXTURE "data/textures/"
+#define PATH_TILESET "data/tilesets/"
+
+#define TEXTURE_DEFAULT_DIFFUSE  "default_d.png"
+#define TEXTURE_DEFAULT_NORMAL   "default_n.png"
+#define TEXTURE_DEFAULT_SPECULAR "default_s.png"
+
+#define MAX_BONES 64 // !!! THIS HAS TO MATCH THE SHADER !!!!
+#define MAX_BONE_WEIGHTS 4
+
 #ifdef __linux__
 #define PLATFORM_LINUX
 #endif
@@ -41,6 +58,6 @@
 #error "Platform not supported, upgrade to Linux!"
 #endif
 
-
+enum eGameState:uint16_t    { inactive = 0, active = 1 };
 
 #endif // DEFINES_HPP

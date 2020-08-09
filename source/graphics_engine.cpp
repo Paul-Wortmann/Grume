@@ -68,7 +68,6 @@ uint32_t cGraphicsEngine::initialize(void)
         if (!m_fullscreen)
         {
             m_window = glfwCreateWindow(m_window_w, m_window_h, m_windowTitle.c_str(), nullptr, nullptr);
-            m_aspectRatio = static_cast<float>(m_window_w) / static_cast<float>(m_window_h);
         }
         else
         {
@@ -76,7 +75,6 @@ uint32_t cGraphicsEngine::initialize(void)
             const GLFWvidmode* mode = glfwGetVideoMode(monitor);
             m_window_w = mode->width;
             m_window_h = mode->height;
-            m_aspectRatio = static_cast<float>(m_window_w) / static_cast<float>(m_window_h);
             m_window = glfwCreateWindow(m_window_w, m_window_h, m_windowTitle.c_str(), glfwGetPrimaryMonitor(), nullptr);
         }
         if (m_window == nullptr)
@@ -87,6 +85,7 @@ uint32_t cGraphicsEngine::initialize(void)
         }
         else
         {
+            m_aspectRatio = static_cast<float>(m_window_w) / static_cast<float>(m_window_h);
             glfwGetFramebufferSize(m_window, &m_frameBuffer_w, &m_frameBuffer_h);
             glfwMakeContextCurrent(m_window);
             
@@ -140,14 +139,22 @@ uint32_t cGraphicsEngine::initialize(void)
 
 void cGraphicsEngine::terminate(void)
 {
-    
+    glfwDestroyWindow(m_window);
+    glfwTerminate();
 };
 
 void cGraphicsEngine::process(void)
+{
+    glfwPollEvents();
+    m_windowActive = (glfwWindowShouldClose(m_window) == 0); 
+};
+
+void cGraphicsEngine::render(void)
 {
     for (m_entityTemp = m_entityFirst; m_entityTemp != nullptr; m_entityTemp = m_entityTemp->next)
     {
         
     }
+    glfwSwapBuffers(m_window);
 };
 

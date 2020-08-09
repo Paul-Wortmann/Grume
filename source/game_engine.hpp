@@ -21,33 +21,44 @@
  * @date 2011-11-11
  */
 
-
-#ifndef ANIMATION_ENGINE_HPP
-#define ANIMATION_ENGINE_HPP
+#ifndef GAME_HPP
+#define GAME_HPP
 
 #include "defines.hpp"
 #include "includes.hpp"
 
-#include "entity_component_animation.hpp"
+#include "animation_engine.hpp"
+#include "audio_engine.hpp"
+#include "debug_log.hpp"
+#include "entity_manager.hpp"
+#include "graphics_engine.hpp"
+#include "physics_engine.hpp"
 
-class cAnimationEngine
+#include "timer.hpp"
+
+class cGame
 {
-    private:
-        sEntityAnimation *m_entityFirst = nullptr;
-        sEntityAnimation *m_entityTemp  = nullptr;
-        
-    protected:
-        
     public:
-        cAnimationEngine(void);
-        ~cAnimationEngine(void);
+        eGameState state = eGameState::active;
         
+        cGame(void) = default;
+        ~cGame(void) = default;
         void initialize(void);
         void terminate(void);
-        void process(double _deltaTime);
+        void process(void);
         
-        void setEntityHandle(sEntityAnimation *_entity);
+    protected:
 
+    private:
+        cEntityManager    m_entityManager   = {};
+        cTimer            m_timer           = {};
+        
+        cAnimationEngine  m_animationEngine = {};
+        cAudioEngine      m_audioEngine     = {};
+        cGraphicsEngine   m_graphicsEngine  = {};
+        cPhysicsEngine    m_physicsEngine   = {};
 };
 
-#endif // ANIMATION_ENGINE_HPP
+
+
+#endif //GAME_HPP

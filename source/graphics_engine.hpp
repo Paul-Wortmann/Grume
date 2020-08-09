@@ -63,11 +63,13 @@ class cGraphicsEngine
         ~cGraphicsEngine(void);
         
         uint32_t initialize(void);
-        void terminate(void);
-        void process(void);
+        void     terminate(void);
+        void     process(void);
+        void     render(void);
         
-        void setEntityHandle(sEntityGraphics *_entity);
-
+        void     setEntityHandle(sEntityGraphics *_entity);
+        bool     windowActive(void) { return m_windowActive; }
+        int32_t  getKeyState(int32_t _key) { return glfwGetKey(m_window, _key); }
 };
 
 #endif // GRAPHICS_ENGINE_HPP

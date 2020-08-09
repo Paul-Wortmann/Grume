@@ -48,7 +48,7 @@ void cAnimationEngine::terminate(void)
     
 };
 
-void cAnimationEngine::process(void)
+void cAnimationEngine::process(double _deltaTime)
 {
     for (m_entityTemp = m_entityFirst; m_entityTemp != nullptr; m_entityTemp = m_entityTemp->next)
     {

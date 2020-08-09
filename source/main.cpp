@@ -21,61 +21,17 @@
  * @date 2011-11-11
  */
 
-#include "defines.hpp"
+#include "game_engine.hpp"
 #include "includes.hpp"
 
-#include "animation_engine.hpp"
-#include "audio_engine.hpp"
-#include "debug_log.hpp"
-#include "entity_manager.hpp"
-#include "graphics_engine.hpp"
-#include "physics_engine.hpp"
-
-int main(int argc, char **argv)
+int main(int argc, char** argv)
 {
-    // setup debug
-    gLogClear();
-    gLogWrite(LOG_INFO, "Starting Frost and Flame.", __FILE__, __LINE__, __FUNCTION__);
-    
-    // the entity manager needs to be initialized prior to any system initializations
-    cEntityManager entityManager;
-    entityManager.initialize();
-    
-    // system initializations
-    cAnimationEngine animationEngine;
-    animationEngine.setEntityHandle(entityManager.getFirstAnimationComponent());
-    animationEngine.initialize();
-
-    cAudioEngine audioEngine;
-    audioEngine.setEntityHandle(entityManager.getFirstAudioComponent());
-    audioEngine.initialize();
-
-    cGraphicsEngine graphicsEngine;
-    graphicsEngine.setEntityHandle(entityManager.getFirstGraphicsComponent());
-    graphicsEngine.initialize();
-
-    cPhysicsEngine physicsEngine;
-    physicsEngine.setEntityHandle(entityManager.getFirstPhysicsComponent());
-    physicsEngine.initialize();
-
-    // main application loop
-    // pysics, audio, animation, graphics
-    //while (true)
+    cGame game;
+    game.initialize();
+    while (game.state == eGameState::active)
     {
-        physicsEngine.process();
-        audioEngine.process();
-        animationEngine.process();
-        graphicsEngine.process();
+        game.process();
     }
-    
-    // terminate systems
-    animationEngine.terminate();
-    audioEngine.terminate();
-    graphicsEngine.terminate();
-    physicsEngine.terminate();
-    
-    // terminate the entity manager after terminating systems
-    entityManager.terminate();
+    game.terminate();
     return EXIT_SUCCESS;
 }
-
