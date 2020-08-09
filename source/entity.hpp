@@ -28,6 +28,7 @@
 #include "defines.hpp"
 #include "includes.hpp"
 
+#include "entity_component_animation.hpp"
 #include "entity_component_audio.hpp"
 #include "entity_component_graphics.hpp"
 #include "entity_component_physics.hpp"
@@ -46,15 +47,16 @@
 struct sEntity
 {
     // UID
-    uint32_t         ID       = 0;
+    uint32_t         ID        = 0;
     
     // Pointer to the next entity in the linked list of entities
-    sEntity         *next     = nullptr;
+    sEntity         *next      = nullptr;
     
     // Components
-    sEntityAudio    *audio    = nullptr;
-    sEntityGraphics *graphics = nullptr;
-    sEntityPhysics  *physics  = nullptr;
+    sEntityAudio    *animation = nullptr;
+    sEntityAudio    *audio     = nullptr;
+    sEntityGraphics *graphics  = nullptr;
+    sEntityPhysics  *physics   = nullptr;
 };
 
 #endif // ENTITY_HPP

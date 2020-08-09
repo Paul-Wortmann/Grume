@@ -25,7 +25,10 @@
 #include "includes.hpp"
 
 #include "entity_manager.hpp"
+#include "animation_engine.hpp"
+#include "audio_engine.hpp"
 #include "graphics_engine.hpp"
+#include "physics_engine.hpp"
 
 int main(int argc, char **argv)
 {
@@ -34,16 +37,37 @@ int main(int argc, char **argv)
     entityManager.initialize();
     
     // system initializations
+    cAnimationEngine animationEngine;
+    animationEngine.setEntityHandle(entityManager.getFirst());
+    animationEngine.initialize();
+
+    cAudioEngine audioEngine;
+    audioEngine.setEntityHandle(entityManager.getFirst());
+    audioEngine.initialize();
+
     cGraphicsEngine graphicsEngine;
     graphicsEngine.setEntityHandle(entityManager.getFirst());
     graphicsEngine.initialize();
 
+    cPhysicsEngine physicsEngine;
+    physicsEngine.setEntityHandle(entityManager.getFirst());
+    physicsEngine.initialize();
+
     // main application loop
-    graphicsEngine.process();
-    
+    // pysics, audio, animation, graphics
+    //while (true)
+    {
+        physicsEngine.process();
+        audioEngine.process();
+        animationEngine.process();
+        graphicsEngine.process();
+    }
     
     // terminate systems
+    animationEngine.terminate();
+    audioEngine.terminate();
     graphicsEngine.terminate();
+    physicsEngine.terminate();
     
     // terminate the entity manager after terminating systems
     entityManager.terminate();
