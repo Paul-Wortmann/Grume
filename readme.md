@@ -19,10 +19,11 @@ cmake . && make
 ```
 
 Make sure you have all the relevant dependencies installed:
-- GLFW
+- [Assimp](https://www.assimp.org/)
+- [GLFW](https://www.glfw.org/)
 - OpenGL
-- Glew
-- Physfs
+- [Glew](https://github.com/nigels-com/glew)
+- [Physfs](https://icculus.org/physfs/)
 - [glm](https://glm.g-truc.net/)
 
 ## Contributions:
@@ -40,7 +41,7 @@ If the game fails to load, try deleting all config files, the game will recreate
 
 ## License:
 
-Copyright (C) 2011-2016 Paul Wortmann.
+Copyright (C) 2011-2020 Paul Wortmann.
 
 This program is free software: you can redistribute it and/or modify it under
 the terms of the GNU General Public License as published by the Free Software
