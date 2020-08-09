@@ -41,17 +41,8 @@ include_directories(/usr/include)
 include_directories(common)
 
 file(GLOB FNF_S "source/*.cpp")
-file(GLOB FNF_S_GAME "source/game/*.cpp")
-file(GLOB FNF_S_RE "source/RoboEngine/*.cpp")
-file(GLOB FNF_S_RE_A "source/RoboEngine/audio/*.cpp")
-file(GLOB FNF_S_RE_C "source/RoboEngine/core/*.cpp")
-file(GLOB FNF_S_RE_E "source/RoboEngine/entity/*.cpp")
-file(GLOB FNF_S_RE_G "source/RoboEngine/graphics/*.cpp")
-file(GLOB FNF_S_RE_P "source/RoboEngine/physics/*.cpp")
-file(GLOB FNF_S_RE_R "source/RoboEngine/resource/*.cpp")
-file(GLOB FNF_S_RE_S "source/RoboEngine/system/*.cpp")
 
-add_executable(frost_and_flame ${FNF_S} ${FNF_S_GAME} ${FNF_S_RE} ${FNF_S_RE_A} ${FNF_S_RE_C} ${FNF_S_RE_E} ${FNF_S_RE_G} ${FNF_S_RE_P} ${FNF_S_RE_R} ${FNF_S_RE_S} )
+add_executable(frost_and_flame ${FNF_S} )
 
 link_directories( /path/to/PHYSFSlibs/)
 
