@@ -30,6 +30,7 @@
 
 #include "entity_component_animation.hpp"
 #include "entity_component_audio.hpp"
+#include "entity_component_base.hpp"
 #include "entity_component_graphics.hpp"
 #include "entity_component_physics.hpp"
 
@@ -46,8 +47,8 @@
 
 struct sEntity
 {
-    // UID
-    uint32_t         ID        = 0;
+    // Entity base
+    sEntityBase      base      = {};
     
     // Pointer to the next entity in the linked list of entities
     sEntity         *next      = nullptr;
