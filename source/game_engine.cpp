@@ -25,9 +25,13 @@
 
 void cGame::initialize(void)
 {
+    // Clear the log and log version information.
     gLogClear();
     gLogWrite(LOG_INFO, std::string(__DATE__) + " " + std::string(__TIME__) + " - Starting Frost and Flame.", __FILE__, __LINE__, __FUNCTION__);
+    std::string FNFVersion = std::to_string(FNF_VERSION_MAJOR) + "." + std::to_string(FNF_VERSION_MINOR) + "." + std::to_string(FNF_VERSION_PATCH);
+    gLogWrite(LOG_INFO, "Frost and Flame version: " + FNFVersion, __FILE__, __LINE__, __FUNCTION__);
 
+    // start the game engine timer
     m_timer.initialize();
 
     // the entity manager needs to be initialized prior to any system initializations

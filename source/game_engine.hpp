@@ -29,12 +29,12 @@
 
 #include "animation_engine.hpp"
 #include "audio_engine.hpp"
-#include "debug_log.hpp"
 #include "entity_manager.hpp"
 #include "graphics_engine.hpp"
 #include "physics_engine.hpp"
 
 #include "timer.hpp"
+#include "version.hpp"
 
 class cGame
 {
