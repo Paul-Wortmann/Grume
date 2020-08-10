@@ -30,6 +30,7 @@
 #include "entity_component_graphics.hpp"
 #include "graphics_engine_camera.hpp"
 #include "graphics_engine_debug.hpp"
+#include "graphics_engine_pipeline.hpp"
 #include "graphics_engine_shader.hpp"
 
 class cGraphicsEngine
