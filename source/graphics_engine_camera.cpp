@@ -20,26 +20,5 @@
  * @license GPL V2
  * @date 2011-11-11
  */
- 
-#ifndef ENTITY_GRAPHICS_HPP
-#define ENTITY_GRAPHICS_HPP
 
-#include "defines.hpp"
-#include "includes.hpp"
-#include "texture_manager.hpp"
-
-struct sEntityGraphicsTextures
-{
-    sTextureNode diffuse  = {};
-    sTextureNode normal   = {};
-    sTextureNode specular = {};
-};
-
-struct sEntityGraphics
-{
-    sEntityGraphics         *next    = nullptr;
-    sEntityGraphicsTextures  texture = {};
-    
-};
-
-#endif // ENTITY_GRAPHICS_HPP
+#include "graphics_engine_camera.hpp"

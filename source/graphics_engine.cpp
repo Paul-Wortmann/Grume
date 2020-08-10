@@ -52,6 +52,7 @@ void cGraphicsEngine::setEntityHandle(sEntityGraphics *_entity)
 
 uint32_t cGraphicsEngine::initialize(void)
 {
+    // Initialize GLFW
     glfwSetErrorCallback(m_errorCallback);
     if(!glfwInit())
     {
@@ -60,6 +61,7 @@ uint32_t cGraphicsEngine::initialize(void)
     }
     else
     {
+        // Setup GLFW
         glfwWindowHint(GLFW_SAMPLES, 4);
         glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
         glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
@@ -67,10 +69,12 @@ uint32_t cGraphicsEngine::initialize(void)
         glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
         if (!m_fullscreen)
         {
+            // GLFW window creation
             m_window = glfwCreateWindow(m_window_w, m_window_h, m_windowTitle.c_str(), nullptr, nullptr);
         }
         else
         {
+            // GLFW fullscreen window creation
             GLFWmonitor* monitor = glfwGetPrimaryMonitor();
             const GLFWvidmode* mode = glfwGetVideoMode(monitor);
             m_window_w = mode->width;
@@ -85,10 +89,12 @@ uint32_t cGraphicsEngine::initialize(void)
         }
         else
         {
+            // Create an OpenGL context
             m_aspectRatio = static_cast<float>(m_window_w) / static_cast<float>(m_window_h);
             glfwGetFramebufferSize(m_window, &m_frameBuffer_w, &m_frameBuffer_h);
             glfwMakeContextCurrent(m_window);
             
+            // Glew setup
             glewExperimental = GL_TRUE;
             GLenum glewStatus = glewInit();
             if (glewStatus != GLEW_OK)
@@ -100,6 +106,7 @@ uint32_t cGraphicsEngine::initialize(void)
             }
             else
             {
+                // Log version information
                 gLogWrite(LOG_INFO, reinterpret_cast<const char*>(glGetString(GL_VERSION)), __FILE__, __LINE__, __FUNCTION__);
                 gLogWrite(LOG_INFO, reinterpret_cast<const char*>(glGetString(GL_VENDOR)), __FILE__, __LINE__, __FUNCTION__);
                 gLogWrite(LOG_INFO, reinterpret_cast<const char*>(glGetString(GL_RENDERER)), __FILE__, __LINE__, __FUNCTION__);
@@ -119,6 +126,7 @@ uint32_t cGraphicsEngine::initialize(void)
                 
                 //glfwSetInputMode(m_window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
                 
+                // OpenGL setup
                 glViewport(0, 0, m_frameBuffer_w, m_frameBuffer_h);
                 glEnable(GL_BLEND);
                 glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
@@ -130,7 +138,13 @@ uint32_t cGraphicsEngine::initialize(void)
                 glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 
                 m_windowActive = true;
-
+                
+                // Camera setup
+                m_camera.initialize(m_window_w, m_window_h, m_window_fov);
+                m_camera.setCameraPosition(glm::vec3(0.0f, 2.0f, 3.0f));
+                m_camera.setCameraTarget  (glm::vec3(0.0f, 0.0f, 0.0f));
+                m_viewMatrix = m_camera.getViewMatrix();
+                m_projectionMatrix = m_camera.getProjectionMatrixPerspective();
             }
         }
     }

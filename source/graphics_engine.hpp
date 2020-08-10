@@ -28,6 +28,7 @@
 #include "includes.hpp"
 
 #include "entity_component_graphics.hpp"
+#include "graphics_engine_camera.hpp"
 
 class cGraphicsEngine
 {
@@ -35,8 +36,11 @@ class cGraphicsEngine
         // Linked list pointers
         sEntityGraphics *m_entityFirst = nullptr;
         sEntityGraphics *m_entityTemp  = nullptr;
+        
+        // Private instances
+        cCamera     m_camera           = {};
 
-        // private member variables
+        // Private member variables
         static bool m_windowClosed;
         std::string m_windowTitle      = "Frost and Flame";
         int32_t     m_window_w         = 800;
