@@ -21,8 +21,8 @@
  * @date 2011-11-11
  */
 
-#ifndef ASSIMP_TO_GLM_HPP
-#define ASSIMP_TO_GLM_HPP
+#ifndef MODEL_ASSIMP_TO_GLM_HPP
+#define MODEL_ASSIMP_TO_GLM_HPP
 
 #include "includes.hpp"
 
@@ -52,4 +52,4 @@ static inline void printMat4(const glm::mat4 &_mat4)
     std::cout << "-------------------" << std::endl;
 }
 
-#endif // ASSIMP_TO_GLM_HPP
+#endif // MODEL_ASSIMP_TO_GLM_HPP

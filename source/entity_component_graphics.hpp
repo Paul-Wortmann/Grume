@@ -26,19 +26,12 @@
 
 #include "defines.hpp"
 #include "includes.hpp"
-#include "texture_manager.hpp"
-
-struct sEntityGraphicsTextures
-{
-    sTextureNode diffuse  = {};
-    sTextureNode normal   = {};
-    sTextureNode specular = {};
-};
+#include "entity_component_model.hpp"
 
 struct sEntityGraphics
 {
     sEntityGraphics         *next    = nullptr;
-    sEntityGraphicsTextures  texture = {};
+    sEntityModel            *model   = nullptr;
     
 };
 

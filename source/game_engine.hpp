@@ -59,6 +59,4 @@ class cGame
         cPhysicsEngine    m_physicsEngine   = {};
 };
 
-
-
 #endif //GAME_HPP

@@ -47,6 +47,7 @@ class cTextureManager
     private:
         void freeTexture(uint32_t _ID);
         uint32_t load(const std::string &_fileName);
+        
         uint32_t      m_count       = 0;
         sTextureNode *m_textureHead = nullptr;
         sTextureNode *m_textureTail = nullptr;
