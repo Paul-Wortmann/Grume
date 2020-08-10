@@ -30,6 +30,7 @@
 #include "entity_component_graphics.hpp"
 #include "graphics_engine_camera.hpp"
 #include "graphics_engine_debug.hpp"
+#include "graphics_engine_shader.hpp"
 
 class cGraphicsEngine
 {
@@ -40,6 +41,7 @@ class cGraphicsEngine
         
         // Private instances
         cCamera     m_camera           = {};
+        cShader     m_shader_001       = {};
 
         // Private member variables
         static bool m_windowClosed;

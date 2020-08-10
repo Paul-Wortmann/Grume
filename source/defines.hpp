@@ -29,8 +29,9 @@
 
 #define PATH_DATA    "data/"
 #define PATH_ENTITY  "data/entities/"
-#define PATH_MODEL   "data/models/"
 #define PATH_LOG     "data/logs/"
+#define PATH_MAPS    "data/maps/"
+#define PATH_MODEL   "data/models/"
 #define PATH_SHADER  "data/shaders/"
 #define PATH_TEXTURE "data/textures/"
 #define PATH_TILESET "data/tilesets/"

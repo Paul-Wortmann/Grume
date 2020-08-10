@@ -145,6 +145,10 @@ uint32_t cGraphicsEngine::initialize(void)
                 m_camera.setCameraTarget  (glm::vec3(0.0f, 0.0f, 0.0f));
                 m_viewMatrix = m_camera.getViewMatrix();
                 m_projectionMatrix = m_camera.getProjectionMatrixPerspective();
+                
+                // Shader setup
+                m_shader_001.load(std::string(PATH_SHADER)+"shader_001");
+                
             }
         }
     }
