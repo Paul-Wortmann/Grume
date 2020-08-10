@@ -31,13 +31,14 @@ void cGame::initialize(void)
     std::string FNFVersion = std::to_string(FNF_VERSION_MAJOR) + "." + std::to_string(FNF_VERSION_MINOR) + "." + std::to_string(FNF_VERSION_PATCH);
     gLogWrite(LOG_INFO, "Frost and Flame version: " + FNFVersion, __FILE__, __LINE__, __FUNCTION__);
 
-    // start the game engine timer
+    // Start the game engine timer.
     m_timer.initialize();
 
-    // the entity manager needs to be initialized prior to any system initializations
+    // The entity manager needs to be initialized prior to any system initializations.
     m_entityManager.initialize();
         
-    // Try to initialize the graphics engine first
+    // Try to initialize the graphics prior to other systems, 
+    // as it is the most likely point of a failed initialization due to differing user hardware.
     if (m_graphicsEngine.initialize() == EXIT_FAILURE)
     {
         state = eGameState::inactive;
@@ -45,7 +46,7 @@ void cGame::initialize(void)
     }
     else
     {
-        // system initializations
+        // System initializations.
         m_animationEngine.setEntityHandle(m_entityManager.getFirstAnimationComponent());
         m_animationEngine.initialize();
 
@@ -61,13 +62,13 @@ void cGame::initialize(void)
 
 void cGame::terminate(void)
 {
-    // terminate systems
+    // Terminate systems.
     m_animationEngine.terminate();
     m_audioEngine.terminate();
     m_graphicsEngine.terminate();
     m_physicsEngine.terminate();
 
-    // terminate the entity manager after terminating systems
+    // Terminate the entity manager after terminating systems.
     m_entityManager.terminate();
 }
 
