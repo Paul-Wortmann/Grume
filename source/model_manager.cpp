@@ -280,9 +280,8 @@ void     cManagerModel::setAnimation(sEntityModel* _model, uint32_t _anim)
         _model->currentAnimation = _anim;
     }
 }
-/*
+
 void cManagerModel::generateMesh(sEntityModel* _model, const sEntityModeleGeneratorInfo &_info)
 {
     m_modelGenerator.generateMesh(_model, _info);
 }
-*/
