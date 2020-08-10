@@ -29,6 +29,7 @@
 
 #include "entity_component_graphics.hpp"
 #include "graphics_engine_camera.hpp"
+#include "graphics_engine_debug.hpp"
 
 class cGraphicsEngine
 {
