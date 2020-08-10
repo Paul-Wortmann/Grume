@@ -27,7 +27,7 @@
 #include "includes.hpp"
 #include "defines.hpp"
 #include "entity_component_model.hpp"
-//#include "model_exporter.hpp"
+#include "model_exporter.hpp"
 //#include "model_generator.hpp"
 #include "model_loader.hpp"
 
@@ -35,7 +35,7 @@ class cManagerModel
 {
     public:
         sEntityModel*  load(const std::string &_fileName);
-        //void     save(sEntityModel* _model, const std::string &_fileName);
+        void     save(sEntityModel* _model, const std::string &_fileName);
         //void     generateMesh(sEntityModel* _model, const sEntityModeleGeneratorInfo &_info);
         uint32_t isLoaded(const std::string &_fileName); // return instance count
         void     addInstance(sEntityModel* _model, const glm::mat4 &_transform);
@@ -48,7 +48,7 @@ class cManagerModel
         void m_freeModelData(sEntityModel *_model);
         void m_load(sEntityModel* _model, const std::string &_fileName);
         
-        //cModelExporter  m_modelExporter  = {};
+        cModelExporter  m_modelExporter  = {};
         cModelLoader    m_modelLoader    = {};
         //cModelGenerator m_modelGenerator = {};
         uint32_t        m_count          = 0;

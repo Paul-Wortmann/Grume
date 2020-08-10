@@ -262,12 +262,12 @@ void cManagerModel::m_load(sEntityModel* _model, const std::string &_fileName)
 {
     m_modelLoader.load(_model, _fileName);
 }
-/*
+
 void cManagerModel::save(sEntityModel* _model, const std::string &_fileName)
 {
     m_modelExporter.save(_model, _fileName);
 }
-*/
+
 uint32_t cManagerModel::getAnimationCount(sEntityModel* _model)
 {
     return (_model != nullptr) ? _model->numAnimations : 0;
