@@ -30,9 +30,11 @@
 
 struct sEntityGraphics
 {
-    sEntityGraphics         *next    = nullptr;
-    sEntityModel            *model   = nullptr;
-    
+    bool             initialized   = false;
+    sEntityGraphics *next          = nullptr;
+    sEntityModel    *model         = nullptr;
+    int32_t          modelInstance = -1;    
 };
 
 #endif // ENTITY_GRAPHICS_HPP
+

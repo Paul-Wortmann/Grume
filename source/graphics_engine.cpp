@@ -155,6 +155,66 @@ uint32_t cGraphicsEngine::initialize(void)
     return EXIT_SUCCESS;    
 };
 
+void cGraphicsEngine::m_initEntities(void)
+{
+    for (m_entityTemp = m_entityFirst; m_entityTemp != nullptr; m_entityTemp = m_entityTemp->next)
+    {
+        if ((m_entityTemp->model != nullptr) && (!m_entityTemp->initialized))
+        {
+            m_entityTemp->initialized = true;
+            
+            for (std::size_t i = 0; i < m_entityTemp->model->numMesh; ++i)
+            {
+                // VAO
+                glGenVertexArrays(1, &m_entityTemp->model->mesh[i].VAO);
+                glBindVertexArray(m_entityTemp->model->mesh[i].VAO);
+                
+                // IBO
+                glGenBuffers(1, &m_entityTemp->model->mesh[i].IBO);
+                glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_entityTemp->model->mesh[i].IBO);
+                glBufferData(GL_ELEMENT_ARRAY_BUFFER, m_entityTemp->model->mesh[i].numIndex * sizeof(uint32_t), &m_entityTemp->model->mesh[i].index[0], GL_STATIC_DRAW);
+                
+                // VBO vertices
+                glGenBuffers(1, &m_entityTemp->model->mesh[i].VBO_vertices);
+                glBindBuffer(GL_ARRAY_BUFFER, m_entityTemp->model->mesh[i].VBO_vertices);
+                glBufferData(GL_ARRAY_BUFFER, m_entityTemp->model->mesh[i].numVertex * sizeof(sVertex), &m_entityTemp->model->mesh[i].vertex[0], GL_STATIC_DRAW);
+                // position
+                glEnableVertexAttribArray(0);
+                glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(sVertex), (void*)offsetof(sVertex, position));
+                // normal
+                glEnableVertexAttribArray(1);
+                glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, sizeof(sVertex), (void*)offsetof(sVertex, normal));
+                // tangent
+                glEnableVertexAttribArray(2);
+                glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, sizeof(sVertex), (void*)offsetof(sVertex, tangent));
+                // bitangent
+                glEnableVertexAttribArray(3);
+                glVertexAttribPointer(3, 3, GL_FLOAT, GL_FALSE, sizeof(sVertex), (void*)offsetof(sVertex, bitangent));
+                // texcoord
+                glEnableVertexAttribArray(4);
+                glVertexAttribPointer(4, 2, GL_FLOAT, GL_FALSE, sizeof(sVertex), (void*)offsetof(sVertex, texcoord));
+                
+                if (m_entityTemp->model->numBones > 0)
+                {
+                    // VBO bones
+                    glGenBuffers(1, &m_entityTemp->model->mesh[i].VBO_bones);
+                    glBindBuffer(GL_ARRAY_BUFFER, m_entityTemp->model->mesh[i].VBO_bones);
+                    glBufferData(GL_ARRAY_BUFFER, m_entityTemp->model->mesh[i].numVertex * sizeof(sVertexBone), &m_entityTemp->model->mesh[i].vertexBone[0], GL_STATIC_DRAW);
+                    // boneWeights
+                    glEnableVertexAttribArray(5);
+                    glVertexAttribPointer(5, 4, GL_FLOAT, GL_FALSE, sizeof(sVertexBone), (void*)offsetof(sVertexBone, boneWeight));
+                    // boneIDs
+                    glEnableVertexAttribArray(6); // USE "glVertexAttrib I Pointer" <- 'I' very important!
+                    glVertexAttribIPointer(6, 4, GL_INT, sizeof(sVertexBone), (void*)offsetof(sVertexBone, boneID));
+                }
+                
+                glBindVertexArray(0);
+            }
+            checkOpenGL();
+        }
+    }
+};
+
 void cGraphicsEngine::terminate(void)
 {
     glfwDestroyWindow(m_window);
@@ -165,6 +225,7 @@ void cGraphicsEngine::process(void)
 {
     glfwPollEvents();
     m_windowActive = (glfwWindowShouldClose(m_window) == 0); 
+    m_initEntities();
 };
 
 void cGraphicsEngine::render(void)
