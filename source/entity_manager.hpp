@@ -47,7 +47,6 @@ class cEntityManager
         sEntity *m_temp  = nullptr;
         
         // Linked list pointers from component managers
-        sEntityAnimation *m_animation = nullptr;
         sEntityAudio     *m_audio     = nullptr;
         sEntityGraphics  *m_graphics  = nullptr;
         sEntityPhysics   *m_physics   = nullptr;
@@ -74,7 +73,6 @@ class cEntityManager
         sEntity *getNew(void);
         sEntity *getFirstEntity(void);
             // return component  handles
-        sEntityAnimation *getFirstAnimationComponent(void);
         sEntityAudio     *getFirstAudioComponent(void);
         sEntityGraphics  *getFirstGraphicsComponent(void);
         sEntityPhysics   *getFirstPhysicsComponent(void);

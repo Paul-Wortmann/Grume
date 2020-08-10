@@ -47,7 +47,7 @@ void cGame::initialize(void)
     else
     {
         // System initializations.
-        m_animationEngine.setEntityHandle(m_entityManager.getFirstAnimationComponent());
+        m_animationEngine.setEntityHandle(m_entityManager.getFirstGraphicsComponent());
         m_animationEngine.initialize();
 
         m_audioEngine.setEntityHandle(m_entityManager.getFirstAudioComponent());
@@ -79,10 +79,10 @@ void cGame::process(void)
     if (m_timer.ready())
     {
         double dt = m_timer.get_frameTime();
+        m_graphicsEngine.process();
         m_physicsEngine.process();
         m_audioEngine.process();
         m_animationEngine.process(dt);
-        m_graphicsEngine.process();
         m_graphicsEngine.render();
         m_timer.advance_dt();
         //std::cout << "Frame time: " << m_timer.get_frameTime() << std::endl;

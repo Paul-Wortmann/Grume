@@ -28,7 +28,6 @@
 #include "defines.hpp"
 #include "includes.hpp"
 
-#include "entity_component_animation.hpp"
 #include "entity_component_audio.hpp"
 #include "entity_component_base.hpp"
 #include "entity_component_graphics.hpp"
@@ -54,7 +53,6 @@ struct sEntity
     sEntity         *next      = nullptr;
     
     // Components
-    sEntityAudio    *animation = nullptr;
     sEntityAudio    *audio     = nullptr;
     sEntityGraphics *graphics  = nullptr;
     sEntityPhysics  *physics   = nullptr;

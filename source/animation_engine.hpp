@@ -28,13 +28,20 @@
 #include "defines.hpp"
 #include "includes.hpp"
 
-#include "entity_component_animation.hpp"
+#include "entity_component_graphics.hpp"
 
 class cAnimationEngine
 {
     private:
-        sEntityAnimation *m_entityFirst = nullptr;
-        sEntityAnimation *m_entityTemp  = nullptr;
+        sEntityGraphics *m_entityFirst = nullptr;
+        sEntityGraphics *m_entityTemp  = nullptr;
+        
+        glm::mat4 m_calculateTransformPosition(double _currentAnimTime, uint32_t _channel);
+        glm::mat4 m_calculateTransformRotation(double _currentAnimTime, uint32_t _channel);
+        glm::mat4 m_calculateTransformScale(double _currentAnimTime, uint32_t _channel);
+        glm::mat4 m_calculateTransform(double _currentAnimTime, uint32_t _channel);
+        glm::mat4 m_calcRecursiveTransforms(int32_t _ID);
+        void      m_calculateAnimation(double _currentAnimTime);
         
     protected:
         
@@ -46,8 +53,9 @@ class cAnimationEngine
         void terminate(void);
         void process(double _deltaTime);
         
-        void setEntityHandle(sEntityAnimation *_entity);
+        void setEntityHandle(sEntityGraphics *_entity);
 
 };
 
 #endif // ANIMATION_ENGINE_HPP
+

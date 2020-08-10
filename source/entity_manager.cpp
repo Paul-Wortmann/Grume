@@ -141,11 +141,6 @@ sEntity *cEntityManager::getFirstEntity(void)
     return m_first;
 };
 
-sEntityAnimation *cEntityManager::getFirstAnimationComponent(void)
-{
-    return m_animation;
-};
-
 sEntityAudio *cEntityManager::getFirstAudioComponent(void)
 {
     return m_audio;
