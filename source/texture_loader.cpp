@@ -315,7 +315,7 @@ RECENT REVISION HISTORY:
 
 
 
-#include "stb_image.hpp"
+#include "texture_loader.hpp"
 
 #if defined(STBI_ONLY_JPEG) || defined(STBI_ONLY_PNG) || defined(STBI_ONLY_BMP) \
   || defined(STBI_ONLY_TGA) || defined(STBI_ONLY_GIF) || defined(STBI_ONLY_PSD) \

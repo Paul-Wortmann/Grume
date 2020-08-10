@@ -26,6 +26,7 @@
 
 #include "defines.hpp"
 #include "includes.hpp"
+#include "texture_manager.hpp"
 
 struct sEntityGraphics
 {
