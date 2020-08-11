@@ -34,6 +34,9 @@
 #include "entity_manager_graphics.hpp"
 #include "entity_manager_physics.hpp"
 
+#include "model_manager.hpp"
+#include "texture_manager.hpp"
+
 // The entity manager facilitates the creation and deletion of entities,
 // other entity component managers are handled by the entity manager as member instatnces
 
@@ -56,6 +59,10 @@ class cEntityManager
         cEntityManagerGraphics managerGraphics = {};
         cEntityManagerPhysics  managerPhysics  = {};
 
+        // Instances of resource managers
+        cTextureManager managerTexture = {};
+        cModelManager   managerModel = {};
+        
         // Private member variables
         uint32_t m_numEntities = 0;
 
@@ -72,7 +79,8 @@ class cEntityManager
         // Public members
         sEntity *getNew(void);
         sEntity *getFirstEntity(void);
-            // return component  handles
+        
+        // return component  handles
         sEntityAudio     *getFirstAudioComponent(void);
         sEntityGraphics  *getFirstGraphicsComponent(void);
         sEntityPhysics   *getFirstPhysicsComponent(void);
@@ -80,9 +88,12 @@ class cEntityManager
         // Public member functions
         void initialize(void);
         void terminate(void);
+
         void addComponentAudio(sEntity *_entity);
         void addComponentGraphics(sEntity *_entity);
         void addComponentPhysics(sEntity *_entity);
+
+        void attachModel(sEntity *_entity, const std::string &_fileName);
 };
 
 #endif // ENTITY_MANAGER_HPP

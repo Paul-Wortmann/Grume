@@ -31,17 +31,19 @@
 #include "model_generator.hpp"
 #include "model_loader.hpp"
 
-class cManagerModel
+class cModelManager
 {
     public:
-        sEntityModel*  load(const std::string &_fileName);
-        void     save(sEntityModel* _model, const std::string &_fileName);
-        void     generateMesh(sEntityModel* _model, const sEntityModeleGeneratorInfo &_info);
-        uint32_t isLoaded(const std::string &_fileName); // return instance count
-        void     addInstance(sEntityModel* _model, const glm::mat4 &_transform);
-        uint32_t getAnimationCount(sEntityModel* _model);
-        void     setAnimation(sEntityModel* _model, uint32_t _anim);
-        void     freeModels(void);
+        void          initialize(void);
+        void          terminate(void);
+        sEntityModel *load(const std::string &_fileName);
+        void          save(sEntityModel* _model, const std::string &_fileName);
+        void          generateMesh(sEntityModel* _model, const sEntityModeleGeneratorInfo &_info);
+        uint32_t      isLoaded(const std::string &_fileName); // return instance count
+        void          addInstance(sEntityModel* _model, const glm::mat4 &_transform);
+        uint32_t      getAnimationCount(sEntityModel* _model);
+        void          setAnimation(sEntityModel* _model, uint32_t _anim);
+        void          freeModels(void);
 
     protected:
     private:

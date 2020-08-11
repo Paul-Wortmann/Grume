@@ -35,7 +35,7 @@ cEntityManager::~cEntityManager(void)
 
 void cEntityManager::initialize(void)
 {
-    // initialize entity component managers
+    // Initialize entity component managers
     managerAudio.initialize();
     managerGraphics.initialize();
     managerPhysics.initialize();
@@ -43,7 +43,11 @@ void cEntityManager::initialize(void)
     m_graphics = managerGraphics.getFirst();
     m_physics  = managerPhysics.getFirst();
 
-    // initialize the entity manager
+    // Initialize entity resource managers
+    managerModel.initialize();
+    managerTexture.initialize();
+
+    // Initialize the entity manager
     m_numEntities = 0;
     if (m_first != nullptr)
     {
@@ -55,12 +59,16 @@ void cEntityManager::initialize(void)
 
 void cEntityManager::terminate(void)
 {
-    // terminate entity components first
+    // Terminate entity resource managers first
+    managerTexture.terminate();
+    managerModel.terminate();
+
+    // Terminate entity components second
     managerAudio.terminate();
     managerGraphics.terminate();
     managerPhysics.terminate();
 
-    //terminate entity manager
+    // Terminate entity manager third
     m_freeEntities();
     m_numEntities = 0;
 };
@@ -179,3 +187,9 @@ void cEntityManager::addComponentPhysics(sEntity *_entity)
         _entity->physics = managerPhysics.getNew();
     }
 };
+
+void cEntityManager::attachModel(sEntity *_entity, const std::string &_fileName)
+{
+    sEntityModel *m = managerModel.load(_fileName);
+    //_entity->graphics->model = managerModel.load(_fileName);
+}

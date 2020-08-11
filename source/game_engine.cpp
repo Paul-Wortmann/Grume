@@ -34,9 +34,6 @@ void cGame::initialize(void)
     // Start the game engine timer.
     m_timer.initialize();
 
-    // The entity manager needs to be initialized prior to any system initializations.
-    m_entityManager.initialize();
-        
     // Try to initialize the graphics prior to other systems, 
     // as it is the most likely point of a failed initialization due to differing user hardware.
     if (m_graphicsEngine.initialize() == EXIT_FAILURE)
@@ -46,6 +43,10 @@ void cGame::initialize(void)
     }
     else
     {
+        // The entity manager needs to be initialized prior to any system initializations,
+        // but after the graphics engine has been initialized.
+        m_entityManager.initialize();
+
         // System initializations.
         m_animationEngine.setEntityHandle(m_entityManager.getFirstGraphicsComponent());
         m_animationEngine.initialize();
@@ -58,6 +59,14 @@ void cGame::initialize(void)
         m_physicsEngine.setEntityHandle(m_entityManager.getFirstPhysicsComponent());
         m_physicsEngine.initialize();
     }
+    
+    // Test entity
+    sEntity *entity = m_entityManager.getNew();
+    m_entityManager.addComponentGraphics(entity);
+    m_entityManager.attachModel(entity, "default.dae");
+    
+    
+    
 }
 
 void cGame::terminate(void)

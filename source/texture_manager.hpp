@@ -40,6 +40,7 @@ class cTextureManager
 {
     public:
         void initialize(void);
+        void terminate(void);
         void freeTextures(void);
         uint32_t add(const std::string &_fileName);
 

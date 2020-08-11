@@ -31,6 +31,11 @@ void cTextureManager::initialize(void)
     add(TEXTURE_DEFAULT_SPECULAR);
 }
 
+void cTextureManager::terminate(void)
+{
+    freeTextures();
+}
+
 void cTextureManager::freeTexture(uint32_t _ID)
 {
     glDeleteTextures(1, &_ID);

@@ -27,7 +27,6 @@
 #include "defines.hpp"
 #include "includes.hpp"
 #include "entity_component_graphics.hpp"
-#include "texture_manager.hpp"
 
 // The entity graphics manager facilitates the creation and deletion of entity graphics components.
 
@@ -38,9 +37,6 @@ class cEntityManagerGraphics
         sEntityGraphics *m_first = nullptr;
         sEntityGraphics *m_last  = nullptr;
         sEntityGraphics *m_temp  = nullptr;
-
-        // Private instances
-        cTextureManager textureManager = {};
         
         // Private member variables
         uint32_t m_numEntities = 0;

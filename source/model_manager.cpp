@@ -23,7 +23,17 @@
 
 #include "model_manager.hpp"
 
-void cManagerModel::freeModels(void)
+void cModelManager::initialize(void)
+{
+    
+}
+
+void cModelManager::terminate(void)
+{
+    freeModels();
+}
+
+void cModelManager::freeModels(void)
 {
     if (m_modelHead != nullptr)
     {
@@ -51,7 +61,7 @@ void cManagerModel::freeModels(void)
     m_count = 0;
 }
 
-void cManagerModel::m_freeModelData(sEntityModel *_model)
+void cModelManager::m_freeModelData(sEntityModel *_model)
 {
     // model compnent 
     if (_model != nullptr)
@@ -183,7 +193,7 @@ void cManagerModel::m_freeModelData(sEntityModel *_model)
     }
 }
 
-uint32_t cManagerModel::isLoaded(const std::string &_fileName)
+uint32_t cModelManager::isLoaded(const std::string &_fileName)
 {
     if (m_modelHead == nullptr)
     {
@@ -203,7 +213,7 @@ uint32_t cManagerModel::isLoaded(const std::string &_fileName)
     return 0;
 }
 
-void cManagerModel::addInstance(sEntityModel* _model, const glm::mat4 &_transform)
+void cModelManager::addInstance(sEntityModel* _model, const glm::mat4 &_transform)
 {
     if (_model != nullptr)
     {
@@ -233,7 +243,7 @@ void cManagerModel::addInstance(sEntityModel* _model, const glm::mat4 &_transfor
     }
 }
 
-sEntityModel* cManagerModel::load(const std::string &_fileName)
+sEntityModel* cModelManager::load(const std::string &_fileName)
 {
     if (m_modelHead == nullptr)
     {
@@ -258,22 +268,22 @@ sEntityModel* cManagerModel::load(const std::string &_fileName)
     return m_modelTail;
 }
 
-void cManagerModel::m_load(sEntityModel* _model, const std::string &_fileName)
+void cModelManager::m_load(sEntityModel* _model, const std::string &_fileName)
 {
     m_modelLoader.load(_model, _fileName);
 }
 
-void cManagerModel::save(sEntityModel* _model, const std::string &_fileName)
+void cModelManager::save(sEntityModel* _model, const std::string &_fileName)
 {
     m_modelExporter.save(_model, _fileName);
 }
 
-uint32_t cManagerModel::getAnimationCount(sEntityModel* _model)
+uint32_t cModelManager::getAnimationCount(sEntityModel* _model)
 {
     return (_model != nullptr) ? _model->numAnimations : 0;
 }
 
-void     cManagerModel::setAnimation(sEntityModel* _model, uint32_t _anim)
+void     cModelManager::setAnimation(sEntityModel* _model, uint32_t _anim)
 {
     if ((_model != nullptr) && (_anim <= _model->numAnimations))
     {
@@ -281,7 +291,7 @@ void     cManagerModel::setAnimation(sEntityModel* _model, uint32_t _anim)
     }
 }
 
-void cManagerModel::generateMesh(sEntityModel* _model, const sEntityModeleGeneratorInfo &_info)
+void cModelManager::generateMesh(sEntityModel* _model, const sEntityModeleGeneratorInfo &_info)
 {
     m_modelGenerator.generateMesh(_model, _info);
 }
