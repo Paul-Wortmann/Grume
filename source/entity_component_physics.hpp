@@ -31,6 +31,10 @@ struct sEntityPhysics
 {
     sEntityPhysics* next = nullptr;
     
+    glm::vec3 entity_position = glm::vec3(0.0f, 0.0f, 0.0f);
+    glm::vec3 entity_rotation = glm::vec3(0.0f, 0.0f, 0.0f);
+    glm::vec3 entity_scale     = glm::vec3(1.0f, 1.0f, 1.0f);
+    
 };
 
 #endif // ENTITY_PHYSICS_HPP
