@@ -63,7 +63,7 @@ void cGame::initialize(void)
     // Test entity
     sEntity *entity = m_entityManager.getNew();
     m_entityManager.addComponentGraphics(entity);
-    m_entityManager.attachModel(entity, "default.dae");
+    m_entityManager.attachModel(entity, "default.obj");
     
     
     

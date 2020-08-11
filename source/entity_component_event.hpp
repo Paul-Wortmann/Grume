@@ -22,16 +22,15 @@
  */
 
 
-#ifndef ENTITY_COMPONENT_BASE_HPP
-#define ENTITY_COMPONENT_BASE_HPP
+#ifndef ENTITY_COMPONENT_EVENT_HPP
+#define ENTITY_COMPONENT_EVENT_HPP
 
 #include "defines.hpp"
 #include "includes.hpp"
 
-struct sEntityBase
+struct sEntityEvent
 {
-    // UID
-    uint32_t         ID        = 0;
+    bool updatePosition = false;
 };
 
-#endif // ENTITY_COMPONENT_BASE_HPP
+#endif // ENTITY_COMPONENT_EVENT_HPP

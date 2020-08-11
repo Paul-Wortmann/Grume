@@ -93,7 +93,7 @@ class cEntityManager
         void addComponentGraphics(sEntity *_entity);
         void addComponentPhysics(sEntity *_entity);
 
-        void attachModel(sEntity *_entity, const std::string &_fileName);
+        void attachModel(sEntity *_entity, const std::string &_modelFileName, const std::string &_textureFileName = TEXTURE_DEFAULT);
 };
 
 #endif // ENTITY_MANAGER_HPP

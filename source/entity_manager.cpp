@@ -103,26 +103,7 @@ void cEntityManager::m_freeEntities(void)
 
 void cEntityManager::m_freeEntityData(sEntity *_entity)
 {
-    // audio entity compnent 
-    if (_entity->audio != nullptr)
-    {
-        delete _entity->audio;
-        _entity->audio = nullptr;
-    }
-
-    // graphics entity compnent 
-    if (_entity->graphics != nullptr)
-    {
-        delete _entity->graphics;
-        _entity->graphics = nullptr;
-    }
-
-    // physics entity compnent 
-    if (_entity->physics != nullptr)
-    {
-        delete _entity->physics;
-        _entity->physics = nullptr;
-    }
+    // Entity components are freed by their respective managers.
 };
 
 sEntity *cEntityManager::getNew(void)
@@ -188,11 +169,101 @@ void cEntityManager::addComponentPhysics(sEntity *_entity)
     }
 };
 
-void cEntityManager::attachModel(sEntity *_entity, const std::string &_fileName)
+void cEntityManager::attachModel(sEntity *_entity, const std::string &_modelFileName, const std::string &_textureFileName)
 {
+    // Create a new entity if need be.
+    if (_entity == nullptr)
+    {
+        _entity = this->getNew();
+    }
+
+    // Add a physics entity component if one does not yet exist.
+    if (_entity->physics == nullptr)
+    {
+        _entity->physics = managerPhysics.getNew();
+    }
+    // Add a graphics entity component if one does not yet exist.
     if (_entity->graphics == nullptr)
     {
         _entity->graphics = managerGraphics.getNew();
     }
-    _entity->graphics->model = managerModel.load(_fileName);
+
+    // Get a model instance count
+    uint32_t instanceCount = managerModel.isLoaded(_modelFileName);
+
+    // generate model matrix
+    glm::mat4 tMatrix = glm::mat4(1);
+    
+    tMatrix = glm::scale(tMatrix, _entity->physics->entity_scale);
+    tMatrix = glm::rotate(tMatrix, _entity->physics->entity_rotation.x, glm::vec3(1, 0, 0));
+    tMatrix = glm::rotate(tMatrix, _entity->physics->entity_rotation.y, glm::vec3(0, 1, 0));
+    tMatrix = glm::rotate(tMatrix, _entity->physics->entity_rotation.z, glm::vec3(0, 0, 1));
+    tMatrix = glm::translate(tMatrix, _entity->physics->entity_position);
+
+    if (instanceCount > 0)
+    {
+        _entity->graphics->modelInstance = instanceCount;
+        _entity->graphics->model = managerModel.load(_modelFileName);
+        managerModel.addInstance(_entity->graphics->model, tMatrix);
+    }
+    else
+    {
+        _entity->graphics->modelInstance = 0;
+        _entity->graphics->model = managerModel.load(_modelFileName);
+        _entity->graphics->model->modelMatrix[0] = tMatrix;
+
+        // process materials
+        if (_entity->graphics->model->material == nullptr)
+        {
+            _entity->graphics->model->numMaterials = 1;
+            _entity->graphics->model->material= new sMaterial[_entity->graphics->model->numMaterials];
+            _entity->graphics->model->material[0].diffuse.fileName  = _textureFileName + "_d.png";
+            _entity->graphics->model->material[0].normal.fileName   = _textureFileName + "_n.png";
+            _entity->graphics->model->material[0].specular.fileName = _textureFileName + "_s.png";
+        }
+        for (size_t i = 0; i < _entity->graphics->model->numMaterials; ++i)
+        {
+            // diffuse 
+            if (_entity->graphics->model->material[i].diffuse.fileName.size() > 2)
+            {
+            }
+            else if (_textureFileName.size() > 2)
+            {
+                _entity->graphics->model->material[i].diffuse.fileName = _textureFileName + "_d.png";
+            }
+            else
+            {
+                _entity->graphics->model->material[i].diffuse.fileName = TEXTURE_DEFAULT_DIFFUSE;
+            }
+            _entity->graphics->model->material[i].diffuse.ID = managerTexture.add(_entity->graphics->model->material[i].diffuse.fileName);
+
+            // normal
+            if (_entity->graphics->model->material[i].normal.fileName.size() > 2)
+            {
+            }
+            else if (_textureFileName.size() > 2)
+            {
+                _entity->graphics->model->material[i].normal.fileName = _textureFileName + "_n.png";
+            }
+            else
+            {
+                _entity->graphics->model->material[i].normal.fileName = TEXTURE_DEFAULT_NORMAL;
+            }
+            _entity->graphics->model->material[i].normal.ID = managerTexture.add(_entity->graphics->model->material[i].normal.fileName);
+            
+            // specular
+            if (_entity->graphics->model->material[i].specular.fileName.size() > 2)
+            {
+            }
+            else if (_textureFileName.size() > 2)
+            {
+                _entity->graphics->model->material[i].specular.fileName = _textureFileName + "_s.png";
+            }
+            else
+            {
+                _entity->graphics->model->material[i].specular.fileName = TEXTURE_DEFAULT_SPECULAR;
+            }
+            _entity->graphics->model->material[i].specular.ID = managerTexture.add(_entity->graphics->model->material[i].specular.fileName);
+        }
+    }
 }

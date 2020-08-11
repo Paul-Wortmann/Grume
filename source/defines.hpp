@@ -36,6 +36,7 @@
 #define PATH_TEXTURE "data/textures/"
 #define PATH_TILESET "data/tilesets/"
 
+#define TEXTURE_DEFAULT          "default"
 #define TEXTURE_DEFAULT_DIFFUSE  "default_d.png"
 #define TEXTURE_DEFAULT_NORMAL   "default_n.png"
 #define TEXTURE_DEFAULT_SPECULAR "default_s.png"
