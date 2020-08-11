@@ -135,7 +135,7 @@ uint32_t cGraphicsEngine::initialize(void)
                 glDepthFunc(GL_LESS);
                 glFrontFace(GL_CCW);
                 glClearDepth(1.0);
-                glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+                glClearColor(0.2f, 0.2f, 0.8f, 1.0f);
 
                 m_windowActive = true;
                 
@@ -230,10 +230,76 @@ void cGraphicsEngine::process(void)
 
 void cGraphicsEngine::render(void)
 {
+    //std::cout << "Starting render frame....";
+
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    if (m_currentShader != m_shader_001.getID())
+    {
+        m_shader_001.use();
+        m_currentShader = m_shader_001.getID();
+    }
+    
+    glUniformMatrix4fv(m_shader_001.getViewMatrixID(), 1, GL_FALSE, glm::value_ptr(m_viewMatrix));
+    glUniformMatrix4fv(m_shader_001.getProjectionMatrixID(), 1, GL_FALSE, glm::value_ptr(m_projectionMatrix));
+
     for (m_entityTemp = m_entityFirst; m_entityTemp != nullptr; m_entityTemp = m_entityTemp->next)
     {
-        
+        if ((m_entityTemp != nullptr) && (m_entityTemp->model != nullptr))
+        {
+            
+            // skeletal animation uniforms for dynamic models
+            if (m_entityTemp->model->numBones > 0)
+            {
+                // enable skinning
+                glUniform1i(m_shader_001.getAnimationEnabledID(), 1);
+                // bone transforms
+                // either loop through the array and set them 1 at a time, or all at once as an optimization
+                for (std::size_t i = 0; i < m_entityTemp->model->numBones; ++i)
+                {
+                    glUniformMatrix4fv(m_shader_001.getBoneMatrixID(i), 1, GL_FALSE, glm::value_ptr(m_entityTemp->model->bone[i].transformFinal));
+                }
+                //glUniformMatrix4fv(m_shader_001.getBoneMatrixID(0), m_entityTemp->model->numBones, GL_FALSE, glm::value_ptr(m_entityTemp->model->bone[0].transformFinal));
+            }
+            else // no bones
+            {
+                // disable skinning
+                glUniform1i(m_shader_001.getAnimationEnabledID(), 0);
+            }
+            
+            for (std::size_t i = 0; i < m_entityTemp->model->numInstances; ++i)
+            {
+                // model matrix
+                glUniformMatrix4fv(m_shader_001.getModelMatrixID(), 1, GL_FALSE, glm::value_ptr(m_entityTemp->model->modelMatrix[i]));
+                
+                // model mesh
+                for (std::size_t j = 0; j < m_entityTemp->model->numMesh; ++j)
+                {
+                    if (m_entityTemp->model->material[m_entityTemp->model->mesh[j].materialID].diffuse.ID != 0)
+                    {
+                        glActiveTexture(GL_TEXTURE0);
+                        glBindTexture(GL_TEXTURE_2D, m_entityTemp->model->material[m_entityTemp->model->mesh[j].materialID].diffuse.ID);
+                        glUniform1i(m_shader_001.getTextureDiffuseID(), 0);
+                    }
+                    if (m_entityTemp->model->material[m_entityTemp->model->mesh[j].materialID].normal.ID != 0)
+                    {
+                        glActiveTexture(GL_TEXTURE1);
+                        glBindTexture(GL_TEXTURE_2D, m_entityTemp->model->material[m_entityTemp->model->mesh[j].materialID].normal.ID);
+                        glUniform1i(m_shader_001.getTextureNormalID(), 1);
+                    }
+                    if (m_entityTemp->model->material[m_entityTemp->model->mesh[j].materialID].specular.ID != 0)
+                    {
+                        glActiveTexture(GL_TEXTURE2);
+                        glBindTexture(GL_TEXTURE_2D, m_entityTemp->model->material[m_entityTemp->model->mesh[j].materialID].specular.ID);
+                        glUniform1i(m_shader_001.getTextureSpecularID(), 2);
+                    }
+                    
+                    glBindVertexArray(m_entityTemp->model->mesh[j].VAO);
+                    glDrawElements(GL_TRIANGLES, m_entityTemp->model->mesh[j].numIndex, GL_UNSIGNED_INT, 0);
+                }
+            }
+        }
     }
+    
     glfwSwapBuffers(m_window);
-};
-
+    //std::cout << "...Done!" << std::endl;;
+}
