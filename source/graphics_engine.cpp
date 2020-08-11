@@ -135,7 +135,7 @@ uint32_t cGraphicsEngine::initialize(void)
                 glDepthFunc(GL_LESS);
                 glFrontFace(GL_CCW);
                 glClearDepth(1.0);
-                glClearColor(0.2f, 0.2f, 0.8f, 1.0f);
+                glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 
                 m_windowActive = true;
                 
@@ -162,8 +162,6 @@ void cGraphicsEngine::m_initEntities(void)
         if ((m_entityTemp->model != nullptr) && (!m_entityTemp->initialized))
         {
             m_entityTemp->initialized = true;
-            
-            std::cout << "Initializing entity..." << std::endl;
             
             for (std::size_t i = 0; i < m_entityTemp->model->numMesh; ++i)
             {
@@ -232,8 +230,6 @@ void cGraphicsEngine::process(void)
 
 void cGraphicsEngine::render(void)
 {
-    //std::cout << "Starting render frame....";
-
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     if (m_currentShader != m_shader_001.getID())
     {
@@ -301,7 +297,6 @@ void cGraphicsEngine::render(void)
             }
         }
     }
-    
+
     glfwSwapBuffers(m_window);
-    //std::cout << "...Done!" << std::endl;;
 }
