@@ -174,7 +174,7 @@ void cEntityManager::addComponentAudio(sEntity *_entity)
 
 void cEntityManager::addComponentGraphics(sEntity *_entity)
 {
-    if (_entity->graphics != nullptr)
+    if (_entity->graphics == nullptr)
     {
         _entity->graphics = managerGraphics.getNew();
     }
@@ -190,6 +190,9 @@ void cEntityManager::addComponentPhysics(sEntity *_entity)
 
 void cEntityManager::attachModel(sEntity *_entity, const std::string &_fileName)
 {
-    sEntityModel *m = managerModel.load(_fileName);
-    //_entity->graphics->model = managerModel.load(_fileName);
+    if (_entity->graphics == nullptr)
+    {
+        _entity->graphics = managerGraphics.getNew();
+    }
+    _entity->graphics->model = managerModel.load(_fileName);
 }

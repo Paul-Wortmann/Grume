@@ -163,6 +163,8 @@ void cGraphicsEngine::m_initEntities(void)
         {
             m_entityTemp->initialized = true;
             
+            std::cout << "Initializing entity..." << std::endl;
+            
             for (std::size_t i = 0; i < m_entityTemp->model->numMesh; ++i)
             {
                 // VAO
