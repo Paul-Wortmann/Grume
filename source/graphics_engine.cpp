@@ -35,6 +35,12 @@ void cGraphicsEngine::m_closeWindowCallback(GLFWwindow* _windowContext)
     cGraphicsEngine::m_windowClosed = (glfwWindowShouldClose(_windowContext) == GLFW_TRUE);
 }
 
+void cGraphicsEngine::setCameraPosition(const float &_x, const float &_y, const float &_z)
+{
+    m_camera.setCameraPosition(glm::vec3(_x, _y, _z));
+    m_viewMatrix = m_camera.getViewMatrix();
+}
+
 cGraphicsEngine::cGraphicsEngine(void)
 {
     

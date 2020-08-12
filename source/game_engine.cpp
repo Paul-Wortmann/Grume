@@ -68,7 +68,7 @@ void cGame::initialize(void)
     m_entityManager.setPosition(entity, 0.0f, -8.0f, 0.0f);
     m_entityManager.setRotation(entity, 0.0f, 0.0f, 0.0f);
     
-    
+    m_graphicsEngine.setCameraPosition(0.0f, 0.0f, 3.0f);
     
     
 }

@@ -78,9 +78,15 @@ class cGraphicsEngine
         void     process(void);
         void     render(void);
         
+        // Entity
         void     setEntityHandle(sEntityGraphics *_entity);
+
+        // GLFW
         bool     windowActive(void) { return m_windowActive; }
         int32_t  getKeyState(int32_t _key) { return glfwGetKey(m_window, _key); }
+
+        // Camera
+        void setCameraPosition(const float &_x, const float &_y, const float &_z);
 };
 
 #endif // GRAPHICS_ENGINE_HPP
