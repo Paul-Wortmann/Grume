@@ -9,7 +9,9 @@ Copyright Paul Wortmann. GNU GPL v2
 - Graphics card supporting OpenGL 3.3+
 - +2GB of free RAM.
 - Linux kernel 4.2+
-- Core i7 or equivalent.
+- AMD or Intel CPU, x86_64.
+
+- While only the Linux build is currently being worked on, it should be trivial to get Frost and Flame working on Windows as most of the code and dependencies are cross platform. However there are no plans to ever support Mac.
 
 ## Build:
 
@@ -20,11 +22,11 @@ cmake . && make
 
 Make sure you have all the relevant dependencies installed:
 - [Assimp](https://www.assimp.org/)
-- [GLFW](https://www.glfw.org/)
-- OpenGL
 - [Glew](https://github.com/nigels-com/glew)
-- [Physfs](https://icculus.org/physfs/)
+- [GLFW](https://www.glfw.org/)
 - [glm](https://glm.g-truc.net/)
+- OpenGL
+- [Physfs](https://icculus.org/physfs/)
 
 ## Contributions:
 
