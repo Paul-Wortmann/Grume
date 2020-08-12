@@ -69,6 +69,7 @@ class cEntityManager
         // Private member functions
         void m_freeEntities(void);
         void m_freeEntityData(sEntity *_entity);
+        void m_updateModelMatrix(sEntity *_entity, const uint32_t &_instance);
         
     protected:
 
@@ -76,24 +77,36 @@ class cEntityManager
         cEntityManager(void);
         ~cEntityManager(void);
         
-        // Public members
+        // Public members:
         sEntity *getNew(void);
         sEntity *getFirstEntity(void);
         
-        // return component  handles
+        // Return component handles:
         sEntityAudio     *getFirstAudioComponent(void);
         sEntityGraphics  *getFirstGraphicsComponent(void);
         sEntityPhysics   *getFirstPhysicsComponent(void);
         
-        // Public member functions
+        // Public member functions:
         void initialize(void);
         void terminate(void);
 
+        // Add components:
         void addComponentAudio(sEntity *_entity);
         void addComponentGraphics(sEntity *_entity);
         void addComponentPhysics(sEntity *_entity);
-
+        
+        // Attach resources:
         void attachModel(sEntity *_entity, const std::string &_modelFileName, const std::string &_textureFileName = TEXTURE_DEFAULT);
+        
+        // Entity manipulation:
+        void setScale   (sEntity *_entity, const uint32_t &_instance, const float &_x, const float &_y, const float &_z);
+        void setPosition(sEntity *_entity, const uint32_t &_instance, const float &_x, const float &_y, const float &_z);
+        void setRotation(sEntity *_entity, const uint32_t &_instance, const float &_x, const float &_y, const float &_z);
+
+        void setScale   (sEntity *_entity, const float &_x, const float &_y, const float &_z);
+        void setPosition(sEntity *_entity, const float &_x, const float &_y, const float &_z);
+        void setRotation(sEntity *_entity, const float &_x, const float &_y, const float &_z);
+
 };
 
 #endif // ENTITY_MANAGER_HPP

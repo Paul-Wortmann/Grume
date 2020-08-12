@@ -106,6 +106,20 @@ void cEntityManager::m_freeEntityData(sEntity *_entity)
     // Entity components are freed by their respective managers.
 };
 
+void cEntityManager::m_updateModelMatrix(sEntity *_entity, const uint32_t &_instance)
+{
+    // generate model matrix
+    glm::mat4 tMatrix = glm::mat4(1);
+    
+    tMatrix = glm::scale(tMatrix, _entity->physics->entity_scale);
+    tMatrix = glm::rotate(tMatrix, _entity->physics->entity_rotation.x, glm::vec3(1, 0, 0));
+    tMatrix = glm::rotate(tMatrix, _entity->physics->entity_rotation.y, glm::vec3(0, 1, 0));
+    tMatrix = glm::rotate(tMatrix, _entity->physics->entity_rotation.z, glm::vec3(0, 0, 1));
+    tMatrix = glm::translate(tMatrix, _entity->physics->entity_position);
+    
+    _entity->graphics->model->modelMatrix[_instance] = tMatrix;
+}
+
 sEntity *cEntityManager::getNew(void)
 {
     if (m_numEntities == 0)
@@ -267,3 +281,46 @@ void cEntityManager::attachModel(sEntity *_entity, const std::string &_modelFile
         }
     }
 }
+
+void cEntityManager::setScale(sEntity *_entity, const uint32_t &_instance, const float &_x, const float &_y, const float &_z)
+{
+    _entity->physics->entity_scale.x = _x;
+    _entity->physics->entity_scale.y = _y;
+    _entity->physics->entity_scale.z = _z;
+    
+    m_updateModelMatrix(_entity, _instance);
+}
+
+void cEntityManager::setPosition(sEntity *_entity, const uint32_t &_instance, const float &_x, const float &_y, const float &_z)
+{
+    _entity->physics->entity_position.x = _x;
+    _entity->physics->entity_position.y = _y;
+    _entity->physics->entity_position.z = _z;
+    
+    m_updateModelMatrix(_entity, _instance);
+}
+
+void cEntityManager::setRotation(sEntity *_entity, const uint32_t &_instance, const float &_x, const float &_y, const float &_z)
+{
+    _entity->physics->entity_rotation.x = _x;
+    _entity->physics->entity_rotation.y = _y;
+    _entity->physics->entity_rotation.z = _z;
+    
+    m_updateModelMatrix(_entity, _instance);
+}
+
+void cEntityManager::setScale   (sEntity *_entity, const float &_x, const float &_y, const float &_z)
+{
+    setScale(_entity, 0, _x, _y, _z);
+}
+
+void cEntityManager::setPosition(sEntity *_entity, const float &_x, const float &_y, const float &_z)
+{
+    setPosition(_entity, 0, _x, _y, _z);
+}
+
+void cEntityManager::setRotation(sEntity *_entity, const float &_x, const float &_y, const float &_z)
+{
+    setRotation(_entity, 0, _x, _y, _z);
+}
+
