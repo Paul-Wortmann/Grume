@@ -56,6 +56,6 @@ void loadOgg(const std::string &_fileName, sAudioData *_audioData)
     }
     else
     {
-        std::cout << "Failed to open file: " << _fileName << std::endl;
+        gLogWrite(LOG_ERROR, "Failed to open file: " + _fileName, __FILE__, __LINE__, __FUNCTION__);
     }
 }

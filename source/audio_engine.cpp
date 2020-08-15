@@ -43,7 +43,7 @@ void cAudioEngine::initialize(void)
     m_device = alcOpenDevice(nullptr);
     if (m_device != nullptr)
     {
-        std::cout << "Started audio device: " << alcGetString(m_device, ALC_DEVICE_SPECIFIER) << std::endl;
+        gLogWrite(LOG_INFO, "Started audio device: " + std::string(alcGetString(m_device, ALC_DEVICE_SPECIFIER)), __FILE__, __LINE__, __FUNCTION__);
         m_context = alcCreateContext(m_device, nullptr);
         if (alcMakeContextCurrent(m_context))
         {
@@ -53,12 +53,12 @@ void cAudioEngine::initialize(void)
         }
         else
         {
-            std::cout << "Error: OpenAL - failed to create audio context." << std::endl;
+            gLogWrite(LOG_ERROR, "Failed to create audio context.", __FILE__, __LINE__, __FUNCTION__);
         }
     }
     else
     {
-        std::cout << "Error: OpenAL - failed to open audio device." << std::endl;
+        gLogWrite(LOG_ERROR, "Failed to open audio device.", __FILE__, __LINE__, __FUNCTION__);
     }
 
     checkAudioError();
