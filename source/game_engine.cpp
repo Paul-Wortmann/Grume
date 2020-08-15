@@ -60,10 +60,20 @@ void cGame::initialize(void)
         m_physicsEngine.initialize();
     }
     
+    // Test music
+    m_audioEngine.setVolumeMaster(0.5f);
+    uint32_t sID1 = m_audioEngine.newAudioSource();
+    m_audioEngine.setAudioSourcePosition(sID1, 0.0f, 0.0f, 0.0f);
+    uint32_t bID1 = m_audioEngine.newAudioBuffer();
+    m_audioEngine.loadBufferOgg(bID1, "data/music/forgoten_tombs.ogg");
+    m_audioEngine.setAudioBufferName(bID1, "forgoten_tombs.ogg");
+    m_audioEngine.attachSourceBuffer(sID1, bID1);
+    m_audioEngine.playSource(sID1);
+    
     // Test entity
     sEntity *entity = m_entityManager.getNew();
     m_entityManager.addComponentGraphics(entity);
-    m_entityManager.attachModel(entity, "diablo_001.obj", "diablo_001");
+    m_entityManager.attachModel(entity, "default.obj");
     m_entityManager.setScale(entity, 0.25f, 0.25f, 0.25f);
     m_entityManager.setPosition(entity, 0.0f, -8.0f, 0.0f);
     m_entityManager.setRotation(entity, 0.0f, 0.0f, 0.0f);
