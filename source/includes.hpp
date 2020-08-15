@@ -24,12 +24,20 @@
 #ifndef INCLUDES_HPP
 #define INCLUDES_HPP
 
+// Audio -> OpenAL, Vorbis
+#include <AL/al.h>
+#include <AL/alc.h>
+#include <vorbis/vorbisfile.h>
+#include <vorbis/codec.h>
+
+// Assimp
 #include <assimp/cimport.h>
 #include <assimp/Importer.hpp>
 #include <assimp/postprocess.h>
 #include <assimp/scene.h>
 #include <assimp/version.h>
 
+// GLM
 #define GLM_ENABLE_EXPERIMENTAL
 #define GLM_FORCE_RADIANS
 #include <glm/glm.hpp>
@@ -40,12 +48,15 @@
 #include <glm/gtx/quaternion.hpp>
 #include <glm/gtx/transform.hpp>
 
+// Glew, OpenGL, GLFW
 #define  GLEW_STATIC
 #include <GL/glew.h>
 #include <GL/gl.h>
 #include <GLFW/glfw3.h>
 
+// Standard C++ headers
 #include <chrono>
+#include <cmath>
 #include <cstdint>
 #include <cstdlib>
 #include <cstring>
@@ -56,6 +67,7 @@
 #include <thread>
 #include <vector>
 
+// Project includes
 #include "debug_log.hpp"
 
 #endif // INCLUDES_HPP

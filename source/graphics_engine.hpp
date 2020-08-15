@@ -46,7 +46,7 @@ class cGraphicsEngine
 
         // Private member variables
         static bool m_windowClosed;
-        std::string m_windowTitle      = "Frost and Flame";
+        std::string m_windowTitle      = "FnF V0.31.1 (OpenGL)";
         int32_t     m_window_w         = 800;
         int32_t     m_window_h         = 600;
         int32_t     m_frameBuffer_w    = m_window_w;

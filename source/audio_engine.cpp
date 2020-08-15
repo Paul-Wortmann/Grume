@@ -20,9 +20,7 @@
  * @license GPL V2
  * @date 2011-11-11
  */
-
-
-
+ 
 #include "audio_engine.hpp"
 
 cAudioEngine::cAudioEngine(void)
@@ -42,13 +40,70 @@ void cAudioEngine::setEntityHandle(sEntityAudio *_entity)
 
 void cAudioEngine::initialize(void)
 {
-    
-};
+    m_device = alcOpenDevice(nullptr);
+    if (m_device != nullptr)
+    {
+        std::cout << "Started audio device: " << alcGetString(m_device, ALC_DEVICE_SPECIFIER) << std::endl;
+        m_context = alcCreateContext(m_device, nullptr);
+        if (alcMakeContextCurrent(m_context))
+        {
+            alListener3f(AL_POSITION, m_listener.position.x, m_listener.position.y, m_listener.position.z);
+            alListener3f(AL_VELOCITY, m_listener.velocity.x, m_listener.velocity.y, m_listener.velocity.z);
+            alListenerfv(AL_ORIENTATION, m_listener.orientation);
+        }
+        else
+        {
+            std::cout << "Error: OpenAL - failed to create audio context." << std::endl;
+        }
+    }
+    else
+    {
+        std::cout << "Error: OpenAL - failed to open audio device." << std::endl;
+    }
+
+    checkAudioError();
+}
 
 void cAudioEngine::terminate(void)
 {
-    
-};
+    m_sourceManager.freeAudioSources();
+    m_bufferManager.freeAudioBuffers();
+    m_context = alcGetCurrentContext();
+    m_device = alcGetContextsDevice(m_context);
+    alcMakeContextCurrent(nullptr);
+    alcDestroyContext(m_context);
+    alcCloseDevice(m_device);
+}
+
+void cAudioEngine::loadBufferWav(uint32_t _ID, const std::string &_fileName)
+{
+    sAudioData *audioData = new sAudioData;
+    loadWav(_fileName, audioData);
+    alBufferData(_ID, audioData->audioFormat, audioData->buffer, audioData->bufferSize, audioData->sampleRate);
+    delete[] audioData->buffer;
+    delete audioData;
+}
+
+void cAudioEngine::loadBufferOgg(uint32_t _ID, const std::string &_fileName)
+{
+    sAudioData *audioData = new sAudioData;
+    loadOgg(_fileName, audioData);
+    alBufferData(_ID, audioData->audioFormat, audioData->buffer, audioData->bufferSize, audioData->sampleRate);
+    delete[] audioData->buffer;
+    delete audioData;
+}
+
+void cAudioEngine::setAudioBufferName(uint32_t _ID, const std::string &_name)
+{
+    sAudioBuffer* tB = m_bufferManager.findAudioBuffer(_ID);
+    if (tB == nullptr) return;
+    tB->nameLength = _name.length();
+    if (tB->name != nullptr)
+        delete[] tB->name;
+    tB->name = new char[tB->nameLength];
+    for (uint32_t i = 0; i < tB->nameLength; i++)
+        tB->name[i] = _name[i];
+}
 
 void cAudioEngine::process(void)
 {
@@ -56,5 +111,11 @@ void cAudioEngine::process(void)
     {
         
     }
-};
+    
+    sAudioSource *tSource = m_sourceManager.getHead();
+    for (; tSource != nullptr; tSource = tSource->next)
+    {
+        alGetSourcei(tSource->ID, AL_SOURCE_STATE, &tSource->state);
+    }
 
+}
