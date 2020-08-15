@@ -50,6 +50,13 @@ void cAudioEngine::initialize(void)
             alListener3f(AL_POSITION, m_listener.position.x, m_listener.position.y, m_listener.position.z);
             alListener3f(AL_VELOCITY, m_listener.velocity.x, m_listener.velocity.y, m_listener.velocity.z);
             alListenerfv(AL_ORIENTATION, m_listener.orientation);
+            
+            ALCint alcMajorVersion;
+            ALCint alcMinorVersion;
+            alcGetIntegerv(m_device, ALC_MAJOR_VERSION, 1, &alcMajorVersion);
+            alcGetIntegerv(m_device, ALC_MINOR_VERSION, 1, &alcMinorVersion);
+            gLogWrite(LOG_INFO, "OpenAL Version: " + std::to_string(alcMajorVersion) + "." + std::to_string(alcMinorVersion), __FILE__, __LINE__, __FUNCTION__);
+            
         }
         else
         {
