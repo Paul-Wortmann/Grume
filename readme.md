@@ -25,8 +25,10 @@ Make sure you have all the relevant dependencies installed:
 - [Glew](https://github.com/nigels-com/glew)
 - [GLFW](https://www.glfw.org/)
 - [glm](https://glm.g-truc.net/)
+- [OpenAL](https://openal.org/)
 - OpenGL
 - [Physfs](https://icculus.org/physfs/)
+- [Vorbis](https://xiph.org/vorbis/)
 
 ## Contributions:
 
