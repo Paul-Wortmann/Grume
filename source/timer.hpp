@@ -69,13 +69,13 @@ class cTimer
     protected:
 
     private:
-        double m_t = 0.0f;   // total time
+        double m_t  = 0.0f;  // total time
         double m_dt = 16.0f; // desired frametime
         double m_mt = 64.0f; // max frametime - limit
         double m_accumulator = 0.0f;
-        double m_frameStart = 0.0f;
-        double m_frameEnd = 0.0f;
-        double m_frameTime = 0.0f; // delta time
+        double m_frameStart  = 0.0f;
+        double m_frameEnd    = 0.0f;
+        double m_frameTime   = 0.0f; // delta time
 };
 
 #endif // TIMER_HPP

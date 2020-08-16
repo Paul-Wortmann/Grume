@@ -38,21 +38,28 @@ struct sTextureNode
 
 class cTextureManager
 {
-    public:
-        void initialize(void);
-        void terminate(void);
-        void freeTextures(void);
-        uint32_t add(const std::string &_fileName);
-
-    protected:
     private:
-        void freeTexture(uint32_t _ID);
+        void     freeTexture(uint32_t _ID);
         uint32_t load(const std::string &_fileName);
         
         uint32_t      m_count       = 0;
         sTextureNode *m_textureHead = nullptr;
         sTextureNode *m_textureTail = nullptr;
         sTextureNode *m_textureTemp = nullptr;
+
+    protected:
+
+    public:
+        cTextureManager(void) = default;
+        ~cTextureManager(void) = default;
+        cTextureManager(cTextureManager& _other) = delete;
+        cTextureManager(const cTextureManager& _other) = delete;
+        cTextureManager&operator=(const cTextureManager& other) = delete;
+
+        void     initialize(void);
+        void     terminate(void);
+        void     freeTextures(void);
+        uint32_t add(const std::string &_fileName);
 }; 
 
 #endif //MANAGER_TEXTURE_HPP
