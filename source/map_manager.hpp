@@ -21,43 +21,15 @@
  * @date 2011-11-11
  */
 
-#ifndef GAME_HPP
-#define GAME_HPP
+#ifndef MAP_MANAGER_HPP
+#define MAP_MANAGER_HPP
 
-#include "defines.hpp"
 #include "includes.hpp"
+#include "defines.hpp"
 
-#include "animation_engine.hpp"
-#include "audio_engine.hpp"
-#include "entity_manager.hpp"
-#include "graphics_engine.hpp"
-#include "map_manager.hpp"
-#include "physics_engine.hpp"
+#include "libRMG.hpp"
 
-#include "timer.hpp"
-#include "version.hpp"
+#include "map_defines.hpp"
 
-class cGame
-{
-    public:
-        eGameState state = eGameState::active;
-        
-        cGame(void) = default;
-        ~cGame(void) = default;
-        void initialize(void);
-        void terminate(void);
-        void process(void);
-        
-    protected:
 
-    private:
-        cEntityManager    m_entityManager   = {};
-        cTimer            m_timer           = {};
-        
-        cAnimationEngine  m_animationEngine = {};
-        cAudioEngine      m_audioEngine     = {};
-        cGraphicsEngine   m_graphicsEngine  = {};
-        cPhysicsEngine    m_physicsEngine   = {};
-};
-
-#endif //GAME_HPP
+#endif // MAP_MANAGER_HPP
