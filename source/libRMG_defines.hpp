@@ -33,17 +33,21 @@
 #define LIBRMG_AS_MOV_S  10
 #define LIBRMG_AS_MOV_H  10
 
-enum eGenerator:uint16_t        { generatorC1 = 0, generatorC2 = 1, generatorD1 = 2, generatorD2 = 3, generatorM1 = 4, generatorT1 = 5 };
-enum eLayer:uint16_t            { layerNone = 0, layerBase = 1, layerObject = 2, layerEvent = 3 };
-enum eBase:uint16_t             { baseFloor = 0, baseWall = 1, baseDoor = 2, baseLiquid = 3 };
-enum eObject:uint16_t           { objectNone = 0, objectAsStart = 1, objectAsEnd = 2, objectAsPath = 3, objectChest = 4, objectKey = 5, objectSwitch = 6, objectStairs = 7, objectTree = 8 };
-enum eEvent:uint16_t            { eventNone = 0, eventTrigger = 1, eventTarget = 2, eventPlayerGoal = 3, eventSpawnNPC = 4, eventSpawnMob = 5, eventSpawnBoss = 6, eventSpawnPlayer = 7, eventDoorLock = 8, eventDoorUnlock = 9, eventDoorOpen = 10, eventDoorClose = 11, eventDoorToggle = 12, eventSwitch = 13, eventWarp = 14 };
-enum eDirection:uint16_t        { directionNone = 0, directionNorth = 1, directionSouth = 2, directionEast = 3, directionWest = 4 };
-enum eRoomFunction:uint16_t     { roomEmpty = 0, roomSecret = 1, roomBridge = 2, roomWell = 3, roomBlacksmith = 4, roomStore = 5,roomWarp = 6, roomBoss = 7 };
-enum eRoomShape:uint16_t        { roomShapeRandom = 0, roomShapeCircle = 1, roomShapeSquare = 2 };
-enum ePathData:uint16_t         { pathNone = 0, pathStart = 1, pathEnd = 2, pathOpen = 3, pathClosed = 4 };
-enum eConnectAlgorithm:uint16_t { connectSL = 0, connectND = 1, connectDW = 2 };
-enum eEventState:uint16_t       { eventStateNone = 0, eventStateReady = 1, eventStateTriggered = 2, eventStateTrue = 3, eventStateFalse = 4 };
+enum eMapGenerator:uint16_t         { mapGeneratorC1 = 0, mapGeneratorC2 = 1, mapGeneratorD1 = 2, mapGeneratorD2 = 3, mapGeneratorM1 = 4, mapGeneratorT1 = 5 };
+enum eMapBiome:uint16_t             { mapBiomeDefault = 0, mapBiomeTemprate = 1, mapBiomeDesert = 2, mapBiomeJungle = 3, mapBiomeVolcanic = 4, mapBiomeFrozen = 5, mapBiomeSwamp = 6 };
+enum eMapType:uint16_t              { mapTypeDefault = 0, mapTypeDungeon = 1, mapTypeCave = 2, mapTypeCatacomb = 3, mapTypeLand = 4 };
+enum eMapRace:uint16_t              { mapRaceDefault = 0, mapRaceHuman = 1, mapRaceVampire = 2, mapRaceLycan = 3, mapRaceElf = 4, mapRaceBeast = 5, mapRaceDwarf = 6 };
+enum eMapFunction:uint16_t          { mapFunctionDefault = 0, mapFunctionNone = 1, mapFunctionPath = 2, mapFunctionTown = 3, mapFunctionBoss = 4 };
+enum eLayer:uint16_t                { layerNone = 0, layerBase = 1, layerObject = 2, layerEvent = 3 };
+enum eBase:uint16_t                 { baseFloor = 0, baseWall = 1, baseDoor = 2, baseLiquid = 3 };
+enum eObject:uint16_t               { objectNone = 0, objectAsStart = 1, objectAsEnd = 2, objectAsPath = 3, objectChest = 4, objectKey = 5, objectSwitch = 6, objectStairs = 7, objectTree = 8 };
+enum eEvent:uint16_t                { eventNone = 0, eventTrigger = 1, eventTarget = 2, eventPlayerGoal = 3, eventSpawnNPC = 4, eventSpawnMob = 5, eventSpawnBoss = 6, eventSpawnPlayer = 7, eventDoorLock = 8, eventDoorUnlock = 9, eventDoorOpen = 10, eventDoorClose = 11, eventDoorToggle = 12, eventSwitch = 13, eventWarp = 14 };
+enum eDirection:uint16_t            { directionNone = 0, directionNorth = 1, directionSouth = 2, directionEast = 3, directionWest = 4 };
+enum eRoomFunction:uint16_t         { roomEmpty = 0, roomNoFunc = 1, roomSecret = 2, roomBridge = 3, roomWell = 4, roomBlacksmith = 5, roomStore = 6,roomWarp = 7, roomBoss = 8 };
+enum eRoomShape:uint16_t            { roomShapeRandom = 0, roomShapeCircle = 1, roomShapeSquare = 2 };
+enum eRoomConnectAlgorithm:uint16_t { connectSL = 0, connectND = 1, connectDW = 2 };
+enum ePathData:uint16_t             { pathNone = 0, pathStart = 1, pathEnd = 2, pathOpen = 3, pathClosed = 4 };
+enum eEventState:uint16_t           { eventStateNone = 0, eventStateReady = 1, eventStateTriggered = 2, eventStateTrue = 3, eventStateFalse = 4 };
 
 struct sLibRMGPrefabTile
 {
@@ -98,19 +102,19 @@ struct sLibRMGMapEvent
 struct sLibRMGMapRoom
 {
     eRoomFunction type    = eRoomFunction::roomEmpty;
-    bool     p       = false; // processed flag
-    uint16_t posXMin = 0;
-    uint16_t posXMax = 0;
-    uint16_t posYMin = 0;
-    uint16_t posYMax = 0;
-    uint16_t x       = 0;
-    uint16_t y       = 0;
-    uint16_t w       = 0;
-    uint16_t h       = 0;
-    int16_t exitN    = LIBRMG_NOROOM; // -1 for none, else connecting room ID
-    int16_t exitS    = LIBRMG_NOROOM;
-    int16_t exitE    = LIBRMG_NOROOM;
-    int16_t exitW    = LIBRMG_NOROOM;
+    bool          p       = false; // processed flag
+    uint16_t      posXMin = 0;
+    uint16_t      posXMax = 0;
+    uint16_t      posYMin = 0;
+    uint16_t      posYMax = 0;
+    uint16_t      x       = 0;
+    uint16_t      y       = 0;
+    uint16_t      w       = 0;
+    uint16_t      h       = 0;
+    int16_t       exitN   = LIBRMG_NOROOM; // -1 for none, else connecting room ID
+    int16_t       exitS   = LIBRMG_NOROOM;
+    int16_t       exitE   = LIBRMG_NOROOM;
+    int16_t       exitW   = LIBRMG_NOROOM;
 };
 
 struct sLibRMGMapTile
@@ -134,37 +138,37 @@ struct sLibRMGMapTile
 
 struct sLibRMGMapData
 {
-    std::string       name                   = "libRMG generated map.";
-    eGenerator        generator              = eGenerator::generatorC1;
-    bool              genSeed                = true;
-    uint32_t          seed                   = 0;
-    sLibRMGMapObject *object                 = nullptr;
-    uint32_t          object_count           = 0;
-    sLibRMGMapEvent  *event                  = nullptr;
-    uint32_t          event_count            = 0;
-    sLibRMGMapRoom   *room                   = nullptr;
-    uint32_t          room_count             = 0;
-    uint16_t          room_min               = 3; // Guaranteed minimum number of rooms, maps with less are discarded (sMap.pass times)
-    uint16_t          room_max               = density; // Will try generate up to roomMax rooms, on a tiny map 
-    uint16_t          room_radius_max        = 8; // max room radius
-    uint16_t          room_radius_min        = 2; // min room radius
-    uint16_t          room_border            = 3;
-    eRoomShape        room_shape             = eRoomShape::roomShapeSquare;
-    eDirection        direction_bias         = eDirection::directionNone; // Favored direction
-    uint16_t          direction_biasStrength = 2; // Favored direction strength
-    uint16_t          floor_area_min         = 50; // percentage, min % floor area
-    sLibRMGMapTile   *tile                   = nullptr;
-    uint32_t          tile_x                 = 10;
-    uint32_t          tile_y                 = 10;
-    uint32_t          tile_count             = tile_x * tile_y;
-    eConnectAlgorithm connect_algorithm      = eConnectAlgorithm::connectSL;
-    uint16_t          connectivity_padding   = 0; // Tiles to pad on each side of generated paths, roomBorder 
-    sLibRMGPrefab    *prefab                 = nullptr;
-    bool              enablePrefabs          = true;
-    std::string       prefabPath             = "data/prefabs";
-    uint16_t          prefabCount            = 0;
-    uint32_t          density                = 60; // percentage
-    uint32_t          maxItterations         = 3;
+    std::string           name                   = "libRMG generated map.";
+    eMapGenerator         generator              = eMapGenerator::mapGeneratorC1;
+    bool                  genSeed                = true;
+    uint32_t              seed                   = 0;
+    sLibRMGMapObject     *object                 = nullptr;
+    uint32_t              object_count           = 0;
+    sLibRMGMapEvent      *event                  = nullptr;
+    uint32_t              event_count            = 0;
+    sLibRMGMapRoom       *room                   = nullptr;
+    uint32_t              room_count             = 0;
+    uint16_t              room_min               = 3; // Guaranteed minimum number of rooms, maps with less are discarded (sMap.pass times)
+    uint16_t              room_max               = density; // Will try generate up to roomMax rooms, on a tiny map 
+    uint16_t              room_radius_max        = 8; // max room radius
+    uint16_t              room_radius_min        = 2; // min room radius
+    uint16_t              room_border            = 3;
+    eRoomShape            room_shape             = eRoomShape::roomShapeSquare;
+    eDirection            direction_bias         = eDirection::directionNone; // Favored direction
+    uint16_t              direction_biasStrength = 2; // Favored direction strength
+    uint16_t              floor_area_min         = 50; // percentage, min % floor area
+    sLibRMGMapTile       *tile                   = nullptr;
+    uint32_t              tile_x                 = 10;
+    uint32_t              tile_y                 = 10;
+    uint32_t              tile_count             = tile_x * tile_y;
+    eRoomConnectAlgorithm connect_algorithm      = eRoomConnectAlgorithm::connectSL;
+    uint16_t              connectivity_padding   = 0; // Tiles to pad on each side of generated paths, roomBorder 
+    sLibRMGPrefab        *prefab                 = nullptr;
+    bool                  enablePrefabs          = true;
+    std::string           prefabPath             = "data/prefabs";
+    uint16_t              prefabCount            = 0;
+    uint32_t              density                = 60; // percentage
+    uint32_t              maxItterations         = 3;
 };
 
 #endif // LIBRMG_DEFINES_HPP

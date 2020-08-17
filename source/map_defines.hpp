@@ -27,35 +27,5 @@
 #include "includes.hpp"
 #include "defines.hpp"
 
-//---- Biome ----//
-#define MAP_BIOME          0
-#define MAP_BIOME_TEMPRATE 1
-#define MAP_BIOME_DESERT   2
-#define MAP_BIOME_JUNGLE   3
-#define MAP_BIOME_VOLCANIC 4
-#define MAP_BIOME_FROZEN   5
-#define MAP_BIOME_SWAMP    6
-
-//---- Type ----//
-#define MAP_TYPE           0
-#define MAP_TYPE_DUNGEON   1
-#define MAP_TYPE_CAVE      2
-#define MAP_TYPE_CATACOME  3
-#define MAP_TYPE_LAND      4
-
-//---- Race ----//
-#define MAP_RACE           0
-#define MAP_RACE_HUMAN     1
-#define MAP_RACE_VAMPIRE   2
-#define MAP_RACE_LYCAN     3
-#define MAP_RACE_ELF       4
-#define MAP_RACE_BEAST     5
-#define MAP_RACE_DWARF     6
-
-//---- Function ----//
-#define MAP_FUNCTION       0
-#define MAP_FUNCTION_PATH  1
-#define MAP_FUNCTION_TOWN  2
-#define MAP_FUNCTION_BOSS  3
 
 #endif // MAP_DEFINES_HPP

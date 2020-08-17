@@ -243,6 +243,19 @@ void cModelManager::addInstance(sEntityModel* _model, const glm::mat4 &_transfor
     }
 }
 
+sEntityModel *cModelManager::m_newModel(void)
+{
+    if (m_modelHead == nullptr)
+    {
+        m_modelHead = new sEntityModel;
+        m_modelTail = m_modelHead;
+    }
+    m_count++;
+    m_modelTail->next = new sEntityModel;
+    m_modelTail = m_modelTail->next;
+    return m_modelTail;
+}
+
 sEntityModel* cModelManager::load(const std::string &_fileName)
 {
     if (m_modelHead == nullptr)
@@ -291,7 +304,7 @@ void     cModelManager::setAnimation(sEntityModel* _model, uint32_t _anim)
     }
 }
 
-void cModelManager::generateMesh(sEntityModel* _model, const sEntityModeleGeneratorInfo &_info)
+void cModelManager::generateModel(const sEntityModelGeneratorInfo &_info)
 {
-    m_modelGenerator.generateMesh(_model, _info);
+    m_modelGenerator.generateModel(m_newModel(), _info);
 }

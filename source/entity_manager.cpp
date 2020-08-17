@@ -183,6 +183,13 @@ void cEntityManager::addComponentPhysics(sEntity *_entity)
     }
 };
 
+void cEntityManager::generateModel(sEntity *_entity, const sEntityModelGeneratorInfo &_info, const std::string &_textureFileName)
+{
+    managerModel.generateModel(_info);
+    attachModel(_entity, _info.name, _textureFileName);
+}
+
+
 void cEntityManager::attachModel(sEntity *_entity, const std::string &_modelFileName, const std::string &_textureFileName)
 {
     // Create a new entity if need be.

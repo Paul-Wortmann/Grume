@@ -82,18 +82,22 @@ class cEntityManager
         sEntity *getFirstEntity(void);
         
         // Return component handles:
-        sEntityAudio     *getFirstAudioComponent(void);
-        sEntityGraphics  *getFirstGraphicsComponent(void);
-        sEntityPhysics   *getFirstPhysicsComponent(void);
+        sEntityAudio    *getFirstAudioComponent(void);
+        sEntityGraphics *getFirstGraphicsComponent(void);
+        sEntityPhysics  *getFirstPhysicsComponent(void);
         
         // Public member functions:
         void initialize(void);
         void terminate(void);
+        sEntity* loadFile(const std::string &_fileName);
 
         // Add components:
         void addComponentAudio(sEntity *_entity);
         void addComponentGraphics(sEntity *_entity);
         void addComponentPhysics(sEntity *_entity);
+
+        // Generate components:
+        void generateModel(sEntity *_entity, const sEntityModelGeneratorInfo &_info, const std::string &_textureFileName = TEXTURE_DEFAULT);
         
         // Attach resources:
         void attachModel(sEntity *_entity, const std::string &_modelFileName, const std::string &_textureFileName = TEXTURE_DEFAULT);

@@ -29,15 +29,16 @@
 
 enum eModelType:uint16_t    { cube = 1, plane = 1 };
 
-struct sEntityModeleGeneratorInfo
+struct sEntityModelGeneratorInfo
 {
-    eModelType type    = eModelType::plane;
-    uint16_t   units_x = 10;
-    uint16_t   units_y = 10;
-    uint16_t   units_z = 10;
-    float      size_x  = 1.0f;
-    float      size_y  = 1.0f;
-    float      size_z  = 1.0f;
+    std::string name = "generated model";
+    eModelType  type    = eModelType::plane;
+    uint16_t    units_x = 10;
+    uint16_t    units_y = 10;
+    uint16_t    units_z = 10;
+    float       size_x  = 1.0f;
+    float       size_y  = 1.0f;
+    float       size_z  = 1.0f;
 };
 
 class cModelGenerator
@@ -45,7 +46,7 @@ class cModelGenerator
     public:
         cModelGenerator(void) = default;
         ~cModelGenerator(void) = default;
-        void generateMesh(sEntityModel* _model, const sEntityModeleGeneratorInfo &_info);
+        void generateModel(sEntityModel* _model, const sEntityModelGeneratorInfo &_info);
 
     protected:
 

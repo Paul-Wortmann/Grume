@@ -38,7 +38,7 @@ class cModelManager
         void          terminate(void);
         sEntityModel *load(const std::string &_fileName);
         void          save(sEntityModel* _model, const std::string &_fileName);
-        void          generateMesh(sEntityModel* _model, const sEntityModeleGeneratorInfo &_info);
+        void          generateModel(const sEntityModelGeneratorInfo &_info);
         uint32_t      isLoaded(const std::string &_fileName); // return instance count
         void          addInstance(sEntityModel* _model, const glm::mat4 &_transform);
         uint32_t      getAnimationCount(sEntityModel* _model);
@@ -47,8 +47,9 @@ class cModelManager
 
     protected:
     private:
-        void m_freeModelData(sEntityModel *_model);
-        void m_load(sEntityModel* _model, const std::string &_fileName);
+        sEntityModel   *m_newModel(void);
+        void            m_freeModelData(sEntityModel *_model);
+        void            m_load(sEntityModel* _model, const std::string &_fileName);
         
         cModelExporter  m_modelExporter  = {};
         cModelLoader    m_modelLoader    = {};

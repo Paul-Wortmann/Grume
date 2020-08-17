@@ -41,22 +41,22 @@ void cLibRMGMap::generate(void)
     // generate
     switch (data.generator)
     {
-        case eGenerator::generatorC1:
+        case eMapGenerator::mapGeneratorC1:
             _libRMG_generator_C1(data);
         break;
-        case eGenerator::generatorC2:
+        case eMapGenerator::mapGeneratorC2:
             _libRMG_generator_C2(data);
         break;
-        case eGenerator::generatorD1:
+        case eMapGenerator::mapGeneratorD1:
             _libRMG_generator_D1(data);
         break;
-        case eGenerator::generatorD2:
+        case eMapGenerator::mapGeneratorD2:
             _libRMG_generator_D2(data);
         break;
-        case eGenerator::generatorM1:
+        case eMapGenerator::mapGeneratorM1:
             _libRMG_generator_M1(data);
         break;
-        case eGenerator::generatorT1:
+        case eMapGenerator::mapGeneratorT1:
             _libRMG_generator_T1(data);
         break;
     }

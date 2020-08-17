@@ -176,7 +176,7 @@ void _libRMG_connect_rooms(sLibRMGMapData &_data)
     {
         switch (_data.connect_algorithm)
         {
-            case eConnectAlgorithm::connectSL:
+            case eRoomConnectAlgorithm::connectSL:
                 if (_data.room[i].exitE > i)
                     _libRMG_connect_rooms_SL(_data, i, _data.room[i].exitE);
                 if (_data.room[i].exitW > i)
@@ -186,7 +186,7 @@ void _libRMG_connect_rooms(sLibRMGMapData &_data)
                 if (_data.room[i].exitS > i)
                     _libRMG_connect_rooms_SL(_data, i, _data.room[i].exitS);
             break;
-            case eConnectAlgorithm::connectND:
+            case eRoomConnectAlgorithm::connectND:
                 if (_data.room[i].exitE > i)
                     _libRMG_connect_rooms_ND(_data, i, _data.room[i].exitE);
                 if (_data.room[i].exitW > i)
@@ -196,7 +196,7 @@ void _libRMG_connect_rooms(sLibRMGMapData &_data)
                 if (_data.room[i].exitS > i)
                     _libRMG_connect_rooms_ND(_data, i, _data.room[i].exitS);
             break;
-            case eConnectAlgorithm::connectDW:
+            case eRoomConnectAlgorithm::connectDW:
                 if (_data.room[i].exitE > i)
                     _libRMG_connect_rooms_DW(_data, i, _data.room[i].exitE);
                 if (_data.room[i].exitW > i)
@@ -223,11 +223,11 @@ void _libRMG_connect_rooms(sLibRMGMapData &_data)
             pathT.ey = _data.room[i+1].y;
             if (_libRMG_pathAS(_data, pathT) == false)
             {
-                if (_data.connect_algorithm == eConnectAlgorithm::connectSL)
+                if (_data.connect_algorithm == eRoomConnectAlgorithm::connectSL)
                     _libRMG_connect_rooms_SL(_data, i, i+1);
-                if (_data.connect_algorithm == eConnectAlgorithm::connectND)
+                if (_data.connect_algorithm == eRoomConnectAlgorithm::connectND)
                     _libRMG_connect_rooms_ND(_data, i, i+1);
-                if (_data.connect_algorithm == eConnectAlgorithm::connectDW)
+                if (_data.connect_algorithm == eRoomConnectAlgorithm::connectDW)
                     _libRMG_connect_rooms_DW(_data, i, i+1);
             }
             _libRMG_pathASFree(pathT);

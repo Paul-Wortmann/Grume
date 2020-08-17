@@ -36,7 +36,7 @@ glm::vec3 cModelGenerator::m_generateNormal(glm::vec3 _a, glm::vec3 _b, glm::vec
     return rNormal;
 }
 
-void cModelGenerator::generateMesh(sEntityModel* _model, const sEntityModeleGeneratorInfo &_info)
+void cModelGenerator::generateModel(sEntityModel* _model, const sEntityModelGeneratorInfo &_info)
 {
     float start_x = static_cast<float>(_info.units_x / 2) * _info.size_x;
     float start_y = static_cast<float>(_info.units_y / 2) * _info.size_y;
