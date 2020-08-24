@@ -108,16 +108,19 @@ void cEntityManager::m_freeEntityData(sEntity *_entity)
 
 void cEntityManager::m_updateModelMatrix(sEntity *_entity, const uint32_t &_instance)
 {
-    // generate model matrix
-    glm::mat4 tMatrix = glm::mat4(1);
-    
-    tMatrix = glm::scale(tMatrix, _entity->physics->entity_scale);
-    tMatrix = glm::rotate(tMatrix, _entity->physics->entity_rotation.x, glm::vec3(1, 0, 0));
-    tMatrix = glm::rotate(tMatrix, _entity->physics->entity_rotation.y, glm::vec3(0, 1, 0));
-    tMatrix = glm::rotate(tMatrix, _entity->physics->entity_rotation.z, glm::vec3(0, 0, 1));
-    tMatrix = glm::translate(tMatrix, _entity->physics->entity_position);
-    
-    _entity->graphics->model->modelMatrix[_instance] = tMatrix;
+    if ((_entity != nullptr) && (_entity->graphics != nullptr) && (_entity->graphics->model != nullptr))
+    {
+        // generate model matrix
+        glm::mat4 tMatrix = glm::mat4(1);
+        
+        tMatrix = glm::scale(tMatrix, _entity->physics->entity_scale);
+        tMatrix = glm::rotate(tMatrix, _entity->physics->entity_rotation.x, glm::vec3(1, 0, 0));
+        tMatrix = glm::rotate(tMatrix, _entity->physics->entity_rotation.y, glm::vec3(0, 1, 0));
+        tMatrix = glm::rotate(tMatrix, _entity->physics->entity_rotation.z, glm::vec3(0, 0, 1));
+        tMatrix = glm::translate(tMatrix, _entity->physics->entity_position);
+        
+        _entity->graphics->model->modelMatrix[_instance] = tMatrix;
+    }
 }
 
 sEntity *cEntityManager::getNew(void)
@@ -161,6 +164,13 @@ sEntityPhysics *cEntityManager::getFirstPhysicsComponent(void)
 
 void cEntityManager::addComponentAudio(sEntity *_entity)
 {
+    // Create a new entity if need be.
+    if (_entity == nullptr)
+    {
+        _entity = this->getNew();
+    }
+    
+    // Add an audio entity component if one does not yet exist.
     if (_entity->audio != nullptr)
     {
         _entity->audio = managerAudio.getNew();
@@ -169,6 +179,13 @@ void cEntityManager::addComponentAudio(sEntity *_entity)
 
 void cEntityManager::addComponentGraphics(sEntity *_entity)
 {
+    // Create a new entity if need be.
+    if (_entity == nullptr)
+    {
+        _entity = this->getNew();
+    }
+    
+    // Add a graphics entity component if one does not yet exist.
     if (_entity->graphics == nullptr)
     {
         _entity->graphics = managerGraphics.getNew();
@@ -177,7 +194,14 @@ void cEntityManager::addComponentGraphics(sEntity *_entity)
 
 void cEntityManager::addComponentPhysics(sEntity *_entity)
 {
-    if (_entity->physics != nullptr)
+    // Create a new entity if need be.
+    if (_entity == nullptr)
+    {
+        _entity = this->getNew();
+    }
+
+    // Add a physics entity component if one does not yet exist.
+    if (_entity->physics == nullptr)
     {
         _entity->physics = managerPhysics.getNew();
     }
@@ -203,6 +227,7 @@ void cEntityManager::attachModel(sEntity *_entity, const std::string &_modelFile
     {
         _entity->physics = managerPhysics.getNew();
     }
+    
     // Add a graphics entity component if one does not yet exist.
     if (_entity->graphics == nullptr)
     {
@@ -291,6 +316,18 @@ void cEntityManager::attachModel(sEntity *_entity, const std::string &_modelFile
 
 void cEntityManager::setScale(sEntity *_entity, const uint32_t &_instance, const float &_x, const float &_y, const float &_z)
 {
+    // Create a new entity if need be.
+    if (_entity == nullptr)
+    {
+        _entity = this->getNew();
+    }
+
+    // Add a physics entity component if one does not yet exist.
+    if (_entity->physics == nullptr)
+    {
+        _entity->physics = managerPhysics.getNew();
+    }
+    
     _entity->physics->entity_scale.x = _x;
     _entity->physics->entity_scale.y = _y;
     _entity->physics->entity_scale.z = _z;
@@ -300,6 +337,18 @@ void cEntityManager::setScale(sEntity *_entity, const uint32_t &_instance, const
 
 void cEntityManager::setPosition(sEntity *_entity, const uint32_t &_instance, const float &_x, const float &_y, const float &_z)
 {
+    // Create a new entity if need be.
+    if (_entity == nullptr)
+    {
+        _entity = this->getNew();
+    }
+
+    // Add a physics entity component if one does not yet exist.
+    if (_entity->physics == nullptr)
+    {
+        _entity->physics = managerPhysics.getNew();
+    }
+    
     _entity->physics->entity_position.x = _x;
     _entity->physics->entity_position.y = _y;
     _entity->physics->entity_position.z = _z;
@@ -309,6 +358,18 @@ void cEntityManager::setPosition(sEntity *_entity, const uint32_t &_instance, co
 
 void cEntityManager::setRotation(sEntity *_entity, const uint32_t &_instance, const float &_x, const float &_y, const float &_z)
 {
+    // Create a new entity if need be.
+    if (_entity == nullptr)
+    {
+        _entity = this->getNew();
+    }
+
+    // Add a physics entity component if one does not yet exist.
+    if (_entity->physics == nullptr)
+    {
+        _entity->physics = managerPhysics.getNew();
+    }
+    
     _entity->physics->entity_rotation.x = _x;
     _entity->physics->entity_rotation.y = _y;
     _entity->physics->entity_rotation.z = _z;

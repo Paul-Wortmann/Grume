@@ -277,7 +277,7 @@ sEntityModel* cModelManager::load(const std::string &_fileName)
     m_modelTail->next = new sEntityModel;
     m_modelTail = m_modelTail->next;
     m_modelTail->fileName = _fileName;
-    m_load(m_modelTail, std::string(PATH_MODEL + _fileName).c_str());
+    m_load(m_modelTail, std::string(PATH_MODELS + _fileName).c_str());
     return m_modelTail;
 }
 

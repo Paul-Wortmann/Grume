@@ -37,6 +37,17 @@
 #include "timer.hpp"
 #include "version.hpp"
 
+
+
+
+
+
+
+    #include "xml_utils.hpp"
+
+
+
+
 class cGame
 {
     public:
@@ -52,6 +63,7 @@ class cGame
 
     private:
         cEntityManager    m_entityManager   = {};
+        cMapManager       m_mapManager      = {};
         cTimer            m_timer           = {};
         
         cAnimationEngine  m_animationEngine = {};

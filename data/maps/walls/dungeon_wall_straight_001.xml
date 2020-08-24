@@ -1,0 +1,12 @@
+<object>
+   <position>0.0 0.0 0.0</position>
+   <rotation>0.0 0.0 0.0</rotation>
+   <scale>1.0 1.0 1.0</scale>
+
+   <mesh>dungeon_wall_straight_001.obj</wall>
+   <texture>dungeon_001</wall>
+
+</object>
+
+
+

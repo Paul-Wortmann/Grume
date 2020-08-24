@@ -1,0 +1,38 @@
+<object>
+   <physics>
+      <position>0.0 0.0 0.0</position>
+      <rotation>0.0 0.0 0.0</rotation>
+      <scale>1.0 1.0 1.0</scale>
+      <type>static</type>
+      <destructable>true</destructable>
+   </physics>
+
+   <graphics>
+      <enabled>true</enabled>
+      <mesh>crystal_001.obj</wall>
+      <texture>crystal_blue_001</wall>
+   </graphics>
+
+   <animation>
+      <enabled>false</enabled>
+      <on_hit>
+         <track>0</track>
+         <start>0.25</start>
+         <end>0.50</end>
+      </on_hit>
+   </animation>
+
+   <audio>
+      <enabled>false</enabled>
+      <on_hit>
+         <track>NA</track>
+      </on_hit>
+      <on_interact>
+         <track>NA</track>
+      </on_interact>
+   </audio>
+
+</object>
+
+
+

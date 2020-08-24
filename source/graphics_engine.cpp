@@ -126,8 +126,6 @@ uint32_t cGraphicsEngine::initialize(void)
                 /*
                 std::string libMathVersion = std::to_string(LIBMATH_VERSION_MAJOR) + "." + std::to_string(LIBMATH_VERSION_MINOR) + "." + std::to_string(LIBMATH_VERSION_PATCH);
                 gLogWrite(LOG_INFO, "LibMath version: " + libMathVersion, __FILE__, __LINE__, __FUNCTION__);
-                std::string libRMGVersion = std::to_string(LIBRMG_VERSION_MAJOR) + "." + std::to_string(LIBRMG_VERSION_MINOR) + "." + std::to_string(LIBRMG_VERSION_PATCH);
-                gLogWrite(LOG_INFO, "LibRMG version: " + libRMGVersion, __FILE__, __LINE__, __FUNCTION__);
                 */
                 
                 //glfwSetInputMode(m_window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
@@ -153,7 +151,7 @@ uint32_t cGraphicsEngine::initialize(void)
                 m_projectionMatrix = m_camera.getProjectionMatrixPerspective();
                 
                 // Shader setup
-                m_shader_001.load(std::string(PATH_SHADER)+"shader_001");
+                m_shader_001.load(std::string(PATH_SHADERS)+"shader_001");
                 
             }
         }

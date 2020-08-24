@@ -1,0 +1,17 @@
+<map>
+   <map_name>Crystal Dungeon 1</map_name>
+   <map_tileset>crystal_dungeon_tileset</map_tileset>
+   <map_pcg>true</map_pcg>
+   <map_generation_algorithm>RMG_GEN_D2</map_generation_algorithm>
+   <map_size_x>100</map_size_x>
+   <map_size_y>100</map_size_y>
+   <map_seed>0</map_seed>
+   <map_connectivityAlgorithm>RMG_PATH_SL</map_connectivityAlgorithm>
+   <map_roomShape>RMG_SQUARE</map_roomShape>
+   <map_density>60</map_density>
+   <map_itterate>4</map_itterate>
+   <map_direction_bias>RMG_EAST</map_direction_bias>
+   <map_direction_bias_strength>6</map_direction_bias_strength>
+   <map_function>MAP_FUNCTION_NONE</map_function>
+</map>
+

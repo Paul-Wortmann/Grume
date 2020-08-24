@@ -1,15 +1,41 @@
+/**
+ * Copyright (C) Paul Wortmann, PhysHex Games, www.physhexgames.com
+ * This file is part of "Frost And Flame"
+ *
+ * "Frost And Flame" is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, version 2 only.
+ *
+ * "Frost And Flame" is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with "Frost And Flame" If not, see <http://www.gnu.org/licenses/>.
+ *
+ * @author  Paul Wortmann
+ * @email   physhex@gmail.com
+ * @website www.physhexgames.com
+ * @license GPL V2
+ * @date 2011-11-11
+ */
 
 #include "map_manager.hpp"
 
-void cMapManager::load(const std::string &_fileName, cEntityManager &_entityManager)
+void cMapManager::load(const std::string &_fileName)
 {
     // import map data from file
     std::ifstream file_pointer;
-    file_pointer.open (_fileName, std::ifstream::in);
+    file_pointer.open (PATH_MAPS+_fileName, std::ifstream::in);
     if (!file_pointer.good())
-        gLogWrite(LOG_ERROR, "Unable to import map: " + _fileName, __FILE__, __LINE__, __FUNCTION__);
+    {
+        gLogWrite(LOG_ERROR, "Unable to load map: " + _fileName, __FILE__, __LINE__, __FUNCTION__);
+        return;
+    }
     else
     {
+        gLogWrite(LOG_INFO, "Loading map: " + _fileName, __FILE__, __LINE__, __FUNCTION__);
         bool is_map_name                    = false;
         bool is_map_pcg                     = false;
         bool is_map_size_x                  = false;
@@ -302,7 +328,9 @@ void cMapManager::load(const std::string &_fileName, cEntityManager &_entityMana
     std::ifstream file_tileset_pointer;
     file_tileset_pointer.open (m_map_tileset_fileName.c_str(), std::ifstream::in);
     if (!file_tileset_pointer.good())
-        gLogWrite(LOG_ERROR, "ERROR -> importing map tileset file  :  " + m_map_tileset_fileName, __FILE__, __LINE__, __FUNCTION__);
+    {
+        gLogWrite(LOG_ERROR, "Unable to load map tileset file: " + m_map_tileset_fileName, __FILE__, __LINE__, __FUNCTION__);
+    }
     else
     {
         bool is_tileset_base_name = false;
@@ -317,12 +345,17 @@ void cMapManager::load(const std::string &_fileName, cEntityManager &_entityMana
             s_temp_length = s_temp.length();
 
             if (s_temp.find("<base_name>") < s_temp_length)
+            {
                 is_tileset_base_name  = true;
+            }
             if (s_temp.find("<count_wall>") < s_temp_length)
+            {            
                 is_count_wall = true;
+            }
             if (s_temp.find("<count_corner>") < s_temp_length)
+            {
                 is_count_corner = true;
-
+            }
             if ((is_tileset_base_name) ||
                 (is_count_wall) ||
                 (is_count_corner))
@@ -334,14 +367,20 @@ void cMapManager::load(const std::string &_fileName, cEntityManager &_entityMana
                     if (!ready)
                     {
                         if (s_temp[i] == '>')
+                        {
                             ready = true;
+                        }
                     }
                     else
                     {
                         if (s_temp[i] == '<')
+                        {
                             ready = false;
+                        }
                         else
+                        {
                             temp += s_temp[i];
+                        }
                     }
                 }
                 if (is_tileset_base_name)
@@ -386,7 +425,9 @@ void cMapManager::load(const std::string &_fileName, cEntityManager &_entityMana
         // Load map from file.
         srand (m_map.data.seed);
         if (m_map.data.tile != nullptr)
+        {
             m_map.free();
+        }
         m_map.init();
         m_map.data.generator = m_map_generationAlgorithm;
         m_map.data.connect_algorithm = m_map_connectivityAlgorithm;
@@ -405,7 +446,9 @@ void cMapManager::load(const std::string &_fileName, cEntityManager &_entityMana
         std::ifstream file_pointer;
         file_pointer.open (_fileName, std::ifstream::in);
         if (!file_pointer.good())
+        {
             gLogWrite(LOG_ERROR, "ERROR -> importing map file  :  " + _fileName, __FILE__, __LINE__, __FUNCTION__);
+        }
         else
         {
             bool is_map_tile       = false;
@@ -605,23 +648,23 @@ void cMapManager::load(const std::string &_fileName, cEntityManager &_entityMana
     for (uint64_t i = 0; i < m_map.data.tile_count; i++)
         m_map.data.tile[i].c = false;
 
-    sEntity* entity = nullptr;
-
-    entity = _entityManager.getNew();
-    _entityManager.addComponentGraphics(entity);
+    sEntity* entity = m_entityManager->getNew();
+    m_entityManager->addComponentGraphics(entity);
+    m_entityManager->addComponentPhysics(entity);
     
-    _entityManager.setScale(entity, 1.0f, 1.0f, 1.0f);
-    _entityManager.setPosition(entity, 0.0f, 0.0f, 0.0f);
-    _entityManager.setRotation(entity, 0.0f, 0.0f, 0.0f);
+    m_entityManager->setScale(entity, 1.0f, 1.0f, 1.0f);
+    m_entityManager->setPosition(entity, 0.0f, 0.0f, 0.0f);
+    m_entityManager->setRotation(entity, 0.0f, 0.0f, 0.0f);
 
     sEntityModelGeneratorInfo info;
     info.name    = "map_floor";
     info.units_x = m_map_width;
     info.units_y = m_map_height;
-    _entityManager.generateModel(entity, info, m_map_floor_texture);
+    m_entityManager->generateModel(entity, info, m_map_floor_texture);
 
-    float pi_p =  3.141592654f;
 /*
+    float pi_p =  3.141592654f;
+
     for (uint32_t i = 0; i < m_map.data.tile_y; i++)
     {
         for (uint32_t j = 0; j < m_map.data.tile_x; j++)

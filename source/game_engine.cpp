@@ -58,6 +58,9 @@ void cGame::initialize(void)
 
         m_physicsEngine.setEntityHandle(m_entityManager.getFirstPhysicsComponent());
         m_physicsEngine.initialize();
+
+        m_mapManager.setEntityManagerHandle(&m_entityManager);
+        m_mapManager.initialize();
     }
     
     // Test music
@@ -69,11 +72,17 @@ void cGame::initialize(void)
     m_audioEngine.setAudioBufferName(bID1, "forgoten_tombs.ogg");
     m_audioEngine.attachSourceBuffer(sID1, bID1);
     m_audioEngine.playSource(sID1);
+
+    // Test map
+    //m_mapManager.load("crystal_dungeon_map_001.xml");
+    
+    //gLogWrite(LOG_INFO, xmlGetDataValue("<>map=test x=1<>", "x"), __FILE__, __LINE__, __FUNCTION__);
+
     
     // Test entity
     sEntity *entity = m_entityManager.getNew();
     m_entityManager.addComponentGraphics(entity);
-    m_entityManager.attachModel(entity, "diablo_001.obj", "diablo_001");
+    m_entityManager.attachModel(entity, "default.obj");
     m_entityManager.setScale(entity, 0.25f, 0.25f, 0.25f);
     m_entityManager.setPosition(entity, 0.0f, -8.0f, 0.0f);
     m_entityManager.setRotation(entity, 0.0f, 0.0f, 0.0f);
@@ -86,6 +95,7 @@ void cGame::initialize(void)
 void cGame::terminate(void)
 {
     // Terminate systems.
+    m_mapManager.terminate();
     m_animationEngine.terminate();
     m_audioEngine.terminate();
     m_graphicsEngine.terminate();

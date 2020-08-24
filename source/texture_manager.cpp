@@ -97,7 +97,7 @@ uint32_t cTextureManager::load(const std::string &_fileName)
 
     int32_t width, height, nrComponents;
     stbi_set_flip_vertically_on_load(1);
-    unsigned char *data = stbi_load(std::string(PATH_TEXTURE + _fileName).c_str(), &width, &height, &nrComponents, 0);
+    unsigned char *data = stbi_load(std::string(PATH_TEXTURES + _fileName).c_str(), &width, &height, &nrComponents, 0);
     if (data)
     {
         gLogWrite(LOG_INFO, "cTextureManager - Loading file: " + _fileName, __FILE__, __LINE__, __FUNCTION__);

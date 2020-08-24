@@ -41,10 +41,11 @@ struct sMapTileset
 class cMapManager
 {
     public:
-        void init(void);
-        void term(void);
-        void proc(void);
-        void load(const std::string &_fileName, cEntityManager &_entityManager);
+        void initialize(void);
+        void terminate(void);
+        void process(void);
+        void setEntityManagerHandle(cEntityManager *_entityManager);
+        void load(const std::string &_fileName);
         void save(const std::string &_fileName);
 
         uint16_t getMapBiome(void)    {return m_map_boime;}
@@ -54,6 +55,7 @@ class cMapManager
 
     protected:
     private:
+        cEntityManager       *m_entityManager             = nullptr;
         cLibRMGMap            m_map                       = {};
         std::string           m_map_name                  = "";
         bool                  m_map_pcg                   = true;

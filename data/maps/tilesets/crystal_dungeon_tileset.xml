@@ -1,0 +1,45 @@
+<tileset>
+   <tileset_name>crystal_dungeon</tileset_name>
+   <tileset_playlist>crystal_dungeon</tileset_playlist>
+   <tileset_biome>temprate</tileset_biome>
+   <tileset_type>dungeon</tileset_type>
+   <tileset_race>human</tileset_race>
+
+   <floor_texture>
+      <floor_texture>dungeon_001</floor_texture>
+   </floor_texture>
+
+   <wall_straight>
+      <wall_mesh>dungeon_wall_straight_001</wall_mesh>
+      <wall_texture>crystal_dungeon_001</wall_texture>
+   </wall_straight>
+
+   <wall_corner>
+      <wall_mesh>dungeon_wall_corner_001</wall_mesh>
+      <wall_texture>crystal_dungeon_002</wall_texture>
+   </wall_corner>
+
+   <wall_end>
+      <wall_mesh>dungeon_wall_end_001</wall_mesh>
+      <wall_texture>crystal_dungeon_003</wall_texture>
+   </wall_end>
+
+   <wall_tjunction>
+      <wall_mesh>dungeon_wall_tjunction_001</wall_mesh>
+      <wall_texture>crystal_dungeon_004</wall_texture>
+   </wall_tjunction>
+
+   <wall_xjunction>
+      <wall_mesh>dungeon_wall_xjunction_001</wall_mesh>
+      <wall_texture>crystal_dungeon_005</wall_texture>
+   </wall_xjunction>
+
+   <wall_arch>
+      <wall_mesh>dungeon_wall_arch_001</wall_mesh>
+      <wall_texture>crystal_dungeon_006</wall_texture>
+   </wall_arch>
+
+</tileset>
+
+
+
