@@ -30,6 +30,7 @@
 // A collection of basic functions to extract data from xml encoded strings*
 // *This does not cover the full XML specification.
 
+bool        xmlFind           (const std::string &_data, const std::string &_find);
 std::string xmlGetDataString  (const std::string &_data);
 std::string xmlGetDataValue   (const std::string &_data, const std::string &_key);
 float       xmlGetFloatValue  (const std::string &_data, const std::string &_key);

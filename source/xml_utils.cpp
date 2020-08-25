@@ -23,6 +23,15 @@
 
 #include "xml_utils.hpp"
 
+
+// A basic function to extract data from xml encoded string*
+// *This does not cover the full XML specification.
+// Returns: a bool result of a std::string find;
+bool xmlFind(const std::string &_data, const std::string &_find)
+{
+    return (_data.find(_find) != std::string::npos);
+}
+
 // A basic function to extract data from xml encoded string*
 // *This does not cover the full XML specification.
 // String encoded as: <tag>data</tag>
@@ -95,7 +104,9 @@ std::string xmlGetDataValue(const std::string &_data, const std::string &_key)
 // Converts a returned string into a float
 float xmlGetFloatValue(const std::string &_data, const std::string &_key)
 {
-    return stof(xmlGetDataValue(_data, _key));
+    std::string tString = xmlGetDataValue(_data, _key);
+    std::size_t vLength = tString.length();
+    return (vLength == 0) ? 0 : stof(tString);
 }
 
 // A basic function to extract data from xml encoded string*
@@ -103,7 +114,9 @@ float xmlGetFloatValue(const std::string &_data, const std::string &_key)
 // Converts a returned string into an int32
 int32_t xmlGetIntegerValue(const std::string &_data, const std::string &_key)
 {
-    return stoi(xmlGetDataValue(_data, _key));
+    std::string tString = xmlGetDataValue(_data, _key);
+    std::size_t vLength = tString.length();
+    return (vLength == 0) ? 0 : stoi(tString);
 }
 
 // A basic function to extract data from xml encoded string*
@@ -112,7 +125,15 @@ int32_t xmlGetIntegerValue(const std::string &_data, const std::string &_key)
 // Returns: glm::vec2(1.0, 2.0);
 glm::vec2 xmlGetVec2Value(const std::string &_data, const std::string &_key)
 {
-    return glm::vec2(xmlGetFloatValue(_data, "x"), xmlGetFloatValue(_data, "y"));
+    std::string tStringX = xmlGetDataValue(_data, "x");
+    std::string tStringY = xmlGetDataValue(_data, "y");
+    std::size_t vLengthX = tStringX.length();
+    std::size_t vLengthY = tStringY.length();
+    if ((vLengthX == 0) || (vLengthY == 0))
+    {
+        return glm::vec2(0.0f, 0.0f);
+    }
+    return glm::vec2(stof(tStringX), stof(tStringY));
 }
 
 // A basic function to extract data from xml encoded string*
@@ -121,5 +142,15 @@ glm::vec2 xmlGetVec2Value(const std::string &_data, const std::string &_key)
 // Returns: glm::vec3(1.0, 2.0, 3.0);
 glm::vec3 xmlGetVec3Value(const std::string &_data, const std::string &_key)
 {
-    return glm::vec3(xmlGetFloatValue(_data, "x"), xmlGetFloatValue(_data, "y"), xmlGetFloatValue(_data, "z"));
+    std::string tStringX = xmlGetDataValue(_data, "x");
+    std::string tStringY = xmlGetDataValue(_data, "y");
+    std::string tStringZ = xmlGetDataValue(_data, "z");
+    std::size_t vLengthX = tStringX.length();
+    std::size_t vLengthY = tStringY.length();
+    std::size_t vLengthZ = tStringZ.length();
+    if ((vLengthX == 0) || (vLengthY == 0) || (vLengthZ == 0))
+    {
+        return glm::vec3(0.0f, 0.0f, 0.0f);
+    }
+    return glm::vec3(stof(tStringX), stof(tStringY), stof(tStringZ));
 }
