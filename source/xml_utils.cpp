@@ -23,20 +23,20 @@
 
 #include "xml_utils.hpp"
 
-std::string xmlGetDataString(const std::string &_string)
+std::string xmlGetDataString(const std::string &_data)
 {
     std::string returnString = "";
-    uint32_t    stringLength = _string.length();
+    uint32_t    stringLength = _data.length();
     uint16_t    gtCount      = 0;
     uint16_t    ltCount      = 0;
     
     for (uint32_t i = 0; i < stringLength; ++i)
     {
-        if (_string[i] == '>')
+        if (_data[i] == '>')
         {
             gtCount++;
         }
-        else if (_string[i] == '<')
+        else if (_data[i] == '<')
         {
             ltCount++;
         }
@@ -44,38 +44,38 @@ std::string xmlGetDataString(const std::string &_string)
         {
             if ((ltCount == 1) && (gtCount == 1))
             {
-                returnString += _string[i];
+                returnString += _data[i];
             }
         }
     }
     return returnString;
 }
 
-std::string xmlGetDataValue(const std::string &_string, const std::string &_key)
+std::string xmlGetDataValue(const std::string &_data, const std::string &_key)
 {
     std::string returnString = "";
-    uint32_t    stringLength = _string.length();
+    uint32_t    stringLength = _data.length();
     uint16_t    gtCount      = 0;
     uint16_t    ltCount      = 0;
     uint16_t    esCount      = 0;
     uint16_t    scCount      = 0;
-    uint32_t    keyStart     = _string.find(_key);
+    uint32_t    keyStart     = _data.find(_key);
     
     for (uint32_t i = keyStart; i < stringLength; ++i)
     {
-        if (_string[i] == '>')
+        if (_data[i] == '>')
         {
             gtCount++;
         }
-        else if (_string[i] == '<')
+        else if (_data[i] == '<')
         {
             ltCount++;
         }
-        else if (_string[i] == '=')
+        else if (_data[i] == '=')
         {
             esCount++;
         }        
-        else if (_string[i] == ' ')
+        else if (_data[i] == ' ')
         {
             scCount++;
         }        
@@ -83,9 +83,98 @@ std::string xmlGetDataValue(const std::string &_string, const std::string &_key)
         {
             if ((esCount == 1) && (ltCount != 1) && (scCount != 1))
             {
-                returnString += _string[i];
+                returnString += _data[i];
             }
         }
     }
     return returnString;
+}
+
+glm::vec2 xmlGetVec2Value(const std::string &_data, const std::string &_key)
+{
+    glm::vec2 returnVec;
+    uint32_t stringSize = _data.size();
+    std::string tempString = "";
+    uint32_t start = _data.find(_key);
+    uint32_t countC = 0;
+    uint32_t countD = 0;
+    for (uint32_t i = start; i < stringSize; i++)
+    {
+        countC += (_data[i] == ',') ? 1 : 0;
+        countD += (_data[i] == '"') ? 1 : 0;
+        if ((_data[i] != '"') && (countD == 1))
+        {
+            if ((_data[i] != ' ') && (_data[i] != ','))
+            {
+                tempString += _data[i];
+            }
+            else
+            {
+                if ((_data[i+1] != ' ') && (_data[i+1] != ','))
+                {
+                    returnVec.x = stof(tempString);
+                    tempString = "";
+                }
+            }
+        }
+        if ((_data[i] == '"') && (countC == 1))
+        {
+            returnVec.y = stof(tempString);
+            countC++;
+        }
+    }
+    return returnVec;
+}
+
+glm::vec3 xmlGetVec3Value(const std::string &_data, const std::string &_key)
+{
+    glm::vec3 returnVec;
+    uint32_t stringSize = _data.size();
+    std::string tempString = "";
+    uint32_t start = _data.find(_key);
+    uint32_t countC = 0;
+    uint32_t countD = 0;
+    for (uint32_t i = start; i < stringSize; i++)
+    {
+        countC += (_data[i] == ',') ? 1 : 0;
+        countD += (_data[i] == '"') ? 1 : 0;
+        if ((_data[i] != '"') && (countD == 1))
+        {
+            if ((_data[i] != ' ') && (_data[i] != ','))
+            {
+                tempString += _data[i];
+            }
+            else
+            {
+                if ((_data[i+1] != ' ') && (_data[i+1] != ','))
+                {
+                    if (countC == 1)
+                    {
+                        returnVec.x = stof(tempString);
+                    }
+                    else if (countC == 2)
+                    {
+                        returnVec.y = stof(tempString);
+                    }
+                    tempString = "";
+                }
+            }
+        }
+        if ((_data[i] == '"') && (countC == 2))
+        {
+            returnVec.z = stof(tempString);
+            countC++;
+        }
+    }
+    return returnVec;
+}
+
+float xmlGetFloatValue(const std::string &_data, const std::string &_key)
+{
+    return stof(xmlGetDataValue(_data, _key));
+}
+
+int32_t xmlGetIntegerValue(const std::string &_data, const std::string &_key)
+{
+    return stoi(xmlGetDataValue(_data, _key));
 }

@@ -30,6 +30,7 @@
 #include "entity_manager.hpp"
 #include "libRMG.hpp"
 #include "map_defines.hpp"
+#include "xml_utils.hpp"
 
 struct sMapTileset
 {

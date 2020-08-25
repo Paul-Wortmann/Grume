@@ -83,6 +83,7 @@ void cGame::initialize(void)
     sEntity *entity = m_entityManager.getNew();
     m_entityManager.addComponentGraphics(entity);
     m_entityManager.attachModel(entity, "default.obj");
+    //m_entityManager.attachModel(entity, "diablo_001.obj", "diablo_001");
     m_entityManager.setScale(entity, 0.25f, 0.25f, 0.25f);
     m_entityManager.setPosition(entity, 0.0f, -8.0f, 0.0f);
     m_entityManager.setRotation(entity, 0.0f, 0.0f, 0.0f);

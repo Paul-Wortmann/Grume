@@ -27,7 +27,14 @@
 #include "includes.hpp"
 #include "defines.hpp"
 
-std::string xmlGetDataString(const std::string &_string);
-std::string xmlGetDataValue(const std::string &_string, const std::string &_key);
+// A collection of basic functions to extract data from xml encoded strings*
+// This relates to a specific DOM, and does not cover the full XML specification.
+
+std::string xmlGetDataString  (const std::string &_data);
+std::string xmlGetDataValue   (const std::string &_data, const std::string &_key);
+glm::vec2   xmlGetVec2Value   (const std::string &_data, const std::string &_key);
+glm::vec3   xmlGetVec3Value   (const std::string &_data, const std::string &_key);
+float       xmlGetFloatValue  (const std::string &_data, const std::string &_key);
+int32_t     xmlGetIntegerValue(const std::string &_data, const std::string &_key);
 
 #endif // XML_UTILS_HPP
