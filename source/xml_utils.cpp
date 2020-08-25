@@ -23,6 +23,10 @@
 
 #include "xml_utils.hpp"
 
+// A basic function to extract data from xml encoded string*
+// This relates to a specific DOM, and does not cover the full XML specification.
+// String encoded as: <tag>data</tag>
+// Returns: data
 std::string xmlGetDataString(const std::string &_data)
 {
     std::string returnString = "";
@@ -51,6 +55,10 @@ std::string xmlGetDataString(const std::string &_data)
     return returnString;
 }
 
+// A basic function to extract data from xml encoded string*
+// This relates to a specific DOM, and does not cover the full XML specification.
+// String encoded as: <tag>key1=data2 key2=data2 key3=data3</tag>
+// Depending on key specified returns associated, "key1" returns: data1
 std::string xmlGetDataValue(const std::string &_data, const std::string &_key)
 {
     std::string returnString = "";
@@ -90,6 +98,11 @@ std::string xmlGetDataValue(const std::string &_data, const std::string &_key)
     return returnString;
 }
 
+// A basic function to extract data from xml encoded string*
+// This relates to a specific DOM, and does not cover the full XML specification.
+// String encoded as: <tag>1.0 2.0</tag>
+// String encoded as: <tag>1.0,2.0</tag>
+// Returns: glm::vec2(1.0, 2.0);
 glm::vec2 xmlGetVec2Value(const std::string &_data, const std::string &_key)
 {
     glm::vec2 returnVec;
@@ -126,6 +139,11 @@ glm::vec2 xmlGetVec2Value(const std::string &_data, const std::string &_key)
     return returnVec;
 }
 
+// A basic function to extract data from xml encoded string*
+// This relates to a specific DOM, and does not cover the full XML specification.
+// String encoded as: <tag>1.0 2.0 3.0</tag>
+// String encoded as: <tag>1.0,2.0,3.0</tag>
+// Returns: glm::vec3(1.0, 2.0, 3.0);
 glm::vec3 xmlGetVec3Value(const std::string &_data, const std::string &_key)
 {
     glm::vec3 returnVec;
@@ -169,11 +187,13 @@ glm::vec3 xmlGetVec3Value(const std::string &_data, const std::string &_key)
     return returnVec;
 }
 
+// Converts a returned string into a float
 float xmlGetFloatValue(const std::string &_data, const std::string &_key)
 {
     return stof(xmlGetDataValue(_data, _key));
 }
 
+// Converts a returned string into an int32
 int32_t xmlGetIntegerValue(const std::string &_data, const std::string &_key)
 {
     return stoi(xmlGetDataValue(_data, _key));
