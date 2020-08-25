@@ -30,14 +30,8 @@
 #include "entity_manager.hpp"
 #include "libRMG.hpp"
 #include "map_defines.hpp"
+#include "map_manager_tileset.hpp"
 #include "xml_utils.hpp"
-
-struct sMapTileset
-{
-    std::string base_name    = "";
-    uint32_t    count_wall   = 0;
-    uint32_t    count_corner = 0;
-};
 
 class cMapManager
 {
