@@ -3,8 +3,7 @@
    <map_tileset>crystal_dungeon_tileset</map_tileset>
    <map_pcg>true</map_pcg>
    <map_generation_algorithm>RMG_GEN_D2</map_generation_algorithm>
-   <map_size_x>100</map_size_x>
-   <map_size_y>100</map_size_y>
+   <map_size x="100" y="100"/>
    <map_seed>0</map_seed>
    <map_connectivityAlgorithm>RMG_PATH_SL</map_connectivityAlgorithm>
    <map_roomShape>RMG_SQUARE</map_roomShape>
