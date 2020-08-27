@@ -9,31 +9,11 @@
    <floor_texture name="dungeon_001"/>
 
    <wall_straight mesh="dungeon_wall_straight_001" texture="crystal_dungeon_001"/>
-
-   <wall_corner>
-      <wall_mesh>dungeon_wall_corner_001</wall_mesh>
-      <wall_texture>crystal_dungeon_002</wall_texture>
-   </wall_corner>
-
-   <wall_end>
-      <wall_mesh>dungeon_wall_end_001</wall_mesh>
-      <wall_texture>crystal_dungeon_003</wall_texture>
-   </wall_end>
-
-   <wall_tjunction>
-      <wall_mesh>dungeon_wall_tjunction_001</wall_mesh>
-      <wall_texture>crystal_dungeon_004</wall_texture>
-   </wall_tjunction>
-
-   <wall_xjunction>
-      <wall_mesh>dungeon_wall_xjunction_001</wall_mesh>
-      <wall_texture>crystal_dungeon_005</wall_texture>
-   </wall_xjunction>
-
-   <wall_arch>
-      <wall_mesh>dungeon_wall_arch_001</wall_mesh>
-      <wall_texture>crystal_dungeon_006</wall_texture>
-   </wall_arch>
+   <wall_corner mesh="dungeon_wall_corner_001" texture="crystal_dungeon_002"/>
+   <wall_end mesh="dungeon_wall_end_001" texture="crystal_dungeon_003"/>
+   <wall_tjunction mesh="dungeon_wall_tjunction_001" texture="crystal_dungeon_004"/>
+   <wall_xjunctio mesh="dungeon_wall_xjunctio_001" texture="crystal_dungeon_005"/>
+   <wall_arch mesh="dungeon_wall_arch_001" texture="crystal_dungeon_006"/>
 
 </tileset>
 
