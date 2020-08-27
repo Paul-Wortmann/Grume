@@ -1,10 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <object>
-   <position>0.0 0.0 0.0</position>
-   <rotation>0.0 0.0 0.0</rotation>
-   <scale>1.0 1.0 1.0</scale>
+   <physics>
+      <position x="0.0" y="0.0" z="0.0"/>
+      <rotation x="0.0" y="0.0" z="0.0"/>
+      <scale x="1.0" y="1.0" z="1.0"/>
+      <type>static</type>
+      <destructable>false</destructable>
+   </physics>
 
-   <mesh>dungeon_wall_arch_001.obj</wall>
-   <texture>dungeon_001</wall>
+   <graphics>
+      <enabled>true</enabled>
+      <mesh>dungeon_wall_arch_001.obj</wall>
+      <texture>dungeon_001</wall>
+   </graphics>
 
 </object>
 
