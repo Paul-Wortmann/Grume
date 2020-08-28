@@ -74,9 +74,9 @@ void cGame::initialize(void)
     m_audioEngine.playSource(sID1);
 
     // Test map
-    //m_mapManager.load("crystal_dungeon_map_001.xml");
+    m_mapManager.load("crystal_dungeon_map_001.xml");
     
-    //gLogWrite(LOG_INFO, xmlGetDataValue("<>map=test x=1<>", "x"), __FILE__, __LINE__, __FUNCTION__);
+    //gLogWrite(LOG_INFO, xmlGetDataValue("<tag map=\"test\" x=\"1\"/>", "map"), __FILE__, __LINE__, __FUNCTION__);
 
     
     // Test entity

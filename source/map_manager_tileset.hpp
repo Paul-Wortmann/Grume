@@ -33,9 +33,25 @@
 
 struct sMapTileset
 {
-    std::string base_name    = "";
-    uint32_t    count_wall   = 0;
-    uint32_t    count_corner = 0;
+   std::string name                   = "";
+   std::string music                  = "";
+   std::string floor_texture          = "";
+   eMapBiome   biome                  = eMapBiome::mapBiomeDefault;
+   eMapType    type                   = eMapType::mapTypeDefault;
+   eMapRace    race                   = eMapRace::mapRaceDefault;
+
+   std::string wall_straight_mesh     = "";
+   std::string wall_straight_texture  = "";
+   std::string wall_corner_mesh       = "";
+   std::string wall_corner_texture    = "";
+   std::string wall_end_mesh          = "";
+   std::string wall_end_texture       = "";
+   std::string wall_tjunction_mesh    = "";
+   std::string wall_tjunction_texture = "";
+   std::string wall_xjunction_mesh    = "";
+   std::string wall_xjunction_texture = "";
+   std::string wall_arch_mesh         = "";
+   std::string wall_arch_texture      = "";
 };
 
 #endif // MAP_MANAGER_TILESET_HPP

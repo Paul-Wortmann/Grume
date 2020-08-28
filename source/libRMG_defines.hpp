@@ -139,6 +139,7 @@ struct sLibRMGMapTile
 struct sLibRMGMapData
 {
     std::string           name                   = "libRMG generated map.";
+    eMapFunction          function               = eMapFunction::mapFunctionDefault;
     eMapGenerator         generator              = eMapGenerator::mapGeneratorC1;
     bool                  genSeed                = true;
     uint32_t              seed                   = 0;
@@ -148,7 +149,7 @@ struct sLibRMGMapData
     uint32_t              event_count            = 0;
     sLibRMGMapRoom       *room                   = nullptr;
     uint32_t              room_count             = 0;
-    uint16_t              room_min               = 3; // Guaranteed minimum number of rooms, maps with less are discarded (sMap.pass times)
+    uint16_t              room_min               = 3; // Guaranteed minimum number of rooms, maps with less are discarded (sMap.maxItterations times)
     uint16_t              room_max               = density; // Will try generate up to roomMax rooms, on a tiny map 
     uint16_t              room_radius_max        = 8; // max room radius
     uint16_t              room_radius_min        = 2; // min room radius

@@ -25,6 +25,7 @@
 
 void cMapManager::save(const std::string &_fileName)
 {
+    /*
     // export map data to file
     std::ofstream file_pointer;
     file_pointer.open (_fileName, std::ifstream::out);
@@ -33,7 +34,7 @@ void cMapManager::save(const std::string &_fileName)
     else
     {
         file_pointer << "<map>" << std::endl;
-        file_pointer << "   <map_name>" << m_map_name << "</map_name>" << std::endl;
+        file_pointer << "   <map_name>" << m_map.data.name << "</map_name>" << std::endl;
         if (m_map_pcg)
             file_pointer << "   <map_pcg>true</map_pcg>" << std::endl;
         else
@@ -78,19 +79,19 @@ void cMapManager::save(const std::string &_fileName)
         if (m_map_directionBias == eDirection::directionWest)
             file_pointer << "   <map_direction_bias>RMG_WEST</map_direction_bias>" << std::endl;
         file_pointer << "   <map_direction_bias_strength>" << m_map_directionBiasStrength << "</map_direction_bias_strength>" << std::endl;
-        if (m_map_boime == eMapBiome::mapBiomeDefault)
+        if (m_map_biome == eMapBiome::mapBiomeDefault)
             file_pointer << "   <map_biome>MAP_BIOME_DEFAULT</map_biome>" << std::endl;
-        if (m_map_boime == eMapBiome::mapBiomeTemprate)
+        if (m_map_biome == eMapBiome::mapBiomeTemprate)
             file_pointer << "   <map_biome>MAP_BIOME_TEMPRATE</map_biome>" << std::endl;
-        if (m_map_boime == eMapBiome::mapBiomeDesert)
+        if (m_map_biome == eMapBiome::mapBiomeDesert)
             file_pointer << "   <map_biome>MAP_BIOME_DESERT</map_biome>" << std::endl;
-        if (m_map_boime == eMapBiome::mapBiomeJungle)
+        if (m_map_biome == eMapBiome::mapBiomeJungle)
             file_pointer << "   <map_biome>MAP_BIOME_JUNGLE</map_biome>" << std::endl;
-        if (m_map_boime == eMapBiome::mapBiomeVolcanic)
+        if (m_map_biome == eMapBiome::mapBiomeVolcanic)
             file_pointer << "   <map_biome>MAP_BIOME_VOLCANIC</map_biome>" << std::endl;
-        if (m_map_boime == eMapBiome::mapBiomeFrozen)
+        if (m_map_biome == eMapBiome::mapBiomeFrozen)
             file_pointer << "   <map_biome>MAP_BIOME_FROZEN</map_biome>" << std::endl;
-        if (m_map_boime == eMapBiome::mapBiomeSwamp)
+        if (m_map_biome == eMapBiome::mapBiomeSwamp)
             file_pointer << "   <map_biome>MAP_BIOME_WET</map_biome>" << std::endl;
         if (m_map_type == eMapType::mapTypeDefault)
             file_pointer << "   <map_type>MAP_TYPE_DEFAULT</map_type>" << std::endl;
@@ -173,4 +174,5 @@ void cMapManager::save(const std::string &_fileName)
         file_pointer << "</map>" << std::endl;
         file_pointer.close();
     }
+     * */
 }

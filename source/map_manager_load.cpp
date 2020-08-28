@@ -27,7 +27,7 @@ void cMapManager::load(const std::string &_fileName)
 {
     // import map data from file
     std::ifstream file_pointer;
-    file_pointer.open (PATH_MAPS+_fileName, std::ifstream::in);
+    file_pointer.open (PATH_MAPS + _fileName, std::ifstream::in);
     if (!file_pointer.good())
     {
         gLogWrite(LOG_ERROR, "Unable to load map: " + _fileName, __FILE__, __LINE__, __FUNCTION__);
@@ -36,288 +36,173 @@ void cMapManager::load(const std::string &_fileName)
     else
     {
         gLogWrite(LOG_INFO, "Loading map: " + _fileName, __FILE__, __LINE__, __FUNCTION__);
-        bool is_map_name                    = false;
-        bool is_map_pcg                     = false;
-        bool is_map_size_x                  = false;
-        bool is_map_size_y                  = false;
-        bool is_map_seed                    = false;
-        bool is_map_algorithm               = false;
-        bool is_map_connectivityAlgorithm   = false;
-        bool is_map_roomShape               = false;
-        bool is_map_density                 = false;
-        bool is_map_pass                    = false;
-        bool is_map_direction_bias          = false;
-        bool is_map_direction_bias_strength = false;
-        bool is_map_biome                   = false;
-        bool is_map_type                    = false;
-        bool is_map_race                    = false;
-        bool is_map_function                = false;
-        bool is_map_floor_texture           = false;
-        bool is_map_floor_shader            = false;
-        bool is_map_tileset                 = false;
-
-        std::string s_temp = "";
-        uint32_t s_temp_length = 0;
-
-        while (std::getline(file_pointer, s_temp))
+        
+        std::string data = "";
+        
+        while (std::getline(file_pointer, data))
         {
-            s_temp_length = s_temp.length();
-            if (s_temp.find("<map_name>") < s_temp_length)
-                is_map_name                = true;
-            if (s_temp.find("<map_pcg>") < s_temp_length)
-                is_map_pcg                 = true;
-            if (s_temp.find("<map_size_x>") < s_temp_length)
-                is_map_size_x              = true;
-            if (s_temp.find("<map_size_y>") < s_temp_length)
-                is_map_size_y              = true;
-            if (s_temp.find("<map_seed>") < s_temp_length)
-                is_map_seed                = true;
-            if (s_temp.find("<map_algorithm>") < s_temp_length)
-                is_map_algorithm               = true;
-            if (s_temp.find("<map_connectivityAlgorithm>") < s_temp_length)
-                is_map_connectivityAlgorithm   = true;
-            if (s_temp.find("<map_roomShape>") < s_temp_length)
-                is_map_roomShape               = true;
-            if (s_temp.find("<map_density>") < s_temp_length)
-                is_map_density                 = true;
-            if (s_temp.find("<pass>") < s_temp_length)
-                is_map_pass                    = true;
-            if (s_temp.find("<direction_bias>") < s_temp_length)
-                is_map_direction_bias          = true;
-            if (s_temp.find("<direction_bias_strength>") < s_temp_length)
-                is_map_direction_bias_strength = true;
-            if (s_temp.find("<map_biome>") < s_temp_length)
-                is_map_biome               = true;
-            if (s_temp.find("<map_type>") < s_temp_length)
-                is_map_type                = true;
-            if (s_temp.find("<map_race>") < s_temp_length)
-                is_map_race               = true;
-            if (s_temp.find("<map_function>") < s_temp_length)
-                is_map_function            = true;
-            if (s_temp.find("<map_floor_texture>") < s_temp_length)
-                is_map_floor_texture       = true;
-            if (s_temp.find("<map_floor_shader>") < s_temp_length)
-                is_map_floor_shader        = true;
-            if (s_temp.find("<map_tileset>") < s_temp_length)
-                is_map_tileset             = true;
-
-            if ((is_map_name) ||
-                (is_map_pcg) ||
-                (is_map_size_x) ||
-                (is_map_size_y) ||
-                (is_map_seed) ||
-                (is_map_algorithm) ||
-                (is_map_connectivityAlgorithm) ||
-                (is_map_roomShape) ||
-                (is_map_density) ||
-                (is_map_pass) ||
-                (is_map_direction_bias) ||
-                (is_map_direction_bias_strength) ||
-                (is_map_biome) ||
-                (is_map_type) ||
-                (is_map_race) ||
-                (is_map_function) ||
-                (is_map_floor_texture) ||
-                (is_map_floor_shader) ||
-                (is_map_tileset))
+            // Extract the name of the map
+            if (xmlFind(data, "<map_name>"))
             {
-                bool        ready   = false;
-                std::string temp    = "";
-                for (uint64_t i = 0; i < s_temp.length(); i++)
-                {
-                    if (!ready)
-                    {
-                        if (s_temp[i] == '>')
-                            ready = true;
-                    }
-                    else
-                    {
-                        if (s_temp[i] == '<')
-                            ready = false;
-                        else
-                            temp += s_temp[i];
-                    }
-                }
-                if (is_map_name)
-                {
-                    m_map_name = temp.c_str();
-                    is_map_name   = false;
-                }
-                if (is_map_pcg)
-                {
-                    if (s_temp.find("1") < s_temp_length)
-                        m_map_pcg = true;
-                    if (s_temp.find("true") < s_temp_length)
-                        m_map_pcg = true;
-                    if (s_temp.find("TRUE") < s_temp_length)
-                        m_map_pcg = true;
-                    if (s_temp.find("0") < s_temp_length)
-                        m_map_pcg = false;
-                    if (s_temp.find("false") < s_temp_length)
-                        m_map_pcg = false;
-                    if (s_temp.find("FALSE") < s_temp_length)
-                        m_map_pcg = false;
-                    is_map_pcg    = false;
-                }
-                if (is_map_size_x)
-                {
-                    m_map_width  = std::stoi(temp);
-                    is_map_size_x      = false;
-                }
-                if (is_map_size_y)
-                {
-                    m_map_height = std::stoi(temp);
-                    is_map_size_y      = false;
-                }
-                if (is_map_seed)
-                {
-                    m_map_seed  = std::stoi(temp);
-                    is_map_seed     = false;
-                }
-                if (is_map_algorithm)
-                {
-                    if (s_temp.find("RMG_GEN_C1") < s_temp_length)
-                        m_map_generationAlgorithm = eMapGenerator::mapGeneratorC1;
-                    if (s_temp.find("RMG_GEN_C2") < s_temp_length)
-                        m_map_generationAlgorithm = eMapGenerator::mapGeneratorC2;
-                    if (s_temp.find("RMG_GEN_D1") < s_temp_length)
-                        m_map_generationAlgorithm = eMapGenerator::mapGeneratorD1;
-                    if (s_temp.find("RMG_GEN_D2") < s_temp_length)
-                        m_map_generationAlgorithm = eMapGenerator::mapGeneratorD2;
-                    if (s_temp.find("RMG_GEN_M1") < s_temp_length)
-                        m_map_generationAlgorithm = eMapGenerator::mapGeneratorM1;
-                    if (s_temp.find("RMG_GEN_T1") < s_temp_length)
-                        m_map_generationAlgorithm = eMapGenerator::mapGeneratorT1;
-                    is_map_algorithm = false;
-                }
-                if (is_map_connectivityAlgorithm)
-                {
-                    if (s_temp.find("RMG_PATH_SL") < s_temp_length)
-                        m_map_connectivityAlgorithm = eRoomConnectAlgorithm::connectSL;
-                    if (s_temp.find("RMG_PATH_ND") < s_temp_length)
-                        m_map_connectivityAlgorithm = eRoomConnectAlgorithm::connectND;
-                    if (s_temp.find("RMG_PATH_DW") < s_temp_length)
-                        m_map_connectivityAlgorithm = eRoomConnectAlgorithm::connectDW;
-                    is_map_connectivityAlgorithm = false;
-                }
-                if (is_map_roomShape)
-                {
-                    if (s_temp.find("RMG_RANDOM") < s_temp_length)
-                        m_map_roomShape = eRoomShape::roomShapeRandom;
-                    if (s_temp.find("RMG_CIRCLE") < s_temp_length)
-                        m_map_roomShape = eRoomShape::roomShapeCircle;
-                    if (s_temp.find("RMG_SQUARE") < s_temp_length)
-                        m_map_roomShape = eRoomShape::roomShapeSquare;
-                    is_map_roomShape = false;
-                }
-                if (is_map_density)
-                {
-                    m_map_density  = std::stoi(temp);
-                    is_map_density     = false;
-                }
-                if (is_map_pass)
-                {
-                    m_map_pass  = std::stoi(temp);
-                    is_map_pass     = false;
-                }
-                if (is_map_direction_bias)
-                {
-                    if (s_temp.find("RMG_NONE") < s_temp_length)
-                        m_map_directionBias = eDirection::directionNone;
-                    if (s_temp.find("RMG_NORTH") < s_temp_length)
-                        m_map_directionBias = eDirection::directionNorth;
-                    if (s_temp.find("RMG_SOUTH") < s_temp_length)
-                        m_map_directionBias = eDirection::directionSouth;
-                    if (s_temp.find("RMG_EAST") < s_temp_length)
-                        m_map_directionBias = eDirection::directionEast;
-                    if (s_temp.find("RMG_WEST") < s_temp_length)
-                        m_map_directionBias = eDirection::directionWest;
-                    is_map_direction_bias = false;
-                }
-                if (is_map_direction_bias_strength)
-                {
-                    m_map_directionBiasStrength  = std::stoi(temp);
-                    is_map_direction_bias_strength   = false;
-                }
-                if (is_map_biome)
-                {
-                    if (s_temp.find("MAP_BIOME_DEFAULT") < s_temp_length)
-                        m_map_boime = eMapBiome::mapBiomeDefault;
-                    if (s_temp.find("MAP_BIOME_TEMPRATE") < s_temp_length)
-                        m_map_boime = eMapBiome::mapBiomeTemprate;
-                    if (s_temp.find("MAP_BIOME_DESERT") < s_temp_length)
-                        m_map_boime = eMapBiome::mapBiomeDesert;
-                    if (s_temp.find("MAP_BIOME_JUNGLE") < s_temp_length)
-                        m_map_boime = eMapBiome::mapBiomeJungle;
-                    if (s_temp.find("MAP_BIOME_VOLCANIC") < s_temp_length)
-                        m_map_boime = eMapBiome::mapBiomeVolcanic;
-                    if (s_temp.find("MAP_BIOME_FROZEN") < s_temp_length)
-                        m_map_boime = eMapBiome::mapBiomeFrozen;
-                    if (s_temp.find("MAP_BIOME_WET") < s_temp_length)
-                        m_map_boime = eMapBiome::mapBiomeSwamp;
-                    is_map_biome = false;
-                }
-                if (is_map_type)
-                {
-                    if (s_temp.find("MAP_TYPE_DEFAULT") < s_temp_length)
-                        m_map_type = eMapType::mapTypeDefault;
-                    if (s_temp.find("MAP_TYPE_DUNGEON") < s_temp_length)
-                        m_map_type = eMapType::mapTypeDungeon;
-                    if (s_temp.find("MAP_TYPE_CAVE") < s_temp_length)
-                        m_map_type = eMapType::mapTypeCave;
-                    if (s_temp.find("MAP_TYPE_CATACOMB") < s_temp_length)
-                        m_map_type = eMapType::mapTypeCatacomb;
-                    if (s_temp.find("MAP_TYPE_LAND") < s_temp_length)
-                        m_map_type = eMapType::mapTypeLand;
-                    is_map_type = false;
-                }
-                if (is_map_race)
-                {
-                    if (s_temp.find("MAP_RACE_DEFAULT") < s_temp_length)
-                        m_map_race = eMapRace::mapRaceDefault;
-                    if (s_temp.find("MAP_RACE_HUMAN") < s_temp_length)
-                        m_map_race = eMapRace::mapRaceHuman;
-                    if (s_temp.find("MAP_RACE_VAMPIRE") < s_temp_length)
-                        m_map_race = eMapRace::mapRaceVampire;
-                    if (s_temp.find("MAP_RACE_LYCAN") < s_temp_length)
-                        m_map_race = eMapRace::mapRaceLycan;
-                    if (s_temp.find("MAP_CLASS_ELF") < s_temp_length)
-                        m_map_race = eMapRace::mapRaceElf;
-                    if (s_temp.find("MAP_RACE_BEAST") < s_temp_length)
-                        m_map_race = eMapRace::mapRaceBeast;
-                    if (s_temp.find("MAP_RACE_DWARF") < s_temp_length)
-                        m_map_race = eMapRace::mapRaceDwarf;
+                m_map.data.name = xmlGetDataString(data);
+            }
 
-                    is_map_race = false;
-                }
-                if (is_map_function)
+            // Extract the the tileset file name
+            else if (xmlFind(data, "<map_tileset>"))
+            {
+                m_tileset_fileName = xmlGetDataString(data);
+            }
+
+            // Extract the dimentions of the map, in tiles
+            else if (xmlFind(data, "<map_size"))
+            {
+                m_map.data.tile_x = xmlGetIntegerValue(data, "x");
+                m_map.data.tile_y = xmlGetIntegerValue(data, "y");
+            }
+
+            // Extract information regarding the generation algorithm and seed
+            else if (xmlFind(data, "<map_generation"))
+            {
+                // Seed
+                m_map.data.seed = xmlGetIntegerValue(data, "seed");
+                
+                // Generation algorithm
+                std::string tString = xmlGetDataValue(data, "algorithm");
+
+                if (xmlFind(tString, "RMG_GEN_C1"))
                 {
-                    if (s_temp.find("MAP_FUNCTION_DEFAULT") < s_temp_length)
-                        m_map_function = eMapFunction::mapFunctionDefault;
-                    if (s_temp.find("MAP_FUNCTION_NONE") < s_temp_length)
-                        m_map_function = eMapFunction::mapFunctionNone;
-                    if (s_temp.find("MAP_FUNCTION_PATH") < s_temp_length)
-                        m_map_function = eMapFunction::mapFunctionPath;
-                    if (s_temp.find("MAP_FUNCTION_TOWN") < s_temp_length)
-                        m_map_function = eMapFunction::mapFunctionTown;
-                    if (s_temp.find("MAP_FUNCTION_BOSS") < s_temp_length)
-                        m_map_function = eMapFunction::mapFunctionBoss;
-                    is_map_function = false;
+                    m_map.data.generator = eMapGenerator::mapGeneratorC1;
                 }
-                if (is_map_floor_texture)
+                else if (xmlFind(tString, "RMG_GEN_C2"))
                 {
-                    m_map_floor_texture = temp.c_str();
-                    is_map_floor_texture = false;
+                    m_map.data.generator = eMapGenerator::mapGeneratorC2;
                 }
-                if (is_map_floor_shader)
+                else if (xmlFind(tString, "RMG_GEN_D1"))
                 {
-                    m_map_floor_shader = temp.c_str();
-                    is_map_floor_shader = false;
+                    m_map.data.generator = eMapGenerator::mapGeneratorD1;
                 }
-                if (is_map_tileset)
+                else if (xmlFind(tString, "RMG_GEN_D2"))
                 {
-                    m_map_tileset_fileName = temp.c_str();
-                    is_map_tileset = false;
+                    m_map.data.generator = eMapGenerator::mapGeneratorD2;
+                }
+                else if (xmlFind(tString, "RMG_GEN_M1"))
+                {
+                    m_map.data.generator = eMapGenerator::mapGeneratorM1;
+                }
+                else if (xmlFind(tString, "RMG_GEN_T1"))
+                {
+                    m_map.data.generator = eMapGenerator::mapGeneratorT1;
+                }
+            }
+            
+            // Extract the connectivity algorithm
+            else if (xmlFind(data, "<map_connectivity"))
+            {
+                // Connectivity algorithm
+                std::string tString = xmlGetDataValue(data, "algorithm");
+
+                if (xmlFind(tString, "RMG_PATH_SL"))
+                {
+                    m_map.data.connect_algorithm = eRoomConnectAlgorithm::connectSL;
+                }
+                else if (xmlFind(tString, "RMG_PATH_ND"))
+                {
+                    m_map.data.connect_algorithm = eRoomConnectAlgorithm::connectND;
+                }
+                else if (xmlFind(tString, "RMG_PATH_DW"))
+                {
+                    m_map.data.connect_algorithm = eRoomConnectAlgorithm::connectDW;
+                }
+            }
+            
+            // Extract the room shape
+            else if (xmlFind(data, "<map_room"))
+            {
+                // Room shape
+                std::string tString = xmlGetDataValue(data, "shape");
+
+                if (xmlFind(tString, "RMG_ROOM_RANDOM"))
+                {
+                    m_map.data.room_shape = eRoomShape::roomShapeRandom;
+                }
+                else if (xmlFind(tString, "RMG_ROOM_CIRCLE"))
+                {
+                    m_map.data.room_shape = eRoomShape::roomShapeCircle;
+                }
+                else if (xmlFind(tString, "RMG_ROOM_SQUARE"))
+                {
+                    m_map.data.room_shape = eRoomShape::roomShapeSquare;
+                }
+            }
+            
+            // Extract the map max density
+            else if (xmlFind(data, "<map_density>"))
+            {
+                m_map.data.density = std::stoi(xmlGetDataString(data));
+            }
+            
+            // Extract the map max itteration count 
+            else if (xmlFind(data, "<map_itterate>"))
+            {
+                m_map.data.maxItterations = std::stoi(xmlGetDataString(data));
+            }
+            
+            // Extract the direction data
+            else if (xmlFind(data, "<map_direction"))
+            {
+                // Direction bias strength
+                m_map.data.direction_biasStrength = xmlGetIntegerValue(data, "strength");
+
+                // Direction bias
+                std::string tString = xmlGetDataValue(data, "bias");
+
+                if (xmlFind(tString, "RMG_DIRECTION_NONE"))
+                {
+                    m_map.data.direction_bias = eDirection::directionNone;
+                }
+                else if (xmlFind(tString, "RMG_DIRECTION_NORTH"))
+                {
+                    m_map.data.direction_bias = eDirection::directionNorth;
+                }
+                else if (xmlFind(tString, "RMG_DIRECTION_SOUTH"))
+                {
+                    m_map.data.direction_bias = eDirection::directionSouth;
+                }
+                else if (xmlFind(tString, "RMG_DIRECTION_EAST"))
+                {
+                    m_map.data.direction_bias = eDirection::directionEast;
+                }
+                else if (xmlFind(tString, "RMG_DIRECTION_WEST"))
+                {
+                    m_map.data.direction_bias = eDirection::directionWest;
+                }
+            }
+            
+            // Extract the map function
+            else if (xmlFind(data, "<map_function>"))
+            {
+                // Map function
+                std::string tString = xmlGetDataString(data);
+
+                if (xmlFind(tString, "MAP_FUNCTION_DEFAULT"))
+                {
+                    m_map.data.function = eMapFunction::mapFunctionDefault;
+                }
+                else if (xmlFind(tString, "MAP_FUNCTION_NONE"))
+                {
+                    m_map.data.function = eMapFunction::mapFunctionNone;
+                }
+                else if (xmlFind(tString, "MAP_FUNCTION_PATH"))
+                {
+                    m_map.data.function = eMapFunction::mapFunctionPath;
+                }
+                else if (xmlFind(tString, "MAP_FUNCTION_TOWN"))
+                {
+                    m_map.data.function = eMapFunction::mapFunctionTown;
+                }
+                else if (xmlFind(tString, "MAP_FUNCTION_BOSS"))
+                {
+                    m_map.data.function = eMapFunction::mapFunctionBoss;
                 }
             }
         }
@@ -326,83 +211,72 @@ void cMapManager::load(const std::string &_fileName)
 
     // import tileset data from file
     std::ifstream file_tileset_pointer;
-    file_tileset_pointer.open (m_map_tileset_fileName.c_str(), std::ifstream::in);
+    file_tileset_pointer.open (PATH_TILESETS + m_tileset_fileName, std::ifstream::in);
     if (!file_tileset_pointer.good())
     {
-        gLogWrite(LOG_ERROR, "Unable to load map tileset file: " + m_map_tileset_fileName, __FILE__, __LINE__, __FUNCTION__);
+        gLogWrite(LOG_ERROR, "Unable to load map tileset file: " + m_tileset_fileName, __FILE__, __LINE__, __FUNCTION__);
     }
     else
     {
-        bool is_tileset_base_name = false;
-        bool is_count_wall        = false;
-        bool is_count_corner      = false;
+        gLogWrite(LOG_INFO, "Loading tileset: " + m_tileset_fileName, __FILE__, __LINE__, __FUNCTION__);
 
-        std::string s_temp = "";
-        uint32_t s_temp_length = 0;
-
-        while (std::getline(file_tileset_pointer, s_temp))
+        std::string data = "";
+        
+        while (std::getline(file_pointer, data))
         {
-            s_temp_length = s_temp.length();
+            // Extract the name of the tileset
+            if (xmlFind(data, "<tileset_name>"))
+            {
+                m_tileset.name = xmlGetDataString(data);
+            }
 
-            if (s_temp.find("<base_name>") < s_temp_length)
+            // Extract the music file name
+            else if (xmlFind(data, "<tileset_music>"))
             {
-                is_tileset_base_name  = true;
+                m_tileset.music = xmlGetDataString(data);
             }
-            if (s_temp.find("<count_wall>") < s_temp_length)
-            {            
-                is_count_wall = true;
-            }
-            if (s_temp.find("<count_corner>") < s_temp_length)
+
+            // Extract the biome
+            else if (xmlFind(data, "<tileset_biome>"))
             {
-                is_count_corner = true;
+                // Tileset biome
+                std::string tString = xmlGetDataString(data);
+
+                if (xmlFind(tString, "MAP_BIOME_DEFAULT"))
+                {
+                    m_tileset.biome = eMapBiome::mapBiomeDefault;
+                }
+                else if (xmlFind(tString, "MAP_BIOME_TEMPRATE"))
+                {
+                    m_tileset.biome = eMapBiome::mapBiomeTemprate;
+                }
+
+//got up to here, add the rest of the biomes and continue
+                else if (xmlFind(tString, "MAP_BIOME_TEMPRATE"))
+                {
+                    m_tileset.biome = eMapBiome::mapBiomeTemprate;
+                }
+
+
+                
             }
-            if ((is_tileset_base_name) ||
-                (is_count_wall) ||
-                (is_count_corner))
-            {
-                bool        ready   = false;
-                std::string temp    = "";
-                for (uint64_t i = 0; i < s_temp.length(); i++)
-                {
-                    if (!ready)
-                    {
-                        if (s_temp[i] == '>')
-                        {
-                            ready = true;
-                        }
-                    }
-                    else
-                    {
-                        if (s_temp[i] == '<')
-                        {
-                            ready = false;
-                        }
-                        else
-                        {
-                            temp += s_temp[i];
-                        }
-                    }
-                }
-                if (is_tileset_base_name)
-                {
-                    m_map_tileset.base_name = temp.c_str();
-                    is_tileset_base_name    = false;
-                }
-                if (is_count_wall)
-                {
-                    m_map_tileset.count_wall = std::stoi(temp);
-                    is_count_wall            = false;
-                }
-                if (is_count_corner)
-                {
-                    m_map_tileset.count_corner = std::stoi(temp);
-                    is_count_corner            = false;
-                }
-            }
+
+/*
+enum eMapBiome:uint16_t             { mapBiomeDefault = 0, mapBiomeTemprate = 1, mapBiomeDesert = 2, mapBiomeJungle = 3, mapBiomeVolcanic = 4, mapBiomeFrozen = 5, mapBiomeSwamp = 6 };
+enum eMapType:uint16_t              { mapTypeDefault = 0, mapTypeDungeon = 1, mapTypeCave = 2, mapTypeCatacomb = 3, mapTypeLand = 4 };
+enum eMapRace:uint16_t              { mapRaceDefault = 0, mapRaceHuman = 1, mapRaceVampire = 2, mapRaceLycan = 3, mapRaceElf = 4, mapRaceBeast = 5, mapRaceDwarf = 6 };
+*/
+
+
         }
         file_tileset_pointer.close();
     }
-
+    
+    
+    
+    
+    
+/*
     if (m_map_pcg)
     {
         // Gen map
@@ -416,8 +290,7 @@ void cMapManager::load(const std::string &_fileName)
         m_map.data.direction_bias = m_map_directionBias;
         m_map.data.direction_biasStrength = m_map_directionBiasStrength;
         m_map.data.seed = m_map_seed;
-        m_map_name = "genmesh_" + std::to_string(m_map_width) + "x" + std::to_string(m_map_height);
-        m_map.data.name = m_map_name;
+        m_map.data.name = "genmesh_" + std::to_string(m_map_width) + "x" + std::to_string(m_map_height);
         m_map.generate();
     }
     else
@@ -439,7 +312,6 @@ void cMapManager::load(const std::string &_fileName)
         m_map.data.direction_bias = m_map_directionBias;
         m_map.data.direction_biasStrength = m_map_directionBiasStrength;
         m_map.data.seed = m_map_seed;
-        m_map.data.name = m_map_name;
         m_map.data.tile_count = m_map.data.tile_x * m_map.data.tile_y;
         m_map.data.tile = new sLibRMGMapTile[m_map.data.tile_count];
         // import map data from file
@@ -661,7 +533,7 @@ void cMapManager::load(const std::string &_fileName)
     info.units_x = m_map_width;
     info.units_y = m_map_height;
     m_entityManager->generateModel(entity, info, m_map_floor_texture);
-
+*/
 /*
     float pi_p =  3.141592654f;
 

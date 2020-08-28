@@ -43,37 +43,20 @@ class cMapManager
         void load(const std::string &_fileName);
         void save(const std::string &_fileName);
 
-        uint16_t getMapBiome(void)    {return m_map_boime;}
-        uint16_t getMapType(void)     {return m_map_type;}
-        uint16_t getMapRace(void)     {return m_map_race;}
-        uint16_t getMapFunction(void) {return m_map_function;}
+        uint16_t getMapBiome(void)    {return m_tileset.biome;}
+        uint16_t getMapType(void)     {return m_tileset.type;}
+        uint16_t getMapRace(void)     {return m_tileset.race;}
+        uint16_t getMapFunction(void) {return m_map.data.function;}
 
     protected:
     private:
-        cEntityManager       *m_entityManager             = nullptr;
-        cLibRMGMap            m_map                       = {};
-        std::string           m_map_name                  = "";
+        cEntityManager       *m_entityManager         = nullptr;
+        cLibRMGMap            m_map                   = {};
+        std::string           m_tileset_fileName      = "";
+        sMapTileset           m_tileset               = {};
+
+        // a lot of these need to be removed in favor of using m_map.xxx instead
         bool                  m_map_pcg                   = true;
-        uint64_t              m_map_seed                  = 0;
-        uint32_t              m_map_width                 = 100;
-        uint32_t              m_map_height                = 100;
-        eMapGenerator         m_map_generationAlgorithm   = eMapGenerator::mapGeneratorD2;
-        eRoomConnectAlgorithm m_map_connectivityAlgorithm = eRoomConnectAlgorithm::connectND;
-        eRoomShape            m_map_roomShape             = eRoomShape::roomShapeSquare;
-        uint32_t              m_map_density               = 60;
-        uint32_t              m_map_pass                  = 4;
-        eDirection            m_map_directionBias         = eDirection::directionEast;
-        uint32_t              m_map_directionBiasStrength = 6;
-
-        eMapBiome             m_map_boime                 = eMapBiome::mapBiomeTemprate;
-        eMapType              m_map_type                  = eMapType::mapTypeDungeon;
-        eMapRace              m_map_race                  = eMapRace::mapRaceHuman;
-        eMapFunction          m_map_function              = eMapFunction::mapFunctionDefault;
-
-        std::string           m_map_floor_texture         = "";
-        std::string           m_map_floor_shader          = "";
-        std::string           m_map_tileset_fileName      = "";
-        sMapTileset           m_map_tileset               = {};
 };
 
 #endif // MAP_MANAGER_HPP
