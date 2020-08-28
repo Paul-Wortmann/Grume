@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map>
    <map_name>Crystal Dungeon 1</map_name>
-   <map_tileset>crystal_dungeon_tileset</map_tileset>
-   <map_generation algorithm="RMG_GEN_D2" seed="0"/>
+   <map_tileset>crystal_dungeon_tileset.xml</map_tileset>
    <map_size x="100" y="100"/>
+   <map_generation algorithm="RMG_GEN_D2" seed="0"/>
+
    <map_connectivity algorithm="RMG_PATH_SL"/>
    <map_room shape="RMG_SQUARE"/>
    <map_density>60</map_density>
