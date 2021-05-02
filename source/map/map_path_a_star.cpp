@@ -1,0 +1,150 @@
+
+
+#include "map_path_a_star.hpp"
+
+/// static void _pathAScalcTile(sMap*& _map, sMapPath& _path, sASTileData*& _pathData, std::uint32_t _p, std::uint32_t _t)
+static void _pathAScalcTile(sMap*& _map, sMapPath& _path, sASTileData*& _pathData, std::uint32_t _p, std::uint32_t _t)
+{
+    if (_pathData[_t].l == ePathData::pathClosed)
+        return;
+    if (_pathData[_t].a == ePathData::pathStart)
+        return;
+    if (_pathData[_t].l == ePathData::pathOpen)
+    {
+        std::uint32_t newG = (((_pathData[_t].x == _pathData[_p].x) || (_pathData[_t].y == _pathData[_p].y)) ? AS_MOV_S : AS_MOV_D);
+        if ((_pathData[_p].g + _pathData[_t].g) >= (_pathData[_p].g + newG))
+            return;
+    }
+
+    std::uint32_t ex = _path.destinationTile % _map->width;
+    std::uint32_t ey = _path.destinationTile / _map->width;
+    
+    _pathData[_t].p = _p;
+    _pathData[_t].l = ePathData::pathOpen;
+
+    _pathData[_t].h = (abs(static_cast<std::int32_t>(_pathData[_t].x) - static_cast<std::int32_t>(ex)) + 
+                       abs(static_cast<std::int32_t>(_pathData[_t].y) - static_cast<std::int32_t>(ey))) * AS_MOV_H;
+    _pathData[_t].g = _pathData[_p].g + (((_pathData[_t].x == _pathData[_p].x) || (_pathData[_t].y == _pathData[_p].y)) ? AS_MOV_S : AS_MOV_D);
+    _pathData[_t].f = _pathData[_t].h + _pathData[_t].g;
+}
+
+/// static bool _pathASinternal(sMap*& _map, sMapPath& _path, sASTileData*& _pathData, std::uint32_t _p, std::uint32_t _t)
+    // _p  "parent tile"
+    // _t  "target tile"
+    // "tile" could be a int32 and we could check if tile is < 0 too....
+    // However tile 0 is always a wall tile and cannot be pathed to. ;)
+static bool _pathASinternal(sMap*& _map, sMapPath& _path, sASTileData*& _pathData, std::uint32_t _p, std::uint32_t _t)
+{
+    std::uint32_t tile = _t;
+    if (_pathData[_t].a == ePathData::pathEnd)
+    {
+        _pathData[_t].p = _p;
+        return true;
+    }
+    if (_pathData[_t].l == ePathData::pathOpen)
+        _pathData[_t].l = ePathData::pathClosed;
+    tile = _t + 1;
+    if (tile < _map->numTiles)
+        _pathAScalcTile(_map, _path, _pathData, _t, tile);
+    tile = _t - 1;
+    if (tile < _map->numTiles)
+        _pathAScalcTile(_map, _path, _pathData, _t, tile);
+    tile = _t + _map->width;
+    if (tile < _map->numTiles)
+        _pathAScalcTile(_map, _path, _pathData, _t, tile);
+    tile = _t - _map->width;
+    if (tile < _map->numTiles)
+        _pathAScalcTile(_map, _path, _pathData, _t, tile);
+    tile = _t + _map->width + 1;
+    if (tile < _map->numTiles)
+        _pathAScalcTile(_map, _path, _pathData, _t, tile);
+    tile = _t + _map->width - 1;
+    if (tile < _map->numTiles)
+        _pathAScalcTile(_map, _path, _pathData, _t, tile);
+    tile = _t - _map->width + 1;
+    if (tile < _map->numTiles)
+        _pathAScalcTile(_map, _path, _pathData, _t, tile);
+    tile = _t - _map->width - 1;
+    if (tile < _map->numTiles)
+        _pathAScalcTile(_map, _path, _pathData, _t, tile);
+    std::uint32_t nextTileF = UINT32_MAX;
+    std::uint32_t nextTile  = 0;
+    bool nextFound = false;
+    for (uint32_t i = 0; i < _map->numTiles; i++)
+    {
+        if ((_pathData[i].l == ePathData::pathOpen) && (_pathData[i].f < nextTileF))
+        {
+            nextTileF = _pathData[i].f;
+            nextTile  = i;
+            nextFound = true;
+        }
+    }
+    if (nextFound)
+        return _pathASinternal(_map, _path, _pathData, _t, nextTile);
+    return false;
+}
+
+/// void gAStar(sMap*& _map, sMapPath& _path)
+void gAStar(sMap*& _map, sMapPath& _path)
+{
+    // Set up
+    _path.pathLength      = 0;
+    if (_path.path != nullptr)
+    {
+        delete [] _path.path;
+        _path.path = nullptr;
+    }
+    if (_map == nullptr)
+    {
+        return;
+    }
+    sASTileData* pathData = new sASTileData[_map->numTiles];
+    for (std::uint32_t i = 0; i < _map->height; i++)
+    {
+        for (std::uint32_t j = 0; j < _map->width; j++)
+        {
+            std::uint32_t tile = (i * _map->width) + j;
+            pathData[tile].x = j;
+            pathData[tile].y = i;
+            pathData[tile].l = (_map->tile[tile].base == eTileBase::tileWall) ? ePathData::pathClosed : ePathData::pathNone;
+            pathData[tile].a = ePathData::pathNone;
+        }
+    }
+    pathData[_path.currentTile].a = ePathData::pathStart;
+    pathData[_path.currentTile].l = ePathData::pathClosed;
+    pathData[_path.currentTile].h = 0;
+    pathData[_path.currentTile].g = 0;
+    pathData[_path.currentTile].f = 0;
+    pathData[_path.currentTile].p = _path.currentTile;
+    pathData[_path.destinationTile].a = ePathData::pathEnd;
+
+    // Process
+    if (!_pathASinternal(_map, _path, pathData, _path.currentTile, _path.currentTile))
+    {
+        // No path found, cleanup and return
+        delete [] pathData;
+        return;
+    }
+    _path.pathLength = 0;
+
+    //build path data
+    std::uint32_t pathPosition = _path.destinationTile;
+    while (pathPosition != _path.currentTile)
+    {
+        pathPosition = pathData[pathPosition].p;
+        _path.pathLength++;
+    }
+    _path.path = new std::uint32_t[_path.pathLength + 1];
+    pathPosition = _path.destinationTile;
+    std::uint32_t i = _path.pathLength + 1;
+    while (pathPosition != _path.currentTile)
+    {
+        _path.path[--i] = pathPosition;
+        pathPosition = pathData[pathPosition].p;
+    }
+    _path.path[0] = _path.currentTile;
+
+    // Clean up
+    delete [] pathData;
+}
+

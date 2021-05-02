@@ -1,0 +1,11 @@
+﻿<?xml version = "1.0" encoding = "UTF-8" ?>
+<material>
+    <name>cave_001</name>
+    <diffuse>cave_001_d.png</diffuse>
+    <emissive>cave_001_e.png</emissive>
+    <normal>cave_001_n.png</normal>
+    <specular>cave_001_s.png</specular>
+</material>
+
+
+

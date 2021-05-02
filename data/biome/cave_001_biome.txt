@@ -1,0 +1,11 @@
+
+<biome>
+    <name>cave_001_biome</name>
+    <music_set>all_music_set.txt</music_set>
+    <music_tag>cave</music_tag>
+    <npc_set>all_npc_set.txt</npc_set>
+    <object_set>all_object_set.txt</object_set>
+    <wall_set>cave_001_wall_set.txt</wall_set>
+    <floor_spritesheet>cave/cave_001_floor.txt</floor_spritesheet>
+</biome>
+

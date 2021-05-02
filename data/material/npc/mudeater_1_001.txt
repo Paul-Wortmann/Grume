@@ -1,0 +1,8 @@
+﻿<?xml version = "1.0" encoding = "UTF-8" ?>
+<material>
+    <name>mudeater_001</name>
+    <diffuse>mudeater/caucasian-male-young.png.001.png</diffuse>
+    <emissive>none_e.png</emissive>
+    <normal>mudeater/Normal.png</normal>
+    <specular>mudeater/specular.png</specular>
+</material>

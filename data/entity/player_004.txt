@@ -1,0 +1,22 @@
+﻿<?xml version = "1.0" encoding = "UTF-8" ?>
+<player>
+    <information>
+        <name>player</name>
+    </information>
+    <resources>
+        <model>npc/monster_001.dae</model>
+        <material>npc/monster_1_001.txt</material>
+    </resources>
+    <transform>
+        <position>0.0 -1.0 0.0</position>
+        <scale>0.0125 0.0125 0.0125</scale>
+        <temp>1.5708 3.1416 4.6124</temp>
+        <rotation>4.6124 0.0 3.1416</rotation>
+    </transform>
+    <animtion>
+        <animation_count>3</animation_count>
+        <idle>0 40</idle>
+        <walk>0 40</walk>
+        <run>0 40</run>
+    </animation>
+</player>

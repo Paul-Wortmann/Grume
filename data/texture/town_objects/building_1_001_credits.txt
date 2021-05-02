@@ -1,0 +1,5 @@
+0.0 https://opengameart.org/node/10172                  arikel     CC0
+1.0 https://opengameart.org/content/commission-medieval yughues    CC0
+0.1 http://www.blendswap.com/blends/view/49210          beaterator CC0
+1.1 https://opengameart.org/content/medivel-stone-floor musdasch   CC0
+

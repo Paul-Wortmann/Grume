@@ -1,0 +1,8 @@
+﻿<?xml version = "1.0" encoding = "UTF-8" ?>
+<material>
+    <name>monster_1_001</name>
+    <diffuse>monster_001/monster_001_d.png</diffuse>
+    <emissive>none_e.png</emissive>
+    <normal>monster_001/monster_001_n.png</normal>
+    <specular>monster_001/monster_001_s.png</specular>
+</material>

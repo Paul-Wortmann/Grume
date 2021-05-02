@@ -1,0 +1,8 @@
+﻿<?xml version = "1.0" encoding = "UTF-8" ?>
+<material>
+    <name>crystal_red_001</name>
+    <diffuse>crystal/object_crystal_red_001_d.png</diffuse>
+    <emissive>crystal/object_crystal_001_e.png</emissive>
+    <normal>crystal/object_crystal_001_n.png</normal>
+    <specular>crystal/object_crystal_001_s.png</specular>
+</material>

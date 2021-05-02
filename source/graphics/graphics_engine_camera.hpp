@@ -1,0 +1,40 @@
+
+
+
+#ifndef GRAPHICS_ENGINE_CAMERA_HPP
+#define GRAPHICS_ENGINE_CAMERA_HPP
+
+#include "../includes.hpp"
+
+class cGraphicsEngineCamera
+{
+    public:
+        void initialize(uint32 _fov, uint32 _width, uint32 _height);
+        void terminate(void);
+        glm::mat4 getViewMatrix(void) { return m_view; }
+        glm::mat4 getProjectionMatrix(void) { return m_projection; }
+        glm::vec3 getPosition(void) { return m_position; }
+        void      setPosition(glm::vec3 _position) { m_position = _position; m_calculateMartacies(); }
+        glm::vec3 getTarget(void) { return m_target; }
+        void      setTarget(glm::vec3 _target) { m_target = _target; m_calculateMartacies(); }
+        glm::vec3 getOrientation(void) { return m_orientation; }
+        void      setOrientation(glm::vec3 _orientation) { m_orientation = _orientation; m_calculateMartacies(); }
+        glm::vec3 getMouseRay(const float32 &_mouseX, const float32 &_mouseY);
+        glm::vec3 getRayPlaneIntersection(const glm::vec3 &_ray);
+        glm::vec3 getMousePositionTerrain(const float32 &_mouseX, const float32 &_mouseY);
+
+    protected:
+
+    private:
+        void           m_calculateMartacies(void);
+        uint32         m_fov          = 45;
+        uint32         m_width        = 1920;
+        uint32         m_height       = 1080;
+        glm::mat4      m_view         = glm::mat4(1);
+        glm::mat4      m_projection   = glm::mat4(1);
+        glm::vec3      m_position     = glm::vec3(0.0f, 0.0f, 0.0f);
+        glm::vec3      m_target       = glm::vec3(0.0f, 0.0f, 0.0f);
+        glm::vec3      m_orientation  = glm::vec3(0.0f, 1.0f, 0.0f);
+};
+
+#endif //GRAPHICS_ENGINE_CAMERA_HPP

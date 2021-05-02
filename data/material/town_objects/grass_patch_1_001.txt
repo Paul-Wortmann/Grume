@@ -1,0 +1,8 @@
+﻿<?xml version = "1.0" encoding = "UTF-8" ?>
+<material>
+    <name>grass_patch_1_001</name>
+    <diffuse>town_objects/grass_patch_1_001_d.png</diffuse>
+    <emissive>none_e.png</emissive>
+    <normal>town_objects/grass_patch_1_001_n.png</normal>
+    <specular>town_objects/grass_patch_1_001_s.png</specular>
+</material>

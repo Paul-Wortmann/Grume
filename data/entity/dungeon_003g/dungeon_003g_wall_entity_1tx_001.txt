@@ -1,0 +1,10 @@
+﻿<?xml version = "1.0" encoding = "UTF-8" ?>
+<entity>
+    <name>dungeon_003g_wall_1tx_001</name>
+    <model>dungeon_003/dungeon_003_wall_1tx_001.obj</model>
+    <material>dungeon/dungeon_wall_3_002.txt</material>
+
+    <position>0.0 -1.0 0.0</position>
+    <scale>1.0 1.0 1.0</scale>
+    <rotation>0.0 0.0 0.0</rotation>
+</entity>

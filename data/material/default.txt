@@ -1,0 +1,7 @@
+﻿<?xml version = "1.0" encoding = "UTF-8" ?>
+<material>
+    <diffuse>default_d.png</diffuse>
+    <emissive>default_e.png</emissive>
+    <normal>default_n.png</normal>
+    <specular>default_s.png</specular>
+</material>

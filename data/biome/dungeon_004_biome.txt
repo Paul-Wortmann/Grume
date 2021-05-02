@@ -1,0 +1,11 @@
+
+<biome>
+    <name>dungeon_004_biome</name>
+    <music_set>all_music_set.txt</music_set>
+    <music_tag>dungeon</music_tag>
+    <npc_set>all_npc_set.txt</npc_set>
+    <object_set>all_object_set.txt</object_set>
+    <wall_set>dungeon_004_wall_set.txt</wall_set>
+    <floor_spritesheet>dungeon/dungeon_floor_4_001.txt</floor_spritesheet>
+</biome>
+

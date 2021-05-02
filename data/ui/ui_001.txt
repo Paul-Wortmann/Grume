@@ -1,0 +1,7 @@
+﻿<?xml version = "1.0" encoding = "UTF-8" ?>
+<ui>
+    <component>
+        <texture>ui/hud_001.png</texture>
+        <position>0.0f, 0.0f, 0.0f</position>
+    </component>
+</ui>

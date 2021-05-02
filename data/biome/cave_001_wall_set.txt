@@ -1,0 +1,99 @@
+
+<wall_set>
+	<name>cave_001_wall_set</name>
+
+########################################################################
+
+    # Wide pillar Wall models
+    <wall_wp>
+        <wall_wp_count>1</wall_wp_count>
+        <wall_wp_entity>cave_001/cave_001_wall_entity_wp.txt</wall_wp_entity>
+    </wall_wp>
+
+    # Wide end Wall models
+    <wall_we>
+        <wall_we_count>1</wall_we_count>
+        <wall_we_entity>cave_001/cave_001_wall_entity_we.txt</wall_we_entity>
+    </wall_we>
+
+    # Wide single sides Wall models
+    <wall_ws>
+        <wall_ws_count>1</wall_ws_count>
+        <wall_ws_entity>cave_001/cave_001_wall_entity_ws.txt</wall_ws_entity>
+    </wall_ws>
+
+    # Wide double sided Wall models
+    <wall_wd>
+        <wall_wd_count>1</wall_wd_count>
+        <wall_wd_entity>cave_001/cave_001_wall_entity_wd.txt</wall_wd_entity>
+    </wall_wd>
+
+    # Wide corner Wall models
+    <wall_wc>
+        <wall_wc_count>1</wall_wc_count>
+        <wall_wc_entity>cave_001/cave_001_wall_entity_wc.txt</wall_wc_entity>
+    </wall_wc>
+
+    # Wide top Wall models
+    <wall_wt>
+        <wall_wt_count>1</wall_wt_count>
+        <wall_wt_entity>cave_001/cave_001_wall_entity_wt.txt</wall_wt_entity>
+    </wall_wt>
+
+########################################################################
+
+    # Thin pillar Wall models
+    <wall_tp>
+        <wall_tp_count>1</wall_tp_count>
+        <wall_tp_entity>cave_001/cave_001_wall_entity_tp.txt</wall_tp_entity>
+    </wall_tp>
+
+    # Thin end Wall models
+    <wall_te>
+        <wall_te_count>1</wall_te_count>
+        <wall_te_entity>cave_001/cave_001_wall_entity_te.txt</wall_te_entity>
+    </wall_te>
+
+    # Thin double sided Wall models
+    <wall_td>
+        <wall_td_count>1</wall_td_count>
+        <wall_td_entity>cave_001/cave_001_wall_entity_td.txt</wall_td_entity>
+    </wall_td>
+
+    # Thin corner Wall models
+    <wall_tc>
+        <wall_tc_count>1</wall_tc_count>
+        <wall_tc_entity>cave_001/cave_001_wall_entity_tc.txt</wall_tc_entity>
+    </wall_tc>
+
+    # Thin T junction Wall models
+    <wall_tt>
+        <wall_tt_count>1</wall_tt_count>
+        <wall_tt_entity>cave_001/cave_001_wall_entity_tt.txt</wall_tt_entity>
+    </wall_tt>
+
+    # Thin X junction Wall models
+    <wall_tx>
+        <wall_tx_count>1</wall_tx_count>
+        <wall_tx_entity>cave_001/cave_001_wall_entity_tx.txt</wall_tx_entity>
+    </wall_tx>
+
+    # Thin doorway single Wall models
+    <wall_ts>
+        <wall_ts_count>1</wall_td_count>
+        <wall_ts_entity>cave_001/cave_001_wall_entity_ts.txt</wall_ts_entity>
+    </wall_ts>
+
+    # Thin doorway large Wall models
+    <wall_tl>
+        <wall_tl_count>1</wall_tl_count>
+        <wall_tl_entity>cave_001/cave_001_wall_entity_tl.txt</wall_tl_entity>
+    </wall_tl>
+
+    # Thin arch top Wall models
+    <wall_ta>
+        <wall_ta_count>1</wall_ta_count>
+        <wall_ta_entity>cave_001/cave_001_wall_entity_ta.txt</wall_ta_entity>
+    </wall_ta>
+
+</wall_set>
