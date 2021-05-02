@@ -30,7 +30,9 @@ include_directories(/usr/include)
 
 include_directories(common)
 
-file(GLOB FNF_S "source/*.cpp")
+include_directories(source/debug)
+
+file(GLOB_RECURSE FNF_S "source/*.cpp")
 
 add_executable(frost_and_flame ${FNF_S} )
 
