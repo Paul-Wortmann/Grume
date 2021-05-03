@@ -91,7 +91,10 @@ class cMapManager : public tcLinkedList<sMap>
 
         // map_generate_addObjects.cpp
         void m_addObjectEntities(sMap*& _map);
-
+        
+        // map_generate_addNPCs.cpp
+        void m_addNPCEntities(sMap*& _map);
+        
         // map_generate_C1.cpp
         std::uint32_t m_numNeighborTiles(sMap*& _map, const std::uint32_t &_tile);
         void m_generateMap_C1(sMap*& _map);

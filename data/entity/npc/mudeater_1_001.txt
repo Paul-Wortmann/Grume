@@ -1,5 +1,5 @@
 ﻿<?xml version = "1.0" encoding = "UTF-8" ?>
-<player>
+<npc>
     <information>
         <name>mudeater_1_001</name>
     </information>
@@ -12,4 +12,4 @@
         <scale>0.125 0.125 0.125</scale>
         <rotation>3.1416 0.0 0.0</rotation>
     </transform>
-</player>
+</npc>

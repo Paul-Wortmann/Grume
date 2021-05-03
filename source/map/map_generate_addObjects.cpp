@@ -48,7 +48,7 @@ void cMapManager::m_addObjectEntities(sMap*& _map)
     if ((xmlObjectFile.lineCount() > 0) && (xmlMapFile.lineCount() > 0))
     {
         // Load object names
-        uint32 object_count = xmlObjectFile.getInstanceCount("<object");
+        uint32 object_count = xmlObjectFile.getInstanceCount("<object>");
         std::vector<std::string> object_names;
         for (std::size_t i = 0; i < object_count; ++i)
         {

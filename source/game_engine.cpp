@@ -105,9 +105,11 @@ void cGameEngine::initialize(void)
         uiManager.load("ui_001.txt");
         sEntity* entity = nullptr;
 
-        entity = playerManager.load("player_004.txt");
+        entity = playerManager.load("player/male_base_1_001.txt");
         glm::vec3 pos = playerManager.getPosition();
         std::cout << "Position: " << pos.x << " " << pos.y << " " << pos.z << std::endl;
+        glm::vec3 rot = playerManager.getRotation();
+        std::cout << "Rotation: " << rot.x << " " << rot.y << " " << rot.z << std::endl;
         std::cout << "Tile: " << playerManager.getCurrentTile() << std::endl;
         //entity = playerManager.load("player_002.txt");
         //entity = playerManager.load("player_003.txt");

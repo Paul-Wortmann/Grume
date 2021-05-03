@@ -1,0 +1,8 @@
+﻿<?xml version = "1.0" encoding = "UTF-8" ?>
+<material>
+    <name>male_base_1_001</name>
+    <diffuse>player/male_base_1_001_d.png</diffuse>
+    <emissive>none_e.png</emissive>
+    <normal>player/male_base_1_001_n.png</normal>
+    <specular>player/male_base_1_001_s.png</specular>
+</material>

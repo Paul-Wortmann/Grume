@@ -1,4 +1,32 @@
 
 <npc_set>
 
+    <npc_define>
+        <npc>blacksmith</npc>       # 1
+        <npc>bat</npc>              # 2
+        <npc>monk</npc>             # 3
+        <npc>mudeater</npc>         # 4
+    </npc_define>
+
+    <blacksmith>
+        <blacksmith_count>1</blacksmith_count>
+        <blacksmith_entity>npc/blacksmith_1_001.txt</blacksmith_entity>
+    </blacksmith>
+
+    <bat>
+        <bat_count>1</bat_count>
+        <bat_entity>npc/bat_1_001.txt</bat_entity>
+    </bat>
+
+    <monk>
+        <monk_count>1</monk_count>
+        <monk_entity>npc/monk_1_001.txt</monk_entity>
+    </monk>
+
+    <mudeater>
+        <mudeater_count>1</mudeater_count>
+        <mudeater_entity>npc/mudeater_1_001.txt</mudeater_entity>
+    </mudeater>
+
 </npc_set>
+

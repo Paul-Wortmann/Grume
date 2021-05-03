@@ -104,5 +104,18 @@
         <object>5009 26 0 1.0 3.1416</object> # Castle
 
     </objects>
+
+    <mob_npcs>
+        #npc number, scale max, scale min, prevalence
+        <mob>2 0.5 1.0 5</mob> # bat
+    </mob_npcs>
+
+    <npcs>
+        #tile number, npc number, index (0 == random), scale, y-rotation
+
+        # town central
+        <npc>4437 1 1 1.0 0.0000</npc> # Blacksmith
+    </npcs>
+
 </map>
 

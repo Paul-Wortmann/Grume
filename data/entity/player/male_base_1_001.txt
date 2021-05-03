@@ -1,0 +1,20 @@
+﻿<?xml version = "1.0" encoding = "UTF-8" ?>
+<player>
+    <information>
+        <name>male_base_1_001</name>
+    </information>
+    <resources>
+        <model>player/male_base_1_001.dae</model>
+        <material>player/male_base_1_001.txt</material>
+    </resources>
+    <transform>
+        <position>0.0 -1.0 0.0</position>
+        <scale>0.1 0.1 0.1</scale>
+        <temp>1.5708 3.1416 4.6124</temp>
+        <rotation>4.6124 0.0 0.0</rotation>
+    </transform>
+    <animtion>
+        <animation_count>1</animation_count>
+        <idle>0 40</idle>
+    </animation>
+</player>
