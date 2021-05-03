@@ -170,11 +170,25 @@ void cAnimationEngine::m_calculateAnimation(double _currentAnimTime)
 
 void cAnimationEngine::process(double _deltaTime)
 {
+    // Set the animation processed flag
+    for (m_entityTemp = m_entityHead; m_entityTemp != nullptr; m_entityTemp = m_entityTemp->next)
+    {
+        if (m_entityTemp->model != nullptr)
+        {
+            m_entityTemp->model->animProcessed = false;
+        }
+    }
+
+    // Processed animations
     _deltaTime /= 1000.0f; // convert milliseconds to seconds
     for (m_entityTemp = m_entityHead; m_entityTemp != nullptr; m_entityTemp = m_entityTemp->next)
     {
-        if ((m_entityTemp->model != nullptr) && (m_entityTemp->model->animation != nullptr))
+        if ((m_entityTemp->model != nullptr) && (m_entityTemp->model->animation != nullptr) && (!m_entityTemp->model->animProcessed))
         {
+            // Set the animation processed flag, only process once per frame
+            m_entityTemp->model->animProcessed = true;
+            
+            // Get the pointer to the current animation
             sEntityAnimation* animation = &m_entityTemp->model->animation[m_entityTemp->model->currentAnimation];
 
             // determine the new animation time
