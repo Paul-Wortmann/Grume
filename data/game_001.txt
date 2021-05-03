@@ -1,0 +1,11 @@
+﻿<?xml version = "1.0" encoding = "UTF-8" ?>
+
+# This is the master game startup file,
+# modification should be done with care!
+
+<game>
+    <ui>ui_001.txt</ui>
+    <map>town_000.txt</map>
+    <player>male_base_1_001.txt</player>
+</game>
+

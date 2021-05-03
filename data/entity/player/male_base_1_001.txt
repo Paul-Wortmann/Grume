@@ -4,7 +4,7 @@
         <name>male_base_1_001</name>
     </information>
     <resources>
-        <model>player/male_base_1_001.dae</model>
+        <model>player/male_base_2_001.dae</model>
         <material>player/male_base_1_001.txt</material>
     </resources>
     <transform>

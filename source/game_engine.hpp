@@ -66,12 +66,17 @@ class cGameEngine
         cTimer           timer;
         cUIManager       uiManager;
        
+        // game_engine.cpp
         void initialize(void);
         void terminate(void);
         void process(void);
         void stopMusic(void);
         void playMusic(void);
         void resetPlayerPosition(void);
+
+        // game_load.cpp
+        void load(void);
+
 
         sEntity*      m_entityHead        = nullptr;
         sEntity*      m_entityTemp        = nullptr;

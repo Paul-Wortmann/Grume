@@ -94,7 +94,6 @@ void cMapManager::m_addWallWideEntities(sMap*& _map)
     float32 y_pos = -1.0f;
     
     // Load the map wall biome file
-    std::ifstream file;
     cXML xmlFile;
     xmlFile.load(FILE_PATH_BIOME + _map->biome->WallSet.fileName);
     
@@ -483,7 +482,6 @@ void cMapManager::m_addWallThinEntities(sMap*& _map)
     float32 y_pos = -1.0f;
     
     // Load the biome wallset file
-    std::ifstream file;
     cXML xmlFile;
     xmlFile.load(FILE_PATH_BIOME + _map->biome->WallSet.fileName);
     

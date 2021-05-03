@@ -74,7 +74,6 @@ sMapBiome* cBiomeManager::load(const std::string &_fileName)
     }
     
     // Load the biome from file
-    std::ifstream file;
     cXML xmlFile;
     xmlFile.load(FILE_PATH_BIOME + _fileName);
     if (xmlFile.lineCount() > 0)
@@ -109,7 +108,6 @@ sMapBiome* cBiomeManager::load(const std::string &_fileName)
 
 void cBiomeManager::m_load_musicSet(sMapBiome*& _biome)
 {
-    std::ifstream file;
     cXML xmlFile;
     xmlFile.load(FILE_PATH_BIOME + _biome->MusicSet.fileName);
     if (xmlFile.lineCount() > 0)
@@ -136,7 +134,6 @@ void cBiomeManager::m_load_objectSet(sMapBiome*& _biome)
 
 void cBiomeManager::m_load_wallSet(sMapBiome*& _biome)
 {
-    std::ifstream file;
     cXML xmlFile;
     xmlFile.load(FILE_PATH_BIOME + _biome->WallSet.fileName);
     if (xmlFile.lineCount() > 0)

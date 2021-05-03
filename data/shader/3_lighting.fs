@@ -192,6 +192,15 @@ float ShadowCalculation(int _lightNum)
 
 vec3 PointLightCalculation(int _lightNum, vec3 _normal)
 {
+    // Attenuation
+    float distance    = length(vs_tangentLightPosition[_lightNum] - vs_tangentfragPosition);
+    if (distance > 20.0f)
+    {
+        discard;
+    };
+
+    float attenuation = 1.0 / (pointLight[_lightNum].constant + pointLight[_lightNum].linear * distance + pointLight[_lightNum].quadratic * (distance * distance));
+
     // ambient
     vec3 ambient = pointLight[_lightNum].ambient * 0.1 * texture(material.diffuse, vs_textcoord).rgb;
    
@@ -208,9 +217,7 @@ vec3 PointLightCalculation(int _lightNum, vec3 _normal)
     vec3 specular = pointLight[_lightNum].specular * spec * texture(material.specular, vs_textcoord).rgb; 
     //vec3 specular = vec3(0.2) * spec;
 
-    // Attenuation
-    float distance    = length(vs_tangentLightPosition[_lightNum] - vs_tangentfragPosition);
-    float attenuation = 1.0 / (pointLight[_lightNum].constant + pointLight[_lightNum].linear * distance + pointLight[_lightNum].quadratic * (distance * distance));
+    // Apply attenuation
     ambient  *= attenuation;
     diffuse  *= attenuation;
     specular *= attenuation;

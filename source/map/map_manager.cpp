@@ -105,7 +105,6 @@ void cMapManager::load(const std::string &_fileName)
         unload();
     }
     
-    std::ifstream file;
     cXML xmlFile;
     xmlFile.load(FILE_PATH_MAP + _fileName);
     if (xmlFile.lineCount() > 0)
@@ -242,7 +241,6 @@ void cMapManager::load(const std::string &_fileName)
         // Load the music defined in the previously loaded biome
         if (m_currentMap->biome->MusicSet.fileName.length() > 3)
         {
-            std::ifstream musicFile;
             cXML xmlMusicFile;
             xmlMusicFile.load(FILE_PATH_BIOME + m_currentMap->biome->MusicSet.fileName);
             std::string xmlKey = "<" + m_currentMap->biome->MusicTag.name + "_entity>";

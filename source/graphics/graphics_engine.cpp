@@ -180,7 +180,7 @@ uint32 cGraphicsEngine::initialize(void)
                 // Player point light
                 m_playerLight = m_lightManager.getNew();
                 m_playerLight->enabled   = 1;
-                m_playerLight->position  = glm::vec3(0.0f, 1.0f, 0.0f);
+                m_playerLight->position  = glm::vec3(0.0f, 2.0f, 0.0f);
                 m_playerLight->ambient   = glm::vec3(1.5f, 1.5f, 1.5f);
                 m_playerLight->diffuse   = glm::vec3(1.8f, 1.8f, 1.8f);
                 m_playerLight->specular  = glm::vec3(1.0f, 1.0f, 1.0f);

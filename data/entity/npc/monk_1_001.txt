@@ -8,7 +8,7 @@
 	<material>npc/monk_1_001.txt</material>
     </resources>
     <transform>
-    <position>0.0 -1.0 0.0</position>
+    <position>0.0 0.0 0.0</position>
         <scale>1.5 1.5 1.5</scale>
         <rotation>3.1416 0.0 0.0</rotation>
     </transform>

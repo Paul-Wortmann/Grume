@@ -162,7 +162,6 @@ void cModelManager::m_freeAll(void)
 
 sEntityMaterial* cModelManager::loadMaterial(const std::string &_fileName)
 {
-    std::ifstream file;
     cXML xmlFile;
     xmlFile.load(FILE_PATH_MATERIAL + _fileName);
     if (xmlFile.lineCount() > 0)

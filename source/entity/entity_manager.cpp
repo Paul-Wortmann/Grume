@@ -98,7 +98,6 @@ void cEntityManager::updateModelMatrix(sEntity*& _entity)
 
 sEntity* cEntityManager::load(const std::string& _fileName, sEntity* _entity)
 {
-    std::ifstream file;
     cXML xmlFile;
     xmlFile.load(FILE_PATH_ENTITY + _fileName);
     if (xmlFile.lineCount() > 0)

@@ -44,9 +44,8 @@ void cPlayerManager::process(const float32 &_dt)
 
 sEntity* cPlayerManager::load(const std::string &_fileName)
 {
-    std::ifstream file;
     cXML xmlFile;
-    xmlFile.load(FILE_PATH_ENTITY + _fileName);
+    xmlFile.load(std::string(FILE_PATH_ENTITY) + "player/" + _fileName);
     if (xmlFile.lineCount() > 0)
     {
         gLogWrite(LOG_INFO, "Loading player: " + xmlFile.getString("<name>"), __FILE__, __LINE__, __FUNCTION__);

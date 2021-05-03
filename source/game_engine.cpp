@@ -27,11 +27,6 @@ void cGameEngine::run(void)
 {
     // Clear the log and log version information.
     gLogClear();
-    /*
-    gLogWrite(LOG_INFO, std::string(__DATE__) + " " + std::string(__TIME__) + " - Starting Frost and Flame.", __FILE__, __LINE__, __FUNCTION__);
-    std::string FNFVersion = std::to_string(FNF_VERSION_MAJOR) + "." + std::to_string(FNF_VERSION_MINOR) + "." + std::to_string(FNF_VERSION_MICRO);
-    gLogWrite(LOG_INFO, "Frost and Flame version: " + FNFVersion, __FILE__, __LINE__, __FUNCTION__);
-*/
     gLogWrite(LOG_INFO, std::string(__DATE__) + " " + std::string(__TIME__) + " - Starting Frost and Flame.", __FILE__, __LINE__, __FUNCTION__);
     std::string FNFVersion = std::to_string(FNF_VERSION_MAJOR) + "." + std::to_string(FNF_VERSION_MINOR) + "." + std::to_string(FNF_VERSION_MICRO);
     gLogWrite(LOG_INFO, "Frost and Flame version: " + FNFVersion, __FILE__, __LINE__, __FUNCTION__);
@@ -102,67 +97,19 @@ void cGameEngine::initialize(void)
         playerManager.initialize(&entityManager);
         playerManager.setTerrainHeight(-1.0f);
         uiManager.initialize(&entityManager);
-        uiManager.load("ui_001.txt");
-        sEntity* entity = nullptr;
+        
+        // load the starting map, player, and ui
+        load();
 
-        entity = playerManager.load("player/male_base_1_001.txt");
-        glm::vec3 pos = playerManager.getPosition();
-        std::cout << "Position: " << pos.x << " " << pos.y << " " << pos.z << std::endl;
-        glm::vec3 rot = playerManager.getRotation();
-        std::cout << "Rotation: " << rot.x << " " << rot.y << " " << rot.z << std::endl;
-        std::cout << "Tile: " << playerManager.getCurrentTile() << std::endl;
-        //entity = playerManager.load("player_002.txt");
-        //entity = playerManager.load("player_003.txt");
-/*
-        entity = entityManager.load("diablo_001.txt");
-        entity->position += glm::vec3(0.0, 0.0, -10.0);
-        entityManager.updateModelMatrix(entity);
-*/
-
+        // TEST bat -- DELETE ME --
         m_entityBat = entityManager.load("npc/bat_1_001.txt");
         if (m_entityBat != nullptr)
         {
             m_entityBat->position += glm::vec3(-4.0, 0.0, 4.0);
             entityManager.updateModelMatrix(m_entityBat);
         }
-/*
-        entity = entityManager.load("npc/monk_1_001.txt");
-        if (entity != nullptr)
-        {
-            entity->position += glm::vec3(-2.0, 0.0, -2.0);
-            entityManager.updateModelMatrix(entity);
-        }
-
-        entity = entityManager.load("npc/mudeater_1_001.txt");
-        if (entity != nullptr)
-        {
-            entity->position += glm::vec3(-6.0, 0.0, -1.0);
-            entityManager.updateModelMatrix(entity);
-        }
-*/
-/*
-        entity = entityManager.load("town_objects/medieval_statue_1_001.txt");
-        if (entity != nullptr)
-        {
-            entity->position += glm::vec3(0.0, 0.0, 0.0);
-            entityManager.updateModelMatrix(entity);
-        }
-*/
-/*
-        entity = entityManager.load("town_objects/medieval_house_1_001.txt");
-        if (entity != nullptr)
-        {
-            entity->position += glm::vec3(-4.0, 0.0, -10.0);
-            entityManager.updateModelMatrix(entity);
-        }
-*/
-        // Load maps
-        //map = mapManager.load("cave_001.txt");
-        //map = mapManager.load("cave_002.txt");
-        //map = mapManager.load("cave_003.txt");
-        mapManager.load("town_000.txt");
-        resetPlayerPosition();
-
+        // TEST bat -- DELETE ME --
+        
         // Play the music defined in the previously loaded biome
         playMusic();
 

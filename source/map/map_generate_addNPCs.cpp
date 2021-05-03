@@ -35,12 +35,10 @@ void cMapManager::m_addNPCEntities(sMap*& _map)
     float32 tp = 1.0f / 2.0f; // tile center positioning ( half model dimention)
 
     // Load the biome npc file
-    std::ifstream file;
     cXML xmlNPCFile;
     xmlNPCFile.load(FILE_PATH_BIOME + _map->biome->NPCSet.fileName);
     
     // Load the map file
-    std::ifstream mapFile;
     cXML xmlMapFile;
     xmlMapFile.load(FILE_PATH_MAP + _map->fileName);
     
