@@ -1,7 +1,7 @@
 ﻿<?xml version = "1.0" encoding = "UTF-8" ?>
 <entity>
     <name>crystal_blue_010</name>
-    <model>cave_objects/object_crystal_1_010.obj</model>
+    <model>cave_objects/crystal_1_010.obj</model>
     <material>cave_objects/crystal_blue_001.txt</material>
 
     <position>0.0 0.0 0.0</position>

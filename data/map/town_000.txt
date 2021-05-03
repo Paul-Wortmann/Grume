@@ -27,7 +27,10 @@
         #tile number, object number, index (0 == random), scale, y-rotation
 
         # town central
-        <object>4945 12 0 1.0 1.5708</object> # Central Well
+        <object>3250 12 7 1.0 0.0000</object> # Medieval props - out house
+        <object>4256 12 2 1.0 1.5708</object> # Medieval props - cart
+        <object>4756 12 4 1.0 3.1416</object> # Medieval props - watch tower
+        <object>4945 12 5 1.0 1.5708</object> # Medieval props - well
         <object>4036 11 0 1.0 1.5708</object> # medieval blacksmith
         <object>4041 13 0 1.0 1.5708</object> # old wagon
         <object>4152 10 0 1.0 1.5708</object> # medieval house
@@ -40,6 +43,7 @@
         <object>4454 02 0 1.0 0.0000</object> # Chest
         <object>5443 07 0 1.0 0.0000</object> # Barrel
         <object>5543 07 0 1.0 0.0000</object> # Barrel
+        <object>6043 08 2 1.0 0.0000</object> # Crate
         <object>5650 25 1 1.0 4.7124</object> # Torture device
         <object>4840 25 12 1.0 0.0000</object> # Torture device
 
@@ -97,7 +101,7 @@
         <object>9319 23 5 1.0 1.5708</object> # Cemetary object
 
         # Castle ruins
-        <object>5008 26 0 1.0 3.1416</object> # Castle
+        <object>5009 26 0 1.0 3.1416</object> # Castle
 
     </objects>
 </map>

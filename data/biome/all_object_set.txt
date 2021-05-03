@@ -13,7 +13,7 @@
         <object>statue</object>              # 9
         <object>medieval_house</object>      # 10
         <object>medieval_blacksmith</object> # 11
-        <object>medieval_well</object>       # 12
+        <object>medieval_props</object>      # 12
         <object>old_wagon</object>           # 13
         <object>medieval_sawmill</object>    # 14
         <object>grass_patch</object>         # 15
@@ -105,8 +105,9 @@
     </barrel>
 
     <crate>
-        <crate_count>1</crate_count>
+        <crate_count>2</crate_count>
         <crate_entity>common_objects/crate_1_001.txt</crate_entity>
+        <crate_entity>common_objects/crate_2_001.txt</crate_entity>
     </crate>
 
     <statue>
@@ -125,10 +126,16 @@
         <medieval_blacksmith_entity>town_objects/medieval_blacksmith_1_001.txt</medieval_blacksmith_entity>
     </medieval_blacksmith>
 
-    <medieval_well>
-        <medieval_well_count>1</medieval_well_count>
-        <medieval_well_entity>town_objects/medieval_well_1_001.txt</medieval_well_entity>
-    </medieval_well>
+    <medieval_props>
+        <medieval_props_count>7</medieval_props_count>
+        <medieval_props_entity>town_objects/medieval_bench_1_001.txt</medieval_props_entity>
+        <medieval_props_entity>town_objects/medieval_cart_1_001.txt</medieval_props_entity>
+        <medieval_props_entity>town_objects/medieval_stool_1_001.txt</medieval_props_entity>
+        <medieval_props_entity>town_objects/medieval_watch_tower_1_001.txt</medieval_props_entity>
+        <medieval_props_entity>town_objects/medieval_well_1_001.txt</medieval_props_entity>
+        <medieval_props_entity>town_objects/medieval_wheelbarrow_1_001.txt</medieval_props_entity>
+        <medieval_props_entity>town_objects/medieval_outhouse_1_001.txt</medieval_props_entity>
+    </medieval_props>
 
     <old_wagon>
         <old_wagon_count>1</old_wagon_count>
