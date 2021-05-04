@@ -80,8 +80,12 @@ sEntityModel* cMapManager::m_generateFloor(sMap*& _map)
                 spriteData[i].spriteNumX = 0;
                 spriteData[i].spriteNumY = 0;
             break;
-            case eTileBase::tileFloor:
             case eTileBase::tileFloorNoGo:
+                spriteData[i].type = eSpriteType::tileFloor;
+                spriteData[i].spriteNumX = 1;
+                spriteData[i].spriteNumY = 1;
+            break;
+            case eTileBase::tileFloor:
             case eTileBase::tileWallShort:
             case eTileBase::tileDoorway:
             case eTileBase::tileWall:

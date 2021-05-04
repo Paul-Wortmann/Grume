@@ -74,6 +74,7 @@ void cMapManager::m_addObjectEntities(sMap*& _map)
             std::uint32_t tObjectIndex    = 0;
             float         tObjectScale    = 0.0;
             float         tObjectRotation = 0.0;
+            uint32        tObjectObstacle = 0;
             std::uint32_t tStringNum = 0;
             std::string   tString = "";
             if (tObjectStringLength > 6)
@@ -102,6 +103,10 @@ void cMapManager::m_addObjectEntities(sMap*& _map)
                         {
                             tObjectRotation = std::stof(tString);
                         }
+                        else if (tStringNum == 5)
+                        {
+                            tObjectObstacle = std::stoi(tString);
+                        }
                         tStringNum++;
                         tString = "";
                     }
@@ -110,6 +115,11 @@ void cMapManager::m_addObjectEntities(sMap*& _map)
                         tString += tObjectString[j];
                     }
                 }
+            }
+            
+            if (tObjectObstacle != 0)
+            {
+                _map->tile[tObjectTileNum].base = eTileBase::tileFloorNoGo;
             }
             _map->tile[tObjectTileNum].object = tObjectNumber;
             
@@ -153,6 +163,7 @@ void cMapManager::m_addObjectEntities(sMap*& _map)
                 float  scale_min     = 0.0;
                 float  scale_max     = 0.0;
                 uint32 prevalence    = 0;
+                uint32 obstacle      = 0;
             };
             
             sDebris *debris = nullptr;
@@ -188,6 +199,10 @@ void cMapManager::m_addObjectEntities(sMap*& _map)
                             {
                                 debris[i].prevalence = std::stoi(tString);
                             }
+                            else if (tStringNum == 4)
+                            {
+                                debris[i].obstacle = std::stoi(tString);
+                            }
                             tStringNum++;
                             tString = "";
                         }
@@ -214,6 +229,10 @@ void cMapManager::m_addObjectEntities(sMap*& _map)
                             if ((!pDebris) && (rInt < debris[i].prevalence))
                             {
                                 pDebris = true;
+                                if (debris[i].obstacle != 0)
+                                {
+                                    _map->tile[t].base = eTileBase::tileFloorNoGo;
+                                }
                                 _map->tile[t].object = debris[i].object_number;
                                 if (object_counts[debris[i].object_number-1] > 0)
                                 {

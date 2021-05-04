@@ -124,7 +124,7 @@ void cPlayerManager::process(const float32 &_dt)
         int32 deltaX = 0;
         int32 deltaZ = 0;
         
-        std::cout << "Current tile: " << m_path.path[m_path.currentPosition] << std::endl;
+        //std::cout << "Current tile: " << m_path.path[m_path.currentPosition] << std::endl;
         m_moved = true;
         glm::vec3 playerPos      = m_data->position;
         glm::vec3 playerRot      = m_data->rotation;
@@ -205,7 +205,6 @@ void cPlayerManager::process(const float32 &_dt)
                     playerRot = glm::vec3(playerRot.x, playerRot.y, DTOR_180);
                 }
             }
-            
         }
         
         // move to tile center, set new tile in path

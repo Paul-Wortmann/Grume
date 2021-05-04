@@ -98,7 +98,7 @@ void cGameEngine::initialize(void)
         playerManager.setTerrainHeight(-1.0f);
         uiManager.initialize(&entityManager);
         
-        // load the starting map, player, and ui
+        // load the game startup file
         load();
 
         // TEST bat -- DELETE ME --
@@ -179,11 +179,20 @@ void cGameEngine::process(void)
             glm::vec3 cameraTarget = graphicsEngine.getCameraTarget();
             glm::vec3 cameraPosition = graphicsEngine.getCameraPosition();
             
-            float32 deltaTmax = 4.0f; // We shoud base this off the current zoom level
-            float32 deltaTmin = deltaTmax * graphicsEngine.getAspectRatio();
-            
             float32 deltaX = tPlayerPosition.x - cameraTarget.x;
             float32 deltaZ = tPlayerPosition.z - cameraTarget.z;
+
+            // Camera follow player
+            cameraPosition.x += deltaX;
+            cameraPosition.z += deltaZ;
+            cameraTarget.x += deltaX;
+            cameraTarget.z += deltaZ;
+            graphicsEngine.setCameraPosition(glm::vec3(cameraPosition));
+            graphicsEngine.setCameraTarget(glm::vec3(cameraTarget));
+/*
+            // Camera scrolls with player near screen edge
+            float32 deltaTmax = 4.0f; // We shoud base this off the current zoom level
+            float32 deltaTmin = deltaTmax * graphicsEngine.getAspectRatio();
 
             if (deltaX > deltaTmax)
             {
@@ -209,6 +218,7 @@ void cGameEngine::process(void)
                 graphicsEngine.setCameraPosition(glm::vec3(cameraPosition.x, cameraPosition.y, cameraPosition.z + deltaZ));
                 graphicsEngine.setCameraTarget(glm::vec3(cameraTarget.x, cameraTarget.y, cameraTarget.z + deltaZ));
             }
+            */
         }
 
 
@@ -270,118 +280,8 @@ void cGameEngine::process(void)
             graphicsEngine.initializeEntities();
             playMusic();
         }
-/*
-        if (graphicsEngine.getKeyState(GLFW_MOUSE_BUTTON_LEFT))
-        {
-            glm::vec3 destinationPosition = graphicsEngine.getMouseTerrainPosition();
-            destinationPosition.y -= 1.0f;
-            uint32 destinationTile = playerManager.positionToTile(destinationPosition);
 
-            std::cout << "Current tile: " << playerManager.getCurrentTile() << std::endl;
-            //std::cout << "Pathing to tile 17..." << std::endl;
-            playerManager.setDestinationTile(destinationTile);
-            //std::cout << "Pathing done." << std::endl;
-            std::cout << "Pathing length: " << playerManager.getPathLength() << std::endl;
-            std::cout << "Path: ";
-            sMap* tMap = mapManager.getMapPointer();
-            for (uint32 i = 0; i < playerManager.getPathLength(); ++i)
-            {
-                std::cout << playerManager.getPath(i) << " ";
-                tMap->tile[playerManager.getPath(i)].object = 6;
-            }
-            std::cout << std::endl;
-                mapManager.applyObjects(tMap);
-                graphicsEngine.initializeEntities();
-            
-            // place objects on path as a visual test
-        }
-
-
-        // player movement
-        bool player_moved = false;
-        glm::vec3 tPlayerPosition = playerManager.getPosition();
-        glm::vec3 tPlayerRotation = playerManager.getRotation();
-        glm::vec3 tPlayerLightPosition = graphicsEngine.getPlayerLightPosition();
-        
-        if (graphicsEngine.getKeyState(GLFW_KEY_W))
-        {
-            player_moved = true;
-            tPlayerPosition += glm::vec3(0.0f, 0.0f, -(playerManager.getMovementSpeed()));
-            tPlayerRotation = glm::vec3(tPlayerRotation.x, tPlayerRotation.y, DTOR_180);
-            tPlayerLightPosition += glm::vec3(0.0f, 0.0f, -(playerManager.getMovementSpeed()));
-        }
-
-        if (graphicsEngine.getKeyState(GLFW_KEY_S))
-        {
-            player_moved = true;
-            tPlayerPosition += glm::vec3(0.0f, 0.0f, (playerManager.getMovementSpeed()));
-            tPlayerRotation = glm::vec3(tPlayerRotation.x, tPlayerRotation.y, DTOR_0);
-            tPlayerLightPosition += glm::vec3(0.0f, 0.0f, (playerManager.getMovementSpeed()));
-        }
-
-        if (graphicsEngine.getKeyState(GLFW_KEY_A))
-        {
-            player_moved = true;
-            tPlayerPosition += glm::vec3(-(playerManager.getMovementSpeed()), 0.0f, 0.0f);
-            tPlayerRotation = glm::vec3(tPlayerRotation.x, tPlayerRotation.y, DTOR_270);
-            tPlayerLightPosition += glm::vec3(-(playerManager.getMovementSpeed()), 0.0f, 0.0f);
-        }
-
-        if (graphicsEngine.getKeyState(GLFW_KEY_D))
-        {
-            player_moved = true;
-            tPlayerPosition += glm::vec3((playerManager.getMovementSpeed()), 0.0f, 0.0f);
-            tPlayerRotation = glm::vec3(tPlayerRotation.x, tPlayerRotation.y, DTOR_90);
-            tPlayerLightPosition += glm::vec3((playerManager.getMovementSpeed()), 0.0f, 0.0f);
-        }
-
-        if (player_moved)
-        {
-            playerManager.setPosition(tPlayerPosition);
-            playerManager.setRotation(tPlayerRotation);
-            graphicsEngine.setPlayerLightPosition(tPlayerLightPosition);
-
-            glm::vec3 cameraTarget = graphicsEngine.getCameraTarget();
-            glm::vec3 cameraPosition = graphicsEngine.getCameraPosition();
-            
-            float32 deltaTmax = 4.0f; // We shoud base this off the current zoom level
-            float32 deltaTmin = deltaTmax * graphicsEngine.getAspectRatio();
-            
-            float32 deltaX = tPlayerPosition.x - cameraTarget.x;
-            float32 deltaZ = tPlayerPosition.z - cameraTarget.z;
-
-            if (deltaX > deltaTmax)
-            {
-                deltaX -= deltaTmax;
-                graphicsEngine.setCameraPosition(glm::vec3(cameraPosition.x + deltaX, cameraPosition.y, cameraPosition.z));
-                graphicsEngine.setCameraTarget(glm::vec3(cameraTarget.x + deltaX, cameraTarget.y, cameraTarget.z));
-            }
-            else if (deltaX < -deltaTmin)
-            {
-                deltaX += deltaTmin;
-                graphicsEngine.setCameraPosition(glm::vec3(cameraPosition.x + deltaX, cameraPosition.y, cameraPosition.z));
-                graphicsEngine.setCameraTarget(glm::vec3(cameraTarget.x + deltaX, cameraTarget.y, cameraTarget.z));
-            }
-            if (deltaZ > deltaTmax)
-            {
-                deltaZ -= deltaTmax;
-                graphicsEngine.setCameraPosition(glm::vec3(cameraPosition.x, cameraPosition.y, cameraPosition.z + deltaZ));
-                graphicsEngine.setCameraTarget(glm::vec3(cameraTarget.x, cameraTarget.y, cameraTarget.z + deltaZ));
-            }
-            else if (deltaZ < -deltaTmin)
-            {
-                deltaZ += deltaTmin;
-                graphicsEngine.setCameraPosition(glm::vec3(cameraPosition.x, cameraPosition.y, cameraPosition.z + deltaZ));
-                graphicsEngine.setCameraTarget(glm::vec3(cameraTarget.x, cameraTarget.y, cameraTarget.z + deltaZ));
-            }
-
-
-        glm::vec3 pos = playerManager.getPosition();
-        std::cout << "Position: " << pos.x << " " << pos.y << " " << pos.z << std::endl;
-        std::cout << "Tile: " << playerManager.getCurrentTile() << std::endl;
-        }
-*/
-
+        // !! This bat is only here for TESTING !!
         m_entityBat->position = graphicsEngine.getMouseTerrainPosition();
         m_entityBat->position = glm::vec3(m_entityBat->position.x, m_entityBat->position.y - 1.0f, m_entityBat->position.z);
         entityManager.updateModelMatrix(m_entityBat);

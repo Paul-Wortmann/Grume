@@ -24,6 +24,21 @@
 #include "map_path_a_star.hpp"
 
 /// static void _pathAScalcTile(sMap*& _map, sMapPath& _path, sASTileData*& _pathData, std::uint32_t _p, std::uint32_t _t)
+static bool _pathAStileOK(sMap*& _map, std::uint32_t _tile)
+{
+    bool returnValue = false;
+
+    if ((_map->tile[_tile].base == eTileBase::tileFloor)
+     || (_map->tile[_tile].base == eTileBase::tileDoorway)
+     || (_map->tile[_tile].base == eTileBase::tileFloorPath))
+    {
+        returnValue = true;
+    }
+
+    return returnValue;
+}
+
+/// static void _pathAScalcTile(sMap*& _map, sMapPath& _path, sASTileData*& _pathData, std::uint32_t _p, std::uint32_t _t)
 static void _pathAScalcTile(sMap*& _map, sMapPath& _path, sASTileData*& _pathData, std::uint32_t _p, std::uint32_t _t)
 {
     if (_pathData[_t].l == ePathData::pathClosed)
@@ -134,7 +149,7 @@ void gAStar(sMap*& _map, sMapPath& _path)
             std::uint32_t tile = (i * _map->width) + j;
             pathData[tile].x = j;
             pathData[tile].y = i;
-            pathData[tile].l = (_map->tile[tile].base == eTileBase::tileWall) ? ePathData::pathClosed : ePathData::pathNone;
+            pathData[tile].l = (_pathAStileOK(_map, tile)) ? ePathData::pathNone : ePathData::pathClosed;
             pathData[tile].a = ePathData::pathNone;
         }
     }

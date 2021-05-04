@@ -115,9 +115,7 @@ void cMapManager::load(const std::string &_fileName)
         std::string name         = xmlFile.getString("<name>");
         uint32      width        = xmlFile.getInteger("<width>");
         uint32      height       = xmlFile.getInteger("<height>");
-        std::string tiles        = xmlFile.getString("<tiles>");
         std::string biomeFile    = xmlFile.getString("<biome>");
-
         uint32      generate     = xmlFile.getInteger("<generate>");
         uint32      seed         = xmlFile.getInteger("<seed>");
         uint32      algorithm    = xmlFile.getInteger("<algorithm>");
@@ -148,6 +146,8 @@ void cMapManager::load(const std::string &_fileName)
         m_currentMap->genData.wallSize  = wall_width;
 
 
+        std::string tiles = "";
+        // Generate tiles
         if (generate > 0)
         {
             tiles = "";
@@ -162,6 +162,14 @@ void cMapManager::load(const std::string &_fileName)
         }
         else
         {
+            // Load tile data from file
+            uint32 tilesInstanceCount = xmlFile.getInstanceCount("<tiles>");
+            for (uint32 i = 0; i < tilesInstanceCount; ++i)
+            {
+                tiles += xmlFile.getString("<tiles>", i + 1);
+                tiles += " ";
+            }
+
             // Save the loaded tile data into the map data structure
             uint32 tileNum = 0;
             for (uint32 i = 0; i < tiles.size(); ++i)
