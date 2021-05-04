@@ -116,8 +116,14 @@ void cPlayerManager::process(const float32 &_dt)
     }
     if (m_pathing)
     {
+        // move amount
         m_moveDelta.x = 0.0f;
         m_moveDelta.z = 0.0f;
+        
+        // move direction, used as float comparison is problematic
+        int32 deltaX = 0;
+        int32 deltaZ = 0;
+        
         std::cout << "Current tile: " << m_path.path[m_path.currentPosition] << std::endl;
         m_moved = true;
         glm::vec3 playerPos      = m_data->position;
@@ -131,30 +137,75 @@ void cPlayerManager::process(const float32 &_dt)
         // if not center, move towards tile center
         if (distanceToTileSqr > (m_movementSpeed + m_movementBias))
         {
+            // Position
             if ((playerPos.x + m_movementSpeed) < currentTilePos.x)
             {
                 playerPos.x += m_movementSpeed;
                 m_moveDelta.x += m_movementSpeed;
-                playerRot = glm::vec3(playerRot.x, playerRot.y, DTOR_90);
+                deltaX = 1;
             }
             else if ((playerPos.x + m_movementSpeed) > currentTilePos.x)
             {
                 playerPos.x -= m_movementSpeed;
                 m_moveDelta.x -= m_movementSpeed;
-                playerRot = glm::vec3(playerRot.x, playerRot.y, DTOR_270);
+                deltaX = -1;
             }
             if ((playerPos.z + m_movementSpeed) < currentTilePos.z)
             {
                 playerPos.z += m_movementSpeed;
                 m_moveDelta.z += m_movementSpeed;
-                playerRot = glm::vec3(playerRot.x, playerRot.y, DTOR_0);
+                deltaZ = 1;
             }
             else if ((playerPos.z + m_movementSpeed) > currentTilePos.z)
             {
                 playerPos.z -= m_movementSpeed;
                 m_moveDelta.z -= m_movementSpeed;
-                playerRot = glm::vec3(playerRot.x, playerRot.y, DTOR_180);
+                deltaZ = -1;
             }
+            
+            // Rotation
+            if (deltaX == 1)
+            {
+                if (deltaZ == 1)
+                {
+                    playerRot = glm::vec3(playerRot.x, playerRot.y, DTOR_45);
+                }
+                else if (deltaZ == -1)
+                {
+                    playerRot = glm::vec3(playerRot.x, playerRot.y, DTOR_135);
+                }
+                else
+                {
+                    playerRot = glm::vec3(playerRot.x, playerRot.y, DTOR_90);
+                }
+            }
+            else if (deltaX == -1)
+            {
+                if (deltaZ == 1)
+                {
+                    playerRot = glm::vec3(playerRot.x, playerRot.y, DTOR_315);
+                }
+                else if (deltaZ == -1)
+                {
+                    playerRot = glm::vec3(playerRot.x, playerRot.y, DTOR_225);
+                }
+                else
+                {
+                    playerRot = glm::vec3(playerRot.x, playerRot.y, DTOR_270);
+                }
+            }
+            else //(deltaX == 0)
+            {
+                if (deltaZ == 1)
+                {
+                    playerRot = glm::vec3(playerRot.x, playerRot.y, DTOR_0);
+                }
+                else if (deltaZ == -1)
+                {
+                    playerRot = glm::vec3(playerRot.x, playerRot.y, DTOR_180);
+                }
+            }
+            
         }
         
         // move to tile center, set new tile in path
@@ -173,3 +224,4 @@ void cPlayerManager::process(const float32 &_dt)
         setRotation(playerRot);
     }
 };
+

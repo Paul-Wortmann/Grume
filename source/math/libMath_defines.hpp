@@ -66,20 +66,36 @@ typedef std::int64_t  int64;
 #endif // M_EPSILON
 
 #ifndef DTOR_0
-#define DTOR_0   0.0
+#define DTOR_0    0.0
 #endif // DTOR_0
 
+#ifndef DTOR_45
+#define DTOR_45   0.785398
+#endif // DTOR_45
+
 #ifndef DTOR_90
-#define DTOR_90  1.5708
+#define DTOR_90   1.5708
+#endif // DTOR_90
+
+#ifndef DTOR_135
+#define DTOR_135  2.35619
 #endif // DTOR_90
 
 #ifndef DTOR_180
-#define DTOR_180 3.1416
+#define DTOR_180  3.1416
 #endif // DTOR_180
 
+#ifndef DTOR_225
+#define DTOR_225  3.92699
+#endif // DTOR_225
+
 #ifndef DTOR_270
-#define DTOR_270 4.7124
+#define DTOR_270  4.7124
 #endif // DTOR_270
+
+#ifndef DTOR_315
+#define DTOR_315  5.49779
+#endif // DTOR_315
 
 #endif //LIB_MATH_DEFINES_HPP
 
