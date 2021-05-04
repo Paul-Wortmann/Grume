@@ -2,7 +2,7 @@
 
 Copyright Paul Wortmann. GNU GPL v2
 
-![Frost and Flame](http://www.weebly.com/uploads/5/9/6/4/596446/76313.png?399)
+![Frost and Flame](https://raw.githubusercontent.com/Paul-Wortmann/Frost_and_Flame/master/screenshots/screenshot_001.png)
 
 ## Requirements
 
