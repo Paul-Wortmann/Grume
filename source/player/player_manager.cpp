@@ -37,11 +37,6 @@ void cPlayerManager::terminate(void)
     }
 }
 
-void cPlayerManager::process(const float32 &_dt)
-{
-    
-}
-
 sEntity* cPlayerManager::load(const std::string &_fileName)
 {
     cXML xmlFile;
@@ -97,4 +92,84 @@ glm::vec3 cPlayerManager::tileToPosition(uint32 _tile)
     float x = (_tile % m_mapPointer->width) - (m_mapPointer->width / 2.0f);
     float z = (_tile / m_mapPointer->width) - (m_mapPointer->height / 2.0f);
     return glm::vec3(x, m_terrainHeight, z);
+};
+
+void cPlayerManager::moveTo(glm::vec3 _pos)
+{
+    glm::vec3 destinationPosition = _pos;
+    destinationPosition.y -= 1.0f;
+    uint32 destinationTile = positionToTile(destinationPosition);
+    setDestinationTile(destinationTile);
+    if (m_path.pathLength > 0)
+    {
+        m_path.currentPosition = 0;
+        m_pathing = true;
+    }
+};
+
+void cPlayerManager::process(const float32 &_dt)
+{
+    m_moved = false;
+    if (m_path.pathLength == 0)
+    {
+        m_pathing = false;
+    }
+    if (m_pathing)
+    {
+        m_moveDelta.x = 0.0f;
+        m_moveDelta.z = 0.0f;
+        std::cout << "Current tile: " << m_path.path[m_path.currentPosition] << std::endl;
+        m_moved = true;
+        glm::vec3 playerPos      = m_data->position;
+        glm::vec3 playerRot      = m_data->rotation;
+        uint32    currentTile    = m_path.path[m_path.currentPosition];
+        glm::vec3 currentTilePos = tileToPosition(currentTile);
+        
+        // Get the distance to the destination tile
+        float32   distanceToTileSqr = ((playerPos.x - currentTilePos.x) * (playerPos.x - currentTilePos.x)) + ((playerPos.z - currentTilePos.z) * (playerPos.z - currentTilePos.z));
+        
+        // if not center, move towards tile center
+        if (distanceToTileSqr > (m_movementSpeed + m_movementBias))
+        {
+            if ((playerPos.x + m_movementSpeed) < currentTilePos.x)
+            {
+                playerPos.x += m_movementSpeed;
+                m_moveDelta.x += m_movementSpeed;
+                playerRot = glm::vec3(playerRot.x, playerRot.y, DTOR_90);
+            }
+            else if ((playerPos.x + m_movementSpeed) > currentTilePos.x)
+            {
+                playerPos.x -= m_movementSpeed;
+                m_moveDelta.x -= m_movementSpeed;
+                playerRot = glm::vec3(playerRot.x, playerRot.y, DTOR_270);
+            }
+            if ((playerPos.z + m_movementSpeed) < currentTilePos.z)
+            {
+                playerPos.z += m_movementSpeed;
+                m_moveDelta.z += m_movementSpeed;
+                playerRot = glm::vec3(playerRot.x, playerRot.y, DTOR_0);
+            }
+            else if ((playerPos.z + m_movementSpeed) > currentTilePos.z)
+            {
+                playerPos.z -= m_movementSpeed;
+                m_moveDelta.z -= m_movementSpeed;
+                playerRot = glm::vec3(playerRot.x, playerRot.y, DTOR_180);
+            }
+        }
+        
+        // move to tile center, set new tile in path
+        else
+        {
+            //playerPos = currentTilePos;
+            m_path.currentPosition++;
+            if (m_path.currentPosition >= m_path.pathLength)
+            {
+                m_pathing = false;
+                m_moveDelta.x = 0.0f;
+                m_moveDelta.z = 0.0f;
+            }
+        }
+        setPosition(playerPos);
+        setRotation(playerRot);
+    }
 };

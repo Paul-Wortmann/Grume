@@ -87,7 +87,7 @@ struct sMap
     std::string    fileName        = "";
 
     // Player start information
-    std::uint32_t  playerStartTile = 10;
+    std::uint32_t  playerStartTile = 0;
     float          playerStartDir  = 0.0f;
 
     // Entity to hold the floor

@@ -57,6 +57,9 @@ class cPlayerManager
         uint32    getPathLength(void) { return m_path.pathLength; };
         uint32    getPath(uint32 _i) { return m_path.path[_i]; };
 
+        bool      getMoved(void) { return m_moved; };
+        void      moveTo(glm::vec3 _pos);
+        glm::vec3 getMoveDelta(void) { return m_moveDelta; };
 
     protected:
 
@@ -69,6 +72,11 @@ class cPlayerManager
         sMap*           m_mapPointer      = nullptr;
         float32         m_terrainHeight   = -1;
         float32         m_movementSpeed   = 0.125f;
+        float32         m_movementBias    = 0.00125f;
+        
+        bool            m_pathing         = false; // currently following a path?
+        bool            m_moved           = false; // Did we move this frame?
+        glm::vec3       m_moveDelta       = glm::vec3(0.0f, 0.0f, 0.0f); // How much did we move last frame?
 
 };
 

@@ -108,8 +108,15 @@ static bool _pathASinternal(sMap*& _map, sMapPath& _path, sASTileData*& _pathDat
 /// void gAStar(sMap*& _map, sMapPath& _path)
 void gAStar(sMap*& _map, sMapPath& _path)
 {
+    // Player clicked out of map bounds
+    if (_path.destinationTile > _map->numTiles)
+    {
+        _path.pathLength = 0;
+        return;
+    }
+    
     // Set up
-    _path.pathLength      = 0;
+    _path.pathLength = 0;
     if (_path.path != nullptr)
     {
         delete [] _path.path;
