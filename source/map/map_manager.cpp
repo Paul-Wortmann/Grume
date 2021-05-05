@@ -221,6 +221,22 @@ void cMapManager::load(const std::string &_fileName)
                 }
             }
         }
+        
+        // Add a no go aread around the map border
+        for (uint32 y = 0; y < m_currentMap->height; ++y)
+        {
+            for (uint32 x = 0; x < m_currentMap->width; ++x)
+            {
+                if ((y == 0)
+                 || (x == 0)
+                 || (y == (m_currentMap->height - 1))
+                 || (x == (m_currentMap->width  - 1)))
+                 {
+                     uint32 tileNum = (y * m_currentMap->width) + x;
+                     m_currentMap->tile[tileNum].base = eTileBase::tileFloorNoGo;
+                 }
+            }
+        }
 
         // Generate floor model
         m_currentMap->floor        = entityManager->getNew();
