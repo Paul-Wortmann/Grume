@@ -5,6 +5,7 @@
 
 <game>
     <ui>ui_001.txt</ui>
+    <#map>dungeon_003.txt</map>
     <map>town_000.txt</map>
     <player>male_base_1_001.txt</player>
 </game>

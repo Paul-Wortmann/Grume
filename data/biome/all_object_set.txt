@@ -27,7 +27,8 @@
         <object>cemetary_object</object>     # 23
         <object>mausoleum</object>           # 24
         <object>torture_device</object>      # 25
-        <object>castle</object>              # 26
+        <object>tower</object>               # 26
+        <object>castle</object>              # 27
     </object_define>
 
     <debris>
@@ -232,6 +233,11 @@
         <torture_device_entity>dungeon_objects/torture_device_14_001.txt</torture_device_entity>
         <torture_device_entity>dungeon_objects/torture_device_15_001.txt</torture_device_entity>
     </torture_device>
+
+    <tower>
+        <tower_count>1</tower_count>
+        <tower_entity>town_objects/tower_1_001.txt</tower_entity>
+    </tower>
 
     <castle>
         <castle_count>1</castle_count>
