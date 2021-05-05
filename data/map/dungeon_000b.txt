@@ -7,8 +7,16 @@
         <biome>dungeon_001_biome.txt</biome>
     </information>
     <generation>
-       <tiles>1 1 1 1 1 1 1 1 1 1 0 0 0 1 0 1 0 1 1 1 2 2 1 0 0 1 1 1 0 0 0 2 0 0 0 1 1 1 0 0 2 0 1 0 1 1 1 1 0 1 0 0 0 1 1 1 0 0 1 1 2 1 1 1 0 1 0 2 0 0 0 1 1 1 1 1 1 1 1 1 1</tiles>
-       <generate>0</generate>
+       <tiles>1 1 1 1 1 1 1 1 1</tiles>
+       <tiles>1 0 0 0 1 0 1 0 1</tiles>
+       <tiles>1 1 2 2 1 0 0 1 1</tiles>
+       <tiles>1 0 0 0 2 0 0 0 1</tiles>
+       <tiles>1 1 0 0 2 0 1 0 1</tiles>
+       <tiles>1 1 1 0 1 0 0 0 1</tiles>
+       <tiles>1 1 0 0 1 1 2 1 1</tiles>
+       <tiles>1 0 1 0 2 0 0 0 1</tiles>
+       <tiles>1 1 1 1 1 1 1 1 1</tiles>
+   <generate>0</generate>
        <seed>0</seed>
        <algorithm>1</algorithm>
        <wall_width>1<wall_width>
