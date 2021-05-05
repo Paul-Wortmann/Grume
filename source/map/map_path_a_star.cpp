@@ -23,7 +23,7 @@
 
 #include "map_path_a_star.hpp"
 
-/// static void _pathAScalcTile(sMap*& _map, sMapPath& _path, sASTileData*& _pathData, std::uint32_t _p, std::uint32_t _t)
+/// static bool _pathAStileOK(sMap*& _map, std::uint32_t _tile)
 static bool _pathAStileOK(sMap*& _map, std::uint32_t _tile)
 {
     bool returnValue = false;

@@ -59,7 +59,8 @@ enum class eTileBase : std::uint32_t
         tileWallShort = 4,
         tileFloorPath = 5,
         tileFloorNoGo = 6,
-        tileLiquid    = 7
+        tilePathNoGo  = 7,
+        tileLiquid    = 8
     };
 
 struct sMapGenData

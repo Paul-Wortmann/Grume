@@ -177,8 +177,13 @@ void cMapManager::load(const std::string &_fileName)
                 switch (tiles[i])
                 {
                     // Liquid
-                    case '7':
+                    case '8':
                         m_currentMap->tile[tileNum].base = eTileBase::tileLiquid;
+                        tileNum++;
+                    break;
+                    // Path (inaccessable, such as under buildings)
+                    case '7':
+                        m_currentMap->tile[tileNum].base = eTileBase::tilePathNoGo;
                         tileNum++;
                     break;
                     // Floor (inaccessable, such as under buildings)

@@ -23,6 +23,36 @@
 
 #include "map_manager.hpp"
 
+
+/// static bool _isFloor(sMap*& _map, std::uint32_t _tile)
+static bool _isFloor(sMap*& _map, std::uint32_t _tile)
+{
+    bool returnValue = false;
+
+    if ((_map->tile[_tile].base == eTileBase::tileFloor)
+     || (_map->tile[_tile].base == eTileBase::tileDoorway)
+     || (_map->tile[_tile].base == eTileBase::tileFloorNoGo))
+    {
+        returnValue = true;
+    }
+
+    return returnValue;
+}
+
+/// static bool _isPath(sMap*& _map, std::uint32_t _tile)
+static bool _isPath(sMap*& _map, std::uint32_t _tile)
+{
+    bool returnValue = false;
+
+    if ((_map->tile[_tile].base == eTileBase::tileFloorPath)
+     || (_map->tile[_tile].base == eTileBase::tilePathNoGo))
+    {
+        returnValue = true;
+    }
+
+    return returnValue;
+}
+
 sEntityModel* cMapManager::m_generateFloor(sMap*& _map)
 {
     // If the floor has not yet been generated for a previous map
@@ -76,6 +106,7 @@ sEntityModel* cMapManager::m_generateFloor(sMap*& _map)
         switch (_map->tile[i].base)
         {
             case eTileBase::tileFloorPath:
+            case eTileBase::tilePathNoGo:
                 spriteData[i].type       = eSpriteType::tilePath;
                 spriteData[i].spriteNumX = 0;
                 spriteData[i].spriteNumY = 0;
@@ -110,10 +141,10 @@ sEntityModel* cMapManager::m_generateFloor(sMap*& _map)
 
             // ---- Path next to floor, straight line ----
             // Case 1: path tile, and 1 floor tile to the left, rotate 90
-            if ((spriteData[tileNum].type == eSpriteType::tilePath) &&
-                (spriteData[tileNum - 1].type == eSpriteType::tileFloor) &&
-                (spriteData[tileNum - _map->width].type == eSpriteType::tilePath) &&
-                (spriteData[tileNum + _map->width].type == eSpriteType::tilePath))
+            if ((_isPath(_map, tileNum)) &&
+                (_isFloor(_map, tileNum - 1)) &&
+                (_isPath(_map, tileNum - _map->width)) &&
+                (_isPath(_map, tileNum + _map->width)))
             {
                 // rotate 90
                 spriteData[tileNum].rotation   = 1;
@@ -122,10 +153,10 @@ sEntityModel* cMapManager::m_generateFloor(sMap*& _map)
             }
 
             // Case 2: path tile, and 1 floor tile to the right, rotate 270
-            else if ((spriteData[tileNum].type == eSpriteType::tilePath) &&
-                     (spriteData[tileNum + 1].type == eSpriteType::tileFloor) &&
-                     (spriteData[tileNum - _map->width].type == eSpriteType::tilePath) &&
-                     (spriteData[tileNum + _map->width].type == eSpriteType::tilePath))
+            else if ((_isPath(_map, tileNum)) &&
+                     (_isFloor(_map, tileNum + 1)) &&
+                     (_isPath(_map, tileNum - _map->width)) &&
+                     (_isPath(_map, tileNum + _map->width)))
             {
                 // rotate 270
                 spriteData[tileNum].rotation   = 3;
@@ -134,10 +165,10 @@ sEntityModel* cMapManager::m_generateFloor(sMap*& _map)
             }
 
             // Case 3: path tile, and 1 floor tile to the bottom, rotate 180
-            else if ((spriteData[tileNum].type == eSpriteType::tilePath) &&
-                     (spriteData[tileNum + 1].type == eSpriteType::tilePath) &&
-                     (spriteData[tileNum - 1].type == eSpriteType::tilePath) &&
-                     (spriteData[tileNum - _map->width].type == eSpriteType::tileFloor))
+            else if ((_isPath(_map, tileNum)) &&
+                     (_isPath(_map, tileNum + 1)) &&
+                     (_isPath(_map, tileNum - 1)) &&
+                     (_isFloor(_map, tileNum - _map->width)))
             {
                 // rotate 180
                 spriteData[tileNum].rotation   = 2;
@@ -146,10 +177,10 @@ sEntityModel* cMapManager::m_generateFloor(sMap*& _map)
             }
 
             // Case 4: path tile, and 1 floor tile to the top, rotate 0
-             else if ((spriteData[tileNum].type == eSpriteType::tilePath) &&
-                     (spriteData[tileNum + 1].type == eSpriteType::tilePath) &&
-                     (spriteData[tileNum - 1].type == eSpriteType::tilePath) &&
-                     (spriteData[tileNum + _map->width].type == eSpriteType::tileFloor))
+             else if ((_isPath(_map, tileNum)) &&
+                     (_isPath(_map, tileNum + 1)) &&
+                     (_isPath(_map, tileNum - 1)) &&
+                     (_isFloor(_map, tileNum + _map->width)))
             {
                 // rotate 0
                 spriteData[tileNum].rotation   = 0;
@@ -159,11 +190,11 @@ sEntityModel* cMapManager::m_generateFloor(sMap*& _map)
 
             // ---- Path next to floor, outer corner ----
             // Case 5: path tile, and 2 floor tiles, rotate 180
-            else if ((spriteData[tileNum].type == eSpriteType::tilePath) &&
-                     (spriteData[tileNum + 1].type == eSpriteType::tilePath) &&
-                     (spriteData[tileNum - 1].type == eSpriteType::tileFloor) &&
-                     (spriteData[tileNum + _map->width].type == eSpriteType::tilePath) &&
-                     (spriteData[tileNum - _map->width].type == eSpriteType::tileFloor))
+            else if ((_isPath(_map, tileNum)) &&
+                     (_isPath(_map, tileNum + 1)) &&
+                     (_isFloor(_map, tileNum - 1)) &&
+                     (_isPath(_map, tileNum + _map->width)) &&
+                     (_isFloor(_map, tileNum - _map->width)))
             {
                 // rotate 180
                 spriteData[tileNum].rotation   = 2;
@@ -172,11 +203,11 @@ sEntityModel* cMapManager::m_generateFloor(sMap*& _map)
             }
 
             // Case 6: path tile, and 2 floor tiles, rotate 0
-            else if ((spriteData[tileNum].type == eSpriteType::tilePath) &&
-                     (spriteData[tileNum + 1].type == eSpriteType::tileFloor) &&
-                     (spriteData[tileNum - 1].type == eSpriteType::tilePath) &&
-                     (spriteData[tileNum + _map->width].type == eSpriteType::tileFloor) &&
-                     (spriteData[tileNum - _map->width].type == eSpriteType::tilePath))
+            else if ((_isPath(_map, tileNum)) &&
+                     (_isFloor(_map, tileNum + 1)) &&
+                     (_isPath(_map, tileNum - 1)) &&
+                     (_isFloor(_map, tileNum + _map->width)) &&
+                     (_isPath(_map, tileNum - _map->width)))
             {
                 // rotate 0
                 spriteData[tileNum].rotation   = 0;
@@ -185,11 +216,11 @@ sEntityModel* cMapManager::m_generateFloor(sMap*& _map)
             }
 
             // Case 7: path tile, and 2 floor tiles, rotate 90
-            else if ((spriteData[tileNum].type == eSpriteType::tilePath) &&
-                     (spriteData[tileNum + 1].type == eSpriteType::tilePath) &&
-                     (spriteData[tileNum - 1].type == eSpriteType::tileFloor) &&
-                     (spriteData[tileNum + _map->width].type == eSpriteType::tileFloor) &&
-                     (spriteData[tileNum - _map->width].type == eSpriteType::tilePath))
+            else if ((_isPath(_map, tileNum)) &&
+                     (_isPath(_map, tileNum + 1)) &&
+                     (_isFloor(_map, tileNum - 1)) &&
+                     (_isFloor(_map, tileNum + _map->width)) &&
+                     (_isPath(_map, tileNum - _map->width)))
             {
                 // rotate 90
                 spriteData[tileNum].rotation   = 1;
@@ -198,11 +229,11 @@ sEntityModel* cMapManager::m_generateFloor(sMap*& _map)
             }
 
             // Case 8: path tile, and 2 floor tiles, rotate 270
-            else if ((spriteData[tileNum].type == eSpriteType::tilePath) &&
-                     (spriteData[tileNum + 1].type == eSpriteType::tileFloor) &&
-                     (spriteData[tileNum - 1].type == eSpriteType::tilePath) &&
-                     (spriteData[tileNum + _map->width].type == eSpriteType::tilePath) &&
-                     (spriteData[tileNum - _map->width].type == eSpriteType::tileFloor))
+            else if ((_isPath(_map, tileNum)) &&
+                     (_isFloor(_map, tileNum + 1)) &&
+                     (_isPath(_map, tileNum - 1)) &&
+                     (_isPath(_map, tileNum + _map->width)) &&
+                     (_isFloor(_map, tileNum - _map->width)))
             {
                 // rotate 270
                 spriteData[tileNum].rotation   = 3;
@@ -212,15 +243,15 @@ sEntityModel* cMapManager::m_generateFloor(sMap*& _map)
 
             // ---- Path next to floor, inner corner ----
             // Case 9: path tile, and 1 diagonal floor tile, rotate 0
-            else if ((spriteData[tileNum].type == eSpriteType::tilePath) &&
-                     (spriteData[tileNum + 1].type == eSpriteType::tilePath) &&
-                     (spriteData[tileNum - 1].type == eSpriteType::tilePath) &&
-                     (spriteData[tileNum + _map->width].type == eSpriteType::tilePath) &&
-                     (spriteData[tileNum - _map->width].type == eSpriteType::tilePath) &&
-                     (spriteData[tileNum + _map->width + 1].type == eSpriteType::tileFloor) &&
-                     (spriteData[tileNum - _map->width + 1].type == eSpriteType::tilePath) &&
-                     (spriteData[tileNum + _map->width - 1].type == eSpriteType::tilePath) &&
-                     (spriteData[tileNum - _map->width - 1].type == eSpriteType::tilePath))
+            else if ((_isPath(_map, tileNum)) &&
+                     (_isPath(_map, tileNum + 1)) &&
+                     (_isPath(_map, tileNum - 1)) &&
+                     (_isPath(_map, tileNum + _map->width)) &&
+                     (_isPath(_map, tileNum - _map->width)) &&
+                     (_isFloor(_map, tileNum + _map->width + 1)) &&
+                     (_isPath(_map, tileNum - _map->width + 1)) &&
+                     (_isPath(_map, tileNum + _map->width - 1)) &&
+                     (_isPath(_map, tileNum - _map->width - 1)))
             {
                 // rotate 0
                 spriteData[tileNum].rotation   = 0;
@@ -229,15 +260,15 @@ sEntityModel* cMapManager::m_generateFloor(sMap*& _map)
             }
 
             // Case 10: path tile, and 1 diagonal floor tile, rotate 180
-            else if ((spriteData[tileNum].type == eSpriteType::tilePath) &&
-                     (spriteData[tileNum + 1].type == eSpriteType::tilePath) &&
-                     (spriteData[tileNum - 1].type == eSpriteType::tilePath) &&
-                     (spriteData[tileNum + _map->width].type == eSpriteType::tilePath) &&
-                     (spriteData[tileNum - _map->width].type == eSpriteType::tilePath) &&
-                     (spriteData[tileNum + _map->width + 1].type == eSpriteType::tilePath) &&
-                     (spriteData[tileNum - _map->width + 1].type == eSpriteType::tilePath) &&
-                     (spriteData[tileNum + _map->width - 1].type == eSpriteType::tilePath) &&
-                     (spriteData[tileNum - _map->width - 1].type == eSpriteType::tileFloor))
+            else if ((_isPath(_map, tileNum)) &&
+                     (_isPath(_map, tileNum + 1)) &&
+                     (_isPath(_map, tileNum - 1)) &&
+                     (_isPath(_map, tileNum + _map->width)) &&
+                     (_isPath(_map, tileNum - _map->width)) &&
+                     (_isPath(_map, tileNum + _map->width + 1)) &&
+                     (_isPath(_map, tileNum - _map->width + 1)) &&
+                     (_isPath(_map, tileNum + _map->width - 1)) &&
+                     (_isFloor(_map, tileNum - _map->width - 1)))
             {
                 // rotate 180
                 spriteData[tileNum].rotation   = 2;
@@ -247,15 +278,15 @@ sEntityModel* cMapManager::m_generateFloor(sMap*& _map)
 
             // ---- Path next to floor, inner corner ----
             // Case 11: path tile, and 1 diagonal floor tile, rotate 90
-            else  if ((spriteData[tileNum].type == eSpriteType::tilePath) &&
-                     (spriteData[tileNum + 1].type == eSpriteType::tilePath) &&
-                     (spriteData[tileNum - 1].type == eSpriteType::tilePath) &&
-                     (spriteData[tileNum + _map->width].type == eSpriteType::tilePath) &&
-                     (spriteData[tileNum - _map->width].type == eSpriteType::tilePath) &&
-                     (spriteData[tileNum + _map->width + 1].type == eSpriteType::tilePath) &&
-                     (spriteData[tileNum - _map->width + 1].type == eSpriteType::tilePath) &&
-                     (spriteData[tileNum + _map->width - 1].type == eSpriteType::tileFloor) &&
-                     (spriteData[tileNum - _map->width - 1].type == eSpriteType::tilePath))
+            else  if ((_isPath(_map, tileNum)) &&
+                     (_isPath(_map, tileNum + 1)) &&
+                     (_isPath(_map, tileNum - 1)) &&
+                     (_isPath(_map, tileNum + _map->width)) &&
+                     (_isPath(_map, tileNum - _map->width)) &&
+                     (_isPath(_map, tileNum + _map->width + 1)) &&
+                     (_isPath(_map, tileNum - _map->width + 1)) &&
+                     (_isFloor(_map, tileNum + _map->width - 1)) &&
+                     (_isPath(_map, tileNum - _map->width - 1)))
             {
                 // rotate 90
                 spriteData[tileNum].rotation   = 1;
@@ -265,15 +296,15 @@ sEntityModel* cMapManager::m_generateFloor(sMap*& _map)
 
             // ---- Path next to floor, inner corner ----
             // Case 12: path tile, and 1 diagonal floor tile, rotate 270
-            else if ((spriteData[tileNum].type == eSpriteType::tilePath) &&
-                     (spriteData[tileNum + 1].type == eSpriteType::tilePath) &&
-                     (spriteData[tileNum - 1].type == eSpriteType::tilePath) &&
-                     (spriteData[tileNum + _map->width].type == eSpriteType::tilePath) &&
-                     (spriteData[tileNum - _map->width].type == eSpriteType::tilePath) &&
-                     (spriteData[tileNum + _map->width + 1].type == eSpriteType::tilePath) &&
-                     (spriteData[tileNum - _map->width + 1].type == eSpriteType::tileFloor) &&
-                     (spriteData[tileNum + _map->width - 1].type == eSpriteType::tilePath) &&
-                     (spriteData[tileNum - _map->width - 1].type == eSpriteType::tilePath))
+            else if ((_isPath(_map, tileNum)) &&
+                     (_isPath(_map, tileNum + 1)) &&
+                     (_isPath(_map, tileNum - 1)) &&
+                     (_isPath(_map, tileNum + _map->width)) &&
+                     (_isPath(_map, tileNum - _map->width)) &&
+                     (_isPath(_map, tileNum + _map->width + 1)) &&
+                     (_isFloor(_map, tileNum - _map->width + 1)) &&
+                     (_isPath(_map, tileNum + _map->width - 1)) &&
+                     (_isPath(_map, tileNum - _map->width - 1)))
             {
                 // rotate 270
                 spriteData[tileNum].rotation   = 3;
