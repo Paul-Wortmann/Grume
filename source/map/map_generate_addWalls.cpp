@@ -40,6 +40,7 @@ void cMapManager::m_addWallEntities(sMap*& _map)
 bool cMapManager::m_isFlat(sMap*& _map, const uint32 &_tile)
 {
     return ((_map->tile[_tile].base == eTileBase::tileFloor) ||
+            (_map->tile[_tile].base == eTileBase::tileFloorNoGo) ||
             (_map->tile[_tile].base == eTileBase::tileNone));
 }
 
@@ -52,7 +53,8 @@ bool cMapManager::m_isNone(sMap*& _map, const uint32 &_tile)
 // Is the queried tile a tile of type: Floor?
 bool cMapManager::m_isFloor(sMap*& _map, const uint32 &_tile)
 {
-    return (_map->tile[_tile].base == eTileBase::tileFloor);
+    return ((_map->tile[_tile].base == eTileBase::tileFloor) ||
+            (_map->tile[_tile].base == eTileBase::tileFloorNoGo));
 }
 
 // Is the queried tile a tile of type: Wall?
@@ -64,15 +66,8 @@ bool cMapManager::m_isWall(sMap*& _map, const uint32 &_tile)
 // Is the queried tile a tile of type: Doorway or Wall?
 bool cMapManager::m_isDWall(sMap*& _map, const uint32 &_tile)
 {
-    if (_map->tile[_tile].base == eTileBase::tileWall)
-    {
-        return true;
-    }
-    if (_map->tile[_tile].base == eTileBase::tileDoorway)
-    {
-        return true;
-    }
-    return false;
+    return ((_map->tile[_tile].base == eTileBase::tileWall) ||
+            (_map->tile[_tile].base == eTileBase::tileDoorway));
 }
 
 // Is the queried tile a tile of type: Doorway?
