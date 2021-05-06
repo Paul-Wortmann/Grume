@@ -47,6 +47,7 @@ void cMapManager::m_freeData(sMap*& _map)
     if ((_map->tile != nullptr) && (_map->numTiles != 0))
     { 
         delete [] _map->tile;
+        _map->tile = nullptr;
         _map->numTiles = 0;
     }
     
@@ -82,6 +83,22 @@ void cMapManager::m_freeData(sMap*& _map)
             }
         }
     }
+    
+    // Delete event data
+    if (_map->event != nullptr)
+    { 
+        delete [] _map->event;
+        _map->event = nullptr;
+        _map->eventCount = 0;
+    }    
+    // Delete portal data
+    if ((_map->tile != nullptr) && (_map->numTiles != 0))
+    { 
+        delete [] _map->portal;
+        _map->portal = nullptr;
+        _map->portalCount = 0;
+    }
+    
 }
 
 void cMapManager::m_freeAll(void)
@@ -105,24 +122,24 @@ void cMapManager::load(const std::string &_fileName)
         unload();
     }
     
-    cXML xmlFile;
-    xmlFile.load(FILE_PATH_MAP + _fileName);
-    if (xmlFile.lineCount() > 0)
+    cXML xmlMapFile;
+    xmlMapFile.load(FILE_PATH_MAP + _fileName);
+    if (xmlMapFile.lineCount() > 0)
     {
-        gLogWrite(LOG_INFO, "Loading map: " + xmlFile.getString("<name>"), __FILE__, __LINE__, __FUNCTION__);
+        gLogWrite(LOG_INFO, "Loading map: " + xmlMapFile.getString("<name>"), __FILE__, __LINE__, __FUNCTION__);
 
         // Get the data from the XML file
-        std::string name         = xmlFile.getString("<name>");
-        uint32      width        = xmlFile.getInteger("<width>");
-        uint32      height       = xmlFile.getInteger("<height>");
-        std::string biomeFile    = xmlFile.getString("<biome>");
-        uint32      generate     = xmlFile.getInteger("<generate>");
-        uint32      seed         = xmlFile.getInteger("<seed>");
-        uint32      algorithm    = xmlFile.getInteger("<algorithm>");
-        uint32      wall_width   = xmlFile.getInteger("<wall_width>");
+        std::string name         = xmlMapFile.getString("<name>");
+        uint32      width        = xmlMapFile.getInteger("<width>");
+        uint32      height       = xmlMapFile.getInteger("<height>");
+        std::string biomeFile    = xmlMapFile.getString("<biome>");
+        uint32      generate     = xmlMapFile.getInteger("<generate>");
+        uint32      seed         = xmlMapFile.getInteger("<seed>");
+        uint32      algorithm    = xmlMapFile.getInteger("<algorithm>");
+        uint32      wall_width   = xmlMapFile.getInteger("<wall_width>");
 
-        uint32      player_tile  = xmlFile.getInteger("<player_start_tile>");
-        uint32      player_rot   = xmlFile.getFloat("<player_start_rotation>");
+        uint32      player_tile  = xmlMapFile.getInteger("<player_start_tile>");
+        uint32      player_rot   = xmlMapFile.getFloat("<player_start_rotation>");
 
         // Create and populate the map data structure with the loaded XML data
         if (m_currentMap == nullptr)
@@ -163,10 +180,10 @@ void cMapManager::load(const std::string &_fileName)
         else
         {
             // Load tile data from file
-            uint32 tilesInstanceCount = xmlFile.getInstanceCount("<tiles>");
+            uint32 tilesInstanceCount = xmlMapFile.getInstanceCount("<tiles>");
             for (uint32 i = 0; i < tilesInstanceCount; ++i)
             {
-                tiles += xmlFile.getString("<tiles>", i + 1);
+                tiles += xmlMapFile.getString("<tiles>", i + 1);
                 tiles += " ";
             }
 
@@ -272,6 +289,119 @@ void cMapManager::load(const std::string &_fileName)
             xmlMusicFile.free();
         }
 
+        // Load map event data
+        m_currentMap->eventCount = xmlMapFile.getInstanceCount("<event>");
+        m_currentMap->event = new sMapEvent[m_currentMap->eventCount];
+        for (uint32 i = 0; i < m_currentMap->eventCount; ++i)
+        {
+            // Load the data from the map file
+            std::string tEventString = xmlMapFile.getString("<event>", i + 1);
+            tEventString += "    ";
+            std::uint32_t tEventStringLength = tEventString.length();
+            std::uint32_t tEventTileNum = 0;
+            std::uint32_t tEventType    = 0;
+            std::uint32_t tEventData1   = 0;
+            std::uint32_t tEventData2   = 0;
+            std::uint32_t tStringNum = 0;
+            std::string   tString = "";
+            if (tEventStringLength > 6)
+            {
+                for (std::uint32_t j = 0; j < tEventStringLength; ++j)
+                {
+                    if (tEventString[j] == ' ')
+                    {
+                        if (tStringNum == 0)
+                        {
+                            tEventTileNum = std::stoi(tString);
+                        }
+                        else if (tStringNum == 1)
+                        {
+                            tEventType = std::stoi(tString);
+                        }
+                        else if (tStringNum == 2)
+                        {
+                            tEventData1 = std::stoi(tString);
+                        }
+                        else if (tStringNum == 3)
+                        {
+                            tEventData2 = std::stoi(tString);
+                        }
+                        tStringNum++;
+                        tString = "";
+                    }
+                    else
+                    {
+                        tString += tEventString[j];
+                    }
+                }
+            }
+            
+            // Process the event data
+            switch (tEventType)
+            {
+                // Warp to map + portal
+                case '1':
+                    m_currentMap->event[i].type   = eMapEventType::eventTypeWarp;
+                break;
+                // None 
+                case '0':
+                default:
+                    m_currentMap->event[i].type = eMapEventType::eventTypeNone;
+                break;
+            }
+            m_currentMap->event[i].tile   = tEventTileNum;
+            m_currentMap->event[i].data_1 = tEventData1;
+            m_currentMap->event[i].data_2 = tEventData2;
+        }
+        
+        // Load map portal data
+        m_currentMap->portalCount = xmlMapFile.getInstanceCount("<portal>");
+        m_currentMap->portal = new sMapPortal[m_currentMap->portalCount];
+        for (uint32 i = 0; i < m_currentMap->portalCount; ++i)
+        {
+            // Load the data from the map file
+            std::string tPortalString = xmlMapFile.getString("<event>", i + 1);
+            tPortalString += "    ";
+            std::uint32_t tPortalStringLength = tPortalString.length();
+            std::uint32_t tPortalNumber    = 0;
+            std::uint32_t tPortalTileNum   = 0;
+            std::uint32_t tPortalDirection = 0;
+            std::uint32_t tStringNum = 0;
+            std::string   tString = "";
+            if (tPortalStringLength > 6)
+            {
+                for (std::uint32_t j = 0; j < tPortalStringLength; ++j)
+                {
+                    if (tPortalString[j] == ' ')
+                    {
+                        if (tStringNum == 0)
+                        {
+                            tPortalNumber = std::stoi(tString);
+                        }
+                        else if (tStringNum == 1)
+                        {
+                            tPortalTileNum = std::stoi(tString);
+                        }
+                        else if (tStringNum == 2)
+                        {
+                            tPortalDirection = std::stof(tString);
+                        }
+                        tStringNum++;
+                        tString = "";
+                    }
+                    else
+                    {
+                        tString += tPortalString[j];
+                    }
+                }
+            }
+            
+            // Process the portal data
+            m_currentMap->portal[i].portalNo  = tPortalNumber;
+            m_currentMap->portal[i].tile      = tPortalTileNum;
+            m_currentMap->portal[i].direction = tPortalDirection;
+        }
+        
         // Populate the map with walls
         m_addWallEntities(m_currentMap);
 
@@ -282,7 +412,7 @@ void cMapManager::load(const std::string &_fileName)
         m_addNPCEntities(m_currentMap);
 
         // Clean up
-        xmlFile.free();
+        xmlMapFile.free();
     }
 }
 

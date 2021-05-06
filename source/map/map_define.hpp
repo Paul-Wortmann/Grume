@@ -78,6 +78,27 @@ struct sMapTile
     //std::uint32_t event = 0;
 };
 
+enum class eMapEventType : std::uint32_t 
+    { 
+        eventTypeNone = 0, 
+        eventTypeWarp = 1  // Warp to map
+    };
+
+struct sMapEvent
+{
+    eMapEventType type      = eMapEventType::eventTypeNone;
+    std::uint32_t tile      = 0;
+    std::uint32_t data_1    = 0;
+    std::uint32_t data_2    = 0;
+};
+
+struct sMapPortal
+{
+    std::uint32_t portalNo  = 0;
+    std::uint32_t tile      = 0;
+    float32       direction = 0.0f;
+};
+
 struct sMap
 {
     // Linked list
@@ -105,6 +126,14 @@ struct sMap
 
     // Biome
     sMapBiome*     biome           = nullptr;
+    
+    // Map events
+    std::uint32_t  eventCount      = 0;
+    sMapEvent*     event           = nullptr;
+    
+    // Map portals
+    std::uint32_t  portalCount     = 0;
+    sMapPortal*    portal          = nullptr;
 };
 
 #endif //MAP_DEFINE_HPP
