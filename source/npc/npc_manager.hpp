@@ -25,20 +25,31 @@
 #define NPC_MANAGER_HPP
 
 #include "../includes.hpp"
+#include "../entity/entity_manager.hpp"
 #include "../linked_list.hpp"
 #include "npc_define.hpp"
 
 class cNPCManager : public tcLinkedList<sNPC>
 {
     public:
-        void initialize(void);
-        void terminate(void);
-
+        void     initialize(cEntityManager* _entityManager);
+        void     terminate(void);
+        void     process(const float32 &_dt);
+        void     setEntityHead(sEntity* _entity) { m_entityHead = _entity; }
+        void     setEntityPlayer(sEntity* _entity) { m_entityPlayer = _entity; }
+        sEntity* load(const std::string &_fileName);
+        
     protected:
 
     private:
         void m_freeAll(void);
         void m_freeData(sNPC*& _pointer);
+
+        // Entity management
+        cEntityManager* m_entityManager = nullptr;
+        sEntity*        m_entityHead    = nullptr;
+        sEntity*        m_entityTemp    = nullptr;
+        sEntity*        m_entityPlayer  = nullptr;
 };
 
 #endif //NPC_MANAGER_HPP

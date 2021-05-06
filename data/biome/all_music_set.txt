@@ -1,4 +1,4 @@
-
+<?xml version="1.0" encoding= "UTF-8"?>
 <music_set>
 
     <music_define>
@@ -8,23 +8,26 @@
     </music_define>
 
     <town>
-        <town_count>1</town_count>
+        <town_count>2</town_count>
+        <town_entity>forest_001.ogg</town_entity>
         <town_entity>dark_rainy_night.ogg</town_entity>
     </town>
 
     <cave>
         <cave_count>6</cave_count>
         <cave_entity>forgoten_tombs.ogg</cave_entity>
-        <cave_entity>dungeon_002.ogg</cave_entity>
+        <cave_entity>dungeon_001.ogg</cave_entity>
         <cave_entity>atmoseerie_01.ogg</cave_entity>
         <cave_entity>atmoseerie_02.ogg</cave_entity>
         <cave_entity>atmoseerie_03.ogg</cave_entity>
         <cave_entity>atmoseerie_04.ogg</cave_entity>
+        <cave_entity>cave_001.ogg</cave_entity>
     </cave>
 
     <dungeon>
-        <dungeon_count>1</dungeon_count>
+        <dungeon_count>2</dungeon_count>
         <dungeon_entity>forgoten_tombs.ogg</dungeon_entity>
+        <dungeon_entity>cave_001.ogg</dungeon_entity>
     </dungeon>
 
 </music_set>

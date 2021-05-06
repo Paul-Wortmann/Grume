@@ -78,8 +78,8 @@ vec3  PointLightCalculation(int _lightNum, vec3 _normal);
 
 void main()
 {
-    vec4 diffuseColor = texture(material.normal, vs_textcoord).rgba;
-    if (diffuseColor.a < 0.1f)
+    vec4 diffuseColor = texture(material.diffuse, vs_textcoord).rgba;
+    if (diffuseColor.a < 0.25f)
     {
         discard;
     }

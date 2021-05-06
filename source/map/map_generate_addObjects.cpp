@@ -140,6 +140,7 @@ void cMapManager::m_addObjectEntities(sMap*& _map)
                 if (tEntity != nullptr)
                 {
                     tEntity->owner = eEntityOwner::ownerMap;
+                    tEntity->type  = eEntityType::entityTypeObject;
                     tEntity->position += glm::vec3(static_cast<float32>(w) + tp - xo, y_pos, static_cast<float32>(h) + tp - yo);
                     if ((tObjectScale > 1.00001f) || (tObjectScale < 0.99999f))
                     {
@@ -240,6 +241,7 @@ void cMapManager::m_addObjectEntities(sMap*& _map)
                                     if (tEntity != nullptr)
                                     {
                                         tEntity->owner = eEntityOwner::ownerMap;
+                                        tEntity->type  = eEntityType::entityTypeObject;
                                         tEntity->position = glm::vec3(static_cast<float32>(w) + tp - xo, y_pos, static_cast<float32>(h) + tp - yo);
                                         entityManager->updateModelMatrix(tEntity);
                                     }

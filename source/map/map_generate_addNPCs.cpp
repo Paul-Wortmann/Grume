@@ -130,6 +130,7 @@ void cMapManager::m_addNPCEntities(sMap*& _map)
                 if (tEntity != nullptr)
                 {
                     tEntity->owner = eEntityOwner::ownerMap;
+                    tEntity->type  = eEntityType::entityTypeNPC;
                     tEntity->position += glm::vec3(static_cast<float32>(w) + tp - xo, y_pos, static_cast<float32>(h) + tp - yo);
                     if ((tNPCScale > 1.00001f) || (tNPCScale < 0.99999f))
                     {
@@ -222,6 +223,7 @@ void cMapManager::m_addNPCEntities(sMap*& _map)
                                     if (tEntity != nullptr)
                                     {
                                         tEntity->owner = eEntityOwner::ownerMap;
+                                        tEntity->type  = eEntityType::entityTypeNPC;
                                         tEntity->position += glm::vec3(static_cast<float32>(w) + tp - xo, y_pos, static_cast<float32>(h) + tp - yo);
                                         entityManager->updateModelMatrix(tEntity);
                                     }

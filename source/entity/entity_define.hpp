@@ -36,6 +36,14 @@ enum eEntityOwner: uint16
     ownerMap  = 2
 };
 
+enum eEntityType: uint16
+{
+    entityTypeOther  = 0,
+    entityTypeStatic = 1,
+    entityTypeObject = 2,
+    entityTypeNPC    = 3
+};
+
 struct sEntity
 {
     // Linked list
@@ -44,6 +52,7 @@ struct sEntity
     // Infomation
     std::string      name        = "";
     bool             enabled     = true;
+    eEntityType      type        = eEntityType::entityTypeStatic;
     eEntityOwner     owner       = eEntityOwner::ownerNone;
 
     // Base

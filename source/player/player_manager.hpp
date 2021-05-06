@@ -35,6 +35,7 @@ class cPlayerManager
         void      terminate(void);
         void      process(const float32 &_dt);
         sEntity*  load(const std::string &_fileName);
+        sEntity*  getPlayerEntity(void) { return m_data; };
         void      setMapPointer(sMap* _map) { m_mapPointer = _map; };
 
         uint32    positionToTile(glm::vec3 _position);

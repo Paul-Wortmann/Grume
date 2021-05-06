@@ -256,11 +256,18 @@ void cMapManager::load(const std::string &_fileName)
         {
             cXML xmlMusicFile;
             xmlMusicFile.load(FILE_PATH_BIOME + m_currentMap->biome->MusicSet.fileName);
-            std::string xmlKey = "<" + m_currentMap->biome->MusicTag.name + "_entity>";
+            std::string   xmlKey = "<" + m_currentMap->biome->MusicTag.name + "_entity>";
             if (xmlMusicFile.lineCount() > 0)
             {
                 std::uint32_t trackCount = xmlMusicFile.getInstanceCount(xmlKey);
-                m_mapMusic = xmlMusicFile.getString(xmlKey, (rand() % trackCount) + 1);
+                if (m_currentMap->biome->MusicTrack.no == 0)
+                {
+                    m_mapMusic = xmlMusicFile.getString(xmlKey, (rand() % trackCount) + 1);
+                }
+                else
+                {
+                    m_mapMusic = xmlMusicFile.getString(xmlKey, m_currentMap->biome->MusicTrack.no);
+                }
             }
             xmlMusicFile.free();
         }

@@ -94,6 +94,7 @@ void cGameEngine::initialize(void)
         audioManager.initialize();
         audioManager.setVolumeMaster(0.1f);
         mapManager.initialize(&entityManager);
+        npcManager.initialize(&entityManager);
         playerManager.initialize(&entityManager);
         playerManager.setTerrainHeight(-1.0f);
         uiManager.initialize(&entityManager);
@@ -122,6 +123,8 @@ void cGameEngine::initialize(void)
         physicsEngine.initialize();
         animationEngine.initialize();
         animationEngine.setEntityHead(entityManager.getHead());
+        npcManager.setEntityHead(entityManager.getHead());
+        npcManager.setEntityPlayer(playerManager.getPlayerEntity());
         m_state = eGameState::active;
     }
     else
@@ -135,6 +138,7 @@ void cGameEngine::terminate(void)
     audioManager.terminate();
     animationEngine.terminate();
     uiManager.terminate();
+    npcManager.terminate();
     playerManager.terminate();
     physicsEngine.terminate();
     graphicsEngine.terminate();
@@ -156,6 +160,7 @@ void cGameEngine::process(void)
         // -----------------------------------------
         graphicsEngine.process(dt);
         animationEngine.process(dt);
+        npcManager.process(dt);
         playerManager.process(dt);
         physicsEngine.process(dt);
         audioManager.process(dt);

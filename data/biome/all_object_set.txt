@@ -106,9 +106,11 @@
     </barrel>
 
     <crate>
-        <crate_count>2</crate_count>
+        <crate_count>4</crate_count>
         <crate_entity>common_objects/crate_1_001.txt</crate_entity>
         <crate_entity>common_objects/crate_2_001.txt</crate_entity>
+        <crate_entity>common_objects/crate_3_001.txt</crate_entity>
+        <crate_entity>common_objects/crate_4_001.txt</crate_entity>
     </crate>
 
     <statue>

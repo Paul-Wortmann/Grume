@@ -1,15 +1,58 @@
 ﻿<?xml version = "1.0" encoding = "UTF-8" ?>
 <npc>
+
     <information>
         <name>bat_1_001</name>
     </information>
+
     <resources>
         <model>npc/bat_1_001.dae</model>
 	<material>npc/bat_1_001.txt</material>
     </resources>
+
     <transform>
-    <position>0.0 2.0 0.0</position>
+        <position>0.0 2.0 0.0</position>
         <scale>0.125 0.125 0.125</scale>
         <rotation>3.1416 3.1416 0.0</rotation>
     </transform>
+
+    <sounds>
+        <attack>
+            <attack_sound>npc/bat/attack_1.ogg</attack_sound>
+            <attack_sound>npc/bat/attack_2.ogg</attack_sound>
+        </attack>
+        <defend>
+            <defend_sound>npc/bat/defend_1.ogg</defend_sound>
+        </defend>
+        <die>
+            <die_sound>npc/bat/die_1.ogg</die_sound>
+        </die>
+        <idle>
+            <idle_sound>npc/bat/idle_1.ogg</idle_sound>
+        </idle>
+        <getHit>
+            <getHit_sound>npc/bat/getHit_1.ogg</getHit_sound>
+        </getHit>
+        <move>
+            <move_sound>npc/bat/move_1.ogg</move_sound>
+        </move>
+    </sounds>
+
+    <ai>
+        # % chance per second
+        <attack_chance>10</attack_chance>
+        <defend_chance>10</defend_chance>
+        # number of tiles
+        <sight_distance>10</sight_distance>
+        # 1 -> rush attack on sight, persitent attack
+        # 2 -> rush attack on sight, flee on damage
+        # 3 -> ranged, keep distance
+        <attack_behavior>1</attack_behavior>
+        # 1 -> independent movement
+        # 2 -> say with the group, flock attack / flee
+        # 3 -> Follow the leader, independent when leader killed
+        <move_behavior>1</move_behavior>
+    </ai>
+
 </npc>
+

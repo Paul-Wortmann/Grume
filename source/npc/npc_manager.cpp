@@ -23,8 +23,9 @@
  
 #include "npc_manager.hpp"
 
-void cNPCManager::initialize(void)
+void cNPCManager::initialize(cEntityManager* _entityManager)
 {
+    m_entityManager = _entityManager;
 }
 
 void cNPCManager::terminate(void)
@@ -41,5 +42,20 @@ void cNPCManager::m_freeAll(void)
     for (sNPC* m_temp = getHead(); m_temp != nullptr; m_temp = m_temp->next)
     {
         m_freeData(m_temp);
+    }
+}
+
+void cNPCManager::process(const float32 &_dt)
+{
+    // Entities
+    for(m_entityTemp = m_entityHead; m_entityTemp != nullptr; m_entityTemp = m_entityTemp->next)
+    {
+        if ((m_entityTemp != nullptr) && (m_entityPlayer != nullptr) && (m_entityTemp->type == eEntityType::entityTypeNPC))
+        {
+            //glm::vec3 rotation = m_entityTemp->rotation;
+            double angle = atan2(m_entityTemp->position.z - m_entityPlayer->position.z, m_entityTemp->position.x - m_entityPlayer->position.x);
+            m_entityTemp->rotation.y = angle - DTOR_90;
+            m_entityManager->updateModelMatrix(m_entityTemp);
+        }
     }
 }

@@ -85,13 +85,14 @@ sMapBiome* cBiomeManager::load(const std::string &_fileName)
         tBiome->fileName = _fileName;
 
         // Get the data from the XML file
-        tBiome->name                      = xmlFile.getString("<name>");
-        tBiome->MusicSet.fileName         = xmlFile.getString("<music_set>");
-        tBiome->MusicTag.name             = xmlFile.getString("<music_tag>");
-        tBiome->NPCSet.fileName           = xmlFile.getString("<npc_set>");
-        tBiome->ObjectSet.fileName        = xmlFile.getString("<object_set>");
-        tBiome->WallSet.fileName          = xmlFile.getString("<wall_set>");
-        tBiome->floorSpritesheet.fileName = xmlFile.getString("<floor_spritesheet>");
+        tBiome->name                      = xmlFile.getString ("<name>");
+        tBiome->MusicSet.fileName         = xmlFile.getString ("<music_set>");
+        tBiome->MusicTag.name             = xmlFile.getString ("<music_tag>");
+        tBiome->MusicTrack.no             = xmlFile.getInteger("<music_track>");
+        tBiome->NPCSet.fileName           = xmlFile.getString ("<npc_set>");
+        tBiome->ObjectSet.fileName        = xmlFile.getString ("<object_set>");
+        tBiome->WallSet.fileName          = xmlFile.getString ("<wall_set>");
+        tBiome->floorSpritesheet.fileName = xmlFile.getString ("<floor_spritesheet>");
 
         // Load the data sets
         m_load_musicSet(tBiome);
