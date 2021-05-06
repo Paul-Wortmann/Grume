@@ -59,6 +59,7 @@ void cGameEngine::playMusic(void)
         audioManager.loadBufferOgg(bID, FILE_PATH_MUSIC + mapManager.getMapMusic());
         audioManager.setAudioBufferName(bID, mapManager.getMapMusic());
         audioManager.attachSourceBuffer(sID, bID);
+        audioManager.setAudioSourceLooping(sID, true);
         audioManager.playSource(sID);
         mapManager.setMusicSID(sID);
         mapManager.setMusicBID(bID);
