@@ -61,6 +61,11 @@ struct sMapObjectSet
     std::string fileName = "";
 };
 
+struct sAllMapList
+{
+    std::string fileName = "";
+};
+
 struct sMapWallSet
 {
     std::string name     = "";
@@ -115,6 +120,7 @@ struct sMapBiome
     sMapNPCSet    NPCSet     = {};
     sMapObjectSet ObjectSet  = {};
     sMapWallSet   WallSet    = {};
+    sAllMapList   allMapList = {};
     
     // Map floor spritesheet
     sMapFloorSpritesheet floorSpritesheet = {};

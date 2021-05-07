@@ -3,6 +3,8 @@
     <name>dungeon_003_biome</name>
     <music_set>all_music_set.txt</music_set>
     <music_tag>dungeon</music_tag>
+    <music_track>0</music_track> # 0 for random
+    <map_list>all_map_list.txt</map_list>
     <npc_set>all_npc_set.txt</npc_set>
     <object_set>all_object_set.txt</object_set>
     <wall_set>dungeon_003_wall_set.txt</wall_set>

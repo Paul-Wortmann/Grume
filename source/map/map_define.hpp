@@ -90,6 +90,7 @@ struct sMapEvent
     std::uint32_t tile      = 0;
     std::uint32_t data_1    = 0;
     std::uint32_t data_2    = 0;
+    bool          triggered = false;
 };
 
 struct sMapPortal

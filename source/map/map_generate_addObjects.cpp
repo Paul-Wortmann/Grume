@@ -131,11 +131,11 @@ void cMapManager::m_addObjectEntities(sMap*& _map)
             {
                 if (tObjectIndex == 0)
                 {
-                    tEntity = entityManager->load(xmlObjectFile.getString("<" + object_names[tObjectNumber-1] + "_entity>", 1 + (rand() % object_counts[tObjectNumber-1])));
+                    tEntity = m_entityManager->load(xmlObjectFile.getString("<" + object_names[tObjectNumber-1] + "_entity>", 1 + (rand() % object_counts[tObjectNumber-1])));
                 }
                 else
                 {
-                    tEntity = entityManager->load(xmlObjectFile.getString("<" + object_names[tObjectNumber-1] + "_entity>", tObjectIndex));
+                    tEntity = m_entityManager->load(xmlObjectFile.getString("<" + object_names[tObjectNumber-1] + "_entity>", tObjectIndex));
                 }
                 if (tEntity != nullptr)
                 {
@@ -147,7 +147,7 @@ void cMapManager::m_addObjectEntities(sMap*& _map)
                         tEntity->scale *= glm::vec3(tObjectScale, tObjectScale, tObjectScale);
                     }
                     tEntity->rotation += glm::vec3(tEntity->rotation.x, tObjectRotation, tEntity->rotation.z);
-                    entityManager->updateModelMatrix(tEntity);
+                    m_entityManager->updateModelMatrix(tEntity);
                 }
             }
         }
@@ -237,13 +237,13 @@ void cMapManager::m_addObjectEntities(sMap*& _map)
                                 _map->tile[t].object = debris[i].object_number;
                                 if (object_counts[debris[i].object_number-1] > 0)
                                 {
-                                    tEntity = entityManager->load(xmlObjectFile.getString("<" + object_names[debris[i].object_number-1] + "_entity>", 1 + (rand() % object_counts[debris[i].object_number-1])));
+                                    tEntity = m_entityManager->load(xmlObjectFile.getString("<" + object_names[debris[i].object_number-1] + "_entity>", 1 + (rand() % object_counts[debris[i].object_number-1])));
                                     if (tEntity != nullptr)
                                     {
                                         tEntity->owner = eEntityOwner::ownerMap;
                                         tEntity->type  = eEntityType::entityTypeObject;
                                         tEntity->position = glm::vec3(static_cast<float32>(w) + tp - xo, y_pos, static_cast<float32>(h) + tp - yo);
-                                        entityManager->updateModelMatrix(tEntity);
+                                        m_entityManager->updateModelMatrix(tEntity);
                                     }
                                 }
                             }

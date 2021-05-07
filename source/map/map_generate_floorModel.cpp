@@ -58,7 +58,7 @@ sEntityModel* cMapManager::m_generateFloor(sMap*& _map)
     // If the floor has not yet been generated for a previous map
     if (_map->floor->model == nullptr)
     {
-        _map->floor->model = entityManager->getNewModel();
+        _map->floor->model = m_entityManager->getNewModel();
     }
     else // Cleanup previous floor data
     {

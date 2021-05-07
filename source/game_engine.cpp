@@ -126,6 +126,7 @@ void cGameEngine::initialize(void)
         animationEngine.setEntityHead(entityManager.getHead());
         npcManager.setEntityHead(entityManager.getHead());
         npcManager.setEntityPlayer(playerManager.getPlayerEntity());
+        mapManager.setPlayerPointer(&playerManager);
         m_state = eGameState::active;
     }
     else
@@ -163,6 +164,7 @@ void cGameEngine::process(void)
         animationEngine.process(dt);
         npcManager.process(dt);
         playerManager.process(dt);
+        mapManager.process(dt);
         physicsEngine.process(dt);
         audioManager.process(dt);
 
@@ -281,7 +283,7 @@ void cGameEngine::process(void)
         if (graphicsEngine.getKeyState(GLFW_KEY_7))
         {
             stopMusic();
-            mapManager.load("town_000.txt");
+            mapManager.load("town_1_001.txt");
             resetPlayerPosition();
             graphicsEngine.initializeEntities();
             playMusic();

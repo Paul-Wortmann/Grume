@@ -4,6 +4,7 @@
     <music_set>all_music_set.txt</music_set>
     <music_tag>town</music_tag>
     <music_track>1</music_track> # 0 for random
+    <map_list>all_map_list.txt</map_list>
     <npc_set>all_npc_set.txt</npc_set>
     <object_set>all_object_set.txt</object_set>
     <wall_set>town_001_wall_set.txt</wall_set>

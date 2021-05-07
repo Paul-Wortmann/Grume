@@ -121,11 +121,11 @@ void cMapManager::m_addNPCEntities(sMap*& _map)
             {
                 if (tNPCIndex == 0)
                 {
-                    tEntity = entityManager->load(xmlNPCFile.getString("<" + npc_names[tNPCNumber-1] + "_entity>", 1 + (rand() % npc_counts[tNPCNumber-1])));
+                    tEntity = m_entityManager->load(xmlNPCFile.getString("<" + npc_names[tNPCNumber-1] + "_entity>", 1 + (rand() % npc_counts[tNPCNumber-1])));
                 }
                 else
                 {
-                    tEntity = entityManager->load(xmlNPCFile.getString("<" + npc_names[tNPCNumber-1] + "_entity>", tNPCIndex));
+                    tEntity = m_entityManager->load(xmlNPCFile.getString("<" + npc_names[tNPCNumber-1] + "_entity>", tNPCIndex));
                 }
                 if (tEntity != nullptr)
                 {
@@ -138,7 +138,7 @@ void cMapManager::m_addNPCEntities(sMap*& _map)
                     }
                     tEntity->rotation.y += tNPCRotation;
                     tEntity->rotation = glm::vec3(tEntity->rotation.x, tEntity->rotation.y, tEntity->rotation.z);
-                    entityManager->updateModelMatrix(tEntity);
+                    m_entityManager->updateModelMatrix(tEntity);
                 }
             }
         }
@@ -219,13 +219,13 @@ void cMapManager::m_addNPCEntities(sMap*& _map)
                                 _map->tile[t].object = mob[i].npc_number;
                                 if (npc_counts[mob[i].npc_number-1] > 0)
                                 {
-                                    tEntity = entityManager->load(xmlNPCFile.getString("<" + npc_names[mob[i].npc_number-1] + "_entity>", 1 + (rand() % npc_counts[mob[i].npc_number-1])));
+                                    tEntity = m_entityManager->load(xmlNPCFile.getString("<" + npc_names[mob[i].npc_number-1] + "_entity>", 1 + (rand() % npc_counts[mob[i].npc_number-1])));
                                     if (tEntity != nullptr)
                                     {
                                         tEntity->owner = eEntityOwner::ownerMap;
                                         tEntity->type  = eEntityType::entityTypeNPC;
                                         tEntity->position += glm::vec3(static_cast<float32>(w) + tp - xo, y_pos, static_cast<float32>(h) + tp - yo);
-                                        entityManager->updateModelMatrix(tEntity);
+                                        m_entityManager->updateModelMatrix(tEntity);
                                     }
                                 }
                             }

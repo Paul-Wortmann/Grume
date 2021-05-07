@@ -30,6 +30,7 @@
 #include "../graphics/graphics_engine_utils.hpp"
 #include "../includes.hpp"
 #include "../linked_list.hpp"
+#include "../player/player_manager.hpp"
 #include "biome_manager.hpp"
 #include "map_define.hpp"
 
@@ -39,9 +40,11 @@ class cMapManager : public tcLinkedList<sMap>
         // map_manager.cpp
         sMap*         getMapPointer(void) { return m_currentMap; };
         void          initialize(cEntityManager* _entityManager);
+        void          setPlayerPointer(cPlayerManager* _playerManager) { m_playerManager = _playerManager; };
         void          terminate(void);
         void          load(const std::string &_fileName);
         void          unload(void);
+        void          process(const float32 &_dt);
 
         // Music
         std::string   getMapMusic(void) { return m_mapMusic; };
@@ -64,8 +67,9 @@ class cMapManager : public tcLinkedList<sMap>
     protected:
 
     private:
-        cEntityManager* entityManager   = nullptr;
-        cBiomeManager   biomeManager;
+        cEntityManager* m_entityManager = nullptr;
+        cPlayerManager* m_playerManager = nullptr;
+        cBiomeManager   m_biomeManager  = {};
         sMap*           m_currentMap    = nullptr;
         std::string     m_mapMusic      = ""; // Map music file name
         std::uint32_t   m_musicSourceID = 0;  // Map music audio source

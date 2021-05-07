@@ -25,13 +25,13 @@
 
 void cMapManager::initialize(cEntityManager* _entityManager)
 {
-    entityManager = _entityManager;
-    biomeManager.initialize(entityManager);
+    m_entityManager = _entityManager;
+    m_biomeManager.initialize(m_entityManager);
 }
 
 void cMapManager::terminate(void)
 {
-    biomeManager.terminate();
+    m_biomeManager.terminate();
     m_freeAll();
 }
 
@@ -245,7 +245,7 @@ void cMapManager::load(const std::string &_fileName)
         }
 
         // Generate floor model
-        m_currentMap->floor        = entityManager->getNew();
+        m_currentMap->floor        = m_entityManager->getNew();
         m_currentMap->floor->name  = "Generated map floor.";
         m_currentMap->floor->owner = eEntityOwner::ownerMap;
         m_currentMap->floor->model = m_generateFloor(m_currentMap);
@@ -254,18 +254,18 @@ void cMapManager::load(const std::string &_fileName)
         m_currentMap->floor->position = glm::vec3(0.0f, 0.0f, 0.0f);
         m_currentMap->floor->scale    = glm::vec3(1.0f, 1.0f, 1.0f);
         m_currentMap->floor->rotation = glm::vec3(0.0f, 0.0f, 0.0f);
-        entityManager->updateModelMatrix(m_currentMap->floor);
+        m_entityManager->updateModelMatrix(m_currentMap->floor);
 
         // Load the biome from file
         if (biomeFile.length() > 3)
         {
-            m_currentMap->biome = biomeManager.load(biomeFile);
+            m_currentMap->biome = m_biomeManager.load(biomeFile);
         }
 
         // Load the material defined in the previously loaded biome
         if (m_currentMap->biome->floorSpritesheet.fileName.length() > 3)
         {
-            m_currentMap->floor->material = entityManager->loadMaterial(m_currentMap->biome->floorSpritesheet.fileName);
+            m_currentMap->floor->material = m_entityManager->loadMaterial(m_currentMap->biome->floorSpritesheet.fileName);
         }
 
         // Load the music defined in the previously loaded biome
@@ -340,11 +340,11 @@ void cMapManager::load(const std::string &_fileName)
             switch (tEventType)
             {
                 // Warp to map + portal
-                case '1':
-                    m_currentMap->event[i].type   = eMapEventType::eventTypeWarp;
+                case 1:
+                    m_currentMap->event[i].type = eMapEventType::eventTypeWarp;
                 break;
                 // None 
-                case '0':
+                case 0:
                 default:
                     m_currentMap->event[i].type = eMapEventType::eventTypeNone;
                 break;
@@ -360,7 +360,7 @@ void cMapManager::load(const std::string &_fileName)
         for (uint32 i = 0; i < m_currentMap->portalCount; ++i)
         {
             // Load the data from the map file
-            std::string tPortalString = xmlMapFile.getString("<event>", i + 1);
+            std::string tPortalString = xmlMapFile.getString("<portal>", i + 1);
             tPortalString += "    ";
             std::uint32_t tPortalStringLength = tPortalString.length();
             std::uint32_t tPortalNumber    = 0;
@@ -416,7 +416,7 @@ void cMapManager::load(const std::string &_fileName)
     }
 }
 
-void  cMapManager::unload(void)
+void cMapManager::unload(void)
 {
     // If nullptr return
     if (m_currentMap == nullptr)
@@ -428,15 +428,85 @@ void  cMapManager::unload(void)
     m_freeData(m_currentMap);
     m_currentMap->name = "";
     m_currentMap->fileName = "";
-    entityManager->removeModel(m_currentMap->floor->model);
+    m_entityManager->removeModel(m_currentMap->floor->model);
     
     // Free all entities asociated with the map
-    for (sEntity* entity = entityManager->getHead(); entity != nullptr; entity = entity->next)
+    for (sEntity* entity = m_entityManager->getHead(); entity != nullptr; entity = entity->next)
     {
         if (entity->owner == eEntityOwner::ownerMap)
         {
-            entityManager->remove(entity);
-            entity = entityManager->getHead();
+            m_entityManager->remove(entity);
+            entity = m_entityManager->getHead();
         }
     }
 }
+
+void cMapManager::process(const float32 &_dt)
+{
+    std::uint32_t playerTile = m_playerManager->getCurrentTile();
+    for (std::uint32_t i = 0; i < m_currentMap->eventCount; ++i)
+    {
+        if ((m_currentMap->event[i].tile == playerTile) && (!m_currentMap->event[i].triggered))
+        {
+            m_currentMap->event[i].triggered = true;
+            if (m_currentMap->event[i].type == eMapEventType::eventTypeWarp)
+            {
+                // Load the map warp data
+                std::string nextMapFileName = "";
+                cXML xmlAllMapFile;
+                xmlAllMapFile.load(FILE_PATH_BIOME + m_currentMap->biome->allMapList.fileName);
+                std::uint32_t mapCount = xmlAllMapFile.getInstanceCount("<map>");
+                for (std::uint32_t j = 0; j < mapCount; ++j)
+                {
+                    std::string   tMapString = xmlAllMapFile.getString("<map>", j + 1);
+                    tMapString += "    ";
+                    std::uint32_t tMapStringLength = tMapString.length();
+                    std::uint32_t tMapNumber   = 0;
+                    std::string   tMapFilename = "";
+                    std::uint32_t tStringNum = 0;
+                    std::string   tString = "";
+                    if (tMapStringLength > 6)
+                    {
+                        for (std::uint32_t k = 0; k < tMapStringLength; ++k)
+                        {
+                            if (tMapString[k] == ' ')
+                            {
+                                if (tStringNum == 0)
+                                {
+                                    tMapNumber = std::stoi(tString);
+                                }
+                                else if (tStringNum == 1)
+                                {
+                                    tMapFilename = tString;
+                                }
+                                tStringNum++;
+                                tString = "";
+                            }
+                            else
+                            {
+                                tString += tMapString[k];
+                            }
+                        }
+                    }
+                    if (tMapNumber == m_currentMap->event[i].data_1)
+                    {
+                        nextMapFileName = tMapFilename;
+                    }
+                }
+                xmlAllMapFile.free();
+                
+                // Free the old map
+                // Load the new map
+                //stopMusic();
+                load(nextMapFileName);
+                //resetPlayerPosition();
+                //graphicsEngine.initializeEntities();
+                //playMusic();
+
+            }
+        }
+    }
+}
+
+
+

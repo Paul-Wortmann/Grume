@@ -60,5 +60,5 @@ PARTICULAR PURPOSE.  See the gpl.txt file for more details.
 - Paul Wortmann: physhex@gmail.com
 - Website:            http://www.physhexgames.com
 - Development:   https://github.com/Paul-Wortmann/Frost_And_Flame
-- Discord:   https://discord.gg/JCqmb5Vd
+
 
