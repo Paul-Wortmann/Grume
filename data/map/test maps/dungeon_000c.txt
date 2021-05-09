@@ -1,0 +1,22 @@
+﻿<?xml version = "1.0" encoding = "UTF-8" ?>
+<map>
+    <information>
+        <name>dungeon_003</name>
+        <width>100</width>
+        <height>100</height>
+        <biome>dungeon_001_biome.txt</biome>
+    </information>
+    <generation>
+       <generate>1</generate>
+       <seed>0</seed>
+       <algorithm>1</algorithm>
+       <wall_width>1<wall_width>
+    </generation>
+    <player>
+        <player_start_tile>148</player_start_tile>
+        <player_start_rotation>0</player_start_rotation>
+    </player>
+    <objects>
+        #tile number, object number, scale, y-rotation
+    </objects>
+</map>

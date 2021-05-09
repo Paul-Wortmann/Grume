@@ -77,8 +77,8 @@ class cGraphicsEngine
         GLFWwindow*   m_window             = nullptr;
         bool          m_windowClosed       = false;
         std::string   m_windowTitle        = "Frost and Flame";
-        uint32        m_window_w           = 1024;
-        uint32        m_window_h           = 800;
+        uint32        m_window_w           = 1920;
+        uint32        m_window_h           = 1024;
         float32       m_aspectRatio        = static_cast<float32>(m_window_w) / static_cast<float32>(m_window_h);
         uint32        m_fieldOfView        = 45;
         bool          m_fullscreen         = false;

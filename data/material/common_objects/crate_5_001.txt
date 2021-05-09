@@ -1,0 +1,8 @@
+﻿<?xml version = "1.0" encoding = "UTF-8" ?>
+<material>
+    <name>crate_5_001</name>
+    <diffuse>common_objects/crate_5_001_d.png</diffuse>
+    <emissive>none_e.png</emissive>
+    <normal>common_objects/crate_5_001_n.png</normal>
+    <specular>common_objects/crate_5_001_s.png</specular>
+</material>
