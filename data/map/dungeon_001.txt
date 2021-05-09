@@ -1,7 +1,7 @@
 ﻿<?xml version = "1.0" encoding = "UTF-8" ?>
 <map>
     <information>
-        <name>dungeon_001</name>
+        <name>dungeon_1_001</name>
         <width>16</width>
         <height>16</height>
         <biome>dungeon_001_biome.txt</biome>
@@ -28,11 +28,44 @@
        <algorithm>1</algorithm>
        <wall_width>1<wall_width>
     </generation>
+
     <player>
+        # This is used when not warping from a prior map
         <player_start_tile>148</player_start_tile>
-        <player_start_rotation>0</player_start_rotation>
+        <player_start_rotation>0.0000</player_start_rotation>
     </player>
+
+    <portals>
+        # These are used when warping from a prior map
+        # Portal number, Tile location, player face direction
+        # These are exit portals
+        <portal>1 132 0.0000</portal> #Town 1 exit
+    </portals>
+    
+    <events>
+        # Tile location, type, data 1, data 2
+        # Type 1 (Warp to map) -> tile, event type, map number, portal number
+        <event>140 1 0 1</event> # Town 1 entrance
+        <event>141 1 0 1</event> # Town 1 entrance
+    </events>
+
+    <debris_objects>
+        #object number, scale max, scale min, prevalence, obstacle
+        <debris>6 0.5 1.0 15 0</debris> # rock small
+    </debris_objects>
+
     <objects>
         #tile number, object number, scale, y-rotation
     </objects>
+
+    <npc_mobs>
+        #npc number, scale max, scale min, prevalence
+        <npc_mob>2 0.5 1.0 5</mob> # bat
+    </npc_mobs>
+
+    <npcs>
+        #tile number, npc number, index (0 == random), scale, y-rotation
+        # town central
+    </npcs>
+
 </map>

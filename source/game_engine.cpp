@@ -42,49 +42,6 @@ void cGameEngine::run(void)
     terminate();
 }
 
-// Stop the music that is currently playing
-void cGameEngine::stopMusic(void)
-{
-    audioManager.stopSource(mapManager.getMusicSID());
-}
-
-// Load and play the music defined in the previously loaded biome
-void cGameEngine::playMusic(void)
-{
-    if (mapManager.getMapMusic().length() > 3)
-    {
-        std::uint32_t sID = audioManager.newAudioSource();
-        audioManager.setAudioSourcePosition(sID, 0.0f, 0.0f, 0.0f);
-        std::uint32_t bID = audioManager.newAudioBuffer();
-        audioManager.loadBufferOgg(bID, FILE_PATH_MUSIC + mapManager.getMapMusic());
-        audioManager.setAudioBufferName(bID, mapManager.getMapMusic());
-        audioManager.attachSourceBuffer(sID, bID);
-        audioManager.setAudioSourceLooping(sID, true);
-        audioManager.playSource(sID);
-        mapManager.setMusicSID(sID);
-        mapManager.setMusicBID(bID);
-    }
-}
-
-void cGameEngine::resetPlayerPosition(void)
-{
-    playerManager.setMapPointer(mapManager.getMapPointer());
-    playerManager.resetStartTile();
-
-    glm::vec3 playerPosition      = playerManager.getPosition();
-    glm::vec3 cameraTarget        = graphicsEngine.getCameraTarget();
-    glm::vec3 cameraPosition      = graphicsEngine.getCameraPosition();
-    glm::vec3 playerLightPosition = graphicsEngine.getPlayerLightPosition();
-    
-    glm::vec3 delta = cameraPosition - cameraTarget;
-    cameraTarget    = playerPosition;
-    cameraPosition  = cameraTarget + delta;
-
-    graphicsEngine.setPlayerLightPosition(glm::vec3(playerPosition.x, playerLightPosition.y, playerPosition.z));
-    graphicsEngine.setCameraPosition(cameraPosition);
-    graphicsEngine.setCameraTarget(cameraTarget);
-}
-
 void cGameEngine::initialize(void)
 {
     uint32 status = graphicsEngine.initialize(); // This should be initialized first
@@ -97,11 +54,19 @@ void cGameEngine::initialize(void)
         mapManager.initialize(&entityManager);
         npcManager.initialize(&entityManager);
         playerManager.initialize(&entityManager);
+        mapManager.setPlayerPointer(&playerManager);
+        graphicsEngine.setEntityHead(entityManager.getHead());
+        graphicsEngine.setUIHead(uiManager.getHead());
+        graphicsEngine.initializeUIComponents();
+        physicsEngine.initialize();
+        animationEngine.initialize();
+        animationEngine.setEntityHead(entityManager.getHead());
+        npcManager.setEntityHead(entityManager.getHead());
+        mapManager.setGraphicsPointer(&graphicsEngine);
+        mapManager.setAudioPointer(&audioManager);
         playerManager.setTerrainHeight(-1.0f);
         uiManager.initialize(&entityManager);
         
-        // load the game startup file
-        load();
 
         // TEST bat -- DELETE ME --
         m_entityBat = entityManager.load("npc/bat_1_001.txt");
@@ -111,22 +76,13 @@ void cGameEngine::initialize(void)
             entityManager.updateModelMatrix(m_entityBat);
         }
         // TEST bat -- DELETE ME --
-        
-        // Play the music defined in the previously loaded biome
-        playMusic();
+
+
+        // load the game startup file
+        load();
 
         // Ater loading entities
         m_entityHead = entityManager.getHead();
-        graphicsEngine.setEntityHead(entityManager.getHead());
-        graphicsEngine.initializeEntities();
-        graphicsEngine.setUIHead(uiManager.getHead());
-        graphicsEngine.initializeUIComponents();
-        physicsEngine.initialize();
-        animationEngine.initialize();
-        animationEngine.setEntityHead(entityManager.getHead());
-        npcManager.setEntityHead(entityManager.getHead());
-        npcManager.setEntityPlayer(playerManager.getPlayerEntity());
-        mapManager.setPlayerPointer(&playerManager);
         m_state = eGameState::active;
     }
     else
@@ -197,96 +153,6 @@ void cGameEngine::process(void)
             cameraTarget.z += deltaZ;
             graphicsEngine.setCameraPosition(glm::vec3(cameraPosition));
             graphicsEngine.setCameraTarget(glm::vec3(cameraTarget));
-/*
-            // Camera scrolls with player near screen edge
-            float32 deltaTmax = 4.0f; // We shoud base this off the current zoom level
-            float32 deltaTmin = deltaTmax * graphicsEngine.getAspectRatio();
-
-            if (deltaX > deltaTmax)
-            {
-                deltaX -= deltaTmax;
-                graphicsEngine.setCameraPosition(glm::vec3(cameraPosition.x + deltaX, cameraPosition.y, cameraPosition.z));
-                graphicsEngine.setCameraTarget(glm::vec3(cameraTarget.x + deltaX, cameraTarget.y, cameraTarget.z));
-            }
-            else if (deltaX < -deltaTmin)
-            {
-                deltaX += deltaTmin;
-                graphicsEngine.setCameraPosition(glm::vec3(cameraPosition.x + deltaX, cameraPosition.y, cameraPosition.z));
-                graphicsEngine.setCameraTarget(glm::vec3(cameraTarget.x + deltaX, cameraTarget.y, cameraTarget.z));
-            }
-            if (deltaZ > deltaTmax)
-            {
-                deltaZ -= deltaTmax;
-                graphicsEngine.setCameraPosition(glm::vec3(cameraPosition.x, cameraPosition.y, cameraPosition.z + deltaZ));
-                graphicsEngine.setCameraTarget(glm::vec3(cameraTarget.x, cameraTarget.y, cameraTarget.z + deltaZ));
-            }
-            else if (deltaZ < -deltaTmin)
-            {
-                deltaZ += deltaTmin;
-                graphicsEngine.setCameraPosition(glm::vec3(cameraPosition.x, cameraPosition.y, cameraPosition.z + deltaZ));
-                graphicsEngine.setCameraTarget(glm::vec3(cameraTarget.x, cameraTarget.y, cameraTarget.z + deltaZ));
-            }
-            */
-        }
-
-
-
-// Level loading
-        if (graphicsEngine.getKeyState(GLFW_KEY_1))
-        {
-            stopMusic();
-            mapManager.load("dungeon_001.txt");
-            resetPlayerPosition();
-            graphicsEngine.initializeEntities();
-            playMusic();
-        }
-        if (graphicsEngine.getKeyState(GLFW_KEY_2))
-        {
-            stopMusic();
-            mapManager.load("dungeon_002.txt");
-            resetPlayerPosition();
-            graphicsEngine.initializeEntities();
-            playMusic();
-        }
-        if (graphicsEngine.getKeyState(GLFW_KEY_3))
-        {
-            stopMusic();
-            mapManager.load("dungeon_003.txt");
-            resetPlayerPosition();
-            graphicsEngine.initializeEntities();
-            playMusic();
-        }
-        if (graphicsEngine.getKeyState(GLFW_KEY_4))
-        {
-            stopMusic();
-            mapManager.load("dungeon_004.txt");
-            resetPlayerPosition();
-            graphicsEngine.initializeEntities();
-            playMusic();
-        }
-        if (graphicsEngine.getKeyState(GLFW_KEY_5))
-        {
-            stopMusic();
-            mapManager.load("dungeon_005.txt");
-            resetPlayerPosition();
-            graphicsEngine.initializeEntities();
-            playMusic();
-        }
-        if (graphicsEngine.getKeyState(GLFW_KEY_6))
-        {
-            stopMusic();
-            mapManager.load("dungeon_003g.txt");
-            resetPlayerPosition();
-            graphicsEngine.initializeEntities();
-            playMusic();
-        }
-        if (graphicsEngine.getKeyState(GLFW_KEY_7))
-        {
-            stopMusic();
-            mapManager.load("town_1_001.txt");
-            resetPlayerPosition();
-            graphicsEngine.initializeEntities();
-            playMusic();
         }
 
         // !! This bat is only here for TESTING !!

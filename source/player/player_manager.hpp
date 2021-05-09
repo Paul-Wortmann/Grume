@@ -57,6 +57,7 @@ class cPlayerManager
 
         uint32    getPathLength(void) { return m_path.pathLength; };
         uint32    getPath(uint32 _i) { return m_path.path[_i]; };
+        void      stopPathing(void) {m_path.pathLength = 0; };
 
         bool      getMoved(void) { return m_moved; };
         void      moveTo(glm::vec3 _pos);

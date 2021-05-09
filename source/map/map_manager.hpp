@@ -26,7 +26,9 @@
 
 //#pragma pack(pop)
 
+#include "../audio/audio_manager.hpp"
 #include "../entity/entity_manager.hpp"
+#include "../graphics/graphics_engine.hpp"
 #include "../graphics/graphics_engine_utils.hpp"
 #include "../includes.hpp"
 #include "../linked_list.hpp"
@@ -41,6 +43,10 @@ class cMapManager : public tcLinkedList<sMap>
         sMap*         getMapPointer(void) { return m_currentMap; };
         void          initialize(cEntityManager* _entityManager);
         void          setPlayerPointer(cPlayerManager* _playerManager) { m_playerManager = _playerManager; };
+        void          setGraphicsPointer(cGraphicsEngine* _graphicsEngine) { m_graphicsEngine = _graphicsEngine; };
+        void          setAudioPointer(cAudioManager* _audioManager) { m_audioManager = _audioManager; };
+        void          resetPlayerPosition(void) { m_resetPlayerPosition(); };
+        void          playMusic(void) {m_playMusic(); };
         void          terminate(void);
         void          load(const std::string &_fileName);
         void          unload(void);
@@ -67,17 +73,22 @@ class cMapManager : public tcLinkedList<sMap>
     protected:
 
     private:
-        cEntityManager* m_entityManager = nullptr;
-        cPlayerManager* m_playerManager = nullptr;
-        cBiomeManager   m_biomeManager  = {};
-        sMap*           m_currentMap    = nullptr;
-        std::string     m_mapMusic      = ""; // Map music file name
-        std::uint32_t   m_musicSourceID = 0;  // Map music audio source
-        std::uint32_t   m_musicBufferID = 0;  // Map music audio buffer
+        cEntityManager*  m_entityManager  = nullptr;
+        cPlayerManager*  m_playerManager  = nullptr;
+        cGraphicsEngine* m_graphicsEngine = nullptr;
+        cAudioManager*   m_audioManager   = nullptr;
+        cBiomeManager    m_biomeManager   = {};
+        sMap*            m_currentMap     = nullptr;
+        std::string      m_mapMusic       = ""; // Map music file name
+        std::uint32_t    m_musicSourceID  = 0;  // Map music audio source
+        std::uint32_t    m_musicBufferID  = 0;  // Map music audio buffer
         
         // map_manager.cpp
         void m_freeAll(void);
         void m_freeData(sMap*& _map);
+        void m_stopMusic(void);
+        void m_playMusic(void);
+        void m_resetPlayerPosition(void);
 
         // map_generate_floorModel.cpp
         sEntityModel* m_generateFloor(sMap*& _map);

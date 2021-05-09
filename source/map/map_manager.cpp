@@ -112,7 +112,7 @@ void cMapManager::m_freeAll(void)
 void cMapManager::load(const std::string &_fileName)
 {
     // Only load a map if it is not already loaded
-    // Unload the current map is need be
+    // Unload the current map if need be
     if (m_currentMap != nullptr)
     {
         if (m_currentMap->fileName.compare(_fileName) == 0)
@@ -402,6 +402,19 @@ void cMapManager::load(const std::string &_fileName)
             m_currentMap->portal[i].direction = tPortalDirection;
         }
         
+        // Determine start location
+        if (m_currentMap->playerStartPortal != 0)
+        {
+            for (uint32 i = 0; i < m_currentMap->portalCount; ++i)
+            {
+                if (m_currentMap->playerStartPortal == m_currentMap->portal[i].portalNo)
+                {
+                    m_currentMap->playerStartTile   = m_currentMap->portal[i].tile;
+                    m_currentMap->playerStartDir    = m_currentMap->portal[i].direction;
+                }
+            }
+        }
+        
         // Populate the map with walls
         m_addWallEntities(m_currentMap);
 
@@ -441,6 +454,50 @@ void cMapManager::unload(void)
     }
 }
 
+// Stop the music that is currently playing
+void cMapManager::m_stopMusic(void)
+{
+    m_audioManager->stopSource(getMusicSID());
+}
+
+// Load and play the music defined in the previously loaded biome
+void cMapManager::m_playMusic(void)
+{
+    if (getMapMusic().length() > 3)
+    {
+        std::uint32_t sID = m_audioManager->newAudioSource();
+        m_audioManager->setAudioSourcePosition(sID, 0.0f, 0.0f, 0.0f);
+        std::uint32_t bID = m_audioManager->newAudioBuffer();
+        m_audioManager->loadBufferOgg(bID, FILE_PATH_MUSIC + getMapMusic());
+        m_audioManager->setAudioBufferName(bID, getMapMusic());
+        m_audioManager->attachSourceBuffer(sID, bID);
+        m_audioManager->setAudioSourceLooping(sID, true);
+        m_audioManager->playSource(sID);
+        setMusicSID(sID);
+        setMusicBID(bID);
+    }
+}
+
+void cMapManager::m_resetPlayerPosition(void)
+{
+    m_playerManager->setMapPointer(getMapPointer());
+    m_playerManager->resetStartTile();
+    m_playerManager->stopPathing();
+    
+    glm::vec3 playerPosition      = m_playerManager->getPosition();
+    glm::vec3 cameraTarget        = m_graphicsEngine->getCameraTarget();
+    glm::vec3 cameraPosition      = m_graphicsEngine->getCameraPosition();
+    glm::vec3 playerLightPosition = m_graphicsEngine->getPlayerLightPosition();
+    
+    glm::vec3 delta = cameraPosition - cameraTarget;
+    cameraTarget    = playerPosition;
+    cameraPosition  = cameraTarget + delta;
+
+    m_graphicsEngine->setPlayerLightPosition(glm::vec3(playerPosition.x, playerLightPosition.y, playerPosition.z));
+    m_graphicsEngine->setCameraPosition(cameraPosition);
+    m_graphicsEngine->setCameraTarget(cameraTarget);
+}
+
 void cMapManager::process(const float32 &_dt)
 {
     std::uint32_t playerTile = m_playerManager->getCurrentTile();
@@ -451,6 +508,9 @@ void cMapManager::process(const float32 &_dt)
             m_currentMap->event[i].triggered = true;
             if (m_currentMap->event[i].type == eMapEventType::eventTypeWarp)
             {
+                // Set the destionation portal number
+                m_currentMap->playerStartPortal = m_currentMap->event[i].data_2;
+                
                 // Load the map warp data
                 std::string nextMapFileName = "";
                 cXML xmlAllMapFile;
@@ -495,13 +555,12 @@ void cMapManager::process(const float32 &_dt)
                 }
                 xmlAllMapFile.free();
                 
-                // Free the old map
-                // Load the new map
-                //stopMusic();
+                // Free the old map && load the new map
+                m_stopMusic();
                 load(nextMapFileName);
-                //resetPlayerPosition();
-                //graphicsEngine.initializeEntities();
-                //playMusic();
+                m_resetPlayerPosition();
+                m_graphicsEngine->initializeEntities();
+                m_playMusic();
 
             }
         }

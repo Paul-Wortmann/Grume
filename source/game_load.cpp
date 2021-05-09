@@ -41,8 +41,18 @@ void cGameEngine::load(void)
         // Load the map
         mapManager.load(xmlGameFile.getString("<map>"));
 
+        // Play the music defined in the previously loaded biome
+        mapManager.playMusic();
+
         // Set player position acording to the map
-        resetPlayerPosition();
+        mapManager.resetPlayerPosition();
+
+        // Set the player pointer, so NPCs can be aware of the player
+        npcManager.setEntityPlayer(playerManager.getPlayerEntity());
+        
+        // Initialize entities
+        graphicsEngine.initializeEntities();
+
     }
     // Clean up
     xmlGameFile.free();    

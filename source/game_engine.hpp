@@ -70,9 +70,6 @@ class cGameEngine
         void initialize(void);
         void terminate(void);
         void process(void);
-        void stopMusic(void);
-        void playMusic(void);
-        void resetPlayerPosition(void);
 
         // game_load.cpp
         void load(void);

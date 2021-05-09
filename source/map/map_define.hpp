@@ -110,8 +110,9 @@ struct sMap
     std::string    fileName        = "";
 
     // Player start information
-    std::uint32_t  playerStartTile = 0;
-    float          playerStartDir  = 0.0f;
+    std::uint32_t  playerStartPortal = 0;
+    std::uint32_t  playerStartTile   = 0;
+    float          playerStartDir    = 0.0f;
 
     // Entity to hold the floor
     sEntity*       floor           = nullptr;

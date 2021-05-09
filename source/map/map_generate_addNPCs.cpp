@@ -144,7 +144,7 @@ void cMapManager::m_addNPCEntities(sMap*& _map)
         }
 
         // Get mob count
-        uint32 mob_count = xmlMapFile.getInstanceCount("<mob>");
+        uint32 mob_count = xmlMapFile.getInstanceCount("<npc_mob>");
         
         if (mob_count > 0)
         {
@@ -152,9 +152,9 @@ void cMapManager::m_addNPCEntities(sMap*& _map)
             struct sMob
             {
                 uint32 npc_number = 0;
-                float  scale_min     = 0.0;
-                float  scale_max     = 0.0;
-                uint32 prevalence    = 0;
+                float  scale_min  = 0.0;
+                float  scale_max  = 0.0;
+                uint32 prevalence = 0;
             };
             
             sMob *mob = nullptr;
@@ -163,7 +163,7 @@ void cMapManager::m_addNPCEntities(sMap*& _map)
             // Load the mob information from the map file into the mob data structure
             for (uint32 i = 0; i < mob_count; ++i)
             {
-                std::string   tMobString = xmlMapFile.getString("<mob>", i + 1);
+                std::string   tMobString = xmlMapFile.getString("<npc_mob>", i + 1);
                 tMobString += "    ";
                 std::uint32_t tMobStringLength = tMobString.length();
                 std::uint32_t tStringNum = 0;
@@ -223,7 +223,7 @@ void cMapManager::m_addNPCEntities(sMap*& _map)
                                     if (tEntity != nullptr)
                                     {
                                         tEntity->owner = eEntityOwner::ownerMap;
-                                        tEntity->type  = eEntityType::entityTypeNPC;
+                                        tEntity->type  = eEntityType::entityTypeNPCmob;
                                         tEntity->position += glm::vec3(static_cast<float32>(w) + tp - xo, y_pos, static_cast<float32>(h) + tp - yo);
                                         m_entityManager->updateModelMatrix(tEntity);
                                     }

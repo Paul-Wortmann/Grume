@@ -38,10 +38,11 @@ enum eEntityOwner: uint16
 
 enum eEntityType: uint16
 {
-    entityTypeOther  = 0,
-    entityTypeStatic = 1,
-    entityTypeObject = 2,
-    entityTypeNPC    = 3
+    entityTypeOther     = 0,
+    entityTypeStatic    = 1,
+    entityTypeObject    = 2,
+    entityTypeNPCmob    = 3,
+    entityTypeNPC       = 4
 };
 
 struct sEntity
