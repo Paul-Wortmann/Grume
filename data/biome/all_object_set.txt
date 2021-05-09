@@ -2,7 +2,7 @@
 <object_set>
 
     <object_define>
-        <object>debris</object>              # 1
+        <object>medieval_buildings</object>  # 1
         <object>chest</object>               # 2
         <object>crystal</object>             # 3
         <object>mushroom</object>            # 4
@@ -11,35 +11,35 @@
         <object>barrel</object>              # 7
         <object>crate</object>               # 8
         <object>statue</object>              # 9
-        <object>medieval_house</object>      # 10
-        <object>medieval_blacksmith</object> # 11
-        <object>medieval_props</object>      # 12
-        <object>old_wagon</object>           # 13
-        <object>medieval_sawmill</object>    # 14
-        <object>grass_patch</object>         # 15
-        <object>dead_tree</object>           # 16
-        <object>bridge</object>              # 17
-        <object>river</object>               # 18
-        <object>rock</object>                # 19
-        <object>rock_small</object>          # 20
-        <object>fence_metal</object>         # 21
-        <object>fence_pole_metal</object>    # 22
-        <object>cemetary_object</object>     # 23
-        <object>mausoleum</object>           # 24
-        <object>torture_device</object>      # 25
-        <object>tower</object>               # 26
-        <object>castle</object>              # 27
-        <object>arrow</object>               # 28
-        <object>basket</object>              # 29
-        <object>sack</object>                # 30
-        <object>torch</object>               # 31
-        <object>town_props</object>          # 32
+        <object>medieval_props</object>      # 10
+        <object>old_wagon</object>           # 11
+        <object>grass_patch</object>         # 12
+        <object>dead_tree</object>           # 13
+        <object>bridge</object>              # 14
+        <object>river</object>               # 15
+        <object>rock</object>                # 16
+        <object>rock_small</object>          # 17
+        <object>fence_metal</object>         # 18
+        <object>fence_pole_metal</object>    # 19
+        <object>cemetary_object</object>     # 20
+        <object>mausoleum</object>           # 21
+        <object>torture_device</object>      # 22
+        <object>tower</object>               # 23
+        <object>castle</object>              # 24
+        <object>arrow</object>               # 25
+        <object>basket</object>              # 26
+        <object>sack</object>                # 27
+        <object>torch</object>               # 28
+        <object>town_props</object>          # 29
     </object_define>
 
-    <debris>
-        <debris_count>0</debris_count>
-        <debris_entity>debris/debris_001.txt</debris_entity>
-    </debris>
+    <medieval_buildings>
+        <medieval_buildings_count>4</medieval_buildings_count>
+        <medieval_buildings_entity>town_objects/medieval_blacksmith_1_001.txt</medieval_buildings_entity>
+        <medieval_buildings_entity>town_objects/medieval_house_1_001.txt</medieval_buildings_entity>
+        <medieval_buildings_entity>town_objects/medieval_house_2_001.txt</medieval_buildings_entity>
+        <medieval_buildings_entity>town_objects/medieval_sawmill_1_001.txt</medieval_buildings_entity>
+    </medieval_buildings>
 
     <chest>
         <chest_count>3</chest_count>
@@ -128,17 +128,6 @@
         <statue_entity>dungeon_objects/medieval_statue_1_001.txt</statue_entity>
     </statue>
 
-    <medieval_house>
-        <medieval_house_count>1</medieval_house_count>
-        <medieval_house_entity>town_objects/medieval_house_1_001.txt</medieval_house_entity>
-        <medieval_house_entity>town_objects/medieval_house_2_001.txt</medieval_house_entity>
-    </medieval_house>
-
-    <medieval_blacksmith>
-        <medieval_blacksmith_count>1</medieval_blacksmith_count>
-        <medieval_blacksmith_entity>town_objects/medieval_blacksmith_1_001.txt</medieval_blacksmith_entity>
-    </medieval_blacksmith>
-
     <medieval_props>
         <medieval_props_count>7</medieval_props_count>
         <medieval_props_entity>town_objects/medieval_bench_1_001.txt</medieval_props_entity>
@@ -154,11 +143,6 @@
         <old_wagon_count>1</old_wagon_count>
         <old_wagon_entity>town_objects/old_wagon_1_001.txt</old_wagon_entity>
     </old_wagon>
-
-    <medieval_sawmill>
-        <medieval_sawmill_count>1</medieval_sawmill_count>
-        <medieval_sawmill_entity>town_objects/medieval_sawmill_1_001.txt</medieval_sawmill_entity>
-    </medieval_sawmill>
 
     <grass_patch>
         <grass_patch_count>1</grass_patch_count>
