@@ -1,0 +1,10 @@
+﻿<?xml version = "1.0" encoding = "UTF-8" ?>
+<entity>
+    <name>one_handed_mace_1_001</name>
+    <model>weapons/one_handed_mace_1_001.obj</model>
+    <material>weapons/one_handed_mace_1_001.txt</material>
+
+    <position>0.0 0.0 0.0</position>
+    <scale>0.5 0.5 0.5</scale>
+    <rotation>0.0 0.0 0.0</rotation>
+</entity>
