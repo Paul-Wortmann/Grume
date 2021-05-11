@@ -28,7 +28,9 @@
 
 struct sEntityAudio
 {
-    sEntityAudio* next = nullptr;
+    // Linked list
+    sEntityAudio*  next = nullptr;
+    std::uint32_t  UID  = 0;
     
 };
 

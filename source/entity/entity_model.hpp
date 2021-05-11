@@ -34,6 +34,7 @@ struct sEntityModel
 {
     // Linked list management
     sEntityModel*     next             = nullptr;
+    std::uint32_t     UID              = 0;
 
     // Information
     bool              animated         = false;

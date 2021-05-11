@@ -31,7 +31,7 @@ struct sEntityState
     // Infomation
     std::string   name          = "";
 
-    // Animation
+    // Animation (start, end, repeat)
     glm::ivec3    animation     = glm::ivec3(0, 0, 0);
 
     // SoundFX

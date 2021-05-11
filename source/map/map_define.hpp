@@ -104,6 +104,7 @@ struct sMap
 {
     // Linked list
     sMap*          next            = nullptr;
+    std::uint32_t  UID             = 0;
 
     // Infomation
     std::string    name            = "";

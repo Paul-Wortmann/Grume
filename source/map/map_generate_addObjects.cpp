@@ -121,7 +121,6 @@ void cMapManager::m_addObjectEntities(sMap*& _map)
             {
                 _map->tile[tObjectTileNum].base = eTileBase::tileFloorNoGo;
             }
-            _map->tile[tObjectTileNum].object = tObjectNumber;
             
             uint32 w = tObjectTileNum % _map->width;
             uint32 h = tObjectTileNum / _map->width;
@@ -139,6 +138,7 @@ void cMapManager::m_addObjectEntities(sMap*& _map)
                 }
                 if (tEntity != nullptr)
                 {
+                    _map->tile[tObjectTileNum].object = tEntity->UID;
                     tEntity->owner = eEntityOwner::ownerMap;
                     tEntity->type  = eEntityType::entityTypeObject;
                     tEntity->position += glm::vec3(static_cast<float32>(w) + tp - xo, y_pos, static_cast<float32>(h) + tp - yo);
@@ -235,12 +235,12 @@ void cMapManager::m_addObjectEntities(sMap*& _map)
                                 {
                                     _map->tile[t].base = eTileBase::tileFloorNoGo;
                                 }
-                                _map->tile[t].object = debris[i].object_number;
                                 if (object_counts[debris[i].object_number-1] > 0)
                                 {
                                     tEntity = m_entityManager->load(xmlObjectFile.getString("<" + object_names[debris[i].object_number-1] + "_entity>", 1 + (rand() % object_counts[debris[i].object_number-1])));
                                     if (tEntity != nullptr)
                                     {
+                                        _map->tile[t].object = tEntity->UID;
                                         tEntity->owner = eEntityOwner::ownerMap;
                                         tEntity->type  = eEntityType::entityTypeObject;
                                         tEntity->position = glm::vec3(static_cast<float32>(w) + tp - xo, y_pos, static_cast<float32>(h) + tp - yo);

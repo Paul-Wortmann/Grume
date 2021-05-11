@@ -46,14 +46,22 @@ struct sAudioData
 
 struct sAudioBuffer
 {
+    // Linked list
     sAudioBuffer* next       = nullptr;
+    std::uint32_t UID        = 0;
+
+    // Data
     uint32_t      ID         = 0;
     std::string   name       = "";
 };
 
 struct sAudioSource
 {
+    // Linked list
     sAudioSource* next       = nullptr;
+    std::uint32_t UID        = 0;
+
+    // Data
     uint32_t      ID         = 0;
     int32_t       state      = 0;
     float         pitch      = 1;

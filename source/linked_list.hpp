@@ -90,11 +90,13 @@ template<class T> class tcLinkedList
             if (m_count == 0)
             {
                 m_count++;
+                m_head->UID = m_count;
                 return m_head;
             }
             m_tail->next = new T;
             m_tail = m_tail->next;
             m_count++;
+            m_tail->UID = m_count;
             return m_tail;
         }
 
@@ -123,6 +125,7 @@ template<class T> class tcLinkedList
             m_tail->next = _T;
             m_tail = m_tail->next;
             m_count++;
+            m_tail->UID = m_count;
         }
 
         // Add pre existing pointer to the end of the the linked list
@@ -149,6 +152,7 @@ template<class T> class tcLinkedList
             Tp->next = _new;
             _new->next = _existing;
             m_count++;
+            _existing->UID = m_count;
         }
 
         // Add pre existing pointer after specified pointer
@@ -158,6 +162,7 @@ template<class T> class tcLinkedList
             _existing->next = _new;
             _new->next = m_temp;
             m_count++;
+            _existing->UID = m_count;
         }
 
         // Swap the location of 2 nodes

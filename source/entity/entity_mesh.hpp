@@ -30,8 +30,11 @@
 
 struct sEntityMesh
 {
+    // Linked list
     sEntityMesh*       next         = nullptr;
-    
+    std::uint32_t      UID          = 0;
+
+    // Data
     uint32             VAO          = 0;
     uint32             VBO_vertices = 0;
     uint32             VBO_bones    = 0;

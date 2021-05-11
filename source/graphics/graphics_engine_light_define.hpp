@@ -33,6 +33,7 @@ struct sGraphicsEnginePointLight
 {
     // Linked list management
     sGraphicsEnginePointLight* next = nullptr;
+    std::uint32_t              UID  = 0;
 
     // Data - needs to match the shader
     uint32    enabled      = 0; // 0 == disabled, 1 >= enabled

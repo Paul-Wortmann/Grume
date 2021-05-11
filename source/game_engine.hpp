@@ -74,10 +74,8 @@ class cGameEngine
         // game_load.cpp
         void load(void);
 
-
         sEntity*      m_entityHead        = nullptr;
         sEntity*      m_entityTemp        = nullptr;
-
 };
 
 #endif //GAME_ENGINE_HPP

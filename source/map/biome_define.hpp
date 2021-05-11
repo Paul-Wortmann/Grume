@@ -107,11 +107,12 @@ struct sMapWallSet
 struct sMapBiome
 {
     // Linked list management
-    sMapBiome* next          = nullptr;
+    sMapBiome*    next       = nullptr;
+    std::uint32_t UID        = 0;
 
     // General information
-    std::string name         = "";
-    std::string fileName     = "";
+    std::string   name       = "";
+    std::string   fileName   = "";
 
     // Data sets
     sMapMusicSet  MusicSet   = {};

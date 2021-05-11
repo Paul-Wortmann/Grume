@@ -146,6 +146,7 @@ sEntity* cEntityManager::load(const std::string& _fileName, sEntity* _entity)
         }
 
         // Load entity states from file
+        _entity->stateInitial = xmlFile.getInteger("<state_initial>");
         _entity->stateCount = xmlFile.getInstanceCount("<state_name>");
         _entity->state = new sEntityState[_entity->stateCount];
         for (std::uint32_t i = 0; i < _entity->stateCount; ++i)
@@ -161,4 +162,22 @@ sEntity* cEntityManager::load(const std::string& _fileName, sEntity* _entity)
         return _entity;
     }
     return nullptr; // Load failed
+}
+
+void cEntityManager::setState(const std::string& _name)
+{
+    /*
+    for (std::uint32_t i = 0; i < _entity->stateCount; ++i)
+    {
+        _entity->state[i].name = xmlFile.getString("<state_name>", 1 + i);
+        std::cout << "State: " << _entity->state[i].name << std::endl;
+        _entity->state[i].musicFile = xmlFile.getString("<state_sound>", 1 + i);
+        _entity->state[i].animation = xmlFile.getIvec3("<state_animation>", 1 + i);
+    }
+    */
+}
+
+void cEntityManager::setState(const std::uint32_t& _state)
+{
+    
 }

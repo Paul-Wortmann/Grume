@@ -49,30 +49,33 @@ enum eEntityType: uint16
 struct sEntity
 {
     // Linked list
-    sEntity*         next        = nullptr;
+    sEntity*         next         = nullptr;
+    std::uint32_t    UID          = 0;
 
     // Infomation
-    std::string      name        = "";
-    bool             enabled     = true;
-    eEntityType      type        = eEntityType::entityTypeStatic;
-    eEntityOwner     owner       = eEntityOwner::ownerNone;
+    std::string      name         = "";
+    bool             enabled      = true;
+    eEntityType      type         = eEntityType::entityTypeStatic;
+    eEntityOwner     owner        = eEntityOwner::ownerNone;
 
     // Base
-    glm::vec3        position    = glm::vec3(0.0f, 0.0f, 0.0f);
-    glm::vec3        scale       = glm::vec3(1.0f, 1.0f, 1.0f);
-    glm::vec3        rotation    = glm::vec3(0.0f, 0.0f, 0.0f);
+    glm::vec3        position     = glm::vec3(0.0f, 0.0f, 0.0f);
+    glm::vec3        scale        = glm::vec3(1.0f, 1.0f, 1.0f);
+    glm::vec3        rotation     = glm::vec3(0.0f, 0.0f, 0.0f);
 
     // Graphics
-    sEntityModel*    model       = nullptr;
-    glm::mat4        modelMatrix = glm::mat4(1);
-    sEntityMaterial* material    = nullptr;
+    sEntityModel*    model        = nullptr;
+    glm::mat4        modelMatrix  = glm::mat4(1);
+    sEntityMaterial* material     = nullptr;
 
     // Physics
     //sEntityPhysics* physics  = nullptr;
 
     // State
-    std::uint32_t    stateCount  = 0;
-    sEntityState*    state       = nullptr;
+    std::uint32_t    stateCount   = 0;
+    std::uint32_t    stateInitial = 0;
+    std::uint32_t    stateCurrent = 0;
+    sEntityState*    state        = nullptr;
 };
 
 #endif //ENTITY_HPP

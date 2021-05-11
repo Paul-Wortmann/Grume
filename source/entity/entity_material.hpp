@@ -29,7 +29,11 @@
 
 struct sEntityMaterial
 {
+    // Linked list
     sEntityMaterial* next = nullptr;
+    std::uint32_t    UID  = 0;
+
+    // Data
     sEntityTexture*  diffuse;
     sEntityTexture*  normal;
     sEntityTexture*  specular;

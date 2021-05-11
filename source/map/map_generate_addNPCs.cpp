@@ -111,7 +111,6 @@ void cMapManager::m_addNPCEntities(sMap*& _map)
                     }
                 }
             }
-            _map->tile[tNPCTileNum].object = tNPCNumber;
             
             uint32 w = tNPCTileNum % _map->width;
             uint32 h = tNPCTileNum / _map->width;
@@ -129,6 +128,7 @@ void cMapManager::m_addNPCEntities(sMap*& _map)
                 }
                 if (tEntity != nullptr)
                 {
+                    _map->tile[tNPCTileNum].object = tEntity->UID;
                     tEntity->owner = eEntityOwner::ownerMap;
                     tEntity->type  = eEntityType::entityTypeNPC;
                     tEntity->position += glm::vec3(static_cast<float32>(w) + tp - xo, y_pos, static_cast<float32>(h) + tp - yo);
@@ -216,12 +216,12 @@ void cMapManager::m_addNPCEntities(sMap*& _map)
                             if ((!pMob) && (rInt < mob[i].prevalence))
                             {
                                 pMob = true;
-                                _map->tile[t].object = mob[i].npc_number;
                                 if (npc_counts[mob[i].npc_number-1] > 0)
                                 {
                                     tEntity = m_entityManager->load(xmlNPCFile.getString("<" + npc_names[mob[i].npc_number-1] + "_entity>", 1 + (rand() % npc_counts[mob[i].npc_number-1])));
                                     if (tEntity != nullptr)
                                     {
+                                        _map->tile[t].object = tEntity->UID;
                                         tEntity->owner = eEntityOwner::ownerMap;
                                         tEntity->type  = eEntityType::entityTypeNPCmob;
                                         tEntity->position += glm::vec3(static_cast<float32>(w) + tp - xo, y_pos, static_cast<float32>(h) + tp - yo);
