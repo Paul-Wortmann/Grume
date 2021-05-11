@@ -457,24 +457,22 @@ void cMapManager::unload(void)
 // Stop the music that is currently playing
 void cMapManager::m_stopMusic(void)
 {
-    m_audioManager->stopSource(getMusicSID());
+    m_audioManager->stopSource(m_musicSourceID);
 }
 
 // Load and play the music defined in the previously loaded biome
 void cMapManager::m_playMusic(void)
 {
-    if (getMapMusic().length() > 3)
+    if (m_mapMusic.length() > 3)
     {
-        std::uint32_t sID = m_audioManager->newAudioSource();
-        m_audioManager->setAudioSourcePosition(sID, 0.0f, 0.0f, 0.0f);
-        std::uint32_t bID = m_audioManager->newAudioBuffer();
-        m_audioManager->loadBufferOgg(bID, FILE_PATH_MUSIC + getMapMusic());
-        m_audioManager->setAudioBufferName(bID, getMapMusic());
-        m_audioManager->attachSourceBuffer(sID, bID);
-        m_audioManager->setAudioSourceLooping(sID, true);
-        m_audioManager->playSource(sID);
-        setMusicSID(sID);
-        setMusicBID(bID);
+        m_musicSourceID = m_audioManager->newAudioSource();
+        m_audioManager->setAudioSourcePosition(m_musicSourceID, 0.0f, 0.0f, 0.0f);
+        m_musicBufferID = m_audioManager->newAudioBuffer();
+        m_audioManager->loadBufferOgg(m_musicBufferID, FILE_PATH_MUSIC + m_mapMusic);
+        m_audioManager->setAudioBufferName(m_musicBufferID, m_mapMusic);
+        m_audioManager->attachSourceBuffer(m_musicSourceID, m_musicBufferID);
+        m_audioManager->setAudioSourceLooping(m_musicSourceID, true);
+        m_audioManager->playSource(m_musicSourceID);
     }
 }
 

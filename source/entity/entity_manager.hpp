@@ -24,10 +24,11 @@
 #ifndef ENTITY_MANAGER_HPP
 #define ENTITY_MANAGER_HPP
 
-#include "../includes.hpp"
 #include "entity_define.hpp"
-#include "../linked_list.hpp"
 #include "model_manager.hpp"
+#include "../includes.hpp"
+#include "../linked_list.hpp"
+#include "../audio/audio_manager.hpp"
 #include "../utils/xml_parser.hpp"
 
 class cEntityManager : public tcLinkedList<sEntity>
@@ -35,6 +36,7 @@ class cEntityManager : public tcLinkedList<sEntity>
     public:
         void initialize(void);
         void terminate(void);
+        void             setAudioPointer(cAudioManager* _audioManager) { m_audioManager = _audioManager; };
         void             addModel(sEntityModel*& _model);
         sEntityModel*    getNewModel(void);
         sEntityModel*    loadModel(const std::string& _fileName);
@@ -50,7 +52,8 @@ class cEntityManager : public tcLinkedList<sEntity>
         void m_freeAll(void);
         void m_freeData(sEntity*& _pointer);
 
-        cModelManager modelManager;
+        cAudioManager*   m_audioManager   = nullptr;
+        cModelManager    modelManager;
 };
 
 #endif //ENTITY_MANAGER_HPP

@@ -48,9 +48,10 @@ void cGameEngine::initialize(void)
     if (status == EXIT_SUCCESS)
     {
         // Before loading entities
-        entityManager.initialize();
         audioManager.initialize();
         audioManager.setVolumeMaster(0.1f);
+        entityManager.initialize();
+        entityManager.setAudioPointer(&audioManager);
         mapManager.initialize(&entityManager);
         npcManager.initialize(&entityManager);
         playerManager.initialize(&entityManager);

@@ -39,6 +39,7 @@ class cXML
         float32     getFloat(const std::string &_key, const uint32 _instance = 1);
         glm::vec3   getVec3(const std::string &_key, const uint32 _instance = 1);
         glm::vec2   getVec2(const std::string &_key, const uint32 _instance = 1);
+        glm::ivec3  getIvec3(const std::string &_key, const uint32 _instance = 1);
         
     protected:
 

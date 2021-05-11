@@ -48,6 +48,14 @@ void cEntityManager::m_freeData(sEntity*& _pointer)
 {
     _pointer->owner = eEntityOwner::ownerNone;
     _pointer->name = "";
+    
+    // State
+    if (_pointer->state != nullptr)
+    {
+        delete[] _pointer->state;
+        _pointer->state = nullptr;
+        _pointer->stateCount = 0;
+    }
 }
 
 void cEntityManager::m_freeAll(void)
@@ -135,6 +143,17 @@ sEntity* cEntityManager::load(const std::string& _fileName, sEntity* _entity)
             {
                 _entity->material = tMaterial;
             }
+        }
+
+        // Load entity states from file
+        _entity->stateCount = xmlFile.getInstanceCount("<state_name>");
+        _entity->state = new sEntityState[_entity->stateCount];
+        for (std::uint32_t i = 0; i < _entity->stateCount; ++i)
+        {
+            _entity->state[i].name = xmlFile.getString("<state_name>", 1 + i);
+            std::cout << "State: " << _entity->state[i].name << std::endl;
+            _entity->state[i].musicFile = xmlFile.getString("<state_sound>", 1 + i);
+            _entity->state[i].animation = xmlFile.getIvec3("<state_animation>", 1 + i);
         }
 
         // Cleanup and return a pointer to the entity

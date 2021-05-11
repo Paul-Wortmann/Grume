@@ -28,6 +28,7 @@
 #include "entity_material.hpp"
 #include "entity_model.hpp"
 #include "entity_physics.hpp"
+#include "entity_state.hpp"
 
 enum eEntityOwner: uint16
 {
@@ -68,6 +69,10 @@ struct sEntity
 
     // Physics
     //sEntityPhysics* physics  = nullptr;
+
+    // State
+    std::uint32_t    stateCount  = 0;
+    sEntityState*    state       = nullptr;
 };
 
 #endif //ENTITY_HPP

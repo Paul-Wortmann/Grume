@@ -52,13 +52,6 @@ class cMapManager : public tcLinkedList<sMap>
         void          unload(void);
         void          process(const float32 &_dt);
 
-        // Music
-        std::string   getMapMusic(void) { return m_mapMusic; };
-        std::uint32_t getMusicSID(void) { return m_musicSourceID; };
-        std::uint32_t getMusicBID(void) { return m_musicBufferID; };
-        void          setMusicSID(const std::uint32_t &_ID) { m_musicSourceID = _ID; };
-        void          setMusicBID(const std::uint32_t &_ID) { m_musicBufferID = _ID; };
-
         // Dimentions
         std::uint32_t getMapWidth(void) { return m_currentMap->width; };
         std::uint32_t getMapHeight(void) { return m_currentMap->height; };
