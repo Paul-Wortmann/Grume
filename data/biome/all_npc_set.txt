@@ -6,6 +6,7 @@
         <npc>bat</npc>              # 2
         <npc>monk</npc>             # 3
         <npc>mudeater</npc>         # 4
+        <npc>dead_body</npc>        # 5
     </npc_define>
 
     <blacksmith>
@@ -27,6 +28,11 @@
         <mudeater_count>1</mudeater_count>
         <mudeater_entity>npc/mudeater_1_001.txt</mudeater_entity>
     </mudeater>
+
+    <dead_body>
+        <dead_body_count>1</dead_body_count>
+        <dead_body_entity>npc/dead_body_1_001.txt</dead_body_entity>
+    </dead_body>
 
 </npc_set>
 

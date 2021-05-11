@@ -164,16 +164,16 @@
         <object>5740 01 2 1.0 3.1416 1</object> # Medieval buildings - house
         <object>5856 01 4 1.0 1.5708 1</object> # Medeival buildings - sawmill
 
-        <object>4041 11 0 1.0 1.5708 1</object> # old wagon
-        <object>4752 13 0 1.0 1.5708 1</object> # Dead Tree
-        <object>6148 13 0 1.0 1.5708 1</object> # Dead Tree
-        <object>4961 14 0 1.0 0.0000 1</object> # Bridge
-        <object>5251 16 0 1.0 0.0000 1</object> # Rock
+        <object>4041 11 1 1.0 1.5708 1</object> # old wagon
+        <object>4752 13 1 1.0 1.5708 1</object> # Dead Tree
+        <object>6148 13 1 1.0 1.5708 1</object> # Dead Tree
+        <object>4961 14 1 1.0 0.0000 1</object> # Bridge
+        <object>5251 16 1 1.0 0.0000 1</object> # Rock
         <object>4454 02 1 1.0 0.0000 1</object> # Chest
-        <object>5443 07 0 1.0 0.0000 1</object> # Barrel
-        <object>5543 07 0 1.0 0.0000 1</object> # Barrel
+        <object>5443 07 1 1.0 0.0000 1</object> # Barrel
+        <object>5543 07 1 1.0 0.0000 1</object> # Barrel
         <object>6043 08 2 1.0 0.0000 1</object> # Crate
-        <object>5650 22 1 1.0 4.7124 1</object> # Torture device
+        <object>5649 13 1 1.0 3.1416 1</object> # Dead tree
         <object>4840 22 12 1.0 0.0000 1</object> # Torture device
 
         # river
@@ -189,28 +189,28 @@
         <object>9461 15 0 1.0 0.0000 1</object> # River
 
         # graveyard
-        <object>8336 18 0 1.0 0.0000 1</object> # Fence metal
-        <object>8636 18 0 1.0 0.0000 1</object> # Fence metal
-        <object>8936 18 0 1.0 3.1416 1</object> # Fence metal
-        <object>9236 18 0 1.0 3.1416 1</object> # Fence metal
-        <object>9536 18 0 1.0 1.5708 1</object> # Fence metal
-        <object>9533 18 0 1.0 1.5708 1</object> # Fence metal
-        <object>9530 18 0 1.0 1.5708 1</object> # Fence metal
-        <object>9527 18 0 1.0 1.5708 1</object> # Fence metal
-        <object>9524 18 0 1.0 1.5708 1</object> # Fence metal
-        <object>9521 18 0 1.0 1.5708 1</object> # Fence metal
-        <object>8036 18 0 1.0 1.5708 1</object> # Fence metal
-        <object>8033 18 0 1.0 1.5708 1</object> # Fence metal
-        <object>8030 18 0 1.0 1.5708 1</object> # Fence metal
-        <object>8027 18 0 1.0 1.5708 1</object> # Fence metal
-        <object>8024 18 0 1.0 1.5708 1</object> # Fence metal
-        <object>8021 18 0 1.0 1.5708 1</object> # Fence metal
-        <object>8318 18 0 1.0 0.0000 1</object> # Fence metal
-        <object>8618 18 0 1.0 0.0000 1</object> # Fence metal
-        <object>8918 18 0 1.0 0.0000 1</object> # Fence metal
-        <object>9218 18 0 1.0 0.0000 1</object> # Fence metal
-        <object>9518 18 0 1.0 0.0000 1</object> # Fence metal
-        <object>8018 19 0 1.0 0.0000 1</object> # Fence pole metal
+        <object>8336 18 1 1.0 0.0000 1</object> # Fence metal
+        <object>8636 18 1 1.0 0.0000 1</object> # Fence metal
+        <object>8936 18 1 1.0 3.1416 1</object> # Fence metal
+        <object>9236 18 1 1.0 3.1416 1</object> # Fence metal
+        <object>9536 18 1 1.0 1.5708 1</object> # Fence metal
+        <object>9533 18 1 1.0 1.5708 1</object> # Fence metal
+        <object>9530 18 1 1.0 1.5708 1</object> # Fence metal
+        <object>9527 18 1 1.0 1.5708 1</object> # Fence metal
+        <object>9524 18 1 1.0 1.5708 1</object> # Fence metal
+        <object>9521 18 1 1.0 1.5708 1</object> # Fence metal
+        <object>8036 18 1 1.0 1.5708 1</object> # Fence metal
+        <object>8033 18 1 1.0 1.5708 1</object> # Fence metal
+        <object>8030 18 1 1.0 1.5708 1</object> # Fence metal
+        <object>8027 18 1 1.0 1.5708 1</object> # Fence metal
+        <object>8024 18 1 1.0 1.5708 1</object> # Fence metal
+        <object>8021 18 1 1.0 1.5708 1</object> # Fence metal
+        <object>8318 18 1 1.0 0.0000 1</object> # Fence metal
+        <object>8618 18 1 1.0 0.0000 1</object> # Fence metal
+        <object>8918 18 1 1.0 0.0000 1</object> # Fence metal
+        <object>9218 18 1 1.0 0.0000 1</object> # Fence metal
+        <object>9518 18 1 1.0 0.0000 1</object> # Fence metal
+        <object>8018 19 1 1.0 0.0000 1</object> # Fence pole metal
 
         <object>8822 21 1 1.0 4.7124 1</object> # Mausoleum
 
@@ -230,7 +230,7 @@
         <object>9319 20 5 1.0 1.5708 1</object> # Cemetary object
 
         # Castle ruins
-        <object>5009 23 0 1.0 3.1416 1</object> # Tower
+        <object>5009 23 1 1.0 3.1416 1</object> # Tower
         <object>5019 12 0 1.0 3.1416 1</object> # Grass patch
     </objects>
 
@@ -244,6 +244,7 @@
 
         # town central
         <npc>4437 1 1 1.0 0.0000</npc> # Blacksmith
+        <npc>5650 5 1 1.0 0.0000</npc> # Dead Body
     </npcs>
 
 </map>

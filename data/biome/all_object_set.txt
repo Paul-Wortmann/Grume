@@ -33,6 +33,7 @@
         <object>town_props</object>          # 29
         <object>book</object>                # 30
         <object>weapon</object>              # 31
+        <object>door</object>                # 32
 
     </object_define>
 
@@ -331,6 +332,11 @@
         <weapon_entity>weapons/two_handed_sword_1_001.txt</weapon_entity>
         <weapon_entity>weapons/wand_1_001.txt</weapon_entity>
     </weapon>
+
+    <door>
+        <door_count>1</door_count>
+        <door_entity>doors/dungeon_door_1_001.txt</door_entity>
+    </door>
 
 </object_set>
 

@@ -1,0 +1,25 @@
+﻿<?xml version = "1.0" encoding = "UTF-8" ?>
+<entity>
+
+    <name>dungeon_door_1_001</name>
+    <model>doors/dungeon_door_1_001.dae</model>
+    <material>doors/dungeon_door_1_001.txt</material>
+
+    <position>0.0 1.0 0.0</position>
+    <scale>1.0 1.0 1.0</scale>
+    <rotation>1.5708 0.0000 1.5708</rotation>
+
+    <sounds>
+        <move>
+            <move_sound>rpg_sounds/world/door.wav</move_sound>
+        </move>
+    </sounds>
+
+    <animtion>
+        <animation_count>1</animation_count>
+        <open>0 10</open>
+        <close>10 20</close>
+    </animation>
+
+</entity>
+

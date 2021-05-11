@@ -146,7 +146,8 @@ void cMapManager::m_addObjectEntities(sMap*& _map)
                     {
                         tEntity->scale *= glm::vec3(tObjectScale, tObjectScale, tObjectScale);
                     }
-                    tEntity->rotation += glm::vec3(tEntity->rotation.x, tObjectRotation, tEntity->rotation.z);
+                    tEntity->rotation.y += tObjectRotation;
+                    tEntity->rotation = glm::vec3(tEntity->rotation.x, tEntity->rotation.y, tEntity->rotation.z);
                     m_entityManager->updateModelMatrix(tEntity);
                 }
             }
