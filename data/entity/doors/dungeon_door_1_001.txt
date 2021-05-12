@@ -9,6 +9,7 @@
     <scale>1.0 1.0 1.0</scale>
     <rotation>1.5708 0.0000 1.5708</rotation>
 
+    <state_initial>0</state_initial> # 0 == none
     <state>
         <state_name>open</state_name>
         <state_sound>rpg_sounds/world/door.wav</state_sound>

@@ -164,20 +164,18 @@ sEntity* cEntityManager::load(const std::string& _fileName, sEntity* _entity)
     return nullptr; // Load failed
 }
 
-void cEntityManager::setState(const std::string& _name)
+void cEntityManager::setState(const sEntity*& _entity, const std::string& _name)
 {
-    /*
     for (std::uint32_t i = 0; i < _entity->stateCount; ++i)
     {
-        _entity->state[i].name = xmlFile.getString("<state_name>", 1 + i);
-        std::cout << "State: " << _entity->state[i].name << std::endl;
-        _entity->state[i].musicFile = xmlFile.getString("<state_sound>", 1 + i);
-        _entity->state[i].animation = xmlFile.getIvec3("<state_animation>", 1 + i);
+        if (_entity->state[i].name.compare(_name) == 0)
+        {
+            setState(_entity, i);
+        }
     }
-    */
 }
 
-void cEntityManager::setState(const std::uint32_t& _state)
+void cEntityManager::setState(const sEntity*& _entity, const std::uint32_t& _state)
 {
     
 }

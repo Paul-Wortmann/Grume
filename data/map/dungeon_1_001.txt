@@ -129,7 +129,7 @@
     
     <events>
         # Tile location, type, data 1, data 2
-        # Type 1 (Warp to map) -> tile, event type, map number, portal number
+        # Type 1 (Warp to map) : tile, event type, map number, portal number
         <event>1041 1 0 1</event> # Town 1 tower entrance
         <event>1042 1 0 1</event> # Town 1 tower entrance
         <event>1043 1 0 1</event> # Town 1 tower entrance

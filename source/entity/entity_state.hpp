@@ -38,7 +38,6 @@ struct sEntityState
     std::string   musicFile     = ""; // Audio source File name
     std::uint32_t musicSourceID = 0;  // Audio source
     std::uint32_t musicBufferID = 0;  // Audio buffer
-
 };
 
 #endif // ENTITY_STATE_HPP
