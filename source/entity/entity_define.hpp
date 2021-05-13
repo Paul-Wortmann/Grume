@@ -63,8 +63,15 @@ struct sEntity
     glm::vec3        scale        = glm::vec3(1.0f, 1.0f, 1.0f);
     glm::vec3        rotation     = glm::vec3(0.0f, 0.0f, 0.0f);
 
+    // Animation (per entity data)
+    uint32           numBones         = 0;
+    sEntityBone*     bone             = nullptr;
+
+    float64          previousAnimTime = 0.0;
+    float64          currentAnimTime  = 0.0;
+    
     // Graphics
-    sEntityModel*    model        = nullptr;
+    sEntityModel*    model        = nullptr; // Holds shared animation data
     glm::mat4        modelMatrix  = glm::mat4(1);
     sEntityMaterial* material     = nullptr;
 

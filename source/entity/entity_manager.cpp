@@ -49,6 +49,14 @@ void cEntityManager::m_freeData(sEntity*& _pointer)
     _pointer->owner = eEntityOwner::ownerNone;
     _pointer->name = "";
     
+    // Bone
+    if (_pointer->bone != nullptr)
+    {
+        delete[] _pointer->bone;
+        _pointer->bone = nullptr;
+        _pointer->numBones = 0;
+    }
+    
     // State
     if (_pointer->state != nullptr)
     {
