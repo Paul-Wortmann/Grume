@@ -45,6 +45,7 @@ class cEntityManager : public tcLinkedList<sEntity>
         sEntityTexture*  loadTexture(const std::string &_fileName);
         void             updateModelMatrix(sEntity*& _entity);
         sEntity*         load(const std::string& _fileName, sEntity* _entity = nullptr);
+        sEntity*         UIDtoEntity(const std::uint32_t& _UID);
         void             setState(const sEntity*& _entity, const std::string& _name);
         void             setState(const sEntity*& _entity, const std::uint32_t& _state);
 

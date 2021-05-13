@@ -340,12 +340,8 @@ void cMapManager::load(const std::string &_fileName)
             switch (tEventType)
             {
                 // Spawn entity
-                case 4:
-                    m_currentMap->event[i].type = eMapEventType::eventTypeEntitySpawn;
-                break;
-                // Toggle entity state
                 case 3:
-                    m_currentMap->event[i].type = eMapEventType::eventTypeEntityToggle;
+                    m_currentMap->event[i].type = eMapEventType::eventTypeEntitySpawn;
                 break;
                 // Set entity state
                 case 2:
@@ -583,12 +579,7 @@ void cMapManager::process(const float32 &_dt)
                 // Entity set
                 else if (m_currentMap->event[i].type == eMapEventType::eventTypeEntitySet)
                 {
-                    
-                }
-                // Entity toggle
-                else if (m_currentMap->event[i].type == eMapEventType::eventTypeEntityToggle)
-                {
-                    
+                    std::uint32_t entityUID = m_currentMap->tile[m_currentMap->event[i].tile].object;
                 }
                 // Entity spawn
                 else if (m_currentMap->event[i].type == eMapEventType::eventTypeEntitySpawn)

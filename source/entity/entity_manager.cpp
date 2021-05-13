@@ -164,6 +164,18 @@ sEntity* cEntityManager::load(const std::string& _fileName, sEntity* _entity)
     return nullptr; // Load failed
 }
 
+sEntity* cEntityManager::UIDtoEntity(const std::uint32_t& _UID)
+{
+    for(sEntity* entityTemp = getHead(); entityTemp != nullptr; entityTemp = entityTemp->next)
+    {
+        if (entityTemp->UID == _UID)
+        {
+            return entityTemp;
+        }
+    }
+    return nullptr;
+}
+
 void cEntityManager::setState(const sEntity*& _entity, const std::string& _name)
 {
     for (std::uint32_t i = 0; i < _entity->stateCount; ++i)
