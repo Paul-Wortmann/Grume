@@ -148,9 +148,19 @@ void cGraphicsEngine::m_p2_render(void)
                                 glUniform1i(m_p2_loc_animationEnabled, 1);
 
                                 // bone transforms
-                                for (std::size_t i = 0; i < m_entityTemp->model->numBones; ++i)
+                                if (m_entityTemp->animationIndependent)
                                 {
-                                    glUniformMatrix4fv(m_p2_loc_boneMatrix[i], 1, GL_FALSE, glm::value_ptr(m_entityTemp->model->bone[i].transformFinal));
+                                    for (std::size_t i = 0; i < m_entityTemp->numBones; ++i)
+                                    {
+                                        glUniformMatrix4fv(m_p2_loc_boneMatrix[i], 1, GL_FALSE, glm::value_ptr(m_entityTemp->boneTransform[i]));
+                                    }
+                                }
+                                else
+                                {
+                                    for (std::size_t i = 0; i < m_entityTemp->model->numBones; ++i)
+                                    {
+                                        glUniformMatrix4fv(m_p2_loc_boneMatrix[i], 1, GL_FALSE, glm::value_ptr(m_entityTemp->model->bone[i].transformFinal));
+                                    }
                                 }
                             }
                             else // no bones

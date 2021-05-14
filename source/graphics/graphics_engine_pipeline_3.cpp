@@ -238,14 +238,14 @@ void cGraphicsEngine::m_p3_render(void)
                 {
                     for (std::size_t i = 0; i < m_entityTemp->numBones; ++i)
                     {
-                        glUniformMatrix4fv(m_pb_loc_boneMatrix[i], 1, GL_FALSE, glm::value_ptr(m_entityTemp->boneTransform[i]));
+                        glUniformMatrix4fv(m_p3_loc_boneMatrix[i], 1, GL_FALSE, glm::value_ptr(m_entityTemp->boneTransform[i]));
                     }
                 }
                 else
                 {
                     for (std::size_t i = 0; i < m_entityTemp->model->numBones; ++i)
                     {
-                        glUniformMatrix4fv(m_pb_loc_boneMatrix[i], 1, GL_FALSE, glm::value_ptr(m_entityTemp->model->bone[i].transformFinal));
+                        glUniformMatrix4fv(m_p3_loc_boneMatrix[i], 1, GL_FALSE, glm::value_ptr(m_entityTemp->model->bone[i].transformFinal));
                     }
                 }
             }
