@@ -38,20 +38,22 @@ class cAnimationEngine
         void     terminate(void);
         void     process(double _deltaTime);
         void     setEntityHead(sEntity* _entity) { m_entityHead = _entity; m_entityTemp = _entity; }
-        
+
     protected:
 
     private:
-        
+
         sEntity*  m_entityHead = nullptr;
         sEntity*  m_entityTemp = nullptr;
-        
-        glm::mat4 m_calculateTransformPosition(double _currentAnimTime, uint32_t _channel);
-        glm::mat4 m_calculateTransformRotation(double _currentAnimTime, uint32_t _channel);
-        glm::mat4 m_calculateTransformScale(double _currentAnimTime, uint32_t _channel);
-        glm::mat4 m_calculateTransform(double _currentAnimTime, uint32_t _channel);
+
+        // animation_engine.cpp
+        glm::mat4 m_calculateTransformPosition(double _currentAnimTime, uint32_t _currentAnimation, uint32_t _channel);
+        glm::mat4 m_calculateTransformRotation(double _currentAnimTime, uint32_t _currentAnimation, uint32_t _channel);
+        glm::mat4 m_calculateTransformScale(double _currentAnimTime, uint32_t _currentAnimation, uint32_t _channel);
+        glm::mat4 m_calculateTransform(double _currentAnimTime, uint32_t _currentAnimation, uint32_t _channel);
         glm::mat4 m_calcRecursiveTransforms(int32_t _ID);
-        void      m_calculateAnimation(double _currentAnimTime);
+        void      m_calculateAnimation(double _currentAnimTime, uint32_t _currentAnimation);
+        void      m_processEntity(sEntity* _entity, double _deltaTime);
 };
 
 #endif //ANIMATION_ENGINE_HPP

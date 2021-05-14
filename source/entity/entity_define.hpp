@@ -63,15 +63,21 @@ struct sEntity
     glm::vec3        scale        = glm::vec3(1.0f, 1.0f, 1.0f);
     glm::vec3        rotation     = glm::vec3(0.0f, 0.0f, 0.0f);
 
-    // Animation (per entity data)
-    uint32           numBones         = 0;
-    sEntityBone*     bone             = nullptr;
+    // Animation (per entity, not shared)
+    bool             animationIndependent = false;
+    uint32           numBones             = 0;
+    glm::mat4*       boneTransform        = nullptr;
 
-    float64          previousAnimTime = 0.0;
-    float64          currentAnimTime  = 0.0;
-    
+    std::uint32_t    currentAnimation     = 0;
+    float64          previousAnimTime     = 0.0;
+    float64          currentAnimTime      = 0.0;
+    float64          stopAnimTime         = 0.0;
+    float64          startAnimTime        = 0.0;
+    bool             repeatAnimation      = true;
+    bool             finishedAnimation    = false;
+
     // Graphics
-    sEntityModel*    model        = nullptr; // Holds shared animation data
+    sEntityModel*    model        = nullptr; // (Entity shared animation data)
     glm::mat4        modelMatrix  = glm::mat4(1);
     sEntityMaterial* material     = nullptr;
 

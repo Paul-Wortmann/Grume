@@ -77,6 +77,10 @@ struct sEntityAnimation
 
     float64                previousAnimTime  = 0.0;
     float64                currentAnimTime   = 0.0;
+    float64                stopAnimTime      = 0.0;
+    float64                startAnimTime     = 0.0;
+    bool                   repeatAnimation   = true;
+    bool                   finishedAnimation = false;
 };
 
 #endif // ENTITY_ANIMATION_HPP

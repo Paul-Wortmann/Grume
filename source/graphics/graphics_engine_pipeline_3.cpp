@@ -28,7 +28,7 @@ void cGraphicsEngine::m_p3_initialize(void)
     // Frame buffer Object
     glGenFramebuffers(1, &m_p3_fbo);
     glBindFramebuffer(GL_FRAMEBUFFER, m_p3_fbo);
-    
+
     // Frame buffer color render texture
     glGenTextures(1, &m_p3_renderTextureID);
     glBindTexture(GL_TEXTURE_2D, m_p3_renderTextureID);
@@ -51,14 +51,14 @@ void cGraphicsEngine::m_p3_initialize(void)
     glBindFramebuffer(GL_FRAMEBUFFER, 0);
     glBindTexture(GL_TEXTURE_2D, 0);
     checkOpenGLFrameBuffer();
-    
+
     // Initialize shader
     m_p3_shader.initialize();
     m_p3_shader.load("3_lighting");
     glUseProgram(m_p3_shader.getID());
-    
+
     // Vertex shader -------------------------------
-    
+
     // View and transform
     m_p3_loc_projectionMatrix       = m_p3_shader.getUniformLocation("projectionMatrix");
     m_p3_loc_viewMatrix             = m_p3_shader.getUniformLocation("viewMatrix");
@@ -66,7 +66,7 @@ void cGraphicsEngine::m_p3_initialize(void)
     m_p3_loc_directionalLightMatrix = m_p3_shader.getUniformLocation("directionalLightMatrix");
     m_p3_loc_camera                 = m_p3_shader.getUniformLocation("cameraPosition");
     m_p3_loc_animationEnabled       = m_p3_shader.getUniformLocation("animationEnabled");
-    
+
     // Lights
     for (uint32 i = 0; i < MAX_POINT_LIGHTS; ++i)
     {
@@ -94,7 +94,7 @@ void cGraphicsEngine::m_p3_initialize(void)
     m_p3_loc_materialNormal    = m_p3_shader.getUniformLocation("material.normal");
     m_p3_loc_materialSpecular  = m_p3_shader.getUniformLocation("material.specular");
     m_p3_loc_materialShininess = m_p3_shader.getUniformLocation("material.shininess");
-    
+
     // Directional light
     m_lightManager.uniformLocationDirectional.enabled   = m_p3_shader.getUniformLocation("directionalLight.enabled");
 
@@ -138,7 +138,7 @@ void cGraphicsEngine::m_p3_setLightUniformLocations(void)
 
     // Shadow
     glUniform1f(m_p3_loc_farPlane, m_p2_farPlane);
-    
+
     // Directional light
     glUniform1i (m_lightManager.uniformLocationDirectional.enabled     , m_lightManager.directionalLight.enabled);
     glUniform3fv(m_lightManager.uniformLocationDirectional.ambient,   1, glm::value_ptr(m_lightManager.directionalLight.ambient));
@@ -218,7 +218,7 @@ void cGraphicsEngine::m_p3_render(void)
     }
     glActiveTexture(GL_TEXTURE0 + MAX_POINT_LIGHTS + 0);
     glBindTexture(GL_TEXTURE_2D, m_p1_depthMapID);
-    
+
     // Entities
     for(m_entityTemp = m_entityHead; m_entityTemp != nullptr; m_entityTemp = m_entityTemp->next)
     {
@@ -234,9 +234,19 @@ void cGraphicsEngine::m_p3_render(void)
                 glUniform1i(m_p3_loc_animationEnabled, 1);
 
                 // bone transforms
-                for (std::size_t i = 0; i < m_entityTemp->model->numBones; ++i)
+                if (m_entityTemp->animationIndependent)
                 {
-                    glUniformMatrix4fv(m_p3_loc_boneMatrix[i], 1, GL_FALSE, glm::value_ptr(m_entityTemp->model->bone[i].transformFinal));
+                    for (std::size_t i = 0; i < m_entityTemp->numBones; ++i)
+                    {
+                        glUniformMatrix4fv(m_pb_loc_boneMatrix[i], 1, GL_FALSE, glm::value_ptr(m_entityTemp->boneTransform[i]));
+                    }
+                }
+                else
+                {
+                    for (std::size_t i = 0; i < m_entityTemp->model->numBones; ++i)
+                    {
+                        glUniformMatrix4fv(m_pb_loc_boneMatrix[i], 1, GL_FALSE, glm::value_ptr(m_entityTemp->model->bone[i].transformFinal));
+                    }
                 }
             }
             else // no bones
@@ -244,7 +254,7 @@ void cGraphicsEngine::m_p3_render(void)
                 // disable skinning
                 glUniform1i(m_p3_loc_animationEnabled, 0);
             }
-            
+
             // Model
             for (uint32 j = 0; j < m_entityTemp->model->numMesh; ++j)
             {

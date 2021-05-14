@@ -234,7 +234,7 @@ void cModelManager::m_addBoneMap(const std::string &_name, const glm::mat4 &_mat
         tBone.name = _name;
         tBone.transformPose = _mat4;
         m_boneMap.push_back(tBone);
-    }    
+    }
 }
 
 void cModelManager::m_buildBoneMap(aiNode* _node, const aiScene* _scene)

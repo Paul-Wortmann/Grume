@@ -48,15 +48,15 @@ void cEntityManager::m_freeData(sEntity*& _pointer)
 {
     _pointer->owner = eEntityOwner::ownerNone;
     _pointer->name = "";
-    
-    // Bone
-    if (_pointer->bone != nullptr)
+
+    // Bone transforms
+    if (_pointer->boneTransform != nullptr)
     {
-        delete[] _pointer->bone;
-        _pointer->bone = nullptr;
+        delete[] _pointer->boneTransform;
+        _pointer->boneTransform = nullptr;
         _pointer->numBones = 0;
     }
-    
+
     // State
     if (_pointer->state != nullptr)
     {
@@ -123,21 +123,27 @@ sEntity* cEntityManager::load(const std::string& _fileName, sEntity* _entity)
         {
             _entity = getNew();
         }
-        
+
         //gLogWrite(LOG_INFO, "Loading entity: " + xmlFile.getString("<name>"), __FILE__, __LINE__, __FUNCTION__);
 
         // Get the data from the XML file
-        _entity->name            = xmlFile.getString("<name>");
-        _entity->position        = xmlFile.getVec3("<position>");
-        _entity->scale           = xmlFile.getVec3("<scale>");
-        _entity->rotation        = xmlFile.getVec3("<rotation>");
-        std::string modelFile    = xmlFile.getString("<model>");
-        std::string materialFile = xmlFile.getString("<material>");
+        _entity->name                 = xmlFile.getString("<name>");
+        _entity->position             = xmlFile.getVec3("<position>");
+        _entity->scale                = xmlFile.getVec3("<scale>");
+        _entity->rotation             = xmlFile.getVec3("<rotation>");
+        std::string modelFile         = xmlFile.getString("<model>");
+        std::string materialFile      = xmlFile.getString("<material>");
+        _entity->animationIndependent = (xmlFile.getInteger("<animation_independent>") == 1);
 
         // Load model from file
         if (modelFile.length() > 3)
         {
             _entity->model = loadModel(modelFile);
+            if ((_entity->model) && (_entity->model->animation != nullptr))
+            {
+                _entity->stopAnimTime = _entity->model->animation[0].animationTime;
+            }
+
         }
 
         // Update the model matrix
@@ -197,5 +203,5 @@ void cEntityManager::setState(const sEntity*& _entity, const std::string& _name)
 
 void cEntityManager::setState(const sEntity*& _entity, const std::uint32_t& _state)
 {
-    
+
 }
