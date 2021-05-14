@@ -9,6 +9,8 @@
     <scale>1.0 1.0 1.0</scale>
     <rotation>1.5708 0.0000 1.5708</rotation>
 
+    <animation_independent>1</animation_independent>
+
     <state_initial>0</state_initial> # 0 == none
     <state>
         <state_name>open</state_name>
