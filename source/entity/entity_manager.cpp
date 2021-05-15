@@ -141,7 +141,7 @@ sEntity* cEntityManager::load(const std::string& _fileName, sEntity* _entity)
             _entity->model = loadModel(modelFile);
             if ((_entity->model) && (_entity->model->animation != nullptr))
             {
-                _entity->stopAnimTime = _entity->model->animation[0].duration;
+                _entity->stopAnimTime = _entity->model->animation[0].animationTime;
             }
 
         }

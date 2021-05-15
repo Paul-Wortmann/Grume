@@ -25,8 +25,8 @@
 
 /** \brief Initializes the animation engine.
  *
- * \param	void, does not take any parameters.
- * \return	EXIT_SUCCESS / EXIT_FAILURE.
+ * \param   void, does not take any parameters.
+ * \return  EXIT_SUCCESS / EXIT_FAILURE.
  *
  * Initializes the animation engine and returns EXIT_SUCCESS if successful,
  * or EXIT_FAILURE is unsuccessful.
@@ -220,7 +220,7 @@ void cAnimationEngine::m_processEntity(sEntity* _entity, double _deltaTime)
     m_entityTemp = _entity;
 
     // Processed animations
-    if ((m_entityTemp->model != nullptr) && (m_entityTemp->model->animation != nullptr))
+    if ((m_entityTemp->finishedAnimation == false) && (m_entityTemp->model != nullptr) && (m_entityTemp->model->animation != nullptr))
     {
         // Initialize the bone trasforms if need be
         if (m_entityTemp->boneTransform == nullptr)
@@ -235,9 +235,17 @@ void cAnimationEngine::m_processEntity(sEntity* _entity, double _deltaTime)
         // determine the new animation time
         m_entityTemp->previousAnimTime = m_entityTemp->currentAnimTime;
         m_entityTemp->currentAnimTime += _deltaTime / 1000.0f; // convert milliseconds to seconds
-        while (m_entityTemp->currentAnimTime > animation->animationTime)
+        if (m_entityTemp->currentAnimTime > m_entityTemp->stopAnimTime)
         {
-            m_entityTemp->currentAnimTime -= animation->animationTime;
+            if (m_entityTemp->repeatAnimation == true)
+            {
+                m_entityTemp->currentAnimTime = m_entityTemp->startAnimTime;
+            }
+            else
+            {
+                m_entityTemp->currentAnimTime = m_entityTemp->stopAnimTime;
+                m_entityTemp->finishedAnimation = true;
+            }
         }
 
         // Calculate the bone transforms
@@ -250,3 +258,12 @@ void cAnimationEngine::m_processEntity(sEntity* _entity, double _deltaTime)
         }
     }
 }
+
+/*
+    entityTemp->stateCurrent      = _state;
+    entityTemp->currentAnimTime   = entityTemp->state[_state].animation.x;
+    entityTemp->startAnimTime     = entityTemp->state[_state].animation.x;
+    entityTemp->stopAnimTime      = entityTemp->state[_state].animation.y;
+    entityTemp->repeatAnimation   = (entityTemp->state[_state].animation.z == 1);
+    entityTemp->finishedAnimation = false;
+*/
