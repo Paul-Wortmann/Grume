@@ -302,6 +302,7 @@ void cMapManager::load(const std::string &_fileName)
             std::uint32_t tEventType    = 0;
             std::uint32_t tEventData1   = 0;
             std::uint32_t tEventData2   = 0;
+            std::uint32_t tEventData3   = 0;
             std::uint32_t tStringNum = 0;
             std::string   tString = "";
             if (tEventStringLength > 6)
@@ -326,6 +327,10 @@ void cMapManager::load(const std::string &_fileName)
                         {
                             tEventData2 = std::stoi(tString);
                         }
+                        else if (tStringNum == 4)
+                        {
+                            tEventData3 = std::stoi(tString);
+                        }
                         tStringNum++;
                         tString = "";
                     }
@@ -340,8 +345,12 @@ void cMapManager::load(const std::string &_fileName)
             switch (tEventType)
             {
                 // Spawn entity
-                case 3:
+                case 4:
                     m_currentMap->event[i].type = eMapEventType::eventTypeEntitySpawn;
+                break;
+                // Toggle entity state
+                case 3:
+                    m_currentMap->event[i].type = eMapEventType::eventTypeEntityToggle;
                 break;
                 // Set entity state
                 case 2:
@@ -360,6 +369,7 @@ void cMapManager::load(const std::string &_fileName)
             m_currentMap->event[i].tile   = tEventTileNum;
             m_currentMap->event[i].data_1 = tEventData1;
             m_currentMap->event[i].data_2 = tEventData2;
+            m_currentMap->event[i].data_3 = tEventData3;
         }
         
         // Load map portal data
@@ -519,7 +529,7 @@ void cMapManager::process(const float32 &_dt)
             {
                 m_currentMap->event[i].triggered = true;
                 
-                // Warp to map
+                // Warp to map (tile, type, map number, portal number)
                 if (m_currentMap->event[i].type == eMapEventType::eventTypeWarp)
                 {
                     // Set the destionation portal number
@@ -576,10 +586,15 @@ void cMapManager::process(const float32 &_dt)
                     m_graphicsEngine->initializeEntities();
                     m_playMusic();
                 }
-                // Entity set
+                // Entity set (tile, type, map number, portal number)
                 else if (m_currentMap->event[i].type == eMapEventType::eventTypeEntitySet)
                 {
-                    std::uint32_t entityUID = m_currentMap->tile[m_currentMap->event[i].tile].object;
+                    std::uint32_t entityUID = m_currentMap->tile[m_currentMap->event[i].data_1].object;
+                    m_entityManager->setState(entityUID, m_currentMap->event[i].data_2);
+                }
+                // Entity toggle
+                else if (m_currentMap->event[i].type == eMapEventType::eventTypeEntityToggle)
+                {
                 }
                 // Entity spawn
                 else if (m_currentMap->event[i].type == eMapEventType::eventTypeEntitySpawn)

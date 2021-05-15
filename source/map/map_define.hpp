@@ -83,7 +83,8 @@ enum class eMapEventType : std::uint32_t
     eventTypeNone         = 0, // None
     eventTypeWarp         = 1, // Warp to map
     eventTypeEntitySet    = 2, // Set entity state
-    eventTypeEntitySpawn  = 3  // Spawn entity
+    eventTypeEntityToggle = 3, // Toggle entity state
+    eventTypeEntitySpawn  = 4  // Spawn entity
 };
 
 struct sMapEvent
@@ -92,6 +93,7 @@ struct sMapEvent
     std::uint32_t tile      = 0;
     std::uint32_t data_1    = 0;
     std::uint32_t data_2    = 0;
+    std::uint32_t data_3    = 0;
     bool          triggered = false;
 };
 

@@ -141,7 +141,7 @@ sEntity* cEntityManager::load(const std::string& _fileName, sEntity* _entity)
             _entity->model = loadModel(modelFile);
             if ((_entity->model) && (_entity->model->animation != nullptr))
             {
-                _entity->stopAnimTime = _entity->model->animation[0].animationTime;
+                _entity->stopAnimTime = _entity->model->animation[0].duration;
             }
 
         }
@@ -190,18 +190,25 @@ sEntity* cEntityManager::UIDtoEntity(const std::uint32_t& _UID)
     return nullptr;
 }
 
-void cEntityManager::setState(const sEntity*& _entity, const std::string& _name)
+void cEntityManager::setState(const std::uint32_t& _UID, const std::string& _name)
 {
-    for (std::uint32_t i = 0; i < _entity->stateCount; ++i)
+    sEntity* entityTemp = UIDtoEntity(_UID);
+    for (std::uint32_t i = 0; i < entityTemp->stateCount; ++i)
     {
-        if (_entity->state[i].name.compare(_name) == 0)
+        if (entityTemp->state[i].name.compare(_name) == 0)
         {
-            setState(_entity, i);
+            setState(_UID, i);
         }
     }
 }
 
-void cEntityManager::setState(const sEntity*& _entity, const std::uint32_t& _state)
+void cEntityManager::setState(const std::uint32_t& _UID, const std::uint32_t& _state)
 {
-
+    sEntity* entityTemp = UIDtoEntity(_UID);
+    entityTemp->stateCurrent      = _state;
+    entityTemp->currentAnimTime   = entityTemp->state[_state].animation.x;
+    entityTemp->startAnimTime     = entityTemp->state[_state].animation.x;
+    entityTemp->stopAnimTime      = entityTemp->state[_state].animation.y;
+    entityTemp->repeatAnimation   = (entityTemp->state[_state].animation.z == 1);
+    entityTemp->finishedAnimation = false;
 }
