@@ -115,7 +115,7 @@
 
     <player>
         # This is used when not warping from a prior map
-        <player_start_tile>1242</player_start_tile>
+        <player_start_tile>1342</player_start_tile>
         <#player_start_tile>6450</player_start_tile>
         <player_start_rotation>1.5708</player_start_rotation>
     </player>
@@ -128,11 +128,31 @@
     </portals>
     
     <events>
-        # Tile location, type, data 1, data 2
-        # Type 1 (Warp to map) : tile, event type, map number, portal number
-        <event>1041 1 0 1</event> # Town 1 tower entrance
-        <event>1042 1 0 1</event> # Town 1 tower entrance
-        <event>1043 1 0 1</event> # Town 1 tower entrance
+        # Tile location, type, data 1, data 2, data 3
+        # Type 1 (Warp to map) : tile, event type, map number, portal number, NA
+        # Type 2 (Set entity state, index from 1) : tile, event type, entity tile, state, NA
+        # Type 3 (Toggle entity state, index from 1) : tile, event type, entity tile, state 1, state 2
+
+        # up to town
+        <event>1041 1 0 1 0</event> # Town 1 tower entrance
+        <event>1042 1 0 1 0</event> # Town 1 tower entrance
+        <event>1043 1 0 1 0</event> # Town 1 tower entrance
+
+        # Up to town doors
+        <event>1141 2 1041 1 0</event> # Set door open
+        <event>1142 2 1041 1 0</event> # Set door open
+        <event>1141 2 1042 1 0</event> # Set door open
+        <event>1142 2 1042 1 0</event> # Set door open
+
+
+        # Library / alchemy lab door
+        <event>2438 2 2538 1 0</event> # Set door open
+        <event>2638 2 2538 1 0</event> # Set door open
+        
+         # Canteen / Food store lab door
+        <event>2460 2 2561 1 0</event> # Set door open
+        <event>2660 2 2561 1 0</event> # Set door open
+
     </events>
 
     <debris_objects>
@@ -142,6 +162,12 @@
 
     <objects>
         #tile number, object number, scale, y-rotation
+        
+        # Upstairs doors
+        <object>1041 32 01 1.0 0.0000 0</object> # Canteen / Food store lab door
+        <object>1042 32 02 1.0 0.0000 0</object> # Canteen / Food store lab door
+        
+        
         # Library
         <object>1837 29 06 1.0 1.5708 1</object> # Town props - bookshelf
         <object>2237 29 06 1.0 1.5708 1</object> # Town props - bookshelf
@@ -156,6 +182,7 @@
         <object>1846 29 06 1.0 -1.5708 1</object> # Town props - bookshelf
         <object>2246 29 06 1.0 -1.5708 1</object> # Town props - bookshelf
         # Alchemy lab 2
+        <object>2538 32 01 1.0 0.0000 0</object> # Library / Alchemy lab door
         <object>2642 29 01 1.0 0.0000 1</object> # Town props - alchemy table
         <object>2937 29 06 1.0 1.5708 1</object> # Town props - bookshelf
         <object>3237 29 06 1.0 1.5708 1</object> # Town props - bookshelf
@@ -172,6 +199,7 @@
         <object>1955 29 27 1.0 1.5708 1</object> # Town props - tankard
         <object>1855 29 27 1.0 1.5708 1</object> # Town props - tankard
         # Food store
+        <object>2561 32 01 1.0 0.0000 0</object> # Canteen / Food store lab door
         <object>2653 07 00 1.0 1.5708 1</object> # Barrel
         <object>2654 07 00 1.0 1.5708 1</object> # Barrel
         <object>2753 07 00 1.0 1.5708 1</object> # Barrel
@@ -206,10 +234,7 @@
         <object>7859 22 13 1.0 1.5708 1</object> # Torture device - 
         <object>8260 22 15 1.0 1.5708 1</object> # Torture device - 
         <object>8459 22 10 1.0 1.5708 1</object> # Torture device - 
-
-        # Door
-        <object>1242 32 01 1.0 0.0000 1</object> # TEST DOOR
-        
+       
     </objects>
 
     <npc_mobs>

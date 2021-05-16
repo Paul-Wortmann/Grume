@@ -5,7 +5,7 @@
     <model>doors/dungeon_door_1_001.dae</model>
     <material>doors/dungeon_door_1_001.txt</material>
 
-    <position>0.0 1.0 0.0</position>
+    <position>-0.5 1.0 0.0</position>
     <scale>1.0 1.0 1.0</scale>
     <rotation>1.5708 0.0000 1.5708</rotation>
 
@@ -14,13 +14,13 @@
     <state_initial>0</state_initial> # 0 == none
     <state>
         <state_name>open</state_name>
-        <state_sound>rpg_sounds/world/door.wav</state_sound>
-        <state_animation>0 10 0</state_animation> # frame start, frame end, repeat (bool)
+        <state_sound>object/door_1_001.ogg</state_sound>
+        <state_animation>0.0 0.4166 0.0</state_animation> # frame start, frame end, repeat (bool)
     </state>
     <state>
         <state_name>close</state_name>
-        <state_sound>rpg_sounds/world/door.wav</state_sound>
-        <state_animation>10 20 0</state_animation> # frame start, frame end, repeat (bool)
+        <state_sound>object/door_1_001.ogg</state_sound>
+        <state_animation>0.4166 0.8333 0.0</state_animation> # frame start, frame end, repeat (bool)
     </state>
 
 </entity>

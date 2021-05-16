@@ -72,7 +72,7 @@ glm::vec3 cGraphicsEngineCamera::getMouseRay(const float32 &_mouseX, const float
 
 glm::vec3 cGraphicsEngineCamera::getRayPlaneIntersection(const glm::vec3 &_ray)
 {
-    glm::vec3 n = glm::vec3(0.0, 1.0, 0.0);
+    glm::vec3 n = glm::vec3(0.0, -1.0, 0.0);
     float32   t = -glm::dot(m_position, n) / glm::dot(_ray, n);
 
     return m_position + _ray * t;

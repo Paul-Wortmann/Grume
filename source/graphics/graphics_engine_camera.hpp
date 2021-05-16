@@ -52,9 +52,9 @@ class cGraphicsEngineCamera
         uint32         m_height       = 1080;
         glm::mat4      m_view         = glm::mat4(1);
         glm::mat4      m_projection   = glm::mat4(1);
-        glm::vec3      m_position     = glm::vec3(0.0f, 0.0f, 0.0f);
-        glm::vec3      m_target       = glm::vec3(0.0f, 0.0f, 0.0f);
-        glm::vec3      m_orientation  = glm::vec3(0.0f, 1.0f, 0.0f);
+        glm::vec3      m_position     = glm::vec3(0.0f,  0.0f, 0.0f);
+        glm::vec3      m_target       = glm::vec3(0.0f, -1.0f, 0.0f);
+        glm::vec3      m_orientation  = glm::vec3(0.0f,  1.0f, 0.0f);
 };
 
 #endif //GRAPHICS_ENGINE_CAMERA_HPP

@@ -128,10 +128,10 @@
     
     <events>
         # Tile location, type, data 1, data 2
-        # Type 1 (Warp to map) -> tile, event type, map number, portal number
-        <event>1043 1 0 2</event> # Town 1 Mausoleum entrance
-        <event>1044 1 0 2</event> # Town 1 Mausoleum entrance
-        <event>1045 1 0 2</event> # Town 1 Mausoleum entrance
+        # Type 1 (Warp to map) -> tile, event type, map number, portal number, NA
+        <event>1043 1 0 2 0</event> # Town 1 Mausoleum entrance
+        <event>1044 1 0 2 0</event> # Town 1 Mausoleum entrance
+        <event>1045 1 0 2 0</event> # Town 1 Mausoleum entrance
     </events>
 
     <debris_objects>

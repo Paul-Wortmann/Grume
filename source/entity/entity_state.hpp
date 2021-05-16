@@ -32,12 +32,12 @@ struct sEntityState
     std::string   name          = "";
 
     // Animation (start, end, repeat)
-    glm::ivec3    animation     = glm::ivec3(0, 0, 0);
+    glm::vec3     animation     = glm::vec3(0, 0, 0);
 
     // SoundFX
-    std::string   musicFile     = ""; // Audio source File name
-    std::uint32_t musicSourceID = 0;  // Audio source
-    std::uint32_t musicBufferID = 0;  // Audio buffer
+    std::string   audioFile     = ""; // Audio source File name
+    std::uint32_t audioSourceID = 0;  // Audio source
+    std::uint32_t auidoBufferID = 0;  // Audio buffer
 };
 
 #endif // ENTITY_STATE_HPP

@@ -73,8 +73,8 @@ struct sEntity
     float64          currentAnimTime      = 0.0;
     float64          stopAnimTime         = 0.0;
     float64          startAnimTime        = 0.0;
-    bool             repeatAnimation      = true;
-    bool             finishedAnimation    = false;
+    bool             repeatAnimation      = false;
+    bool             finishedAnimation    = true;
 
     // Graphics
     sEntityModel*    model        = nullptr; // (Entity shared animation data)

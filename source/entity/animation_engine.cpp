@@ -176,6 +176,33 @@ void cAnimationEngine::m_calculateAnimation(double _currentAnimTime, uint32_t _c
     }
 }
 
+void cAnimationEngine::initializeEntities(void)
+{
+    // Initialize any entities that have independant animation
+    for (m_entityTemp = m_entityHead; m_entityTemp != nullptr; m_entityTemp = m_entityTemp->next)
+    {
+        if ((m_entityTemp->animationIndependent) && (m_entityTemp->model != nullptr))
+        {
+            // Initialize the bone trasforms if need be
+            if (m_entityTemp->boneTransform == nullptr)
+            {
+                m_entityTemp->numBones = m_entityTemp->model->numBones;
+                m_entityTemp->boneTransform = new glm::mat4[m_entityTemp->numBones];
+            }
+
+            // Calculate the bone transforms at their initial state
+            m_calculateAnimation(0.0f, 0);
+
+            // Copy the bone transforms from the model to the entity
+            for (std::uint32_t i = 0; i < m_entityTemp->numBones; ++i)
+            {
+                m_entityTemp->boneTransform[i] = m_entityTemp->model->bone[i].transformFinal;
+            }
+        }
+    }
+
+}
+
 void cAnimationEngine::process(double _deltaTime)
 {
     // Set the animation processed flag
@@ -217,6 +244,7 @@ void cAnimationEngine::process(double _deltaTime)
 
 void cAnimationEngine::m_processEntity(sEntity* _entity, double _deltaTime)
 {
+    // Set the internal temp entity, this is used when processing animations
     m_entityTemp = _entity;
 
     // Processed animations
@@ -228,9 +256,6 @@ void cAnimationEngine::m_processEntity(sEntity* _entity, double _deltaTime)
             m_entityTemp->numBones = m_entityTemp->model->numBones;
             m_entityTemp->boneTransform = new glm::mat4[m_entityTemp->numBones];
         }
-
-        // Get the pointer to the current animation
-        sEntityAnimation* animation = &m_entityTemp->model->animation[m_entityTemp->currentAnimation];
 
         // determine the new animation time
         m_entityTemp->previousAnimTime = m_entityTemp->currentAnimTime;
@@ -258,12 +283,3 @@ void cAnimationEngine::m_processEntity(sEntity* _entity, double _deltaTime)
         }
     }
 }
-
-/*
-    entityTemp->stateCurrent      = _state;
-    entityTemp->currentAnimTime   = entityTemp->state[_state].animation.x;
-    entityTemp->startAnimTime     = entityTemp->state[_state].animation.x;
-    entityTemp->stopAnimTime      = entityTemp->state[_state].animation.y;
-    entityTemp->repeatAnimation   = (entityTemp->state[_state].animation.z == 1);
-    entityTemp->finishedAnimation = false;
-*/

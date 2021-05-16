@@ -36,6 +36,7 @@ class cAnimationEngine
         ~cAnimationEngine(void) {}
         uint32_t initialize(void);
         void     terminate(void);
+        void     initializeEntities(void);
         void     process(double _deltaTime);
         void     setEntityHead(sEntity* _entity) { m_entityHead = _entity; m_entityTemp = _entity; }
 

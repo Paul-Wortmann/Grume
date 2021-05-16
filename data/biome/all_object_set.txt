@@ -334,8 +334,9 @@
     </weapon>
 
     <door>
-        <door_count>1</door_count>
+        <door_count>2</door_count>
         <door_entity>doors/dungeon_door_1_001.txt</door_entity>
+        <door_entity>doors/dungeon_door_2_001.txt</door_entity>
     </door>
 
 </object_set>

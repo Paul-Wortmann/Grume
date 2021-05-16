@@ -595,6 +595,8 @@ void cMapManager::process(const float32 &_dt)
                 // Entity toggle
                 else if (m_currentMap->event[i].type == eMapEventType::eventTypeEntityToggle)
                 {
+                    std::uint32_t entityUID = m_currentMap->tile[m_currentMap->event[i].data_1].object;
+                    m_entityManager->toggleState(entityUID, m_currentMap->event[i].data_2, m_currentMap->event[i].data_3);
                 }
                 // Entity spawn
                 else if (m_currentMap->event[i].type == eMapEventType::eventTypeEntitySpawn)
