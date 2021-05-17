@@ -25,23 +25,23 @@
 
 void cEntityManager::initialize(void)
 {
-    modelManager.initialize();
+    m_modelManager.initialize();
 }
 
 void cEntityManager::terminate(void)
 {
-    modelManager.terminate();
+    m_modelManager.terminate();
     m_freeAll();
 }
 
 void cEntityManager::addModel(sEntityModel*& _model)
 {
-    modelManager.addBack(_model);
+    m_modelManager.addBack(_model);
 }
 
 sEntityModel* cEntityManager::getNewModel(void)
 {
-    return modelManager.getNew();
+    return m_modelManager.getNew();
 }
 
 void cEntityManager::m_freeData(sEntity*& _pointer)
@@ -76,22 +76,22 @@ void cEntityManager::m_freeAll(void)
 
 sEntityModel* cEntityManager::loadModel(const std::string &_fileName)
 {
-    return modelManager.load(_fileName);
+    return m_modelManager.load(_fileName);
 }
 
 void cEntityManager::removeModel(sEntityModel*& _model)
 {
-    modelManager.remove(_model);
+    m_modelManager.remove(_model);
 }
 
 sEntityMaterial* cEntityManager::loadMaterial(const std::string &_fileName)
 {
-    return modelManager.loadMaterial(_fileName);
+    return m_modelManager.loadMaterial(_fileName);
 }
 
 sEntityTexture* cEntityManager::loadTexture(const std::string &_fileName)
 {
-    return modelManager.loadTexture(_fileName);
+    return m_modelManager.loadTexture(_fileName);
 }
 
 void cEntityManager::updateModelMatrix(sEntity*& _entity)
@@ -152,7 +152,7 @@ sEntity* cEntityManager::load(const std::string& _fileName, sEntity* _entity)
         // Load material from file
         if (materialFile.length() > 3)
         {
-            sEntityMaterial* tMaterial = modelManager.loadMaterial(materialFile);
+            sEntityMaterial* tMaterial = m_modelManager.loadMaterial(materialFile);
             if (tMaterial != nullptr)
             {
                 _entity->material = tMaterial;
@@ -178,7 +178,28 @@ sEntity* cEntityManager::load(const std::string& _fileName, sEntity* _entity)
     return nullptr; // Load failed
 }
 
-sEntity* cEntityManager::UIDtoEntity(const std::uint32_t& _UID)
+void cEntityManager::m_playSound(sEntity*& _entity, const std::uint32_t& _state)
+{
+    // Play sound associated with state, load first if need be
+    if ((_entity->state[_state].audioFile.length() > 3) && (_entity->state[_state].audioSourceID == 0))
+    {
+        _entity->state[_state].audioSourceID = m_audioManager->newAudioSource();
+        m_audioManager->setAudioSourcePosition(_entity->state[_state].audioSourceID, 0.0f, 0.0f, 0.0f);
+        _entity->state[_state].auidoBufferID = m_audioManager->newAudioBuffer();
+        m_audioManager->loadBufferOgg(_entity->state[_state].auidoBufferID, FILE_PATH_SOUND + _entity->state[_state].audioFile);
+        m_audioManager->setAudioBufferName(_entity->state[_state].auidoBufferID, _entity->state[_state].audioFile);
+        m_audioManager->attachSourceBuffer(_entity->state[_state].audioSourceID, _entity->state[_state].auidoBufferID);
+        m_audioManager->setAudioSourceLooping(_entity->state[_state].audioSourceID, false);
+    }
+    
+    // If the sound has been loaded, play it
+    if (_entity->state[_state].audioSourceID != 0)
+    {
+        m_audioManager->playSource(_entity->state[_state].audioSourceID);
+    }
+}
+
+sEntity* cEntityManager::m_UIDtoEntity(const std::uint32_t& _UID)
 {
     for(sEntity* entityTemp = getHead(); entityTemp != nullptr; entityTemp = entityTemp->next)
     {
@@ -192,7 +213,7 @@ sEntity* cEntityManager::UIDtoEntity(const std::uint32_t& _UID)
 
 void cEntityManager::setState(const std::uint32_t& _UID, const std::string& _name)
 {
-    sEntity* entityTemp = UIDtoEntity(_UID);
+    sEntity* entityTemp = m_UIDtoEntity(_UID);
     for (std::uint32_t i = 0; i < entityTemp->stateCount; ++i)
     {
         if (entityTemp->state[i].name.compare(_name) == 0)
@@ -205,7 +226,7 @@ void cEntityManager::setState(const std::uint32_t& _UID, const std::string& _nam
 void cEntityManager::setState(const std::uint32_t& _UID, const std::uint32_t& _state)
 {
     // Get the entity pointer first
-    sEntity* entityTemp = UIDtoEntity(_UID);
+    sEntity* entityTemp = m_UIDtoEntity(_UID);
 
     // Only change the state if it is different, and the previous animation has completed
     if ((entityTemp->stateCurrent != _state) && (entityTemp->finishedAnimation))
@@ -218,29 +239,15 @@ void cEntityManager::setState(const std::uint32_t& _UID, const std::uint32_t& _s
         entityTemp->repeatAnimation   = (entityTemp->state[entityTemp->stateCurrent - 1].animation.z > 0.001);
         entityTemp->finishedAnimation = false;
 
-        // Play sound associated with state, load first if need be
-        if ((entityTemp->state[entityTemp->stateCurrent - 1].audioFile.length() > 3) && (entityTemp->state[entityTemp->stateCurrent - 1].audioSourceID == 0))
-        {
-            entityTemp->state[entityTemp->stateCurrent - 1].audioSourceID = m_audioManager->newAudioSource();
-            m_audioManager->setAudioSourcePosition(entityTemp->state[entityTemp->stateCurrent - 1].audioSourceID, 0.0f, 0.0f, 0.0f);
-            entityTemp->state[entityTemp->stateCurrent - 1].auidoBufferID = m_audioManager->newAudioBuffer();
-            m_audioManager->loadBufferOgg(entityTemp->state[entityTemp->stateCurrent - 1].auidoBufferID, FILE_PATH_SOUND + entityTemp->state[entityTemp->stateCurrent - 1].audioFile);
-            m_audioManager->setAudioBufferName(entityTemp->state[entityTemp->stateCurrent - 1].auidoBufferID, entityTemp->state[entityTemp->stateCurrent - 1].audioFile);
-            m_audioManager->attachSourceBuffer(entityTemp->state[entityTemp->stateCurrent - 1].audioSourceID, entityTemp->state[entityTemp->stateCurrent - 1].auidoBufferID);
-            m_audioManager->setAudioSourceLooping(entityTemp->state[entityTemp->stateCurrent - 1].audioSourceID, false);
-            m_audioManager->playSource(entityTemp->state[entityTemp->stateCurrent - 1].audioSourceID);
-        }
-        else
-        {
-            m_audioManager->playSource(entityTemp->state[entityTemp->stateCurrent - 1].audioSourceID);
-        }
+        // Play sound associated with state
+        m_playSound(entityTemp, entityTemp->stateCurrent - 1);
     }
 }
 
 void cEntityManager::toggleState(const std::uint32_t& _UID, const std::uint32_t& _state1, const std::uint32_t& _state2)
 {
     // Get the entity pointer first
-    sEntity* entityTemp = UIDtoEntity(_UID);
+    sEntity* entityTemp = m_UIDtoEntity(_UID);
 
     // Only toggle the state if the previous animation has completed
     if (entityTemp->finishedAnimation)
@@ -255,21 +262,7 @@ void cEntityManager::toggleState(const std::uint32_t& _UID, const std::uint32_t&
         entityTemp->repeatAnimation   = (entityTemp->state[entityTemp->stateCurrent - 1].animation.z > 0.001);
         entityTemp->finishedAnimation = false;
 
-        // Play sound associated with state, load first if need be
-        if ((entityTemp->state[entityTemp->stateCurrent - 1].audioFile.length() > 3) && (entityTemp->state[entityTemp->stateCurrent - 1].audioSourceID == 0))
-        {
-            entityTemp->state[entityTemp->stateCurrent - 1].audioSourceID = m_audioManager->newAudioSource();
-            m_audioManager->setAudioSourcePosition(entityTemp->state[entityTemp->stateCurrent - 1].audioSourceID, 0.0f, 0.0f, 0.0f);
-            entityTemp->state[entityTemp->stateCurrent - 1].auidoBufferID = m_audioManager->newAudioBuffer();
-            m_audioManager->loadBufferOgg(entityTemp->state[entityTemp->stateCurrent - 1].auidoBufferID, FILE_PATH_SOUND + entityTemp->state[entityTemp->stateCurrent - 1].audioFile);
-            m_audioManager->setAudioBufferName(entityTemp->state[entityTemp->stateCurrent - 1].auidoBufferID, entityTemp->state[entityTemp->stateCurrent - 1].audioFile);
-            m_audioManager->attachSourceBuffer(entityTemp->state[entityTemp->stateCurrent - 1].audioSourceID, entityTemp->state[entityTemp->stateCurrent - 1].auidoBufferID);
-            m_audioManager->setAudioSourceLooping(entityTemp->state[entityTemp->stateCurrent - 1].audioSourceID, false);
-            m_audioManager->playSource(entityTemp->state[entityTemp->stateCurrent - 1].audioSourceID);
-        }
-        else
-        {
-            m_audioManager->playSource(entityTemp->state[entityTemp->stateCurrent - 1].audioSourceID);
-        }
+        // Play sound associated with state
+        m_playSound(entityTemp, entityTemp->stateCurrent - 1);
     }
 }

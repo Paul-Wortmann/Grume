@@ -45,7 +45,6 @@ class cEntityManager : public tcLinkedList<sEntity>
         sEntityTexture*  loadTexture(const std::string &_fileName);
         void             updateModelMatrix(sEntity*& _entity);
         sEntity*         load(const std::string& _fileName, sEntity* _entity = nullptr);
-        sEntity*         UIDtoEntity(const std::uint32_t& _UID);
         void             setState(const std::uint32_t& _UID, const std::string& _name);
         void             setState(const std::uint32_t& _UID, const std::uint32_t& _state);
         void             toggleState(const std::uint32_t& _UID, const std::uint32_t& _state1, const std::uint32_t& _state2);
@@ -53,11 +52,14 @@ class cEntityManager : public tcLinkedList<sEntity>
     protected:
         
     private:
-        void m_freeAll(void);
-        void m_freeData(sEntity*& _pointer);
+        void             m_freeAll(void);
+        void             m_freeData(sEntity*& _pointer);
+        void             m_playSound(sEntity*& _entity, const std::uint32_t& _state);
+        sEntity*         m_UIDtoEntity(const std::uint32_t& _UID);
+
 
         cAudioManager*   m_audioManager   = nullptr;
-        cModelManager    modelManager;
+        cModelManager    m_modelManager;
 };
 
 #endif //ENTITY_MANAGER_HPP
