@@ -2,7 +2,7 @@
 <entity>
     <name>dungeon_001_wall_1tp_001</name>
     <model>dungeon_001/dungeon_001_wall_1tp_001.obj</model>
-    <material>dungeon/dungeon_wall_1_001.txt</material>
+    <material>dungeon/dungeon_wall_1_002.txt</material>
 
     <position>0.0 -1.0 0.0</position>
     <scale>1.0 1.0 1.0</scale>

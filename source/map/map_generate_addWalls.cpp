@@ -520,7 +520,7 @@ void cMapManager::m_addWallThinEntities(sMap*& _map)
         bool entrance_placed = false;
         bool exit_placed     = false;
         // Length 3
-        for (uint32 h = 1; h < _map->height - 4; ++h) // We need up to 3 tiles in front of stairs
+        for (uint32 h = 0; h < _map->height - 4; ++h) // We need up to 3 tiles in front of stairs
         {
             for (uint32 w = 2; w < _map->width - 2; ++w)
             {
@@ -530,17 +530,13 @@ void cMapManager::m_addWallThinEntities(sMap*& _map)
                 // Entrance
                 if ((!entrance_placed) && (wall_3tus_count > 0))
                 {
-                    if ((m_isWall (_map, t)) && (!_map->tile[t].processed))
+                    if ((m_isWall (_map, t)) && (!_map->tile[t + _map->width].processed))
                     {
-                        // ? F F F ?
                         // W W - W W
                         // ? N N N ?
                         // ? N N N ?
                         // ? F F F ?
-                        if      ((m_isFlat(_map, t - _map->width)) &&
-                                 (m_isFlat(_map, t - _map->width + 1)) &&
-                                 (m_isFlat(_map, t - _map->width - 1)) &&
-                                 (m_isWall (_map, t + 1)) &&
+                        if      ((m_isWall (_map, t + 1)) &&
                                  (m_isWall (_map, t - 1)) &&
                                  (m_isWall (_map, t + 2)) &&
                                  (m_isWall (_map, t - 2)) &&
@@ -552,9 +548,7 @@ void cMapManager::m_addWallThinEntities(sMap*& _map)
                                  (m_isNone(_map, t + (2 * _map->width) - 1)) &&
                                  (m_isFlat(_map, t + (3 * _map->width))) &&
                                  (m_isFlat(_map, t + (3 * _map->width) + 1)) &&
-                                 (m_isFlat(_map, t + (3 * _map->width) - 1)) &&
-                                 (!_map->tile[t + 1].processed) &&
-                                 (!_map->tile[t - 1].processed))
+                                 (m_isFlat(_map, t + (3 * _map->width) - 1)))
                         {
                             tEntity = m_entityManager->load(xmlFile.getString("<wall_3tus_entity>", 1 + (rand() % wall_3tus_count)));
                             tEntity->owner = eEntityOwner::ownerMap;
@@ -563,9 +557,7 @@ void cMapManager::m_addWallThinEntities(sMap*& _map)
                                 tEntity->position = glm::vec3(static_cast<float32>(w) + tp - xo, y_pos, static_cast<float32>(h) + tp - yo);
                                 tEntity->rotation += glm::vec3(0.0f, DTOR_270, 0.0f);
                                 m_entityManager->updateModelMatrix(tEntity);
-                                _map->tile[t].processed = true;
-                                _map->tile[t + 1].processed = true;
-                                _map->tile[t - 1].processed = true;
+                                _map->tile[t + _map->width].processed = true;
                                 _map->tile[t + _map->width].object = 0; // No object
                                 _map->tile[t + _map->width + 1].object = 0; // No object
                                 _map->tile[t + _map->width - 1].object = 0; // No object
@@ -584,17 +576,13 @@ void cMapManager::m_addWallThinEntities(sMap*& _map)
                 // Exit
                 if ((!exit_placed) && (wall_3tds_count > 0))
                 {
-                    if ((m_isWall (_map, t)) && (!_map->tile[t].processed))
+                    if ((m_isWall (_map, t)) && (!_map->tile[t + _map->width].processed))
                     {
-                        // ? F F F ?
                         // W W - W W
                         // ? N N N ?
                         // ? N N N ?
                         // ? F F F ?
-                        if      ((m_isFlat(_map, t - _map->width)) &&
-                                 (m_isFlat(_map, t - _map->width + 1)) &&
-                                 (m_isFlat(_map, t - _map->width - 1)) &&
-                                 (m_isWall (_map, t + 1)) &&
+                        if      ((m_isWall (_map, t + 1)) &&
                                  (m_isWall (_map, t - 1)) &&
                                  (m_isWall (_map, t + 2)) &&
                                  (m_isWall (_map, t - 2)) &&
@@ -606,9 +594,7 @@ void cMapManager::m_addWallThinEntities(sMap*& _map)
                                  (m_isNone(_map, t + (2 * _map->width) - 1)) &&
                                  (m_isFlat(_map, t + (3 * _map->width))) &&
                                  (m_isFlat(_map, t + (3 * _map->width) + 1)) &&
-                                 (m_isFlat(_map, t + (3 * _map->width) - 1)) &&
-                                 (!_map->tile[t + 1].processed) &&
-                                 (!_map->tile[t - 1].processed))
+                                 (m_isFlat(_map, t + (3 * _map->width) - 1)))
                         {
                             tEntity = m_entityManager->load(xmlFile.getString("<wall_3tds_entity>", 1 + (rand() % wall_3tds_count)));
                             tEntity->owner = eEntityOwner::ownerMap;
@@ -617,9 +603,7 @@ void cMapManager::m_addWallThinEntities(sMap*& _map)
                                 tEntity->position = glm::vec3(static_cast<float32>(w) + tp - xo, y_pos, static_cast<float32>(h) + tp - yo);
                                 tEntity->rotation += glm::vec3(0.0f, DTOR_270, 0.0f);
                                 m_entityManager->updateModelMatrix(tEntity);
-                                _map->tile[t].processed = true;
-                                _map->tile[t + 1].processed = true;
-                                _map->tile[t - 1].processed = true;
+                                _map->tile[t + _map->width].processed = true;
                                 _map->tile[t + _map->width].object = 0; // No object
                                 _map->tile[t + _map->width + 1].object = 0; // No object
                                 _map->tile[t + _map->width - 1].object = 0; // No object
@@ -637,8 +621,8 @@ void cMapManager::m_addWallThinEntities(sMap*& _map)
             }
         }
 
-        // Length 2
-        for (uint32 h = 1; h < _map->height - 4; ++h) // We need up to 3 tiles in front of stairs
+        // Length 2 (vertical)
+        for (uint32 h = 0; h < _map->height - 4; ++h) // We need up to 3 tiles in front of stairs
         {
             for (uint32 w = 2; w < _map->width - 2; ++w)
             {
@@ -648,16 +632,13 @@ void cMapManager::m_addWallThinEntities(sMap*& _map)
                 // Entrance
                 if ((!entrance_placed) && (wall_2tus_count > 0))
                 {
-                    if ((m_isWall (_map, t)) && (!_map->tile[t].processed))
+                    if ((m_isWall (_map, t)) && (!_map->tile[t + _map->width].processed))
                     {
-                        // ? F F ?
                         // W - W W
                         // ? N N ?
                         // ? N N ?
                         // ? F F ?
-                        if      ((m_isFlat(_map, t - _map->width)) &&
-                                 (m_isFlat(_map, t - _map->width + 1)) &&
-                                 (m_isWall (_map, t + 1)) &&
+                        if      ((m_isWall (_map, t + 1)) &&
                                  (m_isWall (_map, t - 1)) &&
                                  (m_isWall (_map, t + 2)) &&
                                  (m_isNone(_map, t + _map->width)) &&
@@ -665,8 +646,7 @@ void cMapManager::m_addWallThinEntities(sMap*& _map)
                                  (m_isNone(_map, t + (2 * _map->width))) &&
                                  (m_isNone(_map, t + (2 * _map->width) + 1)) &&
                                  (m_isFlat(_map, t + (3 * _map->width))) &&
-                                 (m_isFlat(_map, t + (3 * _map->width) + 1)) &&
-                                 (!_map->tile[t + 1].processed))
+                                 (m_isFlat(_map, t + (3 * _map->width) + 1)))
                         {
                             tEntity = m_entityManager->load(xmlFile.getString("<wall_2tus_entity>", 1 + (rand() % wall_2tus_count)));
                             tEntity->owner = eEntityOwner::ownerMap;
@@ -675,8 +655,7 @@ void cMapManager::m_addWallThinEntities(sMap*& _map)
                                 tEntity->position = glm::vec3(static_cast<float32>(w) + tp - xo, y_pos, static_cast<float32>(h) + tp - yo);
                                 tEntity->rotation += glm::vec3(0.0f, DTOR_270, 0.0f);
                                 m_entityManager->updateModelMatrix(tEntity);
-                                _map->tile[t].processed = true;
-                                _map->tile[t + 1].processed = true;
+                                _map->tile[t + _map->width].processed = true;
                                 _map->tile[t + _map->width].object = 0; // No object
                                 _map->tile[t + _map->width + 1].object = 0; // No object
                                 _map->tile[t + (2 * _map->width)].object = 0; // No object
@@ -692,16 +671,13 @@ void cMapManager::m_addWallThinEntities(sMap*& _map)
                 // Exit
                 if ((!exit_placed) && (wall_2tds_count > 0))
                 {
-                    if ((m_isWall (_map, t)) && (!_map->tile[t].processed))
+                    if ((m_isWall (_map, t)) && (!_map->tile[t + _map->width].processed))
                     {
-                        // ? F F ?
                         // W - W W
                         // ? N N ?
                         // ? N N ?
                         // ? F F ?
-                        if      ((m_isFlat(_map, t - _map->width)) &&
-                                 (m_isFlat(_map, t - _map->width + 1)) &&
-                                 (m_isWall (_map, t + 1)) &&
+                        if      ((m_isWall (_map, t + 1)) &&
                                  (m_isWall (_map, t - 1)) &&
                                  (m_isWall (_map, t + 2)) &&
                                  (m_isNone(_map, t + _map->width)) &&
@@ -709,8 +685,7 @@ void cMapManager::m_addWallThinEntities(sMap*& _map)
                                  (m_isNone(_map, t + (2 * _map->width))) &&
                                  (m_isNone(_map, t + (2 * _map->width) + 1)) &&
                                  (m_isFlat(_map, t + (3 * _map->width))) &&
-                                 (m_isFlat(_map, t + (3 * _map->width) + 1)) &&
-                                 (!_map->tile[t + 1].processed))
+                                 (m_isFlat(_map, t + (3 * _map->width) + 1)))
                         {
                             tEntity = m_entityManager->load(xmlFile.getString("<wall_2tds_entity>", 1 + (rand() % wall_2tds_count)));
                             tEntity->owner = eEntityOwner::ownerMap;
@@ -719,8 +694,7 @@ void cMapManager::m_addWallThinEntities(sMap*& _map)
                                 tEntity->position = glm::vec3(static_cast<float32>(w) + tp - xo, y_pos, static_cast<float32>(h) + tp - yo);
                                 tEntity->rotation += glm::vec3(0.0f, DTOR_270, 0.0f);
                                 m_entityManager->updateModelMatrix(tEntity);
-                                _map->tile[t].processed = true;
-                                _map->tile[t + 1].processed = true;
+                                _map->tile[t + _map->width].processed = true;
                                 _map->tile[t + _map->width].object = 0; // No object
                                 _map->tile[t + _map->width + 1].object = 0; // No object
                                 _map->tile[t + (2 * _map->width)].object = 0; // No object
@@ -735,8 +709,96 @@ void cMapManager::m_addWallThinEntities(sMap*& _map)
             }
         }
 
+        // Length 2 (horizontal)
+        for (uint32 h = 2; h < _map->height - 2; ++h) // We need up to 3 tiles in front of stairs
+        {
+            for (uint32 w = 0; w < _map->width - 4; ++w)
+            {
+                // Calculate the tile number
+                uint32 t = (h * _map->width) + w;
+
+                // Entrance
+                if ((!entrance_placed) && (wall_2tus_count > 0))
+                {
+                    if ((m_isWall (_map, t)) && (!_map->tile[t + 1].processed))
+                    {
+                        // W ? ? ?
+                        // W N N F
+                        // - N N F
+                        // W ? ? ?
+                        if      ((m_isWall (_map, t + _map->width)) &&
+                                 (m_isWall (_map, t - _map->width)) &&
+                                 (m_isWall (_map, t - (2 * _map->width))) &&
+                                 (m_isNone(_map, t - _map->width + 1)) &&
+                                 (m_isNone(_map, t - _map->width + 2)) &&
+                                 (m_isNone(_map, t + 1)) &&
+                                 (m_isNone(_map, t + 2)) &&
+                                 (m_isFlat(_map, t - _map->width + 3)) &&
+                                 (m_isFlat(_map, t + 3)))
+                        {
+                            tEntity = m_entityManager->load(xmlFile.getString("<wall_2tus_entity>", 1 + (rand() % wall_2tus_count)));
+                            tEntity->owner = eEntityOwner::ownerMap;
+                            if (tEntity != nullptr)
+                            {
+                                tEntity->position = glm::vec3(static_cast<float32>(w) + tp - xo, y_pos, static_cast<float32>(h) + tp - yo);
+                                tEntity->rotation += glm::vec3(0.0f, DTOR_0, 0.0f);
+                                m_entityManager->updateModelMatrix(tEntity);
+                                _map->tile[t + 1].processed = true;
+                                _map->tile[t + 1].object = 0; // No object
+                                _map->tile[t + 2].object = 0; // No object
+                                _map->tile[t + 3].object = 0; // No object
+                                _map->tile[t - _map->width + 1].object = 0; // No object
+                                _map->tile[t - _map->width + 2].object = 0; // No object
+                                _map->tile[t - _map->width + 3].object = 0; // No object
+                                entrance_placed = true;
+                            }
+                        }
+                    }
+                }
+
+                // Exit
+                if ((!exit_placed) && (wall_2tds_count > 0))
+                {
+                    if ((m_isWall (_map, t)) && (!_map->tile[t + 1].processed))
+                    {
+                        // W ? ? ?
+                        // W N N F
+                        // - N N F
+                        // W ? ? ?
+                        if      ((m_isWall (_map, t + _map->width)) &&
+                                 (m_isWall (_map, t - _map->width)) &&
+                                 (m_isWall (_map, t - (2 * _map->width))) &&
+                                 (m_isNone(_map, t - _map->width + 1)) &&
+                                 (m_isNone(_map, t - _map->width + 2)) &&
+                                 (m_isNone(_map, t + 1)) &&
+                                 (m_isNone(_map, t + 2)) &&
+                                 (m_isFlat(_map, t - _map->width + 3)) &&
+                                 (m_isFlat(_map, t + 3)))
+                        {
+                            tEntity = m_entityManager->load(xmlFile.getString("<wall_2tds_entity>", 1 + (rand() % wall_2tds_count)));
+                            tEntity->owner = eEntityOwner::ownerMap;
+                            if (tEntity != nullptr)
+                            {
+                                tEntity->position = glm::vec3(static_cast<float32>(w) + tp - xo, y_pos, static_cast<float32>(h) + tp - yo);
+                                tEntity->rotation += glm::vec3(0.0f, DTOR_0, 0.0f);
+                                m_entityManager->updateModelMatrix(tEntity);
+                                _map->tile[t + 1].processed = true;
+                                _map->tile[t + 1].object = 0; // No object
+                                _map->tile[t + 2].object = 0; // No object
+                                _map->tile[t + 3].object = 0; // No object
+                                _map->tile[t - _map->width + 1].object = 0; // No object
+                                _map->tile[t - _map->width + 2].object = 0; // No object
+                                _map->tile[t - _map->width + 3].object = 0; // No object
+                                exit_placed = true;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
         // Length 1
-        for (uint32 h = 1; h < _map->height - 4; ++h) // We need up to 3 tiles in front of stairs
+        for (uint32 h = 0; h < _map->height - 4; ++h) // We need up to 3 tiles in front of stairs
         {
             for (uint32 w = 2; w < _map->width - 2; ++w)
             {
@@ -746,15 +808,13 @@ void cMapManager::m_addWallThinEntities(sMap*& _map)
                 // Entrance
                 if ((!entrance_placed) && (wall_1tus_count > 0))
                 {
-                    if ((m_isWall (_map, t)) && (!_map->tile[t].processed))
+                    if ((m_isWall (_map, t)) && (!_map->tile[t + _map->width].processed))
                     {
-                        // ? F ?
                         // W - W
                         // ? N ?
                         // ? N ?
                         // ? F ?
-                        if      ((m_isFlat(_map, t - _map->width)) &&
-                                 (m_isWall (_map, t + 1)) &&
+                        if      ((m_isWall (_map, t + 1)) &&
                                  (m_isWall (_map, t - 1)) &&
                                  (m_isNone(_map, t + _map->width)) &&
                                  (m_isNone(_map, t + (2 * _map->width))) &&
@@ -767,7 +827,7 @@ void cMapManager::m_addWallThinEntities(sMap*& _map)
                                 tEntity->position = glm::vec3(static_cast<float32>(w) + tp - xo, y_pos, static_cast<float32>(h) + tp - yo);
                                 tEntity->rotation += glm::vec3(0.0f, DTOR_270, 0.0f);
                                 m_entityManager->updateModelMatrix(tEntity);
-                                _map->tile[t].processed = true;
+                                _map->tile[t + _map->width].processed = true;
                                 _map->tile[t + _map->width].object = 0; // No object
                                 _map->tile[t + (2 * _map->width)].object = 0; // No object
                                 _map->tile[t + (3 * _map->width)].object = 0; // No object
@@ -780,15 +840,13 @@ void cMapManager::m_addWallThinEntities(sMap*& _map)
                 // Exit
                 if ((!exit_placed) && (wall_2tds_count > 0))
                 {
-                    if ((m_isWall (_map, t)) && (!_map->tile[t].processed))
+                    if ((m_isWall (_map, t)) && (!_map->tile[t + _map->width].processed))
                     {
-                        // ? F ?
                         // W - W
                         // ? N ?
                         // ? N ?
                         // ? F ?
-                        if      ((m_isFlat(_map, t - _map->width)) &&
-                                 (m_isWall (_map, t + 1)) &&
+                        if      ((m_isWall (_map, t + 1)) &&
                                  (m_isWall (_map, t - 1)) &&
                                  (m_isNone(_map, t + _map->width)) &&
                                  (m_isNone(_map, t + (2 * _map->width))) &&
@@ -801,7 +859,7 @@ void cMapManager::m_addWallThinEntities(sMap*& _map)
                                 tEntity->position = glm::vec3(static_cast<float32>(w) + tp - xo, y_pos, static_cast<float32>(h) + tp - yo);
                                 tEntity->rotation += glm::vec3(0.0f, DTOR_270, 0.0f);
                                 m_entityManager->updateModelMatrix(tEntity);
-                                _map->tile[t].processed = true;
+                                _map->tile[t + _map->width].processed = true;
                                 _map->tile[t + _map->width].object = 0; // No object
                                 _map->tile[t + (2 * _map->width)].object = 0; // No object
                                 _map->tile[t + (3 * _map->width)].object = 0; // No object

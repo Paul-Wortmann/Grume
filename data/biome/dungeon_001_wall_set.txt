@@ -112,9 +112,8 @@
 
         # Walls 2 units long - Down stairs
         <wall_2tds>
-            <wall_2tds_count>2</wall_2tds_count>
+            <wall_2tds_count>1</wall_2tds_count>
             <wall_2tds_entity>dungeon_001/dungeon_001_wall_entity_2tds_001.txt</wall_2tds_entity>
-            <wall_2tds_entity>dungeon_001/dungeon_001_wall_entity_2tds_002.txt</wall_2tds_entity>
         </wall_2tds>
 
         # Walls 2 units long
@@ -136,7 +135,7 @@
 
         # Walls 3 units long - Down stairs
         <wall_3tds>
-            <wall_3tds_count>1</wall_3tds_count>
+            <wall_3tds_count>0</wall_3tds_count>
             <wall_3tds_entity>dungeon_001/dungeon_001_wall_entity_3tds_001.txt</wall_3tds_entity>
         </wall_3tds>
 

@@ -1,0 +1,11 @@
+﻿<?xml version = "1.0" encoding = "UTF-8" ?>
+<material>
+    <name>dungeon_002</name>
+    <diffuse>dungeon/dungeon_wall_1_002_d.png</diffuse>
+    <emissive>none_e.png</emissive>
+    <normal>dungeon/dungeon_wall_1_002_n.png</normal>
+    <specular>dungeon/dungeon_wall_1_002_s.png</specular>
+</material>
+
+
+
