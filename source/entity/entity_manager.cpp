@@ -250,7 +250,7 @@ void cEntityManager::setState(const std::uint32_t& _UID, const std::uint32_t& _s
         // Set the new state
         entityTemp->stateCurrent = _state; // Index from 1, not 0
 
-        // Set animation data
+        // Set animation data associated with state
         m_setAnimationState(entityTemp, entityTemp->stateCurrent);
 
         // Play sound associated with state
@@ -269,7 +269,7 @@ void cEntityManager::toggleState(const std::uint32_t& _UID, const std::uint32_t&
         // Toggle the current state
         entityTemp->stateCurrent = (entityTemp->stateCurrent == _state1) ? _state2 : _state1;
 
-        // Set animation data
+        // Set animation data associated with state
         m_setAnimationState(entityTemp, entityTemp->stateCurrent);
 
         // Play sound associated with state
