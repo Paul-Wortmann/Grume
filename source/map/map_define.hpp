@@ -63,10 +63,16 @@ enum class eTileBase : std::uint32_t
         tileLiquid    = 8
     };
 
+enum class eAlgorithm : std::uint32_t 
+    { 
+        algorithm_C1  = 0,
+        algorithm_D1  = 1
+    };
+
 struct sMapGenData
 {
     std::uint32_t seed      = 0; // 0 for random seed
-    std::uint32_t algorithm = 0; // 0: C1,
+    eAlgorithm    algorithm = eAlgorithm::algorithm_C1; // 0: C1,
     std::uint32_t wallSize  = 0; // 0: Wide, 1: Thin
 };
 

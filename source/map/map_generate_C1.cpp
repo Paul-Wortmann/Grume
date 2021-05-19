@@ -92,11 +92,9 @@ void cMapManager::m_generateMap_C1(sMap*& _map)
     // Generate a perimeter wall
     m_generatePerimeterWall(_map);
 
-
     // Smoothing pass to remove artifacts
 
     // Flood fill, delete rooms that are too small
-
 
     // Room identification
 

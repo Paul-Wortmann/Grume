@@ -159,9 +159,17 @@ void cMapManager::load(const std::string &_fileName)
 
         // Map generation data
         m_currentMap->genData.seed      = seed;
-        m_currentMap->genData.algorithm = algorithm;
         m_currentMap->genData.wallSize  = wall_width;
-
+        switch (algorithm)
+        {
+            case 1:
+                m_currentMap->genData.algorithm = eAlgorithm::algorithm_D1;
+            break;
+            case 0:
+            default:
+                m_currentMap->genData.algorithm = eAlgorithm::algorithm_C1;
+            break;
+        }
 
         std::string tiles = "";
         // Generate tiles
