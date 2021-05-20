@@ -7,6 +7,7 @@
     <map_list>all_map_list.txt</map_list>
     <npc_set>all_npc_set.txt</npc_set>
     <object_set>all_object_set.txt</object_set>
+    <sound_set>all_sound_set.txt</sound_set>
     <wall_set>dungeon_003_wall_set.txt</wall_set>
     <floor_spritesheet>dungeon/dungeon_floor_3_001.txt</floor_spritesheet>
 </biome>

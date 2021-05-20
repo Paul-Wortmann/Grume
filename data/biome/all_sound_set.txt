@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding= "UTF-8"?>
+<sound_set>
+
+    <sound_define>
+        <sound>object</sound>
+        <sound>trader</sound>
+        <sound>ghost</sound>
+        <sound>goblin</sound>
+        <sound>zombie</sound>
+    </sound_define>
+
+    <object>
+        <object_count>1</object_count>
+        <object_entity>object/door_1_001.ogg</object_entity>
+    </object>
+
+    <trader>
+        <trader_count>5</trader_count>
+        <trader_entity>npc/trader/trader_1_001.ogg</trader_entity>
+        <trader_entity>npc/trader/trader_1_002.ogg</trader_entity>
+        <trader_entity>npc/trader/trader_1_003.ogg</trader_entity>
+        <trader_entity>npc/trader/trader_1_004.ogg</trader_entity>
+        <trader_entity>npc/trader/trader_1_005.ogg</trader_entity>
+    </trader>
+
+    <ghost>
+        <ghost_count>2</ghost_count>
+        <ghost_entity>monster/ghost/ghost_1_001.ogg</ghost_entity>
+        <ghost_entity>monster/ghost/ghost_1_002.ogg</ghost_entity>
+    </ghost>
+
+    <goblin>
+        <goblin_count>15</goblin_count>
+        <goblin_entity>monster/goblin/goblin_1_001.ogg</goblin_entity>
+        <goblin_entity>monster/goblin/goblin_1_002.ogg</goblin_entity>
+        <goblin_entity>monster/goblin/goblin_1_003.ogg</goblin_entity>
+        <goblin_entity>monster/goblin/goblin_1_004.ogg</goblin_entity>
+        <goblin_entity>monster/goblin/goblin_1_005.ogg</goblin_entity>
+        <goblin_entity>monster/goblin/goblin_1_006.ogg</goblin_entity>
+        <goblin_entity>monster/goblin/goblin_1_007.ogg</goblin_entity>
+        <goblin_entity>monster/goblin/goblin_1_008.ogg</goblin_entity>
+        <goblin_entity>monster/goblin/goblin_1_009.ogg</goblin_entity>
+        <goblin_entity>monster/goblin/goblin_1_010.ogg</goblin_entity>
+        <goblin_entity>monster/goblin/goblin_1_011.ogg</goblin_entity>
+        <goblin_entity>monster/goblin/goblin_1_012.ogg</goblin_entity>
+        <goblin_entity>monster/goblin/goblin_1_013.ogg</goblin_entity>
+        <goblin_entity>monster/goblin/goblin_1_014.ogg</goblin_entity>
+        <goblin_entity>monster/goblin/goblin_1_015.ogg</goblin_entity>
+    </goblin>
+
+    <zombie>
+        <zombie_count>3</zombie_count>
+        <zombie_entity>monster/zombie/zombie_1_001.ogg</zombie_entity>
+        <zombie_entity>monster/zombie/zombie_1_002.ogg</zombie_entity>
+        <zombie_entity>monster/zombie/zombie_1_003.ogg</zombie_entity>
+    </zombie>
+
+</sound_set>
+
+
