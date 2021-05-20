@@ -5,7 +5,9 @@
         <sound>object</sound>
         <sound>trader</sound>
         <sound>ghost</sound>
+        <sound>giant</sound>
         <sound>goblin</sound>
+        <sound>ogre</sound>
         <sound>zombie</sound>
     </sound_define>
 
@@ -29,6 +31,15 @@
         <ghost_entity>monster/ghost/ghost_1_002.ogg</ghost_entity>
     </ghost>
 
+    <giant>
+        <giant_count>5</giant_count>
+        <giant_entity>monster/giant/giant_1_001.ogg</giant_entity>
+        <giant_entity>monster/giant/giant_1_002.ogg</giant_entity>
+        <giant_entity>monster/giant/giant_1_003.ogg</giant_entity>
+        <giant_entity>monster/giant/giant_1_004.ogg</giant_entity>
+        <giant_entity>monster/giant/giant_1_005.ogg</giant_entity>
+    </giant>
+
     <goblin>
         <goblin_count>15</goblin_count>
         <goblin_entity>monster/goblin/goblin_1_001.ogg</goblin_entity>
@@ -47,6 +58,15 @@
         <goblin_entity>monster/goblin/goblin_1_014.ogg</goblin_entity>
         <goblin_entity>monster/goblin/goblin_1_015.ogg</goblin_entity>
     </goblin>
+
+    <ogre>
+        <ogre_count>5</ogre_count>
+        <ogre_entity>monster/ogre/ogre_1_001.ogg</ogre_entity>
+        <ogre_entity>monster/ogre/ogre_1_002.ogg</ogre_entity>
+        <ogre_entity>monster/ogre/ogre_1_003.ogg</ogre_entity>
+        <ogre_entity>monster/ogre/ogre_1_004.ogg</ogre_entity>
+        <ogre_entity>monster/ogre/ogre_1_005.ogg</ogre_entity>
+    </ogre>
 
     <zombie>
         <zombie_count>3</zombie_count>
