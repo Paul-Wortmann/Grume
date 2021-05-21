@@ -134,6 +134,11 @@ void cBiomeManager::m_load_objectSet(sMapBiome*& _biome)
 
 }
 
+void cBiomeManager::m_load_soundSet(sMapBiome*& _biome)
+{
+
+}
+
 void cBiomeManager::m_load_wallSet(sMapBiome*& _biome)
 {
     cXML xmlFile;

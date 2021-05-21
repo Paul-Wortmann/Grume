@@ -90,15 +90,23 @@ void cMapManager::m_freeData(sMap*& _map)
         delete [] _map->event;
         _map->event = nullptr;
         _map->eventCount = 0;
-    }    
+    }
+    
     // Delete portal data
-    if ((_map->tile != nullptr) && (_map->numTiles != 0))
+    if (_map->portal != nullptr)
     { 
         delete [] _map->portal;
         _map->portal = nullptr;
         _map->portalCount = 0;
     }
     
+    // Delete room data
+    if (_map->room != nullptr)
+    { 
+        delete [] _map->room;
+        _map->room = nullptr;
+        _map->roomCount = 0;
+    }
 }
 
 void cMapManager::m_freeAll(void)
@@ -162,8 +170,20 @@ void cMapManager::load(const std::string &_fileName)
         m_currentMap->genData.wallSize  = wall_width;
         switch (algorithm)
         {
-            case 1:
+            case 5:
+                m_currentMap->genData.algorithm = eAlgorithm::algorithm_T1;
+            break;
+            case 4:
+                m_currentMap->genData.algorithm = eAlgorithm::algorithm_M1;
+            break;
+            case 3:
+                m_currentMap->genData.algorithm = eAlgorithm::algorithm_D2;
+            break;
+            case 2:
                 m_currentMap->genData.algorithm = eAlgorithm::algorithm_D1;
+            break;
+            case 1:
+                m_currentMap->genData.algorithm = eAlgorithm::algorithm_C2;
             break;
             case 0:
             default:

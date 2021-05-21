@@ -47,6 +47,7 @@ class cBiomeManager : public tcLinkedList<sMapBiome>
         void m_load_musicSet(sMapBiome*& _biome);
         void m_load_npcSet(sMapBiome*& _biome);
         void m_load_objectSet(sMapBiome*& _biome);
+        void m_load_soundSet(sMapBiome*& _biome);
         void m_load_wallSet(sMapBiome*& _biome);
 };
 

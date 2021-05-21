@@ -23,27 +23,28 @@
 
 #include "map_manager.hpp"
 
-void cMapManager::generateMap(sMap*& _map)
+void cMapManager::m_generateMap_T1(sMap*& _map)
 {
-    // Seed
-    (_map->genData.seed == 0) ? srand(time(nullptr)) : srand(_map->genData.seed);
+    // Generate a perimeter wall
+    m_generatePerimeterWall(_map);
 
-    // Generate based on algorithm
-    switch (_map->genData.algorithm)
-    {
-        case eAlgorithm::algorithm_D2: // Dungeon 2
-            m_generateMap_D2(_map);
-        break;
-        case eAlgorithm::algorithm_D1: // Dungeon 1
-            m_generateMap_D1(_map);
-        break;
-        case eAlgorithm::algorithm_C2: // Cave 2
-            m_generateMap_C2(_map);
-        break;
-        case eAlgorithm::algorithm_C1: // Cave 1
-        default:
-            m_generateMap_C1(_map);
-        break;
-    }
+
+
+
+    // Generate a perimeter wall
+    m_generatePerimeterWall(_map);
+
+    // Smoothing pass to remove artifacts
+
+    // Flood fill, delete rooms that are too small
+
+    // Room identification
+
+    // Room connection
+
+    // Populate the map with objects
+    m_generateMap_objects(_map);
+
+    // Populate the map with npcs
+    m_generateMap_npcs(_map);
 }
-
