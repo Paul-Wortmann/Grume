@@ -132,15 +132,21 @@ class cMapManager : public tcLinkedList<sMap>
         void m_generatePerimeterWall(sMap*& _map);
 
         // map_generate_rooms.cpp
-        bool genCircleRoomOK(sMap &_map, const uint32_t &_x, const uint32_t &_y, const uint32_t &_r);
-        void genCircleRoom(sMap &_map, const uint32_t &_x, const uint32_t &_y, const uint32_t &_r);
-        bool genSquareRoomOK(sMap &_map, const uint32_t &_x, const uint32_t &_y, const uint32_t &_r);
-        void genSquareRoom(sMap &_map, const uint32_t &_x, const uint32_t &_y, const uint32_t &_r);
-        void mapFindRooms(sMap &_map);
-        uint32_t mapGetRoomArea(sMap &_map, const uint16_t &_r);
-        void mapRoomDiscardAllButLargest(sMap &_map);
-        void mapInitRooms(sMap &_map);
+        bool genCircleRoomOK(sMap*& _map, const uint32_t &_x, const uint32_t &_y, const uint32_t &_r);
+        void genCircleRoom(sMap*& _map, const uint32_t &_x, const uint32_t &_y, const uint32_t &_r);
+        bool genSquareRoomOK(sMap*& _map, const uint32_t &_x, const uint32_t &_y, const uint32_t &_r);
+        void genSquareRoom(sMap*& _map, const uint32_t &_x, const uint32_t &_y, const uint32_t &_r);
+        void mapFindRooms(sMap*& _map);
+        uint32_t mapGetRoomArea(sMap*& _map, const uint16_t &_r);
+        void mapRoomDiscardAllButLargest(sMap*& _map);
+        void mapInitRooms(sMap*& _map);
         
+        // map_generate_connectivity.cpp
+        void mapConnectRooms_SL(sMap*& _map, const uint16_t &_r1, const uint16_t &_r2);
+        void mapConnectRooms_ND(sMap*& _map, const uint16_t &_r1, const uint16_t &_r2);
+        void mapConnectRooms_DW(sMap*& _map, const uint16_t &_r1, const uint16_t &_r2);
+        void mapConnectRooms(sMap*& _map);
+
 };
 
 #endif // MAP_MANAGER_HPP
