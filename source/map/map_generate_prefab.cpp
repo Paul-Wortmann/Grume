@@ -23,4 +23,7 @@
 
 #include "map_manager.hpp"
 
-
+void cMapManager::mapPrefabRooms(sMap*& _map)
+{
+    
+}

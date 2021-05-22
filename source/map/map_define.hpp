@@ -153,21 +153,28 @@ struct sMapPortal
     float32       direction = 0.0f;
 };
 
+enum class eMapRoomType : std::uint16_t 
+{ 
+    roomTypeNone         = 0, // None
+    roomTypeCell         = 1  // Prison Cell
+};
+
 struct sMapRoom
 {
-    bool     p = false; // processed flag
-    uint16_t posXMin = 0;
-    uint16_t posXMax = 0;
-    uint16_t posYMin = 0;
-    uint16_t posYMax = 0;
-    uint16_t x = 0; // x position
-    uint16_t y = 0; // y position
-    uint16_t w = 0;
-    uint16_t h = 0;
-    int16_t exitN = -1; // -1 for none, else connecting room ID
-    int16_t exitS = -1; // -1 for none, else connecting room ID
-    int16_t exitE = -1; // -1 for none, else connecting room ID
-    int16_t exitW = -1; // -1 for none, else connecting room ID
+    eMapRoomType type    = eMapRoomType::roomTypeNone;
+    bool         p       = false; // processed flag
+    uint16_t     posXMin = 0;
+    uint16_t     posXMax = 0;
+    uint16_t     posYMin = 0;
+    uint16_t     posYMax = 0;
+    uint16_t     x       = 0; // x position
+    uint16_t     y       = 0; // y position
+    uint16_t     w       = 0;
+    uint16_t     h       = 0;
+    int16_t      exitN   = -1; // -1 for none, else connecting room ID
+    int16_t      exitS   = -1; // -1 for none, else connecting room ID
+    int16_t      exitE   = -1; // -1 for none, else connecting room ID
+    int16_t      exitW   = -1; // -1 for none, else connecting room ID
 };
 
 struct sMap

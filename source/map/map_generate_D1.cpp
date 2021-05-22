@@ -108,7 +108,7 @@ void cMapManager::m_generateMap_D1(sMap*& _map)
     mapConnectRooms(_map);
 
     // Room add prefab
-    //mapPrefabRooms(_map);
+    mapPrefabRooms(_map);
 
     // Populate the map with objects
     m_generateMap_objects(_map);
