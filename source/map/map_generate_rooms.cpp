@@ -23,7 +23,7 @@
 
 #include "map_manager.hpp"
 
-bool genCircleRoomOK(sMap*& _map, const uint32_t &_x, const uint32_t &_y, const uint32_t &_r)
+bool cMapManager::genCircleRoomOK(sMap*& _map, const uint32_t &_x, const uint32_t &_y, const uint32_t &_r)
 {
     if (_map->tile == nullptr)
         return false;
@@ -39,7 +39,7 @@ bool genCircleRoomOK(sMap*& _map, const uint32_t &_x, const uint32_t &_y, const 
     return true;
 }
 
-void genCircleRoom(sMap*& _map, const uint32_t &_x, const uint32_t &_y, const uint32_t &_r)
+void cMapManager::genCircleRoom(sMap*& _map, const uint32_t &_x, const uint32_t &_y, const uint32_t &_r)
 {
     if (_map->tile == nullptr)
         return;
@@ -53,7 +53,7 @@ void genCircleRoom(sMap*& _map, const uint32_t &_x, const uint32_t &_y, const ui
     }
 }
 
-bool genSquareRoomOK(sMap*& _map, const uint32_t &_x, const uint32_t &_y, const uint32_t &_r)
+bool cMapManager::genSquareRoomOK(sMap*& _map, const uint32_t &_x, const uint32_t &_y, const uint32_t &_r)
 {
     if (_map->tile == nullptr)
         return false;
@@ -80,7 +80,7 @@ bool genSquareRoomOK(sMap*& _map, const uint32_t &_x, const uint32_t &_y, const 
     return true;
 }
 
-void genSquareRoom(sMap*& _map, const uint32_t &_x, const uint32_t &_y, const uint32_t &_r)
+void cMapManager::genSquareRoom(sMap*& _map, const uint32_t &_x, const uint32_t &_y, const uint32_t &_r)
 {
     if (_map->tile == nullptr)
         return;
@@ -117,7 +117,7 @@ static void mapFindRoom(sMap*& _map, const uint32_t &i)
     }
 }
 
-void mapFindRooms(sMap*& _map)
+void cMapManager::mapFindRooms(sMap*& _map)
 {
     if (_map->tile != nullptr)
     {
@@ -210,7 +210,7 @@ static void mapRoomSizeLocation(sMap*& _map)
     }
 }
 
-uint32_t mapGetRoomArea(sMap*& _map, const uint16_t &_r)
+uint32_t cMapManager::mapGetRoomArea(sMap*& _map, const uint16_t &_r)
 {
     uint32_t returnValue = 0;
     if (_map->tile != nullptr)
@@ -222,7 +222,7 @@ uint32_t mapGetRoomArea(sMap*& _map, const uint16_t &_r)
     return returnValue;
 }
 
-void mapRoomDiscardAllButLargest(sMap*& _map)
+void cMapManager::mapRoomDiscardAllButLargest(sMap*& _map)
 {
     if ((_map->roomCount > 0) && (_map->room != nullptr) && (_map->tile != nullptr))
     {
@@ -256,7 +256,7 @@ void mapRoomDiscardAllButLargest(sMap*& _map)
     mapRoomSizeLocation(_map);
 }
 
-void mapInitRooms(sMap*& _map)
+void cMapManager::mapInitRooms(sMap*& _map)
 {
     mapFindRooms(_map);
     mapDiscardMinRooms(_map);

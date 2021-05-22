@@ -24,7 +24,7 @@
 #include "map_manager.hpp"
 
 // Straight Line
-void mapConnectRooms_SL(sMap*& _map, const uint16_t &_r1, const uint16_t &_r2)
+void cMapManager::mapConnectRooms_SL(sMap*& _map, const uint16_t &_r1, const uint16_t &_r2)
 {
     eDirectionBias direction = eDirectionBias::directionNone;
     if (_map->room[_r1].exitE == _r2)
@@ -103,7 +103,7 @@ void mapConnectRooms_SL(sMap*& _map, const uint16_t &_r1, const uint16_t &_r2)
 }
 
 // Straight Lines, 90 degree angle
-void mapConnectRooms_ND(sMap*& _map, const uint16_t &_r1, const uint16_t &_r2)
+void cMapManager::mapConnectRooms_ND(sMap*& _map, const uint16_t &_r1, const uint16_t &_r2)
 {
     uint16_t psx = _map->room[_r1].x;
     uint16_t psy = _map->room[_r1].y;
@@ -173,14 +173,14 @@ void mapConnectRooms_ND(sMap*& _map, const uint16_t &_r1, const uint16_t &_r2)
 }
 
 // Drunken Walk
-void mapConnectRooms_DW(sMap*& _map, const uint16_t &_r1, const uint16_t &_r2)
+void cMapManager::mapConnectRooms_DW(sMap*& _map, const uint16_t &_r1, const uint16_t &_r2)
 {
 
 }
 
 
 
-void mapConnectRooms(sMap*& _map)
+void cMapManager::mapConnectRooms(sMap*& _map)
 {
     uint32_t distanceT = 0; // temp distance
     uint32_t distanceN = _map->numTiles ; // size larger than possible distance

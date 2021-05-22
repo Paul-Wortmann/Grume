@@ -102,25 +102,6 @@ class cMapManager : public tcLinkedList<sMap>
         
         // map_generate_addNPCs.cpp
         void m_addNPCEntities(sMap*& _map);
-        
-        // map_generate_C1.cpp
-        std::uint32_t m_numNeighborTiles(sMap*& _map, const std::uint32_t &_tile);
-        void m_generateMap_C1(sMap*& _map);
-        
-        // map_generate_C2.cpp
-        void m_generateMap_C2(sMap*& _map);
-        
-        // map_generate_D1.cpp
-        void m_generateMap_D1(sMap*& _map);
-        
-        // map_generate_D2.cpp
-        void m_generateMap_D2(sMap*& _map);
-        
-        // map_generate_M1.cpp
-        void m_generateMap_M1(sMap*& _map);
-        
-        // map_generate_D2.cpp
-        void m_generateMap_T1(sMap*& _map);
 
         // map_generate_npcs.cpp
         void m_generateMap_npcs(sMap*& _map);
@@ -130,6 +111,10 @@ class cMapManager : public tcLinkedList<sMap>
 
         // map_generate_utils.cpp
         void m_generatePerimeterWall(sMap*& _map);
+        uint32_t mapGetFloorMin(sMap*& _map);
+        uint32_t mapGetFloorMax(sMap*& _map);
+        uint32_t mapGetFloorArea(sMap*& _map);
+        void mapRemoveAnomalies(sMap*& _map);
 
         // map_generate_rooms.cpp
         bool genCircleRoomOK(sMap*& _map, const uint32_t &_x, const uint32_t &_y, const uint32_t &_r);
@@ -146,6 +131,26 @@ class cMapManager : public tcLinkedList<sMap>
         void mapConnectRooms_ND(sMap*& _map, const uint16_t &_r1, const uint16_t &_r2);
         void mapConnectRooms_DW(sMap*& _map, const uint16_t &_r1, const uint16_t &_r2);
         void mapConnectRooms(sMap*& _map);
+        
+        // map_generate_C1.cpp
+        std::uint32_t m_numNeighborTiles(sMap*& _map, const std::uint32_t &_tile);
+        void m_generateMap_C1(sMap*& _map);
+        
+        // map_generate_C2.cpp
+        void m_generateMap_C2(sMap*& _map);
+        
+        // map_generate_D1.cpp
+        void m_genD1_internal(sMap*& _map);
+        void m_generateMap_D1(sMap*& _map);
+        
+        // map_generate_D2.cpp
+        void m_generateMap_D2(sMap*& _map);
+        
+        // map_generate_M1.cpp
+        void m_generateMap_M1(sMap*& _map);
+        
+        // map_generate_T1.cpp
+        void m_generateMap_T1(sMap*& _map);
 
 };
 
