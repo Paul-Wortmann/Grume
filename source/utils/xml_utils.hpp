@@ -24,7 +24,7 @@
 #ifndef XML_UTILS_HPP
 #define XML_UTILS_HPP
 
-#include "../includes.hpp"
+#include "../core/includes.hpp"
 
 // A collection of basic functions to extract data from xml encoded strings*
 // *This does not cover the full XML specification.

@@ -24,7 +24,7 @@
 #ifndef ENTITY_VERTEX_HPP
 #define ENTITY_VERTEX_HPP
 
-#include "../includes.hpp"
+#include "../core/includes.hpp"
 
 struct sEntityVertex
 {

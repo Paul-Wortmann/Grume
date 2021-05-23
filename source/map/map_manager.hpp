@@ -30,8 +30,8 @@
 #include "../entity/entity_manager.hpp"
 #include "../graphics/graphics_engine.hpp"
 #include "../graphics/graphics_engine_utils.hpp"
-#include "../includes.hpp"
-#include "../linked_list.hpp"
+#include "../core/includes.hpp"
+#include "../core/linked_list.hpp"
 #include "../player/player_manager.hpp"
 #include "biome_manager.hpp"
 #include "map_define.hpp"
@@ -98,6 +98,7 @@ class cMapManager : public tcLinkedList<sMap>
         bool     m_isDoor(sMap*& _map, const std::uint32_t &_tile);
 
         // map_generate_addObjects.cpp
+        void     m_addObjectEntity(sMap*& _map, const std::uint32_t &_tn, const std::uint32_t &_on, const std::uint32_t &_oi, const float &_s, const float &_yr, const std::uint32_t &_o);
         void     m_addObjectEntities(sMap*& _map);
         
         // map_generate_addNPCs.cpp

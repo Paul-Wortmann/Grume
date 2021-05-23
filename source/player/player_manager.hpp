@@ -24,7 +24,7 @@
 #ifndef PLAYER_MANAGER_HPP
 #define PLAYER_MANAGER_HPP
 
-#include "../includes.hpp"
+#include "../core/includes.hpp"
 #include "../entity/entity_manager.hpp"
 #include "../map/map_path_a_star.hpp"
 

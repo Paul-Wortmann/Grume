@@ -24,7 +24,7 @@
 #ifndef ASSIMP_TO_GLM_HPP
 #define ASSIMP_TO_GLM_HPP
 
-#include "../includes.hpp"
+#include "../core/includes.hpp"
 
 static inline glm::vec3 toVec3(const aiVector3D &v) { return glm::vec3(v.x, v.y, v.z); }
 static inline glm::vec2 toVec2(const aiVector3D &v) { return glm::vec2(v.x, v.y); }

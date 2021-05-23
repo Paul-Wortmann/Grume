@@ -24,7 +24,7 @@
 #ifndef ENTITY_BONE_HPP
 #define ENTITY_BONE_HPP
 
-#include "../includes.hpp"
+#include "../core/includes.hpp"
 
 struct sEntityBone
 {

@@ -26,8 +26,8 @@
 
 #include "entity_define.hpp"
 #include "model_manager.hpp"
-#include "../includes.hpp"
-#include "../linked_list.hpp"
+#include "../core/includes.hpp"
+#include "../core/linked_list.hpp"
 #include "../audio/audio_manager.hpp"
 #include "../utils/xml_parser.hpp"
 

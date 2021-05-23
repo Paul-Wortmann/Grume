@@ -71,8 +71,8 @@
 
 // Project includes
 #include "defines.hpp"
-#include "math/libMath.hpp"
-#include "debug/debug_log.hpp"
-#include "utils/file_paths.hpp"
+#include "../math/libMath.hpp"
+#include "../debug/debug_log.hpp"
+#include "../utils/file_paths.hpp"
 
 #endif // INCLUDES_HPP

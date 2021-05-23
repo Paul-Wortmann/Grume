@@ -24,7 +24,7 @@
 #ifndef ENTITY_STATE_HPP
 #define ENTITY_STATE_HPP
 
-#include "../includes.hpp"
+#include "../core/includes.hpp"
 
 struct sEntityState
 {

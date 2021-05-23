@@ -24,8 +24,8 @@
 #ifndef UI_MANAGER_HPP
 #define UI_MANAGER_HPP
 
-#include "../includes.hpp"
-#include "../linked_list.hpp"
+#include "../core/includes.hpp"
+#include "../core/linked_list.hpp"
 #include "ui_defines.hpp"
 #include "../entity/entity_manager.hpp"
 

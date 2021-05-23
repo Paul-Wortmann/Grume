@@ -24,7 +24,7 @@
 #ifndef GRAPHICS_ENGINE_DEBUG_HPP
 #define GRAPHICS_ENGINE_DEBUG_HPP
 
-#include "../includes.hpp"
+#include "../core/includes.hpp"
 
 void checkOpenGL(void);
 std::string getOpenGLErrorString(uint32 _errorCode);

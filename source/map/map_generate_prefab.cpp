@@ -190,6 +190,10 @@ void cMapManager::m_mapApplyPrefab(sMap*& _map, const std::string &_fileName, co
     xmlMapPrefabFile.load(FILE_PATH_MAP_PREFAB + _fileName);
     if (xmlMapPrefabFile.lineCount() > 0)
     {
+        // Prefab position delta
+        std::uint32_t dx = _map->room[_r].x - (_map->room[_r].w / 2); // Start x position on the map
+        std::uint32_t dy = _map->room[_r].y - (_map->room[_r].h / 2); // Start y position on the map
+
         // load the tile data from the prefab
         std::uint32_t* pTiles = new std::uint32_t[_map->room[_r].w * _map->room[_r].h];
         std::uint32_t  currentTile = 0;
@@ -215,7 +219,6 @@ void cMapManager::m_mapApplyPrefab(sMap*& _map, const std::string &_fileName, co
                         {
                             j = tPTilesLength;
                         }
-                        
                     }
                     else
                     {
@@ -225,17 +228,75 @@ void cMapManager::m_mapApplyPrefab(sMap*& _map, const std::string &_fileName, co
             }
         }
         
-        // Write the prefab data to the map
-        std::uint32_t sx = 0; // Start x position on the map
-        std::uint32_t sy = 0; // Start y position on the map
-        sx = _map->room[_r].x - (_map->room[_r].w / 2);
-        sy = _map->room[_r].y - (_map->room[_r].h / 2);
-        
+        // Write the prefab tile data to the map
         for (std::uint32_t y = 0; y < _map->room[_r].h; ++y)
         {
             for (std::uint32_t x = 0; x < _map->room[_r].w; ++x)
             {
-                _map->tile[((sy + y) * _map->width) + sx + x].base = static_cast<eTileBase>(pTiles[(y * _map->room[_r].w) + x]);
+                _map->tile[((dy + y) * _map->width) + dx + x].base = static_cast<eTileBase>(pTiles[(y * _map->room[_r].w) + x]);
+            }
+        }
+        
+        // Write the prefab object data to the map
+        std::uint32_t mapObjectCount = xmlMapPrefabFile.getInstanceCount("<object>");
+        for (std::uint32_t i = 0; i < mapObjectCount; ++i)
+        {
+            std::string   tObjectString = xmlMapPrefabFile.getString("<object>", i + 1);
+            tObjectString += "    ";
+            std::uint32_t tObjectStringLength = tObjectString.length();
+            std::uint32_t tObjectTileNum  = 0;
+            std::uint32_t tObjectNumber   = 0;
+            std::uint32_t tObjectIndex    = 0;
+            float         tObjectScale    = 0.0;
+            float         tObjectRotation = 0.0;
+            uint32        tObjectObstacle = 0;
+            std::uint32_t tStringNum = 0;
+            std::string   tString = "";
+            if (tObjectStringLength > 6)
+            {
+                for (std::uint32_t j = 0; j < tObjectStringLength; ++j)
+                {
+                    if (tObjectString[j] == ' ')
+                    {
+                        if (tStringNum == 0)
+                        {
+                            tObjectTileNum = std::stoi(tString);
+                        }
+                        else if (tStringNum == 1)
+                        {
+                            tObjectNumber = std::stoi(tString);
+                        }
+                        else if (tStringNum == 2)
+                        {
+                            tObjectIndex = std::stoi(tString);
+                        }
+                        else if (tStringNum == 3)
+                        {
+                            tObjectScale = std::stof(tString);
+                        }
+                        else if (tStringNum == 4)
+                        {
+                            tObjectRotation = std::stof(tString);
+                        }
+                        else if (tStringNum == 5)
+                        {
+                            tObjectObstacle = std::stoi(tString);
+                        }
+                        tStringNum++;
+                        tString = "";
+                    }
+                    else
+                    {
+                        tString += tObjectString[j];
+                    }
+                }
+                
+                // Convert prefab tile number to map tile number
+                std::uint32_t ox = tObjectTileNum % _map->room[_r].w;
+                std::uint32_t oy = tObjectTileNum / _map->room[_r].w;
+                std::uint32_t tp = ((dy + oy) * _map->width) + dx + ox;
+                
+                m_addObjectEntity(_map, tp, tObjectNumber, tObjectIndex, tObjectScale, tObjectRotation, tObjectObstacle);
             }
         }
         

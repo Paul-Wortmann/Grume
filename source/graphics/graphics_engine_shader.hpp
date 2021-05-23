@@ -24,7 +24,7 @@
 #ifndef GRAPHICS_ENGINE_SHADER_HPP
 #define GRAPHICS_ENGINE_SHADER_HPP
 
-#include "../includes.hpp"
+#include "../core/includes.hpp"
 #include "../utils/file_utils.hpp"
 
 class cGraphicsEngineShader

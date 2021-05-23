@@ -24,7 +24,7 @@
 #ifndef XML_PARSER_HPP
 #define XML_PARSER_HPP
 
-#include "../includes.hpp"
+#include "../core/includes.hpp"
 
 class cXML
 {

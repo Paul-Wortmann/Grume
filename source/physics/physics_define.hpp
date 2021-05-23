@@ -24,7 +24,7 @@
 #ifndef PHYISCS_DEFINE_HPP
 #define PHYISCS_DEFINE_HPP
 
-#include "../includes.hpp"
+#include "../core/includes.hpp"
 
 struct sPhysicsObject
 {

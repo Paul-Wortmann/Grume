@@ -24,7 +24,7 @@
 #ifndef ENTITY_HPP
 #define ENTITY_HPP
 
-#include "../includes.hpp"
+#include "../core/includes.hpp"
 #include "entity_material.hpp"
 #include "entity_model.hpp"
 #include "entity_physics.hpp"

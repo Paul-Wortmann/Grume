@@ -24,7 +24,7 @@
 #ifndef ENTITY_ANIMATION_HPP
 #define ENTITY_ANIMATION_HPP
 
-#include "../includes.hpp"
+#include "../core/includes.hpp"
 
 struct sAnimationVecKey
 {

@@ -41,10 +41,4 @@
 #error "Platform not supported, upgrade to Linux!"
 #endif
 
-// Default texture files
-#define DEFAULT_TEXTURE_D "default_d.png" // diffuse
-#define DEFAULT_TEXTURE_E "default_e.png" // emissive
-#define DEFAULT_TEXTURE_N "default_n.png" // normal
-#define DEFAULT_TEXTURE_S "default_s.png" // specular
-
 #endif //DEFINES_HPP

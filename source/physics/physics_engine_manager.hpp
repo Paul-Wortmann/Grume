@@ -24,8 +24,8 @@
 #ifndef PHYSICS_MANAGER_HPP
 #define PHYSICS_MANAGER_HPP
 
-#include "../includes.hpp"
-#include "../linked_list.hpp"
+#include "../core/includes.hpp"
+#include "../core/linked_list.hpp"
 #include "physics_define.hpp"
 
 class cPhysicsManager : public tcLinkedList<sPhysicsObject>

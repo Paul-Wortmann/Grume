@@ -24,7 +24,7 @@
 #ifndef UI_DEFINE_HPP
 #define UI_DEFINE_HPP
 
-#include "../includes.hpp"
+#include "../core/includes.hpp"
 #include "../entity/entity_texture.hpp"
 #include "../entity/entity_model.hpp"
 

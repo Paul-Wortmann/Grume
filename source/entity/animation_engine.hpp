@@ -24,7 +24,7 @@
 #ifndef ANIMATION_ENGINE_HPP
 #define ANIMATION_ENGINE_HPP
 
-#include "../includes.hpp"
+#include "../core/includes.hpp"
 #include "entity_define.hpp"
 
 class cAnimationEngine

@@ -24,7 +24,7 @@
 #ifndef MAP_PATH_DEFINE_HPP
 #define MAP_PATH_DEFINE_HPP
 
-#include "../includes.hpp"
+#include "../core/includes.hpp"
 
 // ----- used externally -----
 struct sMapPath

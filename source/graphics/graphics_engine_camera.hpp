@@ -24,7 +24,7 @@
 #ifndef GRAPHICS_ENGINE_CAMERA_HPP
 #define GRAPHICS_ENGINE_CAMERA_HPP
 
-#include "../includes.hpp"
+#include "../core/includes.hpp"
 
 class cGraphicsEngineCamera
 {

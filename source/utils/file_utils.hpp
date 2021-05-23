@@ -24,7 +24,7 @@
 #ifndef FILE_UTILS_HPP
 #define FILE_UTILS_HPP
 
-#include "../includes.hpp"
+#include "../core/includes.hpp"
 
 void        fileToString(const std::string &_fileName, std::string &_buffer);
 std::string fileToString(const std::string &_fileName);

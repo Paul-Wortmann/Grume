@@ -24,9 +24,9 @@
 #ifndef GAME_ENGINE_HPP
 #define GAME_ENGINE_HPP
 
-#include "includes.hpp"
-#include "timer.hpp"
-#include "version.hpp"
+#include "core/includes.hpp"
+#include "core/timer.hpp"
+#include "core/version.hpp"
 #include "audio/audio_manager.hpp"
 #include "entity/animation_engine.hpp"
 #include "entity/entity_manager.hpp"

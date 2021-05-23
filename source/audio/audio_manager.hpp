@@ -26,8 +26,8 @@
 #ifndef AUDIO_MANAGER_HPP
 #define AUDIO_MANAGER_HPP
 
-#include "../includes.hpp"
-#include "../linked_list.hpp"
+#include "../core/includes.hpp"
+#include "../core/linked_list.hpp"
 #include "../entity/entity_audio.hpp"
 #include "audio_defines.hpp"
 #include "audio_debug.hpp"

@@ -46,7 +46,7 @@
 #ifndef AUDIO_DEBUG_HPP
 #define AUDIO_DEBUG_HPP
 
-#include "../includes.hpp"
+#include "../core/includes.hpp"
 
 uint32_t    checkAudioError(void);
 std::string getAudioErrorString(ALenum _error);

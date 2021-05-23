@@ -24,7 +24,7 @@
 #ifndef ENTITY_MATERIAL_HPP
 #define ENTITY_MATERIAL_HPP
 
-#include "../includes.hpp"
+#include "../core/includes.hpp"
 #include "entity_texture.hpp"
 
 struct sEntityMaterial

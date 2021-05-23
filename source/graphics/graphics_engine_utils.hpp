@@ -24,7 +24,7 @@
 #ifndef GRAPHICS_ENGINE_UTILS_HPP
 #define GRAPHICS_ENGINE_UTILS_HPP
 
-#include "../includes.hpp"
+#include "../core/includes.hpp"
 
 glm::vec3 generateNormal(glm::vec3 _a, glm::vec3 _b, glm::vec3 _c);
 glm::vec3 generateTangent(glm::vec3 _normal);

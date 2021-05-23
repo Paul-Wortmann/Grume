@@ -24,7 +24,7 @@
 #ifndef ENTITY_MODEL_HPP
 #define ENTITY_MODEL_HPP
 
-#include "../includes.hpp"
+#include "../core/includes.hpp"
 #include "entity_animation.hpp"
 #include "entity_bone.hpp"
 #include "entity_material.hpp"

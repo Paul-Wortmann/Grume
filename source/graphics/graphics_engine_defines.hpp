@@ -27,4 +27,10 @@
 // Default graphics engine
 #define MAX_BONES  128 // This will need to match the shader !
 
+// Default texture files
+#define DEFAULT_TEXTURE_D "default_d.png" // diffuse
+#define DEFAULT_TEXTURE_E "default_e.png" // emissive
+#define DEFAULT_TEXTURE_N "default_n.png" // normal
+#define DEFAULT_TEXTURE_S "default_s.png" // specular
+
 #endif // GRAPHICS_ENGINE_DEFINES_HPP

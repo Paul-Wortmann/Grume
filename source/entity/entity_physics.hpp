@@ -24,7 +24,7 @@
 #ifndef ENTITY_PHYSICS_HPP
 #define ENTITY_PHYSICS_HPP
 
-#include "../includes.hpp"
+#include "../core/includes.hpp"
 
 enum eBodyType: int16
 {

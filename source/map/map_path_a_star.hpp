@@ -24,7 +24,7 @@
 #ifndef MAP_PATH_A_STAR_HPP
 #define MAP_PATH_A_STAR_HPP
 
-#include "../includes.hpp"
+#include "../core/includes.hpp"
 
 #include "map_define.hpp"
 #include "map_path_define.hpp"

@@ -838,7 +838,7 @@ void cMapManager::m_addWallThinEntities(sMap*& _map)
                 }
 
                 // Exit
-                if ((!exit_placed) && (wall_2tds_count > 0))
+                if ((!exit_placed) && (wall_1tds_count > 0))
                 {
                     if ((m_isWall (_map, t)) && (!_map->tile[t + _map->width].processed))
                     {

@@ -24,7 +24,7 @@
 #ifndef BIOME_DEFINE_HPP
 #define BIOME_DEFINE_HPP
 
-#include "../includes.hpp"
+#include "../core/includes.hpp"
 
 struct sMapFloorSpritesheet
 {

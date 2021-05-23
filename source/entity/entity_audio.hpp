@@ -24,7 +24,7 @@
 #ifndef ENTITY_AUDIO_HPP
 #define ENTITY_AUDIO_HPP
 
-#include "../includes.hpp"
+#include "../core/includes.hpp"
 
 struct sEntityAudio
 {

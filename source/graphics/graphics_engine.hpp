@@ -29,7 +29,7 @@
 #include "graphics_engine_defines.hpp"
 #include "graphics_engine_light_manager.hpp"
 #include "graphics_engine_shader.hpp"
-#include "../includes.hpp"
+#include "../core/includes.hpp"
 #include "../entity/entity_define.hpp"
 #include "../ui/ui_defines.hpp"
 

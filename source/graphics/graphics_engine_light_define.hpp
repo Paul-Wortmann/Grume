@@ -24,7 +24,7 @@
 #ifndef GRAPHICS_ENGINE_LIGHT_DEFINE_HPP
 #define GRAPHICS_ENGINE_LIGHT_DEFINE_HPP
 
-#include "../includes.hpp"
+#include "../core/includes.hpp"
 
 #define MAX_POINT_LIGHTS 4 // This HAS to match the shader!
 

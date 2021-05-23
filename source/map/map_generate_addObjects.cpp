@@ -23,6 +23,86 @@
 
 #include "map_manager.hpp"
 
+// Used to add an object to the map
+void cMapManager::m_addObjectEntity(sMap*& _map,              // Map pointer
+                                    const std::uint32_t &_tn, // tile number
+                                    const std::uint32_t &_on, // object number
+                                    const std::uint32_t &_oi, // object index
+                                    const float         &_s,  // scale
+                                    const float         &_yr, // y rotation
+                                    const std::uint32_t &_o)  // obstacle
+{
+    // Map floor position on the y axis
+    float32 y_pos = -1.0f;
+    
+    // Width and height offset, used to center the walls
+    uint32  xo = _map->width  / 2;
+    uint32  yo = _map->height / 2;
+    float32 tp = 1.0f / 2.0f; // tile center positioning ( half model dimention)
+
+    // Load the biome object file
+    cXML xmlObjectFile;
+    xmlObjectFile.load(FILE_PATH_BIOME + _map->biome->ObjectSet.fileName);
+    
+    // Only contine if we can load the biome object file and the map file
+    if (xmlObjectFile.lineCount() > 0)
+    {
+        // Load object names
+        uint32 object_count = xmlObjectFile.getInstanceCount("<object>");
+        std::vector<std::string> object_names;
+        for (std::size_t i = 0; i < object_count; ++i)
+        {
+            object_names.push_back(xmlObjectFile.getString("<object>", i + 1));
+        }
+        std::vector<std::uint32_t> object_counts;
+
+        // Load object counts
+        for (std::size_t i = 0; i < object_count; ++i)
+        {
+            object_counts.push_back(xmlObjectFile.getInteger("<" + object_names[i] + "_count>", 1));
+        }
+
+        // Add the object to the map
+        sEntity* tEntity = nullptr;
+        if (_o != 0)
+        {
+            _map->tile[_tn].base = eTileBase::tileFloorNoGo;
+        }
+        
+        uint32 w = _tn % _map->width;
+        uint32 h = _tn / _map->width;
+       
+        //std::cout << "Found object '" << _tn << "'-'" << _on << "'-'" << tObjectScale << "'-'" << tObjectRotation << "'" << std::endl;
+        if (object_counts[_on-1] > 0)
+        {
+            if (_oi == 0)
+            {
+                tEntity = m_entityManager->load(xmlObjectFile.getString("<" + object_names[_on-1] + "_entity>", 1 + (rand() % object_counts[_on-1])));
+            }
+            else
+            {
+                tEntity = m_entityManager->load(xmlObjectFile.getString("<" + object_names[_on-1] + "_entity>", _oi));
+            }
+            if (tEntity != nullptr)
+            {
+                _map->tile[_tn].object = tEntity->UID;
+                tEntity->owner = eEntityOwner::ownerMap;
+                tEntity->type  = eEntityType::entityTypeObject;
+                tEntity->position += glm::vec3(static_cast<float32>(w) + tp - xo, y_pos, static_cast<float32>(h) + tp - yo);
+                if ((_s > 1.00001f) || (_s < 0.99999f))
+                {
+                    tEntity->scale *= glm::vec3(_s, _s, _s);
+                }
+                tEntity->rotation.y += _yr;
+                tEntity->rotation = glm::vec3(tEntity->rotation.x, tEntity->rotation.y, tEntity->rotation.z);
+                m_entityManager->updateModelMatrix(tEntity);
+            }
+        }
+    }
+    // Clean up
+    xmlObjectFile.free();
+}
+
 // Used to add objects specified in the map file
 void cMapManager::m_addObjectEntities(sMap*& _map)
 {

@@ -24,9 +24,9 @@
 #ifndef NPC_MANAGER_HPP
 #define NPC_MANAGER_HPP
 
-#include "../includes.hpp"
+#include "../core/includes.hpp"
 #include "../entity/entity_manager.hpp"
-#include "../linked_list.hpp"
+#include "../core/linked_list.hpp"
 #include "npc_define.hpp"
 
 class cNPCManager : public tcLinkedList<sNPC>

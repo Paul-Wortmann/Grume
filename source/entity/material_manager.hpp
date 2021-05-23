@@ -24,9 +24,9 @@
 #ifndef MATERIAL_MANAGER_HPP
 #define MATERIAL_MANAGER_HPP
 
-#include "../includes.hpp"
+#include "../core/includes.hpp"
 #include "entity_material.hpp"
-#include "../linked_list.hpp"
+#include "../core/linked_list.hpp"
 #include "texture_manager.hpp"
 
 class cMaterialManager : public tcLinkedList<sEntityMaterial>

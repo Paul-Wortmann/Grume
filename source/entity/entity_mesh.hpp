@@ -24,7 +24,7 @@
 #ifndef ENTITY_MESH_HPP
 #define ENTITY_MESH_HPP
 
-#include "../includes.hpp"
+#include "../core/includes.hpp"
 #include "entity_vertex.hpp"
 #include "entity_material.hpp"
 
