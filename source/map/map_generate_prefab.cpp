@@ -23,17 +23,99 @@
 
 #include "map_manager.hpp"
 
+void cMapManager::m_mapPrefabRoomFlipV(std::uint32_t *&_tiles, const std::uint32_t &_w, const std::uint32_t &_h)
+{
+    std::uint32_t tileCount = _w * _h;
+    std::uint32_t *tile = new std::uint32_t[tileCount];
+    for (uint32_t i = 0; i < tileCount; i++)
+    {
+        tile[i] = _tiles[i];
+    }
+    for (uint32_t i = 0; i < tileCount; i++)
+    {
+        _tiles[(tileCount-1)-i] = tile[i];
+    }
+    delete[] tile;
+}
+
+void cMapManager::m_mapPrefabRoomFlipH(std::uint32_t *&_tiles, const std::uint32_t &_w, const std::uint32_t &_h)
+{
+    std::uint32_t tileCount = _w * _h;
+    std::uint32_t *tile = new std::uint32_t[tileCount];
+    for (uint32_t i = 0; i < tileCount; i++)
+    {
+        tile[i] = _tiles[i];
+    }
+    for (uint32_t i = 0; i < _h; i++)
+    {
+        for (uint32_t j = 0; j < _w; j++)
+        {
+            _tiles[(i * _w) + j] = tile[(i * _w) + ((_w-1)-j)];
+        }
+    }
+    delete[] tile;
+}
+
+void cMapManager::m_mapPrefabRoomRotateR90(std::uint32_t *&_tiles, const std::uint32_t &_w, const std::uint32_t &_h)
+{
+    std::uint32_t tileCount = _w * _h;
+    std::uint32_t *tile = new std::uint32_t[tileCount];
+    for (uint32_t i = 0; i < tileCount; i++)
+    {
+        tile[i] = _tiles[i];
+    }
+    for (uint32_t i = 0; i < _h; i++)
+    {
+        for (uint32_t j = 0; j < _w; j++)
+        {
+            _tiles[(i * _w) + j] = tile[(j * _w) + ((_w-1)-i)];
+        }
+    }
+    delete[] tile;
+}
+
+void cMapManager::m_mapPrefabRoomRotateL90(std::uint32_t *&_tiles, const std::uint32_t &_w, const std::uint32_t &_h)
+{
+    std::uint32_t tileCount = _w * _h;
+    std::uint32_t *tile = new std::uint32_t[tileCount];
+    for (uint32_t i = 0; i < tileCount; i++)
+    {
+        tile[i] = _tiles[i];
+    }
+    for (uint32_t i = 0; i < _h; i++)
+    {
+        for (uint32_t j = 0; j < _w; j++)
+        {
+            _tiles[(i * _w) + j] = tile[(((_h-1)-j) * _w) + ((_w-1)-i)];
+        }
+    }
+    delete[] tile;
+}
+
+void cMapManager::m_mapPrefabRoomRotate180(std::uint32_t *&_tiles, const std::uint32_t &_w, const std::uint32_t &_h)
+{
+    std::uint32_t tileCount = _w * _h;
+    std::uint32_t *tile = new std::uint32_t[tileCount];
+    for (uint32_t i = 0; i < tileCount; i++)
+    {
+        tile[i] = _tiles[i];
+    }
+    for (uint32_t i = 0; i < tileCount; i++)
+    {
+        _tiles[(tileCount-1)-i] = tile[i];
+    }
+    delete[] tile;
+}
+
 void cMapManager::m_mapPrefabRooms(sMap*& _map)
 {
     // Open the prefab database file
-    std::uint32_t prefabCount = 0;
-    
     cXML xmlMapPrefabDatabaseFile;
     xmlMapPrefabDatabaseFile.load(FILE_PATH_BIOME + _map->biome->allMapPrefabList.fileName);
     if (xmlMapPrefabDatabaseFile.lineCount() > 0)
     {
         // Get the data from the XML file
-        prefabCount      = xmlMapPrefabDatabaseFile.getInstanceCount("<prefab>");
+        std::uint32_t prefabCount = xmlMapPrefabDatabaseFile.getInstanceCount("<prefab>");
 
         gLogWrite(LOG_INFO, "Prefab count: " + std::to_string(prefabCount), __FILE__, __LINE__, __FUNCTION__);
 
@@ -49,7 +131,7 @@ void cMapManager::m_mapPrefabRooms(sMap*& _map)
                 std::uint32_t tPrefabRoomType   = 0;
                 std::uint32_t tPrefabRoomWidth  = 0;
                 std::uint32_t tPrefabRoomHeight = 0;
-                std::string   tPrefabFileName   = 0;
+                std::string   tPrefabFileName   = "";
                 std::uint32_t tStringNum = 0;
                 std::string   tString = "";
                 if (tPrefabStringLength > 6)
@@ -103,5 +185,68 @@ void cMapManager::m_mapPrefabRooms(sMap*& _map)
 
 void cMapManager::m_mapApplyPrefab(sMap*& _map, const std::string &_fileName, const std::uint32_t &_r)
 {
+    // Open the prefab database file
+    cXML xmlMapPrefabFile;
+    xmlMapPrefabFile.load(FILE_PATH_MAP_PREFAB + _fileName);
+    if (xmlMapPrefabFile.lineCount() > 0)
+    {
+        // load the tile data from the prefab
+        std::uint32_t* pTiles = new std::uint32_t[_map->room[_r].w * _map->room[_r].h];
+        std::uint32_t  currentTile = 0;
+        std::uint32_t tileKeyCount = xmlMapPrefabFile.getInstanceCount("<tiles>");
+        for (std::uint32_t i = 0; i < tileKeyCount; ++i)
+        {
+            std::string tPTiles = xmlMapPrefabFile.getString("<tiles>", i + 1);
+            tPTiles += "  ";
+            std::uint32_t tPTilesLength = tPTiles.length();
+            std::string   tString = "";
+            std::uint32_t tileCount = 0;
+            if (tPTilesLength > 6)
+            {
+                for (std::uint32_t j = 0; j < tPTilesLength; ++j)
+                {
+                    if (tPTiles[j] == ' ')
+                    {
+                        pTiles[currentTile] = std::stoi(tString);
+                        currentTile++;
+                        tString = "";
+                        tileCount++;
+                        if (tileCount == _map->room[_r].w)
+                        {
+                            j = tPTilesLength;
+                        }
+                        
+                    }
+                    else
+                    {
+                        tString += tPTiles[j];
+                    }
+                }
+            }
+        }
+        
+        // Write the prefab data to the map
+        std::uint32_t sx = 0; // Start x position on the map
+        std::uint32_t sy = 0; // Start y position on the map
+        sx = _map->room[_r].x - (_map->room[_r].w / 2);
+        sy = _map->room[_r].y - (_map->room[_r].h / 2);
+        
+        for (std::uint32_t y = 0; y < _map->room[_r].h; ++y)
+        {
+            for (std::uint32_t x = 0; x < _map->room[_r].w; ++x)
+            {
+                _map->tile[((sy + y) * _map->width) + sx + x].base = static_cast<eTileBase>(pTiles[(y * _map->room[_r].w) + x]);
+            }
+        }
+        
+        // Clean up
+        xmlMapPrefabFile.free();
+        
+        if (pTiles != nullptr)
+        {
+            delete[] pTiles;
+            pTiles = nullptr;
+        }
+    }
     
 }

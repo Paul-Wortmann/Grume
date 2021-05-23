@@ -134,6 +134,11 @@ class cMapManager : public tcLinkedList<sMap>
         void     m_mapConnectRooms(sMap*& _map);
         
         // map_generate_prefab.cpp
+        void     m_mapPrefabRoomFlipV(std::uint32_t *&_tiles, const std::uint32_t &_w, const std::uint32_t &_h);
+        void     m_mapPrefabRoomFlipH(std::uint32_t *&_tiles, const std::uint32_t &_w, const std::uint32_t &_h);
+        void     m_mapPrefabRoomRotateR90(std::uint32_t *&_tiles, const std::uint32_t &_w, const std::uint32_t &_h);
+        void     m_mapPrefabRoomRotateL90(std::uint32_t *&_tiles, const std::uint32_t &_w, const std::uint32_t &_h);
+        void     m_mapPrefabRoomRotate180(std::uint32_t *&_tiles, const std::uint32_t &_w, const std::uint32_t &_h);
         void     m_mapPrefabRooms(sMap*& _map);
         void     m_mapApplyPrefab(sMap*& _map, const std::string &_fileName, const std::uint32_t &_r);
 
