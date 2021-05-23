@@ -317,135 +317,141 @@ void cMapManager::load(const std::string &_fileName)
             xmlMusicFile.free();
         }
 
-        // Load map event data
-        m_currentMap->eventCount = xmlMapFile.getInstanceCount("<event>");
-        m_currentMap->event = new sMapEvent[m_currentMap->eventCount];
-        for (uint32 i = 0; i < m_currentMap->eventCount; ++i)
+        // Load map event data (for non generated maps)
+        if (generate == 0)
         {
-            // Load the data from the map file
-            std::string tEventString = xmlMapFile.getString("<event>", i + 1);
-            tEventString += "    ";
-            std::uint32_t tEventStringLength = tEventString.length();
-            std::uint32_t tEventTileNum = 0;
-            std::uint32_t tEventType    = 0;
-            std::uint32_t tEventData1   = 0;
-            std::uint32_t tEventData2   = 0;
-            std::uint32_t tEventData3   = 0;
-            std::uint32_t tStringNum = 0;
-            std::string   tString = "";
-            if (tEventStringLength > 6)
+            m_currentMap->eventCount = xmlMapFile.getInstanceCount("<event>");
+            m_currentMap->event = new sMapEvent[m_currentMap->eventCount];
+            for (uint32 i = 0; i < m_currentMap->eventCount; ++i)
             {
-                for (std::uint32_t j = 0; j < tEventStringLength; ++j)
+                // Load the data from the map file
+                std::string tEventString = xmlMapFile.getString("<event>", i + 1);
+                tEventString += "    ";
+                std::uint32_t tEventStringLength = tEventString.length();
+                std::uint32_t tEventTileNum = 0;
+                std::uint32_t tEventType    = 0;
+                std::uint32_t tEventData1   = 0;
+                std::uint32_t tEventData2   = 0;
+                std::uint32_t tEventData3   = 0;
+                std::uint32_t tStringNum = 0;
+                std::string   tString = "";
+                if (tEventStringLength > 6)
                 {
-                    if (tEventString[j] == ' ')
+                    for (std::uint32_t j = 0; j < tEventStringLength; ++j)
                     {
-                        if (tStringNum == 0)
+                        if (tEventString[j] == ' ')
                         {
-                            tEventTileNum = std::stoi(tString);
+                            if (tStringNum == 0)
+                            {
+                                tEventTileNum = std::stoi(tString);
+                            }
+                            else if (tStringNum == 1)
+                            {
+                                tEventType = std::stoi(tString);
+                            }
+                            else if (tStringNum == 2)
+                            {
+                                tEventData1 = std::stoi(tString);
+                            }
+                            else if (tStringNum == 3)
+                            {
+                                tEventData2 = std::stoi(tString);
+                            }
+                            else if (tStringNum == 4)
+                            {
+                                tEventData3 = std::stoi(tString);
+                            }
+                            tStringNum++;
+                            tString = "";
                         }
-                        else if (tStringNum == 1)
+                        else
                         {
-                            tEventType = std::stoi(tString);
+                            tString += tEventString[j];
                         }
-                        else if (tStringNum == 2)
-                        {
-                            tEventData1 = std::stoi(tString);
-                        }
-                        else if (tStringNum == 3)
-                        {
-                            tEventData2 = std::stoi(tString);
-                        }
-                        else if (tStringNum == 4)
-                        {
-                            tEventData3 = std::stoi(tString);
-                        }
-                        tStringNum++;
-                        tString = "";
-                    }
-                    else
-                    {
-                        tString += tEventString[j];
                     }
                 }
+                
+                // Process the event data
+                switch (tEventType)
+                {
+                    // Spawn entity
+                    case 4:
+                        m_currentMap->event[i].type = eMapEventType::eventTypeEntitySpawn;
+                    break;
+                    // Toggle entity state
+                    case 3:
+                        m_currentMap->event[i].type = eMapEventType::eventTypeEntityToggle;
+                    break;
+                    // Set entity state
+                    case 2:
+                        m_currentMap->event[i].type = eMapEventType::eventTypeEntitySet;
+                    break;
+                    // Warp to map + portal
+                    case 1:
+                        m_currentMap->event[i].type = eMapEventType::eventTypeWarp;
+                    break;
+                    // None 
+                    case 0:
+                    default:
+                        m_currentMap->event[i].type = eMapEventType::eventTypeNone;
+                    break;
+                }
+                m_currentMap->event[i].tile   = tEventTileNum;
+                m_currentMap->event[i].data_1 = tEventData1;
+                m_currentMap->event[i].data_2 = tEventData2;
+                m_currentMap->event[i].data_3 = tEventData3;
             }
-            
-            // Process the event data
-            switch (tEventType)
-            {
-                // Spawn entity
-                case 4:
-                    m_currentMap->event[i].type = eMapEventType::eventTypeEntitySpawn;
-                break;
-                // Toggle entity state
-                case 3:
-                    m_currentMap->event[i].type = eMapEventType::eventTypeEntityToggle;
-                break;
-                // Set entity state
-                case 2:
-                    m_currentMap->event[i].type = eMapEventType::eventTypeEntitySet;
-                break;
-                // Warp to map + portal
-                case 1:
-                    m_currentMap->event[i].type = eMapEventType::eventTypeWarp;
-                break;
-                // None 
-                case 0:
-                default:
-                    m_currentMap->event[i].type = eMapEventType::eventTypeNone;
-                break;
-            }
-            m_currentMap->event[i].tile   = tEventTileNum;
-            m_currentMap->event[i].data_1 = tEventData1;
-            m_currentMap->event[i].data_2 = tEventData2;
-            m_currentMap->event[i].data_3 = tEventData3;
         }
         
-        // Load map portal data
-        m_currentMap->portalCount = xmlMapFile.getInstanceCount("<portal>");
-        m_currentMap->portal = new sMapPortal[m_currentMap->portalCount];
-        for (uint32 i = 0; i < m_currentMap->portalCount; ++i)
+        // Load map portal data (for non generated maps)
+        if (generate == 0)
         {
-            // Load the data from the map file
-            std::string tPortalString = xmlMapFile.getString("<portal>", i + 1);
-            tPortalString += "    ";
-            std::uint32_t tPortalStringLength = tPortalString.length();
-            std::uint32_t tPortalNumber    = 0;
-            std::uint32_t tPortalTileNum   = 0;
-            std::uint32_t tPortalDirection = 0;
-            std::uint32_t tStringNum = 0;
-            std::string   tString = "";
-            if (tPortalStringLength > 6)
+            m_currentMap->portalCount = xmlMapFile.getInstanceCount("<portal>");
+            m_currentMap->portal = new sMapPortal[m_currentMap->portalCount];
+            for (uint32 i = 0; i < m_currentMap->portalCount; ++i)
             {
-                for (std::uint32_t j = 0; j < tPortalStringLength; ++j)
+                // Load the data from the map file
+                std::string tPortalString = xmlMapFile.getString("<portal>", i + 1);
+                tPortalString += "    ";
+                std::uint32_t tPortalStringLength = tPortalString.length();
+                std::uint32_t tPortalNumber    = 0;
+                std::uint32_t tPortalTileNum   = 0;
+                std::uint32_t tPortalDirection = 0;
+                std::uint32_t tStringNum = 0;
+                std::string   tString = "";
+                if (tPortalStringLength > 6)
                 {
-                    if (tPortalString[j] == ' ')
+                    for (std::uint32_t j = 0; j < tPortalStringLength; ++j)
                     {
-                        if (tStringNum == 0)
+                        if (tPortalString[j] == ' ')
                         {
-                            tPortalNumber = std::stoi(tString);
+                            if (tStringNum == 0)
+                            {
+                                tPortalNumber = std::stoi(tString);
+                            }
+                            else if (tStringNum == 1)
+                            {
+                                tPortalTileNum = std::stoi(tString);
+                            }
+                            else if (tStringNum == 2)
+                            {
+                                tPortalDirection = std::stof(tString);
+                            }
+                            tStringNum++;
+                            tString = "";
                         }
-                        else if (tStringNum == 1)
+                        else
                         {
-                            tPortalTileNum = std::stoi(tString);
+                            tString += tPortalString[j];
                         }
-                        else if (tStringNum == 2)
-                        {
-                            tPortalDirection = std::stof(tString);
-                        }
-                        tStringNum++;
-                        tString = "";
-                    }
-                    else
-                    {
-                        tString += tPortalString[j];
                     }
                 }
+                
+                // Process the portal data
+                m_currentMap->portal[i].portalNo  = tPortalNumber;
+                m_currentMap->portal[i].tile      = tPortalTileNum;
+                m_currentMap->portal[i].direction = tPortalDirection;
             }
-            
-            // Process the portal data
-            m_currentMap->portal[i].portalNo  = tPortalNumber;
-            m_currentMap->portal[i].tile      = tPortalTileNum;
-            m_currentMap->portal[i].direction = tPortalDirection;
         }
         
         // Determine start location
@@ -459,6 +465,26 @@ void cMapManager::load(const std::string &_fileName)
                     m_currentMap->playerStartDir    = m_currentMap->portal[i].direction;
                 }
             }
+        }
+        
+        // For non generated maps
+        if (generate == 0)
+        {
+            // Identify rooms (no discard)
+            m_mapInitRoomsND(m_currentMap);
+            std::cout << "Room count: " << m_currentMap->roomCount << std::endl;
+            for (std::uint16_t i = 0; i < m_currentMap->roomCount; ++i)
+            {
+                std::cout << "Room number: " << i;
+                std::cout << " x " << m_currentMap->room[i].x;
+                std::cout << " y " << m_currentMap->room[i].y;
+                std::cout << " w " << m_currentMap->room[i].w;
+                std::cout << " h " << m_currentMap->room[i].h;
+                std::cout << std::endl;
+            }
+
+            // Room add prefab
+            m_mapPrefabRooms(m_currentMap);
         }
         
         // Populate the map with walls

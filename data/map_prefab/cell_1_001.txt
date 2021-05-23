@@ -1,0 +1,34 @@
+﻿<?xml version = "1.0" encoding = "UTF-8" ?>
+<map_prefab>
+    <information>
+        <exit_data>1 0 0 0</exit_data> # North, south, east, west
+        <room_type>1</room_type>
+        <room_width>9</room_width>
+        <room_height>9</room_height>
+    </information>
+
+#        tileNone      = 0,
+#        tileFloor     = 1,
+#        tileWall      = 2,
+#        tileDoorway   = 3,
+#        tileWallShort = 4,
+#        tileFloorPath = 5,
+#        tileFloorNoGo = 6,
+#        tilePathNoGo  = 7,
+#        tileLiquid    = 8
+
+    <tiles_placed>
+       <tiles>1 1 1 1 1 1 1 1 1</tiles>
+       <tiles>1 2 2 2 2 2 2 2 1</tiles>
+       <tiles>1 2 2 2 2 2 2 2 1</tiles>
+       <tiles>1 2 2 2 2 2 2 2 1</tiles>
+       <tiles>1 2 2 2 2 2 2 2 1</tiles>
+       <tiles>1 2 2 2 2 2 2 2 1</tiles>
+       <tiles>1 2 2 2 2 2 2 2 1</tiles>
+       <tiles>1 2 2 2 2 2 2 2 1</tiles>
+       <tiles>1 1 1 1 1 1 1 1 1</tiles>
+    <tiles_placed>
+
+</map_prefab>
+
+

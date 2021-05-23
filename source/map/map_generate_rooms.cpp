@@ -23,7 +23,7 @@
 
 #include "map_manager.hpp"
 
-bool cMapManager::genCircleRoomOK(sMap*& _map, const uint32_t &_x, const uint32_t &_y, const uint32_t &_r)
+bool cMapManager::m_genCircleRoomOK(sMap*& _map, const uint32_t &_x, const uint32_t &_y, const uint32_t &_r)
 {
     if (_map->tile == nullptr)
         return false;
@@ -39,7 +39,7 @@ bool cMapManager::genCircleRoomOK(sMap*& _map, const uint32_t &_x, const uint32_
     return true;
 }
 
-void cMapManager::genCircleRoom(sMap*& _map, const uint32_t &_x, const uint32_t &_y, const uint32_t &_r)
+void cMapManager::m_genCircleRoom(sMap*& _map, const uint32_t &_x, const uint32_t &_y, const uint32_t &_r)
 {
     if (_map->tile == nullptr)
         return;
@@ -53,7 +53,7 @@ void cMapManager::genCircleRoom(sMap*& _map, const uint32_t &_x, const uint32_t 
     }
 }
 
-bool cMapManager::genSquareRoomOK(sMap*& _map, const uint32_t &_x, const uint32_t &_y, const uint32_t &_r)
+bool cMapManager::m_genSquareRoomOK(sMap*& _map, const uint32_t &_x, const uint32_t &_y, const uint32_t &_r)
 {
     if (_map->tile == nullptr)
         return false;
@@ -80,7 +80,7 @@ bool cMapManager::genSquareRoomOK(sMap*& _map, const uint32_t &_x, const uint32_
     return true;
 }
 
-void cMapManager::genSquareRoom(sMap*& _map, const uint32_t &_x, const uint32_t &_y, const uint32_t &_r)
+void cMapManager::m_genSquareRoom(sMap*& _map, const uint32_t &_x, const uint32_t &_y, const uint32_t &_r)
 {
     if (_map->tile == nullptr)
         return;
@@ -97,7 +97,7 @@ void cMapManager::genSquareRoom(sMap*& _map, const uint32_t &_x, const uint32_t 
     }
 }
 
-static void mapFindRoom(sMap*& _map, const uint32_t &i)
+static void m_mapFindRoom(sMap*& _map, const uint32_t &i)
 {
     if (i  < _map->numTiles)
     {
@@ -106,18 +106,18 @@ static void mapFindRoom(sMap*& _map, const uint32_t &i)
             _map->tile[i].processed = true;
             _map->tile[i].room = _map->roomCount;
             if (((i + 1) > 0) && ((i + 1) < _map->numTiles))
-                mapFindRoom(_map, i + 1);
+                m_mapFindRoom(_map, i + 1);
             if (((i - 1) > 0) && ((i - 1) < _map->numTiles))
-                mapFindRoom(_map, i - 1);
+                m_mapFindRoom(_map, i - 1);
             if (((i + _map->width) > 0) && ((i + _map->width) < _map->numTiles))
-                mapFindRoom(_map, i + _map->width);
+                m_mapFindRoom(_map, i + _map->width);
             if (((i - _map->width) > 0) && ((i - _map->width) < _map->numTiles))
-                mapFindRoom(_map, i - _map->width);
+                m_mapFindRoom(_map, i - _map->width);
         }
     }
 }
 
-void cMapManager::mapFindRooms(sMap*& _map)
+void cMapManager::m_mapFindRooms(sMap*& _map)
 {
     if (_map->tile != nullptr)
     {
@@ -131,14 +131,14 @@ void cMapManager::mapFindRooms(sMap*& _map)
         {
             if ((!_map->tile[i].processed) && (_map->tile[i].base == eTileBase::tileFloor))
             {
-                mapFindRoom(_map, i);
+                m_mapFindRoom(_map, i);
                 _map->roomCount++;
             }
         }
     }
 }
 
-static void mapDiscardMinRooms(sMap*& _map)
+static void m_mapDiscardMinRooms(sMap*& _map)
 {
     uint16_t discardCount = 0;
     if (_map->tile != nullptr)
@@ -168,7 +168,7 @@ static void mapDiscardMinRooms(sMap*& _map)
     _map->roomCount -= discardCount;
 }
 
-static void mapRoomSizeLocation(sMap*& _map)
+static void m_mapRoomSizeLocation(sMap*& _map)
 {
     if ((_map->roomCount > 0) && (_map->room != nullptr))
     {
@@ -210,7 +210,7 @@ static void mapRoomSizeLocation(sMap*& _map)
     }
 }
 
-uint32_t cMapManager::mapGetRoomArea(sMap*& _map, const uint16_t &_r)
+uint32_t cMapManager::m_mapGetRoomArea(sMap*& _map, const uint16_t &_r)
 {
     uint32_t returnValue = 0;
     if (_map->tile != nullptr)
@@ -222,7 +222,7 @@ uint32_t cMapManager::mapGetRoomArea(sMap*& _map, const uint16_t &_r)
     return returnValue;
 }
 
-void cMapManager::mapRoomDiscardAllButLargest(sMap*& _map)
+void cMapManager::m_mapRoomDiscardAllButLargest(sMap*& _map)
 {
     if ((_map->roomCount > 0) && (_map->room != nullptr) && (_map->tile != nullptr))
     {
@@ -231,7 +231,7 @@ void cMapManager::mapRoomDiscardAllButLargest(sMap*& _map)
         uint32_t roomNumber = 0;
         for (uint16_t i = 0; i < _map->roomCount; i++)
         {
-            roomSizeT = mapGetRoomArea(_map, i);
+            roomSizeT = m_mapGetRoomArea(_map, i);
             if (roomSizeT > roomSize)
             {
                 roomSize = roomSizeT;
@@ -253,14 +253,14 @@ void cMapManager::mapRoomDiscardAllButLargest(sMap*& _map)
     if (_map->room != nullptr)
         delete _map->room;
     _map->room = new sMapRoom[_map->roomCount];
-    mapRoomSizeLocation(_map);
+    m_mapRoomSizeLocation(_map);
 }
 
-void cMapManager::mapInitRooms(sMap*& _map)
+void cMapManager::m_mapInitRooms(sMap*& _map)
 {
-    mapFindRooms(_map);
-    mapDiscardMinRooms(_map);
-    mapFindRooms(_map);
+    m_mapFindRooms(_map);
+    m_mapDiscardMinRooms(_map);
+    m_mapFindRooms(_map);
     if (_map->roomCount > 0)
     {
         if (_map->room != nullptr)
@@ -273,6 +273,25 @@ void cMapManager::mapInitRooms(sMap*& _map)
             _map->room[i].exitS = -1; // No room
             _map->room[i].exitN = -1; // No room
         }
-        mapRoomSizeLocation(_map);
+        m_mapRoomSizeLocation(_map);
+    }
+}
+
+void cMapManager::m_mapInitRoomsND(sMap*& _map)
+{
+    m_mapFindRooms(_map);
+    if (_map->roomCount > 0)
+    {
+        if (_map->room != nullptr)
+            delete _map->room;
+        _map->room = new sMapRoom[_map->roomCount];
+        for (uint16_t i = 0; i < _map->roomCount; i++)
+        {
+            _map->room[i].exitE = -1; // No room
+            _map->room[i].exitW = -1; // No room
+            _map->room[i].exitS = -1; // No room
+            _map->room[i].exitN = -1; // No room
+        }
+        m_mapRoomSizeLocation(_map);
     }
 }

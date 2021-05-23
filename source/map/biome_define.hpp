@@ -66,6 +66,11 @@ struct sAllMapList
     std::string fileName = "";
 };
 
+struct sAllMapPrefabList
+{
+    std::string fileName = "";
+};
+
 struct sMapWallSet
 {
     std::string name     = "";
@@ -107,21 +112,22 @@ struct sMapWallSet
 struct sMapBiome
 {
     // Linked list management
-    sMapBiome*    next       = nullptr;
-    std::uint32_t UID        = 0;
+    sMapBiome*        next             = nullptr;
+    std::uint32_t     UID              = 0;
 
     // General information
-    std::string   name       = "";
-    std::string   fileName   = "";
+    std::string       name             = "";
+    std::string       fileName         = "";
 
     // Data sets
-    sMapMusicSet  MusicSet   = {};
-    sMapMusicTag  MusicTag   = {};
-    sMusicTrack   MusicTrack = {};
-    sMapNPCSet    NPCSet     = {};
-    sMapObjectSet ObjectSet  = {};
-    sMapWallSet   WallSet    = {};
-    sAllMapList   allMapList = {};
+    sMapMusicSet      MusicSet         = {};
+    sMapMusicTag      MusicTag         = {};
+    sMusicTrack       MusicTrack       = {};
+    sMapNPCSet        NPCSet           = {};
+    sMapObjectSet     ObjectSet        = {};
+    sMapWallSet       WallSet          = {};
+    sAllMapList       allMapList       = {};
+    sAllMapPrefabList allMapPrefabList = {};
     
     // Map floor spritesheet
     sMapFloorSpritesheet floorSpritesheet = {};

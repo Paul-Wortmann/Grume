@@ -24,7 +24,7 @@
 #include "map_manager.hpp"
 
 // Straight Line
-void cMapManager::mapConnectRooms_SL(sMap*& _map, const uint16_t &_r1, const uint16_t &_r2)
+void cMapManager::m_mapConnectRooms_SL(sMap*& _map, const uint16_t &_r1, const uint16_t &_r2)
 {
     eDirectionBias direction = eDirectionBias::directionNone;
     if (_map->room[_r1].exitE == _r2)
@@ -103,7 +103,7 @@ void cMapManager::mapConnectRooms_SL(sMap*& _map, const uint16_t &_r1, const uin
 }
 
 // Straight Lines, 90 degree angle
-void cMapManager::mapConnectRooms_ND(sMap*& _map, const uint16_t &_r1, const uint16_t &_r2)
+void cMapManager::m_mapConnectRooms_ND(sMap*& _map, const uint16_t &_r1, const uint16_t &_r2)
 {
     uint16_t psx = _map->room[_r1].x;
     uint16_t psy = _map->room[_r1].y;
@@ -173,14 +173,14 @@ void cMapManager::mapConnectRooms_ND(sMap*& _map, const uint16_t &_r1, const uin
 }
 
 // Drunken Walk
-void cMapManager::mapConnectRooms_DW(sMap*& _map, const uint16_t &_r1, const uint16_t &_r2)
+void cMapManager::m_mapConnectRooms_DW(sMap*& _map, const uint16_t &_r1, const uint16_t &_r2)
 {
 
 }
 
 
 
-void cMapManager::mapConnectRooms(sMap*& _map)
+void cMapManager::m_mapConnectRooms(sMap*& _map)
 {
     uint32_t distanceT = 0; // temp distance
     uint32_t distanceN = _map->numTiles ; // size larger than possible distance
@@ -335,33 +335,33 @@ void cMapManager::mapConnectRooms(sMap*& _map)
         {
             case eConnectAlgo::algorithm_SL:
                 if (_map->room[i].exitE > i)
-                    mapConnectRooms_SL(_map, i, _map->room[i].exitE);
+                    m_mapConnectRooms_SL(_map, i, _map->room[i].exitE);
                 if (_map->room[i].exitW > i)
-                    mapConnectRooms_SL(_map, i, _map->room[i].exitW);
+                    m_mapConnectRooms_SL(_map, i, _map->room[i].exitW);
                 if (_map->room[i].exitN > i)
-                    mapConnectRooms_SL(_map, i, _map->room[i].exitN);
+                    m_mapConnectRooms_SL(_map, i, _map->room[i].exitN);
                 if (_map->room[i].exitS > i)
-                    mapConnectRooms_SL(_map, i, _map->room[i].exitS);
+                    m_mapConnectRooms_SL(_map, i, _map->room[i].exitS);
             break;
             case eConnectAlgo::algorithm_ND:
                 if (_map->room[i].exitE > i)
-                    mapConnectRooms_ND(_map, i, _map->room[i].exitE);
+                    m_mapConnectRooms_ND(_map, i, _map->room[i].exitE);
                 if (_map->room[i].exitW > i)
-                    mapConnectRooms_ND(_map, i, _map->room[i].exitW);
+                    m_mapConnectRooms_ND(_map, i, _map->room[i].exitW);
                 if (_map->room[i].exitN > i)
-                    mapConnectRooms_ND(_map, i, _map->room[i].exitN);
+                    m_mapConnectRooms_ND(_map, i, _map->room[i].exitN);
                 if (_map->room[i].exitS > i)
-                    mapConnectRooms_ND(_map, i, _map->room[i].exitS);
+                    m_mapConnectRooms_ND(_map, i, _map->room[i].exitS);
             break;
             case eConnectAlgo::algorithm_DW:
                 if (_map->room[i].exitE > i)
-                    mapConnectRooms_DW(_map, i, _map->room[i].exitE);
+                    m_mapConnectRooms_DW(_map, i, _map->room[i].exitE);
                 if (_map->room[i].exitW > i)
-                    mapConnectRooms_DW(_map, i, _map->room[i].exitW);
+                    m_mapConnectRooms_DW(_map, i, _map->room[i].exitW);
                 if (_map->room[i].exitN > i)
-                    mapConnectRooms_DW(_map, i, _map->room[i].exitN);
+                    m_mapConnectRooms_DW(_map, i, _map->room[i].exitN);
                 if (_map->room[i].exitS > i)
-                    mapConnectRooms_DW(_map, i, _map->room[i].exitS);
+                    m_mapConnectRooms_DW(_map, i, _map->room[i].exitS);
             break;
             default:
                 // throw error / set flag
@@ -380,11 +380,11 @@ void cMapManager::mapConnectRooms(sMap*& _map)
             if (pathT.pathLength == 0)
             {
                 if (_map->genData.connectivityAlgorithm == eConnectAlgo::algorithm_SL)
-                    mapConnectRooms_SL(_map, i, i+1);
+                    m_mapConnectRooms_SL(_map, i, i+1);
                 if (_map->genData.connectivityAlgorithm == eConnectAlgo::algorithm_ND)
-                    mapConnectRooms_ND(_map, i, i+1);
+                    m_mapConnectRooms_ND(_map, i, i+1);
                 if (_map->genData.connectivityAlgorithm == eConnectAlgo::algorithm_DW)
-                    mapConnectRooms_DW(_map, i, i+1);
+                    m_mapConnectRooms_DW(_map, i, i+1);
             }
             
             // Clean up

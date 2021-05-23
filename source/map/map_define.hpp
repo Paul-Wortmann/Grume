@@ -60,7 +60,8 @@ enum class eTileBase : std::uint16_t
         tileFloorPath = 5,
         tileFloorNoGo = 6,
         tilePathNoGo  = 7,
-        tileLiquid    = 8
+        tileLiquid    = 8,
+        tileIgnore    = 9  // Used for prefab loading
     };
 
 enum class eAlgorithm : std::uint16_t 
@@ -99,24 +100,24 @@ enum class eDirectionBias : std::int16_t // Direction bias
 
 struct sMapGenData
 {
-    std::uint32_t  seed      = 0; // 0 for random seed
-    eAlgorithm     algorithm = eAlgorithm::algorithm_C1; // 0: C1,
-    std::uint32_t  wallSize  = 0; // 0: Wide, 1: Thin
+    std::uint32_t  seed                   = 0; // 0 for random seed
+    eAlgorithm     algorithm              = eAlgorithm::algorithm_C1; // 0: C1,
+    std::uint32_t  wallSize               = 0; // 0: Wide, 1: Thin
 
-    std::uint16_t  pass = 4; // General number of passes, smoothing etc...
-    std::uint16_t  density = 10; // Percentage / 2, rough approximate
-    std::uint16_t  roomMin = 3; // Guaranteed minimum number of rooms, maps with less are discarded (sMap.pass times)
-    std::uint16_t  roomMax = density * pass; // Will try generate up to roomMax rooms, on a tiny map reaching this is impossible
-    std::uint16_t  roomRadiusMax = 8; // max room radius
-    std::uint16_t  roomRadiusMin = 2; // min room radius
-    std::uint16_t  roomBorder = 3; // Wall width
-    eRoomShape     roomShape = eRoomShape::shapeSquare;
-    std::uint16_t  floorAreaMin = 60; // percentage, min % floor area
-    eConnectAlgo   connectivityAlgorithm = eConnectAlgo::algorithm_SL;
+    std::uint16_t  pass                   = 4; // General number of passes, smoothing etc...
+    std::uint16_t  density                = 10; // Percentage / 2, rough approximate
+    std::uint16_t  roomMin                = 3; // Guaranteed minimum number of rooms, maps with less are discarded (sMap.pass times)
+    std::uint16_t  roomMax                = density * pass; // Will try generate up to roomMax rooms, on a tiny map reaching this is impossible
+    std::uint16_t  roomRadiusMax          = 8; // max room radius
+    std::uint16_t  roomRadiusMin          = 2; // min room radius
+    std::uint16_t  roomBorder             = 3; // Wall width
+    eRoomShape     roomShape              = eRoomShape::shapeSquare;
+    std::uint16_t  floorAreaMin           = 60; // percentage, min % floor area
+    eConnectAlgo   connectivityAlgorithm  = eConnectAlgo::algorithm_SL;
     std::uint16_t  connectivityComplexity = 50; // percentage, rand % connect neighbors
-    std::uint16_t  connectivityPadding = 0; // Tiles to pad on each side of generated paths, roomBorder should be taken into consideration!
-    eDirectionBias directionBias = eDirectionBias::directionNone; // Favored direction
-    std::uint16_t  directionBiasStrength = 2; // Favored direction strength
+    std::uint16_t  connectivityPadding    = 0; // Tiles to pad on each side of generated paths, roomBorder should be taken into consideration!
+    eDirectionBias directionBias          = eDirectionBias::directionNone; // Favored direction
+    std::uint16_t  directionBiasStrength  = 2; // Favored direction strength
 };
 
 struct sMapTile
@@ -139,7 +140,7 @@ enum class eMapEventType : std::uint32_t
 struct sMapEvent
 {
     eMapEventType type      = eMapEventType::eventTypeNone;
-    std::uint32_t tile      = 0;
+    std::uint32_t tile      = 0; // The tile that triggers the event
     std::uint32_t data_1    = 0;
     std::uint32_t data_2    = 0;
     std::uint32_t data_3    = 0;
@@ -155,22 +156,32 @@ struct sMapPortal
 
 enum class eMapRoomType : std::uint16_t 
 { 
-    roomTypeNone         = 0, // None
-    roomTypeCell         = 1  // Prison Cell
+    roomTypeNone         =  0, // None / empty
+    roomTypeCell         =  1, // Prison Cell
+    roomTypeSecret       =  2, // Secret room
+    roomTypeStairwell    =  3, // Stairwell
+    roomTypeStore        =  4, // Store
+    roomTypeBlacksmith   =  5, // Blacksmith
+    roomTypeCanteen      =  6, // Canteen
+    roomTypeStorage      =  7, // Storage room
+    roomTypeLibrary      =  8, // Library
+    roomTypeAlchemyLab   =  9, // Alchemy Lab
+    roomTypeLaboratory   = 10, // Laboratory
+    roomTypeTorture      = 11  // Torture Chamber
 };
 
 struct sMapRoom
 {
-    eMapRoomType type    = eMapRoomType::roomTypeNone;
-    bool         p       = false; // processed flag
-    uint16_t     posXMin = 0;
-    uint16_t     posXMax = 0;
-    uint16_t     posYMin = 0;
-    uint16_t     posYMax = 0;
-    uint16_t     x       = 0; // x position
-    uint16_t     y       = 0; // y position
-    uint16_t     w       = 0;
-    uint16_t     h       = 0;
+    eMapRoomType type    =  eMapRoomType::roomTypeNone;
+    bool         p       =  false; // processed flag
+    uint16_t     posXMin =  0;
+    uint16_t     posXMax =  0;
+    uint16_t     posYMin =  0;
+    uint16_t     posYMax =  0;
+    uint16_t     x       =  0; // x position
+    uint16_t     y       =  0; // y position
+    uint16_t     w       =  0; // room width
+    uint16_t     h       =  0; // room height
     int16_t      exitN   = -1; // -1 for none, else connecting room ID
     int16_t      exitS   = -1; // -1 for none, else connecting room ID
     int16_t      exitE   = -1; // -1 for none, else connecting room ID
@@ -180,12 +191,12 @@ struct sMapRoom
 struct sMap
 {
     // Linked list
-    sMap*          next            = nullptr;
-    std::uint32_t  UID             = 0;
+    sMap*          next              = nullptr;
+    std::uint32_t  UID               = 0;
 
     // Infomation
-    std::string    name            = "";
-    std::string    fileName        = "";
+    std::string    name              = "";
+    std::string    fileName          = "";
 
     // Player start information
     std::uint32_t  playerStartPortal = 0;
@@ -193,31 +204,49 @@ struct sMap
     float          playerStartDir    = 0.0f;
 
     // Entity to hold the floor
-    sEntity*       floor           = nullptr;
+    sEntity*       floor             = nullptr;
 
     // Tile
-    std::uint32_t  width           = 0;
-    std::uint32_t  height          = 0;
-    std::uint32_t  numTiles        = 0;
-    sMapTile*      tile            = nullptr;
+    std::uint32_t  width             = 0;
+    std::uint32_t  height            = 0;
+    std::uint32_t  numTiles          = 0;
+    sMapTile*      tile              = nullptr;
 
     // PCG
-    sMapGenData    genData         = {};
+    sMapGenData    genData           = {};
 
     // Biome
-    sMapBiome*     biome           = nullptr;
+    sMapBiome*     biome             = nullptr;
     
     // Map events
-    std::uint32_t  eventCount      = 0;
-    sMapEvent*     event           = nullptr;
+    std::uint32_t  eventCount        = 0;
+    sMapEvent*     event             = nullptr;
     
     // Map portals
-    std::uint32_t  portalCount     = 0;
-    sMapPortal*    portal          = nullptr;
+    std::uint32_t  portalCount       = 0;
+    sMapPortal*    portal            = nullptr;
 
     // Map Rooms
-    std::uint32_t  roomCount       = 0;
-    sMapRoom*      room            = nullptr;
+    std::uint32_t  roomCount         = 0;
+    sMapRoom*      room              = nullptr;
+};
+
+
+struct sMapPrefab
+{
+    // Tile
+    std::uint32_t  width             = 0;
+    std::uint32_t  height            = 0;
+    std::uint32_t  numTiles          = 0;
+    sMapTile*      tile              = nullptr;
+
+    // Map events
+    std::uint32_t  eventCount        = 0;
+    sMapEvent*     event             = nullptr;
+    
+    // Map portals
+    std::uint32_t  portalCount       = 0;
+    sMapPortal*    portal            = nullptr;
 };
 
 #endif //MAP_DEFINE_HPP

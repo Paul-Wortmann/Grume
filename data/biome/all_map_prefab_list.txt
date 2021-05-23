@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding= "UTF-8"?>
+<all_map_prefab_list>
+
+#    roomTypeNone         =  0, // None / empty
+#    roomTypeCell         =  1, // Prison Cell
+#    roomTypeSecret       =  2, // Secret room
+#    roomTypeStairwell    =  3, // Stairwell
+#    roomTypeStore        =  4, // Store
+#    roomTypeBlacksmith   =  5, // Blacksmith
+#    roomTypeCanteen      =  6, // Canteen
+#    roomTypeStorage      =  7, // Storage room
+#    roomTypeLibrary      =  8, // Library
+#    roomTypeAlchemyLab   =  9, // Alchemy Lab
+#    roomTypeLaboratory   = 10, // Laboratory
+#    roomTypeTorture      = 11  // Torture Chamber
+
+    <prefabs>
+        # Room type, width, height, prefab filename
+        <prefab>1 9 9 cell_1_001.txt</prefab>
+    </prefabs>
+
+</all_map_prefab_list>

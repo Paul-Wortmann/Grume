@@ -60,16 +60,16 @@ void cMapManager::m_genD1_internal(sMap*& _map)
             }
             if (roomShape == eRoomShape::shapeCircle)
             {
-                if (genCircleRoomOK(_map, x, y, r + _map->genData.roomBorder))
+                if (m_genCircleRoomOK(_map, x, y, r + _map->genData.roomBorder))
                 {
-                    genCircleRoom(_map, x, y, r);
+                    m_genCircleRoom(_map, x, y, r);
                 }
             }
             if (roomShape == eRoomShape::shapeSquare)
             {
-                if (genSquareRoomOK(_map, x, y, r + _map->genData.roomBorder))
+                if (m_genSquareRoomOK(_map, x, y, r + _map->genData.roomBorder))
                 {
-                    genSquareRoom(_map, x, y, r);
+                    m_genSquareRoom(_map, x, y, r);
                 }
             }
         }
@@ -91,7 +91,7 @@ void cMapManager::m_generateMap_D1(sMap*& _map)
             _map->genData.seed = time(NULL);
             srand (_map->genData.seed);
             m_genD1_internal(_map);
-            if ((mapGetFloorArea(_map) > (_map->numTiles / _map->genData.floorAreaMin)) && (_map->roomCount >= _map->genData.roomMin))
+            if ((m_mapGetFloorArea(_map) > (_map->numTiles / _map->genData.floorAreaMin)) && (_map->roomCount >= _map->genData.roomMin))
             {
                 i = _map->genData.pass;
             }
@@ -102,13 +102,13 @@ void cMapManager::m_generateMap_D1(sMap*& _map)
     m_generatePerimeterWall(_map);
 
     // Room identification
-    mapInitRooms(_map);
+    m_mapInitRooms(_map);
 
     // Room connection
-    mapConnectRooms(_map);
+    m_mapConnectRooms(_map);
 
     // Room add prefab
-    mapPrefabRooms(_map);
+    m_mapPrefabRooms(_map);
 
     // Populate the map with objects
     m_generateMap_objects(_map);

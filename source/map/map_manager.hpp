@@ -87,74 +87,76 @@ class cMapManager : public tcLinkedList<sMap>
         sEntityModel* m_generateFloor(sMap*& _map);
 
         // map_generate_addWalls.cpp
-        void m_addWallEntities(sMap*& _map);
-        void m_addWallWideEntities(sMap*& _map);
-        void m_addWallThinEntities(sMap*& _map);
-        bool m_isFlat(sMap*& _map, const uint32 &_tile);
-        bool m_isNone(sMap*& _map, const std::uint32_t &_tile);
-        bool m_isFloor(sMap*& _map, const std::uint32_t &_tile);
-        bool m_isWall(sMap*& _map, const std::uint32_t &_tile);
-        bool m_isDWall(sMap*& _map, const std::uint32_t &_tile);
-        bool m_isDoor(sMap*& _map, const std::uint32_t &_tile);
+        void     m_addWallEntities(sMap*& _map);
+        void     m_addWallWideEntities(sMap*& _map);
+        void     m_addWallThinEntities(sMap*& _map);
+        bool     m_isFlat(sMap*& _map, const uint32 &_tile);
+        bool     m_isNone(sMap*& _map, const std::uint32_t &_tile);
+        bool     m_isFloor(sMap*& _map, const std::uint32_t &_tile);
+        bool     m_isWall(sMap*& _map, const std::uint32_t &_tile);
+        bool     m_isDWall(sMap*& _map, const std::uint32_t &_tile);
+        bool     m_isDoor(sMap*& _map, const std::uint32_t &_tile);
 
         // map_generate_addObjects.cpp
-        void m_addObjectEntities(sMap*& _map);
+        void     m_addObjectEntities(sMap*& _map);
         
         // map_generate_addNPCs.cpp
-        void m_addNPCEntities(sMap*& _map);
+        void     m_addNPCEntities(sMap*& _map);
 
         // map_generate_npcs.cpp
-        void m_generateMap_npcs(sMap*& _map);
+        void     m_generateMap_npcs(sMap*& _map);
 
         // map_generate_objects.cpp
-        void m_generateMap_objects(sMap*& _map);
+        void     m_generateMap_objects(sMap*& _map);
 
         // map_generate_utils.cpp
-        void m_generatePerimeterWall(sMap*& _map);
-        uint32_t mapGetFloorMin(sMap*& _map);
-        uint32_t mapGetFloorMax(sMap*& _map);
-        uint32_t mapGetFloorArea(sMap*& _map);
-        void mapRemoveAnomalies(sMap*& _map);
+        void     m_generatePerimeterWall(sMap*& _map);
+        uint32_t m_mapGetFloorMin(sMap*& _map);
+        uint32_t m_mapGetFloorMax(sMap*& _map);
+        uint32_t m_mapGetFloorArea(sMap*& _map);
+        void     m_mapRemoveAnomalies(sMap*& _map);
 
         // map_generate_rooms.cpp
-        bool genCircleRoomOK(sMap*& _map, const uint32_t &_x, const uint32_t &_y, const uint32_t &_r);
-        void genCircleRoom(sMap*& _map, const uint32_t &_x, const uint32_t &_y, const uint32_t &_r);
-        bool genSquareRoomOK(sMap*& _map, const uint32_t &_x, const uint32_t &_y, const uint32_t &_r);
-        void genSquareRoom(sMap*& _map, const uint32_t &_x, const uint32_t &_y, const uint32_t &_r);
-        void mapFindRooms(sMap*& _map);
-        uint32_t mapGetRoomArea(sMap*& _map, const uint16_t &_r);
-        void mapRoomDiscardAllButLargest(sMap*& _map);
-        void mapInitRooms(sMap*& _map);
+        bool     m_genCircleRoomOK(sMap*& _map, const uint32_t &_x, const uint32_t &_y, const uint32_t &_r);
+        void     m_genCircleRoom(sMap*& _map, const uint32_t &_x, const uint32_t &_y, const uint32_t &_r);
+        bool     m_genSquareRoomOK(sMap*& _map, const uint32_t &_x, const uint32_t &_y, const uint32_t &_r);
+        void     m_genSquareRoom(sMap*& _map, const uint32_t &_x, const uint32_t &_y, const uint32_t &_r);
+        void     m_mapFindRooms(sMap*& _map);
+        uint32_t m_mapGetRoomArea(sMap*& _map, const uint16_t &_r);
+        void     m_mapRoomDiscardAllButLargest(sMap*& _map);
+        void     m_mapInitRooms(sMap*& _map);
+        void     m_mapInitRoomsND(sMap*& _map); // No discard
         
         // map_generate_connectivity.cpp
-        void mapConnectRooms_SL(sMap*& _map, const uint16_t &_r1, const uint16_t &_r2);
-        void mapConnectRooms_ND(sMap*& _map, const uint16_t &_r1, const uint16_t &_r2);
-        void mapConnectRooms_DW(sMap*& _map, const uint16_t &_r1, const uint16_t &_r2);
-        void mapConnectRooms(sMap*& _map);
+        void     m_mapConnectRooms_SL(sMap*& _map, const uint16_t &_r1, const uint16_t &_r2);
+        void     m_mapConnectRooms_ND(sMap*& _map, const uint16_t &_r1, const uint16_t &_r2);
+        void     m_mapConnectRooms_DW(sMap*& _map, const uint16_t &_r1, const uint16_t &_r2);
+        void     m_mapConnectRooms(sMap*& _map);
         
-        // map_generate_connectivity.cpp
-        void mapPrefabRooms(sMap*& _map);
+        // map_generate_prefab.cpp
+        void     m_mapPrefabRooms(sMap*& _map);
+        void     m_mapApplyPrefab(sMap*& _map, const std::string &_fileName, const std::uint32_t &_r);
 
         // map_generate_C1.cpp
-        std::uint32_t m_numNeighborTiles(sMap*& _map, const std::uint32_t &_tile);
-        void m_generateMap_C1(sMap*& _map);
+        uint32_t m_numNeighborTiles(sMap*& _map, const std::uint32_t &_tile);
+        void     m_generateMap_C1(sMap*& _map);
         
         // map_generate_C2.cpp
-        void m_generateMap_C2(sMap*& _map);
+        void     m_generateMap_C2(sMap*& _map);
         
         // map_generate_D1.cpp
-        void m_genD1_internal(sMap*& _map);
-        void m_generateMap_D1(sMap*& _map);
+        void     m_genD1_internal(sMap*& _map);
+        void     m_generateMap_D1(sMap*& _map);
         
         // map_generate_D2.cpp
-        void m_genD2_internal(sMap*& _map);
-        void m_generateMap_D2(sMap*& _map);
+        void     m_genD2_internal(sMap*& _map);
+        void     m_generateMap_D2(sMap*& _map);
         
         // map_generate_M1.cpp
-        void m_generateMap_M1(sMap*& _map);
+        void     m_generateMap_M1(sMap*& _map);
         
         // map_generate_T1.cpp
-        void m_generateMap_T1(sMap*& _map);
+        void     m_generateMap_T1(sMap*& _map);
 
 };
 

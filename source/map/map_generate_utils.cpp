@@ -37,7 +37,7 @@ void cMapManager::m_generatePerimeterWall(sMap*& _map)
     }
 }
 
-uint32_t cMapManager::mapGetFloorMin(sMap*& _map)
+uint32_t cMapManager::m_mapGetFloorMin(sMap*& _map)
 {
     if (_map->tile != nullptr)
     {
@@ -50,7 +50,7 @@ uint32_t cMapManager::mapGetFloorMin(sMap*& _map)
     return 0;
 }
 
-uint32_t cMapManager::mapGetFloorMax(sMap*& _map)
+uint32_t cMapManager::m_mapGetFloorMax(sMap*& _map)
 {
     if (_map->tile != nullptr)
     {
@@ -63,7 +63,7 @@ uint32_t cMapManager::mapGetFloorMax(sMap*& _map)
     return 0;
 }
 
-uint32_t cMapManager::mapGetFloorArea(sMap*& _map)
+uint32_t cMapManager::m_mapGetFloorArea(sMap*& _map)
 {
     if (_map->tile != nullptr)
     {
@@ -78,7 +78,7 @@ uint32_t cMapManager::mapGetFloorArea(sMap*& _map)
     return 0;
 }
 
-void cMapManager::mapRemoveAnomalies(sMap*& _map)
+void cMapManager::m_mapRemoveAnomalies(sMap*& _map)
 {
     uint32_t tileT = 0;
     for (uint16_t k = 0; k < _map->genData.pass; k++)

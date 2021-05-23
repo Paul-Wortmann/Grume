@@ -189,7 +189,7 @@ void cMapManager::m_generateMap_D2(sMap*& _map)
                 _map->genData.seed = time(NULL);
                 srand (_map->genData.seed);
                 m_genD2_internal(_map);
-                if ((mapGetFloorArea(_map) > (_map->numTiles / _map->genData.floorAreaMin)) && (_map->roomCount >= _map->genData.roomMin))
+                if ((m_mapGetFloorArea(_map) > (_map->numTiles / _map->genData.floorAreaMin)) && (_map->roomCount >= _map->genData.roomMin))
                 {
                     i = _map->genData.pass;
                 }
@@ -201,13 +201,13 @@ void cMapManager::m_generateMap_D2(sMap*& _map)
     m_generatePerimeterWall(_map);
 
     // Room identification
-    mapInitRooms(_map);
+    m_mapInitRooms(_map);
 
     // Room connection
-    mapConnectRooms(_map);
+    m_mapConnectRooms(_map);
 
     // Room add prefab
-    mapPrefabRooms(_map);
+    m_mapPrefabRooms(_map);
 
     // Populate the map with objects
     m_generateMap_objects(_map);
