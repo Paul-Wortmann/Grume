@@ -114,72 +114,109 @@ void cMapManager::m_mapPrefabRooms(sMap*& _map)
     xmlMapPrefabDatabaseFile.load(FILE_PATH_BIOME + _map->biome->databaseMapPrefab.fileName);
     if (xmlMapPrefabDatabaseFile.lineCount() > 0)
     {
+        // temporary prefab data storage;
+        struct sPrefabData
+        {
+            std::uint32_t roomType   = 0;
+            std::uint32_t roomWidth  = 0;
+            std::uint32_t roomHeight = 0;
+            std::string   fileName   = "";
+        };
+        
         // Get the data from the XML file
         std::uint32_t prefabCount = xmlMapPrefabDatabaseFile.getInstanceCount("<prefab>");
-
-        gLogWrite(LOG_INFO, "Prefab count: " + std::to_string(prefabCount), __FILE__, __LINE__, __FUNCTION__);
+        sPrefabData* tPrefabData = new sPrefabData[prefabCount];
+        for (std::uint32_t p = 0; p < prefabCount; ++p)
+        {
+            std::string tPrefabString = xmlMapPrefabDatabaseFile.getString("<prefab>", p + 1);
+            tPrefabString += "    ";
+            std::uint32_t tPrefabStringLength = tPrefabString.length();
+            std::uint32_t tStringNum = 0;
+            std::string   tString = "";
+            if (tPrefabStringLength > 6)
+            {
+                for (std::uint32_t j = 0; j < tPrefabStringLength; ++j)
+                {
+                    if (tPrefabString[j] == ' ')
+                    {
+                        if (tStringNum == 0)
+                        {
+                            tPrefabData[p].roomType = std::stoi(tString);
+                        }
+                        else if (tStringNum == 1)
+                        {
+                            tPrefabData[p].roomWidth = std::stoi(tString);
+                        }
+                        else if (tStringNum == 2)
+                        {
+                            tPrefabData[p].roomHeight = std::stoi(tString);
+                        }
+                        else if (tStringNum == 3)
+                        {
+                            tPrefabData[p].fileName = std::string(tString);
+                        }
+                        tStringNum++;
+                        tString = "";
+                    }
+                    else
+                    {
+                        tString += tPrefabString[j];
+                    }
+                }
+            }
+        }
 
         // loop through each room in the map
         for (std::uint32_t r = 0; r < _map->roomCount; ++r)
         {
-            // loop through each prefab
+            // loop through each prefab, count number compatible
+            std::uint32_t numCompatible = 0;
             for (std::uint32_t p = 0; p < prefabCount; ++p)
             {
-                std::string tPrefabString = xmlMapPrefabDatabaseFile.getString("<prefab>", p + 1);
-                tPrefabString += "    ";
-                std::uint32_t tPrefabStringLength = tPrefabString.length();
-                std::uint32_t tPrefabRoomType   = 0;
-                std::uint32_t tPrefabRoomWidth  = 0;
-                std::uint32_t tPrefabRoomHeight = 0;
-                std::string   tPrefabFileName   = "";
-                std::uint32_t tStringNum = 0;
-                std::string   tString = "";
-                if (tPrefabStringLength > 6)
-                {
-                    for (std::uint32_t j = 0; j < tPrefabStringLength; ++j)
-                    {
-                        if (tPrefabString[j] == ' ')
-                        {
-                            if (tStringNum == 0)
-                            {
-                                tPrefabRoomType = std::stoi(tString);
-                            }
-                            else if (tStringNum == 1)
-                            {
-                                tPrefabRoomWidth = std::stoi(tString);
-                            }
-                            else if (tStringNum == 2)
-                            {
-                                tPrefabRoomHeight = std::stoi(tString);
-                            }
-                            else if (tStringNum == 3)
-                            {
-                                tPrefabFileName = std::string(tString);
-                            }
-                            tStringNum++;
-                            tString = "";
-                        }
-                        else
-                        {
-                            tString += tPrefabString[j];
-                        }
-                    }
-                }
-                // look for a match and apply the prefab
-                if ((_map->room[r].w == tPrefabRoomWidth) &&
-                    (_map->room[r].h == tPrefabRoomHeight) &&
+                // look for a match
+                if ((_map->room[r].w == tPrefabData[p].roomWidth) &&
+                    (_map->room[r].h == tPrefabData[p].roomHeight) &&
                     ((_map->room[r].type == eMapRoomType::roomTypeNone) || 
-                     (_map->room[r].type == static_cast<eMapRoomType>(tPrefabRoomType))))
+                     (_map->room[r].type == static_cast<eMapRoomType>(tPrefabData[p].roomType))))
                 {
-                    m_mapApplyPrefab(_map, tPrefabFileName, r);
-                    p = prefabCount;
+                    numCompatible++;
                 }
             }
-            
+            // Select one at random and apply it.
+            if (numCompatible > 0)
+            {
+                std::uint32_t prefabNum = 0;
+
+                // Generate random number
+                std::uint32_t rndPrefab = rand() % numCompatible;
+
+                // Generate random number
+                for (std::uint32_t p = 0; p < prefabCount; ++p)
+                {
+                    // look for a match and apply the prefab
+                    if ((_map->room[r].w == tPrefabData[p].roomWidth) &&
+                        (_map->room[r].h == tPrefabData[p].roomHeight) &&
+                        ((_map->room[r].type == eMapRoomType::roomTypeNone) || 
+                         (_map->room[r].type == static_cast<eMapRoomType>(tPrefabData[p].roomType))))
+                    {
+                        if (prefabNum == rndPrefab)
+                        {
+                            m_mapApplyPrefab(_map, tPrefabData[p].fileName, r);
+                        }
+                        prefabNum++;
+                    }
+                }
+            }
         }
 
         // Clean up
         xmlMapPrefabDatabaseFile.free();
+        
+        if (tPrefabData != nullptr)
+        {
+            delete[] tPrefabData;
+            tPrefabData = nullptr;
+        }
     }
 }
 

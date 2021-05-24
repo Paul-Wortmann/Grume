@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding= "UTF-8"?>
-<music_set>
+<music_database>
 
     <music_define>
         <music>town</music>
@@ -31,6 +31,6 @@
         <dungeon_entity>cave_001.ogg</dungeon_entity>
     </dungeon>
 
-</music_set>
+</music_database>
 
 

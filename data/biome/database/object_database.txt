@@ -1,5 +1,5 @@
 ﻿
-<object_set>
+<object_database>
 
     <object_define>
         <object>medieval_buildings</object>  # 1
@@ -340,7 +340,7 @@
         <door_entity>doors/dungeon_door_2_001.txt</door_entity>
     </door>
 
-</object_set>
+</object_database>
 
 
 

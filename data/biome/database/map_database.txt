@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding= "UTF-8"?>
-<all_map_list>
+<map_database>
     <maps>
         # Map number, map filename
         <map>0 town_1_001.txt</map>
@@ -9,4 +9,4 @@
         <map>4 cave_2_001.txt</map>
         <map>5 cave_3_001.txt</map>
     </maps>
-</all_map_list>
+</map_database>

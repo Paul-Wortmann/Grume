@@ -1,5 +1,5 @@
 
-<npc_set>
+<npc_database>
 
     <npc_define>
         <npc>blacksmith</npc>       # 1
@@ -34,5 +34,5 @@
         <dead_body_entity>npc/dead_body_1_001.txt</dead_body_entity>
     </dead_body>
 
-</npc_set>
+</npc_database>
 

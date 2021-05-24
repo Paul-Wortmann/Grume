@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding= "UTF-8"?>
-<all_map_prefab_list>
+<map_prefab_database>
 
 #    roomTypeNone         =  0, // None / empty
 #    roomTypeCell         =  1, // Prison Cell
@@ -17,6 +17,10 @@
     <prefabs>
         # Room type, width, height, prefab filename
         <prefab>1 9 9 cell_1_001.txt</prefab>
+        <prefab>1 9 9 cell_1_002.txt</prefab>
+        <prefab>1 9 9 cell_1_003.txt</prefab>
+        <prefab>1 9 9 cell_1_004.txt</prefab>
     </prefabs>
 
-</all_map_prefab_list>
+</map_prefab_database>
+

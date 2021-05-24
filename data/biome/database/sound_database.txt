@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding= "UTF-8"?>
-<sound_set>
+<sound_database>
 
     <sound_define>
         <sound>object</sound>
@@ -75,6 +75,6 @@
         <zombie_entity>monster/zombie/zombie_1_003.ogg</zombie_entity>
     </zombie>
 
-</sound_set>
+</sound_database>
 
 
