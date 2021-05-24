@@ -98,6 +98,12 @@
             <wall_1tx_entity>dungeon_006/dungeon_006_wall_entity_1tx_001.txt</wall_1tx_entity>
         </wall_1tx>
 
+        # Thin door models
+        <door_1td>
+            <door_1td_count>1</wall_1td_count>
+            <door_1td_entity>doors/dungeon_door_1_001.txt</door_1td_entity>
+        </door_1tg>
+
     </wall_length_1>
 
 
@@ -145,6 +151,12 @@
             <wall_3tus_count>0</wall_3tus_count>
             <wall_3tus_entity>dungeon_006/dungeon_006_wall_entity_3tus_001.txt</wall_3tus_entity>
         </wall_3tus>
+
+        # Thin door models
+        <door_3td>
+            <door_3td_count>1</wall_3td_count>
+            <door_3td_entity>doors/dungeon_gate_1_001.txt</door_3td_entity>
+        </door_3tg>
 
     </wall_length_3>
 

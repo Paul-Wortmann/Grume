@@ -5,8 +5,8 @@
       <author>Blender User</author>
       <authoring_tool>Blender 2.79.0</authoring_tool>
     </contributor>
-    <created>2021-05-24T14:56:31</created>
-    <modified>2021-05-24T14:56:31</modified>
+    <created>2021-05-24T19:21:52</created>
+    <modified>2021-05-24T19:21:52</modified>
     <unit name="meter" meter="1"/>
     <up_axis>Z_UP</up_axis>
   </asset>
@@ -66,7 +66,7 @@
         </technique_common>
       </source>
       <source id="Armature_Bone_pose_matrix-output">
-        <float_array id="Armature_Bone_pose_matrix-output-array" count="48">1 0 0 0 0 0 -1 0 0 1 0 0 0 0 0 1 1 0 0 0 0 0 -1 0 0 1 0 -2.95 0 0 0 1 1 0 0 0 0 0 -1 0 0 1 0 0 0 0 0 1</float_array>
+        <float_array id="Armature_Bone_pose_matrix-output-array" count="48">1 0 0 0 0 0 -1 0 0 1 0 -0.05000019 0 0 0 1 1 0 0 0 0 0 -1 0 0 1 0 -2.8 0 0 0 1 1 0 0 0 0 0 -1 0 0 1 0 -0.05000019 0 0 0 1</float_array>
         <technique_common>
           <accessor source="#Armature_Bone_pose_matrix-output-array" count="3" stride="16">
             <param name="TRANSFORM" type="float4x4"/>
@@ -92,7 +92,7 @@
   <library_controllers>
     <controller id="Armature_gate_1_001-skin" name="Armature">
       <skin source="#Cylinder_008-mesh">
-        <bind_shape_matrix>0.75 0 0 0 0 0.75 0 1.33333 0 0 1 1.4 0 0 0 1</bind_shape_matrix>
+        <bind_shape_matrix>0.75 0 0 0 0 0.75 0 1.33333 0 0 1 1.35 0 0 0 1</bind_shape_matrix>
         <source id="Armature_gate_1_001-skin-joints">
           <Name_array id="Armature_gate_1_001-skin-joints-array" count="1">Bone</Name_array>
           <technique_common>
@@ -102,7 +102,7 @@
           </technique_common>
         </source>
         <source id="Armature_gate_1_001-skin-bind_poses">
-          <float_array id="Armature_gate_1_001-skin-bind_poses-array" count="16">1 0 0 0 0 0 1 0 0 -1 0 0 0 0 0 1</float_array>
+          <float_array id="Armature_gate_1_001-skin-bind_poses-array" count="16">1 0 0 0 0 0 1 0.04999995 0 -1 0 0 0 0 0 1</float_array>
           <technique_common>
             <accessor source="#Armature_gate_1_001-skin-bind_poses-array" count="1" stride="16">
               <param name="TRANSFORM" type="float4x4"/>
@@ -133,7 +133,7 @@
   <library_visual_scenes>
     <visual_scene id="Scene" name="Scene">
       <node id="Armature" name="Armature" type="NODE">
-        <matrix sid="transform">1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</matrix>
+        <matrix sid="transform">1 0 0 0 0 1 0 0 0 0 1 -0.05 0 0 0 1</matrix>
         <node id="Armature_Bone" name="Bone" sid="Bone" type="JOINT">
           <matrix sid="transform">1 0 0 0 0 0 -1 0 0 1 0 0 0 0 0 1</matrix>
           <extra>

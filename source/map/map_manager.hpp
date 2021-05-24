@@ -27,7 +27,7 @@
 //#pragma pack(pop)
 
 #include "../audio/audio_manager.hpp"
-#include "../entity/entity_manager.hpp"
+#include "../entity/animation_engine.hpp"
 #include "../graphics/graphics_engine.hpp"
 #include "../graphics/graphics_engine_utils.hpp"
 #include "../core/includes.hpp"
@@ -42,9 +42,10 @@ class cMapManager : public tcLinkedList<sMap>
         // map_manager.cpp
         sMap*         getMapPointer(void) { return m_currentMap; };
         void          initialize(cEntityManager* _entityManager);
-        void          setPlayerPointer(cPlayerManager* _playerManager) { m_playerManager = _playerManager; };
-        void          setGraphicsPointer(cGraphicsEngine* _graphicsEngine) { m_graphicsEngine = _graphicsEngine; };
+        void          setAnimationPointer(cAnimationEngine* _animationEngine) { m_animationEngine = _animationEngine; };
         void          setAudioPointer(cAudioManager* _audioManager) { m_audioManager = _audioManager; };
+        void          setGraphicsPointer(cGraphicsEngine* _graphicsEngine) { m_graphicsEngine = _graphicsEngine; };
+        void          setPlayerPointer(cPlayerManager* _playerManager) { m_playerManager = _playerManager; };
         void          resetPlayerPosition(void) { m_resetPlayerPosition(); };
         void          playMusic(void) {m_playMusic(); };
         void          terminate(void);
@@ -66,16 +67,17 @@ class cMapManager : public tcLinkedList<sMap>
     protected:
 
     private:
-        cEntityManager*  m_entityManager  = nullptr;
-        cPlayerManager*  m_playerManager  = nullptr;
-        cGraphicsEngine* m_graphicsEngine = nullptr;
-        cAudioManager*   m_audioManager   = nullptr;
-        cBiomeManager    m_biomeManager   = {};
-        sMap*            m_currentMap     = nullptr;
-        std::string      m_mapMusic       = ""; // Map music file name
-        std::uint32_t    m_musicSourceID  = 0;  // Map music audio source
-        std::uint32_t    m_musicBufferID  = 0;  // Map music audio buffer
-        
+        cAnimationEngine* m_animationEngine = nullptr;
+        cEntityManager*   m_entityManager   = nullptr;
+        cPlayerManager*   m_playerManager   = nullptr;
+        cGraphicsEngine*  m_graphicsEngine  = nullptr;
+        cAudioManager*    m_audioManager    = nullptr;
+        cBiomeManager     m_biomeManager    = {};
+        sMap*             m_currentMap      = nullptr;
+        std::string       m_mapMusic        = ""; // Map music file name
+        std::uint32_t     m_musicSourceID   = 0;  // Map music audio source
+        std::uint32_t     m_musicBufferID   = 0;  // Map music audio buffer
+
         // map_manager.cpp
         void m_freeAll(void);
         void m_freeData(sMap*& _map);
@@ -96,6 +98,12 @@ class cMapManager : public tcLinkedList<sMap>
         bool     m_isWall(sMap*& _map, const std::uint32_t &_tile);
         bool     m_isDWall(sMap*& _map, const std::uint32_t &_tile);
         bool     m_isDoor(sMap*& _map, const std::uint32_t &_tile);
+
+        // map_generate_addDoors.cpp
+        void     m_addDoorEntities(sMap*& _map);
+
+        // map_generate_addEvents.cpp
+        void     m_addMapEvent(sMap*& _map, const std::uint32_t &_tile, const std::uint32_t &_type, const std::uint32_t &_data_1, const std::uint32_t &_data_2, const std::uint32_t &_data_3);
 
         // map_generate_addObjects.cpp
         void     m_addObjectEntity(sMap*& _map, const std::uint32_t &_tn, const std::uint32_t &_on, const std::uint32_t &_oi, const float &_s, const float &_yr, const std::uint32_t &_o);

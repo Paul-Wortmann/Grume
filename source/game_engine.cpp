@@ -63,8 +63,9 @@ void cGameEngine::initialize(void)
         animationEngine.initialize();
         animationEngine.setEntityHead(entityManager.getHead());
         npcManager.setEntityHead(entityManager.getHead());
-        mapManager.setGraphicsPointer(&graphicsEngine);
+        mapManager.setAnimationPointer(&animationEngine);
         mapManager.setAudioPointer(&audioManager);
+        mapManager.setGraphicsPointer(&graphicsEngine);
         playerManager.setTerrainHeight(-1.0f);
         uiManager.initialize(&entityManager);
         

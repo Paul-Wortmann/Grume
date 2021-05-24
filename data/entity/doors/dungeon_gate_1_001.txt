@@ -5,9 +5,11 @@
     <model>doors/dungeon_gate_1_001.dae</model>
     <material>common_objects/medieval_001.txt</material>
 
-    <position>0.0 0.25 0.0</position>
+    <position>0.0 0.0 0.0</position>
     <scale>1.0 1.0 1.0</scale>
-    <rotation>1.5708 1.5708 1.5708</rotation>
+    #1.5708, 3.1416
+    <rotation>0.000 0.0000 3.1416</rotation>
+    <uint_size>3 3 1</uint_size>
 
     <animation_independent>1</animation_independent>
 

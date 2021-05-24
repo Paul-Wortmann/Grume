@@ -489,6 +489,9 @@ void cMapManager::load(const std::string &_fileName)
         
         // Populate the map with walls
         m_addWallEntities(m_currentMap);
+        
+        // Populate the map with Doors
+        m_addDoorEntities(m_currentMap);
 
         // Populate the map with objects
         m_addObjectEntities(m_currentMap);
@@ -638,6 +641,7 @@ void cMapManager::process(const float32 &_dt)
                     load(nextMapFileName);
                     m_resetPlayerPosition();
                     m_graphicsEngine->initializeEntities();
+                    m_animationEngine->initializeEntities();
                     m_playMusic();
                 }
                 // Entity set (tile, type, map number, portal number)

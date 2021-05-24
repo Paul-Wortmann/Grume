@@ -97,6 +97,12 @@
             <wall_1ta_count>1</wall_1ta_count>
             <wall_1ta_entity>cave_001/cave_001_wall_entity_ta.txt</wall_1ta_entity>
         </wall_1ta>
+        # Thin door models
+
+        <door_1td>
+            <door_1td_count>1</wall_1td_count>
+            <door_1td_entity>doors/dungeon_door_1_001.txt</door_1td_entity>
+        </door_1tg>
 
     </wall_length_1>
 
@@ -146,6 +152,12 @@
             <wall_3td_entity>dungeon_001/dungeon_001_wall_entity_3td_001.txt</wall_3td_entity>
             <wall_3td_entity>dungeon_001/dungeon_001_wall_entity_3td_002.txt</wall_3td_entity>
         </wall_3td>
+
+        # Thin door models
+        <door_3td>
+            <door_3td_count>1</wall_3td_count>
+            <door_3td_entity>doors/dungeon_gate_1_001.txt</door_3td_entity>
+        </door_3tg>
 
     </wall_length_3>
 

@@ -99,14 +99,14 @@ void cEntityManager::updateModelMatrix(sEntity*& _entity)
     // 1. Translation
     glm::mat4 translationMatrix = glm::translate(glm::mat4(1), _entity->position);
 
-    // 2. Scale
-    glm::mat4 scaleMatrix = glm::scale(glm::mat4(1), _entity->scale);
-
-    // 3. Rotation
+    // 2. Rotation
     glm::mat4 rotationMatrix = glm::mat4(1);
-    rotationMatrix = glm::rotate(rotationMatrix, _entity->rotation.x, glm::vec3(1.0f, 0.0f, 0.0f));
-    rotationMatrix = glm::rotate(rotationMatrix, _entity->rotation.y, glm::vec3(0.0f, 1.0f, 0.0f));
-    rotationMatrix = glm::rotate(rotationMatrix, _entity->rotation.z, glm::vec3(0.0f, 0.0f, 1.0f));
+    rotationMatrix = glm::rotate(rotationMatrix, _entity->rotation.x, glm::vec3(1, 0, 0));
+    rotationMatrix = glm::rotate(rotationMatrix, _entity->rotation.y, glm::vec3(0, 1, 0));
+    rotationMatrix = glm::rotate(rotationMatrix, _entity->rotation.z, glm::vec3(0, 0, 1));
+
+    // 3. Scale
+    glm::mat4 scaleMatrix = glm::scale(glm::mat4(1), _entity->scale);
 
     // 4. Fianlly calculate the model matrix
     _entity->modelMatrix = translationMatrix * rotationMatrix * scaleMatrix;
