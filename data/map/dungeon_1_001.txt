@@ -157,6 +157,26 @@
 
     </events>
 
+    # roomTypeNone         =  0, // None / empty
+    # roomTypeCell         =  1, // Prison Cell
+    # roomTypeSecret       =  2, // Secret room
+    # roomTypeStairwell    =  3, // Stairwell
+    # roomTypeStore        =  4, // Store
+    # roomTypeBlacksmith   =  5, // Blacksmith
+    # roomTypeCanteen      =  6, // Canteen
+    # roomTypeStorage      =  7, // Storage room
+    # roomTypeLibrary      =  8, // Library
+    # roomTypeAlchemyLab   =  9, // Alchemy Lab
+    # roomTypeLaboratory   = 10, // Laboratory
+    # roomTypeTorture      = 11  // Torture Chamber
+    <rooms>
+        #Tile (any within the room), type, ignore room number (use for the interconnecting route, -1 for none)
+        <room_type_set>0416 1 0</room_type_set>
+        <room_type_set>0426 3 0</room_type_set>
+        <room_type_set>0546 7 0</room_type_set>
+        <room_type_set>0676 9 0</room_type_set>
+    </rooms>
+
     <debris_objects>
         #object number, scale max, scale min, prevalence, obstacle
         <debris>6 0.5 1.0 15 0</debris> # bones

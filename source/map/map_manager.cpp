@@ -472,14 +472,66 @@ void cMapManager::load(const std::string &_fileName)
         {
             // Identify rooms (no discard)
             m_mapInitRoomsND(m_currentMap);
+            
+            // If room types specifid in file, apply them
+            std::uint32_t roomTypeSetCount = xmlMapFile.getInstanceCount("<room_type_set>");
+            for (uint32 i = 0; i < roomTypeSetCount; ++i)
+            {
+                // Load the data from the map file
+                std::string troomTypeSetString = xmlMapFile.getString("<room_type_set>", i + 1);
+                troomTypeSetString += "    ";
+                std::uint32_t troomTypeSetStringLength = troomTypeSetString.length();
+                std::uint32_t tRoomTile   = 0;
+                std::uint32_t tRoomType   = 0;
+                std::int32_t  tRoomIgnore = 0;
+                std::uint32_t tStringNum  = 0;
+                std::string   tString     = "";
+                if (troomTypeSetStringLength > 6)
+                {
+                    for (std::uint32_t j = 0; j < troomTypeSetStringLength; ++j)
+                    {
+                        if (troomTypeSetString[j] == ' ')
+                        {
+                            if (tStringNum == 0)
+                            {
+                                tRoomTile = std::stoi(tString);
+                            }
+                            else if (tStringNum == 1)
+                            {
+                                tRoomType = std::stoi(tString);
+                            }
+                            else if (tStringNum == 2)
+                            {
+                                tRoomIgnore = std::stoi(tString);
+                            }
+                            tStringNum++;
+                            tString = "";
+                        }
+                        else
+                        {
+                            tString += troomTypeSetString[j];
+                        }
+                    }
+                }
+                
+                // Set the room type
+                int32_t roomNum = m_getRoomFromTile(m_currentMap, tRoomTile, tRoomIgnore);
+                if (roomNum >= 0)
+                {
+                    m_currentMap->room[roomNum].type = static_cast<eMapRoomType>(tRoomType);
+                }
+
+                std::cout << "Room tile: " << tRoomTile;
+                std::cout << " - Room num:  " << roomNum << std::endl;
+            }
+            
+            //<room_type_set>
+            
             std::cout << "Room count: " << m_currentMap->roomCount << std::endl;
             for (std::uint16_t i = 0; i < m_currentMap->roomCount; ++i)
             {
                 std::cout << "Room number: " << i;
-                std::cout << " x " << m_currentMap->room[i].x;
-                std::cout << " y " << m_currentMap->room[i].y;
-                std::cout << " w " << m_currentMap->room[i].w;
-                std::cout << " h " << m_currentMap->room[i].h;
+                std::cout << " type: " << static_cast<std::uint16_t>(m_currentMap->room[i].type);
                 std::cout << std::endl;
             }
 

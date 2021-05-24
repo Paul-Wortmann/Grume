@@ -166,7 +166,6 @@ sEntity* cEntityManager::load(const std::string& _fileName, sEntity* _entity)
         for (std::uint32_t i = 0; i < _entity->stateCount; ++i)
         {
             _entity->state[i].name = xmlFile.getString("<state_name>", 1 + i);
-            std::cout << "State: " << _entity->state[i].name << std::endl;
             _entity->state[i].audioFile = xmlFile.getString("<state_sound>", 1 + i);
             _entity->state[i].animation = xmlFile.getVec3("<state_animation>", 1 + i);
         }

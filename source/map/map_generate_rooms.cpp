@@ -185,13 +185,21 @@ static void m_mapRoomSizeLocation(sMap*& _map)
                     if ((_map->tile[(j * _map->width) + k].room == i) && (_map->tile[(j * _map->width) + k].base == eTileBase::tileFloor))
                     {
                         if (k < _map->room[i].posXMin)
+                        {
                             _map->room[i].posXMin = k;
+                        }
                         if (k > _map->room[i].posXMax)
+                        {
                             _map->room[i].posXMax = k;
+                        }
                         if (j < _map->room[i].posYMin)
+                        {
                             _map->room[i].posYMin = j;
+                        }
                         if (j > _map->room[i].posYMax)
+                        {
                             _map->room[i].posYMax = j;
+                        }
                     }
                 }
             }
@@ -294,4 +302,29 @@ void cMapManager::m_mapInitRoomsND(sMap*& _map)
         }
         m_mapRoomSizeLocation(_map);
     }
+}
+
+int32_t cMapManager::m_getRoomFromTile(sMap*& _map, const uint32_t &_tile, const int32_t &_roomIgnore)
+{
+    if (_map->roomCount > 0)
+    {
+        for (uint16_t i = 0; i < _map->roomCount; ++i)
+        {
+            if (static_cast<int32_t>(i) != _roomIgnore)
+            {
+                uint32_t sx = _map->room[i].x - (_map->room[i].w / 2);
+                uint32_t sy = _map->room[i].y - (_map->room[i].h / 2);
+                uint32_t ex = _map->room[i].x + (_map->room[i].w / 2);
+                uint32_t ey = _map->room[i].y + (_map->room[i].h / 2);
+                uint32_t tx = _tile % _map->width;
+                uint32_t ty = _tile / _map->width;
+                
+                if ((tx >= sx) && (tx <= ex) && (ty >= sy) && (ty <= ey))
+                {
+                    return i;
+                }
+            }
+        }
+    }
+    return -1;
 }

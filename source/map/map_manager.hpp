@@ -135,6 +135,7 @@ class cMapManager : public tcLinkedList<sMap>
         void     m_mapRoomDiscardAllButLargest(sMap*& _map);
         void     m_mapInitRooms(sMap*& _map);
         void     m_mapInitRoomsND(sMap*& _map); // No discard
+        int32_t  m_getRoomFromTile(sMap*& _map, const uint32_t &_tile, const int32_t &_roomIgnore = -1);
         
         // map_generate_connectivity.cpp
         void     m_mapConnectRooms_SL(sMap*& _map, const uint16_t &_r1, const uint16_t &_r2);
