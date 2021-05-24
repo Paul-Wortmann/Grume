@@ -161,7 +161,7 @@
     </debris_objects>
 
     <objects>
-        #tile number, object number, scale, y-rotation
+        #tile number, object number, scale, y-rotation, obstacle
         
         # Upstairs doors
         <object>1041 32 01 1.0 0.0000 0</object> # Canteen / Food store lab door
@@ -169,16 +169,16 @@
         
         
         # Library
-        <object>1837 29 06 1.0 1.5708 1</object> # Town props - bookshelf
-        <object>2237 29 06 1.0 1.5708 1</object> # Town props - bookshelf
+        <object>1837 29 30 1.0 1.5708 1</object> # Town props - bookshelf
+        <object>2237 29 30 1.0 1.5708 1</object> # Town props - bookshelf
         <object>1839 29 06 1.0 -1.5708 1</object> # Town props - bookshelf
         <object>2239 29 06 1.0 -1.5708 1</object> # Town props - bookshelf
-        <object>1840 29 06 1.0 1.5708 1</object> # Town props - bookshelf
-        <object>2240 29 06 1.0 1.5708 1</object> # Town props - bookshelf
+        <object>1840 29 30 1.0 1.5708 1</object> # Town props - bookshelf
+        <object>2240 29 30 1.0 1.5708 1</object> # Town props - bookshelf
         <object>1843 29 06 1.0 -1.5708 1</object> # Town props - bookshelf
         <object>2243 29 06 1.0 -1.5708 1</object> # Town props - bookshelf
-        <object>1844 29 06 1.0 1.5708 1</object> # Town props - bookshelf
-        <object>2244 29 06 1.0 1.5708 1</object> # Town props - bookshelf
+        <object>1844 29 30 1.0 1.5708 1</object> # Town props - bookshelf
+        <object>2244 29 30 1.0 1.5708 1</object> # Town props - bookshelf
         <object>1846 29 06 1.0 -1.5708 1</object> # Town props - bookshelf
         <object>2246 29 06 1.0 -1.5708 1</object> # Town props - bookshelf
         # Alchemy lab 2

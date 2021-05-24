@@ -31,7 +31,7 @@
 
     <object_data>
         #tile number (relative to the prefab), object number, scale, y-rotation, obstacle
-        <object>40 29 06 1.0 1.5708 1</object> # Town props - bookshelf
+        <object>40 29 30 1.0 1.5708 1</object> # Town props - bookshelf
     <object_data>
 
 </map_prefab>

@@ -267,7 +267,7 @@
     </torch>
 
     <town_props>
-        <town_props_count>29</town_props_count>
+        <town_props_count>30</town_props_count>
         <town_props_entity>town_objects/alchemy_table_1_001.txt</town_props_entity>
         <town_props_entity>town_objects/bar_counter_1_001.txt</town_props_entity>
         <town_props_entity>town_objects/bed_1_001.txt</town_props_entity>
@@ -297,6 +297,7 @@
         <town_props_entity>town_objects/tankard_1_001.txt</town_props_entity>
         <town_props_entity>town_objects/trough_1_001.txt</town_props_entity>
         <town_props_entity>town_objects/wood_fire_1_001.txt</town_props_entity>
+        <town_props_entity>town_objects/bookshelf_2_001.txt</town_props_entity>
     </town_props>
 
     <book>
