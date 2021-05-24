@@ -111,7 +111,7 @@ void cMapManager::m_mapPrefabRooms(sMap*& _map)
 {
     // Open the prefab database file
     cXML xmlMapPrefabDatabaseFile;
-    xmlMapPrefabDatabaseFile.load(FILE_PATH_BIOME + _map->biome->allMapPrefabList.fileName);
+    xmlMapPrefabDatabaseFile.load(FILE_PATH_BIOME + _map->biome->databaseMapPrefab.fileName);
     if (xmlMapPrefabDatabaseFile.lineCount() > 0)
     {
         // Get the data from the XML file

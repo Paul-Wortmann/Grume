@@ -36,7 +36,7 @@ void cMapManager::m_addNPCEntities(sMap*& _map)
 
     // Load the biome npc file
     cXML xmlNPCFile;
-    xmlNPCFile.load(FILE_PATH_BIOME + _map->biome->NPCSet.fileName);
+    xmlNPCFile.load(FILE_PATH_BIOME + _map->biome->databaseNPC.fileName);
     
     // Load the map file
     cXML xmlMapFile;

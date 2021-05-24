@@ -42,7 +42,7 @@ void cMapManager::m_addObjectEntity(sMap*& _map,              // Map pointer
 
     // Load the biome object file
     cXML xmlObjectFile;
-    xmlObjectFile.load(FILE_PATH_BIOME + _map->biome->ObjectSet.fileName);
+    xmlObjectFile.load(FILE_PATH_BIOME + _map->biome->databaseObject.fileName);
     
     // Only contine if we can load the biome object file and the map file
     if (xmlObjectFile.lineCount() > 0)
@@ -116,7 +116,7 @@ void cMapManager::m_addObjectEntities(sMap*& _map)
 
     // Load the biome object file
     cXML xmlObjectFile;
-    xmlObjectFile.load(FILE_PATH_BIOME + _map->biome->ObjectSet.fileName);
+    xmlObjectFile.load(FILE_PATH_BIOME + _map->biome->databaseObject.fileName);
     
     // Load the map file
     cXML xmlMapFile;

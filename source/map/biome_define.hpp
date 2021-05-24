@@ -32,13 +32,6 @@ struct sMapFloorSpritesheet
     std::string fileName = "";
 };
 
-struct sMapMusicSet
-{
-    std::string   name     = "";
-    std::string   fileName = "";
-    std::uint32_t count    = 0;
-};
-
 struct sMapMusicTag
 {
     std::string   name     = "";
@@ -49,25 +42,38 @@ struct sMusicTrack
     std::uint32_t no       = 0; // Default == 0 (random)
 };
 
-struct sMapNPCSet
+struct sDatabaseMusic
+{
+    std::string   name     = "";
+    std::string   fileName = "";
+    std::uint32_t count    = 0;
+};
+
+struct sDatabaseMap
+{
+    std::string fileName = "";
+};
+
+struct sDatabaseMapPrefab
+{
+    std::string fileName = "";
+};
+
+struct sDatabaseNPC
 {
     std::string name     = "";
     std::string fileName = "";
 };
 
-struct sMapObjectSet
+struct sDatabaseObject
 {
     std::string name     = "";
     std::string fileName = "";
 };
 
-struct sAllMapList
+struct sDatabaseSound
 {
-    std::string fileName = "";
-};
-
-struct sAllMapPrefabList
-{
+    std::string name     = "";
     std::string fileName = "";
 };
 
@@ -119,19 +125,21 @@ struct sMapBiome
     std::string       name             = "";
     std::string       fileName         = "";
 
-    // Data sets
-    sMapMusicSet      MusicSet         = {};
+    // Data
     sMapMusicTag      MusicTag         = {};
     sMusicTrack       MusicTrack       = {};
-    sMapNPCSet        NPCSet           = {};
-    sMapObjectSet     ObjectSet        = {};
     sMapWallSet       WallSet          = {};
-    sAllMapList       allMapList       = {};
-    sAllMapPrefabList allMapPrefabList = {};
-    
+
     // Map floor spritesheet
     sMapFloorSpritesheet floorSpritesheet = {};
+
+    // Databases
+    sDatabaseMusic     databaseMusic     = {};
+    sDatabaseMap       databaseMap       = {};
+    sDatabaseMapPrefab databaseMapPrefab = {};
+    sDatabaseNPC       databaseNPC       = {};
+    sDatabaseObject    databaseObject    = {};
+    sDatabaseSound     databaseSound     = {};
 };
 
 #endif //BIOME_DEFINE_HPP
-

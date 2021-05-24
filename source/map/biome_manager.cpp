@@ -85,21 +85,32 @@ sMapBiome* cBiomeManager::load(const std::string &_fileName)
         tBiome->fileName = _fileName;
 
         // Get the data from the XML file
+
+        // Info
         tBiome->name                      = xmlFile.getString ("<name>");
-        tBiome->MusicSet.fileName         = xmlFile.getString ("<music_set>");
+
+        // Data
         tBiome->MusicTag.name             = xmlFile.getString ("<music_tag>");
         tBiome->MusicTrack.no             = xmlFile.getInteger("<music_track>");
-        tBiome->NPCSet.fileName           = xmlFile.getString ("<npc_set>");
-        tBiome->ObjectSet.fileName        = xmlFile.getString ("<object_set>");
         tBiome->WallSet.fileName          = xmlFile.getString ("<wall_set>");
         tBiome->floorSpritesheet.fileName = xmlFile.getString ("<floor_spritesheet>");
-        tBiome->allMapList.fileName       = xmlFile.getString ("<map_list>");
-        tBiome->allMapPrefabList.fileName = xmlFile.getString ("<map_prefab_list>");
+
+        // Database
+        tBiome->databaseMusic.fileName     = xmlFile.getString ("<music_database>");
+        tBiome->databaseMap.fileName       = xmlFile.getString ("<map_database>");
+        tBiome->databaseMapPrefab.fileName = xmlFile.getString ("<map_prefab_database>");
+        tBiome->databaseNPC.fileName       = xmlFile.getString ("<npc_database>");
+        tBiome->databaseObject.fileName    = xmlFile.getString ("<object_database>");
+        tBiome->databaseSound.fileName     = xmlFile.getString ("<sound_database>");
 
         // Load the data sets
-        m_load_musicSet(tBiome);
-        m_load_npcSet(tBiome);
-        m_load_objectSet(tBiome);
+        m_load_musicDatabase(tBiome);
+        m_load_mapDatabase(tBiome);
+        m_load_mapPrefabDatabase(tBiome);
+        m_load_npcDatabase(tBiome);
+        m_load_objectDatabase(tBiome);
+        m_load_soundDatabase(tBiome);
+        
         m_load_wallSet(tBiome);
 
         // Clean up
@@ -109,15 +120,15 @@ sMapBiome* cBiomeManager::load(const std::string &_fileName)
     return nullptr;
 }
 
-void cBiomeManager::m_load_musicSet(sMapBiome*& _biome)
+void cBiomeManager::m_load_musicDatabase(sMapBiome*& _biome)
 {
     cXML xmlFile;
-    xmlFile.load(FILE_PATH_BIOME + _biome->MusicSet.fileName);
+    xmlFile.load(FILE_PATH_BIOME + _biome->databaseMusic.fileName);
     if (xmlFile.lineCount() > 0)
     {
         // Get the data from the XML file
-        _biome->MusicSet.name  = xmlFile.getString("<name>");
-        _biome->MusicSet.count = xmlFile.getInteger("<music_count>");
+        _biome->databaseMusic.name  = xmlFile.getString("<name>");
+        _biome->databaseMusic.count = xmlFile.getInteger("<music_count>");
 
         // Clean up
         xmlFile.free();
@@ -125,17 +136,26 @@ void cBiomeManager::m_load_musicSet(sMapBiome*& _biome)
     
 }
 
-void cBiomeManager::m_load_npcSet(sMapBiome*& _biome)
+void cBiomeManager::m_load_mapDatabase(sMapBiome*& _biome)
 {
 
 }
 
-void cBiomeManager::m_load_objectSet(sMapBiome*& _biome)
+void cBiomeManager::m_load_mapPrefabDatabase(sMapBiome*& _biome)
 {
 
 }
 
-void cBiomeManager::m_load_soundSet(sMapBiome*& _biome)
+void cBiomeManager::m_load_npcDatabase(sMapBiome*& _biome)
+{
+
+}
+void cBiomeManager::m_load_objectDatabase(sMapBiome*& _biome)
+{
+
+}
+
+void cBiomeManager::m_load_soundDatabase(sMapBiome*& _biome)
 {
 
 }

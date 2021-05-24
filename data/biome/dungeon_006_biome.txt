@@ -1,15 +1,24 @@
 
 <biome>
-    <name>dungeon_006_biome</name>
-    <music_set>all_music_set.txt</music_set>
-    <music_tag>dungeon</music_tag>
-    <music_track>0</music_track> # 0 for random
-    <map_list>all_map_list.txt</map_list>
-    <map_prefab_list>all_map_prefab_list.txt</map_prefab_list>
-    <npc_set>all_npc_set.txt</npc_set>
-    <object_set>all_object_set.txt</object_set>
-    <sound_set>all_sound_set.txt</sound_set>
-    <wall_set>dungeon_006_wall_set.txt</wall_set>
-    <floor_spritesheet>dungeon/dungeon_floor_3_001.txt</floor_spritesheet>
+    <info>
+        <name>dungeon_006_biome</name>
+    </info>
+
+    <data>
+        <music_tag>dungeon</music_tag>
+        <music_track>0</music_track> # 0 for random
+        <wall_set>dungeon_006_wall_set.txt</wall_set>
+        <floor_spritesheet>dungeon/dungeon_floor_3_001.txt</floor_spritesheet>
+    </data>
+
+    <database>
+        <music_database>database/music_database.txt</music_database>
+        <map_database>database/map_database.txt</map_database>
+        <map_prefab_database>database/map_prefab_database.txt</map_prefab_database>
+        <npc_database>database/npc_database.txt</npc_database>
+        <object_database>database/object_database.txt</object_database>
+        <sound_database>database/sound_database.txt</sound_database>
+    </database>
+
 </biome>
 

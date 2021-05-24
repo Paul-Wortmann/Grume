@@ -44,10 +44,15 @@ class cBiomeManager : public tcLinkedList<sMapBiome>
         void m_freeAll(void);
         void m_freeData(sMapBiome*& _biome);
 
-        void m_load_musicSet(sMapBiome*& _biome);
-        void m_load_npcSet(sMapBiome*& _biome);
-        void m_load_objectSet(sMapBiome*& _biome);
-        void m_load_soundSet(sMapBiome*& _biome);
+        // Database load
+        void m_load_musicDatabase(sMapBiome*& _biome);
+        void m_load_mapDatabase(sMapBiome*& _biome);
+        void m_load_mapPrefabDatabase(sMapBiome*& _biome);
+        void m_load_npcDatabase(sMapBiome*& _biome);
+        void m_load_objectDatabase(sMapBiome*& _biome);
+        void m_load_soundDatabase(sMapBiome*& _biome);
+        
+        // Wall set load
         void m_load_wallSet(sMapBiome*& _biome);
 };
 
