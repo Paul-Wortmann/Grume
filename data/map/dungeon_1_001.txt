@@ -134,15 +134,17 @@
         # Type 3 (Toggle entity state, index from 1) : tile, event type, entity tile, state 1, state 2
 
         # up to town
-        <event>0641 1 0 1 0</event> # Town 1 tower entrance
-        <event>0642 1 0 1 0</event> # Town 1 tower entrance
-        <event>0643 1 0 1 0</event> # Town 1 tower entrance
+        <event>0541 1 0 1 0</event> # Town 1 tower entrance
+        <event>0542 1 0 1 0</event> # Town 1 tower entrance
+        <event>0543 1 0 1 0</event> # Town 1 tower entrance
 
         # Up to town doors
-        <event>1141 2 1041 1 0</event> # Set door open
-        <event>1142 2 1041 1 0</event> # Set door open
+        <event>0941 2 1042 1 0</event> # Set door open
+        <event>0942 2 1042 1 0</event> # Set door open
+        <event>0943 2 1042 1 0</event> # Set door open
         <event>1141 2 1042 1 0</event> # Set door open
         <event>1142 2 1042 1 0</event> # Set door open
+        <event>1143 2 1042 1 0</event> # Set door open
 
 
         # Library / alchemy lab door
@@ -164,8 +166,10 @@
         #tile number, object number, scale, y-rotation, obstacle
         
         # Upstairs doors
-        <object>1041 32 01 1.0 0.0000 0</object> # Canteen / Food store lab door
-        <object>1042 32 02 1.0 0.0000 0</object> # Canteen / Food store lab door
+        <object>1042 32 03 1.0 0.0000 0</object> # Upstairs door
+
+        <#object>1041 32 01 1.0 0.0000 0</object> # Canteen / Food store lab door
+        <#object>1042 32 02 1.0 0.0000 0</object> # Canteen / Food store lab door
         
         
         # Library

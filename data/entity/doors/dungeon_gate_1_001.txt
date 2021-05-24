@@ -1,0 +1,27 @@
+﻿<?xml version = "1.0" encoding = "UTF-8" ?>
+<entity>
+
+    <name>dungeon_gate_1_001</name>
+    <model>doors/dungeon_gate_1_001.dae</model>
+    <material>common_objects/medieval_001.txt</material>
+
+    <position>0.0 0.25 0.0</position>
+    <scale>1.0 1.0 1.0</scale>
+    <rotation>1.5708 1.5708 1.5708</rotation>
+
+    <animation_independent>1</animation_independent>
+
+    <state_initial>0</state_initial> # 0 == none
+    <state>
+        <state_name>open</state_name>
+        <state_sound>object/gate_1_001.ogg</state_sound>
+        <state_animation>0.0 0.4166 0.0</state_animation> # frame start, frame end, repeat (bool)
+    </state>
+    <state>
+        <state_name>close</state_name>
+        <state_sound>object/gate_1_001.ogg</state_sound>
+        <state_animation>0.4166 0.8333 0.0</state_animation> # frame start, frame end, repeat (bool)
+    </state>
+
+</entity>
+
