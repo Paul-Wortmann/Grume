@@ -1,4 +1,4 @@
-﻿<?xml version = "1.0" encoding = "UTF-8" ?>
+<?xml version = "1.0" encoding = "UTF-8" ?>
 <map>
     <information>
         <name>dungeon_1_001</name>
@@ -8,16 +8,16 @@
     </information>
     <generation>
        <tiles>2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2</tiles>
-       <tiles>2 1 1 1 1 1 1 1 1 1 2 1 1 1 1 1 1 1 1 1 2 1 1 1 1 1 1 1 1 1 2 1 1 1 1 1 3 1 1 1 1 0 0 1 1 1 1 2 1 1 1 1 2 1 1 1 1 0 0 1 1 1 1 2 1 1 1 1 1 2 1 1 1 1 1 1 1 1 1 2 1 1 1 1 1 1 1 1 1 2 1 1 1 1 1 1 1 1 1 2</tiles>
-       <tiles>2 1 1 1 1 1 1 1 1 1 2 1 1 1 1 1 1 1 1 1 2 1 1 1 1 1 1 1 1 1 2 1 1 1 1 1 3 1 1 1 1 0 0 1 1 1 1 2 1 1 1 1 2 1 1 1 1 0 0 1 1 1 1 2 1 1 1 1 1 2 1 1 1 1 1 1 1 1 1 2 1 1 1 1 1 1 1 1 1 2 1 1 1 1 1 1 1 1 1 2</tiles>
-       <tiles>2 1 1 1 1 1 1 1 1 1 2 1 1 1 1 1 1 1 1 1 2 1 1 1 1 1 1 1 1 1 2 1 1 1 1 1 3 1 1 1 1 0 0 1 1 1 1 2 1 1 1 1 2 1 1 1 1 0 0 1 1 1 1 2 1 1 1 1 1 2 1 1 1 1 1 1 1 1 1 2 1 1 1 1 1 1 1 1 1 2 1 1 1 1 1 1 1 1 1 2</tiles>
-       <tiles>2 1 1 1 1 1 1 1 1 1 2 1 1 1 1 1 1 1 1 1 2 1 1 1 1 1 1 1 1 1 3 1 1 1 1 1 2 1 1 1 1 1 1 1 1 1 1 2 1 1 1 1 2 1 1 1 1 1 1 1 1 1 1 2 1 1 1 1 1 3 1 1 1 1 1 1 1 1 1 2 1 1 1 1 1 1 1 1 1 2 1 1 1 1 1 1 1 1 1 2</tiles>
-       <tiles>2 1 1 1 1 1 1 1 1 1 2 1 1 1 1 1 1 1 1 1 2 1 1 1 1 1 1 1 1 1 3 1 1 1 1 1 3 1 1 1 1 1 1 1 1 1 1 2 1 1 1 1 2 1 1 1 1 1 1 1 1 1 1 2 1 1 1 1 1 3 1 1 1 1 1 1 1 1 1 2 1 1 1 1 1 1 1 1 1 2 1 1 1 1 1 1 1 1 1 2</tiles>
-       <tiles>2 1 1 1 1 1 1 1 1 1 2 1 1 1 1 1 1 1 1 1 2 1 1 1 1 1 1 1 1 1 3 1 1 1 1 1 3 1 1 1 1 1 1 1 1 1 1 2 1 1 1 1 2 1 1 1 1 1 1 1 1 1 1 2 1 1 1 1 1 3 1 1 1 1 1 1 1 1 1 2 1 1 1 1 1 1 1 1 1 2 1 1 1 1 1 1 1 1 1 2</tiles>
+       <tiles>2 1 1 1 1 1 1 1 1 1 2 1 1 1 1 1 1 1 1 1 2 1 1 1 1 1 1 1 1 1 2 1 1 1 1 1 2 1 1 1 1 0 0 1 1 1 1 2 1 1 1 1 2 1 1 1 1 0 0 1 1 1 1 2 1 1 1 1 1 2 1 1 1 1 1 1 1 1 1 2 1 1 1 1 1 1 1 1 1 2 1 1 1 1 1 1 1 1 1 2</tiles>
+       <tiles>2 1 1 1 1 1 1 1 1 1 2 1 1 1 1 1 1 1 1 1 2 1 1 1 1 1 1 1 1 1 2 1 1 1 1 1 2 1 1 1 1 0 0 1 1 1 1 2 1 1 1 1 2 1 1 1 1 0 0 1 1 1 1 2 1 1 1 1 1 2 1 1 1 1 1 1 1 1 1 2 1 1 1 1 1 1 1 1 1 2 1 1 1 1 1 1 1 1 1 2</tiles>
+       <tiles>2 1 1 1 1 1 1 1 1 1 2 1 1 1 1 1 1 1 1 1 2 1 1 1 1 1 1 1 1 1 2 1 1 1 1 1 2 1 1 1 1 0 0 1 1 1 1 2 1 1 1 1 2 1 1 1 1 0 0 1 1 1 1 2 1 1 1 1 1 2 1 1 1 1 1 1 1 1 1 2 1 1 1 1 1 1 1 1 1 2 1 1 1 1 1 1 1 1 1 2</tiles>
+       <tiles>2 1 1 1 1 1 1 1 1 1 2 1 1 1 1 1 1 1 1 1 2 1 1 1 1 1 1 1 1 1 3 1 1 1 1 1 3 1 1 1 1 1 1 1 1 1 1 3 1 1 1 1 2 1 1 1 1 1 1 1 1 1 1 2 1 1 1 1 1 3 1 1 1 1 1 1 1 1 1 2 1 1 1 1 1 1 1 1 1 2 1 1 1 1 1 1 1 1 1 2</tiles>
+       <tiles>2 1 1 1 1 1 1 1 1 1 2 1 1 1 1 1 1 1 1 1 2 1 1 1 1 1 1 1 1 1 3 1 1 1 1 1 3 1 1 1 1 1 1 1 1 1 1 3 1 1 1 1 2 1 1 1 1 1 1 1 1 1 1 2 1 1 1 1 1 3 1 1 1 1 1 1 1 1 1 2 1 1 1 1 1 1 1 1 1 2 1 1 1 1 1 1 1 1 1 2</tiles>
+       <tiles>2 1 1 1 1 1 1 1 1 1 2 1 1 1 1 1 1 1 1 1 2 1 1 1 1 1 1 1 1 1 3 1 1 1 1 1 3 1 1 1 1 1 1 1 1 1 1 3 1 1 1 1 2 1 1 1 1 1 1 1 1 1 1 2 1 1 1 1 1 3 1 1 1 1 1 1 1 1 1 2 1 1 1 1 1 1 1 1 1 2 1 1 1 1 1 1 1 1 1 2</tiles>
        <tiles>2 1 1 1 1 1 1 1 1 1 2 1 1 1 1 1 1 1 1 1 2 1 1 1 1 1 1 1 1 1 2 1 1 1 1 1 2 1 1 1 1 1 1 1 1 1 1 2 1 1 1 1 2 1 1 1 1 1 1 1 1 1 1 2 1 1 1 1 1 2 1 1 1 1 1 1 1 1 1 2 1 1 1 1 1 1 1 1 1 2 1 1 1 1 1 1 1 1 1 2</tiles>
-       <tiles>2 1 1 1 1 1 1 1 1 1 2 1 1 1 1 1 1 1 1 1 2 1 1 1 1 1 1 1 1 1 2 1 1 1 1 1 3 1 1 1 1 1 1 1 1 1 1 2 1 1 1 1 2 1 1 1 1 1 1 1 1 1 1 2 1 1 1 1 1 2 1 1 1 1 1 1 1 1 1 2 1 1 1 1 1 1 1 1 1 2 1 1 1 1 1 1 1 1 1 2</tiles>
        <tiles>2 1 1 1 1 1 1 1 1 1 2 1 1 1 1 1 1 1 1 1 2 1 1 1 1 1 1 1 1 1 2 1 1 1 1 1 2 1 1 1 1 1 1 1 1 1 1 2 1 1 1 1 2 1 1 1 1 1 1 1 1 1 1 2 1 1 1 1 1 2 1 1 1 1 1 1 1 1 1 2 1 1 1 1 1 1 1 1 1 2 1 1 1 1 1 1 1 1 1 2</tiles>
-       <tiles>2 1 1 1 1 1 1 1 1 1 2 2 2 2 3 3 3 2 2 2 2 2 2 2 2 2 2 2 2 2 2 1 1 1 1 1 2 2 2 3 2 3 3 2 3 3 3 2 1 1 1 1 2 2 2 2 2 3 3 2 2 2 2 2 1 1 1 1 1 2 2 2 2 2 2 2 2 2 2 2 2 2 2 3 3 3 2 2 2 2 1 1 1 1 1 1 1 1 1 2</tiles>
+       <tiles>2 1 1 1 1 1 1 1 1 1 2 1 1 1 1 1 1 1 1 1 2 1 1 1 1 1 1 1 1 1 2 1 1 1 1 1 2 1 1 1 1 1 1 1 1 1 1 2 1 1 1 1 2 1 1 1 1 1 1 1 1 1 1 2 1 1 1 1 1 2 1 1 1 1 1 1 1 1 1 2 1 1 1 1 1 1 1 1 1 2 1 1 1 1 1 1 1 1 1 2</tiles>
+       <tiles>2 1 1 1 1 1 1 1 1 1 2 2 2 2 3 3 3 2 2 2 2 2 2 2 2 2 2 2 2 2 2 1 1 1 1 1 2 2 2 2 2 3 3 2 2 2 2 2 1 1 1 1 2 2 2 2 2 3 3 2 2 2 2 2 1 1 1 1 1 2 2 2 2 2 2 2 2 2 2 2 2 2 2 3 3 3 2 2 2 2 1 1 1 1 1 1 1 1 1 2</tiles>
        <tiles>2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2</tiles>
        <tiles>2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2</tiles>
        <tiles>2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2</tiles>
@@ -139,40 +139,40 @@
         <event>0543 1 0 1 0</event> # Town 1 tower entrance
 
         # Up to town doors
-        <#event>0941 2 1042 1 0</event> # Set door open
-        <#event>0942 2 1042 1 0</event> # Set door open
-        <#event>0943 2 1042 1 0</event> # Set door open
-        <#event>1141 2 1042 1 0</event> # Set door open
-        <#event>1142 2 1042 1 0</event> # Set door open
-        <#event>1143 2 1042 1 0</event> # Set door open
+        <event>0941 2 1042 1 0</event> # Set door open
+        <event>0942 2 1042 1 0</event> # Set door open
+        <event>0943 2 1042 1 0</event> # Set door open
+        <event>1141 2 1042 1 0</event> # Set door open
+        <event>1142 2 1042 1 0</event> # Set door open
+        <event>1143 2 1042 1 0</event> # Set door open
 
 
         # Library / alchemy lab door
-        <#event>2438 2 2538 1 0</event> # Set door open
-        <#event>2638 2 2538 1 0</event> # Set door open
+        <event>2438 2 2538 1 0</event> # Set door open
+        <event>2638 2 2538 1 0</event> # Set door open
         
          # Canteen / Food store lab door
-        <#event>2460 2 2561 1 0</event> # Set door open
-        <#event>2660 2 2561 1 0</event> # Set door open
+        <event>2460 2 2561 1 0</event> # Set door open
+        <event>2660 2 2561 1 0</event> # Set door open
 
     </events>
 
-    # roomTypeNone         =  0, // None / empty
-    # roomTypeCell         =  1, // Prison Cell
-    # roomTypeSecret       =  2, // Secret room
-    # roomTypeStairwell    =  3, // Stairwell
-    # roomTypeStore        =  4, // Store
-    # roomTypeBlacksmith   =  5, // Blacksmith
-    # roomTypeCanteen      =  6, // Canteen
-    # roomTypeStorage      =  7, // Storage room
-    # roomTypeLibrary      =  8, // Library
-    # roomTypeAlchemyLab   =  9, // Alchemy Lab
-    # roomTypeLaboratory   = 10, // Laboratory
-    # roomTypeTorture      = 11  // Torture Chamber
+    roomTypeNone         =  0, // None / empty
+    roomTypeCell         =  1, // Prison Cell
+    roomTypeSecret       =  2, // Secret room
+    roomTypeStairwell    =  3, // Stairwell
+    roomTypeStore        =  4, // Store
+    roomTypeBlacksmith   =  5, // Blacksmith
+    roomTypeCanteen      =  6, // Canteen
+    roomTypeStorage      =  7, // Storage room
+    roomTypeLibrary      =  8, // Library
+    roomTypeAlchemyLab   =  9, // Alchemy Lab
+    roomTypeLaboratory   = 10, // Laboratory
+#    roomTypeTorture      = 11  // Torture Chamber
+    
     <rooms>
-        #Tile (any within the room), type, ignore room number (use for the interconnecting route, -1 for none)
-        <room_type_set>0416 1 0</room_type_set> # Cell
-        <room_type_set>0426 1 0</room_type_set> # Cell
+        #Tile (any within the room), type
+        <room_type_set>0416 0</room_type_set>
     </rooms>
 
     <debris_objects>
@@ -184,7 +184,7 @@
         #tile number, object number, scale, y-rotation, obstacle
         
         # Upstairs doors
-        <#object>1042 32 03 1.0 1.5708 0</object> # Upstairs door
+        <object>1042 32 03 1.0 1.5708 0</object> # Upstairs door
 
         <#object>1041 32 01 1.0 0.0000 0</object> # Canteen / Food store lab door
         <#object>1042 32 02 1.0 0.0000 0</object> # Canteen / Food store lab door
@@ -204,7 +204,7 @@
         <object>1846 29 06 1.0 -1.5708 1</object> # Town props - bookshelf
         <object>2246 29 06 1.0 -1.5708 1</object> # Town props - bookshelf
         # Alchemy lab 2
-        <#object>2538 32 01 1.0 0.0000 0</object> # Library / Alchemy lab door
+        <object>2538 32 01 1.0 0.0000 0</object> # Library / Alchemy lab door
         <object>2642 29 01 1.0 0.0000 1</object> # Town props - alchemy table
         <object>2937 29 06 1.0 1.5708 1</object> # Town props - bookshelf
         <object>3237 29 06 1.0 1.5708 1</object> # Town props - bookshelf
@@ -221,7 +221,7 @@
         <object>1955 29 27 1.0 1.5708 1</object> # Town props - tankard
         <object>1855 29 27 1.0 1.5708 1</object> # Town props - tankard
         # Food store
-        <#object>2561 32 01 1.0 0.0000 0</object> # Canteen / Food store lab door
+        <object>2561 32 01 1.0 0.0000 0</object> # Canteen / Food store lab door
         <object>2653 07 00 1.0 1.5708 1</object> # Barrel
         <object>2654 07 00 1.0 1.5708 1</object> # Barrel
         <object>2753 07 00 1.0 1.5708 1</object> # Barrel
