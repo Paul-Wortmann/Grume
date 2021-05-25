@@ -53,9 +53,9 @@ void cMapManager::m_addDoorEntities(sMap*& _map)
         float32 tp = 1.0f / 2.0f; // tile center positioning ( half tile width)
 
         // Doors of length 3 ----------------------------------------------------------------------------------
-        for (uint32 h = 1; h < _map->height - 1; ++h)
+        for (uint32 h = 2; h < _map->height - 2; ++h)
         {
-            for (uint32 w = 1; w < _map->width - 1; ++w)
+            for (uint32 w = 2; w < _map->width - 2; ++w)
             {
                 // Calculate the tile number
                 uint32 t = (h * _map->width) + w;
@@ -65,11 +65,13 @@ void cMapManager::m_addDoorEntities(sMap*& _map)
                     // Create a temporary entity pointer
                     sEntity* tEntity = nullptr;
 
-                    // F F F
-                    // D - D
-                    // F F F
+                    // ? F F F ?
+                    // W D - D W
+                    // ? F F F ?
                     if     ((m_isDoor (_map, t + 1)) &&
                             (m_isDoor (_map, t - 1)) &&
+                            (m_isWall (_map, t + 2)) &&
+                            (m_isWall (_map, t - 2)) &&
                             (m_isFloor(_map, t + _map->width)) &&
                             (m_isFloor(_map, t + _map->width + 1)) &&
                             (m_isFloor(_map, t + _map->width - 1)) &&
@@ -100,9 +102,11 @@ void cMapManager::m_addDoorEntities(sMap*& _map)
                                 }
                             }
                             
+                    // ? W ?
                     // F D F
                     // F - F
                     // F D F
+                    // ? W ?
                     else if ((m_isFloor(_map, t + 1)) &&
                             (m_isFloor(_map, t - 1)) &&
                             (m_isDoor (_map, t + _map->width)) &&
@@ -110,7 +114,9 @@ void cMapManager::m_addDoorEntities(sMap*& _map)
                             (m_isFloor(_map, t + _map->width - 1)) &&
                             (m_isDoor (_map, t - _map->width)) &&
                             (m_isFloor(_map, t - _map->width + 1)) &&
-                            (m_isFloor(_map, t - _map->width - 1)))
+                            (m_isFloor(_map, t - _map->width - 1)) &&
+                            (m_isWall (_map, t + (_map->width * 2))) &&
+                            (m_isWall (_map, t - (_map->width * 2))))
                             {
                                 tEntity = m_entityManager->load(xmlFile.getString("<door_3td_entity>", 1 + (rand() % door_3td_count)));
                                 if (tEntity != nullptr)
@@ -140,7 +146,71 @@ void cMapManager::m_addDoorEntities(sMap*& _map)
 
         // Doors of length 2 ----------------------------------------------------------------------------------
         // Doors of length 1 --------------------------------------------------------------------------------------------
- 
+        for (uint32 h = 1; h < _map->height - 1; ++h)
+        {
+            for (uint32 w = 1; w < _map->width - 1; ++w)
+            {
+                // Calculate the tile number
+                uint32 t = (h * _map->width) + w;
+
+                if ((m_isDoor(_map, t)) && (!_map->tile[t].processed) && (_map->tile[t].object == 0))
+                {
+                    // Create a temporary entity pointer
+                    sEntity* tEntity = nullptr;
+
+                    // ? F ?
+                    // W - W
+                    // ? F ?
+                    if     ((m_isWall (_map, t + 1)) &&
+                            (m_isWall (_map, t - 1)) &&
+                            (m_isFloor(_map, t + _map->width)) &&
+                            (m_isFloor(_map, t - _map->width)))
+                            {
+                                tEntity = m_entityManager->load(xmlFile.getString("<door_1td_entity>", 1 + (rand() % door_1td_count)));
+                                if (tEntity != nullptr)
+                                {
+                                    _map->tile[t].object = tEntity->UID;
+                                    tEntity->owner = eEntityOwner::ownerMap;
+                                    tEntity->type  = eEntityType::entityTypeObject;
+                                    tEntity->position += glm::vec3(static_cast<float32>(w) + tp - xo, y_pos, static_cast<float32>(h) + tp - yo);
+                                    tEntity->rotation += glm::vec3(0.0f, DTOR_90, 0.0f);
+                                    m_entityManager->updateModelMatrix(tEntity);
+                                    
+                                    _map->tile[t].processed = true;
+
+                                    m_addMapEvent(_map, t + _map->width + 0, 2, t, 1, 0);
+                                    m_addMapEvent(_map, t - _map->width + 0, 2, t, 1, 0);
+                                }
+                            }
+                            
+                    // ? W ?
+                    // F - F
+                    // ? W ?
+                    else if ((m_isFloor(_map, t + 1)) &&
+                            (m_isFloor(_map, t - 1)) &&
+                            (m_isWall (_map, t + _map->width)) &&
+                            (m_isWall (_map, t - _map->width)))
+                            {
+                                tEntity = m_entityManager->load(xmlFile.getString("<door_1td_entity>", 1 + (rand() % door_1td_count)));
+                                if (tEntity != nullptr)
+                                {
+                                    _map->tile[t].object = tEntity->UID;
+                                    tEntity->owner = eEntityOwner::ownerMap;
+                                    tEntity->type  = eEntityType::entityTypeObject;
+                                    tEntity->position += glm::vec3(static_cast<float32>(w) + tp - xo, y_pos, static_cast<float32>(h) + tp - yo);
+                                    tEntity->rotation += glm::vec3(0.0f, 0.0f, 0.0f);
+                                    m_entityManager->updateModelMatrix(tEntity);
+                                    
+                                    _map->tile[t].processed = true;
+
+                                    m_addMapEvent(_map, t + 1              , 2, t, 1, 0);
+                                    m_addMapEvent(_map, t - 1              , 2, t, 1, 0);
+                                }
+                            }
+                }
+            }
+        }
+
         // Clean up
         xmlFile.free();
     }

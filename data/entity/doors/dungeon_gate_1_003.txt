@@ -1,15 +1,15 @@
 ﻿<?xml version = "1.0" encoding = "UTF-8" ?>
 <entity>
 
-    <name>dungeon_gate_1_001</name>
-    <model>doors/dungeon_gate_1_001.dae</model>
+    <name>dungeon_gate_1_003</name>
+    <model>doors/dungeon_gate_1_003.dae</model>
     <material>common_objects/medieval_001.txt</material>
 
     <position>0.0 0.0 0.0</position>
     <scale>1.0 1.0 1.0</scale>
     #1.5708, 3.1416
     <rotation>0.000 0.0000 3.1416</rotation>
-    <uint_size>1 3 1</uint_size>
+    <uint_size>3 3 1</uint_size>
 
     <animation_independent>1</animation_independent>
 
