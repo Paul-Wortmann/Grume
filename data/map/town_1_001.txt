@@ -135,13 +135,13 @@
         # Type 1 (Warp to map) -> tile, event type, map number, portal number, NA
         <event>5013 1 1 1 0</event> # Dungeon 1 entrance
         <event>5014 1 1 1 0</event> # Dungeon 1 entrance
-        <event>8727 1 2 1 0</event> # Crypt 1 entrance
-        <event>8827 1 2 1 0</event> # Crypt 1 entrance
-        <event>8927 1 2 1 0</event> # Crypt 1 entrance
+        <event>8727 1 3 1 0</event> # Crypt 1 entrance
+        <event>8827 1 3 1 0</event> # Crypt 1 entrance
+        <event>8927 1 3 1 0</event> # Crypt 1 entrance
 
-        <event>780 1 3 1 0</event> # Cave 1 entrance
-        <event>784 1 3 2 0</event> # Cave 2 entrance
-        <event>788 1 3 3 0</event> # Cave 3 entrance
+        <event>780 1 4 1 0</event> # Cave 1 entrance
+        <event>784 1 4 2 0</event> # Cave 2 entrance
+        <event>788 1 4 3 0</event> # Cave 3 entrance
     </events>
 
     <debris_objects>

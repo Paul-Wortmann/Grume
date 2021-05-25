@@ -31,6 +31,12 @@ void cMapManager::generateMap(sMap*& _map)
     // Generate based on algorithm
     switch (_map->genData.algorithm)
     {
+        case eAlgorithm::algorithm_T1: // Town 1
+            m_generateMap_T1(_map);
+        break;
+        case eAlgorithm::algorithm_M1: // Maze 1
+            m_generateMap_M1(_map);
+        break;
         case eAlgorithm::algorithm_D2: // Dungeon 2
             m_generateMap_D2(_map);
         break;

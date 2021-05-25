@@ -166,30 +166,9 @@ void cMapManager::load(const std::string &_fileName)
         m_currentMap->playerStartDir    = player_rot;
 
         // Map generation data
+        m_currentMap->genData.algorithm = static_cast<eAlgorithm>(algorithm);
         m_currentMap->genData.seed      = seed;
         m_currentMap->genData.wallSize  = wall_width;
-        switch (algorithm)
-        {
-            case 5:
-                m_currentMap->genData.algorithm = eAlgorithm::algorithm_T1;
-            break;
-            case 4:
-                m_currentMap->genData.algorithm = eAlgorithm::algorithm_M1;
-            break;
-            case 3:
-                m_currentMap->genData.algorithm = eAlgorithm::algorithm_D2;
-            break;
-            case 2:
-                m_currentMap->genData.algorithm = eAlgorithm::algorithm_D1;
-            break;
-            case 1:
-                m_currentMap->genData.algorithm = eAlgorithm::algorithm_C2;
-            break;
-            case 0:
-            default:
-                m_currentMap->genData.algorithm = eAlgorithm::algorithm_C1;
-            break;
-        }
 
         std::string tiles = "";
         // Generate tiles
@@ -520,19 +499,6 @@ void cMapManager::load(const std::string &_fileName)
                 {
                     m_currentMap->room[roomNum].type = static_cast<eMapRoomType>(tRoomType);
                 }
-
-                std::cout << "Room tile: " << tRoomTile;
-                std::cout << " - Room num:  " << roomNum << std::endl;
-            }
-            
-            //<room_type_set>
-            
-            std::cout << "Room count: " << m_currentMap->roomCount << std::endl;
-            for (std::uint16_t i = 0; i < m_currentMap->roomCount; ++i)
-            {
-                std::cout << "Room number: " << i;
-                std::cout << " type: " << static_cast<std::uint16_t>(m_currentMap->room[i].type);
-                std::cout << std::endl;
             }
 
             // Room add prefab

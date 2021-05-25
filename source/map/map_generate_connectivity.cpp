@@ -290,14 +290,14 @@ void cMapManager::m_mapConnectRooms(sMap*& _map)
             }
         }
     }
-    // try to connect lonely rooms
+    // try to connect detached rooms
     for (uint16_t i = (_map->roomCount-1); i > 0; i--)
     {
         int32_t deltaX = 0;
         int32_t deltaY = 0;
         if ((_map->room[i].exitE ==  -1) && (_map->room[i].exitW == -1) && (_map->room[i].exitN == -1) && (_map->room[i].exitS == -1))
         {
-            //std::cout << "Lonely room detected!" << std::endl;
+            //std::cout << "Detached room detected!" << std::endl;
             deltaX = _map->room[i].x - _map->room[i-1].x;
             deltaY = _map->room[i].y - _map->room[i-1].y;
             if (abs(deltaX) < abs(deltaY))

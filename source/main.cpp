@@ -20,7 +20,7 @@
  * @license GPL V2
  * @date 2011-11-11
  */
- 
+
 #include "game_engine.hpp"
 
 int main(int argc, char** argv)

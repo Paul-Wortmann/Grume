@@ -138,22 +138,9 @@
         <event>0542 1 0 1 0</event> # Town 1 tower entrance
         <event>0543 1 0 1 0</event> # Town 1 tower entrance
 
-        # Up to town doors
-        <#event>0941 2 1042 1 0</event> # Set door open
-        <#event>0942 2 1042 1 0</event> # Set door open
-        <#event>0943 2 1042 1 0</event> # Set door open
-        <#event>1141 2 1042 1 0</event> # Set door open
-        <#event>1142 2 1042 1 0</event> # Set door open
-        <#event>1143 2 1042 1 0</event> # Set door open
-
-
-        # Library / alchemy lab door
-        <#event>2438 2 2538 1 0</event> # Set door open
-        <#event>2638 2 2538 1 0</event> # Set door open
-        
-         # Canteen / Food store lab door
-        <#event>2460 2 2561 1 0</event> # Set door open
-        <#event>2660 2 2561 1 0</event> # Set door open
+        # Down to level 2
+        <event>0558 1 2 1 0</event> # Dungeon 1-2 entrance
+        <event>0559 1 2 1 0</event> # Dungeon 1-2 entrance
 
     </events>
 
@@ -183,13 +170,6 @@
     <objects>
         #tile number, object number, scale, y-rotation, obstacle
         
-        # Upstairs doors
-        <#object>1042 32 03 1.0 1.5708 0</object> # Upstairs door
-
-        <#object>1041 32 01 1.0 0.0000 0</object> # Canteen / Food store lab door
-        <#object>1042 32 02 1.0 0.0000 0</object> # Canteen / Food store lab door
-        
-        
         # Library
         <object>1837 29 30 1.0 1.5708 1</object> # Town props - bookshelf
         <object>2237 29 30 1.0 1.5708 1</object> # Town props - bookshelf
@@ -204,7 +184,6 @@
         <object>1846 29 06 1.0 -1.5708 1</object> # Town props - bookshelf
         <object>2246 29 06 1.0 -1.5708 1</object> # Town props - bookshelf
         # Alchemy lab 2
-        <#object>2538 32 01 1.0 0.0000 0</object> # Library / Alchemy lab door
         <object>2642 29 01 1.0 0.0000 1</object> # Town props - alchemy table
         <object>2937 29 06 1.0 1.5708 1</object> # Town props - bookshelf
         <object>3237 29 06 1.0 1.5708 1</object> # Town props - bookshelf
@@ -221,7 +200,6 @@
         <object>1955 29 27 1.0 1.5708 1</object> # Town props - tankard
         <object>1855 29 27 1.0 1.5708 1</object> # Town props - tankard
         # Food store
-        <#object>2561 32 01 1.0 0.0000 0</object> # Canteen / Food store lab door
         <object>2653 07 00 1.0 1.5708 1</object> # Barrel
         <object>2654 07 00 1.0 1.5708 1</object> # Barrel
         <object>2753 07 00 1.0 1.5708 1</object> # Barrel
