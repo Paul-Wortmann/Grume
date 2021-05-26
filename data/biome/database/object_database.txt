@@ -35,6 +35,8 @@
         <object>weapon</object>              # 31
         <object>door</object>                # 32
 
+        <object>test</object>                # 33
+
     </object_define>
 
     <medieval_buildings>
@@ -340,6 +342,17 @@
         <door_entity>doors/dungeon_door_2_001.txt</door_entity>
         <door_entity>doors/dungeon_gate_1_001.txt</door_entity>
     </door>
+
+
+
+
+
+    <test>
+        <test_count>1</test_count>
+        <test_entity>cave_001.1/cave_arch_1_001.txt</test_entity>
+    </test>
+
+
 
 </object_database>
 
