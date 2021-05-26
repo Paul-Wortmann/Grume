@@ -45,6 +45,11 @@ void cNPCManager::m_freeAll(void)
     }
 }
 
+sEntity* cNPCManager::load(const std::string &_fileName)
+{
+    
+}
+
 void cNPCManager::process(const float32 &_dt)
 {
     // Entities
