@@ -49,6 +49,10 @@ void cEntityManager::m_freeData(sEntity*& _pointer)
     _pointer->owner = eEntityOwner::ownerNone;
     _pointer->name = "";
 
+    // These are freed by their respective managers
+    //sEntityModel*    model        = nullptr;
+    //sEntityMaterial* material     = nullptr;
+
     // Bone transforms
     if (_pointer->boneTransform != nullptr)
     {
@@ -63,6 +67,13 @@ void cEntityManager::m_freeData(sEntity*& _pointer)
         delete[] _pointer->state;
         _pointer->state = nullptr;
         _pointer->stateCount = 0;
+    }
+
+    // AI
+    if (_pointer->ai != nullptr)
+    {
+        delete[] _pointer->ai;
+        _pointer->ai = nullptr;
     }
 }
 

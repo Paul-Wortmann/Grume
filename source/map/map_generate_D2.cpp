@@ -38,43 +38,45 @@ static void splitRoom(sMap*& _map, const uint16_t _roomID)
         sMapRoom *tRoom = new sMapRoom[_map->roomCount];
         for (uint16_t i = 0; i < _map->roomCount; i++)
         {
-            tRoom[i].type = _map->room[i].type;
-            tRoom[i].p = _map->room[i].p;
+            tRoom[i].type    = _map->room[i].type;
+            tRoom[i].p       = _map->room[i].p;
             tRoom[i].posXMin = _map->room[i].posXMin;
             tRoom[i].posXMax = _map->room[i].posXMax;
             tRoom[i].posYMin = _map->room[i].posYMin;
             tRoom[i].posYMax = _map->room[i].posYMax;
-            tRoom[i].x = _map->room[i].x;
-            tRoom[i].y = _map->room[i].y;
-            tRoom[i].w = _map->room[i].w;
-            tRoom[i].h = _map->room[i].h;
-            tRoom[i].exitN = _map->room[i].exitN;
-            tRoom[i].exitS = _map->room[i].exitS;
-            tRoom[i].exitE = _map->room[i].exitE;
-            tRoom[i].exitW = _map->room[i].exitW;
+            tRoom[i].x       = _map->room[i].x;
+            tRoom[i].y       = _map->room[i].y;
+            tRoom[i].w       = _map->room[i].w;
+            tRoom[i].h       = _map->room[i].h;
+            tRoom[i].exitN   = _map->room[i].exitN;
+            tRoom[i].exitS   = _map->room[i].exitS;
+            tRoom[i].exitE   = _map->room[i].exitE;
+            tRoom[i].exitW   = _map->room[i].exitW;
         }
         delete _map->room;
         _map->roomCount++;
         _map->room = new sMapRoom[_map->roomCount];
         for (uint16_t i = 0; i < _map->roomCount-1; i++)
         {
-            _map->room[i].type = tRoom[i].type;
-            _map->room[i].p = tRoom[i].p;
+            _map->room[i].type    = tRoom[i].type;
+            _map->room[i].p       = tRoom[i].p;
             _map->room[i].posXMin = tRoom[i].posXMin;
             _map->room[i].posXMax = tRoom[i].posXMax;
             _map->room[i].posYMin = tRoom[i].posYMin;
             _map->room[i].posYMax = tRoom[i].posYMax;
-            _map->room[i].x = tRoom[i].x;
-            _map->room[i].y = tRoom[i].y;
-            _map->room[i].w = tRoom[i].w;
-            _map->room[i].h = tRoom[i].h;
-            _map->room[i].exitN = tRoom[i].exitN;
-            _map->room[i].exitS = tRoom[i].exitS;
-            _map->room[i].exitE = tRoom[i].exitE;
-            _map->room[i].exitW = tRoom[i].exitW;
+            _map->room[i].x       = tRoom[i].x;
+            _map->room[i].y       = tRoom[i].y;
+            _map->room[i].w       = tRoom[i].w;
+            _map->room[i].h       = tRoom[i].h;
+            _map->room[i].exitN   = tRoom[i].exitN;
+            _map->room[i].exitS   = tRoom[i].exitS;
+            _map->room[i].exitE   = tRoom[i].exitE;
+            _map->room[i].exitW   = tRoom[i].exitW;
         }
         if (splitX && splitY)
+        {
             (_map->room[_roomID].w > _map->room[_roomID].h) ? (splitY = !splitY) : (splitX = !splitX);
+        }
         if (splitX)
         {
             _map->room[newRoomID].p = true;
@@ -91,6 +93,13 @@ static void splitRoom(sMap*& _map, const uint16_t _roomID)
             _map->room[newRoomID].posXMin = _map->room[_roomID].posXMin + _map->room[_roomID].w;
             _map->room[newRoomID].posXMax = _map->room[_roomID].posXMax;
             _map->room[_roomID].posXMax = _map->room[_roomID].posXMin + _map->room[_roomID].w - 1;
+            
+            _map->room[newRoomID].exitN = _map->room[_roomID].exitN;
+            _map->room[newRoomID].exitS = _map->room[_roomID].exitS;
+            _map->room[newRoomID].exitE = _map->room[_roomID].exitE;
+            _map->room[newRoomID].exitW = _map->room[_roomID].exitW;
+            _map->room[newRoomID].exitE = _roomID;
+            _map->room[_roomID].exitW = newRoomID;
         }
         if (splitY)
         {
@@ -108,10 +117,18 @@ static void splitRoom(sMap*& _map, const uint16_t _roomID)
             _map->room[newRoomID].posYMin = _map->room[_roomID].posYMin + _map->room[_roomID].h;
             _map->room[newRoomID].posYMax = _map->room[_roomID].posYMax;
             _map->room[_roomID].posYMax = _map->room[_roomID].posYMin + _map->room[_roomID].h - 1;
+
+            _map->room[newRoomID].exitN = _map->room[_roomID].exitN;
+            _map->room[newRoomID].exitS = _map->room[_roomID].exitS;
+            _map->room[newRoomID].exitE = _map->room[_roomID].exitE;
+            _map->room[newRoomID].exitW = _map->room[_roomID].exitW;
+            _map->room[newRoomID].exitN = _roomID;
+            _map->room[_roomID].exitS = newRoomID;
         }
         if (tRoom != nullptr)
         {
             delete[] tRoom;
+            tRoom = nullptr;
         }
     }
 }
@@ -131,8 +148,12 @@ static void subdivideMap(sMap*& _map)
             }
         }
         for (uint16_t i = 0; i < _map->roomCount; i++)
+        {
             if (_map->room[i].p)
+            {
                 availableRooms++;
+            }
+        }
     }
 }
 
@@ -153,9 +174,13 @@ static void fillRooms(sMap*& _map)
 void cMapManager::m_genD2_internal(sMap*& _map)
 {
     for (uint32_t i = 0; i < _map->numTiles; i++)
+    {
         _map->tile[i].base = eTileBase::tileWall;
+    }
     if (_map->room != nullptr)
+    {
         delete _map->room;
+    }
     _map->roomCount = 1;
     _map->room = new sMapRoom[_map->roomCount];
     _map->room[0].p = true;
@@ -204,10 +229,10 @@ void cMapManager::m_generateMap_D2(sMap*& _map)
     m_mapInitRooms(_map);
 
     // Room connection
-    m_mapConnectRooms(_map);
+    //m_mapConnectRooms(_map);
 
     // Room add prefab
-    m_mapPrefabRooms(_map);
+    //m_mapPrefabRooms(_map);
 
     // Populate the map with objects
     m_generateMap_objects(_map);

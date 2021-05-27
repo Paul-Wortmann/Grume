@@ -34,36 +34,6 @@ enum class eNPCClass : std::uint16_t
         NPCClassRanged = 3  // Ranged
     };
 
-enum class eNPCAttack : std::uint16_t 
-    { 
-        NPCAttackNone      = 0, // None
-        NPCAttackAgressive = 1, // Agressive
-        NPCAttackCasual    = 2  // Casual
-    };
-
-enum class eNPCDefence : std::uint16_t 
-    { 
-        NPCDefenceNone   = 0, // None
-        NPCDefenceShield = 1  // Shield
-    };
-
-enum class eNPCMovement : std::uint16_t 
-    { 
-        NPCMovementNone   = 0, // None
-        NPCMovementCharge = 1, // Charge
-        NPCMovementFlee   = 2, // Flee
-        NPCMovementCircle = 3, // Circle
-        NPCMovementAvoid  = 4  // Avoid
-    };
-
-enum class eNPCSocial : std::uint16_t 
-    { 
-        NPCSocialNone   = 0, // None
-        NPCSocialSwarm  = 1, // Swarm 
-        NPCSocialLead   = 2, // Lead
-        NPCSocialFollow = 3  // Follow
-    };
-
 struct sNPC
 {
     // Linked list management
@@ -79,10 +49,6 @@ struct sNPC
 
     // Traits
     eNPCClass    cClass   = eNPCClass::NPCClassMeele;
-    eNPCAttack   attack   = eNPCAttack::NPCAttackAgressive;
-    eNPCDefence  defence  = eNPCDefence::NPCDefenceShield;
-    eNPCMovement movement = eNPCMovement::NPCMovementCharge;
-    eNPCSocial   social   = eNPCSocial::NPCSocialNone;
 };
 
 #endif //NPC_DEFINE_HPP

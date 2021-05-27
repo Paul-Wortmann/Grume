@@ -25,6 +25,7 @@
 #define ENTITY_HPP
 
 #include "../core/includes.hpp"
+#include "entity_ai.hpp"
 #include "entity_material.hpp"
 #include "entity_model.hpp"
 #include "entity_physics.hpp"
@@ -89,6 +90,9 @@ struct sEntity
     std::uint32_t    stateInitial = 0;
     std::uint32_t    stateCurrent = 0;
     sEntityState*    state        = nullptr;
+
+    // AI
+    sEntityAI*       ai           = nullptr;
 };
 
 #endif //ENTITY_HPP
