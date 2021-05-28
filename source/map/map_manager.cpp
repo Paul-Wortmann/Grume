@@ -170,6 +170,12 @@ void cMapManager::load(const std::string &_fileName)
         m_currentMap->genData.seed      = seed;
         m_currentMap->genData.wallSize  = wall_width;
 
+        // Load the biome from file
+        if (biomeFile.length() > 3)
+        {
+            m_currentMap->biome = m_biomeManager.load(biomeFile);
+        }
+
         std::string tiles = "";
         // Generate tiles
         if (generate > 0)
@@ -262,12 +268,6 @@ void cMapManager::load(const std::string &_fileName)
         m_currentMap->floor->scale    = glm::vec3(1.0f, 1.0f, 1.0f);
         m_currentMap->floor->rotation = glm::vec3(0.0f, 0.0f, 0.0f);
         m_entityManager->updateModelMatrix(m_currentMap->floor);
-
-        // Load the biome from file
-        if (biomeFile.length() > 3)
-        {
-            m_currentMap->biome = m_biomeManager.load(biomeFile);
-        }
 
         // Load the material defined in the previously loaded biome
         if (m_currentMap->biome->floorSpritesheet.fileName.length() > 3)

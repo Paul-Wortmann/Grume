@@ -272,7 +272,9 @@ void cMapManager::m_mapInitRooms(sMap*& _map)
     if (_map->roomCount > 0)
     {
         if (_map->room != nullptr)
-            delete _map->room;
+        {
+            delete[] _map->room;
+        }
         _map->room = new sMapRoom[_map->roomCount];
         for (uint16_t i = 0; i < _map->roomCount; i++)
         {
@@ -291,7 +293,9 @@ void cMapManager::m_mapInitRoomsND(sMap*& _map)
     if (_map->roomCount > 0)
     {
         if (_map->room != nullptr)
-            delete _map->room;
+        {
+            delete[] _map->room;
+        }
         _map->room = new sMapRoom[_map->roomCount];
         for (uint16_t i = 0; i < _map->roomCount; i++)
         {

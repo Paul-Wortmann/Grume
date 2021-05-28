@@ -53,7 +53,7 @@ static void splitRoom(sMap*& _map, const uint16_t _roomID)
             tRoom[i].exitE   = _map->room[i].exitE;
             tRoom[i].exitW   = _map->room[i].exitW;
         }
-        delete _map->room;
+        delete[] _map->room;
         _map->roomCount++;
         _map->room = new sMapRoom[_map->roomCount];
         for (uint16_t i = 0; i < _map->roomCount-1; i++)
@@ -94,12 +94,19 @@ static void splitRoom(sMap*& _map, const uint16_t _roomID)
             _map->room[newRoomID].posXMax = _map->room[_roomID].posXMax;
             _map->room[_roomID].posXMax = _map->room[_roomID].posXMin + _map->room[_roomID].w - 1;
             
+            // Set neighbor room IDs
             _map->room[newRoomID].exitN = _map->room[_roomID].exitN;
             _map->room[newRoomID].exitS = _map->room[_roomID].exitS;
             _map->room[newRoomID].exitE = _map->room[_roomID].exitE;
             _map->room[newRoomID].exitW = _map->room[_roomID].exitW;
             _map->room[newRoomID].exitE = _roomID;
             _map->room[_roomID].exitW = newRoomID;
+
+            // Set doorway
+            //for (std::uint32_t i = _map->room[_roomID].x; i < _map->room[newRoomID].x; ++i)
+            {
+                _map->tile[(_map->room[_roomID].y * _map->width) + _map->room[newRoomID].posXMin - 1].base = eTileBase::tileDoorway;
+            }
         }
         if (splitY)
         {
@@ -118,12 +125,19 @@ static void splitRoom(sMap*& _map, const uint16_t _roomID)
             _map->room[newRoomID].posYMax = _map->room[_roomID].posYMax;
             _map->room[_roomID].posYMax = _map->room[_roomID].posYMin + _map->room[_roomID].h - 1;
 
+            // Set neighbor room IDs
             _map->room[newRoomID].exitN = _map->room[_roomID].exitN;
             _map->room[newRoomID].exitS = _map->room[_roomID].exitS;
             _map->room[newRoomID].exitE = _map->room[_roomID].exitE;
             _map->room[newRoomID].exitW = _map->room[_roomID].exitW;
             _map->room[newRoomID].exitN = _roomID;
             _map->room[_roomID].exitS = newRoomID;
+
+            // Set doorway
+            //for (std::uint32_t i = _map->room[_roomID].y; i < _map->room[newRoomID].y; ++i)
+            {
+                _map->tile[((_map->room[newRoomID].posYMin - 1) * _map->width) + _map->room[_roomID].x].base = eTileBase::tileDoorway;
+            }
         }
         if (tRoom != nullptr)
         {
@@ -171,6 +185,77 @@ static void fillRooms(sMap*& _map)
     }
 }
 
+static void removeAnomaliesRooms(sMap*& _map)
+{
+    for (uint32_t y = 1; y < _map->height - 1; y++)
+    {
+        for (uint32_t x = 1; x < _map->width - 1; x++)
+        {
+            uint32_t t = (y * _map->width) + x;
+            if (_map->tile[t].base == eTileBase::tileDoorway)
+            {
+                uint32_t n = 0;
+                n += (_map->tile[t + 1].base == eTileBase::tileWall) ? 1 : 0;
+                n += (_map->tile[t - 1].base == eTileBase::tileWall) ? 1 : 0;
+                n += (_map->tile[t + _map->width].base == eTileBase::tileWall) ? 1 : 0;
+                n += (_map->tile[t - _map->width].base == eTileBase::tileWall) ? 1 : 0;
+                if (n > 2)
+                {
+                    _map->tile[t].base = eTileBase::tileWall;
+                    if (_map->tile[t + 1].base == eTileBase::tileWall)
+                    {
+                        if ((_map->tile[t + 1 + _map->width].base == eTileBase::tileFloor)
+                         && (_map->tile[t + 1 - _map->width].base == eTileBase::tileFloor))
+                         {
+                            _map->tile[t + 1].base = eTileBase::tileDoorway;
+                         }
+                         else
+                         {
+                            _map->tile[t + 2].base = eTileBase::tileDoorway;
+                         }
+                    }
+                    if (_map->tile[t - 1].base == eTileBase::tileWall)
+                    {
+                        if ((_map->tile[t - 1 + _map->width].base == eTileBase::tileFloor)
+                         && (_map->tile[t - 1 - _map->width].base == eTileBase::tileFloor))
+                         {
+                            _map->tile[t - 1].base = eTileBase::tileDoorway;
+                         }
+                         else
+                         {
+                            _map->tile[t - 2].base = eTileBase::tileDoorway;
+                         }
+                    }
+                    if (_map->tile[t + _map->width].base == eTileBase::tileWall)
+                    {
+                        if ((_map->tile[t + _map->width + 1].base == eTileBase::tileFloor)
+                         && (_map->tile[t + _map->width - 1].base == eTileBase::tileFloor))
+                         {
+                            _map->tile[t + _map->width].base = eTileBase::tileDoorway;
+                         }
+                         else
+                         {
+                            _map->tile[t + (2 * _map->width)].base = eTileBase::tileDoorway;
+                         }
+                    }
+                    if (_map->tile[t - _map->width].base == eTileBase::tileWall)
+                    {
+                        if ((_map->tile[t - _map->width + 1].base == eTileBase::tileFloor)
+                         && (_map->tile[t - _map->width - 1].base == eTileBase::tileFloor))
+                         {
+                            _map->tile[t - _map->width].base = eTileBase::tileDoorway;
+                         }
+                         else
+                         {
+                            _map->tile[t - (2 * _map->width)].base = eTileBase::tileDoorway;
+                         }
+                    }
+                }
+            }
+        }
+    }
+}
+
 void cMapManager::m_genD2_internal(sMap*& _map)
 {
     for (uint32_t i = 0; i < _map->numTiles; i++)
@@ -179,7 +264,7 @@ void cMapManager::m_genD2_internal(sMap*& _map)
     }
     if (_map->room != nullptr)
     {
-        delete _map->room;
+        delete[] _map->room;
     }
     _map->roomCount = 1;
     _map->room = new sMapRoom[_map->roomCount];
@@ -194,6 +279,7 @@ void cMapManager::m_genD2_internal(sMap*& _map)
     _map->room[0].posYMax = _map->room[0].h;
     subdivideMap(_map);
     fillRooms(_map);
+    removeAnomaliesRooms(_map);
 }
 
 void cMapManager::m_generateMap_D2(sMap*& _map)
@@ -232,7 +318,7 @@ void cMapManager::m_generateMap_D2(sMap*& _map)
     //m_mapConnectRooms(_map);
 
     // Room add prefab
-    //m_mapPrefabRooms(_map);
+    m_mapPrefabRooms(_map);
 
     // Populate the map with objects
     m_generateMap_objects(_map);
