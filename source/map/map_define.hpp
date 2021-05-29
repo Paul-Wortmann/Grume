@@ -174,14 +174,14 @@ struct sMapRoom
 {
     eMapRoomType type    =  eMapRoomType::roomTypeNone;
     bool         p       =  false; // processed flag
-    uint16_t     posXMin =  0;
-    uint16_t     posXMax =  0;
-    uint16_t     posYMin =  0;
-    uint16_t     posYMax =  0;
-    uint16_t     x       =  0; // x position
-    uint16_t     y       =  0; // y position
-    uint16_t     w       =  0; // room width
-    uint16_t     h       =  0; // room height
+    uint32_t     posXMin =  0;
+    uint32_t     posXMax =  0;
+    uint32_t     posYMin =  0;
+    uint32_t     posYMax =  0;
+    uint32_t     x       =  0; // x position
+    uint32_t     y       =  0; // y position
+    uint32_t     w       =  0; // room width
+    uint32_t     h       =  0; // room height
     int16_t      exitN   = -1; // -1 for none, else connecting room ID
     int16_t      exitS   = -1; // -1 for none, else connecting room ID
     int16_t      exitE   = -1; // -1 for none, else connecting room ID

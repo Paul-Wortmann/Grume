@@ -56,9 +56,9 @@ void cBiomeManager::m_freeData(sMapBiome*& _biome)
 
 void cBiomeManager::m_freeAll(void)
 {
-    for (sMapBiome* m_temp = getHead(); m_temp != nullptr; m_temp = m_temp->next)
+    for (sMapBiome* temp = getHead(); temp != nullptr; temp = temp->next)
     {
-        m_freeData(m_temp);
+        m_freeData(temp);
     }
 }
 

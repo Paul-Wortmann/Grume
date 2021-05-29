@@ -27,7 +27,7 @@
 void cMapManager::m_addDoorEntities(sMap*& _map)
 {
     // Reset tile processed flags
-    for (std::size_t i = 0; i < _map->numTiles; ++i)
+    for (std::uint32_t i = 0; i < _map->numTiles; ++i)
     {
         _map->tile[i].processed = false;
     }
@@ -48,8 +48,8 @@ void cMapManager::m_addDoorEntities(sMap*& _map)
         std::uint32_t door_3td_count = xmlFile.getInteger("<door_3td_count>", 1); // Doors, length 1
 
         // Width and height offset, used to center the doors
-        uint32  xo = _map->width  / 2;
-        uint32  yo = _map->height / 2;
+        float32 xo = static_cast<float32>(_map->width  / 2);
+        float32 yo = static_cast<float32>(_map->height / 2);
         float32 tp = 1.0f / 2.0f; // tile center positioning ( half tile width)
 
         // Doors of length 3 --------------------------------------------------------------------------------------------

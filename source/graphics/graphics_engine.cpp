@@ -48,8 +48,8 @@ void cGraphicsEngine::sm_glfwCursorPosCallback(GLFWwindow* _window, float64 _xpo
 {
     cGraphicsEngine *graphicsEngine = static_cast<cGraphicsEngine*>(glfwGetWindowUserPointer(_window));
 
-    graphicsEngine->m_mouseX = _xpos;
-    graphicsEngine->m_mouseY = _ypos;
+    graphicsEngine->m_mouseX = static_cast<float32>(_xpos);
+    graphicsEngine->m_mouseY = static_cast<float32>(_ypos);
 }
 
 // GLFW Mouse button callback

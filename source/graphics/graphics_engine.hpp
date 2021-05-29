@@ -92,8 +92,8 @@ class cGraphicsEngine
 
         // IO
         std::unordered_map<int32, boolean> m_keyMap;
-        float64 m_mouseX = 0.0f;
-        float64 m_mouseY = 0.0f;
+        float32 m_mouseX = 0.0f;
+        float32 m_mouseY = 0.0f;
 
         // Garaphics engine camera
         cGraphicsEngineCamera m_camera;

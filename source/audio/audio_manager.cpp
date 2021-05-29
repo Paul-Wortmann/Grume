@@ -76,9 +76,9 @@ void cAudioManager::m_freeData(sEntityAudio*& _pointer)
 
 void cAudioManager::m_freeAll(void)
 {
-    for (sEntityAudio* m_temp = getHead(); m_temp != nullptr; m_temp = m_temp->next)
+    for (sEntityAudio* temp = getHead(); temp != nullptr; temp = temp->next)
     {
-        m_freeData(m_temp);
+        m_freeData(temp);
     }
 }
 

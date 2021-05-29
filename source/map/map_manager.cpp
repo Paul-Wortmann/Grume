@@ -111,9 +111,9 @@ void cMapManager::m_freeData(sMap*& _map)
 
 void cMapManager::m_freeAll(void)
 {
-    for (sMap* m_temp = getHead(); m_temp != nullptr; m_temp = m_temp->next)
+    for (sMap* temp = getHead(); temp != nullptr; temp = temp->next)
     {
-        m_freeData(m_temp);
+        m_freeData(temp);
     }
 }
 
@@ -147,7 +147,7 @@ void cMapManager::load(const std::string &_fileName)
         uint32      wall_width   = xmlMapFile.getInteger("<wall_width>");
 
         uint32      player_tile  = xmlMapFile.getInteger("<player_start_tile>");
-        uint32      player_rot   = xmlMapFile.getFloat("<player_start_rotation>");
+        float32     player_rot   = xmlMapFile.getFloat("<player_start_rotation>");
 
         // Create and populate the map data structure with the loaded XML data
         if (m_currentMap == nullptr)
@@ -306,7 +306,7 @@ void cMapManager::load(const std::string &_fileName)
                 // Load the data from the map file
                 std::string tEventString = xmlMapFile.getString("<event>", i + 1);
                 tEventString += "    ";
-                std::uint32_t tEventStringLength = tEventString.length();
+                std::uint64_t tEventStringLength = tEventString.length();
                 std::uint32_t tEventTileNum = 0;
                 std::uint32_t tEventType    = 0;
                 std::uint32_t tEventData1   = 0;
@@ -316,7 +316,7 @@ void cMapManager::load(const std::string &_fileName)
                 std::string   tString = "";
                 if (tEventStringLength > 6)
                 {
-                    for (std::uint32_t j = 0; j < tEventStringLength; ++j)
+                    for (std::uint64_t j = 0; j < tEventStringLength; ++j)
                     {
                         if (tEventString[j] == ' ')
                         {
@@ -392,7 +392,7 @@ void cMapManager::load(const std::string &_fileName)
                 // Load the data from the map file
                 std::string tPortalString = xmlMapFile.getString("<portal>", i + 1);
                 tPortalString += "    ";
-                std::uint32_t tPortalStringLength = tPortalString.length();
+                std::uint64_t tPortalStringLength = tPortalString.length();
                 std::uint32_t tPortalNumber    = 0;
                 std::uint32_t tPortalTileNum   = 0;
                 std::uint32_t tPortalDirection = 0;
@@ -400,7 +400,7 @@ void cMapManager::load(const std::string &_fileName)
                 std::string   tString = "";
                 if (tPortalStringLength > 6)
                 {
-                    for (std::uint32_t j = 0; j < tPortalStringLength; ++j)
+                    for (std::uint64_t j = 0; j < tPortalStringLength; ++j)
                     {
                         if (tPortalString[j] == ' ')
                         {
@@ -459,7 +459,7 @@ void cMapManager::load(const std::string &_fileName)
                 // Load the data from the map file
                 std::string troomTypeSetString = xmlMapFile.getString("<room_type_set>", i + 1);
                 troomTypeSetString += "    ";
-                std::uint32_t troomTypeSetStringLength = troomTypeSetString.length();
+                std::uint64_t troomTypeSetStringLength = troomTypeSetString.length();
                 std::uint32_t tRoomTile   = 0;
                 std::uint32_t tRoomType   = 0;
                 std::int32_t  tRoomIgnore = 0;
@@ -467,7 +467,7 @@ void cMapManager::load(const std::string &_fileName)
                 std::string   tString     = "";
                 if (troomTypeSetStringLength > 6)
                 {
-                    for (std::uint32_t j = 0; j < troomTypeSetStringLength; ++j)
+                    for (std::uint64_t j = 0; j < troomTypeSetStringLength; ++j)
                     {
                         if (troomTypeSetString[j] == ' ')
                         {
@@ -619,14 +619,14 @@ void cMapManager::process(const float32 &_dt)
                     {
                         std::string   tMapString = xmlAllMapFile.getString("<map>", j + 1);
                         tMapString += "    ";
-                        std::uint32_t tMapStringLength = tMapString.length();
+                        std::uint64_t tMapStringLength = tMapString.length();
                         std::uint32_t tMapNumber   = 0;
                         std::string   tMapFilename = "";
                         std::uint32_t tStringNum = 0;
                         std::string   tString = "";
                         if (tMapStringLength > 6)
                         {
-                            for (std::uint32_t k = 0; k < tMapStringLength; ++k)
+                            for (std::uint64_t k = 0; k < tMapStringLength; ++k)
                             {
                                 if (tMapString[k] == ' ')
                                 {

@@ -40,14 +40,14 @@ void cUIManager::m_freeData(sUIComponent*& _pointer)
 
 void cUIManager::m_freeAll(void)
 {
-    for (sUIComponent* m_temp = getHead(); m_temp != nullptr; m_temp = m_temp->next)
+    for (sUIComponent* temp = getHead(); temp != nullptr; temp = temp->next)
     {
-        m_freeData(m_temp);
+        m_freeData(temp);
     }
 }
 
 void cUIManager::load(const std::string &_fileName)
 {
-    sUIComponent* m_temp = getNew();
-    m_temp->normalTexture = m_entityManager->loadTexture("ui/hud_001.png");
+    sUIComponent* temp = getNew();
+    temp->normalTexture = m_entityManager->loadTexture("ui/hud_001.png");
 }

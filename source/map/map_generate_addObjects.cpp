@@ -50,14 +50,14 @@ void cMapManager::m_addObjectEntity(sMap*& _map,              // Map pointer
         // Load object names
         uint32 object_count = xmlObjectFile.getInstanceCount("<object>");
         std::vector<std::string> object_names;
-        for (std::size_t i = 0; i < object_count; ++i)
+        for (std::uint32_t i = 0; i < object_count; ++i)
         {
             object_names.push_back(xmlObjectFile.getString("<object>", i + 1));
         }
         std::vector<std::uint32_t> object_counts;
 
         // Load object counts
-        for (std::size_t i = 0; i < object_count; ++i)
+        for (std::uint32_t i = 0; i < object_count; ++i)
         {
             object_counts.push_back(xmlObjectFile.getInteger("<" + object_names[i] + "_count>", 1));
         }
@@ -110,8 +110,8 @@ void cMapManager::m_addObjectEntities(sMap*& _map)
     float32 y_pos = -1.0f;
     
     // Width and height offset, used to center the walls
-    uint32  xo = _map->width  / 2;
-    uint32  yo = _map->height / 2;
+    float32 xo = static_cast<float32>(_map->width  / 2);
+    float32 yo = static_cast<float32>(_map->height / 2);
     float32 tp = 1.0f / 2.0f; // tile center positioning ( half model dimention)
 
     // Load the biome object file
@@ -128,14 +128,14 @@ void cMapManager::m_addObjectEntities(sMap*& _map)
         // Load object names
         uint32 object_count = xmlObjectFile.getInstanceCount("<object>");
         std::vector<std::string> object_names;
-        for (std::size_t i = 0; i < object_count; ++i)
+        for (std::uint32_t i = 0; i < object_count; ++i)
         {
             object_names.push_back(xmlObjectFile.getString("<object>", i + 1));
         }
         std::vector<std::uint32_t> object_counts;
 
         // Load object counts
-        for (std::size_t i = 0; i < object_count; ++i)
+        for (std::uint32_t i = 0; i < object_count; ++i)
         {
             object_counts.push_back(xmlObjectFile.getInteger("<" + object_names[i] + "_count>", 1));
         }

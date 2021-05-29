@@ -297,7 +297,7 @@ void cMapManager::m_generateMap_D2(sMap*& _map)
         {
             for (uint16_t i = 0; i < _map->genData.pass; i++)
             {
-                _map->genData.seed = time(NULL);
+                _map->genData.seed = time(nullptr);
                 srand (_map->genData.seed);
                 m_genD2_internal(_map);
                 if ((m_mapGetFloorArea(_map) > (_map->numTiles / _map->genData.floorAreaMin)) && (_map->roomCount >= _map->genData.roomMin))

@@ -30,8 +30,8 @@ void cMapManager::m_addNPCEntities(sMap*& _map)
     float32 y_pos = -1.0f;
     
     // Width and height offset, used to center the walls
-    uint32  xo = _map->width  / 2;
-    uint32  yo = _map->height / 2;
+    float32 xo = static_cast<float32>(_map->width  / 2);
+    float32 yo = static_cast<float32>(_map->height / 2);
     float32 tp = 1.0f / 2.0f; // tile center positioning ( half model dimention)
 
     // Load the biome npc file
@@ -48,14 +48,14 @@ void cMapManager::m_addNPCEntities(sMap*& _map)
         // Load npc names
         uint32 npc_count = xmlNPCFile.getInstanceCount("<npc>");
         std::vector<std::string> npc_names;
-        for (std::size_t i = 0; i < npc_count; ++i)
+        for (std::uint32_t i = 0; i < npc_count; ++i)
         {
             npc_names.push_back(xmlNPCFile.getString("<npc>", i + 1));
         }
         std::vector<std::uint32_t> npc_counts;
 
         // Load npc counts
-        for (std::size_t i = 0; i < npc_count; ++i)
+        for (std::uint32_t i = 0; i < npc_count; ++i)
         {
             npc_counts.push_back(xmlNPCFile.getInteger("<" + npc_names[i] + "_count>", 1));
         }
@@ -68,7 +68,7 @@ void cMapManager::m_addNPCEntities(sMap*& _map)
         {
             std::string   tNPCString = xmlMapFile.getString("<npc>", i + 1);
             tNPCString += "    ";
-            std::uint32_t tNPCStringLength = tNPCString.length();
+            std::uint64_t tNPCStringLength = tNPCString.length();
             std::uint32_t tNPCTileNum  = 0;
             std::uint32_t tNPCNumber   = 0;
             std::uint32_t tNPCIndex    = 0;
@@ -78,7 +78,7 @@ void cMapManager::m_addNPCEntities(sMap*& _map)
             std::string   tString = "";
             if (tNPCStringLength > 6)
             {
-                for (std::uint32_t j = 0; j < tNPCStringLength; ++j)
+                for (std::uint64_t j = 0; j < tNPCStringLength; ++j)
                 {
                     if (tNPCString[j] == ' ')
                     {

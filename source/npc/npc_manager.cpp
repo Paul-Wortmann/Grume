@@ -39,15 +39,15 @@ void cNPCManager::m_freeData(sNPC*& _pointer)
 
 void cNPCManager::m_freeAll(void)
 {
-    for (sNPC* m_temp = getHead(); m_temp != nullptr; m_temp = m_temp->next)
+    for (sNPC* temp = getHead(); temp != nullptr; temp = temp->next)
     {
-        m_freeData(m_temp);
+        m_freeData(temp);
     }
 }
 
 sEntity* cNPCManager::load(const std::string &_fileName)
 {
-    
+    return nullptr;
 }
 
 void cNPCManager::process(const float32 &_dt)
@@ -58,7 +58,7 @@ void cNPCManager::process(const float32 &_dt)
         if ((m_entityTemp != nullptr) && (m_entityPlayer != nullptr) && (m_entityTemp->type == eEntityType::entityTypeNPCmob))
         {
             //glm::vec3 rotation = m_entityTemp->rotation;
-            float32 angle = atan2(m_entityTemp->position.z - m_entityPlayer->position.z, m_entityTemp->position.x - m_entityPlayer->position.x);
+            float32 angle = static_cast<float32>(atan2(m_entityTemp->position.z - m_entityPlayer->position.z, m_entityTemp->position.x - m_entityPlayer->position.x));
             m_entityTemp->rotation.y = angle - DTOR_90;
             m_entityManager->updateModelMatrix(m_entityTemp);
         }

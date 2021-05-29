@@ -40,9 +40,9 @@ void cAudioBufferManager::m_freeData(sAudioBuffer*& _pointer)
 
 void cAudioBufferManager::m_freeAll(void)
 {
-    for (sAudioBuffer* m_temp = getHead(); m_temp != nullptr; m_temp = m_temp->next)
+    for (sAudioBuffer* temp = getHead(); temp != nullptr; temp = temp->next)
     {
-        m_freeData(m_temp);
+        m_freeData(temp);
     }
 }
 

@@ -154,9 +154,9 @@ void cModelManager::m_freeData(sEntityModel*& _pointer)
 
 void cModelManager::m_freeAll(void)
 {
-    for (sEntityModel* m_temp = getHead(); m_temp != nullptr; m_temp = m_temp->next)
+    for (sEntityModel* temp = getHead(); temp != nullptr; temp = temp->next)
     {
-        m_freeData(m_temp);
+        m_freeData(temp);
     }
 }
 
@@ -237,11 +237,11 @@ sEntityModel* cModelManager::load(const std::string &_fileName)
 {
     // If the model has already been loaded, return a pointer to it
     // Also create a new instance
-    for (sEntityModel* m_temp = getHead(); m_temp != nullptr; m_temp = m_temp->next)
+    for (sEntityModel* temp = getHead(); temp != nullptr; temp = temp->next)
     {
-        if (m_temp->fileName.compare(_fileName) == 0)
+        if (temp->fileName.compare(_fileName) == 0)
         {
-            return m_temp;
+            return temp;
         }
     }
     // Else try to load the model

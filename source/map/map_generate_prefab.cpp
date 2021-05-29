@@ -130,12 +130,12 @@ void cMapManager::m_mapPrefabRooms(sMap*& _map)
         {
             std::string tPrefabString = xmlMapPrefabDatabaseFile.getString("<prefab>", p + 1);
             tPrefabString += "    ";
-            std::uint32_t tPrefabStringLength = tPrefabString.length();
+            std::uint64_t tPrefabStringLength = tPrefabString.length();
             std::uint32_t tStringNum = 0;
             std::string   tString = "";
             if (tPrefabStringLength > 6)
             {
-                for (std::uint32_t j = 0; j < tPrefabStringLength; ++j)
+                for (std::uint64_t j = 0; j < tPrefabStringLength; ++j)
                 {
                     if (tPrefabString[j] == ' ')
                     {
@@ -239,12 +239,12 @@ void cMapManager::m_mapApplyPrefab(sMap*& _map, const std::string &_fileName, co
         {
             std::string tPTiles = xmlMapPrefabFile.getString("<tiles>", i + 1);
             tPTiles += "  ";
-            std::uint32_t tPTilesLength = tPTiles.length();
+            std::uint64_t tPTilesLength = tPTiles.length();
             std::string   tString = "";
             std::uint32_t tileCount = 0;
             if (tPTilesLength > 6)
             {
-                for (std::uint32_t j = 0; j < tPTilesLength; ++j)
+                for (std::uint64_t j = 0; j < tPTilesLength; ++j)
                 {
                     if (tPTiles[j] == ' ')
                     {
@@ -280,7 +280,7 @@ void cMapManager::m_mapApplyPrefab(sMap*& _map, const std::string &_fileName, co
         {
             std::string   tObjectString = xmlMapPrefabFile.getString("<object>", i + 1);
             tObjectString += "    ";
-            std::uint32_t tObjectStringLength = tObjectString.length();
+            std::uint64_t tObjectStringLength = tObjectString.length();
             std::uint32_t tObjectTileNum  = 0;
             std::uint32_t tObjectNumber   = 0;
             std::uint32_t tObjectIndex    = 0;
@@ -291,7 +291,7 @@ void cMapManager::m_mapApplyPrefab(sMap*& _map, const std::string &_fileName, co
             std::string   tString = "";
             if (tObjectStringLength > 6)
             {
-                for (std::uint32_t j = 0; j < tObjectStringLength; ++j)
+                for (std::uint64_t j = 0; j < tObjectStringLength; ++j)
                 {
                     if (tObjectString[j] == ' ')
                     {

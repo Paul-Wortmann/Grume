@@ -99,15 +99,15 @@ glm::vec3 cPlayerManager::tileToPosition(uint32 _tile)
     float32 zo = static_cast<float32>(m_mapPointer->height) / 2.0f;
     float32 tp = 1.0f / 2.0f; // tile center positioning ( half model dimention)
 
-    float32 x = static_cast<float32>((_tile % m_mapPointer->width) - xo);
-    float32 z = static_cast<float32>((_tile / m_mapPointer->width) - zo);
+    float32 x = static_cast<float32>(_tile % m_mapPointer->width) - xo + tp;
+    float32 z = static_cast<float32>(_tile / m_mapPointer->width) - zo + tp;
     return glm::vec3(x, m_terrainHeight, z);
 };
 
 void cPlayerManager::moveTo(glm::vec3 _pos)
 {
     glm::vec3 destinationPosition = _pos;
-    destinationPosition.y -= 1.0f;
+    destinationPosition.y -= 0.0f;
     uint32 destinationTile = positionToTile(destinationPosition);
     setDestinationTile(destinationTile);
     if (m_path.pathLength > 0)

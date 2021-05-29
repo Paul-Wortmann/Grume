@@ -40,9 +40,9 @@ void cMaterialManager::m_freeData(sEntityMaterial*& _pointer)
 
 void cMaterialManager::m_freeAll(void)
 {
-    for (sEntityMaterial* m_temp = getHead(); m_temp != nullptr; m_temp = m_temp->next)
+    for (sEntityMaterial* temp = getHead(); temp != nullptr; temp = temp->next)
     {
-        m_freeData(m_temp);
+        m_freeData(temp);
     }
 }
 
@@ -50,12 +50,12 @@ bool cMaterialManager::isLoaded(const std::string &_diffuse, const std::string &
 {
     if (getCount() > 0)
     {
-        for (sEntityMaterial* m_temp = getHead(); m_temp != nullptr; m_temp = m_temp->next)
+        for (sEntityMaterial* temp = getHead(); temp != nullptr; temp = temp->next)
         {
-            if ((m_temp->diffuse->fileName.compare(_diffuse) == 0)
-             && (m_temp->emissive->fileName.compare(_emissive) == 0)
-             && (m_temp->normal->fileName.compare(_normal) == 0)
-             && (m_temp->specular->fileName.compare(_specular) == 0))
+            if ((temp->diffuse->fileName.compare(_diffuse) == 0)
+             && (temp->emissive->fileName.compare(_emissive) == 0)
+             && (temp->normal->fileName.compare(_normal) == 0)
+             && (temp->specular->fileName.compare(_specular) == 0))
             {
                 return true;
             }
@@ -69,19 +69,19 @@ sEntityMaterial* cMaterialManager::add(std::string _diffuse, std::string _emissi
     // If it is already loaded return that pointer
     if (getCount() > 0)
     {
-        for (sEntityMaterial* m_temp = getHead(); m_temp != nullptr; m_temp = m_temp->next)
+        for (sEntityMaterial* temp = getHead(); temp != nullptr; temp = temp->next)
         {
             // if any nullptrs are encountered don't compare file names
-            if ((m_temp->diffuse  == nullptr) ||
-                (m_temp->emissive == nullptr) ||
-                (m_temp->normal   == nullptr) ||
-                (m_temp->specular == nullptr));
-            else if((m_temp->diffuse->fileName.compare(_diffuse)  == 0) &&
-                    (m_temp->emissive->fileName.compare(_emissive) == 0) &&
-                    (m_temp->normal->fileName.compare(_normal)     == 0) &&
-                    (m_temp->specular->fileName.compare(_specular) == 0))
+            if ((temp->diffuse  == nullptr) ||
+                (temp->emissive == nullptr) ||
+                (temp->normal   == nullptr) ||
+                (temp->specular == nullptr));
+            else if((temp->diffuse->fileName.compare(_diffuse)  == 0) &&
+                    (temp->emissive->fileName.compare(_emissive) == 0) &&
+                    (temp->normal->fileName.compare(_normal)     == 0) &&
+                    (temp->specular->fileName.compare(_specular) == 0))
             {
-                return m_temp;
+                return temp;
             }
         }
     }

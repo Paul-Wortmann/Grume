@@ -99,8 +99,8 @@ void cMapManager::m_addWallWideEntities(sMap*& _map)
         sEntity* tEntity = nullptr;
 
         // Width and height offset, used to center the walls
-        uint32  xo = _map->width  / 2;
-        uint32  yo = _map->height / 2;
+        float32 xo = static_cast<float32>(_map->width  / 2);
+        float32 yo = static_cast<float32>(_map->height / 2);
         float32 tp = 1.0f / 2.0f; // tile center positioning ( half model dimention)
 
         // Perimeter --------------------------------------------------------------------------------------------
@@ -511,8 +511,8 @@ void cMapManager::m_addWallThinEntities(sMap*& _map)
         sEntity* tEntity = nullptr;
 
         // Width and height offset, used to center the walls
-        uint32  xo = _map->width  / 2;
-        uint32  yo = _map->height / 2;
+        float32 xo = static_cast<float32>(_map->width  / 2);
+        float32 yo = static_cast<float32>(_map->height / 2);
         float32 tp = 1.0f / 2.0f; // tile center positioning ( half tile width)
 
         // 1. Exits and Entrances ----------------------------------------------------------------------------------
