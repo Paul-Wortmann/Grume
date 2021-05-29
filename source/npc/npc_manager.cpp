@@ -58,7 +58,7 @@ void cNPCManager::process(const float32 &_dt)
         if ((m_entityTemp != nullptr) && (m_entityPlayer != nullptr) && (m_entityTemp->type == eEntityType::entityTypeNPCmob))
         {
             //glm::vec3 rotation = m_entityTemp->rotation;
-            double angle = atan2(m_entityTemp->position.z - m_entityPlayer->position.z, m_entityTemp->position.x - m_entityPlayer->position.x);
+            float32 angle = atan2(m_entityTemp->position.z - m_entityPlayer->position.z, m_entityTemp->position.x - m_entityPlayer->position.x);
             m_entityTemp->rotation.y = angle - DTOR_90;
             m_entityManager->updateModelMatrix(m_entityTemp);
         }

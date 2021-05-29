@@ -90,7 +90,7 @@ bool re_fileToBufferV(const std::string &_fileName, std::vector<unsigned char> &
         return false;
     }
     fileStream.seekg(0, std::ios::end);
-    uint16 file_size = fileStream.tellg();
+    std::uint64_t file_size = fileStream.tellg();
     fileStream.seekg(0, std::ios::beg);
     file_size -= fileStream.tellg();
     _buffer.resize(file_size);
@@ -104,8 +104,8 @@ std::string fileExtention(const std::string &_fileName)
     const char16_t marker = '.';
     std::string r_returnString = "";
     bool markerFound = false;
-    uint16 fileLength = _fileName.length();
-    for (int16 i = fileLength-1; i >= 0; i--)
+    std::uint64_t fileLength = _fileName.length();
+    for (std::int64_t i = fileLength-1; i >= 0; i--)
     {
         if (!markerFound)
         {
@@ -115,10 +115,12 @@ std::string fileExtention(const std::string &_fileName)
                 markerFound = true;
         }
     }
-    uint16 r_fileLength = r_returnString.length();
+    std::uint64_t r_fileLength = r_returnString.length();
     std::string returnString = "";
-    for (int16 i = r_fileLength-1; i >= 0; i--)
+    for (std::int64_t i = r_fileLength-1; i >= 0; i--)
+    {
             returnString += r_returnString[i];
+    }
     return returnString;
 }
 
@@ -127,8 +129,8 @@ std::string stripPath(const std::string &_fileName)
     const char16_t marker = '/';
     std::string r_returnString = "";
     bool markerFound = false;
-    uint16 fileLength = _fileName.length();
-    for (int16 i = fileLength-1; i >= 0; i--)
+    std::uint64_t fileLength = _fileName.length();
+    for (std::int64_t i = fileLength-1; i >= 0; i--)
     {
         if (!markerFound)
         {
@@ -138,10 +140,12 @@ std::string stripPath(const std::string &_fileName)
                 markerFound = true;
         }
     }
-    uint16 r_fileLength = r_returnString.length();
+    std::uint64_t r_fileLength = r_returnString.length();
     std::string returnString = "";
-    for (int16 i = r_fileLength-1; i >= 0; i--)
+    for (std::int64_t i = r_fileLength-1; i >= 0; i--)
+    {
             returnString += r_returnString[i];
+    }
     return returnString;
 }
 

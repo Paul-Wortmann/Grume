@@ -123,7 +123,7 @@ int32 xmlGetIntegerValue(const std::string &_data, const std::string &_key)
 // *This does not cover the full XML specification.
 // String encoded as: <tag x="1.0" y="1.0"/>
 // Returns: glm::vec2(1.0, 2.0);
-glm::vec2 xmlGetVec2Value(const std::string &_data, const std::string &_key)
+glm::vec2 xmlGetVec2Value(const std::string &_data)
 {
     std::string tStringX = xmlGetDataValue(_data, "x");
     std::string tStringY = xmlGetDataValue(_data, "y");
@@ -140,7 +140,7 @@ glm::vec2 xmlGetVec2Value(const std::string &_data, const std::string &_key)
 // *This does not cover the full XML specification.
 // String encoded as: <tag x="1.0" y="2.0" z="3.0"/>
 // Returns: glm::vec3(1.0, 2.0, 3.0);
-glm::vec3 xmlGetVec3Value(const std::string &_data, const std::string &_key)
+glm::vec3 xmlGetVec3Value(const std::string &_data)
 {
     std::string tStringX = xmlGetDataValue(_data, "x");
     std::string tStringY = xmlGetDataValue(_data, "y");

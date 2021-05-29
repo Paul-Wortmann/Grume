@@ -26,11 +26,11 @@
 mat4 translate(const mat4 &_mat4, const vec4 &_transVec)
 {
     mat4 tMat4(0.0f);
-    for (size_t i = 0; i < (_mat4.COLUMNS * _mat4.ROWS); i++)
+    for (std::size_t i = 0; i < (_mat4.COLUMNS * _mat4.ROWS); i++)
     {
         tMat4.array[i] = _mat4.array[i];
     }
-    for (size_t i = 0; i < (_transVec.SIZE - 1); i++)
+    for (std::size_t i = 0; i < (_transVec.SIZE - 1); i++)
     {
         tMat4.data[i][tMat4.COLUMNS - 1] = tMat4.data[i][tMat4.COLUMNS - 1] + _transVec.array[i];
     }
@@ -45,11 +45,11 @@ mat4 translate(const vec4 &_transVec)
 mat4 scale(const mat4 &_mat4, const vec4 &_scaleVec)
 {
     mat4 tMat4(0.0f);
-    for (size_t i = 0; i < (_mat4.COLUMNS * _mat4.ROWS); i++)
+    for (std::size_t i = 0; i < (_mat4.COLUMNS * _mat4.ROWS); i++)
     {
         tMat4.array[i] = _mat4.array[i];
     }
-    for (size_t i = 0; i < (_scaleVec.SIZE - 1); i++)
+    for (std::size_t i = 0; i < (_scaleVec.SIZE - 1); i++)
     {
         tMat4.data[i][i] = tMat4.data[i][i] * _scaleVec.array[i];
     }
@@ -66,8 +66,8 @@ mat4 rotate(const mat4 &_mat4, const vec4 &_rotateVec)
     mat4 xMat4(1);
     if (_rotateVec.x != 0)
     {
-        float64 xs = sin(_rotateVec.x);
-        float64 xc = cos(_rotateVec.x);
+        float32 xs = sin(_rotateVec.x);
+        float32 xc = cos(_rotateVec.x);
         xMat4.data[1][1] = xc;
         xMat4.data[1][2] = xs * -1;
         xMat4.data[2][1] = xs;
@@ -77,8 +77,8 @@ mat4 rotate(const mat4 &_mat4, const vec4 &_rotateVec)
     mat4 yMat4(1);
     if (_rotateVec.y != 0)
     {
-        float64 ys = sin(_rotateVec.y);
-        float64 yc = cos(_rotateVec.y);
+        float32 ys = sin(_rotateVec.y);
+        float32 yc = cos(_rotateVec.y);
         xMat4.data[0][0] = yc;
         xMat4.data[0][2] = ys;
         xMat4.data[2][0] = ys * -1;
@@ -88,8 +88,8 @@ mat4 rotate(const mat4 &_mat4, const vec4 &_rotateVec)
     mat4 zMat4(1);
     if (_rotateVec.z != 0)
     {
-        float64 zs = sin(_rotateVec.z);
-        float64 zc = cos(_rotateVec.z);
+        float32 zs = sin(_rotateVec.z);
+        float32 zc = cos(_rotateVec.z);
         xMat4.data[0][0] = zc;
         xMat4.data[0][1] = zs * -1;
         xMat4.data[1][0] = zs;
@@ -104,12 +104,12 @@ mat4 rotate(const vec4 &_rotateVec)
     return rotate(mat4(1), _rotateVec);
 }
 
-mat4 orthographic(float64 _left, float64 _right, float64 _bottom, float64 _top, float64 _near, float64 _far)
+mat4 orthographic(float32 _left, float32 _right, float32 _bottom, float32 _top, float32 _near, float32 _far)
 {
     return mat4();
 }
 
-mat4 perspective(float64 _fov, float64 _aspect, float64 _near, float64 _far)
+mat4 perspective(float32 _fov, float32 _aspect, float32 _near, float32 _far)
 {
     mat4 tMat4(0.0f);
     tMat4.data[0][0] = 1.0f / (tanf( _fov / 2.0f) * _aspect);
@@ -120,7 +120,7 @@ mat4 perspective(float64 _fov, float64 _aspect, float64 _near, float64 _far)
     return tMat4;
 }
 
-mat4 perspective(float64 _fov, float64 _near, float64 _far)
+mat4 perspective(float32 _fov, float32 _near, float32 _far)
 {
     mat4 tMat4(0.0f);
     tMat4.data[0][0] = 1.0f / tanf( _fov / 2.0f);

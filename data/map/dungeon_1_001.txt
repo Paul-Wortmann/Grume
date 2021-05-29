@@ -124,7 +124,8 @@
         # These are used when warping from a prior map
         # Portal number, Tile location, player face direction
         # These are exit portals
-        <portal>1 0842 0.0000</portal> #Town 1 exit
+        <portal>1 0642 0.0000</portal> #Town 1 exit
+        <portal>2 0658 0.0000</portal> #Down to level 2
     </portals>
     
     <events>
@@ -171,16 +172,17 @@
         #tile number, object number, scale, y-rotation, obstacle
         
         # Library
+        <object>1942 29 37 1.0 1.5708 1</object> # Town props - paper debris
         <object>1837 29 30 1.0 1.5708 1</object> # Town props - bookshelf
-        <object>2237 29 30 1.0 1.5708 1</object> # Town props - bookshelf
+        <object>2237 29 31 1.0 1.5708 1</object> # Town props - bookshelf
         <object>1839 29 06 1.0 -1.5708 1</object> # Town props - bookshelf
         <object>2239 29 06 1.0 -1.5708 1</object> # Town props - bookshelf
-        <object>1840 29 30 1.0 1.5708 1</object> # Town props - bookshelf
-        <object>2240 29 30 1.0 1.5708 1</object> # Town props - bookshelf
+        <object>1840 29 32 1.0 1.5708 1</object> # Town props - bookshelf
+        <object>2240 29 33 1.0 1.5708 1</object> # Town props - bookshelf
         <object>1843 29 06 1.0 -1.5708 1</object> # Town props - bookshelf
         <object>2243 29 06 1.0 -1.5708 1</object> # Town props - bookshelf
-        <object>1844 29 30 1.0 1.5708 1</object> # Town props - bookshelf
-        <object>2244 29 30 1.0 1.5708 1</object> # Town props - bookshelf
+        <object>1844 29 33 1.0 1.5708 1</object> # Town props - bookshelf
+        <object>2244 29 32 1.0 1.5708 1</object> # Town props - bookshelf
         <object>1846 29 06 1.0 -1.5708 1</object> # Town props - bookshelf
         <object>2246 29 06 1.0 -1.5708 1</object> # Town props - bookshelf
         # Alchemy lab 2

@@ -83,8 +83,8 @@ sEntity* cPlayerManager::load(const std::string &_fileName)
 uint32 cPlayerManager::positionToTile(glm::vec3 _position)
 {
     // Width and height offset, used to center the walls
-    float32 xo = m_mapPointer->width  / 2.0f;
-    float32 zo = m_mapPointer->height / 2.0f;
+    float32 xo = static_cast<float32>(m_mapPointer->width)  / 2.0f;
+    float32 zo = static_cast<float32>(m_mapPointer->height) / 2.0f;
     float32 tp = 1.0f / 2.0f; // tile center positioning ( half model dimention)
 
     uint32 x = static_cast<uint32>(_position.x + xo);
@@ -95,12 +95,12 @@ uint32 cPlayerManager::positionToTile(glm::vec3 _position)
 glm::vec3 cPlayerManager::tileToPosition(uint32 _tile)
 { 
     // Width and height offset, used to center the walls
-    float32 xo = m_mapPointer->width  / 2.0f;
-    float32 zo = m_mapPointer->height / 2.0f;
+    float32 xo = static_cast<float32>(m_mapPointer->width)  / 2.0f;
+    float32 zo = static_cast<float32>(m_mapPointer->height) / 2.0f;
     float32 tp = 1.0f / 2.0f; // tile center positioning ( half model dimention)
 
-    float x = ((_tile % m_mapPointer->width) - xo);
-    float z = ((_tile / m_mapPointer->width) - zo);
+    float32 x = static_cast<float32>((_tile % m_mapPointer->width) - xo);
+    float32 z = static_cast<float32>((_tile / m_mapPointer->width) - zo);
     return glm::vec3(x, m_terrainHeight, z);
 };
 

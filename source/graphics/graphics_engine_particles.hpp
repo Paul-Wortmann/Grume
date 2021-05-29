@@ -21,20 +21,19 @@
  * @date 2011-11-11
  */
 
-#ifndef XML_UTILS_HPP
-#define XML_UTILS_HPP
+#ifndef GRAPHICS_ENGINE_PARTICLES_HPP
+#define GRAPHICS_ENGINE_PARTICLES_HPP
 
 #include "../core/includes.hpp"
 
-// A collection of basic functions to extract data from xml encoded strings*
-// *This does not cover the full XML specification.
+class cGraphicsEngineParticles
+{
+    public:
+    
+    protected:
+    
+    private:
+    
+};
 
-bool        xmlFind           (const std::string &_data, const std::string &_find);
-std::string xmlGetDataString  (const std::string &_data);
-std::string xmlGetDataValue   (const std::string &_data, const std::string &_key);
-float32     xmlGetFloatValue  (const std::string &_data, const std::string &_key);
-int32       xmlGetIntegerValue(const std::string &_data, const std::string &_key);
-glm::vec2   xmlGetVec2Value   (const std::string &_data);
-glm::vec3   xmlGetVec3Value   (const std::string &_data);
-
-#endif // XML_UTILS_HPP
+#endif //GRAPHICS_ENGINE_PARTICLES_HPP
