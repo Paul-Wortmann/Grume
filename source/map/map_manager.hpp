@@ -104,6 +104,7 @@ class cMapManager : public tcLinkedList<sMap>
 
         // map_generate_addEvents.cpp
         void     m_addMapEvent(sMap*& _map, const std::uint32_t &_tile, const std::uint32_t &_type, const std::uint32_t &_data_1, const std::uint32_t &_data_2, const std::uint32_t &_data_3);
+        void     m_addMapPortal(sMap*& _map, const std::uint32_t &_num, const std::uint32_t &_tile, const float32 &_dir);
 
         // map_generate_addObjects.cpp
         void     m_addObjectEntity(sMap*& _map, const std::uint32_t &_tn, const std::uint32_t &_on, const std::uint32_t &_oi, const float &_s, const float &_yr, const std::uint32_t &_o);
@@ -111,6 +112,9 @@ class cMapManager : public tcLinkedList<sMap>
         
         // map_generate_addNPCs.cpp
         void     m_addNPCEntities(sMap*& _map);
+        
+        // map_generate_addStairs.cpp
+        void     m_addStairsEntity(sMap*& _map);
 
         // map_generate_npcs.cpp
         void     m_generateMap_npcs(sMap*& _map);

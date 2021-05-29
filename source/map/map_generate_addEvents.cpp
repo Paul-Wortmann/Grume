@@ -80,3 +80,50 @@ void cMapManager::m_addMapEvent(sMap*& _map,                 // Map pointer
         tMapEvents = nullptr;
     }
 }
+
+// Add a portal to the map
+void cMapManager::m_addMapPortal(sMap*& _map,                // Map pointer
+                                 const std::uint32_t &_num,  // Portal number
+                                 const std::uint32_t &_tile, // Tile number
+                                 const float32 &_dir)        // Player face direction
+{
+    // backup dynamic portal array if it is not empty
+    sMapPortal* tMapPortals = nullptr;
+    if (_map->portal != nullptr)
+    {
+        tMapPortals = new sMapPortal[_map->portalCount];
+        for (std::uint32_t i = 0; i < _map->portalCount; ++i)
+        {
+            tMapPortals[i].tile      = _map->portal[i].tile;
+            tMapPortals[i].portalNo  = _map->portal[i].portalNo;
+            tMapPortals[i].direction = _map->portal[i].direction;
+        }
+        
+        delete[] _map->portal;
+        _map->portal = nullptr;
+    }
+    
+    // Inlarge the map portal array
+    _map->portalCount++;
+    _map->portal = new sMapPortal[_map->portalCount];
+    
+    // Replace the saved data
+    for (std::uint32_t i = 0; i < _map->portalCount - 1; ++i)
+    {
+        _map->portal[i].tile      = tMapPortals[i].tile;
+        _map->portal[i].portalNo  = tMapPortals[i].portalNo;
+        _map->portal[i].direction = tMapPortals[i].direction;
+    }
+    
+    // Add the new portal to the end of the array
+    _map->portal[_map->portalCount - 1].tile      = _tile;
+    _map->portal[_map->portalCount - 1].portalNo  = _num;
+    _map->portal[_map->portalCount - 1].direction = _dir;
+    
+    // Clean up
+    if (tMapPortals != nullptr)
+    {
+        delete[] tMapPortals;
+        tMapPortals = nullptr;
+    }
+}
