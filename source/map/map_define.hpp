@@ -107,7 +107,7 @@ struct sMapGenData
     std::uint16_t  pass                   = 4; // General number of passes, smoothing etc...
     std::uint16_t  density                = 10; // Percentage / 2, rough approximate
     std::uint16_t  roomMin                = 3; // Guaranteed minimum number of rooms, maps with less are discarded (sMap.pass times)
-    std::uint16_t  roomMax                = density * pass; // Will try generate up to roomMax rooms, on a tiny map reaching this is impossible
+    std::uint16_t  roomMax                = static_cast<std::uint16_t>(density * pass); // Will try generate up to roomMax rooms, on a tiny map reaching this is impossible
     std::uint16_t  roomRadiusMax          = 8; // max room radius
     std::uint16_t  roomRadiusMin          = 2; // min room radius
     std::uint16_t  roomBorder             = 3; // Wall width

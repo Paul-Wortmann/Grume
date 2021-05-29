@@ -317,6 +317,9 @@ void cMapManager::m_generateMap_D2(sMap*& _map)
     // Room connection
     //m_mapConnectRooms(_map);
 
+    // Room add stairs
+    m_addStairsEntity(_map);
+
     // Room add prefab
     m_mapPrefabRooms(_map);
 
