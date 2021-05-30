@@ -51,7 +51,8 @@ class cMapManager : public tcLinkedList<sMap>
         void          terminate(void);
         void          load(const std::string &_fileName);
         void          unload(void);
-        void          process(const float32 &_dt);
+        void          process(const float64 &_dt);
+        bool          getLoading(void) { return m_loadRequest; };
 
         // Dimentions
         std::uint32_t getMapWidth(void) { return m_currentMap->width; };
@@ -77,6 +78,7 @@ class cMapManager : public tcLinkedList<sMap>
         std::string       m_mapMusic        = ""; // Map music file name
         std::uint32_t     m_musicSourceID   = 0;  // Map music audio source
         std::uint32_t     m_musicBufferID   = 0;  // Map music audio buffer
+        bool              m_loadRequest     = false;
 
         const float32 y_pos = -1.0f;       // Map floor position on the y axis
         const float32 tp    = 1.0f / 2.0f; // tile center positioning ( half model dimention)

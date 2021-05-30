@@ -161,12 +161,12 @@ void cMapManager::m_addNPCEntities(sMap*& _map)
             {
                 std::string   tMobString = xmlMapFile.getString("<npc_mob>", i + 1);
                 tMobString += "    ";
-                std::uint32_t tMobStringLength = tMobString.length();
+                std::uint64_t tMobStringLength = tMobString.length();
                 std::uint32_t tStringNum = 0;
                 std::string   tString = "";
                 if (tMobStringLength > 6)
                 {
-                    for (std::uint32_t j = 0; j < tMobStringLength; ++j)
+                    for (std::uint64_t j = 0; j < tMobStringLength; ++j)
                     {
                         if (tMobString[j] == ' ')
                         {

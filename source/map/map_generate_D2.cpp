@@ -23,10 +23,10 @@
 
 #include "map_manager.hpp"
 
-static void splitRoom(sMap*& _map, const uint16_t _roomID)
+static void splitRoom(sMap*& _map, const uint32_t _roomID)
 {
-    bool splitX = (_map->room[_roomID].w > (((_map->genData.roomRadiusMin * 2) + _map->genData.roomBorder) * 2));
-    bool splitY = (_map->room[_roomID].h > (((_map->genData.roomRadiusMin * 2) + _map->genData.roomBorder) * 2));
+    bool splitX = (_map->room[_roomID].w > static_cast<uint32_t>(((_map->genData.roomRadiusMin * 2) + _map->genData.roomBorder) * 2));
+    bool splitY = (_map->room[_roomID].h > static_cast<uint32_t>(((_map->genData.roomRadiusMin * 2) + _map->genData.roomBorder) * 2));
     if (!splitX && !splitY)
     {
         _map->room[_roomID].p = false;
@@ -34,9 +34,9 @@ static void splitRoom(sMap*& _map, const uint16_t _roomID)
     }
     else
     {
-        uint16_t newRoomID = _map->roomCount;
+        uint32_t newRoomID = _map->roomCount;
         sMapRoom *tRoom = new sMapRoom[_map->roomCount];
-        for (uint16_t i = 0; i < _map->roomCount; i++)
+        for (uint32_t i = 0; i < _map->roomCount; i++)
         {
             tRoom[i].type    = _map->room[i].type;
             tRoom[i].p       = _map->room[i].p;
@@ -56,7 +56,7 @@ static void splitRoom(sMap*& _map, const uint16_t _roomID)
         delete[] _map->room;
         _map->roomCount++;
         _map->room = new sMapRoom[_map->roomCount];
-        for (uint16_t i = 0; i < _map->roomCount-1; i++)
+        for (uint32_t i = 0; i < _map->roomCount-1; i++)
         {
             _map->room[i].type    = tRoom[i].type;
             _map->room[i].p       = tRoom[i].p;
@@ -84,8 +84,8 @@ static void splitRoom(sMap*& _map, const uint16_t _roomID)
             _map->room[newRoomID].h = _map->room[_roomID].h;
             _map->room[newRoomID].posYMin = _map->room[_roomID].posYMin;
             _map->room[newRoomID].posYMax = _map->room[_roomID].posYMax;
-            uint16_t splitMaxX = _map->room[_roomID].w - ((_map->genData.roomRadiusMin + _map->genData.roomBorder) * 2);
-            uint16_t splitDeltaX = rand() % splitMaxX;
+            uint32_t splitMaxX = _map->room[_roomID].w - ((_map->genData.roomRadiusMin + _map->genData.roomBorder) * 2);
+            uint32_t splitDeltaX = rand() % splitMaxX;
             _map->room[_roomID].w = _map->genData.roomRadiusMin + _map->genData.roomBorder + (splitMaxX - splitDeltaX);
             _map->room[newRoomID].w = _map->genData.roomRadiusMin + _map->genData.roomBorder + splitDeltaX;
             _map->room[_roomID].x = _map->room[_roomID].posXMin + (_map->room[_roomID].w / 2);
@@ -115,8 +115,8 @@ static void splitRoom(sMap*& _map, const uint16_t _roomID)
             _map->room[newRoomID].w = _map->room[_roomID].w;
             _map->room[newRoomID].posXMin = _map->room[_roomID].posXMin;
             _map->room[newRoomID].posXMax = _map->room[_roomID].posXMax;
-            uint16_t splitMaxY = _map->room[_roomID].h - ((_map->genData.roomRadiusMin + _map->genData.roomBorder) * 2);
-            uint16_t splitDeltaY = rand() % splitMaxY;
+            uint32_t splitMaxY = _map->room[_roomID].h - ((_map->genData.roomRadiusMin + _map->genData.roomBorder) * 2);
+            uint32_t splitDeltaY = rand() % splitMaxY;
             _map->room[_roomID].h = _map->genData.roomRadiusMin + _map->genData.roomBorder + (splitMaxY - splitDeltaY);
             _map->room[newRoomID].h = _map->genData.roomRadiusMin + _map->genData.roomBorder + splitDeltaY;
             _map->room[_roomID].y = _map->room[_roomID].posYMin + (_map->room[_roomID].h / 2);
@@ -149,11 +149,11 @@ static void splitRoom(sMap*& _map, const uint16_t _roomID)
 
 static void subdivideMap(sMap*& _map)
 {
-    uint16_t availableRooms = 1;
+    uint32_t availableRooms = 1;
     while (availableRooms != 0)
     {
         availableRooms = 0;
-        for (uint16_t i = 0; i < _map->roomCount; i++)
+        for (uint32_t i = 0; i < _map->roomCount; i++)
         {
             if (_map->room[i].p)
             {
@@ -161,7 +161,7 @@ static void subdivideMap(sMap*& _map)
                 i = _map->roomCount;
             }
         }
-        for (uint16_t i = 0; i < _map->roomCount; i++)
+        for (uint32_t i = 0; i < _map->roomCount; i++)
         {
             if (_map->room[i].p)
             {

@@ -589,7 +589,7 @@ void cMapManager::m_resetPlayerPosition(void)
     m_graphicsEngine->setCameraTarget(cameraTarget);
 }
 
-void cMapManager::process(const float32 &_dt)
+void cMapManager::process(const float64 &_dt)
 {
     std::uint32_t playerTile = m_playerManager->getCurrentTile();
     for (std::uint32_t i = 0; i < m_currentMap->eventCount; ++i)
@@ -602,82 +602,93 @@ void cMapManager::process(const float32 &_dt)
         {
             if (m_currentMap->event[i].triggered == false)
             {
-                m_currentMap->event[i].triggered = true;
-                
                 // Warp to map (tile, type, map number, portal number)
                 if (m_currentMap->event[i].type == eMapEventType::eventTypeWarp)
                 {
-                    // Set the destionation portal number
-                    m_currentMap->playerStartPortal = m_currentMap->event[i].data_2;
-                    
-                    // Load the map warp data
-                    std::string nextMapFileName = "";
-                    cXML xmlAllMapFile;
-                    xmlAllMapFile.load(FILE_PATH_BIOME + m_currentMap->biome->databaseMap.fileName);
-                    std::uint32_t mapCount = xmlAllMapFile.getInstanceCount("<map>");
-                    for (std::uint32_t j = 0; j < mapCount; ++j)
+                    if (m_loadRequest == false)
                     {
-                        std::string   tMapString = xmlAllMapFile.getString("<map>", j + 1);
-                        tMapString += "    ";
-                        std::uint64_t tMapStringLength = tMapString.length();
-                        std::uint32_t tMapNumber   = 0;
-                        std::string   tMapFilename = "";
-                        std::uint32_t tStringNum = 0;
-                        std::string   tString = "";
-                        if (tMapStringLength > 6)
+                        m_loadRequest = true;
+                    }
+                    else
+                    {
+                        m_loadRequest = false;
+                        m_currentMap->event[i].triggered = true;
+
+                        // Set the destionation portal number
+                        m_currentMap->playerStartPortal = m_currentMap->event[i].data_2;
+                        
+                        // Load the map warp data
+                        std::string nextMapFileName = "";
+                        cXML xmlAllMapFile;
+                        xmlAllMapFile.load(FILE_PATH_BIOME + m_currentMap->biome->databaseMap.fileName);
+                        std::uint32_t mapCount = xmlAllMapFile.getInstanceCount("<map>");
+                        for (std::uint32_t j = 0; j < mapCount; ++j)
                         {
-                            for (std::uint64_t k = 0; k < tMapStringLength; ++k)
+                            std::string   tMapString = xmlAllMapFile.getString("<map>", j + 1);
+                            tMapString += "    ";
+                            std::uint64_t tMapStringLength = tMapString.length();
+                            std::uint32_t tMapNumber   = 0;
+                            std::string   tMapFilename = "";
+                            std::uint32_t tStringNum = 0;
+                            std::string   tString = "";
+                            if (tMapStringLength > 6)
                             {
-                                if (tMapString[k] == ' ')
+                                for (std::uint64_t k = 0; k < tMapStringLength; ++k)
                                 {
-                                    if (tStringNum == 0)
+                                    if (tMapString[k] == ' ')
                                     {
-                                        tMapNumber = std::stoi(tString);
+                                        if (tStringNum == 0)
+                                        {
+                                            tMapNumber = std::stoi(tString);
+                                        }
+                                        else if (tStringNum == 1)
+                                        {
+                                            tMapFilename = tString;
+                                        }
+                                        tStringNum++;
+                                        tString = "";
                                     }
-                                    else if (tStringNum == 1)
+                                    else
                                     {
-                                        tMapFilename = tString;
+                                        tString += tMapString[k];
                                     }
-                                    tStringNum++;
-                                    tString = "";
-                                }
-                                else
-                                {
-                                    tString += tMapString[k];
                                 }
                             }
+                            if (tMapNumber == m_currentMap->event[i].data_1)
+                            {
+                                nextMapFileName = tMapFilename;
+                            }
                         }
-                        if (tMapNumber == m_currentMap->event[i].data_1)
-                        {
-                            nextMapFileName = tMapFilename;
-                        }
+                        xmlAllMapFile.free();
+                        
+                        // Free the old map && load the new map
+                        m_stopMusic();
+                        load(nextMapFileName);
+                        m_resetPlayerPosition();
+                        m_graphicsEngine->initializeEntities();
+                        m_animationEngine->initializeEntities();
+                        m_playMusic();
+                        m_loadRequest = false;
                     }
-                    xmlAllMapFile.free();
-                    
-                    // Free the old map && load the new map
-                    m_stopMusic();
-                    load(nextMapFileName);
-                    m_resetPlayerPosition();
-                    m_graphicsEngine->initializeEntities();
-                    m_animationEngine->initializeEntities();
-                    m_playMusic();
                 }
                 // Entity set (tile, type, map number, portal number)
                 else if (m_currentMap->event[i].type == eMapEventType::eventTypeEntitySet)
                 {
+                    m_currentMap->event[i].triggered = true;
                     std::uint32_t entityUID = m_currentMap->tile[m_currentMap->event[i].data_1].object;
                     m_entityManager->setState(entityUID, m_currentMap->event[i].data_2);
                 }
                 // Entity toggle
                 else if (m_currentMap->event[i].type == eMapEventType::eventTypeEntityToggle)
                 {
+                    m_currentMap->event[i].triggered = true;
                     std::uint32_t entityUID = m_currentMap->tile[m_currentMap->event[i].data_1].object;
                     m_entityManager->toggleState(entityUID, m_currentMap->event[i].data_2, m_currentMap->event[i].data_3);
                 }
                 // Entity spawn
                 else if (m_currentMap->event[i].type == eMapEventType::eventTypeEntitySpawn)
                 {
-                    
+                    m_currentMap->event[i].triggered = true;
                 }
             }
         }

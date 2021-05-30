@@ -58,7 +58,10 @@ sEntityTexture* cTextureManager::load(const std::string &_fileName)
             return temp;
         }
     }
-
+    
+    // Add a short delay to prevent CPU sturation;
+    gThreadSleep(1);
+    
     int width      = 0;
     int height     = 0;
     int numChannel = 0;

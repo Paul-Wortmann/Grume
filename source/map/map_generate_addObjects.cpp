@@ -118,12 +118,6 @@ void cMapManager::m_addObjectEntities(sMap*& _map)
     // Only contine if we can load the biome object file and the map file
     if ((xmlObjectFile.lineCount() > 0) && (xmlMapFile.lineCount() > 0))
     {
-        // Map floor position on the y axis
-        float32 y_pos = -1.0f;
-        
-        // tile center positioning ( half model dimention)
-        float32 tp = 1.0f / 2.0f;
-
         // Load object names
         uint32 object_count = xmlObjectFile.getInstanceCount("<object>");
         std::vector<std::string> object_names;

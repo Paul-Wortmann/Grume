@@ -244,6 +244,10 @@ sEntityModel* cModelManager::load(const std::string &_fileName)
             return temp;
         }
     }
+
+    // Add a short delay to prevent CPU sturation;
+    gThreadSleep(1);
+
     // Else try to load the model
     sEntityModel* tModel = m_loadModel(_fileName);
     if (tModel != nullptr)

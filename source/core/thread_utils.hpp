@@ -21,27 +21,12 @@
  * @date 2011-11-11
  */
 
-#include "graphics_engine_light_manager.hpp"
+#ifndef THREAD_UTILS_HPP
+#define THREAD_UTILS_HPP
 
-void cGraphicsEngineLightManager::initialize(void)
-{
+#include <cstdint>
+#include <thread>
 
-}
+void gThreadSleep(std::uint32_t _us);
 
-void cGraphicsEngineLightManager::terminate(void)
-{
-    m_freeAll();
-}
-
-void cGraphicsEngineLightManager::m_freeData(sGraphicsEnginePointLight*& _light)
-{
-
-}
-
-void cGraphicsEngineLightManager::m_freeAll(void)
-{
-    for (sGraphicsEnginePointLight* temp = getHead(); temp != nullptr; temp = temp->next)
-    {
-        m_freeData(temp);
-    }
-}
+#endif // THREAD_UTILS_HPP

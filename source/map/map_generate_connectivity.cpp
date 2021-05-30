@@ -35,10 +35,10 @@ void cMapManager::m_mapConnectRooms_SL(sMap*& _map, const uint16_t &_r1, const u
         direction = eDirectionBias::directionNorth;
     if (_map->room[_r1].exitS == _r2)
         direction = eDirectionBias::directionSouth;
-    uint16_t psx = ((direction == eDirectionBias::directionEast) || (direction == eDirectionBias::directionWest)) ?  ((direction == eDirectionBias::directionEast) ? _map->room[_r1].posXMin : _map->room[_r1].posXMax) : _map->room[_r1].x;
-    uint16_t psy = ((direction == eDirectionBias::directionNorth) || (direction == eDirectionBias::directionSouth)) ?  ((direction == eDirectionBias::directionNorth) ? _map->room[_r1].posYMin : _map->room[_r1].posYMax) : _map->room[_r1].y;
-    uint16_t pex = ((direction == eDirectionBias::directionEast) || (direction == eDirectionBias::directionWest)) ?  ((direction == eDirectionBias::directionWest) ? _map->room[_r2].posXMin : _map->room[_r2].posXMax) : _map->room[_r2].x;
-    uint16_t pey = ((direction == eDirectionBias::directionNorth) || (direction == eDirectionBias::directionSouth)) ?  ((direction == eDirectionBias::directionSouth) ? _map->room[_r2].posYMin : _map->room[_r2].posYMax) : _map->room[_r2].y;
+    uint32_t psx = ((direction == eDirectionBias::directionEast) || (direction == eDirectionBias::directionWest)) ?  ((direction == eDirectionBias::directionEast) ? _map->room[_r1].posXMin : _map->room[_r1].posXMax) : _map->room[_r1].x;
+    uint32_t psy = ((direction == eDirectionBias::directionNorth) || (direction == eDirectionBias::directionSouth)) ?  ((direction == eDirectionBias::directionNorth) ? _map->room[_r1].posYMin : _map->room[_r1].posYMax) : _map->room[_r1].y;
+    uint32_t pex = ((direction == eDirectionBias::directionEast) || (direction == eDirectionBias::directionWest)) ?  ((direction == eDirectionBias::directionWest) ? _map->room[_r2].posXMin : _map->room[_r2].posXMax) : _map->room[_r2].x;
+    uint32_t pey = ((direction == eDirectionBias::directionNorth) || (direction == eDirectionBias::directionSouth)) ?  ((direction == eDirectionBias::directionSouth) ? _map->room[_r2].posYMin : _map->room[_r2].posYMax) : _map->room[_r2].y;
     //std::cout << "X1: " << psx  << " Y1: " << psy << std::endl;
     //std::cout << "X2: " << pex  << " Y2: " << pey << std::endl;
     if (direction == eDirectionBias::directionEast)
@@ -76,7 +76,7 @@ void cMapManager::m_mapConnectRooms_SL(sMap*& _map, const uint16_t &_r1, const u
             _map->tile[(psy * _map->width) + psx].base = eTileBase::tileFloor;
             if (_map->genData.connectivityPadding > 0)
             {
-                for (uint16_t i = 0; i <= _map->genData.connectivityPadding; i++)
+                for (uint32_t i = 0; i <= _map->genData.connectivityPadding; i++)
                 {
                     if (_map->tile[(psy * _map->width) + psx + i].base == eTileBase::tileWall)
                         _map->tile[(psy * _map->width) + psx + i].base = eTileBase::tileFloor;
@@ -105,9 +105,9 @@ void cMapManager::m_mapConnectRooms_SL(sMap*& _map, const uint16_t &_r1, const u
 // Straight Lines, 90 degree angle
 void cMapManager::m_mapConnectRooms_ND(sMap*& _map, const uint16_t &_r1, const uint16_t &_r2)
 {
-    uint16_t psx = _map->room[_r1].x;
-    uint16_t psy = _map->room[_r1].y;
-    uint16_t pex = _map->room[_r2].x;
+    uint32_t psx = _map->room[_r1].x;
+    uint32_t psy = _map->room[_r1].y;
+    uint32_t pex = _map->room[_r2].x;
     uint16_t pey = _map->room[_r2].y;
 
     while (psy != pey)
@@ -117,7 +117,7 @@ void cMapManager::m_mapConnectRooms_ND(sMap*& _map, const uint16_t &_r1, const u
             _map->tile[(psy * _map->width) + psx].base = eTileBase::tileFloor;
             if (_map->genData.connectivityPadding > 0)
             {
-                for (uint16_t i = 0; i <= _map->genData.connectivityPadding; i++)
+                for (uint32_t i = 0; i <= _map->genData.connectivityPadding; i++)
                 {
                     if (_map->tile[(psy * _map->width) + psx + i].base == eTileBase::tileWall)
                         _map->tile[(psy * _map->width) + psx + i].base = eTileBase::tileFloor;
@@ -147,7 +147,7 @@ void cMapManager::m_mapConnectRooms_ND(sMap*& _map, const uint16_t &_r1, const u
             _map->tile[(psy * _map->width) + psx].base = eTileBase::tileFloor;
             if (_map->genData.connectivityPadding > 0)
             {
-                for (uint16_t i = 0; i <= _map->genData.connectivityPadding; i++)
+                for (uint32_t i = 0; i <= _map->genData.connectivityPadding; i++)
                 {
                     if (_map->tile[(psy * _map->width) + psx + i].base == eTileBase::tileWall)
                         _map->tile[(psy * _map->width) + psx + i].base = eTileBase::tileFloor;
@@ -186,15 +186,15 @@ void cMapManager::m_mapConnectRooms(sMap*& _map)
     uint32_t distanceW = UINT32_MAX; // size larger than possible distance
     uint32_t distanceS = UINT32_MAX; // size larger than possible distance
     // ray cast room finder
-    for (uint16_t i = 0; i < _map->roomCount; i++)
+    for (uint32_t i = 0; i < _map->roomCount; i++)
     {
         //search horizontally
-        for (uint16_t j = _map->room[i].posYMin; j < _map->room[i].posYMax; j++)
+        for (uint32_t j = _map->room[i].posYMin; j < _map->room[i].posYMax; j++)
         {
             // right / west
-            for (uint16_t k = _map->room[i].x; k < _map->width; k++)
+            for (uint32_t k = _map->room[i].x; k < _map->width; k++)
             {
-                uint16_t r = _map->tile[(j * _map->width) + k].room;
+                uint32_t r = _map->tile[(j * _map->width) + k].room;
                 if ((_map->tile[(j * _map->width) + k].base == eTileBase::tileFloor) && (r != i))
                 {
                     distanceT = sqrt(((_map->room[r].x - _map->room[i].x) * (_map->room[r].x - _map->room[i].x)) + ((_map->room[r].y - _map->room[i].y) * (_map->room[r].y - _map->room[i].y)));
@@ -207,9 +207,9 @@ void cMapManager::m_mapConnectRooms(sMap*& _map)
                 }
             }
             // left / east
-            for (uint16_t k = _map->room[i].x; k > 0; k--)
+            for (uint32_t k = _map->room[i].x; k > 0; k--)
             {
-                uint16_t r = _map->tile[(j * _map->width) + k].room;
+                uint32_t r = _map->tile[(j * _map->width) + k].room;
                 if ((_map->tile[(j * _map->width) + k].base == eTileBase::tileFloor) && (r != i))
                 {
                     distanceT = sqrt(((_map->room[r].x - _map->room[i].x) * (_map->room[r].x - _map->room[i].x)) + ((_map->room[r].y - _map->room[i].y) * (_map->room[r].y - _map->room[i].y)));
@@ -223,12 +223,12 @@ void cMapManager::m_mapConnectRooms(sMap*& _map)
             }
         }
         //search vertically
-        for (uint16_t k = _map->room[i].posXMin; k < _map->room[i].posXMax; k++)
+        for (uint32_t k = _map->room[i].posXMin; k < _map->room[i].posXMax; k++)
         {
             // down / south
-            for (uint16_t j = _map->room[i].y; j < _map->height; j++)
+            for (uint32_t j = _map->room[i].y; j < _map->height; j++)
             {
-                uint16_t r = _map->tile[(j * _map->width) + k].room;
+                uint32_t r = _map->tile[(j * _map->width) + k].room;
                 if ((_map->tile[(j * _map->width) + k].base == eTileBase::tileFloor) && (_map->tile[(j * _map->width) + k].room != i))
                 {
                     distanceT = sqrt(((_map->room[r].x - _map->room[i].x) * (_map->room[r].x - _map->room[i].x)) + ((_map->room[r].y - _map->room[i].y) * (_map->room[r].y - _map->room[i].y)));
@@ -241,9 +241,9 @@ void cMapManager::m_mapConnectRooms(sMap*& _map)
                 }
             }
             // up / north
-            for (uint16_t j = _map->room[i].y; j > 0; j--)
+            for (uint32_t j = _map->room[i].y; j > 0; j--)
             {
-                uint16_t r = _map->tile[(j * _map->width) + k].room;
+                uint32_t r = _map->tile[(j * _map->width) + k].room;
                 if ((_map->tile[(j * _map->width) + k].base == eTileBase::tileFloor) && (_map->tile[(j * _map->width) + k].room != i))
                 {
                     distanceT = sqrt(((_map->room[r].x - _map->room[i].x) * (_map->room[r].x - _map->room[i].x)) + ((_map->room[r].y - _map->room[i].y) * (_map->room[r].y - _map->room[i].y)));
@@ -258,11 +258,11 @@ void cMapManager::m_mapConnectRooms(sMap*& _map)
         }
     }
     // remove multiple connections to same neighbor
-    for (uint16_t i = 0; i < _map->roomCount; i++)
+    for (uint32_t i = 0; i < _map->roomCount; i++)
     {
-        for (uint16_t j = 0; j < _map->roomCount; j++)
+        for (uint32_t j = 0; j < _map->roomCount; j++)
         {
-            uint16_t found = 0;
+            uint32_t found = 0;
             if (_map->room[i].exitE == j)
                 found++;
             if (_map->room[i].exitW == j)
@@ -289,7 +289,7 @@ void cMapManager::m_mapConnectRooms(sMap*& _map)
         }
     }
     // try to connect detached rooms
-    for (uint16_t i = (_map->roomCount-1); i > 0; i--)
+    for (uint32_t i = (_map->roomCount-1); i > 0; i--)
     {
         if ((_map->room[i].exitE ==  -1) && (_map->room[i].exitW == -1) && (_map->room[i].exitN == -1) && (_map->room[i].exitS == -1))
         {
@@ -325,7 +325,7 @@ void cMapManager::m_mapConnectRooms(sMap*& _map)
         }
     }
     // apply room inter-connections
-    for (uint16_t i = 0; i < _map->roomCount; i++)
+    for (uint32_t i = 0; i < _map->roomCount; i++)
     {
         switch (_map->genData.connectivityAlgorithm)
         {
@@ -367,7 +367,7 @@ void cMapManager::m_mapConnectRooms(sMap*& _map)
     // use path finder to locate unreachable rooms and try connect them.
     if (_map->roomCount > 0)
     {
-        for (uint16_t i = 0; i < _map->roomCount-1; i++)
+        for (uint32_t i = 0; i < _map->roomCount-1; i++)
         {
             sMapPath pathT;
             pathT.startTile       = ((_map->width * _map->room[i].y)   + _map->room[i].x);

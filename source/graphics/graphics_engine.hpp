@@ -41,23 +41,25 @@ class cGraphicsEngine
         ~cGraphicsEngine(void) = default;
 
         // Member functions
-        uint32 initialize(void);
-        void terminate(void);
-        void process(const float32 &_dt);
-        bool windowClosed(void) {return m_windowClosed; }
-        void setEntityHead(sEntity* _entity) { m_entityHead = _entity; }
-        void initializeEntities(void) { m_initEntities(); }
-        void setUIHead(sUIComponent* _UIComponent) { m_UIHead = _UIComponent; }
-        void initializeUIComponents(void) { m_initUIComponents(); }
-        bool getKeyState(const uint32 &_key) { return m_keyMap[_key]; }
-        void setPlayerLightPosition(const glm::vec3 &_position) { m_playerLight->position = _position; }
+        uint32    initialize(void);
+        void      terminate(void);
+        void      process(const float32 &_dt);
+        bool      windowClosed(void) {return m_windowClosed; }
+        void      setEntityHead(sEntity* _entity) { m_entityHead = _entity; }
+        void      initializeEntities(void) { m_initEntities(); }
+        void      setUIHead(sUIComponent* _UIComponent) { m_UIHead = _UIComponent; }
+        void      initializeUIComponents(void) { m_initUIComponents(); }
+        bool      getKeyState(const uint32 &_key) { return m_keyMap[_key]; }
+        void      setPlayerLightPosition(const glm::vec3 &_position) { m_playerLight->position = _position; }
         glm::vec3 getPlayerLightPosition(void) { return m_playerLight->position; }
         glm::vec3 getMouseTerrainPosition(void) { return m_camera.getMousePositionTerrain(m_mouseX, m_mouseY); }
         glm::vec3 getCameraTarget(void) { return m_camera.getTarget(); };
-        void setCameraTarget(glm::vec3 _target) { m_camera.setTarget(_target); };
+        void      setCameraTarget(glm::vec3 _target) { m_camera.setTarget(_target); };
         glm::vec3 getCameraPosition(void) { return m_camera.getPosition(); };
-        void setCameraPosition(glm::vec3 _position) { m_camera.setPosition(_position); };
-        float32 getAspectRatio(void) { return m_aspectRatio; };
+        void      setCameraPosition(glm::vec3 _position) { m_camera.setPosition(_position); };
+        float32   getAspectRatio(void) { return m_aspectRatio; };
+        void      setLoadTextureID(const uint32 &_tid) { m_pls_renderTextureID = _tid; }
+        void      setLoading(const bool &_b) { m_loadRender = _b; }
 
     protected:
 
@@ -93,6 +95,7 @@ class cGraphicsEngine
         uint32        m_renderBufferSize_h = 1024;
         bool          m_wireframe          = false;
         bool          m_basicRender        = false;
+        bool          m_loadRender         = true;
         bool          m_animation          = true;
 
         // IO
@@ -208,6 +211,20 @@ class cGraphicsEngine
 
         uint32                m_pui_loc_diffuseMap                         = 0;
         uint32                m_pui_loc_modelMatrix                        = 0;
+
+        // Render Loading screen
+        // graphics_engine_pipeline_ls.cpp
+        void m_pls_initialize(void);
+        void m_pls_terminate(void);
+        void m_pls_render(void);
+        cGraphicsEngineShader m_pls_shader                                 = {};
+        const uint32          m_pls_fbo                                    = 0;
+        uint32                m_pls_VAO                                    = 0;
+        uint32                m_pls_VBO                                    = 0;
+
+        uint32                m_pls_loc_diffuseMap                         = 0;
+        uint32                m_pls_renderTextureID                        = 0;
+        
 };
 
 #endif //GRAPHICS_ENGINE_HPP

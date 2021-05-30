@@ -68,7 +68,8 @@ void cGameEngine::initialize(void)
         mapManager.setGraphicsPointer(&graphicsEngine);
         playerManager.setTerrainHeight(-1.0f);
         uiManager.initialize(&entityManager);
-        
+        graphicsEngine.setLoadTextureID(entityManager.loadTexture("ui/loading_screen_001.png")->ID);
+        graphicsEngine.process(0);
 
         // TEST bat -- DELETE ME --
         m_entityBat = entityManager.load("npc/bat_1_001.txt");
@@ -91,6 +92,7 @@ void cGameEngine::initialize(void)
     {
         m_state = eGameState::shutdown;
     }
+    graphicsEngine.setLoading(false);
 }
 
 void cGameEngine::terminate(void)
@@ -118,6 +120,8 @@ void cGameEngine::process(void)
 
         // System processes
         // -----------------------------------------
+        graphicsEngine.setLoading(mapManager.getLoading());
+        
         graphicsEngine.process(dt);
         animationEngine.process(dt);
         npcManager.process(dt);

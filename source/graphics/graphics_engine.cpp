@@ -270,6 +270,7 @@ uint32 cGraphicsEngine::initialize(void)
                     m_p2_initialize();
                     m_p3_initialize();
                     m_pui_initialize();
+                    m_pls_initialize();
                 }
             }
             else
@@ -330,6 +331,7 @@ void cGraphicsEngine::terminate(void)
         m_p2_terminate();
         m_p3_terminate();
         m_pui_terminate();
+        m_pls_terminate();
     }
 
     // Systems
@@ -412,26 +414,33 @@ void cGraphicsEngine::process(const float32 &_dt)
         m_windowClosed = glfwWindowShouldClose(m_window);
     }
 
-    if (m_basicRender)
+    if (m_loadRender)
     {
-        // Basic render pass: testing no graphics
-        m_pb_render();
+        // Render loading screen
+        m_pls_render();
     }
     else
     {
-        // 1st render pass: shadow map
-        m_p1_render();
+        if (m_basicRender)
+        {
+            // Basic render pass: testing no graphics
+            m_pb_render();
+        }
+        else
+        {
+            // 1st render pass: shadow map
+            m_p1_render();
 
-        // 2nd render pass: Point light shadow cube map generation
-        m_p2_render();
+            // 2nd render pass: Point light shadow cube map generation
+            m_p2_render();
 
-        // 3rd render pass: Lighting
-        m_p3_render();
+            // 3rd render pass: Lighting
+            m_p3_render();
 
-        // UI render pass: last stage
-        m_pui_render();
+            // UI render pass: last stage
+            m_pui_render();
+        }
     }
-
     // End frame
     glfwSwapBuffers(m_window);
     glfwPollEvents();
