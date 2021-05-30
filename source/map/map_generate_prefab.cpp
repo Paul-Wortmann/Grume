@@ -284,13 +284,14 @@ void cMapManager::m_mapApplyPrefab(sMap*& _map, const std::string &_fileName, co
             std::uint32_t tObjectTileNum  = 0;
             std::uint32_t tObjectNumber   = 0;
             std::uint32_t tObjectIndex    = 0;
-            float         tObjectScale    = 0.0;
-            float         tObjectRotation = 0.0;
             uint32        tObjectObstacle = 0;
             std::uint32_t tStringNum = 0;
             std::string   tString = "";
             if (tObjectStringLength > 6)
             {
+                float32   tObjectScale    = 0.0;
+                float32   tObjectRotation = 0.0;
+                
                 for (std::uint64_t j = 0; j < tObjectStringLength; ++j)
                 {
                     if (tObjectString[j] == ' ')

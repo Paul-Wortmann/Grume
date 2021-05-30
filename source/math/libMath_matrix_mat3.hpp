@@ -35,8 +35,8 @@ struct mat3_t
     static const uint32_t COLUMNS = 3;
     static const uint32_t ROWS    = 3;
     mat3_t(void) { for (size_t i = 0; i < ROWS; i++) for (size_t j = 0; j < COLUMNS; j++) data[j][i] = (i == j) ? 1.0f : 0.0f;}
-    mat3_t(int _s) { for (size_t i = 0; i < ROWS; i++) for (size_t j = 0; j < COLUMNS; j++) data[j][i] = (_s == 1) ? (i == j) ? 1.0f : 0.0f : _s; }
-    mat3_t(T _f) { for (size_t i = 0; i < ROWS; i++) for (size_t j = 0; j < COLUMNS; j++) data[j][i] = _f; }
+    explicit mat3_t(int _s) { for (size_t i = 0; i < ROWS; i++) for (size_t j = 0; j < COLUMNS; j++) data[j][i] = (_s == 1) ? (i == j) ? 1.0f : 0.0f : _s; }
+    explicit mat3_t(T _f) { for (size_t i = 0; i < ROWS; i++) for (size_t j = 0; j < COLUMNS; j++) data[j][i] = _f; }
     mat3_t(T _f00, T _f10, T _f20,
          T _f01, T _f11, T _f21,
          T _f02, T _f12, T _f22)

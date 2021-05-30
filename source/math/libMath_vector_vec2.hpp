@@ -40,7 +40,7 @@ struct vec2_t
     
     // construnctors and destructor
     vec2_t(void) { this->x = 0.0; this->y = 0.0; }
-    vec2_t(const T &_f) { this->x = _f; this->y = _f; }
+    explicit vec2_t(const T &_f) { this->x = _f; this->y = _f; }
     vec2_t(const T &_x, const T &_y) { this->x = _x; this->y = _y; }
     vec2_t(const vec2_t& _v) { this->x = _v.x; this->y = _v.y; }
     ~vec2_t(void) = default;

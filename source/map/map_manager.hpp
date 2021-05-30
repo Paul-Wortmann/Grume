@@ -78,6 +78,9 @@ class cMapManager : public tcLinkedList<sMap>
         std::uint32_t     m_musicSourceID   = 0;  // Map music audio source
         std::uint32_t     m_musicBufferID   = 0;  // Map music audio buffer
 
+        const float32 y_pos = -1.0f;       // Map floor position on the y axis
+        const float32 tp    = 1.0f / 2.0f; // tile center positioning ( half model dimention)
+
         // map_manager.cpp
         void m_freeAll(void);
         void m_freeData(sMap*& _map);

@@ -32,13 +32,10 @@ void cMapManager::m_addObjectEntity(sMap*& _map,              // Map pointer
                                     const float         &_yr, // y rotation
                                     const std::uint32_t &_o)  // obstacle
 {
-    // Map floor position on the y axis
-    float32 y_pos = -1.0f;
     
     // Width and height offset, used to center the walls
     uint32  xo = _map->width  / 2;
     uint32  yo = _map->height / 2;
-    float32 tp = 1.0f / 2.0f; // tile center positioning ( half model dimention)
 
     // Load the biome object file
     cXML xmlObjectFile;
@@ -106,13 +103,9 @@ void cMapManager::m_addObjectEntity(sMap*& _map,              // Map pointer
 // Used to add objects specified in the map file
 void cMapManager::m_addObjectEntities(sMap*& _map)
 {
-    // Map floor position on the y axis
-    float32 y_pos = -1.0f;
-    
     // Width and height offset, used to center the walls
     float32 xo = static_cast<float32>(_map->width  / 2);
     float32 yo = static_cast<float32>(_map->height / 2);
-    float32 tp = 1.0f / 2.0f; // tile center positioning ( half model dimention)
 
     // Load the biome object file
     cXML xmlObjectFile;
@@ -125,6 +118,12 @@ void cMapManager::m_addObjectEntities(sMap*& _map)
     // Only contine if we can load the biome object file and the map file
     if ((xmlObjectFile.lineCount() > 0) && (xmlMapFile.lineCount() > 0))
     {
+        // Map floor position on the y axis
+        float32 y_pos = -1.0f;
+        
+        // tile center positioning ( half model dimention)
+        float32 tp = 1.0f / 2.0f;
+
         // Load object names
         uint32 object_count = xmlObjectFile.getInstanceCount("<object>");
         std::vector<std::string> object_names;
@@ -206,7 +205,7 @@ void cMapManager::m_addObjectEntities(sMap*& _map)
             uint32 h = tObjectTileNum / _map->width;
            
             //std::cout << "Found object '" << tObjectTileNum << "'-'" << tObjectNumber << "'-'" << tObjectScale << "'-'" << tObjectRotation << "'" << std::endl;
-            if (object_counts[tObjectNumber-1] > 0)
+            if ((tObjectNumber > 0) && (object_counts[tObjectNumber-1] > 0))
             {
                 if (tObjectIndex == 0)
                 {

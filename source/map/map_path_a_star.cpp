@@ -123,6 +123,12 @@ static bool _pathASinternal(sMap*& _map, sMapPath& _path, sASTileData*& _pathDat
 /// void gAStar(sMap*& _map, sMapPath& _path)
 void gAStar(sMap*& _map, sMapPath& _path)
 {
+    // Don't proceed if there is no map data
+    if (_map == nullptr)
+    {
+        return;
+    }
+
     // Player clicked out of map bounds
     if (_path.destinationTile > _map->numTiles)
     {
@@ -137,10 +143,7 @@ void gAStar(sMap*& _map, sMapPath& _path)
         delete [] _path.path;
         _path.path = nullptr;
     }
-    if (_map == nullptr)
-    {
-        return;
-    }
+
     sASTileData* pathData = new sASTileData[_map->numTiles];
     for (std::uint32_t i = 0; i < _map->height; i++)
     {

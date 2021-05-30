@@ -159,6 +159,7 @@ void gLogWrite(const std::string &_fileName, const uint32 &_type, const std::str
         #endif
 
     #endif // DEBUG_LF
+    /*
     if (_type == LOG_ERROR)
     {
         std::string tString = "";
@@ -167,6 +168,7 @@ void gLogWrite(const std::string &_fileName, const uint32 &_type, const std::str
         tString += _function;
         tString += "() ";
         tString += std::to_string(_line);
-        //throw std::runtime_error(tString.c_str());
+        throw std::runtime_error(tString.c_str());
     }
+    */
 }

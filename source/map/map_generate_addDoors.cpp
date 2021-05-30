@@ -31,9 +31,6 @@ void cMapManager::m_addDoorEntities(sMap*& _map)
     {
         _map->tile[i].processed = false;
     }
-
-    // Map floor position on the y axis
-    float32 y_pos = -1.0f;
     
     // Load the biome wallset file (includes doors)
     cXML xmlFile;
@@ -50,7 +47,6 @@ void cMapManager::m_addDoorEntities(sMap*& _map)
         // Width and height offset, used to center the doors
         float32 xo = static_cast<float32>(_map->width  / 2);
         float32 yo = static_cast<float32>(_map->height / 2);
-        float32 tp = 1.0f / 2.0f; // tile center positioning ( half tile width)
 
         // Doors of length 3 --------------------------------------------------------------------------------------------
         for (uint32 h = 2; h < _map->height - 2; ++h)

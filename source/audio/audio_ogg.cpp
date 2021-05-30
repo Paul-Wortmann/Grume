@@ -63,13 +63,12 @@ void loadOgg(const std::string &_fileName, sAudioData *_audioData)
             delete[] _audioData->buffer;
         _audioData->buffer = new char [_audioData->bufferSize];
         uint64_t bufferPos = 0;
-        uint64_t readSize = 0;
         uint32_t readLength = 4096;
         int32_t currentSection = 0;
         int32_t eof = 0;
         while(!eof)
         {
-            readSize = ov_read(&oggFile, &_audioData->buffer[bufferPos], readLength, endian, wordSize, 1, &currentSection);
+            uint64_t readSize = ov_read(&oggFile, &_audioData->buffer[bufferPos], readLength, endian, wordSize, 1, &currentSection);
             if (readSize == 0)
                 eof = 1;
             bufferPos += readSize;

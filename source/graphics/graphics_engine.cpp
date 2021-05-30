@@ -34,9 +34,24 @@ void cGraphicsEngine::sm_glfwKeyCallback(GLFWwindow* _window, int32 _key, int32 
 {
     cGraphicsEngine *graphicsEngine = static_cast<cGraphicsEngine*>(glfwGetWindowUserPointer(_window));
 
-    graphicsEngine->m_keyMap[_key] = (_action == GLFW_PRESS) ? true : false;
-    graphicsEngine->m_keyMap[_key] = (_action == GLFW_RELEASE) ? false : true;
+    if (_action == GLFW_PRESS)
+    {
+        graphicsEngine->m_keyMap[_key] = true;
+    }
+    else if (_action == GLFW_RELEASE)
+    {
+        graphicsEngine->m_keyMap[_key] = false;
+    }
+    else if (_action == GLFW_REPEAT)
+    {
+        graphicsEngine->m_keyMap[_key] = true;
+    }
+    else
+    {
+        graphicsEngine->m_keyMap[_key] = false;
+    }
 
+    // Test case
     if (_key == GLFW_KEY_ESCAPE && _action == GLFW_PRESS)
     {
         glfwSetWindowShouldClose(_window, GLFW_TRUE);
@@ -57,8 +72,18 @@ void cGraphicsEngine::sm_glfwMouseButtonCallback(GLFWwindow* _window, int32 _but
 {
     cGraphicsEngine *graphicsEngine = static_cast<cGraphicsEngine*>(glfwGetWindowUserPointer(_window));
 
-    graphicsEngine->m_keyMap[_button] = (_action == GLFW_PRESS) ? true : false;
-    graphicsEngine->m_keyMap[_button] = (_action == GLFW_RELEASE) ? false : true;
+    if (_action == GLFW_PRESS)
+    {
+        graphicsEngine->m_keyMap[_button] = true;
+    }
+    else if (_action == GLFW_RELEASE)
+    {
+        graphicsEngine->m_keyMap[_button] = false;
+    }
+    else
+    {
+        graphicsEngine->m_keyMap[_button] = false;
+    }
 }
 
 // GLFW Framebuffer size callback

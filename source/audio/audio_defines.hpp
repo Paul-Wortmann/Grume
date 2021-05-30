@@ -37,11 +37,11 @@ struct sListener
 struct sAudioData
 {
     uint16_t audioFormat     = 0;
-    uint16_t channels        = 2;
-    uint32_t sampleRate      = 48000;
-    uint16_t bitsPerSample   = 16;
+    int32_t  channels        = 2;
+    int64_t  sampleRate      = 48000;
+    int64_t  bitsPerSample   = 16;
     char*    buffer          = nullptr;
-    uint64_t bufferSize      = 0;
+    ALsizei  bufferSize      = 0;
 };
 
 struct sAudioBuffer

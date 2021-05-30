@@ -31,7 +31,7 @@ template<typename T>
 struct vec4_t
 {
     static const uint32_t SIZE = 4;
-    vec4_t(float64 _f) { x = _f; y = _f; z = _f; w = _f; }
+    explicit vec4_t(float64 _f) { x = _f; y = _f; z = _f; w = _f; }
     vec4_t(float64 _x, float64 _y, float64 _z, float64 _w) { x = _x; y = _y; z = _z; w = _w; }
     ~vec4_t(void) { }
     vec4_t(const vec4_t& _v) { x = _v.x; y = _v.y; z = _v.z; w = _v.w; }
@@ -48,7 +48,7 @@ struct vec4_t
     float64 operator*(const vec4_t& _v) const { return x * _v.x + y * _v.y + z * _v.z + w * _v.w; }
     float64 dot(const vec4_t& _v) const { return x * _v.x + y * _v.y + z * _v.z + w * _v.w; }
     float64 magnitude(void){ return std::sqrt(x * x + y * y + z * z + w * w); }
-    void normalize(void) { float64 magnitude = std::sqrt(x * x + y * y + z * z + w * w);  if (magnitude > 0.0f) { float64 oneOverMagnitude = 1.0f / magnitude; x = x * oneOverMagnitude; y = y * oneOverMagnitude; z = z * oneOverMagnitude; w = w * oneOverMagnitude; } }
+    void normalize(void) { float64 mag = std::sqrt(x * x + y * y + z * z + w * w);  if (mag > 0.0f) { float64 oneOverMagnitude = 1.0f / mag; x = x * oneOverMagnitude; y = y * oneOverMagnitude; z = z * oneOverMagnitude; w = w * oneOverMagnitude; } }
 
 /*  -- internal test code ---
     void draw(void)

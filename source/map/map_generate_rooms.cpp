@@ -234,12 +234,11 @@ void cMapManager::m_mapRoomDiscardAllButLargest(sMap*& _map)
 {
     if ((_map->roomCount > 0) && (_map->room != nullptr) && (_map->tile != nullptr))
     {
-        uint32_t roomSizeT = 0;
-        uint32_t roomSize = 0;
+        uint32_t roomSize   = 0;
         uint32_t roomNumber = 0;
         for (uint16_t i = 0; i < _map->roomCount; i++)
         {
-            roomSizeT = m_mapGetRoomArea(_map, i);
+            uint32_t roomSizeT = m_mapGetRoomArea(_map, i);
             if (roomSizeT > roomSize)
             {
                 roomSize = roomSizeT;

@@ -46,31 +46,31 @@ sEntity* cPlayerManager::load(const std::string &_fileName)
         gLogWrite(LOG_INFO, "Loading player: " + xmlFile.getString("<name>"), __FILE__, __LINE__, __FUNCTION__);
 
         // Get the data from the XML file
-        std::string  name         = xmlFile.getString("<name>");
-        glm::vec3    position     = xmlFile.getVec3("<position>");
-        glm::vec3    scale        = xmlFile.getVec3("<scale>");
-        glm::vec3    rotation     = xmlFile.getVec3("<rotation>");
-        std::string  materialFile = xmlFile.getString("<material>");
-        std::string  modelFile    = xmlFile.getString("<model>");
+        std::string  tName         = xmlFile.getString("<name>");
+        glm::vec3    tPosition     = xmlFile.getVec3("<position>");
+        glm::vec3    tScale        = xmlFile.getVec3("<scale>");
+        glm::vec3    tRotation     = xmlFile.getVec3("<rotation>");
+        std::string  tMaterialFile = xmlFile.getString("<material>");
+        std::string  tModelFile    = xmlFile.getString("<model>");
 
         // Create and populate the entity data structure with the loaded XML data
         m_data           = m_entityManager->getNew();
-        m_data->name     = name;
-        m_data->position = position;
-        m_data->scale    = scale;
-        m_data->rotation = rotation;
+        m_data->name     = tName;
+        m_data->position = tPosition;
+        m_data->scale    = tScale;
+        m_data->rotation = tRotation;
         m_entityManager->updateModelMatrix(m_data);
 
         // Load the model from file
-        if (modelFile.length() > 3)
+        if (tModelFile.length() > 3)
         {
-            m_data->model = m_entityManager->loadModel(modelFile);
+            m_data->model = m_entityManager->loadModel(tModelFile);
         }
 
         // Load the material from file
-        if (materialFile.length() > 3)
+        if (tMaterialFile.length() > 3)
         {
-            m_data->material = m_entityManager->loadMaterial(materialFile);
+            m_data->material = m_entityManager->loadMaterial(tMaterialFile);
         }
 
         // Clean up

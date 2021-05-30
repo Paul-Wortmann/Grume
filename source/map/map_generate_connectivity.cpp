@@ -178,15 +178,13 @@ void cMapManager::m_mapConnectRooms_DW(sMap*& _map, const uint16_t &_r1, const u
 
 }
 
-
-
 void cMapManager::m_mapConnectRooms(sMap*& _map)
 {
     uint32_t distanceT = 0; // temp distance
-    uint32_t distanceN = _map->numTiles ; // size larger than possible distance
-    uint32_t distanceE = _map->numTiles; // size larger than possible distance
-    uint32_t distanceW = _map->numTiles; // size larger than possible distance
-    uint32_t distanceS = _map->numTiles; // size larger than possible distance
+    uint32_t distanceN = UINT32_MAX; // size larger than possible distance
+    uint32_t distanceE = UINT32_MAX; // size larger than possible distance
+    uint32_t distanceW = UINT32_MAX; // size larger than possible distance
+    uint32_t distanceS = UINT32_MAX; // size larger than possible distance
     // ray cast room finder
     for (uint16_t i = 0; i < _map->roomCount; i++)
     {
@@ -293,13 +291,11 @@ void cMapManager::m_mapConnectRooms(sMap*& _map)
     // try to connect detached rooms
     for (uint16_t i = (_map->roomCount-1); i > 0; i--)
     {
-        int32_t deltaX = 0;
-        int32_t deltaY = 0;
         if ((_map->room[i].exitE ==  -1) && (_map->room[i].exitW == -1) && (_map->room[i].exitN == -1) && (_map->room[i].exitS == -1))
         {
             //std::cout << "Detached room detected!" << std::endl;
-            deltaX = _map->room[i].x - _map->room[i-1].x;
-            deltaY = _map->room[i].y - _map->room[i-1].y;
+            int32_t deltaX = _map->room[i].x - _map->room[i-1].x;
+            int32_t deltaY = _map->room[i].y - _map->room[i-1].y;
             if (abs(deltaX) < abs(deltaY))
             {
                 if (deltaX > 0)

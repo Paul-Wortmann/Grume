@@ -40,7 +40,7 @@ struct vec3_t
     
     // construnctors and destructor
     vec3_t<T>(void) { this->x = 0.0; this->y = 0.0; this->z = 0.0; }
-    vec3_t<T>(const T &_f) { this->x = _f; this->y = _f; this->z = _f; }
+    explicit vec3_t<T>(const T &_f) { this->x = _f; this->y = _f; this->z = _f; }
     vec3_t<T>(const T &_x, const T &_y, const T &_z) { this->x = _x; this->y = _y; this->z = _z; }
     vec3_t<T>(const vec3_t<T>& _v) { this->x = _v.x; this->y = _v.y; this->z = _v.z; }
     ~vec3_t<T>(void) = default;

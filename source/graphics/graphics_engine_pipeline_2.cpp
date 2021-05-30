@@ -55,9 +55,9 @@ void cGraphicsEngine::m_p2_initialize(void)
         // Depth cube map texture
         glGenTextures(1, &m_p2_depthCubemapID[i]);
         glBindTexture(GL_TEXTURE_CUBE_MAP, m_p2_depthCubemapID[i]);
-        for (uint32 i = 0; i < 6; ++i) // Cube has 6 faces
+        for (uint32 j = 0; j < 6; ++j) // Cube has 6 faces
         {
-            glTexImage2D(GL_TEXTURE_CUBE_MAP_POSITIVE_X + i, 0, GL_DEPTH_COMPONENT, m_renderBufferSize_w, m_renderBufferSize_h, 0, GL_DEPTH_COMPONENT, GL_FLOAT, 0);
+            glTexImage2D(GL_TEXTURE_CUBE_MAP_POSITIVE_X + j, 0, GL_DEPTH_COMPONENT, m_renderBufferSize_w, m_renderBufferSize_h, 0, GL_DEPTH_COMPONENT, GL_FLOAT, 0);
         }
 
         glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_MAG_FILTER, GL_NEAREST);

@@ -36,6 +36,11 @@
 class cGraphicsEngine
 {
     public:
+        // Constructors
+        cGraphicsEngine(void) = default;
+        ~cGraphicsEngine(void) = default;
+
+        // Member functions
         uint32 initialize(void);
         void terminate(void);
         void process(const float32 &_dt);
