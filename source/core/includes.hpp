@@ -74,6 +74,6 @@
 #include "thread_utils.hpp"
 #include "../math/libMath.hpp"
 #include "../debug/debug_log.hpp"
-#include "../utils/file_paths.hpp"
+#include "../core/file_paths.hpp"
 
 #endif // INCLUDES_HPP

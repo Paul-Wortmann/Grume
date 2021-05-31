@@ -34,7 +34,10 @@ void cGameEngine::run(void)
     // Start the game engine timer.
     timer.initialize();
 
+    // Initialize game subsystems
     initialize();
+    
+    // Enter the main loop
     while (m_state == eGameState::active)
     {
         process();
@@ -44,12 +47,16 @@ void cGameEngine::run(void)
 
 void cGameEngine::initialize(void)
 {
+    // Load the config file first
+    gameConfig.load();
+    graphicsEngine.setDisplay(gameConfig.m_resolution_x, gameConfig.m_resolution_y, gameConfig.m_fullscreen);
+
     uint32 status = graphicsEngine.initialize(); // This should be initialized first
     if (status == EXIT_SUCCESS)
     {
         // Before loading entities
         audioManager.initialize();
-        audioManager.setVolumeMaster(0.1f);
+        audioManager.setVolumeMaster(gameConfig.m_volume_master / 100.0f);
         entityManager.initialize();
         entityManager.setAudioPointer(&audioManager);
         mapManager.initialize(&entityManager);
@@ -97,6 +104,10 @@ void cGameEngine::initialize(void)
 
 void cGameEngine::terminate(void)
 {
+    // Save the config file first
+    gameConfig.save();
+
+    // Terminate subsystems
     audioManager.terminate();
     animationEngine.terminate();
     uiManager.terminate();

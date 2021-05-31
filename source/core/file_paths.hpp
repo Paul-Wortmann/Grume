@@ -25,6 +25,7 @@
 #define FILE_PATHS_HPP
 
 // File paths
+#define FILE_PATH_CONFIG     "data/"
 #define FILE_PATH_DATA       "data/"
 #define FILE_PATH_BIOME      "data/biome/"
 #define FILE_PATH_ENTITY     "data/entity/"

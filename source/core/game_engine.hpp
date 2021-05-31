@@ -24,18 +24,19 @@
 #ifndef GAME_ENGINE_HPP
 #define GAME_ENGINE_HPP
 
-#include "core/includes.hpp"
-#include "core/timer.hpp"
-#include "core/version.hpp"
-#include "audio/audio_manager.hpp"
-#include "entity/animation_engine.hpp"
-#include "entity/entity_manager.hpp"
-#include "graphics/graphics_engine.hpp"
-#include "map/map_manager.hpp"
-#include "npc/npc_manager.hpp"
-#include "physics/physics_engine.hpp"
-#include "player/player_manager.hpp"
-#include "ui/ui_manager.hpp"
+#include "includes.hpp"
+#include "game_config.hpp"
+#include "timer.hpp"
+#include "version.hpp"
+#include "../audio/audio_manager.hpp"
+#include "../entity/animation_engine.hpp"
+#include "../entity/entity_manager.hpp"
+#include "../graphics/graphics_engine.hpp"
+#include "../map/map_manager.hpp"
+#include "../npc/npc_manager.hpp"
+#include "../physics/physics_engine.hpp"
+#include "../player/player_manager.hpp"
+#include "../ui/ui_manager.hpp"
 
 class cGameEngine
 {
@@ -58,6 +59,7 @@ class cGameEngine
         cAudioManager    audioManager;
         cAnimationEngine animationEngine;
         cEntityManager   entityManager;
+        cGameConfig      gameConfig;
         cGraphicsEngine  graphicsEngine;
         cMapManager      mapManager;
         cNPCManager      npcManager;
