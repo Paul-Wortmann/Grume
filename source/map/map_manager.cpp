@@ -119,6 +119,9 @@ void cMapManager::m_freeAll(void)
 
 void cMapManager::load(const std::string &_fileName)
 {
+    // Disable loading screen
+    m_loadRequest = false;
+
     // Only load a map if it is not already loaded
     // Unload the current map if need be
     if (m_currentMap != nullptr)
@@ -611,7 +614,6 @@ void cMapManager::process(const float64 &_dt)
                     }
                     else
                     {
-                        m_loadRequest = false;
                         m_currentMap->event[i].triggered = true;
 
                         // Set the destionation portal number

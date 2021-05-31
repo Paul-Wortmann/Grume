@@ -34,8 +34,9 @@
         <object>book</object>                # 30
         <object>weapon</object>              # 31
         <object>door</object>                # 32
+        <object>vase</object>                # 33
 
-        <object>test</object>                # 33
+        <object>test</object>                # 34
 
     </object_define>
 
@@ -264,8 +265,29 @@
     </sack>
 
     <torch>
-        <torch_count>1</torch_count>
+        <torch_count>22</torch_count>
         <torch_entity>common_objects/torch_1_001.txt</torch_entity>
+        <torch_entity>dungeon_objects/torch_01_001.txt</torch_entity>
+        <torch_entity>dungeon_objects/torch_02_001.txt</torch_entity>
+        <torch_entity>dungeon_objects/torch_03_001.txt</torch_entity>
+        <torch_entity>dungeon_objects/torch_04_001.txt</torch_entity>
+        <torch_entity>dungeon_objects/torch_05_001.txt</torch_entity>
+        <torch_entity>dungeon_objects/torch_06_001.txt</torch_entity>
+        <torch_entity>dungeon_objects/torch_07_001.txt</torch_entity>
+        <torch_entity>dungeon_objects/torch_08_001.txt</torch_entity>
+        <torch_entity>dungeon_objects/torch_09_001.txt</torch_entity>
+        <torch_entity>dungeon_objects/torch_10_001.txt</torch_entity>
+        <torch_entity>dungeon_objects/torch_11_001.txt</torch_entity>
+        <torch_entity>dungeon_objects/torch_12_001.txt</torch_entity>
+        <torch_entity>dungeon_objects/torch_13_001.txt</torch_entity>
+        <torch_entity>dungeon_objects/torch_14_001.txt</torch_entity>
+        <torch_entity>dungeon_objects/torch_15_001.txt</torch_entity>
+        <torch_entity>dungeon_objects/torch_16_001.txt</torch_entity>
+        <torch_entity>dungeon_objects/torch_17_001.txt</torch_entity>
+        <torch_entity>dungeon_objects/torch_18_001.txt</torch_entity>
+        <torch_entity>dungeon_objects/torch_19_001.txt</torch_entity>
+        <torch_entity>dungeon_objects/torch_20_001.txt</torch_entity>
+        <torch_entity>dungeon_objects/torch_21_001.txt</torch_entity>
     </torch>
 
     <town_props>
@@ -350,6 +372,22 @@
         <door_entity>doors/dungeon_door_2_001.txt</door_entity>
         <door_entity>doors/dungeon_gate_1_001.txt</door_entity>
     </door>
+
+    <vase>
+        <vase_count>12</vase_count>
+        <vase_entity>dungeon_objects/vase_1_001.txt</vase_entity>
+        <vase_entity>dungeon_objects/vase_2_001.txt</vase_entity>
+        <vase_entity>dungeon_objects/vase_3_001.txt</vase_entity>
+        <vase_entity>dungeon_objects/vase_4_001.txt</vase_entity>
+        <vase_entity>dungeon_objects/vase_5_001.txt</vase_entity>
+        <vase_entity>dungeon_objects/vase_6_001.txt</vase_entity>
+        <vase_entity>dungeon_objects/vase_7_001.txt</vase_entity>
+        <vase_entity>dungeon_objects/vase_8_001.txt</vase_entity>
+        <vase_entity>dungeon_objects/vase_9_001.txt</vase_entity>
+        <vase_entity>dungeon_objects/vase_10_001.txt</vase_entity>
+        <vase_entity>dungeon_objects/vase_11_001.txt</vase_entity>
+        <vase_entity>dungeon_objects/vase_12_001.txt</vase_entity>
+    </vase>
 
 
 

@@ -1,0 +1,10 @@
+﻿<?xml version = "1.0" encoding = "UTF-8" ?>
+<entity>
+    <name>torch_12_001</name>
+    <model>dungeon_objects/torch_12_001.obj</model>
+    <material>dungeon_objects/dungeon_objects_1_001.txt</material>
+
+    <position>0.0 0.0 0.0</position>
+    <scale>1.0 1.0 1.0</scale>
+    <rotation>0.0 0.0 0.0</rotation>
+</entity>

@@ -153,9 +153,9 @@
     <objects>
         #tile number, object number, index (0 == random), scale, y-rotation, obstacle
 
-        <object>0143 33 1 1.0 0.0000 1</object> # Test - cave 1 entrance 1
-        <object>0145 33 1 1.0 0.0000 1</object> # Test - cave 1 entrance 2
-        <object>0147 33 1 1.0 0.0000 1</object> # Test - cave 1 entrance 3
+        <object>0143 34 1 1.0 0.0000 1</object> # Test - cave 1 entrance 1
+        <object>0145 34 1 1.0 0.0000 1</object> # Test - cave 1 entrance 2
+        <object>0147 34 1 1.0 0.0000 1</object> # Test - cave 1 entrance 3
 
         # town central
         <object>3250 10 7 1.0 0.0000 1</object> # Medieval props - out house

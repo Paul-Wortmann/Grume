@@ -5,6 +5,8 @@
         <map>0 town_1_001.txt</map>
         <map>1 dungeon_1_001.txt</map>
         <map>2 dungeon_1_002.txt</map>
+        <#map>3 dungeon_1_003.txt</map>
+
         <map>3 crypt_1_001.txt</map>
         <map>4 cave_1_001.txt</map>
         <map>5 cave_2_001.txt</map>
