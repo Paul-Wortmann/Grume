@@ -1,0 +1,18 @@
+﻿<?xml version = "1.0" encoding = "UTF-8" ?>
+
+# This is the game configuration file.
+# Delete it to have the game recreate it with safe defaults.
+
+<config>
+    <graphics>
+        <resolution_w>1920</resolution_w>
+        <resolution_h>1080</resolution_h>
+        <fullscreen>1</fullscreen>
+    </graphics>
+    <audio>
+        <volume_master>50</volume_master>
+        <volume_music>60</volume_music>
+        <volume_sfx>80</volume_sfx>
+    </audio>
+</config>
+

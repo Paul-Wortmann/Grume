@@ -24,7 +24,7 @@
 #include "map_manager.hpp"
 
 // Straight Line
-void cMapManager::m_mapConnectRooms_SL(sMap*& _map, const uint16_t &_r1, const uint16_t &_r2)
+void cMapManager::m_mapConnectRooms_SL(sMap*& _map, const uint32_t &_r1, const uint32_t &_r2)
 {
     eDirectionBias direction = eDirectionBias::directionNone;
     if (_map->room[_r1].exitE == _r2)
@@ -103,12 +103,12 @@ void cMapManager::m_mapConnectRooms_SL(sMap*& _map, const uint16_t &_r1, const u
 }
 
 // Straight Lines, 90 degree angle
-void cMapManager::m_mapConnectRooms_ND(sMap*& _map, const uint16_t &_r1, const uint16_t &_r2)
+void cMapManager::m_mapConnectRooms_ND(sMap*& _map, const uint32_t &_r1, const uint32_t &_r2)
 {
     uint32_t psx = _map->room[_r1].x;
     uint32_t psy = _map->room[_r1].y;
     uint32_t pex = _map->room[_r2].x;
-    uint16_t pey = _map->room[_r2].y;
+    uint32_t pey = _map->room[_r2].y;
 
     while (psy != pey)
     {
@@ -173,7 +173,7 @@ void cMapManager::m_mapConnectRooms_ND(sMap*& _map, const uint16_t &_r1, const u
 }
 
 // Drunken Walk
-void cMapManager::m_mapConnectRooms_DW(sMap*& _map, const uint16_t &_r1, const uint16_t &_r2)
+void cMapManager::m_mapConnectRooms_DW(sMap*& _map, const uint32_t &_r1, const uint32_t &_r2)
 {
 
 }

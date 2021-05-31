@@ -2,8 +2,8 @@
 <map>
     <information>
         <name>dungeon_1_002</name>
-        <width>20</width>
-        <height>20</height>
+        <width>40</width>
+        <height>40</height>
         <biome>dungeon_001_biome.txt</biome>
         <map_previous>1</map_previous>
         <#map_next>3</map_next>

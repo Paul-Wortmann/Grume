@@ -85,7 +85,7 @@ void cMapManager::m_addObjectEntity(sMap*& _map,              // Map pointer
                 _map->tile[_tn].object = tEntity->UID;
                 tEntity->owner = eEntityOwner::ownerMap;
                 tEntity->type  = eEntityType::entityTypeObject;
-                tEntity->position += glm::vec3(static_cast<float32>(w) + tp - xo, y_pos, static_cast<float32>(h) + tp - yo);
+                tEntity->position += glm::vec3(static_cast<float32>(w) + tp - static_cast<float32>(xo), y_pos, static_cast<float32>(h) + tp - static_cast<float32>(yo));
                 if ((_s > 1.00001f) || (_s < 0.99999f))
                 {
                     tEntity->scale *= glm::vec3(_s, _s, _s);
@@ -141,7 +141,7 @@ void cMapManager::m_addObjectEntities(sMap*& _map)
         {
             std::string   tObjectString = xmlMapFile.getString("<object>", i + 1);
             tObjectString += "    ";
-            std::uint32_t tObjectStringLength = tObjectString.length();
+            std::uint64_t tObjectStringLength = tObjectString.length();
             std::uint32_t tObjectTileNum  = 0;
             std::uint32_t tObjectNumber   = 0;
             std::uint32_t tObjectIndex    = 0;
@@ -152,7 +152,7 @@ void cMapManager::m_addObjectEntities(sMap*& _map)
             std::string   tString = "";
             if (tObjectStringLength > 6)
             {
-                for (std::uint32_t j = 0; j < tObjectStringLength; ++j)
+                for (std::uint64_t j = 0; j < tObjectStringLength; ++j)
                 {
                     if (tObjectString[j] == ' ')
                     {
@@ -249,12 +249,12 @@ void cMapManager::m_addObjectEntities(sMap*& _map)
             {
                 std::string   tDebrisString = xmlMapFile.getString("<debris>", i + 1);
                 tDebrisString += "    ";
-                std::uint32_t tDebrisStringLength = tDebrisString.length();
+                std::uint64_t tDebrisStringLength = tDebrisString.length();
                 std::uint32_t tStringNum = 0;
                 std::string   tString = "";
                 if (tDebrisStringLength > 6)
                 {
-                    for (std::uint32_t j = 0; j < tDebrisStringLength; ++j)
+                    for (std::uint64_t j = 0; j < tDebrisStringLength; ++j)
                     {
                         if (tDebrisString[j] == ' ')
                         {

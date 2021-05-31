@@ -398,7 +398,7 @@ void cMapManager::load(const std::string &_fileName)
                 std::uint64_t tPortalStringLength = tPortalString.length();
                 std::uint32_t tPortalNumber    = 0;
                 std::uint32_t tPortalTileNum   = 0;
-                std::uint32_t tPortalDirection = 0;
+                float32       tPortalDirection = 0.0f;
                 std::uint32_t tStringNum = 0;
                 std::string   tString = "";
                 if (tPortalStringLength > 6)

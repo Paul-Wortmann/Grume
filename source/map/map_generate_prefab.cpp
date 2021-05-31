@@ -332,9 +332,9 @@ void cMapManager::m_mapApplyPrefab(sMap*& _map, const std::string &_fileName, co
                 // Convert prefab tile number to map tile number
                 std::uint32_t ox = tObjectTileNum % _map->room[_r].w;
                 std::uint32_t oy = tObjectTileNum / _map->room[_r].w;
-                std::uint32_t tp = ((dy + oy) * _map->width) + dx + ox;
+                std::uint32_t tn = ((dy + oy) * _map->width) + dx + ox;
                 
-                m_addObjectEntity(_map, tp, tObjectNumber, tObjectIndex, tObjectScale, tObjectRotation, tObjectObstacle);
+                m_addObjectEntity(_map, tn, tObjectNumber, tObjectIndex, tObjectScale, tObjectRotation, tObjectObstacle);
             }
         }
         

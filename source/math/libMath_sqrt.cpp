@@ -40,7 +40,7 @@ float64 Q_rsqrt(float64 _number)
 
 float64 rsqrt(float64 _x)
 {
-    float64 y;
+    float64 y = 0.0f;
     asm("rsqrtss %[_x], %%xmm0;" "movss %%xmm0, %[y];" : : [ _x ] "m" ( _x ), [ y ] "m" ( y ) : "xmm0");
     return y;
 }

@@ -180,7 +180,8 @@ void gAStar(sMap*& _map, sMapPath& _path)
         pathPosition = pathData[pathPosition].p;
         _path.pathLength++;
     }
-    _path.path = new std::uint32_t[_path.pathLength + 1];
+    _path.path = new std::uint32_t[_path.pathLength + 2];
+    _path.path[_path.pathLength + 1] = _path.destinationTile;
     pathPosition = _path.destinationTile;
     std::uint32_t i = _path.pathLength + 1;
     while (pathPosition != _path.currentTile)
@@ -189,7 +190,8 @@ void gAStar(sMap*& _map, sMapPath& _path)
         pathPosition = pathData[pathPosition].p;
     }
     _path.path[0] = _path.currentTile;
-
+    _path.pathLength++;
+    
     // Clean up
     delete [] pathData;
 }

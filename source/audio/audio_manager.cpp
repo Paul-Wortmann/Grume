@@ -86,7 +86,7 @@ void cAudioManager::loadBufferWav(uint32_t _ID, const std::string &_fileName)
 {
     sAudioData *audioData = new sAudioData;
     loadWav(_fileName, audioData);
-    alBufferData(_ID, audioData->audioFormat, audioData->buffer, audioData->bufferSize, audioData->sampleRate);
+    alBufferData(_ID, audioData->audioFormat, audioData->buffer, audioData->bufferSize, static_cast<ALsizei>(audioData->sampleRate));
     delete[] audioData->buffer;
     delete audioData;
 }
@@ -95,7 +95,7 @@ void cAudioManager::loadBufferOgg(uint32_t _ID, const std::string &_fileName)
 {
     sAudioData *audioData = new sAudioData;
     loadOgg(_fileName, audioData);
-    alBufferData(_ID, audioData->audioFormat, audioData->buffer, audioData->bufferSize, audioData->sampleRate);
+    alBufferData(_ID, audioData->audioFormat, audioData->buffer, audioData->bufferSize, static_cast<ALsizei>(audioData->sampleRate));
     delete[] audioData->buffer;
     delete audioData;
 }

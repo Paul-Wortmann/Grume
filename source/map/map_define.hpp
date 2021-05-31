@@ -172,20 +172,20 @@ enum class eMapRoomType : std::uint16_t
 
 struct sMapRoom
 {
-    eMapRoomType type    =  eMapRoomType::roomTypeNone;
-    bool         p       =  false; // processed flag
-    uint32_t     posXMin =  0;
-    uint32_t     posXMax =  0;
-    uint32_t     posYMin =  0;
-    uint32_t     posYMax =  0;
-    uint32_t     x       =  0; // x position
-    uint32_t     y       =  0; // y position
-    uint32_t     w       =  0; // room width
-    uint32_t     h       =  0; // room height
-    int16_t      exitN   = -1; // -1 for none, else connecting room ID
-    int16_t      exitS   = -1; // -1 for none, else connecting room ID
-    int16_t      exitE   = -1; // -1 for none, else connecting room ID
-    int16_t      exitW   = -1; // -1 for none, else connecting room ID
+    eMapRoomType  type    =  eMapRoomType::roomTypeNone;
+    bool          p       =  false; // processed flag
+    std::uint32_t posXMin =  0;
+    std::uint32_t posXMax =  0;
+    std::uint32_t posYMin =  0;
+    std::uint32_t posYMax =  0;
+    std::uint32_t x       =  0; // x position
+    std::uint32_t y       =  0; // y position
+    std::uint32_t w       =  0; // room width
+    std::uint32_t h       =  0; // room height
+    std::uint32_t exitN   = -1; // -1 for none, else connecting room ID
+    std::uint32_t exitS   = -1; // -1 for none, else connecting room ID
+    std::uint32_t exitE   = -1; // -1 for none, else connecting room ID
+    std::uint32_t exitW   = -1; // -1 for none, else connecting room ID
 };
 
 struct sMap

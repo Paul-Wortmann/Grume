@@ -147,9 +147,9 @@ class cMapManager : public tcLinkedList<sMap>
         int32_t  m_getRoomFromTile(sMap*& _map, const uint32_t &_tile, const int32_t &_roomIgnore = -1);
         
         // map_generate_connectivity.cpp
-        void     m_mapConnectRooms_SL(sMap*& _map, const uint16_t &_r1, const uint16_t &_r2);
-        void     m_mapConnectRooms_ND(sMap*& _map, const uint16_t &_r1, const uint16_t &_r2);
-        void     m_mapConnectRooms_DW(sMap*& _map, const uint16_t &_r1, const uint16_t &_r2);
+        void     m_mapConnectRooms_SL(sMap*& _map, const uint32_t &_r1, const uint32_t &_r2);
+        void     m_mapConnectRooms_ND(sMap*& _map, const uint32_t &_r1, const uint32_t &_r2);
+        void     m_mapConnectRooms_DW(sMap*& _map, const uint32_t &_r1, const uint32_t &_r2);
         void     m_mapConnectRooms(sMap*& _map);
         
         // map_generate_prefab.cpp

@@ -45,8 +45,8 @@ void cGraphicsEngineCamera::m_calculateMartacies(void)
 glm::vec3 cGraphicsEngineCamera::getMouseRay(const float32 &_mouseX, const float32 &_mouseY)
 {
     // Normalized device coordinates:
-    float32 posX = ((_mouseX * 2.0f) / m_width) - 1.0f;
-    float32 posY = 1.0f - ((_mouseY * 2.0f) / m_height);
+    float32 posX = ((_mouseX * 2.0f) / static_cast<float32>(m_width)) - 1.0f;
+    float32 posY = 1.0f - ((_mouseY * 2.0f) / static_cast<float32>(m_height));
     //glm::vec3  normalizedDC = glm::vec3(posX, posY, 1.0f);
 
     // 3D Normalised Device Coordinates
