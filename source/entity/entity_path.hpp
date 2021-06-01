@@ -21,29 +21,21 @@
  * @date 2011-11-11
  */
 
-#ifndef NPC_DEFINE_HPP
-#define NPC_DEFINE_HPP
+#ifndef ENTITY_PATH_HPP
+#define ENTITY_PATH_HPP
 
 #include "../core/includes.hpp"
+#include "../map/map_path_define.hpp"
 
-enum class eNPCClass : std::uint16_t 
-    { 
-        NPCClassNone   = 0, // None
-        NPCClassMeele  = 1, // Meele
-        NPCClassMage   = 2, // Mage
-        NPCClassRanged = 3  // Ranged
-    };
-
-struct sNPC
+struct sEntityPath
 {
-    // Linked list management
-    sNPC*     next     = nullptr;
-
-    // Charactaristics
-    std::uint32_t type    = 0;
-
-    // Traits
-    eNPCClass    cClass   = eNPCClass::NPCClassMeele;
+        sMapPath        mapPath;
+        float32         movementSpeed   = 0.125f;
+        float32         movementBias    = 0.00125f;
+        
+        bool            pathing         = false; // currently following a path?
+        bool            moved           = false; // Did we move this frame?
+        glm::vec3       moveDelta       = glm::vec3(0.0f, 0.0f, 0.0f); // How much did we move last frame?
 };
 
-#endif //NPC_DEFINE_HPP
+#endif //ENTITY_PATH_HPP

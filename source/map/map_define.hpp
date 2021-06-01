@@ -197,6 +197,7 @@ struct sMap
     // Infomation
     std::string    name              = "";
     std::string    fileName          = "";
+    float32        terrainHeight     = -1.0f;
 
     // Player start information
     std::uint32_t  playerStartPortal = 0;

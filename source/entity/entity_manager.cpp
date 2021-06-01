@@ -75,6 +75,18 @@ void cEntityManager::m_freeData(sEntity*& _pointer)
         delete[] _pointer->ai;
         _pointer->ai = nullptr;
     }
+
+    // Pathing
+    if (_pointer->pathData != nullptr)
+    {
+        if (_pointer->pathData->mapPath.path != nullptr)
+        {
+            delete[] _pointer->pathData->mapPath.path;
+            _pointer->pathData->mapPath.path = nullptr;
+        }
+        delete[] _pointer->pathData;
+        _pointer->pathData = nullptr;
+    }
 }
 
 void cEntityManager::m_freeAll(void)

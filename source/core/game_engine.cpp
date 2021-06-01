@@ -73,7 +73,6 @@ void cGameEngine::initialize(void)
         mapManager.setAnimationPointer(&animationEngine);
         mapManager.setAudioPointer(&audioManager);
         mapManager.setGraphicsPointer(&graphicsEngine);
-        playerManager.setTerrainHeight(-1.0f);
         uiManager.initialize(&entityManager);
         graphicsEngine.setLoadTextureID(entityManager.loadTexture("ui/loading_screen_001.png")->ID);
         graphicsEngine.process(0);
@@ -94,12 +93,13 @@ void cGameEngine::initialize(void)
         // Ater loading entities
         m_entityHead = entityManager.getHead();
         m_state = eGameState::active;
+        playerManager.setTerrainHeight(-1.0f);
+        graphicsEngine.setLoading(false);
     }
     else
     {
         m_state = eGameState::shutdown;
     }
-    graphicsEngine.setLoading(false);
 }
 
 void cGameEngine::terminate(void)

@@ -30,11 +30,6 @@ void cPlayerManager::initialize(cEntityManager* _entityManager)
 
 void cPlayerManager::terminate(void)
 {
-    if (m_path.path != nullptr)
-    {
-        delete [] m_path.path;
-        m_path.path = nullptr;
-    }
 }
 
 sEntity* cPlayerManager::load(const std::string &_fileName)
@@ -60,6 +55,7 @@ sEntity* cPlayerManager::load(const std::string &_fileName)
         m_data->scale    = tScale;
         m_data->rotation = tRotation;
         m_entityManager->updateModelMatrix(m_data);
+        m_data->pathData = new sEntityPath;
 
         // Load the model from file
         if (tModelFile.length() > 3)
@@ -101,7 +97,7 @@ glm::vec3 cPlayerManager::tileToPosition(uint32 _tile)
 
     float32 x = static_cast<float32>(_tile % m_mapPointer->width) - xo + tp;
     float32 z = static_cast<float32>(_tile / m_mapPointer->width) - zo + tp;
-    return glm::vec3(x, m_terrainHeight, z);
+    return glm::vec3(x, m_mapPointer->terrainHeight, z);
 };
 
 void cPlayerManager::moveTo(glm::vec3 _pos)
@@ -110,66 +106,66 @@ void cPlayerManager::moveTo(glm::vec3 _pos)
     destinationPosition.y -= 0.0f;
     uint32 destinationTile = positionToTile(destinationPosition);
     setDestinationTile(destinationTile);
-    if (m_path.pathLength > 0)
+    if (m_data->pathData->mapPath.pathLength > 0)
     {
-        m_path.currentPosition = 0;
-        m_pathing = true;
+        m_data->pathData->mapPath.currentPosition = 0;
+        m_data->pathData->pathing = true;
     }
 };
 
 void cPlayerManager::process(const float32 &_dt)
 {
-    m_moved = false;
-    if (m_path.pathLength == 0)
+    m_data->pathData->moved = false;
+    if (m_data->pathData->mapPath.pathLength == 0)
     {
-        m_pathing = false;
+        m_data->pathData->pathing = false;
     }
-    if (m_pathing)
+    if (m_data->pathData->pathing)
     {
         // move amount
-        m_moveDelta.x = 0.0f;
-        m_moveDelta.z = 0.0f;
+        m_data->pathData->moveDelta.x = 0.0f;
+        m_data->pathData->moveDelta.z = 0.0f;
         
         // move direction, used as float comparison is problematic
         int32 deltaX = 0;
         int32 deltaZ = 0;
         
         //std::cout << "Current tile: " << m_path.path[m_path.currentPosition] << std::endl;
-        m_moved = true;
+        m_data->pathData->moved = true;
         glm::vec3 playerPos      = m_data->position;
         glm::vec3 playerRot      = m_data->rotation;
-        uint32    currentTile    = m_path.path[m_path.currentPosition];
+        uint32    currentTile    = m_data->pathData->mapPath.path[m_data->pathData->mapPath.currentPosition];
         glm::vec3 currentTilePos = tileToPosition(currentTile);
         
         // Get the distance to the destination tile
         float32   distanceToTileSqr = ((playerPos.x - currentTilePos.x) * (playerPos.x - currentTilePos.x)) + ((playerPos.z - currentTilePos.z) * (playerPos.z - currentTilePos.z));
         
         // if not center, move towards tile center
-        if (distanceToTileSqr > (m_movementSpeed + m_movementBias))
+        if (distanceToTileSqr > (m_data->pathData->movementSpeed + m_data->pathData->movementBias))
         {
             // Position
-            if ((playerPos.x + m_movementSpeed) < currentTilePos.x)
+            if ((playerPos.x + m_data->pathData->movementSpeed) < currentTilePos.x)
             {
-                playerPos.x += m_movementSpeed;
-                m_moveDelta.x += m_movementSpeed;
+                playerPos.x += m_data->pathData->movementSpeed;
+                m_data->pathData->moveDelta.x += m_data->pathData->movementSpeed;
                 deltaX = 1;
             }
-            else if ((playerPos.x + m_movementSpeed) > currentTilePos.x)
+            else if ((playerPos.x + m_data->pathData->movementSpeed) > currentTilePos.x)
             {
-                playerPos.x -= m_movementSpeed;
-                m_moveDelta.x -= m_movementSpeed;
+                playerPos.x -= m_data->pathData->movementSpeed;
+                m_data->pathData->moveDelta.x -= m_data->pathData->movementSpeed;
                 deltaX = -1;
             }
-            if ((playerPos.z + m_movementSpeed) < currentTilePos.z)
+            if ((playerPos.z + m_data->pathData->movementSpeed) < currentTilePos.z)
             {
-                playerPos.z += m_movementSpeed;
-                m_moveDelta.z += m_movementSpeed;
+                playerPos.z += m_data->pathData->movementSpeed;
+                m_data->pathData->moveDelta.z += m_data->pathData->movementSpeed;
                 deltaZ = 1;
             }
-            else if ((playerPos.z + m_movementSpeed) > currentTilePos.z)
+            else if ((playerPos.z + m_data->pathData->movementSpeed) > currentTilePos.z)
             {
-                playerPos.z -= m_movementSpeed;
-                m_moveDelta.z -= m_movementSpeed;
+                playerPos.z -= m_data->pathData->movementSpeed;
+                m_data->pathData->moveDelta.z -= m_data->pathData->movementSpeed;
                 deltaZ = -1;
             }
             
@@ -221,12 +217,12 @@ void cPlayerManager::process(const float32 &_dt)
         else
         {
             //playerPos = currentTilePos;
-            m_path.currentPosition++;
-            if (m_path.currentPosition >= m_path.pathLength)
+            m_data->pathData->mapPath.currentPosition++;
+            if (m_data->pathData->mapPath.currentPosition >= m_data->pathData->mapPath.pathLength)
             {
-                m_pathing = false;
-                m_moveDelta.x = 0.0f;
-                m_moveDelta.z = 0.0f;
+                m_data->pathData->pathing = false;
+                m_data->pathData->moveDelta.x = 0.0f;
+                m_data->pathData->moveDelta.z = 0.0f;
             }
         }
         setPosition(playerPos);
