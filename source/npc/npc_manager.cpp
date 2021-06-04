@@ -30,25 +30,32 @@ void cNPCManager::initialize(cEntityManager* _entityManager)
 
 void cNPCManager::terminate(void)
 {
-    m_freeAll();
+
 }
 
-void cNPCManager::m_freeData(sNPC*& _pointer)
+uint32 cNPCManager::m_positionToTile(glm::vec3 _position)
 {
-}
+    // Width and height offset, used to center the walls
+    float32 xo = static_cast<float32>(m_mapPointer->width)  / 2.0f;
+    float32 zo = static_cast<float32>(m_mapPointer->height) / 2.0f;
+    float32 tp = 1.0f / 2.0f; // tile center positioning ( half model dimention)
 
-void cNPCManager::m_freeAll(void)
-{
-    for (sNPC* temp = getHead(); temp != nullptr; temp = temp->next)
-    {
-        m_freeData(temp);
-    }
-}
+    uint32 x = static_cast<uint32>(_position.x + xo);
+    uint32 z = static_cast<uint32>(_position.z + zo);
+    return (z * m_mapPointer->width) + x;
+};
 
-sEntity* cNPCManager::load(const std::string &_fileName)
-{
-    return nullptr;
-}
+glm::vec3 cNPCManager::m_tileToPosition(uint32 _tile)
+{ 
+    // Width and height offset, used to center the walls
+    float32 xo = static_cast<float32>(m_mapPointer->width)  / 2.0f;
+    float32 zo = static_cast<float32>(m_mapPointer->height) / 2.0f;
+    float32 tp = 1.0f / 2.0f; // tile center positioning ( half model dimention)
+
+    float32 x = static_cast<float32>(_tile % m_mapPointer->width) - xo + tp;
+    float32 z = static_cast<float32>(_tile / m_mapPointer->width) - zo + tp;
+    return glm::vec3(x, m_mapPointer->terrainHeight, z);
+};
 
 void cNPCManager::process(const float32 &_dt)
 {
@@ -57,10 +64,119 @@ void cNPCManager::process(const float32 &_dt)
     {
         if ((m_entityTemp != nullptr) && (m_entityPlayer != nullptr) && (m_entityTemp->type == eEntityType::entityTypeNPCmob))
         {
+            // Turn to face the player
             //glm::vec3 rotation = m_entityTemp->rotation;
             float32 angle = static_cast<float32>(atan2(m_entityTemp->position.z - m_entityPlayer->position.z, m_entityTemp->position.x - m_entityPlayer->position.x));
             m_entityTemp->rotation.y = angle - DTOR_90;
+            
+            // Check if player is visable, if so continue
+            if ((m_entityTemp->ai != nullptr) && (1 == 1)) // FIXME!
+            {
+                // Calculate the distance to the player
+                float32 distancetoPlayer2 = (((m_entityTemp->position.x - m_entityPlayer->position.x) * 
+                                              (m_entityTemp->position.x - m_entityPlayer->position.x)) +
+                                             ((m_entityTemp->position.z - m_entityPlayer->position.z) * 
+                                              (m_entityTemp->position.z - m_entityPlayer->position.z)));
+                
+                // Check if player is in attack range, if so attack
+                if (distancetoPlayer2 < (m_entityTemp->ai->distanceAttack) * (m_entityTemp->ai->distanceAttack))
+                {
+                    // Attack
+                    //std::cout << "Can attack! : " << m_entityTemp->UID << std::endl;
+                }
+                // Check if player is in move range, if so continue
+                else if (distancetoPlayer2 < (m_entityTemp->ai->distanceMove) * (m_entityTemp->ai->distanceMove))
+                {
+                    // If the player has moved, path to the new player position
+                    if (m_entityTemp->ai->lastKnownPlayerTile != m_entityPlayer->movement->mapPath.currentTile)
+                    {
+                        m_entityTemp->movement->mapPath.currentTile = m_positionToTile(m_entityTemp->position);
+                        m_entityTemp->ai->lastKnownPlayerTile = m_entityPlayer->movement->mapPath.currentTile;
+                        m_entityTemp->movement->mapPath.destinationTile = m_entityPlayer->movement->mapPath.currentTile;
+                        gAStar(m_mapPointer, m_entityTemp->movement->mapPath);
+                        if (m_entityTemp->movement->mapPath.pathLength > 0)
+                        {
+                            m_entityTemp->movement->mapPath.currentPosition = 0;
+                            m_entityTemp->movement->pathing = true;
+                        }
+                    }
+                    
+                    // if path is valid, move towards player
+                    m_entityTemp->movement->moved = false;
+                    if (m_entityTemp->movement->mapPath.pathLength == 0)
+                    {
+                        m_entityTemp->movement->pathing = false;
+                    }
+                    if (m_entityTemp->movement->pathing)
+                    {
+                        // move amount
+                        m_entityTemp->movement->moveDelta.x = 0.0f;
+                        m_entityTemp->movement->moveDelta.z = 0.0f;
+                        
+                        // move direction, used as float comparison is problematic
+                        int32 deltaX = 0;
+                        int32 deltaZ = 0;
+                        
+                        m_entityTemp->movement->moved = true;
+                        glm::vec3 entityPos      = m_entityTemp->position;
+                        uint32    currentTile    = m_entityTemp->movement->mapPath.path[m_entityTemp->movement->mapPath.currentPosition];
+                        glm::vec3 currentTilePos = m_tileToPosition(currentTile);
+                        
+                        // Get the distance to the destination tile
+                        float32   distanceToTileSqr = ((entityPos.x - currentTilePos.x) * (entityPos.x - currentTilePos.x)) + ((entityPos.z - currentTilePos.z) * (entityPos.z - currentTilePos.z));
+                        
+                        // if not center, move towards tile center
+                        if (distanceToTileSqr > (m_entityTemp->movement->movementSpeed + m_entityTemp->movement->movementBias))
+                        {
+                            // Position
+                            if ((entityPos.x + m_entityTemp->movement->movementSpeed) < currentTilePos.x)
+                            {
+                                entityPos.x += m_entityTemp->movement->movementSpeed;
+                                m_entityTemp->movement->moveDelta.x += m_entityTemp->movement->movementSpeed;
+                                deltaX = 1;
+                            }
+                            else if ((entityPos.x + m_entityTemp->movement->movementSpeed) > currentTilePos.x)
+                            {
+                                entityPos.x -= m_entityTemp->movement->movementSpeed;
+                                m_entityTemp->movement->moveDelta.x -= m_entityTemp->movement->movementSpeed;
+                                deltaX = -1;
+                            }
+                            if ((entityPos.z + m_entityTemp->movement->movementSpeed) < currentTilePos.z)
+                            {
+                                entityPos.z += m_entityTemp->movement->movementSpeed;
+                                m_entityTemp->movement->moveDelta.z += m_entityTemp->movement->movementSpeed;
+                                deltaZ = 1;
+                            }
+                            else if ((entityPos.z + m_entityTemp->movement->movementSpeed) > currentTilePos.z)
+                            {
+                                entityPos.z -= m_entityTemp->movement->movementSpeed;
+                                m_entityTemp->movement->moveDelta.z -= m_entityTemp->movement->movementSpeed;
+                                deltaZ = -1;
+                            }
+                        }
+                        
+                        // move to tile center, set new tile in path
+                        else
+                        {
+                            //entityPos = currentTilePos;
+                            m_entityTemp->movement->mapPath.currentPosition++;
+                            if (m_entityTemp->movement->mapPath.currentPosition >= m_entityTemp->movement->mapPath.pathLength)
+                            {
+                                m_entityTemp->movement->pathing = false;
+                                m_entityTemp->movement->moveDelta.x = 0.0f;
+                                m_entityTemp->movement->moveDelta.z = 0.0f;
+                            }
+                        }
+                        m_entityTemp->position = entityPos; 
+                        m_entityTemp->movement->mapPath.currentTile = m_positionToTile(entityPos);
+                    }
+                }
+            }
             m_entityManager->updateModelMatrix(m_entityTemp);
         }
     }
 }
+
+
+
+

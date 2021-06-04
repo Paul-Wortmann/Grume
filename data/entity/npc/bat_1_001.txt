@@ -16,6 +16,10 @@
         <rotation>3.1416 3.1416 0.0</rotation>
     </transform>
 
+    <movement>
+        <movement_speed>0.1</movement_speed>
+    </movement>
+
     <sounds>
         <attack>
             <attack_sound>npc/bat/attack_1.ogg</attack_sound>
@@ -44,7 +48,11 @@
     </animation>
 
     <ai>
-        # % chance per second
+	// Distance in tile units of size
+        <attack_distance>1</attack_distance>
+        <move_distance>5</move_distance>
+
+        # % chance per frame
         <attack_chance>10</attack_chance>
         <defend_chance>10</defend_chance>
         # number of tiles

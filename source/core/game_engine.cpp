@@ -141,9 +141,16 @@ void cGameEngine::process(void)
         physicsEngine.process(dt);
         audioManager.process(dt);
 
-        // Player movement
+        // Use input
         if (graphicsEngine.getKeyState(GLFW_MOUSE_BUTTON_LEFT))
         {
+            // If mouse over UI
+            
+            // Else:
+            
+            // If mouse click on object
+            
+            // else, player movement
             playerManager.moveTo(graphicsEngine.getMouseTerrainPosition());
         }
         

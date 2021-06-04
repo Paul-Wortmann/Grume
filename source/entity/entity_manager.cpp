@@ -77,15 +77,15 @@ void cEntityManager::m_freeData(sEntity*& _pointer)
     }
 
     // Pathing
-    if (_pointer->pathData != nullptr)
+    if (_pointer->movement != nullptr)
     {
-        if (_pointer->pathData->mapPath.path != nullptr)
+        if (_pointer->movement->mapPath.path != nullptr)
         {
-            delete[] _pointer->pathData->mapPath.path;
-            _pointer->pathData->mapPath.path = nullptr;
+            delete[] _pointer->movement->mapPath.path;
+            _pointer->movement->mapPath.path = nullptr;
         }
-        delete[] _pointer->pathData;
-        _pointer->pathData = nullptr;
+        delete[] _pointer->movement;
+        _pointer->movement = nullptr;
     }
 }
 
@@ -157,6 +157,40 @@ sEntity* cEntityManager::load(const std::string& _fileName, sEntity* _entity)
         std::string modelFile         = xmlFile.getString("<model>");
         std::string materialFile      = xmlFile.getString("<material>");
         _entity->animationIndependent = (xmlFile.getInteger("<animation_independent>") == 1);
+
+        // Movement data
+        _entity->movement = new sEntityMovement;
+        _entity->movement->movementSpeed = xmlFile.getFloat("<movement_speed>");
+
+        // Load AI data
+        if (xmlFile.getInstanceCount("<ai>") != 0)
+        {
+            _entity->ai                 = new sEntityAI;
+            _entity->ai->distanceAttack = xmlFile.getFloat("<attack_distance>");
+            _entity->ai->distanceMove   = xmlFile.getFloat("<move_distance>");
+        }
+/*
+    <ai>
+	// Distance in tile units of size
+        <attack_distance>1</attack_distance>
+        <move_distance>5</move_distance>
+
+        # % chance per frame
+        <attack_chance>10</attack_chance>
+        <defend_chance>10</defend_chance>
+        # number of tiles
+        <sight_distance>10</sight_distance>
+        # 1 -> rush attack on sight, persitent attack
+        # 2 -> rush attack on sight, flee on damage
+        # 3 -> ranged, keep distance
+        <attack_behavior>1</attack_behavior>
+        # 1 -> independent movement
+        # 2 -> say with the group, flock attack / flee
+        # 3 -> Follow the leader, independent when leader killed
+        <move_behavior>1</move_behavior>
+    </ai>
+*/
+
 
         // Load model from file
         if (modelFile.length() > 3)

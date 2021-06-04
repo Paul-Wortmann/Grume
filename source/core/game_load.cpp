@@ -49,6 +49,10 @@ void cGameEngine::load(void)
 
         // Set the player pointer, so NPCs can be aware of the player
         npcManager.setEntityPlayer(playerManager.getPlayerEntity());
+
+        // Set the map pointer
+        npcManager.setMapPointer(mapManager.getMapPointer());
+        playerManager.setMapPointer(mapManager.getMapPointer());
         
         // Initialize entities
         graphicsEngine.initializeEntities();

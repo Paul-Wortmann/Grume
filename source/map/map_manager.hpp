@@ -89,7 +89,7 @@ class cMapManager : public tcLinkedList<sMap>
         void m_stopMusic(void);
         void m_playMusic(void);
         void m_resetPlayerPosition(void);
-
+        
         // map_generate_floorModel.cpp
         sEntityModel* m_generateFloor(sMap*& _map);
 

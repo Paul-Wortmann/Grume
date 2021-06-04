@@ -42,26 +42,26 @@ class cPlayerManager
         glm::vec3 tileToPosition(uint32 _tile);
 
         glm::vec3 getPosition(void) { return m_data->position; };
-        void      setPosition(glm::vec3 _position) { m_data->position = _position; m_updateMatrix(); m_data->pathData->mapPath.currentTile = positionToTile(_position); };
+        void      setPosition(glm::vec3 _position) { m_data->position = _position; m_updateMatrix(); m_data->movement->mapPath.currentTile = positionToTile(_position); };
         glm::vec3 getRotation(void) { return m_data->rotation; };
         void      setRotation(glm::vec3 _rotation) { m_data->rotation = _rotation; m_updateMatrix();};
-        float32   getMovementSpeed(void) { return m_data->pathData->movementSpeed; };
-        void      setMovementSpeed(float32 _speed) { m_data->pathData->movementSpeed = _speed; };
+        float32   getMovementSpeed(void) { return m_data->movement->movementSpeed; };
+        void      setMovementSpeed(float32 _speed) { m_data->movement->movementSpeed = _speed; };
         void      setTerrainHeight(float32 _height) { m_mapPointer->terrainHeight = _height; };
 
-        void      setCurrentTile(uint32 _tileNum) { m_data->pathData->mapPath.currentTile = _tileNum; m_data->position = tileToPosition(_tileNum); m_updateMatrix(); };
-        uint32    getCurrentTile(void) { return m_data->pathData->mapPath.currentTile; };
-        void      setDestinationTile(uint32 _tileNum) { m_data->pathData->mapPath.destinationTile = _tileNum; gAStar(m_mapPointer, m_data->pathData->mapPath); };
-        uint32    getDestinationTile(void) { return m_data->pathData->mapPath.destinationTile; };
+        void      setCurrentTile(uint32 _tileNum) { m_data->movement->mapPath.currentTile = _tileNum; m_data->position = tileToPosition(_tileNum); m_updateMatrix(); };
+        uint32    getCurrentTile(void) { return m_data->movement->mapPath.currentTile; };
+        void      setDestinationTile(uint32 _tileNum) { m_data->movement->mapPath.destinationTile = _tileNum; gAStar(m_mapPointer, m_data->movement->mapPath); };
+        uint32    getDestinationTile(void) { return m_data->movement->mapPath.destinationTile; };
         void      resetStartTile(void) { m_data->rotation.z = m_mapPointer->playerStartDir; setCurrentTile(m_mapPointer->playerStartTile); m_updateMatrix(); };
 
-        uint32    getPathLength(void) { return m_data->pathData->mapPath.pathLength; };
-        uint32    getPath(uint32 _i) { return m_data->pathData->mapPath.path[_i]; };
-        void      stopPathing(void) {m_data->pathData->mapPath.pathLength = 0; };
+        uint32    getPathLength(void) { return m_data->movement->mapPath.pathLength; };
+        uint32    getPath(uint32 _i) { return m_data->movement->mapPath.path[_i]; };
+        void      stopPathing(void) {m_data->movement->mapPath.pathLength = 0; };
 
-        bool      getMoved(void) { return m_data->pathData->moved; };
+        bool      getMoved(void) { return m_data->movement->moved; };
         void      moveTo(glm::vec3 _pos);
-        glm::vec3 getMoveDelta(void) { return m_data->pathData->moveDelta; };
+        glm::vec3 getMoveDelta(void) { return m_data->movement->moveDelta; };
 
     protected:
 

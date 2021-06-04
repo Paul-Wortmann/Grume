@@ -21,21 +21,22 @@
  * @date 2011-11-11
  */
 
-#ifndef ENTITY_PATH_HPP
-#define ENTITY_PATH_HPP
+#ifndef ENTITY_MOVEMENT_HPP
+#define ENTITY_MOVEMENT_HPP
 
 #include "../core/includes.hpp"
 #include "../map/map_path_define.hpp"
 
-struct sEntityPath
+struct sEntityMovement
 {
-        sMapPath        mapPath;
-        float32         movementSpeed   = 0.125f;
-        float32         movementBias    = 0.00125f;
+    sMapPath        mapPath;
         
-        bool            pathing         = false; // currently following a path?
-        bool            moved           = false; // Did we move this frame?
-        glm::vec3       moveDelta       = glm::vec3(0.0f, 0.0f, 0.0f); // How much did we move last frame?
+    // Movement
+    float32         movementSpeed   = 0.125f;
+    float32         movementBias    = 0.00125f;
+    bool            pathing         = false; // currently following a path?
+    bool            moved           = false; // Did we move this frame?
+    glm::vec3       moveDelta       = glm::vec3(0.0f, 0.0f, 0.0f); // How much did we move last frame?
 };
 
-#endif //ENTITY_PATH_HPP
+#endif //ENTITY_MOVEMENT_HPP

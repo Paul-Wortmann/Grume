@@ -27,6 +27,12 @@ void cMapManager::initialize(cEntityManager* _entityManager)
 {
     m_entityManager = _entityManager;
     m_biomeManager.initialize(m_entityManager);
+
+    // Create a new emptyt map data structure
+    if (m_currentMap == nullptr)
+    {
+        m_currentMap = getNew();
+    }
 }
 
 void cMapManager::terminate(void)
@@ -537,7 +543,11 @@ void cMapManager::unload(void)
     m_freeData(m_currentMap);
     m_currentMap->name = "";
     m_currentMap->fileName = "";
-    m_entityManager->removeModel(m_currentMap->floor->model);
+    
+    if ((m_currentMap->floor != nullptr) && (m_currentMap->floor->model != nullptr))
+    {
+        m_entityManager->removeModel(m_currentMap->floor->model);
+    }
     
     // Free all entities asociated with the map
     for (sEntity* entity = m_entityManager->getHead(); entity != nullptr; entity = entity->next)

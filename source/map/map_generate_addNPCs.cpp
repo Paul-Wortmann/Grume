@@ -222,7 +222,7 @@ void cMapManager::m_addNPCEntities(sMap*& _map)
                                         tEntity->type  = eEntityType::entityTypeNPCmob;
                                         tEntity->position += glm::vec3(static_cast<float32>(w) + tp - xo, y_pos, static_cast<float32>(h) + tp - yo);
                                         m_entityManager->updateModelMatrix(tEntity);
-                                        tEntity->pathData = new sEntityPath;
+                                        tEntity->movement = new sEntityMovement;
                                     }
                                 }
                             }

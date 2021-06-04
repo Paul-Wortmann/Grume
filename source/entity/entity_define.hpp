@@ -28,7 +28,7 @@
 #include "entity_ai.hpp"
 #include "entity_material.hpp"
 #include "entity_model.hpp"
-#include "entity_path.hpp"
+#include "entity_movement.hpp"
 #include "entity_physics.hpp"
 #include "entity_state.hpp"
 
@@ -96,7 +96,7 @@ struct sEntity
     sEntityAI*       ai           = nullptr;
     
     // Pathing
-    sEntityPath*     pathData     = nullptr;
+    sEntityMovement* movement     = nullptr;
 };
 
 #endif //ENTITY_HPP
