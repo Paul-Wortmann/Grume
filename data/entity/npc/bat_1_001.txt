@@ -20,31 +20,42 @@
         <movement_speed>0.1</movement_speed>
     </movement>
 
-    <sounds>
-        <attack>
-            <attack_sound>npc/bat/attack_1.ogg</attack_sound>
-            <attack_sound>npc/bat/attack_2.ogg</attack_sound>
-        </attack>
-        <defend>
-            <defend_sound>npc/bat/defend_1.ogg</defend_sound>
-        </defend>
-        <die>
-            <die_sound>npc/bat/die_1.ogg</die_sound>
-        </die>
-        <idle>
-            <idle_sound>npc/bat/idle_1.ogg</idle_sound>
-        </idle>
-        <getHit>
-            <getHit_sound>npc/bat/getHit_1.ogg</getHit_sound>
-        </getHit>
-        <move>
-            <move_sound>npc/bat/move_1.ogg</move_sound>
-        </move>
-    </sounds>
+    <animation_independent>1</animation_independent>
+
+    <state_initial>1</state_initial> # 0 == none
+    <state>
+        <state_name>idle</state_name>
+        <state_sound>none 0 0</state_sound> # database name, else none, database index, repeat (bool)
+        <state_animation>0.0 0.333333 1</state_animation> # frame start, frame end, repeat (bool)
+    </state>
+    <state>
+        <state_name>move</state_name>
+        <state_sound>none 0 0</state_sound> # database name, else none, database index, repeat (bool)
+        <state_animation>0.0 0.333333 1</state_animation> # frame start, frame end, repeat (bool)
+    </state>
+    <state>
+        <state_name>attack</state_name>
+        <state_sound>bat 3 0</state_sound> # database name, else none, database index, repeat (bool)
+        <state_animation>0.0 0.333333 0</state_animation> # frame start, frame end, repeat (bool)
+    </state>
+    <state>
+        <state_name>block</state_name>
+        <state_sound>bat 1 0</state_sound> # database name, else none, database index, repeat (bool)
+        <state_animation>0.0 0.333333 0</state_animation> # frame start, frame end, repeat (bool)
+    </state>
+    <state>
+        <state_name>die</state_name>
+        <state_sound>bat 2 0</state_sound> # database name, else none, database index, repeat (bool)
+        <state_animation>0.0 0.333333 0</state_animation> # frame start, frame end, repeat (bool)
+    </state>
+    <state>
+        <state_name>gethit</state_name>
+        <state_sound>bat 1 0</state_sound> # database name, else none, database index, repeat (bool)
+        <state_animation>0.0 0.333333 0</state_animation> # frame start, frame end, repeat (bool)
+    </state>
 
     <animtion>
         <animation_count>1</animation_count>
-        <idle>0 40</idle>
     </animation>
 
     <ai>

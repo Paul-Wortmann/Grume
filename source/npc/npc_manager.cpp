@@ -83,7 +83,11 @@ void cNPCManager::process(const float32 &_dt)
                 {
                     // Attack
                     //std::cout << "Can attack! : " << m_entityTemp->UID << std::endl;
+
+                    // Set attack animation
+
                 }
+                
                 // Check if player is in move range, if so continue
                 else if (distancetoPlayer2 < (m_entityTemp->ai->distanceMove) * (m_entityTemp->ai->distanceMove))
                 {
@@ -98,6 +102,9 @@ void cNPCManager::process(const float32 &_dt)
                         {
                             m_entityTemp->movement->mapPath.currentPosition = 0;
                             m_entityTemp->movement->pathing = true;
+
+                            // Set move animation
+                            
                         }
                     }
                     
@@ -171,7 +178,15 @@ void cNPCManager::process(const float32 &_dt)
                         m_entityTemp->movement->mapPath.currentTile = m_positionToTile(entityPos);
                     }
                 }
+                
+                // Idle
+                else
+                {
+                    // Set idle animation
+                }
             }
+            
+            // Lastly update the entity's model matrix.
             m_entityManager->updateModelMatrix(m_entityTemp);
         }
     }

@@ -16,13 +16,13 @@
     <state_initial>0</state_initial> # 0 == none
     <state>
         <state_name>open</state_name>
-        <state_sound>object/gate_1_001.ogg</state_sound>
-        <state_animation>0.0 0.4166 0.0</state_animation> # frame start, frame end, repeat (bool)
+        <state_sound>object 2 0</state_sound> # database name, else none, database index, repeat (bool)
+        <state_animation>0.0 0.4166 0</state_animation> # frame start, frame end, repeat (bool)
     </state>
     <state>
         <state_name>close</state_name>
-        <state_sound>object/gate_1_001.ogg</state_sound>
-        <state_animation>0.4166 0.8333 0.0</state_animation> # frame start, frame end, repeat (bool)
+        <state_sound>object 2 0</state_sound> # database name, else none, database index, repeat (bool)
+        <state_animation>0.4166 0.8333 0</state_animation> # frame start, frame end, repeat (bool)
     </state>
 
 </entity>

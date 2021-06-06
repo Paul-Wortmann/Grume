@@ -37,12 +37,16 @@ void cMapManager::m_addObjectEntity(sMap*& _map,              // Map pointer
     uint32  xo = _map->width  / 2;
     uint32  yo = _map->height / 2;
 
-    // Load the biome object file
+    // Load the biome object database file
     cXML xmlObjectFile;
     xmlObjectFile.load(FILE_PATH_BIOME + _map->biome->databaseObject.fileName);
     
+    // Load the biome sound database file
+    cXML xmlSoundFile;
+    xmlSoundFile.load(FILE_PATH_BIOME + _map->biome->databaseSound.fileName);
+
     // Only contine if we can load the biome object file and the map file
-    if (xmlObjectFile.lineCount() > 0)
+    if ((xmlObjectFile.lineCount() > 0) && (xmlSoundFile.lineCount() > 0))
     {
         // Load object names
         uint32 object_count = xmlObjectFile.getInstanceCount("<object>");
@@ -93,11 +97,28 @@ void cMapManager::m_addObjectEntity(sMap*& _map,              // Map pointer
                 tEntity->rotation.y += _yr;
                 tEntity->rotation = glm::vec3(tEntity->rotation.x, tEntity->rotation.y, tEntity->rotation.z);
                 m_entityManager->updateModelMatrix(tEntity);
+
+                // Load audio file names
+                if (tEntity->stateCount > 0)
+                {
+                    for (std::uint32_t s = 0; s < tEntity->stateCount; ++s)
+                    {
+                        if (tEntity->state[s].audioDBIndex > 0)
+                        {
+                            tEntity->state[s].audioFile = xmlSoundFile.getString("<" + tEntity->state[s].audioDBname + "_sound>", tEntity->state[s].audioDBIndex);
+                        }
+                        else
+                        {
+                            tEntity->state[s].audioFile = xmlSoundFile.getString("<" + tEntity->state[s].audioDBname + "_sound>", (rand() % (xmlSoundFile.getInstanceCount("<" + tEntity->state[s].audioDBname + "_sound>") - 1)) + 1);
+                        }
+                    }
+                }
             }
         }
     }
     // Clean up
     xmlObjectFile.free();
+    xmlSoundFile.free();
 }
 
 // Used to add objects specified in the map file
@@ -107,16 +128,20 @@ void cMapManager::m_addObjectEntities(sMap*& _map)
     float32 xo = static_cast<float32>(_map->width  / 2);
     float32 yo = static_cast<float32>(_map->height / 2);
 
-    // Load the biome object file
+    // Load the biome object database file
     cXML xmlObjectFile;
     xmlObjectFile.load(FILE_PATH_BIOME + _map->biome->databaseObject.fileName);
     
-    // Load the map file
+    // Load the biome sound database file
+    cXML xmlSoundFile;
+    xmlSoundFile.load(FILE_PATH_BIOME + _map->biome->databaseSound.fileName);
+
+    // Load the map database file
     cXML xmlMapFile;
     xmlMapFile.load(FILE_PATH_MAP + _map->fileName);
     
     // Only contine if we can load the biome object file and the map file
-    if ((xmlObjectFile.lineCount() > 0) && (xmlMapFile.lineCount() > 0))
+    if ((xmlSoundFile.lineCount() > 0) && (xmlObjectFile.lineCount() > 0) && (xmlMapFile.lineCount() > 0))
     {
         // Load object names
         uint32 object_count = xmlObjectFile.getInstanceCount("<object>");
@@ -222,6 +247,22 @@ void cMapManager::m_addObjectEntities(sMap*& _map)
                     tEntity->rotation.y += tObjectRotation;
                     tEntity->rotation = glm::vec3(tEntity->rotation.x, tEntity->rotation.y, tEntity->rotation.z);
                     m_entityManager->updateModelMatrix(tEntity);
+
+                    // Load audio file names
+                    if (tEntity->stateCount > 0)
+                    {
+                        for (std::uint32_t s = 0; s < tEntity->stateCount; ++s)
+                        {
+                            if (tEntity->state[s].audioDBIndex > 0)
+                            {
+                                tEntity->state[s].audioFile = xmlSoundFile.getString("<" + tEntity->state[s].audioDBname + "_sound>", tEntity->state[s].audioDBIndex);
+                            }
+                            else
+                            {
+                                tEntity->state[s].audioFile = xmlSoundFile.getString("<" + tEntity->state[s].audioDBname + "_sound>", (rand() % (xmlSoundFile.getInstanceCount("<" + tEntity->state[s].audioDBname + "_sound>") - 1)) + 1);
+                            }
+                        }
+                    }
                 }
             }
         }
@@ -318,6 +359,22 @@ void cMapManager::m_addObjectEntities(sMap*& _map)
                                         tEntity->type  = eEntityType::entityTypeObject;
                                         tEntity->position = glm::vec3(static_cast<float32>(w) + tp - xo, y_pos, static_cast<float32>(h) + tp - yo);
                                         m_entityManager->updateModelMatrix(tEntity);
+
+                                        // Load audio file names
+                                        if (tEntity->stateCount > 0)
+                                        {
+                                            for (std::uint32_t s = 0; s < tEntity->stateCount; ++s)
+                                            {
+                                                if (tEntity->state[s].audioDBIndex > 0)
+                                                {
+                                                    tEntity->state[s].audioFile = xmlSoundFile.getString("<" + tEntity->state[s].audioDBname + "_sound>", tEntity->state[s].audioDBIndex);
+                                                }
+                                                else
+                                                {
+                                                    tEntity->state[s].audioFile = xmlSoundFile.getString("<" + tEntity->state[s].audioDBname + "_sound>", (rand() % (xmlSoundFile.getInstanceCount("<" + tEntity->state[s].audioDBname + "_sound>") - 1)) + 1);
+                                                }
+                                            }
+                                        }
                                     }
                                 }
                             }
@@ -336,5 +393,6 @@ void cMapManager::m_addObjectEntities(sMap*& _map)
     }
     // Clean up
     xmlObjectFile.free();
+    xmlSoundFile.free();
     xmlMapFile.free();
 }

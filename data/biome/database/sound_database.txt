@@ -3,7 +3,9 @@
 
     <sound_define>
         <sound>object</sound>
+        <sound>battle</sound>
         <sound>trader</sound>
+<sound>bat<sound>
         <sound>ghost</sound>
         <sound>giant</sound>
         <sound>goblin</sound>
@@ -13,67 +15,88 @@
 
     <object>
         <object_count>2</object_count>
-        <object_entity>object/door_1_001.ogg</object_entity>
-        <object_entity>object/gate_1_001.ogg</object_entity>
+        <object_sound>object/door_1_001.ogg</object_sound>
+        <object_sound>object/gate_1_001.ogg</object_sound>
     </object>
+
+    <battle>
+        <battle_count>10</battle_count>
+        <battle_sound>battle/magic_1_001.ogg</battle_sound>
+        <battle_sound>battle/spell_1_001.ogg</battle_sound>
+        <battle_sound>battle/swing_1_001.ogg</battle_sound>
+        <battle_sound>battle/swing_2_001.ogg</battle_sound>
+        <battle_sound>battle/swing_3_001.ogg</battle_sound>
+        <battle_sound>battle/sword_unsheathe_1_001.ogg</battle_sound>
+        <battle_sound>battle/sword_unsheathe_2_001.ogg</battle_sound>
+        <battle_sound>battle/sword_unsheathe_3_001.ogg</battle_sound>
+        <battle_sound>battle/sword_unsheathe_4_001.ogg</battle_sound>
+        <battle_sound>battle/sword_unsheathe_5_001.ogg</battle_sound>
+    </battle>
 
     <trader>
         <trader_count>5</trader_count>
-        <trader_entity>npc/trader/trader_1_001.ogg</trader_entity>
-        <trader_entity>npc/trader/trader_1_002.ogg</trader_entity>
-        <trader_entity>npc/trader/trader_1_003.ogg</trader_entity>
-        <trader_entity>npc/trader/trader_1_004.ogg</trader_entity>
-        <trader_entity>npc/trader/trader_1_005.ogg</trader_entity>
+        <trader_sound>npc/trader/trader_1_001.ogg</trader_sound>
+        <trader_sound>npc/trader/trader_1_002.ogg</trader_sound>
+        <trader_sound>npc/trader/trader_1_003.ogg</trader_sound>
+        <trader_sound>npc/trader/trader_1_004.ogg</trader_sound>
+        <trader_sound>npc/trader/trader_1_005.ogg</trader_sound>
     </trader>
+
+    <bat>
+        <bat_count>3</bat_count>
+        <bat_sound>monster/bat/bat_1_001.ogg</bat_sound>
+        <bat_sound>monster/bat/bat_1_002.ogg</bat_sound>
+        <bat_sound>monster/bat/bat_1_003.ogg</bat_sound>
+    </bat>
 
     <ghost>
         <ghost_count>2</ghost_count>
-        <ghost_entity>monster/ghost/ghost_1_001.ogg</ghost_entity>
-        <ghost_entity>monster/ghost/ghost_1_002.ogg</ghost_entity>
+        <ghost_sound>monster/ghost/ghost_1_001.ogg</ghost_sound>
+        <ghost_sound>monster/ghost/ghost_1_002.ogg</ghost_sound>
     </ghost>
 
     <giant>
         <giant_count>5</giant_count>
-        <giant_entity>monster/giant/giant_1_001.ogg</giant_entity>
-        <giant_entity>monster/giant/giant_1_002.ogg</giant_entity>
-        <giant_entity>monster/giant/giant_1_003.ogg</giant_entity>
-        <giant_entity>monster/giant/giant_1_004.ogg</giant_entity>
-        <giant_entity>monster/giant/giant_1_005.ogg</giant_entity>
+        <giant_sound>monster/giant/giant_1_001.ogg</giant_sound>
+        <giant_sound>monster/giant/giant_1_002.ogg</giant_sound>
+        <giant_sound>monster/giant/giant_1_003.ogg</giant_sound>
+        <giant_sound>monster/giant/giant_1_004.ogg</giant_sound>
+        <giant_sound>monster/giant/giant_1_005.ogg</giant_sound>
     </giant>
 
     <goblin>
         <goblin_count>15</goblin_count>
-        <goblin_entity>monster/goblin/goblin_1_001.ogg</goblin_entity>
-        <goblin_entity>monster/goblin/goblin_1_002.ogg</goblin_entity>
-        <goblin_entity>monster/goblin/goblin_1_003.ogg</goblin_entity>
-        <goblin_entity>monster/goblin/goblin_1_004.ogg</goblin_entity>
-        <goblin_entity>monster/goblin/goblin_1_005.ogg</goblin_entity>
-        <goblin_entity>monster/goblin/goblin_1_006.ogg</goblin_entity>
-        <goblin_entity>monster/goblin/goblin_1_007.ogg</goblin_entity>
-        <goblin_entity>monster/goblin/goblin_1_008.ogg</goblin_entity>
-        <goblin_entity>monster/goblin/goblin_1_009.ogg</goblin_entity>
-        <goblin_entity>monster/goblin/goblin_1_010.ogg</goblin_entity>
-        <goblin_entity>monster/goblin/goblin_1_011.ogg</goblin_entity>
-        <goblin_entity>monster/goblin/goblin_1_012.ogg</goblin_entity>
-        <goblin_entity>monster/goblin/goblin_1_013.ogg</goblin_entity>
-        <goblin_entity>monster/goblin/goblin_1_014.ogg</goblin_entity>
-        <goblin_entity>monster/goblin/goblin_1_015.ogg</goblin_entity>
+        <goblin_sound>monster/goblin/goblin_1_001.ogg</goblin_sound>
+        <goblin_sound>monster/goblin/goblin_1_002.ogg</goblin_sound>
+        <goblin_sound>monster/goblin/goblin_1_003.ogg</goblin_sound>
+        <goblin_sound>monster/goblin/goblin_1_004.ogg</goblin_sound>
+        <goblin_sound>monster/goblin/goblin_1_005.ogg</goblin_sound>
+        <goblin_sound>monster/goblin/goblin_1_006.ogg</goblin_sound>
+        <goblin_sound>monster/goblin/goblin_1_007.ogg</goblin_sound>
+        <goblin_sound>monster/goblin/goblin_1_008.ogg</goblin_sound>
+        <goblin_sound>monster/goblin/goblin_1_009.ogg</goblin_sound>
+        <goblin_sound>monster/goblin/goblin_1_010.ogg</goblin_sound>
+        <goblin_sound>monster/goblin/goblin_1_011.ogg</goblin_sound>
+        <goblin_sound>monster/goblin/goblin_1_012.ogg</goblin_sound>
+        <goblin_sound>monster/goblin/goblin_1_013.ogg</goblin_sound>
+        <goblin_sound>monster/goblin/goblin_1_014.ogg</goblin_sound>
+        <goblin_sound>monster/goblin/goblin_1_015.ogg</goblin_sound>
     </goblin>
 
     <ogre>
         <ogre_count>5</ogre_count>
-        <ogre_entity>monster/ogre/ogre_1_001.ogg</ogre_entity>
-        <ogre_entity>monster/ogre/ogre_1_002.ogg</ogre_entity>
-        <ogre_entity>monster/ogre/ogre_1_003.ogg</ogre_entity>
-        <ogre_entity>monster/ogre/ogre_1_004.ogg</ogre_entity>
-        <ogre_entity>monster/ogre/ogre_1_005.ogg</ogre_entity>
+        <ogre_sound>monster/ogre/ogre_1_001.ogg</ogre_sound>
+        <ogre_sound>monster/ogre/ogre_1_002.ogg</ogre_sound>
+        <ogre_sound>monster/ogre/ogre_1_003.ogg</ogre_sound>
+        <ogre_sound>monster/ogre/ogre_1_004.ogg</ogre_sound>
+        <ogre_sound>monster/ogre/ogre_1_005.ogg</ogre_sound>
     </ogre>
 
     <zombie>
         <zombie_count>3</zombie_count>
-        <zombie_entity>monster/zombie/zombie_1_001.ogg</zombie_entity>
-        <zombie_entity>monster/zombie/zombie_1_002.ogg</zombie_entity>
-        <zombie_entity>monster/zombie/zombie_1_003.ogg</zombie_entity>
+        <zombie_sound>monster/zombie/zombie_1_001.ogg</zombie_sound>
+        <zombie_sound>monster/zombie/zombie_1_002.ogg</zombie_sound>
+        <zombie_sound>monster/zombie/zombie_1_003.ogg</zombie_sound>
     </zombie>
 
 </sound_database>

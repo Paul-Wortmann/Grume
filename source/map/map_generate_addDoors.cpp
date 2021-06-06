@@ -36,8 +36,12 @@ void cMapManager::m_addDoorEntities(sMap*& _map)
     cXML xmlFile;
     xmlFile.load(FILE_PATH_BIOME + _map->biome->WallSet.fileName);
     
+    // Load the biome sound database file
+    cXML xmlSoundFile;
+    xmlSoundFile.load(FILE_PATH_BIOME + _map->biome->databaseSound.fileName);
+    
     // Only contine if we can load the biome wallset file
-    if (xmlFile.lineCount() > 0)
+    if ((xmlFile.lineCount() > 0) && (xmlSoundFile.lineCount() > 0))
     {
         // Get a count for door type
         std::uint32_t door_1td_count = xmlFile.getInteger("<door_1td_count>", 1); // Doors, length 3
@@ -95,6 +99,22 @@ void cMapManager::m_addDoorEntities(sMap*& _map)
                                     m_addMapEvent(_map, t - _map->width + 0, 2, t, 1, 0);
                                     m_addMapEvent(_map, t - _map->width + 1, 2, t, 1, 0);
                                     m_addMapEvent(_map, t - _map->width - 1, 2, t, 1, 0);
+
+                                    // Load audio file names
+                                    if (tEntity->stateCount > 0)
+                                    {
+                                        for (std::uint32_t s = 0; s < tEntity->stateCount; ++s)
+                                        {
+                                            if (tEntity->state[s].audioDBIndex > 0)
+                                            {
+                                                tEntity->state[s].audioFile = xmlSoundFile.getString("<" + tEntity->state[s].audioDBname + "_sound>", tEntity->state[s].audioDBIndex);
+                                            }
+                                            else
+                                            {
+                                                tEntity->state[s].audioFile = xmlSoundFile.getString("<" + tEntity->state[s].audioDBname + "_sound>", (rand() % (xmlSoundFile.getInstanceCount("<" + tEntity->state[s].audioDBname + "_sound>") - 1)) + 1);
+                                            }
+                                        }
+                                    }
                                 }
                             }
                             
@@ -134,6 +154,22 @@ void cMapManager::m_addDoorEntities(sMap*& _map)
                                     m_addMapEvent(_map, t - 1              , 2, t, 1, 0);
                                     m_addMapEvent(_map, t - _map->width + 1, 2, t, 1, 0);
                                     m_addMapEvent(_map, t - _map->width - 1, 2, t, 1, 0);
+
+                                    // Load audio file names
+                                    if (tEntity->stateCount > 0)
+                                    {
+                                        for (std::uint32_t s = 0; s < tEntity->stateCount; ++s)
+                                        {
+                                            if (tEntity->state[s].audioDBIndex > 0)
+                                            {
+                                                tEntity->state[s].audioFile = xmlSoundFile.getString("<" + tEntity->state[s].audioDBname + "_sound>", tEntity->state[s].audioDBIndex);
+                                            }
+                                            else
+                                            {
+                                                tEntity->state[s].audioFile = xmlSoundFile.getString("<" + tEntity->state[s].audioDBname + "_sound>", (rand() % (xmlSoundFile.getInstanceCount("<" + tEntity->state[s].audioDBname + "_sound>") - 1)) + 1);
+                                            }
+                                        }
+                                    }
                                 }
                             }
                 }
@@ -182,6 +218,22 @@ void cMapManager::m_addDoorEntities(sMap*& _map)
                                     m_addMapEvent(_map, t - _map->width + 0, 2, t, 1, 0);
                                     m_addMapEvent(_map, t + _map->width + 1, 2, t, 1, 0);
                                     m_addMapEvent(_map, t - _map->width + 1, 2, t, 1, 0);
+
+                                    // Load audio file names
+                                    if (tEntity->stateCount > 0)
+                                    {
+                                        for (std::uint32_t s = 0; s < tEntity->stateCount; ++s)
+                                        {
+                                            if (tEntity->state[s].audioDBIndex > 0)
+                                            {
+                                                tEntity->state[s].audioFile = xmlSoundFile.getString("<" + tEntity->state[s].audioDBname + "_sound>", tEntity->state[s].audioDBIndex);
+                                            }
+                                            else
+                                            {
+                                                tEntity->state[s].audioFile = xmlSoundFile.getString("<" + tEntity->state[s].audioDBname + "_sound>", (rand() % (xmlSoundFile.getInstanceCount("<" + tEntity->state[s].audioDBname + "_sound>") - 1)) + 1);
+                                            }
+                                        }
+                                    }
                                 }
                             }
                             
@@ -215,6 +267,22 @@ void cMapManager::m_addDoorEntities(sMap*& _map)
                                     m_addMapEvent(_map, t - 1              , 2, t, 1, 0);
                                     m_addMapEvent(_map, t + _map->width + 1, 2, t, 1, 0);
                                     m_addMapEvent(_map, t + _map->width - 1, 2, t, 1, 0);
+
+                                    // Load audio file names
+                                    if (tEntity->stateCount > 0)
+                                    {
+                                        for (std::uint32_t s = 0; s < tEntity->stateCount; ++s)
+                                        {
+                                            if (tEntity->state[s].audioDBIndex > 0)
+                                            {
+                                                tEntity->state[s].audioFile = xmlSoundFile.getString("<" + tEntity->state[s].audioDBname + "_sound>", tEntity->state[s].audioDBIndex);
+                                            }
+                                            else
+                                            {
+                                                tEntity->state[s].audioFile = xmlSoundFile.getString("<" + tEntity->state[s].audioDBname + "_sound>", (rand() % (xmlSoundFile.getInstanceCount("<" + tEntity->state[s].audioDBname + "_sound>") - 1)) + 1);
+                                            }
+                                        }
+                                    }
                                 }
                             }
                 }
@@ -256,6 +324,22 @@ void cMapManager::m_addDoorEntities(sMap*& _map)
 
                                     m_addMapEvent(_map, t + _map->width + 0, 2, t, 1, 0);
                                     m_addMapEvent(_map, t - _map->width + 0, 2, t, 1, 0);
+
+                                    // Load audio file names
+                                    if (tEntity->stateCount > 0)
+                                    {
+                                        for (std::uint32_t s = 0; s < tEntity->stateCount; ++s)
+                                        {
+                                            if (tEntity->state[s].audioDBIndex > 0)
+                                            {
+                                                tEntity->state[s].audioFile = xmlSoundFile.getString("<" + tEntity->state[s].audioDBname + "_sound>", tEntity->state[s].audioDBIndex);
+                                            }
+                                            else
+                                            {
+                                                tEntity->state[s].audioFile = xmlSoundFile.getString("<" + tEntity->state[s].audioDBname + "_sound>", (rand() % (xmlSoundFile.getInstanceCount("<" + tEntity->state[s].audioDBname + "_sound>") - 1)) + 1);
+                                            }
+                                        }
+                                    }
                                 }
                             }
                             
@@ -281,6 +365,22 @@ void cMapManager::m_addDoorEntities(sMap*& _map)
 
                                     m_addMapEvent(_map, t + 1              , 2, t, 1, 0);
                                     m_addMapEvent(_map, t - 1              , 2, t, 1, 0);
+
+                                    // Load audio file names
+                                    if (tEntity->stateCount > 0)
+                                    {
+                                        for (std::uint32_t s = 0; s < tEntity->stateCount; ++s)
+                                        {
+                                            if (tEntity->state[s].audioDBIndex > 0)
+                                            {
+                                                tEntity->state[s].audioFile = xmlSoundFile.getString("<" + tEntity->state[s].audioDBname + "_sound>", tEntity->state[s].audioDBIndex);
+                                            }
+                                            else
+                                            {
+                                                tEntity->state[s].audioFile = xmlSoundFile.getString("<" + tEntity->state[s].audioDBname + "_sound>", (rand() % (xmlSoundFile.getInstanceCount("<" + tEntity->state[s].audioDBname + "_sound>") - 1)) + 1);
+                                            }
+                                        }
+                                    }
                                 }
                             }
                 }
@@ -289,5 +389,6 @@ void cMapManager::m_addDoorEntities(sMap*& _map)
 
         // Clean up
         xmlFile.free();
+        xmlSoundFile.free();
     }
 }

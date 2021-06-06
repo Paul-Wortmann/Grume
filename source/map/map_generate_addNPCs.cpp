@@ -30,16 +30,20 @@ void cMapManager::m_addNPCEntities(sMap*& _map)
     float32 xo = static_cast<float32>(_map->width  / 2);
     float32 yo = static_cast<float32>(_map->height / 2);
 
-    // Load the biome npc file
+    // Load the biome npc database file
     cXML xmlNPCFile;
     xmlNPCFile.load(FILE_PATH_BIOME + _map->biome->databaseNPC.fileName);
+
+    // Load the biome sound database file
+    cXML xmlSoundFile;
+    xmlSoundFile.load(FILE_PATH_BIOME + _map->biome->databaseSound.fileName);
     
     // Load the map file
     cXML xmlMapFile;
     xmlMapFile.load(FILE_PATH_MAP + _map->fileName);
     
     // Only contine if we can load the biome npc file and the map file
-    if ((xmlNPCFile.lineCount() > 0) && (xmlMapFile.lineCount() > 0))
+    if ((xmlNPCFile.lineCount() > 0) && (xmlSoundFile.lineCount() > 0) && (xmlMapFile.lineCount() > 0))
     {
         // Load npc names
         uint32 npc_count = xmlNPCFile.getInstanceCount("<npc>");
@@ -135,6 +139,22 @@ void cMapManager::m_addNPCEntities(sMap*& _map)
                     tEntity->rotation.y += tNPCRotation;
                     tEntity->rotation = glm::vec3(tEntity->rotation.x, tEntity->rotation.y, tEntity->rotation.z);
                     m_entityManager->updateModelMatrix(tEntity);
+                    
+                    // Load audio file names
+                    if (tEntity->stateCount > 0)
+                    {
+                        for (std::uint32_t s = 0; s < tEntity->stateCount; ++s)
+                        {
+                            if (tEntity->state[s].audioDBIndex > 0)
+                            {
+                                tEntity->state[s].audioFile = xmlSoundFile.getString("<" + tEntity->state[s].audioDBname + "_sound>", tEntity->state[s].audioDBIndex);
+                            }
+                            else
+                            {
+                                tEntity->state[s].audioFile = xmlSoundFile.getString("<" + tEntity->state[s].audioDBname + "_sound>", (rand() % (xmlSoundFile.getInstanceCount("<" + tEntity->state[s].audioDBname + "_sound>") - 1)) + 1);
+                            }
+                        }
+                    }
                 }
             }
         }
@@ -223,6 +243,22 @@ void cMapManager::m_addNPCEntities(sMap*& _map)
                                         tEntity->position += glm::vec3(static_cast<float32>(w) + tp - xo, y_pos, static_cast<float32>(h) + tp - yo);
                                         m_entityManager->updateModelMatrix(tEntity);
                                         tEntity->movement = new sEntityMovement;
+
+                                        // Load audio file names
+                                         if (tEntity->stateCount > 0)
+                                        {
+                                            for (std::uint32_t s = 0; s < tEntity->stateCount; ++s)
+                                            {
+                                                if (tEntity->state[s].audioDBIndex > 0)
+                                                {
+                                                    tEntity->state[s].audioFile = xmlSoundFile.getString("<" + tEntity->state[s].audioDBname + "_sound>", tEntity->state[s].audioDBIndex);
+                                                }
+                                                else
+                                                {
+                                                    tEntity->state[s].audioFile = xmlSoundFile.getString("<" + tEntity->state[s].audioDBname + "_sound>", (rand() % (xmlSoundFile.getInstanceCount("<" + tEntity->state[s].audioDBname + "_sound>") - 1)) + 1);
+                                                }
+                                            }
+                                        }
                                     }
                                 }
                             }
@@ -242,4 +278,5 @@ void cMapManager::m_addNPCEntities(sMap*& _map)
     // Clean up
     xmlNPCFile.free();
     xmlMapFile.free();
+    xmlSoundFile.free();
 }

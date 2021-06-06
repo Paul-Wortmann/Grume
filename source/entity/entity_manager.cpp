@@ -200,7 +200,6 @@ sEntity* cEntityManager::load(const std::string& _fileName, sEntity* _entity)
             {
                 _entity->stopAnimTime = _entity->model->animation[0].animationTime;
             }
-
         }
 
         // Update the model matrix
@@ -223,8 +222,46 @@ sEntity* cEntityManager::load(const std::string& _fileName, sEntity* _entity)
         for (std::uint32_t i = 0; i < _entity->stateCount; ++i)
         {
             _entity->state[i].name = xmlFile.getString("<state_name>", 1 + i);
-            _entity->state[i].audioFile = xmlFile.getString("<state_sound>", 1 + i);
             _entity->state[i].animation = xmlFile.getVec3("<state_animation>", 1 + i);
+            std::string audioData = xmlFile.getString("<state_sound>", 1 + i);
+            //_entity->state[i].audioFile = xmlFile.getString("<state_sound>", 1 + i);
+            
+            // Process the audio data string
+            audioData += "    ";
+            std::uint64_t audioDataLength = audioData.length();
+            std::uint32_t tStringNum = 0;
+            std::string   tString = "";
+            if (audioDataLength > 6)
+            {
+                for (std::uint64_t j = 0; j < audioDataLength; ++j)
+                {
+                    if (audioData[j] == ' ')
+                    {
+                        if (tStringNum == 0)
+                        {
+                            _entity->state[i].audioDBname = tString;
+                        }
+                        else if (tStringNum == 1)
+                        {
+                            _entity->state[i].audioDBIndex = std::stoi(tString);
+                        }
+                        else if (tStringNum == 2)
+                        {
+                            _entity->state[i].audioRepeat = (std::stoi(tString) == 1);
+                        }
+                        tStringNum++;
+                        tString = "";
+                    }
+                    else
+                    {
+                        tString += audioData[j];
+                    }
+                }
+            }
+        }
+        if ((_entity->animationIndependent) && (_entity->stateCount > 0) && (_entity->stateInitial > 0))
+        {
+            m_setAnimationState(_entity, _entity->stateInitial);
         }
 
         // Cleanup and return a pointer to the entity
