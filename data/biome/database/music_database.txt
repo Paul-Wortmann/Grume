@@ -14,7 +14,7 @@
     </town>
 
     <cave>
-        <cave_count>7</cave_count>
+        <cave_count>8</cave_count>
         <cave_entity>forgoten_tombs.ogg</cave_entity>
         <cave_entity>dungeon_001.ogg</cave_entity>
         <cave_entity>atmoseerie_01.ogg</cave_entity>
@@ -23,10 +23,12 @@
         <cave_entity>atmoseerie_04.ogg</cave_entity>
         <cave_entity>cave_001.ogg</cave_entity>
         <cave_entity>dungeon_ambient_1.ogg</cave_entity>
+        <cave_entity>persistence.ogg</cave_entity>
     </cave>
 
     <dungeon>
-        <dungeon_count>2</dungeon_count>
+        <dungeon_count>3</dungeon_count>
+        <dungeon_entity>persistence.ogg</dungeon_entity>
         <dungeon_entity>forgoten_tombs.ogg</dungeon_entity>
         <dungeon_entity>cave_001.ogg</dungeon_entity>
     </dungeon>
