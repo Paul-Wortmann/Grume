@@ -38,7 +38,6 @@ uint32 cNPCManager::m_positionToTile(glm::vec3 _position)
     // Width and height offset, used to center the walls
     float32 xo = static_cast<float32>(m_mapPointer->width)  / 2.0f;
     float32 zo = static_cast<float32>(m_mapPointer->height) / 2.0f;
-    float32 tp = 1.0f / 2.0f; // tile center positioning ( half model dimention)
 
     uint32 x = static_cast<uint32>(_position.x + xo);
     uint32 z = static_cast<uint32>(_position.z + zo);
@@ -84,8 +83,19 @@ void cNPCManager::process(const float32 &_dt)
                     // Attack
                     //std::cout << "Can attack! : " << m_entityTemp->UID << std::endl;
 
-                    // Set attack animation
+                    m_entityTemp->ai->attack_counter += _dt;
+                    if (m_entityTemp->ai->attack_counter > m_entityTemp->ai->attack_frequency)
+                    {
+                        m_entityTemp->ai->attack_counter = 0.0f;
 
+                        // Set attack state
+                        m_entityManager->setState(m_entityTemp->UID, "attack");
+                    }
+                    else
+                    {
+                        // Set move state
+                        m_entityManager->setState(m_entityTemp->UID, "idle");
+                    }
                 }
                 
                 // Check if player is in move range, if so continue
@@ -104,7 +114,7 @@ void cNPCManager::process(const float32 &_dt)
                             m_entityTemp->movement->pathing = true;
 
                             // Set move animation
-                            
+                            m_entityManager->setState(m_entityTemp->UID, "move");
                         }
                     }
                     
@@ -183,6 +193,7 @@ void cNPCManager::process(const float32 &_dt)
                 else
                 {
                     // Set idle animation
+                    m_entityManager->setState(m_entityTemp->UID, "idle");
                 }
             }
             

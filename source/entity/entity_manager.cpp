@@ -159,38 +159,21 @@ sEntity* cEntityManager::load(const std::string& _fileName, sEntity* _entity)
         _entity->animationIndependent = (xmlFile.getInteger("<animation_independent>") == 1);
 
         // Movement data
-        _entity->movement = new sEntityMovement;
-        _entity->movement->movementSpeed = xmlFile.getFloat("<movement_speed>");
-
+        if (xmlFile.getInstanceCount("<movement>") != 0)
+        {
+            _entity->movement = new sEntityMovement;
+            _entity->movement->movementSpeed = xmlFile.getFloat("<movement_speed>");
+        }
+        
         // Load AI data
         if (xmlFile.getInstanceCount("<ai>") != 0)
         {
-            _entity->ai                 = new sEntityAI;
-            _entity->ai->distanceAttack = xmlFile.getFloat("<attack_distance>");
-            _entity->ai->distanceMove   = xmlFile.getFloat("<move_distance>");
+            _entity->ai                   = new sEntityAI;
+            _entity->ai->distanceAttack   = xmlFile.getFloat("<attack_distance>");
+            _entity->ai->distanceMove     = xmlFile.getFloat("<move_distance>");
+            _entity->ai->attack_frequency = xmlFile.getInteger("<attack_frequency>");
+            _entity->ai->attack_counter   = _entity->ai->attack_frequency;
         }
-/*
-    <ai>
-	// Distance in tile units of size
-        <attack_distance>1</attack_distance>
-        <move_distance>5</move_distance>
-
-        # % chance per frame
-        <attack_chance>10</attack_chance>
-        <defend_chance>10</defend_chance>
-        # number of tiles
-        <sight_distance>10</sight_distance>
-        # 1 -> rush attack on sight, persitent attack
-        # 2 -> rush attack on sight, flee on damage
-        # 3 -> ranged, keep distance
-        <attack_behavior>1</attack_behavior>
-        # 1 -> independent movement
-        # 2 -> say with the group, flock attack / flee
-        # 3 -> Follow the leader, independent when leader killed
-        <move_behavior>1</move_behavior>
-    </ai>
-*/
-
 
         // Load model from file
         if (modelFile.length() > 3)
@@ -219,13 +202,14 @@ sEntity* cEntityManager::load(const std::string& _fileName, sEntity* _entity)
         _entity->stateInitial = xmlFile.getInteger("<state_initial>");
         _entity->stateCount = xmlFile.getInstanceCount("<state_name>");
         _entity->state = new sEntityState[_entity->stateCount];
+        
         for (std::uint32_t i = 0; i < _entity->stateCount; ++i)
         {
             _entity->state[i].name = xmlFile.getString("<state_name>", 1 + i);
             _entity->state[i].animation = xmlFile.getVec3("<state_animation>", 1 + i);
             std::string audioData = xmlFile.getString("<state_sound>", 1 + i);
             //_entity->state[i].audioFile = xmlFile.getString("<state_sound>", 1 + i);
-            
+
             // Process the audio data string
             audioData += "    ";
             std::uint64_t audioDataLength = audioData.length();
@@ -259,6 +243,8 @@ sEntity* cEntityManager::load(const std::string& _fileName, sEntity* _entity)
                 }
             }
         }
+        
+        // Set default state if required
         if ((_entity->animationIndependent) && (_entity->stateCount > 0) && (_entity->stateInitial > 0))
         {
             m_setAnimationState(_entity, _entity->stateInitial);
@@ -327,7 +313,7 @@ void cEntityManager::setState(const std::uint32_t& _UID, const std::string& _nam
     {
         if (entityTemp->state[i].name.compare(_name) == 0)
         {
-            setState(_UID, i);
+            setState(_UID, i + 1);
         }
     }
 }
@@ -338,11 +324,12 @@ void cEntityManager::setState(const std::uint32_t& _UID, const std::uint32_t& _s
     sEntity* entityTemp = m_UIDtoEntity(_UID);
 
     // Only change the state if it is different, and the previous animation has completed
-    if ((entityTemp->stateCurrent != _state) && (entityTemp->finishedAnimation))
+    if (((entityTemp->repeatAnimation == false) && (entityTemp->stateCurrent != _state) && (entityTemp->finishedAnimation)) ||
+        ((entityTemp->repeatAnimation == true) && (entityTemp->stateCurrent != _state)))
     {
         // Set the new state
         entityTemp->stateCurrent = _state; // Index from 1, not 0
-
+        
         // Set animation data associated with state
         m_setAnimationState(entityTemp, entityTemp->stateCurrent);
 

@@ -71,6 +71,10 @@ struct sEntityAI
     float32         distanceMove        = 5.0f;
     uint32_t        lastKnownPlayerTile = 0;
     
+    // Attack
+    uint32_t         attack_frequency    = 32;
+    uint32_t         attack_counter      = 0;
+    
     // Enums
     eEntityAttack   attack   = eEntityAttack::entityAttackAgressive;
     eEntityDefence  defence  = eEntityDefence::entityDefenceShield;

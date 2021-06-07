@@ -242,7 +242,6 @@ void cMapManager::m_addNPCEntities(sMap*& _map)
                                         tEntity->type  = eEntityType::entityTypeNPCmob;
                                         tEntity->position += glm::vec3(static_cast<float32>(w) + tp - xo, y_pos, static_cast<float32>(h) + tp - yo);
                                         m_entityManager->updateModelMatrix(tEntity);
-                                        tEntity->movement = new sEntityMovement;
 
                                         // Load audio file names
                                          if (tEntity->stateCount > 0)
