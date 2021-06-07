@@ -34,50 +34,42 @@ void cPlayerManager::terminate(void)
 
 sEntity* cPlayerManager::load(const std::string &_fileName)
 {
-    cXML xmlFile;
-    xmlFile.load(std::string(FILE_PATH_ENTITY) + "player/" + _fileName);
-    if (xmlFile.lineCount() > 0)
+    m_data = m_entityManager->load("player/" + _fileName);
+
+    if (m_data != nullptr)
     {
-        gLogWrite(LOG_INFO, "Loading player: " + xmlFile.getString("<name>"), __FILE__, __LINE__, __FUNCTION__);
+        gLogWrite(LOG_INFO, "Loading player: " + m_data->name, __FILE__, __LINE__, __FUNCTION__);
 
-        // Get the data from the XML file
-        std::string  tName         = xmlFile.getString("<name>");
-        glm::vec3    tPosition     = xmlFile.getVec3("<position>");
-        glm::vec3    tScale        = xmlFile.getVec3("<scale>");
-        glm::vec3    tRotation     = xmlFile.getVec3("<rotation>");
-        float32      tMoveSpeed    = xmlFile.getFloat("<movement_speed>");
-        std::string  tMaterialFile = xmlFile.getString("<material>");
-        std::string  tModelFile    = xmlFile.getString("<model>");
+        m_data->owner = eEntityOwner::ownerNone;
+        m_data->type  = eEntityType::entityTypeOther;
 
-        // Create and populate the entity data structure with the loaded XML data
-        m_data           = m_entityManager->getNew();
-        m_data->name     = tName;
-        m_data->position = tPosition;
-        m_data->scale    = tScale;
-        m_data->rotation = tRotation;
-        m_entityManager->updateModelMatrix(m_data);
+        // Load the biome sound database file
+        cXML xmlSoundFile;
+        xmlSoundFile.load(FILE_PATH_BIOME + m_mapPointer->biome->databaseSound.fileName);
+
+        // Load audio file names
+        if ((m_data->stateCount > 0) && (xmlSoundFile.lineCount() > 0))
+        {
+    
+            for (std::uint32_t s = 0; s < m_data->stateCount; ++s)
+            {
+                if (m_data->state[s].audioDBIndex > 0)
+                {
+                    m_data->state[s].audioFile = xmlSoundFile.getString("<" + m_data->state[s].audioDBname + "_sound>", m_data->state[s].audioDBIndex);
+                }
+                else
+                {
+                    m_data->state[s].audioFile = xmlSoundFile.getString("<" + m_data->state[s].audioDBname + "_sound>", (rand() % (xmlSoundFile.getInstanceCount("<" + m_data->state[s].audioDBname + "_sound>") - 1)) + 1);
+                }
+            }
+        }
         
-        // Movement
-        m_data->movement = new sEntityMovement;
-        m_data->movement->movementSpeed = tMoveSpeed;
+        // Cleanup
+        xmlSoundFile.free();
 
-        // Load the model from file
-        if (tModelFile.length() > 3)
-        {
-            m_data->model = m_entityManager->loadModel(tModelFile);
-        }
-
-        // Load the material from file
-        if (tMaterialFile.length() > 3)
-        {
-            m_data->material = m_entityManager->loadMaterial(tMaterialFile);
-        }
-
-        // Clean up
-        xmlFile.free();
-        return m_data;
     }
-    return nullptr;
+
+    return m_data;
 };
 
 uint32 cPlayerManager::positionToTile(glm::vec3 _position)
@@ -85,7 +77,6 @@ uint32 cPlayerManager::positionToTile(glm::vec3 _position)
     // Width and height offset, used to center the walls
     float32 xo = static_cast<float32>(m_mapPointer->width)  / 2.0f;
     float32 zo = static_cast<float32>(m_mapPointer->height) / 2.0f;
-    float32 tp = 1.0f / 2.0f; // tile center positioning ( half model dimention)
 
     uint32 x = static_cast<uint32>(_position.x + xo);
     uint32 z = static_cast<uint32>(_position.z + zo);

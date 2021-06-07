@@ -35,11 +35,12 @@ void cGameEngine::load(void)
         // Load the UI
         uiManager.load(xmlGameFile.getString("<ui>"));
 
-        // Load the player
-        playerManager.load(xmlGameFile.getString("<player>"));
-
         // Load the map
         mapManager.load(xmlGameFile.getString("<map>"));
+
+        // Load the player
+        playerManager.setMapPointer(mapManager.getMapPointer());
+        playerManager.load(xmlGameFile.getString("<player>"));
 
         // Play the music defined in the previously loaded biome
         mapManager.playMusic();
@@ -52,7 +53,6 @@ void cGameEngine::load(void)
 
         // Set the map pointer
         npcManager.setMapPointer(mapManager.getMapPointer());
-        playerManager.setMapPointer(mapManager.getMapPointer());
         
         // Initialize entities
         graphicsEngine.initializeEntities();

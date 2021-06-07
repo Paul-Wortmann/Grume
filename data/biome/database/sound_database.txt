@@ -12,6 +12,7 @@
         <sound>giant</sound>
         <sound>goblin</sound>
         <sound>ogre</sound>
+        <sound>spider</sound>
         <sound>zombie</sound>
     </sound_define>
 
@@ -105,6 +106,12 @@
         <ogre_sound>monster/ogre/ogre_1_004.ogg</ogre_sound>
         <ogre_sound>monster/ogre/ogre_1_005.ogg</ogre_sound>
     </ogre>
+
+    <spider>
+        <spider_count>3</spider_count>
+        <spider_sound>monster/spider/spider_01_001.ogg</spider_sound>
+        <spider_sound>monster/spider/spider_01_002.ogg</spider_sound>
+    </spider>
 
     <zombie>
         <zombie_count>3</zombie_count>
