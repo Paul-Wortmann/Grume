@@ -125,6 +125,7 @@ struct sMapTile
     std::uint32_t processed = 0; // Default == 0
     eTileBase     base      = eTileBase::tileFloor; // Default == 0
     std::uint32_t object    = 0; // Default == 0
+    std::uint32_t npc       = 0; // Default == 0, else the UID of an npc
     std::uint32_t room      = 0; // Default == 0
 };
 

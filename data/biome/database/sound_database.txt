@@ -5,7 +5,9 @@
         <sound>object</sound>
         <sound>battle</sound>
         <sound>trader</sound>
-<sound>bat<sound>
+	<sound>bat<sound>
+	<sound>beetle<sound>
+<sound>creature<sound>
         <sound>ghost</sound>
         <sound>giant</sound>
         <sound>goblin</sound>
@@ -48,6 +50,18 @@
         <bat_sound>monster/bat/bat_1_002.ogg</bat_sound>
         <bat_sound>monster/bat/bat_1_003.ogg</bat_sound>
     </bat>
+
+    <beetle>
+        <beetle_count>3</beetle_count>
+        <beetle_sound>monster/beetle/beetle_1_001.ogg</beetle_sound>
+        <beetle_sound>monster/beetle/beetle_1_002.ogg</beetle_sound>
+        <beetle_sound>monster/beetle/beetle_1_003.ogg</beetle_sound>
+    </beetle>
+
+    <creature>
+        <creature_count>1</creature_count>
+        <creature_sound>monster/creature/alien_01.ogg</creature_sound>
+    </creature>
 
     <ghost>
         <ghost_count>2</ghost_count>

@@ -5,8 +5,8 @@
 
 <config>
     <graphics>
-        <resolution_w>800</resolution_w>
-        <resolution_h>600</resolution_h>
+        <resolution_w>1880</resolution_w>
+        <resolution_h>1040</resolution_h>
         <fullscreen>0</fullscreen>
     </graphics>
     <audio>

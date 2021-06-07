@@ -26,16 +26,22 @@
 /// static bool _pathAStileOK(sMap*& _map, std::uint32_t _tile)
 static bool _pathAStileOK(sMap*& _map, std::uint32_t _tile)
 {
-    bool returnValue = false;
-
-    if ((_map->tile[_tile].base == eTileBase::tileFloor)
-     || (_map->tile[_tile].base == eTileBase::tileDoorway)
-     || (_map->tile[_tile].base == eTileBase::tileFloorPath))
+    // check npc data
+    if (_map->tile[_tile].npc != 0)
     {
-        returnValue = true;
+        return false;
     }
 
-    return returnValue;
+    // check tile data
+    if (!((_map->tile[_tile].base == eTileBase::tileFloor)
+       || (_map->tile[_tile].base == eTileBase::tileDoorway)
+       || (_map->tile[_tile].base == eTileBase::tileFloorPath)))
+    {
+        return false;
+    }
+
+    // All checks passed
+    return true;
 }
 
 /// static void _pathAScalcTile(sMap*& _map, sMapPath& _path, sASTileData*& _pathData, std::uint32_t _p, std::uint32_t _t)

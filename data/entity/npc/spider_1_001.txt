@@ -2,18 +2,18 @@
 <npc>
 
     <information>
-        <name>bat_1_001</name>
+        <name>spider_1_001</name>
     </information>
 
     <resources>
-        <model>npc/bat_1_001.dae</model>
-	<material>npc/bat_1_001.txt</material>
+        <model>npc/spider_1_001.dae</model>
+	<material>npc/spider_1_001.txt</material>
     </resources>
 
     <transform>
-        <position>0.0 2.0 0.0</position>
-        <scale>0.125 0.125 0.125</scale>
-        <rotation>3.1416 4.712385 0.0</rotation>
+        <position>0.0 0.0 0.0</position>
+        <scale>0.0625 0.0625 0.0625</scale>
+        <rotation>3.14159 1.570795 0.0</rotation>
     </transform>
 
     <animation_independent>1</animation_independent>
@@ -22,32 +22,32 @@
     <state>
         <state_name>idle</state_name>
         <state_sound>none 0 0</state_sound> # database name, else none, database index, repeat (bool)
-        <state_animation>0.0 0.333333 1</state_animation> # frame start, frame end, repeat (bool)
+        <state_animation>0.0 0.666666667 1</state_animation> # frame start, frame end, repeat (bool)
     </state>
     <state>
         <state_name>move</state_name>
         <state_sound>none 0 0</state_sound> # database name, else none, database index, repeat (bool)
-        <state_animation>0.0 0.333333 1</state_animation> # frame start, frame end, repeat (bool)
+        <state_animation>0.0 0.666666667 1</state_animation> # frame start, frame end, repeat (bool)
     </state>
     <state>
         <state_name>attack</state_name>
-        <state_sound>bat 3 0</state_sound> # database name, else none, database index, repeat (bool)
-        <state_animation>0.0 0.333333 0</state_animation> # frame start, frame end, repeat (bool)
+        <state_sound>beetle 3 0</state_sound> # database name, else none, database index, repeat (bool)
+        <state_animation>0.0 0.666666667 0</state_animation> # frame start, frame end, repeat (bool)
     </state>
     <state>
         <state_name>block</state_name>
-        <state_sound>bat 1 0</state_sound> # database name, else none, database index, repeat (bool)
-        <state_animation>0.0 0.333333 0</state_animation> # frame start, frame end, repeat (bool)
+        <state_sound>beetle 1 0</state_sound> # database name, else none, database index, repeat (bool)
+        <state_animation>0.0 0.666666667 0</state_animation> # frame start, frame end, repeat (bool)
     </state>
     <state>
         <state_name>die</state_name>
-        <state_sound>bat 2 0</state_sound> # database name, else none, database index, repeat (bool)
-        <state_animation>0.0 0.333333 0</state_animation> # frame start, frame end, repeat (bool)
+        <state_sound>beetle 2 0</state_sound> # database name, else none, database index, repeat (bool)
+        <state_animation>0.0 0.666666667 0</state_animation> # frame start, frame end, repeat (bool)
     </state>
     <state>
         <state_name>gethit</state_name>
-        <state_sound>bat 1 0</state_sound> # database name, else none, database index, repeat (bool)
-        <state_animation>0.0 0.333333 0</state_animation> # frame start, frame end, repeat (bool)
+        <state_sound>beetle 1 0</state_sound> # database name, else none, database index, repeat (bool)
+        <state_animation>0.0 0.666666667 0</state_animation> # frame start, frame end, repeat (bool)
     </state>
 
     <animtion>
@@ -55,7 +55,7 @@
     </animation>
 
     <movement>
-        <movement_speed>0.1</movement_speed>
+        <movement_speed>0.06</movement_speed>
     </movement>
 
     <ai>

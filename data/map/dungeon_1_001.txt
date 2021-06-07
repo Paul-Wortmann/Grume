@@ -291,7 +291,8 @@
 
     <npc_mobs>
         #npc number, scale max, scale min, prevalence
-        <npc_mob>2 0.5 1.0 5</npc_mob> # bat
+        <npc_mob>2 0.5 1.0 2</npc_mob> # bat
+        <npc_mob>6 0.5 1.0 5</npc_mob> # spider
     </npc_mobs>
 
     <npcs>

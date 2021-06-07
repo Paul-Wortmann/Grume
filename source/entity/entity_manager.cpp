@@ -154,6 +154,7 @@ sEntity* cEntityManager::load(const std::string& _fileName, sEntity* _entity)
         _entity->position             = xmlFile.getVec3("<position>");
         _entity->scale                = xmlFile.getVec3("<scale>");
         _entity->rotation             = xmlFile.getVec3("<rotation>");
+        _entity->rotationOffset       = _entity->rotation;
         std::string modelFile         = xmlFile.getString("<model>");
         std::string materialFile      = xmlFile.getString("<material>");
         _entity->animationIndependent = (xmlFile.getInteger("<animation_independent>") == 1);

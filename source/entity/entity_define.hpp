@@ -51,19 +51,20 @@ enum eEntityType: uint16
 struct sEntity
 {
     // Linked list
-    sEntity*         next         = nullptr;
-    std::uint32_t    UID          = 0;
+    sEntity*         next           = nullptr;
+    std::uint32_t    UID            = 0;
 
     // Infomation
-    std::string      name         = "";
-    bool             enabled      = true;
-    eEntityType      type         = eEntityType::entityTypeStatic;
-    eEntityOwner     owner        = eEntityOwner::ownerNone;
+    std::string      name           = "";
+    bool             enabled        = true;
+    eEntityType      type           = eEntityType::entityTypeStatic;
+    eEntityOwner     owner          = eEntityOwner::ownerNone;
 
     // Base
-    glm::vec3        position     = glm::vec3(0.0f, 0.0f, 0.0f);
-    glm::vec3        scale        = glm::vec3(1.0f, 1.0f, 1.0f);
-    glm::vec3        rotation     = glm::vec3(0.0f, 0.0f, 0.0f);
+    glm::vec3        position       = glm::vec3(0.0f, 0.0f, 0.0f);
+    glm::vec3        scale          = glm::vec3(1.0f, 1.0f, 1.0f);
+    glm::vec3        rotation       = glm::vec3(0.0f, 0.0f, 0.0f);
+    glm::vec3        rotationOffset = glm::vec3(0.0f, 0.0f, 0.0f);
 
     // Animation (per entity, not shared)
     bool             animationIndependent = false;

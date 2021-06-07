@@ -128,7 +128,7 @@ void cMapManager::m_addNPCEntities(sMap*& _map)
                 }
                 if (tEntity != nullptr)
                 {
-                    _map->tile[tNPCTileNum].object = tEntity->UID;
+                    _map->tile[tNPCTileNum].npc = tEntity->UID;
                     tEntity->owner = eEntityOwner::ownerMap;
                     tEntity->type  = eEntityType::entityTypeNPC;
                     tEntity->position += glm::vec3(static_cast<float32>(w) + tp - xo, y_pos, static_cast<float32>(h) + tp - yo);
@@ -140,6 +140,12 @@ void cMapManager::m_addNPCEntities(sMap*& _map)
                     tEntity->rotation = glm::vec3(tEntity->rotation.x, tEntity->rotation.y, tEntity->rotation.z);
                     m_entityManager->updateModelMatrix(tEntity);
                     
+                    // Movement
+                    if (tEntity->movement != nullptr)
+                    {
+                        tEntity->movement->mapPath.currentTile = tNPCTileNum;
+                    }
+
                     // Load audio file names
                     if (tEntity->stateCount > 0)
                     {
@@ -223,7 +229,7 @@ void cMapManager::m_addNPCEntities(sMap*& _map)
                 for (uint32 w = 1; w < _map->width-1; ++w)
                 {
                     uint32 t = (h * _map->width) + w;
-                    if ((_map->tile[t].object == 0) && (_map->tile[t].base == eTileBase::tileFloor))
+                    if ((_map->tile[t].npc == 0) && (_map->tile[t].object == 0) && (_map->tile[t].base == eTileBase::tileFloor))
                     {
                         uint32 rInt = rand() % 1000;
                         bool   pMob = false;
@@ -237,12 +243,19 @@ void cMapManager::m_addNPCEntities(sMap*& _map)
                                     tEntity = m_entityManager->load(xmlNPCFile.getString("<" + npc_names[mob[i].npc_number-1] + "_entity>", 1 + (rand() % npc_counts[mob[i].npc_number-1])));
                                     if (tEntity != nullptr)
                                     {
-                                        _map->tile[t].object = tEntity->UID;
+                                        _map->tile[t].npc = tEntity->UID;
                                         tEntity->owner = eEntityOwner::ownerMap;
                                         tEntity->type  = eEntityType::entityTypeNPCmob;
                                         tEntity->position += glm::vec3(static_cast<float32>(w) + tp - xo, y_pos, static_cast<float32>(h) + tp - yo);
+                                        tEntity->rotation = glm::vec3(tEntity->rotation.x, tEntity->rotation.y, tEntity->rotation.z);
                                         m_entityManager->updateModelMatrix(tEntity);
 
+                                        // Movement
+                                        if (tEntity->movement != nullptr)
+                                        {
+                                            tEntity->movement->mapPath.currentTile = t;
+                                        }
+                                        
                                         // Load audio file names
                                          if (tEntity->stateCount > 0)
                                         {

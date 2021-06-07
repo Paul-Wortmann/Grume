@@ -66,7 +66,7 @@ void cNPCManager::process(const float32 &_dt)
             // Turn to face the player
             //glm::vec3 rotation = m_entityTemp->rotation;
             float32 angle = static_cast<float32>(atan2(m_entityTemp->position.z - m_entityPlayer->position.z, m_entityTemp->position.x - m_entityPlayer->position.x));
-            m_entityTemp->rotation.y = angle - DTOR_90;
+            m_entityTemp->rotation.y = angle + m_entityTemp->rotationOffset.y;
             
             // Check if player is visable, if so continue
             if ((m_entityTemp->ai != nullptr) && (1 == 1)) // FIXME!
@@ -104,7 +104,10 @@ void cNPCManager::process(const float32 &_dt)
                     // If the player has moved, path to the new player position
                     if (m_entityTemp->ai->lastKnownPlayerTile != m_entityPlayer->movement->mapPath.currentTile)
                     {
+                        // Current tile
+                        m_mapPointer->tile[m_entityTemp->movement->mapPath.currentTile].npc = 0;
                         m_entityTemp->movement->mapPath.currentTile = m_positionToTile(m_entityTemp->position);
+
                         m_entityTemp->ai->lastKnownPlayerTile = m_entityPlayer->movement->mapPath.currentTile;
                         m_entityTemp->movement->mapPath.destinationTile = m_entityPlayer->movement->mapPath.currentTile;
                         gAStar(m_mapPointer, m_entityTemp->movement->mapPath);
@@ -130,14 +133,12 @@ void cNPCManager::process(const float32 &_dt)
                         m_entityTemp->movement->moveDelta.x = 0.0f;
                         m_entityTemp->movement->moveDelta.z = 0.0f;
                         
-                        // move direction, used as float comparison is problematic
-                        int32 deltaX = 0;
-                        int32 deltaZ = 0;
-                        
                         m_entityTemp->movement->moved = true;
                         glm::vec3 entityPos      = m_entityTemp->position;
-                        uint32    currentTile    = m_entityTemp->movement->mapPath.path[m_entityTemp->movement->mapPath.currentPosition];
-                        glm::vec3 currentTilePos = m_tileToPosition(currentTile);
+
+                        m_mapPointer->tile[m_entityTemp->movement->mapPath.currentTile].npc = 0;
+                        m_entityTemp->movement->mapPath.currentTile = m_entityTemp->movement->mapPath.path[m_entityTemp->movement->mapPath.currentPosition];
+                        glm::vec3 currentTilePos = m_tileToPosition(m_entityTemp->movement->mapPath.currentTile);
                         
                         // Get the distance to the destination tile
                         float32   distanceToTileSqr = ((entityPos.x - currentTilePos.x) * (entityPos.x - currentTilePos.x)) + ((entityPos.z - currentTilePos.z) * (entityPos.z - currentTilePos.z));
@@ -150,42 +151,47 @@ void cNPCManager::process(const float32 &_dt)
                             {
                                 entityPos.x += m_entityTemp->movement->movementSpeed;
                                 m_entityTemp->movement->moveDelta.x += m_entityTemp->movement->movementSpeed;
-                                deltaX = 1;
                             }
                             else if ((entityPos.x + m_entityTemp->movement->movementSpeed) > currentTilePos.x)
                             {
                                 entityPos.x -= m_entityTemp->movement->movementSpeed;
                                 m_entityTemp->movement->moveDelta.x -= m_entityTemp->movement->movementSpeed;
-                                deltaX = -1;
                             }
                             if ((entityPos.z + m_entityTemp->movement->movementSpeed) < currentTilePos.z)
                             {
                                 entityPos.z += m_entityTemp->movement->movementSpeed;
                                 m_entityTemp->movement->moveDelta.z += m_entityTemp->movement->movementSpeed;
-                                deltaZ = 1;
                             }
                             else if ((entityPos.z + m_entityTemp->movement->movementSpeed) > currentTilePos.z)
                             {
                                 entityPos.z -= m_entityTemp->movement->movementSpeed;
                                 m_entityTemp->movement->moveDelta.z -= m_entityTemp->movement->movementSpeed;
-                                deltaZ = -1;
                             }
                         }
                         
                         // move to tile center, set new tile in path
                         else
                         {
-                            //entityPos = currentTilePos;
-                            m_entityTemp->movement->mapPath.currentPosition++;
-                            if (m_entityTemp->movement->mapPath.currentPosition >= m_entityTemp->movement->mapPath.pathLength)
+                            // If we have reached the end of the path, or if it is blocked, stop
+                            if (((m_entityTemp->movement->mapPath.currentPosition + 1) >= m_entityTemp->movement->mapPath.pathLength)
+                              || (m_mapPointer->tile[m_entityTemp->movement->mapPath.currentPosition + 1].npc != 0))
                             {
                                 m_entityTemp->movement->pathing = false;
                                 m_entityTemp->movement->moveDelta.x = 0.0f;
                                 m_entityTemp->movement->moveDelta.z = 0.0f;
                             }
+                            else
+                            {
+                                // Continue pathing
+                                m_entityTemp->movement->mapPath.currentPosition++;
+                            }
                         }
                         m_entityTemp->position = entityPos; 
-                        m_entityTemp->movement->mapPath.currentTile = m_positionToTile(entityPos);
+                        
+                        // Update current tile if need be
+                        m_mapPointer->tile[m_entityTemp->movement->mapPath.currentTile].npc = 0;
+                        m_entityTemp->movement->mapPath.currentTile = m_positionToTile(m_entityTemp->position);
+                        m_mapPointer->tile[m_entityTemp->movement->mapPath.currentTile].npc = m_entityTemp->UID;
                     }
                 }
                 
