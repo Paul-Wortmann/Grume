@@ -66,7 +66,6 @@ sEntity* cPlayerManager::load(const std::string &_fileName)
         
         // Cleanup
         xmlSoundFile.free();
-
     }
 
     return m_data;
@@ -105,6 +104,9 @@ void cPlayerManager::moveTo(glm::vec3 _pos)
     {
         m_data->movement->mapPath.currentPosition = 0;
         m_data->movement->pathing = true;
+
+        // Set state - move
+        m_entityManager->setState(m_data->UID, "move");
     }
 };
 
@@ -218,6 +220,9 @@ void cPlayerManager::process(const float32 &_dt)
                 m_data->movement->pathing = false;
                 m_data->movement->moveDelta.x = 0.0f;
                 m_data->movement->moveDelta.z = 0.0f;
+                
+                // Set state - idle
+                m_entityManager->setState(m_data->UID, "idle");
             }
         }
         setPosition(playerPos);
