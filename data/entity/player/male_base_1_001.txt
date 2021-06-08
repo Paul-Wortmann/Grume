@@ -13,9 +13,13 @@
     <transform>
         <position>0.0 -1.0 0.0</position>
         <scale>0.1 0.1 0.1</scale>
-        <temp>1.5708 3.1416 4.6124</temp>
         <rotation>4.6124 0.0 0.0</rotation>
     </transform>
+
+    <animtion>
+        <animation_independent>1</animation_independent>
+        <animation_count>1</animation_count>
+    </animation>
 
     <movement>
         <movement_speed>0.125</movement_speed>
@@ -25,5 +29,37 @@
         <animation_count>1</animation_count>
         <idle>0 40</idle>
     </animation>
+
+    <state_initial>1</state_initial> # 0 == none
+    <state>
+        <state_name>idle</state_name>
+        <state_sound>none 0 0</state_sound> # database name, else none, database index, repeat (bool)
+        <state_animation>0.0 9.958333333 1</state_animation> # frame start, frame end, repeat (bool)
+    </state>
+    <state>
+        <state_name>move</state_name>
+        <state_sound>none 0 0</state_sound> # database name, else none, database index, repeat (bool)
+        <state_animation>0.0 9.958333333 1</state_animation> # frame start, frame end, repeat (bool)
+    </state>
+    <state>
+        <state_name>attack</state_name>
+        <state_sound>bat 3 0</state_sound> # database name, else none, database index, repeat (bool)
+        <state_animation>0.0 0.333333 0</state_animation> # frame start, frame end, repeat (bool)
+    </state>
+    <state>
+        <state_name>block</state_name>
+        <state_sound>bat 1 0</state_sound> # database name, else none, database index, repeat (bool)
+        <state_animation>0.0 0.333333 0</state_animation> # frame start, frame end, repeat (bool)
+    </state>
+    <state>
+        <state_name>die</state_name>
+        <state_sound>bat 2 0</state_sound> # database name, else none, database index, repeat (bool)
+        <state_animation>0.0 0.333333 0</state_animation> # frame start, frame end, repeat (bool)
+    </state>
+    <state>
+        <state_name>gethit</state_name>
+        <state_sound>bat 1 0</state_sound> # database name, else none, database index, repeat (bool)
+        <state_animation>0.0 0.333333 0</state_animation> # frame start, frame end, repeat (bool)
+    </state>
 
 </player>

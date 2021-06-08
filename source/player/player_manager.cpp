@@ -94,24 +94,30 @@ glm::vec3 cPlayerManager::tileToPosition(uint32 _tile)
     return glm::vec3(x, m_mapPointer->terrainHeight, z);
 };
 
-void cPlayerManager::moveTo(glm::vec3 _pos)
-{
-    glm::vec3 destinationPosition = _pos;
-    destinationPosition.y -= 0.0f;
-    uint32 destinationTile = positionToTile(destinationPosition);
-    setDestinationTile(destinationTile);
-    if (m_data->movement->mapPath.pathLength > 0)
-    {
-        m_data->movement->mapPath.currentPosition = 0;
-        m_data->movement->pathing = true;
-
-        // Set state - move
-        m_entityManager->setState(m_data->UID, "move");
-    }
-};
-
 void cPlayerManager::process(const float32 &_dt)
 {
+    // Process mouse click event
+    if (m_mouseClicked)
+    {
+        m_mouseClicked = false;
+        
+        glm::vec3 destinationPosition = m_mousePos;
+        destinationPosition.y -= 0.0f;
+        uint32 destinationTile = positionToTile(destinationPosition);
+
+        m_data->movement->mapPath.destinationTile = destinationTile;
+        gAStar(m_mapPointer, m_data->movement->mapPath);
+
+        if (m_data->movement->mapPath.pathLength > 0)
+        {
+            m_data->movement->mapPath.currentPosition = 0;
+            m_data->movement->pathing = true;
+
+            // Set state - move
+            m_entityManager->setState(m_data->UID, "move");
+        }
+    }
+    
     m_data->movement->moved = false;
     if (m_data->movement->mapPath.pathLength == 0)
     {
@@ -225,8 +231,11 @@ void cPlayerManager::process(const float32 &_dt)
                 m_entityManager->setState(m_data->UID, "idle");
             }
         }
-        setPosition(playerPos);
-        setRotation(playerRot);
+
+        m_data->position = playerPos; 
+        m_data->movement->mapPath.currentTile = positionToTile(playerPos);
+        m_data->rotation = playerRot; 
+        m_updateMatrix();
     }
-};
+}
 

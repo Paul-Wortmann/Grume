@@ -148,10 +148,7 @@ void cGameEngine::process(void)
             
             // Else:
             
-            // If mouse click on object
-            
-            // else, player movement
-            playerManager.moveTo(graphicsEngine.getMouseTerrainPosition());
+            playerManager.setMouseClick(graphicsEngine.getMouseTerrainPosition());
         }
         
         // If player has moved update camera and player light
