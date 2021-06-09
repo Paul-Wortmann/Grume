@@ -100,21 +100,34 @@ void cPlayerManager::process(const float32 &_dt)
     if (m_mouseClicked)
     {
         m_mouseClicked = false;
+        uint32 clickedTile = positionToTile(m_mousePos);
         
-        glm::vec3 destinationPosition = m_mousePos;
-        destinationPosition.y -= 0.0f;
-        uint32 destinationTile = positionToTile(destinationPosition);
-
-        m_data->movement->mapPath.destinationTile = destinationTile;
-        gAStar(m_mapPointer, m_data->movement->mapPath);
-
-        if (m_data->movement->mapPath.pathLength > 0)
+        // If click object
+        if (m_mapPointer->tile[clickedTile].object != 0)
         {
-            m_data->movement->mapPath.currentPosition = 0;
-            m_data->movement->pathing = true;
+            std::cout << "object clicked: " << clickedTile << std::endl;
+        }
+        
+        // If click NPC
+        if (m_mapPointer->tile[clickedTile].npc != 0)
+        {
+            std::cout << "NPC clicked: " << clickedTile << std::endl;
+        }
+        
+        // If no object and no NPC, then path find to tile
+        if ((m_mapPointer->tile[clickedTile].object == 0) && (m_mapPointer->tile[clickedTile].npc == 0))
+        {
+            m_data->movement->mapPath.destinationTile = clickedTile;
+            gAStar(m_mapPointer, m_data->movement->mapPath);
 
-            // Set state - move
-            m_entityManager->setState(m_data->UID, "move");
+            if (m_data->movement->mapPath.pathLength > 0)
+            {
+                m_data->movement->mapPath.currentPosition = 0;
+                m_data->movement->pathing = true;
+
+                // Set state - move
+                m_entityManager->setState(m_data->UID, "move");
+            }
         }
     }
     
