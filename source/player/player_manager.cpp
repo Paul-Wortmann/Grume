@@ -123,6 +123,8 @@ void cPlayerManager::process(const float32 &_dt)
         {
             std::cout << "NPC clicked: " << m_mouseTile << std::endl;
             
+            // We should check the distance to the enemy first
+            
             // Set state - attack
             m_entityManager->setState(m_data->UID, "attack");
 
@@ -132,6 +134,7 @@ void cPlayerManager::process(const float32 &_dt)
             {
                 if ((entity->UID == m_mapPointer->tile[m_mouseTile].npc) && (m_data->UID != entity->UID))
                 {
+                    m_mapPointer->tile[entity->UID].npc = 0;
                     m_entityManager->remove(entity);
                     entity = m_entityManager->getHead();
                 }
