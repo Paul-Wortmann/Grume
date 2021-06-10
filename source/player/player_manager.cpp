@@ -94,30 +94,54 @@ glm::vec3 cPlayerManager::tileToPosition(uint32 _tile)
     return glm::vec3(x, m_mapPointer->terrainHeight, z);
 };
 
+void cPlayerManager::setMouseClick(glm::vec3 _pos)
+{
+    uint32 clickedTile = positionToTile(_pos);
+    if (clickedTile != m_mouseTile)
+    {
+        m_mouseClicked = true;
+        m_mousePos     = _pos;
+        m_mouseTile    = clickedTile;
+    }
+};
+        
 void cPlayerManager::process(const float32 &_dt)
 {
     // Process mouse click event
     if (m_mouseClicked)
     {
         m_mouseClicked = false;
-        uint32 clickedTile = positionToTile(m_mousePos);
         
         // If click object
-        if (m_mapPointer->tile[clickedTile].object != 0)
+        if (m_mapPointer->tile[m_mouseTile].object != 0)
         {
-            std::cout << "object clicked: " << clickedTile << std::endl;
+            std::cout << "object clicked: " << m_mouseTile << std::endl;
         }
         
         // If click NPC
-        if (m_mapPointer->tile[clickedTile].npc != 0)
+        if (m_mapPointer->tile[m_mouseTile].npc != 0)
         {
-            std::cout << "NPC clicked: " << clickedTile << std::endl;
+            std::cout << "NPC clicked: " << m_mouseTile << std::endl;
+            
+            // Set state - attack
+            m_entityManager->setState(m_data->UID, "attack");
+
+
+            // Free all the entities asociated with the clicked tile
+            for (sEntity* entity = m_entityManager->getHead(); entity != nullptr; entity = entity->next)
+            {
+                if ((entity->UID == m_mapPointer->tile[m_mouseTile].npc) && (m_data->UID != entity->UID))
+                {
+                    m_entityManager->remove(entity);
+                    entity = m_entityManager->getHead();
+                }
+            }
         }
         
         // If no object and no NPC, then path find to tile
-        if ((m_mapPointer->tile[clickedTile].object == 0) && (m_mapPointer->tile[clickedTile].npc == 0))
+        if ((m_mapPointer->tile[m_mouseTile].object == 0) && (m_mapPointer->tile[m_mouseTile].npc == 0))
         {
-            m_data->movement->mapPath.destinationTile = clickedTile;
+            m_data->movement->mapPath.destinationTile = m_mouseTile;
             gAStar(m_mapPointer, m_data->movement->mapPath);
 
             if (m_data->movement->mapPath.pathLength > 0)

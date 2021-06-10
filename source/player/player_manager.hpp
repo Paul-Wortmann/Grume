@@ -47,7 +47,7 @@ class cPlayerManager
         void      stopPathing(void) {m_data->movement->mapPath.pathLength = 0; };
         bool      getMoved(void) { return m_data->movement->moved; };
         glm::vec3 getMoveDelta(void) { return m_data->movement->moveDelta; };
-        void      setMouseClick(glm::vec3 _pos) { m_mouseClicked = true; m_mousePos = _pos; };
+        void      setMouseClick(glm::vec3 _pos);
 
     protected:
 
@@ -59,6 +59,7 @@ class cPlayerManager
         
         bool            m_mouseClicked    = false;
         glm::vec3       m_mousePos        = glm::vec3(0.0f, 0.0f, 0.0f);
+        std::uint32_t   m_mouseTile       = 0;
 };
 
 #endif //PLAYER_MANAGER_HPP

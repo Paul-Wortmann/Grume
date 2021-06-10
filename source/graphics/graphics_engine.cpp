@@ -80,6 +80,10 @@ void cGraphicsEngine::sm_glfwMouseButtonCallback(GLFWwindow* _window, int32 _but
     {
         graphicsEngine->m_keyMap[_button] = false;
     }
+    else if (_action == GLFW_REPEAT)
+    {
+        graphicsEngine->m_keyMap[_button] = true;
+    }
     else
     {
         graphicsEngine->m_keyMap[_button] = false;
