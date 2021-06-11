@@ -36,6 +36,7 @@ class cEntityManager : public tcLinkedList<sEntity>
     public:
         void initialize(void);
         void terminate(void);
+        void             process(const float32 &_dt);
         void             setAudioPointer(cAudioManager* _audioManager) { m_audioManager = _audioManager; };
         void             addModel(sEntityModel*& _model);
         sEntityModel*    getNewModel(void);

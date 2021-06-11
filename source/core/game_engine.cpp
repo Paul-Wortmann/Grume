@@ -140,6 +140,7 @@ void cGameEngine::process(void)
         mapManager.process(dt);
         physicsEngine.process(dt);
         audioManager.process(dt);
+        entityManager.process(dt);
 
         // Use input
         if (graphicsEngine.getKeyState(GLFW_MOUSE_BUTTON_LEFT))

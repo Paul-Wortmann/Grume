@@ -357,3 +357,15 @@ void cEntityManager::toggleState(const std::uint32_t& _UID, const std::uint32_t&
         m_playSound(entityTemp, entityTemp->stateCurrent);
     }
 }
+
+void cEntityManager::process(const float32 &_dt)
+{
+    for (sEntity* entity = getHead(); entity != nullptr; entity = entity->next)
+    {
+        if ((entity->terminate == true) && (entity->finishedAnimation == true))
+        {
+            remove(entity);
+            entity = getHead();
+        }
+    }
+}

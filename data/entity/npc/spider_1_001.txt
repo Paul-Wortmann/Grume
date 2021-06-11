@@ -49,7 +49,7 @@
     <state>
         <state_name>die</state_name>
         <state_sound>spider 2 0</state_sound> # database name, else none, database index, repeat (bool)
-        <state_animation>0.0 0.666666667 0</state_animation> # frame start, frame end, repeat (bool)
+        <state_animation>0.0 0.1 0</state_animation> # frame start, frame end, repeat (bool)
     </state>
     <state>
         <state_name>gethit</state_name>

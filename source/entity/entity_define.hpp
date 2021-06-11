@@ -92,6 +92,7 @@ struct sEntity
     std::uint32_t    stateInitial = 0;
     std::uint32_t    stateCurrent = 0;
     sEntityState*    state        = nullptr;
+    bool             terminate    = false;
 
     // AI
     sEntityAI*       ai           = nullptr;

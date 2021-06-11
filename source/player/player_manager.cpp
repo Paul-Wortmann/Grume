@@ -128,15 +128,14 @@ void cPlayerManager::process(const float32 &_dt)
             // Set state - attack
             m_entityManager->setState(m_data->UID, "attack");
 
-
-            // Free all the entities asociated with the clicked tile
+            // Set npc state and set the npc for termination
             for (sEntity* entity = m_entityManager->getHead(); entity != nullptr; entity = entity->next)
             {
                 if ((entity->UID == m_mapPointer->tile[m_mouseTile].npc) && (m_data->UID != entity->UID))
                 {
-                    m_mapPointer->tile[entity->UID].npc = 0;
-                    m_entityManager->remove(entity);
-                    entity = m_entityManager->getHead();
+                    m_entityManager->setState(entity->UID, "die");
+                    m_mapPointer->tile[m_mouseTile].npc = 0;
+                    entity->terminate = true;
                 }
             }
         }
