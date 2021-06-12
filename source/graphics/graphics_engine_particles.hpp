@@ -29,7 +29,15 @@
 class cGraphicsEngineParticles
 {
     public:
-    
+        // Constructors
+        cGraphicsEngineParticles(void) = default;
+        ~cGraphicsEngineParticles(void) = default;
+
+        // Member functions
+        void     initialize(void);
+        void     terminate(void);
+        void     process(const float32 &_dt);
+
     protected:
     
     private:

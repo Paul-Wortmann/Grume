@@ -22,3 +22,18 @@
  */
 
 #include "graphics_engine_particles.hpp"
+
+void cGraphicsEngineParticles::initialize(void)
+{
+
+}
+
+void cGraphicsEngineParticles::terminate(void)
+{
+
+}
+
+void cGraphicsEngineParticles::process(const float32 &_dt)
+{
+
+}
