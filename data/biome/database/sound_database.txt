@@ -65,9 +65,14 @@
     </creature>
 
     <ghost>
-        <ghost_count>2</ghost_count>
+        <ghost_count>7</ghost_count>
         <ghost_sound>monster/ghost/ghost_1_001.ogg</ghost_sound>
         <ghost_sound>monster/ghost/ghost_1_002.ogg</ghost_sound>
+        <ghost_sound>monster/ghost/ghost_2_001.ogg</ghost_sound>
+        <ghost_sound>monster/ghost/ghost_2_002.ogg</ghost_sound>
+        <ghost_sound>monster/ghost/ghost_2_003.ogg</ghost_sound>
+        <ghost_sound>monster/ghost/ghost_2_004.ogg</ghost_sound>
+        <ghost_sound>monster/ghost/ghost_2_005.ogg</ghost_sound>
     </ghost>
 
     <giant>
