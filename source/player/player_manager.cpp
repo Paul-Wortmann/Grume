@@ -45,7 +45,7 @@ sEntity* cPlayerManager::load(const std::string &_fileName)
 
         // Load the biome sound database file
         cXML xmlSoundFile;
-        xmlSoundFile.load(FILE_PATH_BIOME + m_mapPointer->biome->databaseSound.fileName);
+        xmlSoundFile.load(FILE_PATH_DATABASE + m_gameDatabase->sound.fileName);
 
         // Load audio file names
         if ((m_data->stateCount > 0) && (xmlSoundFile.lineCount() > 0))
@@ -131,7 +131,7 @@ void cPlayerManager::process(const float32 &_dt)
             // Set npc state and set the npc for termination
             for (sEntity* entity = m_entityManager->getHead(); entity != nullptr; entity = entity->next)
             {
-                if ((entity->UID == m_mapPointer->tile[m_mouseTile].npc) && (m_data->UID != entity->UID))
+                if ((entity->terminate == false) && (entity->UID == m_mapPointer->tile[m_mouseTile].npc) && (m_data->UID != entity->UID))
                 {
                     m_entityManager->setState(entity->UID, "die");
                     m_mapPointer->tile[m_mouseTile].npc = 0;

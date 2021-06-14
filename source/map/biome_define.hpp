@@ -42,41 +42,6 @@ struct sMusicTrack
     std::uint32_t no       = 0; // Default == 0 (random)
 };
 
-struct sDatabaseMusic
-{
-    std::string   name     = "";
-    std::string   fileName = "";
-    std::uint32_t count    = 0;
-};
-
-struct sDatabaseMap
-{
-    std::string fileName = "";
-};
-
-struct sDatabaseMapPrefab
-{
-    std::string fileName = "";
-};
-
-struct sDatabaseNPC
-{
-    std::string name     = "";
-    std::string fileName = "";
-};
-
-struct sDatabaseObject
-{
-    std::string name     = "";
-    std::string fileName = "";
-};
-
-struct sDatabaseSound
-{
-    std::string name     = "";
-    std::string fileName = "";
-};
-
 struct sMapWallSet
 {
     std::string name     = "";
@@ -132,14 +97,6 @@ struct sMapBiome
 
     // Map floor spritesheet
     sMapFloorSpritesheet floorSpritesheet = {};
-
-    // Databases
-    sDatabaseMusic     databaseMusic     = {};
-    sDatabaseMap       databaseMap       = {};
-    sDatabaseMapPrefab databaseMapPrefab = {};
-    sDatabaseNPC       databaseNPC       = {};
-    sDatabaseObject    databaseObject    = {};
-    sDatabaseSound     databaseSound     = {};
 };
 
 #endif //BIOME_DEFINE_HPP

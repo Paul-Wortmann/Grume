@@ -31,6 +31,7 @@
 #include "../graphics/graphics_engine.hpp"
 #include "../graphics/graphics_engine_utils.hpp"
 #include "../core/includes.hpp"
+#include "../core/game_database.hpp"
 #include "../core/linked_list.hpp"
 #include "../player/player_manager.hpp"
 #include "biome_manager.hpp"
@@ -44,6 +45,7 @@ class cMapManager : public tcLinkedList<sMap>
         void          initialize(cEntityManager* _entityManager);
         void          setAnimationPointer(cAnimationEngine* _animationEngine) { m_animationEngine = _animationEngine; };
         void          setAudioPointer(cAudioManager* _audioManager) { m_audioManager = _audioManager; };
+        void          setDatabasePointer(cGameDatabase* _gameDatabase) { m_gameDatabase = _gameDatabase; };
         void          setGraphicsPointer(cGraphicsEngine* _graphicsEngine) { m_graphicsEngine = _graphicsEngine; };
         void          setPlayerPointer(cPlayerManager* _playerManager) { m_playerManager = _playerManager; };
         void          resetPlayerPosition(void) { m_resetPlayerPosition(); };
@@ -69,11 +71,12 @@ class cMapManager : public tcLinkedList<sMap>
 
     private:
         cAnimationEngine* m_animationEngine = nullptr;
-        cEntityManager*   m_entityManager   = nullptr;
-        cPlayerManager*   m_playerManager   = nullptr;
-        cGraphicsEngine*  m_graphicsEngine  = nullptr;
         cAudioManager*    m_audioManager    = nullptr;
         cBiomeManager     m_biomeManager    = {};
+        cEntityManager*   m_entityManager   = nullptr;
+        cGameDatabase*    m_gameDatabase    = nullptr;
+        cGraphicsEngine*  m_graphicsEngine  = nullptr;
+        cPlayerManager*   m_playerManager   = nullptr;
         sMap*             m_currentMap      = nullptr;
         std::string       m_mapMusic        = ""; // Map music file name
         std::uint32_t     m_musicSourceID   = 0;  // Map music audio source

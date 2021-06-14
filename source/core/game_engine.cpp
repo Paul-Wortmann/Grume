@@ -49,6 +49,8 @@ void cGameEngine::initialize(void)
 {
     // Load the config file first
     gameConfig.load();
+    gameDatabase.load();
+    
     graphicsEngine.setDisplay(gameConfig.m_resolution_x, gameConfig.m_resolution_y, gameConfig.m_fullscreen);
 
     uint32 status = graphicsEngine.initialize(); // This should be initialized first
@@ -60,8 +62,11 @@ void cGameEngine::initialize(void)
         entityManager.initialize();
         entityManager.setAudioPointer(&audioManager);
         mapManager.initialize(&entityManager);
+        mapManager.setDatabasePointer(&gameDatabase);
         npcManager.initialize(&entityManager);
+        npcManager.setDatabasePointer(&gameDatabase);
         playerManager.initialize(&entityManager);
+        playerManager.setDatabasePointer(&gameDatabase);
         mapManager.setPlayerPointer(&playerManager);
         graphicsEngine.setEntityHead(entityManager.getHead());
         graphicsEngine.setUIHead(uiManager.getHead());

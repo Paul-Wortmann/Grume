@@ -38,7 +38,7 @@ void cMapManager::m_addDoorEntities(sMap*& _map)
     
     // Load the biome sound database file
     cXML xmlSoundFile;
-    xmlSoundFile.load(FILE_PATH_BIOME + _map->biome->databaseSound.fileName);
+    xmlSoundFile.load(FILE_PATH_DATABASE + m_gameDatabase->sound.fileName);
     
     // Only contine if we can load the biome wallset file
     if ((xmlFile.lineCount() > 0) && (xmlSoundFile.lineCount() > 0))

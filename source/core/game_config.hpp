@@ -52,5 +52,5 @@ class cGameConfig
         std::uint32_t m_volume_sfx    = 80;
 };
 
-#endif //GAME_CONFIG_HPP
+#endif // GAME_CONFIG_HPP
 

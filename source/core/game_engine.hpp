@@ -26,6 +26,7 @@
 
 #include "includes.hpp"
 #include "game_config.hpp"
+#include "game_database.hpp"
 #include "timer.hpp"
 #include "version.hpp"
 #include "../audio/audio_manager.hpp"
@@ -60,6 +61,7 @@ class cGameEngine
         cAnimationEngine animationEngine;
         cEntityManager   entityManager;
         cGameConfig      gameConfig;
+        cGameDatabase    gameDatabase;
         cGraphicsEngine  graphicsEngine;
         cMapManager      mapManager;
         cNPCManager      npcManager;

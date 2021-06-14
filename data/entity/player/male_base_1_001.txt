@@ -5,6 +5,31 @@
         <name>male_base_1_001</name>
     </information>
 
+    <attributes>
+	# (depletable) max, regen
+        <attribute_health>100 0.1</attribute_health>
+        <attribute_mana>100 0.1</attribute_mana>
+
+	# (damage) base, critMultiply, critChance
+        <attribute_damagephysical>10 1.5 10</attribute_damagephysical>
+        <attribute_damagefire>10 1.5 10</attribute_damagefire>
+        <attribute_damagefrost>10 1.5 10</attribute_damagefrost>
+
+	# (armor) base
+        <attribute_armorphysical>10</attribute_armorphysical>
+        <attribute_resistancefire>10</attribute_resistancefire>
+        <attribute_resistancefrost>10</attribute_resistancefrost>
+    </attributes>
+
+    <skills>
+	# (attack) enabled
+        <skills_earthquake>1</skills_earthquake>
+        <skills_fireball>1</skills_fireball>
+
+	# (defend) enabled
+        <skills_forcefield>1</skills_forcefield>
+    </skills>
+
     <resources>
         <model>player/male_base_2_001.dae</model>
         <material>player/male_base_1_001.txt</material>

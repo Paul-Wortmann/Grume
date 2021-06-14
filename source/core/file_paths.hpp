@@ -29,6 +29,7 @@
 #define FILE_PATH_DATA       "data/"
 #define FILE_PATH_BIOME      "data/biome/"
 #define FILE_PATH_ENTITY     "data/entity/"
+#define FILE_PATH_DATABASE   "data/database/"
 #define FILE_PATH_MATERIAL   "data/material/"
 #define FILE_PATH_MESH       "data/mesh/"
 #define FILE_PATH_MAP        "data/map/"

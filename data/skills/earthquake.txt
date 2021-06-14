@@ -1,0 +1,21 @@
+﻿<?xml version = "1.0" encoding = "UTF-8" ?>
+<skill>
+        <name>earthquake</name>
+        
+	<level_max>10</level_max>
+	<level_expnext>1024</level_expnext>
+	<level_expmultiplier>1.5</level_expmultiplier>
+
+        <damage>10</damage>                      # base level 1 damage
+        <damageMultiplier>1.5</damageMultiplier> # damage multiplier on level up
+
+        <duration>2000</duration>                    # miliseconds
+        <durationMultiplier>1.1</durationMultiplier> # duration multiplier on level up
+
+        <aoe>1.0</aoe>                      # area of effect
+        <aoeMultiplier>1.25</aoeMultiplier> # area of effect multiplier
+
+        <numProjectiles>1</numProjectiles>                       # number of projectiles
+        <numProjectilesMultiplier>1.0</numProjectilesMultiplier> # number of projectiles multiplier
+</skill>
+

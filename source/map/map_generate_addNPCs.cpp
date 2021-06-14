@@ -32,11 +32,11 @@ void cMapManager::m_addNPCEntities(sMap*& _map)
 
     // Load the biome npc database file
     cXML xmlNPCFile;
-    xmlNPCFile.load(FILE_PATH_BIOME + _map->biome->databaseNPC.fileName);
+    xmlNPCFile.load(FILE_PATH_DATABASE + m_gameDatabase->npc.fileName);
 
     // Load the biome sound database file
     cXML xmlSoundFile;
-    xmlSoundFile.load(FILE_PATH_BIOME + _map->biome->databaseSound.fileName);
+    xmlSoundFile.load(FILE_PATH_DATABASE + m_gameDatabase->sound.fileName);
     
     // Load the map file
     cXML xmlMapFile;

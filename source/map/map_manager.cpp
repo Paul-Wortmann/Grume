@@ -285,10 +285,10 @@ void cMapManager::load(const std::string &_fileName)
         }
 
         // Load the music defined in the previously loaded biome
-        if (m_currentMap->biome->databaseMusic.fileName.length() > 3)
+        if (m_gameDatabase->music.fileName.length() > 3)
         {
             cXML xmlMusicFile;
-            xmlMusicFile.load(FILE_PATH_BIOME + m_currentMap->biome->databaseMusic.fileName);
+            xmlMusicFile.load(FILE_PATH_DATABASE + m_gameDatabase->music.fileName);
             std::string   xmlKey = "<" + m_currentMap->biome->MusicTag.name + "_entity>";
             if (xmlMusicFile.lineCount() > 0)
             {
@@ -632,7 +632,7 @@ void cMapManager::process(const float64 &_dt)
                         // Load the map warp data
                         std::string nextMapFileName = "";
                         cXML xmlAllMapFile;
-                        xmlAllMapFile.load(FILE_PATH_BIOME + m_currentMap->biome->databaseMap.fileName);
+                        xmlAllMapFile.load(FILE_PATH_DATABASE + m_gameDatabase->map.fileName);
                         std::uint32_t mapCount = xmlAllMapFile.getInstanceCount("<map>");
                         for (std::uint32_t j = 0; j < mapCount; ++j)
                         {

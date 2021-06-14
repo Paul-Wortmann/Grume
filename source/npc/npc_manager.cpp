@@ -61,7 +61,7 @@ void cNPCManager::process(const float32 &_dt)
     // Entities
     for(m_entityTemp = m_entityHead; m_entityTemp != nullptr; m_entityTemp = m_entityTemp->next)
     {
-        if ((m_entityTemp != nullptr) && (m_entityPlayer != nullptr) && (m_entityTemp->type == eEntityType::entityTypeNPCmob))
+        if ((m_entityTemp != nullptr) && (m_entityPlayer != nullptr) && (m_entityTemp->type == eEntityType::entityTypeNPCmob) && (m_entityTemp->terminate == false))
         {
             // Turn to face the player
             //glm::vec3 rotation = m_entityTemp->rotation;

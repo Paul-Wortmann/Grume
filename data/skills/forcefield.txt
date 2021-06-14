@@ -1,0 +1,15 @@
+﻿<?xml version = "1.0" encoding = "UTF-8" ?>
+<skill>
+        <name>forcefield</name>
+        
+	<level_max>10</level_max>
+	<level_expnext>1024</level_expnext>
+	<level_expmultiplier>1.5</level_expmultiplier>
+
+        <duration>10000</duration>                   # miliseconds
+        <durationMultiplier>1.5</durationMultiplier> # duration multiplier on level up
+
+        <aoe>1.0</aoe>                      # area of effect
+        <aoeMultiplier>1.25</aoeMultiplier> # area of effect multiplier
+</skill>
+

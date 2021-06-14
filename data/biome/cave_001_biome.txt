@@ -11,14 +11,5 @@
         <floor_spritesheet>cave/cave_001_floor.txt</floor_spritesheet>
     </data>
 
-    <database>
-        <music_database>database/music_database.txt</music_database>
-        <map_database>database/map_database.txt</map_database>
-        <map_prefab_database>database/map_prefab_database.txt</map_prefab_database>
-        <npc_database>database/npc_database.txt</npc_database>
-        <object_database>database/object_database.txt</object_database>
-        <sound_database>database/sound_database.txt</sound_database>
-    </database>
-
 </biome>
 

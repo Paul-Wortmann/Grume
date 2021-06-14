@@ -39,11 +39,11 @@ void cMapManager::m_addObjectEntity(sMap*& _map,              // Map pointer
 
     // Load the biome object database file
     cXML xmlObjectFile;
-    xmlObjectFile.load(FILE_PATH_BIOME + _map->biome->databaseObject.fileName);
+    xmlObjectFile.load(FILE_PATH_DATABASE + m_gameDatabase->object.fileName);
     
     // Load the biome sound database file
     cXML xmlSoundFile;
-    xmlSoundFile.load(FILE_PATH_BIOME + _map->biome->databaseSound.fileName);
+    xmlSoundFile.load(FILE_PATH_DATABASE + m_gameDatabase->sound.fileName);
 
     // Only contine if we can load the biome object file and the map file
     if ((xmlObjectFile.lineCount() > 0) && (xmlSoundFile.lineCount() > 0))
@@ -130,11 +130,11 @@ void cMapManager::m_addObjectEntities(sMap*& _map)
 
     // Load the biome object database file
     cXML xmlObjectFile;
-    xmlObjectFile.load(FILE_PATH_BIOME + _map->biome->databaseObject.fileName);
+    xmlObjectFile.load(FILE_PATH_DATABASE + m_gameDatabase->object.fileName);
     
     // Load the biome sound database file
     cXML xmlSoundFile;
-    xmlSoundFile.load(FILE_PATH_BIOME + _map->biome->databaseSound.fileName);
+    xmlSoundFile.load(FILE_PATH_DATABASE + m_gameDatabase->sound.fileName);
 
     // Load the map database file
     cXML xmlMapFile;

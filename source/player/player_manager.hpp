@@ -25,6 +25,7 @@
 #define PLAYER_MANAGER_HPP
 
 #include "../core/includes.hpp"
+#include "../core/game_database.hpp"
 #include "../entity/entity_manager.hpp"
 #include "../map/map_path_a_star.hpp"
 
@@ -36,6 +37,7 @@ class cPlayerManager
         void      process(const float32 &_dt);
         sEntity*  load(const std::string &_fileName);
         sEntity*  getPlayerEntity(void) { return m_data; };
+        void      setDatabasePointer(cGameDatabase* _gameDatabase) { m_gameDatabase = _gameDatabase; };
         void      setMapPointer(sMap* _map) { m_mapPointer = _map; };
         uint32    positionToTile(glm::vec3 _position);
         glm::vec3 tileToPosition(uint32 _tile);
@@ -55,6 +57,7 @@ class cPlayerManager
         inline void     m_updateMatrix(void) { m_entityManager->updateModelMatrix(m_data); };
         cEntityManager* m_entityManager   = nullptr;
         sEntity*        m_data            = nullptr;
+        cGameDatabase*  m_gameDatabase    = nullptr;
         sMap*           m_mapPointer      = nullptr;
         
         bool            m_mouseClicked    = false;

@@ -21,32 +21,37 @@
  * @date 2011-11-11
  */
 
-#ifndef BIOME_MANAGER_HPP
-#define BIOME_MANAGER_HPP
+#ifndef GAME_DATABASE_HPP
+#define GAME_DATABASE_HPP
 
-#include "../entity/entity_manager.hpp"
-#include "../core/includes.hpp"
-#include "../core/linked_list.hpp"
-#include "biome_define.hpp"
+#define DATABASE_FILE "database.txt" // Default database file name.
 
-class cBiomeManager : public tcLinkedList<sMapBiome>
+#include "includes.hpp"
+#include "../utils/xml_parser.hpp"
+
+struct sGameDatabaseData
+{
+    std::string fileName = "";
+};
+
+class cGameDatabase
 {
     public:
-        void initialize(cEntityManager* _entityManager);
-        void terminate(void);
-        sMapBiome* load(const std::string& _fileName);
+        void load(const std::string &_fileName = DATABASE_FILE);
 
     protected:
 
     private:
-        cEntityManager* entityManager = nullptr;
-        
-        void m_freeAll(void);
-        void m_freeData(sMapBiome*& _biome);
-
-        // Wall set load
-        void m_load_wallSet(sMapBiome*& _biome);
+    public:
+        sGameDatabaseData biome      = {};
+        sGameDatabaseData map        = {};
+        sGameDatabaseData map_prefab = {};
+        sGameDatabaseData music      = {};
+        sGameDatabaseData npc        = {};
+        sGameDatabaseData object     = {};
+        sGameDatabaseData skills     = {};
+        sGameDatabaseData sound      = {};
 };
 
-#endif // BIOME_MANAGER_HPP
+#endif // GAME_DATABASE_HPP
 

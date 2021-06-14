@@ -25,6 +25,7 @@
 #define NPC_MANAGER_HPP
 
 #include "../core/includes.hpp"
+#include "../core/game_database.hpp"
 #include "../entity/entity_manager.hpp"
 #include "../map/map_define.hpp"
 #include "../map/map_path_a_star.hpp"
@@ -37,6 +38,7 @@ class cNPCManager
         void     process(const float32 &_dt);
         void     setEntityHead(sEntity* _entity) { m_entityHead = _entity; }
         void     setEntityPlayer(sEntity* _entity) { m_entityPlayer = _entity; }
+        void     setDatabasePointer(cGameDatabase* _gameDatabase) { m_gameDatabase = _gameDatabase; };
         void     setMapPointer(sMap* _map) { m_mapPointer = _map; };
 
     protected:
@@ -47,6 +49,7 @@ class cNPCManager
         sEntity*        m_entityHead    = nullptr;
         sEntity*        m_entityTemp    = nullptr;
         sEntity*        m_entityPlayer  = nullptr;
+        cGameDatabase*  m_gameDatabase  = nullptr;
         sMap*           m_mapPointer    = nullptr;
 
         uint32          m_positionToTile(glm::vec3 _position);

@@ -95,22 +95,6 @@ sMapBiome* cBiomeManager::load(const std::string &_fileName)
         tBiome->WallSet.fileName          = xmlFile.getString ("<wall_set>");
         tBiome->floorSpritesheet.fileName = xmlFile.getString ("<floor_spritesheet>");
 
-        // Database
-        tBiome->databaseMusic.fileName     = xmlFile.getString ("<music_database>");
-        tBiome->databaseMap.fileName       = xmlFile.getString ("<map_database>");
-        tBiome->databaseMapPrefab.fileName = xmlFile.getString ("<map_prefab_database>");
-        tBiome->databaseNPC.fileName       = xmlFile.getString ("<npc_database>");
-        tBiome->databaseObject.fileName    = xmlFile.getString ("<object_database>");
-        tBiome->databaseSound.fileName     = xmlFile.getString ("<sound_database>");
-
-        // Load the data sets
-        m_load_musicDatabase(tBiome);
-        m_load_mapDatabase(tBiome);
-        m_load_mapPrefabDatabase(tBiome);
-        m_load_npcDatabase(tBiome);
-        m_load_objectDatabase(tBiome);
-        m_load_soundDatabase(tBiome);
-        
         m_load_wallSet(tBiome);
 
         // Clean up
@@ -118,46 +102,6 @@ sMapBiome* cBiomeManager::load(const std::string &_fileName)
         return tBiome;
     }
     return nullptr;
-}
-
-void cBiomeManager::m_load_musicDatabase(sMapBiome*& _biome)
-{
-    cXML xmlFile;
-    xmlFile.load(FILE_PATH_BIOME + _biome->databaseMusic.fileName);
-    if (xmlFile.lineCount() > 0)
-    {
-        // Get the data from the XML file
-        _biome->databaseMusic.name  = xmlFile.getString("<name>");
-        _biome->databaseMusic.count = xmlFile.getInteger("<music_count>");
-
-        // Clean up
-        xmlFile.free();
-    }
-    
-}
-
-void cBiomeManager::m_load_mapDatabase(sMapBiome*& _biome)
-{
-
-}
-
-void cBiomeManager::m_load_mapPrefabDatabase(sMapBiome*& _biome)
-{
-
-}
-
-void cBiomeManager::m_load_npcDatabase(sMapBiome*& _biome)
-{
-
-}
-void cBiomeManager::m_load_objectDatabase(sMapBiome*& _biome)
-{
-
-}
-
-void cBiomeManager::m_load_soundDatabase(sMapBiome*& _biome)
-{
-
 }
 
 void cBiomeManager::m_load_wallSet(sMapBiome*& _biome)
