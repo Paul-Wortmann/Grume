@@ -61,6 +61,7 @@ void cGameEngine::initialize(void)
         audioManager.setVolumeMaster(gameConfig.m_volume_master / 100.0f);
         entityManager.initialize();
         entityManager.setAudioPointer(&audioManager);
+        entityManager.setDatabasePointer(&gameDatabase);
         mapManager.initialize(&entityManager);
         mapManager.setDatabasePointer(&gameDatabase);
         npcManager.initialize(&entityManager);

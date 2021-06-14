@@ -56,8 +56,10 @@ struct sCharacterSkillAttack
 
 struct sCharacterSkillDefend
 {
-    std::uint32_t        duration       = 10000;  // Duration in miliseconds
-    float32              aoe            = 1.0f;   // Radius for area of effect
+    std::uint32_t        duration            = 10000;  // Duration in miliseconds
+    float32              durationMultiplier  = 1.1f;   // Duration multiplier
+    float32              aoe                 = 1.0f;   // Radius for area of effect
+    float32              aoeMultiplier       = 1.25f;  // AOE multiplier
 
     bool                 enabled        = false;  // Available to the character
     sCharacterSkillLevel level          = {};     // Skill level struct
