@@ -175,7 +175,9 @@ void cPlayerManager::process(const float32 &_dt)
         //std::cout << "Current tile: " << m_path.path[m_path.currentPosition] << std::endl;
         m_data->movement->moved = true;
         glm::vec3 playerPos      = m_data->position;
+        glm::vec3 playerPrevPos   = m_data->position;
         glm::vec3 playerRot      = m_data->rotation;
+        glm::vec3 playerPrevRot  = m_data->rotation;
         uint32    currentTile    = m_data->movement->mapPath.path[m_data->movement->mapPath.currentPosition];
         glm::vec3 currentTilePos = tileToPosition(currentTile);
         
@@ -211,47 +213,20 @@ void cPlayerManager::process(const float32 &_dt)
                 deltaZ = -1;
             }
             
-            // Rotation
-            if (deltaX == 1)
+            // Turn to face move direction
+            float32 angle = static_cast<float32>(atan2(playerPos.z - playerPrevPos.z, playerPrevPos.x - playerPos.x));
+
+            if (m_data->rotationAxis.x == 1)
             {
-                if (deltaZ == 1)
-                {
-                    playerRot = glm::vec3(playerRot.x, playerRot.y, DTOR_45);
-                }
-                else if (deltaZ == -1)
-                {
-                    playerRot = glm::vec3(playerRot.x, playerRot.y, DTOR_135);
-                }
-                else
-                {
-                    playerRot = glm::vec3(playerRot.x, playerRot.y, DTOR_90);
-                }
+                playerRot.x = angle + m_data->rotationOffset.x;
             }
-            else if (deltaX == -1)
+            else if (m_data->rotationAxis.y == 1)
             {
-                if (deltaZ == 1)
-                {
-                    playerRot = glm::vec3(playerRot.x, playerRot.y, DTOR_315);
-                }
-                else if (deltaZ == -1)
-                {
-                    playerRot = glm::vec3(playerRot.x, playerRot.y, DTOR_225);
-                }
-                else
-                {
-                    playerRot = glm::vec3(playerRot.x, playerRot.y, DTOR_270);
-                }
+                playerRot.y = angle + m_data->rotationOffset.y;
             }
-            else //(deltaX == 0)
+            else if (m_data->rotationAxis.z == 1)
             {
-                if (deltaZ == 1)
-                {
-                    playerRot = glm::vec3(playerRot.x, playerRot.y, DTOR_0);
-                }
-                else if (deltaZ == -1)
-                {
-                    playerRot = glm::vec3(playerRot.x, playerRot.y, DTOR_180);
-                }
+                playerRot.z = angle + m_data->rotationOffset.z;
             }
         }
         

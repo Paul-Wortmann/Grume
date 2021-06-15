@@ -14,6 +14,7 @@
         <position>0.0 2.0 0.0</position>
         <scale>0.125 0.125 0.125</scale>
         <rotation>3.1416 4.712385 0.0</rotation>
+        <rotationaxis>0 1 0</rotationaxis>
     </transform>
 
     <animtion>

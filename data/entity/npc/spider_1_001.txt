@@ -7,13 +7,14 @@
 
     <resources>
         <model>npc/spider_1_001.dae</model>
-	<material>npc/spider_1_001.txt</material>
+	    <material>npc/spider_1_001.txt</material>
     </resources>
 
     <transform>
         <position>0.0 0.0 0.0</position>
         <scale>0.0625 0.0625 0.0625</scale>
         <rotation>3.14159 1.570795 0.0</rotation>
+        <rotationaxis>0 1 0</rotationaxis>
     </transform>
 
     <animtion>

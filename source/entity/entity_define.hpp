@@ -67,6 +67,7 @@ struct sEntity
     glm::vec3          scale                = glm::vec3(1.0f, 1.0f, 1.0f);
     glm::vec3          rotation             = glm::vec3(0.0f, 0.0f, 0.0f);
     glm::vec3          rotationOffset       = glm::vec3(0.0f, 0.0f, 0.0f);
+    glm::ivec3         rotationAxis         = glm::ivec3(0, 1, 0);
 
     // Animation (per entity, not shared)
     bool               animationIndependent = false;

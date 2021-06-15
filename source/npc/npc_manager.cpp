@@ -64,9 +64,20 @@ void cNPCManager::process(const float32 &_dt)
         if ((m_entityTemp != nullptr) && (m_entityPlayer != nullptr) && (m_entityTemp->type == eEntityType::entityTypeNPCmob) && (m_entityTemp->terminate == false))
         {
             // Turn to face the player
-            //glm::vec3 rotation = m_entityTemp->rotation;
             float32 angle = static_cast<float32>(atan2(m_entityTemp->position.z - m_entityPlayer->position.z, m_entityTemp->position.x - m_entityPlayer->position.x));
-            m_entityTemp->rotation.y = angle + m_entityTemp->rotationOffset.y;
+
+            if (m_entityTemp->rotationAxis.x == 1)
+            {
+                m_entityTemp->rotation.x = angle + m_entityTemp->rotationOffset.x;
+            }
+            else if (m_entityTemp->rotationAxis.y == 1)
+            {
+                m_entityTemp->rotation.y = angle + m_entityTemp->rotationOffset.y;
+            }
+            else if (m_entityTemp->rotationAxis.z == 1)
+            {
+                m_entityTemp->rotation.z = angle + m_entityTemp->rotationOffset.z;
+            }
             
             // Check if player is visable, if so continue
             if ((m_entityTemp->ai != nullptr) && (1 == 1)) // FIXME!

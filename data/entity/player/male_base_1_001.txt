@@ -2,7 +2,7 @@
 <player>
 
     <information>
-        <name>male_base_1_001</name>
+        <name>male_base_1_002</name>
     </information>
 
     <attributes>
@@ -38,7 +38,9 @@
     <transform>
         <position>0.0 -1.0 0.0</position>
         <scale>0.1 0.1 0.1</scale>
-        <rotation>4.6124 0.0 0.0</rotation>
+        #1.5708 3.1416 4.6124
+        <rotation>4.6124 0.0 -1.5708</rotation>
+        <rotationaxis>0 0 1</rotationaxis>
     </transform>
 
     <animtion>
