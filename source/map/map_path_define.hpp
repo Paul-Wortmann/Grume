@@ -42,7 +42,7 @@ struct sMapPath
 enum ePathData:uint16_t { pathNone = 0, pathStart = 1, pathEnd = 2, pathOpen = 3, pathClosed = 4 };
 
 // Astar path weights
-#define AS_MOV_D  20 // Directional cost
+#define AS_MOV_D  15 // Directional cost
 #define AS_MOV_S  10 // Straight cost, horizontal or vertical
 #define AS_MOV_H  10 // Heuristic base cost
 
