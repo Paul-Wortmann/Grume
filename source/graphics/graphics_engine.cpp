@@ -147,11 +147,16 @@ uint32 cGraphicsEngine::initialize(void)
             {
             */
 
+            /*
             // Glew -------------------------------------
             glewExperimental = GL_TRUE;
             GLenum glewError = glewInit();
             if (glewError == GLEW_OK)
             {
+            */
+
+
+
                 // Log version information
                 gLogWrite(LOG_INFO, reinterpret_cast<const char*>(glGetString(GL_VERSION)), __FILE__, __LINE__, __FUNCTION__);
                 gLogWrite(LOG_INFO, reinterpret_cast<const char*>(glGetString(GL_VENDOR)), __FILE__, __LINE__, __FUNCTION__);
@@ -159,7 +164,7 @@ uint32 cGraphicsEngine::initialize(void)
                 gLogWrite(LOG_INFO, reinterpret_cast<const char*>(glGetString(GL_SHADING_LANGUAGE_VERSION)), __FILE__, __LINE__, __FUNCTION__);
 
                 gLogWrite(LOG_INFO, "GLFW version: " + std::string(glfwGetVersionString()), __FILE__, __LINE__, __FUNCTION__);
-                gLogWrite(LOG_INFO, "GLEW version: " + std::string(reinterpret_cast<const char*>(glewGetString(GLEW_VERSION))), __FILE__, __LINE__, __FUNCTION__);
+                //gLogWrite(LOG_INFO, "GLEW version: " + std::string(reinterpret_cast<const char*>(glewGetString(GLEW_VERSION))), __FILE__, __LINE__, __FUNCTION__);
                 gLogWrite(LOG_INFO, "GLM version: " + std::to_string(GLM_VERSION_MAJOR) + "." + std::to_string(GLM_VERSION_MINOR) + "." + std::to_string(GLM_VERSION_PATCH) + "." + std::to_string(GLM_VERSION_REVISION), __FILE__, __LINE__, __FUNCTION__);
 
                 std::string assimpVersion = std::to_string(aiGetVersionMajor()) + "." + std::to_string(aiGetVersionMinor()) + "." + std::to_string(aiGetVersionRevision());
@@ -282,6 +287,7 @@ uint32 cGraphicsEngine::initialize(void)
                     m_pui_initialize();
                     m_pls_initialize();
                 }
+            /*
             }
             else
             {
@@ -291,6 +297,7 @@ uint32 cGraphicsEngine::initialize(void)
                 glfwTerminate();
                 return EXIT_FAILURE;
             }
+            */
         }
         else
         {

@@ -24,7 +24,6 @@ find_package(OpenGL REQUIRED)
 PKG_SEARCH_MODULE(GLFW3 REQUIRED glfw3)
 find_package(PhysFS REQUIRED)
 PKG_SEARCH_MODULE(ASSIMP REQUIRED assimp)
-PKG_SEARCH_MODULE(GLEW REQUIRED glew)
 
 include_directories(/usr/include)
 
@@ -38,6 +37,6 @@ add_executable(frost_and_flame ${FNF_S} )
 
 link_directories( /path/to/PHYSFSlibs/)
 
-target_Link_Libraries (frost_and_flame ${OGGVORBIS_LIBRARIES} ${OPENAL_LIBRARY} ${ASSIMP_LIBRARIES} ${PHYSFS_LIBRARY} ${GLFW3_LIBRARIES} ${OPENGL_LIBRARIES} ${GLEW_LIBRARIES})
+target_Link_Libraries (frost_and_flame ${OGGVORBIS_LIBRARIES} ${OPENAL_LIBRARY} ${ASSIMP_LIBRARIES} ${PHYSFS_LIBRARY} ${GLFW3_LIBRARIES} ${OPENGL_LIBRARIES})
 
 

@@ -33,18 +33,18 @@ std::string getOpenGLErrorString(uint32 _errorCode)
         return "GL_INVALID_VALUE";
     if (_errorCode == GL_INVALID_OPERATION)
         return "GL_INVALID_OPERATION";
-    if (_errorCode == GL_STACK_OVERFLOW)
-        return "GL_STACK_OVERFLOW";
-    if (_errorCode == GL_STACK_UNDERFLOW)
-        return "GL_STACK_UNDERFLOW";
+//    if (_errorCode == GL_STACK_OVERFLOW)
+//        return "GL_STACK_OVERFLOW";
+//    if (_errorCode == GL_STACK_UNDERFLOW)
+//        return "GL_STACK_UNDERFLOW";
     if (_errorCode == GL_OUT_OF_MEMORY)
         return "GL_OUT_OF_MEMORY";
     if (_errorCode == GL_INVALID_FRAMEBUFFER_OPERATION)
         return "GL_INVALID_FRAMEBUFFER_OPERATION";
-    if (_errorCode == GL_CONTEXT_LOST)
-        return "GL_CONTEXT_LOST";
-    if (_errorCode == GL_TABLE_TOO_LARGE)
-        return "GL_TABLE_TOO_LARGE";
+//    if (_errorCode == GL_CONTEXT_LOST)
+//        return "GL_CONTEXT_LOST";
+//    if (_errorCode == GL_TABLE_TOO_LARGE)
+//        return "GL_TABLE_TOO_LARGE";
     return "unknown error";
 }
 
@@ -63,8 +63,8 @@ std::string getOpenGLFramebufferErrorString(uint32 _errorCode)
         return "GL_FRAMEBUFFER_COMPLETE";
     if (_errorCode == GL_FRAMEBUFFER_INCOMPLETE_ATTACHMENT)
         return "GL_FRAMEBUFFER_INCOMPLETE_ATTACHMENT";
-    if (_errorCode == GL_FRAMEBUFFER_INCOMPLETE_DIMENSIONS_EXT)
-        return "GL_FRAMEBUFFER_INCOMPLETE_DIMENSIONS_EXT";
+//    if (_errorCode == GL_FRAMEBUFFER_INCOMPLETE_DIMENSIONS_EXT)
+//        return "GL_FRAMEBUFFER_INCOMPLETE_DIMENSIONS_EXT";
     if (_errorCode == GL_FRAMEBUFFER_INCOMPLETE_MISSING_ATTACHMENT)
         return "GL_FRAMEBUFFER_INCOMPLETE_MISSING_ATTACHMENT";
     return "unknown error";
