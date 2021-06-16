@@ -141,6 +141,12 @@ uint32 cGraphicsEngine::initialize(void)
             glfwMakeContextCurrent(m_window);
             glfwSetWindowUserPointer(m_window, this);
 
+            /*
+            // Glad -------------------------------------
+            if (gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
+            {
+            */
+
             // Glew -------------------------------------
             glewExperimental = GL_TRUE;
             GLenum glewError = glewInit();
@@ -279,7 +285,8 @@ uint32 cGraphicsEngine::initialize(void)
             }
             else
             {
-                gLogWrite(LOG_ERROR, " GLEW initialization failed :  " + std::string(reinterpret_cast<const char*>(glewGetErrorString(glewError))), __FILE__, __LINE__, __FUNCTION__);
+                //gLogWrite(LOG_ERROR, " GLEW initialization failed :  " + std::string(reinterpret_cast<const char*>(glewGetErrorString(glewError))), __FILE__, __LINE__, __FUNCTION__);
+                gLogWrite(LOG_ERROR, " GLAD initialization failed :  ", __FILE__, __LINE__, __FUNCTION__);
                 glfwDestroyWindow(m_window);
                 glfwTerminate();
                 return EXIT_FAILURE;

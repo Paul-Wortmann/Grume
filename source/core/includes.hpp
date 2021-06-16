@@ -48,10 +48,12 @@
 #include <glm/gtx/quaternion.hpp>
 #include <glm/gtx/transform.hpp>
 
-// Glew, OpenGL, GLFW
-#define  GLEW_STATIC
-#include <GL/glew.h>
-#include <GL/gl.h>
+// Glad, Glew, OpenGL, GLFW
+//#define  GLEW_STATIC
+//#include <GL/glew.h>
+//#include <GL/gl.h>
+//#include "../graphics/glad/glad.h"
+#include "../graphics/graphics_engine_opengl_loader.hpp"
 #include <GLFW/glfw3.h>
 
 // Standard C++ headers
