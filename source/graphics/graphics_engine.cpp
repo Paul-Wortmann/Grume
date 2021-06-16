@@ -141,163 +141,135 @@ uint32 cGraphicsEngine::initialize(void)
             glfwMakeContextCurrent(m_window);
             glfwSetWindowUserPointer(m_window, this);
 
-            /*
-            // Glad -------------------------------------
-            if (gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
-            {
-            */
+            // Log version information
+            gLogWrite(LOG_INFO, reinterpret_cast<const char*>(glGetString(GL_VERSION)), __FILE__, __LINE__, __FUNCTION__);
+            gLogWrite(LOG_INFO, reinterpret_cast<const char*>(glGetString(GL_VENDOR)), __FILE__, __LINE__, __FUNCTION__);
+            gLogWrite(LOG_INFO, reinterpret_cast<const char*>(glGetString(GL_RENDERER)), __FILE__, __LINE__, __FUNCTION__);
+            gLogWrite(LOG_INFO, reinterpret_cast<const char*>(glGetString(GL_SHADING_LANGUAGE_VERSION)), __FILE__, __LINE__, __FUNCTION__);
 
-            /*
-            // Glew -------------------------------------
-            glewExperimental = GL_TRUE;
-            GLenum glewError = glewInit();
-            if (glewError == GLEW_OK)
-            {
-            */
+            gLogWrite(LOG_INFO, "GLFW version: " + std::string(glfwGetVersionString()), __FILE__, __LINE__, __FUNCTION__);
+            gLogWrite(LOG_INFO, "GLM version: " + std::to_string(GLM_VERSION_MAJOR) + "." + std::to_string(GLM_VERSION_MINOR) + "." + std::to_string(GLM_VERSION_PATCH) + "." + std::to_string(GLM_VERSION_REVISION), __FILE__, __LINE__, __FUNCTION__);
 
+            std::string assimpVersion = std::to_string(aiGetVersionMajor()) + "." + std::to_string(aiGetVersionMinor()) + "." + std::to_string(aiGetVersionRevision());
+            gLogWrite(LOG_INFO, "ASIMP version: " + assimpVersion, __FILE__, __LINE__, __FUNCTION__);
+            
+            std::string libMathVersion = std::to_string(LIBMATH_VERSION_MAJOR) + "." + std::to_string(LIBMATH_VERSION_MINOR) + "." + std::to_string(LIBMATH_VERSION_PATCH);
+            gLogWrite(LOG_INFO, "LibMath version: " + libMathVersion, __FILE__, __LINE__, __FUNCTION__);
+            
+            // View port and framebuffer
+            glfwGetFramebufferSize(m_window, &m_framebufferSize_w, &m_framebufferSize_h);
+            glViewport(0, 0, m_framebufferSize_w, m_framebufferSize_h);
+            m_aspectRatio = static_cast<float32>(m_framebufferSize_w) / static_cast<float32>(m_framebufferSize_h);
 
+            // GLFW set key callback
+            glfwSetKeyCallback(m_window, sm_glfwKeyCallback);
+            glfwSetCursorPosCallback(m_window, sm_glfwCursorPosCallback);
+            glfwSetMouseButtonCallback(m_window, sm_glfwMouseButtonCallback);
+            glfwSetFramebufferSizeCallback(m_window, sm_glfwFramebufferSizeCallback);
+            //glfwSetInputMode(m_window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 
-                // Log version information
-                gLogWrite(LOG_INFO, reinterpret_cast<const char*>(glGetString(GL_VERSION)), __FILE__, __LINE__, __FUNCTION__);
-                gLogWrite(LOG_INFO, reinterpret_cast<const char*>(glGetString(GL_VENDOR)), __FILE__, __LINE__, __FUNCTION__);
-                gLogWrite(LOG_INFO, reinterpret_cast<const char*>(glGetString(GL_RENDERER)), __FILE__, __LINE__, __FUNCTION__);
-                gLogWrite(LOG_INFO, reinterpret_cast<const char*>(glGetString(GL_SHADING_LANGUAGE_VERSION)), __FILE__, __LINE__, __FUNCTION__);
+            // OpenGL ----------------------------------
+            glfwSwapInterval(1);
+            //glClearColor(0.3f, 0.3f, 0.9f, 1.0f);
+            glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+            glEnable(GL_CULL_FACE);
+            glCullFace(GL_BACK);
+            glFrontFace(GL_CCW);
+            glEnable(GL_DEPTH_TEST);
+            glDepthFunc(GL_LESS);
+            //glDepthFunc(GL_LEQUAL);
+            glClearDepth(1.0);
+            glEnable(GL_BLEND);
+            glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+            checkOpenGL();
 
-                gLogWrite(LOG_INFO, "GLFW version: " + std::string(glfwGetVersionString()), __FILE__, __LINE__, __FUNCTION__);
-                //gLogWrite(LOG_INFO, "GLEW version: " + std::string(reinterpret_cast<const char*>(glewGetString(GLEW_VERSION))), __FILE__, __LINE__, __FUNCTION__);
-                gLogWrite(LOG_INFO, "GLM version: " + std::to_string(GLM_VERSION_MAJOR) + "." + std::to_string(GLM_VERSION_MINOR) + "." + std::to_string(GLM_VERSION_PATCH) + "." + std::to_string(GLM_VERSION_REVISION), __FILE__, __LINE__, __FUNCTION__);
+            //Camera --------------------------------
+            m_camera.initialize(m_fieldOfView, m_framebufferSize_w, m_framebufferSize_h);
+            //m_camera.setPosition(glm::vec3(4.0f,8.0f,4.0f));
+            m_camera.setPosition(glm::vec3(6.0f,12.0f,6.0f));
+            //m_camera.setPosition(glm::vec3(8.0f,16.0f,8.0f));
+            //m_camera.setPosition(glm::vec3(0.0f, 0.0f, 4.0f));
 
-                std::string assimpVersion = std::to_string(aiGetVersionMajor()) + "." + std::to_string(aiGetVersionMinor()) + "." + std::to_string(aiGetVersionRevision());
-                gLogWrite(LOG_INFO, "ASIMP version: " + assimpVersion, __FILE__, __LINE__, __FUNCTION__);
-                
-                std::string libMathVersion = std::to_string(LIBMATH_VERSION_MAJOR) + "." + std::to_string(LIBMATH_VERSION_MINOR) + "." + std::to_string(LIBMATH_VERSION_PATCH);
-                gLogWrite(LOG_INFO, "LibMath version: " + libMathVersion, __FILE__, __LINE__, __FUNCTION__);
-                
-                // View port and framebuffer
-                glfwGetFramebufferSize(m_window, &m_framebufferSize_w, &m_framebufferSize_h);
-                glViewport(0, 0, m_framebufferSize_w, m_framebufferSize_h);
-                m_aspectRatio = static_cast<float32>(m_framebufferSize_w) / static_cast<float32>(m_framebufferSize_h);
+            // Lights ------------------------------------
+            m_lightManager.initialize();
 
-                // GLFW set key callback
-                glfwSetKeyCallback(m_window, sm_glfwKeyCallback);
-                glfwSetCursorPosCallback(m_window, sm_glfwCursorPosCallback);
-                glfwSetMouseButtonCallback(m_window, sm_glfwMouseButtonCallback);
-                glfwSetFramebufferSizeCallback(m_window, sm_glfwFramebufferSizeCallback);
-                //glfwSetInputMode(m_window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+            // Default global directional light
+            m_lightManager.directionalLight.enabled   = 0;
+            m_lightManager.directionalLight.direction = glm::vec3(-4.0f, 20.0f, -4.0f);
+            m_lightManager.directionalLight.ambient   = glm::vec3(0.2f, 0.2f, 0.2f);
+            m_lightManager.directionalLight.diffuse   = glm::vec3(0.3f, 0.3f, 0.3f);
+            m_lightManager.directionalLight.specular  = glm::vec3(0.25f, 0.25f, 0.25f);
 
-                // OpenGL ----------------------------------
-                glfwSwapInterval(1);
-                //glClearColor(0.3f, 0.3f, 0.9f, 1.0f);
-                glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
-                glEnable(GL_CULL_FACE);
-                glCullFace(GL_BACK);
-                glFrontFace(GL_CCW);
-                glEnable(GL_DEPTH_TEST);
-                glDepthFunc(GL_LESS);
-                //glDepthFunc(GL_LEQUAL);
-                glClearDepth(1.0);
-                glEnable(GL_BLEND);
-                glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-                checkOpenGL();
-
-                //Camera --------------------------------
-                m_camera.initialize(m_fieldOfView, m_framebufferSize_w, m_framebufferSize_h);
-                //m_camera.setPosition(glm::vec3(4.0f,8.0f,4.0f));
-                m_camera.setPosition(glm::vec3(6.0f,12.0f,6.0f));
-                //m_camera.setPosition(glm::vec3(8.0f,16.0f,8.0f));
-                //m_camera.setPosition(glm::vec3(0.0f, 0.0f, 4.0f));
-
-                // Lights ------------------------------------
-                m_lightManager.initialize();
-
-                // Default global directional light
-                m_lightManager.directionalLight.enabled   = 0;
-                m_lightManager.directionalLight.direction = glm::vec3(-4.0f, 20.0f, -4.0f);
-                m_lightManager.directionalLight.ambient   = glm::vec3(0.2f, 0.2f, 0.2f);
-                m_lightManager.directionalLight.diffuse   = glm::vec3(0.3f, 0.3f, 0.3f);
-                m_lightManager.directionalLight.specular  = glm::vec3(0.25f, 0.25f, 0.25f);
-
-                // Player point light
-                m_playerLight = m_lightManager.getNew();
-                m_playerLight->enabled   = 1;
-                m_playerLight->position  = glm::vec3(0.0f, 2.0f, 0.0f);
-                m_playerLight->ambient   = glm::vec3(1.5f, 1.5f, 1.5f);
-                m_playerLight->diffuse   = glm::vec3(1.8f, 1.8f, 1.8f);
-                m_playerLight->specular  = glm::vec3(1.0f, 1.0f, 1.0f);
-                m_playerLight->constant  = 1.0f;
-                m_playerLight->linear    = 0.09f;
-                m_playerLight->quadratic = 0.032f;
+            // Player point light
+            m_playerLight = m_lightManager.getNew();
+            m_playerLight->enabled   = 1;
+            m_playerLight->position  = glm::vec3(0.0f, 2.0f, 0.0f);
+            m_playerLight->ambient   = glm::vec3(1.5f, 1.5f, 1.5f);
+            m_playerLight->diffuse   = glm::vec3(1.8f, 1.8f, 1.8f);
+            m_playerLight->specular  = glm::vec3(1.0f, 1.0f, 1.0f);
+            m_playerLight->constant  = 1.0f;
+            m_playerLight->linear    = 0.09f;
+            m_playerLight->quadratic = 0.032f;
 /*
-                // Test point light
-                sGraphicsEnginePointLight* tLight = m_lightManager.getNew();
-                tLight->enabled   = 1;
-                tLight->position  = glm::vec3(6.0f, 1.0f, 6.0f);
-                tLight->ambient   = glm::vec3(1.5f, 1.5f, 1.5f);
-                tLight->diffuse   = glm::vec3(1.8f, 1.8f, 1.8f);
-                tLight->specular  = glm::vec3(1.0f, 1.0f, 1.0f);
-                tLight->constant  = 1.0f;
-                tLight->linear    = 0.09f;
-                tLight->quadratic = 0.032f;
+            // Test point light
+            sGraphicsEnginePointLight* tLight = m_lightManager.getNew();
+            tLight->enabled   = 1;
+            tLight->position  = glm::vec3(6.0f, 1.0f, 6.0f);
+            tLight->ambient   = glm::vec3(1.5f, 1.5f, 1.5f);
+            tLight->diffuse   = glm::vec3(1.8f, 1.8f, 1.8f);
+            tLight->specular  = glm::vec3(1.0f, 1.0f, 1.0f);
+            tLight->constant  = 1.0f;
+            tLight->linear    = 0.09f;
+            tLight->quadratic = 0.032f;
 
-                // Test point light
-                tLight = m_lightManager.getNew();
-                tLight->enabled   = 1;
-                tLight->position  = glm::vec3(6.0f, 1.0f, -6.0f);
-                tLight->ambient   = glm::vec3(1.5f, 1.5f, 1.5f);
-                tLight->diffuse   = glm::vec3(1.8f, 1.8f, 1.8f);
-                tLight->specular  = glm::vec3(1.0f, 1.0f, 1.0f);
-                tLight->constant  = 1.0f;
-                tLight->linear    = 0.09f;
-                tLight->quadratic = 0.032f;
-
-
-                // Test point light
-                tLight = m_lightManager.getNew();
-                tLight->enabled   = 1;
-                tLight->position  = glm::vec3(-6.0f, 1.0f, -6.0f);
-                tLight->ambient   = glm::vec3(1.5f, 1.5f, 1.5f);
-                tLight->diffuse   = glm::vec3(1.8f, 1.8f, 1.8f);
-                tLight->specular  = glm::vec3(1.0f, 1.0f, 1.0f);
-                tLight->constant  = 1.0f;
-                tLight->linear    = 0.09f;
-                tLight->quadratic = 0.032f;
+            // Test point light
+            tLight = m_lightManager.getNew();
+            tLight->enabled   = 1;
+            tLight->position  = glm::vec3(6.0f, 1.0f, -6.0f);
+            tLight->ambient   = glm::vec3(1.5f, 1.5f, 1.5f);
+            tLight->diffuse   = glm::vec3(1.8f, 1.8f, 1.8f);
+            tLight->specular  = glm::vec3(1.0f, 1.0f, 1.0f);
+            tLight->constant  = 1.0f;
+            tLight->linear    = 0.09f;
+            tLight->quadratic = 0.032f;
 
 
-                // Test point light
-                tLight = m_lightManager.getNew();
-                tLight->enabled   = 1;
-                tLight->position  = glm::vec3(-6.0f, 1.0f, 6.0f);
-                tLight->ambient   = glm::vec3(1.5f, 1.5f, 1.5f);
-                tLight->diffuse   = glm::vec3(1.8f, 1.8f, 1.8f);
-                tLight->specular  = glm::vec3(1.0f, 1.0f, 1.0f);
-                tLight->constant  = 1.0f;
-                tLight->linear    = 0.09f;
-                tLight->quadratic = 0.032f;
+            // Test point light
+            tLight = m_lightManager.getNew();
+            tLight->enabled   = 1;
+            tLight->position  = glm::vec3(-6.0f, 1.0f, -6.0f);
+            tLight->ambient   = glm::vec3(1.5f, 1.5f, 1.5f);
+            tLight->diffuse   = glm::vec3(1.8f, 1.8f, 1.8f);
+            tLight->specular  = glm::vec3(1.0f, 1.0f, 1.0f);
+            tLight->constant  = 1.0f;
+            tLight->linear    = 0.09f;
+            tLight->quadratic = 0.032f;
+
+
+            // Test point light
+            tLight = m_lightManager.getNew();
+            tLight->enabled   = 1;
+            tLight->position  = glm::vec3(-6.0f, 1.0f, 6.0f);
+            tLight->ambient   = glm::vec3(1.5f, 1.5f, 1.5f);
+            tLight->diffuse   = glm::vec3(1.8f, 1.8f, 1.8f);
+            tLight->specular  = glm::vec3(1.0f, 1.0f, 1.0f);
+            tLight->constant  = 1.0f;
+            tLight->linear    = 0.09f;
+            tLight->quadratic = 0.032f;
 */
-                // Initialize render pipelines ------------------
-                if (m_basicRender)
-                {
-                    m_pb_initialize();
-                }
-                else
-                {
-                    m_p1_initialize();
-                    m_p2_initialize();
-                    m_p3_initialize();
-                    m_pui_initialize();
-                    m_pls_initialize();
-                }
-            /*
+            // Initialize render pipelines ------------------
+            if (m_basicRender)
+            {
+                m_pb_initialize();
             }
             else
             {
-                //gLogWrite(LOG_ERROR, " GLEW initialization failed :  " + std::string(reinterpret_cast<const char*>(glewGetErrorString(glewError))), __FILE__, __LINE__, __FUNCTION__);
-                gLogWrite(LOG_ERROR, " GLAD initialization failed :  ", __FILE__, __LINE__, __FUNCTION__);
-                glfwDestroyWindow(m_window);
-                glfwTerminate();
-                return EXIT_FAILURE;
+                m_p1_initialize();
+                m_p2_initialize();
+                m_p3_initialize();
+                m_pui_initialize();
+                m_pls_initialize();
             }
-            */
         }
         else
         {

@@ -48,11 +48,7 @@
 #include <glm/gtx/quaternion.hpp>
 #include <glm/gtx/transform.hpp>
 
-// Glad, Glew, OpenGL, GLFW
-//#define  GLEW_STATIC
-//#include <GL/glew.h>
-//#include <GL/gl.h>
-//#include "../graphics/glad/glad.h"
+// Galogen, OpenGL, GLFW
 #include "../graphics/galogen.hpp"
 #include <GLFW/glfw3.h>
 

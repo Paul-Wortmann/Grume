@@ -22,7 +22,6 @@ cmake . && make
 
 Make sure you have all the relevant dependencies installed:
 - [Assimp](https://www.assimp.org/)
-- [Glew](https://github.com/nigels-com/glew)
 - [GLFW](https://www.glfw.org/)
 - [glm](https://glm.g-truc.net/)
 - [OpenAL](https://openal.org/)
@@ -60,5 +59,5 @@ PARTICULAR PURPOSE.  See the gpl.txt file for more details.
 - Paul Wortmann: physhex@gmail.com
 - Website:            http://www.physhexgames.com
 - Development:   https://github.com/Paul-Wortmann/Frost_And_Flame
-
+- Discord:   https://discord.gg/JCqmb5Vd
 
