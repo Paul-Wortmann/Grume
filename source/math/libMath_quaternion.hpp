@@ -24,29 +24,9 @@
 #ifndef LIB_MATH_QUATERNION_HPP
 #define LIB_MATH_QUATERNION_HPP
 
-#include "libMath_defines.hpp"
-#include "libMath_includes.hpp"
+#include "libMath_quaternion_quat4.hpp"
 
-template<typename T>
-struct quaternion
-{
-    // data structures, variables and constants
-    static const uint32 SIZE = 4; // quaternion == 4
-    union
-    {
-        struct { T s = 0.0; vec3_t<T> v; };
-        struct { T array[SIZE]; };
-    };
-    
-    // construnctors and destructor
-    quaternion(void) { this->s = 0.0; this->v = vec3_t<T>(0.0); }
-    ~quaternion(void) = default;
-    
-    // opperators
-
-    // functions
-    uint32 size(void) { return SIZE; }
-};
+typedef quat4_t<float32> quat4;
 
 #endif // LIB_MATH_QUATERNION_HPP
 

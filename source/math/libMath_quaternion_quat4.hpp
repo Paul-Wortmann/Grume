@@ -21,24 +21,35 @@
  * @date 2020-04-23
  */
 
-#ifndef LIB_MATH_VECTOR_HPP
-#define LIB_MATH_VECTOR_HPP
+#ifndef LIB_MATH_QUAT4_HPP
+#define LIB_MATH_QUAT4_HPP
 
-#include "libMath_vector_vec2.hpp"
+#include "libMath_defines.hpp"
+#include "libMath_includes.hpp"
 #include "libMath_vector_vec3.hpp"
-#include "libMath_vector_vec4.hpp"
 
-typedef vec2_t<float32> vec2;
-typedef vec2_t<float32> vec2f;
-typedef vec2_t<float64> vec2d;
+template<typename T>
+struct quat4_t
+{
+    // data structures, variables and constants
+    static const uint32 SIZE = 4; // quat4_t == 4
+    union
+    {
+        struct { T w; T x; T y; T z; };
+        struct { T s; vec3_t<T> v; };
+        struct { T array[SIZE]; };
+    };
+    
+    // construnctors and destructor
+    quat4_t<T>(const T &_w, const T &_x, const T &_y, const T &_z) { this->w = _w; this->x = _x; this->y = _y; this->z = _z; }
+    quat4_t(void) { this->s = 0.0; this->v = vec3_t<T>(0.0); }
+    ~quat4_t(void) = default;
+    
+    // opperators
 
-typedef vec3_t<float32> vec3;
-typedef vec3_t<float32> vec3f;
-typedef vec3_t<float64> vec3d;
-typedef vec3_t<int32>   ivec3;
+    // functions
+    uint32 size(void) { return SIZE; }
+};
 
-typedef vec4_t<float32> vec4;
-typedef vec4_t<float32> vec4f;
-typedef vec4_t<float64> vec4d;
+#endif // LIB_MATH_QUAT4_HPP
 
-#endif // LIB_MATH_VECTOR_HPP
