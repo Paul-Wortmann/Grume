@@ -175,9 +175,8 @@ void cPlayerManager::process(const float32 &_dt)
         //std::cout << "Current tile: " << m_path.path[m_path.currentPosition] << std::endl;
         m_data->movement->moved = true;
         glm::vec3 playerPos      = m_data->position;
-        glm::vec3 playerPrevPos   = m_data->position;
+        glm::vec3 playerPrevPos  = m_data->position;
         glm::vec3 playerRot      = m_data->rotation;
-        glm::vec3 playerPrevRot  = m_data->rotation;
         uint32    currentTile    = m_data->movement->mapPath.path[m_data->movement->mapPath.currentPosition];
         glm::vec3 currentTilePos = tileToPosition(currentTile);
         
