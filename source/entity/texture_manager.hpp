@@ -35,7 +35,8 @@ class cTextureManager : public tcLinkedList<sEntityTexture>
     public:
         void initialize(void);
         void terminate(void);
-        sEntityTexture* load(const std::string &_fileName);
+        sEntityTexture* load(const std::string &_fileName);    // stb_image
+        sEntityTexture* loadPNG(const std::string &_fileName); // lodepng
 
     protected:
 

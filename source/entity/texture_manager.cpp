@@ -99,3 +99,19 @@ sEntityTexture* cTextureManager::load(const std::string &_fileName)
     return nullptr;
 }
 
+sEntityTexture* cTextureManager::loadPNG(const std::string &_fileName)
+{
+    std::vector<unsigned char> image;
+    std::uint32_t width  = 0;
+    std::uint32_t height = 0;
+    std::uint32_t error = lodepng::decode(image, width, height, _fileName);
+    if (error == 0) // No error
+    {
+        
+    }
+    else
+    {
+        gLogWrite(LOG_ERROR, "Error - Failed to laod texture: " + std::string(FILE_PATH_TEXTURE) + _fileName + " - " + lodepng_error_text(error), __FILE__, __LINE__, __FUNCTION__);
+    }
+    return nullptr;
+}
