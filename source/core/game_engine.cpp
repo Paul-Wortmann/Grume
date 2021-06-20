@@ -148,6 +148,12 @@ void cGameEngine::process(void)
         audioManager.process(dt);
         entityManager.process(dt);
 
+        // Screenshot - GLFW_KEY_F12
+        if (graphicsEngine.getKeyState(GLFW_KEY_F12))
+        {
+            entityManager.saveScreenShot("screenshot.png");
+        }
+        
         // Use input
         if (graphicsEngine.getKeyState(GLFW_MOUSE_BUTTON_LEFT))
         {

@@ -44,6 +44,7 @@ class cModelManager : public tcLinkedList<sEntityModel>
         sEntityModel* load(const std::string &_fileName);
         sEntityMaterial* loadMaterial(const std::string &_fileName);
         sEntityTexture* loadTexture(const std::string &_fileName);
+        void saveScreenShot(const std::string &_fileName) { materialManager.saveScreenShot(_fileName); };
 
     protected:
 

@@ -36,13 +36,16 @@ class cTextureManager : public tcLinkedList<sEntityTexture>
         void initialize(void);
         void terminate(void);
         sEntityTexture* load(const std::string &_fileName);    // stb_image
-        sEntityTexture* loadPNG(const std::string &_fileName); // lodepng
+        sEntityTexture* loadPNG(const std::string &_fileName); // lodepng - load
+        void            savePNG(const std::string &_fileName); // lodepng - save
 
     protected:
 
     private:
         void m_freeAll(void);
         void m_freeData(sEntityTexture*& _pointer);
+        unsigned char* m_flipImage(const std::uint32_t &_width, const std::uint32_t &_height, const std::uint32_t &_bitsPerPixel, const unsigned char* _image);
+        std::vector<unsigned char> m_flipImage(const std::uint32_t &_width, const std::uint32_t &_height, const std::uint32_t &_bitsPerPixel, std::vector<unsigned char> _image);
 
 };
 

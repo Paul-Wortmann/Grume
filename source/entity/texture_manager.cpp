@@ -104,10 +104,12 @@ sEntityTexture* cTextureManager::loadPNG(const std::string &_fileName)
     std::vector<unsigned char> image;
     std::uint32_t width  = 0;
     std::uint32_t height = 0;
-    std::uint32_t error = lodepng::decode(image, width, height, _fileName);
+    std::uint32_t error = lodepng::decode(image, width, height, (std::string(FILE_PATH_TEXTURE)+_fileName).c_str());
     if (error == 0) // No error
     {
-        GLenum format = GL_RGBA;
+        // Flip the image data
+        GLenum bitsPerPixel = 4; // RGBA
+        std::vector<unsigned char> imageOut = m_flipImage(width, height, bitsPerPixel, image);
         
         // Create a new texture pointer
         sEntityTexture* texture = getNew();
@@ -118,7 +120,7 @@ sEntityTexture* cTextureManager::loadPNG(const std::string &_fileName)
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST_MIPMAP_NEAREST);
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-        glTexImage2D(GL_TEXTURE_2D, 0, format, width, height, 0, format, GL_UNSIGNED_BYTE, &image[0]);
+        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, &imageOut[0]);
         glGenerateMipmap(GL_TEXTURE_2D);
         return texture;
     }
@@ -127,4 +129,78 @@ sEntityTexture* cTextureManager::loadPNG(const std::string &_fileName)
         gLogWrite(LOG_ERROR, "Error - Failed to laod texture: " + std::string(FILE_PATH_TEXTURE) + _fileName + " - " + lodepng_error_text(error), __FILE__, __LINE__, __FUNCTION__);
     }
     return nullptr;
+}
+
+void cTextureManager::savePNG(const std::string &_fileName)
+{
+    // Image width and height
+    std::int32_t width  = 0;
+    std::int32_t height = 0;
+    std::int32_t bitsPerPixel = 4; // GL_RGBA
+
+    // Get the framebuffer size
+    glGetRenderbufferParameteriv(GL_RENDERBUFFER, GL_RENDERBUFFER_WIDTH, &width);
+    glGetRenderbufferParameteriv(GL_RENDERBUFFER, GL_RENDERBUFFER_HEIGHT, &height);
+    
+    // Read the imaged data from the framebuffer
+    unsigned char* image = new unsigned char[width * height * bitsPerPixel];
+    glReadPixels(0.0, 0.0, width, height, GL_RGBA, GL_UNSIGNED_BYTE, image);
+    unsigned char* imageOut = m_flipImage(width, height, bitsPerPixel, image);
+    
+    // Write the image to disk
+    std::uint32_t error = lodepng::encode(_fileName, imageOut, width, height);
+    
+    if (error != 0)
+    {
+        gLogWrite(LOG_ERROR, "Error - Failed to save image: " + std::string(FILE_PATH_TEXTURE) + _fileName + " - " + lodepng_error_text(error), __FILE__, __LINE__, __FUNCTION__);
+    }
+    
+    // clean up
+    if (image != nullptr)
+    {
+        delete[] image;
+        image = nullptr;
+    }
+    if (imageOut != nullptr)
+    {
+        delete[] imageOut;
+        imageOut = nullptr;
+    }
+}
+
+unsigned char* cTextureManager::m_flipImage(const std::uint32_t &_width, const std::uint32_t &_height, const std::uint32_t &_bitsPerPixel, const unsigned char* _image)
+{
+    // Dynamically allocate memory for the new image
+    unsigned char* image = new unsigned char[_width * _height * _bitsPerPixel];
+    
+    // loop through the input image and write the data to the new image
+    for (std::uint32_t h = 0; h < _height; ++h)
+    {
+        for (std::uint32_t w = 0; w < (_width * _bitsPerPixel); ++w)
+        {
+            image[(h * _width * _bitsPerPixel) + w] = _image[((_height - h - 1) * _width * _bitsPerPixel) + w];
+        }
+    }
+    
+    // return flipped image
+    return image;
+}
+
+std::vector<unsigned char> cTextureManager::m_flipImage(const std::uint32_t &_width, const std::uint32_t &_height, const std::uint32_t &_bitsPerPixel, std::vector<unsigned char> _image)
+{
+    // Create and resize the output vector
+    std::vector<unsigned char>  image;
+    image.resize(_width * _height * _bitsPerPixel);
+    
+    // loop through the input image and write the data to the new image
+    for (std::uint32_t h = 0; h < _height; ++h)
+    {
+        for (std::uint32_t w = 0; w < (_width * _bitsPerPixel); ++w)
+        {
+            image[(h * _width * _bitsPerPixel) + w] = _image[((_height - h - 1) * _width * _bitsPerPixel) + w];
+        }
+    }
+    
+    // return flipped image
+    return image;
 }

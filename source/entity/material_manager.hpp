@@ -37,6 +37,7 @@ class cMaterialManager : public tcLinkedList<sEntityMaterial>
         bool isLoaded(const std::string &_diffuse, const std::string &_emissive, const std::string &_normal, const std::string &_specular);
         sEntityMaterial* add(std::string _diffuse, std::string _emissive, std::string _normal, std::string _specular);
         sEntityTexture* loadTexture(const std::string &_fileName);
+        void saveScreenShot(const std::string &_fileName) { textureManager.savePNG(_fileName); };
         
     protected:
 

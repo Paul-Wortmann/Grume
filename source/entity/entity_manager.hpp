@@ -51,6 +51,7 @@ class cEntityManager : public tcLinkedList<sEntity>
         void             setState(const std::uint32_t& _UID, const std::string& _name);
         void             setState(const std::uint32_t& _UID, const std::uint32_t& _state);
         void             toggleState(const std::uint32_t& _UID, const std::uint32_t& _state1, const std::uint32_t& _state2);
+        void             saveScreenShot(const std::string &_fileName) { m_modelManager.saveScreenShot(_fileName); };
 
     protected:
         
