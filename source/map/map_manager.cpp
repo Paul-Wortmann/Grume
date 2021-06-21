@@ -554,6 +554,7 @@ void cMapManager::unload(void)
     {
         if (entity->owner == eEntityOwner::ownerMap)
         {
+            m_entityManager->freeData(entity);
             m_entityManager->remove(entity);
             entity = m_entityManager->getHead();
         }

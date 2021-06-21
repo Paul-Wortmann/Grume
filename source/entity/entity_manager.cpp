@@ -72,21 +72,21 @@ void cEntityManager::m_freeData(sEntity*& _pointer)
     // AI
     if (_pointer->ai != nullptr)
     {
-        delete[] _pointer->ai;
+        delete _pointer->ai;
         _pointer->ai = nullptr;
     }
 
     // Character attributes
     if (_pointer->characterAttributes != nullptr)
     {
-        delete[] _pointer->characterAttributes;
+        delete _pointer->characterAttributes;
         _pointer->characterAttributes = nullptr;
     }
 
     // Character skills
     if (_pointer->characterSkills != nullptr)
     {
-        delete[] _pointer->characterSkills;
+        delete _pointer->characterSkills;
         _pointer->characterSkills = nullptr;
     }
 
@@ -98,7 +98,7 @@ void cEntityManager::m_freeData(sEntity*& _pointer)
             delete[] _pointer->movement->mapPath.path;
             _pointer->movement->mapPath.path = nullptr;
         }
-        delete[] _pointer->movement;
+        delete _pointer->movement;
         _pointer->movement = nullptr;
     }
 }
@@ -318,34 +318,6 @@ sEntity* cEntityManager::load(const std::string& _fileName, sEntity* _entity)
             _entity->characterSkills->fireBall.enabled   = (xmlEntityFile.getInteger("<skills_fireball>") == 1);
             _entity->characterSkills->forceField.enabled = (xmlEntityFile.getInteger("<skills_forcefield>") == 1);
         }
-        /*
-    <attributes>
-	# (depletable) max, regen
-        <attribute_health>100 0.1</attribute_health>
-        <attribute_mana>100 0.1</attribute_mana>
-
-	# (damage) base, critMultiply, critChance
-        <attribute_damagephysical>10 1.5 10</attribute_damagephysical>
-        <attribute_damagefire>10 1.5 10</attribute_damagefire>
-        <attribute_damagefrost>10 1.5 10</attribute_damagefrost>
-
-	# (armor) base
-        <attribute_armorphysical>10</attribute_armorphysical>
-        <attribute_resistancefire>10</attribute_resistancefire>
-        <attribute_resistancefrost>10</attribute_resistancefrost>
-    </attributes>
-
-    <skills>
-	# (attack) enabled
-        <skills_earthquake>1</skills_earthquake>
-        <skills_fireball>1</skills_fireball>
-
-	# (defend) enabled
-        <skills_forcefield>1</skills_forcefield>
-    </skills>
-*/
-
-
         
         // Load AI data
         if (xmlEntityFile.getInstanceCount("<ai>") != 0)
@@ -545,6 +517,7 @@ void cEntityManager::process(const float32 &_dt)
     {
         if ((entity->terminate == true) && (entity->finishedAnimation == true))
         {
+            freeData(entity);
             remove(entity);
             entity = getHead();
         }
