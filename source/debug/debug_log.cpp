@@ -78,12 +78,12 @@ void gLogClear(void)
     outFile.close();
 }
 
-void gLogWrite(const uint32 &_type, const std::string &_string, const std::string &_file, const uint32 &_line, const std::string &_function)
+void gLogWrite(const std::uint32_t &_type, const std::string &_string, const std::string &_file, const std::uint32_t &_line, const std::string &_function)
 {
     gLogWrite(DEBUG_FILE, _type, _string, _file, _line, _function);
 }
 
-void gLogWrite(const std::string &_fileName, const uint32 &_type, const std::string &_string, const std::string &_file, const uint32 &_line, const std::string &_function)
+void gLogWrite(const std::string &_fileName, const std::uint32_t &_type, const std::string &_string, const std::string &_file, const std::uint32_t &_line, const std::string &_function)
 {
     #ifdef DEBUG_LC
         #ifdef __linux__
