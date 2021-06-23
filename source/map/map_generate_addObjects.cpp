@@ -86,7 +86,7 @@ void cMapManager::m_addObjectEntity(sMap*& _map,              // Map pointer
             }
             if (tEntity != nullptr)
             {
-                _map->tile[_tn].object = tEntity->UID;
+                m_addCollisionData(_map, tEntity, _tn, _yr);
                 tEntity->owner = eEntityOwner::ownerMap;
                 tEntity->type  = eEntityType::entityTypeObject;
                 tEntity->position += glm::vec3(static_cast<float32>(w) + tp - static_cast<float32>(xo), y_pos, static_cast<float32>(h) + tp - static_cast<float32>(yo));
@@ -236,7 +236,7 @@ void cMapManager::m_addObjectEntities(sMap*& _map)
                 }
                 if (tEntity != nullptr)
                 {
-                    _map->tile[tObjectTileNum].object = tEntity->UID;
+                    m_addCollisionData(_map, tEntity, tObjectTileNum, tObjectRotation);
                     tEntity->owner = eEntityOwner::ownerMap;
                     tEntity->type  = eEntityType::entityTypeObject;
                     tEntity->position += glm::vec3(static_cast<float32>(w) + tp - xo, y_pos, static_cast<float32>(h) + tp - yo);
@@ -354,6 +354,7 @@ void cMapManager::m_addObjectEntities(sMap*& _map)
                                     tEntity = m_entityManager->load(xmlObjectFile.getString("<" + object_names[debris[i].object_number-1] + "_entity>", 1 + (rand() % object_counts[debris[i].object_number-1])));
                                     if (tEntity != nullptr)
                                     {
+                                        m_addCollisionData(_map, tEntity, t, 0.0);
                                         _map->tile[t].object = tEntity->UID;
                                         tEntity->owner = eEntityOwner::ownerMap;
                                         tEntity->type  = eEntityType::entityTypeObject;

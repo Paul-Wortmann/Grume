@@ -28,6 +28,7 @@
 #include "entity_ai.hpp"
 #include "entity_character_attributes.hpp"
 #include "entity_character_skills.hpp"
+#include "entity_collision.hpp"
 #include "entity_material.hpp"
 #include "entity_model.hpp"
 #include "entity_movement.hpp"
@@ -89,6 +90,9 @@ struct sEntity
 
     // Physics
     //sEntityPhysics* physics  = nullptr;
+    
+    // Collision
+    sEntityCollision*  collision            = nullptr;
 
     // State
     std::uint32_t      stateCount           = 0;

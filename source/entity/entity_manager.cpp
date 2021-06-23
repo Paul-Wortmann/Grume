@@ -76,6 +76,21 @@ void cEntityManager::m_freeData(sEntity*& _pointer)
         _pointer->ai = nullptr;
     }
 
+    // Collision
+    if (_pointer->collision != nullptr)
+    {
+        // collision data
+        if (_pointer->collision->data != nullptr)
+        {
+            delete[] _pointer->collision->data;
+            _pointer->collision->data = nullptr;
+        }
+        
+        // Collsion
+        delete _pointer->collision;
+        _pointer->collision = nullptr;
+    }
+
     // Character attributes
     if (_pointer->characterAttributes != nullptr)
     {
@@ -327,6 +342,49 @@ sEntity* cEntityManager::load(const std::string& _fileName, sEntity* _entity)
             _entity->ai->distanceMove     = xmlEntityFile.getFloat("<move_distance>");
             _entity->ai->attack_frequency = xmlEntityFile.getInteger("<attack_frequency>");
             _entity->ai->attack_counter   = _entity->ai->attack_frequency;
+        }
+        
+        // Load Collision data
+        if (xmlEntityFile.getInstanceCount("<collision>") != 0)
+        {
+            // Create a collision component
+            _entity->collision            = new sEntityCollision;
+            
+            // Get collision radius and dynamically allocate memory for collision data
+            _entity->collision->radius    = xmlEntityFile.getInteger("<collision_radius>");
+            _entity->collision->data      = new std::uint8_t[_entity->collision->radius * _entity->collision->radius];
+            
+            // Load collision data
+            std::uint32_t dataNum         = 0;
+            std::uint32_t dataCount       = xmlEntityFile.getInstanceCount("<collision_data>");
+            for (std::uint32_t i = 0; i < dataCount; ++i)
+            {
+                // Get next collsion data
+                std::string collisionData = xmlEntityFile.getString("<collision_data>", 1 + i);
+
+                // Process the collision data string
+                collisionData += " ";
+                std::uint64_t collisionDataLength = collisionData.length();
+                std::uint32_t tStringNum = 0;
+                std::string   tString = "";
+                if (collisionDataLength > 2)
+                {
+                    for (std::uint64_t j = 0; j < collisionDataLength; ++j)
+                    {
+                        if ((j > 0) && (collisionData[j] == ' ') && (collisionData[j-1] != ' '))
+                        {
+                            _entity->collision->data[dataNum] = std::stoi(tString);
+                            dataNum++;
+                            tStringNum++;
+                            tString = "";
+                        }
+                        else
+                        {
+                            tString += collisionData[j];
+                        }
+                    }
+                }
+            }
         }
 
         // Load model from file

@@ -93,6 +93,9 @@ class cMapManager : public tcLinkedList<sMap>
         void m_playMusic(void);
         void m_resetPlayerPosition(void);
         
+        // map_generate_addCollision.cpp
+        void     m_addCollisionData(sMap*& _map, sEntity*& _entity, const std::uint32_t &_tile, const float32 &_rotation);
+        
         // map_generate_floorModel.cpp
         sEntityModel* m_generateFloor(sMap*& _map);
 

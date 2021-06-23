@@ -21,16 +21,15 @@
  * @date 2011-11-11
  */
  
-#ifndef ENTITY_AUDIO_HPP
-#define ENTITY_AUDIO_HPP
+#ifndef ENTITY_COLLISION_HPP
+#define ENTITY_COLLISION_HPP
 
 #include "../core/includes.hpp"
 
-struct sEntityAudio
+struct sEntityCollision
 {
-    // Linked list
-    sEntityAudio*  next = nullptr;
-    std::uint32_t  UID  = 0;
+    std::uint32_t radius = 1;
+    std::uint8_t* data   = nullptr;
 };
 
-#endif // ENTITY_AUDIO_HPP
+#endif // ENTITY_COLLISION_HPP

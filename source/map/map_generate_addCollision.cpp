@@ -20,17 +20,26 @@
  * @license GPL V2
  * @date 2011-11-11
  */
- 
-#ifndef ENTITY_AUDIO_HPP
-#define ENTITY_AUDIO_HPP
 
-#include "../core/includes.hpp"
+#include "map_manager.hpp"
 
-struct sEntityAudio
+void cMapManager::m_addCollisionData(sMap*& _map, sEntity*& _entity, const std::uint32_t &_tile, const float32 &_rotation)
 {
-    // Linked list
-    sEntityAudio*  next = nullptr;
-    std::uint32_t  UID  = 0;
-};
-
-#endif // ENTITY_AUDIO_HPP
+    if (_entity->collision != nullptr)
+    {
+        std::uint32_t r = _entity->collision->radius / 2; // radius
+        std::uint32_t o = (_entity->collision->radius * r) + r; // offset
+        for (std::uint32_t h = 0; h < _entity->collision->radius; ++h)
+        {
+            for (std::uint32_t w = 0; w < _entity->collision->radius; ++w)
+            {
+                std::uint32_t tileNum = (h * _entity->collision->radius) + w;
+                _map->tile[_tile - o + tileNum].object = _entity->UID;
+            }
+        }
+    }
+    else
+    {
+        _map->tile[_tile].object = _entity->UID;
+    }
+}
