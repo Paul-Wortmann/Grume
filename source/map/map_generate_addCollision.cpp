@@ -27,6 +27,21 @@ void cMapManager::m_addCollisionData(sMap*& _map, sEntity*& _entity, const std::
 {
     if ((_entity->collision != nullptr) && (_entity->collision->data != nullptr))
     {
+        // Rotation
+        if (_rotation > 4.0f)      // 4.71239 == 270
+        {
+            m_mapPrefabRoomRotateL90(_entity->collision->data, _entity->collision->size, _entity->collision->size);
+        }
+        else if (_rotation > 3.0f) // 3.14159 == 180
+        {
+            m_mapPrefabRoomRotate180(_entity->collision->data, _entity->collision->size, _entity->collision->size);
+        }
+        else if (_rotation > 1.0f) // 1.5708  == 90
+        {
+            m_mapPrefabRoomRotateR90(_entity->collision->data, _entity->collision->size, _entity->collision->size);
+        }
+        
+        // Transfer tile collision data to the map
         std::uint32_t r = _entity->collision->size / 2; // radius
         for (std::uint32_t h = 0; h < _entity->collision->size; ++h)
         {

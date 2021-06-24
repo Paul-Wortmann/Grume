@@ -352,7 +352,7 @@ sEntity* cEntityManager::load(const std::string& _fileName, sEntity* _entity)
             
             // Get collision size and dynamically allocate memory for collision data
             _entity->collision->size = xmlEntityFile.getInteger("<collision_size>");
-            _entity->collision->data = new std::uint8_t[_entity->collision->size * _entity->collision->size];
+            _entity->collision->data = new std::uint32_t[_entity->collision->size * _entity->collision->size];
             
             // Load collision data
             std::uint32_t dataNum         = 0;

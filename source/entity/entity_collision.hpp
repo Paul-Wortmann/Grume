@@ -28,8 +28,8 @@
 
 struct sEntityCollision
 {
-    std::uint32_t size = 1;
-    std::uint8_t* data = nullptr;
+    std::uint32_t  size = 1;
+    std::uint32_t* data = nullptr;
 };
 
 #endif // ENTITY_COLLISION_HPP
