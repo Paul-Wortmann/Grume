@@ -355,7 +355,6 @@ void cMapManager::m_addObjectEntities(sMap*& _map)
                                     if (tEntity != nullptr)
                                     {
                                         m_addCollisionData(_map, tEntity, t, 0.0);
-                                        _map->tile[t].object = tEntity->UID;
                                         tEntity->owner = eEntityOwner::ownerMap;
                                         tEntity->type  = eEntityType::entityTypeObject;
                                         tEntity->position = glm::vec3(static_cast<float32>(w) + tp - xo, y_pos, static_cast<float32>(h) + tp - yo);

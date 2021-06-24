@@ -25,16 +25,17 @@
 
 void cMapManager::m_addCollisionData(sMap*& _map, sEntity*& _entity, const std::uint32_t &_tile, const float32 &_rotation)
 {
-    if (_entity->collision != nullptr)
+    if ((_entity->collision != nullptr) && (_entity->collision->data != nullptr))
     {
-        std::uint32_t r = _entity->collision->radius / 2; // radius
-        std::uint32_t o = (_entity->collision->radius * r) + r; // offset
-        for (std::uint32_t h = 0; h < _entity->collision->radius; ++h)
+        std::uint32_t r = _entity->collision->size / 2; // radius
+        for (std::uint32_t h = 0; h < _entity->collision->size; ++h)
         {
-            for (std::uint32_t w = 0; w < _entity->collision->radius; ++w)
+            for (std::uint32_t w = 0; w < _entity->collision->size; ++w)
             {
-                std::uint32_t tileNum = (h * _entity->collision->radius) + w;
-                _map->tile[_tile - o + tileNum].object = _entity->UID;
+                if (_entity->collision->data[(h * _entity->collision->size) + w] > 0)
+                {
+                    _map->tile[_tile + ((h - r) * _map->width) + (w - r)].object = _entity->UID;
+                }
             }
         }
     }

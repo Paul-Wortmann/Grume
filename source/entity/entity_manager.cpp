@@ -350,9 +350,9 @@ sEntity* cEntityManager::load(const std::string& _fileName, sEntity* _entity)
             // Create a collision component
             _entity->collision            = new sEntityCollision;
             
-            // Get collision radius and dynamically allocate memory for collision data
-            _entity->collision->radius    = xmlEntityFile.getInteger("<collision_radius>");
-            _entity->collision->data      = new std::uint8_t[_entity->collision->radius * _entity->collision->radius];
+            // Get collision size and dynamically allocate memory for collision data
+            _entity->collision->size = xmlEntityFile.getInteger("<collision_size>");
+            _entity->collision->data = new std::uint8_t[_entity->collision->size * _entity->collision->size];
             
             // Load collision data
             std::uint32_t dataNum         = 0;
@@ -365,7 +365,6 @@ sEntity* cEntityManager::load(const std::string& _fileName, sEntity* _entity)
                 // Process the collision data string
                 collisionData += " ";
                 std::uint64_t collisionDataLength = collisionData.length();
-                std::uint32_t tStringNum = 0;
                 std::string   tString = "";
                 if (collisionDataLength > 2)
                 {
@@ -375,7 +374,6 @@ sEntity* cEntityManager::load(const std::string& _fileName, sEntity* _entity)
                         {
                             _entity->collision->data[dataNum] = std::stoi(tString);
                             dataNum++;
-                            tStringNum++;
                             tString = "";
                         }
                         else
