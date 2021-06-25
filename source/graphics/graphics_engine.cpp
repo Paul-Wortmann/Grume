@@ -270,6 +270,9 @@ uint32 cGraphicsEngine::initialize(void)
                 m_pui_initialize();
                 m_pls_initialize();
             }
+            
+            // Initialize particle engine
+            m_particleEngine.initialize();
         }
         else
         {
@@ -289,6 +292,9 @@ uint32 cGraphicsEngine::initialize(void)
 
 void cGraphicsEngine::terminate(void)
 {
+    // Particle engine
+    m_particleEngine.terminate();
+
     // Entities
     for(m_entityTemp = m_entityHead; m_entityTemp != nullptr; m_entityTemp = m_entityTemp->next)
     {
@@ -403,6 +409,9 @@ void cGraphicsEngine::process(const float32 &_dt)
     {
         m_windowClosed = glfwWindowShouldClose(m_window);
     }
+    
+    // Particle Engine
+    m_particleEngine.process(_dt);
 
     if (m_loadRender)
     {

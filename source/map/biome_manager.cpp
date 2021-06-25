@@ -64,7 +64,7 @@ void cBiomeManager::m_freeAll(void)
 
 sMapBiome* cBiomeManager::load(const std::string &_fileName)
 {
-    // Don't load the bime file if it is already loaded, return a pointer to it
+    // Don't load the biome file if it is already loaded, return a pointer to it
     for (sMapBiome* tBiome = getHead(); tBiome != nullptr; tBiome = tBiome->next)
     {
         if (tBiome->fileName.compare(_fileName) == 0)

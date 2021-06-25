@@ -28,6 +28,7 @@
 #include "graphics_engine_debug.hpp"
 #include "graphics_engine_defines.hpp"
 #include "graphics_engine_light_manager.hpp"
+#include "graphics_engine_particles.hpp"
 #include "graphics_engine_shader.hpp"
 #include "../core/includes.hpp"
 #include "../entity/entity_define.hpp"
@@ -98,6 +99,9 @@ class cGraphicsEngine
         bool          m_basicRender        = false;
         bool          m_loadRender         = true;
         bool          m_animation          = true;
+        
+        // Particles
+        cGraphicsEngineParticles m_particleEngine;
 
         // IO
         std::unordered_map<int32, boolean> m_keyMap;

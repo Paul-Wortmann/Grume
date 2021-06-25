@@ -152,7 +152,7 @@ struct sMapPortal
 {
     std::uint32_t portalNo  = 0;
     std::uint32_t tile      = 0;
-    float32       direction = 0.0f;
+    float32       direction = 0.0f; // Direction player should face
 };
 
 enum class eMapRoomType : std::uint16_t 
