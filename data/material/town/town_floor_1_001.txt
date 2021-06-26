@@ -5,6 +5,6 @@
     <emissive>none_e.png</emissive>
     <normal>town/town_floor_1_001_n.png</normal>
     <specular>town/town_floor_1_001_s.png</specular>
-    <sprites_x>2</sprites_x>
-    <sprites_y>2</sprites_y>
+    <sprites_x>4</sprites_x>
+    <sprites_y>4</sprites_y>
 </material>
