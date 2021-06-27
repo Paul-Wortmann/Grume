@@ -11,7 +11,7 @@ Copyright Paul Wortmann. GNU GPL v2
 - Linux kernel 4.2+
 - AMD or Intel CPU, x86_64.
 
-- While only the Linux build is currently being worked on, it should be trivial to get Frost and Flame working on Windows as most of the code and dependencies are cross platform. However there are no plans to ever support Mac.
+- While only the Linux build is currently being worked on, it should be trivial to get Frost and Flame working on Windows as most of the code and dependencies are cross platform. I would like to port to Fuchsia OS in the future if it is open source. However there are no plans to ever support Apple.
 
 ## Build:
 
