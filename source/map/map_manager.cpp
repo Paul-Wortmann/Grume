@@ -266,24 +266,6 @@ void cMapManager::load(const std::string &_fileName)
             }
         }
 
-        // Generate floor model
-        m_currentMap->floor        = m_entityManager->getNew();
-        m_currentMap->floor->name  = "Generated map floor.";
-        m_currentMap->floor->owner = eEntityOwner::ownerMap;
-        m_currentMap->floor->model = m_generateFloor(m_currentMap);
-
-        // Create a model matrix
-        m_currentMap->floor->position = glm::vec3(0.0f, 0.0f, 0.0f);
-        m_currentMap->floor->scale    = glm::vec3(1.0f, 1.0f, 1.0f);
-        m_currentMap->floor->rotation = glm::vec3(0.0f, 0.0f, 0.0f);
-        m_entityManager->updateModelMatrix(m_currentMap->floor);
-
-        // Load the material defined in the previously loaded biome
-        if (m_currentMap->biome->floorSpritesheet.fileName.length() > 3)
-        {
-            m_currentMap->floor->material = m_entityManager->loadMaterial(m_currentMap->biome->floorSpritesheet.fileName);
-        }
-
         // Load the music defined in the previously loaded biome
         if (m_gameDatabase->music.fileName.length() > 3)
         {
@@ -525,6 +507,24 @@ void cMapManager::load(const std::string &_fileName)
 
         // Populate the map with NPCs
         m_addNPCEntities(m_currentMap);
+
+        // Generate floor model
+        m_currentMap->floor        = m_entityManager->getNew();
+        m_currentMap->floor->name  = "Generated map floor.";
+        m_currentMap->floor->owner = eEntityOwner::ownerMap;
+        m_currentMap->floor->model = m_generateFloor(m_currentMap);
+
+        // Create a model matrix
+        m_currentMap->floor->position = glm::vec3(0.0f, 0.0f, 0.0f);
+        m_currentMap->floor->scale    = glm::vec3(1.0f, 1.0f, 1.0f);
+        m_currentMap->floor->rotation = glm::vec3(0.0f, 0.0f, 0.0f);
+        m_entityManager->updateModelMatrix(m_currentMap->floor);
+
+        // Load the material defined in the previously loaded biome
+        if (m_currentMap->biome->floorSpritesheet.fileName.length() > 3)
+        {
+            m_currentMap->floor->material = m_entityManager->loadMaterial(m_currentMap->biome->floorSpritesheet.fileName);
+        }
 
         // Clean up
         xmlMapFile.free();
