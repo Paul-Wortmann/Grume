@@ -26,13 +26,13 @@
 void cMapManager::m_generateMap_T1(sMap*& _map)
 {
     // Generate a perimeter wall
-    m_generatePerimeterWall(_map);
+    m_mapGeneratePerimeterWall(_map);
 
 
 
 
     // Generate a perimeter wall
-    m_generatePerimeterWall(_map);
+    m_mapGeneratePerimeterWall(_map);
 
     // Smoothing pass to remove artifacts
 

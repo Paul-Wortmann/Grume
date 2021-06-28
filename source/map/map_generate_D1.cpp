@@ -33,7 +33,7 @@ void cMapManager::m_genD1_internal(sMap*& _map)
     }
 
     // Generate a perimeter wall
-    m_generatePerimeterWall(_map);
+    m_mapGeneratePerimeterWall(_map);
 
     for (uint32_t i = 0; i < roomMax; i++)
     {
@@ -99,7 +99,7 @@ void cMapManager::m_generateMap_D1(sMap*& _map)
     }
 
     // Generate a perimeter wall
-    m_generatePerimeterWall(_map);
+    m_mapGeneratePerimeterWall(_map);
 
     // Room identification
     m_mapInitRooms(_map);

@@ -23,7 +23,91 @@
 
 #include "map_manager.hpp"
 
-void cMapManager::m_generatePerimeterWall(sMap*& _map)
+void cMapManager::m_mapTilesFlipV(std::uint32_t *&_tiles, const std::uint32_t &_w, const std::uint32_t &_h)
+{
+    std::uint32_t tileCount = _w * _h;
+    std::uint32_t *tile = new std::uint32_t[tileCount];
+    for (uint32_t i = 0; i < tileCount; i++)
+    {
+        tile[i] = _tiles[i];
+    }
+    for (uint32_t i = 0; i < tileCount; i++)
+    {
+        _tiles[(tileCount-1)-i] = tile[i];
+    }
+    delete[] tile;
+}
+
+void cMapManager::m_mapTilesFlipH(std::uint32_t *&_tiles, const std::uint32_t &_w, const std::uint32_t &_h)
+{
+    std::uint32_t tileCount = _w * _h;
+    std::uint32_t *tile = new std::uint32_t[tileCount];
+    for (uint32_t i = 0; i < tileCount; i++)
+    {
+        tile[i] = _tiles[i];
+    }
+    for (uint32_t i = 0; i < _h; i++)
+    {
+        for (uint32_t j = 0; j < _w; j++)
+        {
+            _tiles[(i * _w) + j] = tile[(i * _w) + ((_w-1)-j)];
+        }
+    }
+    delete[] tile;
+}
+
+void cMapManager::m_mapTilesRotate90(std::uint32_t *&_tiles, const std::uint32_t &_w, const std::uint32_t &_h)
+{
+    std::uint32_t tileCount = _w * _h;
+    std::uint32_t *tile = new std::uint32_t[tileCount];
+    for (uint32_t i = 0; i < tileCount; i++)
+    {
+        tile[i] = _tiles[i];
+    }
+    for (uint32_t i = 0; i < _h; i++)
+    {
+        for (uint32_t j = 0; j < _w; j++)
+        {
+            _tiles[(i * _w) + j] = tile[(j * _w) + ((_w-1)-i)];
+        }
+    }
+    delete[] tile;
+}
+
+void cMapManager::m_mapTilesRotate270(std::uint32_t *&_tiles, const std::uint32_t &_w, const std::uint32_t &_h)
+{
+    std::uint32_t tileCount = _w * _h;
+    std::uint32_t *tile = new std::uint32_t[tileCount];
+    for (uint32_t i = 0; i < tileCount; i++)
+    {
+        tile[i] = _tiles[i];
+    }
+    for (uint32_t i = 0; i < _h; i++)
+    {
+        for (uint32_t j = 0; j < _w; j++)
+        {
+            _tiles[(i * _w) + j] = tile[(((_h-1)-j) * _w) + ((_w-1)-i)];
+        }
+    }
+    delete[] tile;
+}
+
+void cMapManager::m_mapTilesRotate180(std::uint32_t *&_tiles, const std::uint32_t &_w, const std::uint32_t &_h)
+{
+    std::uint32_t tileCount = _w * _h;
+    std::uint32_t *tile = new std::uint32_t[tileCount];
+    for (uint32_t i = 0; i < tileCount; i++)
+    {
+        tile[i] = _tiles[i];
+    }
+    for (uint32_t i = 0; i < tileCount; i++)
+    {
+        _tiles[(tileCount-1)-i] = tile[i];
+    }
+    delete[] tile;
+}
+
+void cMapManager::m_mapGeneratePerimeterWall(sMap*& _map)
 {
     for (uint32 i = 0; i < _map->numTiles; ++i)
     {

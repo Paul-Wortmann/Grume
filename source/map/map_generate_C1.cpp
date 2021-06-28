@@ -60,7 +60,7 @@ void cMapManager::m_generateMap_C1(sMap*& _map)
     }
 
     // Generate a perimeter wall
-    m_generatePerimeterWall(_map);
+    m_mapGeneratePerimeterWall(_map);
 
     // Generate 2 x 2 floors in the center: ensure this space is available for the floodfill
 
@@ -90,7 +90,7 @@ void cMapManager::m_generateMap_C1(sMap*& _map)
     }
 
     // Generate a perimeter wall
-    m_generatePerimeterWall(_map);
+    m_mapGeneratePerimeterWall(_map);
 
     // Smoothing pass to remove artifacts
 
