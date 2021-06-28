@@ -180,48 +180,48 @@
         <object>1942 29 37 1.0 1.5708 1</object> # Town props - paper debris
         
         <object>1827 29 30 1.0 1.5708 1</object> # Town props - bookshelf
-        <object>1831 29 06 1.0 -1.5708 1</object> # Town props - bookshelf
+        <object>1831 29 06 1.0 4.7123 1</object> # Town props - bookshelf
         <object>1832 29 30 1.0 1.5708 1</object> # Town props - bookshelf
-        <object>1835 29 06 1.0 -1.5708 1</object> # Town props - bookshelf
+        <object>1835 29 06 1.0 4.7123 1</object> # Town props - bookshelf
         <object>1836 29 30 1.0 1.5708 1</object> # Town props - bookshelf
-        <object>1839 29 06 1.0 -1.5708 1</object> # Town props - bookshelf
+        <object>1839 29 06 1.0 4.7123 1</object> # Town props - bookshelf
         <object>1840 29 32 1.0 1.5708 1</object> # Town props - bookshelf
-        <object>1843 29 06 1.0 -1.5708 1</object> # Town props - bookshelf
+        <object>1843 29 06 1.0 4.7123 1</object> # Town props - bookshelf
         <object>1844 29 33 1.0 1.5708 1</object> # Town props - bookshelf
         <object>2227 29 30 1.0 1.5708 1</object> # Town props - bookshelf
-        <object>2231 29 06 1.0 -1.5708 1</object> # Town props - bookshelf
+        <object>2231 29 06 1.0 4.7123 1</object> # Town props - bookshelf
         <object>2232 29 30 1.0 1.5708 1</object> # Town props - bookshelf
-        <object>2235 29 06 1.0 -1.5708 1</object> # Town props - bookshelf
+        <object>2235 29 06 1.0 4.7123 1</object> # Town props - bookshelf
         <object>2236 29 30 1.0 1.5708 1</object> # Town props - bookshelf
-        <object>2239 29 06 1.0 -1.5708 1</object> # Town props - bookshelf
+        <object>2239 29 06 1.0 4.7123 1</object> # Town props - bookshelf
         <object>2240 29 32 1.0 1.5708 1</object> # Town props - bookshelf
-        <object>2243 29 06 1.0 -1.5708 1</object> # Town props - bookshelf
+        <object>2243 29 06 1.0 4.7123 1</object> # Town props - bookshelf
         <object>2244 29 33 1.0 1.5708 1</object> # Town props - bookshelf
         <object>2627 29 30 1.0 1.5708 1</object> # Town props - bookshelf
-        <object>2631 29 06 1.0 -1.5708 1</object> # Town props - bookshelf
+        <object>2631 29 06 1.0 4.7123 1</object> # Town props - bookshelf
         <object>2632 29 30 1.0 1.5708 1</object> # Town props - bookshelf
-        <object>2635 29 06 1.0 -1.5708 1</object> # Town props - bookshelf
+        <object>2635 29 06 1.0 4.7123 1</object> # Town props - bookshelf
         <object>2636 29 30 1.0 1.5708 1</object> # Town props - bookshelf
-        <object>2639 29 06 1.0 -1.5708 1</object> # Town props - bookshelf
+        <object>2639 29 06 1.0 4.7123 1</object> # Town props - bookshelf
         <object>2640 29 32 1.0 1.5708 1</object> # Town props - bookshelf
-        <object>2643 29 06 1.0 -1.5708 1</object> # Town props - bookshelf
+        <object>2643 29 06 1.0 4.7123 1</object> # Town props - bookshelf
         <object>2644 29 33 1.0 1.5708 1</object> # Town props - bookshelf
-        <object>3031 29 06 1.0 -1.5708 1</object> # Town props - bookshelf
+        <object>3031 29 06 1.0 4.7123 1</object> # Town props - bookshelf
         <object>3032 29 30 1.0 1.5708 1</object> # Town props - bookshelf
-        <object>3035 29 06 1.0 -1.5708 1</object> # Town props - bookshelf
+        <object>3035 29 06 1.0 4.7123 1</object> # Town props - bookshelf
         <object>3036 29 30 1.0 1.5708 1</object> # Town props - bookshelf
-        <object>3039 29 06 1.0 -1.5708 1</object> # Town props - bookshelf
+        <object>3039 29 06 1.0 4.7123 1</object> # Town props - bookshelf
         <object>3040 29 32 1.0 1.5708 1</object> # Town props - bookshelf
-        <object>3043 29 06 1.0 -1.5708 1</object> # Town props - bookshelf
+        <object>3043 29 06 1.0 4.7123 1</object> # Town props - bookshelf
         <object>3044 29 33 1.0 1.5708 1</object> # Town props - bookshelf
         <object>3427 29 30 1.0 1.5708 1</object> # Town props - bookshelf
-        <object>3431 29 06 1.0 -1.5708 1</object> # Town props - bookshelf
+        <object>3431 29 06 1.0 4.7123 1</object> # Town props - bookshelf
         <object>3432 29 30 1.0 1.5708 1</object> # Town props - bookshelf
-        <object>3435 29 06 1.0 -1.5708 1</object> # Town props - bookshelf
+        <object>3435 29 06 1.0 4.7123 1</object> # Town props - bookshelf
         <object>3436 29 30 1.0 1.5708 1</object> # Town props - bookshelf
-        <object>3439 29 06 1.0 -1.5708 1</object> # Town props - bookshelf
+        <object>3439 29 06 1.0 4.7123 1</object> # Town props - bookshelf
         <object>3440 29 32 1.0 1.5708 1</object> # Town props - bookshelf
-        <object>3443 29 06 1.0 -1.5708 1</object> # Town props - bookshelf
+        <object>3443 29 06 1.0 4.7123 1</object> # Town props - bookshelf
         <object>3444 29 33 1.0 1.5708 1</object> # Town props - bookshelf
         
         # Alchemy lab 2
@@ -232,14 +232,14 @@
         <object>2617 29 30 1.0 1.5708 1</object> # Town props - bookshelf
         <object>2917 29 30 1.0 1.5708 1</object> # Town props - bookshelf
         <object>3217 29 31 1.0 1.5708 1</object> # Town props - bookshelf
-        <object>2622 29 30 1.0 -1.5708 1</object> # Town props - bookshelf
-        <object>2922 29 30 1.0 -1.5708 1</object> # Town props - bookshelf
-        <object>3222 29 31 1.0 -1.5708 1</object> # Town props - bookshelf
+        <object>2622 29 30 1.0 4.7123 1</object> # Town props - bookshelf
+        <object>2922 29 30 1.0 4.7123 1</object> # Town props - bookshelf
+        <object>3222 29 31 1.0 4.7123 1</object> # Town props - bookshelf
         <object>2623 29 30 1.0 1.5708 1</object> # Town props - bookshelf
         <object>2923 29 30 1.0 1.5708 1</object> # Town props - bookshelf
         <object>3223 29 31 1.0 1.5708 1</object> # Town props - bookshelf
         
-        <object>2222 29 25 1.0 -1.5708 1</object> # Town props - table 1
+        <object>2222 29 25 1.0 4.7123 1</object> # Town props - table 1
 
         # Canteen
         <object>1855 29 02 1.0 1.5708 1</object> # Town props - barcounter

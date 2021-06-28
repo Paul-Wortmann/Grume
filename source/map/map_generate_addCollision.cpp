@@ -30,7 +30,7 @@ void cMapManager::m_addCollisionData(sMap*& _map, sEntity*& _entity, const std::
         // Rotation
         if (_rotation > 4.0f)      // 4.71239 == 270
         {
-            m_mapPrefabRoomRotateL90(_entity->collision->data, _entity->collision->size, _entity->collision->size);
+            m_mapPrefabRoomRotate270(_entity->collision->data, _entity->collision->size, _entity->collision->size);
         }
         else if (_rotation > 3.0f) // 3.14159 == 180
         {
@@ -38,7 +38,7 @@ void cMapManager::m_addCollisionData(sMap*& _map, sEntity*& _entity, const std::
         }
         else if (_rotation > 1.0f) // 1.5708  == 90
         {
-            m_mapPrefabRoomRotateR90(_entity->collision->data, _entity->collision->size, _entity->collision->size);
+            m_mapPrefabRoomRotate90(_entity->collision->data, _entity->collision->size, _entity->collision->size);
         }
         
         // Transfer tile collision data to the map

@@ -56,7 +56,7 @@ void cMapManager::m_mapPrefabRoomFlipH(std::uint32_t *&_tiles, const std::uint32
     delete[] tile;
 }
 
-void cMapManager::m_mapPrefabRoomRotateR90(std::uint32_t *&_tiles, const std::uint32_t &_w, const std::uint32_t &_h)
+void cMapManager::m_mapPrefabRoomRotate90(std::uint32_t *&_tiles, const std::uint32_t &_w, const std::uint32_t &_h)
 {
     std::uint32_t tileCount = _w * _h;
     std::uint32_t *tile = new std::uint32_t[tileCount];
@@ -74,7 +74,7 @@ void cMapManager::m_mapPrefabRoomRotateR90(std::uint32_t *&_tiles, const std::ui
     delete[] tile;
 }
 
-void cMapManager::m_mapPrefabRoomRotateL90(std::uint32_t *&_tiles, const std::uint32_t &_w, const std::uint32_t &_h)
+void cMapManager::m_mapPrefabRoomRotate270(std::uint32_t *&_tiles, const std::uint32_t &_w, const std::uint32_t &_h)
 {
     std::uint32_t tileCount = _w * _h;
     std::uint32_t *tile = new std::uint32_t[tileCount];

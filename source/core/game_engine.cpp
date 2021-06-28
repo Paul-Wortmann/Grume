@@ -150,7 +150,6 @@ void cGameEngine::process(void)
             // If mouse over UI
             
             // Else:
-            
             playerManager.setMouseClick(graphicsEngine.getMouseTerrainPosition());
         }
         
