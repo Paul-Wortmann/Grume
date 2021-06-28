@@ -83,16 +83,6 @@ void cGameEngine::initialize(void)
         graphicsEngine.setLoadTextureID(entityManager.loadTexture("ui/loading_screen_001.png")->ID);
         graphicsEngine.process(0);
 
-        // TEST bat -- DELETE ME --
-        m_entityBat = entityManager.load("npc/bat_1_001.txt");
-        if (m_entityBat != nullptr)
-        {
-            m_entityBat->position += glm::vec3(-4.0, 0.0, 4.0);
-            entityManager.updateModelMatrix(m_entityBat);
-        }
-        // TEST bat -- DELETE ME --
-
-
         // load the game startup file
         load();
 
@@ -188,12 +178,6 @@ void cGameEngine::process(void)
             graphicsEngine.setCameraPosition(glm::vec3(cameraPosition));
             graphicsEngine.setCameraTarget(glm::vec3(cameraTarget));
         }
-
-        // !! This bat is only here for TESTING !!
-        m_entityBat->position = graphicsEngine.getMouseTerrainPosition();
-        m_entityBat->position = glm::vec3(m_entityBat->position.x, m_entityBat->position.y - 1.0f, m_entityBat->position.z);
-        entityManager.updateModelMatrix(m_entityBat);
-
 
         // -----------------------------------------
         // Advance the timer

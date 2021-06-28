@@ -44,8 +44,6 @@ class cGameEngine
     public:
         void run(void);
 
-        sEntity*      m_entityBat        = nullptr; // DELETE!
-
     protected:
 
     private:
