@@ -111,6 +111,12 @@ void cPlayerManager::process(const float32 &_dt)
     if (m_mouseClicked)
     {
         m_mouseClicked = false;
+
+        // Mouse clicked outside of map bounds, invalid
+        if (m_mouseTile >= m_mapPointer->numTiles)
+        {
+            return;
+        }
         
         // If click object
         if (m_mapPointer->tile[m_mouseTile].object != 0)
