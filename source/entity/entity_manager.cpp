@@ -505,6 +505,17 @@ void cEntityManager::m_setAnimationState(sEntity*& _entity, const std::uint32_t&
     _entity->finishedAnimation = false;
 }
 
+void cEntityManager::m_setTileState(sEntity*& _entity, const std::uint32_t& _state)
+{
+    // Convert to zero indexed array
+    std::uint32_t state = _state - 1;
+
+    if ((m_mapPointer != nullptr) && (m_mapPointer->tile != nullptr) && (_entity->state[state].tileState != 0))
+    {
+        m_mapPointer->tile[_entity->tile].base = static_cast<eTileBase>(_entity->state[state].tileState);
+    }
+}
+
 sEntity* cEntityManager::m_UIDtoEntity(const std::uint32_t& _UID)
 {
     for(sEntity* entityTemp = getHead(); entityTemp != nullptr; entityTemp = entityTemp->next)
@@ -548,11 +559,7 @@ void cEntityManager::setState(const std::uint32_t& _UID, const std::uint32_t& _s
         m_playSound(entityTemp, entityTemp->stateCurrent);
 
         // Set tile state associated with state
-        if ((m_mapPointer != nullptr) && (m_mapPointer->tile != nullptr))
-        {
-            //m_mapPointer->tile[entityTemp->tile].base = static_cast<eTileBase>(entityTemp->state[_state - 1].tileState);
-            m_mapPointer->tile[entityTemp->tile].base = eTileBase::tileFloor;
-        }
+        m_setTileState(entityTemp, entityTemp->stateCurrent);
     }
 }
 
@@ -574,11 +581,7 @@ void cEntityManager::toggleState(const std::uint32_t& _UID, const std::uint32_t&
         m_playSound(entityTemp, entityTemp->stateCurrent);
 
         // Set tile state associated with state
-        if ((m_mapPointer != nullptr) && (m_mapPointer->tile != nullptr))
-        {
-            //m_mapPointer->tile[entityTemp->tile].base = static_cast<eTileBase>(entityTemp->state[entityTemp->stateCurrent - 1].tileState);
-            m_mapPointer->tile[entityTemp->tile].base = eTileBase::tileFloor;
-        }
+        m_setTileState(entityTemp, entityTemp->stateCurrent);
     }
 }
 
