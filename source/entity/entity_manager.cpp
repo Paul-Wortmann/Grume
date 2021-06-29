@@ -512,7 +512,30 @@ void cEntityManager::m_setTileState(sEntity*& _entity, const std::uint32_t& _sta
 
     if ((m_mapPointer != nullptr) && (m_mapPointer->tile != nullptr) && (_entity->state[state].tileState != 0))
     {
-        m_mapPointer->tile[_entity->tile].base = static_cast<eTileBase>(_entity->state[state].tileState);
+        // If collision data, use it
+        if (_entity->collision != nullptr)
+        {
+            eTileBase     etb = static_cast<eTileBase>(_entity->state[state].tileState);
+            std::uint32_t t   = _entity->tile;
+            std::uint32_t r   = _entity->collision->size / 2;
+            
+            for (std::uint32_t h = 0; h < _entity->collision->size; ++h)
+            {
+                for (std::uint32_t w = 0; w < _entity->collision->size; ++w)
+                {
+                    if (m_mapPointer->tile[t + ((h - r) * m_mapPointer->width) + (w - r)].object == _entity->UID)
+                    {
+                        m_mapPointer->tile[t + ((h - r) * m_mapPointer->width) + (w - r)].base = etb;
+                    }
+                }
+            }
+        }
+        
+        // Else set the single tile
+        else
+        {
+            m_mapPointer->tile[_entity->tile].base = static_cast<eTileBase>(_entity->state[state].tileState);
+        }
     }
 }
 
