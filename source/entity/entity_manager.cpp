@@ -417,6 +417,7 @@ sEntity* cEntityManager::load(const std::string& _fileName, sEntity* _entity)
         {
             _entity->state[i].name = xmlEntityFile.getString("<state_name>", 1 + i);
             _entity->state[i].animation = xmlEntityFile.getVec3("<state_animation>", 1 + i);
+            _entity->state[i].tileState = xmlEntityFile.getInteger("<state_tile>", 1 + i);
             std::string audioData = xmlEntityFile.getString("<state_sound>", 1 + i);
             //_entity->state[i].audioFile = xmlEntityFile.getString("<state_sound>", 1 + i);
 
@@ -545,6 +546,13 @@ void cEntityManager::setState(const std::uint32_t& _UID, const std::uint32_t& _s
 
         // Play sound associated with state
         m_playSound(entityTemp, entityTemp->stateCurrent);
+
+        // Set tile state associated with state
+        if ((m_mapPointer != nullptr) && (m_mapPointer->tile != nullptr))
+        {
+            //m_mapPointer->tile[entityTemp->tile].base = static_cast<eTileBase>(entityTemp->state[_state - 1].tileState);
+            m_mapPointer->tile[entityTemp->tile].base = eTileBase::tileFloor;
+        }
     }
 }
 
@@ -564,6 +572,13 @@ void cEntityManager::toggleState(const std::uint32_t& _UID, const std::uint32_t&
 
         // Play sound associated with state
         m_playSound(entityTemp, entityTemp->stateCurrent);
+
+        // Set tile state associated with state
+        if ((m_mapPointer != nullptr) && (m_mapPointer->tile != nullptr))
+        {
+            //m_mapPointer->tile[entityTemp->tile].base = static_cast<eTileBase>(entityTemp->state[entityTemp->stateCurrent - 1].tileState);
+            m_mapPointer->tile[entityTemp->tile].base = eTileBase::tileFloor;
+        }
     }
 }
 

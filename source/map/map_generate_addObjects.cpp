@@ -86,6 +86,9 @@ void cMapManager::m_addObjectEntity(sMap*& _map,              // Map pointer
             }
             if (tEntity != nullptr)
             {
+                // Tile entity occupies
+                tEntity->tile = _tn;
+
                 m_addCollisionData(_map, tEntity, _tn, _yr);
                 tEntity->owner = eEntityOwner::ownerMap;
                 tEntity->type  = eEntityType::entityTypeObject;
@@ -236,6 +239,9 @@ void cMapManager::m_addObjectEntities(sMap*& _map)
                 }
                 if (tEntity != nullptr)
                 {
+                    // Tile entity occupies
+                    tEntity->tile = tObjectTileNum;
+
                     m_addCollisionData(_map, tEntity, tObjectTileNum, tObjectRotation);
                     tEntity->owner = eEntityOwner::ownerMap;
                     tEntity->type  = eEntityType::entityTypeObject;
@@ -354,6 +360,9 @@ void cMapManager::m_addObjectEntities(sMap*& _map)
                                     tEntity = m_entityManager->load(xmlObjectFile.getString("<" + object_names[debris[i].object_number-1] + "_entity>", 1 + (rand() % object_counts[debris[i].object_number-1])));
                                     if (tEntity != nullptr)
                                     {
+                                        // Tile entity occupies
+                                        tEntity->tile = t;
+
                                         m_addCollisionData(_map, tEntity, t, 0.0);
                                         tEntity->owner = eEntityOwner::ownerMap;
                                         tEntity->type  = eEntityType::entityTypeObject;

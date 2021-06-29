@@ -78,45 +78,59 @@ void cMapManager::m_addDoorEntities(sMap*& _map)
                             (m_isFloor(_map, t - _map->width)) &&
                             (m_isFloor(_map, t - _map->width + 1)) &&
                             (m_isFloor(_map, t - _map->width - 1)))
+                    {
+                        tEntity = m_entityManager->load(xmlFile.getString("<door_3td_entity>", 1 + (rand() % door_3td_count)));
+                        if (tEntity != nullptr)
+                        {
+                            // Tile entity occupies
+                            tEntity->tile = t;
+                            
+                            // Set object UID on relevant map tiles
+                            _map->tile[t].object     = tEntity->UID;
+                            _map->tile[t + 1].object = tEntity->UID;
+                            _map->tile[t - 1].object = tEntity->UID;
+
+                            // Set base tile to relevant collision enum
+                            _map->tile[t].base     = eTileBase::tileFloorNoGo;
+                            _map->tile[t + 1].base = eTileBase::tileFloorNoGo;
+                            _map->tile[t - 1].base = eTileBase::tileFloorNoGo;
+
+                            tEntity->owner = eEntityOwner::ownerMap;
+                            tEntity->type  = eEntityType::entityTypeObject;
+                            tEntity->position += glm::vec3(static_cast<float32>(w) + tp - xo, y_pos, static_cast<float32>(h) + tp - yo);
+                            tEntity->rotation += glm::vec3(0.0f, DTOR_90, 0.0f);
+                            m_entityManager->updateModelMatrix(tEntity);
+                            
+                            // Set processed flags
+                            _map->tile[t].processed = true;
+                            _map->tile[t + 1].processed = true;
+                            _map->tile[t - 1].processed = true;
+
+                            // Create map events
+                            m_addMapEvent(_map, t + _map->width + 0, 2, t, 1, 0);
+                            m_addMapEvent(_map, t + _map->width + 1, 2, t, 1, 0);
+                            m_addMapEvent(_map, t + _map->width - 1, 2, t, 1, 0);
+                            m_addMapEvent(_map, t - _map->width + 0, 2, t, 1, 0);
+                            m_addMapEvent(_map, t - _map->width + 1, 2, t, 1, 0);
+                            m_addMapEvent(_map, t - _map->width - 1, 2, t, 1, 0);
+
+                            // Load audio file names
+                            if (tEntity->stateCount > 0)
                             {
-                                tEntity = m_entityManager->load(xmlFile.getString("<door_3td_entity>", 1 + (rand() % door_3td_count)));
-                                if (tEntity != nullptr)
+                                for (std::uint32_t s = 0; s < tEntity->stateCount; ++s)
                                 {
-                                    _map->tile[t].object = tEntity->UID;
-                                    tEntity->owner = eEntityOwner::ownerMap;
-                                    tEntity->type  = eEntityType::entityTypeObject;
-                                    tEntity->position += glm::vec3(static_cast<float32>(w) + tp - xo, y_pos, static_cast<float32>(h) + tp - yo);
-                                    tEntity->rotation += glm::vec3(0.0f, DTOR_90, 0.0f);
-                                    m_entityManager->updateModelMatrix(tEntity);
-                                    
-                                    _map->tile[t].processed = true;
-                                    _map->tile[t + 1].processed = true;
-                                    _map->tile[t - 1].processed = true;
-
-                                    m_addMapEvent(_map, t + _map->width + 0, 2, t, 1, 0);
-                                    m_addMapEvent(_map, t + _map->width + 1, 2, t, 1, 0);
-                                    m_addMapEvent(_map, t + _map->width - 1, 2, t, 1, 0);
-                                    m_addMapEvent(_map, t - _map->width + 0, 2, t, 1, 0);
-                                    m_addMapEvent(_map, t - _map->width + 1, 2, t, 1, 0);
-                                    m_addMapEvent(_map, t - _map->width - 1, 2, t, 1, 0);
-
-                                    // Load audio file names
-                                    if (tEntity->stateCount > 0)
+                                    if (tEntity->state[s].audioDBIndex > 0)
                                     {
-                                        for (std::uint32_t s = 0; s < tEntity->stateCount; ++s)
-                                        {
-                                            if (tEntity->state[s].audioDBIndex > 0)
-                                            {
-                                                tEntity->state[s].audioFile = xmlSoundFile.getString("<" + tEntity->state[s].audioDBname + "_sound>", tEntity->state[s].audioDBIndex);
-                                            }
-                                            else
-                                            {
-                                                tEntity->state[s].audioFile = xmlSoundFile.getString("<" + tEntity->state[s].audioDBname + "_sound>", (rand() % (xmlSoundFile.getInstanceCount("<" + tEntity->state[s].audioDBname + "_sound>") - 1)) + 1);
-                                            }
-                                        }
+                                        tEntity->state[s].audioFile = xmlSoundFile.getString("<" + tEntity->state[s].audioDBname + "_sound>", tEntity->state[s].audioDBIndex);
+                                    }
+                                    else
+                                    {
+                                        tEntity->state[s].audioFile = xmlSoundFile.getString("<" + tEntity->state[s].audioDBname + "_sound>", (rand() % (xmlSoundFile.getInstanceCount("<" + tEntity->state[s].audioDBname + "_sound>") - 1)) + 1);
                                     }
                                 }
                             }
+                        }
+                    }
                             
                     // ? W ?
                     // F D F
@@ -133,45 +147,59 @@ void cMapManager::m_addDoorEntities(sMap*& _map)
                             (m_isFloor(_map, t - _map->width - 1)) &&
                             (m_isWall (_map, t + (_map->width * 2))) &&
                             (m_isWall (_map, t - (_map->width * 2))))
+                    {
+                        tEntity = m_entityManager->load(xmlFile.getString("<door_3td_entity>", 1 + (rand() % door_3td_count)));
+                        if (tEntity != nullptr)
+                        {
+                            // Tile entity occupies
+                            tEntity->tile = t;
+
+                            // Set object UID on relevant map tiles
+                            _map->tile[t].object = tEntity->UID;
+                            _map->tile[t + _map->width].object = tEntity->UID;
+                            _map->tile[t - _map->width].object = tEntity->UID;
+
+                            // Set base tile to relevant collision enum
+                            _map->tile[t].base     = eTileBase::tileFloorNoGo;
+                            _map->tile[t + _map->width].base = eTileBase::tileFloorNoGo;
+                            _map->tile[t - _map->width].base = eTileBase::tileFloorNoGo;
+
+                            tEntity->owner = eEntityOwner::ownerMap;
+                            tEntity->type  = eEntityType::entityTypeObject;
+                            tEntity->position += glm::vec3(static_cast<float32>(w) + tp - xo, y_pos, static_cast<float32>(h) + tp - yo);
+                            tEntity->rotation += glm::vec3(0.0f, 0.0f, 0.0f);
+                            m_entityManager->updateModelMatrix(tEntity);
+                            
+                            // Set processed flags
+                            _map->tile[t].processed = true;
+                            _map->tile[t + _map->width].processed = true;
+                            _map->tile[t - _map->width].processed = true;
+
+                            // Create map events
+                            m_addMapEvent(_map, t + 1              , 2, t, 1, 0);
+                            m_addMapEvent(_map, t + _map->width + 1, 2, t, 1, 0);
+                            m_addMapEvent(_map, t + _map->width - 1, 2, t, 1, 0);
+                            m_addMapEvent(_map, t - 1              , 2, t, 1, 0);
+                            m_addMapEvent(_map, t - _map->width + 1, 2, t, 1, 0);
+                            m_addMapEvent(_map, t - _map->width - 1, 2, t, 1, 0);
+
+                            // Load audio file names
+                            if (tEntity->stateCount > 0)
                             {
-                                tEntity = m_entityManager->load(xmlFile.getString("<door_3td_entity>", 1 + (rand() % door_3td_count)));
-                                if (tEntity != nullptr)
+                                for (std::uint32_t s = 0; s < tEntity->stateCount; ++s)
                                 {
-                                    _map->tile[t].object = tEntity->UID;
-                                    tEntity->owner = eEntityOwner::ownerMap;
-                                    tEntity->type  = eEntityType::entityTypeObject;
-                                    tEntity->position += glm::vec3(static_cast<float32>(w) + tp - xo, y_pos, static_cast<float32>(h) + tp - yo);
-                                    tEntity->rotation += glm::vec3(0.0f, 0.0f, 0.0f);
-                                    m_entityManager->updateModelMatrix(tEntity);
-                                    
-                                    _map->tile[t].processed = true;
-                                    _map->tile[t + _map->width].processed = true;
-                                    _map->tile[t - _map->width].processed = true;
-
-                                    m_addMapEvent(_map, t + 1              , 2, t, 1, 0);
-                                    m_addMapEvent(_map, t + _map->width + 1, 2, t, 1, 0);
-                                    m_addMapEvent(_map, t + _map->width - 1, 2, t, 1, 0);
-                                    m_addMapEvent(_map, t - 1              , 2, t, 1, 0);
-                                    m_addMapEvent(_map, t - _map->width + 1, 2, t, 1, 0);
-                                    m_addMapEvent(_map, t - _map->width - 1, 2, t, 1, 0);
-
-                                    // Load audio file names
-                                    if (tEntity->stateCount > 0)
+                                    if (tEntity->state[s].audioDBIndex > 0)
                                     {
-                                        for (std::uint32_t s = 0; s < tEntity->stateCount; ++s)
-                                        {
-                                            if (tEntity->state[s].audioDBIndex > 0)
-                                            {
-                                                tEntity->state[s].audioFile = xmlSoundFile.getString("<" + tEntity->state[s].audioDBname + "_sound>", tEntity->state[s].audioDBIndex);
-                                            }
-                                            else
-                                            {
-                                                tEntity->state[s].audioFile = xmlSoundFile.getString("<" + tEntity->state[s].audioDBname + "_sound>", (rand() % (xmlSoundFile.getInstanceCount("<" + tEntity->state[s].audioDBname + "_sound>") - 1)) + 1);
-                                            }
-                                        }
+                                        tEntity->state[s].audioFile = xmlSoundFile.getString("<" + tEntity->state[s].audioDBname + "_sound>", tEntity->state[s].audioDBIndex);
+                                    }
+                                    else
+                                    {
+                                        tEntity->state[s].audioFile = xmlSoundFile.getString("<" + tEntity->state[s].audioDBname + "_sound>", (rand() % (xmlSoundFile.getInstanceCount("<" + tEntity->state[s].audioDBname + "_sound>") - 1)) + 1);
                                     }
                                 }
                             }
+                        }
+                    }
                 }
             }
         }
@@ -199,43 +227,55 @@ void cMapManager::m_addDoorEntities(sMap*& _map)
                             (m_isFloor(_map, t - _map->width)) &&
                             (m_isFloor(_map, t + _map->width + 1)) &&
                             (m_isFloor(_map, t - _map->width + 1)))
+                    {
+                        tEntity = m_entityManager->load(xmlFile.getString("<door_2td_entity>", 1 + (rand() % door_2td_count)));
+                        if (tEntity != nullptr)
+                        {
+                            // Tile entity occupies
+                            tEntity->tile = t;
+
+                            // Set object UID on relevant map tiles
+                            _map->tile[t].object     = tEntity->UID;
+                            _map->tile[t + 1].object = tEntity->UID;
+
+                            // Set base tile to relevant collision enum
+                            _map->tile[t].base     = eTileBase::tileFloorNoGo;
+                            _map->tile[t + 1].base = eTileBase::tileFloorNoGo;
+
+                            tEntity->owner = eEntityOwner::ownerMap;
+                            tEntity->type  = eEntityType::entityTypeObject;
+                            tEntity->position += glm::vec3(static_cast<float32>(w) + tp - xo, y_pos, static_cast<float32>(h) + tp - yo);
+                            tEntity->position.x += tp;
+                            tEntity->rotation += glm::vec3(0.0f, DTOR_90, 0.0f);
+                            m_entityManager->updateModelMatrix(tEntity);
+                            
+                            // Set processed flags
+                            _map->tile[t].processed = true;
+                            _map->tile[t + 1].processed = true;
+
+                            // Create map events
+                            m_addMapEvent(_map, t + _map->width + 0, 2, t, 1, 0);
+                            m_addMapEvent(_map, t - _map->width + 0, 2, t, 1, 0);
+                            m_addMapEvent(_map, t + _map->width + 1, 2, t, 1, 0);
+                            m_addMapEvent(_map, t - _map->width + 1, 2, t, 1, 0);
+
+                            // Load audio file names
+                            if (tEntity->stateCount > 0)
                             {
-                                tEntity = m_entityManager->load(xmlFile.getString("<door_2td_entity>", 1 + (rand() % door_2td_count)));
-                                if (tEntity != nullptr)
+                                for (std::uint32_t s = 0; s < tEntity->stateCount; ++s)
                                 {
-                                    _map->tile[t].object = tEntity->UID;
-                                    tEntity->owner = eEntityOwner::ownerMap;
-                                    tEntity->type  = eEntityType::entityTypeObject;
-                                    tEntity->position += glm::vec3(static_cast<float32>(w) + tp - xo, y_pos, static_cast<float32>(h) + tp - yo);
-                                    tEntity->position.x += tp;
-                                    tEntity->rotation += glm::vec3(0.0f, DTOR_90, 0.0f);
-                                    m_entityManager->updateModelMatrix(tEntity);
-                                    
-                                    _map->tile[t].processed = true;
-                                    _map->tile[t + 1].processed = true;
-
-                                    m_addMapEvent(_map, t + _map->width + 0, 2, t, 1, 0);
-                                    m_addMapEvent(_map, t - _map->width + 0, 2, t, 1, 0);
-                                    m_addMapEvent(_map, t + _map->width + 1, 2, t, 1, 0);
-                                    m_addMapEvent(_map, t - _map->width + 1, 2, t, 1, 0);
-
-                                    // Load audio file names
-                                    if (tEntity->stateCount > 0)
+                                    if (tEntity->state[s].audioDBIndex > 0)
                                     {
-                                        for (std::uint32_t s = 0; s < tEntity->stateCount; ++s)
-                                        {
-                                            if (tEntity->state[s].audioDBIndex > 0)
-                                            {
-                                                tEntity->state[s].audioFile = xmlSoundFile.getString("<" + tEntity->state[s].audioDBname + "_sound>", tEntity->state[s].audioDBIndex);
-                                            }
-                                            else
-                                            {
-                                                tEntity->state[s].audioFile = xmlSoundFile.getString("<" + tEntity->state[s].audioDBname + "_sound>", (rand() % (xmlSoundFile.getInstanceCount("<" + tEntity->state[s].audioDBname + "_sound>") - 1)) + 1);
-                                            }
-                                        }
+                                        tEntity->state[s].audioFile = xmlSoundFile.getString("<" + tEntity->state[s].audioDBname + "_sound>", tEntity->state[s].audioDBIndex);
+                                    }
+                                    else
+                                    {
+                                        tEntity->state[s].audioFile = xmlSoundFile.getString("<" + tEntity->state[s].audioDBname + "_sound>", (rand() % (xmlSoundFile.getInstanceCount("<" + tEntity->state[s].audioDBname + "_sound>") - 1)) + 1);
                                     }
                                 }
                             }
+                        }
+                    }
                             
                     // ? W ?
                     // F - F
@@ -248,43 +288,55 @@ void cMapManager::m_addDoorEntities(sMap*& _map)
                             (m_isFloor(_map, t + _map->width + 1)) &&
                             (m_isFloor(_map, t + _map->width - 1)) &&
                             (m_isWall (_map, t + (_map->width * 2))))
+                    {
+                        tEntity = m_entityManager->load(xmlFile.getString("<door_2td_entity>", 1 + (rand() % door_2td_count)));
+                        if (tEntity != nullptr)
+                        {
+                            // Tile entity occupies
+                            tEntity->tile = t;
+
+                            // Set object UID on relevant map tiles
+                            _map->tile[t].object = tEntity->UID;
+                            _map->tile[t + _map->width].object = tEntity->UID;
+
+                            // Set base tile to relevant collision enum
+                            _map->tile[t].base     = eTileBase::tileFloorNoGo;
+                            _map->tile[t + _map->width].base = eTileBase::tileFloorNoGo;
+
+                            tEntity->owner = eEntityOwner::ownerMap;
+                            tEntity->type  = eEntityType::entityTypeObject;
+                            tEntity->position += glm::vec3(static_cast<float32>(w) + tp - xo, y_pos, static_cast<float32>(h) + tp - yo);
+                            tEntity->position.z += tp;
+                            tEntity->rotation += glm::vec3(0.0f, 0.0f, 0.0f);
+                            m_entityManager->updateModelMatrix(tEntity);
+                            
+                            // Set processed flags
+                            _map->tile[t].processed = true;
+                            _map->tile[t + _map->width].processed = true;
+
+                            // Create map events
+                            m_addMapEvent(_map, t + 1              , 2, t, 1, 0);
+                            m_addMapEvent(_map, t - 1              , 2, t, 1, 0);
+                            m_addMapEvent(_map, t + _map->width + 1, 2, t, 1, 0);
+                            m_addMapEvent(_map, t + _map->width - 1, 2, t, 1, 0);
+
+                            // Load audio file names
+                            if (tEntity->stateCount > 0)
                             {
-                                tEntity = m_entityManager->load(xmlFile.getString("<door_2td_entity>", 1 + (rand() % door_2td_count)));
-                                if (tEntity != nullptr)
+                                for (std::uint32_t s = 0; s < tEntity->stateCount; ++s)
                                 {
-                                    _map->tile[t].object = tEntity->UID;
-                                    tEntity->owner = eEntityOwner::ownerMap;
-                                    tEntity->type  = eEntityType::entityTypeObject;
-                                    tEntity->position += glm::vec3(static_cast<float32>(w) + tp - xo, y_pos, static_cast<float32>(h) + tp - yo);
-                                    tEntity->position.z += tp;
-                                    tEntity->rotation += glm::vec3(0.0f, 0.0f, 0.0f);
-                                    m_entityManager->updateModelMatrix(tEntity);
-                                    
-                                    _map->tile[t].processed = true;
-                                    _map->tile[t + _map->width].processed = true;
-
-                                    m_addMapEvent(_map, t + 1              , 2, t, 1, 0);
-                                    m_addMapEvent(_map, t - 1              , 2, t, 1, 0);
-                                    m_addMapEvent(_map, t + _map->width + 1, 2, t, 1, 0);
-                                    m_addMapEvent(_map, t + _map->width - 1, 2, t, 1, 0);
-
-                                    // Load audio file names
-                                    if (tEntity->stateCount > 0)
+                                    if (tEntity->state[s].audioDBIndex > 0)
                                     {
-                                        for (std::uint32_t s = 0; s < tEntity->stateCount; ++s)
-                                        {
-                                            if (tEntity->state[s].audioDBIndex > 0)
-                                            {
-                                                tEntity->state[s].audioFile = xmlSoundFile.getString("<" + tEntity->state[s].audioDBname + "_sound>", tEntity->state[s].audioDBIndex);
-                                            }
-                                            else
-                                            {
-                                                tEntity->state[s].audioFile = xmlSoundFile.getString("<" + tEntity->state[s].audioDBname + "_sound>", (rand() % (xmlSoundFile.getInstanceCount("<" + tEntity->state[s].audioDBname + "_sound>") - 1)) + 1);
-                                            }
-                                        }
+                                        tEntity->state[s].audioFile = xmlSoundFile.getString("<" + tEntity->state[s].audioDBname + "_sound>", tEntity->state[s].audioDBIndex);
+                                    }
+                                    else
+                                    {
+                                        tEntity->state[s].audioFile = xmlSoundFile.getString("<" + tEntity->state[s].audioDBname + "_sound>", (rand() % (xmlSoundFile.getInstanceCount("<" + tEntity->state[s].audioDBname + "_sound>") - 1)) + 1);
                                     }
                                 }
                             }
+                        }
+                    }
                 }
             }
         }
@@ -309,39 +361,49 @@ void cMapManager::m_addDoorEntities(sMap*& _map)
                             (m_isWall (_map, t - 1)) &&
                             (m_isFloor(_map, t + _map->width)) &&
                             (m_isFloor(_map, t - _map->width)))
+                    {
+                        tEntity = m_entityManager->load(xmlFile.getString("<door_1td_entity>", 1 + (rand() % door_1td_count)));
+                        if (tEntity != nullptr)
+                        {
+                            // Tile entity occupies
+                            tEntity->tile = t;
+
+                            // Set object UID on relevant map tiles
+                            _map->tile[t].object     = tEntity->UID;
+
+                            // Set base tile to relevant collision enum
+                            _map->tile[t].base     = eTileBase::tileFloorNoGo;
+
+                            tEntity->owner = eEntityOwner::ownerMap;
+                            tEntity->type  = eEntityType::entityTypeObject;
+                            tEntity->position += glm::vec3(static_cast<float32>(w) + tp - xo, y_pos, static_cast<float32>(h) + tp - yo);
+                            tEntity->rotation += glm::vec3(0.0f, DTOR_90, 0.0f);
+                            m_entityManager->updateModelMatrix(tEntity);
+                            
+                            // Set processed flags
+                            _map->tile[t].processed = true;
+
+                            // Create map events
+                            m_addMapEvent(_map, t + _map->width + 0, 2, t, 1, 0);
+                            m_addMapEvent(_map, t - _map->width + 0, 2, t, 1, 0);
+
+                            // Load audio file names
+                            if (tEntity->stateCount > 0)
                             {
-                                tEntity = m_entityManager->load(xmlFile.getString("<door_1td_entity>", 1 + (rand() % door_1td_count)));
-                                if (tEntity != nullptr)
+                                for (std::uint32_t s = 0; s < tEntity->stateCount; ++s)
                                 {
-                                    _map->tile[t].object = tEntity->UID;
-                                    tEntity->owner = eEntityOwner::ownerMap;
-                                    tEntity->type  = eEntityType::entityTypeObject;
-                                    tEntity->position += glm::vec3(static_cast<float32>(w) + tp - xo, y_pos, static_cast<float32>(h) + tp - yo);
-                                    tEntity->rotation += glm::vec3(0.0f, DTOR_90, 0.0f);
-                                    m_entityManager->updateModelMatrix(tEntity);
-                                    
-                                    _map->tile[t].processed = true;
-
-                                    m_addMapEvent(_map, t + _map->width + 0, 2, t, 1, 0);
-                                    m_addMapEvent(_map, t - _map->width + 0, 2, t, 1, 0);
-
-                                    // Load audio file names
-                                    if (tEntity->stateCount > 0)
+                                    if (tEntity->state[s].audioDBIndex > 0)
                                     {
-                                        for (std::uint32_t s = 0; s < tEntity->stateCount; ++s)
-                                        {
-                                            if (tEntity->state[s].audioDBIndex > 0)
-                                            {
-                                                tEntity->state[s].audioFile = xmlSoundFile.getString("<" + tEntity->state[s].audioDBname + "_sound>", tEntity->state[s].audioDBIndex);
-                                            }
-                                            else
-                                            {
-                                                tEntity->state[s].audioFile = xmlSoundFile.getString("<" + tEntity->state[s].audioDBname + "_sound>", (rand() % (xmlSoundFile.getInstanceCount("<" + tEntity->state[s].audioDBname + "_sound>") - 1)) + 1);
-                                            }
-                                        }
+                                        tEntity->state[s].audioFile = xmlSoundFile.getString("<" + tEntity->state[s].audioDBname + "_sound>", tEntity->state[s].audioDBIndex);
+                                    }
+                                    else
+                                    {
+                                        tEntity->state[s].audioFile = xmlSoundFile.getString("<" + tEntity->state[s].audioDBname + "_sound>", (rand() % (xmlSoundFile.getInstanceCount("<" + tEntity->state[s].audioDBname + "_sound>") - 1)) + 1);
                                     }
                                 }
                             }
+                        }
+                    }
                             
                     // ? W ?
                     // F - F
@@ -350,39 +412,49 @@ void cMapManager::m_addDoorEntities(sMap*& _map)
                             (m_isFloor(_map, t - 1)) &&
                             (m_isWall (_map, t + _map->width)) &&
                             (m_isWall (_map, t - _map->width)))
+                    {
+                        tEntity = m_entityManager->load(xmlFile.getString("<door_1td_entity>", 1 + (rand() % door_1td_count)));
+                        if (tEntity != nullptr)
+                        {
+                            // Tile entity occupies
+                            tEntity->tile = t;
+
+                            // Set object UID on relevant map tiles
+                            _map->tile[t].object     = tEntity->UID;
+
+                            // Set base tile to relevant collision enum
+                            _map->tile[t].base     = eTileBase::tileFloorNoGo;
+
+                            tEntity->owner = eEntityOwner::ownerMap;
+                            tEntity->type  = eEntityType::entityTypeObject;
+                            tEntity->position += glm::vec3(static_cast<float32>(w) + tp - xo, y_pos, static_cast<float32>(h) + tp - yo);
+                            tEntity->rotation += glm::vec3(0.0f, 0.0f, 0.0f);
+                            m_entityManager->updateModelMatrix(tEntity);
+                            
+                            // Set processed flags
+                            _map->tile[t].processed = true;
+
+                            // Create map events
+                            m_addMapEvent(_map, t + 1              , 2, t, 1, 0);
+                            m_addMapEvent(_map, t - 1              , 2, t, 1, 0);
+
+                            // Load audio file names
+                            if (tEntity->stateCount > 0)
                             {
-                                tEntity = m_entityManager->load(xmlFile.getString("<door_1td_entity>", 1 + (rand() % door_1td_count)));
-                                if (tEntity != nullptr)
+                                for (std::uint32_t s = 0; s < tEntity->stateCount; ++s)
                                 {
-                                    _map->tile[t].object = tEntity->UID;
-                                    tEntity->owner = eEntityOwner::ownerMap;
-                                    tEntity->type  = eEntityType::entityTypeObject;
-                                    tEntity->position += glm::vec3(static_cast<float32>(w) + tp - xo, y_pos, static_cast<float32>(h) + tp - yo);
-                                    tEntity->rotation += glm::vec3(0.0f, 0.0f, 0.0f);
-                                    m_entityManager->updateModelMatrix(tEntity);
-                                    
-                                    _map->tile[t].processed = true;
-
-                                    m_addMapEvent(_map, t + 1              , 2, t, 1, 0);
-                                    m_addMapEvent(_map, t - 1              , 2, t, 1, 0);
-
-                                    // Load audio file names
-                                    if (tEntity->stateCount > 0)
+                                    if (tEntity->state[s].audioDBIndex > 0)
                                     {
-                                        for (std::uint32_t s = 0; s < tEntity->stateCount; ++s)
-                                        {
-                                            if (tEntity->state[s].audioDBIndex > 0)
-                                            {
-                                                tEntity->state[s].audioFile = xmlSoundFile.getString("<" + tEntity->state[s].audioDBname + "_sound>", tEntity->state[s].audioDBIndex);
-                                            }
-                                            else
-                                            {
-                                                tEntity->state[s].audioFile = xmlSoundFile.getString("<" + tEntity->state[s].audioDBname + "_sound>", (rand() % (xmlSoundFile.getInstanceCount("<" + tEntity->state[s].audioDBname + "_sound>") - 1)) + 1);
-                                            }
-                                        }
+                                        tEntity->state[s].audioFile = xmlSoundFile.getString("<" + tEntity->state[s].audioDBname + "_sound>", tEntity->state[s].audioDBIndex);
+                                    }
+                                    else
+                                    {
+                                        tEntity->state[s].audioFile = xmlSoundFile.getString("<" + tEntity->state[s].audioDBname + "_sound>", (rand() % (xmlSoundFile.getInstanceCount("<" + tEntity->state[s].audioDBname + "_sound>") - 1)) + 1);
                                     }
                                 }
                             }
+                        }
+                    }
                 }
             }
         }

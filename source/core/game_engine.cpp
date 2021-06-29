@@ -79,6 +79,7 @@ void cGameEngine::initialize(void)
         mapManager.setAnimationPointer(&animationEngine);
         mapManager.setAudioPointer(&audioManager);
         mapManager.setGraphicsPointer(&graphicsEngine);
+        entityManager.setMapPointer(mapManager.getHead());
         uiManager.initialize(&entityManager);
         graphicsEngine.setLoadTextureID(entityManager.loadTexture("ui/loading_screen_001.png")->ID);
         graphicsEngine.process(0);

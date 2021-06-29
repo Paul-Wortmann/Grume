@@ -27,12 +27,14 @@ void cMapManager::m_addCollisionData(sMap*& _map, sEntity*& _entity, const std::
 {
     if ((_entity->collision != nullptr) && (_entity->collision->data != nullptr))
     {
+        /*
         std::cout << "Adding collision for: " << _entity->name << std::endl;
         for (std::uint32_t h = 0; h < _entity->collision->size; ++h)
             for (std::uint32_t w = 0; w < _entity->collision->size; ++w)
                 std::cout << (_entity->collision->data[(h * _entity->collision->size) + w]) << " ";
         std::cout << std::endl;
         std::cout << "Rotation: " << _rotation << std::endl;
+        */
         
         // Rotation
         if (_rotation > 4.0f)      // 4.71239 == 270
@@ -62,6 +64,7 @@ void cMapManager::m_addCollisionData(sMap*& _map, sEntity*& _entity, const std::
             }
         }
 
+        /*
         for (std::uint32_t h = 0; h < _entity->collision->size; ++h)
             for (std::uint32_t w = 0; w < _entity->collision->size; ++w)
                 std::cout << (_tile + ((h - r) * _map->width) + (w - r)) << " ";
@@ -71,9 +74,12 @@ void cMapManager::m_addCollisionData(sMap*& _map, sEntity*& _entity, const std::
                 std::cout << (_entity->collision->data[(h * _entity->collision->size) + w]) << " ";
         std::cout << std::endl;
         std::cout << "Tile: " << _tile << std::endl;
+        */
     }
     else
     {
-        //_map->tile[_tile].object = _entity->UID;
+        // Add default tile object data to the map
+        //_map->tile[_tile].base   = eTileBase::tileFloorNoGo;
+        _map->tile[_tile].object = _entity->UID;
     }
 }

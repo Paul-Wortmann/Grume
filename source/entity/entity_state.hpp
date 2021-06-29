@@ -31,6 +31,9 @@ struct sEntityState
     // Infomation
     std::string   name          = "";
 
+    // Object tile state
+    std::uint32_t tileState     = 1; // eTileBase::tileFloor
+
     // Animation (start, end, repeat)
     glm::vec3     animation     = glm::vec3(0, 0, 0);
 

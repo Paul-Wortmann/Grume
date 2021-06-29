@@ -62,6 +62,7 @@ struct sEntity
     bool               enabled              = true;
     eEntityType        type                 = eEntityType::entityTypeStatic;
     eEntityOwner       owner                = eEntityOwner::ownerNone;
+    std::uint32_t      tile                 = 0; // Current tile
 
     // Base
     glm::vec3          position             = glm::vec3(0.0f, 0.0f, 0.0f);
@@ -72,7 +73,7 @@ struct sEntity
 
     // Animation (per entity, not shared)
     bool               animationIndependent = false;
-    uint32             numBones             = 0;
+    std::uint32_t      numBones             = 0;
     glm::mat4*         boneTransform        = nullptr;
 
     std::uint32_t      currentAnimation     = 0;

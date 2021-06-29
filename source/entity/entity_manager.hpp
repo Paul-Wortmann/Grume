@@ -31,6 +31,7 @@
 #include "../core/game_database.hpp"
 #include "../audio/audio_manager.hpp"
 #include "../utils/xml_parser.hpp"
+#include "../map/map_define.hpp"
 
 class cEntityManager : public tcLinkedList<sEntity>
 {
@@ -40,6 +41,7 @@ class cEntityManager : public tcLinkedList<sEntity>
         void             process(const float32 &_dt);
         void             setAudioPointer(cAudioManager* _audioManager) { m_audioManager = _audioManager; };
         void             setDatabasePointer(cGameDatabase* _gameDatabase) { m_gameDatabase = _gameDatabase; };
+        void             setMapPointer(sMap* _map) { m_mapPointer = _map; };
         void             addModel(sEntityModel*& _model);
         sEntityModel*    getNewModel(void);
         sEntityModel*    loadModel(const std::string& _fileName);
@@ -65,6 +67,7 @@ class cEntityManager : public tcLinkedList<sEntity>
 
         cAudioManager*   m_audioManager   = nullptr;
         cGameDatabase*   m_gameDatabase   = nullptr;
+        sMap*            m_mapPointer     = nullptr;
         cModelManager    m_modelManager;
 };
 

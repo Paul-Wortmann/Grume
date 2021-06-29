@@ -128,6 +128,9 @@ void cMapManager::m_addNPCEntities(sMap*& _map)
                 }
                 if (tEntity != nullptr)
                 {
+                    // Tile entity occupies
+                    tEntity->tile = tNPCTileNum;
+
                     _map->tile[tNPCTileNum].npc = tEntity->UID;
                     tEntity->owner = eEntityOwner::ownerMap;
                     tEntity->type  = eEntityType::entityTypeNPC;
@@ -243,6 +246,9 @@ void cMapManager::m_addNPCEntities(sMap*& _map)
                                     tEntity = m_entityManager->load(xmlNPCFile.getString("<" + npc_names[mob[i].npc_number-1] + "_entity>", 1 + (rand() % npc_counts[mob[i].npc_number-1])));
                                     if (tEntity != nullptr)
                                     {
+                                        // Tile entity occupies
+                                        tEntity->tile = t;
+
                                         _map->tile[t].npc = tEntity->UID;
                                         tEntity->owner = eEntityOwner::ownerMap;
                                         tEntity->type  = eEntityType::entityTypeNPCmob;
