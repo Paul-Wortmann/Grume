@@ -515,17 +515,23 @@ void cEntityManager::m_setTileState(sEntity*& _entity, const std::uint32_t& _sta
         // If collision data, use it
         if (_entity->collision != nullptr)
         {
-            eTileBase     etb = static_cast<eTileBase>(_entity->state[state].tileState);
-            std::uint32_t t   = _entity->tile;
-            std::uint32_t r   = _entity->collision->size / 2;
+            // Constant data
+            const eTileBase     etb = static_cast<eTileBase>(_entity->state[state].tileState);
+            const std::uint32_t t   = _entity->tile;
+            const std::uint32_t r   = _entity->collision->size / 2;
             
+            // Loop through the collision map and to find other tiles owned by this entity
             for (std::uint32_t h = 0; h < _entity->collision->size; ++h)
             {
                 for (std::uint32_t w = 0; w < _entity->collision->size; ++w)
                 {
-                    if (m_mapPointer->tile[t + ((h - r) * m_mapPointer->width) + (w - r)].object == _entity->UID)
+                    // Tile - collision map indexed
+                    std::uint32_t tc = t + ((h - r) * m_mapPointer->width) + (w - r);
+                    
+                    // If we find a tile, modify its enum to reflect the state
+                    if (m_mapPointer->tile[tc].object == _entity->UID)
                     {
-                        m_mapPointer->tile[t + ((h - r) * m_mapPointer->width) + (w - r)].base = etb;
+                        m_mapPointer->tile[tc].base = etb;
                     }
                 }
             }
