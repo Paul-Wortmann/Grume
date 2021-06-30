@@ -105,6 +105,13 @@ void cEntityManager::m_freeData(sEntity*& _pointer)
         _pointer->characterSkills = nullptr;
     }
 
+    // Interaction
+    if (_pointer->interaction != nullptr)
+    {
+        delete _pointer->interaction;
+        _pointer->interaction = nullptr;
+    }
+
     // Pathing
     if (_pointer->movement != nullptr)
     {
@@ -344,6 +351,16 @@ sEntity* cEntityManager::load(const std::string& _fileName, sEntity* _entity)
             _entity->ai->attack_counter   = _entity->ai->attack_frequency;
         }
         
+        // Load Interaction data
+        if (xmlEntityFile.getInstanceCount("<interaction>") != 0)
+        {
+            _entity->interaction          = new sEntityInteraction;
+            glm::vec3 xmlIvec3            =  xmlEntityFile.getIvec3("<interaction>");
+            _entity->interaction->type    = xmlIvec3.x;
+            _entity->interaction->data_1  = xmlIvec3.y;
+            _entity->interaction->data_2  = xmlIvec3.z;
+        }
+        
         // Load Collision data
         if (xmlEntityFile.getInstanceCount("<collision>") != 0)
         {
@@ -510,6 +527,7 @@ void cEntityManager::m_setTileState(sEntity*& _entity, const std::uint32_t& _sta
     // Convert to zero indexed array
     std::uint32_t state = _state - 1;
 
+    // Only proceed if valid data
     if ((m_mapPointer != nullptr) && (m_mapPointer->tile != nullptr) && (_entity->state[state].tileState != 0))
     {
         // If collision data, use it
@@ -559,6 +577,7 @@ sEntity* cEntityManager::m_UIDtoEntity(const std::uint32_t& _UID)
 
 void cEntityManager::setState(const std::uint32_t& _UID, const std::string& _name)
 {
+    // Get the Entity UID
     sEntity* entityTemp = m_UIDtoEntity(_UID);
     for (std::uint32_t i = 0; i < entityTemp->stateCount; ++i)
     {

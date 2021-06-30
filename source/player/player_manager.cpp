@@ -122,6 +122,28 @@ void cPlayerManager::process(const float32 &_dt)
         if (m_mapPointer->tile[m_mouseTile].object != 0)
         {
             std::cout << "object clicked: " << m_mouseTile << std::endl;
+            
+            // find object uid
+            for (sEntity* entity = m_entityManager->getHead(); entity != nullptr; entity = entity->next)
+            {
+                if (entity->UID == m_mapPointer->tile[m_mouseTile].object)
+                {
+                    if (entity->interaction != nullptr)
+                    {
+                        // Toggle states
+                        if (entity->interaction->type == 0)
+                        {
+                            m_entityManager->toggleState(entity->UID, entity->interaction->data_1, entity->interaction->data_2);
+                        }
+                        // Set state
+                        else if (entity->interaction->type == 1)
+                        {
+                            m_entityManager->setState(entity->UID, entity->interaction->data_1);
+                        }
+                    }
+                }
+            }
+            
         }
         
         // If click NPC

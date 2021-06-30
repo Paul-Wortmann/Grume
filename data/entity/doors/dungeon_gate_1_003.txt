@@ -9,7 +9,13 @@
     <scale>1.0 1.0 1.0</scale>
     #1.5708, 3.1416
     <rotation>0.000 0.0000 3.1416</rotation>
-    <uint_size>3 3 1</uint_size>
+
+    <collision>
+        <collision_size>3</collision_size>
+        <collision_data>0 0 0</collision_data>
+        <collision_data>0 1 0</collision_data>
+        <collision_data>0 0 0</collision_data>
+    </collision>
 
     <animation_independent>1</animation_independent>
 
@@ -18,12 +24,19 @@
         <state_name>open</state_name>
         <state_sound>object 2 0</state_sound> # database name, else none, database index, repeat (bool)
         <state_animation>0.0 0.4166 0</state_animation> # frame start, frame end, repeat (bool)
+        <state_tile>1</state_tile> #eTileBase::tileFloor
     </state>
     <state>
         <state_name>close</state_name>
         <state_sound>object 2 0</state_sound> # database name, else none, database index, repeat (bool)
         <state_animation>0.4166 0.8333 0</state_animation> # frame start, frame end, repeat (bool)
+        <state_tile>6</state_tile> #eTileBase::tileFloorNoGo
     </state>
+    
+    #type, state 1 , state 2
+    #type 0 = toggle states
+    #type 1 = set state
+    <interaction>0 1 2</interaction>
 
 </entity>
 
