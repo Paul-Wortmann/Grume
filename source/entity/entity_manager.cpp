@@ -356,7 +356,7 @@ sEntity* cEntityManager::load(const std::string& _fileName, sEntity* _entity)
         {
             _entity->interaction          = new sEntityInteraction;
             glm::vec3 xmlIvec3            =  xmlEntityFile.getIvec3("<interaction>");
-            _entity->interaction->type    = xmlIvec3.x;
+            _entity->interaction->type    = static_cast<eEntityInteractionType>(xmlIvec3.x);
             _entity->interaction->data_1  = xmlIvec3.y;
             _entity->interaction->data_2  = xmlIvec3.z;
         }

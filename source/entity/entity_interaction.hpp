@@ -26,12 +26,18 @@
 
 #include "../core/includes.hpp"
 
+enum eEntityInteractionType: uint16
+{
+    InteractionTypeToggle     = 0,
+    InteractionTypeSet        = 1
+};
+
 struct sEntityInteraction
 {
     // 0 = toggle states; 1 = set state
-    std::uint32_t  type   = 0;
-    std::uint32_t  data_1 = 0;
-    std::uint32_t  data_2 = 0;
+    eEntityInteractionType  type   = eEntityInteractionType::InteractionTypeToggle;
+    std::uint32_t           data_1 = 0;
+    std::uint32_t           data_2 = 0;
 };
 
 #endif // ENTITY_INTERACTION_HPP

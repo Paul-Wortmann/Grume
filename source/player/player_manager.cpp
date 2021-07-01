@@ -131,12 +131,12 @@ void cPlayerManager::process(const float32 &_dt)
                     if (entity->interaction != nullptr)
                     {
                         // Toggle states
-                        if (entity->interaction->type == 0)
+                        if (entity->interaction->type == eEntityInteractionType::InteractionTypeToggle)
                         {
                             m_entityManager->toggleState(entity->UID, entity->interaction->data_1, entity->interaction->data_2);
                         }
                         // Set state
-                        else if (entity->interaction->type == 1)
+                        else if (entity->interaction->type == eEntityInteractionType::InteractionTypeSet)
                         {
                             m_entityManager->setState(entity->UID, entity->interaction->data_1);
                         }
