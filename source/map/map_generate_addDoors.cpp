@@ -107,12 +107,14 @@ void cMapManager::m_addDoorEntities(sMap*& _map)
                             _map->tile[t - 1].processed = true;
 
                             // Create map events
+                            /*
                             m_addMapEvent(_map, t + _map->width + 0, 2, t, 1, 0);
                             m_addMapEvent(_map, t + _map->width + 1, 2, t, 1, 0);
                             m_addMapEvent(_map, t + _map->width - 1, 2, t, 1, 0);
                             m_addMapEvent(_map, t - _map->width + 0, 2, t, 1, 0);
                             m_addMapEvent(_map, t - _map->width + 1, 2, t, 1, 0);
                             m_addMapEvent(_map, t - _map->width - 1, 2, t, 1, 0);
+                            */
 
                             // Load audio file names
                             if (tEntity->stateCount > 0)
@@ -176,12 +178,14 @@ void cMapManager::m_addDoorEntities(sMap*& _map)
                             _map->tile[t - _map->width].processed = true;
 
                             // Create map events
+                            /*
                             m_addMapEvent(_map, t + 1              , 2, t, 1, 0);
                             m_addMapEvent(_map, t + _map->width + 1, 2, t, 1, 0);
                             m_addMapEvent(_map, t + _map->width - 1, 2, t, 1, 0);
                             m_addMapEvent(_map, t - 1              , 2, t, 1, 0);
                             m_addMapEvent(_map, t - _map->width + 1, 2, t, 1, 0);
                             m_addMapEvent(_map, t - _map->width - 1, 2, t, 1, 0);
+                            */
 
                             // Load audio file names
                             if (tEntity->stateCount > 0)
@@ -254,10 +258,12 @@ void cMapManager::m_addDoorEntities(sMap*& _map)
                             _map->tile[t + 1].processed = true;
 
                             // Create map events
+                            /*
                             m_addMapEvent(_map, t + _map->width + 0, 2, t, 1, 0);
                             m_addMapEvent(_map, t - _map->width + 0, 2, t, 1, 0);
                             m_addMapEvent(_map, t + _map->width + 1, 2, t, 1, 0);
                             m_addMapEvent(_map, t - _map->width + 1, 2, t, 1, 0);
+                            */
 
                             // Load audio file names
                             if (tEntity->stateCount > 0)
@@ -315,10 +321,12 @@ void cMapManager::m_addDoorEntities(sMap*& _map)
                             _map->tile[t + _map->width].processed = true;
 
                             // Create map events
+                            /*
                             m_addMapEvent(_map, t + 1              , 2, t, 1, 0);
                             m_addMapEvent(_map, t - 1              , 2, t, 1, 0);
                             m_addMapEvent(_map, t + _map->width + 1, 2, t, 1, 0);
                             m_addMapEvent(_map, t + _map->width - 1, 2, t, 1, 0);
+                            */
 
                             // Load audio file names
                             if (tEntity->stateCount > 0)
@@ -384,8 +392,10 @@ void cMapManager::m_addDoorEntities(sMap*& _map)
                             _map->tile[t].processed = true;
 
                             // Create map events
+                            /*
                             m_addMapEvent(_map, t + _map->width + 0, 2, t, 1, 0);
                             m_addMapEvent(_map, t - _map->width + 0, 2, t, 1, 0);
+                            */
 
                             // Load audio file names
                             if (tEntity->stateCount > 0)
@@ -435,8 +445,10 @@ void cMapManager::m_addDoorEntities(sMap*& _map)
                             _map->tile[t].processed = true;
 
                             // Create map events
+                            /*
                             m_addMapEvent(_map, t + 1              , 2, t, 1, 0);
                             m_addMapEvent(_map, t - 1              , 2, t, 1, 0);
+                            */
 
                             // Load audio file names
                             if (tEntity->stateCount > 0)

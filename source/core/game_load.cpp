@@ -35,12 +35,14 @@ void cGameEngine::load(void)
         // Load the UI
         uiManager.load(xmlGameFile.getString("<ui>"));
 
+        // Load the player
+        playerManager.load(xmlGameFile.getString("<player>"));
+
         // Load the map
         mapManager.load(xmlGameFile.getString("<map>"));
 
-        // Load the player
+        // Pass the map pointer to the player manager
         playerManager.setMapPointer(mapManager.getMapPointer());
-        playerManager.load(xmlGameFile.getString("<player>"));
 
         // Play the music defined in the previously loaded biome
         mapManager.playMusic();
