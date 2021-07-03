@@ -1,8 +1,8 @@
 ﻿<?xml version = "1.0" encoding = "UTF-8" ?>
 <material>
     <name>bat_1_001</name>
-    <diffuse>bat/bat_1_001_d.png</diffuse>
+    <diffuse>npc/bat_1_001_d.png</diffuse>
     <emissive>none_e.png</emissive>
-    <normal>bat/bat_1_001_n.png</normal>
-    <specular>bat/bat_1_001_s.png</specular>
+    <normal>npc/bat_1_001_n.png</normal>
+    <specular>npc/bat_1_001_s.png</specular>
 </material>
