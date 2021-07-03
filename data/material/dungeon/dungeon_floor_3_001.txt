@@ -3,8 +3,8 @@
     <name>dungeon_floor_3_001</name>
     <diffuse>dungeon/dungeon_floor_3_001_d.png</diffuse>
     <emissive>none_e.png</emissive>
-    <normal>dungeon/dungeon_floor_0_001_n.png</normal>
-    <specular>dungeon/dungeon_floor_0_001_s.png</specular>
-    <sprites_x>2</sprites_x>
-    <sprites_y>2</sprites_y>
+    <normal>dungeon/dungeon_floor_1_001_n.png</normal>
+    <specular>dungeon/dungeon_floor_1_001_s.png</specular>
+    <sprites_x>4</sprites_x>
+    <sprites_y>4</sprites_y>
 </material>
