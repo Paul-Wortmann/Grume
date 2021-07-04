@@ -104,7 +104,7 @@ void cPlayerManager::setMouseClick(glm::vec3 _pos)
         m_mouseTile    = clickedTile;
     }
 };
-        
+
 void cPlayerManager::process(const float32 &_dt)
 {
     // Process mouse click event
@@ -153,7 +153,6 @@ void cPlayerManager::process(const float32 &_dt)
                     }
                 }
             }
-            
         }
         
         // If click NPC

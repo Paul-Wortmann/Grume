@@ -26,6 +26,6 @@
 int main(int argc, char** argv)
 {
     cGameEngine gameEngine;
-    gameEngine.run();
+    gameEngine.run(argc, argv);
     return EXIT_SUCCESS;
 }

@@ -23,7 +23,7 @@
  
 #include "game_engine.hpp"
 
-void cGameEngine::run(void)
+void cGameEngine::run(const std::uint32_t &_argc, char** _argv)
 {
     // Clear the log and log version information.
     gLogClear();
@@ -35,7 +35,7 @@ void cGameEngine::run(void)
     timer.initialize();
 
     // Initialize game subsystems
-    initialize();
+    initialize(_argc, _argv);
     
     // Enter the main loop
     while (m_state == eGameState::active)
@@ -45,10 +45,26 @@ void cGameEngine::run(void)
     terminate();
 }
 
-void cGameEngine::initialize(void)
+void cGameEngine::initialize(const std::uint32_t &_argc, char** _argv)
 {
     // Load the config file first
     gameConfig.load();
+
+    // Process command line arguments
+    for (uint32_t i = 1; i < _argc; i++)
+    {
+        std::string clString = _argv[i];
+        if (clString.compare("--test") == 0)
+        {
+            std::cout << "Command line test arg passed" << std::endl;
+        }
+        else if (clString.compare("--help") == 0)
+        {
+            std::cout << "Command line help arg passed" << std::endl;
+        }
+    }
+
+    // Load the game database list
     gameDatabase.load();
     
     graphicsEngine.setDisplay(gameConfig.m_resolution_x, gameConfig.m_resolution_y, gameConfig.m_fullscreen);
