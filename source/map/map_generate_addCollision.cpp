@@ -58,8 +58,21 @@ void cMapManager::m_addCollisionData(sMap*& _map, sEntity*& _entity, const std::
             {
                 if (_entity->collision->data[(h * _entity->collision->size) + w] > 0)
                 {
-                    _map->tile[_tile + ((h - r) * _map->width) + (w - r)].base   = eTileBase::tileFloorNoGo;
-                    _map->tile[_tile + ((h - r) * _map->width) + (w - r)].object = _entity->UID;
+                    std::uint32_t tileNum = _tile + ((h - r) * _map->width) + (w - r);
+                    _map->tile[tileNum].object = _entity->UID;
+
+                    if (_map->tile[tileNum].base == eTileBase::tileFloor)
+                    {
+                        _map->tile[tileNum].base = eTileBase::tileFloorNoGo;
+                    }
+                    else if (_map->tile[tileNum].base == eTileBase::tileFloorPath)
+                    {
+                        _map->tile[tileNum].base = eTileBase::tilePathNoGo;
+                    }
+                    else
+                    {
+                        _map->tile[tileNum].base = eTileBase::tileFloorNoGo;
+                    }
                 }
             }
         }

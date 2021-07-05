@@ -67,7 +67,18 @@ void cMapManager::m_addObjectEntity(sMap*& _map,              // Map pointer
         sEntity* tEntity = nullptr;
         if (_o != 0)
         {
-            _map->tile[_tn].base = eTileBase::tileFloorNoGo;
+            if (_map->tile[_tn].base == eTileBase::tileFloor)
+            {
+                _map->tile[_tn].base = eTileBase::tileFloorNoGo;
+            }
+            else if (_map->tile[_tn].base == eTileBase::tileFloorPath)
+            {
+                _map->tile[_tn].base = eTileBase::tilePathNoGo;
+            }
+            else
+            {
+                _map->tile[_tn].base = eTileBase::tileFloorNoGo;
+            }
         }
         
         uint32 w = _tn % _map->width;
@@ -220,7 +231,18 @@ void cMapManager::m_addObjectEntities(sMap*& _map)
             
             if (tObjectObstacle != 0)
             {
-                _map->tile[tObjectTileNum].base = eTileBase::tileFloorNoGo;
+                if (_map->tile[tObjectTileNum].base == eTileBase::tileFloor)
+                {
+                    _map->tile[tObjectTileNum].base = eTileBase::tileFloorNoGo;
+                }
+                else if (_map->tile[tObjectTileNum].base == eTileBase::tileFloorPath)
+                {
+                    _map->tile[tObjectTileNum].base = eTileBase::tilePathNoGo;
+                }
+                else
+                {
+                    _map->tile[tObjectTileNum].base = eTileBase::tileFloorNoGo;
+                }
             }
             
             uint32 w = tObjectTileNum % _map->width;

@@ -41,7 +41,9 @@ bool cMapManager::m_isFlat(sMap*& _map, const uint32 &_tile)
 {
     return ((_map->tile[_tile].base == eTileBase::tileFloor) ||
             (_map->tile[_tile].base == eTileBase::tileFloorNoGo) ||
-            (_map->tile[_tile].base == eTileBase::tileNone));
+            (_map->tile[_tile].base == eTileBase::tileNone) ||
+            (_map->tile[_tile].base == eTileBase::tileFloorPath) ||
+            (_map->tile[_tile].base == eTileBase::tilePathNoGo));
 }
 
 // Is the queried tile a tile of type: None?
@@ -54,7 +56,9 @@ bool cMapManager::m_isNone(sMap*& _map, const uint32 &_tile)
 bool cMapManager::m_isFloor(sMap*& _map, const uint32 &_tile)
 {
     return ((_map->tile[_tile].base == eTileBase::tileFloor) ||
-            (_map->tile[_tile].base == eTileBase::tileFloorNoGo));
+            (_map->tile[_tile].base == eTileBase::tileFloorNoGo) ||
+            (_map->tile[_tile].base == eTileBase::tileFloorPath) ||
+            (_map->tile[_tile].base == eTileBase::tilePathNoGo));
 }
 
 // Is the queried tile a tile of type: Wall?
