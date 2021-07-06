@@ -118,6 +118,14 @@ void cPlayerManager::process(const float32 &_dt)
             return;
         }
         
+        // Store position information
+        glm::vec3 playerPos      = m_data->position;
+        uint32    currentTile    = m_data->movement->mapPath.path[m_data->movement->mapPath.currentPosition];
+        glm::vec3 currentTilePos = tileToPosition(currentTile);
+        
+        // Get the distance to the destination tile
+        float32   distanceToTileSqr = ((playerPos.x - currentTilePos.x) * (playerPos.x - currentTilePos.x)) + ((playerPos.z - currentTilePos.z) * (playerPos.z - currentTilePos.z));
+        
         // If click object
         if (m_mapPointer->tile[m_mouseTile].object != 0)
         {

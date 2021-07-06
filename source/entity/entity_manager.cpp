@@ -195,6 +195,7 @@ sEntity* cEntityManager::load(const std::string& _fileName, sEntity* _entity)
         std::string modelFile         = xmlEntityFile.getString("<model>");
         std::string materialFile      = xmlEntityFile.getString("<material>");
         _entity->animationIndependent = (xmlEntityFile.getInteger("<animation_independent>") == 1);
+        _entity->interactionDistance  = xmlEntityFile.getFloat("<interaction_distance>");
 
         // Movement data
         if (xmlEntityFile.getInstanceCount("<movement>") != 0)

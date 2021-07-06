@@ -19,6 +19,8 @@
 
     <animation_independent>1</animation_independent>
 
+    <interaction_distance>6</interaction_distance> # ~num tiles (float)
+
     <state_initial>0</state_initial> # 0 == none
     <state>
         <state_name>open</state_name>
