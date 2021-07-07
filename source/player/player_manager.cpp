@@ -181,7 +181,7 @@ void cPlayerManager::process(const float32 &_dt)
             // Set npc state and set the npc for termination
             for (sEntity* entity = m_entityManager->getHead(); entity != nullptr; entity = entity->next)
             {
-                if ((entity->terminate == false) && (entity->UID == m_mapPointer->tile[m_mouseTile].npc) && (m_data->UID != entity->UID))
+                if ((entity->interaction != nullptr) && (entity->terminate == false) && (entity->UID == m_mapPointer->tile[m_mouseTile].npc) && (m_data->UID != entity->UID))
                 {
                     if (distanceToTileSqr <= entity->interaction->distance)
                     {
