@@ -119,12 +119,13 @@ void cPlayerManager::process(const float32 &_dt)
         }
         
         // Store position information
-        glm::vec3 playerPos      = m_data->position;
-        uint32    currentTile    = m_data->movement->mapPath.path[m_data->movement->mapPath.currentPosition];
-        glm::vec3 currentTilePos = tileToPosition(currentTile);
+        glm::vec3 playerPos     = m_data->position;
+        glm::vec3 entityTilePos = tileToPosition(m_mouseTile);
         
         // Get the distance to the destination tile
-        float32   distanceToTileSqr = ((playerPos.x - currentTilePos.x) * (playerPos.x - currentTilePos.x)) + ((playerPos.z - currentTilePos.z) * (playerPos.z - currentTilePos.z));
+        float32   distanceToTileSqr = ((playerPos.x - entityTilePos.x) * (playerPos.x - entityTilePos.x)) + ((playerPos.z - entityTilePos.z) * (playerPos.z - entityTilePos.z));
+        
+        bool      moveToEntity = false;
         
         // If click object
         if (m_mapPointer->tile[m_mouseTile].object != 0)
@@ -136,7 +137,7 @@ void cPlayerManager::process(const float32 &_dt)
             {
                 if (entity->UID == m_mapPointer->tile[m_mouseTile].object)
                 {
-                    if (entity->interaction != nullptr)
+                    if ((entity->interaction != nullptr) && (distanceToTileSqr <= entity->interaction->distance))
                     {
                         // Toggle states
                         if (entity->interaction->type == eEntityInteractionType::InteractionTypeToggle)
@@ -159,6 +160,10 @@ void cPlayerManager::process(const float32 &_dt)
                             }
                         }
                     }
+                    else
+                    {
+                        moveToEntity = true;
+                    }
                 }
             }
         }
@@ -178,15 +183,23 @@ void cPlayerManager::process(const float32 &_dt)
             {
                 if ((entity->terminate == false) && (entity->UID == m_mapPointer->tile[m_mouseTile].npc) && (m_data->UID != entity->UID))
                 {
-                    m_entityManager->setState(entity->UID, "die");
-                    m_mapPointer->tile[m_mouseTile].npc = 0;
-                    entity->terminate = true;
+                    if (distanceToTileSqr <= entity->interaction->distance)
+                    {
+                        m_entityManager->setState(entity->UID, "die");
+                        m_mapPointer->tile[m_mouseTile].npc = 0;
+                        entity->terminate = true;
+                    }
+                    else
+                    {
+                        moveToEntity = true;
+                    }
+
                 }
             }
         }
         
         // If no object and no NPC, then path find to tile
-        if ((m_mapPointer->tile[m_mouseTile].object == 0) && (m_mapPointer->tile[m_mouseTile].npc == 0))
+        if (((m_mapPointer->tile[m_mouseTile].object == 0) && (m_mapPointer->tile[m_mouseTile].npc == 0)) || (moveToEntity))
         {
             m_data->movement->mapPath.destinationTile = m_mouseTile;
             gAStar(m_mapPointer, m_data->movement->mapPath);

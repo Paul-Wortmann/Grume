@@ -79,5 +79,12 @@
         <move_behavior>1</move_behavior>
     </ai>
 
+
+    #type, state 1 , state 2
+    #type 0 = toggle states
+    #type 1 = set state
+    <interaction>1 6 0</interaction>
+    <interaction_distance>2</interaction_distance> # num tiles
+    
 </npc>
 

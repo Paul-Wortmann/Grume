@@ -195,7 +195,6 @@ sEntity* cEntityManager::load(const std::string& _fileName, sEntity* _entity)
         std::string modelFile         = xmlEntityFile.getString("<model>");
         std::string materialFile      = xmlEntityFile.getString("<material>");
         _entity->animationIndependent = (xmlEntityFile.getInteger("<animation_independent>") == 1);
-        _entity->interactionDistance  = xmlEntityFile.getFloat("<interaction_distance>");
 
         // Movement data
         if (xmlEntityFile.getInstanceCount("<movement>") != 0)
@@ -355,11 +354,12 @@ sEntity* cEntityManager::load(const std::string& _fileName, sEntity* _entity)
         // Load Interaction data
         if (xmlEntityFile.getInstanceCount("<interaction>") != 0)
         {
-            _entity->interaction          = new sEntityInteraction;
-            glm::vec3 xmlIvec3            =  xmlEntityFile.getIvec3("<interaction>");
-            _entity->interaction->type    = static_cast<eEntityInteractionType>(xmlIvec3.x);
-            _entity->interaction->data_1  = xmlIvec3.y;
-            _entity->interaction->data_2  = xmlIvec3.z;
+            _entity->interaction           = new sEntityInteraction;
+            glm::vec3 xmlIvec3             = xmlEntityFile.getIvec3("<interaction>");
+            _entity->interaction->type     = static_cast<eEntityInteractionType>(xmlIvec3.x);
+            _entity->interaction->data_1   = xmlIvec3.y;
+            _entity->interaction->data_2   = xmlIvec3.z;
+            _entity->interaction->distance = xmlEntityFile.getFloat("<interaction_distance>");
         }
         
         // Load Collision data

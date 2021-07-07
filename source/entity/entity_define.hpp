@@ -64,7 +64,6 @@ struct sEntity
     eEntityType         type                 = eEntityType::entityTypeStatic;
     eEntityOwner        owner                = eEntityOwner::ownerNone;
     std::uint32_t       tile                 = 0; // Current tile
-    float32             interactionDistance  = 4; // Maximum interaction radius
 
     // Base
     glm::vec3           position             = glm::vec3(0.0f, 0.0f, 0.0f);
