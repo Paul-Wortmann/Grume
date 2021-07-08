@@ -225,21 +225,21 @@
         <object>3444 29 33 1.0 1.5708 1</object> # Town props - bookshelf
         
         # Alchemy lab 2
-        <object>1622 29 01 1.0 0.0000 1</object> # Town props - alchemy table
+        <object>1621 29 01 1.0 0.0000 1</object> # Town props - alchemy table
         <object>1717 29 30 1.0 1.5708 1</object> # Town props - bookshelf
         <object>2017 29 30 1.0 1.5708 1</object> # Town props - bookshelf
         <object>2317 29 30 1.0 1.5708 1</object> # Town props - bookshelf
         <object>2617 29 30 1.0 1.5708 1</object> # Town props - bookshelf
         <object>2917 29 30 1.0 1.5708 1</object> # Town props - bookshelf
         <object>3217 29 31 1.0 1.5708 1</object> # Town props - bookshelf
-        <object>2621 29 30 1.0 4.7123 1</object> # Town props - bookshelf
-        <object>2921 29 30 1.0 4.7123 1</object> # Town props - bookshelf
-        <object>3221 29 31 1.0 4.7123 1</object> # Town props - bookshelf
+        <object>2620 29 30 1.0 4.7123 1</object> # Town props - bookshelf
+        <object>2920 29 30 1.0 4.7123 1</object> # Town props - bookshelf
+        <object>3220 29 31 1.0 4.7123 1</object> # Town props - bookshelf
         <object>2623 29 30 1.0 1.5708 1</object> # Town props - bookshelf
         <object>2923 29 30 1.0 1.5708 1</object> # Town props - bookshelf
         <object>3223 29 31 1.0 1.5708 1</object> # Town props - bookshelf
         
-        <object>2222 29 25 1.0 4.7123 1</object> # Town props - table 1
+        <object>2121 29 25 1.0 4.7123 1</object> # Town props - table 1
 
         # Canteen
         <object>1855 29 02 1.0 1.5708 1</object> # Town props - barcounter
@@ -279,6 +279,23 @@
         <object>3367 29 04 1.0 0.0000 1</object> # Town props - bench
         <object>3067 29 10 1.0 1.5708 1</object> # Town props - candle
         # Food store
+        <object>1675 08 00 1.0 1.5708 1</object> # Crate
+        <object>1676 08 00 1.0 1.5708 1</object> # Crate
+        <object>1679 08 00 1.0 1.5708 1</object> # Crate
+        <object>1680 08 00 1.0 1.5708 1</object> # Crate
+        <object>1681 08 00 1.0 1.5708 1</object> # Crate
+        <object>1778 08 00 1.0 1.5708 1</object> # Crate
+        <object>1779 08 00 1.0 1.5708 1</object> # Crate
+        <object>1876 08 00 1.0 1.5708 1</object> # Crate
+        <object>1877 08 00 1.0 1.5708 1</object> # Crate
+        <object>1878 08 00 1.0 1.5708 1</object> # Crate
+        <object>1879 08 00 1.0 1.5708 1</object> # Crate
+        <object>1978 07 00 1.0 1.5708 1</object> # Barrel
+        <object>2379 07 00 1.0 1.5708 1</object> # Barrel
+        <object>2078 07 00 1.0 1.5708 1</object> # Barrel
+        <object>2178 07 00 1.0 1.5708 1</object> # Barrel
+        <object>2278 07 00 1.0 1.5708 1</object> # Barrel
+
         <object>2578 07 00 1.0 1.5708 1</object> # Barrel
         <object>2879 07 00 1.0 1.5708 1</object> # Barrel
         <object>2678 07 00 1.0 1.5708 1</object> # Barrel
