@@ -44,9 +44,9 @@ void cMapManager::m_addDoorEntities(sMap*& _map)
     if ((xmlFile.lineCount() > 0) && (xmlSoundFile.lineCount() > 0))
     {
         // Get a count for door type
-        std::uint32_t door_1td_count = xmlFile.getInteger("<door_1td_count>", 1); // Doors, length 3
+        std::uint32_t door_1td_count = xmlFile.getInteger("<door_1td_count>", 1); // Doors, length 1
         std::uint32_t door_2td_count = xmlFile.getInteger("<door_2td_count>", 1); // Doors, length 2
-        std::uint32_t door_3td_count = xmlFile.getInteger("<door_3td_count>", 1); // Doors, length 1
+        std::uint32_t door_3td_count = xmlFile.getInteger("<door_3td_count>", 1); // Doors, length 3
 
         // Width and height offset, used to center the doors
         float32 xo = static_cast<float32>(_map->width  / 2);

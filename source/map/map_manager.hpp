@@ -127,6 +127,9 @@ class cMapManager : public tcLinkedList<sMap>
         // map_generate_addStairs.cpp
         void          m_addStairsEntity(sMap*& _map);
 
+        // map_generate_addTorches.cpp
+        void          m_addTorchEntities(sMap*& _map);
+
         // map_generate_npcs.cpp
         void          m_generateMap_npcs(sMap*& _map);
 
