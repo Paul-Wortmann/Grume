@@ -29,8 +29,9 @@
 class cGraphicsEngineCamera
 {
     public:
-        void initialize(uint32 _fov, uint32 _width, uint32 _height);
-        void terminate(void);
+        void      initialize(uint32 _fov, uint32 _width, uint32 _height);
+        void      terminate(void);
+        void      process(const float32 &_dt);
         glm::mat4 getViewMatrix(void) { return m_view; }
         glm::mat4 getProjectionMatrix(void) { return m_projection; }
         glm::vec3 getPosition(void) { return m_position; }
@@ -42,6 +43,7 @@ class cGraphicsEngineCamera
         glm::vec3 getMouseRay(const float32 &_mouseX, const float32 &_mouseY);
         glm::vec3 getRayPlaneIntersection(const glm::vec3 &_ray);
         glm::vec3 getMousePositionTerrain(const float32 &_mouseX, const float32 &_mouseY);
+        void      addScreenShake(const float32 &_st, const float32 &_sf) { m_shakeTime += _st; m_shakeForce = _sf; m_shakeActive = true; }
 
     protected:
 
@@ -55,6 +57,10 @@ class cGraphicsEngineCamera
         glm::vec3      m_position     = glm::vec3(0.0f,  0.0f, 0.0f);
         glm::vec3      m_target       = glm::vec3(0.0f, -1.0f, 0.0f);
         glm::vec3      m_orientation  = glm::vec3(0.0f,  1.0f, 0.0f);
+        glm::vec3      m_shakeTarget  = glm::vec3(0.0f,  0.0f, 0.0f);
+        float32        m_shakeTime    = 0.0f;
+        float32        m_shakeForce   = 0.25f;
+        bool           m_shakeActive  = false;
 };
 
 #endif //GRAPHICS_ENGINE_CAMERA_HPP

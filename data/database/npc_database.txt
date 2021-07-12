@@ -8,6 +8,7 @@
         <npc>mudeater</npc>         # 4
         <npc>dead_body</npc>        # 5
         <npc>spider</npc>           # 6
+        <npc>werewolf</npc>         # 7
     </npc_define>
 
     <blacksmith>
@@ -39,6 +40,11 @@
         <spider_count>1</spider_count>
         <spider_entity>npc/spider_1_001.txt</spider_entity>
     </spider>
+
+    <werewolf>
+        <werewolf_count>1</werewolf_count>
+        <werewolf_entity>npc/werewolf_1_001.txt</werewolf_entity>
+    </werewolf>
 
 </npc_database>
 

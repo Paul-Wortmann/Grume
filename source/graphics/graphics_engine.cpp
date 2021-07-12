@@ -189,6 +189,8 @@ uint32 cGraphicsEngine::initialize(void)
             m_camera.setPosition(glm::vec3(6.0f,12.0f,6.0f));
             //m_camera.setPosition(glm::vec3(8.0f,16.0f,8.0f));
             //m_camera.setPosition(glm::vec3(0.0f, 0.0f, 4.0f));
+            
+            m_camera.addScreenShake(10000.0f, 0.025f);
 
             // Lights ------------------------------------
             m_lightManager.initialize();
@@ -409,6 +411,9 @@ void cGraphicsEngine::process(const float32 &_dt)
     {
         m_windowClosed = glfwWindowShouldClose(m_window);
     }
+    
+    // Camera
+    m_camera.process(_dt);
     
     // Particle Engine
     m_particleEngine.process(_dt);

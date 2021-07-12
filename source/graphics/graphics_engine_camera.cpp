@@ -36,10 +36,33 @@ void cGraphicsEngineCamera::terminate(void)
 
 }
 
+void cGraphicsEngineCamera::process(const float32 &_dt)
+{
+    if (m_shakeActive)
+    {
+        m_shakeTime -= _dt;
+        if (m_shakeTime < 0.0f)
+        {
+            m_shakeTarget = glm::vec3(0.0f, 0.0f, 0.0f);
+            m_view        = glm::lookAt(m_position, m_target, m_orientation);
+            m_shakeActive = false;
+        }
+        else
+        {
+            float32 fx = static_cast<float32>(20000 - (rand() % 20000)) / 10000.0f;
+            float32 fy = static_cast<float32>(20000 - (rand() % 20000)) / 10000.0f;
+            float32 fz = static_cast<float32>(20000 - (rand() % 20000)) / 10000.0f;
+            
+            m_shakeTarget = glm::vec3(fx * m_shakeForce, fy * m_shakeForce, fz * m_shakeForce);
+            m_view        = glm::lookAt(m_position, m_target + m_shakeTarget, m_orientation);
+        }
+    }
+}
+
 void cGraphicsEngineCamera::m_calculateMartacies(void)
 {
     m_projection = glm::perspective(static_cast<float32>(m_fov), static_cast<float32>(m_width) / static_cast<float32>(m_height), 0.1f, 100.0f);
-    m_view       = glm::lookAt(m_position, m_target, m_orientation);
+    m_view       = glm::lookAt(m_position, m_target + m_shakeTarget, m_orientation);
 }
 
 glm::vec3 cGraphicsEngineCamera::getMouseRay(const float32 &_mouseX, const float32 &_mouseY)
