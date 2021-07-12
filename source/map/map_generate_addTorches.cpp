@@ -52,7 +52,7 @@ void cMapManager::m_addTorchEntities(sMap*& _map)
             for (uint32 w = 1; w < _map->width - 1; ++w)
             {
                 // Random placement
-                if ((rand() % 10) == 0)
+                if ((rand() % 100) < 20) // 20% chance
                 {
 
                     // Calculate the tile number

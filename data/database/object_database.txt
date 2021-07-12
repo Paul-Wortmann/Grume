@@ -35,8 +35,9 @@
         <object>weapon</object>              # 31
         <object>door</object>                # 32
         <object>vase</object>                # 33
+        <object>gib</object>                 # 34
 
-        <object>test</object>                # 34
+        <object>test</object>                # 35
 
     </object_define>
 
@@ -389,7 +390,18 @@
         <vase_entity>dungeon_objects/vase_12_001.txt</vase_entity>
     </vase>
 
-
+    <gib> #34
+        <gib_count>9</gib_count>
+        <gib_entity>objects/gibs_1_001.txt</gib_entity>
+        <gib_entity>objects/gibs_1_002.txt</gib_entity>
+        <gib_entity>objects/gibs_1_003.txt</gib_entity>
+        <gib_entity>objects/gibs_1_004.txt</gib_entity>
+        <gib_entity>objects/gibs_1_005.txt</gib_entity>
+        <gib_entity>objects/gibs_1_006.txt</gib_entity>
+        <gib_entity>objects/gibs_1_007.txt</gib_entity>
+        <gib_entity>objects/gibs_1_008.txt</gib_entity>
+        <gib_entity>objects/gibs_1_009.txt</gib_entity>
+    </gib>
 
 
 

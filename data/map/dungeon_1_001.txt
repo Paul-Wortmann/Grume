@@ -164,6 +164,7 @@
 
     <debris_objects>
         #object number, scale max, scale min, prevalence, obstacle
+        <debris>34 0.5 1.0 2 0</debris> # gibs
         <debris>6 0.5 1.0 15 0</debris> # bones
     </debris_objects>
 
