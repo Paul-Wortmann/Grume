@@ -22,6 +22,7 @@
         <prefab>1 9 9 cell_1_004.txt</prefab>
         <prefab>1 9 9 cell_1_005.txt</prefab>
         <prefab>1 9 9 cell_1_006.txt</prefab>
+        <prefab>1 9 9 cell_1_007.txt</prefab>
     </prefabs>
 
 </map_prefab_database>
