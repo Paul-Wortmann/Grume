@@ -115,6 +115,10 @@ struct sEntity
     
     // Pathing
     sEntityMovement*    movement             = nullptr;
+
+    std::uint32_t       deathShakeChance     = 100;
+    std::uint32_t       deathShakeDuration   = 2000;
+    float32             deathShakeForce      = 0.5f;
 };
 
 #endif //ENTITY_HPP

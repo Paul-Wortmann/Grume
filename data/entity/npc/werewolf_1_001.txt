@@ -86,5 +86,10 @@
     <interaction>1 6 0</interaction>
     <interaction_distance>2</interaction_distance> # num tiles
     
+    # Screenshake on death
+    <death_shake_chance>100</death_shake_chance> #Chance of screenshake %
+    <death_shake_duration>2000</death_shake_duration> #Duration in ms
+    <death_shake_force>0.0125</death_shake_force> #Strength
+
 </npc>
 

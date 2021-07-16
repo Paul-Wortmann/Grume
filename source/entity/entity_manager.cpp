@@ -362,6 +362,11 @@ sEntity* cEntityManager::load(const std::string& _fileName, sEntity* _entity)
             _entity->interaction->distance = xmlEntityFile.getFloat("<interaction_distance>");
         }
         
+        // Death screen shake
+        _entity->deathShakeChance          = xmlEntityFile.getInteger("<death_shake_chance>");
+        _entity->deathShakeDuration        = xmlEntityFile.getInteger("<death_shake_duration>");
+        _entity->deathShakeForce           = xmlEntityFile.getFloat("<death_shake_force>");
+        
         // Load Collision data
         if (xmlEntityFile.getInstanceCount("<collision>") != 0)
         {

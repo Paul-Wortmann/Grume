@@ -190,7 +190,10 @@ void cPlayerManager::process(const float32 &_dt)
                         entity->terminate = true;
                         
                         // Screen shake on NPC death
-                        m_graphicsEngine->addScreenShake(2000.0f, 0.025f);
+                        if ((rand() % 100) <= entity->deathShakeChance)
+                        {
+                            m_graphicsEngine->addScreenShake(entity->deathShakeDuration, entity->deathShakeForce);
+                        }
                         
                     }
                     else
