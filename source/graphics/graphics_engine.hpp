@@ -60,6 +60,7 @@ class cGraphicsEngine
         glm::vec3 getCameraPosition(void) { return m_camera.getPosition(); };
         void      setCameraPosition(glm::vec3 _position) { m_camera.setPosition(_position); };
         float32   getAspectRatio(void) { return m_aspectRatio; };
+        void      addScreenShake(const float32 &_st, const float32 &_sf) { m_camera.addScreenShake(_st, _sf); }
         void      setLoadTextureID(const uint32 &_tid) { m_pls_renderTextureID = _tid; }
         void      setLoading(const bool &_b) { m_loadRender = _b; }
 

@@ -188,6 +188,10 @@ void cPlayerManager::process(const float32 &_dt)
                         m_entityManager->setState(entity->UID, "die");
                         m_mapPointer->tile[m_mouseTile].npc = 0;
                         entity->terminate = true;
+                        
+                        // Screen shake on NPC death
+                        m_graphicsEngine->addScreenShake(2000.0f, 0.025f);
+                        
                     }
                     else
                     {

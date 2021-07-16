@@ -84,6 +84,7 @@ void cGameEngine::initialize(const std::uint32_t &_argc, char** _argv)
         npcManager.setDatabasePointer(&gameDatabase);
         playerManager.initialize(&entityManager);
         playerManager.setDatabasePointer(&gameDatabase);
+        playerManager.setGraphicsEnginePointer(&graphicsEngine);
         mapManager.setPlayerPointer(&playerManager);
         graphicsEngine.setEntityHead(entityManager.getHead());
         graphicsEngine.setUIHead(uiManager.getHead());
