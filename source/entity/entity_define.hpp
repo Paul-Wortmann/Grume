@@ -116,6 +116,7 @@ struct sEntity
     // Pathing
     sEntityMovement*    movement             = nullptr;
 
+    // Screen shake on death
     std::uint32_t       deathShakeChance     = 100;
     std::uint32_t       deathShakeDuration   = 2000;
     float32             deathShakeForce      = 0.5f;

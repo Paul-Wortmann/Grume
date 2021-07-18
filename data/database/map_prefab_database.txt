@@ -16,6 +16,8 @@
 
     <prefabs>
         # Room type, width, height, prefab filename
+        
+        # Prison Cell
         <prefab>1 9 9 cell_1_001.txt</prefab>
         <prefab>1 9 9 cell_1_002.txt</prefab>
         <prefab>1 9 9 cell_1_003.txt</prefab>
@@ -24,6 +26,9 @@
         <prefab>1 9 9 cell_1_006.txt</prefab>
         <prefab>1 9 9 cell_1_007.txt</prefab>
         <prefab>1 9 9 cell_1_008.txt</prefab>
+
+        # Library
+        <prefab>8 19 19 library_1_001.txt</prefab>
     </prefabs>
 
 </map_prefab_database>
