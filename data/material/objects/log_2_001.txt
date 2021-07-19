@@ -1,0 +1,8 @@
+﻿<?xml version = "1.0" encoding = "UTF-8" ?>
+<material>
+    <name>log_2_001</name>
+    <diffuse>objects/log_2_001_d.png</diffuse>
+    <emissive>none_e.png</emissive>
+    <normal>objects/log_2_001_n.png</normal>
+    <specular>objects/log_2_001_s.png</specular>
+</material>

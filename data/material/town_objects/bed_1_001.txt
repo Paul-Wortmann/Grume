@@ -1,8 +1,0 @@
-﻿<?xml version = "1.0" encoding = "UTF-8" ?>
-<material>
-    <name>bed_1_001</name>
-    <diffuse>town_objects/bed_1_001_d.png</diffuse>
-    <emissive>none_e.png</emissive>
-    <normal>town_objects/bed_1_001_n.png</normal>
-    <specular>town_objects/bed_1_001_s.png</specular>
-</material>

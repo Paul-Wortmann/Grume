@@ -44,299 +44,299 @@
 
     <medieval_buildings> #1
         <medieval_buildings_count>4</medieval_buildings_count>
-        <medieval_buildings_entity>town_objects/medieval_blacksmith_1_001.txt</medieval_buildings_entity>
-        <medieval_buildings_entity>town_objects/medieval_house_1_001.txt</medieval_buildings_entity>
-        <medieval_buildings_entity>town_objects/medieval_house_2_001.txt</medieval_buildings_entity>
-        <medieval_buildings_entity>town_objects/medieval_sawmill_1_001.txt</medieval_buildings_entity>
+        <medieval_buildings_entity>objects/medieval_blacksmith_1_001.txt</medieval_buildings_entity>
+        <medieval_buildings_entity>objects/medieval_house_1_001.txt</medieval_buildings_entity>
+        <medieval_buildings_entity>objects/medieval_house_2_001.txt</medieval_buildings_entity>
+        <medieval_buildings_entity>objects/medieval_sawmill_1_001.txt</medieval_buildings_entity>
     </medieval_buildings>
 
     <chest> #2
         <chest_count>3</chest_count>
-        <chest_entity>common_objects/chest_1_001.txt</chest_entity>
-        <chest_entity>common_objects/chest_2_001.txt</chest_entity>
-        <chest_entity>common_objects/chest_3_001.txt</chest_entity>
+        <chest_entity>objects/chest_1_001.txt</chest_entity>
+        <chest_entity>objects/chest_2_001.txt</chest_entity>
+        <chest_entity>objects/chest_3_001.txt</chest_entity>
     </chest>
 
     <crystal> #3
         <crystal_count>32</crystal_count>
-        <crystal_entity>crystal/crystal_blue_001.txt</crystal_entity>
-        <crystal_entity>crystal/crystal_blue_002.txt</crystal_entity>
-        <crystal_entity>crystal/crystal_blue_003.txt</crystal_entity>
-        <crystal_entity>crystal/crystal_blue_004.txt</crystal_entity>
-        <crystal_entity>crystal/crystal_blue_005.txt</crystal_entity>
-        <crystal_entity>crystal/crystal_blue_006.txt</crystal_entity>
-        <crystal_entity>crystal/crystal_blue_007.txt</crystal_entity>
-        <crystal_entity>crystal/crystal_blue_008.txt</crystal_entity>
-        <crystal_entity>crystal/crystal_blue_009.txt</crystal_entity>
-        <crystal_entity>crystal/crystal_blue_010.txt</crystal_entity>
-        <crystal_entity>crystal/crystal_blue_011.txt</crystal_entity>
-        <crystal_entity>crystal/crystal_blue_012.txt</crystal_entity>
-        <crystal_entity>crystal/crystal_blue_013.txt</crystal_entity>
-        <crystal_entity>crystal/crystal_blue_014.txt</crystal_entity>
-        <crystal_entity>crystal/crystal_blue_015.txt</crystal_entity>
-        <crystal_entity>crystal/crystal_blue_016.txt</crystal_entity>
+        <crystal_entity>objects/crystal_blue_001.txt</crystal_entity>
+        <crystal_entity>objects/crystal_blue_002.txt</crystal_entity>
+        <crystal_entity>objects/crystal_blue_003.txt</crystal_entity>
+        <crystal_entity>objects/crystal_blue_004.txt</crystal_entity>
+        <crystal_entity>objects/crystal_blue_005.txt</crystal_entity>
+        <crystal_entity>objects/crystal_blue_006.txt</crystal_entity>
+        <crystal_entity>objects/crystal_blue_007.txt</crystal_entity>
+        <crystal_entity>objects/crystal_blue_008.txt</crystal_entity>
+        <crystal_entity>objects/crystal_blue_009.txt</crystal_entity>
+        <crystal_entity>objects/crystal_blue_010.txt</crystal_entity>
+        <crystal_entity>objects/crystal_blue_011.txt</crystal_entity>
+        <crystal_entity>objects/crystal_blue_012.txt</crystal_entity>
+        <crystal_entity>objects/crystal_blue_013.txt</crystal_entity>
+        <crystal_entity>objects/crystal_blue_014.txt</crystal_entity>
+        <crystal_entity>objects/crystal_blue_015.txt</crystal_entity>
+        <crystal_entity>objects/crystal_blue_016.txt</crystal_entity>
 
-        <crystal_entity>crystal/crystal_red_001.txt</crystal_entity>
-        <crystal_entity>crystal/crystal_red_002.txt</crystal_entity>
-        <crystal_entity>crystal/crystal_red_003.txt</crystal_entity>
-        <crystal_entity>crystal/crystal_red_004.txt</crystal_entity>
-        <crystal_entity>crystal/crystal_red_005.txt</crystal_entity>
-        <crystal_entity>crystal/crystal_red_006.txt</crystal_entity>
-        <crystal_entity>crystal/crystal_red_007.txt</crystal_entity>
-        <crystal_entity>crystal/crystal_red_008.txt</crystal_entity>
-        <crystal_entity>crystal/crystal_red_009.txt</crystal_entity>
-        <crystal_entity>crystal/crystal_red_010.txt</crystal_entity>
-        <crystal_entity>crystal/crystal_red_011.txt</crystal_entity>
-        <crystal_entity>crystal/crystal_red_012.txt</crystal_entity>
-        <crystal_entity>crystal/crystal_red_013.txt</crystal_entity>
-        <crystal_entity>crystal/crystal_red_014.txt</crystal_entity>
-        <crystal_entity>crystal/crystal_red_015.txt</crystal_entity>
-        <crystal_entity>crystal/crystal_red_016.txt</crystal_entity>
+        <crystal_entity>objects/crystal_red_001.txt</crystal_entity>
+        <crystal_entity>objects/crystal_red_002.txt</crystal_entity>
+        <crystal_entity>objects/crystal_red_003.txt</crystal_entity>
+        <crystal_entity>objects/crystal_red_004.txt</crystal_entity>
+        <crystal_entity>objects/crystal_red_005.txt</crystal_entity>
+        <crystal_entity>objects/crystal_red_006.txt</crystal_entity>
+        <crystal_entity>objects/crystal_red_007.txt</crystal_entity>
+        <crystal_entity>objects/crystal_red_008.txt</crystal_entity>
+        <crystal_entity>objects/crystal_red_009.txt</crystal_entity>
+        <crystal_entity>objects/crystal_red_010.txt</crystal_entity>
+        <crystal_entity>objects/crystal_red_011.txt</crystal_entity>
+        <crystal_entity>objects/crystal_red_012.txt</crystal_entity>
+        <crystal_entity>objects/crystal_red_013.txt</crystal_entity>
+        <crystal_entity>objects/crystal_red_014.txt</crystal_entity>
+        <crystal_entity>objects/crystal_red_015.txt</crystal_entity>
+        <crystal_entity>objects/crystal_red_016.txt</crystal_entity>
     </crystal>
 
     <mushroom> #4
         <mushroom_count>4</mushroom_count>
-        <mushroom_entity>mushroom/mushrooms_green_001.txt</mushroom_entity>
-        <mushroom_entity>mushroom/mushrooms_orange_001.txt</mushroom_entity>
-        <mushroom_entity>mushroom/mushrooms_purple_001.txt</mushroom_entity>
-        <mushroom_entity>mushroom/mushrooms_red_001.txt</mushroom_entity>
+        <mushroom_entity>objects/mushrooms_green_001.txt</mushroom_entity>
+        <mushroom_entity>objects/mushrooms_orange_001.txt</mushroom_entity>
+        <mushroom_entity>objects/mushrooms_purple_001.txt</mushroom_entity>
+        <mushroom_entity>objects/mushrooms_red_001.txt</mushroom_entity>
     </mushroom>
 
     <skull> #5
         <skull_count>1</skull_count>
-        <skull_entity>dungeon_objects/skull_1_001.txt</skull_entity>
+        <skull_entity>objects/skull_1_001.txt</skull_entity>
     </skull>
 
     <bones> #6
         <bones_count>4</bones_count>
-        <bones_entity>common_objects/bones_1_001.txt</bones_entity>
-        <bones_entity>common_objects/bones_1_002.txt</bones_entity>
-        <bones_entity>common_objects/bones_1_003.txt</bones_entity>
-        <bones_entity>common_objects/bones_1_004.txt</bones_entity>
+        <bones_entity>objects/bones_1_001.txt</bones_entity>
+        <bones_entity>objects/bones_1_002.txt</bones_entity>
+        <bones_entity>objects/bones_1_003.txt</bones_entity>
+        <bones_entity>objects/bones_1_004.txt</bones_entity>
     </bones>
 
     <barrel> #7
         <barrel_count>4</barrel_count>
-        <barrel_entity>common_objects/barrel_1_001.txt</barrel_entity>
-        <barrel_entity>common_objects/barrel_1_002.txt</barrel_entity>
-        <barrel_entity>common_objects/barrel_2_001.txt</barrel_entity>
-        <barrel_entity>common_objects/barrel_3_001.txt</barrel_entity>
+        <barrel_entity>objects/barrel_1_001.txt</barrel_entity>
+        <barrel_entity>objects/barrel_1_002.txt</barrel_entity>
+        <barrel_entity>objects/barrel_2_001.txt</barrel_entity>
+        <barrel_entity>objects/barrel_3_001.txt</barrel_entity>
     </barrel>
 
     <crate> #8
         <crate_count>5</crate_count>
-        <crate_entity>common_objects/crate_1_001.txt</crate_entity>
-        <crate_entity>common_objects/crate_2_001.txt</crate_entity>
-        <crate_entity>common_objects/crate_3_001.txt</crate_entity>
-        <crate_entity>common_objects/crate_4_001.txt</crate_entity>
-        <crate_entity>common_objects/crate_5_001.txt</crate_entity>
+        <crate_entity>objects/crate_1_001.txt</crate_entity>
+        <crate_entity>objects/crate_2_001.txt</crate_entity>
+        <crate_entity>objects/crate_3_001.txt</crate_entity>
+        <crate_entity>objects/crate_4_001.txt</crate_entity>
+        <crate_entity>objects/crate_5_001.txt</crate_entity>
     </crate>
 
     <statue> #9
         <statue_count>1</statue_count>
-        <statue_entity>dungeon_objects/medieval_statue_1_001.txt</statue_entity>
+        <statue_entity>objects/medieval_statue_1_001.txt</statue_entity>
     </statue>
 
     <medieval_props> #10
         <medieval_props_count>7</medieval_props_count>
-        <medieval_props_entity>town_objects/medieval_bench_1_001.txt</medieval_props_entity>
-        <medieval_props_entity>town_objects/medieval_cart_1_001.txt</medieval_props_entity>
-        <medieval_props_entity>town_objects/medieval_stool_1_001.txt</medieval_props_entity>
-        <medieval_props_entity>town_objects/medieval_watch_tower_1_001.txt</medieval_props_entity>
-        <medieval_props_entity>town_objects/medieval_well_1_001.txt</medieval_props_entity>
-        <medieval_props_entity>town_objects/medieval_wheelbarrow_1_001.txt</medieval_props_entity>
-        <medieval_props_entity>town_objects/medieval_outhouse_1_001.txt</medieval_props_entity>
+        <medieval_props_entity>objects/medieval_bench_1_001.txt</medieval_props_entity>
+        <medieval_props_entity>objects/medieval_cart_1_001.txt</medieval_props_entity>
+        <medieval_props_entity>objects/medieval_stool_1_001.txt</medieval_props_entity>
+        <medieval_props_entity>objects/medieval_watch_tower_1_001.txt</medieval_props_entity>
+        <medieval_props_entity>objects/medieval_well_1_001.txt</medieval_props_entity>
+        <medieval_props_entity>objects/medieval_wheelbarrow_1_001.txt</medieval_props_entity>
+        <medieval_props_entity>objects/medieval_outhouse_1_001.txt</medieval_props_entity>
     </medieval_props>
 
     <old_wagon> #11
         <old_wagon_count>1</old_wagon_count>
-        <old_wagon_entity>town_objects/old_wagon_1_001.txt</old_wagon_entity>
+        <old_wagon_entity>objects/old_wagon_1_001.txt</old_wagon_entity>
     </old_wagon>
 
     <grass_patch> #12
         <grass_patch_count>1</grass_patch_count>
-        <grass_patch_entity>town_objects/grass_patch_1_001.txt</grass_patch_entity>
+        <grass_patch_entity>objects/grass_patch_1_001.txt</grass_patch_entity>
     </grass_patch>
 
     <dead_tree> #13
         <dead_tree_count>1</dead_tree_count>
-        <dead_tree_entity>town_objects/dead_tree_1_001.txt</dead_tree_entity>
+        <dead_tree_entity>objects/dead_tree_1_001.txt</dead_tree_entity>
     </dead_tree>
 
     <bridge> #14
         <bridge_count>1</bridge_count>
-        <bridge_entity>town_objects/bridge_2_001.txt</bridge_entity>
+        <bridge_entity>objects/bridge_2_001.txt</bridge_entity>
     </bridge>
 
     <river> #15
         <river_count>1</river_count>
-        <river_entity>town_objects/river_1_001.txt</river_entity>
+        <river_entity>objects/river_1_001.txt</river_entity>
     </river>
 
     <rock> #16
         <rock_count>5</rock_count>
-        <rock_entity>common_objects/rock_1_001.txt</rock_entity>
-        <rock_entity>common_objects/rock_2_001.txt</rock_entity>
-        <rock_entity>common_objects/rock_3_001.txt</rock_entity>
-        <rock_entity>common_objects/rock_4_001.txt</rock_entity>
-        <rock_entity>common_objects/rock_5_001.txt</rock_entity>
+        <rock_entity>objects/rock_1_001.txt</rock_entity>
+        <rock_entity>objects/rock_2_001.txt</rock_entity>
+        <rock_entity>objects/rock_3_001.txt</rock_entity>
+        <rock_entity>objects/rock_4_001.txt</rock_entity>
+        <rock_entity>objects/rock_5_001.txt</rock_entity>
     </rock>
 
     <rock_small> #17
         <rock_small_count>8</rock_small_count>
-        <rock_small_entity>common_objects/rock_6_001.txt</rock_small_entity>
-        <rock_small_entity>common_objects/rock_7_001.txt</rock_small_entity>
-        <rock_small_entity>common_objects/rock_8_001.txt</rock_small_entity>
-        <rock_small_entity>common_objects/rock_9_001.txt</rock_small_entity>
-        <rock_small_entity>common_objects/rock_10_001.txt</rock_small_entity>
-        <rock_small_entity>common_objects/rock_11_001.txt</rock_small_entity>
-        <rock_small_entity>common_objects/rock_12_001.txt</rock_small_entity>
-        <rock_small_entity>common_objects/rock_13_001.txt</rock_small_entity>
+        <rock_small_entity>objects/rock_6_001.txt</rock_small_entity>
+        <rock_small_entity>objects/rock_7_001.txt</rock_small_entity>
+        <rock_small_entity>objects/rock_8_001.txt</rock_small_entity>
+        <rock_small_entity>objects/rock_9_001.txt</rock_small_entity>
+        <rock_small_entity>objects/rock_10_001.txt</rock_small_entity>
+        <rock_small_entity>objects/rock_11_001.txt</rock_small_entity>
+        <rock_small_entity>objects/rock_12_001.txt</rock_small_entity>
+        <rock_small_entity>objects/rock_13_001.txt</rock_small_entity>
     </rock_small>
 
     <fence_metal> #18
         <fence_metal_count>1</fence_metal_count>
-        <fence_metal_entity>town_objects/fence_metal_1_001.txt</fence_metal_entity>
+        <fence_metal_entity>objects/fence_metal_1_001.txt</fence_metal_entity>
     </fence_metal>
 
     <fence_pole_metal> #19
         <fence_pole_metal_count>1</fence_pole_metal_count>
-        <fence_pole_metal_entity>town_objects/fence_pole_metal_1_001.txt</fence_pole_metal_entity>
+        <fence_pole_metal_entity>objects/fence_pole_metal_1_001.txt</fence_pole_metal_entity>
     </fence_pole_metal>
 
     <cemetary_object> #20
         <cemetary_object_count>7</cemetary_object_count>
-        <cemetary_object_entity>town_objects/cemetary_object_1_001.txt</cemetary_object_entity>
-        <cemetary_object_entity>town_objects/cemetary_object_2_001.txt</cemetary_object_entity>
-        <cemetary_object_entity>town_objects/cemetary_object_3_001.txt</cemetary_object_entity>
-        <cemetary_object_entity>town_objects/cemetary_object_4_001.txt</cemetary_object_entity>
-        <cemetary_object_entity>town_objects/cemetary_object_5_001.txt</cemetary_object_entity>
-        <cemetary_object_entity>town_objects/cemetary_object_6_001.txt</cemetary_object_entity>
-        <cemetary_object_entity>town_objects/cemetary_object_7_001.txt</cemetary_object_entity>
+        <cemetary_object_entity>objects/cemetary_object_1_001.txt</cemetary_object_entity>
+        <cemetary_object_entity>objects/cemetary_object_2_001.txt</cemetary_object_entity>
+        <cemetary_object_entity>objects/cemetary_object_3_001.txt</cemetary_object_entity>
+        <cemetary_object_entity>objects/cemetary_object_4_001.txt</cemetary_object_entity>
+        <cemetary_object_entity>objects/cemetary_object_5_001.txt</cemetary_object_entity>
+        <cemetary_object_entity>objects/cemetary_object_6_001.txt</cemetary_object_entity>
+        <cemetary_object_entity>objects/cemetary_object_7_001.txt</cemetary_object_entity>
     </cemetary_object>
 
     <mausoleum> #21
         <mausoleum_count>1</mausoleum_count>
-        <mausoleum_entity>town_objects/mausoleum_1_001.txt</mausoleum_entity>
+        <mausoleum_entity>objects/mausoleum_1_001.txt</mausoleum_entity>
     </mausoleum>
 
     <torture_device> #22
         <torture_device_count>15</torture_device_count>
-        <torture_device_entity>dungeon_objects/torture_device_1_001.txt</torture_device_entity>
-        <torture_device_entity>dungeon_objects/torture_device_2_001.txt</torture_device_entity>
-        <torture_device_entity>dungeon_objects/torture_device_3_001.txt</torture_device_entity>
-        <torture_device_entity>dungeon_objects/torture_device_4_001.txt</torture_device_entity>
-        <torture_device_entity>dungeon_objects/torture_device_5_001.txt</torture_device_entity>
-        <torture_device_entity>dungeon_objects/torture_device_6_001.txt</torture_device_entity>
-        <torture_device_entity>dungeon_objects/torture_device_7_001.txt</torture_device_entity>
-        <torture_device_entity>dungeon_objects/torture_device_8_001.txt</torture_device_entity>
-        <torture_device_entity>dungeon_objects/torture_device_9_001.txt</torture_device_entity>
-        <torture_device_entity>dungeon_objects/torture_device_10_001.txt</torture_device_entity>
-        <torture_device_entity>dungeon_objects/torture_device_11_001.txt</torture_device_entity>
-        <torture_device_entity>dungeon_objects/torture_device_12_001.txt</torture_device_entity>
-        <torture_device_entity>dungeon_objects/torture_device_13_001.txt</torture_device_entity>
-        <torture_device_entity>dungeon_objects/torture_device_14_001.txt</torture_device_entity>
-        <torture_device_entity>dungeon_objects/torture_device_15_001.txt</torture_device_entity>
+        <torture_device_entity>objects/torture_device_1_001.txt</torture_device_entity>
+        <torture_device_entity>objects/torture_device_2_001.txt</torture_device_entity>
+        <torture_device_entity>objects/torture_device_3_001.txt</torture_device_entity>
+        <torture_device_entity>objects/torture_device_4_001.txt</torture_device_entity>
+        <torture_device_entity>objects/torture_device_5_001.txt</torture_device_entity>
+        <torture_device_entity>objects/torture_device_6_001.txt</torture_device_entity>
+        <torture_device_entity>objects/torture_device_7_001.txt</torture_device_entity>
+        <torture_device_entity>objects/torture_device_8_001.txt</torture_device_entity>
+        <torture_device_entity>objects/torture_device_9_001.txt</torture_device_entity>
+        <torture_device_entity>objects/torture_device_10_001.txt</torture_device_entity>
+        <torture_device_entity>objects/torture_device_11_001.txt</torture_device_entity>
+        <torture_device_entity>objects/torture_device_12_001.txt</torture_device_entity>
+        <torture_device_entity>objects/torture_device_13_001.txt</torture_device_entity>
+        <torture_device_entity>objects/torture_device_14_001.txt</torture_device_entity>
+        <torture_device_entity>objects/torture_device_15_001.txt</torture_device_entity>
     </torture_device>
 
     <tower> #23
         <tower_count>1</tower_count>
-        <tower_entity>town_objects/tower_1_001.txt</tower_entity>
+        <tower_entity>objects/tower_1_001.txt</tower_entity>
     </tower>
 
     <castle> #24
         <castle_count>1</castle_count>
-        <castle_entity>town_objects/castle_1_001.txt</castle_entity>
+        <castle_entity>objects/castle_1_001.txt</castle_entity>
     </castle>
 
     <arrow> #25
         <arrow_count>1</arrow_count>
-        <arrow_entity>common_objects/arrow_1_001.txt</arrow_entity>
+        <arrow_entity>objects/arrow_1_001.txt</arrow_entity>
     </arrow>
 
     <basket> #26
         <basket_count>2</basket_count>
-        <basket_entity>common_objects/basket_1_001.txt</basket_entity>
-        <basket_entity>common_objects/basket_2_001.txt</basket_entity>
+        <basket_entity>objects/basket_1_001.txt</basket_entity>
+        <basket_entity>objects/basket_2_001.txt</basket_entity>
     </basket>
 
     <sack> $27
         <sack_count>2</sack_count>
-        <sack_entity>common_objects/sack_1_001.txt</sack_entity>
-        <sack_entity>common_objects/sack_2_001.txt</sack_entity>
+        <sack_entity>objects/sack_1_001.txt</sack_entity>
+        <sack_entity>objects/sack_2_001.txt</sack_entity>
     </sack>
 
     <torch> #28
         <torch_count>22</torch_count>
-        <torch_entity>common_objects/torch_1_001.txt</torch_entity>
-        <torch_entity>dungeon_objects/torch_01_001.txt</torch_entity>
-        <torch_entity>dungeon_objects/torch_02_001.txt</torch_entity>
-        <torch_entity>dungeon_objects/torch_03_001.txt</torch_entity>
-        <torch_entity>dungeon_objects/torch_04_001.txt</torch_entity>
-        <torch_entity>dungeon_objects/torch_05_001.txt</torch_entity>
-        <torch_entity>dungeon_objects/torch_06_001.txt</torch_entity>
-        <torch_entity>dungeon_objects/torch_07_001.txt</torch_entity>
-        <torch_entity>dungeon_objects/torch_08_001.txt</torch_entity>
-        <torch_entity>dungeon_objects/torch_09_001.txt</torch_entity>
-        <torch_entity>dungeon_objects/torch_10_001.txt</torch_entity>
-        <torch_entity>dungeon_objects/torch_11_001.txt</torch_entity>
-        <torch_entity>dungeon_objects/torch_12_001.txt</torch_entity>
-        <torch_entity>dungeon_objects/torch_13_001.txt</torch_entity>
-        <torch_entity>dungeon_objects/torch_14_001.txt</torch_entity>
-        <torch_entity>dungeon_objects/torch_15_001.txt</torch_entity>
-        <torch_entity>dungeon_objects/torch_16_001.txt</torch_entity>
-        <torch_entity>dungeon_objects/torch_17_001.txt</torch_entity>
-        <torch_entity>dungeon_objects/torch_18_001.txt</torch_entity>
-        <torch_entity>dungeon_objects/torch_19_001.txt</torch_entity>
-        <torch_entity>dungeon_objects/torch_20_001.txt</torch_entity>
-        <torch_entity>dungeon_objects/torch_21_001.txt</torch_entity>
+        <torch_entity>objects/torch_1_001.txt</torch_entity>
+        <torch_entity>objects/torch_01_001.txt</torch_entity>
+        <torch_entity>objects/torch_02_001.txt</torch_entity>
+        <torch_entity>objects/torch_03_001.txt</torch_entity>
+        <torch_entity>objects/torch_04_001.txt</torch_entity>
+        <torch_entity>objects/torch_05_001.txt</torch_entity>
+        <torch_entity>objects/torch_06_001.txt</torch_entity>
+        <torch_entity>objects/torch_07_001.txt</torch_entity>
+        <torch_entity>objects/torch_08_001.txt</torch_entity>
+        <torch_entity>objects/torch_09_001.txt</torch_entity>
+        <torch_entity>objects/torch_10_001.txt</torch_entity>
+        <torch_entity>objects/torch_11_001.txt</torch_entity>
+        <torch_entity>objects/torch_12_001.txt</torch_entity>
+        <torch_entity>objects/torch_13_001.txt</torch_entity>
+        <torch_entity>objects/torch_14_001.txt</torch_entity>
+        <torch_entity>objects/torch_15_001.txt</torch_entity>
+        <torch_entity>objects/torch_16_001.txt</torch_entity>
+        <torch_entity>objects/torch_17_001.txt</torch_entity>
+        <torch_entity>objects/torch_18_001.txt</torch_entity>
+        <torch_entity>objects/torch_19_001.txt</torch_entity>
+        <torch_entity>objects/torch_20_001.txt</torch_entity>
+        <torch_entity>objects/torch_21_001.txt</torch_entity>
     </torch>
 
     <town_props> #29
         <town_props_count>38</town_props_count>
-        <town_props_entity>town_objects/alchemy_table_1_001.txt</town_props_entity>
-        <town_props_entity>town_objects/bar_counter_1_001.txt</town_props_entity>
-        <town_props_entity>town_objects/bed_1_001.txt</town_props_entity>
-        <town_props_entity>town_objects/bench_1_001.txt</town_props_entity>
-        <town_props_entity>town_objects/blacksmith_forge_1_001.txt</town_props_entity>
-        <town_props_entity>town_objects/bookshelf_1_001.txt</town_props_entity>
-        <town_props_entity>town_objects/brazier_1_001.txt</town_props_entity>
-        <town_props_entity>town_objects/bucket_1_001.txt</town_props_entity>
-        <town_props_entity>town_objects/campfire_1_001.txt</town_props_entity>
-        <town_props_entity>town_objects/candle_1_001.txt</town_props_entity>
-        <town_props_entity>town_objects/cart_1_001.txt</town_props_entity>
-        <town_props_entity>town_objects/chair_1_001.txt</town_props_entity>
-        <town_props_entity>town_objects/chair_2_001.txt</town_props_entity>
-        <town_props_entity>town_objects/cooking_cauldron_1_001.txt</town_props_entity>
-        <town_props_entity>town_objects/fireplace_1_001.txt</town_props_entity>
-        <town_props_entity>town_objects/firewood_1_001.txt</town_props_entity>
-        <town_props_entity>town_objects/hay_1_001.txt</town_props_entity>
-        <town_props_entity>town_objects/hitching_post_1_001.txt</town_props_entity>
-        <town_props_entity>town_objects/lamp_1_001.txt</town_props_entity>
-        <town_props_entity>town_objects/log_1_001.txt</town_props_entity>
-        <town_props_entity>town_objects/log_2_001.txt</town_props_entity>
-        <town_props_entity>town_objects/plate_1_001.txt</town_props_entity>
-        <town_props_entity>town_objects/sawbuck_1_001.txt</town_props_entity>
-        <town_props_entity>town_objects/shelf_1_001.txt</town_props_entity>
-        <town_props_entity>town_objects/table_1_001.txt</town_props_entity>
-        <town_props_entity>town_objects/table_2_001.txt</town_props_entity>
-        <town_props_entity>town_objects/tankard_1_001.txt</town_props_entity>
-        <town_props_entity>town_objects/trough_1_001.txt</town_props_entity>
-        <town_props_entity>town_objects/wood_fire_1_001.txt</town_props_entity>
-        <town_props_entity>town_objects/bookshelf_2_001.txt</town_props_entity>
-        <town_props_entity>town_objects/bookshelf_2_002.txt</town_props_entity>
-        <town_props_entity>town_objects/bookshelf_2_003.txt</town_props_entity>
-        <town_props_entity>town_objects/bookshelf_2_004.txt</town_props_entity>
-        <town_props_entity>town_objects/paper_debris_1_001.txt</town_props_entity>
-        <town_props_entity>town_objects/paper_debris_1_002.txt</town_props_entity>
-        <town_props_entity>town_objects/paper_debris_1_003.txt</town_props_entity>
-        <town_props_entity>town_objects/paper_debris_1_004.txt</town_props_entity>
-        <town_props_entity>town_objects/paper_debris_1_005.txt</town_props_entity>
+        <town_props_entity>objects/alchemy_table_1_001.txt</town_props_entity>
+        <town_props_entity>objects/bar_counter_1_001.txt</town_props_entity>
+        <town_props_entity>objects/bed_1_001.txt</town_props_entity>
+        <town_props_entity>objects/bench_1_001.txt</town_props_entity>
+        <town_props_entity>objects/blacksmith_forge_1_001.txt</town_props_entity>
+        <town_props_entity>objects/bookshelf_1_001.txt</town_props_entity>
+        <town_props_entity>objects/brazier_1_001.txt</town_props_entity>
+        <town_props_entity>objects/bucket_1_001.txt</town_props_entity>
+        <town_props_entity>objects/campfire_1_001.txt</town_props_entity>
+        <town_props_entity>objects/candle_1_001.txt</town_props_entity>
+        <town_props_entity>objects/cart_1_001.txt</town_props_entity>
+        <town_props_entity>objects/chair_1_001.txt</town_props_entity>
+        <town_props_entity>objects/chair_2_001.txt</town_props_entity>
+        <town_props_entity>objects/cooking_cauldron_1_001.txt</town_props_entity>
+        <town_props_entity>objects/fireplace_1_001.txt</town_props_entity>
+        <town_props_entity>objects/firewood_1_001.txt</town_props_entity>
+        <town_props_entity>objects/hay_1_001.txt</town_props_entity>
+        <town_props_entity>objects/hitching_post_1_001.txt</town_props_entity>
+        <town_props_entity>objects/lamp_1_001.txt</town_props_entity>
+        <town_props_entity>objects/log_1_001.txt</town_props_entity>
+        <town_props_entity>objects/log_2_001.txt</town_props_entity>
+        <town_props_entity>objects/plate_1_001.txt</town_props_entity>
+        <town_props_entity>objects/sawbuck_1_001.txt</town_props_entity>
+        <town_props_entity>objects/shelf_1_001.txt</town_props_entity>
+        <town_props_entity>objects/table_1_001.txt</town_props_entity>
+        <town_props_entity>objects/table_2_001.txt</town_props_entity>
+        <town_props_entity>objects/tankard_1_001.txt</town_props_entity>
+        <town_props_entity>objects/trough_1_001.txt</town_props_entity>
+        <town_props_entity>objects/wood_fire_1_001.txt</town_props_entity>
+        <town_props_entity>objects/bookshelf_2_001.txt</town_props_entity>
+        <town_props_entity>objects/bookshelf_2_002.txt</town_props_entity>
+        <town_props_entity>objects/bookshelf_2_003.txt</town_props_entity>
+        <town_props_entity>objects/bookshelf_2_004.txt</town_props_entity>
+        <town_props_entity>objects/paper_debris_1_001.txt</town_props_entity>
+        <town_props_entity>objects/paper_debris_1_002.txt</town_props_entity>
+        <town_props_entity>objects/paper_debris_1_003.txt</town_props_entity>
+        <town_props_entity>objects/paper_debris_1_004.txt</town_props_entity>
+        <town_props_entity>objects/paper_debris_1_005.txt</town_props_entity>
     </town_props>
 
     <book> #30
         <book_count>1</book_count>
-        <book_entity>common_objects/grimoire_1_001.txt</book_entity>
+        <book_entity>objects/grimoire_1_001.txt</book_entity>
     </book>
 
     <weapon> #31
@@ -377,18 +377,18 @@
 
     <vase> #33
         <vase_count>12</vase_count>
-        <vase_entity>dungeon_objects/vase_1_001.txt</vase_entity>
-        <vase_entity>dungeon_objects/vase_2_001.txt</vase_entity>
-        <vase_entity>dungeon_objects/vase_3_001.txt</vase_entity>
-        <vase_entity>dungeon_objects/vase_4_001.txt</vase_entity>
-        <vase_entity>dungeon_objects/vase_5_001.txt</vase_entity>
-        <vase_entity>dungeon_objects/vase_6_001.txt</vase_entity>
-        <vase_entity>dungeon_objects/vase_7_001.txt</vase_entity>
-        <vase_entity>dungeon_objects/vase_8_001.txt</vase_entity>
-        <vase_entity>dungeon_objects/vase_9_001.txt</vase_entity>
-        <vase_entity>dungeon_objects/vase_10_001.txt</vase_entity>
-        <vase_entity>dungeon_objects/vase_11_001.txt</vase_entity>
-        <vase_entity>dungeon_objects/vase_12_001.txt</vase_entity>
+        <vase_entity>objects/vase_1_001.txt</vase_entity>
+        <vase_entity>objects/vase_2_001.txt</vase_entity>
+        <vase_entity>objects/vase_3_001.txt</vase_entity>
+        <vase_entity>objects/vase_4_001.txt</vase_entity>
+        <vase_entity>objects/vase_5_001.txt</vase_entity>
+        <vase_entity>objects/vase_6_001.txt</vase_entity>
+        <vase_entity>objects/vase_7_001.txt</vase_entity>
+        <vase_entity>objects/vase_8_001.txt</vase_entity>
+        <vase_entity>objects/vase_9_001.txt</vase_entity>
+        <vase_entity>objects/vase_10_001.txt</vase_entity>
+        <vase_entity>objects/vase_11_001.txt</vase_entity>
+        <vase_entity>objects/vase_12_001.txt</vase_entity>
     </vase>
 
     <gib> #34

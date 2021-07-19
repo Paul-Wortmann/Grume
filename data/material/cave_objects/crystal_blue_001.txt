@@ -1,8 +1,0 @@
-﻿<?xml version = "1.0" encoding = "UTF-8" ?>
-<material>
-    <name>crystal_blue_001</name>
-    <diffuse>cave_objects/object_crystal_blue_001_d.png</diffuse>
-    <emissive>cave_objects/object_crystal_001_e.png</emissive>
-    <normal>cave_objects/object_crystal_001_n.png</normal>
-    <specular>cave_objects/object_crystal_001_s.png</specular>
-</material>

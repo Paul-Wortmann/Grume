@@ -101,7 +101,7 @@
         # Thin door models
         <door_1td>
             <door_1td_count>1</wall_1td_count>
-            <door_1td_entity>doors/dungeon_gate_1_001.txt</door_1td_entity>
+            <door_1td_entity>objects/dungeon_gate_1_001.txt</door_1td_entity>
         </door_1td>
 
     </wall_length_1>
@@ -132,7 +132,7 @@
         # Thin door models 2 units long
         <door_2td>
             <door_2td_count>1</wall_2td_count>
-            <door_2td_entity>doors/dungeon_gate_1_002.txt</door_2td_entity>
+            <door_2td_entity>objects/dungeon_gate_1_002.txt</door_2td_entity>
         </door_2td>
 
     </wall_length_2>
@@ -162,7 +162,7 @@
         # Thin door models 3 units long
         <door_3td>
             <door_3td_count>1</wall_3td_count>
-            <door_3td_entity>doors/dungeon_gate_1_003.txt</door_3td_entity>
+            <door_3td_entity>objects/dungeon_gate_1_003.txt</door_3td_entity>
         </door_3td>
 
     </wall_length_3>

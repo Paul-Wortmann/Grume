@@ -1,0 +1,10 @@
+﻿<?xml version = "1.0" encoding = "UTF-8" ?>
+<entity>
+    <name>rock_7_001</name>
+    <model>objects/rock_7_001.obj</model>
+    <material>objects/rock_6_001.txt</material>
+
+    <position>0.0 0.0 0.0</position>
+    <scale>1.0 1.0 1.0</scale>
+    <rotation>0.0 0.0 0.0</rotation>
+</entity>

@@ -1,0 +1,8 @@
+﻿<?xml version = "1.0" encoding = "UTF-8" ?>
+<material>
+    <name>bookshelf_2_001</name>
+    <diffuse>objects/bookshelf_2_001_d.png</diffuse>
+    <emissive>none_e.png</emissive>
+    <normal>objects/bookshelf_2_001_n.png</normal>
+    <specular>objects/bookshelf_2_001_s.png</specular>
+</material>

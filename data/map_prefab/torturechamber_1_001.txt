@@ -1,0 +1,68 @@
+﻿<?xml version = "1.0" encoding = "UTF-8" ?>
+<map_prefab>
+    <information>
+        <exit_data>1 0 0 0</exit_data> # North, south, east, west
+        <room_type>11</room_type>
+        <room_width>28</room_width>
+        <room_height>19</room_height>
+    </information>
+
+    # tileNone      = 0,
+    # tileFloor     = 1,
+    # tileWall      = 2,
+    # tileDoorway   = 3,
+    # tileWallShort = 4,
+    # tileFloorPath = 5,
+    # tileFloorNoGo = 6,
+    # tilePathNoGo  = 7,
+    # tileLiquid    = 8
+
+    <tile_data>
+       <tiles>1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1</tiles>
+       <tiles>1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1</tiles>
+       <tiles>1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1</tiles>
+       <tiles>1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1</tiles>
+       <tiles>1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1</tiles>
+       <tiles>1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1</tiles>
+       <tiles>1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1</tiles>
+       <tiles>1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1</tiles>
+       <tiles>1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1</tiles>
+       <tiles>1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1</tiles>
+       <tiles>1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1</tiles>
+       <tiles>1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1</tiles>
+       <tiles>1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1</tiles>
+       <tiles>1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1</tiles>
+       <tiles>1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1</tiles>
+       <tiles>1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1</tiles>
+       <tiles>1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1</tiles>
+       <tiles>1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1</tiles>
+       <tiles>1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1</tiles>
+    <tile_data>
+
+    <object_data>
+        #tile number (relative to the prefab), object number, scale, y-rotation, obstacle
+
+        <object>266 22 03 1.0 1.5708 1</object> # Torture device - 
+
+        <#object>6840 22 03 1.0 1.5708 1</object> # Torture device - 
+        <#object>7241 22 04 1.0 1.5708 1</object> # Torture device - 
+        <#object>7640 22 06 1.0 1.5708 1</object> # Torture device - 
+        <#object>8043 22 07 1.0 1.5708 1</object> # Torture device - 
+        <#object>8440 22 08 1.0 1.5708 1</object> # Torture device - 
+        
+        <#object>7250 22 11 1.0 1.5708 1</object> # Torture device - 
+        <#object>7650 22 11 1.0 1.5708 1</object> # Torture device - 
+        <#object>8050 22 11 1.0 1.5708 1</object> # Torture device - 
+        
+        <#object>7060 22 05 1.0 0.0000 1</object> # Torture device - 
+        <#object>7459 22 05 1.0 0.0000 1</object> # Torture device - 
+        <#object>7660 22 09 1.0 1.5708 1</object> # Torture device - 
+        <#object>7859 22 13 1.0 1.5708 1</object> # Torture device - 
+        <#object>8260 22 15 1.0 1.5708 1</object> # Torture device - 
+        <#object>8459 22 10 1.0 1.5708 1</object> # Torture device - 
+
+    <object_data>
+
+</map_prefab>
+
+

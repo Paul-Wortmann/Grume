@@ -1,8 +1,0 @@
-﻿<?xml version = "1.0" encoding = "UTF-8" ?>
-<material>
-    <name>marble_1_001</name>
-    <diffuse>common_objects/marble_1_002_d.png</diffuse>
-    <emissive>none_e.png</emissive>
-    <normal>common_objects/marble_1_001_n.png</normal>
-    <specular>common_objects/marble_1_001_s.png</specular>
-</material>

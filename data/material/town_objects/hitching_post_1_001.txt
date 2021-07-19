@@ -1,8 +1,0 @@
-﻿<?xml version = "1.0" encoding = "UTF-8" ?>
-<material>
-    <name>hitching_post_1_001</name>
-    <diffuse>town_objects/hitching_post_1_001_d.png</diffuse>
-    <emissive>none_e.png</emissive>
-    <normal>town_objects/hitching_post_1_001_n.png</normal>
-    <specular>town_objects/hitching_post_1_001_s.png</specular>
-</material>

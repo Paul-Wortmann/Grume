@@ -1,0 +1,8 @@
+﻿<?xml version = "1.0" encoding = "UTF-8" ?>
+<material>
+    <name>torch_1_001</name>
+    <diffuse>objects/torch_1_001_d.png</diffuse>
+    <emissive>none_e.png</emissive>
+    <normal>objects/torch_1_001_n.png</normal>
+    <specular>objects/torch_1_001_s.png</specular>
+</material>

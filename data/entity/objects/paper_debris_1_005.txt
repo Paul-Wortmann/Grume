@@ -1,0 +1,10 @@
+﻿<?xml version = "1.0" encoding = "UTF-8" ?>
+<entity>
+    <name>paper_debris_1_005</name>
+    <model>objects/paper_debris_1_005.obj</model>
+    <material>objects/paper_debris_1_001.txt</material>
+
+    <position>0.0 0.0 0.0</position>
+    <scale>0.5 0.5 0.5</scale>
+    <rotation>0.0 0.0 0.0</rotation>
+</entity>

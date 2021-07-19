@@ -1,0 +1,93 @@
+﻿<?xml version = "1.0" encoding = "UTF-8" ?>
+<map_prefab>
+    <information>
+        <exit_data>1 0 0 0</exit_data> # North, south, east, west
+        <room_type>6</room_type>
+        <room_width>19</room_width>
+        <room_height>19</room_height>
+    </information>
+
+    # tileNone      = 0,
+    # tileFloor     = 1,
+    # tileWall      = 2,
+    # tileDoorway   = 3,
+    # tileWallShort = 4,
+    # tileFloorPath = 5,
+    # tileFloorNoGo = 6,
+    # tilePathNoGo  = 7,
+    # tileLiquid    = 8
+
+    <tile_data>
+       <tiles>1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1</tiles>
+       <tiles>1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1</tiles>
+       <tiles>1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1</tiles>
+       <tiles>1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1</tiles>
+       <tiles>1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1</tiles>
+       <tiles>1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1</tiles>
+       <tiles>1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1</tiles>
+       <tiles>1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1</tiles>
+       <tiles>1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1</tiles>
+       <tiles>1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1</tiles>
+       <tiles>1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1</tiles>
+       <tiles>1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1</tiles>
+       <tiles>1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1</tiles>
+       <tiles>1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1</tiles>
+       <tiles>1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1</tiles>
+       <tiles>1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1</tiles>
+       <tiles>1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1</tiles>
+       <tiles>1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1</tiles>
+       <tiles>1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1</tiles>
+    <tile_data>
+
+    <object_data>
+        #tile number (relative to the prefab), object number, scale, y-rotation, obstacle
+
+        #centered
+        <object>078 29 02 1.0 1.5708 1</object> # Town props - barcounter
+        <object>041 29 13 1.0 1.5708 1</object> # Town props - chair 2
+        <object>079 29 13 1.0 1.5708 1</object> # Town props - chair 2
+        <object>117 29 13 1.0 1.5708 1</object> # Town props - chair 2
+        <object>040 29 27 1.0 1.5708 1</object> # Town props - tankard
+        <object>059 29 27 1.0 1.5708 1</object> # Town props - tankard
+        <object>097 29 27 1.0 1.5708 1</object> # Town props - tankard
+        <object>173 29 02 1.0 1.5708 1</object> # Town props - barcounter
+        <object>136 29 13 1.0 1.5708 1</object> # Town props - chair 2
+        <object>174 29 13 1.0 1.5708 1</object> # Town props - chair 2
+        <object>212 29 13 1.0 1.5708 1</object> # Town props - chair 2
+        <object>154 29 27 1.0 1.5708 1</object> # Town props - tankard
+        <object>192 29 27 1.0 1.5708 1</object> # Town props - tankard
+        <object>211 29 27 1.0 1.5708 1</object> # Town props - tankard
+        <object>268 29 02 1.0 1.5708 1</object> # Town props - barcounter
+        <object>250 29 13 1.0 1.5708 1</object> # Town props - chair 2
+        <object>269 29 13 1.0 1.5708 1</object> # Town props - chair 2
+        <object>307 29 13 1.0 1.5708 1</object> # Town props - chair 2
+        <object>249 29 27 1.0 1.5708 1</object> # Town props - tankard
+        <object>287 29 27 1.0 1.5708 1</object> # Town props - tankard
+        <object>306 29 27 1.0 1.5708 1</object> # Town props - tankard
+
+        <object>028 29 04 1.0 0.0000 1</object> # Town props - bench
+        <object>085 29 25 1.0 1.5708 1</object> # Town props - table 1
+        <object>142 29 04 1.0 0.0000 1</object> # Town props - bench
+        <object>085 29 10 1.0 1.5708 1</object> # Town props - candle
+
+        <object>034 29 04 1.0 0.0000 1</object> # Town props - bench
+        <object>091 29 25 1.0 1.5708 1</object> # Town props - table 1
+        <object>148 29 04 1.0 0.0000 1</object> # Town props - bench
+        <object>091 29 10 1.0 1.5708 1</object> # Town props - candle
+
+
+        <object>218 29 04 1.0 0.0000 1</object> # Town props - bench
+        <object>275 29 25 1.0 1.5708 1</object> # Town props - table 1
+        <object>332 29 04 1.0 0.0000 1</object> # Town props - bench
+        <object>275 29 10 1.0 1.5708 1</object> # Town props - candle
+
+        <object>224 29 04 1.0 0.0000 1</object> # Town props - bench
+        <object>281 29 25 1.0 1.5708 1</object> # Town props - table 1
+        <object>338 29 04 1.0 0.0000 1</object> # Town props - bench
+        <object>281 29 10 1.0 1.5708 1</object> # Town props - candle
+
+    <object_data>
+
+</map_prefab>
+
+

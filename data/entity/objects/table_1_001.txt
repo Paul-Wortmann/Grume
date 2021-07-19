@@ -1,0 +1,18 @@
+﻿<?xml version = "1.0" encoding = "UTF-8" ?>
+<entity>
+    <name>table_1_001</name>
+    <model>objects/table_1_001.obj</model>
+    <material>objects/table_1_001.txt</material>
+
+    <position>0.0 0.0 0.0</position>
+    <scale>0.75 0.5 0.75</scale>
+    <rotation>0.0 0.0 0.0</rotation>
+
+    <collision>
+        <collision_size>3</collision_size>
+        <collision_data>1 1 1</collision_data>
+        <collision_data>1 1 1</collision_data>
+        <collision_data>1 1 1</collision_data>
+    </collision>
+
+</entity>

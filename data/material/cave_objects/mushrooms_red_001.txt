@@ -1,8 +1,0 @@
-﻿<?xml version = "1.0" encoding = "UTF-8" ?>
-<material>
-    <name>mushroom_red_001</name>
-    <diffuse>cave_objects/mushroom_001_red_d.png</diffuse>
-    <emissive>none_e.png</emissive>
-    <normal>cave_objects/mushroom_001_n.png</normal>
-    <specular>cave_objects/mushroom_001_s.png</specular>
-</material>

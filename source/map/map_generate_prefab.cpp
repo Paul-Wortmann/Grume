@@ -154,11 +154,11 @@ void cMapManager::m_mapApplyPrefab(sMap*& _map, const std::string &_fileName, co
         for (std::uint32_t i = 0; i < tileKeyCount; ++i)
         {
             std::string tPTiles = xmlMapPrefabFile.getString("<tiles>", i + 1);
-            tPTiles += "  ";
+            tPTiles += " ";
             std::uint64_t tPTilesLength = tPTiles.length();
             std::string   tString = "";
             std::uint32_t tileCount = 0;
-            if (tPTilesLength > 6)
+            if (tPTilesLength > 1)
             {
                 for (std::uint64_t j = 0; j < tPTilesLength; ++j)
                 {
