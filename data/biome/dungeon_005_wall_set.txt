@@ -108,6 +108,12 @@
             <door_1td_entity>objects/dungeon_gate_1_001.txt</door_1td_entity>
         </door_1td>
 
+        # Thin torch models
+        <torch_1td>
+            <torch_1td_count>1</torch_1td_count>
+            <torch_1td_entity>objects/torch_1_001.txt</torch_1td_entity>
+        </torch_1td>
+
     </wall_length_1>
 
 
