@@ -42,7 +42,63 @@
     <object_data>
         #tile number (relative to the prefab), object number, scale, y-rotation, obstacle
 
-        <object>266 22 03 1.0 1.5708 1</object> # Torture device - 
+        <object>087 22 11 1.0 1.5708 1</object> # Torture device - Cage
+        <object>087 34 03 1.0 1.5708 1</object> # Gib - 
+        <object>199 22 11 1.0 1.5708 1</object> # Torture device - Cage
+        <object>199 34 04 1.0 1.5708 1</object> # Gib - 
+        <object>339 22 11 1.0 1.5708 1</object> # Torture device - Cage
+        <object>339 34 05 1.0 1.5708 1</object> # Gib - 
+        <object>451 22 11 1.0 1.5708 1</object> # Torture device - Cage
+        <object>451 34 06 1.0 1.5708 1</object> # Gib - 
+
+        <object>091 22 11 1.0 1.5708 1</object> # Torture device - Cage
+        <object>091 34 07 1.0 1.5708 1</object> # Gib - 
+        <object>203 22 11 1.0 1.5708 1</object> # Torture device - Cage
+        <object>203 34 08 1.0 1.5708 1</object> # Gib - 
+        <object>343 22 11 1.0 1.5708 1</object> # Torture device - Cage
+        <object>343 34 08 1.0 1.5708 1</object> # Gib - 
+        <object>455 22 11 1.0 1.5708 1</object> # Torture device - Cage
+        <object>455 34 03 1.0 1.5708 1</object> # Gib - 
+
+        <object>095 22 11 1.0 1.5708 1</object> # Torture device - Cage
+        <object>095 34 07 1.0 1.5708 1</object> # Gib - 
+        <object>459 22 11 1.0 1.5708 1</object> # Torture device - Cage
+        <object>459 34 08 1.0 1.5708 1</object> # Gib - 
+
+        <object>209 34 07 1.0 3.1416 1</object> # Gib - Corpse
+        <object>265 22 03 1.0 1.5708 1</object> # Torture device - Guillotine
+        <object>263 34 01 1.0 1.5708 0</object> # Gib - heart
+        <object>268 34 02 1.0 1.5708 0</object> # Gib - lungs
+        <object>292 34 03 1.0 4.7124 0</object> # Gib - hand
+        <object>322 34 04 1.0 3.0216 0</object> # Gib - arm
+        <object>318 34 05 1.0 2.8416 0</object> # Gib - leg
+        <object>348 34 05 1.0 2.0316 0</object> # Gib - leg
+
+        <object>100 22 11 1.0 1.5708 1</object> # Torture device - Cage
+        <object>100 34 08 1.0 1.5708 1</object> # Gib - 
+        <object>464 22 11 1.0 1.5708 1</object> # Torture device - Cage
+        <object>464 34 06 1.0 1.5708 1</object> # Gib - 
+
+        <object>104 22 11 1.0 1.5708 1</object> # Torture device - Cage
+        <object>104 34 05 1.0 1.5708 1</object> # Gib - 
+        <object>216 22 11 1.0 1.5708 1</object> # Torture device - Cage
+        <object>216 34 04 1.0 1.5708 1</object> # Gib - 
+        <object>356 22 11 1.0 1.5708 1</object> # Torture device - Cage
+        <object>356 34 03 1.0 1.5708 1</object> # Gib - 
+        <object>468 22 11 1.0 1.5708 1</object> # Torture device - Cage
+        <object>468 34 04 1.0 1.5708 1</object> # Gib - 
+
+        <object>108 22 11 1.0 1.5708 1</object> # Torture device - Cage
+        <object>108 34 05 1.0 1.5708 1</object> # Gib - 
+        <object>220 22 11 1.0 1.5708 1</object> # Torture device - Cage
+        <object>220 34 06 1.0 1.5708 1</object> # Gib - 
+        <object>360 22 11 1.0 1.5708 1</object> # Torture device - Cage
+        <object>360 34 07 1.0 1.5708 1</object> # Gib - 
+        <object>472 22 11 1.0 1.5708 1</object> # Torture device - Cage
+        <object>472 34 08 1.0 1.5708 1</object> # Gib - 
+
+
+
 
         <#object>6840 22 03 1.0 1.5708 1</object> # Torture device - 
         <#object>7241 22 04 1.0 1.5708 1</object> # Torture device - 

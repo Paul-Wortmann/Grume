@@ -43,50 +43,50 @@
         #tile number (relative to the prefab), object number, scale, y-rotation, obstacle
 
         # Bookshelf row 1
-        <object>021 29 30 1.0 4.7123 1</object> # Town props - bookshelf
-        <object>116 29 31 1.0 4.7123 1</object> # Town props - bookshelf
-        <object>230 29 32 1.0 4.7123 1</object> # Town props - bookshelf
-        <object>325 29 33 1.0 4.7123 1</object> # Town props - bookshelf
+        <object>021 29 06 1.0 4.7123 1</object> # Town props - bookshelf
+        <object>116 29 06 1.0 4.7123 1</object> # Town props - bookshelf
+        <object>230 29 06 1.0 4.7123 1</object> # Town props - bookshelf
+        <object>325 29 06 1.0 4.7123 1</object> # Town props - bookshelf
         # Bookshelf row 2
         <object>022 29 30 1.0 1.5708 1</object> # Town props - bookshelf
         <object>117 29 31 1.0 1.5708 1</object> # Town props - bookshelf
         <object>231 29 32 1.0 1.5708 1</object> # Town props - bookshelf
-        <object>326 29 33 1.0 1.5708 1</object> # Town props - bookshelf
+        <object>326 29 31 1.0 1.5708 1</object> # Town props - bookshelf
 
         # Bookshelf row 3
-        <object>025 29 30 1.0 4.7123 1</object> # Town props - bookshelf
-        <object>120 29 31 1.0 4.7123 1</object> # Town props - bookshelf
-        <object>234 29 32 1.0 4.7123 1</object> # Town props - bookshelf
-        <object>329 29 33 1.0 4.7123 1</object> # Town props - bookshelf
+        <object>025 29 06 1.0 4.7123 1</object> # Town props - bookshelf
+        <object>120 29 06 1.0 4.7123 1</object> # Town props - bookshelf
+        <object>234 29 06 1.0 4.7123 1</object> # Town props - bookshelf
+        <object>329 29 06 1.0 4.7123 1</object> # Town props - bookshelf
         # Bookshelf row 4
-        <object>026 29 30 1.0 1.5708 1</object> # Town props - bookshelf
-        <object>121 29 31 1.0 1.5708 1</object> # Town props - bookshelf
+        <object>026 29 31 1.0 1.5708 1</object> # Town props - bookshelf
+        <object>121 29 33 1.0 1.5708 1</object> # Town props - bookshelf
         <object>235 29 32 1.0 1.5708 1</object> # Town props - bookshelf
-        <object>330 29 33 1.0 1.5708 1</object> # Town props - bookshelf
+        <object>330 29 30 1.0 1.5708 1</object> # Town props - bookshelf
 
         <object>200 29 37 1.0 1.5708 0</object> # Town props - paper debris
 
         # Bookshelf row 5
-        <object>030 29 30 1.0 4.7123 1</object> # Town props - bookshelf
-        <object>125 29 31 1.0 4.7123 1</object> # Town props - bookshelf
-        <object>239 29 32 1.0 4.7123 1</object> # Town props - bookshelf
-        <object>334 29 33 1.0 4.7123 1</object> # Town props - bookshelf
+        <object>030 29 06 1.0 4.7123 1</object> # Town props - bookshelf
+        <object>125 29 06 1.0 4.7123 1</object> # Town props - bookshelf
+        <object>239 29 06 1.0 4.7123 1</object> # Town props - bookshelf
+        <object>334 29 06 1.0 4.7123 1</object> # Town props - bookshelf
         # Bookshelf row 6
         <object>031 29 30 1.0 1.5708 1</object> # Town props - bookshelf
         <object>126 29 31 1.0 1.5708 1</object> # Town props - bookshelf
         <object>240 29 32 1.0 1.5708 1</object> # Town props - bookshelf
-        <object>335 29 33 1.0 1.5708 1</object> # Town props - bookshelf
+        <object>335 29 32 1.0 1.5708 1</object> # Town props - bookshelf
 
         # Bookshelf row 7
-        <object>034 29 30 1.0 4.7123 1</object> # Town props - bookshelf
-        <object>129 29 31 1.0 4.7123 1</object> # Town props - bookshelf
-        <object>243 29 32 1.0 4.7123 1</object> # Town props - bookshelf
-        <object>338 29 33 1.0 4.7123 1</object> # Town props - bookshelf
+        <object>034 29 06 1.0 4.7123 1</object> # Town props - bookshelf
+        <object>129 29 06 1.0 4.7123 1</object> # Town props - bookshelf
+        <object>243 29 06 1.0 4.7123 1</object> # Town props - bookshelf
+        <object>338 29 06 1.0 4.7123 1</object> # Town props - bookshelf
         # Bookshelf row 8
         <object>035 29 30 1.0 1.5708 1</object> # Town props - bookshelf
         <object>130 29 31 1.0 1.5708 1</object> # Town props - bookshelf
         <object>244 29 32 1.0 1.5708 1</object> # Town props - bookshelf
-        <object>339 29 33 1.0 1.5708 1</object> # Town props - bookshelf
+        <object>339 29 31 1.0 1.5708 1</object> # Town props - bookshelf
 
     <object_data>
 
