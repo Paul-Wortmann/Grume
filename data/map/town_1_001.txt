@@ -181,16 +181,16 @@
         <object>4840 22 12 1.0 0.0000 1</object> # Torture device
 
         # river
-        <object>0461 15 0 1.0 0.0000 1</object> # River
-        <object>1461 15 0 1.0 0.0000 1</object> # River
-        <object>2461 15 0 1.0 0.0000 1</object> # River
-        <object>3461 15 0 1.0 0.0000 1</object> # River
-        <object>4461 15 0 1.0 0.0000 1</object> # River
-        <object>5461 15 0 1.0 0.0000 1</object> # River
-        <object>6461 15 0 1.0 0.0000 1</object> # River
-        <object>7461 15 0 1.0 0.0000 1</object> # River
-        <object>8461 15 0 1.0 0.0000 1</object> # River
-        <object>9461 15 0 1.0 0.0000 1</object> # River
+        <object>0461 15 0 1.0 0.0000 0</object> # River
+        <object>1461 15 0 1.0 0.0000 0</object> # River
+        <object>2461 15 0 1.0 0.0000 0</object> # River
+        <object>3461 15 0 1.0 0.0000 0</object> # River
+        <object>4461 15 0 1.0 0.0000 0</object> # River
+        <object>5461 15 0 1.0 0.0000 0</object> # River
+        <object>6461 15 0 1.0 0.0000 0</object> # River
+        <object>7461 15 0 1.0 0.0000 0</object> # River
+        <object>8461 15 0 1.0 0.0000 0</object> # River
+        <object>9461 15 0 1.0 0.0000 0</object> # River
 
         # graveyard
         <object>8336 18 1 1.0 0.0000 1</object> # Fence metal

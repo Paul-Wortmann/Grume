@@ -158,20 +158,20 @@
     # roomTypeTorture      = 11  // Torture Chamber
     <rooms>
         #Tile (any within the room), type, ignore room number (use for the interconnecting route, -1 for none)
-        <room_type_set>0416 1 1</room_type_set> # Cell
-        <room_type_set>0426 1 1</room_type_set> # Cell
+        <room_type_set>0416 01 1</room_type_set> # Cell
+        <room_type_set>0426 01 1</room_type_set> # Cell
 
-        <room_type_set>2022 9 1</room_type_set> # Alchemy Lab
-        <room_type_set>2036 8 1</room_type_set> # Library
-        <room_type_set>2064 6 1</room_type_set> # Canteen
-        <room_type_set>2078 7 1</room_type_set> # Storage room
+        <room_type_set>2022 09 1</room_type_set> # Alchemy Lab
+        <room_type_set>2036 08 1</room_type_set> # Library
+        <room_type_set>2064 06 1</room_type_set> # Canteen
+        <room_type_set>2078 07 1</room_type_set> # Storage room
         <room_type_set>7550 11 1</room_type_set> # Torture chamber
     </rooms>
 
     <debris_objects>
         #object number, scale max, scale min, prevalence, obstacle
-        <debris>34 0.5 1.0 2 0</debris> # gibs
-        <debris>6 0.5 1.0 15 0</debris> # bones
+        <debris>34 0.5 1.0 02 0</debris> # gibs
+        <debris>06 0.5 1.0 15 0</debris> # bones
     </debris_objects>
 
     <objects>
