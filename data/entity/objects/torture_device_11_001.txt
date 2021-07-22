@@ -5,7 +5,7 @@
     <material>objects/torture_devices_1_001.txt</material>
 
     <position>0.0 0.0 0.0</position>
-    <scale>1.0 1.0 1.0</scale>
+    <scale>1.25 1.0 1.25</scale>
     <rotation>0.0 0.0 0.0</rotation>
 
     <collision>

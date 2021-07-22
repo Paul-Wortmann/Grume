@@ -64,7 +64,11 @@
         <object>235 29 32 1.0 1.5708 1</object> # Town props - bookshelf
         <object>330 29 30 1.0 1.5708 1</object> # Town props - bookshelf
 
-        <object>200 29 37 1.0 1.5708 0</object> # Town props - paper debris
+        <object>200 29 38 1.0 1.5708 0</object> # Town props - paper debris
+        <object>214 29 37 1.0 1.5708 0</object> # Town props - paper debris
+        <object>187 29 36 1.0 1.5708 0</object> # Town props - paper debris
+        <object>061 29 35 1.0 1.5708 0</object> # Town props - paper debris
+        <object>298 29 34 1.0 1.5708 0</object> # Town props - paper debris
 
         # Bookshelf row 5
         <object>030 29 06 1.0 4.7123 1</object> # Town props - bookshelf
