@@ -32,6 +32,7 @@
     <object_data>
         #tile number (relative to the prefab), object number, scale, y-rotation, obstacle
         <object>40 22 11 1.0 1.5708 1</object> # Torture device - cage
+        <object>40 34 08 1.0 1.5708 1</object> # Gibs - corpse
         <object>12 33 08 1.0 1.5708 1</object> # Dungeon object - borken vase
     <object_data>
 
