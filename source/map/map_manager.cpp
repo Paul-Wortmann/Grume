@@ -507,6 +507,12 @@ void cMapManager::load(const std::string &_fileName)
 
         // Populate the map with torches
         m_addTorchEntities(m_currentMap);
+        
+        // Populate the map with Traps
+        m_addTrapEntities(m_currentMap);
+        
+        // Populate the map with Chests
+        m_addChestEntities(m_currentMap);
 
         // Populate the map with NPCs
         m_addNPCEntities(m_currentMap);

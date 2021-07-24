@@ -95,9 +95,32 @@ class cMapManager : public tcLinkedList<sMap>
         
         // map_generate_addCollision.cpp
         void          m_addCollisionData(sMap*& _map, sEntity*& _entity, const std::uint32_t &_tile, const float32 &_rotation);
+
+        // map_generate_addChests.cpp
+        void          m_addChestEntities(sMap*& _map);
+
+        // map_generate_addDoors.cpp
+        void          m_addDoorEntities(sMap*& _map);
+
+        // map_generate_addEvents.cpp
+        void          m_addMapEvent(sMap*& _map, const std::uint32_t &_tile, const std::uint32_t &_type, const std::uint32_t &_data_1, const std::uint32_t &_data_2, const std::uint32_t &_data_3);
+        void          m_addMapPortal(sMap*& _map, const std::uint32_t &_num, const std::uint32_t &_tile, const float32 &_dir);
         
-        // map_generate_floorModel.cpp
-        sEntityModel* m_generateFloor(sMap*& _map);
+        // map_generate_addNPCs.cpp
+        void          m_addNPCEntities(sMap*& _map);
+
+        // map_generate_addObjects.cpp
+        void          m_addObjectEntity(sMap*& _map, const std::uint32_t &_tn, const std::uint32_t &_on, const std::uint32_t &_oi, const float &_s, const float &_yr, const std::uint32_t &_o);
+        void          m_addObjectEntities(sMap*& _map);
+        
+        // map_generate_addStairs.cpp
+        void          m_addStairsEntity(sMap*& _map);
+
+        // map_generate_addTorches.cpp
+        void          m_addTorchEntities(sMap*& _map);
+
+        // map_generate_addTraps.cpp
+        void          m_addTrapEntities(sMap*& _map);
 
         // map_generate_addWalls.cpp
         void          m_addWallEntities(sMap*& _map);
@@ -109,26 +132,9 @@ class cMapManager : public tcLinkedList<sMap>
         bool          m_isWall(sMap*& _map, const std::uint32_t &_tile);
         bool          m_isDWall(sMap*& _map, const std::uint32_t &_tile);
         bool          m_isDoor(sMap*& _map, const std::uint32_t &_tile);
-
-        // map_generate_addDoors.cpp
-        void          m_addDoorEntities(sMap*& _map);
-
-        // map_generate_addEvents.cpp
-        void          m_addMapEvent(sMap*& _map, const std::uint32_t &_tile, const std::uint32_t &_type, const std::uint32_t &_data_1, const std::uint32_t &_data_2, const std::uint32_t &_data_3);
-        void          m_addMapPortal(sMap*& _map, const std::uint32_t &_num, const std::uint32_t &_tile, const float32 &_dir);
-
-        // map_generate_addObjects.cpp
-        void          m_addObjectEntity(sMap*& _map, const std::uint32_t &_tn, const std::uint32_t &_on, const std::uint32_t &_oi, const float &_s, const float &_yr, const std::uint32_t &_o);
-        void          m_addObjectEntities(sMap*& _map);
         
-        // map_generate_addNPCs.cpp
-        void          m_addNPCEntities(sMap*& _map);
-        
-        // map_generate_addStairs.cpp
-        void          m_addStairsEntity(sMap*& _map);
-
-        // map_generate_addTorches.cpp
-        void          m_addTorchEntities(sMap*& _map);
+        // map_generate_floorModel.cpp
+        sEntityModel* m_generateFloor(sMap*& _map);
 
         // map_generate_npcs.cpp
         void          m_generateMap_npcs(sMap*& _map);
