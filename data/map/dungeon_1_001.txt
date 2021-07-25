@@ -142,6 +142,14 @@
         <event>0557 1 2 1 0</event> # Dungeon 1-2 entrance
         <event>0558 1 2 1 0</event> # Dungeon 1-2 entrance
 
+        # Spike traps 1
+        <event>2149 2 2249 2 0</event>
+        <event>2349 2 2249 2 0</event>
+
+        # Spike traps 2
+        <event>2150 2 2250 2 0</event>
+        <event>2350 2 2250 2 0</event>
+
     </events>
 
     # roomTypeNone         =  0, // None / empty
@@ -182,6 +190,10 @@
         <object>0543 28 15 1.5 0.0000 1</object> # torch
         <object>0556 28 15 1.5 0.0000 1</object> # torch
         <object>0559 28 15 1.5 0.0000 1</object> # torch
+        
+        #trap
+        <object>2249 36 01 1.0 0.0000 1</object> # dungeon trap spike
+        <object>2250 36 01 1.0 0.0000 1</object> # dungeon trap spike
         
     </objects>
 

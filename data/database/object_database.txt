@@ -37,8 +37,9 @@
         <object>vase</object>                # 33
         <object>gib</object>                 # 34
         <object>altar</object>               # 35
+        <object>trap</object>                # 36
 
-        <object>test</object>                # 36
+        <object>test</object>                # 37
 
     </object_define>
 
@@ -410,6 +411,11 @@
         <altar_entity>objects/altar_1_002.txt</altar_entity>
         <altar_entity>objects/altar_1_003.txt</altar_entity>
     </altar>
+
+    <trap> #36
+        <trap_count>1</trap_count>
+        <trap_entity>objects/dungeon_trap_spike_1_001.txt</trap_entity>
+    </trap>
 
     <test>
         <test_count>1</test_count>
