@@ -186,7 +186,8 @@ void cMapManager::m_addObjectEntities(sMap*& _map)
             std::uint32_t tObjectIndex    = 0;
             float         tObjectScale    = 0.0;
             float         tObjectRotation = 0.0;
-            uint32        tObjectObstacle = 0;
+            std::uint32_t tObjectObstacle = 0;
+            std::uint32_t tObjectTrigger  = 0;
             std::uint32_t tStringNum = 0;
             std::string   tString = "";
             if (tObjectStringLength > 6)
@@ -218,6 +219,10 @@ void cMapManager::m_addObjectEntities(sMap*& _map)
                         else if (tStringNum == 5)
                         {
                             tObjectObstacle = std::stoi(tString);
+                        }
+                        else if (tStringNum == 6)
+                        {
+                            tObjectTrigger  = std::stoi(tString);
                         }
                         tStringNum++;
                         tString = "";
@@ -291,6 +296,9 @@ void cMapManager::m_addObjectEntities(sMap*& _map)
                             }
                         }
                     }
+                    
+                    // Trigger Tile 
+                    tEntity->triggerTile = tObjectTrigger;
                 }
             }
         }

@@ -183,20 +183,20 @@
     </debris_objects>
 
     <objects>
-        #tile number, object number, scale, y-rotation, obstacle
+        #tile number, object number, scale, y-rotation, obstacle, trigger tile
         
         #stairs
-        <object>0540 28 15 1.5 0.0000 1</object> # torch
-        <object>0543 28 15 1.5 0.0000 1</object> # torch
-        <object>0556 28 15 1.5 0.0000 1</object> # torch
-        <object>0559 28 15 1.5 0.0000 1</object> # torch
+        <object>0540 28 15 1.5 0.0000 1 0</object> # torch
+        <object>0543 28 15 1.5 0.0000 1 0</object> # torch
+        <object>0556 28 15 1.5 0.0000 1 0</object> # torch
+        <object>0559 28 15 1.5 0.0000 1 0</object> # torch
 
         #switch
-        <object>2048 37 01 1.0 0.0000 1</object> # dungeon switch 1
+        <object>2048 37 01 1.0 0.0000 1 2249</object> # dungeon switch 1
         
         #trap
-        <object>2249 36 01 1.0 0.0000 1</object> # dungeon trap spike
-        <object>2250 36 01 1.0 0.0000 1</object> # dungeon trap spike
+        <object>2249 36 01 1.0 0.0000 1 0</object> # dungeon trap spike
+        <object>2250 36 01 1.0 0.0000 1 0</object> # dungeon trap spike
         
     </objects>
 

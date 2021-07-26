@@ -135,7 +135,8 @@ enum class eMapEventType : std::uint32_t
     eventTypeWarp         = 1, // Warp to map
     eventTypeEntitySet    = 2, // Set entity state
     eventTypeEntityToggle = 3, // Toggle entity state
-    eventTypeEntitySpawn  = 4  // Spawn entity
+    eventTypeEntitySpawn  = 4, // Spawn entity
+    eventTypeTriggerTile  = 5  // Trigger tile
 };
 
 struct sMapEvent

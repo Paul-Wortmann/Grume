@@ -76,7 +76,7 @@ uint32 cPlayerManager::positionToTile(glm::vec3 _position)
     // Width and height offset, used to center the walls
     float32 xo = static_cast<float32>(m_mapPointer->width)  / 2.0f;
     float32 zo = static_cast<float32>(m_mapPointer->height) / 2.0f;
-    float32 tp = 1.0f / 2.0f; // tile center positioning ( half model dimention)
+    float32 tp = 0.0f;//1.0f / 2.0f; // tile center positioning ( half model dimention)
 
     uint32 x = static_cast<uint32>(_position.x + xo - tp);
     uint32 z = static_cast<uint32>(_position.z + zo - tp);
@@ -161,6 +161,36 @@ void cPlayerManager::process(const float32 &_dt)
                             m_entityManager->setState(entity->UID, entity->interaction->data_1);
                         }
                         
+                        // Trigger tile
+                        if (entity->triggerTile != 0)
+                        {
+                            if (m_mapPointer->tile[entity->triggerTile].object != 0)
+                            {
+                                std::cout << "object triggered: " << entity->triggerTile << std::endl;
+                                
+                                // find object uid
+                                for (sEntity* tEntity = m_entityManager->getHead(); tEntity != nullptr; tEntity = tEntity->next)
+                                {
+                                    if (tEntity->UID == m_mapPointer->tile[entity->triggerTile].object)
+                                    {
+                                        if ((tEntity->interaction != nullptr) && (distanceToTileSqr <= tEntity->interaction->distance))
+                                        {
+                                            // Toggle states
+                                            if (tEntity->interaction->type == eEntityInteractionType::InteractionTypeToggle)
+                                            {
+                                                m_entityManager->toggleState(tEntity->UID, tEntity->interaction->data_1, tEntity->interaction->data_2);
+                                            }
+                                            // Set state
+                                            else if (tEntity->interaction->type == eEntityInteractionType::InteractionTypeSet)
+                                            {
+                                                m_entityManager->setState(tEntity->UID, tEntity->interaction->data_1);
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+
                         // Stop all enemies from pathing, this will cause all enemies to recalculate thier paths
                         for (sEntity* entity = m_entityManager->getHead(); entity != nullptr; entity = entity->next)
                         {
@@ -177,6 +207,7 @@ void cPlayerManager::process(const float32 &_dt)
                     }
                 }
             }
+
         }
         
         // If click NPC
@@ -227,7 +258,7 @@ void cPlayerManager::process(const float32 &_dt)
 
                 if (m_data->movement->mapPath.pathLength > 0)
                 {
-                    m_data->movement->mapPath.currentPosition = 0;
+                    m_data->movement->mapPath.currentPosition = 1;
                     m_data->movement->pathing = true;
 
                     // Set state - move

@@ -112,7 +112,8 @@ struct sEntity
     
     // Interaction
     sEntityInteraction* interaction          = nullptr;
-    
+    std::uint32_t       triggerTile          = 0; // Trigger tile on interaction, 0 for none
+
     // Pathing
     sEntityMovement*    movement             = nullptr;
 
