@@ -76,9 +76,10 @@ uint32 cPlayerManager::positionToTile(glm::vec3 _position)
     // Width and height offset, used to center the walls
     float32 xo = static_cast<float32>(m_mapPointer->width)  / 2.0f;
     float32 zo = static_cast<float32>(m_mapPointer->height) / 2.0f;
+    float32 tp = 1.0f / 2.0f; // tile center positioning ( half model dimention)
 
-    uint32 x = static_cast<uint32>(_position.x + xo);
-    uint32 z = static_cast<uint32>(_position.z + zo);
+    uint32 x = static_cast<uint32>(_position.x + xo - tp);
+    uint32 z = static_cast<uint32>(_position.z + zo - tp);
     return (z * m_mapPointer->width) + x;
 };
 
@@ -96,17 +97,27 @@ glm::vec3 cPlayerManager::tileToPosition(uint32 _tile)
 
 void cPlayerManager::setMouseClick(glm::vec3 _pos)
 {
-    uint32 clickedTile = positionToTile(_pos);
-    if (clickedTile != m_mouseTile)
+    if (m_mouseTimerOK == true)
     {
+        m_mouseTimerOK = false;
         m_mouseClicked = true;
         m_mousePos     = _pos;
-        m_mouseTile    = clickedTile;
+        m_mouseTile    = positionToTile(_pos);
     }
 };
 
 void cPlayerManager::process(const float32 &_dt)
 {
+    // process mouse timer
+    if (m_mouseTimerOK != true)
+    {
+        m_mouseTimer += _dt;
+        if (m_mouseTimer > m_mouseTimerMax)
+        {
+            m_mouseTimerOK = true;
+        }
+    }
+    
     // Process mouse click event
     if (m_mouseClicked)
     {
@@ -208,16 +219,20 @@ void cPlayerManager::process(const float32 &_dt)
         // If no object and no NPC, then path find to tile
         if (((m_mapPointer->tile[m_mouseTile].object == 0) && (m_mapPointer->tile[m_mouseTile].npc == 0)) || (moveToEntity))
         {
-            m_data->movement->mapPath.destinationTile = m_mouseTile;
-            gAStar(m_mapPointer, m_data->movement->mapPath);
-
-            if (m_data->movement->mapPath.pathLength > 0)
+            // Only path to new destination if it is different
+            if (m_data->movement->mapPath.destinationTile != m_mouseTile)
             {
-                m_data->movement->mapPath.currentPosition = 0;
-                m_data->movement->pathing = true;
+                m_data->movement->mapPath.destinationTile = m_mouseTile;
+                gAStar(m_mapPointer, m_data->movement->mapPath);
 
-                // Set state - move
-                m_entityManager->setState(m_data->UID, "move");
+                if (m_data->movement->mapPath.pathLength > 0)
+                {
+                    m_data->movement->mapPath.currentPosition = 0;
+                    m_data->movement->pathing = true;
+
+                    // Set state - move
+                    m_entityManager->setState(m_data->UID, "move");
+                }
             }
         }
     }

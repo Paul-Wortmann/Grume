@@ -190,6 +190,9 @@
         <object>0543 28 15 1.5 0.0000 1</object> # torch
         <object>0556 28 15 1.5 0.0000 1</object> # torch
         <object>0559 28 15 1.5 0.0000 1</object> # torch
+
+        #switch
+        <object>2048 37 01 1.0 0.0000 1</object> # dungeon switch 1
         
         #trap
         <object>2249 36 01 1.0 0.0000 1</object> # dungeon trap spike

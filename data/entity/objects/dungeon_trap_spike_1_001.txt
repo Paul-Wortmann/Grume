@@ -1,7 +1,7 @@
 ﻿<?xml version = "1.0" encoding = "UTF-8" ?>
 <entity>
 
-    <name>dungeon_gate_1_003</name>
+    <name>dungeon_trap_spike_1_001</name>
     <model>objects/dungeon_trap_spike_1_001.dae</model>
     <material>objects/medieval_002.txt</material>
 
@@ -19,7 +19,7 @@
 
     <animation_independent>1</animation_independent>
 
-    <state_initial>3</state_initial> # 0 == none
+    <state_initial>0</state_initial> # 0 == none
     <state>
         <state_name>close</state_name>
         <state_sound>battle 6 0</state_sound> # database name, else none, database index, repeat (bool)

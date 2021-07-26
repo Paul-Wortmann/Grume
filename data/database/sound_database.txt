@@ -24,8 +24,9 @@
     </sound_define>
 
     <object>
-        <object_count>2</object_count>
+        <object_count>3</object_count>
         <object_sound>object/door_1_001.ogg</object_sound>
+        <object_sound>object/door_1_002.ogg</object_sound>
         <object_sound>object/gate_1_001.ogg</object_sound>
     </object>
 

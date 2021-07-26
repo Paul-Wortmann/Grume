@@ -66,6 +66,9 @@ class cPlayerManager
         bool             m_mouseClicked    = false;
         glm::vec3        m_mousePos        = glm::vec3(0.0f, 0.0f, 0.0f);
         std::uint32_t    m_mouseTile       = 0;
+        bool             m_mouseTimerOK    = true;
+        float32          m_mouseTimer      = 0.0f;
+        float32          m_mouseTimerMax   = 1000.0f; // 1000ms
 };
 
 #endif //PLAYER_MANAGER_HPP

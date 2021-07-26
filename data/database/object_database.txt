@@ -38,8 +38,9 @@
         <object>gib</object>                 # 34
         <object>altar</object>               # 35
         <object>trap</object>                # 36
+        <object>switch</object>              # 37
 
-        <object>test</object>                # 37
+        <object>test</object>                # 38
 
     </object_define>
 
@@ -416,6 +417,11 @@
         <trap_count>1</trap_count>
         <trap_entity>objects/dungeon_trap_spike_1_001.txt</trap_entity>
     </trap>
+
+    <switch> #37
+        <switch_count>1</switch_count>
+        <switch_entity>objects/dungeon_switch_1_001.txt</switch_entity>
+    </switch>
 
     <test>
         <test_count>1</test_count>
