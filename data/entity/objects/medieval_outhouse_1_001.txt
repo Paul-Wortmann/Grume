@@ -5,6 +5,16 @@
     <material>objects/wood_1_001.txt</material>
 
     <position>0.0 0.0 0.0</position>
-    <scale>1.0 1.0 1.0</scale>
+    <scale>1.5 1.125 1.5</scale>
     <rotation>0.0 0.0 0.0</rotation>
+
+    <collision>
+        <collision_size>5</collision_size>
+        <collision_data>0 0 0 0 0</collision_data>
+        <collision_data>0 1 1 1 0</collision_data>
+        <collision_data>0 1 1 1 0</collision_data>
+        <collision_data>0 1 1 1 0</collision_data>
+        <collision_data>0 0 0 0 0</collision_data>
+    </collision>
+
 </entity>
