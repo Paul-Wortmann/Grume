@@ -4,7 +4,13 @@
     <model>objects/medieval_well_1_001.obj</model>
     <material>objects/medieval_well_1_001.txt</material>
 
-    <position>-0.5 0.0 0.5</position>
+    <position>-0.5 0.0 -0.5</position>
     <scale>0.5 0.5 0.5</scale>
     <rotation>0.0 0.0 0.0</rotation>
+
+    <collision>
+        <collision_size>2</collision_size>
+        <collision_data>1 1</collision_data>
+        <collision_data>1 1</collision_data>
+    </collision>
 </entity>

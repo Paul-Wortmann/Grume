@@ -50,8 +50,10 @@ void cMapManager::m_addCollisionData(sMap*& _map, sEntity*& _entity, const std::
             m_mapTilesRotate90(_entity->collision->data, _entity->collision->size, _entity->collision->size);
         }
         
+        // Calculate radius
+        std::uint32_t r = _entity->collision->size / 2;
+        
         // Transfer tile collision data to the map
-        std::uint32_t r = _entity->collision->size / 2; // radius
         for (std::uint32_t h = 0; h < _entity->collision->size; ++h)
         {
             for (std::uint32_t w = 0; w < _entity->collision->size; ++w)
@@ -76,7 +78,6 @@ void cMapManager::m_addCollisionData(sMap*& _map, sEntity*& _entity, const std::
                 }
             }
         }
-
         /*
         for (std::uint32_t h = 0; h < _entity->collision->size; ++h)
             for (std::uint32_t w = 0; w < _entity->collision->size; ++w)

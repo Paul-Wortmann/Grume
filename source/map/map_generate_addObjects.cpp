@@ -34,8 +34,8 @@ void cMapManager::m_addObjectEntity(sMap*& _map,              // Map pointer
 {
     
     // Width and height offset, used to center the walls
-    uint32  xo = _map->width  / 2;
-    uint32  yo = _map->height / 2;
+    std::uint32_t  xo = _map->width  / 2;
+    std::uint32_t  yo = _map->height / 2;
 
     // Load the biome object database file
     cXML xmlObjectFile;
@@ -49,7 +49,7 @@ void cMapManager::m_addObjectEntity(sMap*& _map,              // Map pointer
     if ((xmlObjectFile.lineCount() > 0) && (xmlSoundFile.lineCount() > 0))
     {
         // Load object names
-        uint32 object_count = xmlObjectFile.getInstanceCount("<object>");
+        std::uint32_t object_count = xmlObjectFile.getInstanceCount("<object>");
         std::vector<std::string> object_names;
         for (std::uint32_t i = 0; i < object_count; ++i)
         {

@@ -162,7 +162,7 @@
         <object>4256 10 2 1.0 1.5708 1 0</object> # Medieval props - cart
         <object>4756 10 4 1.0 3.1416 1 0</object> # Medieval props - watch tower
         <object>5256 10 4 1.0 3.1416 1 0</object> # Medieval props - watch tower
-        <object>4945 10 5 1.0 1.5708 1 0</object> # Medieval props - well
+        <object>5045 10 5 1.0 1.5708 1 0</object> # Medieval props - well
         <object>4036 01 1 1.0 1.5708 1 0</object> # Medieval buildings - blacksmith
         <object>4152 01 2 1.0 1.5708 1 0</object> # Medieval buildings - house
         <object>5740 01 2 1.0 3.1416 1 0</object> # Medieval buildings - house

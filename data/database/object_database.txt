@@ -118,11 +118,24 @@
     </bones>
 
     <barrel> #7
-        <barrel_count>4</barrel_count>
+        <barrel_count>17</barrel_count>
         <barrel_entity>objects/barrel_1_001.txt</barrel_entity>
         <barrel_entity>objects/barrel_1_002.txt</barrel_entity>
         <barrel_entity>objects/barrel_2_001.txt</barrel_entity>
         <barrel_entity>objects/barrel_3_001.txt</barrel_entity>
+        <barrel_entity>objects/barrel_4_001.txt</barrel_entity>
+        <barrel_entity>objects/barrel_4_002.txt</barrel_entity>
+        <barrel_entity>objects/barrel_4_003.txt</barrel_entity>
+        <barrel_entity>objects/barrel_4_004.txt</barrel_entity>
+        <barrel_entity>objects/barrel_4_005.txt</barrel_entity>
+        <barrel_entity>objects/barrel_4_006.txt</barrel_entity>
+        <barrel_entity>objects/barrel_4_007.txt</barrel_entity>
+        <barrel_entity>objects/barrel_4_008.txt</barrel_entity>
+        <barrel_entity>objects/barrel_4_009.txt</barrel_entity>
+        <barrel_entity>objects/barrel_4_010.txt</barrel_entity>
+        <barrel_entity>objects/barrel_4_011.txt</barrel_entity>
+        <barrel_entity>objects/barrel_4_012.txt</barrel_entity>
+        <barrel_entity>objects/barrel_4_013.txt</barrel_entity>
     </barrel>
 
     <crate> #8
