@@ -198,7 +198,7 @@ void cMapManager::m_mapApplyPrefab(sMap*& _map, const std::string &_fileName, co
             tObjectString += "    ";
             std::uint64_t tObjectStringLength = tObjectString.length();
             std::uint32_t tObjectTileNum  = 0;
-            std::uint32_t tObjectNumber   = 0;
+            std::string   tObjectName     = "";
             std::uint32_t tObjectIndex    = 0;
             uint32        tObjectObstacle = 0;
             std::uint32_t tStringNum = 0;
@@ -218,7 +218,7 @@ void cMapManager::m_mapApplyPrefab(sMap*& _map, const std::string &_fileName, co
                         }
                         else if (tStringNum == 1)
                         {
-                            tObjectNumber = std::stoi(tString);
+                            tObjectName = tString.c_str();
                         }
                         else if (tStringNum == 2)
                         {
@@ -250,7 +250,7 @@ void cMapManager::m_mapApplyPrefab(sMap*& _map, const std::string &_fileName, co
                 std::uint32_t oy = tObjectTileNum / _map->room[_r].w;
                 std::uint32_t tn = ((dy + oy) * _map->width) + dx + ox;
                 
-                m_addObjectEntity(_map, tn, tObjectNumber, tObjectIndex, tObjectScale, tObjectRotation, tObjectObstacle);
+                m_addObjectEntity(_map, tn, tObjectName, tObjectIndex, tObjectScale, tObjectRotation, tObjectObstacle);
             }
         }
         

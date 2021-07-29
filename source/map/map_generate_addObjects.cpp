@@ -26,7 +26,7 @@
 // Used to add an object to the map
 void cMapManager::m_addObjectEntity(sMap*& _map,              // Map pointer
                                     const std::uint32_t &_tn, // tile number
-                                    const std::uint32_t &_on, // object number
+                                    const std::string   &_on, // object name
                                     const std::uint32_t &_oi, // object index
                                     const float         &_s,  // scale
                                     const float         &_yr, // y rotation
@@ -48,21 +48,6 @@ void cMapManager::m_addObjectEntity(sMap*& _map,              // Map pointer
     // Only contine if we can load the biome object file and the map file
     if ((xmlObjectFile.lineCount() > 0) && (xmlSoundFile.lineCount() > 0))
     {
-        // Load object names
-        std::uint32_t object_count = xmlObjectFile.getInstanceCount("<object>");
-        std::vector<std::string> object_names;
-        for (std::uint32_t i = 0; i < object_count; ++i)
-        {
-            object_names.push_back(xmlObjectFile.getString("<object>", i + 1));
-        }
-        std::vector<std::uint32_t> object_counts;
-
-        // Load object counts
-        for (std::uint32_t i = 0; i < object_count; ++i)
-        {
-            object_counts.push_back(xmlObjectFile.getInteger("<" + object_names[i] + "_count>", 1));
-        }
-
         // Add the object to the map
         sEntity* tEntity = nullptr;
         if (_o != 0)
@@ -84,17 +69,57 @@ void cMapManager::m_addObjectEntity(sMap*& _map,              // Map pointer
         uint32 w = _tn % _map->width;
         uint32 h = _tn / _map->width;
        
-        //std::cout << "Found object '" << _tn << "'-'" << _on << "'-'" << tObjectScale << "'-'" << tObjectRotation << "'" << std::endl;
-        if (object_counts[_on-1] > 0)
+        // Get object entity database count
+        std::uint32_t objectCount = xmlObjectFile.getInstanceCount("<object>" + _on);
+
+        // Get object data string
+        if (objectCount > 0)
         {
+            std::string tObjectDataString = "";
             if (_oi == 0)
             {
-                tEntity = m_entityManager->load(xmlObjectFile.getString("<" + object_names[_on-1] + "_entity>", 1 + (rand() % object_counts[_on-1])));
+                tObjectDataString = xmlObjectFile.getString("<object>" + _on, 1 + (rand() % objectCount));
             }
             else
             {
-                tEntity = m_entityManager->load(xmlObjectFile.getString("<" + object_names[_on-1] + "_entity>", _oi));
+                tObjectDataString = xmlObjectFile.getString("<object>" + _on, _oi);
             }
+
+            // Get the object entity file name
+            tObjectDataString += "    ";
+            std::uint64_t tObjectDataStringLength = tObjectDataString.length();
+            std::string   tObjectFileName     = "";
+            std::uint32_t tStringNum = 0;
+            std::string   tString = "";
+            if (tObjectDataStringLength > 6)
+            {
+                for (std::uint64_t j = 0; j < tObjectDataStringLength; ++j)
+                {
+                    if (tObjectDataString[j] == ' ')
+                    {
+                        if (tStringNum == 0)
+                        {
+                            ; // Object name
+                        }
+                        else if (tStringNum == 1)
+                        {
+                            tObjectFileName = tString.c_str();
+                        }
+
+                        tStringNum++;
+                        tString = "";
+                    }
+                    else
+                    {
+                        tString += tObjectDataString[j];
+                    }
+                }
+            }
+            
+            // Load the object entity
+            tEntity = m_entityManager->load(tObjectFileName);
+
+            // Process the entity
             if (tEntity != nullptr)
             {
                 // Tile entity occupies
@@ -154,24 +179,10 @@ void cMapManager::m_addObjectEntities(sMap*& _map)
     cXML xmlMapFile;
     xmlMapFile.load(FILE_PATH_MAP + _map->fileName);
     
-    // Only contine if we can load the biome object file and the map file
+    // Only contine if we can load the xml files
     if ((xmlSoundFile.lineCount() > 0) && (xmlObjectFile.lineCount() > 0) && (xmlMapFile.lineCount() > 0))
     {
-        // Load object names
-        uint32 object_count = xmlObjectFile.getInstanceCount("<object>");
-        std::vector<std::string> object_names;
-        for (std::uint32_t i = 0; i < object_count; ++i)
-        {
-            object_names.push_back(xmlObjectFile.getString("<object>", i + 1));
-        }
-        std::vector<std::uint32_t> object_counts;
-
-        // Load object counts
-        for (std::uint32_t i = 0; i < object_count; ++i)
-        {
-            object_counts.push_back(xmlObjectFile.getInteger("<" + object_names[i] + "_count>", 1));
-        }
-
+        // Temporary pointer
         sEntity* tEntity = nullptr;
 
         // Load each object from the map file
@@ -182,7 +193,7 @@ void cMapManager::m_addObjectEntities(sMap*& _map)
             tObjectString += "    ";
             std::uint64_t tObjectStringLength = tObjectString.length();
             std::uint32_t tObjectTileNum  = 0;
-            std::uint32_t tObjectNumber   = 0;
+            std::string   tObjectName     = "";
             std::uint32_t tObjectIndex    = 0;
             float         tObjectScale    = 0.0;
             float         tObjectRotation = 0.0;
@@ -202,7 +213,7 @@ void cMapManager::m_addObjectEntities(sMap*& _map)
                         }
                         else if (tStringNum == 1)
                         {
-                            tObjectNumber = std::stoi(tString);
+                            tObjectName = tString.c_str();
                         }
                         else if (tStringNum == 2)
                         {
@@ -250,20 +261,58 @@ void cMapManager::m_addObjectEntities(sMap*& _map)
                 }
             }
             
-            uint32 w = tObjectTileNum % _map->width;
-            uint32 h = tObjectTileNum / _map->width;
-           
-            //std::cout << "Found object '" << tObjectTileNum << "'-'" << tObjectNumber << "'-'" << tObjectScale << "'-'" << tObjectRotation << "'" << std::endl;
-            if ((tObjectNumber > 0) && (object_counts[tObjectNumber-1] > 0))
+            std::uint32_t w = tObjectTileNum % _map->width;
+            std::uint32_t h = tObjectTileNum / _map->width;
+            
+            // Get object data string
+            std::uint32_t objectCount = xmlObjectFile.getInstanceCount("<object>" + tObjectName);
+            if (objectCount > 0)
             {
+                std::string tObjectDataString = "";
                 if (tObjectIndex == 0)
                 {
-                    tEntity = m_entityManager->load(xmlObjectFile.getString("<" + object_names[tObjectNumber-1] + "_entity>", 1 + (rand() % object_counts[tObjectNumber-1])));
+                    tObjectDataString = xmlObjectFile.getString("<object>" + tObjectName, 1 + (rand() % objectCount));
                 }
                 else
                 {
-                    tEntity = m_entityManager->load(xmlObjectFile.getString("<" + object_names[tObjectNumber-1] + "_entity>", tObjectIndex));
+                    tObjectDataString = xmlObjectFile.getString("<object>" + tObjectName, tObjectIndex);
                 }
+
+                // Get the object entity file name
+                tObjectDataString += "    ";
+                std::uint64_t tObjectDataStringLength = tObjectDataString.length();
+                std::string   tObjectFileName     = "";
+                std::uint32_t tStringNum = 0;
+                std::string   tString = "";
+                if (tObjectDataStringLength > 6)
+                {
+                    for (std::uint64_t j = 0; j < tObjectDataStringLength; ++j)
+                    {
+                        if (tObjectDataString[j] == ' ')
+                        {
+                            if (tStringNum == 0)
+                            {
+                                ; // Object name
+                            }
+                            else if (tStringNum == 1)
+                            {
+                                tObjectFileName = tString.c_str();
+                            }
+
+                            tStringNum++;
+                            tString = "";
+                        }
+                        else
+                        {
+                            tString += tObjectDataString[j];
+                        }
+                    }
+                }
+                
+                // Load the object entity
+                tEntity = m_entityManager->load(tObjectFileName);
+
+                // If object entity was loaded, process it
                 if (tEntity != nullptr)
                 {
                     // Tile entity occupies
@@ -296,7 +345,7 @@ void cMapManager::m_addObjectEntities(sMap*& _map)
                             }
                         }
                     }
-                    
+
                     // Trigger Tile 
                     tEntity->triggerTile = tObjectTrigger;
                 }
@@ -304,25 +353,25 @@ void cMapManager::m_addObjectEntities(sMap*& _map)
         }
 
         // Get debris count
-        uint32 debris_count = xmlMapFile.getInstanceCount("<debris>");
+        uint32 debrisCount = xmlMapFile.getInstanceCount("<debris>");
         
-        if (debris_count > 0)
+        if (debrisCount > 0)
         {
             // Create a data structure for the debris information
             struct sDebris
             {
-                uint32 object_number = 0;
-                float  scale_min     = 0.0;
-                float  scale_max     = 0.0;
-                uint32 prevalence    = 0;
-                uint32 obstacle      = 0;
+                std::string objectName = 0;
+                float       scale_min  = 0.0;
+                float       scale_max  = 0.0;
+                uint32      prevalence = 0;
+                uint32      obstacle   = 0;
             };
             
             sDebris *debris = nullptr;
-            debris = new sDebris[debris_count];
+            debris = new sDebris[debrisCount];
             
             // Load the debris information from the map file into the debris data structure
-            for (uint32 i = 0; i < debris_count; ++i)
+            for (uint32 i = 0; i < debrisCount; ++i)
             {
                 std::string   tDebrisString = xmlMapFile.getString("<debris>", i + 1);
                 tDebrisString += "    ";
@@ -337,7 +386,7 @@ void cMapManager::m_addObjectEntities(sMap*& _map)
                         {
                             if (tStringNum == 0)
                             {
-                                debris[i].object_number = std::stoi(tString);
+                                debris[i].objectName = tString;
                             }
                             else if (tStringNum == 1)
                             {
@@ -376,7 +425,7 @@ void cMapManager::m_addObjectEntities(sMap*& _map)
                     {
                         uint32 rInt = rand() % 1000;
                         bool   pDebris = false;
-                        for (uint32 i = 0; i < debris_count; ++i)
+                        for (uint32 i = 0; i < debrisCount; ++i)
                         {
                             if ((!pDebris) && (rInt < debris[i].prevalence))
                             {
@@ -385,9 +434,50 @@ void cMapManager::m_addObjectEntities(sMap*& _map)
                                 {
                                     _map->tile[t].base = eTileBase::tileFloorNoGo;
                                 }
-                                if (object_counts[debris[i].object_number-1] > 0)
+                                
+                                // Get object entity database count
+                                std::uint32_t objectCount = xmlObjectFile.getInstanceCount("<object>" + debris[i].objectName);
+                               
+                               // If object found
+                                if (objectCount > 0)
                                 {
-                                    tEntity = m_entityManager->load(xmlObjectFile.getString("<" + object_names[debris[i].object_number-1] + "_entity>", 1 + (rand() % object_counts[debris[i].object_number-1])));
+                                    // Get object entity file name
+                                    std::string objectDataString = "";
+                                    objectDataString = xmlObjectFile.getString("<object>" + debris[i].objectName, 1 + (rand() % objectCount));
+
+                                    // Get the object entity file name
+                                    objectDataString += "    ";
+                                    std::uint64_t tObjectDataStringLength = objectDataString.length();
+                                    std::string   tObjectFileName     = "";
+                                    std::uint32_t tStringNum = 0;
+                                    std::string   tString = "";
+                                    if (tObjectDataStringLength > 6)
+                                    {
+                                        for (std::uint64_t j = 0; j < tObjectDataStringLength; ++j)
+                                        {
+                                            if (objectDataString[j] == ' ')
+                                            {
+                                                if (tStringNum == 0)
+                                                {
+                                                    ; // Object name
+                                                }
+                                                else if (tStringNum == 1)
+                                                {
+                                                    tObjectFileName = tString.c_str();
+                                                }
+
+                                                tStringNum++;
+                                                tString = "";
+                                            }
+                                            else
+                                            {
+                                                tString += objectDataString[j];
+                                            }
+                                        }
+                                    }
+                                    
+                                    // Load the object entity
+                                    tEntity = m_entityManager->load(tObjectFileName);
                                     if (tEntity != nullptr)
                                     {
                                         // Tile entity occupies

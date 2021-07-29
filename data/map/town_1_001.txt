@@ -146,109 +146,110 @@
 
     <debris_objects>
         #object number, scale max, scale min, prevalence, obstacle
-        <debris>17 0.5 1.0 15 0</debris> # rock small
-        <debris>13 0.5 1.0 20 1</debris> # dead tree
+        <#debris>17 0.5 1.0 15 0</debris> # rock small
+        <#debris>13 0.5 1.0 20 1</debris> # dead tree
     </debris_objects>
 
     <objects>
-        #tile number, object number, index (0 == random), scale, y-rotation, obstacle
+        #tile number, database object name, index (0 == random), scale, y-rotation, obstacle, trigger tile
 
-        <object>0143 38 1 1.0 0.0000 1 0</object> # Test - cave 1 entrance 1
-        <object>0145 38 1 1.0 0.0000 1 0</object> # Test - cave 1 entrance 2
-        <object>0147 38 1 1.0 0.0000 1 0</object> # Test - cave 1 entrance 3
+        <object>0143 test 1 1.0 0.0000 1 0</object> # Test - cave 1 entrance 1
+        <object>0145 test 1 1.0 0.0000 1 0</object> # Test - cave 1 entrance 2
+        <object>0147 test 1 1.0 0.0000 1 0</object> # Test - cave 1 entrance 3
 
         # town central
-        <object>3250 10 7 1.0 0.0000 1 0</object> # Medieval props - out house
-        <object>4256 10 2 1.0 1.5708 1 0</object> # Medieval props - cart
-        <object>4756 10 4 1.0 3.1416 1 0</object> # Medieval props - watch tower
-        <object>5256 10 4 1.0 3.1416 1 0</object> # Medieval props - watch tower
-        <object>5045 10 5 1.0 1.5708 1 0</object> # Medieval props - well
-        <object>4036 01 1 1.0 1.5708 1 0</object> # Medieval buildings - blacksmith
-        <object>4152 01 2 1.0 1.5708 1 0</object> # Medieval buildings - house
-        <object>5740 01 2 1.0 3.1416 1 0</object> # Medieval buildings - house
-        <object>5856 01 4 1.0 1.5708 1 0</object> # Medeival buildings - sawmill
+        <object>3250 medieval_prop 7 1.0 0.0000 1 0</object> # Medieval props - out house
+        <object>4256 medieval_prop 2 1.0 1.5708 1 0</object> # Medieval props - cart
+        <object>4756 medieval_prop 4 1.0 3.1416 1 0</object> # Medieval props - watch tower
+        <object>5256 medieval_prop 4 1.0 3.1416 1 0</object> # Medieval props - watch tower
+        <object>5045 medieval_prop 5 1.0 1.5708 1 0</object> # Medieval props - well
+        <object>4036 medieval_building 1 1.0 1.5708 1 0</object> # Medieval buildings - blacksmith
+        <object>4152 medieval_building 2 1.0 1.5708 1 0</object> # Medieval buildings - house
+        <object>5740 medieval_building 2 1.0 3.1416 1 0</object> # Medieval buildings - house
+        <object>5856 medieval_building 4 1.0 1.5708 1 0</object> # Medeival buildings - sawmill
 
-        <object>4041 11 1 1.0 1.5708 1 0</object> # old wagon
-        <object>4752 13 1 1.0 1.5708 1 0</object> # Dead Tree
-        <object>6148 13 1 1.0 1.5708 1 0</object> # Dead Tree
-        <object>4961 14 1 1.0 0.0000 1 0</object> # Bridge
-        <object>5251 16 1 1.0 0.0000 1 0</object> # Rock
-        <object>4454 02 1 1.0 0.0000 1 0</object> # Chest
-        <object>5443 07 1 1.0 0.0000 1 0</object> # Barrel
-        <object>5543 07 1 1.0 0.0000 1 0</object> # Barrel
-        <object>6043 08 2 1.0 0.0000 1 0</object> # Crate
-        <object>5649 13 1 1.0 3.1416 1 0</object> # Dead tree
-        <object>4840 22 12 1.0 0.0000 1 0</object> # Torture device
+        <#object>4041 11 1 1.0 1.5708 1 0</object> # old wagon
+        <#object>4752 13 1 1.0 1.5708 1 0</object> # Dead Tree
+        <#object>6148 13 1 1.0 1.5708 1 0</object> # Dead Tree
+        <#object>4961 14 1 1.0 0.0000 1 0</object> # Bridge
+        <#object>5251 16 1 1.0 0.0000 1 0</object> # Rock
+        <#object>4454 02 1 1.0 0.0000 1 0</object> # Chest
+        <#object>5443 07 1 1.0 0.0000 1 0</object> # Barrel
+        <#object>5543 07 1 1.0 0.0000 1 0</object> # Barrel
+        <#object>6043 08 2 1.0 0.0000 1 0</object> # Crate
+        <#object>5649 13 1 1.0 3.1416 1 0</object> # Dead tree
+        <#object>4840 22 12 1.0 0.0000 1 0</object> # Torture device
 
         # river
-        <object>0461 15 0 1.0 0.0000 0 0</object> # River
-        <object>1461 15 0 1.0 0.0000 0 0</object> # River
-        <object>2461 15 0 1.0 0.0000 0 0</object> # River
-        <object>3461 15 0 1.0 0.0000 0 0</object> # River
-        <object>4461 15 0 1.0 0.0000 0 0</object> # River
-        <object>5461 15 0 1.0 0.0000 0 0</object> # River
-        <object>6461 15 0 1.0 0.0000 0 0</object> # River
-        <object>7461 15 0 1.0 0.0000 0 0</object> # River
-        <object>8461 15 0 1.0 0.0000 0 0</object> # River
-        <object>9461 15 0 1.0 0.0000 0 0</object> # River
+        <#object>0461 15 0 1.0 0.0000 0 0</object> # River
+        <#object>1461 15 0 1.0 0.0000 0 0</object> # River
+        <#object>2461 15 0 1.0 0.0000 0 0</object> # River
+        <#object>3461 15 0 1.0 0.0000 0 0</object> # River
+        <#object>4461 15 0 1.0 0.0000 0 0</object> # River
+        <#object>5461 15 0 1.0 0.0000 0 0</object> # River
+        <#object>6461 15 0 1.0 0.0000 0 0</object> # River
+        <#object>7461 15 0 1.0 0.0000 0 0</object> # River
+        <#object>8461 15 0 1.0 0.0000 0 0</object> # River
+        <#object>9461 15 0 1.0 0.0000 0 0</object> # River
 
         # graveyard
-        <object>8336 18 1 1.0 0.0000 1 0</object> # Fence metal
-        <object>8636 18 1 1.0 0.0000 1 0</object> # Fence metal
-        <object>8936 18 1 1.0 3.1416 1 0</object> # Fence metal
-        <object>9236 18 1 1.0 3.1416 1 0</object> # Fence metal
-        <object>9536 18 1 1.0 1.5708 1 0</object> # Fence metal
-        <object>9533 18 1 1.0 1.5708 1 0</object> # Fence metal
-        <object>9530 18 1 1.0 1.5708 1 0</object> # Fence metal
-        <object>9527 18 1 1.0 1.5708 1 0</object> # Fence metal
-        <object>9524 18 1 1.0 1.5708 1 0</object> # Fence metal
-        <object>9521 18 1 1.0 1.5708 1 0</object> # Fence metal
-        <object>8036 18 1 1.0 1.5708 1 0</object> # Fence metal
-        <object>8033 18 1 1.0 1.5708 1 0</object> # Fence metal
-        <object>8030 18 1 1.0 1.5708 1 0</object> # Fence metal
-        <object>8027 18 1 1.0 1.5708 1 0</object> # Fence metal
-        <object>8024 18 1 1.0 1.5708 1 0</object> # Fence metal
-        <object>8021 18 1 1.0 1.5708 1 0</object> # Fence metal
-        <object>8318 18 1 1.0 0.0000 1 0</object> # Fence metal
-        <object>8618 18 1 1.0 0.0000 1 0</object> # Fence metal
-        <object>8918 18 1 1.0 0.0000 1 0</object> # Fence metal
-        <object>9218 18 1 1.0 0.0000 1 0</object> # Fence metal
-        <object>9518 18 1 1.0 0.0000 1 0</object> # Fence metal
-        <object>8018 19 1 1.0 0.0000 1 0</object> # Fence pole metal
+        <#object>8336 18 1 1.0 0.0000 1 0</object> # Fence metal
+        <#object>8636 18 1 1.0 0.0000 1 0</object> # Fence metal
+        <#object>8936 18 1 1.0 3.1416 1 0</object> # Fence metal
+        <#object>9236 18 1 1.0 3.1416 1 0</object> # Fence metal
+        <#object>9536 18 1 1.0 1.5708 1 0</object> # Fence metal
+        <#object>9533 18 1 1.0 1.5708 1 0</object> # Fence metal
+        <#object>9530 18 1 1.0 1.5708 1 0</object> # Fence metal
+        <#object>9527 18 1 1.0 1.5708 1 0</object> # Fence metal
+        <#object>9524 18 1 1.0 1.5708 1 0</object> # Fence metal
+        <#object>9521 18 1 1.0 1.5708 1 0</object> # Fence metal
+        <#object>8036 18 1 1.0 1.5708 1 0</object> # Fence metal
+        <#object>8033 18 1 1.0 1.5708 1 0</object> # Fence metal
+        <#object>8030 18 1 1.0 1.5708 1 0</object> # Fence metal
+        <#object>8027 18 1 1.0 1.5708 1 0</object> # Fence metal
+        <#object>8024 18 1 1.0 1.5708 1 0</object> # Fence metal
+        <#object>8021 18 1 1.0 1.5708 1 0</object> # Fence metal
+        <#object>8318 18 1 1.0 0.0000 1 0</object> # Fence metal
+        <#object>8618 18 1 1.0 0.0000 1 0</object> # Fence metal
+        <#object>8918 18 1 1.0 0.0000 1 0</object> # Fence metal
+        <#object>9218 18 1 1.0 0.0000 1 0</object> # Fence metal
+        <#object>9518 18 1 1.0 0.0000 1 0</object> # Fence metal
+        <#object>8018 19 1 1.0 0.0000 1 0</object> # Fence pole metal
 
-        <object>8822 21 1 1.0 4.7124 1 0</object> # Mausoleum
+        <#object>8822 21 1 1.0 4.7124 1 0</object> # Mausoleum
 
-        <object>8233 20 1 1.0 0.0000 1 0</object> # Cemetary object
-        <object>8533 20 1 1.0 0.0000 1 0</object> # Cemetary object
-        <object>9033 20 2 1.0 0.0000 1 0</object> # Cemetary object
-        <object>9333 20 1 1.0 3.1416 1 0</object> # Cemetary object
+        <#object>8233 20 1 1.0 0.0000 1 0</object> # Cemetary object
+        <#object>8533 20 1 1.0 0.0000 1 0</object> # Cemetary object
+        <#object>9033 20 2 1.0 0.0000 1 0</object> # Cemetary object
+        <#object>9333 20 1 1.0 3.1416 1 0</object> # Cemetary object
 
-        <object>8228 20 5 1.0 1.5708 1 0</object> # Cemetary object
-        <object>8528 20 2 1.0 0.0000 1 0</object> # Cemetary object
-        <object>9028 20 1 1.0 0.0000 1 0</object> # Cemetary object
-        <object>9328 20 5 1.0 1.5708 1 0</object> # Cemetary object
+        <#object>8228 20 5 1.0 1.5708 1 0</object> # Cemetary object
+        <#object>8528 20 2 1.0 0.0000 1 0</object> # Cemetary object
+        <#object>9028 20 1 1.0 0.0000 1 0</object> # Cemetary object
+        <#object>9328 20 5 1.0 1.5708 1 0</object> # Cemetary object
 
-        <object>8224 20 5 1.0 1.5708 1 0</object> # Cemetary object
-        <object>9324 20 5 1.0 1.5708 1 0</object> # Cemetary object
-        <object>8219 20 5 1.0 1.5708 1 0</object> # Cemetary object
-        <object>9319 20 5 1.0 1.5708 1 0</object> # Cemetary object
+        <#object>8224 20 5 1.0 1.5708 1 0</object> # Cemetary object
+        <#object>9324 20 5 1.0 1.5708 1 0</object> # Cemetary object
+        <#object>8219 20 5 1.0 1.5708 1 0</object> # Cemetary object
+        <#object>9319 20 5 1.0 1.5708 1 0</object> # Cemetary object
 
         # Castle ruins
-        <object>5009 23 1 1.0 3.1416 1 0</object> # Tower
-        <object>5019 12 0 1.0 3.1416 1 0</object> # Grass patch
+        <#object>5009 23 1 1.0 3.1416 1 0</object> # Tower
+        <#object>5019 12 0 1.0 3.1416 1 0</object> # Grass patch
+
     </objects>
 
     <npc_mobs>
         #npc number, scale max, scale min, prevalence
-        <npc_mob>02 0.5 1.0 5</npc_mob> # bat
+        <#npc_mob>02 0.5 1.0 5</npc_mob> # bat
     </npc_mobs>
 
     <npcs>
         #tile number, npc number, index (0 == random), scale, y-rotation
 
         # town central
-        <npc>4437 1 1 1.0 0.0000</npc> # Blacksmith
-        <npc>5650 5 1 1.0 0.0000</npc> # Dead Body
+        <#npc>4437 1 1 1.0 0.0000</npc> # Blacksmith
+        <#npc>5650 5 1 1.0 0.0000</npc> # Dead Body
     </npcs>
 
 </map>

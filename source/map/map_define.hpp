@@ -24,8 +24,11 @@
 #ifndef MAP_DEFINE_HPP
 #define MAP_DEFINE_HPP
 
-#include "../core/includes.hpp"
 #include "biome_define.hpp"
+#include "map_define_object.hpp"
+#include "map_define_generate.hpp"
+#include "map_define_room.hpp"
+#include "../core/includes.hpp"
 #include "../entity/entity_define.hpp"
 
 #define FLOOR_SPRITESHEET_WIDTH  4
@@ -64,62 +67,6 @@ enum class eTileBase : std::uint16_t
         tileIgnore    = 9  // Used for prefab loading
     };
 
-enum class eAlgorithm : std::uint16_t 
-    { 
-        algorithm_C1  = 0, // Cave generation algorithm 1
-        algorithm_C2  = 1, // Cave generation algorithm 2
-        algorithm_D1  = 2, // Dungeon generation algorithm 1
-        algorithm_D2  = 3, // Dungeon generation algorithm 2
-        algorithm_M1  = 4, // Maze generation algorithm 1
-        algorithm_T1  = 5  // Town generation algorithm 1
-    };
-
-enum class eConnectAlgo : std::uint16_t // Connectivity algorithm
-    { 
-        algorithm_SL  = 0, // Straight Line
-        algorithm_ND  = 1, // Ninety Degree angle lines
-        algorithm_DW  = 2  // Drunken Walk
-    };
-
-enum class eRoomShape : std::uint16_t // Room shape
-    { 
-        shapeRandom  = 0, // Random
-        shapeCircle  = 1, // Circle
-        shapeSquare  = 2  // Square
-    };
-
-enum class eDirectionBias : std::int16_t // Direction bias
-    { 
-        noRoom         = -1, // No room
-        directionNone  =  0, // None
-        directionNorth =  1, // North
-        directionSouth =  2, // South
-        directionEast  =  3, // East
-        directionWest  =  4  // West
-    };
-
-struct sMapGenData
-{
-    std::uint32_t  seed                   = 0; // 0 for random seed
-    eAlgorithm     algorithm              = eAlgorithm::algorithm_C1; // 0: C1,
-    std::uint32_t  wallSize               = 0; // 0: Wide, 1: Thin
-
-    std::uint16_t  pass                   = 4; // General number of passes, smoothing etc...
-    std::uint16_t  density                = 10; // Percentage / 2, rough approximate
-    std::uint16_t  roomMin                = 3; // Guaranteed minimum number of rooms, maps with less are discarded (sMap.pass times)
-    std::uint16_t  roomMax                = static_cast<std::uint16_t>(density * pass); // Will try generate up to roomMax rooms, on a tiny map reaching this is impossible
-    std::uint16_t  roomRadiusMax          = 8; // max room radius
-    std::uint16_t  roomRadiusMin          = 2; // min room radius
-    std::uint16_t  roomBorder             = 3; // Wall width
-    eRoomShape     roomShape              = eRoomShape::shapeSquare;
-    std::uint16_t  floorAreaMin           = 60; // percentage, min % floor area
-    eConnectAlgo   connectivityAlgorithm  = eConnectAlgo::algorithm_SL;
-    std::uint16_t  connectivityComplexity = 50; // percentage, rand % connect neighbors
-    std::uint16_t  connectivityPadding    = 0; // Tiles to pad on each side of generated paths, roomBorder should be taken into consideration!
-    eDirectionBias directionBias          = eDirectionBias::directionNone; // Favored direction
-    std::uint16_t  directionBiasStrength  = 2; // Favored direction strength
-};
-
 struct sMapTile
 {
     std::uint32_t processed = 0; // Default == 0
@@ -154,40 +101,6 @@ struct sMapPortal
     std::uint32_t portalNo  = 0;
     std::uint32_t tile      = 0;
     float32       direction = 0.0f; // Direction player should face
-};
-
-enum class eMapRoomType : std::uint16_t 
-{ 
-    roomTypeNone         =  0, // None / empty
-    roomTypeCell         =  1, // Prison Cell
-    roomTypeSecret       =  2, // Secret room
-    roomTypeStairwell    =  3, // Stairwell
-    roomTypeStore        =  4, // Store
-    roomTypeBlacksmith   =  5, // Blacksmith
-    roomTypeCanteen      =  6, // Canteen
-    roomTypeStorage      =  7, // Storage room
-    roomTypeLibrary      =  8, // Library
-    roomTypeAlchemyLab   =  9, // Alchemy Lab
-    roomTypeLaboratory   = 10, // Laboratory
-    roomTypeTorture      = 11  // Torture Chamber
-};
-
-struct sMapRoom
-{
-    eMapRoomType  type    =  eMapRoomType::roomTypeNone;
-    bool          p       =  false; // processed flag
-    std::uint32_t posXMin =  0;
-    std::uint32_t posXMax =  0;
-    std::uint32_t posYMin =  0;
-    std::uint32_t posYMax =  0;
-    std::uint32_t x       =  0; // x position
-    std::uint32_t y       =  0; // y position
-    std::uint32_t w       =  0; // room width
-    std::uint32_t h       =  0; // room height
-    std::uint32_t exitN   = -1; // -1 for none, else connecting room ID
-    std::uint32_t exitS   = -1; // -1 for none, else connecting room ID
-    std::uint32_t exitE   = -1; // -1 for none, else connecting room ID
-    std::uint32_t exitW   = -1; // -1 for none, else connecting room ID
 };
 
 struct sMap
@@ -233,7 +146,6 @@ struct sMap
     std::uint32_t  roomCount         = 0;
     sMapRoom*      room              = nullptr;
 };
-
 
 struct sMapPrefab
 {
