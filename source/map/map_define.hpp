@@ -25,7 +25,6 @@
 #define MAP_DEFINE_HPP
 
 #include "biome_define.hpp"
-#include "map_define_object.hpp"
 #include "map_define_generate.hpp"
 #include "map_define_room.hpp"
 #include "../core/includes.hpp"

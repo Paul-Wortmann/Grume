@@ -158,39 +158,40 @@
         <object>0147 test 1 1.0 0.0000 1 0</object> # Test - cave 1 entrance 3
 
         # town central
-        <object>3250 medieval_prop 7 1.0 0.0000 1 0</object> # Out house
-        <#object>4256 medieval_prop 2 1.0 1.5708 1 0</object> # Broken cart
-        <#object>4756 medieval_prop 4 1.0 3.1416 1 0</object> # Watch tower
-        <#object>5256 medieval_prop 4 1.0 3.1416 1 0</object> # Watch tower
+        <object>3150 medieval_prop 7 1.0 0.0000 1 0</object> # Out house
+        <object>4156 medieval_prop 2 1.0 1.5708 1 0</object> # Broken cart
+        <object>4757 medieval_prop 4 1.0 3.1416 1 0</object> # Watch tower
+        <object>5357 medieval_prop 4 1.0 3.1416 1 0</object> # Watch tower
         <object>5045 medieval_prop 5 1.0 1.5708 1 0</object> # Well
         <object>4036 medieval_building 1 1.0 1.5708 1 0</object> # Medieval blacksmith building
-        <object>4152 medieval_building 2 1.0 1.5708 1 0</object> # Medieval house
+        <object>4052 medieval_building 2 1.0 1.5708 1 0</object> # Medieval house
         <object>5740 medieval_building 2 1.0 3.1416 1 0</object> # Medieval house
-        <object>5856 medieval_building 4 1.0 1.5708 1 0</object> # Medeival sawmill
+        <object>5956 medieval_building 4 1.0 1.5708 1 0</object> # Medeival sawmill
+        <object>4041 old_wagon 1 1.0 1.5708 1 0</object> # old wagon
+        <object>4961 bridge 1 1.0 0.0000 1 0</object> # Bridge
+        <object>5443 barrel 2 1.0 0.0000 1 0</object> # Barrel
+        <object>5543 barrel 1 1.0 0.0000 1 0</object> # Barrel
+        <object>6043 crate 3 1.0 0.0000 1 0</object> # Crate
+        <object>4350 chest 1 1.0 0.0000 1 0</object> # Chest
+        <object>4840 torture_device 12 1.0 0.0000 1 0</object> # Stocks
 
-        <#object>4041 11 1 1.0 1.5708 1 0</object> # old wagon
-        <#object>4752 13 1 1.0 1.5708 1 0</object> # Dead Tree
-        <#object>6148 13 1 1.0 1.5708 1 0</object> # Dead Tree
-        <#object>4961 14 1 1.0 0.0000 1 0</object> # Bridge
-        <#object>5251 16 1 1.0 0.0000 1 0</object> # Rock
-        <#object>4454 02 1 1.0 0.0000 1 0</object> # Chest
-        <#object>5443 07 1 1.0 0.0000 1 0</object> # Barrel
-        <#object>5543 07 1 1.0 0.0000 1 0</object> # Barrel
-        <#object>6043 08 2 1.0 0.0000 1 0</object> # Crate
-        <#object>5649 13 1 1.0 3.1416 1 0</object> # Dead tree
-        <#object>4840 22 12 1.0 0.0000 1 0</object> # Torture device
+        <object>5436 dead_tree 1 1.0 1.5708 1 0</object> # Dead Tree
+        <object>4752 dead_tree 1 1.0 1.5708 1 0</object> # Dead Tree
+        <object>6148 dead_tree 1 1.0 1.5708 1 0</object> # Dead Tree
+        <object>5649 dead_tree 1 1.0 3.1416 1 0</object> # Dead tree
+        <object>5251 rock 1 1.0 0.0000 1 0</object> # Rock
 
         # river
-        <#object>0461 15 0 1.0 0.0000 0 0</object> # River
-        <#object>1461 15 0 1.0 0.0000 0 0</object> # River
-        <#object>2461 15 0 1.0 0.0000 0 0</object> # River
-        <#object>3461 15 0 1.0 0.0000 0 0</object> # River
-        <#object>4461 15 0 1.0 0.0000 0 0</object> # River
-        <#object>5461 15 0 1.0 0.0000 0 0</object> # River
-        <#object>6461 15 0 1.0 0.0000 0 0</object> # River
-        <#object>7461 15 0 1.0 0.0000 0 0</object> # River
-        <#object>8461 15 0 1.0 0.0000 0 0</object> # River
-        <#object>9461 15 0 1.0 0.0000 0 0</object> # River
+        <object>0461 river 0 1.0 0.0000 0 0</object> # River
+        <object>1461 river 0 1.0 0.0000 0 0</object> # River
+        <object>2461 river 0 1.0 0.0000 0 0</object> # River
+        <object>3461 river 0 1.0 0.0000 0 0</object> # River
+        <object>4461 river 0 1.0 0.0000 0 0</object> # River
+        <object>5461 river 0 1.0 0.0000 0 0</object> # River
+        <object>6461 river 0 1.0 0.0000 0 0</object> # River
+        <object>7461 river 0 1.0 0.0000 0 0</object> # River
+        <object>8461 river 0 1.0 0.0000 0 0</object> # River
+        <object>9461 river 0 1.0 0.0000 0 0</object> # River
 
         # graveyard
         <#object>8336 18 1 1.0 0.0000 1 0</object> # Fence metal
@@ -248,8 +249,8 @@
         #tile number, npc number, index (0 == random), scale, y-rotation
 
         # town central
-        <#npc>4437 1 1 1.0 0.0000</npc> # Blacksmith
-        <#npc>5650 5 1 1.0 0.0000</npc> # Dead Body
+        <#npc>4437 blacksmith 1 1.0 0.0000</npc> # Blacksmith
+        <#npc>5650 dead_body 1 1.0 0.0000</npc> # Dead Body
     </npcs>
 
 </map>

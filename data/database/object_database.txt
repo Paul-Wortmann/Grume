@@ -227,7 +227,7 @@
     <object>torture_device objects/torture_device_9_001.txt<object>
     <object>torture_device objects/torture_device_10_001.txt<object>
     <object>torture_device objects/torture_device_11_001.txt<object>
-    <object>torture_device objects/torture_device_12_001.txt<object>
+    <object>torture_device objects/torture_device_12_001.txt<object> # Stocks
     <object>torture_device objects/torture_device_13_001.txt<object>
     <object>torture_device objects/torture_device_14_001.txt<object>
     <object>torture_device objects/torture_device_15_001.txt<object>
