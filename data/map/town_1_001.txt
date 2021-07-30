@@ -158,15 +158,15 @@
         <object>0147 test 1 1.0 0.0000 1 0</object> # Test - cave 1 entrance 3
 
         # town central
-        <object>3250 medieval_prop 7 1.0 0.0000 1 0</object> # Medieval props - out house
-        <object>4256 medieval_prop 2 1.0 1.5708 1 0</object> # Medieval props - cart
-        <object>4756 medieval_prop 4 1.0 3.1416 1 0</object> # Medieval props - watch tower
-        <object>5256 medieval_prop 4 1.0 3.1416 1 0</object> # Medieval props - watch tower
-        <object>5045 medieval_prop 5 1.0 1.5708 1 0</object> # Medieval props - well
-        <object>4036 medieval_building 1 1.0 1.5708 1 0</object> # Medieval buildings - blacksmith
-        <object>4152 medieval_building 2 1.0 1.5708 1 0</object> # Medieval buildings - house
-        <object>5740 medieval_building 2 1.0 3.1416 1 0</object> # Medieval buildings - house
-        <object>5856 medieval_building 4 1.0 1.5708 1 0</object> # Medeival buildings - sawmill
+        <object>3250 medieval_prop 7 1.0 0.0000 1 0</object> # Out house
+        <#object>4256 medieval_prop 2 1.0 1.5708 1 0</object> # Broken cart
+        <#object>4756 medieval_prop 4 1.0 3.1416 1 0</object> # Watch tower
+        <#object>5256 medieval_prop 4 1.0 3.1416 1 0</object> # Watch tower
+        <object>5045 medieval_prop 5 1.0 1.5708 1 0</object> # Well
+        <object>4036 medieval_building 1 1.0 1.5708 1 0</object> # Medieval blacksmith building
+        <object>4152 medieval_building 2 1.0 1.5708 1 0</object> # Medieval house
+        <object>5740 medieval_building 2 1.0 3.1416 1 0</object> # Medieval house
+        <object>5856 medieval_building 4 1.0 1.5708 1 0</object> # Medeival sawmill
 
         <#object>4041 11 1 1.0 1.5708 1 0</object> # old wagon
         <#object>4752 13 1 1.0 1.5708 1 0</object> # Dead Tree
