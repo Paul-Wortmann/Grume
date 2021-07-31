@@ -1,0 +1,11 @@
+﻿<?xml version = "1.0" encoding = "UTF-8" ?>
+<entity>
+    <name>fence_metal_1_002</name>
+    <model>objects/fence_metal_1_002.obj</model>
+    <material>objects/fence_metal_1_001.txt</material>
+
+    <position>0.0 -0.1 0.0</position>
+    <scale>1.0 1.0 1.0</scale>
+    <rotation>0.0 0.0 0.0</rotation>
+
+</entity>

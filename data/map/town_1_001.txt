@@ -94,8 +94,8 @@
        <tiles>1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 5 5 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1</tiles>
        <tiles>1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 5 5 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1</tiles>
        <tiles>1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 5 5 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1</tiles>
-       <tiles>1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 5 5 5 5 5 5 5 5 5 5 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1</tiles>
-       <tiles>1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 5 5 5 5 5 5 5 5 5 5 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1</tiles>
+       <tiles>1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1</tiles>
+       <tiles>1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1</tiles>
        <tiles>1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1</tiles>
        <tiles>1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1</tiles>
        <tiles>1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1</tiles>
@@ -135,9 +135,9 @@
         # Type 1 (Warp to map) -> tile, event type, map number, portal number, NA
         <event>5013 1 1 1 0</event> # Dungeon 1 entrance
         <event>5014 1 1 1 0</event> # Dungeon 1 entrance
-        <event>8727 1 3 1 0</event> # Crypt 1 entrance
-        <event>8827 1 3 1 0</event> # Crypt 1 entrance
-        <event>8927 1 3 1 0</event> # Crypt 1 entrance
+        <event>8720 1 3 1 0</event> # Crypt 1 entrance
+        <event>8820 1 3 1 0</event> # Crypt 1 entrance
+        <event>8920 1 3 1 0</event> # Crypt 1 entrance
 
         <event>0243 1 4 1 0</event> # Cave 1 entrance
         <event>0245 1 4 2 0</event> # Cave 2 entrance
@@ -146,7 +146,7 @@
 
     <debris_objects>
         #object number, scale max, scale min, prevalence, obstacle
-        <#debris>17 0.5 1.0 15 0</debris> # rock small
+        <#debris>rock_small 0.5 1.0 15 0</debris> # rock small
         <#debris>13 0.5 1.0 20 1</debris> # dead tree
     </debris_objects>
 
@@ -194,45 +194,56 @@
         <object>9461 river 0 1.0 0.0000 0 0</object> # River
 
         # graveyard
-        <#object>8336 18 1 1.0 0.0000 1 0</object> # Fence metal
-        <#object>8636 18 1 1.0 0.0000 1 0</object> # Fence metal
-        <#object>8936 18 1 1.0 3.1416 1 0</object> # Fence metal
-        <#object>9236 18 1 1.0 3.1416 1 0</object> # Fence metal
-        <#object>9536 18 1 1.0 1.5708 1 0</object> # Fence metal
-        <#object>9533 18 1 1.0 1.5708 1 0</object> # Fence metal
-        <#object>9530 18 1 1.0 1.5708 1 0</object> # Fence metal
-        <#object>9527 18 1 1.0 1.5708 1 0</object> # Fence metal
-        <#object>9524 18 1 1.0 1.5708 1 0</object> # Fence metal
-        <#object>9521 18 1 1.0 1.5708 1 0</object> # Fence metal
-        <#object>8036 18 1 1.0 1.5708 1 0</object> # Fence metal
-        <#object>8033 18 1 1.0 1.5708 1 0</object> # Fence metal
-        <#object>8030 18 1 1.0 1.5708 1 0</object> # Fence metal
-        <#object>8027 18 1 1.0 1.5708 1 0</object> # Fence metal
-        <#object>8024 18 1 1.0 1.5708 1 0</object> # Fence metal
-        <#object>8021 18 1 1.0 1.5708 1 0</object> # Fence metal
-        <#object>8318 18 1 1.0 0.0000 1 0</object> # Fence metal
-        <#object>8618 18 1 1.0 0.0000 1 0</object> # Fence metal
-        <#object>8918 18 1 1.0 0.0000 1 0</object> # Fence metal
-        <#object>9218 18 1 1.0 0.0000 1 0</object> # Fence metal
-        <#object>9518 18 1 1.0 0.0000 1 0</object> # Fence metal
-        <#object>8018 19 1 1.0 0.0000 1 0</object> # Fence pole metal
+        <object>8611 fence_metal 1 1.0 0.0000 1 0</object> # Fence metal 1
+        <object>8311 fence_metal 1 1.0 0.0000 1 0</object> # Fence metal 1
+        <object>8011 fence_metal 1 1.0 0.0000 1 0</object> # Fence metal 1
+        <object>7811 fence_metal 2 1.0 4.7124 1 0</object> # Fence metal 2
+        <object>7813 fence_metal 4 1.0 4.7124 1 0</object> # Fence metal 1
+        <object>7816 fence_metal 1 1.0 4.7124 1 0</object> # Fence metal 1
+        <object>7819 fence_metal 1 1.0 4.7124 1 0</object> # Fence metal 1
+        <object>7822 fence_metal 1 1.0 4.7124 1 0</object> # Fence metal 1
+        <object>7825 fence_metal 1 1.0 4.7124 1 0</object> # Fence metal 1
+        <object>7828 fence_metal 1 1.0 4.7124 1 0</object> # Fence metal 1
+        <object>7831 fence_metal 1 1.0 4.7124 1 0</object> # Fence metal 1
+        <object>7834 fence_metal 1 1.0 4.7124 1 0</object> # Fence metal 1
+        <object>7836 fence_metal 2 1.0 3.1416 1 0</object> # Fence metal 2
+        <object>8036 fence_metal 1 1.0 0.0000 1 0</object> # Fence metal 1
+        <object>8336 fence_metal 1 1.0 0.0000 1 0</object> # Fence metal 1
+ 
+        <object>8836 cemetary_object 8 1.0 0.0000 1 0</object> # Cemetary gate
 
-        <#object>8822 21 1 1.0 4.7124 1 0</object> # Mausoleum
+        <object>9236 fence_metal 1 1.0 3.1416 1 0</object> # Fence metal 1
+        <object>9536 fence_metal 1 1.0 3.1416 1 0</object> # Fence metal 1
+        <object>9736 fence_metal 2 1.0 1.5708 1 0</object> # Fence metal 2
+        <object>9734 fence_metal 1 1.0 4.7124 1 0</object> # Fence metal 1
+        <object>9731 fence_metal 1 1.0 4.7124 1 0</object> # Fence metal 1
+        <object>9728 fence_metal 1 1.0 4.7124 1 0</object> # Fence metal 1
+        <object>9725 fence_metal 1 1.0 4.7124 1 0</object> # Fence metal 1
+        <object>9722 fence_metal 1 1.0 4.7124 1 0</object> # Fence metal 1
+        <object>9719 fence_metal 1 1.0 4.7124 1 0</object> # Fence metal 1
+        <object>9716 fence_metal 1 1.0 4.7124 1 0</object> # Fence metal 1
+        <object>9713 fence_metal 4 1.0 4.7124 1 0</object> # Fence metal 1
+        <object>9711 fence_metal 2 1.0 0.0000 1 0</object> # Fence metal 2
+        <object>8911 fence_metal 1 1.0 0.0000 1 0</object> # Fence metal 1
+        <object>9211 fence_metal 1 1.0 0.0000 1 0</object> # Fence metal 1
+        <object>9511 fence_metal 4 1.0 0.0000 1 0</object> # Fence metal 1
+ 
+        <object>8816 mausoleum 1 1.0 4.7124 1 0</object> # Mausoleum
 
-        <#object>8233 20 1 1.0 0.0000 1 0</object> # Cemetary object
-        <#object>8533 20 1 1.0 0.0000 1 0</object> # Cemetary object
-        <#object>9033 20 2 1.0 0.0000 1 0</object> # Cemetary object
-        <#object>9333 20 1 1.0 3.1416 1 0</object> # Cemetary object
+        <object>8233 cemetary_object 1 1.0 0.0000 1 0</object> # Cemetary object
+        <object>8533 cemetary_object 1 1.0 0.0000 1 0</object> # Cemetary object
+        <object>9033 cemetary_object 2 1.0 0.0000 1 0</object> # Cemetary object
+        <object>9333 cemetary_object 1 1.0 3.1416 1 0</object> # Cemetary object
 
-        <#object>8228 20 5 1.0 1.5708 1 0</object> # Cemetary object
-        <#object>8528 20 2 1.0 0.0000 1 0</object> # Cemetary object
-        <#object>9028 20 1 1.0 0.0000 1 0</object> # Cemetary object
-        <#object>9328 20 5 1.0 1.5708 1 0</object> # Cemetary object
+        <object>8228 cemetary_object 5 1.0 1.5708 1 0</object> # Cemetary object
+        <object>8528 cemetary_object 2 1.0 0.0000 1 0</object> # Cemetary object
+        <object>9028 cemetary_object 1 1.0 0.0000 1 0</object> # Cemetary object
+        <object>9328 cemetary_object 5 1.0 1.5708 1 0</object> # Cemetary object
 
-        <#object>8224 20 5 1.0 1.5708 1 0</object> # Cemetary object
-        <#object>9324 20 5 1.0 1.5708 1 0</object> # Cemetary object
-        <#object>8219 20 5 1.0 1.5708 1 0</object> # Cemetary object
-        <#object>9319 20 5 1.0 1.5708 1 0</object> # Cemetary object
+        <object>8224 cemetary_object 5 1.0 1.5708 1 0</object> # Cemetary object
+        <object>9324 cemetary_object 5 1.0 1.5708 1 0</object> # Cemetary object
+        <object>8219 cemetary_object 5 1.0 1.5708 1 0</object> # Cemetary object
+        <object>9319 cemetary_object 5 1.0 1.5708 1 0</object> # Cemetary object
 
         # Castle ruins
         <#object>5009 23 1 1.0 3.1416 1 0</object> # Tower

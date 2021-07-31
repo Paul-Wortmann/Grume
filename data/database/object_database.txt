@@ -55,6 +55,7 @@
     <object>cemetary_object objects/cemetary_object_5_001.txt<object>
     <object>cemetary_object objects/cemetary_object_6_001.txt<object>
     <object>cemetary_object objects/cemetary_object_7_001.txt<object>
+    <object>cemetary_object objects/cemetary_object_8_001.txt<object>
 
     # Chest
     <object>chest objects/chest_1_001.txt<object>
@@ -113,9 +114,9 @@
 
     # Fence_metal
     <object>fence_metal objects/fence_metal_1_001.txt<object>
-
-    # Fence_pole_metal
-    <object>fence_pole_metal objects/fence_pole_metal_1_001.txt</object>
+    <object>fence_metal objects/fence_metal_1_002.txt<object>
+    <object>fence_metal objects/fence_metal_1_003.txt</object>
+    <object>fence_metal objects/fence_metal_1_004.txt</object>
 
     # Gib
     <object>gib objects/gibs_1_001.txt<object>

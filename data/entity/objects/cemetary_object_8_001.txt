@@ -1,0 +1,21 @@
+﻿<?xml version = "1.0" encoding = "UTF-8" ?>
+<entity>
+    <name>cemetary_object_8_001</name>
+    <model>objects/cemetary_object_8_001.obj</model>
+    <material>objects/cemetary_object_8_001.txt</material>
+
+    <position>0.0 0.0 -0.5</position>
+    <scale>1.0 1.0 1.0</scale>
+    <rotation>0.0 0.0 0.0</rotation>
+
+    <collision>
+        <collision_size>6</collision_size>
+        <collision_data>0 0 0 1 0 0</collision_data>
+        <collision_data>0 0 0 1 0 0</collision_data>
+        <collision_data>0 0 0 0 0 0</collision_data>
+        <collision_data>0 0 0 0 0 0</collision_data>
+        <collision_data>0 0 0 1 0 0</collision_data>
+        <collision_data>0 0 0 1 0 0</collision_data>
+    </collision>
+
+</entity>

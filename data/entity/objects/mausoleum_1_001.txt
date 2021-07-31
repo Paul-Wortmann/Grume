@@ -5,6 +5,18 @@
     <material>objects/building_1_001.txt</material>
 
     <position>0.0 0.0 -0.5</position>
-    <scale>1.0 1.25 1.0</scale>
+    <scale>1.0 1.0 1.0</scale>
     <rotation>0.0 0.0 0.0</rotation>
+
+    <collision>
+        <collision_size>7</collision_size>
+        <collision_data>0 1 1 1 1 1 0</collision_data>
+        <collision_data>0 1 1 1 1 1 0</collision_data>
+        <collision_data>0 1 1 1 1 1 0</collision_data>
+        <collision_data>0 1 1 1 1 1 0</collision_data>
+        <collision_data>0 1 1 1 1 1 0</collision_data>
+        <collision_data>0 1 1 1 1 1 0</collision_data>
+        <collision_data>0 1 1 1 1 1 0</collision_data>
+    </collision>
+
 </entity>
