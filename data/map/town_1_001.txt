@@ -210,7 +210,7 @@
         <object>8036 fence_metal 1 1.0 0.0000 1 0</object> # Fence metal 1
         <object>8336 fence_metal 1 1.0 0.0000 1 0</object> # Fence metal 1
  
-        <object>8836 cemetary_object 8 1.0 0.0000 1 0</object> # Cemetary gate
+        <object>8837 cemetery_object 8 1.0 0.0000 1 0</object> # cemetery gate
 
         <object>9236 fence_metal 1 1.0 3.1416 1 0</object> # Fence metal 1
         <object>9536 fence_metal 1 1.0 3.1416 1 0</object> # Fence metal 1
@@ -230,20 +230,20 @@
  
         <object>8816 mausoleum 1 1.0 4.7124 1 0</object> # Mausoleum
 
-        <object>8233 cemetary_object 1 1.0 0.0000 1 0</object> # Cemetary object
-        <object>8533 cemetary_object 1 1.0 0.0000 1 0</object> # Cemetary object
-        <object>9033 cemetary_object 2 1.0 0.0000 1 0</object> # Cemetary object
-        <object>9333 cemetary_object 1 1.0 3.1416 1 0</object> # Cemetary object
+        <object>8233 cemetery_object 1 1.0 0.0000 1 0</object> # cemetery object
+        <object>8533 cemetery_object 1 1.0 0.0000 1 0</object> # cemetery object
+        <object>9033 cemetery_object 2 1.0 0.0000 1 0</object> # cemetery object
+        <object>9333 cemetery_object 1 1.0 3.1416 1 0</object> # cemetery object
 
-        <object>8228 cemetary_object 5 1.0 1.5708 1 0</object> # Cemetary object
-        <object>8528 cemetary_object 2 1.0 0.0000 1 0</object> # Cemetary object
-        <object>9028 cemetary_object 1 1.0 0.0000 1 0</object> # Cemetary object
-        <object>9328 cemetary_object 5 1.0 1.5708 1 0</object> # Cemetary object
+        <object>8228 cemetery_object 5 1.0 1.5708 1 0</object> # cemetery object
+        <object>8528 cemetery_object 2 1.0 0.0000 1 0</object> # cemetery object
+        <object>9028 cemetery_object 1 1.0 0.0000 1 0</object> # cemetery object
+        <object>9328 cemetery_object 5 1.0 1.5708 1 0</object> # cemetery object
 
-        <object>8224 cemetary_object 5 1.0 1.5708 1 0</object> # Cemetary object
-        <object>9324 cemetary_object 5 1.0 1.5708 1 0</object> # Cemetary object
-        <object>8219 cemetary_object 5 1.0 1.5708 1 0</object> # Cemetary object
-        <object>9319 cemetary_object 5 1.0 1.5708 1 0</object> # Cemetary object
+        <object>8224 cemetery_object 5 1.0 1.5708 1 0</object> # cemetery object
+        <object>9324 cemetery_object 5 1.0 1.5708 1 0</object> # cemetery object
+        <object>8219 cemetery_object 5 1.0 1.5708 1 0</object> # cemetery object
+        <object>9319 cemetery_object 5 1.0 1.5708 1 0</object> # cemetery object
 
         # Castle ruins
         <#object>5009 23 1 1.0 3.1416 1 0</object> # Tower

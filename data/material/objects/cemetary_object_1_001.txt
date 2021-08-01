@@ -1,8 +1,0 @@
-﻿<?xml version = "1.0" encoding = "UTF-8" ?>
-<material>
-    <name>cemetary_object_1_001</name>
-    <diffuse>objects/cemetary_object_1_001_d.png</diffuse>
-    <emissive>none_e.png</emissive>
-    <normal>objects/cemetary_object_1_001_n.png</normal>
-    <specular>objects/cemetary_object_1_001_s.png</specular>
-</material>

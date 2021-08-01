@@ -47,15 +47,15 @@
     # Castle
     <object>castle objects/castle_1_001.txt</object>
     
-    # Cemetary_object
-    <object>cemetary_object objects/cemetary_object_1_001.txt<object>
-    <object>cemetary_object objects/cemetary_object_2_001.txt<object>
-    <object>cemetary_object objects/cemetary_object_3_001.txt<object>
-    <object>cemetary_object objects/cemetary_object_4_001.txt<object>
-    <object>cemetary_object objects/cemetary_object_5_001.txt<object>
-    <object>cemetary_object objects/cemetary_object_6_001.txt<object>
-    <object>cemetary_object objects/cemetary_object_7_001.txt<object>
-    <object>cemetary_object objects/cemetary_object_8_001.txt<object>
+    # Cemetery_object
+    <object>cemetery_object objects/cemetery_object_1_001.txt<object>
+    <object>cemetery_object objects/cemetery_object_2_001.txt<object>
+    <object>cemetery_object objects/cemetery_object_3_001.txt<object>
+    <object>cemetery_object objects/cemetery_object_4_001.txt<object>
+    <object>cemetery_object objects/cemetery_object_5_001.txt<object>
+    <object>cemetery_object objects/cemetery_object_6_001.txt<object>
+    <object>cemetery_object objects/cemetery_object_7_001.txt<object>
+    <object>cemetery_object objects/cemetery_object_8_001.txt<object>
 
     # Chest
     <object>chest objects/chest_1_001.txt<object>

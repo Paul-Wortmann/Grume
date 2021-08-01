@@ -1,8 +1,8 @@
 ﻿<?xml version = "1.0" encoding = "UTF-8" ?>
 <entity>
-    <name>cemetary_object_2_001</name>
-    <model>objects/cemetary_object_2_001.obj</model>
-    <material>objects/cemetary_object_1_001.txt</material>
+    <name>cemetery_object_1_001</name>
+    <model>objects/cemetery_object_1_001.obj</model>
+    <material>objects/cemetery_object_1_001.txt</material>
 
     <position>-0.5 0.0 -0.5</position>
     <scale>1.0 1.0 1.0</scale>
