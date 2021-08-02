@@ -1,13 +1,26 @@
 
 <npc_database>
-
-        <bat_entity>bat npc/bat_1_001.txt</bat_entity>
-        <blacksmith_entity>blacksmith npc/blacksmith_1_001.txt</blacksmith_entity>
-        <dead_body_entity>dead_body npc/dead_body_1_001.txt</dead_body_entity>
-        <monk_entity>monk npc/monk_1_001.txt</monk_entity>
-        <mudeater_entity>mudeater npc/mudeater_1_001.txt</mudeater_entity>
-        <spider_entity>spider npc/spider_1_001.txt</spider_entity>
-        <werewolf_entity>werewolf npc/werewolf_1_001.txt</werewolf_entity>
+        
+        # bat
+        <npc>bat npc/bat_1_001.txt</npc>
+        
+        # blacksmith
+        <npc>blacksmith npc/blacksmith_1_001.txt</npc>
+        
+        # dead_body
+        <npc>dead_body npc/dead_body_1_001.txt</npc>
+        
+        # monk
+        <npc>monk npc/monk_1_001.txt</npc>
+        
+        # mudeater
+        <npc>mudeater npc/mudeater_1_001.txt</npc>
+        
+        # spider
+        <npc>spider npc/spider_1_001.txt</npc>
+        
+        # werewolf
+        <npc>werewolf npc/werewolf_1_001.txt</npc>
 
 </npc_database>
 

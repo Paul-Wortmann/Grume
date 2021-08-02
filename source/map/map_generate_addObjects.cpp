@@ -45,7 +45,7 @@ void cMapManager::m_addObjectEntity(sMap*& _map,              // Map pointer
     cXML xmlSoundFile;
     xmlSoundFile.load(FILE_PATH_DATABASE + m_gameDatabase->sound.fileName);
 
-    // Only contine if we can load the biome object file and the map file
+    // Only contine if we can load all the xml files
     if ((xmlObjectFile.lineCount() > 0) && (xmlSoundFile.lineCount() > 0))
     {
         // Add the object to the map
@@ -360,7 +360,7 @@ void cMapManager::m_addObjectEntities(sMap*& _map)
             // Create a data structure for the debris information
             struct sDebris
             {
-                std::string objectName = 0;
+                std::string objectName = "";
                 float       scale_min  = 0.0;
                 float       scale_max  = 0.0;
                 uint32      prevalence = 0;
@@ -448,9 +448,9 @@ void cMapManager::m_addObjectEntities(sMap*& _map)
                                     // Get the object entity file name
                                     objectDataString += "    ";
                                     std::uint64_t tObjectDataStringLength = objectDataString.length();
-                                    std::string   tObjectFileName     = "";
-                                    std::uint32_t tStringNum = 0;
-                                    std::string   tString = "";
+                                    std::string   tObjectFileName         = "";
+                                    std::uint32_t tStringNum              = 0;
+                                    std::string   tString                 = "";
                                     if (tObjectDataStringLength > 6)
                                     {
                                         for (std::uint64_t j = 0; j < tObjectDataStringLength; ++j)

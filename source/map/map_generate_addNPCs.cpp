@@ -42,24 +42,10 @@ void cMapManager::m_addNPCEntities(sMap*& _map)
     cXML xmlMapFile;
     xmlMapFile.load(FILE_PATH_MAP + _map->fileName);
     
-    // Only contine if we can load the biome npc file and the map file
+    // Only contine if we can load all the xml files
     if ((xmlNPCFile.lineCount() > 0) && (xmlSoundFile.lineCount() > 0) && (xmlMapFile.lineCount() > 0))
     {
-        // Load npc names
-        uint32 npc_count = xmlNPCFile.getInstanceCount("<npc>");
-        std::vector<std::string> npc_names;
-        for (std::uint32_t i = 0; i < npc_count; ++i)
-        {
-            npc_names.push_back(xmlNPCFile.getString("<npc>", i + 1));
-        }
-        std::vector<std::uint32_t> npc_counts;
-
-        // Load npc counts
-        for (std::uint32_t i = 0; i < npc_count; ++i)
-        {
-            npc_counts.push_back(xmlNPCFile.getInteger("<" + npc_names[i] + "_count>", 1));
-        }
-
+        // Create temporary entity pointer
         sEntity* tEntity = nullptr;
 
         // Load each npc from the map file
@@ -70,7 +56,7 @@ void cMapManager::m_addNPCEntities(sMap*& _map)
             tNPCString += "    ";
             std::uint64_t tNPCStringLength = tNPCString.length();
             std::uint32_t tNPCTileNum  = 0;
-            std::uint32_t tNPCNumber   = 0;
+            std::string   tNPCName     = "";
             std::uint32_t tNPCIndex    = 0;
             float         tNPCScale    = 0.0;
             float         tNPCRotation = 0.0;
@@ -88,7 +74,7 @@ void cMapManager::m_addNPCEntities(sMap*& _map)
                         }
                         else if (tStringNum == 1)
                         {
-                            tNPCNumber = std::stoi(tString);
+                            tNPCName = tString;
                         }
                         else if (tStringNum == 2)
                         {
@@ -115,17 +101,57 @@ void cMapManager::m_addNPCEntities(sMap*& _map)
             uint32 w = tNPCTileNum % _map->width;
             uint32 h = tNPCTileNum / _map->width;
            
-            //std::cout << "Found npc '" << tNPCTileNum << "'-'" << tNPCNumber << "'-'" << tNPCScale << "'-'" << tNPCRotation << "'" << std::endl;
-            if ((tNPCNumber > 0) && (npc_counts[tNPCNumber-1] > 0))
+            // Get npc entity database count
+            std::uint32_t npcCount = xmlNPCFile.getInstanceCount("<npc>" + tNPCName);
+
+            // Get npc data string
+            if (npcCount > 0)
             {
+                std::string tNPCDataString = "";
                 if (tNPCIndex == 0)
                 {
-                    tEntity = m_entityManager->load(xmlNPCFile.getString("<" + npc_names[tNPCNumber-1] + "_entity>", 1 + (rand() % npc_counts[tNPCNumber-1])));
+                    tNPCDataString = xmlNPCFile.getString("<npc>" + tNPCName, 1 + (rand() % npcCount));
                 }
                 else
                 {
-                    tEntity = m_entityManager->load(xmlNPCFile.getString("<" + npc_names[tNPCNumber-1] + "_entity>", tNPCIndex));
+                    tNPCDataString = xmlNPCFile.getString("<npc>" + tNPCName, tNPCIndex);
                 }
+
+                // Get the npc entity file name
+                tNPCDataString += "    ";
+                std::uint64_t tNPCDataStringLength = tNPCDataString.length();
+                std::string   tNPCFileName = "";
+                std::uint32_t tStringNum   = 0;
+                std::string   tString      = "";
+                if (tNPCDataStringLength > 6)
+                {
+                    for (std::uint64_t j = 0; j < tNPCDataStringLength; ++j)
+                    {
+                        if (tNPCDataString[j] == ' ')
+                        {
+                            if (tStringNum == 0)
+                            {
+                                ; // npc name
+                            }
+                            else if (tStringNum == 1)
+                            {
+                                tNPCFileName = tString.c_str();
+                            }
+
+                            tStringNum++;
+                            tString = "";
+                        }
+                        else
+                        {
+                            tString += tNPCDataString[j];
+                        }
+                    }
+                }
+                
+                // Load the npc entity
+                tEntity = m_entityManager->load(tNPCFileName);
+        
+                // If the entity was successfully loaded, proceed
                 if (tEntity != nullptr)
                 {
                     // Tile entity occupies
@@ -176,10 +202,10 @@ void cMapManager::m_addNPCEntities(sMap*& _map)
             // Create a data structure for the mob information
             struct sMob
             {
-                uint32 npc_number = 0;
-                float  scale_min  = 0.0;
-                float  scale_max  = 0.0;
-                uint32 prevalence = 0;
+                std::string npcName    = "";
+                float       scaleMin   = 0.0;
+                float       scaleMax   = 0.0;
+                uint32      prevalence = 0;
             };
             
             sMob *mob = nullptr;
@@ -201,15 +227,15 @@ void cMapManager::m_addNPCEntities(sMap*& _map)
                         {
                             if (tStringNum == 0)
                             {
-                                mob[i].npc_number = std::stoi(tString);
+                                mob[i].npcName = tString;
                             }
                             else if (tStringNum == 1)
                             {
-                                mob[i].scale_min = std::stof(tString);
+                                mob[i].scaleMin = std::stof(tString);
                             }
                             else if (tStringNum == 2)
                             {
-                                mob[i].scale_max = std::stof(tString);
+                                mob[i].scaleMax = std::stof(tString);
                             }
                             else if (tStringNum == 3)
                             {
@@ -241,9 +267,52 @@ void cMapManager::m_addNPCEntities(sMap*& _map)
                             if ((!pMob) && (rInt < mob[i].prevalence))
                             {
                                 pMob = true;
-                                if (npc_counts[mob[i].npc_number-1] > 0)
+                                
+                                // Get npc entity database count
+                                std::uint32_t npcCount = xmlNPCFile.getInstanceCount("<npc>" + mob[i].npcName);
+                               
+                               // If npc found
+                                if (npcCount > 0)
                                 {
-                                    tEntity = m_entityManager->load(xmlNPCFile.getString("<" + npc_names[mob[i].npc_number-1] + "_entity>", 1 + (rand() % npc_counts[mob[i].npc_number-1])));
+                                    // Get npc entity file name
+                                    std::string npcDataString = "";
+                                    npcDataString = xmlNPCFile.getString("<npc>" + mob[i].npcName, 1 + (rand() % npcCount));
+
+                                    // Get the npc entity file name
+                                    npcDataString += "    ";
+                                    std::uint64_t tNPCDataStringLength = npcDataString.length();
+                                    std::string   tNPCFileName         = "";
+                                    std::uint32_t tStringNum           = 0;
+                                    std::string   tString              = "";
+                                    if (tNPCDataStringLength > 6)
+                                    {
+                                        for (std::uint64_t j = 0; j < tNPCDataStringLength; ++j)
+                                        {
+                                            if (npcDataString[j] == ' ')
+                                            {
+                                                if (tStringNum == 0)
+                                                {
+                                                    ; // Object name
+                                                }
+                                                else if (tStringNum == 1)
+                                                {
+                                                    tNPCFileName = tString.c_str();
+                                                }
+
+                                                tStringNum++;
+                                                tString = "";
+                                            }
+                                            else
+                                            {
+                                                tString += npcDataString[j];
+                                            }
+                                        }
+                                    }
+                                    
+                                    // Load the object entity
+                                    tEntity = m_entityManager->load(tNPCFileName);                                
+                                    
+                                    // Proceed if the entity was successfully loaded
                                     if (tEntity != nullptr)
                                     {
                                         // Tile entity occupies

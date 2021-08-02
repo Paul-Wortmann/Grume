@@ -55,7 +55,6 @@
     <object>cemetery_object objects/cemetery_object_5_001.txt<object>
     <object>cemetery_object objects/cemetery_object_6_001.txt<object>
     <object>cemetery_object objects/cemetery_object_7_001.txt<object>
-    <object>cemetery_object objects/cemetery_object_8_001.txt<object> # Gate
     <object>cemetery_object objects/cemetery_object_8_002.txt<object> # Gate
 
     # Chest
@@ -235,7 +234,7 @@
     <object>torture_device objects/torture_device_15_001.txt<object>
 
     # Tower
-    <object>tower objects/tower_1_001.txt</object>
+    <object>tower objects/tower_1_001.txt</object> # broken tower
 
     # Town_prop
     <object>town_prop objects/alchemy_table_1_001.txt<object>

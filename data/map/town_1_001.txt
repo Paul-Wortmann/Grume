@@ -144,10 +144,23 @@
         <event>0247 1 4 3 0</event> # Cave 3 entrance
     </events>
 
+    <npc_mobs>
+        #npc name, scale max, scale min, prevalence
+        <npc_mob>bat 0.5 1.0 4</npc_mob> # bat
+    </npc_mobs>
+
+    <npcs>
+        #tile number, npc number, index (0 == random), scale, y-rotation
+
+        # town central
+        <npc>4337 blacksmith 1 1.0 0.0000</npc> # Blacksmith
+        <npc>5650 dead_body 1 1.0 0.0000</npc> # Dead Body
+    </npcs>
+
     <debris_objects>
         #object number, scale max, scale min, prevalence, obstacle
-        <#debris>rock_small 0.5 1.0 15 0</debris> # rock small
-        <#debris>13 0.5 1.0 20 1</debris> # dead tree
+        <debris>rock_small 0.5 1.0 15 0</debris> # rock small
+        <debris>dead_tree 0.5 1.0 20 1</debris> # dead tree
     </debris_objects>
 
     <objects>
@@ -210,7 +223,7 @@
         <object>8036 fence_metal 1 1.0 0.0000 1 0</object> # Fence metal 1
         <object>8336 fence_metal 1 1.0 0.0000 1 0</object> # Fence metal 1
  
-        <object>8837 cemetery_object 9 1.0 0.0000 1 0</object> # cemetery gate
+        <object>8837 cemetery_object 8 1.0 0.0000 1 0</object> # cemetery gate
 
         <object>9236 fence_metal 1 1.0 3.1416 1 0</object> # Fence metal 1
         <object>9536 fence_metal 1 1.0 3.1416 1 0</object> # Fence metal 1
@@ -245,23 +258,10 @@
         <object>8219 cemetery_object 5 1.0 1.5708 1 0</object> # cemetery object
         <object>9319 cemetery_object 5 1.0 1.5708 1 0</object> # cemetery object
 
-        # Castle ruins
-        <#object>5009 23 1 1.0 3.1416 1 0</object> # Tower
-        <#object>5019 12 0 1.0 3.1416 1 0</object> # Grass patch
+        # Broken tower ruins
+        <object>5009 tower 1 1.0 3.1416 1 0</object> # Tower
+        <object>5019 grass_patch 0 1.0 3.1416 1 0</object> # Grass patch
 
     </objects>
-
-    <npc_mobs>
-        #npc number, scale max, scale min, prevalence
-        <#npc_mob>02 0.5 1.0 5</npc_mob> # bat
-    </npc_mobs>
-
-    <npcs>
-        #tile number, npc number, index (0 == random), scale, y-rotation
-
-        # town central
-        <#npc>4437 blacksmith 1 1.0 0.0000</npc> # Blacksmith
-        <#npc>5650 dead_body 1 1.0 0.0000</npc> # Dead Body
-    </npcs>
 
 </map>
