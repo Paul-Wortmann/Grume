@@ -5,9 +5,9 @@
 
 <config>
     <graphics>
-        <resolution_w>800</resolution_w>
-        <resolution_h>600</resolution_h>
-        <fullscreen>0</fullscreen>
+        <resolution_w>1920</resolution_w>
+        <resolution_h>1080</resolution_h>
+        <fullscreen>1</fullscreen>
     </graphics>
     <audio>
         <volume_master>50</volume_master>

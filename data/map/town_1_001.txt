@@ -210,7 +210,7 @@
         <object>8036 fence_metal 1 1.0 0.0000 1 0</object> # Fence metal 1
         <object>8336 fence_metal 1 1.0 0.0000 1 0</object> # Fence metal 1
  
-        <object>8837 cemetery_object 8 1.0 0.0000 1 0</object> # cemetery gate
+        <object>8837 cemetery_object 9 1.0 0.0000 1 0</object> # cemetery gate
 
         <object>9236 fence_metal 1 1.0 3.1416 1 0</object> # Fence metal 1
         <object>9536 fence_metal 1 1.0 3.1416 1 0</object> # Fence metal 1

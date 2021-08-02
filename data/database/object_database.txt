@@ -55,7 +55,8 @@
     <object>cemetery_object objects/cemetery_object_5_001.txt<object>
     <object>cemetery_object objects/cemetery_object_6_001.txt<object>
     <object>cemetery_object objects/cemetery_object_7_001.txt<object>
-    <object>cemetery_object objects/cemetery_object_8_001.txt<object>
+    <object>cemetery_object objects/cemetery_object_8_001.txt<object> # Gate
+    <object>cemetery_object objects/cemetery_object_8_002.txt<object> # Gate
 
     # Chest
     <object>chest objects/chest_1_001.txt<object>
