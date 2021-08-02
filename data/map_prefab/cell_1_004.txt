@@ -31,11 +31,11 @@
 
     <object_data>
         #tile number (relative to the prefab), object number, scale, y-rotation, obstacle
-        <object>38 22 11 1.0 1.5708 1</object> # Torture device - cage
-        <object>38 34 08 1.0 1.5708 1</object> # Gibs - corpse
-        <object>42 22 11 1.0 1.5708 1</object> # Torture device - cage
-        <object>42 34 08 1.0 1.5708 1</object> # Gibs - corpse
-        <object>14 29 37 1.0 1.5708 1</object> # Town props - paper debris
+        <object>38 torture_device 11 1.0 1.5708 1</object> # Torture device - cage
+        <object>38 gib 08 1.0 1.5708 1</object> # Gibs - corpse
+        <object>42 torture_device 11 1.0 1.5708 1</object> # Torture device - cage
+        <object>42 gib 08 1.0 1.5708 1</object> # Gibs - corpse
+        <object>14 town_prop 37 1.0 1.5708 1</object> # Town props - paper debris
     <object_data>
 
 </map_prefab>

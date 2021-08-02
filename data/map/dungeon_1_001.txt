@@ -177,37 +177,37 @@
     </rooms>
 
     <debris_objects>
-        #object number, scale max, scale min, prevalence, obstacle
-        <debris>34 0.5 1.0 02 0</debris> # gibs
-        <debris>06 0.5 1.0 15 0</debris> # bones
+        #object name, scale max, scale min, prevalence, obstacle
+        <debris>gib 0.5 1.0 02 0</debris> # gibs
+        <debris>bones 0.5 1.0 15 0</debris> # bones
     </debris_objects>
 
     <objects>
-        #tile number, object number, scale, y-rotation, obstacle, trigger tile
+        #tile number, object name, scale, y-rotation, obstacle, trigger tile
         
         #stairs
-        <object>0540 28 15 1.5 0.0000 1 0</object> # torch
-        <object>0543 28 15 1.5 0.0000 1 0</object> # torch
-        <object>0556 28 15 1.5 0.0000 1 0</object> # torch
-        <object>0559 28 15 1.5 0.0000 1 0</object> # torch
+        <object>0540 torch 15 1.5 0.0000 1 0</object> # torch
+        <object>0543 torch 15 1.5 0.0000 1 0</object> # torch
+        <object>0556 torch 15 1.5 0.0000 1 0</object> # torch
+        <object>0559 torch 15 1.5 0.0000 1 0</object> # torch
 
         #switch
-        <object>2048 37 01 1.0 0.0000 1 2249</object> # dungeon switch 1
+        <object>2048 switch 01 1.0 0.0000 1 2249</object> # dungeon switch 1
         
         #trap
-        <object>2249 36 01 1.0 0.0000 1 0</object> # dungeon trap spike
-        <object>2250 36 01 1.0 0.0000 1 0</object> # dungeon trap spike
+        <object>2249 trap 01 1.0 0.0000 1 0</object> # dungeon trap spike
+        <object>2250 trap 01 1.0 0.0000 1 0</object> # dungeon trap spike
         
     </objects>
 
     <npc_mobs>
-        #npc number, scale max, scale min, prevalence
-        <npc_mob>2 0.5 1.0 2</npc_mob> # bat
-        <npc_mob>6 0.5 1.0 5</npc_mob> # spider
+        #npc name, scale max, scale min, prevalence
+        <npc_mob>bat 0.5 1.0 2</npc_mob> # bat
+        <npc_mob>spider 0.5 1.0 5</npc_mob> # spider
     </npc_mobs>
 
     <npcs>
-        #tile number, npc number, index (0 == random), scale, y-rotation
+        #tile number, npc name, index (0 == random), scale, y-rotation
         # town central
     </npcs>
 

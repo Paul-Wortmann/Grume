@@ -102,7 +102,7 @@ void cMapManager::m_addNPCEntities(sMap*& _map)
             uint32 h = tNPCTileNum / _map->width;
            
             // Get npc entity database count
-            std::uint32_t npcCount = xmlNPCFile.getInstanceCount("<npc>" + tNPCName);
+            std::uint32_t npcCount = xmlNPCFile.getInstanceCount("<npc>" + tNPCName + " ");
 
             // Get npc data string
             if (npcCount > 0)
@@ -269,7 +269,7 @@ void cMapManager::m_addNPCEntities(sMap*& _map)
                                 pMob = true;
                                 
                                 // Get npc entity database count
-                                std::uint32_t npcCount = xmlNPCFile.getInstanceCount("<npc>" + mob[i].npcName);
+                                std::uint32_t npcCount = xmlNPCFile.getInstanceCount("<npc>" + mob[i].npcName + " ");
                                
                                // If npc found
                                 if (npcCount > 0)

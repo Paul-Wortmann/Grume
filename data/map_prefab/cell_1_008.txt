@@ -31,8 +31,8 @@
 
     <object_data>
         #tile number (relative to the prefab), object number, scale, y-rotation, obstacle
-        <object>40 35 01 1.0 1.5708 1</object> # Altar - bloody altar
-        <object>12 34 04 1.0 1.5708 1</object> # Gibs - corpse
+        <object>40 altar 01 1.0 1.5708 1</object> # Altar - bloody altar
+        <object>12 gib 04 1.0 1.5708 1</object> # Gibs - corpse
     <object_data>
 
 </map_prefab>

@@ -22,11 +22,13 @@
     <object>barrel objects/barrel_4_006.txt</object>
     <object>barrel objects/barrel_4_007.txt</object>
     <object>barrel objects/barrel_4_008.txt</object>
-    <object>barrel objects/barrel_4_009.txt</object>
-    <object>barrel objects/barrel_4_010.txt</object>
-    <object>barrel objects/barrel_4_011.txt</object>
-    <object>barrel objects/barrel_4_012.txt</object>
-    <object>barrel objects/barrel_4_013.txt</object>
+
+    # Barrel_stack
+    <object>barrel_stack objects/barrel_4_009.txt</object>
+    <object>barrel_stack objects/barrel_4_010.txt</object>
+    <object>barrel_stack objects/barrel_4_011.txt</object>
+    <object>barrel_stack objects/barrel_4_012.txt</object>
+    <object>barrel_stack objects/barrel_4_013.txt</object>
 
     # Basket
     <object>basket objects/basket_1_001.txt</object>
@@ -119,14 +121,14 @@
     <object>fence_metal objects/fence_metal_1_004.txt</object>
 
     # Gib
-    <object>gib objects/gibs_1_001.txt<object>
-    <object>gib objects/gibs_1_002.txt<object>
-    <object>gib objects/gibs_1_003.txt<object>
-    <object>gib objects/gibs_1_004.txt<object>
-    <object>gib objects/gibs_1_005.txt<object>
+    <object>gib objects/gibs_1_001.txt<object> # heart
+    <object>gib objects/gibs_1_002.txt<object> # lungs
+    <object>gib objects/gibs_1_003.txt<object> # hand
+    <object>gib objects/gibs_1_004.txt<object> # arm
+    <object>gib objects/gibs_1_005.txt<object> # leg
     <object>gib objects/gibs_1_006.txt<object>
-    <object>gib objects/gibs_1_007.txt<object>
-    <object>gib objects/gibs_1_008.txt<object>
+    <object>gib objects/gibs_1_007.txt<object> # corpse
+    <object>gib objects/gibs_1_008.txt<object> # corpse
     <object>gib objects/gibs_1_009.txt<object>
 
     # Grass_patch
@@ -219,15 +221,15 @@
     # Torture_device
     <object>torture_device objects/torture_device_1_001.txt<object>
     <object>torture_device objects/torture_device_2_001.txt<object>
-    <object>torture_device objects/torture_device_3_001.txt<object>
-    <object>torture_device objects/torture_device_4_001.txt<object>
+    <object>torture_device objects/torture_device_3_001.txt<object> # Guillotine
+    <object>torture_device objects/torture_device_4_001.txt<object> # rack
     <object>torture_device objects/torture_device_5_001.txt<object>
     <object>torture_device objects/torture_device_6_001.txt<object>
     <object>torture_device objects/torture_device_7_001.txt<object>
     <object>torture_device objects/torture_device_8_001.txt<object>
     <object>torture_device objects/torture_device_9_001.txt<object>
     <object>torture_device objects/torture_device_10_001.txt<object>
-    <object>torture_device objects/torture_device_11_001.txt<object>
+    <object>torture_device objects/torture_device_11_001.txt<object> # cage
     <object>torture_device objects/torture_device_12_001.txt<object> # Stocks
     <object>torture_device objects/torture_device_13_001.txt<object>
     <object>torture_device objects/torture_device_14_001.txt<object>
@@ -287,7 +289,7 @@
     <object>vase objects/vase_5_001.txt<object>
     <object>vase objects/vase_6_001.txt<object>
     <object>vase objects/vase_7_001.txt<object>
-    <object>vase objects/vase_8_001.txt<object>
+    <object>vase objects/vase_8_001.txt<object> # borken vase
     <object>vase objects/vase_9_001.txt<object>
     <object>vase objects/vase_10_001.txt<object>
     <object>vase objects/vase_11_001.txt<object>

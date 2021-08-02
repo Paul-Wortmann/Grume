@@ -79,7 +79,7 @@
 
     <debris_objects>
         #object number, scale max, scale min, prevalence, obstacle
-        <debris>6 0.5 1.0 15 0</debris> # bones
+        <debris>bones 0.5 1.0 15 0</debris> # bones
     </debris_objects>
 
     <objects>
@@ -89,7 +89,7 @@
 
     <npc_mobs>
         #npc number, scale max, scale min, prevalence
-        <npc_mob>2 0.5 1.0 5</npc_mob> # bat
+        <npc_mob>bat 0.5 1.0 5</npc_mob> # bat
     </npc_mobs>
 
     <npcs>

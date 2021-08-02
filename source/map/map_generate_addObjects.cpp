@@ -70,7 +70,7 @@ void cMapManager::m_addObjectEntity(sMap*& _map,              // Map pointer
         uint32 h = _tn / _map->width;
        
         // Get object entity database count
-        std::uint32_t objectCount = xmlObjectFile.getInstanceCount("<object>" + _on);
+        std::uint32_t objectCount = xmlObjectFile.getInstanceCount("<object>" + _on + " ");
 
         // Get object data string
         if (objectCount > 0)
@@ -265,7 +265,7 @@ void cMapManager::m_addObjectEntities(sMap*& _map)
             std::uint32_t h = tObjectTileNum / _map->width;
             
             // Get object data string
-            std::uint32_t objectCount = xmlObjectFile.getInstanceCount("<object>" + tObjectName);
+            std::uint32_t objectCount = xmlObjectFile.getInstanceCount("<object>" + tObjectName + " ");
             if (objectCount > 0)
             {
                 std::string tObjectDataString = "";
@@ -436,7 +436,7 @@ void cMapManager::m_addObjectEntities(sMap*& _map)
                                 }
                                 
                                 // Get object entity database count
-                                std::uint32_t objectCount = xmlObjectFile.getInstanceCount("<object>" + debris[i].objectName);
+                                std::uint32_t objectCount = xmlObjectFile.getInstanceCount("<object>" + debris[i].objectName + " ");
                                
                                // If object found
                                 if (objectCount > 0)

@@ -43,41 +43,41 @@
         #tile number (relative to the prefab), object number, scale, y-rotation, obstacle
 
         # Food store
-        <object>23 08 00 1.0 1.5708 1</object> # Crate
-        <object>24 08 00 1.0 1.5708 1</object> # Crate
-        <object>25 08 00 1.0 1.5708 1</object> # Crate
-        <object>26 08 00 1.0 1.5708 1</object> # Crate
-        <object>27 08 00 1.0 1.5708 1</object> # Crate
+        <object>23 crate 00 1.0 1.5708 1</object> # Crate
+        <object>24 crate 00 1.0 1.5708 1</object> # Crate
+        <object>25 crate 00 1.0 1.5708 1</object> # Crate
+        <object>26 crate 00 1.0 1.5708 1</object> # Crate
+        <object>27 crate 00 1.0 1.5708 1</object> # Crate
 
-        <object>36 08 00 1.0 1.5708 1</object> # Crate
-        <object>37 08 00 1.0 1.5708 1</object> # Crate
+        <object>36 crate 00 1.0 1.5708 1</object> # Crate
+        <object>37 crate 00 1.0 1.5708 1</object> # Crate
 
-        <object>44 08 00 1.0 1.5708 1</object> # Crate
-        <object>45 08 00 1.0 1.5708 1</object> # Crate
-        <object>46 08 00 1.0 1.5708 1</object> # Crate
-        <object>47 08 00 1.0 1.5708 1</object> # Crate
+        <object>44 crate 00 1.0 1.5708 1</object> # Crate
+        <object>45 crate 00 1.0 1.5708 1</object> # Crate
+        <object>46 crate 00 1.0 1.5708 1</object> # Crate
+        <object>47 crate 00 1.0 1.5708 1</object> # Crate
 
-        <object>54 07 00 1.0 1.5708 1</object> # Barrel
-        <object>55 07 00 1.0 1.5708 1</object> # Barrel
-        <object>66 07 00 1.0 1.5708 1</object> # Barrel
-        <object>67 07 00 1.0 1.5708 1</object> # Barrel
-        <object>95 07 00 1.0 1.5708 1</object> # Barrel
-        <object>96 07 00 1.0 1.5708 1</object> # Barrel
+        <object>54 barrel 00 1.0 1.5708 1</object> # Barrel
+        <object>55 barrel 00 1.0 1.5708 1</object> # Barrel
+        <object>66 barrel 00 1.0 1.5708 1</object> # Barrel
+        <object>67 barrel 00 1.0 1.5708 1</object> # Barrel
+        <object>95 barrel 00 1.0 1.5708 1</object> # Barrel
+        <object>96 barrel 00 1.0 1.5708 1</object> # Barrel
 
-        <object>105 07 00 1.0 1.5708 1</object> # Barrel
-        <object>114 07 00 1.0 1.5708 1</object> # Barrel
-        <object>115 26 00 1.0 1.5708 1</object> # Basket
-        <object>116 26 00 1.0 1.5708 1</object> # Basket
-        <object>123 07 00 1.0 1.5708 1</object> # Barrel
-        <object>124 26 00 1.0 1.5708 1</object> # Basket
-        <object>134 07 00 1.0 1.5708 1</object> # Barrel
-        <object>136 27 00 1.0 1.5708 1</object> # Sack
-        <object>145 27 00 1.0 1.5708 1</object> # Sack
-        <object>147 27 00 1.0 1.5708 1</object> # Sack
-        <object>154 08 00 1.0 1.5708 1</object> # Crate
-        <object>164 08 00 1.0 1.5708 1</object> # Crate
-        <object>165 08 00 1.0 1.5708 1</object> # Crate
-        <object>167 08 00 1.0 1.5708 1</object> # Crate
+        <object>105 barrel 00 1.0 1.5708 1</object> # Barrel
+        <object>114 barrel 00 1.0 1.5708 1</object> # Barrel
+        <object>115 basket 00 1.0 1.5708 1</object> # Basket
+        <object>116 basket 00 1.0 1.5708 1</object> # Basket
+        <object>123 barrel 00 1.0 1.5708 1</object> # Barrel
+        <object>124 basket 00 1.0 1.5708 1</object> # Basket
+        <object>134 barrel 00 1.0 1.5708 1</object> # Barrel
+        <object>136 sack 00 1.0 1.5708 1</object> # Sack
+        <object>145 sack 00 1.0 1.5708 1</object> # Sack
+        <object>147 sack 00 1.0 1.5708 1</object> # Sack
+        <object>154 crate 00 1.0 1.5708 1</object> # Crate
+        <object>164 crate 00 1.0 1.5708 1</object> # Crate
+        <object>165 crate 00 1.0 1.5708 1</object> # Crate
+        <object>167 crate 00 1.0 1.5708 1</object> # Crate
 
     <object_data>
 

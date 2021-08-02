@@ -43,48 +43,48 @@
         #tile number (relative to the prefab), object number, scale, y-rotation, obstacle
 
         #offset
-        <object>040 29 02 1.0 1.5708 1</object> # Town props - barcounter
-        <object>003 29 13 1.0 1.5708 1</object> # Town props - chair 2
-        <object>041 29 13 1.0 1.5708 1</object> # Town props - chair 2
-        <object>079 29 13 1.0 1.5708 1</object> # Town props - chair 2
-        <object>002 29 27 1.0 1.5708 1</object> # Town props - tankard
-        <object>021 29 27 1.0 1.5708 1</object> # Town props - tankard
-        <object>059 29 27 1.0 1.5708 1</object> # Town props - tankard
-        <object>135 29 02 1.0 1.5708 1</object> # Town props - barcounter
-        <object>098 29 13 1.0 1.5708 1</object> # Town props - chair 2
-        <object>136 29 13 1.0 1.5708 1</object> # Town props - chair 2
-        <object>174 29 13 1.0 1.5708 1</object> # Town props - chair 2
-        <object>116 29 27 1.0 1.5708 1</object> # Town props - tankard
-        <object>154 29 27 1.0 1.5708 1</object> # Town props - tankard
-        <object>173 29 27 1.0 1.5708 1</object> # Town props - tankard
-        <object>230 29 02 1.0 1.5708 1</object> # Town props - barcounter
-        <object>212 29 13 1.0 1.5708 1</object> # Town props - chair 2
-        <object>231 29 13 1.0 1.5708 1</object> # Town props - chair 2
-        <object>269 29 13 1.0 1.5708 1</object> # Town props - chair 2
-        <object>211 29 27 1.0 1.5708 1</object> # Town props - tankard
-        <object>249 29 27 1.0 1.5708 1</object> # Town props - tankard
-        <object>268 29 27 1.0 1.5708 1</object> # Town props - tankard
+        <object>040 town_prop 02 1.0 1.5708 1</object> # Town props - barcounter
+        <object>003 town_prop 13 1.0 1.5708 1</object> # Town props - chair 2
+        <object>041 town_prop 13 1.0 1.5708 1</object> # Town props - chair 2
+        <object>079 town_prop 13 1.0 1.5708 1</object> # Town props - chair 2
+        <object>002 town_prop 27 1.0 1.5708 1</object> # Town props - tankard
+        <object>021 town_prop 27 1.0 1.5708 1</object> # Town props - tankard
+        <object>059 town_prop 27 1.0 1.5708 1</object> # Town props - tankard
+        <object>135 town_prop 02 1.0 1.5708 1</object> # Town props - barcounter
+        <object>098 town_prop 13 1.0 1.5708 1</object> # Town props - chair 2
+        <object>136 town_prop 13 1.0 1.5708 1</object> # Town props - chair 2
+        <object>174 town_prop 13 1.0 1.5708 1</object> # Town props - chair 2
+        <object>116 town_prop 27 1.0 1.5708 1</object> # Town props - tankard
+        <object>154 town_prop 27 1.0 1.5708 1</object> # Town props - tankard
+        <object>173 town_prop 27 1.0 1.5708 1</object> # Town props - tankard
+        <object>230 town_prop 02 1.0 1.5708 1</object> # Town props - barcounter
+        <object>212 town_prop 13 1.0 1.5708 1</object> # Town props - chair 2
+        <object>231 town_prop 13 1.0 1.5708 1</object> # Town props - chair 2
+        <object>269 town_prop 13 1.0 1.5708 1</object> # Town props - chair 2
+        <object>211 town_prop 27 1.0 1.5708 1</object> # Town props - tankard
+        <object>249 town_prop 27 1.0 1.5708 1</object> # Town props - tankard
+        <object>268 town_prop 27 1.0 1.5708 1</object> # Town props - tankard
 
-        <object>028 29 04 1.0 0.0000 1</object> # Town props - bench
-        <object>085 29 25 1.0 1.5708 1</object> # Town props - table 1
-        <object>142 29 04 1.0 0.0000 1</object> # Town props - bench
-        <object>085 29 10 1.0 1.5708 1</object> # Town props - candle
+        <object>028 town_prop 04 1.0 0.0000 1</object> # Town props - bench
+        <object>085 town_prop 25 1.0 1.5708 1</object> # Town props - table 1
+        <object>142 town_prop 04 1.0 0.0000 1</object> # Town props - bench
+        <object>085 town_prop 10 1.0 1.5708 1</object> # Town props - candle
 
-        <object>034 29 04 1.0 0.0000 1</object> # Town props - bench
-        <object>091 29 25 1.0 1.5708 1</object> # Town props - table 1
-        <object>148 29 04 1.0 0.0000 1</object> # Town props - bench
-        <object>091 29 10 1.0 1.5708 1</object> # Town props - candle
+        <object>034 town_prop 04 1.0 0.0000 1</object> # Town props - bench
+        <object>091 town_prop 25 1.0 1.5708 1</object> # Town props - table 1
+        <object>148 town_prop 04 1.0 0.0000 1</object> # Town props - bench
+        <object>091 town_prop 10 1.0 1.5708 1</object> # Town props - candle
 
 
-        <object>218 29 04 1.0 0.0000 1</object> # Town props - bench
-        <object>275 29 25 1.0 1.5708 1</object> # Town props - table 1
-        <object>332 29 04 1.0 0.0000 1</object> # Town props - bench
-        <object>275 29 10 1.0 1.5708 1</object> # Town props - candle
+        <object>218 town_prop 04 1.0 0.0000 1</object> # Town props - bench
+        <object>275 town_prop 25 1.0 1.5708 1</object> # Town props - table 1
+        <object>332 town_prop 04 1.0 0.0000 1</object> # Town props - bench
+        <object>275 town_prop 10 1.0 1.5708 1</object> # Town props - candle
 
-        <object>224 29 04 1.0 0.0000 1</object> # Town props - bench
-        <object>281 29 25 1.0 1.5708 1</object> # Town props - table 1
-        <object>338 29 04 1.0 0.0000 1</object> # Town props - bench
-        <object>281 29 10 1.0 1.5708 1</object> # Town props - candle
+        <object>224 town_prop 04 1.0 0.0000 1</object> # Town props - bench
+        <object>281 town_prop 25 1.0 1.5708 1</object> # Town props - table 1
+        <object>338 town_prop 04 1.0 0.0000 1</object> # Town props - bench
+        <object>281 town_prop 10 1.0 1.5708 1</object> # Town props - candle
 
     <object_data>
 
