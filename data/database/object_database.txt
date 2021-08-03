@@ -219,21 +219,21 @@
     <object>torch objects/torch_21_001.txt<object>
 
     # Torture_device
-    <object>torture_device objects/torture_device_1_001.txt<object> # Hanging platform
-    <object>torture_device objects/torture_device_2_001.txt<object> #
+    <object>torture_device objects/torture_device_1_001.txt<object> # Gallows with platform
+    <object>torture_device objects/torture_device_2_001.txt<object> # Electric chair
     <object>torture_device objects/torture_device_3_001.txt<object> # Guillotine
-    <object>torture_device objects/torture_device_4_001.txt<object> # rack
-    <object>torture_device objects/torture_device_5_001.txt<object> #
-    <object>torture_device objects/torture_device_6_001.txt<object> #
-    <object>torture_device objects/torture_device_7_001.txt<object> #
-    <object>torture_device objects/torture_device_8_001.txt<object> #
-    <object>torture_device objects/torture_device_9_001.txt<object> #
-    <object>torture_device objects/torture_device_10_001.txt<object> #
-    <object>torture_device objects/torture_device_11_001.txt<object> # cage
-    <object>torture_device objects/torture_device_12_001.txt<object> # Stocks
-    <object>torture_device objects/torture_device_13_001.txt<object> #
-    <object>torture_device objects/torture_device_14_001.txt<object> #
-    <object>torture_device objects/torture_device_15_001.txt<object> #
+    <object>torture_device objects/torture_device_4_001.txt<object> # Rack
+    <object>torture_device objects/torture_device_5_001.txt<object> # Gallows without platform
+    <object>torture_device objects/torture_device_6_001.txt<object> # Iron chair
+    <object>torture_device objects/torture_device_7_001.txt<object> # Spiked coffin
+    <object>torture_device objects/torture_device_8_001.txt<object> # Torture table, cross
+    <object>torture_device objects/torture_device_9_001.txt<object> # Wooden horse
+    <object>torture_device objects/torture_device_10_001.txt<object> # Gallows stool
+    <object>torture_device objects/torture_device_11_001.txt<object> # Cage, cube
+    <object>torture_device objects/torture_device_12_001.txt<object> # Stocks with base
+    <object>torture_device objects/torture_device_13_001.txt<object> # Cage, ronded top
+    <object>torture_device objects/torture_device_14_001.txt<object> # Stocks no base
+    <object>torture_device objects/torture_device_15_001.txt<object> # Cage, ronded top, hanging
 
     # Tower
     <object>tower objects/tower_1_001.txt</object> # broken tower
