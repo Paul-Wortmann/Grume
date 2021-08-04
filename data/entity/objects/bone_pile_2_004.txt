@@ -1,0 +1,10 @@
+﻿<?xml version = "1.0" encoding = "UTF-8" ?>
+<entity>
+    <name>bone_pile_2_004</name>
+    <model>objects/bone_pile_2_004.obj</model>
+    <material>objects/bone_1_001.txt</material>
+
+    <position>0.0 0.0 0.0</position>
+    <scale>0.5 0.5 0.5</scale>
+    <rotation>0.0 0.0 0.0</rotation>
+</entity>

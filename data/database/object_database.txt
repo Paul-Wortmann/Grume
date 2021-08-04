@@ -39,6 +39,19 @@
     <object>bones objects/bones_1_002.txt</object>
     <object>bones objects/bones_1_003.txt</object>
     <object>bones objects/bones_1_004.txt</object>
+    <object>bones objects/skull_1_001.txt</object>
+    <object>bones objects/skull_1_002.txt</object>
+    <object>bones objects/arm_2_001.txt</object>
+    <object>bones objects/bone_pile_2_001.txt</object>
+    <object>bones objects/bone_pile_2_002.txt</object>
+    <object>bones objects/bone_pile_2_003.txt</object>
+    <object>bones objects/bone_pile_2_004.txt</object>
+    <object>bones objects/bone_pile_2_005.txt</object>
+    <object>bones objects/leg_2_001.txt</object>
+    <object>bones objects/pelvis_2_001.txt</object>
+    <object>bones objects/ribcage_2_001.txt</object>
+    <object>bones objects/spine_2_001.txt</object>
+
 
     # Book
     <object>book objects/grimoire_1_001.txt</object>
@@ -184,9 +197,6 @@
     # Sack
     <object>sack objects/sack_1_001.txt</object>
     <object>sack objects/sack_2_001.txt</object>
-
-    # Skull
-    <object>skull objects/skull_1_001.txt</object>
 
     # Statue
     <object>statue objects/medieval_statue_1_001.txt</object>
