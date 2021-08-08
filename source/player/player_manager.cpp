@@ -207,26 +207,54 @@ void cPlayerManager::process(const float32 &_dt)
         {
             std::cout << "NPC clicked: " << m_mouseTile << std::endl;
             
-            // We should check the distance to the enemy first
-            
-            // Set state - attack
-            m_entityManager->setState(m_data->UID, "attack");
-
-            // Set npc state and set the npc for termination
-            for (sEntity* entity = m_entityManager->getHead(); entity != nullptr; entity = entity->next)
+            // Get the entity pointer from the npc UID
+            sEntity* tEntity = nullptr;
+            for (tEntity = m_entityManager->getHead(); tEntity != nullptr; tEntity = tEntity->next)
             {
-                if ((entity->interaction != nullptr) && (entity->terminate == false) && (entity->UID == m_mapPointer->tile[m_mouseTile].npc) && (m_data->UID != entity->UID))
+                if ((tEntity->UID == m_mapPointer->tile[m_mouseTile].npc) && (m_data->UID != tEntity->UID))
                 {
-                    if (distanceToTileSqr <= entity->interaction->distance)
+                    break;
+                }
+            }
+            
+            // NPC
+            if (tEntity->type == eEntityType::entityTypeNPC)
+            {
+                // Set npc state and set the npc for termination
+                if (tEntity->interaction != nullptr)
+                {
+                    if (distanceToTileSqr <= tEntity->interaction->distance)
                     {
-                        m_entityManager->setState(entity->UID, "die");
+                        m_entityManager->activateState(tEntity->UID, "interact");
+                    }
+                    else
+                    {
+                        moveToEntity = true;
+                    }
+                }
+            }
+            
+            // NPC Mob
+            else if (tEntity->type == eEntityType::entityTypeNPCmob)
+            {
+                // We should check the distance to the enemy first
+
+                // Set state - attack
+                m_entityManager->setState(m_data->UID, "attack");
+
+                // Set npc state and set the npc for termination
+                if ((tEntity->interaction != nullptr) && (tEntity->terminate == false))
+                {
+                    if (distanceToTileSqr <= tEntity->interaction->distance)
+                    {
+                        m_entityManager->setState(tEntity->UID, "die");
                         m_mapPointer->tile[m_mouseTile].npc = 0;
-                        entity->terminate = true;
+                        tEntity->terminate = true;
                         
                         // Screen shake on NPC death
-                        if ((rand() % 100) <= entity->deathShakeChance)
+                        if ((rand() % 100) <= tEntity->deathShakeChance)
                         {
-                            m_graphicsEngine->addScreenShake(entity->deathShakeDuration, entity->deathShakeForce);
+                            m_graphicsEngine->addScreenShake(tEntity->deathShakeDuration, tEntity->deathShakeForce);
                         }
                         
                     }
@@ -234,7 +262,6 @@ void cPlayerManager::process(const float32 &_dt)
                     {
                         moveToEntity = true;
                     }
-
                 }
             }
         }

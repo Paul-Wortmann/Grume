@@ -50,8 +50,11 @@ class cEntityManager : public tcLinkedList<sEntity>
         sEntityTexture*  loadTexture(const std::string &_fileName);
         void             updateModelMatrix(sEntity*& _entity);
         sEntity*         load(const std::string& _fileName, sEntity* _entity = nullptr);
+        void             activateState(const std::uint32_t& _UID, const std::string& _name);
+        void             activateState(const std::uint32_t& _UID, const std::uint32_t& _state);
         void             setState(const std::uint32_t& _UID, const std::string& _name);
         void             setState(const std::uint32_t& _UID, const std::uint32_t& _state);
+        void             toggleState(const std::uint32_t& _UID, const std::string& _name1, const std::string& _name2);
         void             toggleState(const std::uint32_t& _UID, const std::uint32_t& _state1, const std::uint32_t& _state2);
         void             saveScreenShot(const std::string &_fileName) { m_modelManager.saveScreenShot(_fileName); };
         void             freeData(sEntity*& _entity) { m_freeData(_entity); };

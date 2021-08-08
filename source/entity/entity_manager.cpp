@@ -581,6 +581,42 @@ sEntity* cEntityManager::m_UIDtoEntity(const std::uint32_t& _UID)
     return nullptr;
 }
 
+void cEntityManager::activateState(const std::uint32_t& _UID, const std::string& _name)
+{
+    // Get the Entity UID
+    sEntity* entityTemp = m_UIDtoEntity(_UID);
+    for (std::uint32_t i = 0; i < entityTemp->stateCount; ++i)
+    {
+        if (entityTemp->state[i].name.compare(_name) == 0)
+        {
+            activateState(_UID, i + 1);
+            break;
+        }
+    }
+}
+
+void cEntityManager::activateState(const std::uint32_t& _UID, const std::uint32_t& _state)
+{
+    // Get the entity pointer first
+    sEntity* entityTemp = m_UIDtoEntity(_UID);
+
+    // Only change the state if the previous animation has completed
+    if (((entityTemp->repeatAnimation == false) && (entityTemp->finishedAnimation)) ||
+        ((entityTemp->repeatAnimation == true)))
+    {
+        // Set the new state
+        entityTemp->stateCurrent = _state; // Index from 1, not 0
+        
+        // Set animation data associated with state
+        m_setAnimationState(entityTemp, entityTemp->stateCurrent);
+
+        // Play sound associated with state
+        m_playSound(entityTemp, entityTemp->stateCurrent);
+
+        // Set tile state associated with state
+        m_setTileState(entityTemp, entityTemp->stateCurrent);
+    }
+}
 void cEntityManager::setState(const std::uint32_t& _UID, const std::string& _name)
 {
     // Get the Entity UID
@@ -590,6 +626,7 @@ void cEntityManager::setState(const std::uint32_t& _UID, const std::string& _nam
         if (entityTemp->state[i].name.compare(_name) == 0)
         {
             setState(_UID, i + 1);
+            break;
         }
     }
 }
@@ -615,6 +652,27 @@ void cEntityManager::setState(const std::uint32_t& _UID, const std::uint32_t& _s
         // Set tile state associated with state
         m_setTileState(entityTemp, entityTemp->stateCurrent);
     }
+}
+
+void cEntityManager::toggleState(const std::uint32_t& _UID, const std::string& _name1, const std::string& _name2)
+{
+    std::uint32_t state1 = 0;
+    std::uint32_t state2 = 0;
+    
+    // Get the Entity UID
+    sEntity* entityTemp = m_UIDtoEntity(_UID);
+    for (std::uint32_t i = 0; i < entityTemp->stateCount; ++i)
+    {
+        if (entityTemp->state[i].name.compare(_name1) == 0)
+        {
+            state1 = i + 1;
+        }
+        if (entityTemp->state[i].name.compare(_name2) == 0)
+        {
+            state2 = i + 1;
+        }
+    }
+    toggleState(_UID, state1, state2);
 }
 
 void cEntityManager::toggleState(const std::uint32_t& _UID, const std::uint32_t& _state1, const std::uint32_t& _state2)

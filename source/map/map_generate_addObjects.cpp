@@ -195,8 +195,6 @@ void cMapManager::m_addObjectEntities(sMap*& _map)
             std::uint32_t tStringNum = 0;
             std::string   tString = "";
             
-            std::cout << tObjectString << std::endl;
-            
             if (tObjectStringLength > 6)
             {
                 for (std::uint64_t j = 0; j < tObjectStringLength; ++j)

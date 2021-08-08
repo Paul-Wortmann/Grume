@@ -97,12 +97,12 @@
         <sound>ogre monster/ogre/ogre_1_004.ogg<sound>
         <sound>ogre monster/ogre/ogre_1_005.ogg<sound>
 
-        <sound>pain_sound monster/pain_sound/pain_sound_01_001.ogg<sound>
-        <sound>pain_sound monster/pain_sound/pain_sound_01_002.ogg<sound>
-        <sound>pain_sound monster/pain_sound/pain_sound_01_003.ogg<sound>
-        <sound>pain_sound monster/pain_sound/pain_sound_01_004.ogg<sound>
-        <sound>pain_sound monster/pain_sound/pain_sound_01_005.ogg<sound>
-        <sound>pain_sound monster/pain_sound/pain_sound_01_006.ogg<sound>
+        <sound>pain_sound monster/pain_sound/pain_sound_1_001.ogg<sound>
+        <sound>pain_sound monster/pain_sound/pain_sound_1_002.ogg<sound>
+        <sound>pain_sound monster/pain_sound/pain_sound_1_003.ogg<sound>
+        <sound>pain_sound monster/pain_sound/pain_sound_1_004.ogg<sound>
+        <sound>pain_sound monster/pain_sound/pain_sound_1_005.ogg<sound>
+        <sound>pain_sound monster/pain_sound/pain_sound_1_006.ogg<sound>
 
         <sound>shade monster/shade/shade_01_001.ogg<sound>
         <sound>shade monster/shade/shade_01_002.ogg<sound>

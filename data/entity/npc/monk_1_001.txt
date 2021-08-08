@@ -3,12 +3,14 @@
     <information>
         <name>monk_1_001</name>
     </information>
+    
     <resources>
         <model>npc/monk_1_001.dae</model>
-	<material>npc/monk_1_001.txt</material>
+        <material>npc/monk_1_001.txt</material>
     </resources>
+    
     <transform>
-    <position>0.0 0.0 0.0</position>
+        <position>0.0 0.0 0.0</position>
         <scale>1.5 1.5 1.5</scale>
         <rotation>3.1416 0.0 0.0</rotation>
     </transform>

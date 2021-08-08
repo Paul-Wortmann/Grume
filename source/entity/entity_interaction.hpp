@@ -29,7 +29,8 @@
 enum eEntityInteractionType: uint16
 {
     InteractionTypeToggle     = 0,
-    InteractionTypeSet        = 1
+    InteractionTypeSet        = 1,
+    InteractionTypeActivate   = 2
 };
 
 struct sEntityInteraction

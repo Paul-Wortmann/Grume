@@ -7,7 +7,7 @@
     
     <resources>
         <model>npc/blacksmith_1_001.dae</model>
-	<material>player/male_base_1_001.txt</material>
+        <material>player/male_base_1_001.txt</material>
     </resources>
     
     <transform>
@@ -31,10 +31,17 @@
         <state_animation>0.0 1.428571429 1</state_animation> # frame start, frame end, repeat (bool)
     </state>
 
+    <state>
+        <state_name>interact</state_name>
+        <state_sound>trader 1 0</state_sound> # database name, else none, database index, repeat (bool)
+        <state_animation>0.0 1.428571429 1</state_animation> # frame start, frame end, repeat (bool)
+    </state>
+
     #type, state 1 , state 2
     #type 0 = toggle states
     #type 1 = set state
-    <interaction>1 1 0</interaction>
+    #type 2 = activate state
+    <interaction>0 1 2</interaction>
     <interaction_distance>4</interaction_distance> # num tiles
     
 </npc>

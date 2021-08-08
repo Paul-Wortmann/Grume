@@ -101,6 +101,7 @@ void cNPCManager::process(const float32 &_dt)
 
                         // Set attack state
                         m_entityManager->setState(m_entityTemp->UID, "attack");
+                        m_entityManager->activateState(m_entityPlayer->UID, "gethit");
                     }
                     else
                     {
