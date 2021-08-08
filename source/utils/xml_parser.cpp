@@ -23,6 +23,79 @@
 
 #include "xml_parser.hpp"
 
+// Remove anomalies such as extra spaces.
+// This leads to easier parsing and less memory usage.
+std::string cXML::m_lineFormat(const std::string &_string)
+{
+    // Return an empty string if _string has no data
+    if (_string.length() < 1)
+    {
+        return "";
+    }
+    
+    // Process _string
+    std::string   tString = "";
+    std::uint32_t tStringLength = _string.length();
+    std::uint32_t tStringPosition = 0;
+    std::uint32_t abCount = 0; // angle bracket count
+    
+    // if the first character is a space or a tab, proceed
+    if ((_string[0] == ' ') || (_string[0] == '\t'))
+    {
+        // First strip preceding spaces by finding 
+        // the start of the data within the string.
+        for(tStringPosition = 0; tStringPosition < tStringLength; ++tStringPosition)
+        {
+            if ((_string[tStringPosition] != ' ') && (_string[tStringPosition] != '\t'))
+            {
+                //tStringPosition--;
+                break;
+            }
+        }
+    }
+
+    if (_string[tStringPosition] != '<')
+    {
+        // There is no valid data, return an empty string
+        // Probably a comment line
+        return "";
+    }
+
+    // Save the string without any aditional spaces
+    for(; tStringPosition < tStringLength; ++tStringPosition)
+    {
+        // Look for the end of the data
+        if (_string[tStringPosition] == '>')
+        {
+            abCount++;
+            if (abCount == 2)
+            {
+                tString += _string[tStringPosition];
+                break;
+            }
+        }
+
+        // Save data if it is not a space or a tab
+        if ((_string[tStringPosition] != ' ') && (_string[tStringPosition] != '\t'))
+        {
+            tString += _string[tStringPosition];
+        }
+        else //if ((_string[tStringPosition] == ' ') || (_string[tStringPosition] == '\t'))
+        {
+            // (tStringPosition - 1) shouldn't == 0 as we 
+            // removed all preceding spaces and tabs in the previous step
+            // tString[0] should be "<"
+            if ((_string[tStringPosition - 1] != ' ') && (_string[tStringPosition - 1] != '\t'))
+            {
+                tString += " ";
+            }
+        }
+    }
+    
+    // Return the processed string
+    return tString;
+}
+
 void cXML::load(const std::string &_fileName)
 {
     m_lineCount = 0;
@@ -40,7 +113,7 @@ void cXML::load(const std::string &_fileName)
         uint32 lineNum = 0;
         while (std::getline(fileIn, lineData))
         {
-            m_line[lineNum] = lineData.c_str();
+            m_line[lineNum] = m_lineFormat(lineData.c_str());
             lineNum++;
         }
         fileIn.close();

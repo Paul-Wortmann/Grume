@@ -44,6 +44,7 @@ class cXML
     protected:
 
     private:
+        std::string  m_lineFormat(const std::string &_string);
         uint32       m_lineCount = 0;
         std::string* m_line      = nullptr;
 };
