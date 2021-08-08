@@ -1,0 +1,19 @@
+﻿<?xml version = "1.0" encoding = "UTF-8" ?>
+<entity>
+    <name>skeleton_horse_1_001</name>
+    <model>objects/skeleton_horse_1_001.obj</model>
+    <material>objects/bone_1_001.txt</material>
+
+    <position>0.0 0.0 0.0</position>
+    <scale>1.0 1.0 1.0</scale>
+    <rotation>0.0 0.0 0.0</rotation>
+    
+﻿    <collision>
+        <collision_size>4</collision_size>
+        <collision_data>0 0 0 0</collision_data>
+        <collision_data>0 1 1 0</collision_data>
+        <collision_data>0 1 1 0</collision_data>
+        <collision_data>0 0 0 0</collision_data>
+    </collision>
+
+</entity>

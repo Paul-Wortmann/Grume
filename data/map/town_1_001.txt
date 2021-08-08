@@ -181,6 +181,7 @@
         <object>5740 medieval_building 2  1.0 3.1416 1 0</object> # Medieval house
         <object>5956 medieval_building 4  1.0 1.5708 1 0</object> # Medeival sawmill
         <object>4041 old_wagon         1  1.0 1.5708 1 0</object> # old wagon
+        <object>3641 skeleton          1  1.0 1.5708 1 0</object> # Skeleton horse
         <object>4961 bridge            1  1.0 0.0000 1 0</object> # Bridge
         <object>5443 barrel            2  1.0 0.0000 1 0</object> # Barrel
         <object>5543 barrel            1  1.0 0.0000 1 0</object> # Barrel
