@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding= "UTF-8"?>
 <sound_database>
 
-        <sound>object object/door_1_001.ogg</sound>
-        <sound>object object/door_1_002.ogg</sound>
-        <sound>object object/gate_1_001.ogg</sound>
+        <sound>bat monster/bat/bat_1_001.ogg</sound>
+        <sound>bat monster/bat/bat_1_002.ogg</sound>
+        <sound>bat monster/bat/bat_1_003.ogg</sound>
 
         <sound>battle battle/magic_1_001.ogg</sound>
         <sound>battle battle/spell_1_001.ogg</sound>
@@ -16,21 +16,61 @@
         <sound>battle battle/sword_unsheathe_4_001.ogg</sound>
         <sound>battle battle/sword_unsheathe_5_001.ogg</sound>
 
-        <sound>trader npc/trader/trader_1_001.ogg</sound>
-        <sound>trader npc/trader/trader_1_002.ogg</sound>
-        <sound>trader npc/trader/trader_1_003.ogg</sound>
-        <sound>trader npc/trader/trader_1_004.ogg</sound>
-        <sound>trader npc/trader/trader_1_005.ogg</sound>
+        <sound>beetle monster/beetle/beetle_1_001.ogg<sound>
+        <sound>beetle monster/beetle/beetle_1_002.ogg<sound>
+        <sound>beetle monster/beetle/beetle_1_003.ogg<sound>
 
-        <sound>bat monster/bat/bat_1_001.ogg</sound>
-        <sound>bat monster/bat/bat_1_002.ogg</sound>
-        <sound>bat monster/bat/bat_1_003.ogg</sound>
-
-        <sound>beetlemonster/beetle/beetle_1_001.ogg<sound>
-        <sound>beetlemonster/beetle/beetle_1_002.ogg<sound>
-        <sound>beetlemonster/beetle/beetle_1_003.ogg<sound>
-
-        <sound>creaturemonster/creature/alien_01.ogg<sound>
+        <sound>creature monster/creature/alien_01.ogg<sound>
+        <sound>creature monster/creature/alien_02.ogg<sound>
+        <sound>creature monster/creature/alien_03.ogg<sound>
+        <sound>creature monster/creature/alien_04.ogg<sound>
+        <sound>creature monster/creature/alien_05.ogg<sound>
+        <sound>creature monster/creature/alien_06.ogg<sound>
+        <sound>creature monster/creature/breath_01.ogg<sound>
+        <sound>creature monster/creature/bug_01.ogg<sound>
+        <sound>creature monster/creature/bug_02.ogg<sound>
+        <sound>creature monster/creature/bug_03.ogg<sound>
+        <sound>creature monster/creature/bug_04.ogg<sound>
+        <sound>creature monster/creature/burble_01.ogg<sound>
+        <sound>creature monster/creature/burble_02.ogg<sound>
+        <sound>creature monster/creature/burp_01.ogg<sound>
+        <sound>creature monster/creature/burp_02.ogg<sound>
+        <sound>creature monster/creature/eat_01.ogg<sound>
+        <sound>creature monster/creature/eat_02.ogg<sound>
+        <sound>creature monster/creature/eat_03.ogg<sound>
+        <sound>creature monster/creature/eat_04.ogg<sound>
+        <sound>creature monster/creature/grunt_01.ogg<sound>
+        <sound>creature monster/creature/grunt_02.ogg<sound>
+        <sound>creature monster/creature/grunt_03.ogg<sound>
+        <sound>creature monster/creature/grunt_04.ogg<sound>
+        <sound>creature monster/creature/grunt_05.ogg<sound>
+        <sound>creature monster/creature/howl_01.ogg<sound>
+        <sound>creature monster/creature/hurt_01.ogg<sound>
+        <sound>creature monster/creature/hurt_04.ogg<sound>
+        <sound>creature monster/creature/hurt_05.ogg<sound>
+        <sound>creature monster/creature/misc_01.ogg<sound>
+        <sound>creature monster/creature/misc_02.ogg<sound>
+        <sound>creature monster/creature/misc_03.ogg<sound>
+        <sound>creature monster/creature/misc_04.ogg<sound>
+        <sound>creature monster/creature/misc_05.ogg<sound>
+        <sound>creature monster/creature/misc_06.ogg<sound>
+        <sound>creature monster/creature/misc_07.ogg<sound>
+        <sound>creature monster/creature/misc_08.ogg<sound>
+        <sound>creature monster/creature/misc_09.ogg<sound>
+        <sound>creature monster/creature/monster_01.ogg<sound>
+        <sound>creature monster/creature/monster_02.ogg<sound>
+        <sound>creature monster/creature/monster_03.ogg<sound>
+        <sound>creature monster/creature/monster_04.ogg<sound>
+        <sound>creature monster/creature/monster_05.ogg<sound>
+        <sound>creature monster/creature/monster_06.ogg<sound>
+        <sound>creature monster/creature/monster_07.ogg<sound>
+        <sound>creature monster/creature/roar_01.ogg<sound>
+        <sound>creature monster/creature/roar_02.ogg<sound>
+        <sound>creature monster/creature/roar_03.ogg<sound>
+        <sound>creature monster/creature/scream_01.ogg<sound>
+        <sound>creature monster/creature/scream_02.ogg<sound>
+        <sound>creature monster/creature/spit_01.ogg<sound>
+        <sound>creature monster/creature/spit_02.ogg<sound>
 
         <sound>ghost monster/ghost/ghost_1_001.ogg<sound>
         <sound>ghost monster/ghost/ghost_1_002.ogg<sound>
@@ -98,6 +138,10 @@
         <sound>minotaur monster/minotaur/minotaur_1_002.ogg<sound>
         <sound>minotaur monster/minotaur/minotaur_1_003.ogg<sound>
 
+        <sound>object object/door_1_001.ogg</sound>
+        <sound>object object/door_1_002.ogg</sound>
+        <sound>object object/gate_1_001.ogg</sound>
+
         <sound>ogre monster/ogre/ogre_1_001.ogg<sound>
         <sound>ogre monster/ogre/ogre_1_002.ogg<sound>
         <sound>ogre monster/ogre/ogre_1_003.ogg<sound>
@@ -140,6 +184,12 @@
 
         <sound>spider monster/spider/spider_01_001.ogg</sound>
         <sound>spider monster/spider/spider_01_002.ogg</sound>
+
+        <sound>trader npc/trader/trader_1_001.ogg</sound>
+        <sound>trader npc/trader/trader_1_002.ogg</sound>
+        <sound>trader npc/trader/trader_1_003.ogg</sound>
+        <sound>trader npc/trader/trader_1_004.ogg</sound>
+        <sound>trader npc/trader/trader_1_005.ogg</sound>
 
         <sound>wolfman monster/wolfman/wolfman_01_001.ogg<sound>
 
