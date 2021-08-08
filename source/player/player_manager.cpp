@@ -50,20 +50,12 @@ sEntity* cPlayerManager::load(const std::string &_fileName)
         // Load audio file names
         if ((m_data->stateCount > 0) && (xmlSoundFile.lineCount() > 0))
         {
-    
             for (std::uint32_t s = 0; s < m_data->stateCount; ++s)
             {
-                if (m_data->state[s].audioDBIndex > 0)
-                {
-                    m_data->state[s].audioFile = xmlSoundFile.getString("<" + m_data->state[s].audioDBname + "_sound>", m_data->state[s].audioDBIndex);
-                }
-                else
-                {
-                    m_data->state[s].audioFile = xmlSoundFile.getString("<" + m_data->state[s].audioDBname + "_sound>", (rand() % (xmlSoundFile.getInstanceCount("<" + m_data->state[s].audioDBname + "_sound>") - 1)) + 1);
-                }
+                m_data->state[s].audioFile = gGetFileName(xmlSoundFile, "<sound>" + m_data->state[s].audioDBname + " ", m_data->state[s].audioDBIndex);
             }
         }
-        
+
         // Cleanup
         xmlSoundFile.free();
     }

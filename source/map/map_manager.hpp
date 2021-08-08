@@ -36,6 +36,7 @@
 #include "../player/player_manager.hpp"
 #include "biome_manager.hpp"
 #include "map_define.hpp"
+#include "map_generate_database.hpp"
 
 class cMapManager : public tcLinkedList<sMap>
 {

@@ -121,14 +121,7 @@ void cMapManager::m_addDoorEntities(sMap*& _map)
                             {
                                 for (std::uint32_t s = 0; s < tEntity->stateCount; ++s)
                                 {
-                                    if (tEntity->state[s].audioDBIndex > 0)
-                                    {
-                                        tEntity->state[s].audioFile = xmlSoundFile.getString("<" + tEntity->state[s].audioDBname + "_sound>", tEntity->state[s].audioDBIndex);
-                                    }
-                                    else
-                                    {
-                                        tEntity->state[s].audioFile = xmlSoundFile.getString("<" + tEntity->state[s].audioDBname + "_sound>", (rand() % (xmlSoundFile.getInstanceCount("<" + tEntity->state[s].audioDBname + "_sound>") - 1)) + 1);
-                                    }
+                                    tEntity->state[s].audioFile = gGetFileName(xmlSoundFile, "<sound>" + tEntity->state[s].audioDBname + " ", tEntity->state[s].audioDBIndex);
                                 }
                             }
                         }
@@ -194,11 +187,7 @@ void cMapManager::m_addDoorEntities(sMap*& _map)
                                 {
                                     if (tEntity->state[s].audioDBIndex > 0)
                                     {
-                                        tEntity->state[s].audioFile = xmlSoundFile.getString("<" + tEntity->state[s].audioDBname + "_sound>", tEntity->state[s].audioDBIndex);
-                                    }
-                                    else
-                                    {
-                                        tEntity->state[s].audioFile = xmlSoundFile.getString("<" + tEntity->state[s].audioDBname + "_sound>", (rand() % (xmlSoundFile.getInstanceCount("<" + tEntity->state[s].audioDBname + "_sound>") - 1)) + 1);
+                                        tEntity->state[s].audioFile = gGetFileName(xmlSoundFile, "<sound>" + tEntity->state[s].audioDBname + " ", tEntity->state[s].audioDBIndex);
                                     }
                                 }
                             }
@@ -272,11 +261,7 @@ void cMapManager::m_addDoorEntities(sMap*& _map)
                                 {
                                     if (tEntity->state[s].audioDBIndex > 0)
                                     {
-                                        tEntity->state[s].audioFile = xmlSoundFile.getString("<" + tEntity->state[s].audioDBname + "_sound>", tEntity->state[s].audioDBIndex);
-                                    }
-                                    else
-                                    {
-                                        tEntity->state[s].audioFile = xmlSoundFile.getString("<" + tEntity->state[s].audioDBname + "_sound>", (rand() % (xmlSoundFile.getInstanceCount("<" + tEntity->state[s].audioDBname + "_sound>") - 1)) + 1);
+                                        tEntity->state[s].audioFile = gGetFileName(xmlSoundFile, "<sound>" + tEntity->state[s].audioDBname + " ", tEntity->state[s].audioDBIndex);
                                     }
                                 }
                             }
@@ -335,11 +320,7 @@ void cMapManager::m_addDoorEntities(sMap*& _map)
                                 {
                                     if (tEntity->state[s].audioDBIndex > 0)
                                     {
-                                        tEntity->state[s].audioFile = xmlSoundFile.getString("<" + tEntity->state[s].audioDBname + "_sound>", tEntity->state[s].audioDBIndex);
-                                    }
-                                    else
-                                    {
-                                        tEntity->state[s].audioFile = xmlSoundFile.getString("<" + tEntity->state[s].audioDBname + "_sound>", (rand() % (xmlSoundFile.getInstanceCount("<" + tEntity->state[s].audioDBname + "_sound>") - 1)) + 1);
+                                        tEntity->state[s].audioFile = gGetFileName(xmlSoundFile, "<sound>" + tEntity->state[s].audioDBname + " ", tEntity->state[s].audioDBIndex);
                                     }
                                 }
                             }
@@ -404,11 +385,7 @@ void cMapManager::m_addDoorEntities(sMap*& _map)
                                 {
                                     if (tEntity->state[s].audioDBIndex > 0)
                                     {
-                                        tEntity->state[s].audioFile = xmlSoundFile.getString("<" + tEntity->state[s].audioDBname + "_sound>", tEntity->state[s].audioDBIndex);
-                                    }
-                                    else
-                                    {
-                                        tEntity->state[s].audioFile = xmlSoundFile.getString("<" + tEntity->state[s].audioDBname + "_sound>", (rand() % (xmlSoundFile.getInstanceCount("<" + tEntity->state[s].audioDBname + "_sound>") - 1)) + 1);
+                                        tEntity->state[s].audioFile = gGetFileName(xmlSoundFile, "<sound>" + tEntity->state[s].audioDBname + " ", tEntity->state[s].audioDBIndex);
                                     }
                                 }
                             }
@@ -457,11 +434,7 @@ void cMapManager::m_addDoorEntities(sMap*& _map)
                                 {
                                     if (tEntity->state[s].audioDBIndex > 0)
                                     {
-                                        tEntity->state[s].audioFile = xmlSoundFile.getString("<" + tEntity->state[s].audioDBname + "_sound>", tEntity->state[s].audioDBIndex);
-                                    }
-                                    else
-                                    {
-                                        tEntity->state[s].audioFile = xmlSoundFile.getString("<" + tEntity->state[s].audioDBname + "_sound>", (rand() % (xmlSoundFile.getInstanceCount("<" + tEntity->state[s].audioDBname + "_sound>") - 1)) + 1);
+                                        tEntity->state[s].audioFile = gGetFileName(xmlSoundFile, "<sound>" + tEntity->state[s].audioDBname + " ", tEntity->state[s].audioDBIndex);
                                     }
                                 }
                             }

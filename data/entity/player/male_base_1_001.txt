@@ -70,22 +70,22 @@
     </state>
     <state>
         <state_name>attack</state_name>
-        <state_sound>bat 3 0</state_sound> # database name, else none, database index, repeat (bool)
+        <state_sound>battle 5 0</state_sound> # database name, else none, database index, repeat (bool)
         <state_animation>0.0 0.333333 0</state_animation> # frame start, frame end, repeat (bool)
     </state>
     <state>
         <state_name>block</state_name>
-        <state_sound>bat 1 0</state_sound> # database name, else none, database index, repeat (bool)
+        <state_sound>battle 3 0</state_sound> # database name, else none, database index, repeat (bool)
         <state_animation>0.0 0.333333 0</state_animation> # frame start, frame end, repeat (bool)
     </state>
     <state>
         <state_name>die</state_name>
-        <state_sound>bat 2 0</state_sound> # database name, else none, database index, repeat (bool)
+        <state_sound>pain_sound 6 0</state_sound> # database name, else none, database index, repeat (bool)
         <state_animation>0.0 0.333333 0</state_animation> # frame start, frame end, repeat (bool)
     </state>
     <state>
         <state_name>gethit</state_name>
-        <state_sound>bat 1 0</state_sound> # database name, else none, database index, repeat (bool)
+        <state_sound>pain_sound 4 0</state_sound> # database name, else none, database index, repeat (bool)
         <state_animation>0.0 0.333333 0</state_animation> # frame start, frame end, repeat (bool)
     </state>
 

@@ -29,6 +29,7 @@
 #include "../entity/entity_manager.hpp"
 #include "../graphics/graphics_engine.hpp"
 #include "../map/map_path_a_star.hpp"
+#include "../map/map_generate_database.hpp"
 
 class cPlayerManager
 {
