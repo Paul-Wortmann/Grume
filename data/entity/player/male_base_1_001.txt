@@ -85,7 +85,7 @@
     </state>
     <state>
         <state_name>gethit</state_name>
-        <state_sound>pain_sound 4 0</state_sound> # database name, else none, database index, repeat (bool)
+        <state_sound>grunt_sound 4 0</state_sound> # database name, else none, database index, repeat (bool)
         <state_animation>0.0 0.333333 0</state_animation> # frame start, frame end, repeat (bool)
     </state>
 
