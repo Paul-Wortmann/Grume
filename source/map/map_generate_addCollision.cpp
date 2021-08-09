@@ -71,6 +71,10 @@ void cMapManager::m_addCollisionData(sMap*& _map, sEntity*& _entity, const std::
                     {
                         _map->tile[tileNum].base = eTileBase::tilePathNoGo;
                     }
+                    else if (_map->tile[tileNum].base == eTileBase::tileNone)
+                    {
+                        // Do not change, this tile is alread inaccessible
+                    }
                     else
                     {
                         _map->tile[tileNum].base = eTileBase::tileFloorNoGo;
