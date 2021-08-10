@@ -1,8 +1,8 @@
-# Frost and Flame      [![Build Status](https://travis-ci.org/Paul-Wortmann/Frost_and_Flame.svg?branch=master)](https://travis-ci.org/Paul-Wortmann/Frost_and_Flame)    [![Coverity Scan Build Status](https://img.shields.io/coverity/scan/14287.svg)](https://scan.coverity.com/projects/paul-wortmann-frost_and_flame)
+# Grume      [![Build Status](https://travis-ci.org/Paul-Wortmann/Grume.svg?branch=master)](https://travis-ci.org/Paul-Wortmann/Grume)    [![Coverity Scan Build Status](https://img.shields.io/coverity/scan/14287.svg)](https://scan.coverity.com/projects/paul-wortmann-grume)
 
 Copyright Paul Wortmann. GNU GPL v2
 
-![Frost and Flame](https://raw.githubusercontent.com/Paul-Wortmann/Frost_and_Flame/master/screenshots/screenshot_001.png)
+![Grume](https://raw.githubusercontent.com/Paul-Wortmann/Grume/master/screenshots/screenshot_001.png)
 
 ## Requirements
 
@@ -11,7 +11,7 @@ Copyright Paul Wortmann. GNU GPL v2
 - Linux kernel 4.2+
 - AMD or Intel CPU, x86_64.
 
-- While only the Linux build is currently being worked on, it should be trivial to get Frost and Flame working on Windows as most of the code and dependencies are cross platform. I would like to port to Fuchsia OS in the future if it is open source. However there are no plans to ever support Apple.
+- While only the Linux build is currently being worked on, it should be trivial to get Grume working on Windows as most of the code and dependencies are cross platform. There are no plans to ever support Apple.
 
 ## Build:
 
@@ -38,13 +38,13 @@ However feel free to open issues.
 ## Known bugs:
 
 As this is still a work in progress the format of the savegames may, and quite often changes.
-It is recommended you either overwrite your older savegames with new ones, or delete the older ones when upgrading to a newer version of Frost and Flame.
+It is recommended you either overwrite your older savegames with new ones, or delete the older ones when upgrading to a newer version of Grume.
 Or better still remove the older version of the game completely, before installing a newer version.
 If the game fails to load, try deleting all config files, the game will recreate them with default settings.
 
 ## License:
 
-Copyright (C) 2011-2020 Paul Wortmann.
+Copyright (C) 2011-2021 Paul Wortmann.
 
 This program is free software: you can redistribute it and/or modify it under
 the terms of the GNU General Public License as published by the Free Software
@@ -58,6 +58,6 @@ PARTICULAR PURPOSE.  See the gpl.txt file for more details.
 
 - Paul Wortmann: physhex@gmail.com
 - Website:            http://www.physhexgames.com
-- Development:   https://github.com/Paul-Wortmann/Frost_And_Flame
+- Development:   https://github.com/Paul-Wortmann/Grume
 - Discord:   https://discord.gg/JCqmb5Vd
 
