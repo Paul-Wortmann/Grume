@@ -42,6 +42,6 @@
     #type 1 = set state
     #type 2 = activate state
     <interaction>0 1 2</interaction>
-    <interaction_distance>4</interaction_distance> # num tiles
+    <interaction_distance>10</interaction_distance> # num tiles
     
 </npc>
