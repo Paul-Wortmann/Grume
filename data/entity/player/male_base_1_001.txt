@@ -5,6 +5,11 @@
         <name>male_base_1_002</name>
     </information>
 
+    <resources>
+        <model>player/male_base_2_001.dae</model>
+        <material>player/male_base_1_001.txt</material>
+    </resources>
+
     <attributes>
 	# (depletable) max, regen
         <attribute_health>100 0.1</attribute_health>
@@ -29,11 +34,6 @@
 	# (defend) enabled
         <skills_forcefield>1</skills_forcefield>
     </skills>
-
-    <resources>
-        <model>player/male_base_2_001.dae</model>
-        <material>player/male_base_1_001.txt</material>
-    </resources>
 
     <transform>
         <position>0.0 -1.0 0.0</position>

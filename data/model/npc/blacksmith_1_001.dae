@@ -11,39 +11,6 @@
     <up_axis>Z_UP</up_axis>
   </asset>
   <library_images/>
-  <library_effects>
-    <effect id="man_1-effect">
-      <profile_COMMON>
-        <technique sid="common">
-          <phong>
-            <emission>
-              <color sid="emission">0 0 0 1</color>
-            </emission>
-            <ambient>
-              <color sid="ambient">0 0 0 1</color>
-            </ambient>
-            <diffuse>
-              <color sid="diffuse">0.6744 0.5112 0.4136 1</color>
-            </diffuse>
-            <specular>
-              <color sid="specular">0.15 0.15 0.15 1</color>
-            </specular>
-            <shininess>
-              <float sid="shininess">103</float>
-            </shininess>
-            <index_of_refraction>
-              <float sid="index_of_refraction">1</float>
-            </index_of_refraction>
-          </phong>
-        </technique>
-      </profile_COMMON>
-    </effect>
-  </library_effects>
-  <library_materials>
-    <material id="man_1-material" name="man_1">
-      <instance_effect url="#man_1-effect"/>
-    </material>
-  </library_materials>
   <library_geometries>
     <geometry id="man_1-mesh" name="man_1">
       <mesh>
@@ -88,7 +55,7 @@
         <vertices id="man_1-mesh-vertices">
           <input semantic="POSITION" source="#man_1-mesh-positions"/>
         </vertices>
-        <triangles material="man_1-material" count="10794">
+        <triangles count="10794">
           <input semantic="VERTEX" source="#man_1-mesh-vertices" offset="0"/>
           <input semantic="NORMAL" source="#man_1-mesh-normals" offset="1"/>
           <input semantic="TEXCOORD" source="#man_1-mesh-map-0" offset="2" set="0"/>
@@ -2753,11 +2720,7 @@
         <scale sid="scale">1 1 1</scale>
         <instance_controller url="#Game_engine_man_1Mesh-skin">
           <skeleton>#Game_engine_Root</skeleton>
-          <bind_material>
-            <technique_common>
-              <instance_material symbol="man_1-material" target="#man_1-material"/>
-            </technique_common>
-          </bind_material>
+
         </instance_controller>
       </node>
     </visual_scene>
