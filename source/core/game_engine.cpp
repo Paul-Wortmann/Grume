@@ -1,18 +1,18 @@
 /**
- * Copyright (C) Paul Wortmann, PhysHex Games, www.physhexgames.com
- * This file is part of "Frost And Flame"
+ * Copyright (C) Paul Wortmann
+ * This file is part of "Grume"
  *
- * "Frost And Flame" is free software: you can redistribute it and/or modify
+ * "Grume" is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, version 2 only.
  *
- * "Frost And Flame" is distributed in the hope that it will be useful,
+ * "Grume" is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with "Frost And Flame" If not, see <http://www.gnu.org/licenses/>.
+ * along with "Grume" If not, see <http://www.gnu.org/licenses/>.
  *
  * @author  Paul Wortmann
  * @email   physhex@gmail.com
@@ -20,16 +20,16 @@
  * @license GPL V2
  * @date 2011-11-11
  */
- 
+
 #include "game_engine.hpp"
 
 void cGameEngine::run(const std::uint32_t &_argc, char** _argv)
 {
     // Clear the log and log version information.
     gLogClear();
-    gLogWrite(LOG_INFO, std::string(__DATE__) + " " + std::string(__TIME__) + " - Starting Frost and Flame.", __FILE__, __LINE__, __FUNCTION__);
-    std::string FNFVersion = std::to_string(FNF_VERSION_MAJOR) + "." + std::to_string(FNF_VERSION_MINOR) + "." + std::to_string(FNF_VERSION_MICRO);
-    gLogWrite(LOG_INFO, "Frost and Flame version: " + FNFVersion, __FILE__, __LINE__, __FUNCTION__);
+    gLogWrite(LOG_INFO, std::string(__DATE__) + " " + std::string(__TIME__) + " - Starting Grume.", __FILE__, __LINE__, __FUNCTION__);
+    std::string GRUMEVersion = std::to_string(GRUME_VERSION_MAJOR) + "." + std::to_string(GRUME_VERSION_MINOR) + "." + std::to_string(GRUME_VERSION_MICRO);
+    gLogWrite(LOG_INFO, "Grume version: " + GRUMEVersion, __FILE__, __LINE__, __FUNCTION__);
 
     // Start the game engine timer.
     timer.initialize();

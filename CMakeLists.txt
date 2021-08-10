@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.5 FATAL_ERROR)
 
-project ("Frost and Flame")
+project ("Grume")
 
 cmake_policy(SET CMP0072 NEW)
 
@@ -33,10 +33,10 @@ include_directories(source/debug)
 
 file(GLOB_RECURSE FNF_S "source/*.cpp")
 
-add_executable(frost_and_flame ${FNF_S} )
+add_executable(grume ${FNF_S} )
 
 link_directories( /path/to/PHYSFSlibs/)
 
-target_Link_Libraries (frost_and_flame ${OGGVORBIS_LIBRARIES} ${OPENAL_LIBRARY} ${ASSIMP_LIBRARIES} ${PHYSFS_LIBRARY} ${GLFW3_LIBRARIES} ${OPENGL_LIBRARIES})
+target_Link_Libraries (grume ${OGGVORBIS_LIBRARIES} ${OPENAL_LIBRARY} ${ASSIMP_LIBRARIES} ${PHYSFS_LIBRARY} ${GLFW3_LIBRARIES} ${OPENGL_LIBRARIES} ${GLEW_LIBRARIES})
 
 
