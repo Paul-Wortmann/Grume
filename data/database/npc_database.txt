@@ -2,25 +2,38 @@
 <npc_database>
         
         # bat
-        <npc>bat npc/bat_1_001.txt</npc>
+        <npc>bat            npc/bat_1_001.txt</npc>
         
         # blacksmith
-        <npc>blacksmith npc/blacksmith_1_001.txt</npc>
+        <npc>blacksmith     npc/blacksmith_1_001.txt</npc>
         
         # dead_body
-        <npc>dead_body npc/dead_body_1_001.txt</npc>
+        <npc>dead_body      npc/dead_body_1_001.txt</npc>
         
+        # forest monster
+        <npc>forest_monster npc/forest_monster_1_001.txt</npc>
+        
+        # golem
+        <npc>golem          npc/golem_1_001.txt</npc>
+
         # monk
-        <npc>monk npc/monk_1_001.txt</npc>
+        <npc>monk           npc/monk_1_001.txt</npc>
         
         # mudeater
-        <npc>mudeater npc/mudeater_1_001.txt</npc>
+        <npc>mudeater       npc/mudeater_1_001.txt</npc>
         
         # spider
-        <npc>spider npc/spider_1_001.txt</npc>
+        <npc>spider         npc/spider_1_001.txt</npc>
         
         # werewolf
-        <npc>werewolf npc/werewolf_1_001.txt</npc>
+        <npc>werewolf       npc/werewolf_1_001.txt</npc>
+        
+        ################   WIP   ################
+        
+        <npc>skeleton       npc/skeleton_1_001.txt</npc>
 
+        ################   WIP   ################
+        
+        
 </npc_database>
 

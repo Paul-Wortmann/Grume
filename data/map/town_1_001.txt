@@ -146,7 +146,8 @@
 
     <npc_mobs>
         #npc name, scale max, scale min, prevalence
-        <npc_mob>bat 0.5 1.0 4</npc_mob> # bat
+        <npc_mob>forest_monster 1.0 1.0 1</npc_mob> # forest_monster
+        <npc_mob>golem          1.0 1.0 2</npc_mob> # golem
     </npc_mobs>
 
     <npcs>
@@ -159,8 +160,8 @@
 
     <debris_objects>
         #object number, scale max, scale min, prevalence, obstacle
-        <debris>rock_small 0.5 1.0 15 0</debris> # rock small
-        <debris>dead_tree  0.5 1.0 20 1</debris> # dead tree
+        <debris>rock_small 0.5 1.0 5 0</debris> # rock small
+        <debris>dead_tree  0.5 1.0 10 1</debris> # dead tree
     </debris_objects>
 
     <objects>

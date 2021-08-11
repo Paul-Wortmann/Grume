@@ -189,7 +189,9 @@ void cAnimationEngine::initializeEntities(void)
                 m_entityTemp->numBones = m_entityTemp->model->numBones;
                 m_entityTemp->boneTransform = new glm::mat4[m_entityTemp->numBones];
             }
-
+            
+            std::cout << "Model: " << m_entityTemp->name << std::endl;
+            
             // Calculate the bone transforms at their initial state
             m_calculateAnimation(0.0f, 0);
 

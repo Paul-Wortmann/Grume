@@ -1,0 +1,95 @@
+﻿<?xml version = "1.0" encoding = "UTF-8" ?>
+<npc>
+
+    <information>
+        <name>skeleton_1_001</name>
+    </information>
+
+    <resources>
+        <model>npc/skeleton_1_001.dae</model>
+	    <material>npc/skeleton_1_001.txt</material>
+    </resources>
+
+    <transform>
+        <position>0.0 0.0 0.0</position>
+        <scale>0.0625 0.0625 0.0625</scale>
+        <rotation>3.14159 1.570795 0.0</rotation>
+        <rotationaxis>0 1 0</rotationaxis>
+    </transform>
+
+    <animtion>
+        <animation_independent>1</animation_independent>
+        <animation_count>1</animation_count>
+    </animation>
+
+    <movement>
+        <movement_speed>0.06</movement_speed>
+    </movement>
+
+    <state_initial>1</state_initial> # 0 == none
+    <state>
+        <state_name>idle</state_name>
+        <state_sound>none 0 0</state_sound> # database name, else none, database index, repeat (bool)
+        <state_animation>0.0 0.667334001 1</state_animation> # frame start, frame end, repeat (bool)
+    </state>
+    <state>
+        <state_name>move</state_name>
+        <state_sound>none 0 0</state_sound> # database name, else none, database index, repeat (bool)
+        <state_animation>0.0 0.667334001 1</state_animation> # frame start, frame end, repeat (bool)
+    </state>
+    <state>
+        <state_name>attack</state_name>
+        <state_sound>spider 2 0</state_sound> # database name, else none, database index, repeat (bool)
+        <state_animation>0.0 0.667334001 0</state_animation> # frame start, frame end, repeat (bool)
+    </state>
+    <state>
+        <state_name>block</state_name>
+        <state_sound>spider 1 0</state_sound> # database name, else none, database index, repeat (bool)
+        <state_animation>0.0 0.667334001 0</state_animation> # frame start, frame end, repeat (bool)
+    </state>
+    <state>
+        <state_name>die</state_name>
+        <state_sound>spider 2 0</state_sound> # database name, else none, database index, repeat (bool)
+        <state_animation>0.0 0.667334001 0</state_animation> # frame start, frame end, repeat (bool)
+    </state>
+    <state>
+        <state_name>gethit</state_name>
+        <state_sound>spider 1 0</state_sound> # database name, else none, database index, repeat (bool)
+        <state_animation>0.0 0.667334001 0</state_animation> # frame start, frame end, repeat (bool)
+    </state>
+
+    <ai>
+	// Distance in tile units of size
+        <attack_distance>1</attack_distance>
+        <attack_frequency>1024</attack_frequency> # mili-seconds
+        <move_distance>8</move_distance>
+
+        # % chance per frame
+        <attack_chance>10</attack_chance>
+        <defend_chance>10</defend_chance>
+        # number of tiles
+        <sight_distance>10</sight_distance>
+        # 1 -> rush attack on sight, persitent attack
+        # 2 -> rush attack on sight, flee on damage
+        # 3 -> ranged, keep distance
+        <attack_behavior>1</attack_behavior>
+        # 1 -> independent movement
+        # 2 -> say with the group, flock attack / flee
+        # 3 -> Follow the leader, independent when leader killed
+        <move_behavior>1</move_behavior>
+    </ai>
+
+
+    #type, state 1 , state 2
+    #type 0 = toggle states
+    #type 1 = set state
+    <interaction>1 6 0</interaction>
+    <interaction_distance>2</interaction_distance> # num tiles
+    
+    # Screenshake on death
+    <death_shake_chance>100</death_shake_chance> #Chance of screenshake %
+    <death_shake_duration>2000</death_shake_duration> #Duration in ms
+    <death_shake_force>0.0125</death_shake_force> #Strength
+
+</npc>
+

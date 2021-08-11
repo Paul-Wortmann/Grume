@@ -1,0 +1,93 @@
+﻿<?xml version = "1.0" encoding = "UTF-8" ?>
+<map>
+    <information>
+        <name>town_1_002</name>
+        <width>30</width>
+        <height>30</height>
+        <biome>town_001_biome.txt</biome>
+    </information>
+    <generation>
+       <tiles>1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1</tiles>
+       <tiles>1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1</tiles>
+       <tiles>1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1</tiles>
+       <tiles>1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1</tiles>
+       <tiles>1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1</tiles>
+       <tiles>1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1</tiles>
+       <tiles>1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1</tiles>
+       <tiles>1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1</tiles>
+       <tiles>1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1</tiles>
+       <tiles>1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1</tiles>
+       <tiles>1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1</tiles>
+       <tiles>1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1</tiles>
+       <tiles>1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1</tiles>
+       <tiles>1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1</tiles>
+       <tiles>1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1</tiles>
+       <tiles>1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1</tiles>
+       <tiles>1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1</tiles>
+       <tiles>1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1</tiles>
+       <tiles>1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1</tiles>
+       <tiles>1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1</tiles>
+       <tiles>1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1</tiles>
+       <tiles>1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1</tiles>
+       <tiles>1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1</tiles>
+       <tiles>1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1</tiles>
+       <tiles>1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1</tiles>
+       <tiles>1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1</tiles>
+       <tiles>1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1</tiles>
+       <tiles>1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1</tiles>
+       <tiles>1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1</tiles>
+       <tiles>1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1</tiles>
+       <generate>0</generate>
+       <seed>0</seed>
+       <algorithm>1</algorithm>
+       <wall_width>1</wall_width>
+    </generation>
+
+    <player>
+        # This is used when not warping from a prior map
+        <player_start_tile>210</player_start_tile>
+        <player_start_rotation>1.5708</player_start_rotation>
+    </player>
+
+    <portals>
+        # These are used when warping from a prior map
+        # Portal number, Tile location, player face direction
+        # These are exit portals
+    </portals>
+    
+    <events>
+        # Tile location, type, data 1, data 2
+        # Type 1 (Warp to map) -> tile, event type, map number, portal number, NA
+    </events>
+
+    <npc_mobs>
+        #npc name, scale max, scale min, prevalence
+        <npc_mob>forest_monster 1.0 1.0 5</npc_mob> # forest_monster
+        <npc_mob>golem          1.0 1.0 10</npc_mob> # golem
+    </npc_mobs>
+
+    <npcs>
+        #tile number, npc number, index (0 == random), scale, y-rotation
+
+        # town central
+        <#npc>044 forest_monster 1 1.0 0.0000</npc> # forest_monster
+        <#npc>046 golem          1 1.0 0.0000</npc> # golem
+        <#npc>048 skeleton       1 1.0 0.0000</npc> # skeleton
+        <#npc>243 bat            1 1.0 0.0000</npc> # Bat
+        <#npc>245 blacksmith     1 1.0 0.0000</npc> # Blacksmith
+        <#npc>247 dead_body      1 1.0 0.0000</npc> # dead_body
+        <#npc>249 monk           1 1.0 0.0000</npc> # monk
+        <#npc>251 mudeater       1 1.0 0.0000</npc> # mudeater
+        <#npc>253 spider         1 1.0 0.0000</npc> # spider
+    </npcs>
+
+    <debris_objects>
+        #object number, scale max, scale min, prevalence, obstacle
+    </debris_objects>
+
+    <objects>
+        #tile number, database object name, index (0 == random), scale, y-rotation, obstacle, trigger tile
+
+    </objects>
+
+</map>
