@@ -1,4 +1,4 @@
-# Grume      [![Build Status](https://travis-ci.org/Paul-Wortmann/Grume.svg?branch=master)](https://travis-ci.org/Paul-Wortmann/Grume)    [![Coverity Scan Build Status](https://img.shields.io/coverity/scan/14287.svg)](https://scan.coverity.com/projects/paul-wortmann-grume)
+# Grume
 
 Copyright Paul Wortmann. GNU GPL v2
 
