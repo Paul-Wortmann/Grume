@@ -31,9 +31,9 @@ Make sure you have all the relevant dependencies installed:
 
 ## Credits:
 
-While I endevor to list all resource origins and give credit where possible, with frequent changes I may however make a mistake.
-If you find any resource that hasn't been corectly credited, please inform me so that mistakes can be rectified.
-Many resources come from this amazing site: [OpenGameArt](https://opengameart.org) [My resources on OpenGameArt](https://opengameart.org/users/paul-wortmann)
+While I endeavor to list all resource origins and give credit where possible, with frequent changes I may however make a mistake.
+If you find any resource that hasn't been correctly credited, please inform me so that mistakes can be rectified.
+Many resources come from this amazing site: [OpenGameArt](https://opengameart.org) My resources on OpenGameArt: [OpenGameArt](https://opengameart.org/users/paul-wortmann)
 
 ## Contributions:
 
