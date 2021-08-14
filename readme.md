@@ -63,7 +63,7 @@ PARTICULAR PURPOSE.  See the gpl.txt file for more details.
 ## Contact:
 
 - Paul Wortmann: physhex@gmail.com
-- Website:            http://paulwortmann.com
+- Website:            https://paulwortmann.com
 - Development:   https://github.com/Paul-Wortmann/Grume
 - Discord:   https://discord.gg/JCqmb5Vd
 
