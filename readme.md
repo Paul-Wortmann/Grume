@@ -29,6 +29,12 @@ Make sure you have all the relevant dependencies installed:
 - [Physfs](https://icculus.org/physfs/)
 - [Vorbis](https://xiph.org/vorbis/)
 
+## Credits:
+
+While I endevor to list all resource origins and give credit where possible, with frequent changes I may however make a mistake.
+If you find any resource that hasn't been corectly credited, please inform me so that mistakes can be rectified.
+Many resources come from this amazing site: [OpenGameArt](https://opengameart.org) [My resources on OpenGameArt](https://opengameart.org/users/paul-wortmann)
+
 ## Contributions:
 
 Please note, I am not looking for contributions.
@@ -57,7 +63,7 @@ PARTICULAR PURPOSE.  See the gpl.txt file for more details.
 ## Contact:
 
 - Paul Wortmann: physhex@gmail.com
-- Website:            http://www.physhexgames.com
+- Website:            http://paulwortmann.com
 - Development:   https://github.com/Paul-Wortmann/Grume
 - Discord:   https://discord.gg/JCqmb5Vd
 
