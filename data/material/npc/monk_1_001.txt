@@ -1,8 +1,8 @@
 ﻿<?xml version = "1.0" encoding = "UTF-8" ?>
 <material>
     <name>monk_1_001</name>
-    <diffuse>monk/monk-tuc-body.png</diffuse>
+    <diffuse>npc/monk_1_001_d.png</diffuse>
     <emissive>none_e.png</emissive>
-    <normal>monk/monk-tuc-body-norm512.png</normal>
-    <specular>monk/monk-tuc-body-spec.png</specular>
+    <normal>npc/monk_1_001_n.png</normal>
+    <specular>npc/monk_1_001_s.png</specular>
 </material>
