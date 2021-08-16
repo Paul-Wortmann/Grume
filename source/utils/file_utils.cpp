@@ -75,11 +75,6 @@ bool fileExists(const std::string &_fileName)
     return false;
 }
 
-const char *fileToBuffer(const std::string &_fileName)
-{
-    return (fileToString(_fileName)).c_str();
-}
-
 bool re_fileToBufferV(const std::string &_fileName, std::vector<unsigned char> &_buffer)
 {
     std::fstream fileStream(_fileName.c_str(), std::ios::in | std::ios::binary);
