@@ -38,7 +38,9 @@ void loadOgg(const std::string &_fileName, sAudioData *_audioData)
         uint16_t sampleSize = wordSize * pInfo->channels;
         _audioData->bufferSize = ov_pcm_total(&oggFile, -1) * sampleSize;
         if (_audioData->buffer != nullptr)
+        {
             delete[] _audioData->buffer;
+        }
         _audioData->buffer = new char [_audioData->bufferSize];
         uint64_t bufferPos = 0;
         uint32_t readLength = 4096;

@@ -26,36 +26,56 @@
 
 void loadWav(const std::string &_fileName, sAudioData *_audioData)
 {
+    // Open the file
     std::ifstream inFile (_fileName, std::ifstream::binary);
     if (inFile)
     {
+        // Read data from the file header
         const uint32_t HEADER_LENGTH = 44;
         inFile.seekg (0, inFile.end);
         _audioData->bufferSize = inFile.tellg();
         _audioData->bufferSize -= HEADER_LENGTH;
         inFile.seekg (0, inFile.beg);
         char *header = new char[HEADER_LENGTH];
+        if (_audioData->buffer != nullptr)
+        {
+            delete[] _audioData->buffer;
+        }
         _audioData->buffer = new char [_audioData->bufferSize];
         inFile.read(header,HEADER_LENGTH);
         inFile.read(_audioData->buffer,_audioData->bufferSize);
         inFile.close();
-        uint16_t header_format;
-        header_format = header[20];
-        uint16_t header_channels;
-        header_channels = header[22];
-        uint32_t header_sampleRate = 0;
-        header_sampleRate = (reinterpret_cast<unsigned char&>(header[25]) * 256) + reinterpret_cast<unsigned char&>(header[24]);
-        uint32_t header_bitsPerSample = 0;
-        header_bitsPerSample = header[34];
-        _audioData->audioFormat = header_format;
+        uint16_t header_format = header[20];
+        uint16_t header_channels = header[22];
+        uint32_t header_sampleRate = (reinterpret_cast<unsigned char&>(header[25]) * 256) + reinterpret_cast<unsigned char&>(header[24]);
+        uint32_t header_bitsPerSample = header[34];
+        
+        // Save data to the audio data struct
         _audioData->channels = header_channels;
         _audioData->sampleRate = header_sampleRate;
         _audioData->bitsPerSample = header_bitsPerSample;
-        _audioData->audioFormat = (_audioData->channels == 1) ? AL_FORMAT_MONO16 : AL_FORMAT_STEREO16;
+        
+        // Save audio format data to the audio data struct based on 
+        // number of channels and bits per sample.
+        if (_audioData->channels == 1)
+        {
+            _audioData->audioFormat = (_audioData->bitsPerSample == 8) ? AL_FORMAT_MONO8 : AL_FORMAT_MONO16;
+        }
+        else if  (_audioData->channels == 2)
+        {
+            _audioData->audioFormat = (_audioData->bitsPerSample == 8) ? AL_FORMAT_STEREO8 : AL_FORMAT_STEREO16;
+        }
+        else
+        {
+            _audioData->audioFormat = header_format;
+        }
+
+        // Clean up
         delete[] header;
     }
     else
     {
+        // Log and error if we faile to open the file
         gLogWrite(LOG_ERROR, "Failed to load file: " + _fileName, __FILE__, __LINE__, __FUNCTION__);
     }
 }
