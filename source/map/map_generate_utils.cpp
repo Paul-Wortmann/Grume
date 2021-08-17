@@ -164,14 +164,13 @@ uint32_t cMapManager::m_mapGetFloorArea(sMap*& _map)
 
 void cMapManager::m_mapRemoveAnomalies(sMap*& _map)
 {
-    uint32_t tileT = 0;
     for (uint16_t k = 0; k < _map->genData.pass; k++)
     {
         for (uint16_t i = 1; i < (_map->height - 1); i++)
         {
             for (uint16_t j = 1; j < (_map->width - 1); j++)
             {
-                tileT = (i * _map->width) + j;
+                uint32_t tileT = (i * _map->width) + j;
                 if (_map->tile[tileT].base == eTileBase::tileFloor)
                 {
                     // Remove single horizontal floor tiles

@@ -458,7 +458,7 @@ sEntityModel* cModelManager::m_loadModel(const std::string &_fileName)
                 sEntityModel* tModel = new sEntityModel;
                 tModel->fileName = _fileName;
                 tModel->numMesh = m_getNumMesh(scene->mRootNode);
-                std::cout << "Num mesh: " << tModel->numMesh << std::endl;
+                //std::cout << "Num mesh: " << tModel->numMesh << std::endl;
                 tModel->mesh = new sEntityMesh[tModel->numMesh];
                 tModel->inverseTransform = toMat4(scene->mRootNode->mTransformation);
                 tModel->inverseTransform = glm::inverse(tModel->inverseTransform);

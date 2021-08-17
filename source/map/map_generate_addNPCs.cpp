@@ -120,30 +120,30 @@ void cMapManager::m_addNPCEntities(sMap*& _map)
                 // Get the npc entity file name
                 tNPCDataString += "    ";
                 std::uint64_t tNPCDataStringLength = tNPCDataString.length();
-                std::string   tNPCFileName = "";
-                std::uint32_t tStringNum   = 0;
-                std::string   tString      = "";
+                std::string   tNPCFileName       = "";
+                std::uint32_t tStringNumFileName = 0;
+                std::string   tStringFileName    = "";
                 if (tNPCDataStringLength > 6)
                 {
                     for (std::uint64_t j = 0; j < tNPCDataStringLength; ++j)
                     {
                         if (tNPCDataString[j] == ' ')
                         {
-                            if (tStringNum == 0)
+                            if (tStringNumFileName == 0)
                             {
                                 ; // npc name
                             }
-                            else if (tStringNum == 1)
+                            else if (tStringNumFileName == 1)
                             {
-                                tNPCFileName = tString.c_str();
+                                tNPCFileName = tStringFileName.c_str();
                             }
 
-                            tStringNum++;
-                            tString = "";
+                            tStringNumFileName++;
+                            tStringFileName = "";
                         }
                         else
                         {
-                            tString += tNPCDataString[j];
+                            tStringFileName += tNPCDataString[j];
                         }
                     }
                 }

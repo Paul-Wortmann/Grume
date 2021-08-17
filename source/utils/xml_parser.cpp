@@ -113,7 +113,7 @@ void cXML::load(const std::string &_fileName)
         uint32 lineNum = 0;
         while (std::getline(fileIn, lineData))
         {
-            m_line[lineNum] = m_lineFormat(lineData.c_str());
+            m_line[lineNum] = m_lineFormat(lineData);
             lineNum++;
         }
         fileIn.close();

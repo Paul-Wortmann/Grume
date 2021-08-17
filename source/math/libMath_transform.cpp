@@ -130,7 +130,7 @@ mat4 perspective(float32 _fov, float32 _near, float32 _far)
     return tMat4;
 }
 
-mat4 lookAt(vec3 _position, vec3 _target, vec3 _upVector)
+mat4 lookAt(const vec3 &_position, const vec3 &_target, const vec3 &_upVector)
 {
     return mat4();
 }

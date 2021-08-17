@@ -47,4 +47,4 @@ mat4 rotate(const vec4 &_rotateVec);
 mat4 orthographic(float32 _left, float32 _right, float32 _bottom, float32 _top, float32 _near, float32 _far);
 mat4 perspective(float32 _fov, float32 _aspect, float32 _near, float32 _far);
 mat4 perspective(float32 _fov, float32 _near, float32 _far);
-mat4 lookAt(vec3 _position, vec3 _target, vec3 _upVector);
+mat4 lookAt(const vec3 &_position, const vec3 &_target, const vec3 &_upVector);

@@ -184,12 +184,12 @@ void cPlayerManager::process(const float32 &_dt)
                         }
 
                         // Stop all enemies from pathing, this will cause all enemies to recalculate thier paths
-                        for (sEntity* entity = m_entityManager->getHead(); entity != nullptr; entity = entity->next)
+                        for (sEntity* pEntity = m_entityManager->getHead(); pEntity != nullptr; pEntity = pEntity->next)
                         {
-                            if ((entity != nullptr) && (entity->movement != nullptr))
+                            if ((pEntity != nullptr) && (pEntity->movement != nullptr))
                             {
-                                entity->movement->mapPath.pathLength = 0;
-                                entity->movement->pathing = false;
+                                pEntity->movement->mapPath.pathLength = 0;
+                                pEntity->movement->pathing = false;
                             }
                         }
                     }

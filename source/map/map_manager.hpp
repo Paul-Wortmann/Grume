@@ -150,27 +150,27 @@ class cMapManager : public tcLinkedList<sMap>
         void          m_mapTilesRotate270(std::uint32_t *&_tiles, const std::uint32_t &_w, const std::uint32_t &_h);
         void          m_mapTilesRotate180(std::uint32_t *&_tiles, const std::uint32_t &_w, const std::uint32_t &_h);
         void          m_mapGeneratePerimeterWall(sMap*& _map);
-        uint32_t      m_mapGetFloorMin(sMap*& _map);
-        uint32_t      m_mapGetFloorMax(sMap*& _map);
-        uint32_t      m_mapGetFloorArea(sMap*& _map);
+        std::uint32_t m_mapGetFloorMin(sMap*& _map);
+        std::uint32_t m_mapGetFloorMax(sMap*& _map);
+        std::uint32_t m_mapGetFloorArea(sMap*& _map);
         void          m_mapRemoveAnomalies(sMap*& _map);
 
         // map_generate_rooms.cpp
-        bool          m_genCircleRoomOK(sMap*& _map, const uint32_t &_x, const uint32_t &_y, const uint32_t &_r);
-        void          m_genCircleRoom(sMap*& _map, const uint32_t &_x, const uint32_t &_y, const uint32_t &_r);
-        bool          m_genSquareRoomOK(sMap*& _map, const uint32_t &_x, const uint32_t &_y, const uint32_t &_r);
-        void          m_genSquareRoom(sMap*& _map, const uint32_t &_x, const uint32_t &_y, const uint32_t &_r);
+        bool          m_genCircleRoomOK(sMap*& _map, const std::uint32_t &_x, const std::uint32_t &_y, const std::uint32_t &_r);
+        void          m_genCircleRoom(sMap*& _map, const std::uint32_t &_x, const std::uint32_t &_y, const std::uint32_t &_r);
+        bool          m_genSquareRoomOK(sMap*& _map, const std::uint32_t &_x, const std::uint32_t &_y, const std::uint32_t &_r);
+        void          m_genSquareRoom(sMap*& _map, const std::uint32_t &_x, const std::uint32_t &_y, const std::uint32_t &_r);
         void          m_mapFindRooms(sMap*& _map);
-        uint32_t      m_mapGetRoomArea(sMap*& _map, const uint16_t &_r);
+        std::uint32_t m_mapGetRoomArea(sMap*& _map, const uint16_t &_r);
         void          m_mapRoomDiscardAllButLargest(sMap*& _map);
         void          m_mapInitRooms(sMap*& _map);
         void          m_mapInitRoomsND(sMap*& _map); // No discard
-        int32_t       m_getRoomFromTile(sMap*& _map, const uint32_t &_tile, const int32_t &_roomIgnore = -1);
+        std::int32_t  m_getRoomFromTile(sMap*& _map, const std::uint32_t &_tile, const std::int32_t &_roomIgnore = -1);
         
         // map_generate_connectivity.cpp
-        void          m_mapConnectRooms_SL(sMap*& _map, const uint32_t &_r1, const uint32_t &_r2);
-        void          m_mapConnectRooms_ND(sMap*& _map, const uint32_t &_r1, const uint32_t &_r2);
-        void          m_mapConnectRooms_DW(sMap*& _map, const uint32_t &_r1, const uint32_t &_r2);
+        void          m_mapConnectRooms_SL(sMap*& _map, const std::uint32_t &_r1, const std::uint32_t &_r2);
+        void          m_mapConnectRooms_ND(sMap*& _map, const std::uint32_t &_r1, const std::uint32_t &_r2);
+        void          m_mapConnectRooms_DW(sMap*& _map, const std::uint32_t &_r1, const std::uint32_t &_r2);
         void          m_mapConnectRooms(sMap*& _map);
         
         // map_generate_prefab.cpp
@@ -178,7 +178,7 @@ class cMapManager : public tcLinkedList<sMap>
         void          m_mapApplyPrefab(sMap*& _map, const std::string &_fileName, const std::uint32_t &_r);
 
         // map_generate_C1.cpp
-        uint32_t      m_numNeighborTiles(sMap*& _map, const std::uint32_t &_tile);
+        std::uint32_t m_numNeighborTiles(sMap*& _map, const std::uint32_t &_tile);
         void          m_generateMap_C1(sMap*& _map);
         
         // map_generate_C2.cpp

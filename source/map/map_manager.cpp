@@ -287,9 +287,10 @@ void cMapManager::load(const std::string &_fileName)
             xmlMusicFile.free();
         }
 
-        // Load map event data (for non generated maps)
+        // Handle non generated maps
         if (generate == 0)
         {
+            // Load map event data
             m_currentMap->eventCount = xmlMapFile.getInstanceCount("<event>");
             m_currentMap->event = new sMapEvent[m_currentMap->eventCount];
             for (uint32 i = 0; i < m_currentMap->eventCount; ++i)
@@ -371,11 +372,8 @@ void cMapManager::load(const std::string &_fileName)
                 m_currentMap->event[i].data_2 = tEventData2;
                 m_currentMap->event[i].data_3 = tEventData3;
             }
-        }
-        
-        // Load map portal data (for non generated maps)
-        if (generate == 0)
-        {
+
+            // Load map portal data (for non generated maps)
             m_currentMap->portalCount = xmlMapFile.getInstanceCount("<portal>");
             m_currentMap->portal = new sMapPortal[m_currentMap->portalCount];
             for (uint32 i = 0; i < m_currentMap->portalCount; ++i)

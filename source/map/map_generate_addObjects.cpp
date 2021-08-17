@@ -275,30 +275,30 @@ void cMapManager::m_addObjectEntities(sMap*& _map)
                 // Get the object entity file name
                 tObjectDataString += "    ";
                 std::uint64_t tObjectDataStringLength = tObjectDataString.length();
-                std::string   tObjectFileName     = "";
-                std::uint32_t tStringNum = 0;
-                std::string   tString = "";
+                std::string   tObjectFileName    = "";
+                std::uint32_t tStringNumFileName = 0;
+                std::string   tStringFileName    = "";
                 if (tObjectDataStringLength > 6)
                 {
                     for (std::uint64_t j = 0; j < tObjectDataStringLength; ++j)
                     {
                         if (tObjectDataString[j] == ' ')
                         {
-                            if (tStringNum == 0)
+                            if (tStringNumFileName == 0)
                             {
                                 ; // Object name
                             }
-                            else if (tStringNum == 1)
+                            else if (tStringNumFileName == 1)
                             {
-                                tObjectFileName = tString.c_str();
+                                tObjectFileName = tStringFileName.c_str();
                             }
 
-                            tStringNum++;
-                            tString = "";
+                            tStringNumFileName++;
+                            tStringFileName = "";
                         }
                         else
                         {
-                            tString += tObjectDataString[j];
+                            tStringFileName += tObjectDataString[j];
                         }
                     }
                 }

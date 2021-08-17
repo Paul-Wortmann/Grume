@@ -77,7 +77,6 @@ static void _pathAScalcTile(sMap*& _map, sMapPath& _path, sASTileData*& _pathDat
     // However tile 0 is always a wall tile and cannot be pathed to. ;)
 static bool _pathASinternal(sMap*& _map, sMapPath& _path, sASTileData*& _pathData, std::uint32_t _p, std::uint32_t _t)
 {
-    std::uint32_t tile = _t;
     if (_pathData[_t].a == ePathData::pathEnd)
     {
         _pathData[_t].p = _p;
@@ -85,7 +84,7 @@ static bool _pathASinternal(sMap*& _map, sMapPath& _path, sASTileData*& _pathDat
     }
     if (_pathData[_t].l == ePathData::pathOpen)
         _pathData[_t].l = ePathData::pathClosed;
-    tile = _t + 1;
+    std::uint32_t tile = _t + 1;
     if (tile < _map->numTiles)
         _pathAScalcTile(_map, _path, _pathData, _t, tile);
     tile = _t - 1;

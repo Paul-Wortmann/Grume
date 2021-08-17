@@ -341,10 +341,6 @@ sEntityModel* cMapManager::m_generateFloor(sMap*& _map)
     float32 xStep = 1.0 / (float32)FLOOR_SPRITESHEET_WIDTH;
     float32 yStep = 1.0 / (float32)FLOOR_SPRITESHEET_HEIGHT;
 
-    // The extracted x and y tile positions on the sprite sheet
-    uint32 tileX = 0;
-    uint32 tileY = 0;
-
     uint32 vertextNum = 0;
     for (uint32 z = 0; z < _map->height; ++z) // z
     {
@@ -358,8 +354,8 @@ sEntityModel* cMapManager::m_generateFloor(sMap*& _map)
                 //tileY = (static_cast<uint32>(_map->tile[(z * _map->width) + x].base) - 1) / FLOOR_SPRITESHEET_HEIGHT;
 
                 // Determine the tile location on the spritesheet based on the map tile data
-                tileX = spriteData[tileNum].spriteNumX;
-                tileY = (FLOOR_SPRITESHEET_HEIGHT - 1) - spriteData[tileNum].spriteNumY; // Texture is flipped on load
+                uint32 tileX = spriteData[tileNum].spriteNumX;
+                uint32 tileY = (FLOOR_SPRITESHEET_HEIGHT - 1) - spriteData[tileNum].spriteNumY; // Texture is flipped on load
 
                 // Vertex position generation -> first triangle
                 _map->floor->model->mesh[meshNum].vertex[vertextNum + 0].position.x = static_cast<float32>(x + 1) - xo;

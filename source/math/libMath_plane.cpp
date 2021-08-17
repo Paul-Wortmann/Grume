@@ -23,7 +23,7 @@
 
 #include "libMath.hpp"
 
-vec3 planeLineIntersection(vec3 _planePoint, vec3 _planeNormal, vec3 _linePoint, vec3 _lineDirection)
+vec3 planeLineIntersection(const vec3 &_planePoint, const vec3 &_planeNormal, const vec3 &_linePoint, const vec3 &_lineDirection)
 {
     vec3    ld    = _lineDirection;
     ld.normalize();
