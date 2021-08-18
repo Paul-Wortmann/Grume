@@ -21,31 +21,21 @@
  * @date 2011-11-11
  */
 
-#ifndef GRAPHICS_ENGINE_PARTICLES_HPP
-#define GRAPHICS_ENGINE_PARTICLES_HPP
+#ifndef GRAPHICS_ENGINE_PARTICLE_DEFINE_HPP
+#define GRAPHICS_ENGINE_PARTICLE_DEFINE_HPP
 
 #include "../core/includes.hpp"
-#include "graphics_engine_particle_define.hpp"
 
-class cGraphicsEngineParticles
+struct sParticle
 {
-    public:
-        // Constructors
-        cGraphicsEngineParticles(void) = default;
-        ~cGraphicsEngineParticles(void) = default;
+    glm::vec3 position = glm::vec3(0.0f, 0.0f, 0.0f);
+    glm::vec3 velocity = glm::vec3(0.0f, 0.0f, 0.0f);
+    float32   size     = 0.0f;
+    float32   angle    = 0.0f;
+    float32   weight   = 0.0f;
+    float32   life     = 0.0f;
 
-        // Member functions
-        void     initialize(void);
-        void     terminate(void);
-        void     addParticle(const sParticle &_particle);
-        void     process(const float32 &_dt);
-
-    protected:
-
-    private:
-        std::uint32_t m_numParticles = 100;
-        std::uint32_t m_lastParticle = 0;
-        sParticle*    m_particle     = nullptr;
+    float32   color[3] = { 0.0f, 0.0f, 0.0f };
 };
 
-#endif //GRAPHICS_ENGINE_PARTICLES_HPP
+#endif //GRAPHICS_ENGINE_PARTICLE_DEFINE_HPP

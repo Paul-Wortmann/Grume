@@ -85,6 +85,34 @@ void gLogWrite(const std::uint32_t &_type, const std::string &_string, const std
 
 void gLogWrite(const std::string &_fileName, const std::uint32_t &_type, const std::string &_string, const std::string &_file, const std::uint32_t &_line, const std::string &_function)
 {
+    std::chrono::system_clock::time_point now = std::chrono::system_clock::now();
+    std::time_t now_c = std::chrono::system_clock::to_time_t(now);
+    std::tm now_tm = *std::localtime(&now_c);
+
+    // Year
+    std::string timeString;
+    timeString  = std::to_string(now_tm.tm_year + 1900) + "-";
+
+    // Month
+    timeString += (now_tm.tm_mon < 9) ? "0" : "";
+    timeString += std::to_string(now_tm.tm_mon + 1) + "-";
+
+    // Day
+    timeString += (now_tm.tm_mday < 10) ? "0" : "";
+    timeString += std::to_string(now_tm.tm_mday) + " ";
+
+    // Hour
+    timeString += (now_tm.tm_hour < 10) ? "0" : "";
+    timeString += std::to_string(now_tm.tm_hour) + ":";
+
+    // Minute
+    timeString += (now_tm.tm_min < 10) ? "0" : "";
+    timeString += std::to_string(now_tm.tm_min) + ":";
+
+    // Second
+    timeString += (now_tm.tm_sec < 10) ? "0" : "";
+    timeString += std::to_string(now_tm.tm_sec);
+
     #ifdef DEBUG_LC
         #ifdef __linux__
             switch (_type)
@@ -121,7 +149,7 @@ void gLogWrite(const std::string &_fileName, const std::uint32_t &_type, const s
         #else
             #error Platform not supported
         #endif
-            //std::cout << std::string(_UDATE_()) << " " << std::string(__TIME__);
+            //std::cout << timeString;
             //std::cout << " " << stripPath(_file) << " " << _function << "() " << std::to_string(_line) << " ";
             std::cout << _string << std::endl;
     #endif // DEBUG_LC
@@ -145,7 +173,7 @@ void gLogWrite(const std::string &_fileName, const std::uint32_t &_type, const s
                         outFile << "[UNKNOWN_TYPE] ";
                     break;
                 }
-                outFile << std::string(__TIME__) << " - " << std::string(__DATE__);
+                outFile << timeString;
                 outFile << " - " << stripPath(_file) << " - " << _function << "() - " << std::to_string(_line) << " -> ";
                 outFile << _string << std::endl;
                 outFile.close();
