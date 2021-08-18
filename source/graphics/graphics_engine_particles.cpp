@@ -98,5 +98,21 @@ void cGraphicsEngineParticles::addParticle(const sParticle &_particle)
 
 void cGraphicsEngineParticles::process(const float32 &_dt)
 {
-
+    // Loop throught the particle array
+    for (std::uint32_t i = 0; i < m_numParticles; ++i)
+    {
+        // If particle is alive, continue
+        if (m_particle[i].life > 0.0f)
+        {
+            // Decrese particle life
+            m_particle[i].life -= _dt;
+            
+            // If particle is alive, update
+            if (m_particle[i].life > 0.0f)
+            {
+                m_particle[i].velocity += glm::vec3(0.0f,-9.81f, 0.0f) * _dt * 0.5f;
+                m_particle[i].position += m_particle[i].velocity * _dt;
+            }
+        }
+    }
 }
