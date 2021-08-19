@@ -116,3 +116,8 @@ void cGraphicsEngineParticles::process(const float32 &_dt)
         }
     }
 }
+
+void cGraphicsEngineParticles::render(const float32 &_dt)
+{
+    
+}

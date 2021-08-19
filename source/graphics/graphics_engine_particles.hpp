@@ -39,6 +39,7 @@ class cGraphicsEngineParticles
         void     terminate(void);
         void     addParticle(const sParticle &_particle);
         void     process(const float32 &_dt);
+        void     render(const float32 &_dt);
 
     protected:
 
