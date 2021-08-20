@@ -167,7 +167,8 @@ uint32 cGraphicsEngine::initialize(void)
             glfwSetMouseButtonCallback(m_window, sm_glfwMouseButtonCallback);
             glfwSetFramebufferSizeCallback(m_window, sm_glfwFramebufferSizeCallback);
             //glfwSetInputMode(m_window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
-
+            glfwSetCursorPos(m_window, m_window_w/2, m_window_h/2);
+            
             // OpenGL ----------------------------------
             glfwSwapInterval(1);
             //glClearColor(0.3f, 0.3f, 0.9f, 1.0f);
