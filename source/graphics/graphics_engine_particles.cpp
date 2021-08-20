@@ -33,30 +33,6 @@ void cGraphicsEngineParticles::initialize(void)
     }
     // Create the particle array
     m_particle = new sParticle[m_numParticles];
-
-    // Vertices for all particles.
-    static const float32 vertex_buffer_data[] =
-    {
-        -0.5f, -0.5f, 0.0f,
-         0.5f, -0.5f, 0.0f,
-        -0.5f,  0.5f, 0.0f,
-         0.5f,  0.5f, 0.0f,
-    };
-    
-    // Vertex buffer
-    glGenBuffers(1, &m_vbo_vertex);
-    glBindBuffer(GL_ARRAY_BUFFER, m_vbo_vertex);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(vertex_buffer_data), vertex_buffer_data, GL_STATIC_DRAW);
-
-    // Position and size buffer
-    glGenBuffers(1, &m_vbo_position);
-    glBindBuffer(GL_ARRAY_BUFFER, m_vbo_position);
-    glBufferData(GL_ARRAY_BUFFER, m_numParticles * 4 * sizeof(float32), NULL, GL_STREAM_DRAW);
-
-    // Color buffer
-    glGenBuffers(1, &m_vbo_color);
-    glBindBuffer(GL_ARRAY_BUFFER, m_vbo_color);
-    glBufferData(GL_ARRAY_BUFFER, m_numParticles * 4 * sizeof(GLubyte), NULL, GL_STREAM_DRAW);
 }
 
 void cGraphicsEngineParticles::terminate(void)
@@ -139,9 +115,4 @@ void cGraphicsEngineParticles::process(const float32 &_dt)
             }
         }
     }
-}
-
-void cGraphicsEngineParticles::render(const float32 &_dt)
-{
-    
 }

@@ -39,7 +39,9 @@ class cGraphicsEngineParticles
         void     terminate(void);
         void     addParticle(const sParticle &_particle);
         void     process(const float32 &_dt);
-        void     render(const float32 &_dt);
+        
+        // Getters
+        std::uint32_t getNumParticles(void) { return m_numParticles; };
 
     protected:
 
@@ -47,11 +49,6 @@ class cGraphicsEngineParticles
         std::uint32_t m_numParticles = 100;
         std::uint32_t m_lastParticle = 0;
         sParticle*    m_particle     = nullptr;
-        
-        // GPU
-        std::uint32_t m_vbo_vertex   = 0;
-        std::uint32_t m_vbo_position = 0;
-        std::uint32_t m_vbo_color    = 0;
 };
 
 #endif //GRAPHICS_ENGINE_PARTICLES_HPP

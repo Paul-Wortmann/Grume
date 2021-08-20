@@ -116,7 +116,6 @@ class cGraphicsEngine
         cGraphicsEngineLightManager m_lightManager;
         sGraphicsEnginePointLight*  m_playerLight = nullptr;
 
-
         // Render pipeline stage: Basic
         // graphics_engine_pipeline_basic.cpp
         void m_pb_initialize(void);
@@ -200,6 +199,17 @@ class cGraphicsEngine
         uint32                m_p3_loc_materialShininess                   = 0;
 
         uint32                m_p3_loc_farPlane                            = 0;
+
+        // Render pipeline stage 4 (particles)
+        // graphics_engine_pipeline_4.cpp
+        void m_p4_initialize(void);
+        void m_p4_terminate(void);
+        void m_p4_render(void);
+        cGraphicsEngineShader m_p4_shader                                  = {};
+        uint32                m_p4_VAO                                     = 0;
+        std::uint32_t         m_p4_vbo_vertex                              = 0;
+        std::uint32_t         m_p4_vbo_position                            = 0;
+        std::uint32_t         m_p4_vbo_color                               = 0;
 
         // Render pipeline stage UI
         // Take in the final scene render as a texture and renders
