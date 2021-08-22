@@ -42,6 +42,7 @@ class cGraphicsEngineParticles
         
         // Getters
         std::uint32_t getNumParticles(void) { return m_numParticles; };
+        sParticle*    getParticles(void) { return m_particle; };
 
     protected:
 

@@ -204,6 +204,7 @@ class cGraphicsEngine
         // graphics_engine_pipeline_4.cpp
         void m_p4_initialize(void);
         void m_p4_terminate(void);
+        void m_p4_update(void);
         void m_p4_render(void);
         cGraphicsEngineShader m_p4_shader                                  = {};
         uint32                m_p4_VAO                                     = 0;

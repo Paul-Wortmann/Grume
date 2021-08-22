@@ -35,7 +35,7 @@ struct sParticle
     float32   weight   = 0.0f;
     float32   life     = 0.0f;
 
-    float32   color[3] = { 0.0f, 0.0f, 0.0f };
+    float32   color[4] = { 0.0f, 0.0f, 0.0f, 0.0f };
 };
 
 #endif //GRAPHICS_ENGINE_PARTICLE_DEFINE_HPP

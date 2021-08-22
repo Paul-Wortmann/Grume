@@ -61,6 +61,15 @@ void cGraphicsEngine::m_p4_initialize(void)
     glBindVertexArray(0);
 };
 
+void cGraphicsEngine::m_p4_update(void)
+{
+    glm::vec4 positionsize[m_particleEngine.getNumParticles()];
+    glm::vec4 color[m_particleEngine.getNumParticles()];
+    
+    
+    
+};
+
 void cGraphicsEngine::m_p4_terminate(void)
 {
     m_p4_shader.terminate();
