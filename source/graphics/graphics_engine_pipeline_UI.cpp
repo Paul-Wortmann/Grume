@@ -86,7 +86,7 @@ void cGraphicsEngine::m_pui_render(void)
     glBindTexture(GL_TEXTURE_2D, m_p3_renderTextureID);
     glBindVertexArray(m_pui_VAO);
     glDrawArrays(GL_TRIANGLES, 0, 6);
-
+/*
     // Render UI components
     glm::vec3 tPosition = glm::vec3(0.0f, 0.0f, 0.0f);
     for(m_UITemp = m_UIHead; m_UITemp != nullptr; m_UITemp = m_UITemp->next)
@@ -107,4 +107,5 @@ void cGraphicsEngine::m_pui_render(void)
             glDrawArrays(GL_TRIANGLES, 0, 6);
         }
     }
+*/
 }

@@ -61,6 +61,7 @@ class cGraphicsEngine
         void      setCameraPosition(glm::vec3 _position) { m_camera.setPosition(_position); };
         float32   getAspectRatio(void) { return m_aspectRatio; };
         void      addScreenShake(const float32 &_st, const float32 &_sf) { m_camera.addScreenShake(_st, _sf); }
+        void      setParticleTextureID(const uint32 &_tid) { m_p4_particleTextureID = _tid; }
         void      setLoadTextureID(const uint32 &_tid) { m_pls_renderTextureID = _tid; }
         void      setLoading(const bool &_b) { m_loadRender = _b; }
 
@@ -76,30 +77,30 @@ class cGraphicsEngine
         void               m_initUIComponents(void);
 
         // Entity management
-        sEntity*      m_entityHead         = nullptr;
-        sEntity*      m_entityTemp         = nullptr;
+        sEntity*        m_entityHead         = nullptr;
+        sEntity*        m_entityTemp         = nullptr;
 
         // UI component management
-        sUIComponent* m_UIHead             = nullptr;
-        sUIComponent* m_UITemp             = nullptr;
+        sUIComponent*   m_UIHead             = nullptr;
+        sUIComponent*   m_UITemp             = nullptr;
 
         // General
-        GLFWwindow*   m_window             = nullptr;
-        bool          m_windowClosed       = false;
-        std::string   m_windowTitle        = "Grume";
-        uint32        m_window_w           = 1920;
-        uint32        m_window_h           = 1024;
-        float32       m_aspectRatio        = static_cast<float32>(m_window_w) / static_cast<float32>(m_window_h);
-        uint32        m_fieldOfView        = 45;
-        bool          m_fullscreen         = false;
-        int32         m_framebufferSize_w  = 0;
-        int32         m_framebufferSize_h  = 0;
-        uint32        m_renderBufferSize_w = 1024;
-        uint32        m_renderBufferSize_h = 1024;
-        bool          m_wireframe          = false;
-        bool          m_basicRender        = false;
-        bool          m_loadRender         = true;
-        bool          m_animation          = true;
+        GLFWwindow*     m_window             = nullptr;
+        bool            m_windowClosed       = false;
+        std::string     m_windowTitle        = "Grume";
+        uint32          m_window_w           = 1920;
+        uint32          m_window_h           = 1024;
+        float32         m_aspectRatio        = static_cast<float32>(m_window_w) / static_cast<float32>(m_window_h);
+        uint32          m_fieldOfView        = 45;
+        bool            m_fullscreen         = false;
+        int32           m_framebufferSize_w  = 0;
+        int32           m_framebufferSize_h  = 0;
+        uint32          m_renderBufferSize_w = 1024;
+        uint32          m_renderBufferSize_h = 1024;
+        bool            m_wireframe          = false;
+        bool            m_basicRender        = false;
+        bool            m_loadRender         = true;
+        bool            m_animation          = true;
         
         // Particles
         cGraphicsEngineParticles m_particleEngine;
@@ -207,10 +208,18 @@ class cGraphicsEngine
         void m_p4_update(void);
         void m_p4_render(void);
         cGraphicsEngineShader m_p4_shader                                  = {};
+        uint32                m_p4_particleCount                           = 0;
         uint32                m_p4_VAO                                     = 0;
         std::uint32_t         m_p4_vbo_vertex                              = 0;
         std::uint32_t         m_p4_vbo_position                            = 0;
         std::uint32_t         m_p4_vbo_color                               = 0;
+        
+        std::uint32_t         m_p4_particleTextureID                       = 0;
+        
+        uint32                m_p4_loc_cameraRight                         = 0;
+        uint32                m_p4_loc_cameraUp                            = 0;
+        uint32                m_p4_loc_VP                                  = 0;
+        uint32                m_p4_loc_textureParticle                     = 0;
 
         // Render pipeline stage UI
         // Take in the final scene render as a texture and renders

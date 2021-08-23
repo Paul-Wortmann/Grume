@@ -27,7 +27,14 @@ void cGraphicsEngine::m_p4_initialize(void)
 {
     // Initialize shader
     m_p4_shader.initialize();
-    m_p4_shader.load("4");
+    m_p4_shader.load("4_particles");
+    glUseProgram(m_p4_shader.getID());
+
+    // Get shader uniform locations
+    m_p4_loc_cameraRight     = m_p4_shader.getUniformLocation("cameraRight");
+    m_p4_loc_cameraUp        = m_p4_shader.getUniformLocation("cameraUp");
+    m_p4_loc_VP              = m_p4_shader.getUniformLocation("VP");
+    m_p4_loc_textureParticle = m_p4_shader.getUniformLocation("textureParticle");
 
     // Vertex data for all particles.
     static const float32 vertex_buffer_data[] =
@@ -55,7 +62,7 @@ void cGraphicsEngine::m_p4_initialize(void)
     // Color buffer
     glGenBuffers(1, &m_p4_vbo_color);
     glBindBuffer(GL_ARRAY_BUFFER, m_p4_vbo_color);
-    glBufferData(GL_ARRAY_BUFFER, m_particleEngine.getNumParticles() * 4 * sizeof(GLubyte), NULL, GL_STREAM_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, m_particleEngine.getNumParticles() * 4 * sizeof(float32), NULL, GL_STREAM_DRAW);
 
     // Bind VAO to 0, ie. none
     glBindVertexArray(0);
@@ -63,11 +70,41 @@ void cGraphicsEngine::m_p4_initialize(void)
 
 void cGraphicsEngine::m_p4_update(void)
 {
-    glm::vec4 positionsize[m_particleEngine.getNumParticles()];
-    glm::vec4 color[m_particleEngine.getNumParticles()];
-    
-    
-    
+    // Activate shader
+    glUseProgram(m_p4_shader.getID());
+
+    std::uint32_t numParticles = m_particleEngine.getNumParticles();
+    sParticle*    particles    = m_particleEngine.getParticles();
+    m_p4_particleCount = 0;
+
+    glm::vec4 positionsize[numParticles];
+    glm::vec4 color[numParticles];
+    for (std::uint32_t i = 0; i < numParticles; ++i)
+    {
+        positionsize[i].x = particles[i].position.x;
+        positionsize[i].y = particles[i].position.y;
+        positionsize[i].z = particles[i].position.z;
+        positionsize[i].w = particles[i].size;
+
+        color[i].x = particles[i].color[0];
+        color[i].y = particles[i].color[1];
+        color[i].z = particles[i].color[2];
+        color[i].w = particles[i].color[3];
+        
+        if (particles[i].life > 0.0f)
+        {
+            m_p4_particleCount++;
+        }
+    }
+    m_p4_particleCount = numParticles;
+
+    glBindBuffer(GL_ARRAY_BUFFER, m_p4_vbo_position);
+    glBufferData(GL_ARRAY_BUFFER, numParticles * 4 * sizeof(float32), NULL, GL_STREAM_DRAW);
+    glBufferSubData(GL_ARRAY_BUFFER, 0, m_p4_particleCount * sizeof(float32) * 4, positionsize);
+
+    glBindBuffer(GL_ARRAY_BUFFER, m_p4_vbo_color);
+    glBufferData(GL_ARRAY_BUFFER, numParticles * 4 * sizeof(float32), NULL, GL_STREAM_DRAW);
+    glBufferSubData(GL_ARRAY_BUFFER, 0, m_p4_particleCount * sizeof(float32) * 4, color);
 };
 
 void cGraphicsEngine::m_p4_terminate(void)
@@ -77,14 +114,51 @@ void cGraphicsEngine::m_p4_terminate(void)
 
 void cGraphicsEngine::m_p4_render(void)
 {
-
     // Dont clear the buffers, just draw the particles on top.
 
-    // Setup shader, uniforms
-    //glUseProgram(m_p4_shader.getID());
+    // Update buffer content
+    m_p4_update();
+
+    //glEnable(GL_BLEND);
+    //glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
     // Shader uniforms
+    glm::mat4 viewMatrix = m_camera.getViewMatrix();
+    glm::mat4 projectionMatrix = m_camera.getProjectionMatrix();
+    glm::mat4 VPMatrix = projectionMatrix * viewMatrix;
+    glUniformMatrix4fv(m_p4_loc_VP, 1, GL_FALSE, &VPMatrix[0][0]);
+
+    glUniform3f(m_p4_loc_cameraRight, viewMatrix[0][0], viewMatrix[1][0], viewMatrix[2][0]);
+    glUniform3f(m_p4_loc_cameraUp   , viewMatrix[0][1], viewMatrix[1][1], viewMatrix[2][1]);
 
     // Texture locations
+    glActiveTexture(GL_TEXTURE0);
+    glBindTexture(GL_TEXTURE_2D, m_p4_particleTextureID);
+    glUniform1i(m_p4_loc_textureParticle, GL_TEXTURE0);
+
+    // 1rst attribute buffer : vertices
+    glEnableVertexAttribArray(0);
+    glBindBuffer(GL_ARRAY_BUFFER, m_p4_vbo_vertex);
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, (void*)0);
+    
+    // 2nd attribute buffer : positions of particles' centers
+    glEnableVertexAttribArray(1);
+    glBindBuffer(GL_ARRAY_BUFFER, m_p4_vbo_position);
+    glVertexAttribPointer(1, 4, GL_FLOAT, GL_FALSE, 0, (void*)0);
+
+    // 3rd attribute buffer : particles' colors
+    glEnableVertexAttribArray(2);
+    glBindBuffer(GL_ARRAY_BUFFER, m_p4_vbo_color);
+    glVertexAttribPointer(2, 4, GL_FLOAT, GL_FALSE, 0, (void*)0);
+
+    glVertexAttribDivisor(0, 0);
+    glVertexAttribDivisor(1, 1);
+    glVertexAttribDivisor(2, 1);
+
+    glDrawArraysInstanced(GL_TRIANGLE_STRIP, 0, 4, m_p4_particleCount);
+
+    glDisableVertexAttribArray(0);
+    glDisableVertexAttribArray(1);
+    glDisableVertexAttribArray(2);
 
 }

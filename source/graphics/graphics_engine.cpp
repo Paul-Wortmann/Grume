@@ -443,8 +443,7 @@ void cGraphicsEngine::process(const float32 &_dt)
             m_p3_render();
 
             // 4th render pass: Particles
-            m_p4_update();
-            m_p4_render();
+            //m_p4_render();
 
             // UI render pass: last stage
             m_pui_render();
