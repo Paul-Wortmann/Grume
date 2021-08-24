@@ -72,7 +72,8 @@ void cGraphicsEngine::m_p4_update(void)
 {
     // Activate shader
     glUseProgram(m_p4_shader.getID());
-
+    glBindVertexArray(m_p4_VAO);
+    
     std::uint32_t numParticles = m_particleEngine.getNumParticles();
     sParticle*    particles    = m_particleEngine.getParticles();
     m_p4_particleCount = 0;
