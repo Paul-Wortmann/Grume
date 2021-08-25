@@ -275,6 +275,24 @@ uint32 cGraphicsEngine::initialize(void)
             
             // Initialize particle engine
             m_particleEngine.initialize();
+            
+            // Add some test particles
+            sParticle tParticle;
+            for (std::uint32_t i = 0; i < m_particleEngine.getNumParticles(); ++i)
+            {
+                tParticle.life       = 10000.0f;
+                tParticle.size       = 100.0f;
+                tParticle.position.x = 0.0f;
+                tParticle.position.y = 4.0f;
+                tParticle.position.z = 0.0f;
+
+                tParticle.color[0] = 1.0f;
+                tParticle.color[1] = 1.0f;
+                tParticle.color[2] = 1.0f;
+                tParticle.color[3] = 1.0f;
+                
+                m_particleEngine.addParticle(tParticle);
+            }
         }
         else
         {

@@ -47,7 +47,7 @@ class cGraphicsEngineParticles
     protected:
 
     private:
-        std::uint32_t   m_numParticles      = 100;
+        std::uint32_t   m_numParticles      = 1000;
         std::uint32_t   m_lastParticle      = 0;
         sParticle*      m_particle          = nullptr;
 };
