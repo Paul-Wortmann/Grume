@@ -10,5 +10,5 @@ uniform sampler2D textureParticle;
 
 void main()
 {
-	//fragColor = texture( textureParticle, UV ) * particlecolor;
+	fragColor = texture( textureParticle, UV ) * particlecolor;
 }
