@@ -280,10 +280,10 @@ uint32 cGraphicsEngine::initialize(void)
             sParticle tParticle;
             for (std::uint32_t i = 0; i < m_particleEngine.getNumParticles(); ++i)
             {
-                tParticle.life       = 10000.0f;
+                tParticle.life       = 100000.0f;
                 tParticle.size       = 100.0f;
                 tParticle.position.x = 0.0f;
-                tParticle.position.y = 4.0f;
+                tParticle.position.y = 2.0f;
                 tParticle.position.z = 0.0f;
 
                 tParticle.color[0] = 1.0f;
