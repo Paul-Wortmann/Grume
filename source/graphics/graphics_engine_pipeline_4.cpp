@@ -161,6 +161,7 @@ void cGraphicsEngine::m_p4_render(void)
     glVertexAttribDivisor(1, 1);
     glVertexAttribDivisor(2, 1);
 
+    // Instance render, triangle strip
     glDrawArraysInstanced(GL_TRIANGLE_STRIP, 0, 4, m_p4_particleCount);
 
     glDisableVertexAttribArray(0);
