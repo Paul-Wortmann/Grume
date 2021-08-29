@@ -115,7 +115,13 @@ void cGraphicsEngine::m_p4_update(void)
 
 void cGraphicsEngine::m_p4_terminate(void)
 {
+    glDeleteBuffers(1, &m_p4_vbo_vertex);
+    glDeleteBuffers(1, &m_p4_vbo_position);
+    glDeleteBuffers(1, &m_p4_vbo_color);
     m_p4_shader.terminate();
+    glDeleteTextures(1, &m_p4_particleTextureID);
+    glDeleteVertexArrays(1, &m_p4_VAO);
+
 };
 
 void cGraphicsEngine::m_p4_render(void)
@@ -167,5 +173,4 @@ void cGraphicsEngine::m_p4_render(void)
     glDisableVertexAttribArray(0);
     glDisableVertexAttribArray(1);
     glDisableVertexAttribArray(2);
-
 }
