@@ -138,7 +138,7 @@ void cGraphicsEngine::m_p4_render(void)
     glm::mat4 viewMatrix = m_camera.getViewMatrix();
     glm::mat4 projectionMatrix = m_camera.getProjectionMatrix();
     glm::mat4 VPMatrix = projectionMatrix * viewMatrix;
-    glUniformMatrix4fv(m_p4_loc_VP, 1, GL_FALSE, &VPMatrix[0][0]);
+    glUniformMatrix4fv(m_p4_loc_VP, 1, GL_FALSE, glm::value_ptr(VPMatrix));
 
     glUniform3f(m_p4_loc_cameraRight, viewMatrix[0][0], viewMatrix[1][0], viewMatrix[2][0]);
     glUniform3f(m_p4_loc_cameraUp   , viewMatrix[0][1], viewMatrix[1][1], viewMatrix[2][1]);

@@ -296,4 +296,6 @@ void cGraphicsEngine::m_p3_render(void)
             }
         }
     }
+    
+    // Particles
 };

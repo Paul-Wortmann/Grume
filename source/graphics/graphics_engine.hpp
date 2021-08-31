@@ -154,22 +154,22 @@ class cGraphicsEngine
         void m_p2_initialize(void);
         void m_p2_terminate(void);
         void m_p2_render(void);
-        cGraphicsEngineShader m_p2_shader                           = {};
-        std::uint32_t         m_p2_fbo[MAX_POINT_LIGHTS]            = {};
-        float32               m_p2_aspectRatio                      = 1.0f;
-        std::uint32_t         m_p2_depthCubemapID[MAX_POINT_LIGHTS] = {};
-        float32               m_p2_nearPlane                        = 0.1f;
-        float32               m_p2_farPlane                         = 25.0f;
-        glm::vec3             m_p2_lightPosition                    = glm::vec3(0.0f, 0.0f, 0.0f);
-        glm::mat4             m_p2_depthMatrix[6]                   = {};
-        glm::mat4             m_p2_depthProjectionMatrix            = glm::mat4(1);
+        cGraphicsEngineShader m_p2_shader                                  = {};
+        std::uint32_t         m_p2_fbo[MAX_POINT_LIGHTS]                   = {};
+        float32               m_p2_aspectRatio                             = 1.0f;
+        std::uint32_t         m_p2_depthCubemapID[MAX_POINT_LIGHTS]        = {};
+        float32               m_p2_nearPlane                               = 0.1f;
+        float32               m_p2_farPlane                                = 25.0f;
+        glm::vec3             m_p2_lightPosition                           = glm::vec3(0.0f, 0.0f, 0.0f);
+        glm::mat4             m_p2_depthMatrix[6]                          = {};
+        glm::mat4             m_p2_depthProjectionMatrix                   = glm::mat4(1);
 
-        std::uint32_t         m_p2_loc_modelMatrix                  = 0;
-        std::uint32_t         m_p2_loc_lightPosition                = 0;
-        std::uint32_t         m_p2_loc_farPlane                     = 0;
-        std::uint32_t         m_p2_loc_depthMatrix[6]               = {};
-        std::uint32_t         m_p2_loc_animationEnabled             = 0;
-        std::uint32_t         m_p2_loc_boneMatrix[MAX_BONES]        = {};
+        std::uint32_t         m_p2_loc_modelMatrix                         = 0;
+        std::uint32_t         m_p2_loc_lightPosition                       = 0;
+        std::uint32_t         m_p2_loc_farPlane                            = 0;
+        std::uint32_t         m_p2_loc_depthMatrix[6]                      = {};
+        std::uint32_t         m_p2_loc_animationEnabled                    = 0;
+        std::uint32_t         m_p2_loc_boneMatrix[MAX_BONES]               = {};
 
         // Render pipeline stage 3 (final scene render - lighting)
         // graphics_engine_pipeline_3.cpp
