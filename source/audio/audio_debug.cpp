@@ -25,10 +25,12 @@
 
 uint32_t checkAudioError(void)
 {
-    ALCenum error;
+    ALenum error;
     error = alGetError();
     if (error != AL_NO_ERROR)
+    {
         return error;
+    }
     return AL_NO_ERROR;
 }
 

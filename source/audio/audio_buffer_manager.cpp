@@ -59,7 +59,7 @@ sAudioBuffer* cAudioBufferManager::findAudioBuffer(const std::string &_name)
     {
         if (tBuffer->name.compare(_name) == 0)
         {
-        return tBuffer;
+            return tBuffer;
         }
     }
     return nullptr;
@@ -71,7 +71,7 @@ sAudioBuffer* cAudioBufferManager::findAudioBuffer(uint32_t _ID)
     {
         if (tBuffer->ID == _ID)
         {
-        return tBuffer;
+            return tBuffer;
         }
     }
     return nullptr;
