@@ -26,6 +26,8 @@
 
 #include "../core/includes.hpp"
 
+// A collection of basic functions for working with files
+
 void        fileToString(const std::string &_fileName, std::string &_buffer);
 std::string fileToString(const std::string &_fileName);
 bool        fileExists(const std::string &_fileName);

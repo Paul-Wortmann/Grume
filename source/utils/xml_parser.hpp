@@ -26,6 +26,9 @@
 
 #include "../core/includes.hpp"
 
+// A class to hold an xml file content, and provide helper functions to extract data there from.
+// *This does not cover the full XML specification, but a basic subset needed for this project.
+
 class cXML
 {
     public:
