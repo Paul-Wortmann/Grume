@@ -23,7 +23,9 @@
 
 #include "file_utils.hpp"
 
-
+// A function to read data from a file and copy it to a string
+// Function is called with _filename
+// Returns the string in _buffer
 void fileToString(const std::string &_fileName, std::string &_buffer)
 {
     std::ifstream file;
@@ -41,6 +43,9 @@ void fileToString(const std::string &_fileName, std::string &_buffer)
     }
 }
 
+// A function to read data from a file and return it as a string
+// Function is called with _filename
+// Returns a string
 std::string fileToString(const std::string &_fileName)
 {
     std::ifstream fileStream(_fileName, std::ios::in);
@@ -64,6 +69,9 @@ std::string fileToString(const std::string &_fileName)
     return nullptr;
 }
 
+// A function to check weather a file exists
+// Function is called with _filename
+// Returns a bool
 bool fileExists(const std::string &_fileName)
 {
     std::ifstream fileIn(_fileName.c_str());
@@ -75,6 +83,10 @@ bool fileExists(const std::string &_fileName)
     return false;
 }
 
+// A function to read data from a file and copy it to a unsigned char vector
+// Function is called with _filename
+// Returns the data in _buffer
+// Returns a bool to indicate success or failure
 bool re_fileToBufferV(const std::string &_fileName, std::vector<unsigned char> &_buffer)
 {
     std::fstream fileStream(_fileName.c_str(), std::ios::in | std::ios::binary);
@@ -94,6 +106,9 @@ bool re_fileToBufferV(const std::string &_fileName, std::vector<unsigned char> &
     return true;
 }
 
+// A function to return a file's extention
+// Function is called with _filename
+// Returns the data as a string
 std::string fileExtention(const std::string &_fileName)
 {
     const char16_t marker = '.';
@@ -119,6 +134,9 @@ std::string fileExtention(const std::string &_fileName)
     return returnString;
 }
 
+// A function to remove a files path and return only the file's name and extention
+// Function is called with _filename
+// Returns the data as a string
 std::string stripPath(const std::string &_fileName)
 {
     const char16_t marker = '/';
