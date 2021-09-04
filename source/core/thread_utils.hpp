@@ -27,6 +27,8 @@
 #include <cstdint>
 #include <thread>
 
-void gThreadSleep(std::uint32_t _us);
+// A collection of basic functions for working with threads
+
+void gThreadSleep(const std::uint32_t &_us);
 
 #endif // THREAD_UTILS_HPP

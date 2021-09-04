@@ -23,13 +23,13 @@
 
 #include "graphics_engine.hpp"
 
-// GLFW error callback
+// GLFW Error callback
 void cGraphicsEngine::sm_glfwErrorCallback(int32 _error, const char* _description)
 {
     gLogWrite(LOG_ERROR, " " + std::to_string(_error) + ": "+ std::string(_description), __FILE__, __LINE__, __FUNCTION__);
 }
 
-// GLFW key io callback
+// GLFW Key io callback
 void cGraphicsEngine::sm_glfwKeyCallback(GLFWwindow* _window, int32 _key, int32 _scancode, int32 _action, int32 _mods)
 {
     cGraphicsEngine *graphicsEngine = static_cast<cGraphicsEngine*>(glfwGetWindowUserPointer(_window));
