@@ -33,9 +33,6 @@ void cGameEngine::run(const std::uint32_t &_argc, char** _argv)
     std::string GRUMECompile = __DATE__; GRUMECompile += " - "; GRUMECompile += __TIME__;
     gLogWrite(LOG_INFO, "Compile details: " + GRUMECompile, __FILE__, __LINE__, __FUNCTION__);
 
-    // Start the game engine timer.
-    timer.initialize();
-
     // Initialize game subsystems
     initialize(_argc, _argv);
     
@@ -117,6 +114,9 @@ void cGameEngine::initialize(const std::uint32_t &_argc, char** _argv)
     {
         m_state = eGameState::shutdown;
     }
+
+    // Start the game engine timer.
+    timer.initialize();
 }
 
 void cGameEngine::terminate(void)
