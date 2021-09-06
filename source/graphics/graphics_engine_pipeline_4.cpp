@@ -70,10 +70,6 @@ void cGraphicsEngine::m_p4_initialize(void)
 
 void cGraphicsEngine::m_p4_update(void)
 {
-    // Activate shader
-    glUseProgram(m_p4_shader.getID());
-    glBindVertexArray(m_p4_VAO);
-    
     std::uint32_t numParticles = m_particleEngine.getNumParticles();
     sParticle*    particles    = m_particleEngine.getParticles();
 
@@ -115,20 +111,28 @@ void cGraphicsEngine::m_p4_update(void)
 
 void cGraphicsEngine::m_p4_terminate(void)
 {
+    // Textures
+    glDeleteTextures(1, &m_p4_particleTextureID);
+
+    // Buffers
     glDeleteBuffers(1, &m_p4_vbo_vertex);
     glDeleteBuffers(1, &m_p4_vbo_position);
     glDeleteBuffers(1, &m_p4_vbo_color);
-    m_p4_shader.terminate();
-    glDeleteTextures(1, &m_p4_particleTextureID);
+
+    // VAO
     glDeleteVertexArrays(1, &m_p4_VAO);
 
+    // Shader
+    m_p4_shader.terminate();
 };
 
 void cGraphicsEngine::m_p4_render(void)
 {
-    // Dont clear the buffers, just draw the particles on top.
-
-    // Update buffer content
+    // Activate shader
+    glUseProgram(m_p4_shader.getID());
+    glBindVertexArray(m_p4_VAO);
+    
+    // Update buffer content (Make sure to use the shader program prior)
     m_p4_update();
 
     //glEnable(GL_BLEND);

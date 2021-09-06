@@ -77,7 +77,7 @@ void cGraphicsEngine::m_pls_render(void)
     // Shader uniforms
 
     // Texture locations
-    glUniform1i(m_pls_loc_diffuseMap,   0);
+    glUniform1i(m_pls_loc_diffuseMap, GL_TEXTURE0);
 
     // Render previous stage texture as background
     glActiveTexture(GL_TEXTURE0);

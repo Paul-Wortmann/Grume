@@ -67,6 +67,10 @@ uint32 cGraphicsEngineShader::load(const std::string &_fileName)
             gLogWrite(LOG_ERROR, std::string(shaderLog), __FILE__, __LINE__, __FUNCTION__);
         }
     }
+    else
+    {
+        gLogWrite(LOG_ERROR, "No vertex shader found: " + file_vs, __FILE__, __LINE__, __FUNCTION__);
+    }
 
     // Geometry shader
     GLuint geomShader = 0;
@@ -98,6 +102,10 @@ uint32 cGraphicsEngineShader::load(const std::string &_fileName)
             gLogWrite(LOG_ERROR, std::string(shaderLog), __FILE__, __LINE__, __FUNCTION__);
         }
     }
+    else
+    {
+        gLogWrite(LOG_INFO, "No geometry shader found: " + file_gs, __FILE__, __LINE__, __FUNCTION__);
+    }
 
     // Fragment shader
     GLuint fragShader = 0;
@@ -128,6 +136,10 @@ uint32 cGraphicsEngineShader::load(const std::string &_fileName)
             gLogWrite(LOG_ERROR, "Error in shader: " + file_fs, __FILE__, __LINE__, __FUNCTION__);
             gLogWrite(LOG_ERROR, std::string(shaderLog), __FILE__, __LINE__, __FUNCTION__);
         }
+    }
+    else
+    {
+        gLogWrite(LOG_ERROR, "No fragment shader found: " + file_fs, __FILE__, __LINE__, __FUNCTION__);
     }
 
     // Shader program

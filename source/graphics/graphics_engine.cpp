@@ -326,9 +326,11 @@ void cGraphicsEngine::terminate(void)
                 glBindBuffer(GL_ARRAY_BUFFER, 0);
                 glDeleteBuffers(1, &m_entityTemp->model->mesh[i].VBO_vertices);
                 glDeleteBuffers(1, &m_entityTemp->model->mesh[i].VBO_bones);
+                
                 // IBO
                 glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
                 glDeleteBuffers(1, &m_entityTemp->model->mesh[i].IBO);
+                
                 // VAO
                 glBindVertexArray(0);
                 glDeleteVertexArrays(1, &m_entityTemp->model->mesh[i].VAO);
