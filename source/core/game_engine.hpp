@@ -42,7 +42,7 @@
 class cGameEngine
 {
     public:
-        void run(const std::uint32_t &_argc, char** _argv);
+        std::uint32_t run(const std::uint32_t &_argc, char** _argv);
 
     protected:
 
@@ -69,9 +69,9 @@ class cGameEngine
         cUIManager       uiManager;
        
         // game_engine.cpp
-        void initialize(const std::uint32_t &_argc, char** _argv);
-        void terminate(void);
-        void process(void);
+        std::uint32_t initialize(const std::uint32_t &_argc, char** _argv);
+        void          terminate(void);
+        void          process(void);
 
         // game_load.cpp
         void load(void);

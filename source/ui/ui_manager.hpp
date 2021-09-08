@@ -43,7 +43,6 @@ class cUIManager : public tcLinkedList<sUIComponent>
 
         void m_freeAll(void);
         void m_freeData(sUIComponent*& _pointer);
-
 };
 
 #endif //UI_MANAGER_HPP

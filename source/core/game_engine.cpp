@@ -23,7 +23,7 @@
 
 #include "game_engine.hpp"
 
-void cGameEngine::run(const std::uint32_t &_argc, char** _argv)
+std::uint32_t cGameEngine::run(const std::uint32_t &_argc, char** _argv)
 {
     // Clear the log and log version information.
     gLogClear();
@@ -34,7 +34,7 @@ void cGameEngine::run(const std::uint32_t &_argc, char** _argv)
     gLogWrite(LOG_INFO, "Compile details: " + GRUMECompile, __FILE__, __LINE__, __FUNCTION__);
 
     // Initialize game subsystems
-    initialize(_argc, _argv);
+    uint32 status = initialize(_argc, _argv);
     
     // Enter the main loop
     while (m_state == eGameState::active)
@@ -42,9 +42,10 @@ void cGameEngine::run(const std::uint32_t &_argc, char** _argv)
         process();
     }
     terminate();
+    return status;
 }
 
-void cGameEngine::initialize(const std::uint32_t &_argc, char** _argv)
+std::uint32_t cGameEngine::initialize(const std::uint32_t &_argc, char** _argv)
 {
     // Load the config file first
     gameConfig.load();
@@ -117,6 +118,7 @@ void cGameEngine::initialize(const std::uint32_t &_argc, char** _argv)
 
     // Start the game engine timer.
     timer.initialize();
+    return EXIT_SUCCESS;
 }
 
 void cGameEngine::terminate(void)

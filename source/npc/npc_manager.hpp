@@ -49,6 +49,7 @@ class cNPCManager
         sEntity*        m_entityHead    = nullptr;
         sEntity*        m_entityTemp    = nullptr;
         sEntity*        m_entityPlayer  = nullptr;
+        
         cGameDatabase*  m_gameDatabase  = nullptr;
         sMap*           m_mapPointer    = nullptr;
 
