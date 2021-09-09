@@ -44,10 +44,10 @@ struct sMapRoom
 {
     eMapRoomType  type    =  eMapRoomType::roomTypeNone;
     bool          p       =  false; // processed flag
-    std::uint32_t posXMin =  0;
-    std::uint32_t posXMax =  0;
-    std::uint32_t posYMin =  0;
-    std::uint32_t posYMax =  0;
+    std::uint32_t posXMin =  0; // room min x, lowest tile number
+    std::uint32_t posXMax =  0; // room max x, highest tile number
+    std::uint32_t posYMin =  0; // room min y, lowest tile number
+    std::uint32_t posYMax =  0; // room max y, highest tile number
     std::uint32_t x       =  0; // x position
     std::uint32_t y       =  0; // y position
     std::uint32_t w       =  0; // room width

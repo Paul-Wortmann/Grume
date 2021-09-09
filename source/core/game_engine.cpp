@@ -118,7 +118,7 @@ std::uint32_t cGameEngine::initialize(const std::uint32_t &_argc, char** _argv)
 
     // Start the game engine timer.
     timer.initialize();
-    return EXIT_SUCCESS;
+    return status;
 }
 
 void cGameEngine::terminate(void)

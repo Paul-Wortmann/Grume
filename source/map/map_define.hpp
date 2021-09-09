@@ -30,6 +30,7 @@
 #include "../core/includes.hpp"
 #include "../entity/entity_define.hpp"
 
+// These are the dimentions, in sprites, used for the floor texture.
 #define FLOOR_SPRITESHEET_WIDTH  4
 #define FLOOR_SPRITESHEET_HEIGHT 4
     
@@ -45,7 +46,7 @@ enum class eSpriteType : std::uint16_t
 
 struct sMapSpriteTile
 {
-    eSpriteType   type       = eSpriteType::tileFloor;
+    eSpriteType   type       = eSpriteType::tileFloor; // Default == eSpriteType::tileFloor
     std::uint32_t processed  = 0; // Default == 0
     std::uint32_t spriteNumX = 0; // Default == 0
     std::uint32_t spriteNumY = 0; // Default == 0
@@ -87,12 +88,12 @@ enum class eMapEventType : std::uint32_t
 
 struct sMapEvent
 {
-    eMapEventType type      = eMapEventType::eventTypeNone;
-    std::uint32_t tile      = 0; // The tile that triggers the event
-    std::uint32_t data_1    = 0;
-    std::uint32_t data_2    = 0;
-    std::uint32_t data_3    = 0;
-    bool          triggered = false;
+    eMapEventType type      = eMapEventType::eventTypeNone; // Default == eMapEventType::eventTypeNone
+    std::uint32_t tile      = 0; // The tile that triggers the event, default == 0
+    std::uint32_t data_1    = 0; // Default == 0
+    std::uint32_t data_2    = 0; // Default == 0
+    std::uint32_t data_3    = 0; // Default == 0
+    bool          triggered = false; // Default == false
 };
 
 struct sMapPortal
@@ -111,7 +112,7 @@ struct sMap
     // Infomation
     std::string    name              = "";
     std::string    fileName          = "";
-    float32        terrainHeight     = -1.0f;
+    float32        terrainHeight     = -1.0f; // Default == -1.0f
 
     // Player start information
     std::uint32_t  playerStartPortal = 0;

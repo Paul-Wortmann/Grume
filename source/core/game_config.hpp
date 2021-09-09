@@ -40,6 +40,8 @@ class cGameConfig
     private:
     public:
         // These should all be set to low default values
+        // The graphics engine will use the display's native resolution when fullscreen,
+        // and will use the closest valid resolution to these values when not.
         
         // Graphics
         std::uint32_t m_resolution_x = 1920;
