@@ -29,13 +29,13 @@
 // ----- used externally -----
 struct sMapPath
 {
-    std::uint32_t  startTile       = 0;
-    std::uint32_t  destinationTile = 0;
-    std::uint32_t  currentTile     = 0;
-    std::uint32_t  currentPosition = 0;
+    std::uint32_t  startTile       = 0; // Start tile
+    std::uint32_t  destinationTile = 0; // Destination tile
+    std::uint32_t  currentTile     = 0; // Current tile
+    std::uint32_t  currentPosition = 0; // Current destination position in path[]
 
-    std::uint32_t  pathLength      = 0;
-    std::uint32_t* path            = nullptr;
+    std::uint32_t  pathLength      = 0;       // Length in tiles
+    std::uint32_t* path            = nullptr; // Holds tile numbers of the path
 };
 
 // ----- used internally -----
