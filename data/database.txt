@@ -8,4 +8,5 @@
     <object_database>object_database.txt</object_database>
     <skills_database>skills_database.txt</skills_database>
     <sound_database>sound_database.txt</sound_database>
+    <ui_database>ui_database.txt</ui_database>
 </database>

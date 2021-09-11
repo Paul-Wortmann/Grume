@@ -51,6 +51,7 @@ class cGameDatabase
         sGameDatabaseData object     = {};
         sGameDatabaseData skills     = {};
         sGameDatabaseData sound      = {};
+        sGameDatabaseData ui         = {};
 };
 
 #endif // GAME_DATABASE_HPP

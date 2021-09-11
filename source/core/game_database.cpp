@@ -44,6 +44,7 @@ void cGameDatabase::load(const std::string &_fileName)
         object.fileName      = xmlFile.getString("<object_database>");
         skills.fileName      = xmlFile.getString("<skills_database>");
         sound.fileName       = xmlFile.getString("<sound_database>");
+        ui.fileName          = xmlFile.getString("<ui_database>");
         
         // Clean up
         xmlFile.free();
