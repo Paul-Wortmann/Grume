@@ -289,9 +289,9 @@ template<class T> class tcLinkedList
 
     private:
         uint32 m_count = 0;
-        T* m_head = nullptr;
-        T* m_tail = nullptr;
-        T* m_temp = nullptr;
+        T*     m_head  = nullptr;
+        T*     m_tail  = nullptr;
+        T*     m_temp  = nullptr;
 };
 
 #endif // LINKED_LIST_HPP

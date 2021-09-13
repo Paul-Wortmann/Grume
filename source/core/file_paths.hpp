@@ -40,5 +40,6 @@
 #define FILE_PATH_SKILLS     "data/skills/"
 #define FILE_PATH_SOUND      "data/sound/"
 #define FILE_PATH_TEXTURE    "data/texture/"
+#define FILE_PATH_UI         "data/ui/"
 
 #endif //FILE_PATHS_HPP

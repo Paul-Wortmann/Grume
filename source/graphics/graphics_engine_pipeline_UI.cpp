@@ -100,7 +100,7 @@ void cGraphicsEngine::m_pui_render(void)
         {
             // Texture
             glActiveTexture(GL_TEXTURE0);
-            glBindTexture(GL_TEXTURE_2D, m_UITemp->normalTexture->ID);
+            glBindTexture(GL_TEXTURE_2D, m_UITemp->textureNormal->ID);
 
             // VAO
             glBindVertexArray(m_pui_VAO);

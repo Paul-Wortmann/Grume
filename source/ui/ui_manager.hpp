@@ -24,6 +24,7 @@
 #ifndef UI_MANAGER_HPP
 #define UI_MANAGER_HPP
 
+#include "../core/game_database.hpp"
 #include "../core/includes.hpp"
 #include "../core/linked_list.hpp"
 #include "ui_defines.hpp"

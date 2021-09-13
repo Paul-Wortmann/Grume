@@ -48,10 +48,9 @@ struct sUIComponent
     // Graphics
     sEntityModel*    model         = nullptr;
     glm::mat4        modelMatrix   = glm::mat4(1);
-    sEntityTexture*  normalTexture = nullptr;
-    sEntityTexture*  hoverTexture  = nullptr;
-    sEntityTexture*  activeTexture = nullptr;
-
+    sEntityTexture*  textureNormal = nullptr;
+    sEntityTexture*  textureHover  = nullptr;
+    sEntityTexture*  textureActive = nullptr;
 };
 
 #endif //UI_HPP
