@@ -21,7 +21,6 @@
  * @date 2011-11-11
  */
 
-
 #ifndef AUDIO_ENGINE_WAV_HPP
 #define AUDIO_ENGINE_WAV_HPP
 

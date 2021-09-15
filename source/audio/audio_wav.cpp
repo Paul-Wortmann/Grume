@@ -21,7 +21,6 @@
  * @date 2011-11-11
  */
 
-
 #include "audio_wav.hpp"
 
 void loadWav(const std::string &_fileName, sAudioData *_audioData)

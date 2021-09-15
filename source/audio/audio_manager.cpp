@@ -110,12 +110,9 @@ void cAudioManager::setAudioBufferName(uint32_t _ID, const std::string &_name)
 
 void cAudioManager::process(float32 _dt)
 {
-
-
     sAudioSource *tSource = m_sourceManager.getHead();
     for (; tSource != nullptr; tSource = tSource->next)
     {
         alGetSourcei(tSource->ID, AL_SOURCE_STATE, &tSource->state);
     }
-
 }

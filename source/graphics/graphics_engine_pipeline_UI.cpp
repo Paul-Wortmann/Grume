@@ -75,14 +75,14 @@ void cGraphicsEngine::m_pui_render(void)
     glUseProgram(m_pui_shader.getID());
 
     // Shader uniforms
-
-    // Texture locations
-    glUniform1i(m_pui_loc_diffuseMap,   0);
-
-    // Render previous stage texture as background
     m_pui_modelMatrix = glm::mat4(1);
     glUniformMatrix4fv(m_pui_loc_modelMatrix, 1, GL_FALSE, glm::value_ptr(m_pui_modelMatrix));
+
+    // Texture locations
+    glUniform1i(m_pui_loc_diffuseMap, GL_TEXTURE0);
     glActiveTexture(GL_TEXTURE0);
+
+    // Render previous stage texture as background
     glBindTexture(GL_TEXTURE_2D, m_p3_renderTextureID);
     glBindVertexArray(m_pui_VAO);
     glDrawArrays(GL_TRIANGLES, 0, 6);

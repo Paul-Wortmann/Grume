@@ -21,7 +21,6 @@
  * @date 2011-11-11
  */
 
-
 #ifndef AUDIO_SOURCE_MANAGER_HPP
 #define AUDIO_SOURCE_MANAGER_HPP
 
