@@ -30,12 +30,15 @@ void cPhysicsManager::initialize(void)
 
 void cPhysicsManager::terminate(void)
 {
-    
+    m_freeAll();    
 }
 
 void cPhysicsManager::m_freeAll(void)
 {
-    
+    for (sPhysicsObject* temp = getHead(); temp != nullptr; temp = temp->next)
+    {
+        m_freeData(temp);
+    }
 }
 
 void cPhysicsManager::m_freeData(sPhysicsObject*& _object)
