@@ -104,7 +104,9 @@ void cAudioManager::setAudioBufferName(uint32_t _ID, const std::string &_name)
 {
     sAudioBuffer* tB = m_bufferManager.findAudioBuffer(_ID);
     if (tB == nullptr)
+    {
         return;
+    }
     tB->name = _name;
 }
 
