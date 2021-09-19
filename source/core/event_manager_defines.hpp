@@ -28,17 +28,28 @@
 #include "includes.hpp"
 #include "template_manager.hpp"
 
+
 enum class eEventType : std::uint32_t { eventType_none = 0};
+
+struct sEventData
+{
+    union
+    {
+        float         x, y, z, w;
+        std::uint32_t data[4];
+    };
+};
 
 struct sEvent
 {
     eEventType    eventType = eEventType::eventType_none;
     std::uint32_t eventID   = 0;
+    sEventData    eventDate = {};
 };
 
 struct sEventPool
 {
-    static const std::int32_t eventCount        = 10;
+    static const std::int32_t eventCount        = 32;
     std::int32_t              eventCurrent      = 0;
     sEvent                    event[eventCount] = {};
 };
