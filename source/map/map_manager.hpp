@@ -182,6 +182,7 @@ class cMapManager : public tcLinkedList<sMap>
         void          m_generateMap_C1(sMap*& _map);
         
         // map_generate_C2.cpp
+        void          m_genC2_internal(sMap*& _map);
         void          m_generateMap_C2(sMap*& _map);
         
         // map_generate_D1.cpp
