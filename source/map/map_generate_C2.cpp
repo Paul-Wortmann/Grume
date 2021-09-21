@@ -50,7 +50,7 @@ void cMapManager::m_generateMap_C2(sMap*& _map)
     if (seeded)
     {
         srand (_map->genData.seed);
-        m_genD1_internal(_map);
+        m_genC2_internal(_map);
     }
     else
     {
