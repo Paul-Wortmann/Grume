@@ -78,8 +78,7 @@ void cMapManager::m_genD1_internal(sMap*& _map)
 
 void cMapManager::m_generateMap_D1(sMap*& _map)
 {
-    bool seeded = !(_map->genData.seed == 0);
-    if (seeded)
+    if (_map->genData.seed != 0)
     {
         srand (_map->genData.seed);
         m_genD1_internal(_map);

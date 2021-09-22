@@ -46,8 +46,7 @@ void cMapManager::m_genC2_internal(sMap*& _map)
 
 void cMapManager::m_generateMap_C2(sMap*& _map)
 {
-    bool seeded = !(_map->genData.seed == 0);
-    if (seeded)
+    if (_map->genData.seed != 0)
     {
         srand (_map->genData.seed);
         m_genC2_internal(_map);

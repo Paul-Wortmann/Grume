@@ -287,8 +287,7 @@ void cMapManager::m_generateMap_D2(sMap*& _map)
     // Generate Rooms
     if (_map->tile != nullptr)
     {
-        bool seeded = !(_map->genData.seed == 0);
-        if (seeded)
+        if (_map->genData.seed != 0)
         {
             srand (_map->genData.seed);
             m_genD2_internal(_map);
