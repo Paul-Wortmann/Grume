@@ -2,14 +2,62 @@
 <map_database>
     <maps>
         # Map number, map filename
-        <map>0 town_1_001.txt</map>
-        <map>1 dungeon_1_001.txt</map>
-        <map>2 dungeon_1_002.txt</map>
-        <#map>3 dungeon_1_003.txt</map>
+        <map>000 town_1_001.txt</map>
+        <map>001 dungeon_1_001.txt</map>
+        <map>002 dungeon_1_002.txt</map>
+        <#map>003 dungeon_1_003.txt</map>
 
-        <map>3 crypt_1_001.txt</map>
-        <map>4 cave_1_001.txt</map>
-        <map>5 cave_2_001.txt</map>
-        <map>6 cave_3_001.txt</map>
+        <map>003 crypt_1_001.txt</map>
+        <map>004 cave_1_001.txt</map>
+        <map>005 cave_2_001.txt</map>
+        <map>006 cave_3_001.txt</map>
+
+
+
+        // Test maps
+        // 1__ -> test
+        // _x_ -> biome (0 - 8)
+        // _0_ -> town_001_biome
+        // _1_ -> cave_001_biome
+        // _2_ -> dungeon_001_biome
+        // _3_ -> dungeon_002_biome
+        // _4_ -> dungeon_003_biome
+        // _5_ -> dungeon_003g_biome
+        // _6_ -> dungeon_004_biome
+        // _7_ -> dungeon_005_biome
+        // _8_ -> dungeon_006_biome
+
+        // __x -> algorithm (0 - 6)
+        // __0 -> none, this is the hub for each
+        // __1 -> D1 gen algorithm
+        // __2 -> D2 gen algorithm
+        // __3 -> C1 gen algorithm
+        // __4 -> C2 gen algorithm
+        // __5 -> M1 gen algorithm
+        // __6 -> T1 gen algorithm
+
+        // Town 1, portal map
+        <map>100 test_1_town_1_001.txt</map>
+        
+        // Cave 1
+        <map>110 test_1_cave_1_001.txt</map>
+        <map>111 test_1_cave_1_002.txt</map>
+        <map>112 test_1_cave_1_003.txt</map>
+        <map>113 test_1_cave_1_004.txt</map>
+        <map>114 test_1_cave_1_005.txt</map>
+        <map>115 test_1_cave_1_006.txt</map>
+        <map>116 test_1_cave_1_007.txt</map>
+
+        // Dungeon 1
+        <map>120 test_1_dungeon_1_001.txt</map>
+
+        <map>130 test_1_dungeon_2_001.txt</map>
+        <map>140 test_1_dungeon_3_001.txt</map>
+        <map>150 test_1_dungeon_4_001.txt</map>
+        <map>160 test_1_dungeon_5_001.txt</map>
+        <map>170 test_1_dungeon_6_001.txt</map>
+        <map>180 test_1_dungeon_7_001.txt</map>
+
+
     </maps>
 </map_database>

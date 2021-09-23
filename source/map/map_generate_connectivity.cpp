@@ -180,6 +180,10 @@ void cMapManager::m_mapConnectRooms_DW(sMap*& _map, const uint32_t &_r1, const u
 
 void cMapManager::m_mapConnectRooms(sMap*& _map)
 {
+    // If there are less than 2 rooms, exit early
+    if (_map->roomCount < 2)
+        return;
+
     uint32_t distanceT = 0; // temp distance
     uint32_t distanceN = UINT32_MAX; // size larger than possible distance
     uint32_t distanceE = UINT32_MAX; // size larger than possible distance
