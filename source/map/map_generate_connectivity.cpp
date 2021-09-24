@@ -24,8 +24,14 @@
 #include "map_manager.hpp"
 
 // Straight Line
-void cMapManager::m_mapConnectRooms_SL(sMap*& _map, const uint32_t &_r1, const uint32_t &_r2)
+void cMapManager::m_mapConnectRooms_SL(sMap*& _map, const int32_t &_r1, const int32_t &_r2)
 {
+    // If room IDs are invalid, exit early
+    if ((_r1 < 0) || (_r2 < 0))
+    {
+        return;
+    }
+    
     // Determinte the direction of the room
     eDirectionBias direction = eDirectionBias::directionNone;
     if (_map->room[_r1].exitE == _r2)
@@ -198,8 +204,14 @@ void cMapManager::m_mapConnectRooms_SL(sMap*& _map, const uint32_t &_r1, const u
 }
 
 // Straight Lines, 90 degree angle
-void cMapManager::m_mapConnectRooms_ND(sMap*& _map, const uint32_t &_r1, const uint32_t &_r2)
+void cMapManager::m_mapConnectRooms_ND(sMap*& _map, const int32_t &_r1, const int32_t &_r2)
 {
+    // If room IDs are invalid, exit early
+    if ((_r1 < 0) || (_r2 < 0))
+    {
+        return;
+    }
+    
     uint32_t psx = _map->room[_r1].x;
     uint32_t psy = _map->room[_r1].y;
     uint32_t pex = _map->room[_r2].x;
@@ -268,8 +280,14 @@ void cMapManager::m_mapConnectRooms_ND(sMap*& _map, const uint32_t &_r1, const u
 }
 
 // Drunken Walk
-void cMapManager::m_mapConnectRooms_DW(sMap*& _map, const uint32_t &_r1, const uint32_t &_r2)
+void cMapManager::m_mapConnectRooms_DW(sMap*& _map, const int32_t &_r1, const int32_t &_r2)
 {
+    // If room IDs are invalid, exit early
+    if ((_r1 < 0) || (_r2 < 0))
+    {
+        return;
+    }
+    
 
 }
 

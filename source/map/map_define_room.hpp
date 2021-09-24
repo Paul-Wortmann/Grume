@@ -52,10 +52,10 @@ struct sMapRoom
     std::uint32_t y       =  0; // y position
     std::uint32_t w       =  0; // room width
     std::uint32_t h       =  0; // room height
-    std::uint32_t exitN   = -1; // -1 for none, else connecting room ID
-    std::uint32_t exitS   = -1; // -1 for none, else connecting room ID
-    std::uint32_t exitE   = -1; // -1 for none, else connecting room ID
-    std::uint32_t exitW   = -1; // -1 for none, else connecting room ID
+    std::int32_t exitN    = -1; // -1 for none, else connecting room ID
+    std::int32_t exitS    = -1; // -1 for none, else connecting room ID
+    std::int32_t exitE    = -1; // -1 for none, else connecting room ID
+    std::int32_t exitW    = -1; // -1 for none, else connecting room ID
 };
 
 #endif // MAP_DEFINE_ROOM_HPP
