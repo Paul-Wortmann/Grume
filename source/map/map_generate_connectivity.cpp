@@ -26,48 +26,143 @@
 // Straight Line
 void cMapManager::m_mapConnectRooms_SL(sMap*& _map, const uint32_t &_r1, const uint32_t &_r2)
 {
+    // Determinte the direction of the room
     eDirectionBias direction = eDirectionBias::directionNone;
     if (_map->room[_r1].exitE == _r2)
+    {
         direction = eDirectionBias::directionEast;
+    }
     if (_map->room[_r1].exitW == _r2)
+    {
         direction = eDirectionBias::directionWest;
+    }
     if (_map->room[_r1].exitN == _r2)
+    {
         direction = eDirectionBias::directionNorth;
+    }
     if (_map->room[_r1].exitS == _r2)
+    {
         direction = eDirectionBias::directionSouth;
-    uint32_t psx = ((direction == eDirectionBias::directionEast) || (direction == eDirectionBias::directionWest)) ?  ((direction == eDirectionBias::directionEast) ? _map->room[_r1].posXMin : _map->room[_r1].posXMax) : _map->room[_r1].x;
-    uint32_t psy = ((direction == eDirectionBias::directionNorth) || (direction == eDirectionBias::directionSouth)) ?  ((direction == eDirectionBias::directionNorth) ? _map->room[_r1].posYMin : _map->room[_r1].posYMax) : _map->room[_r1].y;
-    uint32_t pex = ((direction == eDirectionBias::directionEast) || (direction == eDirectionBias::directionWest)) ?  ((direction == eDirectionBias::directionWest) ? _map->room[_r2].posXMin : _map->room[_r2].posXMax) : _map->room[_r2].x;
-    uint32_t pey = ((direction == eDirectionBias::directionNorth) || (direction == eDirectionBias::directionSouth)) ?  ((direction == eDirectionBias::directionSouth) ? _map->room[_r2].posYMin : _map->room[_r2].posYMax) : _map->room[_r2].y;
+    }
+    
+    // Determine the start and end points of the connecting path
+    // Path start x
+    uint32_t psx;
+    if ((direction == eDirectionBias::directionEast) || (direction == eDirectionBias::directionWest))
+    {
+        if (direction == eDirectionBias::directionEast)
+        {
+            psx = _map->room[_r1].posXMin;
+        }
+        else
+        {
+            psx = _map->room[_r1].posXMax;
+        }
+    }
+    else
+    {
+        psx = _map->room[_r1].x;
+    }
+    
+    // Path start y
+    uint32_t psy;
+    if  ((direction == eDirectionBias::directionNorth) || (direction == eDirectionBias::directionSouth))
+    {
+        if (direction == eDirectionBias::directionNorth)
+        {
+            psy = _map->room[_r1].posYMin;
+        }
+        else
+        {
+            psy = _map->room[_r1].posYMax;
+        }
+    }
+    else
+    {
+        psy = _map->room[_r1].y;
+    }
+    
+    // Path end x
+    uint32_t pex;
+    if ((direction == eDirectionBias::directionEast) || (direction == eDirectionBias::directionWest))
+    {
+        if (direction == eDirectionBias::directionWest)
+        {
+            pex = _map->room[_r2].posXMin;
+        }
+        else
+        {
+            pex = _map->room[_r2].posXMax;
+        }
+    }
+    else
+    {
+        pex = _map->room[_r2].x;
+    }
+    
+    // Path end y
+    uint32_t pey;
+    if  ((direction == eDirectionBias::directionNorth) || (direction == eDirectionBias::directionSouth))
+    {
+        if (direction == eDirectionBias::directionSouth)
+        {
+            pey = _map->room[_r2].posYMin;
+        }
+        else
+        {
+            pey = _map->room[_r2].posYMax;
+        }
+    }
+    else
+    {
+        pey = _map->room[_r2].y;
+    }
+
     //std::cout << "X1: " << psx  << " Y1: " << psy << std::endl;
     //std::cout << "X2: " << pex  << " Y2: " << pey << std::endl;
     if (direction == eDirectionBias::directionEast)
     {
         while ((_map->tile[(psy * _map->width) + psx].base == eTileBase::tileWall) && (psx < _map->room[_r1].posXMax))
+        {
             psx++;
+        }
         while ((_map->tile[(pey * _map->width) + pex].base == eTileBase::tileWall) && (pex > _map->room[_r2].posXMin))
+        {
             pex--;
+        }
     }
     if (direction == eDirectionBias::directionWest)
     {
         while ((_map->tile[(psy * _map->width) + psx].base == eTileBase::tileWall) && (psx > _map->room[_r1].posXMin))
+        {
             psx--;
+        }
         while ((_map->tile[(pey * _map->width) + pex].base == eTileBase::tileWall) && (pex < _map->room[_r2].posXMax))
+        {
             pex++;
+        }
     }
     if (direction == eDirectionBias::directionNorth)
     {
         while ((_map->tile[(psy * _map->width) + psx].base == eTileBase::tileWall) && (psy < _map->room[_r1].posYMax))
+        {
             psy++;
+        }
         while ((_map->tile[(pey * _map->width) + pex].base == eTileBase::tileWall) && (pey > _map->room[_r2].posYMin))
+        {
             pey--;
+        }
     }
     if (direction == eDirectionBias::directionSouth)
     {
         while ((_map->tile[(psy * _map->width) + psx].base == eTileBase::tileWall) && (psy > _map->room[_r1].posYMin))
+        {
             psy--;
+        }
         while ((_map->tile[(pey * _map->width) + pex].base == eTileBase::tileWall) && (pey < _map->room[_r2].posYMax))
+        {
             pey++;
+        }
     }
     while ((psx != pex) || (psy != pey))
     {
