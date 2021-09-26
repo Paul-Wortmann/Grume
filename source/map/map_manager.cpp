@@ -146,22 +146,27 @@ void cMapManager::load(const std::string &_fileName)
         gLogWrite(LOG_INFO, "Loading map: " + xmlMapFile.getString("<name>"), __FILE__, __LINE__, __FUNCTION__);
 
         // Get the data from the XML file
-        std::string name         = xmlMapFile.getString("<name>");
-        uint32      width        = xmlMapFile.getInteger("<width>");
-        uint32      height       = xmlMapFile.getInteger("<height>");
-        std::string biomeFile    = xmlMapFile.getString("<biome>");
-        uint32      generate     = xmlMapFile.getInteger("<generate>");
-        uint32      seed         = xmlMapFile.getInteger("<seed>");
-        uint32      algorithm    = xmlMapFile.getInteger("<algorithm>");
-        uint32      wall_width   = xmlMapFile.getInteger("<wall_width>");
+        std::string name          = xmlMapFile.getString("<name>");
+        uint32      width         = xmlMapFile.getInteger("<width>");
+        uint32      height        = xmlMapFile.getInteger("<height>");
+        std::string biomeFile     = xmlMapFile.getString("<biome>");
+        uint32      generate      = xmlMapFile.getInteger("<generate>");
+        uint32      seed          = xmlMapFile.getInteger("<seed>");
+        uint32      algorithm     = xmlMapFile.getInteger("<algorithm>");
+        uint32      wall_width    = xmlMapFile.getInteger("<wall_width>");
 
-        uint32      player_tile  = xmlMapFile.getInteger("<player_start_tile>");
-        float32     player_rot   = xmlMapFile.getFloat("<player_start_rotation>");
+        uint32      player_tile   = xmlMapFile.getInteger("<player_start_tile>");
+        bool        player_center = (xmlMapFile.getInteger("<player_start_center>") > 0);
+
+        float32     player_rot    = xmlMapFile.getFloat("<player_start_rotation>");
+        
+        // Calculate player start center tile
+        player_tile = (width * height / 2) + (width / 2);
 
         // Create and populate the map data structure with the loaded XML data
         if (m_currentMap == nullptr)
         {
-            m_currentMap         = getNew();
+            m_currentMap = getNew();
         }
         
         // Generate tiles
