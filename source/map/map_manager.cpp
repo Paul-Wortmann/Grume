@@ -147,21 +147,16 @@ void cMapManager::load(const std::string &_fileName)
 
         // Get the data from the XML file
         std::string name          = xmlMapFile.getString("<name>");
-        uint32      width         = xmlMapFile.getInteger("<width>");
-        uint32      height        = xmlMapFile.getInteger("<height>");
+        std::uint32_t      width         = xmlMapFile.getInteger("<width>");
+        std::uint32_t      height        = xmlMapFile.getInteger("<height>");
         std::string biomeFile     = xmlMapFile.getString("<biome>");
-        uint32      generate      = xmlMapFile.getInteger("<generate>");
-        uint32      seed          = xmlMapFile.getInteger("<seed>");
-        uint32      algorithm     = xmlMapFile.getInteger("<algorithm>");
-        uint32      wall_width    = xmlMapFile.getInteger("<wall_width>");
+        std::uint32_t      generate      = xmlMapFile.getInteger("<generate>");
+        std::uint32_t      seed          = xmlMapFile.getInteger("<seed>");
+        std::uint32_t      algorithm     = xmlMapFile.getInteger("<algorithm>");
+        std::uint32_t      wall_width    = xmlMapFile.getInteger("<wall_width>");
 
-        uint32      player_tile   = xmlMapFile.getInteger("<player_start_tile>");
-        bool        player_center = (xmlMapFile.getInteger("<player_start_center>") > 0);
-
+        std::uint32_t      player_tile   = xmlMapFile.getInteger("<player_start_tile>");
         float32     player_rot    = xmlMapFile.getFloat("<player_start_rotation>");
-        
-        // Calculate player start center tile
-        player_tile = (width * height / 2) + (width / 2);
 
         // Create and populate the map data structure with the loaded XML data
         if (m_currentMap == nullptr)
@@ -196,7 +191,7 @@ void cMapManager::load(const std::string &_fileName)
         {
             tiles = "";
             generateMap(m_currentMap);
-            for (uint32 i = 0; i < m_currentMap->numTiles; ++i)
+            for (std::uint32_t i = 0; i < m_currentMap->numTiles; ++i)
             {
                 tiles += std::to_string(static_cast<uint32>(m_currentMap->tile[i].base));
                 tiles += " ";
@@ -207,16 +202,16 @@ void cMapManager::load(const std::string &_fileName)
         else
         {
             // Load tile data from file
-            uint32 tilesInstanceCount = xmlMapFile.getInstanceCount("<tiles>");
-            for (uint32 i = 0; i < tilesInstanceCount; ++i)
+            std::uint32_t tilesInstanceCount = xmlMapFile.getInstanceCount("<tiles>");
+            for (std::uint32_t i = 0; i < tilesInstanceCount; ++i)
             {
                 tiles += xmlMapFile.getString("<tiles>", i + 1);
                 tiles += " ";
             }
 
             // Save the loaded tile data into the map data structure
-            uint32 tileNum = 0;
-            for (uint32 i = 0; i < tiles.size(); ++i)
+            std::uint32_t tileNum = 0;
+            for (std::uint32_t i = 0; i < tiles.size(); ++i)
             {
                 switch (tiles[i])
                 {
@@ -298,7 +293,7 @@ void cMapManager::load(const std::string &_fileName)
             // Load map event data
             m_currentMap->eventCount = xmlMapFile.getInstanceCount("<event>");
             m_currentMap->event = new sMapEvent[m_currentMap->eventCount];
-            for (uint32 i = 0; i < m_currentMap->eventCount; ++i)
+            for (std::uint32_t i = 0; i < m_currentMap->eventCount; ++i)
             {
                 // Load the data from the map file
                 std::string tEventString = xmlMapFile.getString("<event>", i + 1);
@@ -381,7 +376,7 @@ void cMapManager::load(const std::string &_fileName)
             // Load map portal data (for non generated maps)
             m_currentMap->portalCount = xmlMapFile.getInstanceCount("<portal>");
             m_currentMap->portal = new sMapPortal[m_currentMap->portalCount];
-            for (uint32 i = 0; i < m_currentMap->portalCount; ++i)
+            for (std::uint32_t i = 0; i < m_currentMap->portalCount; ++i)
             {
                 // Load the data from the map file
                 std::string tPortalString = xmlMapFile.getString("<portal>", i + 1);
@@ -428,14 +423,67 @@ void cMapManager::load(const std::string &_fileName)
         }
         
         // Determine start location
-        if (m_currentMap->playerStartPortal != 0)
+        if (m_currentMap->playerStartPortal != 0) // Coming from previous map
         {
-            for (uint32 i = 0; i < m_currentMap->portalCount; ++i)
+            for (std::uint32_t i = 0; i < m_currentMap->portalCount; ++i)
             {
                 if (m_currentMap->playerStartPortal == m_currentMap->portal[i].portalNo)
                 {
                     m_currentMap->playerStartTile   = m_currentMap->portal[i].tile;
                     m_currentMap->playerStartDir    = m_currentMap->portal[i].direction;
+                }
+            }
+        }
+        else // Find a suitable start tile
+        {
+            // First try the center tile
+            player_tile = (width * height / 2) + (width / 2);
+            if ((m_currentMap->tile[player_tile].base == eTileBase::tileFloor) ||
+                (m_currentMap->tile[player_tile].base == eTileBase::tileFloorPath))
+            {
+                m_currentMap->playerStartTile = player_tile;
+            }
+            else // Fine closest floor tile to the center
+            {
+                std::uint32_t center_x = width / 2;
+                std::uint32_t center_y = height / 2;
+                std::uint32_t pos_x = 0;
+                std::uint32_t pos_y = 0;
+                std::uint32_t max_s = (center_x > center_y) ? center_x : center_y;
+                for (std::uint32_t i = 0; i < max_s; ++i)
+                {
+                    pos_x += 2;
+                    pos_y += 2;
+                    pos_x = (pos_x < (width - 2)) ? pos_x : (width - 2);
+                    pos_y = (pos_y < (height - 2)) ? pos_y : (height - 2);
+                    for (std::uint32_t y = 0; y < pos_y; ++y)
+                    {
+                        for (std::uint32_t x = 0; x < pos_x; ++x)
+                        {
+                            if (((y != 0) && (y != (pos_y - 1))) &&
+                                ((x > 0) && (x < (pos_x - 1))))
+                            {
+                                // Do nothing, these tiles have already been tried
+                            }
+                            else
+                            {
+                                std::uint32_t tile_x = (center_x - (pos_x / 2) + x);
+                                std::uint32_t tile_y = (center_y - (pos_y / 2) + y);
+                                player_tile = (tile_y * width) + tile_x;
+                                
+                                if ((m_currentMap->tile[player_tile].base == eTileBase::tileFloor) ||
+                                    (m_currentMap->tile[player_tile].base == eTileBase::tileFloorPath))
+                                {
+                                    m_currentMap->playerStartTile = player_tile;
+                                    
+                                    // Set to max to exit out of nested for loops
+                                    x = pos_x;
+                                    y = pos_y;
+                                    i = max_s;
+                                }
+                            }
+                        }
+                    }
                 }
             }
         }
@@ -448,7 +496,7 @@ void cMapManager::load(const std::string &_fileName)
             
             // If room types specifid in file, apply them
             std::uint32_t roomTypeSetCount = xmlMapFile.getInstanceCount("<room_type_set>");
-            for (uint32 i = 0; i < roomTypeSetCount; ++i)
+            for (std::uint32_t i = 0; i < roomTypeSetCount; ++i)
             {
                 // Load the data from the map file
                 std::string troomTypeSetString = xmlMapFile.getString("<room_type_set>", i + 1);
