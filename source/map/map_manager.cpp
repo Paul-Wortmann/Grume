@@ -663,6 +663,11 @@ void cMapManager::m_resetPlayerPosition(void)
     m_graphicsEngine->setCameraTarget(cameraTarget);
 }
 
+void cMapManager::save(const std::string &_fileName)
+{
+    
+}
+
 void cMapManager::process(const float64 &_dt)
 {
     std::uint32_t playerTile = m_playerManager->getCurrentTile();

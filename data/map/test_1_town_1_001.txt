@@ -2,8 +2,8 @@
 <map>
     <information>
         <name>test_1_town_1_001</name>
-        <width>32</width>
-        <height>32</height>
+        <width>16</width>
+        <height>16</height>
         <biome>town_001_biome.txt</biome>
     </information>
     <generation>

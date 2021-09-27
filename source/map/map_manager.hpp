@@ -53,6 +53,7 @@ class cMapManager : public tcLinkedList<sMap>
         void          playMusic(void) {m_playMusic(); };
         void          terminate(void);
         void          load(const std::string &_fileName);
+        void          save(const std::string &_fileName);
         void          unload(void);
         void          process(const float64 &_dt);
         bool          getLoading(void) { return m_loadRequest; };
