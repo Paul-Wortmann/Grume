@@ -146,17 +146,17 @@ void cMapManager::load(const std::string &_fileName)
         gLogWrite(LOG_INFO, "Loading map: " + xmlMapFile.getString("<name>"), __FILE__, __LINE__, __FUNCTION__);
 
         // Get the data from the XML file
-        std::string name          = xmlMapFile.getString("<name>");
-        std::uint32_t      width         = xmlMapFile.getInteger("<width>");
-        std::uint32_t      height        = xmlMapFile.getInteger("<height>");
-        std::string biomeFile     = xmlMapFile.getString("<biome>");
-        std::uint32_t      generate      = xmlMapFile.getInteger("<generate>");
-        std::uint32_t      seed          = xmlMapFile.getInteger("<seed>");
-        std::uint32_t      algorithm     = xmlMapFile.getInteger("<algorithm>");
-        std::uint32_t      wall_width    = xmlMapFile.getInteger("<wall_width>");
+        std::string name               = xmlMapFile.getString("<name>");
+        std::uint32_t      width       = xmlMapFile.getInteger("<width>");
+        std::uint32_t      height      = xmlMapFile.getInteger("<height>");
+        std::string        biomeFile   = xmlMapFile.getString("<biome>");
+        std::uint32_t      generate    = xmlMapFile.getInteger("<generate>");
+        std::uint32_t      seed        = xmlMapFile.getInteger("<seed>");
+        std::uint32_t      algorithm   = xmlMapFile.getInteger("<algorithm>");
+        std::uint32_t      wall_width  = xmlMapFile.getInteger("<wall_width>");
 
-        std::uint32_t      player_tile   = xmlMapFile.getInteger("<player_start_tile>");
-        float32     player_rot    = xmlMapFile.getFloat("<player_start_rotation>");
+        std::uint32_t      player_tile = xmlMapFile.getInteger("<player_start_tile>");
+        float32            player_rot  = xmlMapFile.getFloat("<player_start_rotation>");
 
         // Create and populate the map data structure with the loaded XML data
         if (m_currentMap == nullptr)
@@ -665,7 +665,30 @@ void cMapManager::m_resetPlayerPosition(void)
 
 void cMapManager::save(const std::string &_fileName)
 {
-    
+    // Only proceed if there is map data
+    if (m_currentMap != nullptr)
+    {
+        // Create a new map file, or overwrite its content if it does not exist
+        std::ofstream mapFile;
+        mapFile.open (FILE_PATH_MAP + _fileName, std::ios::trunc); 
+
+        // Only proceed if there is map data
+        if (mapFile.is_open())
+        {
+            
+            
+            
+            
+            
+            // Clean up
+            mapFile.close();
+        }
+        else
+        {
+            // Log error, failed to save map file
+            gLogWrite(LOG_ERROR, "Failed to save map file: " + _fileName, __FILE__, __LINE__, __FUNCTION__);
+        }
+    }
 }
 
 void cMapManager::process(const float64 &_dt)

@@ -2,8 +2,8 @@
 <map>
     <information>
         <name>test_1_town_1_001</name>
-        <width>16</width>
-        <height>16</height>
+        <width>32</width>
+        <height>32</height>
         <biome>town_001_biome.txt</biome>
     </information>
     <generation>
@@ -24,7 +24,7 @@
        <tiles>2 2 2 2 1 1 1 2 2 1 1 1 2 2 2 2</tiles>
        <tiles>2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2</tiles>
        <generate>1</generate>
-       <seed>0</seed>
+       <seed>1</seed>
        <algorithm>1</algorithm>
        <wall_width>1</wall_width>
     </generation>
