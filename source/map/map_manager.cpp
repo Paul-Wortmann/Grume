@@ -175,6 +175,7 @@ void cMapManager::load(const std::string &_fileName)
         m_currentMap->playerStartDir    = player_rot;
 
         // Map generation data
+        m_currentMap->genData.generate  = (generate > 0);
         m_currentMap->genData.algorithm = static_cast<eAlgorithm>(algorithm);
         m_currentMap->genData.seed      = seed;
         m_currentMap->genData.wallSize  = wall_width;
@@ -588,6 +589,9 @@ void cMapManager::load(const std::string &_fileName)
 
         // Clean up
         xmlMapFile.free();
+        
+        // Test map saving, DELETE once finished save function.
+        save("test_save_map.txt");
     }
 }
 
@@ -675,9 +679,143 @@ void cMapManager::save(const std::string &_fileName)
         // Only proceed if there is map data
         if (mapFile.is_open())
         {
+            std::uint32_t indent_width = 4;
+            std::uint32_t indent_level = 0;
             
+            mapFile << "<?xml version = \"1.0\" encoding = \"UTF-8\" ?>" << std::endl;
+            mapFile << "<map>" << std::endl;
             
+            indent_level++;
+            mapFile << std::string(indent_width * indent_level, ' ');
+            mapFile << "<information>" << std::endl;
+            indent_level++;
+            mapFile << std::string(indent_width * indent_level, ' ');
+            mapFile << "<name>" << m_currentMap->name << "</name>" << std::endl;
+            mapFile << std::string(indent_width * indent_level, ' ');
+            mapFile << "<width>" << m_currentMap->width << "</width>" << std::endl;
+            mapFile << std::string(indent_width * indent_level, ' ');
+            mapFile << "<height>" << m_currentMap->height << "</height>" << std::endl;
+            mapFile << std::string(indent_width * indent_level, ' ');
+            mapFile << "<biome>" << m_currentMap->biome->fileName << "</biome>" << std::endl;
+            indent_level--;
+            mapFile << std::string(indent_width * indent_level, ' ');
+            mapFile << "</information>" << std::endl;
+            mapFile << std::endl;
             
+            mapFile << std::string(indent_width * indent_level, ' ');
+            mapFile << "<generation>" << std::endl;
+            indent_level++;
+            for (std::uint32_t y = 0; y < m_currentMap->height; ++y)
+            {
+                mapFile << std::string(indent_width * indent_level, ' ');
+                mapFile << "<tiles>";
+                for (std::uint32_t x = 0; x < m_currentMap->width; ++x)
+                {
+                    mapFile << static_cast<std::uint32_t>(m_currentMap->tile[(m_currentMap->width * y) + x].base);
+                    mapFile << ' ';
+                }
+                mapFile << "</tiles>" << std::endl;
+            }
+            mapFile << std::string(indent_width * indent_level, ' ');
+            mapFile << "<generate>" << ((m_currentMap->genData.generate) ? 1 : 0) << "</generate>" << std::endl;
+            mapFile << std::string(indent_width * indent_level, ' ');
+            mapFile << "<seed>" << m_currentMap->genData.seed << "</seed>" << std::endl;
+            mapFile << std::string(indent_width * indent_level, ' ');
+            mapFile << "<algorithm>" << static_cast<std::uint32_t>(m_currentMap->genData.algorithm) << "</algorithm>" << std::endl;
+            mapFile << std::string(indent_width * indent_level, ' ');
+            mapFile << "<wall_width>" << m_currentMap->genData.wallSize << "</wall_width>" << std::endl;
+            indent_level--;
+            mapFile << std::string(indent_width * indent_level, ' ');
+            mapFile << "</generation>" << std::endl;
+            mapFile << std::endl;
+
+            mapFile << std::string(indent_width * indent_level, ' ');
+            mapFile << "<player>" << std::endl;
+            indent_level++;
+            mapFile << std::string(indent_width * indent_level, ' ');
+            mapFile << "# This is used when not warping from a prior map" << std::endl;
+            mapFile << std::string(indent_width * indent_level, ' ');
+            mapFile << "<player_start_tile>" << m_currentMap->playerStartTile << "</player_start_tile>" << std::endl;
+            mapFile << std::string(indent_width * indent_level, ' ');
+            mapFile << "<player_start_rotation>" << m_currentMap->playerStartDir << "</player_start_rotation>" << std::endl;
+            indent_level--;
+            mapFile << std::string(indent_width * indent_level, ' ');
+            mapFile << "</player>" << std::endl;
+            mapFile << std::endl;
+
+            mapFile << std::string(indent_width * indent_level, ' ');
+            mapFile << "<portals>" << std::endl;
+            indent_level++;
+            mapFile << std::string(indent_width * indent_level, ' ');
+            mapFile << "# These are used when warping from a prior map" << std::endl;
+            mapFile << std::string(indent_width * indent_level, ' ');
+            mapFile << "# Portal number, Tile location, player face direction" << std::endl;
+            mapFile << std::string(indent_width * indent_level, ' ');
+            mapFile << "# These are exit portals" << std::endl;
+            for (std::uint32_t i = 0; i < m_currentMap->portalCount; ++i)
+            {
+                mapFile << std::string(indent_width * indent_level, ' ');
+                mapFile << "<portal>";
+                mapFile << m_currentMap->portal[i].portalNo << " ";
+                mapFile << m_currentMap->portal[i].tile << " ";
+                mapFile << m_currentMap->portal[i].direction;
+                mapFile << "</portal>" << std::endl;
+            }
+            indent_level--;
+            mapFile << std::string(indent_width * indent_level, ' ');
+            mapFile << "</portals>" << std::endl;
+            mapFile << std::endl;
+
+/*
+
+    <events>
+        # Tile location, type, data 1, data 2, data 3
+        # Type 1 (Warp to map) : tile, event type, map number, portal number, NA
+        # Type 2 (Set entity state, index from 1) : tile, event type, entity tile, state, NA
+        # Type 3 (Toggle entity state, index from 1) : tile, event type, entity tile, state 1, state 2
+
+        # To town
+        <#event>0018 1 0 3 0</event> # Town 1 cave 1 entrance 1
+
+    </events>
+
+    # roomTypeNone         =  0, // None / empty
+    # roomTypeCell         =  1, // Prison Cell
+    # roomTypeSecret       =  2, // Secret room
+    # roomTypeStairwell    =  3, // Stairwell
+    # roomTypeStore        =  4, // Store
+    # roomTypeBlacksmith   =  5, // Blacksmith
+    # roomTypeCanteen      =  6, // Canteen
+    # roomTypeStorage      =  7, // Storage room
+    # roomTypeLibrary      =  8, // Library
+    # roomTypeAlchemyLab   =  9, // Alchemy Lab
+    # roomTypeLaboratory   = 10, // Laboratory
+    # roomTypeTorture      = 11  // Torture Chamber
+    <rooms>
+        #Tile (any within the room), type, ignore room number (use for the interconnecting route, -1 for none)
+    </rooms>
+
+    <debris_objects>
+        #object number, scale max, scale min, prevalence, obstacle
+        <debris>bones 0.5 1.0 15 0</debris> # bones
+    </debris_objects>
+
+    <objects>
+        #tile number, object number, scale, y-rotation, obstacle
+      
+    </objects>
+
+    <npc_mobs>
+        #npc number, scale max, scale min, prevalence
+        <npc_mob>bat 0.5 1.0 5</npc_mob> # bat
+    </npc_mobs>
+
+    <npcs>
+        #tile number, npc number, index (0 == random), scale, y-rotation
+    </npcs>
+
+</map>
+*/
             
             
             // Clean up

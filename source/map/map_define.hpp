@@ -35,14 +35,14 @@
 #define FLOOR_SPRITESHEET_HEIGHT 4
     
 enum class eSpriteType : std::uint16_t 
-    { 
-        tileNone      = 0, // None
-        tileFloor     = 1, // Floor tile
-        tilePath      = 2, // Path  tile
-        tilePathLine  = 3, // Path  tile -> Line
-        tilePathOuter = 4, // Path  tile -> Corner, Outer
-        tilePathInner = 5, // Path  tile -> Corner, Inner
-    };
+{ 
+    tileNone      = 0, // None
+    tileFloor     = 1, // Floor tile
+    tilePath      = 2, // Path  tile
+    tilePathLine  = 3, // Path  tile -> Line
+    tilePathOuter = 4, // Path  tile -> Corner, Outer
+    tilePathInner = 5, // Path  tile -> Corner, Inner
+};
 
 struct sMapSpriteTile
 {
@@ -54,18 +54,18 @@ struct sMapSpriteTile
 };
 
 enum class eTileBase : std::uint16_t 
-    { 
-        tileNone      = 0,
-        tileFloor     = 1,
-        tileWall      = 2,
-        tileDoorway   = 3,
-        tileWallShort = 4,
-        tileFloorPath = 5,
-        tileFloorNoGo = 6,
-        tilePathNoGo  = 7,
-        tileLiquid    = 8,
-        tileIgnore    = 9  // Used for prefab loading
-    };
+{ 
+    tileNone      = 0,
+    tileFloor     = 1,
+    tileWall      = 2,
+    tileDoorway   = 3,
+    tileWallShort = 4,
+    tileFloorPath = 5,
+    tileFloorNoGo = 6,
+    tilePathNoGo  = 7,
+    tileLiquid    = 8,
+    tileIgnore    = 9  // Used for prefab loading
+};
 
 struct sMapTile
 {
