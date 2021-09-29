@@ -682,9 +682,13 @@ void cMapManager::save(const std::string &_fileName)
             std::uint32_t indent_width = 4;
             std::uint32_t indent_level = 0;
             
+            // XML information
             mapFile << "<?xml version = \"1.0\" encoding = \"UTF-8\" ?>" << std::endl;
+
+            // Map tag open
             mapFile << "<map>" << std::endl;
             
+            // Information
             indent_level++;
             mapFile << std::string(indent_width * indent_level, ' ');
             mapFile << "<information>" << std::endl;
@@ -702,6 +706,7 @@ void cMapManager::save(const std::string &_fileName)
             mapFile << "</information>" << std::endl;
             mapFile << std::endl;
             
+            // Generation / Tile data
             mapFile << std::string(indent_width * indent_level, ' ');
             mapFile << "<generation>" << std::endl;
             indent_level++;
@@ -729,6 +734,7 @@ void cMapManager::save(const std::string &_fileName)
             mapFile << "</generation>" << std::endl;
             mapFile << std::endl;
 
+            // Player data
             mapFile << std::string(indent_width * indent_level, ' ');
             mapFile << "<player>" << std::endl;
             indent_level++;
@@ -743,6 +749,7 @@ void cMapManager::save(const std::string &_fileName)
             mapFile << "</player>" << std::endl;
             mapFile << std::endl;
 
+            // Portal data
             mapFile << std::string(indent_width * indent_level, ' ');
             mapFile << "<portals>" << std::endl;
             indent_level++;
@@ -766,35 +773,171 @@ void cMapManager::save(const std::string &_fileName)
             mapFile << "</portals>" << std::endl;
             mapFile << std::endl;
 
+            // Event data
+            mapFile << std::string(indent_width * indent_level, ' ');
+            mapFile << "<events>" << std::endl;
+            indent_level++;
+            mapFile << std::string(indent_width * indent_level, ' ');
+            mapFile << "# Tile location, type, data 1, data 2, data 3" << std::endl;
+            mapFile << std::string(indent_width * indent_level, ' ');
+            mapFile << "# Type 1 (Warp to map) : tile, event type, map number, portal number, NA" << std::endl;
+            mapFile << std::string(indent_width * indent_level, ' ');
+            mapFile << "# Type 2 (Set entity state, index from 1) : tile, event type, entity tile, state, NA" << std::endl;
+            mapFile << std::string(indent_width * indent_level, ' ');
+            mapFile << "# Type 3 (Toggle entity state, index from 1) : tile, event type, entity tile, state 1, state 2" << std::endl;
+            for (std::uint32_t i = 0; i < m_currentMap->eventCount; ++i)
+            {
+                mapFile << std::string(indent_width * indent_level, ' ');
+                mapFile << "<event>";
+                mapFile << m_currentMap->event[i].tile << " ";
+                mapFile << static_cast<std::uint32_t>(m_currentMap->event[i].type) << " ";
+                mapFile << m_currentMap->event[i].data_1 << " ";
+                mapFile << m_currentMap->event[i].data_2 << " ";
+                mapFile << m_currentMap->event[i].data_3;
+                mapFile << "</event>" << std::endl;
+            }
+            indent_level--;
+            mapFile << std::string(indent_width * indent_level, ' ');
+            mapFile << "</events>" << std::endl;
+            mapFile << std::endl;
+
+            // Room data
+            mapFile << std::string(indent_width * indent_level, ' ');
+            mapFile << "<rooms>" << std::endl;
+            indent_level++;
+            mapFile << std::string(indent_width * indent_level, ' ');
+            mapFile << "# roomTypeNone         =  0, // None / empty" << std::endl;
+            mapFile << std::string(indent_width * indent_level, ' ');
+            mapFile << "# roomTypeCell         =  1, // Prison Cell" << std::endl;
+            mapFile << std::string(indent_width * indent_level, ' ');
+            mapFile << "# roomTypeSecret       =  2, // Secret room" << std::endl;
+            mapFile << std::string(indent_width * indent_level, ' ');
+            mapFile << "# roomTypeStairwell    =  3, // Stairwell" << std::endl;
+            mapFile << std::string(indent_width * indent_level, ' ');
+            mapFile << "# roomTypeStore        =  4, // Store" << std::endl;
+            mapFile << std::string(indent_width * indent_level, ' ');
+            mapFile << "# roomTypeBlacksmith   =  5, // Blacksmith" << std::endl;
+            mapFile << std::string(indent_width * indent_level, ' ');
+            mapFile << "# roomTypeCanteen      =  6, // Canteen" << std::endl;
+            mapFile << std::string(indent_width * indent_level, ' ');
+            mapFile << "# roomTypeStorage      =  7, // Storage room" << std::endl;
+            mapFile << std::string(indent_width * indent_level, ' ');
+            mapFile << "# roomTypeLibrary      =  8, // Library" << std::endl;
+            mapFile << std::string(indent_width * indent_level, ' ');
+            mapFile << "# roomTypeAlchemyLab   =  9, // Alchemy Lab" << std::endl;
+            mapFile << std::string(indent_width * indent_level, ' ');
+            mapFile << "# roomTypeLaboratory   = 10, // Laboratory" << std::endl;
+            mapFile << std::string(indent_width * indent_level, ' ');
+            mapFile << "# roomTypeTorture      = 11  // Torture Chamber" << std::endl;
+            mapFile << std::string(indent_width * indent_level, ' ');
+            mapFile << "#Tile (any within the room), type, ignore room number (use for the interconnecting route, -1 for none)" << std::endl;
+            for (std::uint32_t i = 0; i < m_currentMap->roomCount; ++i)
+            {
+                mapFile << std::string(indent_width * indent_level, ' ');
+                mapFile << "<room>";
+                mapFile << ((m_currentMap->room[i].y * m_currentMap->width) + m_currentMap->room[i].x) << " ";
+                mapFile << static_cast<std::uint32_t>(m_currentMap->room[i].type) << " ";
+                mapFile << -1;
+                mapFile << "</room>" << std::endl;
+            }
+            indent_level--;
+            mapFile << std::string(indent_width * indent_level, ' ');
+            mapFile << "</rooms>" << std::endl;
+            mapFile << std::endl;
+
+            // Debris data
+            mapFile << std::string(indent_width * indent_level, ' ');
+            mapFile << "<debris_objects>" << std::endl;
+            indent_level++;
+            mapFile << std::string(indent_width * indent_level, ' ');
+            mapFile << "#object number, scale max, scale min, prevalence, obstacle" << std::endl;
+            /*
+            for (std::uint32_t i = 0; i < m_currentMap->debrisCount; ++i)
+            {
+                mapFile << std::string(indent_width * indent_level, ' ');
+                mapFile << "<debris>";
+                mapFile << ((m_currentMap->room[i].y * m_currentMap->width) + m_currentMap->room[i].x) << " ";
+                mapFile << static_cast<std::uint32_t>(m_currentMap->room[i].type) << " ";
+                mapFile << -1;
+                mapFile << "</debris>" << std::endl;
+            }
+            */
+            indent_level--;
+            mapFile << std::string(indent_width * indent_level, ' ');
+            mapFile << "</debris_objects>" << std::endl;
+            mapFile << std::endl;
+
+            // Object data
+            mapFile << std::string(indent_width * indent_level, ' ');
+            mapFile << "<objects>" << std::endl;
+            indent_level++;
+            mapFile << std::string(indent_width * indent_level, ' ');
+            mapFile << "#tile number, object number, scale, y-rotation, obstacle" << std::endl;
+            /*
+            for (std::uint32_t i = 0; i < m_currentMap->debrisCount; ++i)
+            {
+                mapFile << std::string(indent_width * indent_level, ' ');
+                mapFile << "<debris>";
+                mapFile << ((m_currentMap->room[i].y * m_currentMap->width) + m_currentMap->room[i].x) << " ";
+                mapFile << static_cast<std::uint32_t>(m_currentMap->room[i].type) << " ";
+                mapFile << -1;
+                mapFile << "</debris>" << std::endl;
+            }
+            */
+            indent_level--;
+            mapFile << std::string(indent_width * indent_level, ' ');
+            mapFile << "</objects>" << std::endl;
+            mapFile << std::endl;
+
+            // NPC mob data
+            mapFile << std::string(indent_width * indent_level, ' ');
+            mapFile << "<npc_mobs>" << std::endl;
+            indent_level++;
+            mapFile << std::string(indent_width * indent_level, ' ');
+            mapFile << "#npc number, scale max, scale min, prevalence" << std::endl;
+            /*
+            for (std::uint32_t i = 0; i < m_currentMap->debrisCount; ++i)
+            {
+                mapFile << std::string(indent_width * indent_level, ' ');
+                mapFile << "<debris>";
+                mapFile << ((m_currentMap->room[i].y * m_currentMap->width) + m_currentMap->room[i].x) << " ";
+                mapFile << static_cast<std::uint32_t>(m_currentMap->room[i].type) << " ";
+                mapFile << -1;
+                mapFile << "</debris>" << std::endl;
+            }
+            */
+            indent_level--;
+            mapFile << std::string(indent_width * indent_level, ' ');
+            mapFile << "</npc_mobs>" << std::endl;
+            mapFile << std::endl;
+
+            // NPC data
+            mapFile << std::string(indent_width * indent_level, ' ');
+            mapFile << "<npcs>" << std::endl;
+            indent_level++;
+            mapFile << std::string(indent_width * indent_level, ' ');
+            mapFile << "#tile number, npc number, index (0 == random), scale, y-rotation" << std::endl;
+            /*
+            for (std::uint32_t i = 0; i < m_currentMap->debrisCount; ++i)
+            {
+                mapFile << std::string(indent_width * indent_level, ' ');
+                mapFile << "<debris>";
+                mapFile << ((m_currentMap->room[i].y * m_currentMap->width) + m_currentMap->room[i].x) << " ";
+                mapFile << static_cast<std::uint32_t>(m_currentMap->room[i].type) << " ";
+                mapFile << -1;
+                mapFile << "</debris>" << std::endl;
+            }
+            */
+            indent_level--;
+            mapFile << std::string(indent_width * indent_level, ' ');
+            mapFile << "</npcs>" << std::endl;
+            mapFile << std::endl;
+
+            // Map tag close
+            indent_level--;
+            mapFile << "</map>" << std::endl;
+
 /*
-
-    <events>
-        # Tile location, type, data 1, data 2, data 3
-        # Type 1 (Warp to map) : tile, event type, map number, portal number, NA
-        # Type 2 (Set entity state, index from 1) : tile, event type, entity tile, state, NA
-        # Type 3 (Toggle entity state, index from 1) : tile, event type, entity tile, state 1, state 2
-
-        # To town
-        <#event>0018 1 0 3 0</event> # Town 1 cave 1 entrance 1
-
-    </events>
-
-    # roomTypeNone         =  0, // None / empty
-    # roomTypeCell         =  1, // Prison Cell
-    # roomTypeSecret       =  2, // Secret room
-    # roomTypeStairwell    =  3, // Stairwell
-    # roomTypeStore        =  4, // Store
-    # roomTypeBlacksmith   =  5, // Blacksmith
-    # roomTypeCanteen      =  6, // Canteen
-    # roomTypeStorage      =  7, // Storage room
-    # roomTypeLibrary      =  8, // Library
-    # roomTypeAlchemyLab   =  9, // Alchemy Lab
-    # roomTypeLaboratory   = 10, // Laboratory
-    # roomTypeTorture      = 11  // Torture Chamber
-    <rooms>
-        #Tile (any within the room), type, ignore room number (use for the interconnecting route, -1 for none)
-    </rooms>
-
     <debris_objects>
         #object number, scale max, scale min, prevalence, obstacle
         <debris>bones 0.5 1.0 15 0</debris> # bones

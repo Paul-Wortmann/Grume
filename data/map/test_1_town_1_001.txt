@@ -24,7 +24,7 @@
         <tiles>2 2 2 2 1 1 1 2 2 1 1 1 2 2 2 2</tiles>
         <tiles>2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2</tiles>
         <generate>1</generate>
-        <seed>0</seed>
+        <seed>651</seed>
         <algorithm>1</algorithm>
         <wall_width>1</wall_width>
     </generation>
@@ -53,19 +53,19 @@
 
     </events>
 
-    # roomTypeNone         =  0, // None / empty
-    # roomTypeCell         =  1, // Prison Cell
-    # roomTypeSecret       =  2, // Secret room
-    # roomTypeStairwell    =  3, // Stairwell
-    # roomTypeStore        =  4, // Store
-    # roomTypeBlacksmith   =  5, // Blacksmith
-    # roomTypeCanteen      =  6, // Canteen
-    # roomTypeStorage      =  7, // Storage room
-    # roomTypeLibrary      =  8, // Library
-    # roomTypeAlchemyLab   =  9, // Alchemy Lab
-    # roomTypeLaboratory   = 10, // Laboratory
-    # roomTypeTorture      = 11  // Torture Chamber
     <rooms>
+        # roomTypeNone         =  0, // None / empty
+        # roomTypeCell         =  1, // Prison Cell
+        # roomTypeSecret       =  2, // Secret room
+        # roomTypeStairwell    =  3, // Stairwell
+        # roomTypeStore        =  4, // Store
+        # roomTypeBlacksmith   =  5, // Blacksmith
+        # roomTypeCanteen      =  6, // Canteen
+        # roomTypeStorage      =  7, // Storage room
+        # roomTypeLibrary      =  8, // Library
+        # roomTypeAlchemyLab   =  9, // Alchemy Lab
+        # roomTypeLaboratory   = 10, // Laboratory
+        # roomTypeTorture      = 11  // Torture Chamber
         #Tile (any within the room), type, ignore room number (use for the interconnecting route, -1 for none)
     </rooms>
 
