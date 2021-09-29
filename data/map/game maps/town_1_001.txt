@@ -151,7 +151,7 @@
     </npc_mobs>
 
     <npcs>
-        #tile number, npc number, index (0 == random), scale, y-rotation
+        #tile number, npc name, index (0 == random), scale, y-rotation
 
         # town central
         <npc>4337 blacksmith 1 1.0 0.0000</npc> # Blacksmith
@@ -159,7 +159,7 @@
     </npcs>
 
     <debris_objects>
-        #object number, scale max, scale min, prevalence, obstacle
+        #object name, scale max, scale min, prevalence, obstacle
         <debris>rock_small 0.5 1.0 5 0</debris> # rock small
         <debris>dead_tree  0.5 1.0 10 1</debris> # dead tree
     </debris_objects>

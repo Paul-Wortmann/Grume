@@ -70,22 +70,22 @@
     </rooms>
 
     <debris_objects>
-        #object number, scale max, scale min, prevalence, obstacle
+        #object name, scale max, scale min, prevalence, obstacle
         <debris>bones 0.5 1.0 15 0</debris> # bones
     </debris_objects>
 
     <objects>
-        #tile number, object number, scale, y-rotation, obstacle
+        #tile number, object name, scale, y-rotation, obstacle
       
     </objects>
 
     <npc_mobs>
-        #npc number, scale max, scale min, prevalence
+        #npc name, scale max, scale min, prevalence
         <npc_mob>bat 0.5 1.0 5</npc_mob> # bat
     </npc_mobs>
 
     <npcs>
-        #tile number, npc number, index (0 == random), scale, y-rotation
+        #tile number, npc name, index (0 == random), scale, y-rotation
     </npcs>
 
 </map>

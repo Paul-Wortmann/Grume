@@ -103,6 +103,41 @@ struct sMapPortal
     float32       direction = 0.0f; // Direction player should face
 };
 
+struct sMapObject
+{
+    std::uint32_t tile       = 0;
+    std::string   name       = "";
+    float         scale      = 0.0f;
+    float         yRot       = 0.0f;
+    std::uint32_t obstacle   = 0;
+};
+
+struct sMapDebris
+{
+    std::string   name       = "";
+    float         scaleMax   = 0.0f;
+    float         scaleMin   = 0.0f;
+    std::uint32_t prevalence = 0;
+    std::uint32_t obstacle   = 0;
+};
+
+struct sMapNPCMob
+{
+    std::string   name       = "";
+    float         scaleMax   = 0.0f;
+    float         scaleMin   = 0.0f;
+    std::uint32_t prevalence = 0;
+};
+
+struct sMapNPC
+{
+    std::uint32_t tile       = 0;
+    std::string   name       = "";
+    std::uint32_t index      = 0;
+    float         scale      = 0.0f;
+    float         yRot       = 0.0f;
+};
+
 struct sMap
 {
     // Linked list
@@ -145,6 +180,22 @@ struct sMap
     // Map Rooms
     std::uint32_t  roomCount         = 0;
     sMapRoom*      room              = nullptr;
+
+    // Map Objects
+    std::uint32_t  objectCount       = 0;
+    sMapObject*    object            = nullptr;    
+
+    // Map Debris
+    std::uint32_t  debrisCount       = 0;
+    sMapDebris*    debris            = nullptr;    
+
+    // Map NPC Mobs
+    std::uint32_t  npcMobCount       = 0;
+    sMapNPCMob*    npcMob            = nullptr;    
+
+    // Map NPCs
+    std::uint32_t  npcCount          = 0;
+    sMapNPC*       npc               = nullptr;
 };
 
 struct sMapPrefab

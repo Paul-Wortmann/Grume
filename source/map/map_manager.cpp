@@ -423,6 +423,258 @@ void cMapManager::load(const std::string &_fileName)
             }
         }
         
+        // Load map object data
+        m_currentMap->objectCount = xmlMapFile.getInstanceCount("<object>");
+        if (m_currentMap->objectCount > 0)
+        {
+            m_currentMap->object = new sMapObject[m_currentMap->objectCount];
+            for (std::uint32_t i = 0; i < m_currentMap->objectCount; ++i)
+            {
+                // Load the data from the map file
+                std::string tObjectString = xmlMapFile.getString("<object>", i + 1);
+                tObjectString += "    ";
+                std::uint64_t tObjectStringLength = tObjectString.length();
+                std::uint32_t tObjectTileNum   = 0;
+                std::string   tObjectName      = "";
+                float32       tObjectScale     = 0.0f;
+                float32       tObjectRotation  = 0.0f;
+                std::uint32_t tObjectObstacle  = 0;
+                std::uint32_t tStringNum = 0;
+                std::string   tString = "";
+                if (tObjectStringLength > 6)
+                {
+                    for (std::uint64_t j = 0; j < tObjectStringLength; ++j)
+                    {
+                        if (tObjectString[j] == ' ')
+                        {
+                            if (tStringNum == 0)
+                            {
+                                tObjectTileNum = std::stoi(tString);
+                            }
+                            else if (tStringNum == 1)
+                            {
+                                tObjectName = tString;
+                            }
+                            else if (tStringNum == 2)
+                            {
+                                tObjectScale = std::stof(tString);
+                            }
+                            else if (tStringNum == 3)
+                            {
+                                tObjectRotation = std::stof(tString);
+                            }
+                            else if (tStringNum == 4)
+                            {
+                                tObjectObstacle = std::stoi(tString);
+                            }
+                            tStringNum++;
+                            tString = "";
+                        }
+                        else
+                        {
+                            tString += tObjectString[j];
+                        }
+                    }
+                }
+                
+                // Process the object data
+                m_currentMap->object[i].tile       = tObjectTileNum;
+                m_currentMap->object[i].name       = tObjectName;
+                m_currentMap->object[i].scale      = tObjectScale;
+                m_currentMap->object[i].yRot       = tObjectRotation;
+                m_currentMap->object[i].obstacle   = tObjectObstacle;
+            }
+        }
+
+        // Load map debris data
+        m_currentMap->debrisCount = xmlMapFile.getInstanceCount("<debris>");
+        if (m_currentMap->debrisCount > 0)
+        {
+            m_currentMap->debris = new sMapDebris[m_currentMap->debrisCount];
+            for (std::uint32_t i = 0; i < m_currentMap->debrisCount; ++i)
+            {
+                // Load the data from the map file
+                std::string tDebrisString = xmlMapFile.getString("<debris>", i + 1);
+                tDebrisString += "    ";
+                std::uint64_t tDebrisStringLength = tDebrisString.length();
+
+                std::string   tDebrisName       = "";
+                float32       tDebrisScaleMax   = 0.0f;
+                float32       tDebrisScaleMin   = 0.0f;
+                std::uint32_t tDebrisPrevalence = 0;
+                std::uint32_t tDebrisObstacle   = 0;
+
+                std::uint32_t tStringNum = 0;
+                std::string   tString = "";
+                if (tDebrisStringLength > 6)
+                {
+                    for (std::uint64_t j = 0; j < tDebrisStringLength; ++j)
+                    {
+                        if (tDebrisString[j] == ' ')
+                        {
+                            if (tStringNum == 0)
+                            {
+                                tDebrisName = tString;
+                            }
+                            else if (tStringNum == 1)
+                            {
+                                tDebrisScaleMax = std::stof(tString);
+                            }
+                            else if (tStringNum == 2)
+                            {
+                                tDebrisScaleMin = std::stof(tString);
+                            }
+                            else if (tStringNum == 3)
+                            {
+                                tDebrisPrevalence = std::stoi(tString);
+                            }
+                            else if (tStringNum == 4)
+                            {
+                                tDebrisObstacle = std::stoi(tString);
+                            }
+                            tStringNum++;
+                            tString = "";
+                        }
+                        else
+                        {
+                            tString += tDebrisString[j];
+                        }
+                    }
+                }
+                
+                // Process the debris data
+                m_currentMap->debris[i].name       = tDebrisName;
+                m_currentMap->debris[i].scaleMax   = tDebrisScaleMax;
+                m_currentMap->debris[i].scaleMin   = tDebrisScaleMin;
+                m_currentMap->debris[i].prevalence = tDebrisPrevalence;
+                m_currentMap->debris[i].obstacle   = tDebrisObstacle;
+            }
+        }
+
+        // Load map NPC Mob data
+        m_currentMap->npcMobCount = xmlMapFile.getInstanceCount("<npc_mob>");
+        if (m_currentMap->npcMobCount > 0)
+        {
+            m_currentMap->npcMob = new sMapNPCMob[m_currentMap->npcMobCount];
+            for (std::uint32_t i = 0; i < m_currentMap->npcMobCount; ++i)
+            {
+                // Load the data from the map file
+                std::string tNPCMobString = xmlMapFile.getString("<npc_mob>", i + 1);
+                tNPCMobString += "    ";
+                std::uint64_t tNPCMobStringLength = tNPCMobString.length();
+
+                std::string   tNPCMobName       = "";
+                float32       tNPCMobScaleMax   = 0.0f;
+                float32       tNPCMobScaleMin   = 0.0f;
+                std::uint32_t tNPCMobPrevalence = 0;
+
+                std::uint32_t tStringNum = 0;
+                std::string   tString = "";
+                if (tNPCMobStringLength > 6)
+                {
+                    for (std::uint64_t j = 0; j < tNPCMobStringLength; ++j)
+                    {
+                        if (tNPCMobString[j] == ' ')
+                        {
+                            if (tStringNum == 0)
+                            {
+                                tNPCMobName = tString;
+                            }
+                            else if (tStringNum == 1)
+                            {
+                                tNPCMobScaleMax = std::stof(tString);
+                            }
+                            else if (tStringNum == 2)
+                            {
+                                tNPCMobScaleMin = std::stof(tString);
+                            }
+                            else if (tStringNum == 3)
+                            {
+                                tNPCMobPrevalence = std::stoi(tString);
+                            }
+                            tStringNum++;
+                            tString = "";
+                        }
+                        else
+                        {
+                            tString += tNPCMobString[j];
+                        }
+                    }
+                }
+                
+                // Process the object data
+                m_currentMap->npcMob[i].name       = tNPCMobName;
+                m_currentMap->npcMob[i].scaleMax   = tNPCMobScaleMax;
+                m_currentMap->npcMob[i].scaleMin   = tNPCMobScaleMin;
+                m_currentMap->npcMob[i].prevalence = tNPCMobPrevalence;
+            }
+        }
+
+        // Load map NPC data
+        m_currentMap->npcCount = xmlMapFile.getInstanceCount("<npc>");
+        if (m_currentMap->npcCount > 0)
+        {
+            m_currentMap->npc = new sMapNPC[m_currentMap->npcCount];
+            for (std::uint32_t i = 0; i < m_currentMap->npcCount; ++i)
+            {
+                // Load the data from the map file
+                std::string tNPCString = xmlMapFile.getString("<npc>", i + 1);
+                tNPCString += "    ";
+                std::uint64_t tNPCStringLength = tNPCString.length();
+
+                std::uint32_t tNPCTile     = 0;
+                std::string   tNPCName     = "";
+                std::uint32_t tNPCIndex    = 0;
+                float32       tNPCScale    = 0.0f;
+                float32       tNPCRotation = 0.0f;
+        
+                std::uint32_t tStringNum = 0;
+                std::string   tString = "";
+                if (tNPCStringLength > 6)
+                {
+                    for (std::uint64_t j = 0; j < tNPCStringLength; ++j)
+                    {
+                        if (tNPCString[j] == ' ')
+                        {
+                            if (tStringNum == 0)
+                            {
+                                tNPCTile = std::stoi(tString);
+                            }
+                            else if (tStringNum == 1)
+                            {
+                                tNPCName = tString;
+                            }
+                            else if (tStringNum == 2)
+                            {
+                                tNPCIndex = std::stoi(tString);
+                            }
+                            else if (tStringNum == 3)
+                            {
+                                tNPCScale = std::stof(tString);
+                            }
+                            else if (tStringNum == 4)
+                            {
+                                tNPCRotation = std::stof(tString);
+                            }
+                            tStringNum++;
+                            tString = "";
+                        }
+                        else
+                        {
+                            tString += tNPCString[j];
+                        }
+                    }
+                }
+                
+                // Process the npc data
+                m_currentMap->npc[i].tile      = tNPCTile;
+                m_currentMap->npc[i].name      = tNPCName;
+                m_currentMap->npc[i].index     = tNPCIndex;
+                m_currentMap->npc[i].scale     = tNPCScale;
+                m_currentMap->npc[i].yRot      = tNPCRotation;
+            }
+        }
+        
         // Determine start location
         if (m_currentMap->playerStartPortal != 0) // Coming from previous map
         {
@@ -850,18 +1102,20 @@ void cMapManager::save(const std::string &_fileName)
             mapFile << "<debris_objects>" << std::endl;
             indent_level++;
             mapFile << std::string(indent_width * indent_level, ' ');
-            mapFile << "#object number, scale max, scale min, prevalence, obstacle" << std::endl;
-            /*
+            mapFile << "#object name, scale max, scale min, prevalence, obstacle" << std::endl;
+
             for (std::uint32_t i = 0; i < m_currentMap->debrisCount; ++i)
             {
                 mapFile << std::string(indent_width * indent_level, ' ');
                 mapFile << "<debris>";
-                mapFile << ((m_currentMap->room[i].y * m_currentMap->width) + m_currentMap->room[i].x) << " ";
-                mapFile << static_cast<std::uint32_t>(m_currentMap->room[i].type) << " ";
-                mapFile << -1;
+                mapFile << m_currentMap->debris[i].name << " ";
+                mapFile << m_currentMap->debris[i].scaleMax << " ";
+                mapFile << m_currentMap->debris[i].scaleMin << " ";
+                mapFile << m_currentMap->debris[i].prevalence << " ";
+                mapFile << m_currentMap->debris[i].obstacle;
                 mapFile << "</debris>" << std::endl;
             }
-            */
+            
             indent_level--;
             mapFile << std::string(indent_width * indent_level, ' ');
             mapFile << "</debris_objects>" << std::endl;
@@ -872,18 +1126,20 @@ void cMapManager::save(const std::string &_fileName)
             mapFile << "<objects>" << std::endl;
             indent_level++;
             mapFile << std::string(indent_width * indent_level, ' ');
-            mapFile << "#tile number, object number, scale, y-rotation, obstacle" << std::endl;
-            /*
-            for (std::uint32_t i = 0; i < m_currentMap->debrisCount; ++i)
+            mapFile << "#tile number, object name, scale, y-rotation, obstacle" << std::endl;
+
+            for (std::uint32_t i = 0; i < m_currentMap->objectCount; ++i)
             {
                 mapFile << std::string(indent_width * indent_level, ' ');
-                mapFile << "<debris>";
-                mapFile << ((m_currentMap->room[i].y * m_currentMap->width) + m_currentMap->room[i].x) << " ";
-                mapFile << static_cast<std::uint32_t>(m_currentMap->room[i].type) << " ";
-                mapFile << -1;
-                mapFile << "</debris>" << std::endl;
+                mapFile << "<object>";
+                mapFile << m_currentMap->object[i].tile << " ";
+                mapFile << m_currentMap->object[i].name << " ";
+                mapFile << m_currentMap->object[i].scale << " ";
+                mapFile << m_currentMap->object[i].yRot << " ";
+                mapFile << m_currentMap->object[i].obstacle;
+                mapFile << "</object>" << std::endl;
             }
-            */
+
             indent_level--;
             mapFile << std::string(indent_width * indent_level, ' ');
             mapFile << "</objects>" << std::endl;
@@ -894,18 +1150,19 @@ void cMapManager::save(const std::string &_fileName)
             mapFile << "<npc_mobs>" << std::endl;
             indent_level++;
             mapFile << std::string(indent_width * indent_level, ' ');
-            mapFile << "#npc number, scale max, scale min, prevalence" << std::endl;
-            /*
-            for (std::uint32_t i = 0; i < m_currentMap->debrisCount; ++i)
+            mapFile << "#npc name, scale max, scale min, prevalence" << std::endl;
+
+            for (std::uint32_t i = 0; i < m_currentMap->npcMobCount; ++i)
             {
                 mapFile << std::string(indent_width * indent_level, ' ');
-                mapFile << "<debris>";
-                mapFile << ((m_currentMap->room[i].y * m_currentMap->width) + m_currentMap->room[i].x) << " ";
-                mapFile << static_cast<std::uint32_t>(m_currentMap->room[i].type) << " ";
-                mapFile << -1;
-                mapFile << "</debris>" << std::endl;
+                mapFile << "<npc_mobs>";
+                mapFile << m_currentMap->npcMob[i].name << " ";
+                mapFile << m_currentMap->npcMob[i].scaleMax << " ";
+                mapFile << m_currentMap->npcMob[i].scaleMin << " ";
+                mapFile << m_currentMap->npcMob[i].prevalence;
+                mapFile << "</npc_mob>" << std::endl;
             }
-            */
+
             indent_level--;
             mapFile << std::string(indent_width * indent_level, ' ');
             mapFile << "</npc_mobs>" << std::endl;
@@ -916,18 +1173,20 @@ void cMapManager::save(const std::string &_fileName)
             mapFile << "<npcs>" << std::endl;
             indent_level++;
             mapFile << std::string(indent_width * indent_level, ' ');
-            mapFile << "#tile number, npc number, index (0 == random), scale, y-rotation" << std::endl;
-            /*
-            for (std::uint32_t i = 0; i < m_currentMap->debrisCount; ++i)
+            mapFile << "#tile number, npc name, index (0 == random), scale, y-rotation" << std::endl;
+
+            for (std::uint32_t i = 0; i < m_currentMap->npcCount; ++i)
             {
                 mapFile << std::string(indent_width * indent_level, ' ');
-                mapFile << "<debris>";
-                mapFile << ((m_currentMap->room[i].y * m_currentMap->width) + m_currentMap->room[i].x) << " ";
-                mapFile << static_cast<std::uint32_t>(m_currentMap->room[i].type) << " ";
-                mapFile << -1;
-                mapFile << "</debris>" << std::endl;
+                mapFile << "<npc>";
+                mapFile << m_currentMap->npc[i].tile << " ";
+                mapFile << m_currentMap->npc[i].name << " ";
+                mapFile << m_currentMap->npc[i].index << " ";
+                mapFile << m_currentMap->npc[i].scale << " ";
+                mapFile << m_currentMap->npc[i].yRot;
+                mapFile << "</npc>" << std::endl;
             }
-            */
+
             indent_level--;
             mapFile << std::string(indent_width * indent_level, ' ');
             mapFile << "</npcs>" << std::endl;
@@ -937,30 +1196,6 @@ void cMapManager::save(const std::string &_fileName)
             indent_level--;
             mapFile << "</map>" << std::endl;
 
-/*
-    <debris_objects>
-        #object number, scale max, scale min, prevalence, obstacle
-        <debris>bones 0.5 1.0 15 0</debris> # bones
-    </debris_objects>
-
-    <objects>
-        #tile number, object number, scale, y-rotation, obstacle
-      
-    </objects>
-
-    <npc_mobs>
-        #npc number, scale max, scale min, prevalence
-        <npc_mob>bat 0.5 1.0 5</npc_mob> # bat
-    </npc_mobs>
-
-    <npcs>
-        #tile number, npc number, index (0 == random), scale, y-rotation
-    </npcs>
-
-</map>
-*/
-            
-            
             // Clean up
             mapFile.close();
         }
