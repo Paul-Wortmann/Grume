@@ -57,8 +57,6 @@ class cMapManager : public tcLinkedList<sMap>
         void          unload(void);
         void          process(const float64 &_dt);
         bool          getLoading(void) { return m_loadRequest; };
-        
-        std::map<std::string, std::uint32_t> getMapList(void) { return m_mapList; };
 
         // Dimentions
         std::uint32_t getMapWidth(void) { return m_currentMap->width; };
@@ -66,6 +64,9 @@ class cMapManager : public tcLinkedList<sMap>
 
         // map_generate.cpp
         void          generateMap(sMap*& _map);
+        
+        // Map list - Used to store map names and associated generation seeds
+        std::map<std::string, std::uint32_t> mapList;
 
         // Test, delete!
         void applyObjects(sMap*& _map) { m_addObjectEntities(_map); };
@@ -85,8 +86,6 @@ class cMapManager : public tcLinkedList<sMap>
         std::uint32_t     m_musicSourceID   = 0;  // Map music audio source
         std::uint32_t     m_musicBufferID   = 0;  // Map music audio buffer
         bool              m_loadRequest     = false;
-        
-        std::map<std::string, std::uint32_t> m_mapList; // Used to store map names and associated generation seeds
 
         const float32 y_pos = -1.0f;       // Map floor position on the y axis
         const float32 tp    = 1.0f / 2.0f; // tile center positioning ( half model dimention)

@@ -6,8 +6,7 @@
     </information>
 
     <map_data>
-        <map>save_001.txt</map>
+        <map>test_1_town_1_001 651</map>
     </map_data>
 
 </save_file>
-

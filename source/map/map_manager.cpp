@@ -113,6 +113,38 @@ void cMapManager::m_freeData(sMap*& _map)
         _map->room = nullptr;
         _map->roomCount = 0;
     }
+    
+    // Delete object data
+    if (_map->object != nullptr)
+    { 
+        delete [] _map->object;
+        _map->object = nullptr;
+        _map->objectCount = 0;
+    }
+    
+    // Delete debris data
+    if (_map->debris != nullptr)
+    { 
+        delete [] _map->debris;
+        _map->debris = nullptr;
+        _map->debrisCount = 0;
+    }
+    
+    // Delete npcMob data
+    if (_map->npcMob != nullptr)
+    { 
+        delete [] _map->npcMob;
+        _map->npcMob = nullptr;
+        _map->npcMobCount = 0;
+    }
+    
+    // Delete npc data
+    if (_map->npc != nullptr)
+    { 
+        delete [] _map->npc;
+        _map->npc = nullptr;
+        _map->npcCount = 0;
+    }
 }
 
 void cMapManager::m_freeAll(void)
@@ -180,6 +212,14 @@ void cMapManager::load(const std::string &_fileName)
         m_currentMap->genData.seed      = seed;
         m_currentMap->genData.wallSize  = wall_width;
 
+        // If a seed already exists for the map, use it instead
+        std::map<std::string, std::uint32_t>::iterator it;
+        it = mapList.find(m_currentMap->name);
+        if (it != mapList.end())
+        {
+            m_currentMap->genData.seed = mapList[m_currentMap->name];
+        }
+        
         // Load the biome from file
         if (biomeFile.length() > 3)
         {
@@ -838,6 +878,9 @@ void cMapManager::load(const std::string &_fileName)
         {
             m_currentMap->floor->material = m_entityManager->loadMaterial(m_currentMap->biome->floorSpritesheet.fileName);
         }
+        
+        // Save map data to the list
+        mapList[m_currentMap->name] = m_currentMap->genData.seed;
 
         // Clean up
         xmlMapFile.free();
