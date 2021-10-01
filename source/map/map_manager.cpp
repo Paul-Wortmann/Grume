@@ -939,6 +939,7 @@ void cMapManager::save(const std::string &_fileName)
 
             // Map tag open
             mapFile << "<map>" << std::endl;
+            mapFile << std::endl;
             
             // Information
             indent_level++;

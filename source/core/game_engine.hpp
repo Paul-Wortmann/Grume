@@ -76,6 +76,9 @@ class cGameEngine
         // game_load.cpp
         void load(void);
 
+        // game_save.cpp
+        void save(const std::uint32_t &_slotNum);
+        
         sEntity*      m_entityHead        = nullptr;
         sEntity*      m_entityTemp        = nullptr;
 };

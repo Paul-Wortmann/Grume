@@ -59,7 +59,9 @@ void cGameEngine::load(void)
         // Initialize entities
         graphicsEngine.initializeEntities();
         animationEngine.initializeEntities();
-
+        
+        // Test load system by saving, DELETE once done
+        save(1);
     }
     // Clean up
     xmlGameFile.free();    

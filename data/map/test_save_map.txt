@@ -1,5 +1,6 @@
 <?xml version = "1.0" encoding = "UTF-8" ?>
 <map>
+
     <information>
         <name>test_1_town_1_001</name>
         <width>32</width>

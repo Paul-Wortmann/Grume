@@ -36,6 +36,7 @@
 #define FILE_PATH_MAP_PREFAB "data/map_prefab/"
 #define FILE_PATH_MODEL      "data/model/"
 #define FILE_PATH_MUSIC      "data/music/"
+#define FILE_PATH_SAVE       "save/"
 #define FILE_PATH_SHADER     "data/shader/"
 #define FILE_PATH_SKILLS     "data/skills/"
 #define FILE_PATH_SOUND      "data/sound/"

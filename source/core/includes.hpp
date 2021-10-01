@@ -60,6 +60,7 @@
 #include <cstring>
 #include <fstream>
 #include <iostream>
+#include <map>
 #include <sstream>
 #include <streambuf>
 #include <string>
