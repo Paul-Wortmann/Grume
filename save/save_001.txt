@@ -2,11 +2,12 @@
 <save_file>
 
     <information>
-        <name>save_001.txt</name>
+        <current_map>test_1_town_1_001</current_map>
+        <current_position>528</current_position>
     </information>
 
     <map_data>
-        <map>test_1_town_1_001 651</map>
+        <map>test_1_town_1_001 1633107965</map>
     </map_data>
 
 </save_file>

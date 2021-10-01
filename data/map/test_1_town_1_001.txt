@@ -24,7 +24,7 @@
         <tiles>2 2 2 2 1 1 1 2 2 1 1 1 2 2 2 2</tiles>
         <tiles>2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2</tiles>
         <generate>1</generate>
-        <seed>651</seed>
+        <seed>0</seed>
         <algorithm>1</algorithm>
         <wall_width>1</wall_width>
     </generation>

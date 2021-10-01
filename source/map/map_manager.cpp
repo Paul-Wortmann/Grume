@@ -80,7 +80,6 @@ void cMapManager::m_freeData(sMap*& _map)
                         delete [] _map->floor->model->mesh[i].index;
                         _map->floor->model->mesh[i].index = nullptr;
                     }
-                    
                 }
 
                 // Cleanup mesh data

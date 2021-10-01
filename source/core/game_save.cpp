@@ -49,7 +49,9 @@ void cGameEngine::save(const std::uint32_t &_slotNum)
         saveFile << "<information>" << std::endl;
         indent_level++;
         saveFile << std::string(indent_width * indent_level, ' ');
-        saveFile << "<name>" << fileName << "</name>" << std::endl;
+        saveFile << "<current_map>" << mapManager.getCurrentMapName() << "</current_map>" << std::endl;
+        saveFile << std::string(indent_width * indent_level, ' ');
+        saveFile << "<current_position>" << playerManager.getCurrentTile() << "</current_position>" << std::endl;
         indent_level--;
         saveFile << std::string(indent_width * indent_level, ' ');
         saveFile << "</information>" << std::endl;
@@ -59,15 +61,12 @@ void cGameEngine::save(const std::uint32_t &_slotNum)
         saveFile << std::string(indent_width * indent_level, ' ');
         saveFile << "<map_data>" << std::endl;
         indent_level++;
-        
-        // Note
         std::map<std::string, std::uint32_t>::iterator it;
         for (it = mapManager.mapList.begin(); it != mapManager.mapList.end(); it++)
         {
             saveFile << std::string(indent_width * indent_level, ' ');
             saveFile << "<map>" << it->first << " " << it->second << "</map>" << std::endl;
         }
-
         indent_level--;
         saveFile << std::string(indent_width * indent_level, ' ');
         saveFile << "</map_data>" << std::endl;
