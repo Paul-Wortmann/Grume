@@ -6,8 +6,18 @@
         <current_position>528</current_position>
     </information>
 
+    <player>
+        <level>0</level>
+        <experience>0</experience>
+    </player>
+
+    <quest>
+        <001>0</001>
+    </quest>
+
     <map_data>
-        <map>test_1_town_1_001 1633107965</map>
+        <map>test_1_town_1_001 1633191105</map>
     </map_data>
 
 </save_file>
+

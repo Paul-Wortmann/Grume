@@ -26,22 +26,34 @@
 
 #include "../core/game_database.hpp"
 #include "../core/includes.hpp"
-#include "../core/linked_list.hpp"
-#include "ui_defines.hpp"
 #include "../entity/entity_manager.hpp"
+#include "ui_defines.hpp"
 
-class cUIManager : public tcLinkedList<sUIComponent>
+class cUIManager
 {
     public:
+        // ui_manager.cpp
         void initialize(cEntityManager* _entityManager);
         void terminate(void);
+        void process(const std::uint32_t &_dt);
+
+        std::uint32_t getNumMenu(void) { return m_numMenu; };
+        sUIMenu*      getMenu(void) { return m_menu; };
+
+        // ui_manager_load.cpp
         void load(const std::string &_fileName);
 
     protected:
 
     private:
+        // member variables
+        std::uint32_t   m_numMenu       = 0;
+        sUIMenu        *m_menu          = nullptr;
+        
+        // member pointer handles
         cEntityManager* m_entityManager = nullptr;
 
+        // internal member functions
         void m_freeAll(void);
         void m_freeData(sUIComponent*& _pointer);
 };

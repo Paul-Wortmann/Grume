@@ -32,7 +32,7 @@
 #include "graphics_engine_shader.hpp"
 #include "../core/includes.hpp"
 #include "../entity/entity_define.hpp"
-#include "../ui/ui_defines.hpp"
+#include "../ui/ui_manager.hpp"
 
 class cGraphicsEngine
 {
@@ -49,7 +49,7 @@ class cGraphicsEngine
         bool      windowClosed(void) {return m_windowClosed; }
         void      setEntityHead(sEntity* _entity) { m_entityHead = _entity; }
         void      initializeEntities(void) { m_initEntities(); }
-        void      setUIHead(sUIComponent* _UIComponent) { m_UIHead = _UIComponent; }
+        void      setUIPointer(cUIManager* _UIManager) { m_UIManager = _UIManager; }
         void      initializeUIComponents(void) { m_initUIComponents(); }
         bool      getKeyState(const uint32 &_key) { return m_keyMap[_key]; }
         void      setPlayerLightPosition(const glm::vec3 &_position) { m_playerLight->position = _position; }
@@ -81,8 +81,7 @@ class cGraphicsEngine
         sEntity*        m_entityTemp         = nullptr;
 
         // UI component management
-        sUIComponent*   m_UIHead             = nullptr;
-        sUIComponent*   m_UITemp             = nullptr;
+        cUIManager*     m_UIManager          = nullptr;
 
         // General
         GLFWwindow*     m_window             = nullptr;

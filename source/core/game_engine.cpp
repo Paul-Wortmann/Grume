@@ -87,7 +87,7 @@ std::uint32_t cGameEngine::initialize(const std::uint32_t &_argc, char** _argv)
         playerManager.setGraphicsEnginePointer(&graphicsEngine);
         mapManager.setPlayerPointer(&playerManager);
         graphicsEngine.setEntityHead(entityManager.getHead());
-        graphicsEngine.setUIHead(uiManager.getHead());
+        graphicsEngine.setUIPointer(&uiManager);
         graphicsEngine.initializeUIComponents();
         physicsEngine.initialize();
         animationEngine.initialize();
@@ -152,6 +152,7 @@ void cGameEngine::process(void)
         // -----------------------------------------
         graphicsEngine.setLoading(mapManager.getLoading());
         
+        uiManager.process(dt);
         graphicsEngine.process(dt);
         animationEngine.process(dt);
         npcManager.process(dt);

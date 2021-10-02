@@ -30,48 +30,26 @@ void cUIManager::initialize(cEntityManager* _entityManager)
 
 void cUIManager::terminate(void)
 {
-    m_freeAll();
-}
-
-void cUIManager::m_freeData(sUIComponent*& _pointer)
-{
-
-}
-
-void cUIManager::m_freeAll(void)
-{
-    for (sUIComponent* temp = getHead(); temp != nullptr; temp = temp->next)
+    // free menu data
+    if (m_menu != nullptr)
     {
-        m_freeData(temp);
-    }
-}
-
-void cUIManager::load(const std::string &_fileName)
-{
-    // Load the ui database file
-    cXML xmlUiFile;
-    xmlUiFile.load(FILE_PATH_UI + _fileName);
-    
-    // If ui database file contains data:
-    if (xmlUiFile.lineCount() > 0)
-    {
-        // get a count of ui components
-        std::uint32_t uicCount = xmlUiFile.getInstanceCount("<component>");
-        
-        // load each ui component
-        for (std::uint32_t i = 0; i < uicCount; ++i)
+        // free component data
+        for (std::uint32_t i = 0; i < m_numMenu; ++i)
         {
-            sUIComponent* temp = getNew();
-            temp->name = xmlUiFile.getString("<name>", i + 1);
-            temp->position = xmlUiFile.getVec3("<position>", i + 1);
-            temp->textureNormal = m_entityManager->loadTexture(xmlUiFile.getString("<texture_normal>", i + 1));
-            temp->textureHover  = m_entityManager->loadTexture(xmlUiFile.getString("<texture_hover>", i + 1));
-            temp->textureActive = m_entityManager->loadTexture(xmlUiFile.getString("<texture_activated>", i + 1));
+            if (m_menu[i].component != nullptr)
+            {
+                delete [] m_menu[i].component;
+                m_menu[i].component = nullptr;
+            }
         }
+        
+        // delete menus
+        delete [] m_menu;
+        m_menu = nullptr;
     }
-    
-    // Cleanup
-    xmlUiFile.free();
-
 }
 
+void cUIManager::process(const std::uint32_t &_dt)
+{
+    
+}

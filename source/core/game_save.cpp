@@ -57,6 +57,30 @@ void cGameEngine::save(const std::uint32_t &_slotNum)
         saveFile << "</information>" << std::endl;
         saveFile << std::endl;
         
+        // Player
+        saveFile << std::string(indent_width * indent_level, ' ');
+        saveFile << "<player>" << std::endl;
+        indent_level++;
+        saveFile << std::string(indent_width * indent_level, ' ');
+        saveFile << "<level>" << "0" << "</level>" << std::endl;
+        saveFile << std::string(indent_width * indent_level, ' ');
+        saveFile << "<experience>" << "0" << "</experience>" << std::endl;
+        indent_level--;
+        saveFile << std::string(indent_width * indent_level, ' ');
+        saveFile << "</player>" << std::endl;
+        saveFile << std::endl;
+        
+        // Quest
+        saveFile << std::string(indent_width * indent_level, ' ');
+        saveFile << "<quest>" << std::endl;
+        indent_level++;
+        saveFile << std::string(indent_width * indent_level, ' ');
+        saveFile << "<001>" << "0" << "</001>" << std::endl;
+        indent_level--;
+        saveFile << std::string(indent_width * indent_level, ' ');
+        saveFile << "</quest>" << std::endl;
+        saveFile << std::endl;
+        
         // Map data
         saveFile << std::string(indent_width * indent_level, ' ');
         saveFile << "<map_data>" << std::endl;
@@ -75,6 +99,7 @@ void cGameEngine::save(const std::uint32_t &_slotNum)
         // Save tag close
         indent_level--;
         saveFile << "</save_file>" << std::endl;
+        saveFile << std::endl;
 
         // Clean up
         saveFile.close();

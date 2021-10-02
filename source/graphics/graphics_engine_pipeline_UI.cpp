@@ -86,25 +86,33 @@ void cGraphicsEngine::m_pui_render(void)
     glBindTexture(GL_TEXTURE_2D, m_p3_renderTextureID);
     glBindVertexArray(m_pui_VAO);
     glDrawArrays(GL_TRIANGLES, 0, 6);
+
 /*
-    // Render UI components
+    // menu
+    sUIMenu* menu = m_UIManager->getMenu();
     glm::vec3 tPosition = glm::vec3(0.0f, 0.0f, 0.0f);
-    for(m_UITemp = m_UIHead; m_UITemp != nullptr; m_UITemp = m_UITemp->next)
+
+    // render each ui menu
+    for (std::uint32_t m = 0; m < m_UIManager->getNumMenu(); ++m)
     {
-        // Shader uniforms
-        tPosition += glm::vec3(0.0f, 0.0f, -0.1f);
-        m_pui_modelMatrix = glm::translate(m_pui_modelMatrix, tPosition);
-        glUniformMatrix4fv(m_pui_loc_modelMatrix, 1, GL_FALSE, glm::value_ptr(m_pui_modelMatrix));
-
-        if (m_pui_VAO != 0)
+        // render each ui menu's ui components
+        for (std::uint32_t c = 0; c < menu[m].numComponent; ++c)
         {
-            // Texture
-            glActiveTexture(GL_TEXTURE0);
-            glBindTexture(GL_TEXTURE_2D, m_UITemp->textureNormal->ID);
+            // Shader uniforms
+            tPosition += glm::vec3(0.0f, 0.0f, -0.1f);
+            m_pui_modelMatrix = glm::translate(m_pui_modelMatrix, tPosition);
+            glUniformMatrix4fv(m_pui_loc_modelMatrix, 1, GL_FALSE, glm::value_ptr(m_pui_modelMatrix));
 
-            // VAO
-            glBindVertexArray(m_pui_VAO);
-            glDrawArrays(GL_TRIANGLES, 0, 6);
+            if (m_pui_VAO != 0)
+            {
+                // Texture
+                glActiveTexture(GL_TEXTURE0);
+                glBindTexture(GL_TEXTURE_2D, menu[m].component[c].textureNormal->ID);
+
+                // VAO
+                glBindVertexArray(m_pui_VAO);
+                glDrawArrays(GL_TRIANGLES, 0, 6);
+            }
         }
     }
 */

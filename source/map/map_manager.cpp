@@ -28,7 +28,7 @@ void cMapManager::initialize(cEntityManager* _entityManager)
     m_entityManager = _entityManager;
     m_biomeManager.initialize(m_entityManager);
 
-    // Create a new emptyt map data structure
+    // Create a new empty map data structure
     if (m_currentMap == nullptr)
     {
         m_currentMap = getNew();
@@ -1238,6 +1238,7 @@ void cMapManager::save(const std::string &_fileName)
             // Map tag close
             indent_level--;
             mapFile << "</map>" << std::endl;
+            mapFile << std::endl;
 
             // Clean up
             mapFile.close();
