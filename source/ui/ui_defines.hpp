@@ -42,7 +42,7 @@ struct sUIComponent
 
     // Base
     glm::vec3       position       = glm::vec3(0.0f, 0.0f, 0.0f); // relative to owner
-    glm::vec3       scale          = glm::vec3(1.0f, 1.0f, 1.0f);
+    glm::vec2       scale          = glm::vec2(1.0f, 1.0f);
     glm::vec3       rotation       = glm::vec3(0.0f, 0.0f, 0.0f);
 
     // Graphics
@@ -67,7 +67,7 @@ struct sUIMenu
 
     // Base
     glm::vec3       position       = glm::vec3(0.0f, 0.0f, 0.0f); // relative to window
-    glm::vec3       scale          = glm::vec3(1.0f, 1.0f, 1.0f);
+    glm::vec2       scale          = glm::vec2(1.0f, 1.0f);
     glm::vec3       rotation       = glm::vec3(0.0f, 0.0f, 0.0f);
 
     // Graphics
