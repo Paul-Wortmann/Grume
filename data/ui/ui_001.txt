@@ -7,13 +7,13 @@
         <menu_texture_hover>ui/hud_001.png</menu_texture_hover>
         <menu_texture_activated>ui/hud_001.png</menu_texture_activated>
         <menu_position>0.0f, 0.0f, 0.0f</menu_position>
-        <menu_component_count>1<menu_component_count>
+        <menu_component_count>2<menu_component_count>
         <component>
             <component_name>hud_back</component_name>
             <component_texture_normal>ui/hud/hud_003_back_001.png</component_texture_normal>
             <component_texture_hover>ui/hud/hud_003_back_001.png</component_texture_hover>
             <component_texture_activated>ui/hud/hud_003_back_001.png</component_texture_activated>
-            <component_position>0.0f, 0.0f, 0.0f</component_position>
+            <component_position>0.0f, -9.0f, -0.01f</component_position>
             <component_scale>1.0f, 0.10f</component_scale>
         </component>
 
@@ -22,7 +22,7 @@
             <component_texture_normal>ui/hud/hud_003_front_001.png</component_texture_normal>
             <component_texture_hover>ui/hud/hud_003_front_001.png</component_texture_hover>
             <component_texture_activated>ui/hud/hud_003_front_001.png</component_texture_activated>
-            <component_position>0.0f, 0.0f, 0.0f</component_position>
+            <component_position>0.0f, -9.0f, -0.02f</component_position>
             <component_scale>1.0f, 0.10f</component_scale>
         </component>
     </menu>

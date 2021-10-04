@@ -62,6 +62,7 @@ void cUIManager::load(const std::string &_fileName)
                 m_menu[m].component[c].textureNormal = m_entityManager->loadTexture(xmlUiFile.getString("<component_texture_normal>", c + 1 + startComponent));
                 m_menu[m].component[c].textureHover  = m_entityManager->loadTexture(xmlUiFile.getString("<component_texture_hover>", c + 1 + startComponent));
                 m_menu[m].component[c].textureActive = m_entityManager->loadTexture(xmlUiFile.getString("<component_texture_activated>", c + 1 + startComponent));
+                m_menu[m].component[c].position = xmlUiFile.getVec3("<component_position>", c + 1 + startComponent);
                 m_menu[m].component[c].scale = xmlUiFile.getVec2("<component_scale>", c + 1 + startComponent);
             }
 

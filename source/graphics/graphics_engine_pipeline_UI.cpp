@@ -87,10 +87,10 @@ void cGraphicsEngine::m_pui_render(void)
     glBindVertexArray(m_pui_VAO);
     glDrawArrays(GL_TRIANGLES, 0, 6);
 
-/*
+
     // menu
     sUIMenu* menu = m_UIManager->getMenu();
-    glm::vec3 tPosition = glm::vec3(0.0f, 0.0f, 0.0f);
+    glm::vec3 tPosition = glm::vec3(0.0f, 0.0f, -0.01f);
 
     // render each ui menu
     for (std::uint32_t m = 0; m < m_UIManager->getNumMenu(); ++m)
@@ -100,9 +100,7 @@ void cGraphicsEngine::m_pui_render(void)
         {
             // Shader uniforms
             m_pui_modelMatrix = glm::mat4(1);
-            m_pui_modelMatrix = glm::translate(m_pui_modelMatrix, glm::vec3(menu[m].component[c].scale, 1.0f));
-            tPosition += glm::vec3(0.0f, 0.0f, -0.1f);
-            m_pui_modelMatrix = glm::translate(m_pui_modelMatrix, tPosition);
+            m_pui_modelMatrix = glm::scale(m_pui_modelMatrix, glm::vec3(menu[m].component[c].scale.x, menu[m].component[c].scale.y, 1.0f));
             m_pui_modelMatrix = glm::translate(m_pui_modelMatrix, menu[m].component[c].position);
             glUniformMatrix4fv(m_pui_loc_modelMatrix, 1, GL_FALSE, glm::value_ptr(m_pui_modelMatrix));
 
@@ -118,5 +116,5 @@ void cGraphicsEngine::m_pui_render(void)
             }
         }
     }
-*/
+
 }
