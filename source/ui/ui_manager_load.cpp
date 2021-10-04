@@ -42,9 +42,9 @@ void cUIManager::load(const std::string &_fileName)
         // load each ui menu
         for (std::uint32_t m = 0; m < m_numMenu; ++m)
         {
-            
             // load menu data
             m_menu[m].name = xmlUiFile.getString("<menu_name>", m + 1);
+            m_menu[m].enabled = (xmlUiFile.getInteger("<menu_enabled>", m + 1) != 0);
             m_menu[m].textureNormal = m_entityManager->loadTexture(xmlUiFile.getString("<menu_texture_normal>", m + 1));
             m_menu[m].position = xmlUiFile.getVec3("<menu_position>", m + 1);
             m_menu[m].scale = xmlUiFile.getVec2("<menu_scale>", m + 1);

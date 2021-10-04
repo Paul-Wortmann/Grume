@@ -4,6 +4,7 @@
 # Action bar
     <menu>
         <menu_name>action_bar</menu_name>
+        <menu_enabled>1</menu_enabled>
         <menu_texture_normal>ui/action_bar/action_bar_003_back_001.png</menu_texture_normal>
         <menu_position>0.0f, -0.9f, -0.01f</menu_position>
         <menu_scale>1.0f, 0.10f</menu_scale>
@@ -53,6 +54,7 @@
 # Main menu
     <menu>
         <menu_name>main_menu</menu_name>
+        <menu_enabled>0</menu_enabled>
         <menu_texture_normal>ui/menu/main_menu_001.png</menu_texture_normal>
         <menu_position>0.0f, 0.1f, -0.01f</menu_position>
         <menu_scale>0.254166667f, 0.677777778f</menu_scale>

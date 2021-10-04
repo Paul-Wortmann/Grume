@@ -43,7 +43,7 @@ struct sUIComponent
 
     // Infomation
     std::string      name          = "";
-    bool             enabled       = true;
+    bool             enabled       = false;
     eComponentState  state         = eComponentState::componentNormal;
 
     // Base
