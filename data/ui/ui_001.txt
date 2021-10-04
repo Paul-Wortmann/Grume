@@ -2,27 +2,45 @@
 <ui>
 
     <menu>
-        <menu_name>hud</menu_name>
-        <menu_texture_normal>ui/hud_001.png</menu_texture_normal>
-        <menu_texture_hover>ui/hud_001.png</menu_texture_hover>
-        <menu_texture_activated>ui/hud_001.png</menu_texture_activated>
-        <menu_position>0.0f, 0.0f, 0.0f</menu_position>
-        <menu_component_count>2<menu_component_count>
+        <menu_name>action_bar</menu_name>
+        <menu_texture_normal>ui/action_bar/action_bar_003_back_001.png</menu_texture_normal>
+        <menu_position>0.0f, -0.9f, -0.01f</menu_position>
+        <menu_scale>1.0f, 0.10f</menu_scale>
+        <menu_component_count>4<menu_component_count>
+
         <component>
-            <component_name>hud_back</component_name>
-            <component_texture_normal>ui/hud/hud_003_back_001.png</component_texture_normal>
-            <component_texture_hover>ui/hud/hud_003_back_001.png</component_texture_hover>
-            <component_texture_activated>ui/hud/hud_003_back_001.png</component_texture_activated>
-            <component_position>0.0f, -9.0f, -0.01f</component_position>
-            <component_scale>1.0f, 0.10f</component_scale>
+            <component_name>health_bar</component_name>
+            <component_texture_normal>ui/action_bar/action_bar_003_health_bar_001.png</component_texture_normal>
+            <component_texture_hover>ui/action_bar/action_bar_003_health_bar_001.png</component_texture_hover>
+            <component_texture_activated>ui/action_bar/action_bar_003_health_bar_001.png</component_texture_activated>
+            <component_position>-0.797f, 0.01f, -0.02f</component_position>
+            <component_scale>0.179166667f, 0.07f</component_scale>
         </component>
 
         <component>
-            <component_name>hud_cover</component_name>
-            <component_texture_normal>ui/hud/hud_003_front_001.png</component_texture_normal>
-            <component_texture_hover>ui/hud/hud_003_front_001.png</component_texture_hover>
-            <component_texture_activated>ui/hud/hud_003_front_001.png</component_texture_activated>
-            <component_position>0.0f, -9.0f, -0.02f</component_position>
+            <component_name>mana_bar</component_name>
+            <component_texture_normal>ui/action_bar/action_bar_003_mana_bar_001.png</component_texture_normal>
+            <component_texture_hover>ui/action_bar/action_bar_003_mana_bar_001.png</component_texture_hover>
+            <component_texture_activated>ui/action_bar/action_bar_003_mana_bar_001.png</component_texture_activated>
+            <component_position>0.797f, 0.01f, -0.02f</component_position>
+            <component_scale>0.179166667f, 0.07f</component_scale>
+        </component>
+
+        <component>
+            <component_name>exp_bar</component_name>
+            <component_texture_normal>ui/action_bar/action_bar_003_exp_bar_001.png</component_texture_normal>
+            <component_texture_hover>ui/action_bar/action_bar_003_exp_bar_001.png</component_texture_hover>
+            <component_texture_activated>ui/action_bar/action_bar_003_exp_bar_001.png</component_texture_activated>
+            <component_position>0.0f, -0.075f, -0.02f</component_position>
+            <component_scale>0.99f, 0.01f</component_scale>
+        </component>
+
+        <component>
+            <component_name>action_bar_cover</component_name>
+            <component_texture_normal>ui/action_bar/action_bar_003_front_001.png</component_texture_normal>
+            <component_texture_hover>ui/action_bar/action_bar_003_front_001.png</component_texture_hover>
+            <component_texture_activated>ui/action_bar/action_bar_003_front_001.png</component_texture_activated>
+            <component_position>0.0f, 0.0f, -0.03f</component_position>
             <component_scale>1.0f, 0.10f</component_scale>
         </component>
     </menu>

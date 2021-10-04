@@ -28,6 +28,13 @@
 #include "../entity/entity_texture.hpp"
 #include "../entity/entity_model.hpp"
 
+enum class eComponentState : std::uint16_t 
+{
+    componentNormal    = 0, // Normal
+    componentHover     = 1, // Hover
+    componentActivated = 2, // Activated
+};
+
 struct sUIComponent
 {
     // Linked list
@@ -37,8 +44,7 @@ struct sUIComponent
     // Infomation
     std::string      name          = "";
     bool             enabled       = true;
-    bool             hover         = false;
-    bool             activated     = false;
+    eComponentState  state         = eComponentState::componentNormal;
 
     // Base
     glm::vec3       position       = glm::vec3(0.0f, 0.0f, 0.0f); // relative to owner
@@ -62,8 +68,6 @@ struct sUIMenu
     // Infomation
     std::string      name          = "";
     bool             enabled       = true;
-    bool             hover         = false;
-    bool             activated     = false;
 
     // Base
     glm::vec3       position       = glm::vec3(0.0f, 0.0f, 0.0f); // relative to window
@@ -74,8 +78,6 @@ struct sUIMenu
     sEntityModel*    model         = nullptr;
     glm::mat4        modelMatrix   = glm::mat4(1);
     sEntityTexture*  textureNormal = nullptr;
-    sEntityTexture*  textureHover  = nullptr;
-    sEntityTexture*  textureActive = nullptr;
 };
 
 #endif //UI_HPP
