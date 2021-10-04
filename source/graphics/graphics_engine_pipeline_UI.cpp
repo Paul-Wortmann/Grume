@@ -87,7 +87,7 @@ void cGraphicsEngine::m_pui_render(void)
     glBindVertexArray(m_pui_VAO);
     glDrawArrays(GL_TRIANGLES, 0, 6);
 
-
+/*
     // menu
     sUIMenu* menu = m_UIManager->getMenu();
 
@@ -144,5 +144,5 @@ void cGraphicsEngine::m_pui_render(void)
             }
         }
     }
-
+*/
 }

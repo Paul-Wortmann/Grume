@@ -42,10 +42,6 @@ void cUIManager::load(const std::string &_fileName)
         // load each ui menu
         for (std::uint32_t m = 0; m < m_numMenu; ++m)
         {
-
-            // get a count of ui components for the current menu
-            m_menu[m].numComponent = xmlUiFile.getInteger("<menu_component_count>", m + 1);
-            m_menu[m].component = new sUIComponent[m_menu[m].numComponent];
             
             // load menu data
             m_menu[m].name = xmlUiFile.getString("<menu_name>", m + 1);
@@ -53,15 +49,23 @@ void cUIManager::load(const std::string &_fileName)
             m_menu[m].position = xmlUiFile.getVec3("<menu_position>", m + 1);
             m_menu[m].scale = xmlUiFile.getVec2("<menu_scale>", m + 1);
 
-            // load each ui component
-            for (std::uint32_t c = 0; c < m_menu[m].numComponent; ++c)
+            // get a count of ui components for the current menu
+            m_menu[m].numComponent = xmlUiFile.getInteger("<menu_component_count>", m + 1);
+            if (m_menu[m].numComponent > 0)
             {
-                m_menu[m].component[c].name = xmlUiFile.getString("<component_name>", c + 1 + startComponent);
-                m_menu[m].component[c].textureNormal = m_entityManager->loadTexture(xmlUiFile.getString("<component_texture_normal>", c + 1 + startComponent));
-                m_menu[m].component[c].textureHover  = m_entityManager->loadTexture(xmlUiFile.getString("<component_texture_hover>", c + 1 + startComponent));
-                m_menu[m].component[c].textureActive = m_entityManager->loadTexture(xmlUiFile.getString("<component_texture_activated>", c + 1 + startComponent));
-                m_menu[m].component[c].position = xmlUiFile.getVec3("<component_position>", c + 1 + startComponent);
-                m_menu[m].component[c].scale = xmlUiFile.getVec2("<component_scale>", c + 1 + startComponent);
+                // Allocate memory
+                m_menu[m].component = new sUIComponent[m_menu[m].numComponent];
+
+                // load each ui component
+                for (std::uint32_t c = 0; c < m_menu[m].numComponent; ++c)
+                {
+                    m_menu[m].component[c].name = xmlUiFile.getString("<component_name>", c + 1 + startComponent);
+                    m_menu[m].component[c].textureNormal = m_entityManager->loadTexture(xmlUiFile.getString("<component_texture_normal>", c + 1 + startComponent));
+                    m_menu[m].component[c].textureHover  = m_entityManager->loadTexture(xmlUiFile.getString("<component_texture_hover>", c + 1 + startComponent));
+                    m_menu[m].component[c].textureActive = m_entityManager->loadTexture(xmlUiFile.getString("<component_texture_activated>", c + 1 + startComponent));
+                    m_menu[m].component[c].position = xmlUiFile.getVec3("<component_position>", c + 1 + startComponent);
+                    m_menu[m].component[c].scale = xmlUiFile.getVec2("<component_scale>", c + 1 + startComponent);
+                }
             }
 
             // Update the component start number for the following menu to be loaded
