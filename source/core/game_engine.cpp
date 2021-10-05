@@ -162,6 +162,12 @@ void cGameEngine::process(void)
         audioManager.process(dt);
         entityManager.process(dt);
 
+        // Main menu - GLFW_KEY_ESCAPE
+        if (graphicsEngine.getKeyState(GLFW_KEY_ESCAPE))
+        {
+            graphicsEngine.setWindowClosed();
+        }
+
         // Screenshot - GLFW_KEY_F12
         if (graphicsEngine.getKeyState(GLFW_KEY_F12))
         {

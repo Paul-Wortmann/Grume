@@ -50,12 +50,6 @@ void cGraphicsEngine::sm_glfwKeyCallback(GLFWwindow* _window, int32 _key, int32 
     {
         graphicsEngine->m_keyMap[_key] = false;
     }
-
-    // Test case
-    if (_key == GLFW_KEY_ESCAPE && _action == GLFW_PRESS)
-    {
-        glfwSetWindowShouldClose(_window, GLFW_TRUE);
-    }
 }
 
 // GLFW Mouse cursor position callback
