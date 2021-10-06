@@ -41,6 +41,7 @@ void cGraphicsEngine::sm_glfwKeyCallback(GLFWwindow* _window, int32 _key, int32 
     else if (_action == GLFW_RELEASE)
     {
         graphicsEngine->m_keyMap[_key] = false;
+        graphicsEngine->m_keyReadyMap[_key] = true;
     }
     else if (_action == GLFW_REPEAT)
     {

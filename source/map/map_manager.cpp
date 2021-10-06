@@ -885,7 +885,7 @@ void cMapManager::load(const std::string &_fileName)
         xmlMapFile.free();
         
         // Test map saving, DELETE once finished save function.
-        save("test_save_map.txt");
+        //save("test_save_map.txt");
     }
 }
 

@@ -53,6 +53,8 @@ class cGraphicsEngine
         void      setUIPointer(cUIManager* _UIManager) { m_UIManager = _UIManager; }
         void      initializeUIComponents(void) { m_initUIComponents(); }
         bool      getKeyState(const uint32 &_key) { return m_keyMap[_key]; }
+        bool      getKeyReadyState(const uint32 &_key) { return m_keyReadyMap[_key]; }
+        void      setKeyReadyState(const uint32 &_key, const bool &_state) { m_keyReadyMap[_key] = _state; }
         void      setPlayerLightPosition(const glm::vec3 &_position) { m_playerLight->position = _position; }
         glm::vec3 getPlayerLightPosition(void) { return m_playerLight->position; }
         glm::vec3 getMouseTerrainPosition(void) { return m_camera.getMousePositionTerrain(m_mouseX, m_mouseY); }
@@ -107,6 +109,7 @@ class cGraphicsEngine
 
         // IO
         std::unordered_map<int32, boolean> m_keyMap;
+        std::unordered_map<int32, boolean> m_keyReadyMap;
         float32 m_mouseX = 0.0f;
         float32 m_mouseY = 0.0f;
 

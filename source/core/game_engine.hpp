@@ -51,7 +51,8 @@ class cGameEngine
         {
             startup  = 0,
             active   = 1,
-            shutdown = 2
+            pause    = 2,
+            shutdown = 3
         };
         eGameState m_state = eGameState::startup;
 

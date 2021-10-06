@@ -39,6 +39,8 @@ class cUIManager
 
         std::uint32_t getNumMenu(void) { return m_numMenu; };
         sUIMenu*      getMenu(void) { return m_menu; };
+        bool          getMenuEnabled(const std::string &_name);
+        void          setMenuEnabled(const std::string &_name, const bool &_state);
 
         // ui_manager_load.cpp
         void load(const std::string &_fileName);

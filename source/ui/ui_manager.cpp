@@ -49,6 +49,35 @@ void cUIManager::terminate(void)
     }
 }
 
+bool cUIManager::getMenuEnabled(const std::string &_name)
+{
+    if (m_menu != nullptr)
+    {
+        for (std::uint32_t i = 0; i < m_numMenu; ++i)
+        {
+            if (m_menu[i].name.compare(_name) == 0)
+            {
+                return m_menu[i].enabled;
+            }
+        }
+    }
+    return false;
+}
+
+void cUIManager::setMenuEnabled(const std::string &_name, const bool &_state)
+{
+    if (m_menu != nullptr)
+    {
+        for (std::uint32_t i = 0; i < m_numMenu; ++i)
+        {
+            if (m_menu[i].name.compare(_name) == 0)
+            {
+                m_menu[i].enabled = _state;
+            }
+        }
+    }
+}
+
 void cUIManager::process(const std::uint32_t &_dt)
 {
     

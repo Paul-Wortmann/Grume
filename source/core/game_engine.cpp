@@ -162,10 +162,17 @@ void cGameEngine::process(void)
         audioManager.process(dt);
         entityManager.process(dt);
 
-        // Main menu - GLFW_KEY_ESCAPE
-        if (graphicsEngine.getKeyState(GLFW_KEY_ESCAPE))
+        // Instant Quit - GLFW_KEY_ESCAPE
+        if (graphicsEngine.getKeyReadyState(GLFW_KEY_ESCAPE))
         {
             graphicsEngine.setWindowClosed();
+        }
+
+        // Main menu - GLFW_KEY_F1
+        if (graphicsEngine.getKeyReadyState(GLFW_KEY_F1))
+        {
+            uiManager.setMenuEnabled("main_menu", !uiManager.getMenuEnabled("main_menu"));
+            graphicsEngine.setKeyReadyState(GLFW_KEY_F1, false);
         }
 
         // Screenshot - GLFW_KEY_F12
