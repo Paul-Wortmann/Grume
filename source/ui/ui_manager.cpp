@@ -80,5 +80,5 @@ void cUIManager::setMenuEnabled(const std::string &_name, const bool &_state)
 
 void cUIManager::process(const std::uint32_t &_dt)
 {
-    
+    //if mouse over a menu?
 }

@@ -1,5 +1,10 @@
 ﻿<?xml version = "1.0" encoding = "UTF-8" ?>
 <ui>
+    <information>
+        # All menu's and their components' scales are calculated with:
+        <ui_scale_x>1920</ui_scale_x>
+        <ui_scale_y>1080</ui_scale_y>
+    </information>
 
 # Action bar
     <menu>
@@ -172,5 +177,68 @@
 
     </menu>
     
+# Inventory
+    <menu>
+        <menu_name>inventory</menu_name>
+        <menu_enabled>0</menu_enabled>
+        <menu_texture_normal>ui/menu/inventory_menu_001.png</menu_texture_normal>
+        <menu_position>0.0f, 0.1f, -0.01f</menu_position>
+        <menu_scale>0.254166667f, 0.677777778f</menu_scale>
+        <menu_component_count>1<menu_component_count>
+
+        <component>
+            <component_name>button_0_close</component_name>
+            <component_texture_normal>ui/menu/button_close_001_h.png</component_texture_normal>
+            <component_texture_hover>ui/menu/button_close_001_h.png</component_texture_hover>
+            <component_texture_activated>ui/menu/button_close_001_h.png</component_texture_activated>
+            <component_position>0.2325f, 0.64125f, -0.02f</component_position>
+            <component_scale>0.021875f, 0.037962963f</component_scale>
+            <component_function>MENU_CLOSE</component_function>
+        </component>
+
+    </menu>
+
+# Character
+    <menu>
+        <menu_name>character</menu_name>
+        <menu_enabled>0</menu_enabled>
+        <menu_texture_normal>ui/menu/character_menu_001.png</menu_texture_normal>
+        <menu_position>0.0f, 0.1f, -0.01f</menu_position>
+        <menu_scale>0.254166667f, 0.677777778f</menu_scale>
+        <menu_component_count>1<menu_component_count>
+
+        <component>
+            <component_name>button_0_close</component_name>
+            <component_texture_normal>ui/menu/button_close_001_h.png</component_texture_normal>
+            <component_texture_hover>ui/menu/button_close_001_h.png</component_texture_hover>
+            <component_texture_activated>ui/menu/button_close_001_h.png</component_texture_activated>
+            <component_position>0.2325f, 0.64125f, -0.02f</component_position>
+            <component_scale>0.021875f, 0.037962963f</component_scale>
+            <component_function>MENU_CLOSE</component_function>
+        </component>
+
+    </menu>
+
+# Skills
+    <menu>
+        <menu_name>skills</menu_name>
+        <menu_enabled>0</menu_enabled>
+        <menu_texture_normal>ui/menu/skills_menu_001.png</menu_texture_normal>
+        <menu_position>0.0f, 0.1f, -0.01f</menu_position>
+        <menu_scale>0.254166667f, 0.677777778f</menu_scale>
+        <menu_component_count>1<menu_component_count>
+
+        <component>
+            <component_name>button_0_close</component_name>
+            <component_texture_normal>ui/menu/button_close_001_h.png</component_texture_normal>
+            <component_texture_hover>ui/menu/button_close_001_h.png</component_texture_hover>
+            <component_texture_activated>ui/menu/button_close_001_h.png</component_texture_activated>
+            <component_position>0.2325f, 0.64125f, -0.02f</component_position>
+            <component_scale>0.021875f, 0.037962963f</component_scale>
+            <component_function>MENU_CLOSE</component_function>
+        </component>
+
+    </menu>
+
 </ui>
 

@@ -41,6 +41,7 @@ class cUIManager
         sUIMenu*      getMenu(void) { return m_menu; };
         bool          getMenuEnabled(const std::string &_name);
         void          setMenuEnabled(const std::string &_name, const bool &_state);
+        bool          getMouseOverMenu(void) { return m_mouseOverMenu; };
 
         // ui_manager_load.cpp
         void load(const std::string &_fileName);
@@ -51,6 +52,9 @@ class cUIManager
         // member variables
         std::uint32_t   m_numMenu       = 0;
         sUIMenu        *m_menu          = nullptr;
+        std::uint32_t   m_ui_scale_x    = 1920;
+        std::uint32_t   m_ui_scale_y    = 1080;
+        bool            m_mouseOverMenu = false;
         
         // member pointer handles
         cEntityManager* m_entityManager = nullptr;

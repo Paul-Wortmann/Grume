@@ -37,7 +37,7 @@ std::uint32_t cGameEngine::run(const std::uint32_t &_argc, char** _argv)
     uint32 status = initialize(_argc, _argv);
     
     // Enter the main loop
-    while (m_state == eGameState::active)
+    while (m_state != eGameState::shutdown)
     {
         process();
     }
@@ -152,11 +152,15 @@ void cGameEngine::process(void)
         // -----------------------------------------
         graphicsEngine.setLoading(mapManager.getLoading());
         
+        if (m_state != eGameState::pause)
+        {
+            npcManager.process(dt);
+            playerManager.process(dt);
+        }
+        
         uiManager.process(dt);
         graphicsEngine.process(dt);
         animationEngine.process(dt);
-        npcManager.process(dt);
-        playerManager.process(dt);
         mapManager.process(dt);
         physicsEngine.process(dt);
         audioManager.process(dt);
@@ -168,30 +172,69 @@ void cGameEngine::process(void)
             graphicsEngine.setWindowClosed();
         }
 
+        // Instant Quit - GLFW_KEY_P
+        if (graphicsEngine.getKeyReadyState(GLFW_KEY_P))
+        {
+            graphicsEngine.setKeyReadyState(GLFW_KEY_P, false);
+            m_state = (m_state == eGameState::pause) ? eGameState::active : eGameState::pause;
+        }
+
         // Main menu - GLFW_KEY_F1
         if (graphicsEngine.getKeyReadyState(GLFW_KEY_F1))
         {
+            uiManager.setMenuEnabled("inventory", false);
+            uiManager.setMenuEnabled("character", false);
+            uiManager.setMenuEnabled("skills", false);
             uiManager.setMenuEnabled("main_menu", !uiManager.getMenuEnabled("main_menu"));
             graphicsEngine.setKeyReadyState(GLFW_KEY_F1, false);
         }
 
+        // Inventory - GLFW_KEY_I
+        if (graphicsEngine.getKeyReadyState(GLFW_KEY_I))
+        {
+            uiManager.setMenuEnabled("main_menu", false);
+            uiManager.setMenuEnabled("inventory", !uiManager.getMenuEnabled("inventory"));
+            graphicsEngine.setKeyReadyState(GLFW_KEY_I, false);
+        }
+
+        // Inventory - GLFW_KEY_C
+        if (graphicsEngine.getKeyReadyState(GLFW_KEY_C))
+        {
+            uiManager.setMenuEnabled("main_menu", false);
+            uiManager.setMenuEnabled("character", !uiManager.getMenuEnabled("character"));
+            graphicsEngine.setKeyReadyState(GLFW_KEY_C, false);
+        }
+
+        // Inventory - GLFW_KEY_S
+        if (graphicsEngine.getKeyReadyState(GLFW_KEY_S))
+        {
+            uiManager.setMenuEnabled("main_menu", false);
+            uiManager.setMenuEnabled("skills", !uiManager.getMenuEnabled("skills"));
+            graphicsEngine.setKeyReadyState(GLFW_KEY_S, false);
+        }
+
         // Screenshot - GLFW_KEY_F12
-        if (graphicsEngine.getKeyState(GLFW_KEY_F12))
+        if (graphicsEngine.getKeyReadyState(GLFW_KEY_F12))
         {
             entityManager.saveScreenShot("screenshot.png");
+            graphicsEngine.setKeyReadyState(GLFW_KEY_F12, false);
         }
         
         // Use input
         if (graphicsEngine.getKeyState(GLFW_MOUSE_BUTTON_LEFT))
         {
             // If mouse over UI
+            if (uiManager.getMouseOverMenu())
+            {
+                
+            }
             
             // Else:
             playerManager.setMouseClick(graphicsEngine.getMouseTerrainPosition());
         }
         
         // If player has moved update camera and player light
-        if (playerManager.getMoved())
+        if ((m_state != eGameState::pause) && (playerManager.getMoved()))
         {
             // Update player light
             glm::vec3 tPlayerPosition = playerManager.getPosition();

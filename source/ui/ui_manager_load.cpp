@@ -32,6 +32,10 @@ void cUIManager::load(const std::string &_fileName)
     // If ui database file contains data:
     if (xmlUiFile.lineCount() > 0)
     {
+        // Load UI information first, we need this information to pre-calculate position data
+        m_ui_scale_x = xmlUiFile.getInteger("<ui_scale_x>");
+        m_ui_scale_y = xmlUiFile.getInteger("<ui_scale_y>");
+
         // used to index into the xml file for menu components
         std::uint32_t startComponent = 0;
         
@@ -48,6 +52,12 @@ void cUIManager::load(const std::string &_fileName)
             m_menu[m].textureNormal = m_entityManager->loadTexture(xmlUiFile.getString("<menu_texture_normal>", m + 1));
             m_menu[m].position = xmlUiFile.getVec3("<menu_position>", m + 1);
             m_menu[m].scale = xmlUiFile.getVec2("<menu_scale>", m + 1);
+            
+            // Calculate menu bounds
+            m_menu[m].positionMin.x = m_menu[m].position.x - (static_cast<float>(m_ui_scale_x) * m_menu[m].scale.x / 2.0f);
+            m_menu[m].positionMin.y = m_menu[m].position.y - (static_cast<float>(m_ui_scale_y) * m_menu[m].scale.y / 2.0f);
+            m_menu[m].positionMax.x = m_menu[m].position.x + (static_cast<float>(m_ui_scale_x) * m_menu[m].scale.x / 2.0f);
+            m_menu[m].positionMax.y = m_menu[m].position.y + (static_cast<float>(m_ui_scale_y) * m_menu[m].scale.y / 2.0f);
 
             // get a count of ui components for the current menu
             m_menu[m].numComponent = xmlUiFile.getInteger("<menu_component_count>", m + 1);
@@ -65,6 +75,12 @@ void cUIManager::load(const std::string &_fileName)
                     m_menu[m].component[c].textureActive = m_entityManager->loadTexture(xmlUiFile.getString("<component_texture_activated>", c + 1 + startComponent));
                     m_menu[m].component[c].position = xmlUiFile.getVec3("<component_position>", c + 1 + startComponent);
                     m_menu[m].component[c].scale = xmlUiFile.getVec2("<component_scale>", c + 1 + startComponent);
+
+                    // Calculate component bounds
+                    m_menu[m].component[c].positionMin.x = m_menu[m].component[c].position.x - (static_cast<float>(m_ui_scale_x) * m_menu[m].component[c].scale.x / 2.0f);
+                    m_menu[m].component[c].positionMin.y = m_menu[m].component[c].position.y - (static_cast<float>(m_ui_scale_y) * m_menu[m].component[c].scale.y / 2.0f);
+                    m_menu[m].component[c].positionMax.x = m_menu[m].component[c].position.x + (static_cast<float>(m_ui_scale_x) * m_menu[m].component[c].scale.x / 2.0f);
+                    m_menu[m].component[c].positionMax.y = m_menu[m].component[c].position.y + (static_cast<float>(m_ui_scale_y) * m_menu[m].component[c].scale.y / 2.0f);
                 }
             }
 

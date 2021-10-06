@@ -50,7 +50,9 @@ struct sUIComponent
     glm::vec3       position       = glm::vec3(0.0f, 0.0f, 0.0f); // relative to owner
     glm::vec2       scale          = glm::vec2(1.0f, 1.0f);
     glm::vec3       rotation       = glm::vec3(0.0f, 0.0f, 0.0f);
-
+    glm::vec2       positionMin    = glm::vec2(0.0f, 0.0f); // calculated on load, min position (top left corner)
+    glm::vec2       positionMax    = glm::vec2(0.0f, 0.0f); // calculated on load, max position (bottom right corner)
+    
     // Graphics
     sEntityModel*    model         = nullptr;
     glm::mat4        modelMatrix   = glm::mat4(1);
@@ -73,6 +75,8 @@ struct sUIMenu
     glm::vec3       position       = glm::vec3(0.0f, 0.0f, 0.0f); // relative to window
     glm::vec2       scale          = glm::vec2(1.0f, 1.0f);
     glm::vec3       rotation       = glm::vec3(0.0f, 0.0f, 0.0f);
+    glm::vec2       positionMin    = glm::vec2(0.0f, 0.0f); // calculated on load, min position (top left corner)
+    glm::vec2       positionMax    = glm::vec2(0.0f, 0.0f); // calculated on load, max position (bottom right corner)
 
     // Graphics
     sEntityModel*    model         = nullptr;
