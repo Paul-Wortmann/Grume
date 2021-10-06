@@ -172,7 +172,7 @@ void cGameEngine::process(void)
             graphicsEngine.setWindowClosed();
         }
 
-        // Instant Quit - GLFW_KEY_P
+        // Pause game - GLFW_KEY_P
         if (graphicsEngine.getKeyReadyState(GLFW_KEY_P))
         {
             graphicsEngine.setKeyReadyState(GLFW_KEY_P, false);
@@ -182,34 +182,46 @@ void cGameEngine::process(void)
         // Main menu - GLFW_KEY_F1
         if (graphicsEngine.getKeyReadyState(GLFW_KEY_F1))
         {
+            bool menuState = !uiManager.getMenuEnabled("main_menu");
+            uiManager.setMenuEnabled("main_menu", menuState);
+            graphicsEngine.setKeyReadyState(GLFW_KEY_F1, false);
+            m_state = (menuState) ? eGameState::pause : eGameState::active;
+            
             uiManager.setMenuEnabled("inventory", false);
             uiManager.setMenuEnabled("character", false);
             uiManager.setMenuEnabled("skills", false);
-            uiManager.setMenuEnabled("main_menu", !uiManager.getMenuEnabled("main_menu"));
-            graphicsEngine.setKeyReadyState(GLFW_KEY_F1, false);
         }
 
         // Inventory - GLFW_KEY_I
         if (graphicsEngine.getKeyReadyState(GLFW_KEY_I))
         {
-            uiManager.setMenuEnabled("main_menu", false);
-            uiManager.setMenuEnabled("inventory", !uiManager.getMenuEnabled("inventory"));
+            bool menuState = !uiManager.getMenuEnabled("inventory");
+            uiManager.setMenuEnabled("inventory", menuState);
             graphicsEngine.setKeyReadyState(GLFW_KEY_I, false);
+            m_state = (menuState) ? eGameState::pause : eGameState::active;
+
+            uiManager.setMenuEnabled("main_menu", false);
         }
 
         // Inventory - GLFW_KEY_C
         if (graphicsEngine.getKeyReadyState(GLFW_KEY_C))
         {
-            uiManager.setMenuEnabled("main_menu", false);
-            uiManager.setMenuEnabled("character", !uiManager.getMenuEnabled("character"));
+            bool menuState = !uiManager.getMenuEnabled("character");
+            uiManager.setMenuEnabled("character", menuState);
             graphicsEngine.setKeyReadyState(GLFW_KEY_C, false);
+            m_state = (menuState) ? eGameState::pause : eGameState::active;
+
+            uiManager.setMenuEnabled("main_menu", false);
         }
 
         // Inventory - GLFW_KEY_S
         if (graphicsEngine.getKeyReadyState(GLFW_KEY_S))
         {
-            uiManager.setMenuEnabled("main_menu", false);
-            uiManager.setMenuEnabled("skills", !uiManager.getMenuEnabled("skills"));
+            bool menuState = !uiManager.getMenuEnabled("skills");
+            uiManager.setMenuEnabled("skills", menuState);
+            graphicsEngine.setKeyReadyState(GLFW_KEY_S, false);
+            m_state = (menuState) ? eGameState::pause : eGameState::active;
+
             graphicsEngine.setKeyReadyState(GLFW_KEY_S, false);
         }
 
