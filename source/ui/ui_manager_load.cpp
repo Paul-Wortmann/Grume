@@ -50,21 +50,25 @@ void cUIManager::load(const std::string &_fileName)
             m_menu[m].size = xmlUiFile.getVec2("<menu_size>", m + 1);
             
             // Calculate scale
-            m_menu[m].scale = glm::vec2(m_menu[m].size.x / m_window_w, m_menu[m].size.y / m_window_h);
+            m_menu[m].scale = glm::vec2(m_menu[m].size.x, m_menu[m].size.y);
+            
+            // Calculate menu size in pixels
+            std::uint32_t menuSizePixels_x = (m_menu[m].size.x * m_window_w);
+            std::uint32_t menuSizePixels_y = (m_menu[m].size.y * m_window_h);
+            
+            // Calculate menu position in pixels
+            std::uint32_t menuPosPixels_x = (1 - m_menu[m].position.x) * m_window_w / 2;
+            std::uint32_t menuPosPixels_y = (1 - m_menu[m].position.y) * m_window_h / 2;
             
             // Calculate menu bounds
-            //m_menu[m].positionMin.x = m_menu[m].position.x - (m_ui_scale_x_half * m_menu[m].scale.x) + m_ui_scale_x_half;
-            //m_menu[m].positionMax.x = m_menu[m].position.x + (m_ui_scale_x_half * m_menu[m].scale.x) + m_ui_scale_x_half;
-            //m_menu[m].positionMin.y = m_menu[m].position.y - (m_ui_scale_y_half * m_menu[m].scale.y) + m_ui_scale_y_half;
-            //m_menu[m].positionMax.y = m_menu[m].position.y + (m_ui_scale_y_half * m_menu[m].scale.y) + m_ui_scale_y_half;
+            m_menu[m].positionMin.x = menuPosPixels_x - (menuSizePixels_x / 2);
+            m_menu[m].positionMin.y = menuPosPixels_y - (menuSizePixels_y / 2);
+            m_menu[m].positionMax.x = menuPosPixels_x + (menuSizePixels_x / 2);
+            m_menu[m].positionMax.y = menuPosPixels_y + (menuSizePixels_y / 2);
 
-//calculate scale
-//calculate poistions max min
-
-
-            std::cout << "Menu: " << m << std::endl;
-            std::cout << "Min x: " << m_menu[m].positionMin.x << " Max x: " << m_menu[m].positionMax.x << std::endl;
-            std::cout << "Min y: " << m_menu[m].positionMin.y << " Max y: " << m_menu[m].positionMax.y << std::endl;
+            //std::cout << "Menu: " << m << std::endl;
+            //std::cout << "Min x: " << m_menu[m].positionMin.x << " Max x: " << m_menu[m].positionMax.x << std::endl;
+            //std::cout << "Min y: " << m_menu[m].positionMin.y << " Max y: " << m_menu[m].positionMax.y << std::endl;
 
             // get a count of ui components for the current menu
             m_menu[m].numComponent = xmlUiFile.getInteger("<menu_component_count>", m + 1);
@@ -84,16 +88,22 @@ void cUIManager::load(const std::string &_fileName)
                     m_menu[m].component[c].size = xmlUiFile.getVec2("<component_size>", c + 1 + startComponent);
             
                     // Calculate scale
-                    m_menu[m].component[c].scale = glm::vec2(m_menu[m].component[c].size.x / m_window_w, m_menu[m].component[c].size.y / m_window_h);
+                    m_menu[m].component[c].scale = glm::vec2(m_menu[m].component[c].size.x, m_menu[m].component[c].size.y);
 
-//calculate scale
-//calculate poistions max min
+                    // Calculate menu size in pixels
+                    std::uint32_t menuCompSizePixels_x = (m_menu[m].component[c].size.x * m_window_w);
+                    std::uint32_t menuCompSizePixels_y = (m_menu[m].component[c].size.y * m_window_h);
 
-                    // Calculate component bounds
-                    //m_menu[m].component[c].positionMin.x = m_menu[m].component[c].position.x - (static_cast<float>(m_ui_scale_x) * m_menu[m].component[c].scale.x / 2.0f);
-                    //m_menu[m].component[c].positionMin.y = m_menu[m].component[c].position.y - (static_cast<float>(m_ui_scale_y) * m_menu[m].component[c].scale.y / 2.0f);
-                    //m_menu[m].component[c].positionMax.x = m_menu[m].component[c].position.x + (static_cast<float>(m_ui_scale_x) * m_menu[m].component[c].scale.x / 2.0f);
-                    //m_menu[m].component[c].positionMax.y = m_menu[m].component[c].position.y + (static_cast<float>(m_ui_scale_y) * m_menu[m].component[c].scale.y / 2.0f);
+                    // Calculate menu position in pixels
+                    std::uint32_t menuCompPosPixels_x = (1 - m_menu[m].component[c].position.x) * m_window_w / 2;
+                    std::uint32_t menuCompPosPixels_y = (1 - m_menu[m].component[c].position.y) * m_window_h / 2;
+
+                    // Calculate menu bounds
+                    m_menu[m].component[c].positionMin.x = menuCompPosPixels_x - (menuCompSizePixels_x / 2);
+                    m_menu[m].component[c].positionMin.y = menuCompPosPixels_y - (menuCompSizePixels_y / 2);
+                    m_menu[m].component[c].positionMax.x = menuCompPosPixels_x + (menuCompSizePixels_x / 2);
+                    m_menu[m].component[c].positionMax.y = menuCompPosPixels_y + (menuCompSizePixels_y / 2);
+
                 }
             }
 
