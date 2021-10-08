@@ -43,6 +43,7 @@ class cUIManager
         void          setMenuEnabled(const std::string &_name, const bool &_state);
         bool          getMouseOverMenu(void) { return m_mouseOverMenu; };
         void          setMouseClicked(const glm::vec2 &_mousePosition) { m_mouseClicked = true; m_mousePosition = _mousePosition; };
+        void          setWindowSize(const std::uint32_t &_width, const std::uint32_t &_height) { m_window_w = _width; m_window_h = _height; };
 
         // ui_manager_load.cpp
         void load(const std::string &_fileName);
@@ -53,8 +54,8 @@ class cUIManager
         // member variables
         std::uint32_t   m_numMenu       = 0;
         sUIMenu        *m_menu          = nullptr;
-        std::uint32_t   m_ui_scale_x    = 1920;
-        std::uint32_t   m_ui_scale_y    = 1080;
+        std::uint32_t   m_window_w      = 1920;
+        std::uint32_t   m_window_h      = 1080;
         bool            m_mouseOverMenu = false;
         bool            m_mouseClicked  = false;
         glm::vec2       m_mousePosition = glm::vec2(0.0f, 0.0f);

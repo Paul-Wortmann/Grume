@@ -178,7 +178,7 @@ uint32 cGraphicsEngine::initialize(void)
             glEnable(GL_BLEND);
             glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
             checkOpenGL();
-
+ 
             //Camera --------------------------------
             m_camera.initialize(m_fieldOfView, m_framebufferSize_w, m_framebufferSize_h);
             //m_camera.setPosition(glm::vec3(4.0f,8.0f,4.0f));

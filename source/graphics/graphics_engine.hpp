@@ -46,6 +46,8 @@ class cGraphicsEngine
         void      terminate(void);
         void      process(const float32 &_dt);
         void      setDisplay(const uint32 &_w, const uint32 &_h, const bool &_f) {m_window_w = _w; m_window_h = _h; m_fullscreen = _f; };
+        uint32    getWindow_w(void) { return m_window_w; }
+        uint32    getWindow_h(void) { return m_window_h; }
         bool      windowClosed(void) {return m_windowClosed; }
         void      setWindowClosed(void) { m_windowClosed = true; glfwSetWindowShouldClose(m_window, GLFW_TRUE); }
         void      setEntityHead(sEntity* _entity) { m_entityHead = _entity; }

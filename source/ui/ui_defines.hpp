@@ -47,11 +47,11 @@ struct sUIComponent
     eComponentState  state         = eComponentState::componentNormal;
 
     // Base
-    glm::vec3       position       = glm::vec3(0.0f, 0.0f, 0.0f); // relative to owner
-    glm::vec2       scale          = glm::vec2(1.0f, 1.0f);
-    glm::vec3       rotation       = glm::vec3(0.0f, 0.0f, 0.0f);
-    glm::vec2       positionMin    = glm::vec2(0.0f, 0.0f); // calculated on load, min position (top left corner)
-    glm::vec2       positionMax    = glm::vec2(0.0f, 0.0f); // calculated on load, max position (bottom right corner)
+    glm::vec3       position       = glm::vec3(0.0f, 0.0f, 0.0f); // Position in OpenGL coordinate space (-1 to 1)
+    glm::vec2       scale          = glm::vec2(1.0f, 1.0f); // Scale relative to OpenGL window coordinates (-1 to 1)
+    glm::vec2       size           = glm::vec2(1, 1); // Size in pixels
+    glm::vec2       positionMin    = glm::vec2(0, 0); // (In pixels) calculated on load, min position (top left corner)
+    glm::vec2       positionMax    = glm::vec2(0, 0); // (In pixels) calculated on load, max position (bottom right corner)
     
     // Graphics
     sEntityModel*    model         = nullptr;
@@ -72,11 +72,11 @@ struct sUIMenu
     bool             enabled       = false;
 
     // Base
-    glm::vec3       position       = glm::vec3(0.0f, 0.0f, 0.0f); // relative to window
-    glm::vec2       scale          = glm::vec2(1.0f, 1.0f);
-    glm::vec3       rotation       = glm::vec3(0.0f, 0.0f, 0.0f);
-    glm::vec2       positionMin    = glm::vec2(0.0f, 0.0f); // calculated on load, min position (top left corner)
-    glm::vec2       positionMax    = glm::vec2(0.0f, 0.0f); // calculated on load, max position (bottom right corner)
+    glm::vec3       position       = glm::vec3(0.0f, 0.0f, 0.0f); // Position in OpenGL coordinate space (-1 to 1)
+    glm::vec2       scale          = glm::vec2(1.0f, 1.0f); // Scale relative to OpenGL window coordinates (-1 to 1)
+    glm::vec2       size           = glm::vec2(1, 1); // Size in pixels
+    glm::vec2       positionMin    = glm::vec2(0, 0); // (In pixels) calculated on load, min position (top left corner)
+    glm::vec2       positionMax    = glm::vec2(0, 0); // (In pixels) calculated on load, max position (bottom right corner)
 
     // Graphics
     sEntityModel*    model         = nullptr;
