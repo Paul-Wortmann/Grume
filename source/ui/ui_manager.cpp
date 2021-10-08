@@ -34,12 +34,12 @@ void cUIManager::terminate(void)
     if (m_menu != nullptr)
     {
         // free component data
-        for (std::uint32_t i = 0; i < m_numMenu; ++i)
+        for (std::uint32_t m = 0; m < m_numMenu; ++m)
         {
-            if (m_menu[i].component != nullptr)
+            if (m_menu[m].component != nullptr)
             {
-                delete [] m_menu[i].component;
-                m_menu[i].component = nullptr;
+                delete [] m_menu[m].component;
+                m_menu[m].component = nullptr;
             }
         }
         
@@ -53,11 +53,11 @@ bool cUIManager::getMenuEnabled(const std::string &_name)
 {
     if (m_menu != nullptr)
     {
-        for (std::uint32_t i = 0; i < m_numMenu; ++i)
+        for (std::uint32_t m = 0; m < m_numMenu; ++m)
         {
-            if (m_menu[i].name.compare(_name) == 0)
+            if (m_menu[m].name.compare(_name) == 0)
             {
-                return m_menu[i].enabled;
+                return m_menu[m].enabled;
             }
         }
     }
@@ -68,11 +68,11 @@ void cUIManager::setMenuEnabled(const std::string &_name, const bool &_state)
 {
     if (m_menu != nullptr)
     {
-        for (std::uint32_t i = 0; i < m_numMenu; ++i)
+        for (std::uint32_t m = 0; m < m_numMenu; ++m)
         {
-            if (m_menu[i].name.compare(_name) == 0)
+            if (m_menu[m].name.compare(_name) == 0)
             {
-                m_menu[i].enabled = _state;
+                m_menu[m].enabled = _state;
             }
         }
     }
@@ -81,4 +81,19 @@ void cUIManager::setMenuEnabled(const std::string &_name, const bool &_state)
 void cUIManager::process(const std::uint32_t &_dt)
 {
     //if mouse over a menu?
+    if (m_menu != nullptr)
+    {
+        m_mouseOverMenu = false;
+        for (std::uint32_t m = 0; m < m_numMenu; ++m)
+        {
+            if ((m_menu[m].enabled) &&
+                (m_menu[m].positionMin.x < m_mousePosition.x) &&
+                (m_menu[m].positionMax.x > m_mousePosition.x) &&
+                (m_menu[m].positionMin.y < m_mousePosition.y) &&
+                (m_menu[m].positionMax.y > m_mousePosition.y))
+            {
+                m_mouseOverMenu = true;
+            }
+        }
+    }
 }

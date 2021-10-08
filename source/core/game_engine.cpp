@@ -166,6 +166,11 @@ void cGameEngine::process(void)
         audioManager.process(dt);
         entityManager.process(dt);
 
+
+
+        // User input handeling
+        // -----------------------------------------
+
         // Instant Quit - GLFW_KEY_ESCAPE
         if (graphicsEngine.getKeyReadyState(GLFW_KEY_ESCAPE))
         {
@@ -231,19 +236,27 @@ void cGameEngine::process(void)
             entityManager.saveScreenShot("screenshot.png");
             graphicsEngine.setKeyReadyState(GLFW_KEY_F12, false);
         }
-        
-        // Use input
-        if (graphicsEngine.getKeyState(GLFW_MOUSE_BUTTON_LEFT))
+
+        // If mouse over UI
+        if (uiManager.getMouseOverMenu())
         {
-            // If mouse over UI
-            if (uiManager.getMouseOverMenu())
+            //std::cout << "Mouse over menu!" << std::endl;
+            //std::cout << "Mouse x: " << graphicsEngine.getMousePosition().x << " y: " << graphicsEngine.getMousePosition().y << std::endl;
+            // Use input
+            if (graphicsEngine.getKeyState(GLFW_MOUSE_BUTTON_LEFT))
             {
-                
+                uiManager.setMouseClicked(graphicsEngine.getMousePosition());
             }
-            
-            // Else:
-            playerManager.setMouseClick(graphicsEngine.getMouseTerrainPosition());
         }
+        else
+        {
+            // Use input
+            if (graphicsEngine.getKeyState(GLFW_MOUSE_BUTTON_LEFT))
+            {
+                playerManager.setMouseClick(graphicsEngine.getMouseTerrainPosition());
+            }
+        }
+
         
         // If player has moved update camera and player light
         if ((m_state != eGameState::pause) && (playerManager.getMoved()))

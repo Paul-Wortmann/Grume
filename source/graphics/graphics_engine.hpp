@@ -58,6 +58,7 @@ class cGraphicsEngine
         void      setPlayerLightPosition(const glm::vec3 &_position) { m_playerLight->position = _position; }
         glm::vec3 getPlayerLightPosition(void) { return m_playerLight->position; }
         glm::vec3 getMouseTerrainPosition(void) { return m_camera.getMousePositionTerrain(m_mouseX, m_mouseY); }
+        glm::vec2 getMousePosition(void) { return glm::vec2(m_mouseX, m_mouseY); }
         glm::vec3 getCameraTarget(void) { return m_camera.getTarget(); };
         void      setCameraTarget(glm::vec3 _target) { m_camera.setTarget(_target); };
         glm::vec3 getCameraPosition(void) { return m_camera.getPosition(); };

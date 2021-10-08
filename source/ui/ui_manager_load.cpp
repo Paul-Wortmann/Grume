@@ -35,6 +35,8 @@ void cUIManager::load(const std::string &_fileName)
         // Load UI information first, we need this information to pre-calculate position data
         m_ui_scale_x = xmlUiFile.getInteger("<ui_scale_x>");
         m_ui_scale_y = xmlUiFile.getInteger("<ui_scale_y>");
+        float m_ui_scale_x_half = m_ui_scale_x / 2.0f;
+        float m_ui_scale_y_half = m_ui_scale_y / 2.0f;
 
         // used to index into the xml file for menu components
         std::uint32_t startComponent = 0;
@@ -54,10 +56,14 @@ void cUIManager::load(const std::string &_fileName)
             m_menu[m].scale = xmlUiFile.getVec2("<menu_scale>", m + 1);
             
             // Calculate menu bounds
-            m_menu[m].positionMin.x = m_menu[m].position.x - (static_cast<float>(m_ui_scale_x) * m_menu[m].scale.x / 2.0f);
-            m_menu[m].positionMin.y = m_menu[m].position.y - (static_cast<float>(m_ui_scale_y) * m_menu[m].scale.y / 2.0f);
-            m_menu[m].positionMax.x = m_menu[m].position.x + (static_cast<float>(m_ui_scale_x) * m_menu[m].scale.x / 2.0f);
-            m_menu[m].positionMax.y = m_menu[m].position.y + (static_cast<float>(m_ui_scale_y) * m_menu[m].scale.y / 2.0f);
+            m_menu[m].positionMin.x = m_menu[m].position.x - (m_ui_scale_x_half * m_menu[m].scale.x) + m_ui_scale_x_half;
+            m_menu[m].positionMax.x = m_menu[m].position.x + (m_ui_scale_x_half * m_menu[m].scale.x) + m_ui_scale_x_half;
+            m_menu[m].positionMin.y = m_menu[m].position.y - (m_ui_scale_y_half * m_menu[m].scale.y) + m_ui_scale_y_half;
+            m_menu[m].positionMax.y = m_menu[m].position.y + (m_ui_scale_y_half * m_menu[m].scale.y) + m_ui_scale_y_half;
+
+            std::cout << "Menu: " << m << std::endl;
+            std::cout << "Min x: " << m_menu[m].positionMin.x << " Max x: " << m_menu[m].positionMax.x << std::endl;
+            std::cout << "Min y: " << m_menu[m].positionMin.y << " Max y: " << m_menu[m].positionMax.y << std::endl;
 
             // get a count of ui components for the current menu
             m_menu[m].numComponent = xmlUiFile.getInteger("<menu_component_count>", m + 1);

@@ -69,7 +69,7 @@ struct sUIMenu
 
     // Infomation
     std::string      name          = "";
-    bool             enabled       = true;
+    bool             enabled       = false;
 
     // Base
     glm::vec3       position       = glm::vec3(0.0f, 0.0f, 0.0f); // relative to window
