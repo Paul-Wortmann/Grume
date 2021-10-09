@@ -49,7 +49,7 @@ void cUIManager::load(const std::string &_fileName)
             m_menu[m].position = xmlUiFile.getVec3("<menu_position>", m + 1);
             m_menu[m].size = xmlUiFile.getVec2("<menu_size>", m + 1);
             
-            // Calculate scale
+            // Calculate menu scale
             m_menu[m].scale = glm::vec2(m_menu[m].size.x, m_menu[m].size.y);
             
             // Calculate menu size in pixels
@@ -66,10 +66,6 @@ void cUIManager::load(const std::string &_fileName)
             m_menu[m].positionMax.x = menuPosPixels_x + (menuSizePixels_x / 2);
             m_menu[m].positionMax.y = menuPosPixels_y + (menuSizePixels_y / 2);
 
-            //std::cout << "Menu: " << m << std::endl;
-            //std::cout << "Min x: " << m_menu[m].positionMin.x << " Max x: " << m_menu[m].positionMax.x << std::endl;
-            //std::cout << "Min y: " << m_menu[m].positionMin.y << " Max y: " << m_menu[m].positionMax.y << std::endl;
-
             // get a count of ui components for the current menu
             m_menu[m].numComponent = xmlUiFile.getInteger("<menu_component_count>", m + 1);
             if (m_menu[m].numComponent > 0)
@@ -85,25 +81,39 @@ void cUIManager::load(const std::string &_fileName)
                     m_menu[m].component[c].textureHover  = m_entityManager->loadTexture(xmlUiFile.getString("<component_texture_hover>", c + 1 + startComponent));
                     m_menu[m].component[c].textureActive = m_entityManager->loadTexture(xmlUiFile.getString("<component_texture_activated>", c + 1 + startComponent));
                     m_menu[m].component[c].position = xmlUiFile.getVec3("<component_position>", c + 1 + startComponent);
+                    m_menu[m].component[c].position += glm::vec3(m_menu[m].position.x, m_menu[m].position.y, 0.0f);
                     m_menu[m].component[c].size = xmlUiFile.getVec2("<component_size>", c + 1 + startComponent);
+                    std::string componentFunction = xmlUiFile.getString("<component_function>", c + 1 + startComponent);
+                    
+                    if (componentFunction.compare("MENU_CLOSE") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionCloseMenu;
+                    }
+                    else if (componentFunction.compare("GAME_QUIT") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionGameQuit;
+                    }
+                    else
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionNone;
+                    }
             
-                    // Calculate scale
+                    // Calculate menu component scale
                     m_menu[m].component[c].scale = glm::vec2(m_menu[m].component[c].size.x, m_menu[m].component[c].size.y);
 
-                    // Calculate menu size in pixels
+                    // Calculate menu component size in pixels
                     std::uint32_t menuCompSizePixels_x = (m_menu[m].component[c].size.x * m_window_w);
                     std::uint32_t menuCompSizePixels_y = (m_menu[m].component[c].size.y * m_window_h);
 
-                    // Calculate menu position in pixels
-                    std::uint32_t menuCompPosPixels_x = (1 - m_menu[m].component[c].position.x) * m_window_w / 2;
-                    std::uint32_t menuCompPosPixels_y = (1 - m_menu[m].component[c].position.y) * m_window_h / 2;
+                    // Calculate menu component position in pixels
+                    std::uint32_t menuCompPosPixels_x = (1 + (m_menu[m].component[c].position.x)) * m_window_w / 2;
+                    std::uint32_t menuCompPosPixels_y = (1 - (m_menu[m].component[c].position.y)) * m_window_h / 2;
 
-                    // Calculate menu bounds
+                    // Calculate menu component bounds
                     m_menu[m].component[c].positionMin.x = menuCompPosPixels_x - (menuCompSizePixels_x / 2);
                     m_menu[m].component[c].positionMin.y = menuCompPosPixels_y - (menuCompSizePixels_y / 2);
                     m_menu[m].component[c].positionMax.x = menuCompPosPixels_x + (menuCompSizePixels_x / 2);
                     m_menu[m].component[c].positionMax.y = menuCompPosPixels_y + (menuCompSizePixels_y / 2);
-
                 }
             }
 

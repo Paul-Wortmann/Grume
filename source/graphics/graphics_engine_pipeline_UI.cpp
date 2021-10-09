@@ -118,7 +118,7 @@ void cGraphicsEngine::m_pui_render(void)
             {
                 // Shader uniforms
                 m_pui_modelMatrix = glm::mat4(1);
-                m_pui_modelMatrix = glm::translate(m_pui_modelMatrix, menu[m].position + menu[m].component[c].position);
+                m_pui_modelMatrix = glm::translate(m_pui_modelMatrix, menu[m].component[c].position);
                 m_pui_modelMatrix = glm::scale(m_pui_modelMatrix, glm::vec3(menu[m].component[c].scale.x, menu[m].component[c].scale.y, 1.0f));
                 glUniformMatrix4fv(m_pui_loc_modelMatrix, 1, GL_FALSE, glm::value_ptr(m_pui_modelMatrix));
 

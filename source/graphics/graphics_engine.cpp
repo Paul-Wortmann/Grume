@@ -428,6 +428,9 @@ void cGraphicsEngine::process(const float32 &_dt)
         m_windowClosed = glfwWindowShouldClose(m_window);
     }
     
+    // UI
+    m_UIManager->setMousePosition(glm::vec2(m_mouseX, m_mouseY));
+    
     // Camera
     m_camera.process(_dt);
     

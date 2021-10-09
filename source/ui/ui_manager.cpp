@@ -83,16 +83,55 @@ void cUIManager::process(const std::uint32_t &_dt)
     //if mouse over a menu?
     if (m_menu != nullptr)
     {
+        m_numMenuActive = 0;
         m_mouseOverMenu = false;
         for (std::uint32_t m = 0; m < m_numMenu; ++m)
         {
-            if ((m_menu[m].enabled) &&
-                (m_menu[m].positionMin.x < m_mousePosition.x) &&
-                (m_menu[m].positionMax.x > m_mousePosition.x) &&
-                (m_menu[m].positionMin.y < m_mousePosition.y) &&
-                (m_menu[m].positionMax.y > m_mousePosition.y))
+            if (m_menu[m].enabled)
             {
-                m_mouseOverMenu = true;
+                m_numMenuActive++;
+                if ((m_menu[m].positionMin.x < m_mousePosition.x) &&
+                    (m_menu[m].positionMax.x > m_mousePosition.x) &&
+                    (m_menu[m].positionMin.y < m_mousePosition.y) &&
+                    (m_menu[m].positionMax.y > m_mousePosition.y))
+                {
+                    m_mouseOverMenu = true;
+                    for (std::uint32_t c = 0; c < m_menu[m].numComponent; ++c)
+                    {
+                        if ((m_menu[m].component[c].positionMin.x < m_mousePosition.x) &&
+                            (m_menu[m].component[c].positionMax.x > m_mousePosition.x) &&
+                            (m_menu[m].component[c].positionMin.y < m_mousePosition.y) &&
+                            (m_menu[m].component[c].positionMax.y > m_mousePosition.y))
+                        {
+                            m_menu[m].component[c].state = eComponentState::componentHover;
+                            
+                            // Mouse click
+                            if (m_mouseClicked)
+                            {
+                                if (m_menu[m].component[c].function == eComponentFunction::componentFunctionGameQuit)
+                                {
+                                    
+                                }
+                                else if (m_menu[m].component[c].function == eComponentFunction::componentFunctionCloseMenu)
+                                {
+                                    std::cout << "Close clicked!" << std::endl;
+                                    m_menu[m].enabled = false;
+                                    m_numMenuActive--;
+                                    m_mouseOverMenu = false;
+                                }
+                                else
+                                {
+                                    // Do nothing
+                                }
+                                m_mouseClicked = false;
+                            }
+                        }
+                        else
+                        {
+                            m_menu[m].component[c].state = eComponentState::componentNormal;
+                        }
+                    }
+                }
             }
         }
     }

@@ -238,15 +238,19 @@ void cGameEngine::process(void)
             graphicsEngine.setKeyReadyState(GLFW_KEY_F12, false);
         }
 
-        // If mouse over UI
-        if (uiManager.getMouseOverMenu())
+        // No active windows, unpause game if need be
+        if (uiManager.getNumMenuActive() < 2)
         {
-            //std::cout << "Mouse over menu!" << std::endl;
-            //std::cout << "Mouse x: " << graphicsEngine.getMousePosition().x << " y: " << graphicsEngine.getMousePosition().y << std::endl;
+            m_state = eGameState::active;
+        }
+
+        // If mouse over UI
+        if ((uiManager.getMouseOverMenu()) && (uiManager.getNumMenuActive() > 1))
+        {
             // Use input
             if (graphicsEngine.getKeyState(GLFW_MOUSE_BUTTON_LEFT))
             {
-                uiManager.setMouseClicked(graphicsEngine.getMousePosition());
+                uiManager.setMouseClicked(true);
             }
         }
         else
@@ -257,7 +261,6 @@ void cGameEngine::process(void)
                 playerManager.setMouseClick(graphicsEngine.getMouseTerrainPosition());
             }
         }
-
         
         // If player has moved update camera and player light
         if ((m_state != eGameState::pause) && (playerManager.getMoved()))
