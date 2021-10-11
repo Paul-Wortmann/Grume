@@ -83,13 +83,11 @@ void cUIManager::process(const std::uint32_t &_dt)
     //if mouse over a menu?
     if (m_menu != nullptr)
     {
-        m_numMenuActive = 0;
         m_mouseOverMenu = false;
         for (std::uint32_t m = 0; m < m_numMenu; ++m)
         {
             if (m_menu[m].enabled)
             {
-                m_numMenuActive++;
                 if ((m_menu[m].positionMin.x < m_mousePosition.x) &&
                     (m_menu[m].positionMax.x > m_mousePosition.x) &&
                     (m_menu[m].positionMin.y < m_mousePosition.y) &&
@@ -116,8 +114,8 @@ void cUIManager::process(const std::uint32_t &_dt)
                                 {
                                     std::cout << "Close clicked!" << std::endl;
                                     m_menu[m].enabled = false;
-                                    m_numMenuActive--;
                                     m_mouseOverMenu = false;
+                                    m_menuActive = false;
                                 }
                                 else
                                 {

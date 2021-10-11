@@ -55,6 +55,7 @@ class cGraphicsEngine
         void      setUIPointer(cUIManager* _UIManager) { m_UIManager = _UIManager; }
         void      initializeUIComponents(void) { m_initUIComponents(); }
         bool      getKeyState(const uint32 &_key) { return m_keyMap[_key]; }
+        void      setKeyState(const uint32 &_key, const bool &_state) { m_keyMap[_key] = _state; }
         bool      getKeyReadyState(const uint32 &_key) { return m_keyReadyMap[_key]; }
         void      setKeyReadyState(const uint32 &_key, const bool &_state) { m_keyReadyMap[_key] = _state; }
         void      setPlayerLightPosition(const glm::vec3 &_position) { m_playerLight->position = _position; }

@@ -157,13 +157,13 @@ void cGameEngine::process(void)
         {
             npcManager.process(dt);
             playerManager.process(dt);
+            physicsEngine.process(dt);
         }
         
         uiManager.process(dt);
         graphicsEngine.process(dt);
         animationEngine.process(dt);
         mapManager.process(dt);
-        physicsEngine.process(dt);
         audioManager.process(dt);
         entityManager.process(dt);
 
@@ -192,10 +192,13 @@ void cGameEngine::process(void)
             uiManager.setMenuEnabled("main_menu", menuState);
             graphicsEngine.setKeyReadyState(GLFW_KEY_F1, false);
             m_state = (menuState) ? eGameState::pause : eGameState::active;
-            
-            uiManager.setMenuEnabled("inventory", false);
-            uiManager.setMenuEnabled("character", false);
-            uiManager.setMenuEnabled("skills", false);
+            if (menuState == true)
+            {
+                uiManager.setmenuActive(true);
+                uiManager.setMenuEnabled("inventory", false);
+                uiManager.setMenuEnabled("character", false);
+                uiManager.setMenuEnabled("skills", false);
+            }
         }
 
         // Inventory - GLFW_KEY_I
@@ -205,8 +208,11 @@ void cGameEngine::process(void)
             uiManager.setMenuEnabled("inventory", menuState);
             graphicsEngine.setKeyReadyState(GLFW_KEY_I, false);
             m_state = (menuState) ? eGameState::pause : eGameState::active;
-
-            uiManager.setMenuEnabled("main_menu", false);
+            if (menuState == true)
+            {
+                uiManager.setmenuActive(true);
+                uiManager.setMenuEnabled("main_menu", false);
+            }
         }
 
         // Inventory - GLFW_KEY_C
@@ -216,8 +222,11 @@ void cGameEngine::process(void)
             uiManager.setMenuEnabled("character", menuState);
             graphicsEngine.setKeyReadyState(GLFW_KEY_C, false);
             m_state = (menuState) ? eGameState::pause : eGameState::active;
-
-            uiManager.setMenuEnabled("main_menu", false);
+            if (menuState == true)
+            {
+                uiManager.setmenuActive(true);
+                uiManager.setMenuEnabled("main_menu", false);
+            }
         }
 
         // Inventory - GLFW_KEY_S
@@ -227,8 +236,11 @@ void cGameEngine::process(void)
             uiManager.setMenuEnabled("skills", menuState);
             graphicsEngine.setKeyReadyState(GLFW_KEY_S, false);
             m_state = (menuState) ? eGameState::pause : eGameState::active;
-
-            graphicsEngine.setKeyReadyState(GLFW_KEY_S, false);
+            if (menuState == true)
+            {
+                uiManager.setmenuActive(true);
+                uiManager.setMenuEnabled("main_menu", false);
+            }
         }
 
         // Screenshot - GLFW_KEY_F12
@@ -239,13 +251,14 @@ void cGameEngine::process(void)
         }
 
         // No active windows, unpause game if need be
-        if (uiManager.getNumMenuActive() < 2)
+        if (uiManager.getmenuActive() == false)
         {
+            graphicsEngine.setKeyState(GLFW_MOUSE_BUTTON_LEFT, false);
             m_state = eGameState::active;
         }
 
         // If mouse over UI
-        if ((uiManager.getMouseOverMenu()) && (uiManager.getNumMenuActive() > 1))
+        if (uiManager.getMouseOverMenu())
         {
             // Use input
             if (graphicsEngine.getKeyState(GLFW_MOUSE_BUTTON_LEFT))
@@ -261,7 +274,7 @@ void cGameEngine::process(void)
                 playerManager.setMouseClick(graphicsEngine.getMouseTerrainPosition());
             }
         }
-        
+
         // If player has moved update camera and player light
         if ((m_state != eGameState::pause) && (playerManager.getMoved()))
         {
