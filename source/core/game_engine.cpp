@@ -166,8 +166,13 @@ void cGameEngine::process(void)
         mapManager.process(dt);
         audioManager.process(dt);
         entityManager.process(dt);
-
-
+        
+        // Ui management
+        if (uiManager.getActiveWindowCount() < 2)
+        {
+            m_state = eGameState::active;
+        }
+        //std::cout << "Menu count: " << uiManager.getActiveWindowCount() << std::endl;
 
         // User input handeling
         // -----------------------------------------
@@ -194,7 +199,6 @@ void cGameEngine::process(void)
             m_state = (menuState) ? eGameState::pause : eGameState::active;
             if (menuState == true)
             {
-                uiManager.setmenuActive(true);
                 uiManager.setMenuEnabled("inventory", false);
                 uiManager.setMenuEnabled("character", false);
                 uiManager.setMenuEnabled("skills", false);
@@ -210,7 +214,6 @@ void cGameEngine::process(void)
             m_state = (menuState) ? eGameState::pause : eGameState::active;
             if (menuState == true)
             {
-                uiManager.setmenuActive(true);
                 uiManager.setMenuEnabled("main_menu", false);
             }
         }
@@ -224,7 +227,6 @@ void cGameEngine::process(void)
             m_state = (menuState) ? eGameState::pause : eGameState::active;
             if (menuState == true)
             {
-                uiManager.setmenuActive(true);
                 uiManager.setMenuEnabled("main_menu", false);
             }
         }
@@ -238,7 +240,6 @@ void cGameEngine::process(void)
             m_state = (menuState) ? eGameState::pause : eGameState::active;
             if (menuState == true)
             {
-                uiManager.setmenuActive(true);
                 uiManager.setMenuEnabled("main_menu", false);
             }
         }
@@ -250,19 +251,13 @@ void cGameEngine::process(void)
             graphicsEngine.setKeyReadyState(GLFW_KEY_F12, false);
         }
 
-        // No active windows, unpause game if need be
-        if (uiManager.getmenuActive() == false)
-        {
-            graphicsEngine.setKeyState(GLFW_MOUSE_BUTTON_LEFT, false);
-            m_state = eGameState::active;
-        }
-
         // If mouse over UI
         if (uiManager.getMouseOverMenu())
         {
             // Use input
-            if (graphicsEngine.getKeyState(GLFW_MOUSE_BUTTON_LEFT))
+            if (graphicsEngine.getKeyReadyState(GLFW_MOUSE_BUTTON_LEFT))
             {
+                graphicsEngine.setKeyReadyState(GLFW_MOUSE_BUTTON_LEFT, false);
                 uiManager.setMouseClicked(true);
             }
         }

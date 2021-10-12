@@ -45,8 +45,7 @@ class cUIManager
         void          setMouseClicked(const bool &_state) { m_mouseClicked = _state; };
         void          setMousePosition(const glm::vec2 &_mousePosition) {m_mousePosition = _mousePosition; };
         void          setWindowSize(const std::uint32_t &_width, const std::uint32_t &_height) { m_window_w = _width; m_window_h = _height; };
-        bool          getmenuActive(void) { return m_menuActive; };
-        void          setmenuActive(const bool &_state) { m_menuActive = _state; };
+        std::uint32_t getActiveWindowCount(void) { return m_activeWindowCount; };
 
         // ui_manager_load.cpp
         void load(const std::string &_fileName);
@@ -55,14 +54,14 @@ class cUIManager
 
     private:
         // member variables
-        std::uint32_t   m_numMenu       = 0;
-        sUIMenu        *m_menu          = nullptr;
-        std::uint32_t   m_window_w      = 1920;
-        std::uint32_t   m_window_h      = 1080;
-        bool            m_mouseOverMenu = false;
-        bool            m_mouseClicked  = false;
-        glm::vec2       m_mousePosition = glm::vec2(0.0f, 0.0f);
-        bool            m_menuActive    = false;
+        std::uint32_t   m_numMenu           = 0;
+        sUIMenu        *m_menu              = nullptr;
+        std::uint32_t   m_window_w          = 1920;
+        std::uint32_t   m_window_h          = 1080;
+        bool            m_mouseOverMenu     = false;
+        bool            m_mouseClicked      = false;
+        glm::vec2       m_mousePosition     = glm::vec2(0.0f, 0.0f);
+        std::uint32_t   m_activeWindowCount = 0;
         
         // member pointer handles
         cEntityManager* m_entityManager = nullptr;

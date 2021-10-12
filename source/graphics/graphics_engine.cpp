@@ -74,6 +74,7 @@ void cGraphicsEngine::sm_glfwMouseButtonCallback(GLFWwindow* _window, int32 _but
     else if (_action == GLFW_RELEASE)
     {
         graphicsEngine->m_keyMap[_button] = false;
+        graphicsEngine->m_keyReadyMap[_button] = true;
     }
     else if (_action == GLFW_REPEAT)
     {

@@ -84,10 +84,12 @@ void cUIManager::process(const std::uint32_t &_dt)
     if (m_menu != nullptr)
     {
         m_mouseOverMenu = false;
+        m_activeWindowCount = 0;
         for (std::uint32_t m = 0; m < m_numMenu; ++m)
         {
             if (m_menu[m].enabled)
             {
+                m_activeWindowCount++;
                 if ((m_menu[m].positionMin.x < m_mousePosition.x) &&
                     (m_menu[m].positionMax.x > m_mousePosition.x) &&
                     (m_menu[m].positionMin.y < m_mousePosition.y) &&
@@ -112,16 +114,15 @@ void cUIManager::process(const std::uint32_t &_dt)
                                 }
                                 else if (m_menu[m].component[c].function == eComponentFunction::componentFunctionCloseMenu)
                                 {
-                                    std::cout << "Close clicked!" << std::endl;
+                                    //std::cout << "Close clicked!" << std::endl;
                                     m_menu[m].enabled = false;
                                     m_mouseOverMenu = false;
-                                    m_menuActive = false;
+                                    m_activeWindowCount--;
                                 }
                                 else
                                 {
                                     // Do nothing
                                 }
-                                m_mouseClicked = false;
                             }
                         }
                         else
@@ -132,5 +133,6 @@ void cUIManager::process(const std::uint32_t &_dt)
                 }
             }
         }
+        m_mouseClicked = false;
     }
 }
