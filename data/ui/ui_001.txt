@@ -171,7 +171,7 @@
             <component_texture_activated>ui/menu/text_quit_001.png</component_texture_activated>
             <component_position>0.0f, -0.475f, -0.03f</component_position>
             <component_size>0.152083333f 0.059259259f</component_size>
-            <component_function>NONE</component_function>
+            <component_function>GAME_QUIT</component_function>
         </component>
 
     </menu>

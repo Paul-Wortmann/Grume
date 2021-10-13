@@ -110,11 +110,15 @@ void cUIManager::process(const std::uint32_t &_dt)
                             {
                                 if (m_menu[m].component[c].function == eComponentFunction::componentFunctionGameQuit)
                                 {
-                                    
+                                    //std::cout << "Quit clicked!" << std::endl;
+                                    m_uiEvent = eComponentFunction::componentFunctionGameQuit;
+                                    m_menu[m].enabled = false;
+                                    m_mouseOverMenu = false;
+                                    m_activeWindowCount--;
                                 }
                                 else if (m_menu[m].component[c].function == eComponentFunction::componentFunctionCloseMenu)
                                 {
-                                    //std::cout << "Close clicked!" << std::endl;
+                                    m_uiEvent = eComponentFunction::componentFunctionCloseMenu;
                                     m_menu[m].enabled = false;
                                     m_mouseOverMenu = false;
                                     m_activeWindowCount--;
@@ -122,6 +126,7 @@ void cUIManager::process(const std::uint32_t &_dt)
                                 else
                                 {
                                     // Do nothing
+                                    m_uiEvent = eComponentFunction::componentFunctionNone;
                                 }
                             }
                         }

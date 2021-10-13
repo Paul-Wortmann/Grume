@@ -167,21 +167,25 @@ void cGameEngine::process(void)
         audioManager.process(dt);
         entityManager.process(dt);
         
-        // Ui management
-        if (uiManager.getActiveWindowCount() < 2)
+        // UI management, event handeling
+        switch (uiManager.getUIEvent())
         {
-            m_state = eGameState::active;
+            case eComponentFunction::componentFunctionCloseMenu:
+                m_state = (uiManager.getActiveWindowCount() < 2) ? eGameState::active : m_state;
+                uiManager.setUIEvent(eComponentFunction::componentFunctionNone);
+            break;
+            case eComponentFunction::componentFunctionGameQuit:
+                graphicsEngine.setWindowClosed();
+                uiManager.setUIEvent(eComponentFunction::componentFunctionNone);
+            break;
+            case eComponentFunction::componentFunctionNone:
+            default:
+                uiManager.setUIEvent(eComponentFunction::componentFunctionNone);
+            break;
         }
-        //std::cout << "Menu count: " << uiManager.getActiveWindowCount() << std::endl;
 
         // User input handeling
         // -----------------------------------------
-
-        // Instant Quit - GLFW_KEY_ESCAPE
-        if (graphicsEngine.getKeyReadyState(GLFW_KEY_ESCAPE))
-        {
-            graphicsEngine.setWindowClosed();
-        }
 
         // Pause game - GLFW_KEY_P
         if (graphicsEngine.getKeyReadyState(GLFW_KEY_P))
@@ -190,12 +194,12 @@ void cGameEngine::process(void)
             m_state = (m_state == eGameState::pause) ? eGameState::active : eGameState::pause;
         }
 
-        // Main menu - GLFW_KEY_F1
-        if (graphicsEngine.getKeyReadyState(GLFW_KEY_F1))
+        // Main menu - GLFW_KEY_ESCAPE
+        if (graphicsEngine.getKeyReadyState(GLFW_KEY_ESCAPE))
         {
             bool menuState = !uiManager.getMenuEnabled("main_menu");
             uiManager.setMenuEnabled("main_menu", menuState);
-            graphicsEngine.setKeyReadyState(GLFW_KEY_F1, false);
+            graphicsEngine.setKeyReadyState(GLFW_KEY_ESCAPE, false);
             m_state = (menuState) ? eGameState::pause : eGameState::active;
             if (menuState == true)
             {
