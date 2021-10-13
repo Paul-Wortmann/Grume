@@ -93,6 +93,22 @@ void cUIManager::load(const std::string &_fileName)
                     {
                         m_menu[m].component[c].function = eComponentFunction::componentFunctionGameQuit;
                     }
+                    else if (componentFunction.compare("GAME_NEW") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionGameNew;
+                    }
+                    else if (componentFunction.compare("GAME_SAVE") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionGameSave;
+                    }
+                    else if (componentFunction.compare("GAME_LOAD") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionGameLoad;
+                    }
+                    else if (componentFunction.compare("MENU_OPTIONS") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionMenuOptions;
+                    }
                     else
                     {
                         m_menu[m].component[c].function = eComponentFunction::componentFunctionNone;
@@ -126,4 +142,3 @@ void cUIManager::load(const std::string &_fileName)
     xmlUiFile.free();
 
 }
-

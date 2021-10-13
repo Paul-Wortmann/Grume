@@ -60,9 +60,39 @@ void cGameEngine::load(void)
         graphicsEngine.initializeEntities();
         animationEngine.initializeEntities();
         
-        // Test load system by saving, DELETE once done
-        save(1);
     }
     // Clean up
     xmlGameFile.free();    
 }
+
+
+void cGameEngine::load(const std::uint32_t &_slotNum)
+{
+
+//        mapManager.load(xmlGameFile.getString("<map>"));
+}
+
+/*
+<?xml version = "1.0" encoding = "UTF-8" ?>
+<save_file>
+
+    <information>
+        <current_map>test_1_town_1_001</current_map>
+        <current_position>526</current_position>
+    </information>
+
+    <player>
+        <level>0</level>
+        <experience>0</experience>
+    </player>
+
+    <quest>
+        <001>0</001>
+    </quest>
+
+    <map_data>
+        <map>test_1_town_1_001 1634141856</map>
+    </map_data>
+
+</save_file>
+*/

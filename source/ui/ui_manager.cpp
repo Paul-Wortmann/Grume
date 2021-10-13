@@ -38,6 +38,7 @@ void cUIManager::terminate(void)
         {
             if (m_menu[m].component != nullptr)
             {
+                // Delete components
                 delete [] m_menu[m].component;
                 m_menu[m].component = nullptr;
             }
@@ -80,48 +81,78 @@ void cUIManager::setMenuEnabled(const std::string &_name, const bool &_state)
 
 void cUIManager::process(const std::uint32_t &_dt)
 {
-    //if mouse over a menu?
+    // If menu data structure exists
     if (m_menu != nullptr)
     {
+        // Reset state
         m_mouseOverMenu = false;
         m_activeWindowCount = 0;
+        
+        // Loop through all menus
         for (std::uint32_t m = 0; m < m_numMenu; ++m)
         {
             if (m_menu[m].enabled)
             {
                 m_activeWindowCount++;
+
+                // If mouse over window
                 if ((m_menu[m].positionMin.x < m_mousePosition.x) &&
                     (m_menu[m].positionMax.x > m_mousePosition.x) &&
                     (m_menu[m].positionMin.y < m_mousePosition.y) &&
                     (m_menu[m].positionMax.y > m_mousePosition.y))
                 {
                     m_mouseOverMenu = true;
+                    
+                    // Loop through all menu components
                     for (std::uint32_t c = 0; c < m_menu[m].numComponent; ++c)
                     {
+                        // If mouse over component
                         if ((m_menu[m].component[c].positionMin.x < m_mousePosition.x) &&
                             (m_menu[m].component[c].positionMax.x > m_mousePosition.x) &&
                             (m_menu[m].component[c].positionMin.y < m_mousePosition.y) &&
                             (m_menu[m].component[c].positionMax.y > m_mousePosition.y))
                         {
+                            // Set mouse hover
                             m_menu[m].component[c].state = eComponentState::componentHover;
                             
                             // Mouse click
                             if (m_mouseClicked)
                             {
+                                // Game quit
                                 if (m_menu[m].component[c].function == eComponentFunction::componentFunctionGameQuit)
                                 {
-                                    //std::cout << "Quit clicked!" << std::endl;
-                                    m_uiEvent = eComponentFunction::componentFunctionGameQuit;
+                                    m_uiEvent = m_menu[m].component[c].function;
                                     m_menu[m].enabled = false;
                                     m_mouseOverMenu = false;
                                     m_activeWindowCount--;
                                 }
+                                // Close menu
                                 else if (m_menu[m].component[c].function == eComponentFunction::componentFunctionCloseMenu)
                                 {
-                                    m_uiEvent = eComponentFunction::componentFunctionCloseMenu;
+                                    m_uiEvent = m_menu[m].component[c].function;
                                     m_menu[m].enabled = false;
                                     m_mouseOverMenu = false;
                                     m_activeWindowCount--;
+                                }
+                                // Game new
+                                else if (m_menu[m].component[c].function == eComponentFunction::componentFunctionGameNew)
+                                {
+                                    m_uiEvent = m_menu[m].component[c].function;
+                                }
+                                // Game save
+                                else if (m_menu[m].component[c].function == eComponentFunction::componentFunctionGameSave)
+                                {
+                                    m_uiEvent = m_menu[m].component[c].function;
+                                }
+                                // Game load
+                                else if (m_menu[m].component[c].function == eComponentFunction::componentFunctionGameLoad)
+                                {
+                                    m_uiEvent = m_menu[m].component[c].function;
+                                }
+                                // Menu Options
+                                else if (m_menu[m].component[c].function == eComponentFunction::componentFunctionMenuOptions)
+                                {
+                                    m_uiEvent = m_menu[m].component[c].function;
                                 }
                                 else
                                 {
@@ -132,12 +163,14 @@ void cUIManager::process(const std::uint32_t &_dt)
                         }
                         else
                         {
+                            // No hover or activiate, mouse not over component
                             m_menu[m].component[c].state = eComponentState::componentNormal;
                         }
                     }
                 }
             }
         }
+        // Reset mouse clicked, as processed above
         m_mouseClicked = false;
     }
 }

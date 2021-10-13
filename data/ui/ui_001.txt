@@ -101,7 +101,7 @@
             <component_texture_activated>ui/menu/button_001_a.png</component_texture_activated>
             <component_position>0.0f, 0.0f, -0.02f</component_position>
             <component_size>0.152083333f 0.059259259f</component_size>
-            <component_function>GAME_LOAD</component_function>
+            <component_function>GAME_SAVE</component_function>
         </component>
 
         <component>
@@ -131,7 +131,7 @@
             <component_texture_activated>ui/menu/text_new_001.png</component_texture_activated>
             <component_position>0.0f, 0.35f, -0.03f</component_position>
             <component_size>0.152083333f 0.059259259f</component_size>
-            <component_function>NONE</component_function>
+            <component_function>GAME_NEW</component_function>
         </component>
 
         <component>
@@ -141,7 +141,7 @@
             <component_texture_activated>ui/menu/text_load_001.png</component_texture_activated>
             <component_position>0.0f, 0.175f, -0.03f</component_position>
             <component_size>0.152083333f 0.059259259f</component_size>
-            <component_function>NONE</component_function>
+            <component_function>GAME_LOAD</component_function>
         </component>
 
         <component>
@@ -151,7 +151,7 @@
             <component_texture_activated>ui/menu/text_save_001.png</component_texture_activated>
             <component_position>0.0f, 0.0f, -0.03f</component_position>
             <component_size>0.152083333f 0.059259259f</component_size>
-            <component_function>NONE</component_function>
+            <component_function>GAME_SAVE</component_function>
         </component>
 
         <component>
@@ -161,7 +161,7 @@
             <component_texture_activated>ui/menu/text_options_001.png</component_texture_activated>
             <component_position>0.0f, -0.175f, -0.03f</component_position>
             <component_size>0.152083333f 0.059259259f</component_size>
-            <component_function>NONE</component_function>
+            <component_function>MENU_OPTIONS</component_function>
         </component>
 
         <component>

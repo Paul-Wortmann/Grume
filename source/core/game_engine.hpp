@@ -76,6 +76,7 @@ class cGameEngine
 
         // game_load.cpp
         void load(void);
+        void load(const std::uint32_t &_slotNum);
 
         // game_save.cpp
         void save(const std::uint32_t &_slotNum);

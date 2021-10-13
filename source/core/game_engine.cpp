@@ -178,6 +178,17 @@ void cGameEngine::process(void)
                 graphicsEngine.setWindowClosed();
                 uiManager.setUIEvent(eComponentFunction::componentFunctionNone);
             break;
+            case eComponentFunction::componentFunctionGameNew:
+                uiManager.setUIEvent(eComponentFunction::componentFunctionNone);
+            break;
+            case eComponentFunction::componentFunctionGameSave:
+                cGameEngine::save(1);
+                uiManager.setUIEvent(eComponentFunction::componentFunctionNone);
+            break;
+            case eComponentFunction::componentFunctionGameLoad:
+                cGameEngine::load(1);
+                uiManager.setUIEvent(eComponentFunction::componentFunctionNone);
+            break;
             case eComponentFunction::componentFunctionNone:
             default:
                 uiManager.setUIEvent(eComponentFunction::componentFunctionNone);
