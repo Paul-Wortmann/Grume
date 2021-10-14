@@ -182,10 +182,12 @@ void cGameEngine::process(void)
                 uiManager.setUIEvent(eComponentFunction::componentFunctionNone);
             break;
             case eComponentFunction::componentFunctionGameSave:
+                m_state = (uiManager.getActiveWindowCount() < 2) ? eGameState::active : m_state;
                 cGameEngine::save(1);
                 uiManager.setUIEvent(eComponentFunction::componentFunctionNone);
             break;
             case eComponentFunction::componentFunctionGameLoad:
+                m_state = (uiManager.getActiveWindowCount() < 2) ? eGameState::active : m_state;
                 cGameEngine::load(1);
                 uiManager.setUIEvent(eComponentFunction::componentFunctionNone);
             break;

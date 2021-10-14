@@ -143,11 +143,17 @@ void cUIManager::process(const std::uint32_t &_dt)
                                 else if (m_menu[m].component[c].function == eComponentFunction::componentFunctionGameSave)
                                 {
                                     m_uiEvent = m_menu[m].component[c].function;
+                                    m_menu[m].enabled = false;
+                                    m_mouseOverMenu = false;
+                                    m_activeWindowCount--;
                                 }
                                 // Game load
                                 else if (m_menu[m].component[c].function == eComponentFunction::componentFunctionGameLoad)
                                 {
                                     m_uiEvent = m_menu[m].component[c].function;
+                                    m_menu[m].enabled = false;
+                                    m_mouseOverMenu = false;
+                                    m_activeWindowCount--;
                                 }
                                 // Menu Options
                                 else if (m_menu[m].component[c].function == eComponentFunction::componentFunctionMenuOptions)
