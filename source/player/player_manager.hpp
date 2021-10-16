@@ -45,6 +45,8 @@ class cPlayerManager
         uint32    positionToTile(glm::vec3 _position);
         glm::vec3 tileToPosition(uint32 _tile);
         glm::vec3 getPosition(void) { return m_data->position; };
+        glm::vec3 getRotation(void) { return m_data->rotation; };
+        void      setRotation(const glm::vec3 &_rotation) { m_data->rotation = _rotation; };
         void      setTerrainHeight(float32 _height) { m_mapPointer->terrainHeight = _height; };
         void      setCurrentTile(uint32 _tileNum) { m_data->movement->mapPath.currentTile = _tileNum; m_data->position = tileToPosition(_tileNum); m_updateMatrix(); };
         uint32    getCurrentTile(void) { return m_data->movement->mapPath.currentTile; };

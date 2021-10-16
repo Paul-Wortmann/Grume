@@ -51,6 +51,7 @@ class cMapManager : public tcLinkedList<sMap>
         void          setPlayerPointer(cPlayerManager* _playerManager) { m_playerManager = _playerManager; };
         void          resetPlayerPosition(void) { m_resetPlayerPosition(); };
         void          setPlayerStartTile(const std::uint32_t &_tile) { m_currentMap->playerStartTile = _tile; };
+        void          setPlayerStartDirection(const float &_rotation) { m_currentMap->playerStartDir = _rotation;};
         void          playMusic(void) {m_playMusic(); };
         void          stopMusic(void) {m_stopMusic(); };
         void          terminate(void);

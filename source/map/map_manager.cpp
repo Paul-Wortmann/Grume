@@ -159,16 +159,8 @@ void cMapManager::load(const std::string &_fileName)
     // Disable loading screen
     m_loadRequest = false;
 
-    // Only load a map if it is not already loaded
-    // Unload the current map if need be
-    if (m_currentMap != nullptr)
-    {
-        if (m_currentMap->fileName.compare(_fileName) == 0)
-        {
-            return;
-        }
-        unload();
-    }
+    // Unload the current map
+    unload();
     
     cXML xmlMapFile;
     xmlMapFile.load(FILE_PATH_MAP + _fileName);

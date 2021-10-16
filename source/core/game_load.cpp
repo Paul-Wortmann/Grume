@@ -86,12 +86,14 @@ void cGameEngine::load(const std::uint32_t &_slotNum)
         // Information
         std::string   currentMap      = xmlSaveGameFile.getString("<current_map>");
         std::uint32_t currentPosition = xmlSaveGameFile.getInteger("<current_position>");
-
+        float         currentRotation = xmlSaveGameFile.getFloat("<current_rotation>");
+        
         // Player
         
         // Quest
         
         // Map data
+        mapManager.mapList.clear();
         std::uint32_t mapSeedCount = xmlSaveGameFile.getInstanceCount("<map>");
         for (std::uint32_t i = 0; i < mapSeedCount; ++i)
         {
@@ -133,9 +135,11 @@ void cGameEngine::load(const std::uint32_t &_slotNum)
         
         // Database reference? to load map and biome is needed
 
-        playerManager.setCurrentTile(currentPosition);
         mapManager.setPlayerStartTile(currentPosition);
+        mapManager.setPlayerStartDirection(currentRotation);
         mapManager.resetPlayerPosition();
+        //playerManager.setCurrentTile(currentPosition);
+        //playerManager.setRotation(currentRotation);
 
         // Play the music defined in the previously loaded biome
         mapManager.stopMusic();

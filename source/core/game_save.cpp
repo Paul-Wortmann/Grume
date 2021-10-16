@@ -52,6 +52,8 @@ void cGameEngine::save(const std::uint32_t &_slotNum)
         saveFile << "<current_map>" << mapManager.getCurrentMapName() << "</current_map>" << std::endl;
         saveFile << std::string(indent_width * indent_level, ' ');
         saveFile << "<current_position>" << playerManager.getCurrentTile() << "</current_position>" << std::endl;
+        saveFile << std::string(indent_width * indent_level, ' ');
+        saveFile << "<current_rotation>" << playerManager.getRotation().z << "</current_rotation>" << std::endl;
         indent_level--;
         saveFile << std::string(indent_width * indent_level, ' ');
         saveFile << "</information>" << std::endl;
