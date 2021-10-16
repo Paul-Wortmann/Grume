@@ -151,8 +151,6 @@ void cGameEngine::process(void)
 
         // System processes
         // -----------------------------------------
-        graphicsEngine.setLoading(mapManager.getLoading());
-        
         if (m_state != eGameState::pause)
         {
             npcManager.process(dt);
@@ -161,6 +159,12 @@ void cGameEngine::process(void)
         }
         
         uiManager.process(dt);
+        if (uiManager.getUIEvent() == eComponentFunction::componentFunctionGameLoad)
+        {
+            mapManager.setLoading(true);
+        }
+        graphicsEngine.setLoading(mapManager.getLoading());
+        
         graphicsEngine.process(dt);
         animationEngine.process(dt);
         mapManager.process(dt);
@@ -189,6 +193,7 @@ void cGameEngine::process(void)
             case eComponentFunction::componentFunctionGameLoad:
                 m_state = (uiManager.getActiveWindowCount() < 2) ? eGameState::active : m_state;
                 cGameEngine::load(1);
+                mapManager.setLoading(false);
                 uiManager.setUIEvent(eComponentFunction::componentFunctionNone);
             break;
             case eComponentFunction::componentFunctionNone:

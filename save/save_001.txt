@@ -3,7 +3,7 @@
 
     <information>
         <current_map>test_1_town_1_001</current_map>
-        <current_position>375</current_position>
+        <current_position>528</current_position>
     </information>
 
     <player>
@@ -16,7 +16,7 @@
     </quest>
 
     <map_data>
-        <map>test_1_town_1_001 1634231293</map>
+        <map>test_1_town_1_001 1634345410</map>
     </map_data>
 
 </save_file>

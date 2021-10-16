@@ -59,6 +59,7 @@ class cMapManager : public tcLinkedList<sMap>
         void          unload(void);
         void          process(const float64 &_dt);
         bool          getLoading(void) { return m_loadRequest; };
+        void          setLoading(const bool &_state) { m_loadRequest = _state; };
         std::string   getCurrentMapName(void) { return m_currentMap->name; };
 
         // Dimentions

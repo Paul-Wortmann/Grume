@@ -128,9 +128,6 @@ void cGameEngine::load(const std::uint32_t &_slotNum)
             }
         }
         
-        // Loading screen
-        //mapManager.m_loadRequest = true;
-
         // Load map
         mapManager.load(currentMap + ".txt");
         
@@ -147,9 +144,7 @@ void cGameEngine::load(const std::uint32_t &_slotNum)
         // Initialize systems
         graphicsEngine.initializeEntities();
         animationEngine.initializeEntities();
-        //m_loadRequest = false;
 
-        
     }
     else
     {
