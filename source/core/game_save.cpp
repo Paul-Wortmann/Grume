@@ -60,13 +60,26 @@ void cGameEngine::save(const std::uint32_t &_slotNum)
         saveFile << std::endl;
         
         // Player
+        sEntity* player = playerManager.getPlayerEntity();
         saveFile << std::string(indent_width * indent_level, ' ');
         saveFile << "<player>" << std::endl;
         indent_level++;
         saveFile << std::string(indent_width * indent_level, ' ');
-        saveFile << "<level>" << "0" << "</level>" << std::endl;
+        saveFile << "<level_current>" << player->character->level.current << "</level_current>" << std::endl;
         saveFile << std::string(indent_width * indent_level, ' ');
-        saveFile << "<experience>" << "0" << "</experience>" << std::endl;
+        saveFile << "<exp_current>" << player->character->level.exp << "</exp_current>" << std::endl;
+        saveFile << std::string(indent_width * indent_level, ' ');
+        saveFile << "<health_current>" << player->character->attributes.health.current << "</health_current>" << std::endl;
+        saveFile << std::string(indent_width * indent_level, ' ');
+        saveFile << "<health_max>" << player->character->attributes.health.max << "</health_max>" << std::endl;
+        saveFile << std::string(indent_width * indent_level, ' ');
+        saveFile << "<health_regen>" << player->character->attributes.health.regen << "</health_regen>" << std::endl;
+        saveFile << std::string(indent_width * indent_level, ' ');
+        saveFile << "<mana_current>" << player->character->attributes.mana.current << "</mana_current>" << std::endl;
+        saveFile << std::string(indent_width * indent_level, ' ');
+        saveFile << "<mana_max>" << player->character->attributes.mana.max << "</mana_max>" << std::endl;
+        saveFile << std::string(indent_width * indent_level, ' ');
+        saveFile << "<mana_regen>" << player->character->attributes.mana.regen << "</mana_regen>" << std::endl;
         indent_level--;
         saveFile << std::string(indent_width * indent_level, ' ');
         saveFile << "</player>" << std::endl;

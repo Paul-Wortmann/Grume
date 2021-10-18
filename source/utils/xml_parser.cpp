@@ -180,6 +180,16 @@ uint32 cXML::getInteger(const std::string &_key, const uint32 _instance)
     return std::stoi(value);
 }
 
+uint64 cXML::getInteger64(const std::string &_key, const uint32 _instance)
+{
+    std::string value = getString(_key, _instance);
+    if (value.length() < 1)
+    {
+        return 0;
+    }
+    return std::stoull(value);
+}
+
 float cXML::getFloat(const std::string &_key, const uint32 _instance)
 {
     std::string value = getString(_key, _instance);

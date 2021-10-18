@@ -61,9 +61,31 @@ struct sEntityCharAttrib // Character attributes
     sCharacterAttributeArmor resistanceFire  = {};
     sCharacterAttributeArmor resistanceFrost = {};
     
-    // gen points with base attack, when enough spend points on uber attack
+    // gen points with base attack, when enough spend points on uber attack ?
     // 
 };
 
 #endif // ENTITY_CHARACTER_ATTRIBUTES_HPP
+
+/*
+ Attack:
+   melle:
+     weapon, ie. sword, axe, sythe
+     
+   ranged:
+     weapon, ie. bow
+     
+   magic:
+     spell, ie. projectile/s
+     
+     
+     
+   passive skill: (augment attack)
+     imbue -> weapon / spell with attribute, ie. fire
+     increase projectile count / dammage -> weapon / spell with attribute, ie. fire
+     regen health / mana speed.
+     
+
+*/
+
 

@@ -10,6 +10,14 @@
         <material>player/male_base_1_001.txt</material>
     </resources>
 
+    <character>
+        <level_start>0</level_start>
+        <level_max>99</level_max>
+        <exp_start>0</exp_start>
+        <exp_next>1024</exp_next>
+        <exp_multiplier>1.5</exp_multiplier>
+    </character>
+
     <attributes>
 	# (depletable) max, regen
         <attribute_health>100 0.1</attribute_health>

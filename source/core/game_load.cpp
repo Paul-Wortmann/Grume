@@ -89,6 +89,18 @@ void cGameEngine::load(const std::uint32_t &_slotNum)
         float         currentRotation = xmlSaveGameFile.getFloat("<current_rotation>");
         
         // Player
+        sEntity* player = playerManager.getPlayerEntity();
+        
+        player->character->level.current = xmlSaveGameFile.getInteger("<level_current>");
+        player->character->level.exp     = xmlSaveGameFile.getInteger64("<exp_current>");
+
+        player->character->attributes.health.current = xmlSaveGameFile.getInteger("<health_current>");
+        player->character->attributes.health.max     = xmlSaveGameFile.getInteger("<health_max>");
+        player->character->attributes.health.regen   = xmlSaveGameFile.getFloat("<health_regen>");
+
+        player->character->attributes.mana.current = xmlSaveGameFile.getInteger("<mana_current>");
+        player->character->attributes.mana.max     = xmlSaveGameFile.getInteger("<mana_max>");
+        player->character->attributes.mana.regen   = xmlSaveGameFile.getFloat("<mana_regen>");
         
         // Quest
         

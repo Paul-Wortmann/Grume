@@ -39,6 +39,7 @@ class cXML
         uint32      getInstanceCount(const std::string &_key);
         std::string getString(const std::string &_key, const uint32 _instance = 1);
         uint32      getInteger(const std::string &_key, const uint32 _instance = 1);
+        uint64      getInteger64(const std::string &_key, const uint32 _instance = 1);
         float32     getFloat(const std::string &_key, const uint32 _instance = 1);
         glm::vec3   getVec3(const std::string &_key, const uint32 _instance = 1);
         glm::vec2   getVec2(const std::string &_key, const uint32 _instance = 1);

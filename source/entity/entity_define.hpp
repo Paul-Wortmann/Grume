@@ -26,8 +26,7 @@
 
 #include "../core/includes.hpp"
 #include "entity_ai.hpp"
-#include "entity_character_attributes.hpp"
-#include "entity_character_skills.hpp"
+#include "entity_character.hpp"
 #include "entity_collision.hpp"
 #include "entity_interaction.hpp"
 #include "entity_material.hpp"
@@ -106,9 +105,8 @@ struct sEntity
     // AI
     sEntityAI*          ai                   = nullptr;
     
-    // Character attributes
-    sEntityCharAttrib*  characterAttributes  = nullptr;
-    sEntityCharSkill*   characterSkills      = nullptr;
+    // Character - player
+    sEntityCharacter*   character            = nullptr;
     
     // Interaction
     sEntityInteraction* interaction          = nullptr;

@@ -91,18 +91,11 @@ void cEntityManager::m_freeData(sEntity*& _pointer)
         _pointer->collision = nullptr;
     }
 
-    // Character attributes
-    if (_pointer->characterAttributes != nullptr)
+    // Character - player
+    if (_pointer->character != nullptr)
     {
-        delete _pointer->characterAttributes;
-        _pointer->characterAttributes = nullptr;
-    }
-
-    // Character skills
-    if (_pointer->characterSkills != nullptr)
-    {
-        delete _pointer->characterSkills;
-        _pointer->characterSkills = nullptr;
+        delete _pointer->character;
+        _pointer->character = nullptr;
     }
 
     // Interaction
@@ -204,50 +197,75 @@ sEntity* cEntityManager::load(const std::string& _fileName, sEntity* _entity)
         }
 
         // Character attributes data
+        if (xmlEntityFile.getInstanceCount("<character>") != 0)
+        {
+            if (_entity->character == nullptr)
+            {
+                _entity->character = new sEntityCharacter;
+            }
+            
+            // Level
+            _entity->character->level.current = xmlEntityFile.getInteger("<level_start>");
+            _entity->character->level.max     = xmlEntityFile.getInteger("<level_max>");
+            
+            // Experience
+            _entity->character->level.exp           = xmlEntityFile.getInteger("<exp_start>");
+            _entity->character->level.expNext       = xmlEntityFile.getInteger("<exp_next>");
+            _entity->character->level.expMultiplier = xmlEntityFile.getInteger("<exp_multiplier>");
+            
+        }
+        
+        // Character attributes data
         if (xmlEntityFile.getInstanceCount("<attributes>") != 0)
         {
-            _entity->characterAttributes = new sEntityCharAttrib;
+            if (_entity->character == nullptr)
+            {
+                _entity->character = new sEntityCharacter;
+            }
             
             // Depletable attributes - health
             glm::vec2 vec2Temp = xmlEntityFile.getVec2("attribute_health");
-            _entity->characterAttributes->health.max = static_cast<uint32_t>(vec2Temp.x);
-            _entity->characterAttributes->health.current = _entity->characterAttributes->health.max;
-            _entity->characterAttributes->health.regen = vec2Temp.y;
+            _entity->character->attributes.health.max = static_cast<uint32_t>(vec2Temp.x);
+            _entity->character->attributes.health.current = _entity->character->attributes.health.max;
+            _entity->character->attributes.health.regen = vec2Temp.y;
             
             // Depletable attributes - mana
             vec2Temp = xmlEntityFile.getVec2("attribute_mana");
-            _entity->characterAttributes->mana.max = static_cast<uint32_t>(vec2Temp.x);
-            _entity->characterAttributes->mana.current = _entity->characterAttributes->mana.max;
-            _entity->characterAttributes->mana.regen = vec2Temp.y;
+            _entity->character->attributes.mana.max = static_cast<uint32_t>(vec2Temp.x);
+            _entity->character->attributes.mana.current = _entity->character->attributes.mana.max;
+            _entity->character->attributes.mana.regen = vec2Temp.y;
             
             // Dammage attributes - physical
             glm::vec3 vec3Temp = xmlEntityFile.getVec3("attribute_damagephysical");
-            _entity->characterAttributes->damagePhysical.base = static_cast<uint32_t>(vec3Temp.x);
-            _entity->characterAttributes->damagePhysical.critMultiplier = vec3Temp.y;
-            _entity->characterAttributes->damagePhysical.critChancev = static_cast<uint32_t>(vec3Temp.z);
+            _entity->character->attributes.damagePhysical.base = static_cast<uint32_t>(vec3Temp.x);
+            _entity->character->attributes.damagePhysical.critMultiplier = vec3Temp.y;
+            _entity->character->attributes.damagePhysical.critChancev = static_cast<uint32_t>(vec3Temp.z);
             
             // Dammage attributes - fire
             vec3Temp = xmlEntityFile.getVec3("attribute_damagefire");
-            _entity->characterAttributes->damageFire.base = static_cast<uint32_t>(vec3Temp.x);
-            _entity->characterAttributes->damageFire.critMultiplier = vec3Temp.y;
-            _entity->characterAttributes->damageFire.critChancev = static_cast<uint32_t>(vec3Temp.z);
+            _entity->character->attributes.damageFire.base = static_cast<uint32_t>(vec3Temp.x);
+            _entity->character->attributes.damageFire.critMultiplier = vec3Temp.y;
+            _entity->character->attributes.damageFire.critChancev = static_cast<uint32_t>(vec3Temp.z);
             
             // Dammage attributes - frost
             vec3Temp = xmlEntityFile.getVec3("attribute_damagefrost");
-            _entity->characterAttributes->damageFrost.base = static_cast<uint32_t>(vec3Temp.x);
-            _entity->characterAttributes->damageFrost.critMultiplier = vec3Temp.y;
-            _entity->characterAttributes->damageFrost.critChancev = static_cast<uint32_t>(vec3Temp.z);
+            _entity->character->attributes.damageFrost.base = static_cast<uint32_t>(vec3Temp.x);
+            _entity->character->attributes.damageFrost.critMultiplier = vec3Temp.y;
+            _entity->character->attributes.damageFrost.critChancev = static_cast<uint32_t>(vec3Temp.z);
 
             // Armor and resistance attributes
-            _entity->characterAttributes->armorPhysical.base   = xmlEntityFile.getInteger("attribute_armorphysical");
-            _entity->characterAttributes->resistanceFire.base  = xmlEntityFile.getInteger("attribute_resistancefire");
-            _entity->characterAttributes->resistanceFrost.base = xmlEntityFile.getInteger("attribute_resistancefrost");
+            _entity->character->attributes.armorPhysical.base   = xmlEntityFile.getInteger("attribute_armorphysical");
+            _entity->character->attributes.resistanceFire.base  = xmlEntityFile.getInteger("attribute_resistancefire");
+            _entity->character->attributes.resistanceFrost.base = xmlEntityFile.getInteger("attribute_resistancefrost");
         }
         
         // Character skills data
         if (xmlEntityFile.getInstanceCount("<skills>") != 0)
         {
-            _entity->characterSkills = new sEntityCharSkill;
+            if (_entity->character == nullptr)
+            {
+                _entity->character = new sEntityCharacter;
+            }
             
             // Load skill filenames from database
             cXML xmlSkillsDatabaseFile;
@@ -266,63 +284,63 @@ sEntity* cEntityManager::load(const std::string& _fileName, sEntity* _entity)
                         if (name.compare("earthquake") == 0)
                         {
                             // Level
-                            _entity->characterSkills->earthquake.level.max           = xmlSkillFile.getInteger("<level_max>");
-                            _entity->characterSkills->earthquake.level.expNext       = xmlSkillFile.getInteger("<level_expnext>");
-                            _entity->characterSkills->earthquake.level.expMultiplier = xmlSkillFile.getFloat  ("<level_expmultiplier>");
+                            _entity->character->skills.earthquake.level.max           = xmlSkillFile.getInteger("<level_max>");
+                            _entity->character->skills.earthquake.level.expNext       = xmlSkillFile.getInteger("<level_expnext>");
+                            _entity->character->skills.earthquake.level.expMultiplier = xmlSkillFile.getFloat  ("<level_expmultiplier>");
 
                             // Damage
-                            _entity->characterSkills->earthquake.damage              = xmlSkillFile.getInteger("<damage>");
-                            _entity->characterSkills->earthquake.damageMultiplier    = xmlSkillFile.getFloat  ("<damageMultiplier>");
+                            _entity->character->skills.earthquake.damage              = xmlSkillFile.getInteger("<damage>");
+                            _entity->character->skills.earthquake.damageMultiplier    = xmlSkillFile.getFloat  ("<damageMultiplier>");
 
                             // Duration
-                            _entity->characterSkills->earthquake.duration            = xmlSkillFile.getInteger("<duration>");
-                            _entity->characterSkills->earthquake.durationMultiplier  = xmlSkillFile.getFloat  ("<durationMultiplier>");
+                            _entity->character->skills.earthquake.duration            = xmlSkillFile.getInteger("<duration>");
+                            _entity->character->skills.earthquake.durationMultiplier  = xmlSkillFile.getFloat  ("<durationMultiplier>");
 
                             // Area of effect
-                            _entity->characterSkills->earthquake.aoe                 = xmlSkillFile.getFloat  ("<aoe>");
-                            _entity->characterSkills->earthquake.aoeMultiplier       = xmlSkillFile.getFloat  ("<aoeMultiplier>");
+                            _entity->character->skills.earthquake.aoe                 = xmlSkillFile.getFloat  ("<aoe>");
+                            _entity->character->skills.earthquake.aoeMultiplier       = xmlSkillFile.getFloat  ("<aoeMultiplier>");
 
                             // Number of projectiles
-                            _entity->characterSkills->earthquake.numProjectiles      = xmlSkillFile.getInteger("<numProjectiles>");
-                            _entity->characterSkills->earthquake.numProMultiplier    = xmlSkillFile.getFloat  ("<numProjectilesMultiplier>");
+                            _entity->character->skills.earthquake.numProjectiles      = xmlSkillFile.getInteger("<numProjectiles>");
+                            _entity->character->skills.earthquake.numProMultiplier    = xmlSkillFile.getFloat  ("<numProjectilesMultiplier>");
                         }
                         else if (name.compare("fireball") == 0)
                         {
                             // Level
-                            _entity->characterSkills->fireBall.level.max           = xmlSkillFile.getInteger("<level_max>");
-                            _entity->characterSkills->fireBall.level.expNext       = xmlSkillFile.getInteger("<level_expnext>");
-                            _entity->characterSkills->fireBall.level.expMultiplier = xmlSkillFile.getFloat  ("<level_expmultiplier>");
+                            _entity->character->skills.fireBall.level.max           = xmlSkillFile.getInteger("<level_max>");
+                            _entity->character->skills.fireBall.level.expNext       = xmlSkillFile.getInteger("<level_expnext>");
+                            _entity->character->skills.fireBall.level.expMultiplier = xmlSkillFile.getFloat  ("<level_expmultiplier>");
 
                             // Damage
-                            _entity->characterSkills->fireBall.damage              = xmlSkillFile.getInteger("<damage>");
-                            _entity->characterSkills->fireBall.damageMultiplier    = xmlSkillFile.getFloat  ("<damageMultiplier>");
+                            _entity->character->skills.fireBall.damage              = xmlSkillFile.getInteger("<damage>");
+                            _entity->character->skills.fireBall.damageMultiplier    = xmlSkillFile.getFloat  ("<damageMultiplier>");
 
                             // Duration
-                            _entity->characterSkills->fireBall.duration            = xmlSkillFile.getInteger("<duration>");
-                            _entity->characterSkills->fireBall.durationMultiplier  = xmlSkillFile.getFloat  ("<durationMultiplier>");
+                            _entity->character->skills.fireBall.duration            = xmlSkillFile.getInteger("<duration>");
+                            _entity->character->skills.fireBall.durationMultiplier  = xmlSkillFile.getFloat  ("<durationMultiplier>");
 
                             // Area of effect
-                            _entity->characterSkills->fireBall.aoe                 = xmlSkillFile.getFloat  ("<aoe>");
-                            _entity->characterSkills->fireBall.aoeMultiplier       = xmlSkillFile.getFloat  ("<aoeMultiplier>");
+                            _entity->character->skills.fireBall.aoe                 = xmlSkillFile.getFloat  ("<aoe>");
+                            _entity->character->skills.fireBall.aoeMultiplier       = xmlSkillFile.getFloat  ("<aoeMultiplier>");
 
                             // Number of projectiles
-                            _entity->characterSkills->fireBall.numProjectiles      = xmlSkillFile.getInteger("<numProjectiles>");
-                            _entity->characterSkills->fireBall.numProMultiplier    = xmlSkillFile.getFloat  ("<numProjectilesMultiplier>");
+                            _entity->character->skills.fireBall.numProjectiles      = xmlSkillFile.getInteger("<numProjectiles>");
+                            _entity->character->skills.fireBall.numProMultiplier    = xmlSkillFile.getFloat  ("<numProjectilesMultiplier>");
                         }
                         else if (name.compare("forcefield") == 0)
                         {
                             // Level
-                            _entity->characterSkills->forceField.level.max           = xmlSkillFile.getInteger("<level_max>");
-                            _entity->characterSkills->forceField.level.expNext       = xmlSkillFile.getInteger("<level_expnext>");
-                            _entity->characterSkills->forceField.level.expMultiplier = xmlSkillFile.getFloat  ("<level_expmultiplier>");
+                            _entity->character->skills.forceField.level.max           = xmlSkillFile.getInteger("<level_max>");
+                            _entity->character->skills.forceField.level.expNext       = xmlSkillFile.getInteger("<level_expnext>");
+                            _entity->character->skills.forceField.level.expMultiplier = xmlSkillFile.getFloat  ("<level_expmultiplier>");
 
                             // Duration
-                            _entity->characterSkills->forceField.duration            = xmlSkillFile.getInteger("<duration>");
-                            _entity->characterSkills->forceField.durationMultiplier  = xmlSkillFile.getFloat  ("<durationMultiplier>");
+                            _entity->character->skills.forceField.duration            = xmlSkillFile.getInteger("<duration>");
+                            _entity->character->skills.forceField.durationMultiplier  = xmlSkillFile.getFloat  ("<durationMultiplier>");
 
                             // Area of effect
-                            _entity->characterSkills->forceField.aoe                 = xmlSkillFile.getFloat  ("<aoe>");
-                            _entity->characterSkills->forceField.aoeMultiplier       = xmlSkillFile.getFloat  ("<aoeMultiplier>");
+                            _entity->character->skills.forceField.aoe                 = xmlSkillFile.getFloat  ("<aoe>");
+                            _entity->character->skills.forceField.aoeMultiplier       = xmlSkillFile.getFloat  ("<aoeMultiplier>");
                         }
                         else
                         {
@@ -336,9 +354,9 @@ sEntity* cEntityManager::load(const std::string& _fileName, sEntity* _entity)
                 xmlSkillsDatabaseFile.free();
             }
             // Load enabled skills from entity
-            _entity->characterSkills->earthquake.enabled = (xmlEntityFile.getInteger("<skills_earthquake>") == 1);
-            _entity->characterSkills->fireBall.enabled   = (xmlEntityFile.getInteger("<skills_fireball>") == 1);
-            _entity->characterSkills->forceField.enabled = (xmlEntityFile.getInteger("<skills_forcefield>") == 1);
+            _entity->character->skills.earthquake.enabled = (xmlEntityFile.getInteger("<skills_earthquake>") == 1);
+            _entity->character->skills.fireBall.enabled   = (xmlEntityFile.getInteger("<skills_fireball>") == 1);
+            _entity->character->skills.forceField.enabled = (xmlEntityFile.getInteger("<skills_forcefield>") == 1);
         }
         
         // Load AI data

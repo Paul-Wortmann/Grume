@@ -28,13 +28,13 @@
 
 struct sCharacterSkillLevel
 {
-    std::uint32_t        current        = 0;          // Current skill level
-    std::uint32_t        max            = 10;         // Max skill level
+    std::uint32_t        current        = 0;           // Current skill level
+    std::uint32_t        max            = 10;          // Max skill level
 
-    std::uint64_t        exp            = 0;          // Current skill experience
-    std::uint64_t        expNext        = 1024;       // Experience for next level
-    float32              expMultiplier  = 1.5f;       // Experience multiplier
-    std::uint64_t        expMax         = UINT64_MAX; // Max skill experence
+    std::uint64_t        exp            = 0;           // Current skill experience
+    std::uint64_t        expNext        = 1024;        // Experience for next level
+    float32              expMultiplier  = 1.5f;        // Experience multiplier
+    std::uint64_t        expMax         = UINT64_MAX;  // Max skill experence
 };
 
 
@@ -50,8 +50,8 @@ struct sCharacterSkillAttack
     float32              numProFloat         = 1.0f;   // Number of projectiles float value
     float32              numProMultiplier    = 1.5f;   // Number of projectiles multiplier
 
-    bool                 enabled        = false;  // Available to the character
-    sCharacterSkillLevel level          = {};     // Skill level struct
+    bool                 enabled        = false;       // Available to the character
+    sCharacterSkillLevel level          = {};          // Skill level struct
 };
 
 struct sCharacterSkillDefend
@@ -61,8 +61,8 @@ struct sCharacterSkillDefend
     float32              aoe                 = 1.0f;   // Radius for area of effect
     float32              aoeMultiplier       = 1.25f;  // AOE multiplier
 
-    bool                 enabled        = false;  // Available to the character
-    sCharacterSkillLevel level          = {};     // Skill level struct
+    bool                 enabled        = false;       // Available to the character
+    sCharacterSkillLevel level          = {};          // Skill level struct
 };
 
 struct sEntityCharSkill // Character skills
