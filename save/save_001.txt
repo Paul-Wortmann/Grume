@@ -3,18 +3,18 @@
 
     <information>
         <current_map>test_1_town_1_001</current_map>
-        <current_position>925</current_position>
-        <current_rotation>-3.57628e-06</current_rotation>
+        <current_position>624</current_position>
+        <current_rotation>-3.1416</current_rotation>
     </information>
 
     <player>
         <level_current>0</level_current>
-        <exp_current>786</exp_current>
-        <health_current>50</health_current>
+        <exp_current>0</exp_current>
+        <health_current>100</health_current>
         <health_max>100</health_max>
         <health_regen>0.1</health_regen>
         <mana_current>100</mana_current>
-        <mana_max>1000</mana_max>
+        <mana_max>100</mana_max>
         <mana_regen>0.1</mana_regen>
     </player>
 
@@ -23,7 +23,7 @@
     </quest>
 
     <map_data>
-        <map>test_1_town_1_001 1634525556</map>
+        <map>test_1_town_1_001 1634533435</map>
     </map_data>
 
 </save_file>

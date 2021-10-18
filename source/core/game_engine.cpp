@@ -197,6 +197,12 @@ void cGameEngine::process(void)
                 mapManager.setLoading(false);
                 uiManager.setUIEvent(eComponentFunction::componentFunctionNone);
             break;
+            case eComponentFunction::componentFunctionMenuOptions:
+                m_state = eGameState::pause;
+                uiManager.setMenuEnabled("main_menu", false);
+                uiManager.setMenuEnabled("options", true);
+                uiManager.setUIEvent(eComponentFunction::componentFunctionNone);
+            break;
             case eComponentFunction::componentFunctionNone:
             default:
                 uiManager.setUIEvent(eComponentFunction::componentFunctionNone);
@@ -225,6 +231,7 @@ void cGameEngine::process(void)
                 uiManager.setMenuEnabled("inventory", false);
                 uiManager.setMenuEnabled("character", false);
                 uiManager.setMenuEnabled("skills", false);
+                uiManager.setMenuEnabled("options", false);
             }
         }
 

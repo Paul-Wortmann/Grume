@@ -159,6 +159,7 @@ void cUIManager::process(const std::uint32_t &_dt)
                                 else if (m_menu[m].component[c].function == eComponentFunction::componentFunctionMenuOptions)
                                 {
                                     m_uiEvent = m_menu[m].component[c].function;
+                                    m_mouseOverMenu = false;
                                 }
                                 else
                                 {
