@@ -109,6 +109,18 @@ void cUIManager::load(const std::string &_fileName)
                     {
                         m_menu[m].component[c].function = eComponentFunction::componentFunctionMenuOptions;
                     }
+                    else if (componentFunction.compare("HEALTH_BAR") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionBarHealth;
+                    }
+                    else if (componentFunction.compare("MANA_BAR") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionBarMana;
+                    }
+                    else if (componentFunction.compare("EXP_BAR") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionBarExp;
+                    }
                     else
                     {
                         m_menu[m].component[c].function = eComponentFunction::componentFunctionNone;

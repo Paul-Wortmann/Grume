@@ -110,6 +110,7 @@ std::uint32_t cGameEngine::initialize(const std::uint32_t &_argc, char** _argv)
         m_entityHead = entityManager.getHead();
         m_state = eGameState::active;
         playerManager.setTerrainHeight(-1.0f);
+        graphicsEngine.setEntityPlayer(playerManager.getPlayerEntity());
         graphicsEngine.setLoading(false);
     }
     else

@@ -51,6 +51,7 @@ class cGraphicsEngine
         bool      windowClosed(void) {return m_windowClosed; }
         void      setWindowClosed(void) { m_windowClosed = true; glfwSetWindowShouldClose(m_window, GLFW_TRUE); }
         void      setEntityHead(sEntity* _entity) { m_entityHead = _entity; }
+        void      setEntityPlayer(sEntity* _entity) { m_entityPlayer = _entity; }
         void      initializeEntities(void) { m_initEntities(); }
         void      setUIPointer(cUIManager* _UIManager) { m_UIManager = _UIManager; }
         void      initializeUIComponents(void) { m_initUIComponents(); }
@@ -86,6 +87,7 @@ class cGraphicsEngine
         // Entity management
         sEntity*        m_entityHead         = nullptr;
         sEntity*        m_entityTemp         = nullptr;
+        sEntity*        m_entityPlayer       = nullptr;
 
         // UI component management
         cUIManager*     m_UIManager          = nullptr;
