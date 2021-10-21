@@ -19,8 +19,8 @@
             <component_texture_normal>ui/action_bar/action_bar_003_health_bar_001.png</component_texture_normal>
             <component_texture_hover>ui/action_bar/action_bar_003_health_bar_001.png</component_texture_hover>
             <component_texture_activated>ui/action_bar/action_bar_003_health_bar_001.png</component_texture_activated>
-            <component_position>-0.797f, 0.01f, -0.02f</component_position>
-            <component_size>0.179166667f 0.077777778f</component_size>
+            <component_position>-0.797f, 0.02f, -0.02f</component_position>
+            <component_size>0.179166667f 0.075925926f</component_size>
             <component_function>HEALTH_BAR</component_function>
         </component>
 
@@ -29,8 +29,8 @@
             <component_texture_normal>ui/action_bar/action_bar_003_mana_bar_001.png</component_texture_normal>
             <component_texture_hover>ui/action_bar/action_bar_003_mana_bar_001.png</component_texture_hover>
             <component_texture_activated>ui/action_bar/action_bar_003_mana_bar_001.png</component_texture_activated>
-            <component_position>0.797f, 0.01f, -0.02f</component_position>
-            <component_size>0.179166667f 0.077777778f</component_size>
+            <component_position>0.797f, 0.02f, -0.02f</component_position>
+            <component_size>0.179166667f 0.075925926f</component_size>
             <component_function>MANA_BAR</component_function>
         </component>
 
@@ -39,16 +39,16 @@
             <component_texture_normal>ui/action_bar/action_bar_003_exp_bar_001.png</component_texture_normal>
             <component_texture_hover>ui/action_bar/action_bar_003_exp_bar_001.png</component_texture_hover>
             <component_texture_activated>ui/action_bar/action_bar_003_exp_bar_001.png</component_texture_activated>
-            <component_position>0.0f, -0.0675f, -0.02f</component_position>
+            <component_position>0.0f, -0.075f, -0.02f</component_position>
             <component_size>0.991666667f 0.014814815f</component_size>
             <component_function>EXP_BAR</component_function>
         </component>
 
         <component>
             <component_name>action_bar_cover</component_name>
-            <component_texture_normal>ui/action_bar/action_bar_003_front_002.png</component_texture_normal>
-            <component_texture_hover>ui/action_bar/action_bar_003_front_002.png</component_texture_hover>
-            <component_texture_activated>ui/action_bar/action_bar_003_front_002.png</component_texture_activated>
+            <component_texture_normal>ui/action_bar/action_bar_003_front_003.png</component_texture_normal>
+            <component_texture_hover>ui/action_bar/action_bar_003_front_003.png</component_texture_hover>
+            <component_texture_activated>ui/action_bar/action_bar_003_front_003.png</component_texture_activated>
             <component_position>0.0f, 0.0f, -0.03f</component_position>
             <component_size>1.0f 0.1f</component_size>
             <component_function>NONE</component_function>
@@ -214,6 +214,20 @@
             <component_size>0.021875f 0.038888889f</component_size>
             <component_function>MENU_CLOSE</component_function>
         </component>
+
+# sound volume title
+# sound volume bar
+# sound volume left arrow
+# sound volume right arrow
+
+# music volume title
+# music volume bar
+# music volume left arrow
+# music volume right arrow
+
+# Fullscreen checkbox
+# Resolution scrollbox
+
 
     </menu>
     

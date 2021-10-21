@@ -203,6 +203,8 @@ void cGameEngine::process(void)
                 uiManager.setMenuEnabled("options", true);
                 uiManager.setUIEvent(eComponentFunction::componentFunctionNone);
             break;
+            case eComponentFunction::componentFunctionOptionsModify:
+            break;
             case eComponentFunction::componentFunctionNone:
             default:
                 uiManager.setUIEvent(eComponentFunction::componentFunctionNone);
