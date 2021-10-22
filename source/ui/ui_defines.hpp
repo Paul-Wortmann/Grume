@@ -70,7 +70,6 @@ struct sUIComponent
     glm::vec2          positionMax   = glm::vec2(0, 0); // (In pixels) calculated on load, max position (bottom right corner)
     
     // Graphics
-    sEntityModel*      model         = nullptr;
     glm::mat4          modelMatrix   = glm::mat4(1);
     sEntityTexture*    textureNormal = nullptr;
     sEntityTexture*    textureHover  = nullptr;
@@ -95,7 +94,6 @@ struct sUIMenu
     glm::vec2         positionMax   = glm::vec2(0, 0); // (In pixels) calculated on load, max position (bottom right corner)
 
     // Graphics
-    sEntityModel*     model         = nullptr;
     glm::mat4         modelMatrix   = glm::mat4(1);
     sEntityTexture*   textureNormal = nullptr;
 };
