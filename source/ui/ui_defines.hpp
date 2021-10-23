@@ -30,17 +30,21 @@
 
 enum class eComponentFunction : std::uint16_t 
 {
-    componentFunctionNone          =  0, // No function when clicked
-    componentFunctionGameQuit      =  1, // Game quit
-    componentFunctionCloseMenu     =  2, // Close menu
-    componentFunctionGameNew       =  3, // Game new
-    componentFunctionGameSave      =  4, // Game save
-    componentFunctionGameLoad      =  5, // Game load
-    componentFunctionMenuOptions   =  6, // Menu Options
-    componentFunctionBarHealth     =  7, // Bar - health
-    componentFunctionBarMana       =  8, // Bar - mana
-    componentFunctionBarExp        =  9, // Bar - exp
-    componentFunctionOptionsModify = 10  // Options modified
+    componentFunctionNone               =  0, // No function when clicked
+    componentFunctionGameQuit           =  1, // Game quit
+    componentFunctionCloseMenu          =  2, // Close menu
+    componentFunctionGameNew            =  3, // Game new
+    componentFunctionGameSave           =  4, // Game save
+    componentFunctionGameLoad           =  5, // Game load
+    componentFunctionMenuOptions        =  6, // Menu Options
+    componentFunctionBarHealth          =  7, // Bar - health
+    componentFunctionBarMana            =  8, // Bar - mana
+    componentFunctionBarExp             =  9, // Bar - exp
+    componentFunctionFullscreenModified = 10, // Fullscreen modified
+    componentFunctionVolumeMusicUp      = 11, // Music volume up
+    componentFunctionVolumeMusicDown    = 12, // Music volume down
+    componentFunctionVolumeSoundUp      = 13, // Sound volume up
+    componentFunctionVolumeSoundDown    = 14  // Sound volume down
 };
 
 enum class eComponentState : std::uint16_t 

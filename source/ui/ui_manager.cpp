@@ -161,6 +161,31 @@ void cUIManager::process(const std::uint32_t &_dt)
                                     m_uiEvent = m_menu[m].component[c].function;
                                     m_mouseOverMenu = false;
                                 }
+                                // Fullscreen modified
+                                else if (m_menu[m].component[c].function == eComponentFunction::componentFunctionFullscreenModified)
+                                {
+                                    m_uiEvent = m_menu[m].component[c].function;
+                                }
+                                // Music volume up
+                                else if (m_menu[m].component[c].function == eComponentFunction::componentFunctionVolumeMusicUp)
+                                {
+                                    m_uiEvent = m_menu[m].component[c].function;
+                                }
+                                // Music volume down
+                                else if (m_menu[m].component[c].function == eComponentFunction::componentFunctionVolumeMusicDown)
+                                {
+                                    m_uiEvent = m_menu[m].component[c].function;
+                                }
+                                // Sound volume up
+                                else if (m_menu[m].component[c].function == eComponentFunction::componentFunctionVolumeSoundUp)
+                                {
+                                    m_uiEvent = m_menu[m].component[c].function;
+                                }
+                                // Sound volume down
+                                else if (m_menu[m].component[c].function == eComponentFunction::componentFunctionVolumeSoundDown)
+                                {
+                                    m_uiEvent = m_menu[m].component[c].function;
+                                }
                                 else
                                 {
                                     // Do nothing

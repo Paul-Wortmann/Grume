@@ -203,7 +203,20 @@ void cGameEngine::process(void)
                 uiManager.setMenuEnabled("options", true);
                 uiManager.setUIEvent(eComponentFunction::componentFunctionNone);
             break;
-            case eComponentFunction::componentFunctionOptionsModify:
+            // Fullscreen modified
+            case eComponentFunction::componentFunctionFullscreenModified:
+            break;
+            // Music volume up
+            case eComponentFunction::componentFunctionVolumeMusicUp:
+            break;
+            // Music volume down
+            case eComponentFunction::componentFunctionVolumeMusicDown:
+            break;
+            // Sound volume up
+            case eComponentFunction::componentFunctionVolumeSoundUp:
+            break;
+            // Sound volume down
+            case eComponentFunction::componentFunctionVolumeSoundDown:
             break;
             case eComponentFunction::componentFunctionNone:
             default:
