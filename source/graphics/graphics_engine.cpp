@@ -124,6 +124,17 @@ void cGraphicsEngine::setWindowIcon(GLFWimage* _image)
     }
 }
 
+// Set custom mouse cursor
+void cGraphicsEngine::setMouseCursor(GLFWimage* _image)
+{
+    // If the image failed to load it will not exist
+    if (_image != nullptr)
+    {
+        GLFWcursor* cursor = glfwCreateCursor(_image, 0, 0);
+        glfwSetCursor(m_window, cursor);
+    }
+}
+
 uint32 cGraphicsEngine::initialize(void)
 {
     // Initialize GLFW ------------------------------------------

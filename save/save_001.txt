@@ -3,8 +3,8 @@
 
     <information>
         <current_map>test_1_town_1_001</current_map>
-        <current_position>890</current_position>
-        <current_rotation>-3.57628e-06</current_rotation>
+        <current_position>723</current_position>
+        <current_rotation>-0.785402</current_rotation>
     </information>
 
     <player>
@@ -23,7 +23,7 @@
     </quest>
 
     <map_data>
-        <map>test_1_town_1_001 1635036815</map>
+        <map>test_1_town_1_001 1635048301</map>
     </map_data>
 
 </save_file>

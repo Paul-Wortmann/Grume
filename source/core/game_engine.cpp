@@ -100,6 +100,7 @@ std::uint32_t cGameEngine::initialize(const std::uint32_t &_argc, char** _argv)
         uiManager.initialize(&entityManager);
         uiManager.setWindowSize(graphicsEngine.getWindow_w(), graphicsEngine.getWindow_h());
         graphicsEngine.setWindowIcon(entityManager.loadIcon("ui/icon_001.png"));
+        graphicsEngine.setMouseCursor(entityManager.loadIcon("ui/cursor_001.png"));
         graphicsEngine.setLoadTextureID(entityManager.loadTexture("ui/loading_screen_001.png")->ID);
         graphicsEngine.setParticleTextureID(entityManager.loadTexture("default_d.png")->ID);
         graphicsEngine.process(0);
