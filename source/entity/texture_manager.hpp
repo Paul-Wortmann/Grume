@@ -27,8 +27,6 @@
 #include "../core/includes.hpp"
 #include "../core/linked_list.hpp"
 #include "entity_texture.hpp"
-#include "lodepng.hpp"
-#include "stb_image.hpp"
 
 class cTextureManager : public tcLinkedList<sEntityTexture>
 {

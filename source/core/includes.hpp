@@ -24,12 +24,18 @@
 #ifndef INCLUDES_HPP
 #define INCLUDES_HPP
 
+// 3rd Party
+#include "../3rd_party/galogen.hpp"
+#include "../3rd_party/lodepng.hpp"
+#include "../3rd_party/stb_image.hpp"
+#include "../3rd_party/stb_image_write.hpp"
+#include "../3rd_party/stb_vorbis.hpp"
+
 // Audio -> OpenAL, Vorbis
 #include <AL/al.h>
 #include <AL/alc.h>
 #include <vorbis/vorbisfile.h>
 #include <vorbis/codec.h>
-#include "../audio/stb_vorbis.hpp"
 
 // Assimp
 #include <assimp/cimport.h>
@@ -49,13 +55,8 @@
 #include <glm/gtx/quaternion.hpp>
 #include <glm/gtx/transform.hpp>
 
-// Galogen, OpenGL, GLFW
-#include "../graphics/galogen.hpp"
+// OpenGL, GLFW
 #include <GLFW/glfw3.h>
-
-// STB
-#include "../entity/stb_image.hpp"
-#include "../entity/stb_image_write.hpp"
 
 // Standard C++ headers
 #include <chrono>
