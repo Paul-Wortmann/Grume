@@ -52,6 +52,10 @@
 #include "../graphics/galogen.hpp"
 #include <GLFW/glfw3.h>
 
+// STB
+#include "../entity/stb_image.hpp"
+#include "../entity/stb_image_write.hpp"
+
 // Standard C++ headers
 #include <chrono>
 #include <cmath>
