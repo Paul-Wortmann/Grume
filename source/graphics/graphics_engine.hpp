@@ -45,6 +45,7 @@ class cGraphicsEngine
         uint32    initialize(void);
         void      terminate(void);
         void      process(const float32 &_dt);
+        void      setWindowIcon(GLFWimage* _image);
         void      setDisplay(const uint32 &_w, const uint32 &_h, const bool &_f) {m_window_w = _w; m_window_h = _h; m_fullscreen = _f; };
         uint32    getWindow_w(void) { return m_window_w; }
         uint32    getWindow_h(void) { return m_window_h; }

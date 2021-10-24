@@ -39,12 +39,13 @@
 class cModelManager : public tcLinkedList<sEntityModel>
 {
     public:
-        void initialize(void);
-        void terminate(void);
-        sEntityModel* load(const std::string &_fileName);
+        void             initialize(void);
+        void             terminate(void);
+        sEntityModel*    load(const std::string &_fileName);
         sEntityMaterial* loadMaterial(const std::string &_fileName);
-        sEntityTexture* loadTexture(const std::string &_fileName);
-        void saveScreenShot(const std::string &_fileName) { materialManager.saveScreenShot(_fileName); };
+        sEntityTexture*  loadTexture(const std::string &_fileName);
+        GLFWimage*       loadIcon(const std::string &_fileName);
+        void             saveScreenShot(const std::string &_fileName) { materialManager.saveScreenShot(_fileName); };
 
     protected:
 

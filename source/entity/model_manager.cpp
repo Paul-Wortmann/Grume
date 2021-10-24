@@ -233,6 +233,11 @@ sEntityTexture* cModelManager::loadTexture(const std::string &_fileName)
     return materialManager.loadTexture(_fileName);
 }
 
+GLFWimage* cModelManager::loadIcon(const std::string &_fileName)
+{
+    return materialManager.loadIcon(_fileName);
+}
+
 sEntityModel* cModelManager::load(const std::string &_fileName)
 {
     // If the model has already been loaded, return a pointer to it

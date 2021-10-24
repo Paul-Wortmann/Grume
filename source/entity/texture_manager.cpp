@@ -99,6 +99,40 @@ sEntityTexture* cTextureManager::load(const std::string &_fileName)
     return nullptr;
 }
 
+GLFWimage* cTextureManager::loadIcon(const std::string &_fileName)
+{
+    // Add a short delay to prevent CPU saturation;
+    gThreadSleep(1);
+    
+    int width      = 0;
+    int height     = 0;
+    int numChannel = 0;
+    stbi_set_flip_vertically_on_load(false);
+    unsigned char *data = stbi_load((std::string(FILE_PATH_TEXTURE)+_fileName).c_str(), &width, &height, &numChannel, 0);
+    if (data)
+    {
+        // Create gflw image and populate it with the loaded image data
+        GLFWimage* tImage = new GLFWimage;
+        tImage->width = width;
+        tImage->height = height;
+        std::uint32_t pixelCount = tImage->width * tImage->height * numChannel;
+        tImage->pixels = new unsigned char[pixelCount];
+        for (std::uint32_t i = 0; i < pixelCount; ++i)
+        {
+            tImage->pixels[i] = data[i];
+        }
+
+        // Cleanup and return
+        stbi_image_free(data);
+        return tImage;
+    }
+    else
+    {
+        gLogWrite(LOG_ERROR, "Error - Failed to laod icon: " + std::string(FILE_PATH_TEXTURE) + _fileName, __FILE__, __LINE__, __FUNCTION__);
+    }
+    return nullptr;
+}
+
 sEntityTexture* cTextureManager::loadPNG(const std::string &_fileName)
 {
     std::vector<unsigned char> image;

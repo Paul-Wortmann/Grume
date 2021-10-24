@@ -48,6 +48,7 @@ class cEntityManager : public tcLinkedList<sEntity>
         void             removeModel(sEntityModel*& _model);
         sEntityMaterial* loadMaterial(const std::string &_fileName);
         sEntityTexture*  loadTexture(const std::string &_fileName);
+        GLFWimage*       loadIcon(const std::string &_fileName);
         void             updateModelMatrix(sEntity*& _entity);
         sEntity*         load(const std::string& _fileName, sEntity* _entity = nullptr);
         void             activateState(const std::uint32_t& _UID, const std::string& _name);

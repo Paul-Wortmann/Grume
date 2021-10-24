@@ -114,6 +114,16 @@ void cGraphicsEngine::sm_glfwMonitorCallback(GLFWmonitor* _monitor, int32 _event
     }
 }
 
+// Set window icon
+void cGraphicsEngine::setWindowIcon(GLFWimage* _image)
+{
+    // If the image failed to load it will not exist
+    if (_image != nullptr)
+    {
+        glfwSetWindowIcon(m_window, 1, _image);
+    }
+}
+
 uint32 cGraphicsEngine::initialize(void)
 {
     // Initialize GLFW ------------------------------------------

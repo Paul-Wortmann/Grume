@@ -146,6 +146,11 @@ sEntityTexture* cEntityManager::loadTexture(const std::string &_fileName)
     return m_modelManager.loadTexture(_fileName);
 }
 
+GLFWimage* cEntityManager::loadIcon(const std::string &_fileName)
+{
+    return m_modelManager.loadIcon(_fileName);
+}
+
 void cEntityManager::updateModelMatrix(sEntity*& _entity)
 {
     // 1. Translation

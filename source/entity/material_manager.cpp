@@ -98,3 +98,8 @@ sEntityTexture* cMaterialManager::loadTexture(const std::string &_fileName)
 {
     return textureManager.load(_fileName);
 }
+
+GLFWimage* cMaterialManager::loadIcon(const std::string &_fileName)
+{
+    return textureManager.loadIcon(_fileName);
+}
