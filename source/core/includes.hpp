@@ -29,6 +29,7 @@
 #include <AL/alc.h>
 #include <vorbis/vorbisfile.h>
 #include <vorbis/codec.h>
+#include "../audio/stb_vorbis.hpp"
 
 // Assimp
 #include <assimp/cimport.h>
