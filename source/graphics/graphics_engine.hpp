@@ -81,6 +81,7 @@ class cGraphicsEngine
         inline static void sm_glfwCursorPosCallback(GLFWwindow* _window, float64 _xpos, float64 _ypos);
         inline static void sm_glfwMouseButtonCallback(GLFWwindow* _window, int32 _button, int32 _action, int32 _mods);
         inline static void sm_glfwFramebufferSizeCallback(GLFWwindow* _window, int32 _width, int32 _height);
+        inline static void sm_glfwMonitorCallback(GLFWmonitor* _monitor, int32 _event);
         void               m_initEntities(void);
         void               m_initUIComponents(void);
 
@@ -93,11 +94,19 @@ class cGraphicsEngine
         cUIManager*     m_UIManager          = nullptr;
 
         // General
+        int32              m_monitorCount       = 0;
+        GLFWmonitor**      m_monitors           = nullptr;
+        GLFWmonitor*       m_monitor            = nullptr;
+        int32              m_videoModeCount     = 0;
+        const GLFWvidmode* m_videoModes         = nullptr;
+        const GLFWvidmode* m_currentVideoMode   = nullptr;
+
+
         GLFWwindow*     m_window             = nullptr;
         bool            m_windowClosed       = false;
         std::string     m_windowTitle        = "Grume";
-        std::uint32_t   m_window_w           = 1920;
-        std::uint32_t   m_window_h           = 1024;
+        std::uint32_t   m_window_w           = 0;
+        std::uint32_t   m_window_h           = 0;
         float32         m_aspectRatio        = static_cast<float32>(m_window_w) / static_cast<float32>(m_window_h);
         std::uint32_t   m_fieldOfView        = 45;
         bool            m_fullscreen         = false;

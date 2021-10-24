@@ -97,13 +97,60 @@ void cGraphicsEngine::sm_glfwFramebufferSizeCallback(GLFWwindow* _window, int32 
     graphicsEngine->m_camera.initialize(graphicsEngine->m_fieldOfView, graphicsEngine->m_framebufferSize_w, graphicsEngine->m_framebufferSize_h);
 }
 
+// GLFW Monitor callback
+void cGraphicsEngine::sm_glfwMonitorCallback(GLFWmonitor* _monitor, int32 _event)
+{
+    const char* monitorName = glfwGetMonitorName(_monitor);
+    
+    if (_event == GLFW_CONNECTED)
+    {
+        // The monitor was connected
+        gLogWrite(LOG_INFO, "Monitor - " + std::string(monitorName) + " - Connected", __FILE__, __LINE__, __FUNCTION__);
+    }
+    else if (_event == GLFW_DISCONNECTED)
+    {
+        // The monitor was disconnected
+        gLogWrite(LOG_INFO, "Monitor - " + std::string(monitorName) + " - Disconnected", __FILE__, __LINE__, __FUNCTION__);
+    }
+}
+
 uint32 cGraphicsEngine::initialize(void)
 {
     // Initialize GLFW ------------------------------------------
     if (glfwInit() == GLFW_TRUE)
     {
+        // Set GLFW error callback
         glfwSetErrorCallback(sm_glfwErrorCallback);
-
+        
+        // Get monitor data (primary monitor only, although this could be expanded on if need be)
+        m_monitors = glfwGetMonitors(&m_monitorCount);
+        m_monitor = glfwGetPrimaryMonitor();
+        m_videoModes = glfwGetVideoModes(m_monitor, &m_videoModeCount);
+        m_currentVideoMode = glfwGetVideoMode(m_monitor);
+        
+        // Log monitor data
+        gLogWrite(LOG_INFO, "Monitor count: " + std::to_string(m_monitorCount), __FILE__, __LINE__, __FUNCTION__);
+        for (std::uint32_t i = 0; i < m_monitorCount; ++i)
+        {
+            gLogWrite(LOG_INFO, "Monitor " + std::to_string(i + 1) + " : " + std::string(glfwGetMonitorName(m_monitors[i])), __FILE__, __LINE__, __FUNCTION__);
+        }
+        
+        // Log monitor video mode data
+        gLogWrite(LOG_INFO, "Monitor supported video mode count: " + std::to_string(m_videoModeCount), __FILE__, __LINE__, __FUNCTION__);
+        for (std::uint32_t i = 0; i < m_videoModeCount; ++i)
+        {
+            gLogWrite(LOG_INFO, "Monitor supported video mode " + std::to_string(i + 1) + " : " + 
+            std::to_string(m_videoModes[i].width) + " x " + 
+            std::to_string(m_videoModes[i].height) + " @ " + 
+            std::to_string(m_videoModes[i].refreshRate) + " Hz", __FILE__, __LINE__, __FUNCTION__);
+        }
+        
+        // Log current video mode
+        gLogWrite(LOG_INFO, "Monitor current video mode: " + 
+        std::to_string(m_currentVideoMode->width) + " x " + 
+        std::to_string(m_currentVideoMode->height) + " @ " + 
+        std::to_string(m_currentVideoMode->refreshRate) + " Hz", __FILE__, __LINE__, __FUNCTION__);
+        
         // GLFW OpenGL Window settings
         glfwWindowHint(GLFW_SAMPLES, 4);
         glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
@@ -114,20 +161,27 @@ uint32 cGraphicsEngine::initialize(void)
 
         if (!m_fullscreen)
         {
+            // If window width / height are 0, use the maximum available work area
+            int xpos, ypos, width, height;
+            glfwGetMonitorWorkarea(m_monitor, &xpos, &ypos, &width, &height);
+            if ((m_window_w == 0) || (m_window_h == 0))
+            {
+                m_window_w = width;
+                m_window_h = height;
+            }
+            
             // GLFW window creation
             m_window = glfwCreateWindow(m_window_w, m_window_h, m_windowTitle.c_str(), nullptr, nullptr);
         }
         else
         {
             // GLFW fullscreen window creation
-            GLFWmonitor* monitor = glfwGetPrimaryMonitor();
-            const GLFWvidmode* mode = glfwGetVideoMode(monitor);
-            m_window_w = mode->width;
-            m_window_h = mode->height;
-            glfwWindowHint(GLFW_RED_BITS, mode->redBits);
-            glfwWindowHint(GLFW_GREEN_BITS, mode->greenBits);
-            glfwWindowHint(GLFW_BLUE_BITS, mode->blueBits);
-            glfwWindowHint(GLFW_REFRESH_RATE, mode->refreshRate);
+            m_window_w = m_currentVideoMode->width;
+            m_window_h = m_currentVideoMode->height;
+            glfwWindowHint(GLFW_RED_BITS, m_currentVideoMode->redBits);
+            glfwWindowHint(GLFW_GREEN_BITS, m_currentVideoMode->greenBits);
+            glfwWindowHint(GLFW_BLUE_BITS, m_currentVideoMode->blueBits);
+            glfwWindowHint(GLFW_REFRESH_RATE, m_currentVideoMode->refreshRate);
             m_window = glfwCreateWindow(m_window_w, m_window_h, m_windowTitle.c_str(), glfwGetPrimaryMonitor(), nullptr);
         }
 
@@ -162,6 +216,8 @@ uint32 cGraphicsEngine::initialize(void)
             glfwSetCursorPosCallback(m_window, sm_glfwCursorPosCallback);
             glfwSetMouseButtonCallback(m_window, sm_glfwMouseButtonCallback);
             glfwSetFramebufferSizeCallback(m_window, sm_glfwFramebufferSizeCallback);
+            glfwSetMonitorCallback(sm_glfwMonitorCallback);
+            
             //glfwSetInputMode(m_window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
             glfwSetCursorPos(m_window, m_window_w/2, m_window_h/2);
             
