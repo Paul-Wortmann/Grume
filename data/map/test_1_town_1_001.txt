@@ -5,6 +5,8 @@
         <width>32</width>
         <height>32</height>
         <biome>town_001_biome.txt</biome>
+        # Specify music, as defined in the music database, it will take preference over biome music.
+        <music>cave 0</music>
     </information>
     <generation>
         <tiles>2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2</tiles>

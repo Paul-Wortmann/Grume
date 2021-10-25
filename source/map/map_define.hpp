@@ -149,6 +149,12 @@ struct sMap
     std::string    fileName          = "";
     float32        terrainHeight     = -1.0f; // Default == -1.0f
 
+    // Music
+    bool           musicDefined      = false;
+    std::string    musicFileName     = "";
+    std::string    musicTagName      = "";
+    std::uint32_t  musicNumber       = 0;
+
     // Player start information
     std::uint32_t  playerStartPortal = 0;
     std::uint32_t  playerStartTile   = 0;

@@ -87,7 +87,6 @@ class cMapManager : public tcLinkedList<sMap>
         cGraphicsEngine*  m_graphicsEngine  = nullptr;
         cPlayerManager*   m_playerManager   = nullptr;
         sMap*             m_currentMap      = nullptr;
-        std::string       m_mapMusic        = ""; // Map music file name
         std::uint32_t     m_musicSourceID   = 0;  // Map music audio source
         std::uint32_t     m_musicBufferID   = 0;  // Map music audio buffer
         bool              m_loadRequest     = false;

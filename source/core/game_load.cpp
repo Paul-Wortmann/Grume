@@ -60,7 +60,6 @@ void cGameEngine::load(void)
         // Initialize entities
         graphicsEngine.initializeEntities();
         animationEngine.initializeEntities();
-        
     }
     else
     {

@@ -7,7 +7,7 @@
     <graphics>
         <resolution_w>1920</resolution_w>
         <resolution_h>1020</resolution_h>
-        <fullscreen>1</fullscreen>
+        <fullscreen>0</fullscreen>
     </graphics>
     <audio>
         <volume_master>20</volume_master>

@@ -177,6 +177,7 @@ void cMapManager::load(const std::string &_fileName)
         std::uint32_t      seed        = xmlMapFile.getInteger("<seed>");
         std::uint32_t      algorithm   = xmlMapFile.getInteger("<algorithm>");
         std::uint32_t      wall_width  = xmlMapFile.getInteger("<wall_width>");
+        std::string        musicString = xmlMapFile.getString("<music>");
 
         std::uint32_t      player_tile = xmlMapFile.getInteger("<player_start_tile>");
         float32            player_rot  = xmlMapFile.getFloat("<player_start_rotation>");
@@ -298,22 +299,80 @@ void cMapManager::load(const std::string &_fileName)
             }
         }
 
-        // Load the music defined in the previously loaded biome
+        // Load music data from map file
+        std::string   tKeyName     = "";
+        std::uint32_t tTrackNumber = 0;
+
+        // Parse the music string if it was specified
+        if (musicString.length() > 2)
+        {
+            m_currentMap->musicDefined = true;
+
+            // Extract the data from the music string
+            musicString += "    ";
+            std::uint64_t tMusicStringLength = musicString.length();
+            
+            std::uint32_t tStringNum = 0;
+            std::string   tString = "";
+            if (tMusicStringLength > 6)
+            {
+                for (std::uint64_t i = 0; i < tMusicStringLength; ++i)
+                {
+                    if (musicString[i] == ' ')
+                    {
+                        if (tStringNum == 0)
+                        {
+                            tKeyName = tString;
+                        }
+                        else if (tStringNum == 1)
+                        {
+                            tTrackNumber = std::stoi(tString);
+                        }
+                        tStringNum++;
+                        tString = "";
+                    }
+                    else
+                    {
+                        tString += musicString[i];
+                    }
+                }
+            }
+        }
+
+        // Load the music defined in the previously loaded biome if not defined in the map file
         if (m_gameDatabase->music.fileName.length() > 3)
         {
             cXML xmlMusicFile;
             xmlMusicFile.load(FILE_PATH_DATABASE + m_gameDatabase->music.fileName);
-            std::string   xmlKey = "<" + m_currentMap->biome->MusicTag.name + "_entity>";
+            m_currentMap->musicTagName = m_currentMap->biome->MusicTag.name;
+            // Use map defined music tag if defined
+            if (m_currentMap->musicDefined)
+            {
+                m_currentMap->musicTagName = tKeyName;
+            }
+            std::string xmlKey = "<" + m_currentMap->musicTagName + "_entity>";
+            
+            // Retrieve a music file name from the database
             if (xmlMusicFile.lineCount() > 0)
             {
                 std::uint32_t trackCount = xmlMusicFile.getInstanceCount(xmlKey);
-                if (m_currentMap->biome->MusicTrack.no == 0)
+                m_currentMap->musicNumber = m_currentMap->biome->MusicTrack.no;
+                
+                // Use map defined music track number if defined
+                if (m_currentMap->musicDefined)
                 {
-                    m_mapMusic = xmlMusicFile.getString(xmlKey, (rand() % trackCount) + 1);
+                    m_currentMap->musicNumber = tTrackNumber;
+                }
+                
+                // Randomly select a file name if 0
+                if (m_currentMap->musicNumber == 0)
+                {
+                    m_currentMap->musicNumber = (rand() % trackCount) + 1;
+                    m_currentMap->musicFileName = xmlMusicFile.getString(xmlKey, m_currentMap->musicNumber);
                 }
                 else
                 {
-                    m_mapMusic = xmlMusicFile.getString(xmlKey, m_currentMap->biome->MusicTrack.no);
+                    m_currentMap->musicFileName = xmlMusicFile.getString(xmlKey, m_currentMap->musicNumber);
                 }
             }
             xmlMusicFile.free();
@@ -920,13 +979,13 @@ void cMapManager::m_stopMusic(void)
 // Load and play the music defined in the previously loaded biome
 void cMapManager::m_playMusic(void)
 {
-    if (m_mapMusic.length() > 3)
+    if (m_currentMap->musicFileName.length() > 3)
     {
         m_musicSourceID = m_audioManager->newAudioSource();
         m_audioManager->setAudioSourcePosition(m_musicSourceID, 0.0f, 0.0f, 0.0f);
         m_musicBufferID = m_audioManager->newAudioBuffer();
-        m_audioManager->loadBufferOgg(m_musicBufferID, FILE_PATH_MUSIC + m_mapMusic);
-        m_audioManager->setAudioBufferName(m_musicBufferID, m_mapMusic);
+        m_audioManager->loadBufferOgg(m_musicBufferID, FILE_PATH_MUSIC + m_currentMap->musicFileName);
+        m_audioManager->setAudioBufferName(m_musicBufferID, m_currentMap->musicFileName);
         m_audioManager->attachSourceBuffer(m_musicSourceID, m_musicBufferID);
         m_audioManager->setAudioSourceLooping(m_musicSourceID, true);
         m_audioManager->playSource(m_musicSourceID);
@@ -988,6 +1047,13 @@ void cMapManager::save(const std::string &_fileName)
             mapFile << "<height>" << m_currentMap->height << "</height>" << std::endl;
             mapFile << std::string(indent_width * indent_level, ' ');
             mapFile << "<biome>" << m_currentMap->biome->fileName << "</biome>" << std::endl;
+            if (m_currentMap->musicDefined)
+            {
+                mapFile << std::string(indent_width * indent_level, ' ');
+                mapFile << "# Specify music, as defined in the music database, it will take preference over biome music." << std::endl;
+                mapFile << std::string(indent_width * indent_level, ' ');
+                mapFile << "<music>" << m_currentMap->musicTagName << " " << m_currentMap->musicNumber << "</music>" << std::endl;
+            }
             indent_level--;
             mapFile << std::string(indent_width * indent_level, ' ');
             mapFile << "</information>" << std::endl;
