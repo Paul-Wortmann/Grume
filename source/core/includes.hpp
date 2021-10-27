@@ -29,6 +29,7 @@
 #include "../3rd_party/lodepng.hpp"
 #include "../3rd_party/stb_image.hpp"
 #include "../3rd_party/stb_image_write.hpp"
+#include "../3rd_party/stb_truetype.hpp"
 #include "../3rd_party/stb_vorbis.hpp"
 
 // Audio -> OpenAL, Vorbis
