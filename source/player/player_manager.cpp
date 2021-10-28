@@ -298,10 +298,6 @@ void cPlayerManager::process(const float32 &_dt)
         m_data->movement->moveDelta.x = 0.0f;
         m_data->movement->moveDelta.z = 0.0f;
         
-        // move direction, used as float comparison is problematic
-        int32 deltaX = 0;
-        int32 deltaZ = 0;
-        
         //std::cout << "Current tile: " << m_path.path[m_path.currentPosition] << std::endl;
         m_data->movement->moved = true;
         glm::vec3 playerPos      = m_data->position;
@@ -321,25 +317,21 @@ void cPlayerManager::process(const float32 &_dt)
             {
                 playerPos.x += m_data->movement->movementSpeed;
                 m_data->movement->moveDelta.x += m_data->movement->movementSpeed;
-                deltaX = 1;
             }
             else if ((playerPos.x + m_data->movement->movementSpeed) > currentTilePos.x)
             {
                 playerPos.x -= m_data->movement->movementSpeed;
                 m_data->movement->moveDelta.x -= m_data->movement->movementSpeed;
-                deltaX = -1;
             }
             if ((playerPos.z + m_data->movement->movementSpeed) < currentTilePos.z)
             {
                 playerPos.z += m_data->movement->movementSpeed;
                 m_data->movement->moveDelta.z += m_data->movement->movementSpeed;
-                deltaZ = 1;
             }
             else if ((playerPos.z + m_data->movement->movementSpeed) > currentTilePos.z)
             {
                 playerPos.z -= m_data->movement->movementSpeed;
                 m_data->movement->moveDelta.z -= m_data->movement->movementSpeed;
-                deltaZ = -1;
             }
             
             // Turn to face move direction
