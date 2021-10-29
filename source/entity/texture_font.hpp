@@ -27,4 +27,21 @@
 #include "../core/includes.hpp"
 
 
+#include "../core/includes.hpp"
+#include "../core/linked_list.hpp"
+#include "entity_texture.hpp"
+
+class cTextureFont
+{
+    public:
+        void initialize(const std::string &_fileName);
+        void terminate(void);
+        sEntityTexture* createTextureFont(const std::string &_data);
+
+    protected:
+
+    private:
+        std::string m_fileName = "";
+};
+
 #endif // TEXTURE_FONT_HPP

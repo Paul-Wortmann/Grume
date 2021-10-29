@@ -25,15 +25,16 @@
 #define FILE_PATHS_HPP
 
 // File paths
+#define FILE_PATH_BIOME      "data/biome/"
 #define FILE_PATH_CONFIG     "data/"
 #define FILE_PATH_DATA       "data/"
-#define FILE_PATH_BIOME      "data/biome/"
-#define FILE_PATH_ENTITY     "data/entity/"
 #define FILE_PATH_DATABASE   "data/database/"
-#define FILE_PATH_MATERIAL   "data/material/"
-#define FILE_PATH_MESH       "data/mesh/"
+#define FILE_PATH_ENTITY     "data/entity/"
+#define FILE_PATH_FONT       "data/font/"
 #define FILE_PATH_MAP        "data/map/"
 #define FILE_PATH_MAP_PREFAB "data/map_prefab/"
+#define FILE_PATH_MATERIAL   "data/material/"
+#define FILE_PATH_MESH       "data/mesh/"
 #define FILE_PATH_MODEL      "data/model/"
 #define FILE_PATH_MUSIC      "data/music/"
 #define FILE_PATH_SAVE       "save/"

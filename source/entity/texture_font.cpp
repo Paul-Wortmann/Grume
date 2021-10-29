@@ -22,3 +22,19 @@
  */
 
 #include "texture_font.hpp"
+
+void cTextureFont::initialize(const std::string &_fileName)
+{
+    m_fileName = _fileName;
+    
+}
+
+void cTextureFont::terminate(void)
+{
+    
+}
+
+sEntityTexture* cTextureFont::createTextureFont(const std::string &_data)
+{
+    
+}
