@@ -26,12 +26,13 @@
 void cTextureFont::initialize(const std::string &_fileName)
 {
     m_fileName = _fileName;
-    
+    // load the font into memory as a texture atlas.
+    //FILE_PATH_FONT
 }
 
 void cTextureFont::terminate(void)
 {
-    
+    // Free font
 }
 
 sEntityTexture* cTextureFont::createTextureFont(const std::string &_data)

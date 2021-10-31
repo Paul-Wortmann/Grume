@@ -28,10 +28,11 @@
     </cave>
 
     <dungeon>
-        <dungeon_count>3</dungeon_count>
+        <dungeon_count>4</dungeon_count>
         <dungeon_entity>persistence.ogg</dungeon_entity>
         <dungeon_entity>forgoten_tombs.ogg</dungeon_entity>
         <dungeon_entity>cave_001.ogg</dungeon_entity>
+        <cave_entity>dark_cavern_ambient_002.ogg</cave_entity>
     </dungeon>
 
 </music_database>
