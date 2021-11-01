@@ -174,6 +174,25 @@ void cGameEngine::process(void)
         audioManager.process(dt);
         entityManager.process(dt);
         
+        // If mouse over UI
+        if (uiManager.getMouseOverMenu())
+        {
+            // Use input
+            if (graphicsEngine.getKeyReadyState(GLFW_MOUSE_BUTTON_LEFT))
+            {
+                graphicsEngine.setKeyReadyState(GLFW_MOUSE_BUTTON_LEFT, false);
+                uiManager.setMouseClicked(true);
+            }
+        }
+        else
+        {
+            // Use input
+            if (graphicsEngine.getKeyState(GLFW_MOUSE_BUTTON_LEFT))
+            {
+                playerManager.setMouseClick(graphicsEngine.getMouseTerrainPosition());
+            }
+        }
+
         // UI management, event handeling
         switch (uiManager.getUIEvent())
         {
@@ -233,6 +252,8 @@ void cGameEngine::process(void)
         if (graphicsEngine.getKeyReadyState(GLFW_KEY_P))
         {
             graphicsEngine.setKeyReadyState(GLFW_KEY_P, false);
+            graphicsEngine.setKeyReadyState(GLFW_MOUSE_BUTTON_LEFT, false);
+            uiManager.setMouseClicked(false);
             m_state = (m_state == eGameState::pause) ? eGameState::active : eGameState::pause;
         }
 
@@ -242,6 +263,8 @@ void cGameEngine::process(void)
             bool menuState = !uiManager.getMenuEnabled("main_menu");
             uiManager.setMenuEnabled("main_menu", menuState);
             graphicsEngine.setKeyReadyState(GLFW_KEY_ESCAPE, false);
+            graphicsEngine.setKeyReadyState(GLFW_MOUSE_BUTTON_LEFT, false);
+            uiManager.setMouseClicked(false);
             m_state = (menuState) ? eGameState::pause : eGameState::active;
             if (menuState == true)
             {
@@ -258,6 +281,8 @@ void cGameEngine::process(void)
             bool menuState = !uiManager.getMenuEnabled("inventory");
             uiManager.setMenuEnabled("inventory", menuState);
             graphicsEngine.setKeyReadyState(GLFW_KEY_I, false);
+            graphicsEngine.setKeyReadyState(GLFW_MOUSE_BUTTON_LEFT, false);
+            uiManager.setMouseClicked(false);
             m_state = (menuState) ? eGameState::pause : eGameState::active;
             if (menuState == true)
             {
@@ -271,6 +296,8 @@ void cGameEngine::process(void)
             bool menuState = !uiManager.getMenuEnabled("character");
             uiManager.setMenuEnabled("character", menuState);
             graphicsEngine.setKeyReadyState(GLFW_KEY_C, false);
+            graphicsEngine.setKeyReadyState(GLFW_MOUSE_BUTTON_LEFT, false);
+            uiManager.setMouseClicked(false);
             m_state = (menuState) ? eGameState::pause : eGameState::active;
             if (menuState == true)
             {
@@ -284,6 +311,8 @@ void cGameEngine::process(void)
             bool menuState = !uiManager.getMenuEnabled("skills");
             uiManager.setMenuEnabled("skills", menuState);
             graphicsEngine.setKeyReadyState(GLFW_KEY_S, false);
+            graphicsEngine.setKeyReadyState(GLFW_MOUSE_BUTTON_LEFT, false);
+            uiManager.setMouseClicked(false);
             m_state = (menuState) ? eGameState::pause : eGameState::active;
             if (menuState == true)
             {
@@ -296,25 +325,8 @@ void cGameEngine::process(void)
         {
             entityManager.saveScreenShot("screenshot.png");
             graphicsEngine.setKeyReadyState(GLFW_KEY_F12, false);
-        }
-
-        // If mouse over UI
-        if (uiManager.getMouseOverMenu())
-        {
-            // Use input
-            if (graphicsEngine.getKeyReadyState(GLFW_MOUSE_BUTTON_LEFT))
-            {
-                graphicsEngine.setKeyReadyState(GLFW_MOUSE_BUTTON_LEFT, false);
-                uiManager.setMouseClicked(true);
-            }
-        }
-        else
-        {
-            // Use input
-            if (graphicsEngine.getKeyState(GLFW_MOUSE_BUTTON_LEFT))
-            {
-                playerManager.setMouseClick(graphicsEngine.getMouseTerrainPosition());
-            }
+            graphicsEngine.setKeyReadyState(GLFW_MOUSE_BUTTON_LEFT, false);
+            uiManager.setMouseClicked(false);
         }
 
         // If player has moved update camera and player light

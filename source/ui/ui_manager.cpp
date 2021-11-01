@@ -67,6 +67,10 @@ bool cUIManager::getMenuEnabled(const std::string &_name)
 
 void cUIManager::setMenuEnabled(const std::string &_name, const bool &_state)
 {
+    // Avoid unintended mouse clicks
+    m_mouseOverMenu = false;
+    m_mouseClicked  = false;
+    
     if (m_menu != nullptr)
     {
         for (std::uint32_t m = 0; m < m_numMenu; ++m)
