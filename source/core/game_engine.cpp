@@ -160,14 +160,12 @@ void cGameEngine::process(void)
             playerManager.process(dt);
             physicsEngine.process(dt);
         }
-        
         uiManager.process(dt);
         if (uiManager.getUIEvent() == eComponentFunction::componentFunctionGameLoad)
         {
             mapManager.setLoading(true);
         }
         graphicsEngine.setLoading(mapManager.getLoading());
-        
         graphicsEngine.process(dt);
         animationEngine.process(dt);
         mapManager.process(dt);
