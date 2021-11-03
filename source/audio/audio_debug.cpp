@@ -23,6 +23,7 @@
 
 #include "audio_debug.hpp"
 
+// Open AL
 uint32_t checkAudioError(void)
 {
     ALenum error;
@@ -34,6 +35,7 @@ uint32_t checkAudioError(void)
     return AL_NO_ERROR;
 }
 
+// Open AL
 std::string getAudioErrorString(ALenum _error)
 {
     switch(_error)
