@@ -26,6 +26,7 @@
 
 #include "../core/includes.hpp"
 
+// Open AL
 uint32_t    checkAudioError(void);
 std::string getAudioErrorString(ALenum _error);
 

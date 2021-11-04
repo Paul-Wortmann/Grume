@@ -35,7 +35,8 @@ void cAudioSourceManager::terminate(void)
 
 void cAudioSourceManager::m_freeData(sAudioSource*& _pointer)
 {
-
+    // Remove association with audio buffer
+    alSourcei(_pointer->ID, AL_BUFFER, NULL);
 }
 
 void cAudioSourceManager::m_freeAll(void)

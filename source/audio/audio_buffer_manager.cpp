@@ -65,7 +65,7 @@ sAudioBuffer* cAudioBufferManager::findAudioBuffer(const std::string &_name)
     return nullptr;
 }
 
-sAudioBuffer* cAudioBufferManager::findAudioBuffer(uint32_t _ID)
+sAudioBuffer* cAudioBufferManager::findAudioBuffer(const std::uint32_t &_ID)
 {
     for (sAudioBuffer* tBuffer = getHead(); tBuffer != nullptr; tBuffer = tBuffer->next)
     {

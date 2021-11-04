@@ -59,8 +59,8 @@ void cAudioManager::initialize(void)
 
 void cAudioManager::terminate(void)
 {
-    m_sourceManager.terminate();
     m_bufferManager.terminate();
+    m_sourceManager.terminate();
     m_context = alcGetCurrentContext();
     m_device = alcGetContextsDevice(m_context);
     alcMakeContextCurrent(nullptr);
