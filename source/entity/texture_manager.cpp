@@ -135,7 +135,19 @@ GLFWimage* cTextureManager::loadIcon(const std::string &_fileName)
 
 GLFWimage* cTextureManager::freeIcon(GLFWimage *&_image)
 {
-    
+    if (_image != nullptr)
+    {
+        // Delete the data
+        if (_image->pixels != nullptr)
+        {
+            delete _image->pixels;
+            _image->pixels = nullptr;
+        }
+        
+        // Delete the pointer
+        delete _image;
+        _image = nullptr;
+    }
 }
 
 sEntityTexture* cTextureManager::loadPNG(const std::string &_fileName)
