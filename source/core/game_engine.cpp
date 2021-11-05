@@ -139,6 +139,9 @@ void cGameEngine::terminate(void)
     physicsEngine.terminate();
     graphicsEngine.terminate();
     mapManager.terminate();
+
+    // free loaded icons that are not managed
+
     entityManager.terminate(); // Terminate the entity manager last
 }
 

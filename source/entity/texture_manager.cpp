@@ -133,6 +133,11 @@ GLFWimage* cTextureManager::loadIcon(const std::string &_fileName)
     return nullptr;
 }
 
+GLFWimage* cTextureManager::freeIcon(GLFWimage *&_image)
+{
+    
+}
+
 sEntityTexture* cTextureManager::loadPNG(const std::string &_fileName)
 {
     std::vector<unsigned char> image;
