@@ -38,6 +38,7 @@ class cMaterialManager : public tcLinkedList<sEntityMaterial>
         sEntityMaterial* add(std::string _diffuse, std::string _emissive, std::string _normal, std::string _specular);
         sEntityTexture*  loadTexture(const std::string &_fileName);
         GLFWimage*       loadIcon(const std::string &_fileName);
+        void             freeIcon(GLFWimage *&_image);
         void             saveScreenShot(const std::string &_fileName) { textureManager.savePNG(_fileName); };
         
     protected:

@@ -141,7 +141,7 @@ void cGameEngine::terminate(void)
     mapManager.terminate();
 
     // free loaded icons that are not managed
-    //entityManager.freeIcon(graphicsEngine.getIcon());
+    //entityManager.freeIcon(graphicsEngine.getMouseCursor());
     
     // Terminate the entity manager last
     entityManager.terminate();

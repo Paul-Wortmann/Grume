@@ -238,6 +238,11 @@ GLFWimage* cModelManager::loadIcon(const std::string &_fileName)
     return materialManager.loadIcon(_fileName);
 }
 
+void cModelManager::freeIcon(GLFWimage *&_image)
+{
+    materialManager.freeIcon(_image);
+}
+
 sEntityModel* cModelManager::load(const std::string &_fileName)
 {
     // If the model has already been loaded, return a pointer to it

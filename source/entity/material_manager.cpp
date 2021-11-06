@@ -103,3 +103,8 @@ GLFWimage* cMaterialManager::loadIcon(const std::string &_fileName)
 {
     return textureManager.loadIcon(_fileName);
 }
+
+void cMaterialManager::freeIcon(GLFWimage *&_image)
+{
+    textureManager.freeIcon(_image);
+}

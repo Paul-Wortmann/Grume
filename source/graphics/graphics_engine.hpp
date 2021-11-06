@@ -42,38 +42,38 @@ class cGraphicsEngine
         ~cGraphicsEngine(void) = default;
 
         // Member functions
-        uint32    initialize(void);
-        void      terminate(void);
-        void      process(const float32 &_dt);
-        void      setWindowIcon(GLFWimage* _image);
-        void      setMouseCursor(GLFWimage* _image);
-        void      setDisplay(const uint32 &_w, const uint32 &_h, const bool &_f) {m_window_w = _w; m_window_h = _h; m_fullscreen = _f; };
-        uint32    getWindow_w(void) { return m_window_w; }
-        uint32    getWindow_h(void) { return m_window_h; }
-        bool      windowClosed(void) {return m_windowClosed; }
-        void      setWindowClosed(void) { m_windowClosed = true; glfwSetWindowShouldClose(m_window, GLFW_TRUE); }
-        void      setEntityHead(sEntity* _entity) { m_entityHead = _entity; }
-        void      setEntityPlayer(sEntity* _entity) { m_entityPlayer = _entity; }
-        void      initializeEntities(void) { m_initEntities(); }
-        void      setUIPointer(cUIManager* _UIManager) { m_UIManager = _UIManager; }
-        void      initializeUIComponents(void) { m_initUIComponents(); }
-        bool      getKeyState(const uint32 &_key) { return m_keyMap[_key]; }
-        void      setKeyState(const uint32 &_key, const bool &_state) { m_keyMap[_key] = _state; }
-        bool      getKeyReadyState(const uint32 &_key) { return m_keyReadyMap[_key]; }
-        void      setKeyReadyState(const uint32 &_key, const bool &_state) { m_keyReadyMap[_key] = _state; }
-        void      setPlayerLightPosition(const glm::vec3 &_position) { m_playerLight->position = _position; }
-        glm::vec3 getPlayerLightPosition(void) { return m_playerLight->position; }
-        glm::vec3 getMouseTerrainPosition(void) { return m_camera.getMousePositionTerrain(m_mouseX, m_mouseY); }
-        glm::vec2 getMousePosition(void) { return glm::vec2(m_mouseX, m_mouseY); }
-        glm::vec3 getCameraTarget(void) { return m_camera.getTarget(); };
-        void      setCameraTarget(glm::vec3 _target) { m_camera.setTarget(_target); };
-        glm::vec3 getCameraPosition(void) { return m_camera.getPosition(); };
-        void      setCameraPosition(glm::vec3 _position) { m_camera.setPosition(_position); };
-        float32   getAspectRatio(void) { return m_aspectRatio; };
-        void      addScreenShake(const float32 &_st, const float32 &_sf) { m_camera.addScreenShake(_st, _sf); }
-        void      setParticleTextureID(const uint32 &_tid) { m_p4_particleTextureID = _tid; }
-        void      setLoadTextureID(const uint32 &_tid) { m_pls_renderTextureID = _tid; }
-        void      setLoading(const bool &_b) { m_loadRender = _b; }
+        uint32     initialize(void);
+        void       terminate(void);
+        void       process(const float32 &_dt);
+        void       setWindowIcon(GLFWimage* _image);
+        void       setMouseCursor(GLFWimage* _image);
+        void       setDisplay(const uint32 &_w, const uint32 &_h, const bool &_f) {m_window_w = _w; m_window_h = _h; m_fullscreen = _f; };
+        uint32     getWindow_w(void) { return m_window_w; }
+        uint32     getWindow_h(void) { return m_window_h; }
+        bool       windowClosed(void) {return m_windowClosed; }
+        void       setWindowClosed(void) { m_windowClosed = true; glfwSetWindowShouldClose(m_window, GLFW_TRUE); }
+        void       setEntityHead(sEntity* _entity) { m_entityHead = _entity; }
+        void       setEntityPlayer(sEntity* _entity) { m_entityPlayer = _entity; }
+        void       initializeEntities(void) { m_initEntities(); }
+        void       setUIPointer(cUIManager* _UIManager) { m_UIManager = _UIManager; }
+        void       initializeUIComponents(void) { m_initUIComponents(); }
+        bool       getKeyState(const uint32 &_key) { return m_keyMap[_key]; }
+        void       setKeyState(const uint32 &_key, const bool &_state) { m_keyMap[_key] = _state; }
+        bool       getKeyReadyState(const uint32 &_key) { return m_keyReadyMap[_key]; }
+        void       setKeyReadyState(const uint32 &_key, const bool &_state) { m_keyReadyMap[_key] = _state; }
+        void       setPlayerLightPosition(const glm::vec3 &_position) { m_playerLight->position = _position; }
+        glm::vec3  getPlayerLightPosition(void) { return m_playerLight->position; }
+        glm::vec3  getMouseTerrainPosition(void) { return m_camera.getMousePositionTerrain(m_mouseX, m_mouseY); }
+        glm::vec2  getMousePosition(void) { return glm::vec2(m_mouseX, m_mouseY); }
+        glm::vec3  getCameraTarget(void) { return m_camera.getTarget(); };
+        void       setCameraTarget(glm::vec3 _target) { m_camera.setTarget(_target); };
+        glm::vec3  getCameraPosition(void) { return m_camera.getPosition(); };
+        void       setCameraPosition(glm::vec3 _position) { m_camera.setPosition(_position); };
+        float32    getAspectRatio(void) { return m_aspectRatio; };
+        void       addScreenShake(const float32 &_st, const float32 &_sf) { m_camera.addScreenShake(_st, _sf); }
+        void       setParticleTextureID(const uint32 &_tid) { m_p4_particleTextureID = _tid; }
+        void       setLoadTextureID(const uint32 &_tid) { m_pls_renderTextureID = _tid; }
+        void       setLoading(const bool &_b) { m_loadRender = _b; }
 
     protected:
 
@@ -88,12 +88,12 @@ class cGraphicsEngine
         void               m_initUIComponents(void);
 
         // Entity management
-        sEntity*        m_entityHead         = nullptr;
-        sEntity*        m_entityTemp         = nullptr;
-        sEntity*        m_entityPlayer       = nullptr;
+        sEntity*           m_entityHead         = nullptr;
+        sEntity*           m_entityTemp         = nullptr;
+        sEntity*           m_entityPlayer       = nullptr;
 
         // UI component management
-        cUIManager*     m_UIManager          = nullptr;
+        cUIManager*        m_UIManager          = nullptr;
 
         // General
         int32              m_monitorCount       = 0;
@@ -103,23 +103,22 @@ class cGraphicsEngine
         const GLFWvidmode* m_videoModes         = nullptr;
         const GLFWvidmode* m_currentVideoMode   = nullptr;
 
-
-        GLFWwindow*     m_window             = nullptr;
-        bool            m_windowClosed       = false;
-        std::string     m_windowTitle        = "Grume";
-        std::uint32_t   m_window_w           = 0;
-        std::uint32_t   m_window_h           = 0;
-        float32         m_aspectRatio        = static_cast<float32>(m_window_w) / static_cast<float32>(m_window_h);
-        std::uint32_t   m_fieldOfView        = 45;
-        bool            m_fullscreen         = false;
-        int32           m_framebufferSize_w  = 0;
-        int32           m_framebufferSize_h  = 0;
-        std::uint32_t   m_renderBufferSize_w = 1024;
-        std::uint32_t   m_renderBufferSize_h = 1024;
-        bool            m_wireframe          = false;
-        bool            m_basicRender        = false;
-        bool            m_loadRender         = true;
-        bool            m_animation          = true;
+        GLFWwindow*        m_window             = nullptr;
+        bool               m_windowClosed       = false;
+        std::string        m_windowTitle        = "Grume";
+        std::uint32_t      m_window_w           = 0;
+        std::uint32_t      m_window_h           = 0;
+        float32            m_aspectRatio        = static_cast<float32>(m_window_w) / static_cast<float32>(m_window_h);
+        std::uint32_t      m_fieldOfView        = 45;
+        bool               m_fullscreen         = false;
+        int32              m_framebufferSize_w  = 0;
+        int32              m_framebufferSize_h  = 0;
+        std::uint32_t      m_renderBufferSize_w = 1024;
+        std::uint32_t      m_renderBufferSize_h = 1024;
+        bool               m_wireframe          = false;
+        bool               m_basicRender        = false;
+        bool               m_loadRender         = true;
+        bool               m_animation          = true;
         
         // Particles
         cGraphicsEngineParticles m_particleEngine;

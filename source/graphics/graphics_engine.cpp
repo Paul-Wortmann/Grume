@@ -120,7 +120,19 @@ void cGraphicsEngine::setWindowIcon(GLFWimage* _image)
     // If the image failed to load it will not exist
     if (_image != nullptr)
     {
-        glfwSetWindowIcon(m_window, 1, _image);
+        if (_image->pixels != nullptr)
+        {
+            // Use data
+            glfwSetWindowIcon(m_window, 1, _image);
+            
+            // Free data
+            delete _image->pixels;
+            _image->pixels = nullptr;
+        }
+
+        // Free pointer
+        delete _image;
+        _image = nullptr;
     }
 }
 
@@ -130,8 +142,20 @@ void cGraphicsEngine::setMouseCursor(GLFWimage* _image)
     // If the image failed to load it will not exist
     if (_image != nullptr)
     {
-        GLFWcursor* cursor = glfwCreateCursor(_image, 0, 0);
-        glfwSetCursor(m_window, cursor);
+        if (_image->pixels != nullptr)
+        {
+            // Use data
+            GLFWcursor* cursor = glfwCreateCursor(_image, 0, 0);
+            glfwSetCursor(m_window, cursor);
+            
+            // Free data
+            delete _image->pixels;
+            _image->pixels = nullptr;
+        }
+
+        // Free pointer
+        delete _image;
+        _image = nullptr;
     }
 }
 

@@ -45,6 +45,7 @@ class cModelManager : public tcLinkedList<sEntityModel>
         sEntityMaterial* loadMaterial(const std::string &_fileName);
         sEntityTexture*  loadTexture(const std::string &_fileName);
         GLFWimage*       loadIcon(const std::string &_fileName);
+        void             freeIcon(GLFWimage *&_image);
         void             saveScreenShot(const std::string &_fileName) { materialManager.saveScreenShot(_fileName); };
 
     protected:

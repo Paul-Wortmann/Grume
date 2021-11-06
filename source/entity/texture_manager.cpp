@@ -133,7 +133,7 @@ GLFWimage* cTextureManager::loadIcon(const std::string &_fileName)
     return nullptr;
 }
 
-GLFWimage* cTextureManager::freeIcon(GLFWimage *&_image)
+void cTextureManager::freeIcon(GLFWimage *&_image)
 {
     if (_image != nullptr)
     {

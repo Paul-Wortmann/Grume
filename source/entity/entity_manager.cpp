@@ -151,6 +151,11 @@ GLFWimage* cEntityManager::loadIcon(const std::string &_fileName)
     return m_modelManager.loadIcon(_fileName);
 }
 
+void cEntityManager::freeIcon(GLFWimage*& _image)
+{
+    m_modelManager.freeIcon(_image);
+}
+
 void cEntityManager::updateModelMatrix(sEntity*& _entity)
 {
     // 1. Translation
