@@ -258,7 +258,7 @@ void cMapManager::m_mapRoomDiscardAllButLargest(sMap*& _map)
     }
     _map->roomCount = 1;
     if (_map->room != nullptr)
-        delete _map->room;
+        delete[] _map->room;
     _map->room = new sMapRoom[_map->roomCount];
     m_mapRoomSizeLocation(_map);
 }

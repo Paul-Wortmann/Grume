@@ -67,12 +67,14 @@ sEntityTexture* cTextureManager::load(const std::string &_fileName)
     int numChannel = 0;
     stbi_set_flip_vertically_on_load(true);
     unsigned char *data = stbi_load((std::string(FILE_PATH_TEXTURE)+_fileName).c_str(), &width, &height, &numChannel, 0);
-    if (data)
+    if (data != nullptr)
     {
         // Setup format enum based on the number of channels in the image
         GLenum format = 0;
         if (numChannel == 1)
             format = GL_RED;
+        else if (numChannel == 2)
+            format = GL_RG;
         else if (numChannel == 3)
             format = GL_RGB;
         else if (numChannel == 4)

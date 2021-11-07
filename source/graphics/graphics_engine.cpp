@@ -126,7 +126,7 @@ void cGraphicsEngine::setWindowIcon(GLFWimage* _image)
             glfwSetWindowIcon(m_window, 1, _image);
             
             // Free data
-            delete _image->pixels;
+            delete[] _image->pixels;
             _image->pixels = nullptr;
         }
 
@@ -149,7 +149,7 @@ void cGraphicsEngine::setMouseCursor(GLFWimage* _image)
             glfwSetCursor(m_window, cursor);
             
             // Free data
-            delete _image->pixels;
+            delete[] _image->pixels;
             _image->pixels = nullptr;
         }
 
