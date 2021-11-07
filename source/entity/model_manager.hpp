@@ -63,7 +63,7 @@ class cModelManager : public tcLinkedList<sEntityModel>
         void          m_processMesh(const aiScene*& _scene, const aiMesh* _mesh, sEntityModel*& _model);
         void          m_processNode(const aiScene*& _scene, const aiNode* _node, sEntityModel*& _model);
         void          m_addBoneMap(const std::string &_name, const glm::mat4 &_mat4);
-        void          m_buildBoneMap(aiNode* _node, const aiScene* _scene);;
+        void          m_buildBoneMap(aiNode* _node, const aiScene* _scene);
         void          m_buildBoneMapParents(aiNode* _node, aiNode* _nodeParent, const aiScene* _scene);
         int32         m_getBoneID(const std::string &_name);
         void          m_buildBoneMapNodes(aiNode* _node);
@@ -72,7 +72,7 @@ class cModelManager : public tcLinkedList<sEntityModel>
         void          m_addMissingBoneMap(const aiScene* _scene);
         void          m_loadBones(sEntityModel* _model, const aiScene* _scene);
         void          m_loadAnimations(sEntityModel* _model, const aiScene* _scene);
-        sEntityModel* m_loadModel(const std::string &_fileName);;
+        sEntityModel* m_loadModel(const std::string &_fileName);
 
 };
 

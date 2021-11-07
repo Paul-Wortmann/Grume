@@ -27,7 +27,12 @@ std::uint32_t cGameEngine::run(const std::uint32_t &_argc, char** _argv)
 {
     // Clear the log and log version information.
     gLogClear();
-    gLogWrite(LOG_INFO, std::string(__DATE__) + " " + std::string(__TIME__) + " - Starting Grume.", __FILE__, __LINE__, __FUNCTION__);
+    
+    // Log time and application details.
+    std::chrono::system_clock::time_point currentSystemTime = std::chrono::system_clock::now();
+    std::time_t currentTime = std::chrono::system_clock::to_time_t(currentSystemTime);
+    
+    gLogWrite(LOG_INFO, std::string(std::ctime(&currentTime)) + " " + std::string(__TIME__) + " - Starting Grume.", __FILE__, __LINE__, __FUNCTION__);
     std::string GRUMEVersion = std::to_string(GRUME_VERSION_MAJOR) + "." + std::to_string(GRUME_VERSION_MINOR) + "." + std::to_string(GRUME_VERSION_MICRO);
     gLogWrite(LOG_INFO, "Grume version: " + GRUMEVersion, __FILE__, __LINE__, __FUNCTION__);
     std::string GRUMECompile = __DATE__; GRUMECompile += " - "; GRUMECompile += __TIME__;
