@@ -299,7 +299,7 @@ void cPlayerManager::process(const float32 &_dt)
                             // Award the player with experience
                             if (m_data->character->level.current < m_data->character->level.max)
                             {
-                                m_data->character->level.exp += 128;
+                                m_data->character->level.exp += 32;
                                 if (m_data->character->level.exp >= m_data->character->level.expNext)
                                 {
                                     m_data->character->level.exp = 0;

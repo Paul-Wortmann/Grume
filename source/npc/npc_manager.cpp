@@ -63,6 +63,24 @@ void cNPCManager::process(const float32 &_dt)
     {
         if ((m_entityTemp != nullptr) && (m_entityPlayer != nullptr) && (m_entityTemp->type == eEntityType::entityTypeNPCmob) && (m_entityTemp->terminate == false))
         {
+            // Health mana regen
+            {
+                // Health
+                m_entityTemp->character->attributes.health.current += m_entityTemp->character->attributes.health.regen;
+                if (m_entityTemp->character->attributes.health.current > m_entityTemp->character->attributes.health.max)
+                {
+                    m_entityTemp->character->attributes.health.current = m_entityTemp->character->attributes.health.max;
+                }
+
+                // Mana
+                m_entityTemp->character->attributes.mana.current += m_entityTemp->character->attributes.mana.regen;
+                if (m_entityTemp->character->attributes.mana.current > m_entityTemp->character->attributes.mana.max)
+                {
+                    m_entityTemp->character->attributes.mana.current = m_entityTemp->character->attributes.mana.max;
+                }
+
+            }
+            
             // Turn to face the player
             float32 angle = static_cast<float32>(atan2(m_entityTemp->position.z - m_entityPlayer->position.z, m_entityTemp->position.x - m_entityPlayer->position.x));
 
