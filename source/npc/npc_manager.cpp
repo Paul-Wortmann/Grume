@@ -98,6 +98,14 @@ void cNPCManager::process(const float32 &_dt)
                     if (m_entityTemp->ai->attack_counter > m_entityTemp->ai->attack_frequency)
                     {
                         m_entityTemp->ai->attack_counter = 0.0f;
+                        
+                        // Inflict dammage on the player
+                        // **** this should be based on NPC stength and player defence, etc...
+                        m_entityPlayer->character->attributes.health.current -= 1.0f;
+                        if (m_entityPlayer->character->attributes.health.current <= 0)
+                        {
+                            m_entityPlayer->character->attributes.health.current = 0;
+                        }
 
                         // Set attack state
                         m_entityManager->setState(m_entityTemp->UID, "attack");

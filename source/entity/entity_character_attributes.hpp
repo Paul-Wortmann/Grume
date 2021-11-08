@@ -28,21 +28,21 @@
 
 struct sCharacterAttributeRegen
 {
-    std::uint32_t max            = 0;     // Maximum
-    std::uint32_t current        = 0;     // Current
-    float32       regen          = 0.0f;  // Amount per second
+    float32 max            = 0;     // Maximum
+    float32 current        = 0;     // Current
+    float32 regen          = 0.0f;  // Amount per second
 };
 
 struct sCharacterAttributeDamage
 {
-    std::uint32_t base           = 0;     // Base damage
-    float32       critMultiplier = 0.0f;  // Critical hit multiplier
-    std::uint32_t critChancev    = 0;     // Critical hit chance
+    float32 base           = 0;     // Base damage
+    float32 critMultiplier = 0.0f;  // Critical hit multiplier
+    float32 critChancev    = 0;     // Critical hit chance
 };
 
 struct sCharacterAttributeArmor
 {
-    std::uint32_t base           = 0;     // Base armor
+    float32 base           = 0;     // Base armor
 };
 
 struct sEntityCharAttrib // Character attributes

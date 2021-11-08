@@ -100,7 +100,39 @@ void cPlayerManager::setMouseClick(glm::vec3 _pos)
 
 void cPlayerManager::process(const float32 &_dt)
 {
-    // process mouse timer
+    // Process character atributes / characteristics
+    // Health
+    if (m_data->character->attributes.health.current <= 0.0f)
+    {
+        // Player death
+        m_data->character->attributes.health.current = 0.0f;
+    }
+    else
+    {
+        // Health regen
+        m_data->character->attributes.health.current += m_data->character->attributes.health.regen;
+        if (m_data->character->attributes.health.current > m_data->character->attributes.health.max)
+        {
+            m_data->character->attributes.health.current = m_data->character->attributes.health.max;
+        }
+    }
+    
+    // Mana
+    if (m_data->character->attributes.mana.current <= 0.0f)
+    {
+        m_data->character->attributes.mana.current = 0.0f;
+    }
+    else
+    {
+        // Mana regen
+        m_data->character->attributes.mana.current += m_data->character->attributes.mana.regen;
+        if (m_data->character->attributes.mana.current > m_data->character->attributes.mana.max)
+        {
+            m_data->character->attributes.mana.current = m_data->character->attributes.mana.max;
+        }
+    }
+    
+    // Process mouse timer
     if (m_mouseTimerOK != true)
     {
         m_mouseTimer += _dt;
@@ -247,16 +279,34 @@ void cPlayerManager::process(const float32 &_dt)
                 {
                     if (distanceToTileSqr <= tEntity->interaction->distance)
                     {
-                        m_entityManager->setState(tEntity->UID, "die");
-                        m_mapPointer->tile[m_mouseTile].npc = 0;
-                        tEntity->terminate = true;
+                        // Damage the NPC
+                        // **** this should be based on player stength and NPC defence, etc...
+                        tEntity->character->attributes.health.current -= (tEntity->character->attributes.health.max / 2.0f);
                         
-                        // Screen shake on NPC death
-                        if ((rand() % 100) <= tEntity->deathShakeChance)
+                        // NPC has been killed
+                        if (tEntity->character->attributes.health.current <= 0.0f)
                         {
-                            m_graphicsEngine->addScreenShake(tEntity->deathShakeDuration, tEntity->deathShakeForce);
+                            m_entityManager->setState(tEntity->UID, "die");
+                            m_mapPointer->tile[m_mouseTile].npc = 0;
+                            tEntity->terminate = true;
+                            
+                            // Screen shake on NPC death
+                            if ((rand() % 100) <= tEntity->deathShakeChance)
+                            {
+                                m_graphicsEngine->addScreenShake(tEntity->deathShakeDuration, tEntity->deathShakeForce);
+                            }
+                            
+                            // Award the player with experience
+                            if (m_data->character->level.current < m_data->character->level.max)
+                            {
+                                m_data->character->level.exp += 128;
+                                if (m_data->character->level.exp >= m_data->character->level.expNext)
+                                {
+                                    m_data->character->level.exp = 0;
+                                    m_data->character->level.expNext *= m_data->character->level.expMultiplier;
+                                }
+                            }
                         }
-                        
                     }
                     else
                     {

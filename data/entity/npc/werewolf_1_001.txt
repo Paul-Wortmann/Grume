@@ -79,6 +79,21 @@
         <move_behavior>1</move_behavior>
     </ai>
 
+    <attributes>
+	# (depletable) max, regen
+        <attribute_health>100 0.1</attribute_health>
+        <attribute_mana>100 0.1</attribute_mana>
+
+	# (damage) base, critMultiply, critChance
+        <attribute_damagephysical>10 1.5 10</attribute_damagephysical>
+        <attribute_damagefire>10 1.5 10</attribute_damagefire>
+        <attribute_damagefrost>10 1.5 10</attribute_damagefrost>
+
+	# (armor) base
+        <attribute_armorphysical>10</attribute_armorphysical>
+        <attribute_resistancefire>10</attribute_resistancefire>
+        <attribute_resistancefrost>10</attribute_resistancefrost>
+    </attributes>
 
     #type, state 1 , state 2
     #type 0 = toggle states
