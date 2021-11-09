@@ -281,7 +281,10 @@ void cPlayerManager::process(const float32 &_dt)
                     {
                         // Damage the NPC
                         // **** this should be based on player stength and NPC defence, etc...
-                        tEntity->character->attributes.health.current -= (tEntity->character->attributes.health.max / 2.0f);
+                        
+                        float32 dammage = (tEntity->character->attributes.health.max / 2.0f);
+                        
+                        tEntity->character->attributes.health.current -= dammage;
                         
                         // NPC has been killed
                         if (tEntity->character->attributes.health.current <= 0.0f)

@@ -119,7 +119,10 @@ void cNPCManager::process(const float32 &_dt)
                         
                         // Inflict dammage on the player
                         // **** this should be based on NPC stength and player defence, etc...
-                        m_entityPlayer->character->attributes.health.current -= 1.0f;
+                        
+                        float32 dammage = 1.0f;
+                        
+                        m_entityPlayer->character->attributes.health.current -= dammage;
                         if (m_entityPlayer->character->attributes.health.current <= 0)
                         {
                             m_entityPlayer->character->attributes.health.current = 0;
