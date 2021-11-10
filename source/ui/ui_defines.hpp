@@ -43,8 +43,10 @@ enum class eComponentFunction : std::uint16_t
     componentFunctionFullscreenModified = 10, // Fullscreen modified
     componentFunctionVolumeMusicUp      = 11, // Music volume up
     componentFunctionVolumeMusicDown    = 12, // Music volume down
-    componentFunctionVolumeSoundUp      = 13, // Sound volume up
-    componentFunctionVolumeSoundDown    = 14  // Sound volume down
+    componentFunctionVolumeMusicBar     = 13, // Music volume bar
+    componentFunctionVolumeSoundUp      = 14, // Sound volume up
+    componentFunctionVolumeSoundDown    = 15, // Sound volume down
+    componentFunctionVolumeSoundBar     = 16  // Sound volume bar
 };
 
 enum class eComponentState : std::uint16_t 

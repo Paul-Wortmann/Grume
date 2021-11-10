@@ -107,7 +107,10 @@
     <death_shake_force>0.0125</death_shake_force> #Strength
     
     # Experience + item drop
-    <drop_experience>32</drop_experience>
+    <drop>
+        <drop_experience>32</drop_experience>
+        <drop_gold>32</drop_gold>
+    </drop>
 
 </npc>
 

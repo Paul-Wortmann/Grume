@@ -121,11 +121,35 @@ void cUIManager::load(const std::string &_fileName)
                     {
                         m_menu[m].component[c].function = eComponentFunction::componentFunctionBarExp;
                     }
+                    else if (componentFunction.compare("MUSIC_VOLUME_DOWN") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionVolumeMusicDown;
+                    }
+                    else if (componentFunction.compare("MUSIC_VOLUME_UP") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionVolumeMusicUp;
+                    }
+                    else if (componentFunction.compare("MUSIC_VOLUME_BAR") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionVolumeMusicBar;
+                    }
+                    else if (componentFunction.compare("SOUND_VOLUME_DOWN") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionVolumeSoundDown;
+                    }
+                    else if (componentFunction.compare("SOUND_VOLUME_UP") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionVolumeSoundUp;
+                    }
+                    else if (componentFunction.compare("SOUND_VOLUME_BAR") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionVolumeSoundBar;
+                    }
                     else
                     {
                         m_menu[m].component[c].function = eComponentFunction::componentFunctionNone;
                     }
-            
+
                     // Calculate menu component scale
                     m_menu[m].component[c].scale = glm::vec2(m_menu[m].component[c].size.x, m_menu[m].component[c].size.y);
 

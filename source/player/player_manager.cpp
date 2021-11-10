@@ -299,11 +299,11 @@ void cPlayerManager::process(const float32 &_dt)
                                 m_graphicsEngine->addScreenShake(tEntity->deathShakeDuration, tEntity->deathShakeForce);
                             }
                             
-                            // Award the player with experience
+                            // Award the player with experience if not max level
                             if (m_data->character->level.current < m_data->character->level.max)
                             {
-                                // *** experience needs to be derived from the NPC
-                                m_data->character->level.exp += 32;
+                                // Experience derived from the slaughtered NPC
+                                m_data->character->level.exp += tEntity->character->drop.experience;
                                 if (m_data->character->level.exp >= m_data->character->level.expNext)
                                 {
                                     m_data->character->level.exp = 0;

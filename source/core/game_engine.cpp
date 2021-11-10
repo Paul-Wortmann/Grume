@@ -228,6 +228,10 @@ void cGameEngine::process(void)
                 uiManager.setMenuEnabled("main_menu", false);
                 uiManager.setMenuEnabled("options", true);
                 uiManager.setUIEvent(eComponentFunction::componentFunctionNone);
+                
+                // Set volume component
+                //gameConfig.m_volume_master
+                
             break;
             // Fullscreen modified
             case eComponentFunction::componentFunctionFullscreenModified:
