@@ -26,8 +26,9 @@
 
 #include "../core/includes.hpp"
 
-#include "entity_character_skills.hpp"
 #include "entity_character_attributes.hpp"
+#include "entity_character_drop.hpp"
+#include "entity_character_skills.hpp"
 
 struct sCharacterLevel
 {
@@ -45,6 +46,7 @@ struct sEntityCharacter
     sCharacterLevel   level      = {};
     sEntityCharAttrib attributes = {};
     sEntityCharSkill  skills     = {};
+    sEntityCharDrop   drop       = {};
 };
 
 #endif // ENTITY_CHARACTER_HPP

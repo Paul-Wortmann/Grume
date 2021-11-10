@@ -282,9 +282,9 @@ void cPlayerManager::process(const float32 &_dt)
                         // Damage the NPC
                         // **** this should be based on player stength and NPC defence, etc...
                         
-                        float32 dammage = (tEntity->character->attributes.health.max / 2.0f);
+                        float32 damage = (tEntity->character->attributes.health.max / 2.0f);
                         
-                        tEntity->character->attributes.health.current -= dammage;
+                        tEntity->character->attributes.health.current -= damage;
                         
                         // NPC has been killed
                         if (tEntity->character->attributes.health.current <= 0.0f)
@@ -302,6 +302,7 @@ void cPlayerManager::process(const float32 &_dt)
                             // Award the player with experience
                             if (m_data->character->level.current < m_data->character->level.max)
                             {
+                                // *** experience needs to be derived from the NPC
                                 m_data->character->level.exp += 32;
                                 if (m_data->character->level.exp >= m_data->character->level.expNext)
                                 {

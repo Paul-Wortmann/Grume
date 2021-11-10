@@ -98,7 +98,11 @@ void cNPCManager::process(const float32 &_dt)
             }
             
             // Check if player is visable, if so continue
-            if ((m_entityTemp->ai != nullptr) && (1 == 1)) // FIXME!
+            
+            // *** visable should be the result of an actual visability check
+            bool visable = (1 == 1);
+            
+            if ((m_entityTemp->ai != nullptr) && visable)
             {
                 // Calculate the distance to the player
                 float32 distancetoPlayer2 = (((m_entityTemp->position.x - m_entityPlayer->position.x) * 
@@ -117,12 +121,12 @@ void cNPCManager::process(const float32 &_dt)
                     {
                         m_entityTemp->ai->attack_counter = 0.0f;
                         
-                        // Inflict dammage on the player
+                        // Inflict damage on the player
                         // **** this should be based on NPC stength and player defence, etc...
                         
-                        float32 dammage = 1.0f;
+                        float32 damage = 1.0f;
                         
-                        m_entityPlayer->character->attributes.health.current -= dammage;
+                        m_entityPlayer->character->attributes.health.current -= damage;
                         if (m_entityPlayer->character->attributes.health.current <= 0)
                         {
                             m_entityPlayer->character->attributes.health.current = 0;

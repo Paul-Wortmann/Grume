@@ -95,9 +95,9 @@
         <attribute_resistancefrost>10</attribute_resistancefrost>
     </attributes>
 
-    #type, state 1 , state 2
-    #type 0 = toggle states
-    #type 1 = set state
+    # type, state 1 , state 2
+    # type 0 = toggle states
+    # type 1 = set state
     <interaction>1 6 0</interaction>
     <interaction_distance>2</interaction_distance> # num tiles
 
@@ -105,6 +105,9 @@
     <death_shake_chance>100</death_shake_chance> #Chance of screenshake %
     <death_shake_duration>2000</death_shake_duration> #Duration in ms
     <death_shake_force>0.0125</death_shake_force> #Strength
+    
+    # Experience + item drop
+    <drop_experience>32</drop_experience>
 
 </npc>
 

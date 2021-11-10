@@ -369,6 +369,18 @@ sEntity* cEntityManager::load(const std::string& _fileName, sEntity* _entity)
             _entity->character->skills.forceField.enabled = (xmlEntityFile.getInteger("<skills_forcefield>") == 1);
         }
         
+        // Character drop data
+        if (xmlEntityFile.getInstanceCount("<drop>") != 0)
+        {
+            if (_entity->character == nullptr)
+            {
+                _entity->character = new sEntityCharacter;
+            }
+            
+            _entity->character->drop.experience = xmlEntityFile.getInteger("<drop_experience>");
+            _entity->character->drop.gold       = xmlEntityFile.getInteger("<drop_gold>");
+        }
+        
         // Load AI data
         if (xmlEntityFile.getInstanceCount("<ai>") != 0)
         {
