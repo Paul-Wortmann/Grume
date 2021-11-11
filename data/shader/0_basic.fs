@@ -1,6 +1,8 @@
 #version 330 core
 
-out vec4  fragColor;
+// To the frame buffer
+layout(location = 0) out vec4  fragColor;
+
 in  vec2  vs_textcoord;
 uniform sampler2D diffuse;
 

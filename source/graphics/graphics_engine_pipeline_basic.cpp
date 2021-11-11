@@ -25,6 +25,33 @@
 
 void cGraphicsEngine::m_pb_initialize(void)
 {
+    // Frame buffer Object
+    glGenFramebuffers(1, &m_pb_fbo);
+    glBindFramebuffer(GL_FRAMEBUFFER, m_pb_fbo);
+
+    // Frame buffer color render texture
+    glGenTextures(1, &m_pb_renderTextureID);
+    glBindTexture(GL_TEXTURE_2D, m_pb_renderTextureID);
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, m_framebufferSize_w, m_framebufferSize_h, 0, GL_RGBA, GL_UNSIGNED_BYTE, NULL);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+    glFramebufferTexture(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, m_pb_renderTextureID, 0);
+
+    // Frame buffer depth render texture
+    glGenRenderbuffers(1, &m_pb_depthTextureID);
+    glBindRenderbuffer(GL_RENDERBUFFER, m_pb_depthTextureID);
+    glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH_COMPONENT, m_framebufferSize_w, m_framebufferSize_h);
+    glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_RENDERBUFFER, m_pb_depthTextureID);
+
+    // Set the list of draw buffers.
+    GLenum DrawBuffers[1] = {GL_COLOR_ATTACHMENT0};
+    glDrawBuffers(1, DrawBuffers);
+
+    // Unbind and check
+    glBindFramebuffer(GL_FRAMEBUFFER, 0);
+    glBindTexture(GL_TEXTURE_2D, 0);
+    checkOpenGLFrameBuffer();
+
     // Initialize shader
     m_pb_shader.initialize();
     m_pb_shader.load("0_basic");

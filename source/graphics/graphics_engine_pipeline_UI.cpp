@@ -68,6 +68,7 @@ void cGraphicsEngine::m_pui_render(void)
     // Setup the framebuffer
     glBindFramebuffer(GL_FRAMEBUFFER, m_pui_fbo);
     glViewport(0, 0, m_framebufferSize_w, m_framebufferSize_h);
+    
     // Dont clear the buffers, just draw the UI on top.
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
@@ -83,7 +84,14 @@ void cGraphicsEngine::m_pui_render(void)
     glActiveTexture(GL_TEXTURE0);
 
     // Render previous stage texture as background
-    glBindTexture(GL_TEXTURE_2D, m_p3_renderTextureID);
+    if (m_basicRender)
+    {
+        glBindTexture(GL_TEXTURE_2D, m_pb_renderTextureID);
+    }
+    else
+    {
+        glBindTexture(GL_TEXTURE_2D, m_p3_renderTextureID);
+    }
     glBindVertexArray(m_pui_VAO);
     glDrawArrays(GL_TRIANGLES, 0, 6);
 

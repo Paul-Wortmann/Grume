@@ -37,16 +37,16 @@
 class cAudioManager : public tcLinkedList<sEntityAudio>
 {
     public:
-        void initialize(void);
-        void terminate(void);
-        void process(float32 _dt);
+        void     initialize(void);
+        void     terminate(void);
+        void     process(float32 _dt);
         
         // Volume
-        void setVolumeMaster(float _volume) {m_listener.gain = _volume; alListenerf(AL_GAIN, _volume);}
+        void     setVolumeMaster(float _volume) {m_listener.gain = _volume; alListenerf(AL_GAIN, _volume);}
 
         // Listener
-        void setListenerPosition(glm::vec3 _position) {m_listener.position = _position; alListener3f(AL_POSITION, _position.x, _position.y, _position.z);}
-        void setListenerVelocity(glm::vec3 _velocity) {m_listener.velocity = _velocity; alListener3f(AL_POSITION, _velocity.x, _velocity.y, _velocity.z);}
+        void     setListenerPosition(glm::vec3 _position) {m_listener.position = _position; alListener3f(AL_POSITION, _position.x, _position.y, _position.z);}
+        void     setListenerVelocity(glm::vec3 _velocity) {m_listener.velocity = _velocity; alListener3f(AL_POSITION, _velocity.x, _velocity.y, _velocity.z);}
 
         // Audio sources
         uint32_t newAudioSource(void) {return m_sourceManager.newAudioSource()->ID;}
@@ -70,11 +70,25 @@ class cAudioManager : public tcLinkedList<sEntityAudio>
         void     loadBufferWav(uint32_t _ID, const std::string &_fileName);
         void     loadBufferOgg(uint32_t _ID, const std::string &_fileName);
         
+        // Volume
+        void     setVolumeMaster(std::uint32_t _volume) {m_volumeMaster = _volume; };
+        uint32_t getVolumeMaster(void) {return m_volumeMaster; };
+        void     setVolumeMasterUp(void) { if (m_volumeMaster < 100) m_volumeMaster++; };
+        void     setVolumeMasterDown(void) { if (m_volumeMaster > 0) m_volumeMaster--; };
+        void     setVolumeMusic(std::uint32_t _volume) {m_volumeMusic = _volume; };
+        uint32_t getVolumeMusic(void) {return m_volumeMusic; };
+        void     setVolumeMusicUp(void) { if (m_volumeMusic < 100) m_volumeMusic++; };
+        void     setVolumeMusicDown(void) { if (m_volumeMusic > 0) m_volumeMusic--; };
+        void     setVolumeSound(std::uint32_t _volume) {m_volumeSound = _volume; };
+        uint32_t getVolumeSound(void) {return m_volumeSound; };
+        void     setVolumeSoundUp(void) { if (m_volumeSound < 100) m_volumeSound++; };
+        void     setVolumeSoundDown(void) { if (m_volumeSound > 0) m_volumeSound--; };
+        
     protected:
         
     private:
-        void m_freeAll(void);
-        void m_freeData(sEntityAudio*& _pointer);
+        void     m_freeAll(void);
+        void     m_freeData(sEntityAudio*& _pointer);
 
         ALCdevice*          m_device        = nullptr;
         ALCcontext*         m_context       = nullptr;
@@ -82,6 +96,10 @@ class cAudioManager : public tcLinkedList<sEntityAudio>
         cAudioSourceManager m_sourceManager = {};
         cAudioBufferManager m_bufferManager = {};
         sListener           m_listener      = {};
+        
+        std::uint32_t       m_volumeMaster  = 100;
+        std::uint32_t       m_volumeMusic   = 100;
+        std::uint32_t       m_volumeSound   = 100;
 };
 
 #endif //AUDIO_MANAGER_HPP

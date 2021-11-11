@@ -365,10 +365,10 @@ uint32 cGraphicsEngine::initialize(void)
                 m_p1_initialize();
                 m_p2_initialize();
                 m_p3_initialize();
-                m_p4_initialize();
-                m_pui_initialize();
-                m_pls_initialize();
             }
+            m_p4_initialize();
+            m_pui_initialize();
+            m_pls_initialize();
             
             // Initialize particle engine
             m_particleEngine.initialize();
@@ -445,10 +445,10 @@ void cGraphicsEngine::terminate(void)
         m_p1_terminate();
         m_p2_terminate();
         m_p3_terminate();
-        m_p4_terminate();
-        m_pui_terminate();
-        m_pls_terminate();
     }
+    m_p4_terminate();
+    m_pui_terminate();
+    m_pls_terminate();
 
     // Systems
     m_camera.terminate();
@@ -561,13 +561,14 @@ void cGraphicsEngine::process(const float32 &_dt)
 
             // 3rd render pass: Lighting
             m_p3_render();
-
-            // 4th render pass: Particles
-            m_p4_render();
-
-            // UI render pass: last stage
-            m_pui_render();
         }
+
+        // 4th render pass: Particles
+        m_p4_render();
+
+        // UI render pass: last stage
+        m_pui_render();
+
     }
     // End frame
     glfwSwapBuffers(m_window);

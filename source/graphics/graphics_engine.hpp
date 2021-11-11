@@ -143,6 +143,9 @@ class cGraphicsEngine
         void m_pb_render(void);
         cGraphicsEngineShader m_pb_shader                    = {};
         std::uint32_t         m_pb_fbo                       = 0;
+        std::uint32_t         m_pb_renderTextureID           = 0;
+        std::uint32_t         m_pb_depthTextureID            = 0;
+
         std::uint32_t         m_pb_loc_modelMatrix           = 0;
         std::uint32_t         m_pb_loc_viewMatrix            = 0;
         std::uint32_t         m_pb_loc_projectionMatrix      = 0;
