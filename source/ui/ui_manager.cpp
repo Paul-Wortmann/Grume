@@ -190,6 +190,16 @@ void cUIManager::process(const std::uint32_t &_dt)
                                 {
                                     m_uiEvent = m_menu[m].component[c].function;
                                 }
+                                // Master volume up
+                                else if (m_menu[m].component[c].function == eComponentFunction::componentFunctionVolumeMasterUp)
+                                {
+                                    m_uiEvent = m_menu[m].component[c].function;
+                                }
+                                // Master volume down
+                                else if (m_menu[m].component[c].function == eComponentFunction::componentFunctionVolumeMasterDown)
+                                {
+                                    m_uiEvent = m_menu[m].component[c].function;
+                                }
                                 else
                                 {
                                     // Do nothing

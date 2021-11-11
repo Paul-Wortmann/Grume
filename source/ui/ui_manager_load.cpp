@@ -145,6 +145,18 @@ void cUIManager::load(const std::string &_fileName)
                     {
                         m_menu[m].component[c].function = eComponentFunction::componentFunctionVolumeSoundBar;
                     }
+                    else if (componentFunction.compare("MASTER_VOLUME_DOWN") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionVolumeMasterDown;
+                    }
+                    else if (componentFunction.compare("MASTER_VOLUME_UP") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionVolumeMasterUp;
+                    }
+                    else if (componentFunction.compare("MASTER_VOLUME_BAR") == 0)
+                    {
+                        m_menu[m].component[c].function = eComponentFunction::componentFunctionVolumeMasterBar;
+                    }
                     else
                     {
                         m_menu[m].component[c].function = eComponentFunction::componentFunctionNone;

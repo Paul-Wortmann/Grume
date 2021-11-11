@@ -193,7 +193,7 @@
         <menu_texture_normal>ui/menu/menu_background_001.png</menu_texture_normal>
         <menu_position>0.0f, 0.1f, -0.01f</menu_position>
         <menu_size>0.254166667f 0.677777778f</menu_size>
-        <menu_component_count>12<menu_component_count>
+        <menu_component_count>17<menu_component_count>
 
         <component>
             <component_name>title_text</component_name>
@@ -223,7 +223,7 @@
             <component_texture_hover>ui/menu/text_music_volume_001.png</component_texture_hover>
             <component_texture_activated>ui/menu/text_music_volume_001.png</component_texture_activated>
             <component_position>-0.145f, 0.475f, -0.02f</component_position>
-            <component_size>0.076041667f 0.029629629f</component_size>
+            <component_size>0.073697917f 0.02962963f</component_size>
             <component_function>NONE</component_function>
         </component>
 
@@ -275,7 +275,7 @@
             <component_texture_hover>ui/menu/text_sound_volume_001.png</component_texture_hover>
             <component_texture_activated>ui/menu/text_sound_volume_001.png</component_texture_activated>
             <component_position>-0.145f, 0.325f, -0.02f</component_position>
-            <component_size>0.076041667f 0.029629629f</component_size>
+            <component_size>0.07578125f 0.02962963f</component_size>
             <component_function>NONE</component_function>
         </component>
 
@@ -318,6 +318,59 @@
             <component_size>0.1625f 0.043518519f</component_size>
             <component_function>NONE</component_function>
         </component>
+
+        # Master volume
+        
+        <component>
+            <component_name>text_master_volume</component_name>
+            <component_texture_normal>ui/menu/text_master_volume_001.png</component_texture_normal>
+            <component_texture_hover>ui/menu/text_master_volume_001.png</component_texture_hover>
+            <component_texture_activated>ui/menu/text_master_volume_001.png</component_texture_activated>
+            <component_position>-0.145f, 0.175f, -0.02f</component_position>
+            <component_size>0.07578125f 0.02962963f</component_size>
+            <component_function>NONE</component_function>
+        </component>
+
+        <component>
+            <component_name>master_volume_down</component_name>
+            <component_texture_normal>ui/menu/arrow_left_button_normal_001.png</component_texture_normal>
+            <component_texture_hover>ui/menu/arrow_left_button_hover_001.png</component_texture_hover>
+            <component_texture_activated>ui/menu/arrow_left_button_activated_001.png</component_texture_activated>
+            <component_position>-0.2f, 0.1f, -0.02f</component_position>
+            <component_size>0.020833333f 0.043518519f</component_size>
+            <component_function>MASTER_VOLUME_DOWN</component_function>
+        </component>
+
+        <component>
+            <component_name>master_volume_up</component_name>
+            <component_texture_normal>ui/menu/arrow_right_button_normal_001.png</component_texture_normal>
+            <component_texture_hover>ui/menu/arrow_right_button_hover_001.png</component_texture_hover>
+            <component_texture_activated>ui/menu/arrow_right_button_activated_001.png</component_texture_activated>
+            <component_position>0.2f, 0.1f, -0.02f</component_position>
+            <component_size>0.020833333f 0.043518519f</component_size>
+            <component_function>MASTER_VOLUME_UP</component_function>
+        </component>
+
+        <component>
+            <component_name>master_volume_bar</component_name>
+            <component_texture_normal>ui/menu/bar_001.png</component_texture_normal>
+            <component_texture_hover>ui/menu/bar_001.png</component_texture_hover>
+            <component_texture_activated>ui/menu/bar_001.png</component_texture_activated>
+            <component_position>0.0f, 0.1f, -0.02f</component_position>
+            <component_size>0.159895833f 0.039814815f</component_size>
+            <component_function>MASTER_VOLUME_BAR</component_function>
+        </component>
+
+        <component>
+            <component_name>master_volume_bar_cover</component_name>
+            <component_texture_normal>ui/menu/bar_cover_001.png</component_texture_normal>
+            <component_texture_hover>ui/menu/bar_cover_001.png</component_texture_hover>
+            <component_texture_activated>ui/menu/bar_cover_001.png</component_texture_activated>
+            <component_position>0.0f, 0.1f, -0.03f</component_position>
+            <component_size>0.1625f 0.043518519f</component_size>
+            <component_function>NONE</component_function>
+        </component>
+
 
 # Fullscreen checkbox
 # Resolution scrollbox
