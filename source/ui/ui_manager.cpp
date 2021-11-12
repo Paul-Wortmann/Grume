@@ -83,8 +83,33 @@ void cUIManager::setMenuEnabled(const std::string &_name, const bool &_state)
     }
 }
 
+void cUIManager::setComponent(eComponentFunction _componentEnum, const std::uint32_t &_value)
+{
+    // Loop through all components, set any component with _componentEnum with _value
+
+    // If menu data structure exists
+    if (m_menu != nullptr)
+    {
+        // Loop through all menus
+        for (std::uint32_t m = 0; m < m_numMenu; ++m)
+        {
+            // Loop through all menu components
+            for (std::uint32_t c = 0; c < m_menu[m].numComponent; ++c)
+            {
+                if (m_menu[m].component[c].function == _componentEnum)
+                {
+                    m_menu[m].component[c].value = _value;
+                }
+            }
+        }
+    }
+}
+
 void cUIManager::process(const std::uint32_t &_dt)
 {
+    // component bar size needs to be handled ?
+    
+    
     // If menu data structure exists
     if (m_menu != nullptr)
     {

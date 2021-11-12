@@ -79,7 +79,9 @@ std::uint32_t cGameEngine::initialize(const std::uint32_t &_argc, char** _argv)
     {
         // Before loading entities
         audioManager.initialize();
-        audioManager.setVolumeMaster(gameConfig.m_volume_master / 100.0f);
+        audioManager.setVolumeMaster(gameConfig.m_volume_master);
+        audioManager.setVolumeMusic(gameConfig.m_volume_music);
+        audioManager.setVolumeSound(gameConfig.m_volume_sfx);
         entityManager.initialize();
         entityManager.setAudioPointer(&audioManager);
         entityManager.setDatabasePointer(&gameDatabase);
@@ -133,6 +135,9 @@ std::uint32_t cGameEngine::initialize(const std::uint32_t &_argc, char** _argv)
 void cGameEngine::terminate(void)
 {
     // Save the config file first
+    gameConfig.m_volume_master = audioManager.getVolumeMaster();
+    gameConfig.m_volume_music  = audioManager.getVolumeMusic();
+    gameConfig.m_volume_sfx    = audioManager.getVolumeSound();
     gameConfig.save();
 
     // Terminate subsystems
@@ -230,23 +235,36 @@ void cGameEngine::process(void)
                 uiManager.setUIEvent(eComponentFunction::componentFunctionNone);
                 
                 // Set volume component
-                //gameConfig.m_volume_master
-                
+                uiManager.setComponent(eComponentFunction::componentFunctionVolumeMasterBar, audioManager.getVolumeMaster());
+                uiManager.setComponent(eComponentFunction::componentFunctionVolumeMusicBar, audioManager.getVolumeMusic());
+                uiManager.setComponent(eComponentFunction::componentFunctionVolumeSoundBar, audioManager.getVolumeSound());
             break;
-            // Fullscreen modified
-            case eComponentFunction::componentFunctionFullscreenModified:
+            // Master volume up
+            case eComponentFunction::componentFunctionVolumeMasterUp:
+                audioManager.setVolumeMasterUp();
+            break;
+            // Master volume down
+            case eComponentFunction::componentFunctionVolumeMasterDown:
+                audioManager.setVolumeMasterDown();
             break;
             // Music volume up
             case eComponentFunction::componentFunctionVolumeMusicUp:
+                audioManager.setVolumeMusicUp();
             break;
             // Music volume down
             case eComponentFunction::componentFunctionVolumeMusicDown:
+                audioManager.setVolumeMusicDown();
             break;
             // Sound volume up
             case eComponentFunction::componentFunctionVolumeSoundUp:
+                audioManager.setVolumeSoundUp();
             break;
             // Sound volume down
             case eComponentFunction::componentFunctionVolumeSoundDown:
+                audioManager.setVolumeSoundDown();
+            break;
+            // Fullscreen modified
+            case eComponentFunction::componentFunctionFullscreenModified:
             break;
             case eComponentFunction::componentFunctionNone:
             default:

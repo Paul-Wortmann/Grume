@@ -41,9 +41,6 @@ class cAudioManager : public tcLinkedList<sEntityAudio>
         void     terminate(void);
         void     process(float32 _dt);
         
-        // Volume
-        void     setVolumeMaster(float _volume) {m_listener.gain = _volume; alListenerf(AL_GAIN, _volume);}
-
         // Listener
         void     setListenerPosition(glm::vec3 _position) {m_listener.position = _position; alListener3f(AL_POSITION, _position.x, _position.y, _position.z);}
         void     setListenerVelocity(glm::vec3 _velocity) {m_listener.velocity = _velocity; alListener3f(AL_POSITION, _velocity.x, _velocity.y, _velocity.z);}
@@ -69,9 +66,9 @@ class cAudioManager : public tcLinkedList<sEntityAudio>
         uint32_t newAudioBuffer(void) {return m_bufferManager.newAudioBuffer()->ID;}
         void     loadBufferWav(uint32_t _ID, const std::string &_fileName);
         void     loadBufferOgg(uint32_t _ID, const std::string &_fileName);
-        
+
         // Volume
-        void     setVolumeMaster(std::uint32_t _volume) {m_volumeMaster = _volume; };
+        void     setVolumeMaster(std::uint32_t _volume) {m_volumeMaster = _volume; m_listener.gain = m_volumeMaster / 100.0f; alListenerf(AL_GAIN, m_listener.gain); };
         uint32_t getVolumeMaster(void) {return m_volumeMaster; };
         void     setVolumeMasterUp(void) { if (m_volumeMaster < 100) m_volumeMaster++; };
         void     setVolumeMasterDown(void) { if (m_volumeMaster > 0) m_volumeMaster--; };
