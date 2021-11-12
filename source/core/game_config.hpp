@@ -49,6 +49,7 @@ class cGameConfig
         bool          m_fullscreen   = true;
         
         // Audio
+        std::uint32_t m_volume_max    = 100;
         std::uint32_t m_volume_master = 30;
         std::uint32_t m_volume_music  = 40;
         std::uint32_t m_volume_sfx    = 50;

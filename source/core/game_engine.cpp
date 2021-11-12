@@ -95,6 +95,7 @@ std::uint32_t cGameEngine::initialize(const std::uint32_t &_argc, char** _argv)
         mapManager.setPlayerPointer(&playerManager);
         graphicsEngine.setEntityHead(entityManager.getHead());
         graphicsEngine.setUIPointer(&uiManager);
+        graphicsEngine.setGameConfig(&gameConfig);
         graphicsEngine.initializeUIComponents();
         physicsEngine.initialize();
         animationEngine.initialize();
@@ -233,35 +234,48 @@ void cGameEngine::process(void)
                 uiManager.setMenuEnabled("main_menu", false);
                 uiManager.setMenuEnabled("options", true);
                 uiManager.setUIEvent(eComponentFunction::componentFunctionNone);
-                
-                // Set volume component
-                uiManager.setComponent(eComponentFunction::componentFunctionVolumeMasterBar, audioManager.getVolumeMaster());
-                uiManager.setComponent(eComponentFunction::componentFunctionVolumeMusicBar, audioManager.getVolumeMusic());
-                uiManager.setComponent(eComponentFunction::componentFunctionVolumeSoundBar, audioManager.getVolumeSound());
             break;
             // Master volume up
             case eComponentFunction::componentFunctionVolumeMasterUp:
+                uiManager.setUIEvent(eComponentFunction::componentFunctionNone);
                 audioManager.setVolumeMasterUp();
+                if (gameConfig.m_volume_master < gameConfig.m_volume_max)
+                    gameConfig.m_volume_master++;
             break;
             // Master volume down
             case eComponentFunction::componentFunctionVolumeMasterDown:
+                uiManager.setUIEvent(eComponentFunction::componentFunctionNone);
                 audioManager.setVolumeMasterDown();
+                if (gameConfig.m_volume_master > 0)
+                    gameConfig.m_volume_master--;
             break;
             // Music volume up
             case eComponentFunction::componentFunctionVolumeMusicUp:
+                uiManager.setUIEvent(eComponentFunction::componentFunctionNone);
                 audioManager.setVolumeMusicUp();
+                if (gameConfig.m_volume_music < gameConfig.m_volume_max)
+                    gameConfig.m_volume_music++;
             break;
             // Music volume down
             case eComponentFunction::componentFunctionVolumeMusicDown:
+                uiManager.setUIEvent(eComponentFunction::componentFunctionNone);
                 audioManager.setVolumeMusicDown();
+                if (gameConfig.m_volume_music > 0)
+                    gameConfig.m_volume_music--;
             break;
             // Sound volume up
             case eComponentFunction::componentFunctionVolumeSoundUp:
+                uiManager.setUIEvent(eComponentFunction::componentFunctionNone);
                 audioManager.setVolumeSoundUp();
+                if (gameConfig.m_volume_sfx < gameConfig.m_volume_max)
+                    gameConfig.m_volume_sfx++;
             break;
             // Sound volume down
             case eComponentFunction::componentFunctionVolumeSoundDown:
+                uiManager.setUIEvent(eComponentFunction::componentFunctionNone);
                 audioManager.setVolumeSoundDown();
+                if (gameConfig.m_volume_sfx > 0)
+                    gameConfig.m_volume_sfx--;
             break;
             // Fullscreen modified
             case eComponentFunction::componentFunctionFullscreenModified:

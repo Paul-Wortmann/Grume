@@ -72,7 +72,6 @@ struct sUIComponent
     eComponentState    state         = eComponentState::componentNormal;
 
     // Base
-    std::uint32_t      value         = 0; // Data to be used by components, example volume bar
     glm::vec3          position      = glm::vec3(0.0f, 0.0f, 0.0f); // Position in OpenGL coordinate space (-1 to 1)
     glm::vec2          scale         = glm::vec2(1.0f, 1.0f); // Scale relative to OpenGL window coordinates (-1 to 1)
     glm::vec2          size          = glm::vec2(1, 1); // Size in pixels

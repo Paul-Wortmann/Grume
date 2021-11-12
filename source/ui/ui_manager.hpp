@@ -48,7 +48,6 @@ class cUIManager
         std::uint32_t      getActiveWindowCount(void) { return m_activeWindowCount; };
         eComponentFunction getUIEvent(void) { return m_uiEvent; };
         void               setUIEvent(eComponentFunction _uiEvent) { m_uiEvent = _uiEvent; };
-        void               setComponent(eComponentFunction _componentEnum, const std::uint32_t &_value);
 
         // ui_manager_load.cpp
         void load(const std::string &_fileName);

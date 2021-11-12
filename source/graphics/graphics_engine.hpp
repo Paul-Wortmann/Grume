@@ -30,6 +30,7 @@
 #include "graphics_engine_light_manager.hpp"
 #include "graphics_engine_particles.hpp"
 #include "graphics_engine_shader.hpp"
+#include "../core/game_config.hpp"
 #include "../core/includes.hpp"
 #include "../entity/entity_define.hpp"
 #include "../ui/ui_manager.hpp"
@@ -54,6 +55,7 @@ class cGraphicsEngine
         void       setWindowClosed(void) { m_windowClosed = true; glfwSetWindowShouldClose(m_window, GLFW_TRUE); }
         void       setEntityHead(sEntity* _entity) { m_entityHead = _entity; }
         void       setEntityPlayer(sEntity* _entity) { m_entityPlayer = _entity; }
+        void       setGameConfig(cGameConfig* _gameConfig) { m_GameConfig = _gameConfig; }
         void       initializeEntities(void) { m_initEntities(); }
         void       setUIPointer(cUIManager* _UIManager) { m_UIManager = _UIManager; }
         void       initializeUIComponents(void) { m_initUIComponents(); }
@@ -94,6 +96,9 @@ class cGraphicsEngine
 
         // UI component management
         cUIManager*        m_UIManager          = nullptr;
+
+        // config management
+        cGameConfig*       m_GameConfig         = nullptr;
 
         // General
         int32              m_monitorCount       = 0;

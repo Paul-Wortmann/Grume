@@ -10,9 +10,9 @@
         <fullscreen>0</fullscreen>
     </graphics>
     <audio>
-        <volume_master>19</volume_master>
-        <volume_music>52</volume_music>
-        <volume_sfx>71</volume_sfx>
+        <volume_master>37</volume_master>
+        <volume_music>30</volume_music>
+        <volume_sfx>49</volume_sfx>
     </audio>
 </config>
 
