@@ -239,43 +239,37 @@ void cGameEngine::process(void)
             case eComponentFunction::componentFunctionVolumeMasterUp:
                 uiManager.setUIEvent(eComponentFunction::componentFunctionNone);
                 audioManager.setVolumeMasterUp();
-                if (gameConfig.m_volume_master < gameConfig.m_volume_max)
-                    gameConfig.m_volume_master++;
+                gameConfig.m_volume_master = audioManager.getVolumeMaster();
             break;
             // Master volume down
             case eComponentFunction::componentFunctionVolumeMasterDown:
                 uiManager.setUIEvent(eComponentFunction::componentFunctionNone);
                 audioManager.setVolumeMasterDown();
-                if (gameConfig.m_volume_master > 0)
-                    gameConfig.m_volume_master--;
+                gameConfig.m_volume_master = audioManager.getVolumeMaster();
             break;
             // Music volume up
             case eComponentFunction::componentFunctionVolumeMusicUp:
                 uiManager.setUIEvent(eComponentFunction::componentFunctionNone);
                 audioManager.setVolumeMusicUp();
-                if (gameConfig.m_volume_music < gameConfig.m_volume_max)
-                    gameConfig.m_volume_music++;
+                gameConfig.m_volume_music = audioManager.getVolumeMusic();
             break;
             // Music volume down
             case eComponentFunction::componentFunctionVolumeMusicDown:
                 uiManager.setUIEvent(eComponentFunction::componentFunctionNone);
                 audioManager.setVolumeMusicDown();
-                if (gameConfig.m_volume_music > 0)
-                    gameConfig.m_volume_music--;
+                gameConfig.m_volume_music = audioManager.getVolumeMusic();
             break;
             // Sound volume up
             case eComponentFunction::componentFunctionVolumeSoundUp:
                 uiManager.setUIEvent(eComponentFunction::componentFunctionNone);
                 audioManager.setVolumeSoundUp();
-                if (gameConfig.m_volume_sfx < gameConfig.m_volume_max)
-                    gameConfig.m_volume_sfx++;
+                gameConfig.m_volume_sfx = audioManager.getVolumeSound();
             break;
             // Sound volume down
             case eComponentFunction::componentFunctionVolumeSoundDown:
                 uiManager.setUIEvent(eComponentFunction::componentFunctionNone);
                 audioManager.setVolumeSoundDown();
-                if (gameConfig.m_volume_sfx > 0)
-                    gameConfig.m_volume_sfx--;
+                gameConfig.m_volume_sfx = audioManager.getVolumeSound();
             break;
             // Fullscreen modified
             case eComponentFunction::componentFunctionFullscreenModified:
