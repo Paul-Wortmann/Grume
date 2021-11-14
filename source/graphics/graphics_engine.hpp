@@ -76,6 +76,7 @@ class cGraphicsEngine
         void       setParticleTextureID(const uint32 &_tid) { m_p4_particleTextureID = _tid; }
         void       setLoadTextureID(const uint32 &_tid) { m_pls_renderTextureID = _tid; }
         void       setLoading(const bool &_b) { m_loadRender = _b; }
+        void       setBasicRenderPath(const bool &_b) { m_basicRender = _b; }
 
     protected:
 

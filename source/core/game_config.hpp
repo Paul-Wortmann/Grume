@@ -44,9 +44,10 @@ class cGameConfig
         // and will use the closest valid resolution to these values when not.
         
         // Graphics
-        std::uint32_t m_resolution_x = 1920;
-        std::uint32_t m_resolution_y = 1080;
-        bool          m_fullscreen   = true;
+        std::uint32_t m_resolution_x  = 1920;
+        std::uint32_t m_resolution_y  = 1080;
+        bool          m_fullscreen    = true;
+        bool          m_basicRenderer = false;
         
         // Audio
         std::uint32_t m_volume_max    = 100;

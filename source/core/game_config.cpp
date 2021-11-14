@@ -39,6 +39,7 @@ void cGameConfig::load(const std::string &_fileName)
         m_resolution_x  = xmlFile.getInteger("<resolution_w>");
         m_resolution_y  = xmlFile.getInteger("<resolution_h>");
         m_fullscreen    = (xmlFile.getInteger("<fullscreen>") == 1);
+        m_basicRenderer = (xmlFile.getInteger("<basic_renderer>") == 1);
 
         // Audio
         m_volume_master = xmlFile.getInteger("<volume_master>");
@@ -80,6 +81,7 @@ void cGameConfig::save(const std::string &_fileName)
     configFile << "        <resolution_w>" << m_resolution_x << "</resolution_w>" << std::endl;
     configFile << "        <resolution_h>" << m_resolution_y << "</resolution_h>" << std::endl;
     configFile << "        <fullscreen>" << ((m_fullscreen) ? "1" : "0") << "</fullscreen>" << std::endl;
+    configFile << "        <basic_renderer>" << ((m_basicRenderer) ? "1" : "0") << "</basic_renderer>" << std::endl;
     configFile << "    </graphics>" << std::endl;
     configFile << "    <audio>" << std::endl;
     configFile << "        <volume_master>" << m_volume_master << "</volume_master>" << std::endl;

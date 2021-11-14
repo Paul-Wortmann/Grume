@@ -72,6 +72,7 @@ std::uint32_t cGameEngine::initialize(const std::uint32_t &_argc, char** _argv)
     // Load the game database list
     gameDatabase.load();
     
+    graphicsEngine.setBasicRenderPath(gameConfig.m_basicRenderer);
     graphicsEngine.setDisplay(gameConfig.m_resolution_x, gameConfig.m_resolution_y, gameConfig.m_fullscreen);
 
     uint32 status = graphicsEngine.initialize(); // This should be initialized first

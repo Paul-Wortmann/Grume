@@ -8,6 +8,7 @@
         <resolution_w>1920</resolution_w>
         <resolution_h>1020</resolution_h>
         <fullscreen>0</fullscreen>
+        <basic_renderer>0</basic_renderer>
     </graphics>
     <audio>
         <volume_master>73</volume_master>
