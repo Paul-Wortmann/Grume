@@ -546,6 +546,7 @@ void cEntityManager::m_playSound(sEntity*& _entity, const std::uint32_t& _state)
         m_audioManager->setAudioBufferName(_entity->state[state].auidoBufferID, _entity->state[state].audioFile);
         m_audioManager->attachSourceBuffer(_entity->state[state].audioSourceID, _entity->state[state].auidoBufferID);
         m_audioManager->setAudioSourceLooping(_entity->state[state].audioSourceID, false);
+        m_audioManager->setAudioSourceGain(_entity->state[state].audioSourceID, m_audioManager->getVolumeSound());
     }
     
     // If the sound has been loaded, play it

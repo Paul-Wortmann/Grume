@@ -68,24 +68,25 @@ class cAudioManager : public tcLinkedList<sEntityAudio>
         void     loadBufferOgg(uint32_t _ID, const std::string &_fileName);
 
         // Volume
-        void     setVolumeMaster(std::uint32_t _volume) {m_volumeMaster = _volume; m_listener.gain = m_volumeMaster / 100.0f; alListenerf(AL_GAIN, m_listener.gain); };
-        uint32_t getVolumeMaster(void) {return m_volumeMaster; };
-        void     setVolumeMasterUp(void) { if (m_volumeMaster < 100) m_volumeMaster++; };
-        void     setVolumeMasterDown(void) { if (m_volumeMaster > 0) m_volumeMaster--; };
-        void     setVolumeMusic(std::uint32_t _volume) {m_volumeMusic = _volume; };
-        uint32_t getVolumeMusic(void) {return m_volumeMusic; };
-        void     setVolumeMusicUp(void) { if (m_volumeMusic < 100) m_volumeMusic++; };
-        void     setVolumeMusicDown(void) { if (m_volumeMusic > 0) m_volumeMusic--; };
-        void     setVolumeSound(std::uint32_t _volume) {m_volumeSound = _volume; };
-        uint32_t getVolumeSound(void) {return m_volumeSound; };
-        void     setVolumeSoundUp(void) { if (m_volumeSound < 100) m_volumeSound++; };
-        void     setVolumeSoundDown(void) { if (m_volumeSound > 0) m_volumeSound--; };
+        void     setVolumeMaster(std::uint32_t _volume) {m_volumeMaster = _volume; m_updateVolume(); };
+        uint32_t getVolumeMaster(void) {return m_volumeMaster; m_updateVolume(); };
+        void     setVolumeMasterUp(void) { if (m_volumeMaster < 100) m_volumeMaster++; m_updateVolume(); };
+        void     setVolumeMasterDown(void) { if (m_volumeMaster > 0) m_volumeMaster--; m_updateVolume(); };
+        void     setVolumeMusic(std::uint32_t _volume) {m_volumeMusic = _volume; m_updateVolume(); };
+        uint32_t getVolumeMusic(void) {return m_volumeMusic; m_updateVolume(); };
+        void     setVolumeMusicUp(void) { if (m_volumeMusic < 100) m_volumeMusic++; m_updateVolume(); };
+        void     setVolumeMusicDown(void) { if (m_volumeMusic > 0) m_volumeMusic--; m_updateVolume(); };
+        void     setVolumeSound(std::uint32_t _volume) {m_volumeSound = _volume; m_updateVolume(); };
+        uint32_t getVolumeSound(void) {return m_volumeSound; m_updateVolume(); };
+        void     setVolumeSoundUp(void) { if (m_volumeSound < 100) m_volumeSound++; m_updateVolume(); };
+        void     setVolumeSoundDown(void) { if (m_volumeSound > 0) m_volumeSound--; m_updateVolume(); };
         
     protected:
         
     private:
         void     m_freeAll(void);
         void     m_freeData(sEntityAudio*& _pointer);
+        void     m_updateVolume(void);
 
         ALCdevice*          m_device        = nullptr;
         ALCcontext*         m_context       = nullptr;

@@ -51,7 +51,7 @@ struct sAudioBuffer
     std::uint32_t UID        = 0;
 
     // Data
-    uint32_t      ID         = 0;
+    uint32_t      ID         = 0; // OpenAl ID
     std::string   name       = "";
 };
 
@@ -62,11 +62,11 @@ struct sAudioSource
     std::uint32_t UID        = 0;
 
     // Data
-    uint32_t      ID         = 0;
+    uint32_t      ID         = 0; // OpenAl ID
     int32_t       state      = 0;
-    float         pitch      = 1;
-    float         gain       = 1;
-    bool          loopint    = false;
+    float         pitch      = 1.0f;
+    float         gain       = 1.0f; // Volume
+    bool          looping    = false;
     glm::vec3     position   = glm::vec3(0.0f, 0.0f, 0.0f);
     glm::vec3     velocity   = glm::vec3(0.0f, 0.0f, 0.0f);
 };

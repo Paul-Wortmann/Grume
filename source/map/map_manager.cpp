@@ -989,6 +989,7 @@ void cMapManager::m_playMusic(void)
         m_audioManager->attachSourceBuffer(m_musicSourceID, m_musicBufferID);
         m_audioManager->setAudioSourceLooping(m_musicSourceID, true);
         m_audioManager->playSource(m_musicSourceID);
+        m_audioManager->setAudioSourceGain(m_musicSourceID, m_audioManager->getVolumeMusic());
     }
 }
 

@@ -82,6 +82,31 @@ void cAudioManager::m_freeAll(void)
     }
 }
 
+void cAudioManager::m_updateVolume(void)
+{
+    m_listener.gain = m_volumeMaster / 100.0f;
+    alListenerf(AL_GAIN, m_listener.gain); 
+    for (sAudioSource* temp = m_sourceManager.getHead(); temp != nullptr; temp = temp->next)
+    {
+        // Determine if the source is looping
+        std::int32_t looping = 0;
+        alGetSourcei(temp->ID, AL_LOOPING, &looping);
+        checkAudioError();
+        
+        // Music
+        if (looping > 0)
+        {
+            temp->gain = m_volumeMusic  / 100.0f;
+        }
+        // SFX
+        else
+        {
+            temp->gain = m_volumeSound  / 100.0f;
+        }
+        alSourcef(temp->ID, AL_GAIN, temp->gain);
+    }
+}
+
 void cAudioManager::loadBufferWav(uint32_t _ID, const std::string &_fileName)
 {
     sAudioData *audioData = new sAudioData;

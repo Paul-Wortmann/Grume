@@ -3,8 +3,8 @@
 
     <information>
         <current_map>town_1_001</current_map>
-        <current_position>7223</current_position>
-        <current_rotation>-3.57628e-06</current_rotation>
+        <current_position>5067</current_position>
+        <current_rotation>-1.5708</current_rotation>
     </information>
 
     <player>

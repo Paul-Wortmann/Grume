@@ -189,11 +189,15 @@ void cGameEngine::process(void)
         if (uiManager.getMouseOverMenu())
         {
             // Use input
+            // mouse button left click
             if (graphicsEngine.getKeyReadyState(GLFW_MOUSE_BUTTON_LEFT))
             {
                 graphicsEngine.setKeyReadyState(GLFW_MOUSE_BUTTON_LEFT, false);
                 uiManager.setMouseClicked(true);
             }
+
+            // mouse button left pressed
+            uiManager.setMousePressed(graphicsEngine.getKeyState(GLFW_MOUSE_BUTTON_LEFT));
         }
         else
         {

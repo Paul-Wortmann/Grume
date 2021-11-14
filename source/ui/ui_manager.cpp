@@ -170,8 +170,18 @@ void cUIManager::process(const std::uint32_t &_dt)
                                 {
                                     m_uiEvent = m_menu[m].component[c].function;
                                 }
+                                else
+                                {
+                                    // Do nothing
+                                    m_uiEvent = eComponentFunction::componentFunctionNone;
+                                }
+                            }
+                            
+                            // Mouse pressed
+                            if (m_mousePressed)
+                            {
                                 // Music volume up
-                                else if (m_menu[m].component[c].function == eComponentFunction::componentFunctionVolumeMusicUp)
+                                if (m_menu[m].component[c].function == eComponentFunction::componentFunctionVolumeMusicUp)
                                 {
                                     m_uiEvent = m_menu[m].component[c].function;
                                 }
@@ -199,11 +209,6 @@ void cUIManager::process(const std::uint32_t &_dt)
                                 else if (m_menu[m].component[c].function == eComponentFunction::componentFunctionVolumeMasterDown)
                                 {
                                     m_uiEvent = m_menu[m].component[c].function;
-                                }
-                                else
-                                {
-                                    // Do nothing
-                                    m_uiEvent = eComponentFunction::componentFunctionNone;
                                 }
                             }
                         }
