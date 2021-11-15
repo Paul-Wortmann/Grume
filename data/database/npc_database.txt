@@ -9,6 +9,9 @@
         
         # dead_body
         <npc>dead_body      npc/dead_body_1_001.txt</npc>
+
+        # dragon
+        <npc>dragon         npc/dragon_1_001.txt</npc>
         
         # forest monster
         <npc>forest_monster npc/forest_monster_1_001.txt</npc>
