@@ -11,7 +11,7 @@
     </resources>
 
     <transform>
-        <position>0.0 2.0 0.0</position>
+        <position>0.0 3.5 0.0</position>
         <scale>10.0 10.0 10.0</scale>
         <rotation>3.1416 -4.712385 0.0</rotation>
         <rotationaxis>0 1 0</rotationaxis>
@@ -39,30 +39,30 @@
     </state>
     <state>
         <state_name>attack</state_name>
-        <state_sound>dragon 3 0</state_sound> # database name, else none, database index, repeat (bool)
+        <state_sound>monster_1 14 0</state_sound> # database name, else none, database index, repeat (bool)
         <state_animation>0.0 1.666666667 0</state_animation> # frame start, frame end, repeat (bool)
     </state>
     <state>
         <state_name>block</state_name>
-        <state_sound>dragon 1 0</state_sound> # database name, else none, database index, repeat (bool)
+        <state_sound>monster_1 5 0</state_sound> # database name, else none, database index, repeat (bool)
         <state_animation>0.0 1.666666667 0</state_animation> # frame start, frame end, repeat (bool)
     </state>
     <state>
         <state_name>die</state_name>
-        <state_sound>dragon 2 0</state_sound> # database name, else none, database index, repeat (bool)
+        <state_sound>monster_2 2 0</state_sound> # database name, else none, database index, repeat (bool)
         <state_animation>0.0 0.1 0</state_animation> # frame start, frame end, repeat (bool)
     </state>
     <state>
         <state_name>gethit</state_name>
-        <state_sound>dragon 1 0</state_sound> # database name, else none, database index, repeat (bool)
+        <state_sound>monster_1 3 0</state_sound> # database name, else none, database index, repeat (bool)
         <state_animation>0.0 1.666666667 0</state_animation> # frame start, frame end, repeat (bool)
     </state>
 
     <ai>
 	// Distance in tile units of size
-        <attack_distance>1</attack_distance>
+        <attack_distance>4</attack_distance>
         <attack_frequency>1024</attack_frequency> # mili-seconds
-        <move_distance>4</move_distance>
+        <move_distance>6</move_distance>
 
         # % chance per frame
         <attack_chance>10</attack_chance>
@@ -81,18 +81,18 @@
 
     <attributes>
 	# (depletable) max, regen
-        <attribute_health>100 0.1</attribute_health>
+        <attribute_health>1000 0.1</attribute_health>
         <attribute_mana>100 0.1</attribute_mana>
 
 	# (damage) base, critMultiply, critChance
-        <attribute_damagephysical>10 1.5 10</attribute_damagephysical>
-        <attribute_damagefire>10 1.5 10</attribute_damagefire>
-        <attribute_damagefrost>10 1.5 10</attribute_damagefrost>
+        <attribute_damagephysical>25 1.5 10</attribute_damagephysical>
+        <attribute_damagefire>25 1.5 10</attribute_damagefire>
+        <attribute_damagefrost>0 1.5 10</attribute_damagefrost>
 
 	# (armor) base
-        <attribute_armorphysical>10</attribute_armorphysical>
-        <attribute_resistancefire>10</attribute_resistancefire>
-        <attribute_resistancefrost>10</attribute_resistancefrost>
+        <attribute_armorphysical>50</attribute_armorphysical>
+        <attribute_resistancefire>95</attribute_resistancefire>
+        <attribute_resistancefrost>0</attribute_resistancefrost>
     </attributes>
 
     # type, state 1 , state 2
@@ -108,8 +108,8 @@
     
     # Experience + item drop
     <drop>
-        <drop_experience>32</drop_experience>
-        <drop_gold>32</drop_gold>
+        <drop_experience>320</drop_experience>
+        <drop_gold>320</drop_gold>
     </drop>
     
 </npc>

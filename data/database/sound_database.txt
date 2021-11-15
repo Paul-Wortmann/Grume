@@ -138,6 +138,47 @@
         <sound>minotaur monster/minotaur/minotaur_1_002.ogg<sound>
         <sound>minotaur monster/minotaur/minotaur_1_003.ogg<sound>
 
+        <sound>monster_1 monster/monster_1/monster_1_001.ogg<sound>
+        <sound>monster_1 monster/monster_1/monster_1_002.ogg<sound>
+        <sound>monster_1 monster/monster_1/monster_1_003.ogg<sound>
+        <sound>monster_1 monster/monster_1/monster_1_004.ogg<sound>
+        <sound>monster_1 monster/monster_1/monster_1_005.ogg<sound>
+        <sound>monster_1 monster/monster_1/monster_1_006.ogg<sound>
+        <sound>monster_1 monster/monster_1/monster_1_007.ogg<sound>
+        <sound>monster_1 monster/monster_1/monster_1_008.ogg<sound>
+        <sound>monster_1 monster/monster_1/monster_1_009.ogg<sound>
+        <sound>monster_1 monster/monster_1/monster_1_010.ogg<sound>
+        <sound>monster_1 monster/monster_1/monster_1_011.ogg<sound>
+        <sound>monster_1 monster/monster_1/monster_1_012.ogg<sound>
+        <sound>monster_1 monster/monster_1/monster_1_013.ogg<sound>
+        <sound>monster_1 monster/monster_1/monster_1_014.ogg<sound>
+        <sound>monster_1 monster/monster_1/monster_1_015.ogg<sound>
+        <sound>monster_1 monster/monster_1/monster_1_016.ogg<sound>
+        <sound>monster_1 monster/monster_1/monster_1_017.ogg<sound>
+
+        <sound>monster_2 monster/monster_2/beast_dieing_1_001.ogg<sound>
+        <sound>monster_2 monster/monster_2/beast_dieing_1_002.ogg<sound>
+        <sound>monster_2 monster/monster_2/beast_growl_1_001.ogg<sound>
+        <sound>monster_2 monster/monster_2/beast_growl_1_002.ogg<sound>
+        <sound>monster_2 monster/monster_2/beast_growl_1_003.ogg<sound>
+        <sound>monster_2 monster/monster_2/beast_growl_1_004.ogg<sound>
+        <sound>monster_2 monster/monster_2/beast_growl_1_005.ogg<sound>
+        <sound>monster_2 monster/monster_2/beast_growl_1_006.ogg<sound>
+        <sound>monster_2 monster/monster_2/children_spirit_sounds_1_001.ogg<sound>
+        <sound>monster_2 monster/monster_2/demon_call_1_001.ogg<sound>
+        <sound>monster_2 monster/monster_2/demon_call_1_002.ogg<sound>
+        <sound>monster_2 monster/monster_2/demon_growl_1_001.ogg<sound>
+        <sound>monster_2 monster/monster_2/pixie_1_001.ogg<sound>
+        <sound>monster_2 monster/monster_2/pixie_dieing_1_001.ogg<sound>
+        <sound>monster_2 monster/monster_2/spirit_shout_1_001.ogg<sound>
+        <sound>monster_2 monster/monster_2/yucky_beast_1_001.ogg<sound>
+        <sound>monster_2 monster/monster_2/yucky_beast_1_002.ogg<sound>
+        <sound>monster_2 monster/monster_2/yucky_beast_1_003.ogg<sound>
+        <sound>monster_2 monster/monster_2/yucky_beast_1_004.ogg<sound>
+        <sound>monster_2 monster/monster_2/yucky_beast_1_005.ogg<sound>
+        <sound>monster_2 monster/monster_2/yucky_beast_1_006.ogg<sound>
+        <sound>monster_2 monster/monster_2/yucky_beast_1_007.ogg<sound>
+
         <sound>object object/door_1_001.ogg</sound>
         <sound>object object/door_1_002.ogg</sound>
         <sound>object object/gate_1_001.ogg</sound>
