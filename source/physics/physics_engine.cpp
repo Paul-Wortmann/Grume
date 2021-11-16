@@ -25,13 +25,25 @@
 
 uint32 cPhysicsEngine::initialize(void)
 {
-    physicsManager.initialize();
     return EXIT_SUCCESS;
 }
 
 void cPhysicsEngine::terminate(void)
 {
-    physicsManager.terminate();
+    m_freeAll();
+}
+
+void cPhysicsEngine::m_freeAll(void)
+{
+    for (sPhysicsObject* temp = getHead(); temp != nullptr; temp = temp->next)
+    {
+        m_freeData(temp);
+    }
+}
+
+void cPhysicsEngine::m_freeData(sPhysicsObject*& _object)
+{
+    
 }
 
 void cPhysicsEngine::process(const float32 &_dt)

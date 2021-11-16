@@ -25,12 +25,12 @@
 #define PHYSICS_ENGINE_HPP
 
 #include "../core/includes.hpp"
+#include "../core/linked_list.hpp"
 #include "../entity/entity_define.hpp"
 
 #include "physics_define.hpp"
-#include "physics_engine_manager.hpp"
 
-class cPhysicsEngine
+class cPhysicsEngine : public tcLinkedList<sPhysicsObject>
 {
     public:
         uint32 initialize(void);
@@ -40,7 +40,8 @@ class cPhysicsEngine
     protected:
         
     private:
-        cPhysicsManager physicsManager = {};
+        void m_freeAll(void);
+        void m_freeData(sPhysicsObject*& _object);
 };
 
 #endif //PHYSICS_ENGINE_HPP
