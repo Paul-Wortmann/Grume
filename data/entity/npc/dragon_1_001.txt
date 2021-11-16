@@ -62,7 +62,7 @@
 	// Distance in tile units of size
         <attack_distance>4</attack_distance>
         <attack_frequency>1024</attack_frequency> # mili-seconds
-        <move_distance>6</move_distance>
+        <move_distance>12</move_distance>
 
         # % chance per frame
         <attack_chance>10</attack_chance>
@@ -81,7 +81,7 @@
 
     <attributes>
 	# (depletable) max, regen
-        <attribute_health>1000 0.1</attribute_health>
+        <attribute_health>5000 0.1</attribute_health>
         <attribute_mana>100 0.1</attribute_mana>
 
 	# (damage) base, critMultiply, critChance
@@ -108,8 +108,8 @@
     
     # Experience + item drop
     <drop>
-        <drop_experience>320</drop_experience>
-        <drop_gold>320</drop_gold>
+        <drop_experience>3200</drop_experience>
+        <drop_gold>3200</drop_gold>
     </drop>
     
 </npc>
