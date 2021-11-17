@@ -34,14 +34,19 @@ class cPhysicsEngine : public tcLinkedList<sPhysicsObject>
 {
     public:
         uint32 initialize(void);
-        void terminate(void);
-        void process(const float32 &_dt);
+        void   terminate(void);
+        void   process(const float32 &_dt);
+        void   setEntityHead(sEntity* _entity) { m_entityHead = _entity; }
 
     protected:
         
     private:
         void m_freeAll(void);
         void m_freeData(sPhysicsObject*& _object);
+
+        // Entity management
+        sEntity*           m_entityHead         = nullptr;
+
 };
 
 #endif //PHYSICS_ENGINE_HPP
