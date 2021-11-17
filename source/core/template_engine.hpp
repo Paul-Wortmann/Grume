@@ -30,9 +30,9 @@
 class tcTemplateEngine
 {
     public:
-        virtual std::uint32_t initialize(void)   = 0;
-        virtual void          terminate(void)    = 0;
-        virtual void          process(float _dt) = 0;
+        virtual uint32 initialize(void)   = 0;
+        virtual void   terminate(void)    = 0;
+        virtual void   process(float _dt) = 0;
 
     protected:
 

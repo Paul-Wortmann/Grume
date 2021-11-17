@@ -25,7 +25,7 @@
 #define AUDIO_MANAGER_HPP
 
 #include "../core/includes.hpp"
-#include "../core/linked_list.hpp"
+#include "../core/template_linked_list.hpp"
 #include "../entity/entity_audio.hpp"
 #include "audio_defines.hpp"
 #include "audio_debug.hpp"

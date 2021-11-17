@@ -25,7 +25,7 @@
 #define GRAPHICS_ENGINE_LIGHT_MANAGER_HPP
 
 #include "../core/includes.hpp"
-#include "../core/linked_list.hpp"
+#include "../core/template_linked_list.hpp"
 #include "graphics_engine_light_define.hpp"
 
 class cGraphicsEngineLightManager : public tcLinkedList<sGraphicsEnginePointLight>

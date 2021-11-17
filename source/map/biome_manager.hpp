@@ -26,7 +26,7 @@
 
 #include "../entity/entity_manager.hpp"
 #include "../core/includes.hpp"
-#include "../core/linked_list.hpp"
+#include "../core/template_linked_list.hpp"
 #include "biome_define.hpp"
 
 class cBiomeManager : public tcLinkedList<sMapBiome>

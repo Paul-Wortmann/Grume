@@ -25,7 +25,7 @@
 #define TEXTURE_MANAGER_HPP
 
 #include "../core/includes.hpp"
-#include "../core/linked_list.hpp"
+#include "../core/template_linked_list.hpp"
 #include "entity_texture.hpp"
 
 class cTextureManager : public tcLinkedList<sEntityTexture>

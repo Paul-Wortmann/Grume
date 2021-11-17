@@ -24,8 +24,43 @@
 #ifndef LINKED_LIST_HPP
 #define LINKED_LIST_HPP
 
+// Define datatypes
 #include <cstdint>
-#include <iostream>
+
+#ifndef int8
+   #define int8 std::int8_t
+#endif
+#ifndef uint8
+   #define uint8 std::uint8_t
+#endif
+
+#ifndef int16
+   #define int16 std::int16_t
+#endif
+#ifndef uint16
+   #define uint16 std::uint16_t
+#endif
+
+#ifndef int32
+   #define int32 std::int32_t
+#endif
+#ifndef uint32
+   #define uint32 std::uint32_t
+#endif
+
+#ifndef int64
+   #define int64 std::int64_t
+#endif
+#ifndef uint64
+   #define uint64 std::uint64_t
+#endif
+
+#ifndef float32
+   #define float32 float
+#endif
+#ifndef float64
+   #define float64 double
+#endif
 
 // !!! This implementation is custom designed for this project. !!!
 

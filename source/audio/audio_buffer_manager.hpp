@@ -25,7 +25,7 @@
 #define AUDIO_BUFFER_MANAGER_HPP
 
 #include "../core/includes.hpp"
-#include "../core/linked_list.hpp"
+#include "../core/template_linked_list.hpp"
 #include "audio_defines.hpp"
 
 class cAudioBufferManager : public tcLinkedList<sAudioBuffer>

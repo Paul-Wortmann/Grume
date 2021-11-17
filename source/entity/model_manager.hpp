@@ -31,7 +31,7 @@
 #include "entity_texture.hpp"
 #include "material_manager.hpp"
 #include "../core/includes.hpp"
-#include "../core/linked_list.hpp"
+#include "../core/template_linked_list.hpp"
 #include "../graphics/graphics_engine_defines.hpp"
 #include "../utils/file_utils.hpp"
 #include "../utils/xml_parser.hpp"
