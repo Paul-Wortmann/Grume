@@ -24,7 +24,6 @@
 #ifndef TEMPLATE_ENGINE_HPP
 #define TEMPLATE_ENGINE_HPP
 
-#include "defines.hpp"
 #include "includes.hpp"
 
 class tcTemplateEngine

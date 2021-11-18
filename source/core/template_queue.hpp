@@ -57,69 +57,33 @@
 #ifndef TEMPLATE_QUEUE_HPP
 #define TEMPLATE_QUEUE_HPP
 
-// Define datatypes
-#include <cstdint>
-
-#ifndef int8
-   #define int8 std::int8_t
-#endif
-#ifndef uint8
-   #define uint8 std::uint8_t
-#endif
-
-#ifndef int16
-   #define int16 std::int16_t
-#endif
-#ifndef uint16
-   #define uint16 std::uint16_t
-#endif
-
-#ifndef int32
-   #define int32 std::int32_t
-#endif
-#ifndef uint32
-   #define uint32 std::uint32_t
-#endif
-
-#ifndef int64
-   #define int64 std::int64_t
-#endif
-#ifndef uint64
-   #define uint64 std::uint64_t
-#endif
-
-#ifndef float32
-   #define float32 float
-#endif
-#ifndef float64
-   #define float64 double
-#endif
+#include "defines_types.hpp"
 
 template <typename T>
-class cQueue
+class tcQueue
 {
     public:
         // Constructors and destructors
-        cQueue(void) { m_initialize(); } // constructor
-        ~cQueue(void) { m_terminate(); } // destructor
-        cQueue(const  cQueue&) = delete; // copy constructor
+        tcQueue(void) { m_initialize(); }  // constructor
+        ~tcQueue(void) { m_terminate(); }  // destructor
+        tcQueue(const  tcQueue&) = delete; // copy constructor
 
         // Interface
-        std::uint32_t size(void) { return m_size; }
-        void          push(T* _data) { m_push(_data); }
-        T*            pop(void) { return m_pop(); }
+        uint32 size(void) { return m_size; }
+        void   push(T* _data) { m_push(_data); }
+        T*     pop(void) { return m_pop(); }
 
     private:
         // Data
-        T*            m_head = nullptr;
-        T*            m_tail = nullptr;
-        std::uint32_t m_size = 0;
+        T*     m_head = nullptr;
+        T*     m_tail = nullptr;
+        uint32 m_size = 0;
 
         // Initialize
-        void          m_initialize(void) { m_size = 0;}
+        void   m_initialize(void) { m_size = 0;}
 
         // Terminate
-        void          m_terminate(void)
+        void   m_terminate(void)
         {
             for(T* temp = m_head; m_head != nullptr; )
             {
@@ -135,7 +99,7 @@ class cQueue
 
         // Push
         // The caller allocates memory for the passed pointer
-        void          m_push(T* _data)
+        void   m_push(T* _data)
         {
             if (m_tail == nullptr)
             {
@@ -155,7 +119,7 @@ class cQueue
 
         // Pop
         // The caller frees the memory of the returned pointer
-        T*            m_pop(void)
+        T*     m_pop(void)
         {
             T* temp = m_head;
             if (m_head != nullptr)

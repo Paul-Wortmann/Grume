@@ -24,7 +24,6 @@
 #ifndef EVENT_MANAGER_DEFINES_HPP
 #define EVENT_MANAGER_DEFINES_HPP
 
-#include "defines.hpp"
 #include "includes.hpp"
 #include "template_manager.hpp"
 

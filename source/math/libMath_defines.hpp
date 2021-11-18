@@ -28,23 +28,47 @@
 #include <limits>
 
 // Boolean type
-typedef bool          boolean;
+#ifndef boolean
+    typedef bool          boolean;
+#endif
 
 // Float types
-typedef float         float32;
-typedef double        float64;
-typedef long double   float128;
+#ifndef float32
+    typedef float         float32;
+#endif
+#ifndef float64
+    typedef double        float64;
+#endif
+#ifndef float128
+    typedef long double   float128;
+#endif
 
 // Integer types
-typedef std::uint8_t  uint8;
-typedef std::uint16_t uint16;
-typedef std::uint32_t uint32;
-typedef std::uint64_t uint64;
+#ifndef uint8
+    typedef std::uint8_t  uint8;
+#endif
+#ifndef uint16
+    typedef std::uint16_t uint16;
+#endif
+#ifndef uint32
+    typedef std::uint32_t uint32;
+#endif
+#ifndef uint64
+    typedef std::uint64_t uint64;
+#endif
 
-typedef std::int8_t   int8;
-typedef std::int16_t  int16;
-typedef std::int32_t  int32;
-typedef std::int64_t  int64;
+#ifndef int8
+    typedef std::int8_t   int8;
+#endif
+#ifndef int16
+    typedef std::int16_t  int16;
+#endif
+#ifndef int32
+    typedef std::int32_t  int32;
+#endif
+#ifndef int64
+    typedef std::int64_t  int64;
+#endif
 
 #define MIN(a,b) ((a) < (b) ? (a) : (b))
 #define MAX(a,b) ((a) > (b) ? (a) : (b))
