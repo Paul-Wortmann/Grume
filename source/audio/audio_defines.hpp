@@ -36,22 +36,22 @@ struct sListener
 
 struct sAudioData
 {
-    uint16_t audioFormat     = 0;
-    int32_t  channels        = 2;
-    int64_t  sampleRate      = 48000;
-    int64_t  bitsPerSample   = 16;
-    char*    buffer          = nullptr;
-    ALsizei  bufferSize      = 0;
+    uint16 audioFormat     = 0;
+    int32  channels        = 2;
+    int64  sampleRate      = 48000;
+    int64  bitsPerSample   = 16;
+    char*    buffer        = nullptr;
+    ALsizei  bufferSize    = 0;
 };
 
 struct sAudioBuffer
 {
     // Linked list
     sAudioBuffer* next       = nullptr;
-    std::uint32_t UID        = 0;
+    uint32        UID        = 0;
 
     // Data
-    uint32_t      ID         = 0; // OpenAl ID
+    uint32        ID         = 0; // OpenAl ID
     std::string   name       = "";
 };
 
@@ -59,11 +59,11 @@ struct sAudioSource
 {
     // Linked list
     sAudioSource* next       = nullptr;
-    std::uint32_t UID        = 0;
+    uint32        UID        = 0;
 
     // Data
-    uint32_t      ID         = 0; // OpenAl ID
-    int32_t       state      = 0;
+    uint32        ID         = 0; // OpenAl ID
+    int32         state      = 0;
     float         pitch      = 1.0f;
     float         gain       = 1.0f; // Volume
     bool          looping    = false;

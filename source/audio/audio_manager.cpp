@@ -89,7 +89,7 @@ void cAudioManager::m_updateVolume(void)
     for (sAudioSource* temp = m_sourceManager.getHead(); temp != nullptr; temp = temp->next)
     {
         // Determine if the source is looping
-        std::int32_t looping = 0;
+        int32 looping = 0;
         alGetSourcei(temp->ID, AL_LOOPING, &looping);
         checkAudioError();
         
@@ -107,7 +107,7 @@ void cAudioManager::m_updateVolume(void)
     }
 }
 
-void cAudioManager::loadBufferWav(uint32_t _ID, const std::string &_fileName)
+void cAudioManager::loadBufferWav(uint32 _ID, const string &_fileName)
 {
     sAudioData *audioData = new sAudioData;
     loadWav(_fileName, audioData);
@@ -116,7 +116,7 @@ void cAudioManager::loadBufferWav(uint32_t _ID, const std::string &_fileName)
     delete audioData;
 }
 
-void cAudioManager::loadBufferOgg(uint32_t _ID, const std::string &_fileName)
+void cAudioManager::loadBufferOgg(uint32 _ID, const string &_fileName)
 {
     sAudioData *audioData = new sAudioData;
     loadOgg(_fileName, audioData);
@@ -125,7 +125,7 @@ void cAudioManager::loadBufferOgg(uint32_t _ID, const std::string &_fileName)
     delete audioData;
 }
 
-void cAudioManager::setAudioBufferName(uint32_t _ID, const std::string &_name)
+void cAudioManager::setAudioBufferName(uint32 _ID, const string &_name)
 {
     sAudioBuffer* tB = m_bufferManager.findAudioBuffer(_ID);
     if (tB == nullptr)

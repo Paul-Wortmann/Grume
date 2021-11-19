@@ -34,12 +34,12 @@ struct sEntityModel
 {
     // Linked list management
     sEntityModel*     next             = nullptr;
-    std::uint32_t     UID              = 0;
+    uint32            UID              = 0;
 
     // Information
     bool              animated         = false;
     bool              animProcessed    = false; // Prevent advancing the animation multiple times per frame.
-    std::string       fileName         = {};
+    string            fileName         = {};
 
     // Mesh
     uint32            numMesh          = 0;

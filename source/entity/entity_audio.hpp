@@ -29,8 +29,8 @@
 struct sEntityAudio
 {
     // Linked list
-    sEntityAudio*  next = nullptr;
-    std::uint32_t  UID  = 0;
+    sEntityAudio* next = nullptr;
+    uint32        UID  = 0;
 };
 
 #endif // ENTITY_AUDIO_HPP

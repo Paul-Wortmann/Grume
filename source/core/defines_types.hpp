@@ -21,11 +21,13 @@
  * @date 2011-11-11
  */
 
+// Define datatypes
 #ifndef DEFINES_TYPES_HPP
 #define DEFINES_TYPES_HPP
 
-// Define datatypes
+// Includes
 #include <cstdint>
+#include <string>
 
 // Boolean type
 #ifndef boolean
@@ -43,7 +45,7 @@
     typedef long double   float128;
 #endif
 
-// Integer types
+// Unsigned integer types
 #ifndef uint8
     typedef std::uint8_t  uint8;
 #endif
@@ -57,6 +59,7 @@
     typedef std::uint64_t uint64;
 #endif
 
+// Define integer types
 #ifndef int8
     typedef std::int8_t   int8;
 #endif
@@ -69,5 +72,11 @@
 #ifndef int64
     typedef std::int64_t  int64;
 #endif
+
+// Define string types
+#ifndef string
+    using string = std::string;
+#endif
+
 
 #endif // DEFINES_TYPES_HPP

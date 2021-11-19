@@ -55,14 +55,14 @@ struct sEntity
 {
     // Linked list
     sEntity*            next                 = nullptr;
-    std::uint32_t       UID                  = 0;
+    uint32              UID                  = 0;
 
     // Infomation
     std::string         name                 = "";
     bool                enabled              = true;
     eEntityType         type                 = eEntityType::entityTypeStatic;
     eEntityOwner        owner                = eEntityOwner::ownerNone;
-    std::uint32_t       tile                 = 0; // Current tile
+    uint32              tile                 = 0; // Current tile
 
     // Base
     glm::vec3           position             = glm::vec3(0.0f, 0.0f, 0.0f);
@@ -73,10 +73,10 @@ struct sEntity
 
     // Animation (per entity, not shared)
     bool                animationIndependent = false;
-    std::uint32_t       numBones             = 0;
+    uint32              numBones             = 0;
     glm::mat4*          boneTransform        = nullptr;
 
-    std::uint32_t       currentAnimation     = 0;
+    uint32              currentAnimation     = 0;
     float64             previousAnimTime     = 0.0;
     float64             currentAnimTime      = 0.0;
     float64             stopAnimTime         = 0.0;
@@ -96,11 +96,11 @@ struct sEntity
     sEntityCollision*   collision            = nullptr;
 
     // State
-    std::uint32_t       stateCount           = 0;
-    std::uint32_t       stateInitial         = 0;
-    std::uint32_t       stateCurrent         = 0;
-    sEntityState*       state                = nullptr;
-    bool                terminate            = false;
+    uint32        stateCount           = 0;
+    uint32        stateInitial         = 0;
+    uint32        stateCurrent         = 0;
+    sEntityState* state                = nullptr;
+    bool          terminate            = false;
 
     // AI
     sEntityAI*          ai                   = nullptr;
@@ -110,15 +110,15 @@ struct sEntity
     
     // Interaction
     sEntityInteraction* interaction          = nullptr;
-    std::uint32_t       triggerTile          = 0; // Trigger tile on interaction, 0 for none
+    uint32       triggerTile          = 0; // Trigger tile on interaction, 0 for none
 
     // Pathing
-    sEntityMovement*    movement             = nullptr;
+    sEntityMovement* movement             = nullptr;
 
     // Screen shake on death
-    std::uint32_t       deathShakeChance     = 100;
-    std::uint32_t       deathShakeDuration   = 2000;
-    float32             deathShakeForce      = 0.5f;
+    uint32       deathShakeChance     = 100;
+    uint32       deathShakeDuration   = 2000;
+    float32      deathShakeForce      = 0.5f;
 };
 
 #endif //ENTITY_HPP

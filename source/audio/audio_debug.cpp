@@ -24,7 +24,7 @@
 #include "audio_debug.hpp"
 
 // Open AL
-uint32_t checkAudioError(void)
+uint32 checkAudioError(void)
 {
     ALenum error;
     error = alGetError();

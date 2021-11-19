@@ -23,18 +23,18 @@
 
 #include "game_engine.hpp"
 
-void cGameEngine::save(const std::uint32_t &_slotNum)
+void cGameEngine::save(const uint32 &_slotNum)
 {
     // Create a new save file, or overwrite its content if it does not exist
-    std::string   fileName = std::string("save_00") + std::to_string(_slotNum) + std::string(".txt");
+    string   fileName = string("save_00") + std::to_string(_slotNum) + string(".txt");
     std::ofstream saveFile;
     saveFile.open (FILE_PATH_SAVE + fileName, std::ios::trunc); 
 
     // Only proceed if there is map data
     if (saveFile.is_open())
     {
-        std::uint32_t indent_width = 4;
-        std::uint32_t indent_level = 0;
+        uint32 indent_width = 4;
+        uint32 indent_level = 0;
         
         // XML information
         saveFile << "<?xml version = \"1.0\" encoding = \"UTF-8\" ?>" << std::endl;
@@ -45,69 +45,69 @@ void cGameEngine::save(const std::uint32_t &_slotNum)
         
         // Information
         indent_level++;
-        saveFile << std::string(indent_width * indent_level, ' ');
+        saveFile << string(indent_width * indent_level, ' ');
         saveFile << "<information>" << std::endl;
         indent_level++;
-        saveFile << std::string(indent_width * indent_level, ' ');
+        saveFile << string(indent_width * indent_level, ' ');
         saveFile << "<current_map>" << mapManager.getCurrentMapName() << "</current_map>" << std::endl;
-        saveFile << std::string(indent_width * indent_level, ' ');
+        saveFile << string(indent_width * indent_level, ' ');
         saveFile << "<current_position>" << playerManager.getCurrentTile() << "</current_position>" << std::endl;
-        saveFile << std::string(indent_width * indent_level, ' ');
+        saveFile << string(indent_width * indent_level, ' ');
         saveFile << "<current_rotation>" << playerManager.getRotation().z << "</current_rotation>" << std::endl;
         indent_level--;
-        saveFile << std::string(indent_width * indent_level, ' ');
+        saveFile << string(indent_width * indent_level, ' ');
         saveFile << "</information>" << std::endl;
         saveFile << std::endl;
         
         // Player
         sEntity* player = playerManager.getPlayerEntity();
-        saveFile << std::string(indent_width * indent_level, ' ');
+        saveFile << string(indent_width * indent_level, ' ');
         saveFile << "<player>" << std::endl;
         indent_level++;
-        saveFile << std::string(indent_width * indent_level, ' ');
+        saveFile << string(indent_width * indent_level, ' ');
         saveFile << "<level_current>" << player->character->level.current << "</level_current>" << std::endl;
-        saveFile << std::string(indent_width * indent_level, ' ');
+        saveFile << string(indent_width * indent_level, ' ');
         saveFile << "<exp_current>" << player->character->level.exp << "</exp_current>" << std::endl;
-        saveFile << std::string(indent_width * indent_level, ' ');
+        saveFile << string(indent_width * indent_level, ' ');
         saveFile << "<health_current>" << player->character->attributes.health.current << "</health_current>" << std::endl;
-        saveFile << std::string(indent_width * indent_level, ' ');
+        saveFile << string(indent_width * indent_level, ' ');
         saveFile << "<health_max>" << player->character->attributes.health.max << "</health_max>" << std::endl;
-        saveFile << std::string(indent_width * indent_level, ' ');
+        saveFile << string(indent_width * indent_level, ' ');
         saveFile << "<health_regen>" << player->character->attributes.health.regen << "</health_regen>" << std::endl;
-        saveFile << std::string(indent_width * indent_level, ' ');
+        saveFile << string(indent_width * indent_level, ' ');
         saveFile << "<mana_current>" << player->character->attributes.mana.current << "</mana_current>" << std::endl;
-        saveFile << std::string(indent_width * indent_level, ' ');
+        saveFile << string(indent_width * indent_level, ' ');
         saveFile << "<mana_max>" << player->character->attributes.mana.max << "</mana_max>" << std::endl;
-        saveFile << std::string(indent_width * indent_level, ' ');
+        saveFile << string(indent_width * indent_level, ' ');
         saveFile << "<mana_regen>" << player->character->attributes.mana.regen << "</mana_regen>" << std::endl;
         indent_level--;
-        saveFile << std::string(indent_width * indent_level, ' ');
+        saveFile << string(indent_width * indent_level, ' ');
         saveFile << "</player>" << std::endl;
         saveFile << std::endl;
         
         // Quest
-        saveFile << std::string(indent_width * indent_level, ' ');
+        saveFile << string(indent_width * indent_level, ' ');
         saveFile << "<quest>" << std::endl;
         indent_level++;
-        saveFile << std::string(indent_width * indent_level, ' ');
+        saveFile << string(indent_width * indent_level, ' ');
         saveFile << "<001>" << "0" << "</001>" << std::endl;
         indent_level--;
-        saveFile << std::string(indent_width * indent_level, ' ');
+        saveFile << string(indent_width * indent_level, ' ');
         saveFile << "</quest>" << std::endl;
         saveFile << std::endl;
         
         // Map data
-        saveFile << std::string(indent_width * indent_level, ' ');
+        saveFile << string(indent_width * indent_level, ' ');
         saveFile << "<map_data>" << std::endl;
         indent_level++;
-        std::map<std::string, std::uint32_t>::iterator it;
+        std::map<std::string, uint32>::iterator it;
         for (it = mapManager.mapList.begin(); it != mapManager.mapList.end(); it++)
         {
-            saveFile << std::string(indent_width * indent_level, ' ');
+            saveFile << string(indent_width * indent_level, ' ');
             saveFile << "<map>" << it->first << " " << it->second << "</map>" << std::endl;
         }
         indent_level--;
-        saveFile << std::string(indent_width * indent_level, ' ');
+        saveFile << string(indent_width * indent_level, ' ');
         saveFile << "</map_data>" << std::endl;
         saveFile << std::endl;
 

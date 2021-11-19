@@ -28,6 +28,6 @@
 
 #include "audio_defines.hpp"
 
-void loadOgg(const std::string &_fileName, sAudioData *_audioData);
+void loadOgg(const string &_fileName, sAudioData *_audioData);
 
 #endif // AUDIO_ENGINE_OGG_HPP

@@ -26,7 +26,7 @@
 
 #include "../core/includes.hpp"
 
-enum class eEntityClass : std::uint16_t 
+enum class eEntityClass : uint16 
 { 
     entityClassNone   = 0, // None
     entityClassMeele  = 1, // Meele
@@ -34,20 +34,20 @@ enum class eEntityClass : std::uint16_t
     entityClassRanged = 3  // Ranged
 };
 
-enum class eEntityAttack : std::uint16_t 
+enum class eEntityAttack : uint16 
 { 
     entityAttackNone      = 0, // None
     entityAttackAgressive = 1, // Agressive
     entityAttackCasual    = 2  // Casual
 };
 
-enum class eEntityDefence : std::uint16_t 
+enum class eEntityDefence : uint16 
 { 
     entityDefenceNone   = 0, // None
     entityDefenceShield = 1  // Shield
 };
 
-enum class eEntityMovement : std::uint16_t 
+enum class eEntityMovement : uint16 
 { 
     entityMovementNone   = 0, // None
     entityMovementCharge = 1, // Charge
@@ -56,7 +56,7 @@ enum class eEntityMovement : std::uint16_t
     entityMovementAvoid  = 4  // Avoid
 };
 
-enum class eEntitySocial : std::uint16_t 
+enum class eEntitySocial : uint16 
 { 
     entitySocialNone   = 0, // None
     entitySocialSwarm  = 1, // Swarm 
@@ -69,11 +69,11 @@ struct sEntityAI
     // Characteristics
     float32         distanceAttack      = 1.0f;
     float32         distanceMove        = 5.0f;
-    uint32_t        lastKnownPlayerTile = 0;
+    uint32          lastKnownPlayerTile = 0;
     
     // Attack
-    uint32_t         attack_frequency    = 32;
-    uint32_t         attack_counter      = 0;
+    uint32          attack_frequency    = 32;
+    uint32          attack_counter      = 0;
     
     // Enums
     eEntityAttack   attack   = eEntityAttack::entityAttackAgressive;

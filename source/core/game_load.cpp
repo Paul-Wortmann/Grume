@@ -27,8 +27,8 @@ void cGameEngine::load(void)
 {
     // Load the game startup file
     cXML xmlGameFile;
-    std::string fileName = std::string("game_001.txt");
-    xmlGameFile.load(std::string(FILE_PATH_DATA) + fileName);
+    string fileName = string("game_001.txt");
+    xmlGameFile.load(string(FILE_PATH_DATA) + fileName);
     
     // Only contine if we can load the game startup file
     if (xmlGameFile.lineCount() > 0)
@@ -72,19 +72,19 @@ void cGameEngine::load(void)
 }
 
 
-void cGameEngine::load(const std::uint32_t &_slotNum)
+void cGameEngine::load(const uint32 &_slotNum)
 {
     // Load the game startup file
     cXML xmlSaveGameFile;
-    std::string fileName = std::string("save_00") + std::to_string(_slotNum) + std::string(".txt");
-    xmlSaveGameFile.load(std::string(FILE_PATH_SAVE) + fileName);
+    string fileName = string("save_00") + std::to_string(_slotNum) + string(".txt");
+    xmlSaveGameFile.load(string(FILE_PATH_SAVE) + fileName);
     
     // Only contine if we can load the game startup file
     if (xmlSaveGameFile.lineCount() > 0)
     {
         // Information
-        std::string   currentMap      = xmlSaveGameFile.getString("<current_map>");
-        std::uint32_t currentPosition = xmlSaveGameFile.getInteger("<current_position>");
+        string   currentMap      = xmlSaveGameFile.getString("<current_map>");
+        uint32 currentPosition = xmlSaveGameFile.getInteger("<current_position>");
         float         currentRotation = xmlSaveGameFile.getFloat("<current_rotation>");
         
         // Player
@@ -105,19 +105,19 @@ void cGameEngine::load(const std::uint32_t &_slotNum)
         
         // Map data
         mapManager.mapList.clear();
-        std::uint32_t mapSeedCount = xmlSaveGameFile.getInstanceCount("<map>");
-        for (std::uint32_t i = 0; i < mapSeedCount; ++i)
+        uint32 mapSeedCount = xmlSaveGameFile.getInstanceCount("<map>");
+        for (uint32 i = 0; i < mapSeedCount; ++i)
         {
-            std::string tmapData = xmlSaveGameFile.getString("<map>", 1 + i);
+            string tmapData = xmlSaveGameFile.getString("<map>", 1 + i);
             tmapData += "    ";
-            std::uint64_t tmapDataLength = tmapData.length();
-            std::string   tmapName       = "";
-            std::uint32_t tmapSeed       = 0;
-            std::uint32_t tStringNum = 0;
-            std::string   tString = "";
+            uint64 tmapDataLength = tmapData.length();
+            string tmapName       = "";
+            uint32 tmapSeed       = 0;
+            uint32 tStringNum = 0;
+            string tString = "";
             if (tmapDataLength > 6)
             {
-                for (std::uint64_t j = 0; j < tmapDataLength; ++j)
+                for (uint64 j = 0; j < tmapDataLength; ++j)
                 {
                     if (tmapData[j] == ' ')
                     {
@@ -168,5 +168,5 @@ void cGameEngine::load(const std::uint32_t &_slotNum)
     }
 
     // Clean up
-    xmlSaveGameFile.free();    
+    xmlSaveGameFile.free();
 }

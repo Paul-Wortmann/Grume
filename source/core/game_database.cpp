@@ -23,7 +23,7 @@
 
 #include "game_database.hpp"
 
-void cGameDatabase::load(const std::string &_fileName)
+void cGameDatabase::load(const string &_fileName)
 {
     // Load game config file
     cXML xmlFile;
@@ -33,7 +33,7 @@ void cGameDatabase::load(const std::string &_fileName)
     if (xmlFile.lineCount() > 0)
     {
         // Load the data
-        gLogWrite(LOG_INFO, "Loading game database master: " + std::string(FILE_PATH_DATA) + _fileName, __FILE__, __LINE__, __FUNCTION__);
+        gLogWrite(LOG_INFO, "Loading game database master: " + string(FILE_PATH_DATA) + _fileName, __FILE__, __LINE__, __FUNCTION__);
         
         // Data
         biome.fileName       = xmlFile.getString("<biome_database>");

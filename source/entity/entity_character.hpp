@@ -32,13 +32,13 @@
 
 struct sCharacterLevel
 {
-    std::uint32_t current        = 0;          // Current level
-    std::uint32_t max            = 10;         // Max level
+    uint32  current        = 0;          // Current level
+    uint32  max            = 10;         // Max level
 
-    std::uint64_t exp            = 0;          // Current experience
-    std::uint64_t expNext        = 1024;       // Experience for next level
-    float32       expMultiplier  = 1.5f;       // Experience multiplier
-    std::uint64_t expMax         = UINT64_MAX; // Max experence
+    uint64  exp            = 0;          // Current experience
+    uint64  expNext        = 1024;       // Experience for next level
+    float32 expMultiplier  = 1.5f;       // Experience multiplier
+    uint64  expMax         = UINT64_MAX; // Max experence
 };
 
 struct sEntityCharacter

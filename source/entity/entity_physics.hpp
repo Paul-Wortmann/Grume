@@ -36,7 +36,7 @@ struct sEntityPhysics
 {
     // Linked list
     sEntityPhysics* next          = nullptr;
-    std::uint32_t   UID           = 0;
+    uint32          UID           = 0;
     
     // Data
     eBodyType       bodyType      = eBodyType::staticBody;

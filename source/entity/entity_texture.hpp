@@ -30,7 +30,7 @@ struct sEntityTexture
 {
     // Linked list
     sEntityTexture* next     = nullptr;
-    std::uint32_t    UID     = 0;
+    uint32           UID     = 0;
 
     // Data
     std::string     fileName = {};

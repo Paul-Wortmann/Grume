@@ -37,8 +37,8 @@ struct sEntityInteraction
 {
     // 0 = toggle states; 1 = set state
     eEntityInteractionType type     = eEntityInteractionType::InteractionTypeToggle;
-    std::uint32_t          data_1   = 0;
-    std::uint32_t          data_2   = 0;
+    uint32                 data_1   = 0;
+    uint32                 data_2   = 0;
     float32                distance = 4; // Maximum interaction radius
 };
 

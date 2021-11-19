@@ -33,8 +33,8 @@ class cAudioBufferManager : public tcLinkedList<sAudioBuffer>
         void initialize(void);
         void terminate(void);
         sAudioBuffer* newAudioBuffer(void);
-        sAudioBuffer* findAudioBuffer(const std::string &_name);
-        sAudioBuffer* findAudioBuffer(const std::uint32_t &_ID);
+        sAudioBuffer* findAudioBuffer(const string &_name);
+        sAudioBuffer* findAudioBuffer(const uint32 &_ID);
         
     protected:
         

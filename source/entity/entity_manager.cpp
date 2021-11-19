@@ -126,7 +126,7 @@ void cEntityManager::m_freeAll(void)
     }
 }
 
-sEntityModel* cEntityManager::loadModel(const std::string &_fileName)
+sEntityModel* cEntityManager::loadModel(const string &_fileName)
 {
     return m_modelManager.load(_fileName);
 }
@@ -136,17 +136,17 @@ void cEntityManager::removeModel(sEntityModel*& _model)
     m_modelManager.remove(_model);
 }
 
-sEntityMaterial* cEntityManager::loadMaterial(const std::string &_fileName)
+sEntityMaterial* cEntityManager::loadMaterial(const string &_fileName)
 {
     return m_modelManager.loadMaterial(_fileName);
 }
 
-sEntityTexture* cEntityManager::loadTexture(const std::string &_fileName)
+sEntityTexture* cEntityManager::loadTexture(const string &_fileName)
 {
     return m_modelManager.loadTexture(_fileName);
 }
 
-GLFWimage* cEntityManager::loadIcon(const std::string &_fileName)
+GLFWimage* cEntityManager::loadIcon(const string &_fileName)
 {
     return m_modelManager.loadIcon(_fileName);
 }
@@ -195,8 +195,8 @@ sEntity* cEntityManager::load(const std::string& _fileName, sEntity* _entity)
         _entity->rotation             = xmlEntityFile.getVec3("<rotation>");
         _entity->rotationOffset       = _entity->rotation;
         _entity->rotationAxis         = static_cast<glm::ivec3>(xmlEntityFile.getVec3("<rotationaxis>"));
-        std::string modelFile         = xmlEntityFile.getString("<model>");
-        std::string materialFile      = xmlEntityFile.getString("<material>");
+        string modelFile         = xmlEntityFile.getString("<model>");
+        string materialFile      = xmlEntityFile.getString("<material>");
         _entity->animationIndependent = (xmlEntityFile.getInteger("<animation_independent>") == 1);
 
         // Movement data
@@ -282,15 +282,15 @@ sEntity* cEntityManager::load(const std::string& _fileName, sEntity* _entity)
             xmlSkillsDatabaseFile.load(FILE_PATH_DATABASE + m_gameDatabase->skills.fileName);
             if (xmlSkillsDatabaseFile.lineCount() > 0)
             {
-                std::uint32_t skill_count = xmlSkillsDatabaseFile.getInstanceCount("<skill>");
-                for (std::uint32_t i = 0; i < skill_count; ++i)
+                uint32 skill_count = xmlSkillsDatabaseFile.getInstanceCount("<skill>");
+                for (uint32 i = 0; i < skill_count; ++i)
                 {
                     // Load each skill file
                     cXML xmlSkillFile;
                     xmlSkillFile.load(FILE_PATH_SKILLS + xmlSkillsDatabaseFile.getString("<skill>", 1 + i) + ".txt");
                     if (xmlSkillFile.lineCount() > 0)
                     {
-                        std::string name = xmlSkillFile.getString("<name>");
+                        string name = xmlSkillFile.getString("<name>");
                         if (name.compare("earthquake") == 0)
                         {
                             // Level
@@ -415,23 +415,23 @@ sEntity* cEntityManager::load(const std::string& _fileName, sEntity* _entity)
             
             // Get collision size and dynamically allocate memory for collision data
             _entity->collision->size = xmlEntityFile.getInteger("<collision_size>");
-            _entity->collision->data = new std::uint32_t[_entity->collision->size * _entity->collision->size];
+            _entity->collision->data = new uint32[_entity->collision->size * _entity->collision->size];
             
             // Load collision data
-            std::uint32_t dataNum         = 0;
-            std::uint32_t dataCount       = xmlEntityFile.getInstanceCount("<collision_data>");
-            for (std::uint32_t i = 0; i < dataCount; ++i)
+            uint32 dataNum         = 0;
+            uint32 dataCount       = xmlEntityFile.getInstanceCount("<collision_data>");
+            for (uint32 i = 0; i < dataCount; ++i)
             {
                 // Get next collsion data
-                std::string collisionData = xmlEntityFile.getString("<collision_data>", 1 + i);
+                string collisionData = xmlEntityFile.getString("<collision_data>", 1 + i);
 
                 // Process the collision data string
                 collisionData += " ";
-                std::uint64_t collisionDataLength = collisionData.length();
-                std::string   tString = "";
+                uint64 collisionDataLength = collisionData.length();
+                string   tString = "";
                 if (collisionDataLength > 2)
                 {
-                    for (std::uint64_t j = 0; j < collisionDataLength; ++j)
+                    for (uint64 j = 0; j < collisionDataLength; ++j)
                     {
                         if ((j > 0) && (collisionData[j] == ' ') && (collisionData[j-1] != ' '))
                         {
@@ -476,22 +476,22 @@ sEntity* cEntityManager::load(const std::string& _fileName, sEntity* _entity)
         _entity->stateCount = xmlEntityFile.getInstanceCount("<state_name>");
         _entity->state = new sEntityState[_entity->stateCount];
         
-        for (std::uint32_t i = 0; i < _entity->stateCount; ++i)
+        for (uint32 i = 0; i < _entity->stateCount; ++i)
         {
             _entity->state[i].name = xmlEntityFile.getString("<state_name>", 1 + i);
             _entity->state[i].animation = xmlEntityFile.getVec3("<state_animation>", 1 + i);
             _entity->state[i].tileState = xmlEntityFile.getInteger("<state_tile>", 1 + i);
-            std::string audioData = xmlEntityFile.getString("<state_sound>", 1 + i);
+            string audioData = xmlEntityFile.getString("<state_sound>", 1 + i);
             //_entity->state[i].audioFile = xmlEntityFile.getString("<state_sound>", 1 + i);
 
             // Process the audio data string
             audioData += "    ";
-            std::uint64_t audioDataLength = audioData.length();
-            std::uint32_t tStringNum = 0;
-            std::string   tString = "";
+            uint64 audioDataLength = audioData.length();
+            uint32 tStringNum = 0;
+            string   tString = "";
             if (audioDataLength > 6)
             {
-                for (std::uint64_t j = 0; j < audioDataLength; ++j)
+                for (uint64 j = 0; j < audioDataLength; ++j)
                 {
                     if (audioData[j] == ' ')
                     {
@@ -531,10 +531,10 @@ sEntity* cEntityManager::load(const std::string& _fileName, sEntity* _entity)
     return nullptr; // Load failed
 }
 
-void cEntityManager::m_playSound(sEntity*& _entity, const std::uint32_t& _state)
+void cEntityManager::m_playSound(sEntity*& _entity, const uint32& _state)
 {
     // Convert to zero indexed array
-    std::uint32_t state = _state - 1;
+    uint32 state = _state - 1;
     
     // Play sound associated with state, load first if need be
     if ((_entity->state[state].audioFile.length() > 3) && (_entity->state[state].audioSourceID == 0))
@@ -556,10 +556,10 @@ void cEntityManager::m_playSound(sEntity*& _entity, const std::uint32_t& _state)
     }
 }
 
-void cEntityManager::m_setAnimationState(sEntity*& _entity, const std::uint32_t& _state)
+void cEntityManager::m_setAnimationState(sEntity*& _entity, const uint32& _state)
 {
     // Convert to zero indexed array
-    std::uint32_t state = _state - 1;
+    uint32 state = _state - 1;
     
     // Set animation data
     _entity->currentAnimTime   = _entity->state[state].animation.x;
@@ -569,10 +569,10 @@ void cEntityManager::m_setAnimationState(sEntity*& _entity, const std::uint32_t&
     _entity->finishedAnimation = false;
 }
 
-void cEntityManager::m_setTileState(sEntity*& _entity, const std::uint32_t& _state)
+void cEntityManager::m_setTileState(sEntity*& _entity, const uint32& _state)
 {
     // Convert to zero indexed array
-    std::uint32_t state = _state - 1;
+    uint32 state = _state - 1;
 
     // Only proceed if valid data
     if ((m_mapPointer != nullptr) && (m_mapPointer->tile != nullptr) && (_entity->state[state].tileState != 0))
@@ -582,16 +582,16 @@ void cEntityManager::m_setTileState(sEntity*& _entity, const std::uint32_t& _sta
         {
             // Constant data
             const eTileBase     etb = static_cast<eTileBase>(_entity->state[state].tileState);
-            const std::uint32_t t   = _entity->tile;
-            const std::uint32_t r   = _entity->collision->size / 2;
+            const uint32 t   = _entity->tile;
+            const uint32 r   = _entity->collision->size / 2;
             
             // Loop through the collision map and to find other tiles owned by this entity
-            for (std::uint32_t h = 0; h < _entity->collision->size; ++h)
+            for (uint32 h = 0; h < _entity->collision->size; ++h)
             {
-                for (std::uint32_t w = 0; w < _entity->collision->size; ++w)
+                for (uint32 w = 0; w < _entity->collision->size; ++w)
                 {
                     // Tile - collision map indexed
-                    std::uint32_t tc = t + ((h - r) * m_mapPointer->width) + (w - r);
+                    uint32 tc = t + ((h - r) * m_mapPointer->width) + (w - r);
                     
                     // If we find a tile, modify its enum to reflect the state
                     if (m_mapPointer->tile[tc].object == _entity->UID)
@@ -610,7 +610,7 @@ void cEntityManager::m_setTileState(sEntity*& _entity, const std::uint32_t& _sta
     }
 }
 
-sEntity* cEntityManager::m_UIDtoEntity(const std::uint32_t& _UID)
+sEntity* cEntityManager::m_UIDtoEntity(const uint32& _UID)
 {
     for(sEntity* entityTemp = getHead(); entityTemp != nullptr; entityTemp = entityTemp->next)
     {
@@ -622,11 +622,11 @@ sEntity* cEntityManager::m_UIDtoEntity(const std::uint32_t& _UID)
     return nullptr;
 }
 
-void cEntityManager::activateState(const std::uint32_t& _UID, const std::string& _name)
+void cEntityManager::activateState(const uint32& _UID, const std::string& _name)
 {
     // Get the Entity UID
     sEntity* entityTemp = m_UIDtoEntity(_UID);
-    for (std::uint32_t i = 0; i < entityTemp->stateCount; ++i)
+    for (uint32 i = 0; i < entityTemp->stateCount; ++i)
     {
         if (entityTemp->state[i].name.compare(_name) == 0)
         {
@@ -636,7 +636,7 @@ void cEntityManager::activateState(const std::uint32_t& _UID, const std::string&
     }
 }
 
-void cEntityManager::activateState(const std::uint32_t& _UID, const std::uint32_t& _state)
+void cEntityManager::activateState(const uint32& _UID, const uint32& _state)
 {
     // Get the entity pointer first
     sEntity* entityTemp = m_UIDtoEntity(_UID);
@@ -658,11 +658,11 @@ void cEntityManager::activateState(const std::uint32_t& _UID, const std::uint32_
         m_setTileState(entityTemp, entityTemp->stateCurrent);
     }
 }
-void cEntityManager::setState(const std::uint32_t& _UID, const std::string& _name)
+void cEntityManager::setState(const uint32& _UID, const std::string& _name)
 {
     // Get the Entity UID
     sEntity* entityTemp = m_UIDtoEntity(_UID);
-    for (std::uint32_t i = 0; i < entityTemp->stateCount; ++i)
+    for (uint32 i = 0; i < entityTemp->stateCount; ++i)
     {
         if (entityTemp->state[i].name.compare(_name) == 0)
         {
@@ -672,7 +672,7 @@ void cEntityManager::setState(const std::uint32_t& _UID, const std::string& _nam
     }
 }
 
-void cEntityManager::setState(const std::uint32_t& _UID, const std::uint32_t& _state)
+void cEntityManager::setState(const uint32& _UID, const uint32& _state)
 {
     // Get the entity pointer first
     sEntity* entityTemp = m_UIDtoEntity(_UID);
@@ -695,14 +695,14 @@ void cEntityManager::setState(const std::uint32_t& _UID, const std::uint32_t& _s
     }
 }
 
-void cEntityManager::toggleState(const std::uint32_t& _UID, const std::string& _name1, const std::string& _name2)
+void cEntityManager::toggleState(const uint32& _UID, const std::string& _name1, const std::string& _name2)
 {
-    std::uint32_t state1 = 0;
-    std::uint32_t state2 = 0;
+    uint32 state1 = 0;
+    uint32 state2 = 0;
     
     // Get the Entity UID
     sEntity* entityTemp = m_UIDtoEntity(_UID);
-    for (std::uint32_t i = 0; i < entityTemp->stateCount; ++i)
+    for (uint32 i = 0; i < entityTemp->stateCount; ++i)
     {
         if (entityTemp->state[i].name.compare(_name1) == 0)
         {
@@ -716,7 +716,7 @@ void cEntityManager::toggleState(const std::uint32_t& _UID, const std::string& _
     toggleState(_UID, state1, state2);
 }
 
-void cEntityManager::toggleState(const std::uint32_t& _UID, const std::uint32_t& _state1, const std::uint32_t& _state2)
+void cEntityManager::toggleState(const uint32& _UID, const uint32& _state1, const uint32& _state2)
 {
     // Get the entity pointer first
     sEntity* entityTemp = m_UIDtoEntity(_UID);

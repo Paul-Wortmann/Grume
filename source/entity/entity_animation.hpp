@@ -46,7 +46,7 @@ struct sAnimationMeshKey
 
 struct sAnimationChannel
 {
-    std::string            name              = "";
+    string                 name              = "";
     int32                  boneID            = -1;
     uint32                 numPositionKeys   = 0;
     sAnimationVecKey*      positionKey       = nullptr;
@@ -58,14 +58,14 @@ struct sAnimationChannel
 
 struct sAnimationMeshChannel
 {
-    std::string            name              = "";
+    string                 name              = "";
     uint32                 numKeys           = 0;
     sAnimationMeshKey*     meshKey           = nullptr;
 };
 
 struct sEntityAnimation
 {
-    std::string            name              = "";
+    string                 name              = "";
     uint32                 numChannels       = 0;
     sAnimationChannel*     channel           = nullptr;
     uint32                 numMeshChannels   = 0;

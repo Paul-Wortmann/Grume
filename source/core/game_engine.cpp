@@ -23,7 +23,7 @@
 
 #include "game_engine.hpp"
 
-std::uint32_t cGameEngine::run(const std::uint32_t &_argc, char** _argv)
+uint32 cGameEngine::run(const uint32 &_argc, char** _argv)
 {
     // Clear the log and log version information.
     gLogClear();
@@ -32,10 +32,10 @@ std::uint32_t cGameEngine::run(const std::uint32_t &_argc, char** _argv)
     std::chrono::system_clock::time_point currentSystemTime = std::chrono::system_clock::now();
     std::time_t currentTime = std::chrono::system_clock::to_time_t(currentSystemTime);
     
-    gLogWrite(LOG_INFO, std::string(std::ctime(&currentTime)) + " " + std::string(__TIME__) + " - Starting Grume.", __FILE__, __LINE__, __FUNCTION__);
-    std::string GRUMEVersion = std::to_string(GRUME_VERSION_MAJOR) + "." + std::to_string(GRUME_VERSION_MINOR) + "." + std::to_string(GRUME_VERSION_MICRO);
+    gLogWrite(LOG_INFO, string(std::ctime(&currentTime)) + " " + string(__TIME__) + " - Starting Grume.", __FILE__, __LINE__, __FUNCTION__);
+    string GRUMEVersion = std::to_string(GRUME_VERSION_MAJOR) + "." + std::to_string(GRUME_VERSION_MINOR) + "." + std::to_string(GRUME_VERSION_MICRO);
     gLogWrite(LOG_INFO, "Grume version: " + GRUMEVersion, __FILE__, __LINE__, __FUNCTION__);
-    std::string GRUMECompile = __DATE__; GRUMECompile += " - "; GRUMECompile += __TIME__;
+    string GRUMECompile = __DATE__; GRUMECompile += " - "; GRUMECompile += __TIME__;
     gLogWrite(LOG_INFO, "Compile details: " + GRUMECompile, __FILE__, __LINE__, __FUNCTION__);
 
     // Initialize game subsystems
@@ -50,15 +50,15 @@ std::uint32_t cGameEngine::run(const std::uint32_t &_argc, char** _argv)
     return status;
 }
 
-std::uint32_t cGameEngine::initialize(const std::uint32_t &_argc, char** _argv)
+uint32 cGameEngine::initialize(const uint32 &_argc, char** _argv)
 {
     // Load the config file first
     gameConfig.load();
 
     // Process command line arguments
-    for (uint32_t i = 1; i < _argc; i++)
+    for (uint32 i = 1; i < _argc; i++)
     {
-        std::string clString = _argv[i];
+        string clString = _argv[i];
         if (clString.compare("--test") == 0)
         {
             std::cout << "Command line test arg passed" << std::endl;
