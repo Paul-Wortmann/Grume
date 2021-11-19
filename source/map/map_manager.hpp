@@ -32,7 +32,6 @@
 #include "../graphics/graphics_engine_utils.hpp"
 #include "../core/includes.hpp"
 #include "../core/game_database.hpp"
-#include "../core/template_linked_list.hpp"
 #include "../player/player_manager.hpp"
 #include "biome_manager.hpp"
 #include "map_define.hpp"

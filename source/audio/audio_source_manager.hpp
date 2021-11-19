@@ -25,7 +25,6 @@
 #define AUDIO_SOURCE_MANAGER_HPP
 
 #include "../core/includes.hpp"
-#include "../core/template_linked_list.hpp"
 #include "audio_defines.hpp"
 
 class cAudioSourceManager : public tcLinkedList<sAudioSource>

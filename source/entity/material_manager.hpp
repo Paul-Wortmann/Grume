@@ -26,7 +26,6 @@
 
 #include "../core/includes.hpp"
 #include "entity_material.hpp"
-#include "../core/template_linked_list.hpp"
 #include "texture_manager.hpp"
 
 class cMaterialManager : public tcLinkedList<sEntityMaterial>

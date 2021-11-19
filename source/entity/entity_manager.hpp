@@ -27,7 +27,6 @@
 #include "entity_define.hpp"
 #include "model_manager.hpp"
 #include "../core/includes.hpp"
-#include "../core/template_linked_list.hpp"
 #include "../core/game_database.hpp"
 #include "../audio/audio_manager.hpp"
 #include "../utils/xml_parser.hpp"
