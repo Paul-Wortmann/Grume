@@ -34,7 +34,7 @@ void cUIManager::terminate(void)
     if (m_menu != nullptr)
     {
         // free component data
-        for (std::uint32_t m = 0; m < m_numMenu; ++m)
+        for (uint32 m = 0; m < m_numMenu; ++m)
         {
             if (m_menu[m].component != nullptr)
             {
@@ -50,11 +50,11 @@ void cUIManager::terminate(void)
     }
 }
 
-bool cUIManager::getMenuEnabled(const std::string &_name)
+bool cUIManager::getMenuEnabled(const string &_name)
 {
     if (m_menu != nullptr)
     {
-        for (std::uint32_t m = 0; m < m_numMenu; ++m)
+        for (uint32 m = 0; m < m_numMenu; ++m)
         {
             if (m_menu[m].name.compare(_name) == 0)
             {
@@ -65,7 +65,7 @@ bool cUIManager::getMenuEnabled(const std::string &_name)
     return false;
 }
 
-void cUIManager::setMenuEnabled(const std::string &_name, const bool &_state)
+void cUIManager::setMenuEnabled(const string &_name, const bool &_state)
 {
     // Avoid unintended mouse clicks
     m_mouseOverMenu = false;
@@ -73,7 +73,7 @@ void cUIManager::setMenuEnabled(const std::string &_name, const bool &_state)
     
     if (m_menu != nullptr)
     {
-        for (std::uint32_t m = 0; m < m_numMenu; ++m)
+        for (uint32 m = 0; m < m_numMenu; ++m)
         {
             if (m_menu[m].name.compare(_name) == 0)
             {
@@ -83,7 +83,7 @@ void cUIManager::setMenuEnabled(const std::string &_name, const bool &_state)
     }
 }
 
-void cUIManager::process(const std::uint32_t &_dt)
+void cUIManager::process(const uint32 &_dt)
 {
     // If menu data structure exists
     if (m_menu != nullptr)
@@ -93,7 +93,7 @@ void cUIManager::process(const std::uint32_t &_dt)
         m_activeWindowCount = 0;
         
         // Loop through all menus
-        for (std::uint32_t m = 0; m < m_numMenu; ++m)
+        for (uint32 m = 0; m < m_numMenu; ++m)
         {
             if (m_menu[m].enabled)
             {
@@ -108,7 +108,7 @@ void cUIManager::process(const std::uint32_t &_dt)
                     m_mouseOverMenu = true;
                     
                     // Loop through all menu components
-                    for (std::uint32_t c = 0; c < m_menu[m].numComponent; ++c)
+                    for (uint32 c = 0; c < m_menu[m].numComponent; ++c)
                     {
                         // If mouse over component
                         if ((m_menu[m].component[c].positionMin.x < m_mousePosition.x) &&

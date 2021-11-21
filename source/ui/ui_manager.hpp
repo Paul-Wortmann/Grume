@@ -35,37 +35,37 @@ class cUIManager
         // ui_manager.cpp
         void initialize(cEntityManager* _entityManager);
         void terminate(void);
-        void process(const std::uint32_t &_dt);
+        void process(const uint32 &_dt);
 
-        std::uint32_t      getNumMenu(void) { return m_numMenu; };
+        uint32             getNumMenu(void) { return m_numMenu; };
         sUIMenu*           getMenu(void) { return m_menu; };
-        bool               getMenuEnabled(const std::string &_name);
-        void               setMenuEnabled(const std::string &_name, const bool &_state);
+        bool               getMenuEnabled(const string &_name);
+        void               setMenuEnabled(const string &_name, const bool &_state);
         bool               getMouseOverMenu(void) { return m_mouseOverMenu; };
         void               setMouseClicked(const bool &_state) { m_mouseClicked = _state; };
         void               setMousePressed(const bool &_state) { m_mousePressed = _state; };
         void               setMousePosition(const glm::vec2 &_mousePosition) {m_mousePosition = _mousePosition; };
-        void               setWindowSize(const std::uint32_t &_width, const std::uint32_t &_height) { m_window_w = _width; m_window_h = _height; };
-        std::uint32_t      getActiveWindowCount(void) { return m_activeWindowCount; };
+        void               setWindowSize(const uint32 &_width, const uint32 &_height) { m_window_w = _width; m_window_h = _height; };
+        uint32             getActiveWindowCount(void) { return m_activeWindowCount; };
         eComponentFunction getUIEvent(void) { return m_uiEvent; };
         void               setUIEvent(eComponentFunction _uiEvent) { m_uiEvent = _uiEvent; };
 
         // ui_manager_load.cpp
-        void load(const std::string &_fileName);
+        void load(const string &_fileName);
 
     protected:
 
     private:
         // member variables
-        std::uint32_t       m_numMenu           = 0;
+        uint32              m_numMenu           = 0;
         sUIMenu            *m_menu              = nullptr;
-        std::uint32_t       m_window_w          = 1920;
-        std::uint32_t       m_window_h          = 1080;
+        uint32              m_window_w          = 1920;
+        uint32              m_window_h          = 1080;
         bool                m_mouseOverMenu     = false;
         bool                m_mouseClicked      = false;
         bool                m_mousePressed      = false;
         glm::vec2           m_mousePosition     = glm::vec2(0.0f, 0.0f);
-        std::uint32_t       m_activeWindowCount = 0;
+        uint32              m_activeWindowCount = 0;
         eComponentFunction  m_uiEvent           = eComponentFunction::componentFunctionNone;
         
         // member pointer handles

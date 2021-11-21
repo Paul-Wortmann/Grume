@@ -28,7 +28,7 @@
 #include "../entity/entity_texture.hpp"
 #include "../entity/entity_model.hpp"
 
-enum class eComponentFunction : std::uint16_t 
+enum class eComponentFunction : uint16 
 {
     componentFunctionNone               =  0, // No function when clicked
     componentFunctionGameQuit           =  1, // Game quit
@@ -52,7 +52,7 @@ enum class eComponentFunction : std::uint16_t
     componentFunctionVolumeMasterBar    = 19  // Master volume bar
 };
 
-enum class eComponentState : std::uint16_t 
+enum class eComponentState : uint16 
 {
     componentNormal    = 0, // Normal
     componentHover     = 1, // Hover
@@ -63,7 +63,7 @@ struct sUIComponent
 {
     // Linked list
     sUIComponent*      next          = nullptr;
-    std::uint32_t      UID           = 0;
+    uint32             UID           = 0;
 
     // Infomation
     std::string        name          = "";
@@ -88,7 +88,7 @@ struct sUIComponent
 struct sUIMenu
 {
     // Components
-    std::uint32_t     numComponent  = 0;
+    uint32            numComponent  = 0;
     sUIComponent*     component     = nullptr;
 
     // Infomation
