@@ -30,7 +30,7 @@ struct sPhysicsObject
 {
     // Linked list management
     sPhysicsObject* next         = nullptr;
-    std::uint32_t   UID          = 0;
+    uint32          UID          = 0;
 
     // General information
     bool            enabled      = false;

@@ -3,13 +3,13 @@
 
     <information>
         <current_map>town_1_001</current_map>
-        <current_position>5067</current_position>
-        <current_rotation>-1.5708</current_rotation>
+        <current_position>4546</current_position>
+        <current_rotation>1.57079</current_rotation>
     </information>
 
     <player>
         <level_current>0</level_current>
-        <exp_current>768</exp_current>
+        <exp_current>16</exp_current>
         <health_current>100</health_current>
         <health_max>100</health_max>
         <health_regen>0.1</health_regen>
