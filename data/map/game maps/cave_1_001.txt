@@ -39,9 +39,11 @@
         # These are used when warping from a prior map
         # Portal number, Tile location, player face direction
         # These are exit portals
-        <portal>1 0120 0.0000</portal> #Town 1 exit
-        <portal>2 0120 0.0000</portal> #Town 2 exit
-        <portal>3 0120 0.0000</portal> #Town 3 exit
+        <portal>1 0195 3.14159</portal> #Town 1 exit
+        <portal>2 0197 3.14159</portal> #Town 2 exit
+        <portal>3 0199 3.14159</portal> #Town 3 exit
+
+        <portal>4 0057 0.00000</portal> #Dragon Cave 1 exit
     </portals>
     
     <events>
@@ -51,9 +53,11 @@
         # Type 3 (Toggle entity state, index from 1) : tile, event type, entity tile, state 1, state 2
 
         # To town
-        <event>0018 1 0 3 0</event> # Town 1 cave 1 entrance 1
-        <event>0018 1 0 4 0</event> # Town 1 cave 1 entrance 2
-        <event>0018 1 0 5 0</event> # Town 1 cave 1 entrance 3
+        <event>0211 1 0 3 0</event> # Town 1 cave 1 entrance 1
+        <event>0213 1 0 4 0</event> # Town 1 cave 1 entrance 2
+        <event>0215 1 0 5 0</event> # Town 1 cave 1 entrance 3
+
+        <event>0041 1 5 1 0</event> # Dragon cave 1 entrance 1
 
     </events>
 
@@ -74,13 +78,18 @@
     </rooms>
 
     <debris_objects>
-        #object number, scale max, scale min, prevalence, obstacle
+        #object name, scale max, scale min, prevalence, obstacle
         <debris>bones 0.5 1.0 15 0</debris> # bones
     </debris_objects>
 
     <objects>
-        #tile number, object number, scale, y-rotation, obstacle
+        #tile number, database object name, index (0 == random), scale, y-rotation, obstacle, trigger tile
       
+        <object>0227 test 1 1.0 3.14159 1 0</object> # Test - cave 1 entrance 1
+        <object>0229 test 1 1.0 3.14159 1 0</object> # Test - cave 1 entrance 2
+        <object>0231 test 1 1.0 3.14159 1 0</object> # Test - cave 1 entrance 3
+
+        <object>0025 test 1 1.0 0.00000 1 0</object> # Test - cave 2 entrance 1
     </objects>
 
     <npc_mobs>
