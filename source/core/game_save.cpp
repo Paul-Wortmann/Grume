@@ -64,22 +64,63 @@ void cGameEngine::save(const uint32 &_slotNum)
         saveFile << string(indent_width * indent_level, ' ');
         saveFile << "<player>" << std::endl;
         indent_level++;
+        
+        // Level and experience
         saveFile << string(indent_width * indent_level, ' ');
         saveFile << "<level_current>" << player->character->level.current << "</level_current>" << std::endl;
         saveFile << string(indent_width * indent_level, ' ');
         saveFile << "<exp_current>" << player->character->level.exp << "</exp_current>" << std::endl;
+        saveFile << string(indent_width * indent_level, ' ');
+        saveFile << "<exp_next>" << player->character->level.expNext << "</exp_next>" << std::endl;
+
+        // Health
         saveFile << string(indent_width * indent_level, ' ');
         saveFile << "<health_current>" << player->character->attributes.health.current << "</health_current>" << std::endl;
         saveFile << string(indent_width * indent_level, ' ');
         saveFile << "<health_max>" << player->character->attributes.health.max << "</health_max>" << std::endl;
         saveFile << string(indent_width * indent_level, ' ');
         saveFile << "<health_regen>" << player->character->attributes.health.regen << "</health_regen>" << std::endl;
+        
+        // Mana
         saveFile << string(indent_width * indent_level, ' ');
         saveFile << "<mana_current>" << player->character->attributes.mana.current << "</mana_current>" << std::endl;
         saveFile << string(indent_width * indent_level, ' ');
         saveFile << "<mana_max>" << player->character->attributes.mana.max << "</mana_max>" << std::endl;
         saveFile << string(indent_width * indent_level, ' ');
         saveFile << "<mana_regen>" << player->character->attributes.mana.regen << "</mana_regen>" << std::endl;
+
+        // Damage
+        saveFile << string(indent_width * indent_level, ' ');
+        saveFile << "<damage_physical_base>" << player->character->attributes.damagePhysical.base << "</damage_physical_base>" << std::endl;
+        saveFile << string(indent_width * indent_level, ' ');
+        saveFile << "<damage_physical_crit_chance>" << player->character->attributes.damagePhysical.critChancev << "</damage_physical_crit_chance>" << std::endl;
+        saveFile << string(indent_width * indent_level, ' ');
+        saveFile << "<damage_physical_crit_multiplier>" << player->character->attributes.damagePhysical.critMultiplier << "</damage_physical_crit_multiplier>" << std::endl;
+        saveFile << string(indent_width * indent_level, ' ');
+        saveFile << "<damage_fire_base>" << player->character->attributes.damageFire.base << "</damage_fire_base>" << std::endl;
+        saveFile << string(indent_width * indent_level, ' ');
+        saveFile << "<damage_fire_crit_chance>" << player->character->attributes.damageFire.critChancev << "</damage_fire_crit_chance>" << std::endl;
+        saveFile << string(indent_width * indent_level, ' ');
+        saveFile << "<damage_fire_crit_multiplier>" << player->character->attributes.damageFire.critMultiplier << "</damage_fire_crit_multiplier>" << std::endl;
+        saveFile << string(indent_width * indent_level, ' ');
+        saveFile << "<damage_frost_base>" << player->character->attributes.damageFrost.base << "</damage_frost_base>" << std::endl;
+        saveFile << string(indent_width * indent_level, ' ');
+        saveFile << "<damage_frost_crit_chance>" << player->character->attributes.damageFrost.critChancev << "</damage_frost_crit_chance>" << std::endl;
+        saveFile << string(indent_width * indent_level, ' ');
+        saveFile << "<damage_frost_crit_multiplier>" << player->character->attributes.damageFrost.critMultiplier << "</damage_frost_crit_multiplier>" << std::endl;
+        
+        // Armor
+        saveFile << string(indent_width * indent_level, ' ');
+        saveFile << "<armor_physical_base>" << player->character->attributes.armorPhysical.base << "</armor_physical_base>" << std::endl;
+        
+        // Resistance
+        saveFile << string(indent_width * indent_level, ' ');
+        saveFile << "<resistance_fire_base>" << player->character->attributes.resistanceFire.base << "</resistance_fire_base>" << std::endl;
+        saveFile << string(indent_width * indent_level, ' ');
+        saveFile << "<resistance_frost_base>" << player->character->attributes.resistanceFrost.base << "</resistance_frost_base>" << std::endl;
+
+
+
         indent_level--;
         saveFile << string(indent_width * indent_level, ' ');
         saveFile << "</player>" << std::endl;

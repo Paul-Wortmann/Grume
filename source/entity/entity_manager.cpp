@@ -221,8 +221,7 @@ sEntity* cEntityManager::load(const std::string& _fileName, sEntity* _entity)
             // Experience
             _entity->character->level.exp           = xmlEntityFile.getInteger("<exp_start>");
             _entity->character->level.expNext       = xmlEntityFile.getInteger("<exp_next>");
-            _entity->character->level.expMultiplier = xmlEntityFile.getInteger("<exp_multiplier>");
-            
+            _entity->character->level.expMultiplier = xmlEntityFile.getFloat("<exp_multiplier>");
         }
         
         // Character attributes data

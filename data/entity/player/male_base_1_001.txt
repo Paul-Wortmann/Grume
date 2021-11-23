@@ -21,7 +21,7 @@
     <attributes>
 	# (depletable) max, regen
         <attribute_health>100 0.025</attribute_health>
-        <attribute_mana>100 0.1</attribute_mana>
+        <attribute_mana>100 0.025</attribute_mana>
 
 	# (damage) base, critMultiply, critChance
         <attribute_damagephysical>10 1.5 10</attribute_damagephysical>

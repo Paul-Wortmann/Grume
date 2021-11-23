@@ -178,7 +178,7 @@
 
     <debris_objects>
         #object name, scale max, scale min, prevalence, obstacle
-        <debris>gib 0.5 1.0 02 0</debris> # gibs
+        <debris>gib   0.5 1.0 02 0</debris> # gibs
         <debris>bones 0.5 1.0 15 0</debris> # bones
     </debris_objects>
 

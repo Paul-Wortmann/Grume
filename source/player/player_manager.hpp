@@ -38,30 +38,30 @@ class cPlayerManager
         void      terminate(void);
         void      process(const float32 &_dt);
         sEntity*  load(const std::string &_fileName);
-        sEntity*  getPlayerEntity(void) { return m_data; };
+        sEntity*  getPlayerEntity(void) { return m_player; };
         void      setDatabasePointer(cGameDatabase* _gameDatabase) { m_gameDatabase = _gameDatabase; };
         void      setGraphicsEnginePointer(cGraphicsEngine* _graphicsEngine) { m_graphicsEngine = _graphicsEngine; };
         void      setMapPointer(sMap* _map) { m_mapPointer = _map; };
         uint32    positionToTile(glm::vec3 _position);
         glm::vec3 tileToPosition(uint32 _tile);
-        glm::vec3 getPosition(void) { return m_data->position; };
-        glm::vec3 getRotation(void) { return m_data->rotation; };
-        void      setRotation(const glm::vec3 &_rotation) { m_data->rotation = _rotation; };
+        glm::vec3 getPosition(void) { return m_player->position; };
+        glm::vec3 getRotation(void) { return m_player->rotation; };
+        void      setRotation(const glm::vec3 &_rotation) { m_player->rotation = _rotation; };
         void      setTerrainHeight(float32 _height) { m_mapPointer->terrainHeight = _height; };
-        void      setCurrentTile(uint32 _tileNum) { m_data->movement->mapPath.currentTile = _tileNum; m_data->position = tileToPosition(_tileNum); m_updateMatrix(); };
-        uint32    getCurrentTile(void) { return m_data->movement->mapPath.currentTile; };
-        void      resetStartTile(void) { m_data->rotation.z = m_mapPointer->playerStartDir; setCurrentTile(m_mapPointer->playerStartTile); m_updateMatrix(); };
-        void      stopPathing(void) {m_data->movement->mapPath.pathLength = 0; };
-        bool      getMoved(void) { return m_data->movement->moved; };
-        glm::vec3 getMoveDelta(void) { return m_data->movement->moveDelta; };
+        void      setCurrentTile(uint32 _tileNum) { m_player->movement->mapPath.currentTile = _tileNum; m_player->position = tileToPosition(_tileNum); m_updateMatrix(); };
+        uint32    getCurrentTile(void) { return m_player->movement->mapPath.currentTile; };
+        void      resetStartTile(void) { m_player->rotation.z = m_mapPointer->playerStartDir; setCurrentTile(m_mapPointer->playerStartTile); m_updateMatrix(); };
+        void      stopPathing(void) {m_player->movement->mapPath.pathLength = 0; };
+        bool      getMoved(void) { return m_player->movement->moved; };
+        glm::vec3 getMoveDelta(void) { return m_player->movement->moveDelta; };
         void      setMouseClick(glm::vec3 _pos);
 
     protected:
 
     private:
-        inline void      m_updateMatrix(void) { m_entityManager->updateModelMatrix(m_data); };
+        inline void      m_updateMatrix(void) { m_entityManager->updateModelMatrix(m_player); };
         cEntityManager*  m_entityManager   = nullptr;
-        sEntity*         m_data            = nullptr;
+        sEntity*         m_player          = nullptr;
         cGameDatabase*   m_gameDatabase    = nullptr;
         sMap*            m_mapPointer      = nullptr;
         cGraphicsEngine* m_graphicsEngine  = nullptr;

@@ -124,9 +124,10 @@ void cNPCManager::process(const float32 &_dt)
                         // Inflict damage on the player
                         // **** this should be based on NPC stength and player defence, etc...
                         
-                        float32 damage = 1.0f;
-                        
+                        float32 damage = m_entityTemp->character->attributes.damagePhysical.base / 2.0f;
                         m_entityPlayer->character->attributes.health.current -= damage;
+
+                        // Player death
                         if (m_entityPlayer->character->attributes.health.current <= 0)
                         {
                             m_entityPlayer->character->attributes.health.current = 0;

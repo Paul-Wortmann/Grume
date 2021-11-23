@@ -34,25 +34,25 @@ void cPlayerManager::terminate(void)
 
 sEntity* cPlayerManager::load(const string &_fileName)
 {
-    m_data = m_entityManager->load("player/" + _fileName);
+    m_player = m_entityManager->load("player/" + _fileName);
 
-    if (m_data != nullptr)
+    if (m_player != nullptr)
     {
-        gLogWrite(LOG_INFO, "Loading player: " + m_data->name, __FILE__, __LINE__, __FUNCTION__);
+        gLogWrite(LOG_INFO, "Loading player: " + m_player->name, __FILE__, __LINE__, __FUNCTION__);
 
-        m_data->owner = eEntityOwner::ownerNone;
-        m_data->type  = eEntityType::entityTypeOther;
+        m_player->owner = eEntityOwner::ownerNone;
+        m_player->type  = eEntityType::entityTypeOther;
 
         // Load the biome sound database file
         cXML xmlSoundFile;
         xmlSoundFile.load(FILE_PATH_DATABASE + m_gameDatabase->sound.fileName);
 
         // Load audio file names
-        if ((m_data->stateCount > 0) && (xmlSoundFile.lineCount() > 0))
+        if ((m_player->stateCount > 0) && (xmlSoundFile.lineCount() > 0))
         {
-            for (uint32 s = 0; s < m_data->stateCount; ++s)
+            for (uint32 s = 0; s < m_player->stateCount; ++s)
             {
-                m_data->state[s].audioFile = gGetFileName(xmlSoundFile, "<sound>" + m_data->state[s].audioDBname + " ", m_data->state[s].audioDBIndex);
+                m_player->state[s].audioFile = gGetFileName(xmlSoundFile, "<sound>" + m_player->state[s].audioDBname + " ", m_player->state[s].audioDBIndex);
             }
         }
 
@@ -60,7 +60,7 @@ sEntity* cPlayerManager::load(const string &_fileName)
         xmlSoundFile.free();
     }
 
-    return m_data;
+    return m_player;
 };
 
 uint32 cPlayerManager::positionToTile(glm::vec3 _position)
@@ -102,33 +102,33 @@ void cPlayerManager::process(const float32 &_dt)
 {
     // Process character atributes / characteristics
     // Health
-    if (m_data->character->attributes.health.current <= 0.0f)
+    if (m_player->character->attributes.health.current <= 0.0f)
     {
         // Player death
-        m_data->character->attributes.health.current = 0.0f;
+        m_player->character->attributes.health.current = 0.0f;
     }
     else
     {
         // Health regen
-        m_data->character->attributes.health.current += m_data->character->attributes.health.regen;
-        if (m_data->character->attributes.health.current > m_data->character->attributes.health.max)
+        m_player->character->attributes.health.current += m_player->character->attributes.health.regen;
+        if (m_player->character->attributes.health.current > m_player->character->attributes.health.max)
         {
-            m_data->character->attributes.health.current = m_data->character->attributes.health.max;
+            m_player->character->attributes.health.current = m_player->character->attributes.health.max;
         }
     }
     
     // Mana
-    if (m_data->character->attributes.mana.current <= 0.0f)
+    if (m_player->character->attributes.mana.current <= 0.0f)
     {
-        m_data->character->attributes.mana.current = 0.0f;
+        m_player->character->attributes.mana.current = 0.0f;
     }
     else
     {
         // Mana regen
-        m_data->character->attributes.mana.current += m_data->character->attributes.mana.regen;
-        if (m_data->character->attributes.mana.current > m_data->character->attributes.mana.max)
+        m_player->character->attributes.mana.current += m_player->character->attributes.mana.regen;
+        if (m_player->character->attributes.mana.current > m_player->character->attributes.mana.max)
         {
-            m_data->character->attributes.mana.current = m_data->character->attributes.mana.max;
+            m_player->character->attributes.mana.current = m_player->character->attributes.mana.max;
         }
     }
     
@@ -154,7 +154,7 @@ void cPlayerManager::process(const float32 &_dt)
         }
         
         // Store position information
-        glm::vec3 playerPos     = m_data->position;
+        glm::vec3 playerPos     = m_player->position;
         glm::vec3 entityTilePos = tileToPosition(m_mouseTile);
         
         // Get the distance to the destination tile
@@ -243,7 +243,7 @@ void cPlayerManager::process(const float32 &_dt)
             sEntity* tEntity = nullptr;
             for (tEntity = m_entityManager->getHead(); tEntity != nullptr; tEntity = tEntity->next)
             {
-                if ((tEntity->UID == m_mapPointer->tile[m_mouseTile].npc) && (m_data->UID != tEntity->UID))
+                if ((tEntity->UID == m_mapPointer->tile[m_mouseTile].npc) && (m_player->UID != tEntity->UID))
                 {
                     break;
                 }
@@ -272,7 +272,7 @@ void cPlayerManager::process(const float32 &_dt)
                 // We should check the distance to the enemy first
 
                 // Set state - attack
-                m_entityManager->setState(m_data->UID, "attack");
+                m_entityManager->setState(m_player->UID, "attack");
 
                 // Set npc state and set the npc for termination
                 if ((tEntity->interaction != nullptr) && (tEntity->terminate == false))
@@ -300,14 +300,50 @@ void cPlayerManager::process(const float32 &_dt)
                             }
                             
                             // Award the player with experience if not max level
-                            if (m_data->character->level.current < m_data->character->level.max)
+                            if (m_player->character->level.current < m_player->character->level.max)
                             {
                                 // Experience derived from the slaughtered NPC
-                                m_data->character->level.exp += tEntity->character->drop.experience;
-                                if (m_data->character->level.exp >= m_data->character->level.expNext)
+                                m_player->character->level.exp += tEntity->character->drop.experience;
+                                if (m_player->character->level.exp > m_player->character->level.expNext)
                                 {
-                                    m_data->character->level.exp = 0;
-                                    m_data->character->level.expNext *= m_data->character->level.expMultiplier;
+                                    while (m_player->character->level.exp > m_player->character->level.expNext)
+                                    {
+                                        // Increase level
+                                        m_player->character->level.exp -= m_player->character->level.expNext;
+                                        m_player->character->level.expNext *= m_player->character->level.expMultiplier;
+                                        m_player->character->level.current++;
+                                        
+                                        // Increase attributes + skills
+                                        // *** Currently automatic, could be player controlled in the future ***
+                                        
+                                        // Health
+                                        m_player->character->attributes.health.max += (m_player->character->attributes.health.max / 2.0f);
+                                        m_player->character->attributes.health.current = m_player->character->attributes.health.max;
+                                        m_player->character->attributes.health.regen += 0.005f;
+                                        
+                                        // Mana
+                                        m_player->character->attributes.mana.max += (m_player->character->attributes.mana.max / 2.0f);
+                                        m_player->character->attributes.mana.current = m_player->character->attributes.mana.max;
+                                        m_player->character->attributes.mana.regen += 0.005f;
+                                        
+                                        // Damage
+                                        m_player->character->attributes.damagePhysical.base += 1;
+                                        m_player->character->attributes.damagePhysical.critChancev += 1.0f;
+                                        m_player->character->attributes.damagePhysical.critMultiplier += 0.25f;
+                                        m_player->character->attributes.damageFire.base += 1;
+                                        m_player->character->attributes.damageFire.critChancev += 1.0f;
+                                        m_player->character->attributes.damageFire.critMultiplier += 0.25f;
+                                        m_player->character->attributes.damageFrost.base += 1;
+                                        m_player->character->attributes.damageFrost.critChancev += 1.0f;
+                                        m_player->character->attributes.damageFrost.critMultiplier += 0.25f;
+                                        
+                                        // Armor
+                                        m_player->character->attributes.armorPhysical.base += 1;
+                                        
+                                        // Resistance
+                                        m_player->character->attributes.resistanceFire.base += 1;
+                                        m_player->character->attributes.resistanceFrost.base += 1;
+                                    }
                                 }
                             }
                         }
@@ -324,84 +360,84 @@ void cPlayerManager::process(const float32 &_dt)
         if (((m_mapPointer->tile[m_mouseTile].object == 0) && (m_mapPointer->tile[m_mouseTile].npc == 0)) || (moveToEntity))
         {
             // Only path to new destination if it is different
-            if (m_data->movement->mapPath.destinationTile != m_mouseTile)
+            if (m_player->movement->mapPath.destinationTile != m_mouseTile)
             {
-                m_data->movement->mapPath.destinationTile = m_mouseTile;
-                gAStar(m_mapPointer, m_data->movement->mapPath);
+                m_player->movement->mapPath.destinationTile = m_mouseTile;
+                gAStar(m_mapPointer, m_player->movement->mapPath);
 
-                if (m_data->movement->mapPath.pathLength > 0)
+                if (m_player->movement->mapPath.pathLength > 0)
                 {
-                    m_data->movement->mapPath.currentPosition = 1;
-                    m_data->movement->pathing = true;
+                    m_player->movement->mapPath.currentPosition = 1;
+                    m_player->movement->pathing = true;
 
                     // Set state - move
-                    m_entityManager->setState(m_data->UID, "move");
+                    m_entityManager->setState(m_player->UID, "move");
                 }
             }
         }
     }
     
-    m_data->movement->moved = false;
-    if (m_data->movement->mapPath.pathLength == 0)
+    m_player->movement->moved = false;
+    if (m_player->movement->mapPath.pathLength == 0)
     {
-        m_data->movement->pathing = false;
+        m_player->movement->pathing = false;
     }
-    if (m_data->movement->pathing)
+    if (m_player->movement->pathing)
     {
         // move amount
-        m_data->movement->moveDelta.x = 0.0f;
-        m_data->movement->moveDelta.z = 0.0f;
+        m_player->movement->moveDelta.x = 0.0f;
+        m_player->movement->moveDelta.z = 0.0f;
         
         //std::cout << "Current tile: " << m_path.path[m_path.currentPosition] << std::endl;
-        m_data->movement->moved = true;
-        glm::vec3 playerPos      = m_data->position;
-        glm::vec3 playerPrevPos  = m_data->position;
-        glm::vec3 playerRot      = m_data->rotation;
-        uint32    currentTile    = m_data->movement->mapPath.path[m_data->movement->mapPath.currentPosition];
+        m_player->movement->moved = true;
+        glm::vec3 playerPos      = m_player->position;
+        glm::vec3 playerPrevPos  = m_player->position;
+        glm::vec3 playerRot      = m_player->rotation;
+        uint32    currentTile    = m_player->movement->mapPath.path[m_player->movement->mapPath.currentPosition];
         glm::vec3 currentTilePos = tileToPosition(currentTile);
         
         // Get the distance to the destination tile
         float32   distanceToTileSqr = ((playerPos.x - currentTilePos.x) * (playerPos.x - currentTilePos.x)) + ((playerPos.z - currentTilePos.z) * (playerPos.z - currentTilePos.z));
         
         // if not center, move towards tile center
-        if (distanceToTileSqr > (m_data->movement->movementSpeed + m_data->movement->movementBias))
+        if (distanceToTileSqr > (m_player->movement->movementSpeed + m_player->movement->movementBias))
         {
             // Position
-            if ((playerPos.x + m_data->movement->movementSpeed) < currentTilePos.x)
+            if ((playerPos.x + m_player->movement->movementSpeed) < currentTilePos.x)
             {
-                playerPos.x += m_data->movement->movementSpeed;
-                m_data->movement->moveDelta.x += m_data->movement->movementSpeed;
+                playerPos.x += m_player->movement->movementSpeed;
+                m_player->movement->moveDelta.x += m_player->movement->movementSpeed;
             }
-            else if ((playerPos.x + m_data->movement->movementSpeed) > currentTilePos.x)
+            else if ((playerPos.x + m_player->movement->movementSpeed) > currentTilePos.x)
             {
-                playerPos.x -= m_data->movement->movementSpeed;
-                m_data->movement->moveDelta.x -= m_data->movement->movementSpeed;
+                playerPos.x -= m_player->movement->movementSpeed;
+                m_player->movement->moveDelta.x -= m_player->movement->movementSpeed;
             }
-            if ((playerPos.z + m_data->movement->movementSpeed) < currentTilePos.z)
+            if ((playerPos.z + m_player->movement->movementSpeed) < currentTilePos.z)
             {
-                playerPos.z += m_data->movement->movementSpeed;
-                m_data->movement->moveDelta.z += m_data->movement->movementSpeed;
+                playerPos.z += m_player->movement->movementSpeed;
+                m_player->movement->moveDelta.z += m_player->movement->movementSpeed;
             }
-            else if ((playerPos.z + m_data->movement->movementSpeed) > currentTilePos.z)
+            else if ((playerPos.z + m_player->movement->movementSpeed) > currentTilePos.z)
             {
-                playerPos.z -= m_data->movement->movementSpeed;
-                m_data->movement->moveDelta.z -= m_data->movement->movementSpeed;
+                playerPos.z -= m_player->movement->movementSpeed;
+                m_player->movement->moveDelta.z -= m_player->movement->movementSpeed;
             }
             
             // Turn to face move direction
             float32 angle = static_cast<float32>(atan2(playerPos.z - playerPrevPos.z, playerPrevPos.x - playerPos.x));
 
-            if (m_data->rotationAxis.x == 1)
+            if (m_player->rotationAxis.x == 1)
             {
-                playerRot.x = angle + m_data->rotationOffset.x;
+                playerRot.x = angle + m_player->rotationOffset.x;
             }
-            else if (m_data->rotationAxis.y == 1)
+            else if (m_player->rotationAxis.y == 1)
             {
-                playerRot.y = angle + m_data->rotationOffset.y;
+                playerRot.y = angle + m_player->rotationOffset.y;
             }
-            else if (m_data->rotationAxis.z == 1)
+            else if (m_player->rotationAxis.z == 1)
             {
-                playerRot.z = angle + m_data->rotationOffset.z;
+                playerRot.z = angle + m_player->rotationOffset.z;
             }
         }
         
@@ -409,21 +445,21 @@ void cPlayerManager::process(const float32 &_dt)
         else
         {
             //playerPos = currentTilePos;
-            m_data->movement->mapPath.currentPosition++;
-            if (m_data->movement->mapPath.currentPosition >= m_data->movement->mapPath.pathLength)
+            m_player->movement->mapPath.currentPosition++;
+            if (m_player->movement->mapPath.currentPosition >= m_player->movement->mapPath.pathLength)
             {
-                m_data->movement->pathing = false;
-                m_data->movement->moveDelta.x = 0.0f;
-                m_data->movement->moveDelta.z = 0.0f;
+                m_player->movement->pathing = false;
+                m_player->movement->moveDelta.x = 0.0f;
+                m_player->movement->moveDelta.z = 0.0f;
                 
                 // Set state - idle
-                m_entityManager->setState(m_data->UID, "idle");
+                m_entityManager->setState(m_player->UID, "idle");
             }
         }
 
-        m_data->position = playerPos; 
-        m_data->movement->mapPath.currentTile = positionToTile(playerPos);
-        m_data->rotation = playerRot; 
+        m_player->position = playerPos; 
+        m_player->movement->mapPath.currentTile = positionToTile(playerPos);
+        m_player->rotation = playerRot; 
         m_updateMatrix();
     }
 }

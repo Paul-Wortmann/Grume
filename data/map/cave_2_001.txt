@@ -1,28 +1,44 @@
 ﻿<?xml version = "1.0" encoding = "UTF-8" ?>
 <map>
     <information>
-        <name>dungeon_1_001</name>
-        <width>16</width>
-        <height>16</height>
+        <name>cave_2_001</name>
+        <width>32</width>
+        <height>32</height>
         <biome>cave_001_biome.txt</biome>
     </information>
     <generation>
-       <tiles>2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2</tiles>
-       <tiles>2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2</tiles>
-       <tiles>2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2</tiles>
-       <tiles>2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2</tiles>
-       <tiles>2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2</tiles>
-       <tiles>2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2</tiles>
-       <tiles>2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2</tiles>
-       <tiles>2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2</tiles>
-       <tiles>2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2</tiles>
-       <tiles>2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2</tiles>
-       <tiles>2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2</tiles>
-       <tiles>2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2</tiles>
-       <tiles>2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2</tiles>
-       <tiles>2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2</tiles>
-       <tiles>2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2</tiles>
-       <tiles>2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2</tiles>
+       <tiles>2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2</tiles>
+       <tiles>2 1 1 1 1 1 2 1 1 1 1 1 2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 1 1 2 2</tiles>
+       <tiles>2 1 1 1 1 1 2 1 1 1 1 1 2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 1 1 1 2</tiles>
+       <tiles>2 1 1 1 1 2 2 2 1 1 1 1 2 1 1 1 1 1 2 1 1 1 1 1 1 1 2 2 2 1 1 2</tiles>
+       <tiles>2 1 1 1 1 1 2 1 1 1 1 1 2 1 1 1 1 1 2 1 1 1 1 1 1 1 1 2 1 1 1 2</tiles>
+       <tiles>2 1 1 2 1 1 1 1 1 1 1 2 2 2 1 1 1 1 2 1 1 1 1 1 1 1 1 1 1 1 1 2</tiles>
+       <tiles>2 2 2 2 2 2 2 1 1 1 1 1 2 1 1 1 1 1 2 1 1 1 1 1 1 1 1 1 1 1 1 2</tiles>
+       <tiles>2 1 1 2 1 1 1 1 1 1 1 1 2 1 1 1 1 1 2 1 1 1 1 1 2 1 1 1 1 1 1 2</tiles>
+       <tiles>2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 1 1 1 1 1 2 1 1 1 1 1 1 2</tiles>
+       <tiles>2 1 1 1 1 1 1 1 1 1 1 1 1 2 1 1 1 1 2 1 1 1 1 1 2 1 1 1 1 1 1 2</tiles>
+       <tiles>2 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 1 1 1 1 2</tiles>
+       <tiles>2 1 1 1 1 1 1 1 1 1 1 1 1 2 1 1 1 1 2 1 1 1 1 1 1 1 1 1 1 1 1 2</tiles>
+       <tiles>2 1 1 2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 1 1 1 1 1 1 1 1 1 1 1 1 2</tiles>
+       <tiles>2 1 1 2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 1 1 1 1 1 1 1 1 1 1 1 1 2</tiles>
+       <tiles>2 1 1 2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 1 1 1 1 1 1 1 1 1 1 1 1 2</tiles>
+       <tiles>2 1 1 2 2 2 2 2 1 1 1 1 2 1 1 1 1 1 2 1 1 1 1 1 1 1 1 1 1 1 1 2</tiles>
+       <tiles>2 1 1 2 1 1 1 1 1 1 1 1 2 1 1 1 1 1 1 1 1 1 1 1 2 1 1 1 1 1 1 2</tiles>
+       <tiles>2 1 1 2 1 1 1 1 1 1 1 1 2 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 1 1 2</tiles>
+       <tiles>2 1 1 2 1 1 1 1 1 1 1 1 2 1 1 1 1 1 1 1 1 1 1 1 2 1 1 2 1 1 1 2</tiles>
+       <tiles>2 1 1 1 1 1 1 1 1 1 2 2 2 2 1 1 1 1 1 1 1 1 1 1 2 1 1 2 1 1 1 2</tiles>
+       <tiles>2 1 1 1 1 1 1 1 1 1 1 1 2 1 1 1 1 1 1 1 1 1 1 1 2 1 1 1 1 1 1 2</tiles>
+       <tiles>2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 1 1 1 1 1 1 2</tiles>
+       <tiles>2 1 1 1 1 2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 1 1 1 1 1 1 2</tiles>
+       <tiles>2 2 1 1 2 2 2 2 2 2 2 2 1 1 2 2 2 2 2 2 2 1 1 1 2 1 1 1 1 1 1 2</tiles>
+       <tiles>2 1 1 1 1 2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 1 1 1 1 1 1 1 1 1 1 2</tiles>
+       <tiles>2 1 1 1 1 2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 1 1 1 1 1 1 2 1 1 1 2</tiles>
+       <tiles>2 1 1 1 1 2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 1 1 1 1 1 1 2 1 1 1 2</tiles>
+       <tiles>2 1 1 1 1 2 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 1 1 2 1 1 1 2</tiles>
+       <tiles>2 1 1 1 1 2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 1 1 1 1 1 1 2 1 1 1 2</tiles>
+       <tiles>2 1 1 1 1 2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 1 1 1 1 1 1 1 1 1 1 2</tiles>
+       <tiles>2 2 1 1 1 2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 1 1 1 1 1 1 1 1 1 2 2</tiles>
+       <tiles>2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2</tiles>
        <generate>0</generate>
        <seed>0</seed>
        <algorithm>1</algorithm>
@@ -31,7 +47,7 @@
 
     <player>
         # This is used when not warping from a prior map
-        <player_start_tile>034</player_start_tile>
+        <player_start_tile>496</player_start_tile>
         <player_start_rotation>1.5708</player_start_rotation>
     </player>
 
@@ -39,7 +55,7 @@
         # These are used when warping from a prior map
         # Portal number, Tile location, player face direction
         # These are exit portals
-        <portal>1 0200 0.0000</portal> #Town 1 exit
+        <portal>1 0912 0.0000</portal> #Town 1 exit
     </portals>
     
     <events>
@@ -49,7 +65,7 @@
         # Type 3 (Toggle entity state, index from 1) : tile, event type, entity tile, state 1, state 2
 
         # To Cave 1
-        <event>0216 1 4 4 0</event> # Cave 1 entrance 1
+        <event>0944 1 4 4 0</event> # Cave 1 entrance 1
 
     </events>
 
@@ -70,14 +86,16 @@
     </rooms>
 
     <debris_objects>
-        #object name, scale max, scale min, prevalence, obstacle
-        <debris>bones 0.5 1.0 15 0</debris> # bones
+        #object name, scale max, scale min, prevalence (0 - 999), obstacle
+        <debris>gib   0.5 1.0  64 0</debris> # gibs
+        <debris>bones 0.5 1.0 128 0</debris> # bones
     </debris_objects>
 
     <objects>
         #tile number, object number, scale, y-rotation, obstacle
-        <object>0232 test 1 1.0 3.14159 1 0</object> # Test - cave 1 entrance 1
-      
+        <object>0976 test  1 1.0 3.14159 1 0</object> # Test - cave 1 entrance 1
+
+        <object>0035 chest 1 1.0 0.00000 1 0</object> # Chest
     </objects>
 
     <npc_mobs>

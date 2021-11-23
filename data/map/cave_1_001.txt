@@ -1,27 +1,27 @@
 ﻿<?xml version = "1.0" encoding = "UTF-8" ?>
 <map>
     <information>
-        <name>dungeon_1_001</name>
+        <name>cave_1_001</name>
         <width>16</width>
         <height>16</height>
         <biome>cave_001_biome.txt</biome>
     </information>
     <generation>
        <tiles>2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2</tiles>
+       <tiles>2 1 1 1 1 1 1 1 1 1 1 2 2 1 1 2</tiles>
+       <tiles>2 1 1 1 1 1 1 1 1 1 1 2 2 1 1 2</tiles>
+       <tiles>2 1 1 1 1 1 1 1 1 1 2 2 2 1 1 2</tiles>
+       <tiles>2 2 2 1 1 1 1 1 1 1 2 2 2 2 1 2</tiles>
+       <tiles>2 2 2 1 1 1 1 1 1 1 1 2 2 2 1 2</tiles>
        <tiles>2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2</tiles>
        <tiles>2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2</tiles>
-       <tiles>2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2</tiles>
-       <tiles>2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2</tiles>
-       <tiles>2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2</tiles>
-       <tiles>2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2</tiles>
-       <tiles>2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2</tiles>
-       <tiles>2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2</tiles>
-       <tiles>2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2</tiles>
-       <tiles>2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2</tiles>
-       <tiles>2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2</tiles>
-       <tiles>2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2</tiles>
-       <tiles>2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2</tiles>
-       <tiles>2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2</tiles>
+       <tiles>2 1 1 1 1 2 2 2 1 1 1 1 1 1 1 2</tiles>
+       <tiles>2 1 1 1 2 2 2 2 1 1 1 1 1 1 1 2</tiles>
+       <tiles>2 2 2 2 2 2 2 2 1 1 1 2 2 1 1 2</tiles>
+       <tiles>2 1 1 2 2 1 1 1 1 1 1 2 2 1 1 2</tiles>
+       <tiles>2 1 1 1 2 1 1 1 1 1 1 1 1 1 1 2</tiles>
+       <tiles>2 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2</tiles>
+       <tiles>2 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2</tiles>
        <tiles>2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2</tiles>
        <generate>0</generate>
        <seed>0</seed>
@@ -79,7 +79,7 @@
 
     <debris_objects>
         #object name, scale max, scale min, prevalence, obstacle
-        <debris>bones 0.5 1.0 15 0</debris> # bones
+        <debris>bones 0.5 1.0 64 0</debris> # bones
     </debris_objects>
 
     <objects>

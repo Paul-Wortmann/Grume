@@ -90,17 +90,39 @@ void cGameEngine::load(const uint32 &_slotNum)
         // Player
         sEntity* player = playerManager.getPlayerEntity();
         
+        // Experience + level
         player->character->level.current = xmlSaveGameFile.getInteger("<level_current>");
         player->character->level.exp     = xmlSaveGameFile.getInteger64("<exp_current>");
-
+        player->character->level.expNext = xmlSaveGameFile.getInteger64("<exp_next>");
+        
+        // Health
         player->character->attributes.health.current = xmlSaveGameFile.getInteger("<health_current>");
         player->character->attributes.health.max     = xmlSaveGameFile.getInteger("<health_max>");
         player->character->attributes.health.regen   = xmlSaveGameFile.getFloat("<health_regen>");
 
+        // Mana
         player->character->attributes.mana.current = xmlSaveGameFile.getInteger("<mana_current>");
         player->character->attributes.mana.max     = xmlSaveGameFile.getInteger("<mana_max>");
         player->character->attributes.mana.regen   = xmlSaveGameFile.getFloat("<mana_regen>");
+
+        // Damage
+        player->character->attributes.damagePhysical.base           = xmlSaveGameFile.getFloat("<damage_physical_base>");
+        player->character->attributes.damagePhysical.critChancev    = xmlSaveGameFile.getFloat("<damage_physical_crit_chance>");
+        player->character->attributes.damagePhysical.critMultiplier = xmlSaveGameFile.getFloat("<damage_physical_crit_multiplier>");
+        player->character->attributes.damageFire.base               = xmlSaveGameFile.getFloat("<damage_fire_base>");
+        player->character->attributes.damageFire.critChancev        = xmlSaveGameFile.getFloat("<damage_fire_crit_chance>");
+        player->character->attributes.damageFire.critMultiplier     = xmlSaveGameFile.getFloat("<damage_fire_crit_multiplier>");
+        player->character->attributes.damageFrost.base              = xmlSaveGameFile.getFloat("<damage_frost_base>");
+        player->character->attributes.damageFrost.critChancev       = xmlSaveGameFile.getFloat("<damage_frost_crit_chance>");
+        player->character->attributes.damageFrost.critMultiplier    = xmlSaveGameFile.getFloat("<damage_frost_crit_multiplier>");
         
+        // Armor
+        player->character->attributes.armorPhysical.base            = xmlSaveGameFile.getFloat("<armor_physical_base>");
+        
+        // Resistance
+        player->character->attributes.resistanceFire.base           = xmlSaveGameFile.getFloat("<resistance_fire_base>");
+        player->character->attributes.resistanceFrost.base          = xmlSaveGameFile.getFloat("<resistance_frost_base>");
+
         // Quest
         
         // Map data
