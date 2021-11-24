@@ -115,7 +115,7 @@ uint32 cGameEngine::initialize(const uint32 &_argc, char** _argv)
         graphicsEngine.process(0);
 
         // load the game startup file
-        load();
+        game_load();
 
         // Ater loading entities
         m_entityHead = entityManager.getHead();
@@ -221,16 +221,20 @@ void cGameEngine::process(void)
                 uiManager.setUIEvent(eComponentFunction::componentFunctionNone);
             break;
             case eComponentFunction::componentFunctionGameNew:
+                m_state = eGameState::active;
+                cGameEngine::game_new();
+                uiManager.setMenuEnabled("main_menu", false);
+                mapManager.setLoading(false);
                 uiManager.setUIEvent(eComponentFunction::componentFunctionNone);
             break;
             case eComponentFunction::componentFunctionGameSave:
                 m_state = (uiManager.getActiveWindowCount() < 2) ? eGameState::active : m_state;
-                cGameEngine::save(1);
+                cGameEngine::game_save(1);
                 uiManager.setUIEvent(eComponentFunction::componentFunctionNone);
             break;
             case eComponentFunction::componentFunctionGameLoad:
                 m_state = (uiManager.getActiveWindowCount() < 2) ? eGameState::active : m_state;
-                cGameEngine::load(1);
+                cGameEngine::game_load(1);
                 mapManager.setLoading(false);
                 uiManager.setUIEvent(eComponentFunction::componentFunctionNone);
             break;

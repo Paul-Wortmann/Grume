@@ -23,7 +23,7 @@
 
 #include "game_engine.hpp"
 
-void cGameEngine::save(const uint32 &_slotNum)
+void cGameEngine::game_save(const uint32 &_slotNum)
 {
     // Create a new save file, or overwrite its content if it does not exist
     string   fileName = string("save_00") + std::to_string(_slotNum) + string(".txt");
@@ -118,8 +118,6 @@ void cGameEngine::save(const uint32 &_slotNum)
         saveFile << "<resistance_fire_base>" << player->character->attributes.resistanceFire.base << "</resistance_fire_base>" << std::endl;
         saveFile << string(indent_width * indent_level, ' ');
         saveFile << "<resistance_frost_base>" << player->character->attributes.resistanceFrost.base << "</resistance_frost_base>" << std::endl;
-
-
 
         indent_level--;
         saveFile << string(indent_width * indent_level, ' ');

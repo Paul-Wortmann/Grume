@@ -74,12 +74,15 @@ class cGameEngine
         void   terminate(void);
         void   process(void);
 
+        // game_new.cpp
+        void game_new(void);
+
         // game_load.cpp
-        void load(void);
-        void load(const uint32 &_slotNum);
+        void game_load(void);
+        void game_load(const uint32 &_slotNum);
 
         // game_save.cpp
-        void save(const uint32 &_slotNum);
+        void game_save(const uint32 &_slotNum);
         
         sEntity* m_entityHead = nullptr;
         sEntity* m_entityTemp = nullptr;
