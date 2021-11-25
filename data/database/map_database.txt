@@ -9,8 +9,8 @@
 
         <map>003 crypt_1_001.txt</map>
         <map>004 cave_1_001.txt</map>
-        <map>005 cave_2_001.txt</map>
-        <map>006 cave_3_001.txt</map>
+        <map>005 cave_1_002.txt</map>
+        <map>006 cave_1_003.txt</map>
 
 
 
