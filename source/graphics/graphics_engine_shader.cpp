@@ -37,6 +37,12 @@ void cGraphicsEngineShader::terminate(void)
 // Load a shader from file
 uint32 cGraphicsEngineShader::load(const std::string &_fileName)
 {
+    if(m_shaderID != 0)
+    {
+        glDeleteProgram(m_shaderID);
+    }
+    m_shaderID = 0;
+
     // Vertex shader
     GLuint vertShader = 0;
 
@@ -56,20 +62,24 @@ uint32 cGraphicsEngineShader::load(const std::string &_fileName)
 
         // Check the shader
         GLint compileStatus = GL_FALSE;
-        int32  logLength;
+        int32 logLength = 0;
         glGetShaderiv(vertShader, GL_COMPILE_STATUS, &compileStatus);
-        glGetShaderiv(vertShader, GL_INFO_LOG_LENGTH, &logLength);
-        if (logLength > 0)
+        if (compileStatus == GL_FALSE)
         {
+            glGetShaderiv(vertShader, GL_INFO_LOG_LENGTH, &logLength);
             GLchar shaderLog[logLength+1];
             glGetShaderInfoLog(vertShader, logLength, NULL, &shaderLog[0]);
             gLogWrite(LOG_ERROR, "Error in shader: " + file_vs, __FILE__, __LINE__, __FUNCTION__);
             gLogWrite(LOG_ERROR, std::string(shaderLog), __FILE__, __LINE__, __FUNCTION__);
+            if (vertShader != 0)
+                glDeleteShader(vertShader);
+            return m_shaderID;
         }
     }
     else
     {
         gLogWrite(LOG_ERROR, "No vertex shader found: " + file_vs, __FILE__, __LINE__, __FUNCTION__);
+        return m_shaderID;
     }
 
     // Geometry shader
@@ -91,15 +101,20 @@ uint32 cGraphicsEngineShader::load(const std::string &_fileName)
 
         // Check the shader
         GLint compileStatus = GL_FALSE;
-        int32  logLength;
+        int32 logLength = 0;
         glGetShaderiv(geomShader, GL_COMPILE_STATUS, &compileStatus);
-        glGetShaderiv(geomShader, GL_INFO_LOG_LENGTH, &logLength);
-        if (logLength > 0)
+        if (compileStatus == GL_FALSE)
         {
+            glGetShaderiv(geomShader, GL_INFO_LOG_LENGTH, &logLength);
             GLchar shaderLog[logLength+1];
             glGetShaderInfoLog(geomShader, logLength, NULL, &shaderLog[0]);
             gLogWrite(LOG_ERROR, "Error in shader: " + file_gs, __FILE__, __LINE__, __FUNCTION__);
             gLogWrite(LOG_ERROR, std::string(shaderLog), __FILE__, __LINE__, __FUNCTION__);
+            if (vertShader != 0)
+                glDeleteShader(vertShader);
+            if (geomShader != 0)
+                glDeleteShader(geomShader);
+            return m_shaderID;
         }
     }
     else
@@ -126,20 +141,32 @@ uint32 cGraphicsEngineShader::load(const std::string &_fileName)
 
         // Check the shader
         GLint compileStatus = GL_FALSE;
-        int32  logLength;
+        int32 logLength = 0;
         glGetShaderiv(fragShader, GL_COMPILE_STATUS, &compileStatus);
-        glGetShaderiv(fragShader, GL_INFO_LOG_LENGTH, &logLength);
-        if (logLength > 0)
+        if (compileStatus == GL_FALSE)
         {
+            glGetShaderiv(fragShader, GL_INFO_LOG_LENGTH, &logLength);
             GLchar shaderLog[logLength+1];
             glGetShaderInfoLog(fragShader, logLength, NULL, &shaderLog[0]);
             gLogWrite(LOG_ERROR, "Error in shader: " + file_fs, __FILE__, __LINE__, __FUNCTION__);
             gLogWrite(LOG_ERROR, std::string(shaderLog), __FILE__, __LINE__, __FUNCTION__);
+            if (vertShader != 0)
+                glDeleteShader(vertShader);
+            if (geomShader != 0)
+                glDeleteShader(geomShader);
+            if (fragShader != 0)
+                glDeleteShader(fragShader);
+            return m_shaderID;
         }
     }
     else
     {
         gLogWrite(LOG_ERROR, "No fragment shader found: " + file_fs, __FILE__, __LINE__, __FUNCTION__);
+        if (vertShader != 0)
+            glDeleteShader(vertShader);
+        if (geomShader != 0)
+            glDeleteShader(geomShader);
+        return m_shaderID;
     }
 
     // Shader program
@@ -157,25 +184,35 @@ uint32 cGraphicsEngineShader::load(const std::string &_fileName)
 
     // Chech for errors
     GLint compileStatus = GL_FALSE;
-    int32  logLength;
+    int32 logLength = 0;
     glGetProgramiv(program, GL_LINK_STATUS, &compileStatus);
-    glGetProgramiv(program, GL_INFO_LOG_LENGTH, &logLength);
-    if (logLength > 0)
+    if (compileStatus == GL_FALSE)
     {
+        glGetProgramiv(program, GL_INFO_LOG_LENGTH, &logLength);
         GLchar shaderLog[logLength+1];
         glGetProgramInfoLog(program, logLength, NULL, &shaderLog[0]);
         gLogWrite(LOG_ERROR, "Error in shader: " + _fileName, __FILE__, __LINE__, __FUNCTION__);
         gLogWrite(LOG_ERROR, std::string(shaderLog), __FILE__, __LINE__, __FUNCTION__);
+        glDeleteProgram(program);
     }
 
     // Clean up
     if (vertShader != 0)
+    {
+        glDetachShader(program, vertShader);
         glDeleteShader(vertShader);
+    }
     if (geomShader != 0)
+    {
+        glDetachShader(program, geomShader);
         glDeleteShader(geomShader);
+    }
     if (fragShader != 0)
+    {
+        glDetachShader(program, fragShader);
         glDeleteShader(fragShader);
-
+    }
+    
     // Save and return the shader program ID
     m_shaderID = program;
     return program;
