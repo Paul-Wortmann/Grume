@@ -1389,6 +1389,7 @@ void cMapManager::process(const float64 &_dt)
                         m_animationEngine->initializeEntities();
                         m_playMusic();
                         m_loadRequest = false;
+                        return;
                     }
                 }
                 // Entity set (tile, type, map number, portal number)

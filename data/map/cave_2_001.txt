@@ -64,7 +64,7 @@
         # Type 2 (Set entity state, index from 1) : tile, event type, entity tile, state, NA
         # Type 3 (Toggle entity state, index from 1) : tile, event type, entity tile, state 1, state 2
 
-        # To Cave 1
+        # To Cave 1-1
         <event>0944 1 4 4 0</event> # Cave 1 entrance 1
 
     </events>

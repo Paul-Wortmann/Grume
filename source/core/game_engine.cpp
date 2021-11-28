@@ -397,7 +397,7 @@ void cGameEngine::process(void)
             graphicsEngine.setCameraPosition(glm::vec3(cameraPosition));
             graphicsEngine.setCameraTarget(glm::vec3(cameraTarget));
         }
-
+        
         // -----------------------------------------
         // Advance the timer
         timer.advance_dt();
