@@ -77,6 +77,11 @@
     <object>chest objects/chest_2_001.txt<object>
     <object>chest objects/chest_3_001.txt<object>
 
+    # Coffin
+    <object>coffin objects/coffin_1_001.txt<object>
+    <object>coffin objects/coffin_1_002.txt<object>
+    <object>coffin objects/coffin_1_003.txt<object>
+
     # Crate
     <object>crate objects/crate_1_001.txt<object>
     <object>crate objects/crate_2_001.txt<object>

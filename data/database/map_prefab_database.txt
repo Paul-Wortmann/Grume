@@ -25,7 +25,8 @@
         <prefab>1 9 9 cell_1_005.txt</prefab>
         <prefab>1 9 9 cell_1_006.txt</prefab>
         <prefab>1 9 9 cell_1_007.txt</prefab>
-        <prefab>1 9 9 cell_1_008.txt</prefab>
+        <prefab>1 9 9 cell_1_008.txt</prefab> # altar
+        <prefab>1 9 9 cell_1_009.txt</prefab> # coffin
         
         # 2 - Secret room
         
