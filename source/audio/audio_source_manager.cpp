@@ -30,21 +30,13 @@ void cAudioSourceManager::initialize(void)
 
 void cAudioSourceManager::terminate(void)
 {
-    m_freeAll();
+    freeAll();
 }
 
-void cAudioSourceManager::m_freeData(sAudioSource*& _pointer)
+void cAudioSourceManager::freeData(sAudioSource*& _pointer)
 {
     // Remove association with audio buffer
     alSourcei(_pointer->ID, AL_BUFFER, 0);
-}
-
-void cAudioSourceManager::m_freeAll(void)
-{
-    for (sAudioSource* temp = getHead(); temp != nullptr; temp = temp->next)
-    {
-        m_freeData(temp);
-    }
 }
 
 sAudioSource* cAudioSourceManager::newAudioSource(void)

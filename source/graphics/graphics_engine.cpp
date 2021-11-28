@@ -175,14 +175,14 @@ uint32 cGraphicsEngine::initialize(void)
         
         // Log monitor data
         gLogWrite(LOG_INFO, "Monitor count: " + std::to_string(m_monitorCount), __FILE__, __LINE__, __FUNCTION__);
-        for (std::uint32_t i = 0; i < m_monitorCount; ++i)
+        for (uint32 i = 0; i < m_monitorCount; ++i)
         {
             gLogWrite(LOG_INFO, "Monitor " + std::to_string(i + 1) + " : " + std::string(glfwGetMonitorName(m_monitors[i])), __FILE__, __LINE__, __FUNCTION__);
         }
         
         // Log monitor video mode data
         gLogWrite(LOG_INFO, "Monitor supported video mode count: " + std::to_string(m_videoModeCount), __FILE__, __LINE__, __FUNCTION__);
-        for (std::uint32_t i = 0; i < m_videoModeCount; ++i)
+        for (uint32 i = 0; i < m_videoModeCount; ++i)
         {
             gLogWrite(LOG_INFO, "Monitor supported video mode " + std::to_string(i + 1) + " : " + 
             std::to_string(m_videoModes[i].width) + " x " + 
@@ -375,7 +375,7 @@ uint32 cGraphicsEngine::initialize(void)
             
             // Add some test particles
             sParticle tParticle;
-            for (std::uint32_t i = 0; i < m_particleEngine.getNumParticles(); ++i)
+            for (uint32 i = 0; i < m_particleEngine.getNumParticles(); ++i)
             {
                 tParticle.life       = 100000.0f;
                 tParticle.size       = 100.0f;

@@ -94,8 +94,7 @@ class cMapManager : public tcLinkedList<sMap>
         const float32 tp    = 1.0f / 2.0f; // tile center positioning ( half model dimention)
 
         // map_manager.cpp
-        void          m_freeAll(void);
-        void          m_freeData(sMap*& _map);
+        void          freeData(sMap*& _map);
         void          m_stopMusic(void);
         void          m_playMusic(void);
         void          m_resetPlayerPosition(void);

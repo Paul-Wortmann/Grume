@@ -30,15 +30,14 @@
 class cAudioSourceManager : public tcLinkedList<sAudioSource>
 {
     public:
-        void initialize(void);
-        void terminate(void);
+        void          initialize(void);
+        void          terminate(void);
         sAudioSource* newAudioSource(void);
         
     protected:
         
     private:
-        void m_freeAll(void);
-        void m_freeData(sAudioSource*& _pointer);
+        void freeData(sAudioSource*& _pointer);
 };
 
 #endif //AUDIO_SOURCE_MANAGER_HPP

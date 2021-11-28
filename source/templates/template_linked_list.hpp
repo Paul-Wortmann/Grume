@@ -32,7 +32,7 @@
 // The reason being is to maintain the same pointer to the linked list head which 
 // is required by external classes that share the head node to reference the list.
 // While external classes could keep updating their pointer to the list, it is 
-// more efficient to avoid unnessesary function calls for performance critical systems.
+// more efficient to avoid unnecessary function calls for performance critical systems.
 // Thus the complexity of maintaining the head pointer by the class is desired.
 // When the list is empty m_count will be set to 0.
 
@@ -66,6 +66,23 @@ template<class T> class tcLinkedList
         inline tcLinkedList(tcLinkedList& _other) = delete;
         inline tcLinkedList(const tcLinkedList& _other) = delete;
         inline tcLinkedList&operator=(const tcLinkedList& other) = delete;
+
+        // Free all data held by the linked list
+        inline void freeAll(void)
+        {
+            for (m_temp = m_head; m_temp != nullptr;)
+            {
+                m_head = m_temp;
+                m_temp = m_temp->next;
+                if (m_head != nullptr)
+                {
+                    freeData(m_head);
+                }
+            }
+        }
+
+        // Free all data held by the pointer
+        virtual void freeData(T*& _pointer) = 0;
 
         // Get head
         inline T* getHead(void)

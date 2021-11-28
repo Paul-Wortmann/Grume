@@ -31,7 +31,7 @@ class cEventManager :tcTemplateManager
     public:
         uint32 initialize(void);
         void   terminate(void);
-        void   process(float _dt);
+        void   process(const float32 &_dt);
         sEvent getEvent(uint32 _eventNum);
         void   addEvent(const sEvent &_event);
 

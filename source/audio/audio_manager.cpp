@@ -66,20 +66,12 @@ void cAudioManager::terminate(void)
     alcMakeContextCurrent(nullptr);
     alcDestroyContext(m_context);
     alcCloseDevice(m_device);
-    m_freeAll();
+    freeAll();
 }
 
-void cAudioManager::m_freeData(sEntityAudio*& _pointer)
+void cAudioManager::freeData(sEntityAudio*& _pointer)
 {
     
-}
-
-void cAudioManager::m_freeAll(void)
-{
-    for (sEntityAudio* temp = getHead(); temp != nullptr; temp = temp->next)
-    {
-        m_freeData(temp);
-    }
 }
 
 void cAudioManager::m_updateVolume(void)

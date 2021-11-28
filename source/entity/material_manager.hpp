@@ -43,8 +43,7 @@ class cMaterialManager : public tcLinkedList<sEntityMaterial>
     protected:
 
     private:
-        void m_freeAll(void);
-        void m_freeData(sEntityMaterial*& _pointer);
+        void freeData(sEntityMaterial*& _pointer);
         
         cTextureManager textureManager;
 };

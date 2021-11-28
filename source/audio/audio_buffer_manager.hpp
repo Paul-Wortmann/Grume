@@ -30,8 +30,8 @@
 class cAudioBufferManager : public tcLinkedList<sAudioBuffer>
 {
     public:
-        void initialize(void);
-        void terminate(void);
+        void          initialize(void);
+        void          terminate(void);
         sAudioBuffer* newAudioBuffer(void);
         sAudioBuffer* findAudioBuffer(const string &_name);
         sAudioBuffer* findAudioBuffer(const uint32 &_ID);
@@ -39,8 +39,7 @@ class cAudioBufferManager : public tcLinkedList<sAudioBuffer>
     protected:
         
     private:
-        void m_freeAll(void);
-        void m_freeData(sAudioBuffer*& _pointer);
+        void freeData(sAudioBuffer*& _pointer);
 };
 
 #endif //AUDIO_BUFFER_MANAGER_HPP

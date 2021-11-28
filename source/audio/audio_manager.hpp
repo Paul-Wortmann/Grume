@@ -45,11 +45,11 @@ class cAudioManager : public tcLinkedList<sEntityAudio>
         void     setListenerVelocity(glm::vec3 _velocity) {m_listener.velocity = _velocity; alListener3f(AL_POSITION, _velocity.x, _velocity.y, _velocity.z);}
 
         // Audio sources
-        uint32 newAudioSource(void) {return m_sourceManager.newAudioSource()->ID;}
+        uint32   newAudioSource(void) {return m_sourceManager.newAudioSource()->ID;}
         void     attachSourceBuffer(uint32 _sID, uint32 _bID) {alSourcei(_sID, AL_BUFFER, _bID);}
         void     playSource(uint32 _ID) {alSourcePlay(_ID);}
         void     stopSource(uint32 _ID) {alSourceStop(_ID);}
-        int32  getSourceState(uint32 _ID) {int32 state; alGetSourcei(_ID, AL_SOURCE_STATE, &state); return state;}
+        int32    getSourceState(uint32 _ID) {int32 state; alGetSourcei(_ID, AL_SOURCE_STATE, &state); return state;}
         void     setAudioSourcePitch(uint32 _ID, float _pitch) {alSourcef(_ID, AL_PITCH, _pitch);}
         void     setAudioSourceGain(uint32 _ID, float _gain) {alSourcef(_ID, AL_GAIN, _gain);}
         void     setAudioSourcePosition(uint32 _ID, float _x, float _y, float _z) {alSource3f(_ID, AL_POSITION, _x, _y, _z);}
@@ -61,30 +61,29 @@ class cAudioManager : public tcLinkedList<sEntityAudio>
         
         // Audio buffers
         void     setAudioBufferName(uint32 _ID, const std::string &_name);
-        uint32 findAudioBuffer(const string &_name) {sAudioBuffer* tB = m_bufferManager.findAudioBuffer(_name); return (tB == nullptr) ? 0 : tB->ID;}
-        uint32 newAudioBuffer(void) {return m_bufferManager.newAudioBuffer()->ID;}
+        uint32   findAudioBuffer(const string &_name) {sAudioBuffer* tB = m_bufferManager.findAudioBuffer(_name); return (tB == nullptr) ? 0 : tB->ID;}
+        uint32   newAudioBuffer(void) {return m_bufferManager.newAudioBuffer()->ID;}
         void     loadBufferWav(uint32 _ID, const string &_fileName);
         void     loadBufferOgg(uint32 _ID, const string &_fileName);
 
         // Volume
         void     setVolumeMaster(uint32 _volume) {m_volumeMaster = _volume; m_updateVolume(); };
-        uint32 getVolumeMaster(void) {return m_volumeMaster; m_updateVolume(); };
+        uint32   getVolumeMaster(void) {return m_volumeMaster; m_updateVolume(); };
         void     setVolumeMasterUp(void) { if (m_volumeMaster < 100) m_volumeMaster++; m_updateVolume(); };
         void     setVolumeMasterDown(void) { if (m_volumeMaster > 0) m_volumeMaster--; m_updateVolume(); };
         void     setVolumeMusic(uint32 _volume) {m_volumeMusic = _volume; m_updateVolume(); };
-        uint32 getVolumeMusic(void) {return m_volumeMusic; m_updateVolume(); };
+        uint32   getVolumeMusic(void) {return m_volumeMusic; m_updateVolume(); };
         void     setVolumeMusicUp(void) { if (m_volumeMusic < 100) m_volumeMusic++; m_updateVolume(); };
         void     setVolumeMusicDown(void) { if (m_volumeMusic > 0) m_volumeMusic--; m_updateVolume(); };
         void     setVolumeSound(uint32 _volume) {m_volumeSound = _volume; m_updateVolume(); };
-        uint32 getVolumeSound(void) {return m_volumeSound; m_updateVolume(); };
+        uint32   getVolumeSound(void) {return m_volumeSound; m_updateVolume(); };
         void     setVolumeSoundUp(void) { if (m_volumeSound < 100) m_volumeSound++; m_updateVolume(); };
         void     setVolumeSoundDown(void) { if (m_volumeSound > 0) m_volumeSound--; m_updateVolume(); };
         
     protected:
         
     private:
-        void     m_freeAll(void);
-        void     m_freeData(sEntityAudio*& _pointer);
+        void     freeData(sEntityAudio*& _pointer);
         void     m_updateVolume(void);
 
         ALCdevice*          m_device        = nullptr;

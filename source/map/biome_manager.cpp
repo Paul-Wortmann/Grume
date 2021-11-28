@@ -30,10 +30,10 @@ void cBiomeManager::initialize(cEntityManager* _entityManager)
 
 void cBiomeManager::terminate(void)
 {
-    m_freeAll();
+    freeAll();
 }
 
-void cBiomeManager::m_freeData(sMapBiome*& _biome)
+void cBiomeManager::freeData(sMapBiome*& _biome)
 {
     /*
     //Wall Set
@@ -52,14 +52,6 @@ void cBiomeManager::m_freeData(sMapBiome*& _biome)
     if (_biome->WallSet.wall_td != nullptr) { delete [] _biome->WallSet.wall_td; }
     if (_biome->WallSet.wall_tl != nullptr) { delete [] _biome->WallSet.wall_tl; }
      * */
-}
-
-void cBiomeManager::m_freeAll(void)
-{
-    for (sMapBiome* temp = getHead(); temp != nullptr; temp = temp->next)
-    {
-        m_freeData(temp);
-    }
 }
 
 sMapBiome* cBiomeManager::load(const std::string &_fileName)

@@ -25,14 +25,14 @@
 #ifndef TEMPLATE_MANAGER_HPP
 #define TEMPLATE_MANAGER_HPP
 
-#include "../core/includes.hpp"
+#include "../core/defines_types.hpp"
 
 class tcTemplateManager
 {
     public:
-        virtual uint32 initialize(void)   = 0;
-        virtual void   terminate(void)    = 0;
-        virtual void   process(float _dt) = 0;
+        virtual uint32 initialize(void)            = 0;
+        virtual void   terminate(void)             = 0;
+        virtual void   process(const float32 &_dt) = 0;
 
     protected:
 

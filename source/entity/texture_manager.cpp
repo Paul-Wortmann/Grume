@@ -30,22 +30,14 @@ void cTextureManager::initialize(void)
 
 void cTextureManager::terminate(void)
 {
-    m_freeAll();
+    freeAll();
 }
 
-void cTextureManager::m_freeData(sEntityTexture*& _pointer)
+void cTextureManager::freeData(sEntityTexture*& _pointer)
 {
     if (_pointer->ID != 0)
     {
         glDeleteTextures(1, &_pointer->ID);
-    }
-}
-
-void cTextureManager::m_freeAll(void)
-{
-    for (sEntityTexture* temp = getHead(); temp != nullptr; temp = temp->next)
-    {
-        m_freeData(temp);
     }
 }
 

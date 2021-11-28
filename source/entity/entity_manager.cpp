@@ -170,7 +170,7 @@ void cEntityManager::updateModelMatrix(sEntity*& _entity)
     // 3. Scale
     glm::mat4 scaleMatrix = glm::scale(glm::mat4(1), _entity->scale);
 
-    // 4. Fianlly calculate the model matrix
+    // 4. Finally calculate the model matrix
     _entity->modelMatrix = translationMatrix * rotationMatrix * scaleMatrix;
 }
 

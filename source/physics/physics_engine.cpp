@@ -30,18 +30,10 @@ uint32 cPhysicsEngine::initialize(void)
 
 void cPhysicsEngine::terminate(void)
 {
-    m_freeAll();
+    freeAll();
 }
 
-void cPhysicsEngine::m_freeAll(void)
-{
-    for (sPhysicsObject* temp = getHead(); temp != nullptr; temp = temp->next)
-    {
-        m_freeData(temp);
-    }
-}
-
-void cPhysicsEngine::m_freeData(sPhysicsObject*& _object)
+void cPhysicsEngine::freeData(sPhysicsObject*& _object)
 {
     
 }

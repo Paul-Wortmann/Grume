@@ -36,7 +36,7 @@ void cEventManager::terminate(void)
 
 }
 
-void cEventManager::process(float _dt)
+void cEventManager::process(const float32 &_dt)
 {
 
 

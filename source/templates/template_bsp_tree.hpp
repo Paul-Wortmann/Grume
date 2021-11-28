@@ -33,7 +33,7 @@
 // The reason being is to maintain the same pointer to the bsp tree head which 
 // is required by external classes that share the head node to reference the tree.
 // While external classes could keep updating their pointer to the tree, it is 
-// more efficient to avoid unnessesary function calls for performance critical systems.
+// more efficient to avoid unnecessary function calls for performance critical systems.
 // Thus the complexity of maintaining the head pointer by the class is desired.
 // When the tree is empty m_count will be set to 0.
 

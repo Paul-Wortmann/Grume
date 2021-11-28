@@ -30,20 +30,12 @@ void cAudioBufferManager::initialize(void)
 
 void cAudioBufferManager::terminate(void)
 {
-    m_freeAll();
+    freeAll();
 }
 
-void cAudioBufferManager::m_freeData(sAudioBuffer*& _pointer)
+void cAudioBufferManager::freeData(sAudioBuffer*& _pointer)
 {
     alDeleteBuffers(1, &_pointer->ID);
-}
-
-void cAudioBufferManager::m_freeAll(void)
-{
-    for (sAudioBuffer* temp = getHead(); temp != nullptr; temp = temp->next)
-    {
-        m_freeData(temp);
-    }
 }
 
 sAudioBuffer* cAudioBufferManager::newAudioBuffer(void)

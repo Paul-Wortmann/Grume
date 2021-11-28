@@ -38,10 +38,10 @@ void cMapManager::initialize(cEntityManager* _entityManager)
 void cMapManager::terminate(void)
 {
     m_biomeManager.terminate();
-    m_freeAll();
+    freeAll();
 }
 
-void cMapManager::m_freeData(sMap*& _map)
+void cMapManager::freeData(sMap*& _map)
 {
     // Return if nullptr
     if (_map == nullptr)
@@ -143,14 +143,6 @@ void cMapManager::m_freeData(sMap*& _map)
         delete [] _map->npc;
         _map->npc = nullptr;
         _map->npcCount = 0;
-    }
-}
-
-void cMapManager::m_freeAll(void)
-{
-    for (sMap* temp = getHead(); temp != nullptr; temp = temp->next)
-    {
-        m_freeData(temp);
     }
 }
 
@@ -949,7 +941,7 @@ void cMapManager::unload(void)
     }
     
     // Free the map and its data
-    m_freeData(m_currentMap);
+    freeData(m_currentMap);
     m_currentMap->name = "";
     m_currentMap->fileName = "";
     

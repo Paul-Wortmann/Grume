@@ -31,19 +31,11 @@ void cMaterialManager::initialize(void)
 void cMaterialManager::terminate(void)
 {
     textureManager.terminate();
-    m_freeAll();
+    freeAll();
 }
 
-void cMaterialManager::m_freeData(sEntityMaterial*& _pointer)
+void cMaterialManager::freeData(sEntityMaterial*& _pointer)
 {
-}
-
-void cMaterialManager::m_freeAll(void)
-{
-    for (sEntityMaterial* temp = getHead(); temp != nullptr; temp = temp->next)
-    {
-        m_freeData(temp);
-    }
 }
 
 bool cMaterialManager::isLoaded(const std::string &_diffuse, const std::string &_emissive, const std::string &_normal, const std::string &_specular)

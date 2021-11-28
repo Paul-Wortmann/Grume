@@ -40,8 +40,7 @@ class cBiomeManager : public tcLinkedList<sMapBiome>
     private:
         cEntityManager* entityManager = nullptr;
         
-        void m_freeAll(void);
-        void m_freeData(sMapBiome*& _biome);
+        void freeData(sMapBiome*& _biome);
 
         // Wall set load
         void m_load_wallSet(sMapBiome*& _biome);

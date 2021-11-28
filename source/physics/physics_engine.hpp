@@ -40,8 +40,7 @@ class cPhysicsEngine : public tcLinkedList<sPhysicsObject>
     protected:
         
     private:
-        void m_freeAll(void);
-        void m_freeData(sPhysicsObject*& _object);
+        void freeData(sPhysicsObject*& _object);
 
         // Entity management
         sEntity*           m_entityHead         = nullptr;

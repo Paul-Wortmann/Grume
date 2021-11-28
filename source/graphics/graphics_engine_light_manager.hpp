@@ -42,8 +42,7 @@ class cGraphicsEngineLightManager : public tcLinkedList<sGraphicsEnginePointLigh
     protected:
 
     private:
-        void m_freeAll(void);
-        void m_freeData(sGraphicsEnginePointLight*& _light);
+        void freeData(sGraphicsEnginePointLight*& _light);
 };
 
 #endif // GRAPHICS_ENGINE_LIGHT_MANAGER_HPP

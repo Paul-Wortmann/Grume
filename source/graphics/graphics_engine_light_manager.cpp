@@ -30,18 +30,10 @@ void cGraphicsEngineLightManager::initialize(void)
 
 void cGraphicsEngineLightManager::terminate(void)
 {
-    m_freeAll();
+    freeAll();
 }
 
-void cGraphicsEngineLightManager::m_freeData(sGraphicsEnginePointLight*& _light)
+void cGraphicsEngineLightManager::freeData(sGraphicsEnginePointLight*& _light)
 {
 
-}
-
-void cGraphicsEngineLightManager::m_freeAll(void)
-{
-    for (sGraphicsEnginePointLight* temp = getHead(); temp != nullptr; temp = temp->next)
-    {
-        m_freeData(temp);
-    }
 }

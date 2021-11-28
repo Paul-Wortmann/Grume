@@ -31,10 +31,10 @@ void cModelManager::initialize(void)
 void cModelManager::terminate(void)
 {
     materialManager.terminate();
-    m_freeAll();
+    freeAll();
 }
 
-void cModelManager::m_freeData(sEntityModel*& _pointer)
+void cModelManager::freeData(sEntityModel*& _pointer)
 {
     // It is assumed that other managers freed their data by this point
     if (_pointer != nullptr)
@@ -149,14 +149,6 @@ void cModelManager::m_freeData(sEntityModel*& _pointer)
             delete[] _pointer->animation;
             _pointer->animation = nullptr;
         }
-    }
-}
-
-void cModelManager::m_freeAll(void)
-{
-    for (sEntityModel* temp = getHead(); temp != nullptr; temp = temp->next)
-    {
-        m_freeData(temp);
     }
 }
 
