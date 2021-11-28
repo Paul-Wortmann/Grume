@@ -30,8 +30,9 @@
 class cGraphicsEngineShader
 {
     public:
-        void initialize(void);
-        void terminate(void);
+        void   initialize(void);
+        void   terminate(void);
+        void   use(void);
         uint32 load(const std::string &_fileName);
         uint32 getID(void) {return m_shaderID;}
         uint32 getUniformLocation(const std::string &_name);

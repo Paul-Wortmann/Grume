@@ -25,13 +25,18 @@
 
 void cGraphicsEngineShader::initialize(void)
 {
-
+    m_shaderID = 0;
 }
 
 void cGraphicsEngineShader::terminate(void)
 {
     glUseProgram(0);
-    glDeleteProgram(this->m_shaderID);
+    glDeleteProgram(m_shaderID);
+}
+
+void cGraphicsEngineShader::use(void)
+{
+    glUseProgram(m_shaderID);
 }
 
 // Load a shader from file

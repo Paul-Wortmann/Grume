@@ -3,32 +3,32 @@
 
     <information>
         <current_map>cave_2_001</current_map>
-        <current_position>330</current_position>
+        <current_position>265</current_position>
         <current_rotation>-2.3562</current_rotation>
     </information>
 
     <player>
-        <level_current>2</level_current>
-        <exp_current>640</exp_current>
-        <exp_next>2304</exp_next>
-        <health_current>225</health_current>
-        <health_max>225</health_max>
-        <health_regen>0.035</health_regen>
-        <mana_current>225</mana_current>
-        <mana_max>225</mana_max>
-        <mana_regen>0.035</mana_regen>
-        <damage_physical_base>12</damage_physical_base>
-        <damage_physical_crit_chance>12</damage_physical_crit_chance>
-        <damage_physical_crit_multiplier>2</damage_physical_crit_multiplier>
-        <damage_fire_base>12</damage_fire_base>
-        <damage_fire_crit_chance>12</damage_fire_crit_chance>
-        <damage_fire_crit_multiplier>2</damage_fire_crit_multiplier>
-        <damage_frost_base>12</damage_frost_base>
-        <damage_frost_crit_chance>12</damage_frost_crit_chance>
-        <damage_frost_crit_multiplier>2</damage_frost_crit_multiplier>
-        <armor_physical_base>12</armor_physical_base>
-        <resistance_fire_base>12</resistance_fire_base>
-        <resistance_frost_base>12</resistance_frost_base>
+        <level_current>3</level_current>
+        <exp_current>1536</exp_current>
+        <exp_next>3456</exp_next>
+        <health_current>337.5</health_current>
+        <health_max>337.5</health_max>
+        <health_regen>0.04</health_regen>
+        <mana_current>337.5</mana_current>
+        <mana_max>337.5</mana_max>
+        <mana_regen>0.04</mana_regen>
+        <damage_physical_base>13</damage_physical_base>
+        <damage_physical_crit_chance>13</damage_physical_crit_chance>
+        <damage_physical_crit_multiplier>2.25</damage_physical_crit_multiplier>
+        <damage_fire_base>13</damage_fire_base>
+        <damage_fire_crit_chance>13</damage_fire_crit_chance>
+        <damage_fire_crit_multiplier>2.25</damage_fire_crit_multiplier>
+        <damage_frost_base>13</damage_frost_base>
+        <damage_frost_crit_chance>13</damage_frost_crit_chance>
+        <damage_frost_crit_multiplier>2.25</damage_frost_crit_multiplier>
+        <armor_physical_base>13</armor_physical_base>
+        <resistance_fire_base>13</resistance_fire_base>
+        <resistance_frost_base>13</resistance_frost_base>
     </player>
 
     <quest>

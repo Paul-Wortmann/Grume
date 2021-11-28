@@ -21,13 +21,12 @@
  * @date 2011-11-11
  */
 
+#ifndef TEMPLATE_ENGINE_HPP
+#define TEMPLATE_ENGINE_HPP
 
-#ifndef TEMPLATE_MANAGER_HPP
-#define TEMPLATE_MANAGER_HPP
+#include "../core/includes.hpp"
 
-#include "includes.hpp"
-
-class tcTemplateManager
+class tcTemplateEngine
 {
     public:
         virtual uint32 initialize(void)   = 0;
@@ -40,4 +39,4 @@ class tcTemplateManager
 
 };
 
-#endif // TEMPLATE_MANAGER_HPP
+#endif // TEMPLATE_ENGINE_HPP

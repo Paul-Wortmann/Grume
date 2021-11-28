@@ -25,7 +25,7 @@
 #define BSP_TREE_HPP
 
 // Define datatypes
-#include "defines_types.hpp"
+#include "../core/defines_types.hpp"
 
 // !!! This implementation is custom designed for this project. !!!
 

@@ -87,7 +87,7 @@ bool fileExists(const std::string &_fileName)
 // Function is called with _filename
 // Returns the data in _buffer
 // Returns a bool to indicate success or failure
-bool re_fileToBufferV(const std::string &_fileName, std::vector<unsigned char> &_buffer)
+bool fileToBufferV(const std::string &_fileName, std::vector<unsigned char> &_buffer)
 {
     std::fstream fileStream(_fileName.c_str(), std::ios::in | std::ios::binary);
     if (fileStream.fail())

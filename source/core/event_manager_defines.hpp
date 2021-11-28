@@ -25,8 +25,7 @@
 #define EVENT_MANAGER_DEFINES_HPP
 
 #include "includes.hpp"
-#include "template_manager.hpp"
-
+#include "../templates/template_manager.hpp"
 
 enum class eEventType : uint32 { eventType_none = 0};
 

@@ -78,16 +78,16 @@
 // Project includes
 #include "defines.hpp"
 #include "defines_types.hpp"
-#include "thread_utils.hpp"
 #include "../core/file_paths.hpp"
 #include "../debug/debug_log.hpp"
 #include "../math/libMath.hpp"
+#include "../utils/thread_utils.hpp"
 
 // Template includes
-#include "template_bsp_tree.hpp"
-#include "template_engine.hpp"
-#include "template_linked_list.hpp"
-#include "template_manager.hpp"
-#include "template_queue.hpp"
+#include "../templates/template_bsp_tree.hpp"
+#include "../templates/template_engine.hpp"
+#include "../templates/template_linked_list.hpp"
+#include "../templates/template_manager.hpp"
+#include "../templates/template_queue.hpp"
 
 #endif // INCLUDES_HPP

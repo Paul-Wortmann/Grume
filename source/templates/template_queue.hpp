@@ -57,7 +57,7 @@
 #ifndef TEMPLATE_QUEUE_HPP
 #define TEMPLATE_QUEUE_HPP
 
-#include "defines_types.hpp"
+#include "../core/defines_types.hpp"
 
 template <typename T>
 class tcQueue

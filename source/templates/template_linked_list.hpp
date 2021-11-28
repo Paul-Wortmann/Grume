@@ -24,7 +24,7 @@
 #ifndef LINKED_LIST_HPP
 #define LINKED_LIST_HPP
 
-#include "defines_types.hpp"
+#include "../core/defines_types.hpp"
 
 // !!! This implementation is custom designed for this project. !!!
 
