@@ -5,10 +5,15 @@
 
 <game>
     <ui>ui_001.txt</ui>
-    <#map>test_1_town_1_001.txt</map>
-    <map>town_1_001.txt</map>
+    <#map>town_1_001.txt</map>
+    <map>cave_1_001.txt</map>
+    <#map>cave_1_002.txt</map>
+    <#map>cave_1_003.txt</map>
+    <#map>cemetery_1_001.txt</map>
+    <#map>crypt_1_001.txt</map>
     <#map>dungeon_1_001.txt</map>
     <#map>dungeon_1_002.txt</map>
+    
     <player>male_base_1_001.txt</player>
     <quest>quest_list_1_001.txt</quest>
 </game>

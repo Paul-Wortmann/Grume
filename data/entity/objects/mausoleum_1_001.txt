@@ -4,19 +4,20 @@
     <model>objects/mausoleum_1_001.obj</model>
     <material>objects/building_1_001.txt</material>
 
-    <position>0.0 0.0 -0.5</position>
+    <position>-0.5 0.0 -0.5</position>
     <scale>1.0 1.0 1.0</scale>
     <rotation>0.0 0.0 0.0</rotation>
 
     <collision>
-        <collision_size>7</collision_size>
-        <collision_data>0 1 1 1 1 1 0</collision_data>
-        <collision_data>0 1 1 1 1 1 0</collision_data>
-        <collision_data>0 1 1 1 1 1 0</collision_data>
-        <collision_data>0 1 1 1 1 1 0</collision_data>
-        <collision_data>0 1 1 1 1 1 0</collision_data>
-        <collision_data>0 1 1 1 1 1 0</collision_data>
-        <collision_data>0 1 1 1 1 1 0</collision_data>
+        <collision_size>8</collision_size>
+        <collision_data>0 1 1 1 1 1 1 0</collision_data>
+        <collision_data>0 1 1 1 1 1 1 0</collision_data>
+        <collision_data>0 1 1 1 1 1 1 0</collision_data>
+        <collision_data>0 1 1 1 1 1 1 0</collision_data>
+        <collision_data>0 1 1 1 1 1 1 0</collision_data>
+        <collision_data>0 1 1 1 1 1 1 0</collision_data>
+        <collision_data>0 1 1 1 1 1 1 0</collision_data>
+        <collision_data>0 1 1 1 1 1 1 0</collision_data>
     </collision>
 
 </entity>

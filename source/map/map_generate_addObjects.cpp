@@ -477,6 +477,9 @@ void cMapManager::m_addObjectEntities(sMap*& _map)
                                         tEntity->owner = eEntityOwner::ownerMap;
                                         tEntity->type  = eEntityType::entityTypeObject;
                                         tEntity->position = glm::vec3(static_cast<float32>(w) + tp - xo, y_pos, static_cast<float32>(h) + tp - yo);
+                                        uint32  randAngle = rand() % 360;
+                                        float32 randFloat = degToRad(randAngle);
+                                        tEntity->rotation.y = randFloat;
                                         m_entityManager->updateModelMatrix(tEntity);
 
                                         // Load audio file names

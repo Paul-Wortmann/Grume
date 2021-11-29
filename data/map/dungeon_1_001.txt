@@ -135,12 +135,12 @@
         # Type 3 (Toggle entity state, index from 1) : tile, event type, entity tile, state 1, state 2
 
         # up to town
-        <event>0541 1 0 1 0</event> # Town 1 tower entrance
-        <event>0542 1 0 1 0</event> # Town 1 tower entrance
+        <event>0541 1 00 2 0</event> # Town 1 tower 1 entrance
+        <event>0542 1 00 2 0</event> # Town 1 tower 1 entrance
 
         # Down to level 2
-        <event>0557 1 2 1 0</event> # Dungeon 1-2 entrance
-        <event>0558 1 2 1 0</event> # Dungeon 1-2 entrance
+        <event>0557 1 41 1 0</event> # Dungeon 1-2 entrance
+        <event>0558 1 41 1 0</event> # Dungeon 1-2 entrance
 
         # Spike traps 1
         <event>2149 2 2249 2 0</event>

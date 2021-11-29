@@ -5,7 +5,7 @@
         <width>40</width>
         <height>40</height>
         <biome>dungeon_001_biome.txt</biome>
-        <map_previous>1</map_previous>
+        <map_previous>40</map_previous>
         <#map_next>3</map_next>
         <map_next>1</map_next>
     </information>

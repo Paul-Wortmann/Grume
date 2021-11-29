@@ -8,36 +8,36 @@
     </information>
     <generation>
        <tiles>2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2</tiles>
-       <tiles>2 2 2 2 1 1 1 1 1 1 2 2 1 1 1 1 1 1 1 1 1 1 1 2 2 2 1 1 1 1 2 2</tiles>
-       <tiles>2 2 2 2 1 1 1 1 1 1 2 2 1 1 1 1 1 1 1 1 1 1 1 2 2 2 1 1 1 1 1 2</tiles>
-       <tiles>2 2 2 2 2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 1 1 1 1 1 1 2</tiles>
-       <tiles>2 1 1 2 2 2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 1 1 1 1 1 1 1 2</tiles>
-       <tiles>2 1 1 1 2 2 2 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 1 1 1 1 1 1 1 1 2</tiles>
-       <tiles>2 1 1 1 1 2 2 2 1 1 1 1 1 1 1 1 1 1 1 2 2 2 1 1 1 1 1 1 1 1 1 2</tiles>
-       <tiles>2 1 1 1 1 1 2 2 2 1 1 1 2 2 1 1 1 1 1 2 2 1 1 1 1 1 1 1 1 1 1 2</tiles>
-       <tiles>2 1 1 1 1 1 1 2 2 2 1 2 2 2 1 1 1 1 1 2 2 1 1 1 1 1 1 1 1 1 2 2</tiles>
-       <tiles>2 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 1 1 1 2 2 1 1 1 1 1 1 1 2 2 2 2</tiles>
-       <tiles>2 1 1 1 1 1 1 1 2 2 2 2 1 1 1 1 1 1 1 2 2 2 1 1 1 1 2 2 2 2 1 2</tiles>
-       <tiles>2 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 1 1 1 1 2 2 1 1 1 1 2 2 1 1 1 2</tiles>
-       <tiles>2 1 1 1 1 1 1 2 2 2 1 2 2 2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2</tiles>
-       <tiles>2 1 1 1 1 1 2 2 2 1 1 1 2 2 2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2</tiles>
-       <tiles>2 1 1 1 1 2 2 2 1 1 1 1 1 2 2 2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2</tiles>
-       <tiles>2 1 1 1 1 2 2 2 1 1 1 1 1 1 2 2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2</tiles>
-       <tiles>2 1 1 1 1 1 2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2</tiles>
+       <tiles>2 2 2 2 2 2 2 2 2 2 2 2 2 2 1 1 1 1 1 2 2 2 2 2 2 2 2 2 2 2 2 2</tiles>
+       <tiles>2 2 2 2 2 2 2 2 2 2 2 2 2 2 1 1 1 1 1 2 2 2 2 2 2 2 2 2 2 2 2 2</tiles>
+       <tiles>2 2 2 2 2 2 2 2 2 2 2 2 2 2 1 1 1 1 1 2 2 2 2 2 2 2 2 2 2 2 2 2</tiles>
+       <tiles>2 2 2 2 2 2 2 2 2 2 2 2 2 2 1 1 1 1 1 2 2 2 2 2 2 1 1 2 2 2 2 2</tiles>
+       <tiles>2 2 2 2 2 2 2 2 2 2 2 2 2 1 1 1 1 1 1 1 2 2 2 2 1 1 1 2 2 2 2 2</tiles>
+       <tiles>2 2 2 2 2 2 2 2 2 2 2 2 1 1 1 1 1 1 1 1 2 2 2 2 1 1 2 2 2 2 2 2</tiles>
+       <tiles>2 2 2 2 2 2 2 2 2 2 2 2 1 1 1 1 1 1 1 2 2 2 2 1 1 1 2 2 2 2 2 2</tiles>
+       <tiles>2 2 2 2 2 2 2 2 2 2 2 2 2 1 1 1 1 1 1 2 2 2 1 1 1 1 1 1 2 2 2 2</tiles>
+       <tiles>2 2 2 2 2 2 2 2 2 2 2 2 2 2 1 1 1 1 1 2 2 1 1 1 1 1 1 1 2 2 2 2</tiles>
+       <tiles>2 2 2 2 2 1 1 2 2 2 2 2 2 2 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2</tiles>
+       <tiles>2 2 2 2 2 1 1 2 2 2 2 2 2 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2</tiles>
+       <tiles>2 2 2 2 1 1 1 1 2 2 2 2 2 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2</tiles>
+       <tiles>2 2 2 1 1 1 1 1 2 2 2 2 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 1 1 2 2</tiles>
+       <tiles>2 2 2 1 1 1 1 1 2 2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 1 1 1 2 2</tiles>
        <tiles>2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2</tiles>
-       <tiles>2 2 2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 1 1 1 1 1 1 2 2 1 1 1 2</tiles>
-       <tiles>2 2 2 1 1 2 2 2 1 1 2 2 2 1 1 1 1 1 2 2 2 1 1 1 1 2 2 2 1 1 1 2</tiles>
-       <tiles>2 1 1 1 1 2 2 2 2 2 2 2 2 1 1 1 1 1 1 2 2 2 1 1 2 2 2 1 1 1 1 2</tiles>
-       <tiles>2 1 1 1 1 1 2 2 2 2 2 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 1 1 1 1 1 2</tiles>
-       <tiles>2 1 1 1 1 1 1 2 2 2 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 1 1 1 1 1 1 2</tiles>
-       <tiles>2 1 1 1 1 1 2 2 2 2 2 1 1 1 1 1 1 1 1 1 1 2 2 2 2 1 1 1 1 1 1 2</tiles>
-       <tiles>2 1 1 1 1 2 2 2 1 2 2 2 1 1 1 1 1 1 1 1 2 2 2 2 2 2 1 1 1 1 1 2</tiles>
-       <tiles>2 1 1 1 2 2 2 1 1 1 2 2 2 1 1 1 1 1 1 2 2 2 1 1 2 2 2 1 1 1 1 2</tiles>
-       <tiles>2 1 1 2 2 2 1 1 1 1 1 2 2 2 1 1 1 1 1 2 2 1 1 1 1 2 2 2 1 1 1 2</tiles>
-       <tiles>2 2 2 2 2 1 1 1 1 1 1 1 2 2 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 1 1 2</tiles>
-       <tiles>2 2 2 2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2</tiles>
-       <tiles>2 2 2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2</tiles>
-       <tiles>2 2 2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2</tiles>
+       <tiles>2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2</tiles>
+       <tiles>2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2</tiles>
+       <tiles>2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 1 1 1 1 1 1 1 1 1 1 1 1 1 2</tiles>
+       <tiles>2 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 1 1 1 1 1 1 2 2 2 1 1 2</tiles>
+       <tiles>2 2 2 2 1 1 1 1 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 1 1 1 2 2 2 2 2 2</tiles>
+       <tiles>2 2 2 2 2 1 1 1 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 1 1 1 2 2 2 2 2</tiles>
+       <tiles>2 2 2 2 2 2 1 1 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 1 1 1 1 2 2 2 2</tiles>
+       <tiles>2 2 2 2 2 2 1 1 1 2 2 2 1 1 1 1 1 2 2 2 2 2 2 2 2 1 1 1 2 2 2 2</tiles>
+       <tiles>2 2 2 2 2 2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 1 1 1 2 2 2</tiles>
+       <tiles>2 2 2 2 2 2 2 2 1 1 1 1 1 1 2 2 1 1 1 1 1 2 2 2 2 2 2 1 1 2 2 2</tiles>
+       <tiles>2 2 2 2 2 2 2 2 1 1 1 2 2 2 2 2 2 2 2 1 1 1 1 2 2 2 2 1 1 2 2 2</tiles>
+       <tiles>2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 1 1 1 1 1 2 2 1 1 1 2 2 2</tiles>
+       <tiles>2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 1 1 1 1 1 1 2 2 2 2</tiles>
+       <tiles>2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 1 1 1 1 1 1 2 2 2 2</tiles>
+       <tiles>2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2</tiles>
        <tiles>2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2</tiles>
     <generate>0</generate>
        <seed>0</seed>
@@ -47,7 +47,7 @@
 
     <player>
         # This is used when not warping from a prior map
-        <player_start_tile>034</player_start_tile>
+        <player_start_tile>1008</player_start_tile>
         <player_start_rotation>1.5708</player_start_rotation>
     </player>
 
@@ -55,11 +55,9 @@
         # These are used when warping from a prior map
         # Portal number, Tile location, player face direction
         # These are exit portals
-        <portal>1 0910 3.14159</portal> #Town 1 exit
-        <portal>2 0912 3.14159</portal> #Town 2 exit
-        <portal>3 0914 3.14159</portal> #Town 3 exit
-
-        <portal>4 0144 0.00000</portal> #Dragon Cave 1 exit
+        <portal>1 0547 3.14159</portal> # Town 1 exit
+        <portal>2 0112 3.14159</portal> # Cave 1-2 exit (Skeleton)
+        <portal>3 0572 3.14159</portal> # Cemetery 1 exit
     </portals>
     
     <events>
@@ -69,11 +67,15 @@
         # Type 3 (Toggle entity state, index from 1) : tile, event type, entity tile, state 1, state 2
 
         # To town
-        <event>0942 1 0 3 0</event> # Town 1 cave 1 entrance 1
-        <event>0944 1 0 4 0</event> # Town 1 cave 1 entrance 2
-        <event>0946 1 0 5 0</event> # Town 1 cave 1 entrance 3
-
-        <event>0080 1 5 1 0</event> # Dragon cave 1 entrance 1
+        <event>0514 1   0 1 0</event> # Town 1 cave 1 entrance 1
+        <event>0546 1   0 1 0</event> # Town 1 cave 1 entrance 1
+        <event>0578 1   0 1 0</event> # Town 1 cave 1 entrance 1
+        <event>0079 1  11 1 0</event> # Cave 1-2 entrance 1 (Skeleton)
+        <event>0080 1  11 1 0</event> # Cave 1-2 entrance 1 (Skeleton)
+        <event>0081 1  11 1 0</event> # Cave 1-2 entrance 1 (Skeleton)
+        <event>0541 1  20 1 0</event> # Cemetery 1 entrance 1
+        <event>0573 1  20 1 0</event> # Cemetery 1 entrance 1
+        <event>0605 1  20 1 0</event> # Cemetery 1 entrance 1
 
     </events>
 
@@ -100,17 +102,19 @@
 
     <objects>
         #tile number, database object name, index (0 == random), scale, y-rotation, obstacle, trigger tile
-      
-        <object>0974 test 1 1.0 3.14159 1 0</object> # Test - cave 1 entrance 1
-        <object>0976 test 1 1.0 3.14159 1 0</object> # Test - cave 1 entrance 2
-        <object>0978 test 1 1.0 3.14159 1 0</object> # Test - cave 1 entrance 3
+        <object>0544 test              1  1.0 1.5708  1 0</object> # Test - Town entrance 1
+        <object>0545 test              1  1.0 1.5708  1 0</object> # Test - Town entrance 1
 
-        <object>0048 test 1 1.0 0.00000 1 0</object> # Test - cave 2 entrance 1
+        <object>0574 test              1  1.0 1.5708  1 0</object> # Test - Cemetery entrance 1
+        <object>0575 test              1  1.0 1.5708  1 0</object> # Test - Cemetery entrance 1
+
+        <object>0016 test              1  1.0 0.0000  1 0</object> # Test - Cave 1-2 entrance 1
+        <object>0048 test              1  1.0 0.0000  1 0</object> # Test - Cave 1-2 entrance 1
     </objects>
 
     <npc_mobs>
         #npc number, scale max, scale min, prevalence
-        <npc_mob>skeleton 0.5 1.0 5</npc_mob> # skeleton
+        <#npc_mob>skeleton 0.5 1.0 5</npc_mob> # skeleton
         <#npc_mob>bat 0.5 1.0 5</npc_mob> # bat
     </npc_mobs>
 

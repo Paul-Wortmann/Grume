@@ -63,13 +63,13 @@
     <object>castle objects/castle_1_001.txt</object>
     
     # Cemetery_object
-    <object>cemetery_object objects/cemetery_object_1_001.txt<object>
-    <object>cemetery_object objects/cemetery_object_2_001.txt<object>
-    <object>cemetery_object objects/cemetery_object_3_001.txt<object>
-    <object>cemetery_object objects/cemetery_object_4_001.txt<object>
-    <object>cemetery_object objects/cemetery_object_5_001.txt<object>
-    <object>cemetery_object objects/cemetery_object_6_001.txt<object>
-    <object>cemetery_object objects/cemetery_object_7_001.txt<object>
+    <object>cemetery_object objects/cemetery_object_1_001.txt<object> # Stone casket 1
+    <object>cemetery_object objects/cemetery_object_2_001.txt<object> # Stone casket 2
+    <object>cemetery_object objects/cemetery_object_3_001.txt<object> # Pillar
+    <object>cemetery_object objects/cemetery_object_4_001.txt<object> # cross
+    <object>cemetery_object objects/cemetery_object_5_001.txt<object> # flat tomb stone
+    <object>cemetery_object objects/cemetery_object_6_001.txt<object> # fat tomb stone
+    <object>cemetery_object objects/cemetery_object_7_001.txt<object> # tomb with pillar
     <object>cemetery_object objects/cemetery_object_8_002.txt<object> # Gate
 
     # Chest
@@ -137,6 +137,7 @@
     <object>fence_metal objects/fence_metal_1_002.txt<object>
     <object>fence_metal objects/fence_metal_1_003.txt</object>
     <object>fence_metal objects/fence_metal_1_004.txt</object>
+    <object>fence_metal objects/fence_metal_1_005.txt</object>
 
     # Gib
     <object>gib objects/gibs_1_001.txt<object> # heart
