@@ -26,22 +26,6 @@
 // Used to add an stairs to the map
 void cMapManager::m_addStairsEntity(sMap*& _map)
 {
-    std::uint32_t mapPrevious = 0; // previous map number
-    std::uint32_t mapNext     = 0; // next     map number
-
-    // Get the map numbers for use with stair event generation
-    cXML xmlMapFile;
-    xmlMapFile.load(FILE_PATH_MAP + _map->fileName);
-    if (xmlMapFile.lineCount() > 0)
-    {
-        // Get data
-        mapPrevious = xmlMapFile.getInteger("<map_previous>");
-        mapNext     = xmlMapFile.getInteger("<map_next>");
-
-        // Clean up
-        xmlMapFile.free();
-    }
-    
     bool stairsUp    = false; // set if placed
     bool stairsDown  = false; // set if placed
     std::uint32_t ts = 4; // target space
@@ -85,8 +69,8 @@ void cMapManager::m_addStairsEntity(sMap*& _map)
                 _map->tile[t + 2 + (_map->width * 3)].base = eTileBase::tileNone;
 
                 // Generate events
-                m_addMapEvent(_map, t + 1 + (_map->width * 4), 1, mapPrevious, 2, 0);
-                m_addMapEvent(_map, t + 2 + (_map->width * 4), 1, mapPrevious, 2, 0);
+                m_addMapEvent(_map, t + 1 + (_map->width * 4), 1, _map->map_previous, _map->map_previous_portal, 0);
+                m_addMapEvent(_map, t + 2 + (_map->width * 4), 1, _map->map_previous, _map->map_previous_portal, 0);
 
                 // Generate portal
                 m_addMapPortal(_map, 1, t + 1 + (_map->width * 5), 0.0000);
@@ -123,8 +107,8 @@ void cMapManager::m_addStairsEntity(sMap*& _map)
                 _map->tile[t + 3 + (_map->width * 2)].base = eTileBase::tileNone;
 
                 // Generate events
-                m_addMapEvent(_map, t + 4 + (_map->width * 1), 1, mapPrevious, 2, 0);
-                m_addMapEvent(_map, t + 4 + (_map->width * 2), 1, mapPrevious, 2, 0);
+                m_addMapEvent(_map, t + 4 + (_map->width * 1), 1, _map->map_previous, _map->map_previous_portal, 0);
+                m_addMapEvent(_map, t + 4 + (_map->width * 2), 1, _map->map_previous, _map->map_previous_portal, 0);
 
                 // Generate portal
                 m_addMapPortal(_map, 1, t + 5 + (_map->width * 1), 0.0000);
@@ -170,8 +154,8 @@ void cMapManager::m_addStairsEntity(sMap*& _map)
                 _map->tile[t + 2 + (_map->width * 3)].base = eTileBase::tileNone;
 
                 // Generate events
-                m_addMapEvent(_map, t + 1 + (_map->width * 4), 1, mapNext, 1, 0);
-                m_addMapEvent(_map, t + 2 + (_map->width * 4), 1, mapNext, 1, 0);
+                m_addMapEvent(_map, t + 1 + (_map->width * 4), 1, _map->map_next, _map->map_next_portal, 0);
+                m_addMapEvent(_map, t + 2 + (_map->width * 4), 1, _map->map_next, _map->map_next_portal, 0);
 
                 // Generate portal
                 m_addMapPortal(_map, 2, t + 1 + (_map->width * 5), 0.0000);
@@ -208,8 +192,8 @@ void cMapManager::m_addStairsEntity(sMap*& _map)
                 _map->tile[t + 3 + (_map->width * 2)].base = eTileBase::tileNone;
 
                 // Generate events
-                m_addMapEvent(_map, t + 4 + (_map->width * 1), 1, mapNext, 1, 0);
-                m_addMapEvent(_map, t + 4 + (_map->width * 2), 1, mapNext, 1, 0);
+                m_addMapEvent(_map, t + 4 + (_map->width * 1), 1, _map->map_next, _map->map_next_portal, 0);
+                m_addMapEvent(_map, t + 4 + (_map->width * 2), 1, _map->map_next, _map->map_next_portal, 0);
 
                 // Generate portal
                 m_addMapPortal(_map, 2, t + 5 + (_map->width * 1), 0.0000);
@@ -256,8 +240,8 @@ void cMapManager::m_addStairsEntity(sMap*& _map)
                 _map->tile[t + 2 + (_map->width * 3)].base = eTileBase::tileNone;
 
                 // Generate events
-                m_addMapEvent(_map, t + 1 + (_map->width * 4), 1, mapPrevious, 2, 0);
-                m_addMapEvent(_map, t + 2 + (_map->width * 4), 1, mapPrevious, 2, 0);
+                m_addMapEvent(_map, t + 1 + (_map->width * 4), 1, _map->map_previous, _map->map_previous_portal, 0);
+                m_addMapEvent(_map, t + 2 + (_map->width * 4), 1, _map->map_previous, _map->map_previous_portal, 0);
 
                 // Generate portal
                 m_addMapPortal(_map, 1, t + 1 + (_map->width * 5), 0.0000);
@@ -294,8 +278,8 @@ void cMapManager::m_addStairsEntity(sMap*& _map)
                 _map->tile[t + 3 + (_map->width * 2)].base = eTileBase::tileNone;
 
                 // Generate events
-                m_addMapEvent(_map, t + 4 + (_map->width * 1), 1, mapPrevious, 2, 0);
-                m_addMapEvent(_map, t + 4 + (_map->width * 2), 1, mapPrevious, 2, 0);
+                m_addMapEvent(_map, t + 4 + (_map->width * 1), 1, _map->map_previous, _map->map_previous_portal, 0);
+                m_addMapEvent(_map, t + 4 + (_map->width * 2), 1, _map->map_previous, _map->map_previous_portal, 0);
 
                 // Generate portal
                 m_addMapPortal(_map, 1, t + 5 + (_map->width * 1), 0.0000);
@@ -341,8 +325,8 @@ void cMapManager::m_addStairsEntity(sMap*& _map)
                 _map->tile[t + 2 + (_map->width * 3)].base = eTileBase::tileNone;
 
                 // Generate events
-                m_addMapEvent(_map, t + 1 + (_map->width * 4), 1, mapNext, 1, 0);
-                m_addMapEvent(_map, t + 2 + (_map->width * 4), 1, mapNext, 1, 0);
+                m_addMapEvent(_map, t + 1 + (_map->width * 4), 1, _map->map_next, _map->map_next_portal, 0);
+                m_addMapEvent(_map, t + 2 + (_map->width * 4), 1, _map->map_next, _map->map_next_portal, 0);
 
                 // Generate portal
                 m_addMapPortal(_map, 2, t + 1 + (_map->width * 5), 0.0000);
@@ -377,19 +361,13 @@ void cMapManager::m_addStairsEntity(sMap*& _map)
                 _map->tile[t + 2 + (_map->width * 2)].base = eTileBase::tileNone;
 
                 // Generate events
-                m_addMapEvent(_map, t + 4 + (_map->width * 1), 1, mapNext, 1, 0);
-                m_addMapEvent(_map, t + 4 + (_map->width * 2), 1, mapNext, 1, 0);
+                m_addMapEvent(_map, t + 4 + (_map->width * 1), 1, _map->map_next, _map->map_next_portal, 0);
+                m_addMapEvent(_map, t + 4 + (_map->width * 2), 1, _map->map_next, _map->map_next_portal, 0);
 
                 // Generate portal
                 m_addMapPortal(_map, 2, t + 5 + (_map->width * 1), 0.0000);
             }
         }
     }
-    
-    
-//    eRoomType::roomTypeStairwell
-//        <map_previous>1</map_previous>
-//        <map_next>3</map_next>
-
 }
 

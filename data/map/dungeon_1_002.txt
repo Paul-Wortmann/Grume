@@ -6,8 +6,10 @@
         <height>40</height>
         <biome>dungeon_001_biome.txt</biome>
         <map_previous>40</map_previous>
-        <#map_next>3</map_next>
-        <map_next>1</map_next>
+        <map_previous>1</map_previous_portal>
+        <map_next>40</map_next>
+        <map_next>1</map_next_portal>
+        <#map_next>42</map_next>
     </information>
 
     <generation>

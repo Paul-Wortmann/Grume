@@ -89,6 +89,7 @@
         # These are exit portals
         <portal>1 2108 1.5723</portal> #Cave 1 exit
         <portal>2 2059 1.5723</portal> #Dungeon 1 exit
+        <portal>3 0736 1.5723</portal> #Dungeon 2 exit
     </portals>
     
     <events>
@@ -100,6 +101,10 @@
         <event>1994 1 40 1 0</event> # Dungeon 1 entrance
         <event>2058 1 40 1 0</event> # Dungeon 1 entrance
         <event>2122 1 40 1 0</event> # Dungeon 1 entrance
+        <event>0671 1 50 1 0</event> # Dungeon 2 entrance
+        <event>0672 1 50 1 0</event> # Dungeon 2 entrance
+        <event>0673 1 50 1 0</event> # Dungeon 2 entrance
+
     </events>
 
     <npc_mobs>

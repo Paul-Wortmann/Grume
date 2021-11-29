@@ -161,18 +161,24 @@ void cMapManager::load(const std::string &_fileName)
         gLogWrite(LOG_INFO, "Loading map: " + xmlMapFile.getString("<name>"), __FILE__, __LINE__, __FUNCTION__);
 
         // Get the data from the XML file
-        std::string name               = xmlMapFile.getString("<name>");
-        std::uint32_t      width       = xmlMapFile.getInteger("<width>");
-        std::uint32_t      height      = xmlMapFile.getInteger("<height>");
-        std::string        biomeFile   = xmlMapFile.getString("<biome>");
-        std::uint32_t      generate    = xmlMapFile.getInteger("<generate>");
-        std::uint32_t      seed        = xmlMapFile.getInteger("<seed>");
-        std::uint32_t      algorithm   = xmlMapFile.getInteger("<algorithm>");
-        std::uint32_t      wall_width  = xmlMapFile.getInteger("<wall_width>");
-        std::string        musicString = xmlMapFile.getString("<music>");
+        std::string   name               = xmlMapFile.getString("<name>");
+        std::uint32_t width       = xmlMapFile.getInteger("<width>");
+        std::uint32_t height      = xmlMapFile.getInteger("<height>");
+        std::string   biomeFile   = xmlMapFile.getString("<biome>");
+        std::uint32_t generate    = xmlMapFile.getInteger("<generate>");
+        std::uint32_t seed        = xmlMapFile.getInteger("<seed>");
+        std::uint32_t algorithm   = xmlMapFile.getInteger("<algorithm>");
+        std::uint32_t wall_width  = xmlMapFile.getInteger("<wall_width>");
+        std::string   musicString = xmlMapFile.getString("<music>");
 
-        std::uint32_t      player_tile = xmlMapFile.getInteger("<player_start_tile>");
-        float32            player_rot  = xmlMapFile.getFloat("<player_start_rotation>");
+        std::uint32_t player_tile = xmlMapFile.getInteger("<player_start_tile>");
+        float32       player_rot  = xmlMapFile.getFloat("<player_start_rotation>");
+
+        std::uint32_t map_previous        = xmlMapFile.getInteger("<map_previous>");
+        std::uint32_t map_previous_portal = xmlMapFile.getInteger("<map_previous_portal>");
+        std::uint32_t map_next            = xmlMapFile.getInteger("<map_next>");
+        std::uint32_t map_next_portal     = xmlMapFile.getInteger("<map_next_portal>");
+
 
         // Create and populate the map data structure with the loaded XML data
         if (m_currentMap == nullptr)
@@ -180,7 +186,7 @@ void cMapManager::load(const std::string &_fileName)
             m_currentMap = getNew();
         }
         
-        // Generate tiles
+        // Map and tile information
         m_currentMap->fileName          = _fileName;
         m_currentMap->name              = name;
         m_currentMap->width             = width;
@@ -189,6 +195,12 @@ void cMapManager::load(const std::string &_fileName)
         m_currentMap->tile              = new sMapTile[m_currentMap->numTiles];
         m_currentMap->playerStartTile   = player_tile;
         m_currentMap->playerStartDir    = player_rot;
+        
+        // Previous and next map information
+        m_currentMap->map_previous        = map_previous;
+        m_currentMap->map_previous_portal = map_previous_portal;
+        m_currentMap->map_next            = map_previous;
+        m_currentMap->map_next_portal     = map_previous_portal;
 
         // Map generation data
         m_currentMap->genData.generate  = (generate > 0);

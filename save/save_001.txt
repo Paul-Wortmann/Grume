@@ -2,9 +2,9 @@
 <save_file>
 
     <information>
-        <current_map>cave_1_001</current_map>
-        <current_position>499</current_position>
-        <current_rotation>1.57079</current_rotation>
+        <current_map>town_1_001</current_map>
+        <current_position>2272</current_position>
+        <current_rotation>-3.57628e-06</current_rotation>
     </information>
 
     <player>
@@ -36,8 +36,8 @@
     </quest>
 
     <map_data>
-        <map>cave_1_001 0</map>
-        <map>cave_1_002 0</map>
+        <map>dungeon_2_001 1638229349</map>
+        <map>town_1_001 0</map>
     </map_data>
 
 </save_file>
