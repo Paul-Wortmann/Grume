@@ -5,7 +5,7 @@
         <width>48</width>
         <height>48</height>
         <biome>dungeon_002_biome.txt</biome>
-        <map_previous>00</map_previous>
+        <map_previous>70</map_previous>
         <map_previous_portal>3</map_previous_portal>
         <map_next>51</map_next>
         <map_next_portal>1</map_next_portal>

@@ -83,9 +83,9 @@ void cGameEngine::game_load(const uint32 &_slotNum)
     if (xmlSaveGameFile.lineCount() > 0)
     {
         // Information
-        string currentMap      = xmlSaveGameFile.getString("<current_map>");
-        uint32 currentPosition = xmlSaveGameFile.getInteger("<current_position>");
-        float  currentRotation = xmlSaveGameFile.getFloat("<current_rotation>");
+        string  currentMap      = xmlSaveGameFile.getString("<current_map>");
+        uint32  currentPosition = xmlSaveGameFile.getInteger("<current_position>");
+        float32 currentRotation = xmlSaveGameFile.getFloat("<current_rotation>");
         
         // Player
         sEntity* player = playerManager.getPlayerEntity();

@@ -3,8 +3,8 @@
 
     <information>
         <current_map>town_1_001</current_map>
-        <current_position>5050</current_position>
-        <current_rotation>1.5708</current_rotation>
+        <current_position>2102</current_position>
+        <current_rotation>-1.5708</current_rotation>
     </information>
 
     <player>
@@ -36,7 +36,8 @@
     </quest>
 
     <map_data>
-        <map>town_1_001 0</map>
+        <map>town_1_001 15</map>
+        <map>cave_1_003 1</map>
     </map_data>
 
 </save_file>

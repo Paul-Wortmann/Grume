@@ -34,16 +34,16 @@
        <tiles>2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 5 5 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 1 1 1 1 5 5 1 1 1 2 2 2</tiles>
        <tiles>2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 5 5 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 1 1 1 1 5 5 1 1 1 2 2 2</tiles>
        <tiles>2 2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 5 5 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 1 1 1 1 5 5 1 1 1 1 2 2</tiles>
+       <tiles>2 2 2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 5 5 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 1 1 1 1 5 5 1 1 1 1 1 2</tiles>
+       <tiles>2 2 2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 5 5 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 1 1 1 1 5 5 1 1 1 1 1 2</tiles>
        <tiles>2 2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 5 5 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 1 1 1 1 5 5 1 1 1 1 1 2</tiles>
-       <tiles>2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 5 5 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 1 1 1 1 5 5 1 1 1 1 1 2</tiles>
-       <tiles>2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 5 5 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 1 1 1 1 5 5 1 1 1 1 1 2</tiles>
-       <tiles>2 2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 5 5 5 5 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 1 1 1 1 5 5 1 1 1 1 1 2</tiles>
-       <tiles>2 2 2 1 1 1 1 1 1 1 1 1 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 7 7 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 1 1 2</tiles>
-       <tiles>2 2 2 1 1 1 1 1 1 1 1 1 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 7 7 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 1 1 2</tiles>
-       <tiles>2 2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 5 5 5 5 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 1 1 5 5 1 1 1 1 1 1 1 2</tiles>
-       <tiles>2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 5 5 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 1 1 5 5 1 1 1 1 1 1 1 2</tiles>
-       <tiles>2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 5 5 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 1 1 5 5 1 1 1 1 1 1 2 2</tiles>
-       <tiles>2 2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 5 5 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 1 1 5 5 1 1 1 1 1 1 2 2</tiles>
+       <tiles>2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 5 5 5 5 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 1 1 1 1 5 5 1 1 1 1 1 2</tiles>
+       <tiles>2 1 1 1 1 1 1 1 1 1 1 1 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 7 7 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 1 1 2</tiles>
+       <tiles>2 1 1 1 1 1 1 1 1 1 1 1 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 7 7 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 1 1 2</tiles>
+       <tiles>2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 5 5 5 5 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 1 1 5 5 1 1 1 1 1 1 1 2</tiles>
+       <tiles>2 2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 5 5 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 1 1 5 5 1 1 1 1 1 1 1 2</tiles>
+       <tiles>2 2 2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 5 5 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 1 1 5 5 1 1 1 1 1 1 2 2</tiles>
+       <tiles>2 2 2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 5 5 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 1 1 5 5 1 1 1 1 1 1 2 2</tiles>
        <tiles>2 2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 5 5 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 1 1 5 5 1 1 1 1 1 1 1 2</tiles>
        <tiles>2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 5 5 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 1 1 5 5 1 1 1 1 1 1 1 2</tiles>
        <tiles>2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 5 5 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 2 2 2</tiles>
@@ -72,15 +72,15 @@
        <tiles>2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 1 1 1 2 2 2 2 1 1 1 2 2 1 1 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 0 0 0 0 0 0 0 2 2 2 2 2 2 2 2 2 2 2 2</tiles>
        <tiles>2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2</tiles>
        <generate>0</generate>
-       <seed>0</seed>
+       <seed>15</seed> # 15
        <algorithm>1</algorithm>
        <wall_width>1</wall_width>
     </generation>
 
     <player>
         # This is used when not warping from a prior map
-        <player_start_tile>2030</player_start_tile>
-        <player_start_rotation>1.5708</player_start_rotation>
+        <player_start_tile>2103</player_start_tile>
+        <player_start_rotation>-1.5708</player_start_rotation>
     </player>
 
     <portals>
@@ -88,22 +88,18 @@
         # Portal number, Tile location, player face direction
         # These are exit portals
         <portal>1 2108 1.5723</portal> #Cave 1 exit
-        <portal>2 2059 1.5723</portal> #Dungeon 1 exit
-        <portal>3 0736 1.5723</portal> #Dungeon 2 exit
+        <portal>2 2051 1.5723</portal> #Cave 2 exit
     </portals>
     
     <events>
         # Tile location, type, data 1, data 2
         # Type 1 (Warp to map) -> tile, event type, map number, portal number, NA
-        <event>2045 1 10 1 0</event> # Cave 1 entrance
-        <event>2109 1 10 1 0</event> # Cave 1 entrance
-        <event>2173 1 10 1 0</event> # Cave 1 entrance
-        <event>1994 1 40 1 0</event> # Dungeon 1 entrance
-        <event>2058 1 40 1 0</event> # Dungeon 1 entrance
-        <event>2122 1 40 1 0</event> # Dungeon 1 entrance
-        <event>0671 1 50 1 0</event> # Dungeon 2 entrance
-        <event>0672 1 50 1 0</event> # Dungeon 2 entrance
-        <event>0673 1 50 1 0</event> # Dungeon 2 entrance
+        <event>2045 1 10 1 0</event> # Cave 1-1 entrance 1
+        <event>2109 1 10 1 0</event> # Cave 1-1 entrance 1
+        <event>2173 1 10 1 0</event> # Cave 1-1 entrance 1
+        <event>1986 1 60 1 0</event> # Cave 2-1 entrance 3
+        <event>2050 1 60 1 0</event> # Cave 2-1 entrance 3
+        <event>2114 1 60 1 0</event> # Cave 2-1 entrance 3
 
     </events>
 
@@ -137,6 +133,9 @@
 
         <object>2110 test              1  1.0 1.5708 1 0</object> # Cave 1 entrance 1
         <object>2111 test              1  1.0 1.5708 1 0</object> # Cave 1 entrance 1
+
+        <object>2048 test              1  1.0 1.5708 1 0</object> # Cave 2 entrance 1
+        <object>2049 test              1  1.0 1.5708 1 0</object> # Cave 2 entrance 1
 
         # town central
         <object>2032 bridge            1  1.0 0.0000 1 0</object> # Bridge
@@ -172,11 +171,6 @@
         <object>2928 river 0 1.0 0.0000 0 0</object> # River
         <object>3376 river 0 1.0 0.0000 0 0</object> # River
         <object>3824 river 0 1.0 0.0000 0 0</object> # River
-
-        # Broken tower ruins
-        <object>2054 tower       1 1.0 3.1416 1 0</object> # Tower
-        <object>0416 tower       1 1.0 1.5708 1 0</object> # Tower
-        <object>0633 tower       1 1.0 1.5708 1 0</object> # Tower
 
     </objects>
 

@@ -161,7 +161,7 @@ void cMapManager::load(const std::string &_fileName)
         gLogWrite(LOG_INFO, "Loading map: " + xmlMapFile.getString("<name>"), __FILE__, __LINE__, __FUNCTION__);
 
         // Get the data from the XML file
-        std::string   name               = xmlMapFile.getString("<name>");
+        std::string   name        = xmlMapFile.getString("<name>");
         std::uint32_t width       = xmlMapFile.getInteger("<width>");
         std::uint32_t height      = xmlMapFile.getInteger("<height>");
         std::string   biomeFile   = xmlMapFile.getString("<biome>");
@@ -216,6 +216,15 @@ void cMapManager::load(const std::string &_fileName)
             m_currentMap->genData.seed = mapList[m_currentMap->name];
         }
         
+        // If the map does not have a seed, generate one
+        if (m_currentMap->genData.seed == 0)
+        {
+            m_currentMap->genData.seed = rand();
+        }
+        
+        // Use the seed
+        srand(m_currentMap->genData.seed);
+        
         // Load the biome from file
         if (biomeFile.length() > 3)
         {
@@ -234,7 +243,6 @@ void cMapManager::load(const std::string &_fileName)
                 tiles += " ";
             }
             tiles += "0";
-            //std::cout << tiles << std::endl;
         }
         else
         {
@@ -783,8 +791,13 @@ void cMapManager::load(const std::string &_fileName)
         }
         else // Find a suitable start tile
         {
-            // First try the center tile
-            player_tile = (width * height / 2) + (width / 2);
+            // If player start tile has not been specified, try the center tile
+            if (m_currentMap->playerStartTile == 0)
+            {
+                player_tile = (width * height / 2) + (width / 2);
+            }
+
+            // Check if the start tile is valid
             if ((m_currentMap->tile[player_tile].base == eTileBase::tileFloor) ||
                 (m_currentMap->tile[player_tile].base == eTileBase::tileFloorPath))
             {
