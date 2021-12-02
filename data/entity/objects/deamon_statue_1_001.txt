@@ -1,11 +1,11 @@
 ﻿<?xml version = "1.0" encoding = "UTF-8" ?>
 <entity>
-    <name>ruin_arch_1_001</name>
-    <model>objects/ruin_arch_1_001.obj</model>
+    <name>deamon_statue_1_001</name>
+    <model>objects/deamon_statue_1_001.obj</model>
     <material>objects/ruin_material_1_001.txt</material>
 
     <position>0.0 0.0 0.0</position>
-    <scale>1.0 1.0 1.0</scale>
+    <scale>2.0 2.0 2.0</scale>
     <rotation>0.0 0.0 0.0</rotation>
     
 ﻿﻿    <collision>

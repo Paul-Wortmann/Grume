@@ -144,8 +144,13 @@
         <object>0633 tower       1 1.0 1.5708 1 0</object> # Tower
         
         # ruins
-        <#object>2080 statue      1 1.0 1.5708 1 0</object> # Statue
-        <object>2026 ruin      1 1.0 4.7124 1 0</object> # Ruin arch 1
+        <object>2318 statue      2 1.0 1.5708 1 0</object> # Statue deamon - west
+        <object>1742 statue      4 1.0 1.5708 1 0</object> # Statue deamon - west
+
+        <object>0860 statue      1 1.0 0.0000 1 0</object> # Statue - north
+        <object>0867 statue      1 1.0 0.0000 1 0</object> # Statue - north
+
+        <object>2032 ruin      1 1.0 4.7124 1 0</object> # Ruin arch 1
         
 
     </objects>

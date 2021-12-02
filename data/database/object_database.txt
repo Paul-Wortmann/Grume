@@ -212,6 +212,9 @@
 
     # Statue
     <object>statue objects/medieval_statue_1_001.txt</object>
+    <object>statue objects/deamon_statue_1_001.txt</object>
+    <object>statue objects/deamon_statue_1_002.txt</object>
+    <object>statue objects/deamon_statue_1_003.txt</object>
 
     # Switch
     <object>switch objects/dungeon_switch_1_001.txt</object>
