@@ -4,16 +4,14 @@
     <model>objects/deamon_statue_1_003.obj</model>
     <material>objects/ruin_material_1_001.txt</material>
 
-    <position>0.0 0.0 0.0</position>
+    <position>-0.5 0.0 -0.5</position>
     <scale>2.0 2.0 2.0</scale>
     <rotation>0.0 0.0 0.0</rotation>
-    
-﻿﻿    <collision>
-        <collision_size>4</collision_size>
-        <collision_data>1 1 1 1</collision_data>
-        <collision_data>1 1 1 1</collision_data>
-        <collision_data>1 1 1 1</collision_data>
-        <collision_data>1 1 1 1</collision_data>
+
+    <collision>
+        <collision_size>2</collision_size>
+        <collision_data>1 1</collision_data>
+        <collision_data>1 1</collision_data>
     </collision>
 
 </entity>

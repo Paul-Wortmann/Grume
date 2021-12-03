@@ -26,10 +26,9 @@
 void cMapManager::m_addCollisionData(sMap*& _map, sEntity*& _entity, const std::uint32_t &_tile, const float32 &_rotation)
 {
     
-/*
     if ((_entity->collision != nullptr) && (_entity->collision->data != nullptr))
     {
-
+/*
         if ((_entity->name.find("ruin") != std::string::npos))
         {
             std::cout << "Adding collision for: " << _entity->name << std::endl;
