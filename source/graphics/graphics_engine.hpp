@@ -122,7 +122,7 @@ class cGraphicsEngine
         uint32             m_renderBufferSize_w = 1024;
         uint32             m_renderBufferSize_h = 1024;
         bool               m_wireframe          = false;
-        bool               m_basicRender        = false;
+        bool               m_basicRender        = true;
         bool               m_loadRender         = true;
         bool               m_animation          = true;
         
