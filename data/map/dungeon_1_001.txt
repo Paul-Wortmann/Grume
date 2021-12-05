@@ -202,7 +202,7 @@
 
     <npc_mobs>
         #npc name, scale max, scale min, prevalence
-        <npc_mob>bat 0.5 1.0 2</npc_mob> # bat
+        <#npc_mob>bat 0.5 1.0 2</npc_mob> # bat
         <npc_mob>spider 0.5 1.0 5</npc_mob> # spider
     </npc_mobs>
 

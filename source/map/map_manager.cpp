@@ -154,6 +154,10 @@ void cMapManager::load(const std::string &_fileName)
     // Unload the current map
     unload();
     
+    // Stop pathing
+    m_playerManager->stopPathing();
+    
+    // Load the map
     cXML xmlMapFile;
     xmlMapFile.load(FILE_PATH_MAP + _fileName);
     if (xmlMapFile.lineCount() > 0)
@@ -199,8 +203,8 @@ void cMapManager::load(const std::string &_fileName)
         // Previous and next map information
         m_currentMap->map_previous        = map_previous;
         m_currentMap->map_previous_portal = map_previous_portal;
-        m_currentMap->map_next            = map_previous;
-        m_currentMap->map_next_portal     = map_previous_portal;
+        m_currentMap->map_next            = map_next;
+        m_currentMap->map_next_portal     = map_next_portal;
 
         // Map generation data
         m_currentMap->genData.generate  = (generate > 0);

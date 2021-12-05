@@ -11,6 +11,7 @@
         <map>040 dungeon_1_001.txt</map>
         <map>041 dungeon_1_002.txt</map>
         <map>050 dungeon_2_001.txt</map>
+        <map>051 dungeon_2_002.txt</map>
         <map>060 cave_2_001.txt</map>
         <map>070 ruins_1_001.txt</map>
 
