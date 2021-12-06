@@ -97,4 +97,13 @@
         <state_animation>0.0 0.333333 0</state_animation> # frame start, frame end, repeat (bool)
     </state>
 
+    <physics>
+        # 0: static, 1: dynamic
+        <body_type>0</body_type>
+        # 0: aabb, 1: aabc
+        <volume_type>0</volume_type>
+        # aabb: x, y, z  aabc: r, NA, h
+        <volume_dimentions>1.0f 1.0f 1.0f</volume_dimentions>
+    </physics>
+
 </player>

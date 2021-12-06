@@ -89,18 +89,15 @@ struct sEntity
     glm::mat4           modelMatrix          = glm::mat4(1);
     sEntityMaterial*    material             = nullptr;
 
-    // Physics
-    //sEntityPhysics* physics  = nullptr;
-    
     // Collision
     sEntityCollision*   collision            = nullptr;
 
     // State
-    uint32        stateCount           = 0;
-    uint32        stateInitial         = 0;
-    uint32        stateCurrent         = 0;
-    sEntityState* state                = nullptr;
-    bool          terminate            = false;
+    uint32              stateCount           = 0;
+    uint32              stateInitial         = 0;
+    uint32              stateCurrent         = 0;
+    sEntityState*       state                = nullptr;
+    bool                terminate            = false;
 
     // AI
     sEntityAI*          ai                   = nullptr;
@@ -110,15 +107,18 @@ struct sEntity
     
     // Interaction
     sEntityInteraction* interaction          = nullptr;
-    uint32       triggerTile          = 0; // Trigger tile on interaction, 0 for none
+    uint32              triggerTile          = 0; // Trigger tile on interaction, 0 for none
 
     // Pathing
-    sEntityMovement* movement             = nullptr;
+    sEntityMovement*    movement             = nullptr;
 
+    // Physics
+    sEntityPhysics*     physics              = nullptr;
+    
     // Screen shake on death
-    uint32       deathShakeChance     = 100;
-    uint32       deathShakeDuration   = 2000;
-    float32      deathShakeForce      = 0.5f;
+    uint32              deathShakeChance     = 100;
+    uint32              deathShakeDuration   = 2000;
+    float32             deathShakeForce      = 0.5f;
 };
 
 #endif //ENTITY_HPP

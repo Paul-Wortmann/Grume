@@ -116,6 +116,13 @@ void cEntityManager::m_freeData(sEntity*& _pointer)
         delete _pointer->movement;
         _pointer->movement = nullptr;
     }
+
+    // Pathing
+    if (_pointer->physics != nullptr)
+    {
+        delete _pointer->physics;
+        _pointer->physics = nullptr;
+    }
 }
 
 void cEntityManager::m_freeAll(void)

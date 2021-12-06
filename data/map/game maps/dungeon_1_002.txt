@@ -6,8 +6,10 @@
         <height>40</height>
         <biome>dungeon_001_biome.txt</biome>
         <map_previous>40</map_previous>
-        <#map_next>3</map_next>
-        <map_next>1</map_next>
+        <map_previous>1</map_previous_portal>
+        <map_next>40</map_next>
+        <map_next>1</map_next_portal>
+        <#map_next>42</map_next>
     </information>
 
     <generation>
@@ -51,7 +53,7 @@
 
     <npc_mobs>
         #npc number, scale max, scale min, prevalence
-        <npc_mob>bat 0.5 1.0 2</npc_mob> # bat
+        <#npc_mob>bat 0.5 1.0 2</npc_mob> # bat
         <npc_mob>spider 0.5 1.0 10</npc_mob> # spider
     </npc_mobs>
 

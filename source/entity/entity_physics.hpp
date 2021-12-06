@@ -32,6 +32,12 @@ enum eBodyType: int16
     dynamicBody = 1
 };
 
+enum eVolumeType: int16
+{
+    aabb  = 0, // axis allined bounding box
+    aabc  = 1  // axis allined bounding cylinder
+};
+
 struct sEntityPhysics
 {
     // Linked list
@@ -40,6 +46,8 @@ struct sEntityPhysics
     
     // Data
     eBodyType       bodyType      = eBodyType::staticBody;
+    eVolumeType     volumeType    = eVolumeType::aabb;
+    glm::vec3       dimentions    = glm::vec3(1.0f, 1.0f, 1.0f);
 };
 
 #endif // ENTITY_PHYSICS_HPP
