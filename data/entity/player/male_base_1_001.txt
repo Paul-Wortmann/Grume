@@ -51,6 +51,15 @@
         <rotationaxis>0 0 1</rotationaxis>
     </transform>
 
+    <physics>
+        # 0: static, 1: dynamic
+        <physics_body_type>1</physics_body_type>
+        # 0: aabb, 1: aabc
+        <physics_volume_type>0</physics_volume_type>
+        # x, y, z, r
+        <physics_volume_dimentions>1.0f 1.0f 1.0f 1.41421356237f</physics_volume_dimentions>
+    </physics>
+
     <animtion>
         <animation_independent>1</animation_independent>
         <animation_count>1</animation_count>
@@ -96,14 +105,5 @@
         <state_sound>grunt_sound 4 0</state_sound> # database name, else none, database index, repeat (bool)
         <state_animation>0.0 0.333333 0</state_animation> # frame start, frame end, repeat (bool)
     </state>
-
-    <physics>
-        # 0: static, 1: dynamic
-        <body_type>0</body_type>
-        # 0: aabb, 1: aabc
-        <volume_type>0</volume_type>
-        # aabb: x, y, z  aabc: r, NA, h
-        <volume_dimentions>1.0f 1.0f 1.0f</volume_dimentions>
-    </physics>
 
 </player>

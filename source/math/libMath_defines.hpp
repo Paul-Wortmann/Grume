@@ -81,6 +81,10 @@
 #define M_PIl 3.141592653589793238462643383279502884L
 #endif // M_PIl
 
+#ifndef M_SQR2
+#define M_SQR2 1.41421356237
+#endif // M_SQR2
+
 #ifndef M_HPI // half pi
 #define M_HPI 1.57079632679
 #endif // M_HPI

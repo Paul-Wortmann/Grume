@@ -23,6 +23,11 @@
 
 #include "libMath_points.hpp"
 
+float32 distanceSquared(const float32 &_x1, const float32 &_y1, const float32 &_x2, const float32 &_y2)
+{
+    return (((_x2 - _x1) * (_x2 - _x1)) + ((_y2 - _y1) * (_y2 - _y1)));
+}
+
 float64 distanceSquared(const float64 &_x1, const float64 &_y1, const float64 &_x2, const float64 &_y2)
 {
     return (((_x2 - _x1) * (_x2 - _x1)) + ((_y2 - _y1) * (_y2 - _y1)));

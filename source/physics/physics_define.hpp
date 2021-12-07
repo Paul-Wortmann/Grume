@@ -26,15 +26,6 @@
 
 #include "../core/includes.hpp"
 
-struct sPhysicsObject
-{
-    // Linked list management
-    sPhysicsObject* next         = nullptr;
-    uint32          UID          = 0;
-
-    // General information
-    bool            enabled      = false;
-};
 
 #endif //PHYISCS_DEFINE_HPP
 

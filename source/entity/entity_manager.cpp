@@ -202,8 +202,8 @@ sEntity* cEntityManager::load(const std::string& _fileName, sEntity* _entity)
         _entity->rotation             = xmlEntityFile.getVec3("<rotation>");
         _entity->rotationOffset       = _entity->rotation;
         _entity->rotationAxis         = static_cast<glm::ivec3>(xmlEntityFile.getVec3("<rotationaxis>"));
-        string modelFile         = xmlEntityFile.getString("<model>");
-        string materialFile      = xmlEntityFile.getString("<material>");
+        string modelFile              = xmlEntityFile.getString("<model>");
+        string materialFile           = xmlEntityFile.getString("<material>");
         _entity->animationIndependent = (xmlEntityFile.getInteger("<animation_independent>") == 1);
 
         // Movement data
@@ -413,7 +413,7 @@ sEntity* cEntityManager::load(const std::string& _fileName, sEntity* _entity)
         _entity->deathShakeDuration        = xmlEntityFile.getInteger("<death_shake_duration>");
         _entity->deathShakeForce           = xmlEntityFile.getFloat("<death_shake_force>");
         
-        // Load Collision data
+        // Load Collision data if present
         if (xmlEntityFile.getInstanceCount("<collision>") != 0)
         {
             // Create a collision component
@@ -452,6 +452,17 @@ sEntity* cEntityManager::load(const std::string& _fileName, sEntity* _entity)
                     }
                 }
             }
+        }
+        
+        // Load physics data if present
+        if (xmlEntityFile.getInstanceCount("<physics>") != 0)
+        {
+            // Create a physics component
+            _entity->physics = new sEntityPhysics;
+            
+            _entity->physics->bodyType   = static_cast<eBodyType>(xmlEntityFile.getInteger("<physics_body_type>"));
+            _entity->physics->volumeType = static_cast<eVolumeType>(xmlEntityFile.getInteger("<physics_volume_type>"));
+            _entity->physics->dimentions = xmlEntityFile.getVec4("<physics_volume_dimentions>");
         }
 
         // Load model from file

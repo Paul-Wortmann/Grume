@@ -27,6 +27,7 @@
 #include "libMath_defines.hpp"
 #include "libMath_vector.hpp"
 
+float32 distanceSquared(const float32 &_x1, const float32 &_y1, const float32 &_x2, const float32 &_y2);
 float64 distanceSquared(const float64 &_x1, const float64 &_y1, const float64 &_x2, const float64 &_y2);
 float64 distanceSquared(const vec2 &_v1, const vec2 &_v2);
 float64 distanceSquared(const vec3 &_v1, const vec3 &_v2);

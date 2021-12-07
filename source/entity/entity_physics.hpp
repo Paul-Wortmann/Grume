@@ -47,7 +47,7 @@ struct sEntityPhysics
     // Data
     eBodyType       bodyType      = eBodyType::staticBody;
     eVolumeType     volumeType    = eVolumeType::aabb;
-    glm::vec3       dimentions    = glm::vec3(1.0f, 1.0f, 1.0f);
+    glm::vec4       dimentions    = glm::vec4(1.0f, 1.0f, 1.0f, M_SQR2); // x, y, z, r
 };
 
 #endif // ENTITY_PHYSICS_HPP

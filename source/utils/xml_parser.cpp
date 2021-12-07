@@ -200,6 +200,49 @@ float cXML::getFloat(const std::string &_key, const uint32 _instance)
     return std::stof(value);
 }
 
+glm::vec4 cXML::getVec4(const std::string &_key, const uint32 _instance)
+{
+    uint32 instanceCount = 0;
+    glm::vec4 rVec;
+    for (std::size_t i = 0; i < m_lineCount; ++i)
+    {
+        if (m_line[i].find(_key) != std::string::npos)
+        {
+            instanceCount++;
+            if (instanceCount == _instance)
+            {
+                std::string v[4];
+                uint16 pos = 0;
+                std::size_t start = m_line[i].find(_key) + _key.length();
+                for(std::size_t j = start; j < m_line[i].length(); ++j)
+                {
+                    if (m_line[i][j] == '<')
+                    {
+                        j = m_line[i].length();
+                    }
+                    else
+                    {
+                        if (m_line[i][j] != '>')
+                        {
+                            if (m_line[i][j] == ' ')
+                            {
+                                pos++;
+                            }
+                            else
+                            {
+                                v[pos] += m_line[i][j];
+                            }
+                        }
+                    }
+                }
+                rVec = glm::vec4(std::stof(v[0]), std::stof(v[1]), std::stof(v[2]), std::stof(v[3]));
+                return rVec;
+            }
+        }
+    }
+    return rVec;
+}
+
 glm::vec3 cXML::getVec3(const std::string &_key, const uint32 _instance)
 {
     uint32 instanceCount = 0;

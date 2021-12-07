@@ -29,7 +29,7 @@
 
 #include "physics_define.hpp"
 
-class cPhysicsEngine : public tcLinkedList<sPhysicsObject>
+class cPhysicsEngine
 {
     public:
         uint32 initialize(void);
@@ -40,7 +40,6 @@ class cPhysicsEngine : public tcLinkedList<sPhysicsObject>
     protected:
         
     private:
-        void freeData(sPhysicsObject*& _object);
 
         // Entity management
         sEntity*           m_entityHead         = nullptr;

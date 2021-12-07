@@ -30,15 +30,35 @@ uint32 cPhysicsEngine::initialize(void)
 
 void cPhysicsEngine::terminate(void)
 {
-    freeAll();
-}
-
-void cPhysicsEngine::freeData(sPhysicsObject*& _object)
-{
-    
 }
 
 void cPhysicsEngine::process(const float32 &_dt)
 {
+    for (sEntity* entity_1 = m_entityHead; entity_1 != nullptr; entity_1 = entity_1->next)
+    {
+        if ((entity_1->physics != nullptr) && (entity_1->physics->bodyType == eBodyType::dynamicBody))
+        {
+            for (sEntity* entity_2 = m_entityHead; entity_2 != nullptr; entity_2 = entity_2->next)
+            {
+                if ((entity_2->physics != nullptr) && (entity_1 != entity_2))
+                {
+                    // Broad phase
+                    // Check distance squared against the sum of the objects' radii
+                    if ((entity_2->physics->dimentions.w + entity_1->physics->dimentions.w) > 
+                    (((entity_2->position.x - entity_1->position.x) *
+                      (entity_2->position.x - entity_1->position.x)) + 
+                     ((entity_2->position.y - entity_1->position.y) *
+                      (entity_2->position.y - entity_1->position.y)))
+                    )
+                    {
+                        // Narrow phase
+                        //std::cout << "Collision! ID: " << entity_1->UID << " and ID: " << entity_2->UID << std::endl;
+                    }
+                }
+            }
+        }
+    }
+
+    //distanceSquared
 }
 

@@ -99,6 +99,7 @@ uint32 cGameEngine::initialize(const uint32 &_argc, char** _argv)
         graphicsEngine.setGameConfig(&gameConfig);
         graphicsEngine.initializeUIComponents();
         physicsEngine.initialize();
+        physicsEngine.setEntityHead(entityManager.getHead());
         animationEngine.initialize();
         animationEngine.setEntityHead(entityManager.getHead());
         npcManager.setEntityHead(entityManager.getHead());
