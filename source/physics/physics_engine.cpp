@@ -38,21 +38,31 @@ void cPhysicsEngine::process(const float32 &_dt)
     {
         if ((entity_1->physics != nullptr) && (entity_1->physics->bodyType == eBodyType::dynamicBody))
         {
-            for (sEntity* entity_2 = m_entityHead; entity_2 != nullptr; entity_2 = entity_2->next)
+            for (sEntity* entity_2 = entity_1; entity_2 != nullptr; entity_2 = entity_2->next)
             {
                 if ((entity_2->physics != nullptr) && (entity_1 != entity_2))
                 {
-                    // Broad phase
+                    // Broad phase //
+
+                    float32 radialSumSquared = ((entity_2->physics->dimentions.w + entity_1->physics->dimentions.w) *
+                                                (entity_2->physics->dimentions.w + entity_1->physics->dimentions.w));
+                    float32 distanceSquared  = (((entity_2->position.x - entity_1->position.x) *
+                                                 (entity_2->position.x - entity_1->position.x)) + 
+                                                ((entity_2->position.z - entity_1->position.z) *
+                                                 (entity_2->position.z - entity_1->position.z)));
+
                     // Check distance squared against the sum of the objects' radii
-                    if ((entity_2->physics->dimentions.w + entity_1->physics->dimentions.w) > 
-                    (((entity_2->position.x - entity_1->position.x) *
-                      (entity_2->position.x - entity_1->position.x)) + 
-                     ((entity_2->position.y - entity_1->position.y) *
-                      (entity_2->position.y - entity_1->position.y)))
-                    )
+                    if (distanceSquared < radialSumSquared)
                     {
-                        // Narrow phase
+                        // Narrow phase //
                         //std::cout << "Collision! ID: " << entity_1->UID << " and ID: " << entity_2->UID << std::endl;
+                        
+                        
+                        // set physics event
+                        m_physicsEvent.eventType  = ePhysicsEventType::physicsEventCollision;
+                        m_physicsEvent.data.ID_1  = entity_1->UID;
+                        m_physicsEvent.data.ID_1  = entity_2->UID;
+                        m_physicsEvent.data.depth = radialSumSquared - distanceSquared;
                     }
                 }
             }

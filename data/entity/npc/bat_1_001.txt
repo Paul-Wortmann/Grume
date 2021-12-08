@@ -23,6 +23,7 @@
         # 0: aabb, 1: aabc
         <physics_volume_type>0</physics_volume_type>
         # x, y, z, r
+        # sqrt(2) = 1.41421356237f
         <physics_volume_dimentions>1.0f 1.0f 1.0f 1.41421356237f</physics_volume_dimentions>
     </physics>
 

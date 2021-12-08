@@ -26,6 +26,23 @@
 
 #include "../core/includes.hpp"
 
+enum class ePhysicsEventType : uint16 
+{
+    physicsEventNone      =  0, // No physics event
+    physicsEventCollision =  1  // Collision
+};
+
+struct sPhysicsEvent
+{
+    ePhysicsEventType eventType = ePhysicsEventType::physicsEventNone;
+    struct sData
+    {
+        uint32  ID_1  = 0;    // entity UID
+        uint32  ID_2  = 0;    // entity UID
+        float32 depth = 0.0f; // penetration depth
+        float32 angle = 0.0f; // radians
+    } data;
+};
 
 #endif //PHYISCS_DEFINE_HPP
 
