@@ -15,6 +15,16 @@
         <scale>0.1 0.1 0.1</scale>
         <rotation>4.6124 0.0 0.0</rotation>
     </transform>
+
+    <physics>
+        # 0: static, 1: dynamic
+        <physics_body_type>1</physics_body_type>
+        # 0: aabb, 1: aabc
+        <physics_volume_type>0</physics_volume_type>
+        # x, y, z, r
+        # sqrt(2) = 1.41421356237f
+        <physics_volume_dimentions>1.0f 1.0f 1.0f 1.41421356237f</physics_volume_dimentions>
+    </physics>
     
     <animtion>
         <animation_count>1</animation_count>
