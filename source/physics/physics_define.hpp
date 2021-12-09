@@ -25,6 +25,7 @@
 #define PHYISCS_DEFINE_HPP
 
 #include "../core/includes.hpp"
+#include "physics_collision.hpp"
 
 enum class ePhysicsEventType : uint16 
 {
