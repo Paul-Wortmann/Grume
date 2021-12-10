@@ -31,11 +31,8 @@
         # werewolf
         <npc>werewolf       npc/werewolf_1_001.txt</npc>
         
-        ################   WIP   ################
-        
+        # skeleton
         <npc>skeleton       npc/skeleton_1_001.txt</npc>
-
-        ################   WIP   ################
         
         
 </npc_database>
