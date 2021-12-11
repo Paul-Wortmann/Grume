@@ -5,15 +5,15 @@
 
 <config>
     <graphics>
-        <resolution_w>800</resolution_w>
-        <resolution_h>600</resolution_h>
-        <fullscreen>0</fullscreen>
+        <resolution_w>1920</resolution_w>
+        <resolution_h>1080</resolution_h>
+        <fullscreen>1</fullscreen>
         <basic_renderer>0</basic_renderer>
     </graphics>
     <audio>
-        <volume_master>10</volume_master>
-        <volume_music>5</volume_music>
-        <volume_sfx>25</volume_sfx>
+        <volume_master>29</volume_master>
+        <volume_music>19</volume_music>
+        <volume_sfx>40</volume_sfx>
     </audio>
 </config>
 

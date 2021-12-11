@@ -139,6 +139,12 @@
         <object>2110 test              1  1.0 1.5708 1 0</object> # Cave 2 entrance 2
         <object>2111 test              1  1.0 1.5708 1 0</object> # Cave 2 entrance 2
 
+        # Central pillars
+        <object>1820 cemetery_object   3  1.0 0.0000 1 0</object> # cemetery object pillar
+        <object>1827 cemetery_object   3  1.0 0.0000 1 0</object> # cemetery object pillar
+        <object>2268 cemetery_object   3  1.0 0.0000 1 0</object> # cemetery object pillar
+        <object>2275 cemetery_object   3  1.0 0.0000 1 0</object> # cemetery object pillar
+
         # Broken tower ruins
         <object>2054 tower             1 1.0 3.1416 1 0</object> # Tower west
         <object>0416 tower             1 1.0 1.5708 1 0</object> # Tower north
