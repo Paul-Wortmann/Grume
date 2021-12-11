@@ -50,7 +50,7 @@ class cXML
     protected:
 
     private:
-        std::string   m_lineFormat(const std::string &_string);
+        std::string   m_formatLine(const std::string &_string);
         bool          m_isValid   = false;
         std::uint32_t m_lineCount = 0;
         std::string*  m_line      = nullptr;

@@ -25,7 +25,7 @@
 
 // Remove anomalies such as extra spaces.
 // This leads to easier parsing and less memory usage.
-std::string cXML::m_lineFormat(const std::string &_string)
+std::string cXML::m_formatLine(const std::string &_string)
 {
     // Return an empty string if _string has no data
     if (_string.length() < 1)
@@ -114,7 +114,7 @@ std::uint32_t cXML::load(const std::string &_fileName)
         std::uint32_t lineNum = 0;
         while (std::getline(fileIn, lineData))
         {
-            m_line[lineNum] = m_lineFormat(lineData);
+            m_line[lineNum] = m_formatLine(lineData);
             lineNum++;
         }
         fileIn.close();
