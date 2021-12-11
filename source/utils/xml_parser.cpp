@@ -96,12 +96,13 @@ std::string cXML::m_lineFormat(const std::string &_string)
     return tString;
 }
 
-void cXML::load(const std::string &_fileName)
+std::uint32_t cXML::load(const std::string &_fileName)
 {
     m_lineCount = 0;
     std::ifstream fileIn(_fileName.c_str());
     if(fileIn.is_open())
     {
+        m_isValid = true;
         std::string lineData;
         while (std::getline(fileIn, lineData))
         {
@@ -110,7 +111,7 @@ void cXML::load(const std::string &_fileName)
         fileIn.clear();
         fileIn.seekg (0, std::ios::beg);
         m_line = new std::string[m_lineCount];
-        uint32 lineNum = 0;
+        std::uint32_t lineNum = 0;
         while (std::getline(fileIn, lineData))
         {
             m_line[lineNum] = m_lineFormat(lineData);
@@ -121,13 +122,16 @@ void cXML::load(const std::string &_fileName)
     else
     {
         gLogWrite(LOG_ERROR, "Error - Failed to open file: " + _fileName, __FILE__, __LINE__, __FUNCTION__);
+        m_isValid = false;
+        return EXIT_FAILURE;
     }
+    return EXIT_SUCCESS;
 }
 
-uint32 cXML::getInstanceCount(const std::string &_key)
+std::uint32_t cXML::getInstanceCount(const std::string &_key)
 {
-    uint32 instanceCount = 0;
-    for (uint32 i = 0; i < m_lineCount; ++i)
+    std::uint32_t instanceCount = 0;
+    for (std::uint32_t i = 0; i < m_lineCount; ++i)
     {
         if (m_line[i].find(_key) != std::string::npos)
         {
@@ -137,9 +141,9 @@ uint32 cXML::getInstanceCount(const std::string &_key)
     return instanceCount;
 }
 
-std::string cXML::getString(const std::string &_key, const uint32 _instance)
+std::string cXML::getString(const std::string &_key, const std::uint32_t _instance)
 {
-    uint32 instanceCount = 0;
+    std::uint32_t instanceCount = 0;
     std::string rString = "";
     for (std::size_t i = 0; i < m_lineCount; ++i)
     {
@@ -170,7 +174,7 @@ std::string cXML::getString(const std::string &_key, const uint32 _instance)
     return rString;
 }
 
-uint32 cXML::getInteger(const std::string &_key, const uint32 _instance)
+std::uint32_t cXML::getInteger(const std::string &_key, const std::uint32_t _instance)
 {
     std::string value = getString(_key, _instance);
     if (value.length() < 1)
@@ -180,7 +184,7 @@ uint32 cXML::getInteger(const std::string &_key, const uint32 _instance)
     return std::stoi(value);
 }
 
-uint64 cXML::getInteger64(const std::string &_key, const uint32 _instance)
+uint64 cXML::getInteger64(const std::string &_key, const std::uint32_t _instance)
 {
     std::string value = getString(_key, _instance);
     if (value.length() < 1)
@@ -190,7 +194,7 @@ uint64 cXML::getInteger64(const std::string &_key, const uint32 _instance)
     return std::stoull(value);
 }
 
-float cXML::getFloat(const std::string &_key, const uint32 _instance)
+float cXML::getFloat(const std::string &_key, const std::uint32_t _instance)
 {
     std::string value = getString(_key, _instance);
     if (value.length() < 1)
@@ -200,9 +204,9 @@ float cXML::getFloat(const std::string &_key, const uint32 _instance)
     return std::stof(value);
 }
 
-glm::vec4 cXML::getVec4(const std::string &_key, const uint32 _instance)
+glm::vec4 cXML::getVec4(const std::string &_key, const std::uint32_t _instance)
 {
-    uint32 instanceCount = 0;
+    std::uint32_t instanceCount = 0;
     glm::vec4 rVec;
     for (std::size_t i = 0; i < m_lineCount; ++i)
     {
@@ -243,9 +247,9 @@ glm::vec4 cXML::getVec4(const std::string &_key, const uint32 _instance)
     return rVec;
 }
 
-glm::vec3 cXML::getVec3(const std::string &_key, const uint32 _instance)
+glm::vec3 cXML::getVec3(const std::string &_key, const std::uint32_t _instance)
 {
-    uint32 instanceCount = 0;
+    std::uint32_t instanceCount = 0;
     glm::vec3 rVec;
     for (std::size_t i = 0; i < m_lineCount; ++i)
     {
@@ -286,9 +290,9 @@ glm::vec3 cXML::getVec3(const std::string &_key, const uint32 _instance)
     return rVec;
 }
 
-glm::vec2 cXML::getVec2(const std::string &_key, const uint32 _instance)
+glm::vec2 cXML::getVec2(const std::string &_key, const std::uint32_t _instance)
 {
-    uint32 instanceCount = 0;
+    std::uint32_t instanceCount = 0;
     glm::vec2 rVec;
     for (std::size_t i = 0; i < m_lineCount; ++i)
     {
@@ -329,9 +333,9 @@ glm::vec2 cXML::getVec2(const std::string &_key, const uint32 _instance)
     return rVec;
 }
 
-glm::ivec3  cXML::getIvec3(const std::string &_key, const uint32 _instance)
+glm::ivec3  cXML::getIvec3(const std::string &_key, const std::uint32_t _instance)
 {
-    uint32 instanceCount = 0;
+    std::uint32_t instanceCount = 0;
     glm::ivec3 rVec;
     for (std::size_t i = 0; i < m_lineCount; ++i)
     {
