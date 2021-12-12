@@ -88,7 +88,7 @@ sEntityTexture* cTextureManager::load(const std::string &_fileName)
     }
     else
     {
-        gLogWrite(LOG_ERROR, "Error - Failed to laod texture: " + std::string(FILE_PATH_TEXTURE) + _fileName, __FILE__, __LINE__, __FUNCTION__);
+        gLogWrite(LOG_ERROR, "Error - Failed to load texture: " + std::string(FILE_PATH_TEXTURE) + _fileName, __FILE__, __LINE__, __FUNCTION__);
     }
     return nullptr;
 }
