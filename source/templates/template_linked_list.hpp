@@ -77,6 +77,8 @@ template<class T> class tcLinkedList
                 if (m_head != nullptr)
                 {
                     freeData(m_head);
+                    delete m_head;
+                    m_head = nullptr;
                 }
             }
         }
