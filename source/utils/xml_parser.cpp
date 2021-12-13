@@ -125,6 +125,11 @@ std::uint32_t cXML::load(const std::string &_fileName)
         m_isValid = false;
         return EXIT_FAILURE;
     }
+    if (m_lineCount == 0)
+    {
+        m_isValid = false;
+        return EXIT_FAILURE;
+    }
     return EXIT_SUCCESS;
 }
 
