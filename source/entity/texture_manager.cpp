@@ -59,8 +59,16 @@ sEntityTexture* cTextureManager::load(const std::string &_fileName)
     int numChannel = 0;
     stbi_set_flip_vertically_on_load(true);
     unsigned char *data = stbi_load((std::string(FILE_PATH_TEXTURE)+_fileName).c_str(), &width, &height, &numChannel, 0);
+
+    // Create a texture
     if (data != nullptr)
     {
+        // Texture is less that the smallest required by OpenGL
+        if ((width < 64) || (height < 64))
+        {
+            gLogWrite(LOG_WARNING, "Texture size is too small: " + std::string(FILE_PATH_TEXTURE) + _fileName, __FILE__, __LINE__, __FUNCTION__);
+        }
+
         // Setup format enum based on the number of channels in the image
         GLenum format = 0;
         if (numChannel == 1)
@@ -89,7 +97,7 @@ sEntityTexture* cTextureManager::load(const std::string &_fileName)
     }
     else
     {
-        gLogWrite(LOG_ERROR, "Error - Failed to load texture: " + std::string(FILE_PATH_TEXTURE) + _fileName, __FILE__, __LINE__, __FUNCTION__);
+        gLogWrite(LOG_ERROR, "Failed to load texture: " + std::string(FILE_PATH_TEXTURE) + _fileName, __FILE__, __LINE__, __FUNCTION__);
     }
     return nullptr;
 }
