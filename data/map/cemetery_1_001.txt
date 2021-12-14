@@ -139,6 +139,7 @@
 
         # graveyard 1 - mausoleum
         <object>0672 mausoleum         1  1.0 3.1416 1 0</object> # Mausoleum
+        <object>1638 coffin            3  1.0 0.0000 1 0</object> # coffin 3
         <object>1824 cemetery_object   8  1.0 1.5708 1 0</object> # cemetery gate
         <object>1764 fence_metal       1  1.0 4.7124 1 0</object> # Fence metal 1
         <object>1767 fence_metal       1  1.0 4.7124 1 0</object> # Fence metal 1
