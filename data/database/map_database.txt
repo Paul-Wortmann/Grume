@@ -21,6 +21,26 @@
         <map>051 dungeon_2_002.txt</map>
         <map>051 dungeon_2_003.txt</map>
 
+# these do not yet exist:
+
+        <map>061 cave_2_002.txt</map>
+        <map>062 cave_2_003.txt</map>
+        <map>063 cave_2_004.txt</map>
+        <map>064 cave_2_005.txt</map>
+        <map>065 cave_2_006.txt</map>
+        <map>066 cave_2_007.txt</map>
+        <map>067 cave_2_008.txt</map>
+        <map>068 cave_2_009.txt</map>
+
+        <map>080 cave_3_001.txt</map>
+        <map>081 cave_3_002.txt</map>
+
+        <map>090 dungeon_3_001.txt</map>
+
+        <map>100 ruins_2_001.txt</map>
+
+        <map>110 cave_4_001.txt</map>
+        <map>120 cave_5_001.txt</map>
 
         // Test maps
         // 1__ -> test
@@ -44,27 +64,6 @@
         // __5 -> M1 gen algorithm
         // __6 -> T1 gen algorithm
 
-        // Town 1, portal map
-        <map>100 test_1_town_1_001.txt</map>
-        
-        // Cave 1
-        <map>110 test_1_cave_1_001.txt</map>
-        <map>111 test_1_cave_1_002.txt</map>
-        <map>112 test_1_cave_1_003.txt</map>
-        <map>113 test_1_cave_1_004.txt</map>
-        <map>114 test_1_cave_1_005.txt</map>
-        <map>115 test_1_cave_1_006.txt</map>
-        <map>116 test_1_cave_1_007.txt</map>
-
-        // Dungeon 1
-        <map>120 test_1_dungeon_1_001.txt</map>
-
-        <map>130 test_1_dungeon_2_001.txt</map>
-        <map>140 test_1_dungeon_3_001.txt</map>
-        <map>150 test_1_dungeon_4_001.txt</map>
-        <map>160 test_1_dungeon_5_001.txt</map>
-        <map>170 test_1_dungeon_6_001.txt</map>
-        <map>180 test_1_dungeon_7_001.txt</map>
 
 
     </maps>

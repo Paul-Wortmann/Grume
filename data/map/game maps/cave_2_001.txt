@@ -55,8 +55,8 @@
         # These are used when warping from a prior map
         # Portal number, Tile location, player face direction
         # These are exit portals
-        <portal>1 0572 3.14159</portal> # Town 1 exit 2
-        <portal>2 0547 3.14159</portal> # Ruins 1 exit 1
+        <portal>1 0572 1.5708</portal> # Ruins 1 exit 1
+        <portal>2 0547 3.14159</portal> # Cemetery 1 exit 2
     </portals>
     
     <events>
@@ -66,12 +66,12 @@
         # Type 3 (Toggle entity state, index from 1) : tile, event type, entity tile, state 1, state 2
 
         # To town
-        <event>0514 1  70 1 0</event> # Ruins 1 entrance 1
-        <event>0546 1  70 1 0</event> # Ruins 1 entrance 1
-        <event>0578 1  70 1 0</event> # Ruins 1 entrance 1
-        <event>0541 1  00 2 0</event> # Town 1 entrance 2
-        <event>0573 1  00 2 0</event> # Town 1 entrance 2
-        <event>0605 1  00 2 0</event> # Town 1 entrance 2
+        <event>0514 1  20 3 0</event> # Ruins 1 entrance 1
+        <event>0546 1  20 3 0</event> # Ruins 1 entrance 1
+        <event>0578 1  20 3 0</event> # Ruins 1 entrance 1
+        <event>0541 1  70 1 0</event> # Cemetery 1 entrance 3
+        <event>0573 1  70 1 0</event> # Cemetery 1 entrance 3
+        <event>0605 1  70 1 0</event> # Cemetery 1 entrance 3
 
     </events>
 
@@ -101,8 +101,8 @@
         <object>0544 test              1  1.0 1.5708  1 0</object> # Ruins 1 entrance 1
         <object>0545 test              1  1.0 1.5708  1 0</object> # Ruins 1 entrance 1
 
-        <object>0574 test              1  1.0 1.5708  1 0</object> # Town 1 entrance 2
-        <object>0575 test              1  1.0 1.5708  1 0</object> # Town 1 entrance 2
+        <object>0574 test              1  1.0 1.5708  1 0</object> # Cemetery 1 entrance 3
+        <object>0575 test              1  1.0 1.5708  1 0</object> # Cemetery 1 entrance 3
         
         <object>0252 barrel_stack      1  1.0 1.5708  1 0</object> # Barrel stack
         <object>0148 barrel            5  1.0 1.5708  1 0</object> # Barrel
