@@ -1,0 +1,15 @@
+
+<biome>
+    <info>
+        <name>cave_002_biome</name>
+    </info>
+
+    <data>
+        <music_tag>cave</music_tag>
+        <music_track>0</music_track> # 0 for random
+        <wall_set>cave_002_wall_set.txt</wall_set>
+        <floor_spritesheet>cave/cave_002_floor.txt</floor_spritesheet>
+    </data>
+
+</biome>
+

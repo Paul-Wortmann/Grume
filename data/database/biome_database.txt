@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding= "UTF-8"?>
 <biome_database>
 
-    <biome>cave_001_biome</biome>
+    <biome>cave_001_biome</biome> # rock
+    <biome>cave_002_biome</biome> # ice
 
     <biome>dungeon_001_biome</biome>
     <biome>dungeon_002_biome</biome>

@@ -1,7 +1,7 @@
 ﻿<?xml version = "1.0" encoding = "UTF-8" ?>
 <entity>
-    <name>cave_002_wall_td</name>
-    <model>cave_001/cave_001_wall_td.obj</model>
+    <name>cave_002_wall_ts</name>
+    <model>cave_002/cave_002_wall_ts.obj</model>
     <material>cave/cave_wall_2_001.txt</material>
 
     <position>0.0 -1.0 0.0</position>

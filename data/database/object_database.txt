@@ -350,6 +350,7 @@
 
     # Test
     <object>test cave_001.1/cave_arch_1_001.txt</object>
+    <object>test cave_001.1/cave_arch_2_001.txt</object>
 
 
 </object_database>
