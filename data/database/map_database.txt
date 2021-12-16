@@ -6,23 +6,12 @@
         <map>010 cave_1_001.txt</map>
         <map>011 cave_1_002.txt</map>
         <map>012 cave_1_003.txt</map>
-
         <map>013 cave_1_004.txt</map>
         <map>014 cave_1_005.txt</map>
         <map>015 cave_1_006.txt</map>
-
         <map>020 cemetery_1_001.txt</map>
         <map>030 crypt_1_001.txt</map>
         <map>060 cave_2_001.txt</map>
-        <map>070 ruins_1_001.txt</map>
-        <map>040 dungeon_1_001.txt</map>
-        <map>041 dungeon_1_002.txt</map>
-        <map>050 dungeon_2_001.txt</map>
-        <map>051 dungeon_2_002.txt</map>
-        <map>051 dungeon_2_003.txt</map>
-
-# these do not yet exist:
-
         <map>061 cave_2_002.txt</map>
         <map>062 cave_2_003.txt</map>
         <map>063 cave_2_004.txt</map>
@@ -31,6 +20,14 @@
         <map>066 cave_2_007.txt</map>
         <map>067 cave_2_008.txt</map>
         <map>068 cave_2_009.txt</map>
+        <map>070 ruins_1_001.txt</map>
+        <map>040 dungeon_1_001.txt</map>
+        <map>041 dungeon_1_002.txt</map>
+        <map>050 dungeon_2_001.txt</map>
+        <map>051 dungeon_2_002.txt</map>
+        <map>051 dungeon_2_003.txt</map>
+
+# these do not yet exist:
 
         <map>080 cave_3_001.txt</map>
         <map>081 cave_3_002.txt</map>
