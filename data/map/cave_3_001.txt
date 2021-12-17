@@ -87,8 +87,8 @@
         # These are used when warping from a prior map
         # Portal number, Tile location, player face direction
         # These are exit portals
-        <portal>1 0224 0.00000</portal> #Cave 3-2 exit
-        <portal>2 3872 3.14159</portal> #Cave 2-7 exit
+        <portal>1 3872 0.00000</portal> #Cave 3-2 exit
+        <portal>2 2051 3.14159</portal> #Cave 2-7 exit
     </portals>
     
     <events>
@@ -98,8 +98,11 @@
         # Type 3 (Toggle entity state, index from 1) : tile, event type, entity tile, state 1, state 2
 
         # To town
-        <event>0160 1 81 1 0</event> # Cave 3-2 entrance 1
-        <event>3936 1 66 3 0</event> # Cave 2-7 entrance 3
+        <event>3936 1 81 1 0</event> # Cave 3-2 entrance 1
+
+        <event>1986 1 66 3 0</event> # Cave 2-7 entrance 3
+        <event>2050 1 66 3 0</event> # Cave 2-7 entrance 3
+        <event>2114 1 66 3 0</event> # Cave 2-7 entrance 3
 
     </events>
 
@@ -127,11 +130,12 @@
     <objects>
         #tile number, database object name, index (0 == random), scale, y-rotation, obstacle, trigger tile
       
-        <object>4000 test 1 1.0 3.14159 1 0</object> # Test - cave 2-1 entrance 1
-        <object>4064 test 1 1.0 3.14159 1 0</object> # Test - cave 2-1 entrance 1
+        <object>4000 test 1 1.0 3.14159 1 0</object> # Test - cave 3-2 entrance 1
+        <object>4064 test 1 1.0 3.14159 1 0</object> # Test - cave 3-2 entrance 1
 
-        <object>0032 test 1 1.0 0.00000 1 0</object> # Test - cave 2-3 entrance 1
-        <object>0096 test 1 1.0 0.00000 1 0</object> # Test - cave 2-3 entrance 1
+        <object>2048 test 1 1.0 1.5708  1 0</object> # Test - cave 2-7 entrance 3
+        <object>2049 test 1 1.0 1.5708  1 0</object> # Test - cave 2-7 entrance 3
+
     </objects>
 
     <npc_mobs>
