@@ -90,6 +90,7 @@
         <portal>1 2051 1.5723</portal> #Cave 2 exit 1
         <portal>2 0736 1.5723</portal> #Dungeon 1 exit
         <portal>3 3168 1.5723</portal> #Dungeon 2 exit
+        <portal>4 2036 1.5723</portal> #Dungeon 3 exit
 
     </portals>
     
@@ -107,9 +108,9 @@
         <event>3232 1 50 1 0</event> # Dungeon 2 entrance
         <event>3233 1 50 1 0</event> # Dungeon 2 entrance
 
-        <#event>0671 1 ?0 1 0</event> # Dungeon 3 entrance
-        <#event>0672 1 ?0 1 0</event> # Dungeon 3 entrance
-        <#event>0673 1 ?0 1 0</event> # Dungeon 3 entrance
+        <event>1973 1 90 1 0</event> # Dungeon 3 entrance
+        <event>2037 1 90 1 0</event> # Dungeon 3 entrance
+        <event>2101 1 90 1 0</event> # Dungeon 3 entrance
 
     </events>
 

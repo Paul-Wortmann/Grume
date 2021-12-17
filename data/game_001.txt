@@ -15,8 +15,8 @@
     <#map>dungeon_1_001.txt</map>
     <#map>dungeon_1_002.txt</map>
     <#map>dungeon_2_001.txt</map>
-    <map>cave_2_001.txt</map>
-    <#map>ruins_1_001.txt</map>
+    <#map>cave_2_001.txt</map>
+    <map>ruins_1_001.txt</map>
     
     <player>male_base_1_001.txt</player>
     <quest>quest_list_1_001.txt</quest>
