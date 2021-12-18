@@ -4,7 +4,7 @@
         <name>cave_4_001</name>
         <width>32</width>
         <height>32</height>
-        <biome>cave_001_biome.txt</biome>
+        <biome>cave_002_biome.txt</biome>
     </information>
     <generation>
        <tiles>2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2</tiles>
