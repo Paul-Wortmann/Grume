@@ -31,12 +31,12 @@
        <tiles>2 2 2 2 2 2 2 1 1 1 1 1 1 1 2 2 2 1 1 1 1 1 2 2 1 1 1 1 1 2 2 2</tiles>
        <tiles>2 2 2 2 2 1 1 1 1 1 1 1 1 1 2 2 2 2 1 1 1 1 1 1 1 1 1 1 2 2 2 2</tiles>
        <tiles>2 2 2 2 2 1 1 1 1 1 1 1 1 1 1 2 2 2 1 1 1 1 1 1 1 1 1 2 2 2 2 2</tiles>
-       <tiles>2 2 2 2 2 1 1 1 1 1 1 1 1 1 1 2 2 2 2 1 1 1 1 1 1 1 2 2 2 2 2 2</tiles>
-       <tiles>2 2 2 2 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 1 1 1 2 2 2 2 2 2 2 2</tiles>
-       <tiles>2 2 2 2 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2</tiles>
-       <tiles>2 2 2 2 2 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2</tiles>
-       <tiles>2 2 2 2 2 2 1 1 1 1 1 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2</tiles>
-       <tiles>2 2 2 2 2 2 2 1 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2</tiles>
+       <tiles>2 2 2 2 2 1 1 1 1 1 1 1 1 1 1 1 2 2 2 1 1 1 1 1 1 1 2 2 2 2 2 2</tiles>
+       <tiles>2 2 2 2 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 1 1 1 2 2 2 2 2 2 2 2</tiles>
+       <tiles>2 2 2 2 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2</tiles>
+       <tiles>2 2 2 2 2 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2</tiles>
+       <tiles>2 2 2 2 2 2 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2</tiles>
+       <tiles>2 2 2 2 2 2 2 1 1 1 1 1 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2</tiles>
        <tiles>2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2</tiles>
        <tiles>2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2</tiles>
     <generate>0</generate>
@@ -55,8 +55,14 @@
         # These are used when warping from a prior map
         # Portal number, Tile location, player face direction
         # These are exit portals
-        <portal>1 0572 1.5708</portal> # Ruins 1 exit 1
-        <portal>2 0547 3.14159</portal> # Cemetery 1 exit 2
+        # 0.0000 - Face south
+        # 1.5708 - Face east
+        # 3.1416 - Face north
+        # 4.7124 - Face west
+
+        <portal>1 0572 4.7124</portal> # Ruins 1 exit 1
+        <portal>2 0547 1.5708</portal> # Cemetery 1 exit 2
+        <portal>3 0873 3.1416</portal> # Cave 2-2 exit 1
     </portals>
     
     <events>
@@ -72,7 +78,9 @@
         <event>0541 1  70 1 0</event> # Cemetery 1 entrance 3
         <event>0573 1  70 1 0</event> # Cemetery 1 entrance 3
         <event>0605 1  70 1 0</event> # Cemetery 1 entrance 3
-
+        <event>0904 1  61 1 0</event> # Cave 2-2 entrance 1
+        <event>0905 1  61 1 0</event> # Cave 2-2 entrance 1
+        <event>0906 1  61 1 0</event> # Cave 2-2 entrance 1
     </events>
 
     # roomTypeNone         =  0, // None / empty
@@ -103,6 +111,9 @@
 
         <object>0574 test              1  1.0 1.5708  1 0</object> # Cemetery 1 entrance 3
         <object>0575 test              1  1.0 1.5708  1 0</object> # Cemetery 1 entrance 3
+
+        <object>0969 test              1  1.0 0.0000  1 0</object> # Cave 2-2 entrance 1
+        <object>0937 test              1  1.0 0.0000  1 0</object> # Cave 2-2 entrance 1
         
         <object>0252 barrel_stack      1  1.0 1.5708  1 0</object> # Barrel stack
         <object>0148 barrel            5  1.0 1.5708  1 0</object> # Barrel

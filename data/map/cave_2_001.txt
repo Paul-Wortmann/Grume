@@ -55,9 +55,14 @@
         # These are used when warping from a prior map
         # Portal number, Tile location, player face direction
         # These are exit portals
-        <portal>1 0572 1.5708</portal> # Ruins 1 exit 1
-        <portal>2 0547 3.1416</portal> # Cemetery 1 exit 2
-        <portal>3 0873 0.0000</portal> # Cave 2-2 exit 1
+        # 0.0000 - Face south
+        # 1.5708 - Face east
+        # 3.1416 - Face north
+        # 4.7124 - Face west
+
+        <portal>1 0572 4.7124</portal> # Ruins 1 exit 1
+        <portal>2 0547 1.5708</portal> # Cemetery 1 exit 2
+        <portal>3 0873 3.1416</portal> # Cave 2-2 exit 1
     </portals>
     
     <events>

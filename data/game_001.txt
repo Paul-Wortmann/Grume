@@ -6,7 +6,7 @@
 <game>
     <ui>ui_001.txt</ui>
     
-    <#map>town_1_001.txt</map>
+    <map>town_1_001.txt</map>
     <#map>cave_1_001.txt</map>
     <#map>cave_1_002.txt</map>
     <#map>cave_1_003.txt</map>
@@ -18,7 +18,7 @@
     <#map>dungeon_3_001.txt</map>
     <#map>cave_2_001.txt</map>
     <#map>ruins_1_001.txt</map>
-    <map>ruins_2_001.txt</map>
+    <#map>ruins_2_001.txt</map>
     <#map>cave_4_002.txt</map>
     
     <player>male_base_1_001.txt</player>

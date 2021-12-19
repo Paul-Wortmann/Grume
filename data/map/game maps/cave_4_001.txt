@@ -4,7 +4,7 @@
         <name>cave_4_001</name>
         <width>32</width>
         <height>32</height>
-        <biome>cave_001_biome.txt</biome>
+        <biome>cave_002_biome.txt</biome>
     </information>
     <generation>
        <tiles>2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2</tiles>
@@ -55,7 +55,14 @@
         # These are used when warping from a prior map
         # Portal number, Tile location, player face direction
         # These are exit portals
-        <portal>1 0912 0.0000</portal> #Cave 1-5
+        
+        # 0.0000 - Face south
+        # 1.5708 - Face east
+        # 3.1416 - Face north
+        # 4.7124 - Face west
+        
+        <portal>1 0912 3.1416</portal> #Runes 2-1
+        <portal>2 0112 0.0000</portal> #Cave 4-2
     </portals>
     
     <events>
@@ -64,9 +71,13 @@
         # Type 2 (Set entity state, index from 1) : tile, event type, entity tile, state, NA
         # Type 3 (Toggle entity state, index from 1) : tile, event type, entity tile, state 1, state 2
 
-        # To Cave 5
-        <event>0944 1 14 2 0</event> # Cave 1-5 entrance 1
+        <event>0943 1 100 1 0</event> # Runes 2-1 entrance 1
+        <event>0944 1 100 1 0</event> # Runes 2-1 entrance 1
+        <event>0945 1 100 1 0</event> # Runes 2-1 entrance 1
 
+        <event>0079 1 111 1 0</event> # Cave 4-2 entrance 1
+        <event>0080 1 111 1 0</event> # Cave 4-2 entrance 1
+        <event>0081 1 111 1 0</event> # Cave 4-2 entrance 1
     </events>
 
     # roomTypeNone         =  0, // None / empty
@@ -87,29 +98,33 @@
 
     <debris_objects>
         #object name, scale max, scale min, prevalence (0 - 999), obstacle
-        <debris>gib   0.5 1.0  64 0</debris> # gibs
-        <debris>bones 0.5 1.0 128 0</debris> # bones
+        <#debris>gib        0.5 1.0  64 0</debris> # gibs
+        <#debris>bones      0.5 1.0 128 0</debris> # bones
+        <debris>crystal_ice 0.5 1.0 128 0</debris> # bones
     </debris_objects>
 
     <objects>
         #tile number, object number, scale, y-rotation, obstacle
-        <object>0976 test  1 1.0 3.14159 1 0</object> # Test - cave 1-5 entrance 1
-        <object>1008 test  1 1.0 3.14159 1 0</object> # Test - cave 1-5 entrance 1
+        <object>0976 test  3 1.0 3.14159 1 0</object> # Ruins 2-1 entrance 1
+        <object>1008 test  3 1.0 3.14159 1 0</object> # Ruins 2-1 entrance 1
 
-        <object>0035 chest 1 1.0 0.00000 1 0</object> # Chest
+        <object>0016 test  3 1.0 3.14159 1 0</object> # Cave 4-2 entrance 1
+        <object>0048 test  3 1.0 3.14159 1 0</object> # Cave 4-2 entrance 1
+
     </objects>
 
     <npc_mobs>
         #npc number, scale max, scale min, prevalence
         <#npc_mob>forest_monster 1.0 1.0 1</npc_mob> # forest_monster
         <#npc_mob>golem          1.0 1.0 2</npc_mob> # golem
-        <npc_mob>dragon         1.0 1.0 2</npc_mob> # dragon
+        <npc_mob>golem_ice       1.0 1.0 10</npc_mob> # golem ice
+        <#npc_mob>dragon         1.0 1.0 2</npc_mob> # dragon
         <#npc_mob>bat            0.5 1.0 4</npc_mob> # bat
         <#npc_mob>spider         0.5 1.0 5</npc_mob> # spider
     </npc_mobs>
 
     <npcs>
-        #tile number, npc number, index (0 == random), scale, y-rotation
+        #tile number, npc name, index (0 == random), scale, y-rotation
     </npcs>
 
 </map>

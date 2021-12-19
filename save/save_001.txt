@@ -2,33 +2,33 @@
 <save_file>
 
     <information>
-        <current_map>dungeon_3_001</current_map>
-        <current_position>3785</current_position>
-        <current_rotation>-3.1416</current_rotation>
+        <current_map>cave_4_001</current_map>
+        <current_position>145</current_position>
+        <current_rotation>0.785395</current_rotation>
     </information>
 
     <player>
-        <level_current>0</level_current>
-        <exp_current>0</exp_current>
-        <exp_next>1024</exp_next>
-        <health_current>100</health_current>
-        <health_max>100</health_max>
-        <health_regen>0.025</health_regen>
-        <mana_current>100</mana_current>
-        <mana_max>100</mana_max>
-        <mana_regen>0.025</mana_regen>
-        <damage_physical_base>10</damage_physical_base>
-        <damage_physical_crit_chance>10</damage_physical_crit_chance>
-        <damage_physical_crit_multiplier>1.5</damage_physical_crit_multiplier>
-        <damage_fire_base>10</damage_fire_base>
-        <damage_fire_crit_chance>10</damage_fire_crit_chance>
-        <damage_fire_crit_multiplier>1.5</damage_fire_crit_multiplier>
-        <damage_frost_base>10</damage_frost_base>
-        <damage_frost_crit_chance>10</damage_frost_crit_chance>
-        <damage_frost_crit_multiplier>1.5</damage_frost_crit_multiplier>
-        <armor_physical_base>10</armor_physical_base>
-        <resistance_fire_base>10</resistance_fire_base>
-        <resistance_frost_base>10</resistance_frost_base>
+        <level_current>4</level_current>
+        <exp_current>2160</exp_current>
+        <exp_next>5184</exp_next>
+        <health_current>506.25</health_current>
+        <health_max>506.25</health_max>
+        <health_regen>0.045</health_regen>
+        <mana_current>506.25</mana_current>
+        <mana_max>506.25</mana_max>
+        <mana_regen>0.045</mana_regen>
+        <damage_physical_base>14</damage_physical_base>
+        <damage_physical_crit_chance>14</damage_physical_crit_chance>
+        <damage_physical_crit_multiplier>2.5</damage_physical_crit_multiplier>
+        <damage_fire_base>14</damage_fire_base>
+        <damage_fire_crit_chance>14</damage_fire_crit_chance>
+        <damage_fire_crit_multiplier>2.5</damage_fire_crit_multiplier>
+        <damage_frost_base>14</damage_frost_base>
+        <damage_frost_crit_chance>14</damage_frost_crit_chance>
+        <damage_frost_crit_multiplier>2.5</damage_frost_crit_multiplier>
+        <armor_physical_base>14</armor_physical_base>
+        <resistance_fire_base>14</resistance_fire_base>
+        <resistance_frost_base>14</resistance_frost_base>
     </player>
 
     <quest>
@@ -36,8 +36,24 @@
     </quest>
 
     <map_data>
-        <map>dungeon_3_001 1129001180</map>
+        <map>cave_1_001 887350102</map>
+        <map>cave_1_002 1220203750</map>
+        <map>cave_1_003 111477778</map>
+        <map>cave_1_004 964427187</map>
+        <map>cave_1_005 1451492564</map>
+        <map>cave_1_006 1</map>
+        <map>cave_2_001 945491056</map>
+        <map>cave_2_002 938519235</map>
+        <map>cave_4_001 1</map>
+        <map>cave_4_002 1946855866</map>
+        <map>cemetery_1_001 389151908</map>
+        <map>crypt_1_001 488022985</map>
+        <map>dungeon_1_001 559501454</map>
+        <map>dungeon_1_002 171542398</map>
+        <map>dungeon_3_001 1419617200</map>
+        <map>ruins_1_001 15</map>
         <map>ruins_2_001 15</map>
+        <map>town_1_001 15</map>
     </map_data>
 
 </save_file>

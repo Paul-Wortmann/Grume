@@ -55,6 +55,11 @@
         # These are used when warping from a prior map
         # Portal number, Tile location, player face direction
         # These are exit portals
+        # 0.0000 - Face south
+        # 1.5708 - Face east
+        # 3.1416 - Face north
+        # 4.7124 - Face west
+
         <portal>1 0910 3.14159</portal> #Cave 1-1 exit
         <portal>2 0144 0.00000</portal> #Cave 1-3 exit
     </portals>
@@ -65,9 +70,12 @@
         # Type 2 (Set entity state, index from 1) : tile, event type, entity tile, state, NA
         # Type 3 (Toggle entity state, index from 1) : tile, event type, entity tile, state 1, state 2
 
-        # To town
-        <event>0942 1 10 2 0</event> # Cave 1-1 entrance 1
+        <event>0941 1 10 2 0</event> # Cave 1-1 entrance 2
+        <event>0942 1 10 2 0</event> # Cave 1-1 entrance 2
+        <event>0943 1 10 2 0</event> # Cave 1-1 entrance 2
+        <event>0079 1 12 1 0</event> # Cave 1-3 entrance 1
         <event>0080 1 12 1 0</event> # Cave 1-3 entrance 1
+        <event>0081 1 12 1 0</event> # Cave 1-3 entrance 1
 
     </events>
 

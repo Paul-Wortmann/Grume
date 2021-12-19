@@ -29,7 +29,9 @@
         # These are used when warping from a prior map
         # Portal number, Tile location, player face direction
         # These are exit portals
-        <portal>1 0090 0.0000</portal> #From Dungeon_1_001
+        <event>0444 1 20 2 0</event> # Cemetery 1 Mausoleum entrance
+
+        <portal>1 0100 0.0000</portal> #From Dungeon_1_001
     </portals>
     
     <events>

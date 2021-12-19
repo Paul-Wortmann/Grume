@@ -123,13 +123,20 @@
         # These are used when warping from a prior map
         # Portal number, Tile location, player face direction
         # These are exit portals
+        # 0.0000 - Face south
+        # 1.5708 - Face east
+        # 3.1416 - Face north
+        # 4.7124 - Face west
+
         <portal>1 0544 0.0000</portal> #Cemetery 1 exit
     </portals>
     
     <events>
         # Tile location, type, data 1, data 2
         # Type 1 (Warp to map) -> tile, event type, map number, portal number, NA
+        <event>0443 1 20 2 0</event> # Cemetery 1 Mausoleum entrance
         <event>0444 1 20 2 0</event> # Cemetery 1 Mausoleum entrance
+        <event>0445 1 20 2 0</event> # Cemetery 1 Mausoleum entrance
     </events>
 
     <debris_objects>

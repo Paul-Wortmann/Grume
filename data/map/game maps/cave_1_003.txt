@@ -87,6 +87,11 @@
         # These are used when warping from a prior map
         # Portal number, Tile location, player face direction
         # These are exit portals
+        # 0.0000 - Face south
+        # 1.5708 - Face east
+        # 3.1416 - Face north
+        # 4.7124 - Face west
+
         <portal>1 3872 3.14159</portal> #Cave 1-2 exit
         <portal>2 0224 0.00000</portal> #Cave 1-4 exit (Dragon)
     </portals>
@@ -97,9 +102,13 @@
         # Type 2 (Set entity state, index from 1) : tile, event type, entity tile, state, NA
         # Type 3 (Toggle entity state, index from 1) : tile, event type, entity tile, state 1, state 2
 
-        # To town
-        <event>3936 1 11 2 0</event> # Cave 1-2 entrance 1
+        <event>3935 1 11 2 0</event> # Cave 1-2 entrance 2
+        <event>3936 1 11 2 0</event> # Cave 1-2 entrance 2
+        <event>3937 1 11 2 0</event> # Cave 1-2 entrance 2
+        
+        <event>0159 1 13 1 0</event> # Cave 1-4 entrance 1
         <event>0160 1 13 1 0</event> # Cave 1-4 entrance 1
+        <event>0161 1 13 1 0</event> # Cave 1-4 entrance 1
 
     </events>
 
@@ -121,7 +130,7 @@
 
     <debris_objects>
         #object name, scale max, scale min, prevalence, obstacle
-        <debris>bones 0.5 1.0 64 0</debris> # bones
+        <debris>bones 0.5 1.0 32 0</debris> # bones
     </debris_objects>
 
     <objects>
@@ -136,7 +145,7 @@
 
     <npc_mobs>
         #npc number, scale max, scale min, prevalence
-        <npc_mob>skeleton 0.5 1.0 5</npc_mob> # skeleton
+        <npc_mob>skeleton 0.5 1.0 2</npc_mob> # skeleton
         <#npc_mob>bat 0.5 1.0 5</npc_mob> # bat
     </npc_mobs>
 

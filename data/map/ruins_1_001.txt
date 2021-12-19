@@ -87,6 +87,11 @@
         # These are used when warping from a prior map
         # Portal number, Tile location, player face direction
         # These are exit portals
+        # 0.0000 - Face south
+        # 1.5708 - Face east
+        # 3.1416 - Face north
+        # 4.7124 - Face west
+
         <portal>1 2051 1.5723</portal> #Cave 2 exit 1
         <portal>2 0736 0.0000</portal> #Dungeon 1 exit
         <portal>3 3168 3.1416</portal> #Dungeon 2 exit
