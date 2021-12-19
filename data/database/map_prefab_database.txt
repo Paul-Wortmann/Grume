@@ -54,6 +54,7 @@
         # 11 - Torture Chamber
         <prefab>11 28 19 torturechamber_1_001.txt</prefab>
         <prefab>11 28 19 torturechamber_1_002.txt</prefab>
+        <prefab>11 19 28 torturechamber_1_003.txt</prefab>
         
     </prefabs>
 

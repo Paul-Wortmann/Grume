@@ -1,0 +1,98 @@
+﻿<?xml version = "1.0" encoding = "UTF-8" ?>
+<map_prefab>
+    <information>
+        <exit_data>0 0 1 0</exit_data> # North, south, east, west
+        <room_type>11</room_type>
+        <room_width>19</room_width>
+        <room_height>28</room_height>
+    </information>
+
+    # tileNone      = 0,
+    # tileFloor     = 1,
+    # tileWall      = 2,
+    # tileDoorway   = 3,
+    # tileWallShort = 4,
+    # tileFloorPath = 5,
+    # tileFloorNoGo = 6,
+    # tilePathNoGo  = 7,
+    # tileLiquid    = 8
+
+    <tile_data>
+       <tiles>1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1</tiles>
+       <tiles>1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1</tiles>
+       <tiles>1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1</tiles>
+       <tiles>1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1</tiles>
+       <tiles>1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1</tiles>
+       <tiles>1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1</tiles>
+       <tiles>1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1</tiles>
+       <tiles>1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1</tiles>
+       <tiles>1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1</tiles>
+       <tiles>1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1</tiles>
+       <tiles>1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1</tiles>
+       <tiles>1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1</tiles>
+       <tiles>1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1</tiles>
+       <tiles>1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1</tiles>
+       <tiles>1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1</tiles>
+       <tiles>1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1</tiles>
+       <tiles>1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1</tiles>
+       <tiles>1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1</tiles>
+       <tiles>1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1</tiles>
+       <tiles>1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1</tiles>
+       <tiles>1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1</tiles>
+       <tiles>1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1</tiles>
+       <tiles>1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1</tiles>
+       <tiles>1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1</tiles>
+       <tiles>1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1</tiles>
+       <tiles>1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1</tiles>
+       <tiles>1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1</tiles>
+       <tiles>1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1</tiles>
+    <tile_data>
+
+    <object_data>
+        #tile number (relative to the prefab), object number, scale, y-rotation, obstacle
+
+        <object>079 torture_device 11 1.0 1.5708 1</object> # Torture device - Cage
+        <object>079 gib 03 1.0 3.5721 1</object> # Gib - 
+        <object>085 torture_device 11 1.0 1.5708 1</object> # Torture device - Cage
+        <object>085 gib 04 1.0 4.1605 1</object> # Gib - 
+        <object>091 torture_device 11 1.0 1.5708 1</object> # Torture device - Cage
+        <object>091 gib 05 1.0 0.2625 1</object> # Gib - 
+        <object>193 torture_device 11 1.0 1.5708 1</object> # Torture device - Cage
+        <object>193 gib 05 1.0 0.2625 1</object> # Gib - 
+        <object>145 gib 01 1.0 1.5708 0</object> # Gib - heart
+        <object>140 gib 02 1.0 1.5708 0</object> # Gib - lungs
+        <object>123 gib 03 1.0 4.7124 0</object> # Gib - hand
+        <object>177 gib 04 1.0 3.0216 0</object> # Gib - arm
+        <object>216 gib 05 1.0 4.2416 0</object> # Gib - leg
+        <object>198 gib 05 1.0 2.0316 0</object> # Gib - leg
+        <object>201 gib 07 1.0 0.3450 1</object> # Gib - Corpse
+        <object>199 torture_device 03 1.0 0.0000 1</object> # Torture device - Guillotine
+        <object>205 torture_device 11 1.0 1.5708 1</object> # Torture device - Cage
+        <object>205 gib 05 1.0 0.2625 1</object> # Gib - 
+        <object>293 gib 01 1.0 2.5708 0</object> # Gib - heart
+        <object>250 gib 04 1.0 1.4516 0</object> # Gib - arm
+        <object>277 gib 04 1.0 0.7216 0</object> # Gib - arm
+        <object>345 torture_device 11 1.0 1.5708 1</object> # Torture device - Cage
+        <object>345 gib 08 1.0 6.0610 1</object> # Gib - 
+        <object>353 gib 01 1.0 1.3508 0</object> # Gib - heart
+        <object>330 gib 02 1.0 2.2308 0</object> # Gib - lungs
+        <object>316 gib 03 1.0 3.5674 0</object> # Gib - hand
+        <object>366 gib 04 1.0 4.5616 0</object> # Gib - arm
+        <object>390 gib 05 1.0 3.8416 0</object> # Gib - leg
+        <object>387 gib 05 1.0 2.0316 0</object> # Gib - leg
+        <object>407 gib 07 1.0 0.1450 1</object> # Gib - Corpse
+        <object>351 torture_device 03 1.0 3.1416 1</object> # Torture device - Guillotine
+        <object>357 torture_device 11 1.0 1.5708 1</object> # Torture device - Cage
+        <object>357 gib 08 1.0 6.0610 1</object> # Gib - 
+        <object>459 torture_device 11 1.0 1.5708 1</object> # Torture device - Cage
+        <object>459 gib 07 1.0 5.0254 1</object> # Gib - 
+        <object>465 torture_device 11 1.0 1.5708 1</object> # Torture device - Cage
+        <object>465 gib 08 1.0 3.6215 1</object> # Gib - 
+        <object>471 torture_device 11 1.0 1.5708 1</object> # Torture device - Cage
+        <object>471 gib 08 1.0 6.0610 1</object> # Gib - 
+
+    <object_data>
+
+</map_prefab>
+
+

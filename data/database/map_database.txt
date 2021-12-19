@@ -29,11 +29,11 @@
         <map>051 dungeon_2_002.txt</map>
         <map>051 dungeon_2_003.txt</map>
         <map>090 dungeon_3_001.txt</map>
+        <map>100 ruins_2_001.txt</map>
 
 # these do not yet exist:
 
 
-        <map>100 ruins_2_001.txt</map>
 
         <map>110 cave_4_001.txt</map>
         <map>120 cave_5_001.txt</map>
