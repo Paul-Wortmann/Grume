@@ -87,7 +87,7 @@
         # These are used when warping from a prior map
         # Portal number, Tile location, player face direction
         # These are exit portals
-        <portal>1 2051 1.5723</portal> #Cave 4 exit 1
+        <portal>1 0243 0.0000</portal> #Cave 4 exit 1
         <portal>2 1995 1.5723</portal> #Dungeon 3 exit
 
     </portals>
@@ -95,9 +95,9 @@
     <events>
         # Tile location, type, data 1, data 2
         # Type 1 (Warp to map) -> tile, event type, map number, portal number, NA
-        <#event>1986 1 110 1 0</event> # Cave 2-1 entrance 1
-        <#event>2050 1 110 1 0</event> # Cave 2-1 entrance 1
-        <#event>2114 1 110 1 0</event> # Cave 2-1 entrance 1
+        <event>0178 1 110 1 0</event> # Cave 2-1 entrance 1
+        <event>0179 1 110 1 0</event> # Cave 2-1 entrance 1
+        <event>0180 1 110 1 0</event> # Cave 2-1 entrance 1
 
         <event>1930 1 90  2 0</event> # Dungeon 3 entrance 2
         <event>1994 1 90  2 0</event> # Dungeon 3 entrance 2

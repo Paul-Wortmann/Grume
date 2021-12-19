@@ -19,6 +19,7 @@
     <#map>cave_2_001.txt</map>
     <#map>ruins_1_001.txt</map>
     <map>ruins_2_001.txt</map>
+    <#map>cave_4_002.txt</map>
     
     <player>male_base_1_001.txt</player>
     <quest>quest_list_1_001.txt</quest>

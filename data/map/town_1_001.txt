@@ -112,11 +112,11 @@
     </npc_mobs>
 
     <npcs>
-        #tile number, npc name, index (0 == random), scale, y-rotation
+        #tile number, npc name, index (0 == random), scale, y-rotation, enemy
 
         # town central
-        <npc>1879 blacksmith 1 1.0 0.0000</npc> # Blacksmith
-        <npc>2596 dead_body  1 1.0 0.0000</npc> # Dead Body
+        <npc>1879 blacksmith 1 1.0 0.0000 0</npc> # Blacksmith
+        <npc>2596 dead_body  1 1.0 0.0000 0</npc> # Dead Body
     </npcs>
 
     <debris_objects>

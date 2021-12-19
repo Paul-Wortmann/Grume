@@ -8,11 +8,11 @@
     </information>
     <generation>
        <tiles>2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2</tiles>
-       <tiles>2 1 0 0 1 1 1 1 1 2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2</tiles>
-       <tiles>2 1 0 0 1 1 1 1 1 2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2</tiles>
-       <tiles>2 1 0 0 1 1 1 1 1 2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2</tiles>
        <tiles>2 1 1 1 1 1 1 1 1 2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2</tiles>
-       <tiles>2 1 1 1 1 2 1 1 1 2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 1 1 1 1 2 1 1 1 2 1 1 1 2 1 1 1 2 1 1 1 2 1 1 1 2 1 1 1 2 1 1 1 2 2</tiles>
+       <tiles>2 0 0 0 1 1 1 1 1 2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2</tiles>
+       <tiles>2 0 0 0 1 1 1 1 1 2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2</tiles>
+       <tiles>2 1 1 1 1 1 1 1 1 2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2</tiles>
+       <tiles>2 1 1 1 1 2 1 1 1 2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 1 1 1 1 2 1 1 1 2 1 1 1 2 1 1 1 2 1 1 1 2 1 1 1 2 1 1 1 2 1 1 1 1 2</tiles>
        <tiles>2 1 1 1 1 1 1 1 1 2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2</tiles>
        <tiles>2 1 1 1 1 1 1 1 1 2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2</tiles>
        <tiles>2 1 1 1 1 1 1 1 1 2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2</tiles>
@@ -65,11 +65,11 @@
        <tiles>2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 1 1 1 1 1 1 1 1 2</tiles>
        <tiles>2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 1 1 1 1 1 1 1 1 2</tiles>
        <tiles>2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 1 1 1 1 1 1 1 1 2</tiles>
-       <tiles>2 2 1 1 1 2 1 1 1 2 1 1 1 2 1 1 1 2 1 1 1 2 1 1 1 2 1 1 1 2 1 1 1 1 2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 1 1 1 2 1 1 1 1 2</tiles>
+       <tiles>2 1 1 1 1 2 1 1 1 2 1 1 1 2 1 1 1 2 1 1 1 2 1 1 1 2 1 1 1 2 1 1 1 1 2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 1 1 1 2 1 1 1 1 2</tiles>
        <tiles>2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 1 1 1 1 1 1 1 1 2</tiles>
-       <tiles>2 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 1 1 1 1 1 1 1 1 2</tiles>
-       <tiles>2 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 1 1 1 1 1 1 1 1 2</tiles>
-       <tiles>2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 1 1 1 2 1 1 1 1 2</tiles>
+       <tiles>2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 0 0 0 1 1 1 1 1 2</tiles>
+       <tiles>2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 0 0 0 1 1 1 1 1 2</tiles>
+       <tiles>2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 1 1 1 1 1 1 1 1 2</tiles>
        <tiles>2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2</tiles>
        <generate>0</generate>
        <seed>0</seed>
@@ -88,22 +88,22 @@
         # These are used when warping from a prior map
         # Portal number, Tile location, player face direction
         # These are exit portals
-        <portal>1 0323 0.0000</portal> # Ruins 1-1 exit
-        <portal>2 3909 1.5708</portal> # Ruins 2-1 exit
+        <portal>1 0197 1.5708</portal> # Ruins 1-1 exit
+        <portal>2 3963 1.5708</portal> # Ruins 2-1 exit
     </portals>
     
     <events>
         # Tile location, type, data 1, data 2
         # Type 1 (Warp to map) -> tile, event type, map number, portal number, NA
-        <event>0257 1  70 4 0</event> # Ruins 1-1 entrance 4
-        <event>0258 1  70 4 0</event> # Ruins 1-1 entrance 4
-        <event>0259 1  70 4 0</event> # Ruins 1-1 entrance 4
+        <event>0068 1  70 4 0</event> # Ruins 1-1 entrance 4
+        <event>0132 1  70 4 0</event> # Ruins 1-1 entrance 4
+        <event>0196 1  70 4 0</event> # Ruins 1-1 entrance 4
         <event>0260 1  70 4 0</event> # Ruins 1-1 entrance 4
         
-        <event>3844 1 100 2 0</event> # Ruins 2-1 entrance 2
-        <event>3908 1 100 2 0</event> # Ruins 2-1 entrance 2
-        <event>3972 1 100 2 0</event> # Ruins 2-1 entrance 2
-        <event>4036 1 100 2 0</event> # Ruins 2-1 entrance 2
+        <event>3898 1 100 2 0</event> # Ruins 2-1 entrance 2
+        <event>3962 1 100 2 0</event> # Ruins 2-1 entrance 2
+        <event>4026 1 100 2 0</event> # Ruins 2-1 entrance 2
+        <event>4090 1 100 2 0</event> # Ruins 2-1 entrance 2
         
         
     </events>
@@ -114,7 +114,7 @@
         <#npc_mob>golem          1.0 1.0 2</npc_mob> # golem
         <#npc_mob>dragon         1.0 1.0 3</npc_mob> # dragon
         <#npc_mob>bat            0.5 1.0 4</npc_mob> # bat
-        <npc_mob>spider         0.5 1.0 5</npc_mob> # spider
+        <npc_mob>spider         0.5 1.0 10</npc_mob> # spider
         <#npc_mob>werewolf       0.5 1.0 6</npc_mob> # werewolf
         <#npc_mob>skeleton       0.5 1.0 1</npc_mob> # skeleton
     </npc_mobs>
@@ -127,8 +127,8 @@
         #object name, scale max, scale min, prevalence, obstacle
         <#debris>rock_small 0.5 1.0  20 0</debris> # rock small
         <#debris>dead_tree  0.5 1.0  30 1</debris> # dead tree
-        <debris>bones      0.5 1.0  40 0</debris> # bones
-        <#debris>gib        0.5 1.0  42 0</debris> # gibs
+        <debris>gib        0.5 1.0  20 0</debris> # gibs
+        <debris>bones      0.5 1.0  50 0</debris> # bones
     </debris_objects>
 
     <objects>

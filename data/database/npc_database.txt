@@ -12,12 +12,15 @@
 
         # dragon
         <npc>dragon         npc/dragon_1_001.txt</npc>
+        <npc>dragon_ice     npc/dragon_1_002.txt</npc>
         
         # forest monster
         <npc>forest_monster npc/forest_monster_1_001.txt</npc>
         
         # golem
         <npc>golem          npc/golem_1_001.txt</npc>
+        <npc>golem_fire     npc/golem_1_002.txt</npc>
+        <npc>golem_ice      npc/golem_1_003.txt</npc>
 
         # monk
         <npc>monk           npc/monk_1_001.txt</npc>

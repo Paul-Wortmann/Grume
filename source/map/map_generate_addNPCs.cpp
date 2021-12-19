@@ -60,6 +60,7 @@ void cMapManager::m_addNPCEntities(sMap*& _map)
             std::uint32_t tNPCIndex    = 0;
             float         tNPCScale    = 0.0;
             float         tNPCRotation = 0.0;
+            std::uint32_t tNPCEnemy    = 0;
             std::uint32_t tStringNum = 0;
             std::string   tString = "";
             if (tNPCStringLength > 6)
@@ -87,6 +88,10 @@ void cMapManager::m_addNPCEntities(sMap*& _map)
                         else if (tStringNum == 4)
                         {
                             tNPCRotation = std::stof(tString);
+                        }
+                        else if (tStringNum == 5)
+                        {
+                            tNPCEnemy = std::stoi(tString);
                         }
                         tStringNum++;
                         tString = "";
@@ -159,7 +164,7 @@ void cMapManager::m_addNPCEntities(sMap*& _map)
 
                     _map->tile[tNPCTileNum].npc = tEntity->UID;
                     tEntity->owner = eEntityOwner::ownerMap;
-                    tEntity->type  = eEntityType::entityTypeNPC;
+                    tEntity->type  = (tNPCEnemy == 0) ? eEntityType::entityTypeNPC : eEntityType::entityTypeNPCmob;
                     tEntity->position += glm::vec3(static_cast<float32>(w) + tp - xo, y_pos, static_cast<float32>(h) + tp - yo);
                     if ((tNPCScale > 1.00001f) || (tNPCScale < 0.99999f))
                     {

@@ -89,40 +89,59 @@
     <object>crate objects/crate_4_001.txt<object>
     <object>crate objects/crate_5_001.txt<object>
     
-    # Crystal
-    <object>crystal objects/crystal_blue_001.txt<object>
-    <object>crystal objects/crystal_blue_002.txt<object>
-    <object>crystal objects/crystal_blue_003.txt<object>
-    <object>crystal objects/crystal_blue_004.txt<object>
-    <object>crystal objects/crystal_blue_005.txt<object>
-    <object>crystal objects/crystal_blue_006.txt<object>
-    <object>crystal objects/crystal_blue_007.txt<object>
-    <object>crystal objects/crystal_blue_008.txt<object>
-    <object>crystal objects/crystal_blue_009.txt<object>
-    <object>crystal objects/crystal_blue_010.txt<object>
-    <object>crystal objects/crystal_blue_011.txt<object>
-    <object>crystal objects/crystal_blue_012.txt<object>
-    <object>crystal objects/crystal_blue_013.txt<object>
-    <object>crystal objects/crystal_blue_014.txt<object>
-    <object>crystal objects/crystal_blue_015.txt<object>
-    <object>crystal objects/crystal_blue_016.txt<object>
+    # Crystal_blue
+    <object>crystal_blue objects/crystal_blue_001.txt<object>
+    <object>crystal_blue objects/crystal_blue_002.txt<object>
+    <object>crystal_blue objects/crystal_blue_003.txt<object>
+    <object>crystal_blue objects/crystal_blue_004.txt<object>
+    <object>crystal_blue objects/crystal_blue_005.txt<object>
+    <object>crystal_blue objects/crystal_blue_006.txt<object>
+    <object>crystal_blue objects/crystal_blue_007.txt<object>
+    <object>crystal_blue objects/crystal_blue_008.txt<object>
+    <object>crystal_blue objects/crystal_blue_009.txt<object>
+    <object>crystal_blue objects/crystal_blue_010.txt<object>
+    <object>crystal_blue objects/crystal_blue_011.txt<object>
+    <object>crystal_blue objects/crystal_blue_012.txt<object>
+    <object>crystal_blue objects/crystal_blue_013.txt<object>
+    <object>crystal_blue objects/crystal_blue_014.txt<object>
+    <object>crystal_blue objects/crystal_blue_015.txt<object>
+    <object>crystal_blue objects/crystal_blue_016.txt<object>
+    
+    # Crystal_ice
+    <object>crystal_ice objects/crystal_ice_001.txt<object>
+    <object>crystal_ice objects/crystal_ice_002.txt<object>
+    <object>crystal_ice objects/crystal_ice_003.txt<object>
+    <object>crystal_ice objects/crystal_ice_004.txt<object>
+    <object>crystal_ice objects/crystal_ice_005.txt<object>
+    <object>crystal_ice objects/crystal_ice_006.txt<object>
+    <object>crystal_ice objects/crystal_ice_007.txt<object>
+    <object>crystal_ice objects/crystal_ice_008.txt<object>
+    <object>crystal_ice objects/crystal_ice_009.txt<object>
+    <object>crystal_ice objects/crystal_ice_010.txt<object>
+    <object>crystal_ice objects/crystal_ice_011.txt<object>
+    <object>crystal_ice objects/crystal_ice_012.txt<object>
+    <object>crystal_ice objects/crystal_ice_013.txt<object>
+    <object>crystal_ice objects/crystal_ice_014.txt<object>
+    <object>crystal_ice objects/crystal_ice_015.txt<object>
+    <object>crystal_ice objects/crystal_ice_016.txt<object>
 
-    <object>crystal objects/crystal_red_001.txt<object>
-    <object>crystal objects/crystal_red_002.txt<object>
-    <object>crystal objects/crystal_red_003.txt<object>
-    <object>crystal objects/crystal_red_004.txt<object>
-    <object>crystal objects/crystal_red_005.txt<object>
-    <object>crystal objects/crystal_red_006.txt<object>
-    <object>crystal objects/crystal_red_007.txt<object>
-    <object>crystal objects/crystal_red_008.txt<object>
-    <object>crystal objects/crystal_red_009.txt<object>
-    <object>crystal objects/crystal_red_010.txt<object>
-    <object>crystal objects/crystal_red_011.txt<object>
-    <object>crystal objects/crystal_red_012.txt<object>
-    <object>crystal objects/crystal_red_013.txt<object>
-    <object>crystal objects/crystal_red_014.txt<object>
-    <object>crystal objects/crystal_red_015.txt<object>
-    <object>crystal objects/crystal_red_016.txt<object>
+    # Crystal_red
+    <object>crystal_red objects/crystal_red_001.txt<object>
+    <object>crystal_red objects/crystal_red_002.txt<object>
+    <object>crystal_red objects/crystal_red_003.txt<object>
+    <object>crystal_red objects/crystal_red_004.txt<object>
+    <object>crystal_red objects/crystal_red_005.txt<object>
+    <object>crystal_red objects/crystal_red_006.txt<object>
+    <object>crystal_red objects/crystal_red_007.txt<object>
+    <object>crystal_red objects/crystal_red_008.txt<object>
+    <object>crystal_red objects/crystal_red_009.txt<object>
+    <object>crystal_red objects/crystal_red_010.txt<object>
+    <object>crystal_red objects/crystal_red_011.txt<object>
+    <object>crystal_red objects/crystal_red_012.txt<object>
+    <object>crystal_red objects/crystal_red_013.txt<object>
+    <object>crystal_red objects/crystal_red_014.txt<object>
+    <object>crystal_red objects/crystal_red_015.txt<object>
+    <object>crystal_red objects/crystal_red_016.txt<object>
 
     # Dead_tree
     <object>dead_tree objects/dead_tree_1_001.txt<object>
@@ -351,6 +370,7 @@
     # Test
     <object>test cave_001.1/cave_arch_1_001.txt</object>
     <object>test cave_001.1/cave_arch_2_001.txt</object>
+    <object>test cave_001.1/cave_arch_3_001.txt</object>
 
 
 </object_database>
