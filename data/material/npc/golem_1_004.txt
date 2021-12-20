@@ -1,0 +1,8 @@
+﻿<?xml version = "1.0" encoding = "UTF-8" ?>
+<material>
+    <name>golem_1_004</name>
+    <diffuse>npc/golem_1_004_d.png</diffuse>
+    <emissive>none_e.png</emissive>
+    <normal>npc/golem_1_001_n.png</normal>
+    <specular>npc/golem_1_001_s.png</specular>
+</material>

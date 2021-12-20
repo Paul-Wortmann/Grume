@@ -21,6 +21,7 @@
         <npc>golem          npc/golem_1_001.txt</npc>
         <npc>golem_fire     npc/golem_1_002.txt</npc>
         <npc>golem_ice      npc/golem_1_003.txt</npc>
+        <npc>golem_blood    npc/golem_1_004.txt</npc>
 
         # monk
         <npc>monk           npc/monk_1_001.txt</npc>
