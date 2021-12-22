@@ -11,9 +11,9 @@
         <basic_renderer>0</basic_renderer>
     </graphics>
     <audio>
-        <volume_master>89</volume_master>
-        <volume_music>47</volume_music>
-        <volume_sfx>70</volume_sfx>
+        <volume_master>87</volume_master>
+        <volume_music>44</volume_music>
+        <volume_sfx>68</volume_sfx>
     </audio>
 </config>
 
