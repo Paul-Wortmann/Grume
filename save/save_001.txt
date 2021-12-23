@@ -2,9 +2,9 @@
 <save_file>
 
     <information>
-        <current_map>cave_2_005</current_map>
-        <current_position>418</current_position>
-        <current_rotation>-3.57628e-06</current_rotation>
+        <current_map>cave_2_006</current_map>
+        <current_position>289</current_position>
+        <current_rotation>0.785395</current_rotation>
     </information>
 
     <player>
@@ -42,6 +42,7 @@
         <map>cave_2_003 1554938750</map>
         <map>cave_2_004 1498192192</map>
         <map>cave_2_005 1587205296</map>
+        <map>cave_2_006 754712585</map>
         <map>cemetery_1_001 389151908</map>
         <map>town_1_001 15</map>
     </map_data>
