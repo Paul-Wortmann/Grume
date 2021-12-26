@@ -2,14 +2,14 @@
 <save_file>
 
     <information>
-        <current_map>cave_2_009</current_map>
-        <current_position>224</current_position>
-        <current_rotation>0</current_rotation>
+        <current_map>cave_3_001</current_map>
+        <current_position>3872</current_position>
+        <current_rotation>3.1416</current_rotation>
     </information>
 
     <player>
         <level_current>0</level_current>
-        <exp_current>384</exp_current>
+        <exp_current>480</exp_current>
         <exp_next>1024</exp_next>
         <health_current>100</health_current>
         <health_max>100</health_max>
@@ -46,6 +46,7 @@
         <map>cave_2_007 392694167</map>
         <map>cave_2_008 687079877</map>
         <map>cave_2_009 2020669274</map>
+        <map>cave_3_001 1302918187</map>
         <map>cave_3_002 1116106278</map>
         <map>cemetery_1_001 389151908</map>
         <map>town_1_001 15</map>
