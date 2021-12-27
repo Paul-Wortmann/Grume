@@ -54,17 +54,17 @@
     </state>
     <state>
         <state_name>attack</state_name>
-        <state_sound>bat 3 0</state_sound> # database name, else none, database index, repeat (bool)
+        <state_sound>creature 11 0</state_sound> # database name, else none, database index, repeat (bool)
         <state_animation>0.0 0.333333 0</state_animation> # frame start, frame end, repeat (bool)
     </state>
     <state>
         <state_name>block</state_name>
-        <state_sound>bat 1 0</state_sound> # database name, else none, database index, repeat (bool)
+        <state_sound>creature 50 0</state_sound> # database name, else none, database index, repeat (bool)
         <state_animation>0.0 0.333333 0</state_animation> # frame start, frame end, repeat (bool)
     </state>
     <state>
         <state_name>die</state_name>
-        <state_sound>bat 2 0</state_sound> # database name, else none, database index, repeat (bool)
+        <state_sound>impact_splat 2 0</state_sound> # database name, else none, database index, repeat (bool)
         <state_animation>0.0 0.1 0</state_animation> # frame start, frame end, repeat (bool)
     </state>
     <state>
