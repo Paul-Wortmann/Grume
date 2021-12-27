@@ -125,6 +125,7 @@ class cGraphicsEngine
         bool               m_basicRender        = false;
         bool               m_loadRender         = true;
         bool               m_animation          = true;
+        float              m_renderRange        = 800.0f;
         
         // Particles
         cGraphicsEngineParticles m_particleEngine;

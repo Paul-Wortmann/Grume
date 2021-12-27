@@ -92,8 +92,8 @@ void cGameEngine::game_load(const uint32 &_slotNum)
         
         // Experience + level
         player->character->level.current = xmlSaveGameFile.getInteger("<level_current>");
-        player->character->level.exp     = xmlSaveGameFile.getInteger64("<exp_current>");
-        player->character->level.expNext = xmlSaveGameFile.getInteger64("<exp_next>");
+        player->character->level.exp     = xmlSaveGameFile.getUInteger64("<exp_current>");
+        player->character->level.expNext = xmlSaveGameFile.getUInteger64("<exp_next>");
         
         // Health
         player->character->attributes.health.current = xmlSaveGameFile.getInteger("<health_current>");

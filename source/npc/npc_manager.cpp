@@ -84,17 +84,17 @@ void cNPCManager::process(const float32 &_dt)
             // Turn to face the player
             float32 angle = static_cast<float32>(atan2(m_entityTemp->position.z - m_entityPlayer->position.z, m_entityTemp->position.x - m_entityPlayer->position.x));
 
-            if (m_entityTemp->rotationAxis.x == 1)
+            if (m_entityTemp->rotationAxis.x != 0)
             {
-                m_entityTemp->rotation.x = angle + m_entityTemp->rotationOffset.x;
+                m_entityTemp->rotation.x = m_entityTemp->rotationOffset.x + (angle * m_entityTemp->rotationAxis.x);
             }
-            else if (m_entityTemp->rotationAxis.y == 1)
+            else if (m_entityTemp->rotationAxis.y != 0)
             {
-                m_entityTemp->rotation.y = angle + m_entityTemp->rotationOffset.y;
+                m_entityTemp->rotation.y = m_entityTemp->rotationOffset.y + (angle * m_entityTemp->rotationAxis.y);
             }
-            else if (m_entityTemp->rotationAxis.z == 1)
+            else if (m_entityTemp->rotationAxis.z != 0)
             {
-                m_entityTemp->rotation.z = angle + m_entityTemp->rotationOffset.z;
+                m_entityTemp->rotation.z = m_entityTemp->rotationOffset.z + (angle * m_entityTemp->rotationAxis.z);
             }
             
             // Check if player is visable, if so continue

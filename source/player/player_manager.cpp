@@ -426,18 +426,17 @@ void cPlayerManager::process(const float32 &_dt)
             
             // Turn to face move direction
             float32 angle = static_cast<float32>(atan2(playerPos.z - playerPrevPos.z, playerPrevPos.x - playerPos.x));
-
-            if (m_player->rotationAxis.x == 1)
+            if (m_player->rotationAxis.x != 0)
             {
-                playerRot.x = angle + m_player->rotationOffset.x;
+                playerRot.x = m_player->rotationOffset.x + (angle * m_player->rotationAxis.x);
             }
-            else if (m_player->rotationAxis.y == 1)
+            else if (m_player->rotationAxis.y != 0)
             {
-                playerRot.y = angle + m_player->rotationOffset.y;
+                playerRot.y = m_player->rotationOffset.y + (angle * m_player->rotationAxis.y);
             }
-            else if (m_player->rotationAxis.z == 1)
+            else if (m_player->rotationAxis.z != 0)
             {
-                playerRot.z = angle + m_player->rotationOffset.z;
+                playerRot.z = m_player->rotationOffset.z + (angle * m_player->rotationAxis.z);
             }
         }
         

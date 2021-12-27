@@ -179,7 +179,7 @@ std::string cXML::getString(const std::string &_key, const std::uint32_t _instan
     return rString;
 }
 
-std::uint32_t cXML::getInteger(const std::string &_key, const std::uint32_t _instance)
+std::int32_t cXML::getInteger(const std::string &_key, const std::uint32_t _instance)
 {
     std::string value = getString(_key, _instance);
     if (value.length() < 1)
@@ -189,7 +189,7 @@ std::uint32_t cXML::getInteger(const std::string &_key, const std::uint32_t _ins
     return std::stoi(value);
 }
 
-uint64 cXML::getInteger64(const std::string &_key, const std::uint32_t _instance)
+uint64 cXML::getUInteger64(const std::string &_key, const std::uint32_t _instance)
 {
     std::string value = getString(_key, _instance);
     if (value.length() < 1)

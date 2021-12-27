@@ -87,6 +87,9 @@ sEntityModel* cMapManager::m_generateFloor(sMap*& _map)
             _map->floor->model->mesh = nullptr;
         }
     }
+    
+    // Set entity type
+    _map->floor->type  = eEntityType::entityTypeFloor;
 
     // Fail if model is nullptr
     if (_map->floor->model == nullptr)

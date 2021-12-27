@@ -4,6 +4,9 @@
         # bat
         <npc>bat            npc/bat_1_001.txt</npc>
         
+        # bug
+        <npc>bug            npc/bug_1_001.txt</npc>
+        
         # blacksmith
         <npc>blacksmith     npc/blacksmith_1_001.txt</npc>
         

@@ -48,7 +48,9 @@ enum eEntityType: uint16
     entityTypeStatic    = 1,
     entityTypeObject    = 2,
     entityTypeNPCmob    = 3,
-    entityTypeNPC       = 4
+    entityTypeNPC       = 4,
+    entityTypeWall      = 5,
+    entityTypeFloor     = 6
 };
 
 struct sEntity
