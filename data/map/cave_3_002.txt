@@ -148,7 +148,8 @@
         <#npc_mob>forest_monster 1.0 1.0 1</npc_mob> # forest_monster
         <#npc_mob>golem          1.0 1.0 2</npc_mob> # golem
         <#npc_mob>dragon         1.0 1.0 3</npc_mob> # dragon
-        <npc_mob>bat            0.5 1.0 2</npc_mob> # bat
+        <npc_mob>bat            0.5 1.0 4</npc_mob> # bat
+        <npc_mob>bug            0.5 1.0 8</npc_mob> # bug
         <#npc_mob>spider         0.5 1.0 5</npc_mob> # spider
         <#npc_mob>werewolf       0.5 1.0 6</npc_mob> # werewolf
         <#npc_mob>skeleton       0.5 1.0 1</npc_mob> # skeleton
