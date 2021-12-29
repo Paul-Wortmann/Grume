@@ -2,7 +2,7 @@
 <entity>
     <name>mort_safe_1_001</name>
     <model>objects/mort_safe_1_001.obj</model>
-    <material>objects/mort_safe_1_001.txt</material>
+    <material>objects/metal_1_001.txt</material>
 
     <position>-0.5 0.0 0.0</position>
     <scale>0.75 0.75 0.75</scale>

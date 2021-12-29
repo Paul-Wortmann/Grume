@@ -1,0 +1,11 @@
+﻿<?xml version = "1.0" encoding = "UTF-8" ?>
+<entity>
+    <name>spiked_gib_1_003</name>
+    <model>objects/spiked_gib_1_003.obj</model>
+    <material>objects/spiked_gib_1_001.txt</material>
+
+    <position>0.0 0.0 0.0</position>
+    <scale>1.0 1.0 1.0</scale>
+    <rotation>0.0 0.0 0.0</rotation>
+
+</entity>

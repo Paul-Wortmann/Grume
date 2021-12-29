@@ -2,14 +2,14 @@
 <save_file>
 
     <information>
-        <current_map>cemetery_1_001</current_map>
-        <current_position>3255</current_position>
-        <current_rotation>-1.5708</current_rotation>
+        <current_map>ruins_2_001</current_map>
+        <current_position>2300</current_position>
+        <current_rotation>1.57079</current_rotation>
     </information>
 
     <player>
         <level_current>0</level_current>
-        <exp_current>0</exp_current>
+        <exp_current>8</exp_current>
         <exp_next>1024</exp_next>
         <health_current>100</health_current>
         <health_max>100</health_max>
@@ -37,7 +37,11 @@
 
     <map_data>
         <map>cave_1_001 887350102</map>
+        <map>cave_2_001 936021274</map>
         <map>cemetery_1_001 389151908</map>
+        <map>dungeon_3_001 1260264172</map>
+        <map>ruins_1_001 15</map>
+        <map>ruins_2_001 15</map>
         <map>town_1_001 15</map>
     </map_data>
 

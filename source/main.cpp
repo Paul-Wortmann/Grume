@@ -28,5 +28,3 @@ int main(int argc, char** argv)
     cGameEngine gameEngine;
     return gameEngine.run(argc, argv);
 }
-
-//impaled corpse / head

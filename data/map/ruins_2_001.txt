@@ -143,6 +143,12 @@
         # Broken tower ruins
         <object>1990 tower             1 1.0 3.1416 1 0</object> # Tower west
 
+
+        <object>2170 altar             1 1.0 0.0000 1 0</object> # Altar - 1
+        <object>2038 spiked_gib        5 1.0 0.0000 1 0</object> # Spiked gib - 5
+        <object>2423 spiked_gib        3 1.0 0.0000 1 0</object> # Spiked gib - 3
+        <object>1785 spiked_gib        2 1.0 0.0000 1 0</object> # Spiked gib - 2
+
     </objects>
 
 </map>

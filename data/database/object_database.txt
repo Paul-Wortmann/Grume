@@ -232,6 +232,13 @@
 
     # Skeleton
     <object>skeleton objects/skeleton_horse_1_001.txt</object>
+    
+    # Spiked Gib
+    <object>spiked_gib objects/spiked_gib_1_001.txt</object>
+    <object>spiked_gib objects/spiked_gib_1_002.txt</object>
+    <object>spiked_gib objects/spiked_gib_1_003.txt</object>
+    <object>spiked_gib objects/spiked_gib_1_004.txt</object>
+    <object>spiked_gib objects/spiked_gib_1_005.txt</object>
 
     # Statue
     <object>statue objects/medieval_statue_1_001.txt</object>
