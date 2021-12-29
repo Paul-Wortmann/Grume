@@ -241,6 +241,8 @@
         <object>1265 fence_metal       2  1.0 0.0000 1 0</object> # Fence metal 1
         <object>1266 fence_metal       5  1.0 1.5708 1 0</object> # Fence metal 1
 
+        # graveyard 4 (south east)
+        <object>3260 cemetery_object   9  1.0 1.5708 1 0</object> # cemetery object - mort safe
     </objects>
 
 </map>
