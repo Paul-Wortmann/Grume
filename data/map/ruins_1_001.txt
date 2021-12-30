@@ -149,6 +149,9 @@
         <object>2048 test              1  1.0 1.5708 1 0</object> # Cave 2 entrance 2
         <object>2049 test              1  1.0 1.5708 1 0</object> # Cave 2 entrance 2
 
+        # dead tree stump
+        <object>1428 dead_tree_stump   1  1.0 1.5708 1 0</object> # Dead tree stump
+
         # Central pillars
         <object>1820 cemetery_object   3  1.0 0.0000 1 0</object> # cemetery object pillar
         <object>1827 cemetery_object   3  1.0 0.0000 1 0</object> # cemetery object pillar

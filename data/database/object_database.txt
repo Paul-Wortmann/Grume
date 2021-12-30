@@ -147,6 +147,9 @@
     # Dead_tree
     <object>dead_tree objects/dead_tree_1_001.txt<object>
 
+    # Dead_tree_stump
+    <object>dead_tree_stump objects/tree_stump_1_001.txt<object>
+
     # Door
     <object>door doors/dungeon_door_1_001.txt<object>
     <object>door doors/dungeon_door_2_001.txt<object>

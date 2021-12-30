@@ -40,32 +40,32 @@
     <state>
         <state_name>idle</state_name>
         <state_sound>none 0 0</state_sound> # database name, else none, database index, repeat (bool)
-        <state_animation>0.0 0.666666667 1</state_animation> # frame start, frame end, repeat (bool)
+        <state_animation>0.083333333 1.083333333 1</state_animation> # frame start, frame end, repeat (bool)
     </state>
     <state>
         <state_name>move</state_name>
         <state_sound>none 0 0</state_sound> # database name, else none, database index, repeat (bool)
-        <state_animation>0.0 0.666666667 1</state_animation> # frame start, frame end, repeat (bool)
+        <state_animation>0.083333333 1.083333333 1</state_animation> # frame start, frame end, repeat (bool)
     </state>
     <state>
         <state_name>attack</state_name>
-        <state_sound>spider 2 0</state_sound> # database name, else none, database index, repeat (bool)
-        <state_animation>0.0 0.666666667 0</state_animation> # frame start, frame end, repeat (bool)
+        <state_sound>monster_1 1 0</state_sound> # database name, else none, database index, repeat (bool)
+        <state_animation>0.083333333 1.083333333 1</state_animation> # frame start, frame end, repeat (bool)
     </state>
     <state>
         <state_name>block</state_name>
-        <state_sound>spider 1 0</state_sound> # database name, else none, database index, repeat (bool)
-        <state_animation>0.0 0.666666667 0</state_animation> # frame start, frame end, repeat (bool)
+        <state_sound>monster_1 2 0</state_sound> # database name, else none, database index, repeat (bool)
+        <state_animation>0.083333333 1.083333333 1</state_animation> # frame start, frame end, repeat (bool)
     </state>
     <state>
         <state_name>die</state_name>
-        <state_sound>spider 2 0</state_sound> # database name, else none, database index, repeat (bool)
-        <state_animation>0.0 0.1 0</state_animation> # frame start, frame end, repeat (bool)
+        <state_sound>creature 28 0</state_sound> # database name, else none, database index, repeat (bool)
+        <state_animation>0.083333333 0.1 1</state_animation> # frame start, frame end, repeat (bool)
     </state>
     <state>
         <state_name>gethit</state_name>
-        <state_sound>spider 1 0</state_sound> # database name, else none, database index, repeat (bool)
-        <state_animation>0.0 0.666666667 0</state_animation> # frame start, frame end, repeat (bool)
+        <state_sound>creature 25 0</state_sound> # database name, else none, database index, repeat (bool)
+        <state_animation>0.083333333 1.083333333 1</state_animation> # frame start, frame end, repeat (bool)
     </state>
 
     <ai>
