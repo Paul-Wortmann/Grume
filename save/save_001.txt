@@ -2,16 +2,16 @@
 <save_file>
 
     <information>
-        <current_map>crypt_1_001</current_map>
-        <current_position>3751</current_position>
-        <current_rotation>-1.5708</current_rotation>
+        <current_map>ruins_1_001</current_map>
+        <current_position>2017</current_position>
+        <current_rotation>-3.57628e-06</current_rotation>
     </information>
 
     <player>
         <level_current>0</level_current>
-        <exp_current>40</exp_current>
+        <exp_current>224</exp_current>
         <exp_next>1024</exp_next>
-        <health_current>100</health_current>
+        <health_current>0</health_current>
         <health_max>100</health_max>
         <health_regen>0.025</health_regen>
         <mana_current>100</mana_current>
@@ -37,7 +37,9 @@
 
     <map_data>
         <map>cave_1_001 887350102</map>
+        <map>cave_1_002 1220203750</map>
         <map>cave_2_001 936021274</map>
+        <map>cave_2_002 107890348</map>
         <map>cemetery_1_001 389151908</map>
         <map>crypt_1_001 936021274</map>
         <map>ruins_1_001 15</map>
