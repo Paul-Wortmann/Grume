@@ -1,10 +1,10 @@
 ﻿<?xml version = "1.0" encoding = "UTF-8" ?>
 <material>
-    <name>cave_002</name>
-    <diffuse>cave/cave_2_001_d.png</diffuse>
+    <name>cave_wall_002</name>
+    <diffuse>cave/cave_wall_2_001_d.png</diffuse>
     <emissive>none_e.png</emissive>
-    <normal>cave/cave_1_001_n.png</normal>
-    <specular>cave/cave_2_001_s.png</specular>
+    <normal>cave/cave_wall_1_001_n.png</normal>
+    <specular>cave/cave_wall_2_001_s.png</specular>
 </material>
 
 
