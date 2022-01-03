@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding= "UTF-8"?>
 <sound_database>
 
+        <sound>ability ability/ability_learn_1_001.ogg</sound>
+        <sound>ability ability/level_up_1_001.ogg</sound>
+        <sound>ability ability/transition_1_001.ogg</sound>
+
         <sound>bat monster/bat/bat_1_001.ogg</sound>
         <sound>bat monster/bat/bat_1_002.ogg</sound>
         <sound>bat monster/bat/bat_1_003.ogg</sound>
@@ -133,6 +137,11 @@
         <sound>impact_splat monster/impact_splat/impact_splat_1_006.ogg<sound>
         <sound>impact_splat monster/impact_splat/impact_splat_1_007.ogg<sound>
         <sound>impact_splat monster/impact_splat/impact_splat_1_008.ogg<sound>
+
+        <sound>menu menu/item_pickup_1_001.ogg</sound>
+        <sound>menu menu/menu_confirm_1_001.ogg</sound>
+        <sound>menu menu/menu_error_1_001.ogg</sound>
+        <sound>menu menu/menu_move_1_001.ogg</sound>
 
         <sound>minotaur monster/minotaur/minotaur_1_001.ogg<sound>
         <sound>minotaur monster/minotaur/minotaur_1_002.ogg<sound>
