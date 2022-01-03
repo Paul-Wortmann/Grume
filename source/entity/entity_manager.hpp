@@ -55,6 +55,8 @@ class cEntityManager : public tcLinkedList<sEntity>
         void             activateState(const uint32& _UID, const uint32& _state);
         void             setState(const uint32& _UID, const string& _name);
         void             setState(const uint32& _UID, const uint32& _state);
+        void             setForceState(const uint32& _UID, const string& _name);
+        void             setForceState(const uint32& _UID, const uint32& _state);
         void             toggleState(const uint32& _UID, const string& _name1, const string& _name2);
         void             toggleState(const uint32& _UID, const uint32& _state1, const uint32& _state2);
         void             saveScreenShot(const string &_fileName) { m_modelManager.saveScreenShot(_fileName); };

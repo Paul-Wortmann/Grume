@@ -308,6 +308,9 @@ void cPlayerManager::process(const float32 &_dt)
                                 {
                                     while (m_player->character->level.exp > m_player->character->level.expNext)
                                     {
+                                        // Level up state
+                                        m_entityManager->setForceState(m_player->UID, "levelUp");
+                                        
                                         // Increase level
                                         m_player->character->level.exp -= m_player->character->level.expNext;
                                         m_player->character->level.expNext *= m_player->character->level.expMultiplier;

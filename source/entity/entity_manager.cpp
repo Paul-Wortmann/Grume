@@ -675,6 +675,7 @@ void cEntityManager::activateState(const uint32& _UID, const uint32& _state)
         m_setTileState(entityTemp, entityTemp->stateCurrent);
     }
 }
+
 void cEntityManager::setState(const uint32& _UID, const std::string& _name)
 {
     // Get the Entity UID
@@ -697,6 +698,43 @@ void cEntityManager::setState(const uint32& _UID, const uint32& _state)
     // Only change the state if it is different, and the previous animation has completed
     if (((entityTemp->repeatAnimation == false) && (entityTemp->stateCurrent != _state) && (entityTemp->finishedAnimation)) ||
         ((entityTemp->repeatAnimation == true) && (entityTemp->stateCurrent != _state)))
+    {
+        // Set the new state
+        entityTemp->stateCurrent = _state; // Index from 1, not 0
+        
+        // Set animation data associated with state
+        m_setAnimationState(entityTemp, entityTemp->stateCurrent);
+
+        // Play sound associated with state
+        m_playSound(entityTemp, entityTemp->stateCurrent);
+
+        // Set tile state associated with state
+        m_setTileState(entityTemp, entityTemp->stateCurrent);
+    }
+}
+
+
+void cEntityManager::setForceState(const uint32& _UID, const std::string& _name)
+{
+    // Get the Entity UID
+    sEntity* entityTemp = m_UIDtoEntity(_UID);
+    for (uint32 i = 0; i < entityTemp->stateCount; ++i)
+    {
+        if (entityTemp->state[i].name.compare(_name) == 0)
+        {
+            setForceState(_UID, i + 1);
+            break;
+        }
+    }
+}
+
+void cEntityManager::setForceState(const uint32& _UID, const uint32& _state)
+{
+    // Get the entity pointer first
+    sEntity* entityTemp = m_UIDtoEntity(_UID);
+
+    // Only change the state if it is different
+    if (entityTemp->stateCurrent != _state)
     {
         // Set the new state
         entityTemp->stateCurrent = _state; // Index from 1, not 0
