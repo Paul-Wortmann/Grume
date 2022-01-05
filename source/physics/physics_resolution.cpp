@@ -88,30 +88,39 @@ void gPhysicsResolution_Circle_Circle(float32 &_vx1, float32 &_vy1, float32 &_px
     // Calculate mass
     //const float32 m1 = pow(_r1, 3);
     //const float32 m2 = pow(_r2, 3);
-    const float32 m1 = _m1;
-    const float32 m2 = _m2;
+    float32 m1 = _m1;
+    float32 m2 = _m2;
 
-    const float32 mm  = m1 - m2;
-    const float32 mmt = m1 + m2;
-    const float32 v1s = v1 * sin(d1 - directOfContact);
+    float32 mm  = m1 - m2;
+    float32 mmt = m1 + m2;
+    float32 v1s = v1 * sin(d1 - directOfContact);
 
-    const float32 cp = cos(directOfContact);
-    const float32 sp = sin(directOfContact);
+    float32 cp = cos(directOfContact);
+    float32 sp = sin(directOfContact);
     float32 cdp1 = v1 * cos(d1 - directOfContact);
     float32 cdp2 = v2 * cos(d2 - directOfContact);
-    const float32 cpp = cos((directOfContact + M_PI) / 2);
-    const float32 spp = sin((directOfContact + M_PI) / 2);
+    float32 cpp = cos((directOfContact + M_PI) / 2);
+    float32 spp = sin((directOfContact + M_PI) / 2);
 
-    float t = 0.0f;
+    float t = 0.5f;
 
-    if (!_static1)
+    if (_static1)
+    {
+        std::cout << "static 1" << std::endl;
+        _vx2 = -1 * _vx2;
+        _vy2 = -1 * _vy2;
+    }
+    else if (_static2)
+    {
+        std::cout << "static 2" << std::endl;
+        _vx1 = -1 * _vx1;
+        _vy1 = -1 * _vy1;
+    }
+    else
     {
         t = (cdp1 * mm + 2 * m2 * cdp2) / mmt;
         _vx1 = t * cp + v1s * cpp;
         _vy1 = t * sp + v1s * spp;
-    }
-    if (!_static2)
-    {
         directOfContact += M_PI;
         const float32 v2s = v2 * sin(d2 - directOfContact);
         cdp1 = v1 * cos(d1 - directOfContact);
