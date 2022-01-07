@@ -24,64 +24,64 @@
 #include "physics_collision.hpp"
 
 // Angle between two points
-float gPhysicsAngleTwoPoints(const float32 &_x1, const float32 &_y1,
-                             const float32 &_x2, const float32 &_y2)
+float gPhysicsAngleTwoPoints(const float32 &_px1, const float32 &_py1,
+                             const float32 &_px2, const float32 &_py2)
 {
-    return atan2(_y1 - _y2, _x1 - _x2);
+    return atan2(_py1 - _py2, _px1 - _px2);
 }
 
 // Circle - Circle
-bool gPhysicsCollision_Circle_Circle(const float32 &_x1, const float32 &_y1, const float32 &_r1,
-                                     const float32 &_x2, const float32 &_y2, const float32 &_r2)
+bool gPhysicsCollision_Circle_Circle(const float32 &_px1, const float32 &_py1, const float32 &_r1,
+                                     const float32 &_px2, const float32 &_py2, const float32 &_r2)
 {
-    return (((_x1 - _x2) * (_x1 - _x2)) + ((_y1 - _y2) * (_y1 - _y2))) < ((_r1 + _r2) * (_r1 + _r2));
+    return (((_px1 - _px2) * (_px1 - _px2)) + ((_py1 - _py2) * (_py1 - _py2))) < ((_r1 + _r2) * (_r1 + _r2));
 }
 
 // Circle - Circle distance
-float gPhysicsDistance_Circle_Circle(const float32 &_x1, const float32 &_y1, const float32 &_r1,
-                                     const float32 &_x2, const float32 &_y2, const float32 &_r2)
+float gPhysicsDistance_Circle_Circle(const float32 &_px1, const float32 &_py1, const float32 &_r1,
+                                     const float32 &_px2, const float32 &_py2, const float32 &_r2)
 {
-    return sqrt(((_x1 - _x2) * (_x1 - _x2)) + ((_y1 - _y2) * (_y1 - _y2)));
+    return sqrt(((_px1 - _px2) * (_px1 - _px2)) + ((_py1 - _py2) * (_py1 - _py2)));
 }
 
 // Sphere - Sphere
-bool gPhysicsCollision_Sphere_Sphere(const float32 &_x1, const float32 &_y1, const float32 &_z1, const float32 &_r1,
-                                     const float32 &_x2, const float32 &_y2, const float32 &_z2, const float32 &_r2)
+bool gPhysicsCollision_Sphere_Sphere(const float32 &_px1, const float32 &_py1, const float32 &_pz1, const float32 &_r1,
+                                     const float32 &_px2, const float32 &_py2, const float32 &_pz2, const float32 &_r2)
 {
-    return (((_x1 - _x2) * (_x1 - _x2)) + ((_y1 - _y2) * (_y1 - _y2)) + ((_z1 - _z2) * (_z1 - _z2))) < ((_r1 + _r2) * (_r1 + _r2));
+    return (((_px1 - _px2) * (_px1 - _px2)) + ((_py1 - _py2) * (_py1 - _py2)) + ((_pz1 - _pz2) * (_pz1 - _pz2))) < ((_r1 + _r2) * (_r1 + _r2));
 }
 
 // Axis aligned bounding square - Axis aligned bounding square
-bool gPhysicsCollision_aabs_aabs(const float32 &_x1, const float32 &_y1, const float32 &_hw1, const float32 &_hh1,
-                                 const float32 &_x2, const float32 &_y2, const float32 &_hw2, const float32 &_hh2)
+bool gPhysicsCollision_aabs_aabs(const float32 &_px1, const float32 &_py1, const float32 &_hw1, const float32 &_hh1,
+                                 const float32 &_px2, const float32 &_py2, const float32 &_hw2, const float32 &_hh2)
 {
-    return (((_x1 - _hw1) < (_x2 + _hw2)) &&
-            ((_x1 + _hw1) > (_x2 - _hw2)) &&
-            ((_y1 - _hh1) < (_y2 + _hh2)) &&
-            ((_y1 + _hh1) > (_y2 - _hh2)));
+    return (((_px1 - _hw1) < (_px2 + _hw2)) &&
+            ((_px1 + _hw1) > (_px2 - _hw2)) &&
+            ((_py1 - _hh1) < (_py2 + _hh2)) &&
+            ((_py1 + _hh1) > (_py2 - _hh2)));
 }
 
 // Axis aligned bounding box - Axis aligned bounding box
-bool gPhysicsCollision_aabb_aabb(const float32 &_x1, const float32 &_y1, const float32 &_z1, const float32 &_hw1, const float32 &_hh1, const float32 &_hd1,
-                                 const float32 &_x2, const float32 &_y2, const float32 &_z2, const float32 &_hw2, const float32 &_hh2, const float32 &_hd2)
+bool gPhysicsCollision_aabb_aabb(const float32 &_px1, const float32 &_py1, const float32 &_pz1, const float32 &_hw1, const float32 &_hh1, const float32 &_hd1,
+                                 const float32 &_px2, const float32 &_py2, const float32 &_pz2, const float32 &_hw2, const float32 &_hh2, const float32 &_hd2)
 {
-    return (((_x1 - _hw1) < (_x2 + _hw2)) &&
-            ((_x1 + _hw1) > (_x2 - _hw2)) &&
-            ((_y1 - _hh1) < (_y2 + _hh2)) &&
-            ((_y1 + _hh1) > (_y2 - _hh2)) &&
-            ((_z1 - _hd1) < (_z2 + _hd2)) &&
-            ((_z1 + _hd1) > (_z2 - _hd2)));
+    return (((_px1 - _hw1) < (_px2 + _hw2)) &&
+            ((_px1 + _hw1) > (_px2 - _hw2)) &&
+            ((_py1 - _hh1) < (_py2 + _hh2)) &&
+            ((_py1 + _hh1) > (_py2 - _hh2)) &&
+            ((_pz1 - _hd1) < (_pz2 + _hd2)) &&
+            ((_pz1 + _hd1) > (_pz2 - _hd2)));
 }
 
 // AABS - Circle collision
-bool gPhysicsCollision_aabs_circle(const float32 &_x1, const float32 &_y1, const float32 &_hw1, const float32 &_hh1,
-                                   const float32 &_x2, const float32 &_y2, const float32 &_r2)
+bool gPhysicsCollision_aabs_circle(const float32 &_px1, const float32 &_py1, const float32 &_hw1, const float32 &_hh1,
+                                   const float32 &_px2, const float32 &_py2, const float32 &_r2)
 {
     // get center point circle first
-    glm::vec2 circle_center = glm::vec2(_x2, _y2) + _r2;
+    glm::vec2 circle_center = glm::vec2(_px2, _py2) + _r2;
     // calculate AABB info (center, half-extents)
     glm::vec2 aabb_half_extents = glm::vec2(_hw1, _hh1);
-    glm::vec2 aabb_center = glm::vec2(_x1 + aabb_half_extents.x, _y1 + aabb_half_extents.y);
+    glm::vec2 aabb_center = glm::vec2(_px1 + aabb_half_extents.x, _py1 + aabb_half_extents.y);
     // get difference vector between both centers
     glm::vec2 difference = circle_center - aabb_center;
     glm::vec2 clamped = glm::clamp(difference, -aabb_half_extents, aabb_half_extents);

@@ -26,32 +26,32 @@
 
 #include "../core/includes.hpp"
 
-// x, y, z       - position
+// px, py, pz    - position
 // r             - radius
 // sx, sy, sz    - size
 // hsx, hsy, hsz - half size
 
 // Angle between two points
-float gPhysicsAngleTwoPoints(const float32 &_x1, const float32 &_y1,
-                             const float32 &_x2, const float32 &_y2);
+float gPhysicsAngleTwoPoints(const float32 &_px1, const float32 &_py1,
+                             const float32 &_px2, const float32 &_py2);
 // Circle - Circle collision
-bool gPhysicsCollision_Circle_Circle(const float32 &_x1, const float32 &_y1, const float32 &_r1,
-                                     const float32 &_x2, const float32 &_y2, const float32 &_r2);
+bool gPhysicsCollision_Circle_Circle(const float32 &_px1, const float32 &_py1, const float32 &_r1,
+                                     const float32 &_px2, const float32 &_py2, const float32 &_r2);
 // Circle - Circle distance
-float gPhysicsDistance_Circle_Circle(const float32 &_x1, const float32 &_y1, const float32 &_r1,
-                                     const float32 &_x2, const float32 &_y2, const float32 &_r2);
+float gPhysicsDistance_Circle_Circle(const float32 &_px1, const float32 &_py1, const float32 &_r1,
+                                     const float32 &_px2, const float32 &_py2, const float32 &_r2);
 // Sphere - Sphere collision
-bool gPhysicsCollision_Sphere_Sphere(const float32 &_x1, const float32 &_y1, const float32 &_z1, const float32 &_r1,
-                                     const float32 &_x2, const float32 &_y2, const float32 &_z2, const float32 &_r2);
+bool gPhysicsCollision_Sphere_Sphere(const float32 &_px1, const float32 &_py1, const float32 &_pz1, const float32 &_r1,
+                                     const float32 &_px2, const float32 &_py2, const float32 &_pz2, const float32 &_r2);
 // Axis aligned bounding square - Axis aligned bounding square collision
-bool gPhysicsCollision_aabs_aabs(const float32 &_x1, const float32 &_y1, const float32 &_hsx1, const float32 &_hsy1,
-                                 const float32 &_x2, const float32 &_y2, const float32 &_hsx2, const float32 &_hsy2);
+bool gPhysicsCollision_aabs_aabs(const float32 &_px1, const float32 &_py1, const float32 &_hsx1, const float32 &_hsy1,
+                                 const float32 &_px2, const float32 &_py2, const float32 &_hsx2, const float32 &_hsy2);
 // Axis aligned bounding box - Axis aligned bounding box collision
-bool gPhysicsCollision_aabb_aabb(const float32 &_x1, const float32 &_y1, const float32 &_z1, const float32 &_hsx1, const float32 &_hsy1, const float32 &_hsz1,
-                                 const float32 &_x2, const float32 &_y2, const float32 &_z2, const float32 &_hsx2, const float32 &_hsy2, const float32 &_hsz2);
+bool gPhysicsCollision_aabb_aabb(const float32 &_px1, const float32 &_py1, const float32 &_pz1, const float32 &_hsx1, const float32 &_hsy1, const float32 &_hsz1,
+                                 const float32 &_px2, const float32 &_py2, const float32 &_pz2, const float32 &_hsx2, const float32 &_hsy2, const float32 &_hsz2);
 // AABS - Circle collision
-bool gPhysicsCollision_aabs_circle(const float32 &_x1, const float32 &_y1, const float32 &_hw1, const float32 &_hh1,
-                                   const float32 &_x2, const float32 &_y2, const float32 &_r2);
+bool gPhysicsCollision_aabs_circle(const float32 &_px1, const float32 &_py1, const float32 &_hw1, const float32 &_hh1,
+                                   const float32 &_px2, const float32 &_py2, const float32 &_r2);
 
 
 /*
