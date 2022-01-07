@@ -31,21 +31,21 @@ float gPhysicsAngleTwoPoints(const float32 &_px1, const float32 &_py1,
 }
 
 // Circle - Circle
-bool gPhysicsCollision_Circle_Circle(const float32 &_px1, const float32 &_py1, const float32 &_r1,
+bool gPhysicsCollision_circle_circle(const float32 &_px1, const float32 &_py1, const float32 &_r1,
                                      const float32 &_px2, const float32 &_py2, const float32 &_r2)
 {
     return (((_px1 - _px2) * (_px1 - _px2)) + ((_py1 - _py2) * (_py1 - _py2))) < ((_r1 + _r2) * (_r1 + _r2));
 }
 
 // Circle - Circle distance
-float gPhysicsDistance_Circle_Circle(const float32 &_px1, const float32 &_py1, const float32 &_r1,
+float gPhysicsDistance_circle_circle(const float32 &_px1, const float32 &_py1, const float32 &_r1,
                                      const float32 &_px2, const float32 &_py2, const float32 &_r2)
 {
     return sqrt(((_px1 - _px2) * (_px1 - _px2)) + ((_py1 - _py2) * (_py1 - _py2)));
 }
 
 // Sphere - Sphere
-bool gPhysicsCollision_Sphere_Sphere(const float32 &_px1, const float32 &_py1, const float32 &_pz1, const float32 &_r1,
+bool gPhysicsCollision_sphere_sphere(const float32 &_px1, const float32 &_py1, const float32 &_pz1, const float32 &_r1,
                                      const float32 &_px2, const float32 &_py2, const float32 &_pz2, const float32 &_r2)
 {
     return (((_px1 - _px2) * (_px1 - _px2)) + ((_py1 - _py2) * (_py1 - _py2)) + ((_pz1 - _pz2) * (_pz1 - _pz2))) < ((_r1 + _r2) * (_r1 + _r2));
@@ -90,4 +90,11 @@ bool gPhysicsCollision_aabs_circle(const float32 &_px1, const float32 &_py1, con
     // retrieve vector between center circle and closest point AABB and check if length <= radius
     difference = closest - circle_center;
     return glm::length(difference) < _r2;
+}
+
+// ray - oobb collision
+bool gPhysicsCollision_ray_aabb(const float32 &_px1, const float32 &_py1, const float32 &_pz1,
+                                const float32 &_px2, const float32 &_py2, const float32 &_pz2, const float32 &_hsx2, const float32 &_hsy2, const float32 &_hsz2)
+{
+
 }

@@ -21,13 +21,16 @@
  * @date 2011-11-11
  */
 
+
+
+
 #ifndef PHYSICS_RESOLUTION_HPP
 #define PHYSICS_RESOLUTION_HPP
 
 #include "../core/includes.hpp"
 
 // Elastic collision resolution 2D circle - circle
-void gPhysicsResolution_Circle_Circle(float32 &_vx1, float32 &_vy1, float32 &_px1, float32 &_py1, const float32 &_r1, const float32 &_m1, const bool &_static1,
+void gPhysicsResolution_circle_circle(float32 &_vx1, float32 &_vy1, float32 &_px1, float32 &_py1, const float32 &_r1, const float32 &_m1, const bool &_static1,
                                       float32 &_vx2, float32 &_vy2, float32 &_px2, float32 &_py2, const float32 &_r2, const float32 &_m2, const bool &_static2);
 
 // Elastic collision resolution 2D aabs - aabs
@@ -35,7 +38,8 @@ void gPhysicsResolution_aabs_aabs(float32 &_vx1, float32 &_vy1, float32 &_px1, f
                                   float32 &_vx2, float32 &_vy2, float32 &_px2, float32 &_py2, const float32 &_hw2, const float32 &_hh2, const float32 &_m2, const bool &_static2);
 
 // Elastic collision resolution 2D aabs - circle
-void gPhysicsResolution_aabs_Circle(float32 &_vx1, float32 &_vy1, float32 &_px1, float32 &_py1, const float32 &_hw1, const float32 &_hh1, const float32 &_m1, const bool &_static1,
+void gPhysicsResolution_aabs_circle(float32 &_vx1, float32 &_vy1, float32 &_px1, float32 &_py1, const float32 &_hw1, const float32 &_hh1, const float32 &_m1, const bool &_static1,
                                     float32 &_vx2, float32 &_vy2, float32 &_px2, float32 &_py2, const float32 &_r2, const float32 &_m2, const bool &_static2);
 
 #endif // PHYSICS_RESOLUTION_HPP
+

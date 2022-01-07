@@ -21,12 +21,16 @@
  * @date 2011-11-11
  */
 
+
+
 #ifndef PHYSICS_COLLISION_HPP
 #define PHYSICS_COLLISION_HPP
 
 #include "../core/includes.hpp"
 
 // px, py, pz    - position
+// rx, ry, rz    - rotation
+// vx, vy, vz    - velocity
 // r             - radius
 // sx, sy, sz    - size
 // hsx, hsy, hsz - half size
@@ -35,13 +39,13 @@
 float gPhysicsAngleTwoPoints(const float32 &_px1, const float32 &_py1,
                              const float32 &_px2, const float32 &_py2);
 // Circle - Circle collision
-bool gPhysicsCollision_Circle_Circle(const float32 &_px1, const float32 &_py1, const float32 &_r1,
+bool gPhysicsCollision_circle_circle(const float32 &_px1, const float32 &_py1, const float32 &_r1,
                                      const float32 &_px2, const float32 &_py2, const float32 &_r2);
 // Circle - Circle distance
-float gPhysicsDistance_Circle_Circle(const float32 &_px1, const float32 &_py1, const float32 &_r1,
+float gPhysicsDistance_circle_circle(const float32 &_px1, const float32 &_py1, const float32 &_r1,
                                      const float32 &_px2, const float32 &_py2, const float32 &_r2);
 // Sphere - Sphere collision
-bool gPhysicsCollision_Sphere_Sphere(const float32 &_px1, const float32 &_py1, const float32 &_pz1, const float32 &_r1,
+bool gPhysicsCollision_sphere_sphere(const float32 &_px1, const float32 &_py1, const float32 &_pz1, const float32 &_r1,
                                      const float32 &_px2, const float32 &_py2, const float32 &_pz2, const float32 &_r2);
 // Axis aligned bounding square - Axis aligned bounding square collision
 bool gPhysicsCollision_aabs_aabs(const float32 &_px1, const float32 &_py1, const float32 &_hsx1, const float32 &_hsy1,
@@ -52,14 +56,14 @@ bool gPhysicsCollision_aabb_aabb(const float32 &_px1, const float32 &_py1, const
 // AABS - Circle collision
 bool gPhysicsCollision_aabs_circle(const float32 &_px1, const float32 &_py1, const float32 &_hw1, const float32 &_hh1,
                                    const float32 &_px2, const float32 &_py2, const float32 &_r2);
-
+// ray - oobb collision
+bool gPhysicsCollision_ray_aabb(const float32 &_px1, const float32 &_py1, const float32 &_pz1,
+                                const float32 &_px2, const float32 &_py2, const float32 &_pz2, const float32 &_hsx2, const float32 &_hsy2, const float32 &_hsz2);
 
 /*
-
 sat
+obb
 
-aabc
-bb
 cylinder
 ray
 */
