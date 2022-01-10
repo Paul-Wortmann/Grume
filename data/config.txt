@@ -11,7 +11,7 @@
         <basic_renderer>0</basic_renderer>
     </graphics>
     <audio>
-        <volume_master>36</volume_master>
+        <volume_master>42</volume_master>
         <volume_music>41</volume_music>
         <volume_sfx>56</volume_sfx>
     </audio>

@@ -43,23 +43,23 @@ class cEntityManager : public tcLinkedList<sEntity>
         void             setMapPointer(sMap* _map) { m_mapPointer = _map; };
         void             addModel(sEntityModel*& _model);
         sEntityModel*    getNewModel(void);
-        sEntityModel*    loadModel(const string& _fileName);
+        sEntityModel*    loadModel(const std::string& _fileName);
         void             removeModel(sEntityModel*& _model);
-        sEntityMaterial* loadMaterial(const string &_fileName);
-        sEntityTexture*  loadTexture(const string &_fileName);
-        GLFWimage*       loadIcon(const string &_fileName);
+        sEntityMaterial* loadMaterial(const std::string &_fileName);
+        sEntityTexture*  loadTexture(const std::string &_fileName);
+        GLFWimage*       loadIcon(const std::string &_fileName);
         void             freeIcon(GLFWimage*& _image);
         void             updateModelMatrix(sEntity*& _entity);
-        sEntity*         load(const string& _fileName, sEntity* _entity = nullptr);
-        void             activateState(const uint32& _UID, const string& _name);
+        sEntity*         load(const std::string& _fileName, sEntity* _entity = nullptr);
+        void             activateState(const uint32& _UID, const std::string& _name);
         void             activateState(const uint32& _UID, const uint32& _state);
-        void             setState(const uint32& _UID, const string& _name);
+        void             setState(const uint32& _UID, const std::string& _name);
         void             setState(const uint32& _UID, const uint32& _state);
-        void             setForceState(const uint32& _UID, const string& _name);
+        void             setForceState(const uint32& _UID, const std::string& _name);
         void             setForceState(const uint32& _UID, const uint32& _state);
-        void             toggleState(const uint32& _UID, const string& _name1, const string& _name2);
+        void             toggleState(const uint32& _UID, const std::string& _name1, const std::string& _name2);
         void             toggleState(const uint32& _UID, const uint32& _state1, const uint32& _state2);
-        void             saveScreenShot(const string &_fileName) { m_modelManager.saveScreenShot(_fileName); };
+        void             saveScreenShot(const std::string &_fileName) { m_modelManager.saveScreenShot(_fileName); };
         void             freeData(sEntity*& _entity) { m_freeData(_entity); };
 
     protected:

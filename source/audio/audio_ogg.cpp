@@ -23,7 +23,7 @@
 
 #include "audio_ogg.hpp"
 
-void loadOgg(const string &_fileName, sAudioData *_audioData)
+void loadOgg(const std::string &_fileName, sAudioData *_audioData)
 {
     OggVorbis_File oggFile = {};
     if (ov_fopen(_fileName.c_str(), &oggFile) == 0)

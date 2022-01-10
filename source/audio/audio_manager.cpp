@@ -99,7 +99,7 @@ void cAudioManager::m_updateVolume(void)
     }
 }
 
-void cAudioManager::loadBufferWav(uint32 _ID, const string &_fileName)
+void cAudioManager::loadBufferWav(uint32 _ID, const std::string &_fileName)
 {
     sAudioData *audioData = new sAudioData;
     loadWav(_fileName, audioData);
@@ -108,7 +108,7 @@ void cAudioManager::loadBufferWav(uint32 _ID, const string &_fileName)
     delete audioData;
 }
 
-void cAudioManager::loadBufferOgg(uint32 _ID, const string &_fileName)
+void cAudioManager::loadBufferOgg(uint32 _ID, const std::string &_fileName)
 {
     sAudioData *audioData = new sAudioData;
     loadOgg(_fileName, audioData);
@@ -117,7 +117,7 @@ void cAudioManager::loadBufferOgg(uint32 _ID, const string &_fileName)
     delete audioData;
 }
 
-void cAudioManager::setAudioBufferName(uint32 _ID, const string &_name)
+void cAudioManager::setAudioBufferName(uint32 _ID, const std::string &_name)
 {
     sAudioBuffer* tB = m_bufferManager.findAudioBuffer(_ID);
     if (tB == nullptr)

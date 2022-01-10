@@ -32,7 +32,7 @@ void cPlayerManager::terminate(void)
 {
 }
 
-sEntity* cPlayerManager::load(const string &_fileName)
+sEntity* cPlayerManager::load(const std::string &_fileName)
 {
     m_player = m_entityManager->load("player/" + _fileName);
 

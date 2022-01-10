@@ -29,7 +29,7 @@
 struct sEntityState
 {
     // Infomation
-    string        name          = "";
+    std::string   name          = "";
 
     // Object tile state
     uint32        tileState     = 1; // eTileBase::tileFloor

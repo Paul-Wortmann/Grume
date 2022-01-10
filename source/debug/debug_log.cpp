@@ -23,14 +23,14 @@
 
 #include "debug_log.hpp"
 
-string _UDATE_(void)
+std::string _UDATE_(void)
 {
-    string tMonth = "";
+    std::string tMonth = "";
     tMonth += __DATE__[0];
     tMonth += __DATE__[1];
     tMonth += __DATE__[2];
 
-    string returnString = "";
+    std::string returnString = "";
     returnString += __DATE__[ 7];
     returnString += __DATE__[ 8];
     returnString += __DATE__[ 9];
@@ -78,19 +78,19 @@ void gLogClear(void)
     outFile.close();
 }
 
-void gLogWrite(const std::uint32_t &_type, const string &_string, const string &_file, const std::uint32_t &_line, const string &_function)
+void gLogWrite(const std::uint32_t &_type, const std::string &_string, const std::string &_file, const std::uint32_t &_line, const std::string &_function)
 {
     gLogWrite(DEBUG_FILE, _type, _string, _file, _line, _function);
 }
 
-void gLogWrite(const string &_fileName, const std::uint32_t &_type, const string &_string, const string &_file, const std::uint32_t &_line, const string &_function)
+void gLogWrite(const std::string &_fileName, const std::uint32_t &_type, const std::string &_string, const std::string &_file, const std::uint32_t &_line, const std::string &_function)
 {
     std::chrono::system_clock::time_point now = std::chrono::system_clock::now();
     std::time_t now_c = std::chrono::system_clock::to_time_t(now);
     std::tm now_tm = *std::localtime(&now_c);
 
     // Year
-    string timeString;
+    std::string timeString;
     timeString  = std::to_string(now_tm.tm_year + 1900) + "-";
 
     // Month

@@ -23,7 +23,7 @@
 
 #include "ui_manager.hpp"
 
-void cUIManager::load(const string &_fileName)
+void cUIManager::load(const std::string &_fileName)
 {
     // Load the ui database file
     cXML xmlUiFile;
@@ -83,7 +83,7 @@ void cUIManager::load(const string &_fileName)
                     m_menu[m].component[c].position = xmlUiFile.getVec3("<component_position>", c + 1 + startComponent);
                     m_menu[m].component[c].position += glm::vec3(m_menu[m].position.x, m_menu[m].position.y, 0.0f);
                     m_menu[m].component[c].size = xmlUiFile.getVec2("<component_size>", c + 1 + startComponent);
-                    string componentFunction = xmlUiFile.getString("<component_function>", c + 1 + startComponent);
+                    std::string componentFunction = xmlUiFile.getString("<component_function>", c + 1 + startComponent);
                     
                     if (componentFunction.compare("MENU_CLOSE") == 0)
                     {

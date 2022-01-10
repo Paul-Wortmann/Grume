@@ -23,7 +23,7 @@
 
 #include "game_config.hpp"
 
-void cGameConfig::load(const string &_fileName)
+void cGameConfig::load(const std::string &_fileName)
 {
     // Load game config file
     cXML xmlFile;
@@ -33,7 +33,7 @@ void cGameConfig::load(const string &_fileName)
     if (xmlFile.lineCount() > 0)
     {
         // Load the data
-        gLogWrite(LOG_INFO, "Loading game config: " + string(FILE_PATH_CONFIG) + _fileName, __FILE__, __LINE__, __FUNCTION__);
+        gLogWrite(LOG_INFO, "Loading game config: " + std::string(FILE_PATH_CONFIG) + _fileName, __FILE__, __LINE__, __FUNCTION__);
         
         // Graphics
         m_resolution_x  = xmlFile.getInteger("<resolution_w>");
@@ -60,7 +60,7 @@ void cGameConfig::load(const string &_fileName)
     }
 }
 
-void cGameConfig::save(const string &_fileName)
+void cGameConfig::save(const std::string &_fileName)
 {
     // Open the file, truncate, close the file.
     std::ofstream configFile;

@@ -23,7 +23,7 @@
 
 #include "audio_wav.hpp"
 
-void loadWav(const string &_fileName, sAudioData *_audioData)
+void loadWav(const std::string &_fileName, sAudioData *_audioData)
 {
     // Open the file
     std::ifstream inFile (_fileName, std::ifstream::binary);

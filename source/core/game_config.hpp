@@ -32,8 +32,8 @@
 class cGameConfig
 {
     public:
-        void load(const string &_fileName = CONFIG_FILE);
-        void save(const string &_fileName = CONFIG_FILE);
+        void load(const std::string &_fileName = CONFIG_FILE);
+        void save(const std::string &_fileName = CONFIG_FILE);
 
     protected:
 

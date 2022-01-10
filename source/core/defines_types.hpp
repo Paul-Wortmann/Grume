@@ -50,6 +50,6 @@ typedef std::int32_t  int32;
 typedef std::int64_t  int64;
 
 // Define string types
-using string = std::string;
+//using string = std::string;
 
 #endif // DEFINES_TYPES_HPP

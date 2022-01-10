@@ -39,7 +39,7 @@ struct sEntityModel
     // Information
     bool              animated         = false;
     bool              animProcessed    = false; // Prevent advancing the animation multiple times per frame.
-    string            fileName         = {};
+    std::string       fileName         = {};
 
     // Mesh
     uint32            numMesh          = 0;

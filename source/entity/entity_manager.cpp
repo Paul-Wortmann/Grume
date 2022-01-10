@@ -133,7 +133,7 @@ void cEntityManager::m_freeAll(void)
     }
 }
 
-sEntityModel* cEntityManager::loadModel(const string &_fileName)
+sEntityModel* cEntityManager::loadModel(const std::string &_fileName)
 {
     return m_modelManager.load(_fileName);
 }
@@ -143,17 +143,17 @@ void cEntityManager::removeModel(sEntityModel*& _model)
     m_modelManager.remove(_model);
 }
 
-sEntityMaterial* cEntityManager::loadMaterial(const string &_fileName)
+sEntityMaterial* cEntityManager::loadMaterial(const std::string &_fileName)
 {
     return m_modelManager.loadMaterial(_fileName);
 }
 
-sEntityTexture* cEntityManager::loadTexture(const string &_fileName)
+sEntityTexture* cEntityManager::loadTexture(const std::string &_fileName)
 {
     return m_modelManager.loadTexture(_fileName);
 }
 
-GLFWimage* cEntityManager::loadIcon(const string &_fileName)
+GLFWimage* cEntityManager::loadIcon(const std::string &_fileName)
 {
     return m_modelManager.loadIcon(_fileName);
 }
@@ -202,8 +202,8 @@ sEntity* cEntityManager::load(const std::string& _fileName, sEntity* _entity)
         _entity->rotation             = xmlEntityFile.getVec3("<rotation>");
         _entity->rotationOffset       = _entity->rotation;
         _entity->rotationAxis         = xmlEntityFile.getIvec3("<rotationaxis>");
-        string modelFile              = xmlEntityFile.getString("<model>");
-        string materialFile           = xmlEntityFile.getString("<material>");
+        std::string modelFile         = xmlEntityFile.getString("<model>");
+        std::string materialFile      = xmlEntityFile.getString("<material>");
         _entity->animationIndependent = (xmlEntityFile.getInteger("<animation_independent>") == 1);
 
         // Movement data
@@ -296,7 +296,7 @@ sEntity* cEntityManager::load(const std::string& _fileName, sEntity* _entity)
                     xmlSkillFile.load(FILE_PATH_SKILLS + xmlSkillsDatabaseFile.getString("<skill>", 1 + i) + ".txt");
                     if (xmlSkillFile.lineCount() > 0)
                     {
-                        string name = xmlSkillFile.getString("<name>");
+                        std::string name = xmlSkillFile.getString("<name>");
                         if (name.compare("earthquake") == 0)
                         {
                             // Level
@@ -429,12 +429,12 @@ sEntity* cEntityManager::load(const std::string& _fileName, sEntity* _entity)
             for (uint32 i = 0; i < dataCount; ++i)
             {
                 // Get next collsion data
-                string collisionData = xmlEntityFile.getString("<collision_data>", 1 + i);
+                std::string collisionData = xmlEntityFile.getString("<collision_data>", 1 + i);
 
                 // Process the collision data string
                 collisionData += " ";
                 uint64 collisionDataLength = collisionData.length();
-                string tString = "";
+                std::string tString = "";
                 if (collisionDataLength > 2)
                 {
                     for (uint64 j = 0; j < collisionDataLength; ++j)
@@ -498,14 +498,14 @@ sEntity* cEntityManager::load(const std::string& _fileName, sEntity* _entity)
             _entity->state[i].name = xmlEntityFile.getString("<state_name>", 1 + i);
             _entity->state[i].animation = xmlEntityFile.getVec3("<state_animation>", 1 + i);
             _entity->state[i].tileState = xmlEntityFile.getInteger("<state_tile>", 1 + i);
-            string audioData = xmlEntityFile.getString("<state_sound>", 1 + i);
+            std::string audioData = xmlEntityFile.getString("<state_sound>", 1 + i);
             //_entity->state[i].audioFile = xmlEntityFile.getString("<state_sound>", 1 + i);
 
             // Process the audio data string
             audioData += "    ";
             uint64 audioDataLength = audioData.length();
             uint32 tStringNum = 0;
-            string   tString = "";
+            std::string   tString = "";
             if (audioDataLength > 6)
             {
                 for (uint64 j = 0; j < audioDataLength; ++j)

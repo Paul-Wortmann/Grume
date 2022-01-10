@@ -92,7 +92,7 @@ struct sUIMenu
     sUIComponent*     component     = nullptr;
 
     // Infomation
-    string            name          = "";
+    std::string       name          = "";
     bool              enabled       = false;
 
     // Base

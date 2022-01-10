@@ -61,10 +61,10 @@ class cAudioManager : public tcLinkedList<sEntityAudio>
         
         // Audio buffers
         void     setAudioBufferName(uint32 _ID, const std::string &_name);
-        uint32   findAudioBuffer(const string &_name) {sAudioBuffer* tB = m_bufferManager.findAudioBuffer(_name); return (tB == nullptr) ? 0 : tB->ID;}
+        uint32   findAudioBuffer(const std::string &_name) {sAudioBuffer* tB = m_bufferManager.findAudioBuffer(_name); return (tB == nullptr) ? 0 : tB->ID;}
         uint32   newAudioBuffer(void) {return m_bufferManager.newAudioBuffer()->ID;}
-        void     loadBufferWav(uint32 _ID, const string &_fileName);
-        void     loadBufferOgg(uint32 _ID, const string &_fileName);
+        void     loadBufferWav(uint32 _ID, const std::string &_fileName);
+        void     loadBufferOgg(uint32 _ID, const std::string &_fileName);
 
         // Volume
         void     setVolumeMaster(uint32 _volume) {m_volumeMaster = _volume; m_updateVolume(); };

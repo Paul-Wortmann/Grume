@@ -28,6 +28,6 @@
 
 #include "audio_defines.hpp"
 
-void loadWav(const string &_fileName, sAudioData *_audioData);
+void loadWav(const std::string &_fileName, sAudioData *_audioData);
 
 #endif // AUDIO_ENGINE_WAV_HPP

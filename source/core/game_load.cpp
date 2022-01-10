@@ -27,8 +27,8 @@ void cGameEngine::game_load(void)
 {
     // Load the game startup file
     cXML xmlGameFile;
-    string fileName = string("game_001.txt");
-    xmlGameFile.load(string(FILE_PATH_DATA) + fileName);
+    std::string fileName = std::string("game_001.txt");
+    xmlGameFile.load(std::string(FILE_PATH_DATA) + fileName);
     
     // Only contine if we can load the game startup file
     if (xmlGameFile.lineCount() > 0)
@@ -76,14 +76,14 @@ void cGameEngine::game_load(const uint32 &_slotNum)
 {
     // Load the game startup file
     cXML xmlSaveGameFile;
-    string fileName = string("save_00") + std::to_string(_slotNum) + string(".txt");
-    xmlSaveGameFile.load(string(FILE_PATH_SAVE) + fileName);
+    std::string fileName = std::string("save_00") + std::to_string(_slotNum) + std::string(".txt");
+    xmlSaveGameFile.load(std::string(FILE_PATH_SAVE) + fileName);
     
     // Only contine if we can load the game startup file
     if (xmlSaveGameFile.lineCount() > 0)
     {
         // Information
-        string  currentMap      = xmlSaveGameFile.getString("<current_map>");
+        std::string  currentMap      = xmlSaveGameFile.getString("<current_map>");
         uint32  currentPosition = xmlSaveGameFile.getInteger("<current_position>");
         float32 currentRotation = xmlSaveGameFile.getFloat("<current_rotation>");
         
@@ -130,13 +130,13 @@ void cGameEngine::game_load(const uint32 &_slotNum)
         uint32 mapSeedCount = xmlSaveGameFile.getInstanceCount("<map>");
         for (uint32 i = 0; i < mapSeedCount; ++i)
         {
-            string tmapData = xmlSaveGameFile.getString("<map>", 1 + i);
+            std::string tmapData = xmlSaveGameFile.getString("<map>", 1 + i);
             tmapData += "    ";
             uint64 tmapDataLength = tmapData.length();
-            string tmapName       = "";
+            std::string tmapName       = "";
             uint32 tmapSeed       = 0;
             uint32 tStringNum = 0;
-            string tString = "";
+            std::string tString = "";
             if (tmapDataLength > 6)
             {
                 for (uint64 j = 0; j < tmapDataLength; ++j)

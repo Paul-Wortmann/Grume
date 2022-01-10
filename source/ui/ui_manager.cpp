@@ -50,7 +50,7 @@ void cUIManager::terminate(void)
     }
 }
 
-bool cUIManager::getMenuEnabled(const string &_name)
+bool cUIManager::getMenuEnabled(const std::string &_name)
 {
     if (m_menu != nullptr)
     {
@@ -65,7 +65,7 @@ bool cUIManager::getMenuEnabled(const string &_name)
     return false;
 }
 
-void cUIManager::setMenuEnabled(const string &_name, const bool &_state)
+void cUIManager::setMenuEnabled(const std::string &_name, const bool &_state)
 {
     // Avoid unintended mouse clicks
     m_mouseOverMenu = false;

@@ -31,13 +31,13 @@
 
 struct sGameDatabaseData
 {
-    string fileName = "";
+    std::string fileName = "";
 };
 
 class cGameDatabase
 {
     public:
-        void load(const string &_fileName = DATABASE_FILE);
+        void load(const std::string &_fileName = DATABASE_FILE);
 
     protected:
 
