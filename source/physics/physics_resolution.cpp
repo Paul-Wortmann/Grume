@@ -35,32 +35,32 @@
 // More info can be found at https://en.wikipedia.org/wiki/Elastic_collision#Two-dimensional
 
 // Elastic collision resolution 2D circle - circle
-void gPhysicsResolution_circle_circle(float32 &_vx1, float32 &_vy1, float32 &_px1, float32 &_py1, const float32 &_r1, const float32 &_m1, const bool &_static1,
-                                      float32 &_vx2, float32 &_vy2, float32 &_px2, float32 &_py2, const float32 &_r2, const float32 &_m2, const bool &_static2)
+void gPhysicsResolution_circle_circle(float &_vx1, float &_vy1, float &_px1, float &_py1, const float &_r1, const float &_m1, const bool &_static1,
+                                      float &_vx2, float &_vy2, float &_px2, float &_py2, const float &_r2, const float &_m2, const bool &_static2)
 {
-    const float32 opx1 = _px1;
-    const float32 opy1 = _py1;
-    const float32 opx2 = _px2;
-    const float32 opy2 = _py2;
-    const float32 ovx1 = _vx1;
-    const float32 ovy1 = _vy1;
-    const float32 ovx2 = _vx2;
-    const float32 ovy2 = _vy2;
+    const float opx1 = _px1;
+    const float opy1 = _py1;
+    const float opx2 = _px2;
+    const float opy2 = _py2;
+    const float ovx1 = _vx1;
+    const float ovy1 = _vy1;
+    const float ovx2 = _vx2;
+    const float ovy2 = _vy2;
 
     // Distance vector components
-    const float32 dx = _px2 - _px1;
-    const float32 dy = _py2 - _py1;
+    const float dx = _px2 - _px1;
+    const float dy = _py2 - _py1;
 
-    const float32 distance = sqrt(dx*dx + dy*dy);
+    const float distance = sqrt(dx*dx + dy*dy);
 
     // Normalized distance vector components
-    const float32 nx = dx / distance;
-    const float32 ny = dy / distance;
+    const float nx = dx / distance;
+    const float ny = dy / distance;
 
     // Reposition the circles so they are just touching
-    const float32 distanceC1 = (distance * (_r1 / (_r1 + _r2)));
-    const float32 contactX = _px1 + nx * distanceC1;
-    const float32 contactY = _py1 + ny * distanceC1;
+    const float distanceC1 = (distance * (_r1 / (_r1 + _r2)));
+    const float contactX = _px1 + nx * distanceC1;
+    const float contactY = _py1 + ny * distanceC1;
 
     if (_static1)
     {
@@ -86,32 +86,32 @@ void gPhysicsResolution_circle_circle(float32 &_vx1, float32 &_vy1, float32 &_px
     }
 
     // Get the direction and velocity of each Circle
-    const float32 v1 = sqrt(_vx1 * _vx1 + _vy1 * _vy1);
-    const float32 v2 = sqrt(_vx2 * _vx2 + _vy2 * _vy2);
+    const float v1 = sqrt(_vx1 * _vx1 + _vy1 * _vy1);
+    const float v2 = sqrt(_vx2 * _vx2 + _vy2 * _vy2);
 
     // Get the direction of travel of each circle
-    const float32 d1 = atan2(_vy1, _vx1);
-    const float32 d2 = atan2(_vy2, _vx2);
+    const float d1 = atan2(_vy1, _vx1);
+    const float d2 = atan2(_vy2, _vx2);
 
     // Get the direction from  circle 1 center to circle 2 center
-    float32 directOfContact = atan2(ny, nx);
+    float directOfContact = atan2(ny, nx);
 
     // Calculate mass
-    //const float32 m1 = pow(_r1, 3);
-    //const float32 m2 = pow(_r2, 3);
-    float32 m1 = _m1;
-    float32 m2 = _m2;
+    //const float m1 = pow(_r1, 3);
+    //const float m2 = pow(_r2, 3);
+    float m1 = _m1;
+    float m2 = _m2;
 
-    float32 mm  = m1 - m2;
-    float32 mmt = m1 + m2;
-    float32 v1s = v1 * sin(d1 - directOfContact);
+    float mm  = m1 - m2;
+    float mmt = m1 + m2;
+    float v1s = v1 * sin(d1 - directOfContact);
 
-    float32 cp = cos(directOfContact);
-    float32 sp = sin(directOfContact);
-    float32 cdp1 = v1 * cos(d1 - directOfContact);
-    float32 cdp2 = v2 * cos(d2 - directOfContact);
-    float32 cpp = cos((directOfContact + M_PI) / 2);
-    float32 spp = sin((directOfContact + M_PI) / 2);
+    float cp = cos(directOfContact);
+    float sp = sin(directOfContact);
+    float cdp1 = v1 * cos(d1 - directOfContact);
+    float cdp2 = v2 * cos(d2 - directOfContact);
+    float cpp = cos((directOfContact + M_PI) / 2);
+    float spp = sin((directOfContact + M_PI) / 2);
 
     float t = 0.5f;
 
@@ -131,7 +131,7 @@ void gPhysicsResolution_circle_circle(float32 &_vx1, float32 &_vy1, float32 &_px
         _vx1 = t * cp + v1s * cpp;
         _vy1 = t * sp + v1s * spp;
         directOfContact += M_PI;
-        const float32 v2s = v2 * sin(d2 - directOfContact);
+        const float v2s = v2 * sin(d2 - directOfContact);
         cdp1 = v1 * cos(d1 - directOfContact);
         cdp2 = v2 * cos(d2 - directOfContact);
         t = (cdp2 * -mm + 2 * m1 * cdp1) / mmt;
@@ -156,12 +156,12 @@ void gPhysicsResolution_circle_circle(float32 &_vx1, float32 &_vy1, float32 &_px
 }
 
 // Elastic collision resolution 2D aabs - aabs
-void gPhysicsResolution_aabs_aabs(float32 &_vx1, float32 &_vy1, float32 &_px1, float32 &_py1, const float32 &_hw1, const float32 &_hh1, const float32 &_m1, const bool &_static1,
-                                  float32 &_vx2, float32 &_vy2, float32 &_px2, float32 &_py2, const float32 &_hw2, const float32 &_hh2, const float32 &_m2, const bool &_static2)
+void gPhysicsResolution_aabs_aabs(float &_vx1, float &_vy1, float &_px1, float &_py1, const float &_hw1, const float &_hh1, const float &_m1, const bool &_static1,
+                                  float &_vx2, float &_vy2, float &_px2, float &_py2, const float &_hw2, const float &_hh2, const float &_m2, const bool &_static2)
 {
     // Distance vector components
-    const float32 dx = _px2 - _px1;
-    const float32 dy = _py2 - _py1;
+    const float dx = _px2 - _px1;
+    const float dy = _py2 - _py1;
 
     // penetration distance x
     float pdx1 = fabs((_px1 + _hw1) - (_px2 - _hw2));
@@ -255,43 +255,43 @@ void gPhysicsResolution_aabs_aabs(float32 &_vx1, float32 &_vy1, float32 &_px1, f
             _py2 = (_py2 > _py1) ? (_py2 + pdy) : (_py2 - pdy);
 
         // Velocity, both dynamic
-        const float32 distance = sqrt(dx*dx + dy*dy);
+        const float distance = sqrt(dx*dx + dy*dy);
 
         // Normalized distance vector components
-        const float32 nx = dx / distance;
-        const float32 ny = dy / distance;
+        const float nx = dx / distance;
+        const float ny = dy / distance;
 
         // Get the direction and velocity of each object
-        const float32 v1 = sqrt(_vx1 * _vx1 + _vy1 * _vy1);
-        const float32 v2 = sqrt(_vx2 * _vx2 + _vy2 * _vy2);
+        const float v1 = sqrt(_vx1 * _vx1 + _vy1 * _vy1);
+        const float v2 = sqrt(_vx2 * _vx2 + _vy2 * _vy2);
 
         // Get the direction of travel of each object
-        const float32 d1 = atan2(_vy1, _vx1);
-        const float32 d2 = atan2(_vy2, _vx2);
+        const float d1 = atan2(_vy1, _vx1);
+        const float d2 = atan2(_vy2, _vx2);
 
         // Get the direction from object 1 center to object 2 center
-        float32 directOfContact = atan2(ny, nx);
+        float directOfContact = atan2(ny, nx);
 
         // Calculate mass
-        //const float32 m1 = pow(_r1, 3);
-        //const float32 m2 = pow(_r2, 3);
-        float32 m1 = _m1;
-        float32 m2 = _m2;
+        //const float m1 = pow(_r1, 3);
+        //const float m2 = pow(_r2, 3);
+        float m1 = _m1;
+        float m2 = _m2;
 
-        float32 mm  = m1 - m2;
-        float32 mmt = m1 + m2;
-        float32 v1s = v1 * sin(d1 - directOfContact);
+        float mm  = m1 - m2;
+        float mmt = m1 + m2;
+        float v1s = v1 * sin(d1 - directOfContact);
 
-        float32 cp = cos(directOfContact);
-        float32 sp = sin(directOfContact);
-        float32 cdp1 = v1 * cos(d1 - directOfContact);
-        float32 cdp2 = v2 * cos(d2 - directOfContact);
-        float32 cpp = cos((directOfContact + M_PI) / 2);
-        float32 spp = sin((directOfContact + M_PI) / 2);
+        float cp = cos(directOfContact);
+        float sp = sin(directOfContact);
+        float cdp1 = v1 * cos(d1 - directOfContact);
+        float cdp2 = v2 * cos(d2 - directOfContact);
+        float cpp = cos((directOfContact + M_PI) / 2);
+        float spp = sin((directOfContact + M_PI) / 2);
 
         float t1 = (cdp1 * mm + 2 * m2 * cdp2) / mmt;
         directOfContact += M_PI;
-        const float32 v2s = v2 * sin(d2 - directOfContact);
+        const float v2s = v2 * sin(d2 - directOfContact);
         cdp1 = v1 * cos(d1 - directOfContact);
         cdp2 = v2 * cos(d2 - directOfContact);
         float t2 = (cdp2 * -mm + 2 * m1 * cdp1) / mmt;
@@ -304,12 +304,12 @@ void gPhysicsResolution_aabs_aabs(float32 &_vx1, float32 &_vy1, float32 &_px1, f
 }
 
 // Elastic collision resolution 2D aabs - circle
-void gPhysicsResolution_aabs_circle(float32 &_vx1, float32 &_vy1, float32 &_px1, float32 &_py1, const float32 &_hw1, const float32 &_hh1, const float32 &_m1, const bool &_static1,
-                                    float32 &_vx2, float32 &_vy2, float32 &_px2, float32 &_py2, const float32 &_r2, const float32 &_m2, const bool &_static2)
+void gPhysicsResolution_aabs_circle(float &_vx1, float &_vy1, float &_px1, float &_py1, const float &_hw1, const float &_hh1, const float &_m1, const bool &_static1,
+                                    float &_vx2, float &_vy2, float &_px2, float &_py2, const float &_r2, const float &_m2, const bool &_static2)
 {
     // Distance vector components
-    const float32 dx = _px2 - _px1;
-    const float32 dy = _py2 - _py1;
+    const float dx = _px2 - _px1;
+    const float dy = _py2 - _py1;
 
     // penetration distance x
     float pdx1 = fabs((_px1 + _hw1) - (_px2 - _r2));
@@ -403,43 +403,43 @@ void gPhysicsResolution_aabs_circle(float32 &_vx1, float32 &_vy1, float32 &_px1,
             _py2 = (_py2 > _py1) ? (_py2 + pdy) : (_py2 - pdy);
 
         // Velocity, both dynamic
-        const float32 distance = sqrt(dx*dx + dy*dy);
+        const float distance = sqrt(dx*dx + dy*dy);
 
         // Normalized distance vector components
-        const float32 nx = dx / distance;
-        const float32 ny = dy / distance;
+        const float nx = dx / distance;
+        const float ny = dy / distance;
 
         // Get the direction and velocity of each object
-        const float32 v1 = sqrt(_vx1 * _vx1 + _vy1 * _vy1);
-        const float32 v2 = sqrt(_vx2 * _vx2 + _vy2 * _vy2);
+        const float v1 = sqrt(_vx1 * _vx1 + _vy1 * _vy1);
+        const float v2 = sqrt(_vx2 * _vx2 + _vy2 * _vy2);
 
         // Get the direction of travel of each object
-        const float32 d1 = atan2(_vy1, _vx1);
-        const float32 d2 = atan2(_vy2, _vx2);
+        const float d1 = atan2(_vy1, _vx1);
+        const float d2 = atan2(_vy2, _vx2);
 
         // Get the direction from object 1 center to object 2 center
-        float32 directOfContact = atan2(ny, nx);
+        float directOfContact = atan2(ny, nx);
 
         // Calculate mass
-        //const float32 m1 = pow(_r1, 3);
-        //const float32 m2 = pow(_r2, 3);
-        float32 m1 = _m1;
-        float32 m2 = _m2;
+        //const float m1 = pow(_r1, 3);
+        //const float m2 = pow(_r2, 3);
+        float m1 = _m1;
+        float m2 = _m2;
 
-        float32 mm  = m1 - m2;
-        float32 mmt = m1 + m2;
-        float32 v1s = v1 * sin(d1 - directOfContact);
+        float mm  = m1 - m2;
+        float mmt = m1 + m2;
+        float v1s = v1 * sin(d1 - directOfContact);
 
-        float32 cp = cos(directOfContact);
-        float32 sp = sin(directOfContact);
-        float32 cdp1 = v1 * cos(d1 - directOfContact);
-        float32 cdp2 = v2 * cos(d2 - directOfContact);
-        float32 cpp = cos((directOfContact + M_PI) / 2);
-        float32 spp = sin((directOfContact + M_PI) / 2);
+        float cp = cos(directOfContact);
+        float sp = sin(directOfContact);
+        float cdp1 = v1 * cos(d1 - directOfContact);
+        float cdp2 = v2 * cos(d2 - directOfContact);
+        float cpp = cos((directOfContact + M_PI) / 2);
+        float spp = sin((directOfContact + M_PI) / 2);
 
         float t1 = (cdp1 * mm + 2 * m2 * cdp2) / mmt;
         directOfContact += M_PI;
-        const float32 v2s = v2 * sin(d2 - directOfContact);
+        const float v2s = v2 * sin(d2 - directOfContact);
         cdp1 = v1 * cos(d1 - directOfContact);
         cdp2 = v2 * cos(d2 - directOfContact);
         float t2 = (cdp2 * -mm + 2 * m1 * cdp1) / mmt;
