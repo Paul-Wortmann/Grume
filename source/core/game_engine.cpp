@@ -210,6 +210,24 @@ void cGameEngine::process(void)
             }
         }
 
+        // Physics event handeling
+        for (sPhysicsEvent* tEvent = physicsEngine.getEvent(); tEvent != nullptr; tEvent = physicsEngine.getEvent())
+        {
+            // Collision detected
+            if (tEvent->type == ePhysicsEventType::physicsEventCollision)
+            {
+                // *** set entity to require a path update ***
+                std::cout << "Physics event collision: " << tEvent->data << std::endl;
+            }
+            else
+            {
+                std::cout << "Unhandled physics event: " << tEvent->data << std::endl;
+            }
+
+            delete tEvent;
+        }
+        
+
         // UI management, event handeling
         switch (uiManager.getUIEvent())
         {

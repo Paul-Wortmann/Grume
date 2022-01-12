@@ -32,20 +32,20 @@
 class cPhysicsEngine
 {
     public:
-        uint32        initialize(void);
-        void          terminate(void);
-        void          process(const float32 &_dt);
-        void          setEntityHead(sEntity* _entity) { m_entityHead = _entity; }
-        sPhysicsEvent getPhysicsEvent(void) { return m_physicsEvent; };
-        void          setPhysicsEvent(sPhysicsEvent _physicsEvent) { m_physicsEvent = _physicsEvent; };
+        uint32          initialize(void);
+        void            terminate(void);
+        void            process(const float32 &_dt);
+        sPhysicsEvent*  getEvent(void) { return m_event.pop(); }
+        void            setEntityHead(sEntity* _entity) { m_entityHead = _entity; }
 
     protected:
         
     private:
 
         // Entity management
-        sEntity*           m_entityHead         = nullptr;
-        sPhysicsEvent      m_physicsEvent       = {};
+        sEntity*               m_entityHead = nullptr;
+
+        tcQueue<sPhysicsEvent> m_event      = {};
 
 };
 

@@ -58,11 +58,11 @@ void cPhysicsEngine::process(const float32 &_dt)
                         //std::cout << "Collision! ID: " << entity_1->UID << " and ID: " << entity_2->UID << std::endl;
                         
                         
-                        // set physics event
-                        m_physicsEvent.eventType  = ePhysicsEventType::physicsEventCollision;
-                        m_physicsEvent.data.ID_1  = entity_1->UID;
-                        m_physicsEvent.data.ID_1  = entity_2->UID;
-                        m_physicsEvent.data.depth = radialSumSquared - distanceSquared;
+                        // push physics event
+                        sPhysicsEvent* event = new sPhysicsEvent;
+                        event->type = ePhysicsEventType::physicsEventCollision;
+                        event->data = entity_1->UID; // entity ID
+                        m_event.push(event);
                     }
                 }
             }

@@ -64,13 +64,5 @@ bool gPhysicsCollision_ray_aabb(const float &_px1, const float &_py1, const floa
 // ray - plane collision
 glm::vec3 gPhysicsCollision_ray_plane(const glm::vec3 &_ray, const glm::vec3 &_position);
 
-/*
-sat
-obb
-
-cylinder
-ray
-*/
-
 #endif // PHYSICS_COLLISION_HPP
 

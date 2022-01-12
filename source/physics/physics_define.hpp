@@ -36,14 +36,10 @@ enum class ePhysicsEventType : uint16
 
 struct sPhysicsEvent
 {
-    ePhysicsEventType eventType = ePhysicsEventType::physicsEventNone;
-    struct sData
-    {
-        uint32  ID_1  = 0;    // entity UID
-        uint32  ID_2  = 0;    // entity UID
-        float32 depth = 0.0f; // penetration depth
-        float32 angle = 0.0f; // radians
-    } data;
+    sPhysicsEvent* next = nullptr;
+
+    ePhysicsEventType type = ePhysicsEventType::physicsEventNone;
+    std::uint32_t     data = 0;
 };
 
 #endif //PHYISCS_DEFINE_HPP
