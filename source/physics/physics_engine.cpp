@@ -60,7 +60,7 @@ void cPhysicsEngine::process(const float32 &_dt)
                         
                         // push physics event
                         sPhysicsEvent* event = new sPhysicsEvent;
-                        event->type = ePhysicsEventType::physicsEventCollision;
+                        event->type = ePhysicsEventType::physicsEventType_collision;
                         event->data = entity_1->UID; // entity ID
                         m_event.push(event);
                     }

@@ -214,7 +214,7 @@ void cGameEngine::process(void)
         for (sPhysicsEvent* tEvent = physicsEngine.getEvent(); tEvent != nullptr; tEvent = physicsEngine.getEvent())
         {
             // Collision detected
-            if (tEvent->type == ePhysicsEventType::physicsEventCollision)
+            if (tEvent->type == ePhysicsEventType::physicsEventType_collision)
             {
                 // *** set entity to require a path update ***
                 std::cout << "Physics event collision: " << tEvent->data << std::endl;

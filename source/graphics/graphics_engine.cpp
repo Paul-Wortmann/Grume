@@ -256,7 +256,7 @@ uint32 cGraphicsEngine::initialize(void)
             glViewport(0, 0, m_framebufferSize_w, m_framebufferSize_h);
             m_aspectRatio = static_cast<float32>(m_framebufferSize_w) / static_cast<float32>(m_framebufferSize_h);
 
-            // GLFW set key callback
+            // GLFW set callback functions
             glfwSetKeyCallback(m_window, sm_glfwKeyCallback);
             glfwSetCursorPosCallback(m_window, sm_glfwCursorPosCallback);
             glfwSetMouseButtonCallback(m_window, sm_glfwMouseButtonCallback);

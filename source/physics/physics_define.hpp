@@ -28,17 +28,17 @@
 #include "physics_collision.hpp"
 #include "physics_resolution.hpp"
 
-enum class ePhysicsEventType : uint16 
-{
-    physicsEventNone      =  0, // No physics event
-    physicsEventCollision =  1  // Collision
-};
+// Event type enum
+enum ePhysicsEventType : std::uint32_t { physicsEventType_none        = 0,    // null event
+                                         physicsEventType_collision   = 1,    // collision event
+                                         physicsEventType_objectClick = 2,    // object click event
+                                         physicsEventType_tileClick   = 3 };  // tile click event
 
+// Event struct
 struct sPhysicsEvent
 {
-    sPhysicsEvent* next = nullptr;
-
-    ePhysicsEventType type = ePhysicsEventType::physicsEventNone;
+    sPhysicsEvent*    next = nullptr;
+    ePhysicsEventType type = ePhysicsEventType::physicsEventType_none;
     std::uint32_t     data = 0;
 };
 
