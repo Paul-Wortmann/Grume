@@ -60,7 +60,7 @@
         # 3.1416 - Face north
         # 4.7124 - Face west
 
-        <portal>1 0547 1.5708</portal> # Town 1 exit
+        <portal>1 0548 1.5708</portal> # Town 1 exit
         <portal>2 0112 0.0000</portal> # Cave 1-2 exit (Skeleton)
         <portal>3 0572 4.7124</portal> # Cemetery 1 exit
     </portals>

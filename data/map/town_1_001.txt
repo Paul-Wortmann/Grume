@@ -92,14 +92,17 @@
         # 3.1416 - Face north
         # 4.7124 - Face west
 
-        <portal>1 2108 4.7124</portal> #Cave 1 exit
+        <portal>1 2107 4.7124</portal> #Cave 1 exit
     </portals>
     
     <events>
         # Tile location, type, data 1, data 2
         # Type 1 (Warp to map) -> tile, event type, map number, portal number, NA
+        <event>2044 1 10 1 0</event> # Cave 1-1 entrance 1
         <event>2045 1 10 1 0</event> # Cave 1-1 entrance 1
+        <event>2108 1 10 1 0</event> # Cave 1-1 entrance 1
         <event>2109 1 10 1 0</event> # Cave 1-1 entrance 1
+        <event>2172 1 10 1 0</event> # Cave 1-1 entrance 1
         <event>2173 1 10 1 0</event> # Cave 1-1 entrance 1
 
     </events>

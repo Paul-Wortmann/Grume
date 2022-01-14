@@ -80,7 +80,7 @@ glm::vec3 cPlayerManager::tileToPosition(uint32 _tile)
     // Width and height offset, used to center the walls
     float32 xo = static_cast<float32>(m_mapPointer->width)  / 2.0f;
     float32 zo = static_cast<float32>(m_mapPointer->height) / 2.0f;
-    float32 tp = 1.0f / 2.0f; // tile center positioning ( half model dimention)
+    float32 tp = 0.0f;//1.0f / 2.0f; // tile center positioning ( half model dimention)
 
     float32 x = static_cast<float32>(_tile % m_mapPointer->width) - xo + tp;
     float32 z = static_cast<float32>(_tile / m_mapPointer->width) - zo + tp;
