@@ -24,14 +24,14 @@
 #ifndef TEMPLATE_ENGINE_HPP
 #define TEMPLATE_ENGINE_HPP
 
-#include "../core/defines_types.hpp"
+#include <cstdint>
 
 class tcTemplateEngine
 {
     public:
-        virtual uint32 initialize(void)            = 0;
-        virtual void   terminate(void)             = 0;
-        virtual void   process(const float32 &_dt) = 0;
+        virtual std::uint32_t initialize(void)          = 0;
+        virtual void          terminate(void)           = 0;
+        virtual void          process(const float &_dt) = 0;
 
     protected:
 

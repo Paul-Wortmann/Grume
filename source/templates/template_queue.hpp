@@ -57,7 +57,7 @@
 #ifndef TEMPLATE_QUEUE_HPP
 #define TEMPLATE_QUEUE_HPP
 
-#include "../core/defines_types.hpp"
+#include <cstdint>
 
 template <typename T>
 class tcQueue
@@ -69,15 +69,15 @@ class tcQueue
         tcQueue(const  tcQueue&) = delete; // copy constructor
 
         // Interface
-        uint32 size(void) { return m_size; }
-        void   push(T* _data) { m_push(_data); }
-        T*     pop(void) { return m_pop(); }
+        std::uint32_t size(void) { return m_size; }
+        void          push(T* _data) { m_push(_data); }
+        T*            pop(void) { return m_pop(); }
 
     private:
         // Data
-        T*     m_head = nullptr;
-        T*     m_tail = nullptr;
-        uint32 m_size = 0;
+        T*            m_head = nullptr;
+        T*            m_tail = nullptr;
+        std::uint32_t m_size = 0;
 
         // Initialize
         void   m_initialize(void) { m_size = 0;}

@@ -24,8 +24,7 @@
 #ifndef BSP_TREE_HPP
 #define BSP_TREE_HPP
 
-// Define datatypes
-#include "../core/defines_types.hpp"
+#include <cstdint>
 
 // !!! This implementation is custom designed for this project. !!!
 
@@ -80,7 +79,7 @@ template<class T> class tcBspTree
         }
 
         // Get count
-        inline uint32 getCount(void)
+        inline std::uint32_t getCount(void)
         {
             return m_count;
         }
@@ -88,9 +87,9 @@ template<class T> class tcBspTree
     protected:
 
     private:
-        uint32 m_count = 0;
-        T*     m_head  = nullptr;
-        T*     m_temp  = nullptr;
+        std::uint32_t m_count = 0;
+        T*            m_head  = nullptr;
+        T*            m_temp  = nullptr;
 };
 
 #endif // BSP_TREE_HPP

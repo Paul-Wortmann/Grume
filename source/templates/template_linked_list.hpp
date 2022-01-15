@@ -24,7 +24,7 @@
 #ifndef LINKED_LIST_HPP
 #define LINKED_LIST_HPP
 
-#include "../core/defines_types.hpp"
+#include <cstdint>
 
 // !!! This implementation is custom designed for this project. !!!
 
@@ -93,7 +93,7 @@ template<class T> class tcLinkedList
         }
 
         // Get count
-        inline uint32 getCount(void)
+        inline std::uint32_t getCount(void)
         {
             return m_count;
         }
@@ -306,10 +306,10 @@ template<class T> class tcLinkedList
     protected:
 
     private:
-        uint32 m_count = 0;
-        T*     m_head  = nullptr;
-        T*     m_tail  = nullptr;
-        T*     m_temp  = nullptr;
+        std::uint32_t m_count = 0;
+        T*            m_head  = nullptr;
+        T*            m_tail  = nullptr;
+        T*            m_temp  = nullptr;
 };
 
 #endif // LINKED_LIST_HPP
