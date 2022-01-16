@@ -41,7 +41,7 @@ class cTextureManager : public tcLinkedList<sEntityTexture>
     protected:
 
     private:
-        void freeData(sEntityTexture*& _pointer);
+        void freeData(sEntityTexture*& _pointer) override;
         unsigned char* m_flipImage(const uint32 &_width, const uint32 &_height, const uint32 &_bitsPerPixel, const unsigned char* _image);
         std::vector<unsigned char> m_flipImage(const uint32 &_width, const uint32 &_height, const uint32 &_bitsPerPixel, std::vector<unsigned char> _image);
 

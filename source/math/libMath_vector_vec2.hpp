@@ -34,8 +34,8 @@ struct vec2_t
     static const uint32 SIZE = 2; // vec2_t == 2
     union
     {
-        T array[SIZE];
         struct { T x = 0.0; T y = 0.0; };
+        T array[SIZE];
     };
     
     // construnctors and destructor

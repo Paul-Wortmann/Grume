@@ -39,7 +39,7 @@ class cAudioBufferManager : public tcLinkedList<sAudioBuffer>
     protected:
         
     private:
-        void freeData(sAudioBuffer*& _pointer);
+        void freeData(sAudioBuffer*& _pointer) override;
 };
 
 #endif //AUDIO_BUFFER_MANAGER_HPP

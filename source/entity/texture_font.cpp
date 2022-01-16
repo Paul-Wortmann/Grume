@@ -37,5 +37,5 @@ void cTextureFont::terminate(void)
 
 sEntityTexture* cTextureFont::createTextureFont(const std::string &_data)
 {
-    
+    return nullptr;
 }

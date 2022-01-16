@@ -60,13 +60,13 @@ class cEntityManager : public tcLinkedList<sEntity>
         void             toggleState(const uint32& _UID, const std::string& _name1, const std::string& _name2);
         void             toggleState(const uint32& _UID, const uint32& _state1, const uint32& _state2);
         void             saveScreenShot(const std::string &_fileName) { m_modelManager.saveScreenShot(_fileName); };
-        void             freeData(sEntity*& _entity) { m_freeData(_entity); };
+        void             freeEntityData(sEntity*& _pointer) { freeData(_pointer); };
 
     protected:
         
     private:
         void             m_freeAll(void);
-        void             m_freeData(sEntity*& _pointer);
+        void             freeData(sEntity*& _pointer) override;
         void             m_playSound(sEntity*& _entity, const uint32& _state);
         void             m_setAnimationState(sEntity*& _entity, const uint32& _state);
         void             m_setTileState(sEntity*& _entity, const uint32& _state);

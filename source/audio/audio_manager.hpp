@@ -83,7 +83,7 @@ class cAudioManager : public tcLinkedList<sEntityAudio>
     protected:
         
     private:
-        void     freeData(sEntityAudio*& _pointer);
+        void     freeData(sEntityAudio*& _pointer) override;
         void     m_updateVolume(void);
 
         ALCdevice*          m_device        = nullptr;

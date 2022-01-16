@@ -50,7 +50,7 @@ class cModelManager : public tcLinkedList<sEntityModel>
     protected:
 
     private:
-        void freeData(sEntityModel*& _pointer);
+        void freeData(sEntityModel*& _pointer) override;
         
         cMaterialManager materialManager;
         

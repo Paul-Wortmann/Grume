@@ -44,7 +44,7 @@ sEntityModel* cEntityManager::getNewModel(void)
     return m_modelManager.getNew();
 }
 
-void cEntityManager::m_freeData(sEntity*& _pointer)
+void cEntityManager::freeData(sEntity*& _pointer)
 {
     _pointer->owner = eEntityOwner::ownerNone;
     _pointer->name = "";
@@ -129,7 +129,7 @@ void cEntityManager::m_freeAll(void)
 {
     for (sEntity* temp = getHead(); temp != nullptr; temp = temp->next)
     {
-        m_freeData(temp);
+        freeData(temp);
     }
 }
 

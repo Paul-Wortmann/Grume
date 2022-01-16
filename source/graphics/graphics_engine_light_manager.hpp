@@ -42,7 +42,7 @@ class cGraphicsEngineLightManager : public tcLinkedList<sGraphicsEnginePointLigh
     protected:
 
     private:
-        void freeData(sGraphicsEnginePointLight*& _light);
+        void freeData(sGraphicsEnginePointLight*& _light) override;
 };
 
 #endif // GRAPHICS_ENGINE_LIGHT_MANAGER_HPP

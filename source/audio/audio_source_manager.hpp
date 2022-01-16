@@ -37,7 +37,7 @@ class cAudioSourceManager : public tcLinkedList<sAudioSource>
     protected:
         
     private:
-        void freeData(sAudioSource*& _pointer);
+        void freeData(sAudioSource*& _pointer) override;
 };
 
 #endif //AUDIO_SOURCE_MANAGER_HPP
