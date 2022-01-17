@@ -34,12 +34,13 @@ struct sEntityMesh
     sEntityMesh*       next         = nullptr;
     uint32             UID          = 0;
 
-    // Data
+    // OpenGL
     uint32             VAO          = 0;
     uint32             VBO_vertices = 0;
     uint32             VBO_bones    = 0;
     uint32             IBO          = 0;
     
+    // Data
     uint32             numVertex    = 0;
     sEntityVertex*     vertex       = nullptr;
     sEntityVertexBone* vertexBone   = nullptr;

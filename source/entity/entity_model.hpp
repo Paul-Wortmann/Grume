@@ -27,7 +27,6 @@
 #include "../core/includes.hpp"
 #include "entity_animation.hpp"
 #include "entity_bone.hpp"
-#include "entity_material.hpp"
 #include "entity_mesh.hpp"
 
 struct sEntityModel
