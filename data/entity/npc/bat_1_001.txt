@@ -69,7 +69,7 @@
     </state>
 
     <ai>
-	// Distance in tile units of size
+    	// Distance in tile units of size
         <attack_distance>1</attack_distance>
         <attack_frequency>1024</attack_frequency> # mili-seconds
         <move_distance>8</move_distance>

@@ -279,7 +279,6 @@ class cGraphicsEngine
 
         uint32                m_pls_loc_diffuseMap                         = 0;
         uint32                m_pls_renderTextureID                        = 0;
-        
 };
 
 #endif //GRAPHICS_ENGINE_HPP
