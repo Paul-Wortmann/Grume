@@ -93,9 +93,9 @@ class cAudioManager : public tcLinkedList<sEntityAudio>
         cAudioBufferManager m_bufferManager = {};
         sListener           m_listener      = {};
         
-        uint32       m_volumeMaster  = 100;
-        uint32       m_volumeMusic   = 100;
-        uint32       m_volumeSound   = 100;
+        uint32              m_volumeMaster  = 100;
+        uint32              m_volumeMusic   = 100;
+        uint32              m_volumeSound   = 100;
 };
 
 #endif //AUDIO_MANAGER_HPP
