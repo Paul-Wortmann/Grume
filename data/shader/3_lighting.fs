@@ -160,7 +160,19 @@ vec3 DirectionalLightCalculation(vec3 _normal)
 float ShadowCalculation2(int _lightNum)
 {
     vec3 fragToLight = vs_fragPosition - vs_lightPosition[_lightNum];
-    float closestDepth = texture(material.depthCube[_lightNum], fragToLight).r;
+    
+    // Because OpenGL is stupid and won't permit indexing an array with a non const value..
+    // float closestDepth = texture(material.depthCube[_lightNum], fragToLight).r;
+    float closestDepth = 0.0;
+    if (_lightNum == 0)
+        closestDepth = texture(material.depthCube[0], fragToLight).r;
+    else if (_lightNum == 1)
+        closestDepth = texture(material.depthCube[1], fragToLight).r;
+    else if (_lightNum == 2)
+        closestDepth = texture(material.depthCube[2], fragToLight).r;
+    else if (_lightNum == 3)
+        closestDepth = texture(material.depthCube[3], fragToLight).r;
+    
     closestDepth *= farPlane;
     float currentDepth = length(fragToLight);
     float bias = 0.05; 
@@ -180,7 +192,19 @@ float ShadowCalculation(int _lightNum)
     float diskRadius = (1.0 + (viewDistance / farPlane)) / 25.0;
     for(int i = 0; i < samples; ++i)
     {
-        float closestDepth = texture(material.depthCube[_lightNum], fragToLight + gridSamplingDisk[i] * diskRadius).r;
+
+        // Because OpenGL is stupid and won't permit indexing an array with a non const value..
+        // float closestDepth = texture(material.depthCube[_lightNum], fragToLight).r;
+        float closestDepth = 0.0;
+        if (_lightNum == 0)
+            closestDepth = texture(material.depthCube[0], fragToLight).r;
+        else if (_lightNum == 1)
+            closestDepth = texture(material.depthCube[1], fragToLight).r;
+        else if (_lightNum == 2)
+            closestDepth = texture(material.depthCube[2], fragToLight).r;
+        else if (_lightNum == 3)
+            closestDepth = texture(material.depthCube[3], fragToLight).r;
+
         closestDepth *= farPlane;   // undo mapping [0;1]
         if(currentDepth - bias > closestDepth)
             shadow += 1.0;
