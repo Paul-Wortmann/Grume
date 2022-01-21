@@ -23,7 +23,7 @@
 
 #include "graphics_engine_camera.hpp"
 
-void cGraphicsEngineCamera::initialize(uint32 _fov, uint32 _width, uint32 _height)
+void cGraphicsEngineCamera::initialize(std::uint32_t _fov, std::uint32_t _width, std::uint32_t _height)
 {
     m_fov    = _fov;
     m_width  = _width;
@@ -36,7 +36,7 @@ void cGraphicsEngineCamera::terminate(void)
 
 }
 
-void cGraphicsEngineCamera::process(const float32 &_dt)
+void cGraphicsEngineCamera::process(const float &_dt)
 {
     if (m_shakeActive)
     {
@@ -49,9 +49,9 @@ void cGraphicsEngineCamera::process(const float32 &_dt)
         }
         else
         {
-            float32 fx = static_cast<float32>(20000 - (rand() % 20000)) / 10000.0f;
-            float32 fy = static_cast<float32>(20000 - (rand() % 20000)) / 10000.0f;
-            float32 fz = static_cast<float32>(20000 - (rand() % 20000)) / 10000.0f;
+            float fx = static_cast<float>(20000 - (rand() % 20000)) / 10000.0f;
+            float fy = static_cast<float>(20000 - (rand() % 20000)) / 10000.0f;
+            float fz = static_cast<float>(20000 - (rand() % 20000)) / 10000.0f;
             
             m_shakeTarget = glm::vec3(fx * m_shakeForce, fy * m_shakeForce, fz * m_shakeForce);
             m_view        = glm::lookAt(m_position, m_target + m_shakeTarget, m_orientation);
@@ -61,15 +61,15 @@ void cGraphicsEngineCamera::process(const float32 &_dt)
 
 void cGraphicsEngineCamera::m_calculateMartacies(void)
 {
-    m_projection = glm::perspective(static_cast<float32>(m_fov), static_cast<float32>(m_width) / static_cast<float32>(m_height), 0.1f, 100.0f);
+    m_projection = glm::perspective(static_cast<float>(m_fov), static_cast<float>(m_width) / static_cast<float>(m_height), 0.1f, 100.0f);
     m_view       = glm::lookAt(m_position, m_target + m_shakeTarget, m_orientation);
 }
 
-glm::vec3 cGraphicsEngineCamera::getMouseRay(const float32 &_mouseX, const float32 &_mouseY)
+glm::vec3 cGraphicsEngineCamera::getMouseRay(const float &_mouseX, const float &_mouseY)
 {
     // Normalized device coordinates:
-    float32 posX = ((_mouseX * 2.0f) / static_cast<float32>(m_width)) - 1.0f;
-    float32 posY = 1.0f - ((_mouseY * 2.0f) / static_cast<float32>(m_height));
+    float posX = ((_mouseX * 2.0f) / static_cast<float>(m_width)) - 1.0f;
+    float posY = 1.0f - ((_mouseY * 2.0f) / static_cast<float>(m_height));
     //glm::vec3  normalizedDC = glm::vec3(posX, posY, 1.0f);
 
     // 3D Normalised Device Coordinates
@@ -96,12 +96,12 @@ glm::vec3 cGraphicsEngineCamera::getMouseRay(const float32 &_mouseX, const float
 glm::vec3 cGraphicsEngineCamera::getRayPlaneIntersection(const glm::vec3 &_ray)
 {
     glm::vec3 n = glm::vec3(0.0, -1.0, 0.0);
-    float32   t = -glm::dot(m_position, n) / glm::dot(_ray, n);
+    float   t = -glm::dot(m_position, n) / glm::dot(_ray, n);
 
     return m_position + _ray * t;
 }
 
-glm::vec3 cGraphicsEngineCamera::getMousePositionTerrain(const float32 &_mouseX, const float32 &_mouseY)
+glm::vec3 cGraphicsEngineCamera::getMousePositionTerrain(const float &_mouseX, const float &_mouseY)
 {
     glm::vec3 rayDirection = getMouseRay(_mouseX, _mouseY);
     glm::vec3 planePoint = getRayPlaneIntersection(rayDirection);

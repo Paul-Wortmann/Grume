@@ -29,12 +29,12 @@
 // A collection of basic functions to extract data from xml encoded strings*
 // *This does not cover the full XML specification.
 
-bool        xmlFind           (const std::string &_data, const std::string &_find);
-std::string xmlGetDataString  (const std::string &_data);
-std::string xmlGetDataValue   (const std::string &_data, const std::string &_key);
-float32     xmlGetFloatValue  (const std::string &_data, const std::string &_key);
-int32       xmlGetIntegerValue(const std::string &_data, const std::string &_key);
-glm::vec2   xmlGetVec2Value   (const std::string &_data);
-glm::vec3   xmlGetVec3Value   (const std::string &_data);
+bool         xmlFind           (const std::string &_data, const std::string &_find);
+std::string  xmlGetDataString  (const std::string &_data);
+std::string  xmlGetDataValue   (const std::string &_data, const std::string &_key);
+float        xmlGetFloatValue  (const std::string &_data, const std::string &_key);
+std::int32_t xmlGetIntegerValue(const std::string &_data, const std::string &_key);
+glm::vec2    xmlGetVec2Value   (const std::string &_data);
+glm::vec3    xmlGetVec3Value   (const std::string &_data);
 
 #endif // XML_UTILS_HPP

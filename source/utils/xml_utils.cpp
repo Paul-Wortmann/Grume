@@ -38,10 +38,10 @@ boolean xmlFind(const std::string &_data, const std::string &_find)
 // Returns: data
 std::string xmlGetDataString(const std::string &_data)
 {
-    std::string  returnString = "";
-    std::size_t  stringLength = _data.length();
-    uint16       gtCount      = 0;
-    uint16       ltCount      = 0;
+    std::string   returnString = "";
+    std::size_t   stringLength = _data.length();
+    std::uint16_t gtCount      = 0;
+    std::uint16_t ltCount      = 0;
     
     for (std::size_t i = 0; i < stringLength; ++i)
     {
@@ -112,7 +112,7 @@ float xmlGetFloatValue(const std::string &_data, const std::string &_key)
 // A basic function to extract data from xml encoded string*
 // *This does not cover the full XML specification.
 // Converts a returned string into an int32
-int32 xmlGetIntegerValue(const std::string &_data, const std::string &_key)
+std::int32_t xmlGetIntegerValue(const std::string &_data, const std::string &_key)
 {
     std::string tString = xmlGetDataValue(_data, _key);
     std::size_t vLength = tString.length();
