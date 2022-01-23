@@ -231,7 +231,6 @@ void cPlayerManager::process(const float32 &_dt)
                     }
                 }
             }
-
         }
         
         // If click NPC

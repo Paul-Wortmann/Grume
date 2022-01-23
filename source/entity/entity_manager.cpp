@@ -428,7 +428,7 @@ sEntity* cEntityManager::load(const std::string& _fileName, sEntity* _entity)
             uint32 dataCount = xmlEntityFile.getInstanceCount("<collision_data>");
             for (uint32 i = 0; i < dataCount; ++i)
             {
-                // Get next collsion data
+                // Get next collision data
                 std::string collisionData = xmlEntityFile.getString("<collision_data>", 1 + i);
 
                 // Process the collision data string

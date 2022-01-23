@@ -34,12 +34,12 @@ struct sMapFloorSpritesheet
 
 struct sMapMusicTag
 {
-    std::string   name     = "";
+    std::string name     = "";
 };
 
 struct sMusicTrack
 {
-    std::uint32_t no       = 0; // Default == 0 (random)
+    std::uint32_t no     = 0; // Default == 0 (random)
 };
 
 struct sMapWallSet
@@ -83,17 +83,17 @@ struct sMapWallSet
 struct sMapBiome
 {
     // Linked list management
-    sMapBiome*        next             = nullptr;
-    std::uint32_t     UID              = 0;
+    sMapBiome*    next       = nullptr;
+    std::uint32_t UID        = 0;
 
     // General information
-    std::string       name             = "";
-    std::string       fileName         = "";
+    std::string   name       = "";
+    std::string   fileName   = "";
 
     // Data
-    sMapMusicTag      MusicTag         = {};
-    sMusicTrack       MusicTrack       = {};
-    sMapWallSet       WallSet          = {};
+    sMapMusicTag  MusicTag   = {};
+    sMusicTrack   MusicTrack = {};
+    sMapWallSet   WallSet    = {};
 
     // Map floor spritesheet
     sMapFloorSpritesheet floorSpritesheet = {};
