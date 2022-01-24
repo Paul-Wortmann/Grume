@@ -380,10 +380,12 @@ void cPlayerManager::process(const float32 &_dt)
     }
     
     m_player->movement->moved = false;
+    
     if (m_player->movement->mapPath.pathLength == 0)
     {
         m_player->movement->pathing = false;
     }
+    
     if (m_player->movement->pathing)
     {
         // move amount
