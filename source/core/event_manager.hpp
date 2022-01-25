@@ -29,11 +29,11 @@
 class cEventManager :tcTemplateManager
 {
     public:
-        uint32 initialize(void);
-        void   terminate(void);
-        void   process(const float32 &_dt);
-        sEvent getEvent(uint32 _eventNum);
-        void   addEvent(const sEvent &_event);
+        std::uint32_t initialize(void);
+        void          terminate(void);
+        void          process(const float &_dt);
+        sEvent        getEvent(std::uint32_t _eventNum);
+        void          addEvent(const sEvent &_event);
 
     protected:
 
