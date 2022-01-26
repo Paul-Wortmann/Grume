@@ -42,7 +42,7 @@ void cModelManager::freeData(sEntityModel*& _pointer)
         // free mesh data
         if (_pointer->mesh != nullptr)
         {
-            for(uint32 i = 0; i < _pointer->numMesh; ++i)
+            for(std::uint32_t i = 0; i < _pointer->numMesh; ++i)
             {
                 // opengl objects
                 if (_pointer->mesh[i].VAO != 0)

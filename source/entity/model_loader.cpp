@@ -23,12 +23,12 @@
 
 #include "model_manager.hpp"
 
-uint32 cModelManager::m_getNumMesh(const aiNode* _node, uint32 _numMesh)
+std::uint32_t cModelManager::m_getNumMesh(const aiNode* _node, std::uint32_t _numMesh)
 {
     if (_node != nullptr)
     {
         _numMesh += _node->mNumMeshes;
-        for (uint32 i = 0; i < _node->mNumChildren; ++i)
+        for (std::uint32_t i = 0; i < _node->mNumChildren; ++i)
         {
             _numMesh += m_getNumMesh(_node->mChildren[i], _numMesh);
         }
@@ -40,9 +40,9 @@ void cModelManager::m_processMesh(const aiScene*& _scene, const aiMesh* _mesh, s
 {
     if (_mesh != nullptr)
     {
-        uint32 meshNum = 0;
+        std::uint32_t meshNum = 0;
         //Find the next free mesh in _model to populate
-        for (uint32 i = 0; i < _model->numMesh; ++i)
+        for (std::uint32_t i = 0; i < _model->numMesh; ++i)
         {
             if (_model->mesh[i].numVertex == 0)
             {

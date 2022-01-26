@@ -118,9 +118,9 @@ GLFWimage* cTextureManager::loadIcon(const std::string &_fileName)
         GLFWimage* tImage = new GLFWimage;
         tImage->width = width;
         tImage->height = height;
-        uint32 pixelCount = tImage->width * tImage->height * numChannel;
+        std::uint32_t pixelCount = tImage->width * tImage->height * numChannel;
         tImage->pixels = new unsigned char[pixelCount];
-        for (uint32 i = 0; i < pixelCount; ++i)
+        for (std::uint32_t i = 0; i < pixelCount; ++i)
         {
             tImage->pixels[i] = data[i];
         }
@@ -202,7 +202,7 @@ void cTextureManager::savePNG(const std::string &_fileName)
     unsigned char* imageOut = m_flipImage(width, height, bitsPerPixel, image);
     
     // Write the image to disk
-    uint32 error = lodepng::encode(_fileName, imageOut, width, height);
+    std::uint32_t error = lodepng::encode(_fileName, imageOut, width, height);
     
     if (error != 0)
     {
@@ -222,15 +222,15 @@ void cTextureManager::savePNG(const std::string &_fileName)
     }
 }
 
-unsigned char* cTextureManager::m_flipImage(const uint32 &_width, const uint32 &_height, const uint32 &_bitsPerPixel, const unsigned char* _image)
+unsigned char* cTextureManager::m_flipImage(const std::uint32_t &_width, const std::uint32_t &_height, const std::uint32_t &_bitsPerPixel, const unsigned char* _image)
 {
     // Dynamically allocate memory for the new image
     unsigned char* image = new unsigned char[_width * _height * _bitsPerPixel];
     
     // loop through the input image and write the data to the new image
-    for (uint32 h = 0; h < _height; ++h)
+    for (std::uint32_t h = 0; h < _height; ++h)
     {
-        for (uint32 w = 0; w < (_width * _bitsPerPixel); ++w)
+        for (std::uint32_t w = 0; w < (_width * _bitsPerPixel); ++w)
         {
             image[(h * _width * _bitsPerPixel) + w] = _image[((_height - h - 1) * _width * _bitsPerPixel) + w];
         }
@@ -240,16 +240,16 @@ unsigned char* cTextureManager::m_flipImage(const uint32 &_width, const uint32 &
     return image;
 }
 
-std::vector<unsigned char> cTextureManager::m_flipImage(const uint32 &_width, const uint32 &_height, const uint32 &_bitsPerPixel, std::vector<unsigned char> _image)
+std::vector<unsigned char> cTextureManager::m_flipImage(const std::uint32_t &_width, const std::uint32_t &_height, const std::uint32_t &_bitsPerPixel, std::vector<unsigned char> _image)
 {
     // Create and resize the output vector
     std::vector<unsigned char>  image;
     image.resize(_width * _height * _bitsPerPixel);
     
     // loop through the input image and write the data to the new image
-    for (uint32 h = 0; h < _height; ++h)
+    for (std::uint32_t h = 0; h < _height; ++h)
     {
-        for (uint32 w = 0; w < (_width * _bitsPerPixel); ++w)
+        for (std::uint32_t w = 0; w < (_width * _bitsPerPixel); ++w)
         {
             image[(h * _width * _bitsPerPixel) + w] = _image[((_height - h - 1) * _width * _bitsPerPixel) + w];
         }

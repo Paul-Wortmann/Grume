@@ -30,11 +30,11 @@ struct sEntityTexture
 {
     // Linked list
     sEntityTexture* next     = nullptr;
-    uint32           UID     = 0;
+    std::uint32_t   UID     = 0;
 
     // Data
     std::string     fileName = {};
-    uint32          ID       = 0;
+    std::uint32_t   ID       = 0;
 };
 
 #endif // ENTITY_TEXTURE_HPP

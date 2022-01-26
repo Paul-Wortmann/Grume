@@ -57,7 +57,7 @@ class cModelManager : public tcLinkedList<sEntityModel>
         // model_loader.hpp
         std::vector<sEntityBone> m_boneMap = {};
 
-        uint32        m_getNumMesh(const aiNode* _node, uint32 _numMesh = 0);
+        std::uint32_t m_getNumMesh(const aiNode* _node, std::uint32_t _numMesh = 0);
         void          m_processMesh(const aiScene*& _scene, const aiMesh* _mesh, sEntityModel*& _model);
         void          m_processNode(const aiScene*& _scene, const aiNode* _node, sEntityModel*& _model);
         void          m_addBoneMap(const std::string &_name, const glm::mat4 &_mat4);
