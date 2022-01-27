@@ -32,18 +32,18 @@ struct sEntityState
     std::string   name          = "";
 
     // Object tile state
-    uint32        tileState     = 1; // eTileBase::tileFloor
+    std::uint32_t tileState     = 1; // eTileBase::tileFloor
 
     // Animation (start, end, repeat)
     glm::vec3     animation     = glm::vec3(0, 0, 0);
 
     // SoundFX
     std::string   audioDBname   = "";    // Audio database name
-    uint32        audioDBIndex  = 0;     // Audio database index
+    std::uint32_t audioDBIndex  = 0;     // Audio database index
     bool          audioRepeat   = false; // Audio repeat
     std::string   audioFile     = "";    // Audio source File name
-    uint32        audioSourceID = 0;     // Audio source
-    uint32        auidoBufferID = 0;     // Audio buffer
+    std::uint32_t audioSourceID = 0;     // Audio source
+    std::uint32_t auidoBufferID = 0;     // Audio buffer
 };
 
 #endif // ENTITY_STATE_HPP
