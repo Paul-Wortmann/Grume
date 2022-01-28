@@ -28,30 +28,30 @@
 
 struct sListener
 {
-    glm::vec3 position       = glm::vec3(0.0f, 0.0f, 0.0f);
-    glm::vec3 velocity       = glm::vec3(0.0f, 0.0f, 0.0f);
-    float     orientation[6] = {0.0f, 0.0f, 1.0f, 0.0f, 1.0f, 0.0f};
-    float     gain           = 1.0f;
+    glm::vec3     position       = glm::vec3(0.0f, 0.0f, 0.0f);
+    glm::vec3     velocity       = glm::vec3(0.0f, 0.0f, 0.0f);
+    float         orientation[6] = {0.0f, 0.0f, 1.0f, 0.0f, 1.0f, 0.0f};
+    float         gain           = 1.0f;
 };
 
 struct sAudioData
 {
-    uint16 audioFormat     = 0;
-    int32  channels        = 2;
-    int64  sampleRate      = 48000;
-    int64  bitsPerSample   = 16;
-    char*    buffer        = nullptr;
-    ALsizei  bufferSize    = 0;
+    uint16        audioFormat     = 0;
+    std::int32_t  channels        = 2;
+    std::int64_t  sampleRate      = 48000;
+    std::int64_t  bitsPerSample   = 16;
+    char*         buffer        = nullptr;
+    ALsizei       bufferSize    = 0;
 };
 
 struct sAudioBuffer
 {
     // Linked list
     sAudioBuffer* next       = nullptr;
-    uint32        UID        = 0;
+    std::uint32_t UID        = 0;
 
     // Data
-    uint32        ID         = 0; // OpenAl ID
+    std::uint32_t ID         = 0; // OpenAl ID
     std::string   name       = "";
 };
 
@@ -59,11 +59,11 @@ struct sAudioSource
 {
     // Linked list
     sAudioSource* next       = nullptr;
-    uint32        UID        = 0;
+    std::uint32_t UID        = 0;
 
     // Data
-    uint32        ID         = 0; // OpenAl ID
-    int32         state      = 0;
+    std::uint32_t ID         = 0; // OpenAl ID
+    std::int32_t  state      = 0;
     float         pitch      = 1.0f;
     float         gain       = 1.0f; // Volume
     bool          looping    = false;

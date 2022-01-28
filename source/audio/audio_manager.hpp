@@ -36,55 +36,55 @@
 class cAudioManager : public tcLinkedList<sEntityAudio>
 {
     public:
-        void     initialize(void);
-        void     terminate(void);
-        void     process(float32 _dt);
+        void          initialize(void);
+        void          terminate(void);
+        void          process(float _dt);
         
         // Listener
-        void     setListenerPosition(glm::vec3 _position) {m_listener.position = _position; alListener3f(AL_POSITION, _position.x, _position.y, _position.z);}
-        void     setListenerVelocity(glm::vec3 _velocity) {m_listener.velocity = _velocity; alListener3f(AL_POSITION, _velocity.x, _velocity.y, _velocity.z);}
+        void          setListenerPosition(glm::vec3 _position) {m_listener.position = _position; alListener3f(AL_POSITION, _position.x, _position.y, _position.z);}
+        void          setListenerVelocity(glm::vec3 _velocity) {m_listener.velocity = _velocity; alListener3f(AL_POSITION, _velocity.x, _velocity.y, _velocity.z);}
 
         // Audio sources
-        uint32   newAudioSource(void) {return m_sourceManager.newAudioSource()->ID;}
-        void     attachSourceBuffer(uint32 _sID, uint32 _bID) {alSourcei(_sID, AL_BUFFER, _bID);}
-        void     playSource(uint32 _ID) {alSourcePlay(_ID);}
-        void     stopSource(uint32 _ID) {alSourceStop(_ID);}
-        int32    getSourceState(uint32 _ID) {int32 state; alGetSourcei(_ID, AL_SOURCE_STATE, &state); return state;}
-        void     setAudioSourcePitch(uint32 _ID, float _pitch) {alSourcef(_ID, AL_PITCH, _pitch);}
-        void     setAudioSourceGain(uint32 _ID, float _gain) {alSourcef(_ID, AL_GAIN, _gain);}
-        void     setAudioSourcePosition(uint32 _ID, float _x, float _y, float _z) {alSource3f(_ID, AL_POSITION, _x, _y, _z);}
-        void     setAudioSourcePosition(uint32 _ID, glm::vec3 _position) {alSource3f(_ID, AL_POSITION, _position.x, _position.y, _position.z);}
-        void     setAudioSourceVelocity(uint32 _ID, float _x, float _y, float _z) {alSource3f(_ID, AL_VELOCITY, _x, _y, _z);}
-        void     setAudioSourceVelocity(uint32 _ID, glm::vec3 _velocity) {alSource3f(_ID, AL_VELOCITY, _velocity.x, _velocity.y, _velocity.z);}
-        void     setAudioSourceLooping(uint32 _ID, bool _looping) {alSourcei(_ID, AL_LOOPING, (_looping) ? AL_TRUE : AL_FALSE);}
-        void     setAudioSourceLooping(uint32 _ID, int32 _looping) {alSourcei(_ID, AL_LOOPING, _looping);}
+        std::uint32_t newAudioSource(void) {return m_sourceManager.newAudioSource()->ID;}
+        void          attachSourceBuffer(std::uint32_t _sID, std::uint32_t _bID) {alSourcei(_sID, AL_BUFFER, _bID);}
+        void          playSource(std::uint32_t _ID) {alSourcePlay(_ID);}
+        void          stopSource(std::uint32_t _ID) {alSourceStop(_ID);}
+        std::int32_t  getSourceState(std::uint32_t _ID) {std::int32_t state; alGetSourcei(_ID, AL_SOURCE_STATE, &state); return state;}
+        void          setAudioSourcePitch(std::uint32_t _ID, float _pitch) {alSourcef(_ID, AL_PITCH, _pitch);}
+        void          setAudioSourceGain(std::uint32_t _ID, float _gain) {alSourcef(_ID, AL_GAIN, _gain);}
+        void          setAudioSourcePosition(std::uint32_t _ID, float _x, float _y, float _z) {alSource3f(_ID, AL_POSITION, _x, _y, _z);}
+        void          setAudioSourcePosition(std::uint32_t _ID, glm::vec3 _position) {alSource3f(_ID, AL_POSITION, _position.x, _position.y, _position.z);}
+        void          setAudioSourceVelocity(std::uint32_t _ID, float _x, float _y, float _z) {alSource3f(_ID, AL_VELOCITY, _x, _y, _z);}
+        void          setAudioSourceVelocity(std::uint32_t _ID, glm::vec3 _velocity) {alSource3f(_ID, AL_VELOCITY, _velocity.x, _velocity.y, _velocity.z);}
+        void          setAudioSourceLooping(std::uint32_t _ID, bool _looping) {alSourcei(_ID, AL_LOOPING, (_looping) ? AL_TRUE : AL_FALSE);}
+        void          setAudioSourceLooping(std::uint32_t _ID, std::int32_t _looping) {alSourcei(_ID, AL_LOOPING, _looping);}
         
         // Audio buffers
-        void     setAudioBufferName(uint32 _ID, const std::string &_name);
-        uint32   findAudioBuffer(const std::string &_name) {sAudioBuffer* tB = m_bufferManager.findAudioBuffer(_name); return (tB == nullptr) ? 0 : tB->ID;}
-        uint32   newAudioBuffer(void) {return m_bufferManager.newAudioBuffer()->ID;}
-        void     loadBufferWav(uint32 _ID, const std::string &_fileName);
-        void     loadBufferOgg(uint32 _ID, const std::string &_fileName);
+        void          setAudioBufferName(std::uint32_t _ID, const std::string &_name);
+        std::uint32_t findAudioBuffer(const std::string &_name) {sAudioBuffer* tB = m_bufferManager.findAudioBuffer(_name); return (tB == nullptr) ? 0 : tB->ID;}
+        std::uint32_t newAudioBuffer(void) {return m_bufferManager.newAudioBuffer()->ID;}
+        void          loadBufferWav(std::uint32_t _ID, const std::string &_fileName);
+        void          loadBufferOgg(std::uint32_t _ID, const std::string &_fileName);
 
         // Volume
-        void     setVolumeMaster(uint32 _volume) {m_volumeMaster = _volume; m_updateVolume(); };
-        uint32   getVolumeMaster(void) {return m_volumeMaster; m_updateVolume(); };
-        void     setVolumeMasterUp(void) { if (m_volumeMaster < 100) m_volumeMaster++; m_updateVolume(); };
-        void     setVolumeMasterDown(void) { if (m_volumeMaster > 0) m_volumeMaster--; m_updateVolume(); };
-        void     setVolumeMusic(uint32 _volume) {m_volumeMusic = _volume; m_updateVolume(); };
-        uint32   getVolumeMusic(void) {return m_volumeMusic; m_updateVolume(); };
-        void     setVolumeMusicUp(void) { if (m_volumeMusic < 100) m_volumeMusic++; m_updateVolume(); };
-        void     setVolumeMusicDown(void) { if (m_volumeMusic > 0) m_volumeMusic--; m_updateVolume(); };
-        void     setVolumeSound(uint32 _volume) {m_volumeSound = _volume; m_updateVolume(); };
-        uint32   getVolumeSound(void) {return m_volumeSound; m_updateVolume(); };
-        void     setVolumeSoundUp(void) { if (m_volumeSound < 100) m_volumeSound++; m_updateVolume(); };
-        void     setVolumeSoundDown(void) { if (m_volumeSound > 0) m_volumeSound--; m_updateVolume(); };
+        void          setVolumeMaster(std::uint32_t _volume) {m_volumeMaster = _volume; m_updateVolume(); };
+        std::uint32_t getVolumeMaster(void) {return m_volumeMaster; m_updateVolume(); };
+        void          setVolumeMasterUp(void) { if (m_volumeMaster < 100) m_volumeMaster++; m_updateVolume(); };
+        void          setVolumeMasterDown(void) { if (m_volumeMaster > 0) m_volumeMaster--; m_updateVolume(); };
+        void          setVolumeMusic(std::uint32_t _volume) {m_volumeMusic = _volume; m_updateVolume(); };
+        std::uint32_t getVolumeMusic(void) {return m_volumeMusic; m_updateVolume(); };
+        void          setVolumeMusicUp(void) { if (m_volumeMusic < 100) m_volumeMusic++; m_updateVolume(); };
+        void          setVolumeMusicDown(void) { if (m_volumeMusic > 0) m_volumeMusic--; m_updateVolume(); };
+        void          setVolumeSound(std::uint32_t _volume) {m_volumeSound = _volume; m_updateVolume(); };
+        std::uint32_t getVolumeSound(void) {return m_volumeSound; m_updateVolume(); };
+        void          setVolumeSoundUp(void) { if (m_volumeSound < 100) m_volumeSound++; m_updateVolume(); };
+        void          setVolumeSoundDown(void) { if (m_volumeSound > 0) m_volumeSound--; m_updateVolume(); };
         
     protected:
         
     private:
-        void     freeData(sEntityAudio*& _pointer) override;
-        void     m_updateVolume(void);
+        void          freeData(sEntityAudio*& _pointer) override;
+        void          m_updateVolume(void);
 
         ALCdevice*          m_device        = nullptr;
         ALCcontext*         m_context       = nullptr;
@@ -93,9 +93,9 @@ class cAudioManager : public tcLinkedList<sEntityAudio>
         cAudioBufferManager m_bufferManager = {};
         sListener           m_listener      = {};
         
-        uint32              m_volumeMaster  = 100;
-        uint32              m_volumeMusic   = 100;
-        uint32              m_volumeSound   = 100;
+        std::uint32_t       m_volumeMaster  = 100;
+        std::uint32_t       m_volumeMusic   = 100;
+        std::uint32_t       m_volumeSound   = 100;
 };
 
 #endif //AUDIO_MANAGER_HPP
