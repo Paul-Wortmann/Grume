@@ -23,7 +23,7 @@
 
 #include "game_engine.hpp"
 
-uint32 cGameEngine::run(const uint32 &_argc, char** _argv)
+std::uint32_t cGameEngine::run(const uint32 &_argc, char** _argv)
 {
     // Clear the log and log version information.
     gLogClear();
@@ -405,8 +405,8 @@ void cGameEngine::process(void)
             glm::vec3 cameraTarget = graphicsEngine.getCameraTarget();
             glm::vec3 cameraPosition = graphicsEngine.getCameraPosition();
             
-            float32 deltaX = tPlayerPosition.x - cameraTarget.x;
-            float32 deltaZ = tPlayerPosition.z - cameraTarget.z;
+            float deltaX = tPlayerPosition.x - cameraTarget.x;
+            float deltaZ = tPlayerPosition.z - cameraTarget.z;
 
             // Camera follow player
             cameraPosition.x += deltaX;
