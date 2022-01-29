@@ -30,7 +30,7 @@ void loadWav(const std::string &_fileName, sAudioData *_audioData)
     if (inFile)
     {
         // Read data from the file header
-        const uint32 HEADER_LENGTH = 44;
+        const std::uint32_t HEADER_LENGTH = 44;
         inFile.seekg (0, inFile.end);
         _audioData->bufferSize = inFile.tellg();
         _audioData->bufferSize -= HEADER_LENGTH;
@@ -44,10 +44,10 @@ void loadWav(const std::string &_fileName, sAudioData *_audioData)
         inFile.read(header,HEADER_LENGTH);
         inFile.read(_audioData->buffer,_audioData->bufferSize);
         inFile.close();
-        uint16 header_format = header[20];
-        uint16 header_channels = header[22];
-        uint32 header_sampleRate = (reinterpret_cast<unsigned char&>(header[25]) * 256) + reinterpret_cast<unsigned char&>(header[24]);
-        uint32 header_bitsPerSample = header[34];
+        std::uint16_t header_format = header[20];
+        std::uint16_t header_channels = header[22];
+        std::uint32_t header_sampleRate = (reinterpret_cast<unsigned char&>(header[25]) * 256) + reinterpret_cast<unsigned char&>(header[24]);
+        std::uint32_t header_bitsPerSample = header[34];
         
         // Save data to the audio data struct
         _audioData->channels = header_channels;

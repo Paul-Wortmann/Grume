@@ -33,22 +33,22 @@ void loadOgg(const std::string &_fileName, sAudioData *_audioData)
         _audioData->audioFormat = (pInfo->channels == 1) ? AL_FORMAT_MONO16 : AL_FORMAT_STEREO16;
         _audioData->sampleRate = pInfo->rate;
         _audioData->bitsPerSample = pInfo->bitrate_upper;
-        uint16 endian = 0;
-        uint16 wordSize = 2;
-        uint16 sampleSize = wordSize * pInfo->channels;
+        std::uint16_t endian = 0;
+        std::uint16_t wordSize = 2;
+        std::uint16_t sampleSize = wordSize * pInfo->channels;
         _audioData->bufferSize = ov_pcm_total(&oggFile, -1) * sampleSize;
         if (_audioData->buffer != nullptr)
         {
             delete[] _audioData->buffer;
         }
         _audioData->buffer = new char [_audioData->bufferSize];
-        uint64 bufferPos = 0;
-        uint32 readLength = 4096;
-        int32 currentSection = 0;
-        int32 eof = 0;
+        std::uint64_t bufferPos = 0;
+        std::uint32_t readLength = 4096;
+        std::int32_t currentSection = 0;
+        std::int32_t eof = 0;
         while(!eof)
         {
-            uint64 readSize = ov_read(&oggFile, &_audioData->buffer[bufferPos], readLength, endian, wordSize, 1, &currentSection);
+            std::uint64_t readSize = ov_read(&oggFile, &_audioData->buffer[bufferPos], readLength, endian, wordSize, 1, &currentSection);
             if (readSize == 0)
                 eof = 1;
             bufferPos += readSize;
