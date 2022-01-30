@@ -72,7 +72,7 @@ void cGameEngine::game_load(void)
 }
 
 
-void cGameEngine::game_load(const uint32 &_slotNum)
+void cGameEngine::game_load(const std::uint32_t &_slotNum)
 {
     // Load the game startup file
     cXML xmlSaveGameFile;
@@ -84,8 +84,8 @@ void cGameEngine::game_load(const uint32 &_slotNum)
     {
         // Information
         std::string  currentMap      = xmlSaveGameFile.getString("<current_map>");
-        uint32  currentPosition = xmlSaveGameFile.getInteger("<current_position>");
-        float32 currentRotation = xmlSaveGameFile.getFloat("<current_rotation>");
+        std::uint32_t  currentPosition = xmlSaveGameFile.getInteger("<current_position>");
+        float currentRotation = xmlSaveGameFile.getFloat("<current_rotation>");
         
         // Player
         sEntity* player = playerManager.getPlayerEntity();
@@ -127,15 +127,15 @@ void cGameEngine::game_load(const uint32 &_slotNum)
         
         // Map data
         mapManager.mapList.clear();
-        uint32 mapSeedCount = xmlSaveGameFile.getInstanceCount("<map>");
-        for (uint32 i = 0; i < mapSeedCount; ++i)
+        std::uint32_t mapSeedCount = xmlSaveGameFile.getInstanceCount("<map>");
+        for (std::uint32_t i = 0; i < mapSeedCount; ++i)
         {
             std::string tmapData = xmlSaveGameFile.getString("<map>", 1 + i);
             tmapData += "    ";
             uint64 tmapDataLength = tmapData.length();
             std::string tmapName       = "";
-            uint32 tmapSeed       = 0;
-            uint32 tStringNum = 0;
+            std::uint32_t tmapSeed       = 0;
+            std::uint32_t tStringNum = 0;
             std::string tString = "";
             if (tmapDataLength > 6)
             {

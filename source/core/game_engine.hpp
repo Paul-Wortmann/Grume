@@ -42,7 +42,7 @@
 class cGameEngine
 {
     public:
-        uint32 run(const uint32 &_argc, char** _argv);
+        std::uint32_t run(const std::uint32_t &_argc, char** _argv);
 
     protected:
 
@@ -70,7 +70,7 @@ class cGameEngine
         cUIManager       uiManager;
        
         // game_engine.cpp
-        uint32 initialize(const uint32 &_argc, char** _argv);
+        std::uint32_t initialize(const std::uint32_t &_argc, char** _argv);
         void   terminate(void);
         void   process(void);
 
@@ -79,10 +79,10 @@ class cGameEngine
 
         // game_load.cpp
         void game_load(void);
-        void game_load(const uint32 &_slotNum);
+        void game_load(const std::uint32_t &_slotNum);
 
         // game_save.cpp
-        void game_save(const uint32 &_slotNum);
+        void game_save(const std::uint32_t &_slotNum);
         
         sEntity* m_entityHead = nullptr;
         sEntity* m_entityTemp = nullptr;

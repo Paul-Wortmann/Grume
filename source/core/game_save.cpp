@@ -23,7 +23,7 @@
 
 #include "game_engine.hpp"
 
-void cGameEngine::game_save(const uint32 &_slotNum)
+void cGameEngine::game_save(const std::uint32_t &_slotNum)
 {
     // Create a new save file, or overwrite its content if it does not exist
     std::string   fileName = std::string("save_00") + std::to_string(_slotNum) + std::string(".txt");
@@ -33,8 +33,8 @@ void cGameEngine::game_save(const uint32 &_slotNum)
     // Only proceed if there is map data
     if (saveFile.is_open())
     {
-        uint32 indent_width = 4;
-        uint32 indent_level = 0;
+        std::uint32_t indent_width = 4;
+        std::uint32_t indent_level = 0;
         
         // XML information
         saveFile << "<?xml version = \"1.0\" encoding = \"UTF-8\" ?>" << std::endl;
@@ -139,7 +139,7 @@ void cGameEngine::game_save(const uint32 &_slotNum)
         saveFile << std::string(indent_width * indent_level, ' ');
         saveFile << "<map_data>" << std::endl;
         indent_level++;
-        std::map<std::string, uint32>::iterator it;
+        std::map<std::string, std::uint32_t>::iterator it;
         for (it = mapManager.mapList.begin(); it != mapManager.mapList.end(); it++)
         {
             saveFile << std::string(indent_width * indent_level, ' ');

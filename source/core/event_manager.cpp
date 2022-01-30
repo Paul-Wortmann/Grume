@@ -23,7 +23,7 @@
 
 #include "event_manager.hpp"
 
-uint32 cEventManager::initialize(void)
+std::uint32_t cEventManager::initialize(void)
 {
 
 
@@ -36,13 +36,13 @@ void cEventManager::terminate(void)
 
 }
 
-void cEventManager::process(const float32 &_dt)
+void cEventManager::process(const float &_dt)
 {
 
 
 }
 
-sEvent cEventManager::getEvent(uint32 _eventNum)
+sEvent cEventManager::getEvent(std::uint32_t _eventNum)
 {
     return m_eventPool.event[_eventNum];
 }

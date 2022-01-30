@@ -68,24 +68,24 @@ class cTimer
         };
 
         // Set desired frametime
-        void set_dt(float64 _dt) {m_dt = _dt;}
+        void set_dt(double _dt) {m_dt = _dt;}
 
         // Get desired frametime
-        float64 get_dt(void) {return m_dt;}
+        double get_dt(void) {return m_dt;}
 
         // Get the frametime (time to process the game loop)
-        float64 get_frameTime(void) {return m_frameTime;}
+        double get_frameTime(void) {return m_frameTime;}
 
     protected:
 
     private:
-        float64 m_t           = 0.0f;  // total time
-        float64 m_dt          = 16.0f; // desired frametime
-        float64 m_mt          = 64.0f; // max frametime - limit
-        float64 m_accumulator = 0.0f;  // Used to accumulate frame time until it is m_dt
-        float64 m_frameStart  = 0.0f;  // Time at frame start
-        float64 m_frameEnd    = 0.0f;  // Time at frame end
-        float64 m_frameTime   = 0.0f;  // delta time
+        double m_t           = 0.0f;  // total time
+        double m_dt          = 16.0f; // desired frametime
+        double m_mt          = 64.0f; // max frametime - limit
+        double m_accumulator = 0.0f;  // Used to accumulate frame time until it is m_dt
+        double m_frameStart  = 0.0f;  // Time at frame start
+        double m_frameEnd    = 0.0f;  // Time at frame end
+        double m_frameTime   = 0.0f;  // delta time
 };
 
 #endif // TIMER_HPP

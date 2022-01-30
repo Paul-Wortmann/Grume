@@ -27,29 +27,29 @@
 #include "includes.hpp"
 #include "../templates/template_manager.hpp"
 
-enum class eEventType : uint32 { eventType_none = 0};
+enum class eEventType : std::uint32_t { eventType_none = 0};
 
 struct sEventData
 {
     union
     {
-        float  x, y, z, w;
-        uint32 data[4];
+        float         x, y, z, w;
+        std::uint32_t data[4];
     };
 };
 
 struct sEvent
 {
-    eEventType eventType = eEventType::eventType_none;
-    uint32     eventID   = 0;
-    sEventData eventDate = {};
+    eEventType    eventType = eEventType::eventType_none;
+    std::uint32_t eventID   = 0;
+    sEventData    eventDate = {};
 };
 
 struct sEventPool
 {
-    static const int32 eventCount        = 32;
-    int32              eventCurrent      = 0;
-    sEvent             event[eventCount] = {};
+    static const std::int32_t eventCount        = 32;
+    std::int32_t              eventCurrent      = 0;
+    sEvent                    event[eventCount] = {};
 };
 
 #endif // EVENT_MANAGER_DEFINES_HPP

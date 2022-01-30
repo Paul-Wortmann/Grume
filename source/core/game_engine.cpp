@@ -23,7 +23,7 @@
 
 #include "game_engine.hpp"
 
-std::uint32_t cGameEngine::run(const uint32 &_argc, char** _argv)
+std::uint32_t cGameEngine::run(const std::uint32_t &_argc, char** _argv)
 {
     // Clear the log and log version information.
     gLogClear();
@@ -39,7 +39,7 @@ std::uint32_t cGameEngine::run(const uint32 &_argc, char** _argv)
     gLogWrite(LOG_INFO, "Compile details: " + GRUMECompile, __FILE__, __LINE__, __FUNCTION__);
 
     // Initialize game subsystems
-    uint32 status = initialize(_argc, _argv);
+    std::uint32_t status = initialize(_argc, _argv);
     
     // Enter the main loop
     while (m_state != eGameState::shutdown)
@@ -50,13 +50,13 @@ std::uint32_t cGameEngine::run(const uint32 &_argc, char** _argv)
     return status;
 }
 
-uint32 cGameEngine::initialize(const uint32 &_argc, char** _argv)
+std::uint32_t cGameEngine::initialize(const std::uint32_t &_argc, char** _argv)
 {
     // Load the config file first
     gameConfig.load();
 
     // Process command line arguments
-    for (uint32 i = 1; i < _argc; i++)
+    for (std::uint32_t i = 1; i < _argc; i++)
     {
         std::string clString = _argv[i];
         if (clString.compare("--test") == 0)
@@ -75,7 +75,7 @@ uint32 cGameEngine::initialize(const uint32 &_argc, char** _argv)
     graphicsEngine.setBasicRenderPath(gameConfig.m_basicRenderer);
     graphicsEngine.setDisplay(gameConfig.m_resolution_x, gameConfig.m_resolution_y, gameConfig.m_fullscreen);
 
-    uint32 status = graphicsEngine.initialize(); // This should be initialized first
+    std::uint32_t status = graphicsEngine.initialize(); // This should be initialized first
     if (status == EXIT_SUCCESS)
     {
         // Before loading entities

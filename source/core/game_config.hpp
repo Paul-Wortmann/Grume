@@ -44,16 +44,16 @@ class cGameConfig
         // and will use the closest valid resolution to these values when not.
         
         // Graphics
-        uint32 m_resolution_x  = 1920;
-        uint32 m_resolution_y  = 1080;
-        bool   m_fullscreen    = true;
-        bool   m_basicRenderer = false;
+        std::uint32_t m_resolution_x  = 1920;
+        std::uint32_t m_resolution_y  = 1080;
+        bool          m_fullscreen    = true;
+        bool          m_basicRenderer = false;
         
         // Audio
-        uint32 m_volume_max    = 100;
-        uint32 m_volume_master = 30;
-        uint32 m_volume_music  = 40;
-        uint32 m_volume_sfx    = 50;
+        std::uint32_t m_volume_max    = 100;
+        std::uint32_t m_volume_master = 30;
+        std::uint32_t m_volume_music  = 40;
+        std::uint32_t m_volume_sfx    = 50;
 };
 
 #endif // GAME_CONFIG_HPP
