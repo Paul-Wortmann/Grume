@@ -979,7 +979,7 @@ void cMapManager::unload(void)
         m_entityManager->removeModel(m_currentMap->floor->model);
     }
     
-    // Free all entities asociated with the map
+    // Free all entities associated with the map
     for (sEntity* entity = m_entityManager->getHead(); entity != nullptr; entity = entity->next)
     {
         if (entity->owner == eEntityOwner::ownerMap)

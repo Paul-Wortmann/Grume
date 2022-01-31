@@ -30,18 +30,18 @@
 class cGraphicsEngineShader
 {
     public:
-        void   initialize(void);
-        void   terminate(void);
-        void   use(void);
-        uint32 load(const std::string &_fileName);
-        uint32 getID(void) {return m_shaderID;}
-        uint32 getUniformLocation(const std::string &_name);
-        uint32 getAttribLocation(const std::string &_name);
+        void          initialize(void);
+        void          terminate(void);
+        void          use(void);
+        std::uint32_t load(const std::string &_fileName);
+        std::uint32_t getID(void) {return m_shaderID;}
+        std::uint32_t getUniformLocation(const std::string &_name);
+        std::uint32_t getAttribLocation(const std::string &_name);
     
     protected:
         
     private:
-        uint32 m_shaderID = 0;
+        std::uint32_t m_shaderID = 0;
 };
 
 #endif //GRAPHICS_ENGINE_SHADER_HPP

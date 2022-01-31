@@ -33,30 +33,30 @@ void cNPCManager::terminate(void)
 
 }
 
-uint32 cNPCManager::m_positionToTile(glm::vec3 _position)
+std::uint32_t cNPCManager::m_positionToTile(glm::vec3 _position)
 {
     // Width and height offset, used to center the walls
-    float32 xo = static_cast<float32>(m_mapPointer->width)  / 2.0f;
-    float32 zo = static_cast<float32>(m_mapPointer->height) / 2.0f;
+    float xo = static_cast<float>(m_mapPointer->width)  / 2.0f;
+    float zo = static_cast<float>(m_mapPointer->height) / 2.0f;
 
-    uint32 x = static_cast<uint32>(_position.x + xo);
-    uint32 z = static_cast<uint32>(_position.z + zo);
+    std::uint32_t x = static_cast<std::uint32_t>(_position.x + xo);
+    std::uint32_t z = static_cast<std::uint32_t>(_position.z + zo);
     return (z * m_mapPointer->width) + x;
 };
 
-glm::vec3 cNPCManager::m_tileToPosition(uint32 _tile)
+glm::vec3 cNPCManager::m_tileToPosition(std::uint32_t _tile)
 { 
     // Width and height offset, used to center the walls
-    float32 xo = static_cast<float32>(m_mapPointer->width)  / 2.0f;
-    float32 zo = static_cast<float32>(m_mapPointer->height) / 2.0f;
-    float32 tp = 1.0f / 2.0f; // tile center positioning ( half model dimention)
+    float xo = static_cast<float>(m_mapPointer->width)  / 2.0f;
+    float zo = static_cast<float>(m_mapPointer->height) / 2.0f;
+    float tp = 1.0f / 2.0f; // tile center positioning ( half model dimention)
 
-    float32 x = static_cast<float32>(_tile % m_mapPointer->width) - xo + tp;
-    float32 z = static_cast<float32>(_tile / m_mapPointer->width) - zo + tp;
+    float x = static_cast<float>(_tile % m_mapPointer->width) - xo + tp;
+    float z = static_cast<float>(_tile / m_mapPointer->width) - zo + tp;
     return glm::vec3(x, m_mapPointer->terrainHeight, z);
 };
 
-void cNPCManager::process(const float32 &_dt)
+void cNPCManager::process(const float &_dt)
 {
     // Entities
     for(m_entityTemp = m_entityHead; m_entityTemp != nullptr; m_entityTemp = m_entityTemp->next)
@@ -82,7 +82,7 @@ void cNPCManager::process(const float32 &_dt)
             }
             
             // Turn to face the player
-            float32 angle = static_cast<float32>(atan2(m_entityTemp->position.z - m_entityPlayer->position.z, m_entityTemp->position.x - m_entityPlayer->position.x));
+            float angle = static_cast<float>(atan2(m_entityTemp->position.z - m_entityPlayer->position.z, m_entityTemp->position.x - m_entityPlayer->position.x));
 
             if (m_entityTemp->rotationAxis.x != 0)
             {
@@ -105,10 +105,10 @@ void cNPCManager::process(const float32 &_dt)
             if ((m_entityTemp->ai != nullptr) && visable)
             {
                 // Calculate the distance to the player
-                float32 distancetoPlayer2 = (((m_entityTemp->position.x - m_entityPlayer->position.x) * 
-                                              (m_entityTemp->position.x - m_entityPlayer->position.x)) +
-                                             ((m_entityTemp->position.z - m_entityPlayer->position.z) * 
-                                              (m_entityTemp->position.z - m_entityPlayer->position.z)));
+                float distancetoPlayer2 = (((m_entityTemp->position.x - m_entityPlayer->position.x) * 
+                                            (m_entityTemp->position.x - m_entityPlayer->position.x)) +
+                                           ((m_entityTemp->position.z - m_entityPlayer->position.z) * 
+                                            (m_entityTemp->position.z - m_entityPlayer->position.z)));
                 
                 // Check if player is in attack range, if so attack
                 if (distancetoPlayer2 < (m_entityTemp->ai->distanceAttack) * (m_entityTemp->ai->distanceAttack))
@@ -122,9 +122,9 @@ void cNPCManager::process(const float32 &_dt)
                         m_entityTemp->ai->attack_counter = 0.0f;
                         
                         // Inflict damage on the player
-                        // **** this should be based on NPC stength and player defence, etc...
+                        // **** this should be based on NPC strength and player defense, etc...
                         
-                        float32 damage = m_entityTemp->character->attributes.damagePhysical.base / 2.0f;
+                        float damage = m_entityTemp->character->attributes.damagePhysical.base / 2.0f;
                         m_entityPlayer->character->attributes.health.current -= damage;
 
                         // Player death
@@ -187,7 +187,7 @@ void cNPCManager::process(const float32 &_dt)
                         glm::vec3 currentTilePos = m_tileToPosition(m_entityTemp->movement->mapPath.currentTile);
                         
                         // Get the distance to the destination tile
-                        float32   distanceToTileSqr = ((entityPos.x - currentTilePos.x) * (entityPos.x - currentTilePos.x)) + ((entityPos.z - currentTilePos.z) * (entityPos.z - currentTilePos.z));
+                        float   distanceToTileSqr = ((entityPos.x - currentTilePos.x) * (entityPos.x - currentTilePos.x)) + ((entityPos.z - currentTilePos.z) * (entityPos.z - currentTilePos.z));
                         
                         // if not center, move towards tile center
                         if (distanceToTileSqr > (m_entityTemp->movement->movementSpeed + m_entityTemp->movement->movementBias))

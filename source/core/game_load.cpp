@@ -79,7 +79,7 @@ void cGameEngine::game_load(const std::uint32_t &_slotNum)
     std::string fileName = std::string("save_00") + std::to_string(_slotNum) + std::string(".txt");
     xmlSaveGameFile.load(std::string(FILE_PATH_SAVE) + fileName);
     
-    // Only contine if we can load the game startup file
+    // Only continue if we can load the game startup file
     if (xmlSaveGameFile.lineCount() > 0)
     {
         // Information
