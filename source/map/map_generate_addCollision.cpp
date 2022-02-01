@@ -23,7 +23,7 @@
 
 #include "map_manager.hpp"
 
-void cMapManager::m_addCollisionData(sMap*& _map, sEntity*& _entity, const std::uint32_t &_tile, const float32 &_rotation)
+void cMapManager::m_addCollisionData(sMap*& _map, sEntity*& _entity, const std::uint32_t &_tile, const float &_rotation)
 {
     
     if ((_entity->collision != nullptr) && (_entity->collision->data != nullptr))

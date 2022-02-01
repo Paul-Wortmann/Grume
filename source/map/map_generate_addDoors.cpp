@@ -49,16 +49,16 @@ void cMapManager::m_addDoorEntities(sMap*& _map)
         std::uint32_t door_3td_count = xmlFile.getInteger("<door_3td_count>", 1); // Doors, length 3
 
         // Width and height offset, used to center the doors
-        float32 xo = static_cast<float32>(_map->width  / 2);
-        float32 yo = static_cast<float32>(_map->height / 2);
+        float xo = static_cast<float>(_map->width  / 2);
+        float yo = static_cast<float>(_map->height / 2);
 
         // Doors of length 3 --------------------------------------------------------------------------------------------
-        for (uint32 h = 2; h < _map->height - 2; ++h)
+        for (std::uint32_t h = 2; h < _map->height - 2; ++h)
         {
-            for (uint32 w = 2; w < _map->width - 2; ++w)
+            for (std::uint32_t w = 2; w < _map->width - 2; ++w)
             {
                 // Calculate the tile number
-                uint32 t = (h * _map->width) + w;
+                std::uint32_t t = (h * _map->width) + w;
 
                 if ((m_isDoor(_map, t)) && (!_map->tile[t].processed) && (_map->tile[t].object == 0))
                 {
@@ -97,7 +97,7 @@ void cMapManager::m_addDoorEntities(sMap*& _map)
 
                             tEntity->owner = eEntityOwner::ownerMap;
                             tEntity->type  = eEntityType::entityTypeObject;
-                            tEntity->position += glm::vec3(static_cast<float32>(w) + tp - xo, y_pos, static_cast<float32>(h) + tp - yo);
+                            tEntity->position += glm::vec3(static_cast<float>(w) + tp - xo, y_pos, static_cast<float>(h) + tp - yo);
                             tEntity->rotation += glm::vec3(0.0f, DTOR_90, 0.0f);
                             m_entityManager->updateModelMatrix(tEntity);
                             
@@ -161,7 +161,7 @@ void cMapManager::m_addDoorEntities(sMap*& _map)
 
                             tEntity->owner = eEntityOwner::ownerMap;
                             tEntity->type  = eEntityType::entityTypeObject;
-                            tEntity->position += glm::vec3(static_cast<float32>(w) + tp - xo, y_pos, static_cast<float32>(h) + tp - yo);
+                            tEntity->position += glm::vec3(static_cast<float>(w) + tp - xo, y_pos, static_cast<float>(h) + tp - yo);
                             tEntity->rotation += glm::vec3(0.0f, 0.0f, 0.0f);
                             m_entityManager->updateModelMatrix(tEntity);
                             
@@ -198,12 +198,12 @@ void cMapManager::m_addDoorEntities(sMap*& _map)
         }
 
         // Doors of length 2 --------------------------------------------------------------------------------------------
-        for (uint32 h = 1; h < _map->height - 2; ++h)
+        for (std::uint32_t h = 1; h < _map->height - 2; ++h)
         {
-            for (uint32 w = 1; w < _map->width - 2; ++w)
+            for (std::uint32_t w = 1; w < _map->width - 2; ++w)
             {
                 // Calculate the tile number
-                uint32 t = (h * _map->width) + w;
+                std::uint32_t t = (h * _map->width) + w;
 
                 if ((m_isDoor(_map, t)) && (!_map->tile[t].processed) && (_map->tile[t].object == 0))
                 {
@@ -237,7 +237,7 @@ void cMapManager::m_addDoorEntities(sMap*& _map)
 
                             tEntity->owner = eEntityOwner::ownerMap;
                             tEntity->type  = eEntityType::entityTypeObject;
-                            tEntity->position += glm::vec3(static_cast<float32>(w) + tp - xo, y_pos, static_cast<float32>(h) + tp - yo);
+                            tEntity->position += glm::vec3(static_cast<float>(w) + tp - xo, y_pos, static_cast<float>(h) + tp - yo);
                             tEntity->position.x += tp;
                             tEntity->rotation += glm::vec3(0.0f, DTOR_90, 0.0f);
                             m_entityManager->updateModelMatrix(tEntity);
@@ -296,7 +296,7 @@ void cMapManager::m_addDoorEntities(sMap*& _map)
 
                             tEntity->owner = eEntityOwner::ownerMap;
                             tEntity->type  = eEntityType::entityTypeObject;
-                            tEntity->position += glm::vec3(static_cast<float32>(w) + tp - xo, y_pos, static_cast<float32>(h) + tp - yo);
+                            tEntity->position += glm::vec3(static_cast<float>(w) + tp - xo, y_pos, static_cast<float>(h) + tp - yo);
                             tEntity->position.z += tp;
                             tEntity->rotation += glm::vec3(0.0f, 0.0f, 0.0f);
                             m_entityManager->updateModelMatrix(tEntity);
@@ -331,12 +331,12 @@ void cMapManager::m_addDoorEntities(sMap*& _map)
         }
 
         // Doors of length 1 --------------------------------------------------------------------------------------------
-        for (uint32 h = 1; h < _map->height - 1; ++h)
+        for (std::uint32_t h = 1; h < _map->height - 1; ++h)
         {
-            for (uint32 w = 1; w < _map->width - 1; ++w)
+            for (std::uint32_t w = 1; w < _map->width - 1; ++w)
             {
                 // Calculate the tile number
-                uint32 t = (h * _map->width) + w;
+                std::uint32_t t = (h * _map->width) + w;
 
                 if ((m_isDoor(_map, t)) && (!_map->tile[t].processed) && (_map->tile[t].object == 0))
                 {
@@ -365,7 +365,7 @@ void cMapManager::m_addDoorEntities(sMap*& _map)
 
                             tEntity->owner = eEntityOwner::ownerMap;
                             tEntity->type  = eEntityType::entityTypeObject;
-                            tEntity->position += glm::vec3(static_cast<float32>(w) + tp - xo, y_pos, static_cast<float32>(h) + tp - yo);
+                            tEntity->position += glm::vec3(static_cast<float>(w) + tp - xo, y_pos, static_cast<float>(h) + tp - yo);
                             tEntity->rotation += glm::vec3(0.0f, DTOR_90, 0.0f);
                             m_entityManager->updateModelMatrix(tEntity);
                             
@@ -414,7 +414,7 @@ void cMapManager::m_addDoorEntities(sMap*& _map)
 
                             tEntity->owner = eEntityOwner::ownerMap;
                             tEntity->type  = eEntityType::entityTypeObject;
-                            tEntity->position += glm::vec3(static_cast<float32>(w) + tp - xo, y_pos, static_cast<float32>(h) + tp - yo);
+                            tEntity->position += glm::vec3(static_cast<float>(w) + tp - xo, y_pos, static_cast<float>(h) + tp - yo);
                             tEntity->rotation += glm::vec3(0.0f, 0.0f, 0.0f);
                             m_entityManager->updateModelMatrix(tEntity);
                             
