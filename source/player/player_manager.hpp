@@ -34,27 +34,27 @@
 class cPlayerManager
 {
     public:
-        void      initialize(cEntityManager* _entityManager);
-        void      terminate(void);
-        void      process(const float32 &_dt);
-        sEntity*  load(const std::string &_fileName);
-        sEntity*  getPlayerEntity(void) { return m_player; };
-        void      setDatabasePointer(cGameDatabase* _gameDatabase) { m_gameDatabase = _gameDatabase; };
-        void      setGraphicsEnginePointer(cGraphicsEngine* _graphicsEngine) { m_graphicsEngine = _graphicsEngine; };
-        void      setMapPointer(sMap* _map) { m_mapPointer = _map; };
-        uint32    positionToTile(glm::vec3 _position);
-        glm::vec3 tileToPosition(uint32 _tile);
-        glm::vec3 getPosition(void) { return m_player->position; };
-        glm::vec3 getRotation(void) { return m_player->rotation; };
-        void      setRotation(const glm::vec3 &_rotation) { m_player->rotation = _rotation; };
-        void      setTerrainHeight(float32 _height) { m_mapPointer->terrainHeight = _height; };
-        void      setCurrentTile(uint32 _tileNum) { m_player->movement->mapPath.currentTile = _tileNum; m_player->position = tileToPosition(_tileNum); m_updateMatrix(); };
-        uint32    getCurrentTile(void) { return m_player->movement->mapPath.currentTile; };
-        void      resetStartTile(void) { m_player->rotation.z = m_mapPointer->playerStartDir; setCurrentTile(m_mapPointer->playerStartTile); m_updateMatrix(); };
-        void      stopPathing(void) {m_player->movement->mapPath.pathLength = 0; };
-        bool      getMoved(void) { return m_player->movement->moved; };
-        glm::vec3 getMoveDelta(void) { return m_player->movement->moveDelta; };
-        void      setMouseClick(glm::vec3 _pos);
+        void          initialize(cEntityManager* _entityManager);
+        void          terminate(void);
+        void          process(const float &_dt);
+        sEntity*      load(const std::string &_fileName);
+        sEntity*      getPlayerEntity(void) { return m_player; };
+        void          setDatabasePointer(cGameDatabase* _gameDatabase) { m_gameDatabase = _gameDatabase; };
+        void          setGraphicsEnginePointer(cGraphicsEngine* _graphicsEngine) { m_graphicsEngine = _graphicsEngine; };
+        void          setMapPointer(sMap* _map) { m_mapPointer = _map; };
+        std::uint32_t positionToTile(glm::vec3 _position);
+        glm::vec3     tileToPosition(std::uint32_t _tile);
+        glm::vec3     getPosition(void) { return m_player->position; };
+        glm::vec3     getRotation(void) { return m_player->rotation; };
+        void          setRotation(const glm::vec3 &_rotation) { m_player->rotation = _rotation; };
+        void          setTerrainHeight(float _height) { m_mapPointer->terrainHeight = _height; };
+        void          setCurrentTile(std::uint32_t _tileNum) { m_player->movement->mapPath.currentTile = _tileNum; m_player->position = tileToPosition(_tileNum); m_updateMatrix(); };
+        std::uint32_t getCurrentTile(void) { return m_player->movement->mapPath.currentTile; };
+        void          resetStartTile(void) { m_player->rotation.z = m_mapPointer->playerStartDir; setCurrentTile(m_mapPointer->playerStartTile); m_updateMatrix(); };
+        void          stopPathing(void) {m_player->movement->mapPath.pathLength = 0; };
+        bool          getMoved(void) { return m_player->movement->moved; };
+        glm::vec3     getMoveDelta(void) { return m_player->movement->moveDelta; };
+        void          setMouseClick(glm::vec3 _pos);
 
     protected:
 
@@ -68,10 +68,10 @@ class cPlayerManager
         
         bool             m_mouseClicked    = false;
         glm::vec3        m_mousePos        = glm::vec3(0.0f, 0.0f, 0.0f);
-        uint32           m_mouseTile       = 0;
+        std::uint32_t    m_mouseTile       = 0;
         bool             m_mouseTimerOK    = true;
-        float32          m_mouseTimer      = 0.0f;
-        float32          m_mouseTimerMax   = 1000.0f; // 1000ms
+        float            m_mouseTimer      = 0.0f;
+        float            m_mouseTimerMax   = 1000.0f; // 1000ms
 };
 
 #endif //PLAYER_MANAGER_HPP
