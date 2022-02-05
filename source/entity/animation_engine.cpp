@@ -31,7 +31,7 @@
  * Initializes the animation engine and returns EXIT_SUCCESS if successful,
  * or EXIT_FAILURE is unsuccessful.
  */
-uint32 cAnimationEngine::initialize(void)
+std::uint32_t cAnimationEngine::initialize(void)
 {
     return EXIT_SUCCESS;
 }
@@ -41,7 +41,7 @@ void cAnimationEngine::terminate(void)
 
 }
 
-glm::mat4 cAnimationEngine::m_calculateTransformPosition(double _currentAnimTime, uint32 _currentAnimation, uint32 _channel)
+glm::mat4 cAnimationEngine::m_calculateTransformPosition(double _currentAnimTime, std::uint32_t _currentAnimation, std::uint32_t _channel)
 {
     sAnimationChannel* channel = &m_entityTemp->model->animation[_currentAnimation].channel[_channel];
 
@@ -49,8 +49,8 @@ glm::mat4 cAnimationEngine::m_calculateTransformPosition(double _currentAnimTime
 
     if (channel->numPositionKeys > 1)
     {
-        uint32 i1 = 0;
-        uint32 i2 = 0;
+        std::uint32_t i1 = 0;
+        std::uint32_t i2 = 0;
 
         for (size_t i = 0; i < channel->numPositionKeys - 1; ++i)
         {
@@ -73,15 +73,15 @@ glm::mat4 cAnimationEngine::m_calculateTransformPosition(double _currentAnimTime
     return glm::translate(glm::mat4(1.0f), newVector);
 }
 
-glm::mat4 cAnimationEngine::m_calculateTransformRotation(double _currentAnimTime, uint32 _currentAnimation, uint32 _channel)
+glm::mat4 cAnimationEngine::m_calculateTransformRotation(double _currentAnimTime, std::uint32_t _currentAnimation, std::uint32_t _channel)
 {
     sAnimationChannel* channel = &m_entityTemp->model->animation[_currentAnimation].channel[_channel];
 
     glm::quat newQuat = channel->rotationKey[0].quat;
     if (channel->numRotationKeys > 1)
     {
-        uint32 i1 = 0;
-        uint32 i2 = 0;
+        std::uint32_t i1 = 0;
+        std::uint32_t i2 = 0;
 
         for (size_t i = 0; i < channel->numRotationKeys - 1; ++i)
         {
@@ -104,7 +104,7 @@ glm::mat4 cAnimationEngine::m_calculateTransformRotation(double _currentAnimTime
     return glm::toMat4(newQuat);
 }
 
-glm::mat4 cAnimationEngine::m_calculateTransformScale(double _currentAnimTime, uint32 _currentAnimation, uint32 _channel)
+glm::mat4 cAnimationEngine::m_calculateTransformScale(double _currentAnimTime, std::uint32_t _currentAnimation, std::uint32_t _channel)
 {
     sAnimationChannel* channel = &m_entityTemp->model->animation[_currentAnimation].channel[_channel];
 
@@ -112,8 +112,8 @@ glm::mat4 cAnimationEngine::m_calculateTransformScale(double _currentAnimTime, u
 
     if (channel->numScalingKeys > 1)
     {
-        uint32 i1 = 0;
-        uint32 i2 = 0;
+        std::uint32_t i1 = 0;
+        std::uint32_t i2 = 0;
 
         for (std::size_t i = 0; i < channel->numScalingKeys - 1; ++i)
         {
@@ -136,7 +136,7 @@ glm::mat4 cAnimationEngine::m_calculateTransformScale(double _currentAnimTime, u
     return glm::scale(glm::mat4(1.0f), newVector);
 }
 
-glm::mat4 cAnimationEngine::m_calculateTransform(double _currentAnimTime, uint32 _currentAnimation, uint32 _channel)
+glm::mat4 cAnimationEngine::m_calculateTransform(double _currentAnimTime, std::uint32_t _currentAnimation, std::uint32_t _channel)
 {
     // position
     glm::mat4 matrixPosition = m_calculateTransformPosition(_currentAnimTime, _currentAnimation, _channel);
@@ -158,7 +158,7 @@ glm::mat4 cAnimationEngine::m_calcRecursiveTransforms(int32_t _ID)
     return rMat;
 };
 
-void cAnimationEngine::m_calculateAnimation(double _currentAnimTime, uint32 _currentAnimation)
+void cAnimationEngine::m_calculateAnimation(double _currentAnimTime, std::uint32_t _currentAnimation)
 {
     sEntityAnimation* animation = &m_entityTemp->model->animation[_currentAnimation];
     // for each channel (bone) set the animation transformation matrix based on the time in the animation
@@ -196,7 +196,7 @@ void cAnimationEngine::initializeEntities(void)
             m_calculateAnimation(0.0f, 0);
 
             // Copy the bone transforms from the model to the entity
-            for (uint32 i = 0; i < m_entityTemp->numBones; ++i)
+            for (std::uint32_t i = 0; i < m_entityTemp->numBones; ++i)
             {
                 m_entityTemp->boneTransform[i] = m_entityTemp->model->bone[i].transformFinal;
             }
@@ -279,7 +279,7 @@ void cAnimationEngine::m_processEntity(sEntity* _entity, double _deltaTime)
         m_calculateAnimation(m_entityTemp->currentAnimTime, m_entityTemp->currentAnimation);
 
         // Copy the bone transforms from the model to the entity
-        for (uint32 i = 0; i < m_entityTemp->numBones; ++i)
+        for (std::uint32_t i = 0; i < m_entityTemp->numBones; ++i)
         {
             m_entityTemp->boneTransform[i] = m_entityTemp->model->bone[i].transformFinal;
         }
