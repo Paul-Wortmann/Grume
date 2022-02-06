@@ -34,11 +34,11 @@ class cAnimationEngine
     public:
         cAnimationEngine(void) {}
         ~cAnimationEngine(void) {}
-        uint32 initialize(void);
-        void   terminate(void);
-        void   initializeEntities(void);
-        void   process(double _deltaTime);
-        void   setEntityHead(sEntity* _entity) { m_entityHead = _entity; m_entityTemp = _entity; }
+        std::uint32_t initialize(void);
+        void          terminate(void);
+        void          initializeEntities(void);
+        void          process(double _deltaTime);
+        void          setEntityHead(sEntity* _entity) { m_entityHead = _entity; m_entityTemp = _entity; }
 
     protected:
 
@@ -48,12 +48,12 @@ class cAnimationEngine
         sEntity*  m_entityTemp = nullptr;
 
         // animation_engine.cpp
-        glm::mat4 m_calculateTransformPosition(double _currentAnimTime, uint32 _currentAnimation, uint32 _channel);
-        glm::mat4 m_calculateTransformRotation(double _currentAnimTime, uint32 _currentAnimation, uint32 _channel);
-        glm::mat4 m_calculateTransformScale(double _currentAnimTime, uint32 _currentAnimation, uint32 _channel);
-        glm::mat4 m_calculateTransform(double _currentAnimTime, uint32 _currentAnimation, uint32 _channel);
-        glm::mat4 m_calcRecursiveTransforms(int32 _ID);
-        void      m_calculateAnimation(double _currentAnimTime, uint32 _currentAnimation);
+        glm::mat4 m_calculateTransformPosition(double _currentAnimTime, std::uint32_t _currentAnimation, std::uint32_t _channel);
+        glm::mat4 m_calculateTransformRotation(double _currentAnimTime, std::uint32_t _currentAnimation, std::uint32_t _channel);
+        glm::mat4 m_calculateTransformScale(double _currentAnimTime, std::uint32_t _currentAnimation, std::uint32_t _channel);
+        glm::mat4 m_calculateTransform(double _currentAnimTime, std::uint32_t _currentAnimation, std::uint32_t _channel);
+        glm::mat4 m_calcRecursiveTransforms(std::int32_t _ID);
+        void      m_calculateAnimation(double _currentAnimTime, std::uint32_t _currentAnimation);
         void      m_processEntity(sEntity* _entity, double _deltaTime);
 };
 
