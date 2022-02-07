@@ -26,13 +26,13 @@
 
 #include "../core/includes.hpp"
 
-enum eBodyType: int16
+enum eBodyType: std::int16_t
 {
     staticBody  = 0,
     dynamicBody = 1
 };
 
-enum eVolumeType: int16
+enum eVolumeType: std::int16_t
 {
     aabb  = 0, // axis allined bounding box
     aabc  = 1  // axis allined bounding cylinder
@@ -42,7 +42,7 @@ struct sEntityPhysics
 {
     // Linked list
     sEntityPhysics* next          = nullptr;
-    uint32          UID           = 0;
+    std::uint32_t   UID           = 0;
     
     // Data
     eBodyType       bodyType      = eBodyType::staticBody;
