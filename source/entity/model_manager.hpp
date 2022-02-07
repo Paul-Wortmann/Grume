@@ -63,9 +63,9 @@ class cModelManager : public tcLinkedList<sEntityModel>
         void          m_addBoneMap(const std::string &_name, const glm::mat4 &_mat4);
         void          m_buildBoneMap(aiNode* _node, const aiScene* _scene);
         void          m_buildBoneMapParents(aiNode* _node, aiNode* _nodeParent, const aiScene* _scene);
-        int32         m_getBoneID(const std::string &_name);
+        std::int32_t  m_getBoneID(const std::string &_name);
         void          m_buildBoneMapNodes(aiNode* _node);
-        glm::mat4     m_getRecursiveTransforms(int32 _ID);
+        glm::mat4     m_getRecursiveTransforms(std::int32_t _ID);
         bool          m_getNodeTransform(const aiNode* _node, const std::string &_name, glm::mat4 &_matrix);
         void          m_addMissingBoneMap(const aiScene* _scene);
         void          m_loadBones(sEntityModel* _model, const aiScene* _scene);
