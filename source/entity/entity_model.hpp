@@ -33,7 +33,7 @@ struct sEntityModel
 {
     // Linked list management
     sEntityModel*     next             = nullptr;
-    uint32            UID              = 0;
+    std::uint32_t     UID              = 0;
 
     // Information
     bool              animated         = false;
@@ -41,18 +41,18 @@ struct sEntityModel
     std::string       fileName         = {};
 
     // Mesh
-    uint32            numMesh          = 0;
+    std::uint32_t     numMesh          = 0;
     sEntityMesh*      mesh             = nullptr;
 
     // Bones
     glm::mat4         inverseTransform = glm::mat4(1); // global inverse transformation matrix
-    uint32            numBones         = 0;
+    std::uint32_t     numBones         = 0;
     sEntityBone*      bone             = nullptr;
 
     // Animation
-    uint32            numAnimations    = 0;
+    std::uint32_t     numAnimations    = 0;
     sEntityAnimation* animation        = nullptr;
-    uint32            currentAnimation = 0;
+    std::uint32_t     currentAnimation = 0;
 };
 
 #endif // ENTITY_MODEL_HPP
