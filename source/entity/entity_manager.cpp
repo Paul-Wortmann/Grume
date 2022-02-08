@@ -241,33 +241,33 @@ sEntity* cEntityManager::load(const std::string& _fileName, sEntity* _entity)
             
             // Depletable attributes - health
             glm::vec2 vec2Temp = xmlEntityFile.getVec2("attribute_health");
-            _entity->character->attributes.health.max = static_cast<uint32_t>(vec2Temp.x);
+            _entity->character->attributes.health.max = static_cast<std::uint32_t>(vec2Temp.x);
             _entity->character->attributes.health.current = _entity->character->attributes.health.max;
             _entity->character->attributes.health.regen = vec2Temp.y;
             
             // Depletable attributes - mana
             vec2Temp = xmlEntityFile.getVec2("attribute_mana");
-            _entity->character->attributes.mana.max = static_cast<uint32_t>(vec2Temp.x);
+            _entity->character->attributes.mana.max = static_cast<std::uint32_t>(vec2Temp.x);
             _entity->character->attributes.mana.current = _entity->character->attributes.mana.max;
             _entity->character->attributes.mana.regen = vec2Temp.y;
             
             // Dammage attributes - physical
             glm::vec3 vec3Temp = xmlEntityFile.getVec3("attribute_damagephysical");
-            _entity->character->attributes.damagePhysical.base = static_cast<uint32_t>(vec3Temp.x);
+            _entity->character->attributes.damagePhysical.base = static_cast<std::uint32_t>(vec3Temp.x);
             _entity->character->attributes.damagePhysical.critMultiplier = vec3Temp.y;
-            _entity->character->attributes.damagePhysical.critChancev = static_cast<uint32_t>(vec3Temp.z);
+            _entity->character->attributes.damagePhysical.critChancev = static_cast<std::uint32_t>(vec3Temp.z);
             
             // Dammage attributes - fire
             vec3Temp = xmlEntityFile.getVec3("attribute_damagefire");
-            _entity->character->attributes.damageFire.base = static_cast<uint32_t>(vec3Temp.x);
+            _entity->character->attributes.damageFire.base = static_cast<std::uint32_t>(vec3Temp.x);
             _entity->character->attributes.damageFire.critMultiplier = vec3Temp.y;
-            _entity->character->attributes.damageFire.critChancev = static_cast<uint32_t>(vec3Temp.z);
+            _entity->character->attributes.damageFire.critChancev = static_cast<std::uint32_t>(vec3Temp.z);
             
             // Dammage attributes - frost
             vec3Temp = xmlEntityFile.getVec3("attribute_damagefrost");
-            _entity->character->attributes.damageFrost.base = static_cast<uint32_t>(vec3Temp.x);
+            _entity->character->attributes.damageFrost.base = static_cast<std::uint32_t>(vec3Temp.x);
             _entity->character->attributes.damageFrost.critMultiplier = vec3Temp.y;
-            _entity->character->attributes.damageFrost.critChancev = static_cast<uint32_t>(vec3Temp.z);
+            _entity->character->attributes.damageFrost.critChancev = static_cast<std::uint32_t>(vec3Temp.z);
 
             // Armor and resistance attributes
             _entity->character->attributes.armorPhysical.base   = xmlEntityFile.getInteger("attribute_armorphysical");
@@ -288,8 +288,8 @@ sEntity* cEntityManager::load(const std::string& _fileName, sEntity* _entity)
             xmlSkillsDatabaseFile.load(FILE_PATH_DATABASE + m_gameDatabase->skills.fileName);
             if (xmlSkillsDatabaseFile.lineCount() > 0)
             {
-                uint32 skill_count = xmlSkillsDatabaseFile.getInstanceCount("<skill>");
-                for (uint32 i = 0; i < skill_count; ++i)
+                std::uint32_t skill_count = xmlSkillsDatabaseFile.getInstanceCount("<skill>");
+                for (std::uint32_t i = 0; i < skill_count; ++i)
                 {
                     // Load each skill file
                     cXML xmlSkillFile;
@@ -421,23 +421,23 @@ sEntity* cEntityManager::load(const std::string& _fileName, sEntity* _entity)
             
             // Get collision size and dynamically allocate memory for collision data
             _entity->collision->size = xmlEntityFile.getInteger("<collision_size>");
-            _entity->collision->data = new uint32[_entity->collision->size * _entity->collision->size];
+            _entity->collision->data = new std::uint32_t[_entity->collision->size * _entity->collision->size];
             
             // Load collision data
-            uint32 dataNum   = 0;
-            uint32 dataCount = xmlEntityFile.getInstanceCount("<collision_data>");
-            for (uint32 i = 0; i < dataCount; ++i)
+            std::uint32_t dataNum   = 0;
+            std::uint32_t dataCount = xmlEntityFile.getInstanceCount("<collision_data>");
+            for (std::uint32_t i = 0; i < dataCount; ++i)
             {
                 // Get next collision data
                 std::string collisionData = xmlEntityFile.getString("<collision_data>", 1 + i);
 
                 // Process the collision data string
                 collisionData += " ";
-                uint64 collisionDataLength = collisionData.length();
+                std::uint64_t collisionDataLength = collisionData.length();
                 std::string tString = "";
                 if (collisionDataLength > 2)
                 {
-                    for (uint64 j = 0; j < collisionDataLength; ++j)
+                    for (std::uint64_t j = 0; j < collisionDataLength; ++j)
                     {
                         if ((j > 0) && (collisionData[j] == ' ') && (collisionData[j-1] != ' '))
                         {
@@ -493,7 +493,7 @@ sEntity* cEntityManager::load(const std::string& _fileName, sEntity* _entity)
         _entity->stateCount = xmlEntityFile.getInstanceCount("<state_name>");
         _entity->state = new sEntityState[_entity->stateCount];
         
-        for (uint32 i = 0; i < _entity->stateCount; ++i)
+        for (std::uint32_t i = 0; i < _entity->stateCount; ++i)
         {
             _entity->state[i].name = xmlEntityFile.getString("<state_name>", 1 + i);
             _entity->state[i].animation = xmlEntityFile.getVec3("<state_animation>", 1 + i);
@@ -503,12 +503,12 @@ sEntity* cEntityManager::load(const std::string& _fileName, sEntity* _entity)
 
             // Process the audio data string
             audioData += "    ";
-            uint64 audioDataLength = audioData.length();
-            uint32 tStringNum = 0;
+            std::uint64_t audioDataLength = audioData.length();
+            std::uint32_t tStringNum = 0;
             std::string   tString = "";
             if (audioDataLength > 6)
             {
-                for (uint64 j = 0; j < audioDataLength; ++j)
+                for (std::uint64_t j = 0; j < audioDataLength; ++j)
                 {
                     if (audioData[j] == ' ')
                     {
@@ -548,10 +548,10 @@ sEntity* cEntityManager::load(const std::string& _fileName, sEntity* _entity)
     return nullptr; // Load failed
 }
 
-void cEntityManager::m_playSound(sEntity*& _entity, const uint32& _state)
+void cEntityManager::m_playSound(sEntity*& _entity, const std::uint32_t& _state)
 {
     // Convert to zero indexed array
-    uint32 state = _state - 1;
+    std::uint32_t state = _state - 1;
     
     // Play sound associated with state, load first if need be
     if ((_entity->state[state].audioFile.length() > 3) && (_entity->state[state].audioSourceID == 0))
@@ -573,10 +573,10 @@ void cEntityManager::m_playSound(sEntity*& _entity, const uint32& _state)
     }
 }
 
-void cEntityManager::m_setAnimationState(sEntity*& _entity, const uint32& _state)
+void cEntityManager::m_setAnimationState(sEntity*& _entity, const std::uint32_t& _state)
 {
     // Convert to zero indexed array
-    uint32 state = _state - 1;
+    std::uint32_t state = _state - 1;
     
     // Set animation data
     _entity->currentAnimTime   = _entity->state[state].animation.x;
@@ -586,10 +586,10 @@ void cEntityManager::m_setAnimationState(sEntity*& _entity, const uint32& _state
     _entity->finishedAnimation = false;
 }
 
-void cEntityManager::m_setTileState(sEntity*& _entity, const uint32& _state)
+void cEntityManager::m_setTileState(sEntity*& _entity, const std::uint32_t& _state)
 {
     // Convert to zero indexed array
-    uint32 state = _state - 1;
+    std::uint32_t state = _state - 1;
 
     // Only proceed if valid data
     if ((m_mapPointer != nullptr) && (m_mapPointer->tile != nullptr) && (_entity->state[state].tileState != 0))
@@ -599,16 +599,16 @@ void cEntityManager::m_setTileState(sEntity*& _entity, const uint32& _state)
         {
             // Constant data
             const eTileBase     etb = static_cast<eTileBase>(_entity->state[state].tileState);
-            const uint32 t   = _entity->tile;
-            const uint32 r   = _entity->collision->size / 2;
+            const std::uint32_t t   = _entity->tile;
+            const std::uint32_t r   = _entity->collision->size / 2;
             
             // Loop through the collision map and to find other tiles owned by this entity
-            for (uint32 h = 0; h < _entity->collision->size; ++h)
+            for (std::uint32_t h = 0; h < _entity->collision->size; ++h)
             {
-                for (uint32 w = 0; w < _entity->collision->size; ++w)
+                for (std::uint32_t w = 0; w < _entity->collision->size; ++w)
                 {
                     // Tile - collision map indexed
-                    uint32 tc = t + ((h - r) * m_mapPointer->width) + (w - r);
+                    std::uint32_t tc = t + ((h - r) * m_mapPointer->width) + (w - r);
                     
                     // If we find a tile, modify its enum to reflect the state
                     if (m_mapPointer->tile[tc].object == _entity->UID)
@@ -627,7 +627,7 @@ void cEntityManager::m_setTileState(sEntity*& _entity, const uint32& _state)
     }
 }
 
-sEntity* cEntityManager::m_UIDtoEntity(const uint32& _UID)
+sEntity* cEntityManager::m_UIDtoEntity(const std::uint32_t& _UID)
 {
     for(sEntity* entityTemp = getHead(); entityTemp != nullptr; entityTemp = entityTemp->next)
     {
@@ -639,11 +639,11 @@ sEntity* cEntityManager::m_UIDtoEntity(const uint32& _UID)
     return nullptr;
 }
 
-void cEntityManager::activateState(const uint32& _UID, const std::string& _name)
+void cEntityManager::activateState(const std::uint32_t& _UID, const std::string& _name)
 {
     // Get the Entity UID
     sEntity* entityTemp = m_UIDtoEntity(_UID);
-    for (uint32 i = 0; i < entityTemp->stateCount; ++i)
+    for (std::uint32_t i = 0; i < entityTemp->stateCount; ++i)
     {
         if (entityTemp->state[i].name.compare(_name) == 0)
         {
@@ -653,7 +653,7 @@ void cEntityManager::activateState(const uint32& _UID, const std::string& _name)
     }
 }
 
-void cEntityManager::activateState(const uint32& _UID, const uint32& _state)
+void cEntityManager::activateState(const std::uint32_t& _UID, const std::uint32_t& _state)
 {
     // Get the entity pointer first
     sEntity* entityTemp = m_UIDtoEntity(_UID);
@@ -676,11 +676,11 @@ void cEntityManager::activateState(const uint32& _UID, const uint32& _state)
     }
 }
 
-void cEntityManager::setState(const uint32& _UID, const std::string& _name)
+void cEntityManager::setState(const std::uint32_t& _UID, const std::string& _name)
 {
     // Get the Entity UID
     sEntity* entityTemp = m_UIDtoEntity(_UID);
-    for (uint32 i = 0; i < entityTemp->stateCount; ++i)
+    for (std::uint32_t i = 0; i < entityTemp->stateCount; ++i)
     {
         if (entityTemp->state[i].name.compare(_name) == 0)
         {
@@ -690,7 +690,7 @@ void cEntityManager::setState(const uint32& _UID, const std::string& _name)
     }
 }
 
-void cEntityManager::setState(const uint32& _UID, const uint32& _state)
+void cEntityManager::setState(const std::uint32_t& _UID, const std::uint32_t& _state)
 {
     // Get the entity pointer first
     sEntity* entityTemp = m_UIDtoEntity(_UID);
@@ -714,11 +714,11 @@ void cEntityManager::setState(const uint32& _UID, const uint32& _state)
 }
 
 
-void cEntityManager::setForceState(const uint32& _UID, const std::string& _name)
+void cEntityManager::setForceState(const std::uint32_t& _UID, const std::string& _name)
 {
     // Get the Entity UID
     sEntity* entityTemp = m_UIDtoEntity(_UID);
-    for (uint32 i = 0; i < entityTemp->stateCount; ++i)
+    for (std::uint32_t i = 0; i < entityTemp->stateCount; ++i)
     {
         if (entityTemp->state[i].name.compare(_name) == 0)
         {
@@ -728,7 +728,7 @@ void cEntityManager::setForceState(const uint32& _UID, const std::string& _name)
     }
 }
 
-void cEntityManager::setForceState(const uint32& _UID, const uint32& _state)
+void cEntityManager::setForceState(const std::uint32_t& _UID, const std::uint32_t& _state)
 {
     // Get the entity pointer first
     sEntity* entityTemp = m_UIDtoEntity(_UID);
@@ -750,14 +750,14 @@ void cEntityManager::setForceState(const uint32& _UID, const uint32& _state)
     }
 }
 
-void cEntityManager::toggleState(const uint32& _UID, const std::string& _name1, const std::string& _name2)
+void cEntityManager::toggleState(const std::uint32_t& _UID, const std::string& _name1, const std::string& _name2)
 {
-    uint32 state1 = 0;
-    uint32 state2 = 0;
+    std::uint32_t state1 = 0;
+    std::uint32_t state2 = 0;
     
     // Get the Entity UID
     sEntity* entityTemp = m_UIDtoEntity(_UID);
-    for (uint32 i = 0; i < entityTemp->stateCount; ++i)
+    for (std::uint32_t i = 0; i < entityTemp->stateCount; ++i)
     {
         if (entityTemp->state[i].name.compare(_name1) == 0)
         {
@@ -771,7 +771,7 @@ void cEntityManager::toggleState(const uint32& _UID, const std::string& _name1, 
     toggleState(_UID, state1, state2);
 }
 
-void cEntityManager::toggleState(const uint32& _UID, const uint32& _state1, const uint32& _state2)
+void cEntityManager::toggleState(const std::uint32_t& _UID, const std::uint32_t& _state1, const std::uint32_t& _state2)
 {
     // Get the entity pointer first
     sEntity* entityTemp = m_UIDtoEntity(_UID);
@@ -793,7 +793,7 @@ void cEntityManager::toggleState(const uint32& _UID, const uint32& _state1, cons
     }
 }
 
-void cEntityManager::process(const float32 &_dt)
+void cEntityManager::process(const float &_dt)
 {
     for (sEntity* entity = getHead(); entity != nullptr; entity = entity->next)
     {
