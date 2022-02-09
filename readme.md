@@ -22,6 +22,7 @@ cmake . && make
 
 Make sure you have all the relevant dependencies installed:
 - [Assimp](https://www.assimp.org/)
+- [FreeType](https://freetype.org//)
 - [GLFW](https://www.glfw.org/)
 - [glm](https://glm.g-truc.net/)
 - [OpenAL](https://openal.org/)
