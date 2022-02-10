@@ -35,14 +35,14 @@
 #include "entity_physics.hpp"
 #include "entity_state.hpp"
 
-enum eEntityOwner: uint16
+enum eEntityOwner: std::uint16_t
 {
     ownerNone = 0,
     ownerUI   = 1,
     ownerMap  = 2
 };
 
-enum eEntityType: uint16
+enum eEntityType: std::uint16_t
 {
     entityTypeOther     = 0,
     entityTypeStatic    = 1,
@@ -57,14 +57,14 @@ struct sEntity
 {
     // Linked list
     sEntity*            next                 = nullptr;
-    uint32              UID                  = 0;
+    std::uint32_t       UID                  = 0;
 
     // Infomation
     std::string         name                 = "";
     bool                enabled              = true;
     eEntityType         type                 = eEntityType::entityTypeStatic;
     eEntityOwner        owner                = eEntityOwner::ownerNone;
-    uint32              tile                 = 0; // Current tile
+    std::uint32_t       tile                 = 0; // Current tile
 
     // Base
     glm::vec3           position             = glm::vec3(0.0f, 0.0f, 0.0f);
@@ -75,14 +75,14 @@ struct sEntity
 
     // Animation (per entity, not shared)
     bool                animationIndependent = false;
-    uint32              numBones             = 0;
+    std::uint32_t       numBones             = 0;
     glm::mat4*          boneTransform        = nullptr;
 
-    uint32              currentAnimation     = 0;
-    float64             previousAnimTime     = 0.0;
-    float64             currentAnimTime      = 0.0;
-    float64             stopAnimTime         = 0.0;
-    float64             startAnimTime        = 0.0;
+    std::uint32_t       currentAnimation     = 0;
+    double              previousAnimTime     = 0.0;
+    double              currentAnimTime      = 0.0;
+    double              stopAnimTime         = 0.0;
+    double              startAnimTime        = 0.0;
     bool                repeatAnimation      = false;
     bool                finishedAnimation    = true;
 
@@ -95,9 +95,9 @@ struct sEntity
     sEntityCollision*   collision            = nullptr;
 
     // State
-    uint32              stateCount           = 0;
-    uint32              stateInitial         = 0;
-    uint32              stateCurrent         = 0;
+    std::uint32_t       stateCount           = 0;
+    std::uint32_t       stateInitial         = 0;
+    std::uint32_t       stateCurrent         = 0;
     sEntityState*       state                = nullptr;
     bool                terminate            = false;
 
@@ -109,7 +109,7 @@ struct sEntity
     
     // Interaction
     sEntityInteraction* interaction          = nullptr;
-    uint32              triggerTile          = 0; // Trigger tile on interaction, 0 for none
+    std::uint32_t       triggerTile          = 0; // Trigger tile on interaction, 0 for none
 
     // Pathing
     sEntityMovement*    movement             = nullptr;
@@ -118,9 +118,9 @@ struct sEntity
     sEntityPhysics*     physics              = nullptr;
     
     // Screen shake on death
-    uint32              deathShakeChance     = 100;
-    uint32              deathShakeDuration   = 2000;
-    float32             deathShakeForce      = 0.5f;
+    std::uint32_t       deathShakeChance     = 100;
+    std::uint32_t       deathShakeDuration   = 2000;
+    float               deathShakeForce      = 0.5f;
 };
 
 #endif //ENTITY_HPP
