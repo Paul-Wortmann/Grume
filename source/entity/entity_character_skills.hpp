@@ -28,41 +28,41 @@
 
 struct sCharacterSkillLevel
 {
-    uint32               current        = 0;           // Current skill level
-    uint32               max            = 10;          // Max skill level
+    std::uint32_t        current             = 0;           // Current skill level
+    std::uint32_t        max                 = 10;          // Max skill level
 
-    uint64               exp            = 0;           // Current skill experience
-    uint64               expNext        = 1024;        // Experience for next level
-    float32              expMultiplier  = 1.5f;        // Experience multiplier
-    uint64               expMax         = UINT64_MAX;  // Max skill experence
+    std::uint64_t        exp                 = 0;           // Current skill experience
+    std::uint64_t        expNext             = 1024;        // Experience for next level
+    float                expMultiplier       = 1.5f;        // Experience multiplier
+    std::uint64_t        expMax              = UINT64_MAX;  // Max skill experence
 };
 
 
 struct sCharacterSkillAttack
 {
-    uint32               damage              = 10;     // Maximum damage
-    float32              damageMultiplier    = 1.5f;   // Damage multiplier
-    uint32               duration            = 2000;   // Duration in miliseconds
-    float32              durationMultiplier  = 1.1f;   // Duration multiplier
-    float32              aoe                 = 1.0f;   // Radius for area of effect
-    float32              aoeMultiplier       = 1.25f;  // AOE multiplier
-    uint32               numProjectiles      = 1;      // Duration in miliseconds
-    float32              numProFloat         = 1.0f;   // Number of projectiles float value
-    float32              numProMultiplier    = 1.5f;   // Number of projectiles multiplier
+    std::uint32_t        damage              = 10;     // Maximum damage
+    float                damageMultiplier    = 1.5f;   // Damage multiplier
+    std::uint32_t        duration            = 2000;   // Duration in miliseconds
+    float                durationMultiplier  = 1.1f;   // Duration multiplier
+    float                aoe                 = 1.0f;   // Radius for area of effect
+    float                aoeMultiplier       = 1.25f;  // AOE multiplier
+    std::uint32_t        numProjectiles      = 1;      // Duration in miliseconds
+    float                numProFloat         = 1.0f;   // Number of projectiles float value
+    float                numProMultiplier    = 1.5f;   // Number of projectiles multiplier
 
-    bool                 enabled        = false;       // Available to the character
-    sCharacterSkillLevel level          = {};          // Skill level struct
+    bool                 enabled             = false;       // Available to the character
+    sCharacterSkillLevel level               = {};          // Skill level struct
 };
 
 struct sCharacterSkillDefend
 {
-    uint32               duration            = 10000;  // Duration in miliseconds
-    float32              durationMultiplier  = 1.1f;   // Duration multiplier
-    float32              aoe                 = 1.0f;   // Radius for area of effect
-    float32              aoeMultiplier       = 1.25f;  // AOE multiplier
+    std::uint32_t        duration            = 10000;  // Duration in miliseconds
+    float                durationMultiplier  = 1.1f;   // Duration multiplier
+    float                aoe                 = 1.0f;   // Radius for area of effect
+    float                aoeMultiplier       = 1.25f;  // AOE multiplier
 
-    bool                 enabled        = false;       // Available to the character
-    sCharacterSkillLevel level          = {};          // Skill level struct
+    bool                 enabled             = false;       // Available to the character
+    sCharacterSkillLevel level               = {};          // Skill level struct
 };
 
 struct sEntityCharSkill // Character skills
