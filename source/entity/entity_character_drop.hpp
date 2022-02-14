@@ -28,8 +28,8 @@
 
 struct sEntityCharDrop
 {
-    uint32 experience = 0; // Experience to reward the player on death
-    uint32 gold       = 0; // Max gold to reward the player on death
+    std::uint32_t experience = 0; // Experience to reward the player on death
+    std::uint32_t gold       = 0; // Max gold to reward the player on death
 };
 
 #endif // ENTITY_CHARACTER_DROP_HPP
