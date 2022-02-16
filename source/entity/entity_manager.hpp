@@ -37,7 +37,7 @@ class cEntityManager : public tcLinkedList<sEntity>
     public:
         void             initialize(void);
         void             terminate(void);
-        void             process(const float32 &_dt);
+        void             process(const float &_dt);
         void             setAudioPointer(cAudioManager* _audioManager) { m_audioManager = _audioManager; };
         void             setDatabasePointer(cGameDatabase* _gameDatabase) { m_gameDatabase = _gameDatabase; };
         void             setMapPointer(sMap* _map) { m_mapPointer = _map; };
@@ -51,14 +51,14 @@ class cEntityManager : public tcLinkedList<sEntity>
         void             freeIcon(GLFWimage*& _image);
         void             updateModelMatrix(sEntity*& _entity);
         sEntity*         load(const std::string& _fileName, sEntity* _entity = nullptr);
-        void             activateState(const uint32& _UID, const std::string& _name);
-        void             activateState(const uint32& _UID, const uint32& _state);
-        void             setState(const uint32& _UID, const std::string& _name);
-        void             setState(const uint32& _UID, const uint32& _state);
-        void             setForceState(const uint32& _UID, const std::string& _name);
-        void             setForceState(const uint32& _UID, const uint32& _state);
-        void             toggleState(const uint32& _UID, const std::string& _name1, const std::string& _name2);
-        void             toggleState(const uint32& _UID, const uint32& _state1, const uint32& _state2);
+        void             activateState(const std::uint32_t& _UID, const std::string& _name);
+        void             activateState(const std::uint32_t& _UID, const std::uint32_t& _state);
+        void             setState(const std::uint32_t& _UID, const std::string& _name);
+        void             setState(const std::uint32_t& _UID, const std::uint32_t& _state);
+        void             setForceState(const std::uint32_t& _UID, const std::string& _name);
+        void             setForceState(const std::uint32_t& _UID, const std::uint32_t& _state);
+        void             toggleState(const std::uint32_t& _UID, const std::string& _name1, const std::string& _name2);
+        void             toggleState(const std::uint32_t& _UID, const std::uint32_t& _state1, const std::uint32_t& _state2);
         void             saveScreenShot(const std::string &_fileName) { m_modelManager.saveScreenShot(_fileName); };
         void             freeEntityData(sEntity*& _pointer) { freeData(_pointer); };
 
@@ -67,10 +67,10 @@ class cEntityManager : public tcLinkedList<sEntity>
     private:
         void             m_freeAll(void);
         void             freeData(sEntity*& _pointer) override;
-        void             m_playSound(sEntity*& _entity, const uint32& _state);
-        void             m_setAnimationState(sEntity*& _entity, const uint32& _state);
-        void             m_setTileState(sEntity*& _entity, const uint32& _state);
-        sEntity*         m_UIDtoEntity(const uint32& _UID);
+        void             m_playSound(sEntity*& _entity, const std::uint32_t& _state);
+        void             m_setAnimationState(sEntity*& _entity, const std::uint32_t& _state);
+        void             m_setTileState(sEntity*& _entity, const std::uint32_t& _state);
+        sEntity*         m_UIDtoEntity(const std::uint32_t& _UID);
 
         cAudioManager*   m_audioManager = nullptr;
         cGameDatabase*   m_gameDatabase = nullptr;
