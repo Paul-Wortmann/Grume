@@ -31,14 +31,14 @@ struct sEntityMaterial
 {
     // Linked list
     sEntityMaterial* next = nullptr;
-    uint32           UID  = 0;
+    std::uint32_t    UID  = 0;
 
     // Data
     sEntityTexture*  diffuse;
     sEntityTexture*  normal;
     sEntityTexture*  specular;
     sEntityTexture*  emissive;
-    float32          shininess = 32.0f;
+    float            shininess = 32.0f;
 };
 
 #endif // ENTITY_MATERIAL_HPP
