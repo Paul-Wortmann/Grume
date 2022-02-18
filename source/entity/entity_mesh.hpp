@@ -32,20 +32,20 @@ struct sEntityMesh
 {
     // Linked list
     sEntityMesh*       next         = nullptr;
-    uint32             UID          = 0;
+    std::uint32_t      UID          = 0;
 
     // OpenGL
-    uint32             VAO          = 0;
-    uint32             VBO_vertices = 0;
-    uint32             VBO_bones    = 0;
-    uint32             IBO          = 0;
+    std::uint32_t      VAO          = 0;
+    std::uint32_t      VBO_vertices = 0;
+    std::uint32_t      VBO_bones    = 0;
+    std::uint32_t      IBO          = 0;
     
     // Data
-    uint32             numVertex    = 0;
+    std::uint32_t      numVertex    = 0;
     sEntityVertex*     vertex       = nullptr;
     sEntityVertexBone* vertexBone   = nullptr;
-    uint32             numIndex     = 0;
-    uint32*            index        = nullptr;
+    std::uint32_t      numIndex     = 0;
+    std::uint32_t*     index        = nullptr;
     sEntityMaterial*   material     = nullptr;
 };
 
