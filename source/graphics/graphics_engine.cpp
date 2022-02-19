@@ -24,13 +24,13 @@
 #include "graphics_engine.hpp"
 
 // GLFW Error callback
-void cGraphicsEngine::sm_glfwErrorCallback(int32 _error, const char* _description)
+void cGraphicsEngine::sm_glfwErrorCallback(std::int32_t _error, const char* _description)
 {
     gLogWrite(LOG_ERROR, " " + std::to_string(_error) + ": "+ std::string(_description), __FILE__, __LINE__, __FUNCTION__);
 }
 
 // GLFW Key io callback
-void cGraphicsEngine::sm_glfwKeyCallback(GLFWwindow* _window, int32 _key, int32 _scancode, int32 _action, int32 _mods)
+void cGraphicsEngine::sm_glfwKeyCallback(GLFWwindow* _window, std::int32_t _key, std::int32_t _scancode, std::int32_t _action, std::int32_t _mods)
 {
     cGraphicsEngine *graphicsEngine = static_cast<cGraphicsEngine*>(glfwGetWindowUserPointer(_window));
 
@@ -54,16 +54,16 @@ void cGraphicsEngine::sm_glfwKeyCallback(GLFWwindow* _window, int32 _key, int32 
 }
 
 // GLFW Mouse cursor position callback
-void cGraphicsEngine::sm_glfwCursorPosCallback(GLFWwindow* _window, float64 _xpos, float64 _ypos)
+void cGraphicsEngine::sm_glfwCursorPosCallback(GLFWwindow* _window, double _xpos, double _ypos)
 {
     cGraphicsEngine *graphicsEngine = static_cast<cGraphicsEngine*>(glfwGetWindowUserPointer(_window));
 
-    graphicsEngine->m_mouseX = static_cast<float32>(_xpos);
-    graphicsEngine->m_mouseY = static_cast<float32>(_ypos);
+    graphicsEngine->m_mouseX = static_cast<float>(_xpos);
+    graphicsEngine->m_mouseY = static_cast<float>(_ypos);
 }
 
 // GLFW Mouse button callback
-void cGraphicsEngine::sm_glfwMouseButtonCallback(GLFWwindow* _window, int32 _button, int32 _action, int32 _mods)
+void cGraphicsEngine::sm_glfwMouseButtonCallback(GLFWwindow* _window, std::int32_t _button, std::int32_t _action, std::int32_t _mods)
 {
     cGraphicsEngine *graphicsEngine = static_cast<cGraphicsEngine*>(glfwGetWindowUserPointer(_window));
 
@@ -87,18 +87,18 @@ void cGraphicsEngine::sm_glfwMouseButtonCallback(GLFWwindow* _window, int32 _but
 }
 
 // GLFW Framebuffer size callback
-void cGraphicsEngine::sm_glfwFramebufferSizeCallback(GLFWwindow* _window, int32 _width, int32 _height)
+void cGraphicsEngine::sm_glfwFramebufferSizeCallback(GLFWwindow* _window, std::int32_t _width, std::int32_t _height)
 {
     cGraphicsEngine *graphicsEngine = static_cast<cGraphicsEngine*>(glfwGetWindowUserPointer(_window));
 
     glfwGetFramebufferSize(_window, &graphicsEngine->m_framebufferSize_w, &graphicsEngine->m_framebufferSize_h);
     glViewport(0, 0, graphicsEngine->m_framebufferSize_w, graphicsEngine->m_framebufferSize_h);
-    graphicsEngine->m_aspectRatio = static_cast<float32>(graphicsEngine->m_framebufferSize_w) / static_cast<float32>(graphicsEngine->m_framebufferSize_h);
+    graphicsEngine->m_aspectRatio = static_cast<float>(graphicsEngine->m_framebufferSize_w) / static_cast<float>(graphicsEngine->m_framebufferSize_h);
     graphicsEngine->m_camera.initialize(graphicsEngine->m_fieldOfView, graphicsEngine->m_framebufferSize_w, graphicsEngine->m_framebufferSize_h);
 }
 
 // GLFW Monitor callback
-void cGraphicsEngine::sm_glfwMonitorCallback(GLFWmonitor* _monitor, int32 _event)
+void cGraphicsEngine::sm_glfwMonitorCallback(GLFWmonitor* _monitor, std::int32_t _event)
 {
     const char* monitorName = glfwGetMonitorName(_monitor);
     
@@ -159,7 +159,7 @@ void cGraphicsEngine::setMouseCursor(GLFWimage* _image)
     }
 }
 
-uint32 cGraphicsEngine::initialize(void)
+std::uint32_t cGraphicsEngine::initialize(void)
 {
     // Initialize GLFW ------------------------------------------
     if (glfwInit() == GLFW_TRUE)
@@ -175,14 +175,14 @@ uint32 cGraphicsEngine::initialize(void)
         
         // Log monitor data
         gLogWrite(LOG_INFO, "Monitor count: " + std::to_string(m_monitorCount), __FILE__, __LINE__, __FUNCTION__);
-        for (uint32 i = 0; i < m_monitorCount; ++i)
+        for (std::uint32_t i = 0; i < m_monitorCount; ++i)
         {
             gLogWrite(LOG_INFO, "Monitor " + std::to_string(i + 1) + " : " + std::string(glfwGetMonitorName(m_monitors[i])), __FILE__, __LINE__, __FUNCTION__);
         }
         
         // Log monitor video mode data
         gLogWrite(LOG_INFO, "Monitor supported video mode count: " + std::to_string(m_videoModeCount), __FILE__, __LINE__, __FUNCTION__);
-        for (uint32 i = 0; i < m_videoModeCount; ++i)
+        for (std::uint32_t i = 0; i < m_videoModeCount; ++i)
         {
             gLogWrite(LOG_INFO, "Monitor supported video mode " + std::to_string(i + 1) + " : " + 
             std::to_string(m_videoModes[i].width) + " x " + 
@@ -254,7 +254,7 @@ uint32 cGraphicsEngine::initialize(void)
             // View port and framebuffer
             glfwGetFramebufferSize(m_window, &m_framebufferSize_w, &m_framebufferSize_h);
             glViewport(0, 0, m_framebufferSize_w, m_framebufferSize_h);
-            m_aspectRatio = static_cast<float32>(m_framebufferSize_w) / static_cast<float32>(m_framebufferSize_h);
+            m_aspectRatio = static_cast<float>(m_framebufferSize_w) / static_cast<float>(m_framebufferSize_h);
 
             // GLFW set callback functions
             glfwSetKeyCallback(m_window, sm_glfwKeyCallback);
@@ -375,7 +375,7 @@ uint32 cGraphicsEngine::initialize(void)
             
             // Add some test particles
             sParticle tParticle;
-            for (uint32 i = 0; i < m_particleEngine.getNumParticles(); ++i)
+            for (std::uint32_t i = 0; i < m_particleEngine.getNumParticles(); ++i)
             {
                 tParticle.life       = 100000.0f;
                 tParticle.size       = 100.0f;
@@ -417,7 +417,7 @@ void cGraphicsEngine::terminate(void)
     {
         if ((m_entityTemp != nullptr) && (m_entityTemp->model != nullptr))
         {
-            for (uint32 i = 0; i < m_entityTemp->model->numMesh; ++i)
+            for (std::uint32_t i = 0; i < m_entityTemp->model->numMesh; ++i)
             {
                 // VBO_vertices
                 glBindBuffer(GL_ARRAY_BUFFER, 0);
@@ -465,7 +465,7 @@ void cGraphicsEngine::m_initEntities(void)
     {
         if ((m_entityTemp->model != nullptr))
         {
-            for (uint32 i = 0; i < m_entityTemp->model->numMesh; ++i)
+            for (std::uint32_t i = 0; i < m_entityTemp->model->numMesh; ++i)
             {
                 if (m_entityTemp->model->mesh[i].VAO == 0)
                 {
@@ -494,7 +494,7 @@ void cGraphicsEngine::m_initEntities(void)
                     // Index Buffer object
                     glGenBuffers(1, &m_entityTemp->model->mesh[i].IBO);
                     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_entityTemp->model->mesh[i].IBO);
-                    glBufferData(GL_ELEMENT_ARRAY_BUFFER, m_entityTemp->model->mesh[i].numIndex * sizeof(uint32), m_entityTemp->model->mesh[i].index, GL_STATIC_DRAW);
+                    glBufferData(GL_ELEMENT_ARRAY_BUFFER, m_entityTemp->model->mesh[i].numIndex * sizeof(std::uint32_t), m_entityTemp->model->mesh[i].index, GL_STATIC_DRAW);
                     //VBO_bones
                     if (m_entityTemp->model->numBones > 0)
                     {
@@ -522,7 +522,7 @@ void cGraphicsEngine::m_initUIComponents(void)
 
 }
 
-void cGraphicsEngine::process(const float32 &_dt)
+void cGraphicsEngine::process(const float &_dt)
 {
     // Start frame
     if (!m_windowClosed)
