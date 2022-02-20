@@ -81,12 +81,12 @@ class cGraphicsEngine
     protected:
 
     private:
-        inline static void sm_glfwErrorCallback(int32 _error, const char* _description);
-        inline static void sm_glfwKeyCallback(GLFWwindow* _window, int32 _key, int32 _scancode, int32 _action, int32 _mods);
-        inline static void sm_glfwCursorPosCallback(GLFWwindow* _window, float64 _xpos, float64 _ypos);
-        inline static void sm_glfwMouseButtonCallback(GLFWwindow* _window, int32 _button, int32 _action, int32 _mods);
-        inline static void sm_glfwFramebufferSizeCallback(GLFWwindow* _window, int32 _width, int32 _height);
-        inline static void sm_glfwMonitorCallback(GLFWmonitor* _monitor, int32 _event);
+        inline static void sm_glfwErrorCallback(std::int32_t _error, const char* _description);
+        inline static void sm_glfwKeyCallback(GLFWwindow* _window, std::int32_t _key, std::int32_t _scancode, std::int32_t _action, std::int32_t _mods);
+        inline static void sm_glfwCursorPosCallback(GLFWwindow* _window, double _xpos, double _ypos);
+        inline static void sm_glfwMouseButtonCallback(GLFWwindow* _window, std::int32_t _button, std::int32_t _action, std::int32_t _mods);
+        inline static void sm_glfwFramebufferSizeCallback(GLFWwindow* _window, std::int32_t _width, std::int32_t _height);
+        inline static void sm_glfwMonitorCallback(GLFWmonitor* _monitor, std::int32_t _event);
         void               m_initEntities(void);
         void               m_initUIComponents(void);
 
@@ -102,10 +102,10 @@ class cGraphicsEngine
         cGameConfig*       m_GameConfig         = nullptr;
 
         // General
-        int32              m_monitorCount       = 0;
+        std::int32_t       m_monitorCount       = 0;
         GLFWmonitor**      m_monitors           = nullptr;
         GLFWmonitor*       m_monitor            = nullptr;
-        int32              m_videoModeCount     = 0;
+        std::int32_t       m_videoModeCount     = 0;
         const GLFWvidmode* m_videoModes         = nullptr;
         const GLFWvidmode* m_currentVideoMode   = nullptr;
 
@@ -117,8 +117,8 @@ class cGraphicsEngine
         float              m_aspectRatio        = static_cast<float>(m_window_w) / static_cast<float>(m_window_h);
         std::uint32_t      m_fieldOfView        = 45;
         bool               m_fullscreen         = false;
-        int32              m_framebufferSize_w  = 0;
-        int32              m_framebufferSize_h  = 0;
+        std::int32_t       m_framebufferSize_w  = 0;
+        std::int32_t       m_framebufferSize_h  = 0;
         std::uint32_t      m_renderBufferSize_w = 1024;
         std::uint32_t      m_renderBufferSize_h = 1024;
         bool               m_wireframe          = false;
@@ -131,8 +131,8 @@ class cGraphicsEngine
         cGraphicsEngineParticles m_particleEngine;
 
         // IO
-        std::unordered_map<int32, boolean> m_keyMap;
-        std::unordered_map<int32, boolean> m_keyReadyMap;
+        std::unordered_map<std::int32_t, boolean> m_keyMap;
+        std::unordered_map<std::int32_t, boolean> m_keyReadyMap;
         float m_mouseX = 0.0f;
         float m_mouseY = 0.0f;
 
