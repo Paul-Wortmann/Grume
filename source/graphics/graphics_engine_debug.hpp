@@ -27,7 +27,7 @@
 #include "../core/includes.hpp"
 
 void checkOpenGL(void);
-std::string getOpenGLErrorString(uint32 _errorCode);
+std::string getOpenGLErrorString(std::uint32_t _errorCode);
 void checkOpenGLFrameBuffer(void);
 
 #endif // GRAPHICS_ENGINE_DEBUG_HPP

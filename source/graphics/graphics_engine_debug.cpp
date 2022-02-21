@@ -23,7 +23,7 @@
 
 #include "graphics_engine_debug.hpp"
 
-std::string getOpenGLErrorString(uint32 _errorCode)
+std::string getOpenGLErrorString(std::uint32_t _errorCode)
 {
     if (_errorCode == GL_NO_ERROR)
         return "GL_NO_ERROR";
@@ -57,7 +57,7 @@ void checkOpenGL(void)
     }
 }
 
-std::string getOpenGLFramebufferErrorString(uint32 _errorCode)
+std::string getOpenGLFramebufferErrorString(std::uint32_t _errorCode)
 {
     if (_errorCode == GL_FRAMEBUFFER_COMPLETE)
         return "GL_FRAMEBUFFER_COMPLETE";
