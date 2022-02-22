@@ -32,11 +32,11 @@
 struct sGraphicsEnginePointLight
 {
     // Linked list management
-    sGraphicsEnginePointLight* next = nullptr;
-    std::uint32_t              UID  = 0;
+    sGraphicsEnginePointLight* next    = nullptr;
+    std::uint32_t              UID     = 0;
 
     // Data - needs to match the shader
-    uint32    enabled      = 0; // 0 == disabled, 1 >= enabled
+    std::uint32_t              enabled = 0; // 0 == disabled, 1 >= enabled
 
     glm::vec3 position     = glm::vec3(0.0f, 0.0f, 0.0f);
 
