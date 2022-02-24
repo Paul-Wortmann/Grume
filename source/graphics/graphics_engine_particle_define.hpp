@@ -30,12 +30,12 @@ struct sParticle
 {
     glm::vec3 position = glm::vec3(0.0f, 0.0f, 0.0f);
     glm::vec3 velocity = glm::vec3(0.0f, 0.0f, 0.0f);
-    float32   size     = 0.0f;
-    float32   angle    = 0.0f;
-    float32   weight   = 0.0f;
-    float32   life     = 0.0f;
+    float     size     = 0.0f;
+    float     angle    = 0.0f;
+    float     weight   = 0.0f;
+    float     life     = 0.0f;
 
-    float32   color[4] = { 0.0f, 0.0f, 0.0f, 0.0f };
+    float     color[4] = { 0.0f, 0.0f, 0.0f, 0.0f };
 };
 
 #endif //GRAPHICS_ENGINE_PARTICLE_DEFINE_HPP
