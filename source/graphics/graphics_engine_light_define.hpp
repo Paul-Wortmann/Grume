@@ -36,52 +36,52 @@ struct sGraphicsEnginePointLight
     std::uint32_t              UID     = 0;
 
     // Data - needs to match the shader
-    std::uint32_t              enabled = 0; // 0 == disabled, 1 >= enabled
+    std::uint32_t enabled      = 0; // 0 == disabled, 1 >= enabled
 
-    glm::vec3 position     = glm::vec3(0.0f, 0.0f, 0.0f);
+    glm::vec3     position     = glm::vec3(0.0f, 0.0f, 0.0f);
 
-    float     constant     = 0.0f;
-    float     linear       = 0.0f;
-    float     quadratic    = 0.0f;
+    float         constant     = 0.0f;
+    float         linear       = 0.0f;
+    float         quadratic    = 0.0f;
 
-    glm::vec3 ambient      = glm::vec3(0.0f, 0.0f, 0.0f);
-    glm::vec3 diffuse      = glm::vec3(0.0f, 0.0f, 0.0f);
-    glm::vec3 specular     = glm::vec3(0.0f, 0.0f, 0.0f);
+    glm::vec3     ambient      = glm::vec3(0.0f, 0.0f, 0.0f);
+    glm::vec3     diffuse      = glm::vec3(0.0f, 0.0f, 0.0f);
+    glm::vec3     specular     = glm::vec3(0.0f, 0.0f, 0.0f);
 };
 
 // Uniform shader locations for a point light
 struct sGraphicsEnginePointLightLocation
 {
-    uint32    enabled      = 0;
-    uint32    position     = 0;
-    uint32    constant     = 0;
-    uint32    linear       = 0;
-    uint32    quadratic    = 0;
-    uint32    ambient      = 0;
-    uint32    diffuse      = 0;
-    uint32    specular     = 0;
+    std::uint32_t enabled      = 0;
+    std::uint32_t position     = 0;
+    std::uint32_t constant     = 0;
+    std::uint32_t linear       = 0;
+    std::uint32_t quadratic    = 0;
+    std::uint32_t ambient      = 0;
+    std::uint32_t diffuse      = 0;
+    std::uint32_t specular     = 0;
 };
 
 // Hold data for a directional light
 struct sGraphicsEngineDirectionalLight
 {
     // Data - needs to match the shader
-    uint32    enabled      = 1; // 0 == disabled, 1 >= enabled
-    glm::vec3 direction    = glm::vec3(0.0f, 0.0f, 0.0f);
+    std::uint32_t enabled      = 1; // 0 == disabled, 1 >= enabled
+    glm::vec3     direction    = glm::vec3(0.0f, 0.0f, 0.0f);
 
-    glm::vec3 ambient      = glm::vec3(0.0f, 0.0f, 0.0f);
-    glm::vec3 diffuse      = glm::vec3(0.0f, 0.0f, 0.0f);
-    glm::vec3 specular     = glm::vec3(0.0f, 0.0f, 0.0f);
+    glm::vec3     ambient      = glm::vec3(0.0f, 0.0f, 0.0f);
+    glm::vec3     diffuse      = glm::vec3(0.0f, 0.0f, 0.0f);
+    glm::vec3     specular     = glm::vec3(0.0f, 0.0f, 0.0f);
 };
 
 // Uniform shader locations for a directional light
 struct sGraphicsEngineDirectionalLightLocation
 {
-    uint32    enabled      = 0;
-    uint32    direction    = 0;
-    uint32    ambient      = 0;
-    uint32    diffuse      = 0;
-    uint32    specular     = 0;
+    std::uint32_t enabled      = 0;
+    std::uint32_t direction    = 0;
+    std::uint32_t ambient      = 0;
+    std::uint32_t diffuse      = 0;
+    std::uint32_t specular     = 0;
 };
 
 #endif //GRAPHICS_ENGINE_LIGHT_DEFINE_HPP
