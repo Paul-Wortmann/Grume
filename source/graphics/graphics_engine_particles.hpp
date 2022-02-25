@@ -38,7 +38,7 @@ class cGraphicsEngineParticles
         void     initialize(void);
         void     terminate(void);
         void     addParticle(const sParticle &_particle);
-        void     process(const float32 &_dt);
+        void     process(const float &_dt);
         
         // Getters
         std::uint32_t getNumParticles(void) { return m_numParticles; };

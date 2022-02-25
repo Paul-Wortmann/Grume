@@ -34,7 +34,7 @@ void cGraphicsEngine::m_p1_initialize(void)
     m_p1_loc_animationEnabled = m_p1_shader.getUniformLocation("animationEnabled");
 
     // Bone transformation matrices
-    for (uint32 i = 0; i < MAX_BONES; ++i)
+    for (std::uint32_t i = 0; i < MAX_BONES; ++i)
     {
         m_p1_loc_boneMatrix[i] = m_p1_shader.getUniformLocation("boneMatrix[" + std::to_string(i) + "]");
     }
@@ -141,7 +141,7 @@ void cGraphicsEngine::m_p1_render(void)
                 }
 
                 // Model
-                for (uint32 j = 0; j < m_entityTemp->model->numMesh; ++j)
+                for (std::uint32_t j = 0; j < m_entityTemp->model->numMesh; ++j)
                 {
                     if (m_entityTemp->model->mesh[j].VAO != 0)
                     {
