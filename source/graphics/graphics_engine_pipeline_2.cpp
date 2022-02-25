@@ -35,18 +35,18 @@ void cGraphicsEngine::m_p2_initialize(void)
     m_p2_loc_animationEnabled  = m_p2_shader.getUniformLocation("animationEnabled");
 
     // Bone transformation matrices
-    for (uint32 i = 0; i < MAX_BONES; ++i)
+    for (std::uint32_t i = 0; i < MAX_BONES; ++i)
     {
         m_p2_loc_boneMatrix[i] = m_p2_shader.getUniformLocation("boneMatrix[" + std::to_string(i) + "]");
     }
 
     // Depth matrices
-    for (uint32 i = 0; i < 6; ++i)
+    for (std::uint32_t i = 0; i < 6; ++i)
     {
         m_p2_loc_depthMatrix[i] = m_p2_shader.getUniformLocation("depthMatrix[" + std::to_string(i) + "]");
     }
 
-    for (uint32 i = 0; i < MAX_POINT_LIGHTS; ++i)
+    for (std::uint32_t i = 0; i < MAX_POINT_LIGHTS; ++i)
     {
         // Frame buffer Object
         glGenFramebuffers(1, &m_p2_fbo[i]);
@@ -55,7 +55,7 @@ void cGraphicsEngine::m_p2_initialize(void)
         // Depth cube map texture
         glGenTextures(1, &m_p2_depthCubemapID[i]);
         glBindTexture(GL_TEXTURE_CUBE_MAP, m_p2_depthCubemapID[i]);
-        for (uint32 j = 0; j < 6; ++j) // Cube has 6 faces
+        for (std::uint32_t j = 0; j < 6; ++j) // Cube has 6 faces
         {
             glTexImage2D(GL_TEXTURE_CUBE_MAP_POSITIVE_X + j, 0, GL_DEPTH_COMPONENT, m_renderBufferSize_w, m_renderBufferSize_h, 0, GL_DEPTH_COMPONENT, GL_FLOAT, 0);
         }
@@ -78,7 +78,7 @@ void cGraphicsEngine::m_p2_initialize(void)
 void cGraphicsEngine::m_p2_terminate(void)
 {
     m_p2_shader.terminate();
-    for (uint32 i = 0; i < MAX_POINT_LIGHTS; ++i)
+    for (std::uint32_t i = 0; i < MAX_POINT_LIGHTS; ++i)
     {
         glDeleteFramebuffers(1, &m_p2_fbo[i]);
     }
@@ -89,7 +89,7 @@ void cGraphicsEngine::m_p2_render(void)
     // Process point lights
     if (m_lightManager.getCount() > 0)
     {
-        uint32 lightCount = 0;
+        std::uint32_t lightCount = 0;
         for(sGraphicsEnginePointLight* tLight = m_lightManager.getHead(); tLight != nullptr; tLight = tLight->next)
         {
             if (tLight->enabled > 0)
@@ -113,7 +113,7 @@ void cGraphicsEngine::m_p2_render(void)
                 m_p2_depthMatrix[4] = (m_p2_depthProjectionMatrix * glm::lookAt(m_p2_lightPosition, m_p2_lightPosition + glm::vec3( 0.0f,  0.0f,  1.0f), glm::vec3( 0.0f, -1.0f,  0.0f)));
                 m_p2_depthMatrix[5] = (m_p2_depthProjectionMatrix * glm::lookAt(m_p2_lightPosition, m_p2_lightPosition + glm::vec3( 0.0f,  0.0f, -1.0f), glm::vec3( 0.0f, -1.0f,  0.0f)));
 
-                for (uint32 i = 0; i < 6; ++i)
+                for (std::uint32_t i = 0; i < 6; ++i)
                 {
                     glUniformMatrix4fv(m_p2_loc_depthMatrix[i], 1, GL_FALSE, glm::value_ptr(m_p2_depthMatrix[i]));
                 }
@@ -178,7 +178,7 @@ void cGraphicsEngine::m_p2_render(void)
                                 }
 
                                 // Model
-                                for (uint32 j = 0; j < m_entityTemp->model->numMesh; ++j)
+                                for (std::uint32_t j = 0; j < m_entityTemp->model->numMesh; ++j)
                                 {
                                     if (m_entityTemp->model->mesh[j].VAO != 0)
                                     {
