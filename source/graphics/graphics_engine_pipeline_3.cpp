@@ -68,7 +68,7 @@ void cGraphicsEngine::m_p3_initialize(void)
     m_p3_loc_animationEnabled       = m_p3_shader.getUniformLocation("animationEnabled");
 
     // Lights
-    for (uint32 i = 0; i < MAX_POINT_LIGHTS; ++i)
+    for (std::uint32_t i = 0; i < MAX_POINT_LIGHTS; ++i)
     {
         m_lightManager.uniformLocationPoint[i].position  = m_p3_shader.getUniformLocation("lightPosition[" + std::to_string(i) + "]");
     }
