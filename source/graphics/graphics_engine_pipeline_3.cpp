@@ -74,7 +74,7 @@ void cGraphicsEngine::m_p3_initialize(void)
     }
 
     // Bone transformation matrices
-    for (uint32 i = 0; i < MAX_BONES; ++i)
+    for (std::uint32_t i = 0; i < MAX_BONES; ++i)
     {
         m_p3_loc_boneMatrix[i] = m_p3_shader.getUniformLocation("boneMatrix[" + std::to_string(i) + "]");
     }
@@ -85,7 +85,7 @@ void cGraphicsEngine::m_p3_initialize(void)
     m_p3_loc_farPlane          = m_p3_shader.getUniformLocation("farPlane");
 
     // Material locations
-    for (uint32 i = 0; i < MAX_POINT_LIGHTS; ++i)
+    for (std::uint32_t i = 0; i < MAX_POINT_LIGHTS; ++i)
     {
         m_p3_loc_materialDepthCube[i] = m_p3_shader.getUniformLocation("material.depthCube[" + std::to_string(i) + "]");
     }
@@ -105,7 +105,7 @@ void cGraphicsEngine::m_p3_initialize(void)
     m_lightManager.uniformLocationDirectional.direction = m_p3_shader.getUniformLocation("directionalLight.direction");
 
     // Point Lights
-    for (uint32 i = 0; i < MAX_POINT_LIGHTS; ++i)
+    for (std::uint32_t i = 0; i < MAX_POINT_LIGHTS; ++i)
     {
         m_lightManager.uniformLocationPoint[i].enabled   = m_p3_shader.getUniformLocation("pointLight[" + std::to_string(i) + "].enabled");
 
@@ -127,7 +127,7 @@ void cGraphicsEngine::m_p3_terminate(void)
 void cGraphicsEngine::m_p3_setLightUniformLocations(void)
 {
     // Texture locations
-    for (uint32 i = 0; i < MAX_POINT_LIGHTS; ++i)
+    for (std::uint32_t i = 0; i < MAX_POINT_LIGHTS; ++i)
     {
         glUniform1i(m_p3_loc_materialDepthCube[i], i);
     }
@@ -147,7 +147,7 @@ void cGraphicsEngine::m_p3_setLightUniformLocations(void)
     glUniform3fv(m_lightManager.uniformLocationDirectional.direction, 1, glm::value_ptr(m_lightManager.directionalLight.direction));
 
     // Ensure all point lights are initially disabled
-    for (uint32 i = 0; i < MAX_POINT_LIGHTS; ++i)
+    for (std::uint32_t i = 0; i < MAX_POINT_LIGHTS; ++i)
     {
         glUniform1i (m_lightManager.uniformLocationPoint[i].enabled, 0);
     }
@@ -155,7 +155,7 @@ void cGraphicsEngine::m_p3_setLightUniformLocations(void)
     // Process point lights
     if (m_lightManager.getCount() > 0)
     {
-        uint32 lightCount = 0;
+        std::uint32_t lightCount = 0;
         for(sGraphicsEnginePointLight* tLight = m_lightManager.getHead(); tLight != nullptr; tLight = tLight->next)
         {
             if (tLight->enabled > 0)
@@ -211,7 +211,7 @@ void cGraphicsEngine::m_p3_render(void)
     glUniform3fv(m_p3_loc_camera, 1, glm::value_ptr(m_camera.getPosition()));
 
     // Textures
-    for (uint32 i = 0; i < MAX_POINT_LIGHTS; ++i)
+    for (std::uint32_t i = 0; i < MAX_POINT_LIGHTS; ++i)
     {
         glActiveTexture(GL_TEXTURE0 + i);
         glBindTexture(GL_TEXTURE_CUBE_MAP, m_p2_depthCubemapID[i]);
@@ -264,7 +264,7 @@ void cGraphicsEngine::m_p3_render(void)
                 }
 
                 // Model
-                for (uint32 j = 0; j < m_entityTemp->model->numMesh; ++j)
+                for (std::uint32_t j = 0; j < m_entityTemp->model->numMesh; ++j)
                 {
                     if (m_entityTemp->model->mesh[j].VAO != 0)
                     {
