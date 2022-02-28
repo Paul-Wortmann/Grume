@@ -66,8 +66,8 @@ uint32 cGraphicsEngineShader::load(const std::string &_fileName)
         glCompileShader(vertShader);
 
         // Check the shader
-        GLint compileStatus = GL_FALSE;
-        int32 logLength = 0;
+        GLint        compileStatus = GL_FALSE;
+        std::int32_t logLength = 0;
         glGetShaderiv(vertShader, GL_COMPILE_STATUS, &compileStatus);
         if (compileStatus == GL_FALSE)
         {
@@ -105,8 +105,8 @@ uint32 cGraphicsEngineShader::load(const std::string &_fileName)
         glCompileShader(geomShader);
 
         // Check the shader
-        GLint compileStatus = GL_FALSE;
-        int32 logLength = 0;
+        GLint        compileStatus = GL_FALSE;
+        std::int32_t logLength = 0;
         glGetShaderiv(geomShader, GL_COMPILE_STATUS, &compileStatus);
         if (compileStatus == GL_FALSE)
         {
@@ -145,8 +145,8 @@ uint32 cGraphicsEngineShader::load(const std::string &_fileName)
         glCompileShader(fragShader);
 
         // Check the shader
-        GLint compileStatus = GL_FALSE;
-        int32 logLength = 0;
+        GLint        compileStatus = GL_FALSE;
+        std::int32_t logLength = 0;
         glGetShaderiv(fragShader, GL_COMPILE_STATUS, &compileStatus);
         if (compileStatus == GL_FALSE)
         {
@@ -188,8 +188,8 @@ uint32 cGraphicsEngineShader::load(const std::string &_fileName)
     glLinkProgram(program);
 
     // Chech for errors
-    GLint compileStatus = GL_FALSE;
-    int32 logLength = 0;
+    GLint        compileStatus = GL_FALSE;
+    std::int32_t logLength = 0;
     glGetProgramiv(program, GL_LINK_STATUS, &compileStatus);
     if (compileStatus == GL_FALSE)
     {
@@ -224,13 +224,13 @@ uint32 cGraphicsEngineShader::load(const std::string &_fileName)
 }
 
 // Get a uniform location from the shader
-uint32 cGraphicsEngineShader::getUniformLocation(const std::string &_name)
+std::uint32_t cGraphicsEngineShader::getUniformLocation(const std::string &_name)
 {
     return glGetUniformLocation(m_shaderID, _name.c_str());
 }
 
 // Get an atribute location from the shader
-uint32 cGraphicsEngineShader::getAttribLocation(const std::string &_name)
+std::uint32_t cGraphicsEngineShader::getAttribLocation(const std::string &_name)
 {
     return glGetAttribLocation(m_shaderID, _name.c_str());
 }
