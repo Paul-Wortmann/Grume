@@ -100,7 +100,7 @@ struct sMapPortal
 {
     std::uint32_t portalNo  = 0;
     std::uint32_t tile      = 0;
-    float32       direction = 0.0f; // Direction player should face
+    float         direction = 0.0f; // Direction player should face
 };
 
 struct sMapObject
