@@ -85,7 +85,7 @@ void cMapManager::m_addMapEvent(sMap*& _map,                 // Map pointer
 void cMapManager::m_addMapPortal(sMap*& _map,                // Map pointer
                                  const std::uint32_t &_num,  // Portal number
                                  const std::uint32_t &_tile, // Tile number
-                                 const float32 &_dir)        // Player face direction
+                                 const float &_dir)          // Player face direction
 {
     // backup dynamic portal array if it is not empty
     sMapPortal* tMapPortals = nullptr;
