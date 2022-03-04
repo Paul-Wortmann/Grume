@@ -103,8 +103,8 @@ void cMapManager::m_addNPCEntities(sMap*& _map)
                 }
             }
             
-            uint32 w = tNPCTileNum % _map->width;
-            uint32 h = tNPCTileNum / _map->width;
+            std::uint32_t w = tNPCTileNum % _map->width;
+            std::uint32_t h = tNPCTileNum / _map->width;
            
             // Get npc entity database count
             std::uint32_t npcCount = xmlNPCFile.getInstanceCount("<npc>" + tNPCName + " ");
@@ -193,24 +193,24 @@ void cMapManager::m_addNPCEntities(sMap*& _map)
         }
 
         // Get mob count
-        uint32 mob_count = xmlMapFile.getInstanceCount("<npc_mob>");
+        std::uint32_t mob_count = xmlMapFile.getInstanceCount("<npc_mob>");
         
         if (mob_count > 0)
         {
             // Create a data structure for the mob information
             struct sMob
             {
-                std::string npcName    = "";
-                float       scaleMin   = 0.0;
-                float       scaleMax   = 0.0;
-                uint32      prevalence = 0;
+                std::string   npcName    = "";
+                float         scaleMin   = 0.0;
+                float         scaleMax   = 0.0;
+                std::uint32_t prevalence = 0;
             };
             
             sMob *mob = nullptr;
             mob = new sMob[mob_count];
             
             // Load the mob information from the map file into the mob data structure
-            for (uint32 i = 0; i < mob_count; ++i)
+            for (std::uint32_t i = 0; i < mob_count; ++i)
             {
                 std::string   tMobString = xmlMapFile.getString("<npc_mob>", i + 1);
                 tMobString += "    ";
@@ -251,16 +251,16 @@ void cMapManager::m_addNPCEntities(sMap*& _map)
             }
             
             // Add mob to map
-            for (uint32 h = 1; h < _map->height-1; ++h)
+            for (std::uint32_t h = 1; h < _map->height-1; ++h)
             {
-                for (uint32 w = 1; w < _map->width-1; ++w)
+                for (std::uint32_t w = 1; w < _map->width-1; ++w)
                 {
-                    uint32 t = (h * _map->width) + w;
+                    std::uint32_t t = (h * _map->width) + w;
                     if ((_map->tile[t].npc == 0) && (_map->tile[t].object == 0) && (_map->tile[t].base == eTileBase::tileFloor))
                     {
-                        uint32 rInt = rand() % 1000;
+                        std::uint32_t rInt = rand() % 1000;
                         bool   pMob = false;
-                        for (uint32 i = 0; i < mob_count; ++i)
+                        for (std::uint32_t i = 0; i < mob_count; ++i)
                         {
                             if ((!pMob) && (rInt < mob[i].prevalence))
                             {
