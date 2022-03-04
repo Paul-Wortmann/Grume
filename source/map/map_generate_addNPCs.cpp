@@ -27,8 +27,8 @@
 void cMapManager::m_addNPCEntities(sMap*& _map)
 {
     // Width and height offset, used to center the walls
-    float32 xo = static_cast<float32>(_map->width  / 2);
-    float32 yo = static_cast<float32>(_map->height / 2);
+    float xo = static_cast<float>(_map->width  / 2);
+    float yo = static_cast<float>(_map->height / 2);
 
     // Load the biome npc database file
     cXML xmlNPCFile;
@@ -165,7 +165,7 @@ void cMapManager::m_addNPCEntities(sMap*& _map)
                     _map->tile[tNPCTileNum].npc = tEntity->UID;
                     tEntity->owner = eEntityOwner::ownerMap;
                     tEntity->type  = (tNPCEnemy == 0) ? eEntityType::entityTypeNPC : eEntityType::entityTypeNPCmob;
-                    tEntity->position += glm::vec3(static_cast<float32>(w) + tp - xo, y_pos, static_cast<float32>(h) + tp - yo);
+                    tEntity->position += glm::vec3(static_cast<float>(w) + tp - xo, y_pos, static_cast<float>(h) + tp - yo);
                     if ((tNPCScale > 1.00001f) || (tNPCScale < 0.99999f))
                     {
                         tEntity->scale *= glm::vec3(tNPCScale, tNPCScale, tNPCScale);
@@ -319,7 +319,7 @@ void cMapManager::m_addNPCEntities(sMap*& _map)
                                         _map->tile[t].npc = tEntity->UID;
                                         tEntity->owner = eEntityOwner::ownerMap;
                                         tEntity->type  = eEntityType::entityTypeNPCmob;
-                                        tEntity->position += glm::vec3(static_cast<float32>(w) + tp - xo, y_pos, static_cast<float32>(h) + tp - yo);
+                                        tEntity->position += glm::vec3(static_cast<float>(w) + tp - xo, y_pos, static_cast<float>(h) + tp - yo);
                                         tEntity->rotation = glm::vec3(tEntity->rotation.x, tEntity->rotation.y, tEntity->rotation.z);
                                         m_entityManager->updateModelMatrix(tEntity);
 
