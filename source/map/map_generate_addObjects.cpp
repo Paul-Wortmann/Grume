@@ -66,8 +66,8 @@ void cMapManager::m_addObjectEntity(sMap*& _map,              // Map pointer
             }
         }
         
-        uint32 w = _tn % _map->width;
-        uint32 h = _tn / _map->width;
+        std::uint32_t w = _tn % _map->width;
+        std::uint32_t h = _tn / _map->width;
        
         // Get object entity database count
         std::uint32_t objectCount = xmlObjectFile.getInstanceCount("<object>" + _on + " ");
@@ -128,7 +128,7 @@ void cMapManager::m_addObjectEntity(sMap*& _map,              // Map pointer
                 m_addCollisionData(_map, tEntity, _tn, _yr);
                 tEntity->owner = eEntityOwner::ownerMap;
                 tEntity->type  = eEntityType::entityTypeObject;
-                tEntity->position += glm::vec3(static_cast<float32>(w) + tp - static_cast<float32>(xo), y_pos, static_cast<float32>(h) + tp - static_cast<float32>(yo));
+                tEntity->position += glm::vec3(static_cast<float>(w) + tp - static_cast<float>(xo), y_pos, static_cast<float>(h) + tp - static_cast<float>(yo));
                 if ((_s > 1.00001f) || (_s < 0.99999f))
                 {
                     tEntity->scale *= glm::vec3(_s, _s, _s);
@@ -157,8 +157,8 @@ void cMapManager::m_addObjectEntity(sMap*& _map,              // Map pointer
 void cMapManager::m_addObjectEntities(sMap*& _map)
 {
     // Width and height offset, used to center the walls
-    float32 xo = static_cast<float32>(_map->width  / 2);
-    float32 yo = static_cast<float32>(_map->height / 2);
+    float xo = static_cast<float>(_map->width  / 2);
+    float yo = static_cast<float>(_map->height / 2);
 
     // Load the biome object database file
     cXML xmlObjectFile;
@@ -315,7 +315,7 @@ void cMapManager::m_addObjectEntities(sMap*& _map)
                     m_addCollisionData(_map, tEntity, tObjectTileNum, tObjectRotation);
                     tEntity->owner = eEntityOwner::ownerMap;
                     tEntity->type  = eEntityType::entityTypeObject;
-                    tEntity->position += glm::vec3(static_cast<float32>(w) + tp - xo, y_pos, static_cast<float32>(h) + tp - yo);
+                    tEntity->position += glm::vec3(static_cast<float>(w) + tp - xo, y_pos, static_cast<float>(h) + tp - yo);
                     if ((tObjectScale > 1.00001f) || (tObjectScale < 0.99999f))
                     {
                         tEntity->scale *= glm::vec3(tObjectScale, tObjectScale, tObjectScale);
@@ -343,25 +343,25 @@ void cMapManager::m_addObjectEntities(sMap*& _map)
         }
 
         // Get debris count
-        uint32 debrisCount = xmlMapFile.getInstanceCount("<debris>");
+        std::uint32_t debrisCount = xmlMapFile.getInstanceCount("<debris>");
         
         if (debrisCount > 0)
         {
             // Create a data structure for the debris information
             struct sDebris
             {
-                std::string objectName = "";
-                float       scale_min  = 0.0;
-                float       scale_max  = 0.0;
-                uint32      prevalence = 0;
-                uint32      obstacle   = 0;
+                std::string   objectName = "";
+                float         scale_min  = 0.0;
+                float         scale_max  = 0.0;
+                std::uint32_t prevalence = 0;
+                std::uint32_t obstacle   = 0;
             };
             
             sDebris *debris = nullptr;
             debris = new sDebris[debrisCount];
             
             // Load the debris information from the map file into the debris data structure
-            for (uint32 i = 0; i < debrisCount; ++i)
+            for (std::uint32_t i = 0; i < debrisCount; ++i)
             {
                 std::string   tDebrisString = xmlMapFile.getString("<debris>", i + 1);
                 tDebrisString += "    ";
@@ -406,16 +406,16 @@ void cMapManager::m_addObjectEntities(sMap*& _map)
             }
             
             // Add debris to map
-            for (uint32 h = 1; h < _map->height-1; ++h)
+            for (std::uint32_t h = 1; h < _map->height-1; ++h)
             {
-                for (uint32 w = 1; w < _map->width-1; ++w)
+                for (std::uint32_t w = 1; w < _map->width-1; ++w)
                 {
-                    uint32 t = (h * _map->width) + w;
+                    std::uint32_t t = (h * _map->width) + w;
                     if ((_map->tile[t].object == 0) && (_map->tile[t].base == eTileBase::tileFloor))
                     {
-                        uint32 rInt = rand() % 1000;
+                        std::uint32_t rInt = rand() % 1000;
                         bool   pDebris = false;
-                        for (uint32 i = 0; i < debrisCount; ++i)
+                        for (std::uint32_t i = 0; i < debrisCount; ++i)
                         {
                             if ((!pDebris) && (rInt < debris[i].prevalence))
                             {
@@ -476,9 +476,9 @@ void cMapManager::m_addObjectEntities(sMap*& _map)
                                         m_addCollisionData(_map, tEntity, t, 0.0);
                                         tEntity->owner = eEntityOwner::ownerMap;
                                         tEntity->type  = eEntityType::entityTypeObject;
-                                        tEntity->position = glm::vec3(static_cast<float32>(w) + tp - xo, y_pos, static_cast<float32>(h) + tp - yo);
-                                        uint32  randAngle = rand() % 360;
-                                        float32 randFloat = degToRad(randAngle);
+                                        tEntity->position = glm::vec3(static_cast<float>(w) + tp - xo, y_pos, static_cast<float>(h) + tp - yo);
+                                        std::uint32_t  randAngle = rand() % 360;
+                                        float randFloat = degToRad(randAngle);
                                         tEntity->rotation.y = randFloat;
                                         m_entityManager->updateModelMatrix(tEntity);
 
