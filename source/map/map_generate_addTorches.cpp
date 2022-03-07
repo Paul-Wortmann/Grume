@@ -43,20 +43,20 @@ void cMapManager::m_addTorchEntities(sMap*& _map)
         std::uint32_t torch_1td_count = xmlFile.getInteger("<torch_1td_count>", 1); // Torch
 
         // Width and height offset, used to center the torches
-        float32 xo = static_cast<float32>(_map->width  / 2);
-        float32 yo = static_cast<float32>(_map->height / 2);
+        float xo = static_cast<float>(_map->width  / 2);
+        float yo = static_cast<float>(_map->height / 2);
 
         // Doors of length 1 --------------------------------------------------------------------------------------------
-        for (uint32 h = 1; h < _map->height - 1; ++h)
+        for (std::uint32_t h = 1; h < _map->height - 1; ++h)
         {
-            for (uint32 w = 1; w < _map->width - 1; ++w)
+            for (std::uint32_t w = 1; w < _map->width - 1; ++w)
             {
                 // Random placement
                 if ((rand() % 100) < 20) // 20% chance
                 {
 
                     // Calculate the tile number
-                    uint32 t = (h * _map->width) + w;
+                    std::uint32_t t = (h * _map->width) + w;
 
                     if ((m_isWall(_map, t)) && 
                         (!_map->tile[t].processed) && 
@@ -96,14 +96,14 @@ void cMapManager::m_addTorchEntities(sMap*& _map)
                                 // Torch 1 placement
                                 tEntity_1->owner = eEntityOwner::ownerMap;
                                 tEntity_1->type  = eEntityType::entityTypeObject;
-                                tEntity_1->position += glm::vec3(static_cast<float32>(w) + tp - xo, y_pos, static_cast<float32>(h + 1) + tp - yo);
+                                tEntity_1->position += glm::vec3(static_cast<float>(w) + tp - xo, y_pos, static_cast<float>(h + 1) + tp - yo);
                                 tEntity_1->rotation += glm::vec3(0.0f, DTOR_270, 0.0f);
                                 m_entityManager->updateModelMatrix(tEntity_1);
 
                                 // Torch 2 placement
                                 tEntity_2->owner = eEntityOwner::ownerMap;
                                 tEntity_2->type  = eEntityType::entityTypeObject;
-                                tEntity_2->position += glm::vec3(static_cast<float32>(w) + tp - xo, y_pos, static_cast<float32>(h - 1) + tp - yo);
+                                tEntity_2->position += glm::vec3(static_cast<float>(w) + tp - xo, y_pos, static_cast<float>(h - 1) + tp - yo);
                                 tEntity_2->rotation += glm::vec3(0.0f, DTOR_90, 0.0f);
                                 m_entityManager->updateModelMatrix(tEntity_2);
                                 
@@ -139,14 +139,14 @@ void cMapManager::m_addTorchEntities(sMap*& _map)
                                 // Torch 1 placement
                                 tEntity_1->owner = eEntityOwner::ownerMap;
                                 tEntity_1->type  = eEntityType::entityTypeObject;
-                                tEntity_1->position += glm::vec3(static_cast<float32>(w + 1) + tp - xo, y_pos, static_cast<float32>(h) + tp - yo);
+                                tEntity_1->position += glm::vec3(static_cast<float>(w + 1) + tp - xo, y_pos, static_cast<float>(h) + tp - yo);
                                 tEntity_1->rotation += glm::vec3(0.0f, DTOR_0, 0.0f);
                                 m_entityManager->updateModelMatrix(tEntity_1);
 
                                 // Torch 2 placement
                                 tEntity_2->owner = eEntityOwner::ownerMap;
                                 tEntity_2->type  = eEntityType::entityTypeObject;
-                                tEntity_2->position += glm::vec3(static_cast<float32>(w - 1) + tp - xo, y_pos, static_cast<float32>(h) + tp - yo);
+                                tEntity_2->position += glm::vec3(static_cast<float>(w - 1) + tp - xo, y_pos, static_cast<float>(h) + tp - yo);
                                 tEntity_2->rotation += glm::vec3(0.0f, DTOR_180, 0.0f);
                                 m_entityManager->updateModelMatrix(tEntity_2);
                                 
