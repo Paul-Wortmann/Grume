@@ -32,11 +32,11 @@ void cMapManager::m_addStairsEntity(sMap*& _map)
     
     // Try to place the exit from a random position
     // Stairs up
-    for (uint32_t y = (rand() % (_map->height - (ts * 2))) + ts; y < _map->height - ts; y++)
+    for (std::uint32_t y = (rand() % (_map->height - (ts * 2))) + ts; y < _map->height - ts; y++)
     {
-        for (uint32_t x = (rand() % (_map->width - (ts * 2))) + ts; x < _map->width - ts; x++)
+        for (std::uint32_t x = (rand() % (_map->width - (ts * 2))) + ts; x < _map->width - ts; x++)
         {
-            uint32_t t = (y * _map->width) + x;
+            std::uint32_t t = (y * _map->width) + x;
             // W W W W
             // F F F F
             // F F F F
@@ -117,11 +117,11 @@ void cMapManager::m_addStairsEntity(sMap*& _map)
     }
     
     // Stairs down
-    for (uint32_t y = (rand() % (_map->height - (ts * 2))) + ts; y < _map->height - ts; y++)
+    for (std::uint32_t y = (rand() % (_map->height - (ts * 2))) + ts; y < _map->height - ts; y++)
     {
-        for (uint32_t x = (rand() % (_map->width - (ts * 2))) + ts; x < _map->width - ts; x++)
+        for (std::uint32_t x = (rand() % (_map->width - (ts * 2))) + ts; x < _map->width - ts; x++)
         {
-            uint32_t t = (y * _map->width) + x;
+            std::uint32_t t = (y * _map->width) + x;
             // W W W W
             // F F F F
             // F F F F
@@ -203,11 +203,11 @@ void cMapManager::m_addStairsEntity(sMap*& _map)
 
     // Try to place the exit from the first tile available tile
     // Stairs up
-    for (uint32_t y = ts; y < _map->height - ts; y++)
+    for (std::uint32_t y = ts; y < _map->height - ts; y++)
     {
-        for (uint32_t x = ts; x < _map->width - ts; x++)
+        for (std::uint32_t x = ts; x < _map->width - ts; x++)
         {
-            uint32_t t = (y * _map->width) + x;
+            std::uint32_t t = (y * _map->width) + x;
             // W W W W
             // F F F F
             // F F F F
@@ -288,11 +288,11 @@ void cMapManager::m_addStairsEntity(sMap*& _map)
     }
     
     // Stairs down
-    for (uint32_t y = ts; y < _map->height - ts; y++)
+    for (std::uint32_t y = ts; y < _map->height - ts; y++)
     {
-        for (uint32_t x = ts; x < _map->width - ts; x++)
+        for (std::uint32_t x = ts; x < _map->width - ts; x++)
         {
-            uint32_t t = (y * _map->width) + x;
+            std::uint32_t t = (y * _map->width) + x;
             // W W W W
             // F F F F
             // F F F F
