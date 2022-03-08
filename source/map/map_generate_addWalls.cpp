@@ -37,7 +37,7 @@ void cMapManager::m_addWallEntities(sMap*& _map)
 }
 
 // Is the queried tile a tile of type: None or Floor?
-bool cMapManager::m_isFlat(sMap*& _map, const uint32 &_tile)
+bool cMapManager::m_isFlat(sMap*& _map, const std::uint32_t &_tile)
 {
     return ((_map->tile[_tile].base == eTileBase::tileFloor) ||
             (_map->tile[_tile].base == eTileBase::tileFloorNoGo) ||
@@ -47,13 +47,13 @@ bool cMapManager::m_isFlat(sMap*& _map, const uint32 &_tile)
 }
 
 // Is the queried tile a tile of type: None?
-bool cMapManager::m_isNone(sMap*& _map, const uint32 &_tile)
+bool cMapManager::m_isNone(sMap*& _map, const std::uint32_t &_tile)
 {
     return (_map->tile[_tile].base == eTileBase::tileNone);
 }
 
 // Is the queried tile a tile of type: Floor?
-bool cMapManager::m_isFloor(sMap*& _map, const uint32 &_tile)
+bool cMapManager::m_isFloor(sMap*& _map, const std::uint32_t &_tile)
 {
     return ((_map->tile[_tile].base == eTileBase::tileFloor) ||
             (_map->tile[_tile].base == eTileBase::tileFloorNoGo) ||
@@ -62,20 +62,20 @@ bool cMapManager::m_isFloor(sMap*& _map, const uint32 &_tile)
 }
 
 // Is the queried tile a tile of type: Wall?
-bool cMapManager::m_isWall(sMap*& _map, const uint32 &_tile)
+bool cMapManager::m_isWall(sMap*& _map, const std::uint32_t &_tile)
 {
     return (_map->tile[_tile].base == eTileBase::tileWall);
 }
 
 // Is the queried tile a tile of type: Doorway or Wall?
-bool cMapManager::m_isDWall(sMap*& _map, const uint32 &_tile)
+bool cMapManager::m_isDWall(sMap*& _map, const std::uint32_t &_tile)
 {
     return ((_map->tile[_tile].base == eTileBase::tileWall) ||
             (_map->tile[_tile].base == eTileBase::tileDoorway));
 }
 
 // Is the queried tile a tile of type: Doorway?
-bool cMapManager::m_isDoor(sMap*& _map, const uint32 &_tile)
+bool cMapManager::m_isDoor(sMap*& _map, const std::uint32_t &_tile)
 {
     return (_map->tile[_tile].base == eTileBase::tileDoorway);
 }
@@ -99,15 +99,15 @@ void cMapManager::m_addWallWideEntities(sMap*& _map)
         sEntity* tEntity = nullptr;
 
         // Width and height offset, used to center the walls
-        float32 xo = static_cast<float32>(_map->width  / 2);
-        float32 yo = static_cast<float32>(_map->height / 2);
+        float xo = static_cast<float>(_map->width  / 2);
+        float yo = static_cast<float>(_map->height / 2);
 
         // Perimeter --------------------------------------------------------------------------------------------
         // Corner [0,0]
         tEntity = m_entityManager->load(xmlFile.getString("<wall_wc_entity>", 1));
         tEntity->owner = eEntityOwner::ownerMap;
         tEntity->type  = eEntityType::entityTypeWall;
-        tEntity->position = glm::vec3(static_cast<float32>(0) + tp - xo, y_pos, static_cast<float32>(0) + tp - yo);
+        tEntity->position = glm::vec3(static_cast<float>(0) + tp - xo, y_pos, static_cast<float>(0) + tp - yo);
         tEntity->rotation += glm::vec3(0.0f, DTOR_180, 0.0f);
         m_entityManager->updateModelMatrix(tEntity);
         _map->tile[0].processed = true;
@@ -116,7 +116,7 @@ void cMapManager::m_addWallWideEntities(sMap*& _map)
         tEntity = m_entityManager->load(xmlFile.getString("<wall_wc_entity>", 1));
         tEntity->owner = eEntityOwner::ownerMap;
         tEntity->type  = eEntityType::entityTypeWall;
-        tEntity->position = glm::vec3(static_cast<float32>(_map->width-1) + tp - xo, y_pos, static_cast<float32>(0) + tp - yo);
+        tEntity->position = glm::vec3(static_cast<float>(_map->width-1) + tp - xo, y_pos, static_cast<float>(0) + tp - yo);
         tEntity->rotation += glm::vec3(0.0f, DTOR_90, 0.0f);
         m_entityManager->updateModelMatrix(tEntity);
         _map->tile[_map->width - 1].processed = true;
@@ -125,7 +125,7 @@ void cMapManager::m_addWallWideEntities(sMap*& _map)
         tEntity = m_entityManager->load(xmlFile.getString("<wall_wc_entity>", 1));
         tEntity->owner = eEntityOwner::ownerMap;
         tEntity->type  = eEntityType::entityTypeWall;
-        tEntity->position = glm::vec3(static_cast<float32>(_map->width-1) + tp - xo, y_pos, static_cast<float32>(_map->height-1) + tp - yo);
+        tEntity->position = glm::vec3(static_cast<float>(_map->width-1) + tp - xo, y_pos, static_cast<float>(_map->height-1) + tp - yo);
         tEntity->rotation += glm::vec3(0.0f, DTOR_0, 0.0f);
         m_entityManager->updateModelMatrix(tEntity);
         _map->tile[_map->numTiles - 1].processed = true;
@@ -134,17 +134,17 @@ void cMapManager::m_addWallWideEntities(sMap*& _map)
         tEntity = m_entityManager->load(xmlFile.getString("<wall_wc_entity>", 1));
         tEntity->owner = eEntityOwner::ownerMap;
         tEntity->type  = eEntityType::entityTypeWall;
-        tEntity->position = glm::vec3(static_cast<float32>(0) + tp - xo, y_pos, static_cast<float32>(_map->height-1) + tp - yo);
+        tEntity->position = glm::vec3(static_cast<float>(0) + tp - xo, y_pos, static_cast<float>(_map->height-1) + tp - yo);
         tEntity->rotation += glm::vec3(0.0f, DTOR_270, 0.0f);
         m_entityManager->updateModelMatrix(tEntity);
         _map->tile[_map->numTiles - _map->width].processed = true;
 
         // Sides - X
-        for (uint32 w = 1; w < _map->width-1; ++w)
+        for (std::uint32_t w = 1; w < _map->width-1; ++w)
         {
             // Side [w,0]
-            uint32 h = 0;
-            uint32 t = (h * _map->width) + w;
+            std::uint32_t h = 0;
+            std::uint32_t t = (h * _map->width) + w;
             if (m_isDWall(_map, t + _map->width))
             {
                 tEntity = m_entityManager->load(xmlFile.getString("<wall_ws_entity>", 1));
@@ -157,7 +157,7 @@ void cMapManager::m_addWallWideEntities(sMap*& _map)
                 tEntity->owner = eEntityOwner::ownerMap;
                 tEntity->type  = eEntityType::entityTypeWall;
             }
-            tEntity->position = glm::vec3(static_cast<float32>(w) + tp - xo, y_pos, static_cast<float32>(h) + tp - yo);
+            tEntity->position = glm::vec3(static_cast<float>(w) + tp - xo, y_pos, static_cast<float>(h) + tp - yo);
             tEntity->rotation += glm::vec3(0.0f, DTOR_270, 0.0f);
             m_entityManager->updateModelMatrix(tEntity);
             _map->tile[t + _map->width].processed = true;
@@ -177,18 +177,18 @@ void cMapManager::m_addWallWideEntities(sMap*& _map)
                 tEntity->owner = eEntityOwner::ownerMap;
                 tEntity->type  = eEntityType::entityTypeWall;
             }
-            tEntity->position = glm::vec3(static_cast<float32>(w) + tp - xo, y_pos, static_cast<float32>(h) + tp - yo);
+            tEntity->position = glm::vec3(static_cast<float>(w) + tp - xo, y_pos, static_cast<float>(h) + tp - yo);
             tEntity->rotation += glm::vec3(0.0f, DTOR_90, 0.0f);
             m_entityManager->updateModelMatrix(tEntity);
             _map->tile[t - _map->width].processed = true;
         }
 
         // Sides - Y
-        for (uint32 h = 1; h < _map->height-1; ++h)
+        for (std::uint32_t h = 1; h < _map->height-1; ++h)
         {
             // Side [0,h]
-            uint32 w = 0;
-            uint32 t = (h * _map->width) + w;
+            std::uint32_t w = 0;
+            std::uint32_t t = (h * _map->width) + w;
             if (m_isDWall(_map, t + 1))
             {
                 tEntity = m_entityManager->load(xmlFile.getString("<wall_ws_entity>", 1));
@@ -201,7 +201,7 @@ void cMapManager::m_addWallWideEntities(sMap*& _map)
                 tEntity->owner = eEntityOwner::ownerMap;
                 tEntity->type  = eEntityType::entityTypeWall;
             }
-            tEntity->position = glm::vec3(static_cast<float32>(w) + tp - xo, y_pos, static_cast<float32>(h) + tp - yo);
+            tEntity->position = glm::vec3(static_cast<float>(w) + tp - xo, y_pos, static_cast<float>(h) + tp - yo);
             m_entityManager->updateModelMatrix(tEntity);
             _map->tile[t + 1].processed = true;
 
@@ -220,18 +220,18 @@ void cMapManager::m_addWallWideEntities(sMap*& _map)
                 tEntity->owner = eEntityOwner::ownerMap;
                 tEntity->type  = eEntityType::entityTypeWall;
             }
-            tEntity->position = glm::vec3(static_cast<float32>(w) + tp - xo, y_pos, static_cast<float32>(h) + tp - yo);
+            tEntity->position = glm::vec3(static_cast<float>(w) + tp - xo, y_pos, static_cast<float>(h) + tp - yo);
             tEntity->rotation += glm::vec3(0.0f, DTOR_180, 0.0f);
             m_entityManager->updateModelMatrix(tEntity);
             _map->tile[t - 1].processed = true;
         }
 
         // Non perimeter --------------------------------------------------------------------------------------------
-        for (uint32 h = 1; h < _map->height-1; ++h)
+        for (std::uint32_t h = 1; h < _map->height-1; ++h)
         {
-            for (uint32 w = 1; w < _map->width-1; ++w)
+            for (std::uint32_t w = 1; w < _map->width-1; ++w)
             {
-                uint32 t = (h * _map->width) + w;
+                std::uint32_t t = (h * _map->width) + w;
                 if (_map->tile[t].base == eTileBase::tileWall)
                 {
                     // used to determine if we have loaded a new entity
@@ -471,7 +471,7 @@ void cMapManager::m_addWallWideEntities(sMap*& _map)
                     // If a pattern was found update the new entity's model matrix
                     if (found)
                     {
-                        tEntity->position = glm::vec3(static_cast<float32>(w) + tp - xo, y_pos, static_cast<float32>(h) + tp - yo);
+                        tEntity->position = glm::vec3(static_cast<float>(w) + tp - xo, y_pos, static_cast<float>(h) + tp - yo);
                         m_entityManager->updateModelMatrix(tEntity);
                         _map->tile[t].processed = true;
                     }
@@ -536,20 +536,20 @@ void cMapManager::m_addWallThinEntities(sMap*& _map)
         sEntity* tEntity = nullptr;
 
         // Width and height offset, used to center the walls
-        float32 xo = static_cast<float32>(_map->width  / 2);
-        float32 yo = static_cast<float32>(_map->height / 2);
+        float xo = static_cast<float>(_map->width  / 2);
+        float yo = static_cast<float>(_map->height / 2);
 
         // 1. Exits and Entrances ----------------------------------------------------------------------------------
         // Try to place length 3 first, then 2, then 1
         bool entrance_placed = false;
         bool exit_placed     = false;
         // Length 3
-        for (uint32 h = 0; h < _map->height - 4; ++h) // We need up to 3 tiles in front of stairs
+        for (std::uint32_t h = 0; h < _map->height - 4; ++h) // We need up to 3 tiles in front of stairs
         {
-            for (uint32 w = 2; w < _map->width - 2; ++w)
+            for (std::uint32_t w = 2; w < _map->width - 2; ++w)
             {
                 // Calculate the tile number
-                uint32 t = (h * _map->width) + w;
+                std::uint32_t t = (h * _map->width) + w;
 
                 // Entrance
                 if ((!entrance_placed) && (wall_3tus_count > 0))
@@ -579,7 +579,7 @@ void cMapManager::m_addWallThinEntities(sMap*& _map)
                             {
                                 tEntity->owner = eEntityOwner::ownerMap;
                                 tEntity->type  = eEntityType::entityTypeWall;
-                                tEntity->position = glm::vec3(static_cast<float32>(w) + tp - xo, y_pos, static_cast<float32>(h) + tp - yo);
+                                tEntity->position = glm::vec3(static_cast<float>(w) + tp - xo, y_pos, static_cast<float>(h) + tp - yo);
                                 tEntity->rotation += glm::vec3(0.0f, DTOR_270, 0.0f);
                                 m_entityManager->updateModelMatrix(tEntity);
                                 _map->tile[t + _map->width].processed = true;
@@ -626,7 +626,7 @@ void cMapManager::m_addWallThinEntities(sMap*& _map)
                             {
                                 tEntity->owner = eEntityOwner::ownerMap;
                                 tEntity->type  = eEntityType::entityTypeWall;
-                                tEntity->position = glm::vec3(static_cast<float32>(w) + tp - xo, y_pos, static_cast<float32>(h) + tp - yo);
+                                tEntity->position = glm::vec3(static_cast<float>(w) + tp - xo, y_pos, static_cast<float>(h) + tp - yo);
                                 tEntity->rotation += glm::vec3(0.0f, DTOR_270, 0.0f);
                                 m_entityManager->updateModelMatrix(tEntity);
                                 _map->tile[t + _map->width].processed = true;
@@ -648,12 +648,12 @@ void cMapManager::m_addWallThinEntities(sMap*& _map)
         }
 
         // Length 2 (vertical)
-        for (uint32 h = 0; h < _map->height - 4; ++h) // We need up to 3 tiles in front of stairs
+        for (std::uint32_t h = 0; h < _map->height - 4; ++h) // We need up to 3 tiles in front of stairs
         {
-            for (uint32 w = 2; w < _map->width - 2; ++w)
+            for (std::uint32_t w = 2; w < _map->width - 2; ++w)
             {
                 // Calculate the tile number
-                uint32 t = (h * _map->width) + w;
+                std::uint32_t t = (h * _map->width) + w;
 
                 // Entrance
                 if ((!entrance_placed) && (wall_2tus_count > 0))
@@ -679,7 +679,7 @@ void cMapManager::m_addWallThinEntities(sMap*& _map)
                             {
                                 tEntity->owner = eEntityOwner::ownerMap;
                                 tEntity->type  = eEntityType::entityTypeWall;
-                                tEntity->position = glm::vec3(static_cast<float32>(w) + tp - xo, y_pos, static_cast<float32>(h) + tp - yo);
+                                tEntity->position = glm::vec3(static_cast<float>(w) + tp - xo, y_pos, static_cast<float>(h) + tp - yo);
                                 tEntity->rotation += glm::vec3(0.0f, DTOR_270, 0.0f);
                                 m_entityManager->updateModelMatrix(tEntity);
                                 _map->tile[t + _map->width].processed = true;
@@ -719,7 +719,7 @@ void cMapManager::m_addWallThinEntities(sMap*& _map)
                             {
                                 tEntity->owner = eEntityOwner::ownerMap;
                                 tEntity->type  = eEntityType::entityTypeWall;
-                                tEntity->position = glm::vec3(static_cast<float32>(w) + tp - xo, y_pos, static_cast<float32>(h) + tp - yo);
+                                tEntity->position = glm::vec3(static_cast<float>(w) + tp - xo, y_pos, static_cast<float>(h) + tp - yo);
                                 tEntity->rotation += glm::vec3(0.0f, DTOR_270, 0.0f);
                                 m_entityManager->updateModelMatrix(tEntity);
                                 _map->tile[t + _map->width].processed = true;
@@ -738,12 +738,12 @@ void cMapManager::m_addWallThinEntities(sMap*& _map)
         }
 
         // Length 2 (horizontal)
-        for (uint32 h = 2; h < _map->height - 2; ++h) // We need up to 3 tiles in front of stairs
+        for (std::uint32_t h = 2; h < _map->height - 2; ++h) // We need up to 3 tiles in front of stairs
         {
-            for (uint32 w = 0; w < _map->width - 4; ++w)
+            for (std::uint32_t w = 0; w < _map->width - 4; ++w)
             {
                 // Calculate the tile number
-                uint32 t = (h * _map->width) + w;
+                std::uint32_t t = (h * _map->width) + w;
 
                 // Entrance
                 if ((!entrance_placed) && (wall_2tus_count > 0))
@@ -769,7 +769,7 @@ void cMapManager::m_addWallThinEntities(sMap*& _map)
                             {
                                 tEntity->owner = eEntityOwner::ownerMap;
                                 tEntity->type  = eEntityType::entityTypeWall;
-                                tEntity->position = glm::vec3(static_cast<float32>(w) + tp - xo, y_pos, static_cast<float32>(h) + tp - yo);
+                                tEntity->position = glm::vec3(static_cast<float>(w) + tp - xo, y_pos, static_cast<float>(h) + tp - yo);
                                 tEntity->rotation += glm::vec3(0.0f, DTOR_0, 0.0f);
                                 m_entityManager->updateModelMatrix(tEntity);
                                 _map->tile[t + 1].processed = true;
@@ -809,7 +809,7 @@ void cMapManager::m_addWallThinEntities(sMap*& _map)
                             {
                                 tEntity->owner = eEntityOwner::ownerMap;
                                 tEntity->type  = eEntityType::entityTypeWall;
-                                tEntity->position = glm::vec3(static_cast<float32>(w) + tp - xo, y_pos, static_cast<float32>(h) + tp - yo);
+                                tEntity->position = glm::vec3(static_cast<float>(w) + tp - xo, y_pos, static_cast<float>(h) + tp - yo);
                                 tEntity->rotation += glm::vec3(0.0f, DTOR_0, 0.0f);
                                 m_entityManager->updateModelMatrix(tEntity);
                                 _map->tile[t + 1].processed = true;
@@ -828,12 +828,12 @@ void cMapManager::m_addWallThinEntities(sMap*& _map)
         }
 
         // Length 1
-        for (uint32 h = 0; h < _map->height - 4; ++h) // We need up to 3 tiles in front of stairs
+        for (std::uint32_t h = 0; h < _map->height - 4; ++h) // We need up to 3 tiles in front of stairs
         {
-            for (uint32 w = 2; w < _map->width - 2; ++w)
+            for (std::uint32_t w = 2; w < _map->width - 2; ++w)
             {
                 // Calculate the tile number
-                uint32 t = (h * _map->width) + w;
+                std::uint32_t t = (h * _map->width) + w;
 
                 // Entrance
                 if ((!entrance_placed) && (wall_1tus_count > 0))
@@ -855,7 +855,7 @@ void cMapManager::m_addWallThinEntities(sMap*& _map)
                             {
                                 tEntity->owner = eEntityOwner::ownerMap;
                                 tEntity->type  = eEntityType::entityTypeWall;
-                                tEntity->position = glm::vec3(static_cast<float32>(w) + tp - xo, y_pos, static_cast<float32>(h) + tp - yo);
+                                tEntity->position = glm::vec3(static_cast<float>(w) + tp - xo, y_pos, static_cast<float>(h) + tp - yo);
                                 tEntity->rotation += glm::vec3(0.0f, DTOR_270, 0.0f);
                                 m_entityManager->updateModelMatrix(tEntity);
                                 _map->tile[t + _map->width].processed = true;
@@ -888,7 +888,7 @@ void cMapManager::m_addWallThinEntities(sMap*& _map)
                             {
                                 tEntity->owner = eEntityOwner::ownerMap;
                                 tEntity->type  = eEntityType::entityTypeWall;
-                                tEntity->position = glm::vec3(static_cast<float32>(w) + tp - xo, y_pos, static_cast<float32>(h) + tp - yo);
+                                tEntity->position = glm::vec3(static_cast<float>(w) + tp - xo, y_pos, static_cast<float>(h) + tp - yo);
                                 tEntity->rotation += glm::vec3(0.0f, DTOR_270, 0.0f);
                                 m_entityManager->updateModelMatrix(tEntity);
                                 _map->tile[t + _map->width].processed = true;
@@ -912,7 +912,7 @@ void cMapManager::m_addWallThinEntities(sMap*& _map)
             {
                 tEntity->owner = eEntityOwner::ownerMap;
                 tEntity->type  = eEntityType::entityTypeWall;
-                tEntity->position = glm::vec3(static_cast<float32>(0) + tp - xo, y_pos, static_cast<float32>(0) + tp - yo);
+                tEntity->position = glm::vec3(static_cast<float>(0) + tp - xo, y_pos, static_cast<float>(0) + tp - yo);
                 tEntity->rotation += glm::vec3(0.0f, DTOR_270, 0.0f);
                 m_entityManager->updateModelMatrix(tEntity);
                 _map->tile[0].processed = true;
@@ -924,7 +924,7 @@ void cMapManager::m_addWallThinEntities(sMap*& _map)
             {
                 tEntity->owner = eEntityOwner::ownerMap;
                 tEntity->type  = eEntityType::entityTypeWall;
-                tEntity->position = glm::vec3(static_cast<float32>(_map->width-1) + tp - xo, y_pos, static_cast<float32>(0) + tp - yo);
+                tEntity->position = glm::vec3(static_cast<float>(_map->width-1) + tp - xo, y_pos, static_cast<float>(0) + tp - yo);
                 tEntity->rotation += glm::vec3(0.0f, DTOR_180, 0.0f);
                 m_entityManager->updateModelMatrix(tEntity);
                 _map->tile[_map->width - 1].processed = true;
@@ -936,7 +936,7 @@ void cMapManager::m_addWallThinEntities(sMap*& _map)
             {
                 tEntity->owner = eEntityOwner::ownerMap;
                 tEntity->type  = eEntityType::entityTypeWall;
-                tEntity->position = glm::vec3(static_cast<float32>(_map->width-1) + tp - xo, y_pos, static_cast<float32>(_map->height-1) + tp - yo);
+                tEntity->position = glm::vec3(static_cast<float>(_map->width-1) + tp - xo, y_pos, static_cast<float>(_map->height-1) + tp - yo);
                 tEntity->rotation += glm::vec3(0.0f, DTOR_90, 0.0f);
                 m_entityManager->updateModelMatrix(tEntity);
                 _map->tile[_map->numTiles - 1].processed = true;
@@ -948,18 +948,18 @@ void cMapManager::m_addWallThinEntities(sMap*& _map)
             {
                 tEntity->owner = eEntityOwner::ownerMap;
                 tEntity->type  = eEntityType::entityTypeWall;
-                tEntity->position = glm::vec3(static_cast<float32>(0) + tp - xo, y_pos, static_cast<float32>(_map->height-1) + tp - yo);
+                tEntity->position = glm::vec3(static_cast<float>(0) + tp - xo, y_pos, static_cast<float>(_map->height-1) + tp - yo);
                 tEntity->rotation += glm::vec3(0.0f, DTOR_0, 0.0f);
                 m_entityManager->updateModelMatrix(tEntity);
                 _map->tile[_map->numTiles - _map->width].processed = true;
             }
         }
         // Sides - X
-        for (uint32 w = 1; w < _map->width-1; ++w)
+        for (std::uint32_t w = 1; w < _map->width-1; ++w)
         {
             // Side [w,0]
-            uint32 h = 0;
-            uint32 t = (h * _map->width) + w;
+            std::uint32_t h = 0;
+            std::uint32_t t = (h * _map->width) + w;
             if (m_isDWall(_map, t + _map->width))
             {
                 if (wall_1tt_count > 0)
@@ -978,7 +978,7 @@ void cMapManager::m_addWallThinEntities(sMap*& _map)
             {
                 tEntity->owner = eEntityOwner::ownerMap;
                 tEntity->type  = eEntityType::entityTypeWall;
-                tEntity->position = glm::vec3(static_cast<float32>(w) + tp - xo, y_pos, static_cast<float32>(h) + tp - yo);
+                tEntity->position = glm::vec3(static_cast<float>(w) + tp - xo, y_pos, static_cast<float>(h) + tp - yo);
                 tEntity->rotation += glm::vec3(0.0f, DTOR_270, 0.0f);
                 m_entityManager->updateModelMatrix(tEntity);
                 _map->tile[t].processed = true;
@@ -1005,7 +1005,7 @@ void cMapManager::m_addWallThinEntities(sMap*& _map)
             {
                 tEntity->owner = eEntityOwner::ownerMap;
                 tEntity->type  = eEntityType::entityTypeWall;
-                tEntity->position = glm::vec3(static_cast<float32>(w) + tp - xo, y_pos, static_cast<float32>(h) + tp - yo);
+                tEntity->position = glm::vec3(static_cast<float>(w) + tp - xo, y_pos, static_cast<float>(h) + tp - yo);
                 tEntity->rotation += glm::vec3(0.0f, DTOR_90, 0.0f);
                 m_entityManager->updateModelMatrix(tEntity);
                 _map->tile[t].processed = true;
@@ -1013,11 +1013,11 @@ void cMapManager::m_addWallThinEntities(sMap*& _map)
         }
 
         // Sides - Y
-        for (uint32 h = 1; h < _map->height-1; ++h)
+        for (std::uint32_t h = 1; h < _map->height-1; ++h)
         {
             // Side [0,h]
-            uint32 w = 0;
-            uint32 t = (h * _map->width) + w;
+            std::uint32_t w = 0;
+            std::uint32_t t = (h * _map->width) + w;
             if (m_isDWall(_map, t + 1))
             {
                 if (wall_1tt_count > 0)
@@ -1036,7 +1036,7 @@ void cMapManager::m_addWallThinEntities(sMap*& _map)
             {
                 tEntity->owner = eEntityOwner::ownerMap;
                 tEntity->type  = eEntityType::entityTypeWall;
-                tEntity->position = glm::vec3(static_cast<float32>(w) + tp - xo, y_pos, static_cast<float32>(h) + tp - yo);
+                tEntity->position = glm::vec3(static_cast<float>(w) + tp - xo, y_pos, static_cast<float>(h) + tp - yo);
                 tEntity->rotation += glm::vec3(0.0f, DTOR_0, 0.0f);
                 m_entityManager->updateModelMatrix(tEntity);
                 _map->tile[t].processed = true;
@@ -1063,7 +1063,7 @@ void cMapManager::m_addWallThinEntities(sMap*& _map)
             {
                 tEntity->owner = eEntityOwner::ownerMap;
                 tEntity->type  = eEntityType::entityTypeWall;
-                tEntity->position = glm::vec3(static_cast<float32>(w) + tp - xo, y_pos, static_cast<float32>(h) + tp - yo);
+                tEntity->position = glm::vec3(static_cast<float>(w) + tp - xo, y_pos, static_cast<float>(h) + tp - yo);
                 tEntity->rotation += glm::vec3(0.0f, DTOR_180, 0.0f);
                 m_entityManager->updateModelMatrix(tEntity);
                 _map->tile[t].processed = true;
@@ -1073,12 +1073,12 @@ void cMapManager::m_addWallThinEntities(sMap*& _map)
         // 3. Walls of length 3 ----------------------------------------------------------------------------------
         if (wall_3td_count > 0)
         {
-            for (uint32 h = 3; h < _map->height - 3; ++h) // We need up 2 tiles of padding on each side, and 1 for index from 0
+            for (std::uint32_t h = 3; h < _map->height - 3; ++h) // We need up 2 tiles of padding on each side, and 1 for index from 0
             {
-                for (uint32 w = 3; w < _map->width - 3; ++w)
+                for (std::uint32_t w = 3; w < _map->width - 3; ++w)
                 {
                     // Calculate the tile number
-                    uint32 t = (h * _map->width) + w;
+                    std::uint32_t t = (h * _map->width) + w;
 
                     if ((m_isWall (_map, t)) && (!_map->tile[t].processed))
                     {
@@ -1103,7 +1103,7 @@ void cMapManager::m_addWallThinEntities(sMap*& _map)
                             {
                                 tEntity->owner = eEntityOwner::ownerMap;
                                 tEntity->type  = eEntityType::entityTypeWall;
-                                tEntity->position = glm::vec3(static_cast<float32>(w) + tp - xo, y_pos, static_cast<float32>(h) + tp - yo);
+                                tEntity->position = glm::vec3(static_cast<float>(w) + tp - xo, y_pos, static_cast<float>(h) + tp - yo);
                                 tEntity->rotation += glm::vec3(0.0f, DTOR_270, 0.0f);
                                 m_entityManager->updateModelMatrix(tEntity);
                                 _map->tile[t].processed = true;
@@ -1134,7 +1134,7 @@ void cMapManager::m_addWallThinEntities(sMap*& _map)
                             {
                                 tEntity->owner = eEntityOwner::ownerMap;
                                 tEntity->type  = eEntityType::entityTypeWall;
-                                tEntity->position = glm::vec3(static_cast<float32>(w) + tp - xo, y_pos, static_cast<float32>(h) + tp - yo);
+                                tEntity->position = glm::vec3(static_cast<float>(w) + tp - xo, y_pos, static_cast<float>(h) + tp - yo);
                                 tEntity->rotation += glm::vec3(0.0f, DTOR_0, 0.0f);
                                 m_entityManager->updateModelMatrix(tEntity);
                                 _map->tile[t].processed = true;
@@ -1150,12 +1150,12 @@ void cMapManager::m_addWallThinEntities(sMap*& _map)
         // 4. Walls of length 2 ----------------------------------------------------------------------------------
         if (wall_2td_count > 0)
         {
-            for (uint32 h = 2; h < _map->height - 2; ++h) // We need up 1 tiles of padding on each side, and 1 for index from 0
+            for (std::uint32_t h = 2; h < _map->height - 2; ++h) // We need up 1 tiles of padding on each side, and 1 for index from 0
             {
-                for (uint32 w = 2; w < _map->width - 2; ++w)
+                for (std::uint32_t w = 2; w < _map->width - 2; ++w)
                 {
                     // Calculate the tile number
-                    uint32 t = (h * _map->width) + w;
+                    std::uint32_t t = (h * _map->width) + w;
 
                     if ((m_isWall (_map, t)) && (!_map->tile[t].processed))
                     {
@@ -1177,7 +1177,7 @@ void cMapManager::m_addWallThinEntities(sMap*& _map)
                             {
                                 tEntity->owner = eEntityOwner::ownerMap;
                                 tEntity->type  = eEntityType::entityTypeWall;
-                                tEntity->position = glm::vec3(static_cast<float32>(w) + tp - xo, y_pos, static_cast<float32>(h) + tp - yo);
+                                tEntity->position = glm::vec3(static_cast<float>(w) + tp - xo, y_pos, static_cast<float>(h) + tp - yo);
                                 tEntity->rotation += glm::vec3(0.0f, DTOR_270, 0.0f);
                                 m_entityManager->updateModelMatrix(tEntity);
                                 _map->tile[t].processed = true;
@@ -1202,7 +1202,7 @@ void cMapManager::m_addWallThinEntities(sMap*& _map)
                             {
                                 tEntity->owner = eEntityOwner::ownerMap;
                                 tEntity->type  = eEntityType::entityTypeWall;
-                                tEntity->position = glm::vec3(static_cast<float32>(w) + tp - xo, y_pos, static_cast<float32>(h) + tp - yo);
+                                tEntity->position = glm::vec3(static_cast<float>(w) + tp - xo, y_pos, static_cast<float>(h) + tp - yo);
                                 tEntity->rotation += glm::vec3(0.0f, DTOR_180, 0.0f);
                                 m_entityManager->updateModelMatrix(tEntity);
                                 _map->tile[t].processed = true;
@@ -1216,12 +1216,12 @@ void cMapManager::m_addWallThinEntities(sMap*& _map)
         }
 
         // 5. Walls of length 1 --------------------------------------------------------------------------------------------
-        for (uint32 h = 1; h < _map->height-1; ++h)
+        for (std::uint32_t h = 1; h < _map->height-1; ++h)
         {
-            for (uint32 w = 1; w < _map->width-1; ++w)
+            for (std::uint32_t w = 1; w < _map->width-1; ++w)
             {
                 // Calculate the tile number
-                uint32 t = (h * _map->width) + w;
+                std::uint32_t t = (h * _map->width) + w;
 
                 // used to determine if we have loaded a new entity
                 bool found = true;
@@ -1723,7 +1723,7 @@ void cMapManager::m_addWallThinEntities(sMap*& _map)
                 {
                     if (tEntity != nullptr)
                     {
-                        tEntity->position = glm::vec3(static_cast<float32>(w) + tp - xo, y_pos, static_cast<float32>(h) + tp - yo);
+                        tEntity->position = glm::vec3(static_cast<float>(w) + tp - xo, y_pos, static_cast<float>(h) + tp - yo);
                         m_entityManager->updateModelMatrix(tEntity);
                         _map->tile[t].processed = true;
                     }
