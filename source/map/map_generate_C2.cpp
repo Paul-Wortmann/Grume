@@ -26,19 +26,19 @@
 void cMapManager::m_genC2_internal(sMap*& _map)
 {
     // Fill the map with wall tiles
-    for (uint32_t i = 0; i < _map->numTiles; i++)
+    for (std::uint32_t i = 0; i < _map->numTiles; i++)
     {
         _map->tile[i].base = eTileBase::tileWall;
     }
 
     // Generate random circles to create the room/s
-    uint32_t blobCount = _map->genData.density * _map->genData.pass;
-    for (uint32_t i = 0; i < blobCount; i++)
+    std::uint32_t blobCount = _map->genData.density * _map->genData.pass;
+    for (std::uint32_t i = 0; i < blobCount; i++)
     {
-        uint32_t r = (rand() % (_map->genData.roomRadiusMax - _map->genData.roomRadiusMin)) + _map->genData.roomRadiusMin;
+        std::uint32_t r = (rand() % (_map->genData.roomRadiusMax - _map->genData.roomRadiusMin)) + _map->genData.roomRadiusMin;
 
-        uint32_t x = (rand() % (_map->width  - r - r)) + r;
-        uint32_t y = (rand() % (_map->height - r - r)) + r;
+        std::uint32_t x = (rand() % (_map->width  - r - r)) + r;
+        std::uint32_t y = (rand() % (_map->height - r - r)) + r;
 
         m_genCircleRoom(_map, x, y, r);
     }
@@ -53,7 +53,7 @@ void cMapManager::m_generateMap_C2(sMap*& _map)
     }
     else
     {
-        for (uint16_t i = 0; i < _map->genData.pass; i++)
+        for (std::uint16_t i = 0; i < _map->genData.pass; i++)
         {
             _map->genData.seed = time(nullptr);
             srand (_map->genData.seed);
