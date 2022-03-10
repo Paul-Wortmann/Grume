@@ -24,7 +24,7 @@
 #include "map_manager.hpp"
 
 // Straight Line
-void cMapManager::m_mapConnectRooms_SL(sMap*& _map, const int32_t &_r1, const int32_t &_r2)
+void cMapManager::m_mapConnectRooms_SL(sMap*& _map, const std::int32_t &_r1, const std::int32_t &_r2)
 {
     // If room IDs are invalid, exit early
     if ((_r1 < 0) || (_r2 < 0))
@@ -53,7 +53,7 @@ void cMapManager::m_mapConnectRooms_SL(sMap*& _map, const int32_t &_r1, const in
     
     // Determine the start and end points of the connecting path
     // Path start x
-    uint32_t psx;
+    std::uint32_t psx;
     if ((direction == eDirectionBias::directionEast) || (direction == eDirectionBias::directionWest))
     {
         if (direction == eDirectionBias::directionEast)
@@ -71,7 +71,7 @@ void cMapManager::m_mapConnectRooms_SL(sMap*& _map, const int32_t &_r1, const in
     }
     
     // Path start y
-    uint32_t psy;
+    std::uint32_t psy;
     if  ((direction == eDirectionBias::directionNorth) || (direction == eDirectionBias::directionSouth))
     {
         if (direction == eDirectionBias::directionNorth)
@@ -89,7 +89,7 @@ void cMapManager::m_mapConnectRooms_SL(sMap*& _map, const int32_t &_r1, const in
     }
     
     // Path end x
-    uint32_t pex;
+    std::uint32_t pex;
     if ((direction == eDirectionBias::directionEast) || (direction == eDirectionBias::directionWest))
     {
         if (direction == eDirectionBias::directionWest)
@@ -107,7 +107,7 @@ void cMapManager::m_mapConnectRooms_SL(sMap*& _map, const int32_t &_r1, const in
     }
     
     // Path end y
-    uint32_t pey;
+    std::uint32_t pey;
     if  ((direction == eDirectionBias::directionNorth) || (direction == eDirectionBias::directionSouth))
     {
         if (direction == eDirectionBias::directionSouth)
@@ -177,7 +177,7 @@ void cMapManager::m_mapConnectRooms_SL(sMap*& _map, const int32_t &_r1, const in
             _map->tile[(psy * _map->width) + psx].base = eTileBase::tileFloor;
             if (_map->genData.connectivityPadding > 0)
             {
-                for (uint32_t i = 0; i <= _map->genData.connectivityPadding; i++)
+                for (std::uint32_t i = 0; i <= _map->genData.connectivityPadding; i++)
                 {
                     if (_map->tile[(psy * _map->width) + psx + i].base == eTileBase::tileWall)
                         _map->tile[(psy * _map->width) + psx + i].base = eTileBase::tileFloor;
@@ -204,7 +204,7 @@ void cMapManager::m_mapConnectRooms_SL(sMap*& _map, const int32_t &_r1, const in
 }
 
 // Straight Lines, 90 degree angle
-void cMapManager::m_mapConnectRooms_ND(sMap*& _map, const int32_t &_r1, const int32_t &_r2)
+void cMapManager::m_mapConnectRooms_ND(sMap*& _map, const std::int32_t &_r1, const std::int32_t &_r2)
 {
     // If room IDs are invalid, exit early
     if ((_r1 < 0) || (_r2 < 0))
@@ -212,10 +212,10 @@ void cMapManager::m_mapConnectRooms_ND(sMap*& _map, const int32_t &_r1, const in
         return;
     }
     
-    uint32_t psx = _map->room[_r1].x;
-    uint32_t psy = _map->room[_r1].y;
-    uint32_t pex = _map->room[_r2].x;
-    uint32_t pey = _map->room[_r2].y;
+    std::uint32_t psx = _map->room[_r1].x;
+    std::uint32_t psy = _map->room[_r1].y;
+    std::uint32_t pex = _map->room[_r2].x;
+    std::uint32_t pey = _map->room[_r2].y;
 
     while (psy != pey)
     {
@@ -224,7 +224,7 @@ void cMapManager::m_mapConnectRooms_ND(sMap*& _map, const int32_t &_r1, const in
             _map->tile[(psy * _map->width) + psx].base = eTileBase::tileFloor;
             if (_map->genData.connectivityPadding > 0)
             {
-                for (uint32_t i = 0; i <= _map->genData.connectivityPadding; i++)
+                for (std::uint32_t i = 0; i <= _map->genData.connectivityPadding; i++)
                 {
                     if (_map->tile[(psy * _map->width) + psx + i].base == eTileBase::tileWall)
                         _map->tile[(psy * _map->width) + psx + i].base = eTileBase::tileFloor;
@@ -254,7 +254,7 @@ void cMapManager::m_mapConnectRooms_ND(sMap*& _map, const int32_t &_r1, const in
             _map->tile[(psy * _map->width) + psx].base = eTileBase::tileFloor;
             if (_map->genData.connectivityPadding > 0)
             {
-                for (uint32_t i = 0; i <= _map->genData.connectivityPadding; i++)
+                for (std::uint32_t i = 0; i <= _map->genData.connectivityPadding; i++)
                 {
                     if (_map->tile[(psy * _map->width) + psx + i].base == eTileBase::tileWall)
                         _map->tile[(psy * _map->width) + psx + i].base = eTileBase::tileFloor;
@@ -280,7 +280,7 @@ void cMapManager::m_mapConnectRooms_ND(sMap*& _map, const int32_t &_r1, const in
 }
 
 // Drunken Walk
-void cMapManager::m_mapConnectRooms_DW(sMap*& _map, const int32_t &_r1, const int32_t &_r2)
+void cMapManager::m_mapConnectRooms_DW(sMap*& _map, const std::int32_t &_r1, const std::int32_t &_r2)
 {
     // If room IDs are invalid, exit early
     if ((_r1 < 0) || (_r2 < 0))
@@ -297,21 +297,21 @@ void cMapManager::m_mapConnectRooms(sMap*& _map)
     if (_map->roomCount < 2)
         return;
 
-    uint32_t distanceT = 0; // temp distance
-    uint32_t distanceN = UINT32_MAX; // size larger than possible distance
-    uint32_t distanceE = UINT32_MAX; // size larger than possible distance
-    uint32_t distanceW = UINT32_MAX; // size larger than possible distance
-    uint32_t distanceS = UINT32_MAX; // size larger than possible distance
+    std::uint32_t distanceT = 0; // temp distance
+    std::uint32_t distanceN = UINT32_MAX; // size larger than possible distance
+    std::uint32_t distanceE = UINT32_MAX; // size larger than possible distance
+    std::uint32_t distanceW = UINT32_MAX; // size larger than possible distance
+    std::uint32_t distanceS = UINT32_MAX; // size larger than possible distance
     // ray cast room finder
-    for (uint32_t i = 0; i < _map->roomCount; i++)
+    for (std::uint32_t i = 0; i < _map->roomCount; i++)
     {
         //search horizontally
-        for (uint32_t j = _map->room[i].posYMin; j < _map->room[i].posYMax; j++)
+        for (std::uint32_t j = _map->room[i].posYMin; j < _map->room[i].posYMax; j++)
         {
             // right / west
-            for (uint32_t k = _map->room[i].x; k < _map->width; k++)
+            for (std::uint32_t k = _map->room[i].x; k < _map->width; k++)
             {
-                uint32_t r = _map->tile[(j * _map->width) + k].room;
+                std::uint32_t r = _map->tile[(j * _map->width) + k].room;
                 if ((_map->tile[(j * _map->width) + k].base == eTileBase::tileFloor) && (r != i))
                 {
                     distanceT = sqrt(((_map->room[r].x - _map->room[i].x) * (_map->room[r].x - _map->room[i].x)) + ((_map->room[r].y - _map->room[i].y) * (_map->room[r].y - _map->room[i].y)));
@@ -324,9 +324,9 @@ void cMapManager::m_mapConnectRooms(sMap*& _map)
                 }
             }
             // left / east
-            for (uint32_t k = _map->room[i].x; k > 0; k--)
+            for (std::uint32_t k = _map->room[i].x; k > 0; k--)
             {
-                uint32_t r = _map->tile[(j * _map->width) + k].room;
+                std::uint32_t r = _map->tile[(j * _map->width) + k].room;
                 if ((_map->tile[(j * _map->width) + k].base == eTileBase::tileFloor) && (r != i))
                 {
                     distanceT = sqrt(((_map->room[r].x - _map->room[i].x) * (_map->room[r].x - _map->room[i].x)) + ((_map->room[r].y - _map->room[i].y) * (_map->room[r].y - _map->room[i].y)));
@@ -340,12 +340,12 @@ void cMapManager::m_mapConnectRooms(sMap*& _map)
             }
         }
         //search vertically
-        for (uint32_t k = _map->room[i].posXMin; k < _map->room[i].posXMax; k++)
+        for (std::uint32_t k = _map->room[i].posXMin; k < _map->room[i].posXMax; k++)
         {
             // down / south
-            for (uint32_t j = _map->room[i].y; j < _map->height; j++)
+            for (std::uint32_t j = _map->room[i].y; j < _map->height; j++)
             {
-                uint32_t r = _map->tile[(j * _map->width) + k].room;
+                std::uint32_t r = _map->tile[(j * _map->width) + k].room;
                 if ((_map->tile[(j * _map->width) + k].base == eTileBase::tileFloor) && (_map->tile[(j * _map->width) + k].room != i))
                 {
                     distanceT = sqrt(((_map->room[r].x - _map->room[i].x) * (_map->room[r].x - _map->room[i].x)) + ((_map->room[r].y - _map->room[i].y) * (_map->room[r].y - _map->room[i].y)));
@@ -358,9 +358,9 @@ void cMapManager::m_mapConnectRooms(sMap*& _map)
                 }
             }
             // up / north
-            for (uint32_t j = _map->room[i].y; j > 0; j--)
+            for (std::uint32_t j = _map->room[i].y; j > 0; j--)
             {
-                uint32_t r = _map->tile[(j * _map->width) + k].room;
+                std::uint32_t r = _map->tile[(j * _map->width) + k].room;
                 if ((_map->tile[(j * _map->width) + k].base == eTileBase::tileFloor) && (_map->tile[(j * _map->width) + k].room != i))
                 {
                     distanceT = sqrt(((_map->room[r].x - _map->room[i].x) * (_map->room[r].x - _map->room[i].x)) + ((_map->room[r].y - _map->room[i].y) * (_map->room[r].y - _map->room[i].y)));
@@ -375,11 +375,11 @@ void cMapManager::m_mapConnectRooms(sMap*& _map)
         }
     }
     // remove multiple connections to same neighbor
-    for (uint32_t i = 0; i < _map->roomCount; i++)
+    for (std::uint32_t i = 0; i < _map->roomCount; i++)
     {
-        for (uint32_t j = 0; j < _map->roomCount; j++)
+        for (std::uint32_t j = 0; j < _map->roomCount; j++)
         {
-            uint32_t found = 0;
+            std::uint32_t found = 0;
             if (_map->room[i].exitE == j)
                 found++;
             if (_map->room[i].exitW == j)
@@ -406,13 +406,13 @@ void cMapManager::m_mapConnectRooms(sMap*& _map)
         }
     }
     // try to connect detached rooms
-    for (uint32_t i = (_map->roomCount-1); i > 0; i--)
+    for (std::uint32_t i = (_map->roomCount-1); i > 0; i--)
     {
         if ((_map->room[i].exitE ==  -1) && (_map->room[i].exitW == -1) && (_map->room[i].exitN == -1) && (_map->room[i].exitS == -1))
         {
             //std::cout << "Detached room detected!" << std::endl;
-            int32_t deltaX = _map->room[i].x - _map->room[i-1].x;
-            int32_t deltaY = _map->room[i].y - _map->room[i-1].y;
+            std::int32_t deltaX = _map->room[i].x - _map->room[i-1].x;
+            std::int32_t deltaY = _map->room[i].y - _map->room[i-1].y;
             if (abs(deltaX) < abs(deltaY))
             {
                 if (deltaX > 0)
@@ -442,7 +442,7 @@ void cMapManager::m_mapConnectRooms(sMap*& _map)
         }
     }
     // apply room inter-connections
-    for (uint32_t i = 0; i < _map->roomCount; i++)
+    for (std::uint32_t i = 0; i < _map->roomCount; i++)
     {
         switch (_map->genData.connectivityAlgorithm)
         {
@@ -484,7 +484,7 @@ void cMapManager::m_mapConnectRooms(sMap*& _map)
     // use path finder to locate unreachable rooms and try connect them.
     if (_map->roomCount > 0)
     {
-        for (uint32_t i = 0; i < _map->roomCount-1; i++)
+        for (std::uint32_t i = 0; i < _map->roomCount-1; i++)
         {
             sMapPath pathT;
             pathT.startTile       = ((_map->width * _map->room[i].y)   + _map->room[i].x);
