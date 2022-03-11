@@ -26,8 +26,8 @@
 void cMapManager::m_genD1_internal(sMap*& _map)
 {
     eRoomShape roomShape = _map->genData.roomShape;
-    uint32_t roomMax = _map->genData.density * _map->genData.pass;
-    for (uint32_t i = 0; i < _map->numTiles; i++)
+    std::uint32_t roomMax = _map->genData.density * _map->genData.pass;
+    for (std::uint32_t i = 0; i < _map->numTiles; i++)
     {
         _map->tile[i].base = eTileBase::tileWall;
     }
@@ -35,9 +35,9 @@ void cMapManager::m_genD1_internal(sMap*& _map)
     // Generate a perimeter wall
     m_mapGeneratePerimeterWall(_map);
 
-    for (uint32_t i = 0; i < roomMax; i++)
+    for (std::uint32_t i = 0; i < roomMax; i++)
     {
-        uint32_t r = (rand() % (_map->genData.roomRadiusMax - _map->genData.roomRadiusMin)) + _map->genData.roomRadiusMin;
+        std::uint32_t r = (rand() % (_map->genData.roomRadiusMax - _map->genData.roomRadiusMin)) + _map->genData.roomRadiusMin;
         if ((r % 2) != 0)
         {
             r++;
@@ -50,8 +50,8 @@ void cMapManager::m_genD1_internal(sMap*& _map)
         {
             r = _map->genData.roomRadiusMax;
         }
-        uint32_t x = (rand() % (_map->width - r - r)) + r;
-        uint32_t y = (rand() % (_map->height - r - r)) + r;
+        std::uint32_t x = (rand() % (_map->width - r - r)) + r;
+        std::uint32_t y = (rand() % (_map->height - r - r)) + r;
         if ((x > r) && (x < _map->width-r) && (y > r) && (y < _map->height-r))
         {
             if (_map->genData.roomShape == eRoomShape::shapeRandom)
@@ -85,7 +85,7 @@ void cMapManager::m_generateMap_D1(sMap*& _map)
     }
     else
     {
-        for (uint16_t i = 0; i < _map->genData.pass; i++)
+        for (std::uint16_t i = 0; i < _map->genData.pass; i++)
         {
             _map->genData.seed = time(nullptr);
             srand (_map->genData.seed);
