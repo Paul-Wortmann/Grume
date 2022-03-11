@@ -136,11 +136,11 @@ sEntityModel* cMapManager::m_generateFloor(sMap*& _map)
     }
     
     // 2. Determine tile type and rotation based on adjacent tiles.
-    for (uint32 z = 1; z < _map->height - 1; ++z) // z, excluding border tiles
+    for (std::uint32_t z = 1; z < _map->height - 1; ++z) // z, excluding border tiles
     {
-        for (uint32 x = 1; x < _map->width - 1; ++x)  // x, excluding border tiles
+        for (std::uint32_t x = 1; x < _map->width - 1; ++x)  // x, excluding border tiles
         {
-            uint32 tileNum = (z * _map->width) + x;
+            std::uint32_t tileNum = (z * _map->width) + x;
 
             // ---- Path next to floor, straight line ----
             // Case 1: path tile, and 1 floor tile to the left, rotate 90
@@ -322,9 +322,9 @@ sEntityModel* cMapManager::m_generateFloor(sMap*& _map)
     // also add 10 triangles with 3 vertices each to complete the cube
     _map->floor->model->numMesh = 1;
     _map->floor->model->mesh = new sEntityMesh[_map->floor->model->numMesh];
-    uint32 meshNum = 0;
+    std::uint32_t meshNum = 0;
 
-    uint32 numMeshTiles = 0;
+    std::uint32_t numMeshTiles = 0;
     for(std::size_t i = 0; i < _map->numTiles; ++i)
     {
         if ((_map->tile[i].base != eTileBase::tileNone))
@@ -337,44 +337,44 @@ sEntityModel* cMapManager::m_generateFloor(sMap*& _map)
     _map->floor->model->mesh[meshNum].vertex = new sEntityVertex[_map->floor->model->mesh[meshNum].numVertex];
 
     // Width and height offset, used to center the mesh
-    float32 xo = static_cast<float32>(_map->width  / 2);
-    float32 zo = static_cast<float32>(_map->height / 2);
+    float xo = static_cast<float>(_map->width  / 2);
+    float zo = static_cast<float>(_map->height / 2);
 
     // Determine uint size of sprites on the spritesheet based on number of sprites
-    float32 xStep = 1.0 / (float32)FLOOR_SPRITESHEET_WIDTH;
-    float32 yStep = 1.0 / (float32)FLOOR_SPRITESHEET_HEIGHT;
+    float xStep = 1.0 / (float)FLOOR_SPRITESHEET_WIDTH;
+    float yStep = 1.0 / (float)FLOOR_SPRITESHEET_HEIGHT;
 
-    uint32 vertextNum = 0;
-    for (uint32 z = 0; z < _map->height; ++z) // z
+    std::uint32_t vertextNum = 0;
+    for (std::uint32_t z = 0; z < _map->height; ++z) // z
     {
-        for (uint32 x = 0; x < _map->width; ++x)  // x
+        for (std::uint32_t x = 0; x < _map->width; ++x)  // x
         {
-            uint32 tileNum = (z * _map->width) + x;
+            std::uint32_t tileNum = (z * _map->width) + x;
             if ((_map->tile[tileNum].base != eTileBase::tileNone))
             {
                 // Determine the tile location on the spritesheet using the map tile data (redundant)
-                //tileX = (static_cast<uint32>(_map->tile[(z * _map->width) + x].base) - 1) % FLOOR_SPRITESHEET_WIDTH;
-                //tileY = (static_cast<uint32>(_map->tile[(z * _map->width) + x].base) - 1) / FLOOR_SPRITESHEET_HEIGHT;
+                //tileX = (static_cast<std::uint32_t>(_map->tile[(z * _map->width) + x].base) - 1) % FLOOR_SPRITESHEET_WIDTH;
+                //tileY = (static_cast<std::uint32_t>(_map->tile[(z * _map->width) + x].base) - 1) / FLOOR_SPRITESHEET_HEIGHT;
 
                 // Determine the tile location on the spritesheet based on the map tile data
-                uint32 tileX = spriteData[tileNum].spriteNumX;
-                uint32 tileY = (FLOOR_SPRITESHEET_HEIGHT - 1) - spriteData[tileNum].spriteNumY; // Texture is flipped on load
+                std::uint32_t tileX = spriteData[tileNum].spriteNumX;
+                std::uint32_t tileY = (FLOOR_SPRITESHEET_HEIGHT - 1) - spriteData[tileNum].spriteNumY; // Texture is flipped on load
 
                 // Vertex position generation -> first triangle
-                _map->floor->model->mesh[meshNum].vertex[vertextNum + 0].position.x = static_cast<float32>(x + 1) - xo;
-                _map->floor->model->mesh[meshNum].vertex[vertextNum + 0].position.z = static_cast<float32>(z + 0) - zo;
-                _map->floor->model->mesh[meshNum].vertex[vertextNum + 1].position.x = static_cast<float32>(x + 0) - xo;
-                _map->floor->model->mesh[meshNum].vertex[vertextNum + 1].position.z = static_cast<float32>(z + 1) - zo;
-                _map->floor->model->mesh[meshNum].vertex[vertextNum + 2].position.x = static_cast<float32>(x + 1) - xo;
-                _map->floor->model->mesh[meshNum].vertex[vertextNum + 2].position.z = static_cast<float32>(z + 1) - zo;
+                _map->floor->model->mesh[meshNum].vertex[vertextNum + 0].position.x = static_cast<float>(x + 1) - xo;
+                _map->floor->model->mesh[meshNum].vertex[vertextNum + 0].position.z = static_cast<float>(z + 0) - zo;
+                _map->floor->model->mesh[meshNum].vertex[vertextNum + 1].position.x = static_cast<float>(x + 0) - xo;
+                _map->floor->model->mesh[meshNum].vertex[vertextNum + 1].position.z = static_cast<float>(z + 1) - zo;
+                _map->floor->model->mesh[meshNum].vertex[vertextNum + 2].position.x = static_cast<float>(x + 1) - xo;
+                _map->floor->model->mesh[meshNum].vertex[vertextNum + 2].position.z = static_cast<float>(z + 1) - zo;
 
                 // Vertex position generation -> second triangle
-                _map->floor->model->mesh[meshNum].vertex[vertextNum + 3].position.x = static_cast<float32>(x + 1) - xo;
-                _map->floor->model->mesh[meshNum].vertex[vertextNum + 3].position.z = static_cast<float32>(z + 0) - zo;
-                _map->floor->model->mesh[meshNum].vertex[vertextNum + 4].position.x = static_cast<float32>(x + 0) - xo;
-                _map->floor->model->mesh[meshNum].vertex[vertextNum + 4].position.z = static_cast<float32>(z + 0) - zo;
-                _map->floor->model->mesh[meshNum].vertex[vertextNum + 5].position.x = static_cast<float32>(x + 0) - xo;
-                _map->floor->model->mesh[meshNum].vertex[vertextNum + 5].position.z = static_cast<float32>(z + 1) - zo;
+                _map->floor->model->mesh[meshNum].vertex[vertextNum + 3].position.x = static_cast<float>(x + 1) - xo;
+                _map->floor->model->mesh[meshNum].vertex[vertextNum + 3].position.z = static_cast<float>(z + 0) - zo;
+                _map->floor->model->mesh[meshNum].vertex[vertextNum + 4].position.x = static_cast<float>(x + 0) - xo;
+                _map->floor->model->mesh[meshNum].vertex[vertextNum + 4].position.z = static_cast<float>(z + 0) - zo;
+                _map->floor->model->mesh[meshNum].vertex[vertextNum + 5].position.x = static_cast<float>(x + 0) - xo;
+                _map->floor->model->mesh[meshNum].vertex[vertextNum + 5].position.z = static_cast<float>(z + 1) - zo;
 
 /*
 1.1 _____ 1.0
@@ -386,20 +386,20 @@ sEntityModel* cMapManager::m_generateFloor(sMap*& _map)
                 if (spriteData[tileNum].rotation == 0) // 270 degree rotation
                 {
                     // Texcoords generation -> first triangle
-                    _map->floor->model->mesh[meshNum].vertex[vertextNum + 0].texcoord.x = (1 * xStep) + (xStep * static_cast<float32>(tileX));
-                    _map->floor->model->mesh[meshNum].vertex[vertextNum + 0].texcoord.y = (1 * yStep) + (yStep * static_cast<float32>(tileY));
-                    _map->floor->model->mesh[meshNum].vertex[vertextNum + 1].texcoord.x = (0 * xStep) + (xStep * static_cast<float32>(tileX));
-                    _map->floor->model->mesh[meshNum].vertex[vertextNum + 1].texcoord.y = (0 * yStep) + (yStep * static_cast<float32>(tileY));
-                    _map->floor->model->mesh[meshNum].vertex[vertextNum + 2].texcoord.x = (1 * xStep) + (xStep * static_cast<float32>(tileX));
-                    _map->floor->model->mesh[meshNum].vertex[vertextNum + 2].texcoord.y = (0 * yStep) + (yStep * static_cast<float32>(tileY));
+                    _map->floor->model->mesh[meshNum].vertex[vertextNum + 0].texcoord.x = (1 * xStep) + (xStep * static_cast<float>(tileX));
+                    _map->floor->model->mesh[meshNum].vertex[vertextNum + 0].texcoord.y = (1 * yStep) + (yStep * static_cast<float>(tileY));
+                    _map->floor->model->mesh[meshNum].vertex[vertextNum + 1].texcoord.x = (0 * xStep) + (xStep * static_cast<float>(tileX));
+                    _map->floor->model->mesh[meshNum].vertex[vertextNum + 1].texcoord.y = (0 * yStep) + (yStep * static_cast<float>(tileY));
+                    _map->floor->model->mesh[meshNum].vertex[vertextNum + 2].texcoord.x = (1 * xStep) + (xStep * static_cast<float>(tileX));
+                    _map->floor->model->mesh[meshNum].vertex[vertextNum + 2].texcoord.y = (0 * yStep) + (yStep * static_cast<float>(tileY));
 
                     // Texcoords generation -> second triangle
-                    _map->floor->model->mesh[meshNum].vertex[vertextNum + 3].texcoord.x = (1 * xStep) + (xStep * static_cast<float32>(tileX));
-                    _map->floor->model->mesh[meshNum].vertex[vertextNum + 3].texcoord.y = (1 * yStep) + (yStep * static_cast<float32>(tileY));
-                    _map->floor->model->mesh[meshNum].vertex[vertextNum + 4].texcoord.x = (0 * xStep) + (xStep * static_cast<float32>(tileX));
-                    _map->floor->model->mesh[meshNum].vertex[vertextNum + 4].texcoord.y = (1 * yStep) + (yStep * static_cast<float32>(tileY));
-                    _map->floor->model->mesh[meshNum].vertex[vertextNum + 5].texcoord.x = (0 * xStep) + (xStep * static_cast<float32>(tileX));
-                    _map->floor->model->mesh[meshNum].vertex[vertextNum + 5].texcoord.y = (0 * yStep) + (yStep * static_cast<float32>(tileY));
+                    _map->floor->model->mesh[meshNum].vertex[vertextNum + 3].texcoord.x = (1 * xStep) + (xStep * static_cast<float>(tileX));
+                    _map->floor->model->mesh[meshNum].vertex[vertextNum + 3].texcoord.y = (1 * yStep) + (yStep * static_cast<float>(tileY));
+                    _map->floor->model->mesh[meshNum].vertex[vertextNum + 4].texcoord.x = (0 * xStep) + (xStep * static_cast<float>(tileX));
+                    _map->floor->model->mesh[meshNum].vertex[vertextNum + 4].texcoord.y = (1 * yStep) + (yStep * static_cast<float>(tileY));
+                    _map->floor->model->mesh[meshNum].vertex[vertextNum + 5].texcoord.x = (0 * xStep) + (xStep * static_cast<float>(tileX));
+                    _map->floor->model->mesh[meshNum].vertex[vertextNum + 5].texcoord.y = (0 * yStep) + (yStep * static_cast<float>(tileY));
                 }
 /*
 0.1 _____ 1.1
@@ -411,20 +411,20 @@ sEntityModel* cMapManager::m_generateFloor(sMap*& _map)
                 else if (spriteData[tileNum].rotation == 1) // 90 degree rotation
                 {
                     // Texcoords generation -> first triangle
-                    _map->floor->model->mesh[meshNum].vertex[vertextNum + 0].texcoord.x = (0 * xStep) + (xStep * static_cast<float32>(tileX));
-                    _map->floor->model->mesh[meshNum].vertex[vertextNum + 0].texcoord.y = (1 * yStep) + (yStep * static_cast<float32>(tileY));
-                    _map->floor->model->mesh[meshNum].vertex[vertextNum + 1].texcoord.x = (1 * xStep) + (xStep * static_cast<float32>(tileX));
-                    _map->floor->model->mesh[meshNum].vertex[vertextNum + 1].texcoord.y = (0 * yStep) + (yStep * static_cast<float32>(tileY));
-                    _map->floor->model->mesh[meshNum].vertex[vertextNum + 2].texcoord.x = (1 * xStep) + (xStep * static_cast<float32>(tileX));
-                    _map->floor->model->mesh[meshNum].vertex[vertextNum + 2].texcoord.y = (1 * yStep) + (yStep * static_cast<float32>(tileY));
+                    _map->floor->model->mesh[meshNum].vertex[vertextNum + 0].texcoord.x = (0 * xStep) + (xStep * static_cast<float>(tileX));
+                    _map->floor->model->mesh[meshNum].vertex[vertextNum + 0].texcoord.y = (1 * yStep) + (yStep * static_cast<float>(tileY));
+                    _map->floor->model->mesh[meshNum].vertex[vertextNum + 1].texcoord.x = (1 * xStep) + (xStep * static_cast<float>(tileX));
+                    _map->floor->model->mesh[meshNum].vertex[vertextNum + 1].texcoord.y = (0 * yStep) + (yStep * static_cast<float>(tileY));
+                    _map->floor->model->mesh[meshNum].vertex[vertextNum + 2].texcoord.x = (1 * xStep) + (xStep * static_cast<float>(tileX));
+                    _map->floor->model->mesh[meshNum].vertex[vertextNum + 2].texcoord.y = (1 * yStep) + (yStep * static_cast<float>(tileY));
 
                     // Texcoords generation -> second triangle
-                    _map->floor->model->mesh[meshNum].vertex[vertextNum + 3].texcoord.x = (0 * xStep) + (xStep * static_cast<float32>(tileX));
-                    _map->floor->model->mesh[meshNum].vertex[vertextNum + 3].texcoord.y = (1 * yStep) + (yStep * static_cast<float32>(tileY));
-                    _map->floor->model->mesh[meshNum].vertex[vertextNum + 4].texcoord.x = (0 * xStep) + (xStep * static_cast<float32>(tileX));
-                    _map->floor->model->mesh[meshNum].vertex[vertextNum + 4].texcoord.y = (0 * yStep) + (yStep * static_cast<float32>(tileY));
-                    _map->floor->model->mesh[meshNum].vertex[vertextNum + 5].texcoord.x = (1 * xStep) + (xStep * static_cast<float32>(tileX));
-                    _map->floor->model->mesh[meshNum].vertex[vertextNum + 5].texcoord.y = (0 * yStep) + (yStep * static_cast<float32>(tileY));
+                    _map->floor->model->mesh[meshNum].vertex[vertextNum + 3].texcoord.x = (0 * xStep) + (xStep * static_cast<float>(tileX));
+                    _map->floor->model->mesh[meshNum].vertex[vertextNum + 3].texcoord.y = (1 * yStep) + (yStep * static_cast<float>(tileY));
+                    _map->floor->model->mesh[meshNum].vertex[vertextNum + 4].texcoord.x = (0 * xStep) + (xStep * static_cast<float>(tileX));
+                    _map->floor->model->mesh[meshNum].vertex[vertextNum + 4].texcoord.y = (0 * yStep) + (yStep * static_cast<float>(tileY));
+                    _map->floor->model->mesh[meshNum].vertex[vertextNum + 5].texcoord.x = (1 * xStep) + (xStep * static_cast<float>(tileX));
+                    _map->floor->model->mesh[meshNum].vertex[vertextNum + 5].texcoord.y = (0 * yStep) + (yStep * static_cast<float>(tileY));
                 }
 /*
 0.0 _____ 0.1
@@ -436,20 +436,20 @@ sEntityModel* cMapManager::m_generateFloor(sMap*& _map)
                 else if (spriteData[tileNum].rotation == 2) // 180 degree rotation
                 {
                     // Texcoords generation -> first triangle
-                    _map->floor->model->mesh[meshNum].vertex[vertextNum + 0].texcoord.x = (0 * xStep) + (xStep * static_cast<float32>(tileX));
-                    _map->floor->model->mesh[meshNum].vertex[vertextNum + 0].texcoord.y = (0 * yStep) + (yStep * static_cast<float32>(tileY));
-                    _map->floor->model->mesh[meshNum].vertex[vertextNum + 1].texcoord.x = (1 * xStep) + (xStep * static_cast<float32>(tileX));
-                    _map->floor->model->mesh[meshNum].vertex[vertextNum + 1].texcoord.y = (1 * yStep) + (yStep * static_cast<float32>(tileY));
-                    _map->floor->model->mesh[meshNum].vertex[vertextNum + 2].texcoord.x = (0 * xStep) + (xStep * static_cast<float32>(tileX));
-                    _map->floor->model->mesh[meshNum].vertex[vertextNum + 2].texcoord.y = (1 * yStep) + (yStep * static_cast<float32>(tileY));
+                    _map->floor->model->mesh[meshNum].vertex[vertextNum + 0].texcoord.x = (0 * xStep) + (xStep * static_cast<float>(tileX));
+                    _map->floor->model->mesh[meshNum].vertex[vertextNum + 0].texcoord.y = (0 * yStep) + (yStep * static_cast<float>(tileY));
+                    _map->floor->model->mesh[meshNum].vertex[vertextNum + 1].texcoord.x = (1 * xStep) + (xStep * static_cast<float>(tileX));
+                    _map->floor->model->mesh[meshNum].vertex[vertextNum + 1].texcoord.y = (1 * yStep) + (yStep * static_cast<float>(tileY));
+                    _map->floor->model->mesh[meshNum].vertex[vertextNum + 2].texcoord.x = (0 * xStep) + (xStep * static_cast<float>(tileX));
+                    _map->floor->model->mesh[meshNum].vertex[vertextNum + 2].texcoord.y = (1 * yStep) + (yStep * static_cast<float>(tileY));
 
                     // Texcoords generation -> second triangle
-                    _map->floor->model->mesh[meshNum].vertex[vertextNum + 3].texcoord.x = (0 * xStep) + (xStep * static_cast<float32>(tileX));
-                    _map->floor->model->mesh[meshNum].vertex[vertextNum + 3].texcoord.y = (0 * yStep) + (yStep * static_cast<float32>(tileY));
-                    _map->floor->model->mesh[meshNum].vertex[vertextNum + 4].texcoord.x = (1 * xStep) + (xStep * static_cast<float32>(tileX));
-                    _map->floor->model->mesh[meshNum].vertex[vertextNum + 4].texcoord.y = (0 * yStep) + (yStep * static_cast<float32>(tileY));
-                    _map->floor->model->mesh[meshNum].vertex[vertextNum + 5].texcoord.x = (1 * xStep) + (xStep * static_cast<float32>(tileX));
-                    _map->floor->model->mesh[meshNum].vertex[vertextNum + 5].texcoord.y = (1 * yStep) + (yStep * static_cast<float32>(tileY));
+                    _map->floor->model->mesh[meshNum].vertex[vertextNum + 3].texcoord.x = (0 * xStep) + (xStep * static_cast<float>(tileX));
+                    _map->floor->model->mesh[meshNum].vertex[vertextNum + 3].texcoord.y = (0 * yStep) + (yStep * static_cast<float>(tileY));
+                    _map->floor->model->mesh[meshNum].vertex[vertextNum + 4].texcoord.x = (1 * xStep) + (xStep * static_cast<float>(tileX));
+                    _map->floor->model->mesh[meshNum].vertex[vertextNum + 4].texcoord.y = (0 * yStep) + (yStep * static_cast<float>(tileY));
+                    _map->floor->model->mesh[meshNum].vertex[vertextNum + 5].texcoord.x = (1 * xStep) + (xStep * static_cast<float>(tileX));
+                    _map->floor->model->mesh[meshNum].vertex[vertextNum + 5].texcoord.y = (1 * yStep) + (yStep * static_cast<float>(tileY));
                 }
 /*
 1.0 _____ 0.0
@@ -461,20 +461,20 @@ sEntityModel* cMapManager::m_generateFloor(sMap*& _map)
                 else if (spriteData[tileNum].rotation == 3) // 270 degree rotation
                 {
                     // Texcoords generation -> first triangle
-                    _map->floor->model->mesh[meshNum].vertex[vertextNum + 0].texcoord.x = (1 * xStep) + (xStep * static_cast<float32>(tileX));
-                    _map->floor->model->mesh[meshNum].vertex[vertextNum + 0].texcoord.y = (0 * yStep) + (yStep * static_cast<float32>(tileY));
-                    _map->floor->model->mesh[meshNum].vertex[vertextNum + 1].texcoord.x = (0 * xStep) + (xStep * static_cast<float32>(tileX));
-                    _map->floor->model->mesh[meshNum].vertex[vertextNum + 1].texcoord.y = (1 * yStep) + (yStep * static_cast<float32>(tileY));
-                    _map->floor->model->mesh[meshNum].vertex[vertextNum + 2].texcoord.x = (0 * xStep) + (xStep * static_cast<float32>(tileX));
-                    _map->floor->model->mesh[meshNum].vertex[vertextNum + 2].texcoord.y = (0 * yStep) + (yStep * static_cast<float32>(tileY));
+                    _map->floor->model->mesh[meshNum].vertex[vertextNum + 0].texcoord.x = (1 * xStep) + (xStep * static_cast<float>(tileX));
+                    _map->floor->model->mesh[meshNum].vertex[vertextNum + 0].texcoord.y = (0 * yStep) + (yStep * static_cast<float>(tileY));
+                    _map->floor->model->mesh[meshNum].vertex[vertextNum + 1].texcoord.x = (0 * xStep) + (xStep * static_cast<float>(tileX));
+                    _map->floor->model->mesh[meshNum].vertex[vertextNum + 1].texcoord.y = (1 * yStep) + (yStep * static_cast<float>(tileY));
+                    _map->floor->model->mesh[meshNum].vertex[vertextNum + 2].texcoord.x = (0 * xStep) + (xStep * static_cast<float>(tileX));
+                    _map->floor->model->mesh[meshNum].vertex[vertextNum + 2].texcoord.y = (0 * yStep) + (yStep * static_cast<float>(tileY));
 
                     // Texcoords generation -> second triangle
-                    _map->floor->model->mesh[meshNum].vertex[vertextNum + 3].texcoord.x = (1 * xStep) + (xStep * static_cast<float32>(tileX));
-                    _map->floor->model->mesh[meshNum].vertex[vertextNum + 3].texcoord.y = (0 * yStep) + (yStep * static_cast<float32>(tileY));
-                    _map->floor->model->mesh[meshNum].vertex[vertextNum + 4].texcoord.x = (1 * xStep) + (xStep * static_cast<float32>(tileX));
-                    _map->floor->model->mesh[meshNum].vertex[vertextNum + 4].texcoord.y = (1 * yStep) + (yStep * static_cast<float32>(tileY));
-                    _map->floor->model->mesh[meshNum].vertex[vertextNum + 5].texcoord.x = (0 * xStep) + (xStep * static_cast<float32>(tileX));
-                    _map->floor->model->mesh[meshNum].vertex[vertextNum + 5].texcoord.y = (1 * yStep) + (yStep * static_cast<float32>(tileY));
+                    _map->floor->model->mesh[meshNum].vertex[vertextNum + 3].texcoord.x = (1 * xStep) + (xStep * static_cast<float>(tileX));
+                    _map->floor->model->mesh[meshNum].vertex[vertextNum + 3].texcoord.y = (0 * yStep) + (yStep * static_cast<float>(tileY));
+                    _map->floor->model->mesh[meshNum].vertex[vertextNum + 4].texcoord.x = (1 * xStep) + (xStep * static_cast<float>(tileX));
+                    _map->floor->model->mesh[meshNum].vertex[vertextNum + 4].texcoord.y = (1 * yStep) + (yStep * static_cast<float>(tileY));
+                    _map->floor->model->mesh[meshNum].vertex[vertextNum + 5].texcoord.x = (0 * xStep) + (xStep * static_cast<float>(tileX));
+                    _map->floor->model->mesh[meshNum].vertex[vertextNum + 5].texcoord.y = (1 * yStep) + (yStep * static_cast<float>(tileY));
                 }
 
 
@@ -494,7 +494,7 @@ sEntityModel* cMapManager::m_generateFloor(sMap*& _map)
 
 
                 // Generate the tangents and bitangents
-                for (uint32 k = 0; k < 6; ++k)
+                for (std::uint32_t k = 0; k < 6; ++k)
                 {
                     _map->floor->model->mesh[meshNum].vertex[vertextNum + k].tangent   = generateTangent(_map->floor->model->mesh[meshNum].vertex[vertextNum + k].normal);
                     _map->floor->model->mesh[meshNum].vertex[vertextNum + k].bitangent = generateBitangent(_map->floor->model->mesh[meshNum].vertex[vertextNum + k].normal, _map->floor->model->mesh[meshNum].vertex[vertextNum + k].tangent);
@@ -508,8 +508,8 @@ sEntityModel* cMapManager::m_generateFloor(sMap*& _map)
 
     // Index generation
     _map->floor->model->mesh[meshNum].numIndex = _map->floor->model->mesh[meshNum].numVertex;
-    _map->floor->model->mesh[meshNum].index = new uint32[_map->floor->model->mesh[meshNum].numIndex];
-    for (uint32 i = 0; i < _map->floor->model->mesh[meshNum].numIndex; ++i)
+    _map->floor->model->mesh[meshNum].index = new std::uint32_t[_map->floor->model->mesh[meshNum].numIndex];
+    for (std::uint32_t i = 0; i < _map->floor->model->mesh[meshNum].numIndex; ++i)
     {
         _map->floor->model->mesh[meshNum].vertex[i].position.y -= 1.0f;
         _map->floor->model->mesh[meshNum].index[i] = i;
