@@ -23,10 +23,10 @@
 
 #include "map_manager.hpp"
 
-static void splitRoom(sMap*& _map, const uint32_t _roomID)
+static void splitRoom(sMap*& _map, const std::uint32_t _roomID)
 {
-    bool splitX = (_map->room[_roomID].w > static_cast<uint32_t>(((_map->genData.roomRadiusMin * 2) + _map->genData.roomBorder) * 2));
-    bool splitY = (_map->room[_roomID].h > static_cast<uint32_t>(((_map->genData.roomRadiusMin * 2) + _map->genData.roomBorder) * 2));
+    bool splitX = (_map->room[_roomID].w > static_cast<std::uint32_t>(((_map->genData.roomRadiusMin * 2) + _map->genData.roomBorder) * 2));
+    bool splitY = (_map->room[_roomID].h > static_cast<std::uint32_t>(((_map->genData.roomRadiusMin * 2) + _map->genData.roomBorder) * 2));
     if (!splitX && !splitY)
     {
         _map->room[_roomID].p = false;
@@ -34,9 +34,9 @@ static void splitRoom(sMap*& _map, const uint32_t _roomID)
     }
     else
     {
-        uint32_t newRoomID = _map->roomCount;
+        std::uint32_t newRoomID = _map->roomCount;
         sMapRoom *tRoom = new sMapRoom[_map->roomCount];
-        for (uint32_t i = 0; i < _map->roomCount; i++)
+        for (std::uint32_t i = 0; i < _map->roomCount; i++)
         {
             tRoom[i].type    = _map->room[i].type;
             tRoom[i].p       = _map->room[i].p;
@@ -56,7 +56,7 @@ static void splitRoom(sMap*& _map, const uint32_t _roomID)
         delete[] _map->room;
         _map->roomCount++;
         _map->room = new sMapRoom[_map->roomCount];
-        for (uint32_t i = 0; i < _map->roomCount-1; i++)
+        for (std::uint32_t i = 0; i < _map->roomCount-1; i++)
         {
             _map->room[i].type    = tRoom[i].type;
             _map->room[i].p       = tRoom[i].p;
@@ -84,8 +84,8 @@ static void splitRoom(sMap*& _map, const uint32_t _roomID)
             _map->room[newRoomID].h = _map->room[_roomID].h;
             _map->room[newRoomID].posYMin = _map->room[_roomID].posYMin;
             _map->room[newRoomID].posYMax = _map->room[_roomID].posYMax;
-            uint32_t splitMaxX = _map->room[_roomID].w - ((_map->genData.roomRadiusMin + _map->genData.roomBorder) * 2);
-            uint32_t splitDeltaX = rand() % splitMaxX;
+            std::uint32_t splitMaxX = _map->room[_roomID].w - ((_map->genData.roomRadiusMin + _map->genData.roomBorder) * 2);
+            std::uint32_t splitDeltaX = rand() % splitMaxX;
             _map->room[_roomID].w = _map->genData.roomRadiusMin + _map->genData.roomBorder + (splitMaxX - splitDeltaX);
             _map->room[newRoomID].w = _map->genData.roomRadiusMin + _map->genData.roomBorder + splitDeltaX;
             _map->room[_roomID].x = _map->room[_roomID].posXMin + (_map->room[_roomID].w / 2);
@@ -115,8 +115,8 @@ static void splitRoom(sMap*& _map, const uint32_t _roomID)
             _map->room[newRoomID].w = _map->room[_roomID].w;
             _map->room[newRoomID].posXMin = _map->room[_roomID].posXMin;
             _map->room[newRoomID].posXMax = _map->room[_roomID].posXMax;
-            uint32_t splitMaxY = _map->room[_roomID].h - ((_map->genData.roomRadiusMin + _map->genData.roomBorder) * 2);
-            uint32_t splitDeltaY = rand() % splitMaxY;
+            std::uint32_t splitMaxY = _map->room[_roomID].h - ((_map->genData.roomRadiusMin + _map->genData.roomBorder) * 2);
+            std::uint32_t splitDeltaY = rand() % splitMaxY;
             _map->room[_roomID].h = _map->genData.roomRadiusMin + _map->genData.roomBorder + (splitMaxY - splitDeltaY);
             _map->room[newRoomID].h = _map->genData.roomRadiusMin + _map->genData.roomBorder + splitDeltaY;
             _map->room[_roomID].y = _map->room[_roomID].posYMin + (_map->room[_roomID].h / 2);
@@ -149,11 +149,11 @@ static void splitRoom(sMap*& _map, const uint32_t _roomID)
 
 static void subdivideMap(sMap*& _map)
 {
-    uint32_t availableRooms = 1;
+    std::uint32_t availableRooms = 1;
     while (availableRooms != 0)
     {
         availableRooms = 0;
-        for (uint32_t i = 0; i < _map->roomCount; i++)
+        for (std::uint32_t i = 0; i < _map->roomCount; i++)
         {
             if (_map->room[i].p)
             {
@@ -161,7 +161,7 @@ static void subdivideMap(sMap*& _map)
                 i = _map->roomCount;
             }
         }
-        for (uint32_t i = 0; i < _map->roomCount; i++)
+        for (std::uint32_t i = 0; i < _map->roomCount; i++)
         {
             if (_map->room[i].p)
             {
@@ -173,11 +173,11 @@ static void subdivideMap(sMap*& _map)
 
 static void fillRooms(sMap*& _map)
 {
-    for (uint32_t k = 0; k < _map->roomCount; k++)
+    for (std::uint32_t k = 0; k < _map->roomCount; k++)
     {
-        for (uint32_t i = _map->room[k].posYMin; i < _map->room[k].posYMax; i++)
+        for (std::uint32_t i = _map->room[k].posYMin; i < _map->room[k].posYMax; i++)
         {
-            for (uint32_t j = _map->room[k].posXMin; j < _map->room[k].posXMax; j++)
+            for (std::uint32_t j = _map->room[k].posXMin; j < _map->room[k].posXMax; j++)
             {
                 _map->tile[(i * _map->width) + j].base = eTileBase::tileFloor;
             }
@@ -187,14 +187,14 @@ static void fillRooms(sMap*& _map)
 
 static void removeAnomaliesRooms(sMap*& _map)
 {
-    for (uint32_t y = 1; y < _map->height - 1; y++)
+    for (std::uint32_t y = 1; y < _map->height - 1; y++)
     {
-        for (uint32_t x = 1; x < _map->width - 1; x++)
+        for (std::uint32_t x = 1; x < _map->width - 1; x++)
         {
-            uint32_t t = (y * _map->width) + x;
+            std::uint32_t t = (y * _map->width) + x;
             if (_map->tile[t].base == eTileBase::tileDoorway)
             {
-                uint32_t n = 0;
+                std::uint32_t n = 0;
                 n += (_map->tile[t + 1].base == eTileBase::tileWall) ? 1 : 0;
                 n += (_map->tile[t - 1].base == eTileBase::tileWall) ? 1 : 0;
                 n += (_map->tile[t + _map->width].base == eTileBase::tileWall) ? 1 : 0;
@@ -258,7 +258,7 @@ static void removeAnomaliesRooms(sMap*& _map)
 
 void cMapManager::m_genD2_internal(sMap*& _map)
 {
-    for (uint32_t i = 0; i < _map->numTiles; i++)
+    for (std::uint32_t i = 0; i < _map->numTiles; i++)
     {
         _map->tile[i].base = eTileBase::tileWall;
     }
@@ -294,7 +294,7 @@ void cMapManager::m_generateMap_D2(sMap*& _map)
         }
         else
         {
-            for (uint16_t i = 0; i < _map->genData.pass; i++)
+            for (std::uint16_t i = 0; i < _map->genData.pass; i++)
             {
                 _map->genData.seed = time(nullptr);
                 srand (_map->genData.seed);
