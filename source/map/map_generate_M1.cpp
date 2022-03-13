@@ -23,14 +23,14 @@
 
 #include "map_manager.hpp"
 
-static void m_genM1_maze(sMap*& _map, const uint32_t &_tile)
+static void m_genM1_maze(sMap*& _map, const std::uint32_t &_tile)
 {
-    uint16_t tileCount = 4;
-    uint16_t loopCount = 0; // exit instead of getting stuck in the loop
+    std::uint16_t tileCount = 4;
+    std::uint16_t loopCount = 0; // exit instead of getting stuck in the loop
     while (tileCount > 0)
     {
         tileCount = 0;
-        uint32_t next_tile =_tile - _map->width;
+        std::uint32_t next_tile =_tile - _map->width;
         if (!_map->tile[next_tile].processed)
             tileCount++;
         next_tile =_tile + _map->width;
@@ -45,9 +45,9 @@ static void m_genM1_maze(sMap*& _map, const uint32_t &_tile)
         loopCount++;
         if (loopCount > (_map->genData.pass * _map->genData.directionBiasStrength))
             tileCount = 0;
-        uint32_t randBase = 25;
+        std::uint32_t randBase = 25;
         eDirectionBias direction = _map->genData.directionBias;
-        uint32_t directionRand = (direction == eDirectionBias::directionNone) ? (rand() % (randBase * 4)) :  (rand() % (randBase * (4 + _map->genData.directionBiasStrength)));
+        std::uint32_t directionRand = (direction == eDirectionBias::directionNone) ? (rand() % (randBase * 4)) :  (rand() % (randBase * (4 + _map->genData.directionBiasStrength)));
         if (directionRand < randBase)
             direction = eDirectionBias::directionNorth;
         if ((directionRand > (randBase * 1)) && (directionRand < (randBase * 2)))
@@ -130,22 +130,22 @@ void cMapManager::m_genM1_internal(sMap*& _map)
 
     // map preparation
     eRoomShape roomShape = _map->genData.roomShape;
-    uint16_t roomCount = 0;
-    for (uint32_t i = 0; i < _map->numTiles; i++)
+    std::uint16_t roomCount = 0;
+    for (std::uint32_t i = 0; i < _map->numTiles; i++)
     {
         _map->tile[i].base      = eTileBase::tileWall;
         _map->tile[i].processed = false;
     }
 
     // add rooms
-    for (uint32_t i = 0; i < _map->genData.roomMax; i++)
+    for (std::uint32_t i = 0; i < _map->genData.roomMax; i++)
     {
         if (roomCount < _map->genData.roomMin)
         {
-            uint32_t r = (rand() % (_map->genData.roomRadiusMax - _map->genData.roomRadiusMin)) + _map->genData.roomRadiusMin;
-            int32_t x = (rand() % (_map->width - r - r)) + r;
-            int32_t y = (rand() % (_map->height - r - r)) + r;
-            if ((x > 1) && (x < (int32_t)(_map->width-1)) && (y > 1) && (y < (int32_t)(_map->height-1)))
+            std::uint32_t r = (rand() % (_map->genData.roomRadiusMax - _map->genData.roomRadiusMin)) + _map->genData.roomRadiusMin;
+            std::int32_t x = (rand() % (_map->width - r - r)) + r;
+            std::int32_t y = (rand() % (_map->height - r - r)) + r;
+            if ((x > 1) && (x < (std::int32_t)(_map->width-1)) && (y > 1) && (y < (std::int32_t)(_map->height-1)))
             {
                 if (_map->genData.roomShape == eRoomShape::shapeRandom)
                 {
@@ -172,13 +172,13 @@ void cMapManager::m_genM1_internal(sMap*& _map)
     }
     m_mapInitRooms(_map);
     // set unmodifiable tiles.
-    for (uint32_t i = 0; i < _map->height; i++)
-        for (uint32_t j = 0; j < _map->width; j++)
+    for (std::uint32_t i = 0; i < _map->height; i++)
+        for (std::uint32_t j = 0; j < _map->width; j++)
             _map->tile[(i * _map->width) + j].processed = ((i == 0) || (i == (_map->height-1)) || (j == 0) || (j == (_map->width-1)) || (_map->tile[(i * _map->width) + j].base != eTileBase::tileWall));
     // maze.
-    uint32_t randBase = 25;
+    std::uint32_t  randBase = 25;
     eDirectionBias direction = _map->genData.directionBias;
-    uint32_t directionRand = (direction == eDirectionBias::directionNone) ? (rand() % (randBase * 4)) : (rand() % (randBase * (4 + _map->genData.directionBiasStrength)));
+    std::uint32_t  directionRand = (direction == eDirectionBias::directionNone) ? (rand() % (randBase * 4)) : (rand() % (randBase * (4 + _map->genData.directionBiasStrength)));
     if (directionRand < randBase)
         direction = eDirectionBias::directionNorth;
     if ((directionRand > (randBase * 1)) && (directionRand < (randBase * 2)))
@@ -189,8 +189,8 @@ void cMapManager::m_genM1_internal(sMap*& _map)
         direction = eDirectionBias::directionWest;
     if (_map->genData.directionBias != eDirectionBias::directionNone)
         _map->genData.directionBias = direction;
-    uint32_t startX = _map->width / 2;
-    uint32_t startY = _map->height / 2;
+    std::uint32_t startX = _map->width / 2;
+    std::uint32_t startY = _map->height / 2;
     if (direction == eDirectionBias::directionNorth)
         startY = 1;
     if (direction == eDirectionBias::directionSouth)
@@ -199,17 +199,17 @@ void cMapManager::m_genM1_internal(sMap*& _map)
         startX = 1;
     if (direction == eDirectionBias::directionWest)
         startX = _map->width - 2;
-    uint32_t nextTile = (startY * _map->width) + startX;
+    std::uint32_t nextTile = (startY * _map->width) + startX;
     _map->tile[nextTile].base = eTileBase::tileFloor;
     _map->tile[nextTile].processed = true;
     m_genM1_maze(_map, nextTile);
     // connect rooms
-    for (uint32_t i = 0; i < _map->roomCount; i++)
+    for (std::uint32_t i = 0; i < _map->roomCount; i++)
     {
-        uint16_t deltaX = std::abs (static_cast<int16_t>((_map->width / 2) - _map->room[i].x));
-        uint16_t deltaY = std::abs (static_cast<int16_t>((_map->height / 2) - _map->room[i].y));
+        std::uint16_t deltaX = std::abs (static_cast<std::int16_t>((_map->width / 2) - _map->room[i].x));
+        std::uint16_t deltaY = std::abs (static_cast<std::int16_t>((_map->height / 2) - _map->room[i].y));
         direction = (deltaX > deltaY) ? ((_map->room[i].x < (_map->width / 2)) ? eDirectionBias::directionWest : eDirectionBias::directionEast) : ((_map->room[i].y < (_map->height / 2)) ? eDirectionBias::directionSouth : eDirectionBias::directionNorth);
-        uint32_t tile = 0;
+        std::uint32_t tile = 0;
         if (direction == eDirectionBias::directionNorth)
         {
             tile = ((_map->room[i].y - ((_map->room[i].h+1) / 2)) * _map->width) + _map->room[i].x;
@@ -279,7 +279,7 @@ void cMapManager::m_generateMap_M1(sMap*& _map)
         }
         else
         {
-            for (uint16_t i = 0; i < _map->genData.pass; i++)
+            for (std::uint16_t i = 0; i < _map->genData.pass; i++)
             {
                 _map->genData.seed = time(nullptr);
                 srand (_map->genData.seed);
