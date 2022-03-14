@@ -25,11 +25,11 @@
 
 void cMapManager::m_generateMap_objects(sMap*& _map)
 {
-    for (uint32 h = 1; h < _map->height-1; ++h)
+    for (std::uint32_t h = 1; h < _map->height-1; ++h)
     {
-        for (uint32 w = 1; w < _map->width-1; ++w)
+        for (std::uint32_t w = 1; w < _map->width-1; ++w)
         {
-            uint32 t = (h * _map->width) + w;
+            std::uint32_t t = (h * _map->width) + w;
             if ((_map->tile[t].object == 0) && (_map->tile[t].base == eTileBase::tileFloor))
             {
                 // WARNING!!!! This should be based on the biome objects
