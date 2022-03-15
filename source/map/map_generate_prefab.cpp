@@ -150,7 +150,7 @@ void cMapManager::m_mapApplyPrefab(sMap*& _map, const std::string &_fileName, co
         // load the tile data from the prefab
         std::uint32_t* pTiles = new std::uint32_t[_map->room[_r].w * _map->room[_r].h];
         std::uint32_t  currentTile = 0;
-        std::uint32_t tileKeyCount = xmlMapPrefabFile.getInstanceCount("<tiles>");
+        std::uint32_t  tileKeyCount = xmlMapPrefabFile.getInstanceCount("<tiles>");
         for (std::uint32_t i = 0; i < tileKeyCount; ++i)
         {
             std::string tPTiles = xmlMapPrefabFile.getString("<tiles>", i + 1);
@@ -200,13 +200,13 @@ void cMapManager::m_mapApplyPrefab(sMap*& _map, const std::string &_fileName, co
             std::uint32_t tObjectTileNum  = 0;
             std::string   tObjectName     = "";
             std::uint32_t tObjectIndex    = 0;
-            uint32        tObjectObstacle = 0;
+            std::uint32_t tObjectObstacle = 0;
             std::uint32_t tStringNum = 0;
             std::string   tString = "";
             if (tObjectStringLength > 6)
             {
-                float32   tObjectScale    = 0.0;
-                float32   tObjectRotation = 0.0;
+                float tObjectScale    = 0.0;
+                float tObjectRotation = 0.0;
                 
                 for (std::uint64_t j = 0; j < tObjectStringLength; ++j)
                 {
