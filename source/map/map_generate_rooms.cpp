@@ -23,7 +23,7 @@
 
 #include "map_manager.hpp"
 
-bool cMapManager::m_genCircleRoomOK(sMap*& _map, const uint32_t &_x, const uint32_t &_y, const uint32_t &_r)
+bool cMapManager::m_genCircleRoomOK(sMap*& _map, const std::uint32_t &_x, const uint32_t &_y, const uint32_t &_r)
 {
     if (_map->tile == nullptr)
         return false;
