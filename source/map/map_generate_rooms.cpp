@@ -23,13 +23,13 @@
 
 #include "map_manager.hpp"
 
-bool cMapManager::m_genCircleRoomOK(sMap*& _map, const std::uint32_t &_x, const uint32_t &_y, const uint32_t &_r)
+bool cMapManager::m_genCircleRoomOK(sMap*& _map, const std::uint32_t &_x, const std::uint32_t &_y, const std::uint32_t &_r)
 {
     if (_map->tile == nullptr)
         return false;
-    for (uint32_t i = 0; i < _map->height; i++)
+    for (std::uint32_t i = 0; i < _map->height; i++)
     {
-        for (uint32_t j = 0; j < _map->width; j++)
+        for (std::uint32_t j = 0; j < _map->width; j++)
         {
             if ((((j - _x) * (j - _x)) + ((i - _y) * (i - _y))) < (_r * _r))
                 if (_map->tile[(i * _map->width) + j].base == eTileBase::tileFloor)
@@ -39,13 +39,13 @@ bool cMapManager::m_genCircleRoomOK(sMap*& _map, const std::uint32_t &_x, const 
     return true;
 }
 
-void cMapManager::m_genCircleRoom(sMap*& _map, const uint32_t &_x, const uint32_t &_y, const uint32_t &_r)
+void cMapManager::m_genCircleRoom(sMap*& _map, const std::uint32_t &_x, const std::uint32_t &_y, const std::uint32_t &_r)
 {
     if (_map->tile == nullptr)
         return;
-    for (uint32_t i = 0; i < _map->height; i++)
+    for (std::uint32_t i = 0; i < _map->height; i++)
     {
-        for (uint32_t j = 0; j < _map->width; j++)
+        for (std::uint32_t j = 0; j < _map->width; j++)
         {
             if ((((j - _x) * (j - _x)) + ((i - _y) * (i - _y))) < (_r * _r))
                 _map->tile[(i * _map->width) + j].base = eTileBase::tileFloor;
@@ -53,25 +53,25 @@ void cMapManager::m_genCircleRoom(sMap*& _map, const uint32_t &_x, const uint32_
     }
 }
 
-bool cMapManager::m_genSquareRoomOK(sMap*& _map, const uint32_t &_x, const uint32_t &_y, const uint32_t &_r)
+bool cMapManager::m_genSquareRoomOK(sMap*& _map, const std::uint32_t &_x, const std::uint32_t &_y, const std::uint32_t &_r)
 {
     if (_map->tile == nullptr)
         return false;
-    int32_t rxMin = _x - _r - 1;
-    int32_t rxMax = _x + _r;
-    int32_t ryMin = _y - _r - 1;
-    int32_t ryMax = _y + _r;
+    std::int32_t rxMin = _x - _r - 1;
+    std::int32_t rxMax = _x + _r;
+    std::int32_t ryMin = _y - _r - 1;
+    std::int32_t ryMax = _y + _r;
     if (rxMin < 1)
         return false;
-    if (rxMax >= (int32_t)(_map->width-1))
+    if (rxMax >= (std::int32_t)(_map->width-1))
         return false;
     if (ryMin < 1)
         return false;
-    if (ryMax >= (int32_t)(_map->height-1))
+    if (ryMax >= (std::int32_t)(_map->height-1))
         return false;
-    for (uint32_t i = ryMin; i < (uint32_t)ryMax; i++)
+    for (std::uint32_t i = ryMin; i < (std::uint32_t)ryMax; i++)
     {
-        for (uint32_t j = rxMin; j < (uint32_t)rxMax; j++)
+        for (std::uint32_t j = rxMin; j < (std::uint32_t)rxMax; j++)
         {
             if (_map->tile[(i * _map->width) + j].base != eTileBase::tileWall)
                 return false;
@@ -80,24 +80,24 @@ bool cMapManager::m_genSquareRoomOK(sMap*& _map, const uint32_t &_x, const uint3
     return true;
 }
 
-void cMapManager::m_genSquareRoom(sMap*& _map, const uint32_t &_x, const uint32_t &_y, const uint32_t &_r)
+void cMapManager::m_genSquareRoom(sMap*& _map, const std::uint32_t &_x, const std::uint32_t &_y, const std::uint32_t &_r)
 {
     if (_map->tile == nullptr)
         return;
-    uint32_t rxMin = _x - _r - 1;
-    uint32_t rxMax = _x + _r;
-    uint32_t ryMin = _y - _r - 1;
-    uint32_t ryMax = _y + _r;
-    for (uint32_t i = ryMin; i < ryMax; i++)
+    std::uint32_t rxMin = _x - _r - 1;
+    std::uint32_t rxMax = _x + _r;
+    std::uint32_t ryMin = _y - _r - 1;
+    std::uint32_t ryMax = _y + _r;
+    for (std::uint32_t i = ryMin; i < ryMax; i++)
     {
-        for (uint32_t j = rxMin; j < rxMax; j++)
+        for (std::uint32_t j = rxMin; j < rxMax; j++)
         {
                 _map->tile[(i * _map->width) + j].base = eTileBase::tileFloor;
         }
     }
 }
 
-static void m_mapFindRoom(sMap*& _map, const uint32_t &i)
+static void m_mapFindRoom(sMap*& _map, const std::uint32_t &i)
 {
     if (i  < _map->numTiles)
     {
@@ -122,12 +122,12 @@ void cMapManager::m_mapFindRooms(sMap*& _map)
     if (_map->tile != nullptr)
     {
         _map->roomCount = 0;
-        for (uint32_t i = 0; i < _map->numTiles; i++)
+        for (std::uint32_t i = 0; i < _map->numTiles; i++)
         {
             _map->tile[i].room = 0;
             _map->tile[i].processed = false;
         }
-        for (uint32_t i = 0; i < _map->numTiles; i++)
+        for (std::uint32_t i = 0; i < _map->numTiles; i++)
         {
             if ((!_map->tile[i].processed) && (_map->tile[i].base == eTileBase::tileFloor))
             {
@@ -140,21 +140,21 @@ void cMapManager::m_mapFindRooms(sMap*& _map)
 
 static void m_mapDiscardMinRooms(sMap*& _map)
 {
-    uint16_t discardCount = 0;
+    std::uint16_t discardCount = 0;
     if (_map->tile != nullptr)
     {
-        for (uint16_t i = 0; i < _map->roomCount; i++)
+        for (std::uint16_t i = 0; i < _map->roomCount; i++)
         {
-            uint32_t tileCount = 0;
-            for (uint32_t j = 0; j < _map->numTiles; j++)
+            std::uint32_t tileCount = 0;
+            for (std::uint32_t j = 0; j < _map->numTiles; j++)
             {
                 if ((_map->tile[j].room == i) && (_map->tile[j].base == eTileBase::tileFloor))
                     tileCount++;
             }
-            if (tileCount < (uint32_t)(_map->genData.roomRadiusMin * _map->genData.roomRadiusMin))
+            if (tileCount < (std::uint32_t)(_map->genData.roomRadiusMin * _map->genData.roomRadiusMin))
             {
                 discardCount++;
-                for (uint32_t j = 0; j < _map->numTiles; j++)
+                for (std::uint32_t j = 0; j < _map->numTiles; j++)
                 {
                     if (_map->tile[j].room == i)
                     {
@@ -172,15 +172,15 @@ static void m_mapRoomSizeLocation(sMap*& _map)
 {
     if ((_map->roomCount > 0) && (_map->room != nullptr))
     {
-        for (uint16_t i = 0; i < _map->roomCount; i++)
+        for (std::uint16_t i = 0; i < _map->roomCount; i++)
         {
             _map->room[i].posXMin = _map->width;
             _map->room[i].posXMax = 0;
             _map->room[i].posYMin = _map->height;
             _map->room[i].posYMax = 0;
-            for (uint32_t j = 0; j < _map->height; j++)
+            for (std::uint32_t j = 0; j < _map->height; j++)
             {
-                for (uint32_t k = 0; k < _map->width; k++)
+                for (std::uint32_t k = 0; k < _map->width; k++)
                 {
                     if ((_map->tile[(j * _map->width) + k].room == i) && (_map->tile[(j * _map->width) + k].base == eTileBase::tileFloor))
                     {
@@ -218,12 +218,12 @@ static void m_mapRoomSizeLocation(sMap*& _map)
     }
 }
 
-uint32_t cMapManager::m_mapGetRoomArea(sMap*& _map, const uint16_t &_r)
+std::uint32_t cMapManager::m_mapGetRoomArea(sMap*& _map, const std::uint16_t &_r)
 {
-    uint32_t returnValue = 0;
+    std::uint32_t returnValue = 0;
     if (_map->tile != nullptr)
     {
-        for (uint32_t i = 0; i < _map->numTiles; i++)
+        for (std::uint32_t i = 0; i < _map->numTiles; i++)
             if ((_map->tile[i].room == _r) && (_map->tile[i].base == eTileBase::tileFloor))
                 returnValue++;
     }
@@ -234,18 +234,18 @@ void cMapManager::m_mapRoomDiscardAllButLargest(sMap*& _map)
 {
     if ((_map->roomCount > 0) && (_map->room != nullptr) && (_map->tile != nullptr))
     {
-        uint32_t roomSize   = 0;
-        uint32_t roomNumber = 0;
-        for (uint16_t i = 0; i < _map->roomCount; i++)
+        std::uint32_t roomSize   = 0;
+        std::uint32_t roomNumber = 0;
+        for (std::uint16_t i = 0; i < _map->roomCount; i++)
         {
-            uint32_t roomSizeT = m_mapGetRoomArea(_map, i);
+            std::uint32_t roomSizeT = m_mapGetRoomArea(_map, i);
             if (roomSizeT > roomSize)
             {
                 roomSize = roomSizeT;
                 roomNumber = i;
             }
         }
-        for (uint32_t i = 0; i < _map->numTiles; i++)
+        for (std::uint32_t i = 0; i < _map->numTiles; i++)
         {
             if ((_map->tile[i].room != roomNumber) && (_map->tile[i].base == eTileBase::tileFloor))
             {
@@ -275,7 +275,7 @@ void cMapManager::m_mapInitRooms(sMap*& _map)
             delete[] _map->room;
         }
         _map->room = new sMapRoom[_map->roomCount];
-        for (uint16_t i = 0; i < _map->roomCount; i++)
+        for (std::uint16_t i = 0; i < _map->roomCount; i++)
         {
             _map->room[i].exitE = -1; // No room
             _map->room[i].exitW = -1; // No room
@@ -296,7 +296,7 @@ void cMapManager::m_mapInitRoomsND(sMap*& _map)
             delete[] _map->room;
         }
         _map->room = new sMapRoom[_map->roomCount];
-        for (uint16_t i = 0; i < _map->roomCount; i++)
+        for (std::uint16_t i = 0; i < _map->roomCount; i++)
         {
             _map->room[i].exitE = -1; // No room
             _map->room[i].exitW = -1; // No room
@@ -307,20 +307,20 @@ void cMapManager::m_mapInitRoomsND(sMap*& _map)
     }
 }
 
-int32_t cMapManager::m_getRoomFromTile(sMap*& _map, const uint32_t &_tile, const int32_t &_roomIgnore)
+std::int32_t cMapManager::m_getRoomFromTile(sMap*& _map, const std::uint32_t &_tile, const std::int32_t &_roomIgnore)
 {
     if (_map->roomCount > 0)
     {
-        for (uint16_t i = 0; i < _map->roomCount; ++i)
+        for (std::uint16_t i = 0; i < _map->roomCount; ++i)
         {
-            if (static_cast<int32_t>(i) != _roomIgnore)
+            if (static_cast<std::int32_t>(i) != _roomIgnore)
             {
-                uint32_t sx = _map->room[i].x - (_map->room[i].w / 2);
-                uint32_t sy = _map->room[i].y - (_map->room[i].h / 2);
-                uint32_t ex = _map->room[i].x + (_map->room[i].w / 2);
-                uint32_t ey = _map->room[i].y + (_map->room[i].h / 2);
-                uint32_t tx = _tile % _map->width;
-                uint32_t ty = _tile / _map->width;
+                std::uint32_t sx = _map->room[i].x - (_map->room[i].w / 2);
+                std::uint32_t sy = _map->room[i].y - (_map->room[i].h / 2);
+                std::uint32_t ex = _map->room[i].x + (_map->room[i].w / 2);
+                std::uint32_t ey = _map->room[i].y + (_map->room[i].h / 2);
+                std::uint32_t tx = _tile % _map->width;
+                std::uint32_t ty = _tile / _map->width;
                 
                 if ((tx >= sx) && (tx <= ex) && (ty >= sy) && (ty <= ey))
                 {

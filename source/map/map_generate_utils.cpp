@@ -31,7 +31,7 @@ void cMapManager::m_mapTilesFlipV(std::uint32_t *&_tiles, const std::uint32_t &_
     {
         tile[i] = _tiles[i];
     }
-    for (uint32_t i = 0; i < tileCount; i++)
+    for (std::uint32_t i = 0; i < tileCount; i++)
     {
         _tiles[(tileCount-1)-i] = tile[i];
     }
@@ -46,9 +46,9 @@ void cMapManager::m_mapTilesFlipH(std::uint32_t *&_tiles, const std::uint32_t &_
     {
         tile[i] = _tiles[i];
     }
-    for (uint32_t i = 0; i < _h; i++)
+    for (std::uint32_t i = 0; i < _h; i++)
     {
-        for (uint32_t j = 0; j < _w; j++)
+        for (std::uint32_t j = 0; j < _w; j++)
         {
             _tiles[(i * _w) + j] = tile[(i * _w) + ((_w-1)-j)];
         }
@@ -60,13 +60,13 @@ void cMapManager::m_mapTilesRotate90(std::uint32_t *&_tiles, const std::uint32_t
 {
     std::uint32_t tileCount = _w * _h;
     std::uint32_t *tile = new std::uint32_t[tileCount];
-    for (uint32_t i = 0; i < tileCount; i++)
+    for (std::uint32_t i = 0; i < tileCount; i++)
     {
         tile[i] = _tiles[i];
     }
-    for (uint32_t i = 0; i < _h; i++)
+    for (std::uint32_t i = 0; i < _h; i++)
     {
-        for (uint32_t j = 0; j < _w; j++)
+        for (std::uint32_t j = 0; j < _w; j++)
         {
             _tiles[(i * _w) + j] = tile[(j * _w) + ((_w-1)-i)];
         }
@@ -82,9 +82,9 @@ void cMapManager::m_mapTilesRotate270(std::uint32_t *&_tiles, const std::uint32_
     {
         tile[i] = _tiles[i];
     }
-    for (uint32_t i = 0; i < _h; i++)
+    for (std::uint32_t i = 0; i < _h; i++)
     {
-        for (uint32_t j = 0; j < _w; j++)
+        for (std::uint32_t j = 0; j < _w; j++)
         {
             _tiles[(i * _w) + j] = tile[(((_h-1)-j) * _w) + ((_w-1)-i)];
         }
@@ -100,7 +100,7 @@ void cMapManager::m_mapTilesRotate180(std::uint32_t *&_tiles, const std::uint32_
     {
         tile[i] = _tiles[i];
     }
-    for (uint32_t i = 0; i < tileCount; i++)
+    for (std::uint32_t i = 0; i < tileCount; i++)
     {
         _tiles[(tileCount-1)-i] = tile[i];
     }
@@ -109,7 +109,7 @@ void cMapManager::m_mapTilesRotate180(std::uint32_t *&_tiles, const std::uint32_
 
 void cMapManager::m_mapGeneratePerimeterWall(sMap*& _map)
 {
-    for (uint32 i = 0; i < _map->numTiles; ++i)
+    for (std::uint32_t i = 0; i < _map->numTiles; ++i)
     {
         if ((i < _map->width) ||
             (i > (_map->numTiles - _map->width - 1)) ||
@@ -121,11 +121,11 @@ void cMapManager::m_mapGeneratePerimeterWall(sMap*& _map)
     }
 }
 
-uint32_t cMapManager::m_mapGetFloorMin(sMap*& _map)
+std::uint32_t cMapManager::m_mapGetFloorMin(sMap*& _map)
 {
     if (_map->tile != nullptr)
     {
-        for (uint32_t i = 0; i < _map->numTiles; i++)
+        for (std::uint32_t i = 0; i < _map->numTiles; i++)
         {
             if (_map->tile[i].base == eTileBase::tileFloor)
                 return i;
@@ -134,11 +134,11 @@ uint32_t cMapManager::m_mapGetFloorMin(sMap*& _map)
     return 0;
 }
 
-uint32_t cMapManager::m_mapGetFloorMax(sMap*& _map)
+std::uint32_t cMapManager::m_mapGetFloorMax(sMap*& _map)
 {
     if (_map->tile != nullptr)
     {
-        for (uint32_t i = _map->numTiles-_map->width; i > 0; i--)
+        for (std::uint32_t i = _map->numTiles-_map->width; i > 0; i--)
         {
             if (_map->tile[i].base == eTileBase::tileFloor)
                 return i;
@@ -147,12 +147,12 @@ uint32_t cMapManager::m_mapGetFloorMax(sMap*& _map)
     return 0;
 }
 
-uint32_t cMapManager::m_mapGetFloorArea(sMap*& _map)
+std::uint32_t cMapManager::m_mapGetFloorArea(sMap*& _map)
 {
     if (_map->tile != nullptr)
     {
-        uint32_t tileCount = 0;
-        for (uint32_t j = 0; j < _map->numTiles; j++)
+        std::uint32_t tileCount = 0;
+        for (std::uint32_t j = 0; j < _map->numTiles; j++)
         {
             if (_map->tile[j].base == eTileBase::tileFloor)
                 tileCount++;
@@ -164,13 +164,13 @@ uint32_t cMapManager::m_mapGetFloorArea(sMap*& _map)
 
 void cMapManager::m_mapRemoveAnomalies(sMap*& _map)
 {
-    for (uint16_t k = 0; k < _map->genData.pass; k++)
+    for (std::uint16_t k = 0; k < _map->genData.pass; k++)
     {
-        for (uint16_t i = 1; i < (_map->height - 1); i++)
+        for (std::uint16_t i = 1; i < (_map->height - 1); i++)
         {
-            for (uint16_t j = 1; j < (_map->width - 1); j++)
+            for (std::uint16_t j = 1; j < (_map->width - 1); j++)
             {
-                uint32_t tileT = (i * _map->width) + j;
+                std::uint32_t tileT = (i * _map->width) + j;
                 if (_map->tile[tileT].base == eTileBase::tileFloor)
                 {
                     // Remove single horizontal floor tiles
