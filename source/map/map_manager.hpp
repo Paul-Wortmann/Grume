@@ -57,7 +57,7 @@ class cMapManager : public tcLinkedList<sMap>
         void          load(const std::string &_fileName);
         void          save(const std::string &_fileName);
         void          unload(void);
-        void          process(const float64 &_dt);
+        void          process(const double &_dt);
         bool          getLoading(void) { return m_loadRequest; };
         void          setLoading(const bool &_state) { m_loadRequest = _state; };
         std::string   getCurrentMapName(void) { return m_currentMap->name; };
@@ -100,7 +100,7 @@ class cMapManager : public tcLinkedList<sMap>
         void          m_resetPlayerPosition(void);
         
         // map_generate_addCollision.cpp
-        void          m_addCollisionData(sMap*& _map, sEntity*& _entity, const std::uint32_t &_tile, const float32 &_rotation);
+        void          m_addCollisionData(sMap*& _map, sEntity*& _entity, const std::uint32_t &_tile, const float &_rotation);
 
         // map_generate_addChests.cpp
         void          m_addChestEntities(sMap*& _map);
@@ -110,7 +110,7 @@ class cMapManager : public tcLinkedList<sMap>
 
         // map_generate_addEvents.cpp
         void          m_addMapEvent(sMap*& _map, const std::uint32_t &_tile, const std::uint32_t &_type, const std::uint32_t &_data_1, const std::uint32_t &_data_2, const std::uint32_t &_data_3);
-        void          m_addMapPortal(sMap*& _map, const std::uint32_t &_num, const std::uint32_t &_tile, const float32 &_dir);
+        void          m_addMapPortal(sMap*& _map, const std::uint32_t &_num, const std::uint32_t &_tile, const float &_dir);
         
         // map_generate_addNPCs.cpp
         void          m_addNPCEntities(sMap*& _map);

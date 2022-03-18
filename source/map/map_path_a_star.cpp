@@ -111,7 +111,7 @@ static bool _pathASinternal(sMap*& _map, sMapPath& _path, sASTileData*& _pathDat
     std::uint32_t nextTileF = UINT32_MAX;
     std::uint32_t nextTile  = 0;
     bool nextFound = false;
-    for (uint32_t i = 0; i < _map->numTiles; i++)
+    for (std::uint32_t i = 0; i < _map->numTiles; i++)
     {
         if ((_pathData[i].l == ePathData::pathOpen) && (_pathData[i].f < nextTileF))
         {
