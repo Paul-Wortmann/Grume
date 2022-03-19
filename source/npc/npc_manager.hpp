@@ -35,7 +35,7 @@ class cNPCManager
     public:
         void     initialize(cEntityManager* _entityManager);
         void     terminate(void);
-        void     process(const float32 &_dt);
+        void     process(const float &_dt);
         void     setEntityHead(sEntity* _entity) { m_entityHead = _entity; }
         void     setEntityPlayer(sEntity* _entity) { m_entityPlayer = _entity; }
         void     setDatabasePointer(cGameDatabase* _gameDatabase) { m_gameDatabase = _gameDatabase; };
@@ -54,7 +54,7 @@ class cNPCManager
         sMap*           m_mapPointer    = nullptr;
 
         uint32          m_positionToTile(glm::vec3 _position);
-        glm::vec3       m_tileToPosition(uint32 _tile);
+        glm::vec3       m_tileToPosition(std::uint32_t _tile);
 };
 
 #endif //NPC_MANAGER_HPP
