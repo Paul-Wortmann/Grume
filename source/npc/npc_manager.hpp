@@ -53,7 +53,7 @@ class cNPCManager
         cGameDatabase*  m_gameDatabase  = nullptr;
         sMap*           m_mapPointer    = nullptr;
 
-        uint32          m_positionToTile(glm::vec3 _position);
+        std::uint32_t   m_positionToTile(glm::vec3 _position);
         glm::vec3       m_tileToPosition(std::uint32_t _tile);
 };
 
