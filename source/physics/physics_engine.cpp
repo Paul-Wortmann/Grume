@@ -23,7 +23,7 @@
 
 #include "physics_engine.hpp"
 
-uint32 cPhysicsEngine::initialize(void)
+std::uint32_t cPhysicsEngine::initialize(void)
 {
     return EXIT_SUCCESS;
 }
@@ -32,7 +32,7 @@ void cPhysicsEngine::terminate(void)
 {
 }
 
-void cPhysicsEngine::process(const float32 &_dt)
+void cPhysicsEngine::process(const float &_dt)
 {
     for (sEntity* entity_1 = m_entityHead; entity_1 != nullptr; entity_1 = entity_1->next)
     {
@@ -44,12 +44,12 @@ void cPhysicsEngine::process(const float32 &_dt)
                 {
                     // Broad phase //
 
-                    float32 radialSumSquared = ((entity_2->physics->dimentions.w + entity_1->physics->dimentions.w) *
-                                                (entity_2->physics->dimentions.w + entity_1->physics->dimentions.w));
-                    float32 distanceSquared  = (((entity_2->position.x - entity_1->position.x) *
-                                                 (entity_2->position.x - entity_1->position.x)) + 
-                                                ((entity_2->position.z - entity_1->position.z) *
-                                                 (entity_2->position.z - entity_1->position.z)));
+                    float radialSumSquared = ((entity_2->physics->dimentions.w + entity_1->physics->dimentions.w) *
+                                              (entity_2->physics->dimentions.w + entity_1->physics->dimentions.w));
+                    float distanceSquared  = (((entity_2->position.x - entity_1->position.x) *
+                                               (entity_2->position.x - entity_1->position.x)) + 
+                                              ((entity_2->position.z - entity_1->position.z) *
+                                               (entity_2->position.z - entity_1->position.z)));
 
                     // Check distance squared against the sum of the objects' radii
                     if (distanceSquared < radialSumSquared)
