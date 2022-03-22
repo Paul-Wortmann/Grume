@@ -32,11 +32,11 @@
 class cPhysicsEngine
 {
     public:
-        uint32          initialize(void);
-        void            terminate(void);
-        void            process(const float32 &_dt);
-        sPhysicsEvent*  getEvent(void) { return m_event.pop(); }
-        void            setEntityHead(sEntity* _entity) { m_entityHead = _entity; }
+        std::uint32_t  initialize(void);
+        void           terminate(void);
+        void           process(const float &_dt);
+        sPhysicsEvent* getEvent(void) { return m_event.pop(); }
+        void           setEntityHead(sEntity* _entity) { m_entityHead = _entity; }
 
     protected:
         
