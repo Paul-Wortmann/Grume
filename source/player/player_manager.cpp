@@ -63,27 +63,27 @@ sEntity* cPlayerManager::load(const std::string &_fileName)
     return m_player;
 };
 
-uint32 cPlayerManager::positionToTile(glm::vec3 _position)
+std::uint32_t cPlayerManager::positionToTile(glm::vec3 _position)
 {
     // Width and height offset, used to center the walls
-    float32 xo = static_cast<float32>(m_mapPointer->width)  / 2.0f;
-    float32 zo = static_cast<float32>(m_mapPointer->height) / 2.0f;
-    float32 tp = 0.0f;//1.0f / 2.0f; // tile center positioning ( half model dimention)
+    float xo = static_cast<float>(m_mapPointer->width)  / 2.0f;
+    float zo = static_cast<float>(m_mapPointer->height) / 2.0f;
+    float tp = 0.0f;//1.0f / 2.0f; // tile center positioning ( half model dimention)
 
-    uint32 x = static_cast<uint32>(_position.x + xo - tp);
-    uint32 z = static_cast<uint32>(_position.z + zo - tp);
+    std::uint32_t x = static_cast<std::uint32_t>(_position.x + xo - tp);
+    std::uint32_t z = static_cast<std::uint32_t>(_position.z + zo - tp);
     return (z * m_mapPointer->width) + x;
 };
 
-glm::vec3 cPlayerManager::tileToPosition(uint32 _tile)
+glm::vec3 cPlayerManager::tileToPosition(std::uint32_t _tile)
 { 
     // Width and height offset, used to center the walls
-    float32 xo = static_cast<float32>(m_mapPointer->width)  / 2.0f;
-    float32 zo = static_cast<float32>(m_mapPointer->height) / 2.0f;
-    float32 tp = 1.0f / 2.0f; // tile center positioning ( half model dimention)
+    float xo = static_cast<float>(m_mapPointer->width)  / 2.0f;
+    float zo = static_cast<float>(m_mapPointer->height) / 2.0f;
+    float tp = 1.0f / 2.0f; // tile center positioning ( half model dimention)
 
-    float32 x = static_cast<float32>(_tile % m_mapPointer->width) - xo + tp;
-    float32 z = static_cast<float32>(_tile / m_mapPointer->width) - zo + tp;
+    float x = static_cast<float>(_tile % m_mapPointer->width) - xo + tp;
+    float z = static_cast<float>(_tile / m_mapPointer->width) - zo + tp;
     return glm::vec3(x, m_mapPointer->terrainHeight, z);
 };
 
@@ -98,7 +98,7 @@ void cPlayerManager::setMouseClick(glm::vec3 _pos)
     }
 };
 
-void cPlayerManager::process(const float32 &_dt)
+void cPlayerManager::process(const float &_dt)
 {
     // Process character atributes / characteristics
     // Health
@@ -158,7 +158,7 @@ void cPlayerManager::process(const float32 &_dt)
         glm::vec3 entityTilePos = tileToPosition(m_mouseTile);
         
         // Get the distance to the destination tile
-        float32   distanceToTileSqr = ((playerPos.x - entityTilePos.x) * (playerPos.x - entityTilePos.x)) + ((playerPos.z - entityTilePos.z) * (playerPos.z - entityTilePos.z));
+        float   distanceToTileSqr = ((playerPos.x - entityTilePos.x) * (playerPos.x - entityTilePos.x)) + ((playerPos.z - entityTilePos.z) * (playerPos.z - entityTilePos.z));
         
         bool      moveToEntity = false;
         
@@ -281,7 +281,7 @@ void cPlayerManager::process(const float32 &_dt)
                         // Damage the NPC
                         // **** this should be based on player stength and NPC defence, etc...
                         
-                        float32 damage = (tEntity->character->attributes.health.max / 2.0f);
+                        float damage = (tEntity->character->attributes.health.max / 2.0f);
                         
                         tEntity->character->attributes.health.current -= damage;
                         
@@ -394,14 +394,14 @@ void cPlayerManager::process(const float32 &_dt)
         
         //std::cout << "Current tile: " << m_path.path[m_path.currentPosition] << std::endl;
         m_player->movement->moved = true;
-        glm::vec3 playerPos      = m_player->position;
-        glm::vec3 playerPrevPos  = m_player->position;
-        glm::vec3 playerRot      = m_player->rotation;
-        uint32    currentTile    = m_player->movement->mapPath.path[m_player->movement->mapPath.currentPosition];
-        glm::vec3 currentTilePos = tileToPosition(currentTile);
+        glm::vec3     playerPos      = m_player->position;
+        glm::vec3     playerPrevPos  = m_player->position;
+        glm::vec3     playerRot      = m_player->rotation;
+        std::uint32_t currentTile    = m_player->movement->mapPath.path[m_player->movement->mapPath.currentPosition];
+        glm::vec3     currentTilePos = tileToPosition(currentTile);
         
         // Get the distance to the destination tile
-        float32   distanceToTileSqr = ((playerPos.x - currentTilePos.x) * (playerPos.x - currentTilePos.x)) + ((playerPos.z - currentTilePos.z) * (playerPos.z - currentTilePos.z));
+        float   distanceToTileSqr = ((playerPos.x - currentTilePos.x) * (playerPos.x - currentTilePos.x)) + ((playerPos.z - currentTilePos.z) * (playerPos.z - currentTilePos.z));
         
         // if not center, move towards tile center
         if (distanceToTileSqr > (m_player->movement->movementSpeed + m_player->movement->movementBias))
@@ -429,7 +429,7 @@ void cPlayerManager::process(const float32 &_dt)
             }
             
             // Turn to face move direction
-            float32 angle = static_cast<float32>(atan2(playerPos.z - playerPrevPos.z, playerPrevPos.x - playerPos.x));
+            float angle = static_cast<float>(atan2(playerPos.z - playerPrevPos.z, playerPrevPos.x - playerPos.x));
             if (m_player->rotationAxis.x != 0)
             {
                 playerRot.x = m_player->rotationOffset.x + (angle * m_player->rotationAxis.x);

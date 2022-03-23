@@ -221,7 +221,7 @@ glm::vec4 cXML::getVec4(const std::string &_key, const std::uint32_t _instance)
             if (instanceCount == _instance)
             {
                 std::string v[4];
-                uint16 pos = 0;
+                std::uint16_t pos = 0;
                 std::size_t start = m_line[i].find(_key) + _key.length();
                 for(std::size_t j = start; j < m_line[i].length(); ++j)
                 {
@@ -264,7 +264,7 @@ glm::vec3 cXML::getVec3(const std::string &_key, const std::uint32_t _instance)
             if (instanceCount == _instance)
             {
                 std::string v[3];
-                uint16 pos = 0;
+                std::uint16_t pos = 0;
                 std::size_t start = m_line[i].find(_key) + _key.length();
                 for(std::size_t j = start; j < m_line[i].length(); ++j)
                 {
@@ -307,7 +307,7 @@ glm::vec2 cXML::getVec2(const std::string &_key, const std::uint32_t _instance)
             if (instanceCount == _instance)
             {
                 std::string v[2];
-                uint16 pos = 0;
+                std::uint16_t pos = 0;
                 std::size_t start = m_line[i].find(_key) + _key.length();
                 for(std::size_t j = start; j < m_line[i].length(); ++j)
                 {
@@ -350,7 +350,7 @@ glm::ivec3  cXML::getIvec3(const std::string &_key, const std::uint32_t _instanc
             if (instanceCount == _instance)
             {
                 std::string v[3];
-                uint16 pos = 0;
+                std::uint16_t pos = 0;
                 std::size_t start = m_line[i].find(_key) + _key.length();
                 for(std::size_t j = start; j < m_line[i].length(); ++j)
                 {
