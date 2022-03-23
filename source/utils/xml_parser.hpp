@@ -36,7 +36,7 @@ class cXML
         void          free(void) { delete [] m_line; m_line = nullptr; }
         bool          isValid(void) { return m_isValid; };
         std::uint32_t lineCount(void) { return m_lineCount; }
-        std::string   line(uint32 _lineNum) { return (_lineNum < m_lineCount) ? m_line[_lineNum] : ""; }
+        std::string   line(std::uint32_t _lineNum) { return (_lineNum < m_lineCount) ? m_line[_lineNum] : ""; }
         std::uint32_t getInstanceCount(const std::string &_key);
         std::string   getString(const std::string &_key, const std::uint32_t  _instance = 1);
         std::int32_t  getInteger(const std::string &_key, const std::uint32_t  _instance = 1);
