@@ -71,10 +71,10 @@ std::string xmlGetDataString(const std::string &_data)
 // Depending on key specified returns associated, key1 returns: data1
 std::string xmlGetDataValue(const std::string &_data, const std::string &_key)
 {
-    std::string  returnString = "";
-    std::size_t  stringLength = _data.length();
-    uint16       smCount      = 0;
-    std::size_t  keyStart     = _data.find(_key + "=");
+    std::string   returnString = "";
+    std::size_t   stringLength = _data.length();
+    std::uint16_t smCount      = 0;
+    std::size_t   keyStart     = _data.find(_key + "=");
 
     if (keyStart == std::string::npos)
     {
