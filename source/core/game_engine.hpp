@@ -47,7 +47,7 @@ class cGameEngine
     protected:
 
     private:
-        enum eGameState: uint16
+        enum eGameState: std::uint16_t
         {
             startup  = 0,
             active   = 1,

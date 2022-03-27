@@ -36,15 +36,15 @@ void cGameDatabase::load(const std::string &_fileName)
         gLogWrite(LOG_INFO, "Loading game database master: " + std::string(FILE_PATH_DATA) + _fileName, __FILE__, __LINE__, __FUNCTION__);
         
         // Data
-        biome.fileName       = xmlFile.getString("<biome_database>");
-        map.fileName         = xmlFile.getString("<map_database>");
-        map_prefab.fileName  = xmlFile.getString("<map_prefab_database>");
-        music.fileName       = xmlFile.getString("<music_database>");
-        npc.fileName         = xmlFile.getString("<npc_database>");
-        object.fileName      = xmlFile.getString("<object_database>");
-        skills.fileName      = xmlFile.getString("<skills_database>");
-        sound.fileName       = xmlFile.getString("<sound_database>");
-        ui.fileName          = xmlFile.getString("<ui_database>");
+        biome.fileName      = xmlFile.getString("<biome_database>");
+        map.fileName        = xmlFile.getString("<map_database>");
+        map_prefab.fileName = xmlFile.getString("<map_prefab_database>");
+        music.fileName      = xmlFile.getString("<music_database>");
+        npc.fileName        = xmlFile.getString("<npc_database>");
+        object.fileName     = xmlFile.getString("<object_database>");
+        skills.fileName     = xmlFile.getString("<skills_database>");
+        sound.fileName      = xmlFile.getString("<sound_database>");
+        ui.fileName         = xmlFile.getString("<ui_database>");
         
         // Clean up
         xmlFile.free();

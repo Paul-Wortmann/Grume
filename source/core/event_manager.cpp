@@ -25,20 +25,16 @@
 
 std::uint32_t cEventManager::initialize(void)
 {
-
-
     return EXIT_SUCCESS;
 }
 
 void cEventManager::terminate(void)
 {
 
-
 }
 
 void cEventManager::process(const float &_dt)
 {
-
 
 }
 
