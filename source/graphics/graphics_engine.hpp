@@ -131,8 +131,8 @@ class cGraphicsEngine
         cGraphicsEngineParticles m_particleEngine;
 
         // IO
-        std::unordered_map<std::int32_t, boolean> m_keyMap;
-        std::unordered_map<std::int32_t, boolean> m_keyReadyMap;
+        std::unordered_map<std::int32_t, bool> m_keyMap;
+        std::unordered_map<std::int32_t, bool> m_keyReadyMap;
         float m_mouseX = 0.0f;
         float m_mouseY = 0.0f;
 

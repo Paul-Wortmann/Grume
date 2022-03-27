@@ -27,7 +27,7 @@
 // A basic function to extract data from xml encoded string*
 // *This does not cover the full XML specification.
 // Returns: a boolean result if a std::string find;
-boolean xmlFind(const std::string &_data, const std::string &_find)
+bool xmlFind(const std::string &_data, const std::string &_find)
 {
     return (_data.find(_find) != std::string::npos);
 }
