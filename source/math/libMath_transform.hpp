@@ -37,14 +37,14 @@ template<typename T> mat4_t<T> perspective(T _fov, T _aspect, T _near, T _far);
 template<typename T> mat4_t<T> perspective(T _fov, T _near, T _far);
 template<typename T> mat4_t<T> lookAt(vec3_t<T> _position, vec3_t<T> _target, vec3_t<T> _upVector);
 
-// commonly used float32 versions
+// commonly used float versions
 mat4 translate(const mat4 &_mat4, const vec4 &_transVec);
 mat4 translate(const vec4 &_transVec);
 mat4 scale(const mat4 &_mat4, const vec4 &_scaleVec);
 mat4 scale(const vec4 &_scaleVec);
 mat4 rotate(const mat4 &_mat4, const vec4 &_rotateVec);
 mat4 rotate(const vec4 &_rotateVec);
-mat4 orthographic(float32 _left, float32 _right, float32 _bottom, float32 _top, float32 _near, float32 _far);
-mat4 perspective(float32 _fov, float32 _aspect, float32 _near, float32 _far);
-mat4 perspective(float32 _fov, float32 _near, float32 _far);
+mat4 orthographic(float _left, float _right, float _bottom, float _top, float _near, float _far);
+mat4 perspective(float _fov, float _aspect, float _near, float _far);
+mat4 perspective(float _fov, float _near, float _far);
 mat4 lookAt(const vec3 &_position, const vec3 &_target, const vec3 &_upVector);

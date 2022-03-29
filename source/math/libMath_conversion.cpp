@@ -23,12 +23,12 @@
 
 #include "libMath_conversion.hpp"
 
-float64 degToRad(const float64 &_deg)
+double degToRad(const double &_deg)
 {
     return _deg *  0.0174532925;
 }
 
-float64 radToDeg(const float64 &_rad)
+double radToDeg(const double &_rad)
 {
     return _rad * 57.2957795131;
 }

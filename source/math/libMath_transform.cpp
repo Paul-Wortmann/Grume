@@ -32,7 +32,7 @@ mat4 translate(const mat4 &_mat4, const vec4 &_transVec)
     }
     for (std::size_t i = 0; i < (_transVec.SIZE - 1); i++)
     {
-        tMat4.data[i][tMat4.COLUMNS - 1] = static_cast<float32>(tMat4.data[i][tMat4.COLUMNS - 1] + _transVec.array[i]);
+        tMat4.data[i][tMat4.COLUMNS - 1] = static_cast<float>(tMat4.data[i][tMat4.COLUMNS - 1] + _transVec.array[i]);
     }
     return tMat4;
 }
@@ -66,8 +66,8 @@ mat4 rotate(const mat4 &_mat4, const vec4 &_rotateVec)
     mat4 xMat4(1);
     if (_rotateVec.x != 0)
     {
-        float32 xs = static_cast<float32>(sin(_rotateVec.x));
-        float32 xc = static_cast<float32>(cos(_rotateVec.x));
+        float xs = static_cast<float>(sin(_rotateVec.x));
+        float xc = static_cast<float>(cos(_rotateVec.x));
         xMat4.data[1][1] = xc;
         xMat4.data[1][2] = xs * -1;
         xMat4.data[2][1] = xs;
@@ -77,8 +77,8 @@ mat4 rotate(const mat4 &_mat4, const vec4 &_rotateVec)
     mat4 yMat4(1);
     if (_rotateVec.y != 0)
     {
-        float32 ys = static_cast<float32>(sin(_rotateVec.y));
-        float32 yc = static_cast<float32>(cos(_rotateVec.y));
+        float ys = static_cast<float>(sin(_rotateVec.y));
+        float yc = static_cast<float>(cos(_rotateVec.y));
         xMat4.data[0][0] = yc;
         xMat4.data[0][2] = ys;
         xMat4.data[2][0] = ys * -1;
@@ -88,8 +88,8 @@ mat4 rotate(const mat4 &_mat4, const vec4 &_rotateVec)
     mat4 zMat4(1);
     if (_rotateVec.z != 0)
     {
-        float32 zs = static_cast<float32>(sin(_rotateVec.z));
-        float32 zc = static_cast<float32>(cos(_rotateVec.z));
+        float zs = static_cast<float>(sin(_rotateVec.z));
+        float zc = static_cast<float>(cos(_rotateVec.z));
         xMat4.data[0][0] = zc;
         xMat4.data[0][1] = zs * -1;
         xMat4.data[1][0] = zs;
@@ -104,23 +104,23 @@ mat4 rotate(const vec4 &_rotateVec)
     return rotate(mat4(1), _rotateVec);
 }
 
-mat4 orthographic(float32 _left, float32 _right, float32 _bottom, float32 _top, float32 _near, float32 _far)
+mat4 orthographic(float _left, float _right, float _bottom, float _top, float _near, float _far)
 {
     return mat4();
 }
 
-mat4 perspective(float32 _fov, float32 _aspect, float32 _near, float32 _far)
+mat4 perspective(float _fov, float _aspect, float _near, float _far)
 {
     mat4 tMat4(0.0f);
     tMat4.data[0][0] = 1.0f / (tanf( _fov / 2.0f) * _aspect);
     tMat4.data[1][1] = 1.0f / tanf( _fov / 2.0f);
-    tMat4.data[2][2] = static_cast<float32>(((-1.0 * _near) - _far) / (_near - _far));
+    tMat4.data[2][2] = static_cast<float>(((-1.0 * _near) - _far) / (_near - _far));
     tMat4.data[2][3] = 2.0f * _far * _near / (_near - _far);
     tMat4.data[3][2] = 1.0f;
     return tMat4;
 }
 
-mat4 perspective(float32 _fov, float32 _near, float32 _far)
+mat4 perspective(float _fov, float _near, float _far)
 {
     mat4 tMat4(0.0f);
     tMat4.data[0][0] = 1.0f / tanf( _fov / 2.0f);

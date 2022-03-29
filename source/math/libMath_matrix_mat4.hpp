@@ -106,7 +106,7 @@ struct mat4_t
             return tMat4;
         }
         //std::cout << "Det: " << det << std::endl;
-        float32 detInv = 1.0f / det; // Has to be a float32 and not a T because floating point math is evil!
+        float detInv = 1.0f / det; // Has to be a float and not a T because floating point math is evil!
         
         // Adjunct
         transpose();

@@ -23,24 +23,24 @@
 
 #include "libMath_sqrt.hpp"
 
-float64 Q_rsqrt(float64 _number)
+double Q_rsqrt(double _number)
 {
     uint32_t i;
-    float64 x2, y;
-    const float64 threeHalfs = 1.5f;
+    double x2, y;
+    const double threeHalfs = 1.5f;
 
     x2 = _number * 0.5f;
     y  = _number;
     i  = * (uint32_t*) &y;
     i  = 0x5f3759df - ( i >> 1 );
-    y  = * (float64*) &i;
+    y  = * (double*) &i;
     y  = y * (threeHalfs - (x2 * y * y));
     return y;
 }
 
-float64 rsqrt(float64 _x)
+double rsqrt(double _x)
 {
-    float64 y = 0.0f;
+    double y = 0.0f;
     asm("rsqrtss %[_x], %%xmm0;" "movss %%xmm0, %[y];" : : [ _x ] "m" ( _x ), [ y ] "m" ( y ) : "xmm0");
     return y;
 }

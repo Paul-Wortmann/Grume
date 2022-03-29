@@ -96,7 +96,7 @@ void cGraphicsEngineParticles::addParticle(const sParticle &_particle)
 }
 
 
-void cGraphicsEngineParticles::process(const float32 &_dt)
+void cGraphicsEngineParticles::process(const float &_dt)
 {
     // Loop throught the particle array
     for (std::uint32_t i = 0; i < m_numParticles; ++i)

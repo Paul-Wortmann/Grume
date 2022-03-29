@@ -176,7 +176,7 @@ void cMapManager::load(const std::string &_fileName)
         std::string   musicString = xmlMapFile.getString("<music>");
 
         std::uint32_t player_tile = xmlMapFile.getInteger("<player_start_tile>");
-        float32       player_rot  = xmlMapFile.getFloat("<player_start_rotation>");
+        float         player_rot  = xmlMapFile.getFloat("<player_start_rotation>");
 
         std::uint32_t map_previous        = xmlMapFile.getInteger("<map_previous>");
         std::uint32_t map_previous_portal = xmlMapFile.getInteger("<map_previous_portal>");
@@ -491,7 +491,7 @@ void cMapManager::load(const std::string &_fileName)
                 std::uint64_t tPortalStringLength = tPortalString.length();
                 std::uint32_t tPortalNumber    = 0;
                 std::uint32_t tPortalTileNum   = 0;
-                float32       tPortalDirection = 0.0f;
+                float         tPortalDirection = 0.0f;
                 std::uint32_t tStringNum = 0;
                 std::string   tString = "";
                 if (tPortalStringLength > 6)
@@ -542,8 +542,8 @@ void cMapManager::load(const std::string &_fileName)
                 std::uint64_t tObjectStringLength = tObjectString.length();
                 std::uint32_t tObjectTileNum   = 0;
                 std::string   tObjectName      = "";
-                float32       tObjectScale     = 0.0f;
-                float32       tObjectRotation  = 0.0f;
+                float         tObjectScale     = 0.0f;
+                float         tObjectRotation  = 0.0f;
                 std::uint32_t tObjectObstacle  = 0;
                 std::uint32_t tStringNum = 0;
                 std::string   tString = "";
@@ -605,8 +605,8 @@ void cMapManager::load(const std::string &_fileName)
                 std::uint64_t tDebrisStringLength = tDebrisString.length();
 
                 std::string   tDebrisName       = "";
-                float32       tDebrisScaleMax   = 0.0f;
-                float32       tDebrisScaleMin   = 0.0f;
+                float         tDebrisScaleMax   = 0.0f;
+                float         tDebrisScaleMin   = 0.0f;
                 std::uint32_t tDebrisPrevalence = 0;
                 std::uint32_t tDebrisObstacle   = 0;
 
@@ -670,8 +670,8 @@ void cMapManager::load(const std::string &_fileName)
                 std::uint64_t tNPCMobStringLength = tNPCMobString.length();
 
                 std::string   tNPCMobName       = "";
-                float32       tNPCMobScaleMax   = 0.0f;
-                float32       tNPCMobScaleMin   = 0.0f;
+                float         tNPCMobScaleMax   = 0.0f;
+                float         tNPCMobScaleMin   = 0.0f;
                 std::uint32_t tNPCMobPrevalence = 0;
 
                 std::uint32_t tStringNum = 0;
@@ -731,8 +731,8 @@ void cMapManager::load(const std::string &_fileName)
                 std::uint32_t tNPCTile     = 0;
                 std::string   tNPCName     = "";
                 std::uint32_t tNPCIndex    = 0;
-                float32       tNPCScale    = 0.0f;
-                float32       tNPCRotation = 0.0f;
+                float         tNPCScale    = 0.0f;
+                float         tNPCRotation = 0.0f;
         
                 std::uint32_t tStringNum = 0;
                 std::string   tString = "";
@@ -1331,7 +1331,7 @@ void cMapManager::save(const std::string &_fileName)
     }
 }
 
-void cMapManager::process(const float64 &_dt)
+void cMapManager::process(const double &_dt)
 {
     std::uint32_t playerTile = m_playerManager->getCurrentTile();
     for (std::uint32_t i = 0; i < m_currentMap->eventCount; ++i)

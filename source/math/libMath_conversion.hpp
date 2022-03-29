@@ -26,7 +26,7 @@
 
 #include "libMath_defines.hpp"
 
-float64 degToRad(const float64 &_deg);
-float64 radToDeg(const float64 &_rad);
+double degToRad(const double &_deg);
+double radToDeg(const double &_rad);
 
 #endif // LIB_MATH_CONVERSION_HPP

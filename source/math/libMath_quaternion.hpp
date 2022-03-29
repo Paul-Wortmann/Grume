@@ -26,7 +26,7 @@
 
 #include "libMath_quaternion_quat4.hpp"
 
-typedef quat4_t<float32> quat4;
+typedef quat4_t<float> quat4;
 
 #endif // LIB_MATH_QUATERNION_HPP
 

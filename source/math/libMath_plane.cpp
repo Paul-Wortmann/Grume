@@ -27,14 +27,14 @@ vec3 planeLineIntersection(const vec3 &_planePoint, const vec3 &_planeNormal, co
 {
     vec3    ld    = _lineDirection;
     ld.normalize();
-    float32 pnDld = _planeNormal.dot(ld);
+    float pnDld = _planeNormal.dot(ld);
 
     if (pnDld == 0)
     {
         return vec3(0.0f, 0.0f, 0.0f);
     }
     
-    float32 t = (_planeNormal.dot(_planePoint) - _planeNormal.dot(_linePoint)) / pnDld;
+    float t = (_planeNormal.dot(_planePoint) - _planeNormal.dot(_linePoint)) / pnDld;
     
     vec3 ldSt = ld * t;
     vec3 lpPld = _linePoint + ldSt;
