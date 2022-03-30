@@ -28,17 +28,17 @@
 #include "libMath_vector_vec3.hpp"
 #include "libMath_vector_vec4.hpp"
 
-typedef vec2_t<float>  vec2;
-typedef vec2_t<float>  vec2f;
-typedef vec2_t<double> vec2d;
+typedef vec2_t<float>         vec2;
+typedef vec2_t<float>         vec2f;
+typedef vec2_t<double>        vec2d;
 
-typedef vec3_t<float>  vec3;
-typedef vec3_t<float>  vec3f;
-typedef vec3_t<double> vec3d;
-typedef vec3_t<int32>  ivec3;
+typedef vec3_t<float>         vec3;
+typedef vec3_t<float>         vec3f;
+typedef vec3_t<double>        vec3d;
+typedef vec3_t<std::int32_t>  ivec3;
 
-typedef vec4_t<float>  vec4;
-typedef vec4_t<float>  vec4f;
-typedef vec4_t<double> vec4d;
+typedef vec4_t<float>         vec4;
+typedef vec4_t<float>         vec4f;
+typedef vec4_t<double>        vec4d;
 
 #endif // LIB_MATH_VECTOR_HPP

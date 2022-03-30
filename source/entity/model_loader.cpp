@@ -173,8 +173,8 @@ void cModelManager::m_processMesh(const aiScene*& _scene, const aiMesh* _mesh, s
 
         for (std::size_t i = 0; i < _mesh->mNumBones; ++i)
         {
-            aiBone* bone = _mesh->mBones[i];
-            int32 boneID = m_getBoneID(bone->mName.C_Str());
+            aiBone*      bone = _mesh->mBones[i];
+            std::int32_t boneID = m_getBoneID(bone->mName.C_Str());
             if (boneID > -1)
             {
                 for (std::size_t j = 0; j < bone->mNumWeights; ++j)
@@ -219,7 +219,7 @@ void cModelManager::m_processNode(const aiScene*& _scene, const aiNode* _node, s
 
 void cModelManager::m_addBoneMap(const std::string &_name, const glm::mat4 &_mat4)
 {
-    int32 found = -1;
+    std::int32_t found = -1;
     for (std::size_t k = 0; k < m_boneMap.size(); ++k)
     {
         if (m_boneMap[k].name.compare(_name) == 0)
@@ -260,7 +260,7 @@ void cModelManager::m_buildBoneMap(aiNode* _node, const aiScene* _scene)
 
 void cModelManager::m_buildBoneMapParents(aiNode* _node, aiNode* _nodeParent, const aiScene* _scene)
 {
-    int32 nodeID = m_getBoneID(_node->mName.C_Str());
+    std::int32_t nodeID = m_getBoneID(_node->mName.C_Str());
     if ((_nodeParent != nullptr) && (nodeID > -1))
     {
         m_boneMap[nodeID].parentID = m_getBoneID(_nodeParent->mName.C_Str());
@@ -273,7 +273,7 @@ void cModelManager::m_buildBoneMapParents(aiNode* _node, aiNode* _nodeParent, co
     }
 }
 
-int32 cModelManager::m_getBoneID(const std::string &_name)
+std::int32_t cModelManager::m_getBoneID(const std::string &_name)
 {
     for (std::size_t i = 0; i < m_boneMap.size(); ++i)
     {
@@ -288,7 +288,7 @@ int32 cModelManager::m_getBoneID(const std::string &_name)
 void cModelManager::m_buildBoneMapNodes(aiNode* _node)
 {
     //std::cout << "Checking node: " << _node->mName.C_Str() << std::endl;
-    int32 boneID = m_getBoneID(_node->mName.C_Str());
+    std::int32_t boneID = m_getBoneID(_node->mName.C_Str());
     if (boneID > -1)
     {
         //std::cout << "Loading node transform: " << _node->mName.C_Str() << std::endl;
@@ -300,7 +300,7 @@ void cModelManager::m_buildBoneMapNodes(aiNode* _node)
     }
 }
 
-glm::mat4 cModelManager::m_getRecursiveTransforms(int32 _ID)
+glm::mat4 cModelManager::m_getRecursiveTransforms(std::int32_t _ID)
 {
     glm::mat4 rMat = m_boneMap[_ID].transformNode;
     if (m_boneMap[_ID].parentID > -1)
