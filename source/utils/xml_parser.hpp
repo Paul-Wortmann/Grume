@@ -33,7 +33,7 @@ class cXML
 {
     public:
         std::uint32_t load(const std::string &_fileName);
-        void          free(void) { delete [] m_line; m_line = nullptr; }
+        void          free(void) { delete [] m_line; m_line = nullptr; m_lineCount = 0; }
         bool          isValid(void) { return m_isValid; };
         std::uint32_t lineCount(void) { return m_lineCount; }
         std::string   line(std::uint32_t _lineNum) { return (_lineNum < m_lineCount) ? m_line[_lineNum] : ""; }
