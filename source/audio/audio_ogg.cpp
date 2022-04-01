@@ -25,9 +25,11 @@
 
 void loadOgg(const std::string &_fileName, sAudioData *_audioData)
 {
+    // Open the file
     OggVorbis_File oggFile = {};
     if (ov_fopen(_fileName.c_str(), &oggFile) == 0)
     {
+        // Read data from the file header
         vorbis_info *pInfo = ov_info(&oggFile, -1);
         _audioData->channels = pInfo->channels;
         _audioData->audioFormat = (pInfo->channels == 1) ? AL_FORMAT_MONO16 : AL_FORMAT_STEREO16;
@@ -57,6 +59,7 @@ void loadOgg(const std::string &_fileName, sAudioData *_audioData)
     }
     else
     {
+        // Log and error if we fail to open the file
         gLogWrite(LOG_ERROR, "Failed to open file: " + _fileName, __FILE__, __LINE__, __FUNCTION__);
     }
 }

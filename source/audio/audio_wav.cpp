@@ -74,7 +74,7 @@ void loadWav(const std::string &_fileName, sAudioData *_audioData)
     }
     else
     {
-        // Log and error if we faile to open the file
+        // Log and error if we fail to open the file
         gLogWrite(LOG_ERROR, "Failed to load file: " + _fileName, __FILE__, __LINE__, __FUNCTION__);
     }
 }
