@@ -35,23 +35,6 @@ void cBiomeManager::terminate(void)
 
 void cBiomeManager::freeData(sMapBiome*& _biome)
 {
-    /*
-    //Wall Set
-    if (_biome->WallSet.wall_wp != nullptr) { delete [] _biome->WallSet.wall_wp; }
-    if (_biome->WallSet.wall_we != nullptr) { delete [] _biome->WallSet.wall_we; }
-    if (_biome->WallSet.wall_ws != nullptr) { delete [] _biome->WallSet.wall_ws; }
-    if (_biome->WallSet.wall_wd != nullptr) { delete [] _biome->WallSet.wall_wd; }
-    if (_biome->WallSet.wall_wc != nullptr) { delete [] _biome->WallSet.wall_wc; }
-    if (_biome->WallSet.wall_wt != nullptr) { delete [] _biome->WallSet.wall_wt; }
-    if (_biome->WallSet.wall_tp != nullptr) { delete [] _biome->WallSet.wall_tp; }
-    if (_biome->WallSet.wall_te != nullptr) { delete [] _biome->WallSet.wall_te; }
-    if (_biome->WallSet.wall_ts != nullptr) { delete [] _biome->WallSet.wall_ts; }
-    if (_biome->WallSet.wall_tc != nullptr) { delete [] _biome->WallSet.wall_tc; }
-    if (_biome->WallSet.wall_tt != nullptr) { delete [] _biome->WallSet.wall_tt; }
-    if (_biome->WallSet.wall_tx != nullptr) { delete [] _biome->WallSet.wall_tx; }
-    if (_biome->WallSet.wall_td != nullptr) { delete [] _biome->WallSet.wall_td; }
-    if (_biome->WallSet.wall_tl != nullptr) { delete [] _biome->WallSet.wall_tl; }
-     * */
 }
 
 sMapBiome* cBiomeManager::load(const std::string &_fileName)
@@ -118,40 +101,7 @@ void cBiomeManager::m_load_wallSet(sMapBiome*& _biome)
         _biome->WallSet.wall_tx_count = xmlFile.getInteger("<wall_tx_count>");
         _biome->WallSet.wall_td_count = xmlFile.getInteger("<wall_td_count>");
         _biome->WallSet.wall_tl_count = xmlFile.getInteger("<wall_tl_count>");
-/*
-        // Dynamically create the entities
-        _biome->WallSet.wall_wp = (_biome->WallSet.wall_wp_count > 0) ? new sEntity*[_biome->WallSet.wall_wp_count] : nullptr;
-        _biome->WallSet.wall_we = (_biome->WallSet.wall_we_count > 0) ? new sEntity*[_biome->WallSet.wall_we_count] : nullptr;
-        _biome->WallSet.wall_ws = (_biome->WallSet.wall_ws_count > 0) ? new sEntity*[_biome->WallSet.wall_ws_count] : nullptr;
-        _biome->WallSet.wall_wd = (_biome->WallSet.wall_wd_count > 0) ? new sEntity*[_biome->WallSet.wall_wd_count] : nullptr;
-        _biome->WallSet.wall_wc = (_biome->WallSet.wall_wc_count > 0) ? new sEntity*[_biome->WallSet.wall_wc_count] : nullptr;
-        _biome->WallSet.wall_wt = (_biome->WallSet.wall_wt_count > 0) ? new sEntity*[_biome->WallSet.wall_wt_count] : nullptr;
-        _biome->WallSet.wall_tp = (_biome->WallSet.wall_tp_count > 0) ? new sEntity*[_biome->WallSet.wall_tp_count] : nullptr;
-        _biome->WallSet.wall_te = (_biome->WallSet.wall_te_count > 0) ? new sEntity*[_biome->WallSet.wall_te_count] : nullptr;
-        _biome->WallSet.wall_ts = (_biome->WallSet.wall_ts_count > 0) ? new sEntity*[_biome->WallSet.wall_ts_count] : nullptr;
-        _biome->WallSet.wall_tc = (_biome->WallSet.wall_tc_count > 0) ? new sEntity*[_biome->WallSet.wall_tc_count] : nullptr;
-        _biome->WallSet.wall_tt = (_biome->WallSet.wall_tt_count > 0) ? new sEntity*[_biome->WallSet.wall_tt_count] : nullptr;
-        _biome->WallSet.wall_tx = (_biome->WallSet.wall_tx_count > 0) ? new sEntity*[_biome->WallSet.wall_tx_count] : nullptr;
-        _biome->WallSet.wall_td = (_biome->WallSet.wall_td_count > 0) ? new sEntity*[_biome->WallSet.wall_td_count] : nullptr;
-        _biome->WallSet.wall_tl = (_biome->WallSet.wall_tl_count > 0) ? new sEntity*[_biome->WallSet.wall_tl_count] : nullptr;
-*/
-/*
-        // Make sure the pointer arrays are all nullptr
-        for (robo::uint32 i = 0; i < _biome->WallSet.wall_wp_count; ++i) { _biome->WallSet.wall_wp[i] = nullptr; }
-        for (robo::uint32 i = 0; i < _biome->WallSet.wall_we_count; ++i) { _biome->WallSet.wall_we[i] = nullptr; }
-        for (robo::uint32 i = 0; i < _biome->WallSet.wall_ws_count; ++i) { _biome->WallSet.wall_ws[i] = nullptr; }
-        for (robo::uint32 i = 0; i < _biome->WallSet.wall_wd_count; ++i) { _biome->WallSet.wall_wd[i] = nullptr; }
-        for (robo::uint32 i = 0; i < _biome->WallSet.wall_wc_count; ++i) { _biome->WallSet.wall_wc[i] = nullptr; }
-        for (robo::uint32 i = 0; i < _biome->WallSet.wall_wt_count; ++i) { _biome->WallSet.wall_wt[i] = nullptr; }
-        for (robo::uint32 i = 0; i < _biome->WallSet.wall_tp_count; ++i) { _biome->WallSet.wall_tp[i] = nullptr; }
-        for (robo::uint32 i = 0; i < _biome->WallSet.wall_te_count; ++i) { _biome->WallSet.wall_te[i] = nullptr; }
-        for (robo::uint32 i = 0; i < _biome->WallSet.wall_ts_count; ++i) { _biome->WallSet.wall_ts[i] = nullptr; }
-        for (robo::uint32 i = 0; i < _biome->WallSet.wall_tc_count; ++i) { _biome->WallSet.wall_tc[i] = nullptr; }
-        for (robo::uint32 i = 0; i < _biome->WallSet.wall_tt_count; ++i) { _biome->WallSet.wall_tt[i] = nullptr; }
-        for (robo::uint32 i = 0; i < _biome->WallSet.wall_ts_count; ++i) { _biome->WallSet.wall_tx[i] = nullptr; }
-        for (robo::uint32 i = 0; i < _biome->WallSet.wall_td_count; ++i) { _biome->WallSet.wall_td[i] = nullptr; }
-        for (robo::uint32 i = 0; i < _biome->WallSet.wall_tl_count; ++i) { _biome->WallSet.wall_tl[i] = nullptr; }
-*/
+
         // Clean up
         xmlFile.free();
     }

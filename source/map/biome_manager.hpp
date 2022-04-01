@@ -31,19 +31,18 @@
 class cBiomeManager : public tcLinkedList<sMapBiome>
 {
     public:
-        void initialize(cEntityManager* _entityManager);
-        void terminate(void);
-        sMapBiome* load(const std::string& _fileName);
+        void            initialize(cEntityManager* _entityManager);
+        void            terminate(void);
+        sMapBiome*      load(const std::string& _fileName);
 
     protected:
 
     private:
         cEntityManager* entityManager = nullptr;
-        
-        void freeData(sMapBiome*& _biome) override;
+        void            freeData(sMapBiome*& _biome) override;
 
         // Wall set load
-        void m_load_wallSet(sMapBiome*& _biome);
+        void            m_load_wallSet(sMapBiome*& _biome);
 };
 
 #endif // BIOME_MANAGER_HPP

@@ -161,10 +161,10 @@ struct sMap
     float          playerStartDir    = 0.0f;
 
     // information about next and previous maps
-    std::uint32_t map_previous         = 0;
-    std::uint32_t map_previous_portal  = 0;
-    std::uint32_t map_next             = 0;
-    std::uint32_t map_next_portal      = 0;
+    std::uint32_t map_previous        = 0;
+    std::uint32_t map_previous_portal = 0;
+    std::uint32_t map_next            = 0;
+    std::uint32_t map_next_portal     = 0;
 
     // Entity to hold the floor
     sEntity*       floor             = nullptr;
