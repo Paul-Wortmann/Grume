@@ -88,23 +88,23 @@ struct sUIComponent
 struct sUIMenu
 {
     // Components
-    std::uint32_t     numComponent  = 0;
-    sUIComponent*     component     = nullptr;
+    std::uint32_t      numComponent  = 0;
+    sUIComponent*      component     = nullptr;
 
     // Infomation
-    std::string       name          = "";
-    bool              enabled       = false;
+    std::string        name          = "";
+    bool               enabled       = false;
 
     // Base
-    glm::vec3         position      = glm::vec3(0.0f, 0.0f, 0.0f); // Position in OpenGL coordinate space (-1 to 1)
-    glm::vec2         scale         = glm::vec2(1.0f, 1.0f); // Scale relative to OpenGL window coordinates (-1 to 1)
-    glm::vec2         size          = glm::vec2(1, 1); // Size in pixels
-    glm::vec2         positionMin   = glm::vec2(0, 0); // (In pixels) calculated on load, min position (top left corner)
-    glm::vec2         positionMax   = glm::vec2(0, 0); // (In pixels) calculated on load, max position (bottom right corner)
+    glm::vec3          position      = glm::vec3(0.0f, 0.0f, 0.0f); // Position in OpenGL coordinate space (-1 to 1)
+    glm::vec2          scale         = glm::vec2(1.0f, 1.0f); // Scale relative to OpenGL window coordinates (-1 to 1)
+    glm::vec2          size          = glm::vec2(1, 1); // Size in pixels
+    glm::vec2          positionMin   = glm::vec2(0, 0); // (In pixels) calculated on load, min position (top left corner)
+    glm::vec2          positionMax   = glm::vec2(0, 0); // (In pixels) calculated on load, max position (bottom right corner)
 
     // Graphics
-    glm::mat4         modelMatrix   = glm::mat4(1);
-    sEntityTexture*   textureNormal = nullptr;
+    glm::mat4          modelMatrix   = glm::mat4(1);
+    sEntityTexture*    textureNormal = nullptr;
 };
 
 #endif //UI_HPP
